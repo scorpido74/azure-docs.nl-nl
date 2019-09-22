@@ -6,14 +6,14 @@ author: alinamstanciu
 ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
-ms.date: 08/16/2019
+ms.date: 09/17/2019
 ms.author: alinast
-ms.openlocfilehash: a107f7dba7f28b41303727ad37b7c50f2e215c4f
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: eebf6f58000178f2aa8021fbd435aa863fb70e49
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69622981"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71177204"
 ---
 # <a name="tutorial-deploy-azure-digital-twins-preview-and-configure-a-spatial-graph"></a>Zelfstudie: Azure Digital Apparaatdubbels preview implementeren en een ruimtelijke grafiek configureren
 
@@ -43,15 +43,11 @@ In deze zelfstudies worden dezelfde voorbeelden gebruikt en aangepast als in de 
 
 - [Visual Studio Code](https://code.visualstudio.com/) om de voorbeeldcode mee te verkennen. 
 
-<a id="deploy"></a>
-
 ## <a name="deploy-digital-twins"></a>Azure Digital Twins implementeren
 
 Maak een nieuw exemplaar van de Azure Digital Twins-service met behulp van de stappen in deze sectie. Per abonnement kan slechts één exemplaar worden gemaakt. Ga naar de volgende sectie als u al een actief exemplaar hebt. 
 
 [!INCLUDE [create-digital-twins-portal](../../includes/digital-twins-create-portal.md)]
-
-<a id="permissions"></a>
 
 ## <a name="grant-permissions-to-your-app"></a>Machtigingen verlenen aan uw app
 
@@ -76,7 +72,7 @@ Als u de voorbeelden voor de [quickstart om beschikbare ruimten te vinden](quick
 
 Open het bestand **digital-twins-samples-csharp\digital-twins-samples.code-workspace** uit de uitgepakte voorbeeldmap in Visual Studio Code. Dit bestand bevat twee projecten:
 
-* U kunt het inrichtingsvoorbeeld **occupancy-quickstart** gebruiken voor het configureren en inrichten van een [ruimtelijke informatiegrafiek](concepts-objectmodel-spatialgraph.md#graph). Deze grafiek is de digitale kopie van uw fysieke ruimten en de resources in die ruimten. Hiervoor wordt een [objectmodel](concepts-objectmodel-spatialgraph.md#model) gebruikt waarin objecten voor een slim gebouw worden gedefinieerd. Ga voor een volledige lijst van objecten en REST-API's van Digital Twins naar [deze REST API-documentatie](https://docs.westcentralus.azuresmartspaces.net/management/swagger) of de URL van de Beheer API die is gemaakt voor uw [exemplaar](#deploy).
+* U kunt het inrichtingsvoorbeeld **occupancy-quickstart** gebruiken voor het configureren en inrichten van een [ruimtelijke informatiegrafiek](concepts-objectmodel-spatialgraph.md#digital-twins-object-models). Deze grafiek is de digitale kopie van uw fysieke ruimten en de resources in die ruimten. Hiervoor wordt een [objectmodel](concepts-objectmodel-spatialgraph.md#digital-twins-object-models) gebruikt waarin objecten voor een slim gebouw worden gedefinieerd. Ga voor een volledige lijst van objecten en REST-API's van Digital Twins naar [deze REST API-documentatie](https://docs.westcentralus.azuresmartspaces.net/management/swagger) of de URL van de Beheer API die is gemaakt voor uw [exemplaar](#deploy-digital-twins).
 
    Als u de voorbeeld-app wilt verkennen om te zien hoe deze communiceert met uw exemplaar van Digital Twins, kunt u beginnen met de map **src\actions**. De bestanden in deze map implementeren de opdrachten die u in deze zelfstudies gaat gebruiken:
     - Het bestand **provisionSample.cs** laat zien hoe u de ruimtelijke grafiek kunt inrichten.
@@ -101,17 +97,15 @@ Open het bestand **digital-twins-samples-csharp\digital-twins-samples.code-works
     ```
 
 1. Open in Visual Studio Code het bestand [appSettings.json](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/appSettings.json) van het project **occupancy-quickstart**. Werk de volgende waarden bij:
-   * **ClientId**: voer de toepassings-id van uw Azure AD-app-registratie in. U hebt deze id genoteerd in de sectie voor het [instellen van app-machtigingen](#permissions).
-   * **Tenant**: voer de map-id van uw [Azure AD-tenant](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) in. U hebt deze id ook genoteerd in de sectie voor het [instellen van app-machtigingen](#permissions).
-   * **BaseUrl**: voer de URL van uw exemplaar van Digital Twins in. Hiertoe vervangt u de tijdelijke aanduidingen in deze URL door de waarden voor uw exemplaar: `https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/api/v1.0/`. U kunt deze URL ook verkrijgen door de URL van de Beheer API uit [de implementatiesectie](#deploy) te wijzigen. Vervang **swagger/** door **api/v1.0/** .
+   * **ClientId**: voer de toepassings-id van uw Azure AD-app-registratie in. U hebt deze id genoteerd in de sectie voor het [instellen van app-machtigingen](#grant-permissions-to-your-app).
+   * **Tenant**: voer de map-id van uw [Azure AD-tenant](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) in. U hebt deze id ook genoteerd in de sectie voor het [instellen van app-machtigingen](#grant-permissions-to-your-app).
+   * **BaseUrl**: voer de URL van uw exemplaar van Digital Twins in. Hiertoe vervangt u de tijdelijke aanduidingen in deze URL door de waarden voor uw exemplaar: `https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/api/v1.0/`. U kunt deze URL ook verkrijgen door de URL van de Beheer API uit [de implementatiesectie](#deploy-digital-twins) te wijzigen. Vervang **swagger/** door **api/v1.0/** .
 
 1. Bekijk een lijst met functies van Digital Twins die u kunt verkennen met behulp van het voorbeeld. Voer de volgende opdracht uit:
 
     ```cmd/sh
     dotnet run
     ```
-
-<a id="provision-spaces"></a>
 
 ## <a name="understand-the-provisioning-process"></a>Inzicht in het inrichtingsproces
 

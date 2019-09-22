@@ -1,80 +1,78 @@
 ---
-title: Bewerkingen uitvoeren op gegevens - Azure Logic Apps | Microsoft Docs
-description: Converteren, beheren en manipuleren van gegevens-uitvoer en indelingen in Azure Logic Apps
+title: Bewerkingen uitvoeren op gegevens-Azure Logic Apps
+description: Gegevens uitvoer en-indelingen in Azure Logic Apps converteren, beheren en bewerken
 services: logic-apps
 ms.service: logic-apps
+ms.suite: integration
 author: ecfan
 ms.author: estfan
-manager: jeconnoc
-ms.topic: article
-ms.date: 07/30/2018
+manager: carmonm
 ms.reviewer: klam, LADocs
-ms.suite: integration
-ms.openlocfilehash: 93c24f88fcd6a002493933ef71c5c80bd2ff8c10
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.topic: article
+ms.date: 09/20/2019
+ms.openlocfilehash: 1b0a7473f1cdfb6aa3533b261979da7c18605a16
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67206201"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71179588"
 ---
-# <a name="perform-data-operations-in-azure-logic-apps"></a>Gegevensbewerkingen uitvoeren in Azure Logic Apps
+# <a name="perform-data-operations-in-azure-logic-apps"></a>Gegevens bewerkingen uitvoeren in Azure Logic Apps
 
-Dit artikel wordt beschreven hoe u kunt werken met gegevens in uw logische apps door het toevoegen van acties voor deze taken en meer:
+In dit artikel wordt beschreven hoe u kunt werken met gegevens in logische apps door acties toe te voegen voor deze taken en meer:
 
-* Maak tabellen vanuit matrices.
-* Maken van matrices van andere matrices op basis van een voorwaarde.
-* Gebruiksvriendelijke tokens van eigenschappen voor JavaScript Object Notation (JSON)-object maken zodat u deze eigenschappen in uw werkstroom gebruiken kunt.
+* Tabellen maken op basis van matrices.
+* Matrices maken op basis van een voor waarde van andere matrices.
+* Maak gebruikers vriendelijke tokens van JavaScript Object Notation (JSON)-object eigenschappen, zodat u deze eigenschappen eenvoudig kunt gebruiken in uw werk stroom.
 
-Als u de actie die u hier niet kunt vinden, kunt u bladeren door de vele verschillende [functies voor het bewerken van gegevens](../logic-apps/workflow-definition-language-functions-reference.md) die Logic Apps biedt. 
+Als u hier niet de gewenste actie vindt, kunt u bladeren door de vele verschillende [functies voor gegevens manipulatie](../logic-apps/workflow-definition-language-functions-reference.md) die Azure Logic Apps biedt.
 
-Deze tabel bevat een overzicht van de gegevens die bewerkingen u kunt gebruiken en zijn ingedeeld op basis van de bron-gegevenstypen die de operations werken op, maar de beschrijving wordt weergegeven op alfabetische volgorde.
+Deze tabellen zijn een overzicht van de gegevens bewerkingen die u kunt gebruiken en zijn ingedeeld op basis van de brongegevens typen waarmee de bewerkingen werken, maar elke beschrijving wordt alfabetisch weer gegeven.
 
-**Matrix-acties** 
+**Matrix acties** 
 
-Deze acties kunnen u werken met gegevens in matrices.
+Deze acties helpen u bij het werken met gegevens in matrices.
 
-| Bewerking | Description | 
-|--------|-------------| 
-| [**CSV-tabel maken**](#create-csv-table-action) | Een door komma's gescheiden waarden (CSV)-tabel maken van een matrix. | 
-| [**HTML-tabel maken**](#create-html-table-action) | Een HTML-tabel maken van een matrix. | 
-| [**Matrix filteren**](#filter-array-action) | Maak een subset van de matrix van een matrix op basis van het opgegeven filter of een voorwaarde. | 
-| [**Join**](#join-action) | Maken van een tekenreeks van de items in een matrix en scheiden van elk item met het opgegeven teken. | 
-| [**Selecteer**](#select-action) | Een matrix van de opgegeven eigenschappen voor alle items in een andere matrix maken. | 
+| Action | Description |
+|--------|-------------|
+| [**CSV-tabel maken**](#create-csv-table-action) | Een tabel met door komma's gescheiden waarden (CSV) maken op basis van een matrix. |
+| [**HTML-tabel maken**](#create-html-table-action) | Een HTML-tabel maken op basis van een matrix. |
+| [**Matrix filteren**](#filter-array-action) | Maak een matrix subset van een matrix op basis van het opgegeven filter of voor waarde. |
+| [**Join**](#join-action) | Maak een teken reeks van alle items in een matrix en scheid elk item met het opgegeven teken. |
+| [**Uitgeschakeld**](#select-action) | Een matrix maken op basis van de opgegeven eigenschappen voor alle items in een andere matrix. |
 ||| 
 
 **JSON-acties**
 
-Deze acties kunnen u werken met gegevens in JavaScript Object Notation (JSON)-indeling.
+Deze acties helpen u bij het werken met gegevens in de indeling van JavaScript Object Notation (JSON).
 
-| Bewerking | Description | 
-|--------|-------------| 
-| [**Opstellen**](#compose-action) | Een bericht of een tekenreeks, maken van meerdere invoergegevens die verschillende soorten gegevens kunnen hebben. U kunt vervolgens deze tekenreeks als een enkel invoer, in plaats van herhaaldelijk de dezelfde invoer gebruiken. U kunt bijvoorbeeld een enkel JSON-bericht maken van verschillende invoer. | 
-| [**JSON parseren**](#parse-json-action) | Gebruiksvriendelijke gegevenstokens aanmaken voor eigenschappen in JSON-inhoud zodat u de eigenschappen eenvoudiger in uw logische apps gebruiken kunt. | 
-||| 
+| Action | Description |
+|--------|-------------|
+| [**Compose**](#compose-action) | Maak een bericht of teken reeks van meerdere invoer die verschillende gegevens typen kan hebben. U kunt deze teken reeks vervolgens als één invoer gebruiken, in plaats van dezelfde invoer herhaaldelijk in te voeren. U kunt bijvoorbeeld één JSON-bericht maken van verschillende invoer. |
+| [**JSON parseren**](#parse-json-action) | Maak gebruikers vriendelijke gegevens tokens voor eigenschappen in JSON-inhoud zodat u de eigenschappen in uw Logic apps gemakkelijker kunt gebruiken. |
+|||
 
-Zie voor het maken van meer complexe JSON-transformaties [uitvoeren JSON-transformaties met Liquid sjablonen geavanceerde](../logic-apps/logic-apps-enterprise-integration-liquid-transform.md).
+Zie [Geavanceerde JSON-trans formaties uitvoeren met vloeistof sjablonen](../logic-apps/logic-apps-enterprise-integration-liquid-transform.md)als u complexere JSON-trans formaties wilt maken.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u wilt de voorbeelden in dit artikel volgen, moet u deze items:
+* Een Azure-abonnement. Als u nog geen abonnement hebt, [meld u dan aan voor een gratis Azure-account](https://azure.microsoft.com/free/).
 
-* Een Azure-abonnement. Als u een Azure-abonnement nog geen <a href="https://azure.microsoft.com/free/" target="_blank">zich aanmelden voor een gratis Azure-account</a>.
+* De logische app waar u de bewerking nodig hebt voor het werken met gegevens
 
-* De logische app waar u de bewerking voor het werken met gegevens nodig hebt 
-
-  Als u geen ervaring met logische apps, raadpleegt u [wat is Azure Logic Apps](../logic-apps/logic-apps-overview.md) en [Quick Start: Maak uw eerste logische app](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+  Als u geen ervaring hebt met Logic apps, raadpleegt u [Wat is Azure Logic apps?](../logic-apps/logic-apps-overview.md) en [Quick Start: Maak uw eerste logische app](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
 * Een [trigger](../logic-apps/logic-apps-overview.md#logic-app-concepts) als de eerste stap in uw logische app 
 
-  Gegevensbewerkingen zijn alleen beschikbaar als acties, dus voordat u kunt deze acties beginnen uw logische app met een trigger en eventuele andere vereiste acties vereist voor het maken van de uitvoer die u wilt opnemen.
+  Gegevens bewerkingen zijn alleen beschikbaar als acties, dus voordat u deze acties kunt gebruiken, start u de logische app met een trigger en neemt u eventuele andere acties op die nodig zijn voor het maken van de gewenste uitvoer.
 
 <a name="compose-action"></a>
 
 ## <a name="compose-action"></a>Actie opstellen
 
-Kan een enkele uitvoer, zoals een JSON-object van meerdere invoergegevens, kunt u de **gegevensbewerkingen - opstellen** actie. Uw invoer kunnen verschillende typen hebben, zoals gehele getallen, Booleaanse waarden, matrices, JSON-objecten en alle andere native typen die ondersteuning voor Azure Logic Apps, bijvoorbeeld binaire gegevens en XML. U kunt de uitvoer vervolgens gebruiken in acties die volgen na de **opstellen** actie. De **opstellen** actie kunt u ook opslaan van de dezelfde invoer herhaaldelijk voeren terwijl u de werkstroom van uw logische app bouwen. 
+Als u één uitvoer wilt maken, zoals een JSON-object van meerdere invoer, kunt u de actie **opstellen** gebruiken. Uw invoer kan verschillende typen hebben, zoals gehele getallen, Booleaanse waarden, matrices, JSON-objecten en andere systeem eigen typen die Azure Logic Apps ondersteunt, bijvoorbeeld binary en XML. U kunt vervolgens de uitvoer gebruiken in acties die volgen na de actie **opstellen** . Met de actie **opstellen** kan ook worden bespaard dat u herhaaldelijk dezelfde invoer hoeft in te voeren terwijl u de werk stroom van de logische app bouwt.
 
-U kunt bijvoorbeeld een JSON-bericht van meerdere variabelen, zoals tekenreeksvariabelen waarin de voornaam en achternaam van mensen en een geheel getal variabele waarin de leeftijd van gebruikers maken. Hier de **opstellen** actie accepteert deze invoer:
+U kunt bijvoorbeeld een JSON-bericht maken op basis van meerdere variabelen, zoals teken reeks variabelen die de voor-en achternamen van personen opslaan, en een variabele met gehele getallen die de leeftijden van mensen opslaat. Hier accepteert de actie **opstellen** de volgende invoer:
 
 `{ "age": <ageVar>, "fullName": "<lastNameVar>, <firstNameVar>" }`
 
@@ -82,493 +80,558 @@ en maakt deze uitvoer:
 
 `{"age":35,"fullName":"Owens,Sophie"}`
 
-Als u een voorbeeld, volg deze stappen met behulp van de ontwerper van logische App. Of, als u liever in het code-editor weergave werkt, kunt u het voorbeeld **opstellen** en **variabele initialiseren** definities van de actie van dit artikel in uw eigen logica-app in de onderliggende werkstroom definitie van: [Voorbeelden van gegevens-bewerking code - opstellen](../logic-apps/logic-apps-data-operations-code-samples.md#compose-action-example) 
+Volg deze stappen met behulp van de ontwerp functie voor logische apps als u een voor beeld wilt uitproberen. Als u liever met de code weergave-editor werkt, kunt u het voor beeld **opstellen** en **variabele** actie definities van dit artikel naar de onderliggende werk stroom definitie van uw eigen logische app kopiëren: [Voor beelden van gegevens bewerkings code-opstellen](../logic-apps/logic-apps-data-operations-code-samples.md#compose-action-example) 
 
-1. In de <a href="https://portal.azure.com" target="_blank">Azure-portal</a> of Visual Studio, open uw logische app in Logic App Designer. 
+1. Open in de [Azure Portal](https://portal.azure.com) of Visual Studio uw logische app in de ontwerp functie voor logische apps.
 
-   In dit voorbeeld wordt de Azure-portal en een logische app met een **terugkeerpatroon** trigger en diverse **variabele initialiseren** acties. 
-   Deze acties worden ingesteld voor het maken van twee tekenreeksvariabelen die en een variabele geheel getal zijn. Wanneer u later de logische app test, kunt u uw app handmatig uitvoeren zonder te wachten op de trigger wordt geactiveerd.
+   In dit voor beeld wordt gebruikgemaakt van de Azure Portal en een logische app met een **terugkeer patroon** en verschillende **variabele acties initialiseren** . Deze acties worden ingesteld voor het maken van twee teken reeks variabelen en een variabele geheel getal. Wanneer u de logische app later test, kunt u uw app hand matig uitvoeren zonder te wachten tot de trigger wordt geactiveerd.
 
-   ![Eerste voorbeeld logische app](./media/logic-apps-perform-data-operations/sample-starting-logic-app-compose-action.png)
+   ![Voorbeeld logische app starten](./media/logic-apps-perform-data-operations/sample-starting-logic-app-compose-action.png)
 
-2. In uw logische app waar u wilt maken van de uitvoer, een van deze stappen te volgen: 
+1. Voer een van de volgende stappen uit in uw logische app waar u de uitvoer wilt maken: 
 
-   * Als u wilt een actie toevoegen onder de laatste stap, kies **nieuwe stap** > **een actie toevoegen**.
+   * Selecteer **nieuwe stap**om een actie toe te voegen onder de laatste stap.
 
      ![Actie toevoegen](./media/logic-apps-perform-data-operations/add-compose-action.png)
 
-   * Als u wilt toevoegen een actie tussen fasen, u de muisaanwijzer over het maken van verbinding pijl, zodat het plusteken (+) wordt weergegeven. 
-   Kies het plusteken en selecteer vervolgens **een actie toevoegen**.
+   * Als u een actie tussen stappen wilt toevoegen, plaatst u de muis aanwijzer op de verbindings pijl zodat **+** het plus teken () wordt weer gegeven. Selecteer het plus teken en selecteer vervolgens **een actie toevoegen**.
 
-3. Typ 'opstellen' als filter in het zoekvak. Selecteer deze actie uit de lijst met acties: **Opstellen**
+1. Voer`compose` onder **Kies een actie**in het zoekvak in als uw filter. Selecteer in de lijst acties de actie **opstellen** .
 
-   ![Selecteer de actie 'Opstellen'](./media/logic-apps-perform-data-operations/select-compose-action.png)
+   ![Actie ' opstellen ' selecteren](./media/logic-apps-perform-data-operations/select-compose-action.png)
 
-4. In de **invoer** geeft u de invoer die u wilt gebruiken voor het maken van de uitvoer. 
+1. Geef in het vak **invoer** de gewenste invoer op voor het maken van de uitvoer.
 
-   Voor dit voorbeeld, wanneer u klikt u in de **invoer** vak de lijst met dynamische inhoud wordt weergegeven, zodat u de eerder gemaakte variabelen kunt selecteren:
+   Voor dit voor beeld wordt de lijst met dynamische inhoud weer gegeven wanneer u in het vak **invoer** klikt, zodat u de eerder gemaakte variabelen kunt selecteren:
 
-   ![Invoer voor het opstellen van selecteren](./media/logic-apps-perform-data-operations/configure-compose-action.png)
+   ![Invoer selecteren om samen te stellen](./media/logic-apps-perform-data-operations/configure-compose-action.png)
 
-   Hier volgt de voltooide voorbeeld **opstellen** actie: 
+   Dit is de voltooide voorbeeld actie voor het **opstellen** : 
 
-   ![Actie voltooid 'Opstellen'](./media/logic-apps-perform-data-operations/finished-compose-action.png)
+   ![De actie ' opstellen voltooid '](./media/logic-apps-perform-data-operations/finished-compose-action.png)
 
-5. Sla uw logische app op. Kies **Opslaan** op de werkbalk van de ontwerper.
+1. Sla uw logische app op. Selecteer **Opslaan**op de werk balk van de ontwerp functie.
 
-Zie voor meer informatie over deze actie in de onderliggende werkstroomdefinitie, de [actie opstellen](../logic-apps/logic-apps-workflow-actions-triggers.md#compose-action). 
+Zie voor meer informatie over deze actie in uw onderliggende werk stroom definitie de [actie opstellen](../logic-apps/logic-apps-workflow-actions-triggers.md#compose-action).
 
 ### <a name="test-your-logic-app"></a>Uw logische app testen
 
-Om te bevestigen of de **opstellen** actie wordt gemaakt van de verwachte resultaten, Stuur uzelf een melding met de uitvoer van de **opstellen** actie.
+Als u wilt controleren of met de actie **opstellen** de verwachte resultaten worden gemaakt, stuurt u een melding die uitvoer van de actie **opstellen** bevat.
 
-1. In uw logische app, een actie toevoegen die u de resultaten van verzenden kunt de **opstellen** actie.
+1. Voeg in uw logische app een actie toe die u de resultaten van de actie **opstellen** kan sturen.
 
-2. In deze actie, klikt u op elke locatie die u wilt dat de resultaten worden weergegeven. Wanneer de lijst met dynamische inhoud wordt geopend, onder de **opstellen** actie, selecteer **uitvoer**. 
+1. Klik in die actie op een wille keurige plaats waar u de resultaten wilt weer geven. Wanneer de lijst met dynamische inhoud wordt geopend, selecteert u onder de actie **opstellen** de optie **uitvoer**.
 
-   In dit voorbeeld wordt de **Office 365 Outlook - een e-mail verzenden** actie en bevat de **uitvoer** velden in de hoofdtekst van het e-mailbericht en het onderwerp:
+   Dit voor beeld maakt gebruik van de actie **een E-mail verzenden** en bevat de **uitvoer** velden in de hoofd tekst van de e-mail en het onderwerp:
 
-   ![De velden "Uitvoeren" in de actie 'Een e-mail verzenden'](./media/logic-apps-perform-data-operations/send-email-compose-action.png)
+   ![Uitvoer velden in de actie ' een e-mail verzenden '](./media/logic-apps-perform-data-operations/send-email-compose-action.png)
 
-3. Nu uitvoeren uw logische app handmatig. Kies op de werkbalk van de ontwerper **uitvoeren**. 
+1. Voer nu de logische app hand matig uit. Selecteer **uitvoeren**op de werk balk van de ontwerp functie.
 
-   Op basis van de e-mailconnector die u hebt gebruikt, zijn de resultaten die u krijgt hier:
+   Op basis van de e-mail connector die u hebt gebruikt, zijn dit de resultaten die u krijgt:
 
-   ![Stuur een e-mail met resultaten van de actie 'Opstellen'](./media/logic-apps-perform-data-operations/compose-email-results.png)
+   ![E-mail met actie resultaten voor opstellen](./media/logic-apps-perform-data-operations/compose-email-results.png)
 
 <a name="create-csv-table-action"></a>
 
 ## <a name="create-csv-table-action"></a>Actie CSV-tabel maken
 
-Gebruik voor het maken van een tabel met door komma's gescheiden waarden (CSV) met de eigenschappen en waarden van JavaScript Object Notation (JSON)-objecten in een matrix de **gegevensbewerkingen - CSV-tabel maken** actie. U kunt vervolgens de resulterende tabel in de acties die volgen op de **CSV-tabel maken** actie. 
+Gebruik de actie **CSV-tabel maken** om een tabel met door komma's gescheiden waarden (CSV) met de eigenschappen en waarden van JavaScript object NOTATION (JSON)-objecten in een matrix te maken. U kunt de resulterende tabel vervolgens gebruiken in acties die volgen op de actie **CSV-tabel maken** .
 
-Als u liever in het code-editor weergave werkt, kunt u het voorbeeld **CSV-tabel maken** en **variabele initialiseren** definities van de actie van dit artikel in uw eigen logica-app in de onderliggende werkstroom definitie van: [Voorbeelden van gegevens-bewerking code - CSV-tabel maken](../logic-apps/logic-apps-data-operations-code-samples.md#create-csv-table-action-example) 
+Als u liever met de code weergave-editor werkt, kunt u het voor beeld voor het **maken van CSV-tabel** en het **initialiseren van variabele** actie definities vanuit dit artikel in de onderliggende werk stroom definitie van uw eigen logische app kopiëren: [Voor beelden van gegevens bewerkings code-CSV-tabel maken](../logic-apps/logic-apps-data-operations-code-samples.md#create-csv-table-action-example)
 
-1. In de <a href="https://portal.azure.com" target="_blank">Azure-portal</a> of Visual Studio, open uw logische app in Logic App Designer. 
+1. Open in de [Azure Portal](https://portal.azure.com) of Visual Studio uw logische app in de ontwerp functie voor logische apps.
 
-   In dit voorbeeld wordt de Azure-portal en een logische app met een **terugkeerpatroon** trigger en een **variabele initialiseren** actie. 
-   De actie is ingesteld voor het maken van een variabele waarvan de eerste waarde is een matrix met enkele eigenschappen en waarden in de JSON-indeling. 
-   Wanneer u later de logische app test, kunt u uw app handmatig uitvoeren zonder te wachten op de trigger wordt geactiveerd.
+   In dit voor beeld wordt gebruikgemaakt van de Azure Portal en een logische app met een **terugkeer patroon** trigger en een actie voor **het initialiseren van een variabele** . De actie is ingesteld voor het maken van een variabele waarvan de begin waarde een matrix is met een aantal eigenschappen en waarden in de JSON-indeling. Wanneer u de logische app later test, kunt u uw app hand matig uitvoeren zonder te wachten tot de trigger wordt geactiveerd.
 
-   ![Eerste voorbeeld logische app](./media/logic-apps-perform-data-operations/sample-starting-logic-app-create-table-action.png)
+   ![Voorbeeld logische app starten](./media/logic-apps-perform-data-operations/sample-starting-logic-app-create-table-action.png)
 
-2. In uw logische app waar u de CSV-tabel maken, een van deze stappen te volgen: 
+1. Voer een van de volgende stappen uit in uw logische app waar u de CSV-tabel wilt maken: 
 
-   * Als u wilt een actie toevoegen onder de laatste stap, kies **nieuwe stap** > **een actie toevoegen**.
+   * Selecteer **nieuwe stap**om een actie toe te voegen onder de laatste stap.
 
      ![Actie toevoegen](./media/logic-apps-perform-data-operations/add-create-table-action.png)
 
-   * Als u wilt toevoegen een actie tussen fasen, u de muisaanwijzer over het maken van verbinding pijl, zodat het plusteken (+) wordt weergegeven. 
-   Kies het plusteken en selecteer vervolgens **een actie toevoegen**.
+   * Als u een actie tussen stappen wilt toevoegen, plaatst u de muis aanwijzer op de verbindings pijl zodat **+** het plus teken () wordt weer gegeven. Selecteer het plus teken en selecteer vervolgens **een actie toevoegen**.
 
-3. Voer 'csv-tabel maken' als filter in het zoekvak in. Selecteer deze actie uit de lijst met acties: **CSV-tabel maken**
+1. Voer`create csv table` onder **Kies een actie**in het zoekvak in als uw filter. Selecteer in de lijst acties de actie **CSV-tabel maken** .
 
-   ![Selecteer ' maken CSV tabel "actie](./media/logic-apps-perform-data-operations/select-create-csv-table-action.png)
+   ![Selecteer de actie CSV-tabel maken](./media/logic-apps-perform-data-operations/select-create-csv-table-action.png)
 
-4. In de **van** Geef de ingevoerde matrix of expressie die u wilt gebruiken voor het maken van de tabel. 
+1. Geef in het vak **van** de gewenste matrix of expressie op voor het maken van de tabel.
 
-   Voor dit voorbeeld, wanneer u klikt u in de **van** vak de lijst met dynamische inhoud wordt weergegeven, zodat u kunt de eerder gemaakte variabele selecteren:
+   Voor dit voor beeld wordt de lijst met dynamische inhoud weer gegeven wanneer u in het vak **van** klikt, zodat u de eerder gemaakte variabele kunt selecteren:
 
-   ![Matrixuitvoer voor het maken van CSV-tabel selecteren](./media/logic-apps-perform-data-operations/configure-create-csv-table-action.png)
-
-   Hier volgt de voltooide voorbeeld **CSV-tabel maken** actie: 
-
-   ![Voltooid ' maken CSV tabel "actie](./media/logic-apps-perform-data-operations/finished-create-csv-table-action.png)
-
-   Standaard maakt deze actie automatisch de kolommen op basis van de matrixitems. 
-   Kies voor het handmatig maken van de kolomkoppen en de waarden, **geavanceerde opties weergeven**. 
-   Wijzigen zodat alleen de aangepaste waarden **kolommen** naar **aangepaste**. 
-   Als u aangepaste kolomkoppen te bieden, wilt wijzigen **bestaan uit kopteksten** naar **Ja**. 
+   ![Matrix uitvoer selecteren voor het maken van een CSV-tabel](./media/logic-apps-perform-data-operations/configure-create-csv-table-action.png)
 
    > [!TIP]
-   > Gebruik voor het gebruiksvriendelijke tokens voor de eigenschappen in JSON-objecten maken zodat u deze eigenschappen als invoer selecteren kunt de [JSON parseren](#parse-json-action) voordat de **CSV-tabel maken** actie.
+   > Als u gebruikers vriendelijke tokens voor de eigenschappen in JSON-objecten wilt maken, moet u deze eigenschappen als invoer selecteren. Gebruik de [JSON parseren](#parse-json-action) voordat u de actie **CSV-tabel maken** aanroept.
 
-5. Sla uw logische app op. Kies **Opslaan** op de werkbalk van de ontwerper.
+   Hier volgt het voltooide voor beeld van een **CSV-tabel actie maken** : 
 
-Zie voor meer informatie over deze actie in de onderliggende werkstroomdefinitie, de [tabel actie](../logic-apps/logic-apps-workflow-actions-triggers.md#table-action).
+   ![De actie ' maken van CSV-tabel ' is voltooid](./media/logic-apps-perform-data-operations/finished-create-csv-table-action.png)
+
+1. Sla uw logische app op. Selecteer **Opslaan**op de werk balk van de ontwerp functie.
+
+### <a name="customize-table-format"></a>Tabel indeling aanpassen
+
+De eigenschap **Columns** wordt standaard ingesteld om automatisch de tabel kolommen te maken op basis van de matrix items. 
+
+Voer de volgende stappen uit om aangepaste kopteksten en waarden op te geven:
+
+1. Open de lijst met **kolommen** en selecteer **aangepast**.
+
+1. Geef in de eigenschap **header** de aangepaste koptekst op die u in plaats daarvan wilt gebruiken.
+
+1. Geef in de **sleutel** eigenschap de aangepaste waarde op die u wilt gebruiken.
+
+Als u wilt verwijzen naar en bewerken van de waarden uit de matrix, `@item()` kunt u de functie gebruiken in de JSON-definitie van de actie **CSV-tabel maken** .
+
+1. Selecteer de **code weergave**op de werk balk van de ontwerp functie. 
+
+1. Bewerk de `inputs` sectie actie in de code-editor om de tabel uitvoer op de gewenste manier aan te passen.
+
+In dit voor beeld worden alleen de kolom waarden en niet de kopteksten van de `columns` matrix opgehaald door de eigenschap in te stellen op een lege waarde en de `header` verwijzing naar elke `value` eigenschap te verwijderen:
+
+```json
+"Create_CSV_table": {
+   "inputs": {
+      "columns": [
+         { 
+            "header": "",
+            "value": "@item()?['Description']"
+         },
+         { 
+            "header": "",
+            "value": "@item()?['Product_ID']"
+         }
+      ],
+      "format": "CSV",
+      "from": "@variables('myJSONArray')"
+   }
+}
+```
+
+Dit is het resultaat dat in dit voor beeld wordt geretourneerd:
+
+```text
+Results from Create CSV table action:
+
+Apples,1
+Oranges,2
+```
+
+In de ontwerp functie wordt de actie **CSV-tabel maken** nu op de volgende manier weer gegeven:
+
+!["CSV-tabel maken zonder kolom koppen](./media/logic-apps-perform-data-operations/create-csv-table-no-column-headers.png)
+
+Zie de [tabel actie](../logic-apps/logic-apps-workflow-actions-triggers.md#table-action)voor meer informatie over deze actie in de onderliggende werk stroom definitie.
 
 ### <a name="test-your-logic-app"></a>Uw logische app testen
 
-Om te bevestigen of de **CSV-tabel maken** actie wordt gemaakt van de verwachte resultaten, Stuur uzelf een melding met de uitvoer van de **CSV-tabel maken** actie.
+Als u wilt controleren of de actie **CSV-tabel maken** de verwachte resultaten maakt, stuurt u een melding met de uitvoer van de actie **CSV-tabel maken** .
 
-1. In uw logische app, een actie toevoegen die u de resultaten van verzenden kunt de **CSV-tabel maken** actie.
+1. Voeg in uw logische app een actie toe die u de resultaten kan sturen van de actie **CSV-tabel maken** .
 
-2. In deze actie, klikt u op elke locatie die u wilt dat de resultaten worden weergegeven. Wanneer de lijst met dynamische inhoud wordt geopend, onder de **CSV-tabel maken** actie, selecteer **uitvoer**. 
+1. Klik in die actie op een wille keurige plaats waar u de resultaten wilt weer geven. Wanneer de lijst met dynamische inhoud wordt geopend, selecteert u onder de actie **CSV-tabel maken** de optie **uitvoer**. 
 
-   In dit voorbeeld wordt de **Office 365 Outlook - een e-mail verzenden** actie en bevat de **uitvoer** veld in de hoofdtekst van de e-mail:
+   In dit voor beeld wordt de actie Office 365 Outlook **een E-mail verzenden** gebruikt en wordt het veld **uitvoer** in de hoofd tekst van de e-mail opgenomen:
 
-   ![De velden "Uitvoeren" in de actie 'Een e-mail verzenden'](./media/logic-apps-perform-data-operations/send-email-create-csv-table-action.png)
+   ![Uitvoer velden in de actie ' een e-mail verzenden '](./media/logic-apps-perform-data-operations/send-email-create-csv-table-action.png)
 
-3. Nu uitvoeren uw logische app handmatig. Kies op de werkbalk van de ontwerper **uitvoeren**. 
+1. Voer nu de logische app hand matig uit. Selecteer **uitvoeren**op de werk balk van de ontwerp functie.
 
-   Op basis van de e-mailconnector die u hebt gebruikt, zijn de resultaten die u krijgt hier:
+   Op basis van de e-mail connector die u hebt gebruikt, zijn dit de resultaten die u krijgt:
 
-   ![Een e-mail met ' maken CSV tabel "actie resultaten](./media/logic-apps-perform-data-operations/create-csv-table-email-results.png)
+   ![E-mail bericht met actie resultaten voor het maken van een CSV-tabel](./media/logic-apps-perform-data-operations/create-csv-table-email-results.png)
 
 <a name="create-html-table-action"></a>
 
-## <a name="create-html-table-action"></a>Actie voor HTML-tabel maken
+## <a name="create-html-table-action"></a>Actie HTML-tabel maken
 
-Gebruik voor het maken van een HTML-tabel die de eigenschappen en waarden van JavaScript Object Notation (JSON)-objecten in een matrix heeft de **gegevensbewerkingen - HTML-tabel maken** actie. U kunt vervolgens de resulterende tabel in de acties die volgen op de **HTML-tabel maken** actie.
+Als u een HTML-tabel wilt maken met de eigenschappen en waarden van de JavaScript Object Notation (JSON)-objecten in een matrix, gebruikt u de actie **HTML-tabel maken** . U kunt de resulterende tabel vervolgens gebruiken in acties die volgen op de actie **HTML-tabel maken** .
 
-Als u liever in het code-editor weergave werkt, kunt u het voorbeeld **HTML-tabel maken** en **variabele initialiseren** definities van de actie van dit artikel in uw eigen logica-app in de onderliggende werkstroom definitie van: [Voorbeelden van gegevens-bewerking code - HTML-tabel maken](../logic-apps/logic-apps-data-operations-code-samples.md#create-html-table-action-example) 
+Als u liever met de code weergave-editor werkt, kunt u het voor beeld voor het maken van een **HTML-tabel** en het **initialiseren van variabele** actie definities vanuit dit artikel in de onderliggende werk stroom definitie van uw eigen logische app kopiëren: [Voor beelden van gegevens bewerkings code-HTML-tabel maken](../logic-apps/logic-apps-data-operations-code-samples.md#create-html-table-action-example) 
 
-1. In de <a href="https://portal.azure.com" target="_blank">Azure-portal</a> of Visual Studio, open uw logische app in Logic App Designer. 
+1. Open in de [Azure Portal](https://portal.azure.com) of Visual Studio uw logische app in de ontwerp functie voor logische apps.
 
-   In dit voorbeeld wordt de Azure-portal en een logische app met een **terugkeerpatroon** trigger en een **variabele initialiseren** actie. 
-   De actie is ingesteld voor het maken van een variabele waarvan de eerste waarde is een matrix met enkele eigenschappen en waarden in de JSON-indeling. 
-   Wanneer u later de logische app test, kunt u uw app handmatig uitvoeren zonder te wachten op de trigger wordt geactiveerd.
+   In dit voor beeld wordt gebruikgemaakt van de Azure Portal en een logische app met een **terugkeer patroon** trigger en een actie voor **het initialiseren van een variabele** . De actie is ingesteld voor het maken van een variabele waarvan de begin waarde een matrix is met een aantal eigenschappen en waarden in de JSON-indeling. Wanneer u de logische app later test, kunt u uw app hand matig uitvoeren zonder te wachten tot de trigger wordt geactiveerd.
 
-   ![Eerste voorbeeld logische app](./media/logic-apps-perform-data-operations/sample-starting-logic-app-create-table-action.png)
+   ![Voorbeeld logische app starten](./media/logic-apps-perform-data-operations/sample-starting-logic-app-create-table-action.png)
 
-2. In uw logische app waar u wilt maken van een HTML-tabel, een van deze stappen te volgen: 
+1. Voer een van de volgende stappen uit in uw logische app waar u een HTML-tabel wilt maken:
 
-   * Als u wilt een actie toevoegen onder de laatste stap, kies **nieuwe stap** > **een actie toevoegen**.
+   * Selecteer **nieuwe stap**om een actie toe te voegen onder de laatste stap.
 
      ![Actie toevoegen](./media/logic-apps-perform-data-operations/add-create-table-action.png)
 
-   * Als u wilt toevoegen een actie tussen fasen, u de muisaanwijzer over het maken van verbinding pijl, zodat het plusteken (+) wordt weergegeven. 
-   Kies het plusteken en selecteer vervolgens **een actie toevoegen**.
+   * Als u een actie tussen stappen wilt toevoegen, plaatst u de muis aanwijzer op de verbindings pijl zodat **+** het plus teken () wordt weer gegeven. Selecteer het plus teken en selecteer vervolgens **een actie toevoegen**.
 
-3. Voer 'html-tabel maken' als filter in het zoekvak in. Selecteer deze actie uit de lijst met acties: **HTML-tabel maken**
+1. Voer`create html table` onder **Kies een actie**in het zoekvak in als uw filter. Selecteer in de lijst acties de actie **HTML-tabel maken** .
 
-   ![Selecteer de actie 'Maken HTML-tabel'](./media/logic-apps-perform-data-operations/select-create-html-table-action.png)
+   ![Selecteer een actie voor het maken van een HTML-tabel](./media/logic-apps-perform-data-operations/select-create-html-table-action.png)
 
-4. In de **van** Geef de ingevoerde matrix of expressie die u wilt gebruiken voor het maken van de tabel. 
+1. Geef in het vak **van** de gewenste matrix of expressie op voor het maken van de tabel.
 
-   Voor dit voorbeeld, wanneer u klikt u in de **van** vak de lijst met dynamische inhoud wordt weergegeven, zodat u kunt de eerder gemaakte variabele selecteren:
+   Voor dit voor beeld wordt de lijst met dynamische inhoud weer gegeven wanneer u in het vak **van** klikt, zodat u de eerder gemaakte variabele kunt selecteren:
 
-   ![Matrixuitvoer voor het maken van HTML-tabel selecteren](./media/logic-apps-perform-data-operations/configure-create-html-table-action.png)
-
-   Hier volgt de voltooide voorbeeld **HTML-tabel maken** actie: 
-
-   ![Voltooide "Create HTML-tabel"-actie](./media/logic-apps-perform-data-operations/finished-create-html-table-action.png)
-
-   Standaard maakt deze actie automatisch de kolommen op basis van de matrixitems. 
-   Kies voor het handmatig maken van de kolomkoppen en de waarden, **geavanceerde opties weergeven**. 
-   Wijzigen zodat alleen de aangepaste waarden **kolommen** naar **aangepaste**. 
-   Als u aangepaste kolomkoppen te bieden, wilt wijzigen **bestaan uit kopteksten** naar **Ja**. 
+   ![Matrix uitvoer selecteren voor het maken van een HTML-tabel](./media/logic-apps-perform-data-operations/configure-create-html-table-action.png)
 
    > [!TIP]
-   > Gebruik voor het gebruiksvriendelijke tokens voor de eigenschappen in JSON-objecten maken zodat u deze eigenschappen als invoer selecteren kunt de [JSON parseren](#parse-json-action) voordat de **HTML-tabel maken** actie.
+   > Als u gebruikers vriendelijke tokens voor de eigenschappen in JSON-objecten wilt maken, moet u deze eigenschappen als invoer selecteren. Gebruik de [JSON parseren](#parse-json-action) voordat u de actie **HTML-tabel maken** aanroept.
 
-5. Sla uw logische app op. Kies **Opslaan** op de werkbalk van de ontwerper.
+   Hier volgt het voltooide voor beeld van het maken van een **HTML-tabel** actie:
 
-Zie voor meer informatie over deze actie in de onderliggende werkstroomdefinitie, de [tabel actie](../logic-apps/logic-apps-workflow-actions-triggers.md#table-action).
+   ![De actie ' HTML-tabel maken ' is voltooid](./media/logic-apps-perform-data-operations/finished-create-html-table-action.png)
+
+1. Sla uw logische app op. Selecteer **Opslaan**op de werk balk van de ontwerp functie.
+
+### <a name="customize-table-format"></a>Tabel indeling aanpassen
+
+De eigenschap **Columns** wordt standaard ingesteld om automatisch de tabel kolommen te maken op basis van de matrix items. 
+
+Voer de volgende stappen uit om aangepaste kopteksten en waarden op te geven:
+
+1. Open de lijst met **kolommen** en selecteer **aangepast**.
+
+1. Geef in de eigenschap **header** de aangepaste koptekst op die u in plaats daarvan wilt gebruiken.
+
+1. Geef in de **sleutel** eigenschap de aangepaste waarde op die u wilt gebruiken.
+
+Als u wilt verwijzen naar en bewerken van de waarden uit de matrix, `@item()` kunt u de functie gebruiken in de JSON-definitie van de actie **HTML-tabel maken** .
+
+1. Selecteer de **code weergave**op de werk balk van de ontwerp functie. 
+
+1. Bewerk de `inputs` sectie actie in de code-editor om de tabel uitvoer op de gewenste manier aan te passen.
+
+In dit voor beeld worden alleen de kolom waarden en niet de kopteksten van de `columns` matrix opgehaald door de eigenschap in te stellen op een lege waarde en de `header` verwijzing naar elke `value` eigenschap te verwijderen:
+
+```json
+"Create_HTML_table": {
+   "inputs": {
+      "columns": [
+         { 
+            "header": "",
+            "value": "@item()?['Description']"
+         },
+         { 
+            "header": "",
+            "value": "@item()?['Product_ID']"
+         }
+      ],
+      "format": "HTML",
+      "from": "@variables('myJSONArray')"
+   }
+}
+```
+
+Dit is het resultaat dat in dit voor beeld wordt geretourneerd:
+
+```text
+Results from Create HTML table action:
+
+Apples    1
+Oranges   2
+```
+
+In de ontwerp functie wordt de actie **HTML-tabel maken** nu op de volgende manier weer gegeven:
+
+![' HTML-tabel maken zonder kolom koppen](./media/logic-apps-perform-data-operations/create-html-table-no-column-headers.png)
+
+Zie de [tabel actie](../logic-apps/logic-apps-workflow-actions-triggers.md#table-action)voor meer informatie over deze actie in de onderliggende werk stroom definitie.
 
 ### <a name="test-your-logic-app"></a>Uw logische app testen
 
-Om te bevestigen of de **HTML-tabel maken** actie wordt gemaakt van de verwachte resultaten, Stuur uzelf een melding met de uitvoer van de **HTML-tabel maken** actie.
+Als u wilt controleren of de actie **HTML-tabel maken** de verwachte resultaten genereert, stuurt u een melding die uitvoer bevat van de actie **HTML-tabel maken** .
 
-1. In uw logische app, een actie toevoegen die u de resultaten van verzenden kunt de **HTML-tabel maken** actie.
+1. Voeg in uw logische app een actie toe die u de resultaten kan sturen van de actie **HTML-tabel maken** .
 
-2. In deze actie, klikt u op elke locatie die u wilt dat de resultaten worden weergegeven. Wanneer de lijst met dynamische inhoud wordt geopend, onder de **HTML-tabel maken** actie, selecteer **uitvoer**. 
+1. Klik in die actie op een wille keurige plaats waar u de resultaten wilt weer geven. Wanneer de lijst met dynamische inhoud wordt geopend, selecteert u onder de actie **HTML-tabel maken** de optie **uitvoer**. 
 
-   In dit voorbeeld wordt de **Office 365 Outlook - een e-mail verzenden** actie en bevat de **uitvoer** veld in de hoofdtekst van de e-mail:
+   In dit voor beeld wordt de actie Office 365 Outlook **een E-mail verzenden** gebruikt en wordt het veld **uitvoer** in de hoofd tekst van de e-mail opgenomen:
 
-   ![De velden "Uitvoeren" in de actie 'Een e-mail verzenden'](./media/logic-apps-perform-data-operations/send-email-create-html-table-action.png)
+   ![Uitvoer velden in de actie ' een e-mail verzenden '](./media/logic-apps-perform-data-operations/send-email-create-html-table-action.png)
    
    > [!NOTE]
-   > Wanneer de HTML-tabel uitvoer in een e-mailactie, zorg ervoor dat u in te stellen de **Is HTML** eigenschap **Ja** in het e-mailbericht actie de geavanceerde opties. Op die manier kunnen de e-mailactie correct wordt de HTML-tabel opgemaakt.
+   > Wanneer u de HTML-tabel uitvoer in een e-mail actie opneemt, moet u ervoor zorgen dat u de eigenschap **HTML is** ingesteld op **Ja** in de geavanceerde opties voor de e-mail actie. Op die manier wordt de HTML-tabel op de juiste wijze door de e-mail actie opgemaakt.
 
-3. Nu uitvoeren uw logische app handmatig. Kies op de werkbalk van de ontwerper **uitvoeren**. 
+1. Voer nu de logische app hand matig uit. Selecteer **uitvoeren**op de werk balk van de ontwerp functie.
 
-   Op basis van de e-mailconnector die u hebt gebruikt, zijn de resultaten die u krijgt hier:
+   Op basis van de e-mail connector die u hebt gebruikt, zijn dit de resultaten die u krijgt:
 
-   ![Een e-mail met 'Maken HTML-tabel' actie resultaten](./media/logic-apps-perform-data-operations/create-html-table-email-results.png)
+   ![E-mail bericht met actie resultaten voor het maken van een HTML-tabel](./media/logic-apps-perform-data-operations/create-html-table-email-results.png)
 
 <a name="filter-array-action"></a>
 
-## <a name="filter-array-action"></a>Actie matrix filteren
+## <a name="filter-array-action"></a>Actie filter matrix
 
-Gebruik voor het maken van een kleinere matrix met items die voldoen aan bepaalde criteria voldoen, van een bestaande matrix de **gegevensbewerkingen - matrix filteren** actie. Vervolgens kunt u de gefilterde matrix gebruiken in acties die volgen na de **matrix filteren** actie. 
+Gebruik de actie **matrix filteren** om een kleinere matrix te maken die items bevat die voldoen aan specifieke criteria, van een bestaande matrix. U kunt vervolgens de gefilterde matrix gebruiken in acties die volgen na de actie **filter matrix** .
 
 > [!NOTE]
-> Filtertekst die u in de voorwaarde is hoofdlettergevoelig. Deze actie kan niet ook de indeling of onderdelen van de items in de matrix wijzigen. 
+> Alle filter tekst die u in uw voor waarde gebruikt, is hoofdletter gevoelig. Deze actie kan ook de indeling of onderdelen van items in de matrix niet wijzigen. 
 > 
-> Voor bewerkingen voor het gebruik van de matrixuitvoer van de **matrix filteren** actie, deze acties matrices moeten accepteert als invoer, of mogelijk hebt u de uitvoermatrix omzetten in een andere indeling die compatibel. 
+> Voor acties om de matrix uitvoer van de **filter matrix** actie te gebruiken, moeten die acties matrices accepteren als invoer, of moet u de uitvoer matrix omzetten in een andere compatibele indeling.
 
-Als u liever in het code-editor weergave werkt, kunt u het voorbeeld **matrix filteren** en **variabele initialiseren** definities van de actie van dit artikel in uw eigen logica-app in de onderliggende werkstroom definitie van: [Voorbeelden van gegevens-bewerking code - matrix filteren](../logic-apps/logic-apps-data-operations-code-samples.md#filter-array-action-example) 
+Als u liever met de code weergave-editor werkt, kunt u de voor beeld- **filter matrix** kopiëren en variabele actie definities **initialiseren** vanuit dit artikel in de onderliggende werk stroom definitie van uw eigen logische app: [Voor beelden van gegevens bewerkings code-filter matrix](../logic-apps/logic-apps-data-operations-code-samples.md#filter-array-action-example)
 
-1. In de <a href="https://portal.azure.com" target="_blank">Azure-portal</a> of Visual Studio, open uw logische app in Logic App Designer. 
+1. Open in de [Azure Portal](https://portal.azure.com) of Visual Studio uw logische app in de ontwerp functie voor logische apps.
 
-   In dit voorbeeld wordt de Azure-portal en een logische app met een **terugkeerpatroon** trigger en een **variabele initialiseren** actie. 
-   De actie is ingesteld voor het maken van een variabele waarvan de eerste waarde is een matrix met een voorbeeld van gehele getallen. Wanneer u later de logische app test, kunt u uw app handmatig uitvoeren zonder te wachten op de trigger wordt geactiveerd.
+   In dit voor beeld wordt gebruikgemaakt van de Azure Portal en een logische app met een **terugkeer patroon** trigger en een actie voor **het initialiseren van een variabele** . De actie is ingesteld voor het maken van een variabele waarvan de begin waarde een matrix is met een aantal voor beelden van gehele getallen. Wanneer u de logische app later test, kunt u uw app hand matig uitvoeren zonder te wachten tot de trigger wordt geactiveerd.
 
    > [!NOTE]
-   > Hoewel dit voorbeeld wordt een eenvoudige integerArray gebruikt, kan deze actie is vooral handig voor JSON-object matrices waar u kunt filteren op basis van de eigenschappen en waarden van de objecten.
+   > Hoewel in dit voor beeld een eenvoudige matrix met gehele getallen wordt gebruikt, is deze actie vooral nuttig voor JSON-object matrices, waar u kunt filteren op basis van de eigenschappen en waarden van de objecten.
 
-   ![Eerste voorbeeld logische app](./media/logic-apps-perform-data-operations/sample-starting-logic-app-filter-array-action.png)
+   ![Voorbeeld logische app starten](./media/logic-apps-perform-data-operations/sample-starting-logic-app-filter-array-action.png)
 
-2. In uw logische app waar u de gefilterde matrix maken, een van deze stappen te volgen: 
+1. Voer een van de volgende stappen uit in uw logische app waar u de gefilterde matrix wilt maken: 
 
-   * Als u wilt een actie toevoegen onder de laatste stap, kies **nieuwe stap** > **een actie toevoegen**.
+   * Selecteer **nieuwe stap**om een actie toe te voegen onder de laatste stap.
 
      ![Actie toevoegen](./media/logic-apps-perform-data-operations/add-filter-array-action.png)
 
-   * Als u wilt toevoegen een actie tussen fasen, u de muisaanwijzer over het maken van verbinding pijl, zodat het plusteken (+) wordt weergegeven. 
-   Kies het plusteken en selecteer vervolgens **een actie toevoegen**.
+   * Als u een actie tussen stappen wilt toevoegen, plaatst u de muis aanwijzer op de verbindings pijl zodat **+** het plus teken () wordt weer gegeven. Selecteer het plus teken en selecteer vervolgens **een actie toevoegen**.
 
-3. Typ 'matrix filteren' als filter in het zoekvak. Selecteer deze actie uit de lijst met acties: **Matrix filteren**
+1. Voer `filter array` in het zoekvak in als uw filter. Selecteer in de lijst acties de actie **matrix filteren** .
 
-   ![Selecteer de actie 'Matrix filteren'](./media/logic-apps-perform-data-operations/select-filter-array-action.png)
+   ![Selecteer de actie filter matrix](./media/logic-apps-perform-data-operations/select-filter-array-action.png)
 
-4. In de **van** Geef de ingevoerde matrix of expressie die u wilt filteren. 
+1. Geef in het vak **van** de matrix of expressie op die u wilt filteren.
 
-   Voor dit voorbeeld, wanneer u klikt u in de **van** vak de lijst met dynamische inhoud wordt weergegeven, zodat u kunt de eerder gemaakte variabele selecteren:
+   Voor dit voor beeld wordt de lijst met dynamische inhoud weer gegeven wanneer u in het vak **van** klikt, zodat u de eerder gemaakte variabele kunt selecteren:
 
-   ![Matrixuitvoer voor het maken van gefilterde matrix selecteren](./media/logic-apps-perform-data-operations/configure-filter-array-action.png)
+   ![Matrix uitvoer selecteren voor het maken van een gefilterde matrix](./media/logic-apps-perform-data-operations/configure-filter-array-action.png)
 
-5. Geef op de matrixitems wilt vergelijken, selecteert u de vergelijkingsoperator voor de voorwaarde, en geef de vergelijkingswaarde.
+1. Voor de voor waarde geeft u de matrix items op die u wilt vergelijken, selecteert u de vergelijkings operator en geeft u de vergelijkings waarde op.
 
-   In dit voorbeeld wordt de **RS** functie voor elk item in de matrix tijdens het verkrijgen van toegang tot de **matrix filteren** actie zoekopdrachten voor matrix items waarvan de waarde is groter dan 1:
+   In dit voor beeld `item()` wordt de functie gebruikt voor het openen van elk item in de matrix terwijl de actie **filter matrix** zoekt naar matrix items waarvan de waarde groter is dan een:
    
-   ![Actie 'Matrix filteren' is voltooid](./media/logic-apps-perform-data-operations/finished-filter-array-action.png)
+   ![De actie filter matrix is voltooid](./media/logic-apps-perform-data-operations/finished-filter-array-action.png)
 
-6. Sla uw logische app op. Kies **Opslaan** op de werkbalk van de ontwerper.
+1. Sla uw logische app op. Selecteer **Opslaan**op de werk balk van de ontwerp functie.
 
-Zie voor meer informatie over deze actie in het definitie van de onderliggende werkstroom [queryactie](../logic-apps/logic-apps-workflow-actions-triggers.md#query-action).
+Zie [query actie](../logic-apps/logic-apps-workflow-actions-triggers.md#query-action)voor meer informatie over deze actie in uw onderliggende werk stroom definitie.
 
 ### <a name="test-your-logic-app"></a>Uw logische app testen
 
-Om te bevestigen of **matrix filteren** actie wordt gemaakt van de verwachte resultaten, Stuur uzelf een melding met de uitvoer van de **matrix filteren** actie.
+Als u wilt controleren of met de actie **filter matrix** de verwachte resultaten worden gemaakt, stuurt u een melding die uitvoer van de actie **filter matrix** bevat.
 
-1. In uw logische app, een actie toevoegen die u de resultaten van verzenden kunt de **matrix filteren** actie.
+1. Voeg in uw logische app een actie toe die u de resultaten van de **filter matrix** actie kan sturen.
 
-2. In deze actie, klikt u op elke locatie die u wilt dat de resultaten worden weergegeven. Wanneer de lijst met dynamische inhoud wordt geopend, kiest u **expressie**. Aan de matrixuitvoer van de **matrix filteren** actie, voer deze expressie met de **matrix filteren** de naam van de actie:
+1. Klik in die actie op een wille keurige plaats waar u de resultaten wilt weer geven. Wanneer de lijst met dynamische inhoud wordt geopend, selecteert u **expressie**. Als u de matrix uitvoer wilt ophalen van de **filter matrix** actie, voert u deze expressie in met de actie naam van de **filter matrix** :
 
-   ```
-   @actionBody('Filter_array')
-   ```
+   `@actionBody('Filter_array')`
 
-   In dit voorbeeld wordt de **Office 365 Outlook - een e-mail verzenden** actie en bevat de uitvoer van de **actionBody('Filter_array')** expressie in de hoofdtekst van de e-mail:
+   In dit voor beeld wordt de actie Office 365 Outlook **een E-mail verzenden** gebruikt en worden de uitvoer van de actionBody-expressie **(' Filter_array ')** in de hoofd tekst van de e-mail opgenomen:
 
-   ![Actie wordt de uitvoer met de actie 'Een e-mail verzenden'](./media/logic-apps-perform-data-operations/send-email-filter-array-action.png)
+   ![Acties worden uitgevoerd in de actie ' een e-mail verzenden '](./media/logic-apps-perform-data-operations/send-email-filter-array-action.png)
 
-3. Nu uitvoeren uw logische app handmatig. Kies op de werkbalk van de ontwerper **uitvoeren**. 
+1. Voer nu de logische app hand matig uit. Selecteer **uitvoeren**op de werk balk van de ontwerp functie.
 
-   Op basis van de e-mailconnector die u hebt gebruikt, zijn de resultaten die u krijgt hier:
+   Op basis van de e-mail connector die u hebt gebruikt, zijn dit de resultaten die u krijgt:
 
-   ![Stuur een e-mail met resultaten van de actie 'Matrix filteren'](./media/logic-apps-perform-data-operations/filter-array-email-results.png)
+   ![E-mail bericht met actie resultaten van filter matrix](./media/logic-apps-perform-data-operations/filter-array-email-results.png)
 
 <a name="join-action"></a>
 
-## <a name="join-action"></a>Actie toevoegen
+## <a name="join-action"></a>Actie samen voegen
 
-Voor het maken van een tekenreeks is die alle items uit een matrix heeft en deze items te scheiden met een specifiek scheidingsteken, gebruikt u de **gegevensbewerkingen - lid worden** actie. U kunt vervolgens de tekenreeks in de acties die volgen na de **Join** actie.
+Als u een teken reeks wilt maken met alle items uit een matrix en deze items wilt scheiden met een specifiek scheidings teken, gebruikt u de actie **toevoegen** . U kunt vervolgens de teken reeks gebruiken in acties die volgen na de actie **toevoegen** .
 
-Als u liever in het code-editor weergave werkt, kunt u het voorbeeld **Join** en **variabele initialiseren** definities van de actie van dit artikel in uw eigen logica-app in de onderliggende werkstroom-definitie: [Voorbeelden van gegevens-bewerking code - Join](../logic-apps/logic-apps-data-operations-code-samples.md#join-action-example) 
+Als u liever aan de slag gaat met de code weergave-editor, kunt u het voor beeld **koppelen** en variabele actie definities **initialiseren** vanuit dit artikel in de onderliggende werk stroom definitie van uw eigen logische app: [Voor beelden van gegevens bewerkings code-samen voegen](../logic-apps/logic-apps-data-operations-code-samples.md#join-action-example)
 
-1. In de <a href="https://portal.azure.com" target="_blank">Azure-portal</a> of Visual Studio, open uw logische app in Logic App Designer. 
+1. Open in de [Azure Portal](https://portal.azure.com) of Visual Studio uw logische app in de ontwerp functie voor logische apps.
 
-   In dit voorbeeld wordt de Azure-portal en een logische app met een **terugkeerpatroon** trigger en een **variabele initialiseren** actie. 
-   Deze actie is ingesteld voor het maken van een variabele waarvan de eerste waarde is een matrix met een voorbeeld van gehele getallen. 
-   Wanneer u uw logische app hoger test, kunt u uw app handmatig uitvoeren zonder te wachten op de trigger wordt geactiveerd.
+   In dit voor beeld wordt gebruikgemaakt van de Azure Portal en een logische app met een **terugkeer patroon** trigger en een actie voor **het initialiseren van een variabele** . Deze actie is ingesteld voor het maken van een variabele waarvan de begin waarde een matrix is met een aantal voor beelden van gehele getallen. Wanneer u uw logische app op een later tijdstip test, kunt u uw app hand matig uitvoeren zonder te wachten tot de trigger wordt geactiveerd.
 
-   ![Eerste voorbeeld logische app](./media/logic-apps-perform-data-operations/sample-starting-logic-app-join-action.png)
+   ![Voorbeeld logische app starten](./media/logic-apps-perform-data-operations/sample-starting-logic-app-join-action.png)
 
-2. In uw logische app waar u wilt maken van de tekenreeks in een matrix, een van deze stappen te volgen: 
+1. Voer een van de volgende stappen uit in uw logische app waar u de teken reeks uit een matrix wilt maken:
 
-   * Als u wilt een actie toevoegen onder de laatste stap, kies **nieuwe stap** > **een actie toevoegen**.
+   * Selecteer **nieuwe stap**om een actie toe te voegen onder de laatste stap.
 
      ![Actie toevoegen](./media/logic-apps-perform-data-operations/add-join-action.png)
 
-   * Als u wilt toevoegen een actie tussen fasen, u de muisaanwijzer over het maken van verbinding pijl, zodat het plusteken (+) wordt weergegeven. 
-   Kies het plusteken en selecteer vervolgens **een actie toevoegen**.
+   * Als u een actie tussen stappen wilt toevoegen, plaatst u de muis aanwijzer op de verbindings pijl zodat **+** het plus teken () wordt weer gegeven. Selecteer het plus teken en selecteer vervolgens **een actie toevoegen**.
 
-3. Typ 'koppelen' als filter in het zoekvak. Selecteer deze actie uit de lijst met acties: **Koppelen**
+1. Voer `join` in het zoekvak in als uw filter. Selecteer in de lijst acties deze actie: **Koppelen**
 
-   !["Gegevens Operations – Join" actie selecteren](./media/logic-apps-perform-data-operations/select-join-action.png)
+   ![Selecteer actie samen voegen](./media/logic-apps-perform-data-operations/select-join-action.png)
 
-4. In de **van** geeft u de matrix met de items die u wilt toevoegen als een tekenreeks. 
+1. Geef in het vak **van** de matrix op met de items die u wilt samen voegen als een teken reeks.
 
-   Voor dit voorbeeld, wanneer u klikt u in de **van** vak, de lijst met dynamische inhoud die wordt weergegeven, zodat u kunt de eerder gemaakte variabele selecteren:  
+   Voor dit voor beeld, wanneer u in het vak **van** klikt, wordt de lijst met dynamische inhoud weer gegeven, zodat u de eerder gemaakte variabele kunt selecteren:  
 
-   ![Matrixuitvoer voor het maken van de tekenreeks selecteren](./media/logic-apps-perform-data-operations/configure-join-action.png)
+   ![Matrix uitvoer selecteren voor het maken van de teken reeks](./media/logic-apps-perform-data-operations/configure-join-action.png)
 
-5. In de **ontmoet** voert u het teken dat u wilt gebruiken voor het scheiden van elk matrixitem. 
+1. Voer in het vak **samen voegen met** het teken in dat u wilt voor het scheiden van elk matrix item. 
 
-   Dit voorbeeld wordt een dubbele punt (:) als het scheidingsteken.
+   In dit voor beeld wordt een dubbele punt (:) Als het scheidings teken.
 
-   ![Geef het scheidingsteken](./media/logic-apps-perform-data-operations/finished-join-action.png)
+   ![Het scheidings teken opgeven](./media/logic-apps-perform-data-operations/finished-join-action.png)
 
-6. Sla uw logische app op. Kies **Opslaan** op de werkbalk van de ontwerper.
+1. Sla uw logische app op. Selecteer **Opslaan**op de werk balk van de ontwerp functie.
 
-Zie voor meer informatie over deze actie in de onderliggende werkstroomdefinitie, de [Join actie](../logic-apps/logic-apps-workflow-actions-triggers.md#join-action).
+Zie voor meer informatie over deze actie in uw onderliggende werk stroom definitie de [actie toevoegen](../logic-apps/logic-apps-workflow-actions-triggers.md#join-action).
 
 ### <a name="test-your-logic-app"></a>Uw logische app testen
 
-Om te bevestigen of de **Join** actie wordt gemaakt van de verwachte resultaten, Stuur uzelf een melding met de uitvoer van de **Join** actie. 
+Als u wilt controleren of de actie **samen voegen** de verwachte resultaten heeft, stuurt u een melding met uitvoer van de actie **toevoegen** .
 
-1. In uw logische app, een actie toevoegen die u de resultaten van verzenden kunt de **Join** actie.
+1. Voeg in uw logische app een actie toe die u de resultaten van de **deelname** actie kan sturen.
 
-2. In deze actie, klikt u op elke locatie die u wilt dat de resultaten worden weergegeven. Wanneer de lijst met dynamische inhoud wordt geopend, onder de **Join** actie, selecteer **uitvoer**. 
+1. Klik in die actie op een wille keurige plaats waar u de resultaten wilt weer geven. Wanneer de lijst met dynamische inhoud wordt geopend, selecteert u onder de actie **toevoegen** de optie **uitvoer**. 
 
-   In dit voorbeeld wordt de **Office 365 Outlook - een e-mail verzenden** actie en bevat de **uitvoer** veld in de hoofdtekst van de e-mail:
+   In dit voor beeld wordt de actie Office 365 Outlook **een E-mail verzenden** gebruikt en wordt het veld **uitvoer** in de hoofd tekst van de e-mail opgenomen:
 
-   ![De velden "Uitvoeren" in de actie 'Een e-mail verzenden'](./media/logic-apps-perform-data-operations/send-email-join-action.png)
+   ![Uitvoer velden in de actie ' een e-mail verzenden '](./media/logic-apps-perform-data-operations/send-email-join-action.png)
 
-3. Nu uitvoeren uw logische app handmatig. Kies op de werkbalk van de ontwerper **uitvoeren**. 
+1. Voer nu de logische app hand matig uit. Selecteer **uitvoeren**op de werk balk van de ontwerp functie.
 
-   Op basis van de e-mailconnector die u hebt gebruikt, zijn de resultaten die u krijgt hier:
+   Op basis van de e-mail connector die u hebt gebruikt, zijn dit de resultaten die u krijgt:
 
-   ![Een e-mail met 'Koppelen' actie resultaten](./media/logic-apps-perform-data-operations/join-email-results.png)
+   ![E-mail bericht met een koppeling voor de actie resultaten](./media/logic-apps-perform-data-operations/join-email-results.png)
 
 <a name="parse-json-action"></a>
 
-## <a name="parse-json-action"></a>De actie JSON parseren
+## <a name="parse-json-action"></a>JSON-actie parseren
 
-Eigenschappen van verwijzing of toegang in JavaScript Object Notation (JSON) inhoud, u gebruiksvriendelijke velden of -tokens voor deze eigenschappen kunt maken met behulp van de **gegevensbewerkingen - JSON parseren** actie.
-Op die manier kunt u deze eigenschappen uit de lijst met dynamische inhoud wanneer u invoer voor uw logische app opgeeft. Voor deze actie kunt u bieden een JSON-schema of een JSON-schema genereren van uw voorbeeld-JSON-inhoud of de nettolading.
+Als u wilt verwijzen naar of toegang wilt krijgen tot eigenschappen in JavaScript Object Notation (JSON)-inhoud, kunt u gebruikers vriendelijke velden of tokens voor die eigenschappen maken met behulp van de actie **JSON parseren** . Op die manier kunt u die eigenschappen selecteren in de lijst met dynamische inhoud wanneer u invoer opgeeft voor uw logische app. Voor deze actie kunt u een JSON-schema opgeven of een JSON-schema genereren op basis van uw voor beeld-JSON-inhoud of-nettolading.
 
-Als u liever in het code-editor weergave werkt, kunt u het voorbeeld **JSON parseren** en **variabele initialiseren** definities van de actie van dit artikel in uw eigen logica-app in de onderliggende werkstroom-definitie : [Voorbeelden van gegevens-bewerking code - JSON parseren](../logic-apps/logic-apps-data-operations-code-samples.md#parse-json-action-example) 
+Als u liever aan de slag gaat met de code weergave-editor, kunt u het voor beeld- **JSON parseren** en variabele actie definities **initialiseren** vanuit dit artikel in de onderliggende werk stroom definitie van uw eigen logische app: [Voor beelden van gegevens bewerkings code-JSON parseren](../logic-apps/logic-apps-data-operations-code-samples.md#parse-json-action-example)
 
-1. In de <a href="https://portal.azure.com" target="_blank">Azure-portal</a> of Visual Studio, open uw logische app in Logic App Designer. 
+1. Open in de [Azure Portal](https://portal.azure.com) of Visual Studio uw logische app in de ontwerp functie voor logische apps.
 
-   In dit voorbeeld wordt de Azure-portal en een logische app met een **terugkeerpatroon** trigger en een **variabele initialiseren** actie. 
-   De actie is ingesteld voor het maken van een variabele waarvan de eerste waarde is een JSON-object met eigenschappen en waarden. 
-   Wanneer u later de logische app test, kunt u uw app handmatig uitvoeren zonder te wachten op de trigger wordt geactiveerd.
+   In dit voor beeld wordt gebruikgemaakt van de Azure Portal en een logische app met een **terugkeer patroon** trigger en een actie voor **het initialiseren van een variabele** . De actie is ingesteld voor het maken van een variabele waarvan de begin waarde een JSON-object is met eigenschappen en waarden. Wanneer u de logische app later test, kunt u uw app hand matig uitvoeren zonder te wachten tot de trigger wordt geactiveerd.
 
-   ![Eerste voorbeeld logische app](./media/logic-apps-perform-data-operations/sample-starting-logic-app-parse-json-action.png)
+   ![Voorbeeld logische app starten](./media/logic-apps-perform-data-operations/sample-starting-logic-app-parse-json-action.png)
 
-2. In uw logische app waar u de inhoud van de JSON parseren, een van deze stappen te volgen: 
+1. Voer een van de volgende stappen uit in uw logische app waar u de JSON-inhoud wilt parseren:
 
-   * Als u wilt een actie toevoegen onder de laatste stap, kies **nieuwe stap** > **een actie toevoegen**.
+   * Selecteer **nieuwe stap**om een actie toe te voegen onder de laatste stap.
 
      ![Actie toevoegen](./media/logic-apps-perform-data-operations/add-parse-json-action.png)
 
-   * Als u wilt toevoegen een actie tussen fasen, u de muisaanwijzer over het maken van verbinding pijl, zodat het plusteken (+) wordt weergegeven. 
-   Kies het plusteken en selecteer vervolgens **een actie toevoegen**.
+   * Als u een actie tussen stappen wilt toevoegen, plaatst u de muis aanwijzer op de verbindings pijl zodat **+** het plus teken () wordt weer gegeven. Selecteer het plus teken en selecteer vervolgens **een actie toevoegen**.
 
-3. Voer 'json parseren' als filter in het zoekvak. Selecteer deze actie uit de lijst met acties: **JSON parseren**
+1. Voer `parse json` in het zoekvak in als uw filter. Selecteer in de lijst acties de actie **JSON parseren** .
 
-   ![Selecteer de actie 'JSON parseren'](./media/logic-apps-perform-data-operations/select-parse-json-action.png)
+   ![Selecteer de actie JSON parseren](./media/logic-apps-perform-data-operations/select-parse-json-action.png)
 
-4. In de **inhoud** geeft u de JSON-inhoud die u wilt parseren. 
+1. Geef in het vak **inhoud** de JSON-inhoud op die u wilt parseren.
 
-   Voor dit voorbeeld, wanneer u klikt u in de **inhoud** vak de lijst met dynamische inhoud wordt weergegeven, zodat u kunt de eerder gemaakte variabele selecteren:
+   Voor dit voor beeld wordt de lijst met dynamische inhoud weer gegeven wanneer u in het vak **inhoud** klikt, zodat u de eerder gemaakte variabele kunt selecteren:
 
-   ![Selecteer JSON-object voor de actie JSON parseren](./media/logic-apps-perform-data-operations/configure-parse-json-action.png)
+   ![JSON-object selecteren voor het parseren van JSON-actie](./media/logic-apps-perform-data-operations/configure-parse-json-action.png)
 
-5. Voer in het JSON-schema dat beschrijft de JSON-inhoud dat u bent bij het parseren. 
+1. Voer het JSON-schema in dat de JSON-inhoud beschrijft die u wilt parseren.
 
-   In dit voorbeeld wordt hier het JSON-schema:
+   In dit voor beeld is dit het JSON-schema:
 
-   ![Geef op JSON-schema voor de JSON-object dat u wilt parseren](./media/logic-apps-perform-data-operations/provide-schema-parse-json-action.png)
+   ![Geef het JSON-schema op voor het JSON-object dat u wilt parseren](./media/logic-apps-perform-data-operations/provide-schema-parse-json-action.png)
 
-   Als u het schema niet hebt, kunt u dat schema genereren van de JSON-inhoud of *nettolading*, u bent bij het parseren. 
+   Als u het schema niet hebt, kunt u dat schema genereren op basis van de JSON-inhoud, of *Payload*, die u wilt parseren. 
    
-   1. In de **JSON parseren** actie, selecteer **voorbeeldnettolading gebruiken voor het genereren van schema**.
+   1. Selecteer in de actie **JSON parseren** **voorbeeld lading gebruiken om schema te genereren**.
 
-   2. Onder **typt of plakt u een voorbeeld-JSON-nettolading**, geef de JSON-inhoud en kies vervolgens **gedaan**.
+   1. Geef onder **een voor beeld van een JSON-nettolading op of plak hier**de JSON-inhoud op en selecteer vervolgens **gereed**.
 
-      ![Voer de JSON-inhoud voor het genereren van het schema](./media/logic-apps-perform-data-operations/generate-schema-parse-json-action.png)
+      ![De JSON-inhoud invoeren voor het genereren van het schema](./media/logic-apps-perform-data-operations/generate-schema-parse-json-action.png)
 
-6. Sla uw logische app op. Kies **Opslaan** op de werkbalk van de ontwerper.
+1. Sla uw logische app op. Selecteer **Opslaan**op de werk balk van de ontwerp functie.
 
-Zie voor meer informatie over deze actie in het definitie van de onderliggende werkstroom [actie JSON parseren](../logic-apps/logic-apps-workflow-actions-triggers.md).
+Zie [JSON-actie parseren](../logic-apps/logic-apps-workflow-actions-triggers.md)voor meer informatie over deze actie in uw onderliggende werk stroom definitie.
 
 ### <a name="test-your-logic-app"></a>Uw logische app testen
 
-Om te bevestigen of de **JSON parseren** actie wordt gemaakt van de verwachte resultaten, Stuur uzelf een melding met de uitvoer van de **JSON parseren** actie.
+Als u wilt controleren of met de actie **JSON parseren** de verwachte resultaten worden gemaakt, stuurt u een melding die uitvoer van de JSON-actie **parseren** bevat.
 
-1. In uw logische app, een actie toevoegen die u de resultaten van verzenden kunt de **JSON parseren** actie.
+1. Voeg in uw logische app een actie toe die u de resultaten van de JSON-actie voor **parseren** kan sturen.
 
-2. In deze actie, klikt u op elke locatie die u wilt dat de resultaten worden weergegeven. Wanneer de lijst met dynamische inhoud wordt geopend, onder de **JSON parseren** actie, kunt u nu de eigenschappen van de geparseerde JSON-inhoud selecteren.
+1. Klik in die actie op een wille keurige plaats waar u de resultaten wilt weer geven. Wanneer de lijst met dynamische inhoud wordt geopend, kunt u onder de actie **JSON parseren** nu de eigenschappen van de geparseerde JSON-inhoud selecteren.
 
-   In dit voorbeeld wordt de **Office 365 Outlook - een e-mail verzenden** actie en bevat de **FirstName**, **LastName**, en **e** velden in de hoofdtekst van het e-mailadres:
+   In dit voor beeld wordt de actie Office 365 Outlook **een E-mail verzenden** gebruikt en zijn de velden **FirstName**, **LastName**en **email** opgenomen in de hoofd tekst van het e-mail bericht:
 
-   ![JSON-eigenschappen in de actie 'Een e-mail verzenden'](./media/logic-apps-perform-data-operations/send-email-parse-json-action.png)
+   ![JSON-eigenschappen in de actie ' een e-mail verzenden '](./media/logic-apps-perform-data-operations/send-email-parse-json-action.png)
 
-   Hier volgt de voltooide e-mailactie:
+   Dit is de voltooide e-mail actie:
 
-   ![Voltooide e-mailactie](./media/logic-apps-perform-data-operations/send-email-parse-json-action-2.png)
+   ![Voltooide e-mail actie](./media/logic-apps-perform-data-operations/send-email-parse-json-action-2.png)
 
-3. Nu uitvoeren uw logische app handmatig. Kies op de werkbalk van de ontwerper **uitvoeren**. 
+1. Voer nu de logische app hand matig uit. Selecteer **uitvoeren**op de werk balk van de ontwerp functie. 
 
-   Op basis van de e-mailconnector die u hebt gebruikt, zijn de resultaten die u krijgt hier:
+   Op basis van de e-mail connector die u hebt gebruikt, zijn dit de resultaten die u krijgt:
 
-   ![Een e-mail met 'Koppelen' actie resultaten](./media/logic-apps-perform-data-operations/parse-json-email-results.png)
+   ![E-mail bericht met een koppeling voor de actie resultaten](./media/logic-apps-perform-data-operations/parse-json-email-results.png)
 
 <a name="select-action"></a>
 
 ## <a name="select-action"></a>Actie selecteren
 
-Gebruik voor het maken van een matrix met JSON-objecten die zijn gebouwd op basis van waarden in een bestaande matrix de **gegevensbewerkingen - Selecteer** actie. U kunt bijvoorbeeld een JSON-object voor elke waarde in een matrix met gehele getallen maken door de eigenschappen die elk JSON-object moet hebben en de waarden in de bronmatrix toewijzen aan deze eigenschappen op te geven. En hoewel u de onderdelen in de JSON-objecten wijzigt kunt, heeft de uitvoermatrix altijd hetzelfde aantal items als de bronmatrix.
+Gebruik de actie **selecteren** om een matrix te maken met JSON-objecten die zijn gebouwd op basis van waarden in een bestaande matrix. U kunt bijvoorbeeld een JSON-object maken voor elke waarde in een matrix met gehele getallen door de eigenschappen op te geven die elk JSON-object moeten hebben en hoe de waarden in de bron matrix moeten worden toegewezen aan die eigenschappen. En hoewel u de onderdelen in die JSON-objecten kunt wijzigen, heeft de uitvoer matrix altijd hetzelfde aantal items als de bron matrix.
 
 > [!NOTE]
-> Voor bewerkingen voor het gebruik van de matrixuitvoer van de **Selecteer** actie, deze acties matrices moeten accepteert als invoer, of mogelijk hebt u de uitvoermatrix omzetten in een andere indeling die compatibel. 
+> Voor acties om de matrix uitvoer van de **Select** -actie te gebruiken, moeten die acties matrices accepteren als invoer, of moet u de uitvoer matrix omzetten in een andere compatibele indeling. 
 
-Als u liever in het code-editor weergave werkt, kunt u het voorbeeld **Selecteer** en **variabele initialiseren** definities van de actie van dit artikel in uw eigen logica-app in de onderliggende werkstroom-definitie: [Voorbeelden van gegevens-bewerking code - selecteren](../logic-apps/logic-apps-data-operations-code-samples.md#select-action-example) 
+Als u liever aan de slag gaat met de code weergave-editor, kunt u het voor beeld kopiëren en **variabelen** actie definities van dit artikel **selecteren** in de onderliggende werk stroom definitie van uw eigen logische app: [Voor beelden van code voor gegevens bewerking-selecteren](../logic-apps/logic-apps-data-operations-code-samples.md#select-action-example) 
 
-1. In de <a href="https://portal.azure.com" target="_blank">Azure-portal</a> of Visual Studio, open uw logische app in Logic App Designer. 
+1. Open in de [Azure Portal](https://portal.azure.com) of Visual Studio uw logische app in de ontwerp functie voor logische apps.
 
-   In dit voorbeeld wordt de Azure-portal en een logische app met een **terugkeerpatroon** trigger en een **variabele initialiseren** actie. 
-   De actie is ingesteld voor het maken van een variabele waarvan de eerste waarde is een matrix met een voorbeeld van gehele getallen. 
-   Wanneer u later de logische app test, kunt u uw app handmatig uitvoeren zonder te wachten op de trigger wordt geactiveerd.
+   In dit voor beeld wordt gebruikgemaakt van de Azure Portal en een logische app met een **terugkeer patroon** trigger en een actie voor **het initialiseren van een variabele** . De actie is ingesteld voor het maken van een variabele waarvan de begin waarde een matrix is met een aantal voor beelden van gehele getallen. Wanneer u de logische app later test, kunt u uw app hand matig uitvoeren zonder te wachten tot de trigger wordt geactiveerd.
 
-   ![Eerste voorbeeld logische app](./media/logic-apps-perform-data-operations/sample-starting-logic-app-select-action.png)
+   ![Voorbeeld logische app starten](./media/logic-apps-perform-data-operations/sample-starting-logic-app-select-action.png)
 
-2. In uw logische app waar u wilt maken van de matrix, een van deze stappen te volgen: 
+1. Voer een van de volgende stappen uit in uw logische app waar u de matrix wilt maken: 
 
-   * Als u wilt een actie toevoegen onder de laatste stap, kies **nieuwe stap** > **een actie toevoegen**.
+   * Selecteer **nieuwe stap**om een actie toe te voegen onder de laatste stap.
 
      ![Actie toevoegen](./media/logic-apps-perform-data-operations/add-select-action.png)
 
-   * Als u wilt toevoegen een actie tussen fasen, u de muisaanwijzer over het maken van verbinding pijl, zodat het plusteken (+) wordt weergegeven. 
-   Kies het plusteken en selecteer vervolgens **een actie toevoegen**.
+   * Als u een actie tussen stappen wilt toevoegen, plaatst u de muis aanwijzer op de verbindings pijl zodat **+** het plus teken () wordt weer gegeven. Selecteer het plus teken en selecteer vervolgens **een actie toevoegen**.
 
-3. Typ 'selecteren' als filter in het zoekvak. Selecteer deze actie uit de lijst met acties: **Selecteren**
+1. Selecteer onder **Kies een actie de**optie **ingebouwd**. Voer `select` in het zoekvak in als uw filter. Selecteer in de lijst acties de actie **selecteren** .
 
-   ![Selecteer de actie 'Selecteren'](./media/logic-apps-perform-data-operations/select-select-action.png)
+   ![Selecteer de actie ' selecteren '](./media/logic-apps-perform-data-operations/select-select-action.png)
 
-4. In de **van** , geeft u de bronmatrix die u wilt.
+1. Geef in het vak **van** de gewenste bron matrix op.
 
-   Voor dit voorbeeld, wanneer u klikt u in de **van** vak de lijst met dynamische inhoud wordt weergegeven, zodat u kunt de eerder gemaakte variabele selecteren:
+   Voor dit voor beeld wordt de lijst met dynamische inhoud weer gegeven wanneer u in het vak **van** klikt, zodat u de eerder gemaakte variabele kunt selecteren:
 
-   ![Matrix van de bron selecteren voor de actie selecteren](./media/logic-apps-perform-data-operations/configure-select-action.png)
+   ![Selecteer een bron matrix voor de actie selecteren](./media/logic-apps-perform-data-operations/configure-select-action.png)
 
-5. In de **kaart** linkerkolom van het vak, geef de naam van de eigenschap die u wilt toewijzen van elke waarde in de bronmatrix. Geef een expressie waarmee de waarde die u wilt toewijzen van de eigenschap in de rechterkolom.
+1. Geef in de linkerkolom van de **kaart** de naam op van de eigenschap die u wilt toewijzen aan elke waarde in de bron matrix. Geef in de rechter kolom een expressie op die de waarde vertegenwoordigt die u wilt toewijzen aan de eigenschap.
 
-   In dit voorbeeld geeft 'Product_ID' als de naam van de eigenschap aan elke waarde in de matrix met gehele getallen toewijzen met behulp van de **RS** functie in een expressie die toegang heeft tot elk matrixitem. 
+   In dit voor beeld wordt ' Product_ID ' opgegeven als de naam van de eigenschap voor het toewijzen van elke waarde `item()` in de matrix met gehele getallen door gebruik te maken van de functie in een expressie waarmee elk matrix item wordt geopend. 
 
-   ![Geef de JSON-objecteigenschap en waarden voor de matrix die u wilt maken](./media/logic-apps-perform-data-operations/configure-select-action-2.png)
+   ![De JSON-object eigenschap en-waarden opgeven voor de matrix die u wilt maken](./media/logic-apps-perform-data-operations/configure-select-action-2.png)
 
-   Dit is de actie is voltooid:
+   Dit is de voltooide actie:
 
-   ![Selecteer actie voltooid](./media/logic-apps-perform-data-operations/finished-select-action.png)
+   ![De actie is voltooid](./media/logic-apps-perform-data-operations/finished-select-action.png)
 
-6. Sla uw logische app op. Kies **Opslaan** op de werkbalk van de ontwerper.
+1. Sla uw logische app op. Selecteer **Opslaan**op de werk balk van de ontwerp functie.
 
-Zie voor meer informatie over deze actie in het definitie van de onderliggende werkstroom [actie selecteren](../logic-apps/logic-apps-workflow-actions-triggers.md).
+Zie voor meer informatie over deze actie in uw onderliggende werk stroom definitie [actie selecteren](../logic-apps/logic-apps-workflow-actions-triggers.md).
 
 ### <a name="test-your-logic-app"></a>Uw logische app testen
 
-Om te bevestigen of de **Selecteer** actie wordt gemaakt van de verwachte resultaten, Stuur uzelf een melding met de uitvoer van de **Selecteer** actie.
+Als u wilt controleren of met de actie **Select** de verwachte resultaten worden gemaakt, stuurt u een melding met de uitvoer van de actie **selecteren** .
 
-1. In uw logische app, een actie toevoegen die u de resultaten van verzenden kunt de **Selecteer** actie.
+1. Voeg in uw logische app een actie toe die u de resultaten van de **Select** -actie kan sturen.
 
-2. In deze actie, klikt u op elke locatie die u wilt dat de resultaten worden weergegeven. Wanneer de lijst met dynamische inhoud wordt geopend, kiest u **expressie**. Om op te halen van de matrixuitvoer van de **Selecteer** actie, voer deze expressie met de **Selecteer** de naam van de actie:
+1. Klik in die actie op een wille keurige plaats waar u de resultaten wilt weer geven. Wanneer de lijst met dynamische inhoud wordt geopend, selecteert u **expressie**. Als u de matrix uitvoer wilt ophalen van de actie **selecteren** , voert u deze expressie in met de naam van de actie **selecteren** :
 
-   ```
-   @actionBody('Select')
-   ```
+   `@actionBody('Select')`
 
-   In dit voorbeeld wordt de **Office 365 Outlook - een e-mail verzenden** actie en bevat de uitvoer van de **actionBody('Select')** expressie in de hoofdtekst van de e-mail:
+   In dit voor beeld wordt de actie Office 365 Outlook **een e-mail verzenden** gebruikt en worden de uitvoer `@actionBody('Select')` van de expressie in de hoofd tekst van het e-mail bericht opgenomen:
 
-   ![Actie wordt de uitvoer met de actie 'Een e-mail verzenden'](./media/logic-apps-perform-data-operations/send-email-select-action.png)
+   ![Acties worden uitgevoerd in de actie ' een e-mail verzenden '](./media/logic-apps-perform-data-operations/send-email-select-action.png)
 
-3. Nu uitvoeren uw logische app handmatig. Kies op de werkbalk van de ontwerper **uitvoeren**. 
+1. Voer nu de logische app hand matig uit. Selecteer **uitvoeren**op de werk balk van de ontwerp functie.
 
-   Op basis van de e-mailconnector die u hebt gebruikt, zijn de resultaten die u krijgt hier:
+   Op basis van de e-mail connector die u hebt gebruikt, zijn dit de resultaten die u krijgt:
 
-   ![Een e-mail met de resultaten van de actie 'Selecteren'](./media/logic-apps-perform-data-operations/select-email-results.png)
-
-## <a name="get-support"></a>Ondersteuning krijgen
-
-* Ga naar het [Azure Logic Apps forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps) (Forum voor Azure Logic Apps) als u vragen hebt.
-* Als u ideeën voor functies wilt indienen of erop wilt stemmen, gaat u naar de [website voor feedback van Logic Apps-gebruikers](https://aka.ms/logicapps-wish).
+   ![E-mail bericht met de actie resultaten selecteren](./media/logic-apps-perform-data-operations/select-email-results.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over [Logic Apps-connectors](../connectors/apis-list.md)
+* Meer informatie over [Logic apps connectors](../connectors/apis-list.md)

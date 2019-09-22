@@ -1,19 +1,20 @@
 ---
-title: 'Azure PowerShell-script: Azure Cosmos DB ophalen doorvoer (RU/s) voor Cassandra-API'
-description: 'Azure PowerShell-script: Azure Cosmos DB ophalen doorvoer (RU/s) voor Cassandra-API'
+title: Azure PowerShell script-Azure Cosmos DB door Voer (RU/s) voor Cassandra-API ophalen
+description: Azure PowerShell script-Azure Cosmos DB door Voer (RU/s) voor Cassandra-API ophalen
 author: markjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-cassandra
 ms.topic: sample
 ms.date: 07/03/2019
 ms.author: mjbrown
-ms.openlocfilehash: 4aed55a0c3ae969cf9148e5bf8d6a70a3151f695
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: b2544a3c704318839f0c2b956db4d39e83d08d3f
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67603994"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71179008"
 ---
-# <a name="get-throughput-rus-for-a-keyspace-or-table-for-azure-cosmos-db---cassandra-api"></a>Doorvoer (RU/s) voor een keyspace of een tabel ophalen voor Azure Cosmos DB - Cassandra-API
+# <a name="get-throughput-rus-for-a-keyspace-or-table-for-azure-cosmos-db---cassandra-api"></a>Een door Voer (RU/s) voor een spatie of tabel voor Azure Cosmos DB-Cassandra-API ophalen
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -37,9 +38,9 @@ In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel 
 
 | Opdracht | Opmerkingen |
 |---|---|
-|**Azure Resources**| |
+|**Azure-resources**| |
 | [New-AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | Hiermee maakt u een resource. |
-|**Azure-resourcegroepen**| |
+|**Azure-resource groepen**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Hiermee verwijdert u een resourcegroep met inbegrip van alle geneste resources. |
 |||
 

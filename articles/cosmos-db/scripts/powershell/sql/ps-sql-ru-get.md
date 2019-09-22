@@ -1,19 +1,20 @@
 ---
-title: 'Azure PowerShell-script: Azure Cosmos DB ingerichte doorvoer (RU/s) voor SQL (Core) API ophalen'
-description: 'Azure PowerShell-script: Azure Cosmos DB ingerichte doorvoer (RU/s) voor SQL (Core) API ophalen'
+title: Azure PowerShell script-Azure Cosmos DB ingerichte door Voer (RU/s) voor SQL-API (core)
+description: Azure PowerShell script-Azure Cosmos DB ingerichte door Voer (RU/s) voor SQL-API (core)
 author: markjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: sample
 ms.date: 07/03/2019
 ms.author: mjbrown
-ms.openlocfilehash: 75a8ebbb04fd3cbad9f0a1a3f302b40439adbbcc
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: c7d7f295589d4e3b152016c2b55cfe07355d1cb0
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67602139"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71178773"
 ---
-# <a name="get-the-provisioned-throughput-rus-for-a-database-or-container-for-azure-cosmos-db---sql-core-api"></a>De ingerichte doorvoer (RU/s) voor een database of de container ophalen voor Azure Cosmos DB - SQL (Core) API
+# <a name="get-the-provisioned-throughput-rus-for-a-database-or-container-for-azure-cosmos-db---sql-core-api"></a>De ingerichte door Voer (RU/s) ophalen voor een Data Base of container voor de API van Azure Cosmos DB-SQL (core)
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -37,9 +38,9 @@ In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel 
 
 | Opdracht | Opmerkingen |
 |---|---|
-|**Azure Resources**| |
+|**Azure-resources**| |
 | [New-AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | Hiermee maakt u een resource. |
-|**Azure-resourcegroepen**| |
+|**Azure-resource groepen**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Hiermee verwijdert u een resourcegroep met inbegrip van alle geneste resources. |
 |||
 

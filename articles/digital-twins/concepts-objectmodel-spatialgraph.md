@@ -6,14 +6,14 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 09/17/2019
 ms.author: alinast
-ms.openlocfilehash: 0bb7309ae452b2885be279d1ab38b8467397f2f8
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 37f2afbd9bae4ca6bccc5062515f166687d8913c
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68638492"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71177069"
 ---
 # <a name="understand-digital-twins-object-models-and-spatial-intelligence-graph"></a>Meer informatie over Digital Apparaatdubbels-object modellen en ruimtelijke Intelligence-grafiek
 
@@ -23,9 +23,7 @@ Digital Apparaatdubbels-object modellen beschrijven domein-specifieke concepten,
 
 Met Digital Apparaatdubbels-object modellen en een Ontology op locatie kunt u een _ruimtelijke grafiek_vullen. Ruimtelijke grafieken zijn virtuele voors tellingen van de vele relaties tussen ruimten, apparaten en personen die relevant zijn voor een IoT-oplossing. Dit diagram toont een voor beeld van een ruimtelijke grafiek die gebruikmaakt van de Ontology van een slimme build.
 
-![Digital Apparaatdubbels Spatial Graph built][1]
-
-<a id="model"></a>
+[![Digital Apparaatdubbels Spatial Graph built](media/concepts/digital-twins-spatial-graph-building.png)](media/concepts/digital-twins-spatial-graph-building.png#lightbox)
 
 Het ruimtelijke diagram brengt spaties, apparaten, Sens oren en gebruikers samen. Elk wordt aan elkaar gekoppeld op een manier die de echte wereld modelt. In dit voor beeld heeft de locatie 43 vier etages, elk met veel verschillende gebieden. Gebruikers zijn gekoppeld aan hun werk station en hebben toegang tot delen van de grafiek. Een beheerder heeft de rechten om wijzigingen aan te brengen in de ruimtelijke grafiek, terwijl een bezoeker rechten heeft om bepaalde bouw gegevens te bekijken.
 
@@ -56,8 +54,6 @@ Andere categorieën objecten zijn:
 - **Matchers** zijn objecten die bepalen welke udf's worden uitgevoerd voor een gegeven telemetrie-bericht.
 - **Eind punten** zijn de locaties waar telemetrie-berichten en digitale apparaatdubbels-gebeurtenissen kunnen worden gerouteerd, bijvoorbeeld `Event Hub` `Service Bus`,, en `Event Grid`.
 
-<a id="graph"></a>
-
 ## <a name="spatial-intelligence-graph"></a>Grafiek voor ruimtelijke intelligentie
 
 Ruimtelijke grafiek is het hiërarchische diagram van ruimten, apparaten en personen die in het object model Digital Apparaatdubbels zijn gedefinieerd. De ruimtelijke grafiek ondersteunt overname, filteren, door lopen, schalen en uitbreiden. U kunt uw ruimtelijke grafiek beheren en gebruiken met een verzameling REST-Api's.
@@ -68,7 +64,7 @@ De **grafiek overname**. Overname is van toepassing op de machtigingen en eigens
 
 **Filteren van grafieken**. Filteren wordt gebruikt om de aanvraag resultaten te beperken. U kunt filteren op Id's, naam, typen, subtypen, bovenliggende ruimte en gekoppelde spaties. U kunt ook filteren op sensor gegevens typen, eigenschaps sleutels en waarden, *Bladeren*, *minLevel*, *maxLevel*en andere OData-filter parameters.
 
-De **grafiek**wordt gepasseerd. U kunt de ruimtelijke grafiek passeren door de diepte en breedte. Voor diepte kunt u de grafiek in de bovenste of onderste naar beneden bladeren met behulp van de para meters *Traverse*, *minLevel*en *maxLevel*. Blader door de grafiek om alle knoop punten op hetzelfde niveau rechtstreeks aan een bovenliggende ruimte of een van de afgeleide elementen voor breedte op te halen. Wanneer u een query op een object uitvoert, kunt u alle verwante objecten ophalen die relaties met het object hebben met behulp van de para meter includes van de Get-api's.
+De **grafiek wordt gepasseerd**. U kunt de ruimtelijke grafiek passeren door de diepte en breedte. Voor diepte kunt u de grafiek in de bovenste of onderste naar beneden bladeren met behulp van de para meters *Traverse*, *minLevel*en *maxLevel*. Blader door de grafiek om alle knoop punten op hetzelfde niveau rechtstreeks aan een bovenliggende ruimte of een van de afgeleide elementen voor breedte op te halen. Wanneer u een query op een object uitvoert, kunt u alle verwante objecten ophalen die relaties met het object hebben met behulp van de para meter *includes* van de Get-api's.
 
 **Schaal baarheid van grafieken**. Met Digital Apparaatdubbels wordt de schaal baarheid van grafieken gegarandeerd, zodat deze uw reële werk belastingen kan verwerken. Digital Apparaatdubbels kan worden gebruikt om grote portefeuilles van onroerend goed, infra structuur, apparaten, Sens oren, telemetrie en meer weer te geven.
 
@@ -89,7 +85,7 @@ https://YOUR_INSTANCE_NAME.YOUR_LOCATION.azuresmartspaces.net/management/swagger
 
  De volledige URL-indeling wordt weer gegeven in deze afbeelding.
 
-![Digital Apparaatdubbels Portal Management API][2]
+(![Digital Apparaatdubbels Portal Management API](media/concepts/digital-twins-spatial-graph-management-api-url.png)] (Media/concepten/Digital-Twins-Spatial-Graph-Management-API-URL. png # Lightbox)
 
 Ga naar de preview-versie van Azure Digital Apparaatdubbels Management Api's alvast voor meer informatie over het gebruik van ruimtelijke Intelligence-grafieken.
 
@@ -103,10 +99,6 @@ Alle API-aanroepen moeten worden geverifieerd met behulp van [OAuth](https://doc
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Lees voor meer informatie over de connectiviteit van apparaten en het verzenden van telemetrie-berichten naar Digital Apparaatdubbels de [Azure Digital apparaatdubbels-verbinding en](concepts-device-ingress.md)inkomend telemetrie-apparaten.
+- Lees voor meer informatie over de connectiviteit van apparaten en het verzenden van telemetrie-berichten naar Digital Apparaatdubbels de [Azure Digital apparaatdubbels-verbinding en inkomend telemetrie-apparaten](concepts-device-ingress.md).
 
 - Lees [Azure Digital APPARAATDUBBELS API management en beperkingen](concepts-service-limits.md)voor meer informatie over beperkingen en beperkingen voor beheer-api's.
-
-<!-- Images -->
-[1]: media/concepts/digital-twins-spatial-graph-building.png
-[2]: media/concepts/digital-twins-spatial-graph-management-api-url.png

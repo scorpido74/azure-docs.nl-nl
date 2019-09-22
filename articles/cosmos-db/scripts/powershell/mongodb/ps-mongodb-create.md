@@ -1,19 +1,20 @@
 ---
-title: 'Azure PowerShell-script: Azure Cosmos DB MongoDB-API-database en verzameling maken'
-description: 'Azure PowerShell-script: Azure Cosmos DB MongoDB-API-database en verzameling maken'
+title: 'Azure PowerShell script: Azure Cosmos DB MongoDB API-data base en-verzameling maken'
+description: 'Azure PowerShell script: Azure Cosmos DB MongoDB API-data base en-verzameling maken'
 author: markjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-mongo
 ms.topic: sample
 ms.date: 05/18/2019
 ms.author: mjbrown
-ms.openlocfilehash: c299ca8ea46d8c36f16209e9b5d6b603fa2a1894
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 54fd220978a66081979de456568173a7e2784280
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67602351"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71178910"
 ---
-# <a name="create-a-database-and-collection-for-azure-cosmos-db---mongodb-api"></a>Een database en verzameling voor Azure Cosmos DB - MongoDB-API maken
+# <a name="create-a-database-and-collection-for-azure-cosmos-db---mongodb-api"></a>Een Data Base en verzameling maken voor de Azure Cosmos DB-MongoDB-API
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -37,9 +38,9 @@ In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel 
 
 | Opdracht | Opmerkingen |
 |---|---|
-|**Azure Resources**| |
+|**Azure-resources**| |
 | [New-AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | Hiermee maakt u een resource. |
-|**Azure-resourcegroepen**| |
+|**Azure-resource groepen**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Hiermee verwijdert u een resourcegroep met inbegrip van alle geneste resources. |
 |||
 

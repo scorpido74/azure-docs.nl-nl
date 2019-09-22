@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: da9ab6eef98a602635e5e92dca3bd5628846ce62
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 3140aff93c9afcf9a911fe1f381859ff93efef14
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71036336"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71178352"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Planning voor de implementatie van Azure Files
 
@@ -215,6 +215,7 @@ Standaard bestands shares zijn beschikbaar in alle regio's tot 5 TiB. In bepaald
 |East US        |LRS     |Nee    |Nog niet|
 |Frankrijk - centraal |LRS, ZRS|Nee    |LRS-Ja, ZRS-nog niet|
 |Frankrijk - zuid   |LRS     |Nee    |Ja|
+|Europa - noord   |LRS     |Nee    |Ja|
 |India - zuid    |LRS     |Nee    |Nog niet|
 |Azië - zuidoost |LRS, ZRS|Nee    |Ja|
 |US - west-centraal|LRS     |Nee    |Nog niet|

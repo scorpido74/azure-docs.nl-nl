@@ -1,19 +1,20 @@
 ---
-title: 'Azure PowerShell-script: Azure Cosmos DB ophalen doorvoer (RU/s) voor tabel-API'
-description: 'Azure PowerShell-script: Azure Cosmos DB ophalen doorvoer (RU/s) voor tabel-API'
+title: Azure PowerShell script-Azure Cosmos DB door Voer (RU/s) voor Table-API ophalen
+description: Azure PowerShell script-Azure Cosmos DB door Voer (RU/s) voor Table-API ophalen
 author: markjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-table
 ms.topic: sample
 ms.date: 05/18/2019
 ms.author: mjbrown
-ms.openlocfilehash: d34a9e679ee6c1b65111817197a98555be13cf1d
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 5d3fa2e2122c006825a8413a2ca2f292bda2de74
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67601949"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71178693"
 ---
-# <a name="get-throughput-rus-for-a-table-for-azure-cosmos-db---table-api"></a>Doorvoer (RU/s) voor een tabel ophalen voor Azure Cosmos DB - Table-API
+# <a name="get-throughput-rus-for-a-table-for-azure-cosmos-db---table-api"></a>De door Voer (RU/s) voor een tabel voor Azure Cosmos DB-Table-API ophalen
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -37,9 +38,9 @@ In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel 
 
 | Opdracht | Opmerkingen |
 |---|---|
-|**Azure Resources**| |
+|**Azure-resources**| |
 | [New-AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | Hiermee maakt u een resource. |
-|**Azure-resourcegroepen**| |
+|**Azure-resource groepen**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Hiermee verwijdert u een resourcegroep met inbegrip van alle geneste resources. |
 |||
 

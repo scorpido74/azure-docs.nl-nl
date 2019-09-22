@@ -1,33 +1,30 @@
 ---
-title: Hulp programma Search Explorer voor het uitvoeren van query's op gegevens in Azure Portal-Azure Search
-description: Gebruik Azure Portal-hulpprogram ma's als Search Explorer om indexen in Azure Search op te vragen. Voer zoek termen of volledig gekwalificeerde Zoek reeksen met een geavanceerde syntaxis in.
+title: Zoek opdracht Verkenner gebruiken voor het opvragen van gegevens in Azure Portal-Azure Search
+description: Search Explorer is ingebouwd in de Azure Portal, handig voor het verkennen van inhoud en het valideren van query's in Azure Search. Voer teken reeksen in voor de term of woordgroepen zoeken, of volledig gekwalificeerde Zoek expressies met een geavanceerde syntaxis.
 manager: nitinme
 author: HeidiSteen
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 05/02/2019
+ms.date: 09/20/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: e941e487adaac38c4ec3bd61a58b4b0c61f4c80a
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: fe66787ea82a8f97470199e99faadb72b85c83b2
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69649972"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71178131"
 ---
-# <a name="search-explorer-for-querying-data-in-azure-search"></a>Zoeken in Verkenner voor het opvragen van gegevens in Azure Search 
+# <a name="use-search-explorer-in-the-azure-portal-for-querying-documents-in-azure-search"></a>Zoek Verkenner gebruiken in de Azure Portal voor het opvragen van documenten in Azure Search 
 
-Dit artikel laat u zien hoe u een query kunt uitvoeren op een bestaande Azure Search index met behulp van **Search Explorer** in de Azure Portal. Met Search Explorer kunt u eenvoudige of volledige lucene-query reeksen verzenden naar een bestaande index in uw service. 
+Dit artikel laat u zien hoe u een query kunt uitvoeren op een bestaande Azure Search index met behulp van **Search Explorer** in de Azure Portal. U kunt Search Explorer starten vanaf de opdracht balk om eenvoudige of volledige lucene-query-expressies naar een wille keurige bestaande index in uw service te verzenden. 
 
    ![Zoek opdracht Verkenner in de portal](./media/search-explorer/search-explorer-cmd2.png "Zoek opdracht Verkenner in de portal")
 
-
-Zie [Search Explorer starten](#start-search-explorer)voor meer informatie.
-
 ## <a name="basic-search-strings"></a>Eenvoudige Zoek reeksen
 
-In de volgende voor beelden wordt ervan uitgegaan dat de ingebouwde realestate-voor beeld-index. Voor hulp bij het maken van deze [index raadpleegt u Quick Start: Import, index en query in Azure Portal](search-get-started-portal.md).
+In de volgende voor beelden wordt ervan uitgegaan dat de ingebouwde voor beeld-index van onroerend goed is. U kunt deze index maken met behulp van de wizard gegevens importeren in de portal en voor **beelden** kiezen als de gegevens bron.
 
 ### <a name="example-1---empty-search"></a>Voor beeld 1: lege zoek opdracht
 

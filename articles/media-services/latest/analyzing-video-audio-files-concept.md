@@ -9,18 +9,18 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 04/21/2019
+ms.date: 09/21/2019
 ms.author: juliako
-ms.openlocfilehash: 477733dcb76647b2c03f79dea4f55c3102d262b8
-ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
+ms.openlocfilehash: bc4be8eaafe805e5d9a985b005efe80bc4af1d21
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70376188"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71177996"
 ---
 # <a name="analyzing-video-and-audio-files"></a>Video-en audio bestanden analyseren
 
-Met Azure Media Services v3 kunt u inzichten uit uw video-en audio bestanden extra heren met Video Indexer via AMS v3 Analyzer-voor waarden (beschreven in dit artikel). Als u meer gedetailleerde inzichten wilt, gebruikt u Video Indexer rechtstreeks. Als u het verschil wilt weten tussen het gebruik van instellingen van Video Indexer en Media Services, raadpleegt u het [vergelijkingsdocument](../video-indexer/compare-video-indexer-with-media-services-presets.md).
+Met Azure Media Services v3 kunt u inzichten uit uw video-en audio bestanden extra heren met Video Indexer via Media Services v3 Analyzer-voor waarden (beschreven in dit artikel). Als u meer gedetailleerde inzichten wilt, gebruikt u Video Indexer rechtstreeks. Als u het verschil wilt weten tussen het gebruik van instellingen van Video Indexer en Media Services, raadpleegt u het [vergelijkingsdocument](../video-indexer/compare-video-indexer-with-media-services-presets.md).
 
 Als u uw inhoud wilt analyseren met Media Services v3-voor instellingen, maakt u een **trans formatie** en verzendt u een **taak** die gebruikmaakt van een van deze voor instellingen: [VideoAnalyzerPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#videoanalyzerpreset) of **AudioAnalyzerPreset**. In het volgende artikel ziet u hoe u **VideoAnalyzerPreset**gebruikt: [Vind Analyseer Video's met Azure Media Services](analyze-videos-tutorial-with-api.md).
 
@@ -141,7 +141,7 @@ Voorbeeld:
   ],
 ```
 
-### <a name="faces"></a>aanhoudende
+### <a name="faces"></a>gezichten
 
 |Name|Description|
 |---|---|
@@ -153,7 +153,7 @@ Voorbeeld:
 |knownPersonId|De interne ID van een bekende persoon.|
 |referenceId|Als het een Bing-beroemdheden is, is dit de Bing-ID.|
 |Type|Momenteel alleen Bing.|
-|titel|Als het een beroemdheden is, is dit de titel (bijvoorbeeld ' micro soft CEO ').|
+|title|Als het een beroemdheden is, is dit de titel (bijvoorbeeld ' micro soft CEO ').|
 |imageUrl|Als het een beroemdheden is, wordt de afbeeldings-URL.|
 |instanties|Dit zijn exemplaren van waar het gezicht zich in het opgegeven tijds bereik bevindt. Elk exemplaar heeft ook een thumbnailsId. |
 

@@ -16,14 +16,14 @@ ms.date: 04/16/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 87764ed30182dc548fc3a260582174f121e27e24
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 29f94d6ff8045b7cae64957eeae00d2460ca3e37
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68965219"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71176833"
 ---
-# <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Azure Active Directory naadloze eenmalige aanmelding: Snel starten
+# <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Azure Active Directory naadloze eenmalige aanmelding: Quick Start
 
 ## <a name="deploy-seamless-single-sign-on"></a>Naadloze eenmalige aanmelding implementeren
 
@@ -161,7 +161,7 @@ Er zijn twee manieren om de intranet zone-instellingen van gebruikers te wijzige
     ![Eenmalige aanmelding](./media/how-to-connect-sso-quick-start/sso15.png)
 
 4. Voer de volgende waarden in de juiste velden in en klik op **OK**.
-   - Sleutelpad: ***Software\Microsoft\Windows\CurrentVersion\Internet Settings\ZoneMap\Domains\microsoftazuread-sso.com\autologon***
+   - **Sleutelpad:** ***Software\Microsoft\Windows\CurrentVersion\Internet Settings\ZoneMap\Domains\microsoftazuread-sso.com\autologon***
    - **Waardenaam**: ***https***.
    - **Waardetype**: ***REG_DWORD***.
    - **Waardegegevens**: ***00000001***.
@@ -221,7 +221,7 @@ In stap 2 maakt Azure AD Connect computer accounts (die Azure AD vertegenwoordig
 >[!IMPORTANT]
 >De Kerberos-ontsleutelings sleutel op een computer account kan worden gebruikt voor het genereren van Kerberos-tickets voor elke gebruiker in het AD-forest. Kwaadwillende actoren kunnen vervolgens Azure AD-aanmeldingen imiteren voor verdachte gebruikers. We raden u ten zeerste aan om deze Kerberos-ontsleutelings sleutels regel matig te totaliseren-minstens één keer per 30 dagen.
 
-Zie [Azure Active Directory naadloze eenmalige aanmelding voor instructies over het overstappen van sleutels: Veelgestelde vragen](how-to-connect-sso-faq.md#how-can-i-roll-over-the-kerberos-decryption-key-of-the-azureadssoacc-computer-account). We werken aan een mogelijkheid om automatische roll over sleutels in te voeren.
+Zie [Azure Active Directory naadloze eenmalige aanmelding voor instructies over het overstappen van sleutels: Veelgestelde vragen](how-to-connect-sso-faq.md). We werken aan een mogelijkheid om automatische roll over sleutels in te voeren.
 
 >[!IMPORTANT]
 >U hoeft deze stap niet _onmiddellijk_ uit te voeren nadat u de functie hebt ingeschakeld. Rolt ten minste één keer per 30 dagen over naar de sleutels voor Kerberos-ontsleuteling.

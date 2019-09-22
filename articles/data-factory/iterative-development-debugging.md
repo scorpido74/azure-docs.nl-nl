@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 author: djpmsft
 ms.author: daperlov
 manager: craigg
-ms.openlocfilehash: afc51735fcbd8f4131b2a4066a0fc4adbb8f1a41
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: a1c4bf55fbb8242293fc0e30bbe16a6884b901cb
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70142337"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71178621"
 ---
 # <a name="iterative-development-and-debugging-with-azure-data-factory"></a>Iteratieve ontwikkeling en fout opsporing met Azure Data Factory
 
@@ -52,13 +52,17 @@ U kunt alle debug-uitvoeringen die worden uitgevoerd voor uw data factory, op é
 
 ![Voorbeeld lijst met actieve debug-uitvoeringen](media/iterative-development-debugging/view-debug-runs-image2.png)
 
+Als u actieve gegevens stroom fout opsporing sessies hebt, worden deze sessies weer gegeven in het onderste gedeelte van het actieve venster fout opsporing. U kunt een actieve Data flow-sessie selecteren en het respectieve cluster stoppen.
+
+![Voorbeeld lijst van actieve gegevens stroom fout opsporing uitgevoerd](media/data-flow/dfsessions.png)
+
 ## <a name="monitoring-debug-runs"></a>Fout opsporing van bewaking wordt uitgevoerd
 
 De test uitvoeringen die met de mogelijkheid voor **fout opsporing** worden gestart, zijn niet beschikbaar in de lijst op het tabblad **monitor** . U kunt alleen uitvoeringen weer geven die zijn geactiveerd met het venster **trigger Now**, **Schedule**of **tumblingvenstertriggers** op het tabblad **monitor** . U kunt zien dat de laatste test uitvoering is gestart met de functie voor **fout opsporing** in het **uitvoer** venster van het pijp lijn papier.
 
 ## <a name="setting-breakpoints-for-debugging"></a>Onderbrekings punten instellen voor fout opsporing
 
-Met Data Factory kunt u ook fouten opsporen totdat u een bepaalde activiteit op het pijplijn doek hebt bereikt. Plaats een onderbrekings punt op de activiteit tot u wilt testen en selecteer **fout opsporing**. Data Factory zorgt ervoor dat de test alleen wordt uitgevoerd tot de activiteit onderbrekings punt op het pijp lijn-canvas. Deze functie voor het opsporen van *fouten* is handig wanneer u niet de volledige pijp lijn wilt testen, maar alleen een subset van activiteiten in de pijp lijn.
+Met Data Factory kunt u ook fouten opsporen totdat u een bepaalde activiteit op het pijplijn doek hebt bereikt. Plaats een onderbrekings punt op de activiteit tot u wilt testen en selecteer **fout opsporing**. Data Factory zorgt ervoor dat de test alleen wordt uitgevoerd tot de activiteit onderbrekings punt op het pijp lijn-canvas. Deze functie voor het *opsporen van fouten* is handig wanneer u niet de volledige pijp lijn wilt testen, maar alleen een subset van activiteiten in de pijp lijn.
 
 ![Onderbrekings punten op het pijp lijn papier](media/iterative-development-debugging/iterative-development-image4.png)
 

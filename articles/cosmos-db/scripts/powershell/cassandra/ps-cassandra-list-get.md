@@ -1,19 +1,20 @@
 ---
-title: 'Azure PowerShell-script: Azure Cosmos DB lijst en bewerkingen ophalen voor Cassandra-API'
-description: 'Azure PowerShell-script: Azure Cosmos DB lijst en bewerkingen ophalen voor Cassandra-API'
+title: 'Azure PowerShell script: Azure Cosmos DB lijst en Get-bewerkingen voor Cassandra-API'
+description: 'Azure PowerShell script: Azure Cosmos DB lijst en Get-bewerkingen voor Cassandra-API'
 author: markjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-cassandra
 ms.topic: sample
 ms.date: 05/18/2019
 ms.author: mjbrown
-ms.openlocfilehash: f426afee2ab5635cf29ee5a48a6e11e1f6d10f4e
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 185ad9d01e6f4909c0adad7f2b587a17e652dfd4
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67603998"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71179027"
 ---
-# <a name="list-and-get-keyspaces-and-tables-for-azure-cosmos-db---cassandra-api"></a>Lijst met en keyspaces en tabellen ophalen voor Azure Cosmos DB - Cassandra-API
+# <a name="list-and-get-keyspaces-and-tables-for-azure-cosmos-db---cassandra-api"></a>De lijst en de tabellen voor Azure Cosmos DB-Cassandra-API weer geven en ophalen
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -37,9 +38,9 @@ In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel 
 
 | Opdracht | Opmerkingen |
 |---|---|
-|**Azure Resources**| |
+|**Azure-resources**| |
 | [New-AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | Hiermee maakt u een resource. |
-|**Azure-resourcegroepen**| |
+|**Azure-resource groepen**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Hiermee verwijdert u een resourcegroep met inbegrip van alle geneste resources. |
 |||
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/26/2019
 ms.author: apimpm
-ms.openlocfilehash: 6e12a16b221a8f31d82a002fbc93b090d6f0c577
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 7224c6a77df496624903830f0a2cbd8d193517cc
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70861249"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71178187"
 ---
 # <a name="ip-addresses-of-azure-api-management"></a>IP-adressen van Azure API Management
 
@@ -61,7 +61,7 @@ In [meerdere regionale implementaties](api-management-howto-deploy-multi-region.
 
 Als uw API Management-service zich in een virtueel netwerk bevindt, heeft deze twee typen IP-adressen: openbaar en privé.
 
-Open bare IP-adressen worden gebruikt voor interne communicatie `3443` op poort-voor het beheren van de configuratie (bijvoorbeeld via Azure Resource Manager). Wanneer een aanvraag wordt verzonden van API Management naar een open bare back-end (Internet Facing), wordt er bovendien een openbaar IP-adres weer gegeven als de oorsprong van de aanvraag.
+Open bare IP-adressen worden gebruikt voor interne communicatie `3443` op poort-voor het beheren van de configuratie (bijvoorbeeld via Azure Resource Manager). In de externe VNET-configuratie worden ze ook gebruikt voor runtime-API-verkeer. Wanneer een aanvraag wordt verzonden van API Management naar een open bare back-end (Internet Facing), is een openbaar IP-adres zichtbaar als de oorsprong van de aanvraag.
 
 Persoonlijke VIP-adressen (virtuele IP) worden gebruikt om vanuit het netwerk verbinding te maken met API Management eind punten-gateways, de ontwikkelaars Portal en het beheer vlak voor directe API-toegang. U kunt deze gebruiken voor het instellen van DNS-records in het netwerk.
 

@@ -1,5 +1,5 @@
 ---
-title: Voor beelden van de Lucene-query-Azure Search
+title: Volledige lucene-query syntaxis gebruiken-Azure Search
 description: De Lucene-query syntaxis voor fuzzy zoeken, proximity Search, term boosting, reguliere expressies zoeken en zoek opdrachten met Joker tekens in een Azure Search-service.
 author: HeidiSteen
 manager: nitinme
@@ -7,17 +7,17 @@ tags: Lucene query analyzer syntax
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 05/13/2019
+ms.date: 09/20/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 3f6a39129db9e8c43a5e2de68d919ba1037c3f5c
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: fcfc668022d0d8fc74258657bb93642aec49bd08
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69648242"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71178158"
 ---
-# <a name="query-examples-using-full-lucene-search-syntax-advanced-queries-in-azure-search"></a>Query voorbeelden met ' volledige ' lucene-Zoek syntaxis (geavanceerde query's in Azure Search)
+# <a name="use-the-full-lucene-search-syntax-advanced-queries-in-azure-search"></a>Gebruik de ' volledige ' lucene-Zoek syntaxis (geavanceerde query's in Azure Search)
 
 Wanneer u query's voor Azure Search bouwt, kunt u de standaard [eenvoudige query-parser](query-simple-syntax.md) vervangen door de meer expansieve, [lucene query parser in azure Search](query-lucene-syntax.md) om gespecialiseerde en geavanceerde query definities te formuleren. 
 

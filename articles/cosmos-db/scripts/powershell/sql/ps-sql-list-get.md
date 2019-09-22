@@ -1,19 +1,20 @@
 ---
-title: 'Azure PowerShell-script: Azure Cosmos DB lijst en bewerkingen voor SQL (Core) API ophalen'
-description: 'Azure PowerShell-script: Azure Cosmos DB lijst en bewerkingen voor SQL (Core) API ophalen'
+title: Azure PowerShell script-Azure Cosmos DB lijst en Get-bewerkingen voor SQL (kern)-API
+description: Azure PowerShell script-Azure Cosmos DB lijst en Get-bewerkingen voor SQL (kern)-API
 author: markjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: sample
 ms.date: 05/18/2019
 ms.author: mjbrown
-ms.openlocfilehash: 4c82f1ffffe5149960f710252ec8dfe967ffbe2b
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 4544b1d3346128f8ad88c2b0e123145f4e0632a6
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67603814"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71178778"
 ---
-# <a name="list-and-get-databases-and-containers-for-azure-cosmos-db---sql-core-api"></a>Lijst met en -databases en containers ophalen voor Azure Cosmos DB - SQL (Core) API
+# <a name="list-and-get-databases-and-containers-for-azure-cosmos-db---sql-core-api"></a>Data bases en containers voor de API van Azure Cosmos DB-SQL (core) weer geven en ophalen
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -37,9 +38,9 @@ In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel 
 
 | Opdracht | Opmerkingen |
 |---|---|
-|**Azure Resources**| |
+|**Azure-resources**| |
 | [New-AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | Hiermee maakt u een resource. |
-|**Azure-resourcegroepen**| |
+|**Azure-resource groepen**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Hiermee verwijdert u een resourcegroep met inbegrip van alle geneste resources. |
 |||
 

@@ -6,14 +6,14 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 09/17/2019
 ms.author: alinast
-ms.openlocfilehash: a013525109fe85ad70e5aaa5895da20f5abc3237
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 81f2cc32ee10e891ffab127d6ecd7909eb75abd6
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68638531"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71177078"
 ---
 # <a name="routing-events-and-messages"></a>Routering van gebeurtenissen en berichten
 
@@ -25,11 +25,11 @@ Azure Digital Apparaatdubbels biedt twee manieren om IoT-gebeurtenissen te verbi
 
 * **Azure Digital apparaatdubbels-gebeurtenissen routeren**: Een object in de ruimtelijke grafiek dat wijzigingen aanbrengt, de ontvangen telemetriegegevens of een door de gebruiker gedefinieerde functie die een melding maakt op basis van vooraf gedefinieerde voor waarden kan gebeurtenissen van het Azure Digital Apparaatdubbels activeren. Gebruikers kunnen deze gebeurtenissen verzenden naar [Azure Event hubs](https://azure.microsoft.com/services/event-hubs/), [Azure Service Bus onderwerpen](https://azure.microsoft.com/services/service-bus/)of [Azure Event grid](https://azure.microsoft.com/services/event-grid/) voor verdere verwerking.
 
-* Telemetrie van **routerings apparaat**: Azure Digital Apparaatdubbels kan naast routerings gebeurtenissen ook telemetrie-berichten van onbewerkte apparaten routeren naar Event Hubs voor meer inzichten en analyses. Deze typen berichten worden niet verwerkt door Azure Digital Apparaatdubbels. En ze worden alleen doorgestuurd naar de Event Hub.
+* **Telemetrie van routerings apparaat**: Azure Digital Apparaatdubbels kan naast routerings gebeurtenissen ook telemetrie-berichten van onbewerkte apparaten routeren naar Event Hubs voor meer inzichten en analyses. Deze typen berichten worden niet verwerkt door Azure Digital Apparaatdubbels. En ze worden alleen doorgestuurd naar de Event Hub.
 
 Gebruikers kunnen een of meer uitstaande eind punten opgeven voor het verzenden van gebeurtenissen of het door sturen van berichten. Gebeurtenissen en berichten worden verzonden naar de eind punten volgens deze vooraf gedefinieerde routerings voorkeuren. Met andere woorden, gebruikers kunnen een bepaald eind punt opgeven om grafiek bewerkings gebeurtenissen te ontvangen, een andere voor het ontvangen van telemetrie-gebeurtenissen van apparaten, enzovoort.
 
-![Route ring van Azure Digital Apparaatdubbels-gebeurtenissen][1]
+[![Route ring van Azure Digital Apparaatdubbels-gebeurtenissen](media/concepts/digital-twins-events-routing.png)](media/concepts/digital-twins-events-routing.png#lightbox)
 
 Route ring naar Event Hubs houdt de volg orde bij waarin telemetrie-berichten worden verzonden. Ze arriveren op het eind punt in dezelfde volg orde als waarin ze oorspronkelijk werden ontvangen. Event Grid en Service Bus niet garanderen dat eind punten gebeurtenissen ontvangen in dezelfde volg orde als waarin ze zijn opgetreden. Het gebeurtenis schema bevat echter een tijds tempel dat kan worden gebruikt om de volg orde te identificeren nadat de gebeurtenissen op het eind punt arriveren.
 
@@ -64,9 +64,6 @@ Azure Digital Apparaatdubbels ondersteunt momenteel de volgende **EventTypes** d
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie limieten voor [open bare Preview-Service](concepts-service-limits.md)voor meer informatie over de limieten voor Azure Digital apparaatdubbels preview.
+- Zie [limieten voor open bare Preview-Service](concepts-service-limits.md)voor meer informatie over de limieten voor Azure Digital apparaatdubbels preview.
 
 - Als u een Azure Digital Apparaatdubbels-voor beeld wilt uitproberen, raadpleegt [u de Quick Start om beschik bare kamers te vinden](quickstart-view-occupancy-dotnet.md).
-
-<!-- Images -->
-[1]: media/concepts/digital-twins-events-routing.png

@@ -1,33 +1,33 @@
 ---
-title: Voorbeelden van gegevens bewerking - Azure Logic Apps | Microsoft Docs
-description: Codevoorbeelden voor bewerking actie definities in Azure Logic Apps
+title: Voor beelden van gegevens bewerkingen-Azure Logic Apps
+description: Code voorbeelden voor bewerkingen voor gegevens bewerkingen in Azure Logic Apps
 services: logic-apps
 ms.service: logic-apps
+ms.suite: integration
 author: ecfan
 ms.author: estfan
-manager: jeconnoc
-ms.topic: reference
-ms.date: 07/25/2018
+manager: carmonm
 ms.reviewer: klam, LADocs
-ms.suite: integration
-ms.openlocfilehash: 8de70e8df50b79f27c19c74307d9321ff8cd1eb5
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.topic: reference
+ms.date: 09/01/2019
+ms.openlocfilehash: d692d943249c9fc6b46ed6eb1ddff3f07152f5b6
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67203117"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71179145"
 ---
-# <a name="data-operation-code-samples-for-azure-logic-apps"></a>Gegevens bewerking codevoorbeelden voor Azure Logic Apps
+# <a name="data-operation-code-samples-for-azure-logic-apps"></a>Voor beelden van gegevens bewerkings code voor Azure Logic Apps
 
-Hier volgen de codevoorbeelden die de bewerking actie definities van gegevens in het artikel [gegevensbewerkingen](../logic-apps/logic-apps-perform-data-operations.md). U kunt deze voorbeelden voor gebruiken wanneer u wilt proberen in de voorbeelden met de onderliggende werkstroom-definitie van uw eigen logica-app, Azure-abonnement en API-verbindingen. Gewoon kopiëren en plak deze actie definities in de code-editor weergeven voor de definitie van de werkstroom van uw logische app en wijzig vervolgens de definities voor uw specifieke werkstroom. 
+Hier volgen de code voorbeelden voor de actie definities van de gegevens bewerking in het artikel, [uitvoeren van gegevens bewerkingen](../logic-apps/logic-apps-perform-data-operations.md). U kunt deze voor beelden gebruiken als u de voor beeld wilt uitproberen met de onderliggende werk stroom definitie, Azure-abonnement en API-verbindingen van uw eigen logische app. Kopieer en plak deze actie definities in de code weergave-editor voor de werk stroom definitie van uw logische app en wijzig vervolgens de definities voor uw specifieke werk stroom. 
 
-Op basis van JavaScript Object Notation (JSON)-standaarden, definities van deze actie worden weergegeven in alfabetische volgorde. Echter, in de Logic App Designer elke definitie wordt weergegeven in de juiste volgorde binnen uw werkstroom omdat elke actie-definitie `runAfter` eigenschap geeft u de volgorde. 
+Op basis van JavaScript Object Notation (JSON)-standaarden worden deze actie definities in alfabetische volg orde weer gegeven. In de ontwerp functie voor logische apps wordt elke definitie echter in de juiste volg orde in de werk stroom weer gegeven, `runAfter` omdat de eigenschaps definitie van elke actie de uitvoerings volgorde aangeeft.
 
 <a name="compose-action-example"></a>
 
 ## <a name="compose"></a>Opstellen
 
-Om te proberen de [ **opstellen** actie voorbeeld](../logic-apps/logic-apps-perform-data-operations.md#compose-action), Hier vindt u de actie-definities die u kunt gebruiken:
+Als u het [voor beeld voor het **opstellen** ](../logic-apps/logic-apps-perform-data-operations.md#compose-action)van een actie wilt uitproberen, kunt u de volgende actie definities gebruiken:
 
 ```json
 "actions": {
@@ -97,7 +97,7 @@ Om te proberen de [ **opstellen** actie voorbeeld](../logic-apps/logic-apps-perf
 
 ## <a name="create-csv-table"></a>CSV-tabel maken
 
-Om te proberen de [ **CSV-tabel maken** actie voorbeeld](../logic-apps/logic-apps-perform-data-operations.md#create-csv-table-action), Hier vindt u de actie-definities die u kunt gebruiken:
+Als u het [ voor beeld](../logic-apps/logic-apps-perform-data-operations.md#create-csv-table-action)van een CSV-tabel wilt maken, kunt u de volgende actie definities gebruiken:
 
 ```json
 "actions": {
@@ -142,7 +142,7 @@ Om te proberen de [ **CSV-tabel maken** actie voorbeeld](../logic-apps/logic-app
 
 ## <a name="create-html-table"></a>HTML-tabel maken
 
-Om te proberen de [ **HTML-tabel maken** actie voorbeeld](../logic-apps/logic-apps-perform-data-operations.md#create-html-table-action), Hier vindt u de actie-definities die u kunt gebruiken:
+Als u het [voor beeld van een **HTML-tabel wilt maken** ](../logic-apps/logic-apps-perform-data-operations.md#create-html-table-action), kunt u de volgende actie definities gebruiken:
 
 ```json
 "actions": {
@@ -187,7 +187,7 @@ Om te proberen de [ **HTML-tabel maken** actie voorbeeld](../logic-apps/logic-ap
 
 ## <a name="filter-array"></a>Matrix filteren
 
-Om te proberen de [ **matrix filteren** actie voorbeeld](../logic-apps/logic-apps-perform-data-operations.md#filter-array-action), Hier vindt u de actie-definities die u kunt gebruiken:
+Als u het [voor beeld van een matrix voor de **filter array** ](../logic-apps/logic-apps-perform-data-operations.md#filter-array-action)wilt proberen, kunt u de volgende actie definities gebruiken:
 
 ```json
 "actions": {
@@ -226,9 +226,9 @@ Om te proberen de [ **matrix filteren** actie voorbeeld](../logic-apps/logic-app
 
 <a name="join-action-example"></a>
 
-## <a name="join"></a>Deelnemen
+## <a name="join"></a>Koppelen
 
-Om te proberen de [ **Join** actie voorbeeld](../logic-apps/logic-apps-perform-data-operations.md#join-action), Hier vindt u de actie-definities die u kunt gebruiken:
+Als u het [voor beeld van de **deelname** actie](../logic-apps/logic-apps-perform-data-operations.md#join-action)wilt proberen, kunt u de volgende actie definities gebruiken:
 
 ```json
 "actions": {
@@ -269,7 +269,7 @@ Om te proberen de [ **Join** actie voorbeeld](../logic-apps/logic-apps-perform-d
 
 ## <a name="parse-json"></a>JSON parseren
 
-Om te proberen de [ **JSON parseren** actie voorbeeld](../logic-apps/logic-apps-perform-data-operations.md#parse-json-action), Hier vindt u de actie-definities die u kunt gebruiken:
+Als u het [voor beeld van JSON-actie **parseren** ](../logic-apps/logic-apps-perform-data-operations.md#parse-json-action)wilt proberen, kunt u de volgende actie definities gebruiken:
 
 ```json
 "actions": {
@@ -326,9 +326,9 @@ Om te proberen de [ **JSON parseren** actie voorbeeld](../logic-apps/logic-apps-
 
 <a name="select-action-example"></a>
 
-## <a name="select"></a>Selecteer
+## <a name="select"></a>Selecteren
 
-Om te proberen de [ **Selecteer** actie voorbeeld](../logic-apps/logic-apps-perform-data-operations.md#select-action), Hier vindt u de actie-definities die u kunt gebruiken:
+Als u het [voor beeld voor de **Select** -actie](../logic-apps/logic-apps-perform-data-operations.md#select-action)wilt proberen, kunt u de volgende actie definities gebruiken:
 
 ```json
 "actions": {
@@ -367,11 +367,6 @@ Om te proberen de [ **Selecteer** actie voorbeeld](../logic-apps/logic-apps-perf
 },
 ```
 
-## <a name="get-support"></a>Ondersteuning krijgen
-
-* Ga naar het [Azure Logic Apps forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps) (Forum voor Azure Logic Apps) als u vragen hebt.
-* Als u ideeën voor functies wilt indienen of erop wilt stemmen, gaat u naar de [website voor feedback van Logic Apps-gebruikers](https://aka.ms/logicapps-wish).
-
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Gegevensbewerkingen](../logic-apps/logic-apps-perform-data-operations.md)
+* [Gegevens bewerkingen uitvoeren](../logic-apps/logic-apps-perform-data-operations.md)

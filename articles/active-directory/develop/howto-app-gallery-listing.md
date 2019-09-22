@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: elisol, bryanla
 ms.custom: aaddev, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ba4beeff5484f774e801842f06d694af456c4e96
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 88d74fe794f4de95b7ba8b0dd5575ca56d2016e5
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71033751"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71176952"
 ---
 # <a name="how-to-list-your-application-in-the-azure-active-directory-application-gallery"></a>Procedure: Uw toepassing weergeven in de Azure Active Directory-toepassingsgalerie
 
@@ -80,7 +80,7 @@ Als u een toepassing in de Azure AD-App-galerie wilt weer geven, moet u eerst ee
     ![Tijd lijn van de vermelding OpenID Connect Connect-toepassing in de galerie](./media/howto-app-gallery-listing/openid.png)
 
     * Als u uw toepassing wilt toevoegen aan de lijst in de galerie met behulp van OpenID Connect Connect, selecteert u **OpenID Connect connect & OAuth 2,0** als hierboven.
-    * Als u problemen hebt met de toegang, neemt u contact op met het [Azure AD SSO-integratie team](<mailto:SaaSApplicationIntegrations@service.microsoft.com>). 
+    * Als u problemen hebt met de toegang, neemt u contact op met het [Azure AD SSO-integratie team](<mailto:SaaSApplicationIntegrations@service.microsoft.com>).
 
 - **SAML 2,0** of **WS-voeder**: Als uw app SAML 2,0 ondersteunt, kunt u deze rechtstreeks integreren met een Azure AD-Tenant met behulp van de [instructies voor het toevoegen van een aangepaste toepassing](../active-directory-saas-custom-apps.md).
 
@@ -98,6 +98,12 @@ Maak een webtoepassing met een HTML-aanmeldings pagina voor het configureren [va
 * Als u uw toepassing wilt toevoegen aan de lijst in de galerie met wacht woord-SSO, selecteert u **eenmalige aanmelding voor wacht woord** .
 * Als u problemen hebt met de toegang, neemt u contact op met het [Azure AD SSO-integratie team](<mailto:SaaSApplicationIntegrations@service.microsoft.com>).
 
+## <a name="requesting-for-user-provisioning"></a>Aanvragen voor gebruikers inrichting
+
+Volg de onderstaande procedure om de gebruikers inrichting aan te vragen-
+
+   ![Tijd lijn van de weer gave van SAML-toepassing in de galerie](./media/howto-app-gallery-listing/user-provisioning.png)
+
 ## <a name="updateremove-existing-listing"></a>Bestaande vermelding bijwerken/verwijderen
 
 Als u een bestaande toepassing wilt bijwerken of verwijderen in de app-galerie van Azure AD, moet u de aanvraag eerst indienen in de portal voor het [toepassings netwerk](https://microsoft.sharepoint.com/teams/apponboarding/Apps). Als u een Office 365-account hebt, kunt u dit gebruiken om u aan te melden bij deze portal. Als dat niet het geval is, gebruikt u uw Microsoft-account (zoals Outlook of Hotmail) om u aan te melden.
@@ -106,9 +112,9 @@ Als u een bestaande toepassing wilt bijwerken of verwijderen in de app-galerie v
 
     ![Tijd lijn van de weer gave van SAML-toepassing in de galerie](./media/howto-app-gallery-listing/updateorremove.png)
 
-    * Als u een bestaande toepassing wilt bijwerken, selecteert u **bestaande toepassings vermelding bijwerken**.
-    * Als u een bestaande toepassing uit de Azure AD-galerie wilt verwijderen, selecteert u **bestaande toepassings vermelding verwijderen**.
-    * Als u problemen hebt met de toegang, neemt u contact op met het [Azure AD SSO-integratie team](<mailto:SaaSApplicationIntegrations@service.microsoft.com>). 
+    * Als u een bestaande toepassing wilt bijwerken, selecteert u de gewenste optie volgens uw vereiste.
+    * Als u een bestaande toepassing uit de Azure AD-galerie wilt verwijderen, selecteert u **mijn toepassings vermelding verwijderen in de galerie**.
+    * Als u problemen hebt met de toegang, neemt u contact op met het [Azure AD SSO-integratie team](<mailto:SaaSApplicationIntegrations@service.microsoft.com>).
 
 ## <a name="listing-requests-by-customers"></a>Aanvragen voor klanten weer geven
 
@@ -120,15 +126,15 @@ Hieronder volgt de stroom van door de klant aangevraagde toepassingen-
 
 ![Toont de door de klant aangevraagde apps stroom](./media/howto-app-gallery-listing/customer-request.png)
 
-## <a name="timelines"></a>Tijdlijnen
+## <a name="timelines"></a>Tijd lijnen
 
 De tijd lijn voor het proces van het weer geven van een SAML 2,0-of WS-gevoede toepassing in de galerie is 7-10 werk dagen.
 
-   ![Tijd lijn van de weer gave van SAML-toepassing in de galerie](./media/howto-app-gallery-listing/timeline.png)
+  ![Tijd lijn van de weer gave van SAML-toepassing in de galerie](./media/howto-app-gallery-listing/timeline.png)
 
 De tijd lijn voor het proces van het weer geven van een OpenID Connect Connect-toepassing in de galerie is 2-5 werk dagen.
 
-   ![Tijd lijn van de weer gave van SAML-toepassing in de galerie](./media/howto-app-gallery-listing/timeline2.png)
+  ![Tijd lijn van de weer gave van SAML-toepassing in de galerie](./media/howto-app-gallery-listing/timeline2.png)
 
 ## <a name="escalations"></a>Escalaties
 

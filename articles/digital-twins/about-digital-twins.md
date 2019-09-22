@@ -3,18 +3,18 @@ title: Overzicht van Azure Digital Twins | Microsoft Docs
 description: Kom meer te weten over Azure Digital Twins, een Azure-IoT-oplossing voor ruimtelijke intelligentie.
 author: julieseto
 ms.author: jseto
-ms.date: 08/01/2019
+ms.date: 09/17/2019
 ms.topic: overview
 ms.service: digital-twins
 services: digital-twins
 manager: bertvanhoof
 ms.custom: mvc
-ms.openlocfilehash: 6bd4e3bb688e92d30a21c39599e2e5bdb7b17dba
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 2b80d0b364330a0effa7b89c620bd935157de290
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68736968"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71178293"
 ---
 # <a name="overview-of-azure-digital-twins"></a>Overzicht van Azure Digital Twins
 
@@ -33,7 +33,7 @@ Azure Digital Apparaatdubbels is van toepassing op alle soorten omgevingen, zoal
 - Analyseren van de bezettingsgraad van een gebouw.
 - Vinden van de meestgebruikte kassa in uw winkel.
 
-Wat het scenario voor de praktijk is, is het zeer waarschijnlijk dat een bijbehorend digitaal exemplaar kan worden ingericht via Azure Digital Apparaatdubbels.
+Wat het scenario voor de praktijk is, het is waarschijnlijk dat een bijbehorend digitaal exemplaar kan worden ingericht via Azure Digital Apparaatdubbels.
 
 In de volgende video wordt nader ingegaan op Azure Digital Twins.
 
@@ -45,13 +45,13 @@ Azure Digital Twins biedt de volgende belangrijke mogelijkheden.
 
 ### <a name="spatial-intelligence-graph"></a>Grafiek voor ruimtelijke intelligentie
 
-De [*grafiek voor ruimtelijke intelligentie*](./concepts-objectmodel-spatialgraph.md#graph), of *ruimtelijke grafiek*, is een virtuele voorstelling van de fysieke omgeving. U kunt het gebruiken om relaties tussen personen, plaatsen en apparaten te modelleren.
+De [*grafiek voor ruimtelijke intelligentie*](./concepts-objectmodel-spatialgraph.md#spatial-intelligence-graph), of *ruimtelijke grafiek*, is een virtuele voorstelling van de fysieke omgeving. U kunt het gebruiken om relaties tussen personen, plaatsen en apparaten te modelleren.
 
 Denk eens aan een slimme app voor nutsvoorzieningen waarbij verschillende elektriciteitsmeters in een omgeving zijn betrokken. Het nutsbedrijf moet het elektriciteitsgebruik en de facturering nauwkeurig bijhouden en voorspellen. Elk apparaat en elke sensor moeten worden gemodelleerd met context over de locatie en over de te factureren klant. U kunt de grafiek voor ruimtelijke intelligentie gebruiken om dit soort complexe relaties te modelleren.
 
 ### <a name="digital-twin-object-models"></a>Digital Twin-objectmodellen
 
-[Digital Twin-objectmodellen](./concepts-objectmodel-spatialgraph.md#model) zijn vooraf gedefinieerde apparaatprotocollen en gegevensschema's. Hiermee worden de domeinspecifieke behoeften van uw oplossing met elkaar in overeenstemming gebracht om het ontwikkelen te versnellen en vereenvoudigen.
+[Digital Twin-objectmodellen](./concepts-objectmodel-spatialgraph.md#digital-twins-object-models) zijn vooraf gedefinieerde apparaatprotocollen en gegevensschema's. Hiermee worden de domeinspecifieke behoeften van uw oplossing met elkaar in overeenstemming gebracht om het ontwikkelen te versnellen en vereenvoudigen.
 
 Een room-toepassing kan bijvoorbeeld gebruikmaken van vooraf gedefinieerde ruimte typen zoals campus, gebouw, vloer en kamer.
 
@@ -93,9 +93,9 @@ Azure Digital Twins is geschikt om een voorstelling te maken van de fysieke were
 
 Azure Digital Twins gebruikt Azure IoT Hub om een verbinding tot stand te brengen tussen de IoT-apparaten en sensoren die alles up-to-date houden met de fysieke wereld. In het volgende diagram ziet u hoe Azure Digital Twins zich verhoudt tot andere Azure IoT-services.
 
-![Azure Digital Twins is een service die is gebouwd op Azure IoT Hub][1]
+[![Azure Digital Apparaatdubbels is een service die is gebouwd op Azure IoT Hub](media/overview/azure-digital-twins-in-iot-ecosystem.png)](media/overview/azure-digital-twins-in-iot-ecosystem.png#lightbox)
 
-Zie [Azure IoT-technologieën en -oplossingen](https://docs.microsoft.com/azure/iot-fundamentals/iot-services-and-technologies) voor meer informatie over IoT.
+Zie [Azure IoT-technologieën en -oplossingen](../iot-fundamentals/iot-services-and-technologies.md) voor meer informatie over IoT.
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -113,6 +113,3 @@ Meer informatie over de basisconcepten van Azure Digital Twins:
 
 >[!div class="nextstepaction"]
 >[Informatie over het objectmodel en de grafiek voor ruimtelijke intelligentie van Digital Twins](./concepts-objectmodel-spatialgraph.md)
-
-<!-- Images -->
-[1]: media/overview/azure-digital-twins-in-iot-ecosystem.png

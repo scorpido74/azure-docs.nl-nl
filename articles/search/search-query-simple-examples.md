@@ -1,33 +1,35 @@
 ---
-title: Query voorbeelden met de eenvoudige Zoek syntaxis-Azure Search
-description: Eenvoudige query voorbeelden voor zoeken in volledige tekst, filteren op filters, geo-zoek acties, facet zoeken en andere query teken reeksen die worden gebruikt om een Azure Search index op te vragen.
+title: Een eenvoudige query-Azure Search maken
+description: Leer door bijvoorbeeld query's uit te voeren op basis van de eenvoudige syntaxis voor zoeken in volledige tekst, filteren van filters, geo-zoek actie, facet zoeken op basis van een Azure Search index.
 author: HeidiSteen
 manager: nitinme
 tags: Simple query analyzer syntax
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 05/02/2019
+ms.date: 09/20/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: df84686e512db90351d5a9815706890bce49848b
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 7c4aeef07d34159e01f188effae77926895e2857
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69647623"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71179191"
 ---
-# <a name="query-examples-using-the-simple-search-syntax-in-azure-search"></a>Query voorbeelden met de eenvoudige Zoek syntaxis in Azure Search
+# <a name="create-a-simple-query-in-azure-search"></a>Een eenvoudige query maken in Azure Search
 
-Met de [eenvoudige query syntaxis](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) wordt de standaard query-parser aangeroepen voor het uitvoeren van zoek query's in volledige tekst voor een Azure search index. De eenvoudige query analyzer is snel en behandelt veelvoorkomende scenario's in Azure Search, inclusief zoeken in volledige tekst, gefilterde en facetten zoeken en geozoek opdrachten. In dit artikel wordt stapsgewijs uitgelegd hoe query bewerkingen worden weer gegeven die beschikbaar zijn bij het gebruik van de eenvoudige syntaxis.
+In Azure Search roept de [syntaxis van de eenvoudige query](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) de standaard query-parser aan voor het uitvoeren van zoek query's in volledige tekst voor een index. Deze parser is snel en behandelt veelvoorkomende scenario's, zoals zoeken in volledige tekst, gefilterde en facetten zoeken en geo-Zoek opdrachten. 
 
-De alternatieve query syntaxis is [volledige lucene](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search), waardoor complexere query structuren worden ondersteund, zoals fuzzy en zoek opdrachten met Joker tekens. Dit kan meer tijd kosten om te verwerken. Zie voor meer informatie en voor beelden met de volledige syntaxis een [voor beeld van de Lucene-syntaxis query](search-query-lucene-examples.md).
+In dit artikel gebruiken we voor beelden om de eenvoudige syntaxis te illustreren.
+
+Een alternatieve query syntaxis is [volledige lucene](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search), waardoor complexere query structuren worden ondersteund, zoals fuzzy en zoek opdrachten met Joker tekens. Dit kan meer tijd kosten om te verwerken. Zie [de syntaxis Full lucene gebruiken](search-query-lucene-examples.md)voor meer informatie en voor beelden met de volledige syntaxis.
 
 ## <a name="formulate-requests-in-postman"></a>Aanvragen formuleren in postman
 
 De volgende voor beelden maken gebruik van een NYC-zoek index voor taken die bestaat uit taken die beschikbaar zijn op basis van een gegevensset die wordt verschaft door de [stad New York open data](https://nycopendata.socrata.com/) Initiative. Deze gegevens mogen niet als actueel of volledig worden beschouwd. De index bevindt zich op een sandbox-service van micro soft. Dit betekent dat u geen Azure-abonnement of Azure Search nodig hebt om deze query's uit te proberen.
 
-Wat u nodig hebt, is postman of een gelijkwaardig hulp programma voor het uitgeven van een HTTP-aanvraag op GET. Zie [verkennen met rest-clients](search-get-started-postman.md)voor meer informatie.
+Wat u nodig hebt, is postman of een gelijkwaardig hulp programma voor het uitgeven van een HTTP-aanvraag op GET. Zie voor meer informatie [Snelstart: Verken Azure Search REST API met behulp van Postman](search-get-started-postman.md).
 
 ### <a name="set-the-request-header"></a>De aanvraag header instellen
 
@@ -75,7 +77,7 @@ Voor interactieve query's hoeft u niets op te geven: eenvoudig is de standaard w
 
 Dit eerste voor beeld is geen parser-specifiek, maar we leiden ernaar om het eerste fundamentele query concept te introduceren: containment. In dit voor beeld wordt een query uitgevoerd op een aantal specifieke velden. Het is belang rijk dat u weet hoe u een lees bare JSON-respons structureert wanneer uw hulp programma postman of Search Explorer is. 
 
-Voor de boog is de query alleen gericht op het veld *business_title* en geeft u op dat er alleen zakelijke titels worden geretourneerd. De syntaxis is **searchFields** om de uitvoering van query's te beperken tot alleen het veld business_title en om op te geven welke velden in het antwoord moeten worden opgenomen.
+Voor de boog is de query alleen gericht op het veld *business_title* en geeft u op dat er alleen zakelijke titels worden geretourneerd. De syntaxis is **searchFields** om de uitvoering van query's te beperken tot alleen het veld business_title en om op te geven welke velden in het **antwoord moeten worden** opgenomen.
 
 ### <a name="partial-query-string"></a>Gedeeltelijke query reeks
 
@@ -267,7 +269,7 @@ Verschillende para meters bepalen welke velden worden weer gegeven in de zoek re
 ```http
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&$select=job_id,agency,business_title,civil_service_title,work_location,job_description&search="fire department"
 ```
-In het vorige voor beeld kunt u sorteren op titel. Deze sortering werkt omdat civil_service_title in de index kan worden gesorteerd.
+In het vorige voor beeld kunt u sorteren op titel. Deze sortering werkt omdat civil_service_title *in de* index kan worden gesorteerd.
 
 ```http
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&$select=job_id,agency,business_title,civil_service_title,work_location,job_description&search="fire department"&$orderby=civil_service_title

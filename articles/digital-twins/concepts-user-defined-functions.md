@@ -6,14 +6,14 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 09/17/2019
 ms.author: alinast
-ms.openlocfilehash: f4aa7e6660e3febdca6e0e5b1ad9f11bebaa48ea
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 07facf06702a63df8ea93d43b9896b72322b209f
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68638454"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71178265"
 ---
 # <a name="data-processing-and-user-defined-functions"></a>Gegevensverwerking en door gebruikers gedefinieerde functies
 
@@ -23,7 +23,7 @@ Azure Digital Apparaatdubbels biedt geavanceerde reken mogelijkheden. Ontwikkel 
 
 Nadat apparaten telemetriegegevens naar Azure Digital Apparaatdubbels hebben verzonden, kunnen ontwikkel aars gegevens in vier fasen verwerken: *Validate*, *match*, *Compute*en *Dispatch*.
 
-![Gegevens verwerkings stroom Azure Digital Apparaatdubbels][1]
+[![Gegevens verwerkings stroom Azure Digital Apparaatdubbels](media/concepts/digital-twins-data-processing-flow.png)](media/concepts/digital-twins-data-processing-flow.png#lightbox)
 
 1. Met de validate-fase wordt het inkomende telemetriegegevens getransformeerd naar een veelgebruikte indeling voor [gegevens overdracht](https://docs.microsoft.com/aspnet/web-api/overview/data/using-web-api-with-entity-framework/part-5) . Deze fase voert ook de validatie van het apparaat en de sensor uit.
 1. De match-fase vindt de juiste door de gebruiker gedefinieerde functies die moeten worden uitgevoerd. Vooraf gedefinieerde overeenkomsten zoeken de door de gebruiker gedefinieerde functies op basis van het apparaat, de sensor en de ruimte-informatie uit het binnenkomende telemetrie-bericht.
@@ -32,11 +32,9 @@ Nadat apparaten telemetriegegevens naar Azure Digital Apparaatdubbels hebben ver
 
 ## <a name="data-processing-objects"></a>Gegevens verwerkings objecten
 
-Gegevens verwerking in azure Digital Apparaatdubbels bestaat uit het definiëren van drieobjecten: matchers, door de *gebruiker gedefinieerde functies*en *roltoewijzingen*.
+Gegevens verwerking in azure Digital Apparaatdubbels bestaat uit het definiëren van drie objecten: *matchers*, door de *gebruiker gedefinieerde functies*en *roltoewijzingen*.
 
-![Azure Digital Apparaatdubbels data processing Objects][2]
-
-<div id="matcher"></div>
+[![Azure Digital Apparaatdubbels data processing Objects](media/concepts/digital-twins-user-defined-functions.png)](media/concepts/digital-twins-user-defined-functions.png#lightbox)
 
 ### <a name="matchers"></a>Overeenkomst
 
@@ -92,7 +90,7 @@ Met matchers definieert u een set voor waarden die evalueren welke acties worden
 
 ### <a name="user-defined-functions"></a>Door de gebruiker gedefinieerde functies
 
-Een door de gebruiker gedefinieerde functie is een aangepaste functie die wordt uitgevoerd in een geïsoleerde omgeving met een digitale Apparaatdubbels van Azure. Door de gebruiker gedefinieerde functies hebben toegang tot een bericht van de onbewerkte sensor-telemetrie, zodra het wordt ontvangen. Door de gebruiker gedefinieerde functies hebben ook toegang tot de spatiale grafiek en de dispatcher-service. Nadat de door de gebruiker gedefinieerde functie is geregistreerd binnen een grafiek, moet er een overeenkomende functie (beschreven [hierboven](#matcher)) worden gemaakt om op te geven wanneer de functies worden uitgevoerd. Als bijvoorbeeld Azure Digital Apparaatdubbels nieuwe telemetrie van een bepaalde sensor ontvangt, kan de overeenkomende door de gebruiker gedefinieerde functie een zwevend gemiddelde berekenen van de laatste lees bewerkingen van de sensor.
+Een door de gebruiker gedefinieerde functie is een aangepaste functie die wordt uitgevoerd in een geïsoleerde omgeving met een digitale Apparaatdubbels van Azure. Door de gebruiker gedefinieerde functies hebben toegang tot een bericht van de onbewerkte sensor-telemetrie, zodra het wordt ontvangen. Door de gebruiker gedefinieerde functies hebben ook toegang tot de spatiale grafiek en de dispatcher-service. Nadat de door de gebruiker gedefinieerde functie is geregistreerd binnen een grafiek, moet er een overeenkomende functie (beschreven [hierboven](#matchers)) worden gemaakt om op te geven wanneer de functies worden uitgevoerd. Als bijvoorbeeld Azure Digital Apparaatdubbels nieuwe telemetrie van een bepaalde sensor ontvangt, kan de overeenkomende door de gebruiker gedefinieerde functie een zwevend gemiddelde berekenen van de laatste lees bewerkingen van de sensor.
 
 Door de gebruiker gedefinieerde functies kunnen worden geschreven in Java script. Hulp methoden communiceren met de grafiek in de door de gebruiker gedefinieerde uitvoerings omgeving. Ontwikkel aars kunnen aangepaste code fragmenten uitvoeren op Sens-metrie-berichten. Voorbeelden zijn:
 
@@ -103,14 +101,11 @@ Door de gebruiker gedefinieerde functies kunnen worden geschreven in Java script
 
 Zie [How to use User-defined functions](./how-to-user-defined-functions.md)(Engelstalig) voor meer informatie.
 
-
 #### <a name="examples"></a>Voorbeelden
 
 De [github-opslag plaats voor het digitale C# apparaatdubbels-voor beeld](https://github.com/Azure-Samples/digital-twins-samples-csharp/) bevat enkele voor beelden van de door de gebruiker gedefinieerde functies:
 - [Deze functie](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/userDefinedFunctions/availabilityForTutorial.js) zoekt naar kool dioxide-, bewegings-en temperatuur waarden om te bepalen of een ruimte beschikbaar is met deze waarden in het bereik. De [zelf studies voor Digital apparaatdubbels](tutorial-facilities-udf.md) verkennen deze functie in meer details. 
 - [Deze functie](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/userDefinedFunctions/multiplemotionsensors.js) zoekt naar gegevens uit meerdere bewegings Sens oren en bepaalt of de ruimte beschikbaar is als geen enkele beweging kan worden gedetecteerd. U kunt de door de gebruiker gedefinieerde functie die in de [Snelstartgids](quickstart-view-occupancy-dotnet.md)of de [zelf studies](tutorial-facilities-setup.md)wordt gebruikt, gemakkelijk vervangen door de wijzigingen aan te brengen die worden vermeld in de sectie opmerkingen van het bestand. 
-
-
 
 ### <a name="role-assignment"></a>Roltoewijzing
 
@@ -125,7 +120,3 @@ Het is mogelijk dat een Matcher een door de gebruiker gedefinieerde functie moet
 - Meer informatie over het maken van matchers, door de gebruiker gedefinieerde functies en roltoewijzingen vindt u in de [hand leiding voor het gebruik van door de gebruiker gedefinieerde functies](./how-to-user-defined-functions.md).
 
 - Bekijk de referentie documentatie voor de door de [gebruiker gedefinieerde functie-client bibliotheek](./reference-user-defined-functions-client-library.md).
-
-<!-- Images -->
-[1]: media/concepts/digital-twins-data-processing-flow.png
-[2]: media/concepts/digital-twins-user-defined-functions.png

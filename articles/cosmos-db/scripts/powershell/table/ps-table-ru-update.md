@@ -1,19 +1,20 @@
 ---
-title: 'Azure PowerShell-script: Azure Cosmos DB Update RU/s voor tabel-API'
-description: 'Azure PowerShell-script: Azure Cosmos DB Update RU/s voor tabel-API'
+title: Azure PowerShell script-Azure Cosmos DB RU/s voor Table-API bijwerken
+description: Azure PowerShell script-Azure Cosmos DB RU/s voor Table-API bijwerken
 author: markjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-table
 ms.topic: sample
 ms.date: 05/18/2019
 ms.author: mjbrown
-ms.openlocfilehash: 2c4aab4fa6d4ddf1a99ae86f4fc10c5e84757d30
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: c9a210636dc277eec106248b13ea42ec58bf15b5
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67603783"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71178689"
 ---
-# <a name="update-rus-for-a-table-for-azure-cosmos-db---table-api"></a>RU/s voor een tabel bijwerken voor Azure Cosmos DB - Table-API
+# <a name="update-rus-for-a-table-for-azure-cosmos-db---table-api"></a>Update RU/s voor een tabel voor Azure Cosmos DB-Table-API
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -37,9 +38,9 @@ In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel 
 
 | Opdracht | Opmerkingen |
 |---|---|
-|**Azure Resources**| |
+|**Azure-resources**| |
 | [New-AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | Hiermee maakt u een resource. |
-|**Azure-resourcegroepen**| |
+|**Azure-resource groepen**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Hiermee verwijdert u een resourcegroep met inbegrip van alle geneste resources. |
 |||
 

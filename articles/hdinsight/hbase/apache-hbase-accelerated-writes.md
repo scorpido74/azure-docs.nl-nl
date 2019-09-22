@@ -8,12 +8,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: c24ed7efe9e046a36a05ec5924cbd61d218b1b01
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: bcc9736280b144a77bca57b4f4df1303f4b54796
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71091731"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71179087"
 ---
 # <a name="azure-hdinsight-accelerated-writes-for-apache-hbase"></a>Versnelde schrijf bewerkingen van Azure HDInsight voor Apache HBase
 
@@ -54,6 +54,12 @@ flush 'mytable'
 ```
 disable 'mytable'
 ```
+
+Volg dezelfde stappen bij het schalen van het cluster: uw tabellen leegmaken en tabellen uitschakelen om binnenkomende gegevens te stoppen. U kunt uw cluster niet omlaag schalen naar minder dan drie knoop punten.
+
+Als u deze stappen volgt, zorgt u ervoor dat er een succes volle schaal is en kunt u voor komen dat een namenode in de veilige modus wordt uitgevoerd vanwege gerepliceerde of tijdelijke bestanden.
+
+Als uw namenode na een geschaald naar de veilige modus is, gebruikt u hdfs-opdrachten om de onder-gerepliceerde blokken opnieuw te repliceren en op basis van de veilige weer gave. Met deze nieuwe replicatie kunt u HBase opnieuw starten.
 
 ## <a name="next-steps"></a>Volgende stappen
 
