@@ -67,7 +67,7 @@ De volgende JSON toont het schema voor de uitbrei ding van de toepassings status
 | ---- | ---- | ---- 
 | apiVersion | `2018-10-01` | date |
 | publisher | `Microsoft.ManagedServices` | string |
-| Type | `ApplicationHealthLinux` (Linux), `ApplicationHealthWindows` (Windows) | string |
+| type | `ApplicationHealthLinux` (Linux), `ApplicationHealthWindows` (Windows) | string |
 | typeHandlerVersion | `1.0` | int |
 
 ### <a name="settings"></a>Instellingen
