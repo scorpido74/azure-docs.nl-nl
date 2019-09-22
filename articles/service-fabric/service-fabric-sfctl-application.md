@@ -28,7 +28,7 @@ Toepassingen en toepassings typen maken, verwijderen en beheren.
 |Opdracht|Description|
 | --- | --- |
 | create | Hiermee maakt u een Service Fabric-toepassing met behulp van de opgegeven beschrijving. |
-| verwijderen | Hiermee verwijdert u een bestaande Service Fabric-toepassing. |
+| delete | Hiermee verwijdert u een bestaande Service Fabric-toepassing. |
 | deployed | Hiermee wordt de informatie opgehaald over een toepassing die op een Service Fabric knoop punt is geïmplementeerd. |
 | deployed-health | Hiermee haalt u de informatie over de status van een toepassing die op een Service Fabric knoop punt is geïmplementeerd. |
 | deployed-list | Hiermee haalt u de lijst met toepassingen die zijn geïmplementeerd op een Service Fabric knoop punt. |
@@ -39,7 +39,7 @@ Toepassingen en toepassings typen maken, verwijderen en beheren.
 | manifest | Hiermee wordt het manifest opgehaald dat een toepassings type beschrijft. |
 | provision | Hiermee wordt een Service Fabric toepassings type met het cluster ingericht of geregistreerd met behulp van het. sfpkg-pakket in de externe opslag of met behulp van het toepassings pakket in het archief met installatie kopieën. |
 | report-health | Hiermee verzendt u een status rapport op de Service Fabric-toepassing. |
-| Type | Hiermee haalt u de lijst met toepassings typen in het Service Fabric cluster die overeenkomen met de opgegeven naam. |
+| type | Hiermee haalt u de lijst met toepassings typen in het Service Fabric cluster die overeenkomen met de opgegeven naam. |
 | type-list | Hiermee haalt u de lijst met toepassings typen op in het Service Fabric cluster. |
 | unprovision | Hiermee verwijdert of maakt u de registratie van een Service Fabric toepassings type van het cluster ongedaan. |
 | upgrade | Hiermee wordt een toepassing in het Service Fabric cluster bijgewerkt. |
