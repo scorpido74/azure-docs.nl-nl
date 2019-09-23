@@ -85,7 +85,7 @@ De Notification Hub is geconfigureerd om te werken met FCM en u hebt de verbindi
     ![Pakketnaam in GCM](./media/partner-xamarin-notification-hubs-android-get-started/package-name-gcm.png)
 4. Stel de Android-doel versie voor het project in op **android 9,0 (cirkel)** door de volgende stappen uit te voeren: 
     1. Klik met de rechter muisknop op het project en selecteer **Eigenschappen**. 
-    1. Voor het **compileren met behulp van Android-versie: (Target Framework) selecteert u **Android 9,0 (cirkel).**** 
+    1. Voor het **compileren met behulp van Android-versie: (Target Framework)** selecteert u **Android 9,0 (cirkel).** 
     1. Selecteer **Ja** in het bericht venster om door te gaan met het wijzigen van het doel raamwerk.
 1. Voeg de vereiste NuGet-pakketten aan het project toe door de volgende stappen uit te voeren:
     1. Klik met de rechtermuisknop op het project en selecteer **Manage NuGet Packages...** .

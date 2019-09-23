@@ -1,19 +1,19 @@
 ---
-title: Een ondersteunings ticket openen voor Azure HPC-cache
+title: Open een ondersteunings ticket voor de Azure HPC-cache (preview-versie)
 description: Een Help-aanvraag voor Azure HPC-cache openen
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 09/12/2019
 ms.author: v-erkell
-ms.openlocfilehash: d845195940fdba81562acf4c0cfe9069245bd34c
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 29750ab19f74ef1ceab8c69792d12b9f9ca2a297
+ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71036890"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71180890"
 ---
-# <a name="open-a-support-ticket-for-azure-hpc-cache"></a>Een ondersteunings ticket openen voor Azure HPC-cache
+# <a name="open-a-support-ticket-for-azure-hpc-cache-preview"></a>Open een ondersteunings ticket voor de Azure HPC-cache (preview-versie)
 
 Gebruik de Azure Portal om een ondersteunings ticket te openen. Navigeer naar uw cache-exemplaar en klik vervolgens op de koppeling **nieuwe ondersteunings aanvraag** die onder aan de zijbalk wordt weer gegeven.
 

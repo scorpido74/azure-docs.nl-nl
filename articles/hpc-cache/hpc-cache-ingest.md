@@ -1,19 +1,19 @@
 ---
-title: Gegevens verplaatsen naar een Cloud container van een Azure HPC-cache
+title: Gegevens verplaatsen naar een Cloud container van een Azure HPC-cache (preview-versie)
 description: Azure Blob-opslag vullen voor gebruik met de Azure HPC-cache
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: v-erkell
-ms.openlocfilehash: 0a71efdc0479a69aed8fecc22a6c89c506279d57
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 103470861383ff411cfaa670d70412086045a418
+ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71105315"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71180721"
 ---
-# <a name="move-data-to-azure-blob-storage-for-azure-hpc-cache"></a>Gegevens verplaatsen naar Azure Blob-opslag voor Azure HPC-cache
+# <a name="move-data-to-azure-blob-storage-for-azure-hpc-cache-preview"></a>Gegevens verplaatsen naar Azure Blob-opslag voor Azure HPC-cache (preview-versie)
 
 Als uw werk stroom het verplaatsen van gegevens naar Azure Blob-opslag bevat, moet u ervoor zorgen dat u een efficiënte strategie gebruikt om uw gegevens te kopiëren via de Azure HPC-cache.
 
@@ -33,7 +33,7 @@ Als u het laad hulpprogramma niet wilt gebruiken of als u inhoud wilt toevoegen 
 
 U kunt met behulp van de <!--[Avere CLFSLoad](https://aka.ms/avere-clfsload)--> AVERE CLFSLoad-hulp programma voor het kopiëren van gegevens naar een nieuwe Blob Storage-container voordat u deze toevoegt als een opslag doel. Dit hulp programma wordt uitgevoerd op één Linux-systeem en schrijft gegevens in de eigen indeling die nodig is voor de Azure HPC-cache. CLFSLoad is de meest efficiënte manier om een BLOB storage-container te vullen voor gebruik met de cache.
 
-Het avere CLFSLoad-hulp programma is beschikbaar op verzoek van uw Azure HPC-cache team. Vraag de contact persoon van uw team of open een ondersteunings ticket om hulp aan te vragen.
+Het avere CLFSLoad-hulp programma is beschikbaar op verzoek van uw Azure HPC-cache team. Vraag uw team contact op te nemen of open een [ondersteunings ticket](hpc-cache-support-ticket.md) om hulp aan te vragen.
 
 Deze optie werkt met nieuwe, lege containers. Maak de container voordat u avere CLFSLoad gebruikt.
 
@@ -60,7 +60,7 @@ Als u het hulp programma avere CLFSLoad niet wilt gebruiken of als u een grote h
 
 ![Diagram van weer gave van gegevens verplaatsing met meerdere clients, meerdere threads: Linksboven bevindt zich in een pictogram voor on-premises hardware-opslag meerdere pijlen. De pijlen verwijzen naar vier client machines. Vanaf elke client computer worden drie pijlen naar de Azure HPC-cache gericht. Vanuit de Azure HPC-cache verwijzen meerdere pijlen naar Blob Storage.](media/hpc-cache-parallel-ingest.png) 
 
-De ``cp`` opdrachten ``copy`` of die u doorgaans gebruikt voor het overdragen van gegevens van het ene opslag systeem naar het andere, zijn processen met één thread waarmee slechts één bestand tegelijk wordt gekopieerd. Dit betekent dat de bestands server slechts één bestand tegelijk opneemt. Dit is een afval van de resources van het cluster.
+De ``cp`` opdrachten ``copy`` of die u doorgaans gebruikt voor het overdragen van gegevens van het ene opslag systeem naar het andere, zijn processen met één thread waarmee slechts één bestand tegelijk wordt gekopieerd. Dit betekent dat de bestands server slechts één bestand tegelijkertijd bijwerkt. Dit is een afval van de bronnen in de cache.
 
 In deze sectie worden strategieën uitgelegd voor het maken van een multi-client, multi-threaded bestand voor het kopiëren van gegevens naar Blob Storage met Azure HPC-cache. Hierin worden de concepten van bestands overdracht en beslissings punten uitgelegd die kunnen worden gebruikt voor het efficiënt kopiëren van gegevens met meerdere clients en eenvoudige Kopieer opdrachten.
 

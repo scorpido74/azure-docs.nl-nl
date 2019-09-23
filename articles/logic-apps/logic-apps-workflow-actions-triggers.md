@@ -65,8 +65,8 @@ Triggers hebben deze elementen op het hoogste niveau, maar sommige zijn optionee
 |-------|------|-------------| 
 | <*matrix-met-voor waarden*> | Array | Een matrix die een of meer [voor waarden](#trigger-conditions) bevat die bepalen of de werk stroom moet worden uitgevoerd. Alleen beschikbaar voor triggers. | 
 | <*runtime-configuratie-opties*> | JSON-object | U kunt gedrag van trigger runtime wijzigen door `runtimeConfiguration` eigenschappen in te stellen. Zie runtime-configuratie- [instellingen](#runtime-config-options)voor meer informatie. | 
-| <*splitOn-expression*> | Tekenreeks | Voor triggers die een matrix retour neren, kunt u een expressie opgeven waarmee matrix items in meerdere workflowexemplaren voor verwerking worden [gesplitst of ](#split-on-debatch) gebatcheerd. | 
-| <*bewerking-optie*> | Tekenreeks | U kunt het standaard gedrag wijzigen door de `operationOptions` eigenschap in te stellen. Zie bewerkings [Opties](#operation-options)voor meer informatie. | 
+| <*splitOn-expression*> | String | Voor triggers die een matrix retour neren, kunt u een expressie opgeven waarmee matrix items in meerdere workflowexemplaren voor verwerking worden [gesplitst of ](#split-on-debatch) gebatcheerd. | 
+| <*bewerking-optie*> | String | U kunt het standaard gedrag wijzigen door de `operationOptions` eigenschap in te stellen. Zie bewerkings [Opties](#operation-options)voor meer informatie. | 
 |||| 
 
 ## <a name="trigger-types-list"></a>Lijst met trigger typen
@@ -132,11 +132,11 @@ Deze trigger *controleert of* doorstuurt een eind punt met behulp van door [micr
 
 | Value | type | Description | 
 |-------|------|-------------| 
-| <*APIConnection_trigger_name*> | Tekenreeks | De naam voor de trigger | 
-| <*verbindings naam*> | Tekenreeks | De naam voor de verbinding met de beheerde API die door de werk stroom wordt gebruikt | 
-| <*methode-type*> | Tekenreeks | De HTTP-methode voor communicatie met de beheerde API: ' GET ', ' PUT ', ' POST ', ' PATCH ', ' DELETE ' | 
-| <*api-operation*> | Tekenreeks | De API-bewerking die moet worden aangeroepen | 
-| <*time-unit*> | Tekenreeks | De tijds eenheid die beschrijft hoe vaak de trigger wordt geactiveerd: "Seconde", "minuut", "uur", "dag", "week", "maand" | 
+| <*APIConnection_trigger_name*> | String | De naam voor de trigger | 
+| <*verbindings naam*> | String | De naam voor de verbinding met de beheerde API die door de werk stroom wordt gebruikt | 
+| <*methode-type*> | String | De HTTP-methode voor communicatie met de beheerde API: ' GET ', ' PUT ', ' POST ', ' PATCH ', ' DELETE ' | 
+| <*api-operation*> | String | De API-bewerking die moet worden aangeroepen | 
+| <*time-unit*> | String | De tijds eenheid die beschrijft hoe vaak de trigger wordt geactiveerd: "Seconde", "minuut", "uur", "dag", "week", "maand" | 
 | <*number-of-time-units*> | Integer | Een waarde die aangeeft hoe vaak de trigger wordt geactiveerd op basis van de frequentie. Dit is het aantal tijds eenheden dat moet worden gewacht totdat de trigger opnieuw wordt geactiveerd. <p>Dit zijn de minimale en maximale intervallen: <p>Blijft 1-16 maanden </br>Profieldag 1-500 dagen </br>Uur 1-12000 uur </br>Notulen 1-72000 minuten </br>Tweede 1-9999999 seconden<p>Als het interval bijvoorbeeld 6 is en de frequentie "month" is, is het terugkeer patroon elke 6 maanden. | 
 |||| 
 
@@ -148,8 +148,8 @@ Deze trigger *controleert of* doorstuurt een eind punt met behulp van door [micr
 | <*query-para meters*> | JSON-object | Alle query parameters die moeten worden toegevoegd met de API-aanroep. Het `"queries": { "api-version": "2018-01-01" }` object wordt bijvoorbeeld toegevoegd `?api-version=2018-01-01` aan de aanroep. | 
 | <*max-runs*> | Integer | Standaard worden werk stroom exemplaren op hetzelfde moment uitgevoerd of parallel op de [standaard limiet](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Als u deze limiet wilt wijzigen door een nieuwe <*aantal*> waarde in te stellen, raadpleegt u de gelijktijdigheid van [triggers wijzigen](#change-trigger-concurrency). | 
 | <*max-runs-queue*> | Integer | Als voor uw werk stroom al het maximum aantal exemplaren wordt uitgevoerd dat u op basis van de `runtimeConfiguration.concurrency.runs` eigenschap kunt wijzigen, worden nieuwe uitvoeringen in deze wachtrij geplaatst tot de [standaard limiet](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Zie de limiet voor het uitvoeren van een [wacht](#change-waiting-runs)tijd wijzigen om de standaard limiet te wijzigen. | 
-| <*splitOn-expression*> | Tekenreeks | Voor triggers die matrices retour neren, verwijst deze expressie naar de matrix die moet worden gebruikt, zodat u een werk stroom exemplaar voor elk matrix item kunt maken en uitvoeren, in plaats van een ' voor elke ' lus te gebruiken. <p>Deze expressie vertegenwoordigt bijvoorbeeld een item in de matrix die wordt geretourneerd in de hoofd inhoud van de trigger:`@triggerbody()?['value']` |
-| <*bewerking-optie*> | Tekenreeks | U kunt het standaard gedrag wijzigen door de `operationOptions` eigenschap in te stellen. Zie bewerkings [Opties](#operation-options)voor meer informatie. |
+| <*splitOn-expression*> | String | Voor triggers die matrices retour neren, verwijst deze expressie naar de matrix die moet worden gebruikt, zodat u een werk stroom exemplaar voor elk matrix item kunt maken en uitvoeren, in plaats van een ' voor elke ' lus te gebruiken. <p>Deze expressie vertegenwoordigt bijvoorbeeld een item in de matrix die wordt geretourneerd in de hoofd inhoud van de trigger:`@triggerbody()?['value']` |
+| <*bewerking-optie*> | String | U kunt het standaard gedrag wijzigen door de `operationOptions` eigenschap in te stellen. Zie bewerkings [Opties](#operation-options)voor meer informatie. |
 ||||
 
 *Uitvoer*
@@ -226,7 +226,7 @@ Deze trigger verzendt een abonnements aanvraag naar een eind punt met behulp van
 
 | Value | type | Description | 
 |-------|------|-------------| 
-| <*verbindings naam*> | Tekenreeks | De naam voor de verbinding met de beheerde API die door de werk stroom wordt gebruikt | 
+| <*verbindings naam*> | String | De naam voor de verbinding met de beheerde API die door de werk stroom wordt gebruikt | 
 | <*body-content*> | JSON-object | Bericht inhoud die als Payload moet worden verzonden naar de beheerde API | 
 |||| 
 
@@ -238,8 +238,8 @@ Deze trigger verzendt een abonnements aanvraag naar een eind punt met behulp van
 | <*query-para meters*> | JSON-object | Alle query parameters die moeten worden toegevoegd met de API-aanroep <p>Het `"queries": { "api-version": "2018-01-01" }` object wordt bijvoorbeeld toegevoegd `?api-version=2018-01-01` aan de aanroep. | 
 | <*max-runs*> | Integer | Standaard worden werk stroom exemplaren op hetzelfde moment uitgevoerd of parallel op de [standaard limiet](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Als u deze limiet wilt wijzigen door een nieuwe <*aantal*> waarde in te stellen, raadpleegt u de gelijktijdigheid van [triggers wijzigen](#change-trigger-concurrency). | 
 | <*max-runs-queue*> | Integer | Als voor uw werk stroom al het maximum aantal exemplaren wordt uitgevoerd dat u op basis van de `runtimeConfiguration.concurrency.runs` eigenschap kunt wijzigen, worden nieuwe uitvoeringen in deze wachtrij geplaatst tot de [standaard limiet](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Zie de limiet voor het uitvoeren van een [wacht](#change-waiting-runs)tijd wijzigen om de standaard limiet te wijzigen. | 
-| <*splitOn-expression*> | Tekenreeks | Voor triggers die matrices retour neren, verwijst deze expressie naar de matrix die moet worden gebruikt, zodat u een werk stroom exemplaar voor elk matrix item kunt maken en uitvoeren, in plaats van een ' voor elke ' lus te gebruiken. <p>Deze expressie vertegenwoordigt bijvoorbeeld een item in de matrix die wordt geretourneerd in de hoofd inhoud van de trigger:`@triggerbody()?['value']` |
-| <*bewerking-optie*> | Tekenreeks | U kunt het standaard gedrag wijzigen door de `operationOptions` eigenschap in te stellen. Zie bewerkings [Opties](#operation-options)voor meer informatie. | 
+| <*splitOn-expression*> | String | Voor triggers die matrices retour neren, verwijst deze expressie naar de matrix die moet worden gebruikt, zodat u een werk stroom exemplaar voor elk matrix item kunt maken en uitvoeren, in plaats van een ' voor elke ' lus te gebruiken. <p>Deze expressie vertegenwoordigt bijvoorbeeld een item in de matrix die wordt geretourneerd in de hoofd inhoud van de trigger:`@triggerbody()?['value']` |
+| <*bewerking-optie*> | String | U kunt het standaard gedrag wijzigen door de `operationOptions` eigenschap in te stellen. Zie bewerkings [Opties](#operation-options)voor meer informatie. | 
 |||| 
 
 *Voorbeeld*
@@ -305,9 +305,9 @@ Met deze trigger wordt het opgegeven eind punt gecontroleerd of pollt dit op bas
 
 | Value | type | Description | 
 |-------|------|-------------| 
-| <*methode-type*> | Tekenreeks | De HTTP-methode die moet worden gebruikt voor het pollen van het opgegeven eind punt: ' GET ', ' PUT ', ' POST ', ' PATCH ', ' DELETE ' | 
-| <*endpoint-URL*> | Tekenreeks | De HTTP-of HTTPS-URL voor het eind punt dat moet worden gecontroleerd <p>Maximale teken reeks grootte: 2 KB | 
-| <*time-unit*> | Tekenreeks | De tijds eenheid die beschrijft hoe vaak de trigger wordt geactiveerd: "Seconde", "minuut", "uur", "dag", "week", "maand" | 
+| <*methode-type*> | String | De HTTP-methode die moet worden gebruikt voor het pollen van het opgegeven eind punt: ' GET ', ' PUT ', ' POST ', ' PATCH ', ' DELETE ' | 
+| <*endpoint-URL*> | String | De HTTP-of HTTPS-URL voor het eind punt dat moet worden gecontroleerd <p>Maximale teken reeks grootte: 2 KB | 
+| <*time-unit*> | String | De tijds eenheid die beschrijft hoe vaak de trigger wordt geactiveerd: "Seconde", "minuut", "uur", "dag", "week", "maand" | 
 | <*number-of-time-units*> | Integer | Een waarde die aangeeft hoe vaak de trigger wordt geactiveerd op basis van de frequentie. Dit is het aantal tijds eenheden dat moet worden gewacht totdat de trigger opnieuw wordt geactiveerd. <p>Dit zijn de minimale en maximale intervallen: <p>Blijft 1-16 maanden </br>Profieldag 1-500 dagen </br>Uur 1-12000 uur </br>Notulen 1-72000 minuten </br>Tweede 1-9999999 seconden<p>Als het interval bijvoorbeeld 6 is en de frequentie "month" is, is het terugkeer patroon elke 6 maanden. | 
 |||| 
 
@@ -316,13 +316,13 @@ Met deze trigger wordt het opgegeven eind punt gecontroleerd of pollt dit op bas
 | Value | type | Description | 
 |-------|------|-------------| 
 | <*header-content*> | JSON-object | De headers die met de aanvraag moeten worden verzonden <p>Als u bijvoorbeeld de taal en het type voor een aanvraag wilt instellen: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` |
-| <*body-content*> | Tekenreeks | De inhoud van het bericht dat moet worden verzonden als Payload met de aanvraag | 
+| <*body-content*> | String | De inhoud van het bericht dat moet worden verzonden als Payload met de aanvraag | 
 | <*verificatie-methode*> | JSON-object | De methode die de aanvraag gebruikt voor verificatie. Zie voor meer informatie [scheduler outbound Authentication](../scheduler/scheduler-outbound-authentication.md)(Engelstalig). Behalve scheduler, wordt `authority` de eigenschap ondersteund. Wanneer deze niet is opgegeven, is `https://login.windows.net`de standaard waarde, maar u kunt een andere waarde gebruiken,`https://login.windows\-ppe.net`bijvoorbeeld. |
 | <*opnieuw proberen*> | JSON-object | Hiermee past u het gedrag voor opnieuw proberen aan voor periodieke storingen, die de status code 408, 429 en 5XX en eventuele connectiviteits uitzonderingen hebben. Zie [beleid voor opnieuw proberen](../logic-apps/logic-apps-exception-handling.md#retry-policies)voor meer informatie. |  
  <*query-para meters*> | JSON-object | Alle query parameters die met de aanvraag moeten worden meegenomen <p>Het `"queries": { "api-version": "2018-01-01" }` object wordt bijvoorbeeld toegevoegd `?api-version=2018-01-01` aan de aanvraag. | 
 | <*max-runs*> | Integer | Standaard worden werk stroom exemplaren op hetzelfde moment uitgevoerd of parallel op de [standaard limiet](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Als u deze limiet wilt wijzigen door een nieuwe <*aantal*> waarde in te stellen, raadpleegt u de gelijktijdigheid van [triggers wijzigen](#change-trigger-concurrency). | 
 | <*max-runs-queue*> | Integer | Als voor uw werk stroom al het maximum aantal exemplaren wordt uitgevoerd dat u op basis van de `runtimeConfiguration.concurrency.runs` eigenschap kunt wijzigen, worden nieuwe uitvoeringen in deze wachtrij geplaatst tot de [standaard limiet](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Zie de limiet voor het uitvoeren van een [wacht](#change-waiting-runs)tijd wijzigen om de standaard limiet te wijzigen. | 
-| <*bewerking-optie*> | Tekenreeks | U kunt het standaard gedrag wijzigen door de `operationOptions` eigenschap in te stellen. Zie bewerkings [Opties](#operation-options)voor meer informatie. | 
+| <*bewerking-optie*> | String | U kunt het standaard gedrag wijzigen door de `operationOptions` eigenschap in te stellen. Zie bewerkings [Opties](#operation-options)voor meer informatie. | 
 |||| 
 
 *Uitvoer*
@@ -402,22 +402,22 @@ Sommige waarden, zoals <*methode-type*>, zijn beschikbaar voor zowel de `"subscr
 
 | Value | type | Description | 
 |-------|------|-------------| 
-| <*methode-type*> | Tekenreeks | De HTTP-methode die moet worden gebruikt voor de abonnements aanvraag: ' GET ', ' PUT ', ' POST ', ' PATCH ' of ' DELETE ' | 
-| <*endpoint-subscribe-URL*> | Tekenreeks | De eind punt-URL waarnaar de abonnements aanvraag moet worden verzonden | 
+| <*methode-type*> | String | De HTTP-methode die moet worden gebruikt voor de abonnements aanvraag: ' GET ', ' PUT ', ' POST ', ' PATCH ' of ' DELETE ' | 
+| <*endpoint-subscribe-URL*> | String | De eind punt-URL waarnaar de abonnements aanvraag moet worden verzonden | 
 |||| 
 
 *Beschrijving*
 
 | Value | type | Description | 
 |-------|------|-------------| 
-| <*methode-type*> | Tekenreeks | De HTTP-methode die moet worden gebruikt voor de annulerings aanvraag: ' GET ', ' PUT ', ' POST ', ' PATCH ' of ' DELETE ' | 
-| <*endpoint-unsubscribe-URL*> | Tekenreeks | De eind punt-URL waarnaar de annulerings aanvraag moet worden verzonden | 
-| <*body-content*> | Tekenreeks | Bericht inhoud die in het abonnement of de annulerings aanvraag moet worden verzonden | 
+| <*methode-type*> | String | De HTTP-methode die moet worden gebruikt voor de annulerings aanvraag: ' GET ', ' PUT ', ' POST ', ' PATCH ' of ' DELETE ' | 
+| <*endpoint-unsubscribe-URL*> | String | De eind punt-URL waarnaar de annulerings aanvraag moet worden verzonden | 
+| <*body-content*> | String | Bericht inhoud die in het abonnement of de annulerings aanvraag moet worden verzonden | 
 | <*verificatie-methode*> | JSON-object | De methode die de aanvraag gebruikt voor verificatie. Zie voor meer informatie [scheduler outbound Authentication](../scheduler/scheduler-outbound-authentication.md)(Engelstalig). |
 | <*opnieuw proberen*> | JSON-object | Hiermee past u het gedrag voor opnieuw proberen aan voor periodieke storingen, die de status code 408, 429 en 5XX en eventuele connectiviteits uitzonderingen hebben. Zie [beleid voor opnieuw proberen](../logic-apps/logic-apps-exception-handling.md#retry-policies)voor meer informatie. | 
 | <*max-runs*> | Integer | Standaard worden alle werk stroom exemplaren gelijktijdig uitgevoerd of parallel op basis van de [standaard limiet](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Als u deze limiet wilt wijzigen door een nieuwe <*aantal*> waarde in te stellen, raadpleegt u de gelijktijdigheid van [triggers wijzigen](#change-trigger-concurrency). | 
 | <*max-runs-queue*> | Integer | Als voor uw werk stroom al het maximum aantal exemplaren wordt uitgevoerd dat u op basis van de `runtimeConfiguration.concurrency.runs` eigenschap kunt wijzigen, worden nieuwe uitvoeringen in deze wachtrij geplaatst tot de [standaard limiet](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Zie de limiet voor het uitvoeren van een [wacht](#change-waiting-runs)tijd wijzigen om de standaard limiet te wijzigen. | 
-| <*bewerking-optie*> | Tekenreeks | U kunt het standaard gedrag wijzigen door de `operationOptions` eigenschap in te stellen. Zie bewerkings [Opties](#operation-options)voor meer informatie. | 
+| <*bewerking-optie*> | String | U kunt het standaard gedrag wijzigen door de `operationOptions` eigenschap in te stellen. Zie bewerkings [Opties](#operation-options)voor meer informatie. | 
 |||| 
 
 *Uitvoer* 
@@ -496,7 +496,7 @@ Deze trigger wordt uitgevoerd op basis van het opgegeven terugkeer schema en bie
 
 | Value | type | Description | 
 |-------|------|-------------| 
-| <*time-unit*> | Tekenreeks | De tijds eenheid die beschrijft hoe vaak de trigger wordt geactiveerd: "Seconde", "minuut", "uur", "dag", "week", "maand" | 
+| <*time-unit*> | String | De tijds eenheid die beschrijft hoe vaak de trigger wordt geactiveerd: "Seconde", "minuut", "uur", "dag", "week", "maand" | 
 | <*number-of-time-units*> | Integer | Een waarde die aangeeft hoe vaak de trigger wordt geactiveerd op basis van de frequentie. Dit is het aantal tijds eenheden dat moet worden gewacht totdat de trigger opnieuw wordt geactiveerd. <p>Dit zijn de minimale en maximale intervallen: <p>Blijft 1-16 maanden </br>Profieldag 1-500 dagen </br>Uur 1-12000 uur </br>Notulen 1-72000 minuten </br>Tweede 1-9999999 seconden<p>Als het interval bijvoorbeeld 6 is en de frequentie "month" is, is het terugkeer patroon elke 6 maanden. | 
 |||| 
 
@@ -504,14 +504,14 @@ Deze trigger wordt uitgevoerd op basis van het opgegeven terugkeer schema en bie
 
 | Value | type | Description | 
 |-------|------|-------------| 
-| <*start-date-time-with-Format-JJJJ-MM-DDTuu: mm: SS*> | Tekenreeks | De begin datum en-tijd in deze indeling: <p>JJJJ-MM-DDTuu: mm: SS als u een tijd zone opgeeft <p>-of- <p>JJJJ-MM-DDTuu: mm: ssZ als u geen tijd zone opgeeft <p>Als u bijvoorbeeld 18 september 2017 om 2:00 uur wilt, geeft u "2017-09-18T14:00:00" op en geeft u een tijd zone op zoals "Pacific (standaard tijd), of geeft u" 2017-09-18T14:00:00Z "op zonder tijd zone. <p>**Opmerking:** Deze begin tijd heeft een maximum van 49 jaar in de toekomst en moet voldoen aan de [ISO 8601 date time-specificatie](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) in [UTC datum tijd notatie](https://en.wikipedia.org/wiki/Coordinated_Universal_Time), maar zonder een [UTC-afwijking](https://en.wikipedia.org/wiki/UTC_offset). Als u geen tijd zone opgeeft, moet u de letter ' Z ' aan het einde toevoegen zonder spaties. Deze "Z" verwijst naar de equivalente [zeemijl tijd](https://en.wikipedia.org/wiki/Nautical_time). <p>Voor eenvoudige schema's is de start tijd het eerste voorval, terwijl voor complexe schema's de trigger niet eerder dan de begin tijd wordt geactiveerd. Zie [taken die regel matig worden uitgevoerd maken en plannen](../connectors/connectors-native-recurrence.md)voor meer informatie over begin datums en-tijden. | 
-| <*time-zone*> | Tekenreeks | Is alleen van toepassing wanneer u een start tijd opgeeft, omdat deze trigger geen [UTC-offset](https://en.wikipedia.org/wiki/UTC_offset)accepteert. Geef de tijd zone op die u wilt Toep assen. | 
+| <*start-date-time-with-Format-JJJJ-MM-DDTuu: mm: SS*> | String | De begin datum en-tijd in deze indeling: <p>JJJJ-MM-DDTuu: mm: SS als u een tijd zone opgeeft <p>-of- <p>JJJJ-MM-DDTuu: mm: ssZ als u geen tijd zone opgeeft <p>Als u bijvoorbeeld 18 september 2017 om 2:00 uur wilt, geeft u "2017-09-18T14:00:00" op en geeft u een tijd zone op zoals "Pacific (standaard tijd), of geeft u" 2017-09-18T14:00:00Z "op zonder tijd zone. <p>**Opmerking:** Deze begin tijd heeft een maximum van 49 jaar in de toekomst en moet voldoen aan de [ISO 8601 date time-specificatie](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) in [UTC datum tijd notatie](https://en.wikipedia.org/wiki/Coordinated_Universal_Time), maar zonder een [UTC-afwijking](https://en.wikipedia.org/wiki/UTC_offset). Als u geen tijd zone opgeeft, moet u de letter ' Z ' aan het einde toevoegen zonder spaties. Deze "Z" verwijst naar de equivalente [zeemijl tijd](https://en.wikipedia.org/wiki/Nautical_time). <p>Voor eenvoudige schema's is de start tijd het eerste voorval, terwijl voor complexe schema's de trigger niet eerder dan de begin tijd wordt geactiveerd. Zie [taken die regel matig worden uitgevoerd maken en plannen](../connectors/connectors-native-recurrence.md)voor meer informatie over begin datums en-tijden. | 
+| <*time-zone*> | String | Is alleen van toepassing wanneer u een start tijd opgeeft, omdat deze trigger geen [UTC-offset](https://en.wikipedia.org/wiki/UTC_offset)accepteert. Geef de tijd zone op die u wilt Toep assen. | 
 | <*one-or-more-hour-marks*> | Geheel getal of gehele matrix | Als u "dag" of "week" `frequency`opgeeft, kunt u een of meer gehele getallen van 0 tot en met 23 opgeven, gescheiden door komma's, als uren van de dag waarop u de werk stroom wilt uitvoeren. <p>Als u bijvoorbeeld "10", "12" en "14" opgeeft, krijgt u een dag van 10 uur, 12 uur en 2 PM. | 
 | <*een of meer minuut markeringen*> | Geheel getal of gehele matrix | Als u "dag" of "week" `frequency`opgeeft, kunt u een of meer gehele getallen van 0 tot en met 59 opgeven, gescheiden door komma's, als de minuten van het uur wanneer u de werk stroom wilt uitvoeren. <p>U kunt bijvoorbeeld "30" opgeven als het minuut merk en het vorige voor beeld gebruiken voor uren van de dag, u krijgt 10:30 uur, 12:30 uur en 2:30 uur. | 
 | weekDays | Teken reeks of teken reeks matrix | Als u ' week ' `frequency`opgeeft, kunt u een of meer dagen opgeven, gescheiden door komma's, wanneer u de werk stroom wilt uitvoeren: "Maandag", "dinsdag", "woensdag", "donderdag", "vrijdag", "zaterdag" en "zondag" | 
 | <*max-runs*> | Integer | Standaard worden alle werk stroom exemplaren gelijktijdig uitgevoerd of parallel op basis van de [standaard limiet](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Als u deze limiet wilt wijzigen door een nieuwe <*aantal*> waarde in te stellen, raadpleegt u de gelijktijdigheid van [triggers wijzigen](#change-trigger-concurrency). | 
 | <*max-runs-queue*> | Integer | Als voor uw werk stroom al het maximum aantal exemplaren wordt uitgevoerd dat u op basis van de `runtimeConfiguration.concurrency.runs` eigenschap kunt wijzigen, worden nieuwe uitvoeringen in deze wachtrij geplaatst tot de [standaard limiet](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Zie de limiet voor het uitvoeren van een [wacht](#change-waiting-runs)tijd wijzigen om de standaard limiet te wijzigen. | 
-| <*bewerking-optie*> | Tekenreeks | U kunt het standaard gedrag wijzigen door de `operationOptions` eigenschap in te stellen. Zie bewerkings [Opties](#operation-options)voor meer informatie. | 
+| <*bewerking-optie*> | String | U kunt het standaard gedrag wijzigen door de `operationOptions` eigenschap in te stellen. Zie bewerkings [Opties](#operation-options)voor meer informatie. | 
 |||| 
 
 *Voorbeeld 1*
@@ -605,20 +605,20 @@ Als u deze trigger wilt aanroepen, moet `listCallbackUrl` u de API gebruiken, di
 
 | Value | type | Description | 
 |-------|------|-------------| 
-| <*eigenschap-naam*> | Tekenreeks | De naam van een eigenschap in het JSON-schema, waarmee de nettolading wordt beschreven | 
-| <*eigenschap-type*> | Tekenreeks | Het type eigenschap | 
+| <*eigenschap-naam*> | String | De naam van een eigenschap in het JSON-schema, waarmee de nettolading wordt beschreven | 
+| <*eigenschap-type*> | String | Het type eigenschap | 
 |||| 
 
 *Beschrijving*
 
 | Value | type | Description | 
 |-------|------|-------------| 
-| <*methode-type*> | Tekenreeks | De methode die binnenkomende aanvragen moet gebruiken om uw logische app aan te roepen: ' GET ', ' PUT ', ' POST ', ' PATCH ', ' DELETE ' |
-| <*relatief pad-voor geaccepteerde para meters*> | Tekenreeks | Het relatieve pad voor de para meter die door de URL van uw eind punt kan worden geaccepteerd | 
+| <*methode-type*> | String | De methode die binnenkomende aanvragen moet gebruiken om uw logische app aan te roepen: ' GET ', ' PUT ', ' POST ', ' PATCH ', ' DELETE ' |
+| <*relatief pad-voor geaccepteerde para meters*> | String | Het relatieve pad voor de para meter die door de URL van uw eind punt kan worden geaccepteerd | 
 | <*vereist-eigenschappen*> | Array | Een of meer eigenschappen waarvoor waarden zijn vereist | 
 | <*max-runs*> | Integer | Standaard worden alle werk stroom exemplaren gelijktijdig uitgevoerd of parallel op basis van de [standaard limiet](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Als u deze limiet wilt wijzigen door een nieuwe <*aantal*> waarde in te stellen, raadpleegt u de gelijktijdigheid van [triggers wijzigen](#change-trigger-concurrency). | 
 | <*max-runs-queue*> | Integer | Als voor uw werk stroom al het maximum aantal exemplaren wordt uitgevoerd dat u op basis van de `runtimeConfiguration.concurrency.runs` eigenschap kunt wijzigen, worden nieuwe uitvoeringen in deze wachtrij geplaatst tot de [standaard limiet](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Zie de limiet voor het uitvoeren van een [wacht](#change-waiting-runs)tijd wijzigen om de standaard limiet te wijzigen. | 
-| <*bewerking-optie*> | Tekenreeks | U kunt het standaard gedrag wijzigen door de `operationOptions` eigenschap in te stellen. Zie bewerkings [Opties](#operation-options)voor meer informatie. | 
+| <*bewerking-optie*> | String | U kunt het standaard gedrag wijzigen door de `operationOptions` eigenschap in te stellen. Zie bewerkings [Opties](#operation-options)voor meer informatie. | 
 |||| 
 
 *Voorbeeld*
@@ -778,9 +778,9 @@ Acties hebben deze elementen op hoog niveau, maar sommige zijn optioneel:
 
 | Value | type | Description | 
 |-------|------|-------------|
-| <*actie naam*> | Tekenreeks | De naam voor de actie | 
-| <*actie-type*> | Tekenreeks | Het actie type, bijvoorbeeld ' http ' of ' ApiConnection '| 
-| <*input-name*> | Tekenreeks | De naam voor een invoer waarmee het gedrag van de actie wordt gedefinieerd | 
+| <*actie naam*> | String | De naam voor de actie | 
+| <*actie-type*> | String | Het actie type, bijvoorbeeld ' http ' of ' ApiConnection '| 
+| <*input-name*> | String | De naam voor een invoer waarmee het gedrag van de actie wordt gedefinieerd | 
 | <*input-value*> | Sommige | De invoer waarde, die een teken reeks, geheel getal, JSON-object, enzovoort kan zijn | 
 | <*vorige trigger-or-action-status*> | JSON-object | De naam en de resulterende status voor de trigger of actie die onmiddellijk moet worden uitgevoerd voordat deze huidige actie kan worden uitgevoerd | 
 |||| 
@@ -791,7 +791,7 @@ Acties hebben deze elementen op hoog niveau, maar sommige zijn optioneel:
 |-------|------|-------------|
 | <*opnieuw proberen*> | JSON-object | Hiermee past u het gedrag voor opnieuw proberen aan voor periodieke storingen, die de status code 408, 429 en 5XX en eventuele connectiviteits uitzonderingen hebben. Zie beleid voor opnieuw proberen voor meer informatie. | 
 | <*runtime-configuratie-opties*> | JSON-object | Voor sommige acties kunt u het gedrag van de actie tijdens runtime wijzigen door eigenschappen in `runtimeConfiguration` te stellen. Zie runtime-configuratie- [instellingen](#runtime-config-options)voor meer informatie. | 
-| <*bewerking-optie*> | Tekenreeks | Voor sommige acties kunt u het standaard gedrag wijzigen door de `operationOptions` eigenschap in te stellen. Zie bewerkings [Opties](#operation-options)voor meer informatie. | 
+| <*bewerking-optie*> | String | Voor sommige acties kunt u het standaard gedrag wijzigen door de `operationOptions` eigenschap in te stellen. Zie bewerkings [Opties](#operation-options)voor meer informatie. | 
 |||| 
 
 ## <a name="action-types-list"></a>Lijst met actie typen
@@ -894,10 +894,10 @@ Met deze actie wordt een HTTP-aanvraag naar een door [micro soft beheerde API](.
 
 | Value | type | Description | 
 |-------|------|-------------| 
-| <*actie naam*> | Tekenreeks | De naam van de actie die door de connector wordt gegeven | 
-| <*API-naam*> | Tekenreeks | De naam van de door micro soft beheerde API die wordt gebruikt voor de verbinding | 
-| <*methode-type*> | Tekenreeks | De HTTP-methode voor het aanroepen van de API: ' GET ', ' PUT ', ' POST ', ' PATCH ' of ' DELETE ' | 
-| <*api-operation*> | Tekenreeks | De API-bewerking die moet worden aangeroepen | 
+| <*actie naam*> | String | De naam van de actie die door de connector wordt gegeven | 
+| <*API-naam*> | String | De naam van de door micro soft beheerde API die wordt gebruikt voor de verbinding | 
+| <*methode-type*> | String | De HTTP-methode voor het aanroepen van de API: ' GET ', ' PUT ', ' POST ', ' PATCH ' of ' DELETE ' | 
+| <*api-operation*> | String | De API-bewerking die moet worden aangeroepen | 
 |||| 
 
 *Beschrijving*
@@ -974,16 +974,16 @@ Sommige waarden, zoals <*methode-type*>, zijn beschikbaar voor zowel de `"subscr
 
 | Value | type | Description | 
 |-------|------|-------------| 
-| <*actie naam*> | Tekenreeks | De naam van de actie die door de connector wordt gegeven | 
-| <*methode-type*> | Tekenreeks | De HTTP-methode die moet worden gebruikt voor het abonneren of afmelden van een eind punt: ' GET ', ' PUT ', ' POST ', ' PATCH ' of ' DELETE ' | 
-| <*api-subscribe-URL*> | Tekenreeks | De URI die moet worden gebruikt voor het abonneren op de API | 
+| <*actie naam*> | String | De naam van de actie die door de connector wordt gegeven | 
+| <*methode-type*> | String | De HTTP-methode die moet worden gebruikt voor het abonneren of afmelden van een eind punt: ' GET ', ' PUT ', ' POST ', ' PATCH ' of ' DELETE ' | 
+| <*api-subscribe-URL*> | String | De URI die moet worden gebruikt voor het abonneren op de API | 
 |||| 
 
 *Beschrijving*
 
 | Value | type | Description | 
 |-------|------|-------------| 
-| <*api-unsubscribe-URL*> | Tekenreeks | De URI die moet worden gebruikt voor het afmelden van de API | 
+| <*api-unsubscribe-URL*> | String | De URI die moet worden gebruikt voor het afmelden van de API | 
 | <*header-content*> | JSON-object | Alle headers die in de aanvraag moeten worden verzonden <p>U kunt bijvoorbeeld de taal en het type van een aanvraag instellen: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` |
 | <*body-content*> | JSON-object | Bericht inhoud die in de aanvraag moet worden verzonden | 
 | <*verificatie-methode*> | JSON-object | De methode die de aanvraag gebruikt voor verificatie. Zie voor meer informatie [scheduler outbound Authentication](../scheduler/scheduler-outbound-authentication.md)(Engelstalig). |
@@ -1152,8 +1152,8 @@ Met deze actie wordt een eerder gemaakte [Azure-functie](../azure-functions/func
 
 | Value | type | Description | 
 |-------|------|-------------|  
-| <*Azure-function-ID*> | Tekenreeks | De resource-ID voor de Azure-functie die u wilt aanroepen. Dit is de notatie voor deze waarde:<p>"/subscriptions/<*Azure-subscription-ID*>/resourceGroups/<*Azure-resource-group*>/providers/Microsoft.Web/sites/<*Azure-function-app-name*>/functions/<*Azure-function-name*>" | 
-| <*methode-type*> | Tekenreeks | De HTTP-methode die moet worden gebruikt voor het aanroepen van de functie: ' GET ', ' PUT ', ' POST ', ' PATCH ' of ' DELETE ' <p>Als niet wordt opgegeven, is de standaard waarde de methode POST. | 
+| <*Azure-function-ID*> | String | De resource-ID voor de Azure-functie die u wilt aanroepen. Dit is de notatie voor deze waarde:<p>"/subscriptions/<*Azure-subscription-ID*>/resourceGroups/<*Azure-resource-group*>/providers/Microsoft.Web/sites/<*Azure-function-app-name*>/functions/<*Azure-function-name*>" | 
+| <*methode-type*> | String | De HTTP-methode die moet worden gebruikt voor het aanroepen van de functie: ' GET ', ' PUT ', ' POST ', ' PATCH ' of ' DELETE ' <p>Als niet wordt opgegeven, is de standaard waarde de methode POST. | 
 ||||
 
 *Beschrijving*
@@ -1223,8 +1223,8 @@ Met deze actie wordt een aanvraag verzonden naar het opgegeven eind punt en word
 
 | Value | type | Description | 
 |-------|------|-------------| 
-| <*methode-type*> | Tekenreeks | De methode die moet worden gebruikt voor het verzenden van de aanvraag: ' GET ', ' PUT ', ' POST ', ' PATCH ' of ' DELETE ' | 
-| <*HTTP-or-HTTPS-endpoint-URL*> | Tekenreeks | Het HTTP-of HTTPS-eind punt dat moet worden aangeroepen. Maximale teken reeks grootte: 2 KB | 
+| <*methode-type*> | String | De methode die moet worden gebruikt voor het verzenden van de aanvraag: ' GET ', ' PUT ', ' POST ', ' PATCH ' of ' DELETE ' | 
+| <*HTTP-or-HTTPS-endpoint-URL*> | String | Het HTTP-of HTTPS-eind punt dat moet worden aangeroepen. Maximale teken reeks grootte: 2 KB | 
 |||| 
 
 *Beschrijving*
@@ -1421,7 +1421,7 @@ Met deze actie maakt u een matrix van items in een andere matrix op basis van ee
 | Value | type | Description | 
 |-------|------|-------------| 
 | <*array*> | Array | De matrix of expressie die de bron items levert. Als u een expressie opgeeft, plaatst u deze expressie met dubbele aanhalings tekens. |
-| <*voor waarde-of-filter*> | Tekenreeks | De voor waarde die wordt gebruikt voor het filteren van items in de bron matrix <p>**Opmerking**: Als er geen waarden aan de voor waarde voldoen, maakt de actie een lege matrix. |
+| <*voor waarde-of-filter*> | String | De voor waarde die wordt gebruikt voor het filteren van items in de bron matrix <p>**Opmerking**: Als er geen waarden aan de voor waarde voldoen, maakt de actie een lege matrix. |
 |||| 
 
 *Voorbeeld*
@@ -1537,8 +1537,8 @@ Met deze actie wordt een matrix met JSON-objecten gemaakt door items van een and
 | Value | type | Description | 
 |-------|------|-------------| 
 | <*array*> | Array | De matrix of expressie die de bron items levert. Zorg ervoor dat u een expressie tussen dubbele aanhalings tekens plaatst. <p>**Opmerking**: Als de bron matrix leeg is, maakt de actie een lege matrix. | 
-| <*key-name*> | Tekenreeks | De eigenschaps naam die is toegewezen aan het resultaat van <*expressie*> <p>Als u een nieuwe eigenschap wilt toevoegen voor alle objecten in de uitvoer matrix, geeft u een <*sleutel naam*> voor die eigenschap en een <*expressie*> voor de waarde van de eigenschap. <p>Als u een eigenschap van alle objecten in de matrix wilt verwijderen, moet u de <*sleutel naam*> voor die eigenschap weglaten. | 
-| <*expressie*> | Tekenreeks | De expressie die het item in de bron matrix transformeert en het resultaat toewijst aan <*sleutel naam*> | 
+| <*key-name*> | String | De eigenschaps naam die is toegewezen aan het resultaat van <*expressie*> <p>Als u een nieuwe eigenschap wilt toevoegen voor alle objecten in de uitvoer matrix, geeft u een <*sleutel naam*> voor die eigenschap en een <*expressie*> voor de waarde van de eigenschap. <p>Als u een eigenschap van alle objecten in de matrix wilt verwijderen, moet u de <*sleutel naam*> voor die eigenschap weglaten. | 
+| <*expressie*> | String | De expressie die het item in de bron matrix transformeert en het resultaat toewijst aan <*sleutel naam*> | 
 |||| 
 
 Met de actie **selecteren** wordt een matrix als uitvoer gemaakt, dus elke actie die deze uitvoer wil gebruiken, moet een matrix accepteren of u moet de matrix Converteren naar het type dat door de actie van de gebruiker wordt geaccepteerd. Als u de uitvoer matrix bijvoorbeeld wilt omzetten in een teken reeks, kunt u die matrix door geven aan de actie **opstellen** en vervolgens naar de uitvoer van de actie **opstellen** in uw andere acties verwijzen.
@@ -1634,7 +1634,7 @@ Met deze actie wordt een CSV-of HTML-tabel uit een matrix gemaakt. Voor matrices
 
 | Value | type | Description | 
 |-------|------|-------------| 
-| \<CSV- *of* HTML->| Tekenreeks | De notatie voor de tabel die u wilt maken | 
+| \<CSV- *of* HTML->| String | De notatie voor de tabel die u wilt maken | 
 | <*array*> | Array | De matrix of expressie die de bron items voor de tabel levert <p>**Opmerking**: Als de bron matrix leeg is, maakt de actie een lege tabel. | 
 |||| 
 
@@ -1644,7 +1644,7 @@ Als u kolom koppen en-waarden wilt opgeven of aanpassen `columns` , gebruikt u d
 
 | Value | type | Description | 
 |-------|------|-------------| 
-| <*kolom naam*> | Tekenreeks | De naam van de header voor een kolom | 
+| <*kolom naam*> | String | De naam van de header voor een kolom | 
 | <*column-value*> | Any | De waarde in die kolom | 
 |||| 
 
@@ -1747,7 +1747,7 @@ Met deze actie wordt het uitvoeren van een werk stroom exemplaar gestopt, worden
 
 | Value | type | Description | 
 |-------|------|-------------| 
-| <*status*> | Tekenreeks | De status die moet worden geretourneerd voor de uitvoering: "Failed", "Annuleren" of "geslaagd" |
+| <*status*> | String | De status die moet worden geretourneerd voor de uitvoering: "Failed", "Annuleren" of "geslaagd" |
 |||| 
 
 *Beschrijving*
@@ -1756,8 +1756,8 @@ De eigenschappen voor het object ' runStatus ' zijn alleen van toepassing wannee
 
 | Value | type | Description | 
 |-------|------|-------------| 
-| <*fout code-or-name*> | Tekenreeks | De code of naam voor de fout |
-| <*error-message*> | Tekenreeks | Het bericht of de tekst waarmee de fout wordt beschreven en alle acties die de gebruiker van de app kan uitvoeren | 
+| <*fout code-or-name*> | String | De code of naam voor de fout |
+| <*error-message*> | String | Het bericht of de tekst waarmee de fout wordt beschreven en alle acties die de gebruiker van de app kan uitvoeren | 
 |||| 
 
 *Voorbeeld*
@@ -1818,8 +1818,8 @@ Met deze actie wordt de uitvoering van de werk stroom onderbroken voor het opgeg
 | Value | type | Description | 
 |-------|------|-------------| 
 | <*aantal eenheden*> | Integer | Het aantal te wachten eenheden voor de vertragings actie | 
-| <*interval*> | Tekenreeks | Voor de **vertragings** actie, het interval dat moet worden gewacht: "Seconde", "minuut", "uur", "dag", "week", "maand" | 
-| <*datum-tijds tempel*> | Tekenreeks | De datum en tijd voor de **vertraging tot** actie tot de uitvoering. Deze waarde moet gebruikmaken van de [UTC-notatie voor datum en tijd](https://en.wikipedia.org/wiki/Coordinated_Universal_Time). | 
+| <*interval*> | String | Voor de **vertragings** actie, het interval dat moet worden gewacht: "Seconde", "minuut", "uur", "dag", "week", "maand" | 
+| <*datum-tijds tempel*> | String | De datum en tijd voor de **vertraging tot** actie tot de uitvoering. Deze waarde moet gebruikmaken van de [UTC-notatie voor datum en tijd](https://en.wikipedia.org/wiki/Coordinated_Universal_Time). | 
 |||| 
 
 *Voorbeeld 1*
@@ -1890,11 +1890,11 @@ De Logic Apps-Engine controleert de toegang tot de trigger die u wilt aanroepen,
 
 | Value | type | Description | 
 |-------|------|-------------| 
-| <*nested-logic-app-name*> | Tekenreeks | De naam voor de logische app die u wilt aanroepen | 
-| <*trigger-name*> | Tekenreeks | De naam voor de trigger in de geneste logische app die u wilt aanroepen | 
-| <*Azure-subscription-ID*> | Tekenreeks | De Azure-abonnements-ID voor de geneste logische app |
-| <*Azure-resource-group*> | Tekenreeks | De naam van de Azure-resource groep voor de geneste logische app |
-| <*nested-logic-app-name*> | Tekenreeks | De naam voor de logische app die u wilt aanroepen |
+| <*nested-logic-app-name*> | String | De naam voor de logische app die u wilt aanroepen | 
+| <*trigger-name*> | String | De naam voor de trigger in de geneste logische app die u wilt aanroepen | 
+| <*Azure-subscription-ID*> | String | De Azure-abonnements-ID voor de geneste logische app |
+| <*Azure-resource-group*> | String | De naam van de Azure-resource groep voor de geneste logische app |
+| <*nested-logic-app-name*> | String | De naam voor de logische app die u wilt aanroepen |
 ||||
 
 *Beschrijving*
@@ -1967,9 +1967,9 @@ Deze herhalings actie doorloopt een matrix en voert acties uit voor elk matrix i
 
 | Value | type | Description | 
 |-------|------|-------------| 
-| <*actie-1... nvt*> | Tekenreeks | De namen van de acties die op elk matrix item worden uitgevoerd | 
+| <*actie-1... nvt*> | String | De namen van de acties die op elk matrix item worden uitgevoerd | 
 | <*actie-definitie-1... nvt*> | JSON-object | De definities van de acties die worden uitgevoerd | 
-| <*for-each-expression*> | Tekenreeks | De expressie die verwijst naar elk item in de opgegeven matrix | 
+| <*for-each-expression*> | String | De expressie die verwijst naar elk item in de opgegeven matrix | 
 |||| 
 
 *Beschrijving*
@@ -1977,7 +1977,7 @@ Deze herhalings actie doorloopt een matrix en voert acties uit voor elk matrix i
 | Value | type | Description | 
 |-------|------|-------------| 
 | <*aantal*> | Integer | Standaard worden de herhalingen voor elke-lus op hetzelfde moment uitgevoerd, of parallel op basis van de [standaard limiet](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Als u deze limiet wilt wijzigen door een nieuwe <*aantal*> waarde in te stellen, raadpleegt u [voor elke lus-gelijktijdigheid wijzigen](#change-for-each-concurrency). | 
-| <*bewerking-optie*> | Tekenreeks | Als u een lus voor elke wilt uitvoeren in plaats van parallel, stelt u <*bewerking-optie*> in `Sequential` of <*aantal*> aan `1`, maar niet beide. Zie voor meer informatie [Run ' voor elke ' herhalen](#sequential-for-each). | 
+| <*bewerking-optie*> | String | Als u een lus voor elke wilt uitvoeren in plaats van parallel, stelt u <*bewerking-optie*> in `Sequential` of <*aantal*> aan `1`, maar niet beide. Zie voor meer informatie [Run ' voor elke ' herhalen](#sequential-for-each). | 
 |||| 
 
 *Voorbeeld*
@@ -2172,7 +2172,7 @@ Deze actie, ook wel bekend als een *Switch-instructie*, organiseert andere actie
 | Value | type | Description | 
 |-------|------|-------------| 
 | <*expression-object-or-token*> | Varieert | De expressie, het JSON-object of het token dat moet worden geëvalueerd | 
-| <*actie naam*> | Tekenreeks | De naam van de actie die moet worden uitgevoerd voor de overeenkomende Case | 
+| <*actie naam*> | String | De naam van de actie die moet worden uitgevoerd voor de overeenkomende Case | 
 | <*actie-definitie*> | JSON-object | De definitie voor de actie die moet worden uitgevoerd voor de overeenkomende Case | 
 | <*overeenkomende waarde*> | Varieert | De waarde die moet worden vergeleken met het geëvalueerde resultaat | 
 |||| 
@@ -2181,7 +2181,7 @@ Deze actie, ook wel bekend als een *Switch-instructie*, organiseert andere actie
 
 | Value | type | Description | 
 |-------|------|-------------| 
-| <*standaard actie naam*> | Tekenreeks | De naam van de standaard actie die moet worden uitgevoerd wanneer er geen overeenkomende Case bestaat | 
+| <*standaard actie naam*> | String | De naam van de standaard actie die moet worden uitgevoerd wanneer er geen overeenkomende Case bestaat | 
 | <*standaard-actie-definitie*> | JSON-object | De definitie voor de actie die moet worden uitgevoerd wanneer er geen overeenkomende Case bestaat | 
 |||| 
 
@@ -2297,12 +2297,12 @@ Deze lus-actie bevat acties die worden uitgevoerd tot de opgegeven voor waarde w
 
 | Value | type | Description | 
 |-------|------|-------------| 
-| <*actie naam*> | Tekenreeks | De naam van de actie die u in de lus wilt uitvoeren | 
-| <*actie-type*> | Tekenreeks | Het actie type dat u wilt uitvoeren | 
+| <*actie naam*> | String | De naam van de actie die u in de lus wilt uitvoeren | 
+| <*actie-type*> | String | Het actie type dat u wilt uitvoeren | 
 | <*actie-invoer*> | Sommige | De invoer voor de actie die moet worden uitgevoerd | 
-| <*regeling*> | Tekenreeks | De voor waarde of expressie die moet worden geëvalueerd nadat alle acties in de lus zijn uitgevoerd | 
+| <*regeling*> | String | De voor waarde of expressie die moet worden geëvalueerd nadat alle acties in de lus zijn uitgevoerd | 
 | <*loop-count*> | Integer | De limiet voor het aantal lussen dat de actie kan worden uitgevoerd. De standaard `count` waarde is 60. | 
-| <*loop-time-out*> | Tekenreeks | De limiet voor het langste tijdstip waarop de lus kan worden uitgevoerd. De standaard `timeout` waarde is `PT1H`, de vereiste [ISO 8601-indeling](https://en.wikipedia.org/wiki/ISO_8601). |
+| <*loop-time-out*> | String | De limiet voor het langste tijdstip waarop de lus kan worden uitgevoerd. De standaard `timeout` waarde is `PT1H`, de vereiste [ISO 8601-indeling](https://en.wikipedia.org/wiki/ISO_8601). |
 |||| 
 
 *Voorbeeld*
@@ -2392,10 +2392,10 @@ U kunt het standaard gedrag voor triggers en acties wijzigen met de `operationOp
 
 | Bewerkings optie | type | Description | Trigger of actie | 
 |------------------|------|-------------|-------------------| 
-| `DisableAsyncPattern` | Tekenreeks | Voer op HTTP gebaseerde acties synchroon uit, in plaats van asynchroon. <p><p>Zie [acties synchroon uitvoeren](#asynchronous-patterns)om deze optie in te stellen. | Regelen <p>[ApiConnection](#apiconnection-action), <br>[HTTP](#http-action), <br>[Antwoord](#response-action) | 
-| `OptimizedForHighThroughput` | Tekenreeks | Wijzig de [standaard limiet](../logic-apps/logic-apps-limits-and-config.md#throughput-limits) voor het aantal uitgevoerde actie-uitvoeringen per 5 minuten tot de [maximum limiet](../logic-apps/logic-apps-limits-and-config.md#throughput-limits). <p><p>Zie [uitvoeren in de modus voor hoge door Voer](#run-high-throughput-mode)om deze optie in te stellen. | Alle acties | 
-| `Sequential` | Tekenreeks | Voer voor elke herhalings herhaling een voor een uit in plaats van alle tegelijkertijd parallel. <p>Deze optie werkt op dezelfde manier als het instellen `runtimeConfiguration.concurrency.repetitions` van de `1`eigenschap op. U kunt beide eigenschappen instellen, maar niet beide. <p><p>Als u deze optie wilt instellen, raadpleegt u [' voor elke ' herhalen](#sequential-for-each).| Actie: <p>[Foreach](#foreach-action) | 
-| `SingleInstance` | Tekenreeks | Voer de trigger voor elke logische app-instantie sequentieel uit en wacht totdat de eerdere actieve uitvoering is voltooid voordat het volgende logische app-exemplaar wordt geactiveerd. <p><p>Deze optie werkt op dezelfde manier als het instellen `runtimeConfiguration.concurrency.runs` van de `1`eigenschap op. U kunt beide eigenschappen instellen, maar niet beide. <p>Zie [instanties opeenvolgend activeren](#sequential-trigger)om deze optie in te stellen. | Alle triggers | 
+| `DisableAsyncPattern` | String | Voer op HTTP gebaseerde acties synchroon uit, in plaats van asynchroon. <p><p>Zie [acties synchroon uitvoeren](#asynchronous-patterns)om deze optie in te stellen. | Regelen <p>[ApiConnection](#apiconnection-action), <br>[HTTP](#http-action), <br>[Antwoord](#response-action) | 
+| `OptimizedForHighThroughput` | String | Wijzig de [standaard limiet](../logic-apps/logic-apps-limits-and-config.md#throughput-limits) voor het aantal uitgevoerde actie-uitvoeringen per 5 minuten tot de [maximum limiet](../logic-apps/logic-apps-limits-and-config.md#throughput-limits). <p><p>Zie [uitvoeren in de modus voor hoge door Voer](#run-high-throughput-mode)om deze optie in te stellen. | Alle acties | 
+| `Sequential` | String | Voer voor elke herhalings herhaling een voor een uit in plaats van alle tegelijkertijd parallel. <p>Deze optie werkt op dezelfde manier als het instellen `runtimeConfiguration.concurrency.repetitions` van de `1`eigenschap op. U kunt beide eigenschappen instellen, maar niet beide. <p><p>Als u deze optie wilt instellen, raadpleegt u [' voor elke ' herhalen](#sequential-for-each).| Actie: <p>[Foreach](#foreach-action) | 
+| `SingleInstance` | String | Voer de trigger voor elke logische app-instantie sequentieel uit en wacht totdat de eerdere actieve uitvoering is voltooid voordat het volgende logische app-exemplaar wordt geactiveerd. <p><p>Deze optie werkt op dezelfde manier als het instellen `runtimeConfiguration.concurrency.runs` van de `1`eigenschap op. U kunt beide eigenschappen instellen, maar niet beide. <p>Zie [instanties opeenvolgend activeren](#sequential-trigger)om deze optie in te stellen. | Alle triggers | 
 ||||
 
 <a name="change-trigger-concurrency"></a>

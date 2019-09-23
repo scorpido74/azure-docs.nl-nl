@@ -117,7 +117,7 @@ Definieer in `staticResults` het-kenmerk een actie model `outputs` en `status` d
 
 | Kenmerk | Vereist | Type | Description |
 |-----------|----------|------|-------------|
-| <*statisch resultaten-definitie naam*> | Ja | Tekenreeks | De naam voor een statische resultaat definitie waarmee een actie definitie kan verwijzen naar een `runtimeConfiguration.staticResult` object. Zie runtime-configuratie- [instellingen](../logic-apps/logic-apps-workflow-actions-triggers.md#runtime-config-options)voor meer informatie. <p>U kunt elke gewenste unieke naam gebruiken. Deze unieke naam wordt standaard toegevoegd met een nummer, dat zo nodig wordt verhoogd. |
+| <*statisch resultaten-definitie naam*> | Ja | String | De naam voor een statische resultaat definitie waarmee een actie definitie kan verwijzen naar een `runtimeConfiguration.staticResult` object. Zie runtime-configuratie- [instellingen](../logic-apps/logic-apps-workflow-actions-triggers.md#runtime-config-options)voor meer informatie. <p>U kunt elke gewenste unieke naam gebruiken. Deze unieke naam wordt standaard toegevoegd met een nummer, dat zo nodig wordt verhoogd. |
 | <*uitvoer kenmerken-en-waarden-geretourneerd*> | Ja | Varieert | De vereisten voor deze kenmerken variëren op basis van verschillende voor waarden. Bijvoorbeeld, wanneer `status` het is, `Succeeded`bevat het `outputs` kenmerk kenmerken en waarden die worden geretourneerd als de uitvoer van de bewerking. Als dat `status` het `Failed`geval is `outputs` , bevat het `errors` kenmerk het kenmerk, een matrix met een of meer fout `message` objecten met fout gegevens. |
 | <*header-waarden*> | Nee | JSON | Eventuele header waarden die zijn geretourneerd door de actie |
 | <*status-code-geretourneerd*> | Ja | Reeks | De status code die wordt geretourneerd door de actie |
@@ -280,7 +280,7 @@ Hier volgt de algemene structuur voor een uitvoer definitie:
 
 | Kenmerk | Vereist | Type | Description |
 |-----------|----------|------|-------------|
-| <*key-name*> | Ja | Tekenreeks | De naam van de sleutel voor de retour waarde van de uitvoer |
+| <*key-name*> | Ja | String | De naam van de sleutel voor de retour waarde van de uitvoer |
 | <*key-type*> | Ja | int, float, string, securestring, bool, array, JSON-object | Het type voor de uitvoer retour waarde |
 | <*key-value*> | Ja | Hetzelfde als <*key-type*> | De resultaat waarde van de uitvoer |
 |||||

@@ -116,8 +116,8 @@ Als u extra modules wilt toevoegen aan uw oplossing, voert **u de opdracht uit A
 
 De standaard module code die bij de oplossing hoort, bevindt zich op de volgende locatie:
 
-- Azure function (C#): **modules >  *&lt;uw module&gt;*  > *naamvandemodulenaam.cs&lt;&gt;*
-- C#: **modules > *&lt;uw module naam&gt;* > Program.cs
+- Azure function (C#): **modules >  *&lt;uw module&gt;*  > *naamvandemodulenaam.cs&lt;&gt;***
+- C#: **modules > *&lt;uw module naam&gt;* > Program.cs**
 - Python: **modules > *&lt;uw module naam&gt;* > main.py**
 - Node. js: **modules > *&lt;de module naam&gt;* > app. js**
 - Java: **modules > *&lt;de module naam&gt;* > src > Main > java > com > edgemodulemodules > app. java**

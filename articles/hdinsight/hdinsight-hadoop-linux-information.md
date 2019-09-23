@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/20/2019
-ms.openlocfilehash: 1904ab07a188e4e877a4fb2f2b7682d923c08fb2
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: 7f97348999f2cab6509afeb44bc704d5109ee0f7
+ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68441995"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71181108"
 ---
 # <a name="information-about-using-hdinsight-on-linux"></a>Informatie over het gebruik van HDInsight in Linux
 
@@ -124,11 +124,9 @@ Gebruik een van de volgende URI-schema's wanneer u __Azure Storage__gebruikt:
 
 * `wasb://<container-name>@<account-name>.blob.core.windows.net/`: Wordt gebruikt bij de communicatie met een niet-standaard-opslag account. Bijvoorbeeld wanneer u een extra opslag account hebt of gegevens die zijn opgeslagen in een openbaar toegankelijk opslag account.
 
-Gebruik een van de volgende URI-schema's wanneer u __Azure data Lake Storage Gen2__gebruikt:
+Gebruik het volgende URI-schema wanneer u __Azure data Lake Storage Gen2__gebruikt:
 
-* `abfs:///`: Toegang tot standaard opslag met niet-versleutelde communicatie.
-
-* `abfss:///`: Toegang tot de standaard opslag met behulp van gecodeerde communicatie.  Het abfss-schema wordt alleen ondersteund vanuit versie 3,6 van HDInsight.
+* `abfs://`: Toegang tot de standaard opslag met behulp van gecodeerde communicatie.
 
 * `abfs://<container-name>@<account-name>.dfs.core.windows.net/`: Wordt gebruikt bij de communicatie met een niet-standaard-opslag account. Bijvoorbeeld wanneer u een extra opslag account hebt of gegevens die zijn opgeslagen in een openbaar toegankelijk opslag account.
 

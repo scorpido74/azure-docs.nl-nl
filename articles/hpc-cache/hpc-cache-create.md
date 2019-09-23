@@ -1,21 +1,21 @@
 ---
-title: Een HPC-cache van Azure maken
+title: Een HPC-cache van Azure maken (preview)
 description: Een Azure HPC-cache-exemplaar maken
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: tutorial
 ms.date: 09/06/2019
 ms.author: v-erkell
-ms.openlocfilehash: e1b69f17d964647944f23f4d16a0a1a5f112b60d
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 1cc77b24c96514f40c86115f7d611076facd406b
+ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71037076"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71181036"
 ---
-# <a name="create-an-azure-hpc-cache"></a>Een HPC-cache van Azure maken
+# <a name="create-an-azure-hpc-cache-preview"></a>Een HPC-cache van Azure maken (preview)
 
-Gebruik de Azure Portal om uw cache te maken.
+Gebruik de Azure Portal om uw cache te maken. 
 
 ![scherm opname van het cache-overzicht in Azure Portal, met de knop maken onderaan](media/hpc-cache-home-page.png)
 
@@ -32,7 +32,7 @@ Stel in **service Details**de naam van de cache en de andere kenmerken in:
 * Subnet: Kies of maak een subnet met ten minste 64 IP-adressen (/24) dat alleen wordt gebruikt voor de Azure HPC-cache.
 
 ## <a name="set-cache-capacity"></a>Cache capaciteit instellen
-<!-- change link in GUI -->
+<!-- referenced from GUI - update aka.ms link if you change this header text -->
 
 Op de pagina **cache** moet u de capaciteit van uw Azure HPC-cache instellen. Met deze waarde wordt bepaald hoeveel gegevens uw cache kan bevatten en hoe snel deze client aanvragen kunnen worden verwerkt. Na de open bare preview-periode is de capaciteit ook van invloed op de kosten van de cache.
 
@@ -61,7 +61,7 @@ Klik op de **koppeling opslag doel toevoegen** om uw back-end-opslag systemen te
 
 U kunt Maxi maal tien verschillende opslag doelen definiëren.
 
-Stapsgewijze instructies voor het toevoegen van een opslag doel zijn opgenomen in [opslag toevoegen](hpc-cache-add-storage.md). De procedure wijkt af van Blob Storage of voor NFS-exports.
+Stapsgewijze instructies voor het toevoegen van een opslag doel zijn opgenomen in [opslag doelen toevoegen](hpc-cache-add-storage.md). De procedure wijkt af van Blob Storage of voor NFS-exports.
 
 Hier volgen enkele tips: 
 

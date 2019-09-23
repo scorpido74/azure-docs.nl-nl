@@ -5,13 +5,13 @@ author: kromerm
 ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
-ms.date: 05/16/2019
-ms.openlocfilehash: 8eb244a0eff1569ac27feae68104db613373463a
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.date: 09/22/2019
+ms.openlocfilehash: e4b3e08c0cc7fc1ead2aed551c228c6a1165c3b6
+ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69992352"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71180854"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Gegevens stromen toewijzen prestaties en afstemmings handleiding
 
@@ -90,6 +90,13 @@ Als u op dit pictogram klikt, wordt het uitvoerings plan en het volgende prestat
 * Gebruik in de ontwerp functie voor gegevens stromen het tabblad voor beeld van gegevens in trans formaties om de resultaten van uw transformatie logica weer te geven.
 * Eenheid test uw gegevens stromen van de ontwerp functie voor de pijp lijn door een activiteit voor gegevens stromen op het ontwerp model voor de pijp lijn te plaatsen en de knop debug te gebruiken om te testen.
 * Testen in foutopsporingsmodus werkt op een live gewarmde cluster omgeving zonder dat u hoeft te wachten op een just-in-time-cluster.
+* Tijdens de preview-versie van gegevens voorbeelden kunt u de hoeveelheid gegevens die u met voor elke bron test, beperken door de limiet van de maximum waarde voor de gebruikers interface voor de data flow designer in te stellen. Houd er rekening mee dat u eerst de foutopsporingsmodus moet inschakelen.
+
+![Instellingen voor fout opsporing](media/data-flow/debug-settings.png "Instellingen voor fout opsporing")
+
+* Bij het testen van uw gegevens stromen vanuit een pijp lijn uitvoering van de fout opsporing kunt u het aantal rijen dat wordt gebruikt voor het testen beperken door de steekproef grootte voor elk van uw bronnen in te stellen. Zorg ervoor dat u de steek proeven uitschakelt bij het plannen van uw pijp lijnen volgens een regel matig gepland schema.
+
+![Rij-sampling](media/data-flow/source1.png "Rij-sampling")
 
 ### <a name="disable-indexes-on-write"></a>Indexen bij schrijven uitschakelen
 * Gebruik de opgeslagen procedure-activiteit van een ADF-pijp lijn vóór uw activiteit voor gegevens stromen, waardoor de indexen van uw doel tabellen die worden geschreven naar van uw Sink, worden uitgeschakeld.
@@ -140,6 +147,10 @@ Als ik bijvoorbeeld een lijst met gegevens bestanden van 1 juli 2019 die ik wil 
 ```DateFiles/*_201907*.txt```
 
 Dit zal beter zijn dan een zoek actie voor de Blob-opslag in een pijp lijn die vervolgens doorloopt over alle overeenkomende bestanden met behulp van een ForEach met de activiteit gegevens stroom uitvoeren in.
+
+### <a name="increase-the-size-of-your-debug-cluster"></a>De grootte van het cluster voor fout opsporing verg Roten
+
+Het inschakelen van debug maakt standaard gebruik van de standaard Azure Integration runtime die automatisch voor elke data factory wordt gemaakt. Deze standaard Azure IR is ingesteld op 8 kernen, 4 voor een driver knooppunt en 4 voor een werk knooppunt, met behulp van algemene Compute-eigenschappen. Wanneer u met grotere gegevens test, kunt u de grootte van het cluster voor fout opsporing verg Roten door een nieuwe Azure IR met grotere configuraties te maken en dit nieuwe Azure IR te kiezen wanneer u overschakelt op fout opsporing. Hiermee wordt ADF geadviseerd om deze Azure IR te gebruiken voor het voor beeld van gegevens en het opsporen van pijp lijnen met gegevens stromen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

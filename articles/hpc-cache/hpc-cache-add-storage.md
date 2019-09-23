@@ -1,19 +1,19 @@
 ---
-title: Opslag toevoegen aan een Azure HPC-cache
+title: Opslag toevoegen aan een Azure HPC-cache (preview-versie)
 description: Hoe u opslag doelen definieert zodat uw Azure HPC-cache uw on-premises NFS-systeem of Azure Blob-containers voor lange termijn bestands opslag kan gebruiken
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: v-erkell
-ms.openlocfilehash: ca8e13e322c3e192b697248f1252b65f6cbeda7f
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: a17952e193f3e03becaab044f55637372bac7b0d
+ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71037229"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71181004"
 ---
-# <a name="add-storage"></a>Opslag toevoegen
+# <a name="add-storage-targets"></a>Opslag doelen toevoegen
 
 *Opslag doelen* zijn back-end opslag voor bestanden die toegankelijk zijn via een Azure HPC-cache-exemplaar. U kunt NFS-opslag, zoals een on-premises hardwaresysteem, toevoegen of gegevens opslaan in Azure Blob.
 
@@ -112,8 +112,8 @@ Vul voor elke export deze waarden in:
 
 Wanneer u klaar bent, klikt u op **OK** om het opslag doel toe te voegen.
 
-### <a name="choose-a-usage-model"></a>Kies een gebruiks model 
-<!-- link in GUI to this heading -->
+### <a name="choose-a-usage-model"></a>Kies een gebruiks model
+<!-- referenced from GUI - update aka.ms link if you change this heading -->
 
 Wanneer u een opslag doel maakt dat verwijst naar een NFS-opslag systeem, moet u het *gebruiks model* voor dat doel kiezen. Dit model bepaalt hoe de gegevens in de cache worden opgeslagen.
 

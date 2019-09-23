@@ -1,19 +1,19 @@
 ---
-title: Gegevens opname in de Azure HPC-cache-hand matig kopiëren
+title: Gegevens opname van de preview-versie van de Azure HPC-cache-hand matig kopiëren
 description: CP-opdrachten gebruiken om gegevens te verplaatsen naar een Blob-opslag doel in azure HPC-cache
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 08/30/2019
 ms.author: v-erkell
-ms.openlocfilehash: 2d89a74d4b79e74c2bc6667a5f76c2348ca3c274
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 217f976d53a7be8931be9f8d21b000549a9ed68a
+ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70775232"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71180987"
 ---
-# <a name="azure-hpc-cache-data-ingest---manual-copy-method"></a>Gegevens opname van de Azure HPC-cache-hand matige Kopieer methode
+# <a name="azure-hpc-cache-preview-data-ingest---manual-copy-method"></a>Azure HPC-cache (preview) gegevens opname-hand matige Kopieer methode
 
 In dit artikel vindt u gedetailleerde instructies voor het hand matig kopiëren van gegevens naar een BLOB storage-container voor gebruik met de Azure HPC-cache. Er wordt gebruikgemaakt van parallelle bewerkingen met meerdere threads om de Kopieer snelheid te optimaliseren.
 

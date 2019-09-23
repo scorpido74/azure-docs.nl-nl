@@ -1,19 +1,19 @@
 ---
-title: Gegevens opname in de Azure HPC-cache-msrsync
+title: Gegevens opname van de preview-versie van de Azure HPC-cache-msrsync
 description: Msrsync gebruiken om gegevens te verplaatsen naar een Blob Storage-doel in azure HPC cache
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 08/30/2019
 ms.author: v-erkell
-ms.openlocfilehash: d49c2ba45b125f8e42ea5d10dcf3dcd68558a52c
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 265ec55a6e013a37cf963b6256e900c070311f72
+ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70775635"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71180947"
 ---
-# <a name="azure-hpc-cache-data-ingest---msrsync-method"></a>Azure HPC cache data opname-msrsync-methode
+# <a name="azure-hpc-cache-preview-data-ingest---msrsync-method"></a>Azure HPC cache (preview) gegevens opname-msrsync methode
 
 In dit artikel vindt u gedetailleerde instructies voor ``msrsync`` het gebruik van het hulp programma voor het kopiëren van gegevens naar een Azure Blob Storage-container voor gebruik met de Azure HPC-cache.
 

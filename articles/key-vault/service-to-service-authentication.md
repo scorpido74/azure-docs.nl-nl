@@ -75,7 +75,7 @@ Verificatie met behulp van Visual Studio:
 
 Als u problemen ondervindt met het gebruik van Visual Studio, zoals fouten met betrekking tot het token provider bestand, moet u de voor gaande stappen zorgvuldig door nemen.
 
-Mogelijk moet u uw ontwikkelaars token opnieuw verifiëren. Hiertoe selecteert u **extra**&nbsp;> **&nbsp;&nbsp;** opties en selecteert u vervolgens Azure-service verificatie.&nbsp; Zoek naar een koppeling **opnieuw verifiëren** onder het geselecteerde account. Selecteer deze om te verifiëren.
+Mogelijk moet u uw ontwikkelaars token opnieuw verifiëren. Hiertoe selecteert u **extra**&nbsp;>&nbsp;**opties** en selecteert u vervolgens **Azure&nbsp;service&nbsp;verificatie**. Zoek naar een koppeling **opnieuw verifiëren** onder het geselecteerde account. Selecteer deze om te verifiëren.
 
 #### <a name="authenticating-with-azure-cli"></a>Verifiëren met Azure CLI
 

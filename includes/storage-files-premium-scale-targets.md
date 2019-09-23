@@ -4,30 +4,30 @@ ms.service: storage
 ms.topic: include
 ms.date: 06/07/2019
 ms.author: rogarana
-ms.openlocfilehash: 368f08272173b019873dfe20e1164d6baf72ff5e
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.openlocfilehash: b28427b3ede0cfaeb9e08d3c73b15ea7f2961f1b
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67542671"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71180043"
 ---
-#### <a name="additional-premium-file-share-level-limits"></a>Aanvullende premium-bestand delen niveau limieten
+#### <a name="additional-premium-file-share-level-limits"></a>Extra limieten voor Premium file share-niveaus
 
 |Onderwerp  |Doel  |
 |---------|---------|
-|Minimale grootte vergroten/verkleinen    |1 GiB      |
-|IOPS-basislijn    |1 IOP's per GiB maximaal 100.000|
-|IOPS bursting    |3 x IOPS per GB, maximaal 100.000|
-|Snelheid van uitgangsgebeurtenissen         |60 MiB/s + 0,06 * ingericht GiB        |
-|Gegevens| 40 MiB/s + 0,04 * ingericht GiB |
+|Toename van minimale grootte/afname    |1 GiB      |
+|IOPS-basislijn    |1 IOPS per GiB, Maxi maal 100.000|
+|IOPS-bursting    |3x IOPS per GiB, Maxi maal 100.000|
+|Uitgangs frequentie         |60-MiB/s + 0,06 * ingerichte GiB        |
+|Ingangs frequentie| 40-MiB/s + 0,04 * ingerichte GiB |
 
-#### <a name="file-level-limits"></a>Beperkingen van niveau
+#### <a name="file-level-limits"></a>Limieten voor bestands niveau
 
-|Onderwerp  |Premium-bestand  |Standaard-bestand |
+|Onderwerp  |Premium-bestand  |Standaard bestand |
 |---------|---------|---------|
 |Size                  |1 TiB         |1 TiB|
-|Maximale IOPS per bestand     |5,000         |1000|
-|Gelijktijdige verwerkt    |2,000         |2,000|
-|Inkomend verkeer  |300 MiB/sec|      Waarden voor de doorvoer standaard-bestand|
-|Uitgaand verkeer   |200 Mib/sec| Waarden voor de doorvoer standaard-bestand|
-|Doorvoer| Waarden voor de premium-bestand Inkomend/uitgaand verkeer| Maximaal 60 MiB/sec|
+|Maximum aantal IOPS per bestand     |5,000         |1000|
+|Gelijktijdige ingangen    |2,000         |2,000|
+|Uitgaand verkeer  |300-MiB per seconde|      Zie standaard waarden voor doorvoer bestanden|
+|Inkomend verkeer  |200-MiB per seconde| Zie standaard waarden voor doorvoer bestanden|
+|Doorvoer| Zie Premium file ingress/uitgangs waarden| Maxi maal 60 MiB per seconde|

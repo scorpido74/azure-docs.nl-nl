@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/04/2019
-ms.openlocfilehash: 6801f2b3bca1fbfa221ec2eba07f51b76712b4ff
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 26634e2fe23e0a23540638c4559af6e11eccbe72
+ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70813968"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71180732"
 ---
 # <a name="use-apache-zeppelin-notebooks-with-apache-spark-cluster-on-azure-hdinsight"></a>Apache Zeppelin-notebooks gebruiken met Apache Spark cluster in azure HDInsight
 
@@ -23,7 +23,7 @@ HDInsight Spark-clusters zijn [Apache Zeppelin](https://zeppelin.apache.org/) -n
 
 * Een Azure-abonnement. Zie [Gratis proefversie van Azure ophalen](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 * Een Apache Spark-cluster in HDInsight. Zie [Apache Spark-clusters maken in Azure HDInsight](apache-spark-jupyter-spark-sql.md) voor instructies.
-* Het URI-schema voor de primaire opslag van uw clusters. Dit geldt `abfs://` `adl://` voor Azure Blob Storage, voor Azure data Lake Storage Gen2 of voor Azure data Lake Storage gen1. `wasb://` Als beveiligde overdracht is ingeschakeld voor Blob Storage of Data Lake Storage Gen2, is de URI `wasbs://` `abfss://`respectievelijk.  Zie ook [veilige overdracht vereisen in azure Storage](../../storage/common/storage-require-secure-transfer.md) voor meer informatie.
+* Het URI-schema voor de primaire opslag van uw clusters. Dit geldt `abfs://` `adl://` voor Azure Blob Storage, voor Azure data Lake Storage Gen2 of voor Azure data Lake Storage gen1. `wasb://` Als beveiligde overdracht is ingeschakeld voor Blob Storage, zou de URI zijn `wasbs://`.  Zie ook [veilige overdracht vereisen in azure Storage](../../storage/common/storage-require-secure-transfer.md) voor meer informatie.
 
 ## <a name="launch-an-apache-zeppelin-notebook"></a>Een Apache Zeppelin-notebook starten
 
@@ -101,7 +101,7 @@ HDInsight Spark-clusters zijn [Apache Zeppelin](https://zeppelin.apache.org/) -n
     select buildingID, date, targettemp, (targettemp - actualtemp) as temp_diff from hvac where targettemp > "${Temp = 65,65|75|85}"
     ```
 
-    Plak dit fragment in een nieuwe alinea en druk op **SHIFT + ENTER**. Selecteer vervolgens **65** in de **tijdelijke** vervolg keuzelijst ist. 
+    Plak dit fragment in een nieuwe alinea en druk op **SHIFT + ENTER**. Selecteer vervolgens **65** in de vervolg keuzelijst **temp** . 
 
 8. Selecteer het pictogram van het **staaf diagram** om de weer gave te wijzigen.  Selecteer vervolgens **instellingen** en breng de volgende wijzigingen aan:
 
@@ -118,7 +118,7 @@ HDInsight Spark-clusters zijn [Apache Zeppelin](https://zeppelin.apache.org/) -n
 
 10. Ga naar **livy**en selecteer **opnieuw opstarten**.  Selecteer **OK** bij de prompt.
 
-    ![Start de livy Intepreter opnieuw](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-restart-interpreter.png "Start de Zeppelin Intepreter opnieuw")
+    ![De livy-interpreter opnieuw opstarten](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-restart-interpreter.png "De Zeppelin-interpreter opnieuw opstarten")
 
 ## <a name="how-do-i-use-external-packages-with-the-notebook"></a>Met het notitie blok Hoe kan ik externe pakketten gebruiken?
 U kunt de Zeppelin-notebook in Apache Spark cluster in HDInsight configureren voor het gebruik van externe, door de Community bijgedragen pakketten die niet zijn opgenomen in het cluster. U kunt in de [maven-opslag plaats](https://search.maven.org/) zoeken naar de volledige lijst met pakketten die beschikbaar zijn. U kunt ook een lijst met beschik bare pakketten uit andere bronnen ophalen. Een volledige lijst met door de Community bijgedragen pakketten is bijvoorbeeld beschikbaar in [Spark-pakketten](https://spark-packages.org/).
@@ -169,7 +169,7 @@ In dat geval moet u de volgende stappen uitvoeren voordat u taken kunt uitvoeren
 
 2. Ga naar **livy**en selecteer **opnieuw starten**.
 
-    ![Start de livy Intepreter opnieuw](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-restart-interpreter.png "Start de Zeppelin Intepreter opnieuw")
+    ![De livy-interpreter opnieuw opstarten](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-restart-interpreter.png "De Zeppelin-interpreter opnieuw opstarten")
 
 3. Een code-cel uitvoeren vanuit een bestaand Zeppelin-notebook. Hiermee maakt u een nieuwe livy-sessie in het HDInsight-cluster.
 

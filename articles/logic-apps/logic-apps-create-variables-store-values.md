@@ -10,12 +10,12 @@ manager: carmonm
 ms.reviewer: klam, LADocs
 ms.topic: conceptual
 ms.date: 09/20/2019
-ms.openlocfilehash: 016ab15b2ca4b2e6278752b166c746f6f5aef72d
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 0f7947e4a96a49e3a7a3b0059a1b20b21ac8cbd1
+ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71171313"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71180781"
 ---
 # <a name="store-and-manage-values-by-using-variables-in-azure-logic-apps"></a>Waarden opslaan en beheren met behulp van variabelen in Azure Logic Apps
 
@@ -99,6 +99,9 @@ Als u overschakelt van de ontwerp functie naar de code weergave-editor, is dit d
    }
 },
 ```
+
+> [!NOTE]
+> Hoewel de actie **variabele initialiseren** een `variables` sectie heeft die is gestructureerd als een matrix, kan de actie slechts één variabele tegelijk maken. Elke nieuwe variabele vereist een afzonderlijke actie voor **het initialiseren van een variabele** .
 
 Hier volgen enkele voor beelden van andere typen variabelen:
 
@@ -200,7 +203,7 @@ Als u een variabele wilt verg Roten *of verhogen met een constante* waarde, voeg
 
    Als u een actie wilt toevoegen tussen de bestaande stappen, plaatst u de muis aanwijzer op de pijl om verbinding te maken zodat het plus teken (+) wordt weer gegeven. Selecteer het plus teken en selecteer vervolgens **een actie toevoegen**.
 
-1. Voer in het zoekvak ' increment variable ' in als uw filter. Selecteer in de lijst acties de optie **variabelen-toename variabele**.
+1. Voer in het zoekvak ' increment variable ' in als uw filter. Selecteer in de lijst acties de optie **variabele verhogen**.
 
    ![Selecteer de actie variabele door lopen](./media/logic-apps-create-variables-store-values/select-increment-variable-action.png)
 

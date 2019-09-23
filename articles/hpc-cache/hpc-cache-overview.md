@@ -1,19 +1,19 @@
 ---
-title: Overzicht van de Azure HPC-cache
+title: Preview-versie van de Azure HPC-cache
 description: Hierin wordt de Azure HPC-cache, een oplossing voor bestands toegang voor High-Performance Computing beschreven
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: overview
-ms.date: 09/06/2019
+ms.date: 09/19/2019
 ms.author: v-erkell
-ms.openlocfilehash: 77eca3ef58733a616705fdaac1d2880b5a990e8a
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: f4c858d7a71cf02b4a8fe181deecbf3a1b652885
+ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71036887"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71180683"
 ---
-# <a name="what-is-azure-hpc-cache"></a>Wat is Azure HPC Cache?
+# <a name="what-is-azure-hpc-cache-preview"></a>Wat is Azure HPC Cache? (Preview)
 
 De Azure HPC-cache versnelt de toegang tot uw gegevens voor HPC-taken (High-Performance Computing). Door bestanden in Azure in de cache op te slaan, is de schaal baarheid van Cloud Computing ook beschikbaar voor werk stromen waarbij uw gegevens worden opgeslagen op WAN-koppelingen, zoals in uw lokale Data Center-network-attached storage omgeving (NAS).
 
@@ -57,6 +57,10 @@ De Azure HPC-cache is beschikbaar in de volgende Azure-regio's:
 * US - west 2
 
 Controleer de [product pagina van de Azure HPC-cache](https://azure.microsoft.com/services/hpc-cache) voor de meest recente beschikbaarheids gegevens.
+
+## <a name="preview-availability"></a>Preview-Beschik baarheid
+
+De open bare preview van de Azure HPC-cache is beperkt om de kwaliteit van de service te garanderen. Vraag toegang aan door [dit formulier](https://aka.ms/onboard-hpc-cache)in te vullen. Nadat uw abonnement is toegevoegd aan de toegangs lijst, kunt u test caches maken.
 
 ## <a name="next-steps"></a>Volgende stappen
 

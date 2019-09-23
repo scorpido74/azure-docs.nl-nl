@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/03/2019
-ms.openlocfilehash: 673c83c861e1f044a521786a903dd7b21db8c170
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 64dfd26e02526664a4edb204521f7a47a4463a12
+ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70995570"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71181078"
 ---
 # <a name="optimize-apache-spark-jobs-in-hdinsight"></a>Apache Spark-taken in HDInsight optimaliseren
 
@@ -57,10 +57,10 @@ De beste prestatie-indeling is Parquet met *Snappy-compressie*. Dit is de standa
 
 Wanneer u een nieuw Spark-cluster maakt, hebt u de mogelijkheid om Azure Blob Storage of Azure Data Lake Storage te selecteren als de standaard opslag van uw cluster. Beide opties bieden u het voor deel van lange termijn opslag voor tijdelijke clusters, zodat uw gegevens niet automatisch worden verwijderd wanneer u uw cluster verwijdert. U kunt een tijdelijk cluster opnieuw maken en toch toegang krijgen tot uw gegevens.
 
-| Opslag type | Bestandssysteem | Snelheid | Wijk | Gebruiksvoorbeelden |
+| Opslag type | Bestandssysteem | Snelheid | Tijdelijk | Gebruiksvoorbeelden |
 | --- | --- | --- | --- | --- |
 | Azure Blob Storage | **wasb:** //url/ | **Standard** | Ja | Tijdelijk cluster |
-| Azure Data Lake Storage gen 2| **abfs [s]:** //URL/ | **Faster** | Ja | Tijdelijk cluster |
+| Azure Data Lake Storage gen 2| **abfs:** //URL/ | **Faster** | Ja | Tijdelijk cluster |
 | Azure Data Lake Storage Gen 1| **adl:** //url/ | **Faster** | Ja | Tijdelijk cluster |
 | Lokale HDFS | **hdfs:** //url/ | **Fastest** | Nee | Interactive 24/7-cluster |
 
