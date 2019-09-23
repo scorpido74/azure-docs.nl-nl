@@ -42,7 +42,7 @@ U kunt de volgende para meters gebruiken:
 
 | Name | Opties | Description | Standaard |
 | --- | --- | --- | --- |
-| sensitivityLevel |Teken reeks: laag, gemiddeld, hoog |Hiermee stelt u het gevoeligheids niveau in waarmee bewegingen worden gerapporteerd. Stel dit in op het aanpassen van het aantal fout-positieven. |drager |
+| sensitivityLevel |String:'low', 'medium', 'high' |Hiermee stelt u het gevoeligheids niveau in waarmee bewegingen worden gerapporteerd. Stel dit in op het aanpassen van het aantal fout-positieven. |drager |
 | frameSamplingValue |Positief geheel getal |Hiermee stelt u de frequentie in waarmee algoritmen worden uitgevoerd. 1 is gelijk aan elk frame, 2 betekent elk tweede frame, enzovoort. |1 |
 | detectLightChange |Boolean:'true', 'false' |Hiermee wordt ingesteld of lichte wijzigingen worden gerapporteerd in de resultaten |Terecht |
 | mergeTimeThreshold |XS-time: Uu: mm: SS<br/>Voorbeeld: 00:00:03 |Hiermee geeft u het tijd venster op tussen bewegings gebeurtenissen waarbij twee gebeurtenissen worden gecombineerd en gerapporteerd als 1. |00:00:00 |
