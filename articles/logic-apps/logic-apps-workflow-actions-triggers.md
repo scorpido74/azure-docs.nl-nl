@@ -52,10 +52,10 @@ Triggers hebben deze elementen op het hoogste niveau, maar sommige zijn optionee
 
 | Value | type | Description | 
 |-------|------|-------------| 
-| <*trigger-name*> | Tekenreeks | De naam voor de trigger | 
-| <*trigger-type*> | Tekenreeks | Het trigger type zoals ' http ' of ' ApiConnection ' | 
+| <*trigger-name*> | String | De naam voor de trigger | 
+| <*trigger-type*> | String | Het trigger type zoals ' http ' of ' ApiConnection ' | 
 | <*trigger-inputs*> | JSON-object | De invoer waarmee het gedrag van de trigger wordt gedefinieerd | 
-| <*time-unit*> | Tekenreeks | De tijds eenheid die beschrijft hoe vaak de trigger wordt geactiveerd: "Seconde", "minuut", "uur", "dag", "week", "maand" | 
+| <*time-unit*> | String | De tijds eenheid die beschrijft hoe vaak de trigger wordt geactiveerd: "Seconde", "minuut", "uur", "dag", "week", "maand" | 
 | <*number-of-time-units*> | Integer | Een waarde die aangeeft hoe vaak de trigger wordt geactiveerd op basis van de frequentie. Dit is het aantal tijds eenheden dat moet worden gewacht totdat de trigger opnieuw wordt geactiveerd. <p>Dit zijn de minimale en maximale intervallen: <p>Blijft 1-16 maanden </br>Profieldag 1-500 dagen </br>Uur 1-12000 uur </br>Notulen 1-72000 minuten </br>Tweede 1-9999999 seconden<p>Als het interval bijvoorbeeld 6 is en de frequentie "month" is, is het terugkeer patroon elke 6 maanden. | 
 |||| 
 
