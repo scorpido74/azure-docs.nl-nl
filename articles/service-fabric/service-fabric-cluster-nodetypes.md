@@ -79,14 +79,14 @@ Hier volgen de eigenschaps beschrijvingen:
 | --- | --- | --- | --- |
 | name | string | --- | unieke naam voor extensie |
 | type | "ServiceFabricLinuxNode" of "ServiceFabricWindowsNode | --- | Geeft aan dat het besturings systeem Service Fabric Boots trapt |
-| autoUpgradeMinorVersion | waar of onwaar | --- | Automatische upgrade van secundaire versies van SF runtime inschakelen |
+| autoUpgradeMinorVersion | true of false | --- | Automatische upgrade van secundaire versies van SF runtime inschakelen |
 | publisher | Microsoft.Azure.ServiceFabric | --- | de naam van de uitgever van het Service Fabric gebied |
 | clusterEndpont | string | --- | URI: poort voor beheer eindpunt |
 | nodeTypeRef | string | --- | naam van nodeType |
-| durabilityLevel | Bronze, Silver, Gold, Platinum | --- | tijd die is toegestaan voor het onderbreken van een onveranderlijke Azure-infra structuur |
-| enableParallelJobs | waar of onwaar | --- | Schakel Compute ParallelJobs in zoals virtuele machine verwijderen en start VM opnieuw op in dezelfde schaalset als parallel |
+| durabilityLevel | bronze, silver, gold, platinum | --- | tijd die is toegestaan voor het onderbreken van een onveranderlijke Azure-infra structuur |
+| enableParallelJobs | true of false | --- | Schakel Compute ParallelJobs in zoals virtuele machine verwijderen en start VM opnieuw op in dezelfde schaalset als parallel |
 | nicPrefixOverride | string | --- | Subnetvoorvoegsel zoals "10.0.0.0/24" |
-| commonNames | teken reeks [] | --- | Algemene namen van geïnstalleerde cluster certificaten |
+| commonNames | string[] | --- | Algemene namen van geïnstalleerde cluster certificaten |
 | x509StoreName | string | --- | De naam van het archief waar het geïnstalleerde cluster certificaat zich bevindt |
 | typeHandlerVersion | 1.1 | --- | De versie van de extensie. 1,0 de klassieke versie van de uitbrei ding wordt aanbevolen om te upgraden naar 1,1 |
 | dataPath | string | --- | Het pad naar het station dat wordt gebruikt om de status voor Service Fabric systeem services en toepassings gegevens op te slaan. 
