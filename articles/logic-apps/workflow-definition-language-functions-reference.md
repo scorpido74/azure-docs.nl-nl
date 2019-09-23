@@ -1849,7 +1849,7 @@ En retourneert deze resultaten:
 
 <a name="first"></a>
 
-### <a name="first"></a>instantie
+### <a name="first"></a>first
 
 Het eerste item van een teken reeks of matrix retour neren.
 
@@ -3875,7 +3875,7 @@ En retourneert dit resultaat met de optionele D-indeling:`"Monday, January, 1, 2
 
 <a name="take"></a>
 
-### <a name="take"></a>Houd
+### <a name="take"></a>take
 
 Items van de voor grond van een verzameling retour neren.
 
