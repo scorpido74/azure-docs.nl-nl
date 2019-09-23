@@ -27,7 +27,7 @@
           href: tutorial-create-populate-tsi-environment.md
     - name: Azure Time Series Insights preview
       items:
-        - name: Zelfstudie voor Azure Time Series Insights preview
+        - name: Een voorbeeldomgeving instellen
           href: time-series-insights-update-create-environment.md
 - name: Concepten
   items:

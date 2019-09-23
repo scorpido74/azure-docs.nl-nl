@@ -9,12 +9,22 @@
 - name: Snelstartgidsen
   expanded: true
   items:
-    - name: Naamomzetting - portal
-      href: dns-getstarted-portal.md
-    - name: Naamomzetting - PowerShell
-      href: dns-getstarted-powershell.md
-    - name: Naamomzetting - CLI
-      href: dns-getstarted-cli.md
+    - name: Openbare DNS
+      items:
+        - name: Een openbare zone maken - portal
+          href: dns-getstarted-portal.md
+        - name: Een openbare zone maken - PowerShell
+          href: dns-getstarted-powershell.md
+        - name: Een openbare zone maken - CLI
+          href: dns-getstarted-cli.md
+    - name: Privé-DNS
+      items:
+        - name: Een privézone maken - portal
+          href: private-dns-getstarted-portal.md
+        - name: Een privézone maken - CLI
+          href: private-dns-getstarted-cli.md
+        - name: Een privézone maken - PowerShell
+          href: private-dns-getstarted-powershell.md
 - name: Zelfstudies
   items:
     - name: Openbare DNS
@@ -29,10 +39,6 @@
           href: tutorial-alias-pip.md
         - name: Aliasrecords voor zonerecords
           href: tutorial-alias-rr.md
-    - name: Privé-DNS
-      items:
-        - name: Een persoonlijke DNS-zone en -record maken
-          href: private-dns-portal.md
 - name: Voorbeelden
   items:
     - name: Azure-CLI
@@ -63,12 +69,6 @@
           href: private-dns-scenarios.md
 - name: Procedures
   items:
-    - name: Privé-DNS
-      items:
-        - name: Privézone maken - CLI
-          href: private-dns-getstarted-cli.md
-        - name: Privézone maken - PowerShell
-          href: private-dns-getstarted-powershell.md
     - name: Openbare DNS
       items:
         - name: Aliasrecords voor web-apps met gelijke taakverdeling

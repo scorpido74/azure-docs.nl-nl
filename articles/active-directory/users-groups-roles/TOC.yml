@@ -36,27 +36,25 @@
   items:
     - name: Gebruikers beheren
       items:
-        - name: Nieuwe gebruikers toevoegen aan Azure AD
+        - name: Gebruikers maken
           href: /azure/active-directory/fundamentals/add-users-azure-active-directory?context=azure/active-directory/users-groups-roles/context/ugr-context
+        - name: Gebruikers in bulk maken (preview)
+          href: users-bulk-add.md
         - name: Gebruikersprofielen beheren
           href: /azure/active-directory/fundamentals/active-directory-users-profile-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
-        - name: Bulkbewerkingen (preview)
-          items:
-            - name: Gebruikers downloaden (preview)
-              href: users-bulk-download.md
-            - name: Gebruikers in bulk importeren (preview)
-              href: users-bulk-add.md
-            - name: Gebruikers in bulk verwijderen (preview)
-              href: users-bulk-delete.md
-            - name: Gebruikers in bulk herstellen (preview)
-              href: users-bulk-restore.md
+        - name: Gebruikersgegevens downloaden (preview)
+          href: users-bulk-download.md
         - name: Gebruikersaccounts delen
           href: users-sharing-accounts.md
         - name: Gebruikers aan beheerdersrollen toewijzen
           href: /azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
+        - name: Gebruikers in bulk verwijderen (preview)
+          href: users-bulk-delete.md
         - name: Een verwijderde gebruiker herstellen
           href: /azure/active-directory/fundamentals/active-directory-users-restore?context=azure/active-directory/users-groups-roles/context/ugr-context
-        - name: Uw account in een niet-beheerde directory sluiten
+        - name: Gebruikers in bulk herstellen (preview)
+          href: users-bulk-restore.md
+        - name: Een account in een niet-beheerde directory sluiten
           href: users-close-account.md
         - name: B2B-gebruikers toevoegen
           href: /azure/active-directory/b2b/what-is-b2b?context=azure/active-directory/users-groups-roles/context/ugr-context
@@ -86,28 +84,26 @@
           href: /azure/active-directory/fundamentals/active-directory-manage-groups?context=azure/active-directory/users-groups-roles/context/ugr-context
         - name: Groepen- en ledenlijsten zoeken (preview)
           href: groups-members-owners-search.md
+        - name: Groep maken (Azure-portal)
+          href: /azure/active-directory/fundamentals/active-directory-groups-create-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
         - name: Groepen beheren met PowerShell voor Graph (v2)
           href: groups-settings-v2-cmdlets.md
         - name: Groepen beheren met PowerShell MSOnline
           href: groups-settings-cmdlets.md
-        - name: Groepsleden beheren
+        - name: Groepsleden toevoegen of verwijderen
           href: /azure/active-directory/fundamentals/active-directory-groups-members-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
+        - name: Leden in bulk toevoegen (preview)
+          href: groups-bulk-import-members.md
+        - name: Leden in bulk verwijderen (preview)
+          href: groups-bulk-remove-members.md
+        - name: Ledenlijst in bulk downloaden (preview)
+          href: groups-bulk-download-members.md
         - name: Eigenaren van groepen beheren
           href: /azure/active-directory/fundamentals/active-directory-accessmanagement-managing-group-owners?context=azure/active-directory/users-groups-roles/context/ugr-context
-        - name: Bulkbewerkingen (preview)
-          items:
-            - name: Leden in bulk importeren (preview)
-              href: groups-bulk-import-members.md
-            - name: Leden in bulk downloaden (preview)
-              href: groups-bulk-download-members.md
-            - name: Leden in bulk verwijderen (preview)
-              href: groups-bulk-remove-members.md
-            - name: Groepenlijsten in bulk downloaden (preview)
-              href: groups-bulk-download.md
+        - name: Groepslijst in bulk downloaden (preview)
+          href: groups-bulk-download.md
         - name: Groepen in groepen beheren
           href: /azure/active-directory/fundamentals/active-directory-groups-membership-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
-        - name: Groep maken (Azure-portal)
-          href: /azure/active-directory/fundamentals/active-directory-groups-create-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
         - name: Groepstoegang tot SaaS-apps toevoegen
           href: groups-saasapps.md
         - name: Naamgevingsreferentie voor groepen

@@ -17,9 +17,9 @@
   items:
     - name: Op schema gebaseerde werkstromen maken
       href: tutorial-build-schedule-recurring-logic-app-workflow.md
-    - name: Mailinglijstaanvragen beheren
+    - name: Op goedkeuring gebaseerde werkstromen maken
       href: tutorial-process-mailing-list-subscriptions-workflow.md
-    - name: E-mailbijlagen verwerken
+    - name: Werkstroom voor Azure Storage en Azure Functions maken
       href: tutorial-process-email-attachments-workflow.md
 - name: Voorbeelden
   items:
@@ -31,7 +31,7 @@
   items:
     - name: Connectors voor Logic Apps
       href: ../connectors/apis-list.md
-    - name: Geautomatiseerde terugkerende werkstromen plannen
+    - name: Terugkerende werkstromen plannen
       href: concepts-schedule-automated-recurring-tasks-workflows.md
     - name: Serverloos met Azure
       href: logic-apps-serverless-overview.md
@@ -105,12 +105,18 @@
           href: logic-apps-diagnosing-failures.md
     - name: Ontwikkelen voor B2B-scenario's
       items:
-        - name: Een integratieaccount maken
+        - name: Integratieaccount maken
           href: logic-apps-enterprise-integration-create-integration-account.md
         - name: Handelspartners
           href: logic-apps-enterprise-integration-partners.md
         - name: Overeenkomsten
           href: logic-apps-enterprise-integration-agreements.md
+        - name: Schema's voor XML-validatie
+          href: logic-apps-enterprise-integration-schemas.md
+        - name: Toewijzingen voor XML-transformatie
+          href: logic-apps-enterprise-integration-maps.md
+        - name: Certificaten
+          href: logic-apps-enterprise-integration-certificates.md
         - name: Metagegevens van artefacten
           href: logic-apps-enterprise-integration-metadata.md
         - name: B2B-berichten ontvangen
@@ -141,20 +147,14 @@
           href: logic-apps-scenario-edi-send-batch-messages.md
         - name: Platte bestanden verwerken
           href: logic-apps-enterprise-integration-flatfile.md
+        - name: XML transformeren
+          href: logic-apps-enterprise-integration-transform.md
         - name: XML verwerken
           href: logic-apps-enterprise-integration-xml.md
         - name: XML valideren
           href: logic-apps-enterprise-integration-xml-validation.md
-        - name: Schema's voor XML-validatie toevoegen
-          href: logic-apps-enterprise-integration-schemas.md
-        - name: XML transformeren
-          href: logic-apps-enterprise-integration-transform.md
-        - name: Toewijzingen voor XML-transformatie toevoegen
-          href: logic-apps-enterprise-integration-maps.md
         - name: JSON transformeren
           href: logic-apps-enterprise-integration-liquid-transform.md
-        - name: Beveiligingscertificaten toevoegen
-          href: logic-apps-enterprise-integration-certificates.md
         - name: B2B-fouten oplossen
           href: logic-apps-enterprise-integration-b2b-list-errors-solutions.md
         - name: Een noodherstelplan bouwen

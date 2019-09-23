@@ -1,67 +1,131 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Documentatie voor Azure Search
+summary: Zoek in de cloud naar persoonlijke, heterogene inhoud, met opties voor AI-verrijking als uw inhoud ongestructureerd is of niet in onbewerkte vorm kan worden gevonden.
 metadata:
-  document_id: null
-  title: 'Documentatie voor Azure Search - zelfstudies, snelstartgidsen, API-referentiemateriaal'
-  description: 'Leer hoe u een bedrijfsoplossing voor zoekopdrachten in persoonlijke, heterogene inhoud maakt met behulp van Azure Search. In zelfstudies, API-referentiemateriaal en andere documenten kunt u zien hoe u doorzoekbare inhoud samenvoegt in één snelle index, waarin u kunt zoeken met behulp van eenvoudige-tot-geavanceerde syntaxis voor een grote verscheidenheid aan scenario’s.'
+  title: Documentatie voor Azure Search
+  description: Zoek in de cloud naar persoonlijke, heterogene inhoud, met opties voor AI-verrijking als uw inhoud ongestructureerd is of niet in onbewerkte vorm kan worden gevonden.
   services: search
-  author: HeidiSteen
-  manager: nitinme
-  ms.service: search
+  ms.service: service
+  ms.subservice: cognitive-search
   ms.topic: landing-page
-  ms.date: 08/12/2019
+  ms.collection: collection
+  author: HeidiSteen
   ms.author: heidist
-abstract:
-  description: 'Leer hoe u een bedrijfsoplossing voor zoekopdrachten in persoonlijke, heterogene inhoud maakt met behulp van Azure Search. In zelfstudies, API-referentiemateriaal en andere documenten kunt u zien hoe u doorzoekbare inhoud samenvoegt in één snelle index, waarin u kunt zoeken met behulp van eenvoudige-tot-geavanceerde syntaxis voor een grote verscheidenheid aan scenario’s. <p/><a href="/azure/search/cognitive-search-concept-intro"><b>Cognitieve zoekopdracht</b></a> is een functie van Azure Search waarbij AI-processen worden gekoppeld aan opdrachten voor indexeren, het detecteren van tekst en kenmerken in afbeeldingsbestanden en het vinden van patronen in grote blokken ongestructureerde tekst. AI-processen worden ondersteund door Cognitive Services.<p/><a href="/azure/search/knowledge-store-concept-intro"><b>Kennisarchief (preview)</b></a> breidt cognitieve zoekopdrachten uit en slaat AI-verrijkingen op naar de opslag waar u deze kunt bekijken, wijzigen en gebruiken in client-apps of downstreamprocessen.'
-  aside:
-    image:
-      alt: null
-      height: 110
-      src: 'https://docs.microsoft.com/azure/search/media/index/search-page-callouts3.png'
-      width: 250
-    title: 'Wat is Azure Search (1:27)'
-    href: 'https://channel9.msdn.com/Blogs/Azure/What-is-Azure-Search/player'
-    width: 250
-sections:
-  - title: QuickStarts van vijf minuten
-    items:
-      - type: paragraph
-        text: 'Start een zoekservice in de portal, definieer en laad vervolgens indexen in C# of REST en voer hier query''s op uit.'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: /azure/search/media/index/portal.svg
-            text: Azure Portal
-            href: 'https://docs.microsoft.com/azure/search/search-create-service-portal'
-          - image:
-              src: /azure/search/media/index/logo_Csharp.svg
-            text: .NET
-            href: 'https://docs.microsoft.com/azure/search/search-create-index-dotnet'
-          - image:
-              src: /azure/search/media/index/rest.svg
-            text: REST
-            href: 'https://docs.microsoft.com/azure/search/search-get-started-postman'
-  - title: Zelfstudies met stapsgewijze instructies
-    items:
-      - type: paragraph
-        text: Programmeer in .NET of REST of gebruik de portal om snel concepten te testen.
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="/azure/search/search-get-started-portal">De portal gebruiken om te indexeren en query's te testen</a>
-          - html: <a href="/azure/search/search-howto-dotnet-sdk">Gebruik .NET om uw eerste zoekoplossing te schrijven</a>
-          - html: <a href="/azure/search/cognitive-search-tutorial-blob">Verrijken met AI (Cognitive Services)</a>
-          - html: <a href="/azure/search/search-indexer-tutorial">Azure SQL Database-inhoud indexeren met .NET</a>
-          - html: <a href="/azure/search/search-semi-structured-data">Semi-gestructureerde gegevens in Azure Blob Storage indexeren met REST</a>
-  - title: Naslaginformatie
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Talen
-            html: '<p><a href="/dotnet/api/?term=microsoft.azure.search">.NET</a></p><p><a href="/dotnet/api/?term=microsoft.azure.management.search">.NET (beheer)</a></p><p><a href="https://docs.microsoft.com/python/api/?view=azure-python&term=search">Python (beheer)</a></p>'
-          - title: REST
-            html: <p><a href="/rest/api/searchservice">Service API-referentiemateriaal</a></p><p><a href="/rest/api/searchmanagement">Beheer API-referentiemateriaal</a></p>
+  ms.date: 09/20/2019
+  ms.openlocfilehash: 113ee13c1667e00f1052c88c9b29b881f312b00c
+  ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+  ms.translationtype: HT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 09/19/2019
+  ms.locfileid: "71147280"
+landingContent:
+- title: Over Azure Search
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Wat is Azure Search?
+      url: search-what-is-azure-search.md
+  - linkListType: architecture
+    links:
+    - text: Hoe zoeken in de volledige tekst werkt in Azure Search
+      url: search-lucene-query-architecture.md
+  - linkListType: video
+    links:
+    - text: Wat is Azure Search (1 min 27 sec)
+      url: https://channel9.msdn.com/Blogs/Azure/What-is-Azure-Search/player
+- title: Aan de slag
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Een service maken
+      url: search-create-service-portal.md
+    - text: Een index maken
+      url: search-get-started-portal.md
+    - text: Een verrijkingspijplijn maken
+      url: cognitive-search-quickstart-blob.md
+  - linkListType: learn
+    links:
+    - text: Inleiding tot Azure Search
+      url: https://docs.microsoft.com/learn/modules/intro-to-azure-search/
+- title: Uw gegevens indexeren
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Een index definiëren
+      url: search-what-is-an-index.md
+    - text: Gegevens importeren
+      url: search-what-is-data-import.md
+    - text: Een indexeerfunctie gebruiken
+      url: search-indexer-overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: Uit Blob-opslag indexeren
+      url: search-howto-indexing-azure-blob-storage.md
+    - text: JSON-blobs indexeren
+      url: search-howto-index-json-blobs.md
+    - text: Uit Azure SQL Database indexeren
+      url: search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md
+    - text: Uit Cosmos DB-gegevens indexeren
+      url: search-howto-index-cosmosdb.md
+  - linkListType: reference
+    links:
+    - text: Index maken (REST)
+      url: https://docs.microsoft.com/rest/api/searchservice/create-index
+    - text: Indexeerfunctie maken (REST)
+      url: https://docs.microsoft.com/rest/api/searchservice/create-indexer
+- title: Uw gegevens verrijken
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Wat is cognitief zoeken?
+      url: cognitive-search-concept-intro.md
+    - text: Vaardighedensets
+      url: cognitive-search-defining-skillset.md
+    - text: Knowledge Stores
+      url: knowledge-store-concept-intro.md
+    - text: Projecties
+      url: knowledge-store-projection-overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: Cognitive Services toevoegen
+      url: cognitive-search-attach-cognitive-services.md
+    - text: Een set vaardigheden definiëren
+      url: cognitive-search-defining-skillset.md
+    - text: Een Knowledge Store maken
+      url: knowledge-store-create-portal.md
+  - linkListType: reference
+    links:
+    - text: Vooraf gedefinieerde vaardigheden
+      url: cognitive-search-predefined-skills.md
+- title: Uw gegevens opvragen
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Overzicht
+      url: search-query-overview.md
+    - text: Eenvoudige syntaxis (standaardinstelling)
+      url: query-simple-syntax.md
+    - text: Volledige Lucene-syntaxis
+      url: query-lucene-syntax.md
+  - linkListType: how-to-guide
+    links:
+    - text: Een eenvoudige query maken
+      url: search-query-simple-examples.md
+    - text: Volledige syntaxis gebruiken
+      url: search-query-lucene-examples.md
+  - linkListType: reference
+    links:
+    - text: Naslaginformatie over de OData-taal
+      url: query-odata-filter-orderby-syntax.md
+    - text: Documenten doorzoeken (REST)
+      url: https://docs.microsoft.com/rest/api/searchservice/search-documents
+- title: Help en feedback
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Veelgestelde vragen
+      url: search-faq-frequently-asked-questions.md
+    - text: Stel vragen op Stack Overflow
+      url: https://stackoverflow.com/questions/tagged/azure-search
+    - text: Verzoeken om een functie toe te voegen
+      url: https://feedback.azure.com/forums/263029-azure-search

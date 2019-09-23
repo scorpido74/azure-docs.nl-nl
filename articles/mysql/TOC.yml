@@ -229,8 +229,8 @@
       href: /rest/api/mysql
     - name: Resource Manager-sjabloon
       href: /azure/templates/microsoft.dbformysql/allversions
-    - name: Opgeslagen replicatieprocedures voor binnenkomende gegevens
-      href: reference-data-in-stored-procedures.md
+    - name: In Azure opgeslagen procedures
+      href: reference-stored-procedures.md
 - name: Resources
   items:
     - name: Implementatiesjablonen

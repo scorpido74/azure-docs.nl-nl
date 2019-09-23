@@ -13,7 +13,7 @@ metadata:
   ms.service: dms
   ms.tgt_pltfrm: na
   ms.topic: landing-page
-  ms.date: 03/12/2019
+  ms.date: 09/22/2019
 abstract:
   description: 'Azure Database Migration Service maakt naadloze migratie van meerdere databasebronnen naar Azure-gegevensplatforms mogelijk met slechts minimale downtime. De service maakt gebruik van de Data Migration Assistant voor het genereren van evaluatierapporten. De aanbevelingen hierin kunnen dienen als leidraad bij het doorvoeren van de wijzigingen die nodig zijn voordat u een migratie uitvoert. Wanneer u klaar bent om met het migratieproces te beginnen, voert de Azure Database Migration Service alle vereiste stappen uit.'
   aside:
@@ -40,19 +40,36 @@ sections:
   - title: Zelfstudies met stapsgewijze instructies
     items:
       - type: paragraph
-        text: 'Leer hoe u databases migreert met behulp van de Database Migration Service:'
+        text: 'Leer hoe u databases migreert met behulp van de Azure Database Migration Service:'
       - type: list
-        style: ordered
+        style: unordered
         items:
-          - html: <a href="/azure/dms/tutorial-sql-server-to-azure-sql">SQL Server offline migreren naar Azure SQL Database met behulp van DMS</a>
-          - html: <a href="/azure/dms/tutorial-sql-server-azure-sql-online">SQL Server online migreren naar Azure SQL Database met behulp van DMS</a>
-          - html: <a href="/azure/dms/tutorial-sql-server-to-managed-instance">SQL Server offline migreren naar Azure SQL Database Managed Instance met behulp van DMS</a>
-          - html: <a href="/azure/dms/tutorial-sql-server-managed-instance-online">SQL Server online migreren naar Azure SQL Database Managed Instance met behulp van DMS</a>
-          - html: <a href="/azure/dms/tutorial-rds-sql-server-azure-sql-and-managed-instance-online">RDS SQL Server online migreren naar Azure SQL Database of een beheerd Azure SQL Database-exemplaar met behulp van DMS</a>
-          - html: <a href="/azure/dms/tutorial-mysql-azure-mysql-online">MySQL online migreren naar Azure Database for MySQL met behulp van DMS</a>
-          - html: <a href="/azure/dms/tutorial-postgresql-azure-postgresql-online">PostgreSQL online migreren naar Azure Database for PostgreSQL met behulp van DMS</a>
-          - html: <a href="/azure/dms/tutorial-mongodb-cosmos-db">MongoDB offline migreren naar de Azure Cosmos DB Mongo-API met behulp van DMS</a>
-          - html: <a href="/azure/dms/tutorial-mongodb-cosmos-db-online">MongoDB online migreren naar de Azure Cosmos DB Mongo-API met behulp van DMS</a>
+          - html: <a href="/azure/dms/tutorial-sql-server-to-azure-sql">SQL Server offline naar Azure SQL Database migreren</a>
+          - html: <a href="/azure/dms/tutorial-sql-server-azure-sql-online">SQL Server online naar Azure SQL Database migreren</a>
+          - html: <a href="/azure/dms/tutorial-sql-server-to-managed-instance">SQL Server offline naar Azure SQL Database Managed Instance migreren</a>
+          - html: <a href="/azure/dms/tutorial-sql-server-managed-instance-online">SQL Server online naar Azure SQL Database Managed Instance online migreren</a>
+          - html: <a href="/azure/dms/tutorial-rds-sql-server-azure-sql-and-managed-instance-online">RDS SQL Server online migreren naar Azure SQL Database of een beheerd Azure SQL Database-exemplaar</a>
+          - html: <a href="/azure/dms/tutorial-mysql-azure-mysql-online">MySQL online migreren naar Azure Database for MySQL</a>
+          - html: <a href="/azure/dms/tutorial-rds-mysql-server-azure-db-for-mysql-online">RDS MySQL online migreren naar Azure Database for MySQL</a>
+          - html: <a href="/azure/dms/tutorial-postgresql-azure-postgresql-online">PostgreSQL online migreren naar Azure Database for PostgreSQL</a>
+          - html: <a href="/azure/dms/tutorial-rds-postgresql-server-azure-db-for-postgresql-online">RDS PostgreSQL online migreren naar Azure Database for PostgreSQL</a>
+          - html: <a href="/azure/dms/tutorial-mongodb-cosmos-db">MongoDB offline migreren naar de Azure Cosmos DB-API</a>
+          - html: <a href="/azure/dms/tutorial-mongodb-cosmos-db-online">MongoDB online migreren naar de Azure Cosmos DB Mongo-API</a>
+          - html: <a href="/azure/dms/tutorial-oracle-azure-postgresql-online">Oracle online migreren naar Azure Database for PostgreSQL</a>
+  - title: Video's
+    items:
+      - type: list
+        style: unordered
+        className: spaced noBullet
+        items:
+          - html: '<a href="https://azure.microsoft.com/resources/videos/how-to-use-the-azure-database-migration-guide/">De handleiding voor databasemigratie gebruiken</a>'
+          - html: '<a href="https://azure.microsoft.com/resources/videos/overview-of-migration-and-recommended-tools-services/">Het migratieproces en aanbevolen hulpprogramma''s/services</a>'
+          - html: '<a href="https://azure.microsoft.com/resources/videos/how-to-address-prerequisites-and-create-a-dms-instance/">Adresvereisten en een DMS-exemplaar maken</a>'
+          - html: '<a href="https://azure.microsoft.com/resources/videos/how-to-migrate-sql-server-2008-or-r2-to-azure-sqldbmi/">SQL Server 2008 migreren naar een beheerd exemplaar voor Azure SQL Database</a>'
+          - html: '<a href="https://azure.microsoft.com/resources/videos/how-to-migrate-postgresql-to-azure-postgresql-online-dms-and-cli/">PostgreSQL online migreren naar Azure Database for PostgreSQL</a>'
+          - html: '<a href="https://azure.microsoft.com/resources/videos/how-to-monitor-online-migration-and-perform-cutover/">Een online migratie bewaken en cutover uitvoeren</a>'
+          - html: '<a href="https://azure.microsoft.com/resources/videos/how-to-migrate-oracle-to-sqldb-online/">Oracle migreren naar Azure SQL Database</a>'
+          - html: '<a href="https://azure.microsoft.com/resources/videos/how-to-migrate-mongodb-to-cosmos-db/">MongoDB migreren naar Azure Cosmos DB</a>'
   - title: Voorbeelden
     items:
       - type: list

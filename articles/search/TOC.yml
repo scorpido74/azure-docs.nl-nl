@@ -251,18 +251,18 @@
               href: knowledge-store-connect-power-bi.md
     - name: Query's uitvoeren voor documenten
       items:
-        - name: Een basisquery maken
+        - name: Querytypen en querysamenstelling
           href: search-query-overview.md
-        - name: Search Explorer (portal)
+        - name: Een eenvoudige query maken
+          href: search-query-simple-examples.md
+        - name: Volledige Lucene-syntaxis gebruiken
+          href: search-query-lucene-examples.md
+        - name: Search Explorer gebruiken (portal)
           href: search-explorer.md
         - name: Vereenvoudigde querysyntaxis
           href: query-simple-syntax.md
         - name: Volledige Lucene-querysyntaxis
           href: query-lucene-syntax.md
-        - name: Voorbeelden (eenvoudige syntaxis)
-          href: search-query-simple-examples.md
-        - name: Voorbeelden (volledige Lucene)
-          href: search-query-lucene-examples.md
         - name: moreLikeThis (preview)
           href: search-more-like-this.md
     - name: Filters toepassen

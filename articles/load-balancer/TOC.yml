@@ -18,7 +18,7 @@
       href: quickstart-load-balancer-standard-public-cli.md
     - name: Een load balancer van het type Standard maken - Azure PowerShell
       href: quickstart-create-standard-load-balancer-powershell.md
-    - name: Een Standard Load Balancer maken - Azure Resource Manager-sjabloon
+    - name: Een load balancer van het type Standard maken - sjabloon
       displayName: ARM
       href: quickstart-load-balancer-standard-public-template.md
 - name: Zelfstudies

@@ -1,61 +1,129 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Documentatie voor Azure Time Series Insights
+summary: Leer hoe u Azure IoT-analyses uitvoert in de cloud met volledig beheerde gebeurtenisverwerking. Analyseer gegevens van toepassingen, sensoren, apparaten en meer in realtime.
 metadata:
-  title: 'Documentatie voor Azure Time Series Insights - Quickstarts, zelfstudies, API-verwijzing | Microsoft Docs'
-  description: 'Leer hoe u Azure IoT-analyses uitvoert in de cloud met volledig beheerde gebeurtenisverwerking. Analyseer gegevens van toepassingen, sensoren, apparaten en meer in realtime.'
+  title: Documentatie voor Azure Time Series Insights - Quickstarts, zelfstudies, API-verwijzing | Microsoft Docs
+  description: Leer hoe u Azure IoT-analyses uitvoert in de cloud met volledig beheerde gebeurtenisverwerking. Analyseer gegevens van toepassingen, sensoren, apparaten en meer in realtime.
   services: time-series-insights
-  author: deepakpalled
-  manager: cshankar
   ms.service: time-series-insights
+  ms.subservice: time-series-insights
   ms.topic: landing-page
-  ms.date: 06/03/2019
-  ms.author: dpalled
-abstract:
-  description: 'Welkom bij Azure Time Series Insights. Azure Time Series Insights biedt krachtige hulpprogramma''s voor gegevensverkenning en telemetrie om u te helpen uw operationele analyse te verbeteren. In deze documentatie wordt de service beschreven, hoe u werkt met de vele functies, de client-SDK en de krachtige Time Series Insights-API''s. De informatie wordt voor twee versies gepresenteerd: een die al algemeen beschikbaar is (Time Series Insights GA) en een grote serviceupdate die nog in preview is (Time Series Insights Preview).'
-  aside:
-    image:
-      alt: Een video-inleiding over functies van Azure IoT Time Series Insights.
-      height: 110
-      src: media/index/new-tsi-intro.png
-      width: 250
-    title: 'Time Series Insights voor IoT-apps. (13:31)'
-    href: 'https://channel9.msdn.com/Shows/Internet-of-Things-Show/Azure-Time-Series-Insights-e2e-solution-for-industrial-IoT-analytics'
-    width: 250
-sections:
-  - title: QuickStarts van vijf minuten
-    items:
-      - type: paragraph
-        text: Leer meer over Azure Time Series Insights door snelle voorbeelden te ontdekken waarmee u binnen minuten aan de slag bent.
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/azure/time-series-insights/media/index/time-series-insights.svg'
-            text: Azure Time Series Insights GA verkennen
-            href: /azure/time-series-insights/time-series-quickstart
-      - html: <p><a href="/azure/time-series-insights/time-series-insights-update-quickstart">Azure Time Series Insights preview verkennen</a></p>
-  - title: Zelfstudies met stapsgewijze instructies
-    items:
-      - type: paragraph
-        text: 'Informatie over hoe u Azure Time Series Insights-omgevingen, web-apps met één pagina en meer maakt aan de hand van verschillende stapsgewijze voorbeelden.'
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Azure Time Series Insights GA
-            html: <p><a href="/azure/time-series-insights/tutorial-create-populate-tsi-environment">Een Azure Time Series Insights-omgeving maken</a></p> <p><a href="/azure/time-series-insights/tutorial-create-tsi-sample-spa">Een web-app met één pagina maken</a></p> <p><a href="/azure/time-series-insights/tutorial-explore-js-client-lib">De JavaScript-clientbibliotheek verkennen</a></p>
-          - title: Azure Time Series Insights preview
-            html: <p><a href="/azure/time-series-insights/time-series-insights-update-create-environment">Een Time Series Insights Preview-omgeving instellen</a></p>
-  - title: Naslaginformatie
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Time Series Insights GA-API's
-            html: <p><a href="/rest/api/time-series-insights/ga">Gegevenstoegang</a></p> <p><a href="/rest/api/time-series-insights/ga-query-api">Query-API</a></p> <p><a href="/rest/api/time-series-insights/ga-query-syntax">Querysyntaxis</a></p>
-          - title: Time Series Insights preview-API's
-            html: <p><a href="/rest/api/time-series-insights/preview-query">Query-API</a></p> <p><a href="/rest/api/time-series-insights/preview-model">Model-API</a></p> <p><a href="/rest/api/time-series-insights/preview-env">Omgevings-API</a></p> <p><a href="/rest/api/time-series-insights/preview-tsx">Time Series-expressie-API</a></p>
-          - title: Client-SDK
-            html: '<p><a href="https://github.com/microsoft/tsiclient/blob/master/docs/API.md">JavaScript-client-SDK</a></p>'
+  ms.collection: collection
+  author: KingdomOfEnds
+  ms.author: v-adgera
+  ms.date: 09/04/2019
+  ms.openlocfilehash: 46d97b411971b7dbd844a6f5aa23d97d1c59d30c
+  ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+  ms.translationtype: HT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 09/19/2019
+  ms.locfileid: "71145563"
+landingContent:
+- title: Over Azure Time Series Insights
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Wat is Azure Time Series Insights preview?
+      url: time-series-insights-update-overview.md
+    - text: Over Azure Time Series Insights GA
+      url: time-series-insights-overview.md
+  - linkListType: video
+    links:
+    - text: Time Series Insights voor IoT-apps. (13:31)
+      url: https://channel9.msdn.com/Shows/Internet-of-Things-Show/Azure-Time-Series-Insights-e2e-solution-for-industrial-IoT-analytics
+- title: Aan de slag met preview
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Azure Time Series Insights preview verkennen
+      url: time-series-insights-update-quickstart.md
+  - linkListType: tutorial
+    links:
+    - text: Zelfstudie voor Azure Time Series Insights preview
+      url: time-series-insights-update-create-environment.md
+    - text: Een web-app met één pagina maken
+      url: tutorial-create-tsi-sample-spa.md
+    - text: JavaScript-clientbibliotheek van Time Series Insights
+      url: tutorial-explore-js-client-lib.md
+  - linkListType: how-to-guide
+    links:
+    - text: Inrichten en beheren
+      url: time-series-insights-update-how-to-manage.md
+  - linkListType: concept
+    links:
+    - text: Gegevens visualiseren met de verkenner van Time Series Insights preview
+      url: time-series-insights-update-explorer.md
+- title: Preview plannen en voorbereiden
+  linkLists:
+  - linkListType: deploy
+    links:
+    - text: Verbinding maken met Event Hubs
+      url: time-series-insights-how-to-add-an-event-source-eventhub.md
+    - text: Verbinding maken met IoT Hub
+      url: time-series-insights-how-to-add-an-event-source-iothub.md
+    - text: Gegevensopslag en inkomend verkeer
+      url: time-series-insights-update-storage-ingress.md
+  - linkListType: how-to-guide
+    links:
+    - text: Gegevenstoegang verlenen
+      url: time-series-insights-data-access.md
+    - text: JSON vormgeven voor query's
+      url: time-series-insights-update-how-to-shape-events.md
+  - linkListType: concept
+    links:
+    - text: Time Series-model
+      url: time-series-insights-update-tsm.md
+- title: Aan de slag met GA
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Azure Time Series Insights GA verkennen
+      url: time-series-quickstart.md
+  - linkListType: tutorial
+    links:
+    - text: Een Time Series Insights-omgeving maken
+      url: tutorial-create-populate-tsi-environment.md
+    - text: Een web-app met één pagina maken
+      url: tutorial-create-tsi-sample-spa.md
+    - text: JavaScript-clientbibliotheek van Time Series Insights
+      url: tutorial-explore-js-client-lib.md
+  - linkListType: how-to-guide
+    links:
+    - text: Een omgeving maken
+      url: time-series-insights-get-started.md
+  - linkListType: concept
+    links:
+    - text: Gegevens visualiseren met de verkenner van Time Series Insights
+      url: time-series-insights-explorer.md
+- title: GA plannen en voorbereiden
+  linkLists:
+  - linkListType: deploy
+    links:
+    - text: Verbinding maken met Event Hubs
+      url: time-series-insights-how-to-add-an-event-source-eventhub.md
+    - text: Verbinding maken met IoT Hub
+      url: time-series-insights-how-to-add-an-event-source-iothub.md
+    - text: Uw omgeving plannen
+      url: time-series-insights-environment-planning.md
+    - text: De schaal van uw omgeving aanpassen
+      url: time-series-insights-how-to-scale-your-environment.md
+  - linkListType: how-to-guide
+    links:
+    - text: Gegevenstoegang verlenen
+      url: time-series-insights-data-access.md
+    - text: JSON vormgeven voor query's
+      url: how-to-shape-query-json.md
+    - text: Gebeurtenissen verzenden
+      url: time-series-insights-send-events.md
+- title: API-naslaginformatie
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Azure Time Series Insights
+      url: /rest/api/time-series-insights/
+    - text: Azure Time Series Insights preview
+      url: /rest/api/time-series-insights/preview
+    - text: Azure Time Series Insights GA
+      url: /rest/api/time-series-insights/ga
+    - text: JavaScript-client-SDK
+      url: https://github.com/microsoft/tsiclient/blob/master/docs/API.md

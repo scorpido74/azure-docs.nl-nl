@@ -140,7 +140,11 @@
             - name: Richtlijnen voor het afstemmen van prestaties
               href: performance-tuning-ordered-CCI.md
         - name: Caching van resultatenset
-          href: /sql/t-sql/statements/set-result-set-caching-transact-sql
+          items:
+            - name: Instellen voor een database
+              href: 'https://docs.microsoft.com/en-us/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azure-sqldw-latest'
+            - name: Instellen voor een sessie
+              href: /sql/t-sql/statements/set-result-set-caching-transact-sql
         - name: Tabellen
           items:
             - name: Overzicht

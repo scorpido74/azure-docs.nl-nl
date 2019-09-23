@@ -11,14 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: banders
-ms.openlocfilehash: 7719ae83525883a6d3f014dbb99877b7319f2ccd
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 05b1fe3d061e735322e6eb6c65e60f63d8adb4d6
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "68383661"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933866"
 ---
 # <a name="add-update-or-remove-a-credit-card-for-azure"></a>Een creditcard toevoegen, bijwerken of verwijderen voor Azure
+
+Dit document is van toepassing op klanten die zich online met een creditcard hebben geregistreerd voor Azure.
 
 In de Azure-portal kunt u een nieuwe creditcard toevoegen, een bestaande creditcard bijwerken, of een creditcard verwijderen die u niet gebruikt. U moet een [accountbeheerder](billing-subscription-transfer.md#whoisaa) zijn om deze wijzigingen door te voeren.
 
@@ -160,7 +162,7 @@ Als u de betalingswijze voor een factureringsprofiel wilt wijzigen, moet u de pe
 
 Als u de standaardbetalingswijze wilt wijzigen in cheque/directe overboeking, leest u hoe u [een factureringsprofiel kunt wijzigen in een cheque/directe overboeking](billing-how-to-pay-by-invoice.md).
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 1. Zoek naar **kostenbeheer en facturering**.
 1. Klik in het menu aan de linkerkant op **Factureringsprofielen**.
 
@@ -209,7 +211,7 @@ Als u een btw-nummer wilt toevoegen of bijwerken, werkt u uw profiel bij in het 
 
 ## <a name="need-help-contact-us"></a>Hulp nodig? Neem contact met ons op.
 
-Als u een vraag wilt stellen of hulp nodig hebt, maakt u een [ondersteuningsaanvraag](https://go.microsoft.com/fwlink/?linkid=2083458).
+Voor vragen of hulp [kunt u een ondersteuningsaanvraag maken](https://go.microsoft.com/fwlink/?linkid=2083458).
 
 ## <a name="next-steps"></a>Volgende stappen
 - Krijg meer informatie over [Azure-reserveringen](billing-save-compute-costs-reservations.md) om te zien of ze geld kunnen besparen.

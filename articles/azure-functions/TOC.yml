@@ -192,6 +192,8 @@
           href: functions-deployment-slots.md
         - name: Bouwen en implementeren met behulp van Azure-pijplijnen
           href: functions-how-to-azure-devops.md
+        - name: Bouwen en implementeren met GitHub-acties
+          href: functions-how-to-github-actions.md
         - name: Zip-implementatie
           href: deployment-zip-push.md
         - name: Uitvoeren uit pakket

@@ -15,18 +15,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: banders
-ms.openlocfilehash: 16b2eaef74a7aa0e3e28bfcbb6dbd9da568db6cf
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 45f4a45828501afea52f0ad522c3f3f6777f7ccd
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "67491411"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71057697"
 ---
 # <a name="download-or-view-your-azure-billing-invoice-and-daily-usage-data"></a>Uw Azure-factuur en de dagelijkse gebruiksgegevens downloaden of weergeven
 
 Voor de meeste abonnementen kunt u uw factuur downloaden via de [Azure-portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) of naar uw e-mailadres laten verzenden. Als u een Azure-klant bent met een Enterprise Agreement (EA-klant), kunt u de facturen van uw organisatie niet downloaden. Facturen worden verzonden naar iedereen die is ingesteld voor ontvangst van facturen voor de inschrijving.
 
-Als u een EA-klant bent of een [Microsoft-klantovereenkomst](#check-access-to-a-microsoft-customer-agreement) hebt, kunt u gegevens van het gebruik downloaden in de [Azure-portal](https://portal.azure.com/). Voor andere abonnementen gaat u naar het [Azure-accountcentrum](https://account.azure.com/Subscriptions) om uw gebruiksgegevens te downloaden.
+Als u een EA-klant bent of een [Microsoft-klantovereenkomst](#check-access-to-a-microsoft-customer-agreement) hebt, kunt u gegevens van het gebruik downloaden in de [Azure-portal](https://portal.azure.com/).
 
 Alleen bepaalde rollen hebben toestemming om factuur- en gebruiksgegevens op te vragen, zoals de accountbeheerder of de Enterprise-beheerder. Zie [Toegang tot factureringsgegevens voor Azure beheren](billing-manage-access.md) voor meer informatie over het verkrijgen van toegang tot factureringsgegevens.
 
@@ -46,11 +46,13 @@ Voor de meeste abonnementen kunt u uw factuur downloaden via de Azure-portal of 
 
     ![Schermopname met de optie Facturering en gebruik](./media/billing-download-azure-invoice-daily-usage-date/billingandusage.png)
 
-3. Klik op **Factuur downloaden** om een kopie van uw PDF-factuur weer te geven. Als u de melding **Niet beschikbaar** ziet, raadpleegt u [Waarom zie ik geen factuur voor de afgelopen betalingsperiode?](#noinvoice)
+3. Klik op de downloadknop om een exemplaar van uw PDF-factuur te downloaden en selecteer vervolgens **Factuur downloaden**. Als u de melding **Niet beschikbaar** ziet, raadpleegt u [Waarom zie ik geen factuur voor de afgelopen betalingsperiode?](#noinvoice)
 
-    ![Schermopname van de factureringsperioden, de downloadoptie en de totale kosten voor elke factureringsperiode](./media/billing-download-azure-invoice-daily-usage-date/billing4.png)
+    ![Schermopname van de factureringsperioden, de downloadoptie en de totale kosten voor elke factureringsperiode](./media/billing-download-azure-invoice-daily-usage-date/downloadinvoice.png)
 
-4. U kunt uw dagelijks gebruik ook bekijken als u op de factureringsperiode klikt.
+4. U kunt ook een dagelijkse uitsplitsing van de verbruikte hoeveelheden en geschatte kosten downloaden door op **CSV downloaden** te klikken.
+
+    ![Schermopname met de pagina voor factuur en gebruik downloaden](./media/billing-download-azure-invoice-daily-usage-date/usageandinvoice.png)
 
 Zie [Meer informatie over uw factuur voor Microsoft Azure](billing-understand-your-bill.md) voor meer informatie over uw factuur. Zie [Onverwachte kosten voorkomen met Azure-facturering en -kostenbeheer](billing-getting-started.md) voor hulp bij het beheren van uw kosten.
 
@@ -62,7 +64,7 @@ Voor elk [factureringsprofiel](billing-mca-overview.md#billing-profiles) in de M
 2. Selecteer een factureringsprofiel.
 3. Selecteer **Facturen**.
 4. Zoek in het factuurraster de rij van de factuur die u wilt downloaden.
-5. Klik op het beletselteken (`...`) aan het einde van de rij.
+5. Klik op de downloadknop aan het einde van de rij.
 6. Selecteer **Factuur** in het contextmenu voor downloaden.
 
 Als u geen factuur voor de laatste factureringsperiode ziet, raadpleegt u **Aanvullende informatie.** <!-- Fix this -->
@@ -119,37 +121,19 @@ Als u een Microsoft-klantovereenkomst hebt, kunt u zich aanmelden om uw factuur 
 
 Volg de bovenstaande stappen om u af te melden voor ontvangst van uw factuur via e-mail en klik op **Afmelden**. Ook alle eigenaren, bijdragers, lezers en factuurbeheerders worden afgemeld voor ontvangst van de factuur via e-mail. Als u een lezer bent, kunt u de voorkeur voor e-mailfacturen niet wijzigen.
 
-## <a name="download-usage"></a>Gebruiksgegevens downloaden
+## <a name="download-usage-in-azure-portal"></a>Uw gebruik downloaden in de Azure-portal
 
- Voor de meeste abonnementen kunt u het bestand met gegevens van het dagelijkse gebruik vinden in het [Azure-accountcentrum](https://account.azure.com/Subscriptions). Als u een EA-klant bent of een Microsoft-klantovereenkomst hebt, kunt u gegevens van het gebruik downloaden in de [Azure-portal](https://portal.azure.com/). <!-- TO DO: update PayG experience to Ibiza once it ships-->
+ Voor de meeste abonnementen kunt u deze stappen volgen om uw dagelijks gebruik te vinden:
 
-### <a name="download-usage-from-the-account-center-csv"></a>Gebruiksgegevens downloaden uit het accountcentrum (.csv)
+1. Selecteer uw abonnement op de pagina [Abonnementen](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) in de Azure-portal als [een gebruiker met toegang tot facturen](billing-manage-access.md).
 
-1. Meld u als de accountbeheerder aan bij het [Azure-accountcentrum](https://account.windowsazure.com/subscriptions).
+2. Selecteer **Facturen**.
 
-2. Selecteer het abonnement waarvoor u de factuur- en gebruiksgegevens wilt bekijken.
+    ![Schermopname met de optie Facturering en gebruik](./media/billing-download-azure-invoice-daily-usage-date/billingandusage.png)
 
-3. Selecteer **Factureringsgeschiedenis**.
+3. Klik op de downloadknop van de factuurperiode die u wilt controleren.
 
-    ![Schermopname van de optie Factureringsgeschiedenis](./media/billing-download-azure-invoice-daily-usage-date/Billinghisotry.png)
-
-4. U kunt uw overzichten voor de afgelopen zes factureringsperioden en de huidige niet-gefactureerde periode bekijken.
-
-    ![Schermopname van de factureringsperioden, opties voor het downloaden van facturen en dagelijkse gebruiksgegevens en de totale kosten voor elke factureringsperiode](./media/billing-download-azure-invoice-daily-usage-date/billingSum.png)
-
-5. Selecteer **Huidig overzicht weergeven** om een schatting van uw kosten te zien voor het moment waarop de schatting wordt gegenereerd. Deze informatie wordt dagelijks bijgewerkt en omvat mogelijk niet alle gebruiksgegevens. Uw maandelijkse factuur kan afwijken van deze schatting.
-
-    ![Schermopname van de optie Huidig overzicht weergeven](./media/billing-download-azure-invoice-daily-usage-date/billingSum2.png)
-
-    ![Schermopname van de geschatte huidige kosten](./media/billing-download-azure-invoice-daily-usage-date/billingSum3.png)
-
-6. Selecteer **Gebruiksgegevens downloaden** om de dagelijkse gebruiksgegevens te downloaden als een CSV-bestand. Als er twee versies beschikbaar zijn, moet u versie 2 downloaden.
-
-    ![Schermopname van de optie Gebruiksgegevens downloaden](./media/billing-download-azure-invoice-daily-usage-date/DLusage.png)
-
-Alleen de accountbeheerder heeft toegang tot het Azure-accountcentrum. Andere factureringsbeheerders, zoals een eigenaar, kunnen gebruiksgegevens downloaden met behulp van de [Billing-API's](billing-usage-rate-card-overview.md).
-
-Zie [Meer informatie over uw factuur voor Microsoft Azure](billing-understand-your-bill.md) voor meer informatie over uw dagelijkse gebruik. Zie [Onverwachte kosten voorkomen met Azure-facturering en -kostenbeheer](billing-getting-started.md) voor hulp bij het beheren van uw kosten.
+4. Download een dagelijkse uitsplitsing van de verbruikte hoeveelheden en geschatte kosten door op **CSV downloaden** te klikken.  Het kan enkele minuten duren om het CSV-bestand voor te bereiden.
 
 ### <a name="download-usage-for-ea-customers"></a>Gebruiksgegevens downloaden voor EA-klanten
 

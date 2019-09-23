@@ -441,7 +441,7 @@ Selecteer de frequentie waarmee klanten de vermelde prijs moeten betalen. Er moe
 - **Prijs**: USD per maand of USD per jaar
 
 Prijzen die in de lokale valuta zijn ingesteld (USD = Verenigde Staten dollar), worden omgezet in de lokale valuta van alle geselecteerde markten met de huidige wissel koersen die beschikbaar zijn tijdens de installatie. Valideer deze prijzen vóór de publicatie door het prijs werk blad te exporteren en de prijs op elke markt te bekijken. Als u aangepaste prijzen wilt instellen op een afzonderlijke markt, wijzigt en importeert u de prijs informatie in het werk blad. U bent verantwoordelijk voor het valideren van deze prijzen en de eigenaar van deze instellingen.
-**U moet uw prijs wijzigingen eerst opslaan om het exporteren van prijs gegevens in te scha kelen.*
+* *U moet uw prijs wijzigingen eerst opslaan om het exporteren van prijs gegevens in te scha kelen.*
 
 Controleer uw prijzen zorgvuldig voordat u deze publiceert. er zijn enkele beperkingen voor wat er kan worden gewijzigd nadat een plan is gepubliceerd:
 

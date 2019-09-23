@@ -134,8 +134,10 @@
       href: ../../virtual-machine-scale-sets/overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
     - name: Automatisering van infrastructuur
       href: infrastructure-automation.md
-    - name: Beveiliging en beleid
-      href: security-policy.md
+    - name: Beveiliging
+      items:
+        - name: Beveiliging en beleid
+          href: security-policy.md
     - name: Toestanden en levenscyclus
       href: states-lifecycle.md
     - name: Bewaking
@@ -183,6 +185,8 @@
           href: windows-desktop-multitenant-hosting-deployment.md
     - name: Virtuele machines beveiligen
       items:
+        - name: Aanbevelingen
+          href: security-recommendations.md
         - name: Just-in-time-toegang
           href: ../../security-center/security-center-just-in-time.md
         - name: Versleutelen
@@ -259,6 +263,14 @@
           href: instance-metadata-service.md
         - name: Geneste virtualisatie inschakelen
           href: nested-virtualization.md
+    - name: Virtuele machines bewaken
+      items:
+        - name: Azure Monitor voor virtuele machines
+          href: ../../azure-monitor/insights/vminsights-overview.md
+        - name: Metrische waarschuwingen maken
+          href: ../../azure-monitor/platform/alerts-metric.md
+        - name: Logboekwaarschuwingen maken
+          href: ../../azure-monitor/platform/alerts-log.md
     - name: Kosten beheren
       items:
         - name: Vooruitbetalen voor VM's - Azure-reserveringen
