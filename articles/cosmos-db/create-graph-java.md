@@ -8,13 +8,13 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 03/26/2019
 ms.author: lbosq
-ms.custom: seo-java-july2019, seo-java-august2019
-ms.openlocfilehash: 8689cb74e35d5b87c300f5fce239993691652ee2
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019
+ms.openlocfilehash: 1b37475cfa8df38a00ea6017d47e90677ed457d2
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70172532"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212639"
 ---
 # <a name="quickstart-build-a-graph-database-with-the-java-sdk-and-the-azure-cosmos-db-table-api"></a>Quickstart: Bouw een grafiek database met de Java-SDK en de Azure Cosmos DB Table-API
 
@@ -110,7 +110,7 @@ Ga nu terug naar Azure Portal om de verbindingsgegevens op te halen en deze in d
 
     Kopieer het eerste gedeelte van de URI-waarde.
 
-    ![Een toegangssleutel in Azure Portal bekijken en kopiëren op de pagina Sleutels](./media/create-graph-java/keys.png)
+    ![Een toegangssleutel in Azure Portal bekijken en kopiëren op de pagina Sleutels](./media/create-graph-java/copy-access-key-azure-portal.png)
 2. Open het bestand src/remote.yaml en vervang `$name$` in `hosts: [$name$.graphs.azure.com]` door de zojuist gekopieerde unieke ID-waarde.
 
     Regel 1 van remote.yaml moet er nu als volgt uitzien 
@@ -219,15 +219,15 @@ U kunt nu teruggaan naar Data Explorer en de hoekpunten bekijken die zijn toegev
 
 12. Nu kunt u rakesh en ashley met elkaar verbinden. Zorg ervoor dat **Ashley** is geselecteerd in de lijst met resultaten ![en selecteer vervolgens het doel van een hoek punt](./media/create-graph-java/edit-pencil-button.png) in een grafiek wijzigen naast **doelen** aan de rechter kant. Mogelijk moet u het scherm verbreden om de knop te kunnen zien.
 
-    ![Het doel van een hoekpunt in een grafiek wijzigen](./media/create-graph-java/azure-cosmosdb-data-explorer-edit-target.png)
+    ![Het doel van een hoek punt in een grafiek wijzigen-Azure CosmosDB](./media/create-graph-java/azure-cosmosdb-data-explorer-edit-target.png)
 
 13. Voer in het vak doel *Rakesh*in en voer in het vak **rand label** de tekst *kent*in en schakel het selectie vakje in.
 
-    ![Een verbinding tussen ashley en rakesh toevoegen in Data Explorer](./media/create-graph-java/azure-cosmosdb-data-explorer-set-target.png)
+    ![Een verbinding toevoegen in Data Explorer-Azure CosmosDB](./media/create-graph-java/azure-cosmosdb-data-explorer-set-target.png)
 
 14. Selecteer nu **rakesh** in de lijst met resultaten en kijk of ashley en rakesh zijn verbonden. 
 
-    ![Twee hoekpunten die zijn verbonden in Data Explorer](./media/create-graph-java/azure-cosmosdb-graph-explorer.png)
+    ![Twee hoek punten verbonden in Data Explorer-Azure CosmosDB](./media/create-graph-java/azure-cosmosdb-graph-explorer.png)
 
     Hiermee is het onderdeel voor het maken van resources van deze zelfstudie voltooid. U kunt naar eigen inzicht verdergaan met toevoegen van hoekpunten, aanpassen van de bestaande hoekpunten of wijzigen van de query's. Laten we nu de metrische gegevens bekijken die Azure Cosmos DB biedt en vervolgens de resources opschonen. 
 

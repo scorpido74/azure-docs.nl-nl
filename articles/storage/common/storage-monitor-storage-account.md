@@ -1,5 +1,5 @@
 ---
-title: Een Azure Storage-account controleren | Microsoft Docs
+title: Een Azure Storage-account bewaken in de Azure Portal | Microsoft Docs
 description: Meer informatie over het bewaken van een opslag account in azure met behulp van de Azure Portal.
 author: normesta
 ms.service: storage
@@ -8,16 +8,18 @@ ms.date: 07/31/2018
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: 912c1c3403191f40dac054f99f29ac60ba84ce8f
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 143574ff02960fcd0fd33ccaed5a80a9bb4f3147
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68844920"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71211849"
 ---
 # <a name="monitor-a-storage-account-in-the-azure-portal"></a>Een opslag account in de Azure Portal bewaken
 
-[Azure Opslaganalyse](storage-analytics.md) biedt metrische gegevens voor alle opslag Services, en logboeken voor blobs, wacht rijen en tabellen. U kunt de [Azure Portal](https://portal.azure.com) gebruiken om te configureren welke metrische gegevens en logboeken voor uw account worden vastgelegd en om grafieken te configureren die visuele voors tellingen hebben van uw metriekgegevens.
+[Azure Opslaganalyse](storage-analytics.md) biedt metrische gegevens voor alle opslag Services, en logboeken voor blobs, wacht rijen en tabellen. U kunt de [Azure Portal](https://portal.azure.com) gebruiken om te configureren welke metrische gegevens en logboeken voor uw account worden vastgelegd en om grafieken te configureren die visuele voors tellingen hebben van uw metriekgegevens. 
+
+U wordt aangeraden [Azure monitor voor opslag](../../azure-monitor/insights/storage-insights-overview.md) te bekijken (preview). Het is een functie van Azure Monitor die uitgebreide controle biedt over uw Azure Storage-accounts door een uniforme weer gave te bieden van de prestaties, capaciteit en beschik baarheid van uw Azure Storage services. U hoeft niets in te scha kelen of te configureren, en u kunt deze metrische gegevens direct weer geven vanuit de vooraf gedefinieerde interactieve diagrammen en andere visualisaties die zijn opgenomen.
 
 > [!NOTE]
 > Er zijn kosten verbonden aan het onderzoeken van bewakings gegevens in de Azure Portal. Zie [Opslaganalyse](storage-analytics.md)voor meer informatie.
@@ -93,7 +95,7 @@ De metrische gegevens die u in **Diagnostische gegevens** hebt geselecteerd, bep
 
 U kunt waarschuwingen maken om u te waarschuwen wanneer de drempel waarden voor de metrische gegevens van de opslag resource zijn bereikt.
 
-1. Als u de **Blade waarschuwings regels**wilt openen, schuift u omlaag naar de sectie **bewaking** van de **menu** -Blade en selecteert u **waarschuwingen (klassiek)** .
+1. Als u de **Blade waarschuwings regels**wilt openen, schuift u omlaag naar de sectie **bewaking** van de **menu-Blade** en selecteert u **waarschuwingen (klassiek)** .
 2. Selecteer **waarschuwing voor metrische gegevens toevoegen (klassiek)** om de Blade **een waarschuwings regel toevoegen** te openen
 3. Voer een **naam** en **Beschrijving** in voor de nieuwe waarschuwings regel.
 4. Selecteer de **metriek** waarvoor u een waarschuwing, een waarschuwings **voorwaarde**en een **drempel waarde**wilt toevoegen. Het type drempel-eenheid verandert afhankelijk van de metriek die u hebt gekozen. Bijvoorbeeld: ' count ' is het eenheids type voor *ContainerCount*, terwijl de eenheid voor de metrische waarde van *PercentNetworkError* een percentage is.

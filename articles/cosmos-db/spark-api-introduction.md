@@ -6,12 +6,12 @@ ms.topic: overview
 ms.date: 08/01/2019
 author: rimman
 ms.author: rimman
-ms.openlocfilehash: 3fd7990043543b92eb3daf8ec699ec58db3387ec
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: 0f070cb9a6e300dad0ec9e0b393b09b7f22d2942
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68717576"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212590"
 ---
 # <a name="built-in-operational-analytics-in-azure-cosmos-db-with-apache-spark-preview"></a>Ingebouwde operationele analyse in Azure Cosmos DB met Apache Spark (preview-versie) 
 
@@ -57,7 +57,7 @@ Met Apache Spark op de wereld wijd gedistribueerde Azure Cosmos-Data Base kunt u
 
 Als een Data Base met meerdere modellen, wordt de ondersteuning voor OSS-Api's door Azure Cosmos DB nu uitgebreid met een **uniforme serverloze ervaring voor Apache Spark** met gegevens modellen voor sleutel waarden, document, grafieken en kolom familie. Verschillende gegevens modellen worden ondersteund met behulp van MongoDB, Cassandra, Gremlin, Etcd en SQL Api's, die allemaal op dezelfde onderliggende gegevens werken. 
 
-Met de ondersteuning van Apache Spark in Azure Cosmos DB kunt u toepassingen die zijn geschreven in scala, Python, Java en verschillende nauw geïntegreerde bibliotheken voor SQL gebruiken. Deze bibliotheken omvatten ([Spark SQL](https://spark.apache.org/sql/)), machine learning (Spark [MLlib](https://spark.apache.org/mllib/)), verwerking van streams ([Spark Structured streaming](https://spark.apache.org/streaming/)) en grafiek verwerking (Spark [GraphFrames]( https://docs.databricks.com/spark/latest/graph-analysis/graphframes/user-guide-python.html)). Deze hulpprogram ma's maken het gemakkelijker om de Apache Spark te gebruiken voor verschillende use cases. U hoeft niet te omgaan met het beheren van Spark-of Spark-clusters. U kunt de vertrouwde Apache Spark Api's en **Jupyter** -notebooks voor analyses en SQL API of een van de OSS NoSQL-Api's zoals Cassandra voor transactionele verwerking op dezelfde onderliggende gegevens tegelijk gebruiken.
+Met de ondersteuning van Apache Spark in Azure Cosmos DB kunt u toepassingen die zijn geschreven in scala, Python, Java en verschillende nauw geïntegreerde bibliotheken voor SQL gebruiken. Deze bibliotheken omvatten ([Spark SQL](https://spark.apache.org/sql/)), machine learning (Spark [MLlib](https://spark.apache.org/mllib/)), verwerking van streams ([Spark Structured streaming](https://spark.apache.org/streaming/)) en grafiek verwerking (Spark [GraphFrames]( https://docs.databricks.com/spark/latest/graph-analysis/graphframes/user-guide-python.html)). Deze hulpprogram ma's maken het gemakkelijker om de Apache Spark te gebruiken voor verschillende use cases. U hoeft niet te omgaan met het beheren van Spark-of Spark-clusters. U kunt de vertrouwde Apache Spark Api's en **Jupyter-notebooks** voor analyses en SQL API of een van de OSS NoSQL-Api's zoals Cassandra voor transactionele verwerking op dezelfde onderliggende gegevens tegelijk gebruiken.
 
 ### <a name="no-schema-or-index-management"></a>Geen schema- of indexbeheer
 
@@ -136,12 +136,6 @@ In de volgende afbeelding ziet u hoe de Spark-ondersteuning van Azure Cosmos DB 
 In de volgende afbeelding ziet u hoe de Spark-ondersteuning van Azure Cosmos DB wordt gebruikt in gaming Analytics:
 
 ![Ondersteuning voor Spark van Azure Cosmos DB in gaming Analytics](./media/spark-api-introduction/gaming-analytics.png)
-
-## <a name="built-in-jupyter-notebooks-support"></a>Ingebouwde ondersteuning voor Jupyter-notebooks
-
-Azure Cosmos DB ondersteunt ingebouwde Jupyter-notebooks voor alle Api's, zoals Cassandra, MongoDB, SQL, Gremlin en Table. De Jupyter-notebooks worden uitgevoerd binnen de Azure Cosmos-accounts en ze verbeteren de ervaring voor ontwikkel aars. Met de ingebouwde ondersteuning voor notebooks voor alle Azure Cosmos DB Api's en gegevens modellen kunt u interactief query's uitvoeren. U kunt ook machine learning modellen uitvoeren en de gegevens analyseren die zijn opgeslagen in uw Azure Cosmos-data bases. Met behulp van de Jupyter-Notebook-ervaring kunt u de opgeslagen gegevens analyseren, machine learning modellen bouwen en trainen, en de gegevens in de Azure Portal afleiden, zoals wordt weer gegeven in de volgende afbeelding:
-
-![Ondersteuning voor Jupyter-notebooks in Azure Cosmos DB](./media/spark-api-introduction/jupyter-notebooks-portal.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 

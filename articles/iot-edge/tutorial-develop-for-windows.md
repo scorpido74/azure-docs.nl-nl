@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: f62698cc736bb7df51d013199d3054b25598240e
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: 6cde60ee31b1654d79affd6e9050f426365ba29f
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71147403"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240961"
 ---
 # <a name="tutorial-develop-iot-edge-modules-for-windows-devices"></a>Zelfstudie: IoT Edge-modules ontwikkelen voor Windows-apparaten
 
@@ -57,6 +57,7 @@ Een ontwikkel computer:
 
 * Windows 10 met 1809-update of nieuwer.
 * U kunt uw eigen computer of een virtuele machine gebruiken, afhankelijk van uw ontwikkelings voorkeuren.
+  * Zorg ervoor dat uw ontwikkel computer geneste virtualisatie ondersteunt. Deze mogelijkheid is nodig voor het uitvoeren van een container engine, die u in de volgende sectie installeert.
 * Installeer [Git](https://git-scm.com/). 
 
 Een Azure IoT Edge apparaat in Windows:

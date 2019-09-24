@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: jenoller
-ms.openlocfilehash: bf29799bc2aee12a27216ad45f7ed1e3355bab8a
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 8c1736fcd4356e0778c3b36301b4490764efab76
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68596124"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240887"
 ---
 # <a name="support-policies-for-azure-kubernetes-service"></a>Ondersteunings beleid voor de Azure Kubernetes-service
 
@@ -95,7 +95,7 @@ Micro soft en klanten delen de verantwoordelijkheid voor Kubernetes-worker-knoop
   * Docker-of Moby-daemon
 
 > [!NOTE]
-> Als een besturings element op een werk knooppunt niet operationeel is, moet het AKS-team mogelijk het hele worker-knoop punt opnieuw opstarten. Vanwege de beperkte toegang tot de actieve werk belasting en gegevens van de klant, start het AKS-team een werk knooppunt alleen opnieuw op als de klant het probleem heeft geëscaleerd. Het AKS-team kan waar mogelijk voor komen dat een vereiste herstart van invloed is op de toepassing.
+> Als een besturings element van een werk knooppunt niet operationeel is, moet het AKS-team mogelijk afzonderlijke onderdelen of het hele worker-knoop punt opnieuw opstarten. Deze bewerkingen voor opnieuw opstarten worden geautomatiseerd en bieden automatisch herstel voor veelvoorkomende problemen. Deze opnieuw opstarten vindt alleen plaats op _knooppunt_ niveau en niet op het cluster, tenzij dit nood onderhoud of onderbreking is.
 
 ### <a name="customer-responsibilities-for-aks-worker-nodes"></a>Verantwoordelijkheden van de klant voor AKS worker-knoop punten
 

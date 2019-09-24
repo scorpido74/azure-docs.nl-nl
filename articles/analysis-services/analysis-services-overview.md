@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 08/27/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: ebb6c05645a991d22ac30ee013e5a51007994eb6
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 81cda4648b97562e0ee557af0f28515d98a734b6
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073853"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240914"
 ---
 # <a name="what-is-azure-analysis-services"></a>Wat is Azure Analysis Services?
 
@@ -41,7 +41,7 @@ Azure Analysis Services is beschikbaar in de servicelagen **Developer**, **Basic
 
 Deze laag wordt aanbevolen voor evaluatie-, ontwikkelings- en testscenario's. Eén abonnement bevat alle functionaliteit van de Standard-laag, maar heeft beperkte verwerkingskracht, QPU's en geheugengrootte. Uitschalen van queryreplica’s *is niet beschikbaar* voor deze laag. Voor deze laag is geen SLA beschikbaar.
 
-|Plannen  |QPU's  |Geheugen (GB)  |
+|Plan  |QPU's  |Geheugen (GB)  |
 |---------|---------|---------|
 |D1    |    20     |    3     |
 
@@ -50,16 +50,16 @@ Deze laag wordt aanbevolen voor evaluatie-, ontwikkelings- en testscenario's. E�
 
 Deze-laag wordt aanbevolen voor productieoplossingen met kleinere tabellarische modellen, een beperkt aantal gelijktijdige gebruikers en eenvoudige vereisten voor gegevensvernieuwing. Uitschalen van queryreplica’s *is niet beschikbaar* voor deze laag. Perspectieven, meerdere partities en functies van het tabellarische DirectQuery-model *worden niet ondersteund* in deze laag.  
 
-|Plannen  |QPU's  |Geheugen (GB)  |
+|Plan  |QPU's  |Geheugen (GB)  |
 |---------|---------|---------|
 |B1    |    40     |    10     |
-|B2    |    80     |    20     |
+|B2    |    80     |    16     |
 
 ### <a name="standard-tier"></a>Standard-laag
 
 Deze laag is de meest geschikte voor essentiële productietoepassingen waarvoor elastische gebruikersgelijktijdigheid is vereist en waarvan de gegevensmodellen snel groter worden. Deze laag ondersteunt geavanceerde gegevensvernieuwing voor bijna real-time gegevensmodelupdates en ondersteunt alle tabellarische modelleringsfuncties.
 
-|Plannen  |QPU's  |Geheugen (GB)  |
+|Plan  |QPU's  |Geheugen (GB)  |
 |---------|---------|---------|
 |S0    |    40     |    10     |
 |S1    |    100     |    25     |

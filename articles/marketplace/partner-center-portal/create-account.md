@@ -7,12 +7,12 @@ ms.author: parthp
 ms.service: marketplace
 ms.topic: guide
 ms.date: 09/10/2019
-ms.openlocfilehash: fd1da6a43e4c1d7d6b66d5dbacb2d7a587c2856a
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 9d19b31ccce8feeb2d5ce12353d9b79841b40724
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70898684"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71219445"
 ---
 # <a name="create-a-commercial-marketplace-account-in-partner-center"></a>Een commercieel Marketplace-account maken in het partner centrum
 
@@ -60,7 +60,7 @@ Meld u aan met een werk account zodat u het zakelijke e-mail account domein van 
 
 ### <a name="agree-to-terms-and-conditions"></a>Ga akkoord met de voor waarden
 
-U moet akkoord gaan met de voor waarden in de [Microsoft Marketplace Publisher-overeenkomst](http://go.microsoft.com/fwlink/?LinkID=699560).
+U moet akkoord gaan met de voor waarden in de [Microsoft Marketplace Publisher-overeenkomst](https://go.microsoft.com/fwlink/?LinkID=699560).
 
 ### <a name="provide-your-publisher-profile"></a>Uw Publisher-profiel opgeven
 
@@ -103,7 +103,7 @@ Nadat u zich hebt aangemeld, gebruikt u de stappen in deze sectie om het instell
 
 1. Selecteer in partner centrum **instellingen** > **partner instellingen** > **Program ma's** > **aan de slag**.
 2. Microsoft Partner Network uw abonnement detecteert en de Publisher-profiel pagina wordt weer gegeven, zodat u uw bedrijfs naam en MPN-ID kunt invoeren.
-3. Lees de voor waarden in de [Microsoft Marketplace Publisher-overeenkomst](http://go.microsoft.com/fwlink/?LinkID=699560)en selecteer vervolgens **accepteren en door gaan** om uw registratie te volt ooien.
+3. Lees de voor waarden in de [Microsoft Marketplace Publisher-overeenkomst](https://go.microsoft.com/fwlink/?LinkID=699560)en selecteer vervolgens **accepteren en door gaan** om uw registratie te volt ooien.
 
 Zodra u bent Inge schreven, wordt u naar de pagina overzicht van commerciële Marketplace geleid. **Commerciële Marketplace** wordt weer gegeven in de linkernavigatiebalk. Als u **instellingen** > voor**partner instellingen** > **selecteert, ziet**u dat commerciële Marketplace als geregistreerd wordt vermeld.
 

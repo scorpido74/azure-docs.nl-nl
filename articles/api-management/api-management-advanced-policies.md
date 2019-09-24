@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: apimpm
-ms.openlocfilehash: efc439d56ee864d940942369b3d226ed2a94a383
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 166ff5f8866fca955cbe99c5896eb509f52261f6
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70072638"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71219563"
 ---
 # <a name="api-management-advanced-policies"></a>Geavanceerde beleids regels API Management
 
@@ -38,7 +38,7 @@ In dit onderwerp vindt u een verwijzing naar de volgende API Management-beleids 
 -   [Set-aanvraag methode](#SetRequestMethod) : Hiermee kunt u de HTTP-methode voor een aanvraag wijzigen.
 -   [Status code instellen](#SetStatus) : Hiermee wijzigt u de HTTP-status code in de opgegeven waarde.
 -   [Set variable](api-management-advanced-policies.md#set-variable) : persistent een waarde in een benoemde [context](api-management-policy-expressions.md#ContextVariables) variabele voor later toegang.
--   [Trace](#Trace) : voegt een teken reeks toe aan de [API Inspector](https://azure.microsoft.com/documentation/articles/api-management-howto-api-inspector/) -uitvoer.
+-   [Trace](#Trace) : voegt aangepaste traceringen toe aan de [API-Inspector](https://azure.microsoft.com/documentation/articles/api-management-howto-api-inspector/) -uitvoer, Application Insights-Telerichtingen en Diagnostische logboeken.
 -   [Wacht](#Wait) op een Inge sloten [verzend aanvraag](api-management-advanced-policies.md#SendRequest), haal de [waarde uit het cache geheugen](api-management-caching-policies.md#GetFromCacheByKey)of Controleer of [controle stroom](api-management-advanced-policies.md#choose) beleid is voltooid voordat u doorgaat.
 
 ## <a name="choose"></a>Controle stroom
@@ -129,7 +129,7 @@ In dit voor beeld ziet u hoe u het filteren van inhoud uitvoert door gegevens el
 | Element   | Description                                                                                                                                                                                                                                                               | Vereist |
 | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
 | desgewenst    | Hoofd element.                                                                                                                                                                                                                                                             | Ja      |
-| wanneer      | De voor waarde die moet worden `if` gebruikt `ifelse` voor de of `choose` delen van het beleid. Als het `choose` beleid meerdere `when` secties heeft, worden ze opeenvolgend geëvalueerd. Zodra de `condition` van een wanneer `true`-element wordt geëvalueerd, worden er `when` geen verdere voor waarden geëvalueerd. | Ja      |
+| Als      | De voor waarde die moet worden `if` gebruikt `ifelse` voor de of `choose` delen van het beleid. Als het `choose` beleid meerdere `when` secties heeft, worden ze opeenvolgend geëvalueerd. Zodra de `condition` van een wanneer `true`-element wordt geëvalueerd, worden er `when` geen verdere voor waarden geëvalueerd. | Ja      |
 | tenzij | Bevat het beleids fragment dat moet worden gebruikt als aan `when` `true`geen van de voor waarden wordt voldaan.                                                                                                                                                                               | Nee       |
 
 ### <a name="attributes"></a>Kenmerken
@@ -148,7 +148,7 @@ Dit beleid kan worden gebruikt in de volgende beleids [secties](https://azure.mi
 
 ## <a name="ForwardRequest"></a>Aanvraag door sturen
 
-Het `forward-request` beleid stuurt de inkomende aanvraag door naar de back-end-service die is opgegeven in de [context](api-management-policy-expressions.md#ContextVariables)van de aanvraag. De URL van de back-end-service is opgegeven in de API- [instellingen](https://azure.microsoft.com/documentation/articles/api-management-howto-create-apis/#configure-api-settings) en kan worden gewijzigd met het beleid voor het [instellen van back](api-management-transformation-policies.md) -upservices.
+Het `forward-request` beleid stuurt de inkomende aanvraag door naar de back-end-service die is opgegeven in de [context](api-management-policy-expressions.md#ContextVariables)van de aanvraag. De URL van de back-end-service is opgegeven in de API- [instellingen](https://azure.microsoft.com/documentation/articles/api-management-howto-create-apis/#configure-api-settings) en kan worden gewijzigd met het beleid voor het [instellen van back-upservices](api-management-transformation-policies.md) .
 
 > [!NOTE]
 > Als u dit beleid verwijdert, worden de aanvragen die niet worden doorgestuurd naar de back-end-service en het beleid in de sectie voor uitgaande verbindingen onmiddellijk geëvalueerd wanneer het beleid is voltooid in de sectie binnenkomend.
@@ -585,7 +585,7 @@ In dit voorbeeld beleid ziet u een voor beeld `send-one-way-request` van het geb
 | url                        | De URL van de aanvraag.                                                                                     | Geen if-modus = kopiëren; anders Ja. |
 | methode                     | De HTTP-methode voor de aanvraag.                                                                            | Geen if-modus = kopiëren; anders Ja. |
 | koptekst                     | Aanvraag header. Meerdere koptekst elementen gebruiken voor meerdere aanvraag headers.                                  | Nee                              |
-| hoofdtekst                       | De aanvraag tekst.                                                                                           | Nee                              |
+| body                       | De aanvraag tekst.                                                                                           | Nee                              |
 | verificatie-certificaat | [Certificaat dat moet worden gebruikt voor client verificatie](api-management-authentication-policies.md#ClientCertificate) | Nee                              |
 
 ### <a name="attributes"></a>Kenmerken
@@ -593,7 +593,7 @@ In dit voorbeeld beleid ziet u een voor beeld `send-one-way-request` van het geb
 | Kenmerk     | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | Vereist | Standaard  |
 | ------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | -------- |
 | mode = "teken reeks" | Hiermee wordt bepaald of dit een nieuwe aanvraag of een kopie van de huidige aanvraag is. In de modus uitgaand, wordt in modus = kopiëren de hoofd tekst van de aanvraag niet geïnitialiseerd.                                                                                                                                                                                                                                                                                                                                                                                                                                                                | Nee       | Nieuw      |
-| name          | Hiermee geeft u de naam op van de header die moet worden ingesteld.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | Ja      | N/A      |
+| name          | Hiermee geeft u de naam van de in te stellen header op.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | Ja      | N/A      |
 | exists-actie | Hiermee geeft u op welke actie moet worden ondernomen wanneer de header al is opgegeven. Dit kenmerk moet een van de volgende waarden hebben.<br /><br /> -Override: vervangt de waarde van de bestaande header.<br />-Skip-vervangt niet de bestaande waarde van de header.<br />-append-de waarde wordt toegevoegd aan de bestaande waarde van de header.<br />-delete: verwijdert de header uit de aanvraag.<br /><br /> Als de instelling `override` is ingesteld op het aanmelden van meerdere vermeldingen met dezelfde naam, wordt de header ingesteld op basis van alle vermeldingen (die meerdere keren worden vermeld). in het resultaat worden alleen waarden weer gegeven die in de lijst staan. | Nee       | overschrijven |
 
 ### <a name="usage"></a>Gebruik
@@ -669,7 +669,7 @@ In dit voor beeld ziet u één manier om een referentie token te verifiëren met
 | url                        | De URL van de aanvraag.                                                                                     | Geen if-modus = kopiëren; anders Ja. |
 | methode                     | De HTTP-methode voor de aanvraag.                                                                            | Geen if-modus = kopiëren; anders Ja. |
 | koptekst                     | Aanvraag header. Meerdere koptekst elementen gebruiken voor meerdere aanvraag headers.                                  | Nee                              |
-| hoofdtekst                       | De aanvraag tekst.                                                                                           | Nee                              |
+| body                       | De aanvraag tekst.                                                                                           | Nee                              |
 | verificatie-certificaat | [Certificaat dat moet worden gebruikt voor client verificatie](api-management-authentication-policies.md#ClientCertificate) | Nee                              |
 
 ### <a name="attributes"></a>Kenmerken
@@ -680,7 +680,7 @@ In dit voor beeld ziet u één manier om een referentie token te verifiëren met
 | Response-variabele-name = "string" | De naam van de context variabele waarmee een antwoord object wordt ontvangen. Als de variabele niet bestaat, wordt deze gemaakt na een geslaagde uitvoering van het beleid en wordt deze toegankelijk [`context.Variable`](api-management-policy-expressions.md#ContextVariables) via de verzameling.                                                                                                                                                                                                                                                                                                                          | Ja      | N/A      |
 | timeout="integer"               | Het time-outinterval in seconden voordat de aanroep van de URL mislukt.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | Nee       | 60       |
 | negeren-fout                    | Indien waar en de aanvraag resulteert in een fout:<br /><br /> -Als de reactie variabele-name is opgegeven, bevat deze een null-waarde.<br />-Als Response-variabele-name niet is opgegeven, context. De aanvraag wordt niet bijgewerkt.                                                                                                                                                                                                                                                                                                                                                                                   | Nee       | false    |
-| name                            | Hiermee geeft u de naam op van de header die moet worden ingesteld.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | Ja      | N/A      |
+| name                            | Hiermee geeft u de naam van de in te stellen header op.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | Ja      | N/A      |
 | exists-actie                   | Hiermee geeft u op welke actie moet worden ondernomen wanneer de header al is opgegeven. Dit kenmerk moet een van de volgende waarden hebben.<br /><br /> -Override: vervangt de waarde van de bestaande header.<br />-Skip-vervangt niet de bestaande waarde van de header.<br />-append-de waarde wordt toegevoegd aan de bestaande waarde van de header.<br />-delete: verwijdert de header uit de aanvraag.<br /><br /> Als de instelling `override` is ingesteld op het aanmelden van meerdere vermeldingen met dezelfde naam, wordt de header ingesteld op basis van alle vermeldingen (die meerdere keren worden vermeld). in het resultaat worden alleen waarden weer gegeven die in de lijst staan. | Nee       | overschrijven |
 
 ### <a name="usage"></a>Gebruik
@@ -913,29 +913,49 @@ Expressies die in het `set-variable` beleid worden gebruikt, moeten een van de v
 
 ## <a name="Trace"></a>Tracerings
 
-Met `trace` het beleid wordt een teken reeks toegevoegd aan de uitvoer van de [API-Inspector](https://azure.microsoft.com/documentation/articles/api-management-howto-api-inspector/) . Het beleid wordt alleen uitgevoerd wanneer tracering wordt geactiveerd, d.w.z. `Ocp-Apim-Trace` aanvraag header is aanwezig en is ingesteld op `true` en `Ocp-Apim-Subscription-Key` aanvraag header is aanwezig en bevat een geldige sleutel die is gekoppeld aan het beheerders account.
+Het `trace` beleid voegt een aangepaste tracering toe aan de API-Inspector-uitvoer, Application Insights-teleelementen en/of diagnostische Logboeken. 
+
+* Het beleid voegt een aangepaste tracering toe aan de [API-Inspector](https://azure.microsoft.com/documentation/articles/api-management-howto-api-inspector/) -uitvoer wanneer tracering wordt geactiveerd `Ocp-Apim-Trace` , d.w.z. aanvraag header is aanwezig en ingesteld op `Ocp-Apim-Subscription-Key` True en request header is aanwezig en bevat een geldige sleutel die tracering mogelijk maakt. 
+* Het beleid maakt een telemetrie [traceren](https://docs.microsoft.com/azure/azure-monitor/app/data-model-trace-telemetry) in Application Insights, wanneer [Application Insights integratie](https://docs.microsoft.com/azure/api-management/api-management-howto-app-insights) is ingeschakeld `severity` en het niveau dat is opgegeven in het beleid, hoger `verbosity` is dan het niveau dat is opgegeven in de diagnose stelt. 
+* Het beleid voegt een eigenschap in de logboek vermelding toe wanneer [Diagnostische logboeken](https://docs.microsoft.com/en-us/azure/api-management/api-management-howto-use-azure-monitor#diagnostic-logs) zijn ingeschakeld en het Ernst niveau dat is opgegeven in het beleid, hoger is dan het niveau van de uitgebreidheid dat is opgegeven in de diagnostische instelling.  
+
 
 ### <a name="policy-statement"></a>Beleids verklaring
 
 ```xml
 
-<trace source="arbitrary string literal">
-    <!-- string expression or literal -->
+<trace source="arbitrary string literal" severity="verbose|information|error">
+    <message>String literal or expressions</message>
+    <metadata name="string literal or expressions" value="string literal or expressions"/>
 </trace>
 
+```
+
+### <a name="traceExample"></a>Hierbij
+
+```xml
+<trace source="PetStore API" severity="verbose">
+    <message>@((string)context.Variables["clientConnectionID"])</message>
+    <metadata name="Operation Name" value="New-Order"/>
+</trace>
 ```
 
 ### <a name="elements"></a>Elementen
 
 | Element | Description   | Vereist |
 | ------- | ------------- | -------- |
-| tracerings   | Hoofd element. | Ja      |
+| Tracerings   | Hoofd element. | Ja      |
+| message | Een teken reeks of expressie die moet worden vastgelegd. | Ja |
+| metagegevens | Hiermee voegt u een aangepaste eigenschap toe aan de Application Insights [Trace](https://docs.microsoft.com/en-us/azure/azure-monitor/app/data-model-trace-telemetry) telemetrie. | Nee |
 
 ### <a name="attributes"></a>Kenmerken
 
 | Kenmerk | Description                                                                             | Vereist | Standaard |
 | --------- | --------------------------------------------------------------------------------------- | -------- | ------- |
 | source    | Letterlijke teken reeks die betekenisvol is voor de traceer viewer en het opgeven van de bron van het bericht. | Ja      | N/A     |
+| ernst    | Hiermee geeft u het Ernst niveau van de tracering. Toegestane waarden zijn `verbose`, `information`, `error` (van laagste naar hoogste). | Nee      | Uitgebreid     |
+| name    | De naam van de eigenschap. | Ja      | N/A     |
+| value    | Waarde van de eigenschap. | Ja      | N/A     |
 
 ### <a name="usage"></a>Gebruik
 
@@ -1005,7 +1025,7 @@ In het volgende voor beeld zijn er `choose` twee beleids regels als direct onder
 
 | Kenmerk | Description                                                                                                                                                                                                                                                                                                                                                                                                            | Vereist | Standaard |
 | --------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- |
-| gedurende       | Hiermee wordt bepaald `wait` of het beleid wacht totdat alle direct onderliggende beleids regels zijn voltooid of slechts één. Toegestane waarden zijn:<br /><br /> - `all`-wacht totdat alle direct onderliggende beleids regels zijn voltooid<br />-wille keurig-wacht tot het direct onderliggende beleid is voltooid. Zodra het eerste directe onderliggende beleid is voltooid, wordt `wait` het beleid voltooid en wordt de uitvoering van elk ander direct onderliggend beleid beëindigd. | Nee       | alle     |
+| voor       | Hiermee wordt bepaald `wait` of het beleid wacht totdat alle direct onderliggende beleids regels zijn voltooid of slechts één. Toegestane waarden zijn:<br /><br /> - `all`-wacht totdat alle direct onderliggende beleids regels zijn voltooid<br />-wille keurig-wacht tot het direct onderliggende beleid is voltooid. Zodra het eerste directe onderliggende beleid is voltooid, wordt `wait` het beleid voltooid en wordt de uitvoering van elk ander direct onderliggend beleid beëindigd. | Nee       | all     |
 
 ### <a name="usage"></a>Gebruik
 

@@ -6,12 +6,12 @@ ms.service: virtual-network
 ms.topic: article
 ms.date: 08/29/2019
 ms.author: allensu
-ms.openlocfilehash: 0ee3a386c6044abe834b901ce43795df68bd37c6
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 2610afe9df06d28f2b75bd0023f7ec5a3fe9e56c
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71059331"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71219218"
 ---
 # <a name="move-azure-public-ip-to-another-region-using-the-azure-portal"></a>Verplaats Azure open bare IP naar een andere regio met behulp van de Azure Portal
 
@@ -27,7 +27,7 @@ Open bare Azure-Ip's zijn regio specifiek en kunnen niet worden verplaatst van d
 - Open bare Azure-Ip's kunnen niet tussen regio's worden verplaatst.  U moet het nieuwe open bare IP-adres koppelen aan resources in de doel regio.
 
 - Als u een open bare IP-configuratie wilt exporteren en een sjabloon wilt implementeren voor het maken van een openbaar IP-adres in een andere regio, hebt u de rol netwerk bijdrager of hoger nodig.
-   
+
 - Identificeer de bron netwerk indeling en alle resources die u momenteel gebruikt. Deze indeling bevat, maar is niet beperkt tot load balancers, netwerk beveiligings groepen (Nsg's) en virtuele netwerken.
 
 - Controleer of u met uw Azure-abonnement open bare Ip's kunt maken in de doel regio die wordt gebruikt. Neem contact op met ondersteuning voor het inschakelen van het vereiste quotum.
@@ -40,13 +40,13 @@ De volgende stappen laten zien hoe u het open bare IP-adres voor de configuratie
 
 ### <a name="export-the-template-and-deploy-from-a-script"></a>De sjabloon exporteren en implementeren vanuit een script
 
-1. Meld u aan bij de [Azure Portal](http://portal.azure.com) > -**resource groepen**.
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com) > -**resource groepen**.
 2. Zoek de resource groep die de open bare bron-IP bevat en klik erop.
 3. Selecteer > **instellingen** > **sjabloon exporteren**.
 4. Kies **implementeren** op de Blade **sjabloon exporteren** .
 5. Klik op **sjabloon** > **bewerken para meters** om het bestand **para meters. json** in de online-editor te openen.
 8. Als u de para meter van de open bare IP-naam wilt bewerken, wijzigt u de eigenschap onder **parameter** > **waarde** van de naam van het open bare IP-bron adres in de naam van het open bare IP-adres. Controleer of de naam tussen aanhalings tekens is:
-    
+
     ```json
             {
         "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
@@ -61,7 +61,7 @@ De volgende stappen laten zien hoe u het open bare IP-adres voor de configuratie
     ```
 8.  Klik op **Opslaan** in de editor.
 
-9.  Klik op sjabloon**bewerken sjabloon** om het bestand **Template. json** in de online-editor te openen. >  
+9.  Klik op sjabloon**bewerken sjabloon** om het bestand **Template. json** in de online-editor te openen. > 
 
 10. Als u de doel regio wilt bewerken waar het open bare IP-adres wordt verplaatst, wijzigt u de eigenschap **Location** onder **resources**:
 
@@ -86,11 +86,11 @@ De volgende stappen laten zien hoe u het open bare IP-adres voor de configuratie
                 "ipTags": []
                }
                }
-             ]             
+             ]
     ```
-  
+
 11. Zie [Azure-locaties](https://azure.microsoft.com/global-infrastructure/locations/)voor het verkrijgen van regio-locatie codes.  De code voor een regio is de naam van de regio zonder spaties, **Central VS** = -**Midden**.
-    
+
 12. U kunt ook andere para meters in de sjabloon wijzigen als u ervoor kiest en zijn optioneel, afhankelijk van uw vereisten:
 
     * **SKU** : u kunt de SKU van het open bare IP-adres in de configuratie wijzigen van standaard in Basic of Basic naar Standard door de eigenschap **SKU** > -**naam** te wijzigen in het bestand **sjabloon. json** :
@@ -131,17 +131,17 @@ De volgende stappen laten zien hoe u het open bare IP-adres voor de configuratie
                 "publicIPAllocationMethod": "Dynamic",
                 "idleTimeoutInMinutes": 4,
                 "ipTags": []
-        
+
         ```
 
         Zie [een openbaar IP-adres maken, wijzigen of verwijderen](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address)voor meer informatie over de toewijzings methoden en de time-outwaarden voor inactiviteit.
 
- 
+
 13. Klik op **Opslaan** in de online editor.
 
 14. Klik op **basis** > **abonnement** om het abonnement te kiezen waarin het open bare doel-IP-adres wordt geïmplementeerd.
 
-15. Klik op **basis** > **bronnen groep** om de resource groep te kiezen waarin het open bare doel-IP-adres wordt geïmplementeerd.  U kunt op **Nieuw maken** klikken om een nieuwe resource groep te maken voor het open bare doel-IP-adres.  Zorg ervoor dat de naam niet hetzelfde is als de bron resource groep van de bestaande open bare bron-IP. 
+15. Klik op **basis** > **bronnen groep** om de resource groep te kiezen waarin het open bare doel-IP-adres wordt geïmplementeerd.  U kunt op **Nieuw maken** klikken om een nieuwe resource groep te maken voor het open bare doel-IP-adres.  Zorg ervoor dat de naam niet hetzelfde is als de bron resource groep van de bestaande open bare bron-IP.
 
 16. De**locatie** van de **basis beginselen** > controleren is ingesteld op de doel locatie waar u het open bare IP-adres wilt implementeren.
 
@@ -151,7 +151,7 @@ De volgende stappen laten zien hoe u het open bare IP-adres voor de configuratie
 
 19. Klik op de knop **aanschaffen** om het doel-open bare IP-adres te implementeren.
 
-## <a name="discard"></a>Verwijderen 
+## <a name="discard"></a>Verwijderen
 
 Als u het doel bare IP-adres wilt verwijderen, verwijdert u de resource groep die het open bare doel-IP-adres bevat.  Hiervoor selecteert u de resource groep in het dash board in de portal en selecteert u **verwijderen** boven aan de pagina overzicht.
 

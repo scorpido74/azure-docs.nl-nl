@@ -1,5 +1,5 @@
 ---
-title: Azure AD Identity Protection gegevens verbinden met Azure Sentinel preview | Microsoft Docs
+title: Azure AD Identity Protection gegevens verbinden met Azure Sentinel | Microsoft Docs
 description: Meer informatie over het verbinden van Azure AD Identity Protection gegevens met Azure Sentinel.
 services: sentinel
 documentationcenter: na
@@ -13,20 +13,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/07/2019
+ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 7478e5a5ec2260760bb6ddb1a90a66e3acdf2201
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: de8f31a02b62164a8a6b099a90297a207aefae80
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70129263"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240799"
 ---
 # <a name="connect-data-from-azure-ad-identity-protection"></a>Verbinding maken met gegevens van Azure AD Identity Protection
 
-> [!IMPORTANT]
-> Azure Sentinel is momenteel beschikbaar als open bare preview.
-> Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
+
 
 U kunt Logboeken van [Azure AD Identity Protection](https://docs.microsoft.com/azure/information-protection/reports-aip) naar Azure Sentinel streamen om waarschuwingen te streamen naar Azure Sentinel om Dash boards weer te geven, aangepaste waarschuwingen te maken en het onderzoek te verbeteren. Azure Active Directory Identity Protection biedt een geconsolideerde weer gave van risico gebruikers, risico detecties en beveiligings problemen, met de mogelijkheid om het risico onmiddellijk op te lossen en beleids regels in te stellen om toekomstige gebeurtenissen automatisch te herstellen. De service is gebouwd op basis van de ervaring van micro soft met het beschermen van consumenten identiteiten en het verbeteren van een enorme nauw keurigheid van het signaal van meer dan 13.000.000.000 logboeken per dag. 
 
@@ -53,4 +51,4 @@ Als Azure AD Identity Protection is geïmplementeerd en gegevens ophaalt, kunnen
 ## <a name="next-steps"></a>Volgende stappen
 In dit document hebt u geleerd hoe u Azure AD Identity Protection kunt verbinden met Azure Sentinel. Raadpleeg de volgende artikelen voor meer informatie over Azure Sentinel:
 - Meer informatie over hoe u [inzicht krijgt in uw gegevens en mogelijke bedreigingen](quickstart-get-visibility.md).
-- Ga aan de slag [met het detecteren van bedreigingen met Azure Sentinel](tutorial-detect-threats.md).
+- Ga aan de slag [met het detecteren van bedreigingen met Azure Sentinel](tutorial-detect-threats-built-in.md).

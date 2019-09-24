@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: apimpm
-ms.openlocfilehash: 10e8edcd3a1e781866eaee2cbe48d1536dbc1229
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: ae467e3def65d446a8c331c4f15033b4c01886ae
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073587"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71219489"
 ---
 # <a name="how-to-integrate-azure-api-management-with-azure-application-insights"></a>Azure API Management integreren met Azure-toepassing inzichten
 
@@ -58,9 +58,9 @@ Voordat u Azure-toepassing Insights kunt gebruiken, moet u eerst een exemplaar v
 2. Selecteer **API's** in het menu aan de linkerkant.
 3. Klik op uw API, in dit geval **demo**van de API van de vergadering.
 4. Ga naar het tabblad **instellingen** op de bovenste balk.
-5. Schuif omlaag naar de sectie Diagnostische logboeken.  
+5. Schuif omlaag naar de sectie **Diagnostische logboeken** .  
     ![Logboek voor app Insights](media/api-management-howto-app-insights/apim-app-insights-api-1.png)  
-6. Schakel het selectie vakje in.
+6. Schakel het **selectie vakje in** .
 7. Selecteer de bijgevoegde logboek registratie in de vervolg keuzelijst **bestemming** .
 8. Invoer **100** als **steek proef (%)** en tik op het selectie vakje **altijd logboek fouten** .
 9. Klik op **Opslaan**.
@@ -74,11 +74,12 @@ Voordat u Azure-toepassing Insights kunt gebruiken, moet u eerst een exemplaar v
 | Naam van instelling                        | Waardetype                        | Description                                                                                                                                                                                                                                                                                                                                      |
 |-------------------------------------|-----------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Inschakelen                              | boolean                           | Hiermee wordt aangegeven of logboek registratie van deze API is ingeschakeld.                                                                                                                                                                                                                                                                                                |
-| Bestemming                         | Azure-toepassing Insights-logboek registratie | Hiermee wordt aangegeven Azure-toepassing Insights-logboeken moeten worden gebruikt                                                                                                                                                                                                                                                                                           |
+| Destination                         | Azure-toepassing Insights-logboek registratie | Hiermee wordt aangegeven Azure-toepassing Insights-logboeken moeten worden gebruikt                                                                                                                                                                                                                                                                                           |
 | Sampling (%)                        | decimal                           | Waarden van 0 tot 100 (procent). <br/> Hiermee geeft u op welk percentage van aanvragen wordt geregistreerd bij Azure-toepassing inzichten. met een steek proef van 0% worden er nul aanvragen geregistreerd, terwijl 100% de steek proef alle geregistreerde aanvragen houdt. <br/> Deze instelling wordt gebruikt voor het verminderen van de prestatie implicaties van logboek registratie aanvragen voor het Azure-toepassing van inzichten (Zie de sectie hieronder). |
-| Altijd fouten in logboek registreren                   | boolean                           | Als deze instelling is geselecteerd, worden alle fouten geregistreerd in Azure-toepassing inzichten, ongeacht de bemonsterings instelling.                                                                                                                                                                                                                  |
+| Altijd fouten in logboek registreren                   | boolean                           | Als deze instelling is geselecteerd, worden alle fouten geregistreerd in Azure-toepassing inzichten, ongeacht de **bemonsterings** instelling.                                                                                                                                                                                                                  |
 | Basis opties: Headers              | list                              | Hiermee geeft u de koppen op die worden vastgelegd Azure-toepassing inzichten op aanvragen en antwoorden.  Standaard: er worden geen headers vastgelegd.                                                                                                                                                                                                             |
-| Basis opties: Eerste bytes van de hoofd tekst  | integer                           | Hiermee geeft u op hoeveel eerste bytes van de hoofd tekst worden vastgelegd in Azure-toepassing inzichten op aanvragen en antwoorden.  Standaard: de hoofd tekst is niet geregistreerd.                                                                                                                                                                                              |
+| Basis opties: Eerste bytes van de hoofd tekst  | integer                           | Hiermee geeft u op hoeveel eerste bytes van de hoofd tekst worden vastgelegd in Azure-toepassing inzichten op aanvragen en antwoorden.  Standaard: de hoofd tekst is niet geregistreerd.                                                                                                                                                                                                    |
+| Geavanceerde opties: Uitbreidings         |                                   | Hiermee geeft u het uitbreidings niveau op. Alleen aangepaste traceringen met een hoger Ernst niveau worden vastgelegd. Prijs Gegevens.                                                                                                                                                                                                                               |
 | Geavanceerde opties: Front-end-aanvraag  |                                   | Hiermee wordt aangegeven of en hoe de front- *End-aanvragen* worden geregistreerd bij Azure-toepassing Insights. De front- *End-aanvraag* is een aanvraag die binnenkomend is voor de Azure API Management-service.                                                                                                                                                                        |
 | Geavanceerde opties: Frontend-antwoord |                                   | Hiermee wordt aangegeven of en hoe en hoe *frontend-antwoorden* worden vastgelegd in azure-toepassing Insights. *Frontend-antwoord* is een antwoord van de Azure API Management-service.                                                                                                                                                                   |
 | Geavanceerde opties: Back-end-aanvraag   |                                   | Hiermee wordt aangegeven of en hoe *back-aanvragen* worden geregistreerd voor Azure-toepassing inzichten. *Back-end-aanvraag* is een uitgaande aanvraag van de Azure API Management-service.                                                                                                                                                                        |
@@ -96,7 +97,7 @@ Voordat u Azure-toepassing Insights kunt gebruiken, moet u eerst een exemplaar v
 Azure-toepassing Insights ontvangt:
 
 + Een telemetrie-item *aanvragen* voor elke inkomende aanvraag (front-*End-aanvraag*, *frontend-antwoord*)
-+ Telemetrie-item voor afhankelijkheid, voor elke aanvraag die wordt doorgestuurd naar een back-end-service (back-end-*aanvraag*, *back-end*)
++ Telemetrie-item voor *afhankelijkheid* , voor elke aanvraag die wordt doorgestuurd naar een back-end-service (back-end-*aanvraag*, *back-end*)
 + Telemetrie van *uitzonde ring* voor elke mislukte aanvraag.
 
 Een mislukte aanvraag is een aanvraag, die:

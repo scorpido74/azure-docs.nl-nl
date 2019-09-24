@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: sample
-ms.date: 07/30/2019
+ms.date: 09/23/2019
 ms.author: aahi
-ms.openlocfilehash: 60ae2136c3fa934c178de95f51d490e570f45faa
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: ea145239d38a4030423a4517fe02c62b8eefa08a
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70845337"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71211766"
 ---
 # <a name="example-detect-sentiment-with-text-analytics"></a>Voorbeeld: Sentiment met Text Analytics detecteren
 
@@ -139,7 +139,7 @@ De [volgende versie van sentimentanalyse](https://westcentralus.dev.cognitive.mi
 > [!NOTE]
 > * De Sentimentanalyse v3-aanvraag indeling en- [gegevens limieten](../overview.md#data-limits) zijn hetzelfde als de vorige versie.
 > * Op dit moment Sentimentanalyse V3:
->    * Biedt momenteel ondersteuning voor Engels, vereenvoudigd Chinees en Japans.
+>    * Biedt momenteel ondersteuning voor Engels, Frans, Italiaans, Japans, vereenvoudigd Chinees en traditioneel Chinees.
 >    * Is beschikbaar in de volgende regio's: `Australia East` `Central US`, `Central Canada`, `East Asia` ,`Southeast Asia` `West US 2` ,,,,,,, en `East US` `East US 2` `North Europe` `South Central US` `UK South` `West Europe` .
 
 |Functie |Description  |

@@ -5,14 +5,14 @@ metadata:
   title: 'Documentatie voor Azure Notification Hubs - zelfstudies, API-verwijzing | Microsoft Docs'
   description: 'Meer informatie over hoe u met Notification Hubs pushmeldingen van een willekeurige back-end verzendt naar een willekeurig mobiel apparaat. Zelfstudies, API-verwijzingen en andere documentatie.'
   services: notification-hubs
-  author: spelluru
-  manager: null
+  author: sethmanheim
+  manager: femila
   ms.service: notification-hubs
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
   ms.date: 03/01/2017
-  ms.author: spelluru
+  ms.author: sethm
 abstract:
   description: 'Informatie over het gebruik van Notification Hubs, een schaalbaar systeem, geschikt voor meerdere platforms, om snel pushmeldingen te verzenden naar toepassingen die worden uitgevoerd op verschillende soorten apparaten (Android, iOS, Windows, Windows Phone). <p>Zelfstudies, API-referenties en andere documentatie laten zien hoe u pushmeldingen instelt en verzendt van een willekeurige back-end naar een willekeurig mobiel apparaat.</p>'
   aside:

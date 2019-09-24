@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: ed20ef023a884ac79150cd31f25fde86b715c752
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 2b6e056fbfb134f0b1218b4281b9f971a0e24202
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073391"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71219464"
 ---
 # <a name="api-management-policies"></a>API Management-beleidsregels
 Deze sectie bevat een referentie voor het volgende API Management-beleid. Zie [beleid in API Management](api-management-howto-policies.md)voor meer informatie over het toevoegen en configureren van beleid.  
@@ -30,8 +30,8 @@ Deze sectie bevat een referentie voor het volgende API Management-beleid. Zie [b
   
 -   [Beleid voor toegangsbeperking](api-management-access-restriction-policies.md#AccessRestrictionPolicies)  
     -   [Controleer de http-header](api-management-access-restriction-policies.md#CheckHTTPHeader) : Hiermee wordt het bestaan en/of de waarde van een http-header afgedwongen.  
-    -   De aanroepen per [abonnement beperken](api-management-access-restriction-policies.md#LimitCallRate) : hiermee voor komt u dat het API-gebruik piekt door de oproep frequentie te beperken, op basis van een abonnement.  
-    -   Beperk de aanroepen per [sleutel](api-management-access-restriction-policies.md#LimitCallRateByKey) : Hiermee wordt voor komen dat het API-gebruik pieken oploopt door de oproep frequentie per sleutel te beperken.  
+    -   De [aanroepen per abonnement beperken](api-management-access-restriction-policies.md#LimitCallRate) : hiermee voor komt u dat het API-gebruik piekt door de oproep frequentie te beperken, op basis van een abonnement.  
+    -   [Beperk de aanroepen per sleutel](api-management-access-restriction-policies.md#LimitCallRateByKey) : Hiermee wordt voor komen dat het API-gebruik pieken oploopt door de oproep frequentie per sleutel te beperken.  
     -   [Aanroeper Ip's beperken](api-management-access-restriction-policies.md#RestrictCallerIPs) : filters (toestaan/weigeren) aanroepen van specifieke IP-adressen en/of adresbereiken.  
     -   [Gebruiks quotum per abonnement instellen](api-management-access-restriction-policies.md#SetUsageQuota) : Hiermee kunt u een Verleng bare of levensduur oproep volume en/of bandbreedte quota afdwingen op basis van elk abonnement.  
     -   [Gebruiks quotum instellen op sleutel](api-management-access-restriction-policies.md#SetUsageQuotaByKey) : Hiermee kunt u een Verleng bare of levensduur oproep volume en/of bandbreedte quotum per sleutel afdwingen.  
@@ -50,7 +50,7 @@ Deze sectie bevat een referentie voor het volgende API Management-beleid. Zie [b
     -   [Variabele instellen](api-management-advanced-policies.md#set-variable) : behoud een waarde in een benoemde context variabele voor later toegang.  
     -   [Set-aanvraag methode](api-management-advanced-policies.md#SetRequestMethod) : Hiermee kunt u de HTTP-methode voor een aanvraag wijzigen.  
     -   [Status code instellen](api-management-advanced-policies.md#SetStatus) : Hiermee wijzigt u de HTTP-status code in de opgegeven waarde.  
-    -   [Trace](api-management-advanced-policies.md#Trace) : voegt een teken reeks toe aan de [API Inspector](https://azure.microsoft.com/documentation/articles/api-management-howto-api-inspector/) -uitvoer.  
+    -   [Trace](api-management-advanced-policies.md#Trace) : voegt aangepaste traceringen toe aan de [API-Inspector](https://azure.microsoft.com/documentation/articles/api-management-howto-api-inspector/) -uitvoer, Application Insights-Telerichtingen en Diagnostische logboeken.  
     -   [Wacht](api-management-advanced-policies.md#Wait) op een Inge sloten [verzend aanvraag](api-management-advanced-policies.md#SendRequest), haal de [waarde uit het cache geheugen](api-management-caching-policies.md#GetFromCacheByKey)of Controleer of [controle stroom](api-management-advanced-policies.md#choose) beleid is voltooid voordat u doorgaat.  
 -   [Verificatiebeleid](api-management-authentication-policies.md#AuthenticationPolicies)  
     -   [Authenticatie met Basic](api-management-authentication-policies.md#Basic) : verifiëren met een back-end-service met basis verificatie.  

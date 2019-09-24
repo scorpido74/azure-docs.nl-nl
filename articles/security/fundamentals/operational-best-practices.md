@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: 9da58bf3152867bc13dd1879ec57a69b8bd38cb0
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 69e55b17814c5b5ada0813bd0de66cc3a9a591f4
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70129336"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71219504"
 ---
 # <a name="azure-operational-security-best-practices"></a>Best practices voor Azure Operational Security
 Dit artikel bevat een reeks operationele aanbevolen procedures voor het beveiligen van uw gegevens, toepassingen en andere assets in Azure.
@@ -37,7 +37,7 @@ De volgende tabel bevat enkele aanbevolen procedures voor het beheren van gebrui
 **Details**: Volg de richt lijnen in [micro soft-wachtwoord richtlijnen](https://www.microsoft.com/research/publication/password-guidance/)voor gebruikers van de micro soft Identity platforms (Azure Active Directory, Active Directory en Microsoft-account).
 
 **Aanbevolen procedure**: Controleren op verdachte acties die betrekking hebben op uw gebruikers accounts.   
-**Details**: Bewaak voor [gebruikers die risico](/azure/active-directory/reports-monitoring/concept-user-at-risk) lopen en [Risk ante](../../active-directory/reports-monitoring/concept-risk-events.md) aanmeldingen met BEhulp van Azure AD-beveiligings rapporten.
+**Details**: Bewaak voor [gebruikers die risico](/azure/active-directory/reports-monitoring/concept-user-at-risk) lopen en [Risk ante aanmeldingen](../../active-directory/reports-monitoring/concept-risk-events.md) met BEhulp van Azure AD-beveiligings rapporten.
 
 **Aanbevolen procedure**: Automatische detectie en herstel van wacht woorden met een hoog risico.   
 **Details**: [Azure AD Identity Protection](/azure/active-directory/identity-protection/overview) is een functie van de Azure AD Premium P2-editie waarmee u het volgende kunt doen:
@@ -95,7 +95,7 @@ De gratis laag van Security Center biedt beperkte beveiliging voor alleen uw Azu
 
 Gebruik Security Center om een centraal overzicht te krijgen van de beveiligings status van al uw Azure-resources. Controleer in één oogopslag of de juiste beveiligings maatregelen aanwezig zijn en correct zijn geconfigureerd, en geef snel alle resources die aandacht nodig hebben.
 
-Security Center is ook geïntegreerd met behulp van [Windows Defender Advanced Threat Protection (ATP)](../../security-center/security-center-wdatp.md), dat uitgebreide functionaliteit voor het detecteren en reageren van eind punten biedt. Met Windows Defender ATP-integratie kunt u afwijkingen herkennen. U kunt ook geavanceerde aanvallen detecteren en erop reageren op server-eind punten die worden bewaakt door Security Center.
+Security Center integreert ook met [micro soft Defender Advanced Threat Protection (ATP)](../../security-center/security-center-wdatp.md), dat uitgebreide functionaliteit voor het detecteren en reageren van het eind punt biedt. Met micro soft Defender ATP-integratie kunt u afwijkingen herkennen. U kunt ook geavanceerde aanvallen detecteren en erop reageren op server-eind punten die worden bewaakt door Security Center.
 
 Bijna alle bedrijfs organisaties hebben een SIEM-systeem (Security Information and Event Management) waarmee nieuwe bedreigingen kunnen worden geïdentificeerd door logboek gegevens te consolideren van verschillende apparaten voor signaal verzameling. De logboeken worden vervolgens geanalyseerd door een gegevens analyse systeem om te helpen bij het identificeren van ' interessant ' van de ruis die onvermijdelijk is in alle logboek verzameling en analyse oplossingen.
 
@@ -121,7 +121,7 @@ Met de beveiligde Score, die is gebaseerd op de besturings elementen Center voor
 **Details**: Gebruik [Azure monitor om gegevens te verzamelen en te exporteren](/azure/azure-monitor/overview#integrate-and-export-data). Deze procedure is essentieel voor het inschakelen van het onderzoek van beveiligings incidenten en het online bewaren van Logboeken is beperkt. Zie [verbinding maken met gegevens bronnen](../../sentinel/connect-data-sources.md)als u Azure Sentinel gebruikt.
 
 **Aanbevolen procedure**: Versnel uw onderzoek en jacht processen en verminder fout-positieven door de functies voor het detecteren van eind punten te integreren in uw aanvals onderzoek.   
-**Details**: [Schakel de Windows Defender ATP-integratie in](../../security-center/security-center-wdatp.md#enable-windows-defender-atp-integration) via uw Security Center-beveiligings beleid. Overweeg het gebruik van Azure Sentinel voor het beletten van dreigingen en reacties op incidenten.
+**Details**: [Schakel de micro soft Defender ATP-integratie in](../../security-center/security-center-wdatp.md#enable-microsoft-defender-atp-integration) via uw Security Center-beveiligings beleid. Overweeg het gebruik van Azure Sentinel voor het beletten van dreigingen en reacties op incidenten.
 
 ## <a name="monitor-end-to-end-scenario-based-network-monitoring"></a>End-to-end op scenario's gebaseerde netwerk bewaking bewaken
 Klanten bouwen een end-to-end netwerk in azure door netwerk bronnen te combi neren, zoals een virtueel netwerk, ExpressRoute, Application Gateway en load balancers. Bewaking is beschikbaar op elk van de netwerk bronnen.
@@ -176,12 +176,12 @@ Voor het ontwerpen en bouwen van DDoS-tolerantie moet u plannen en ontwerpen voo
 
 Ervoor zorgen dat een toepassing robuust genoeg is voor het afhandelen van een denial of service die is gericht op de toepassing zelf, is het belangrijkst. Beveiliging en privacy zijn ingebouwd in het Azure-platform, te beginnen met de [Security Development Lifecycle (SDL)](https://www.microsoft.com/sdl). De SDL vertrouwt de beveiliging van elke ontwikkelings fase en zorgt ervoor dat Azure voortdurend wordt bijgewerkt om het nog veiliger te maken.
 
-**Aanbevolen procedure**: Ontwerp uw toepassingen zodanig dat ze [horizon taal](https://docs.microsoft.com/azure/architecture/guide/design-principles/scale-out) kunnen worden geschaald om te voldoen aan de vraag naar een versterkte belasting, met name in het geval van een DDoS-aanval. Als uw toepassing afhankelijk is van één exemplaar van een service, wordt er een Single Point of Failure gemaakt. Door meerdere exemplaren in te richten, zorgt u ervoor dat uw systeem robuuster en schaalbaar is.  
+**Aanbevolen procedure**: Ontwerp uw toepassingen zodanig dat ze [horizon taal kunnen worden geschaald](https://docs.microsoft.com/azure/architecture/guide/design-principles/scale-out) om te voldoen aan de vraag naar een versterkte belasting, met name in het geval van een DDoS-aanval. Als uw toepassing afhankelijk is van één exemplaar van een service, wordt er een Single Point of Failure gemaakt. Door meerdere exemplaren in te richten, zorgt u ervoor dat uw systeem robuuster en schaalbaar is.  
 **Details**: Selecteer voor [Azure app service](/azure/app-service/app-service-value-prop-what-is)een [app service-abonnement](../../app-service/overview-hosting-plans.md) dat meerdere exemplaren biedt.
 
 Configureer voor Azure Cloud Services elk van uw rollen om [meerdere exemplaren](../../cloud-services/cloud-services-choose-me.md)te gebruiken.
 
-Zorg ervoor dat uw VM-architectuur meer dan één virtuele machine bevat voor [Azure virtual machines](/azure/virtual-machines/windows/overview)en dat elke virtuele machine is [](/azure/virtual-machines/virtual-machines-windows-manage-availability)opgenomen in een beschikbaarheidsset. We raden u aan virtuele-machine schaal sets te gebruiken voor de mogelijkheden voor automatisch schalen.
+Zorg ervoor dat uw VM-architectuur meer dan één virtuele machine bevat voor [Azure virtual machines](/azure/virtual-machines/windows/overview)en dat elke virtuele machine is opgenomen in een [beschikbaarheidsset](/azure/virtual-machines/virtual-machines-windows-manage-availability). We raden u aan virtuele-machine schaal sets te gebruiken voor de mogelijkheden voor automatisch schalen.
 
 **Aanbevolen procedure**: Als u beveiligings beveiliging in een toepassing laagt, vermindert u de kans op een geslaagde aanval. Implementeer beveiligde ontwerpen voor uw toepassingen met behulp van de ingebouwde mogelijkheden van het Azure-platform.  
 **Details**: Het risico van een aanval neemt toe met de grootte (surface area) van de toepassing. U kunt de surface area verminderen door White List te gebruiken om de beschik bare IP-adres ruimte te sluiten en poorten te belui Steren die niet nodig zijn op de load balancers ([Azure Load Balancer](/azure/load-balancer/load-balancer-get-started-internet-portal) en [Azure-toepassing gateway](/azure/application-gateway/application-gateway-create-probe-portal)).
@@ -218,7 +218,7 @@ Zie [beleid maken en beheren om naleving af te dwingen](../../governance/policy/
 **Details**: Document toewijzing in de documentatie van uw organisatie of in het Azure-beleid zelf door een verwijzing naar het organisatie beleid toe te voegen in de beschrijving van het Azure- [beleid](../../governance/policy/concepts/definition-structure.md#display-name-and-description) of de beschrijving van het Azure Policy [Initiative](../../governance/policy/concepts/definition-structure.md#initiatives) .
 
 ## <a name="monitor-azure-ad-risk-reports"></a>Risico rapporten van Azure AD bewaken
-Het overgrote deel van de beveiligings Risico's doen zich voor wanneer aanvallers toegang krijgen tot een omgeving door de identiteit van een gebruiker te stelen. Het detecteren van gemanipuleerde identiteiten is geen eenvoudige taak. Azure AD gebruikt adaptieve machine learning algoritmen en heuristiek om verdachte acties te detecteren die betrekking hebben op uw gebruikers accounts. Elke gedetecteerde verdachte actie wordt opgeslagen in een record met de naam [risico detectie](../../active-directory/reports-monitoring/concept-risk-events.md). Risico detecties worden vastgelegd in azure AD-beveiligings rapporten. Lees voor meer informatie over het beveiligings rapport [gebruikers die risico](../../active-directory/reports-monitoring/concept-user-at-risk.md) lopen, en het [beveiligings rapport Risk ante](../../active-directory/reports-monitoring/concept-risky-sign-ins.md)aanmeldingen.
+Het overgrote deel van de beveiligings Risico's doen zich voor wanneer aanvallers toegang krijgen tot een omgeving door de identiteit van een gebruiker te stelen. Het detecteren van gemanipuleerde identiteiten is geen eenvoudige taak. Azure AD gebruikt adaptieve machine learning algoritmen en heuristiek om verdachte acties te detecteren die betrekking hebben op uw gebruikers accounts. Elke gedetecteerde verdachte actie wordt opgeslagen in een record met de naam [risico detectie](../../active-directory/reports-monitoring/concept-risk-events.md). Risico detecties worden vastgelegd in azure AD-beveiligings rapporten. Lees voor meer informatie over het beveiligings rapport [gebruikers die risico](../../active-directory/reports-monitoring/concept-user-at-risk.md) lopen, en het [beveiligings rapport Risk ante aanmeldingen](../../active-directory/reports-monitoring/concept-risky-sign-ins.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 Zie [Aanbevolen procedures en patronen voor Azure-beveiliging](best-practices-and-patterns.md) voor meer aanbevolen procedures voor beveiliging bij het ontwerpen, implementeren en beheren van uw cloud oplossingen met behulp van Azure.

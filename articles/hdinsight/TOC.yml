@@ -217,6 +217,8 @@
               href: ./hdinsight-release-notes.md
             - name: Alle opmerkingen bij de release van HDInsight 3.6
               href: ./hdinsight-release-notes-archive.md
+        - name: Veelgestelde vragen
+          href: ./hdinsight-faq.md
         - name: 'Migreren naar gedetailleerde, op rollen gebaseerde toegang voor clusterconfiguraties'
           href: ./hdinsight-migrate-granular-access-cluster-configurations.md
         - name: Informatie over het gebruik van HDInsight in Linux

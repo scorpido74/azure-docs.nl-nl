@@ -1,9 +1,9 @@
 ---
 title: Integratie met App Service Mobile Apps
 description: Meer informatie over de werking van Azure Notification Hubs met Azure App Service Mobile Apps.
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 services: notification-hubs
 documentationcenter: ''
 ms.assetid: 83132dff-a01d-4b31-a426-b57496852b81
@@ -14,18 +14,20 @@ ms.devlang: multiple
 ms.topic: overview
 ms.custom: mvc
 ms.date: 01/04/2019
-ms.author: jowargo
-ms.openlocfilehash: bb39949bc21ece819b7ac6e279390f8bdb0ee00a
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 01/04/2019
+ms.openlocfilehash: d6747193b8c82119e45a24e3e4bffc065db14e51
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65158523"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212155"
 ---
 # <a name="integration-with-app-service-mobile-apps"></a>Integratie met App Service Mobile Apps
 
 > [!NOTE]
-> Microsoft is gericht op de volledige ondersteuning van Azure App Service Mobile Apps, inclusief ondersteuning voor de meest recente versie van het besturingssysteem, oplossingen voor problemen, verbeteringen van documentatie en community pull-aanvraag beoordeelt. Houd er rekening mee dat het productteam niet op dit moment in een nieuwe functie voor Azure Mobile Apps investeert. We waarderen maximaal community bijdragen tot alle gebieden van Azure Mobile Apps.
+> Micro soft streeft ernaar om Azure App Service Mobile Apps volledig te ondersteunen, inclusief ondersteuning voor de meest recente versie van het besturings systeem, fout oplossingen, documentatie verbeteringen en beoordelingen van de community. Houd er rekening mee dat het product team momenteel geen betrouwt in het werk van nieuwe functies voor Azure Mobile Apps. We stellen de bijdragen van de Community zeer op prijs voor alle gebieden van Azure Mobile Apps.
 
 Voor een naadloze werking van alle Azure-services biedt [App Service Mobile Apps](../app-service-mobile/app-service-mobile-value-prop.md) ingebouwde ondersteuning voor pushmeldingen via Notification Hubs. Met [App Service Mobile Apps](../app-service-mobile/app-service-mobile-value-prop.md) kunnen ontwikkelaars van ondernemingen en systeemintegrators gebruikmaken van een zeer schaalbaar, algemeen beschikbaar ontwikkelplatform voor mobiele toepassingen, dat uitgebreide mogelijkheden biedt voor ontwikkelaars van mobiele apps.
 
@@ -46,4 +48,4 @@ Hier zijn een aantal voordelen voor ontwikkelaars:
   - *Pushen naar apparaat*: De SDK's gebruiken de installatie-id van een mobiele app automatisch als GUID om te registreren bij Notification Hubs. Hierdoor hoeven ze niet meerdere service-GUID's meer bij te houden.
 - **Installatiemodel**: Mobiele apps werken met het meest recente pushmodel van Notification Hubs. Hierdoor zijn alle pusheigenschappen beschikbaar die aan een apparaat zijn gekoppeld in een JSON-installatie, die aansluit op de Push Notification Services en eenvoudig te gebruiken is.
 - **Flexibiliteit**: Ontwikkelaars kunnen altijd beslissen om rechtstreeks met Notification Hubs te werken, zelfs na integratie.
-- **Geïntegreerde ervaring in [Azure-portal](https://portal.azure.com)**: De pushfunctie in mobiele apps is zeer visueel en ontwikkelaars kunnen eenvoudig via mobiele apps met de bijbehorende Notification Hub werken.
+- **Geïntegreerde ervaring in [Azure-portal](https://portal.azure.com)** : De pushfunctie in mobiele apps is zeer visueel en ontwikkelaars kunnen eenvoudig via mobiele apps met de bijbehorende Notification Hub werken.

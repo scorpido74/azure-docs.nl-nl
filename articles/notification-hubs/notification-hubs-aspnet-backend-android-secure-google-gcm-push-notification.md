@@ -1,11 +1,11 @@
 ---
-title: Beveiligde Pushmeldingen verzenden met Azure Notification Hubs
-description: Leer hoe u veilige pushmeldingen verzenden naar een Android-app van Azure. Voorbeelden van code geschreven in Java en C#.
+title: Beveiligde push meldingen verzenden met Azure Notification Hubs
+description: Meer informatie over het verzenden van beveiligde push meldingen naar een Android-app vanuit Azure. Code voorbeelden geschreven in Java en C#.
 documentationcenter: android
-keywords: pushmelding, pushmeldingen, push-berichten, android-push-meldingen
-author: jwargo
-manager: patniko
-editor: spelluru
+keywords: push melding, Push meldingen, Push berichten, Android-push meldingen
+author: sethmanheim
+manager: femila
+editor: jwargo
 services: notification-hubs
 ms.assetid: daf3de1c-f6a9-43c4-8165-a76bfaa70893
 ms.service: notification-hubs
@@ -14,15 +14,17 @@ ms.tgt_pltfrm: android
 ms.devlang: java
 ms.topic: article
 ms.date: 01/04/2019
-ms.author: jowargo
-ms.openlocfilehash: 27536b0a3d7e0858a5660b4c7b33cb6679b5fbf1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 01/04/2019
+ms.openlocfilehash: 419a9f9b5ce698c7516edd55856cbea9891ba029
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60874551"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212178"
 ---
-# <a name="sending-secure-push-notifications-with-azure-notification-hubs"></a>Beveiligde Pushmeldingen verzenden met Azure Notification Hubs
+# <a name="sending-secure-push-notifications-with-azure-notification-hubs"></a>Beveiligde push meldingen verzenden met Azure Notification Hubs
 
 > [!div class="op_single_selector"]
 > * [Windows Universal](notification-hubs-aspnet-backend-windows-dotnet-wns-secure-push-notification.md)
@@ -34,42 +36,42 @@ ms.locfileid: "60874551"
 > [!IMPORTANT]
 > U hebt een actief Azure-account nodig om deze zelfstudie te voltooien. Als u geen account hebt, kunt u binnen een paar minuten een gratis proefaccount maken. Zie [Gratis proefversie van Azure](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A643EE910&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fpartner-xamarin-notification-hubs-ios-get-started) voor meer informatie.
 
-Push notification-ondersteuning in Microsoft Azure kunt u toegang tot een eenvoudig te gebruiken, meerdere platforms, uitgebreide push-bericht-infrastructuur, die aanzienlijk vereenvoudigt de implementatie van pushmeldingen voor consumenten- en enterprise-toepassingen voor mobiele platforms.
+Met ondersteuning voor push meldingen in Microsoft Azure kunt u toegang krijgen tot een gebruiks vriendelijke, geschaalde push-bericht infrastructuur met meerdere platforms, waardoor de implementatie van push meldingen voor zowel consumenten als bedrijfs toepassingen aanzienlijk eenvoudiger wordt. mobiele platforms.
 
-Vanwege regelgeving of veiligheidsbeperkingen, soms een toepassing wilt iets opnemen in de melding dat kan niet worden verzonden via de infrastructuur voor pushmeldingen voor standard. In deze zelfstudie wordt beschreven hoe u dezelfde ervaring bereiken door het verzenden van gevoelige gegevens via een veilige, geverifieerde verbinding tussen de client Android-apparaat en de back-end.
+Vanwege regelgeving of beveiligings beperkingen kan het gebeuren dat een toepassing iets wil toevoegen in de melding die niet kan worden verzonden via de standaard infra structuur voor push meldingen. In deze zelf studie wordt beschreven hoe u dezelfde ervaring kunt krijgen door gevoelige informatie te verzenden via een beveiligde, geverifieerde verbinding tussen het Android-apparaat van de client en de back-end van de app.
 
-Op hoog niveau is de stroom als volgt uit:
+Op hoog niveau is de stroom als volgt:
 
-1. De app-back-end:
-   * Winkels beveiligde nettolading in back-end-database.
-   * De ID van deze melding verzendt naar de Android-apparaat (geen beveiligde gegevens wordt verzonden).
-2. De app op het apparaat bij de ontvangst van de melding:
-   * Het Android-apparaat neemt contact op met de back-end de nettolading van de beveiligde aanvragen.
-   * De app kan de nettolading van de weergegeven als een melding op het apparaat.
+1. De back-end van de app:
+   * Slaat een beveiligde Payload op in de back-enddatabase.
+   * Hiermee wordt de ID van deze melding naar het Android-apparaat verzonden (er worden geen beveiligde gegevens verzonden).
+2. De app op het apparaat wanneer de melding wordt ontvangen:
+   * Het Android-apparaat neemt contact op met de back-end die de beveiligde Payload aanvraagt.
+   * De app kan de payload weer geven als een melding op het apparaat.
 
-Het is belangrijk te weten dat in de vorige stroom (en in deze zelfstudie), wordt ervan uitgegaan dat het apparaat een verificatietoken in de lokale opslag opslaat nadat de gebruiker zich aanmeldt. Deze aanpak garandeert een naadloze ervaring als het apparaat van de melding van de beveiligde nettolading met behulp van dit token kunt ophalen. Als uw toepassing slaat geen verificatietokens op het apparaat, of als deze tokens kunnen worden verlopen, moet een algemene melding waarin de gebruiker wordt gevraagd om de app te starten worden de apparaat-app, na ontvangst van de pushmelding weergegeven. De app vervolgens verifieert de gebruiker en de nettolading van de melding ziet.
+Het is belang rijk te weten dat in de voor gaande stroom (en in deze zelf studie) wordt aangenomen dat het apparaat een verificatie token opslaat in de lokale opslag nadat de gebruiker zich heeft aangemeld. Deze aanpak zorgt voor een naadloze ervaring, omdat het apparaat de beveiligde payload van de melding kan ophalen met dit token. Als uw toepassing geen verificatie tokens opslaat op het apparaat of als deze tokens verlopen zijn, moet de app bij het ontvangen van de push melding een algemene melding weer geven waarin de gebruiker wordt gevraagd de app te starten. De app verifieert vervolgens de gebruiker en toont de meldings lading.
 
-In deze zelfstudie laat zien hoe beveiligde pushmeldingen te verzenden. Dit is gebaseerd op de [gebruikers waarschuwen](notification-hubs-aspnet-backend-gcm-android-push-to-user-google-notification.md) zelfstudie, dus u moet de stappen in deze zelfstudie eerst als u dat nog niet gedaan hebt.
+Deze zelf studie laat zien hoe u beveiligde push meldingen verzendt. Het is gebaseerd op de zelf studie [gebruikers melden](notification-hubs-aspnet-backend-gcm-android-push-to-user-google-notification.md) , dus u moet de stappen in deze zelf studie eerst volt ooien als u dat nog niet hebt gedaan.
 
 > [!NOTE]
-> Deze zelfstudie wordt ervan uitgegaan dat u hebt gemaakt en uw notification hub geconfigureerd zoals beschreven in [aan de slag met Notification Hubs (Android)](notification-hubs-android-push-notification-google-gcm-get-started.md).
+> In deze zelf studie wordt ervan uitgegaan dat u uw notification hub hebt gemaakt en geconfigureerd zoals wordt beschreven in [aan de slag met Notification hubs (Android)](notification-hubs-android-push-notification-google-gcm-get-started.md).
 
 [!INCLUDE [notification-hubs-aspnet-backend-securepush](../../includes/notification-hubs-aspnet-backend-securepush.md)]
 
-## <a name="modify-the-android-project"></a>Wijzigen van het Android-project
+## <a name="modify-the-android-project"></a>Het Android-project wijzigen
 
-Nu dat u hebt gewijzigd dat uw app-back-end voor het verzenden van alleen de *ID* van een pushmelding ontvangen, moet u uw Android-app voor het verwerken van waarmee de melding en uw back-end om op te halen van het beveiligde bericht moet worden weergegeven voor de terugbelfunctie wijzigen.
-Als u wilt dit doel te bereiken, moet u ervoor zorgen dat uw Android-app hoe weet moet worden geverifieerd met uw back-end wanneer wordt de pushmeldingen ontvangen.
+Nu u de back-end van uw app hebt gewijzigd om alleen de id van een push melding te verzenden, moet u uw Android *-* app wijzigen zodat deze melding wordt afgehandeld en de back-end terugbellen om het beveiligde bericht weer te geven.
+Voor dit doel moet u ervoor zorgen dat uw Android-app weet hoe u zich kunt verifiëren met uw back-end wanneer de push meldingen worden ontvangen.
 
-Wijzig nu de *aanmelding* stroom om op te slaan de waarde van de verificatie-header in de gedeelde voorkeuren van uw app. Analoog mechanismen kunnen worden gebruikt voor het opslaan van een verificatietoken (bijvoorbeeld: OAuth-tokens) met de app te gebruiken zonder de referenties van gebruiker.
+Wijzig nu de *aanmeldings* stroom om de waarde van de verificatie header op te slaan in de gedeelde voor keuren van uw app. Analoge mechanismen kunnen worden gebruikt voor het opslaan van verificatie tokens (bijvoorbeeld OAuth-tokens) die de app moet gebruiken zonder dat hiervoor gebruikers referenties zijn vereist.
 
-1. Voeg in uw Android-app-project de volgende constanten toe aan de bovenkant van de `MainActivity` klasse:
+1. Voeg in uw Android-app-project de volgende constanten toe boven aan de `MainActivity` klasse:
 
     ```java
     public static final String NOTIFY_USERS_PROPERTIES = "NotifyUsersProperties";
     public static final String AUTHORIZATION_HEADER_PROPERTY = "AuthorizationHeader";
     ```
-2. Klik in de `MainActivity` klasse, bij te werken de `getAuthorizationHeader()` methode bevat de volgende code:
+2. Werk de `MainActivity` `getAuthorizationHeader()` methode die zich nog in de klasse bevinden, bij met de volgende code:
 
     ```java
     private String getAuthorizationHeader() throws UnsupportedEncodingException {
@@ -84,15 +86,15 @@ Wijzig nu de *aanmelding* stroom om op te slaan de waarde van de verificatie-hea
         return basicAuthHeader;
     }
     ```
-3. Voeg de volgende `import` instructies aan het begin van de `MainActivity` bestand:
+3. Voeg boven aan `import` het `MainActivity` bestand de volgende-instructies toe:
 
     ```java
     import android.content.SharedPreferences;
     ```
 
-Wijzig nu de handler die wordt aangeroepen wanneer de melding is ontvangen.
+Wijzig nu de handler die wordt aangeroepen wanneer de melding wordt ontvangen.
 
-1. In de `MyHandler` klasse wijzigen de `OnReceive()` methode bevat:
+1. Wijzig in `MyHandler` de klasse de `OnReceive()` methode die moet worden opgenomen:
 
     ```java
     public void onReceive(Context context, Bundle bundle) {
@@ -101,7 +103,7 @@ Wijzig nu de handler die wordt aangeroepen wanneer de melding is ontvangen.
         retrieveNotification(secureMessageId);
     }
     ```
-2. Voeg de `retrieveNotification()` methode en vervang de tijdelijke aanduiding `{back-end endpoint}` met de back-end-eindpunt dat is verkregen tijdens het implementeren van uw back-end:
+2. Voeg vervolgens de `retrieveNotification()` -methode toe, waarbij `{back-end endpoint}` u de tijdelijke aanduiding vervangt door het back-end-eind punt dat is verkregen tijdens het implementeren van uw back-end:
 
     ```java
     private void retrieveNotification(final String secureMessageId) {
@@ -132,15 +134,15 @@ Wijzig nu de handler die wordt aangeroepen wanneer de melding is ontvangen.
     }
     ```
 
-Deze methode aanroepen van uw app-back-end om op te halen van de inhoud van meldingen met behulp van de referenties die zijn opgeslagen in de gedeelde voorkeuren en weergegeven als een normale melding. De melding ziet er voor de appgebruiker net als elke andere pushmelding.
+Met deze methode wordt de back-end van uw app aangeroepen om de meldings inhoud op te halen met behulp van de referenties die zijn opgeslagen in de gedeelde voor keuren en wordt deze weer gegeven als normale melding. De melding zoekt naar de app-gebruiker op dezelfde manier als andere push meldingen.
 
-Is het raadzaam het geval van een eigenschap van de koptekst ontbreekt verificatie- of weigerings-verwerken van de back-end. De specifieke verwerking van dergelijke gevallen is voornamelijk afhankelijk van uw doel-gebruikerservaring. Een optie is om een melding met een algemene prompt voor de gebruiker om te verifiëren om op te halen van de werkelijke melding weer te geven.
+Het is aan te raden om de gevallen van ontbrekende verificatie-header-eigenschap of afwijzing door de back-end af te handelen. De specifieke verwerking van deze gevallen is voornamelijk afhankelijk van uw doel gebruikers ervaring. Een optie is om een melding weer te geven met een algemene prompt voor de gebruiker om de daad werkelijke melding op te halen.
 
-## <a name="run-the-application"></a>De toepassing wordt uitgevoerd
+## <a name="run-the-application"></a>De toepassing uitvoeren
 
-Als u wilt de toepassing uitvoert, moet u de volgende acties uitvoeren:
+Voer de volgende acties uit om de toepassing uit te voeren:
 
-1. Zorg ervoor dat **AppBackend** is geïmplementeerd in Azure. Als u Visual Studio gebruikt, voert u de **AppBackend** Web-API-toepassing. Een ASP.NET-webpagina wordt weergegeven.
-2. In Eclipse, moet u de app uitvoeren op een fysieke Android-apparaat of de emulator.
-3. Voer een gebruikersnaam en wachtwoord in de Android-app UI. Dit kunnen een willekeurige tekenreeks zijn, maar ze moeten dezelfde waarde.
-4. Klik in de Android-app UI op **aanmelden**. Klik vervolgens op **pushmelding verzonden**.
+1. Zorg ervoor dat **project appbackend** is geïmplementeerd in Azure. Als u Visual Studio gebruikt, voert u de **project appbackend** Web API-toepassing uit. Er wordt een ASP.NET-webpagina weer gegeven.
+2. In eclips voert u de app uit op een fysiek Android-apparaat of de emulator.
+3. Voer een gebruikers naam en wacht woord in de gebruikers interface van de Android-app in. Dit kan een wille keurige teken reeks zijn, maar ze moeten dezelfde waarde hebben.
+4. Klik in de gebruikers interface van de Android-app op **Aanmelden**. Klik vervolgens op **Push verzenden**.

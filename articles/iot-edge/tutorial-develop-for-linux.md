@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 30b1af29d1a7e3a01659353b27d8c997e739e702
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: a523028fb312f030bc453692daceb0f254f844b6
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69031002"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240953"
 ---
 # <a name="tutorial-develop-iot-edge-modules-for-linux-devices"></a>Zelfstudie: IoT Edge-modules ontwikkelen voor Linux-apparaten
 
@@ -63,6 +63,7 @@ In deze zelf studie leert u de ontwikkelings stappen voor Visual Studio code. Al
 Een ontwikkel computer:
 
 * U kunt uw eigen computer of een virtuele machine gebruiken, afhankelijk van uw ontwikkelings voorkeuren.
+  * Zorg ervoor dat uw ontwikkel computer geneste virtualisatie ondersteunt. Deze mogelijkheid is nodig voor het uitvoeren van een container engine, die u in de volgende sectie installeert.
 * De meeste besturings systemen waarop een container engine kan worden uitgevoerd, kunnen worden gebruikt voor het ontwikkelen van IoT Edge-modules voor Linux-apparaten. In deze zelf studie wordt gebruikgemaakt van een Windows-computer, maar punten bekende verschillen in MacOS of Linux. 
 * Installeer [Git](https://git-scm.com/)voor het ophalen van module sjabloon pakketten verderop in deze zelf studie.  
 * [De extensie C# voor Visual Studio Code (van OmniSharp)](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp).
@@ -97,7 +98,7 @@ Gebruik de IoT-extensies voor Visual Studio code voor het ontwikkelen van IoT Ed
 
 1. Installeer [Visual Studio code](https://code.visualstudio.com/) op uw ontwikkel computer. 
 
-2. Als de installatie is voltooid, selecteert u uitbrei**dingen** **weer geven** > . 
+2. Als de installatie is voltooid, selecteert u**uitbrei dingen** **weer geven** > . 
 
 3. Zoek naar **Azure IOT-Hulpprogram ma's**. Dit is eigenlijk een verzameling extensies waarmee u kunt communiceren met IOT hub-en IOT-apparaten, en voor het ontwikkelen van IOT Edge-modules. 
 

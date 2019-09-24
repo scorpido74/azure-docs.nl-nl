@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/9/2019
 ms.author: mlearned
-ms.openlocfilehash: 93eddc0ff8f1a1af8b485fcdb891f72d874b5c0a
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: c1b372dbeaea31e83c8ff42a84fc39d762b2ebdb
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202965"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212261"
 ---
 # <a name="preview---create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Voor beeld: meerdere knooppunt groepen maken en beheren voor een cluster in azure Kubernetes service (AKS)
 
@@ -245,15 +245,15 @@ Als best practice moet u alle knooppunt groepen in een AKS-cluster upgraden naar
 Een AKS-cluster heeft twee cluster resource objecten waaraan Kubernetes-versies zijn gekoppeld. De eerste is een Kubernetes-versie van besturings vlak. De tweede is een agent groep met een Kubernetes-versie. Een besturings vlak wordt toegewezen aan een of meer knooppunt groepen. Het gedrag van een upgrade bewerking is afhankelijk van welke Azure CLI-opdracht wordt gebruikt.
 
 1. Voor het bijwerken van het besturings vlak is het vereist`az aks upgrade`
-   * Hiermee worden de versie van het besturings vlak en alle knooppunt groepen in het cluster bijgewerkt
-   * Door door `az aks upgrade` te geven `--control-plane-only` met de vlag voert u alleen een upgrade uit van het cluster besturings vlak en geen van de gekoppelde `--control-plane-only` knooppunt groepen * de vlag is beschikbaar in **AKS-preview-uitbrei ding v 0.4.16** of hoger
+   * Hiermee worden de versie van het besturings element en alle knooppunt Pools in het cluster bijgewerkt
+   * Door door `az aks upgrade` te geven `--control-plane-only` aan de vlag wordt alleen het cluster besturings vlak bijgewerkt en geen van de gekoppelde knooppunt groepen wordt gewijzigd. De `--control-plane-only` markering is beschikbaar in **AKS-preview-uitbrei ding v 0.4.16** of hoger.
 1. Voor het upgraden van afzonderlijke knooppunt groepen is het vereist`az aks nodepool upgrade`
    * Hiermee wordt alleen de doel knooppunt groep met de opgegeven Kubernetes-versie bijgewerkt
 
 De relatie tussen de Kubernetes-versies van knooppunt Pools moet ook volgen op een set regels.
 
 1. U kunt het besturings vlak of de Kubernetes-versie van de knooppunt groep niet opdowngradeen.
-1. Als er geen Kubernetes-versie van een knooppunt groep wordt opgegeven, wordt de gebruikte standaard waarde teruggestuurd naar de versie van het besturings vlak.
+1. Als er geen Kubernetes-versie van een knooppunt groep wordt opgegeven, is het gedrag afhankelijk van de gebruikte client. Voor een declaratie in de ARM-sjabloon wordt de bestaande versie die is gedefinieerd voor de knooppunt groep gebruikt, als er geen is ingesteld, wordt de versie van het besturings element gebruikt.
 1. U kunt een besturings vlak of knooppunt groep op een bepaald moment bijwerken of schalen, u kunt beide bewerkingen niet tegelijkertijd verzenden.
 1. Een Kubernetes-versie van een knooppunt groep moet dezelfde primaire versie zijn als het besturings vlak.
 1. Een Kubernetes-versie van een knooppunt groep kan Maxi maal twee (2) secundaire versies kleiner zijn dan het besturings vlak, nooit meer.
@@ -593,7 +593,7 @@ AKS-knoop punten vereisen geen eigen open bare IP-adressen voor communicatie. He
 az feature register --name NodePublicIPPreview --namespace Microsoft.ContainerService
 ```
 
-Na een geslaagde registratie implementeert u een Azure Resource Manager-sjabloon volgens dezelfde instructies als [hierboven](#manage-node-pools-using-a-resource-manager-template) en voegt u de volgende Boole-waarde-eigenschap ' enableNodePublicIP ' toe aan de agentPoolProfiles. Stel dit in `true` op as Default wordt ingesteld alsof `false` het niet is opgegeven. Dit is een alleen-maken eigenschap en vereist een minimale API-versie van 2019-06-01. Dit kan worden toegepast op zowel Linux-als Windows-knooppunt groepen.
+Na een geslaagde registratie implementeert u een Azure Resource Manager-sjabloon volgens dezelfde instructies als [hierboven](#manage-node-pools-using-a-resource-manager-template) en voegt u de volgende Boole-waarde-eigenschap ' enableNodePublicIP ' toe aan de agentPoolProfiles. Stel dit in `true` op as Default is ingesteld alsof `false` het niet is opgegeven. Dit is een alleen-maken eigenschap en vereist een minimale API-versie van 2019-06-01. Dit kan worden toegepast op zowel Linux-als Windows-knooppunt groepen.
 
 ```
 "agentPoolProfiles":[  

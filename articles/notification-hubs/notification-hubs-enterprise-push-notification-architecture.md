@@ -1,11 +1,11 @@
 ---
-title: Notification Hubs - architectuur van de Enterprise-Push
-description: Informatie over het gebruik van Azure Notification Hubs in een bedrijfsomgeving
+title: Notification Hubs-Enter prise-push architectuur
+description: Richt lijnen voor het gebruik van Azure Notification Hubs in een bedrijfs omgeving
 services: notification-hubs
 documentationcenter: ''
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.assetid: 903023e9-9347-442a-924b-663af85e05c6
 ms.service: notification-hubs
 ms.workload: mobile
@@ -13,65 +13,67 @@ ms.tgt_pltfrm: mobile-windows
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/04/2019
-ms.author: jowargo
-ms.openlocfilehash: 938801148b175456553865b54d59271021811401
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 01/04/2019
+ms.openlocfilehash: 5b65fe6acb1fdf7ba79b106c876527c9b6736c5f
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60873343"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71211902"
 ---
 # <a name="enterprise-push-architectural-guidance"></a>Hulp voor architectuur via pushmeldingen van het bedrijf
 
-Ondernemingen zijn tegenwoordig geleidelijk verplaatsen naar het maken van mobiele toepassingen voor hun eindgebruikers (extern) of voor de werknemers (intern). Ze hebben bestaande back-endsystemen erin mainframes of bepaalde LoB-toepassingen moeten worden geïntegreerd in de architectuur van de mobiele toepassing. Deze handleiding wordt besproken hoe best kunt uitvoeren van deze integratie aanbeveelt van mogelijke oplossing voor algemene scenario's.
+De huidige ondernemingen worden geleidelijk verplaatst om mobiele toepassingen te maken voor hun eind gebruikers (extern) of voor de werk nemers (intern). Ze hebben bestaande back-end-systemen die zijn ingesteld als mainframes of sommige LoB-toepassingen, die moeten worden geïntegreerd in de architectuur van de mobiele toepassing. In deze hand leiding vindt u informatie over de beste oplossing voor het uitvoeren van deze integratie om mogelijke oplossingen te adviseren voor veelvoorkomende scenario's.
 
-Een frequente vereiste is voor het verzenden van pushmeldingen aan de gebruikers via hun mobiele toepassing wanneer een bepaalde gebeurtenis in de back-endsystemen plaatsvindt. bijvoorbeeld, wil een klant van de bank die van de bank bankieren app op een iPhone heeft worden gewaarschuwd wanneer er een betaalpas boven een bepaalde hoeveelheid van het account of een intranet-scenario waarbij een werknemer van de afdeling Financiën met een budget goedkeuring-app op een Windows Phone wil wordt gedaan  om te worden geïnformeerd wanneer de goedkeuringsaanvraag wordt ontvangen.
+Een regel matige vereiste is voor het verzenden van een push melding naar de gebruikers via hun mobiele toepassing wanneer er sprake is van een belang rijke gebeurtenis op de back-end-systemen. Een Bank klant die de Bank-app van een iPhone heeft, wil bijvoorbeeld een melding ontvangen wanneer een debetbedrag boven een bepaald bedrag van het account of een intranet scenario wordt gemaakt, waarbij een werk nemer van de financiële afdeling die een budget goedkeurings-app op een Windows Phone wil hebben  te worden gewaarschuwd wanneer de goedkeurings aanvraag wordt ontvangen.
 
-De bank-account of de verwerking van de goedkeuring is waarschijnlijk worden uitgevoerd in sommige endsysteem back-voor een push naar de gebruiker moet starten. Mogelijk zijn er meerdere dergelijke back endsystemen, moeten alle dezelfde soort logica voor het pushen wanneer een gebeurtenis een melding activeert maken. De complexiteit hier ligt in verschillende back-endsystemen, samen met een één push-systeem waar de eindgebruikers mogelijk andere meldingen bent geabonneerd en er kan zelfs meerdere mobiele toepassingen integreren. Bijvoorbeeld intranet mobiele apps waarbij een mobiele toepassing kan meldingen wilt ontvangen uit meerdere endsystemen die dergelijke back. De back-endsystemen niet kent of wilt weten van push-semantiek/technologie, zodat een gangbare oplossing hier traditioneel is geweest om te introduceren een onderdeel, dat de back-endsystemen voor alle gebeurtenissen van belang zijn worden opgevraagd en is verantwoordelijk voor het verzenden van de pushberichten naar de -client.
+De Bank rekening of goedkeurings verwerking wordt waarschijnlijk uitgevoerd in een back-end-systeem, dat een push naar de gebruiker moet initiëren. Er kunnen meerdere dergelijke back-end-systemen zijn, die allemaal dezelfde soort logica moeten bouwen om te pushen wanneer een gebeurtenis een melding activeert. De complexiteit is het integreren van verschillende back-end-systemen in combi natie met één push systeem waarbij de eind gebruikers mogelijk zijn geabonneerd op verschillende meldingen en er zelfs meerdere mobiele toepassingen kunnen zijn. Bijvoorbeeld mobiele apps in het intranet waarbij één mobiele toepassing meldingen van meerdere dergelijke back-upsystemen wil ontvangen. De back-end-systemen weten of hoeven geen push semantiek/technologie te kennen, dus een veelvoorkomende oplossing is een onderdeel te introduceren, waarmee de back-end-systemen worden gecontroleerd op belang rijke gebeurtenissen en die verantwoordelijk is voor het verzenden van push berichten naar de serviceclient.
 
-Een betere oplossing is het gebruik van Azure Service Bus - onderwerp/abonnement model, waardoor de complexiteit bij het maken van de oplossing schaalbaar.
+Een betere oplossing is het gebruik van Azure Service Bus-onderwerp/-abonnements model, waardoor de complexiteit wordt gereduceerd en de oplossing schaalbaar wordt.
 
-Hier volgt de algemene architectuur van de oplossing (gegeneraliseerde met meerdere mobiele apps maar evenveel van toepassing wanneer er slechts één mobiele app)
+Hier volgt de algemene architectuur van de oplossing (gegeneraliseerd met meerdere mobiele apps, maar ook van toepassing als er slechts één mobiele app is)
 
 ## <a name="architecture"></a>Architectuur
 
 ![][1]
 
-Het belangrijkste gedeelte in dit Architectuurdiagram is Azure Service Bus, waarmee u een onderwerpen/abonnementen programmeermodel (meer hierover op [Service Bus Pub/Sub-programmering]). De ontvanger, die in dit geval de mobiele back-end is (meestal [Azure Mobile Service], die een push naar de mobiele apps initieert) ontvangt geen berichten rechtstreeks vanuit de back-endsystemen, maar in plaats daarvan een tussenliggende abstractie laag geleverd door [Azure Service Bus], zodat mobiele back-end om berichten te ontvangen van een of meer back-endsystemen. Een Service Bus-onderwerp moet worden gemaakt voor elk van de back endsystemen, bijvoorbeeld-Account, HR, financiën, dit is in feite 'onderwerpen"van belang, waarmee berichten worden verzonden als pushmelding wordt geïnitieerd. De back-endsystemen versturen berichten naar deze onderwerpen. Een mobiele back-end kunt abonneren op een of meer deze onderwerpen door een Service Bus-abonnement te maken. Het recht geeft de mobiele back-end die een melding ontvangen van de bijbehorende back endsysteem. Mobiele back-end blijft om te luisteren naar berichten op hun abonnementen en zodra een bericht binnenkomt, weer wordt ingeschakeld en verzendt deze melding met de notification hub. Notification hubs vervolgens uiteindelijk het bericht verzenden naar de mobiele app. Hier volgt de lijst met belangrijke onderdelen:
+Het sleutel gedeelte in dit architectuur diagram is Azure Service Bus, dat een programmeer model voor onderwerpen/abonnementen bevat (meer op het [Service Bus pub/sub-programmering]). De ontvanger, in dit geval de mobiele back-end (meestal [Azure Mobile Service], die een push naar de mobiele apps initieert), ontvangt geen berichten rechtstreeks van de back-end-systemen, maar een tussenliggende abstractie laag die wordt geleverd door [Azure Service Bus], waarmee mobiele back-end berichten van een of meer back-upsystemen kan ontvangen. Er moet een Service Bus onderwerp worden gemaakt voor elk van de back-end-systemen, bijvoorbeeld account, HR, Finance, wat in principe ' Topics ' is, en die berichten initieert om te worden verzonden als push melding. De back-end-systemen verzenden berichten naar deze onderwerpen. Een mobiele back-end kan zich abonneren op een of meer van deze onderwerpen door een Service Bus-abonnement te maken. Hiermee wordt de mobiele back-end gemachtigd om een melding van het bijbehorende back-end-systeem te ontvangen. Mobiele back-end wordt geluisterd naar berichten op hun abonnementen en zodra een bericht binnenkomt, wordt dit teruggezet en wordt het als een melding verzonden naar de notification hub. Notification hubs leveren uiteindelijk het bericht af voor de mobiele app. Hier volgt een lijst met belang rijke onderdelen:
 
-1. Back-endsystemen (LoB/oudere systemen)
-   * Hiermee maakt u Service Bus-onderwerp
+1. Back-end systemen (LoB/verouderde systemen)
+   * Maakt Service Bus onderwerp
    * Bericht verzenden
 1. Mobiele back-end
-   * Hiermee maakt u serviceabonnement
-   * Bericht ontvangt (van back-end-systeem)
-   * Wordt een melding verzonden naar clients (via Azure Notification Hub)
-1. Mobile Application
-   * Ontvangt en een melding weergeven
+   * Hiermee maakt u een service abonnement
+   * Ontvangt bericht (van back-end-systeem)
+   * Hiermee wordt een melding verzonden naar clients (via Azure notification hub)
+1. Mobiele toepassing
+   * Melding ontvangen en weer geven
 
 ### <a name="benefits"></a>Voordelen
 
-1. De ontkoppeling tussen de ontvanger (mobiele app/service via Notification Hub) en de afzender (back-endsystemen), kunt aanvullende back endsystemen wordt geïntegreerd met minimale wijzigen.
-1. Ook kan het scenario van meerdere mobiele apps geen gebeurtenissen ontvangen van een of meer back-endsystemen.  
+1. De ontkoppeling tussen de ontvanger (Mobile App/service via notification hub) en de afzender (back-end-systemen) maakt het mogelijk dat aanvullende back-end-systemen worden geïntegreerd met een minimale wijziging.
+1. Het maakt ook het scenario van meerdere mobiele apps in staat om gebeurtenissen van een of meer back-upsystemen te ontvangen.  
 
 ## <a name="sample"></a>Voorbeeld
 
 ### <a name="prerequisites"></a>Vereisten
 
-De volgende zelfstudies om vertrouwd met de concepten, evenals de algemene stappen voor het maken en de configuratie te voltooien:
+Voltooi de volgende zelf studies om vertrouwd te raken met de concepten en de algemene procedures voor het maken van & configuratie:
 
-1. [Service Bus Pub/Sub-programmering] -in deze zelfstudie wordt uitgelegd dat de details van het werken met Service Bus-onderwerpen/abonnementen, het maken van een naamruimte voor het bevatten van onderwerpen/abonnementen, het verzenden en ontvangen van berichten van deze.
-2. [Notification Hubs - zelfstudie voor Windows Universal] -in deze zelfstudie wordt uitgelegd hoe u instellen van een Windows Store-app en Notification Hubs gebruiken om te registreren en vervolgens ontvangen van meldingen.
+1. [Service Bus pub/sub-programmering] : in deze zelf studie worden de details van het werken met Service Bus onderwerpen/abonnementen beschreven, hoe u een naam ruimte maakt om onderwerpen/abonnementen te bevatten, & berichten van deze bestanden kunnen verzenden.
+2. [Notification Hubs-Windows Universal-zelf studie] studie: in deze zelf studie wordt uitgelegd hoe u een Windows Store-app instelt en hoe u notification hubs kunt registreren en vervolgens meldingen kunt ontvangen.
 
 ### <a name="sample-code"></a>Voorbeeldcode
 
-De volledige voorbeeldcode is beschikbaar op [Notification Hub-voorbeelden]. Dit wordt verdeeld in drie onderdelen:
+De volledige voorbeeld code is beschikbaar op [Voor beelden van Notification hub]-voor beelden. Het is onderverdeeld in drie onderdelen:
 
 1. **EnterprisePushBackendSystem**
 
-    a. Dit project gebruikt de **WindowsAzure.ServiceBus** NuGet-pakket en zijn gebaseerd op [Service Bus Pub/Sub-programmering].
+    a. Dit project maakt gebruik van het NuGet-pakket **WindowsAzure. ServiceBus** en is gebaseerd op [Service Bus pub/sub-programmering].
 
-    b. Deze toepassing is een eenvoudig C#-consoletoepassing voor het simuleren van een LoB-systeem, die het bericht moet worden geleverd aan de mobiele app initieert.
+    b. Deze toepassing is een eenvoudige C# console-app voor het simuleren van een LOB-systeem, waarmee het bericht wordt gestart dat aan de mobiele app moet worden geleverd.
 
     ```csharp
     static void Main(string[] args)
@@ -87,7 +89,7 @@ De volledige voorbeeldcode is beschikbaar op [Notification Hub-voorbeelden]. Dit
     }
     ```
 
-    c. `CreateTopic` wordt gebruikt voor het maken van de Service Bus-onderwerp.
+    c. `CreateTopic`wordt gebruikt om het Service Bus onderwerp te maken.
 
     ```csharp
     public static void CreateTopic(string connectionString)
@@ -104,7 +106,7 @@ De volledige voorbeeldcode is beschikbaar op [Notification Hub-voorbeelden]. Dit
     }
     ```
 
-    d. `SendMessage` wordt gebruikt om de berichten verzenden naar deze Service Bus-onderwerp. Deze code verzendt gewoon een set willekeurige berichten naar het onderwerp periodiek ten behoeve van het voorbeeld. Normaal gesproken is er een back endsysteem, die berichten worden verzonden wanneer een gebeurtenis plaatsvindt.
+    d. `SendMessage`wordt gebruikt om de berichten naar dit Service Bus onderwerp te verzenden. Met deze code wordt regel matig een reeks wille keurige berichten naar het onderwerp verzonden voor het doel van het voor beeld. Normaal gesp roken is er een back-end-systeem dat berichten verzendt wanneer er zich een gebeurtenis voordoet.
 
     ```csharp
     public static void SendMessage(string connectionString)
@@ -138,9 +140,9 @@ De volledige voorbeeldcode is beschikbaar op [Notification Hub-voorbeelden]. Dit
     ```
 2. **ReceiveAndSendNotification**
 
-    a. Dit project gebruikt de *WindowsAzure.ServiceBus* en **Microsoft.Web.WebJobs.Publish** NuGet-pakketten en zijn gebaseerd op [Service Bus Pub/Sub-programmering].
+    a. In dit project worden de taken *WindowsAzure. ServiceBus* en **micro soft. Web. webjobs gebruikt. Publiceer** NuGet-pakketten en is gebaseerd op [Service Bus pub/sub-programmering].
 
-    b. De volgende console-app wordt uitgevoerd als een [Azure WebJob] omdat er continu worden uitgevoerd om te luisteren naar berichten van de LoB/back-endsystemen. Deze toepassing maakt deel uit van uw mobiele back-end.
+    b. De volgende console-app wordt uitgevoerd als een [Azure WebJob] , omdat deze continu moet worden uitgevoerd om te Luis teren naar berichten van de LOB/back-end-systemen. Deze toepassing maakt deel uit van uw mobiele back-end.
 
     ```csharp
     static void Main(string[] args)
@@ -156,7 +158,7 @@ De volledige voorbeeldcode is beschikbaar op [Notification Hub-voorbeelden]. Dit
     }
     ```
 
-    c. `CreateSubscription` wordt gebruikt om te maken van een Service Bus-abonnement voor het onderwerp waarin de back-end verzendt het afdruksysteem van berichten. Afhankelijk van het bedrijfsscenario dit onderdeel maakt u een of meer abonnementen op de bijbehorende onderwerpen (bijvoorbeeld enkele kunnen worden ontvangen van berichten van HR-systeem, sommige vanuit system financiën, enzovoort)
+    c. `CreateSubscription`wordt gebruikt om een Service Bus-abonnement te maken voor het onderwerp waar het back-upsysteem berichten verzendt. Afhankelijk van het bedrijfs scenario maakt dit onderdeel een of meer abonnementen op de bijbehorende onderwerpen (er kunnen bijvoorbeeld enkele berichten worden ontvangen van het HR-systeem, sommige van het financiële systeem, enzovoort)
 
     ```csharp
     static void CreateSubscription(string connectionString)
@@ -172,7 +174,7 @@ De volledige voorbeeldcode is beschikbaar op [Notification Hub-voorbeelden]. Dit
     }
     ```
 
-    d. `ReceiveMessageAndSendNotification` wordt gebruikt voor het lezen van het bericht van het onderwerp met behulp van het abonnement en als de lezen slaagt vervolgens een melding (in het voorbeeldscenario een systeemeigen pop-upmelding voor Windows) beschikbaar stellen om te worden verzonden naar de mobiele toepassing met behulp van Azure Notification Hubs.
+    d. `ReceiveMessageAndSendNotification`wordt gebruikt om het bericht in het onderwerp te lezen met behulp van het-abonnement. als de Lees bewerking is geslaagd, voert u een melding in (in het voorbeeld scenario is een melding van een Windows-systeem eigen pop-up) om te worden verzonden naar de mobiele toepassing met behulp van Azure Notification Hubs.
 
     ```csharp
     static void ReceiveMessageAndSendNotification(string connectionString)
@@ -224,25 +226,25 @@ De volledige voorbeeldcode is beschikbaar op [Notification Hub-voorbeelden]. Dit
     }
     ```
 
-    e. Voor het publiceren van deze app als een **webtaak**, klik met de rechtermuisknop op de oplossing in Visual Studio en selecteer **publiceren als WebJob**
+    e. Als u deze app als **Webtaak**wilt publiceren, klikt u met de rechter muisknop op de oplossing in Visual Studio en selecteert u **publiceren als Webtaak**
 
     ![][2]
 
-    f. Selecteer uw publicatieprofiel en een nieuwe Azure-WebSite maken als deze nog niet bestaat, die als host fungeert voor deze WebJob en beschikt u over de WebSite vervolgens **publiceren**.
+    f. Selecteer uw publicatie profiel en maak een nieuwe Azure-WebSite als deze nog niet bestaat, die als host fungeert voor deze Webtaak en wanneer u de WebSite vervolgens **publiceert**.
 
     ![][3]
 
-    g. Configureren van de taak voor het "Continu uitvoeren" zo dat wanneer u zich aanmeldt bij de [Azure Portal] ziet dit er ongeveer als volgt:
+    g. Configureer de taak zo dat deze continu wordt uitgevoerd. Als u zich aanmeldt bij de [Azure-portal] , moet u er ongeveer als volgt uitzien:
 
     ![][4]
 
 3. **EnterprisePushMobileApp**
 
-    a. Deze toepassing is een Windows Store-toepassing die pop-upmeldingen uit de webtaak uitgevoerd als onderdeel van uw mobiele back-end ontvangt en weer te geven. Deze code is gebaseerd op [Notification Hubs - zelfstudie voor Windows Universal].  
+    a. Deze toepassing is een Windows Store-toepassing, die pop-upmeldingen ontvangt van de Webtaak die wordt uitgevoerd als onderdeel van uw mobiele back-end en die wordt weer gegeven. Deze code is gebaseerd op de [Notification Hubs-Windows Universal-zelf studie].  
 
     b. Zorg ervoor dat uw toepassing is ingeschakeld voor het ontvangen van pop-upmeldingen.
 
-    c. Zorg ervoor dat de volgende Notification Hubs registratiecode wordt aangeroepen op de App gestart (na het vervangen van de `HubName` en `DefaultListenSharedAccessSignature` waarden:
+    c. Zorg ervoor dat de volgende notification hubs registratie code wordt aangeroepen bij het opstarten van de app (na het `HubName` vervangen `DefaultListenSharedAccessSignature` van de waarden en):
 
     ```csharp
     private async void InitNotificationsAsync()
@@ -264,13 +266,13 @@ De volledige voorbeeldcode is beschikbaar op [Notification Hub-voorbeelden]. Dit
 
 ### <a name="running-the-sample"></a>Het voorbeeld uitvoeren
 
-1. Zorg ervoor dat de webtaak correct wordt uitgevoerd en gepland om te worden continu worden uitgevoerd.
-2. Voer de **EnterprisePushMobileApp**, Hiermee start u de Windows Store-app.
-3. Voer de **EnterprisePushBackendSystem** consoletoepassing, deze simuleert de LoB back-end en begint met het verzenden van berichten en ziet u pop-upmeldingen weergegeven zoals in de volgende afbeelding:
+1. Zorg ervoor dat de Webtaak wordt uitgevoerd en is gepland om continu te worden uitgevoerd.
+2. Voer de **EnterprisePushMobileApp**uit, waarmee de Windows Store-app wordt gestart.
+3. Voer de **EnterprisePushBackendSystem** -console toepassing uit die de LOB-back-end simuleert en begint met het verzenden van berichten. de pop-upmeldingen worden weer gegeven zoals in de volgende afbeelding:
 
     ![][5]
 
-4. De berichten zijn oorspronkelijk verzonden naar Service Bus-onderwerpen die werd bewaakt door Service Bus-abonnementen in uw Web-Job. Zodra een bericht is ontvangen, is een melding gemaakt en verzonden naar de mobiele app. U kunt zoeken via de WebJob-Logboeken om te bevestigen van de verwerking wanneer u gaat u naar de Logs-koppeling in [Azure Portal] voor uw Web-Project:
+4. De berichten zijn oorspronkelijk verzonden naar Service Bus-onderwerpen, die door Service Bus abonnementen in uw Webtaak worden bewaakt. Zodra een bericht is ontvangen, is er een melding gemaakt en verzonden naar de mobiele app. U kunt de logboeken van de Webtaak bekijken om de verwerking te bevestigen wanneer u naar de koppeling Logboeken in [Azure-portal] voor uw webtaken gaat:
 
     ![][6]
 
@@ -283,10 +285,10 @@ De volledige voorbeeldcode is beschikbaar op [Notification Hub-voorbeelden]. Dit
 [6]: ./media/notification-hubs-enterprise-push-architecture/WebJobsLog.png
 
 <!-- Links -->
-[Notification Hub-voorbeelden]: https://github.com/Azure/azure-notificationhubs-samples
+[Voor beelden van Notification hub]: https://github.com/Azure/azure-notificationhubs-samples
 [Azure Mobile Service]: https://azure.microsoft.com/documentation/services/mobile-services/
 [Azure Service Bus]: https://azure.microsoft.com/documentation/articles/fundamentals-service-bus-hybrid-solutions/
-[Service Bus Pub/Sub-programmering]: https://azure.microsoft.com/documentation/articles/service-bus-dotnet-how-to-use-topics-subscriptions/
+[Service Bus pub/sub-programmering]: https://azure.microsoft.com/documentation/articles/service-bus-dotnet-how-to-use-topics-subscriptions/
 [Azure WebJob]: ../app-service/webjobs-create.md
-[Notification Hubs - zelfstudie voor Windows Universal]: https://azure.microsoft.com/documentation/articles/notification-hubs-windows-store-dotnet-get-started/
-[Azure Portal]: https://portal.azure.com/
+[Notification Hubs-Windows Universal-zelf studie]: https://azure.microsoft.com/documentation/articles/notification-hubs-windows-store-dotnet-get-started/
+[Azure-portal]: https://portal.azure.com/

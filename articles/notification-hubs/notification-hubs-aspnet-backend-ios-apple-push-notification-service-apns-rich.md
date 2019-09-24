@@ -3,9 +3,9 @@ title: Azure Notification Hubs Rich push
 description: Meer informatie over het verzenden van uitgebreide push meldingen naar een iOS-app vanuit Azure. Code voorbeelden geschreven in doel-C en C#.
 documentationcenter: ios
 services: notification-hubs
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.assetid: 590304df-c0a4-46c5-8ef5-6a6486bb3340
 ms.service: notification-hubs
 ms.workload: mobile
@@ -13,13 +13,15 @@ ms.tgt_pltfrm: ios
 ms.devlang: objective-c
 ms.topic: article
 ms.date: 01/04/2019
-ms.author: jowargo
-ms.openlocfilehash: 7fcb4a1db62abfc04d2b0c60488d35393d98c57e
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 01/04/2019
+ms.openlocfilehash: 9da629929ca88f406dc503710477104be94c47e3
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68348471"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212203"
 ---
 # <a name="azure-notification-hubs-rich-push"></a>Azure Notification Hubs Rich push
 
@@ -101,7 +103,7 @@ Op hoog niveau:
     ```
 
    > [!NOTE]
-   > Beschrijving Raadpleeg voor meer informatie over het [insluiten en openen van resources C# ](https://support.microsoft.com/kb/319292) met behulp van Visual.
+   > Beschrijving Raadpleeg voor meer informatie over het [insluiten en openen van resources C# met behulp van Visual](https://support.microsoft.com/kb/319292) .
 
 7. In `NotificationsController.cs`wordt ' Notifications controller met de volgende fragmenten opnieuw gedefinieerd. Hiermee wordt een eerste meldings-id op de achtergrond verzonden naar het apparaat en kan de installatie kopie aan de client zijde worden opgehaald:
 

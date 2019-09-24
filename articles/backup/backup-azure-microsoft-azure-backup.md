@@ -8,19 +8,22 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: dacurwin
-ms.openlocfilehash: 18eacc914a30dc6004bef71e9d3910e170c43d9b
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: 3f427726a128eed426a64bc533075ba0cdde9544
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69575137"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71241096"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Azure Backup Server installeren en upgraden
+
 > [!div class="op_single_selector"]
 > * [Azure Backup Server](backup-azure-microsoft-azure-backup.md)
 > * [SCDPM](backup-azure-dpm-introduction.md)
 >
 >
+
+> Van toepassing op: MABS v3. (MABS v2 wordt niet meer ondersteund. Als u een eerdere versie dan MABS V3 gebruikt, moet u een upgrade uitvoeren naar de nieuwste versie.)
 
 In dit artikel wordt uitgelegd hoe u uw omgeving voorbereidt op back-ups van werk belastingen met behulp van Microsoft Azure Backup Server (MABS). Met Azure Backup Server kunt u werk belastingen van toepassingen, zoals virtuele machines van Hyper-V, Microsoft SQL Server, share Point server, micro soft Exchange en Windows-clients beveiligen vanaf één console.
 
@@ -39,23 +42,24 @@ MABS geïmplementeerd in een Azure-VM kan een back-up maken van virtuele machine
 Azure Backup Server neemt een groot deel van de back-up van de werk belasting over van Data Protection Manager (DPM). Dit artikel is gekoppeld aan de DPM-documentatie om een deel van de gedeelde functionaliteit uit te leggen. Hoewel Azure Backup Server veel dezelfde functionaliteit deelt als DPM, Azure Backup Server geen back-up op tape en ook wel geïntegreerd met System Center.
 
 ## <a name="choose-an-installation-platform"></a>Een installatie platform kiezen
+
 De eerste stap voor het voorbereiden van de Azure Backup Server is het instellen van een Windows-Server. Uw server kan zich in azure of on-premises bevindt.
 
 ### <a name="using-a-server-in-azure"></a>Een server gebruiken in azure
-Wanneer u een server kiest voor het uitvoeren van Azure Backup Server, is het raadzaam om te beginnen met een galerie-afbeelding van Windows Server 2012 R2 Data Center, Windows Server 2016 Data Center of Windows Server 2019 Data Center. In het artikel [maakt u uw eerste virtuele Windows-machine in de Azure Portal](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json), een zelf studie om aan de slag te gaan met de aanbevolen virtuele machine in azure, zelfs als u Azure nog nooit eerder hebt gebruikt. De aanbevolen minimale vereisten voor de virtuele machine van de server (VM) moeten zijn: Standard_A4_v2 met vier kernen en 8 GB RAM-geheugen.
+
+Wanneer u een server kiest voor het uitvoeren van Azure Backup Server, is het raadzaam om te beginnen met een galerie-installatie kopie van Windows Server 2016 Data Center of Windows Server 2019 Data Center. In het artikel [maakt u uw eerste virtuele Windows-machine in de Azure Portal](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json), een zelf studie om aan de slag te gaan met de aanbevolen virtuele machine in azure, zelfs als u Azure nog nooit eerder hebt gebruikt. De aanbevolen minimale vereisten voor de virtuele machine van de server (VM) moeten zijn: Standard_A4_v2 met vier kernen en 8 GB RAM-geheugen.
 
 Het beveiligen van werk belastingen met Azure Backup Server heeft veel nuances. Het artikel [Installeer DPM als een virtuele machine van Azure](https://technet.microsoft.com/library/jj852163.aspx), en helpt deze nuances te verklaren. Lees dit artikel volledig voordat u de computer implementeert.
 
 ### <a name="using-an-on-premises-server"></a>Een on-premises server gebruiken
+
 Als u de basis server niet wilt uitvoeren in azure, kunt u de-server uitvoeren op een Hyper-V-VM, een virtuele VMware-machine of een fysieke host. De aanbevolen minimale vereisten voor de serverhardware zijn twee kernen en 8 GB RAM-geheugen. De ondersteunde besturings systemen worden weer gegeven in de volgende tabel:
 
 | Besturingssysteem | Platform | SKU |
 |:--- | --- |:--- |
-| Windows Server 2019 |64-bits |Standard, Data Center, Essentials (MABS v3 en hoger) |
-| Windows Server 2016 en de nieuwste SPs |64-bits |Standard, Data Center, Essentials (MABS v2 en hoger) |
-| Windows Server 2012 R2 en de meest recente SP's |64-bits |Standard, Datacenter, Foundation |
-| Windows Storage Server 2012 R2 en de meest recente SP's |64 bits |Standard, Workgroup |
-| Windows Storage Server 2012 en de meest recente SP's |64-bits |Standard, Workgroup |
+| Windows Server 2019 |64-bits |Standard, Datacenter, Essentials |
+| Windows Server 2016 en de nieuwste SPs |64-bits |Standard, Datacenter, Essentials  |
+
 
 U kunt de DPM-opslag ontdubbelen met behulp van Windows Server ontdubbeling. Meer informatie over hoe [DPM en](https://technet.microsoft.com/library/dn891438.aspx) ontdubbeling samen werken wanneer ze worden geïmplementeerd in virtuele Hyper-V-machines.
 
@@ -74,6 +78,7 @@ Of u back-upgegevens naar Azure verzendt of lokaal blijft, Azure Backup Server m
 [!INCLUDE [backup-create-rs-vault.md](../../includes/backup-create-rs-vault.md)]
 
 ### <a name="set-storage-replication"></a>Opslagreplicatie instellen
+
 U kunt met de optie voor opslagreplicatie kiezen tussen geografisch redundante opslag en lokaal redundante opslag. Recovery Services kluizen gebruiken standaard geografisch redundante opslag. Als deze kluis uw primaire kluis is, houdt u de opslag optie ingesteld op geografisch redundante opslag. Kies lokaal redundante opslag als u een goedkopere optie wilt die niet zo duurzaam is. U vindt meer informatie over de opties voor [geografisch redundante](../storage/common/storage-redundancy-grs.md) en [lokaal redundante](../storage/common/storage-redundancy-lrs.md) opslag in het [overzicht van Azure Storage-replicatie](../storage/common/storage-redundancy.md).
 
 De instelling voor opslagreplicatie bewerken:
@@ -85,10 +90,10 @@ De instelling voor opslagreplicatie bewerken:
 
      ![De opslagconfiguratie voor nieuwe kluis instellen](./media/backup-try-azure-backup-in-10-mins/recovery-services-vault-backup-configuration.png)
 
- 
-
 ## <a name="software-package"></a>Software pakket
+
 ### <a name="downloading-the-software-package"></a>Het software pakket downloaden
+
 1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 2. Als er al een Recovery Services kluis is geopend, gaat u verder met stap 3. Als er geen Recovery Services kluis is geopend, maar wel in de Azure Portal, klikt u in het hoofd menu op **Bladeren**.
 
@@ -140,6 +145,7 @@ De instelling voor opslagreplicatie bewerken:
     Omdat de download grootte van alle bestanden samen > 3G is, kan het tot 60 minuten duren voordat de down load is voltooid.
 
 ### <a name="extracting-the-software-package"></a>Het software pakket extra heren
+
 Nadat u alle bestanden hebt gedownload, klikt u op **MicrosoftAzureBackupInstaller. exe**. Hiermee start u de **installatie wizard van Microsoft Azure backup** om de installatie bestanden uit te pakken op een locatie die door u is opgegeven. Ga door met de wizard en klik op de knop **extra heren** om het uitpak proces te starten.
 
 > [!WARNING]
@@ -152,6 +158,7 @@ Nadat u alle bestanden hebt gedownload, klikt u op **MicrosoftAzureBackupInstall
 Zodra het uitpakken is voltooid, schakelt u het selectie vakje in om de vers geëxtraheerde *Setup. exe* te starten om te beginnen met de installatie van Microsoft Azure backup server en klikt u op de knop **volt ooien** .
 
 ### <a name="installing-the-software-package"></a>Het software pakket installeren
+
 1. Klik op **Microsoft Azure backup** om de installatie wizard te starten.
 
     ![Wizard Microsoft Azure Backup-installatie](./media/backup-azure-microsoft-azure-backup/launch-screen2.png)
@@ -214,6 +221,7 @@ Zodra het uitpakken is voltooid, schakelt u het selectie vakje in om de vers ge�
 Wanneer de installatie stap is voltooid, worden ook de bureaublad pictogrammen van het product gemaakt. Dubbel klik op het pictogram om het product te starten.
 
 ### <a name="add-backup-storage"></a>Back-upopslag toevoegen
+
 De eerste back-upkopie wordt opgeslagen op de opslag die is gekoppeld aan de Azure Backup Server machine. Zie [opslag groepen en schijf opslag configureren](https://docs.microsoft.com/azure/backup/backup-mabs-add-storage)voor meer informatie over het toevoegen van schijven.
 
 > [!NOTE]
@@ -256,7 +264,7 @@ Hier volgen de stappen als u MABS moet verplaatsen naar een nieuwe server, terwi
 3. Stel de computer account in Active Directory opnieuw in.
 4. Installeer Server 2016 op de nieuwe computer en geef deze dezelfde computer naam als de oorspronkelijke Azure Backup Server.
 5. Lid worden van het domein
-6. Azure Backup Server v2 of nieuwer installeren (Verplaats MABS-opslag groeps schijven van een oude server en importeren)
+6. Azure Backup Server v3 of later installeren (Verplaats MABS-opslag pool schijven van een oude server en importeren)
 7. Herstel de DPMDB die u in stap 1 hebt gemaakt.
 8. Koppel de opslag van de oorspronkelijke back-upserver aan de nieuwe server.
 9. De DPMDB van SQL herstellen
@@ -268,7 +276,8 @@ Hier volgen de stappen als u MABS moet verplaatsen naar een nieuwe server, terwi
 
     Als u nieuwe schijven aan de DPM-opslag groep hebt toegevoegd in plaats van de oude te verplaatsen, voert u DPMSYNC-Reallocatereplica uit uit.
 
-## <a name="network-connectivity"></a>Netwerk verbinding
+## <a name="network-connectivity"></a>Netwerkverbinding
+
 Azure Backup Server moet verbinding hebben met de Azure Backup-service om het product goed te laten werken. Als u wilt controleren of de computer de verbinding met Azure heeft, ```Get-DPMCloudConnection``` gebruikt u de cmdlet in de Azure Backup Server Power shell-console. Als de uitvoer van de cmdlet TRUE is, is er verbinding, maar is er geen verbinding.
 
 Op hetzelfde moment moet het Azure-abonnement de status in orde hebben. Als u de status van uw abonnement wilt weten en wilt beheren, meldt u zich aan bij de [Portal voor abonnementen](https://account.windowsazure.com/Subscriptions).
@@ -285,6 +294,7 @@ Zodra u de status van de Azure-verbinding en het Azure-abonnement kent, kunt u d
 | Verbroken Connectiviteit > 15 dagen |Ongedaan gemaakt |Gestopt |Gestopt |Gestopt en Azure-herstel punten zijn verwijderd |Gestopt |
 
 ### <a name="recovering-from-loss-of-connectivity"></a>Herstellen van connectiviteits verlies
+
 Als u een firewall of proxy hebt die toegang tot Azure blokkeert, moet u de volgende domein adressen toestaan in het profiel van de firewall/proxy:
 
 * `http://www.msftncsi.com/ncsi.txt`
@@ -296,12 +306,14 @@ Als u een firewall of proxy hebt die toegang tot Azure blokkeert, moet u de volg
 Zodra de verbinding met Azure is hersteld op de Azure Backup Server machine, worden de bewerkingen die kunnen worden uitgevoerd, bepaald door de status van het Azure-abonnement. De bovenstaande tabel bevat details over de bewerkingen die zijn toegestaan zodra de computer is verbonden.
 
 ### <a name="handling-subscription-states"></a>Abonnements statussen verwerken
+
 Het is mogelijk om een Azure-abonnement te maken van een *verlopen* of oningerichte status naar de *actieve* status. Dit heeft echter enkele gevolgen voor het product gedrag terwijl de status niet *actief*is:
 
 * Een ongedaan gemaakt abonnement verliest de functionaliteit voor de periode dat de inrichting ongedaan is gemaakt. Bij het inschakelen van actief wordt de product functionaliteit van Backup/Restore opnieuw *geactiveerd*. De back-upgegevens op de lokale schijf kunnen ook worden opgehaald als deze zijn opgeslagen met een voldoende lange Bewaar periode. De back-upgegevens in azure zijn echter IRRETRIEVABLY kwijt wanneer het abonnement de status unprovision heeft ingevoerd.
 * Een *verlopen* abonnement verliest alleen de functionaliteit als deze weer *actief* is geweest. Back-ups die zijn gepland voor de periode dat het abonnement is *verlopen* , worden niet uitgevoerd.
 
 ## <a name="upgrade-mabs"></a>MABS bijwerken
+
 Gebruik de volgende procedures om MABS bij te werken.
 
 ### <a name="upgrade-from-mabs-v2-to-v3"></a>Upgrade van MABS v2 naar v3
@@ -332,15 +344,13 @@ Gebruik de volgende stappen om MABS bij te werken:
 4. Back-ups moeten worden voortgezet zonder dat u uw productie servers opnieuw hoeft op te starten.
 5. U kunt nu beginnen met het beveiligen van uw gegevens. Als u een upgrade uitvoert naar Modern Backup Storage, kunt u tijdens het beveiligen ook de volumes kiezen waarvoor u de back-ups wilt opslaan en op basis van de ingerichte ruimte controleren. [Meer informatie](backup-mabs-add-storage.md).
 
-> [!NOTE]
->
-> Als u een upgrade uitvoert van MABS v1 naar v2, moet u ervoor zorgen dat uw besturings systeem Windows Server 2016 of Windows Server 2012 R2 is. Als u wilt profiteren van nieuwe functies zoals System Center 2016 Data Protection Manager Modern Backup Storage, moet u back-upserver v2 installeren op Windows Server 2016. Lees over de [vereiste installatie vereisten](https://docs.microsoft.com/system-center/dpm/install-dpm?view=sc-dpm-1807#setup-prerequisites) voor MABS voordat u een upgrade uitvoert naar of een back-up van de server v2 installeert.
-
 ## <a name="troubleshooting"></a>Problemen oplossen
+
 Als Microsoft Azure Backup Server mislukt met fouten tijdens de installatie fase (of een back-up of herstel), raadpleegt u dit [document met fout codes](https://support.microsoft.com/kb/3041338) voor meer informatie.
 U kunt ook verwijzen naar [Azure backup gerelateerde Veelgestelde vragen](backup-azure-backup-faq.md)
 
 ## <a name="next-steps"></a>Volgende stappen
+
 U kunt gedetailleerde informatie krijgen over het [voorbereiden van uw omgeving voor dpm](https://technet.microsoft.com/library/hh758176.aspx) op de micro soft TechNet-site. Het bevat ook informatie over de ondersteunde configuraties waarvoor Azure Backup Server kunnen worden geïmplementeerd en gebruikt. U kunt een reeks [Power shell](https://docs.microsoft.com/powershell/module/dataprotectionmanager/?view=systemcenter-ps-2016) -cmdlets gebruiken voor het uitvoeren van verschillende bewerkingen.
 
 U kunt deze artikelen gebruiken om een beter inzicht te krijgen in de beveiliging van werk belasting met behulp van Microsoft Azure Backup-Server.

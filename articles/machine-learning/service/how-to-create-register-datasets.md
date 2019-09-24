@@ -11,20 +11,20 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 08/22/2019
-ms.openlocfilehash: d2b9e53fc6c58f0477e252c751e25a99bdbfba42
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 7a6a2c35360f59c8c2e3d0a75e646ae76c0c9de2
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71200103"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71218295"
 ---
 # <a name="create-and-access-datasets-preview-in-azure-machine-learning"></a>Gegevens sets (preview) maken en openen in Azure Machine Learning
 
 In dit artikel leert u hoe u Azure Machine Learning gegevens sets (preview) maakt en hoe u toegang krijgt tot gegevens uit lokale of externe experimenten.
 
-Met Azure Machine Learning gegevens sets kunt u het volgende doen: 
+Met Azure Machine Learning gegevens sets kunt u het volgende doen:
 
-* **Bewaar één kopie van de gegevens in uw opslag** waarnaar wordt verwezen door gegevens sets. 
+* **Bewaar één kopie van de gegevens in uw opslag** waarnaar wordt verwezen door gegevens sets.
 
 * **Eenvoudig toegang krijgen tot gegevens tijdens model training** zonder dat u zich zorgen hoeft te maken over verbindings reeksen of gegevens paden.
 
@@ -45,7 +45,7 @@ Als u gegevens sets wilt maken en gebruiken, hebt u het volgende nodig:
 
 ## <a name="dataset-types"></a>Typen gegevensset
 
-Gegevens sets worden onderverdeeld in twee typen, op basis van hoe gebruikers ze in de training gebruiken. 
+Gegevens sets worden onderverdeeld in twee typen, op basis van hoe gebruikers ze in de training gebruiken.
 
 * [TabularDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) vertegenwoordigt gegevens in tabel vorm door het bestand of de lijst met bestanden te parseren. Dit biedt u de mogelijkheid om de gegevens te realiseren in een Panda of Spark data frame. U `TabularDataset` kunt een object maken op basis van CSV-, tsv-, Parquet-bestanden, SQL-query resultaten, enzovoort. Raadpleeg onze [documentatie](https://aka.ms/tabulardataset-api-reference)voor een volledige lijst.
 
@@ -53,7 +53,7 @@ Gegevens sets worden onderverdeeld in twee typen, op basis van hoe gebruikers ze
 
 Meer informatie over aanstaande API-wijzigingen vindt u [hier](https://aka.ms/tabular-dataset).
 
-## <a name="create-datasets"></a>Gegevenssets maken 
+## <a name="create-datasets"></a>Gegevenssets maken
 
 Door een gegevensset te maken, maakt u een verwijzing naar de locatie van de gegevens bron, samen met een kopie van de meta gegevens ervan. De gegevens blijven op de bestaande locatie, waardoor er geen extra opslag kosten in rekening worden gebracht.
 
@@ -81,9 +81,9 @@ datastore = Datastore.get(workspace, datastore_name)
 
 ### <a name="create-tabulardatasets"></a>TabularDatasets maken
 
-TabularDatasets kunnen worden gemaakt via de SDK of via de werk ruimte landings pagina (preview). Een tijds tempel kan worden opgegeven vanuit een kolom in de gegevens of de patroon gegevens van het pad worden opgeslagen in om een tijds Erie-eigenschappen in te scha kelen, waarmee eenvoudig en efficiënt filteren op tijd mogelijk is. 
+TabularDatasets kunnen worden gemaakt via de SDK of via de werk ruimte landings pagina (preview). Een tijds tempel kan worden opgegeven vanuit een kolom in de gegevens of de patroon gegevens van het pad worden opgeslagen in om een tijds Erie-eigenschappen in te scha kelen, waarmee eenvoudig en efficiënt filteren op tijd mogelijk is.
 
-#### <a name="using-the-sdk"></a>De SDK gebruiken 
+#### <a name="using-the-sdk"></a>De SDK gebruiken
 
 Gebruik de [`from_delimited_files()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?view=azure-ml-py#from-delimited-files-path--validate-true--include-path-false--infer-column-types-true--set-column-types-none--separator------header--promoteheadersbehavior-all-files-have-same-headers--3---partition-format-none-) methode voor `TabularDatasetFactory` de klasse om bestanden te lezen in de CSV-of TSV-indeling en maak een niet-geregistreerde TabularDataset. Als u leest uit meerdere bestanden, worden de resultaten samengevoegd in één tabel weergave.
 
@@ -120,7 +120,7 @@ from azureml.core import Dataset, Datastore
 sql_datastore = Datastore.get(workspace, 'mssql')
 sql_ds = Dataset.Tabular.from_sql_query((sql_datastore, 'SELECT * FROM my_table'))
 ```
-Gebruik de [`with_timestamp_columns()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#with-timestamp-columns-fine-grain-timestamp--coarse-grain-timestamp-none--validate-false-) methode voor `TabularDataset` de klasse om eenvoudig en efficiënt filteren op tijd in te scha kelen. [Hier](http://aka.ms/azureml-tsd-notebook)vindt u meer voor beelden en informatie. 
+Gebruik de [`with_timestamp_columns()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#with-timestamp-columns-fine-grain-timestamp--coarse-grain-timestamp-none--validate-false-) methode voor `TabularDataset` de klasse om eenvoudig en efficiënt filteren op tijd in te scha kelen. [Hier](https://aka.ms/azureml-tsd-notebook)vindt u meer voor beelden en informatie.
 
 ```Python
 # create a TabularDataset with timeseries trait
@@ -132,20 +132,20 @@ dataset = Dataset.Tabular.from_parquet_files(path=datastore_path, partition_form
 # set coarse timestamp to the virtual column created, and fine grain timestamp from a column in the data
 dataset = dataset.with_timestamp_columns(fine_grain_timestamp='datetime', coarse_grain_timestamp='coarse_time')
 
-# filter with timeseries trait specific methods 
+# filter with timeseries trait specific methods
 data_slice = dataset.time_before(datetime(2019, 1, 1))
 data_slice = dataset.time_after(datetime(2019, 1, 1))
-data_slice = dataset.time_between(datetime(2019, 1, 1), datetime(2019, 2, 1)) 
-data_slice = dataset.time_recent(timedelta(weeks=1, days=1))                  
+data_slice = dataset.time_between(datetime(2019, 1, 1), datetime(2019, 2, 1))
+data_slice = dataset.time_recent(timedelta(weeks=1, days=1))
 ```
 
-#### <a name="using-the-workspace-landing-page"></a>De landings pagina van de werk ruimte gebruiken 
+#### <a name="using-the-workspace-landing-page"></a>De landings pagina van de werk ruimte gebruiken
 
 Meld u aan bij de pagina voor het land van de [werk ruimte](https://ml.azure.com) om een gegevensset te maken via de webervaring. Op dit moment ondersteunt de landings pagina van de werk ruimte alleen het maken van TabularDatasets.
 
-De volgende animatie laat zien hoe u een gegevensset maakt op de landings pagina van de werk ruimte. 
+De volgende animatie laat zien hoe u een gegevensset maakt op de landings pagina van de werk ruimte.
 
-Selecteer eerst **gegevens sets** in het gedeelte **assets** van het linkerdeel venster. Selecteer vervolgens **+ gegevensset maken** om de bron van uw gegevensset te kiezen. Dit kan een van de volgende zijn: lokale bestanden, gegevens opslag of open bare Web-url's. De **instellingen en het voor beeld** en de **schema** formulieren worden op intelligente wijze gevuld op basis van het bestands type. Selecteer **volgende** om deze te bekijken of uw gegevensset verder te configureren voordat u deze hebt gemaakt. Selecteer **gereed** om het maken van de gegevensset te volt ooien. 
+Selecteer eerst **gegevens sets** in het gedeelte **assets** van het linkerdeel venster. Selecteer vervolgens **+ gegevensset maken** om de bron van uw gegevensset te kiezen. Dit kan een van de volgende zijn: lokale bestanden, gegevens opslag of open bare Web-url's. De **instellingen en het voor beeld** en de **schema** formulieren worden op intelligente wijze gevuld op basis van het bestands type. Selecteer **volgende** om deze te bekijken of uw gegevensset verder te configureren voordat u deze hebt gemaakt. Selecteer **gereed** om het maken van de gegevensset te volt ooien.
 
 ![Een gegevensset maken met de gebruikers interface](media/how-to-create-register-datasets/create-dataset-ui.gif)
 
@@ -166,7 +166,7 @@ animal_ds = Dataset.File.from_files(path=datastore_paths)
 web_paths = [
             'https://azureopendatastorage.blob.core.windows.net/mnist/train-images-idx3-ubyte.gz',
             'https://azureopendatastorage.blob.core.windows.net/mnist/train-labels-idx1-ubyte.gz'
-           ]          
+           ]
 mnist_ds = Dataset.File.from_files(path=web_paths)
 ```
 
@@ -183,11 +183,11 @@ titanic_ds = titanic_ds.register(workspace = workspace,
 ```
 
 >[!Note]
-> Gegevens sets die zijn gemaakt via de werk ruimte landings pagina worden automatisch geregistreerd bij de werk ruimte. 
+> Gegevens sets die zijn gemaakt via de werk ruimte landings pagina worden automatisch geregistreerd bij de werk ruimte.
 
 ## <a name="version-datasets"></a>Versie gegevens sets
 
-U kunt een nieuwe gegevensset onder dezelfde naam registreren door een nieuwe versie te maken. De gegevensset-versie is een manier om de status van uw gegevens te bookmarkren, zodat u een specifieke versie van de gegevensset kunt Toep assen voor experimenten of toekomstige reproductie. Typische scenario's om versie beheer te overwegen: 
+U kunt een nieuwe gegevensset onder dezelfde naam registreren door een nieuwe versie te maken. De gegevensset-versie is een manier om de status van uw gegevens te bookmarkren, zodat u een specifieke versie van de gegevensset kunt Toep assen voor experimenten of toekomstige reproductie. Typische scenario's om versie beheer te overwegen:
 * Wanneer nieuwe gegevens beschikbaar zijn voor retraining.
 * Wanneer u verschillende benaderingen voor gegevens voorbereiding of functie techniek toepast.
 
@@ -196,7 +196,7 @@ U kunt een nieuwe gegevensset onder dezelfde naam registreren door een nieuwe ve
 web_paths = [
             'https://dprepdata.blob.core.windows.net/demo/Titanic.csv',
             'https://dprepdata.blob.core.windows.net/demo/Titanic2.csv'
-           ]          
+           ]
 titanic_ds = Dataset.Tabular.from_delimited_files(path=web_paths)
 
 # create a new version of titanic_ds

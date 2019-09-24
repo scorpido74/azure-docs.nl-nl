@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 58e3254d499e013dc686bf6b7d53f919a457c901
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7a863c8fe81a08f00385cb267bf360994918fe82
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60414054"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212117"
 ---
 # <a name="quickstart-self-service-password-reset"></a>Snelstart: Self-service voor wachtwoord opnieuw instellen
 
@@ -31,7 +31,7 @@ In deze snelstart wordt het configureren van de selfservice voor wachtwoordherst
 
 ## <a name="enable-self-service-password-reset"></a>Selfservice voor wachtwoordherstel inschakelen
 
-> [!VIDEO https://www.youtube.com/embed/Pa0eyqjEjvQ]
+[Dit proces als een video op YouTube weer geven](https://youtu.be/Pa0eyqjEjvQ)
 
 1. Selecteer vanuit uw bestaande Azure AD-tenant in **Azure Portal** onder **Azure Active Directory** de optie **Wachtwoord opnieuw instellen**.
 
@@ -43,10 +43,10 @@ In deze snelstart wordt het configureren van de selfservice voor wachtwoordherst
    * Het aantal methoden dat is vereist om het wachtwoord opnieuw in te stellen: **1**
    * Methoden voor gebruikers:
       * **E-mail**
-      * **Mobiele app-code (preview)**
+      * **Mobiele app-code (preview-versie)**
    * Klik op **Opslaan**.
 
-     ![Verificatiemethoden kiezen voor SSPR][Authentication]
+     ![Verificatie methoden kiezen voor SSPR][Authentication]
 
 4. Op de pagina **Registratie** kiest u het volgende:
    * Vereisen dat gebruikers zich bij aanmelding registreren: **Ja**

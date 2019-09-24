@@ -4,22 +4,23 @@ ms.service: cosmos-db
 ms.topic: include
 ms.date: 03/22/2019
 ms.author: sngun
-ms.openlocfilehash: b940d7308648a3a55ed031d7d57542f3b31e9f27
-ms.sourcegitcommit: 0ebc62257be0ab52f524235f8d8ef3353fdaf89e
+ms.custom: seo-java-september2019
+ms.openlocfilehash: a8162afadb5a7d327804d7202b29ca0dccf275c4
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67176579"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71210196"
 ---
-De Azure-portal controleert uw doorvoer van Cosmos DB-account, opslag, beschikbaarheid, latentie en consistentie. Grafieken voor metrische gegevens die zijn gekoppeld aan een [Azure Cosmos DB Service Level Agreement (SLA)](https://azure.microsoft.com/support/legal/sla/cosmos-db/) toont de SLA-waarde in vergelijking met de werkelijke prestaties. Dit pakket van metrische gegevens maakt bewaking van uw transparante serviceovereenkomsten.
+De Azure Portal bewaakt de door Voer van uw Cosmos DB-account, opslag, Beschik baarheid, latentie en consistentie. Grafieken voor metrische gegevens die zijn gekoppeld aan een [Azure Cosmos DB Service Level Agreement (Sla)](https://azure.microsoft.com/support/legal/sla/cosmos-db/) tonen de sla-waarde vergeleken met de werkelijke prestaties. Met deze reeks metrische gegevens kunt u uw Sla's transparant bewaken.
 
-Om te controleren metrische gegevens en sla's: 
+Metrische gegevens en Sla's controleren: 
 
-1. Selecteer **metrische gegevens** in het navigatiemenu uw Cosmos DB-account.
+1. Selecteer **metrische gegevens** in het navigatie menu van uw Cosmos DB-account.
    
-2. Selecteer een tabblad zoals **latentie**, en selecteert u een tijdsbestek aan de rechterkant. Vergelijk de **werkelijke** en **SLA** regels op de grafieken.
+2. Selecteer een tabblad, zoals **latentie**, en selecteer aan de rechter kant een tijds bestek. Vergelijk de **werkelijke** en **Sla** -regels in de grafieken.
    
-   ![Azure Cosmos DB-pakket met metrische gegevens](./media/cosmos-db-tutorial-review-slas/metrics-suite.png)
+   ![Azure Cosmos DB-pakket met metrische gegevens](./media/cosmos-db-tutorial-review-slas/azure-cosmosdb-metrics-suite.png)
    
-3. Bekijk de metrische gegevens over de andere tabbladen. 
+3. Controleer de metrische gegevens op de andere tabbladen. 
 

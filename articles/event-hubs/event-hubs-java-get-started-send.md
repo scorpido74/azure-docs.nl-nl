@@ -10,12 +10,12 @@ ms.topic: article
 ms.custom: seodec18, seo-java-august2019, seo-java-september2019
 ms.date: 04/15/2019
 ms.author: shvija
-ms.openlocfilehash: a24263e80f50d880be269238441545785e2f51e8
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: 054289de296488036dd0855d228d272fdea18baf
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70967617"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71219420"
 ---
 # <a name="use-java-to-send-events-to-or-receive-events-from-azure-event-hubs"></a>Java gebruiken om gebeurtenissen te verzenden naar of ontvangen van Azure Event Hubs
 
@@ -181,11 +181,11 @@ Als u EventProcessorHost wilt gebruiken, moet u beschikken over een [Azure Stora
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com)en selecteer **een resource maken** aan de linkerkant van het scherm.
 2. Selecteer **opslag**en selecteer vervolgens **opslag account**. In de **storage-account maken** venster, typ een naam voor het opslagaccount. Voltooi de rest van de velden, selecteer de gewenste regio en selecteer vervolgens **maken**.
    
-    ![Een opslagaccount maken](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-storage2.png)
+    ![Een opslag account maken in Azure Portal](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-azure-storage-account.png)
 
 3. Selecteer het zojuist gemaakte opslag account en selecteer vervolgens **toegangs sleutels**:
    
-    ![Toegangssleutel ophalen](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-storage3.png)
+    ![Uw toegangs sleutels in Azure Portal ophalen](./media/event-hubs-dotnet-framework-getstarted-receive-eph/select-azure-storage-access-keys.png)
 
     Kopieer de key1-waarde naar een tijdelijke locatie. U gaat deze verderop in de zelfstudie gebruiken.
 

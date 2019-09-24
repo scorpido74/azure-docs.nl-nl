@@ -1,29 +1,29 @@
 ---
 title: 'Account migratie van Cloud Partner-portal naar partner Center: commerciële Marketplace voor Azure'
 description: Uw account migreren van CPP naar partner Center. -Commerciële Marketplace voor Azure
-author: qianw211
+author: ChJenk
 manager: evansma
 ms.author: v-qiwe
 ms.service: marketplace
 ms.topic: conceptual
-ms.date: 09/09/2019
-ms.openlocfilehash: 13cbd799a1ffb877ace2231bfb854764edac9c90
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.date: 09/23/2019
+ms.openlocfilehash: 6887430cad06ad33434f0f01e741979014b4558b
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71147127"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71219569"
 ---
 # <a name="account-migration-from-cloud-partner-portal-to-partner-center"></a>Account migratie van Cloud Partner-portal naar het partner centrum
 
-Als u een bestaand CPP-account hebt, moeten uw account instellingen worden gemigreerd naar het partner centrum.
+Als u een bestaand Cloud Partner-portal-account (CPP) hebt, moeten uw account instellingen worden gemigreerd naar het partner centrum.
 
 ## <a name="account-migration-process"></a>Account migratie proces
 
 Als u een gebruiker bent met de rol owner in CPP voor een bepaald account, wordt een gele banner weer gegeven op de Publisher-profiel pagina. U kunt een van de volgende twee gevallen horen:
 
 - Uw account is al gemigreerd en u bent klaar om uw account instellingen in het partner centrum te beheren.
-- U moet een aantal verdere acties ondernemen om uw account migratie naar het partner centrum te volt ooien.
+- Uw account is niet gemigreerd naar het partner centrum en u moet verdere actie ondernemen.
 
 ### <a name="your-account-has-been-migrated-to-partner-center"></a>Uw account is gemigreerd naar het partner centrum
 
@@ -31,51 +31,52 @@ Voor alle accounts die de migratie van het CPP naar partner Center hebben voltoo
 
 ### <a name="you-have-not-yet-migrated-your-account-to-partner-center"></a>U hebt uw account nog niet gemigreerd naar het partner centrum
 
-Klik op de banner om uw account migratie proces te initiëren. U wordt verwacht de volgende items in te voeren:
+Klik op de banner om uw account migratie proces te starten. U wordt verwacht de volgende items in te voeren:
 
 1. E-mail adres van werk: <br> <br> In de meeste gevallen meldt u zich aan met het e-mail adres dat u gebruikt om u aan te melden bij CPP. In bepaalde gevallen moet een ander e-mail adres worden gebruikt:
 
-    * Microsoft-account: Als het CPP-account een Microsoft-account is, moet u een geldig werk-e-mail adres invoeren dat is gekoppeld aan de Tenant, waarvoor de MPN-ID is geregistreerd.
+    * Microsoft-account: Als het CPP-account een Microsoft-account is, voert u een geldige werk-e-mail in die is gekoppeld aan de Tenant waarvoor de Microsoft Partner Network-ID (MPN) is geregistreerd. Zie [registreren voor Microsoft Partner Network programma](#sign-up-for-microsoft-partner-network-program)voor meer informatie.
 
-    * Niet-overeenkomende tenants: Als uw zakelijke e-mail adres niet hoort bij de Tenant die is gekoppeld aan de Microsoft Partner Network-ID die is opgegeven in uw CPP-account, wordt er een fout weer gegeven. Als u deze fout wilt verplaatsen, voert u een e-mail adres in dat is gekoppeld aan de Tenant. Er wordt een fout bericht weer gegeven met de naam van de Tenant.
+    * Niet-overeenkomende tenants: Als uw zakelijke e-mail adres niet hoort bij de Tenant die is gekoppeld aan de Microsoft Partner Network-ID die is opgegeven in uw CPP-account, wordt een fout bericht weer gegeven. Als u deze fout wilt verplaatsen, voert u een e-mail adres in dat is gekoppeld aan de Tenant. Er wordt een fout bericht weer gegeven met de naam van de Tenant.
 
 2. Registreren voor Microsoft Partner Network programma
 
-    In het geval dat uw CPP-account geen Microsoft Partner Network-ID heeft of een certificaat heeft dat ongeldig is, moet u zich registreren voor het Microsoft Partner Network-programma als onderdeel van het activerings proces.
+    Als uw CPP-account geen Microsoft Partner Network-ID heeft of een certificaat heeft dat ongeldig is, moet u zich registreren voor het Microsoft Partner Network-programma als onderdeel van het activerings proces.
 
 ## <a name="sign-up-for-microsoft-partner-network-program"></a>Registreren voor Microsoft Partner Network programma
 
-Bedrijven die met micro soft willen samen werken, moeten lid zijn van de Microsoft Partner Network (MPN) en een MPN-ID krijgen. Als u al lid bent van de Microsoft Partner Network en u een MPN-ID hebt, moet u deze hand matig laten staan, omdat u deze moet invoeren tijdens het account activerings proces.  
+Bedrijven die met micro soft willen samen werken, moeten lid zijn van de Microsoft Partner Network (MPN) en een MPN-ID krijgen. Als u al lid bent van de Microsoft Partner Network en een MPN-ID hebt, moet u de informatie op de gewenste manier gebruiken tijdens het account activerings proces.  
 
-Als u nog geen lid bent van de Microsoft Partner Network, kunt u [nu deel nemen](https://signup.microsoft.com/signup?sku=StoreForBusinessIW&origin=partnerdashboard&culture=en-us&ru=https://partner.microsoft.com/dashboard/account/v3/xpu/onboard?ru=/en-us/dashboard/account/v3/enrollment/companyprofile/basicpartnernetwork/new) om een MPN-id op te halen. Zorg ervoor dat u de MPN-ID noteert, omdat u deze moet invoeren tijdens het account activerings proces.
+Als u geen lid bent van de Microsoft Partner Network, kunt u [hier deel nemen](https://signup.microsoft.com/signup?sku=StoreForBusinessIW&origin=partnerdashboard&culture=en-us&ru=https://partner.microsoft.com/dashboard/account/v3/xpu/onboard?ru=/en-us/dashboard/account/v3/enrollment/companyprofile/basicpartnernetwork/new) om een MPN-id op te halen. Noteer uw MPN-ID, zoals u deze moet invoeren tijdens het account activerings proces.
 
-Zie voor meer informatie over de Microsoft Partner Network [lid worden van de Microsoft Partner Network](https://partner.microsoft.com/en-US/membership) op de website van de partner. Zie de [ISV resource hub](https://partner.microsoft.com/isv-resource-hub)voor meer informatie over het koppelen van de Microsoft Partner Network bene fits isv's.  
+Zie voor meer informatie over de Microsoft Partner Network [lid worden van de Microsoft Partner Network](https://partner.microsoft.com/en-US/membership) op de website van de partner. Voor meer informatie over de voor delen van onafhankelijke software leveranciers in de Microsoft Partner Network, raadpleegt u de [ISV resource hub](https://partner.microsoft.com/isv-resource-hub).  
 
-## <a name="move-dynamics-365-based-solutions-to-partner-center"></a>Op Dynamics 365 gebaseerde oplossingen verplaatsen naar het partner centrum
+## <a name="move-dynamics-365-and-powerapps-offers-to-partner-center"></a>Verplaats Dynamics 365-en PowerApps-aanbiedingen naar het partner centrum
 
-Als u Dynamics 365 hebt gemaakt voor klant betrokkenheid of Dynamics 365 voor financiering en operationele oplossingen in de ene commerciële partner GTM-Portal, **moeten deze oplossingen nu worden beheerd in het partner centrum**.
+Voor het stroom lijnen van accounts en aanbiedingen voor Dynamics 365 Customer engagement, PowerApps en Dynamics 365-bewerkingen zijn aanbiedingen verplaatst naar het [partner centrum](https://partner.microsoft.com/). De verplaatsing zorgt ervoor dat dezelfde inhoud beschikbaar is voor zowel open bare als verkopers catalogi.
 
-**Als u uw oplossingen niet op 31 augustus 2019 hebt verplaatst**, voert u de onderstaande stappen zo snel mogelijk uit. Totdat u dit doet:
-
-- Isv's hebben geen toegang tot marketing voordelen
-- De prioriteit van gezamenlijk verkopen gaat verloren
-- Die vereisen dat het insluiten van Clouds na 15 oktober 2019 niet meer wordt nageleefd
+Volg de onderstaande instructies voor specifieke informatie over wat u moet doen op **15 oktober 2019** voor uw Dynamics 365-klant afspraken, PowerApps en Dynamics 365-bewerkingen.
 
 > [!NOTE]
-> Als uw MPN-lidmaatschaps account oorspronkelijk is gemaakt in het Partner Membership Center (PMC), meldt u zich aan bij het [partner centrum](https://partner.microsoft.com/pcv/accountsettings/connectedpartnerprofile) om te bevestigen dat uw account is gemigreerd voordat u de onderstaande stappen hebt voltooid. Als er een profiel scherm met uw MPN-ID wordt weer gegeven, bent u klaar om door te gaan. Als dat niet het geval is, moet u uw account migratie starten door de prompts in het [Partner Membership Center](https://partners.microsoft.com/partnerprogram/Welcome.aspx)te volgen. Als u hulp nodig hebt, gaat u naar [ondersteuning](https://partner.microsoft.com/support?issueid=100-0077).
+> Dit is niet van toepassing op Dynamics 365 Business Central-aanbiedingen.  
 
-1. Ga naar de [overzichts pagina voor commerciële Marketplace in partner centrum](https://partner.microsoft.com/dashboard/commercial-marketplace/overview). Als u ' commerciële Marketplace ' ziet in het navigatie deel venster aan de linkerkant, bent u Inge schreven en gaat u verder met de volgende stap. Als dat niet het geval is, moet u zich nu [inschrijven in de commerciële Marketplace](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/azureisv) .
+1. Als uw MPN-lidmaatschaps account oorspronkelijk is gemaakt in het Partner Membership Center (PMC), meldt u zich aan bij het [partner centrum](https://partner.microsoft.com/pcv/accountsettings/connectedpartnerprofile) om te bevestigen dat uw account is gemigreerd. Als er een profiel scherm met uw MPN-ID wordt weer gegeven, bent u klaar om door te gaan. Als dat niet het geval is, moet u uw account migratie starten door de prompts in het [Partner Membership Center](https://partners.microsoft.com/partnerprogram/Welcome.aspx)te volgen. Als u hulp nodig hebt, gaat u naar [ondersteuning](https://partner.microsoft.com/support?issueid=100-0077).
+2. Ga naar de [overzichts pagina voor commerciële Marketplace in partner centrum](https://partner.microsoft.com/dashboard/commercial-marketplace/overview). Als u ' commerciële Marketplace ' ziet in het navigatie deel venster aan de linkerkant, bent u Inge schreven en gaat u verder met de volgende stap. Als dat niet het geval is, moet u zich nu [inschrijven in de commerciële Marketplace](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/azureisv) .
+3. Bevestig dat uw aanbiedingen zich in AppSource bevinden door te [zoeken naar uw aanbiedingen](https://appsource.microsoft.com/). Als uw aanbiedingen al AppSource zijn, gaat u verder met de volgende stap. Voor elke aanbieding die niet in AppSource is, maakt u een nieuwe aanbieding voor [dynamics 365-klanten](create-new-customer-engagement-offer.md) of een [nieuwe aanbieding voor Dynamics 365](create-new-operations-offer.md).
+4. Controleer op de [pagina overeenkomsten](https://partner.microsoft.com/dashboard/account/agreements)van het partner centrum of u de **Business Applications ISV-addendum**hebt bekeken en geaccepteerd.
+5. Controleer in de [account instellingen](https://partner.microsoft.com/dashboard/account/v3/accountsettings/billingprofile)van het partner centrum of uw facturerings gegevens zijn voltooid.
+6. Verzend elke nieuwe en bestaande aanbieding voor certificering en publicatie, zelfs als uw aanbiedingen eerder zijn gecertificeerd.
+    * Vul de informatie schermen in, met inbegrip van uw app voor certificering, en marketing gegevens. Selecteer **verzenden** (rechter bovenhoek van het scherm) op **15 oktober 2019**. Deze stappen moeten worden uitgevoerd om te voor komen dat dit van invloed is op de beschik baarheid van de aanbieding.
+    * Als u in aanmerking komt, kunt u een aanvraag indienen om deel te nemen aan de Premium-laag tijdens dit proces.
+    * Voor certificering of hercertificering moet uw app de nieuwste versie van het Business Applications-platform ondersteunen.
+    * Zodra uw app is goedgekeurd, ontvangt u een e-mail bericht om terug te keren naar de aanbieding en selecteert u Live maken zodat de aanbieding Live kan worden op Microsoft AppSource.
 
-2. Bevestig dat uw aanbiedingen zich in AppSource bevinden door te [zoeken naar uw aanbiedingen](https://appsource.microsoft.com/). Als uw aanbiedingen al AppSource zijn, gaat u verder met de volgende stap. Voor elke aanbieding die niet in AppSource is, maakt u een [nieuwe dynamics 365 voor klant engagement](create-new-customer-engagement-offer.md) of een [nieuwe aanbieding voor Dynamics 365 voor bewerkingen](create-new-operations-offer.md).
+## <a name="additional-resources"></a>Aanvullende bronnen
 
-3. Controleer uw inschrijving in het Business Applications ISV Connect-programma:
-   * Controleer op de pagina [overeenkomsten](https://partner.microsoft.com/dashboard/account/agreements) in partner centrum of u de **Business Applications ISV-addendum** hebt geaccepteerd om in het programma te registreren.
-   * Geef uw facturerings gegevens op de pagina [account instellingen](https://partner.microsoft.com/dashboard/account/v3/accountsettings/billingprofile) op.
+Neem lid van de wekelijkse [Dynamics ISV-Community](https://aka.ms/DynamicsISV-CommunityCall) voor ondersteuning en updates.
 
-4. Verzend elke nieuwe en bestaande aanbieding voor certificering, zelfs als uw aanbiedingen eerder zijn gecertificeerd. Als u in aanmerking komt, kunt u een aanvraag indienen om deel te nemen aan de Premium-laag tijdens dit proces. Als uw aanbieding eerder is gecertificeerd, **moet u de hercertificering van de app op 15 oktober 2019 volt ooien.** Voor certificering of nieuwe certificering moet uw app de nieuwste versie van het Business Applications-platform ondersteunen.
-
-5. Ga naar het [gtm-portal van de ene commerciële partner](https://msgtm.azurewebsites.net/en-US/Profile/SignIn) en voeg de URL van uw AppSource-vermelding toe in het gedeelte Marketplace-koppelingen. Als u hulp nodig hebt bij deze stap, kunt u cosell@microsoft.comons een e-mail sturen naar.
+Als u hulp nodig hebt bij het publiceren, certificeren of beheren van uw Marketplace-aanbiedingen, [verzendt u een ondersteunings ticket](https://aka.ms/MarketplacePublisherSupport).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Uw commerciële Marketplace-account beheren in het partner centrum](./manage-account.md) 
+- [Uw commerciële Marketplace-account beheren in het partner centrum](./manage-account.md)

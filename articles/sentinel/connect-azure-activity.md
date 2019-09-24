@@ -1,6 +1,6 @@
 ---
-title: Azure-activiteitsgegevens verbinden met Azure Sentinel Preview | Microsoft Docs
-description: Informatie over het verbinden met Azure-activiteitsgegevens Sentinel van Azure.
+title: Azure-activiteit gegevens verbinden met Azure Sentinel | Microsoft Docs
+description: Meer informatie over het verbinden van Azure-activiteit gegevens met Azure Sentinel.
 services: sentinel
 documentationcenter: na
 author: rkarlin
@@ -13,43 +13,41 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/07/2019
+ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: e329c8efd9b0e89f5f5eae41952cda9a45a95969
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 807a5ede3feee115b1a8dc51fe14966731fc7784
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67620655"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240775"
 ---
-# <a name="connect-data-from-azure-activity-log"></a>Verbinding maken met gegevens uit Azure-activiteitenlogboek
+# <a name="connect-data-from-azure-activity-log"></a>Gegevens verbinden vanuit Azure-activiteiten logboek
 
-> [!IMPORTANT]
-> Azure Sentinel is momenteel in openbare preview.
-> Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
 
-U kunt de logboeken van streamen [Azure-activiteitenlogboek](../azure-monitor/platform/activity-logs-overview.md) in Azure Sentinel met één klik. Het activiteitenlogboek is een abonnementlogboek biedt inzicht in de abonnement gebeurtenissen die hebben plaatsgevonden in Azure. Dit omvat een scala aan gegevens van operationele gegevens van de Azure Resource Manager-updates op Service Health-gebeurtenissen. Met het activiteitenlogboek, kunt u bepalen de ' wat, wie, en wanneer ' voor een schrijfbewerking (PUT, POST, DELETE) die wordt gemaakt op de resources in uw abonnement. U kunt ook de status van de bewerking en andere relevante eigenschappen begrijpen. Het activiteitenlogboek bevat geen lees (GET)-bewerkingen of bewerkingen voor resources die gebruikmaken van het klassieke / 'RDFE'-model. 
+
+U kunt Logboeken van [Azure-activiteiten logboek](../azure-monitor/platform/activity-logs-overview.md) streamen naar Azure Sentinel met één klik. Het activiteiten logboek is een abonnements logboek dat inzicht biedt in gebeurtenissen op abonnements niveau die zich hebben voorgedaan in Azure. Dit omvat een reeks gegevens, van Azure Resource Manager operationele gegevens naar updates op Service Health-gebeurtenissen. Met het activiteiten logboek kunt u de ' wat, wie en wanneer ' bepalen voor elke schrijf bewerking (PUT, POST, DELETE) die is gemaakt op de resources in uw abonnement. U kunt ook de status van de bewerking en andere relevante eigenschappen begrijpen. Het activiteiten logboek bevat geen lees bewerkingen (GET) of bewerkingen voor resources die gebruikmaken van het klassieke/' RDFE-model '. 
 
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Gebruiker met de globale beheerder of beheerder beveiligingsmachtigingen
+- Gebruiker met de machtigingen globale beheerder of beveiligings beheerder
 
 
-## <a name="connect-to-azure-activity-log"></a>Verbinding maken met Azure-activiteitenlogboek
+## <a name="connect-to-azure-activity-log"></a>Verbinding maken met Azure-activiteiten logboek
 
-1. Selecteer in Azure Sentinel, **gegevensconnectors** en klik vervolgens op de **Azure-activiteitenlogboek** tegel.
+1. Selecteer in azure Sentinel **Data connectors** en klik vervolgens op de tegel **Azure Activity Log** .
 
-2. Selecteer de abonnementen die u wilt streamen naar Azure Sentinel in het logboekvenster Azure-activiteit. 
+2. Selecteer in het deel venster activiteiten logboek van Azure de abonnementen die u wilt streamen naar Azure Sentinel. 
 
 3. Klik op**Verbinden**.
 
-4. Zoek voor het gebruik van de relevante schema in Log Analytics voor de activiteit Azure-waarschuwingen, **AzureActivity**.
+4. Als u het relevante schema in Log Analytics voor de Azure-activiteiten waarschuwingen wilt gebruiken, zoekt u naar **AzureActivity**.
 
 
  
 
 ## <a name="next-steps"></a>Volgende stappen
-In dit document hebt u geleerd hoe u verbinding maken met Azure-activiteitenlogboek Sentinel van Azure. Zie voor meer informatie over Azure Sentinel, de volgende artikelen:
-- Meer informatie over het [Krijg inzicht in uw gegevens en mogelijke bedreigingen](quickstart-get-visibility.md).
-- Aan de slag [detecteren van bedreigingen met Azure Sentinel](tutorial-detect-threats.md).
+In dit document hebt u geleerd hoe u Azure-activiteiten logboek verbindt met Azure Sentinel. Raadpleeg de volgende artikelen voor meer informatie over Azure Sentinel:
+- Meer informatie over hoe u [inzicht krijgt in uw gegevens en mogelijke bedreigingen](quickstart-get-visibility.md).
+- Ga aan de slag [met het detecteren van bedreigingen met Azure Sentinel](tutorial-detect-threats-built-in.md).

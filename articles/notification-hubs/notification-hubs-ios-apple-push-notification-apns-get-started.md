@@ -4,9 +4,9 @@ description: In deze zelfstudie leert u hoe u met Azure Notification Hubs pushme
 services: notification-hubs
 documentationcenter: ios
 keywords: pushmelding,pushmeldingen,ios-pushmeldingen
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.assetid: b7fcd916-8db8-41a6-ae88-fc02d57cb914
 ms.service: notification-hubs
 ms.workload: mobile
@@ -15,13 +15,15 @@ ms.devlang: objective-c
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 05/21/2019
-ms.author: jowargo
-ms.openlocfilehash: c5793d2388ddd7bb59d68f8f7fd7af773179ed41
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 05/21/2019
+ms.openlocfilehash: 0335f5c71f99e6c7a90ce920c25e6bb7e9b4a08f
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65988207"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71211944"
 ---
 # <a name="tutorial-push-notifications-to-ios-apps-using-azure-notification-hubs"></a>Zelfstudie: Pushmeldingen verzenden naar iOS met Azure Notification Hubs
 
@@ -80,42 +82,42 @@ Het voltooien van deze zelfstudie is een vereiste voor alle andere Notification 
 
     ![Xcode - pushmogelijkheden][12]
 
-5. De Azure Notification Hubs SDK-modules toevoegen.
+5. Voeg de Azure Notification Hubs SDK-modules toe.
 
-   U kunt de Azure Notification Hubs SDK integreren in uw app met behulp van [Cocoapods](https://cocoapods.org) of door handmatig de binaire bestanden toe te voegen aan uw project.
+   U kunt de Azure Notification Hubs SDK in uw app integreren met behulp van [Cocoapods](https://cocoapods.org) of door de binaire bestanden hand matig toe te voegen aan uw project.
 
    - Integratie via Cocoapods
 
-     Voeg de volgende afhankelijkheden aan uw `podfile` om op te nemen van Azure Notification Hubs SDK in uw app.
+     Voeg de volgende afhankelijkheden toe `podfile` aan uw app voor het toevoegen van Azure notification hubs SDK.
 
      ```ruby
      pod 'AzureNotificationHubs-iOS'
      ```
 
-     Voer `pod install` uw nieuw gedefinieerde pod installeert en opent de `.xcworkspace`.
+     Voer `pod install` uit om uw zojuist gedefinieerde pod te installeren en `.xcworkspace`open uw.
 
      > [!NOTE]
-     > Als er een foutbericht wordt weergegeven als ```[!] Unable to find a specification for `AzureNotificationHubs-iOS` ``` tijdens de uitvoering `pod install`, voert u `pod repo update` om de meest recente schillen ophalen uit de opslagplaats Cocoapods en voer vervolgens `pod install`.
+     > Als ```[!] Unable to find a specification for `AzureNotificationHubs-iOS` ``` er een fout optreedt tijdens de uitvoering `pod install`, voert `pod repo update` u uit om het nieuwste verschil te verkrijgen uit de Cocoapods-opslag `pod install`plaats en vervolgens uit te voeren.
 
    - Integratie via Carthage
 
-     Voeg de volgende afhankelijkheden aan uw `Cartfile` om op te nemen van Azure Notification Hubs SDK in uw app.
+     Voeg de volgende afhankelijkheden toe `Cartfile` aan uw app voor het toevoegen van Azure notification hubs SDK.
 
      ```ruby
      github "Azure/azure-notificationhubs-ios"
      ```
 
-     Vervolgens, bijwerken en build-afhankelijkheden:
+     Volgende, update en build-afhankelijkheden:
 
      ```shell
      $ carthage update
      ```
 
-     Zie voor meer informatie over het gebruik van Carthage de [Carthage GitHub-opslagplaats](https://github.com/Carthage/Carthage).
+     Zie de [Carthage github-opslag plaats](https://github.com/Carthage/Carthage)voor meer informatie over het gebruik van Carthage.
 
-   - Integratie met de binaire bestanden kopiëren naar uw project
+   - Integratie door de binaire bestanden te kopiëren naar uw project
 
-     1. Download de [Azure Notification Hubs SDK](https://github.com/Azure/azure-notificationhubs-ios/releases) framework geleverd als een zip-bestand en pak het uit.
+     1. Down load het [Azure notification hubs SDK](https://github.com/Azure/azure-notificationhubs-ios/releases) -Framework dat is opgenomen als een zip-bestand en pak het uit.
 
      2. Klik met de rechtermuisknop op uw project in Xcode en klik op de optie **Add Files to** (Bestanden toevoegen aan) om de map **WindowsAzureMessaging.framework** aan uw Xcode-project toe te voegen. Selecteer **Options** (Opties), zorg ervoor dat **Copy items if needed** (Copy items if needed) is geselecteerd en klik op **Add** (Toevoegen).
 
@@ -191,7 +193,7 @@ Het voltooien van deze zelfstudie is een vereiste voor alle andere Notification 
 
 ## <a name="send-test-push-notifications"></a>Testpushmeldingen verzenden
 
-U kunt ontvangst van meldingen in uw app testen met de optie *Test verzenden* in [Azure Portal]. Er wordt dan een pushmelding als test naar uw apparaat verzonden.
+U kunt ontvangst van meldingen in uw app testen met de optie *Test verzenden* in [Azure-portal]. Er wordt dan een pushmelding als test naar uw apparaat verzonden.
 
 ![Azure Portal - Test verzenden][30]
 
@@ -205,7 +207,7 @@ Als u pushmeldingen op iOS wilt testen, moet u de app implementeren op een fysie
 
     ![De registratie van pushmeldingen in iOS-apps testen][33]
 
-2. Vervolgens verstuurt u als test een pushmelding vanuit [Azure Portal], zoals in de vorige sectie wordt beschreven.
+2. Vervolgens verstuurt u als test een pushmelding vanuit [Azure-portal], zoals in de vorige sectie wordt beschreven.
 
 3. De pushmelding wordt verzonden naar alle apparaten die zijn geregistreerd voor het ontvangen van meldingen van de specifieke Notification Hub.
 
@@ -246,4 +248,4 @@ In dit eenvoudige voorbeeld hebt u pushmeldingen uitgezonden naar al uw geregist
 [Azure Notification Hubs Notify Users for iOS with .NET backend]: notification-hubs-aspnet-backend-ios-apple-apns-notification.md
 [Use Notification Hubs to send breaking news]: notification-hubs-ios-xplat-segmented-apns-push-notification.md
 [Local and Push Notification Programming Guide]: https://developer.apple.com/library/mac/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/ApplePushService.html#//apple_ref/doc/uid/TP40008194-CH100-SW1
-[Azure Portal]: https://portal.azure.com
+[Azure-portal]: https://portal.azure.com

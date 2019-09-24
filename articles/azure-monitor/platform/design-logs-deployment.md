@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/07/2019
+ms.date: 09/20/2019
 ms.author: magoedte
-ms.openlocfilehash: 5d6e68b4b17c31056ed1f96a779823fc856962fb
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: fa3c8b8cee0b8621a6a2800655f62a3d339f67c3
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70034727"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71211997"
 ---
 # <a name="designing-your-azure-monitor-logs-deployment"></a>De implementatie van uw Azure Monitor-logboeken ontwerpen
 
@@ -32,9 +32,11 @@ Een Log Analytics-werk ruimte biedt:
 
 * Een geografische locatie voor de opslag van gegevens.
 * Gegevens isolatie door verschillende gebruikers toegangs rechten te verlenen volgens een van onze aanbevolen ontwerp strategieën.
-* Bereik voor configuratie van instellingen, zoals de [prijs categorie](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#changing-pricing-tier), retentie en het beperken van [gegevens](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#daily-cap). [](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)
+* Bereik voor configuratie van instellingen, zoals de [prijs categorie](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#changing-pricing-tier), [retentie](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)en het beperken van [gegevens](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#daily-cap).
 
 Dit artikel bevat een gedetailleerd overzicht van de overwegingen voor het ontwerpen en migreren, het overzicht van toegangs beheer en een uitleg van de ontwerp implementaties die wij voor uw IT-organisatie raden.
+
+
 
 ## <a name="important-considerations-for-an-access-control-strategy"></a>Belang rijke overwegingen voor een strategie voor toegangs beheer
 
@@ -46,7 +48,7 @@ Het identificeren van het aantal werk ruimten dat u nodig hebt, is van invloed o
 
 De IT-organisaties zijn tegenwoordig gemodelleerd volgens een gecentraliseerd, gedecentraliseerd of een in-tussen hybride van beide structuren. Als gevolg hiervan zijn de volgende implementatie modellen voor werk ruimten vaak gebruikt om toe te wijzen aan een van deze organisatie structuren:
 
-* Gecentraliseerd: Alle logboeken worden opgeslagen in een centrale werk ruimte en beheerd door één team, met Azure Monitor een gedifferentieerde toegang per team bieden. In dit scenario is het eenvoudig om te beheren, te zoeken naar resources en logboeken te cross-correleren. De werk ruimte kan aanzienlijk toenemen, afhankelijk van de hoeveelheid gegevens die uit meerdere resources in uw abonnement is verzameld, met extra administratieve overhead voor het onderhouden van toegangs beheer voor verschillende gebruikers.
+* **Gecentraliseerd**: Alle logboeken worden opgeslagen in een centrale werk ruimte en beheerd door één team, met Azure Monitor een gedifferentieerde toegang per team bieden. In dit scenario is het eenvoudig om te beheren, te zoeken naar resources en logboeken te cross-correleren. De werk ruimte kan aanzienlijk toenemen, afhankelijk van de hoeveelheid gegevens die uit meerdere resources in uw abonnement is verzameld, met extra administratieve overhead voor het onderhouden van toegangs beheer voor verschillende gebruikers.
 * **Gedecentraliseerd**: Elk team heeft hun eigen werk ruimte gemaakt in een resource groep die ze bezit en beheren, en logboek gegevens worden gescheiden per resource. In dit scenario kan de werk ruimte veilig worden bewaard en kan toegangs beheer consistent zijn met toegang tot bronnen, maar het is lastig om logboeken te intercorreleren. Gebruikers die een brede weer gave van veel resources nodig hebben, kunnen de gegevens niet op een zinvolle manier analyseren.
 * **Hybride**: Nalevings vereisten voor beveiligings controle worden dit scenario verder ingewik kelder omdat veel organisaties beide implementatie modellen parallel implementeren. Dit resulteert doorgaans in een complexe, dure en moeilijk te onderhouden configuratie met hiaten in de logboeken dekking.
 
@@ -129,6 +131,19 @@ De *Access Control-modus* is een instelling voor elke werk ruimte die definieert
     > Als een gebruiker alleen resource machtigingen heeft voor de werk ruimte, hebben ze alleen toegang tot de werk ruimte via de resource-context modus als de toegangs modus voor de werk ruimte is ingesteld op het **gebruik van resource-of werkruimte machtigingen**.
 
 Zie de [modus toegangs beheer configureren](manage-access.md#configure-access-control-mode)voor meer informatie over het wijzigen van de toegangs beheer modus in de portal, met Power shell of het gebruik van een resource manager-sjabloon.
+
+## <a name="ingestion-volume-rate-limit"></a>Frequentie limiet opname volume
+
+Azure Monitor is een grootschalige gegevens service waarmee duizenden klanten elke maand terabytes aan gegevens verzenden in een groei tempo. De standaard drempel voor opname snelheden is ingesteld op **500 MB/min** per werk ruimte. Als u gegevens met een hoger snelheid naar één werk ruimte verzendt, worden sommige gegevens verwijderd en wordt er om de 6 uur een gebeurtenis verzonden naar de *bewerkings* tabel in uw werk ruimte, terwijl de drempel waarde blijft overschreden. Als uw opname volume de frequentie limiet blijft overschrijden of als u verwacht dat deze kort te bereiken, kunt u een verhoging van uw werk ruimte aanvragen door een ondersteunings aanvraag te openen.
+ 
+Als u een melding wilt ontvangen over een dergelijke gebeurtenis in uw werk ruimte, maakt u een [waarschuwings regel](alerts-log.md) voor het logboek met behulp van de volgende query met de logica van een waarschuwing op basis van het aantal resultaten dat is gelukt dan nul.
+
+``` Kusto
+Operation
+|where OperationCategory == "Ingestion"
+|where Detail startswith "The rate of data crossed the threshold"
+``` 
+
 
 ## <a name="recommendations"></a>Aanbevelingen
 

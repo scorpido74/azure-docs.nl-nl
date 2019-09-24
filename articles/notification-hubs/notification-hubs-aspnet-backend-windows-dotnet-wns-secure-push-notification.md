@@ -2,9 +2,9 @@
 title: Azure Notification Hubs Secure push
 description: Meer informatie over het verzenden van beveiligde push meldingen in Azure. Codevoorbeelden geschreven in C# met .NET API.
 documentationcenter: windows
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 services: notification-hubs
 ms.assetid: 5aef50f4-80b3-460e-a9a7-7435001273bd
 ms.service: notification-hubs
@@ -13,13 +13,15 @@ ms.tgt_pltfrm: windows
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/04/2019
-ms.author: jowargo
-ms.openlocfilehash: 2f18b4793d205cfa019f501549dedfcd62f501e7
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 01/04/2019
+ms.openlocfilehash: 5d1cf2a74d4fe85bb85eb244da3e3757f36fba0a
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68348594"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212051"
 ---
 # <a name="securely-push-notifications-from-azure-notification-hubs"></a>Veilige push meldingen van Azure Notification Hubs
 
@@ -161,7 +163,7 @@ De volgende stap is het maken van het push-achtergrond onderdeel.
 12. In Solution Explorer dubbelklikt u op **package. appxmanifest** in het **NotifyUserWindowsPhone-project (Windows Phone 8,1)** . Stel onder **meldingen**de **pop-up kan** in op **Ja**.
 
     ![][3]
-13. Klik nog steeds in **package. appxmanifest**op  het vervolg keuzelijst met declaraties bovenaan. Klik in de vervolg keuzelijst **beschik bare** aangiften op **achtergrond taken**en klik vervolgens op **toevoegen**.
+13. Klik nog steeds in **package. appxmanifest**op het vervolg keuzelijst met **declaraties** bovenaan. Klik in de vervolg keuzelijst **beschik bare aangiften** op **achtergrond taken**en klik vervolgens op **toevoegen**.
 14. In **package. appxmanifest**, onder **Eigenschappen**, **push melding**controleren.
 15. In **package. appxmanifest**, onder **app-instellingen**, typt u **PushBackgroundComponent. PushBackgroundTask** in het veld **ingangs punt** .
 

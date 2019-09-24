@@ -4,39 +4,37 @@ ms.service: service-bus-relay
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: clemensv
-ms.openlocfilehash: bbcf38ab54632144920b729f433c222f426d96dc
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 3e3617f68d58e51f24affaae7d69812195b72fd0
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67176263"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71210198"
 ---
 1. Meld u aan bij [Azure Portal][Azure portal].
-2. Selecteer **+ Een resource maken** in het menu aan de linkerkant. Selecteer vervolgens **Integratie** > **Relay**. Als u **Relay** niet in de lijst ziet staan, selecteert u rechtsboven **Alles weergeven**. 
-3. Voer bij **Naamruimte maken** een naam in voor de naamruimte. In het systeem wordt onmiddellijk gecontroleerd of de naam beschikbaar is.
-4. Kies in het veld **Abonnement** een Azure-abonnement waarin u de naamruimte maakt.
-5. Kies in het veld [Resourcegroep](../articles/azure-resource-manager/manage-resource-groups-portal.md) een bestaande resourcegroep waarin de naamruimte moet worden opgenomen of maak een nieuwe resourcegroep.  
-6. Kies bij **Locatie** het land of de regio waarin uw naamruimte moet worden gehost.
-   
-    ![Een naamruimte maken][create-namespace]
-7. Selecteer **Maken**. Uw naamruimte wordt gemaakt en ingeschakeld. Na enkele minuten stelt het systeem resources ter beschikking voor uw account.
+1. Selecteer **Een resource maken**. Selecteer vervolgens **Integratie** > **Relay**. Als u **Relay** niet in de lijst ziet staan, selecteert u rechtsboven **Alles weergeven**.
+1. Selecteer **maken**en voer een naam voor de naam ruimte in het veld **naam** in. Azure Portal controleert of de naam beschikbaar is.
+1. Kies een Azure-abonnement waarin u de naam ruimte wilt maken.
+1. Kies voor [resource groep](../articles/azure-resource-manager/manage-resource-groups-portal.md)een bestaande resource groep waarin de naam ruimte moet worden geplaatst of maak een nieuwe.  
+1. Selecteer het land of de regio waarin uw naam ruimte moet worden gehost.
+
+    ![Naamruimte maken][create-namespace]
+
+1. Selecteer **Maken**. Met de Azure Portal wordt uw naam ruimte gemaakt en ingeschakeld. Na enkele minuten stelt het systeem resources ter beschikking voor uw account.
 
 ### <a name="get-management-credentials"></a>Beheerreferenties ophalen
 
-1. Selecteer **Alle resources** en selecteer vervolgens de zojuist gemaakte naam voor de naamruimte.
-2. Selecteer bij de Relay-naamruimte **Beleid voor gedeelde toegang**.  
-3. Selecteer onder **Beleid voor gedeelde toegang** de optie **RootManageSharedAccessKey**.
-   
-    ![verbinding-gegevens][connection-info]
-4. Selecteer onder **Beleid: RootManageSharedAccessKey** de knop **Kopiëren** naast **Verbindingsreeks - primaire sleutel**. Hiermee kopieert u de verbindingsreeks naar het Klembord voor later gebruik. Plak deze waarde in Kladblok of een andere tijdelijke locatie.
-   
-    ![connection-string][connection-string]
+1. Selecteer **alle resources**en kies vervolgens de naam van de zojuist gemaakte naam ruimte.
+1. Selecteer **beleid voor gedeelde toegang**.  
+1. Selecteer onder **Beleid voor gedeelde toegang** de optie **RootManageSharedAccessKey**.
+1. Onder **SAS-beleid: RootManageSharedAccessKey**, selecteer de knop **kopiëren** naast **primaire verbindings reeks**. Met deze actie wordt de connection string naar het klem bord gekopieerd voor later gebruik. Plak deze waarde in Kladblok of een andere tijdelijke locatie.
+1. Herhaal de vorige stap om de waarde voor de **Primaire sleutel** te kopiëren en plakken naar een tijdelijke locatie zodat u deze later kunt gebruiken.  
 
-5. Herhaal de vorige stap om de waarde voor de **Primaire sleutel** te kopiëren en plakken naar een tijdelijke locatie zodat u deze later kunt gebruiken.  
+    ![connection-string][connection-string]
 
 <!--Image references-->
 
-[create-namespace]: ./media/relay-create-namespace-portal/create-namespace.png
+[create-namespace]: ./media/relay-create-namespace-portal/create-namespace-vs2019.png
 [connection-info]: ./media/relay-create-namespace-portal/connection-info.png
-[connection-string]: ./media/relay-create-namespace-portal/connection-string.png
+[connection-string]: ./media/relay-create-namespace-portal/connection-string-vs2019.png
 [Azure portal]: https://portal.azure.com

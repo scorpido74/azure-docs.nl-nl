@@ -1,62 +1,64 @@
 ---
-title: Azure Notification Hubs en de migratie van Google Firebase Cloud Messaging (FCM)
-description: Hierin wordt beschreven hoe Azure Notification Hubs de Google GCM voor de migratie van het FCM-adressen.
+title: Migratie van Azure Notification Hubs en de Google Firebase Cloud Messa ging (FCM)
+description: Hierin wordt beschreven hoe Azure Notification Hubs het adres van de Google GCM naar FCM-migratie.
 services: notification-hubs
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: article
 ms.date: 04/10/2019
-ms.author: jowargo
-ms.openlocfilehash: 4cbfc67bc66e84b4743f3326db40872241e5d474
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 04/10/2019
+ms.openlocfilehash: 80eae09240bde61870995468485338db5f0b9c2d
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61458294"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212319"
 ---
-# <a name="azure-notification-hubs-and-the-google-firebase-cloud-messaging-fcm-migration"></a>Azure Notification Hubs en de migratie van Google Firebase Cloud Messaging (FCM)
+# <a name="azure-notification-hubs-and-the-google-firebase-cloud-messaging-fcm-migration"></a>Migratie van Azure Notification Hubs en de Google Firebase Cloud Messa ging (FCM)
 
 ## <a name="current-state"></a>Huidige status
 
-Google aangekondigd wanneer de migratie van Google Cloud Messaging (GCM) naar Firebase Cloud Messaging (FCM), pushservices zoals die van ons om aan te passen hoe er meldingen verzonden naar de Android-apparaten om de wijziging mogelijk te maken had.
+Wanneer Google de migratie van Google Cloud Messaging (GCM) heeft aangekondigd naar Firebase Cloud Messa ging (FCM), moeten push services zoals onze berichten aanpassen hoe we meldingen naar Android-apparaten hebben verzonden om de wijziging aan te passen.
 
-Er bijgewerkt van de back-end van onze service en updates gepubliceerd op onze API en SDK's, indien nodig. Met onze-implementatie, hebben we besloten voor compatibiliteit met bestaande GCM notification-schema's om te beperken de gevolgen zijn voor klanten. Dit betekent dat we momenteel meldingen verzenden naar Android-apparaten met FCM in FCM Legacy-modus. Uiteindelijk gaan we de waarde true is ondersteuning toegevoegd voor FCM, met inbegrip van de nieuwe functies en indeling nettolading. Dat is een langere wijziging en de huidige migratie is gericht op het handhaven van compatibiliteit met bestaande toepassingen en SDK's. U kunt de GCM- of FCM-SDK's gebruiken in uw app (samen met onze SDK) en zorgen wij ervoor dat de melding correct is verzonden.
+We hebben onze service-back-end bijgewerkt en vervolgens de updates op de API en Sdk's gepubliceerd waar nodig. Met onze implementatie hebben we besloten om de compatibiliteit met bestaande GCM-meldings schema's te hand haven om de impact van de klant te minimaliseren. Dit betekent dat we momenteel meldingen naar Android-apparaten verzenden met behulp van FCM in de legacy-modus FCM. Uiteindelijk willen we echte ondersteuning voor FCM toevoegen, met inbegrip van de nieuwe functies en de indeling van de nettolading. Dat is een langere termijn wijziging en de huidige migratie is gericht op het onderhouden van compatibiliteit met bestaande toepassingen en Sdk's. U kunt de GCM-of FCM-Sdk's in uw app gebruiken (samen met onze SDK) en er wordt gecontroleerd of de melding correct wordt verzonden.
 
-Sommige klanten heeft onlangs een e-mailbericht ontvangen van Google-waarschuwing over apps met behulp van een GCM-eindpunt voor meldingen. Dit is slechts een waarschuwing, en er niets is verbroken: Android-meldingen van uw app nog steeds naar Google worden verzonden voor verwerking en Google nog steeds verwerkt. Sommige klanten die het GCM-eindpunt expliciet in de serviceconfiguratie van de opgegeven zijn nog steeds met behulp van het eindpunt van de afgeschafte. We dit gat al heeft geïdentificeerd en gewerkt aan het probleem is opgelost als Google het e-mailbericht verzonden.
+Sommige klanten hebben onlangs een e-mail ontvangen van Google-waarschuwing over apps met behulp van een GCM-eind punt voor meldingen. Dit was slechts een waarschuwing en er zijn geen onderbrekingen. de Android-meldingen van uw app worden nog steeds verzonden naar Google voor verwerking en Google verwerkt deze nog steeds. Sommige klanten die het GCM-eind punt expliciet in hun service configuratie hebben opgegeven, hebben nog steeds het afgeschafte eind punt gebruikt. Deze onderbreking is al geïdentificeerd en er werd gewerkt aan het oplossen van het probleem toen Google het e-mail bericht heeft verzonden.
 
-We dat afgeschaft eindpunt vervangen en de oplossing wordt geïmplementeerd.
+Het afgeschafte eind punt is vervangen en de oplossing is geïmplementeerd.
 
-## <a name="going-forward"></a>Voortaan
+## <a name="going-forward"></a>Gaat verder
 
-Veelgestelde vragen over het FCM van Google verplicht u niet verder niets te doen. In de [FCM Veelgestelde vragen over](https://developers.google.com/cloud-messaging/faq), Google gezegd "client-SDK's en GCM tokens blijven werken voor onbepaalde tijd. Echter, kunt u zich niet aan de nieuwste versie van Google Play Services in uw Android-app als doel, tenzij u naar FCM migreert."
+In de veelgestelde vragen over FCM van Google wordt aangegeven dat u niets hoeft te doen. In de [Veelgestelde vragen over FCM](https://developers.google.com/cloud-messaging/faq)worden Google zei ' client-SDK'S en GCM-tokens voor onbepaalde tijd blijven werken. Het is echter niet mogelijk om de nieuwste versie van Google Play Services in uw Android-app te richten, tenzij u migreert naar FCM.
 
-Als uw app gebruikmaakt van de GCM-bibliotheek, gaat u verder en volg de instructies van Google om te upgraden naar de FCM-bibliotheek in uw app. Onze SDK is compatibel met, dus u hoeft te bijwerken van alles in uw app aan onze kant (zolang u hoogte met onze SDK-versie bent).
+Als uw app gebruikmaakt van de GCM-bibliotheek, gaat u verder met het volgen van de instructies van Google om een upgrade uit te voeren naar de FCM-bibliotheek in uw app. Onze SDK is compatibel met ofwel. u hoeft dus niets in uw app bij onze kant bij te werken (op voor waarde dat u met onze SDK-versie up-to-date bent).
 
 ## <a name="questions-and-answers"></a>Vragen en antwoorden
 
-Hier ziet u enkele antwoorden op veelgestelde vragen die we horen vaak van klanten:
+Hier volgen enkele antwoorden op veelgestelde vragen die we van klanten hebben gehoord:
 
-**V:** Wat moet ik doen om compatibel zijn met de afsluitdatum (Google de huidige afsluitdatum 29 mei is en kan worden gewijzigd)?
+**V:** Wat moet ik doen om compatibel te zijn met de afsluit datum (de huidige afsluit datum van Google kan 29 en kunnen worden gewijzigd)?
 
-**A:** Er is niets. Er wordt compatibiliteit met bestaande schema's voor GCM-melding. Uw GCM-sleutel blijven werken normaal net als elke GCM-SDK's en bibliotheken die worden gebruikt door uw toepassing.
+**A:** Nul. De compatibiliteit met het bestaande GCM-meldings schema wordt behouden. Uw GCM-sleutel blijft werken zoals bij elke GCM-Sdk's en-bibliotheken die door uw toepassing worden gebruikt.
 
-Als/wanneer u besluit om te upgraden naar de FCM-SDK's en bibliotheken om te profiteren van nieuwe functies, uw GCM-sleutel wordt nog steeds werken. U kunt overstappen naar een FCM-sleutel als u wilt, maar zorg ervoor dat u toevoegt Firebase aan uw bestaande GCM-project dat bij het maken van het nieuwe Firebase-project. Dit zorgt ervoor dat voor neerwaartse compatibiliteit met uw klanten met oudere versies van de app die nog steeds gebruikmaken van GCM-SDK's en bibliotheken.
+Als u besluit om een upgrade uit te voeren naar de FCM-Sdk's en-bibliotheken om te profiteren van nieuwe functies, zal uw GCM-sleutel nog steeds werken. U kunt desgewenst een FCM-sleutel gebruiken, maar zorg ervoor dat u Firebase toevoegt aan uw bestaande GCM-project bij het maken van het nieuwe Firebase-project. Dit zorgt voor achterwaartse compatibiliteit met uw klanten waarop oudere versies van de app worden uitgevoerd die nog steeds gebruikmaken van GCM-Sdk's en-bibliotheken.
 
-Als u een nieuw FCM-project maken en niet koppelen aan het bestaande GCM-project, zodra u Notification Hubs met het nieuwe FCM-geheim bijwerken verliest u de mogelijkheid om pushmeldingen te verzenden naar uw huidige app-installaties, omdat de nieuwe FCM-sleutel geen koppeling naar de oude GCM heeft het project.
+Als u een nieuw FCM-project maakt en niet koppelt aan het bestaande GCM-project en u Notification Hubs met het nieuwe FCM-geheim bijwerkt, verliest u de mogelijkheid om meldingen naar uw huidige app-installaties te pushen omdat de nieuwe FCM-sleutel geen koppeling naar de oude GCM heeft project.
 
-**V:** Waarom krijg ik dit e-mailbericht over oude GCM-eindpunten wordt gebruikt? Wat heb ik doen?
+**V:** Waarom krijg ik dit e-mail bericht over oude GCM-eind punten die worden gebruikt? Wat moet ik doen?
 
-**A:** Er is niets. We hebben is migreren naar de nieuwe eindpunten en is binnenkort klaar, zodat er geen wijziging noodzakelijk is. Niets wordt verbroken, onze één gemiste eindpunt veroorzaakt gewoon waarschuwingsberichten van Google.
+**A:** Nul. We zijn gemigreerd naar de nieuwe eind punten en worden binnenkort voltooid, dus u hoeft niets te wijzigen. Er is geen fout opgetreden, onze ene gemist eind punt heeft simpelweg waarschuwings berichten veroorzaakt van Google.
 
-**V:** Hoe kan ik overstappen op de nieuwe FCM-SDK's en bibliotheken zonder dat bestaande gebruikers te?
+**V:** Hoe kan ik overstappen op de nieuwe FCM-Sdk's en-bibliotheken zonder bestaande gebruikers te verbreken?
 
-A: Op elk gewenst moment bijwerken. Google heeft nog niet aangekondigd voor elke afschaffing van bestaande GCM-SDK's en bibliotheken. Om te controleren of u pushmeldingen kunt verzenden naar uw bestaande gebruikers niet verbreken, zorg ervoor dat wanneer u de nieuwe Firebase-project dat u aan uw bestaande GCM-project koppelen wilt maken. Dit zorgt ervoor dat nieuwe Firebase geheimen werkt voor gebruikers met de oudere versies van uw app met GCM-SDK's en bibliotheken, evenals nieuwe gebruikers van uw app met FCM-SDK's en bibliotheken.
+A: Op elk gewenst moment bijwerken. Google heeft nog geen afschaffing van bestaande GCM-Sdk's en-bibliotheken aangekondigd. Om ervoor te zorgen dat u geen push meldingen naar uw bestaande gebruikers verbreekt, moet u ervoor zorgen dat u het nieuwe Firebase-project maakt dat u aan uw bestaande GCM-project koppelt. Dit zorgt ervoor dat nieuwe Firebase geheimen werken voor gebruikers die de oudere versies van uw app met GCM Sdk's en bibliotheken gebruiken, evenals nieuwe gebruikers van uw app met FCM Sdk's en bibliotheken.
 
-**V:** Wanneer kan ik nieuwe FCM-functies en schema's gebruiken voor Mijn meldingen?
+**V:** Wanneer kan ik nieuwe FCM-functies en-schema's voor mijn meldingen gebruiken?
 
-**A:** Zodra er een update gepubliceerd op onze API en SDK's, kom – verwachten we hebben iets voor u in de komende maanden.
+**A:** Nadat we een update voor onze API en Sdk's hebben gepubliceerd, blijven deze goed afgestemd. we verwachten dat we in de komende maanden iets voor u hebben.

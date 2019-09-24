@@ -3,9 +3,9 @@ title: Meldingen verzenden naar specifieke apparaten (Universal Windows Platform
 description: Gebruik Azure Notification Hubs met tags in de registratie om belangrijk nieuws te verzenden naar een Universal Windows Platform-app.
 services: notification-hubs
 documentationcenter: windows
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.assetid: 994d2eed-f62e-433c-bf65-4afebf1c0561
 ms.service: notification-hubs
 ms.workload: mobile
@@ -14,13 +14,15 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 03/22/2019
-ms.author: jowargo
-ms.openlocfilehash: 9cfe5f490ef4063e02d9407f23130c1a216961ed
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 03/22/2019
+ms.openlocfilehash: efe668e42e04942cc0d9fc99670057ab5bdd302a
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60872312"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212120"
 ---
 # <a name="tutorial-push-notifications-to-specific-windows-devices-running-universal-windows-platform-applications"></a>Zelfstudie: Pushmeldingen verzenden naar specifieke Windows-apparaten met Universal Windows Platform-toepassingen
 
@@ -47,7 +49,7 @@ In deze zelfstudie voert u de volgende stappen uit:
 
 ## <a name="prerequisites"></a>Vereisten
 
-U moet de [Zelfstudie: Meldingen verzenden naar Universal Windows Platform-apps met behulp van Azure Notification Hubs][get-started] hebben voltooid voordat u aan deze zelfstudie begint.  
+U moet de [Zelfstudie: Verzend meldingen naar universeel Windows-platform-apps met behulp][get-started] van Azure notification hubs voordat u met deze zelf studie begint.  
 
 ## <a name="add-category-selection-to-the-app"></a>Categorieselectie toevoegen aan de app
 
@@ -201,7 +203,7 @@ In dit gedeelte registreert u zich tijdens het opstarten bij de meldingshub met 
     var result = await notifications.SubscribeToCategories();
     ```
 
-    Dit proces zorgt ervoor dat wanneer de app wordt gestart, de categorieën worden opgehaald uit de lokale opslag en registratie van deze categorieën wordt aangevraagd. U hebt de `InitNotificationsAsync`-methode gemaakt als onderdeel van de zelfstudie [Aan de slag met Notification Hubs][get-started].
+    Dit proces zorgt ervoor dat wanneer de app wordt gestart, de categorieën worden opgehaald uit de lokale opslag en registratie van deze categorieën wordt aangevraagd. U hebt de `InitNotificationsAsync` methode gemaakt als onderdeel van de zelf studie [aan de slag met Notification hubs][get-started] .
 2. Voeg in het projectbestand `MainPage.xaml.cs` de volgende code toe aan de `OnNavigatedTo`-methode:
 
     ```csharp
@@ -233,14 +235,14 @@ De app is nu klaar en kan een set categorieën opslaan in de lokale opslag van a
 
     ![Schakelopties voor categorieën en de knop Subscribe](./media/notification-hubs-windows-store-dotnet-send-breaking-news/notification-hub-windows-toast-2.png)
 
-## <a name="create-a-console-app-to-send-tagged-notifications"></a>Maken van een console-app voor het verzenden van meldingen met tags
+## <a name="create-a-console-app-to-send-tagged-notifications"></a>Een console-app maken om gelabelde meldingen te verzenden
 
 [!INCLUDE [notification-hubs-send-categories-template](../../includes/notification-hubs-send-categories-template.md)]
 
-## <a name="run-the-console-app-to-send-tagged-notifications"></a>Uitvoeren van de console-app voor het verzenden van meldingen met tags
+## <a name="run-the-console-app-to-send-tagged-notifications"></a>De console-app uitvoeren om gelabelde meldingen te verzenden
 
-1. Voer de app in de vorige sectie hebt gemaakt.
-2. Meldingen voor de geselecteerde categorieën worden weergegeven als pop-upmeldingen. Als u de melding selecteert, ziet u het eerste venster van de UWP-app. 
+1. Voer de app uit die u in de vorige sectie hebt gemaakt.
+2. Meldingen voor de geselecteerde categorieën worden weergegeven als pop-upmeldingen. Als u de melding selecteert, wordt het eerste UWP-app-venster weer geven. 
 
      ![Pop-upmeldingen](./media/notification-hubs-windows-store-dotnet-send-breaking-news/notification-hub-windows-reg-2.png)
 

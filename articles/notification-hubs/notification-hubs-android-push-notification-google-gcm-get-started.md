@@ -4,9 +4,9 @@ description: In deze zelfstudie leert u hoe u met Azure Notification Hubs en Goo
 services: notification-hubs
 documentationcenter: android
 keywords: pushmeldingen,pushmelding,android-pushmelding
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.assetid: 8268c6ef-af63-433c-b14e-a20b04a0342a
 ms.service: notification-hubs
 ms.workload: mobile
@@ -15,20 +15,22 @@ ms.devlang: java
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/04/2019
-ms.author: jowargo
-ms.openlocfilehash: 341f5a30fe03de4c69b5a7e18703931988d2d185
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 01/04/2019
+ms.openlocfilehash: 36af79b90722041ddb16bb90a73175a8635531fd
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67063634"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212360"
 ---
-# <a name="tutorial-push-notifications-to-android-devices-by-using-azure-notification-hubs-and-google-cloud-messaging-deprecated"></a>Zelfstudie: Pushmeldingen verzenden naar Android-apparaten met behulp van Azure Notification Hubs en Google Cloud Messaging (afgeschaft)
+# <a name="tutorial-push-notifications-to-android-devices-by-using-azure-notification-hubs-and-google-cloud-messaging-deprecated"></a>Zelfstudie: Push meldingen naar Android-apparaten met behulp van Azure Notification Hubs en Google Cloud Messaging (afgeschaft)
 
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
 
 > [!WARNING]
-> Vanaf 10 April 2018, is Google afgeschaft in Google Cloud Messaging (GCM). De GCM server en client-API's zijn afgeschaft en wordt verwijderd zodra 29 mei 2019. Zie voor meer informatie, [GCM en FCM Frequently Asked Questions](https://developers.google.com/cloud-messaging/faq).
+> Sinds 10 april 2018 heeft Google afgeschaft Google Cloud Messaging (GCM). De GCM-server en de client-Api's zijn afgeschaft en worden verwijderd zodra 29 mei 2019. Zie [Veelgestelde vragen over GCM en FCM](https://developers.google.com/cloud-messaging/faq)voor meer informatie.
 
 ## <a name="overview"></a>Overzicht
 
@@ -36,7 +38,7 @@ In deze zelfstudie wordt gedemonstreerd hoe u met Azure Notification Hubs pushme
 U maakt een lege Android-app die pushmeldingen ontvangt via Google Cloud Messaging (GCM).
 
 > [!IMPORTANT]
-> De Google Cloud Messaging (GCM) is afgeschaft en wordt verwijderd [binnenkort](https://developers.google.com/cloud-messaging/faq).
+> De Google Cloud Messaging (GCM) is afgeschaft en zal [binnenkort](https://developers.google.com/cloud-messaging/faq)worden verwijderd.
 
 > [!IMPORTANT]
 > In dit onderwerp worden pushmeldingen met Google Cloud Messaging (GCM) getoond. Als u gebruikmaakt van Google Firebase Cloud Messaging (FCM), verwijzen wij u naar [Sending push notifications to Android with Azure Notification Hubs and FCM](notification-hubs-android-push-notification-google-fcm-get-started.md) (Pushmeldingen verzenden naar Android met Azure Notification Hubs en FCM).
@@ -165,8 +167,8 @@ De Notification Hub is nu geconfigureerd voor GCM en u hebt de verbindingsreekse
     Werk de drie tijdelijke aanduidingen in de volgende code bij voor de klasse `NotificationSettings`:
 
    * `SenderId`: Het projectnummer dat u eerder in de [Google Cloud Console](https://cloud.google.com/console) hebt verkregen.
-   * `HubListenConnectionString`: De verbindingsreeks `DefaultListenAccessSignature` voor de hub. Kopieer deze verbindingsreeks door te klikken op **Toegangsbeleid** op de hubpagina **Instellingen** in [Azure Portal].
-   * `HubName`: Gebruik de naam van uw Notification Hub die wordt weergegeven op de hubpagina in de [Azure Portal].
+   * `HubListenConnectionString`: De verbindingsreeks `DefaultListenAccessSignature` voor de hub. Kopieer deze verbindingsreeks door te klikken op **Toegangsbeleid** op de hubpagina **Instellingen** in [Azure-portal].
+   * `HubName`: Gebruik de naam van uw Notification Hub die wordt weergegeven op de hubpagina in de [Azure-portal].
 
      `NotificationSettings`-code:
 
@@ -466,7 +468,7 @@ De Notification Hub is nu geconfigureerd voor GCM en u hebt de verbindingsreekse
 
 ### <a name="test-send-push-notifications-from-the-azure-portal"></a>Het verzenden van pushmeldingen vanuit Azure Portal testen
 
-U kunt het ontvangen van meldingen in de app testen door deze te verzenden via [Azure Portal].
+U kunt het ontvangen van meldingen in de app testen door deze te verzenden via [Azure-portal].
 
 1. In de sectie **Probleemoplossing** selecteert u **Test verzenden**.
 2. Selecteer voor **Platforms** de optie **Android**.
@@ -516,7 +518,7 @@ Normaal gesproken verzendt u meldingen via een back-endserver. Mogelijk wilt u p
     ```
 3. Voeg in het bestand `NotificationSetting.java` de volgende instelling toe voor de klasse `NotificationSettings`.
 
-    Werk `HubFullAccess` bij met de verbindingsreeks **DefaultFullSharedAccessSignature** voor uw hub. U kunt deze verbindingsreeks kopiëren vanuit [Azure Portal] door te klikken op **Toegangsbeleid** op de pagina **Instellingen** voor uw Notification Hub.
+    Werk `HubFullAccess` bij met de verbindingsreeks **DefaultFullSharedAccessSignature** voor uw hub. U kunt deze verbindingsreeks kopiëren vanuit [Azure-portal] door te klikken op **Toegangsbeleid** op de pagina **Instellingen** voor uw Notification Hub.
 
     ```java
     public static String HubFullAccess = "<Enter Your DefaultFullSharedAccess Connection string>";
@@ -744,4 +746,4 @@ In deze zelfstudie hebt u meldingen uitgezonden naar al uw Android-apparaten die
 [Notification Hubs Guidance]: https://msdn.microsoft.com/library/jj927170.aspx
 [Use Notification Hubs to push notifications to users]: notification-hubs-aspnet-backend-gcm-android-push-to-user-google-notification.md
 [Use Notification Hubs to send breaking news]: notification-hubs-aspnet-backend-android-xplat-segmented-gcm-push-notification.md
-[Azure Portal]: https://portal.azure.com
+[Azure-portal]: https://portal.azure.com

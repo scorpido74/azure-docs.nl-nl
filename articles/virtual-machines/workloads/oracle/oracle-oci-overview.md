@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 06/04/2019
 ms.author: rogirdh
 ms.custom: ''
-ms.openlocfilehash: 4628955998ab8b289a429cdfb85e23f7f97b0b40
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 9947d28cbde7f4804283e03cc07093b9240ca6bf
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101436"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71241008"
 ---
 # <a name="oracle-application-solutions-integrating-microsoft-azure-and-oracle-cloud-infrastructure-preview"></a>Oracle-toepassings oplossingen die Microsoft Azure en Oracle-Cloud infrastructuur integreren (preview-versie)
 
@@ -50,7 +50,7 @@ Het volgende diagram is een overzicht op hoog niveau van de verbonden oplossing.
 
 ## <a name="preview-limitations"></a>Preview-beperkingen
 
-* Connectiviteit tussen de cloud in de preview-periode is beperkt tot de regio Azure-Oost (Oost) en de OCI Ashburn (US-Ashburn-1).
+* Connectiviteit tussen de cloud in de preview-periode is beperkt tot de regio's Azure-Oost (Oost) & UK-zuid (uksouth) en de OCI Ashburn (VS Oost) & Londen (UK-zuid). Voor UK-zuid, gebruikt u beschik baarheids domein 1 (AD 1) in OCI bij het implementeren van de Inter-Connect voor lagere latenties.
 
 ## <a name="networking"></a>Netwerken
 

@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/23/2019
+ms.date: 09/23/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ce66c0239eee3f31695a942a586766694525fbad
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 2a875e028a38c085d45d062984764cd840983fc3
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71097602"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212327"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Releasegeschiedenis van versie
 Het Azure Active Directory (Azure AD)-team werkt Azure AD Connect regel matig bij met nieuwe functies en functionaliteit. Niet alle toevoegingen zijn van toepassing op alle doel groepen.
@@ -46,7 +46,13 @@ Niet alle versies van Azure AD Connect worden beschikbaar gesteld voor automatis
 ## <a name="14x0"></a>1.4. X. 0
 
 >[!IMPORTANT]
->Voorheen werden Windows-computers op een lager niveau die zijn gekoppeld aan on-premises AD, in bepaalde omstandigheden onjuist gesynchroniseerd met de Cloud. Als voor beeld is de waarde van het kenmerk userCertificate voor Windows-apparaten op lagere niveaus in AD ingevuld. Maar dergelijke apparaten in azure AD nemen altijd de status ' in behandeling ' door omdat deze versies van het besturings systeem niet zijn ontworpen om te worden geregistreerd bij Azure AD via AAD Sync. In deze versie van Azure AD Connect stopt AAD Sync met het synchroniseren van Windows down level-computers naar Azure AD en worden ook de eerder onjuist gesynchroniseerde apparaten op het lagere niveau van Azure AD verwijderd. Houd er rekening mee dat met deze wijziging geen Windows down level-apparaten worden verwijderd die correct zijn geregistreerd bij Azure AD met behulp van het MSI-pakket. Deze apparaten blijven werken zoals verwacht voor de doel einden van voorwaardelijke toegang op basis van apparaten. Sommige klanten zien mogelijk dat sommige of alle apparaten op het lagere niveau van Windows verdwijnen van Azure AD. Dit is geen oorzaak van bezorgdheid, omdat deze apparaat-id's nooit daad werkelijk door Azure AD worden gebruikt tijdens de autorisatie van voorwaardelijke toegang. Het kan voor komen dat dergelijke klanten https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan hun Windows-down level-apparaten op de juiste manier moeten bezoeken om ervoor te zorgen dat dergelijke apparaten volledig kunnen deel nemen aan voorwaardelijke toegang op basis van een apparaat. Houd er rekening mee dat als u deze verwijderingen van computer/apparaat-down level-objecten in azure AD overschrijdt, de drempel waarde voor het verwijderen van het exporteren krijgt, wordt aanbevolen dat de klant deze verwijderingen kan door lopen.
+>Windows-computers die zijn geregistreerd als hybride Azure AD-join, worden weer gegeven in azure AD als objecten voor apparaten. Deze apparaatobject kunnen worden gebruikt voor voorwaardelijke toegang. Windows 10-computers worden gesynchroniseerd met de Cloud via Azure AD Connect, Windows-computers op lagere niveaus worden rechtstreeks geregistreerd met behulp van AD FS of naadloze eenmalige aanmelding.
+>
+>Alleen Windows 10-computers met een specifieke userCertificate-kenmerk waarde die is geconfigureerd met hybride Azure AD-deelname, moeten worden gesynchroniseerd met de Cloud door Azure AD Connect.  In eerdere versies van Azure AD Connect was deze vereiste niet strikt afgedwongen, wat leidt tot overbodige apparaatfuncties in azure AD. Dergelijke apparaten in azure AD nemen altijd de status ' in behandeling ' uit omdat deze computers niet zijn bedoeld om te worden geregistreerd bij Azure AD.
+>
+>Deze versie van Azure AD Connect synchroniseert alleen Windows 10-computers die correct zijn geconfigureerd om te worden toegevoegd aan hybride Azure AD. Azure AD Connect moet nooit [Windows-apparaten op lagere niveaus](../../active-directory/devices/hybrid-azuread-join-plan.md#windows-down-level-devices)synchroniseren.  Alle apparaten in azure AD die voorheen onjuist zijn gesynchroniseerd, worden nu verwijderd uit Azure AD.  Met deze wijziging worden echter geen Windows-apparaten verwijderd die correct zijn geregistreerd bij Azure AD voor hybride Azure AD-deelname. 
+>
+>Sommige klanten kunnen enkele of alle Windows-apparaten zien, verdwijnen van Azure AD. Dit is geen oorzaak van bezorgdheid, omdat deze apparaat-id's niet worden gebruikt door Azure AD tijdens de autorisatie van voorwaardelijke toegang. Sommige klanten moeten mogelijk opnieuw een bezoek [brengen over: Plan uw hybride Azure Active Directory deelname-](../../active-directory/devices/hybrid-azuread-join-plan.md) implementatie om hun Windows-computers op de juiste wijze te registreren en ervoor te zorgen dat dergelijke apparaten volledig kunnen deel nemen aan voorwaardelijke toegang op basis van een apparaat. Als Azure AD Connect probeert [Windows-apparaten van lager niveau](../../active-directory/devices/hybrid-azuread-join-plan.md#windows-down-level-devices) te verwijderen, is het apparaat niet de versie die is gemaakt door de [micro soft-Workplace join voor niet-Windows 10-computers MSI](https://www.microsoft.com/download/details.aspx?id=53554) en kan het niet worden gebruikt door een andere Azure AD-functie.  Als u het verwijderen van computer/apparaat-objecten in azure AD overschrijdt, wordt de drempel waarde voor het verwijderen van het exporteren weer geven.
 
 ### <a name="release-status"></a>Release status
 9/10/2019: Alleen uitgebracht voor automatische upgrade

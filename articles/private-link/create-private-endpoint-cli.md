@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: 46c08f48efc00c1e4d88ceccb680c0cfd1671b2f
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 30994133b19c4f59ae9e8be26caffe14348638f6
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71203576"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71219362"
 ---
 # <a name="create-a-private-endpoint-using-azure-cli"></a>Een persoonlijk eind punt maken met behulp van Azure CLI
 Persoonlijk eind punt is de fundamentele bouw steen voor privé-koppeling in Azure. Hierdoor kunnen Azure-resources, zoals virtuele machines (Vm's), privé communiceren met persoonlijke koppelings bronnen. In deze Quick Start leert u hoe u een virtuele machine maakt in een virtueel netwerk, een SQL Database-Server met een persoonlijk eind punt met behulp van Azure CLI. Vervolgens hebt u toegang tot de virtuele machine en kunt u veilig toegang krijgen tot de persoonlijke koppelings bron (een persoonlijke Azure SQL Database Server in dit voor beeld). 
@@ -144,7 +144,7 @@ Maak als volgt verbinding met de VM- *myVm* van het Internet:
 
 1. Wanneer het VM-bureaublad wordt weergegeven, minimaliseert u het om terug te gaan naar het lokale bureaublad.  
 
-## <a name="access-dql-database-server-privately-from-the-vm"></a>Een persoonlijke toegang tot de DQL-database server vanuit de VM
+## <a name="access-sql-database-server-privately-from-the-vm"></a>SQL Database Server privé benaderen vanuit de VM
 
 In deze sectie maakt u via het persoonlijke eind punt verbinding met de SQL Database-Server via de VM.
 

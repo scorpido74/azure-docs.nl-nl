@@ -1,10 +1,10 @@
 ---
-title: Pushmeldingen verzenden naar specifieke gebruikers met behulp van Azure Notification Hubs | Microsoft Docs
+title: Push meldingen naar specifieke gebruikers met behulp van Azure Notification Hubs | Microsoft Docs
 description: Leer hoe u pushmeldingen kunt verzenden naar specifieke gebruikers met behulp van Azure Notification Hubs.
 documentationcenter: ios
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethm
+manager: femila
+editor: jwargo
 services: notification-hubs
 ms.assetid: 1f7d1410-ef93-4c4b-813b-f075eed20082
 ms.service: notification-hubs
@@ -13,19 +13,21 @@ ms.tgt_pltfrm: ios
 ms.devlang: objective-c
 ms.topic: article
 ms.date: 01/04/2019
-ms.author: jowargo
-ms.openlocfilehash: 9b6c0715cb85e245aba94adfb8b33d0d07ece9a9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 01/04/2019
+ms.openlocfilehash: 85461f72d4385805e2aa13691a574a2161036ca5
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60880437"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212233"
 ---
-# <a name="tutorial-push-notifications-to-specific-users-using-azure-notification-hubs"></a>Zelfstudie: Pushmeldingen verzenden naar specifieke gebruikers met behulp van Azure Notification Hubs
+# <a name="tutorial-push-notifications-to-specific-users-using-azure-notification-hubs"></a>Zelfstudie: Push meldingen naar specifieke gebruikers met behulp van Azure Notification Hubs
 
 [!INCLUDE [notification-hubs-selector-aspnet-backend-notify-users](../../includes/notification-hubs-selector-aspnet-backend-notify-users.md)]
 
-In deze zelfstudie wordt uitgelegd hoe u met Azure Notification Hubs pushmeldingen kunt verzenden naar een specifieke app-gebruiker op een specifiek apparaat. Een ASP.NET WebAPI-back-end wordt gebruikt om clients te verifiëren en voor het genereren van meldingen, zoals wordt weergegeven in het onderwerp richtlijnen [registreren vanuit uw back-end](notification-hubs-push-notification-registration-management.md#registration-management-from-a-backend).
+In deze zelfstudie wordt uitgelegd hoe u met Azure Notification Hubs pushmeldingen kunt verzenden naar een specifieke app-gebruiker op een specifiek apparaat. Een ASP.NET WebAPI-back-end wordt gebruikt voor het verifiëren van clients en het genereren van meldingen, zoals wordt weer gegeven in het onderwerp informatie over het [registreren van de back-end van uw app](notification-hubs-push-notification-registration-management.md#registration-management-from-a-backend).
 
 In deze zelfstudie voert u de volgende stappen uit:
 
@@ -40,33 +42,33 @@ In deze zelfstudie voert u de volgende stappen uit:
 
 ## <a name="prerequisites"></a>Vereisten
 
-Deze zelfstudie wordt ervan uitgegaan dat u hebt gemaakt en uw notification hub geconfigureerd zoals beschreven in [aan de slag met Notification Hubs (iOS)](notification-hubs-ios-apple-push-notification-apns-get-started.md). In deze zelfstudie is ook de vereiste voor de [(iOS) beveiligde Push](notification-hubs-aspnet-backend-ios-push-apple-apns-secure-notification.md) zelfstudie.
-Als u gebruiken van Mobile Apps als uw back-endservice wilt, raadpleegt u de [Mobile Apps aan de slag met Pushmeldingen](../app-service-mobile/app-service-mobile-ios-get-started-push.md).
+In deze zelf studie wordt ervan uitgegaan dat u uw notification hub hebt gemaakt en geconfigureerd zoals wordt beschreven in [aan de slag met Notification hubs (Ios)](notification-hubs-ios-apple-push-notification-apns-get-started.md). Deze zelf studie is ook de vereiste voor de zelf studie voor [beveiligd pushen (Ios)](notification-hubs-aspnet-backend-ios-push-apple-apns-secure-notification.md) .
+Als u Mobile Apps wilt gebruiken als uw back-end-service, raadpleegt u de [Mobile apps aan de slag met push](../app-service-mobile/app-service-mobile-ios-get-started-push.md).
 
 [!INCLUDE [notification-hubs-aspnet-backend-notifyusers](../../includes/notification-hubs-aspnet-backend-notifyusers.md)]
 
 ## <a name="modify-your-ios-app"></a>Uw iOS-app wijzigen
 
-1. Open de app met één pagina weergave die u hebt gemaakt in de [aan de slag met Notification Hubs (iOS)](notification-hubs-ios-apple-push-notification-apns-get-started.md) zelfstudie.
+1. Open de app voor het weer geven van één pagina die u hebt gemaakt in de zelf studie aan de slag [met Notification hubs (Ios)](notification-hubs-ios-apple-push-notification-apns-get-started.md) .
 
    > [!NOTE]
-   > In deze sectie wordt ervan uitgegaan dat uw project is geconfigureerd met de naam van een lege organisatie. Als dat niet het geval is, moet u de naam van uw organisatie aan alle klassenamen van de toevoegen aan het begin.
+   > In deze sectie wordt ervan uitgegaan dat uw project is geconfigureerd met een lege organisatie naam. Als dat niet het geval is, moet u de naam van uw organisatie laten voorafgaan door aan alle klassen namen.
 
-2. In de `Main.storyboard` bestand, de onderdelen weergegeven in de schermafbeelding van de objectbibliotheek toe te voegen.
+2. Voeg in `Main.storyboard` het bestand de onderdelen toe die in de scherm opname van de object bibliotheek worden weer gegeven.
 
-    ![Hoofd-storyboard in Xcode interface builder bewerken][1]
+    ![Story Board bewerken in de opbouw functie voor Xcode-interfaces][1]
 
-   * **Gebruikersnaam**: Een UITextField met tijdelijke aanduiding voor tekst, *gebruikersnaam invoeren*, direct onder de verzenden resultaten worden gelabeld en beperkt tot de linker- en rechtermarge en onder het label van de resultaten verzenden.
-   * **Wachtwoord**: Een UITextField met tijdelijke aanduiding voor tekst, *wachtwoord invoeren*, direct onder de gebruikersnaam tekst veld en gebonden aan de linker- en rechtermarge en onder het tekstveld gebruikersnaam. Controleer de **tekstinvoer Secure** onder de optie in de Inspector kenmerk *retourneren sleutel*.
-   * **Meld u**: Een UIButton onmiddellijk met het label onder het wachtwoordtekstveld en schakel de **ingeschakeld** onder de optie in de Inspector kenmerken *-inhoud*
-   * **WNS**: Een label en switch om in te schakelen met het verzenden van de melding Windows Notification Service als deze is ingesteld op de hub. Zie de [Windows aan de slag](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) zelfstudie.
-   * **GCM**: Label en schakel over naar de melding verzenden naar Google Cloud Messaging, als deze is ingesteld op de hub. Zie [Android aan de slag](notification-hubs-android-push-notification-google-gcm-get-started.md) zelfstudie.
-   * **APNS**: Label en de switch waarmee de melding verzenden naar de Apple-Platform Notification-Service.
-   * **Ontvanger Username:A** UITextField met tijdelijke aanduiding voor tekst, *ontvanger gebruikersnaamtag*, direct onder de GCM labelen en gebonden aan de linker- en rechtermarge en onder het label GCM.
+   * **Gebruikersnaam**: Een UITextField met een plaatsaanduidingstekst, *voert u de gebruikers naam*in, direct onder het label resultaten verzenden en beperkt tot de linker-en rechter marge en onder het label resultaten van verzenden.
+   * **Wachtwoord**: Een UITextField met een tijdelijke aanduiding voor tekst, voert u het *wacht woord*in, direct onder het tekst veld van de gebruikers naam en beperkt tot de linker-en rechter marge en onder het tekst veld van de gebruikers naam. Controleer de optie voor **beveiligde tekst invoer** in kenmerk controle onder *retour sleutel*.
+   * **Aanmelden**: Een UIButton label direct onder het tekst veld voor het wacht woord en schakel de optie **ingeschakeld** in de kenmerkencontrole onder *besturings element-inhoud* uit.
+   * **WNS**: Label en schakel over om het verzenden van de meldings service voor meldingen in te scha kelen als deze is ingesteld op de hub. Raadpleeg de zelf studie aan de slag met [Windows](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) .
+   * **GCM**: Label en schakel over om het verzenden van de melding naar Google Cloud Messaging in te scha kelen als deze is ingesteld op de hub. Zie de zelf studie aan de slag met [Android](notification-hubs-android-push-notification-google-gcm-get-started.md) .
+   * **APNS**: Label en schakel over om het verzenden van de melding naar de Apple platform Notification Service in te scha kelen.
+   * **Gebruikers naam van geadresseerde: een** UITextField met plaatsaanduidingstekst, label van de *gebruikers naam*van de geadresseerde, direct onder het label GCM en beperkt tot de linker-en rechter marge en onder het GCM-label.
 
-     Sommige onderdelen zijn toegevoegd de [aan de slag met Notification Hubs (iOS)](notification-hubs-ios-apple-push-notification-apns-get-started.md) zelfstudie.
+     Sommige onderdelen zijn toegevoegd aan de zelf studie aan de slag [met Notification hubs (Ios)](notification-hubs-ios-apple-push-notification-apns-get-started.md) .
 
-3. **CTRL** van de onderdelen in de weergave te slepen `ViewController.h` en deze nieuwe uitgangen toe te voegen.
+3. Sleep vanuit de onderdelen in de weer gave CTRL `ViewController.h` naar en voeg deze nieuwe uitgangen toe.
 
     ```objc
     @property (weak, nonatomic) IBOutlet UITextField *UsernameField;
@@ -86,13 +88,13 @@ Als u gebruiken van Mobile Apps als uw back-endservice wilt, raadpleegt u de [Mo
     - (IBAction)LogInAction:(id)sender;
     ```
 
-4. In `ViewController.h`, voeg de volgende `#define` na uw importinstructies. Vervang de `<Enter Your Backend Endpoint>` tijdelijke aanduiding met de doel-URL die u gebruikt voor het implementeren van uw app back-end in de vorige sectie. Bijvoorbeeld `http://your_backend.azurewebsites.net`.
+4. Voeg `ViewController.h`in het volgende `#define` toe na uw import-instructies. Vervang de `<Enter Your Backend Endpoint>` tijdelijke aanduiding door de doel-URL die u hebt gebruikt voor het implementeren van de back-end van uw app in de vorige sectie. Bijvoorbeeld `http://your_backend.azurewebsites.net`.
 
     ```objc
     #define BACKEND_ENDPOINT @"<Enter Your Backend Endpoint>"
     ```
 
-5. In uw project, maakt u een nieuwe klasse Cocoa Touch met de naam `RegisterClient` voor interactie met de ASP.NET back-end u hebt gemaakt. Maken van de klasse is overgenomen van `NSObject`. Voeg de volgende code in de `RegisterClient.h`.
+5. Maak in uw project een nieuwe cacao Touch-klasse met `RegisterClient` de naam naar de interface met de back-end van de ASP.net die u hebt gemaakt. De klasse van overnemen van `NSObject`maken. Voeg vervolgens de volgende code toe in `RegisterClient.h`de.
 
     ```objc
     @interface RegisterClient : NSObject
@@ -107,7 +109,7 @@ Als u gebruiken van Mobile Apps als uw back-endservice wilt, raadpleegt u de [Mo
     @end
     ```
 
-6. In de `RegisterClient.m`, werken de `@interface` sectie:
+6. Werk in `RegisterClient.m`de sectie het `@interface` volgende bij:
 
     ```objc
     @interface RegisterClient ()
@@ -125,7 +127,7 @@ Als u gebruiken van Mobile Apps als uw back-endservice wilt, raadpleegt u de [Mo
     @end
     ```
 
-7. Vervang de `@implementation` sectie in de RegisterClient.m door de volgende code:
+7. Vervang de `@implementation` sectie in RegisterClient. m door de volgende code:
 
     ```objc
     @implementation RegisterClient
@@ -286,11 +288,11 @@ Als u gebruiken van Mobile Apps als uw back-endservice wilt, raadpleegt u de [Mo
     @end
     ```
 
-    Deze code implementeert de logica die wordt beschreven in het artikel richtlijnen [registreren vanuit uw back-end](notification-hubs-push-notification-registration-management.md#registration-management-from-a-backend) met NSURLSession voor het uitvoeren van REST-aanroepen naar de back-end van uw app en NSUserDefaults voor het lokaal opslaan van de registratie-id die wordt geretourneerd door de Notification hub.
+    Met deze code wordt de logica geïmplementeerd die wordt beschreven in het artikel richt lijnen voor het [registreren van de back-end van uw app](notification-hubs-push-notification-registration-management.md#registration-management-from-a-backend) met NSURLSESSION om rest-aanroepen naar de back-end van uw app uit te voeren en NSUserDefaults de registratie die door de notification hub wordt geretourneerd, lokaal op
 
-    Deze klasse moet de eigenschap `authorizationHeader` moet worden ingesteld om te kunnen goed werken. Deze eigenschap is ingesteld door de `ViewController` klasse na de aanmelding.
+    Voor deze klasse moet de `authorizationHeader` eigenschap worden ingesteld om correct te kunnen werken. Deze eigenschap wordt na de aanmelding `ViewController` ingesteld door de klasse.
 
-8. In `ViewController.h`, Voeg een `#import` -instructie voor `RegisterClient.h`. Voeg vervolgens een verklaring voor het apparaattoken toe en de verwijzing naar een `RegisterClient` exemplaar de `@interface` sectie:
+8. Voeg `ViewController.h`in een `#import` instructie toe voor `RegisterClient.h`. Voeg vervolgens een declaratie voor het token apparaat en de verwijzing naar `RegisterClient` een exemplaar in `@interface` de sectie toe:
 
     ```objc
     #import "RegisterClient.h"
@@ -299,7 +301,7 @@ Als u gebruiken van Mobile Apps als uw back-endservice wilt, raadpleegt u de [Mo
     @property (strong, nonatomic) RegisterClient* registerClient;
     ```
 
-9. ViewController.m, Voeg een verklaring persoonlijke methode in de `@interface` sectie:
+9. In view controller. m voegt u een declaratie van een persoonlijke methode `@interface` toe aan de sectie:
 
     ```objc
     @interface ViewController () <UITextFieldDelegate, NSURLConnectionDataDelegate, NSXMLParserDelegate>
@@ -312,9 +314,9 @@ Als u gebruiken van Mobile Apps als uw back-endservice wilt, raadpleegt u de [Mo
     ```
 
     > [!NOTE]
-    > Het volgende codefragment is niet het schema voor een veilige verificatie, vervangt u de implementatie van de `createAndSetAuthenticationHeaderWithUsername:AndPassword:` met uw specifieke verificatiemechanisme die genereert een verificatietoken om te worden verbruikt door de register-client-klasse, bijvoorbeeld OAuth, Active Directory.
+    > Het volgende code fragment is geen beveiligd verificatie schema. u moet de implementatie van de `createAndSetAuthenticationHeaderWithUsername:AndPassword:` met uw specifieke verificatie mechanisme vervangen door het genereren van een verificatie token dat wordt gebruikt door de client klasse registreren, bijvoorbeeld OAuth, Active Directory.
 
-10. Klik in de `@implementation` sectie van `ViewController.m`, voeg de volgende code, waarmee de implementatie voor het instellen van de apparaat-token en verificatie-header worden toegevoegd.
+10. Voeg vervolgens in `@implementation` de sectie `ViewController.m`van de volgende code toe, waarmee de implementatie wordt toegevoegd voor het instellen van het apparaat-token en de verificatie-header.
 
     ```objc
     -(void) setDeviceToken: (NSData*) deviceToken
@@ -341,9 +343,9 @@ Als u gebruiken van Mobile Apps als uw back-endservice wilt, raadpleegt u de [Mo
     }
     ```
 
-    U ziet hoe het apparaattoken stellen, stelt u het logboek in knop. Het is omdat de view-controller wordt als onderdeel van de actie aanmelding wordt geregistreerd voor pushmeldingen kunt verzenden met de back-end. Daarom kan niet wilt dat Log In actie toegankelijk totdat het token device juist is ingesteld. U kunt de aanmelding van de push-registratie loskoppelen, zolang de voormalige voordat de laatste gebeurt.
+    U ziet hoe het instellen van het apparaat-token de knop aanmelden mogelijk maakt. Als onderdeel van de aanmeldings actie registreert de controller de weer gave voor push meldingen met de back-end van de app. Daarom wilt u niet dat aanmeldings actie toegankelijk is totdat het token van het apparaat correct is ingesteld. U kunt de aanmelding ontkoppelen van de push registratie, zolang het voormalige gebeurt vóór de laatste.
 
-11. In ViewController.m, gebruikt u de volgende codefragmenten voor het implementeren van de actiemethode voor uw **aanmelden** knop en een methode voor het verzenden van het meldingsbericht met behulp van de ASP.NET-back-end.
+11. Gebruik in view controller. m de volgende fragmenten om de actie methode voor de **aanmeldings** knop en een methode voor het verzenden van het meldings bericht te implementeren met behulp van de ASP.net-back-end.
 
     ```objc
     - (IBAction)LogInAction:(id)sender {
@@ -418,7 +420,7 @@ Als u gebruiken van Mobile Apps als uw back-endservice wilt, raadpleegt u de [Mo
     }
     ```
 
-12. Bijwerken van de actie voor de **melding verzenden** knop gebruikt u de back-end van ASP.NET en verzenden naar een PNS ingeschakeld door een switch.
+12. Werk de actie voor de knop **melding verzenden** bij om de ASP.net-back-end te gebruiken en te verzenden naar een PNS die is ingeschakeld door een switch.
 
     ```objc
     - (IBAction)SendNotificationMessage:(id)sender
@@ -444,7 +446,7 @@ Als u gebruiken van Mobile Apps als uw back-endservice wilt, raadpleegt u de [Mo
     }
     ```
 
-13. In de `ViewDidLoad` functie, het volgende toevoegen aan een exemplaar maken van de `RegisterClient` instantie en stel de gemachtigde voor uw tekstvelden.
+13. Voeg in `ViewDidLoad` de functie het volgende toe om het `RegisterClient` exemplaar te instantiëren en de gemachtigde in te stellen voor uw tekst velden.
 
     ```objc
     self.UsernameField.delegate = self;
@@ -453,7 +455,7 @@ Als u gebruiken van Mobile Apps als uw back-endservice wilt, raadpleegt u de [Mo
     self.registerClient = [[RegisterClient alloc] initWithEndpoint:BACKEND_ENDPOINT];
     ```
 
-14. Nu beschikbaar in de `AppDelegate.m`, verwijdert u alle inhoud van de methode `application:didRegisterForPushNotificationWithDeviceToken:` en vervang deze door de volgende (Zorg ervoor dat de weergavecontroller de meest recente apparaattoken opgehaald uit de APNs bevat):
+14. Verwijder nu alle inhoud van de-methode `application:didRegisterForPushNotificationWithDeviceToken:` en vervang deze door de volgende (om ervoor te zorgen dat de weergave controller het meest recente apparaatbeleid bevat dat is opgehaald uit de APNs): `AppDelegate.m`
 
     ```objc
     // Add import to the top of the file
@@ -467,7 +469,7 @@ Als u gebruiken van Mobile Apps als uw back-endservice wilt, raadpleegt u de [Mo
     }
     ```
 
-15. Ten slotte in `AppDelegate.m`, zorg ervoor dat u hebt de volgende methode:
+15. `AppDelegate.m`Ten slotte moet u de volgende methode hebben:
 
     ```objc
     - (void)application:(UIApplication *)application didReceiveRemoteNotification: (NSDictionary *)userInfo {
@@ -478,19 +480,19 @@ Als u gebruiken van Mobile Apps als uw back-endservice wilt, raadpleegt u de [Mo
 
 ## <a name="test-the-application"></a>De toepassing testen
 
-1. In XCode, moet u de app uitvoeren op een fysiek iOS-apparaat (push-meldingen niet in de simulator werken).
-2. In de iOS-app UI, voert u dezelfde waarde voor zowel gebruikersnaam en wachtwoord. Klik vervolgens op **aanmelden**.
+1. In XCode voert u de app uit op een fysiek iOS-apparaat (push meldingen werken niet in de simulator).
+2. Voer in de gebruikers interface van de iOS-app dezelfde waarde in voor de gebruikers naam en het wacht woord. Klik vervolgens op **Aanmelden**.
 
-    ![iOS testen toepassing][2]
+    ![iOS-test toepassing][2]
 
-3. U ziet een melding van de registratie van geslaagde pop-upvenster. Klik op **OK**.
+3. Er wordt een pop-upvenster weer gegeven waarin u wordt geïnformeerd over het slagen van de registratie. Klik op **OK**.
 
-    ![iOS testen melding weergegeven][3]
+    ![iOS-test melding weer gegeven][3]
 
-4. In de **ontvanger gebruikersnaamtag* tekst en voer de naam label gebruikt in combinatie met de registratie van een ander apparaat.
-5. Geef een bericht en klikt u op **melding verzenden**. Alleen de apparaten waarvoor een registratie met de naam van geadresseerde gebruikerstag ontvangen de melding. Het is alleen naar gebruikers verzonden.
+4. Voer in het tekst veld **ontvanger gebruikers* naam de code in die wordt gebruikt voor de registratie van een ander apparaat.
+5. Voer een meldings bericht in en klik op **melding verzenden**. Alleen apparaten met een registratie met het label gebruikers naam ontvanger ontvangen het meldings bericht. Deze wordt alleen naar deze gebruikers verzonden.
 
-    ![iOS Testmelding gelabelde][4]
+    ![melding over gelabelde iOS-test][4]
 
 ## <a name="next-steps"></a>Volgende stappen
 

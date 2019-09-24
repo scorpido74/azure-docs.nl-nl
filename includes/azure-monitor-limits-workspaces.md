@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/07/2019
 ms.author: robb
 ms.custom: include file
-ms.openlocfilehash: 5d0c43fbcc1c59c3281f412aad96a3942a5c79b1
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 58a741b369231a353a6b8e282a6e604a63a5727d
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "70392938"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71210197"
 ---
 **Volume en retentie van gegevens verzameling** 
 
@@ -35,21 +35,21 @@ ms.locfileid: "70392938"
 
 **Azure-portal**
 
-| Categorie | Limieten | Opmerkingen |
+| Category | Limieten | Opmerkingen |
 |:---|:---|:---|
 | Maximum aantal records geretourneerd door een logboek query | 10.000 | Verminder de resultaten met behulp van het query bereik, het tijds bereik en filters in de query. |
 
 
 **Data Collector-API**
 
-| Categorie | Limieten | Opmerkingen |
+| Category | Limieten | Opmerkingen |
 |:---|:---|:---|
 | Maximum grootte voor één bericht | 30 MB | Grotere volumes in meerdere berichten splitsen. |
 | Maximale grootte voor veld waarden  | 32 KB | Velden die langer zijn dan 32 KB worden afgebroken. |
 
 **Zoek-API**
 
-| Categorie | Limieten | Opmerkingen |
+| Category | Limieten | Opmerkingen |
 |:---|:---|:---|
 | Maximum aantal records dat wordt geretourneerd in één query | 500,000 | |
 | Maximale grootte van geretourneerde gegevens | 64.000.000 bytes (~ 61 MiB)| |
@@ -58,12 +58,25 @@ ms.locfileid: "70392938"
 
 **Algemene limieten voor werk ruimten**
 
-| Categorie | Limieten | Opmerkingen |
+| Category | Limieten | Opmerkingen |
 |:---|:---|:---|
 | Maximum aantal kolommen in een tabel         | 500 | |
 | Maximum aantal tekens voor de kolom naam | 500 | |
 | Regio's op capaciteit | US - west-centraal | U kunt momenteel geen nieuwe werk ruimte maken in deze regio, omdat deze de limiet voor tijdelijke capaciteit heeft. Deze limiet is gepland voor eind oktober 2019. |
 | Gegevensexport | Momenteel niet beschikbaar | Gebruik Azure function-of Logic-app om gegevens samen te voegen en te exporteren. | 
+
+**Gegevens opname frequentie**
+
+Azure Monitor is een grootschalige gegevens service waarmee duizenden klanten elke maand terabytes aan gegevens verzenden in een groei tempo. De standaard drempel voor opname snelheden is ingesteld op **500 MB/min** per werk ruimte. Als u gegevens met een hoger snelheid naar één werk ruimte verzendt, worden sommige gegevens verwijderd en wordt er om de 6 uur een gebeurtenis verzonden naar de *bewerkings* tabel in uw werk ruimte, terwijl de drempel waarde blijft overschreden. Als uw opname volume de frequentie limiet blijft overschrijden of als u verwacht dat deze kort te bereiken, kunt u een verhoging van uw werk ruimte aanvragen door een ondersteunings aanvraag te openen.
+ 
+Als u een melding wilt ontvangen over een dergelijke gebeurtenis in uw werk ruimte, maakt u een [waarschuwings regel](../articles/azure-monitor/platform/alerts-log.md) voor het logboek met behulp van de volgende query met de logica van een waarschuwing op basis van het aantal resultaten dat is gelukt dan nul.
+
+``` Kusto
+Operation
+|where OperationCategory == "Ingestion"
+|where Detail startswith "The rate of data crossed the threshold"
+``` 
+
 
 >[!NOTE]
 >Afhankelijk van hoe lang u Log Analytics hebt gebruikt, hebt u mogelijk toegang tot verouderde prijs categorieën. Meer informatie over [log Analytics verouderde prijs categorieën](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#legacy-pricing-tiers). 
