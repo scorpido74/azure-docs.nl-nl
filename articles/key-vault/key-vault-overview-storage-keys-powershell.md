@@ -1,52 +1,68 @@
 ---
 title: Beheerd opslag account Azure Key Vault-Power shell-versie
-description: De functie Managed Storage-account biedt een schijnloze integratie tussen Azure Key Vault en een Azure-opslag account.
+description: De functie Managed Storage-account biedt een naadloze integratie tussen Azure Key Vault en een Azure Storage-account.
 ms.topic: conceptual
 ms.service: key-vault
 author: msmbaldwin
 ms.author: mbaldwin
 manager: rkarlin
-ms.date: 03/01/2019
-ms.openlocfilehash: 7968c045a59e86ecb89c0cc797936210b9cfb07d
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.date: 09/10/2019
+ms.openlocfilehash: 225d9b715c56e4813a8e26d881c876e7bd498155
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70883284"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71204211"
 ---
-# <a name="azure-key-vault-managed-storage-account---powershell"></a>Beheerd opslag account Azure Key Vault-Power shell
+# <a name="manage-storage-account-keys-with-key-vault-and-azure-powershell"></a>Sleutels voor opslag accounts beheren met Key Vault en Azure PowerShell
 
-> [!NOTE]
-> [Azure Storage-integratie met Azure Active Directory (Azure AD) is nu](../storage/common/storage-auth-aad.md)beschikbaar als preview-versie. We raden u aan Azure AD te gebruiken voor verificatie en autorisatie, waarmee u toegang krijgt tot Azure-opslag op basis van OAuth2-tokens, net als bij Azure Key Vault. Hierdoor kunt u:
-> - Verifieer uw client toepassing met behulp van een toepassings-of gebruikers-id in plaats van de referenties van het opslag account. 
-> - Gebruik een door [Azure AD beheerde identiteit](/azure/active-directory/managed-identities-azure-resources/) als deze wordt uitgevoerd op Azure. Beheerde identiteiten verwijderen de nood zaak voor client verificatie helemaal en het opslaan van referenties in of met uw toepassing.
-> - Gebruik op rollen gebaseerd Access Control (RBAC) voor het beheren van autorisatie, die ook door Key Vault wordt ondersteund.
-> - AAD-toegang tot het opslag account werkt niet voor toegang tot tabellen vanaf nog.
+Een Azure-opslag account gebruikt referenties die bestaan uit een account naam en een sleutel. De sleutel wordt automatisch gegenereerd en fungeert als een wacht woord in plaats van een als cryptografische sleutel. Key Vault beheert Storage-account sleutels door ze op te slaan als [Key Vault geheimen](/azure/key-vault/about-keys-secrets-and-certificates#key-vault-secrets). 
+
+U kunt met behulp van de sleutel functie voor de Key Vault beheerde opslag accounts een lijst (synchronisatie) met een Azure-opslag account maken en de sleutels periodiek opnieuw genereren (draaien). U kunt sleutels voor zowel opslag accounts als klassieke opslag accounts beheren.
+
+Houd rekening met de volgende punten wanneer u de sleutel functie beheerde opslag account gebruikt:
+
+- Sleutel waarden worden nooit geretourneerd als antwoord op een aanroeper.
+- Alleen Key Vault moet de sleutels van uw opslag account beheren. Beheer de sleutels niet zelf en voorkom conflicten met Key Vault processen.
+- Alleen een enkel Key Vault-object moet de sleutels van het opslag account beheren. Geen sleutel beheer van meerdere objecten toestaan.
+- U kunt Key Vault aanvragen om uw opslag account te beheren met een gebruikers-principal, maar niet met een service-principal.
+- Sleutels opnieuw genereren met behulp van alleen Key Vault. De sleutels van uw opslag account niet hand matig opnieuw genereren.
+
+U kunt het beste Azure Storage Integration gebruiken met Azure Active Directory (Azure AD), de cloud-gebaseerde identiteits-en toegangs beheer service van micro soft. Azure AD-integratie is beschikbaar voor [Azure-blobs en-wacht rijen](../storage/common/storage-auth-aad.md)en biedt toegang tot Azure Storage op basis van OAuth2-tokens (net als Azure Key Vault).
+
+Met Azure AD kunt u uw client toepassing verifiëren met behulp van een toepassings-of gebruikers-id in plaats van de referenties van het opslag account. U kunt een door [Azure AD beheerde identiteit](/azure/active-directory/managed-identities-azure-resources/) gebruiken wanneer u in azure uitvoert. Beheerde identiteiten verwijderen de nood zaak voor client verificatie en het opslaan van referenties in of met uw toepassing.
+
+Azure AD gebruikt op rollen gebaseerd toegangs beheer (RBAC) voor het beheren van autorisatie, die ook door Key Vault wordt ondersteund.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Een [Azure-opslag account](/azure/storage/storage-create-storage-account) gebruikt een referentie die bestaat uit een account naam en een sleutel. De sleutel wordt automatisch gegenereerd en fungeert als een ' wacht woord ' in plaats van een cryptografische sleutel. Key Vault kunt deze sleutels voor opslag accounts beheren door ze op te slaan als [Key Vault geheimen](/azure/key-vault/about-keys-secrets-and-certificates#key-vault-secrets). 
+## <a name="service-principal-application-id"></a>Service-Principal-toepassings-ID
 
-## <a name="overview"></a>Overzicht
+Een Azure AD-Tenant voorziet elke geregistreerde toepassing van een [Service-Principal](/azure/active-directory/develop/developer-glossary#service-principal-object). De Service-Principal fungeert als de toepassings-ID, die wordt gebruikt tijdens het instellen van de autorisatie voor toegang tot andere Azure-resources via RBAC.
 
-Met de functie Managed Storage account Key Vault worden namens u verschillende beheer taken uitgevoerd:
+Key Vault is een micro soft-toepassing die vooraf is geregistreerd in alle Azure AD-tenants. Key Vault is geregistreerd onder dezelfde toepassings-ID in elke Azure-Cloud.
 
-- Lijst met sleutels (synchroniseert) met een Azure-opslag account.
-- Hiermee worden de sleutels periodiek opnieuw gegenereerd (gedraaid).
-- Beheert sleutels voor zowel opslag accounts als klassieke opslag accounts.
-- Sleutel waarden worden nooit geretourneerd als antwoord op de aanroeper.
+| tenants | Cloud | Toepassings-id |
+| --- | --- | --- |
+| Azure AD | Azure Government | `7e7c393b-45d0-48b1-a35e-2905ddf8183c` |
+| Azure AD | Azure openbaar | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
+| Overige  | Any | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
 
-Wanneer u de sleutel functie voor beheerde opslag accounts gebruikt:
+## <a name="prerequisites"></a>Vereisten
 
-- **Alleen Key Vault toestaan om de sleutels van uw opslag account te beheren.** Probeer ze zelf niet zelf te beheren, omdat u de processen van Key Vault verstoort.
-- **Niet toestaan dat opslag account sleutels worden beheerd door meer dan één Key Vault-object**.
-- **De sleutels van uw opslag account niet hand matig opnieuw genereren**. We raden u aan deze opnieuw te genereren via Key Vault.
+Als u deze hand leiding wilt volt ooien, moet u eerst het volgende doen:
 
-In het volgende voor beeld ziet u hoe u Key Vault kunt toestaan om de sleutels van uw opslag account te beheren.
+- [Installeer de Azure PowerShell-module](/powershell/azure/install-az-ps?view=azps-2.6.0).
+- [Een sleutel kluis maken](quick-create-powershell.md)
+- [Maak een Azure Storage-account](../storage/common/storage-quickstart-create-account.md?tabs=azure-powershell). De naam van het opslag account mag alleen kleine letters en cijfers bevatten. De naam moet tussen de 3 en 24 tekens lang zijn.
+      
 
-## <a name="connect-to-your-azure-account"></a>Verbinding maken met uw Azure-account
+## <a name="manage-storage-account-keys"></a>Sleutels voor opslag accounts beheren
+
+### <a name="connect-to-your-azure-account"></a>Verbinding maken met uw Azure-account
 
 Verifieer uw Power shell-sessie met de cmdlet [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-2.5.0) . 
+
 ```azurepowershell-interactive
 Connect-AzAccount
 ```
@@ -56,31 +72,33 @@ Als u meerdere Azure-abonnementen hebt, kunt u deze weer geven met behulp van de
 Set-AzContext -SubscriptionId <subscriptionId>
 ```
 
-## <a name="authorize-key-vault-to-access-to-your-storage-account"></a>Key Vault toestemming geven om toegang te krijgen tot uw opslag account
+### <a name="set-variables"></a>Variabelen instellen
 
-> [!IMPORTANT]
-> Een Azure AD-Tenant voorziet elke geregistreerde toepassing van een **[Service-Principal](/azure/active-directory/develop/developer-glossary#service-principal-object)** , die fungeert als de identiteit van de toepassing. De toepassings-ID van de service-principal wordt gebruikt bij het verlenen van autorisatie voor toegang tot andere Azure-resources, via op rollen gebaseerd toegangs beheer (RBAC). Omdat Key Vault een micro soft-toepassing is, wordt deze vooraf geregistreerd in alle Azure AD-tenants onder dezelfde toepassings-ID, binnen elke Azure-Cloud:
-> - Azure AD-tenants in de Azure Government-Cloud `7e7c393b-45d0-48b1-a35e-2905ddf8183c`gebruiken toepassings-id.
-> - Azure AD-tenants in de open bare Azure-Cloud en alle `cfa8b339-82a2-471a-a3c9-0fc0be7a4093`andere toepassingen gebruiken toepassings-id.
+Stel eerst de variabelen in die moeten worden gebruikt door de Power shell-cmdlets in de volgende stappen. Zorg ervoor dat u de <YourResourceGroupName>tijdelijke <YourStorageAccountName>aanduidingen <YourKeyVaultName> ,,, en $keyVaultSpAppId instelt op `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` (zoals opgegeven in de [Service Principal Application id](#service-principal-application-id)hierboven).
 
-Voordat Key Vault toegang tot de sleutels van uw opslag account kunt krijgen en beheren, moet u de toegang tot uw opslag account autoriseren. Voor de Key Vault toepassing zijn machtigingen vereist om sleutels voor uw opslag account *weer te geven* en *opnieuw te genereren* . Deze machtigingen worden ingeschakeld via de ingebouwde rol van de provider voor het [opslag account](/azure/role-based-access-control/built-in-roles#storage-account-key-operator-service-role)van de rol van RBAC Role. 
-
-Wijs deze rol toe aan de Key Vault Service-Principal, waardoor het bereik wordt beperkt tot uw opslag account, met behulp van de volgende stappen. Zorg ervoor dat u de `$resourceGroupName`variabelen `$storageAccountName`, `$storageAccountKey`, en `$keyVaultName` bijwerkt voordat u het script uitvoert:
+We gebruiken ook de cmdlets Azure PowerShell [Get-AzContext](/powershell/module/az.accounts/get-azcontext?view=azps-2.6.0) en [Get-AzStorageAccount](/powershell/module/az.storage/get-azstorageaccount?view=azps-2.6.0) om uw gebruikers-id en de context van uw Azure Storage-account op te halen.
 
 ```azurepowershell-interactive
-# TODO: Update with the resource group where your storage account resides, your storage account name, the name of your active storage account key, and your Key Vault instance name
-$resourceGroupName = "rgContoso"
-$storageAccountName = "sacontoso"
+$resourceGroupName = <YourResourceGroupName>
+$storageAccountName = <YourStorageAccountName>
+$keyVaultName = <YourKeyVaultName>
+$keyVaultSpAppId = "cfa8b339-82a2-471a-a3c9-0fc0be7a4093"
 $storageAccountKey = "key1"
-$keyVaultName = "kvContoso"
-$keyVaultSpAppId = "cfa8b339-82a2-471a-a3c9-0fc0be7a4093" # See "IMPORTANT" block above for information on Key Vault Application IDs
 
-# Get your User Id for later commands
+# Get your User Id
 $userId = (Get-AzContext).Account.Id
 
 # Get a reference to your Azure storage account
 $storageAccount = Get-AzStorageAccount -ResourceGroupName $resourceGroupName -StorageAccountName $storageAccountName
+```
 
+### <a name="give-key-vault-access-to-your-storage-account"></a>Key Vault toegang geven tot uw opslag account
+
+Voordat Key Vault toegang tot de sleutels van uw opslag account kunt krijgen en beheren, moet u de toegang tot uw opslag account autoriseren. Voor de Key Vault toepassing zijn machtigingen vereist om sleutels voor uw opslag account *weer te geven* en *opnieuw te genereren* . Deze machtigingen worden ingeschakeld via de ingebouwde rol van de provider voor het [opslag account](/azure/role-based-access-control/built-in-roles#storage-account-key-operator-service-role)van de rol van RBAC Role. 
+
+Wijs deze rol toe aan de Key Vault Service-Principal, waardoor het bereik wordt beperkt tot uw opslag account met behulp van de Azure PowerShell [New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment?view=azps-2.6.0) cmdlet.
+
+```azurepowershell-interactive
 # Assign RBAC role "Storage Account Key Operator Service Role" to Key Vault, limiting the access scope to your storage account. For a classic storage account, use "Classic Storage Account Key Operator Service Role." 
 New-AzRoleAssignment -ApplicationId $keyVaultSpAppId -RoleDefinitionName 'Storage Account Key Operator Service Role' -Scope $storageAccount.Id
 ```
@@ -101,12 +119,9 @@ CanDelegate        : False
 
 Als Key Vault al is toegevoegd aan de rol van uw opslag account, ontvangt u een *' de roltoewijzing bestaat al. '* optreedt. U kunt ook de roltoewijzing controleren met behulp van de pagina toegangs beheer (IAM) van het opslag account in de Azure Portal.  
 
-## <a name="give-your-user-account-permission-to-managed-storage-accounts"></a>Uw gebruikers account machtigingen geven voor beheerde opslag accounts
+### <a name="give-your-user-account-permission-to-managed-storage-accounts"></a>Uw gebruikers account machtigingen geven voor beheerde opslag accounts
 
->[!TIP] 
-> Net zoals Azure AD voorziet in een **Service-Principal** voor de identiteit van een toepassing, wordt een gebruikers- **Principal** verstrekt voor de identiteit van een gebruiker. De gebruikers-principal kan vervolgens worden gemachtigd om toegang te krijgen tot Key Vault via Key Vault machtigingen voor toegangs beleid.
-
-Werk met dezelfde Power shell-sessie het Key Vault toegangs beleid voor beheerde opslag accounts bij. Met deze stap worden machtigingen voor opslag accounts toegepast op uw gebruikers account, zodat u toegang hebt tot de functies van het Managed Storage-account: 
+Gebruik de Azure PowerShell [set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy?view=azps-2.6.0) cmdlet om het toegangs beleid voor Key Vault bij te werken en machtigingen voor het opslag account te verlenen aan uw gebruikers account.
 
 ```azurepowershell-interactive
 # Give your user principal access to all storage account permissions, on your Key Vault instance
@@ -116,12 +131,13 @@ Set-AzKeyVaultAccessPolicy -VaultName $keyVaultName -UserPrincipalName $userId -
 
 Houd er rekening mee dat machtigingen voor opslag accounts niet beschikbaar zijn op de pagina toegangs beleid van het opslag account in de Azure Portal.
 
-## <a name="add-a-managed-storage-account-to-your-key-vault-instance"></a>Een beheerd opslag account toevoegen aan uw Key Vault-exemplaar
+### <a name="add-a-managed-storage-account-to-your-key-vault-instance"></a>Een beheerd opslag account toevoegen aan uw Key Vault-exemplaar
 
-Maak met dezelfde Power shell-sessie een beheerd opslag account in uw Key Vault-exemplaar. Met `-DisableAutoRegenerateKey` de schakel optie wordt de sleutel van het opslag account niet opnieuw gegenereerd.
+Gebruik de Azure PowerShell cmdlet [add-AzKeyVaultManagedStorageAccount](/powershell/module/az.keyvault/add-azkeyvaultmanagedstorageaccount?view=azps-2.6.0) voor het maken van een beheerd opslag account in uw Key Vault-exemplaar. Met `-DisableAutoRegenerateKey` de schakel optie wordt de sleutel van het opslag account niet opnieuw gegenereerd.
 
 ```azurepowershell-interactive
 # Add your storage account to your Key Vault's managed storage accounts
+
 Add-AzKeyVaultManagedStorageAccount -VaultName $keyVaultName -AccountName $storageAccountName -AccountResourceId $storageAccount.Id -ActiveKeyName $storageAccountKey -DisableAutoRegenerateKey
 ```
 
@@ -143,10 +159,11 @@ Tags                :
 
 ### <a name="enable-key-regeneration"></a>Sleutel opnieuw genereren inschakelen
 
-Als u wilt dat Key Vault de sleutels van uw opslag account periodiek opnieuw genereert, kunt u een periode voor opnieuw genereren instellen. In het volgende voor beeld wordt een periode voor het opnieuw genereren van drie dagen ingesteld. Na drie dagen genereert Key Vault Key2 opnieuw en wordt de actieve sleutel van Key2 naar Key1 gewisseld.
+Als u wilt dat Key Vault de sleutels van uw opslag account periodiek opnieuw genereert, kunt u de cmdlet Azure PowerShell [add-AzKeyVaultManagedStorageAccount](/powershell/module/az.keyvault/add-azkeyvaultmanagedstorageaccount?view=azps-2.6.0) gebruiken om een nieuwe periode in te stellen. In dit voor beeld stellen we een regeneratie periode van drie dagen in. Na drie dagen genereert Key Vault Key2 opnieuw en wordt de actieve sleutel van Key2 naar Key1 gewisseld.
 
 ```azurepowershell-interactive
 $regenPeriod = [System.Timespan]::FromDays(3)
+
 Add-AzKeyVaultManagedStorageAccount -VaultName $keyVaultName -AccountName $storageAccountName -AccountResourceId $storageAccount.Id -ActiveKeyName $storageAccountKey -RegenerationPeriod $regenPeriod
 ```
 
@@ -165,6 +182,85 @@ Created             : 11/19/2018 11:54:47 PM
 Updated             : 11/19/2018 11:54:47 PM
 Tags                : 
 ```
+
+## <a name="shared-access-signature-tokens"></a>Shared Access Signature-tokens
+
+U kunt ook Key Vault vragen om de tokens voor Shared Access-hand tekeningen te genereren. Een shared access signature biedt gedelegeerde toegang tot resources in uw opslagaccount. U kunt clients toegang verlenen tot resources in uw opslag account zonder uw account sleutels te delen. Een Shared Access Signature biedt u een veilige manier om uw opslag resources te delen zonder in te boeten voor uw account sleutels.
+
+De opdrachten in deze sectie voeren de volgende acties uit:
+
+- Stel de definitie van een gedeelde toegangs handtekening voor een account in. 
+- Maak een account voor Shared Access Signature-token voor blob-, bestands-, tabel-en wachtrij Services. Het token is gemaakt voor resource type-service,-container en-object. Het token wordt gemaakt met alle machtigingen, via https en met de opgegeven begin-en eind datum.
+- Stel in de kluis een definitie in van een Key Vault Managed Storage-hand tekening voor gedeelde opslag. De definitie heeft de sjabloon-URI van het Shared Access Signature-token dat is gemaakt. De definitie heeft het type `account` Shared Access Signature en is N dagen geldig.
+- Controleer of de Shared Access-hand tekening is opgeslagen in de sleutel kluis als een geheim.
+- 
+### <a name="set-variables"></a>Variabelen instellen
+
+Stel eerst de variabelen in die moeten worden gebruikt door de Power shell-cmdlets in de volgende stappen. Zorg ervoor dat u de <YourStorageAccountName> en <YourKeyVaultName> tijdelijke aanduidingen bijwerkt.
+
+We gebruiken ook de Azure PowerShell [New-AzStorageContext](/powershell/module/az.storage/new-azstoragecontext?view=azps-2.6.0) -cmdlets om de context van uw Azure Storage-account op te halen.
+
+```azurepowershell-interactive
+$storageAccountName = <YourStorageAccountName>
+$keyVaultName = <YourKeyVaultName>
+
+$storageContext = New-AzStorageContext -StorageAccountName $storageAccountName -Protocol Https -StorageAccountKey Key1
+```
+
+### <a name="create-a-shared-access-signature-token"></a>Een token voor een Shared Access-hand tekening maken
+
+Maak een definitie van een hand tekening voor gedeelde toegang met behulp van de Azure PowerShell [New-AzStorageAccountSASToken-](/powershell/module/az.storage/new-azstorageaccountsastoken?view=azps-2.6.0) cmdlets.
+ 
+```azurepowershell-interactive
+$start = [System.DateTime]::Now.AddDays(-1)
+$end = [System.DateTime]::Now.AddMonths(1)
+
+$sasToken = New-AzStorageAccountSasToken -Service blob,file,Table,Queue -ResourceType Service,Container,Object -Permission "racwdlup" -Protocol HttpsOnly -StartTime $start -ExpiryTime $end -Context $storageContext
+```
+De waarde van $sasToken ziet er ongeveer als volgt uit.
+
+```console
+?sv=2018-11-09&sig=5GWqHFkEOtM7W9alOgoXSCOJO%2B55qJr4J7tHQjCId9S%3D&spr=https&st=2019-09-18T18%3A25%3A00Z&se=2019-10-19T18%3A25%3A00Z&srt=sco&ss=bfqt&sp=racupwdl
+```
+
+### <a name="generate-a-shared-access-signature-definition"></a>Een definitie van een gedeelde Access-hand tekening genereren
+
+Gebruik de Azure PowerShell [set-AzKeyVaultManagedStorageSasDefinition](/powershell/module/az.keyvault/set-azkeyvaultmanagedstoragesasdefinition?view=azps-2.6.0) cmdlet om een definitie van een Shared Access-hand tekening te maken.  U kunt de naam van uw keuze opgeven voor de `-Name` para meter.
+
+```azurepowershell-interactive
+Set-AzKeyVaultManagedStorageSasDefinition -AccountName $storageAccountName -VaultName $keyVaultName -Name <YourSASDefinitionName> -TemplateUri $sasToken -SasType 'account' -ValidityPeriod ([System.Timespan]::FromDays(30))
+```
+
+### <a name="verify-the-shared-access-signature-definition"></a>De definitie van de hand tekening voor gedeelde toegang controleren
+
+U kunt controleren of de definitie van de hand tekening voor gedeelde toegang is opgeslagen in uw sleutel kluis met behulp van de cmdlet Azure PowerShell [Get-AzKeyVaultSecret](/powershell/module/az.keyvault/get-azkeyvaultsecret?view=azps-2.6.0) .
+
+Zoek eerst de definitie van de hand tekening voor gedeelde toegang in uw sleutel kluis.
+
+```azurepowershell-interactive
+Get-AzKeyVaultSecret -vault-name <YourKeyVaultName>
+```
+
+Het geheim dat overeenkomt met uw SAS-definitie heeft de volgende eigenschappen:
+
+```console
+Vault Name   : <YourKeyVaultName>
+Name         : <SecretName>
+...
+Content Type : application/vnd.ms-sastoken-storage
+Tags         :
+```
+
+U kunt nu de cmdlet [Get-AzKeyVaultSecret](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-show) en de eigenschap Secret `Name` gebruiken om de inhoud van dat geheim weer te geven.
+
+```azurepowershell-interactive
+$secret = Get-AzKeyVaultSecret -VaultName <YourKeyVaultName> -Name <SecretName>
+
+Write-Host $secret.SecretValueText
+```
+
+Met deze opdracht wordt de SAS-definitie teken reeks weer gegeven.
+
 
 ## <a name="next-steps"></a>Volgende stappen
 

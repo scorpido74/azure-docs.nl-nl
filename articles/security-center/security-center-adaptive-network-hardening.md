@@ -3,9 +3,8 @@ title: Adaptieve netwerk beveiliging in Azure Security Center | Microsoft Docs
 description: " Meer informatie over het inschakelen van adaptieve netwerk beveiliging in Azure Security Center. "
 services: security-center
 documentationcenter: na
-author: monhaber
-manager: barbkess
-editor: monhaber
+author: memildin
+manager: rkarlin
 ms.assetid: 09d62d23-ab32-41f0-a5cf-8d80578181dd
 ms.service: security-center
 ms.devlang: na
@@ -13,13 +12,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/24/2019
-ms.author: v-mohabe
-ms.openlocfilehash: 2f82f3fe6f5cb6808ba606125ee0869475a60274
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.author: memildin
+ms.openlocfilehash: 7de0d7bacdf2194b3e1a303842c56a6a017d8d62
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68295891"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71202764"
 ---
 # <a name="adaptive-network-hardening-in-azure-security-center"></a>Adaptieve netwerk beveiliging in Azure Security Center
 Meer informatie over het configureren van adaptieve netwerk beveiliging in Azure Security Center.
@@ -99,11 +98,11 @@ Enkele belang rijke richt lijnen voor het wijzigen van een adaptieve netwerk bep
 1. In het venster **regel bewerken** werkt u de details bij die u wilt wijzigen en klikt u op **Opslaan**.
 
    > [!NOTE]
-   > Nadat u op **Opslaan**hebt geklikt, is de regel gewijzigd. *U hebt deze echter niet toegepast op de NSG.* Als u deze wilt Toep assen, moet u de regel in de lijst selecteren  en op afdwingen klikken (zoals in de volgende stap wordt uitgelegd).
+   > Nadat u op **Opslaan**hebt geklikt, is de regel gewijzigd. *U hebt deze echter niet toegepast op de NSG.* Als u deze wilt Toep assen, moet u de regel in de lijst selecteren en op afdwingen klikken (zoals in de volgende stap wordt uitgelegd).
 
    ![regel bewerken](./media/security-center-adaptive-network-hardening/edit-hard-rule3.png)
 
-3. Als u de bijgewerkte regel wilt Toep assen, selecteert u in de lijst de bijgewerkte regel en klikt u op afdwingen.
+3. Als u de bijgewerkte regel wilt Toep assen, selecteert u in de lijst de bijgewerkteregel en klikt u op afdwingen.
 
     ![regel afdwingen](./media/security-center-adaptive-network-hardening/enforce-hard-rule.png)
 
@@ -123,9 +122,9 @@ U kunt een regel ' toestaan ' toevoegen die niet wordt aanbevolen door Security 
 1. Voer in het venster **nieuwe regel** de details in en klik op **toevoegen**.
 
    > [!NOTE]
-   > Nadat u op **toevoegen**hebt geklikt, is de regel toegevoegd en wordt deze weer gegeven met de andere aanbevolen regels. U hebt deze echter niet toegepast op de NSG. Als u deze wilt activeren, moet u de regel in de lijst selecteren en  op afdwingen klikken (zoals in de volgende stap wordt uitgelegd).
+   > Nadat u op **toevoegen**hebt geklikt, is de regel toegevoegd en wordt deze weer gegeven met de andere aanbevolen regels. U hebt deze echter niet toegepast op de NSG. Als u deze wilt activeren, moet u de regel in de lijst selecteren en op afdwingen klikken (zoals in de volgende stap wordt uitgelegd).
 
-3. Als u de nieuwe regel wilt Toep assen, selecteert u de nieuwe regel in de lijst en klikt u op afdwingen.
+3. Als u de nieuwe regel wilt Toep assen, selecteert u de nieuwe regel in delijst en klikt u op afdwingen.
 
     ![regel afdwingen](./media/security-center-adaptive-network-hardening/enforce-hard-rule.png)
 

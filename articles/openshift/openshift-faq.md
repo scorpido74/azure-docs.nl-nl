@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 05/08/2019
-ms.openlocfilehash: 6ba252ccf7a46e93b2057b6822f2aae298f537d1
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: 86875643950e11f1e5030676c1ab3825039749ed
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69991632"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71203533"
 ---
 # <a name="azure-red-hat-openshift-faq"></a>Veelgestelde vragen over Azure Red Hat open Shift
 
@@ -157,10 +157,52 @@ Let op wanneer u specifieke labels gebruikt:
 
 ## <a name="what-is-the-maximum-number-of-pods-in-an-aro-cluster-what-is-the-maximum-number-of-pods-per-node-in-aro"></a>Wat is het maximum aantal peulen in een ARO-cluster?  Wat is het maximum aantal peulen per knoop punt in ARO?
 
-Raadpleeg upstream-documenten voor open [SHIFT](https://docs.openshift.com/container-platform/3.11/scaling_performance/cluster_limits.html#scaling-performance-current-cluster-limits) voor meer informatie. Red Hat open Shift 3,11 heeft een limiet van 250 pod/knoop punten, terwijl [Aro een limiet heeft van 20 reken knooppunten](https://docs.microsoft.com/azure/openshift/openshift-faq#what-cluster-operations-are-available), zodat het maximum aantal peulen dat in een Aro-cluster wordt ondersteund, wordt gecaps naar 250 * 20 = 5000.
+Raadpleeg [upstream-documenten](https://docs.openshift.com/container-platform/3.11/scaling_performance/cluster_limits.html#scaling-performance-current-cluster-limits) voor open Shift voor meer informatie. Red Hat open Shift 3,11 heeft een limiet van 250 pod/knoop punten, terwijl [Aro een limiet heeft van 20 reken knooppunten](https://docs.microsoft.com/azure/openshift/openshift-faq#what-cluster-operations-are-available), zodat het maximum aantal peulen dat in een Aro-cluster wordt ondersteund, wordt gecaps naar 250 * 20 = 5000.
 
 ## <a name="can-we-specify-ip-ranges-for-deployment-on-the-private-vnet-avoiding-clashes-with-other-corporate-vnets-once-peered"></a>Kunnen we IP-bereiken voor implementatie op het privé-VNET opgeven, waardoor er geen conflict is met andere bedrijfs VNETs zodra het peerend is?
 
 Azure Red Hat open Shift ondersteunt VNET-peering en stelt de klant in staat om een VNET te leveren aan de peer en een VNET-CIDR waarin het open Shift-netwerk werkt.
 
 Het VNET dat door ARO is gemaakt, wordt beveiligd en accepteert geen configuratie wijzigingen. Het VNET dat wordt beheerd door de klant en zich in het abonnement bevindt.
+
+## <a name="does-the-cluster-reside-in-a-customer-subscription"></a>Bevindt het cluster zich in een klant abonnement? 
+
+De door Azure beheerde toepassing bevindt zich in een vergrendelde resource groep met het abonnement van de klant. De klant kan objecten in die RG weer geven, maar niet wijzigen.
+
+## <a name="is-the-sdn-module-configurable"></a>Kan de SDN-module worden geconfigureerd?
+
+SDN is open Shift-OVS-networkpolicy en kan niet worden geconfigureerd.
+
+## <a name="which-unix-rights-in-iaas-are-available-for-mastersinfraapp-nodes"></a>Welke UNIX-rechten (in IaaS) zijn beschikbaar voor modellen/infra structuur/app-knoop punten?
+
+Niet van toepassing op deze aanbieding. Toegang tot knoop punt is niet toegestaan.
+
+## <a name="which-ocp-rights-do-we-have-cluster-admin-project-admin"></a>Welke OCP-rechten hebben we? Cluster-beheerder? Project-beheerder?
+
+Zie overzicht van Azure Red Hat open SHIFT [Cluster Administration](https://docs.openshift.com/aro/admin_guide/index.html)voor meer informatie.
+
+## <a name="which-kind-of-federation-with-ldap"></a>Welk type Federatie met LDAP?
+
+Dit wordt bereikt via Azure AD-integratie. 
+
+## <a name="is-there-any-element-in-aro-shared-with-other-customers-or-is-everything-independent"></a>Is er een element in ARO gedeeld met andere klanten? Of is alles onafhankelijk?
+
+Elk Azure Red Hat open Shift-cluster is toegewezen aan een bepaalde klant en valt binnen het abonnement van de klant. 
+
+## <a name="can-we-choose-any-persistent-storage-solution-ocs"></a>Kunnen we een permanente opslag oplossing kiezen. OCS? 
+
+Er zijn twee opslag klassen beschikbaar waaruit u kunt kiezen: Azure-schijf en Azure-bestand.
+
+## <a name="how-is-a-cluster-updated-including-majors-and-minors-due-to-vulnerabilities"></a>Hoe wordt een cluster bijgewerkt (inclusief belang rijke en minder jarigen als gevolg van beveiligings problemen)?
+
+Zie [Wat is het algemene upgrade proces?](https://docs.microsoft.com/azure/openshift/openshift-faq#what-is-the-general-upgrade-process)
+
+## <a name="what-azure-load-balancer-is-used-by-aro-is-it-standard-or-basic-and-is-it-configurable"></a>Welke Azure Load Balancer wordt gebruikt door ARO?  Is it Standard of Basic en kan het worden geconfigureerd?
+
+ARO maakt gebruik van standaard Azure Load Balancer en kan niet worden geconfigureerd.
+
+## <a name="can-aro-use-netapp-based-storage"></a>Kan ARO opslag gebruiken?
+
+Op het moment van de enige ondersteunde opslag opties zijn Azure disk en Azure File Storage-klassen. 
+
+

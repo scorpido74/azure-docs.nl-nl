@@ -3,9 +3,8 @@ title: Systeem updates Toep assen in Azure Security Center | Microsoft Docs
 description: In dit document wordt beschreven hoe u de Azure Security Center aanbevelingen implementeert **systeem updates Toep assen** en **opnieuw opstarten na systeem updates**.
 services: security-center
 documentationcenter: na
-author: rkarlin
-manager: barbkess
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: e5bd7f55-38fd-4ebb-84ab-32bd60e9fa7a
 ms.service: security-center
 ms.devlang: na
@@ -13,13 +12,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
-ms.author: v-mohabe
-ms.openlocfilehash: 7f9c5b702c0da8de4476508114be911a9d74f78a
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.author: memildin
+ms.openlocfilehash: 1688e85c6e6ed57892ccdffdf0813c8628127cc5
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69531461"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71202462"
 ---
 # <a name="apply-system-updates-in-azure-security-center"></a>Systeem updates Toep assen in Azure Security Center
 Azure Security Center bewaakt dagelijks Windows-en Linux-virtuele machines (Vm's) en computers voor ontbrekende updates van het besturings systeem. Security Center haalt een lijst met beschik bare beveiligings-en essentiële updates op van Windows Update of Windows Server Update Services (WSUS), afhankelijk van welke service op een Windows-computer is geconfigureerd. Security Center controleert ook op de nieuwste updates in Linux-systemen. Als op uw virtuele machine of computer een systeem update ontbreekt, wordt Security Center aanbevolen om systeem updates toe te passen.
@@ -33,7 +32,7 @@ In dit voor beeld gebruiken we **reken kracht**.
 
    ![Reken proces selecteren][1]
 
-2. Selecteeronder Compute de optie **ontbrekende systeem updates**. Het dash board **systeem updates Toep assen** wordt geopend.
+2. Selecteer onder **Compute**de optie **ontbrekende systeem updates**. Het dash board **systeem updates Toep assen** wordt geopend.
 
    ![Het dash board systeem updates Toep assen][2]
 

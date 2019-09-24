@@ -8,27 +8,27 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 1625f0e6f9bfe8297cae2770e63107bf4f19f95e
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: f577059e1ebf70e3a9dfe9e538a9d3d49d7c8e96
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70012987"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71200006"
 ---
 # <a name="build-and-deploy-the-opc-vault-certificate-management-service"></a>De OPC kluis Certificate Management-service bouwen en implementeren
 
 In dit artikel wordt uitgelegd hoe u de OPC kluis Certificate Management-service in azure implementeert.
 
 > [!NOTE]
-> Zie de GitHub [OPC kluis-opslag plaats](https://github.com/Azure/azure-iiot-opc-vault-service)voor meer informatie over de implementatie details en instructies.
+> Zie de GitHub [OPC kluis-opslag plaats](https://github.com/Azure/azure-iiot-opc-vault-service)voor meer informatie.
 
 ## <a name="prerequisites"></a>Vereisten
 
 ### <a name="install-required-software"></a>Vereiste software installeren
 
 De bewerking voor het maken en implementeren van het pakket is momenteel beperkt tot Windows.
-De voor beelden zijn allemaal geschreven C# voor .NET Standard, die nodig zijn voor het bouwen van de service en voor beelden voor implementatie.
-Alle hulpprogram ma's die u nodig hebt voor .NET Standard, worden geleverd met de .net core-hulpprogram ma's. [Hier](https://docs.microsoft.com/dotnet/articles/core/getting-started) kunt u zien wat u nodig hebt.
+De voor beelden zijn allemaal geschreven C# voor .NET Standard, die u nodig hebt om de service en voor beelden te maken voor implementatie.
+Alle hulpprogram ma's die u nodig hebt voor .NET Standard, worden geleverd met de .NET core-hulpprogram ma's. Zie [aan de slag met .net core](https://docs.microsoft.com/dotnet/articles/core/getting-started).
 
 1. [Installeer .net Core 2.1 +][dotnet-install].
 2. [Docker installeren][docker-url] (optioneel, alleen als de lokale docker-build is vereist).
@@ -37,26 +37,25 @@ Alle hulpprogram ma's die u nodig hebt voor .NET Standard, worden geleverd met d
 
 ### <a name="clone-the-repository"></a>De opslagplaats klonen
 
-Als u dit nog niet hebt gedaan, moet u deze GitHub-opslag plaats klonen.  Open een opdracht prompt of Terminal en voer het volgende uit:
+Als u dit nog niet hebt gedaan, moet u deze GitHub-opslag plaats klonen. Open een opdracht prompt of Terminal en voer de volgende handelingen uit:
 
 ```bash
 git clone https://github.com/Azure/azure-iiot-opc-vault-service
 cd azure-iiot-opc-vault-service 
 ```
 
-of kloon de opslag plaats rechtstreeks in Visual Studio 2017.
+U kunt de opslag plaats ook rechtstreeks klonen in Visual Studio 2017.
 
 ### <a name="build-and-deploy-the-azure-service-on-windows"></a>De Azure-service in Windows bouwen en implementeren
 
-Een Power shell-script biedt een eenvoudige manier om de OPC-kluis micro service en de toepassing te implementeren.<br>
+Een Power shell-script biedt een eenvoudige manier om de OPC-kluis micro service en de toepassing te implementeren.
 
 1. Open een Power shell-venster in de hoofdmap opslag plaats. 
-3. Ga naar de map Deploy`cd deploy`
-3. Kies een naam `myResourceGroup` die waarschijnlijk geen conflict veroorzaakt met andere geïmplementeerde webpagina's. [Hieronder](#website-name-already-in-use) ziet u hoe de namen van webpagina's worden gekozen op basis van de naam van de resource groep.
-5. De implementatie starten met `.\deploy.ps1` voor interactieve installatie<br>
-of voer een volledige opdracht regel in:  
+3. Ga naar de map `cd deploy`Deploy.
+3. Kies een naam `myResourceGroup` die waarschijnlijk geen conflict veroorzaakt met andere geïmplementeerde webpagina's. Zie de sectie "website naam al in gebruik" verderop in dit artikel.
+5. Start de implementatie met `.\deploy.ps1` voor interactieve installatie of voer een volledige opdracht regel in:  
 `.\deploy.ps1  -subscriptionName "MySubscriptionName" -resourceGroupLocation "East US" -tenantId "myTenantId" -resourceGroupName "myResourceGroup"`
-7. Als u van plan bent om met deze implementatie te `-development 1` ontwikkelen, voegt u toe om de Swagger-gebruikers interface in te scha kelen en om fout opsporing te implementeren.
+7. Als u van plan bent om te ontwikkelen met deze `-development 1` implementatie, voegt u toe om de Swagger-gebruikers interface in te scha kelen en om debug-builds te implementeren.
 6. Volg de instructies in het script om u aan te melden bij uw abonnement en om aanvullende informatie te geven.
 9. Nadat de bewerking is voltooid, wordt het volgende bericht weer gegeven:
    ```
@@ -73,48 +72,50 @@ of voer een volledige opdracht regel in:
    .\myResourceGroup-gds.cmd
    ```
 
-Volg de [onderstaande](#troubleshooting-deployment-failures)stappen voor het geval u problemen ondervindt.
+   > [!NOTE]
+   > In het geval van problemen raadpleegt u de sectie ' problemen met implementatie fouten oplossen ' verderop in dit artikel.
 
 8. Open uw favoriete browser en open de toepassings pagina:`https://myResourceGroup.azurewebsites.net`
-8. Geef de web-app en de OPC-kluis micro service een paar minuten om na de implementatie te warmten. De start pagina van het web kan op Maxi maal een minuut vastlopen totdat u de eerste reacties krijgt.
-11. Ga als volgt te rond kijken naar de Swagger API:`https://myResourceGroup-service.azurewebsites.net`
-13. Voor het starten van een lokale GDS-server `.\myResourceGroup-gds.cmd` met DotNet start of met `.\myResourceGroup-dockergds.cmd`docker start.
+8. Geef de web-app en de OPC-kluis micro service een paar minuten om na de implementatie te warmten. De start pagina van het web loopt mogelijk vast bij het eerste gebruik, tot een minuut, totdat u de eerste reacties krijgt.
+11. Als u de Swagger API wilt bekijken, opent u:`https://myResourceGroup-service.azurewebsites.net`
+13. Start `.\myResourceGroup-gds.cmd`om een lokale GDS-server te starten met dotnet. Start `.\myResourceGroup-dockergds.cmd`met docker.
 
-Als klikken is het mogelijk om een build opnieuw te implementeren met precies dezelfde instellingen. Houd er rekening mee dat een dergelijke bewerking alle toepassings geheimen vernieuwt en mogelijk sommige instellingen in de toepassings registraties van de Azure Active Directory (Azure AD) opnieuw kan instellen.
+Het is mogelijk om een build opnieuw te implementeren met precies dezelfde instellingen. Houd er rekening mee dat een dergelijke bewerking alle toepassings geheimen vernieuwt en mogelijk sommige instellingen in de toepassings registraties van de Azure Active Directory (Azure AD) opnieuw kan instellen.
 
-Het is ook mogelijk alleen de binaire bestanden van de web-app te implementeren. Met de para `-onlyBuild 1` meter New ZIP-pakketten van de service en de app worden geïmplementeerd in de webtoepassingen.
+Het is ook mogelijk alleen de binaire bestanden van de web-app te implementeren. Met de para `-onlyBuild 1`meter worden nieuwe ZIP-pakketten van de service en de app geïmplementeerd naar de webtoepassingen.
 
-Nadat de implementatie is voltooid, kunt u beginnen met het gebruik van de services: [De OPC-kluis certificaat beheer service beheren](howto-opc-vault-manage.md)
+Nadat de implementatie is voltooid, kunt u beginnen met het gebruik van de services. Zie [de OPC-kluis certificaat beheer service beheren](howto-opc-vault-manage.md).
 
 ## <a name="delete-the-services-from-the-subscription"></a>De services verwijderen uit het abonnement
 
-1. Meld u aan bij de Azure Portal `https://portal.azure.com`:.
+Dit doet u al volgt:
+
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 2. Ga naar de resource groep waarin de service is geïmplementeerd.
-3. Selecteer `Delete resource group` en bevestig.
-4. Na een korte tijd dat alle geïmplementeerde service onderdelen zijn verwijderd.
-5. Ga nu naar `Azure Active Directory/App registrations`.
-6. Er moeten drie registraties worden vermeld voor elke geïmplementeerde resource groep met de volgende namen `resourcegroup-client`: `resourcegroup-module`, `resourcegroup-service`,.
-Elke registratie moet afzonderlijk worden verwijderd.
-7. Nu worden alle geïmplementeerde onderdelen verwijderd.
+3. Selecteer **Resourcegroep verwijderen** en bevestig dit.
+4. Na enkele ogen blikken worden alle geïmplementeerde service onderdelen verwijderd.
+5. Ga naar **Azure Active Directory** > **app-registraties**.
+6. Er moeten drie registraties worden vermeld voor elke geïmplementeerde resource groep. De registraties hebben de volgende namen: `resourcegroup-client`, `resourcegroup-module`, `resourcegroup-service`. Verwijder elke registratie afzonderlijk.
+
+Nu worden alle geïmplementeerde onderdelen verwijderd.
 
 ## <a name="troubleshooting-deployment-failures"></a>Implementatie fouten oplossen
 
 ### <a name="resource-group-name"></a>Resourcegroepnaam
 
-Zorg ervoor dat u een korte en eenvoudige naam voor de resource groep gebruikt.  De naam wordt ook gebruikt voor het benoemen van resources en het voor voegsel van de service-URL, maar moet voldoen aan de vereisten voor resource naamgeving.  
+Gebruik een korte en eenvoudige naam voor de resource groep. De naam wordt ook gebruikt voor het benoemen van resources en het voor voegsel van de service-URL. Daarom moet het voldoen aan de vereisten voor de naamgeving van resources.  
 
 ### <a name="website-name-already-in-use"></a>De naam van de website wordt al gebruikt
 
-Het is mogelijk dat de naam van de website al in gebruik is.  Als u deze fout uitvoert, moet u een andere naam voor de resource groep gebruiken. De hostnamen die worden gebruikt door het implementatie script zijn https://resourcegroupname.azurewebsites.net : https://resourgroupname-service.azurewebsites.net en.
+Het is mogelijk dat de naam van de website al in gebruik is. U moet een andere naam voor de resource groep gebruiken. De hostnamen die worden gebruikt door het implementatie script zijn https://resourcegroupname.azurewebsites.net : https://resourgroupname-service.azurewebsites.net en.
 Andere namen van services worden gebouwd op basis van de combi natie van korte naam-hashes en zijn waarschijnlijk niet strijdig met andere services.
 
-### <a name="azure-active-directory-azure-ad-registration"></a>Registratie van Azure Active Directory (Azure AD) 
+### <a name="azure-ad-registration"></a>Azure AD-registratie 
 
-Het implementatie script probeert drie Azure AD-toepassingen in Azure Active Directory te registreren.  
-Afhankelijk van uw machtigingen in de geselecteerde Azure AD-Tenant kan deze bewerking mislukken.   Er zijn twee opties:
+Het implementatie script probeert drie Azure AD-toepassingen in azure AD te registreren. Afhankelijk van uw machtigingen in de geselecteerde Azure AD-Tenant kan deze bewerking mislukken. Er zijn twee opties:
 
-1. Als u een Azure AD-Tenant uit een lijst met tenants hebt gekozen, start u het script opnieuw en kiest u een ander in de lijst.
-2. U kunt ook een persoonlijke Azure AD-Tenant in een ander abonnement implementeren, het script opnieuw starten en selecteren om het te gebruiken.
+- Als u een Azure AD-Tenant uit een lijst met tenants hebt gekozen, start u het script opnieuw en kiest u een ander in de lijst.
+- U kunt ook een persoonlijke Azure AD-Tenant implementeren in een ander abonnement. Start het script opnieuw en selecteer om het te gebruiken.
 
 ## <a name="deployment-script-options"></a>Opties voor implementatie script
 
@@ -125,28 +126,28 @@ Het script heeft de volgende para meters:
 -resourceGroupName
 ```
 
-Dit kan de naam van een bestaande of een nieuwe resource groep zijn.
+Dit kan de naam zijn van een bestaande of een nieuwe resource groep.
 
 ```
 -subscriptionId
 ```
 
 
-Optioneel, het abonnement-ID waar resources worden geïmplementeerd.
+Dit is de abonnements-ID waar resources worden geïmplementeerd. Het is optioneel.
 
 ```
 -subscriptionName
 ```
 
 
-Of u kunt ook de naam van het abonnement.
+U kunt ook de naam van het abonnement gebruiken.
 
 ```
 -resourceGroupLocation
 ```
 
 
-Optioneel, een locatie van een resource groep. Als deze is opgegeven, wordt geprobeerd een nieuwe resource groep te maken op deze locatie.
+Dit is een locatie voor de resource groep. Als deze para meter wordt opgegeven, wordt geprobeerd een nieuwe resource groep te maken op deze locatie. Deze para meter is ook optioneel.
 
 
 ```
@@ -154,19 +155,19 @@ Optioneel, een locatie van een resource groep. Als deze is opgegeven, wordt gepr
 ```
 
 
-Te gebruiken Azure AD-Tenant. 
+Dit is de Azure AD-Tenant die moet worden gebruikt. 
 
 ```
 -development 0|1
 ```
 
-Optioneel, om te implementeren voor ontwikkeling. Gebruik debug build en stel de ASP.Net-omgeving in op Development. Maak '. publishsettings ' voor importeren in Visual Studio 2017 zodat de app en de service rechtstreeks kunnen worden geïmplementeerd.
+Dit is om te implementeren voor ontwikkeling. Gebruik Build debug en stel de ASP.NET-omgeving in op Development. Maken `.publishsettings` voor import in Visual Studio 2017, zodat de app en de service rechtstreeks kunnen worden geïmplementeerd. Deze para meter is ook optioneel.
 
 ```
 -onlyBuild 0|1
 ```
 
-Optioneel, om alleen de web-apps opnieuw te bouwen en opnieuw te implementeren en om de docker-containers opnieuw samen te stellen.
+Dit is het opnieuw samen stellen en opnieuw implementeren van alleen de web-apps en het opnieuw samen stellen van de docker-containers. Deze para meter is ook optioneel.
 
 [azure-free]:https://azure.microsoft.com/free/
 [powershell-install]:https://azure.microsoft.com/downloads/#powershell
@@ -175,7 +176,7 @@ Optioneel, om alleen de web-apps opnieuw te bouwen en opnieuw te implementeren e
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu u hebt geleerd hoe u een nieuwe OPC-kluis kunt implementeren, is dit de voorgestelde volgende stap:
+Nu u hebt geleerd hoe u een nieuwe OPC-kluis kunt implementeren, hebt u de volgende opties:
 
 > [!div class="nextstepaction"]
 > [OPC-kluis beheren](howto-opc-vault-manage.md)

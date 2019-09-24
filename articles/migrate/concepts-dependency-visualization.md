@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 07/18/2019
 ms.author: hamusa
-ms.openlocfilehash: e7b69e57d4e01c292a2c6d032ba995d1936b88dc
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 33594e09778b9a629645e12357e6bafe561ad35e
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70142890"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71202910"
 ---
 # <a name="dependency-visualization"></a>Visualisatie van afhankelijkheden
 
@@ -44,11 +44,14 @@ Azure Migrate gebruikt de [servicetoewijzing](../operations-management-suite/ope
     ![Werkruimte toevoegen](./media/how-to-create-group-machine-dependencies/workspace.png)
 
 - Tijdens het koppelen van een werk ruimte krijgt u de mogelijkheid om een nieuwe werk ruimte te maken of een bestaande te koppelen:
-  - Wanneer u een nieuwe werk ruimte maakt, moet u een naam opgeven voor de werk ruimte. De werk ruimte wordt vervolgens gemaakt in een regio in dezelfde [Azure-geografie](https://azure.microsoft.com/global-infrastructure/geographies/) als het migratie project.
+  - Wanneer u een nieuwe werk ruimte maakt, moet u een naam opgeven voor de werk ruimte. U kunt de [regio](https://azure.microsoft.com/global-infrastructure/regions/) kiezen waarin de werk ruimte wordt gemaakt.
   - Wanneer u een bestaande werk ruimte koppelt, kunt u kiezen uit alle beschik bare werk ruimten in hetzelfde abonnement als het migratie project. Houd er rekening mee dat alleen deze werk ruimten worden weer gegeven die zijn gemaakt in een regio waar [servicetoewijzing wordt ondersteund](../azure-monitor/insights/vminsights-enable-overview.md#prerequisites). Als u een werk ruimte wilt koppelen, moet u ervoor zorgen dat u toegang hebt tot de werk ruimte.
 
   > [!NOTE]
   > Zodra u een werk ruimte aan een project hebt gekoppeld, kunt u deze later niet meer wijzigen.
+
+  > [!NOTE]
+  > Azure Migrate biedt momenteel ondersteuning voor het maken van OMS-werk ruimte in VS-Oost, Zuidoost-Azië en Europa-west regio's. Als de werk ruimte wordt gemaakt buiten Azure Migrate in een andere regio, kan deze momenteel niet worden gekoppeld aan een Azure Migrate-project. 
 
 - De gekoppelde werk ruimte is gelabeld met het sleutel **migratie project**en de waarde van de **project naam**, die u kunt gebruiken om te zoeken in de Azure Portal.
 - Als u wilt navigeren naar de werk ruimte die is gekoppeld aan het project, gaat u naar de sectie met **essentiële onderdelen** van de pagina **overzicht** van het project en opent u de werk ruimte

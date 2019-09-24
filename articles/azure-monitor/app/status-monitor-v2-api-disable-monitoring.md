@@ -3,7 +3,7 @@ title: 'Naslag informatie voor Azure Status Monitor v2 API: Bewaking uitschakele
 description: Status Monitor v2 API-referentie. Disable-ApplicationInsightsMonitoring. Bewaak de prestaties van de website zonder de website opnieuw te implementeren. Werkt met ASP.NET-Web-apps die on-premises worden gehost, in Vm's of op Azure.
 services: application-insights
 documentationcenter: .net
-author: MS-TimothyMothra
+author: TimothyMothra
 manager: alexklim
 ms.assetid: 769a5ea4-a8c6-4c18-b46c-657e864e24de
 ms.service: application-insights
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: 368365251ec61464869c6120ded2ec2237acffea
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: af105a6a819ced475f490d3c99fc1e63d8eee5c8
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326403"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71203431"
 ---
 # <a name="status-monitor-v2-api-disable-applicationinsightsmonitoring"></a>Status Monitor v2-API: Disable-ApplicationInsightsMonitoring
 

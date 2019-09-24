@@ -3,9 +3,8 @@ title: Werken met beveiligings beleid | Microsoft Docs
 description: In dit artikel wordt beschreven hoe u kunt werken met beveiligings beleid in Azure Security Center.
 services: security-center
 documentationcenter: na
-author: monhaber
-manager: barbkess
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: 2d248817-ae97-4c10-8f5d-5c207a8019ea
 ms.service: security-center
 ms.devlang: na
@@ -13,14 +12,14 @@ ms.topic: conceptual
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 7/18/2019
-ms.author: v-mohabe
-ms.openlocfilehash: 1820c31053c13a0f3039812b31df415bc9fa4fdc
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.date: 07/18/2019
+ms.author: memildin
+ms.openlocfilehash: 11e1c837e416a5d2105f494c43823298edfd4355
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910376"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71200494"
 ---
 # <a name="working-with-security-policies"></a>Werken met beveiligingsbeleid
 
@@ -228,10 +227,10 @@ In dit voor beeld ziet u hoe u een toewijzing verwijdert:
 |Systeemupdates |Ontbrekende systeem updates bewaken in Azure Security Center |systemUpdatesMonitoringEffect|
 |Storage-versleuteling |Ontbrekende BLOB-versleuteling voor opslag accounts controleren |storageEncryptionMonitoringEffect|
 |JIT-netwerk toegang |Bewaak mogelijke netwerk JIT-toegang (just-in-time) in Azure Security Center |jitNetworkAccessMonitoringEffect |
-|Adaptieve toepassingsbesturingselementen |Mogelijke app-white list in Azure Security Center bewaken |adaptiveApplicationControlsMonitoringEffect|
+|Besturingselementen voor adaptieve toepassingen |Mogelijke app-white list in Azure Security Center bewaken |adaptiveApplicationControlsMonitoringEffect|
 |Netwerkbeveiligingsgroepen |Bewaak strikte netwerk toegang in Azure Security Center |networkSecurityGroupsMonitoringEffect| 
 |Beveiligingsconfiguraties |Beveiligings problemen met het besturings systeem in Azure Security Center bewaken |systemConfigurationsMonitoringEffect| 
-|Eindpuntbeveiliging |Ontbrekende Endpoint Protection in Azure Security Center controleren |endpointProtectionMonitoringEffect |
+|Endpoint Protection |Ontbrekende Endpoint Protection in Azure Security Center controleren |endpointProtectionMonitoringEffect |
 |Schijfversleuteling |Niet-versleutelde VM-schijven in Azure Security Center bewaken |diskEncryptionMonitoringEffect|
 |Evaluatie van beveiligingsproblemen |VM-beveiligings problemen in Azure Security Center bewaken |vulnerabilityAssessmentMonitoringEffect|
 |Web Application Firewall |Niet-beveiligde webtoepassing in Azure Security Center bewaken |webApplicationFirewallMonitoringEffect |

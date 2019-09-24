@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 08/30/2019
+ms.date: 09/21/2019
 ms.author: diberry
-ms.openlocfilehash: 1724e2d81f1a18da5a200637cd25636166d5cb37
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: 8e52a37376e91e5c529cddd9b211d81c4b2fa442
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70206751"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71203838"
 ---
 # <a name="quickstart-qna-maker-client-library-for-net"></a>Quickstart: QnA Maker-client bibliotheek voor .NET
 
@@ -113,7 +113,7 @@ Maak in de methode **Main** een variabele voor de Azure-sleutel van uw resource 
 
 Maak vervolgens een [ApiKeyServiceClientCredentials](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.apikeyserviceclientcredentials?view=azure-dotnet) -object met uw sleutel en gebruik dit met uw eind punt om een [QnAMakerClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.qnamakerclient?view=azure-dotnet) -object te maken.
 
-Als uw sleutel zich niet in de `westus` regio bevindt, zoals in deze voorbeeld code wordt weer gegeven, wijzigt u de locatie voor de **eindpunt** variabele. Deze locatie is te vinden op de overzichts pagina voor uw QnA Maker-resource in de Azure Portal.
+Als uw sleutel zich niet in de `westus` regio bevindt, zoals in deze voorbeeld code wordt weer gegeven, wijzigt u de locatie voor de **eindpunt** variabele. Deze locatie is te vinden op de **overzichts** pagina voor uw QnA Maker-resource in de Azure Portal.
 
 [!code-csharp[Authorization to resource key](~/samples-qnamaker-csharp/documentation-samples/quickstarts/Knowledgebase_Quickstart/Program.cs?name=Authorization)]
 
@@ -139,11 +139,15 @@ De laatste regel van de volgende code retourneert de Knowledge Base-ID uit het a
 
 [!code-csharp[Create a knowledge base](~/samples-qnamaker-csharp/documentation-samples/quickstarts/Knowledgebase_Quickstart/Program.cs?name=CreateKB&highlight=29,30)]
 
+Zorg ervoor dat u de [`MonitorOperation`](#get-status-of-an-operation) functie include gebruikt, waarnaar wordt verwezen in de bovenstaande code om een Knowledge Base te kunnen maken. 
+
 ## <a name="update-a-knowledge-base"></a>Een kennisdatabase bijwerken
 
 U kunt een Knowledge Base bijwerken door door te geven in de Knowledge Base-ID en een [UpdatekbOperationDTO](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.models.updatekboperationdto?view=azure-dotnet) met DTO-objecten [toevoegen](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.models.updatekboperationdtoadd?view=azure-dotnet), [bijwerken](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.models.updatekboperationdtoupdate?view=azure-dotnet)en [verwijderen](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.models.updatekboperationdtodelete?view=azure-dotnet) voor de [UpdateAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.knowledgebaseextensions.updateasync?view=azure-dotnet) -methode. Gebruik de methode [MonitorOperation](#get-status-of-an-operation) om te bepalen of de update is geslaagd.
 
 [!code-csharp[Update a knowledge base](~/samples-qnamaker-csharp/documentation-samples/quickstarts/Knowledgebase_Quickstart/Program.cs?name=UpdateKB&highlight=4,13)]
+
+Zorg ervoor dat u de [`MonitorOperation`](#get-status-of-an-operation) functie include gebruikt, waarnaar wordt verwezen in de bovenstaande code om een Knowledge Base te kunnen bijwerken. 
 
 ## <a name="download-a-knowledge-base"></a>Een Knowledge base downloaden
 
@@ -182,6 +186,8 @@ De _lus_ en _taak. delay_ in het volgende code blok worden gebruikt voor het sim
 
 Voer de toepassing uit met de `run` opdracht DotNet in de map van de toepassing.
 
+Alle code fragmenten in dit artikel zijn [beschikbaar](https://github.com/Azure-Samples/cognitive-services-qnamaker-python/blob/master/documentation-samples/quickstarts/knowledgebase_quickstart/knowledgebase_quickstart.py) en kunnen als één bestand worden uitgevoerd.
+
 ```console
 dotnet run
 ```
@@ -203,4 +209,3 @@ Als u een Cognitive Services-abonnement wilt opschonen en verwijderen, kunt u de
 * [Wat is de QnA Maker-API?](../Overview/overview.md)
 * [Een kennisdatabase bewerken](../how-to/edit-knowledge-base.md)
 * [Gebruiks analyse ophalen](../how-to/get-analytics-knowledge-base.md)
-* De broncode voor dit voorbeeld is te vinden op [GitHub](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp/blob/master/documentation-samples/quickstarts/Knowledgebase_Quickstart/Program.cs).

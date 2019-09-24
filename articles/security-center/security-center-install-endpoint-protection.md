@@ -3,9 +3,8 @@ title: Endpoint Protection-problemen beheren met Azure Security Center | Microso
 description: Meer informatie over het beheren van Endpoint Protection-problemen in Azure Security Center.
 services: security-center
 documentationcenter: na
-author: rkarlin
-manager: barbkess
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: 1599ad5f-d810-421d-aafc-892e831b403f
 ms.service: security-center
 ms.devlang: na
@@ -13,13 +12,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/28/2019
-ms.author: rkarlin
-ms.openlocfilehash: 58a220192d6a02c6ad66094e8421405578a82a01
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.author: memildin
+ms.openlocfilehash: b1bcce1e94a64253986ad9b1fd77874ba0a39839
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231314"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71202069"
 ---
 # <a name="manage-endpoint-protection-issues-with-azure-security-center"></a>Endpoint Protection-problemen met Azure Security Center beheren
 Azure Security Center bewaakt de status van antimalware Protection en meldt dit onder de Blade met Endpoint Protection-problemen. Security Center markeert problemen, zoals gedetecteerde bedreigingen en onvoldoende beveiliging, waardoor uw virtuele machines (Vm's) en computers kwetsbaar zijn voor aanvallen op malware. Door de informatie onder **problemen met Endpoint Protection**te gebruiken, kunt u een plan identificeren om eventuele gevonden problemen op te lossen.

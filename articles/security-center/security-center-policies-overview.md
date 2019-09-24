@@ -1,56 +1,55 @@
 ---
-title: Azure Security Center-instellingen | Microsoft Docs
+title: Instellingen voor Azure Security Center | Microsoft Docs
 description: Azure Security Center-instellingen configureren.
 services: security-center
 documentationcenter: na
-author: rkarlin
-manager: barbkess
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: f24b1e4a-cc36-4542-b21e-041453cdfcd8
 ms.service: security-center
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/3/2018
-ms.author: rkarlin
-ms.openlocfilehash: ec674641991a1b5a1e0ca92c133be235dd91dfae
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 09/03/2018
+ms.author: memildin
+ms.openlocfilehash: 4a7254d4ac67ee7d1bf203baf5741638dbc8f3dd
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60703520"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71201607"
 ---
 # <a name="security-center-settings"></a>Instellingen van Security Center
-Dit artikel bevat een overzicht van instellingen in Security Center.
+Dit artikel bevat een overzicht van de instellingen in Security Center.
 
-De volgende instellingen kunnen worden bereikt onder beveiligingsbeleid:
+De volgende instellingen kunnen worden bereikt onder beveiligings beleid:
 
-- **Het verzamelen van gegevens**: Hiermee bepaalt u de configuratie van agent en [gegevensverzameling](https://docs.microsoft.com/azure/security-center/security-center-enable-data-collection) instellingen.
-- **Beveiligingsbeleid**: Bepaalt welke besturingselementen Security Center bewaakt en wordt aanbevolen. U kunt bewerken de [beveiligingsbeleid](tutorial-security-policy.md) in Security Center. U kunt ook [Azure Policy](tutorial-security-policy.md) voor het maken van nieuwe definities, definiëren van extra beleidsregels en toewijzen van beleidsregels binnen beheergroepen. 
-- **E-mailmeldingen**: Hiermee bepaalt u contactpersonen voor beveiliging, en [e-mailmelding](security-center-provide-security-contact-details.md) instellingen.
-- **Prijscategorie**: Hiermee definieert u gratis of standard [prijsselectie](security-center-pricing.md). De laag die u kiest, bepaalt welke Security Center-functies beschikbaar zijn voor resources binnen het bereik. U kunt een laag voor abonnementen en werkruimten.
+- **Gegevens verzameling**: Bepaalt de instellingen voor agent inrichting en [gegevens verzameling](https://docs.microsoft.com/azure/security-center/security-center-enable-data-collection) .
+- **Beveiligings beleid**: Hiermee wordt bepaald welke besturings elementen Security Center bewaakt en wordt aanbevolen. U kunt het [beveiligings beleid](tutorial-security-policy.md) bewerken in Security Center. U kunt [Azure Policy](tutorial-security-policy.md) ook gebruiken voor het maken van nieuwe definities, het definiëren van aanvullende beleids regels en het toewijzen van beleids regels voor verschillende beheer groepen. 
+- **E-mail meldingen**: Hiermee worden de instellingen voor beveiligings contactpersonen en [e-mail meldingen](security-center-provide-security-contact-details.md) bepaald.
+- **Prijscategorie**: Hiermee definieert u een vrije of standaard [prijs selectie](security-center-pricing.md). De laag die u kiest, bepaalt welke Security Center-functies beschikbaar zijn voor resources binnen het bereik. U kunt een laag opgeven voor abonnementen en werk ruimten.
 
 > [!NOTE]
-> U kunt al deze waarden per abonnement instellen. Voor werkruimten, kunt u alleen de gegevensverzameling en -prijscategorie instellen.
+> U kunt al deze opties per abonnement instellen. Voor werk ruimten kunt u alleen gegevens verzameling en prijs categorie instellen.
 >
 
 
-## <a name="who-can-edit-security-policies"></a>Wie kan beveiligingsbeleid bewerken?
-Security Center maakt gebruik van rollen gebaseerd toegangsbeheer (RBAC), waarmee u ingebouwde rollen die kunnen worden toegewezen aan gebruikers, groepen en services in Azure. Wanneer gebruikers Security Center openen, zien ze alleen informatie met betrekking tot ze toegang tot hebben resources. Wat betekent dat gebruikers de rol van toegewezen *eigenaar*, *Inzender*, of *lezer* aan het abonnement de resource behoort. Naast deze rollen zijn er twee specifieke Security Center-rollen:
+## <a name="who-can-edit-security-policies"></a>Wie kan beveiligings beleid bewerken?
+Security Center gebruikt op rollen gebaseerd Access Control (RBAC), dat ingebouwde rollen biedt die kunnen worden toegewezen aan gebruikers, groepen en services in Azure. Wanneer gebruikers Security Center openen, zien ze alleen informatie die betrekking heeft op de resources waartoe ze toegang hebben. Dit betekent dat gebruikers de rol van *eigenaar*, *bijdrager*of *lezer* hebben toegewezen aan het abonnement waartoe de resource behoort. Naast deze rollen zijn er twee specifieke Security Center-rollen:
 
-- **Beveiligingslezer**: Heeft weergaverechten voor Security Center, waaronder aanbevelingen, waarschuwingen, beleid en de gezondheid van, maar ze kunnen geen wijzigingen aanbrengen.
-- **Beveiligingsbeheerder**: Hebben de dezelfde rechten weergeven als *beveiligingslezer*, en ze kunnen ook het beveiligingsbeleid bijwerken en verwijderen van aanbevelingen en waarschuwingen.
+- **Beveiligings lezer**: Beschikken over weergave rechten voor Security Center, waaronder aanbevelingen, waarschuwingen, beleid en status, maar ze kunnen geen wijzigingen aanbrengen.
+- **Beveiligings beheerder**: Hebben dezelfde weergave rechten als de *beveiligings lezer*, en ze kunnen ook het beveiligings beleid bijwerken en aanbevelingen en waarschuwingen negeren.
 
 
 ## <a name="next-steps"></a>Volgende stappen
-In dit artikel hebt u geleerd over het beveiligingsbeleid in Azure Security Center. Zie de volgende artikelen voor meer informatie over Azure Security Center:
+In dit artikel hebt u geleerd over het beveiligings beleid in Azure Security Center. Raadpleeg de volgende artikelen voor meer informatie over Azure Security Center:
 
-* [Beveiligingsbeleid instellen in Azure Security Center](tutorial-security-policy.md): Informatie over het configureren van beveiligingsbeleid voor uw Azure-abonnementen.
-* [Aanbevelingen voor beveiliging in Azure Security Center beheren](security-center-recommendations.md): Leer hoe aanbevelingen van Security Center helpen u uw Azure-resources te beveiligen.
-* [Beveiligingsstatus bewaken in Azure Security Center](security-center-monitoring.md): Meer informatie over het controleren van de status van uw Azure-resources.
-* [Beheren en erop reageren op beveiligingswaarschuwingen in Azure Security Center](security-center-managing-and-responding-alerts.md): Informatie over het beheren van en reageren op beveiligingswaarschuwingen.
-* [Partneroplossingen bewaken met Azure Security Center](security-center-partner-solutions.md): Meer informatie over het bewaken van de status van uw partneroplossingen.
-* [Beveiliging van Azure Security Center gegevens](security-center-data-security.md): Ontdek hoe Security Center beheert en beschermt gegevens.
-* [Veelgestelde vragen over Azure Security Center](security-center-faq.md): Krijg antwoorden op veelgestelde vragen over het gebruik van de service.
-* [Azure-Beveiligingsblog](https://blogs.msdn.com/b/azuresecurity/): Lees het laatste nieuws van Azure-beveiliging en informatie.
+* [Beveiligings beleid instellen in azure Security Center](tutorial-security-policy.md): Meer informatie over het configureren van beveiligings beleid voor uw Azure-abonnementen.
+* [Aanbevelingen voor beveiliging in azure Security Center beheren](security-center-recommendations.md): Lees hoe u met Security Center aanbevelingen uw Azure-resources kunt beveiligen.
+* [Beveiligings status controleren in azure Security Center](security-center-monitoring.md): Meer informatie over het controleren van de status van uw Azure-resources.
+* [Beveiligings waarschuwingen beheren en erop reageren in azure Security Center](security-center-managing-and-responding-alerts.md): Informatie over het beheren van en reageren op beveiligingswaarschuwingen.
+* [Partner oplossingen bewaken met Azure Security Center](security-center-partner-solutions.md): Meer informatie over het bewaken van de status van uw partneroplossingen.
+* [Azure Security Center gegevens beveiliging](security-center-data-security.md): Meer informatie over het Security Center beheren en beveiligen van gegevens.
+* [Azure Security Center Veelgestelde vragen](security-center-faq.md): Krijg antwoorden op veelgestelde vragen over het gebruik van de service.
+* [Azure-beveiligings blog](https://blogs.msdn.com/b/azuresecurity/): Ontvang de meest recente Azure-beveiligings nieuws en-informatie.

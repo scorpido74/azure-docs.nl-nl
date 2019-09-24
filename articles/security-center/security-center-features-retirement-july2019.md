@@ -8,25 +8,24 @@ ms.service: security-center
 ms.topic: article
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: b4367bacf13e121220f12b6587c5ad60ad59d031
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: 6e7263dfa0faf0bf2fd7e8b7d6e050ca6bc95e2a
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910575"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71202204"
 ---
+# <a name="retirement-of-security-center-features-july-2019"></a>Buiten gebruik stellen van Security Center-functies (2019 juli)
+
 > [!NOTE]
 > In dit document vindt u een overzicht van de functies die sinds 31 juli 2019 van Azure Security Center zijn buiten gebruik gesteld.
 >
 >
 
-
-# <a name="retirement-of-security-center-features-july-2019"></a>Buiten gebruik stellen van Security Center-functies (2019 juli)
-
 We hebben een aantal [verbeteringen](https://azure.microsoft.com/updates/?product=security-center) aangebracht in de zes maanden Azure Security Center tot en met 2019.
 Met deze verbeterde mogelijkheden hebben we op 31 juli 2019 enkele redundante functies en gerelateerde Api's verwijderd van Security Center.
 
-De meeste van deze onderdelen die buiten gebruik worden gesteld, kunnen worden vervangen door nieuwe functionaliteit in Azure Security Center of Azure Log Analytics. Andere functies kunnen worden geïmplementeerd met behulp van [Azure Sentinel (preview)](https://azure.microsoft.com/services/azure-sentinel/).
+De meeste van deze buiten gebruik gestelde functies kunnen worden vervangen door andere functies in Azure Security Center of Azure Log Analytics. Andere functies kunnen worden geïmplementeerd met behulp van [Azure Sentinel (preview)](https://azure.microsoft.com/services/azure-sentinel/).
 
 Buiten gebruik gestelde Security Center-functies zijn:
 
@@ -104,11 +103,11 @@ We hebben de knop **Ga naar beveiligings gebeurtenissen toewijzen** en het dash 
 
 ![Toewijzing van beveiligings waarschuwingen-knop][10]
 
-Wanneer u de knop **naar beveiligings gebeurtenissen toewijzen** selecteert, opent u het dash board bedreigings informatie. Het dash board voor bedreigings informatie is buiten gebruik gesteld.
+Wanneer u de knop **naar beveiligings gebeurtenissen toewijzen** selecteert, is het dash board (nu buiten gebruik gesteld) geopend.
 
 ![Het dashboard Bedreigingsinformatie][11]
 
-Wanneer u een werk ruimte kiest om het bijbehorende Threat Intelligence-dash board weer te geven, opent u het scherm Security Alerts (preview) in Log Analytics. Dit scherm is buiten gebruik gesteld.
+Wanneer u een werk ruimte kiest om het bijbehorende Threat Intelligence-dash board weer te geven, hebt u het scherm (nu buiten gebruik gesteld) geopend in Log Analytics.
 
 ![Toewijzing van beveiligings waarschuwingen in Log Analytics][12]
 

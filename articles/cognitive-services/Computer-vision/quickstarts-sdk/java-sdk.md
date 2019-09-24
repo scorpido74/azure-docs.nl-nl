@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.topic: quickstart
 ms.date: 07/25/2019
 ms.author: pafarley
-ms.openlocfilehash: 16a487dc007526f685edb52726f5797303a30c11
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: d0ef228f9f019b6f975ba32cf6a579f328226ae2
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70966992"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71203449"
 ---
 # <a name="quickstart-computer-vision-client-library-for-java"></a>Quickstart: Client bibliotheek voor Java Computer Vision
 
@@ -24,6 +24,7 @@ Ga aan de slag met de Computer Vision-client bibliotheek voor Java. Volg deze st
 Gebruik de Computer Vision-client bibliotheek voor Java om het volgende te doen:
 
 * Analyseer een afbeelding voor Tags, tekst beschrijving, gezichten, inhoud voor volwassenen en meer.
+* Gedrukte en handgeschreven tekst herkennen met de batch-API voor lezen.
 
 [](https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/computervision?view=azure-java-stable) | Voor[beelden](https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision&sort=0) van referentie documentatie[artefact (Maven)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.ComputerVision/) | 
 
@@ -115,6 +116,7 @@ Deze code fragmenten laten zien hoe u de volgende taken kunt uitvoeren met de Co
 
 * [De client verifiëren](#authenticate-the-client)
 * [Een afbeelding analyseren](#analyze-an-image)
+* [Gedrukte en handgeschreven tekst lezen](#read-printed-and-handwritten-text)
 
 ## <a name="authenticate-the-client"></a>De client verifiëren
 
@@ -211,6 +213,29 @@ Met de volgende code worden gegevens over gedetecteerde bezienswaardigheden in d
 Met de volgende code wordt informatie over het type afbeelding&mdash;afgedrukt, ongeacht of het een illustratie of lijn tekening is.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/ComputerVisionQuickstart.java?name=snippet_imagetype)]
+
+## <a name="read-printed-and-handwritten-text"></a>Gedrukte en handgeschreven tekst lezen
+
+Computer Vision kunt zicht bare tekst in een afbeelding lezen en deze converteren naar een teken stroom.
+
+> [!NOTE]
+> U kunt ook tekst in een externe afbeelding lezen met behulp van de URL. Zie de voorbeeld code op [github](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/java/ComputerVision/ComputerVisionQuickstart.java) voor scenario's met betrekking tot externe installatie kopieën.
+
+### <a name="call-the-recognize-api"></a>De recognize API aanroepen
+
+Gebruik eerst de volgende code om de **recognizePrintedTextInStream** -methode voor de gegeven afbeelding aan te roepen. Wanneer u deze code aan uw project toevoegt, moet u de waarde van `localTextImagePath` met het pad naar uw lokale installatie kopie vervangen. 
+
+[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/ComputerVisionQuickstart.java?name=snippet_imagetype)]
+
+### <a name="print-recognize-results"></a>Afdruk herkennings resultaten
+
+Met het volgende code blok wordt de geretourneerde tekst verwerkt en geparseerd om het eerste woord van elke regel af te drukken. U kunt deze code gebruiken om snel inzicht te krijgen in de structuur van een **OcrResult** -exemplaar.
+
+[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/ComputerVisionQuickstart.java?name=snippet_read_print)]
+
+Ten slotte sluit u het try/catch-blok en de definitie van de methode.
+
+[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/ComputerVisionQuickstart.java?name=snippet_read_catch)]
 
 ## <a name="run-the-application"></a>De toepassing uitvoeren
 

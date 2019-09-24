@@ -3,9 +3,8 @@ title: 'Snelstartgids voor Azure Security Center: uw Linux-computers naar Securi
 description: Deze snelstartgids laat zien hoe u uw Linux-computers naar Security Center kunt onboarden.
 services: security-center
 documentationcenter: na
-author: rkarlin
-manager: barbkess
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: 61e95a87-39c5-48f5-aee6-6f90ddcd336e
 ms.service: security-center
 ms.devlang: na
@@ -14,13 +13,13 @@ ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/02/2018
-ms.author: rkarlin
-ms.openlocfilehash: 110dcb1531390b207ae741af07fe0ad18964aae1
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.author: memildin
+ms.openlocfilehash: 82ce466f12acef529b5e45e5dd94c64b94be0f7e
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68816137"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71202882"
 ---
 # <a name="quickstart-onboard-linux-computers-to-azure-security-center"></a>Quickstart: Linux-computers naar Azure Security Center onboarden
 Nadat u uw Azure-abonnementen hebt opgedaan, kunt u Security Center inschakelen voor Linux-resources die buiten Azure worden uitgevoerd, bijvoorbeeld on-premises of in andere Clouds, door een agent in te richten. De agent wordt micro soft Monitoring Agent (MMA) genoemd, maar deze wordt ook wel de OMS-agent genoemd.
@@ -82,7 +81,7 @@ De agent verwijderen:
     `sudo sh ./omsagent-<version>.universal.x64.sh --purge`
 
 ## <a name="next-steps"></a>Volgende stappen
-In deze snelstartgids hebt u de agent op een Linux-computer ingericht. Voor meer informatie over het gebruik van Security Center gaat u verder met de zelfstudie voor het configureren van een beveiligingsbeleid en het beoordelen van de beveiliging van uw resources.
+In deze Quick Start hebt u de agent op een Linux-computer ingericht. Voor meer informatie over het gebruik van Security Center gaat u verder met de zelfstudie voor het configureren van een beveiligingsbeleid en het beoordelen van de beveiliging van uw resources.
 
 > [!div class="nextstepaction"]
 > [Zelfstudie: Beveiligingsbeleid opstellen en beoordelen](tutorial-security-policy.md)

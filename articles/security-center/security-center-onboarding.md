@@ -1,11 +1,10 @@
 ---
 title: Onboarding van Azure Security Center Standard voor verbeterde beveiliging | Microsoft Docs
-description: " Informatie over hoe om te onboarden naar Azure Security Center Standard voor verbeterde beveiliging. "
+description: " Meer informatie over het voorbereiden van Azure Security Center Standard voor verbeterde beveiliging. "
 services: security-center
 documentationcenter: na
-author: monhaber
-manager: barbkess
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: 411d7bae-c9d4-4e83-be63-9f2f2312b075
 ms.service: security-center
 ms.devlang: na
@@ -13,35 +12,35 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/19/2019
-ms.author: v-mohabe
-ms.openlocfilehash: e5d93d2f1f1c082610cb14a5ea621e0919a41866
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.author: memildin
+ms.openlocfilehash: 7448516e464a379e27abd45834b31760fca3fedd
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67589003"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71201845"
 ---
 # <a name="onboarding-to-azure-security-center-standard-for-enhanced-security"></a>Onboarding van Azure Security Center Standard voor verbeterde beveiliging
-Upgrade uitvoeren naar Security Center Standard om te profiteren van verbeterde beveiligingsbeheer en bedreigingsbeveiliging voor uw hybride cloudworkloads.  U kunt de standaard gratis proberen. Zie het Security Center [pagina met prijzen](https://azure.microsoft.com/pricing/details/security-center/) voor meer informatie.
+Voer een upgrade uit naar Security Center Standard om te profiteren van verbeterde beveiligings beheer en bedreigings beveiliging voor uw hybride Cloud werkbelastingen.  U kunt standaard gratis proberen. Zie de [pagina met prijzen](https://azure.microsoft.com/pricing/details/security-center/) voor Security Center voor meer informatie.
 
-Standard van Security Center bevat:
+Security Center Standard omvat:
 
-- **Hybride beveiliging** : ophalen van een overzicht van beveiliging voor al uw on-premises en cloudworkloads. Beveiligingsbeleid toepassen en constant in de beveiliging van uw hybride cloudworkloads om te voldoen aan de beveiligingsstandaarden. Verzamel, zoek en analyseer beveiligingsgegevens van verschillende bronnen, inclusief firewalls en andere oplossingen van partners.
-- **Geavanceerde detectie van bedreigingen** -gebruik Geavanceerd analyses en de Microsoft Intelligent Security Graph om op te halen van een rand over de zich ontwikkelende cyberaanvallen.  Maak gebruik van de ingebouwde gedragsanalyses en machine learning om aanvallen en zero-day exploits te identificeren. Controleer netwerken, computers en cloudservices op inkomende aanvallen en activiteiten na het schenden van de beveiliging. Stroomlijn het onderzoek met interactieve hulpprogramma's en contextuele bedreigingsinformatie.
-- **Toegangs- en toepassingsbesturingselementen** -Blokkeer malware en andere ongewenste toepassingen door het toepassen van aanbevelingen voor opname in de whitelist aangepast aan uw specifieke workloads en gebruikmaken van machine learning. Verminder het oppervlak voor netwerkaanvallen met just-in-time, gecontroleerde toegang tot beheerpoorten op Azure Virtual machines, blootgesteld aan beveiligingsaanvallen en andere netwerkaanvallen drastisch wordt gereduceerd.
+- **Hybride beveiliging** : krijg een uniforme weer gave van beveiliging in al uw on-premises en Cloud werkbelastingen. Pas het beveiligings beleid toe en evalueer voortdurend de beveiliging van uw hybride Cloud werkbelastingen om te zorgen voor naleving van de beveiligings standaarden. Verzamel, zoek en analyseer beveiligingsgegevens van verschillende bronnen, inclusief firewalls en andere oplossingen van partners.
+- **Geavanceerde detectie van bedreigingen** : Gebruik geavanceerde analyses en de Microsoft intelligent Security Graph om een rand te krijgen over het ontwikkelen van Cyber aanvallen.  Maak gebruik van de ingebouwde gedragsanalyses en machine learning om aanvallen en zero-day exploits te identificeren. Controleer netwerken, computers en cloudservices op inkomende aanvallen en activiteiten na het schenden van de beveiliging. Stroomlijn het onderzoek met interactieve hulpprogramma's en contextuele bedreigingsinformatie.
+- **Toegangs-en toepassings besturings elementen** : blok keer malware en andere ongewenste toepassingen door White List aanbevelingen toe te passen die zijn afgestemd op uw specifieke werk belastingen en die worden aangedreven door machine learning. Verminder de kwets baarheid van het netwerk met Just-in-time, gecontroleerde toegang tot beheer poorten op Azure-Vm's, waardoor de bloot stelling aan brute kracht en andere netwerk aanvallen drastisch wordt verkleind.
 
-## <a name="detecting-unprotected-resources"></a>Niet-beveiligde resources detecteren     
+## <a name="detecting-unprotected-resources"></a>Niet-beveiligde bronnen detecteren     
 Security Center detecteert automatisch alle Azure-abonnementen of werkruimten die niet zijn ingeschakeld voor Security Center Standard. Hiertoe behoren Azure-abonnementen die Security Center Free gebruiken en werkruimten waarvoor de Security-oplossing niet is ingeschakeld.
 
-U kunt een hele Azure-abonnement upgraden naar de laag standaard, die wordt overgenomen door alle ondersteunde bronnen binnen het abonnement. Toepassen van de standaard-laag een werkruimte is van toepassing op alle resources die rapporteren aan de werkruimte.
+U kunt een volledig Azure-abonnement upgraden naar de Standard-laag, die wordt overgenomen door alle ondersteunde resources binnen het abonnement. Het Toep assen van de Standard-laag op een werk ruimte is van toepassing op alle resources die aan de werk ruimte rapporteren.
 
 > [!NOTE]
-> Mogelijk wilt uw kosten beheren en beperken van de hoeveelheid gegevens die worden verzameld voor een oplossing door deze te beperken tot een bepaalde set van agents. [Oplossingstargeting](../operations-management-suite/operations-management-suite-solution-targeting.md) kunt u een bereik toepassen op de oplossing en gericht op een subset van computers in de werkruimte.  Als u gebruikmaakt van oplossing die gericht is op, geeft de werkruimte niet dat een oplossing voor een lijst van Security Center.
+> U kunt uw kosten beheren en de hoeveelheid gegevens die voor een oplossing wordt verzameld beperken door deze te beperken tot een bepaalde set agents. Met [oplossings doelen](../operations-management-suite/operations-management-suite-solution-targeting.md) kunt u een bereik Toep assen op de oplossing en een subset van computers in de werk ruimte richten.  Als u oplossings doelen gebruikt, bevat Security Center de werk ruimte als geen oplossing.
 >
 >
 
-## <a name="upgrade-an-azure-subscription-or-workspace"></a>Een Azure-abonnement of de werkruimte een upgrade uitvoert
-Een abonnement of een werkruimte upgraden naar Standard:
+## <a name="upgrade-an-azure-subscription-or-workspace"></a>Een Azure-abonnement of-werk ruimte bijwerken
+Een abonnement of werk ruimte bijwerken naar Standard:
 1. Selecteer in het hoofdmenu van Security Center de optie **Aan de slag**.
   ![Aan de slag](./media/security-center-onboarding/get-started.png)
 2. Onder **Upgrade** vermeldt Security Center abonnementen en werkruimten die in aanmerking komen voor onboarding. 
@@ -49,20 +48,20 @@ Een abonnement of een werkruimte upgraden naar Standard:
    -    U kunt abonnementen en werkruimten upgraden die niet in aanmerking komen voor een proefversie.
    -    U kunt in aanmerking komende werkruimten en abonnementen selecteren om uw proefversie te beginnen.
 3.  Klik op **Proefversie beginnen** om uw proefversie van de geselecteerde abonnementen te beginnen.
-  ![abonnement selecteren](./media/security-center-onboarding/select-subscription.png)
+  ![Abonnement selecteren](./media/security-center-onboarding/select-subscription.png)
 
 
    > [!NOTE]
-   > Gratis mogelijkheden van Security Center worden alleen toegepast op uw virtuele Azure-machines en VMSS. De gratis mogelijkheden worden niet toegepast op uw niet-Azure-computers. Als u standaard selecteert, wordt het Standard-uitvoering worden toegepast op alle Azure-VM's, schaalsets van virtuele machines en niet-Azure-computers die rapporteren aan de werkruimte. Het is raadzaam dat u van toepassing standaard zijn voor geavanceerde beveiliging voor uw Azure- en niet-Azure-resources.
+   > De gratis mogelijkheden van Security Center worden alleen toegepast op uw Azure-Vm's en VMSS. De gratis mogelijkheden worden niet toegepast op uw niet-Azure-computers. Als u standaard selecteert, worden de standaard mogelijkheden toegepast op alle Azure-Vm's, VM-schaal sets en niet-Azure-computers die rapporteren aan de werk ruimte. U wordt aangeraden standaard te gebruiken om geavanceerde beveiliging te bieden voor uw Azure-en niet-Azure-resources.
    >
    >
 
-## <a name="onboard-non-azure-computers"></a>Onboarding voor niet-Azure-computers
-Security Center kan de beveiligingsstatus van uw niet-Azure-computers controleren, maar u moet deze resources dan eerst onboarden. U kunt niet-Azure computers toevoegen uit de **aan de slag** blade of vanuit de **Compute** blade. We nemen door beide methoden.
+## <a name="onboard-non-azure-computers"></a>Niet-Azure-computers onboarden
+Security Center kan de beveiligingsstatus van uw niet-Azure-computers controleren, maar u moet deze resources dan eerst onboarden. U kunt niet-Azure-computers toevoegen vanaf de Blade **aan** de slag of op de Blade **Compute** . We gaan beide methoden door lopen.
 
-### <a name="add-new-non-azure-computers-from-getting-started"></a>Toevoegen van nieuwe niet-Azure-computers vanuit **aan de slag**
+### <a name="add-new-non-azure-computers-from-getting-started"></a>Nieuwe niet-Azure-computers toevoegen aan **aan** de slag
 
-1. Ga terug naar **aan de slag**.   
+1. Ga terug naar aan de **slag**.   
 2. Selecteer het tabblad **Aan de slag**.
 
    ![Non-Azure](./media/security-center-onboarding/non-azure.png)
@@ -71,44 +70,44 @@ Security Center kan de beveiligingsstatus van uw niet-Azure-computers controlere
 
    ![Niet-Azure-computer toevoegen][7]
 
-Als u bestaande werkruimten hebt, worden deze weergegeven onder **nieuwe niet-Azure-computers toevoegen**. U kunt computers toevoegen aan een bestaande werkruimte of maak een nieuwe werkruimte. Selecteer de koppeling voor het maken van een nieuwe werkruimte **toevoegen van een nieuwe werkruimte**.
+Als u bestaande werk ruimten hebt, worden deze weer gegeven onder **nieuwe niet-Azure-computers toevoegen**. U kunt computers toevoegen aan een bestaande werk ruimte of een nieuwe werk ruimte maken. Als u een nieuwe werk ruimte wilt maken, selecteert u de koppeling **een nieuwe werk ruimte toevoegen**.
 
-### <a name="add-new-non-azure-computers-from-compute"></a>Toevoegen van nieuwe niet-Azure-computers vanuit **Compute**
+### <a name="add-new-non-azure-computers-from-compute"></a>Nieuwe niet-Azure-computers toevoegen vanuit **Compute**
 
-**Een nieuwe werkruimte maken en de computer toevoegen**
+**Een nieuwe werk ruimte maken en een computer toevoegen**
 
-1. Onder **nieuwe niet-Azure-computers toevoegen**, selecteer **toevoegen van een nieuwe werkruimte**.
+1. Onder **nieuwe niet-Azure-computers toevoegen**selecteert u **een nieuwe werk ruimte toevoegen**.
 
-   ![Een nieuwe werkruimte toevoegen][4]
+   ![Een nieuwe werk ruimte toevoegen][4]
 
-2. Onder **beveiliging en controle**, selecteer **OMS-werkruimte** om een nieuwe werkruimte te maken.
+2. Selecteer onder **beveiliging en audit**de **OMS-werk ruimte** om een nieuwe werk ruimte te maken.
    > [!NOTE]
    > OMS-werkruimten worden nu aangeduid als Log Analytics-werkruimten.
-3. Onder **OMS-werkruimte**, voer de gegevens voor uw werkruimte.
-4. Onder **OMS-werkruimte**, selecteer **OK**.  Nadat u OK kiest, ontvangt u een koppeling voor het downloaden van een Windows- of Linux-agent en de sleutels voor uw werkruimte-ID te gebruiken bij het configureren van de agent.
-5. Onder **beveiliging en controle**, selecteer **OK**.
+3. Voer onder **OMS-werk ruimte**de informatie in voor uw werk ruimte.
+4. Selecteer **OK**onder **OMS-werk ruimte**.  Nadat u OK hebt geselecteerd, krijgt u een koppeling voor het downloaden van een Windows-of Linux-agent en sleutels voor de werk ruimte-ID die u kunt gebruiken bij het configureren van de agent.
+5. Selecteer **OK**onder **beveiliging en audit**.
 
-**Selecteer een bestaande werkruimte en computer toevoegen**
+**Een bestaande werk ruimte selecteren en een computer toevoegen**
 
-U kunt een computer toevoegen aan de hand van de werkstroom van **Onboarding**, zoals hierboven wordt weergegeven. U kunt ook een computer toevoegen aan de hand van de werkstroom van **Compute**. In dit voorbeeld gebruiken we **Compute**.
+U kunt een computer toevoegen door de werk **stroom te volgen**van de voor bereiding, zoals hierboven wordt weer gegeven. U kunt ook een computer toevoegen door de werk stroom te volgen van **Compute**. In dit voor beeld gebruiken we **Compute**.
 
-1. Ga terug naar het hoofdmenu van Security Center en **overzicht** dashboard.
+1. Ga terug naar het hoofd menu en het **overzichts** dashboard van Security Center.
 
    ![Overzicht][5]
 
-2. Selecteer **Compute en apps**.
-3. Onder **Compute en apps**, selecteer **computers toevoegen**.
+2. Selecteer **compute & apps**.
+3. Selecteer **computers toevoegen**onder **Compute & apps**.
 
    ![Blade Compute][6]
 
-4. Onder **nieuwe niet-Azure-computers toevoegen**, selecteer een werkruimte op uw computer verbinden met en klikt u op **Computers toevoegen**.
+4. Onder **nieuwe niet-Azure-computers toevoegen**selecteert u een werk ruimte om uw computer aan te sluiten en klikt u op **computers toevoegen**.
 
    ![Computers toevoegen][7]
 
-   De **Direct Agent** blade bevat een koppeling voor het downloaden van een Windows- of Linux-agent, evenals de werkruimte-ID en sleutels voor het gebruik van bij het configureren van de agent.   
+   De Blade **direct agent** bevat een koppeling voor het downloaden van een Windows-of Linux-agent en de werk ruimte-ID en-sleutels die moeten worden gebruikt in de configuratie van de agent.   
 
 ## <a name="next-steps"></a>Volgende stappen
-In dit artikel hebt u geleerd hoe u ingebouwde Azure en niet-Azure-resources om te profiteren van geavanceerde beveiliging van Security Center bevinden.  Als u wilt doen met Zie uw resources toegevoegd,
+In dit artikel hebt u geleerd hoe u Azure-en niet-Azure-resources kunt vrijgeven om te profiteren van de geavanceerde beveiliging van Security Center.  Als u meer wilt doen met uw onboardde bronnen, raadpleegt u
 
 - [Gegevensverzameling inschakelen](security-center-enable-data-collection.md)
 - [Bedreigingsinformatierapport](security-center-threat-report.md)

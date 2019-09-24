@@ -3,9 +3,8 @@ title: Geavanceerde gegevens beveiliging voor IaaS in Azure Security Center | Mi
 description: " Meer informatie over het inschakelen van geavanceerde gegevens beveiliging voor IaaS in Azure Security Center. "
 services: security-center
 documentationcenter: na
-author: monhaber
-manager: barbkess
-editor: monhaber
+author: memildin
+manager: rkarlin
 ms.assetid: ba46c460-6ba7-48b2-a6a7-ec802dd4eec2
 ms.service: security-center
 ms.devlang: na
@@ -13,13 +12,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/29/2019
-ms.author: v-mohabe
-ms.openlocfilehash: 0b83575baa2221f0b502abbf919654492c7ab6cf
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.author: memildin
+ms.openlocfilehash: 287da68617a9527bc398df577cf8d10773fa8557
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68295761"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71202172"
 ---
 # <a name="advanced-data-security-for-sql-servers-on-azure-virtual-machines-public-preview"></a>Geavanceerde gegevens beveiliging voor SQL-servers in azure Virtual Machines (open bare preview)
 Geavanceerde gegevens beveiliging voor SQL-servers in azure Virtual Machines is een uniform pakket voor geavanceerde SQL-beveiligings mogelijkheden. Het is momenteel (in open bare preview) de functionaliteit voor halen en het beperken van mogelijke beveiligings problemen voor een Data Base en het detecteren van afwijkende activiteiten die kunnen wijzen op een bedreiging voor uw data base. 
@@ -72,7 +71,7 @@ U kunt uw huidige beveiligings waarschuwingen weer geven en beheren.
 
 1. Als u waarschuwings Details en acties wilt weer geven voor het onderzoeken van de huidige dreiging en het oplossen van toekomstige dreigingen, schuift u omlaag op de pagina **algemene informatie** en klikt u in de sectie **herstel stappen** op de koppeling naar de **stappen voor onderzoek** .
 
-    ![Herstels tappen](./media/security-center-advanced-iaas-data/remediation-steps.png)
+    ![Herstelstappen](./media/security-center-advanced-iaas-data/remediation-steps.png)
 
 1. Als u de logboeken wilt weer geven die zijn gekoppeld aan het activeren van de waarschuwing, gaat u naar **log Analytics-werk ruimten** en voert u de volgende stappen uit:
 
@@ -89,7 +88,7 @@ U kunt uw huidige beveiligings waarschuwingen weer geven en beheren.
 
     1. Klik op het oog naast de tabel **SQLAdvancedThreatProtection** . De logboeken worden weer gegeven.
 
-     ![Logboeken weer geven](./media/security-center-advanced-iaas-data/view-logs.png)
+     ![Logboeken weergeven](./media/security-center-advanced-iaas-data/view-logs.png)
 
 ## <a name="set-up-email-notification-for-atp-alerts"></a>E-mail meldingen voor ATP-waarschuwingen instellen 
 

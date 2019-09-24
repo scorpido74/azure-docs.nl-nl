@@ -1,5 +1,5 @@
 ---
-title: 'Referentie: CentOS DSVM'
+title: 'Referentie: CentOS-DSVM'
 description: Details over hulpprogram ma's die zijn opgenomen in de CentOS-Data Science Virtual Machine
 author: gvashishtha
 ms.service: machine-learning
@@ -7,12 +7,12 @@ ms.subservice: data-science-vm
 ms.author: gopalv
 ms.date: 09/11/2019
 ms.topic: reference
-ms.openlocfilehash: 9366eb1bde05d80b8882ee28aa9eb03a75f75964
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: d50bb18d15bcad72eed3a97088b61c623e6208fe
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71174719"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71199988"
 ---
 # <a name="reference-centos-linux-data-science-virtual-machine"></a>Referentie: CentOS (Linux) Data Science Virtual Machine
 
@@ -341,3 +341,7 @@ Er wordt een grafische interface met een set tabbladen geopend. Gebruik de volge
 1. Selecteer de knop **exporteren** om het R-script bestand met de naam weather_script op te slaan *. R* naar de basismap.
 
 U kunt Rattle en R afsluiten. Nu kunt u het gegenereerde R-script wijzigen. Of gebruik het script zoals het is en voer deze op elk gewenst moment uit om alles te herhalen dat in de Rattle-gebruikers interface is uitgevoerd. Met name voor beginners in R is dit een manier om snel analyses en machine learning uit te voeren in een eenvoudige grafische interface, terwijl automatisch code wordt gegenereerd in R om te wijzigen of te leren.
+
+## <a name="next-steps"></a>Volgende stappen
+
+Hebt u nog meer vragen? Overweeg een [ondersteunings ticket](https://azure.microsoft.com/support/create-ticket/)te maken.

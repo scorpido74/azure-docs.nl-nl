@@ -3,9 +3,8 @@ title: Verbeter de naleving van uw regelgeving met behulp van Azure Security Cen
 description: 'Zelfstudie: Meer informatie over het verbeteren van de naleving van uw regelgeving met behulp van Azure Security Center.'
 services: security-center
 documentationcenter: na
-author: monhaber
-manager: barbkess
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: 5f50c4dc-ea42-418d-9ea8-158ffeb93706
 ms.service: security-center
 ms.devlang: na
@@ -13,13 +12,13 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 4/30/2019
-ms.author: v-mohabe
-ms.openlocfilehash: e1544b0c9bf280c8d097d2fa25f7fc652450b87e
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.author: memildin
+ms.openlocfilehash: 20842997c5df81835024a6f458cd863b4e4d78b0
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65968573"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71202425"
 ---
 # <a name="tutorial-improve-your-regulatory-compliance"></a>Zelfstudie: Uw regelnaleving verbeteren
 ---
@@ -47,7 +46,7 @@ Dankzij de weergave in het dashboard Naleving van regelgeving kunt u uw aandacht
 
 >[!NOTE]
 > Momenteel ondersteunde regelgevingsnormen: Azure CIS, PCI DSS 3.2, ISO 27001 en SOC TSP. Aanvullende standaarden worden tijdens de ontwikkeling in het dashboard van kracht.
-1.  In de Security Center in het hoofdmenu onder **beleid en naleving** Selecteer **naleving van regelgeving**. <br>
+1.  Selecteer in het hoofd menu van Security Center onder **beleids &AMP; naleving** de optie naleving van **regelgeving**. <br>
 Boven aan het scherm ziet u een dashboard met een overzicht van de nalevingsstatus in combinatie met de set ondersteunde richtlijnen voor naleving. U ziet de totale nalevingsscore en het aantal positieve en negatieve beoordelingen die op elke standaard van toepassing zijn.
 
     ![computerbeschrijving met hoge betrouwbaarheid](./media/security-center-compliance-dashboard/compliance-dashboard.png)
@@ -61,11 +60,11 @@ Boven aan het scherm ziet u een dashboard met een overzicht van de nalevingsstat
 
     ![Impact nalevingsscore](./media/security-center-compliance-dashboard/compliance-all-tabs.png)
 
-1. Om te genereren en downloaden van een PDF-rapport Samenvatting van de huidige status van naleving voor een bepaalde standard, klikt u op **rapport downloaden**.
+1. Als u een PDF-rapport wilt genereren en downloaden met een overzicht van uw huidige nalevings status voor een bepaalde standaard, klikt u op **rapport downloaden**.
 
-    Het rapport bevat een overzicht op hoog niveau van de nalevingsstatus voor de geselecteerde standaard op basis van gegevens van Security Center-evaluaties, en is ingedeeld op basis van de besturingselementen van bepaalde standaard. Het rapport kan worden gedeeld met relevante belanghebbenden, en om te bewijzen op interne en externe controleurs kan fungeren.
+    Het rapport bevat een samen vatting van de nalevings status voor de geselecteerde standaard op basis van Security Center evaluatie gegevens en is ingedeeld volgens de besturings elementen van die specifieke standaard. Het rapport kan worden gedeeld met relevante belanghebbenden en kan dienen om bewijs te leveren aan interne en externe accountants.
 
-    ![downloaden](./media/security-center-compliance-dashboard/download-report.png)
+    ![download](./media/security-center-compliance-dashboard/download-report.png)
 
 ## <a name="improve-your-compliance-posture"></a>De nalevingspostuur verbeteren
 

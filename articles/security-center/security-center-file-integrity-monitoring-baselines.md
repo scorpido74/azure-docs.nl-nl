@@ -3,9 +3,8 @@ title: Basis lijnen vergelijken met de bewaking van bestands integriteit in Azur
 description: Meer informatie over het vergelijken van basis lijnen met de bewaking van bestands integriteit in Azure Security Center.
 services: security-center
 documentationcenter: na
-author: monhaber
-manager: barbkess
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: c8a2a589-b737-46c1-b508-7ea52e301e8f
 ms.service: security-center
 ms.devlang: na
@@ -13,13 +12,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/29/2019
-ms.author: v-mohabe
-ms.openlocfilehash: afc03baa71f17deb0b923f483fde214a86c5e9b4
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.author: memildin
+ms.openlocfilehash: 116f295365084e7570ed9afc493d9179ea2dfb5a
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68296470"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71202133"
 ---
 # <a name="compare-baselines-using-file-integrity-monitoring-fim"></a>Basis lijnen vergelijken met behulp van File Integrity Monitoring (FIM)
 
@@ -37,7 +36,7 @@ In feite moeten veel nalevings normen zoals PCI-DSS & ISO 17799 de implementatie
 
 De standaard instellingen van de FIM-register onderdelen bieden een handige manier om recursieve wijzigingen in algemene beveiligings gebieden te bewaken.  Een kwaadwillende persoon kan bijvoorbeeld een script configureren dat in LOCAL_SYSTEM-context wordt uitgevoerd door een uitvoering te configureren bij het opstarten of afsluiten.  Als u de wijzigingen van dit type wilt controleren, schakelt u de ingebouwde controle in.  
 
-![Registersubsleutel](./media/security-center-file-integrity-monitoring-baselines/baselines-registry.png)
+![Register](./media/security-center-file-integrity-monitoring-baselines/baselines-registry.png)
 
 >[!NOTE]
 > Recursieve controles zijn alleen van toepassing op aanbevolen beveiligings componenten en niet op aangepaste register paden.  
@@ -47,7 +46,7 @@ De standaard instellingen van de FIM-register onderdelen bieden een handige mani
 FIM-basis lijnen worden gestart door kenmerken te identificeren van een bekende goede status voor het besturings systeem en de ondersteunende toepassing.  In dit voor beeld richten we zich op de wachtwoord beleids configuraties voor Windows Server 2008 en hoger.
 
 
-|Policy Name                 | Register instelling|
+|Beleidsnaam                 | Register instelling|
 |---------------------------------------|-------------|
 |Domein controller: Wachtwoord wijzigingen van computer accounts weigeren| MACHINE\System\CurrentControlSet\Services  \Netlogon\Parameters\RefusePasswordChange|
 |Domeinlid: Gegevens in beveiligd kanaal digitaal versleutelen of ondertekenen (altijd)|MACHINE\System\CurrentControlSet\Services  \Netlogon\Parameters\RequireSignOrSeal|

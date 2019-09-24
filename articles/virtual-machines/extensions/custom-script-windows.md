@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/02/2019
 ms.author: robreed
-ms.openlocfilehash: 58b6531a394db8f9d29dcc0fe9b4b40d1725e70a
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: c0c160d9fc2fcfb8da004d02baae1dd410620cbb
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68774586"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71204196"
 ---
 # <a name="custom-script-extension-for-windows"></a>Aangepaste script extensie voor Windows
 
@@ -69,7 +69,7 @@ Deze items moeten worden behandeld als gevoelige gegevens en worden opgegeven in
 {
     "apiVersion": "2018-06-01",
     "type": "Microsoft.Compute/virtualMachines/extensions",
-    "name": "config-app",
+    "name": "virtualMachineName/config-app",
     "location": "[resourceGroup().location]",
     "dependsOn": [
         "[concat('Microsoft.Compute/virtualMachines/', variables('vmName'),copyindex())]",
@@ -100,6 +100,9 @@ Deze items moeten worden behandeld als gevoelige gegevens en worden opgegeven in
 
 > [!NOTE]
 > Er kan slechts één versie van een uitbrei ding op een virtuele machine op een bepaald moment worden geïnstalleerd. Als u een aangepast script twee keer opgeeft in dezelfde resource manager-sjabloon voor dezelfde virtuele machine, mislukt de installatie.
+
+> [!NOTE]
+> We kunnen dit schema gebruiken in de VirtualMachine-resource of als zelfstandige resource. De naam van de resource moet de volgende indeling hebben: "virtualMachineName/extensie naam" als deze uitbrei ding wordt gebruikt als een zelfstandige resource in de ARM-sjabloon. 
 
 ### <a name="property-values"></a>Waarden van eigenschappen
 

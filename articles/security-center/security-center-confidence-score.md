@@ -1,11 +1,10 @@
 ---
-title: Betrouwbaarheidsscore in Azure Security Center | Microsoft Docs
-description: " Meer informatie over het werken met de betrouwbaarheidsscore van Azure Security Center. "
+title: Betrouwbaarheids Score in Azure Security Center | Microsoft Docs
+description: " Meer informatie over het werken met de Azure Security Center betrouwbaarheids Score. "
 services: security-center
 documentationcenter: na
-author: rkarlin
-manager: barbkess
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: e88198f8-2e16-409d-a0b0-a62e68c2f999
 ms.service: security-center
 ms.devlang: na
@@ -13,45 +12,45 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/23/2018
-ms.author: rkarlin
-ms.openlocfilehash: 64bab5c1b99720eecb189834d7a11802cf919ca3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: memildin
+ms.openlocfilehash: 0f0380ca4a285d9cb4a8472a40c77130a8f63035
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60916580"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71202373"
 ---
 # <a name="alert-confidence-score"></a>Betrouwbaarheidsscore waarschuwing 
 
-Azure Security Center geeft u inzicht in de resources die u in Azure uitvoert en waarschuwt u wanneer er potentiële problemen gedetecteerd. Het volume van waarschuwingen kan lastig zijn voor een operations-beveiligingsteam voor een afzonderlijk adres en moet de prioriteit voor het onderzoeken van waarschuwingen. Onderzoeken van waarschuwingen kan complex en tijdrovend zijn, en als gevolg hiervan bepaalde waarschuwingen worden genegeerd.
+Azure Security Center biedt u inzicht in de resources die u in azure uitvoert en waarschuwt u wanneer er potentiële problemen worden gedetecteerd. Het volume van waarschuwingen kan lastig zijn voor een afzonderlijk adres van een beveiligings team, en het is nodig om te bepalen welke waarschuwingen moeten worden onderzocht. Het onderzoeken van waarschuwingen kan ingewikkeld zijn en tijdrovende, waardoor sommige waarschuwingen worden genegeerd.
 
-De betrouwbaarheidsscore in Security Center kan helpen bij het sorteren van uw team en prioriteren van waarschuwingen. Security Center wordt automatisch toegepast branche aanbevolen procedures, intelligente algoritmen en processen die worden gebruikt door analisten om te bepalen of een bedreiging vormt een legitieme aanvraag is en u nuttige inzichten in de vorm van een betrouwbaarheidsscore biedt.
+De betrouwbaarheids Score in Security Center kan bijdragen aan uw team sorteren en prioriteiten voor waarschuwingen geven. Security Center past automatisch de best practices van de branche, intelligente algoritmen en processen toe die door analisten worden gebruikt om te bepalen of een bedreiging authentiek is en geeft u duidelijke inzichten in de vorm van een betrouw bare Score.
 
-## <a name="how-the-confidence-score-is-triggered"></a>Hoe de betrouwbaarheidsscore wordt geactiveerd
+## <a name="how-the-confidence-score-is-triggered"></a>Hoe de betrouwbaarheids score wordt geactiveerd
 
-Waarschuwingen worden gegenereerd wanneer er verdachte processen worden gedetecteerd die worden uitgevoerd op uw virtuele machines. Security Center controleert en analyseert deze waarschuwingen op Windows-machines uitvoeren in Azure. Deze geautomatiseerde controles en correlaties met behulp van geavanceerde algoritmen voor meerdere entiteiten en gegevensbronnen in de organisatie, en al uw Azure-resources uitvoert, en geeft weer met een score die een maateenheid voor hoe zeker Security Center is is vertrouwen dat is de waarschuwing authentiek is en moet worden onderzocht.
+Er worden waarschuwingen gegenereerd wanneer er verdachte processen worden gedetecteerd die worden uitgevoerd op uw virtuele machines. Security Center controleert en analyseert deze waarschuwingen op virtuele Windows-machines die in Azure worden uitgevoerd. Het voert geautomatiseerde controles en correlaties uit met behulp van geavanceerde algoritmen voor meerdere entiteiten en gegevens bronnen in de hele organisatie, en al uw Azure-resources, en biedt een betrouwbaarheids Score die een meting vormt van de mate van vertrouwen Security Center of de waarschuwing legitiem is en moet worden onderzocht.
 
-## <a name="understanding-the-confidence-score"></a>Informatie over de betrouwbaarheidsscore
+## <a name="understanding-the-confidence-score"></a>Meer informatie over de betrouwbaarheids Score
 
-De betrouwbaarheidsscore tussen 1 en 100-bereiken en Hiermee geeft u het vertrouwen van dat Security Center heeft dat de waarschuwing moet worden onderzocht. Hoe hoger de score is, het meer vertrouwen Security Center is dat de waarschuwing geeft aan dat legitieme schadelijke activiteiten. De betrouwbaarheidsscore bevat een lijst van de belangrijkste redenen waarom de waarschuwing de betrouwbaarheidsscore ontvangen. De betrouwbaarheidsscore gemakkelijker voor beveiligingsanalisten prioriteren van hun reactie op waarschuwingen en de meeste aanvallen eerst drukken, uiteindelijk verminderen de hoeveelheid tijd die nodig is om te reageren op aanvallen en schendingen aanpakken.
+Het bereik van de betrouwbaarheids score tussen 1 en 100 en vertegenwoordigt de betrouw baarheid Security Center dat de waarschuwing moet worden onderzocht. Hoe hoger de score is, hoe meer vertrouwens Security Center is dat de waarschuwing de legitieme schadelijke activiteiten aangeeft. De betrouwbaarheids Score bevat een lijst van de belangrijkste redenen waarom de waarschuwing de betrouwbaarheids score heeft ontvangen. De betrouwbaarheids Score maakt het gemakkelijker voor beveiligings analisten om op de hoogte te zijn van de reactie op waarschuwingen en de meeste indruk aanvallen eerst te verkorten, waardoor de tijd die nodig is om te reageren op aanvallen en inbreuken te verminderen.
 
-De betrouwbaarheidsscore weergeven:
-- Open de blade beveiligingswaarschuwingen in de portal van Security Center.
--  De waarschuwingen en incidenten zijn ingedeeld van hoogste naar laagste, wat betekent dat het meer vertrouwen Security Center is dat een waarschuwing een bedreiging wordt beschouwd, hoe dichter dat naar de bovenkant van de pagina is vertegenwoordigt. 
+De betrouwbaarheids Score weer geven:
+- Open de Blade beveiligings waarschuwingen in de Security Center Portal.
+-  De waarschuwingen en incidenten zijn ingedeeld van hoog naar laag, wat betekent dat de meer vertrouwens Security Center is dat een waarschuwing een bedreiging vormt, des te dichter bij de bovenkant van de pagina. 
 
 
  ![Betrouwbaarheidsscore][1]
 
-De gegevens die hebben bijgedragen aan Security Center van vertrouwen in een waarschuwing weergeven:
-- In de beveiliging onder blade waarschuwing **vertrouwen**, bekijk de metingen die hebben bijgedragen aan de betrouwbaarheidsscore en Verkrijg inzichten met betrekking tot de waarschuwing. Dit biedt u meer inzicht in de aard van de activiteiten die de waarschuwing heeft veroorzaakt.
+De gegevens weer geven die hebben bijgedragen aan het vertrouwen van het Security Center in een waarschuwing:
+- Bekijk in de Blade beveiligings waarschuwing, onder **vertrouwen**, de waarnemingen die hebben bijgedragen aan de betrouwbaarheids Score en krijg inzicht in verband met de waarschuwing. Dit biedt u meer inzicht in de aard van de activiteiten die de waarschuwing hebben veroorzaakt.
 
-  ![Verdachte betrouwbaarheidsscore][2]
+  ![Verdachte betrouwbaarheids Score][2]
 
-Betrouwbaarheidsscore gebruikt Security Center om de prioriteit van waarschuwing classificeren in uw omgeving te. De betrouwbaarheidsscore bespaart u tijd en moeite door automatisch onderzoeken van waarschuwingen, toepassen van best practices voor de bedrijfstak en intelligente algoritmen en die fungeert als een virtuele analist om te bepalen welke bedreigingen van een echte zijn en waar u zich concentreren uw aandacht nodig hebt.
+Gebruik de betrouwbaarheids Score van Security Center om de sorteren van waarschuwingen in uw omgeving te bepalen. De betrouwbaarheids Score bespaart u tijd en moeite door waarschuwingen automatisch te onderzoeken, best practices van de branche en intelligente algoritmen toe te passen en te fungeren als een virtuele analist om te bepalen welke bedreigingen echt zijn en waar u uw aandacht moet richten.
 
 
 ## <a name="next-steps"></a>Volgende stappen
-In dit artikel wordt uitgelegd hoe u de betrouwbaarheidsscore om de prioriteit van waarschuwing onderzoek te gebruiken. Zie de volgende onderwerpen voor meer informatie over het Beveiligingscentrum:
+In dit artikel wordt uitgelegd hoe u de betrouwbaarheids Score kunt gebruiken om te bepalen of u waarschuwingen wilt onderzoeken. Zie de volgende onderwerpen voor meer informatie over het Beveiligingscentrum:
 
 * [Azure Security Center FAQ](security-center-faq.md): raadpleeg veelgestelde vragen over het gebruik van de service.
 * [Beveiligingsstatus bewaken in Azure Security Center](security-center-monitoring.md): meer informatie over het bewaken van de status van uw Azure-resources.

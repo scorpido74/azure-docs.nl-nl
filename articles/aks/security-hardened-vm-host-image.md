@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/11/2019
 ms.author: saudas
 ms.custom: mvc
-ms.openlocfilehash: b7e079e92c2f438fa7acc87a7d7333c371fe8e54
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 5c2ecd5a53bb77193469ba1135c46d9b5fa65b2c
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71099458"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71202975"
 ---
 # <a name="security-hardening-in-aks-virtual-machine-hosts"></a>Beveiligings beveiliging in hosts van virtuele AKS-machines 
 
@@ -76,8 +76,6 @@ AKS: de engine kan op dit moment niet worden gestimuleerd of gerespecteerd aan e
 |5.4.1.4 |Controleren of inactieve wachtwoord vergrendeling 30 dagen of minder is |
 |5.4.4 |Zorg ervoor dat de umask van de standaard gebruiker 027 of meer beperkend is |
 |5.6 |Controleren of de toegang tot de su-opdracht is beperkt|
-
-(*) Moet zijn ingeschakeld. Raadpleeg de [documentatie](https://github.com/Azure/aks-engine/blob/master/docs/topics/clusterdefinitions.md)van cluster definition.
 
 ## <a name="additional-notes"></a>Aanvullende opmerkingen
  

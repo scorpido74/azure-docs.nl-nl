@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 09/17/2019
 ms.author: juliako
-ms.openlocfilehash: a4b7ccf6ece8ed40d6f6c6a22410d4bbe99e590a
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: d346f68534a9fdbc286cd5521c00d81c2a5fec78
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71146477"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71203557"
 ---
 # <a name="what-is-video-indexer"></a>Wat is Video Indexer?
 
@@ -79,7 +79,6 @@ Wanneer het indexeren per kanaal gedeeltelijk resultaat voor deze modellen besch
 
 * **Extractie van tref woorden**: Extraheert tref woorden uit spraak en visuele tekst.
 * **Extractie van benoemde entiteiten**: Pakt merken, locaties en mensen uit vanuit spraak en visuele tekst via natuurlijke taal verwerking (NLP).
-* **Brands extractie**: Hiermee worden Brands geëxtraheerd uit spraak-en visuele tekst.
 * **Onderwerp**voor demijnren: Hiermee maakt u de belangrijkste onderwerpen van transcripten onduidelijker. De IPTC-taxonomie op 1e niveau is opgenomen.
 * **Artefacten**: Extraheert een uitgebreide set met artefacten van "volgende niveau Details" voor elk model.
 * **Sentiment analyse**: Geeft positieve, negatieve en neutrale gevoel aan vanuit spraak-en visuele tekst.

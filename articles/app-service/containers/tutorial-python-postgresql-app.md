@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: b5a21bd144558459ac60ae2da405f9ea57ca2fd1
-ms.sourcegitcommit: 80dff35a6ded18fa15bba633bf5b768aa2284fa8
+ms.openlocfilehash: 1fc322cf7e425e35751369ab8daf1ef1809d5f07
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70020190"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71203257"
 ---
 # <a name="build-a-python-django-web-app-with-postgresql-in-azure-app-service"></a>Een Python-web-app (Django) bouwen met PostgreSQL in Azure App Service
 
@@ -37,7 +37,7 @@ In deze zelfstudie leert u het volgende:
 > [!NOTE]
 > Kijk [hier](https://docs.microsoft.com/azure/postgresql/concepts-pricing-tiers#compute-generations-and-vcores) voordat u een Azure Database for PostgreSQL gaat maken om te zien welke compute-generatie beschikbaar is in uw regio.
 
-U kunt de stappen in dit artikel volgen op macOS. De instructies voor Windows en Linux zijn meestal gelijk, maar de verschillen worden in deze zelfstudie niet uitgewerkt.
+U kunt de stappen in dit artikel voor macOS-, Linux-en Windows-instructies volgen in de meeste gevallen, maar de verschillen worden niet in deze zelf studie beschreven.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -277,7 +277,7 @@ Ga naar `http://localhost:8000/admin` en meld u aan met de door de gebruiker gem
 
 `http://localhost:8000` Ga opnieuw naar opnieuw en Bekijk de poll-vraag die wordt weer gegeven. Er worden nu via de app gegevens naar de database in Azure geschreven.
 
-## <a name="deploy-to-azure"></a>Implementeren in Azure
+## <a name="deploy-to-azure"></a>Implementeren naar Azure
 
 In deze step implementeert u de met Postgres verbonden Python-toepassing naar Azure App Service.
 
@@ -328,7 +328,7 @@ git commit -am "configure for App Service"
 
 [!INCLUDE [Create app service plan](../../../includes/app-service-web-create-app-service-plan-linux-no-h.md)]
 
-### <a name="create-a-web-app"></a>Een web-app maken
+### <a name="create-a-web-app"></a>Een webtoepassing maken
 
 [!INCLUDE [Create web app](../../../includes/app-service-web-create-web-app-python-linux-no-h.md)]
 

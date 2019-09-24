@@ -3,9 +3,8 @@ title: Gegevensbeveiliging in Azure Security Center | Microsoft Docs
 description: In dit document wordt uitgelegd hoe gegevens worden beheerd en beveiligd in Azure Security Center.
 services: security-center
 documentationcenter: na
-author: rkarlin
-manager: barbkess
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: 33f2c9f4-21aa-4f0c-9e5e-4cd1223e39d7
 ms.service: security-center
 ms.devlang: na
@@ -13,13 +12,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/28/2018
-ms.author: rkarlin
-ms.openlocfilehash: cd91b83bc808d811fc50293fbf1726d609ad5b46
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: memildin
+ms.openlocfilehash: 30f4358bea2670cfa8d825bf1ef75feeba7ea851
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65234082"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71202338"
 ---
 # <a name="azure-security-center-data-security"></a>Gegevensbeveiliging in Azure Security Center
 Om klanten te helpen bedreigingen te voorkomen, te detecteren en erop te reageren, verzamelt en verwerkt Azure Security Center gegevens over beveiliging, zoals configuratie-informatie, metagegevens, gebeurtenislogboeken, crashdumpbestanden en nog veel meer. Microsoft voldoet aan strikte nalevings- en beveiligingsrichtlijnen - van het schrijven van code tot de uitvoering van een service.
@@ -29,31 +28,31 @@ In dit artikel wordt uitgelegd hoe gegevens worden beheerd en beveiligd in Azure
 ## <a name="data-sources"></a>Gegevensbronnen
 Azure Security Center analyseert gegevens uit de volgende bronnen om inzicht in uw beveiligingsstatus te geven, beveiligingsproblemen te identificeren, oplossingen aan te raden en actieve bedreigingen te detecteren:
 
-- Azure-services: Maakt gebruik van informatie over de configuratie van Azure-services die u hebt geïmplementeerd door te communiceren met de resourceprovider van de service.
-- Netwerkverkeer: Gebruikt steekproefgewijs netwerkverkeermetagegevens uit de infrastructuur van Microsoft, zoals bron-/ doel-IP/poort, pakketgrootte en netwerkprotocol.
-- Oplossingen van partners: Gebruikt beveiligingswaarschuwingen van geïntegreerde partneroplossingen, zoals firewalls en antimalware-oplossingen.
-- Uw virtuele Machines en Servers: Maakt gebruik van configuratie-informatie en informatie over beveiligingsgebeurtenissen, zoals Logboeken voor Windows-gebeurtenis- en auditlogboeken, IIS-logboeken, syslog-berichten en crashdumpbestanden van uw virtuele machines. Bovendien kan Azure Security Center wanneer er een waarschuwing wordt gemaakt een momentopname maken van de beïnvloede VM-schijf en machine-artefacten gekoppeld aan de waarschuwing van de VM-schijf, zoals een registerbestand, extraheren voor onderzoeksdoeleinden.
+- Azure-services: Maakt gebruik van informatie over de configuratie van Azure-Services die u hebt geïmplementeerd door te communiceren met de resource provider van die service.
+- Netwerk verkeer: Maakt gebruik van voor beelden van meta gegevens van het netwerk verkeer van de infra structuur van micro soft, zoals bron/doel-IP/-poort, pakket grootte en netwerk protocol.
+- Partner oplossingen: Maakt gebruik van beveiligings waarschuwingen van geïntegreerde partner oplossingen, zoals firewalls en antimalware-oplossingen.
+- Uw Virtual Machines en servers: Maakt gebruik van configuratie-informatie en informatie over beveiligings gebeurtenissen, zoals Windows-gebeurtenis-en audit logboeken, IIS-logboeken, syslog-berichten en crash dump bestanden van uw virtuele machines. Bovendien kan Azure Security Center wanneer er een waarschuwing wordt gemaakt een momentopname maken van de beïnvloede VM-schijf en machine-artefacten gekoppeld aan de waarschuwing van de VM-schijf, zoals een registerbestand, extraheren voor onderzoeksdoeleinden.
 
 
 ## <a name="data-protection"></a>Gegevensbescherming
-**Gegevensscheiding**: Gegevens worden bewaard logische manier apart op elk onderdeel van de service. Alle gegevens worden gemarkeerd per organisatie. Deze markering blijft aanwezig gedurende de levenscyclus van de gegevens en deze wordt afgedwongen op elke laag van de service.
+**Gegevens**scheiding: De gegevens worden in de gehele service logisch gescheiden gehouden van elk onderdeel. Alle gegevens worden gemarkeerd per organisatie. Deze markering blijft aanwezig gedurende de levenscyclus van de gegevens en deze wordt afgedwongen op elke laag van de service.
 
-**Gegevenstoegang**: Om aanbevelingen voor beveiliging bieden en mogelijke bedreigingen te onderzoeken, personeel van Microsoft toegang hebben tot gegevens die worden verzameld of geanalyseerd door Azure-services, met inbegrip van crashdumpbestanden, procesgebeurtenissen, momentopnamen van de VM-schijf en artefacten, Dit omvat mogelijk per ongeluk klantgegevens of persoonlijke gegevens van uw virtuele machines. We voldoen aan de [voorwaarden voor Microsoft Online Services en de Privacyverklaring](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31), die stellen dat Microsoft niet de klantgegevens gebruikt of gegevens ervan afleidt voor reclame- of vergelijkbare commerciële doeleinden. We gebruiken klantgegevens alleen indien nodig om u Azure-services te bieden, met inbegrip van doeleinden die compatibel zijn met het leveren van die services. U behoudt alle rechten op de klantgegevens.
+**Gegevenstoegang**: Om aanbevelingen voor beveiliging te bieden en mogelijke beveiligings Risico's te onderzoeken, kunnen mede werkers van micro soft toegang hebben tot gegevens die worden verzameld of geanalyseerd door Azure-Services, waaronder crash dump bestanden, gebeurtenissen voor het maken van processen, moment opnamen van virtuele schijven en artefacten, Dit kan onbedoeld klant gegevens of persoonlijke gegevens van uw virtuele machines bevatten. We voldoen aan de [voorwaarden voor Microsoft Online Services en de Privacyverklaring](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31), die stellen dat Microsoft niet de klantgegevens gebruikt of gegevens ervan afleidt voor reclame- of vergelijkbare commerciële doeleinden. We gebruiken klantgegevens alleen indien nodig om u Azure-services te bieden, met inbegrip van doeleinden die compatibel zijn met het leveren van die services. U behoudt alle rechten op de klantgegevens.
 
-**Gegevensgebruik**: Microsoft maakt gebruik van patronen en bedreigingsinformatie gezien tussen meerdere tenants voor het verbeteren van onze mogelijkheden voor voorkoming en detectie; We doen in overeenstemming met de privacyverplichtingen beschreven in onze [privacyverklaring](https://www.microsoft.com/privacystatement/en-us/OnlineServices/Default.aspx).
+**Gebruik van gegevens**: Micro soft gebruikt patronen en bedreigings informatie over meerdere tenants om onze preventie-en detectie mogelijkheden te verbeteren. We doen dit in overeenstemming met de privacy-verplichtingen die zijn beschreven in de [privacyverklaring](https://www.microsoft.com/privacystatement/en-us/OnlineServices/Default.aspx).
 
 ## <a name="data-location"></a>Locatie van gegevens
 
-**Uw werkruimte(n)** : Een werkruimte is opgegeven voor de volgende geografische gebieden en gegevens die zijn verzameld uit uw Azure virtual machines, met inbegrip van crashdumps en bepaalde typen waarschuwingsgegevens, worden opgeslagen in de dichtstbijzijnde werkruimte.
+**Uw werk ruimte (n)** : Een werk ruimte is opgegeven voor de volgende geografische gebieden en gegevens die zijn verzameld van uw virtuele Azure-machines, met inbegrip van crash dumps en bepaalde typen waarschuwings gegevens, worden opgeslagen in de dichtstbijzijnde werk ruimte.
 
 | Geografisch gebied van virtuele machine                              | Geografisch gebied van werkruimte |
 |-------------------------------------|---------------|
 | Verenigde Staten, Brazilië, Zuid-Afrika | Verenigde Staten |
 | Canada                              | Canada        |
-| Europa (met uitzondering van Verenigd Koninkrijk)   | Europa        |
+| Europa (exclusief Verenigd Konink rijk)   | Europa        |
 | Verenigd Koninkrijk                      | Verenigd Koninkrijk |
-| Azië (behalve India, Japan, Korea, China)   | Azië en Stille Oceaan  |
-| Korea                              | Azië en Stille Oceaan  |
+| Azië (exclusief India, Japan, Korea, China)   | Azië en Stille Oceaan  |
+| Zuid-Korea                              | Azië en Stille Oceaan  |
 | India                               | India         |
 | Japan                               | Japan         |
 | China                               | China         |
@@ -64,7 +63,7 @@ Momentopnamen van de VM-schijf worden opgeslagen in hetzelfde opslagaccount als 
 
 Voor virtuele machines en servers die in andere omgevingen worden uitgevoerd, bijvoorbeeld on-premises, kunt u de werkruimte en de regio opgeven waarin verzamelde gegevens worden opgeslagen.
 
-**Azure Security Center-opslag**: Informatie over beveiligingswaarschuwingen, met inbegrip van waarschuwingen van partners, wordt regionaal opgeslagen op basis van de locatie van de gerelateerde Azure-resource, dat informatie over de status van de beveiliging en aanbevelingen centraal wordt opgeslagen in de VS of Europa op basis van locatie van de klant.
+**Opslag Azure Security Center**: Informatie over beveiligings waarschuwingen, met inbegrip van partner waarschuwingen, wordt regionaal opgeslagen op basis van de locatie van de gerelateerde Azure-resource, terwijl informatie over de status van de beveiligings status en aanbeveling centraal wordt opgeslagen in de Verenigde Staten of Europa op basis van de locatie van de klant.
 Azure Security Center verzamelt tijdelijke kopieën van uw crashdumpbestanden en analyseert deze op bewijs van pogingen tot misbruik en geslaagde aanvallen. Azure Security Center voert deze analyse uit binnen hetzelfde geografische gebied als de werkruimte en verwijdert de tijdelijke kopieën wanneer de analyse is voltooid.
 
 Machine-artefacten worden centraal opgeslagen in dezelfde regio als de virtuele machine.
@@ -82,7 +81,7 @@ Als u de gratis variant van Azure Security Center gebruikt, kunt u het verzamele
 Klanten kunnen gegevens die verband houden met Security Center gebruiken uit verschillende gegevensstromen, zoals hieronder weergegeven:
 
 * **Azure-activiteit**: alle beveiligingswaarschuwingen, goedgekeurde [Just-In-Time](https://docs.microsoft.com/azure/security-center/security-center-just-in-time)-aanvragen van Security Center en alle waarschuwingen die zijn gegenereerd door [besturingselementen voor adaptieve toepassingen](https://docs.microsoft.com/azure/security-center/security-center-adaptive-application).
-* **Logboeken in Azure Monitor**: alle beveiligingswaarschuwingen.
+* **Azure monitor-logboeken**: alle beveiligings waarschuwingen.
 
 
 > [!NOTE]

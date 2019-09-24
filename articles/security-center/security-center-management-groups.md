@@ -1,11 +1,10 @@
 ---
-title: Tenant-brede inzicht voor Azure Security Center | Microsoft Docs
-description: Meer informatie over het verkrijgen van de zichtbaarheid van de tenant-brede in Azure Security Center.
+title: Zicht baarheid voor de hele Tenant verkrijgen voor Azure Security Center | Microsoft Docs
+description: Meer informatie over het verkrijgen van zicht baarheid op Tenant niveau in Azure Security Center.
 services: security-center
 documentationcenter: na
-author: rkarlin
-manager: barbkess
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: b85c0e93-9982-48ad-b23f-53b367f22b10
 ms.service: security-center
 ms.devlang: na
@@ -13,104 +12,104 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/19/2018
-ms.author: rkarlin
-ms.openlocfilehash: 7e26dc37c5c4f85e3db634bd961bf9308e418a03
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: memildin
+ms.openlocfilehash: 730ccd7c64ac9ca87fb6da5add130feb3b6ce502
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66148004"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71201953"
 ---
-# <a name="gain-tenant-wide-visibility-for-azure-security-center"></a>Tenant-brede inzicht voor Azure Security Center
-Dit artikel helpt u aan de slag met het uitvoeren van verschillende acties die de Azure Security Center biedt voordelen maximaliseren. Deze acties worden uitgevoerd, kunt u inzicht op alle Azure-abonnementen die zijn gekoppeld aan uw Azure Active Directory-tenant en effectief beheren van de beveiligingsstatus van uw organisatie op schaal door het toepassen van beveiligingsbeleid voor meerdere krijgen abonnementen op een aggregative manier.
+# <a name="gain-tenant-wide-visibility-for-azure-security-center"></a>Zicht baarheid voor de hele Tenant verkrijgen voor Azure Security Center
+Dit artikel helpt u aan de slag te gaan door verschillende acties uit te voeren die de voor delen Azure Security Center biedt. Door deze acties uit te voeren, kunt u inzicht krijgen in alle Azure-abonnementen die zijn gekoppeld aan uw Azure Active Directory-Tenant en de beveiligings postuur op schaal van uw organisatie effectief beheren door beveiligings beleid toe te passen op meerdere abonnementen op een aggregatie manier.
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="management-groups"></a>Beheergroepen
-Azure-beheergroepen bieden de mogelijkheid om efficiënt te beheren van toegang, beleidsregels en rapporteren van groepen van abonnementen, evenals de gehele Azure-omgeving effectief te beheren door het uitvoeren van acties op de root management-groep. Elke Azure AD-tenant krijgt een enkele op het hoogste niveau beheergroep met de naam van de root management-groep. Deze hoofdbeheergroep is zo in de hiërarchie ingebouwd dat alle beheergroepen en abonnementen hierin zijn opgevouwen. Deze groep kan globaal beleid en RBAC-toewijzingen moet worden toegepast op het niveau van de map. 
+Azure-beheer groepen bieden de mogelijkheid om op efficiënte wijze toegang, beleid en rapportage over groepen abonnementen te beheren, en het hele Azure-erfgoed effectief te beheren door acties uit te voeren op de hoofd beheer groep. Elke Azure AD-Tenant krijgt één beheer groep op het hoogste niveau die de hoofd beheer groep heet. Deze hoofdbeheergroep is zo in de hiërarchie ingebouwd dat alle beheergroepen en abonnementen hierin zijn opgevouwen. Met deze groep kunnen globale beleids regels en RBAC-toewijzingen op mapniveau worden toegepast. 
 
-De root management-groep wordt automatisch gemaakt wanneer u een van de volgende acties: 
-1. Registreren voor het gebruik van Azure-beheergroepen door te navigeren naar **beheergroepen** in de [Azure-portal](https://portal.azure.com).
-2. Maak een beheergroep via een API-aanroep.
-3. Maak een beheergroep met PowerShell.
+De hoofd beheer groep wordt automatisch gemaakt wanneer u een van de volgende acties uitvoeren: 
+1. Meld u aan voor het gebruik van Azure-beheer groepen door te navigeren naar **beheergroepen** in het [Azure Portal](https://portal.azure.com).
+2. Maak een beheer groep via een API-aanroep.
+3. Maak een beheer groep met Power shell.
 
-Zie voor een gedetailleerd overzicht van beheergroepen, de [organiseren van uw resources met Azure-beheergroepen](../azure-resource-manager/management-groups-overview.md) artikel.
+Zie het artikel [uw resources organiseren met Azure-beheer groepen](../azure-resource-manager/management-groups-overview.md) voor een gedetailleerd overzicht van beheer groepen.
 
-## <a name="create-a-management-group-in-the-azure-portal"></a>Een beheergroep maken in Azure portal
-U kunt abonnementen in beheergroepen ordenen en uw governancebeleid toepassen op de beheergroepen. Alle abonnementen in een beheergroep nemen automatisch het beleid over dat op de beheergroep is toegepast. Terwijl de beheergroepen niet vereist voor het vrijgeven van Security Center, wordt ten zeerste aanbevolen dat u ten minste één beheergroep maken, zodat de root management-groep is gemaakt. Nadat de groep is gemaakt, wordt alle abonnementen voor uw Azure AD-tenant zijn gekoppeld aan deze. Zie voor instructies voor PowerShell en meer informatie, [beheergroepen voor het beheer van resource- en organisatie maken](../azure-resource-manager/management-groups-create.md).
+## <a name="create-a-management-group-in-the-azure-portal"></a>Een beheer groep maken in de Azure Portal
+U kunt abonnementen indelen in beheer groepen en uw beheer beleid Toep assen op de Management groepen. Alle abonnementen in een beheergroep nemen automatisch het beleid over dat op de beheergroep is toegepast. Hoewel beheer groepen niet vereist zijn voor de onboarding van Security Center, wordt het ten zeerste aanbevolen om ten minste één beheer groep te maken zodat de hoofd beheer groep wordt gemaakt. Nadat de groep is gemaakt, worden alle abonnementen onder uw Azure AD-Tenant aan gekoppeld. Zie [beheer groepen maken voor resource-en organisatie beheer](../azure-resource-manager/management-groups-create.md)voor instructies voor Power shell en meer informatie.
 
  
 1. Meld u aan bij [Azure Portal](https://portal.azure.com).
-2. Selecteer **alle services** > **beheergroepen**.
-3. Selecteer op de hoofdpagina van **nieuwe beheergroep.** 
+2. Selecteer **alle services** > -**beheer groepen**.
+3. Selecteer **nieuwe beheer groep** op de hoofd pagina. 
 
-    ![Main-groep](./media/security-center-management-groups/main.png) 
-4.  Vul in het veld management groep-ID. 
-    - De **beheergroep-ID** is de unieke id van map die wordt gebruikt voor het verzenden van opdrachten in deze beheergroep. Deze id is niet bewerkbaar na het maken van zoals het in het hele systeem Azure wordt gebruikt voor het identificeren van deze groep. 
-    - Het weergavenaamveld is de naam die wordt weergegeven in Azure portal. Een afzonderlijke weergavenaam is een optioneel veld bij het maken van het beheer te groeperen en op elk gewenst moment kan worden gewijzigd.  
+    ![Hoofd groep](./media/security-center-management-groups/main.png) 
+4.  Vul het veld beheer groep-ID in. 
+    - De **beheer groep-ID** is de unieke id van de map die wordt gebruikt voor het verzenden van opdrachten in deze beheer groep. Deze id kan niet worden bewerkt nadat deze is gemaakt, omdat deze wordt gebruikt in het Azure-systeem om deze groep te identificeren. 
+    - Het veld weergave naam is de naam die wordt weer gegeven in de Azure Portal. Een afzonderlijke weergave naam is een optioneel veld bij het maken van de beheer groep en kan op elk gewenst moment worden gewijzigd.  
 
       ![Maken](./media/security-center-management-groups/create_context_menu.png)  
 5.  Selecteer **opslaan**
 
-### <a name="view-management-groups-in-the-azure-portal"></a>Beheergroepen weergeven in Azure portal
-1. Aanmelden bij de [Azure-portal](https://portal.azure.com).
-2. Als u beheergroepen, selecteer **alle services** onder het hoofdmenu van Azure.
-3. Onder **algemene**, selecteer **beheergroepen**.
+### <a name="view-management-groups-in-the-azure-portal"></a>Beheer groepen weer geven in de Azure Portal
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+2. Als u beheer groepen wilt weer geven, selecteert u **alle services** onder het hoofd menu van Azure.
+3. Selecteer onder **algemeen** **beheergroepen**.
 
     ![Een beheergroep maken](./media/security-center-management-groups/all-services.png)
 
-## <a name="grant-tenant-level-visibility-and-the-ability-to-assign-policies"></a>Verleen op tenantniveau zichtbaarheid en de mogelijkheid om beleid toe te wijzen
+## <a name="grant-tenant-level-visibility-and-the-ability-to-assign-policies"></a>Zicht baarheid op Tenant niveau en de mogelijkheid om beleid toe te wijzen
 
-Om inzicht te krijgen in de beveiligingsstatus van alle abonnementen die zijn geregistreerd in de Azure AD-tenant, is een RBAC-rol met voldoende machtigingen voor lezen vereist moeten worden toegewezen aan de root management-groep.
+Om inzicht te krijgen in de beveiligings postuur van alle abonnementen die in de Azure AD-Tenant zijn geregistreerd, moet een RBAC-rol met voldoende Lees machtigingen worden toegewezen aan de hoofd beheer groep.
 
-### <a name="elevate-access-for-a-global-administrator-in-azure-active-directory"></a>Toegangsrechten voor een globale beheerder in Azure Active Directory
-Een tenantbeheerder van Azure Active Directory heeft geen directe toegang tot Azure-abonnementen. Als de directorybeheerder van een hebben ze echter het recht op zichzelf aan een rol die is gemachtigd te verhogen. Een Azure AD-tenant-beheerder moet zelf uitbreiden naar de beheerder van gebruikerstoegang op het hoofdniveau van de management-groep, zodat ze kunnen RBAC-rollen toewijzen. Zie voor meer informatie en instructies voor PowerShell, [toegangsrechten voor een globale beheerder in Azure Active Directory](../role-based-access-control/elevate-access-global-admin.md). 
+### <a name="elevate-access-for-a-global-administrator-in-azure-active-directory"></a>Toegang verhogen voor een globale beheerder in Azure Active Directory
+Een Azure Active Directory Tenant beheerder heeft geen rechtstreekse toegang tot Azure-abonnementen. Als Directory-beheerder hebben ze echter het recht om zichzelf te verhogen naar een rol die toegang heeft. Een Azure AD-Tenant beheerder moet zichzelf uitbreiden voor gebruikers toegangs beheer op het niveau van de hoofd beheer groep, zodat ze RBAC-rollen kunnen toewijzen. Zie [toegang verhogen voor een globale beheerder in azure Active Directory](../role-based-access-control/elevate-access-global-admin.md)voor instructies voor Power shell en aanvullende informatie. 
 
 
-1. Aanmelden bij de [Azure-portal](https://portal.azure.com) of de [Azure Active Directory-beheercentrum](https://aad.portal.azure.com).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com) of het [Azure Active Directory beheer centrum](https://aad.portal.azure.com).
 
-2. Klik in de navigatielijst **Azure Active Directory** en klik vervolgens op **eigenschappen**.
+2. Klik in de navigatie lijst op **Azure Active Directory** en klik vervolgens op **Eigenschappen**.
 
-   ![Eigenschappen van Azure AD - schermafbeelding](./media/security-center-management-groups/aad-properties.png)
+   ![Eigenschappen van Azure AD-scherm opname](./media/security-center-management-groups/aad-properties.png)
 
-3. Onder **Access management voor Azure-resources**, instellen van de switch op **Ja**.
+3. Stel onder **toegangs beheer voor Azure-resources**de schakel optie in op **Ja**.
 
-   ![Globale beheerder kan beheren Azure-abonnementen en beheergroepen - schermafbeelding](./media/security-center-management-groups/aad-properties-global-admin-setting.png)
+   ![De globale beheerder kan Azure-abonnementen en de Beheergroepen scherm afbeelding beheren](./media/security-center-management-groups/aad-properties-global-admin-setting.png)
 
-   - Als u de switch op Ja instelt, kunt u de rol Administrator voor gebruikerstoegang in Azure RBAC bij het root-bereik (/) zijn toegewezen. Hiermee verkrijgt u machtiging voor het toewijzen van rollen in alle Azure-abonnementen en beheergroepen die zijn gekoppeld aan deze Azure AD-adreslijst. Deze schakeloptie is alleen beschikbaar voor gebruikers die de rol globale beheerder zijn toegewezen in Azure AD.
+   - Wanneer u de schakel optie instelt op Ja, wordt de rol gebruikers toegangs beheerder toegewezen in azure RBAC in het hoofd bereik (/). Hiermee verleent u toestemming om rollen toe te wijzen aan alle Azure-abonnementen en-beheer groepen die zijn gekoppeld aan deze Azure AD-Directory. Deze schakel optie is alleen beschikbaar voor gebruikers aan wie de rol van globale beheerder is toegewezen in azure AD.
 
-   - Als u de switch op Nee instelt, wordt de rol Administrator voor gebruikerstoegang in Azure RBAC verwijderd uit uw gebruikersaccount. U kunt niet meer rollen in alle Azure-abonnementen en beheergroepen die gekoppeld aan deze Azure AD-adreslijst zijn. U kunt weergeven en beheren van alleen de Azure-abonnementen en beheergroepen waaraan u toegang is verleend.
+   - Wanneer u de switch instelt op Nee, wordt de rol beheerder voor gebruikers toegang in azure RBAC verwijderd uit uw gebruikers account. U kunt geen rollen meer toewijzen in alle Azure-abonnementen en-beheer groepen die zijn gekoppeld aan deze Azure AD-Directory. U kunt alleen de Azure-abonnementen en-beheer groepen weer geven en beheren waartoe u toegang hebt gekregen.
 
-4. Klik op **opslaan** om op te slaan van de instelling.
+4. Klik op **Opslaan** om de instelling op te slaan.
 
-    - Deze instelling is niet een globale eigenschap en geldt alleen voor de momenteel aangemelde gebruiker.
+    - Deze instelling is geen algemene eigenschap en is alleen van toepassing op de gebruiker die momenteel is aangemeld.
 
-5. De taken die u wilt maken op de uitgebreide toegangsrechten uitvoeren. Wanneer u klaar bent, stelt u de switch terug naar **Nee**.
+5. Voer de taken uit die u nodig hebt om toegang tot verhoogde bevoegdheden uit te voeren. Wanneer u klaar bent, stelt u de schakel optie weer in op **Nee**.
 
 
 ### <a name="assign-rbac-roles-to-users"></a>RBAC-rollen toewijzen aan gebruikers
-Voor meer zichtbaarheid voor alle abonnementen, moeten tenantbeheerders de juiste RBAC-rol toewijzen aan gebruikers voor het verlenen van tenant-brede zichtbaarheid, zelf, met inbegrip van op het hoofdniveau van de management-groep. De aanbevolen rollen om toe te wijzen zijn **beveiligingsbeheerder** of **Beveiligingslezer**. De rol Beveiligingsbeheerder is over het algemeen moet beleidsregels toepassen op het hoogste niveau doen, terwijl Beveiligingslezer worden volstaan om aan te bieden zichtbaarheid op tenantniveau. Zie voor meer informatie over de machtigingen van deze rollen, de [beschrijving van de ingebouwde rol Beveiligingsbeheerder](../role-based-access-control/built-in-roles.md#security-admin) of de [beschrijving van de ingebouwde rol Beveiligingslezer](../role-based-access-control/built-in-roles.md#security-reader).
+Om inzicht te krijgen in alle abonnementen, moeten Tenant beheerders de juiste RBAC-rol toewijzen aan alle gebruikers die ze willen toestaan zicht baarheid op Tenant niveau, met inbegrip van eigen inzicht, op hoofd beheer groepniveau. De aanbevolen rollen die u wilt toewijzen, zijn **beveiligings beheerder** of **beveiligings lezer**. Over het algemeen is de rol beveiligings beheerder vereist voor het Toep assen van beleid op het hoofd niveau, terwijl beveiligings lezers voldoende zijn om zicht baarheid op Tenant niveau te bieden. Voor meer informatie over de machtigingen die door deze rollen worden verleend, raadpleegt u de beschrijving van de [ingebouwde rol beveiligings beheerder](../role-based-access-control/built-in-roles.md#security-admin) of de [ingebouwde rol van beveiligings lezer](../role-based-access-control/built-in-roles.md#security-reader).
 
 
-#### <a name="assign-rbac-roles-to-users-through-the-azure-portal"></a>RBAC-rollen toewijzen aan gebruikers via de Azure-portal: 
+#### <a name="assign-rbac-roles-to-users-through-the-azure-portal"></a>RBAC-rollen toewijzen aan gebruikers via de Azure Portal: 
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com). 
-1. Als u beheergroepen, selecteer **alle services** onder het Azure-hoofdmenu Selecteer **beheergroepen**.
-1.  Selecteer een beheergroep en klik op **details**.
+1. Als u beheer groepen wilt weer geven, selecteert u **alle services** onder het hoofd menu van Azure en selecteert u vervolgens **beheergroepen**.
+1.  Selecteer een beheer groep en klik op **Details**.
 
-    ![Beheer van groepen details-schermafbeelding](./media/security-center-management-groups/management-group-details.PNG)
+    ![Scherm afbeelding van Beheergroepen Details](./media/security-center-management-groups/management-group-details.PNG)
  
-1. Klik op **toegangsbeheer (IAM)** vervolgens **roltoewijzingen**.
+1. Klik op **toegangs beheer (IAM)** en **roltoewijzingen**.
 
 1. Klik op **roltoewijzing toevoegen**.
 
-1. Selecteer de rol om toe te wijzen en de gebruiker en klik vervolgens op **opslaan**.  
+1. Selecteer de rol die u wilt toewijzen en de gebruiker en klik vervolgens op **Opslaan**.  
    
-   ![Schermafbeelding van de rol van Beveiligingslezer toevoegen](./media/security-center-management-groups/asc-security-reader.png)
+   ![Scherm opname van rol van beveiligings lezer toevoegen](./media/security-center-management-groups/asc-security-reader.png)
 
 
-#### <a name="assign-rbac-roles-to-users-with-powershell"></a>RBAC-rollen toewijzen aan gebruikers met PowerShell: 
+#### <a name="assign-rbac-roles-to-users-with-powershell"></a>RBAC-rollen toewijzen aan gebruikers met Power shell: 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -122,77 +121,77 @@ Voor meer zichtbaarheid voor alle abonnementen, moeten tenantbeheerders de juist
     Connect-AzAccount
     ```
 
-3. Wanneer u hierom wordt gevraagd, meldt u zich aan met de referenties van de globale beheerder. 
+3. Meld u aan met de referenties van de globale beheerder als u hierom wordt gevraagd. 
 
-    ![Meld u aan vragen schermafbeelding](./media/security-center-management-groups/azurerm-sign-in.PNG)
+    ![Scherm opname van prompt voor aanmelden](./media/security-center-management-groups/azurerm-sign-in.PNG)
 
-4. Verlenen lezer rolmachtigingen door het uitvoeren van de volgende opdracht uit:
+4. Ken machtigingen voor de rol van lezer toe door de volgende opdracht uit te voeren:
 
     ```azurepowershell
     # Add Reader role to the required user on the Root Management Group
     # Replace "user@domian.com” with the user to grant access to
     New-AzRoleAssignment -SignInName "user@domain.com" -RoleDefinitionName "Reader" -Scope "/"
     ```
-5. Als u wilt verwijderen van de rol, gebruik de volgende opdracht: 
+5. Als u de rol wilt verwijderen, gebruikt u de volgende opdracht: 
 
     ```azurepowershell
     Remove-AzRoleAssignment -SignInName "user@domain.com" -RoleDefinitionName "Reader" -Scope "/" 
     ```
 
-### <a name="open-or-refresh-security-center"></a>Open of vernieuwen van Security Center
-Als u toegang hebt uitgebreid, openen of vernieuwen van Azure Security Center om te controleren of dat u hebt inzicht in alle abonnementen voor uw Azure AD-tenant. 
+### <a name="open-or-refresh-security-center"></a>Security Center openen of vernieuwen
+Zodra u toegang hebt tot verhoogde bevoegdheden, opent of vernieuwt u Azure Security Center om te controleren of u zicht hebt op alle abonnementen onder uw Azure AD-Tenant. 
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com). 
-2. Zorg ervoor dat u alle abonnementen in de lijst met abonnementen die u wilt weergeven in Security Center.
+2. Zorg ervoor dat u alle abonnementen selecteert in de abonnements kiezer die u wilt weer geven in Security Center.
 
-    ![Schermafbeelding van de abonnement-selector](./media/security-center-management-groups/subscription-selector.png)
+    ![Scherm opname van de abonnements kiezer](./media/security-center-management-groups/subscription-selector.png)
 
-1. Selecteer **alle services** onder het Azure-hoofdmenu Selecteer **Security Center**.
-2. In de **overzicht**, bevindt zich een diagram van de dekking voor abonnement.
+1. Selecteer **alle services** onder het hoofd menu van Azure en selecteer vervolgens **Security Center**.
+2. In het **overzicht**is er een dekkings grafiek voor abonnementen.
 
-    ![Schermafbeelding van abonnement dekking grafiek](./media/security-center-management-groups/security-center-subscription-coverage.png)
+    ![Scherm opname van de abonnements dekkings grafiek](./media/security-center-management-groups/security-center-subscription-coverage.png)
 
-3. Klik op **dekking** om te zien van de lijst met abonnementen gedekt. 
+3. Klik op **dekking** voor een overzicht van de gedekte abonnementen. 
 
-    ![Schermafbeelding van de lijst met abonnement dekking](./media/security-center-management-groups/security-center-coverage.png)
+    ![Scherm opname van de lijst met abonnements behoeften](./media/security-center-management-groups/security-center-coverage.png)
 
-### <a name="remove-elevated-access"></a>Toegang met verhoogde bevoegdheid verwijderen 
-Zodra de RBAC-rollen zijn toegewezen aan de gebruikers, moet de tenantbeheerder zelf verwijderen uit de rol Beheerder gebruikerstoegang.
+### <a name="remove-elevated-access"></a>Verhoogde toegang verwijderen 
+Zodra de RBAC-rollen aan de gebruikers zijn toegewezen, moet de Tenant beheerder zichzelf verwijderen van de rol beheerder van gebruikers toegang.
 
-1. Aanmelden bij de [Azure-portal](https://portal.azure.com) of de [Azure Active Directory-beheercentrum](https://aad.portal.azure.com).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com) of het [Azure Active Directory beheer centrum](https://aad.portal.azure.com).
 
-2. Klik in de navigatielijst **Azure Active Directory** en klik vervolgens op **eigenschappen**.
+2. Klik in de navigatie lijst op **Azure Active Directory** en klik vervolgens op **Eigenschappen**.
 
-3. Onder **globale beheerder kan beheren Azure-abonnementen en beheergroepen**, instellen van de switch op **Nee**.
+3. Onder **globale beheerder kunnen Azure-abonnementen en-beheergroepen beheren**, stel de switch in op **Nee**.
 
-4. Klik op **opslaan** om op te slaan van de instelling.
+4. Klik op **Opslaan** om de instelling op te slaan.
 
 
 
-## <a name="adding-subscriptions-to-a-management-groups"></a>Abonnementen toevoegen aan een beheergroepen
-U kunt abonnementen toevoegen aan de beheergroep die u hebt gemaakt. Deze stappen zijn niet verplicht voor het verkrijgen van zichtbaarheid van de tenant-brede en globaal beleid en toegangsbeheer.
+## <a name="adding-subscriptions-to-a-management-groups"></a>Abonnementen toevoegen aan een beheer groep
+U kunt abonnementen toevoegen aan de beheer groep die u hebt gemaakt. Deze stappen zijn niet verplicht voor het verkrijgen van zicht baarheid op Tenant niveau en globaal beleid en toegangs beheer.
 
-1. Onder **beheergroepen**, selecteert u een beheergroep die u wilt toevoegen van uw abonnement op.
+1. Selecteer onder **beheergroepen**een beheer groep waaraan u uw abonnement wilt toevoegen.
 
-    ![Selecteer een beheergroep die u wilt het abonnement dat u wilt toevoegen](./media/security-center-management-groups/management-group-subscriptions.png)
+    ![Selecteer een beheer groep om een abonnement toe te voegen aan](./media/security-center-management-groups/management-group-subscriptions.png)
 
 2. Selecteer **bestaande toevoegen**.
 
-    ![Bestaande toevoegen](./media/security-center-management-groups/add-existing.png)
+    ![Bestaand item toevoegen](./media/security-center-management-groups/add-existing.png)
 
-3. Voer abonnement onder **bestaande resource toevoegen** en klikt u op **opslaan**.
+3. Voer het abonnement in onder **bestaande resource toevoegen** en klik op **Opslaan**.
 
-4. Herhaal stappen 1 t/m 3 totdat u alle abonnementen hebt toegevoegd in het bereik.
+4. Herhaal stap 1 tot en met 3 totdat u alle abonnementen in het bereik hebt toegevoegd.
 
    > [!NOTE]
-   > Beheergroepen kunnen zowel abonnementen en onderliggende beheergroepen bevatten. Wanneer u een gebruiker een RBAC-rol aan de bovenliggende beheergroep toewijzen, wordt de toegang is overgenomen door de onderliggende beheergroep abonnementen. Beleid dat is ingesteld op de bovenliggende beheergroep worden ook overgenomen door de onderliggende objecten. 
+   > Beheer groepen kunnen zowel abonnementen als onderliggende beheer groepen bevatten. Wanneer u een RBAC-rol toewijst aan de bovenliggende beheer groep, wordt de toegang overgenomen door de abonnementen van de onderliggende beheer groep. Beleids regels die zijn ingesteld voor de bovenliggende beheer groep, worden ook overgenomen door de onderliggende items. 
 
 ## <a name="next-steps"></a>Volgende stappen
-In dit artikel hebt u geleerd hoe u inzicht met tenant-brede voor Azure Security Center. Zie de volgende artikelen voor meer informatie over Security Center:
+In dit artikel hebt u geleerd hoe u de zicht baarheid van de hele Tenant kunt verkrijgen voor Azure Security Center. Zie de volgende artikelen voor meer informatie over Security Center:
 
 > [!div class="nextstepaction"]
 > [Beveiligingsstatus bewaken in Azure Security Center](security-center-monitoring.md)
 
 > [!div class="nextstepaction"]
-> [Beheren en erop reageren op beveiligingswaarschuwingen in Azure Security Center](security-center-managing-and-responding-alerts.md)
+> [Beveiligings waarschuwingen beheren en erop reageren in Azure Security Center](security-center-managing-and-responding-alerts.md)
 

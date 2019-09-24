@@ -3,9 +3,8 @@ title: 'Snelstart voor Azure Security Center: uw Windows-computers naar Security
 description: In deze snelstart leert u hoe u Microsoft Monitoring Agent op een Windows-computer inricht.
 services: security-center
 documentationcenter: na
-author: rkarlin
-manager: barbkess
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: 61e95a87-39c5-48f5-aee6-6f90ddcd336e
 ms.service: security-center
 ms.devlang: na
@@ -14,13 +13,13 @@ ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/3/2018
-ms.author: rkarlin
-ms.openlocfilehash: bee4618ff08c89bbdab7413ca7f7f74a266d96dd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: memildin
+ms.openlocfilehash: 46fffc40b315109c348247ac09f02f9bb8dbb3b7
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60706794"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71202796"
 ---
 # <a name="quickstart-onboard-windows-computers-to-azure-security-center"></a>Quickstart: Windows-computers onboarden naar Azure Security Center
 Nadat u de onboarding van uw Azure-abonnementen hebt uitgevoerd, kunt u Security Center inschakelen voor resources die buiten Azure worden uitgevoerd, bijvoorbeeld on-premises of in andere clouds, door Microsoft Monitoring Agent in te richten.

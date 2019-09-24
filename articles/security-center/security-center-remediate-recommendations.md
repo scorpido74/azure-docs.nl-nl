@@ -3,9 +3,8 @@ title: Aanbevelingen herstellen in Azure Security Center | Microsoft Docs
 description: In dit document wordt uitgelegd hoe u aanbevelingen in Azure Security Center herstelt om uw Azure-resources te beschermen en te blijven voldoen aan het beveiligings beleid.
 services: security-center
 documentationcenter: na
-author: monhaber
-manager: barbkess
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: 8be947cc-cc86-421d-87a6-b1e23077fd50
 ms.service: security-center
 ms.devlang: na
@@ -13,13 +12,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/18/2019
-ms.author: v-mohabe
-ms.openlocfilehash: a32e344ffe33f411bae85763ae3b919040c1109b
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.author: memildin
+ms.openlocfilehash: 9bd1586193d2e36c370217e37b77409298821a67
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69575612"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71200995"
 ---
 # <a name="remediate-recommendations-in-azure-security-center"></a>Aanbevelingen herstellen in Azure Security Center
 

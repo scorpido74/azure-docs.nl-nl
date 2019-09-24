@@ -12,16 +12,26 @@ ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/01/2019
-ms.openlocfilehash: e58b01c6a01a22ef2dd45dc49d741f0287d603a0
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 759bec280b40973cf651dec3741a71d67c01fe04
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100377"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71200165"
 ---
 # <a name="release-notes-for-sql-server-on-azure-virtual-machines"></a>Opmerkingen bij de release voor SQL Server op Azure Virtual Machines
 
 Met Azure kunt u een virtuele machine (VM) implementeren met een installatie kopie van SQL Server ingebouwde. In dit artikel vindt u een overzicht van de nieuwe functies en verbeteringen in de recente releases van [SQL Server op Azure virtual machines](https://azure.microsoft.com/services/virtual-machines/sql-server/). In dit artikel vindt u ook een overzicht van belang rijke inhouds updates die niet rechtstreeks verband houden met de release, maar die in hetzelfde tijds bestek zijn gepubliceerd. Zie [service-updates](https://azure.microsoft.com/updates)voor verbeteringen aan andere Azure-Services.
+
+## <a name="august-2019"></a>2019 augustus
+
+### <a name="service-improvements"></a>Service verbeteringen
+
+| Service verbeteringen | Details |
+| --- | --- |
+| **Voor Azure toegewezen host** | U kunt uw SQL Server-VM uitvoeren op een [toegewezen Azure-host](virtual-machines-windows-sql-dedicated-host.md). |
+| &nbsp; | &nbsp; |
+
 
 ## <a name="july-2019"></a>2019 juli
 
@@ -70,7 +80,7 @@ Met Azure kunt u een virtuele machine (VM) implementeren met een installatie kop
 
 | Service verbeteringen | Details |
 | --- | --- |
-| **Uitgebreide ondersteuning voor SQL Server 2008/2008 R2** | [Uitgebreide ondersteuning](virtual-machines-windows-sql-server-2008-eos-extend-support.md) voor SQL Server 2008 en SQL Server 2008 R2 door te migreren naar een virtuele machine van Azure. | 
+| **Uitgebreide ondersteuning voor SQL Server 2008/2008 R2** | [Uitgebreide ondersteuning](virtual-machines-windows-sql-server-2008-eos-extend-support.md) voor SQL Server 2008 en SQL Server 2008 R2 door te migreren *naar een* virtuele machine van Azure. | 
 | &nbsp; | &nbsp; |
 
 

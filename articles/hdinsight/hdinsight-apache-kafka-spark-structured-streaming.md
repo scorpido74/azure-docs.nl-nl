@@ -8,12 +8,12 @@ ms.custom: hdinsightactive,seodec18
 ms.topic: tutorial
 ms.date: 05/22/2019
 ms.author: hrasheed
-ms.openlocfilehash: 32e47f688150333ac78091589d8a252641d4c7d6
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: bcf1b967cf8eeab7aae4b720683785309689858e
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71076998"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71204224"
 ---
 # <a name="tutorial-use-apache-spark-structured-streaming-with-apache-kafka-on-hdinsight"></a>Zelfstudie: Apache Spark Structured Streaming gebruiken met Apache Kafka op HDInsight
 
@@ -186,12 +186,15 @@ In dit voor beeld ziet u hoe u met Spark Structured streaming kunt gebruiken met
 
 4. Laad pakketten die worden gebruikt door het notitie blok door de volgende informatie in een notebook-cel in te voeren. Voer de opdracht uit met behulp van **CTRL + ENTER**.
 
+Spark streaming heeft batch verwerking, wat betekent dat gegevens worden geleverd als batches en uitvoer uit de batch met gegevens. Als de uitvoerder een time-out voor inactiviteit heeft die korter is dan de tijd die nodig is om de batch te verwerken, worden de uitvoerende partijen voortdurend toegevoegd en verwijderd. Als de time-out voor de uitvoering van de uitvoerender groter is dan de batch duur, wordt de uitvoerder nooit verwijderd. Daarom **wordt u aangeraden dynamische toewijzing uit te scha kelen door Spark. dynamicAllocation. enabled in te stellen op False bij het uitvoeren van streaming-toepassingen.**
+
     ```
     %%configure -f
     {
         "conf": {
             "spark.jars.packages": "org.apache.spark:spark-sql-kafka-0-10_2.11:2.2.0",
-            "spark.jars.excludes": "org.scala-lang:scala-reflect,org.apache.spark:spark-tags_2.11"
+            "spark.jars.excludes": "org.scala-lang:scala-reflect,org.apache.spark:spark-tags_2.11",
+            "spark.dynamicAllocation.enabled": false
         }
     }
     ```

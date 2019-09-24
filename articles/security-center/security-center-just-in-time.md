@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 9948f4d9e6287530004b073adf10bb723899e96d
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: 2abe917d1713bbc5f5844aced5e688baacc7d397
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910608"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71202009"
 ---
 # <a name="manage-virtual-machine-access-using-just-in-time"></a>Toegang tot virtuele machines beheren met Just-in-time
 
@@ -38,7 +38,7 @@ Een manier om de bloot stelling aan een beveiligings aanval te verminderen is he
 
 Wanneer just-in-time is ingeschakeld, wordt binnenkomend verkeer naar uw Azure-Vm's door Security Center vergrendeld door een NSG-regel te maken. U selecteert de poorten op de VM waarop het inkomende verkeer wordt vergrendeld. Deze poorten worden bepaald door de just-in-time-oplossing.
 
-Wanneer een gebruiker toegang tot een virtuele machine vraagt, controleert Security Center of de gebruiker beschikt over [op rollen gebaseerde Access Control (RBAC)-](../role-based-access-control/role-assignments-portal.md) machtigingen waarmee ze toegang tot een virtuele machine kunnen aanvragen. Als de aanvraag is goedgekeurd, Security Center automatisch de netwerk beveiligings groepen (Nsg's) en Azure Firewall zodanig configureren dat inkomend verkeer naar de geselecteerde poorten en aangevraagde bron-IP-adressen of-bereiken worden toegestaan voor de opgegeven hoeveelheid tijd. Nadat de tijd is verstreken, wordt de Nsg's door Security Center teruggezet naar de vorige status. Deze verbindingen die al tot stand zijn gebracht, worden echter niet onderbroken.
+Wanneer een gebruiker toegang tot een virtuele machine vraagt, controleert Security Center of de gebruiker [op rollen gebaseerde Access Control (RBAC)-](../role-based-access-control/role-assignments-portal.md) machtigingen voor die VM heeft. Als de aanvraag is goedgekeurd, Security Center automatisch de netwerk beveiligings groepen (Nsg's) en Azure Firewall zodanig configureren dat inkomend verkeer naar de geselecteerde poorten en aangevraagde bron-IP-adressen of-bereiken worden toegestaan voor de opgegeven hoeveelheid tijd. Nadat de tijd is verstreken, wordt de Nsg's door Security Center teruggezet naar de vorige status. Deze verbindingen die al tot stand zijn gebracht, worden echter niet onderbroken.
 
  > [!NOTE]
  > Als een JIT-toegangs aanvraag wordt goedgekeurd voor een virtuele machine achter een Azure Firewall, wijzigt Security Center automatisch de beleids regels NSG en firewall. Voor de hoeveelheid tijd die is opgegeven, staan de regels binnenkomend verkeer naar de geselecteerde poorten toe en aangevraagde IP-adressen of bereiken van de bron. Nadat de tijd is overschreden Security Center, worden de firewall-en NSG-regels teruggezet naar de vorige status.

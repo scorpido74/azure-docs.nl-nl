@@ -1,66 +1,68 @@
 ---
-title: Firewall-regels in Azure Database for PostgreSQL - één Server
-description: Dit artikel beschrijft de firewallregels voor Azure Database voor PostgreSQL - één Server.
+title: Firewall regels in Azure Database for PostgreSQL-één server
+description: In dit artikel worden de firewall regels voor Azure Database for PostgreSQL-één server beschreven.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 5/6/2019
-ms.openlocfilehash: 40a675fbefe9743f5de1f9766cf33ae7dba9e5a7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 09/22/2019
+ms.openlocfilehash: a48e9e2583afbde584987e5a1ac61da9734058d1
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65073574"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71200128"
 ---
-# <a name="firewall-rules-in-azure-database-for-postgresql---single-server"></a>Firewall-regels in Azure Database for PostgreSQL - één Server
-Azure Database for PostgreSQL-serverfirewall voorkomt alle toegang tot uw databaseserver, totdat u opgeeft welke computers zijn gemachtigd. De firewall verleent toegang tot de server op basis van het oorspronkelijke IP-adres van elke aanvraag.
-U configureert de firewall door firewallregels te maken die bereiken opgeven van acceptabele IP-adressen. U kunt firewallregels op serverniveau maken.
+# <a name="firewall-rules-in-azure-database-for-postgresql---single-server"></a>Firewall regels in Azure Database for PostgreSQL-één server
+Azure Database for PostgreSQL Server firewall voor komt dat de toegang tot uw database server wordt verhinderd totdat u opgeeft welke computers zijn gemachtigd. De firewall verleent toegang tot de server op basis van het oorspronkelijke IP-adres van elke aanvraag.
+U configureert de firewall door firewallregels te maken die bereiken opgeven van acceptabele IP-adressen. U kunt Firewall regels maken op server niveau.
 
-**Firewall-regels:** Deze regels zorgen ervoor dat clients toegang krijgen tot uw hele Azure Database for PostgreSQL-Server, dat wil zeggen, alle databases binnen dezelfde logische server. Firewallregels op serverniveau kunnen worden geconfigureerd met behulp van de Azure-portal of met behulp van Azure CLI-opdrachten. Voor het maken van firewallregels op serverniveau, moet u eigenaar van het abonnement of een bijdrager aan het abonnement.
+**Firewall regels:** Met deze regels kunnen clients toegang krijgen tot uw hele Azure Database for PostgreSQL server, dat wil zeggen, alle data bases binnen dezelfde logische server. Firewall regels op server niveau kunnen worden geconfigureerd met behulp van de Azure Portal of met Azure CLI-opdrachten. Als u firewall regels op server niveau wilt maken, moet u de eigenaar van het abonnement of een mede werker van het abonnement zijn.
 
 ## <a name="firewall-overview"></a>Firewalloverzicht
-Alle databasetoegang tot uw Azure Database for PostgreSQL-server is standaard geblokkeerd door de firewall. Als u wilt beginnen met behulp van de server vanaf een andere computer, moet u een of meer firewallregels op serverniveau regels voor toegang tot uw server op te geven. Gebruik de firewallregels om op te geven welke IP-adresbereiken van Internet om toe te staan. Toegang tot de Azure portal-website zelf wordt niet beïnvloed door de firewall-regels.
-Verbindingspogingen van Internet en Azure moeten eerst de firewall passeren voordat ze de PostgreSQL-Database kunnen bereiken zoals wordt weergegeven in het volgende diagram:
+Alle database toegang tot uw Azure Database for PostgreSQL-server wordt standaard geblokkeerd door de firewall. Als u uw server vanaf een andere computer wilt gebruiken, moet u een of meer firewall regels op server niveau opgeven om toegang tot uw server mogelijk te maken. Gebruik de firewall regels om op te geven welke IP-adresbereiken van Internet moeten worden toegestaan. De firewall regels hebben geen invloed op de Azure Portal website zelf.
+Verbindings pogingen via internet en Azure moeten eerst door de firewall worden door gegeven voordat ze uw PostgreSQL-data base kunnen bereiken, zoals wordt weer gegeven in het volgende diagram:
 
-![Voorbeeld van de stroom van de werking van de firewall](media/concepts-firewall-rules/1-firewall-concept.png)
+![Voor beeld van de werking van de firewall](media/concepts-firewall-rules/1-firewall-concept.png)
 
 ## <a name="connecting-from-the-internet"></a>Verbinding maken vanuit internet
-Firewallregels op serverniveau zijn van toepassing op alle databases op dezelfde Azure Database for PostgreSQL-server. Als het IP-adres van de aanvraag binnen een van de bereiken ligt die zijn opgegeven in de firewallregels op serverniveau, wordt de verbinding toegestaan.
-Als het IP-adres van de aanvraag niet binnen de bereiken die in de firewallregels op serverniveau zijn opgegeven, mislukt de verbindingsaanvraag.
-Bijvoorbeeld, als uw toepassing verbinding met JDBC-stuurprogramma voor PostgreSQL maakt, u deze fout kan optreden wanneer de verbinding wordt geblokkeerd door de firewall verbinding proberen te maken.
-> java.util.concurrent.ExecutionException: java.lang.RuntimeException: org.postgresql.util.PSQLException: Onherstelbare fout: Er is geen pg\_hba.conf-vermelding voor de host ": 123.45.67.890", gebruiker "adminuser', database 'postgresql", SSL
+Firewall regels op server niveau zijn van toepassing op alle data bases op dezelfde Azure Database for PostgreSQL server. Als het IP-adres van de aanvraag binnen een van de bereiken ligt die zijn opgegeven in de firewallregels op serverniveau, wordt de verbinding toegestaan.
+Als het IP-adres van de aanvraag niet binnen de bereiken valt die zijn opgegeven in een van de firewall regels op server niveau, mislukt de verbindings aanvraag.
+Als uw toepassing bijvoorbeeld verbinding maakt met het JDBC-stuur programma voor PostgreSQL, kan deze fout optreden wanneer de firewall de verbinding blokkeert.
+> Java. util. gelijktijdige. ExecutionException: Java. lang. RuntimeException: org. postgresql. util. PSQLException: Onherstelbare fout\_: geen PG HBA. conf entry for host "123.45.67.890", User "adminuser", data base "postgresql", SSL
 
 ## <a name="connecting-from-azure"></a>Verbinding maken vanuit Azure
-Als u wilt toestaan dat toepassingen vanuit Azure verbinding kunnen maken met uw Azure Database for PostgreSQL-server, moeten de Azure-verbindingen zijn ingeschakeld. Bijvoorbeeld als host voor een Azure Web Apps-toepassing of een toepassing die wordt uitgevoerd in een Azure-VM, of verbinding te maken van een Azure Data Factory data management gateway. De resources hoeft te worden in het hetzelfde Virtueelnetwerk (VNet) of de resourcegroep voor de firewallregel om in te schakelen deze verbindingen. Wanneer een toepassing vanuit Azure probeert verbinding te maken met uw databaseserver, verifieert de firewall of Azure-verbindingen zijn toegestaan. Er zijn een aantal methoden voor het inschakelen van deze typen verbindingen. Een firewallinstelling waarvan het begin- en eindadres gelijk zijn aan 0.0.0.0 geeft aan dat deze verbindingen zijn toegestaan. U kunt ook instellen de **toegang tot Azure-services toestaan** optie naar **ON** in de portal van de **verbindingsbeveiliging** deelvenster en druk op **Opslaan**. Als de verbindingspoging niet is toegestaan, wordt in de aanvraag de Azure Database for PostgreSQL-server niet bereiken.
+Azure-verbindingen moeten zijn ingeschakeld om toepassingen van Azure toe te staan om verbinding te maken met uw Azure Database for PostgreSQL server. Als u bijvoorbeeld een Azure Web Apps-toepassing wilt hosten, of een toepassing die wordt uitgevoerd in een Azure-VM of als u verbinding wilt maken vanuit een Azure Data Factory Data Management Gateway. De resources hoeven zich niet in dezelfde Virtual Network (VNet) of resource groep voor de firewall regel te bevinden om deze verbindingen in te scha kelen. Wanneer een toepassing vanuit Azure probeert verbinding te maken met uw databaseserver, verifieert de firewall of Azure-verbindingen zijn toegestaan. Er zijn een aantal methoden om deze typen verbindingen in te scha kelen. Een firewallinstelling waarvan het begin- en eindadres gelijk zijn aan 0.0.0.0 geeft aan dat deze verbindingen zijn toegestaan. U kunt ook de optie toegang tot **Azure-Services toestaan** in op in de Portal instellen in het deel **venster verbindings beveiliging** en **op** **Opslaan**klikken. Als de verbindings poging niet is toegestaan, wordt de Azure Database for PostgreSQL server niet bereikt door de aanvraag.
 
 > [!IMPORTANT]
 > Met deze optie configureert u de firewall zo dat alle verbindingen vanuit Azure zijn toegestaan, inclusief verbindingen vanuit de abonnementen van andere klanten. Wanneer u deze optie selecteert, zorg dan dat uw aanmeldings- en gebruikersmachtigingen de toegang beperken tot alleen geautoriseerde gebruikers.
 > 
 
-![Toegang tot Azure-services toestaan in de portal configureren](media/concepts-firewall-rules/allow-azure-services.png)
+![Toegang tot Azure-Services in de portal toestaan configureren](media/concepts-firewall-rules/allow-azure-services.png)
 
 ## <a name="programmatically-managing-firewall-rules"></a>Firewallregels programmatisch beheren
-Naast de Azure portal, firewall-regels, worden beheerd via een programma met behulp van Azure CLI.
-Zie ook [maken en beheren van Azure Database voor PostgreSQL-firewallregels met behulp van Azure CLI](howto-manage-firewall-using-cli.md)
+Naast de Azure Portal kunnen Firewall regels programmatisch worden beheerd met behulp van Azure CLI.
+Zie ook [Azure database for PostgreSQL firewall regels maken en beheren met behulp van Azure cli](howto-manage-firewall-using-cli.md)
 
-## <a name="troubleshooting-the-database-server-firewall"></a>Het oplossen van de firewall van de database-server
-De volgende punten overwegen wanneer u toegang tot de Microsoft Azure-Database voor PostgreSQL-Server-service niet meer werkt zoals verwacht:
+## <a name="troubleshooting-firewall-issues"></a>Problemen met de firewall oplossen
+Houd rekening met de volgende punten wanneer de toegang tot de Microsoft Azure-Data Base voor PostgreSQL Server-service niet werkt zoals verwacht:
 
-* **Wijzigingen aan de acceptatielijst zijn nog niet doorgevoerd:** Mogelijk zijn er maar liefst vijf minuten vertraging voor wijzigingen in de Azure Database for PostgreSQL-Server firewall-configuratie te activeren.
+* **Wijzigingen in de acceptatie lijst zijn nog niet doorgevoerd:** Het kan vijf minuten duren voordat wijzigingen in de Azure Database for PostgreSQL Server-firewallconfiguratie van kracht worden.
 
-* **De aanmelding is niet gemachtigd of is een onjuist wachtwoord gebruikt:** Als een aanmelding heeft geen machtigingen voor de Azure Database for PostgreSQL-server of het wachtwoord onjuist is, wordt de verbinding met de Azure Database for PostgreSQL-server is geweigerd. Het maken van een firewallinstelling biedt alleen clients met een kans om verbinding te maken met uw server. elke client moet nog steeds de benodigde beveiligingsreferenties opgeven.
+* **De aanmelding is niet geautoriseerd of er is een onjuist wacht woord gebruikt:** Als een aanmelding geen machtigingen heeft op de Azure Database for PostgreSQL server of het gebruikte wacht woord onjuist is, wordt de verbinding met de Azure Database for PostgreSQL-server geweigerd. Het maken van een firewall instelling biedt clients alleen de mogelijkheid om verbinding te maken met uw server. elke client moet nog steeds de benodigde beveiligings referenties opgeven.
 
-Bijvoorbeeld kan met behulp van een JDBC-client, de volgende fout optreden.
-> java.util.concurrent.ExecutionException: java.lang.RuntimeException: org.postgresql.util.PSQLException: Onherstelbare fout: wachtwoordverificatie is mislukt voor gebruiker "uwgebruikersnaam"
+   Als u bijvoorbeeld een JDBC-client gebruikt, kan de volgende fout worden weer gegeven.
+   > Java. util. gelijktijdige. ExecutionException: Java. lang. RuntimeException: org. postgresql. util. PSQLException: Onherstelbare fout: wachtwoord verificatie is mislukt voor gebruiker ' yourusername '
 
-* **Dynamische IP-adres:** Als u een internetverbinding met dynamische IP-adressering hebt en u problemen ondervindt bij het ophalen van via de firewall, kan u een van de volgende oplossingen proberen:
+* **Dynamisch IP-adres:** Als u een Internet verbinding hebt met dynamische IP-adres sering en u problemen ondervindt met het verkrijgen van de firewall, kunt u een van de volgende oplossingen proberen:
 
-* Vraag uw Internetproviderverbindingen (ISP) voor het IP-adresbereik is toegewezen aan uw clientcomputers die toegang hebben tot de Azure Database for PostgreSQL-Server en vervolgens als een firewall-regel toevoegen het IP-adresbereik.
+   * Vraag uw Internet provider (ISP) naar het IP-adres bereik dat is toegewezen aan uw client computers die toegang hebben tot de Azure Database for PostgreSQL server en voeg het IP-adres bereik vervolgens toe als een firewall regel.
 
-* Ophalen van statische IP-adressen in plaats daarvan voor uw clientcomputers en voeg vervolgens het statische IP-adres toe als een firewall-regel.
+   * Neem in plaats daarvan statische IP-adressen op voor uw client computers en voeg vervolgens het statische IP-adres toe als een firewall regel.
+
+* **Het IP-adres van de server lijkt openbaar te zijn:** Verbindingen met de Azure Database for PostgreSQL-server worden doorgestuurd via een openbaar toegankelijke Azure-gateway. Het daad werkelijke IP-adres van de server wordt echter beschermd door de firewall. Ga naar het artikel over de [connectiviteits architectuur](concepts-connectivity-architecture.md)voor meer informatie. 
 
 ## <a name="next-steps"></a>Volgende stappen
-Voor artikelen over het maken van firewallregels op serverniveau en databaseniveau, Zie:
-* [Maken en beheren van Azure Database voor PostgreSQL-firewallregels met behulp van de Azure portal](howto-manage-firewall-using-portal.md)
+Zie voor artikelen over het maken van firewall regels op server niveau en op database niveau:
+* [Azure Database for PostgreSQL firewall regels maken en beheren met behulp van de Azure Portal](howto-manage-firewall-using-portal.md)
 * [Maken en beheren van Azure-Database voor firewallregels PostgreSQL met Azure CLI](howto-manage-firewall-using-cli.md)

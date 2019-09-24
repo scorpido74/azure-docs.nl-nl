@@ -7,12 +7,12 @@ author: gvashishtha
 ms.author: gopalv
 ms.topic: quickstart
 ms.date: 09/13/2019
-ms.openlocfilehash: 34aaae23b834ec1fb9e071f31c6d8e94c9c7dd0a
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 1761673198b3d8ffc3740d64f525c9e70bda9e3e
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71170797"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71204167"
 ---
 # <a name="quickstart-set-up-a-centos-linux-data-science-virtual-machine-in-azure"></a>Quickstart: Een CentOS-Data Science Virtual Machine (Linux) instellen in azure
 
@@ -33,7 +33,7 @@ Hier volgen de stappen voor het maken van een instantie van de CentOS Data Scien
 
 1. Selecteer in het volgende venster **maken**.
 
-    ![Wizard voor het maken van een virtuele machine](./media/linux-dsvm-intro/create-centos.png)
+    [![](media/linux-dsvm-intro/create-centos.png "Knop voor het maken van een CentOS machine")](media/linux-dsvm-intro/create-centos-expanded.png#lightbox)
 
 1. U moet worden omgeleid naar de Blade een virtuele machine maken.
    

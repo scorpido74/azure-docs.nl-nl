@@ -3,9 +3,8 @@ title: Ondersteunde functies die beschikbaar zijn in Azure Security Center | Mic
 description: Dit document bevat een lijst met services die door Azure Security Center worden ondersteund.
 services: security-center
 documentationcenter: na
-author: monhaber
+author: memildin
 manager: rkarlin
-editor: ''
 ms.assetid: 870ebc8d-1fad-435b-9bf9-c477f472ab17
 ms.service: security-center
 ms.devlang: na
@@ -13,13 +12,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/29/2019
-ms.author: v-mohabe
-ms.openlocfilehash: 0d2b417dd01e26f0f93722be66d82972b52aca83
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.author: memildin
+ms.openlocfilehash: 97708fa3211aa203aab56253b1c7720d04329014
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70234580"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71200812"
 ---
 # <a name="supported-features-available-in-azure-security-center"></a>Ondersteunde functies die beschikbaar zijn in Azure Security Center
 
@@ -53,7 +52,7 @@ De volgende secties tonen Security Center functies die beschikbaar zijn voor hun
 |Implementatie van derden|✔|X|X|✔|X|X|Free|
 |NSG-evaluatie|✔|✔|X|✔|✔|X|Free|
 |Detectie van bedreigingen met een bestand|✔|✔|✔|X|X|X|Standard|
-|Netwerk toewijzing|✔|✔|X|✔|✔|X|Standard|
+|Netwerktoewijzing|✔|✔|X|✔|✔|X|Standard|
 |Adaptieve netwerk besturings elementen|✔|✔|X|✔|✔|X|Standard|
 |Dash board naleving van regelgeving & rapporten|✔|✔|✔|✔|✔|✔|Standard|
 |Aanbevelingen en detectie van bedreigingen op docker-gehoste IaaS-containers|X|X|X|✔|✔|✔|Standard|

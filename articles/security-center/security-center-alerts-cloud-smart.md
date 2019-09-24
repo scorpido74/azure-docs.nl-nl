@@ -3,23 +3,22 @@ title: Cloud Smart alert correlatie in Azure Security Center (incidenten) | Micr
 description: In dit onderwerp wordt uitgelegd hoe fusie gebruikmaakt van Smart alert-correlatie voor het genereren van beveiligings incidenten in Azure Security Center.
 services: security-center
 documentationcenter: na
-author: monhaber
+author: memildin
 manager: rkarlin
-editor: ''
 ms.assetid: e9d5a771-bfbe-458c-9a9b-a10ece895ec1
 ms.service: security-center
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 7/02/2019
-ms.author: v-mohabe
-ms.openlocfilehash: 5afba1ddf2d25e079d9f742f4e403dab6c0c0c4b
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.date: 07/02/2019
+ms.author: memildin
+ms.openlocfilehash: 4c2f084fe03271b29a12aa6906f5e36612d50674
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70013403"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71202700"
 ---
 # <a name="cloud-smart-alert-correlation-in-azure-security-center-incidents"></a>Azure Security Center voor de correlatie van de cloud in een andere (incidenten)
 
@@ -39,5 +38,5 @@ Tijdens een onderzoek naar een incident hebben analisten vaak extra context nodi
 
 ![Scherm afbeelding van gedetecteerd rapport van beveiligings incident](./media/security-center-alerts-cloud-smart/security-incident.png)
 
-Zie beveiligings incidenten afhandelen [in azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-incident)voor meer informatie over beveiligings incidenten.
+Zie [beveiligings incidenten afhandelen in azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-incident)voor meer informatie over beveiligings incidenten.
 

@@ -1,5 +1,5 @@
 ---
-title: 'Referentie: Ubuntu DSVM'
+title: 'Referentie: Ubuntu-DSVM'
 description: Details over hulpprogram ma's die zijn opgenomen in de Ubuntu-Data Science Virtual Machine
 author: gvashishtha
 ms.service: machine-learning
@@ -7,12 +7,12 @@ ms.subservice: data-science-vm
 ms.author: gopalv
 ms.date: 09/11/2019
 ms.topic: reference
-ms.openlocfilehash: 20fe027ddf47ba98cef41cdc40a1b2e0d387c2a5
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 0c48b8ba28f67ac7f38d6f636728abe7c5a6bd4e
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71174706"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71204036"
 ---
 # <a name="reference-ubuntu-linux-data-science-virtual-machine"></a>Referentie: Ubuntu (Linux) Data Science Virtual Machine
 
@@ -342,3 +342,6 @@ Nu wordt een grafische interface geopend met een reeks tabbladen. Gebruik de vol
 
 U kunt Rattle en R afsluiten. Nu kunt u het gegenereerde R-script wijzigen. Of gebruik het script zoals het is en voer het op elk gewenst moment uit om alles te herhalen dat is uitgevoerd in de Rattle-gebruikers interface. Met name voor beginners in R is dit een manier om snel analyses en machine learning uit te voeren in een eenvoudige grafische interface, terwijl automatisch code wordt gegenereerd in R om te wijzigen of te leren.
 
+## <a name="next-steps"></a>Volgende stappen
+
+Hebt u nog meer vragen? Overweeg een [ondersteunings ticket](https://azure.microsoft.com/support/create-ticket/)te maken.

@@ -3,23 +3,22 @@ title: Gebruik Azure Security Center aanbevelingen voor het verbeteren van de be
 description: " Meer informatie over het gebruik van beveiligings beleid en aanbevelingen in Azure Security Center voor het oplossen van een beveiligings aanval. "
 services: security-center
 documentationcenter: na
-author: monhaber
-manager: barbkess
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: ''
 ms.service: security-center
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 8/22/2019
-ms.author: v-mohabe
-ms.openlocfilehash: 13d6eb64b2089cf93f08c294cc9b6a2034b64fa0
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.date: 08/22/2019
+ms.author: memildin
+ms.openlocfilehash: 69fa9d24d24c26a7d945c27e86739475f9883b27
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69990546"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71200695"
 ---
 # <a name="use-azure-security-center-recommendations-to-enhance-security"></a>Azure Security Center aanbevelingen gebruiken om de beveiliging te verbeteren
 U kunt de kans op een belang rijke beveiligings gebeurtenis verminderen door een beveiligings beleid te configureren en vervolgens de aanbevelingen te implementeren die door Azure Security Center worden gegeven. In dit artikel leest u hoe u beveiligings beleid en aanbevelingen in Security Center kunt gebruiken om een beveiligings aanval te verhelpen. 
@@ -30,7 +29,7 @@ Security Center doorlopende scans wordt automatisch uitgevoerd om de beveiliging
 - Aanbevelingen voor Endpoint Protection-problemen worden binnen 8 uur bijgewerkt
 
 ## <a name="scenario"></a>Scenario
-In dit scenario ziet u hoe u Security Center kunt gebruiken om de kans op een beveiligings incident te verminderen door te controleren of er aanbevelingen zijn voor Security Center en actie te ondernemen. In het scenario wordt gebruikgemaakt van het fictieve bedrijf, Contoso en de functies die worden weer gegeven in de Security Center plannings- [en bedienings handleiding](security-center-planning-and-operations-guide.md#security-roles-and-access-controls). In dit scenario richten we ons op de rollen van de volgende personen:
+In dit scenario ziet u hoe u Security Center kunt gebruiken om de kans op een beveiligings incident te verminderen door te controleren of er aanbevelingen zijn voor Security Center en actie te ondernemen. In het scenario wordt gebruikgemaakt van het fictieve bedrijf, Contoso en de functies die worden weer gegeven in de Security Center [plannings-en bedienings handleiding](security-center-planning-and-operations-guide.md#security-roles-and-access-controls). In dit scenario richten we ons op de rollen van de volgende personen:
 
 ![Scenario rollen](./media/security-center-using-recommendations/scenario-roles.png)
 

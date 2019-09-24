@@ -3,9 +3,8 @@ title: Geef beveiligings contact gegevens op in Azure Security Center | Microsof
 description: In dit document wordt beschreven hoe u contact gegevens van de beveiliging kunt opgeven in Azure Security Center.
 services: security-center
 documentationcenter: na
-author: rkarlin
-manager: barbkess
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: 26b5dcb4-ce3f-4f22-8d56-d2bf743cfc90
 ms.service: security-center
 ms.devlang: na
@@ -13,13 +12,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/09/2019
-ms.author: rkarlin
-ms.openlocfilehash: ae7c130df40ea0553bd9e3ae117534fe98466f26
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.author: memildin
+ms.openlocfilehash: fabccb7a3f49442a009fd69ee6d3b831760751d2
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68934892"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71201017"
 ---
 # <a name="provide-security-contact-details-in-azure-security-center"></a>Geef beveiligings contact gegevens op in Azure Security Center
 Azure Security Center wordt aangeraden om de contact gegevens van de beveiliging voor uw Azure-abonnement te verstrekken als u dat nog niet hebt gedaan. Deze informatie wordt gebruikt door Microsoft om contact met u op te nemen als door Microsoft Security Response Center (MSRC) wordt gedetecteerd dat uw klantgegevens zijn geopend door een illegale of niet-geautoriseerde derde. MSRC voert de selectie van beveiligings bewaking van het Azure-netwerk en de infra structuur uit en ontvangt bedreigings informatie en klachten van derden.

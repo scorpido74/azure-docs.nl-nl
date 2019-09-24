@@ -3,9 +3,8 @@ title: Uw netwerk bronnen beveiligen in Azure Security Center | Microsoft Docs
 description: Dit document bevat aanbevelingen in Azure Security Center waarmee u uw Azure-netwerk bronnen kunt beveiligen en blijven voldoen aan het beveiligings beleid.
 services: security-center
 documentationcenter: na
-author: monhaber
-manager: barbkess
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: 96c55a02-afd6-478b-9c1f-039528f3dea0
 ms.service: security-center
 ms.devlang: na
@@ -13,13 +12,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/05/2019
-ms.author: v-mohabe
-ms.openlocfilehash: 536e2e3732a0b196801e37c51dfb6c746e070441
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.author: memildin
+ms.openlocfilehash: bf33fe29b18b09bf903e1fc331f1c378eacb3e17
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910465"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71201712"
 ---
 # <a name="protect-your-network-resources-in-azure-security-center"></a>Uw netwerk bronnen beveiligen in Azure Security Center
 Azure Security Center de beveiligings status van uw Azure-resources voortdurend geanalyseerd op de aanbevolen procedures voor netwerk beveiliging. Wanneer Security Center mogelijke beveiligings problemen identificeert, worden er aanbevelingen gemaakt die u door het proces van het configureren van de benodigde besturings elementen leiden om uw resources te beschermen en te beveiligen.
@@ -39,7 +38,7 @@ Op de pagina **netwerken** vindt u een overzicht van de secties die u uitgebreid
  
 ![Netwerk venster](./media/security-center-network-recommendations/networking-pane.png)
 
-## <a name="network-map"></a>Netwerk toewijzing
+## <a name="network-map"></a>Netwerktoewijzing
 De interactieve netwerk kaart biedt een grafische weer gave met beveiligings-overlays waarmee u aanbevelingen en inzichten krijgt voor het versterken van uw netwerk bronnen. Met de kaart ziet u de netwerk topologie van uw Azure-workloads, verbindingen tussen uw virtuele machines en subnetten, en de mogelijkheid om in te zoomen op de kaart in specifieke bronnen en de aanbevelingen voor deze resources.
 
 De netwerk kaart openen:
@@ -134,7 +133,7 @@ Op het derde niveau worden virtuele machines weer gegeven. Dit is vergelijkbaar 
 
 ## <a name="network-recommendations"></a>Aanbevelingen voor netwerken
 
-|Naam aanbeveling|Description|Severity|Beveiligingsscore|Resourcetype|
+|Aanbevolen naam|Description|Severity|Beveiligingsscore|Resourcetype|
 |----|----|----|----|----|----|
 |Netwerk beveiligings groepen op het subnetniveau moeten zijn ingeschakeld|Netwerk beveiligings groepen inschakelen voor het beheren van netwerk toegang van resources die zijn geïmplementeerd in uw subnetten.|Hoog/gemiddeld|30|Subnet|
 |Virtuele machines moeten worden gekoppeld aan een netwerk beveiligings groep|Schakel netwerk beveiligings groepen in om de netwerk toegang van uw virtuele machines te beheren.|Hoog/gemiddeld|30|Virtuele machine|

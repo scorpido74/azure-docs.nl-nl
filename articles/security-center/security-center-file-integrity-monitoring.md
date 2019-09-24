@@ -3,9 +3,8 @@ title: Controle van bestands integriteit in Azure Security Center | Microsoft Do
 description: " Meer informatie over het inschakelen van de controle van bestands integriteit in Azure Security Center. "
 services: security-center
 documentationcenter: na
-author: monhaber
-manager: barbkess
-editor: monhaber
+author: memildin
+manager: rkarlin
 ms.assetid: 411d7bae-c9d4-4e83-be63-9f2f2312b075
 ms.service: security-center
 ms.devlang: na
@@ -13,13 +12,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/13/2019
-ms.author: v-mohabe
-ms.openlocfilehash: cc0c319357b39ddb3e88d515613273a6f7dc0867
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.author: memildin
+ms.openlocfilehash: f7f5c257b23cd273a2cda40f874f5edfc62c0dbd
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "65968797"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71202192"
 ---
 # <a name="file-integrity-monitoring-in-azure-security-center"></a>Controle van bestands integriteit in Azure Security Center
 Meer informatie over het configureren van FIM (File Integrity Monitoring) in Azure Security Center met behulp van deze procedure.
@@ -110,7 +109,7 @@ Op het tabblad **computers** (zie hierboven) wordt een lijst weer gegeven met al
 - Totaal aantal wijzigingen dat is opgetreden tijdens de geselecteerde periode
 - Een uitsplitsing van de totale wijzigingen als bestands wijzigingen of register wijzigingen
 
-**Zoeken** in Logboeken wordt geopend wanneer u een computer naam invoert in het zoek veld of een computer selecteert die wordt vermeld op het tabblad computers. In Logboeken zoeken worden alle wijzigingen weer gegeven die zijn aangebracht tijdens de geselecteerde tijds periode voor de machine. U kunt een wijziging uitbreiden voor meer informatie.
+**Zoeken in Logboeken** wordt geopend wanneer u een computer naam invoert in het zoek veld of een computer selecteert die wordt vermeld op het tabblad computers. In Logboeken zoeken worden alle wijzigingen weer gegeven die zijn aangebracht tijdens de geselecteerde tijds periode voor de machine. U kunt een wijziging uitbreiden voor meer informatie.
 
 ![Zoeken in logboeken][8]
 
@@ -174,7 +173,7 @@ Onder **bewerken voor wijzigingen bijhouden** kunt u het volgende doen:
 
    ![Werkruimteconfiguratie][18]
 
-5. Selecteer onder **bewerken voor wijzigingen bijhouden** venster ingesteld op ONWAAR.
+5. Selecteer onder **bewerken voor wijzigingen bijhouden** venster **ingesteld op** onwaar.
 
    ![Ingeschakeld instellen op ONWAAR][19]
 

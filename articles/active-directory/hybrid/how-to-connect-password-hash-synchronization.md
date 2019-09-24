@@ -15,12 +15,12 @@ ms.author: billmath
 search.appverid:
 - MET150
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 98101973627750f87fd06d3f617a1af764a837ee
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: 0ce0ac4f40f3dd1bd7252689618459769d0aeb56
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68774239"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71203078"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>Wachtwoord-hashsynchronisatie met Azure AD Connect sync implementeren
 Dit artikel bevat gegevens die u nodig hebt om te synchroniseren van uw wachtwoorden van gebruikers uit een on-premises Active Directory-exemplaar naar een cloud-gebaseerde Azure Active Directory (Azure AD)-exemplaar.
@@ -46,49 +46,105 @@ Een gebruiker moet hun zakelijke referenties een tweede keer invoeren om te veri
 > Wachtwoordsynchronisatie wordt alleen ondersteund voor de gebruiker van het type object in Active Directory. Het wordt niet ondersteund voor het type iNetOrgPerson-object.
 
 ### <a name="detailed-description-of-how-password-hash-synchronization-works"></a>Gedetailleerde beschrijving van de werking van wachtwoord-hashsynchronisatie
+
 De volgende sectie wordt beschreven, uitgebreide, de werking van wachtwoord-hashsynchronisatie tussen Active Directory en Azure AD.
 
 ![Gedetailleerde wachtwoord stroom](./media/how-to-connect-password-hash-synchronization/arch3b.png)
 
-
 1. Elke twee minuten de wachtwoord-hash synchronisatie-agent op de AD Connect-serveraanvragen opgeslagen wachtwoord-hashes (het kenmerk unicodePwd) vanaf een domeincontroller.  Deze aanvraag is via de standaard [MS-DRSR](https://msdn.microsoft.com/library/cc228086.aspx) replicatie-protocol gebruikt voor het synchroniseren van gegevens tussen domeincontrollers. Het serviceaccount moet directorywijzigingen en repliceren Directory wijzigingen alle AD machtigingen (standaard op installatie) hebben tot de wachtwoord-hashes ophalen.
 2. De domeincontroller worden voordat ze worden verzonden, de wachtwoordhash MD4 versleuteld met behulp van een sleutel die is een [MD5](https://www.rfc-editor.org/rfc/rfc1321.txt) hash van de RPC-sessie-sleutel en een salt. Het verzendt vervolgens het resultaat naar de wachtwoord-hash-synchronisatieagent via RPC. De domeincontroller geeft ook de salt aan de synchronisatieagent via het protocol van de replicatie DC, zodat de agent is mogelijk voor het ontsleutelen van de envelop.
-3.  Nadat de synchronisatie-agent van de wachtwoord-hash het versleutelde envelop heeft, hierbij [MD5CryptoServiceProvider](https://msdn.microsoft.com/library/System.Security.Cryptography.MD5CryptoServiceProvider.aspx) en de salt voor het genereren van een sleutel voor het ontsleutelen van de ontvangen gegevens terug naar de oorspronkelijke MD4-indeling. De synchronisatieagent van wachtwoord-hash heeft nooit toegang tot het wachtwoord niet-versleutelde tekst. De wachtwoord-hash-synchronisatieagent van gebruik van MD5 geldt uitsluitend voor replicatie protocol compatibiliteit met de domeincontroller en deze alleen on-premises tussen de domeincontroller en de wachtwoord-hash-synchronisatieagent is gebruikt.
-4.  De wachtwoord-hash-synchronisatieagent breidt de 16-bytes binary-wachtwoord-hash naar 64 bytes door eerst te converteren back-the-hash op een 32-bytes hexadecimale tekenreeks, vervolgens deze tekenreeks te converteren naar binair met UTF-16-codering.
-5.  De synchronisatieagent van de wachtwoord-hash-voegt een per gebruiker salt, die bestaan uit een lengte van 10-byte-salt, naar de 64-bytes binary verder beschermen van de oorspronkelijke hash.
-6.  De wachtwoord-hash-synchronisatieagent vervolgens combineert de MD4-hash plus de per gebruiker salt, en de bestelling in de [PBKDF2](https://www.ietf.org/rfc/rfc2898.txt) functie. 1000 herhalingen van de [HMAC-SHA256](https://msdn.microsoft.com/library/system.security.cryptography.hmacsha256.aspx) versleutelde hash-algoritme worden gebruikt. 
-7.  De synchronisatieagent van wachtwoord-hash wordt de resulterende 32-byte-hash, worden samengevoegd in zowel de per gebruiker salt en het aantal SHA256 iteraties toe (voor gebruik door Azure AD), klikt u vervolgens verzendt de tekenreeks van Azure AD Connect naar Azure AD via SSL.</br> 
-8.  Wanneer een gebruiker wil zich aanmelden bij Azure AD en hun wachtwoord invoert, wordt het wachtwoord door de dezelfde MD4 + salt + PBKDF2 + HMAC-SHA256 proces uitgevoerd. Als de resulterende hash overeenkomt met de hash die zijn opgeslagen in Azure AD, wordt de gebruiker het juiste wachtwoord is ingevoerd en is geverifieerd. 
+3. Nadat de synchronisatie-agent van de wachtwoord-hash het versleutelde envelop heeft, hierbij [MD5CryptoServiceProvider](https://msdn.microsoft.com/library/System.Security.Cryptography.MD5CryptoServiceProvider.aspx) en de salt voor het genereren van een sleutel voor het ontsleutelen van de ontvangen gegevens terug naar de oorspronkelijke MD4-indeling. De synchronisatieagent van wachtwoord-hash heeft nooit toegang tot het wachtwoord niet-versleutelde tekst. De wachtwoord-hash-synchronisatieagent van gebruik van MD5 geldt uitsluitend voor replicatie protocol compatibiliteit met de domeincontroller en deze alleen on-premises tussen de domeincontroller en de wachtwoord-hash-synchronisatieagent is gebruikt.
+4. De wachtwoord-hash-synchronisatieagent breidt de 16-bytes binary-wachtwoord-hash naar 64 bytes door eerst te converteren back-the-hash op een 32-bytes hexadecimale tekenreeks, vervolgens deze tekenreeks te converteren naar binair met UTF-16-codering.
+5. De synchronisatieagent van de wachtwoord-hash-voegt een per gebruiker salt, die bestaan uit een lengte van 10-byte-salt, naar de 64-bytes binary verder beschermen van de oorspronkelijke hash.
+6. De wachtwoord-hash-synchronisatieagent vervolgens combineert de MD4-hash plus de per gebruiker salt, en de bestelling in de [PBKDF2](https://www.ietf.org/rfc/rfc2898.txt) functie. 1000 herhalingen van de [HMAC-SHA256](https://msdn.microsoft.com/library/system.security.cryptography.hmacsha256.aspx) versleutelde hash-algoritme worden gebruikt. 
+7. De synchronisatieagent van wachtwoord-hash wordt de resulterende 32-byte-hash, worden samengevoegd in zowel de per gebruiker salt en het aantal SHA256 iteraties toe (voor gebruik door Azure AD), klikt u vervolgens verzendt de tekenreeks van Azure AD Connect naar Azure AD via SSL.</br> 
+8. Wanneer een gebruiker wil zich aanmelden bij Azure AD en hun wachtwoord invoert, wordt het wachtwoord door de dezelfde MD4 + salt + PBKDF2 + HMAC-SHA256 proces uitgevoerd. Als de resulterende hash overeenkomt met de hash die zijn opgeslagen in Azure AD, wordt de gebruiker het juiste wachtwoord is ingevoerd en is geverifieerd.
 
->[!Note] 
->De oorspronkelijke MD4-hash is niet verzonden naar Azure AD. In plaats daarvan wordt de SHA256-hash van de oorspronkelijke MD4-hash verzonden. Als gevolg hiervan als de hash die zijn opgeslagen in Azure AD wordt verkregen, worden deze niet gebruikt in een on-premises pass-the-hash-aanval.
+> [!NOTE]
+> De oorspronkelijke MD4-hash is niet verzonden naar Azure AD. In plaats daarvan wordt de SHA256-hash van de oorspronkelijke MD4-hash verzonden. Als gevolg hiervan als de hash die zijn opgeslagen in Azure AD wordt verkregen, worden deze niet gebruikt in een on-premises pass-the-hash-aanval.
 
 ### <a name="security-considerations"></a>Beveiligingsoverwegingen
+
 Bij het synchroniseren van wachtwoorden, wordt de versie van de tekst zonder opmaak van uw wachtwoord niet blootgesteld aan de wachtwoordfunctie-hash-synchronisatie, naar Azure AD, of een van de gekoppelde services.
 
 Verificatie van de gebruiker vindt plaats op basis van Azure AD in plaats van op basis van de Active Directory-exemplaar van het bedrijf. De SHA256-wachtwoord worden opgeslagen in Azure AD--een hash van de oorspronkelijke MD4-hash--is veiliger dan wat wordt opgeslagen in Active Directory. Worden verder, omdat deze SHA256-hash kan niet worden ontsleuteld, deze niet kan teruggebracht naar Active Directory-omgeving van de organisatie en weergegeven als het wachtwoord van een geldige gebruiker in een pass-the-hash-aanval.
 
 ### <a name="password-policy-considerations"></a>Overwegingen met betrekking tot het beleid van het wachtwoord
+
 Er zijn twee soorten wachtwoordbeleid dat wordt beïnvloed door de wachtwoord-hashsynchronisatie inschakelen:
 
 * Complexiteit wachtwoordbeleid
 * Beleid vervaldatum gebruikerswachtwoord
 
-#### <a name="password-complexity-policy"></a>Complexiteit wachtwoordbeleid  
+#### <a name="password-complexity-policy"></a>Complexiteit wachtwoordbeleid
+
 Wanneer de wachtwoord-hashsynchronisatie is ingeschakeld, overschrijven de complexiteit wachtwoordbeleid in uw on-premises Active Directory-exemplaar complexiteit beleid in de cloud voor gesynchroniseerde gebruikers. U kunt alle geldige wachtwoorden van uw on-premises Active Directory-exemplaar gebruiken voor toegang tot Azure AD-services.
 
 > [!NOTE]
 > Wachtwoorden voor gebruikers die rechtstreeks in de cloud gemaakt zijn nog steeds onderworpen aan beleid voor wachtwoorden zoals gedefinieerd in de cloud.
 
-#### <a name="password-expiration-policy"></a>Beleid vervaldatum gebruikerswachtwoord  
-Als een gebruiker zich in het bereik van wachtwoord-hashsynchronisatie, het wachtwoord voor de cloud-account is ingesteld op *nooit verlopen*.
+#### <a name="password-expiration-policy"></a>Beleid vervaldatum gebruikerswachtwoord
+
+Als een gebruiker zich in het bereik van de wachtwoord-hash-synchronisatie bevindt, wordt het wacht woord voor het Cloud account standaard ingesteld op *nooit verlopen*.
 
 U kunt zich aanmelden met uw cloud-services met behulp van een gesynchroniseerde wachtwoord is verlopen in uw on-premises omgeving. Uw cloud-wachtwoord wordt bijgewerkt zodra die u het wachtwoord in de on-premises omgeving wijzigen.
 
+##### <a name="public-preview-of-the-enforcecloudpasswordpolicyforpasswordsyncedusers-feature"></a>Open bare preview-versie van de *EnforceCloudPasswordPolicyForPasswordSyncedUsers* -functie
+
+Als er gesynchroniseerde gebruikers zijn die alleen communiceren met Azure AD Integrated Services en moeten voldoen aan het beleid voor het verlopen van wacht woorden, kunt u ervoor zorgen dat ze voldoen aan het verloop beleid van uw Azure AD-wacht woord door het inschakelen van de  *EnforceCloudPasswordPolicyForPasswordSyncedUsers* -functie.
+
+Wanneer *EnforceCloudPasswordPolicyForPasswordSyncedUsers* is uitgeschakeld (dit is de standaard instelling), stelt Azure AD Connect het kenmerk PasswordPolicies van gesynchroniseerde gebruikers in op "DisablePasswordExpiration". Dit gebeurt telkens wanneer het wacht woord van een gebruiker wordt gesynchroniseerd en geeft Azure AD het verloop beleid voor Cloud wachtwoord voor die gebruiker te negeren. U kunt de waarde van het kenmerk controleren met behulp van de Azure AD Power shell-module met de volgende opdracht:
+
+`(Get-AzureADUser -objectID <User Object ID>).passwordpolicies`
+
+
+Als u de functie EnforceCloudPasswordPolicyForPasswordSyncedUsers wilt inschakelen, voert u de volgende opdracht uit met behulp van de MSOnline Power shell-module:
+
+`Set-MsolDirSyncFeature -Feature EnforceCloudPasswordPolicyForPasswordSyncedUsers  $true`
+
+Als deze functie is ingeschakeld, gaat Azure ad niet naar elke gesynchroniseerde gebruiker `DisablePasswordExpiration` om de waarde uit het kenmerk PasswordPolicies te verwijderen. In plaats daarvan wordt de waarde ingesteld `None` op tijdens de volgende wachtwoord synchronisatie voor elke gebruiker wanneer deze vervolgens hun wacht woord in on-premises AD wijzigt.  
+
+Het is raadzaam om EnforceCloudPasswordPolicyForPasswordSyncedUsers in te scha kelen voordat u wachtwoord-hash-synchronisatie inschakelt, zodat de eerste synchronisatie van wacht woord `DisablePasswordExpiration` -hashes de waarde niet toevoegt aan het kenmerk PasswordPolicies voor de gebruikers.
+
+Het standaard wachtwoord beleid voor Azure AD vereist dat gebruikers elke 90 dagen hun wacht woord wijzigen. Als uw beleid in AD ook 90 dagen is, moeten de twee beleids regels overeenkomen. Als het AD-beleid echter niet 90 dagen is, kunt u het Azure AD-wachtwoord beleid bijwerken zodat dit overeenkomt met behulp van de set-MsolPasswordPolicy Power shell-opdracht.
+
+Azure AD biedt ondersteuning voor een afzonderlijk beleid voor wachtwoord verloop per geregistreerd domein.
+
+Valk Als er gesynchroniseerde accounts zijn die niet-verlopende wacht woorden moeten hebben in azure AD, moet u de `DisablePasswordExpiration` waarde expliciet toevoegen aan het kenmerk PasswordPolicies van het gebruikers object in azure AD.  U kunt dit doen door de volgende opdracht uit te voeren.
+
+`Set-AzureADUser -ObjectID <User Object ID> -PasswordPolicies "DisablePasswordExpiration"`
+
+> [!NOTE]
+> Deze functie is nu beschikbaar in de open bare preview.
+
+#### <a name="public-preview-of-synchronizing-temporary-passwords-and-force-password-on-next-logon"></a>Open bare preview van het synchroniseren van tijdelijke wacht woorden en ' wacht woord bij volgende aanmelding afdwingen '
+
+Het is gebruikelijk dat een gebruiker het wacht woord tijdens de eerste aanmelding wijzigt, met name nadat een beheerders wachtwoord opnieuw is ingesteld.  Het is vaak bekend als het instellen van een ' tijdelijk ' wacht woord en wordt uitgevoerd door de vlag ' gebruiker moet wacht woord bij volgende aanmelding wijzigen ' op een gebruikers object in Active Directory (AD) in te scha kelen.
+  
+De functionaliteit van het tijdelijke wacht woord helpt ervoor te zorgen dat de overdracht van eigendom van de referentie wordt voltooid bij het eerste gebruik, om zo de tijd te beperken dat meer dan één persoon kennis van die referentie heeft.
+
+Voor het ondersteunen van tijdelijke wacht woorden in azure AD voor gesynchroniseerde gebruikers, kunt u de functie *ForcePasswordResetOnLogonFeature* inschakelen door de volgende opdracht op uw Azure AD Connect server <AAD Connector Name> uit te voeren, waarbij u de naam vervangt door de connector specifiek voor uw omgeving:
+
+`Set-ADSyncAADCompanyFeature -ConnectorName "<AAD Connector name>" -ForcePasswordResetOnLogonFeature $true`
+
+U kunt de volgende opdracht gebruiken om de naam van de connector te bepalen:
+
+`(Get-ADSyncConnector | where{$_.ListName -eq "Windows Azure Active Directory (Microsoft)"}).Name`
+
+Valk  Als u het wacht woord voor de volgende aanmelding wilt wijzigen, moet u het wacht woord op hetzelfde moment wijzigen.  AD Connect neemt de vlag voor het wijzigen van het wacht woord niet op zichzelf op. Dit is een aanvulling op de gedetecteerde wachtwoord wijziging die optreedt tijdens de wachtwoord-hash-synchronisatie.
+
+> [!CAUTION]
+> Als u self-service voor wachtwoord herstel (SSPR) niet inschakelt in azure AD-gebruikers, heeft dit een verwarrende ervaring wanneer ze hun wacht woord opnieuw instellen in azure AD en zich vervolgens proberen aan te melden Active Directory met het nieuwe wacht woord, omdat het nieuwe wacht woord niet geldig is in Active Directory . U moet deze functie alleen gebruiken wanneer SSPR en wacht woord terugschrijven is ingeschakeld op de Tenant.
+
+> [!NOTE]
+> Deze functie is nu beschikbaar in de open bare preview.
+
 #### <a name="account-expiration"></a>Account verloopt
+
 Als uw organisatie gebruikmaakt van het kenmerk accountExpires als onderdeel van het beheer van gebruikersaccounts, wordt dit kenmerk is niet gesynchroniseerd naar Azure AD. Als gevolg hiervan wordt verlopen Active Directory-account in een omgeving die is geconfigureerd voor wachtwoord-hashsynchronisatie nog steeds actief zijn in Azure AD. Het is raadzaam dat als het account is verlopen, een werkstroomactie moet activeren een PowerShell-script waarmee de Azure AD-account van de gebruiker wordt uitgeschakeld (Gebruik de [Set-AzureADUser](https://docs.microsoft.com/powershell/module/azuread/set-azureaduser?view=azureadps-2.0) cmdlet). Daarentegen, wanneer het account is ingeschakeld, de Azure AD-exemplaar moet zijn ingeschakeld.
 
 ### <a name="overwrite-synchronized-passwords"></a>Gesynchroniseerde wachtwoorden overschrijven
+
 Een beheerder kan handmatig uw wachtwoord opnieuw instellen met behulp van Windows PowerShell.
 
 In dit geval wordt het nieuwe wachtwoord vervangt je gesynchroniseerde wachtwoord, en alle wachtwoordbeleid gedefinieerd in de cloud worden toegepast op het nieuwe wachtwoord.

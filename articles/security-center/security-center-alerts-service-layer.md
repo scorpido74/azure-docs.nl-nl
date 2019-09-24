@@ -3,23 +3,19 @@ title: Detectie van bedreigingen voor Azure Service Layer in Azure Security Cent
 description: In dit onderwerp vindt u de waarschuwingen van de Azure-service laag die beschikbaar zijn in Azure Security Center.
 services: security-center
 documentationcenter: na
-author: monhaber
+author: memildin
 manager: rkarlin
-editor: ''
 ms.assetid: 33c45447-3181-4b75-aa8e-c517e76cd50d
 ms.service: security-center
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 8/25/2019
-ms.author: v-mohabe
-ms.openlocfilehash: bc1b2a07f15ca98da7750c85cd25f2c5766c9bb5
-ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
+ms.date: 08/25/2019
+ms.author: memildin
+ms.openlocfilehash: 9a600b6b45dbef49f600a5e9e913c9d1839eff93
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70018165"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71202440"
 ---
 # <a name="threat-detection-for-the-azure-service-layer-in-azure-security-center"></a>Detectie van dreigingen voor de service laag van Azure in Azure Security Center
 
@@ -65,7 +61,7 @@ Security Center biedt een extra beveiligingslaag door gebruik te maken van Azure
 
 |Waarschuwing|Description|
 |---|---|
-|**Uitvoering van microburst Toolkit**|Er is een bekend Reconnaissance-Toolkit voor Cloud omgevingen gedetecteerd in uw omgeving. Het hulp [](https://github.com/NetSPI/MicroBurst) programma dat door een aanvaller (of indringings tester) kan worden gebruikt voor het toewijzen van de resources van uw abonnementen, het identificeren van onveilige configuraties en het lekken van vertrouwelijke informatie.|
+|**Uitvoering van microburst Toolkit**|Er is een bekend Reconnaissance-Toolkit voor Cloud omgevingen gedetecteerd in uw omgeving. Het hulp [programma dat](https://github.com/NetSPI/MicroBurst) door een aanvaller (of indringings tester) kan worden gebruikt voor het toewijzen van de resources van uw abonnementen, het identificeren van onveilige configuraties en het lekken van vertrouwelijke informatie.|
 |**Azurite Toolkit uitvoeren**|Er is een bekend Reconnaissance-Toolkit voor Cloud omgevingen gedetecteerd in uw omgeving. Het hulp programma [Azurite](https://github.com/mwrlabs/Azurite) kan door een aanvaller (of indringings tester) worden gebruikt om de resources van uw abonnementen toe te wijzen en onveilige configuraties te identificeren.|
 |**Verdachte beheer sessie met een inactief account**|Logboeken voor abonnements activiteiten er is een verdacht gedrag gedetecteerd. Een principal die gedurende een lange periode niet wordt gebruikt, is nu bezig met het uitvoeren van acties waarmee persistentie voor een aanvaller kan worden beveiligd.|
 |**Verdachte beheer sessie met behulp van Power shell**|Logboeken voor abonnements activiteiten er is een verdacht gedrag gedetecteerd. Een principal die Power shell niet regel matig gebruikt voor het beheren van de abonnements omgeving is nu het gebruik van Power shell en het uitvoeren van acties waarmee persistentie kan worden beveiligd voor een aanvaller.|

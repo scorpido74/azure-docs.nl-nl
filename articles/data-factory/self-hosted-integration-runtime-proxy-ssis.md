@@ -12,12 +12,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: de9e0a936c68f181665e44ea6115f60c6dc60e98
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: 2ade270011ad5c1e1e5f5940ca305687e52bba86
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71179053"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71200312"
 ---
 # <a name="configure-self-hosted-ir-as-a-proxy-for-azure-ssis-ir-in-adf"></a>Zelf-Hostende IR configureren als proxy voor Azure-SSIS IR in ADF
 In dit artikel wordt beschreven hoe u SQL Server Integration Services (SSIS)-pakketten uitvoert op Azure-SSIS Integration Runtime (IR) in Azure Data Factory (ADF) met een zelf-Hostende IR die is geconfigureerd als proxy.  Met deze functie kunt u toegang krijgen tot gegevens on-premises zonder [uw Azure-SSIS IR aan een virtueel netwerk te koppelen](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network).  Dit is handig wanneer uw bedrijfs netwerk een overmatig complexe configuratie/beperkend beleid heeft waarmee u uw Azure-SSIS IR kunt injecteren.
@@ -86,10 +86,11 @@ De eerste faserings taken die worden uitgevoerd op uw zelf-Hostende IR, worden a
 De tweede faserings taken die op uw Azure-SSIS IR worden uitgevoerd, worden niet afzonderlijk in rekening gebracht, maar uw actieve Azure-SSIS IR wordt gefactureerd zoals is opgegeven in het artikel [Azure-SSIS IR prijzen](https://azure.microsoft.com/pricing/details/data-factory/ssis/) .
 
 ## <a name="current-limitations"></a>Huidige beperkingen
-- Alleen OLEDB/plat file Connection-beheer en OLEDB/plat-bestands bronnen worden momenteel ondersteund.
+
+- Alleen OLEDB/plat file Connection-beheer en OLEDB/plat-bestands bronnen worden momenteel ondersteund. 
 - Er wordt momenteel alleen ondersteuning geboden voor Azure Blob Storage gekoppelde services die zijn geconfigureerd met **account Key**/**SAS URI**/**Service-Principal** -verificatie.
 - Alleen zelf-Hostende IR die is ingericht onder dezelfde ADF als waar uw Azure-SSIS IR is ingericht, wordt momenteel ondersteund.
-- SSIS-variabelen en-para meters worden niet ondersteund.
+- Het gebruik van SSIS-para meters/-variabelen in de eigenschappen van OLEDB/plat bestands bronnen en verbindings beheer wordt niet ondersteund.
 
 ## <a name="next-steps"></a>Volgende stappen
 Wanneer u uw zelf-Hostende IR als proxy voor uw Azure-SSIS IR hebt geconfigureerd, kunt u uw pakketten implementeren en uitvoeren om toegang te krijgen tot gegevens die on-premises worden uitgevoerd als de uitvoering van SSIS-pakket activiteiten in ADF-pijp lijnen. Zie [SSIS-pakketten uitvoeren als uitvoeren SSIS-pakket activiteiten in ADF-pijp lijnen ](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity).

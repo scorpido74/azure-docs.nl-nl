@@ -2,18 +2,18 @@
 title: 'Azure-toolkit voor Eclipse: Scala-toepassingen maken voor HDInsight Spark '
 description: Gebruik HDInsight-Hulpprogram Ma's in Azure-toolkit voor Eclipse om Spark-toepassingen te ontwikkelen die zijn geschreven in scala en deze rechtstreeks vanuit de eclips-IDE naar een HDInsight Spark-cluster te verzenden.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/30/2017
-ms.author: hrasheed
-ms.openlocfilehash: b027ef911b65931f7c96ad45fae66656b3586730
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 1ebea83d87cd169f61c91a93f092fa277f5017a7
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70994629"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71203802"
 ---
 # <a name="use-azure-toolkit-for-eclipse-to-create-apache-spark-applications-for-an-hdinsight-cluster"></a>Azure-toolkit voor Eclipse gebruiken om Apache Spark-toepassingen voor een HDInsight-cluster te maken
 
@@ -50,11 +50,12 @@ De gebruiker kan [zich aanmelden bij het Azure-abonnement](#sign-in-to-your-azur
 
 1. Start de eclips IDE en open Azure Verkenner. Selecteer **weer gave**weer geven in het menu **venster** en selecteer vervolgens **Overig**. In het dialoog venster dat wordt geopend, vouwt u **Azure**uit, selecteert u **Azure Verkenner**en selecteert u vervolgens **OK**.
 
-   ![Het dialoog venster weer gave weer geven](./media/apache-spark-eclipse-tool-plugin/eclipse-view-explorer1.png)
+   ![Apache Spark weer gave Eclispse weer geven](./media/apache-spark-eclipse-tool-plugin/eclipse-view-explorer1.png)
+
 1. Klik met de rechter muisknop op het **Azure** -knoop punt en selecteer **Aanmelden**.
 1. Kies in het dialoog venster **Aanmelden bij Azure** de verificatie methode, selecteer **Aanmelden**en voer uw Azure-referenties in.
 
-   ![Het dialoog venster Aanmelden bij Azure](./media/apache-spark-eclipse-tool-plugin/eclipse-view-explorer2.png)
+   ![Apache Spark Eclispse Azure-teken](./media/apache-spark-eclipse-tool-plugin/eclipse-view-explorer2.png)
 
 1. Nadat u bent aangemeld, worden in het dialoog venster **abonnementen selecteren** een lijst weer gegeven met alle Azure-abonnementen die zijn gekoppeld aan de referenties. Klik op **selecteren** om het dialoog venster te sluiten.
 
@@ -183,7 +184,7 @@ U kunt verschillende bewerkingen uitvoeren met HDInsight-Hulpprogram Ma's, waaro
 
    * Plaats de muis aanwijzer op de taak grafiek. Er wordt basis informatie over de actieve taak weer gegeven. Selecteer de taak grafiek en u kunt de fasen en informatie zien die elke taak genereert.
 
-     ![Details van taak fase](./media/apache-spark-eclipse-tool-plugin/Job-graph-stage-info.png)
+     ![Informatie over fase van Apache Spark taak grafiek](./media/apache-spark-eclipse-tool-plugin/Job-graph-stage-info.png)
 
    * Selecteer het tabblad **logboek** om veelgebruikte logboeken weer te geven, waaronder **stuur programma stderr**, **stuur programma stdout**en **Directory-informatie**.
 
@@ -238,7 +239,7 @@ U kunt deze fout oplossen door [het uitvoer bare bestand te downloaden](https://
    * Selecteer **HDInsight** in het linkerdeelvenster.
    * Selecteer in het rechterdeel venster het **voor beeld van Spark in HDInsight Local run (scala)** .
 
-   ![Het dialoogvenster Nieuw project](./media/apache-spark-eclipse-tool-plugin/hdi-spark-app-local-run.png)
+   ![Nieuw project een wizard dialoog venster selecteren](./media/apache-spark-eclipse-tool-plugin/hdi-spark-app-local-run.png)
 
 1. Volg de stappen 3 tot en met 6 in de vorige sectie om [een Spark scala-project in te stellen voor een HDInsight Spark-cluster](#set-up-a-spark-scala-project-for-an-hdinsight-spark-cluster)om de project gegevens te geven.
 

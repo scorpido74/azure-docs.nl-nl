@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/23/2018
 ms.author: chackdan
-ms.openlocfilehash: f33b25112b5c4ee77f1f7d2a419ffb8e926a27d9
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: f929ca1cd0fe6f2a94864ae3eb4df28e7b1927db
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68501367"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71200453"
 ---
 # <a name="azure-service-fabric-node-types-and-virtual-machine-scale-sets"></a>Azure Service Fabric-knooppunt typen en schaal sets voor virtuele machines
 [Virtuele-machine schaal sets](/azure/virtual-machine-scale-sets) vormen een Azure Compute-resource. U kunt schaal sets gebruiken voor het implementeren en beheren van een verzameling virtuele machines als een set. Elk knooppunt type dat u in een Azure Service Fabric-cluster definieert, stelt een afzonderlijke schaal in.  De Service Fabric runtime geïnstalleerd op elke virtuele machine in de schaalset door de extensie van de virtuele machine van micro soft. Azure. ServiceFabric. U kunt elk knooppunt type omhoog of omlaag schalen, de SKU van het besturings systeem wijzigen dat op elk cluster knooppunt wordt uitgevoerd, verschillende sets poorten openen en verschillende capaciteits metrieken gebruiken.
@@ -78,7 +78,7 @@ Hier volgen de eigenschaps beschrijvingen:
 | **Name** | **Toegestane waarden** | ** --- ** | **Uitleg of korte beschrijving** |
 | --- | --- | --- | --- |
 | name | string | --- | unieke naam voor extensie |
-| type | "ServiceFabricLinuxNode" of "ServiceFabricWindowsNode | --- | Geeft aan dat het besturings systeem Service Fabric Boots trapt |
+| type | "ServiceFabricLinuxNode" of "ServiceFabricWindowsNode" | --- | Geeft aan dat het besturings systeem Service Fabric Boots trapt |
 | autoUpgradeMinorVersion | true of false | --- | Automatische upgrade van secundaire versies van SF runtime inschakelen |
 | publisher | Microsoft.Azure.ServiceFabric | --- | de naam van de uitgever van het Service Fabric gebied |
 | clusterEndpont | string | --- | URI: poort voor beheer eindpunt |
@@ -89,7 +89,7 @@ Hier volgen de eigenschaps beschrijvingen:
 | commonNames | string[] | --- | Algemene namen van geïnstalleerde cluster certificaten |
 | x509StoreName | string | --- | De naam van het archief waar het geïnstalleerde cluster certificaat zich bevindt |
 | typeHandlerVersion | 1.1 | --- | De versie van de extensie. 1,0 de klassieke versie van de uitbrei ding wordt aanbevolen om te upgraden naar 1,1 |
-| dataPath | string | --- | Het pad naar het station dat wordt gebruikt om de status voor Service Fabric systeem services en toepassings gegevens op te slaan. 
+| DataPath | string | --- | Het pad naar het station dat wordt gebruikt om de status voor Service Fabric systeem services en toepassings gegevens op te slaan. 
 
 ## <a name="next-steps"></a>Volgende stappen
 * Zie het [overzicht van de functie overal implementeren en een vergelijking met door Azure beheerde clusters](service-fabric-deploy-anywhere.md).

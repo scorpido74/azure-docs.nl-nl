@@ -1,70 +1,66 @@
 ---
-title: Beveiligen van App-Services in Azure Security Center | Microsoft Docs
-description: Dit artikel helpt u om te beginnen met het beveiligen van uw App-Services in Azure Security Center.
+title: App Services beveiligen in Azure Security Center | Microsoft Docs
+description: Dit artikel helpt u bij het beveiligen van uw App Services in Azure Security Center.
 services: security-center
 documentationcenter: na
-author: monhaber
-manager: barbkess
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: e8518710-fcf9-44a8-ae4b-8200dfcded1a
 ms.service: security-center
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 1/27/2019
-ms.author: v-mohabe
-ms.openlocfilehash: 6a6b5b6e247bd7c105286b86257a6ae11c1d1c60
-ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
+ms.date: 01/27/2019
+ms.author: memildin
+ms.openlocfilehash: 68f7c47f0a0f56085d632f1c1741318f440b41ee
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67551867"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71202481"
 ---
-# <a name="protect-app-service-with-azure-security-center"></a>Beveiligen van App Service met Azure Security Center
-Dit artikel helpt u Azure Security Center gebruiken om te controleren en beveiligen van uw toepassingen toevoegen aan App Service.
+# <a name="protect-app-service-with-azure-security-center"></a>App Service beveiligen met Azure Security Center
+Dit artikel helpt u bij het gebruik van Azure Security Center voor het bewaken en beveiligen van uw toepassingen die boven op App Service worden uitgevoerd.
 
-App Service kunt u bouwen en hosten van webtoepassingen in de programmeertaal van uw keuze zonder dat infrastructuur worden beheerd. App Service biedt automatisch schalen en hoge beschikbaarheid, ondersteuning voor zowel Windows en Linux, evenals geautomatiseerde implementaties vanuit GitHub, Azure DevOps of een gitopslagplaats. 
+Met App Service kunt u webtoepassingen bouwen en hosten in de programmeer taal van uw keuze zonder dat u infra structuur hoeft te beheren. App Service biedt automatisch schalen en hoge Beschik baarheid, biedt ondersteuning voor zowel Windows als Linux, maar ook voor automatische implementaties van GitHub, Azure DevOps of een Git-opslag plaats. 
 
-Door beveiligingslekken in webtoepassingen zijn vaak misbruikt door aanvallers, omdat ze een gemeenschappelijke en dynamische interface voor bijna elke organisatie op het Internet hebben. Aanvragen voor toepassingen die worden uitgevoerd op App Service gaat via verschillende gateways die zijn geïmplementeerd in Azure-datacenters overal ter wereld, die verantwoordelijk is voor de routering van elke aanvraag naar de desbetreffende toepassing. 
+Beveiligings problemen in webtoepassingen worden vaak misbruikt door aanvallers, omdat ze een gemeen schappelijke en dynamische interface hebben voor vrijwel elke organisatie op internet. Aanvragen voor toepassingen die worden uitgevoerd op App Service, passeren verschillende gateways die zijn geïmplementeerd in azure-data centers over de hele wereld, die verantwoordelijk zijn voor de route ring van elke aanvraag naar de bijbehorende toepassing. 
 
-Azure Security Center kunt evaluaties en aanbevelingen voor uw toepassingen uitvoeren in App Service in de sandboxes geladen in uw virtuele machine of on-demand instanties uitvoeren. Door gebruik te maken van de zichtbaarheid met Azure als cloudprovider, analyseert Security Center uw interne App Service-Logboeken om te controleren op veelvoorkomende aanvallen van de web-app die vaak worden uitgevoerd in meerdere doelen.
+Azure Security Center kunt evaluaties en aanbevelingen uitvoeren voor uw toepassingen die worden uitgevoerd in App Service in de sandboxes in uw VM-of on-demand-exemplaren. Door gebruik te maken van de zicht baarheid die Azure als Cloud provider heeft Security Center worden uw App Service interne logboeken geanalyseerd om te controleren op veelvoorkomende web app-aanvallen die vaak op meerdere doelen worden uitgevoerd.
 
-Security Center maakt gebruik van de schaal van de cloud om te bepalen van aanvallen op uw App Service-toepassingen en richt u op nieuwe aanvallen, terwijl aanvallers in de reconnaissancefase, scannen voor het identificeren van kwetsbaarheden in meerdere websites, op Azure gehost worden. Security Center maakt gebruik van analyses en machine learning-modellen voor alle interfaces zodat klanten om te communiceren met hun toepassingen, of via HTTP of via een beheermethoden. Bovendien, als een eigen service in Azure Security Center is ook in een unieke positie te bieden op basis van een host beveiligingsanalyses die betrekking hebben op de onderliggende rekenknooppunten voor deze PaaS, het inschakelen van Security Center voor het detecteren van aanvallen tegen de webtoepassingen die zijn al misbruikt.
+Security Center maakt gebruik van de schaal van de cloud om aanvallen op uw App Service toepassingen te identificeren en zich te richten op opkomende aanvallen, terwijl aanvallers zich in de Reconnaissance-fase bevinden, scannen op beveiligings problemen op meerdere websites, gehost op Azure. Security Center maakt gebruik van analyse-en machine learning modellen om alle interfaces te behandelen, zodat klanten kunnen communiceren met hun toepassingen, hetzij via HTTP of via een beheer methode. Als een service van de eerste partij in Azure is Security Center bovendien ook in een unieke positie voor het bieden van op een host gebaseerde beveiligings analyse voor de onderliggende reken knooppunten voor deze PaaS, waardoor Security Center voor het detecteren van aanvallen op webtoepassingen die al misbruikt.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u uw app-service wilt controleren en beveiligen, moet u een App Service-plan hebben dat is gekoppeld aan toegewezen machines. Deze plannen komen in aanmerking: Basic, Standard, Premium, Isolated of Linux. Azure Security Center biedt geen ondersteuning voor de plannen Gratis, Gedeeld of Verbruik. Zie voor meer informatie, [App Service-abonnementen](https://azure.microsoft.com/pricing/details/app-service/plans/).
+Als u uw app-service wilt controleren en beveiligen, moet u een App Service-plan hebben dat is gekoppeld aan toegewezen machines. Deze plannen komen in aanmerking: Basic, Standard, Premium, Isolated of Linux. Azure Security Center biedt geen ondersteuning voor de plannen Gratis, Gedeeld of Verbruik. Zie [app service-abonnementen](https://azure.microsoft.com/pricing/details/app-service/plans/)voor meer informatie.
 
-## <a name="security-center-protection"></a>Security Center-beveiliging
+## <a name="security-center-protection"></a>Security Center beveiliging
 
-Azure Security Center beveiligt de VM-exemplaar waarin uw App Service wordt uitgevoerd en de beheerinterface. Bewaakt ook aanvragen en antwoorden naar en van uw toepassingen die worden uitgevoerd in App Service.
+Azure Security Center beschermt het VM-exemplaar waarin uw App Service wordt uitgevoerd en de beheer interface. Er worden ook aanvragen en antwoorden gecontroleerd die worden verzonden naar en van uw apps die worden uitgevoerd in App Service.
 
-Security Center is geïntegreerd met App Service, hoeft u voor de implementatie en het onboarding - integratie is volledig transparant.
+Security Center is systeem eigen geïntegreerd met App Service, waardoor het niet nodig is om de implementatie en het onboarding te elimineren: de integratie is volledig transparant.
 
 
 
-## <a name="enabling-monitoring-and-protection-of-app-service"></a>Inschakelen van controle en beveiliging van App Service
+## <a name="enabling-monitoring-and-protection-of-app-service"></a>Bewaking en beveiliging van App Service inschakelen
 
-1. Kies in Azure Security Center.
-2. Ga naar **prijzen & stellingen** en kies een abonnement.
-3. Onder **prijscategorie**, in de **appservice** rij, uw wilt in-/ uitschakelen **ingeschakeld**.
+1. Kies in azure Security Center.
+2. Ga naar **prijs & instellingen** en kies een abonnement.
+3. Schakel onder **prijs categorie**in de rij **app service** het abonnement in op **ingeschakeld**.
 
-![App service in-/ uitschakelen](./media/security-center-app-services/app-services-toggle.png)
+![scha kelen tussen apps in app service](./media/security-center-app-services/app-services-toggle.png)
 
 >[!NOTE]
-> Het aantal exemplaren die worden vermeld voor uw quantity Resource geeft het aantal relevante exemplaren van App-service actief is op het moment waarop u de prijzen laag-blade geopend. Omdat dit nummer kan worden gewijzigd op basis van de schaal opties die u hebt geselecteerd, wordt het aantal exemplaren dat in rekening worden gebracht dienovereenkomstig worden gewijzigd.
+> Het aantal exemplaren dat voor uw resource hoeveelheid wordt vermeld, vertegenwoordigt het aantal relevante exemplaren van de app service dat actief is op het moment dat u de Blade prijs categorie hebt geopend. Omdat dit nummer kan worden gewijzigd op basis van de gekozen schaal opties, wordt het aantal exemplaren waarvoor u in rekening wordt gebracht, dienovereenkomstig gewijzigd.
 
-Herhaal dit proces en in-/ uitschakelen als wilt uitschakelen bewaking en aanbevelingen voor uw App Service, uw **App Service** wilt **uitgeschakelde**.
+Als u controle en aanbevelingen voor uw App Service wilt uitschakelen, herhaalt u dit proces en schakelt u het **app service** plan in op **uitgeschakeld**.
 
 
 
 ## <a name="see-also"></a>Zie ook
 In dit artikel hebt u kunnen lezen hoe u de bewakingsmogelijkheden in Azure Security Center gebruikt. Zie de volgende onderwerpen voor meer informatie over het Azure Beveiligingscentrum:
 
-* [Beveiligingsbeleid instellen in Azure Security Center](tutorial-security-policy.md): Leer hoe u beveiligingsinstellingen configureert in Azure Security Center.
-* [Beheren en erop reageren op beveiligingswaarschuwingen in Azure Security Center](security-center-managing-and-responding-alerts.md): Informatie over het beheren van en reageren op beveiligingswaarschuwingen.
-* [App-services](security-center-virtual-machine-protection.md#app-services):  Een lijst van uw App service-omgevingen met samenvattingen van de status weergeven.
-* [Partneroplossingen bewaken met Azure Security Center](security-center-partner-solutions.md): Meer informatie over het bewaken van de status van uw partneroplossingen.
-* [Veelgestelde vragen over Azure Security Center](security-center-faq.md): Raadpleeg de veelgestelde vragen over het gebruik van de service.
-* [Azure-Beveiligingsblog](https://blogs.msdn.com/b/azuresecurity/): Raadpleeg de blogberichten over beveiliging en naleving in Azure.
+* [Beveiligings beleid instellen in azure Security Center](tutorial-security-policy.md): Meer informatie over het configureren van beveiligings instellingen in Azure Security Center.
+* [Beveiligings waarschuwingen beheren en erop reageren in azure Security Center](security-center-managing-and-responding-alerts.md): Informatie over het beheren van en reageren op beveiligingswaarschuwingen.
+* [App-Services](security-center-virtual-machine-protection.md#app-services):  Bekijk een lijst met uw app service-omgevingen met status overzichten.
+* [Partner oplossingen bewaken met Azure Security Center](security-center-partner-solutions.md): Meer informatie over het bewaken van de status van uw partneroplossingen.
+* [Azure Security Center Veelgestelde vragen](security-center-faq.md): Raadpleeg de veelgestelde vragen over het gebruik van de service.
+* [Azure-beveiligings blog](https://blogs.msdn.com/b/azuresecurity/): Raadpleeg de blogberichten over beveiliging en naleving in Azure.

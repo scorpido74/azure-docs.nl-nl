@@ -1,11 +1,10 @@
 ---
-title: Aanbevelingen voor de container in Azure Security Center | Microsoft Docs
-description: Dit document wordt uitgelegd dat de Azure Security Center aanbevelingen voor het beveiligen van uw containers.
+title: Aanbevelingen voor containers in Azure Security Center | Microsoft Docs
+description: In dit document worden de Azure Security Center aanbevelingen voor het beveiligen van uw containers uitgelegd.
 services: security-center
 documentationcenter: na
-author: rkarlin
-manager: barbkess
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: 2e76c7f7-a3dd-4d9f-add9-7e0e10e9324d
 ms.service: security-center
 ms.devlang: na
@@ -13,39 +12,39 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/20/2018
-ms.author: rkarlin
-ms.openlocfilehash: 782c769bc7825dc9b6bd3ba3b8e36885bf150eaa
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: memildin
+ms.openlocfilehash: 96efe5271b91f87e30ba26aabe69a0de76e1a791
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60705270"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71202391"
 ---
-# <a name="understand-azure-security-center-container-recommendations"></a>Aanbevelingen voor Azure Security Center-container begrijpen
+# <a name="understand-azure-security-center-container-recommendations"></a>Aanbevelingen voor Azure Security Center container begrijpen
 
-Bij het migreren van uw toepassingen monoliet om uit te voeren essentiële cloud-eigen containertoepassingen in productie, u kunt profiteren van de functies van containers, met inbegrip van eenvoudig en snel implementeren en bijwerken. Naarmate het aantal containers die zijn geïmplementeerd om te verhogen, moeten de beveiligingsoplossingen erin biedt u inzicht in de beveiligingsstatus van uw containers en ze beschermen tegen bedreigingen.
+Bij het migreren van uw op-toepassingen voor het uitvoeren van bedrijfskritische, container eigen Cloud toepassingen in productie, kunt u profiteren van de functies van containers, waaronder eenvoudige en snelle implementatie en update. Naarmate het aantal geïmplementeerde containers blijft toenemen, moeten er beveiligings oplossingen aanwezig zijn om u inzicht te geven in de beveiligings status van uw containers en om ze te beschermen tegen bedreigingen.
 
-Azure Security Center biedt de volgende mogelijkheden om u te helpen u uw containers beveiligen:
+Azure Security Center biedt de volgende mogelijkheden om u te helpen bij het beveiligen van uw containers:
 
-- **Inzicht in containers die worden gehost op IaaS Linux-machines**<br>In Azure Security Center wordt het tabblad Containers alle virtuele machines die zijn geïmplementeerd met Docker. Bij het verkennen van de beveiligingsproblemen op een virtuele machine, biedt Security Center aanvullende informatie met betrekking tot de containers op de virtuele machine, zoals Docker-versie en het aantal afbeeldingen die worden uitgevoerd op de host.
+- **Zicht baarheid van containers die worden gehost op IaaS Linux-machines**<br>Op het tabblad containers in Azure Security Center worden alle virtuele machines weer gegeven die zijn geïmplementeerd met docker. Bij het verkennen van de beveiligings problemen op een virtuele machine biedt Security Center aanvullende informatie met betrekking tot de containers op de machine, zoals docker-versie en het aantal installatie kopieën die op de host worden uitgevoerd.
 
-    ![container-tabblad](./media/security-center-container-recommendations/docker-recommendation.png)
+    ![tabblad container](./media/security-center-container-recommendations/docker-recommendation.png)
 
 
-- **Aanbevelingen voor beveiliging op basis van configuratie-items benchmark voor Docker**<br>Security Center scant uw Docker-configuraties en geeft u inzicht in onjuiste configuraties door een lijst op te stellen met alle mislukte regels die zijn beoordeeld. Security Center bevat richtlijnen waarmee u kunt deze problemen snel worden opgelost en bespaar tijd. Docker-configuraties worden doorlopend beoordeeld door Security Center en u ziet steeds wat de actuele status is.
+- **Aanbevelingen voor beveiliging op basis van CIS-benchmark test voor docker**<br>Security Center scant uw Docker-configuraties en geeft u inzicht in onjuiste configuraties door een lijst op te stellen met alle mislukte regels die zijn beoordeeld. Security Center biedt richt lijnen die u helpen bij het snel oplossen van deze problemen en het besparen van tijd. Docker-configuraties worden doorlopend beoordeeld door Security Center en u ziet steeds wat de actuele status is.
 
-    ![container-tabblad](./media/security-center-container-recommendations/container-cis-benchmark.png)
+    ![tabblad container](./media/security-center-container-recommendations/container-cis-benchmark.png)
 
-- **Detectie van bedreigingen van realtime-container**<br> Security Center biedt realtime bedreigingen voor uw containers op Linux-machines met AuditD-component. De waarschuwingen identificeren verschillende verdachte Docker-activiteiten, zoals het maken van een bevoegde container op een indicatie van Secure Shell (SSH)-server die worden uitgevoerd binnen een Docker-container of het gebruik van de cryptografische miners-host. U kunt deze informatie gebruiken om snel beveiligingsproblemen op te lossen en om de beveiliging van uw containers te verbeteren.
+- **Realtime detectie van container bedreigingen**<br> Security Center biedt in realtime detectie van bedreigingen voor uw containers op Linux-machines met gecontroleerde onderdelen. De waarschuwingen identificeren verschillende verdachte docker-activiteiten, zoals het maken van een geprivilegieerde container op de host, een indicatie van een SSH-server (Secure Shell) die binnen een docker-container wordt uitgevoerd of het gebruik van crypto-Miners. U kunt deze informatie gebruiken om snel beveiligingsproblemen op te lossen en om de beveiliging van uw containers te verbeteren.
 
-    ![container-tabblad](./media/security-center-container-recommendations/docker-threat-detection.png)
+    ![tabblad container](./media/security-center-container-recommendations/docker-threat-detection.png)
 
 ## <a name="recommendations"></a>Aanbevelingen
-Gebruik de onderstaande tabellen als referentie om te begrijpen van de beschikbare containers die worden gehost op IaaS Linux-machines en beoordelen van de beveiliging van de Docker-configuraties.
+Gebruik de onderstaande tabellen als referentie om inzicht te krijgen in de beschik bare containers die worden gehost op IaaS Linux-machines en de beveiligings evaluatie van hun docker-configuraties.
 
 | Aanbeveling | Description | Herstel |
 | --- | --- | --- |
-|Beveiligingsproblemen in container-beveiligingsconfiguraties herstellen |Beveiligingsproblemen in container-beveiligingsconfiguraties op basis van aanbevolen procedures voor configuratie herstellen.| Door beveiligingslekken in de container-beveiligingsconfiguraties herstellen:<br>1. Bekijk de lijst met mislukte regels.<br>2. Elke regel op basis van de opgegeven instructies oplossen.|
+|Beveiligings problemen in container beveiligings configuraties oplossen |Beveiligings problemen in container beveiligings configuraties oplossen op basis van aanbevolen procedures voor de configuratie.| Beveiligings problemen oplossen in de container beveiligings configuraties:<br>1. Bekijk de lijst met mislukte regels.<br>2. Corrigeer elke regel volgens de opgegeven instructies.|
 
 
 ## <a name="next-steps"></a>Volgende stappen

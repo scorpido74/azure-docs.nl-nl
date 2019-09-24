@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: 33383f42c3731d8a5aefdcde5008d706d5a9eed8
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 46c08f48efc00c1e4d88ceccb680c0cfd1671b2f
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71104785"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71203576"
 ---
 # <a name="create-a-private-endpoint-using-azure-cli"></a>Een persoonlijk eind punt maken met behulp van Azure CLI
 Persoonlijk eind punt is de fundamentele bouw steen voor privé-koppeling in Azure. Hierdoor kunnen Azure-resources, zoals virtuele machines (Vm's), privé communiceren met persoonlijke koppelings bronnen. In deze Quick Start leert u hoe u een virtuele machine maakt in een virtueel netwerk, een SQL Database-Server met een persoonlijk eind punt met behulp van Azure CLI. Vervolgens hebt u toegang tot de virtuele machine en kunt u veilig toegang krijgen tot de persoonlijke koppelings bron (een persoonlijke Azure SQL Database Server in dit voor beeld). 
@@ -107,7 +107,7 @@ az network private-dns link vnet create --resource-group myResourceGroup \
    --registration-enabled false 
 
 #Query for the network interface ID  
-az network private-endpoint show --name myPrivateEndpoint --resource-group myResourceGroup --query 'networkInterfaces[0].id'
+networkInterfaceId=$(az network private-endpoint show --name myPrivateEndpoint --resource-group myResourceGroup --query 'networkInterfaces[0].id' -o tsv)
  
  
 az resource show --ids $networkInterfaceId --api-version 2019-04-01 -o json 

@@ -2,18 +2,18 @@
 title: Azure-beleids definities die in Azure Security Center worden bewaakt | Microsoft Docs
 description: Azure-beleids definities die in Azure Security Center worden bewaakt.
 services: security-center
-author: monhaber
-manager: barbkess
+author: memildin
+manager: rkarlin
 ms.service: security-center
 ms.topic: conceptual
 ms.date: 8/22/2019
-ms.author: v-mohabe
-ms.openlocfilehash: 37c29a40596a0ea7989b91d1ffcbabf930e5ed93
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.author: memildin
+ms.openlocfilehash: 892b33f52788bd37d430f221f14ba4c98f764cfb
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910359"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71201665"
 ---
 # <a name="azure-security-policies-monitored-by-security-center"></a>Azure-beveiligings beleid bewaakt door Security Center
 Dit artikel bevat een lijst met Azure Policy definities die u in Azure Security Center kunt bewaken. Zie [werken met beveiligings beleid](tutorial-security-policy.md)voor meer informatie over beveiligings beleidsregels.

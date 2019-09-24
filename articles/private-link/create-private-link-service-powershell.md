@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: 09158a935aac023382049d3aa9ce23a711972023
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 8ed3b8e507a93f75b036b3a97eb34395ce525314
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71104750"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71202934"
 ---
 # <a name="create-a-private-link-service-using-azure-powershell"></a>Een persoonlijke koppelings service maken met behulp van Azure PowerShell
 In dit artikel wordt beschreven hoe u een persoonlijke koppelings service maakt in azure met behulp van Azure PowerShell.
@@ -98,7 +98,7 @@ $privateLinkService = New-AzPrivateLinkService `
 -ServiceName $plsName `
 -ResourceGroupName $rgName `
 -Location $location `
--LoadBalancerFrontendIpConfiguration $frontendIP`
+-LoadBalancerFrontendIpConfiguration $frontendIP `
 -IpConfiguration $IPConfig 
 ```
 
@@ -133,6 +133,7 @@ $vnetPE = New-AzVirtualNetwork `
 -AddressPrefix "11.0.0.0/16" `
 -Subnet $peSubnet 
 ```
+
 ### <a name="create-a-private-endpoint"></a>Een persoonlijk eind punt maken
 Maak een persoonlijk eind punt voor het gebruik van de service voor persoonlijke koppelingen die hierboven in uw virtuele netwerk is gemaakt:
  
@@ -141,13 +142,14 @@ Maak een persoonlijk eind punt voor het gebruik van de service voor persoonlijke
 $plsConnection= New-AzPrivateLinkServiceConnection `
 -Name plsConnection `
 -PrivateLinkServiceId  $privateLinkService.Id  
+
 $privateEndpoint = New-AzPrivateEndpoint -ResourceGroupName $rgName -Name $peName -Location $location -Subnet $vnetPE.subnets[0] -PrivateLinkServiceConnection $plsConnection -ByManualRequest 
- ```
-### Get private endpoint
-Get the IP address of the private endpoint with `Get-AzPrivateEndpoint` as follows:
+```
+ 
+### <a name="get-private-endpoint"></a>Persoonlijk eind punt ophalen
+Haal het IP-adres van het persoonlijke eind `Get-AzPrivateEndpoint` punt op met de volgende:
 
 ```azurepowershell
-
 # Get Private Endpoint and its IP Address 
 $pe =  Get-AzPrivateEndpoint `
 -Name $peName `
@@ -155,8 +157,9 @@ $pe =  Get-AzPrivateEndpoint `
 -ExpandResource networkinterfaces
 
 $pe.NetworkInterfaces[0].IpConfigurations[0].PrivateIpAddress 
- ```
-  
+
+```
+
 ### <a name="approve-the-private-endpoint-connection"></a>De verbinding met het persoonlijke eind punt goed keuren
 Keur de verbinding van het particuliere eind punt met de persoonlijke koppelings service goed met ' goed keuren-AzPrivateEndpointConnection '.
 
@@ -167,7 +170,9 @@ $pls = Get-AzPrivateLinkService `
 -ResourceGroupName $rgName 
 
 Approve-AzPrivateEndpointConnection -ResourceId $pls.PrivateEndpointConnections[0].Id -Description "Approved" 
- ``` 
+
+``` 
+
 ## <a name="next-steps"></a>Volgende stappen
 - Meer informatie over [persoonlijke Azure-koppelingen](private-link-overview.md)
  

@@ -1,133 +1,133 @@
 ---
-title: Instellen van herstel na noodgevallen naar Azure voor Hyper-V-machines met behulp van PowerShell en Azure Resource Manager | Microsoft Docs
-description: Herstel na noodgevallen van Hyper-V-machines naar Azure automatiseren met de Azure Site Recovery-service met behulp van PowerShell en Azure Resource Manager.
+title: Herstel na nood geval instellen op Azure voor Hyper-V-Vm's met behulp van Power shell en Azure Resource Manager | Microsoft Docs
+description: Automatiseer herstel na nood gevallen van virtuele Hyper-V-machines naar Azure met de Azure Site Recovery-service met behulp van Power shell en Azure Resource Manager.
 author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
 ms.date: 06/18/2019
 ms.author: sutalasi
-ms.openlocfilehash: bc1d52a1062d1848daaaeef7977f96cd270567c8
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 1779a33e4ac021c1807ce10dc224e0b8c8c53ebb
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67203472"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71200536"
 ---
-# <a name="set-up-disaster-recovery-to-azure-for-hyper-v-vms-using-powershell-and-azure-resource-manager"></a>Instellen van herstel na noodgevallen naar Azure voor Hyper-V-machines met behulp van PowerShell en Azure Resource Manager
+# <a name="set-up-disaster-recovery-to-azure-for-hyper-v-vms-using-powershell-and-azure-resource-manager"></a>Herstel na nood geval instellen op Azure voor Hyper-V-Vm's met behulp van Power shell en Azure Resource Manager
 
-[Azure Site Recovery](site-recovery-overview.md) draagt bij aan uw zakelijke continuïteit en noodherstelplan (BCDR) door het coördineren van replicatie, failover en herstel van virtuele Azure-machines (VM's) en on-premises machines en fysieke servers.
+[Azure site Recovery](site-recovery-overview.md) draagt bij aan uw strategie voor bedrijfs continuïteit en herstel na nood gevallen (BCDR) door de replicatie, failover en het herstel van virtuele machines van Azure (vm's) en on-premises vm's en fysieke servers te organiseren.
 
-In dit artikel wordt beschreven hoe u Windows PowerShell, samen met Azure Resource Manager gebruiken voor het Hyper-V-machines repliceren naar Azure. Het voorbeeld dat wordt gebruikt in dit artikel ziet u hoe u kunt een enkele virtuele machine die wordt uitgevoerd op een Hyper-V-host naar Azure repliceren.
+In dit artikel wordt beschreven hoe u Windows Power shell gebruikt, samen met Azure Resource Manager, om virtuele Hyper-V-machines te repliceren naar Azure. In het voor beeld in dit artikel wordt beschreven hoe u één VM die op een Hyper-V-host wordt uitgevoerd, naar Azure repliceert.
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
-Azure PowerShell biedt voor het beheren van Azure met behulp van Windows PowerShell-cmdlets. Site Recovery PowerShell-cmdlets beschikbaar zijn met Azure PowerShell voor Azure Resource Manager kunt u beveiligen en herstellen van uw servers in Azure.
+Azure PowerShell biedt cmdlets voor het beheren van Azure met behulp van Windows Power shell. Site Recovery Power shell-cmdlets, die beschikbaar zijn in Azure PowerShell voor Azure Resource Manager, helpen u bij het beveiligen en herstellen van uw servers in Azure.
 
-U hoeft te worden van een deskundige PowerShell te gebruiken in dit artikel, maar u hoeft te begrijpen basisconcepten, zoals modules, cmdlets en sessies. Lezen [aan de slag met Windows PowerShell](https://technet.microsoft.com/library/hh857337.aspx), en [met behulp van Azure PowerShell met Azure Resource Manager](../powershell-azure-resource-manager.md).
+U hoeft geen Power shell-expert te zijn om dit artikel te kunnen gebruiken, maar u moet wel inzicht krijgen in basis concepten, zoals modules, cmdlets en sessies. Lees aan de [slag met Windows Power shell](https://technet.microsoft.com/library/hh857337.aspx)en [gebruik Azure PowerShell met Azure Resource Manager](../powershell-azure-resource-manager.md).
 
 > [!NOTE]
-> Microsoft-partners in het programma Cloud Solution Provider (CSP) kunnen configureren en beheren van beveiliging van de klant servers hun respectieve CSP-abonnementen (tenant-abonnementen).
+> Micro soft-partners in het programma Cloud Solution Provider (CSP) kunnen de beveiliging van klanten servers configureren en beheren voor hun respectieve CSP-abonnementen (Tenant abonnementen).
 >
 >
 
 ## <a name="before-you-start"></a>Voordat u begint
-Zorg ervoor dat u deze vereisten hebt voldaan:
+Zorg ervoor dat deze vereisten aanwezig zijn in de volgende plaats:
 
-* Een [Microsoft Azure](https://azure.microsoft.com/) account. U kunt beginnen met een [gratis proefversie](https://azure.microsoft.com/pricing/free-trial/). Bovendien meer over [prijzen voor Azure Site Recovery Manager](https://azure.microsoft.com/pricing/details/site-recovery/).
-* Azure PowerShell. Zie voor meer informatie over deze release en hoe u deze installeert [Azure PowerShell installeren](/powershell/azure/install-az-ps).
+* Een [Microsoft Azure](https://azure.microsoft.com/) -account. U kunt beginnen met een [gratis proefversie](https://azure.microsoft.com/pricing/free-trial/). Daarnaast kunt u meer lezen over de [prijzen van Azure site Recovery Manager](https://azure.microsoft.com/pricing/details/site-recovery/).
+* Azure PowerShell. Zie [install Azure PowerShell](/powershell/azure/install-az-ps)voor meer informatie over deze versie en hoe u deze installeert.
 
-Het specifieke voorbeeld in dit artikel beschreven heeft bovendien de volgende vereisten:
+Daarnaast bevat het specifieke voor beeld dat in dit artikel wordt beschreven, de volgende vereisten:
 
-* Een Hyper-V-host met Windows Server 2012 R2 of Microsoft Hyper-V Server 2012 R2 met een of meer VM's. Hyper-V-servers moeten zijn verbonden met Internet, rechtstreeks of via een proxy.
-* De virtuele machines die u wilt repliceren, moeten voldoen aan [deze vereisten](hyper-v-azure-support-matrix.md#replicated-vms).
+* Een Hyper-V-host met Windows Server 2012 R2 of Microsoft Hyper-V Server 2012 R2 met een of meer virtuele machines. Hyper-V-servers moeten zijn verbonden met internet, hetzij rechtstreeks, hetzij via een proxy.
+* De Vm's die u wilt repliceren, moeten voldoen aan [deze vereisten](hyper-v-azure-support-matrix.md#replicated-vms).
 
 ## <a name="step-1-sign-in-to-your-azure-account"></a>Stap 1: Aanmelden bij uw Azure-account
 
-1. Open een PowerShell-console en voer deze opdracht uit om aan te melden bij uw Azure-account. De cmdlet wordt een webpagina vraagt u om referenties voor uw account: **Connect-AzAccount**.
-    - U kunt ook uw accountreferenties opnemen als een parameter in de **Connect AzAccount** cmdlet, met behulp van de **-referentie** parameter.
-    - Als u de CSP-partner werken namens een tenant bent, geeft u de klant als een tenant met behulp van de naam van de primaire domeincontroller tenant-id of tenant. Bijvoorbeeld: **Connect-AzAccount -Tenant "fabrikam.com"**
-2. Koppel het abonnement dat u gebruiken met het account wilt, omdat een account kan meerdere abonnementen hebben:
+1. Open een Power shell-console en voer deze opdracht uit om u aan te melden bij uw Azure-account. Met de cmdlet wordt u gevraagd om uw account referenties op te vragen: **Connect-AzAccount**.
+    - U kunt ook uw account referenties als een para meter in de cmdlet **Connect-AzAccount** toevoegen met behulp van de para meter **-Credential** .
+    - Als u een CSP-partner werkt namens een Tenant, geeft u de klant op als Tenant met behulp van hun tenantID of Tenant primaire domein naam. Bijvoorbeeld: **Connect-AzAccount -Tenant "fabrikam.com"**
+2. Koppel het abonnement dat u wilt gebruiken met het account, omdat een account meerdere abonnementen kan hebben:
 
     `Select-AzSubscription -SubscriptionName $SubscriptionName`
 
-3. Controleer of uw abonnement is geregistreerd voor het gebruik van de Azure-providers voor de Recovery Services- en Site Recovery, met behulp van deze opdrachten:
+3. Controleer of uw abonnement is geregistreerd voor het gebruik van de Azure-providers voor Recovery Services en Site Recovery met behulp van de volgende opdrachten:
 
     `Get-AzResourceProvider -ProviderNamespace  Microsoft.RecoveryServices`
 
-4. Controleer in de uitvoer van de opdracht, de **RegistrationState** is ingesteld op **geregistreerde**, kunt u doorgaan met stap 2. Als dat niet het geval is, moet u de ontbrekende provider registreren in uw abonnement, door het uitvoeren van deze opdrachten:
+4. Controleer of in de uitvoer van de opdracht de **RegistrationState** is ingesteld op **geregistreerd**, u kunt door gaan met stap 2. Als dat niet het geval is, moet u de ontbrekende provider in uw abonnement registreren door de volgende opdrachten uit te voeren:
 
     `Register-AzResourceProvider -ProviderNamespace Microsoft.RecoveryServices`
 
-5. Controleer of de Providers geregistreerd is, met de volgende opdrachten:
+5. Controleer of de providers zijn geregistreerd met behulp van de volgende opdrachten:
 
     `Get-AzResourceProvider -ProviderNamespace  Microsoft.RecoveryServices`
 
 ## <a name="step-2-set-up-the-vault"></a>Stap 2: De kluis instellen
 
-1. Maak een Azure Resource Manager-resourcegroep waarin u wilt maken van de kluis of gebruik een bestaande resourcegroep. Als volgt te werk om een nieuwe resourcegroep te maken. De variabele $ResourceGroupName bevat de naam van de resourcegroep die u wilt maken en de variabele $Geo bevat de Azure-regio waarin u wilt maken van de resourcegroep (bijvoorbeeld ' Brazilië-Zuid").
+1. Maak een Azure Resource Manager resource groep waarin u de kluis wilt maken of gebruik een bestaande resource groep. Maak als volgt een nieuwe resource groep. De variabele $ResourceGroupName bevat de naam van de resource groep die u wilt maken en de $Geo variabele bevat de Azure-regio waarin de resource groep moet worden gemaakt (bijvoorbeeld ' Brazilië-zuid ').
 
     `New-AzResourceGroup -Name $ResourceGroupName -Location $Geo`
 
-2. Om op te halen een lijst met resourcegroepen in uw abonnement uitvoeren de **Get-AzResourceGroup** cmdlet.
-2. Maak een nieuwe Azure Recovery Services-kluis als volgt:
+2. Als u een lijst met resource groepen in uw abonnement wilt ophalen, voert u de cmdlet **Get-AzResourceGroup** uit.
+2. Maak als volgt een nieuwe Azure Recovery Services-kluis:
 
         $vault = New-AzRecoveryServicesVault -Name <string> -ResourceGroupName <string> -Location <string>
 
-    U kunt een lijst met bestaande kluizen met ophalen van de **Get-AzRecoveryServicesVault** cmdlet.
+    U kunt een lijst met bestaande kluizen ophalen met de cmdlet **Get-AzRecoveryServicesVault** .
 
 
-## <a name="step-3-set-the-recovery-services-vault-context"></a>Stap 3: De context van de Recovery Services-kluis instellen
+## <a name="step-3-set-the-recovery-services-vault-context"></a>Stap 3: De Recovery Services kluis context instellen
 
-De context van de kluis als volgt instellen:
+Stel de context van de kluis als volgt in:
 
 `Set-AsrVaultSettings -Vault $vault`
 
 ## <a name="step-4-create-a-hyper-v-site"></a>Stap 4: Een Hyper-V-site maken
 
-1. Maak een nieuwe Hyper-V-site als volgt:
+1. Maak als volgt een nieuwe Hyper-V-site:
 
         $sitename = "MySite"                #Specify site friendly name
         New-AsrFabric -Type HyperVSite -Name $sitename
 
-2. Deze cmdlet wordt een Site Recovery-taak voor het maken van de site wordt gestart en retourneert een taakobject Site Recovery. Wachten op de taak is voltooid en controleer of dat de taak is voltooid.
-3. Gebruik de **cmdlet Get-AsrJob**, voor het ophalen van het taakobject en controleer de huidige status van de taak.
-4. Genereren en downloaden van een registratiesleutel voor de site, als volgt:
+2. Met deze cmdlet wordt een Site Recovery taak gestart om de site te maken en wordt een Site Recovery taak object geretourneerd. Wacht tot de taak is voltooid en controleer of de taak is voltooid.
+3. Gebruik de **cmdlet Get-AsrJob**om het taak object op te halen en de huidige status van de taak te controleren.
+4. Genereer en down load een registratie sleutel voor de site, als volgt:
 
     ```
     $SiteIdentifier = Get-AsrFabric -Name $sitename | Select -ExpandProperty SiteIdentifier
     $path = Get-AzRecoveryServicesVaultSettingsFile -Vault $vault -SiteIdentifier $SiteIdentifier -SiteFriendlyName $sitename
     ```
 
-5. De gedownloade sleutel kopiëren naar de Hyper-V-host. U moet de sleutel voor het registreren van de Hyper-V-host naar de site.
+5. Kopieer de gedownloade sleutel naar de Hyper-V-host. U hebt de sleutel nodig om de Hyper-V-host te registreren bij de-site.
 
-## <a name="step-5-install-the-provider-and-agent"></a>Stap 5: De Provider en agent installeren
+## <a name="step-5-install-the-provider-and-agent"></a>Stap 5: De provider en de agent installeren
 
-1. Download het installatieprogramma voor de meest recente versie van de Provider van [Microsoft](https://aka.ms/downloaddra).
-2. Voer het installatieprogramma op de Hyper-V-host.
-3. Aan het einde van de installatie doorgaan naar de registratiestap.
-4. Wanneer u hierom wordt gevraagd, de gedownloade sleutel opgeven en voltooi de registratie van de Hyper-V-host.
-5. Controleer of dat de Hyper-V-host is geregistreerd bij de site als volgt:
+1. Down load het installatie programma voor de nieuwste versie van de provider van [micro soft](https://aka.ms/downloaddra).
+2. Voer het installatie programma uit op de Hyper-V-host.
+3. Aan het einde van de installatie gaat u verder met de registratie stap.
+4. Wanneer u hierom wordt gevraagd, geeft u de gedownloade sleutel op en voltooit u de registratie van de Hyper-V-host.
+5. Controleer als volgt of de Hyper-V-host is geregistreerd bij de site:
 
         $server =  Get-AsrFabric -Name $siteName | Get-AsrServicesProvider -FriendlyName $server-friendlyname
 
-Als u een Hyper-V-core-server uitvoert, wordt het setup-bestand downloaden en als volgt te werk:
-1. Pak de bestanden van AzureSiteRecoveryProvider.exe naar een lokale map met deze opdracht: ```AzureSiteRecoveryProvider.exe /x:. /q```
-2. Voer ```.\setupdr.exe /i``` resultaten worden geregistreerd in % Programdata%\ASRLogs\DRASetupWizard.log.
+Als u een Hyper-V-kern server gebruikt, downloadt u het installatie bestand en voert u de volgende stappen uit:
+1. Pak de bestanden uit AzureSiteRecoveryProvider. exe uit naar een lokale map door deze opdracht uit te voeren:```AzureSiteRecoveryProvider.exe /x:. /q```
+2. Resultaten ```.\setupdr.exe /i``` van de uitvoering worden vastgelegd in%ProgramData%\ASRLogs\DRASetupWizard.log.
 
-3. Registreer de server door het uitvoeren van deze opdracht:
+3. Registreer de server door de volgende opdracht uit te voeren:
 
     ```cd  C:\Program Files\Microsoft Azure Site Recovery Provider\DRConfigurator.exe" /r /Friendlyname "FriendlyName of the Server" /Credentials "path to where the credential file is saved"```
 
 
 ## <a name="step-6-create-a-replication-policy"></a>Stap 6: Een replicatiebeleid maken
 
-Houd er rekening mee dat het opgegeven opslagaccount moet zich in dezelfde Azure-regio als de kluis en geo-replicatie is ingeschakeld moet hebben voordat u begint.
+Houd er rekening mee dat het opgegeven opslag account zich in dezelfde Azure-regio als de kluis moet bevinden en dat geo-replicatie moet zijn ingeschakeld.
 
-1. Als volgt te werk om een replicatiebeleid te maken:
+1. Maak als volgt een replicatie beleid:
 
         $ReplicationFrequencyInSeconds = "300";        #options are 30,300,900
         $PolicyName = “replicapolicy”
@@ -136,29 +136,33 @@ Houd er rekening mee dat het opgegeven opslagaccount moet zich in dezelfde Azure
 
         $PolicyResult = New-AsrPolicy -Name $PolicyName -ReplicationProvider “HyperVReplicaAzure” -ReplicationFrequencyInSeconds $ReplicationFrequencyInSeconds  -RecoveryPoints $Recoverypoints -ApplicationConsistentSnapshotFrequencyInHours 1 -RecoveryAzureStorageAccountId $storageaccountID
 
-2. Controleer de geretourneerde taak om ervoor te zorgen dat het beleid voor replicatie maken is gelukt.
+2. Controleer de geretourneerde taak om te controleren of het maken van het replicatie beleid slaagt.
 
-3. Ophalen van de beveiligingscontainer die overeenkomt met de site, als volgt:
+3. Haal als volgt de beveiligings container op die overeenkomt met de site:
 
         $protectionContainer = Get-AsrProtectionContainer
-3. Koppel de beveiligingscontainer aan het replicatiebeleid als volgt:
+3. Koppel de beveiligings container als volgt aan het replicatie beleid:
 
-     $Policy = Get-AsrPolicy -FriendlyName $PolicyName   $associationJob  = New-AsrProtectionContainerMapping -Name $mappingName -Policy $Policy -PrimaryProtectionContainer $protectionContainer[0]
+        $Policy = Get-AsrPolicy -FriendlyName $PolicyName
+        $associationJob  = New-AsrProtectionContainerMapping -Name $mappingName -Policy $Policy -PrimaryProtectionContainer $protectionContainer[0]
+4. Wacht totdat de koppelings taak is voltooid.
 
-4. Wachten op de koppeling-taak is voltooid.
+5. Haal de toewijzing van de beveiligings container op.
+
+        $ProtectionContainerMapping = Get-ASRProtectionContainerMapping -ProtectionContainer $protectionContainer
 
 ## <a name="step-7-enable-vm-protection"></a>Stap 7: VM-beveiliging inschakelen
 
-1. Ophalen van het beveiligbare item dat overeenkomt met de virtuele machine die u beveiligen wilt, als volgt:
+1. Haal als volgt het Beveilig bare item op dat overeenkomt met de virtuele machine die u wilt beveiligen:
 
         $VMFriendlyName = "Fabrikam-app"                    #Name of the VM
         $ProtectableItem = Get-AsrProtectableItem -ProtectionContainer $protectionContainer -FriendlyName $VMFriendlyName
-2. De VM te beveiligen. Als de virtuele machine die u beveiligt meer dan één schijf is gekoppeld heeft, geeft u de besturingssysteemschijf met behulp van de *OSDiskName* parameter.
+2. Beveilig de virtuele machine. Als er meer dan één schijf aan de virtuele machine is gekoppeld, geeft u de besturingssysteem schijf op met behulp van de para meter *OSDiskName* .
 
-        $Ostype = "Windows"                                 # "Windows" or "Linux"
-        $DRjob = New-AsrReplicationProtectedItem -ProtectableItem $VM -Name $VM.Name -ProtectionContainerMapping $ProtectionContainerMapping -RecoveryAzureStorageAccountId $StorageAccountID -OSDiskName $OSDiskNameList[$i] -OS Windows -RecoveryResourceGroupId
+        $OSType = "Windows"                                 # "Windows" or "Linux"
+        $DRjob = New-AsrReplicationProtectedItem -ProtectableItem $VM -Name $VM.Name -ProtectionContainerMapping $ProtectionContainerMapping -RecoveryAzureStorageAccountId $StorageAccountID -OSDiskName $OSDiskNameList[$i] -OS $OSType -RecoveryResourceGroupId $ResourceGroupID
 
-3. Wachten op de virtuele machines tot een beveiligde status na de initiële replicatie. Dit kan duren, afhankelijk van factoren zoals de hoeveelheid gegevens worden gerepliceerd en de beschikbare bandbreedte van de upstream naar Azure. Wanneer een beveiligde status ingesteld is, worden de taakstatus en StateDescription als volgt bijgewerkt:
+3. Wacht totdat de virtuele machines een beveiligde status hebben bereikt na de initiële replicatie. Dit kan enige tijd duren, afhankelijk van factoren zoals de hoeveelheid gegevens die moeten worden gerepliceerd en de beschik bare upstream-band breedte naar Azure. Wanneer een beveiligde status is ingesteld, worden de taak status en StateDescription als volgt bijgewerkt:
 
         PS C:\> $DRjob = Get-AsrJob -Job $DRjob
 
@@ -167,7 +171,7 @@ Houd er rekening mee dat het opgegeven opslagaccount moet zich in dezelfde Azure
 
         PS C:\> $DRjob | Select-Object -ExpandProperty StateDescription
         Completed
-4. Eigenschappen van de recovery-(zoals de VM-rolgrootte) en het Azure-netwerk waarmee de VM NIC koppelen na een failover.
+4. Update herstel-eigenschappen (zoals de grootte van de VM-rol,) en het Azure-netwerk waaraan de VM-NIC moet worden gekoppeld na een failover.
 
         PS C:\> $nw1 = Get-AzVirtualNetwork -Name "FailoverNw" -ResourceGroupName "MyRG"
 
@@ -194,10 +198,10 @@ Houd er rekening mee dat het opgegeven opslagaccount moet zich in dezelfde Azure
         $rpi = Get-AsrReplicationProtectedItem -ProtectionContainer $protectionContainer -FriendlyName $VMFriendlyName
 
         $TFjob =Start-AsrTestFailoverJob -ReplicationProtectedItem $VM -Direction PrimaryToRecovery -AzureVMNetworkId $nw.Id
-2. Controleer of de test virtuele machine is gemaakt in Azure. De test-failover-taak is onderbroken na het maken van de test-VM in Azure.
-3. Als u wilt opschonen en voltooi de testfailover, voert u de volgende uit:
+2. Controleer of de test-VM is gemaakt in Azure. De taak testfailover is onderbroken na het maken van de test-VM in Azure.
+3. Voer de volgende handelingen uit om de testfailover op te schonen en te volt ooien:
 
         $TFjob = Start-AsrTestFailoverCleanupJob -ReplicationProtectedItem $rpi -Comment "TFO done"
 
 ## <a name="next-steps"></a>Volgende stappen
-[Meer informatie](https://docs.microsoft.com/powershell/module/az.recoveryservices) over Azure Site Recovery met Azure Resource Manager PowerShell-cmdlets.
+Meer [informatie](https://docs.microsoft.com/powershell/module/az.recoveryservices) over Azure Site Recovery met Azure Resource Manager Power shell-cmdlets.

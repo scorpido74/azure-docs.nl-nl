@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: b731c5fe6b6c7055b7397386b1e9fd4bed47db8a
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: 62387fe7ddbde75e79724c77dd7eeedd5cae64c3
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910596"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71201868"
 ---
 # <a name="azure-security-center-planning-and-operations-guide"></a>Plannings- en bedieningsgids voor Azure Security Center
 Deze hand leiding is voor IT-professionals (IT), IT-architecten, gegevens beveiligings analisten en Cloud beheerders plannen om Azure Security Center te gebruiken.
@@ -182,13 +182,13 @@ De sectie **Detectie** is meer reactief en betreft waarschuwingen over problemen
 Het is een goed idee om de functie [Bedreigingsinformatie](https://docs.microsoft.com/azure/security-center/security-center-threat-intel) iedere dag even te bekijken. U daar bedreigingen van de omgeving identificeren, bijvoorbeeld dat een bepaalde computer deel uitmaakt van een botnet.
 
 ### <a name="monitoring-for-new-or-changed-resources"></a>Bewaking voor nieuwe of gewijzigde resources
-De meeste Azure-omgevingen zijn dynamisch, met nieuwe resources die regelmatig omhoog en omlaag worden verplaatst, met configuraties of wijzigingen enz. Security Center zorgt ervoor dat de beveiligingsstatus van deze nieuwe resources voor u goed zichtbaar is.
+De meeste Azure-omgevingen zijn dynamisch, waarbij de resources regel matig worden gemaakt, omhoog of omlaag, opnieuw worden geconfigureerd en gewijzigd. Security Center zorgt ervoor dat de beveiligingsstatus van deze nieuwe resources voor u goed zichtbaar is.
 
 Wanneer u nieuwe resources (virtuele machines, SQL Databases) toevoegt aan uw Azure-omgeving, detecteert Security Center deze resources automatisch en begint het de beveiliging ervan te bewaken. Dit omvat ook PaaS-webrollen en -werkrollen. Als gegevensverzameling wordt ingeschakeld in het [beveiligingsbeleid](tutorial-security-policy.md), worden er automatisch extra bewakingsmogelijkheden ingeschakeld voor uw virtuele machines.
 
 ![Belangrijke gebieden](./media/security-center-planning-and-operations-guide/security-center-planning-and-operations-guide-fig3-newUI.png)
 
-1. Voor virtuele machines klikt u op **Compute**, in het gedeelte **Preventie**. Problemen bij het inschakelen van gegevensverzameling of verwante aanbevelingen worden weergegeven op het tabblad **Overzicht**, in het gedeelte **Aanbevelingen ten aanzien van controle**.
+1. Voor virtuele machines klikt u op **compute & apps**, onder de sectie **beveiligings hygiëne** van de resource. Problemen bij het inschakelen van gegevensverzameling of verwante aanbevelingen worden weergegeven op het tabblad **Overzicht**, in het gedeelte **Aanbevelingen ten aanzien van controle**.
 2. Geef de **aanbevelingen** weer om te zien welke beveiligingsrisico's mogelijk zijn geïdentificeerd voor de nieuwe resource.
 3. Het is heel gebruikelijk dat wanneer nieuwe virtuele machines worden toegevoegd aan uw omgeving, eerst alleen het besturingssysteem wordt geïnstalleerd. De resource-eigenaar heeft wellicht enige tijd nodig om andere apps te implementeren die door deze VM’s worden gebruikt.  In het ideale geval moet u de uiteindelijke doelstelling van deze workload kennen. Wordt het een toepassingsserver? Op grond van wat deze nieuwe workload gaat worden, kunt u het juiste **beveiligingsbeleid** inschakelen. Dit is de derde stap in deze werkstroom.
 4. Wanneer er nieuwe resources worden toegevoegd aan uw Azure-omgeving, kunnen er nieuwe waarschuwingen worden weer gegeven in de tegel **beveiligings waarschuwingen** . Zoek naar nieuwe waarschuwingen in deze tegel en volg de aanbevelingen.

@@ -3,23 +3,19 @@ title: Detectie van bedreigingen voor Vm's en servers in Azure Security Center |
 description: Dit onderwerp bevat een overzicht van de VM-en server waarschuwingen die beschikbaar zijn in Azure Security Center.
 services: security-center
 documentationcenter: na
-author: monhaber
+author: memildin
 manager: rkarlin
-editor: ''
 ms.assetid: dd2eb069-4c76-4154-96bb-6e6ae553ef46
 ms.service: security-center
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 7/02/2019
-ms.author: v-mohabe
-ms.openlocfilehash: 055b578c1d976b7f85c65ab4e028f9d609861cd4
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.date: 07/02/2019
+ms.author: memildin
+ms.openlocfilehash: 0070ab94196dfe752e048e97dd40a8f69cf98373
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70013333"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71202603"
 ---
 # <a name="threat-detection-for-vms-and-servers-in-azure-security-center"></a>Detectie van bedreigingen voor Vm's en servers in Azure Security Center
 

@@ -3,9 +3,8 @@ title: Schijf versleuteling Toep assen in Azure Security Center | Microsoft Docs
 description: Dit document bevat informatie over het implementeren van de Azure Security Center aanbeveling **schijf versleuteling Toep assen**.
 services: security-center
 documentationcenter: na
-author: rkarlin
-manager: barbkess
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: 6cc7824a-8d6b-4a5f-ab40-e3bbaebc4a91
 ms.service: security-center
 ms.devlang: na
@@ -13,13 +12,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
-ms.author: rkarlin
-ms.openlocfilehash: 1abb0a5f5523032440086932eb9a1621d4cef455
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.author: memildin
+ms.openlocfilehash: 0ae2b695a64e55b493453549627860872166ed25
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68726241"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71202498"
 ---
 # <a name="apply-disk-encryption-in-azure-security-center"></a>Schijf versleuteling Toep assen in Azure Security Center
 Azure Security Center raadt u aan om schijf versleuteling toe te passen als u virtuele Windows-of Linux-schijven hebt die niet zijn versleuteld met Azure Disk Encryption. Met schijf versleuteling kunt u uw virtuele Windows-en Linux IaaS-VM-schijven versleutelen.  Versleuteling wordt aanbevolen voor het besturingssysteem en voor de gegevensvolumes op de VM.
@@ -44,7 +43,7 @@ Voor het versleutelen van Azure-Virtual Machines die zijn geïdentificeerd door 
 * De Azure Disk Encryption vereisten Azure PowerShell script verkrijgen en uitvoeren.
 * Versleutel uw virtuele machines.
 
-[Een Windows IaaS-VM met Azure PowerShell](../security/azure-disk-encryption-linux-powershell-quickstart.md) versleutelen, wordt u door de volgende stappen geleid. In dit onderwerp wordt ervan uitgegaan dat u een Windows-client computer gebruikt van waaruit u schijf versleuteling configureert.
+[Een Windows IaaS-VM met Azure PowerShell versleutelen](../security/azure-disk-encryption-linux-powershell-quickstart.md) , wordt u door de volgende stappen geleid. In dit onderwerp wordt ervan uitgegaan dat u een Windows-client computer gebruikt van waaruit u schijf versleuteling configureert.
 
 Er zijn veel benaderingen die kunnen worden gebruikt voor Azure Virtual Machines. Als u al goed bekend bent met Azure PowerShell of Azure CLI, maakt u mogelijk liever gebruik van een andere manier. Zie [Azure Disk Encryption](../security/azure-security-disk-encryption.md)(Engelstalig) voor meer informatie over deze andere benaderingen.
 

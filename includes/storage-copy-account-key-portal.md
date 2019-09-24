@@ -8,21 +8,20 @@ ms.topic: include
 ms.date: 11/11/2018
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 1eadda6e36e7e3798bf055b138bec1b897e3014d
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 6ffc91a6e01cfb479a4090bcf13f15a7bd20095c
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69541457"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71203929"
 ---
 ## <a name="copy-your-credentials-from-the-azure-portal"></a>Kopieer uw referenties van de Azure Portal
 
 De voorbeeldtoepassing moet de toegang tot uw opslagaccount goedkeuren. Geef de referenties voor uw opslagaccount aan de toepassing door in de vorm van een verbindingsreeks. Om uw opslagaccountreferenties te zien, doet u het volgende:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
-2. Zoek uw opslagaccount.
-3. In de sectie **Instellingen** van het overzicht met opslagaccounts selecteert u **Toegangssleutels**. De toegangssleutels van uw account en de verbindingsreeks worden weergegeven.
-4. Noteer de naam van uw opslagaccount. U hebt deze nodig voor de autorisatie.   
-5. Zoek de **sleutel** waarde onder **key1**en selecteer **kopiëren** om de account sleutel te kopiëren.
+1. Ga naar het [Azure Portal](https://portal.azure.com) naar uw opslag account.
+1. Selecteer in de sectie **instellingen** van het overzicht van het opslag account de optie **toegangs sleutels** om de toegangs sleutels en Connection String van uw account weer te geven.
+1. Noteer de naam van uw opslagaccount. U hebt deze nodig voor de autorisatie.   
+1. Zoek de **sleutel** waarde onder **key1**en selecteer **kopiëren** om de account sleutel te kopiëren.
 
     ![Schermafbeelding waarin u ziet hoe u uw accountsleutel kopieert vanuit de Azure-portal](media/storage-copy-account-key-portal/portal-account-key.png)

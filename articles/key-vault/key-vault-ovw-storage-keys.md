@@ -7,19 +7,19 @@ ms.service: key-vault
 author: msmbaldwin
 ms.author: mbaldwin
 manager: rkarlin
-ms.date: 03/01/2019
-ms.openlocfilehash: 68c9279333e9ee92cbca1034f70801c153b6cdb8
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.date: 09/18/2019
+ms.openlocfilehash: 8b9478dda83b85e937faa8915fa5e9b77660f194
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71000537"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71203614"
 ---
-# <a name="manage-storage-account-keys-with-azure-key-vault-and-the-azure-cli"></a>Sleutels voor opslag accounts beheren met Azure Key Vault en de Azure CLI 
+# <a name="manage-storage-account-keys-with-key-vault-and-the-azure-cli"></a>Sleutels voor opslag accounts beheren met Key Vault en de Azure CLI
 
-Azure Key Vault beheert sleutels voor Azure Storage-accounts en klassieke opslag accounts. U kunt de functie beheerde opslag accounts van Key Vault gebruiken om verschillende functies voor sleutel beheer voor u uit te voeren.
+Een Azure-opslag account gebruikt referenties die bestaan uit een account naam en een sleutel. De sleutel wordt automatisch gegenereerd en fungeert als een wacht woord in plaats van een als cryptografische sleutel. Key Vault beheert Storage-account sleutels door ze op te slaan als [Key Vault geheimen](/azure/key-vault/about-keys-secrets-and-certificates#key-vault-secrets). 
 
-Een [Azure-opslag account](/azure/storage/storage-create-storage-account) gebruikt een referentie die bestaat uit een account naam en een sleutel. De sleutel wordt automatisch gegenereerd en fungeert als een wacht woord in plaats van een als cryptografische sleutel. Key Vault beheert Storage-account sleutels door ze op te slaan als [Key Vault geheimen](/azure/key-vault/about-keys-secrets-and-certificates#key-vault-secrets). Sleutels worden weer gegeven (gesynchroniseerd) met een Azure-opslag account en worden periodiek opnieuw gegenereerd of _gedraaid_. 
+U kunt met behulp van de sleutel functie voor de Key Vault beheerde opslag accounts een lijst (synchronisatie) met een Azure-opslag account maken en de sleutels periodiek opnieuw genereren (draaien). U kunt sleutels voor zowel opslag accounts als klassieke opslag accounts beheren.
 
 Houd rekening met de volgende punten wanneer u de sleutel functie beheerde opslag account gebruikt:
 
@@ -27,23 +27,19 @@ Houd rekening met de volgende punten wanneer u de sleutel functie beheerde opsla
 - Alleen Key Vault moet de sleutels van uw opslag account beheren. Beheer de sleutels niet zelf en voorkom conflicten met Key Vault processen.
 - Alleen een enkel Key Vault-object moet de sleutels van het opslag account beheren. Geen sleutel beheer van meerdere objecten toestaan.
 - U kunt Key Vault aanvragen om uw opslag account te beheren met een gebruikers-principal, maar niet met een service-principal.
-- Sleutels opnieuw genereren met behulp van alleen Key Vault. De sleutels van uw opslag account niet hand matig opnieuw genereren. 
+- Sleutels opnieuw genereren met behulp van alleen Key Vault. De sleutels van uw opslag account niet hand matig opnieuw genereren.
 
-> [!NOTE]
-> Azure Storage integratie met Azure Active Directory (Azure AD) is de cloud-gebaseerde identiteits-en toegangs beheer service van micro soft.
-> Azure AD-integratie is beschikbaar voor [Azure-blobs en-wacht rijen](../storage/common/storage-auth-aad.md).
-> Gebruik Azure AD voor verificatie en autorisatie.
-> Azure AD biedt op OAuth2-tokens gebaseerde toegang tot Azure Storage net als Azure Key Vault.
->
-> Met Azure AD kunt u uw client toepassing verifiëren met behulp van een toepassings-of gebruikers-id in plaats van de referenties van het opslag account.
-> U kunt een door [Azure AD beheerde identiteit](/azure/active-directory/managed-identities-azure-resources/) gebruiken wanneer u in azure uitvoert. Beheerde identiteiten verwijderen de nood zaak voor client verificatie en het opslaan van referenties in of met uw toepassing.
-> Azure AD gebruikt op rollen gebaseerd toegangs beheer (RBAC) voor het beheren van autorisatie, die ook door Key Vault wordt ondersteund.
+U kunt het beste Azure Storage Integration gebruiken met Azure Active Directory (Azure AD), de cloud-gebaseerde identiteits-en toegangs beheer service van micro soft. Azure AD-integratie is beschikbaar voor [Azure-blobs en-wacht rijen](../storage/common/storage-auth-aad.md)en biedt toegang tot Azure Storage op basis van OAuth2-tokens (net als Azure Key Vault).
 
-### <a name="service-principal-application-id"></a>Service-Principal-toepassings-ID
+Met Azure AD kunt u uw client toepassing verifiëren met behulp van een toepassings-of gebruikers-id in plaats van de referenties van het opslag account. U kunt een door [Azure AD beheerde identiteit](/azure/active-directory/managed-identities-azure-resources/) gebruiken wanneer u in azure uitvoert. Beheerde identiteiten verwijderen de nood zaak voor client verificatie en het opslaan van referenties in of met uw toepassing.
 
-Een Azure AD-Tenant voorziet elke geregistreerde toepassing van een [Service-Principal](/azure/active-directory/develop/developer-glossary#service-principal-object). De Service-Principal fungeert als de toepassings-ID. De toepassings-ID wordt gebruikt tijdens het instellen van de autorisatie voor toegang tot andere Azure-resources via RBAC.
+Azure AD gebruikt op rollen gebaseerd toegangs beheer (RBAC) voor het beheren van autorisatie, die ook door Key Vault wordt ondersteund.
 
-Key Vault is een micro soft-toepassing die vooraf is geregistreerd in alle Azure AD-tenants. De Key Vault is geregistreerd onder dezelfde toepassings-ID en binnen elke Azure-Cloud.
+## <a name="service-principal-application-id"></a>Service-Principal-toepassings-ID
+
+Een Azure AD-Tenant voorziet elke geregistreerde toepassing van een [Service-Principal](/azure/active-directory/develop/developer-glossary#service-principal-object). De Service-Principal fungeert als de toepassings-ID, die wordt gebruikt tijdens het instellen van de autorisatie voor toegang tot andere Azure-resources via RBAC.
+
+Key Vault is een micro soft-toepassing die vooraf is geregistreerd in alle Azure AD-tenants. Key Vault is geregistreerd onder dezelfde toepassings-ID in elke Azure-Cloud.
 
 | tenants | Cloud | Toepassings-id |
 | --- | --- | --- |
@@ -51,150 +47,111 @@ Key Vault is een micro soft-toepassing die vooraf is geregistreerd in alle Azure
 | Azure AD | Azure openbaar | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
 | Overige  | Any | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
 
-<!-- Add closing sentences to summarize what the user accomplished in this section. -->
-
 ## <a name="prerequisites"></a>Vereisten
 
-Voordat u Key Vault gebruikt voor het beheren van de sleutel van uw opslag account, raadpleegt u de vereisten:
+Als u deze hand leiding wilt volt ooien, moet u eerst het volgende doen:
 
-- Installeer de [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
-- Maak een [Azure-opslag account](https://azure.microsoft.com/services/storage/). Volg [deze stappen](../storage/index.yml).
-- De naam van het opslag account mag alleen kleine letters en cijfers bevatten. De naam moet tussen de 3 en 24 tekens lang zijn.        
+- [Installeer de Azure cli](/cli/azure/install-azure-cli).
+- [Een sleutel kluis maken](quick-create-cli.md)
+- [Maak een Azure Storage-account](../storage/common/storage-quickstart-create-account.md?tabs=azure-cli). De naam van het opslag account mag alleen kleine letters en cijfers bevatten. De naam moet tussen de 3 en 24 tekens lang zijn.
       
 ## <a name="manage-storage-account-keys"></a>Sleutels voor opslag accounts beheren
 
-Er zijn vier basis stappen voor het gebruik van Key Vault voor het beheren van sleutels voor opslag accounts:
+### <a name="connect-to-your-azure-account"></a>Verbinding maken met uw Azure-account
 
-1. Een bestaand opslag account ophalen.
-1. Een bestaande sleutel kluis ophalen.
-1. Voeg een Key Vault beheerd opslag account toe aan de kluis. Stel `key1` in als de actieve sleutel met een regeneratieperiode van 90 dagen.
-1. Gebruiken `key1` om een opslag context in te stellen voor het opgegeven opslag account.
+Verifieer uw Azure CLI-sessie met de opdracht [AZ login](/powershell/module/az.accounts/connect-azaccount?view=azps-2.5.0) .
 
-> [!NOTE]
-> Aan Key Vault as a-service worden operator machtigingen toegewezen voor uw opslag account.
-> 
-> Nadat u Azure Key Vault Managed Storage-account sleutels hebt ingesteld, wijzigt u de sleutels alleen met behulp van Key Vault.
-> Key Vault beheert de draaiing van de sleutel van het opslag account voor de sleutels van beheerde opslag accounts.
+```azurecli-interactive
+az login
+``` 
 
-1. Nadat u een opslag account hebt gemaakt, voert u de volgende opdracht uit om de resource-ID op te halen van het opslag account dat u wilt beheren:
-    ```
-    az storage account show -n storageaccountname
-    ```
+### <a name="give-key-vault-access-to-your-storage-account"></a>Key Vault toegang geven tot uw opslag account
 
-    Kopieer de waarde van de resource-ID uit de opdracht uitvoer:
-    ```
-    /subscriptions/<subscription ID>/resourceGroups/ResourceGroup/providers/Microsoft.Storage/storageAccounts/StorageAccountName
-    ```
+Gebruik de opdracht Azure CLI [AZ Role Assignment maken](/cli/azure/role/assignment?view=azure-cli-latest) om Key Vault toegang te geven tot uw opslag account. Geef de opdracht de volgende parameter waarden:
 
-    Voorbeelduitvoer:
-    ```
-    "objectId": "93c27d83-f79b-4cb2-8dd4-4aa716542e74"
-    ```
-    
-1. Wijs de RBAC-rol van de operator voor de sleutel van het opslag account toe aan Key Vault. Deze rol beperkt de toegangs Scope tot uw opslag account. Gebruik voor een klassiek opslag account de rol ' klassieke account sleutel operator rol '.
+- `--role`: Geef de functie ' rol van account sleutel operator voor opslag ' door. Deze rol beperkt de toegangs Scope tot uw opslag account. Geef voor een klassiek opslag account de rol ' klassieke account sleutel operator ' door.
+- `--assignee-object-id`: Geef de waarde ' 93c27d83-f79b-4cb2-8dd4-4aa716542e74 ' door. Dit is de object-ID voor Key Vault in de open bare Azure-Cloud. (Als u de object-ID voor Key Vault wilt ophalen in de Azure Government Cloud, raadpleegt u [Service Principal Application id](#service-principal-application-id).)
+- `--scope`: Geef de resource-ID van uw opslag account op in de `/subscriptions/<subscriptionID>/resourceGroups/<StorageAccountResourceGroupName>/providers/Microsoft.Storage/storageAccounts/<YourStorageAccountName>`vorm. Als u uw abonnement-ID wilt vinden, gebruikt u de opdracht Azure CLI [AZ account list](/cli/azure/account?view=azure-cli-latest#az-account-list) . Als u de naam van uw opslag account en de resource groep voor het opslag account wilt zoeken, gebruikt u de opdracht Azure CLI [AZ Storage account list](/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-list) .
 
-    ```
-    az role assignment create --role "Storage Account Key Operator Service Role" --assignee-object-id 93c27d83-f79b-4cb2-8dd4-4aa716542e74 --scope "/subscriptions/<subscriptionID>/resourceGroups/<StorageAccountResourceGroupName>/providers/Microsoft.Storage/storageAccounts/<StorageAccountName>"
-    ```
-    
-    `93c27d83-f79b-4cb2-8dd4-4aa716542e74`is de object-ID voor Key Vault in de open bare Azure-Cloud. Zie [Service Principal Application id](#service-principal-application-id)om de object-id voor Key Vault op te halen in de Azure Government Cloud.
-    
-1. Een door Key Vault beheerd opslag account maken:
+```azurecli-interactive
+az role assignment create --role "Storage Account Key Operator Service Role" --assignee-object-id 93c27d83-f79b-4cb2-8dd4-4aa716542e74 --scope "/subscriptions/<subscriptionID>/resourceGroups/<StorageAccountResourceGroupName>/providers/Microsoft.Storage/storageAccounts/<YourStorageAccountName>"
+ ```
 
-    Stel een regeneratie periode van 90 dagen in. Na 90 dagen Key Vault de actieve sleutel opnieuw `key1` gegenereerd en gewisseld van `key2` naar `key1`. `key1`wordt vervolgens als de actieve sleutel gemarkeerd. 
+### <a name="create-a-key-vault-managed-storage-account"></a>Een door Key Vault beheerd opslag account maken
+
+ Maak een Key Vault beheerd opslag account met behulp van de Azure CLI [AZ-opslag](/cli/azure/keyvault/storage?view=azure-cli-latest#az-keyvault-storage-add) opdracht. Stel een regeneratie periode van 90 dagen in. Na 90 dagen Key Vault de actieve sleutel opnieuw `key1` gegenereerd en gewisseld van `key2` naar `key1`. `key1`wordt vervolgens als de actieve sleutel gemarkeerd. Geef de opdracht de volgende parameter waarden:
+
+- `--vault-name`: Geef de naam van de sleutel kluis door. Als u de naam van de sleutel kluis wilt weten, gebruikt u de opdracht Azure CLI AZ, sleutel [kluis List](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-list) .
+- `-n`: Geef de naam van uw opslag account door. Als u de naam van uw opslag account wilt weten, gebruikt u de opdracht Azure CLI [AZ Storage account list](/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-list) .
+- `--resource-id`: Geef de resource-ID van uw opslag account op in de `/subscriptions/<subscriptionID>/resourceGroups/<StorageAccountResourceGroupName>/providers/Microsoft.Storage/storageAccounts/<YourStorageAccountName>`vorm. Gebruik de Azure CLI [AZ account list](/cli/azure/account?view=azure-cli-latest#az-account-list) opdracht om uw abonnements-id te vinden. Als u de naam van uw opslag account en de resource groep voor het opslag account wilt zoeken, gebruikt u de opdracht Azure CLI [AZ Storage account list](/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-list) .
    
-    ```
-    az keyvault storage add --vault-name <YourVaultName> -n <StorageAccountName> --active-key-name key1 --auto-regenerate-key --regeneration-period P90D --resource-id <Id-of-storage-account>
-    ```
+ ```azurecli-interactive
+az keyvault storage add --vault-name <YourKeyVaultName> -n <YourStorageAccountName> --active-key-name key1 --auto-regenerate-key --regeneration-period P90D --resource-id "/subscriptions/<subscriptionID>/resourceGroups/<StorageAccountResourceGroupName>/providers/Microsoft.Storage/storageAccounts/<YourStorageAccountName>"
+ ```
 
-<!-- Add closing sentences to summarize what the user accomplished in this section. -->
-
-## <a name="create-and-generate-tokens"></a>Tokens maken en genereren
+## <a name="shared-access-signature-tokens"></a>Shared Access Signature-tokens
 
 U kunt ook Key Vault vragen om de tokens voor Shared Access-hand tekeningen te genereren. Een shared access signature biedt gedelegeerde toegang tot resources in uw opslagaccount. U kunt clients toegang verlenen tot resources in uw opslag account zonder uw account sleutels te delen. Een Shared Access Signature biedt u een veilige manier om uw opslag resources te delen zonder in te boeten voor uw account sleutels.
 
 De opdrachten in deze sectie voeren de volgende acties uit:
 
-- Stel de definitie `<YourSASDefinitionName>`van een gedeelde toegangs handtekening voor een account in. De definitie wordt ingesteld op een Key Vault beheerd opslag account `<YourStorageAccountName>` in uw sleutel kluis `<VaultName>`.
+- Stel de definitie `<YourSASDefinitionName>`van een gedeelde toegangs handtekening voor een account in. De definitie wordt ingesteld op een Key Vault beheerd opslag account `<YourStorageAccountName>` in uw sleutel kluis `<YourKeyVaultName>`.
 - Maak een account voor Shared Access Signature-token voor blob-, bestands-, tabel-en wachtrij Services. Het token is gemaakt voor resource type-service,-container en-object. Het token wordt gemaakt met alle machtigingen, via https en met de opgegeven begin-en eind datum.
 - Stel in de kluis een definitie in van een Key Vault Managed Storage-hand tekening voor gedeelde opslag. De definitie heeft de sjabloon-URI van het Shared Access Signature-token dat is gemaakt. De definitie heeft het type `account` Shared Access Signature en is N dagen geldig.
-- Haal het daad werkelijke toegangs token op uit het Key Vault geheim dat overeenkomt met de definitie van de Shared Access-hand tekening.
+- Controleer of de Shared Access-hand tekening is opgeslagen in de sleutel kluis als een geheim.
 
-Nadat u de stappen in de vorige sectie hebt voltooid, voert u de volgende opdrachten uit om Key Vault te vragen voor het genereren van tokens voor Shared Access-hand tekeningen. 
+### <a name="create-a-shared-access-signature-token"></a>Een token voor een Shared Access-hand tekening maken
 
-1. Maak een definitie van een Shared Access-hand tekening. Nadat de definitie van de hand tekening voor gedeelde toegang is gemaakt, vraagt u Key Vault om meer tokens voor Shared Access-hand tekeningen te genereren. Voor deze bewerking zijn `storage` de `setsas` machtigingen en vereist.
-    ```
-    $sastoken = az storage account generate-sas --expiry 2020-01-01 --permissions rw --resource-types sco --services bfqt --https-only --account-name storageacct --account-key 00000000
-    ```
+Maak een definitie van een gedeelde toegangs handtekening met behulp van de opdracht Azure CLI [AZ Storage account generate-SAS](/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-generate-sas) . Voor deze bewerking zijn `storage` de `setsas` machtigingen en vereist.
 
-    Zie de documentatie [AZ Storage account generate-SAS Reference (](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-generate-sas) Engelstalig) voor meer informatie over de werking.
 
-    Nadat de bewerking is uitgevoerd, kopieert u de uitvoer.
-    ```console
-       "se=2020-01-01&sp=***"
-    ```
+```azurecli-interactive
+az storage account generate-sas --expiry 2020-01-01 --permissions rw --resource-types sco --services bfqt --https-only --account-name <YourStorageAccountName> --account-key 00000000
+```
+Nadat de bewerking is uitgevoerd, kopieert u de uitvoer.
 
-1. Gebruik de `$sasToken` door de vorige opdracht gegenereerde en maak een definitie van een Shared Access-hand tekening. Voor meer informatie over de opdracht parameters, zie de naslag documentatie [AZ-opslag SAS-definitie referentie maken](https://docs.microsoft.com/cli/azure/keyvault/storage/sas-definition?view=azure-cli-latest#required-parameters) .
-    ```
-    az keyvault storage sas-definition create --vault-name <YourVaultName> --account-name <YourStorageAccountName> -n <NameOfSasDefinitionYouWantToGive> --validity-period P2D --sas-type account --template-uri $sastoken
-    ```
-
-    Als de gebruiker geen machtigingen heeft voor het opslag account, moet u eerst de object-ID van de gebruiker ophalen:
-    ```
-    az ad user show --upn-or-object-id "developer@contoso.com"
-
-    az keyvault set-policy --name <YourVaultName> --object-id <ObjectId> --storage-permissions backup delete list regeneratekey recover     purge restore set setsas update
-    ```
-
-<!-- Add closing sentences to summarize what the user accomplished in this section. -->
-
-## <a name="fetch-tokens-in-code"></a>Tokens ophalen in code
-
-Voer bewerkingen uit voor uw opslag account door de [Signature-tokens voor gedeelde toegang](../storage/common/storage-dotnet-shared-access-signature-part-1.md) op te halen uit Key Vault.
-
-Er zijn drie manieren om te verifiëren bij Key Vault:
-
-- Een beheerde service-identiteit gebruiken. Deze methode wordt sterk aanbevolen.
-- Een Service-Principal en een certificaat gebruiken. 
-- Een Service-Principal en wacht woord gebruiken. Deze methode wordt niet aanbevolen.
-
-Zie [Azure Key Vault voor meer informatie: Basis concepten](basic-concepts.md).
-
-In het volgende voor beeld ziet u hoe u de tokens voor Shared Access-hand tekeningen ophaalt. U haalt de tokens op nadat u een definitie van een gedeelde toegangs handtekening hebt gemaakt. 
-
-```cs
-// After you get a security token, create KeyVaultClient with vault credentials.
-var kv = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(securityToken));
-
-// Get a shared access signature token for your storage from Key Vault.
-// The format for SecretUri is https://<VaultName>.vault.azure.net/secrets/<ExamplePassword>
-var sasToken = await kv.GetSecretAsync("SecretUri");
-
-// Create new storage credentials by using the shared access signature token.
-var accountSasCredential = new StorageCredentials(sasToken.Value);
-
-// Use the storage credentials and the Blob storage endpoint to create a new Blob service client.
-var accountWithSas = new CloudStorageAccount(accountSasCredential, new Uri ("https://myaccount.blob.core.windows.net/"), null, null, null);
-
-var blobClientWithSas = accountWithSas.CreateCloudBlobClient();
+```console
+"se=2020-01-01&sp=***"
 ```
 
-Als uw Shared Access Signature-token bijna is verlopen, haalt u het token voor de Shared Access-hand tekening opnieuw op uit Key Vault en werkt u de code bij.
+Deze uitvoer wordt door gegeven aan de `--template-id` para meter in de volgende stap.
 
-```cs
-// If your shared access signature token is about to expire,
-// get the shared access signature token again from Key Vault and update it.
-sasToken = await kv.GetSecretAsync("SecretUri");
-accountSasCredential.UpdateSASToken(sasToken);
+### <a name="generate-a-shared-access-signature-definition"></a>Een definitie van een gedeelde Access-hand tekening genereren
+
+Gebruik de Azure cli [AZ Storage SAS-definition-opslag](/cli/azure/keyvault/storage/sas-definition?view=azure-cli-latest#az-keyvault-storage-sas-definition-create) opdracht, waarbij de uitvoer van de vorige stap wordt door gegeven aan `--template-id` de para meter om een definitie voor een gedeelde toegangs handtekening te maken.  U kunt de naam van uw keuze opgeven voor de `-n` para meter.
+
+```azurecli-interactive
+az keyvault storage sas-definition create --vault-name <YourKeyVaultName> --account-name <YourStorageAccountName> -n <YourSASDefinitionName> --validity-period P2D --sas-type account --template-uri <OutputOfSasTokenCreationStep>
 ```
 
-<!-- Add closing sentences to summarize what the user accomplished in this section. -->
+### <a name="verify-the-shared-access-signature-definition"></a>De definitie van de hand tekening voor gedeelde toegang controleren
 
-### <a name="azure-cli-commands"></a>Azure CLI-opdrachten
+U kunt controleren of de definitie van de hand tekening voor gedeelde toegang is opgeslagen in uw sleutel kluis met behulp van de Azure CLI [AZ-geheime lijst](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-list) en [AZ sleutel kluis Secret opdrachten weer geven](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-show) .
 
-Voor informatie over de Azure CLI-opdrachten die relevant zijn voor beheerde opslag accounts, raadpleegt u de documentatie van de [opslag referentie AZ-kluis](https://docs.microsoft.com/cli/azure/keyvault/storage?view=azure-cli-latest) .
+Zoek eerst de definitie van de hand tekening voor gedeelde toegang in uw sleutel kluis met behulp van de opdracht [AZ Key kluis Secret List](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-list) .
+
+```azurecli-interactive
+az keyvault secret list --vault-name <YourKeyVaultName>
+```
+
+Het geheim dat overeenkomt met uw SAS-definitie heeft de volgende eigenschappen:
+
+```console
+    "contentType": "application/vnd.ms-sastoken-storage",
+    "id": "https://<YourKeyVaultName>.vault.azure.net/secrets/<YourStorageAccountName>-<YourSASDefinitionName>",
+```
+
+U kunt nu de opdracht [AZ sleutel kluis Secret show](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-show) en de `id` eigenschap gebruiken om de inhoud van dat geheim weer te geven.
+
+```azurecli-interactive
+az keyvault secret show --vault-name <YourKeyVaultName> --id <SasDefinitionID>
+```
+
+De uitvoer van deze opdracht geeft uw SAS-definitie teken reeks`value`als.
+
 
 ## <a name="next-steps"></a>Volgende stappen
 
 - Meer informatie over [sleutels, geheimen en certificaten](https://docs.microsoft.com/rest/api/keyvault/).
 - Bekijk artikelen over de [blog](https://blogs.technet.microsoft.com/kv/)van het Azure Key Vault-team.
+- Zie de referentie documentatie [AZ-kluis opslag](https://docs.microsoft.com/cli/azure/keyvault/storage?view=azure-cli-latest) .

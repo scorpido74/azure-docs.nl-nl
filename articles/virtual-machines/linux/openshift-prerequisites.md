@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/14/2019
 ms.author: haroldw
-ms.openlocfilehash: ab8814f1620cc019a0bee872c7b8f42cbb427365
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 8dae521902d0568f2d79725bad792d4df64daa1c
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70091744"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71204007"
 ---
 # <a name="common-prerequisites-for-deploying-openshift-in-azure"></a>Algemene vereisten voor het implementeren van open Shift in azure
 
@@ -70,7 +70,7 @@ az group create --name keyvaultrg --location eastus
 ## <a name="create-a-key-vault"></a>Een sleutelkluis maken
 Maak een sleutel kluis om de SSH-sleutels voor het cluster op te slaan met de opdracht [AZ sleutel kluis Create](/cli/azure/keyvault) . De naam van de sleutel kluis moet globaal uniek zijn en moet zijn ingeschakeld voor de implementatie van een sjabloon, anders mislukt de implementatie met de fout ' KeyVaultParameterReferenceSecretRetrieveFailed '.
 
-In het volgende voor beeld wordt een sleutel kluis gemaakt met de naam in de resource groep *keyvaultrg* :
+In het volgende voor beeld wordt een sleutel *kluis gemaakt* met de naam in de resource groep *keyvaultrg* :
 
 ```azurecli 
 az keyvault create --resource-group keyvaultrg --name keyvault \
@@ -116,7 +116,7 @@ Service-Principal maken:
 scope=`az group show --name openshiftrg --query id`
 az ad sp create-for-rbac --name openshiftsp \
       --role Contributor --password {Strong Password} \
-      --scopes $scope
+      --scopes $scope \
 ```
 Als u Windows gebruikt, voert ```az group show --name openshiftrg --query id``` u uit en gebruikt u de uitvoer in plaats van $scope.
 

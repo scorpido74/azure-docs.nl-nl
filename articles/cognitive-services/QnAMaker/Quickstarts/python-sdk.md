@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 08/09/2019
+ms.date: 09/21/2019
 ms.author: diberry
-ms.openlocfilehash: 57407846ba2b1a71ceb91678c3ec4587d99814ad
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 90712012f904f7b098af01433fee4a97ee8f2160
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68947469"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71203772"
 ---
 # <a name="quickstart-qna-maker-client-library-for-python"></a>Quickstart: Client bibliotheek voor python QnA Maker
 
@@ -96,7 +96,7 @@ Maak vervolgens een CognitiveServicesCredentials-object met uw sleutel en gebrui
 
 ## <a name="create-a-knowledge-base"></a>Een kennisdatabase maken
 
- Gebruik het client object om een [Knowledge Base](https://docs.microsoft.com/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.operations.knowledgebaseoperations?view=azure-python) -bewerkings object op te halen.
+ Gebruik het client object om een [Knowledge Base-bewerkings](https://docs.microsoft.com/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.operations.knowledgebaseoperations?view=azure-python) object op te halen.
 
 In een Knowledge Base worden vraag-en antwoord paren voor het [CreateKbDTO](https://docs.microsoft.com/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.models.createkbdto?view=azure-python) -object uit drie bronnen opgeslagen:
 
@@ -108,12 +108,15 @@ Roep de [Create](https://docs.microsoft.com/python/api/azure-cognitiveservices-k
 
 [!code-python[Create a knowledge base](~/samples-qnamaker-python/documentation-samples/quickstarts/knowledgebase_quickstart/knowledgebase_quickstart.py?name=createkb&highlight=15)]
 
+Zorg ervoor dat u de [`_monitor_operation`](#get-status-of-an-operation) functie include gebruikt, waarnaar wordt verwezen in de bovenstaande code om een Knowledge Base te kunnen maken. 
 
 ## <a name="update-a-knowledge-base"></a>Een kennisdatabase bijwerken
 
 U kunt een Knowledge Base bijwerken door door te geven in de Knowledge Base-ID en een [UpdateKbOperationDTO](https://docs.microsoft.com/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.models.updatekboperationdto?view=azure-python) met DTO-objecten [toevoegen](https://docs.microsoft.com/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.models.updatekboperationdtoadd?view=azure-python), [bijwerken](https://docs.microsoft.com/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.models.updatekboperationdtoupdate?view=azure-python)en [verwijderen](https://docs.microsoft.com/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.models.updatekboperationdtodelete?view=azure-python) voor de [Update](https://docs.microsoft.com/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.operations.knowledgebaseoperations?view=azure-python#update-kb-id--update-kb--custom-headers-none--raw-false----operation-config-) methode. Gebruik de methode [Operation. getDetail](#get-status-of-an-operation) om te bepalen of de update is geslaagd.
 
 [!code-python[Update a knowledge base](~/samples-qnamaker-python/documentation-samples/quickstarts/knowledgebase_quickstart/knowledgebase_quickstart.py?name=updatekb&highlight=2)]
+
+Zorg ervoor dat u de [`_monitor_operation`](#get-status-of-an-operation) functie include gebruikt, waarnaar wordt verwezen in de bovenstaande code om een Knowledge Base te kunnen bijwerken. 
 
 ## <a name="publish-a-knowledge-base"></a>Een kennisdatabase publiceren
 
@@ -145,6 +148,8 @@ De _setTimeout_ -aanroep in het volgende code blok wordt gebruikt voor het simul
 
 Voer de toepassing uit `python knowledgebase_quickstart.py` met de opdracht uit de toepassingsmap.
 
+Alle code fragmenten in dit artikel zijn [beschikbaar](https://github.com/Azure-Samples/cognitive-services-qnamaker-python/blob/master/documentation-samples/quickstarts/knowledgebase_quickstart/knowledgebase_quickstart.py) en kunnen als één bestand worden uitgevoerd. 
+
 ```console
 python knowledgebase_quickstart.py
 ```
@@ -164,4 +169,3 @@ Als u een Cognitive Services-abonnement wilt opschonen en verwijderen, kunt u de
 * [Wat is de QnA Maker-API?](../Overview/overview.md)
 * [Een kennisdatabase bewerken](../how-to/edit-knowledge-base.md)
 * [Gebruiks analyse ophalen](../how-to/get-analytics-knowledge-base.md)
-* De broncode voor dit voorbeeld is te vinden op [GitHub](https://github.com/Azure-Samples/cognitive-services-qnamaker-python/blob/master/documentation-samples/quickstarts/knowledgebase_quickstart/knowledgebase_quickstart.py).

@@ -7,12 +7,12 @@ ms.subservice: data-science-vm
 ms.author: gopalv
 ms.date: 09/11/2019
 ms.topic: reference
-ms.openlocfilehash: 8ed083ad39c3ace3a0f66a61936974b462ed418f
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: be4397de477891f2a698c9f7dcb131da79479529
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71174693"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71200011"
 ---
 # <a name="reference-windows-data-science-virtual-machine"></a>Referentie: Windows Data Science Virtual Machine
 
@@ -132,4 +132,6 @@ U kunt het [installatie programma van het micro soft-webplatform](https://www.mi
 > [!NOTE]
 > Op de Windows Server 2012-versie van de DSVM en de Windows Server 2016 Edition vóór maart 2018 is de standaard Anaconda-omgeving python 2,7. De secundaire omgeving is python 3,5, te vinden op C:\Anaconda\envs\py35.
 
+## <a name="next-steps"></a>Volgende stappen
 
+Hebt u nog meer vragen? Overweeg een [ondersteunings ticket](https://azure.microsoft.com/support/create-ticket/)te maken.

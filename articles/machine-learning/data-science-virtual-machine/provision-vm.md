@@ -7,12 +7,12 @@ author: gvashishtha
 ms.author: gopalv
 ms.topic: quickstart
 ms.date: 09/10/2019
-ms.openlocfilehash: f543db0240d59cf99f3bd793e059b7985f1ffe22
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: e08287fec79ec634d6e2353328854e19565533ca
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71170655"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71204071"
 ---
 # <a name="quickstart-set-up-the-data-science-virtual-machine-for-windows"></a>Quickstart: De Data Science Virtual Machine instellen voor Windows
 
@@ -28,10 +28,12 @@ Een DSVM-exemplaar maken:
 
 1. Ga naar de [Azure Portal](https://portal.azure.com) u wordt mogelijk gevraagd om u aan te melden bij uw Azure-account als u nog niet bent aangemeld.
 1. Zoek de vermelding van de virtuele machine door in ' data Science virtual machine ' te typen en Data Science Virtual Machine-Windows 2016 te selecteren.
+
     ![Windows VM-vermelding](./media/provision-vm/search-windows.png)
+
 1. Selecteer de knop **maken** onderaan.
 
-   ![De lijst met virtuele machines op de Azure Portal, met de knop maken](./media/provision-vm/create-windows.png)
+    [![](media/provision-vm/create-windows.png "Knop voor het maken van een Windows-computer")](media/provision-vm/create-windows-expanded.png#lightbox)
 
 1. U moet worden omgeleid naar de Blade een virtuele machine maken.
    ![Tabblad basis informatie dat overeenkomt met Windows virtual machine](./media/provision-vm/review-create-windows.png)

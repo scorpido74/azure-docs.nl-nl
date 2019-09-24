@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: overview
 ms.date: 09/19/2019
 ms.author: diberry
-ms.openlocfilehash: ee17e204082389db19e1ebe463352a40d7ecd5ae
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: e2af5cb193653736a0d75b4194e09d42282d2fa6
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71155242"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71203785"
 ---
 # <a name="what-is-personalizer"></a>Wat is Personalizer?
 
@@ -53,7 +53,7 @@ Uw client toepassing kan bijvoorbeeld persoonlijker toevoegen aan:
 * Kies een reactie op een chat-bot om de gebruikers intentie te verduidelijken of om een actie te suggereren.
 * Volg prioriteiten voor suggesties van wat een gebruiker moet doen als de volgende stap in een bedrijfs proces.
 
-Personaler is geen service voor het persistent maken en beheren van gebruikers profiel gegevens, of voor het vastleggen van de voor keuren of geschiedenis van afzonderlijke gebruikers. Personaler leert van de functies van elke interactie in de actie een context voor één model dat maximale beloningen kan verkrijgen wanneer vergelijk bare functies optreden. 
+Personaler is geen service voor het persistent maken en beheren van gebruikers profiel gegevens, of voor het vastleggen van de voor keuren of geschiedenis van afzonderlijke gebruikers. Personaler leert van de functies van elke interactie in de actie van een context in één model dat maximale beloningen kan verkrijgen wanneer vergelijk bare functies optreden. 
 
 ## <a name="personalization-for-developers"></a>Personalisatie voor ontwikkel aars
 

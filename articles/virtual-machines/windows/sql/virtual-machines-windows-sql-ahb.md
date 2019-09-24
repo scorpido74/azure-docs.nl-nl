@@ -6,20 +6,20 @@ documentationcenter: na
 author: MashaMSFT
 manager: jroth
 tags: azure-resource-manager
-ms.assetid: aa5bf144-37a3-4781-892d-e0e300913d03
 ms.service: virtual-machines-sql
-ms.topic: article
+ms.devlang: na
+ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/05/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 2cce369f6a0670790ede7367609f87c18672ddd5
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 5d740224adb15dc2d772689d77ab1c510532c901
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100620"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71203995"
 ---
 # <a name="change-the-license-model-for-a-sql-server-virtual-machine-in-azure"></a>Het licentie model voor een SQL Server virtuele machine in azure wijzigen
 In dit artikel wordt beschreven hoe u het licentie model voor een SQL Server virtuele machine (VM) in azure wijzigt met behulp van de nieuwe SQL VM-resource provider **micro soft. SqlVirtualMachine**.
@@ -39,7 +39,7 @@ Om het gebruik van Azure Hybrid Benefit voor SQL Server op een virtuele Azure-ma
 - Richt een virtuele machine in met behulp van een betalen naar gebruik-SQL Server installatie kopie van Azure Marketplace en activeer Azure Hybrid Benefit.
 - Installeer SQL Server zelf op een virtuele machine van Azure, [Registreer de SQL Server-VM](virtual-machines-windows-sql-register-with-resource-provider.md)hand matig en activeer Azure Hybrid Benefit.
 
-Het licentie type van SQL Server wordt ingesteld wanneer de virtuele machine wordt ingericht. U kunt deze later op elk gewenst moment wijzigen. Als u overschakelt tussen licentie modellen, wordt geen downtime gestart, wordt de VM niet opnieuw opgestart, worden er geen extra kosten in rekening gebracht en direct van kracht. Het activeren van Azure Hybrid Benefit verlaagt de kosten.
+Het licentie type van SQL Server wordt ingesteld wanneer de virtuele machine wordt ingericht. U kunt deze later op elk gewenst moment wijzigen. Als u overschakelt tussen licentie modellen, wordt geen downtime gestart, wordt de VM niet opnieuw opgestart, worden er geen extra kosten in rekening gebracht en direct van kracht. Het activeren van Azure Hybrid Benefit *verlaagt* de kosten.
 
 ## <a name="prerequisites"></a>Vereisten
 

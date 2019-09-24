@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: sngun
-ms.openlocfilehash: bdf81eb447596c8f580809eed99004186a81eacf
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 9a758ce56356da21fc94f426d575a55f7dc762a0
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70065920"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71200316"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Tips voor betere prestaties voor Azure Cosmos DB en .NET
 
@@ -32,16 +32,15 @@ Als u daarom vraagt hoe u de prestaties van mijn Data Base kunt verbeteren? Houd
 
     Hoe een client verbinding maakt met Azure Cosmos DB heeft belang rijke gevolgen voor de prestaties, met name in de waargenomen latentie aan de client zijde. Er zijn twee belang rijke configuratie-instellingen beschikbaar voor het configureren van het beleid voor client verbindingen: de verbindings *modus* en het verbindings *protocol*.  De twee beschik bare modi zijn:
 
-   * Gateway modus (standaard)
+   * Gateway modus
       
-     De gateway modus wordt op alle SDK-platforms ondersteund en is de geconfigureerde standaard waarde. Als uw toepassing wordt uitgevoerd in een bedrijfs netwerk met strikte firewall beperkingen, is de gateway modus de beste keuze, omdat deze gebruikmaakt van de standaard HTTPS-poort en een enkel eind punt. De verhoudingen van de prestaties zijn echter wel dat de gateway modus een extra netwerk-hop omvat elke keer dat gegevens worden gelezen of geschreven naar Azure Cosmos DB. Als gevolg hiervan biedt de directe modus betere prestaties vanwege minder netwerk-hops. De modus gateway verbinding wordt ook aanbevolen wanneer u toepassingen uitvoert in omgevingen met een beperkt aantal socket verbindingen, bijvoorbeeld wanneer u Azure Functions gebruikt of als u een verbruiks abonnement hebt. 
+     De gateway modus wordt op alle SDK-platforms ondersteund en is de geconfigureerde standaard instelling voor de [SDK van micro soft. Azure. DocumentDB](sql-api-sdk-dotnet.md). Als uw toepassing wordt uitgevoerd in een bedrijfs netwerk met strikte firewall beperkingen, is de gateway modus de beste keuze, omdat deze gebruikmaakt van de standaard HTTPS-poort en een enkel eind punt. De verhoudingen van de prestaties zijn echter wel dat de gateway modus een extra netwerk-hop omvat elke keer dat gegevens worden gelezen of geschreven naar Azure Cosmos DB. Als gevolg hiervan biedt de directe modus betere prestaties vanwege minder netwerk-hops. De modus gateway verbinding wordt ook aanbevolen wanneer u toepassingen uitvoert in omgevingen met een beperkt aantal socket verbindingen. 
+
+     Wanneer u de SDK gebruikt in Azure Functions, met name in het [verbruiks abonnement](../azure-functions/functions-scale.md#consumption-plan), moet u mindful van de huidige [limieten in verbindingen](../azure-functions/manage-connections.md). In dat geval kan de gateway modus worden aanbevolen als u ook werkt met andere HTTP-clients binnen uw Azure Functions-toepassing.
 
    * Directe modus
 
-     Directe modus ondersteunt verbindingen via TCP-en HTTPS-protocollen. Als u de nieuwste versie van .NET SDK gebruikt, wordt de modus voor directe connectiviteit ondersteund in .NET Standard 2,0 en .NET Framework. Wanneer u de directe modus gebruikt, zijn er twee protocol opties beschikbaar:
-
-     * TCP
-     * HTTPS
+     Directe modus ondersteunt verbindingen via TCP-en HTTPS-protocollen en is de standaard connectiviteits modus als u [micro soft. Azure. Cosmos/.net v3 SDK](sql-api-sdk-dotnet-standard.md)gebruikt.
 
      Bij gebruik van de gateway modus maakt Cosmos DB gebruik van poort 443 en poorten 10250, 10255 en 10256 wanneer u de API van Azure Cosmos DB gebruikt voor MongoDB. De 10250-poort is gekoppeld aan een standaard MongoDB-instantie zonder geo-replicatie en 10255/10256-poorten zijn gekoppeld aan het MongoDB-exemplaar met geo-replicatie functionaliteit. Wanneer u TCP in directe modus gebruikt, moet u, naast de gateway poorten, ervoor zorgen dat het poort bereik tussen 10000 en 20000 open is, omdat Azure Cosmos DB dynamische TCP-poorten gebruikt. Als deze poorten niet zijn geopend en u TCP probeert te gebruiken, ontvangt u een fout melding dat de 503-Service niet beschikbaar is. De volgende tabel toont de connectiviteits modi die beschikbaar zijn voor verschillende Api's en de gebruiker van de service poorten voor elke API:
 
@@ -53,7 +52,20 @@ Als u daarom vraagt hoe u de prestaties van mijn Data Base kunt verbeteren? Houd
 
      Azure Cosmos DB biedt een eenvoudig en open REST-programmeer model via HTTPS. Daarnaast biedt het een efficiënt TCP-protocol, dat ook wordt doorzocht in het communicatie model en dat beschikbaar is via de .NET-client-SDK. Zowel directe TCP als HTTPS gebruiken SSL voor initiële verificatie en het versleutelen van verkeer. Gebruik, indien mogelijk, het TCP-protocol voor de beste prestaties.
 
-     De connectiviteits modus wordt geconfigureerd tijdens de constructie van het DocumentClient-exemplaar met de para meter Connection Policy. Als de directe modus wordt gebruikt, kan het protocol ook worden ingesteld binnen de para meter Connection Policy.
+     Voor SDK V3 wordt de connectiviteits modus geconfigureerd tijdens het maken van het CosmosClient-exemplaar als onderdeel van de CosmosClientOptions.
+
+     ```csharp
+     var serviceEndpoint = new Uri("https://contoso.documents.net");
+     var authKey = "your authKey from the Azure portal";
+     CosmosClient client = new CosmosClient(serviceEndpoint, authKey,
+     new CosmosClientOptions
+     {
+        ConnectionMode = ConnectionMode.Direct,
+        ConnectionProtocol = Protocol.Tcp
+     });
+     ```
+
+     Voor de micro soft. Azure. DocumentDB SDK wordt de connectiviteits modus geconfigureerd tijdens de constructie van het DocumentClient-exemplaar met de para meter Connection Policy. Als de directe modus wordt gebruikt, kan het protocol ook worden ingesteld binnen de para meter Connection Policy.
 
      ```csharp
      var serviceEndpoint = new Uri("https://contoso.documents.net");
@@ -72,9 +84,13 @@ Als u daarom vraagt hoe u de prestaties van mijn Data Base kunt verbeteren? Houd
 
 2. **Open async aanroepen om opstart latentie bij eerste aanvraag te voor komen**
 
-    De eerste aanvraag heeft standaard een hogere latentie omdat de routerings tabel van het adres moet worden opgehaald. Als u wilt voor komen dat deze opstart latentie bij de eerste aanvraag, moet u tijdens de initialisatie als volgt openasync () aanroepen.
+    De eerste aanvraag heeft standaard een hogere latentie omdat de routerings tabel van het adres moet worden opgehaald. Wanneer u de [SDK v2](sql-api-sdk-dotnet.md)gebruikt om deze opstart latentie bij de eerste aanvraag te vermijden, moet u openasync () eenmaal tijdens de initialisatie aanroepen als volgt.
 
         await client.OpenAsync();
+
+    > [!NOTE] 
+    > Bij de methode openasync worden aanvragen gegenereerd voor het verkrijgen van de routerings tabel van het adres voor alle containers in het account. Voor accounts met veel containers, maar de toepassing daarvan een subset hiervan, zou er een onnodige hoeveelheid verkeer worden gegenereerd waardoor de initialisatie traag wordt. Het is dus mogelijk dat de methode openasync niet nuttig is in dit scenario, omdat het opstarten van toepassingen wordt vertraagd.
+
    <a id="same-region"></a>
 3. **Termijnen-clients in dezelfde Azure-regio voor prestaties**
 
@@ -95,15 +111,22 @@ Als u daarom vraagt hoe u de prestaties van mijn Data Base kunt verbeteren? Houd
 1. **De meest recente SDK installeren**
 
     De Azure Cosmos DB Sdk's worden voortdurend verbeterd om de beste prestaties te leveren. Raadpleeg de [Azure Cosmos DB SDK](sql-api-sdk-dotnet-standard.md) -pagina's om de meest recente SDK te bepalen en verbeteringen te bekijken.
-2. **Een singleton Azure Cosmos DB-client gebruiken voor de levens duur van uw toepassing**
 
-    Elk DocumentClient-exemplaar is thread-safe en voert efficiënt verbindings beheer en adres caching uit wanneer deze in de directe modus worden uitgevoerd. Om het beheer van efficiënte verbindingen en betere prestaties door DocumentClient mogelijk te maken, is het raadzaam één exemplaar van DocumentClient per AppDomain te gebruiken voor de levens duur van de toepassing.
+2. **Stream-Api's gebruiken**
+
+    De [.NET SDK v3](sql-api-sdk-dotnet-standard.md) bevat stream-api's die gegevens kunnen ontvangen en retour neren zonder serialisatie. 
+
+    De toepassingen in de middelste laag die niet rechtstreeks gebruikmaken van de reacties van de SDK, maar door sturen naar andere toepassings lagen, kunnen profiteren van de stream-Api's. Zie de voor beelden van [artikel beheer](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/ItemManagement) voor voor beeld van stroom verwerking.
+
+3. **Een singleton Azure Cosmos DB-client gebruiken voor de levens duur van uw toepassing**
+
+    Elk DocumentClient-en CosmosClient-exemplaar is thread-safe en voert efficiënt verbindings beheer en adres caching uit wanneer deze in de directe modus worden uitgevoerd. Als u efficiënt verbindings beheer en betere prestaties wilt toestaan door de SDK-client, wordt u aangeraden één exemplaar per AppDomain te gebruiken voor de levens duur van de toepassing.
 
    <a id="max-connection"></a>
-3. **System.Net MaxConnections per host verg Roten met de gateway modus**
+4. **System.Net MaxConnections per host verg Roten met de gateway modus**
 
     Azure Cosmos DB aanvragen worden gedaan via HTTPS/REST wanneer de gateway modus wordt gebruikt, en deze worden onderhevig aan de standaard verbindings limiet per hostnaam of IP-adres. Mogelijk moet u het MaxConnections instellen op een hogere waarde (100-1000) zodat de client bibliotheek meerdere gelijktijdige verbindingen met Azure Cosmos DB kan gebruiken. In de .NET SDK 1.8.0 en hoger is de standaard waarde voor [ServicePointManager. DefaultConnectionLimit](https://msdn.microsoft.com/library/system.net.servicepointmanager.defaultconnectionlimit.aspx) 50 en u kunt de waarde wijzigen door de [documenten. client. Connection Policy. MaxConnectionLimit](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.connectionpolicy.maxconnectionlimit.aspx) in te stellen op een hogere waarde.   
-4. **Parallelle query's voor gepartitioneerde verzamelingen afstemmen**
+5. **Parallelle query's voor gepartitioneerde verzamelingen afstemmen**
 
      De SQL .NET SDK-versie 1.9.0 en hoger ondersteunen parallelle query's, waarmee u een gepartitioneerde verzameling parallel kunt doorzoeken. Zie [code voorbeelden](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/Queries/Program.cs) met betrekking tot het werken met de sdk's voor meer informatie. Parallelle query's zijn ontworpen om de latentie en door Voer van query's te verbeteren ten opzichte van hun serieel equivalent. Parallelle query's bieden twee para meters die gebruikers kunnen afstemmen op hun vereisten, (a) MaxDegreeOfParallelism: om het maximum aantal partities te beheren, kan een query parallel worden uitgevoerd en (b) MaxBufferedItemCount: om het aantal vooraf opgehaalde resultaten.
 
@@ -114,10 +137,10 @@ Als u daarom vraagt hoe u de prestaties van mijn Data Base kunt verbeteren? Houd
     (b) de parallelle query ***tuning MaxBufferedItemCount\:***  is ontworpen om de resultaten vooraf op te halen terwijl de huidige batch met resultaten door de client wordt verwerkt. Het vooraf ophalen helpt bij de algehele latentie verbetering van een query. MaxBufferedItemCount is de para meter om het aantal vooraf opgehaalde resultaten te beperken. Als u MaxBufferedItemCount instelt op het verwachte aantal geretourneerde resultaten (of een hoger getal), kan de query het maximale voor deel ontvangen van vooraf ophalen.
 
     Het vooraf ophalen van werkt op dezelfde manier, onafhankelijk van de MaxDegreeOfParallelism en er is één buffer voor de gegevens van alle partities.  
-5. **GC aan server zijde inschakelen**
+6. **GC aan server zijde inschakelen**
 
     Het verminderen van de frequentie van garbagecollection kan in sommige gevallen helpen. Stel in .NET [gcServer](https://msdn.microsoft.com/library/ms229357.aspx) in op waar.
-6. **Uitstel implementeren met RetryAfter-intervallen**
+7. **Uitstel implementeren met RetryAfter-intervallen**
 
     Tijdens prestatie tests moet u de belasting verg Roten tot een klein aantal aanvragen wordt beperkt. Als deze beperking is ingesteld, moet de client toepassing uitstel op een vertraging voor het door de server opgegeven interval voor nieuwe pogingen. Door de uitstel te respecteren, zorgt u ervoor dat u de minimale hoeveelheid tijd die wacht tussen nieuwe pogingen. Ondersteuning voor het beleid voor opnieuw proberen is opgenomen in versie 1.8.0 en hoger van de SQL [.net](sql-api-sdk-dotnet.md) en [Java](sql-api-sdk-java.md), versie 1.9.0 en hoger van het [node. js](sql-api-sdk-node.md) en [python](sql-api-sdk-python.md), en alle ondersteunde versies van de [.net core](sql-api-sdk-dotnet-core.md) sdk's. Voor meer informatie, [RetryAfter](https://msdn.microsoft.com/library/microsoft.azure.documents.documentclientexception.retryafter.aspx).
     
@@ -127,15 +150,15 @@ Als u daarom vraagt hoe u de prestaties van mijn Data Base kunt verbeteren? Houd
     readDocument.RequestDiagnosticsString 
     ```
     
-7. **Uw client opschalen-workload**
+8. **Uw client opschalen-workload**
 
     Als u test met hoge doorvoer niveaus (> 50.000 RU/s), kan de client toepassing het knel punt worden als gevolg van de machine die op CPU-of netwerk gebruik uitvalt. Als u dit punt bereikt, kunt u het Azure Cosmos DB-account nog verder pushen door uw client toepassingen op meerdere servers te schalen.
-8. **Document-Uri's in cache opslaan voor minder lees latentie**
+9. **Document-Uri's in cache opslaan voor minder lees latentie**
 
     Cache waar mogelijk document-Uri's voor de beste Lees prestaties. U moet de logica definiëren om de ResourceID bij het maken van de resource op te slaan in de cache. Zoek opdrachten op basis van ResourceID zijn sneller dan zoek acties op basis van een naam, zodat de prestaties worden verbeterd in de cache. 
 
    <a id="tune-page-size"></a>
-1. **De pagina grootte voor query's/feeds voor betere prestaties afstemmen**
+10. **De pagina grootte voor query's/feeds voor betere prestaties afstemmen**
 
    Bij het uitvoeren van een bulk Lees bewerking van documenten met behulp van de functie voor lees bewerkingen (bijvoorbeeld ReadDocumentFeedAsync) of bij het uitgeven van een SQL-query, worden de resultaten op een gesegmenteerde manier geretourneerd als de resultatenset te groot is. Standaard worden resultaten geretourneerd in delen van 100 items of 1 MB, waarbij de limiet eerst wordt bereikt.
 
@@ -144,7 +167,7 @@ Als u daarom vraagt hoe u de prestaties van mijn Data Base kunt verbeteren? Houd
    > [!NOTE] 
    > De eigenschap maxItemCount mag niet alleen worden gebruikt voor het pagineren. Het is de belangrijkste manier om de prestaties van query's te verbeteren door het maximum aantal geretourneerde items op één pagina te verminderen.  
 
-   U kunt ook de pagina grootte instellen met behulp van de beschik bare Azure Cosmos DB Sdk's. Met de eigenschap [MaxItemCount](/dotnet/api/microsoft.azure.documents.client.feedoptions.maxitemcount?view=azure-dotnet) in FeedOptions kunt u het maximum aantal items instellen dat in de enmuration-bewerking moet worden geretourneerd. Wanneer `maxItemCount` is ingesteld op-1, zoekt de SDK automatisch de meest optimale waarde, afhankelijk van de grootte van het document. Bijvoorbeeld:
+   U kunt ook de pagina grootte instellen met behulp van de beschik bare Azure Cosmos DB Sdk's. Met de eigenschap [MaxItemCount](/dotnet/api/microsoft.azure.documents.client.feedoptions.maxitemcount?view=azure-dotnet) in FeedOptions kunt u het maximum aantal items instellen dat in de opsommings bewerking moet worden geretourneerd. Wanneer `maxItemCount` is ingesteld op-1, zoekt de SDK automatisch de meest optimale waarde, afhankelijk van de grootte van het document. Bijvoorbeeld:
     
    ```csharp
     IQueryable<dynamic> authorResults = client.CreateDocumentQuery(documentCollection.SelfLink, "SELECT p.Author FROM Pages p WHERE p.Title = 'About Seattle'", new FeedOptions { MaxItemCount = 1000 });
@@ -152,17 +175,17 @@ Als u daarom vraagt hoe u de prestaties van mijn Data Base kunt verbeteren? Houd
     
    Wanneer een query wordt uitgevoerd, worden de resulterende gegevens verzonden binnen een TCP-pakket. Als u een te lage waarde opgeeft `maxItemCount`voor, is het aantal benodigde reizen voor het verzenden van de gegevens in het TCP-pakket hoog, wat van invloed is op de prestaties. Als u niet zeker weet welke waarde voor `maxItemCount` eigenschap moet worden ingesteld, kunt u deze het beste instellen op-1 en de SDK de standaard waarde laten kiezen. 
 
-10. **Aantal threads/taken verhogen**
+11. **Aantal threads/taken verhogen**
 
     Zie het [aantal threads/taken](#increase-threads) in de sectie netwerken verg Roten.
 
-11. **64-bits host verwerking gebruiken**
+12. **64-bits host verwerking gebruiken**
 
     De SQL-SDK werkt in een 32-bits hostproces wanneer u SQL .NET SDK versie 1.11.4 en hoger gebruikt. Als u echter query's voor meerdere partities gebruikt, wordt de verwerking van 64-bits host aanbevolen voor betere prestaties. De volgende typen toepassingen hebben een 32-bits hostproces als standaard, dus als u deze wilt wijzigen in 64-bits, voert u deze stappen uit op basis van het type van uw toepassing:
 
     - Voor uitvoer bare toepassingen kunt u dit doen door de optie **32-bit** te selecteren in het venster **project eigenschappen** op het tabblad **opbouwen** .
 
-    - Voor op VSTest gebaseerde test projecten kunt u dit doen door test->**instellingen**->testen**standaard processor architectuur als x64**te selecteren in de menu optie van **Visual Studio test** .
+    - Voor op VSTest gebaseerde test projecten **kunt u dit**->doen door test**instellingen**->testen**standaard processor architectuur als x64**te selecteren in de menu optie van **Visual Studio test** .
 
     - Voor lokaal geïmplementeerde ASP.NET-webtoepassingen kunt u dit doen door de **64-bits versie van IIS Express voor websites en projecten**te controleren onder **extra**->**Opties**->**projecten en oplossingen** Webprojecten. ->
 

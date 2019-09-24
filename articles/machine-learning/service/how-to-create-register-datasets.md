@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 08/22/2019
-ms.openlocfilehash: 6c3a8d62bd6b3650f834540bd7bb13027792b091
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: d2b9e53fc6c58f0477e252c751e25a99bdbfba42
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71076968"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71200103"
 ---
 # <a name="create-and-access-datasets-preview-in-azure-machine-learning"></a>Gegevens sets (preview) maken en openen in Azure Machine Learning
 
@@ -47,7 +47,7 @@ Als u gegevens sets wilt maken en gebruiken, hebt u het volgende nodig:
 
 Gegevens sets worden onderverdeeld in twee typen, op basis van hoe gebruikers ze in de training gebruiken. 
 
-* [TabularDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) vertegenwoordigt gegevens in tabel vorm door het bestand of de lijst met bestanden te parseren. Dit biedt u de mogelijkheid om de gegevens te realiseren in een Panda data frame. U `TabularDataset` kunt een object maken op basis van CSV-, tsv-, Parquet-bestanden, SQL-query resultaten, enzovoort. Raadpleeg onze [documentatie](https://aka.ms/tabulardataset-api-reference)voor een volledige lijst.
+* [TabularDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) vertegenwoordigt gegevens in tabel vorm door het bestand of de lijst met bestanden te parseren. Dit biedt u de mogelijkheid om de gegevens te realiseren in een Panda of Spark data frame. U `TabularDataset` kunt een object maken op basis van CSV-, tsv-, Parquet-bestanden, SQL-query resultaten, enzovoort. Raadpleeg onze [documentatie](https://aka.ms/tabulardataset-api-reference)voor een volledige lijst.
 
 * [FileDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.file_dataset.filedataset?view=azure-ml-py) verwijst naar één of meer bestanden in uw gegevens opslag of open bare url's. Dit biedt u de mogelijkheid om de bestanden te downloaden of te koppelen aan uw compute. De bestanden kunnen uit elke indeling bestaan, waardoor een breder scala aan machine learning scenario's mogelijk is, waaronder diep gaande lessen.
 
@@ -110,6 +110,16 @@ titanic_ds.take(3).to_pandas_dataframe()
 1|2|1|1|Cumings, Mevr. John Bradley (Florence Briggs th...|vrouwelijk|38,0|1|0|PC 17599|71,2833|C85|C
 2|3|1|3|Heikkinen, missen. Laina|vrouwelijk|26,0|0|0|STON/O2. 3101282|7,9250||Z
 
+Gebruik de [`from_sql_query()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?view=azure-ml-py#from-sql-query-query--validate-true--set-column-types-none-) methode op `TabularDatasetFactory` de klasse om te lezen van Azure SQL database.
+
+```Python
+
+from azureml.core import Dataset, Datastore
+
+# create tabular dataset from a SQL database in datastore
+sql_datastore = Datastore.get(workspace, 'mssql')
+sql_ds = Dataset.Tabular.from_sql_query((sql_datastore, 'SELECT * FROM my_table'))
+```
 Gebruik de [`with_timestamp_columns()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#with-timestamp-columns-fine-grain-timestamp--coarse-grain-timestamp-none--validate-false-) methode voor `TabularDataset` de klasse om eenvoudig en efficiënt filteren op tijd in te scha kelen. [Hier](http://aka.ms/azureml-tsd-notebook)vindt u meer voor beelden en informatie. 
 
 ```Python
@@ -197,7 +207,7 @@ titanic_ds = titanic_ds.register(workspace = workspace,
 ```
 
 
-## <a name="access-your-data-during-training"></a>Toegang tot uw gegevens tijdens de training
+## <a name="access-datasets-in-your-script"></a>Toegang tot gegevens sets in uw script
 
 Geregistreerde gegevens sets zijn lokaal en extern toegankelijk op reken clusters, zoals de Azure Machine Learning compute. Als u toegang wilt krijgen tot uw geregistreerde gegevensset voor experimenten, gebruikt u de volgende code om uw werk ruimte en geregistreerde gegevensset op naam op te halen. De [`get_by_name()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#get-by-name-workspace--name--version--latest--) methode voor de `Dataset` klasse retourneert standaard de meest recente versie van de gegevensset die is geregistreerd bij de werk ruimte.
 
@@ -220,5 +230,6 @@ df = titanic_ds.to_pandas_dataframe()
 
 ## <a name="next-steps"></a>Volgende stappen
 
+* Meer informatie [over het trainen van gegevens sets](how-to-train-with-datasets.md)
 * Gebruik automatische machine learning om [met TabularDatasets te trainen](https://aka.ms/automl-dataset).
 * Voor meer voor beelden van training met gegevens sets raadpleegt u de [voorbeeld notitieblokken](https://aka.ms/dataset-tutorial).

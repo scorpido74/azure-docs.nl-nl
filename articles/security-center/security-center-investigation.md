@@ -3,9 +3,8 @@ title: Incidenten en waarschuwingen onderzoeken in Azure Security Center | Micro
 description: In dit document wordt uitgelegd hoe u de onderzoeksfunctie van Azure Security Center gebruikt voor het onderzoeken van beveiligingsincidenten en waarschuwingen.
 services: security-center
 documentationcenter: na
-author: rkarlin
-manager: barbkess
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: a8e894a9-8781-4749-ae8f-8c8e01658566
 ms.service: security-center
 ms.devlang: na
@@ -13,13 +12,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/29/2018
-ms.author: rkarlin
-ms.openlocfilehash: 476bdd50a56b953585a8a4e9cea05975c9922e0f
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.author: memildin
+ms.openlocfilehash: 32cc4b01d68ee7a15ae7cfa2259d234cbcd143c4
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68662959"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71202062"
 ---
 # <a name="investigate-incidents-and-alerts-in-azure-security-center-retired"></a>Incidenten en waarschuwingen onderzoeken in Azure Security Center (buiten gebruik gesteld)
 Dit document helpt u bij het gebruik van de functie voor onderzoek (preview) in Azure Security Center om beveiligings incidenten en-waarschuwingen te onderzoeken.
@@ -71,11 +70,11 @@ Het tabblad **Zoeken** bevat alle typen logboeken die beschikbaar zijn voor de e
 
 ![Search](./media/security-center-investigation/security-center-investigation-fig5.png)
 
-### <a name="exploration"></a>Verkennen
+### <a name="exploration"></a>Verkenning
 
 Via het tabblad **Verkennen** kan de onderzoeker gegevens onderzoeken die te maken hebben met verschillende aspecten van de entiteit. Als er bijvoorbeeld onderzoek wordt gedaan naar een computer, ziet u op dit tabblad een overzicht van de processen die op de computer zijn uitgevoerd. In sommige gevallen bevat het tabblad Verkennen gegevens die kunnen wijzen op een verdachte activiteit. De onderzoeker kan de gegevens bestuderen op het tabblad of openen in het zoekscherm om grote gegevenssets te onderzoeken en geavanceerde zoekopties te gebruiken zoals filteren en exporteren naar Excel.
 
-![Verkennen](./media/security-center-investigation/security-center-investigation-fig6.png)
+![Verkenning](./media/security-center-investigation/security-center-investigation-fig6.png)
 
 ### <a name="timeline"></a>Tijdlijn
 
