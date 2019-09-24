@@ -26,7 +26,7 @@
               href: tutorial-train-models-with-aml.md
             - name: 2. Een model implementeren
               href: tutorial-deploy-models-with-aml.md
-        - name: Regressie (gegevens over taxi's NYC)
+        - name: Regressie met geautomatiseerde ML (gegevens van taxi's in NYC)
           items:
             - name: Een ML-model automatisch trainen
               displayName: 'automl, automated, auto ml,'
@@ -44,7 +44,7 @@
         - name: 2. Regressiemodel implementeren
           displayName: studio
           href: ui-tutorial-automobile-price-deploy.md
-    - name: Geautomatiseerde Machine Learning
+    - name: Automatische ML (interface)
       items:
         - name: Classificatie (bankgegevens)
           displayName: 'automl, automated, auto ml, portal, ui'
@@ -107,13 +107,13 @@
         - name: Resource Manager-sjabloon gebruiken
           displayName: arm
           href: how-to-create-workspace-template.md
-    - name: De ontwikkelomgeving instellen
+    - name: Uw omgeving instellen
       items:
-        - name: Ontwikkelaaromgevingen configureren
+        - name: Ontwikkelomgevingen instellen
           displayName: 'local, remote, azure notebooks, notebook, Jupyter, dsvm, Databricks, ADB'
           href: how-to-configure-environment.md
-        - name: Softwareomgeving beheren
-          displayName: 'pip, Conda'
+        - name: Softwareomgevingen instellen
+          displayName: 'pip, Conda, anaconda'
           href: how-to-use-environments.md
         - name: Logboekregistratie inschakelen
           displayName: 'troubleshoot, log, files, tracing'
