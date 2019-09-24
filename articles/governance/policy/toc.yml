@@ -257,6 +257,12 @@
     - name: Inzicht in de effecten van het beleid
       displayName: 'order, evaluation'
       href: ./concepts/effects.md
+    - name: Azure Policy-toewijzingsstructuur
+      displayName: 'parameters, enforcementmode, policyDefinitionId'
+      href: ./concepts/assignment-structure.md
+    - name: De impact van een nieuw beleid evalueren
+      displayName: 'audit, enforcementmode, compliance'
+      href: ./concepts/evaluate-impact.md
     - name: Azure Policy voor Kubernetes
       displayName: 'aks, rego, k8s, opa, open policy agent, gatekeeper'
       href: ./concepts/rego-for-aks.md

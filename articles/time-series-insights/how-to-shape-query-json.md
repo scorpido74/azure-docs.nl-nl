@@ -92,16 +92,16 @@ Voor beeld van JSON-nettolading:
 
    | deviceId | messageId | deviceLocation |
    | --- | --- | --- |
-   | FXXX | LIJN\_DATA | EU |
-   | FYYY | LIJN\_DATA | US |
+   | FXXX | LINE\_DATA | EU |
+   | FYYY | LINE\_DATA | US |
 
 * Time Series Insights gebeurtenis tabel na afvlakking:
 
    | deviceId | messageId | deviceLocation | timestamp | reeks. Stroom tarief ft3/s | reeks. Engine oliedruk psi |
    | --- | --- | --- | --- | --- | --- |
-   | FXXX | LIJN\_DATA | EU | 2018-01-17T01:17:00Z | 1.0172575712203979 | 34,7 |
-   | FXXX | LIJN\_DATA | EU | 2018-01-17T01:17:00Z | 2.445906400680542 | 49,2 |
-   | FYYY | LIJN\_DATA | US | 2018-01-17T01:18:00Z | 0.58015072345733643 | 22.2 |
+   | FXXX | LINE\_DATA | EU | 2018-01-17T01:17:00Z | 1.0172575712203979 | 34,7 |
+   | FXXX | LINE\_DATA | EU | 2018-01-17T01:17:00Z | 2.445906400680542 | 49,2 |
+   | FYYY | LINE\_DATA | US | 2018-01-17T01:18:00Z | 0.58015072345733643 | 22.2 |
 
 Opmerkingen voor deze twee tabellen:
 
@@ -163,21 +163,21 @@ Voor beeld van JSON-nettolading:
 
    | deviceId | series.tagId | messageId | deviceLocation | type | eenheid |
    | --- | --- | --- | --- | --- | --- |
-   | FXXX | pumpRate | LIJN\_GEGEVENS | EU | Stroom verhouding | ft3/s |
-   | FXXX | oilPressure | LIJN\_GEGEVENS | EU | Olie druk van de motor | psi |
-   | FYYY | pumpRate | LIJN\_GEGEVENS | VS | Stroom verhouding | ft3/s |
-   | FYYY | oilPressure | LIJN\_GEGEVENS | VS | Olie druk van de motor | psi |
+   | FXXX | pumpRate | LINE\_DATA | EU | Stroom verhouding | ft3/s |
+   | FXXX | oilPressure | LINE\_DATA | EU | Olie druk van de motor | psi |
+   | FYYY | pumpRate | LINE\_DATA | US | Stroom verhouding | ft3/s |
+   | FYYY | oilPressure | LINE\_DATA | US | Olie druk van de motor | psi |
 
 * Time Series Insights gebeurtenis tabel na afvlakking:
 
    | deviceId | series.tagId | messageId | deviceLocation | type | eenheid | timestamp | reeks. waarde |
    | --- | --- | --- | --- | --- | --- | --- | --- |
-   | FXXX | pumpRate | LIJN\_GEGEVENS | EU | Stroom verhouding | ft3/s | 2018-01-17T01:17:00Z | 1.0172575712203979 | 
-   | FXXX | oilPressure | LIJN\_GEGEVENS | EU | Olie druk van de motor | psi | 2018-01-17T01:17:00Z | 34,7 |
-   | FXXX | pumpRate | LIJN\_GEGEVENS | EU | Stroom verhouding | ft3/s | 2018-01-17T01:17:00Z | 2.445906400680542 | 
-   | FXXX | oilPressure | LIJN\_GEGEVENS | EU | Olie druk van de motor | psi | 2018-01-17T01:17:00Z | 49,2 |
-   | FYYY | pumpRate | LIJN\_GEGEVENS | VS | Stroom verhouding | ft3/s | 2018-01-17T01:18:00Z | 0.58015072345733643 |
-   | FYYY | oilPressure | LIJN\_GEGEVENS | VS | Olie druk van de motor | psi | 2018-01-17T01:18:00Z | 22.2 |
+   | FXXX | pumpRate | LINE\_DATA | EU | Stroom verhouding | ft3/s | 2018-01-17T01:17:00Z | 1.0172575712203979 | 
+   | FXXX | oilPressure | LINE\_DATA | EU | Olie druk van de motor | psi | 2018-01-17T01:17:00Z | 34,7 |
+   | FXXX | pumpRate | LINE\_DATA | EU | Stroom verhouding | ft3/s | 2018-01-17T01:17:00Z | 2.445906400680542 | 
+   | FXXX | oilPressure | LINE\_DATA | EU | Olie druk van de motor | psi | 2018-01-17T01:17:00Z | 49,2 |
+   | FYYY | pumpRate | LINE\_DATA | US | Stroom verhouding | ft3/s | 2018-01-17T01:18:00Z | 0.58015072345733643 |
+   | FYYY | oilPressure | LINE\_DATA | US | Olie druk van de motor | psi | 2018-01-17T01:18:00Z | 22.2 |
 
 Opmerkingen voor deze twee tabellen:
 

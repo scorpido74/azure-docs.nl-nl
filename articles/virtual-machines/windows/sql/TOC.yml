@@ -36,6 +36,8 @@
           href: virtual-machines-windows-sql-automated-backup-v2.md
     - name: Beheer
       items:
+        - name: Toegewezen host
+          href: virtual-machines-windows-sql-dedicated-host.md
         - name: Met de Azure Portal
           href: virtual-machines-windows-sql-manage-portal.md
         - name: Ondersteuning voor SQL 2008 en R2 verlengen

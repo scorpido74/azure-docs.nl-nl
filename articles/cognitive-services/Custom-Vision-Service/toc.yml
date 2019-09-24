@@ -44,6 +44,8 @@
           href: go-tutorial-object-detection.md
 - name: Zelfstudies
   items:
+    - name: IoT Visual Alerts-app
+      href: iot-visual-alerts-tutorial.md
     - name: Logodetector voor mobiele toepassingen
       href: logo-detector-mobile.md
 - name: Handleidingen
