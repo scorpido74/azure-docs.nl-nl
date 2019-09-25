@@ -11,12 +11,12 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 08/2/2019
 ms.custom: seodec18
-ms.openlocfilehash: eaed6e7b0ea044ba39a1055ad14de13d5deb9b05
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: ecd1212385473e33d05f38f67db5708bff060daa
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71035298"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71218235"
 ---
 # <a name="access-data-in-azure-storage-services"></a>Toegang tot gegevens in azure Storage-services
 
@@ -147,7 +147,8 @@ De `target_path` para meter is de locatie van de lokale map waarnaar de gegevens
 <a name="train"></a>
 ## <a name="access-your-data-during-training"></a>Toegang tot uw gegevens tijdens de training
 
-Om toegang te krijgen tot gegevens tijdens de training kunt u uw gegevens van uw Azure Storage-services downloaden naar of koppelen aan het reken doel via gegevens opslag.
+> [!IMPORTANT]
+> Het gebruik van [Azure machine learning gegevens sets (preview)](how-to-create-register-datasets.md) is de nieuwe aanbevolen manier om toegang te krijgen tot uw gegevens in training. Gegevens sets bieden functies waarmee tabellaire gegevens worden geladen in Panda-of Spark-data frame en de mogelijkheid om bestanden te downloaden of te koppelen van een wille keurige indeling vanuit Azure Blob, Azure file, Azure Data Lake gen 1, Azure Data Lake gen 2, Azure SQL, Azure PostgreSQL. Meer informatie over [het trainen van gegevens sets](how-to-train-with-datasets.md).
 
 De volgende tabel bevat de methoden die het reken doel vertellen hoe de gegevens opslag worden gebruikt tijdens de uitvoering. 
 

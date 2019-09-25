@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/23/2019
 ms.reviewer: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 20ca823f60ced4260c2e61ca15ae04e158b7d952
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: f50f1b3e2ee7f98d14d29f1e2205a97d76eaacc8
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69615672"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71219904"
 ---
 # <a name="change-feed-in-azure-cosmos-db---overview"></a>Feed wijzigen in Azure Cosmos DB-overzicht
 
@@ -42,7 +42,7 @@ Deze functie wordt momenteel ondersteund door de volgende Azure Cosmos DB-API's 
 
 ## <a name="change-feed-and-different-operations"></a>Feed wijzigen en verschillende bewerkingen
 
-Vandaag, ziet u alle bewerkingen in de feed wijzigen. De functionaliteit van waar u kunt bepalen wijzigen feed voor bepaalde bewerkingen, zoals alleen updates en niet voegt nog niet beschikbaar is. U kunt een 'soft 'markering toevoegen op het item voor updates en filteren op basis van die bij het verwerken van items in de feed wijzigen. Op dit moment Meld niet worden verwijderd u wijzigingenfeed. Net als bij het vorige voorbeeld, kunt u een voorlopig markering toevoegen op de items die worden verwijderd, bijvoorbeeld, u kunt een kenmerk toevoegen in het item met de naam 'verwijderd' en stel deze in op 'true' en een TTL-waarde ingesteld op het item, zodat deze kan automatisch worden verwijderd. U kunt lezen om dat de wijziging feed voor historische items, bijvoorbeeld items die vijf jaar geleden zijn toegevoegd. Als het item is niet verwijderd. u kunt de wijziging lezen feed zo de oorsprong van de container.
+Vandaag, ziet u alle bewerkingen in de feed wijzigen. De functionaliteit van waar u kunt bepalen wijzigen feed voor bepaalde bewerkingen, zoals alleen updates en niet voegt nog niet beschikbaar is. U kunt een 'soft 'markering toevoegen op het item voor updates en filteren op basis van die bij het verwerken van items in de feed wijzigen. Op dit moment Meld niet worden verwijderd u wijzigingenfeed. Net als bij het vorige voorbeeld, kunt u een voorlopig markering toevoegen op de items die worden verwijderd, bijvoorbeeld, u kunt een kenmerk toevoegen in het item met de naam 'verwijderd' en stel deze in op 'true' en een TTL-waarde ingesteld op het item, zodat deze kan automatisch worden verwijderd. U kunt de wijzigings feed voor historische items lezen (de meest recente wijziging die overeenkomt met het item, het bevat geen tussenliggende wijzigingen), bijvoorbeeld items die vijf jaar geleden zijn toegevoegd. Als het item is niet verwijderd. u kunt de wijziging lezen feed zo de oorsprong van de container.
 
 ### <a name="sort-order-of-items-in-change-feed"></a>Sorteervolgorde van de items in de feed wijzigen
 

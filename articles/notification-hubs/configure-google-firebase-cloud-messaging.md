@@ -1,38 +1,40 @@
 ---
-title: Configureren van Google Firebase Cloud Messaging in Azure Notification Hubs | Microsoft Docs
-description: Leer hoe u een Azure notification hub configureren met instellingen voor Google Firebase Cloud Messaging.
+title: Google Firebase Cloud Messa ging configureren in azure Notification Hubs | Microsoft Docs
+description: Meer informatie over het configureren van een Azure notification hub met Google Firebase Cloud Messa ging-instellingen.
 services: notification-hubs
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.service: notification-hubs
 ms.workload: mobile
 ms.topic: article
 ms.date: 03/25/2019
-ms.author: jowargo
-ms.openlocfilehash: d200f5746d5f7c62ff3a52873d5d5d6c3e1322dc
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 03/25/2019
+ms.openlocfilehash: 803289476d4d8869f7828b2843a983ee0c86bfbd
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60239188"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212495"
 ---
-# <a name="configure-google-firebase-cloud-messaging-fcm-settings-for-a-notification-hub-in-the-azure-portal"></a>Instellingen voor Google Firebase Cloud Messaging (FCM) voor een notification hub configureren in Azure portal
-In dit artikel wordt beschreven hoe u instellingen voor Google Firebase Cloud Messaging (FCM) voor een Azure notification hub configureren met behulp van de Azure-portal.  
+# <a name="configure-google-firebase-cloud-messaging-fcm-settings-for-a-notification-hub-in-the-azure-portal"></a>Configureer instellingen voor Google Firebase Cloud Messa ging (FCM) voor een notification hub in de Azure Portal
+In dit artikel wordt beschreven hoe u de instellingen voor Google Firebase Cloud Messa ging (FCM) configureert voor een Azure notification hub met behulp van de Azure Portal.  
 
 ## <a name="prerequisites"></a>Vereisten
-Als u al een notification hub hebt gemaakt, moet u een nu maken. Zie voor meer informatie, [een Azure notification hub maken in Azure portal](create-notification-hub-portal.md). 
+Als u nog geen notification hub hebt gemaakt, maakt u er nu een. Zie [een Azure notification hub maken in de Azure Portal](create-notification-hub-portal.md)voor meer informatie. 
 
-## <a name="configure-google-firebase-cloud-messaging-fcm"></a>Google Firebase Cloud Messaging (FCM) configureren
+## <a name="configure-google-firebase-cloud-messaging-fcm"></a>Google Firebase Cloud Messa ging (FCM) configureren
 
-De volgende procedure bevat stappen voor het configureren van instellingen voor Google Firebase Cloud Messaging (FCM) voor een notification hub: 
+De volgende procedure bevat stappen voor het configureren van instellingen voor Google Firebase Cloud Messa ging (FCM) voor een notification hub: 
 
-1. In de Azure-portal op de **Notification Hub** weergeeft, schakelt **Google (GCM/FCM)** in het menu links. 
-2. Plak de **API-sleutel** van het FCM-project dat u eerder hebt opgeslagen. 
+1. Selecteer in de Azure Portal op de pagina **Notification hub** **Google (GCM/FCM)** in het menu links. 
+2. Plak de **API-sleutel** voor het FCM-project dat u eerder hebt opgeslagen. 
 3. Selecteer **Opslaan**. 
 
-   ![Schermopname die laat zien hoe u Notification Hubs voor Google FCM configureren](./media/notification-hubs-android-push-notification-google-fcm-get-started/fcm-server-key.png)
+   ![Scherm afbeelding die laat zien hoe u Notification Hubs configureert voor Google FCM](./media/notification-hubs-android-push-notification-google-fcm-get-started/fcm-server-key.png)
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie voor een zelfstudie met stapsgewijze instructies voor pushmeldingen aan Android-apparaten met behulp van Azure Notification Hubs en Google Firebase Cloud Messaging, [Pushmeldingen naar Android-apparaten met behulp van Notification Hubs en FCM Google ](notification-hubs-android-push-notification-google-fcm-get-started.md).
+Zie [Push meldingen naar Android-apparaten met behulp van Notification hubs en Google FCM](notification-hubs-android-push-notification-google-fcm-get-started.md)voor een zelf studie met stapsgewijze instructies voor het pushen van meldingen naar Android-apparaten met behulp van Azure notification hubs en Google Firebase Cloud Messa ging.
 

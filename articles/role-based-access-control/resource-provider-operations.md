@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 08/27/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: dce9308230c2a82c66b1d8689123d9d34fc6e408
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: 2c0f763dcc03d0ed2e4fb335342f39c2708572c0
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70114691"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71213543"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Bewerkingen voor de resource provider Azure Resource Manager
 
@@ -744,7 +744,7 @@ De bewerkingen van de resource provider zijn altijd in ontwikkeling. Als u de me
 > | Action | Microsoft.Cache/checknameavailability/action | Hiermee wordt gecontroleerd of een naam beschikbaar is voor gebruik met een nieuwe Redis Cache |
 > | Action | Microsoft.Cache/locations/operationresults/read | Hiermee wordt het resultaat van een langlopende bewerking opgehaald waarvoor de header ' Location ' eerder naar de client is geretourneerd |
 > | Action | Microsoft.Cache/operations/read | Geeft een lijst van de bewerkingen die worden ondersteund door de provider micro soft. cache. |
-> | Action | Microsoft.Cache/redis/delete | Volledige Redis-cache verwijderen |
+> | Action | Microsoft.Cache/redis/delete | De hele Redis Cache verwijderen |
 > | Action | Microsoft.Cache/redis/export/action | Redis gegevens exporteren naar voor voegsels voor vaste opslag-blobs in de opgegeven indeling |
 > | Action | Microsoft.Cache/redis/firewallRules/delete | IP-firewall regels van een Redis Cache verwijderen |
 > | Action | Microsoft.Cache/redis/firewallRules/read | De IP-firewall regels van een Redis Cache ophalen |
@@ -1149,7 +1149,7 @@ De bewerkingen van de resource provider zijn altijd in ontwikkeling. Als u de me
 > | DataAction | Microsoft.CognitiveServices/accounts/ComputerVision/recognizetext/action | Gebruik deze interface om het resultaat van een Tekst herkennen bewerking op te halen. Wanneer u de Tekst herkennen-interface gebruikt, bevat het antwoord een veld met de naam bewerking locatie. Het veld bewerkings locatie bevat de URL die u moet gebruiken voor de bewerking resultaat van het ophalen van Tekst herkennen. |
 > | DataAction | Microsoft.CognitiveServices/accounts/ComputerVision/tag/action | Met deze bewerking wordt een lijst met woorden, of tags, gegenereerd die relevant zijn voor de inhoud van de geleverde afbeelding.<br>De Computer Vision-API kan labels retour neren op basis van objecten, in de praktijk, in achtergronden of in afbeeldingen gevonden.<br>In tegens telling tot categorieën worden tags niet ingedeeld op basis van een hiërarchisch classificatie systeem, maar komen ze overeen met de inhoud van de afbeelding.<br>Tags kunnen hints bevatten om Verwar ring te voor komen of om context te bieden, bijvoorbeeld de tag "cello", kan worden gecombineerd met de hint "musical instrument".<br>Alle tags zijn in het Engels. |
 > | DataAction | Microsoft.CognitiveServices/accounts/ComputerVision/textoperations/read | Deze interface wordt gebruikt om het resultaat van de tekst bewerking te herkennen. De URL naar deze interface moet worden opgehaald uit het veld bewerkings <b>locatie</b> dat is geretourneerd door de tekst herkennen-interface. |
-> | Action | Microsoft.CognitiveServices/accounts/delete | API-accounts verwijderen |
+> | Action | Microsoft.CognitiveServices/accounts/delete | Hiermee worden de API-accounts verwijderd |
 > | DataAction | Micro soft. CognitiveServices/accounts/EntitySearch/zoeken/actie | Entiteiten ophalen en de resultaten voor een bepaalde query plaatsen. |
 > | DataAction | Microsoft.CognitiveServices/accounts/Face/detect/action | Detecteren van menselijke gezichten in een afbeelding, gezichts rechthoeken retour neren en optioneel met faceIds, bezienswaardigheden en kenmerken. |
 > | DataAction | Microsoft.CognitiveServices/accounts/Face/facelists/delete | Een opgegeven gezichts lijst verwijderen. De gerelateerde installatie kopieën in de lijst met het gezichts materiaal worden ook verwijderd. |
@@ -1198,7 +1198,7 @@ De bewerkingen van de resource provider zijn altijd in ontwikkeling. Als u de me
 > | DataAction | Micro soft. CognitiveServices/accounts/ImageSearch/trending/actie | Huidige trend afbeeldingen ophalen. |
 > | DataAction | Micro soft. CognitiveServices/accounts/ImmersiveReader/getcontentmodelforreader/actie | Hiermee maakt u een insluitende lezer-sessie |
 > | DataAction | Micro soft. CognitiveServices/accounts/InkRecognizer/recognize/Action | Op basis van een set lijn gegevens wordt de inhoud geanalyseerd en wordt een lijst gegenereerd met herkende entiteiten, inclusief de herkende tekst. |
-> | Action | Microsoft.CognitiveServices/accounts/listKeys/action | Een lijst met sleutels maken |
+> | Action | Microsoft.CognitiveServices/accounts/listKeys/action | Lijst met sleutels |
 > | DataAction | Microsoft.CognitiveServices/accounts/LUIS/predict/action | Hiermee wordt de gepubliceerde eindpunt voorspelling opgehaald voor de opgegeven query. |
 > | DataAction | Micro soft. CognitiveServices/accounts/NewsSearch/categorysearch/actie | Hiermee wordt nieuws voor een gegeven categorie geretourneerd. |
 > | DataAction | Micro soft. CognitiveServices/accounts/NewsSearch/zoeken/actie | Nieuws artikelen ophalen die relevant zijn voor een bepaalde query. |
@@ -1222,7 +1222,7 @@ De bewerkingen van de resource provider zijn altijd in ontwikkeling. Als u de me
 > | Action | Microsoft.CognitiveServices/locations/checkSkuAvailability/action | Beschik bare Sku's voor een abonnement lezen. |
 > | Action | Microsoft.CognitiveServices/locations/checkSkuAvailability/action | Beschik bare Sku's voor een abonnement lezen. |
 > | Action | Microsoft.CognitiveServices/locations/deleteVirtualNetworkOrSubnets/action | Melding van micro soft. Network van het verwijderen van VirtualNetworks of subnetten. |
-> | Action | Microsoft.CognitiveServices/Operations/read | Alle beschikbare bewerkingen vermelden |
+> | Action | Microsoft.CognitiveServices/Operations/read | Alle beschik bare bewerkingen weer geven |
 > | Action | Microsoft.CognitiveServices/register/action | Registreert het abonnement voor Cognitive Services |
 > | Action | Microsoft.CognitiveServices/register/action | Registreert het abonnement voor Cognitive Services |
 
@@ -1301,7 +1301,7 @@ De bewerkingen van de resource provider zijn altijd in ontwikkeling. Als u de me
 > | Action | Microsoft.Compute/sharedVMImages/write | Hiermee wordt een nieuwe SharedVMImage gemaakt of een bestaande bijgewerkt |
 > | Action | Microsoft.Compute/skus/read | Hiermee wordt de lijst met micro soft. Compute-Sku's die beschikbaar zijn voor uw abonnement opgehaald |
 > | Action | Microsoft.Compute/snapshots/beginGetAccess/action | De SAS-URI van de moment opname voor BLOB-toegang ophalen |
-> | Action | Microsoft.Compute/snapshots/delete | Hiermee wordt een momentopname verwijderd |
+> | Action | Microsoft.Compute/snapshots/delete | Een moment opname verwijderen |
 > | Action | Microsoft.Compute/snapshots/endGetAccess/action | De SAS-URI van de moment opname intrekken |
 > | Action | Microsoft.Compute/snapshots/read | De eigenschappen van een moment opname ophalen |
 > | Action | Microsoft.Compute/snapshots/write | Een nieuwe moment opname maken of een bestaand abonnement bijwerken |
@@ -2506,7 +2506,7 @@ De bewerkingen van de resource provider zijn altijd in ontwikkeling. Als u de me
 > | Action | Microsoft.EventHub/clusters/namespaces/read | Naam ruimte ARM-Id's weer geven voor naam ruimten in een cluster. |
 > | Action | Microsoft.EventHub/clusters/operationresults/read | De status van een asynchrone cluster bewerking ophalen. |
 > | Action | Microsoft.EventHub/clusters/providers/Microsoft.Insights/metricDefinitions/read | Lijst met resource beschrijvingen voor metrische gegevens van cluster ophalen |
-> | Action | Microsoft.EventHub/clusters/read | De beschrijving van de clusterresource ophalen |
+> | Action | Microsoft.EventHub/clusters/read | Hiermee wordt de cluster bron beschrijving opgehaald |
 > | Action | Microsoft.EventHub/clusters/write | Hiermee maakt of wijzigt u een bestaande cluster bron. |
 > | Action | Microsoft.EventHub/locations/deleteVirtualNetworkOrSubnets/action | Hiermee worden de VNet-regels in de EventHub-resource provider voor het opgegeven VNet verwijderd |
 > | Action | Microsoft.EventHub/namespaces/authorizationRules/action | De autorisatie regel voor de naam ruimte wordt bijgewerkt. Deze API is afgeschaft. Gebruik in plaats daarvan een PUT-aanroep om de naam ruimte autorisatie regel bij te werken. Deze bewerking wordt niet ondersteund op API-versie 2017-04-01. |
@@ -2515,7 +2515,7 @@ De bewerkingen van de resource provider zijn altijd in ontwikkeling. Als u de me
 > | Action | Microsoft.EventHub/namespaces/authorizationRules/read | De lijst met beschrijvingen van autorisatie regels voor naam ruimten ophalen. |
 > | Action | Microsoft.EventHub/namespaces/authorizationRules/regenerateKeys/action | De primaire of secundaire sleutel opnieuw genereren voor de resource |
 > | Action | Microsoft.EventHub/namespaces/authorizationRules/write | Maak autorisatie regels voor het naam ruimte niveau en werk de eigenschappen bij. De toegangs rechten voor de autorisatie regels, de primaire en secundaire sleutels kunnen worden bijgewerkt. |
-> | Action | Microsoft.EventHub/namespaces/Delete | De resource van een naamruimte verwijderen |
+> | Action | Microsoft.EventHub/namespaces/Delete | Naam ruimte resource verwijderen |
 > | Action | Microsoft.EventHub/namespaces/disasterRecoveryConfigs/authorizationRules/listkeys/action | Hiermee worden de sleutels voor autorisatie regels opgehaald voor de primaire naam ruimte voor nood herstel |
 > | Action | Microsoft.EventHub/namespaces/disasterRecoveryConfigs/authorizationRules/read | De autorisatie regels van de primaire naam ruimte voor herstel na nood geval ophalen |
 > | Action | Microsoft.EventHub/namespaces/disasterRecoveryConfigs/breakPairing/action | Hiermee schakelt u herstel na nood gevallen uit en stopt u het repliceren van wijzigingen van primaire naar secundaire naam ruimten. |
@@ -2536,35 +2536,35 @@ De bewerkingen van de resource provider zijn altijd in ontwikkeling. Als u de me
 > | Action | Microsoft.EventHub/namespaces/eventhubs/Delete | Bewerking voor het verwijderen van de EventHub-resource |
 > | Action | Microsoft.EventHub/namespaces/eventhubs/read | Lijst met EventHub-resource beschrijvingen ophalen |
 > | Action | Microsoft.EventHub/namespaces/eventhubs/write | Eigenschappen van EventHub maken of bijwerken. |
-> | Action | Microsoft.EventHub/namespaces/ipFilterRules/delete | Resource voor IP-filter verwijderen |
-> | Action | Microsoft.EventHub/namespaces/ipFilterRules/read | Resource voor IP-filter ophalen |
-> | Action | Microsoft.EventHub/namespaces/ipFilterRules/write | Resource voor IP-filter maken |
+> | Action | Microsoft.EventHub/namespaces/ipFilterRules/delete | IP-filter bron verwijderen |
+> | Action | Microsoft.EventHub/namespaces/ipFilterRules/read | IP-filter bron ophalen |
+> | Action | Microsoft.EventHub/namespaces/ipFilterRules/write | IP-filter bron maken |
 > | DataAction | Microsoft.EventHub/namespaces/messages/receive/action | Berichten ontvangen |
 > | DataAction | Microsoft.EventHub/namespaces/messages/send/action | Berichten verzenden |
 > | Action | Microsoft.EventHub/namespaces/messagingPlan/read | Hiermee wordt het berichten plan voor een naam ruimte opgehaald.<br>Deze API is afgeschaft.<br>Eigenschappen die via de MessagingPlan-resource beschikbaar worden gemaakt, worden in latere API-versies verplaatst naar de bron naam ruimte (Parent).<br>Deze bewerking wordt niet ondersteund op API-versie 2017-04-01. |
 > | Action | Microsoft.EventHub/namespaces/messagingPlan/write | Hiermee wordt het bericht abonnement voor een naam ruimte bijgewerkt.<br>Deze API is afgeschaft.<br>Eigenschappen die via de MessagingPlan-resource beschikbaar worden gemaakt, worden in latere API-versies verplaatst naar de bron naam ruimte (Parent).<br>Deze bewerking wordt niet ondersteund op API-versie 2017-04-01. |
-> | Action | Micro soft. EventHub/naam ruimten/networkruleset/verwijderen | Resource voor VNET-regel verwijderen |
+> | Action | Micro soft. EventHub/naam ruimten/networkruleset/verwijderen | VNET-regel resource verwijderen |
 > | Action | Micro soft. EventHub/naam ruimten/networkruleset/lezen | Hiermee wordt de NetworkRuleSet-resource opgehaald |
-> | Action | Micro soft. EventHub/naam ruimten/networkruleset/schrijven | Resource voor VNET-regel maken |
-> | Action | Microsoft.EventHub/namespaces/networkrulesets/delete | Resource voor VNET-regel verwijderen |
+> | Action | Micro soft. EventHub/naam ruimten/networkruleset/schrijven | VNET-regel resource maken |
+> | Action | Microsoft.EventHub/namespaces/networkrulesets/delete | VNET-regel resource verwijderen |
 > | Action | Microsoft.EventHub/namespaces/networkrulesets/read | Hiermee wordt de NetworkRuleSet-resource opgehaald |
-> | Action | Microsoft.EventHub/namespaces/networkrulesets/write | Resource voor VNET-regel maken |
+> | Action | Microsoft.EventHub/namespaces/networkrulesets/write | VNET-regel resource maken |
 > | Action | Microsoft.EventHub/namespaces/operationresults/read | De status van de naam ruimte bewerking ophalen |
 > | Action | Micro soft. EventHub/naam ruimten/providers/micro soft. Insights/diagnosticSettings/lezen | Lijst met resource beschrijvingen voor Diagnostische instellingen van naam ruimte ophalen |
 > | Action | Microsoft.EventHub/namespaces/providers/Microsoft.Insights/diagnosticSettings/write | Lijst met resource beschrijvingen voor Diagnostische instellingen van naam ruimte ophalen |
 > | Action | Microsoft.EventHub/namespaces/providers/Microsoft.Insights/logDefinitions/read | Lijst met naam ruimte logboek bron beschrijvingen ophalen |
 > | Action | Microsoft.EventHub/namespaces/providers/Microsoft.Insights/metricDefinitions/read | Lijst met resource beschrijvingen voor metrische gegevens van de naam ruimte ophalen |
 > | Action | Microsoft.EventHub/namespaces/read | De lijst met de resource beschrijving van de naam ruimte ophalen |
-> | Action | Microsoft.EventHub/namespaces/removeAcsNamepsace/action | ACS-naamruimte verwijderen |
-> | Action | Microsoft.EventHub/namespaces/virtualNetworkRules/delete | Resource voor VNET-regel verwijderen |
-> | Action | Microsoft.EventHub/namespaces/virtualNetworkRules/read | Resource voor VNET-regel ophalen |
-> | Action | Microsoft.EventHub/namespaces/virtualNetworkRules/write | Resource voor VNET-regel maken |
+> | Action | Microsoft.EventHub/namespaces/removeAcsNamepsace/action | ACS-naam ruimte verwijderen |
+> | Action | Microsoft.EventHub/namespaces/virtualNetworkRules/delete | VNET-regel resource verwijderen |
+> | Action | Microsoft.EventHub/namespaces/virtualNetworkRules/read | Hiermee wordt VNET-regel Resource opgehaald |
+> | Action | Microsoft.EventHub/namespaces/virtualNetworkRules/write | VNET-regel resource maken |
 > | Action | Microsoft.EventHub/namespaces/write | Maak een naam ruimte resource en werk de eigenschappen bij. Tags en capaciteit van de naam ruimte zijn de eigenschappen die kunnen worden bijgewerkt. |
-> | Action | Microsoft.EventHub/operations/read | Bewerkingen ophalen |
+> | Action | Microsoft.EventHub/operations/read | Get-bewerkingen |
 > | Action | Microsoft.EventHub/register/action | Hiermee wordt het abonnement voor de EventHub-resource provider geregistreerd en wordt het maken van EventHub-resources mogelijk |
 > | Action | Microsoft.EventHub/sku/read | Lijst met resource beschrijvingen van SKU ophalen |
 > | Action | Microsoft.EventHub/sku/regions/read | Lijst met SkuRegions-resource beschrijvingen ophalen |
-> | Action | Microsoft.EventHub/unregister/action | Hiermee wordt de EventHub-resourceprovider geregistreerd |
+> | Action | Microsoft.EventHub/unregister/action | Hiermee wordt de EventHub-resource provider geregistreerd |
 
 ## <a name="microsoftfeatures"></a>Microsoft.Features
 
@@ -2882,11 +2882,11 @@ De bewerkingen van de resource provider zijn altijd in ontwikkeling. Als u de me
 > | Action | Microsoft.Insights/MetricAlerts/Read | Een waarschuwing voor metrische gegevens lezen |
 > | Action | Micro soft. Insights/MetricAlerts/status/lezen | Status van waarschuwing voor metrische gegevens lezen |
 > | Action | Micro soft. Insights/MetricAlerts/schrijven | Een waarschuwing voor metrische gegevens maken of bijwerken |
-> | Action | Microsoft.Insights/MetricBaselines/Read | Metrische basis lijnen lezen |
+> | Action | Microsoft.Insights/MetricBaselines/Read | Metrische basislijnen lezen |
 > | Action | Micro soft. Insights/MetricDefinitions/micro soft. Insights/lezen | Metrische definities lezen |
 > | Action | Microsoft.Insights/MetricDefinitions/providers/Microsoft.Insights/Read | Metrische definities lezen |
 > | Action | Microsoft.Insights/MetricDefinitions/Read | Metrische definities lezen |
-> | Action | Micro soft. Insights/Metricnamespaces/lezen | Metrische naam ruimten lezen |
+> | Action | Micro soft. Insights/Metricnamespaces/lezen | Metrische naamruimten lezen |
 > | Action | Microsoft.Insights/Metrics/Action | Metrische actie |
 > | Action | Micro soft. Insights/metrische gegevens/micro soft. Insights/lezen | De metrische gegevens lezen |
 > | Action | Microsoft.Insights/Metrics/providers/Metrics/Read | De metrische gegevens lezen |
@@ -3384,14 +3384,14 @@ De bewerkingen van de resource provider zijn altijd in ontwikkeling. Als u de me
 > | Actietype | Bewerking | Description |
 > | --- | --- | --- |
 > | Action | Micro soft. migrate/assessmentprojects/assessmentOptions/Read | Hiermee worden de evaluatie opties opgehaald die beschikbaar zijn op de opgegeven locatie |
-> | Action | Microsoft.Migrate/assessmentprojects/assessments/read | Hiermee geeft u een lijst met evaluaties binnen een project weer |
+> | Action | Microsoft.Migrate/assessmentprojects/assessments/read | Een lijst met evaluaties binnen een project |
 > | Action | Microsoft.Migrate/assessmentprojects/delete | Hiermee wordt het evaluatie project verwijderd |
 > | Action | Microsoft.Migrate/assessmentprojects/groups/assessments/assessedmachines/read | De eigenschappen van een geschatte machine ophalen |
 > | Action | Microsoft.Migrate/assessmentprojects/groups/assessments/delete | Hiermee wordt een evaluatie verwijderd |
 > | Action | Microsoft.Migrate/assessmentprojects/groups/assessments/downloadurl/action | Hiermee wordt de URL van een evaluatie rapport gedownload |
 > | Action | Microsoft.Migrate/assessmentprojects/groups/assessments/read | Hiermee worden de eigenschappen van een evaluatie opgehaald |
 > | Action | Microsoft.Migrate/assessmentprojects/groups/assessments/write | Hiermee wordt een nieuwe evaluatie gemaakt of een bestaande evaluatie bijgewerkt |
-> | Action | Microsoft.Migrate/assessmentprojects/groups/delete | Verwijdert een groep |
+> | Action | Microsoft.Migrate/assessmentprojects/groups/delete | Hiermee verwijdert u een groep |
 > | Action | Microsoft.Migrate/assessmentprojects/groups/read | De eigenschappen van een groep ophalen |
 > | Action | Microsoft.Migrate/assessmentprojects/groups/updateMachines/action | Groep bijwerken door computers toe te voegen of te verwijderen |
 > | Action | Microsoft.Migrate/assessmentprojects/groups/write | Hiermee wordt een nieuwe groep gemaakt of een bestaande groep bijgewerkt |
@@ -3422,14 +3422,14 @@ De bewerkingen van de resource provider zijn altijd in ontwikkeling. Als u de me
 > | Action | Microsoft.Migrate/migrateprojects/solutions/write | Hiermee maakt u een nieuwe oplossing voor het migreren van een project of werkt u een bestaande migratie project oplossing bij |
 > | Action | Microsoft.Migrate/migrateprojects/write | Hiermee maakt u een nieuw migratie project of werkt u een bestaand migratie project bij |
 > | Action | Micro soft. migrate/Operations/Read | Hiermee worden bewerkingen weer gegeven die beschikbaar zijn op micro soft. resource provider migreren |
-> | Action | Microsoft.Migrate/projects/assessments/read | Hiermee geeft u een lijst met evaluaties binnen een project weer |
+> | Action | Microsoft.Migrate/projects/assessments/read | Een lijst met evaluaties binnen een project |
 > | Action | Microsoft.Migrate/projects/delete | Hiermee wordt het project verwijderd |
 > | Action | Microsoft.Migrate/projects/groups/assessments/assessedmachines/read | De eigenschappen van een geschatte machine ophalen |
 > | Action | Microsoft.Migrate/projects/groups/assessments/delete | Hiermee wordt een evaluatie verwijderd |
 > | Action | Microsoft.Migrate/projects/groups/assessments/downloadurl/action | Hiermee wordt de URL van een evaluatie rapport gedownload |
 > | Action | Microsoft.Migrate/projects/groups/assessments/read | Hiermee worden de eigenschappen van een evaluatie opgehaald |
 > | Action | Microsoft.Migrate/projects/groups/assessments/write | Hiermee wordt een nieuwe evaluatie gemaakt of een bestaande evaluatie bijgewerkt |
-> | Action | Microsoft.Migrate/projects/groups/delete | Verwijdert een groep |
+> | Action | Microsoft.Migrate/projects/groups/delete | Hiermee verwijdert u een groep |
 > | Action | Microsoft.Migrate/projects/groups/read | De eigenschappen van een groep ophalen |
 > | Action | Microsoft.Migrate/projects/groups/write | Hiermee wordt een nieuwe groep gemaakt of een bestaande groep bijgewerkt |
 > | Action | Microsoft.Migrate/projects/keys/action | Hiermee worden gedeelde sleutels voor het project opgehaald |
@@ -3943,15 +3943,15 @@ De bewerkingen van de resource provider zijn altijd in ontwikkeling. Als u de me
 > | Action | Microsoft.NotificationHubs/Namespaces/authorizationRules/regenerateKeys/action | Regel voor naam ruimte autorisatie primaire/secundaire sleutel opnieuw genereren, de sleutel opgeven die opnieuw moet worden gegenereerd |
 > | Action | Microsoft.NotificationHubs/Namespaces/authorizationRules/write | Maak autorisatie regels voor het naam ruimte niveau en werk de eigenschappen bij. De toegangs rechten voor de autorisatie regels, de primaire en secundaire sleutels kunnen worden bijgewerkt. |
 > | Action | Microsoft.NotificationHubs/Namespaces/CheckNotificationHubAvailability/action | Hiermee wordt gecontroleerd of een opgegeven NotificationHub-naam beschikbaar is in een naam ruimte. |
-> | Action | Microsoft.NotificationHubs/Namespaces/Delete | De resource van een naamruimte verwijderen |
+> | Action | Microsoft.NotificationHubs/Namespaces/Delete | Naam ruimte resource verwijderen |
 > | Action | Microsoft.NotificationHubs/Namespaces/NotificationHubs/authorizationRules/action | De lijst met autorisatie regels voor notification hub ophalen |
-> | Action | Microsoft.NotificationHubs/Namespaces/NotificationHubs/authorizationRules/delete | Verificatieregels voor Notification Hub verwijderen |
+> | Action | Microsoft.NotificationHubs/Namespaces/NotificationHubs/authorizationRules/delete | Autorisatie regels voor notification hub verwijderen |
 > | Action | Microsoft.NotificationHubs/Namespaces/NotificationHubs/authorizationRules/listkeys/action | De verbindings reeks ophalen voor de notification hub |
 > | Action | Microsoft.NotificationHubs/Namespaces/NotificationHubs/authorizationRules/read | De lijst met autorisatie regels voor notification hub ophalen |
 > | Action | Microsoft.NotificationHubs/Namespaces/NotificationHubs/authorizationRules/regenerateKeys/action | Verificatie regel voor notification hub opnieuw genereren primair/secundaire sleutel, de sleutel opgeven die opnieuw moet worden gegenereerd |
 > | Action | Microsoft.NotificationHubs/Namespaces/NotificationHubs/authorizationRules/write | Maak autorisatie regels voor de notification hub en werk de eigenschappen bij. De toegangs rechten voor de autorisatie regels, de primaire en secundaire sleutels kunnen worden bijgewerkt. |
 > | Action | Microsoft.NotificationHubs/Namespaces/NotificationHubs/debugSend/action | Een test push melding verzenden. |
-> | Action | Microsoft.NotificationHubs/Namespaces/NotificationHubs/Delete | De resource voor Notification Hub verwijderen |
+> | Action | Microsoft.NotificationHubs/Namespaces/NotificationHubs/Delete | Resource voor notification hub verwijderen |
 > | Action | Microsoft.NotificationHubs/Namespaces/NotificationHubs/metricDefinitions/read | Lijst met resource beschrijvingen voor metrische gegevens van de naam ruimte ophalen |
 > | Action | Microsoft.NotificationHubs/Namespaces/NotificationHubs/pnsCredentials/action | Alle PNS-referenties voor notification hub ophalen. Dit omvat, WNS, MPNS, APNS-, GCM-en Baidu-referenties |
 > | Action | Microsoft.NotificationHubs/Namespaces/NotificationHubs/read | Lijst met resource beschrijvingen voor notification hub ophalen |
@@ -3982,7 +3982,7 @@ De bewerkingen van de resource provider zijn altijd in ontwikkeling. Als u de me
 > | Action | Microsoft.OffAzure/HyperVSites/runasaccounts/read | Hiermee worden de eigenschappen van een Hyper-V run as-accounts opgehaald |
 > | Action | Microsoft.OffAzure/HyperVSites/usage/read | Hiermee worden de gebruiks handelingen van een Hyper-V-site opgehaald |
 > | Action | Microsoft.OffAzure/HyperVSites/write | Hiermee wordt de Hyper-V-site gemaakt of bijgewerkt |
-> | Action | Microsoft.OffAzure/Operations/read | Hiermee worden de beschik bare bewerkingen gelezen |
+> | Action | Microsoft.OffAzure/Operations/read | Leest de beschikbare bewerkingen |
 > | Action | Microsoft.OffAzure/register/action | Hiermee wordt een abonnement geregistreerd bij de resource provider micro soft. OffAzure |
 > | Action | Microsoft.OffAzure/VMwareSites/delete | Hiermee verwijdert u de VMware-site |
 > | Action | Micro soft. OffAzure/VMwareSites/healthsummary/lezen | Hiermee wordt het status overzicht voor VMware-resource opgehaald |
@@ -4370,7 +4370,7 @@ De bewerkingen van de resource provider zijn altijd in ontwikkeling. Als u de me
 > | Action | Microsoft.RecoveryServices/locations/allocatedStamp/read | GetAllocatedStamp is een interne bewerking die wordt gebruikt door de service |
 > | Action | Microsoft.RecoveryServices/locations/allocateStamp/action | Allo Cate Stamp is een interne bewerking die wordt gebruikt door de service |
 > | Action | Microsoft.RecoveryServices/Locations/backupPreValidateProtection/action |  |
-> | Action | Microsoft.RecoveryServices/Locations/backupProtectedItem/write | Een beveiligd back-upitem maken |
+> | Action | Microsoft.RecoveryServices/Locations/backupProtectedItem/write | Hiermee wordt een beveiligd back-upitem gemaakt |
 > | Action | Microsoft.RecoveryServices/Locations/backupProtectedItems/read | Hiermee wordt de lijst met alle beveiligde items geretourneerd. |
 > | Action | Microsoft.RecoveryServices/Locations/backupStatus/action | De back-upstatus voor Recovery Services kluizen controleren |
 > | Action | Microsoft.RecoveryServices/Locations/backupValidateFeatures/action | Functies valideren |
@@ -4381,19 +4381,19 @@ De bewerkingen van de resource provider zijn altijd in ontwikkeling. Als u de me
 > | Action | Microsoft.RecoveryServices/Vaults/backupconfig/read | Hiermee wordt de configuratie voor Recovery Services kluis geretourneerd. |
 > | Action | Microsoft.RecoveryServices/Vaults/backupconfig/write | Hiermee wordt de configuratie van Recovery Services-kluis bijgewerkt. |
 > | Action | Microsoft.RecoveryServices/Vaults/backupEngines/read | Hiermee worden alle servers voor back-upbeheer geretourneerd die in de kluis zijn geregistreerd. |
-> | Action | Microsoft.RecoveryServices/Vaults/backupFabrics/backupProtectionIntent/delete | Een opzet voor een back-upbeveiliging verwijderen |
-> | Action | Microsoft.RecoveryServices/Vaults/backupFabrics/backupProtectionIntent/read | Een doel voor back-upbeveiliging verkrijgen |
-> | Action | Microsoft.RecoveryServices/Vaults/backupFabrics/backupProtectionIntent/write | Een doel voor back-upbeveiliging maken |
+> | Action | Microsoft.RecoveryServices/Vaults/backupFabrics/backupProtectionIntent/delete | Een back-upbeveiligingsintentie verwijderen |
+> | Action | Microsoft.RecoveryServices/Vaults/backupFabrics/backupProtectionIntent/read | Een back-upbeveiligingsintentie ophalen |
+> | Action | Microsoft.RecoveryServices/Vaults/backupFabrics/backupProtectionIntent/write | Een back-upbeveiligingsintentie maken |
 > | Action | Microsoft.RecoveryServices/Vaults/backupFabrics/operationResults/read | Hiermee wordt de status van de bewerking geretourneerd |
 > | Action | Micro soft. Recovery Services/kluizen/backupFabrics/operationsStatus/lezen | Hiermee wordt de status van de bewerking geretourneerd |
-> | Action | Microsoft.RecoveryServices/Vaults/backupFabrics/protectableContainers/read | Alle Beveilig bare containers ophalen |
+> | Action | Microsoft.RecoveryServices/Vaults/backupFabrics/protectableContainers/read | Alle beveiligbare containers ophalen |
 > | Action | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/delete | Hiermee wordt de geregistreerde container verwijderd |
 > | Action | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/inquire/action | Een query uitvoeren voor werk belastingen binnen een container |
 > | Action | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/items/read | Alle items in een container ophalen |
 > | Action | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/operationResults/read | Hiermee wordt het resultaat opgehaald van de bewerking die is uitgevoerd op de beveiligde container. |
 > | Action | Micro soft. Recovery Services/kluizen/backupFabrics/protectionContainers/operationsStatus/lezen | Hiermee wordt de status opgehaald van de bewerking die is uitgevoerd op de beveiligings container. |
 > | Action | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/backup/action | Hiermee wordt een back-up van het beveiligde item gemaakt. |
-> | Action | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/delete | Hiermee wordt het beveiligde item verwijderd |
+> | Action | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/delete | Hiermee wordt een beveiligd item verwijderd |
 > | Action | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/operationResults/read | Hiermee wordt het resultaat opgehaald van de bewerking die is uitgevoerd op beveiligde items. |
 > | Action | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/operationsStatus/read | Hiermee wordt de status geretourneerd van de bewerking die is uitgevoerd op beveiligde items. |
 > | Action | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/read | Hiermee worden object gegevens van het beveiligde item geretourneerd |
@@ -4401,31 +4401,31 @@ De bewerkingen van de resource provider zijn altijd in ontwikkeling. Als u de me
 > | Action | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/read | Herstelpunten voor beveiligde items ophalen. |
 > | Action | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/restore/action | Herstelpunten voor beveiligde items herstellen. |
 > | Action | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/revokeInstantItemRecovery/action | Herstel van onmiddellijke items intrekken voor beveiligd item |
-> | Action | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/write | Een beveiligd back-upitem maken |
+> | Action | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/write | Hiermee wordt een beveiligd back-upitem gemaakt |
 > | Action | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/read | Hiermee worden alle geregistreerde containers geretourneerd |
 > | Action | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/write | Hiermee maakt u een geregistreerde container |
-> | Action | Microsoft.RecoveryServices/Vaults/backupFabrics/refreshContainers/action | Hiermee vernieuwt u de container lijst |
+> | Action | Microsoft.RecoveryServices/Vaults/backupFabrics/refreshContainers/action | Hiermee vernieuwt u de containerlijst |
 > | Action | Microsoft.RecoveryServices/Vaults/backupJobs/cancel/action | De taak annuleren |
 > | Action | Microsoft.RecoveryServices/Vaults/backupJobs/operationResults/read | Hiermee wordt het resultaat van de taakbewerking geretourneerd. |
 > | Action | Micro soft. Recovery Services/kluizen/backupJobs/operationsStatus/lezen | Hiermee wordt de status van de taak bewerking geretourneerd. |
-> | Action | Microsoft.RecoveryServices/Vaults/backupJobs/read | Hiermee worden alle taak objecten geretourneerd |
+> | Action | Microsoft.RecoveryServices/Vaults/backupJobs/read | Hiermee worden alle taakobjecten geretourneerd |
 > | Action | Microsoft.RecoveryServices/Vaults/backupJobsExport/action | Taken exporteren |
 > | Action | Microsoft.RecoveryServices/Vaults/backupOperationResults/read | Hiermee wordt het resultaat van de back-upbewerking voor een Recovery Services-kluis geretourneerd. |
 > | Action | Microsoft.RecoveryServices/Vaults/backupOperations/read | Hiermee wordt de status van de back-upbewerking voor Recovery Services kluis geretourneerd. |
-> | Action | Microsoft.RecoveryServices/Vaults/backupPolicies/delete | Een beveiligings beleid verwijderen |
+> | Action | Microsoft.RecoveryServices/Vaults/backupPolicies/delete | Hiermee wordt een beveiligingsbeleid verwijderd |
 > | Action | Microsoft.RecoveryServices/Vaults/backupPolicies/operationResults/read | Hiermee worden de resultaten van de beleidsbewerking opgehaald. |
 > | Action | Microsoft.RecoveryServices/Vaults/backupPolicies/operations/read | Status van beleids bewerking ophalen. |
-> | Action | Microsoft.RecoveryServices/Vaults/backupPolicies/read | Hiermee worden alle beveiligings beleidsregels geretourneerd |
-> | Action | Microsoft.RecoveryServices/Vaults/backupPolicies/write | Hiermee wordt een beveiligings beleid gemaakt |
+> | Action | Microsoft.RecoveryServices/Vaults/backupPolicies/read | Hiermee worden alle beveiligingsbeleidsregels geretourneerd |
+> | Action | Microsoft.RecoveryServices/Vaults/backupPolicies/write | Hiermee wordt een beveiligingsbeleid gemaakt |
 > | Action | Microsoft.RecoveryServices/Vaults/backupProtectableItems/read | Hiermee wordt een lijst met alle beveiligbare items opgehaald. |
 > | Action | Microsoft.RecoveryServices/Vaults/backupProtectedItems/read | Hiermee wordt de lijst met alle beveiligde items geretourneerd. |
 > | Action | Microsoft.RecoveryServices/Vaults/backupProtectionContainers/read | Hiermee worden alle containers van het abonnement geretourneerd |
-> | Action | Microsoft.RecoveryServices/Vaults/backupProtectionIntents/read | Alle intenties van de back-upbeveiliging weer geven |
+> | Action | Microsoft.RecoveryServices/Vaults/backupProtectionIntents/read | Alle back-upbeveiligingsintenties weergeven |
 > | Action | Microsoft.RecoveryServices/Vaults/backupSecurityPIN/action | Retourneert informatie over de beveiligings pincode voor Recovery Services kluis. |
 > | Action | Microsoft.RecoveryServices/Vaults/backupstorageconfig/read | Hiermee wordt de opslag configuratie voor Recovery Services kluis geretourneerd. |
 > | Action | Microsoft.RecoveryServices/Vaults/backupstorageconfig/write | Hiermee wordt de opslag configuratie voor Recovery Services kluis bijgewerkt. |
 > | Action | Microsoft.RecoveryServices/Vaults/backupUsageSummaries/read | Retourneert samen vattingen voor beveiligde items en beveiligde servers voor een Recovery Services. |
-> | Action | Microsoft.RecoveryServices/Vaults/backupValidateOperation/action | Bewerking voor beveiligd item valideren |
+> | Action | Microsoft.RecoveryServices/Vaults/backupValidateOperation/action | Bewerking op het beveiligde item valideren |
 > | Action | Microsoft.RecoveryServices/Vaults/certificates/write | Met de bewerking resource certificaat bijwerken wordt het resource/kluis-referentie certificaat bijgewerkt. |
 > | Action | Microsoft.RecoveryServices/Vaults/delete | Met de bewerking kluis verwijderen wordt de opgegeven Azure-resource van het type kluis verwijderd |
 > | Action | Microsoft.RecoveryServices/Vaults/extendedInformation/delete | Met de bewerking Uitgebreide informatie ophalen wordt de uitgebreide informatie opgehaald van een object dat de Azure-resource van het type ?vault? vertegenwoordigt |
@@ -4445,13 +4445,13 @@ De bewerkingen van de resource provider zijn altijd in ontwikkeling. Als u de me
 > | Action | Microsoft.RecoveryServices/vaults/replicationEvents/read | Gebeurtenissen lezen |
 > | Action | Microsoft.RecoveryServices/vaults/replicationFabrics/checkConsistency/action | Hiermee wordt de consistentie van de infrastructuur gecontroleerd |
 > | Action | Microsoft.RecoveryServices/vaults/replicationFabrics/delete | Infrastructuur resources verwijderen |
-> | Action | Microsoft.RecoveryServices/vaults/replicationFabrics/deployProcessServerImage/action | Installatie kopie van de proces server implementeren |
+> | Action | Microsoft.RecoveryServices/vaults/replicationFabrics/deployProcessServerImage/action | Installatiekopie van de processerver implementeren |
 > | Action | Microsoft.RecoveryServices/vaults/replicationFabrics/migratetoaad/action | Fabric migreren naar AAD |
 > | Action | Micro soft. Recovery Services/kluizen/replicationFabrics/operationresults/lezen | De resultaten van een asynchrone bewerking op de bron-fabrics volgen |
 > | Action | Micro soft. Recovery Services/kluizen/replicationFabrics/lezen | Alle infra structuren lezen |
 > | Action | Microsoft.RecoveryServices/vaults/replicationFabrics/reassociateGateway/action | Gateway opnieuw koppelen |
-> | Action | Microsoft.RecoveryServices/vaults/replicationFabrics/remove/action | Infra structuur verwijderen |
-> | Action | Microsoft.RecoveryServices/vaults/replicationFabrics/renewcertificate/action | Certificaat voor Fabric vernieuwen |
+> | Action | Microsoft.RecoveryServices/vaults/replicationFabrics/remove/action | Infrastructuur verwijderen |
+> | Action | Microsoft.RecoveryServices/vaults/replicationFabrics/renewcertificate/action | Certificaat voor de infrastructuur vernieuwen |
 > | Action | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationLogicalNetworks/read | Alle logische netwerken lezen |
 > | Action | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationNetworks/read | Alle netwerken lezen |
 > | Action | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationNetworks/replicationNetworkMappings/delete | Netwerk toewijzingen verwijderen |
@@ -4460,20 +4460,20 @@ De bewerkingen van de resource provider zijn altijd in ontwikkeling. Als u de me
 > | Action | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/discoverProtectableItem/action | Beveiligbaar item detecteren |
 > | Action | Micro soft. Recovery Services/kluizen/replicationFabrics/replicationProtectionContainers/operationresults/lezen | De resultaten van een asynchrone bewerking op de bron beveiligings containers volgen |
 > | Action | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/read | Beveiligings containers lezen |
-> | Action | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/remove/action | Beveiligings container verwijderen |
+> | Action | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/remove/action | Beveiligingscontainer verwijderen |
 > | Action | Micro soft. Recovery Services/kluizen/replicationFabrics/replicationProtectionContainers/replicationMigrationItems/verwijderen | Migratie-items verwijderen |
 > | Action | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationMigrationItems/migrate/action | Item migreren |
 > | Action | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationMigrationItems/migrationRecoveryPoints/read | Alle migratie herstel punten lezen |
 > | Action | Micro soft. Recovery Services/kluizen/replicationFabrics/replicationProtectionContainers/replicationMigrationItems/operationresults/lezen | De resultaten van een asynchrone bewerking op de bron migratie-items bijhouden |
 > | Action | Micro soft. Recovery Services/kluizen/replicationFabrics/replicationProtectionContainers/replicationMigrationItems/lezen | Alle migratie-items lezen |
 > | Action | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationMigrationItems/testMigrate/action | Migratie testen |
-> | Action | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationMigrationItems/testMigrateCleanup/action | Migratie opschonen testen |
+> | Action | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationMigrationItems/testMigrateCleanup/action | Migratieopschoning testen |
 > | Action | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationMigrationItems/write | Migratie-items maken of bijwerken |
 > | Action | Micro soft. Recovery Services/kluizen/replicationFabrics/replicationProtectionContainers/replicationProtectableItems/lezen | Beveilig bare items lezen |
 > | Action | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/addDisks/action | Schijven toevoegen |
-> | Action | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/applyRecoveryPoint/action | Herstel punt Toep assen |
+> | Action | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/applyRecoveryPoint/action | Herstelpunt toepassen |
 > | Action | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/delete | Alle beveiligde items verwijderen |
-> | Action | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/failoverCommit/action | Failover door voeren |
+> | Action | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/failoverCommit/action | Failover doorvoeren |
 > | Action | Micro soft. Recovery Services/kluizen/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/operationresults/lezen | De resultaten van een asynchrone bewerking volgen op de bron beveiligde items |
 > | Action | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/plannedFailover/action | Geplande failover |
 > | Action | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/read | Alle beveiligde items lezen |
@@ -4488,20 +4488,20 @@ De bewerkingen van de resource provider zijn altijd in ontwikkeling. Als u de me
 > | Action | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/testFailover/action | Failover testen |
 > | Action | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/testFailoverCleanup/action | Failovertest opschonen |
 > | Action | Micro soft. Recovery Services/kluizen/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/unplannedFailover/Action | Failover |
-> | Action | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/updateMobilityService/action | Mobility-service bijwerken |
+> | Action | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/updateMobilityService/action | De Mobility-service bijwerken |
 > | Action | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/write | Beveiligde items maken of bijwerken |
 > | Action | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectionContainerMappings/delete | Alle beveiligings container toewijzingen verwijderen |
 > | Action | Micro soft. Recovery Services/kluizen/replicationFabrics/replicationProtectionContainers/replicationProtectionContainerMappings/operationresults/lezen | De resultaten van een asynchrone bewerking op de resource Protection-container toewijzingen bijhouden |
 > | Action | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectionContainerMappings/read | Alle beveiligings container toewijzingen lezen |
-> | Action | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectionContainerMappings/remove/action | Toewijzing van beveiligings container verwijderen |
+> | Action | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectionContainerMappings/remove/action | Toewijzing van beveiligingscontainer verwijderen |
 > | Action | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectionContainerMappings/write | Beveiligings container toewijzingen maken of bijwerken |
-> | Action | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/switchprotection/action | Beveiligings container overschakelen |
+> | Action | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/switchprotection/action | Overschakelen naar een andere beveiligingscontainer |
 > | Action | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/write | Beveiligings containers maken of bijwerken |
 > | Action | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationRecoveryServicesProviders/delete | Alle Recovery Services Providers verwijderen |
 > | Action | Micro soft. Recovery Services/kluizen/replicationFabrics/replicationRecoveryServicesProviders/operationresults/lezen | De resultaten van een asynchrone bewerking op de resource Recovery Services Providers bijhouden |
 > | Action | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationRecoveryServicesProviders/read | Recovery Services Providers lezen |
 > | Action | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationRecoveryServicesProviders/refreshProvider/action | Provider vernieuwen |
-> | Action | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationRecoveryServicesProviders/remove/action | Recovery Services provider verwijderen |
+> | Action | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationRecoveryServicesProviders/remove/action | Recovery Services Provider verwijderen |
 > | Action | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationRecoveryServicesProviders/write | Recovery Services Providers maken of bijwerken |
 > | Action | Micro soft. Recovery Services/kluizen/replicationFabrics/replicationStorageClassifications/lezen | Alle opslag classificaties lezen |
 > | Action | Micro soft. Recovery Services/kluizen/replicationFabrics/replicationStorageClassifications/replicationStorageClassificationMappings/verwijderen | Alle opslag classificatie toewijzingen verwijderen |
@@ -4529,14 +4529,14 @@ De bewerkingen van de resource provider zijn altijd in ontwikkeling. Als u de me
 > | Action | Microsoft.RecoveryServices/vaults/replicationProtectionContainerMappings/read | Alle beveiligings container toewijzingen lezen |
 > | Action | Microsoft.RecoveryServices/vaults/replicationProtectionContainers/read | Beveiligings containers lezen |
 > | Action | Microsoft.RecoveryServices/vaults/replicationRecoveryPlans/delete | Herstel plannen verwijderen |
-> | Action | Microsoft.RecoveryServices/vaults/replicationRecoveryPlans/failoverCommit/action | Herstel plan voor failover door voeren |
+> | Action | Microsoft.RecoveryServices/vaults/replicationRecoveryPlans/failoverCommit/action | Herstelplan voor failover doorvoeren |
 > | Action | Micro soft. Recovery Services/kluizen/replicationRecoveryPlans/operationresults/lezen | De resultaten van een asynchrone bewerking op de resource recovery-plannen bijhouden |
-> | Action | Microsoft.RecoveryServices/vaults/replicationRecoveryPlans/plannedFailover/action | Herstel plan voor geplande failover |
+> | Action | Microsoft.RecoveryServices/vaults/replicationRecoveryPlans/plannedFailover/action | Herstelplan voor geplande failover |
 > | Action | Microsoft.RecoveryServices/vaults/replicationRecoveryPlans/read | Herstel plannen lezen |
-> | Action | Microsoft.RecoveryServices/vaults/replicationRecoveryPlans/reProtect/action | Herstel plan opnieuw beveiligen |
-> | Action | Microsoft.RecoveryServices/vaults/replicationRecoveryPlans/testFailover/action | Herstel plan voor failover testen |
-> | Action | Microsoft.RecoveryServices/vaults/replicationRecoveryPlans/testFailoverCleanup/action | Herstel plan voor het opschonen van de Failovertest |
-> | Action | Microsoft.RecoveryServices/vaults/replicationRecoveryPlans/unplannedFailover/action | Herstel plan voor failover |
+> | Action | Microsoft.RecoveryServices/vaults/replicationRecoveryPlans/reProtect/action | Herstelplan voor opnieuw beveiligen |
+> | Action | Microsoft.RecoveryServices/vaults/replicationRecoveryPlans/testFailover/action | Herstelplan voor failover testen |
+> | Action | Microsoft.RecoveryServices/vaults/replicationRecoveryPlans/testFailoverCleanup/action | Herstelplan voor het opschonen van de failovertest |
+> | Action | Microsoft.RecoveryServices/vaults/replicationRecoveryPlans/unplannedFailover/action | Herstelplan voor de failover |
 > | Action | Microsoft.RecoveryServices/vaults/replicationRecoveryPlans/write | Herstel plannen maken of bijwerken |
 > | Action | Microsoft.RecoveryServices/vaults/replicationRecoveryServicesProviders/read | Recovery Services Providers lezen |
 > | Action | Microsoft.RecoveryServices/vaults/replicationStorageClassificationMappings/read | Alle opslag classificatie toewijzingen lezen |
@@ -4567,7 +4567,7 @@ De bewerkingen van de resource provider zijn altijd in ontwikkeling. Als u de me
 > | Action | Micro soft. relay/naam ruimten/authorizationRules/lezen | De lijst met beschrijvingen van autorisatie regels voor naam ruimten ophalen. |
 > | Action | Microsoft.Relay/namespaces/authorizationRules/regenerateKeys/action | De primaire of secundaire sleutel opnieuw genereren voor de resource |
 > | Action | Micro soft. relay/naam ruimten/authorizationRules/schrijven | Maak autorisatie regels voor het naam ruimte niveau en werk de eigenschappen bij. De toegangs rechten voor de autorisatie regels, de primaire en secundaire sleutels kunnen worden bijgewerkt. |
-> | Action | Micro soft. relay/naam ruimten/verwijderen | De resource van een naamruimte verwijderen |
+> | Action | Micro soft. relay/naam ruimten/verwijderen | Naam ruimte resource verwijderen |
 > | Action | Microsoft.Relay/namespaces/disasterRecoveryConfigs/authorizationRules/listkeys/action | Hiermee worden de sleutels voor autorisatie regels opgehaald voor de primaire naam ruimte voor nood herstel |
 > | Action | Microsoft.Relay/namespaces/disasterRecoveryConfigs/authorizationRules/read | De autorisatie regels van de primaire naam ruimte voor herstel na nood geval ophalen |
 > | Action | Microsoft.Relay/namespaces/disasterRecoveryConfigs/breakPairing/action | Hiermee schakelt u herstel na nood gevallen uit en stopt u het repliceren van wijzigingen van primaire naar secundaire naam ruimten. |
@@ -4593,7 +4593,7 @@ De bewerkingen van de resource provider zijn altijd in ontwikkeling. Als u de me
 > | Action | Micro soft. relay/naam ruimten/providers/micro soft. Insights/logDefinitions/lezen | Lijst met naam ruimte logboek bron beschrijvingen ophalen |
 > | Action | Micro soft. relay/naam ruimten/providers/micro soft. Insights/metricDefinitions/lezen | Lijst met resource beschrijvingen voor metrische gegevens van de naam ruimte ophalen |
 > | Action | Micro soft. relay/naam ruimten/lezen | De lijst met de resource beschrijving van de naam ruimte ophalen |
-> | Action | Microsoft.Relay/namespaces/removeAcsNamepsace/action | ACS-naamruimte verwijderen |
+> | Action | Microsoft.Relay/namespaces/removeAcsNamepsace/action | ACS-naam ruimte verwijderen |
 > | Action | Micro soft. relay/naam ruimten/WcfRelays/authorizationRules/actie | Bewerking voor het bijwerken van WcfRelay. Deze bewerking wordt niet ondersteund op API-versie 2017-04-01. Autorisatie regels. Gebruik een aanroep voor het bijwerken van de autorisatie regel. |
 > | Action | Micro soft. relay/naam ruimten/WcfRelays/authorizationRules/verwijderen | Bewerking voor het verwijderen van WcfRelay-autorisatie regels |
 > | Action | Microsoft.Relay/namespaces/WcfRelays/authorizationRules/listkeys/action | De verbindings reeks ophalen voor WcfRelay |
@@ -4604,7 +4604,7 @@ De bewerkingen van de resource provider zijn altijd in ontwikkeling. Als u de me
 > | Action | Micro soft. relay/naam ruimten/WcfRelays/lezen | Lijst met WcfRelay-resource beschrijvingen ophalen |
 > | Action | Micro soft. relay/naam ruimten/WcfRelays/schrijven | Eigenschappen van WcfRelay maken of bijwerken. |
 > | Action | Micro soft. relay/naam ruimten/schrijven | Maak een naam ruimte resource en werk de eigenschappen bij. Tags en capaciteit van de naam ruimte zijn de eigenschappen die kunnen worden bijgewerkt. |
-> | Action | Microsoft.Relay/operations/read | Bewerkingen ophalen |
+> | Action | Microsoft.Relay/operations/read | Get-bewerkingen |
 > | Action | Microsoft.Relay/register/action | Hiermee wordt het abonnement voor de relay-resource provider geregistreerd en wordt het maken van relay-resources ingeschakeld |
 > | Action | Microsoft.Relay/unregister/action | Hiermee wordt het abonnement voor de relay-resource provider geregistreerd en wordt het maken van relay-resources ingeschakeld |
 
@@ -4638,7 +4638,7 @@ De bewerkingen van de resource provider zijn altijd in ontwikkeling. Als u de me
 > | Action | Microsoft.Resources/checkResourceName/action | Controleer de naam van de resource op geldigheid. |
 > | Action | Microsoft.Resources/deployments/cancel/action | Hiermee wordt een implementatie geannuleerd. |
 > | Action | Microsoft.Resources/deployments/delete | Hiermee verwijdert u een implementatie. |
-> | Action | Micro soft. resources/implementaties/exportTemplate/actie | Sjabloon exporteren voor een implementatie |
+> | Action | Micro soft. resources/implementaties/exportTemplate/actie | Sjabloon voor een implementatie exporteren |
 > | Action | Micro soft. resources/implementaties/bewerkingen/lezen | Hiermee worden implementatie bewerkingen opgehaald of weer gegeven. |
 > | Action | Micro soft. resources/implementaties/operationstatuses/lezen | Hiermee worden de statussen van de implementatie bewerking opgehaald of weer gegeven. |
 > | Action | Microsoft.Resources/deployments/read | Hiermee wordt een lijst met implementaties opgehaald of weer gegeven. |
@@ -4691,7 +4691,7 @@ De bewerkingen van de resource provider zijn altijd in ontwikkeling. Als u de me
 > | Action | Microsoft.Scheduler/jobcollections/jobs/read | Hiermee wordt een taak opgehaald. |
 > | Action | Microsoft.Scheduler/jobcollections/jobs/run/action | Taak wordt uitgevoerd. |
 > | Action | Micro soft. scheduler/jobcollections/Jobs/schrijven | Hiermee wordt een taak gemaakt of bijgewerkt. |
-> | Action | Micro soft. scheduler/jobcollections/lezen | Taakverzameling ophalen |
+> | Action | Micro soft. scheduler/jobcollections/lezen | Taak verzameling ophalen |
 > | Action | Microsoft.Scheduler/jobcollections/write | Hiermee wordt een taak verzameling gemaakt of bijgewerkt. |
 
 ## <a name="microsoftsearch"></a>Microsoft.Search
@@ -4793,7 +4793,7 @@ De bewerkingen van de resource provider zijn altijd in ontwikkeling. Als u de me
 > | Action | Microsoft.ServiceBus/namespaces/authorizationRules/read | De lijst met beschrijvingen van autorisatie regels voor naam ruimten ophalen. |
 > | Action | Microsoft.ServiceBus/namespaces/authorizationRules/regenerateKeys/action | De primaire of secundaire sleutel opnieuw genereren voor de resource |
 > | Action | Microsoft.ServiceBus/namespaces/authorizationRules/write | Maak autorisatie regels voor het naam ruimte niveau en werk de eigenschappen bij. De toegangs rechten voor de autorisatie regels, de primaire en secundaire sleutels kunnen worden bijgewerkt. |
-> | Action | Microsoft.ServiceBus/namespaces/Delete | De resource van een naamruimte verwijderen |
+> | Action | Microsoft.ServiceBus/namespaces/Delete | Naam ruimte resource verwijderen |
 > | Action | Microsoft.ServiceBus/namespaces/disasterRecoveryConfigs/authorizationRules/listkeys/action | Hiermee worden de sleutels voor autorisatie regels opgehaald voor de primaire naam ruimte voor nood herstel |
 > | Action | Microsoft.ServiceBus/namespaces/disasterRecoveryConfigs/authorizationRules/read | De autorisatie regels van de primaire naam ruimte voor herstel na nood geval ophalen |
 > | Action | Microsoft.ServiceBus/namespaces/disasterRecoveryConfigs/breakPairing/action | Hiermee schakelt u herstel na nood gevallen uit en stopt u het repliceren van wijzigingen van primaire naar secundaire naam ruimten. |
@@ -4806,25 +4806,25 @@ De bewerkingen van de resource provider zijn altijd in ontwikkeling. Als u de me
 > | Action | Microsoft.ServiceBus/namespaces/eventGridFilters/read | Hiermee wordt het Event Grid filter opgehaald dat aan de naam ruimte is gekoppeld. |
 > | Action | Microsoft.ServiceBus/namespaces/eventGridFilters/write | Hiermee wordt het Event Grid filter dat aan de naam ruimte is gekoppeld, gemaakt of bijgewerkt. |
 > | Action | Microsoft.ServiceBus/namespaces/eventhubs/read | Lijst met EventHub-resource beschrijvingen ophalen |
-> | Action | Microsoft.ServiceBus/namespaces/ipFilterRules/delete | Resource voor IP-filter verwijderen |
-> | Action | Microsoft.ServiceBus/namespaces/ipFilterRules/read | Resource voor IP-filter ophalen |
-> | Action | Microsoft.ServiceBus/namespaces/ipFilterRules/write | Resource voor IP-filter maken |
+> | Action | Microsoft.ServiceBus/namespaces/ipFilterRules/delete | IP-filter bron verwijderen |
+> | Action | Microsoft.ServiceBus/namespaces/ipFilterRules/read | IP-filter bron ophalen |
+> | Action | Microsoft.ServiceBus/namespaces/ipFilterRules/write | IP-filter bron maken |
 > | DataAction | Microsoft.ServiceBus/namespaces/messages/receive/action | Berichten ontvangen |
 > | DataAction | Microsoft.ServiceBus/namespaces/messages/send/action | Berichten verzenden |
 > | Action | Microsoft.ServiceBus/namespaces/messagingPlan/read | Hiermee wordt het berichten plan voor een naam ruimte opgehaald.<br>Deze API is afgeschaft.<br>Eigenschappen die via de MessagingPlan-resource beschikbaar worden gemaakt, worden in latere API-versies verplaatst naar de bron naam ruimte (Parent).<br>Deze bewerking wordt niet ondersteund op API-versie 2017-04-01. |
 > | Action | Microsoft.ServiceBus/namespaces/messagingPlan/write | Hiermee wordt het bericht abonnement voor een naam ruimte bijgewerkt.<br>Deze API is afgeschaft.<br>Eigenschappen die via de MessagingPlan-resource beschikbaar worden gemaakt, worden in latere API-versies verplaatst naar de bron naam ruimte (Parent).<br>Deze bewerking wordt niet ondersteund op API-versie 2017-04-01. |
-> | Action | Microsoft.ServiceBus/namespaces/migrate/action | Bewerking voor migreren van de naamruimte |
+> | Action | Microsoft.ServiceBus/namespaces/migrate/action | Naam ruimte bewerking migreren |
 > | Action | Microsoft.ServiceBus/namespaces/migrationConfigurations/delete | Hiermee verwijdert u de migratie configuratie. |
 > | Action | Microsoft.ServiceBus/namespaces/migrationConfigurations/read | Hiermee wordt de migratie configuratie opgehaald, waarmee de status van de migratie en de replicatie bewerkingen in behandeling worden aangegeven |
 > | Action | Microsoft.ServiceBus/namespaces/migrationConfigurations/revert/action | Hiermee wordt de standaard naar Premium-naam ruimte migratie hersteld |
 > | Action | Microsoft.ServiceBus/namespaces/migrationConfigurations/upgrade/action | Wijst de DNS-server die is gekoppeld aan de standaard naam ruimte toe aan de Premium-naam ruimte waarmee de migratie wordt voltooid en stopt de synchronisatie van resources van Standard-naar-Premium-naam ruimte |
 > | Action | Microsoft.ServiceBus/namespaces/migrationConfigurations/write | Hiermee wordt de migratie configuratie gemaakt of bijgewerkt. Hiermee wordt begonnen met het synchroniseren van resources van de standaard naar de Premium-naam ruimte |
-> | Action | Micro soft. ServiceBus/naam ruimten/networkruleset/verwijderen | Resource voor VNET-regel verwijderen |
+> | Action | Micro soft. ServiceBus/naam ruimten/networkruleset/verwijderen | VNET-regel resource verwijderen |
 > | Action | Micro soft. ServiceBus/naam ruimten/networkruleset/lezen | Hiermee wordt de NetworkRuleSet-resource opgehaald |
-> | Action | Micro soft. ServiceBus/naam ruimten/networkruleset/schrijven | Resource voor VNET-regel maken |
-> | Action | Microsoft.ServiceBus/namespaces/networkrulesets/delete | Resource voor VNET-regel verwijderen |
+> | Action | Micro soft. ServiceBus/naam ruimten/networkruleset/schrijven | VNET-regel resource maken |
+> | Action | Microsoft.ServiceBus/namespaces/networkrulesets/delete | VNET-regel resource verwijderen |
 > | Action | Microsoft.ServiceBus/namespaces/networkrulesets/read | Hiermee wordt de NetworkRuleSet-resource opgehaald |
-> | Action | Microsoft.ServiceBus/namespaces/networkrulesets/write | Resource voor VNET-regel maken |
+> | Action | Microsoft.ServiceBus/namespaces/networkrulesets/write | VNET-regel resource maken |
 > | Action | Microsoft.ServiceBus/namespaces/operationresults/read | De status van de naam ruimte bewerking ophalen |
 > | Action | Micro soft. ServiceBus/naam ruimten/providers/micro soft. Insights/diagnosticSettings/lezen | Lijst met resource beschrijvingen voor Diagnostische instellingen van naam ruimte ophalen |
 > | Action | Microsoft.ServiceBus/namespaces/providers/Microsoft.Insights/diagnosticSettings/write | Lijst met resource beschrijvingen voor Diagnostische instellingen van naam ruimte ophalen |
@@ -4840,7 +4840,7 @@ De bewerkingen van de resource provider zijn altijd in ontwikkeling. Als u de me
 > | Action | Microsoft.ServiceBus/namespaces/queues/read | Lijst met bron beschrijvingen van de wachtrij ophalen |
 > | Action | Microsoft.ServiceBus/namespaces/queues/write | Wachtrij-eigenschappen maken of bijwerken. |
 > | Action | Microsoft.ServiceBus/namespaces/read | De lijst met de resource beschrijving van de naam ruimte ophalen |
-> | Action | Microsoft.ServiceBus/namespaces/removeAcsNamepsace/action | ACS-naamruimte verwijderen |
+> | Action | Microsoft.ServiceBus/namespaces/removeAcsNamepsace/action | ACS-naam ruimte verwijderen |
 > | Action | Microsoft.ServiceBus/namespaces/topics/authorizationRules/action | Bewerking voor het bijwerken van het onderwerp. Deze bewerking wordt niet ondersteund op API-versie 2017-04-01. Autorisatie regels. Gebruik een aanroep voor het bijwerken van de autorisatie regel. |
 > | Action | Microsoft.ServiceBus/namespaces/topics/authorizationRules/delete | Bewerking voor het verwijderen van de autorisatie regels voor het onderwerp |
 > | Action | Microsoft.ServiceBus/namespaces/topics/authorizationRules/listkeys/action | De verbindings reeks naar het onderwerp ophalen |
@@ -4856,11 +4856,11 @@ De bewerkingen van de resource provider zijn altijd in ontwikkeling. Als u de me
 > | Action | Micro soft. ServiceBus/naam ruimten/onderwerpen/abonnementen/regels/schrijven | Regel eigenschappen maken of bijwerken. |
 > | Action | Microsoft.ServiceBus/namespaces/topics/subscriptions/write | Eigenschappen van TopicSubscription maken of bijwerken. |
 > | Action | Microsoft.ServiceBus/namespaces/topics/write | Eigenschappen van een onderwerp maken of bijwerken. |
-> | Action | Microsoft.ServiceBus/namespaces/virtualNetworkRules/delete | Resource voor VNET-regel verwijderen |
-> | Action | Microsoft.ServiceBus/namespaces/virtualNetworkRules/read | Resource voor VNET-regel ophalen |
-> | Action | Microsoft.ServiceBus/namespaces/virtualNetworkRules/write | Resource voor VNET-regel maken |
+> | Action | Microsoft.ServiceBus/namespaces/virtualNetworkRules/delete | VNET-regel resource verwijderen |
+> | Action | Microsoft.ServiceBus/namespaces/virtualNetworkRules/read | Hiermee wordt VNET-regel Resource opgehaald |
+> | Action | Microsoft.ServiceBus/namespaces/virtualNetworkRules/write | VNET-regel resource maken |
 > | Action | Microsoft.ServiceBus/namespaces/write | Maak een naam ruimte resource en werk de eigenschappen bij. Tags en capaciteit van de naam ruimte zijn de eigenschappen die kunnen worden bijgewerkt. |
-> | Action | Microsoft.ServiceBus/operations/read | Bewerkingen ophalen |
+> | Action | Microsoft.ServiceBus/operations/read | Get-bewerkingen |
 > | Action | Microsoft.ServiceBus/register/action | Hiermee wordt het abonnement voor de ServiceBus-resource provider geregistreerd en wordt het maken van ServiceBus-resources mogelijk |
 > | Action | Microsoft.ServiceBus/sku/read | Lijst met resource beschrijvingen van SKU ophalen |
 > | Action | Microsoft.ServiceBus/sku/regions/read | Lijst met SkuRegions-resource beschrijvingen ophalen |
@@ -5347,7 +5347,7 @@ De bewerkingen van de resource provider zijn altijd in ontwikkeling. Als u de me
 > | Action | Micro soft. Storage/Storage accounts/encryptionScopes/lezen |  |
 > | Action | Micro soft. Storage/Storage accounts/encryptionScopes/schrijven |  |
 > | Action | Microsoft.Storage/storageAccounts/failover/action | De klant kan de failover beheren in geval van beschikbaarheids problemen |
-> | DataAction | Microsoft.Storage/storageAccounts/fileServices/fileshares/files/actassuperuser/action | Machtigingen voor bestands beheerders ophalen |
+> | DataAction | Microsoft.Storage/storageAccounts/fileServices/fileshares/files/actassuperuser/action | Bevoegdheden van bestandsbeheerder ophalen |
 > | DataAction | Microsoft.Storage/storageAccounts/fileServices/fileshares/files/delete | Retourneert het resultaat van het verwijderen van een bestand/map |
 > | DataAction | Micro soft. Storage/Storage accounts/fileServices/bestands shares/files/modifypermissions/Action | Hiermee wordt het resultaat van het wijzigen van de machtiging voor een bestand/map geretourneerd |
 > | DataAction | Microsoft.Storage/storageAccounts/fileServices/fileshares/files/read | Retourneert een bestand/map of een lijst met bestanden/mappen |
@@ -5365,14 +5365,14 @@ De bewerkingen van de resource provider zijn altijd in ontwikkeling. Als u de me
 > | Action | Microsoft.Storage/storageAccounts/managementPolicies/delete | Beleid voor opslagaccountbeheer verwijderen |
 > | Action | Microsoft.Storage/storageAccounts/managementPolicies/read | Beleid voor opslagaccountbeheer ophalen |
 > | Action | Microsoft.Storage/storageAccounts/managementPolicies/write | Beleid voor opslagaccountbeheer plaatsen |
-> | Action | Microsoft.Storage/storageAccounts/privateEndpointConnectionProxies/delete | Particuliere endpoint-verbindings Proxy's verwijderen |
-> | Action | Micro soft. Storage/Storage accounts/privateEndpointConnectionProxies/lezen | Proxy voor verbinding met privé-eind punt ophalen |
-> | Action | Microsoft.Storage/storageAccounts/privateEndpointConnectionProxies/write | Connect-Proxy's voor privé-eind punt plaatsen |
-> | Action | Microsoft.Storage/storageAccounts/privateEndpointConnections/delete | Verbinding voor privé-eind punt verwijderen |
-> | Action | Microsoft.Storage/storageAccounts/privateEndpointConnections/read | Verbinding voor privé-eind punt ophalen |
-> | Action | Microsoft.Storage/storageAccounts/privateEndpointConnections/write | Verbinding voor privé-eind punt plaatsen |
-> | Action | Micro soft. Storage/Storage accounts/PrivateEndpointConnectionsApproval/Action | Privé-eindpunt verbindingen goed keuren |
-> | Action | Microsoft.Storage/storageAccounts/privateLinkResources/read | Storage account groupids ophalen |
+> | Action | Microsoft.Storage/storageAccounts/privateEndpointConnectionProxies/delete | Proxy's voor verbinding met privé-eindpunt verwijderen |
+> | Action | Micro soft. Storage/Storage accounts/privateEndpointConnectionProxies/lezen | Proxy voor verbinding met privé-eindpunt ophalen |
+> | Action | Microsoft.Storage/storageAccounts/privateEndpointConnectionProxies/write | Put-bewerking voor proxy's voor verbinding met privé-eindpunt uitvoeren |
+> | Action | Microsoft.Storage/storageAccounts/privateEndpointConnections/delete | Verbinding met privé-eindpunt verwijderen |
+> | Action | Microsoft.Storage/storageAccounts/privateEndpointConnections/read | Verbinding met privé-eindpunt ophalen |
+> | Action | Microsoft.Storage/storageAccounts/privateEndpointConnections/write | Put-bewerking voor verbinding met privé-eindpunt uitvoeren |
+> | Action | Micro soft. Storage/Storage accounts/PrivateEndpointConnectionsApproval/Action | Privé-eindpuntverbindingen goedkeuren |
+> | Action | Microsoft.Storage/storageAccounts/privateLinkResources/read | Groeps-id's voor opslagaccounts ophalen |
 > | Action | Microsoft.Storage/storageAccounts/queueServices/queues/delete | Retourneert het resultaat van het verwijderen van een wachtrij |
 > | DataAction | Microsoft.Storage/storageAccounts/queueServices/queues/messages/add/action | Retourneert het resultaat van het toevoegen van een bericht |
 > | DataAction | Microsoft.Storage/storageAccounts/queueServices/queues/messages/delete | Retourneert het resultaat van het verwijderen van een bericht |
@@ -5665,7 +5665,7 @@ De bewerkingen van de resource provider zijn altijd in ontwikkeling. Als u de me
 > [!div class="mx-tdCol2BreakAll"]
 > | Actietype | Bewerking | Description |
 > | --- | --- | --- |
-> | Action | Microsoft.Support/register/action | Hiermee wordt het item geregistreerd bij de ondersteuningsresourceprovider |
+> | Action | Microsoft.Support/register/action | Hiermee wordt het item geregistreerd bij de resourceprovider voor ondersteuning |
 > | Action | Microsoft.Support/supportTickets/read | Hiermee worden gegevens over het ondersteuningsticket opgehaald (inclusief status, ernst, contactgegevens en communicatie) of wordt de lijst met ondersteuningstickets voor de verschillende abonnementen opgehaald. |
 > | Action | Microsoft.Support/supportTickets/write | Hiermee wordt een ondersteuningsticket gemaakt of bijgewerkt. U kunt een ondersteuningsticket maken voor problemen van technische aard of op het gebied van facturering, quota's of beheer van abonnementen. U kunt voor bestaande ondersteuningstickets de ernst, de contactgegevens en de communicatiemethoden aanpassen. |
 
@@ -5779,7 +5779,7 @@ De bewerkingen van de resource provider zijn altijd in ontwikkeling. Als u de me
 > | Action | Microsoft.Web/hostingEnvironments/multiRolePools/Write | Een nieuwe front-endwebserver maken in een App Service Environment of een bestaande groep bijwerken |
 > | Action | microsoft.web/hostingenvironments/operations/read | Bewerkingen voor hosting omgevingen ophalen. |
 > | Action | microsoft.web/hostingenvironments/outboundnetworkdependenciesendpoints/read | De netwerk eindpunten van alle uitgaande afhankelijkheden ophalen. |
-> | Action | Microsoft.Web/hostingEnvironments/PrivateEndpointConnectionsApproval/action | Privé-eindpunt verbindingen goed keuren |
+> | Action | Microsoft.Web/hostingEnvironments/PrivateEndpointConnectionsApproval/action | Privé-eindpuntverbindingen goedkeuren |
 > | Action | Micro soft. Web/hostingEnvironments/lezen | De eigenschappen van een App Service Environment ophalen |
 > | Action | Microsoft.Web/hostingEnvironments/reboot/Action | Alle machines in een App Service Environment opnieuw opstarten |
 > | Action | microsoft.web/hostingenvironments/resume/action | Hosting omgevingen hervatten. |
@@ -5944,7 +5944,7 @@ De bewerkingen van de resource provider zijn altijd in ontwikkeling. Als u de me
 > | Action | microsoft.web/sites/premieraddons/read | Ontvang Web Apps Premier-invoeg toepassingen. |
 > | Action | microsoft.web/sites/premieraddons/write | Werk Web Apps Premier-invoeg toepassingen bij. |
 > | Action | microsoft.web/sites/privateaccess/read | Ontvang gegevens over toegang tot de persoonlijke locatie en geautoriseerde virtuele netwerken die toegang hebben tot de site. |
-> | Action | Microsoft.Web/sites/PrivateEndpointConnectionsApproval/action | Privé-eindpunt verbindingen goed keuren |
+> | Action | Microsoft.Web/sites/PrivateEndpointConnectionsApproval/action | Privé-eindpuntverbindingen goedkeuren |
 > | Action | microsoft.web/sites/processes/modules/read | Web Apps-proces modules ophalen. |
 > | Action | microsoft.web/sites/processes/read | Web Apps-processen ophalen. |
 > | Action | microsoft.web/sites/processes/threads/read | Ontvang Web Apps process-threads. |

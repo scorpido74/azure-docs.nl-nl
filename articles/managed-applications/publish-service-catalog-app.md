@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.date: 10/04/2018
 ms.author: tomfitz
-ms.openlocfilehash: bf6ae32a61504dc344e140a0e27c5a17b5422073
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 1d28a9d330dd001e3fdc05e37f7bbcdd2db7ee6e
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68609871"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "71224545"
 ---
 # <a name="create-and-publish-a-managed-application-definition"></a>De definitie van een beheerde toepassing maken en publiceren
 
@@ -139,6 +139,7 @@ Voeg de volgende starter-JSON toe aan het bestand en sla het op.
             "location": "[location()]"
         }
     }
+}
 ```
 
 Zie aan de [slag met CreateUiDefinition](create-uidefinition-overview.md)voor meer informatie.

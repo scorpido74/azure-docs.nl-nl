@@ -6,13 +6,13 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: overview
-ms.date: 07/22/2019
-ms.openlocfilehash: 4619545ab1fed5f55504e80eede0d1cf240eea87
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.date: 09/23/2019
+ms.openlocfilehash: e1863cc54759f6cc2266073629093d4923260525
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68488694"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240405"
 ---
 # <a name="overview-of-enterprise-security-in-azure-hdinsight"></a>Overzicht van ENTER prise Security in azure HDInsight
 
@@ -52,7 +52,7 @@ Controle van alle toegang tot de cluster bronnen en de gegevens is nodig voor he
 
 De beheerder kan alle toegang tot de bronnen en gegevens van het HDInsight-cluster weer geven en rapporteren. De beheerder kan ook alle wijzigingen bekijken en rapporteren voor het toegangs beheer beleid dat is gemaakt in Apache zwerver ondersteunde eind punten. 
 
-Om toegang te krijgen tot Apache zwerver en Ambari-audit logboeken en de logboeken voor SSH-toegang, [schakelt u Azure monitor](../hdinsight-hadoop-oms-log-analytics-tutorial.md) in en bekijkt u de gerelateerde controle records.
+Om toegang te krijgen tot Apache zwerver en Ambari-audit logboeken en de logboeken voor SSH-toegang, [schakelt u Azure monitor](../hdinsight-hadoop-oms-log-analytics-tutorial.md#cluster-auditing) in en bekijkt u de tabellen die controle records bieden.
 
 ### <a name="encryption"></a>Versleuteling
 
@@ -73,16 +73,17 @@ De volgende tabel bevat koppelingen naar bronnen voor elk type beveiligings oplo
 | Beveiliging van gegevens toegang | [Toegangs beheer lijsten configureren acl's](../../storage/blobs/data-lake-storage-access-control.md) voor Azure data Lake Storage gen1 en Gen2  | De klant |
 |  | Schakel de eigenschap [beveiligde overdracht vereist](../../storage/common/storage-require-secure-transfer.md) in voor opslag accounts. | De klant |
 |  | [Azure Storage firewalls](../../storage/common/storage-network-security.md) en virtuele netwerken configureren | De klant |
+|  | [Azure Virtual Network-Service-eind punten](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) configureren voor Cosmos DB en [Azure SQL DB](https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview) | De klant |
 |  | Zorg ervoor dat [TLS-versleuteling](../../storage/common/storage-security-tls.md) is ingeschakeld voor gegevens die onderweg zijn. | De klant |
 |  | Door de [klant beheerde sleutels](../../storage/common/storage-encryption-keys-portal.md) voor Azure Storage versleuteling configureren | De klant |
 | Beveiliging van toepassingen en middleware | Integreren met AAD-DS en [verificatie configureren](apache-domain-joined-configure-using-azure-adds.md) | De klant |
 |  | Een [Apache zwerver-autorisatie](apache-domain-joined-run-hive.md) beleid configureren | De klant |
-|  | [Azure monitor](../hdinsight-hadoop-oms-log-analytics-tutorial.md) -Logboeken gebruiken | De klant |
+|  | [Azure monitor-logboeken](../hdinsight-hadoop-oms-log-analytics-tutorial.md) gebruiken | De klant |
 | Beveiliging van het besturings systeem | Clusters met de meest recente beveiligde basis installatie kopie maken | De klant |
-|  | Patching van het [besturings systeem](../hdinsight-os-patching.md) controleren op regel matige intervallen | De klant |
+|  | [Patching van het besturings systeem](../hdinsight-os-patching.md) controleren op regel matige intervallen | De klant |
 | Netwerkbeveiliging | Een [virtueel netwerk](../hdinsight-plan-virtual-network-deployment.md) configureren |
 |  | [Regels voor binnenkomende netwerk beveiligings groepen (NSG)](../hdinsight-plan-virtual-network-deployment.md#networktraffic) configureren | De klant |
-|  | Beperking van uitgaand [verkeer](../hdinsight-restrict-outbound-traffic.md) configureren met Firewall (preview-versie) | De klant |
+|  | [Beperking van uitgaand verkeer](../hdinsight-restrict-outbound-traffic.md) configureren met Firewall (preview-versie) | De klant |
 | Gevirtualiseerde infra structuur | N/A | HDInsight (Cloud provider) |
 | Fysieke infrastructuur beveiliging | N/A | HDInsight (Cloud provider) |
 

@@ -1,11 +1,11 @@
 ---
-title: Routering en code-expressies
-description: In dit onderwerp wordt uitgelegd Routering en code-expressies voor Azure notification hubs.
+title: Routerings-en label expressies
+description: In dit onderwerp worden routerings-en label expressies voor Azure notification hubs uitgelegd.
 services: notification-hubs
 documentationcenter: .net
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.assetid: 0fffb3bb-8ed8-4e0f-89e8-0de24a47f644
 ms.service: notification-hubs
 ms.workload: mobile
@@ -13,39 +13,41 @@ ms.tgt_pltfrm: mobile-multiple
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/23/2019
-ms.author: jowargo
-ms.openlocfilehash: 31a22aabc7b0f1d51a673ef8642037103badcc02
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 01/23/2019
+ms.openlocfilehash: 66388f139b63c63e1f0f8ee8ee063e0ddd0f9da5
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61457801"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71213032"
 ---
-# <a name="routing-and-tag-expressions"></a>Routering en code-expressies
+# <a name="routing-and-tag-expressions"></a>Routerings-en label expressies
 
 ## <a name="overview"></a>Overzicht
 
-Code-expressies kunnen u richten op specifieke sets van apparaten of meer in het bijzonder registraties bij het verzenden van pushmeldingen via Notification Hubs.
+Met label expressies kunt u specifieke sets van apparaten of meer specifieke registraties richten bij het verzenden van een push melding via Notification Hubs.
 
-## <a name="targeting-specific-registrations"></a>Die gericht zijn op specifieke registraties
+## <a name="targeting-specific-registrations"></a>Specifieke registraties richten
 
-De enige manier om doel specifieke kennisgeving registraties bestaat uit het koppelen van labels met deze vervolgens richt u op deze tags. Zoals besproken in [registratiebeheer](notification-hubs-push-notification-registration-management.md), om te kunnen ontvangen van pushmeldingen meldingen een app heeft om een apparaat te registreren voor een notification hub verwerkt. Zodra een registratie voor een notification hub is gemaakt, kan de toepassing back-end pushmeldingen verzenden naar deze. De toepassing back-end kunt de rapporten naar een specifieke mededeling is gericht op de volgende manieren:
+De enige manier om specifieke meldings registraties te richten, is door labels te koppelen en vervolgens de labels te richten. Zoals beschreven in [registratie beheer](notification-hubs-push-notification-registration-management.md), om Push meldingen te ontvangen, moet een app een apparaat-handle registreren op een notification hub. Zodra een registratie is gemaakt op een notification hub, kan de back-end van de toepassing push meldingen verzenden naar de app. De back-end van de toepassing kan op de volgende manieren de registraties voor doel met een specifieke melding kiezen:
 
-1. **Uitzenden**: alle registraties in de notification hub de melding ontvangen.
-2. **Tag**: alle registraties die het opgegeven label bevatten de melding ontvangen.
-3. **Tagexpressie**: alle registraties waarvan set tags overeenkomen met de opgegeven expressie de melding ontvangen.
+1. **Broadcast**: alle registraties in de notification hub ontvangen de melding.
+2. **Tag**: alle registraties die het opgegeven label bevatten ontvangen de melding.
+3. **Tag-expressie**: alle registraties waarvan de set labels overeenkomen met de opgegeven expressie ontvangen de melding.
 
 ## <a name="tags"></a>Tags
 
-Een label mag een willekeurige tekenreeks, maximaal 120 tekens lang zijn, alfanumerieke tekens en de volgende niet-alfanumerieke tekens bevatten: '_', ' @', '#', '. ',':', '-'. Het volgende voorbeeld ziet u een toepassing van waaruit u de pop-upmeldingen over specifieke muziekgroepen kunt ontvangen. In dit scenario is een eenvoudige manier om meldingen van de route naar label registraties met tags die staan voor de verschillende banden, zoals in de volgende afbeelding:
+Een tag kan een wille keurige teken reeks zijn, Maxi maal 120 tekens, bevatten alfanumeriek en de volgende niet-alfanumerieke tekens: ' _ ', ' @ ', ' # ', '. ', ': ', '-'. In het volgende voor beeld ziet u een toepassing waarvan u pop-upmeldingen over specifieke muziek groepen kunt ontvangen. In dit scenario is een eenvoudige manier om meldingen te routeren met label registraties met tags die de verschillende banden vertegenwoordigen, zoals in de volgende afbeelding:
 
 ![](./media/notification-hubs-routing-tag-expressions/notification-hubs-tags.png)
 
-In deze afbeelding, het bericht gemarkeerd **Beatles** bereikt het Tablet PC die geregistreerd bij de tag **Beatles**.
+In deze afbeelding bereikt het bericht **Beatles** alleen de Tablet die is geregistreerd bij de tag **Beatles**.
 
-Zie voor meer informatie over het maken van registraties voor tags [registratiebeheer](notification-hubs-push-notification-registration-management.md).
+Zie [registratie beheer](notification-hubs-push-notification-registration-management.md)voor meer informatie over het maken van registraties voor Tags.
 
-U kunt meldingen verzenden naar labels met behulp van de methoden van de meldingen verzenden van de `Microsoft.Azure.NotificationHubs.NotificationHubClient` klasse de [Microsoft Azure Notification Hubs](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/) SDK. U kunt ook een Node.js-, of de Push-meldingen REST-API's gebruiken.  Hier volgt een voorbeeld met de SDK.
+U kunt meldingen naar Tags verzenden met behulp van de methoden voor `Microsoft.Azure.NotificationHubs.NotificationHubClient` het verzenden van meldingen van de klasse in de [Microsoft Azure notification hubs](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/) SDK. U kunt ook node. js of de REST-Api's voor push meldingen gebruiken.  Hier volgt een voor beeld van het gebruik van de SDK.
 
 ```csharp
 Microsoft.Azure.NotificationHubs.NotificationOutcome outcome = null;
@@ -61,32 +63,32 @@ toast = @"<toast><visual><binding template=""ToastGeneric""><text id=""1"">" +
 outcome = await Notifications.Instance.Hub.SendWindowsNativeNotificationAsync(toast, "Wailers");
 ```
 
-Tags hoeven niet te zijn vooraf ingerichte en kunnen verwijzen naar meerdere app-specifieke concepten. Gebruikers van de voorbeeldtoepassing van dit kunnen bijvoorbeeld opmerking plaatsen bij stroken en wilt ontvangen toasts, niet alleen voor reacties op hun favoriete banden, maar ook voor alle opmerkingen van hun vrienden worden bekeken, ongeacht de band waarop ze zijn opmerkingen. De volgende afbeelding toont een voorbeeld van dit scenario:
+Tags hoeven niet vooraf te worden ingericht en kunnen verwijzen naar meerdere app-specifieke concepten. Gebruikers van deze voorbeeld toepassing kunnen bijvoorbeeld opmerkingen maken op banden en pop-upmeldingen ontvangen, niet alleen voor de opmerkingen op hun favoriete banden, maar ook voor alle opmerkingen van hun vrienden, ongeacht de band waarop ze opmerkingen maken. In de volgende afbeelding ziet u een voor beeld van dit scenario:
 
 ![](./media/notification-hubs-routing-tag-expressions/notification-hubs-tags2.png)
 
-In deze afbeelding Els is geïnteresseerd in updates voor de Beatles en Bob is geïnteresseerd in updates voor de Wailers. Bob is ook geïnteresseerd in de Charlie opmerkingen en Charlie is geïnteresseerd in de Wailers. Wanneer een melding wordt verzonden om de Charlie Opmerking bij de Beatles, ontvangen zowel Alice en Bob.
+In deze afbeelding is Lisa geïnteresseerd in updates voor het Beatles en is Bob geïnteresseerd in updates voor de Wailers. Bob is ook geïnteresseerd in de opmerkingen van Charlie en Charlie is geïnteresseerd in de Wailers. Wanneer er een melding wordt verzonden voor de opmerking van Charlie op de Beatles, ontvangen zowel Alice als Bob deze.
 
-U kunt meerdere opmerkingen kunnen in tags (bijvoorbeeld 'band_Beatles' of 'follows_Charlie') coderen, zijn tags eenvoudige tekenreeksen en niet-eigenschappen met waarden. Een registratie wordt alleen op de aanwezigheid of afwezigheid van een specifieke tag gekoppeld.
+Hoewel u meerdere problemen in tags kunt coderen (bijvoorbeeld ' band_Beatles ' of ' follows_Charlie '), zijn Tags eenvoudige teken reeksen en geen eigenschappen met waarden. Een registratie komt alleen overeen met de aanwezigheid of het ontbreken van een specifieke tag.
 
-Zie voor een volledige stapsgewijze zelfstudie over het gebruik van tags voor het verzenden naar belangengroepen, [belangrijke nieuws](notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md).
+Zie voor een volledige stapsgewijze zelf studie over het gebruik van tags voor het verzenden van belangen groepen, het [afbreken van nieuws](notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md).
 
 > [!NOTE]
-> Azure Notification Hubs ondersteunt maximaal 60 tags per registratie.
+> Azure Notification Hubs ondersteunt Maxi maal 60 Tags per registratie.
 
-## <a name="using-tags-to-target-users"></a>Met behulp van labels te richten op gebruikers
+## <a name="using-tags-to-target-users"></a>Labels gebruiken voor doel gebruikers
 
-Er is een andere manier om labels te gebruiken om alle apparaten van een bepaalde gebruiker te identificeren. Registraties kunnen worden voorzien van een label met een gebruikers-ID, zoals in de volgende afbeelding:
+Een andere manier om tags te gebruiken is het identificeren van alle apparaten van een bepaalde gebruiker. Registraties kunnen worden gelabeld met een tag die een gebruikers-ID bevat, zoals in de volgende afbeelding:
 
 ![](./media/notification-hubs-routing-tag-expressions/notification-hubs-tags3.png)
 
-Het bericht gemarkeerd in deze afbeelding uid: Els bereikt alle registraties gelabelde 'uid:Alice'; Daarom kan al van Alice apparaten.
+In deze afbeelding is het bericht met de gecodeerde UID: Anja bereikt alle registraties met de label ' UID: Alice '; dus alle apparaten van Alice.
 
-## <a name="tag-expressions"></a>Code-expressies
+## <a name="tag-expressions"></a>Label expressies
 
-Er zijn gevallen waarin een melding naar een set met geregistreerde items die niet door een enkele tag, maar door een Booleaanse expressie op tags wordt geïdentificeerd als doel heeft.
+Er zijn gevallen waarin een melding moet worden gericht op een set registraties die niet door één tag worden geïdentificeerd, maar door een booleaanse expressie voor Tags.
 
-Houd rekening met een sport-toepassing die een herinnering naar iedereen in Boston over een spel tussen de rode Sox en Cardinals verzendt. Als de client-app tags over interesse in teams en locatie registreert, moet de melding worden gericht op iedereen in Boston die geïnteresseerd bent in het rood Sox of de Cardinals is. Dit probleem kan worden uitgedrukt met de volgende Booleaanse expressie:
+Overweeg een sport toepassing die een herinnering stuurt naar iedereen in Boston over een spel tussen de Rode Sox en de Cardinals. Als de client-app Tags registreert over interesse in teams en locatie, moet de melding worden gericht op iedereen in Boston die geïnteresseerd is in de Rode Sox of de Cardinals. Deze voor waarde kan worden weer gegeven met de volgende booleaanse expressie:
 
 ```csharp
 (follows_RedSox || follows_Cardinals) && location_Boston
@@ -94,9 +96,9 @@ Houd rekening met een sport-toepassing die een herinnering naar iedereen in Bost
 
 ![](./media/notification-hubs-routing-tag-expressions/notification-hubs-tags4.png)
 
-Code-expressies kunnen bevatten alle Booleaanse operators, zoals en (& &), of (|), en niet (!). Ze kunnen ook tussen haakjes bevatten. Code-expressies zijn beperkt tot 20 tags als ze alleen or-items bevatten; anders zijn ze beperkt tot 6 tags.
+Label expressies kunnen alle Booleaanse Opera tors bevatten, zoals en (& &) of (| |), en niet (!). Ze kunnen ook haakjes bevatten. Label expressies zijn beperkt tot 20 Tags als ze alleen or bevatten. anders zijn ze beperkt tot 6 tags.
 
-Hier volgt een voorbeeld voor het verzenden van meldingen met code-expressies met de SDK.
+Hier volgt een voor beeld van het verzenden van meldingen met label expressies met behulp van de SDK.
 
 ```csharp
 Microsoft.Azure.NotificationHubs.NotificationOutcome outcome = null;

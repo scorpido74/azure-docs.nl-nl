@@ -6,21 +6,20 @@ documentationcenter: na
 author: rkarlin
 manager: rkarlin
 editor: ''
-ms.assetid: cbf5003b-76cf-446f-adb6-6d816beca70f
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/19/2019
+ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 28def73926294a025d70844e535a0856153ae30a
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 25ae54ea8dd75fae74d4578b33146483ade53e4c
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69611930"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240753"
 ---
 # <a name="connect-your-external-solution-using-common-event-format"></a>Verbind uw externe oplossing met de algemene gebeurtenis indeling
 
@@ -148,5 +147,5 @@ Het kan 20 minuten duren voordat uw logboeken in Log Analytics worden weer gegev
 ## <a name="next-steps"></a>Volgende stappen
 In dit document hebt u geleerd hoe u CEF-apparaten verbindt met Azure Sentinel. Raadpleeg de volgende artikelen voor meer informatie over Azure Sentinel:
 - Meer informatie over hoe u [inzicht krijgt in uw gegevens en mogelijke bedreigingen](quickstart-get-visibility.md).
-- Ga aan de slag [met het detecteren van bedreigingen met Azure Sentinel](tutorial-detect-threats.md).
+- Ga aan de slag [met het detecteren van bedreigingen met Azure Sentinel](tutorial-detect-threats-built-in.md).
 

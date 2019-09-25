@@ -1,5 +1,5 @@
 ---
-title: Wat is Azure Sentinel preview? | Microsoft Docs
+title: Wat is Azure Sentinel? | Microsoft Docs
 description: Meer informatie over Azure Sentinel, de belangrijkste mogelijkheden en hoe het werkt.
 services: sentinel
 documentationcenter: na
@@ -14,20 +14,18 @@ ms.topic: overview
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 2/28/2019
+ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 15cf770a372c9a1386dd0293abeac01fd3cacf63
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 19291e233e4086815488973629167cc7d7dc9f4a
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779750"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240536"
 ---
-# <a name="what-is-azure-sentinel-preview"></a>Wat is Azure Sentinel preview?
+# <a name="what-is-azure-sentinel"></a>Wat is Azure Sentinel?
 
-> [!IMPORTANT]
-> Azure Sentinel is momenteel beschikbaar als open bare preview.
-> Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
+
 
 Microsoft Azure Sentinel is een schaal bare, Cloud-native, SIEM-oplossing (Security **Information Event Management)** en **via (Security Orchestration Automated Response)** . Azure Sentinel levert intelligente beveiligings analyses en bedreigings informatie over de hele onderneming, waardoor er één oplossing is voor waarschuwings detectie, zicht baarheid van bedreigingen, proactieve jacht en reactie op bedreigingen. 
 
@@ -35,7 +33,7 @@ Azure Sentinel is uw vogel weer gave voor de hele onderneming die de stress van 
 
 - **Verzamel gegevens op Cloud schaal** voor alle gebruikers, apparaten, toepassingen en infra structuur, zowel on-premises als in meerdere clouds. 
 
-- **Detecteer eerder**niet-gedetecteerde bedreigingen en Minimaliseer fout-positieven met behulp van de analytische en ongeëvenaarde bedreigings informatie van micro soft. 
+- **Detecteer eerder niet-gedetecteerde bedreigingen**en Minimaliseer fout-positieven met behulp van de analytische en ongeëvenaarde bedreigings informatie van micro soft. 
 
 - **Onderzoek bedreigingen met kunst matige intelligentie**en zoek naar verdachte activiteiten op schaal, tik op jaren van Cyber-Security-werk bij micro soft. 
 
@@ -53,25 +51,17 @@ U moet eerst [verbinding maken met uw beveiligings bronnen](connect-data-sources
 
 ![Gegevens verzamelaars](./media/collect-data/collect-data-page.png)
 
-## <a name="dashboards"></a>Dashboards
+## <a name="workbooks"></a>Werkmappen
 
-Nadat u verbinding hebt gemaakt met gegevens bronnen, kunt u kiezen uit een galerie met [deskundig gemaakte Dash boards](quickstart-get-visibility.md#dashboards) die inzicht krijgen in uw gegevens bronnen. Elk dash board is volledig aanpasbaar: u kunt uw eigen logica toevoegen of query's wijzigen, maar u kunt ook een volledig dash board maken.
+Nadat u [uw gegevens bronnen](quickstart-onboard.md) aan Azure Sentinel hebt gekoppeld, kunt u de gegevens bewaken met behulp van de Azure Sentinel-integratie met Azure monitor werkmappen, die veelzijdigheid biedt bij het maken van aangepaste werkmappen. Hoewel werkmappen anders worden weer gegeven in de Azure-Sentinel, kan het nuttig zijn om te zien hoe u [interactieve rapporten kunt maken met Azure monitor-werkmappen](../azure-monitor/app/usage-workbooks.md). Met Azure Sentinel kunt u aangepaste werkmappen maken voor uw gegevens en ook met ingebouwde werkmap sjablonen, zodat u snel inzicht kunt krijgen in uw gegevens zodra u verbinding maakt met een gegevens bron.
 
-De Dash boards bieden een interactieve visualisatie met behulp van geavanceerde analyse om uw beveiligings analisten te helpen beter inzicht te krijgen in wat er gebeurt tijdens een aanval. De hulpprogram ma's voor onderzoek bieden u de mogelijkheid om op elk wille keurig veld te gaan, van alle gegevens, om snel een risico context te ontwikkelen. 
-
-![Dashboards](./media/overview/dashboards.png)
+![Dashboards](./media/tutorial-monitor-data/access-workbooks.png)
 
 ## <a name="analytics"></a>Analyse
 
-Om het geluid te verminderen en het aantal waarschuwingen dat u moet controleren en te minimaliseren, gebruikt Azure Sentinel [Analytics om waarschuwingen in incidenten te correleren](tutorial-detect-threats.md). **Incidenten** zijn groepen gerelateerde waarschuwingen die samen een mogelijke bedreiging maken die kan worden onderzocht en opgelost. Gebruik de ingebouwde correlatie regels als-is of gebruik deze als uitgangs punt om uw eigen samen te stellen. Azure Sentinel biedt ook machine learning regels om uw netwerk gedrag toe te wijzen en vervolgens te zoeken naar afwijkingen in uw resources. Deze analyse verbindt de punten door waarschuwingen met een laag niveau te combi neren over verschillende entiteiten in potentiële beveiligings incidenten met hoge betrouw baarheid.
+Om het geluid te verminderen en het aantal waarschuwingen dat u moet controleren en te minimaliseren, gebruikt Azure Sentinel [Analytics om waarschuwingen in incidenten te correleren](tutorial-detect-threats-built-in.md). **Incidenten** zijn groepen gerelateerde waarschuwingen die samen een mogelijke bedreiging maken die kan worden onderzocht en opgelost. Gebruik de ingebouwde correlatie regels als-is of gebruik deze als uitgangs punt om uw eigen samen te stellen. Azure Sentinel biedt ook machine learning regels om uw netwerk gedrag toe te wijzen en vervolgens te zoeken naar afwijkingen in uw resources. Deze analyse verbindt de punten door waarschuwingen met een laag niveau te combi neren over verschillende entiteiten in potentiële beveiligings incidenten met hoge betrouw baarheid.
 
-![Meldingen](./media/overview/cases.png)
-
-## <a name="user-analytics"></a>Gebruikersanalyses
-
-Met de systeem eigen integratie van machine learning (ML) en [gebruikers analyse](user-analytics.md)kan Azure Sentinel snel bedreigingen helpen detecteren. Azure Sentinel kan naadloos worden geïntegreerd met Azure Advanced Threat Protection om gebruikers gedrag te analyseren en te bepalen welke gebruikers u het eerst moet onderzoeken, op basis van hun waarschuwingen en verdachte activiteiten patronen in azure Sentinel en Microsoft 365.
-
-![Gebruikersanalyses](./media/overview/user-analytics.png)
+![Incidenten](./media/tutorial-investigate-cases/incident-severity.png)
 
 
 ## <a name="security-automation--orchestration"></a>Integratie van & voor beveiligings automatisering
@@ -84,22 +74,22 @@ Als u bijvoorbeeld het ServiceNow-ticket systeem gebruikt, kunt u de hulpprogram
 
 
 
-## <a name="investigation"></a>Onderzoek
+## <a name="investigation-preview"></a>Onderzoek (preview-versie)
 
 De hulpprogram ma's voor [grondige onderzoek](tutorial-investigate-cases.md) van Azure geven u een beter inzicht in het bereik en vinden de hoofd oorzaak van een mogelijke beveiligings risico. U kunt een entiteit kiezen in de interactieve grafiek om interessante vragen te stellen voor een specifieke entiteit, en inzoomen op die entiteit en de bijbehorende verbindingen om de hoofd oorzaak van de dreiging te bereiken. 
 
-![Onderzoek](./media/overview/investigation.png)
+![Onderzoek](./media/tutorial-investigate-cases/map-timeline.png)
 
 
-## <a name="hunting"></a>Zoeken
+## <a name="hunting"></a>Opsporing
 
-Gebruik de [krachtige hulpprogram ma's voor zoeken en](hunting.md)doorzoeken van Azure Sentinel, op basis van het Mitre-Framework, waarmee u op proactieve wijze beveiligings Risico's in de gegevens bronnen van uw organisatie kunt vinden voordat een waarschuwing wordt geactiveerd. Nadat u hebt gedetecteerd welke Zoek query hoge waarden biedt voor mogelijke aanvallen, kunt u ook aangepaste detectie regels maken op basis van uw query, en deze inzichten als waarschuwingen voor uw beveiligings incident responders aanwijzen. Tijdens de jacht kunt u blad wijzers voor interessante gebeurtenissen maken, zodat u ze later weer terug kunt gebruiken, delen met anderen en ze groeperen met andere correlatie gebeurtenissen om een aantrekkelijke Case voor onderzoek te maken.
+Gebruik de [krachtige hulpprogram ma's voor zoeken en](hunting.md)doorzoeken van Azure Sentinel, op basis van het Mitre-Framework, waarmee u op proactieve wijze beveiligings Risico's in de gegevens bronnen van uw organisatie kunt vinden voordat een waarschuwing wordt geactiveerd. Nadat u hebt gedetecteerd welke Zoek query hoge waarden biedt voor mogelijke aanvallen, kunt u ook aangepaste detectie regels maken op basis van uw query, en deze inzichten als waarschuwingen voor uw beveiligings incident responders aanwijzen. Terwijl u zich aanmeldt, kunt u blad wijzers voor interessante gebeurtenissen maken, zodat u deze later weer gaat delen, ze met anderen deelt en ze groepeert met andere correlatie gebeurtenissen om een aantrekkelijk incident voor onderzoek te maken.
 
-![Zoeken](./media/overview/hunting.png)
+![Opsporing](./media/overview/hunting.png)
 
 ## <a name="community"></a>Community
 
-De Azure Sentinel Community is een krachtige bron voor detectie en automatisering van bedreigingen. Onze micro soft-beveiligings analisten maken en voegen voortdurend nieuwe Dash boards, playbooks, jacht-query's en meer toe, die u in uw omgeving kunt gebruiken om ze in de community te plaatsen. U kunt voorbeeld inhoud downloaden van de GitHub- [opslag plaats](https://aka.ms/asicommunity) van de privé-community om aangepaste Dash boards, jacht-query's, notitie blokken en Playbooks voor Azure-Sentinel te maken. 
+De Azure Sentinel Community is een krachtige bron voor detectie en automatisering van bedreigingen. Onze micro soft-beveiligings analisten maken en voegen voortdurend nieuwe werkmappen, playbooks, jacht-query's en meer toe, die u in uw omgeving kunt gebruiken om ze in de community te plaatsen. U kunt voorbeeld inhoud downloaden van de GitHub- [opslag plaats](https://aka.ms/asicommunity) van de privé-community om aangepaste werkmappen, jacht-query's, notitie blokken en Playbooks voor Azure-Sentinel te maken. 
 
 ![Community](./media/overview/community.png)
 

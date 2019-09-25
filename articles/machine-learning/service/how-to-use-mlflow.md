@@ -9,14 +9,14 @@ ms.service: machine-learning
 ms.subservice: core
 ms.reviewer: nibaccam
 ms.topic: conceptual
-ms.date: 08/07/2019
+ms.date: 09/23/2019
 ms.custom: seodec18
-ms.openlocfilehash: b1b2255b4e0f5aa34e3c7159b00156aee5224928
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: c32b587464d66148957672be16493b66dc051ada
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "70999295"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71219690"
 ---
 # <a name="track-metrics-and-deploy-models-with-mlflow-and-azure-machine-learning-preview"></a>Houd metrische gegevens bij en implementeer modellen met MLflow en Azure Machine Learning (preview-versie)
 
@@ -146,6 +146,7 @@ MLflow tracking met Azure Machine Learning kunt u de vastgelegde metrische gegev
 Als u uw Mlflow experimenten met Azure Databricks wilt uitvoeren, moet u eerst een [Azure Databricks-werk ruimte en-cluster](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal) maken
 
 Zorg er in het cluster voor dat u de *azureml-mlflow-* bibliotheek van PyPi installeert om ervoor te zorgen dat uw cluster toegang heeft tot de benodigde functies en klassen.
+Importeer hier uw proef notitieblok, koppel uw cluster hieraan en voer het experiment uit. 
 
 ### <a name="install-libraries"></a>Bibliotheken installeren
 
@@ -184,10 +185,17 @@ workspace_name = 'workspace_name'
 ws = Workspace.get(name=workspace_name,
                    subscription_id=subscription_id,
                    resource_group=resource_group)
-
 ```
+
+#### <a name="connect-your-azure-databricks-and-azure-machine-learning-workspaces"></a>Uw Azure Databricks-en Azure Machine Learning-werk ruimten verbinden
+
+Op de [Azure Portal](https://ms.portal.azure.com)kunt u uw Azure DATABRICKS (ADB)-werk ruimte koppelen aan een nieuwe of bestaande Azure machine learning-werk ruimte. Hiertoe gaat u naar uw ADB-werk ruimte en selecteert u de knop **koppeling Azure machine learning werk ruimte** aan de rechter kant. Als u uw werk ruimten koppelt, kunt u de gegevens van uw experiment volgen in de werk ruimte Azure Machine Learning. 
+
 ### <a name="link-mlflow-tracking-to-your-workspace"></a>MLflow tracking koppelen aan uw werk ruimte
+
 Nadat u uw werk ruimte hebt gemaakt, stelt u de tracerings-URI voor MLflow in. Door dit te doen, koppelt u de MLflow-tracking aan Azure Machine Learning-werk ruimte. Daarna worden alle experimenten gelandd in de service Managed Azure Machine Learning tracking.
+
+#### <a name="directly-set-mlflow-tracking-in-your-notebook"></a>MLflow bijhouden rechtstreeks instellen in uw notitie blok
 
 ```python
 uri = ws.get_mlflow_tracking_uri()
@@ -200,6 +208,12 @@ Importeer in uw trainings script mlflow voor het gebruik van de MLflow-logboek r
 import mlflow 
 mlflow.log_metric('epoch_loss', loss.item()) 
 ```
+
+#### <a name="automate-setting-mlflow-tracking"></a>Automatisch instellen van MLflow bijhouden
+
+In plaats van de tracerings-URI hand matig in te stellen tijdens elke volgende experiment notebook-sessie in uw clusters, doet u dit automatisch met behulp van deze [Azure machine learning tracking cluster init script](https://github.com/Azure/MachineLearningNotebooks/blob/3ce779063b000e0670bdd1acc6bc3a4ee707ec13/how-to-use-azureml/azure-databricks/linking/README.md).
+
+Wanneer u correct is geconfigureerd, kunt u uw MLflow tracking-gegevens bekijken in de REST API van Azure Machine Learning en alle clients, en in Azure Databricks via de MLflow-gebruikers interface of met behulp van de MLflow-client.
 
 ## <a name="view-metrics-and-artifacts-in-your-workspace"></a>Metrische gegevens en artefacten in uw werk ruimte weer geven
 

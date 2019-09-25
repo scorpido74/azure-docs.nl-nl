@@ -1,74 +1,111 @@
 ---
-title: Incidenten onderzoeken met Azure Sentinel preview | Microsoft Docs
+title: Incidenten onderzoeken met Azure Sentinel | Microsoft Docs
 description: Gebruik deze zelf studie om te leren hoe u incidenten met Azure Sentinel kunt onderzoeken.
 services: sentinel
 documentationcenter: na
 author: rkarlin
 manager: rkarlin
 editor: ''
-ms.assetid: a493cd67-dc70-4163-81b8-04a9bc0232ac
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 3/6/2019
+ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: bad3fddd6caf7e6eb455e59280f181c787b95a4e
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 026689b68244052c3ad7cb50cd90d7319b6760ef
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68780384"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71229408"
 ---
-# <a name="tutorial-investigate-incidents-with-azure-sentinel-preview"></a>Zelfstudie: Incidenten onderzoeken met Azure Sentinel preview
+# <a name="tutorial-investigate-incidents-with-azure-sentinel"></a>Zelfstudie: Incidenten onderzoeken met Azure Sentinel
 
 > [!IMPORTANT]
-> Azure Sentinel is momenteel beschikbaar als open bare preview.
-> Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
+> De onderzoek grafiek is momenteel beschikbaar als open bare preview.
+> Deze functie wordt zonder service level agreement gegeven en wordt niet aanbevolen voor productie werkbelastingen.
+> Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
 
-Deze zelf studie helpt u bij het detecteren van bedreigingen met Azure Sentinel.
 
-Nadat u [uw gegevens bronnen hebt verbonden](quickstart-onboard.md) met Azure Sentinel, wilt u een melding ontvangen wanneer er iets verdacht is. Hiervoor kunt u met Azure Sentinel geavanceerde waarschuwings regels maken waarmee incidenten worden gegenereerd die u kunt toewijzen en gebruiken om afwijkingen en bedreigingen in uw omgeving nauw keurig te onderzoeken. 
+Deze zelf studie helpt u bij het onderzoeken van incidenten met Azure Sentinel. Nadat u uw gegevens bronnen hebt verbonden met Azure Sentinel, wilt u een melding ontvangen wanneer er iets verdacht is. Hiervoor kunt u met Azure Sentinel geavanceerde waarschuwings regels maken waarmee incidenten worden gegenereerd die u kunt toewijzen en onderzoeken.
 
+In dit artikel komen de volgende onderwerpen aan bod:
 > [!div class="checklist"]
-> * Incidenten maken
 > * Incidenten onderzoeken
-> * Op bedreigingen reageren
+> * De onderzoek grafiek gebruiken
+> * Reageren op bedreigingen
 
-## <a name="investigate-incidents"></a>Incidenten onderzoeken
+Een incident kan meerdere waarschuwingen bevatten. Het is een aggregatie van alle relevante bewijzen voor een specifiek onderzoek. Er wordt een incident gemaakt op basis van analytische regels die u hebt gemaakt op de **Analytics** -pagina. De eigenschappen die betrekking hebben op de waarschuwingen, zoals ernst en status, worden ingesteld op incident niveau. Nadat u Azure-Sentinel weet wat voor soort bedreigingen u zoekt en hoe u deze kunt vinden, kun u gedetecteerde bedreigingen bewaken door incidenten te onderzoeken.
 
-een incident kan meerdere waarschuwingen bevatten. Het is een aggregatie van alle relevante bewijzen voor een specifiek onderzoek. Er wordt een incident gemaakt op basis van waarschuwingen die u hebt gedefinieerd op de **Analytics** -pagina. De eigenschappen die betrekking hebben op de waarschuwingen, zoals ernst en status, worden ingesteld op incident niveau. Nadat u Azure-Sentinel weet wat voor soort bedreigingen u zoekt en hoe u deze kunt vinden, controleert u de bedreigingen die worden gedetecteerd door incidenten te onderzoeken. 
+## <a name="prerequisites"></a>Vereisten
+U kunt het incident alleen onderzoeken als u de velden voor entiteits toewijzing hebt gebruikt bij het instellen van de analytische regel. Het onderzoek diagram vereist dat uw oorspronkelijke incident entiteiten bevat.
 
-1. Selecteer **incidenten**. Op de pagina incidenten kunt u zien hoeveel incidenten u hebt, hoeveel er zijn geopend, hoeveel er openstaan en hoeveel u hebt ingesteld op **in uitvoering**en hoeveel er zijn gesloten. Voor elk incident ziet u de tijd waarop het probleem is opgetreden en de status van het incident. Bekijk de ernst om te bepalen wat u eerst moet afhandelen. Klik op de pagina incidenten op het tabblad **waarschuwingen** om alle waarschuwingen weer te geven die betrekking hebben op een incident. Entiteiten die u eerder hebt toegewezen als onderdeel van het incident, kunnen worden weer gegeven op het tabblad **entiteiten** .  U kunt de incidenten zo nodig filteren, bijvoorbeeld op basis van de status of de ernst. Wanneer u het tabblad **incidenten** bekijkt, ziet u open incidenten die waarschuwingen bevatten die worden geactiveerd door de detectie regels die zijn gedefinieerd in de **analyse**. Bovenaan ziet u uw actieve incidenten, nieuwe incidenten en incidenten die worden uitgevoerd. U kunt ook een overzicht van al uw incidenten op Ernst bekijken.
+## <a name="how-to-investigate-incidents"></a>Incidenten onderzoeken
 
-   ![Waarschuwings dashboard](./media/tutorial-investigate-cases/cases.png)
+1. Selecteer **incidenten**. Op de pagina **incidenten** kunt u zien hoeveel incidenten u hebt, hoeveel er zijn geopend, hoeveel er openstaan en hoeveel u hebt ingesteld op **in uitvoering**en hoeveel er zijn gesloten. Voor elk incident ziet u de tijd waarop het probleem is opgetreden en de status van het incident. Bekijk de ernst om te bepalen welke incidenten het eerst moeten worden verwerkt.
 
-2. Als u een onderzoek wilt starten, klikt u op een specifiek incident. Aan de rechter kant kunt u gedetailleerde informatie voor het incident bekijken, inclusief de ernst, samen vatting van het aantal betrokken entiteiten (op basis van uw toewijzing). Elk incident heeft een unieke ID. De ernst van het incident wordt bepaald aan de hand van de ernstigste waarschuwing die is opgenomen in het incident.  
+    ![Ernst van incident weer geven](media/tutorial-investigate-cases/incident-severity.png)
 
-1. Als u meer informatie over de waarschuwingen en entiteiten in het incident wilt weer geven, klikt u op **volledige details weer geven** op de pagina incident en bekijkt u de relevante tabbladen met een overzicht van de informatie over het incident.  Volledige incident weergave consolideert alle bewijzen in de waarschuwing, de bijbehorende waarschuwingen en entiteiten.
+1. U kunt de incidenten zo nodig filteren, bijvoorbeeld op basis van de status of de ernst.
 
-1. Bekijk op het tabblad **waarschuwingen** de waarschuwing zelf: wanneer deze werd geactiveerd en de drempel waarden die u hebt ingesteld, overschreden. U kunt alle relevante informatie over de waarschuwing zien: de query die de waarschuwing heeft geactiveerd, het aantal resultaten dat per query wordt geretourneerd en de mogelijkheid om playbooks uit te voeren op de waarschuwingen. Als u nog meer wilt inzoomen op het incident, klikt u op het aantal treffers. Hiermee opent u de query die de resultaten heeft gegenereerd en de resultaten die de waarschuwing hebben geactiveerd in Log Analytics.
+1. Selecteer een specifiek incident om een onderzoek te starten. Aan de rechter kant kunt u gedetailleerde informatie voor het incident bekijken, inclusief de ernst, samen vatting van het aantal betrokken entiteiten, de onbewerkte gebeurtenissen die dit incident hebben geactiveerd en de unieke ID van het incident.
 
-3. Op het tabblad **entiteiten** ziet u alle entiteiten die u hebt toegewezen als onderdeel van de definitie van de waarschuwings regel. 
+1. Als u meer informatie over de waarschuwingen en entiteiten in het incident wilt weer geven, selecteert u **volledige details weer geven** op de pagina incident en bekijkt u de relevante tabbladen met een overzicht van de informatie over het incident. Bekijk op het tabblad **waarschuwingen** de waarschuwing zelf. U kunt alle relevante informatie over de waarschuwing zien: de query die de waarschuwing heeft geactiveerd, het aantal resultaten dat per query wordt geretourneerd en de mogelijkheid om playbooks uit te voeren op de waarschuwingen. Als u nog meer wilt inzoomen op het incident, selecteert u het aantal **gebeurtenissen**. Hiermee opent u de query die de resultaten heeft gegenereerd en de gebeurtenissen die de waarschuwing hebben geactiveerd in Log Analytics. Op het tabblad **entiteiten** ziet u alle entiteiten die u hebt toegewezen als onderdeel van de definitie van de waarschuwings regel.
 
-4. Als u een incident actief onderzoekt, is het een goed idee om de status van het incident in te stellen op **in behandeling** tot u het probleem sluit. U kunt ook het incident sluiten, waarbij **gesloten opgelost** de status is van incidenten die aangeven dat een incident is verwerkt, terwijl **gesloten is afgesloten** de status is van incidenten waarvoor geen verwerking is vereist. Uitleg is vereist uitleg over de reden voor het sluiten van een incident.
+    ![Waarschuwingsdetails weergeven](media/tutorial-investigate-cases/alert-details.png)
 
-5. Incidenten kunnen worden toegewezen aan een specifieke gebruiker. U kunt voor elk incident een eigenaar toewijzen door het veld **eigenaar** van het incident in te stellen. Alle incidenten worden gestart als niet-toegewezen. U kunt de incidenten door lopen en filteren op uw naam om alle incidenten te zien waarvan u eigenaar bent. 
+1. Als u een incident actief onderzoekt, is het een goed idee om de status van het incident in te stellen op **in behandeling** tot u het hebt gesloten.
 
-5. Klik op **onderzoeken** om de kaart van het onderzoek en het bereik van de schending met herstels tappen weer te geven. 
+1. Incidenten kunnen worden toegewezen aan een specifieke gebruiker. U kunt voor elk incident een eigenaar toewijzen door het veld eigenaar van het **incident** in te stellen. Alle incidenten worden gestart als niet-toegewezen. U kunt ook opmerkingen toevoegen zodat andere analisten kunnen begrijpen wat u hebt onderzocht en wat uw bezorgdheid over het incident zijn.
 
+    ![Incident aan gebruiker toewijzen](media/tutorial-investigate-cases/assign-incident-to-user.png)
 
+1. Selecteer **onderzoeken** om de kaart weer te geven.
 
-## <a name="respond-to-threats"></a>Op bedreigingen reageren
+## <a name="use-the-investigation-graph-to-deep-dive"></a>De onderzoek grafiek gebruiken om te dieper
 
-Azure Sentinel biedt u twee primaire opties voor het reageren op bedreigingen met behulp van playbooks. U kunt instellen dat een Playbook automatisch wordt uitgevoerd wanneer een waarschuwing wordt geactiveerd, of u kunt hand matig een Playbook uitvoeren als reactie op een waarschuwing.
+In het onderzoek diagram kunnen analisten de juiste vragen stellen voor elk onderzoek. De onderzoek grafiek helpt u bij het begrijpen van het bereik en het identificeren van de hoofd oorzaak van een mogelijke beveiligings risico door relevante gegevens met een wille keurige entiteit te correleren. U kunt een diep gaande en onderzoek doen naar elke entiteit die in de grafiek wordt weer gegeven door deze te selecteren en te kiezen tussen verschillende uitbreidings opties.  
+  
+In het onderzoek diagram vindt u het volgende:
 
-- U kunt instellen dat een Playbook automatisch wordt uitgevoerd wanneer een waarschuwing wordt geactiveerd wanneer u de Playbook configureert. 
+- **Visuele context van onbewerkte gegevens**: In de Live, visuele grafiek worden entiteits relaties weer gegeven die automatisch zijn geëxtraheerd uit de onbewerkte gegevens. Zo kunt u eenvoudig verbindingen tussen verschillende gegevens bronnen weer geven.
 
-- U kunt hand matig een Playbook uitvoeren vanuit de waarschuwing door te klikken op **Playbooks weer geven** en vervolgens een Playbook te selecteren dat u wilt uitvoeren.
+- **Detectie van volledig onderzoek**: Breid uw onderzoek bereik uit met behulp van ingebouwde onderzoek query's om het volledige bereik van een schending te belichten.
 
+- **Geïntegreerde onderzoek stappen**: Gebruik vooraf gedefinieerde exploratie opties om ervoor te zorgen dat u de juiste vragen in het vlak van een bedreiging vraagt.
+
+De onderzoek grafiek gebruiken:
+
+1. Selecteer een incident en selecteer vervolgens **onderzoeken**. Hiermee gaat u naar het onderzoek diagram. De grafiek bevat een illustrerende kaart van de entiteiten die rechtstreeks zijn verbonden met de waarschuwing en elke resource die u hebt verbonden.
+
+   > [!IMPORTANT] 
+   > U kunt het incident alleen onderzoeken als u de velden voor entiteits toewijzing hebt gebruikt bij het instellen van de analytische regel. Het onderzoek diagram vereist dat uw oorspronkelijke incident entiteiten bevat.
+
+   ![Kaart weergeven](media/tutorial-investigate-cases/map1.png)
+
+1. Selecteer een entiteit om het deel venster **entiteiten** te openen, zodat u informatie over die entiteit kunt controleren.
+
+    ![Entiteiten in kaart weer geven](media/tutorial-investigate-cases/map-entities.png)
+  
+1. Breid uw onderzoek uit door over te bewegen op elke entiteit om een lijst met vragen te tonen die zijn ontworpen door onze beveiligings experts en analisten per entiteits type om uw onderzoek te verdiepen. We noemen deze opties voor het **verkennen van query's**.
+
+    ![Meer details bekijken](media/tutorial-investigate-cases/exploration-cases.png)
+
+   Op een computer kunt u bijvoorbeeld gerelateerde waarschuwingen aanvragen. Als u een onderzoek query selecteert, worden de resulterende vergunningen toegevoegd aan de grafiek. In dit voor beeld wordt het selecteren van **gerelateerde waarschuwingen** met de volgende waarschuwingen in de grafiek weer gegeven:
+
+    ![Verwante waarschuwingen bekijken](media/tutorial-investigate-cases/related-alerts.png)
+
+1. Voor elke onderzoek query kunt u de optie selecteren voor het openen van de onbewerkte gebeurtenis resultaten en de query die in Log Analytics wordt gebruikt door **gebeurtenissen\>** te selecteren.
+
+1. Om het incident te begrijpen, biedt de grafiek een parallelle tijd lijn.
+
+    ![Tijd lijn weer geven in kaart](media/tutorial-investigate-cases/map-timeline.png)
+
+1. Beweeg de muis aanwijzer over de tijd lijn om te zien welke items in de grafiek zich voordoen op welk moment.
+
+    ![Tijd lijn gebruiken in kaart voor het onderzoeken van waarschuwingen](media/tutorial-investigate-cases/use-timeline.png)
 
 
 

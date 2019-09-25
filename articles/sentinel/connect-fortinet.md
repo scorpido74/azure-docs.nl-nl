@@ -1,5 +1,5 @@
 ---
-title: Fortinet-gegevens koppelen aan Azure Sentinel preview | Microsoft Docs
+title: Fortinet-gegevens koppelen aan Azure-Sentinel | Microsoft Docs
 description: Meer informatie over het verbinden van Fortinet-gegevens met Azure Sentinel.
 services: sentinel
 documentationcenter: na
@@ -13,20 +13,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/31/2019
+ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 339b8c1b59720989016f68fdb94fae30c26b42f0
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 20079fd0c95da3e3aec9518f194ea39561a5e662
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68679281"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240703"
 ---
 # <a name="connect-your-fortinet-appliance"></a>Verbinding maken met uw Fortinet-apparaat
 
-> [!IMPORTANT]
-> Azure Sentinel is momenteel beschikbaar als open bare preview.
-> Deze preview-versie is beschikbaar zonder service level agreement. Het wordt niet aanbevolen voor productie workloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. Zie voor meer informatie [aanvullende gebruiks voorwaarden voor Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)-previews.
+
 
 U kunt Azure Sentinel verbinden met een Fortinet-apparaat door de logboek bestanden op te slaan als algemene gebeurtenis notatie syslog (CEF). Met de integratie met Azure Sentinel kunt u eenvoudig analyses en query's uitvoeren op de gegevens van het logboek bestand vanuit Fortinet. Zie [verbinding maken met CEF-apparaten](connect-common-event-format.md)voor meer informatie over de manier waarop Azure Sentinel CEF-gegevens opneemt.
 
@@ -147,5 +145,5 @@ Het kan Maxi maal 20 minuten duren voordat uw logboeken in Log Analytics worden 
 ## <a name="next-steps"></a>Volgende stappen
 In dit artikel hebt u geleerd hoe u Fortinet-apparaten verbindt met Azure Sentinel. Raadpleeg de volgende artikelen voor meer informatie over Azure Sentinel:
 - Meer informatie over hoe u [inzicht krijgt in uw gegevens en mogelijke bedreigingen](quickstart-get-visibility.md).
-- Ga aan de slag [met het detecteren van bedreigingen met Azure Sentinel](tutorial-detect-threats.md).
+- Ga aan de slag [met het detecteren van bedreigingen met Azure Sentinel](tutorial-detect-threats-built-in.md).
 

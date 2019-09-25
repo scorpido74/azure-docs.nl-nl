@@ -1,12 +1,11 @@
 ---
-title: 'Azure Sentinel Snelstartgids: aan de slag met Azure Sentinel preview | Microsoft Docs'
+title: 'Azure Sentinel Snelstartgids: aan de slag met Azure Sentinel | Microsoft Docs'
 description: 'Azure Sentinel Snelstartgids: aan de slag met Azure Sentinel'
 services: sentinel
 documentationcenter: na
 author: rkarlin
 manager: rkarlin
 editor: ''
-ms.assetid: 5a4ae93c-d648-41fb-8fb8-96a025d2f73e
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.devlang: na
@@ -14,23 +13,21 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 3/20/2019
+ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: c6434b4f5808c349d5e0ab04dafc5233f6ec63ac
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: c81f4cacd4c93d681122f3c8cd692ca8645288af
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68780469"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240090"
 ---
-# <a name="quickstart-get-started-with-azure-sentinel-preview"></a>Quickstart: Aan de slag met Azure Sentinel preview
-
-> [!IMPORTANT]
-> Azure Sentinel is momenteel beschikbaar als open bare preview.
-> Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
+# <a name="quickstart-get-started-with-azure-sentinel"></a>Quickstart: Aan de slag met Azure Sentinel
 
 
-In deze Quick Start leert u hoe u snel kunt zien wat er in uw omgeving gebeurt met Azure Sentinel. Nadat u uw gegevens bronnen aan Azure Sentinel hebt gekoppeld, krijgt u een snelle visualisatie en analyse van de gegevens, zodat u kunt zien wat er gebeurt in al uw verbonden gegevens bronnen. Azure Sentinel biedt u Dash boards waarmee u beschikt over de volledige kracht van hulpprogram ma's die al beschikbaar zijn in azure, evenals tabellen en grafieken die zijn ingebouwd om u te voorzien van analyses voor uw logboeken en query's. U kunt ingebouwde Dash boards gebruiken of een nieuw dash board eenvoudig maken, helemaal zelf of op basis van een bestaand dash board. 
+
+
+In deze Quick Start leert u hoe u snel kunt zien wat er in uw omgeving gebeurt met Azure Sentinel. Nadat u uw gegevens bronnen aan Azure Sentinel hebt gekoppeld, krijgt u een snelle visualisatie en analyse van de gegevens, zodat u kunt zien wat er gebeurt in al uw verbonden gegevens bronnen. Met Azure Sentinel beschikt u over de volledige kracht van hulpprogram ma's die al beschikbaar zijn in azure, evenals tabellen en grafieken die zijn ingebouwd om u te voorzien van analyses voor uw logboeken en query's. U kunt de ingebouwde werkmappen gebruiken of een nieuwe werkmap maken, helemaal zelf of op basis van een bestaande werkmap. 
 
 ## <a name="get-visualization"></a>Visualisatie ophalen
 
@@ -59,43 +56,43 @@ De hoofd tekst van de overzichts pagina geeft inzicht in de beveiligings status 
 
    ![Azure-Sentinel-toewijzing](./media/qs-get-visibility/anomolies.png)
 
-## Ingebouwde Dash boards gebruiken<a name="dashboards"></a>
+## Ingebouwde werkmappen gebruiken<a name="dashboards"></a>
 
-Ingebouwde Dash boards bieden geïntegreerde gegevens van uw verbonden gegevens bronnen, zodat u de gebeurtenissen die in deze services worden gegenereerd, kunt verdiepen. De ingebouwde Dash boards zijn onder andere Azure-ID, gebeurtenissen voor Azure-activiteiten en on-premises. dit kunnen gegevens zijn van Windows-gebeurtenissen van servers, van de eerste partij, van derden, waaronder firewall verkeers logboeken, Office 365 en onveilige protocollen op basis van Windows evenementen.
+Ingebouwde werkmappen bieden geïntegreerde gegevens van uw verbonden gegevens bronnen om u te laten overgaan op de gebeurtenissen die in deze services worden gegenereerd. De ingebouwde werkmappen omvatten Azure ID, Azure-activiteiten gebeurtenissen en on-premises. dit kunnen gegevens zijn van Windows-gebeurtenissen van servers, van de eerste partij, van derden, waaronder firewall verkeers logboeken, Office 365 en onveilige protocollen op basis van Windows evenementen. De werkmappen zijn gebaseerd op Azure Monitor werkmappen om u te voorzien van verbeterde aanpassings mogelijkheden en flexibiliteit bij het ontwerpen van uw eigen werkmap. Zie [werkmappen](../azure-monitor/app/usage-workbooks.md)voor meer informatie.
 
-1. Selecteer onder **instellingen**de optie **Dash boards**. Onder **geïnstalleerd**ziet u alle geïnstalleerde Dash boards. Onder **Alles** ziet u de volledige galerie met ingebouwde Dash boards die beschikbaar zijn voor installatie. 
-2. Zoek een specifiek dash board om de hele lijst en de beschrijving van de aanbiedingen te bekijken. 
-3. Als u Azure AD gebruikt om aan de slag te gaan met Azure Sentinel, raden we u aan ten minste de volgende Dash boards te installeren:
+1. Onder **instellingen**selecteert u **werkmappen**. Onder **geïnstalleerd**ziet u alle geïnstalleerde werkmappen. Onder **alle**kunt u de volledige galerie met ingebouwde werkmappen zien die beschikbaar zijn voor installatie. 
+2. Zoek naar een specifieke werkmap om de hele lijst en een beschrijving van de Voorst Ellen te bekijken. 
+3. Als u Azure AD gebruikt om aan de slag te gaan met Azure Sentinel, raden we u aan ten minste de volgende werkmappen te installeren:
    - **Azure AD**: Gebruik een van de volgende of beide:
-       - Met **Azure AD-** aanmeldingen worden aanmeldingen in de loop van de tijd geanalyseerd om te zien of er afwijkingen zijn. Dit dash board biedt mislukte aanmeldingen per toepassing, apparaat en locatie, zodat u in één oogopslag kunt zien of er iets ongebruikelijk is. Let op meerdere mislukte aanmeldingen. 
+       - Met **Azure AD-aanmeldingen** worden aanmeldingen in de loop van de tijd geanalyseerd om te zien of er afwijkingen zijn. Deze werkmappen bevat mislukte aanmeldingen door toepassingen, apparaten en locaties, zodat u in één oogopslag kunt zien of er iets ongebruikelijk is. Let op meerdere mislukte aanmeldingen. 
        - Met **Azure AD-controle logboeken** worden beheer activiteiten geanalyseerd, zoals wijzigingen in gebruikers (toevoegen, verwijderen, enz.), het maken van groepen en het wijzigen van wijzigingen.  
 
-   - Voeg een dash board toe voor uw firewall. Voeg bijvoorbeeld het Palo Alto-dash board toe. Het dash board analyseert het verkeer van uw firewall, met correlaties tussen uw firewall gegevens en bedreigings gebeurtenissen en verlicht verdachte gebeurtenissen tussen entiteiten. Dash boards biedt u informatie over trends in uw verkeer en kunt u inzoomen op en filteren op resultaten. 
+   - Voeg een werkmap toe voor uw firewall. Voeg bijvoorbeeld de Palo Alto-werkmap toe. De werkmap analyseert het verkeer van uw firewall, met een correlatie tussen uw firewall gegevens en bedreigings gebeurtenissen, en verlaagt verdachte gebeurtenissen tussen entiteiten. Werkmappen bieden informatie over trends in uw verkeer en u kunt inzoomen op en filteren op resultaten. 
 
       ![PAL Alto-dash board](./media/qs-get-visibility/palo-alto-week-query.png)
 
 
-U kunt de Dash boards aanpassen door de knop ![](./media/qs-get-visibility/edit-query-button.png)hoofd query te bewerken. U kunt klikken op de ![knop](./media/qs-get-visibility/go-to-la-button.png) om naar [log Analytics te gaan om de query daar te bewerken](../azure-monitor/log-query/get-started-portal.md), en u kunt het weglatings teken (...) selecteren en **tegel gegevens aanpassen**selecteren, zodat u het filter voor de hoofdtijden kan bewerken of verwijderen. specifieke tegels van het dash board.
+U kunt de werkmappen aanpassen door de knop ![](./media/qs-get-visibility/edit-query-button.png)hoofd query te bewerken. U kunt klikken op de ![knop](./media/qs-get-visibility/go-to-la-button.png) om naar [log Analytics te gaan om de query daar te bewerken](../azure-monitor/log-query/get-started-portal.md), en u kunt het weglatings teken (...) selecteren en **tegel gegevens aanpassen**selecteren, zodat u het filter voor de hoofdtijden kan bewerken of verwijderen. specifieke tegels uit de werkmap.
 
 Zie [zelf studie voor meer informatie over het werken met query's: Visuele gegevens in Log Analytics](../azure-monitor/learn/tutorial-logs-dashboards.md)
 
 ### <a name="add-a-new-tile"></a>Een nieuwe tegel toevoegen
 
-Als u een nieuwe tegel wilt toevoegen, kunt u deze toevoegen aan een bestaand dash board, dat u hebt gemaakt of een Azure Sentinel ingebouwd dash board. 
+Als u een nieuwe tegel wilt toevoegen, kunt u deze toevoegen aan een bestaande werkmap, een van de elementen die u maakt of een ingebouwde Azure-Sentinel-werkmap. 
 1. Maak in log Analytics een tegel met behulp van de instructies [in de zelf studie: Visuele gegevens in Log Analytics](../azure-monitor/learn/tutorial-logs-dashboards.md). 
-2. Nadat de tegel is gemaakt, selecteert u onder **pincode**het dash board waarin u de tegel wilt weer geven.
+2. Nadat de tegel is gemaakt, selecteert u onder **pincode**de werkmap waarin u de tegel wilt weer geven.
 
-## <a name="create-new-dashboards"></a>Nieuwe Dash boards maken
-U kunt een volledig nieuw dash board maken of een ingebouwd dash board gebruiken als basis voor uw nieuwe dash board.
+## <a name="create-new-workbooks"></a>Nieuwe werkmappen maken
+U kunt een volledig nieuwe werkmap maken of een ingebouwde werkmap gebruiken als basis voor de nieuwe werkmap.
 
-1. Als u een nieuw dash board wilt maken, selecteert u **Dash boards** en vervolgens **+ Nieuw dash board**.
-2. Selecteer het abonnement waarin het dash board is gemaakt en geef het een beschrijvende naam. Elk dash board is een Azure-resource, zoals andere, en u kunt IT-rollen (RBAC) toewijzen om te bepalen wie toegang heeft. 
-3. Als u wilt dat deze wordt weer gegeven in uw Dash boards om visualisaties vast te maken, moet u deze delen. Klik op **delen** en vervolgens op **gebruikers beheren**. 
+1. Als u een volledig nieuwe werkmap wilt maken, selecteert u **werkmappen** en vervolgens **+ nieuwe werkmap**.
+2. Selecteer het abonnement waarin de werkmap is gemaakt en geef deze een beschrijvende naam. Elke werkmap is een Azure-resource, zoals andere, en u kunt IT-rollen (RBAC) toewijzen om te bepalen wie toegang heeft. 
+3. Als u wilt dat deze wordt weer gegeven in uw werkmappen om visualisaties vast te maken, moet u deze delen. Klik op **delen** en vervolgens op **gebruikers beheren**. 
  
-1. Gebruik de **optie toegang** en **roltoewijzingen** controleren, net zoals u zou doen voor andere Azure-resources. Zie [Azure-Dash boards delen](../azure-portal/azure-portal-dashboard-share-access.md)met behulp van RBAC voor meer informatie.
+1. Gebruik de **optie toegang** en **roltoewijzingen** controleren, net zoals u zou doen voor andere Azure-resources. Zie voor meer informatie [Azure-werkmappen delen met behulp van RBAC](../azure-portal/azure-portal-dashboard-share-access.md).
 
 
-## <a name="new-dashboard-examples"></a>Nieuwe voor beelden van Dash boards
+## <a name="new-workbook-examples"></a>Nieuwe werkmap-voor beelden
 
 Met de volgende voorbeeld query kunt u trends van verkeer tussen weken vergelijken. U kunt eenvoudig overschakelen naar de leverancier en gegevens bron van het apparaat waarop u de query uitvoert. In dit voor beeld maakt gebruik van SecurityEvent van Windows. u kunt deze switch zo wijzigen dat deze wordt uitgevoerd op AzureActivity of CommonSecurityLog op elke andere firewall.
 
@@ -117,7 +114,7 @@ Mogelijk wilt u een query maken die gegevens uit meerdere bronnen bevat. U kunt 
     | project OperationName, RoleAssignmentTime = TimeGenerated, user = Caller) on user
     | project-away user1
 
-U kunt verschillende Dash boards maken op basis van de rol van persoon die de gegevens bekijkt en wat ze zoeken. U kunt bijvoorbeeld een dash board maken voor uw netwerk beheerder die de firewall gegevens bevat. U kunt ook Dash boards maken op basis van hoe vaak u deze wilt bekijken, of u nu dagelijks wilt controleren en andere items die u eenmaal per uur wilt controleren. u kunt bijvoorbeeld elk uur uw Azure AD-aanmeldingen bekijken om te zoeken naar Anomali s. 
+U kunt verschillende werkmappen maken op basis van de rol van de persoon die de gegevens bekijkt en wat ze zoeken. U kunt bijvoorbeeld een werkmap maken voor uw netwerk beheerder die de firewall gegevens bevat. U kunt ook werkmappen maken op basis van hoe vaak u deze wilt bekijken, of u nu dagelijks wilt controleren en andere items die u eenmaal per uur wilt controleren, bijvoorbeeld dat u uw Azure AD-aanmeldingen elk uur wilt bekijken om te zoeken naar anomalie z. 
 
 ## <a name="create-new-detections"></a>Nieuwe detecties maken
 
@@ -125,18 +122,14 @@ Genereer detecties op de [gegevens bronnen die u hebt verbonden met Azure Sentin
 
 Wanneer u een nieuwe detectie maakt, moet u gebruikmaken van de ingebouwde detecties die zijn gemaakt door micro soft-beveiligings onderzoekers die zijn afgestemd op de gegevens bronnen die u hebt verbonden.
 
-1. Ga [in de GitHub-Community](https://github.com/Azure/Azure-Sentinel/tree/master/Detections) naar de map **detecties** en selecteer de relevante mappen.
-   ![relevante mappen](./media/qs-get-visibility/detection-folders.png)
- 
-3.  Ga naar het tabblad **Analytics** en selecteer **toevoegen**.
-   ![regel maken in Log Analytics](./media/qs-get-visibility/query-params.png)
+Als u alle opstaande detecties wilt weer geven, gaat u naar **Analytics** en vervolgens op **regel sjablonen**. Dit tabblad bevat alle ingebouwde Azure Sentinel-regels.
 
-3.  Kopieer alle para meters naar de regel en klik op **maken**.
-   ![waarschuwings regel maken](./media/qs-get-visibility/create-alert-rule.png)
+   ![Ingebouwde detecties gebruiken om bedreigingen te vinden met Azure Sentinel](media/tutorial-detect-built-in/view-oob-detections.png)
 
+Zie [zelf studie voor meer informatie over het ophalen van out-of-Box-detecties: Ingebouwde analyses](tutorial-detect-threats-built-in.md)ophalen.
  
 ## <a name="next-steps"></a>Volgende stappen
-In deze Snelstartgids hebt u geleerd hoe u aan de slag kunt met Azure Sentinel. Ga door naar de zelf studie voor [het detecteren van bedreigingen](tutorial-detect-threats.md).
+In deze Snelstartgids hebt u geleerd hoe u aan de slag kunt met Azure Sentinel. Ga door naar de zelf studie voor [het detecteren van bedreigingen](tutorial-detect-threats-built-in.md).
 > [!div class="nextstepaction"]
-> [Spoor bedreigingen](tutorial-detect-threats.md) op om uw reacties op bedreigingen te automatiseren.
+> [Aangepaste regels voor detectie van bedreigingen maken](tutorial-detect-threats-custom.md) om uw reacties op bedreigingen te automatiseren.
 

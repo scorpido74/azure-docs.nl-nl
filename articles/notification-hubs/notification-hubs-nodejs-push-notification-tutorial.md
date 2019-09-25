@@ -4,9 +4,9 @@ description: Meer informatie over het gebruik van Notification Hubs voor het ver
 keywords: push melding, Push meldingen, node. js-push, Ios-push
 services: notification-hubs
 documentationcenter: nodejs
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.assetid: ded4749c-6c39-4ff8-b2cf-1927b3e92f93
 ms.service: notification-hubs
 ms.workload: mobile
@@ -14,13 +14,15 @@ ms.tgt_pltfrm: na
 ms.devlang: javascript
 ms.topic: article
 ms.date: 01/04/2019
-ms.author: jowargo
-ms.openlocfilehash: 129127a2a43cd9a86e0a1e1cf538358b62381257
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 01/04/2019
+ms.openlocfilehash: 6e109c5a7f4911893c81c88ae84322fb962fff6e
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "67706231"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71213188"
 ---
 # <a name="sending-push-notifications-with-azure-notification-hubs-and-nodejs"></a>Push meldingen verzenden met Azure Notification Hubs en node. js
 
@@ -98,7 +100,7 @@ Het `NotificationHubService` object bevat de volgende object instanties voor het
 - **Windows Phone** -gebruik het `MpnsService` object, dat beschikbaar is op`notificationHubService.mpns`
 - **Universeel Windows-platform** -gebruik het `WnsService` object, dat beschikbaar is op`notificationHubService.wns`
 
-### <a name="how-to-send-push-notifications-to-android-applications"></a>Procedure: Push meldingen verzenden naar Android-toepassingen
+### <a name="how-to-send-push-notifications-to-android-applications"></a>Procedure: Pushmeldingen versturen naar Android-toepassingen
 
 Het `GcmService` object biedt een `send` methode die kan worden gebruikt voor het verzenden van push meldingen naar Android-toepassingen. De `send` methode accepteert de volgende para meters:
 

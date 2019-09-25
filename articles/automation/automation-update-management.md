@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 05/22/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: f4816ea2dc67df717e46df61c955d6d156b14d7e
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.openlocfilehash: 253e01b6bfa6609b4ec41d69a3c4b1bbe405ba5a
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71129669"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240285"
 ---
 # <a name="update-management-solution-in-azure"></a>Updatebeheer oplossing in azure
 
@@ -71,11 +71,11 @@ Het is niet mogelijk om een computer te registreren voor Updatebeheer in meer da
 
 ### <a name="supported-client-types"></a>Ondersteunde client-typen
 
-In de volgende tabel ziet u een lijst met ondersteunde besturings systemen:
+In de volgende tabel ziet u een lijst met ondersteunde besturings systemen voor update-evaluaties. Voor patching is een Hybrid Runbook Worker vereist. Zie de installatie handleidingen voor [Windows HRW](automation-windows-hrw-install.md#installing-the-windows-hybrid-runbook-worker) en [Linux HRW](automation-linux-hrw-install.md#installing-a-linux-hybrid-runbook-worker)voor informatie over Hybrid Runbook worker vereisten.
 
 |Besturingssysteem  |Opmerkingen  |
 |---------|---------|
-|Windows Server 2019 (Data Center/Data Center core/Standard)<br><br>Windows Server 2016 (Data Center/Data Center core/Standard)<br><br>Windows Server 2012 R2 (Data Center/Standard)<br><br>Windows Server 2012<br><br>Windows Server 2008 R2 (RTM en SP1 Standard)|**Update-evaluaties**: Ondersteund<br><br>**Patching**: Vereist Hybrid Runbook Worker. Zie [Hybrid Runbook worker vereisten](automation-windows-hrw-install.md#installing-the-windows-hybrid-runbook-worker)|
+|Windows Server 2019 (Data Center/Data Center core/Standard)<br><br>Windows Server 2016 (Data Center/Data Center core/Standard)<br><br>Windows Server 2012 R2 (Data Center/Standard)<br><br>Windows Server 2012<br><br>Windows Server 2008 R2 (RTM en SP1 Standard)||
 |CentOS 6 (x86/x64) en 7 (x64)      | Linux-agents moeten toegang hebben tot een opslagplaats voor updates. Voor op classificatie gebaseerde patches moet ' yum ' worden geretourneerd om beveiligings gegevens te retour neren die geen deel uitmaakt van het CentOS. Zie [Update classificaties in Linux](#linux-2) voor meer informatie over op CentOS gebaseerde patches op basis van classificaties.          |
 |Red Hat Enterprise 6 (x86/x64) en 7 (x64)     | Linux-agents moeten toegang hebben tot een opslagplaats voor updates.        |
 |SUSE Linux Enterprise Server 11 (x86/x64) en 12 (x64)     | Linux-agents moeten toegang hebben tot een opslagplaats voor updates.        |
@@ -249,6 +249,9 @@ Selecteer **Update-implementatie plannen**om een nieuwe update-implementatie te 
 | Besturings element opnieuw opstarten| Hiermee wordt bepaald hoe opnieuw opstarten moet worden afgehandeld. De volgende opties zijn beschikbaar:</br>Opnieuw opstarten indien nodig (standaard)</br>Altijd opnieuw opstarten</br>Nooit opnieuw opstarten</br>Alleen opnieuw opstarten - updates worden niet geïnstalleerd|
 
 Update-implementaties kunnen ook programmatisch worden gemaakt. Zie [Software-update configuraties-maken](/rest/api/automation/softwareupdateconfigurations/create)voor meer informatie over het maken van een update-implementatie met behulp van de rest API. Er is ook een voor beeld van een runbook dat kan worden gebruikt voor het maken van een wekelijkse update-implementatie. Zie [een wekelijkse update-implementatie maken voor een of meer virtuele machines in een resource groep](https://gallery.technet.microsoft.com/scriptcenter/Create-a-weekly-update-2ad359a1)voor meer informatie over dit runbook.
+
+> [!NOTE]
+> De register sleutels onder [register sleutels die worden gebruikt voor het beheren van opnieuw opstarten](/windows/deployment/update/waas-restart#registry-keys-used-to-manage-restart) kunnen een gebeurtenis voor opnieuw opstarten veroorzaken als **het besturings element voor opnieuw** opstarten is ingesteld op **nooit opnieuw opstarten**.
 
 ### <a name="maintenance-windows"></a>Onderhouds Vensters
 

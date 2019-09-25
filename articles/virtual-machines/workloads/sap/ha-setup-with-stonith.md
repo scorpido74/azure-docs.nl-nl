@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 11/21/2017
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1d97130251f7ca56adaf77c5e70d6f08bd5cf514
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 0f23fe2aa17934b967e7aecf41687cc555b9552c
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101516"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212524"
 ---
 # <a name="high-availability-set-up-in-suse-using-the-stonith"></a>Hoge Beschik baarheid die in SUSE is ingesteld met behulp van de STONITH
 Dit document bevat gedetailleerde stapsgewijze instructies voor het instellen van de hoge Beschik baarheid op SUSE-besturings systeem met behulp van het STONITH-apparaat.
@@ -187,7 +187,7 @@ modprobe softdog
 ```
 ![modprobe-softdog-Command. png](media/HowToHLI/HASetupWithStonith/modprobe-softdog-command.png)
 
-4,4 Controleer en zorg ervoor dat softdog wordt uitgevoerd, zoals op de volgende knoop punten:
+4,4 Controleer en zorg ervoor dat softdog wordt uitgevoerd, zoals **op de** volgende knoop punten:
 ```
 lsmod | grep dog
 ```
@@ -333,11 +333,12 @@ Service pacemaker stop
 ```
 Stop nu de pacemaker-service op **Knooppunt2** en bronnen waarvoor failover is uitgevoerd naar **Knooppunt1**
 
-**Voor failover**
-before-failover.](media/HowToHLI/HASetupWithStonith/Before-failover.png)
-PNG**na**failoverAfter-failover.
-PNG](media/HowToHLI/HASetupWithStonith/after-failover.png)
-CRM-Mon-after-failover. png![![![](media/HowToHLI/HASetupWithStonith/crm-mon-after-failover.png)
+**Voor failover**  
+![Before-failover. png](media/HowToHLI/HASetupWithStonith/Before-failover.png)  
+
+**Na een failover**  
+![After-failover. png](media/HowToHLI/HASetupWithStonith/after-failover.png)  
+![CRM-Mon-after-failover. png](media/HowToHLI/HASetupWithStonith/crm-mon-after-failover.png)  
 
 
 ## <a name="9-troubleshooting"></a>9. Problemen oplossen

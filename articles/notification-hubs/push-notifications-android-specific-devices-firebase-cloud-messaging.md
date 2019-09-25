@@ -1,11 +1,11 @@
 ---
-title: Pushmeldingen verzenden naar specifieke Android-apparaten met Azure Notification Hubs en Google Firebase Cloud Messaging | Microsoft Docs
-description: Informatie over het gebruik van Notification Hubs pushmeldingen verzendt naar de specifieke Android-apparaten met behulp van Azure Notification Hubs en Google Firebase Cloud Messaging (FCM).
+title: Push meldingen naar specifieke Android-apparaten met behulp van Azure Notification Hubs en Google Firebase Cloud Messa ging | Microsoft Docs
+description: Informatie over het gebruik van Notification Hubs om meldingen naar specifieke Android-apparaten te pushen met behulp van Azure Notification Hubs en Google Firebase Cloud Messa ging (FCM).
 services: notification-hubs
 documentationcenter: android
-author: jwargo
-manager: patniko
-editor: spelluru'
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.assetid: 3c23cb80-9d35-4dde-b26d-a7bfd4cb8f81
 ms.service: notification-hubs
 ms.workload: mobile
@@ -14,15 +14,17 @@ ms.devlang: java
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/30/2019
-ms.author: jowargo
-ms.openlocfilehash: 0192326feeab3063c6e03376f565590728ba2a02
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 04/30/2019
+ms.openlocfilehash: 1d0825fcfbcf10aaebc320a5c7cbbf2dd8c13856
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68227560"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71213352"
 ---
-# <a name="tutorial-push-notifications-to-specific-android-devices-using-azure-notification-hubs-and-google-firebase-cloud-messaging-fcm"></a>Zelfstudie: Pushmeldingen verzenden naar specifieke Android-apparaten met Azure Notification Hubs en Google Firebase Cloud Messaging (FCM)
+# <a name="tutorial-push-notifications-to-specific-android-devices-using-azure-notification-hubs-and-google-firebase-cloud-messaging-fcm"></a>Zelfstudie: Push meldingen naar specifieke Android-apparaten met behulp van Azure Notification Hubs en Google Firebase Cloud Messa ging (FCM)
 
 [!INCLUDE [notification-hubs-selector-breaking-news](../../includes/notification-hubs-selector-breaking-news.md)]
 
@@ -42,7 +44,7 @@ In deze zelfstudie voert u de volgende acties uit:
 
 ## <a name="prerequisites"></a>Vereisten
 
-Deze zelfstudie bouwt voort op de app die u hebt gemaakt in [Zelfstudie: Pushmeldingen verzenden naar Android-apparaten met behulp van Azure Notification Hubs en Firebase Cloud Messaging](notification-hubs-android-push-notification-google-fcm-get-started.md). Voordat u aan deze zelfstudie begint, volgt u de [Zelfstudie: Pushmeldingen verzenden naar Android-apparaten met behulp van Azure Notification Hubs en Firebase Cloud Messaging](notification-hubs-android-push-notification-google-fcm-get-started.md).
+Deze zelfstudie bouwt voort op de app die u hebt gemaakt in [Zelfstudie: Push meldingen naar Android-apparaten met behulp van Azure Notification Hubs en](notification-hubs-android-push-notification-google-fcm-get-started.md)Firebase Cloud Messa ging. Voordat u aan deze zelfstudie begint, volgt u de [Zelfstudie: Push meldingen naar Android-apparaten met behulp van Azure Notification Hubs en](notification-hubs-android-push-notification-google-fcm-get-started.md)Firebase Cloud Messa ging.
 
 ## <a name="add-category-selection-to-the-app"></a>Categorieselectie toevoegen aan de app
 
@@ -202,12 +204,12 @@ De eerste stap is het toevoegen van UI-elementen aan de bestaande hoofdactivitei
     ```
 
     Deze klasse gebruik de lokale opslag voor het opslaan van de nieuwscategorieën die dit apparaat moet ontvangen. De klasse bevat ook methoden om te registreren voor deze categorieën.
-4. In uw `MainActivity` klasse, Voeg een veld voor `Notifications`:
+4. Voeg in `MainActivity` uw klasse een veld toe voor `Notifications`:
 
     ```java
     private Notifications notifications;
     ```
-5. Werk vervolgens de `onCreate` methode zoals wordt weergegeven in de volgende code. U kunt registreren met Notification Hubs in de **subscribeToCategories** -methode van de **meldingen** klasse. 
+5. Werk vervolgens de `onCreate` methode bij, zoals wordt weer gegeven in de volgende code. U registreert bij Notification Hubs in de methode **subscribeToCategories** van de klasse **Notifications** . 
 
     ```java
     @Override
@@ -273,7 +275,7 @@ Uw app kan nu een set categorieën opslaan in de lokale opslag op het apparaat e
 
 Met deze stappen registreert u zich tijdens het opstarten bij de meldingshub met behulp van de categorieën die zijn opgeslagen in de lokale opslag.
 
-1. Controleer of de volgende code aan het einde van de `onCreate` methode in de `MainActivity` klasse:
+1. Controleer of de volgende code aan het einde van de `onCreate` methode in de `MainActivity` -klasse staat:
 
     ```java
     notifications.subscribeToCategories(notifications.retrieveCategories());

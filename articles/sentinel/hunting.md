@@ -1,5 +1,5 @@
 ---
-title: Jacht-mogelijkheden in azure Sentinel preview | Microsoft Docs
+title: Jacht-mogelijkheden in azure-Sentinel | Microsoft Docs
 description: In dit artikel wordt beschreven hoe u de Azure Sentinel-jacht-mogelijkheden kunt gebruiken.
 services: sentinel
 documentationcenter: na
@@ -14,20 +14,18 @@ ms.topic: conceptual
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 2/28/2019
+ms.date: 09/10/2019
 ms.author: rkarlin
-ms.openlocfilehash: 5e6ad3c0b415722349dc584434add1031b7c3cb1
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: b00f60394a24008ca39f3ac7b378b1936c46ef76
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68780466"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240619"
 ---
-# <a name="hunt-for-threats-with-in-azure-sentinel-preview"></a>Zoeken naar bedreigingen met in azure Sentinel preview
+# <a name="hunt-for-threats-with-in-azure-sentinel"></a>Zoeken naar bedreigingen met in azure Sentinel
 
-> [!IMPORTANT]
-> Azure Sentinel is momenteel beschikbaar als open bare preview.
-> Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
+
 
 Als u een onderzoeker bent die proactief wil zijn om te kijken naar beveiligings Risico's, worden de Azure Sentinel krachtige zoek-en query hulpprogramma's gebruikt om beveiligings Risico's te vinden in de gegevens bronnen van uw organisatie. Maar uw systemen en beveiligings apparaten genereren bergen van gegevens die moeilijk kunnen worden geparseerd en gefilterd in betekenis volle gebeurtenissen. Om beveiligings analisten proactief te bieden voor nieuwe afwijkingen die niet door uw beveiligings-apps zijn gedetecteerd, kunt u met de ingebouwde jacht-query's van Azure Sentinel de juiste vragen stellen om problemen op te sporen in de gegevens die u al in uw netwerk hebt. 
 
@@ -41,8 +39,7 @@ Met Azure Sentinel-jacht kunt u profiteren van de volgende mogelijkheden:
 
 - Krachtige query taal met IntelliSense: Gebouwd op basis van een query taal die u de flexibiliteit biedt die u nodig hebt om naar het volgende niveau te gaan.
 
-- Uw eigen blad wijzers maken: Tijdens het jacht-proces kunt u komen over overeenkomsten of bevindingen, Dash boards of activiteiten die er vreemd of verdacht uitzien. Als u deze items wilt markeren zodat u ze in de toekomst weer kunt gebruiken, gebruikt u de bladwijzer functionaliteit. Met blad wijzers kunt u items later opslaan, zodat u deze kunt gebruiken om een incident voor onderzoek te maken. Zie [blad wijzers in jacht] gebruiken voor meer informatie over blad wijzers.
-
+- Uw eigen blad wijzers maken: Tijdens het jacht-proces kunt u komen over overeenkomsten of bevindingen, Dash boards of activiteiten die er vreemd of verdacht uitzien. Als u deze items wilt markeren zodat u ze in de toekomst weer kunt gebruiken, gebruikt u de bladwijzer functionaliteit. Met blad wijzers kunt u items later opslaan, zodat u deze kunt gebruiken om een incident voor onderzoek te maken. Zie [blad wijzers gebruiken in jacht](hunting.md)voor meer informatie over blad wijzers.
 - Notitie blokken gebruiken om onderzoek te automatiseren: Notebooks zijn net als stapsgewijze playbooks die u kunt maken om de stappen van een onderzoek en jacht te door lopen.  Notebooks bevatten alle jacht-stappen in een herbruikbare Playbook die kunnen worden gedeeld met anderen in uw organisatie. 
 - Query uitvoeren op de opgeslagen gegevens: De gegevens zijn toegankelijk in de tabellen die u wilt doorzoeken. U kunt bijvoorbeeld een query uitvoeren op proces maken, DNS-gebeurtenissen en veel andere gebeurtenis typen.
 
@@ -100,7 +97,7 @@ De query taal is krachtig en er zijn veel beschik bare Opera tors. sommige nutti
 
 **where** : een tabel filteren op de subset rijen die voldoen aan een predikaat.
 
-samenvatten: een tabel genereren die de inhoud van de invoer tabel samenvoegt.
+**samenvatten** : een tabel genereren die de inhoud van de invoer tabel samenvoegt.
 
 **lid worden** van de rijen van twee tabellen samen voegen om een nieuwe tabel te maken op basis van de waarden van de opgegeven kolom (men) in elke tabel.
 

@@ -10,12 +10,12 @@ ms.date: 04/29/2019
 ms.topic: conceptual
 manager: carmonm
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a681daa60503ff08320b25155e201ca0e7a4a001
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 2d6976e872223cbb66682b9a02ce343487bec35d
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68952999"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240263"
 ---
 # <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>Wijzigingen in uw omgeving bijhouden met de Wijzigingen bijhouden oplossing
 
@@ -65,7 +65,7 @@ Als u wijzigingen wilt bijhouden, moet u de Wijzigingen bijhouden-en inventaris 
 
 ## <a name="configuring-change-tracking-and-inventory"></a>Wijzigingen bijhouden en inventaris configureren
 
-Ga voor meer informatie over het onboarden van computers naar de oplossing naar: Onboarding van Automation- [oplossingen](automation-onboard-solutions-from-automation-account.md). Wanneer u een computer hebt met de Wijzigingen bijhouden-en inventaris oplossing, kunt u de items configureren die moeten worden gevolgd. Wanneer u een nieuw bestand of register sleutel inschakelt om bij te houden, wordt deze ingeschakeld voor zowel Wijzigingen bijhouden als inventarisatie.
+Ga voor meer informatie over het onboarden van computers naar de oplossing naar: [Onboarding van Automation-oplossingen](automation-onboard-solutions-from-automation-account.md). Wanneer u een computer hebt met de Wijzigingen bijhouden-en inventaris oplossing, kunt u de items configureren die moeten worden gevolgd. Wanneer u een nieuw bestand of register sleutel inschakelt om bij te houden, wordt deze ingeschakeld voor zowel Wijzigingen bijhouden als inventarisatie.
 
 Voor het bijhouden van wijzigingen in bestanden in zowel Windows als Linux, worden MD5-hashes van de bestanden gebruikt. Deze hashes worden vervolgens gebruikt om te detecteren of er sinds de laatste inventarisatie een wijziging is aangebracht.
 
@@ -74,13 +74,13 @@ Voor het bijhouden van wijzigingen in bestanden in zowel Windows als Linux, word
 Azure Security Center heeft FIM (File Integrity Monitoring) op basis van Azure Wijzigingen bijhouden toegevoegd. Hoewel FIM alleen bestanden en registers bewaakt, omvat de volledige Wijzigingen bijhouden-oplossing ook:
 
 - Software wijzigingen
-- Windows-services
+- Windows-Services
 - Linux-daemons
 
 Als u FIM al hebt ingeschakeld en de volledige Wijzigingen bijhouden-oplossing wilt uitproberen, moet u de volgende stappen uitvoeren. De instellingen worden niet verwijderd door dit proces.
 
 > [!NOTE]
-> Als u de volledige Wijzigingen bijhouden-oplossing inschakelt, kunnen er extra kosten in rekening worden gebracht. Zie [prijzen](https://azure.microsoft.com/en-us/pricing/details/automation/)voor Automation voor meer informatie.
+> Als u de volledige Wijzigingen bijhouden-oplossing inschakelt, kunnen er extra kosten in rekening worden gebracht. Zie [prijzen voor Automation](https://azure.microsoft.com/en-us/pricing/details/automation/)voor meer informatie.
 
 1. Verwijder de bewakings oplossing door te navigeren naar de werk ruimte en te zoeken in de [lijst met geïnstalleerde bewakings oplossingen](../azure-monitor/insights/solutions.md#list-installed-monitoring-solutions).
 2. Klik op de naam van de oplossing om de overzichts pagina te openen en klik vervolgens op verwijderen, zoals beschreven in [een bewakings oplossing verwijderen](../azure-monitor/insights/solutions.md#remove-a-monitoring-solution).
@@ -187,7 +187,7 @@ In de volgende tabel wordt de frequentie van gegevens verzameling voor de typen 
 | Windows-REGI ster | 50 minuten |
 | Windows-bestand | 30 minuten |
 | Linux-bestand | 15 minuten |
-| Windows-services | 10 seconden tot 30 minuten</br> Standaard: 30 minuten |
+| Windows-services | 10 seconden tot 30 minuten</br> Prijs 30 minuten |
 | Linux-daemons | 5 minuten |
 | Windows-software | 30 minuten |
 | Linux-software | 5 minuten |
@@ -198,7 +198,7 @@ De volgende tabel bevat de limieten voor het bijgehouden item per computer voor 
 |---|---|---|
 |File|500||
 |Register|250||
-|Windows-software|250|Bevat geen software-updates|
+|Windows-software|250|Bevat geen software-hotfixes|
 |Linux-pakketten|1250||
 |Services|250||
 |Daemon|250||
@@ -273,7 +273,7 @@ De volgende adressen zijn specifiek vereist voor Wijzigingen bijhouden. De commu
 
 Nadat de oplossing is ingeschakeld, kunt u het overzicht van de wijzigingen voor uw bewaakte computers bekijken door **Wijzigingen bijhouden** te selecteren onder **configuratie beheer** in uw Automation-account.
 
-U kunt wijzigingen in uw computers bekijken en vervolgens Details inzoomen voor elke gebeurtenis. Er zijn vervolg keuzelijsten aan de bovenkant van de grafiek beschikbaar om het diagram en gedetailleerde informatie te beperken op basis van het wijzigings type en de peri Oden. U kunt ook op het diagram klikken en slepen om een aangepast tijds bereik te selecteren. **Het wijzigings type** is een van de volgende waarden: **gebeurtenissen**, daemons, **bestanden**, **REGI ster**, **Software**, **Windows-Services**. Categorie toont u het type wijziging en kan worden **toegevoegd**, **gewijzigd**of **verwijderd**.
+U kunt wijzigingen in uw computers bekijken en vervolgens Details inzoomen voor elke gebeurtenis. Er zijn vervolg keuzelijsten aan de bovenkant van de grafiek beschikbaar om het diagram en gedetailleerde informatie te beperken op basis van het wijzigings type en de peri Oden. U kunt ook op het diagram klikken en slepen om een aangepast tijds bereik te selecteren. **Het wijzigings type** is een van de volgende waarden: **gebeurtenissen**, **daemons**, **bestanden**, **REGI ster**, **Software**, **Windows-Services**. Categorie toont u het type wijziging en kan worden **toegevoegd**, **gewijzigd**of **verwijderd**.
 
 ![afbeelding van Wijzigingen bijhouden dash board](./media/change-tracking/change-tracking-dash01.png)
 
@@ -283,7 +283,7 @@ Als u op een wijziging of gebeurtenis klikt, wordt gedetailleerde informatie ove
 
 ## <a name="search-logs"></a>Logboeken zoeken
 
-Naast de details die in de portal zijn opgenomen, kunnen Zoek opdrachten worden uitgevoerd op basis van de logboeken. Klik op **log Analytics**op de pagina **Wijzigingen bijhouden** om de pagina logboeken te openen.
+Naast de details die in de portal zijn opgenomen, kunnen Zoek opdrachten worden uitgevoerd op basis van de logboeken. Klik op **log Analytics**op de pagina **Wijzigingen bijhouden** om de pagina **Logboeken** te openen.
 
 ### <a name="sample-queries"></a>Voorbeeldquery's
 

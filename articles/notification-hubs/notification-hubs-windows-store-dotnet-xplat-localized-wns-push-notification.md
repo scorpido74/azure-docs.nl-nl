@@ -3,9 +3,9 @@ title: Gelokaliseerde meldingen verzenden naar Windows-apps met Azure Notificati
 description: Leer hoe u met behulp van Azure Notification Hubs gelokaliseerde meldingen voor belangrijk nieuws kunt verzenden.
 services: notification-hubs
 documentationcenter: windows
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.assetid: c454f5a3-a06b-45ac-91c7-f91210889b25
 ms.service: notification-hubs
 ms.workload: mobile
@@ -14,13 +14,15 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 03/22/2019
-ms.author: jowargo
-ms.openlocfilehash: f3880db813072ca0bcecf073a8db24b21c87189f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 03/22/2019
+ms.openlocfilehash: 57353999ff94aa8fd4499b511c86cd59d24d1f0a
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60871789"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71213377"
 ---
 # <a name="tutorial-push-localized-notifications-to-windows-apps-by-using-azure-notification-hubs"></a>Zelfstudie: Gelokaliseerde pushmeldingen verzenden naar Windows-apps met Azure Notification Hubs
 
@@ -194,7 +196,7 @@ Zie [Push Templates](notification-hubs-templates-cross-platform-push-messages.md
 
 ## <a name="run-the-uwp-application"></a>De UWP-toepassing uitvoeren
 
-1. De Universal Windows Platform-toepassing uitvoeren. Wacht tot u het bericht ziet dat de **registratie is gelukt**.
+1. Voer de Universeel Windows-platform-toepassing uit. Wacht tot u het bericht ziet dat de **registratie is gelukt**.
 
     ![Registratie van mobiele toepassing](./media/notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification/registration-successful.png)
 2. Selecteer de **categorieën** en **locale** (landinstelling), en klik op **Subscribe**. De app zet de geselecteerde categorieën om in tags en vraagt bij Notification Hubs een nieuwe apparaatregistratie aan voor de geselecteerde tags.
@@ -204,7 +206,7 @@ Zie [Push Templates](notification-hubs-templates-cross-platform-push-messages.md
 
     ![Abonnementsbericht](./media/notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification/subscription-message.png)
 
-## <a name="update-console-app-to-send-localized-notifications"></a>Console-app bijwerken naar gelokaliseerde meldingen verzenden
+## <a name="update-console-app-to-send-localized-notifications"></a>De console-app bijwerken om gelokaliseerde meldingen te verzenden
 
 Wanneer u sjabloonmeldingen verstuurt, hoeft u alleen een set eigenschappen op te geven. In deze zelfstudie verstuurt de back-endtoepassing de set eigenschappen met de gelokaliseerde versie van het actuele nieuws, bijvoorbeeld:
 
@@ -257,8 +259,8 @@ private static async void SendTemplateNotificationAsync()
 
 Met deze eenvoudige aanroep wordt het gelokaliseerde nieuwsbericht bezorgd op **alle** apparaten, ongeacht het platform. Dit kan doordat uw Notification Hub de juiste payload voor het platform samenstelt en verstuurt naar alle apparaten die zijn geabonneerd op een bepaalde tag.
 
-## <a name="run-console-app-to-send-localized-notification"></a>Console-app om gelokaliseerde melding te verzenden uitvoeren
-Voer de **console-app** voor het verzenden van meldingen voor elke categorie en in elke ondersteunde taal. Controleer of u alleen een melding krijgt voor de categorieën waarop u zich hebt geabonneerd en of het bericht overeenkomt met de landinstelling die u hebt geselecteerd.
+## <a name="run-console-app-to-send-localized-notification"></a>Console-app uitvoeren om gelokaliseerde melding te verzenden
+Voer de **console-app** uit om meldingen te verzenden voor elke categorie en in elke ondersteunde taal. Controleer of u alleen een melding krijgt voor de categorieën waarop u zich hebt geabonneerd en of het bericht overeenkomt met de landinstelling die u hebt geselecteerd.
 
 ![Meldingen](./media/notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification/notifications.png)
 

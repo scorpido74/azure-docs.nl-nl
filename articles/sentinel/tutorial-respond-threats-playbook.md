@@ -1,5 +1,5 @@
 ---
-title: Een Playbook uitvoeren in azure Sentinel preview | Microsoft Docs
+title: Een Playbook uitvoeren in de Azure-Sentinel | Microsoft Docs
 description: In dit artikel wordt beschreven hoe u een Playbook uitvoert in azure Sentinel.
 services: sentinel
 documentationcenter: na
@@ -14,20 +14,18 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 8/21/2019
+ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 08c88df2f8ccc69f213687209d1d003f3bb1c7b8
-ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
+ms.openlocfilehash: 7ab4c4ba4553e7e5f15e563c67c845758a53766f
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70018789"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71229501"
 ---
-# <a name="tutorial-set-up-automated-threat-responses-in-azure-sentinel-preview"></a>Zelfstudie: Automatische reacties op dreigingen instellen in azure Sentinel preview
+# <a name="tutorial-set-up-automated-threat-responses-in-azure-sentinel"></a>Zelfstudie: Automatische bedreigings reacties instellen in azure Sentinel
 
-> [!IMPORTANT]
-> Azure Sentinel is momenteel beschikbaar als open bare preview.
-> Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
+
 
 Deze zelf studie helpt u bij het gebruik van beveiligings-playbooks in azure Sentinel om automatische bedreigings reacties in te stellen op beveiligings problemen die worden gedetecteerd door Azure Sentinel.
 
@@ -78,7 +76,9 @@ Volg deze stappen voor het maken van een nieuwe beveiligings Playbook in azure S
 
 6. U wordt naar de ontwerp functie voor logische apps geleid, waar u een nieuwe sjabloon kunt maken of bewerken. Voor meer informatie over het maken van een Playbook met [Logic apps](../logic-apps/logic-apps-create-logic-apps-from-templates.md).
 
-7. Als u een lege Playbook maakt, typt u in het veld **alle connectors en triggers doorzoeken** de tekst *Azure Sentinel*en selecteert **u wanneer een reactie op een Azure-Sentinel waarschuwing wordt geactiveerd**. <br>Nadat deze is gemaakt, wordt de nieuwe Playbook weer gegeven in de lijst **Playbooks** . Als deze niet wordt weer gegeven, klikt u op **vernieuwen**. 
+7. Als u een lege Playbook maakt, typt u in het veld **alle connectors en triggers doorzoeken** de tekst *Azure Sentinel*en selecteert **u wanneer een reactie op een Azure-Sentinel waarschuwing wordt geactiveerd**. <br>Nadat deze is gemaakt, wordt de nieuwe Playbook weer gegeven in de lijst **Playbooks** . Als deze niet wordt weer gegeven, klikt u op **vernieuwen**.
+
+1. Gebruik de functies **Get entities** , waarmee u de relevante entiteiten kunt ophalen in de lijst **entiteiten** , zoals accounts, IP-adressen en hosts. Hiermee kunt u acties uitvoeren voor specifieke entiteiten.
 
 7. Nu kunt u bepalen wat er moet gebeuren wanneer de playbook wordt geactiveerd. U kunt een actie, een logische voor waarde, Case voorwaarden of lussen toevoegen.
 
@@ -90,7 +90,7 @@ U kunt op aanvraag een Playbook uitvoeren.
 
 Een Playbook op aanvraag uitvoeren:
 
-1. Selecteer op de pagina incidenten een incident en klik op **volledige details weer geven**.
+1. Selecteer op de pagina **incidenten** een incident en klik op **volledige details weer geven**.
 
 2. Klik op het tabblad **waarschuwingen** op de waarschuwing waarmee u de Playbook wilt uitvoeren en schuif helemaal naar rechts en klik op **playbooks weer geven** en selecteer een Playbook om uit te **voeren** in de lijst met beschik bare playbooks van het abonnement. 
 
@@ -117,6 +117,6 @@ Voor het automatiseren van antwoorden:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelf studie hebt u geleerd hoe u een Playbook in azure Sentinel uitvoert. Ga door met het proactief [zoeken naar bedreigingen](hunting.md) met Azure Sentinel.
+In deze zelf studie hebt u geleerd hoe u een Playbook in azure Sentinel uitvoert. Ga door met het [proactief zoeken naar bedreigingen](hunting.md) met Azure Sentinel.
 
 

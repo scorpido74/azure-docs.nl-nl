@@ -1,49 +1,51 @@
 ---
-title: Apple Push Notification Service configureren in Azure Notification Hubs | Microsoft Docs
-description: Leer hoe u een Azure notification hub configureren met instellingen voor Apple Push Notification Service (APNS).
+title: Apple Push Notification Service configureren in azure Notification Hubs | Microsoft Docs
+description: Meer informatie over het configureren van een Azure notification hub met Apple Push Notification Service (APNS)-instellingen.
 services: notification-hubs
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.service: notification-hubs
 ms.workload: mobile
 ms.topic: article
 ms.date: 03/25/2019
-ms.author: jowargo
-ms.openlocfilehash: 9a9db9f05895569b050e56cdeec1ee2ee25af0df
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 03/25/2019
+ms.openlocfilehash: 74e7e3c74934e292b668b8bff594a5efbca19716
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60237814"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212546"
 ---
-# <a name="configure-apple-push-notification-service-apns-settings-for-a-notification-hub-in-the-azure-portal"></a>In de Azure-portal Apple Push Notification Service (APNS)-instellingen voor een notification hub configureren
-In dit artikel wordt beschreven hoe u Apple Push Notification Service (APNS) om instellingen te configureren voor een Azure notification hub met behulp van de Azure-portal. 
+# <a name="configure-apple-push-notification-service-apns-settings-for-a-notification-hub-in-the-azure-portal"></a>Configureer Apple Push Notification Service (APNS)-instellingen voor een notification hub in de Azure Portal
+In dit artikel wordt beschreven hoe u Apple Push Notification Service (APNS)-instellingen configureert voor een Azure notification hub met behulp van de Azure Portal. 
 
 ## <a name="prerequisites"></a>Vereisten
-Als u al een notification hub hebt gemaakt, moet u een nu maken. Zie voor meer informatie, [een Azure notification hub maken in Azure portal](create-notification-hub-portal.md). 
+Als u nog geen notification hub hebt gemaakt, maakt u er nu een. Zie [een Azure notification hub maken in de Azure Portal](create-notification-hub-portal.md)voor meer informatie. 
 
 ## <a name="configure-apple-push-notification-service"></a>Apple Push Notification Service configureren
 
-De volgende procedure bevat stappen voor het configureren van instellingen voor Apple Push Notification Service (APNS) voor een notification hub:
+De volgende procedure bevat stappen voor het configureren van Apple Push Notification Service (APNS)-instellingen voor een notification hub:
 
-1. In de Azure-portal op de **Notification Hub** weergeeft, schakelt **Apple (APNS)** in het menu links.
+1. Selecteer in het Azure Portal op de pagina **Notification hub** **Apple (APNS)** in het menu links.
 
-1. Voor **verificatiemodus**, selecteert u **certificaat** of **Token**.
+1. Voor de **verificatie modus**selecteert u **certificaat** of **token**.
 
-   a. Als u selecteert **certificaat**:
-   * Selecteer het pictogram van het bestand en selecteer vervolgens de *.p12* bestand dat u wilt uploaden.
-   * Voer een wachtwoord.
-   * Selecteer de modus **Sandbox**. Voor het verzenden van pushmeldingen naar gebruikers die uw app uit de store hebt aangeschaft, selecteert u **productie** modus.
+   a. Als u **certificaat**selecteert:
+   * Selecteer het pictogram bestand en selecteer vervolgens het *. p12* -bestand dat u wilt uploaden.
+   * Voer een wacht woord in.
+   * Selecteer de modus **Sandbox**. Als u push meldingen wilt verzenden naar gebruikers die uw app uit de Store hebben gekocht, selecteert u **productie** modus.
 
-     ![Schermafbeelding van een APNS-certificaat-configuratie in Azure portal](./media/notification-hubs-ios-get-started/notification-hubs-apple-config-cert.png)
+     ![Scherm opname van een configuratie van een APNS-certificaat in de Azure Portal](./media/notification-hubs-ios-get-started/notification-hubs-apple-config-cert.png)
 
-   b. Als u selecteert **Token**:
+   b. Als u **token**selecteert:
 
-   * Voer de waarden in voor **sleutel-ID**, **bundel-ID**, **Team-ID**, en **Token**.
-   * Selecteer de modus **Sandbox**. Voor het verzenden van pushmeldingen naar gebruikers die uw app uit de store hebt aangeschaft, selecteert u **productie** modus.
+   * Voer de waarden in voor de **sleutel-id**, de **bundel-id**, de **Team-ID**en het **token**.
+   * Selecteer de modus **Sandbox**. Als u push meldingen wilt verzenden naar gebruikers die uw app uit de Store hebben gekocht, selecteert u **productie** modus.
 
-     ![Schermafbeelding van een APNS-token configuratie in Azure portal](./media/notification-hubs-ios-get-started/notification-hubs-apple-config-token.png)
+     ![Scherm afbeelding van een configuratie van een APNS-token in de Azure Portal](./media/notification-hubs-ios-get-started/notification-hubs-apple-config-token.png)
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie het volgende artikel voor een zelfstudie met stapsgewijze instructies voor het pushen van meldingen op iOS-apparaten: [Pushmeldingen verzenden naar iOS-apparaten met behulp van Notification Hubs en APNS](notification-hubs-ios-apple-push-notification-apns-get-started.md)
+Voor een zelf studie met stapsgewijze instructies voor het pushen van meldingen naar iOS-apparaten raadpleegt u het volgende artikel: [Push meldingen naar iOS-apparaten met behulp van Notification Hubs en APNS](notification-hubs-ios-apple-push-notification-apns-get-started.md)

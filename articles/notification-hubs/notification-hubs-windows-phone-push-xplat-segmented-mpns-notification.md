@@ -3,9 +3,9 @@ title: Pushmeldingen verzenden naar specifieke Windows-telefoons met Azure Notif
 description: In deze zelfstudie leert u hoe u met Azure Notification Hubs pushmeldingen verzendt naar specifieke (niet alle) apparaten met Windows Phone 8 of Windows Phone 8.1 die zijn geregistreerd bij de app-back-end.
 services: notification-hubs
 documentationcenter: windows
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.assetid: 42726bf5-cc82-438d-9eaa-238da3322d80
 ms.service: notification-hubs
 ms.workload: mobile
@@ -14,13 +14,15 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/04/2019
-ms.author: jowargo
-ms.openlocfilehash: 10f8c2e21f2dcf8c108576d54fe6776ecf04a0f0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 01/04/2019
+ms.openlocfilehash: 88326b07a96dcc8ce7a72f8709a88c2662f48707
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60872463"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71213390"
 ---
 # <a name="tutorial-push-notifications-to-specific-windows-phone-devices-by-using-azure-notification-hubs"></a>Zelfstudie: Pushmeldingen verzenden naar specifieke Windows Phone-apps met Azure Notification Hubs
 

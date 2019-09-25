@@ -4,16 +4,16 @@ description: Gebruik functies zoals opslag analyse, logboek registratie aan clie
 author: normesta
 ms.service: storage
 ms.topic: conceptual
-ms.date: 05/11/2017
+ms.date: 09/23/2019
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: 08c19daa0af226834ea70db8847e1637c2373351
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 34aa4ff6c54b34acf865af0b57c3dfa7945a637c
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855358"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212831"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>Microsoft Azure Storage bewaken, problemen opsporen en oplossen
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -102,6 +102,8 @@ Als u bekend bent met de bewaking van Windows-prestaties, kunt u de metrische ge
 
 U kunt kiezen welke metrische gegevens per uur u wilt weer geven in de [Azure Portal](https://portal.azure.com) en regels configureren waarmee beheerders per e-mail op de hoogte worden gesteld wanneer een metrische waarde van elk uur een bepaalde drempel waarde overschrijdt. Zie [waarschuwings meldingen ontvangen](/azure/monitoring-and-diagnostics/monitoring-overview-alerts)voor meer informatie.
 
+U wordt aangeraden [Azure monitor voor opslag](../../azure-monitor/insights/storage-insights-overview.md) te bekijken (preview). Het is een functie van Azure Monitor die uitgebreide controle biedt over uw Azure Storage-accounts door een uniforme weer gave te bieden van de prestaties, capaciteit en beschik baarheid van uw Azure Storage services. U hoeft niets in te scha kelen of te configureren, en u kunt deze metrische gegevens direct weer geven vanuit de vooraf gedefinieerde interactieve diagrammen en andere visualisaties die zijn opgenomen.
+
 De opslag service verzamelt metrische gegevens aan de hand van een beste poging, maar kan niet elke opslag bewerking opnemen.
 
 In de Azure Portal kunt u metrische gegevens weer geven, zoals de beschik baarheid, het totaal aantal aanvragen en de gemiddelde latentie nummers van een opslag account. Er is ook een meldings regel ingesteld om een beheerder te waarschuwen als de beschik baarheid onder een bepaald niveau daalt. Voor het weer geven van deze gegevens is een mogelijk gebied voor onderzoek het percentage van het tabel service-succes dat onder 100% ligt (Zie de sectie[Metrische gegevens tonen lage PercentSuccess of analytics logboekvermeldingen bewerkingen hebben met de status van ClientOtherErrors]").
@@ -128,7 +130,7 @@ Opmerking: Deze informatie was eerder beschikbaar, samen met historische gegeven
 Terwijl de [Azure Portal](https://portal.azure.com) status gegevens verzamelt vanuit de Azure-Data Centers (interne bewaking), kunt u ook overwegen om een externe benadering te gebruiken voor het genereren van synthetische trans acties die regel matig toegang hebben tot uw door Azure gehoste website toepassing vanaf meerdere locaties. De services die worden aangeboden door [Dynatrace](https://www.dynatrace.com/en/synthetic-monitoring) en Application Insights voor Azure DevOps zijn voor beelden van deze benadering. Voor meer informatie over Application Insights voor Azure DevOps raadpleegt u de bijlage[bijlage 5: Bewaking met Application Insights voor Azure DevOps](#appendix-5). "
 
 ### <a name="monitoring-capacity"></a>Bewakings capaciteit
-Met metrische gegevens voor opslag worden alleen metrische gegevens over capaciteit opgeslagen voor de BLOB-service, omdat blobs doorgaans het grootste deel van de opgeslagen data hebben (op het moment van schrijven, is het niet mogelijk metrische opslag waarden te gebruiken om de capaciteit van uw tabellen en wacht rijen te controleren). U kunt deze gegevens vinden in de tabel **$MetricsCapacityBlob** als u bewaking hebt ingeschakeld voor de BLOB service. Met metrische gegevens van de opslag records worden deze eenmalig per dag geregistreerd en kunt u de waarde van de **RowKey** gebruiken om te bepalen of de rij een entiteit bevat die is gekoppeld aan gebruikersgegevens (waardegegevens) of Analytics-gegevens (Value **Analytics**). Elke opgeslagen entiteit bevat informatie over de hoeveelheid gebruikte opslag ruimte (**capaciteit** gemeten in bytes) en het huidige aantal containers (**ContainerCount**) en blobs (**ObjectCount**) die worden gebruikt in het opslag account. Zie [Opslaganalyse-tabel schema metrische](https://msdn.microsoft.com/library/azure/hh343264.aspx)gegevens voor meer informatie over de capaciteits gegevens die zijn opgeslagen in de tabel **$MetricsCapacityBlob** .
+Met metrische gegevens voor opslag worden alleen metrische gegevens over capaciteit opgeslagen voor de BLOB-service, omdat blobs doorgaans het grootste deel van de opgeslagen data hebben (op het moment van schrijven, is het niet mogelijk metrische opslag waarden te gebruiken om de capaciteit van uw tabellen en wacht rijen te controleren). U kunt deze gegevens vinden in de tabel **$MetricsCapacityBlob** als u bewaking hebt ingeschakeld voor de BLOB service. Met metrische gegevens van de opslag records worden deze eenmalig per dag geregistreerd en kunt u de waarde van de **RowKey** gebruiken om te bepalen of de rij een entiteit bevat die is gekoppeld aan gebruikers gegevens (waardegegevens) of Analytics-gegevens **(Value** **Analytics**). Elke opgeslagen entiteit bevat informatie over de hoeveelheid gebruikte opslag ruimte (**capaciteit** gemeten in bytes) en het huidige aantal containers (**ContainerCount**) en blobs (**ObjectCount**) die worden gebruikt in het opslag account. Zie [Opslaganalyse-tabel schema metrische](https://msdn.microsoft.com/library/azure/hh343264.aspx)gegevens voor meer informatie over de capaciteits gegevens die zijn opgeslagen in de tabel **$MetricsCapacityBlob** .
 
 > [!NOTE]
 > U moet deze waarden controleren voor een vroegtijdige waarschuwing dat u de capaciteits limieten van uw opslag account nadert. U kunt in de Azure Portal waarschuwings regels toevoegen om u te waarschuwen als het gebruik van geaggregeerde opslag overschrijdt of lager is dan de drempel waarden die u opgeeft.
@@ -466,7 +468,7 @@ De meest voorkomende oorzaak van deze fout is dat een client de verbinding verbr
 ### <a name="the-client-is-receiving-403-messages"></a>De client ontvangt HTTP 403-berichten (verboden)
 Als de clienttoepassing een HTTP 403-fout (verboden) weergeeft, is een vermoedelijke oorzaak dat de client gebruikmaakt van een verlopen Shared Access Signature (SAS) bij het verzenden van een opslagaanvraag (hoewel andere mogelijke oorzaken een tijdverschil, ongeldige sleutels of lege headers kunnen zijn). Als een verlopen SAS-sleutel de oorzaak is, ziet u geen vermeldingen in de logboekgegevens voor logboekregistratie voor opslag aan de serverzijde. In de volgende tabel ziet u een voor beeld van het logboek aan de client zijde dat is gegenereerd door de Storage-client bibliotheek die het volgende laat zien:
 
-| Source | Uitgebreidheid | Uitgebreidheid | Clientaanvraag-id | Tekst van bewerking |
+| Source | Uitbreidings | Uitbreidings | Clientaanvraag-id | Tekst van bewerking |
 | --- | --- | --- | --- | --- |
 | Microsoft.Azure.Storage |Information |3 |85d077ab-… |De bewerking wordt gestart met locatie Primary per locatie modus PrimaryOnly. |
 | Microsoft.Azure.Storage |Information |3 |85d077ab -… |Synchrone aanvraag wordt gestart om<https://domemaildist.blob.core.windows.netazureimblobcontainer/blobCreatedViaSAS.txt?sv=2014-02-14&sr=c&si=mypolicy&sig=OFnd4Rd7z01fIvh%2BmcR6zbudIH2F5Ikm%2FyhNYZEmJNQ%3D&api-version=2014-02-14> |
@@ -560,7 +562,7 @@ Als de client toepassing een SAS-sleutel probeert te gebruiken die niet de benod
 
 In de volgende tabel ziet u een voor beeld van een logboek bericht aan de server zijde uit het logboek bestand van de opslag logboek registratie:
 
-| Name | Waarde |
+| Name | Value |
 | --- | --- |
 | Begin tijd van aanvraag | 2014-05-30T06:17:48.4473697 Z |
 | Bewerkings type     | GetBlobProperties            |
@@ -745,7 +747,7 @@ Met WireShark worden eventuele fouten in het venster **packetlist** gemarkeerd. 
 
 ![][7]
 
-U kunt er ook voor kiezen om de TCP-gegevens weer te geven wanneer de toepassingslaag de laag ziet door met de rechter muisknop op de TCP-gegevens te klikken en **TCP-stroom volgen**te selecteren. Dit is handig als u uw dump hebt vastgelegd zonder een opname filter. Zie de [volgende TCP](https://www.wireshark.org/docs/wsug_html_chunked/ChAdvFollowTCPSection.html)-streams voor meer informatie.
+U kunt er ook voor kiezen om de TCP-gegevens weer te geven wanneer de toepassingslaag de laag ziet door met de rechter muisknop op de TCP-gegevens te klikken en **TCP-stroom volgen**te selecteren. Dit is handig als u uw dump hebt vastgelegd zonder een opname filter. Zie de [volgende TCP-streams](https://www.wireshark.org/docs/wsug_html_chunked/ChAdvFollowTCPSection.html)voor meer informatie.
 
 ![][8]
 
@@ -771,7 +773,7 @@ contosodata.blob.core.windows.net contosodata.table.core.windows.net contosodata
 
 Wanneer u klaar bent om te beginnen met het verzamelen van tracerings gegevens, klikt u op de knop **beginnen met** .
 
-Zie [micro soft-PEF-webproxy-provider](https://technet.microsoft.com/library/jj674814.aspx)voor meer informatie over de webproxy-tracering van micro soft Message Analyzer.
+Zie [micro soft-PEF-webproxy-provider](https://technet.microsoft.com/library/jj674814.aspx)voor meer informatie over de **webproxy** -tracering van micro soft Message Analyzer.
 
 De ingebouwde **Web Proxy** -tracering in micro soft Message Analyzer is gebaseerd op Fiddler. Er kan HTTPS-verkeer aan de client zijde worden vastgelegd en niet-versleutelde HTTPS-berichten worden weer gegeven. De **webproxy** tracering werkt door een lokale proxy te configureren voor alle http-en HTTPS-verkeer die het toegang geeft tot niet-versleutelde berichten.
 
@@ -811,7 +813,7 @@ U kunt meer informatie vinden op [wat Application Insights is](../../azure-monit
 
 Raadpleeg de volgende bronnen voor meer informatie over Analytics in Azure Storage:
 
-* [Een opslag account in de Azure Portal bewaken](storage-monitor-storage-account.md)
+* [Een Storage-account bewaken in de Azure-portal](storage-monitor-storage-account.md)
 * [Opslag analyse](storage-analytics.md)
 * [Metrische gegevens van opslag analyse](storage-analytics-metrics.md)
 * [Tabel schema voor metrische gegevens van opslag analyse](/rest/api/storageservices/storage-analytics-metrics-table-schema)

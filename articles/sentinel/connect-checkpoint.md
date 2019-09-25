@@ -1,32 +1,29 @@
 ---
-title: Verbinding maken met controle punt gegevens naar Azure Sentinel preview | Microsoft Docs
+title: Gegevens van Check Point verbinden met Azure Sentinel | Microsoft Docs
 description: Meer informatie over het verbinden van Check Point-gegevens met Azure Sentinel.
 services: sentinel
 documentationcenter: na
 author: rkarlin
 manager: rkarlin
 editor: ''
-ms.assetid: 3229233d-400d-4971-8d76-eaa0d6591d75
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/31/2019
+ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: ea9cb7997f86c10bb09c01dfc345aaeeef46708a
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 1bfa59e92ce2cde45b448174260396f4e93a6282
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68679339"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240141"
 ---
 # <a name="connect-your-check-point-appliance"></a>Uw Check Point-toestel aansluiten
 
-> [!IMPORTANT]
-> Azure Sentinel is momenteel beschikbaar als open bare preview.
-> Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
+
 
 U kunt Azure Sentinel verbinden met elk Check Point-apparaat door de logboek bestanden op te slaan als syslog CEF. Dankzij de integratie met Azure Sentinel kunt u eenvoudig analyses en query's uitvoeren op de gegevens van het logboek bestand vanaf het controle punt. Zie [verbinding maken met CEF-apparaten](connect-common-event-format.md)voor meer informatie over de manier waarop Azure Sentinel CEF-gegevens opneemt.
 
@@ -143,5 +140,5 @@ Het kan 20 minuten duren voordat uw logboeken in Log Analytics worden weer gegev
 ## <a name="next-steps"></a>Volgende stappen
 In dit document hebt u geleerd hoe u apparaten van Check Point verbindt met Azure Sentinel. Raadpleeg de volgende artikelen voor meer informatie over Azure Sentinel:
 - Meer informatie over hoe u [inzicht krijgt in uw gegevens en mogelijke bedreigingen](quickstart-get-visibility.md).
-- Ga aan de slag [met het detecteren van bedreigingen met Azure Sentinel](tutorial-detect-threats.md).
+- Ga aan de slag [met het detecteren van bedreigingen met Azure Sentinel](tutorial-detect-threats-built-in.md).
 

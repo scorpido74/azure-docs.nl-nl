@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/15/2019
 ms.author: magoedte
-ms.openlocfilehash: 17135f896140a843dd95c8d9624e9faf1d7194c3
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 1ab49d17ebf10a1ae0277768ddbd1878195d835d
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70996250"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212763"
 ---
 # <a name="monitoring-your-storage-service-with-azure-monitor-for-storage-preview"></a>Uw opslag service controleren met Azure Monitor voor opslag (preview-versie)
 
-Azure Monitor voor opslag (preview) biedt een uitgebreide controle over uw Azure Storage-accounts door een uniforme weer gave te bieden van de prestaties, capaciteit en beschik baarheid van uw Azure Storage services. U kunt de opslag capaciteit en prestaties op twee manieren observeren, rechtstreeks vanuit een opslag account of weer gave bekijken van Azure Monitor om over verschillende groepen opslag accounts te kijken. 
+Azure Monitor voor opslag (preview) biedt uitgebreide controle over uw Azure Storage-accounts door een uniforme weer gave te bieden van de prestaties, capaciteit en beschik baarheid van uw Azure Storage services. U kunt de opslag capaciteit en prestaties op twee manieren observeren, rechtstreeks vanuit een opslag account of weer gave bekijken van Azure Monitor om over verschillende groepen opslag accounts te kijken. 
 
 Dit artikel helpt u inzicht te krijgen in de ervaring Azure Monitor voor opslag (preview) voor het afleiden van op schaal bare informatie over de status en prestaties van opslag accounts, met een mogelijkheid om te focussen op HOTS pots en latentie, beperking, en beschikbaarheids problemen.
 

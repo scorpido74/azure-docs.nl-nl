@@ -1,45 +1,45 @@
 ---
-title: 'Quickstart: Herkent digitale inkt met de Ink herkenning REST-API en Node.js'
+title: 'Quickstart: Digitale inkt herkennen met de inkt Recognizer REST API en node. js'
 titleSuffix: Azure Cognitive Services
-description: De Ink-herkenning-API gebruiken om te beginnen met het herkennen van digitale inkt lijnen.
+description: Gebruik de API voor inkt herkenning om te beginnen met het herkennen van digitale inkt streken.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: ink-recognizer
 ms.topic: quickstart
-ms.date: 05/02/2019
+ms.date: 09/23/2019
 ms.author: aahi
-ms.openlocfilehash: 7e158b0ae27780eeecb1ee7948087bf59b1502e1
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 5e3b97faaed84f2c07ea70ddb73bd8e8c9efa71d
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67721266"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212658"
 ---
-# <a name="quickstart-recognize-digital-ink-with-the-ink-recognizer-rest-api-and-javascript"></a>Quickstart: Herkent digitale inkt met de Ink herkenning REST API en JavaScript
+# <a name="quickstart-recognize-digital-ink-with-the-ink-recognizer-rest-api-and-javascript"></a>Quickstart: Digitale inkt herkennen met de inkt Recognizer REST API en Java script
 
-Gebruik deze Quick Start om te beginnen met behulp van de Ink-API voor herkenning van digitale inkt lijnen. Deze JavaScript-toepassing een API-aanvraag met JSON-indeling ink lijn gegevens verzendt en het antwoord weergegeven.
+Gebruik deze Quick Start om de inkt Recognizer-API te gebruiken voor digitale inkt streken. Deze Java script-toepassing verstuurt een API-aanvraag die is voorzien van inkt lijn gegevens in JSON en geeft het antwoord weer.
 
-Hoewel deze toepassing is geschreven in Javascript en wordt uitgevoerd in uw webbrowser, de API is een RESTful-web-compatibel is met de meeste moderne programmeertalen.
+Hoewel deze toepassing wordt geschreven in Java script en wordt uitgevoerd in uw webbrowser, is de API een REST-webservice die compatibel is met de meeste programmeer talen.
 
-Doorgaans wilt u de API aanroepen vanuit een digitale bij app. In deze snelstartgids verzendt ink lijn gegevens voor het volgende voorbeeld van handgeschreven vanuit een JSON-bestand.
+Normaal gesp roken roept u de API aan vanuit een digitale hand schrift-app. Deze Quick Start verzendt inkt lijn gegevens voor het volgende handgeschreven voor beeld vanuit een JSON-bestand.
 
 ![een afbeelding van handgeschreven tekst](../media/handwriting-sample.jpg)
 
-De broncode voor deze Quick Start kunt u vinden op [GitHub](https://go.microsoft.com/fwlink/?linkid=2089905).
+De bron code voor deze snelstartgids vindt u op [github](https://go.microsoft.com/fwlink/?linkid=2089905).
 
 ## <a name="prerequisites"></a>Vereisten
 
 - Een webbrowser
-- De voorbeeld ink lijn gegevens voor deze Quick Start kunt u vinden op [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/javascript/InkRecognition/quickstart/example-ink-strokes.json).
+- De voorbeeld gegevens voor de inkt lijn voor deze snelstartgids vindt u op [github](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/javascript/InkRecognition/quickstart/example-ink-strokes.json).
 
 
 [!INCLUDE [cognitive-services-ink-recognizer-signup-requirements](../../../../includes/cognitive-services-ink-recognizer-signup-requirements.md)]
 
 ## <a name="create-a-new-application"></a>Een nieuwe toepassing maken
 
-1. Maak in uw favoriete IDE of editor, een nieuwe `.html` bestand. Vervolgens voegt u aan deze eenvoudige HTML die gaan we later toevoegen met de code.
+1. Maak een nieuw `.html` bestand in uw favoriete IDE of editor. Voeg vervolgens de Basic-HTML toe aan de code die u later gaat toevoegen.
     
     ```html
     <!DOCTYPE html>
@@ -56,9 +56,9 @@ De broncode voor deze Quick Start kunt u vinden op [GitHub](https://go.microsoft
     </html>
     ```
 
-2. Binnen de `<body>` taggen, het toevoegen van de volgende HTML-code:
-    1. Twee aspecten van de tekst voor het weergeven van de JSON-aanvraag en respons.
-    2. Een knop voor het aanroepen de `recognizeInk()` functie die later worden gemaakt.
+2. Voeg binnen `<body>` het label de volgende HTML toe:
+    1. Twee tekst gebieden voor het weer geven van de JSON-aanvraag en het antwoord.
+    2. Een knop voor het aanroepen van de `recognizeInk()` functie die later wordt gemaakt.
     
     ```HTML
     <!-- <body>-->
@@ -72,13 +72,13 @@ De broncode voor deze Quick Start kunt u vinden op [GitHub](https://go.microsoft
     <!--</body>-->
     ```
 
-## <a name="load-the-example-json-data"></a>De voorbeeld-JSON-gegevens laden
+## <a name="load-the-example-json-data"></a>De voorbeeld gegevens van JSON laden
 
-1. Binnen de `<script>` taggen, het maken van een variabele voor de sampleJson. Maak vervolgens een JavaScript-functie met de naam `openFile()` die een Verkenner wordt geopend, zodat u kunt uw JSON-bestand selecteren. Wanneer de `Recognize ink` knop wordt geklikt, wordt deze functie aanroepen en beginnen met het bestand te lezen.
-2. Gebruik een `FileReader` van het object `onload()` functie het bestand om asynchroon te verwerken. 
-    1. Vervang alle `\n` of `\r` tekens in het bestand met een lege tekenreeks. 
-    2. Gebruik `JSON.parse()` de tekst omzetten in geldige JSON
-    3. Update de `request` in het tekstvak in de toepassing. Gebruik `JSON.stringify()` om de opmaak van de JSON-tekenreeks. 
+1. Maak binnen `<script>` het label een variabele voor de sampleJson. Maak vervolgens een Java script- `openFile()` functie met de naam waarmee een bestanden Verkenner wordt geopend, zodat u het JSON-bestand kunt selecteren. Wanneer op `Recognize ink` de knop wordt geklikt, wordt deze functie aangeroepen en begint het lezen van het bestand.
+2. Gebruik de `FileReader` functie van `onload()` een object om het bestand asynchroon te verwerken. 
+    1. Vervang of `\n` door `\r` een of meer tekens in het bestand met een lege teken reeks. 
+    2. Gebruiken `JSON.parse()` om de tekst te converteren naar een geldige JSON
+    3. Het `request` tekstvak in de toepassing bijwerken. Gebruiken `JSON.stringify()` om de JSON-teken reeks op te maken. 
     
     ```javascript
     var sampleJson = "";
@@ -95,9 +95,9 @@ De broncode voor deze Quick Start kunt u vinden op [GitHub](https://go.microsoft
     };
     ```
 
-## <a name="send-a-request-to-the-ink-recognizer-api"></a>Een aanvraag verzenden naar de API Ink-herkenning
+## <a name="send-a-request-to-the-ink-recognizer-api"></a>Een aanvraag verzenden naar de API voor inkt herkenning
 
-1. Binnen de `<script>` taggen, het maken van een functie met de naam `recognizeInk()`. Deze functie wordt later de API aanroepen en het bijwerken van de pagina met het antwoord. Voeg de code uit de volgende stappen in deze functie. 
+1. Maak binnen `<script>` het label een functie met de `recognizeInk()`naam. Deze functie roept de API later aan en werkt de pagina bij met het antwoord. Voeg de code uit de volgende stappen in deze functie toe. 
         
     ```javascript
     function recognizeInk() {
@@ -105,18 +105,18 @@ De broncode voor deze Quick Start kunt u vinden op [GitHub](https://go.microsoft
     }
     ```
 
-    1. Variabelen maken voor uw eindpunt-URL de abonnementssleutel en de voorbeeld-JSON. Maak vervolgens een `XMLHttpRequest` -object voor verzending van de API-aanvraag. 
+    1. Maak variabelen voor de eind punt-URL, abonnements sleutel en de voor beeld-JSON. Maak vervolgens een `XMLHttpRequest` object voor het verzenden van de API-aanvraag. 
         
         ```javascript
         // Replace the below URL with the correct one for your subscription. 
-        // Your endpoint can be found in the Azure portal. For example: https://westus2.api.cognitive.microsoft.com
+        // Your endpoint can be found in the Azure portal. For example: "https://<your-custom-subdomain>.cognitiveservices.azure.com";
         var SERVER_ADDRESS = "YOUR-SUBSCRIPTION-URL";
         var ENDPOINT_URL = SERVER_ADDRESS + "/inkrecognizer/v1.0-preview/recognize";
         // Replace the subscriptionKey string value with your valid subscription key.
         var SUBSCRIPTION_KEY = "YOUR-SUBSCRIPTION-KEY";
         var xhttp = new XMLHttpRequest();
         ```
-    2. Maken van de retourfunctie van de `XMLHttpRequest` object. Deze functie wordt de API-reactie van een geslaagde aanvraag parseren en weer te geven in de toepassing. 
+    2. De functie return maken voor het `XMLHttpRequest` object. Met deze functie wordt de API-reactie van een geslaagde aanvraag geparseerd en weer gegeven in de toepassing. 
             
         ```javascript
         function returnFunction(xhttp) {
@@ -125,7 +125,7 @@ De broncode voor deze Quick Start kunt u vinden op [GitHub](https://go.microsoft
             document.getElementById('response').innerHTML = JSON.stringify(response, null, 2);
         }
         ```
-    3. De foutfunctie voor de request-object maken. Deze functie registreert de fout in de console. 
+    3. Maak de fout functie voor het object Request. Met deze functie wordt de fout geregistreerd in de-console. 
             
         ```javascript
         function errorFunction() {
@@ -133,7 +133,7 @@ De broncode voor deze Quick Start kunt u vinden op [GitHub](https://go.microsoft
         }
         ```
 
-    4. Maak een functie voor het Aanvraagobject `onreadystatechange` eigenschap. Wanneer de gereedheidsstatus van het Aanvraagobject wordt gewijzigd, wordt de bovenstaande terug en fout-functies worden toegepast.
+    4. Maak een functie voor de eigenschap van `onreadystatechange` het aanvraag object. Wanneer de gereedheids status van het aanvraag object wordt gewijzigd, worden de bovenstaande retour-en fout functies toegepast.
             
         ```javascript
         xhttp.onreadystatechange = function () {
@@ -147,7 +147,7 @@ De broncode voor deze Quick Start kunt u vinden op [GitHub](https://go.microsoft
         };
         ```
     
-    5. De API-aanvraag verzenden. Uw abonnementssleutel toevoegen aan de `Ocp-Apim-Subscription-Key` -header en stel de `content-type` aan `application/json`
+    5. De API-aanvraag verzenden. Voeg uw abonnements sleutel toe aan `Ocp-Apim-Subscription-Key` de header en stel de `content-type` in op`application/json`
     
         ```javascript
         xhttp.open("PUT", ENDPOINT_URL, true);
@@ -157,16 +157,16 @@ De broncode voor deze Quick Start kunt u vinden op [GitHub](https://go.microsoft
         };
         ```
 
-## <a name="run-the-application-and-view-the-response"></a>Voer de toepassing en de reactie weergeven
+## <a name="run-the-application-and-view-the-response"></a>De toepassing uitvoeren en het antwoord weer geven
 
-Deze toepassing kan worden uitgevoerd in uw webbrowser. Een geslaagde respons wordt geretourneerd in JSON-indeling. U kunt ook het JSON-antwoord vinden op [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/javascript/InkRecognition/quickstart/example-response.json):
+Deze toepassing kan in uw webbrowser worden uitgevoerd. Een geslaagde reactie wordt geretourneerd in JSON-indeling. U kunt ook het JSON-antwoord vinden op [github](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/javascript/InkRecognition/quickstart/example-response.json):
 
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
 > [Naslaginformatie over REST API](https://go.microsoft.com/fwlink/?linkid=2089907)
 
-Als u wilt zien hoe de Ink-API in een digitale bij app werkt, bekijk de volgende voorbeeldtoepassingen op GitHub:
+Bekijk de volgende voorbeeld toepassingen op GitHub voor meer informatie over de werking van de API voor inkt herkenning in een digitale hand schrift-app:
 * [C# en Universal Windows Platform (UWP)](https://go.microsoft.com/fwlink/?linkid=2089803)  
 * [C# en Windows Presentation Foundation (WPF)](https://go.microsoft.com/fwlink/?linkid=2089804)
 * [Webbrowser-app (Javascript)](https://go.microsoft.com/fwlink/?linkid=2089908)       

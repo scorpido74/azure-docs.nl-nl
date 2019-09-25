@@ -8,12 +8,12 @@ ms.service: digital-twins
 ms.topic: tutorial
 ms.date: 09/17/2019
 ms.author: alinast
-ms.openlocfilehash: eebf6f58000178f2aa8021fbd435aa863fb70e49
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: 1ab3f30f035f8099ab50f827e559e56b31d7f1f6
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71177204"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71219741"
 ---
 # <a name="tutorial-deploy-azure-digital-twins-preview-and-configure-a-spatial-graph"></a>Zelfstudie: Azure Digital Apparaatdubbels preview implementeren en een ruimtelijke grafiek configureren
 
@@ -80,7 +80,7 @@ Open het bestand **digital-twins-samples-csharp\digital-twins-samples.code-works
     - Het bestand **getAvailableAndFreshSpaces.cs** haalt de resultaten op van een aangepaste (door de gebruiker gedefinieerde) functie op.
     - Het bestand **createEndpoints.cs** maakt eindpunten voor interactie met andere services.
 
-* Het simulatievoorbeeld **device-connectivity** simuleert sensorgegevens en verzendt deze naar de IoT-hub die is ingericht voor uw exemplaar van Digital Twins. U gebruikt dit voorbeeld in [de volgende zelfstudie nadat u de ruimtelijke grafiek hebt ingericht](tutorial-facilities-udf.md#simulate). De sensor- en apparaat-id's die u gebruikt voor het configureren van dit voorbeeld moeten gelijk zijn aan de id's die u gebruikt voor het inrichten van de grafiek.
+* Het simulatievoorbeeld **device-connectivity** simuleert sensorgegevens en verzendt deze naar de IoT-hub die is ingericht voor uw exemplaar van Digital Twins. U gebruikt dit voorbeeld in [de volgende zelfstudie nadat u de ruimtelijke grafiek hebt ingericht](tutorial-facilities-udf.md#simulate-sensor-data). De sensor- en apparaat-id's die u gebruikt voor het configureren van dit voorbeeld moeten gelijk zijn aan de id's die u gebruikt voor het inrichten van de grafiek.
 
 ### <a name="configure-the-provisioning-sample"></a>Het inrichtingsvoorbeeld configureren
 

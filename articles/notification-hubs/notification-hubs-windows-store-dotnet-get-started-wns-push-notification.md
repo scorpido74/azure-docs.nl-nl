@@ -1,11 +1,11 @@
 ---
 title: Meldingen verzenden naar Universal Windows Platform-apps met behulp van Azure Notification Hubs | Microsoft Docs
-description: Het gebruik van Azure Notification Hubs pushmeldingen verzendt naar een Windows Universal Platform-toepassing vertrouwt.
+description: Lean Azure Notification Hubs gebruiken om meldingen te pushen naar een Windows Universal platform-toepassing.
 services: notification-hubs
 documentationcenter: windows
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.assetid: cf307cf3-8c58-4628-9c63-8751e6a0ef43
 ms.service: notification-hubs
 ms.workload: mobile
@@ -14,24 +14,26 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 03/22/2019
-ms.author: jowargo
-ms.openlocfilehash: 714c2be7265a41a7791ce39bfaa1bdc12fa58cac
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 03/22/2019
+ms.openlocfilehash: 82f983f6fc55c01c4e445915d06da33889977d24
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67340753"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71213428"
 ---
 # <a name="tutorial-send-notifications-to-universal-windows-platform-apps-by-using-azure-notification-hubs"></a>Zelfstudie: Meldingen verzenden naar Universeel Windows-platform-apps met behulp van Azure Notification Hubs
 
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
 
-In deze zelfstudie maakt u een Notification Hub om pushmeldingen te verzenden naar een UWP-app (Universal Windows Platform). U maakt een lege Windows Store-app die pushmeldingen ontvangt via Windows Push Notification Service (WNS). Daarna gebruikt u de notification hub voor het uitzenden van pushmeldingen kunt verzenden naar alle apparaten waarop uw app.
+In deze zelfstudie maakt u een Notification Hub om pushmeldingen te verzenden naar een UWP-app (Universal Windows Platform). U maakt een lege Windows Store-app die pushmeldingen ontvangt via Windows Push Notification Service (WNS). Daarna kunt u de notification hub gebruiken om Push meldingen uit te zenden naar alle apparaten waarop uw app wordt uitgevoerd.
 
 > [!NOTE]
 > De volledige code voor deze zelfstudie vindt u op [GitHub](https://github.com/Azure/azure-notificationhubs-dotnet/tree/master/Samples/UwpSample).
 
-U uitvoeren de volgende stappen:
+Voer de volgende stappen uit:
 
 > [!div class="checklist"]
 > * Een app maken in Windows Store
@@ -45,11 +47,11 @@ U uitvoeren de volgende stappen:
 - [Microsoft Visual Studio Community 2015 of hoger](https://www.visualstudio.com/products/visual-studio-community-vs).
 - [Ontwikkelhulpprogramma's voor UWP-apps geïnstalleerd](https://msdn.microsoft.com/windows/uwp/get-started/get-set-up)
 - Een actief Windows Store-account
-- Bevestig dat **meldingen ophalen uit de apps en andere afzenders** instelling is ingeschakeld. 
-    - Start **instellingen** venster op uw computer.
-    - Selecteer de **System** tegel.
-    - Selecteer **meldingen en acties** in het menu links. 
-    - Bevestig dat de **meldingen ophalen uit de apps en andere afzenders** instelling is ingeschakeld. Als deze niet is ingeschakeld, inschakelen. 
+- Controleer of de instelling **meldingen ontvangen van apps en andere afzenders** is ingeschakeld. 
+    - Start het venster **instellingen** op de computer.
+    - Selecteer de **systeem** tegel.
+    - Selecteer **meldingen & acties** in het menu links. 
+    - Controleer of de instelling **meldingen ontvangen van apps en andere afzenders** is ingeschakeld. Als de functie niet is ingeschakeld, schakelt u deze in. 
 
 Het voltooien van deze zelfstudie is een vereiste voor alle andere Notification Hubs-zelfstudies voor UWP-apps.
 
@@ -170,12 +172,12 @@ U kunt het ontvangen van meldingen in de app snel testen door meldingen te verze
 3. Bekijk het resultaat van de verzendbewerking in de lijst **Resultaat** onder in het venster. U ziet ook een waarschuwingsbericht.
 
     ![Resultaat van de verzendbewerking](./media/notification-hubs-windows-store-dotnet-get-started/result-of-send.png)
-4. U ziet de melding: **Testbericht** op uw bureaublad.
+4. Het meldings bericht wordt weer gegeven: **Test bericht** op het bureau blad.
 
     ![Melding](./media/notification-hubs-windows-store-dotnet-get-started/test-notification-message.png)
 
 ## <a name="next-steps"></a>Volgende stappen
-U kunt meldingen uitgezonden naar al uw Windows-apparaten hebt verzonden met behulp van de portal of een console-app. Ga verder met de volgende zelfstudie als u wilt weten hoe u pushmeldingen kunt verzenden naar specifieke apparaten:
+U hebt broadcast meldingen verzonden naar al uw Windows-apparaten via de portal of een console-app. Ga verder met de volgende zelfstudie als u wilt weten hoe u pushmeldingen kunt verzenden naar specifieke apparaten:
 
 > [!div class="nextstepaction"]
 >[Pushmeldingen verzenden naar specifieke apparaten](

@@ -9,14 +9,14 @@ ms.date: 06/01/2019
 ms.author: tamram
 ms.reviewer: hux
 ms.subservice: blobs
-ms.openlocfilehash: aa6bee9cceffc0252dd39d85ebe9d70625e33419
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 6278b16221072b9b5bca371007296806454ba197
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71036410"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212423"
 ---
-# <a name="store-business-critical-data-in-azure-blob-storage"></a>Bedrijfs kritieke gegevens opslaan in Azure Blob Storage
+# <a name="store-business-critical-data-in-azure-blob-storage-immutably"></a>Bedrijfs kritieke gegevens opslaan in Azure Blob-opslag immutably 
 
 Onveranderbare opslag voor Azure Blob-opslag stelt gebruikers in staat om bedrijfskritische gegevens objecten op te slaan in een WORM (eenmaal schrijven, gelezen). Met deze status worden de gegevens niet-kan worden gewist en niet kunnen worden gewijzigd voor een door de gebruiker opgegeven interval. Blob-objecten kunnen worden gemaakt en gelezen, maar niet gewijzigd of verwijderd voor de duur van de Bewaar periode. Onveranderbare opslag is ingeschakeld voor Algemeen v2-en Blob Storage-accounts in alle Azure-regio's.
 

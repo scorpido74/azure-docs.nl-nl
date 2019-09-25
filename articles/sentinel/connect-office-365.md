@@ -1,32 +1,29 @@
 ---
-title: Office 365-gegevens verbinden met Azure Sentinel preview | Microsoft Docs
+title: Office 365-gegevens verbinden met Azure Sentinel | Microsoft Docs
 description: Meer informatie over het verbinden van Office 365-gegevens met Azure Sentinel.
 services: sentinel
 documentationcenter: na
 author: rkarlin
 manager: rkarlin
 editor: ''
-ms.assetid: ff7c862e-2e23-4a28-bd18-f2924a30899d
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/31/2019
+ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 39245cb43dacfeec2b647936d5e5790d4a185467
-ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
+ms.openlocfilehash: 481acfdccb54077f18c1f4bf0375c0dc66e66007
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70019001"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240666"
 ---
 # <a name="connect-data-from-office-365-logs"></a>Gegevens verbinden vanuit Office 365-logboeken
 
-> [!IMPORTANT]
-> Azure Sentinel is momenteel beschikbaar als open bare preview.
-> Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
+
 
 U kunt audit logboeken vanuit [Office 365](https://docs.microsoft.com/office365/admin/admin-home?view=o365-worldwide) streamen naar Azure Sentinel met één klik. U kunt audit logboeken van meerdere tenants streamen naar één werk ruimte in azure Sentinel. De connector van het Office 365-activiteiten logboek biedt inzicht in voortdurende gebruikers activiteiten. U krijgt informatie over verschillende acties en gebeurtenissen van de gebruiker, het beheer, het systeem en het beleid van Office 365. Door Office 365-Logboeken in azure Sentinel te koppelen, kunt u deze gegevens gebruiken om Dash boards weer te geven, aangepaste waarschuwingen te maken en uw onderzoek proces te verbeteren.
 
@@ -36,8 +33,8 @@ U kunt audit logboeken vanuit [Office 365](https://docs.microsoft.com/office365/
 ## <a name="prerequisites"></a>Vereisten
 
 - U moet een globale beheerder of beveiligings beheerder zijn op uw Tenant
-- Op uw computer, van waaruit u bent aangemeld bij Azure Sentinel om de verbinding tot stand te brengen, moet u ervoor zorgen dat poort 4433 is geopend voor webverkeer.
-- Als uw Tenant geen Office 365 E3 of Office 365 E5-licentie heeft, moet u Unified auditing op uw tent met een van de volgende processen inschakelen:
+- Op uw computer, van waaruit u bent aangemeld bij Azure Sentinel om de verbinding tot stand te brengen, moet u ervoor zorgen dat poort 4433 is geopend voor webverkeer. Deze poort kan opnieuw worden gesloten nadat de verbinding tot stand is gebracht.
+- Als uw Tenant geen Office 365 E3 of Office 365 E5-licentie heeft, moet u Unified auditing inschakelen voor uw Tenant met een van de volgende processen:
     - [Gebruik de cmdlet Set-AdminAuditLogConfig](https://docs.microsoft.com/powershell/module/exchange/policy-and-compliance-audit/set-adminauditlogconfig?view=exchange-ps) en schakel de para meter ' UnifiedAuditLogIngestionEnabled ' in.
     - [Of met behulp van de beveiligings-en compliancecentrum-gebruikers interface](https://docs.microsoft.com/office365/securitycompliance/search-the-audit-log-in-security-and-compliance#before-you-begin).
 
@@ -58,5 +55,5 @@ U kunt audit logboeken vanuit [Office 365](https://docs.microsoft.com/office365/
 ## <a name="next-steps"></a>Volgende stappen
 In dit document hebt u geleerd hoe u Office 365 kunt verbinden met Azure Sentinel. Raadpleeg de volgende artikelen voor meer informatie over Azure Sentinel:
 - Meer informatie over hoe u [inzicht krijgt in uw gegevens en mogelijke bedreigingen](quickstart-get-visibility.md).
-- Ga aan de slag [met het detecteren van bedreigingen met Azure Sentinel](tutorial-detect-threats.md).
+- Ga aan de slag [met het detecteren van bedreigingen met Azure Sentinel](tutorial-detect-threats-built-in.md).
 

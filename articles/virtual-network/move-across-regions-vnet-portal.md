@@ -6,12 +6,12 @@ ms.service: virtual-network
 ms.topic: article
 ms.date: 08/26/2019
 ms.author: allensu
-ms.openlocfilehash: 2a1ee358a6c97b721ec6f0da3eb70269239b0737
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: a09ce7b77dfcaa51e7c82f67a5d20000f3e22b61
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71077670"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71220005"
 ---
 # <a name="move-azure-virtual-network-to-another-region-using-the-azure-portal"></a>Verplaats Azure-Virtual Network naar een andere regio met behulp van de Azure Portal
 
@@ -27,7 +27,7 @@ U kunt een Azure Resource Manager sjabloon gebruiken om de verplaatsing van het 
 - Als u een virtueel netwerk wilt exporteren en een sjabloon wilt implementeren om een virtueel netwerk in een andere regio te maken, hebt u de rol netwerk bijdrager of hoger nodig.
 
 - Peering van virtuele netwerken wordt niet opnieuw gemaakt en mislukt als deze nog in de sjabloon aanwezig zijn.  U moet alle peers van het virtuele netwerk verwijderen voordat u de sjabloon exporteert en vervolgens de peers na het verplaatsen van het virtuele netwerk opnieuw tot stand brengt.
-    
+
 - Identificeer de bron netwerk indeling en alle resources die u momenteel gebruikt. Deze indeling bevat, maar is niet beperkt tot load balancers, netwerk beveiligings groepen (Nsg's) en open bare Ip's.
 
 - Controleer of u met uw Azure-abonnement virtuele netwerken kunt maken in de doel regio die wordt gebruikt. Neem contact op met ondersteuning voor het inschakelen van het vereiste quotum.
@@ -40,13 +40,13 @@ De volgende stappen laten zien hoe u het virtuele netwerk voorbereidt voor het v
 
 ### <a name="export-the-template-and-deploy-from-the-portal"></a>De sjabloon exporteren en implementeren vanuit de portal
 
-1. Meld u aan bij de [Azure Portal](http://portal.azure.com) > -**resource groepen**.
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com) > -**resource groepen**.
 2. Zoek de resource groep die het virtuele bron netwerk bevat en klik erop.
 3. Selecteer > **instellingen** > **sjabloon exporteren**.
 4. Kies **implementeren** op de Blade **sjabloon exporteren** .
 5. Klik op **sjabloon** > **bewerken para meters** om het bestand **para meters. json** in de online-editor te openen.
 6. Als u de para meter van de naam van het virtuele netwerk wilt bewerken, wijzigt u de eigenschap **Value** onder **para meters**:
-    
+
     ```json
     {
         "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
@@ -62,7 +62,7 @@ De volgende stappen laten zien hoe u het virtuele netwerk voorbereidt voor het v
 
 8.  Klik op **Opslaan** in de editor.
 
-9.  Klik op sjabloon**bewerken sjabloon** om het bestand **Template. json** in de online-editor te openen. >  
+9.  Klik op sjabloon**bewerken sjabloon** om het bestand **Template. json** in de online-editor te openen. > 
 
 10. Als u de doel regio wilt bewerken waar het VNET wordt verplaatst, wijzigt u de eigenschap **Location** onder **resources** in de online editor:
 
@@ -83,11 +83,11 @@ De volgende stappen laten zien hoe u het virtuele netwerk voorbereidt voor het v
                         },
 
     ```
- 
+
 11. Zie [Azure-locaties](https://azure.microsoft.com/global-infrastructure/locations/)voor het verkrijgen van regio-locatie codes.  De code voor een regio is de naam van de regio zonder spaties, **Central VS** = -**Midden**.
- 
+
 12. U kunt ook andere para meters in de sjabloon wijzigen als u ervoor kiest en zijn optioneel, afhankelijk van uw vereisten:
-    
+
     * **Adres ruimte** : de adres ruimte van het VNET kan worden gewijzigd voordat u opslaat door de sectie **resources** > **addressSpace** te wijzigen en de eigenschap **addressPrefixes** in het bestand **Template. json** te wijzigen:
 
         ```json
@@ -179,7 +179,7 @@ De volgende stappen laten zien hoe u het virtuele netwerk voorbereidt voor het v
 
 14. Klik op **basis** > **abonnement** om het abonnement te kiezen waarin het doel-VNET wordt geïmplementeerd.
 
-15. Klik op **basis** > **bronnen groep** om de resource groep te kiezen waarin het doel-VNET wordt geïmplementeerd.  U kunt op **Nieuw maken** klikken om een nieuwe resource groep te maken voor het doel-VNET.  Zorg ervoor dat de naam niet hetzelfde is als de bron resource groep van het bestaande VNET. 
+15. Klik op **basis** > **bronnen groep** om de resource groep te kiezen waarin het doel-VNET wordt geïmplementeerd.  U kunt op **Nieuw maken** klikken om een nieuwe resource groep te maken voor het doel-VNET.  Zorg ervoor dat de naam niet hetzelfde is als de bron resource groep van het bestaande VNET.
 
 16. De**locatie** van de **basis beginselen** > controleren is ingesteld op de doel locatie waar u het VNET wilt implementeren.
 
@@ -189,7 +189,7 @@ De volgende stappen laten zien hoe u het virtuele netwerk voorbereidt voor het v
 
 19. Klik op de knop **aanschaffen** om het virtuele doel netwerk te implementeren.
 
-## <a name="discard"></a>Verwijderen 
+## <a name="discard"></a>Verwijderen
 
 Als u het virtuele doel netwerk wilt verwijderen, verwijdert u de resource groep die het virtuele doel netwerk bevat.  Hiervoor selecteert u de resource groep in het dash board in de portal en selecteert u **verwijderen** boven aan de pagina overzicht.
 

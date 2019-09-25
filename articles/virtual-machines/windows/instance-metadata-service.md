@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 04/25/2019
 ms.author: sukumari
 ms.reviewer: azmetadata
-ms.openlocfilehash: 0610648594d09de3f86c5d9eb2f0cae722978cca
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 658830e37a453075100cd3aaf132bb1d3aedfaea
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70996408"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240397"
 ---
 # <a name="azure-instance-metadata-service"></a>Meta gegevens service van Azure-exemplaar
 
@@ -360,10 +360,10 @@ azEnvironment | Azure-omgeving waarin de virtuele machine wordt uitgevoerd | 10-
 customData | [Aangepaste gegevens](#custom-data) weer geven | 2019-02-01
 location | Azure-regio waarin de virtuele machine wordt uitgevoerd | 2017-04-02
 name | Naam van de virtuele machine | 2017-04-02
-oplossingen | Informatie over de installatie kopie van de virtuele machine weer geven en die alleen aanwezig is voor installatie kopieën die vanuit de Azure-installatie kopie galerie | 2017-04-02
+aanbieding | Informatie over de installatie kopie van de virtuele machine weer geven en die alleen aanwezig is voor installatie kopieën die vanuit de Azure-installatie kopie galerie | 2017-04-02
 besturingssysteemtype | Linux of Windows | 2017-04-02
 placementGroupId | [Plaatsings groep](../../virtual-machine-scale-sets/virtual-machine-scale-sets-placement-groups.md) van de schaalset voor virtuele machines | 2017-08-01
-Fonds | [Plan](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan) met naam, product en uitgever voor een virtuele machine als de Azure Marketplace-installatie kopie | 2018-04-02
+plan | [Plan](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan) met naam, product en uitgever voor een virtuele machine als de Azure Marketplace-installatie kopie | 2018-04-02
 platformUpdateDomain |  [Domein bijwerken](manage-availability.md) waarop de VM wordt uitgevoerd | 2017-04-02
 platformFaultDomain | [Fout domein](manage-availability.md) waarop de VM wordt uitgevoerd | 2017-04-02
 provider | Provider van de virtuele machine | 10-01-2018
@@ -373,7 +373,7 @@ resourceGroupName | [Resource groep](../../azure-resource-manager/resource-group
 resourceId | De [volledig gekwalificeerde](https://docs.microsoft.com/rest/api/resources/resources/getbyid) id van de resource | 2019-03-11
 sku | Specifieke SKU voor de VM-installatie kopie | 2017-04-02
 subscriptionId | Azure-abonnement voor de virtuele machine | 2017-08-01
-codes | [Labels](../../azure-resource-manager/resource-group-using-tags.md) voor uw virtuele machine  | 2017-08-01
+tags | [Labels](../../azure-resource-manager/resource-group-using-tags.md) voor uw virtuele machine  | 2017-08-01
 tagsList | Tags die zijn opgemaakt als een JSON-matrix voor eenvoudiger programmatisch parseren  | 2019-06-04
 version | Versie van de VM-installatie kopie | 2017-04-02
 vmId | De [unieke id](https://azure.microsoft.com/blog/accessing-and-using-azure-vm-unique-id/) voor de virtuele machine | 2017-04-02
@@ -573,7 +573,7 @@ Het `tags` veld is een teken reeks met de Tags gescheiden door punt komma's. Dit
 **Aanvraag**
 
 ```bash
-curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/tagsList?api-version=2019-06-04&format=text"
+curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/tagsList?api-version=2019-06-04&format=JSON"
 ```
 
 **Antwoord**
@@ -644,7 +644,7 @@ Verification successful
 Data | Description
 -----|------------
 nonce | Door de gebruiker opgegeven optionele teken reeks met de aanvraag. Als er geen nonce in de aanvraag is opgegeven, wordt de huidige UTC-tijds tempel geretourneerd
-Fonds | Een virtuele machine in een Azure Marketplace-installatie kopie [plannen](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan) , met naam, product en uitgever
+plan | Een virtuele machine in een Azure Marketplace-installatie kopie [plannen](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan) , met naam, product en uitgever
 timestamp/createdOn | Het tijds tempel waarop het eerste ondertekende document is gemaakt
 timestamp/expiresOn | Het tijds tempel waarop het ondertekende document verloopt
 vmId |  De [unieke id](https://azure.microsoft.com/blog/accessing-and-using-azure-vm-unique-id/) voor de virtuele machine
@@ -761,7 +761,7 @@ My custom data.
 Taal | Voorbeeld
 ---------|----------------
 Ruby     | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.rb
-Start  | https://github.com/Microsoft/azureimds/blob/master/imdssample.go
+Aan de slag  | https://github.com/Microsoft/azureimds/blob/master/imdssample.go
 Python   | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.py
 C++      | https://github.com/Microsoft/azureimds/blob/master/IMDSSample-windows.cpp
 C#       | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.cs

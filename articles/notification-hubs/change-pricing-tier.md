@@ -1,79 +1,80 @@
 ---
-title: Wijzig de prijscategorie van Notification Hubs-naamruimte | Microsoft Docs
-description: Informatie over het wijzigen van de prijscategorie van een Azure Notification Hubs-naamruimte.
+title: Prijs categorie van Notification Hubs naam ruimte wijzigen | Microsoft Docs
+description: Meer informatie over het wijzigen van de prijs categorie van een Azure Notification Hubs-naam ruimte.
 services: notification-hubs
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: article
 ms.date: 01/28/2019
-ms.author: jowargo
-ms.openlocfilehash: 99ea21b3eb01a674a89c70a1b923f02e600cc3c5
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 01/28/2019
+ms.openlocfilehash: 679e8b58e5876d5460b426e694df85ded992a36d
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60234473"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212565"
 ---
-# <a name="change-pricing-tier-of-an-azure-notification-hubs-namespace"></a>Wijzig de prijscategorie van een Azure notification hubs-naamruimte
-Notification Hubs wordt aangeboden in drie lagen: **gratis**, **basic**, en **standard**. Dit artikel leest u hoe u de prijscategorie voor een Azure Notification Hubs-naamruimte. 
+# <a name="change-pricing-tier-of-an-azure-notification-hubs-namespace"></a>De prijs categorie van een Azure notification hubs-naam ruimte wijzigen
+Notification Hubs wordt aangeboden in drie lagen: **gratis**, **basis**en **standaard**. In dit artikel leest u hoe u de prijs categorie voor een Azure Notification Hubs-naam ruimte kunt wijzigen. 
 
 ## <a name="overview"></a>Overzicht
-In de Azure Notification Hubs, een **hub** is de kleinste resource/entiteit. Het algemeen is toegewezen aan een toepassing en kan er een bevatten één certificaat voor elk Platform Notification System voor de app wordt ondersteund. De toepassing kan worden een hybride of een systeemeigen en platformoverschrijdende toepassingen.
+In azure Notification Hubs is een **hub** de kleinste resource/entiteit. Het is doorgaans toegewezen aan één toepassing en kan één certificaat bevatten voor elke Platform Notification System voor de app wordt ondersteund. De toepassing kan een hybride of een systeem eigen en platformoverschrijdende toepassing zijn.
 
-Een **naamruimte** is een verzameling van notification hubs. Elke naamruimte bestaat meestal uit hubs die zijn gerelateerd en gebruikt voor een specifiek doel. Bijvoorbeeld, kan u drie verschillende naamruimten voor ontwikkeling, testen en productie doeleinden respectievelijk hebben. 
+Een **naam ruimte** is een verzameling notification hubs. Elke naam ruimte bestaat meestal uit hubs die verwant zijn en worden gebruikt voor een specifiek doel. U kunt bijvoorbeeld drie verschillende naam ruimten hebben voor respectievelijk ontwikkelings-, test-en productie doeleinden. 
 
-U kunt een prijscategorie op het niveau van de naamruimte koppelen. Notification Hubs ook ondersteuning voor drie lagen: **gratis**, **basic**, en **standard**. U kunt de laag gebruiken voor een naamruimte die tegemoetkomt aan uw vereisten. De volgende secties laten zien hoe u de prijscategorie van een Notification Hubs-naamruimte wijzigen. 
+U kunt een prijs categorie koppelen op het niveau van de naam ruimte. Notification Hubs ondersteunt drie lagen: **gratis**, **basis**en **standaard**. U kunt de laag gebruiken voor een naam ruimte die aansluit bij uw vereisten. In de volgende secties ziet u hoe u de prijs categorie van een Notification Hubs naam ruimte kunt wijzigen. 
 
 ## <a name="use-azure-portal"></a>Azure Portal gebruiken 
-Wanneer u Azure portal gebruikt, kunt u de prijscategorie voor een naamruimte op de pagina van de naamruimte of een hub-pagina.  Wanneer u deze op een hub-pagina wijzigt, wijzigt u het daadwerkelijk op het niveau van de naamruimte. De prijscategorie voor de naamruimte en alle hubs in de naamruimte worden gewijzigd. 
+Wanneer u Azure Portal gebruikt, kunt u de prijs categorie voor een naam ruimte op de pagina naam ruimte of een hub-pagina wijzigen.  Wanneer u deze op een hub-pagina wijzigt, wijzigt u deze in werkelijkheid op het niveau van de naam ruimte. De prijs categorie voor de naam ruimte en alle hubs in de naam ruimte wordt gewijzigd. 
 
-### <a name="change-tier-on-the-namespace-page"></a>Laag wijzigt voor de naamruimte-pagina
-De volgende procedure bevat stappen voor het wijzigen van de prijscategorie voor een naamruimte op de pagina van de naamruimte. Wanneer u de laag voor een naamruimte wijzigt, is dit van toepassing op alle hubs in de naamruimte.
+### <a name="change-tier-on-the-namespace-page"></a>De laag wijzigen op de pagina met de naam ruimte
+Met de volgende procedure kunt u de prijs categorie voor een naam ruimte op de pagina naam ruimte wijzigen. Wanneer u de laag voor een naam ruimte wijzigt, geldt dit voor alle hubs in de naam ruimte.
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 2. Selecteer **alle services** in het menu links. 
-3. Selecteer **Notification Hub-naamruimten** in de **Internet of Things** sectie. Als u een ster (`*`) naast de tekst, wordt deze toegevoegd aan de linkernavigatiebalk onder **Favorieten**. Dit helpt u bij het openen van de pagina naamruimten sneller de volgende keer en hoger. Nadat u deze aan Favorieten toevoegen, selecteert u **Notification Hub-naamruimten**. 
+3. Selecteer **Notification hub-naam ruimten** in het gedeelte **Internet of Things** . Als u ster (`*`) naast de tekst selecteert, wordt deze toegevoegd aan de linkernavigatiebalk onder **Favorieten**. Het helpt u de volgende keer sneller toegang te krijgen tot de pagina naam ruimten. Nadat u deze aan de favorieten hebt toegevoegd, selecteert u **Notification hub-naam ruimten**. 
 
-    ![Alle services -> Notification Hub-naamruimten](./media/change-pricing-tier/all-services-nhub.png)
-1. Op de **Notification Hub-naamruimten** pagina, selecteert u de naamruimte die u wilt de prijscategorie wijzigen. 
-2. Op de **Notification Hub Namespace** pagina voor de naamruimte, ziet u de huidige prijscategorie voor de naamruimte in de **Essentials** sectie. In de volgende afbeelding ziet u dat de prijscategorie van de naamruimte is **gratis**. 
+    ![Alle services-> notification hub-naam ruimten](./media/change-pricing-tier/all-services-nhub.png)
+1. Selecteer op de pagina **Notification hub-naam ruimten** de naam ruimte waarvoor u de prijs categorie wilt wijzigen. 
+2. Op de pagina met de **Notification hub-naam** ruimte voor uw naam ruimte ziet u de huidige prijs categorie voor de naam ruimte in de sectie **Essentials** . In de volgende afbeelding ziet u dat de prijs categorie van de naam ruimte **gratis**is. 
 
-    ![Huidige prijscategorie op de pagina van de naamruimte](./media/change-pricing-tier/pricing-tier-before.png)
-1. Op de **Notification Hub Namespace** pagina voor de naamruimte, selecteer **prijscategorie** onder **beheren** sectie. 
+    ![Huidige prijs categorie op de naam ruimte pagina](./media/change-pricing-tier/pricing-tier-before.png)
+1. Selecteer op de pagina met de **Notification hub-naam** ruimte voor uw naam ruimte de optie **prijs categorie** onder **beheren** . 
 
-    ![Prijscategorie op de pagina naamruimte selecteren](./media/change-pricing-tier/namespace-select-pricing-menu.png)
-6. Uw prijscategorie wijzigen en klik op de **Selecteer** knop.    
-7. U ziet de status van de laag wijzigen van de actie in de **waarschuwingen**. 
-8. Schakel over naar de **overzicht** pagina. Bevestig dat de nieuwe laag wordt weergegeven voor de **prijscategorie** veld in de **Essentials** sectie.     
-1. Deze stap is optioneel. Selecteer een hub in de naamruimte. Bevestig dat de dezelfde prijzen laag in de **Essentials** sectie. Hier ziet u de dezelfde prijscategorie voor alle hubs in de naamruimte. 
+    ![Prijs categorie selecteren op de naam ruimte pagina](./media/change-pricing-tier/namespace-select-pricing-menu.png)
+6. Wijzig uw prijs categorie en klik op de knop **selecteren** .    
+7. U ziet de status van de wijzigings actie voor de laag in de **waarschuwingen**. 
+8. Ga naar de pagina **overzicht** . Controleer of de nieuwe laag wordt weer gegeven voor het veld **prijs categorie** in de sectie **Essentials** .     
+1. Deze stap is optioneel. Selecteer een hub in de naam ruimte. Controleer of dezelfde prijs categorie wordt weer geven in de sectie **Essentials** . U ziet nu dezelfde prijs categorie voor alle hubs in de naam ruimte. 
 
-### <a name="change-tier-on-the-hub-page"></a>Laag wijzigt voor de hub-pagina
-De volgende procedure bevat stappen voor het wijzigen van de prijscategorie voor een naamruimte op de pagina van de hub. Hoewel u deze stappen vanaf de pagina hub doet, wordt de prijscategorie voor de naamruimte en alle hubs in de naamruimte daadwerkelijk wijzigen. 
+### <a name="change-tier-on-the-hub-page"></a>De laag wijzigen op de hub-pagina
+Met de volgende procedure kunt u de prijs categorie voor een naam ruimte op de hub-pagina wijzigen. Hoewel u deze stappen vanaf de hub-pagina uitvoert, wijzigt u de prijs categorie voor de naam ruimte en alle hubs in de naam ruimte. 
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 2. Selecteer **alle services** in het menu links.
-3. Selecteer **Notification Hubs** in de **Internet of Things** sectie. 
-4. Selecteer uw bericht **hub**. 
-5. Selecteer **prijscategorie** in het menu links. 
-6. Wijzig de prijscategorie en klikt u op de **Selecteer** knop. Hiermee wijzigt u de prijzen laag-instelling voor de naamruimte waarin de hub. Dus, ziet u de nieuwe prijscategorie op de pagina van de naamruimte en in alle hub-pagina's. 
+3. Selecteer **Notification hubs** in het gedeelte **Internet of Things** . 
+4. Selecteer uw notification **hub**. 
+5. Selecteer **prijs categorie** in het menu links. 
+6. Wijzig de prijs categorie en klik op de knop **selecteren** . Met deze actie wijzigt u de instelling van de prijs categorie voor de naam ruimte met de hub. U ziet nu de nieuwe prijs categorie op de naam ruimte pagina en alle Hub Pages. 
 
 ## <a name="use-rest-api"></a>REST API gebruiken
-U kunt de volgende Resource Provider REST-API's gebruiken voor het ophalen van de huidige prijscategorie en deze bijwerken. 
+U kunt de volgende REST-Api's van de resource provider gebruiken om de huidige prijs categorie op te halen en deze bij te werken. 
 
-### <a name="get-current-pricing-tier-for-a-namespace"></a>Huidige prijscategorie voor een naamruimte ophalen
-Aan de **huidige naamruimte laag**, een GET-opdracht verzenden, zoals wordt weergegeven in het volgende voorbeeld: 
+### <a name="get-current-pricing-tier-for-a-namespace"></a>Huidige prijs categorie voor een naam ruimte ophalen
+Als u de **huidige naam ruimte laag**wilt ophalen, verzendt u een GET-opdracht, zoals wordt weer gegeven in het volgende voor beeld: 
 
 ```REST
 GET: https://management.core.windows.net/{subscription ID}/services/ServiceBus/Namespaces/{namespace name}/notificationhubplan
 ```
 
-### <a name="update-pricing-tier-for-a-namespace"></a>Prijscategorie voor een naamruimte bijwerken
-Naar **bijwerken van de naamruimte-laag**, een PUT-opdracht verzenden, zoals wordt weergegeven in het volgende voorbeeld: 
+### <a name="update-pricing-tier-for-a-namespace"></a>Prijs categorie voor een naam ruimte bijwerken
+Als u **de naam ruimte-laag wilt bijwerken**, verzendt u een put-opdracht, zoals wordt weer gegeven in het volgende voor beeld: 
 
 ```REST
 PUT: https://management.core.windows.net/{subscription ID}/services/ServiceBus/Namespaces/{namespace name}/notificationhubplan
@@ -83,4 +84,4 @@ Body: <NotificationHubPlan xmlns:i="https://www.w3.org/2001/XMLSchema-instance" 
 
 
 ## <a name="next-steps"></a>Volgende stappen
-Voor meer informatie over deze lagen en prijzen, Zie [prijzen van Notification Hubs](https://azure.microsoft.com/pricing/details/notification-hubs/).
+Zie voor meer informatie over deze lagen en prijzen [Notification hubs prijzen](https://azure.microsoft.com/pricing/details/notification-hubs/).

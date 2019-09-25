@@ -1,32 +1,27 @@
 ---
-title: Syslog-gegevens verbinden met Azure Sentinel preview | Microsoft Docs
+title: Syslog-gegevens verbinden met Azure-Sentinel | Microsoft Docs
 description: Meer informatie over het verbinden van syslog-gegevens met Azure Sentinel.
 services: sentinel
 documentationcenter: na
 author: rkarlin
 manager: rkarlin
 editor: ''
-ms.assetid: 5dd59729-c623-4cb4-b326-bb847c8f094b
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/31/2019
+ms.date: 09/24/2019
 ms.author: rkarlin
-ms.openlocfilehash: dad74410562aa54aeb61675e7dc1c0adccc44797
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: b2be563efa3c09cffaf14dec2b871f3881af1a7a
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68679215"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240039"
 ---
 # <a name="connect-your-external-solution-using-syslog"></a>Verbinding maken met uw externe oplossing met behulp van syslog
-
-> [!IMPORTANT]
-> Azure Sentinel is momenteel beschikbaar als open bare preview.
-> Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
 
 U kunt elk on-premises apparaat dat syslog ondersteunt, verbinden met Azure Sentinel. Dit wordt gedaan met behulp van een agent die is gebaseerd op een Linux-machine tussen het apparaat en de Azure-Sentinel. Als uw Linux-machine zich in azure bevindt, kunt u de logboeken van uw apparaat of toepassing streamen naar een toegewezen werk ruimte die u in azure maakt en er verbinding mee maken. Als uw Linux-machine zich niet in azure bevindt, kunt u de logboeken van uw apparaat streamen naar een specifieke on-premises VM of computer waarop u de agent voor Linux installeert. 
 
@@ -44,30 +39,66 @@ Zie [syslog-gegevens bronnen in azure monitor](../azure-monitor/platform/data-so
 
 ## <a name="connect-your-syslog-appliance"></a>Uw syslog-apparaat aansluiten
 
-1. Selecteer in de Azure-Sentinel-Portal de optie **gegevens connectors** en selecteer de **syslog** -lijn in de tabel en klik in het deel venster syslog rechts op de **pagina connector openen**.
-2. Als uw Linux-machine zich in azure bevindt, selecteert u **agent downloaden en installeren op virtuele machine van Azure Linux**. Selecteer in het venster virtuele machines de computers waarop u de agent wilt installeren en klik bovenaan op **verbinding maken** .
-1. Als uw Linux-machine niet in Azure is, selecteert u **agent op Linux niet-Azure-machine downloaden en installeren**. In het venster **direct agent** kopieert u de opdracht onder **down load and agent voor Linux** en voert u deze uit op de computer. 
+1. Selecteer in azure Sentinel **Data connectors** en selecteer vervolgens de **syslog** -connector.
+
+2. Selecteer op de Blade **syslog** de optie **connector pagina openen**.
+
+3. De Linux-agent installeren:
+    
+    - Als uw virtuele Linux-machine zich in azure bevindt, selecteert u de **agent downloaden en installeren op de virtuele machine van Azure Linux**. Selecteer op de Blade **virtuele machines** de virtuele machines waarop u de agent wilt installeren en klik vervolgens op **verbinding maken**.
+    - Als uw Linux-machine zich niet in azure bevindt, selecteert u **agent op Linux niet-Azure-machine downloaden en installeren**. Kopieer op de Blade **direct-agent** de opdracht voor het **downloaden en onboarden van de agent voor Linux** en voer deze uit op uw computer. 
+    
    > [!NOTE]
-   > Zorg ervoor dat u de beveiliging van de computer configureert op basis van het beveiligings beleid van uw organisatie. U kunt bijvoorbeeld uw netwerk zodanig configureren dat het wordt uitgelijnd met het beveiligings beleid van uw bedrijfs netwerk en de poorten en protocollen in de daemon wijzigen om af te stemmen op uw vereisten. 
+   > Zorg ervoor dat u de beveiligings instellingen voor deze computers configureert op basis van het beveiligings beleid van uw organisatie. U kunt bijvoorbeeld de netwerk instellingen zodanig configureren dat deze worden uitgelijnd met het netwerk beveiligings beleid van uw organisatie en de poorten en protocollen in de daemon wijzigen, zodat deze overeenkomen met de beveiligings vereisten.
 
-1. Volg de instructies onder **Configureer de logboeken die moeten worden verbonden** in het venster Setup van syslog-connector:
-    1. Klik op de koppeling om **de configuratie van geavanceerde instellingen voor uw werk ruimte te openen**. 
-    1. Selecteer **gegevens**, gevolgd door **syslog**.
-    1. Vervolgens stelt u in de tabel in welke faciliteiten u syslog wilt laten verzamelen. U moet de faciliteiten toevoegen of selecteren die door uw syslog-apparaat in de logboek headers worden opgenomen. U kunt deze configuratie bekijken in uw syslog-apparaat in syslog-d in de map:/etc/rsyslog.d/Security-config-omsagent.conf en in r-syslog onder/etc/syslog-ng/Security-config-omsagent.conf. 
-       > [!NOTE]
-       > Als u het selectie vakje voor de **onderstaande configuratie op mijn machines**inschakelt, wordt deze configuratie toegepast op alle Linux-machines die zijn verbonden met deze werk ruimte. U kunt deze configuratie bekijken in uw syslog-machine onder 
-1. Klik op **Druk hier om de Blade configuratie te openen**.
-1. Selecteer **gegevens** en vervolgens **syslog**.
-   - Zorg ervoor dat elke faciliteit die u verstuurt door syslog in de tabel staat. Voor elke faciliteit gaat u controleren, een Ernst instellen. Klik op **Toepassen**.
-1. Zorg ervoor dat u in uw syslog-machine deze faciliteiten verzendt. 
+4. Selecteer **de configuratie geavanceerde instellingen voor de werk ruimte openen**.
 
-1. Als u het relevante schema in Log Analytics voor de syslog-logboeken wilt gebruiken, zoekt u naar **syslog**.
-1. U kunt de functie Kusto die wordt beschreven in [functies gebruiken in azure monitor-logboek query's](../azure-monitor/log-query/functions.md) gebruiken om uw syslog-berichten te parseren en deze vervolgens op te slaan als een nieuwe log Analytics-functie en vervolgens de functie als een nieuw gegevens type te gebruiken.
+5. Selecteer op de Blade **Geavanceerde instellingen** de optie **gegevens** > **syslog**. Voeg vervolgens de voorzieningen toe die door de connector moeten worden verzameld.
+    
+    Voeg de faciliteiten toe die uw syslog-apparaat in de logboek headers heeft opgenomen. U kunt deze configuratie bekijken in uw syslog-apparaat in **syslog-d** in `/etc/rsyslog.d/security-config-omsagent.conf` de map en in **r-syslog** van `/etc/syslog-ng/security-config-omsagent.conf`.
+    
+    Als u afwijkende SSH-aanmeldings detectie wilt gebruiken met de gegevens die u verzamelt, voegt u **auth** en **authpriv**toe. Raadpleeg de [volgende sectie](#configure-the-syslog-connector-for-anomalous-ssh-login-detection) voor meer informatie.
 
+6. Wanneer u alle faciliteiten hebt toegevoegd die u wilt bewaken en de ernst opties voor elke functie hebt aangepast, schakelt u het selectie vakje **op de onderstaande configuratie Toep assen op mijn computers in**.
 
+7. Selecteer **Opslaan**. 
 
+8. Controleer op uw syslog-apparaat of u de door u opgegeven faciliteiten wilt verzenden.
+
+9. Als u het relevante schema in Azure Monitor voor de syslog-logboeken wilt gebruiken, zoekt u naar **syslog**.
+
+10. U kunt de functie Kusto die wordt beschreven in [functies gebruiken in azure monitor logboek query's](../azure-monitor/log-query/functions.md) gebruiken om uw syslog-berichten te parseren. U kunt deze vervolgens opslaan als een nieuwe Log Analytics functie om te gebruiken als een nieuw gegevens type.
+
+### <a name="configure-the-syslog-connector-for-anomalous-ssh-login-detection"></a>De syslog-connector configureren voor de detectie van afwijkende SSH-aanmeldingen
+
+> [!IMPORTANT]
+> De detectie van afwijkende SSH-aanmeldingen is momenteel beschikbaar als open bare preview.
+> Deze functie wordt zonder service level agreement gegeven en wordt niet aanbevolen voor productie werkbelastingen.
+> Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
+
+Azure Sentinel kan machine learning (ML) Toep assen op de syslog-gegevens om de aanmeldings activiteit voor afwijkende Secure Shell (SSH) te identificeren. Scenario's zijn onder andere:
+
+- Onmogelijk traject: wanneer twee geslaagde aanmeldings gebeurtenissen plaatsvinden vanaf twee locaties die niet kunnen bereiken binnen het tijds bestek van de twee aanmeldings gebeurtenissen.
+- Onverwachte locatie: de locatie van waaruit een geslaagde aanmeldings gebeurtenis is opgetreden verdacht. De locatie is bijvoorbeeld niet recent gezien.
+ 
+Voor deze detectie is een specifieke configuratie van de syslog-gegevens connector vereist: 
+
+1. Zorg ervoor dat voor stap 5 in de vorige procedure zowel **auth** als **authpriv** zijn geselecteerd als te bewaken faciliteiten. Behoud de standaard instellingen voor de ernst opties, zodat deze allemaal zijn geselecteerd. Bijvoorbeeld:
+    
+    > [!div class="mx-imgBorder"]
+    > ![Voorzieningen die zijn vereist voor afwijkende SSH-aanmeldings detectie](./media/connect-syslog/facilities-ssh-detection.png)
+
+2. Zorg dat er voldoende tijd is om syslog-gegevens te verzamelen. Ga vervolgens naar **Azure Sentinel-logs**en kopieer en plak de volgende query:
+    
+        Syslog |  where Facility in ("authpriv","auth")| extend c = extract( "Accepted\\s(publickey|password|keyboard-interactive/pam)\\sfor ([^\\s]+)",1,SyslogMessage)| where isnotempty(c) | count 
+    
+    Wijzig het **tijds bereik** indien nodig en selecteer **uitvoeren**.
+    
+    Als het resulterende aantal nul is, bevestigt u de configuratie van de connector en controleert u of de bewaakte computers geslaagde aanmeldings activiteiten hebben voor de periode die u voor uw query hebt opgegeven.
+    
+    Als het resulterende aantal groter is dan nul, zijn uw syslog-gegevens geschikt voor afwijkende SSH-aanmeldings detectie. U schakelt deze detectie in op basis van **analyse** >  **regel sjablonen** >  **(preview) afwijkende SSH-aanmeldings detectie**.
 
 ## <a name="next-steps"></a>Volgende stappen
 In dit document hebt u geleerd hoe u op on-premises syslog-apparaten verbindt met Azure Sentinel. Raadpleeg de volgende artikelen voor meer informatie over Azure Sentinel:
 - Meer informatie over hoe u [inzicht krijgt in uw gegevens en mogelijke bedreigingen](quickstart-get-visibility.md).
-- Ga aan de slag [met het detecteren van bedreigingen met Azure Sentinel](tutorial-detect-threats.md).
+- Ga aan de slag [met het detecteren van bedreigingen met Azure Sentinel](tutorial-detect-threats-built-in.md).

@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/28/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 91c8a2fb278515306848f46206db67b7f37ea2ac
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: bfe426a6b3d087683e615d3212e0693b185c40f0
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71034247"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212375"
 ---
 # <a name="tutorial-azure-active-directory-sso-integration-with-jamf-pro"></a>Zelfstudie: Azure Active Directory SSO-integratie met Jamf Pro
 
@@ -87,7 +87,7 @@ In deze sectie schakelt u Azure AD SSO in de Azure Portal in.
 1. Selecteer **extra Url's instellen**. Als u de toepassing in de door **SP gestarte** modus wilt configureren, voert u in het tekstvak **URL voor aanmelding** een URL in die gebruikmaakt van de volgende formule:`https://<subdomain>.jamfcloud.com`
 
     > [!NOTE]
-    > Dit zijn geen echte waarden. Werk deze waarden bij met de daad werkelijke id, de antwoord-URL en de aanmeldings-URL. U krijgt de daad werkelijke id-waarde van * de sectie **eenmalige aanmelding** in de Jamf Pro-Portal, die verderop in de zelf studie wordt uitgelegd. U kunt de waarde van het werkelijke subdomein ophalen uit de id-waarde en die subdomeingegevens gebruiken als uw aanmeldings-URL en antwoord-URL. U kunt ook verwijzen naar de formules die worden weer gegeven in de sectie **basis configuratie van SAML** in de Azure Portal.
+    > Dit zijn geen echte waarden. Werk deze waarden bij met de daad werkelijke id, de antwoord-URL en de aanmeldings-URL. U krijgt de daad werkelijke id-waarde uit de sectie **eenmalige aanmelding** in Jamf Pro Portal, die verderop in de zelf studie wordt uitgelegd. U kunt de waarde van het werkelijke subdomein ophalen uit de id-waarde en die subdomeingegevens gebruiken als uw aanmeldings-URL en antwoord-URL. U kunt ook verwijzen naar de formules die worden weer gegeven in de sectie **basis configuratie van SAML** in de Azure Portal.
 
 1. Op de pagina **eenmalige aanmelding met SAML instellen** gaat u naar de sectie **SAML-handtekening certificaat** , selecteert u de knop **kopiëren** om de URL voor de **federatieve meta gegevens**van de app te kopiëren en vervolgens op uw computer op te slaan.
 

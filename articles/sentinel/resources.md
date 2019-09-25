@@ -1,5 +1,5 @@
 ---
-title: Nuttige bronnen bij het werken met Azure Sentinel preview | Microsoft Docs
+title: Nuttige bronnen bij het werken met Azure Sentinel | Microsoft Docs
 description: In dit document vindt u een lijst met nuttige resources wanneer u werkt met Azure Sentinel.
 services: sentinel
 documentationcenter: na
@@ -13,27 +13,29 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 8/14/2019
+ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 138efd7cba80e288c4f8831b45272f4e46c8ee3f
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 6634920b1efa3cd24267aca8bcf53587754caa66
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69036245"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71239985"
 ---
-# <a name="useful-resources-for-working-with-azure-sentinel-preview"></a>Nuttige bronnen voor het werken met Azure Sentinel preview
+# <a name="useful-resources-for-working-with-azure-sentinel"></a>Nuttige bronnen voor het werken met Azure Sentinel
 
-> [!IMPORTANT]
-> Azure Sentinel is momenteel beschikbaar als open bare preview.
-> Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
+
 
 Dit artikel bevat een lijst met bronnen die u kunnen helpen om meer informatie te krijgen over het werken met Azure Sentinel.
 
 Azure Logic Apps-connectors:<https://docs.microsoft.com/connectors/>
 
-## <a name="vendor-documentation"></a>Documentatie van de leverancier
 
+## <a name="auditing-and-reporting"></a>Controle en rapportage
+Audit logboeken van Azure Sentinel worden onderhouden in [Azure-activiteiten logboeken](../azure-monitor/platform/activity-logs-overview.md).
+
+
+## <a name="vendor-documentation"></a>Documentatie van de leverancier
 
 | **Leverancier**  | **Incident gebruiken in azure-Sentinel** | **Link**|
 |----|----|----|

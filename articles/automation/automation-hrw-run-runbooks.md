@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 01/29/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 97d900146b3485df5cdf226f07aaa3aee116fc92
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: 100740e87c13887a3e7ac85aa5fce3d67c838ea0
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70186770"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240329"
 ---
 # <a name="running-runbooks-on-a-hybrid-runbook-worker"></a>Runbooks uitvoeren op een Hybrid Runbook Worker
 
@@ -41,8 +41,7 @@ Start-AzureRmAutomationRunbook â€“AutomationAccountName "MyAutomationAccount" â€
 
 ## <a name="runbook-permissions"></a>Runbook-machtigingen
 
-Runbooks die worden uitgevoerd op een Hybrid Runbook Worker, kunnen niet dezelfde methode gebruiken die meestal wordt gebruikt voor runbooks die worden geverifieerd bij Azure-resources, omdat ze toegang hebben tot resources die niet in azure zijn. Het runbook kan een eigen verificatie bieden voor lokale bronnen of verificatie configureren met behulp [van beheerde identiteiten voor Azure-resources.](../active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-arm.md#grant-your-vm-access-to-a-resource-group-in-resource-manager
-) U kunt ook een runas-account opgeven om een gebruikers context te bieden voor alle runbooks.
+Runbooks die worden uitgevoerd op een Hybrid Runbook Worker, kunnen niet dezelfde methode gebruiken die meestal wordt gebruikt voor runbooks die worden geverifieerd bij Azure-resources, omdat ze toegang hebben tot resources die niet in azure zijn. Het runbook kan een eigen verificatie bieden voor lokale bronnen of verificatie configureren met behulp [van beheerde identiteiten voor Azure-resources](../active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-arm.md#grant-your-vm-access-to-a-resource-group-in-resource-manager). U kunt ook een runas-account opgeven om een gebruikers context te bieden voor alle runbooks.
 
 ### <a name="runbook-authentication"></a>Runbook-verificatie
 

@@ -1,101 +1,103 @@
 ---
-title: Verificatie op basis van tokens (HTTP/2) voor APN's in Azure Notification Hubs | Microsoft Docs
-description: In dit onderwerp wordt uitgelegd hoe u gebruik kunt maken van de nieuwe tokenverificatie voor APN 's
+title: Verificatie op basis van tokens (HTTP/2) voor APNS in azure Notification Hubs | Microsoft Docs
+description: In dit onderwerp wordt uitgelegd hoe u de nieuwe token verificatie gebruikt voor APNS
 services: notification-hubs
 documentationcenter: .net
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/13/2019
-ms.author: jowargo
-ms.openlocfilehash: 890577c013a96fc06acf3b05881649ad8202a083
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 02/13/2019
+ms.openlocfilehash: a7fdaae33e28bd543b44c54868324339d1269bc2
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60872322"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71213120"
 ---
-# <a name="token-based-http2-authentication-for-apns"></a>Verificatie op basis van tokens (HTTP/2) voor APN 's
+# <a name="token-based-http2-authentication-for-apns"></a>Verificatie op basis van tokens (HTTP/2) voor APNS
 
 ## <a name="overview"></a>Overzicht
 
-In dit artikel wordt uitgelegd hoe het gebruik van het nieuwe APNS HTTP/2-protocol met tokens gebaseerde verificatie.
+In dit artikel vindt u informatie over het gebruik van het nieuwe APNS HTTP/2-protocol met verificatie op basis van tokens.
 
-De belangrijkste voordelen van het gebruik van het nieuwe-protocol zijn:
+De belangrijkste voor delen van het gebruik van het nieuwe protocol zijn:
 
-* Genereren van tokens is relatief probleemloos (vergeleken met certificaten)
-* Er is geen meer vervaldatums – zijn controle over uw verificatietokens en hun intrekken
-* Nettoladingen kunnen nu worden maximaal 4 KB
+* Het genereren van tokens is relatief gedoe vrij (vergeleken met certificaten)
+* Geen verval datums meer: u hebt de controle over uw verificatie tokens en de intrekking ervan
+* Nettoladingen kunnen nu Maxi maal 4 KB groot zijn
 * Synchrone feedback
-* U bent op de meest recente protocol van Apple-certificaten gebruiken nog steeds het binaire protocol, dat is gemarkeerd voor afschaffen
+* U bent het meest recente Protocol: certificaten gebruiken nog steeds het binaire protocol, dat is gemarkeerd voor afschaffing
 
-Met deze nieuwe methode kan worden uitgevoerd in twee stappen in een paar minuten:
+Dit nieuwe mechanisme kan in een paar minuten in twee stappen worden uitgevoerd:
 
-1. De benodigde informatie verkrijgen via de portal voor Apple Developer-Account
-2. Uw notification hub configureren met de nieuwe informatie
+1. De benodigde gegevens ophalen uit de Apple Developer-account Portal
+2. Uw notification hub configureren met de nieuwe gegevens
 
-Notification Hubs is nu klaar voor gebruik van het nieuwe verificatiesysteem met APNS.
+Notification Hubs nu is ingesteld om het nieuwe verificatie systeem met APNS te gebruiken.
 
-Merk op dat als u een migratie van met behulp van referenties van het computercertificaat voor APN's:
+Houd er rekening mee dat als u de certificaat referenties voor APNS hebt gemigreerd:
 
-* de tokeneigenschappen overschrijven uw certificaat in ons systeem
-* maar om meldingen te ontvangen naadloos blijft uw toepassing.
+* de token eigenschappen overschrijven uw certificaat in ons systeem,
+* uw toepassing blijft echter naadloos meldingen ontvangen.
 
-## <a name="obtaining-authentication-information-from-apple"></a>Het ophalen van verificatiegegevens van Apple
+## <a name="obtaining-authentication-information-from-apple"></a>Verificatie gegevens verkrijgen van Apple
 
-Als u wilt inschakelen op tokens gebaseerde verificatie, moet u de volgende eigenschappen van uw Apple Developer-Account:
+Als u verificatie op basis van tokens wilt inschakelen, hebt u de volgende eigenschappen van uw Apple Developer-account nodig:
 
-### <a name="key-identifier"></a>Sleutel-id
+### <a name="key-identifier"></a>Id van sleutel
 
-De sleutel-id kan worden verkregen via de pagina 'Sleutels' in uw Apple Developer-Account
+De sleutel-id kan worden verkregen via de pagina sleutels in uw Apple Developer-account
 
 ![](./media/notification-hubs-push-notification-http2-token-authentification/obtaining-auth-information-from-apple.png)
 
-### <a name="application-identifier--application-name"></a>Toepassings-id & toepassingsnaam
+### <a name="application-identifier--application-name"></a>Toepassings-id & toepassings naam
 
-Naam van de toepassing is beschikbaar via de pagina App-id's in de Developer-Account.
+De naam van de toepassing is beschikbaar via de pagina app-Id's in het ontwikkelaars account.
 
 ![](./media/notification-hubs-push-notification-http2-token-authentification/app-name.png)
 
-De toepassings-id is beschikbaar via de pagina met het lidmaatschap in de Developer-Account.
+De toepassings-id is beschikbaar via de pagina Membership Details in het ontwikkelaars account.
 
 ![](./media/notification-hubs-push-notification-http2-token-authentification/app-id.png)
 
-### <a name="authentication-token"></a>Het verificatietoken
+### <a name="authentication-token"></a>Verificatie token
 
-Het verificatietoken kan worden gedownload nadat u een token voor uw toepassing genereren. Raadpleeg voor meer informatie over het maken van dit token [van Apple-documentatie voor ontwikkelaars](https://help.apple.com/xcode/mac/current/#/devdfd3d04a1).
+Het verificatie token kan worden gedownload nadat u een token voor uw toepassing hebt gegenereerd. Raadpleeg [de Apple-documentatie voor ontwikkel aars](https://help.apple.com/xcode/mac/current/#/devdfd3d04a1)voor meer informatie over het genereren van dit token.
 
-## <a name="configuring-your-notification-hub-to-use-token-based-authentication"></a>Uw notification hub voor het gebruik van verificatie op basis van tokens configureren
+## <a name="configuring-your-notification-hub-to-use-token-based-authentication"></a>Uw notification hub configureren voor het gebruik van verificatie op basis van tokens
 
-### <a name="configure-via-the-azure-portal"></a>Configureren via Azure portal
+### <a name="configure-via-the-azure-portal"></a>Configureren via de Azure Portal
 
-Als u wilt inschakelen op tokens gebaseerde verificatie in de portal, meld u aan bij de Azure-portal en Ga naar uw Notification Hub > Notification Services > Configuratiescherm APNS.
+Als u verificatie op basis van tokens in de portal wilt inschakelen, meldt u zich aan bij de Azure Portal en gaat u naar uw notification hub > Notification Services > APNS-paneel.
 
-Er is een nieuwe eigenschap, *verificatiemodus*. Token selecteren, kunt u uw hub bijwerken met de relevante token eigenschappen.
+Er is een nieuwe eigenschap- *verificatie modus*. Als u token selecteert, kunt u uw hub bijwerken met alle relevante token eigenschappen.
 
 ![](./media/notification-hubs-push-notification-http2-token-authentification/azure-portal-apns-settings.png)
 
-* Voer de eigenschappen die u hebt opgehaald via uw Apple developer-account
-* Kies uw toepassingsmodus (productie- of Sandbox)
-* Klik op de **opslaan** om uw APNS-referenties bijwerken
+* Voer de eigenschappen in die u hebt opgehaald van uw Apple Developer-account
+* Kies de toepassings modus (productie of sandbox)
+* Klik op de knop **Opslaan** om uw APNS-referenties bij te werken
 
-### <a name="configure-via-management-api-rest"></a>Configureren via de beheer-API (REST)
+### <a name="configure-via-management-api-rest"></a>Configureren via beheer-API (REST)
 
-U kunt onze [beheer-API's](https://msdn.microsoft.com/library/azure/dn495827.aspx) om bij te werken van uw notification hub voor het gebruik van verificatie op basis van tokens.
-Afhankelijk van of de toepassing die u configureert een Sandbox of productie-app (opgegeven in uw Apple Developer-Account) is, moet u een van de bijbehorende eindpunten gebruiken:
+U kunt onze [beheer-api's](https://msdn.microsoft.com/library/azure/dn495827.aspx) gebruiken om uw notification hub bij te werken voor het gebruik van verificatie op basis van tokens.
+Afhankelijk van of de toepassing die u wilt configureren een sandbox of productie-app is (opgegeven in uw Apple Developer-account), gebruikt u een van de volgende eind punten:
 
-* Sandboxeindpunt: [https://api.development.push.apple.com:443/3/device](https://api.development.push.apple.com:443/3/device)
-* Productie-eindpunt: [https://api.push.apple.com:443/3/device](https://api.push.apple.com:443/3/device)
+* Sandbox-eind punt:[https://api.development.push.apple.com:443/3/device](https://api.development.push.apple.com:443/3/device)
+* Productie-eind punt:[https://api.push.apple.com:443/3/device](https://api.push.apple.com:443/3/device)
 
 > [!IMPORTANT]
-> Verificatie op basis van tokens vereist een API-versie van: **2017-04 of hoger**.
+> Voor verificatie op basis van tokens is een API-versie van vereist: **2017-04 of hoger**.
 
-Hier volgt een voorbeeld van een PUT-aanvraag voor het bijwerken van een hub met verificatie op basis van tokens:
+Hier volgt een voor beeld van een PUT-aanvraag voor het bijwerken van een hub met verificatie op basis van tokens:
 
     ```text
     PUT https://{namespace}.servicebus.windows.net/{Notification Hub}?api-version=2017-04
@@ -114,9 +116,9 @@ Hier volgt een voorbeeld van een PUT-aanvraag voor het bijwerken van een hub met
 
 ### <a name="configure-via-the-net-sdk"></a>Configureren via de .NET SDK
 
-U kunt uw hub voor het gebruik van tokens gebaseerde verificatie met behulp van onze [nieuwste client SDK](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/1.0.8).
+U kunt uw hub configureren voor het gebruik van verificatie op basis van tokens met behulp van onze [nieuwste client-SDK](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/1.0.8).
 
-Hier volgt een voorbeeld van code ter illustratie van de juiste syntaxis:
+Hier volgt een code voorbeeld dat het juiste gebruik illustreert:
 
 ```csharp
 NamespaceManager nm = NamespaceManager.CreateFromConnectionString(_endpoint);
@@ -130,6 +132,6 @@ desc.ApnsCredential.Endpoint = @"https://api.development.push.apple.com:443/3/de
 nm.UpdateNotificationHubAsync(desc);
 ```
 
-## <a name="reverting-to-using-certificate-based-authentication"></a>Herstellen van de verificatie op basis van certificaat
+## <a name="reverting-to-using-certificate-based-authentication"></a>Herstellen met verificatie op basis van een certificaat
 
-U kunt op elk gewenst moment herstellen voor het gebruik van verificatie op basis van certificaten met behulp van een voorgaande methode en het certificaat in plaats van de eigenschappen van het token wordt doorgegeven. Deze actie wordt de eerder opgeslagen referenties overschreven.
+U kunt op elk gewenst moment terugkeren naar het gebruik van verificatie op basis van certificaten door een van de voor gaande methoden te gebruiken en het certificaat door te geven in plaats van de eigenschappen van het token. Deze actie overschrijft de eerder opgeslagen referenties.

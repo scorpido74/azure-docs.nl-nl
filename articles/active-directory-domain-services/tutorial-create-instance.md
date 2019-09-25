@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/14/2019
 ms.author: iainfou
-ms.openlocfilehash: 7f913eebb2dd3926165a36c37dcb356aa05f2de4
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 8c346b75b30737645721d8b39a655a85ed446fae
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70172057"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71229531"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-instance"></a>Zelfstudie: Een Azure Active Directory Domain Services-exemplaar maken en configureren
 
@@ -64,6 +64,15 @@ Wanneer u een exemplaar van Azure AD DS maakt, geeft u een DNS-naam op. Er zijn 
 * **Ingebouwde domein naam:** De ingebouwde domein naam van de Directory wordt standaard gebruikt (een *. onmicrosoft.com* -achtervoegsel). Als u beveiligde LDAP-toegang tot het beheerde domein via internet wilt inschakelen, kunt u geen digitaal certificaat maken om de verbinding met dit standaard domein te beveiligen. Micro soft is eigenaar van het *onmicrosoft.com* -domein, waardoor een certificerings instantie (CA) geen certificaat kan uitgeven.
 * **Aangepaste domein namen:** De meest voorkomende benadering is het opgeven van een aangepaste domein naam, meestal een die u al bezit en routeerbaar is. Wanneer u een routeerbaar, aangepast domein gebruikt, kan het verkeer op de juiste wijze worden uitgevoerd om uw toepassingen te ondersteunen.
 * **Niet-routeerbaar domein achtervoegsels:** U wordt geadviseerd om een niet-routeerbaar domein naam achtervoegsel, zoals *contoso. local*, te voor komen. Het achtervoegsel *. local* is niet routeerbaar en kan problemen met de DNS-omzetting veroorzaken.
+
+> [!TIP]
+> Als u een aangepaste domein naam maakt, moet u rekening houden met bestaande DNS-naam ruimten. U kunt het beste een uniek voor voegsel voor de domein naam toevoegen. Als uw naam van de DNS-basis bijvoorbeeld *contoso.com*is, maakt u een Azure AD DS beheerd domein met de aangepaste domein naam *Corp.contoso.com* of *DS.contoso.com*. In een hybride omgeving met een on-premises AD DS omgeving zijn deze voor voegsels mogelijk al in gebruik. Gebruik een uniek voor voegsel voor Azure AD DS.
+>
+> U kunt de DNS-basis naam voor uw Azure AD DS beheerde domein gebruiken, maar u moet mogelijk enkele extra DNS-records maken voor andere services in uw omgeving. Als u bijvoorbeeld een webserver uitvoert die als host fungeert voor een-site met behulp van de DNS-naam van de basis, kan er sprake zijn van naam conflicten waarvoor extra DNS-vermeldingen zijn vereist.
+>
+> In deze zelf studies en artikelen met procedures wordt het aangepaste domein *contoso.com* als een kort voor beeld gebruikt. Geef in alle opdrachten uw eigen domein naam op. Dit kan ook een uniek voor voegsel bevatten.
+>
+> Zie [een naam voorvoegsel voor het domein selecteren][naming-prefix]voor meer informatie.
 
 De volgende DNS-naam beperkingen zijn ook van toepassing:
 
@@ -118,14 +127,14 @@ Vul de velden in het venster *netwerk* als volgt in:
 
 ## <a name="configure-an-administrative-group"></a>Een beheer groep configureren
 
-Een speciale beheer groep met de naam *Aad DC* -Administrators wordt gebruikt voor het beheer van het Azure AD DS-domein. Aan leden van deze groep worden beheerders machtigingen verleend op Vm's die zijn gekoppeld aan het beheerde domein. Op Vm's die lid zijn van een domein, wordt deze groep toegevoegd aan de lokale groep Administrators. Leden van deze groep kunnen ook Extern bureaublad gebruiken om extern verbinding te maken met virtuele machines die lid zijn van een domein.
+Een speciale beheer groep met de naam *Aad DC-Administrators* wordt gebruikt voor het beheer van het Azure AD DS-domein. Aan leden van deze groep worden beheerders machtigingen verleend op Vm's die zijn gekoppeld aan het beheerde domein. Op Vm's die lid zijn van een domein, wordt deze groep toegevoegd aan de lokale groep Administrators. Leden van deze groep kunnen ook Extern bureaublad gebruiken om extern verbinding te maken met virtuele machines die lid zijn van een domein.
 
-U hebt geen machtigingen voor *domein Administrator* of *ondernemings Administrator* voor een beheerd domein met Azure AD DS. Deze machtigingen zijn gereserveerd door de service en worden niet beschikbaar gesteld voor gebruikers binnen de Tenant. In plaats daarvan kunt u met de groep *Aad DC* -Administrators bepaalde geprivilegieerde bewerkingen uitvoeren. Deze bewerkingen omvatten het toevoegen van computers aan het domein, die deel uitmaken van de beheer groep op Vm's die lid zijn van een domein en het configureren van groepsbeleid.
+U hebt geen machtigingen voor *domein Administrator* of *ondernemings Administrator* voor een beheerd domein met Azure AD DS. Deze machtigingen zijn gereserveerd door de service en worden niet beschikbaar gesteld voor gebruikers binnen de Tenant. In plaats daarvan kunt u met de groep *Aad DC-Administrators* bepaalde geprivilegieerde bewerkingen uitvoeren. Deze bewerkingen omvatten het toevoegen van computers aan het domein, die deel uitmaken van de beheer groep op Vm's die lid zijn van een domein en het configureren van groepsbeleid.
 
-De wizard maakt automatisch de groep *Aad DC* -Administrators in uw Azure AD-adres lijst. Als u een bestaande groep met deze naam in uw Azure AD-adres lijst hebt, wordt deze groep door de wizard geselecteerd. U kunt ervoor kiezen om tijdens het implementatie proces extra gebruikers toe te voegen aan deze groep *Aad DC* -Administrators. Deze stappen kunnen later worden uitgevoerd.
+De wizard maakt automatisch de groep *Aad DC-Administrators* in uw Azure AD-adres lijst. Als u een bestaande groep met deze naam in uw Azure AD-adres lijst hebt, wordt deze groep door de wizard geselecteerd. U kunt ervoor kiezen om tijdens het implementatie proces extra gebruikers toe te voegen aan deze groep *Aad DC-Administrators* . Deze stappen kunnen later worden uitgevoerd.
 
-1. Om extra gebruikers toe te voegen aan deze groep *Aad DC* -Administrators, selecteert u **groepslid maatschap beheren**.
-1. Selecteer de knop **leden toevoegen** , zoek naar en selecteer gebruikers in uw Azure AD-adres lijst. Zoek bijvoorbeeld naar uw eigen account en voeg deze toe aan de groep *Aad DC* -Administrators.
+1. Om extra gebruikers toe te voegen aan deze groep *Aad DC-Administrators* , selecteert u **groepslid maatschap beheren**.
+1. Selecteer de knop **leden toevoegen** , zoek naar en selecteer gebruikers in uw Azure AD-adres lijst. Zoek bijvoorbeeld naar uw eigen account en voeg deze toe aan de groep *Aad DC-Administrators* .
 
     ![Groepslid maatschap van de groep AAD DC-Administrators configureren](./media/tutorial-create-instance/admin-group.png)
 
@@ -228,3 +237,6 @@ Als u dit beheerde domein in actie wilt zien, maakt u een virtuele machine en vo
 [on-prem-sync]: tutorial-configure-password-hash-sync.md
 [configure-sspr]: ../active-directory/authentication/quickstart-sspr.md
 [password-hash-sync-process]: ../active-directory/hybrid/how-to-connect-password-hash-synchronization.md#password-hash-sync-process-for-azure-ad-domain-services
+
+<!-- EXTERNAL LINKS -->
+[naming-prefix]: /windows-server/identity/ad-ds/plan/selecting-the-forest-root-domain#selecting-a-prefix

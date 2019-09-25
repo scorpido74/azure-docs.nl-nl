@@ -6,19 +6,19 @@ author: barclayn
 manager: rkarlin
 ms.service: key-vault
 ms.topic: article
-ms.date: 09/19/2019
+ms.date: 09/23/2019
 ms.author: barclayn
 ms.custom: security-recommendations
-ms.openlocfilehash: e1c5382e1e55c5c73a5610c1c13f6bfcef65ebc1
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: 90965618b1d2cb126d56453d46a5bebc85319c0f
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71148274"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71219643"
 ---
 # <a name="security-recommendations-for-azure-key-vault"></a>Beveiligings aanbevelingen voor Azure Key Vault
 
-Dit artikel bevat beveiligings aanbevelingen voor Azure App Service. Als u deze aanbevelingen implementeert, kunt u voldoen aan uw beveiligings verplichtingen zoals beschreven in ons gedeelde verantwoordelijkheids model en wordt de algehele beveiliging van uw web-app-oplossingen verbeterd. Lees de [gedeelde verantwoordelijkheden voor Cloud Computing](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91/file/153019/1/Shared%20responsibilities%20for%20cloud%20computing.pdf)voor meer informatie over wat micro soft doet aan de verantwoordelijkheden van de service provider.
+Dit artikel bevat beveiligings aanbevelingen voor Azure Key Vault. Als u deze aanbevelingen implementeert, kunt u voldoen aan uw beveiligings verplichtingen, zoals beschreven in ons gedeelde verantwoordelijkheids model. Lees de [gedeelde verantwoordelijkheden voor Cloud Computing](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91/file/153019/1/Shared%20responsibilities%20for%20cloud%20computing.pdf)voor meer informatie over wat micro soft doet aan de verantwoordelijkheden van de service provider.
 
 Enkele van de aanbevelingen in dit artikel kunnen automatisch worden bewaakt door Azure Security Center. Azure Security Center is de eerste verdedigings linie bij het beveiligen van uw resources in Azure. De beveiligings status van uw Azure-resources wordt periodiek geanalyseerd om mogelijke beveiligings problemen te identificeren. Vervolgens krijgt u aanbevelingen over hoe u deze kunt aanpakken.
 
@@ -27,7 +27,7 @@ Enkele van de aanbevelingen in dit artikel kunnen automatisch worden bewaakt doo
 
 ## <a name="recommendations"></a>Aanbevelingen
 
-| Categorie | Aanbeveling | Opmerkingen | Beveiligingscentrum |
+| Category | Aanbeveling | Opmerkingen | Beveiligingscentrum |
 |-|-|----|--|
 | Gegevensbescherming |Voorlopig verwijderen inschakelen | Met [zacht verwijderen](key-vault-ovw-soft-delete.md) kunt u verwijderde kluizen en kluis objecten herstellen |  - |
 | Gegevensbescherming | Toegang tot kluis gegevens beperken  | Het principe van minimale bevoegdheid volgen en beperken welke leden van uw organisatie toegang hebben tot de kluis gegevens |  - |

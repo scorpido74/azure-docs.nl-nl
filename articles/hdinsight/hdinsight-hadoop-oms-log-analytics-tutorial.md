@@ -7,18 +7,18 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/05/2019
-ms.openlocfilehash: 7d015f485a51ae1f929e2ecaf1a05811d21594a2
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: a693b14bb61eb52a09ab1f1ecd5d00b339357d5d
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68816032"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240374"
 ---
 # <a name="use-azure-monitor-logs-to-monitor-hdinsight-clusters"></a>Azure Monitor Logboeken gebruiken om HDInsight-clusters te bewaken
 
 Informatie over het inschakelen van Azure Monitor logboeken voor het bewaken van Hadoop-cluster bewerkingen in HDInsight en het toevoegen van een HDInsight-bewakings oplossing.
 
-[Azure monitor](../log-analytics/log-analytics-overview.md) -Logboeken is een service in azure monitor die uw Cloud-en on-premises omgevingen bewaakt om hun Beschik baarheid en prestaties te behouden. De service verzamelt gegevens afkomstig van resources in uw cloud- en on-premises omgevingen en van andere bewakingsprogramma's om analyse over meerdere resources aan te bieden.
+[Azure monitor-logboeken](../log-analytics/log-analytics-overview.md) is een service in azure monitor die uw Cloud-en on-premises omgevingen bewaakt om hun Beschik baarheid en prestaties te behouden. De service verzamelt gegevens afkomstig van resources in uw cloud- en on-premises omgevingen en van andere bewakingsprogramma's om analyse over meerdere resources aan te bieden.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
@@ -109,6 +109,15 @@ Omdat het cluster een nieuwe cluster is, weergeven niet alle activiteiten in het
 ## <a name="configuring-performance-counters"></a>Prestatie meter items configureren
 
 Azure monitor biedt ook ondersteuning voor het verzamelen en analyseren van prestatie gegevens voor de knoop punten in uw cluster. Zie [Linux-prestatie gegevens bronnen in azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/data-sources-performance-counters#linux-performance-counters)voor meer informatie over het inschakelen en configureren van deze functie.
+
+## <a name="cluster-auditing"></a>Cluster controle
+
+HDInsight ondersteunt cluster controle met Azure Monitor-logboeken door de volgende typen logboeken te importeren:
+
+* `log_gateway_audit_CL`-deze tabel bevat audit logboeken van cluster gateway knooppunten die geslaagde en mislukte aanmeldings pogingen tonen.
+* `log_auth_CL`-deze tabel bevat SSH-logboeken met geslaagde en mislukte aanmeldings pogingen.
+* `log_ambari_audit_CL`-deze tabel bevat audit logboeken van Ambari.
+* `log_ranger_audti_CL`-deze tabel bevat audit logboeken van Apache zwerver op ESP-clusters.
 
 ## <a name="next-steps"></a>Volgende stappen
 

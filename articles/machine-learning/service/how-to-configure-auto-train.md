@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2ef501af63628b47bc52d416930c90057569b5de
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 4d4a3eae9ea3931ceb720785bbf458f54689be6e
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71035031"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71213523"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Automatische ML experimenten configureren in python
 
@@ -202,7 +202,7 @@ Voorbeelden zijn:
         n_cross_validations=5)
     ```
 
-De drie verschillende `task` parameter waarden bepalen de lijst met algoritmen die moeten worden toegepast.  Gebruik de `whitelist` para `blacklist` meters of om iteraties verder te wijzigen met de beschik bare algoritmen die moeten worden opgenomen of uitgesloten. De lijst met ondersteunde modellen vindt u in de [klasse SupportedAlgorithms](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.constants.supportedalgorithms?view=azure-ml-py).
+De drie verschillende `task` parameter waarden bepalen de lijst met modellen die moeten worden toegepast.  Gebruik de `whitelist` para `blacklist` meters of om iteraties verder te wijzigen met de beschik bare modellen die moeten worden opgenomen of uitgesloten. De lijst met ondersteunde modellen vindt u in de [klasse SupportedModels](https://docs.microsoft.com/en-us/python/api/azureml-train-automl/azureml.train.automl.constants.supportedmodels?view=azure-ml-py).
 
 ### <a name="primary-metric"></a>Primaire metrische gegevens
 Primaire metriek; zoals wordt weer gegeven in de bovenstaande voor beelden, bepaalt u de metrische gegevens die moeten worden gebruikt tijdens de model training voor Optima Lise ring. De primaire metriek die u kunt selecteren, wordt bepaald door het taak type dat u kiest. Hieronder vindt u een lijst met beschik bare metrische gegevens.

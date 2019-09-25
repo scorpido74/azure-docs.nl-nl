@@ -9,12 +9,12 @@ ms.date: 09/13/2019
 ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: 78c752423d20d183c561d5bcf0bb95246b84ab49
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: 9618d99495e65231de22eb719355e2ca75a17600
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71076662"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71218035"
 ---
 # <a name="safelist-the-azure-portal-urls-on-your-firewall-or-proxy-server"></a>Safelist de Azure Portal Url's op uw firewall of proxy server
 
@@ -80,8 +80,8 @@ De URL-eind punten naar Safelist voor de Azure Portal zijn specifiek voor de Azu
 Moet u IP-adressen safelisten? Down load de lijst met IP-adresbereiken voor Microsoft Azure Data Center voor uw Cloud:
 
 * [Wijd](https://www.microsoft.com/download/details.aspx?id=56519)
-* [NL Government](http://www.microsoft.com/download/details.aspx?id=57063)
-* [Duitsland](http://www.microsoft.com/download/details.aspx?id=57064)
-* [China](http://www.microsoft.com/download/details.aspx?id=57062)
+* [NL Government](https://www.microsoft.com/download/details.aspx?id=57063)
+* [Duitsland](https://www.microsoft.com/download/details.aspx?id=57064)
+* [China](https://www.microsoft.com/download/details.aspx?id=57062)
 
 Andere micro soft-Services gebruiken extra Url's en IP-adressen voor connectiviteit. Zie [uw netwerk instellen voor Office 365 om de](/office365/enterprise/set-up-network-for-office-365)netwerk verbinding voor Microsoft 365 services te optimaliseren.

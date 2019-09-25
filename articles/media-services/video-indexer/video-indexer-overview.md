@@ -8,20 +8,22 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 09/17/2019
+ms.date: 09/23/2019
 ms.author: juliako
-ms.openlocfilehash: d346f68534a9fdbc286cd5521c00d81c2a5fec78
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 3c8d0d3ec0f11592610363e9150be47112995853
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71203557"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71219869"
 ---
 # <a name="what-is-video-indexer"></a>Wat is Video Indexer?
 
-Azure Media Services Video Indexer is een AI-oplossing die is gebouwd op Azure Cognitive Services. Video Indexer biedt de mogelijkheid om diepere inzichten te verkrijgen (zonder gegevens analyse of codeer vaardig heden) met behulp van machine learning modellen op basis van meerdere kanalen (spraak, vocals, Visual). U kunt de modellen verder aanpassen en trainen. Met de service kunt u uitgebreide zoek opdrachten, de operationele kosten reduceren, nieuwe verdiensten maximaliseren-mogelijkheden, nieuwe gebruikers ervaring op grote archieven van Video's (met lage toetredings drempels). 
+Video Indexer (VI) is de Azure Media Services AI-oplossing en deel van het Microsoft Cognitive Services merk. Video Indexer biedt de mogelijkheid om diepere inzichten te verkrijgen (zonder gegevens analyse of codeer vaardig heden) met behulp van machine learning modellen op basis van meerdere kanalen (spraak, vocals, Visual). U kunt de modellen verder aanpassen en trainen. Met de service kunt u uitgebreide zoek opdrachten, de operationele kosten reduceren, nieuwe verdiensten maximaliseren-mogelijkheden, nieuwe gebruikers ervaring op grote archieven van Video's (met lage toetredings drempels). 
 
 Als u inzichten wilt gaan extra heren met Video Indexer, moet u een account maken en Video's uploaden. Wanneer u uw Video's uploadt naar Video Indexer, analyseert deze zowel visuele elementen als audio door verschillende AI-modellen uit te voeren. Als Video Indexer analyseert u uw video, de inzichten die worden geëxtraheerd door de modellen.
+
+Het volgende diagram is een illustratie en is geen technische uitleg over de werking van Video Indexer in de back-end.
 
 ![Stroomdiagram](./media/video-indexer-overview/model-chart.png)
 

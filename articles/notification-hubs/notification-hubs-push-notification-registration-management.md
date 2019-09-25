@@ -1,54 +1,56 @@
 ---
-title: Registratiebeheer
-description: In dit onderwerp wordt uitgelegd hoe u apparaten registreren met notification hubs om te kunnen ontvangen van pushmeldingen.
+title: Registratie beheer
+description: In dit onderwerp wordt uitgelegd hoe u apparaten registreert bij Notification hubs om Push meldingen te ontvangen.
 services: notification-hubs
 documentationcenter: .net
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.assetid: fd0ee230-132c-4143-b4f9-65cef7f463a1
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: dotnet
 ms.topic: article
-ms.author: jowargo
 ms.date: 04/08/2019
-ms.openlocfilehash: fffa6784702f239e0af0e9e88a4b9937d20b86ed
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 04/08/2019
+ms.openlocfilehash: 0725b4fc80fc3a41491bdb9ed084d33b36b490b8
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67488633"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71213084"
 ---
 # <a name="registration-management"></a>Registratiebeheer
 
 ## <a name="overview"></a>Overzicht
 
-In dit onderwerp wordt uitgelegd hoe u apparaten registreren met notification hubs om te kunnen ontvangen van pushmeldingen. Het onderwerp wordt beschreven registraties op hoog niveau en introduceert de twee belangrijkste patronen voor het registreren van apparaten: registratie van het apparaat rechtstreeks met de notification hub en registreren via de back-end van een toepassing.
+In dit onderwerp wordt uitgelegd hoe u apparaten registreert bij Notification hubs om Push meldingen te ontvangen. In het onderwerp worden registraties op hoog niveau beschreven. vervolgens worden de twee belangrijkste patronen voor het registreren van apparaten geïntroduceerd: de registratie van het apparaat rechtstreeks op de notification hub en registreren via een back-end van de toepassing.
 
-## <a name="what-is-device-registration"></a>Wat is het registreren van apparaten
+## <a name="what-is-device-registration"></a>Wat is apparaatregistratie
 
-Device Registration service met een Notification Hub wordt gerealiseerd met behulp van een **registratie** of **installatie**.
+Apparaatregistratie met een notification hub wordt uitgevoerd met behulp van een **registratie** of **installatie**.
 
 ### <a name="registrations"></a>Registraties
 
-Een registratie wordt gekoppeld aan de ingang Platform Notification Service (PNS) voor een apparaat met tags en mogelijk een sjabloon. De PNS-ingang is mogelijk een kanaal-URI, apparaattoken of FCM registratie-id. Labels worden gebruikt voor het routeren van meldingen naar de juiste set apparaat verwerkt. Zie voor meer informatie, [Routering en code-expressies](notification-hubs-tags-segment-push-message.md). Sjablonen worden voor het implementeren van per-registratie-transformatie gebruikt. Zie [Sjablonen](notification-hubs-templates-cross-platform-push-messages.md) voor meer informatie.
+Bij een registratie wordt de PNS-ingang (platform Notification Service) voor een apparaat gekoppeld aan Tags en mogelijk een sjabloon. De PNS-ingang kan een kanaal, een token of een FCM-registratie-id zijn. Labels worden gebruikt voor het routeren van meldingen naar de juiste set met apparaat-ingangen. Zie [route ring en label expressies](notification-hubs-tags-segment-push-message.md)voor meer informatie. Sjablonen worden gebruikt voor het implementeren van trans formatie per registratie. Zie [Sjablonen](notification-hubs-templates-cross-platform-push-messages.md) voor meer informatie.
 
 > [!NOTE]
-> Azure Notification Hubs ondersteunt maximaal 60 tags per apparaat.
+> Azure Notification Hubs ondersteunt Maxi maal 60 Tags per apparaat.
 
-### <a name="installations"></a>Installaties
+### <a name="installations"></a>Apparatuur
 
-Een installatie is een uitgebreide eigenschappen met betrekking tot inschrijving met een eigenschappenverzameling van pushmeldingen. Het is de meest recente en beste aanpak voor het registreren van uw apparaten. Echter niet ondersteund door de SDK voor .NET-clientzijde ([Notification Hub SDK voor back-end-bewerkingen](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)) nog.  Dit betekent dat als u vanaf het clientapparaat zelf registreert, moet u zou gebruiken de [Notification Hubs REST API](https://docs.microsoft.com/rest/api/notificationhubs/create-overwrite-installation) benadering voor de ondersteuning van installaties. Als u een back-endservice gebruikt, moet u kunnen gebruiken [Notification Hub SDK voor back-end-bewerkingen](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/).
+Een installatie is een uitgebreide registratie die een verzameling van push gerelateerde eigenschappen bevat. Het is de meest recente en beste manier om uw apparaten te registreren. Dit wordt echter niet ondersteund door de .NET SDK van de client ([Notification hub SDK voor back-upbewerkingen](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)) vanaf nog.  Dit betekent dat als u zich registreert vanaf het client apparaat zelf, u de [Notification Hubs rest API](https://docs.microsoft.com/rest/api/notificationhubs/create-overwrite-installation) aanpak moet gebruiken ter ondersteuning van installaties. Als u een back-end-service gebruikt, moet u de [SDK voor de notification hub kunnen gebruiken voor back-end-bewerkingen](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/).
 
-Hier volgen enkele belangrijke voordelen voor het gebruik van installaties:
+Hieronder vindt u enkele belang rijke voor delen van het gebruik van installaties:
 
-- Het maken of bijwerken van een installatie is volledig idempotent zijn. Zo kunt u het opnieuw zonder klachten over dubbele registraties.
-- De installatiemodel biedt ondersteuning voor een speciale tag-indeling (`$InstallationId:{INSTALLATION_ID}`) waarmee wordt een melding rechtstreeks naar het apparaat verzonden. Bijvoorbeeld, als de app code stelt u een installatie-ID van `joe93developer` voor dit specifieke apparaat, een ontwikkelaar kunt zich richten op dit apparaat bij het verzenden van een melding naar de `$InstallationId:{joe93developer}` tag. Hiermee kunt u op een specifiek apparaat zonder dat u hoeft te doen extra coderen.
-- Met behulp van installaties kunt u een gedeeltelijke registratie-updates. De gedeeltelijke update van een installatie wordt aangevraagd met een PATCH-methode met de [JSON-Patch standard](https://tools.ietf.org/html/rfc6902). Dit is handig als u wilt bijwerken van tags op de registratie. U hoeft niet te opgehaald van de registratie van de gehele en verzend de vorige labels opnieuw.
+- Het is volledig idempotent om een installatie te maken of bij te werken. Daarom kunt u het opnieuw proberen zonder dat er problemen zijn met het dupliceren van registraties.
+- Het installatie model ondersteunt een speciale label indeling (`$InstallationId:{INSTALLATION_ID}`) waarmee een melding rechtstreeks naar het specifieke apparaat kan worden verzonden. Als de code van de app bijvoorbeeld een installatie-id `joe93developer` voor dit specifieke apparaat instelt, kan een ontwikkelaar dit apparaat richten bij het verzenden van een melding naar de `$InstallationId:{joe93developer}` tag. Zo kunt u een specifiek apparaat richten zonder extra code ring uit te voeren.
+- U kunt met behulp van installaties gedeeltelijke registratie-updates uitvoeren. De gedeeltelijke update van een installatie wordt met behulp van de [JSON-patch-standaard](https://tools.ietf.org/html/rfc6902)met een patch methode aangevraagd. Dit is handig wanneer u labels voor de registratie wilt bijwerken. U hoeft niet de volledige registratie op te halen en vervolgens opnieuw alle vorige Tags te verzenden.
 
-Een installatie, kan de volgende eigenschappen bevatten. Zie voor een volledige lijst met de installatie-eigenschappen, [maken of overschrijven van een installatie met REST-API](https://docs.microsoft.com/rest/api/notificationhubs/create-overwrite-installation) of [installatie-eigenschappen](https://docs.microsoft.com/dotnet/api/microsoft.azure.notificationhubs.installation).
+Een installatie kan de volgende eigenschappen bevatten. Zie [een installatie met rest API](https://docs.microsoft.com/rest/api/notificationhubs/create-overwrite-installation) of [installatie-eigenschappen](https://docs.microsoft.com/dotnet/api/microsoft.azure.notificationhubs.installation)maken of overschrijven voor een volledige lijst met installatie-eigenschappen.
 
 ```json
 // Example installation format to show some supported properties
@@ -87,45 +89,45 @@ Een installatie, kan de volgende eigenschappen bevatten. Zie voor een volledige 
 ```
 
 > [!NOTE]
-> Standaard verlopen registratie en-installaties en niet.
+> Registraties en installaties verlopen standaard niet.
 
-Registraties en installaties moeten een geldige PNS-ingang voor elk apparaat/kanaal bevatten. Omdat PNS-ingangen kunnen alleen worden verkregen in een client-app op het apparaat, wordt een patroon is om rechtstreeks op dat apparaat met de client-app te registreren. Aan de andere kant beveiligingsoverwegingen en zakelijke logica die betrekking hebben op tags mogelijk moet u voor het beheren van device Registration service in de app-back-end.
+Registraties en installaties moeten een geldige PNS-ingang voor elk apparaat/kanaal bevatten. Omdat PNS-ingangen alleen kunnen worden verkregen in een client-app op het apparaat, moet een patroon rechtstreeks op dat apparaat worden geregistreerd met de client-app. Op de andere kant moeten de beveiligings overwegingen en de bedrijfs logica met betrekking tot Tags ertoe leiden dat u apparaatregistratie in de back-end van de app beheert.
 
 > [!NOTE]
-> De API-installaties biedt geen ondersteuning voor de Baidu-service (Hoewel de API-registraties doet). 
+> De installatie-API biedt geen ondersteuning voor de Baidu-service (hoewel de registraties-API wel). 
 
 ### <a name="templates"></a>Sjablonen
 
-Als u wilt gebruiken [sjablonen](notification-hubs-templates-cross-platform-push-messages.md), installatie van het apparaat bevat ook alle sjablonen die zijn gekoppeld aan het apparaat in een JSON-indeling (Zie het bovenstaande voorbeeld). De sjabloonnamen helpen bij het doel verschillende sjablonen voor hetzelfde apparaat.
+Als u [sjablonen](notification-hubs-templates-cross-platform-push-messages.md)wilt gebruiken, bevat de installatie van het apparaat ook alle sjablonen die zijn gekoppeld aan dat apparaat in een JSON-indeling (Zie voor beeld hierboven). De naam van de sjabloon helpt bij het richten op verschillende sjablonen voor hetzelfde apparaat.
 
-De sjabloonnaam van elke wordt toegewezen aan de hoofdtekst van een sjabloon en een optionele set van labels. Elk platform kan bovendien extra eigenschappen hebben. Voor Windows Store (met WNS) en Windows Phone 8 (met behulp van MPNS), kan een extra set headers deel uitmaken van de sjabloon. In het geval van APNs, kunt u de eigenschap van een verlopen instelt, moet een constante of een sjabloonexpressie. Voor een volledige lijst met de installatie-eigenschappen zien, [maken of overschrijven van een installatie met REST](https://docs.microsoft.com/rest/api/notificationhubs/create-overwrite-installation) onderwerp.
+Elke sjabloon naam wordt toegewezen aan een sjabloon hoofdtekst en een optionele set tags. Daarnaast kan elk platform aanvullende sjabloon eigenschappen hebben. Voor Windows Store (met WNS) en Windows Phone 8 (met behulp van MPNS) kan een extra set kopteksten deel uitmaken van de sjabloon. In het geval van APNs kunt u een verloop eigenschap instellen op een constante of op een sjabloon expressie. Voor een volledig overzicht van de installatie-eigenschappen, [maakt of overschrijft u een installatie met rest](https://docs.microsoft.com/rest/api/notificationhubs/create-overwrite-installation) onderwerp.
 
-### <a name="secondary-tiles-for-windows-store-apps"></a>Secundaire tegels voor Windows Store-Apps
+### <a name="secondary-tiles-for-windows-store-apps"></a>Secundaire tegels voor Windows Store-apps
 
-Voor Windows Store-clienttoepassingen, verzenden van meldingen naar secundaire tegels is hetzelfde als ze worden verzonden naar de primaire database. Dit wordt ook ondersteund in installaties. Secundaire tegels hebben een ander kanaal-URI, die de SDK in uw client-app transparant verwerkt.
+Voor Windows Store-client toepassingen is het verzenden van meldingen naar secundaire tegels hetzelfde als het verzenden van berichten naar het primaire venster. Dit wordt ook ondersteund in-installaties. Secundaire tegels hebben een andere kanaal, die door de SDK van uw client toepassing transparant wordt afgehandeld.
 
-De woordenlijst SecondaryTiles maakt gebruik van de dezelfde TileId die wordt gebruikt voor het maken van het object SecondaryTiles in uw Windows Store-app. Net als bij de primaire kanaal-URI, kunt ChannelUris van secundaire tegels op elk moment wijzigen. Zorgen dat de installatie van het in de notification hub bijgewerkt, moet het apparaat te vernieuwen met de huidige ChannelUris van de secundaire tegels.
+De SecondaryTiles-woorden lijst gebruikt dezelfde TileId die wordt gebruikt om het SecondaryTiles-object in uw Windows Store-app te maken. Net als bij de primaire kanaal kunnen ChannelUris van secundaire tegels op elk moment worden gewijzigd. Om ervoor te zorgen dat de installaties in de notification hub worden bijgewerkt, moet het apparaat deze vernieuwen met de huidige ChannelUris van de secundaire tegels.
 
-## <a name="registration-management-from-the-device"></a>Registratiebeheer van de van het apparaat
+## <a name="registration-management-from-the-device"></a>Registratie beheer van het apparaat
 
-Bij het beheren van device Registration service van de client-apps, is de back-end alleen verantwoordelijk voor het verzenden van meldingen. Client-apps up-to-date houden van PNS-ingangen en registreren van tags. De volgende afbeelding ziet u dit patroon.
+Bij het beheren van apparaatregistratie van client-apps is de back-end alleen verantwoordelijk voor het verzenden van meldingen. Client-apps houden PNS up-to-date en registreren Tags. In de volgende afbeelding ziet u dit patroon.
 
 ![](./media/notification-hubs-registration-management/notification-hubs-registering-on-device.png)
 
-Het apparaat eerst de PNS-ingang opgehaald uit de PNS en vervolgens rechtstreeks door de notification hub geregistreerd. Wanneer de registratie geslaagd is, kan de back-end een melding die gericht is op deze inschrijving kunt verzenden. Zie voor meer informatie over hoe u meldingen verzendt, [Routering en code-expressies](notification-hubs-tags-segment-push-message.md).
+Het apparaat haalt eerst de PNS-ingang op uit de PNS en registreert vervolgens rechtstreeks de notification hub. Nadat de registratie is voltooid, kan de back-end van de app een melding verzenden die als doel heeft. Zie [route ring en label expressies](notification-hubs-tags-segment-push-message.md)voor meer informatie over het verzenden van meldingen.
 
-In dit geval u enige Listen-rechten voor toegang tot uw meldingshubs van het apparaat. Zie voor meer informatie, [Security](notification-hubs-push-notification-security.md).
+In dit geval gebruikt u alleen Luister rechten voor toegang tot uw notification hubs vanaf het apparaat. Zie [beveiliging](notification-hubs-push-notification-security.md)voor meer informatie.
 
-Registreren van het apparaat is de eenvoudigste methode, maar er enkele nadelen:
+De registratie van het apparaat is de eenvoudigste methode, maar heeft een aantal nadelen:
 
-- Een client-app kunt de labels alleen bijwerken wanneer de app actief is. Bijvoorbeeld, als een gebruiker heeft twee apparaten die geregistreerd tags met betrekking tot sport teams, wanneer het eerste apparaat wordt geregistreerd voor een aanvullende tag (bijvoorbeeld Seahawks), wordt het tweede apparaat het geen meldingen ontvangen over de Seahawks totdat de app op het tweede apparaat een tweede keer uitgevoerd. Meer over het algemeen is tags beheren vanaf de back-end wanneer tags worden beïnvloed door meerdere apparaten, een optie voor het wenselijk.
-- Aangezien apps kunnen worden gehackt, vereist beveiliging van de registratie op specifieke labels extra aandacht, zoals wordt beschreven in de sectie "Tag beveiligingsniveau."
+- Een client-app kan de labels alleen bijwerken wanneer de app actief is. Als een gebruiker bijvoorbeeld twee apparaten heeft die labels registreren die zijn gerelateerd aan sport teams, wanneer het eerste apparaat wordt geregistreerd voor een extra tag (bijvoorbeeld Seahawks), ontvangt het tweede apparaat geen meldingen over de Seahawks totdat de app op het tweede apparaat is een tweede keer uitgevoerd. Meer in het algemeen, wanneer labels worden beïnvloed door meerdere apparaten, is het beheren van tags van de back-end een wenselijke optie.
+- Aangezien apps kunnen worden gekraakt, is extra aandacht vereist voor het beveiligen van de registratie voor specifieke tags, zoals wordt uitgelegd in het gedeelte ' beveiliging op tag-niveau '.
 
-### <a name="example-code-to-register-with-a-notification-hub-from-a-device-using-an-installation"></a>Voorbeeldcode om te registreren bij een meldingshub die vanaf een apparaat met een installatie
+### <a name="example-code-to-register-with-a-notification-hub-from-a-device-using-an-installation"></a>Voorbeeld code voor registratie bij een notification hub van een apparaat met een installatie
 
-Op dit moment, dit wordt alleen ondersteund met behulp van de [Notification Hubs REST API](https://docs.microsoft.com/rest/api/notificationhubs/create-overwrite-installation).
+Op dit moment wordt dit alleen ondersteund met behulp van de [Notification Hubs rest API](https://docs.microsoft.com/rest/api/notificationhubs/create-overwrite-installation).
 
-U kunt ook gebruiken voor het gebruik van de PATCH methode de [JSON-Patch standard](https://tools.ietf.org/html/rfc6902) voor het bijwerken van de installatie.
+U kunt ook de PATCH-methode gebruiken met behulp van de [JSON-patch standaard](https://tools.ietf.org/html/rfc6902) voor het bijwerken van de installatie.
 
 ```
 class DeviceInstallation
@@ -204,9 +206,9 @@ else
 }
 ```
 
-### <a name="example-code-to-register-with-a-notification-hub-from-a-device-using-a-registration"></a>Voorbeeldcode om te registreren bij een meldingshub die vanaf een apparaat met een registratie
+### <a name="example-code-to-register-with-a-notification-hub-from-a-device-using-a-registration"></a>Voorbeeld code voor registratie bij een notification hub van een apparaat met behulp van een registratie
 
-Deze methoden maken of bijwerken van een registratie voor het apparaat waarop ze worden genoemd. Dit betekent dat de registratie van de gehele om bij te werken van de greep of de tags, moet overschrijven. Houd er rekening mee dat registraties tijdelijke, zijn zodat u moet altijd een betrouwbare opslag met de huidige codes die een specifiek apparaat nodig heeft.
+Met deze methoden wordt een registratie gemaakt of bijgewerkt voor het apparaat waarop ze worden genoemd. Dit betekent dat u de gehele registratie moet overschrijven om de ingang of de tags bij te werken. Houd er rekening mee dat registraties tijdelijk zijn, dus u moet altijd beschikken over een betrouw bare Store met de huidige tags die een specifiek apparaat nodig heeft.
 
 ```
 // Initialize the Notification Hub
@@ -259,19 +261,19 @@ catch (Microsoft.WindowsAzure.Messaging.RegistrationGoneException e)
 }
 ```
 
-## <a name="registration-management-from-a-backend"></a>Registratiebeheer van de van een back-end
+## <a name="registration-management-from-a-backend"></a>Registratie beheer van een back-end
 
-Registraties beheren vanaf de back-end vereist het schrijven van aanvullende code. De app van het apparaat moet opgeven voor de bijgewerkte PNS-ingang naar de back-end telkens wanneer de app wordt gestart (samen met tags en sjablonen) en de back-end deze ingang op de notification hub moet bijwerken. De volgende afbeelding ziet u dit ontwerp.
+Als u registraties van de back-end wilt beheren, moet u extra code schrijven. De app van het apparaat moet elke keer dat de app wordt gestart (samen met tags en sjablonen) de bijgewerkte PNS-ingang naar de back-end geven en de back-end moet deze ingang bijwerken op de notification hub. In de volgende afbeelding ziet u dit ontwerp.
 
 ![](./media/notification-hubs-registration-management/notification-hubs-registering-on-backend.png)
 
-De voordelen van registraties beheren vanaf de back-end omvatten de mogelijkheid om te wijzigen van tags op registraties, zelfs als de bijbehorende app op het apparaat is niet actief, en om te verifiëren van de client-app voordat u een label toevoegt aan de registratie ervan.
+De voor delen van het beheer van registraties van de back-end zijn de mogelijkheid om tags te wijzigen in registraties, zelfs wanneer de bijbehorende app op het apparaat inactief is en de client-app te verifiëren voordat u een tag toevoegt aan de registratie.
 
-### <a name="example-code-to-register-with-a-notification-hub-from-a-backend-using-an-installation"></a>Voorbeeldcode om te registreren bij een meldingshub die vanuit een back-end met behulp van een installatie
+### <a name="example-code-to-register-with-a-notification-hub-from-a-backend-using-an-installation"></a>Voorbeeld code voor de registratie bij een notification hub van een back-end met een installatie
 
-Het client-apparaat wordt nog steeds haalt de PNS-ingang en de relevante installatie-eigenschappen als voordat en een aangepaste API wordt aangeroepen op de back-end die kan uitvoeren van de registratie en autoriseren van tags enzovoort. De back-end kan gebruikmaken van de [Notification Hub SDK voor back-end-bewerkingen](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/).
+Het client apparaat ontvangt nog steeds de PNS-ingang en relevante installatie-eigenschappen als voorheen en roept een aangepaste API aan op de back-end die de registratie kan uitvoeren en Tags enz. De back-end kan gebruikmaken [van de SDK voor de notification hub voor back-end-bewerkingen](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/).
 
-U kunt ook gebruiken voor het gebruik van de PATCH methode de [JSON-Patch standard](https://tools.ietf.org/html/rfc6902) voor het bijwerken van de installatie.
+U kunt ook de PATCH-methode gebruiken met behulp van de [JSON-patch standaard](https://tools.ietf.org/html/rfc6902) voor het bijwerken van de installatie.
 
 ```
 // Initialize the Notification Hub
@@ -315,9 +317,9 @@ public async Task<HttpResponseMessage> Put(DeviceInstallation deviceUpdate)
 }
 ```
 
-### <a name="example-code-to-register-with-a-notification-hub-from-a-device-using-a-registration-id"></a>Voorbeeldcode om te registreren bij een meldingshub die vanaf een apparaat met een registratie-ID
+### <a name="example-code-to-register-with-a-notification-hub-from-a-device-using-a-registration-id"></a>Voorbeeld code voor registratie bij een notification hub van een apparaat met behulp van een registratie-ID
 
-U kunt eenvoudige CRUDS-bewerkingen op registraties uitvoeren vanuit uw back-end. Bijvoorbeeld:
+Vanuit de back-end van uw app kunt u elementaire ruwe bewerkingen uitvoeren op registraties. Bijvoorbeeld:
 
 ```
 var hub = NotificationHubClient.CreateClientFromConnectionString("{connectionString}", "hubName");
@@ -341,4 +343,4 @@ await hub.UpdateRegistrationAsync(r);
 await hub.DeleteRegistrationAsync(r);
 ```
 
-De back-end moet gelijktijdigheid tussen registratie-updates worden verwerkt. Service Bus biedt functionaliteit voor optimistische gelijktijdigheid-besturingselement voor het registratiebeheer van de. Dit is geïmplementeerd op het niveau van de HTTP-, met het gebruik van de ETag op bewerkingen. Deze functie is transparant gebruikt door Microsoft-SDKs, die een uitzondering te genereren als een update is geweigerd voor gelijktijdigheid redenen. De back-end is verantwoordelijk voor het verwerken van deze uitzonderingen en u de update opnieuw uitvoert, indien nodig.
+De back-end moet gelijktijdigheid tussen registratie-updates verwerken. Service Bus biedt optimistisch gelijktijdigheids beheer voor registratie beheer. Op het HTTP-niveau wordt dit geïmplementeerd met het gebruik van ETag op registratie beheer bewerkingen. Deze functie wordt transparant gebruikt door micro soft-Sdk's, waardoor een uitzonde ring wordt gegenereerd als een update wordt afgewezen voor de gelijktijdigheids oorzaken. De back-end van de app is verantwoordelijk voor het verwerken van deze uitzonde ringen en het opnieuw proberen van de update, indien nodig.

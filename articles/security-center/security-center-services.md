@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/29/2019
+ms.date: 09/24/2019
 ms.author: memildin
-ms.openlocfilehash: 97708fa3211aa203aab56253b1c7720d04329014
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: ad662cdeb0a87e57eb9e3e7480d120be1c6c729e
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71200812"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71218257"
 ---
 # <a name="supported-features-available-in-azure-security-center"></a>Ondersteunde functies die beschikbaar zijn in Azure Security Center
 
@@ -41,7 +41,7 @@ De volgende secties tonen Security Center functies die beschikbaar zijn voor hun
 ||**Virtuele machine**|**Schaalset voor virtuele machines**||**Virtuele machine**|**Schaalset voor virtuele machines**|
 |Waarschuwingen voor detectie van VMBA-bedreigingen|✔|✔|✔|✔ (op ondersteunde versies)|✔ (op ondersteunde versies)|✔|Detectie van bedreigingen (gratis) (standaard)|
 |Waarschuwingen voor detectie van bedreigingen op basis van het netwerk|✔|✔|X|✔|✔|X|Standard|
-|Windows Defender ATP-integratie|✔ (op ondersteunde versies)|✔ (op ondersteunde versies)|✔|X|X|X|Standard|
+|Micro soft Defender ATP-integratie|✔ (op ondersteunde versies)|✔ (op ondersteunde versies)|✔|X|X|X|Standard|
 |Ontbrekende patches|✔|✔|✔|✔|✔|✔|Free|
 |Beveiligingsconfiguraties|✔|✔|✔|✔|✔|✔|Free|
 |Endpoint Protection-evaluatie|✔|✔|✔|X|X|X|Free|

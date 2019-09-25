@@ -3,23 +3,25 @@ title: Notification Hubs gebruiken met python
 description: Meer informatie over het gebruik van Azure Notification Hubs van een back-end van python.
 services: notification-hubs
 documentationcenter: ''
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.assetid: 5640dd4a-a91e-4aa0-a833-93615bde49b4
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: python
 ms.devlang: php
 ms.topic: article
-ms.author: jowargo
 ms.date: 01/04/2019
-ms.openlocfilehash: e2d0c7089ea070d82c75337c07fcc4a9df1c7c28
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 01/04/2019
+ms.openlocfilehash: 5321802023d57bedc135e2d19b2289f1d66deb72
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359824"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71213077"
 ---
 # <a name="how-to-use-notification-hubs-from-python"></a>Notification Hubs van python gebruiken
 
@@ -447,9 +449,9 @@ hub.send_template_notification(template_payload)
 
 In dit artikel wordt uitgelegd hoe u een python REST-client maakt voor Notification Hubs. Hier kunt u het volgende doen:
 
-- Down load het volledige [Python REST wrapper-voor beeld]-wrapper-voor beeld, dat alle code in dit artikel bevat.
+- Down load het volledige [Python REST wrapper-voor beeld]-voor beeld, dat alle code in dit artikel bevat.
 - Meer informatie over de functie voor het markeren van Notification Hubs in het [Zelf studie over laatste nieuws]
-- Blijf leren over Notification Hubs-sjablonen in de [Nieuws zelf studie voor lokalisatie] over het lokaliseren van nieuws
+- Blijf leren over Notification Hubs-sjablonen in de [Nieuws zelf studie voor lokalisatie]
 
 <!-- URLs -->
 [Python REST wrapper-voor beeld]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/notificationhubs-rest-python

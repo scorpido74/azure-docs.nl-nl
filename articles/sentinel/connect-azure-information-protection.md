@@ -1,5 +1,5 @@
 ---
-title: Azure Information Protection gegevens verbinden met Azure Sentinel preview | Microsoft Docs
+title: Azure Information Protection gegevens verbinden met Azure Sentinel | Microsoft Docs
 description: Meer informatie over het verbinden van Azure Information Protection gegevens in azure Sentinel.
 services: sentinel
 documentationcenter: na
@@ -12,20 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/15/2019
+ms.date: 09/24/2019
 ms.author: cabailey
-ms.openlocfilehash: 0614d24b19ef39cebdf4cb47fdd2d44470ea59c0
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 7584a884d41451c5a248b84a40eb45815bfb6bdf
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71067748"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240734"
 ---
 # <a name="connect-data-from-azure-information-protection"></a>Verbinding maken met gegevens van Azure Information Protection
-
-> [!IMPORTANT]
-> Azure Sentinel is momenteel beschikbaar als open bare preview.
-> Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
 
 U kunt logboek registratie gegevens van [Azure Information Protection](https://azure.microsoft.com/services/information-protection/) naar Azure Sentinel streamen door de Azure Information Protection Data Connector te configureren. Azure Information Protection helpt u bij het beheren en beveiligen van uw gevoelige gegevens, ongeacht of deze zijn opgeslagen in de Cloud of on-premises.
 
@@ -41,34 +37,44 @@ Als de logboek gegevens van Azure Information Protection echter naar een andere 
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Een van de volgende Azure AD-beheerders rollen voor uw Tenant: Azure Information Protection beheerder, beveiligings beheerder of globale beheerder.
+- Een van de volgende Azure AD-beheerders rollen voor uw Tenant: 
+    - Azure Information Protection-beheerder
+    - Beveiligingsbeheerder
+    - Beheerder voor naleving
+    - Beheerder van gegevens voor naleving
+    - Globale beheerder
     
     > [!NOTE]
-    > U kunt de rol Azure Information Protection beheerder niet gebruiken als uw Tenant zich op het [Unified labeling platform](https://docs.microsoft.com/azure/information-protection/faqs#how-can-i-determine-if-my-tenant-is-on-the-unified-labeling-platform)bevindt.
+    > U kunt de rol Azure Information Protection beheerder niet gebruiken als uw Tenant zich op het [Unified labeling platform](/information-protection/faqs#how-can-i-determine-if-my-tenant-is-on-the-unified-labeling-platform)bevindt.
+    
+    Deze beheerders rollen zijn alleen vereist voor het configureren van de Azure Information Protection-connector en zijn niet vereist wanneer Azure Sentinel is verbonden met Azure Information Protection.
 
-- Machtigingen voor het lezen van en schrijven naar de Log Analytics werk ruimte die u voor Sentinel en Azure Information Protection.
+- Machtigingen voor het lezen van en schrijven naar de Log Analytics werk ruimte die u gebruikt voor de Azure-Sentinel en Azure Information Protection.
 
 - Azure Information Protection is toegevoegd aan de Azure Portal. Zie [Azure Information Protection toevoegen aan de Azure Portal](https://docs.microsoft.com/azure/information-protection/quickstart-viewpolicy#add-azure-information-protection-to-the-azure-portal)als u hulp nodig hebt bij deze stap.
 
 ## <a name="connect-to-azure-information-protection"></a>Verbinding maken met Azure Information Protection
 
-Gebruik de volgende instructies als u geen Log Analytics werk ruimte voor Azure Information Protection hebt geconfigureerd of als u de werk ruimte wilt wijzigen waarin de logboek gegevens van Azure Information Protection worden opgeslagen. 
+> [!IMPORTANT]
+> De Azure Information Protection gegevens connector in azure Sentinel is momenteel beschikbaar als open bare preview.
+> Deze functie wordt zonder service level agreement gegeven en wordt niet aanbevolen voor productie werkbelastingen. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
 
-1. Selecteer in azure Sentinel **Data connectors**en klik vervolgens **Azure Information Protection**.
+Gebruik de volgende instructies als u geen Log Analytics werk ruimte voor Azure Information Protection hebt geconfigureerd of als u de werk ruimte wilt wijzigen waarin de logboek gegevens van Azure Information Protection worden opgeslagen.
 
-2. Selecteer op de Blade **Azure Information Protection** de optie **connector pagina openen**.
+1. In azure Sentinel selecteert u **Data connectors**en vervolgens **Azure Information Protection (preview)** .
 
-3. Selecteer op de volgende Blade in de **configuratie** sectie **Azure Information Protection** om naar **Azure Information Protection Analytics**te gaan.
+2. Selecteer de **pagina connector openen**.
 
-4. Selecteer in de lijst met beschik bare werk ruimten de werk ruimte die u momenteel gebruikt voor Azure Sentinel. Als u een andere werk ruimte selecteert, zijn de rapport gegevens van Azure Information Protection niet beschikbaar voor Azure Sentinel.
+3. Selecteer op de Blade **analyse configureren (preview)** de werk ruimte die u momenteel gebruikt voor Azure Sentinel. Als u een andere werk ruimte selecteert, zijn de rapport gegevens van Azure Information Protection niet beschikbaar voor Azure Sentinel.
 
-5. Wanneer u een werk ruimte hebt geselecteerd, selecteert u **OK** . de **status** van de connector moet nu worden gewijzigd in **verbonden**.
+4. Wanneer u een werk ruimte hebt geselecteerd, selecteert u **OK** . de **status** van de connector moet nu worden gewijzigd in **verbonden**.
 
-6. De rapport gegevens van Azure Information Protection worden opgeslagen in de tabel **InformationProtectionLogs_CL** in de geselecteerde werk ruimte. 
+5. De rapport gegevens van Azure Information Protection worden opgeslagen in de tabel **InformationProtectionLogs_CL** in de geselecteerde werk ruimte. 
     
     Als u het relevante schema in Azure Monitor voor deze rapport gegevens wilt gebruiken, zoekt u naar **InformationProtectionEvents**. Zie de sectie [beschrijvende schema verwijzing voor gebeurtenis functies](https://docs.microsoft.com/azure/information-protection/reports-aip#friendly-schema-reference-for-event-functions) in de Azure Information Protection-documentatie voor meer informatie over deze gebeurtenis functies.
 
 ## <a name="next-steps"></a>Volgende stappen
+
 In dit document hebt u geleerd hoe u Azure Information Protection kunt verbinden met Azure Sentinel. Raadpleeg de volgende artikelen voor meer informatie over Azure Sentinel:
 - Meer informatie over hoe u [inzicht krijgt in uw gegevens en mogelijke bedreigingen](quickstart-get-visibility.md).
-- Ga aan de slag [met het detecteren van bedreigingen met Azure Sentinel](tutorial-detect-threats.md).
+- Ga aan de slag [met het detecteren van bedreigingen met Azure Sentinel](tutorial-detect-threats-built-in.md).

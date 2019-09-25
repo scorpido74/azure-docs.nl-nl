@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 03/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2f7ad49fc56fc82955f79155838c69ff714aba2f
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: bd51e70122a5457c8dcf1bd8f2061fe25943e87f
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68845875"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "71224510"
 ---
 # <a name="azure-disk-encryption-prerequisites"></a>Vereisten voor Azure Disk Encryption
 
@@ -28,11 +28,11 @@ Voordat u Azure Disk Encryption op Azure IaaS Virtual Machines voor de ondersteu
 
 ## <a name="supported-vm-sizes"></a>Ondersteunde VM-grootten
 
-Azure Disk Encryption is niet beschikbaar op [virtuele machines van de basis, A-serie](/pricing/details/virtual-machines/series/). Azure Disk Encryption is beschikbaar op andere virtuele machines die voldoen aan de minimale geheugen vereisten:
+Azure Disk Encryption is niet beschikbaar op [virtuele machines van de basis, A-serie](https://azure.microsoft.com/pricing/details/virtual-machines/series/). Azure Disk Encryption is beschikbaar op andere virtuele machines die voldoen aan de minimale geheugen vereisten:
 
 | Virtuele Machine | Minimale geheugen vereiste |
 |--|--|
-| Windows-VM's | 2 GB |
+| Virtuele Windows-machines | 2 GB |
 | Virtuele Linux-machines wanneer gegevens volumes alleen worden versleuteld| 2 GB |
 | Linux-Vm's bij het versleutelen van gegevens en OS-volumes, waarbij het gebruik van het basis-(/) bestands systeem 4 GB of minder is | 8 GB |
 | Linux-Vm's bij het versleutelen van gegevens en besturingssysteem volumes, waarbij het gebruik van het root-(/) bestands systeem groter is dan 4 GB | Het root-bestandssysteem gebruik * 2. Een voor beeld: voor een 16 GB aan root File System-gebruik is ten minste GB RAM vereist |
