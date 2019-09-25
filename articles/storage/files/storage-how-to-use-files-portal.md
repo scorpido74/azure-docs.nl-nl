@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 10/18/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: b7665caad60a5135da5780da242772af3c0a05a4
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: fef3daf6e9e535736002e309e3d27491364dc553
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70984888"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71260294"
 ---
 # <a name="quickstart-create-and-manage-azure-file-shares-with-the-azure-portal"></a>Quickstart: Azure-bestandsshares maken en beheren met Azure Portal 
 [Azure Files ](storage-files-introduction.md) is het eenvoudig te gebruiken cloudbestandssysteem van Microsoft. Azure-bestandsshares kunnen worden gekoppeld in Windows, Linux en macOS. In deze handleiding worden de basisbeginselen besproken van het werken met Azure-bestandsshares met behulp van [Azure Portal](https://portal.azure.com/).
@@ -29,7 +29,7 @@ Een Azure-bestandsshare maken:
 2. Ga op de pagina van het opslagaccount naar het gedeelte **Services** en selecteer **Bestanden**.
     ![Een schermopname van het gedeelte Services van het opslagaccount, met de service Bestanden geselecteerd](media/storage-how-to-use-files-portal/create-file-share-1.png)
 
-3. Klik in het menu bovenaan de pagina **Bestandsservice** op **+ Bestandsshare**. De pagina **Nieuwe bestandsshare** wordt weergegeven.
+3. Klik in het menu boven aan de pagina **Bestands service** op **Bestands share**. De pagina **Nieuwe bestandsshare** wordt weergegeven.
 4. Typ *myshare* in het vak **Naam**.
 5. Klik op **OK** om de Azure-bestandsshare te maken.
 

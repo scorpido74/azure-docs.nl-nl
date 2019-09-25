@@ -11,12 +11,12 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 08/14/2019
-ms.openlocfilehash: e522cba88eaf9cb63ef7ef2f20e3b72691261073
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 4386a7adba17eefe3c373697597abdb7d69c476a
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71002402"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71265988"
 ---
 # <a name="continuous-integration-and-delivery-cicd-in-azure-data-factory"></a>Continue integratie en levering (CI/CD) in Azure Data Factory
 
@@ -669,7 +669,7 @@ Als u geen git hebt geconfigureerd, kunt u de gekoppelde sjablonen openen via de
 
 ## <a name="hot-fix-production-branch"></a>Productie vertakking warm herstellen
 
-Als u een Factory implementeert voor productie en beseft dat er een fout is die direct moet worden opgelost, maar u niet de huidige collaboration Branch kunt implementeren, moet u mogelijk een hot-fix implementeren.
+Als u een Factory implementeert voor productie en beseft dat er een fout is die direct moet worden opgelost, maar u niet de huidige collaboration Branch kunt implementeren, moet u mogelijk een hot-fix implementeren. Deze aanpak is net zo bekend als snelle herstel techniek of QFE. 
 
 1.  Ga in azure DevOps naar de release die is geïmplementeerd voor productie en zoek de laatste door voering die is geïmplementeerd.
 
@@ -705,8 +705,11 @@ Als u gebruik wilt maken van Git-integratie met uw data factory en u een CI/CD-p
 
 ## <a name="unsupported-features"></a>Niet-ondersteunde functies
 
--   U kunt geen afzonderlijke resources publiceren. Data Factory-entiteiten zijn afhankelijk van elkaar en het bijhouden van veranderende afhankelijkheden kan lastig zijn en leiden tot onverwacht gedrag. Triggers zijn bijvoorbeeld afhankelijk van pijp lijnen, pijp lijnen zijn afhankelijk van gegevens sets en andere pijp lijnen, een dergelijke. Als het mogelijk is om slechts een subset van de hele wijzigings te publiceren, kunnen er een aantal onvoorziene fouten optreden.
+- Op basis van het ontwerp kan ADF _geen_ Cherry-orderverzamelen of selectief publiceren van resources toestaan. De publicatie bevat **alle** wijzigingen die zijn aangebracht in de Data Factory
 
--   U kunt niet publiceren vanuit privé-filialen.
+    - Data Factory-entiteiten zijn afhankelijk van elkaar, bijvoorbeeld triggers zijn afhankelijk van pijp lijnen, pijp lijnen zijn afhankelijk van gegevens sets en andere pijp lijnen, enzovoort. Selectief publiceren van een subset van resources _kan_ leiden tot onverwacht gedrag en fouten
+    - In zeldzame gevallen waarin selectief publiceren is vereist, kunt u een warme correctie overwegen. Zie voor meer informatie [Hot-Fix Production Branch](#hot-fix-production-branch)
 
--   U kunt geen projecten hosten op bitbucket.
+-   U kunt niet publiceren vanuit privé-filialen
+
+-   Vanaf nu kunt u geen projecten hosten op bitbucket

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/14/2019
 ms.author: TomSh
-ms.openlocfilehash: 80f90f1788e798261f77bb7a4147763e7ca6cec0
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: d64cdce34127b066aedc8a5fcd6ec3a891b38c5e
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946511"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71262852"
 ---
 # <a name="azure-logging-and-auditing"></a>Logboekregistratie en bewaking in Azure
 
@@ -36,7 +36,7 @@ Cloud toepassingen zijn complex, met veel bewegende onderdelen. Logboeken bieden
 Azure-logboeken zijn ingedeeld in de volgende typen:
 * **Control/Management-logboeken** bevatten informatie over Azure Resource Manager Create-, update-en delete-bewerkingen. Zie activiteiten logboeken van [Azure](../../azure-monitor/platform/activity-logs-overview.md)voor meer informatie.
 
-* **Gegevens vlak logboeken** bevatten informatie over gebeurtenissen die worden gegenereerd als onderdeel Azure-resource gebruik. Voor beelden van dit type logboek zijn het Windows-gebeurtenis systeem, de beveiliging en toepassings Logboeken in een virtuele machine (VM) [](../../azure-monitor/platform/diagnostic-logs-overview.md) en de diagnostische logboeken die zijn geconfigureerd via Azure monitor.
+* **Gegevens vlak logboeken** bevatten informatie over gebeurtenissen die worden gegenereerd als onderdeel Azure-resource gebruik. Voor beelden van dit type logboek zijn het Windows-gebeurtenis systeem, de beveiliging en toepassings Logboeken in een virtuele machine (VM) [](../../azure-monitor/platform/resource-logs-overview.md) en de diagnostische logboeken die zijn geconfigureerd via Azure monitor.
 
 * **Verwerkte gebeurtenissen** bieden informatie over geanalyseerde gebeurtenissen/waarschuwingen die namens u zijn verwerkt. Voor beelden van dit type zijn [Azure Security Center waarschuwingen](../../security-center/security-center-managing-and-responding-alerts.md) waarbij [Azure Security Center](../../security-center/security-center-intro.md) uw abonnement heeft verwerkt en geanalyseerd en beknopte beveiligings waarschuwingen biedt.
 
@@ -45,7 +45,7 @@ De volgende tabel bevat de belangrijkste typen logboeken die beschikbaar zijn in
 | Logboekcategorie | Logboektype | Gebruik | Integratie |
 | ------------ | -------- | ------ | ----------- |
 |[Activiteiten logboeken](../../azure-monitor/platform/activity-logs-overview.md)|Gebeurtenissen op het vlak van het besturings element op Azure Resource Manager resources|  Biedt inzicht in de bewerkingen die zijn uitgevoerd voor de resources in uw abonnement.|    Rest API, [Azure Monitor](../../azure-monitor/platform/activity-logs-overview.md)|
-|[Diagnostische logboeken van Azure](../../azure-monitor/platform/diagnostic-logs-overview.md)|Frequente gegevens over de werking van Azure Resource Manager resources in het abonnement|  Biedt inzicht in de bewerkingen die uw resource zelf heeft uitgevoerd.| Azure Monitor, [Stream](../../azure-monitor/platform/diagnostic-logs-overview.md)|
+|[Diagnostische logboeken van Azure](../../azure-monitor/platform/resource-logs-overview.md)|Frequente gegevens over de werking van Azure Resource Manager resources in het abonnement|    Biedt inzicht in de bewerkingen die uw resource zelf heeft uitgevoerd.| Azure Monitor, [Stream](../../azure-monitor/platform/resource-logs-overview.md)|
 |[Azure AD-rapportage](../../active-directory/reports-monitoring/overview-reports.md)|Logboeken en rapporten | Rapporteert aanmeldings activiteiten van gebruikers en informatie over systeem activiteiten over gebruikers en groeps beheer.|[Graph API](../../active-directory/develop/active-directory-graph-api-quickstart.md)|
 |[Virtuele machines en Cloud Services](../../azure-monitor/learn/quick-collect-azurevm.md)|Windows Event Log-service en Linux syslog|  Legt systeem gegevens vast en registreert gegevens op de virtuele machines en brengt deze gegevens over naar een opslag account van uw keuze.|   Windows (met behulp van Windows Azure Diagnostics [[wad](../../monitoring-and-diagnostics/azure-diagnostics.md)]-opslag) en Linux in azure monitor|
 |[Azure Opslaganalyse](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics)|Met opslag logboek registratie kunt u metrische gegevens voor een opslag account|Biedt inzicht in Trace-aanvragen, analyse van gebruiks trends en het vaststellen van problemen met uw opslag account.|   REST API of de [client bibliotheek](https://msdn.microsoft.com/library/azure/mt347887.aspx)|
@@ -95,14 +95,14 @@ Diagnostische logboeken van Azure bieden meerdere configuratie opties, zoals de 
 
 * Sla ze op in een [opslag account](../../azure-monitor/platform/archive-diagnostic-logs.md) voor controle of hand matige inspectie. U kunt de Bewaar periode (in dagen) opgeven met behulp van de diagnostische instellingen.
 
-* [U kunt ze streamen naar Event hubs](../../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md) voor opname door een service van derden of een aangepaste analyse oplossing, zoals [PowerBI](https://powerbi.microsoft.com/documentation/powerbi-azure-and-power-bi/).
+* [U kunt ze streamen naar Event hubs](../../azure-monitor/platform/resource-logs-stream-event-hubs.md) voor opname door een service van derden of een aangepaste analyse oplossing, zoals [PowerBI](https://powerbi.microsoft.com/documentation/powerbi-azure-and-power-bi/).
 
 * Analyseer ze met [Azure monitor](../../log-analytics/log-analytics-queries.md)-Logboeken.
 
 **Ondersteunde services, schema voor Diagnostische logboeken en ondersteunde logboek categorieën per resource type**
 
 
-| Service | Schema en documentatie | Resourcetype | Categorie |
+| Service | Schema en documentatie | Resourcetype | Category |
 | ------- | ------------- | ------------- | -------- |
 |Azure Load Balancer| [Azure Monitor logboeken voor Load Balancer (preview-versie)](../../load-balancer/load-balancer-monitor-log.md)|Microsoft.Network/loadBalancers<br>Microsoft.Network/loadBalancers|    LoadBalancerAlertEvent<br>LoadBalancerProbeHealthStatus|
 |Netwerkbeveiligingsgroepen|[Azure Monitor logboeken voor netwerk beveiligings groepen](../../virtual-network/virtual-network-nsg-manage-log.md)|Microsoft.Network/networksecuritygroups<br>Microsoft.Network/networksecuritygroups|NetworkSecurityGroupEvent<br>NetworkSecurityGroupRuleCounter|
@@ -131,7 +131,7 @@ De opgenomen rapporten worden weer gegeven in de volgende tabel:
 |Aanmeldingen van onbekende bronnen| Toepassingsgebruik: samenvatting| Directorycontrolerapport|
 |Aanmeldingen na meerdere mislukte pogingen|  Toepassingsgebruik: gedetailleerd||
 |Aanmeldingen vanuit meerdere locaties|    Toepassingsdashboard||
-|Aanmeldingen vanaf IP-adressen met verdachte activiteiten|   Fouten bij het inrichten van een account||
+|Aanmeldingen van IP-adressen met verdachte activiteit|   Fouten bij het inrichten van een account||
 |Onregelmatige aanmeldingsactiviteiten|    Afzonderlijke gebruikersapparaten||
 |Aanmeldingen vanaf mogelijk geïnfecteerde apparaten|   Afzonderlijke gebruikers activiteit||
 |Gebruikers met afwijkende aanmeldingsactiviteiten| Rapport met groepsactiviteiten||
@@ -315,11 +315,11 @@ In het midden van Azure Monitor logboeken bevindt zich de Log Analytics-werk rui
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-Verbonden bronnen zijn de computers en andere resources die de gegevens genereren die worden verzameld door Azure Monitor Logboeken. Bronnen kunnen agents zijn die zijn geïnstalleerd op [Windows](../../log-analytics/log-analytics-agent-windows.md) -en [Linux](../../log-analytics/log-analytics-quick-collect-linux-computer.md) -computers die rechtstreeks verbinding maken, of agents in [een verbonden System Center Operations Manager-beheer groep](../../azure-monitor/platform/om-agents.md). Azure Monitor logboeken kunnen ook gegevens verzamelen van een [Azure-opslag account](../../azure-monitor/platform/diagnostic-logs-stream-log-store.md).
+Verbonden bronnen zijn de computers en andere resources die de gegevens genereren die worden verzameld door Azure Monitor Logboeken. Bronnen kunnen agents zijn die zijn geïnstalleerd op [Windows](../../log-analytics/log-analytics-agent-windows.md) -en [Linux](../../log-analytics/log-analytics-quick-collect-linux-computer.md) -computers die rechtstreeks verbinding maken, of agents in [een verbonden System Center Operations Manager-beheer groep](../../azure-monitor/platform/om-agents.md). Azure Monitor logboeken kunnen ook gegevens verzamelen van een [Azure-opslag account](../../azure-monitor/platform/resource-logs-collect-storage.md).
 
 [Gegevens bronnen](../../azure-monitor/platform/agent-data-sources.md) zijn de verschillende soorten gegevens die van elke verbonden bron worden verzameld. Bronnen bevatten gebeurtenissen en [prestatie gegevens](../../azure-monitor/platform/data-sources-performance-counters.md) van [Windows](../../azure-monitor/platform/data-sources-windows-events.md) -en Linux-agents, naast bronnen zoals [IIS](../../azure-monitor/platform/data-sources-iis-logs.md) -logboeken en [aangepaste tekst logboeken](../../azure-monitor/platform/data-sources-custom-logs.md). U configureert elke gegevensbron die u wenst te verzamelen en de configuratie wordt automatisch doorgegeven aan elke verbonden bron.
 
-Er zijn vier manieren voor het [verzamelen van Logboeken en metrische gegevens voor Azure-Services](../../azure-monitor/platform/diagnostic-logs-stream-log-store.md):
+Er zijn vier manieren voor het [verzamelen van Logboeken en metrische gegevens voor Azure-Services](../../azure-monitor/platform/resource-logs-collect-storage.md):
 
 * Azure Diagnostics direct naar Azure Monitor-Logboeken (**Diagnostische gegevens** in de volgende tabel)
 

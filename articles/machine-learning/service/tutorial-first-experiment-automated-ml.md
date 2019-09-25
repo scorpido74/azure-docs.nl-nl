@@ -9,13 +9,13 @@ ms.topic: tutorial
 ms.author: tzvikei
 author: tsikiksr
 ms.reviewer: nibaccam
-ms.date: 09/09/2019
-ms.openlocfilehash: 8d91768d46d3e4a793982418da91f2d1877c5a79
-ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
+ms.date: 09/26/2019
+ms.openlocfilehash: 38c319fb89e8c763f8231c18cbb59bef099193e2
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71162549"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71259315"
 ---
 # <a name="tutorial-create-your-first-classification-model-with-automated-machine-learning"></a>Zelfstudie: Uw eerste classificatie model maken met geautomatiseerde machine learning
 
@@ -58,10 +58,11 @@ U voltooit de volgende proef installatie en voert de stappen uit op de pagina vo
 
 1. Selecteer **aan de slag**.
 
-1.  Selecteer **automatische ml** onder het gedeelte **ontwerpen** in het deel venster aan de linkerkant.
-Het scherm **aan** de slag wordt weer gegeven, omdat dit uw eerste experiment met automatische machine learning is.
+1. Selecteer in het linkerdeel venster **automatische ml** onder het gedeelte **ontwerpen** .
 
-    ![Azure Machine Learning Studio](media/tutorial-1st-experiment-automated-ml/get-started.png)
+   Aangezien dit uw eerste geautomatiseerde ML-experiment is, ziet u het scherm aan de slag.
+
+   ![Azure Machine Learning Studio](media/tutorial-1st-experiment-automated-ml/get-started.png)
 
 1. Selecteer **experiment maken**. 
 
@@ -79,6 +80,7 @@ Het scherm **aan** de slag wordt weer gegeven, omdat dit uw eerste experiment me
    >Voor deze zelf studie gebruikt u het standaard opslag account en de container die is gemaakt met uw nieuwe reken proces. Deze worden automatisch ingevuld in het formulier.
     
 1. Selecteer **maken** om het Compute-doel op te halen. 
+
    **Dit duurt enkele minuten.** 
 
 1. Nadat u hebt gemaakt, selecteert u uw nieuwe reken doel in de vervolg keuzelijst en selecteert u **volgende**.
@@ -92,18 +94,18 @@ Het scherm **aan** de slag wordt weer gegeven, omdat dit uw eerste experiment me
     1. Geef uw gegevensset een unieke naam en geef een optionele beschrijving op. 
 
     1. Selecteer **volgende** linksonder om het te uploaden naar de standaard container die automatisch is ingesteld tijdens het maken van uw werk ruimte. Open bare preview ondersteunt alleen het uploaden van lokale bestanden. 
-
-    1. Wanneer het uploaden is voltooid, worden de **instellingen en het voorbeeld** formulier op intelligente wijze ingevuld op basis van het bestands type. Zorg ervoor dat het formulier is ingevuld als volgt.
+    
+       Wanneer het uploaden is voltooid, worden de instellingen en het voorbeeld formulier vooraf ingevuld op basis van het bestands type. 
+       
+    1. Controleer of de **instellingen en het voorbeeld** formulier als volgt zijn ingevuld en selecteer **volgende**.
         
-        Veld|Value
+        Veld|Waarde voor zelf studie
         ---|---
         Bestandsindeling| Met scheidingstekens
         Scheidingsteken| Komma
         Encoding| UTF-8
         Kolomkoppen| Alle bestanden hebben dezelfde kopteksten
         Rijen overs Laan | Geen
-
-        Selecteer **Volgende**.
     
     1. Met het **schema** formulier kunt u uw gegevens voor dit experiment verder configureren. Voor dit voor beeld selecteert u de wissel knop voor de functie **day_of_week** , zodat u deze niet voor dit experiment kunt gebruiken. Selecteer **gereed**om het uploaden en het maken van de gegevensset voor uw experiment te volt ooien.
 
@@ -116,16 +118,17 @@ Het scherm **aan** de slag wordt weer gegeven, omdat dit uw eerste experiment me
 1. Vouw **Geavanceerde instellingen** uit en vul de velden als volgt in.
 
    >[!NOTE]
-   > Voor dit experiment stelt u geen metrische Score of maximale kernen per herhalings drempel in. Het is ook niet mogelijk om te voor komen dat algoritmen worden getest.
+   > In deze zelf studie stelt u geen metrische Score of maximale kernen per herhalings drempel in. U kunt ook voor komen dat algoritmen worden getest.
    
-    Geavanceerde&nbsp;instellingen|Description|Waarde&nbsp;voor&nbsp;zelf studie
-    ------|---------|---
-    Primaire metriek| Evaluatie-metrische gegevens waarop het algoritme van de machine learning wordt gemeten.|**AUC_weighted** 
-    Afsluit criteria| Wanneer aan een van deze criteria wordt voldaan, wordt de trainings taak beëindigd, zelfs als deze niet volledig is voltooid. |Tijd&nbsp;&nbsp;trainings taak (minuten):&nbsp; **5,0**  <br> <br> Maximum&nbsp;# aantal herhalingen&#58;10&nbsp;&nbsp; 
-    Verwerking| Hiermee wordt de voor verwerking van automatische machine learning mogelijk gemaakt. Dit omvat het automatisch opschonen, voorbereiden en transformeren van gegevens voor het genereren van synthetische functies.| Inschakelen
-    Validatie| Validatie type en aantal testen. | Kruis validatie **met K-vouwen**<br><br>  Kruis validaties: **2** 
-    Gelijktijdigheid| Het maximum aantal gelijktijdige herhalingen.|**5**
-
+   Geavanceerde&nbsp;instellingen|Description|Waarde&nbsp;voor&nbsp;zelf studie
+   ------|---------|---
+   Primaire metriek| Evaluatie-metrische gegevens waarop het algoritme van de machine learning wordt gemeten.|AUC_weighted
+   Afsluit criteria| Als aan een criterium wordt voldaan, wordt de trainings taak gestopt. |Tijd&nbsp;trainings&nbsp;taak: 5 <br> <br> Maximum&nbsp;aantal#herhalingen&#58;10&nbsp;&nbsp;
+   Verwerking| Hiermee wordt de voor verwerking van automatische machine learning mogelijk gemaakt. Dit omvat het automatisch opschonen, voorbereiden en transformeren van gegevens voor het genereren van synthetische functies.| Inschakelen
+   Validatie type | Kies een type Kruis validatie.|Kruis validatie met K-vouwen
+   Aantal validaties | Aantal testen. | 2 Kruis validaties 
+   Gelijktijdigheid| Het maximum aantal gelijktijdige herhalingen.|5
+   
 1. Selecteer **starten** om het experiment uit te voeren. Er wordt een scherm weer gegeven met een status bericht wanneer de voor bereiding van het experiment begint.
 
 >[!IMPORTANT]

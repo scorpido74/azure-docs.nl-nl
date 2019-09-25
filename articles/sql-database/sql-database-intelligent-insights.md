@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 12/19/2018
-ms.openlocfilehash: d77557f6d5d6a7bb741b9ff6caa4ea8f76db19c0
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 70498c5f4c824681ee59b7232e9409235d7f6a93
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567883"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71262161"
 ---
 # <a name="intelligent-insights-using-ai-to-monitor-and-troubleshoot-database-performance"></a>Intelligent Insights met behulp van AI om database prestaties te bewaken en op te lossen
 
@@ -50,7 +50,7 @@ Geïdentificeerd SQL Database prestatie verminderingen worden vastgelegd in het 
 
 | Eigenschap             | Details              |
 | :------------------- | ------------------- |
-| Database gegevens | Meta gegevens over een Data Base waarop een inzicht is gedetecteerd, zoals een resource-URI. |
+| database gegevens | Meta gegevens over een Data Base waarop een inzicht is gedetecteerd, zoals een resource-URI. |
 | Waargenomen tijds bereik | Begin-en eind tijd voor de periode van het gedetecteerde inzicht. |
 | Beïnvloede metrische gegevens | Metrische gegevens waardoor een inzicht werd gegenereerd: <ul><li>De duur van de query wordt verhoogd [seconden].</li><li>Overmatig wacht tijd [seconden].</li><li>Time-outaanvragen [percentage].</li><li>Gefoutde aanvragen [percentage].</li></ul>|
 | Impact waarde | Waarde van een gemeten meting. |
@@ -76,7 +76,7 @@ De uitvoer van de Intelligent Insights is een slim logboek voor diagnostische ge
 
 Integratie van Intelligent Insights met andere producten Azure SQL-analyse, Azure Event hub, Azure Storage of producten van derden voor gebruik wordt uitgevoerd via eerst Intelligent Insights logboek registratie (het "SQLInsights"-logboek) in de diagnose de Blade instellingen van een Data Base en configureer vervolgens Intelligent Insights logboek gegevens die moeten worden gestreamd naar een van deze producten.
 
-Zie [Azure SQL database metrische gegevens en logboek registratie](sql-database-metrics-diag-logging.md)van diagnostische gegevens voor meer informatie over het inschakelen van intelligent Insights logboek registratie en het configureren van de logboeken die moeten worden gestreamd naar een verbruikte product.
+Zie [Azure SQL database metrische gegevens en logboek registratie van diagnostische](sql-database-metrics-diag-logging.md)gegevens voor meer informatie over het inschakelen van intelligent Insights logboek registratie en het configureren van de logboeken die moeten worden gestreamd naar een verbruikte product.
 
 ### <a name="set-up-with-azure-sql-analytics"></a>Instellen met Azure SQL-analyse
 
@@ -96,7 +96,7 @@ In het volgende voor beeld ziet u een Intelligent Insights die wordt weer gegeve
 
 ### <a name="set-up-with-event-hubs"></a>Instellen met Event Hubs
 
-Als u Intelligent Insights met Event Hubs wilt gebruiken, configureert u Intelligent Insights logboek gegevens die moeten worden gestreamd naar Event Hubs, raadpleegt u logboeken van [Azure Diagnostics naar Event hubs](../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md).
+Als u Intelligent Insights met Event Hubs wilt gebruiken, configureert u Intelligent Insights logboek gegevens die moeten worden gestreamd naar Event Hubs, raadpleegt u [Logboeken van Azure Diagnostics naar Event hubs](../azure-monitor/platform/resource-logs-stream-event-hubs.md).
 
 Zie [wat te doen met metrische gegevens en Diagnostische logboeken in Event hubs](sql-database-metrics-diag-logging.md#what-to-do-with-metrics-and-diagnostics-logs-in-event-hubs)om event hubs te gebruiken voor het instellen van aangepaste bewaking en waarschuwingen.
 
@@ -179,4 +179,4 @@ Als een van de bewaakte kritieke uitzonde ringen de absolute drempel waarden ove
 - Meer informatie over het [oplossen van problemen met de prestaties van SQL database met intelligent Insights](sql-database-intelligent-insights-troubleshoot-performance.md).
 - Gebruik het [Intelligent Insights SQL database prestatie logboek voor diagnostische gegevens](sql-database-intelligent-insights-use-diagnostics-log.md).
 - Meer informatie over het [bewaken van SQL database met behulp van SQL Analytics](../azure-monitor/insights/azure-sql.md).
-- Meer informatie over het [verzamelen en gebruiken van logboek gegevens van uw Azure-resources](../azure-monitor/platform/diagnostic-logs-overview.md).
+- Meer informatie over het [verzamelen en gebruiken van logboek gegevens van uw Azure-resources](../azure-monitor/platform/resource-logs-overview.md).

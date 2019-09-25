@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 08/23/2018
 ms.author: meladie
-ms.openlocfilehash: d1857d0cb1b45be5b6ce4e1dd34e8398786f54fb
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 6d1b84894439010e5297ce010b2ece6dea8f3e56
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946907"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71257609"
 ---
 # <a name="azure-security-and-compliance-blueprint---paas-web-application-for-australia-protected"></a>Azure-blauwdruk voor beveiliging en naleving-PaaS-webtoepassing voor Australië beveiligd
 
@@ -65,7 +65,7 @@ Deze oplossing maakt gebruik van de volgende Azure-Services. Meer informatie vin
     - (4)/24 netwerken
     - Netwerkbeveiligingsgroepen
 - Netwerkbeveiligingsgroepen
-- Recovery Services kluis
+- Recovery Services-kluis
 - Azure Web App
 
 Deze blauw druk bevat Azure-Services die niet zijn gecertificeerd voor gebruik in de beveiligde classificatie van het Australische Cyber Security Center (ACSC). Micro soft raadt klanten aan de gepubliceerde beveiligings-en controle rapporten te bekijken die betrekking hebben op deze Azure-Services en hun risico beheer Framework te gebruiken om te bepalen of de Azure-service geschikt is voor hun interne erkenning en te gebruiken op het Beveiligde classificatie.
@@ -96,7 +96,7 @@ Het gebruik van App Service omgevingen voor deze architectuur staat de volgende 
 - [Modus voor interne taak verdeling](../../app-service/environment/app-service-environment-with-internal-load-balancer.md) (modus 3)
 - [TLS v 1.0 en v 1.1](../../app-service/environment/app-service-app-service-environment-custom-settings.md) uitschakelen
 - [TLS-code ring](../../app-service/environment/app-service-app-service-environment-custom-settings.md) wijzigen
-- Inkomend [verkeer voor N/W-poorten](../../app-service/environment/app-service-app-service-environment-control-inbound-traffic.md) beheren
+- [Inkomend verkeer voor N/W-poorten](../../app-service/environment/app-service-app-service-environment-control-inbound-traffic.md) beheren
 - [Web Application firewall: gegevens beperken](../../app-service/environment/app-service-app-service-environment-web-application-firewall.md)
 - [Azure SQL database verkeer](../../app-service/environment/app-service-app-service-environment-network-architecture-overview.md) toestaan
 
@@ -154,7 +154,7 @@ Daarnaast kunt u met de volgende Azure Active Directory-functies de toegang tot 
 - Met [Azure Active Directory privileged Identity Management](../../active-directory/privileged-identity-management/pim-getting-started.md) kunnen klanten het aantal gebruikers dat toegang heeft tot bepaalde informatie minimaliseren. Beheerders kunnen Azure Active Directory Privileged Identity Management gebruiken om bevoegde identiteiten en hun toegang tot bronnen te detecteren, beperken en controleren. Deze functie kan ook worden gebruikt voor het afdwingen van alleen-in-time-beheer toegang op aanvraag als dat nodig is.
 - [Azure Active Directory Identity Protection](../../active-directory/identity-protection/overview.md) detecteert mogelijke beveiligings problemen die van invloed zijn op een organisatie-identiteit, configureert automatische antwoorden op gedetecteerde verdachte acties die betrekking hebben op de identiteiten van organisaties en onderzoekt verdachte incidenten om deze problemen op te lossen.
 
-**Azure multi-factor Authentication**: Als u identiteiten wilt beveiligen, moet multi-factor Authentication worden geïmplementeerd. [Multi-factor Authentication van Azure](https://azure.microsoft.com/services/multi-factor-authentication/) is een gebruiks vriendelijke, schaal bare en betrouw bare oplossing die een tweede verificatie methode biedt om gebruikers te beschermen. Azure multi-factor Authentication maakt gebruik van de kracht van de Cloud en integreert met on-premises Active Directory en aangepaste toepassingen. Deze beveiliging wordt uitgebreid naar essentiële scenario's met een hoge omvang.
+**Azure multi-factor Authentication**: Als u identiteiten wilt beveiligen, moet multi-factor Authentication worden geïmplementeerd. [Azure multi-factor Authentication](https://azure.microsoft.com/services/multi-factor-authentication/) is een gebruiks vriendelijke, schaal bare en betrouw bare oplossing die een tweede verificatie methode biedt om gebruikers te beschermen. Azure Multi-Factor Authentication maakt gebruik van de kracht van de Cloud en integreert met on-premises Active Directory en aangepaste toepassingen. Deze beveiliging wordt uitgebreid naar essentiële scenario's met een hoge omvang.
 
 ### <a name="security"></a>Beveiliging
 **Beheer van geheimen**: De oplossing maakt gebruik van [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) voor het beheer van sleutels en geheimen. Met Azure Sleutelkluis kunt u de cryptografische sleutels en geheimen beveiligen die door cloudtoepassingen en -services worden gebruikt. Met de volgende Azure Key Vault mogelijkheden kunnen klanten gegevens beveiligen:
@@ -183,11 +183,11 @@ Azure Security Center biedt beveiligings waarschuwingen en-incidenten met priori
 - [Aangepaste status tests](../../application-gateway/quick-create-portal.md)
 - [Azure Security Center](https://azure.microsoft.com/services/security-center) en [Azure Advisor](https://docs.microsoft.com/azure/advisor/advisor-security-recommendations) bieden extra beveiliging en meldingen. Azure Security Center biedt ook een reputatie systeem.
 
-### <a name="logging-and-auditing"></a>Logboek registratie en controle
+### <a name="logging-and-auditing"></a>Logboekregistratie en bewaking
 
 Azure-Services registreren systeem-en gebruikers activiteiten uitvoerig, evenals systeem status:
 - **Activiteiten logboeken**: [Activiteiten logboeken](../../azure-monitor/platform/activity-logs-overview.md) bieden inzicht in bewerkingen die worden uitgevoerd op resources in een abonnement. Activiteiten logboeken kunnen helpen bij het bepalen van de initiator, het tijdstip van de gebeurtenis en de status van een bewerking.
-- **Diagnostische logboeken**: [Diagnostische logboeken](../../azure-monitor/platform/diagnostic-logs-overview.md) bevatten alle logboeken die elke resource heeft verzonden. Deze logboeken bevatten Windows-gebeurtenis systeem logboeken, Azure Storage logboeken, Key Vault controle logboeken en Application Gateway toegang en firewall Logboeken. Alle Diagnostische logboeken schrijven naar een gecentraliseerd en versleuteld Azure Storage-account voor archivering. De retentie kan door de gebruiker worden geconfigureerd, tot 730 dagen, om te voldoen aan de specifieke vereisten voor het bewaren van een organisatie.
+- **Diagnostische logboeken**: [Diagnostische logboeken](../../azure-monitor/platform/resource-logs-overview.md) bevatten alle logboeken die elke resource heeft verzonden. Deze logboeken bevatten Windows-gebeurtenis systeem logboeken, Azure Storage logboeken, Key Vault controle logboeken en Application Gateway toegang en firewall Logboeken. Alle Diagnostische logboeken schrijven naar een gecentraliseerd en versleuteld Azure Storage-account voor archivering. De retentie kan door de gebruiker worden geconfigureerd, tot 730 dagen, om te voldoen aan de specifieke vereisten voor het bewaren van een organisatie.
 
 **Azure monitor logboeken**: Deze logboeken worden samengevoegd in [Azure monitor logboeken](https://azure.microsoft.com/services/log-analytics/) voor verwerking, opslag en dashboard rapportage. Zodra de gegevens zijn verzameld, worden ze georganiseerd in aparte tabellen voor elk gegevenstype, zodat alle gegevens samen kunnen worden geanalyseerd, ongeacht de oorspronkelijke bron. Bovendien kan Azure Security Center worden geïntegreerd met Azure Monitor-logboeken, zodat klanten Kusto-query's kunnen gebruiken om toegang te krijgen tot de gegevens van de beveiligings gebeurtenis en deze te combi neren met gegevens uit andere services.
 

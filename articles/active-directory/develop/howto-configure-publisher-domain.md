@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, zachowd
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 291de1fa9bbb43ff9393a3163d1cd21dd7cd1b01
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 28021c0b8512ca12ead92b0b78541fce690b1f80
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68835153"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71257932"
 ---
 # <a name="how-to-configure-an-applications-publisher-domain-preview"></a>Procedure: Het Uitgever domein van een toepassing (preview-versie) configureren
 
@@ -46,7 +46,7 @@ Als het Publisher-domein van een multi tenant-toepassing niet is ingesteld, of a
 
 ## <a name="grandfathered-applications"></a>Grandfathered-toepassingen
 
-Als uw app is geregistreerd vóór 21 mei 2019, wordt de vraag van de toestemming van uw toepassing niet weer gegeven als u geen uitgever domein hebt ingesteld. We raden u aan de domein waarde van de uitgever zo in te stellen dat gebruikers deze informatie kunnen zien op de toestemming prompt van uw app.
+Als uw app is geregistreerd vóór 21 mei 2019, wordt de vraag van de toestemming van uw toepassing **niet weer gegeven** als u geen uitgever domein hebt ingesteld. We raden u aan de domein waarde van de uitgever zo in te stellen dat gebruikers deze informatie kunnen zien op de toestemming prompt van uw app.
 
 ## <a name="configure-publisher-domain-using-the-azure-portal"></a>Het domein van de uitgever configureren met behulp van de Azure Portal
 
@@ -60,7 +60,7 @@ Voer de volgende stappen uit om het Uitgever domein van uw app in te stellen.
 
 1. Navigeer naar [Azure Active Directory > app-registraties](https://go.microsoft.com/fwlink/?linkid=2083908) om de app te zoeken en te selecteren die u wilt configureren.
 
-   Zodra u de app hebt geselecteerd, ziet u de overzichts pagina van de app.
+   Zodra u de app hebt geselecteerd, ziet u de **overzichts** pagina van de app.
 
 1. Selecteer op de pagina **overzicht** van de app de sectie **huis stijl** .
 
@@ -96,6 +96,12 @@ Als uw app niet is geregistreerd in een Tenant, ziet u alleen de optie om een ni
 ### <a name="to-select-a-verified-domain"></a>Een geverifieerd domein selecteren
 
 - Als uw Tenant domeinen heeft geverifieerd, selecteert u een van de domeinen in de vervolg keuzelijst **Selecteer een geverifieerd domein** .
+
+>[!Note]
+> De verwachte header content-type die moet worden geretourneerd, is `application/json`. Er wordt mogelijk een fout melding weer gegeven die hieronder wordt vermeld als u iets anders als gebruikt`application/json; charset=utf-8` 
+> 
+>``` "Verification of publisher domain failed. Error getting JSON file from https:///.well-known/microsoft-identity-association. The server returned an unexpected content type header value. " ```
+>
 
 ## <a name="implications-on-the-app-consent-prompt"></a>Implicaties voor de toestemming om de app te vragen
 

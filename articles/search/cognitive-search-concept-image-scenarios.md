@@ -5,17 +5,16 @@ services: search
 manager: nitinme
 author: luiscabrer
 ms.service: search
-ms.subservice: cognitive-search
 ms.workload: search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
-ms.openlocfilehash: 84109cf04588a5de6fb3fd946a89b5dfee4baa1b
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: c1fd5c4e5a3ac054a85bdcc11d95bc3c338ee3c2
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70259157"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71265856"
 ---
 #  <a name="how-to-process-and-extract-information-from-images-in-cognitive-search-scenarios"></a>Informatie over het verwerken en extra heren van afbeeldingen in cognitieve Zoek scenario's
 
@@ -66,7 +65,7 @@ Wanneer de *imageAction* is ingesteld op een andere waarde dan ' geen ', bevat h
 |--------------------|-----------------------------------------|
 | data               | BASE64-gecodeerde teken reeks van de genormaliseerde afbeelding in JPEG-indeling.   |
 | Breedte              | Breedte van de genormaliseerde afbeelding in pixels. |
-| hoogte             | De hoogte van de genormaliseerde afbeelding in pixels. |
+| Hoogte             | De hoogte van de genormaliseerde afbeelding in pixels. |
 | originalWidth      | De oorspronkelijke breedte van de afbeelding vóór normalisatie. |
 | originalHeight      | De oorspronkelijke hoogte van de afbeelding vóór normalisatie. |
 | rotationFromOriginal |  Rotatie linksom in graden die is opgetreden tijdens het maken van de genormaliseerde afbeelding. Een waarde tussen 0 en 360 graden. Met deze stap worden de meta gegevens van de installatie kopie die wordt gegenereerd door een camera of scanner, gelezen. Doorgaans een veelvoud van 90 graden. |

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/05/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 223efefde4fc09684504925abd0d8d5ee5e4b5ea
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 795f18365c4b4846d18eddf3212059040bf9e319
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699578"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71260215"
 ---
 # <a name="how-to-create-an-premium-azure-file-share"></a>Een Premium Azure-bestands share maken
 Premium-bestands shares worden aangeboden op media SSD (Solid-State Disk) en zijn handig voor i/o-intensieve workloads, waaronder hosting data bases en HPC (High-Performance Computing). Premium-bestands shares worden gehost in een speciaal type opslag account, een FileStorage-account genoemd. Premium-bestands shares zijn ontworpen voor hoge prestaties en schaal bare toepassingen op bedrijfs niveau en bieden consistente shares met lage latentie, hoge IOPS en hoge door voer.
@@ -59,7 +59,7 @@ Als uw opslag account is gemaakt, gaat u naar de resource.
 ### <a name="create-a-premium-file-share"></a>Een Premium-bestandsshare maken
 
 1. Ga in het menu links voor het opslag account naar de sectie **Bestands service** en selecteer vervolgens **bestanden**.
-1. Selecteer **+ Bestands share** om een Premium-bestands share te maken.
+1. Selecteer **Bestands share** om een Premium-bestands share te maken.
 1. Voer een naam en een gewenste quotum in voor de bestands share en selecteer vervolgens **maken**.
 
 > [!NOTE]

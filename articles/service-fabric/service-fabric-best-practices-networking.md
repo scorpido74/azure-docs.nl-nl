@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/23/2019
 ms.author: pepogors
-ms.openlocfilehash: d221b828624e649a0d04a89c4394fe5a7fa857dd
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 317977af9d41163013545a6e5f60bee887da596c
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "66237324"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71262252"
 ---
 # <a name="networking"></a>Netwerken
 
@@ -50,7 +50,7 @@ Service Fabric cluster kan worden ingericht op [Linux met versneld netwerken](ht
 
 Versnelde netwerken worden ondersteund voor Sku's van de Azure-machine serie: D/DSv2, D/DSv3, E/ESv3, F/FS, FSv2 en MS/MMS. Versneld netwerken zijn getest met behulp van de Standard_DS8_v3-SKU op 1/23/2019 voor een Service Fabric Windows-cluster, en met Standard_DS12_v2 op 01/29/2019 voor een Service Fabric Linux-cluster.
 
-Als u versneld netwerken op een bestaand Service Fabric cluster wilt inschakelen, moet u eerst [een service Fabric cluster uitschalen door een schaalset voor virtuele machines toe](https://docs.microsoft.com/azure/service-fabric/virtual-machine-scale-set-scale-node-type-scale-out)te voegen, zodat u het volgende kunt doen:
+Als u versneld netwerken op een bestaand Service Fabric cluster wilt inschakelen, moet u eerst [een service Fabric cluster uitschalen door een schaalset voor virtuele machines toe te voegen](https://docs.microsoft.com/azure/service-fabric/virtual-machine-scale-set-scale-node-type-scale-out), zodat u het volgende kunt doen:
 1. Een NodeType inrichten met versneld netwerken ingeschakeld
 2. Migreer uw services en hun status naar het ingerichte NodeType met versneld netwerken ingeschakeld
 
@@ -70,7 +70,7 @@ Er is een uitbrei ding van de infra structuur vereist om versnelde netwerken in 
 
 * Als u Windows-container werkbelastingen wilt uitvoeren, gebruikt u de [open-netwerk modus](https://docs.microsoft.com/azure/service-fabric/service-fabric-networking-modes#set-up-open-networking-mode) om service-to-service-communicatie eenvoudiger te maken.
 
-* Gebruik een omgekeerde proxy zoals [Traefik](https://docs.traefik.io/configuration/backends/servicefabric/) of de [service Fabric reverse proxy](https://docs.microsoft.com/azure/service-fabric/service-fabric-reverseproxy) om algemene toepassings poorten weer te geven, zoals 80 of 443.
+* Gebruik een omgekeerde proxy zoals [Traefik](https://docs.traefik.io/v1.6/configuration/backends/servicefabric/) of de [service Fabric reverse proxy](https://docs.microsoft.com/azure/service-fabric/service-fabric-reverseproxy) om algemene toepassings poorten weer te geven, zoals 80 of 443.
 
 * Voor Windows-containers die worden gehost op gapped machines die geen basis lagen kunnen halen uit Azure-Cloud opslag, kunt u het gedrag van de afwijkende laag overschrijven met behulp van de vlag [--Allow-niet-distribueer bare artefacten](https://docs.microsoft.com/virtualization/windowscontainers/about/faq#how-do-i-make-my-container-images-available-on-air-gapped-machines) in de docker-daemon.
 

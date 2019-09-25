@@ -4,18 +4,18 @@ description: Lijst met services die beheerde identiteiten voor Azure-resources e
 services: active-directory
 author: MarkusVi
 ms.author: markvi
-ms.date: 06/19/2019
+ms.date: 09/24/2019
 ms.topic: conceptual
 ms.service: active-directory
 ms.subservice: msi
 manager: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 37eba245933bc94e9fb631abd3b4ff495f8c6d67
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 4f4a5ae01376358ca78cd804cc853489ca007217
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71087600"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71264235"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>Services die beheerde identiteiten voor Azure-resources ondersteunen
 
@@ -172,7 +172,7 @@ Raadpleeg de volgende lijst om de toegang tot Azure Resource Manager te configur
 - [Toegang toewijzen via Azure CLI](howto-assign-access-CLI.md)
 - [Toegang toewijzen via Azure Resource Manager sjabloon](../../role-based-access-control/role-assignments-template.md)
 
-| Cloud | Resource-ID | Status |
+| Cloud | Resource-ID | State |
 |--------|------------|--------|
 | Azure Global | `https://management.azure.com/`| Beschikbaar |
 | Azure Government | `https://management.usgovcloudapi.net/` | Beschikbaar |
@@ -181,7 +181,7 @@ Raadpleeg de volgende lijst om de toegang tot Azure Resource Manager te configur
 
 ### <a name="azure-key-vault"></a>Azure Key Vault
 
-| Cloud | Resource-ID | Status |
+| Cloud | Resource-ID | State |
 |--------|------------|--------|
 | Azure Global | `https://vault.azure.net`| Beschikbaar |
 | Azure Government | `https://vault.usgovcloudapi.net` | Beschikbaar |
@@ -190,7 +190,7 @@ Raadpleeg de volgende lijst om de toegang tot Azure Resource Manager te configur
 
 ### <a name="azure-data-lake"></a>Azure Data Lake 
 
-| Cloud | Resource-ID | Status |
+| Cloud | Resource-ID | State |
 |--------|------------|--------|
 | Azure Global | `https://datalake.azure.net/` | Beschikbaar |
 | Azure Government |  | Niet beschikbaar |
@@ -199,7 +199,7 @@ Raadpleeg de volgende lijst om de toegang tot Azure Resource Manager te configur
 
 ### <a name="azure-sql"></a>Azure SQL 
 
-| Cloud | Resource-ID | Status |
+| Cloud | Resource-ID | State |
 |--------|------------|--------|
 | Azure Global | `https://database.windows.net/` | Beschikbaar |
 | Azure Government | `https://database.usgovcloudapi.net/` | Beschikbaar |
@@ -208,7 +208,7 @@ Raadpleeg de volgende lijst om de toegang tot Azure Resource Manager te configur
 
 ### <a name="azure-event-hubs"></a>Azure Event Hubs
 
-| Cloud | Resource-ID | Status |
+| Cloud | Resource-ID | State |
 |--------|------------|--------|
 | Azure Global | `https://eventhubs.azure.net` | Beschikbaar |
 | Azure Government |  | Niet beschikbaar |
@@ -217,25 +217,42 @@ Raadpleeg de volgende lijst om de toegang tot Azure Resource Manager te configur
 
 ### <a name="azure-service-bus"></a>Azure Service Bus
 
-| Cloud | Resource-ID | Status |
+| Cloud | Resource-ID | State |
 |--------|------------|--------|
 | Azure Global | `https://servicebus.azure.net`  | Beschikbaar |
 | Azure Government |  | Beschikbaar |
 | Azure Duitsland |   | Niet beschikbaar |
 | Azure China 21Vianet |  | Niet beschikbaar |
 
+
+
+
+
+
+
+
+
 ### <a name="azure-storage-blobs-and-queues"></a>Azure Storage blobs en wacht rijen
 
-| Cloud | Resource-ID | Status |
+| Cloud | Resource-ID | State |
 |--------|------------|--------|
 | Azure Global | `https://storage.azure.com/` <br /><br />`https://<account>.blob.core.windows.net` <br /><br />`https://<account>.queue.core.windows.net` | Beschikbaar |
-| Azure Government | `https://storage.azure.com/`<br /><br />`https://<account>.blob.core.windows.net` <br /><br />`https://<account>.queue.core.windows.net` | Beschikbaar |
-| Azure Duitsland | `https://storage.azure.com/`<br /><br />`https://<account>.blob.core.windows.net` <br /><br />`https://<account>.queue.core.windows.net` | Beschikbaar |
-| Azure China 21Vianet | `https://storage.azure.com/`<br /><br />`https://<account>.blob.core.windows.net` <br /><br />`https://<account>.queue.core.windows.net` | Beschikbaar |
+| Azure Government | `https://storage.azure.com/`<br /><br />`https://<account>.blob.core.usgovcloudapi.net` <br /><br />`https://<account>.queue.core.usgovcloudapi.net` | Beschikbaar |
+| Azure Duitsland | `https://storage.azure.com/`<br /><br />`https://<account>.blob.core.cloudapi.de` <br /><br />`https://<account>.queue.core.cloudapi.de` | Beschikbaar |
+| Azure China 21Vianet | `https://storage.azure.com/`<br /><br />`https://<account>.blob.core.chinacloudapi.cn` <br /><br />`https://<account>.queue.core.chinacloudapi.cn` | Beschikbaar |
+
+
+
+
+
+
+
+
+
 
 ### <a name="azure-analysis-services"></a>Azure Analysis Services
 
-| Cloud | Resource-ID | Status |
+| Cloud | Resource-ID | State |
 |--------|------------|--------|
 | Azure Global | `https://*.asazure.windows.net` | Beschikbaar |
 | Azure Government | `https://*.asazure.usgovcloudapi.net` | Beschikbaar |

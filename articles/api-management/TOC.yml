@@ -49,6 +49,10 @@
           href: api-management-howto-policies.md
         - name: Index referentie naar beleid
           href: api-management-policies.md
+    - name: Beveiliging
+      items:
+        - name: Ingebouwde beveiligingsmaatregelen
+          href: api-management-security-controls.md
     - name: Abonnementen
       href: api-management-subscriptions.md
     - name: Beheren met automatisering
@@ -57,8 +61,6 @@
       href: api-management-error-handling-policies.md
     - name: Importbeperkingen voor API's
       href: api-management-api-import-restrictions.md
-    - name: Ingebouwde beveiligingsmaatregelen
-      href: api-management-security-controls.md
 - name: Handleidingen
   items:
     - name: API's definiëren

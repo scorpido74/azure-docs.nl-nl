@@ -13,18 +13,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/23/2019
+ms.date: 09/24/2019
 ms.author: rkarlin
-ms.openlocfilehash: dd5442ff8c8d296dfa221a9ea7ed8d5833fd89c1
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: c5e58f496176ec0f1b8317c8b862a8ef2ffa434d
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240715"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71262737"
 ---
-# <a name="connect-your-domain-name-server---preview"></a>De domein naam server verbinden-preview
+# <a name="connect-your-domain-name-server"></a>De domein naam server verbinden
 
-
+> [!IMPORTANT]
+> De DNS-gegevens connector in azure Sentinel is momenteel beschikbaar als open bare preview.
+> Deze functie wordt zonder service level agreement gegeven en wordt niet aanbevolen voor productie werkbelastingen. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
 
 U kunt elke domein naam server (DNS) die wordt uitgevoerd op Windows verbinden met Azure Sentinel. Dit doet u door een agent op de DNS-computer te installeren. Met behulp van DNS-Logboeken kunt u inzicht krijgen in beveiliging, prestaties en bewerkingen met betrekking tot de DNS-infra structuur van uw organisatie door analyse-en audit logboeken en andere gerelateerde gegevens van de DNS-servers te verzamelen, te analyseren en te correleren.
 
@@ -53,7 +55,7 @@ De oplossing verzamelt DNS-inventarisatie- en DNS-gebeurtenis met betrekking tot
 
 ## <a name="connect-your-dns-appliance"></a>Uw DNS-apparaat koppelen
 
-1. Selecteer in de Azure-Sentinel-Portal de optie **gegevens connectors** en kies de **DNS-** tegel.
+1. Selecteer in de Azure Sentinel-Portal **Data connectors** en kies de tegel **DNS (preview)** .
 1. Als uw DNS-machines zich in azure bevinden:
     1. Klik op **agent installeren op virtuele machine van Azure Windows**.
     1. Selecteer in de lijst **virtuele machines** de DNS-computer die u wilt streamen naar Azure Sentinel. Zorg ervoor dat dit een Windows-VM is.

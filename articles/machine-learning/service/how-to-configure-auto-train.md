@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 4d4a3eae9ea3931ceb720785bbf458f54689be6e
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: e6cfc18f01bb23d0b318ac1b924cf8cbb9f7a2b6
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71213523"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71259978"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Automatische ML experimenten configureren in python
 
@@ -69,8 +69,10 @@ automl_config = AutoMLConfig(task="classification")
 ```
 
 ## <a name="data-source-and-format"></a>Gegevensbron en indeling
+
 Geautomatiseerde machine learning biedt ondersteuning voor gegevens die zich bevinden op het lokale bureaublad of in de cloud zoals Azure Blob Storage. De gegevens kunnen worden gelezen in scikit-informatie over ondersteunde gegevensindelingen. U kunt de gegevens in lezen:
-* Numpy matrices X (kenmerken)- en y (doelvariabele of ook wel bekend als label)
+
+* Numpy arrays X (onderdelen) en y (doel variabele, ook wel label genoemd)
 * Pandas dataframe
 
 >[!Important]
@@ -93,55 +95,25 @@ Voorbeelden:
     ```python
     import pandas as pd
     from sklearn.model_selection import train_test_split
+
     df = pd.read_csv("https://automldemods.blob.core.windows.net/datasets/PlayaEvents2016,_1.6MB,_3.4k-rows.cleaned.2.tsv", delimiter="\t", quotechar='"')
-    # get integer labels
-    y = df["Label"]
-    df = df.drop(["Label"], axis=1)
-    df_train, _, y_train, _ = train_test_split(df, y, test_size=0.1, random_state=42)
+    y_df = df["Label"]
+    x_df = df.drop(["Label"], axis=1)
+    x_train, x_test, y_train, y_test = train_test_split(x_df, y_df, test_size=0.1, random_state=42)
     ```
 
 ## <a name="fetch-data-for-running-experiment-on-remote-compute"></a>Ophalen van gegevens voor het experiment uitvoeren op externe compute
 
-Voor externe uitvoeringen moet u de gegevens toegankelijk maken vanaf de externe compute. U kunt dit doen door de gegevens naar de Data Store te uploaden.
+Voor uitvoering op afstand moeten de trainings gegevens toegankelijk zijn vanaf de externe compute. De- [`Datasets`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py) klasse in de SDK biedt de volgende functionaliteit:
 
-Hier volgt een voor beeld van `datastore`het gebruik van:
+* eenvoudig gegevens van statische bestanden of URL-bronnen overdragen naar uw werk ruimte
+* uw gegevens beschikbaar maken voor trainings scripts wanneer ze worden uitgevoerd op Cloud Compute-resources
 
-```python
-    import pandas as pd
-    from sklearn import datasets
-
-    data_train = datasets.load_digits()
-
-    pd.DataFrame(data_train.data[100:,:]).to_csv("data/X_train.csv", index=False)
-    pd.DataFrame(data_train.target[100:]).to_csv("data/y_train.csv", index=False)
-
-    ds = ws.get_default_datastore()
-    ds.upload(src_dir='./data', target_path='digitsdata', overwrite=True, show_progress=True)
-```
-
-### <a name="define-dprep-references"></a>Dprep-verwijzingen definiëren
-
-Definieer X en y als referentie voor dprep, die wordt door gegeven aan een `AutoMLConfig` automatisch machine learning object dat er ongeveer als volgt uitziet:
-
-```python
-
-    X = dprep.auto_read_file(path=ds.path('digitsdata/X_train.csv'))
-    y = dprep.auto_read_file(path=ds.path('digitsdata/y_train.csv'))
-
-
-    automl_config = AutoMLConfig(task = 'classification',
-                                 debug_log = 'automl_errors.log',
-                                 path = project_folder,
-                                 run_configuration=conda_run_config,
-                                 X = X,
-                                 y = y,
-                                 **automl_settings
-                                )
-```
+Zie de [instructies](how-to-train-with-datasets.md#option-2--mount-files-to-a-remote-compute-target) voor een voor beeld van het gebruik van `Dataset` de klasse om gegevens te koppelen aan uw reken doel.
 
 ## <a name="train-and-validation-data"></a>Train en validatie
 
-U kunt afzonderlijke treinen en validatie sets rechtstreeks in de `AutoMLConfig` -methode opgeven.
+U kunt afzonderlijke treinen en validatie sets rechtstreeks in de `AutoMLConfig` constructor opgeven.
 
 ### <a name="k-folds-cross-validation"></a>K-vouwen Kruisvalidatie
 
@@ -175,7 +147,7 @@ Er zijn diverse opties, kunt u uw geautomatiseerde machine learning-experiment c
 
 Voorbeelden zijn:
 
-1.  Classificatie-experiment met behulp van AUC gewogen als de primaire metrische gegevens met een maximale tijd van 12.000 seconden per herhaling, met het experiment te beëindigen nadat u hebt 50 iteraties en 2 cross validatie vouwen.
+1.  Classificatie experiment waarbij AUC wordt gewogen als de primaire metriek met een maximale tijd van 12.000 seconden per iteratie, waarbij het experiment eindigt na 50 iteraties en 2 Kruis validatie vouwen.
 
     ```python
     automl_classifier = AutoMLConfig(
@@ -202,12 +174,10 @@ Voorbeelden zijn:
         n_cross_validations=5)
     ```
 
-De drie verschillende `task` parameter waarden bepalen de lijst met modellen die moeten worden toegepast.  Gebruik de `whitelist` para `blacklist` meters of om iteraties verder te wijzigen met de beschik bare modellen die moeten worden opgenomen of uitgesloten. De lijst met ondersteunde modellen vindt u in de [klasse SupportedModels](https://docs.microsoft.com/en-us/python/api/azureml-train-automl/azureml.train.automl.constants.supportedmodels?view=azure-ml-py).
+De drie verschillende `task` parameter waarden (het derde taak type is `forecasting`en gebruikt dezelfde algoritme groep als `regression` taken) bepalen de lijst met modellen die moeten worden toegepast. Gebruik de `whitelist` para `blacklist` meters of om iteraties verder te wijzigen met de beschik bare modellen die moeten worden opgenomen of uitgesloten. De lijst met ondersteunde modellen vindt u in de [klasse SupportedModels](https://docs.microsoft.com/en-us/python/api/azureml-train-automl/azureml.train.automl.constants.supportedmodels?view=azure-ml-py).
 
 ### <a name="primary-metric"></a>Primaire metrische gegevens
-Primaire metriek; zoals wordt weer gegeven in de bovenstaande voor beelden, bepaalt u de metrische gegevens die moeten worden gebruikt tijdens de model training voor Optima Lise ring. De primaire metriek die u kunt selecteren, wordt bepaald door het taak type dat u kiest. Hieronder vindt u een lijst met beschik bare metrische gegevens.
-
-Meer informatie over de specifieke definities van deze in [inzicht in geautomatiseerde machine learning resultaten](how-to-understand-automated-ml.md).
+De primaire meet waarde bepaalt de metrische gegevens die moeten worden gebruikt tijdens de model training voor Optima Lise ring. De beschik bare metrische gegevens die u kunt selecteren, worden bepaald door het taak type dat u kiest, en in de volgende tabel worden geldige primaire metrische gegevens weer gegeven voor elk taak type.
 
 |Classificatie | Regressie | Tijd reeks prognose
 |-- |-- |--
@@ -217,9 +187,11 @@ Meer informatie over de specifieke definities van deze in [inzicht in geautomati
 |norm_macro_recall | normalized_mean_absolute_error | normalized_mean_absolute_error
 |precision_score_weighted |
 
+Meer informatie over de specifieke definities van deze in [inzicht in geautomatiseerde machine learning resultaten](how-to-understand-automated-ml.md).
+
 ### <a name="data-preprocessing--featurization"></a>& Voor verwerking van gegevens parametrisatie
 
-In elk automatisch machine learning experiment worden uw gegevens [automatisch geschaald en genormaliseerd](concept-automated-ml.md#preprocess) om de Help-algoritmen goed uit te voeren.  U kunt echter ook aanvullende voor verwerking/parametrisatie inschakelen, zoals ontbrekende waarden, code ring en trans formaties. Meer [informatie over wat parametrisatie is inbegrepen](how-to-create-portal-experiments.md#preprocess).
+In elk automatisch machine learning experiment worden uw gegevens [automatisch geschaald en genormaliseerd](concept-automated-ml.md#preprocess) om *bepaalde* algoritmen te helpen die gevoelig zijn voor functies die op verschillende schalen zijn.  U kunt echter ook aanvullende voor verwerking/parametrisatie inschakelen, zoals ontbrekende waarden, code ring en trans formaties. Meer [informatie over wat parametrisatie is inbegrepen](how-to-create-portal-experiments.md#preprocess).
 
 Als u deze parametrisatie wilt inschakelen `"preprocess": True` , geeft u voor de [ `AutoMLConfig` klasse](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig?view=azure-ml-py)op.
 
@@ -227,12 +199,13 @@ Als u deze parametrisatie wilt inschakelen `"preprocess": True` , geeft u voor d
 > Automatische machine learning vooraf verwerkte stappen (functie normalisatie, het verwerken van ontbrekende gegevens, het converteren van tekst naar numerieke waarde, enzovoort) worden onderdeel van het onderliggende model. Wanneer u het model gebruikt voor voor spellingen, worden dezelfde vooraf verwerkings stappen die tijdens de training worden toegepast, automatisch toegepast op uw invoer gegevens.
 
 ### <a name="time-series-forecasting"></a>Tijd reeks prognose
-Voor tijdreeks prognose taak type hebt u aanvullende para meters die u kunt definiëren.
-1. time_column_name: dit is een vereiste para meter waarmee de naam van de kolom in uw trainings gegevens wordt gedefinieerd die de datum/tijd-reeks bevat.
-1. max_horizon: Hiermee definieert u de tijds duur die u wilt voors pellen op basis van de periodiciteit van de trainings gegevens. Als u bijvoorbeeld trainings gegevens met dagelijkse tijd korrels hebt, definieert u hoe ver in dagen u het model wilt trainen.
-1. grain_column_names: Hiermee definieert u de naam van kolommen die afzonderlijke tijdreeks gegevens bevatten in uw trainings gegevens. Als u bijvoorbeeld de verkoop van een bepaald merk per winkel wilt ramen, definieert u de kolommen Store en merk als korrel.
+De time series `forecasting` -taak vereist extra para meters in het configuratie object:
 
-Bekijk een voor beeld van deze instellingen die hieronder worden gebruikt. voor beeld van notebook is [hier](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-orange-juice-sales/auto-ml-forecasting-orange-juice-sales.ipynb)beschikbaar.
+1. `time_column_name`: De vereiste para meter waarmee de naam van de kolom in uw trainings gegevens wordt gedefinieerd die een geldige time-reeks bevat.
+1. `max_horizon`: Hiermee definieert u hoe lang u wilt voors pellen op basis van de periodiciteit van de trainings gegevens. Als u bijvoorbeeld trainings gegevens met dagelijkse tijd korrels hebt, definieert u hoe ver in dagen u het model wilt trainen.
+1. `grain_column_names`: Hiermee definieert u de naam van kolommen die afzonderlijke time series-gegevens bevatten in uw trainings gegevens. Als u bijvoorbeeld de verkoop van een bepaald merk per winkel wilt ramen, definieert u de kolommen Store en merk als korrel. Er worden afzonderlijke time-series en prognoses voor elke korrel/groepering gemaakt. 
+
+Zie voor voor beelden van de onderstaande instellingen het voor [beeld-notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-orange-juice-sales/auto-ml-forecasting-orange-juice-sales.ipynb).
 
 ```python
 # Setting Store and Brand as grains for training.
@@ -341,11 +314,11 @@ run = experiment.submit(automl_config, show_output=True)
 >Instellen van `show_output` naar `True` resulteert in de uitvoer wordt weergegeven op de console.
 
 ### <a name="exit-criteria"></a>Afsluit criteria
-Er zijn enkele opties die u kunt definiëren om uw experiment te volt ooien.
-1. Geen criteria: als u geen afsluit parameters definieert, wordt het experiment voortgezet totdat er geen verdere voortgang wordt gemaakt op uw primaire metriek.
-1. Aantal herhalingen: u definieert het aantal iteraties voor het uitvoeren van het experiment. U kunt optioneel iteration_timeout_minutes toevoegen om een tijds limiet in minuten per iteratie te definiëren.
-1. Sluit af na een tijds duur: door experiment_timeout_minutes in uw instellingen te gebruiken, kunt u definiëren hoe lang in minuten een experiment moet worden uitgevoerd.
-1. Afsluiten nadat een score is bereikt: met experiment_exit_score kunt u ervoor kiezen het experiment uit te voeren nadat een score op basis van uw primaire meet waarde is bereikt.
+Er zijn enkele opties die u kunt definiëren om uw experiment te beëindigen.
+1. Geen criteria: Als u geen afsluit parameters definieert, wordt het experiment voortgezet totdat er geen verdere voortgang wordt gemaakt op uw primaire metriek.
+1. Aantal herhalingen: U definieert het aantal iteraties voor het uitvoeren van het experiment. U kunt eventueel toevoegen `iteration_timeout_minutes` om een tijds limiet in minuten per herhaling te definiëren.
+1. Afsluiten na een tijds duur: Met `experiment_timeout_minutes` in uw instellingen kunt u definiëren hoe lang in minuten een experiment moet worden uitgevoerd.
+1. Afsluiten nadat een score is bereikt: Met `experiment_exit_score` wordt het experiment voltooid na het bereiken van een primaire meet Score.
 
 ### <a name="explore-model-metrics"></a>Model metrische gegevens verkennen
 

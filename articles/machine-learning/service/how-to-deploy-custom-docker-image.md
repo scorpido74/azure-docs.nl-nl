@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 08/22/2019
-ms.openlocfilehash: a9992fbaa20b0137fd503992fc9efba11c2dfd3b
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: b86c0d0de95581f7a47de428ffbf0b161353df83
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71213503"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71260752"
 ---
 # <a name="deploy-a-model-using-a-custom-docker-base-image"></a>Een model implementeren met behulp van een aangepaste docker-basis installatie kopie
 
@@ -58,7 +58,7 @@ In de informatie in deze sectie wordt ervan uitgegaan dat u een Azure Container 
     Wanneer u installatie kopieën gebruikt die zijn opgeslagen in het __container register voor de werk ruimte__, hoeft u zich niet te verifiëren bij het REGI ster. Verificatie wordt verwerkt door de werk ruimte.
 
     > [!WARNING]
-    > De Azure-container Rzegistry voor uw werk ruimte wordt __gemaakt wanneer u voor het eerst een model traint of implementeert__ met behulp van de werk ruimte. Als u een nieuwe werk ruimte hebt gemaakt, maar niet hebt getraind of een model hebt gemaakt, bestaat er geen Azure Container Registry voor de werk ruimte.
+    > De Azure Container Registry voor uw werk ruimte wordt __gemaakt wanneer u voor het eerst een model traint of implementeert__ met behulp van de werk ruimte. Als u een nieuwe werk ruimte hebt gemaakt, maar niet hebt getraind of een model hebt gemaakt, bestaat er geen Azure Container Registry voor de werk ruimte.
 
     Zie de sectie [register naam van container ophalen](#getname) in dit artikel voor meer informatie over het ophalen van de naam van de Azure container Registry voor uw werk ruimte.
 

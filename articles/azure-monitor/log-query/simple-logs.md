@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/12/2019
 ms.author: bwren
-ms.openlocfilehash: bff80b7083f2fb2e35af7db652849d527a5b8ba4
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 323267dd47735ca54b84e47e6a55d1f2d14a0b06
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70963445"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71262176"
 ---
 # <a name="simple-logs-experience-in-azure-monitor-preview"></a>Eenvoudige Logboeken in Azure Monitor (preview-versie)
 Azure Monitor biedt een [rijke ervaring](get-started-portal.md) voor het maken van [logboek query's](log-query-overview.md) met BEhulp van de KQL-taal. U hebt mogelijk niet de volledige kracht van KQL nodig, maar u hebt de voor keur aan een vereenvoudigde ervaring voor elementaire query vereisten. Met de eenvoudige Logboeken kunt u eenvoudige query's maken zonder dat ze rechtstreeks met KQL werken. U kunt ook eenvoudige Logboeken gebruiken als leer hulpprogramma voor KQL, zoals u meer geavanceerde query's nodig hebt.
@@ -31,7 +31,7 @@ Azure Monitor biedt een [rijke ervaring](get-started-portal.md) voor het maken v
 Met de eenvoudige Logboeken kunt u gegevens ophalen uit de *AzureDiagnostics*-, *AzureMetrics*-en *AzureActivity* -tabel voor de geselecteerde resource. 
 
 ## <a name="using-simple-logs"></a>Eenvoudige Logboeken gebruiken
-Navigeer naar Cosmos DB of Key Vault in uw Azure-abonnement met [Diagnostische instellingen die zijn geconfigureerd voor het verzamelen van Logboeken in een log Analytics-werk ruimte](../platform/diagnostic-logs-stream-log-store.md). Klik in het menu **controle** op **Logboeken** om de eenvoudige logboeken te openen.
+Navigeer naar Cosmos DB of Key Vault in uw Azure-abonnement met [Diagnostische instellingen die zijn geconfigureerd voor het verzamelen van Logboeken in een log Analytics-werk ruimte](../platform/resource-logs-collect-storage.md). Klik in het menu **controle** op **Logboeken** om de eenvoudige logboeken te openen.
 
 ![Menu](media/simple-logs/menu.png)
 
@@ -44,7 +44,7 @@ Klik op **uitvoeren** om de query resultaten weer te geven.
 ## <a name="view-and-edit-kql"></a>KQL weer geven en bewerken
 Selecteer **query-editor** om de KQL te openen die is gegenereerd door de eenvoudige logboeken-query in de volledige log Analytics-ervaring. 
 
-![Query-Editor](media/simple-logs/query-editor.png)
+![Query-editor](media/simple-logs/query-editor.png)
 
 U kunt de KQL rechtstreeks bewerken en andere functies gebruiken in Log Analytics zoals filters om uw resultaten verder te verfijnen.
 

@@ -4,17 +4,17 @@ description: Downstream-apparaten of-blad apparaten verifiëren voor IoT Hub en 
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 06/07/2019
+ms.date: 09/23/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 7a032056a684107de3dd00fe4861f34c013a80db
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: d73c0f4dbfcc2c67a222f91693ebe8ed9ea83d98
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71003627"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266127"
 ---
 # <a name="authenticate-a-downstream-device-to-azure-iot-hub"></a>Een downstream-apparaat verifiëren voor Azure IoT Hub
 
@@ -32,7 +32,7 @@ Met de stappen in dit artikel wordt het hand matig inrichten van apparaten weer 
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voer de stappen in [een IOT edge apparaat configureren om te fungeren als transparante gateway](how-to-create-transparent-gateway.md).
+Voer de stappen in [een IOT edge apparaat configureren om te fungeren als transparante gateway](how-to-create-transparent-gateway.md). Als u X. 509-verificatie gebruikt voor uw downstream-apparaat, moet u hetzelfde certificaat genereren dat u in het artikel transparante gateway hebt ingesteld. 
 
 Dit artikel verwijst naar de *hostnaam* van de gateway op verschillende punten. De hostnaam van de gateway wordt gedeclareerd in de para meter **hostname** van het bestand config. yaml op de IOT Edge gateway-apparaat. Het wordt gebruikt om de certificaten in dit artikel te maken en wordt verwezen naar de connection string van de downstream-apparaten. De hostnaam van de gateway moet kunnen worden omgezet in een IP-adres, hetzij met behulp van DNS of een bestands vermelding in de host.
 

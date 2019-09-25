@@ -1,189 +1,222 @@
 ---
 title: Flexibele ontwikkeling van wetenschappelijke gegevensprojecten - Team Data Science Process
-description: Hoe kunnen ontwikkelaars een data science-project in een systematische, versie beheerd en gezamenlijke manier binnen een projectteam uitvoeren met behulp van het Team Data Science Process.
+description: Een Data Science-project uitvoeren in een systematische, gecontroleerde versie en op samenwerkings wijze binnen een project team met behulp van het team data Science process.
 author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/28/2017
+ms.date: 09/05/2019
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: adf713fc3f875168f99b302b0a9affef88e8414f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 09c5962e62077fbecc9b327320d0bb5b88416ffa
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60327672"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71260691"
 ---
 # <a name="agile-development-of-data-science-projects"></a>Flexibele ontwikkeling van wetenschappelijke gegevensprojecten
 
-Dit document wordt beschreven hoe ontwikkelaars een data science-project in een systematische, versie beheerd en gezamenlijke manier binnen een projectteam uitvoeren kunnen met behulp van de [Team Data Science Process](overview.md) (TDSP). De TDSP is een framework ontwikkeld door Microsoft en die een gestructureerde opeenvolging van activiteiten biedt voor het efficiënt uitvoeren van cloud gebaseerde predictive analytics-oplossingen. Zie voor een overzicht van de rollen personeel en de bijbehorende taken die worden beheerd door een data science team standaardiseren over dit proces, [Team Data Science Process rollen en taken](roles-tasks.md). 
+Dit document wordt beschreven hoe ontwikkelaars een data science-project in een systematische, versie beheerd en gezamenlijke manier binnen een projectteam uitvoeren kunnen met behulp van de [Team Data Science Process](overview.md) (TDSP). De TDSP is een framework dat is ontwikkeld door micro soft en een gestructureerde reeks activiteiten biedt om op een efficiënte manier cloud-gebaseerde predictive analytics oplossingen uit te voeren. Voor een overzicht van de rollen en taken die worden verwerkt door een Data Science-team dat wordt gestandardization op de TDSP, raadpleegt u [rollen en taken voor team data Science process](roles-tasks.md). 
 
 In dit artikel bevat instructies over het: 
 
-1. Voer **sprint planning** voor werkitems die betrokken zijn bij een project.<br> Als u niet bekend met sprint plannen bent, vindt u meer informatie en algemene informatie [hier](https://en.wikipedia.org/wiki/Sprint_(software_development) "hier"). 
-2. **werkitems toevoegen** naar sprints. 
+- Doe *Sprint planning* voor werk items die bij een project betrokken zijn.
+- *Werk items* toevoegen aan sprints.
+- Maak en gebruik een *flexibel, afgeleide werk item sjabloon* die specifiek is afgestemd op TDSP levenscyclus fasen.
+
+De volgende instructies zijn een overzicht van de stappen die nodig zijn om een TDSP-team omgeving in te stellen met behulp van Azure-kaarten en Azure opslag plaatsen in azure DevOps. De instructies gebruiken Azure DevOps omdat u TDSP bij micro soft implementeert. Als uw groep gebruikmaakt van een ander platform voor het hosten van een code, worden de team lead taken over het algemeen niet gewijzigd, maar de manier om de taken uit te voeren, is anders. Zo is het koppelen van een werk item met een Git-vertakking mogelijk niet hetzelfde als bij Azure opslag plaatsen.
+
+In de volgende afbeelding ziet u een typische werk stroom voor Sprint planning,-code ring en-bron beheer voor een Data Science-project:
+
+![Team Data Science Process](./media/agile-development/1-project-execute.png)
+
+##  <a name='Terminology-1'></a>Typen werk items
+
+In het TDSP Sprint planning Framework zijn vier veelgebruikte typen *werk items* : *Functies*, *gebruikers verhalen*, *taken*en *fouten*. De achterstand voor alle werk items is op project niveau, niet op het niveau van de Git-opslag plaats. 
+
+Hier vindt u de definities voor de typen werk items:
+
+- **Functie**: Een functie komt overeen met een project engagement. Verschillende afspraken met een client zijn verschillende functies en het is raadzaam om verschillende fasen van een project als verschillende functies te beschouwen. Als u een schema, zoals  *\<client naam > >-\<* naam van de klant, kiest voor het benoemen van uw functies, kunt u de context van het project en de betrokkenheid van de namen zelf herkennen.
+  
+- **Gebruikers hoofdtekst**: Gebruikers verhalen zijn werk items die nodig zijn om end-to-end een functie te volt ooien. Voor beelden van verhalen van gebruikers zijn:
+  - Gegevens ophalen 
+  - Gegevens verkennen 
+  - Functies genereren
+  - Modellen bouwen
+  - Modellen operationeel maken 
+  - Modellen opnieuw trainen
+  
+- **Taak**: Taken zijn toegewezen werk items die moeten worden uitgevoerd om een specifiek gebruikers verhaal te volt ooien. Zo kunnen de taken in het artikel gegevens van de gebruiker worden *opgehaald* :
+  - SQL Server referenties ophalen
+  - Gegevens uploaden naar SQL Data Warehouse
+  
+- **Bug**: Bugs zijn problemen in bestaande code of documenten die moeten worden opgelost om een taak te volt ooien. Als fouten worden veroorzaakt door ontbrekende werk items, kunnen ze escaleren naar gebruikers verhalen of taken. 
+
+Gegevens wetenschappers kunnen meer vertrouwd zijn met een flexibel sjabloon waarmee functies, gebruikers verhalen en taken met TDSP levenscyclus fasen en subfaseën worden vervangen. Zie [een flexibele TDSP-werk sjabloon gebruiken](#set-up-agile-dsp-6)voor het maken van een flexibel afgeleide sjabloon die specifiek wordt uitgelijnd met de levenscyclus fase van de TDSP.
 
 > [!NOTE]
-> De stappen die nodig zijn voor het instellen van een TDSP-team-omgeving met Azure DevOps-Services worden beschreven in de volgende reeks instructies. Ze geven over het uitvoeren van deze taken met Azure DevOps-Services, omdat dat het implementeren van TDSP bij Microsoft.  Als u ervoor kiest het gebruik van Azure DevOps-Services, items (3) en (4) in de vorige lijst zijn voordelen die u op een natuurlijke manier krijgt. Als een andere code die als host fungeert platform wordt gebruikt voor uw groep, worden de taken die moeten worden uitgevoerd door de teamleider in het algemeen niet wijzigen. Maar de manier om deze taken uit te voeren afwijken. Bijvoorbeeld, het item in de sectie 6 **koppelen van een werkitem met een Git-branch**, mogelijk niet zo eenvoudig als het is Azure DevOps-Services.
->
->
-
-De volgende afbeelding toont een typische sprint plannen, coderen en bronbeheer werkstroom betrokken bij het implementeren van een data science-project:
-
-![1](./media/agile-development/1-project-execute.png)
-
-
-##  1. <a name='Terminology-1'></a>Terminologie 
-
-In de TDSP sprint planning framework, zijn er vier veelgebruikte typen **werkitems**: **Functie**, **gebruiker verhaal**, **taak**, en **Bug**. Elk project heeft één achterstallige voor alle werkitems. Er is geen achterstand op het niveau van de Git-opslagplaats onder een project. Hier vindt u de definities:
-
-- **Functie**: Een functie komt overeen met de betrokkenheid van een project. Verschillende engagements met een client worden beschouwd als verschillende functies. Op deze manier is het beste rekening houden met verschillende fasen van een project met een client als andere functies. Als u ervoor een schema zoals kiest ***ClientName EngagementName*** als naam van uw functies vervolgens u gemakkelijk kunt herkennen de context van het project/engagement uit de namen van zichzelf.
-- **Verhaal**: Verhalen van zijn andere werkitems die nodig zijn om uit te voeren van een functie (project) end-to-end. Voorbeelden van artikelen zijn:
-    - Ophalen van gegevens 
-    - Gegevens verkennen 
-    - Functies genereren
-    - Modellen ontwikkelen
-    - Tot het operationaliseren van modellen 
-    - Opnieuw trainen van modellen
-- **Taak**: Taken zijn toewijsbare code of document werkitems of andere activiteiten die worden uitgevoerd moeten voor het voltooien van een bepaald verhaal. Bijvoorbeeld, taken in het artikel *gegevens ophalen* kan zijn:
-    -  Ophalen van referenties van SQL Server 
-    -  Uploaden van gegevens naar SQL datawarehouse. 
-- **Bug**: Fouten worden meestal verwijzen naar oplossingen die nodig zijn voor een bestaande code of het document die worden uitgevoerd wanneer een taak is voltooid. Als de fout wordt veroorzaakt door ontbrekende respectievelijk de fasen of taken, kan het escaleren naar een artikel of een taak wordt. 
-
-> [!NOTE]
-> Concepten worden van functies, verhalen, taken en fouten van beheer van software-code (SCM) moet worden gebruikt in de data science geleend. Ze kunnen enigszins afwijken van de conventionele SCM-definities.
->
->
-
-> [!NOTE]
-> Gegevenswetenschappers het gevoel meer ervaring hebt met een flexibele-sjabloon die specifiek worden uitgelijnd met de fasen van de TDSP-levenscyclus. Met die in rekening met is een Agile-afgeleide sprint planningssjabloon gemaakt, waarbij Epics, enz., verhalen zijn vervangen door de fasen in het levenscyclusbeheer TDSP of substages. Zie voor instructies over het maken van een sjabloon voor flexibele [flexibele datatechnologisch proces in Visual Studio Online instellen](agile-development.md#set-up-agile-dsp-6).
->
->
-
-## 2. <a name='SprintPlanning-2'></a>Sprint plannen 
-
-Sprint planning is handig voor prioriteitsaanduiding project, en resourceplanning en -toewijzing. Veel gegevensanalisten zijn energieconsumenten betrokken bij meerdere projecten, die elk maanden in beslag kan nemen. Projecten gaan vaak op verschillende spaties. Op het Azure DevOps-Services, kunt u eenvoudig maken, beheren, en bijhouden van werkitems in uw project en voeren sprint om ervoor te zorgen dat uw projecten zijn vooruit zoals verwacht. 
-
-Ga als volgt [deze koppeling](https://www.visualstudio.com/en-us/docs/work/scrum/sprint-planning) voor de stapsgewijze instructies voor sprint plannen in Azure DevOps-Services. 
-
-
-## 3. <a name='AddFeature-3'></a>Een functie toevoegen  
-
-Nadat de projectopslagplaats van uw wordt gemaakt onder een project, gaat u naar het team **overzicht** pagina en klik op **work beheren**.
-
-![2](./media/agile-development/2-sprint-team-overview.png)
-
-Als u wilt opnemen een functie in de achterstallige taken, klikt u op **achterstanden** --> **functies** --> **nieuw**, typt u de functie **titel**(meestal naam van uw project), en klik vervolgens op **toevoegen** .
-
-![3](./media/agile-development/3-sprint-team-add-work.png)
-
-Dubbelklik op de functie die u hebt gemaakt. Vul in de beschrijvingen, teamleden voor deze functie toewijzen en stel planning parameters voor deze functie. 
-
-U kunt deze functie ook koppelen aan de projectopslagplaats. Klik op **koppeling toevoegen** onder de **ontwikkeling** sectie. Nadat u klaar bent met het bewerken van de functie, klikt u op **opslaan en sluiten** om af te sluiten.
-
-
-## 4. <a name='AddStoryunderfeature-4'></a>Verhaal onder de functie toevoegen 
-
-Onder de functie kunnen verhalen worden toegevoegd om te beschrijven van belangrijke stappen die nodig zijn om het project (functie) te voltooien. Als u wilt een nieuw artikel toevoegen, klikt u op de **+** Meld u aan de linkerkant van de functie in de weergave van achterstand.  
-
-![4](./media/agile-development/4-sprint-add-story.png)
-
-U kunt de details van het artikel, zoals de status, beschrijving, opmerkingen, planning en prioriteit In het pop-upvenster bewerken.
-
-![5](./media/agile-development/5-sprint-edit-story.png)
-
-U kunt dit artikel koppelen aan een bestaande opslagplaats door te klikken op **+ koppeling toevoegen** onder **ontwikkeling**. 
-
-![6](./media/agile-development/6-sprint-link-existing-branch.png)
-
-
-## 5. <a name='AddTaskunderstory-5'></a>Een taak toevoegen aan een verhaal 
-
-Taken worden specifieke gedetailleerde stappen die nodig zijn voor elk artikel. Nadat alle taken van een artikel zijn voltooid, moet het verhaal te worden voltooid. 
-
-Als u wilt een taak aan een verhaal toevoegen, klikt u op de **+** aanmelding naast het verhaal item, selecteer **taak**, en vul vervolgens de gedetailleerde gegevens van deze taak in het pop-upvenster.
-
-![7](./media/agile-development/7-sprint-add-task.png)
-
-Nadat u de functies, verhalen en taken worden gemaakt, kunt u bekijken in de **achterstand** of **bord** weergaven voor het bijhouden van hun status.
-
-![8](./media/agile-development/8-sprint-backlog-view.png)
-
-![9](./media/agile-development/9-link-to-a-new-branch.png)
-
-
-## 6. <a name='set-up-agile-dsp-6'></a> Instellen van een sjabloon voor het werk van flexibele TDSP in Visual Studio Online
-
-In dit artikel wordt uitgelegd hoe het instellen van een flexibele data science-processjabloon die gebruikmaakt van de TDSP data science lifecycle fasen en werkitems met Visual Studio Online (vso) worden bijgehouden. De stappen hieronder een voorbeeld van het instellen van de data science-specifieke flexibele Walkthrough verwerken sjabloon *AgileDataScienceProcess* en ziet u hoe u data science-werkitems op basis van de sjabloon.
-
-### <a name="agile-data-science-process-template-setup"></a>Installatie van flexibele Data Science Process sjabloon
-
-1. Navigeer naar de startpagina van de server, **configureren** -> **proces**.
-
-    ![10](./media/agile-development/10-settings.png) 
-
-2. Navigeer naar **alle processen** -> **processen**onder **Agile** en klikt u op **maken overgenomen proces**. Vervolgens plaatst u de procesnaam 'AgileDataScienceProcess' en klik op **proces**.
-
-    ![11](./media/agile-development/11-agileds.png)
-
-3. Onder de **AgileDataScienceProcess** -> **typen werkitem** tabblad, uit te schakelen **Epic**, **functie**,  **Gebruiker verhaal**, en **taak** typen door werkitem **configureren -> uitschakelen**
-
-    ![12](./media/agile-development/12-disable.png)
-
-4. Navigeer naar **AgileDataScienceProcess** -> **niveaus achterstand** tabblad. Wijzig de naam 'Epics' naar 'TDSP projecten' door te klikken op de **configureren** -> **bewerken/naam**. Klik in het dialoogvenster dezelfde **+ nieuw type werkitem** in "Data Science-Project" en stel de waarde van **standaard werkitemtype** aan "TDSP-Project" 
-
-    ![13](./media/agile-development/13-rename.png)  
-
-5. Op deze manier achterstand naam 'Functies' wijzigen in 'TDSP fasen' en het volgende toevoegen aan de **nieuwe work item type**:
-
-    - Inzicht in het bedrijf
-    - Gegevens ophalen
-    - Modelleren
-    - Implementatie
-
-6. Wijzig de naam 'Gebruiker verhaal' in 'TDSP Substages"met type werkitem standaard ingesteld op de zojuist gemaakte"TDSP Substage'-type.
-
-7. De 'taken' voor het zojuist gemaakte werkitemtype 'TDSP-taak' instellen 
-
-8. Na deze stappen de niveaus achterstand als volgt uitzien:
-
-    ![14](./media/agile-development/14-template.png)  
-
- 
-### <a name="create-data-science-work-items"></a>Data Science-werkitems maken
-
-Nadat de sjabloon voor data science process is gemaakt, kunt u maken en Volg uw data science-werkitems die overeenkomen met de TDSP-levenscyclus.
-
-1. Wanneer u een nieuw project maakt, selecteert u 'Agile\AgileDataScienceProcess' als de **proces van het werkitem**:
-
-    ![15](./media/agile-development/15-newproject.png)
-
-2. Navigeer naar het nieuwe project en klik op **werk** -> **achterstanden**.
-
-3. 'TDSP projecten' zichtbaar maken door te klikken op **configureren van instellingen voor team** en controleer "TDSP projecten"; Sla.
-
-    ![16](./media/agile-development/16-enabledsprojects.png)
-
-4. U kunt nu beginnen met het maken van de data science-specifieke werkitems.
-
-    ![17](./media/agile-development/17-dsworkitems.png)
-
-5. Hier volgt een voorbeeld van hoe de werkitems van data science-project moeten worden weergegeven:
-
-    ![18](./media/agile-development/18-workitems.png)
+> TDSP leent de concepten van functies, ervaringen van gebruikers, taken en bugs vanuit software code Management (SCM). De TDSP-concepten kunnen enigszins verschillen van hun conventionele SCM-definities.
+
+## <a name='SprintPlanning-2'></a>Sprints plannen
+
+Veel gegevens wetenschappers zijn voorzien van meerdere projecten, waardoor maanden kunnen worden voltooid en door lopen op verschillende Paces. Sprint planning is handig voor prioriteitsaanduiding project, en resourceplanning en -toewijzing. In azure boards kunt u eenvoudig werk items voor uw projecten maken, beheren en bijhouden, en de Sprint planning uitvoeren om ervoor te zorgen dat projecten naar verwachting worden verplaatst.
+
+Zie [Scrum sprints](https://en.wikipedia.org/wiki/Scrum_(software_development)#Sprint)(Engelstalig) voor meer informatie over het plannen van sprints. 
+
+Zie [achterstallig artikelen toewijzen aan een sprint](/azure/devops/boards/sprints/assign-work-sprint)voor meer informatie over het plannen van sprints in azure-kaarten. 
+
+## <a name='AddFeature-3'></a>Een functie toevoegen aan de achterstand 
+
+Nadat u uw project-en project code opslagplaats hebt gemaakt, kunt u een functie toevoegen aan de achterstand om het werk voor uw project weer te geven.
+
+1. **Op de** pagina project selecteert u achterstanden voor **kaarten** > in de linkernavigatiebalk. 
+   
+1. Als op het tabblad **achterstand** het type werk item in de bovenste balk de tekst **verhalen**, vervolg keuzelijst en selecteer **functies**. Selecteer vervolgens **nieuw werk item.**
+   
+   ![Selecteer Nieuw werk item](./media/agile-development/2-sprint-team-overview.png)
+   
+1. Voer een titel in voor de functie, meestal de project naam en selecteer vervolgens **bovenaan toevoegen**. 
+   
+   ![Voer een titel in en selecteer bovenaan toevoegen](./media/agile-development/3-sprint-team-add-work.png)
+   
+1. Selecteer en open de nieuwe functie in de lijst **achterstand** . Vul de beschrijving in, wijs een teamlid toe en stel plannings parameters in. 
+   
+   U kunt de functie ook koppelen aan de Azure opslag plaatsen-code opslagplaats van het project door **koppeling toevoegen** te selecteren onder de sectie **ontwikkeling** . 
+   
+   Nadat u klaar bent met het bewerken van de functie, selecteert u **opslaan & sluiten**.
+   
+   ![Bewerk de functie en selecteer Opslaan & sluiten](./media/agile-development/3a-add-link-repo.png)
+
+## <a name='AddStoryunderfeature-4'></a>Een gebruikers verhaal toevoegen aan de functie 
+
+Onder deze functie kunt u gebruikers verhalen toevoegen om de belangrijkste stappen te beschrijven die nodig zijn om het project te volt ooien. 
+
+Een nieuw gebruikers verhaal toevoegen aan een functie:
+
+1. Selecteer op het tabblad **achterstand** de **+** links van de functie. 
+   
+   ![Een nieuw gebruikers verhaal toevoegen onder de functie](./media/agile-development/4-sprint-add-story.png)
+   
+1. Geef het gebruikers verhaal een titel en bewerk details zoals toewijzing, status, beschrijving, opmerkingen, planning en prioriteit. 
+   
+   U kunt de gebruikers hoofdtekst ook koppelen aan een vertakking van de Azure opslag plaatsen code opslagplaats van het project door **koppeling toevoegen** te selecteren onder de sectie **ontwikkeling** . Selecteer de opslag plaats en de vertakking waaraan u het werk item wilt koppelen en selecteer vervolgens **OK**.
+   
+   ![Koppeling toevoegen](./media/agile-development/5-sprint-edit-story.png)
+   
+1. Wanneer u klaar bent met het bewerken van de gebruikers hoofdtekst, selecteert u **opslaan & sluiten**. 
+
+## <a name='AddTaskunderstory-5'></a>Een taak toevoegen aan een gebruikers verhaal 
+
+Taken zijn specifieke gedetailleerde stappen die nodig zijn om elk gebruikers verhaal te volt ooien. Nadat alle taken van een gebruikers verhaal zijn voltooid, moet het gebruikers verhaal ook worden voltooid. 
+
+Als u een taak aan een gebruikers hoofdtekst wilt toevoegen, **+** selecteert u de optie naast het artikel van de gebruiker en selecteert u **taak**. Vul de titel en andere informatie in de taak in.
+
+![Een taak toevoegen aan een gebruikers verhaal](./media/agile-development/7-sprint-add-task.png)
+
+Nadat u functies, gebruikers verhalen en taken hebt gemaakt, kunt u deze weer geven in de weer gaven **achterstand** of **kamers** om hun status bij te houden.
+
+![Weer gave achterstanden](./media/agile-development/8-sprint-backlog-view.png)
+
+![Weer gave borden](./media/agile-development/8a-sprint-board-view.png)
+
+## <a name='set-up-agile-dsp-6'></a>Een flexibele TDSP-werk sjabloon gebruiken
+
+Gegevens wetenschappers kunnen meer vertrouwd zijn met een flexibel sjabloon waarmee functies, gebruikers verhalen en taken met TDSP levenscyclus fasen en subfaseën worden vervangen. In azure-kaarten kunt u een flexibel afgeleide sjabloon maken die gebruikmaakt van TDSP levenscyclus fases om werk items te maken en bij te houden. In de volgende stappen wordt uitgelegd hoe u een Data Science-specifiek Agile-proces sjabloon instelt en gegevens wetenschappen werk items maakt op basis van de sjabloon.
+
+### <a name="set-up-an-agile-data-science-process-template"></a>Een flexibele data Science-proces sjabloon instellen
+
+1. Selecteer in de hoofd pagina van de Azure DevOps-organisatie **organisatie-instellingen** in het linkernavigatievenster. 
+   
+1. Selecteer in de **organisatie-instellingen** links onder **boards**de optie **proces**. 
+   
+1. Selecteer in het deel venster **alle processen** de **..** . naast **Agile**en selecteer **overgenomen proces maken**.
+   
+   ![Overgenomen proces van Agile maken](./media/agile-development/10-settings.png) 
+   
+1. In het dialoog venster **overgenomen proces van Agile maken** voert u de naam *AgileDataScienceProcess*in en selecteert u **proces maken**.
+   
+   ![AgileDataScienceProcess-proces maken](./media/agile-development/11-agileds.png)
+   
+1. In **alle processen**selecteert u de nieuwe **AgileDataScienceProcess**. 
+   
+1. Schakel op het tabblad **typen werk items** de optie **epische**, **functie**, **gebruikers verhaal**en **taak** uit door de **..** . naast elk item te selecteren en vervolgens **uitschakelen**te selecteren. 
+   
+   ![Typen werk items uitschakelen](./media/agile-development/12-disable.png)
+   
+1. Selecteer in **alle processen**het tabblad **achterstand niveaus** . Onder **portefeuilles achterstand**selecteert u de **..** . naast **epische (uitgeschakeld)** en selecteert u **bewerken/naam wijzigen**. 
+   
+1. In het dialoog venster **achterstallig niveau bewerken** :
+   1. Vervang onder **naam** **epische** met *TDSP-projecten*. 
+   1. Onder **typen werk items op dit achterstallig niveau**selecteert u **nieuw type werk item**, voert u *TDSP-project*in en selecteert u **toevoegen**. 
+   1. Onder **standaard type werk items**, vervolg keuzelijst en selecteer **TDSP-project**. 
+   1. Selecteer **Opslaan**.
+   
+   ![Niveau van de portefeuille achterstand instellen](./media/agile-development/13-rename.png)  
+   
+1. Volg dezelfde stappen om de namen van **functies** te wijzigen in *TDSP-fasen*en voeg de volgende nieuwe typen werk items toe:
+   
+   - *Inzicht in het bedrijf*
+   - *Gegevens ophalen*
+   - *Modeling*
+   - *Implementatie*
+   
+1. Onder **achterstand**voor de behoefte wijzigt u de naam van **artikelen** in *subfases van TDSP*, voegt u het nieuwe werk item type *TDSP subfase*toe en stelt u het type standaard werk item in op **TDSP subfase**.
+   
+1. Voeg onder **iteratie achterstand**een nieuwe *TDSP-taak*type werk item toe en stel deze in op het standaard type werk item. 
+   
+Nadat u de stappen hebt voltooid, moeten de achterstands niveaus er als volgt uitzien:
+   
+ ![TDSP sjabloon achterstand](./media/agile-development/14-template.png)  
+
+### <a name="create-agile-data-science-process-work-items"></a>Flexibele data Science-proces werk items maken
+
+U kunt de data Science-proces sjabloon gebruiken voor het maken van TDSP-projecten en het bijhouden van werk items die overeenkomen met de TDSP levenscyclus fasen.
+
+1. Selecteer **Nieuw project**op de hoofd pagina van de Azure DevOps-organisatie. 
+   
+1. Geef in het dialoog venster **Nieuw project maken** een naam op voor het project en selecteer vervolgens **Geavanceerd**. 
+   
+1. Onder **werk item proces**, vervolg keuzelijst en selecteer **AgileDataScienceProcess**, en selecteer vervolgens **maken**.
+   
+   ![Een TDSP-project maken](./media/agile-development/15-newproject.png)
+   
+1. In het zojuist gemaakte project selecteert u achterstanden **boards** > **in de** linkernavigatiebalk.
+   
+1. Als u TDSP-projecten zichtbaar wilt maken, selecteert u het pictogram **team instellingen configureren** . Schakel in het scherm **instellingen** het selectie vakje **projecten TDSP** in en selecteer vervolgens **opslaan en sluiten**.
+   
+   ![Selectie vakje TDSP projecten selecteren](./media/agile-development/16-enabledsprojects1.png)
+   
+1. Als u een Data Science-specifiek TDSP-project wilt maken, selecteert u **TDSP projecten** in de bovenste balk en selecteert u vervolgens **nieuw werk item**. 
+   
+1. Geef in de pop-up het werk item TDSP project een naam en selecteer **toevoegen aan de bovenkant**.
+   
+   ![Werk item van data Science project maken](./media/agile-development/17-dsworkitems0.png)
+   
+1. Als u een werk item wilt toevoegen onder het TDSP-project **+** , selecteert u de naast het project en selecteert u vervolgens het type werk item dat u wilt maken. 
+   
+   ![Type gegevens wetenschappen werk item selecteren](./media/agile-development/17-dsworkitems1.png)
+   
+1. Vul de details in het nieuwe werk item in en selecteer **opslaan & sluiten**.
+   
+1. Ga door met het **+** selecteren van de symbolen naast werk items om nieuwe TDSP-fasen, subfases en taken toe te voegen. 
+   
+Hier volgt een voor beeld van hoe de werk items van het data Science-project moeten worden weer gegeven in de weer gave **achterstand** :
+
+![18](./media/agile-development/18-workitems1.png)
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Gezamenlijke code met Git](collaborative-coding-with-git.md) wordt beschreven hoe u gezamenlijke code-ontwikkeling voor data science projecten met Git gebruiken als de gedeelde code-webontwikkelingsframework doet en hoe u deze activiteiten op het werk gepland met de flexibele proces coderen koppelen.
+[Samen werking met git](collaborative-coding-with-git.md) bevat informatie over het ontwikkelen van ontwikkelings code voor data technologie projecten met Git als het ontwikkel raamwerk voor gedeelde code en hoe u deze code ring kunt koppelen aan het werk dat met het flexibele proces is gepland.
 
-Hier vindt u aanvullende koppelingen naar bronnen van flexibele processen.
+Een [voor beeld](walkthroughs.md) van een scenario bevat een lijst met scenario's van specifieke scenario's, met koppelingen en miniaturen. De gekoppelde scenario's illustreren het combi neren van Cloud-en on-premises hulpprogram ma's en services in werk stromen of pijp lijnen om intelligente toepassingen te maken.
+  
+Aanvullende bronnen voor Agile-processen:
 
-- Flexibele proces   [https://www.visualstudio.com/en-us/docs/work/guidance/agile-process](https://www.visualstudio.com/en-us/docs/work/guidance/agile-process)
-- Flexibele proces werkzaamheden-itemtypen en werkstroom   [https://www.visualstudio.com/en-us/docs/work/guidance/agile-process-workflow](https://www.visualstudio.com/en-us/docs/work/guidance/agile-process-workflow)
+- [Agile-proces](/azure/devops/boards/work-items/guidance/agile-process)
+  
+- [Typen flexibele verwerking van werk items en werk stroom](/azure/devops/boards/work-items/guidance/agile-process-workflow)
 
-
-Scenario's die laten zien van alle de stappen in het proces voor het **specifieke scenario's** worden ook gegeven. Ze worden weergegeven en die is gekoppeld met miniaturen beschrijvingen in de [voorbeeld walkthroughs](walkthroughs.md) artikel. Ze laten zien hoe u naar de cloud, on-premises hulpprogramma's en services combineren in een werkstroom of een pijplijn te maken van een intelligente toepassingen. 

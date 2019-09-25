@@ -61,7 +61,7 @@
           href: time-series-insights-update-use-cases.md
         - name: Time Series-model
           href: time-series-insights-update-tsm.md
-        - name: Query's uitvoeren op gegevens
+        - name: Time Series-query
           href: time-series-insights-update-tsq.md
         - name: Gegevens visualiseren in de verkenner - preview
           href: time-series-insights-update-explorer.md

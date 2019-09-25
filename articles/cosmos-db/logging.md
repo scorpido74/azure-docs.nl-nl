@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: d8a9963edd689a32ae0642ac6fa4a622c248bc5b
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: e43bc4b8eb1db91493f279f5c46681483e4b18c4
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232379"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71261393"
 ---
 # <a name="diagnostic-logging-in-azure-cosmos-db"></a>Registratie in diagnoselogboek in Azure Cosmos DB 
 
@@ -25,7 +25,7 @@ Nadat u een of meer Azure Cosmos-data bases hebt gebruikt, wilt u wellicht contr
 
 ## <a name="logs-available-in-azure"></a>Logboeken beschikbaar zijn in Azure
 
-Voordat we praten over het bewaken van uw Azure Cosmos DB-account, laten we een paar dingen voor logboekregistratie en bewaking te verduidelijken. Er zijn verschillende soorten logboeken op de Azure-platform. Er zijn [Azure-activiteitenlogboeken](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs), [diagnostische logboeken van Azure](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs), [metrische gegevens van Azure](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics), gebeurtenissen, heartbeat-bewaking, operations-Logboeken, enzovoort. Er is een breed spectrum van Logboeken. U ziet de volledige lijst met Logboeken in [Azure monitor](https://azure.microsoft.com/services/log-analytics/) -Logboeken in de Azure Portal. 
+Voordat we praten over het bewaken van uw Azure Cosmos DB-account, laten we een paar dingen voor logboekregistratie en bewaking te verduidelijken. Er zijn verschillende soorten logboeken op de Azure-platform. Er zijn [Azure-activiteitenlogboeken](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs), [diagnostische logboeken van Azure](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs), [metrische gegevens van Azure](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics), gebeurtenissen, heartbeat-bewaking, operations-Logboeken, enzovoort. Er is een breed spectrum van Logboeken. U ziet de volledige lijst met Logboeken in [Azure monitor-logboeken](https://azure.microsoft.com/services/log-analytics/) in de Azure Portal. 
 
 In de volgende afbeelding ziet u de verschillende soorten Azure-logboeken die beschikbaar zijn:
 
@@ -386,7 +386,7 @@ Als u het volgende bericht wordt weergegeven op de **Log Analytics-werkruimte** 
 
 ![Upgrade bericht van Azure Monitor-logboeken](./media/logging/upgrade-notification.png)
 
-Als u uw diagnostische gegevens in Azure Monitor logboeken wilt weer geven, opent u de pagina **zoeken** in Logboeken vanuit het menu links of het gebied **beheer** van de pagina, zoals wordt weer gegeven in de volgende afbeelding:
+Als u uw diagnostische gegevens in Azure Monitor logboeken wilt weer geven, opent u de pagina **Zoeken in Logboeken** vanuit het menu links of het gebied **beheer** van de pagina, zoals wordt weer gegeven in de volgende afbeelding:
 
 ![Opties voor het doorzoeken van logboekbestanden in de Azure-portal](./media/logging/log-analytics-open-log-search.png)
 
@@ -397,7 +397,7 @@ Nu dat u gegevensverzameling hebt ingeschakeld, het volgende voorbeeld van de zo
 <a id="#queries"></a>
 ### <a name="queries"></a>Query's
 
-Hier volgen enkele aanvullende query's die u kunt invoeren in het **zoekvak** voor Logboeken om u te helpen bij het bewaken van uw Azure Cosmos-containers. Deze query's werken met de [nieuwe taal](../log-analytics/log-analytics-log-search-upgrade.md). 
+Hier volgen enkele aanvullende query's die u kunt invoeren in het **zoekvak voor logboeken** om u te helpen bij het bewaken van uw Azure Cosmos-containers. Deze query's werken met de [nieuwe taal](../log-analytics/log-analytics-log-search-upgrade.md). 
 
 Zie voor meer informatie over de betekenis van de gegevens die wordt geretourneerd door elke zoeken in Logboeken, [Azure Cosmos DB-logboekgegevens interpreteren](#interpret).
 
@@ -481,7 +481,7 @@ De volgende tabel beschrijft de inhoud van elke logboekvermelding.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Lees voor meer informatie over het inschakelen van logboekregistratie en metrische gegevens en logboekbestanden categorieën die worden ondersteund door de verschillende Azure-services, zowel de [overzicht van metrische gegevens in Microsoft Azure](../monitoring-and-diagnostics/monitoring-overview-metrics.md) en [overzicht van Azure diagnostische logboeken ](../azure-monitor/platform/diagnostic-logs-overview.md) artikelen.
+- Lees voor meer informatie over het inschakelen van logboekregistratie en metrische gegevens en logboekbestanden categorieën die worden ondersteund door de verschillende Azure-services, zowel de [overzicht van metrische gegevens in Microsoft Azure](../monitoring-and-diagnostics/monitoring-overview-metrics.md) en [overzicht van Azure diagnostische logboeken ](../azure-monitor/platform/resource-logs-overview.md) artikelen.
 - Lees deze artikelen voor meer informatie over eventhubs:
    - [Wat is Azure Event Hubs?](../event-hubs/event-hubs-what-is-event-hubs.md)
    - [Aan de slag met Event Hubs](../event-hubs/event-hubs-csharp-ephcs-getstarted.md)

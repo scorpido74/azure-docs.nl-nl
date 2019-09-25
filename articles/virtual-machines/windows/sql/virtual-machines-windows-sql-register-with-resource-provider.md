@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 06/24/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: edda6dffa04bfc0492b7336893c5b167ccc42ca5
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.openlocfilehash: 2bf7118d1f4be065969312d1fb9b0cf77e820d48
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70743920"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71262885"
 ---
 # <a name="register-a-sql-server-virtual-machine-in-azure-with-the-sql-vm-resource-provider"></a>Een SQL Server virtuele machine registreren in azure met de resource provider van de SQL-VM
 
@@ -27,11 +27,21 @@ In dit artikel wordt beschreven hoe u uw SQL Server virtuele machine (VM) in azu
 
 Als u een Azure Marketplace-installatie kopie van SQL Server VM implementeert via de Azure Portal, wordt de SQL Server VM automatisch geregistreerd bij de resource provider. Als u zelf SQL Server wilt installeren op een virtuele Azure-machine in plaats van een installatie kopie te kiezen vanuit Azure Marketplace, of als u een Azure VM inricht vanaf een aangepaste VHD met SQL Server, moet u uw SQL Server VM registreren bij de resource provider voor :
 
-- **Naleving**: Volgens de product bepalingen van micro soft moeten klanten micro soft vertellen wanneer ze de [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/)gebruiken. Hiervoor moeten ze worden geregistreerd bij de resource provider van de SQL-VM. 
+- **Vereenvoudig licentie beheer**: Volgens de product bepalingen van micro soft moeten klanten micro soft vertellen wanneer ze de [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/)gebruiken. Het registreren van de resource provider van de SQL-VM vereenvoudigt het SQL Server licentie beheer en biedt u de mogelijkheid om SQL Server Vm's snel te identificeren met behulp van de Azure Hybrid Benefit in de [Portal](virtual-machines-windows-sql-manage-portal.md) of AZ cli: 
+
+   ```azurecli-interactive
+   $vms = az sql vm list | ConvertFrom-Json
+   $vms | Where-Object {$_.sqlServerLicenseType -eq "AHUB"}
+   ```
 
 - **Functie voordelen**: Als u uw SQL Server-VM registreert bij de resource provider, worden [automatische patches](virtual-machines-windows-sql-automated-patching.md), [automatische back-ups](virtual-machines-windows-sql-automated-backup-v2.md)en bewakings mogelijkheden en beheer baarheid ontgrendeld. Daarnaast worden de [licenties](virtual-machines-windows-sql-ahb.md) en de flexibiliteit van de [editie](virtual-machines-windows-sql-change-edition.md) ontgrendeld. Voorheen waren deze functies alleen beschikbaar voor het SQL Server van VM-installatie kopieën vanuit Azure Marketplace.
 
+- **Gratis beheer**:  Registratie bij de resource provider van de SQL-VM en alle beheer baarheids modi zijn volledig gratis. Er zijn geen extra kosten verbonden aan de resource provider of bij het wijzigen van de beheer modus. 
+
 Als u de resource provider van de SQL-VM wilt gebruiken, moet u ook de resource provider van de SQL-VM registreren bij uw abonnement. U kunt dit doen met behulp van de Azure Portal, de Azure CLI of Power shell. 
+
+  > [!NOTE]
+  > Er zijn geen aanvullende licentie vereisten voor de registratie bij de resource provider. Registratie bij de resource provider van de SQL-VM biedt een vereenvoudigde methode om aan micro soft te voldoen dat de Azure Hybrid Benefit is ingeschakeld op de plaats van het beheer van licentie registratie formulieren voor elke resource. 
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -172,13 +182,13 @@ Een fout geeft aan dat de SQL Server VM niet is geregistreerd bij de resource pr
 
 ## <a name="change-management-modes"></a>Beheer modi wijzigen
 
-Er zijn drie beheer baarheids modi voor de SQL Server IaaS-extensie: 
+Er zijn drie opties voor gratis beheer baarheid voor de IaaS-extensie van SQL Server: 
 
-- **Volledige** modus biedt alle functionaliteit, maar vereist dat de SQL Server-en systeem beheerders machtigingen opnieuw worden gestart. Dit is de optie die standaard wordt geïnstalleerd. Gebruik dit voor het beheren van een SQL Server virtuele machine met één exemplaar. 
+- **Volledige** modus biedt alle functionaliteit, maar vereist dat de SQL Server-en systeem beheerders machtigingen opnieuw worden gestart. Dit is de optie die standaard wordt geïnstalleerd. Gebruik dit voor het beheren van een SQL Server virtuele machine met één exemplaar. In de modus volledig worden twee Windows-Services met een minimale impact op geheugen en CPU geïnstalleerd. deze kunnen worden bewaakt via taak beheer. Er zijn geen kosten verbonden aan het gebruik van de volledige beheer modus. 
 
-- Voor **licht gewicht** is het opnieuw opstarten van SQL Server niet vereist, maar het ondersteunt alleen het wijzigen van het licentie type en de versie van SQL Server. Gebruik deze optie voor het SQL Server van Vm's met meerdere exemplaren of voor deelname aan een FCI (failover cluster instance). 
+- Voor **licht gewicht** is het opnieuw opstarten van SQL Server niet vereist, maar het ondersteunt alleen het wijzigen van het licentie type en de versie van SQL Server. Gebruik deze optie voor het SQL Server van Vm's met meerdere exemplaren of voor deelname aan een FCI (failover cluster instance). Er is geen invloed op geheugen of CPU wanneer u de Lightweight-modus gebruikt. Er zijn geen kosten verbonden aan het gebruik van de Lightweight-beheer modus. 
 
-- Geen **agent** is toegewezen aan SQL Server 2008 en SQL Server 2008 R2 geïnstalleerd op Windows Server 2008. 
+- Geen **agent** is toegewezen aan SQL Server 2008 en SQL Server 2008 R2 geïnstalleerd op Windows Server 2008. Er is geen invloed op geheugen of CPU wanneer u de modus geen agent gebruikt. Er zijn geen kosten verbonden aan het gebruik van de beheer bare modus voor de agent. 
 
 U kunt de huidige modus van uw SQL Server IaaS-agent weer geven met behulp van Power shell: 
 
@@ -359,6 +369,12 @@ Ja. SQL Server failover-cluster exemplaren op een virtuele machine van Azure kun
 **Kan ik mijn VM registreren bij de resource provider van de SQL-VM als een AlwaysOn-beschikbaarheids groep is geconfigureerd?**
 
 Ja. Er zijn geen beperkingen voor het registreren van een SQL Server exemplaar op een virtuele machine van Azure met de resource provider van de SQL-VM als u deelneemt aan de configuratie van een AlwaysOn-beschikbaarheids groep.
+
+**Wat zijn de kosten voor registratie bij de resource provider van de SQL-VM of een upgrade naar de volledige beheer baarheids modus?**
+Geen. Er zijn geen kosten verbonden aan de registratie van de resource provider van de SQL-VM of met het gebruik van een van de drie beheer modi. Het beheren van uw SQL Server-VM met de resource provider is volledig gratis. 
+
+**Wat is de invloed van de prestaties van het gebruik van de verschillende beheer modi?**
+Er is geen invloed op het gebruik van de modi geen *agent* en *licht gewicht* beheer. Het gebruik van de *volledige* beheer baarheids modus van twee services die op het besturings systeem zijn geïnstalleerd, heeft een minimale invloed. Deze kunnen worden bewaakt via taak beheer. 
 
 ## <a name="next-steps"></a>Volgende stappen
 

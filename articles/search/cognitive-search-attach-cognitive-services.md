@@ -5,16 +5,15 @@ manager: nitinme
 author: LuisCabrer
 services: search
 ms.service: search
-ms.subservice: cognitive-search
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: luisca
-ms.openlocfilehash: dcdef8df25bdf6a7a60b1221d1463e6be5486875
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 113286f829b628d4740fbba34e7279741a934aef
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69639437"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71265933"
 ---
 # <a name="attach-a-cognitive-services-resource-with-a-skillset-in-azure-search"></a>Een Cognitive Services resource koppelen aan een vakkennis in Azure Search 
 
@@ -82,7 +81,7 @@ Er worden alleen kosten in rekening gebracht voor de vaardig heden die de Cognit
 
    ![De Cognitive Services resource selecteren](./media/cognitive-search-attach-cognitive-services/attach2.png "De Cognitive Services resource selecteren")
 
-1. Vouw de sectie verrijkingen **toevoegen** uit om de specifieke cognitieve vaardig heden te selecteren die u wilt uitvoeren op uw gegevens. Voltooi de rest van de wizard. Zie [voor een beschrijving van de beschik bare vaardig heden in de portal stap 2: Voeg cognitieve vaardig](cognitive-search-quickstart-blob.md#create-the-enrichment-pipeline) heden toe aan de Snelstartgids voor de cognitieve zoek functie.
+1. Vouw de sectie **verrijkingen toevoegen** uit om de specifieke cognitieve vaardig heden te selecteren die u wilt uitvoeren op uw gegevens. Voltooi de rest van de wizard. Zie [voor een beschrijving van de beschik bare vaardig heden in de portal stap 2: Voeg cognitieve vaardig](cognitive-search-quickstart-blob.md#create-the-enrichment-pipeline) heden toe aan de Snelstartgids voor de cognitieve zoek functie.
 
 ## <a name="attach-an-existing-skillset-to-a-cognitive-services-resource"></a>Een bestaande vaardig heden koppelen aan een Cognitive Services resource
 

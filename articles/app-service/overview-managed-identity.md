@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 08/15/2019
 ms.author: mahender
 ms.reviewer: yevbronsh
-ms.openlocfilehash: 16c65a98ca420a4b15281ee033ea7773197b5b2a
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 1774fcf0af287bba03c2c5c79e14883e3594ef0c
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098473"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71260145"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>Beheerde identiteiten gebruiken voor App Service en Azure Functions
 
@@ -309,7 +309,10 @@ De **MSI_ENDPOINT** is een lokale URL van waaruit uw app tokens kan aanvragen. A
 > |resource|Query’s uitvoeren|De AAD-resource-URI van de resource waarvoor een token moet worden verkregen. Dit kan een van de [Azure-Services zijn die ondersteuning bieden voor Azure AD-verificatie](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) of een andere resource-URI.|
 > |api-version|Query’s uitvoeren|De versie van de token-API die moet worden gebruikt. "2017-09-01" is momenteel de enige versie die wordt ondersteund.|
 > |secret|Header|De waarde van de omgevings variabele MSI_SECRET. Deze header wordt gebruikt om SSRF-aanvallen (server-side Request vervalsing) te voor komen.|
-> |clientid|Query’s uitvoeren|Beschrijving De ID van de door de gebruiker toegewezen identiteit die moet worden gebruikt. Als u dit weglaat, wordt de door het systeem toegewezen identiteit gebruikt.|
+> |clientid|Query’s uitvoeren|(Optioneel tenzij gebruikers toegewezen) De ID van de door de gebruiker toegewezen identiteit die moet worden gebruikt. Als u dit weglaat, wordt de door het systeem toegewezen identiteit gebruikt.|
+
+> [!IMPORTANT]
+> Als u probeert tokens te verkrijgen voor door de gebruiker toegewezen identiteiten, moet u de `clientid` eigenschap toevoegen. Anders probeert de token service een token te verkrijgen voor een door het systeem toegewezen identiteit, die al dan niet bestaat.
 
 Een geslaagd 200 OK-antwoord bevat een JSON-hoofd tekst met de volgende eigenschappen:
 

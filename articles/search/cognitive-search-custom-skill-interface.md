@@ -8,13 +8,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
-ms.subservice: cognitive-search
-ms.openlocfilehash: c424fec550a52830db8e32682b68f49f486ba119
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: b5529babfae37fa0d9f4de46018bb3b107ce4eae
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70183491"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71265829"
 ---
 # <a name="how-to-add-a-custom-skill-to-a-cognitive-search-pipeline"></a>Een aangepaste vaardigheid toevoegen aan een cognitieve Zoek pijplijn
 
@@ -45,7 +44,7 @@ Stel dat u een eenvoudige verrijker wilt maken waarin de eerste datum wordt aang
 
 De Web-API moet gereed zijn voor het ontvangen van een batch met invoer records. Elk lid van de matrix *waarden* vertegenwoordigt de invoer voor een bepaalde record. Elke record moet de volgende elementen bevatten:
 
-+ Een *RecordID* -lid dat de unieke id voor een bepaalde record is. Wanneer de resultaten door de verrijker worden geretourneerd, moet deze opnieuw worden opgegeven om ervoor te zorgen dat de beller de record resultaten kan aanpassen aan de invoer.
++ Een *RecordID* -lid dat de unieke id voor een bepaalde record is. Wanneer de resultaten door de verrijker worden geretourneerd, moet *deze opnieuw* worden opgegeven om ervoor te zorgen dat de beller de record resultaten kan aanpassen aan de invoer.
 
 + Een *Gegevenslid* dat in feite een zak van invoer velden voor elke record is.
 

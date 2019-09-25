@@ -11,16 +11,16 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 01/25/2019
-ms.openlocfilehash: 9f6b20806f75cc28b5f4f740ffb67faae491ae84
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: f884b39db92f44f7cff938e0ac4b9c2e22dc36cb
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567918"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71262195"
 ---
 # <a name="troubleshoot-azure-sql-database-performance-issues-with-intelligent-insights"></a>Problemen met de Azure SQL Database prestaties oplossen met Intelligent Insights
 
-Op deze pagina vindt u informatie over de prestatie problemen Azure SQL Database en beheerde exemplaren die zijn gedetecteerd via het logboek voor diagnostische gegevens over de [intelligent Insights](sql-database-intelligent-insights.md) database prestaties. De telemetrie van het diagnostische logboek kan worden gestreamd naar [Azure monitor](../azure-monitor/insights/azure-sql.md)-logboeken, [Azure Event hubs](../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md), [Azure Storage](sql-database-metrics-diag-logging.md#stream-into-storage)of een oplossing van derden voor aangepaste DevOps-waarschuwingen en rapportage mogelijkheden.
+Op deze pagina vindt u informatie over de prestatie problemen Azure SQL Database en beheerde exemplaren die zijn gedetecteerd via het logboek voor diagnostische gegevens over de [intelligent Insights](sql-database-intelligent-insights.md) database prestaties. De telemetrie van het diagnostische logboek kan worden gestreamd naar [Azure monitor-logboeken](../azure-monitor/insights/azure-sql.md), [Azure Event hubs](../azure-monitor/platform/resource-logs-stream-event-hubs.md), [Azure Storage](sql-database-metrics-diag-logging.md#stream-into-storage)of een oplossing van derden voor aangepaste DevOps-waarschuwingen en rapportage mogelijkheden.
 
 > [!NOTE]
 > Zie de [Aanbevolen stroom diagram voor probleem oplossing](sql-database-intelligent-insights-troubleshoot-performance.md#recommended-troubleshooting-flow) in dit document voor een snelle SQL database voor het oplossen van problemen met intelligent Insights.
@@ -72,7 +72,7 @@ In het diagnostische logboek worden query-hashes uitgevoerd van query's die invl
 
 Als u de beschik bare sessie limieten hebt bereikt, kunt u uw toepassingen optimaliseren door het aantal aanmeldingen in de data base te verminderen. Als u het aantal aanmeldingen van uw toepassingen naar de data base niet kunt reduceren, kunt u overwegen de prijs categorie van de data base te verhogen. Of u kunt uw data base in meerdere data bases splitsen en verplaatsen voor een meer evenwichtige taak verdeling.
 
-Zie [de limieten van SQL database maximum](https://blogs.technet.microsoft.com/latam/20../../how-to-deal-with-the-limits-of-azure-sql-database-maximum-logins/)aantal aanmeldingen voor meer suggesties voor het oplossen van sessie limieten. Zie [overzicht van resource limieten op een SQL database server](sql-database-resource-limits-database-server.md) voor informatie over limieten op het niveau van de server en het abonnement.
+Zie [de limieten van SQL database maximum aantal aanmeldingen](https://blogs.technet.microsoft.com/latam/20../../how-to-deal-with-the-limits-of-azure-sql-database-maximum-logins/)voor meer suggesties voor het oplossen van sessie limieten. Zie [overzicht van resource limieten op een SQL database server](sql-database-resource-limits-database-server.md) voor informatie over limieten op het niveau van de server en het abonnement.
 
 ## <a name="workload-increase"></a>Toename van de workload
 
@@ -266,7 +266,7 @@ In het diagnostische logboek worden de query-hashes, een goede plan-ID, een onju
 
 U kunt analyseren welk plan het beste presteert voor uw specifieke query's die u kunt identificeren met de opgegeven query-hashes. Nadat u hebt vastgesteld welk abonnement beter werkt voor uw query's, kunt u dit hand matig afdwingen. 
 
-Zie [meer informatie over het voor komen](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../you-shall-not-regress-how-sql-server-2017-prevents-plan-regressions/)van plannings regressies in SQL Server.
+Zie [meer informatie over het voor komen van plannings regressies in SQL Server](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../you-shall-not-regress-how-sql-server-2017-prevents-plan-regressions/).
 
 > [!TIP]
 > Wist u dat SQL Database ingebouwde intelligentie automatisch de best presterende uitvoerings plannen voor query's voor uw data bases kan beheren?
@@ -325,10 +325,10 @@ Ga naar Azure SQL-analyse om Intelligent Insights via de Azure Portal. Probeer d
 > [!TIP]
 > Selecteer het stroom diagram om een PDF-versie te downloaden.
 
-Intelligent Insights is doorgaans één uur tijd nodig voor het uitvoeren van de analyse van de hoofd oorzaak van het prestatie probleem. Als u het probleem niet kunt vinden in Intelligent Insights en het essentieel voor u is, gebruikt u het query archief om de hoofd oorzaak van het prestatie probleem hand matig te identificeren. (Doorgaans zijn deze problemen minder dan een uur oud.) Zie prestaties bewaken met [behulp van de query Store](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store)voor meer informatie.
+Intelligent Insights is doorgaans één uur tijd nodig voor het uitvoeren van de analyse van de hoofd oorzaak van het prestatie probleem. Als u het probleem niet kunt vinden in Intelligent Insights en het essentieel voor u is, gebruikt u het query archief om de hoofd oorzaak van het prestatie probleem hand matig te identificeren. (Doorgaans zijn deze problemen minder dan een uur oud.) Zie [prestaties bewaken met behulp van de query Store](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store)voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 - Leer [intelligent Insights](sql-database-intelligent-insights.md) -concepten.
 - Gebruik het [Intelligent Insights Azure SQL database prestatie logboek voor diagnostische gegevens](sql-database-intelligent-insights-use-diagnostics-log.md).
-- Bewaak Azure SQL Database met behulp van [Azure SQL-analyse](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql).
-- Meer informatie over [het verzamelen en gebruiken van logboek gegevens van uw Azure-resources](../azure-monitor/platform/diagnostic-logs-overview.md).
+- Bewaak [Azure SQL database met behulp van Azure SQL-analyse](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql).
+- Meer informatie over [het verzamelen en gebruiken van logboek gegevens van uw Azure-resources](../azure-monitor/platform/resource-logs-overview.md).

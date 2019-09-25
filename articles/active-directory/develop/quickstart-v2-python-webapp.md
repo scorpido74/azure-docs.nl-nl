@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 09/11/2019
 ms.author: abpati
 ms.custom: aaddev
-ms.openlocfilehash: 682582c8c695550f7dfdfcc079e1d0bf04828180
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: c5817427102bf10dcd1ece932b0f582d973efaf7
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70997374"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71257888"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-python-web-app"></a>Quickstart: Aanmelden met micro soft toevoegen aan een Python-web-app
 
@@ -37,7 +37,7 @@ Wanneer u de hand leiding hebt voltooid, accepteert uw toepassing aanmeldingen v
 Als u dit voor beeld wilt uitvoeren, hebt u het volgende nodig:
 
 - [Python 2.7 +](https://www.python.org/downloads/release/python-2713) of [python 3 +](https://www.python.org/downloads/release/python-364/)
-- [Kolf](http://flask.pocoo.org/), [kolf-sessie](https:/pythonhosted.org/Flask-Session/), [aanvragen](https://2.python-requests.org/en/master/)
+- [Kolf](http://flask.pocoo.org/), [kolf-sessie](https://pythonhosted.org/Flask-Session/), [aanvragen](https://2.python-requests.org/en/master/)
 - [MSAL python](https://github.com/AzureAD/microsoft-authentication-library-for-python) 
 - Een Azure Active Directory-Tenant (Azure AD). Zie [een Azure AD-Tenant verkrijgen](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) voor meer informatie over het verkrijgen van een Azure AD-Tenant.
 

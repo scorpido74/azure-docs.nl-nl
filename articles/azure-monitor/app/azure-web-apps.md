@@ -9,16 +9,16 @@ ms.service: application-insights
 ms.topic: conceptual
 ms.date: 04/26/2019
 ms.author: mbullwin
-ms.openlocfilehash: 4f296aae6c147b0d5209276dbd008a1207837cfd
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: f45762d5b37a006ede9aeff76e3d756c8144f5ba
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67875203"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71258571"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Azure App Service prestaties bewaken
 
-Het inschakelen van bewaking op uw .NET-en .NET core-webtoepassingen die worden uitgevoerd op [Azure-app Services](https://docs.microsoft.com/azure/app-service/) is nu eenvoudiger dan ooit. Voordat u een site-uitbrei ding hand matig moest installeren, is de meest recente extensie/agent nu standaard in de app service-installatie kopie ingebouwd. Dit artikel begeleidt u bij het inschakelen van Application Insights bewaking en voorziet in voorlopige richt lijnen voor het automatiseren van het proces voor grootschalige implementaties.
+Het inschakelen van controle op uw ASP.NET-en ASP.NET Core op webtoepassingen die worden uitgevoerd op [Azure-app Services](https://docs.microsoft.com/azure/app-service/) is nu nog eenvoudiger dan ooit. Voordat u een site-uitbrei ding hand matig moest installeren, is de meest recente extensie/agent nu standaard in de app service-installatie kopie ingebouwd. Dit artikel begeleidt u bij het inschakelen van Application Insights bewaking en voorziet in voorlopige richt lijnen voor het automatiseren van het proces voor grootschalige implementaties.
 
 > [!NOTE]
 > Het hand matig toevoegen van een Application Insights site-uitbrei ding via **hulpprogram ma's** > voor ontwikkel aars**is afgeschaft** . Deze methode van extensie-installatie is afhankelijk van hand matige updates voor elke nieuwe versie. De laatste stabiele versie van de uitbrei ding is nu [vooraf geïnstalleerd](https://github.com/projectkudu/kudu/wiki/Azure-Site-Extensions) als onderdeel van de app service-installatie kopie. De bestanden bevinden zich `d:\Program Files (x86)\SiteExtensions\ApplicationInsightsAgent` in en worden automatisch bijgewerkt met elke stabiele versie. Als u de op agents gebaseerde instructies volgt om de controle hieronder in te scha kelen, wordt de afgeschafte uitbrei ding automatisch verwijderd.
@@ -122,7 +122,7 @@ Als u de bewaking aan client zijde om een of andere reden wilt uitschakelen:
 * **Instellingen** > voor**Toepassings instellingen** selecteren
    * Voeg onder toepassings instellingen een nieuwe naam en **waarde**voor de **app-instelling** toe:
 
-     naam`APPINSIGHTS_JAVASCRIPT_ENABLED`
+     Naam`APPINSIGHTS_JAVASCRIPT_ENABLED`
 
      Waarde:`false`
 
@@ -325,6 +325,9 @@ Hieronder vindt u stapsgewijze richt lijnen voor het oplossen van problemen met 
 
 > [!NOTE]
 > Java-en node. js-toepassingen worden alleen ondersteund op Azure-app Services via hand matige instrumentatie op basis van SDK. Daarom zijn de volgende stappen niet van toepassing op deze scenario's.
+
+> [!NOTE]
+> ASP.NET Core 3,0-toepassingen worden niet ondersteund. Volg de [hand matige instrumentatie](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core) via code voor ASP.net Core 3,0-apps.
 
 1. Controleer of de toepassing wordt bewaakt via `ApplicationInsightsAgent`.
     * Controleer of de app-instelling is ingesteld op de waarde "~ 2". `ApplicationInsightsAgent_EXTENSION_VERSION`

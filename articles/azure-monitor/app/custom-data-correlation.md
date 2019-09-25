@@ -1,5 +1,5 @@
 ---
-title: Azure Application Insights | Microsoft Docs
+title: Inzichten Azure-toepassing | Microsoft Docs
 description: ''
 services: application-insights
 documentationcenter: ''
@@ -13,46 +13,46 @@ ms.topic: conceptual
 ms.date: 08/08/2018
 ms.reviewer: mbullwin
 ms.author: evternov
-ms.openlocfilehash: 9bc94f653f5e70883b483fa44f6a17f6e9e9eaf1
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 3abf50b3467ce9a97f2163a10ad1782f6e1c9c20
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67594422"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71258446"
 ---
-# <a name="correlating-application-insights-data-with-custom-data-sources"></a>Application Insights-gegevens te correleren met aangepaste gegevensbronnen
+# <a name="correlating-application-insights-data-with-custom-data-sources"></a>Application Insights gegevens correleren met aangepaste gegevens bronnen
 
-Application Insights verzamelt diverse verschillende gegevenstypen: uitzonderingen, traceringen, paginaweergaven en anderen. Dit is vaak voldoende zijn voor het onderzoeken van prestaties, betrouwbaarheid en gebruik van uw toepassing, zijn er gevallen wanneer dit is handig om te correleren met andere volledig aangepaste gegevenssets de gegevens in Application Insights.
+Application Insights verzamelt verschillende gegevens typen: uitzonde ringen, traceringen, pagina weergaven en anderen. Hoewel dit vaak voldoende is om de prestaties, betrouw baarheid en het gebruik van uw toepassing te onderzoeken, zijn er gevallen waarin het nuttig is om te correleren van de gegevens die zijn opgeslagen in Application Insights naar andere volledig aangepaste gegevens sets.
 
-Sommige situaties waar u dat aangepaste gegevens wilt zijn onder andere:
+In de volgende situaties kunt u aangepaste gegevens gebruiken:
 
-- Verrijking of een opzoekfunctie gegevenstabellen: bijvoorbeeld vormen een aanvulling op de naam van een server met de eigenaar van de server en de locatie van het lab waarin deze kan worden gevonden 
-- Correlatie met Application Insights-gegevensbronnen: bijvoorbeeld correleren gegevens over een aankoop van een webwinkel met informatie van uw aankoop vervulling-service om te bepalen hoe nauwkeurig de verzendtijd schattingen zijn 
-- Volledig aangepaste gegevens: veel van onze klanten graag de querytaal en prestaties van de Azure Monitor log-platform die Application Insights maakt back-ups en deze wilt gebruiken om gegevens te doorzoeken die helemaal niet gerelateerd is aan Application Insights. Bijvoorbeeld, voor het bijhouden van de prestaties microturbines deelvenster als onderdeel van een slimme home installatie als die worden beschreven [hier]( https://blogs.catapultsystems.com/cfuller/archive/2017/10/04/using-log-analytics-and-a-special-guest-to-forecast-electricity-generation/).
+- Gegevens verrijking of opzoek tabellen: u kunt bijvoorbeeld een server naam aanvullen met de eigenaar van de server en de locatie van het lab waarin deze kan worden gevonden 
+- Correlatie met niet-Application Insights gegevens bronnen: u kunt bijvoorbeeld gegevens over een aankoop in een Web Store correleren met informatie van uw aankoop-fulfillment-service om te bepalen hoe nauw keurig de geschatte verzend tijd 
+- Volledig aangepaste gegevens: veel van onze klanten hebben de query taal en de prestaties van het Azure Monitor-logboek platform voor het maken van een back-up van Application Insights en willen ze gebruiken om gegevens op te vragen die geen verband houden met Application Insights. Als u bijvoorbeeld de prestaties van het zonne paneel wilt bijhouden als onderdeel van een slimme start installatie, zoals [hier](https://www.catapultsystems.com/blogs/using-log-analytics-and-a-special-guest-to-forecast-electricity-generation/)wordt beschreven.
 
-## <a name="how-to-correlate-custom-data-with-application-insights-data"></a>Hoe u aangepaste gegevens met Application Insights-gegevens te conrreleren 
+## <a name="how-to-correlate-custom-data-with-application-insights-data"></a>Aangepaste gegevens correleren met Application Insights gegevens 
 
-Omdat Application Insights wordt geschraagd door het krachtige Azure Monitor log-platform, zijn we kunnen de volledige kracht van Azure Monitor gebruiken om op te nemen van de gegevens. Vervolgens wordt er query's met behulp van de joinoperator '', die wordt deze aangepaste gegevens met de gegevens die beschikbaar is voor ons in Azure Monitor logboeken correleren schrijven. 
+Omdat Application Insights wordt ondersteund door het krachtige Azure Monitor-logboek platform, kunnen we de volledige kracht van Azure Monitor gebruiken om de gegevens op te nemen. Vervolgens schrijven we query's met behulp van de operator ' samen voegen ', waarmee deze aangepaste gegevens worden afgestemd op de gegevens die voor ons beschikbaar zijn in Azure Monitor Logboeken. 
 
-## <a name="ingesting-data"></a>Ophalen van gegevens
+## <a name="ingesting-data"></a>Gegevens opnemen
 
-In deze sectie wordt besproken hoe u uw gegevens in Logboeken van Azure Monitor krijgt.
+In deze sectie wordt beschreven hoe u uw gegevens ophaalt in Azure Monitor-Logboeken.
 
-Als u dit niet al hebt, richt u een nieuwe Log Analytics-werkruimte door [deze instructies](../learn/quick-collect-azurevm.md) en met de stap 'een werkruimte maken'.
+Als u er nog geen hebt, kunt u een nieuwe Log Analytics-werk ruimte inrichten door [deze instructies](../learn/quick-collect-azurevm.md) te volgen met behulp van de stap ' een werk ruimte maken '.
 
-Om te beginnen met het verzenden van gegevens in Azure Monitor. Er zijn diverse opties:
+Om het verzenden van logboek gegevens naar Azure Monitor te starten. Er zijn verschillende opties:
 
-- Een synchrone mechanisme, kunt u ofwel rechtstreeks aanroepen de [gegevensverzamelaar-API](https://docs.microsoft.com/azure/log-analytics/log-analytics-data-collector-api) of gebruik onze logische App-connector: gewoon zoek naar "Azure Log Analytics" en kies de optie 'Gegevens verzenden':
+- Voor een synchroon mechanisme kunt u de [Data Collector-API](https://docs.microsoft.com/azure/log-analytics/log-analytics-data-collector-api) rechtstreeks aanroepen of de logische app-connector gebruiken – gewoon zoeken naar ' Azure log Analytics ' en de optie ' gegevens verzenden ' kiezen:
 
-  ![Schermafbeelding kiezen en de actie](./media/custom-data-correlation/01-logic-app-connector.png)  
+  ![Scherm opname kiezen en actie](./media/custom-data-correlation/01-logic-app-connector.png)  
 
-- Gebruik de Collector-API om een pijplijn voor een asynchrone optie. Zie [in dit artikel](https://docs.microsoft.com/azure/log-analytics/log-analytics-create-pipeline-datacollector-api) voor meer informatie.
+- Voor een asynchrone optie gebruikt u de Data Collector API om een verwerkings pijplijn te bouwen. Raadpleeg [dit artikel](https://docs.microsoft.com/azure/log-analytics/log-analytics-create-pipeline-datacollector-api) voor meer informatie.
 
 ## <a name="correlating-data"></a>Correleren van gegevens
 
-Application Insights is gebaseerd op de Azure Monitor log-platform. We kunnen daarom gebruiken [meerdere bronnen joins](https://docs.microsoft.com/azure/log-analytics/log-analytics-cross-workspace-search) correleren van gegevens we die zijn opgenomen in Azure Monitor met onze Application Insights-gegevens.
+Application Insights is gebaseerd op het Azure Monitor-logboek platform. We kunnen daarom [Cross-resource join's](https://docs.microsoft.com/azure/log-analytics/log-analytics-cross-workspace-search) gebruiken voor het correleren van gegevens die zijn opgenomen in azure monitor met onze Application Insights-gegevens.
 
-Bijvoorbeeld, kunnen we onze lab-inventaris en de locaties in een tabel met de naam 'LabLocations_CL' in een Log Analytics-werkruimte met de naam 'myLA' opnemen. Als we vervolgens wilden onze aanvragen worden bijgehouden in Application Insights-app met de naam 'myAI' bekijken en de namen van de machines die de aanvragen naar de locatie van deze machines die zijn opgeslagen in de eerder genoemde aangepaste tabel behandeld correleren, kunnen we de volgende query uit uitvoeren de Application Insights of Azure Monitor-context:
+We kunnen bijvoorbeeld onze Lab-inventaris en-locaties opnemen in een tabel met de naam ' LabLocations_CL ' in een Log Analytics-werk ruimte met de naam ' myLA '. Als we de aanvragen die zijn bijgehouden in Application Insights-app met de naam "myAI", vervolgens willen bekijken en de computer namen die de aanvragen hebben verzonden, correleren aan de locaties van deze machines die zijn opgeslagen in de eerder genoemde aangepaste tabel, kunnen we de volgende query uitvoeren vanuit de Application Insights-of Azure Monitor context:
 
 ```
 app('myAI').requests
@@ -64,5 +64,5 @@ app('myAI').requests
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Bekijk de [Data Collector API](https://docs.microsoft.com/azure/log-analytics/log-analytics-data-collector-api) verwijzing.
-- Voor meer informatie over [meerdere bronnen joins](https://docs.microsoft.com/azure/log-analytics/log-analytics-cross-workspace-search).
+- Bekijk de naslag informatie voor de [Data Collector-API](https://docs.microsoft.com/azure/log-analytics/log-analytics-data-collector-api) .
+- Voor meer informatie over [Cross-resource-samen voegingen](https://docs.microsoft.com/azure/log-analytics/log-analytics-cross-workspace-search).

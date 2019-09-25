@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: overview
-ms.openlocfilehash: cdbbe9006f57c8b29e19fda85eefc0795da95a00
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 0269b4e611432093ea677e2ea7e429c84ce9db87
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68595505"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71257655"
 ---
 # <a name="what-is-custom-translator"></a>Wat is Custom Translator?
 
@@ -40,7 +40,7 @@ Custom Translator biedt verschillende mogelijkheden voor het bouwen van een aang
 
 [Neurale machinevertalingen (NMT)](https://blogs.msdn.microsoft.com/translation/2016/11/15/microsoft-translator-launching-neural-network-based-translations-for-all-its-speech-languages/) van Microsoft Translator is uitgebracht in 2016. NMT biedt belangrijke voordelen in de vertaalkwaliteit ten opzichte van de industriestandaardtechnologie van [statistische machinevertalingen (SMT)](https://en.wikipedia.org/wiki/Statistical_machine_translation). Omdat NMT beter in staat is de context van volledige zinnen te begrijpen alvorens ze te vertalen, levert NMT vertalingen van hogere kwaliteit, die menselijker klinken en vloeiender lopen. [Custom Translator](https://portal.customtranslator.azure.ai) maakt gebruik van NMT voor uw aangepaste modellen, hetgeen resulteert in vertalingen van betere kwaliteit.
 
-U kunt een vertaalsysteem opbouwen met behulp van eerder vertaalde documenten. Dergelijke documenten bevatten specifieke terminologie en hebben ook een specifieke stijl, wat beter is dan een vertaling van een algemeen vertaalsysteem. Gebruikers kunnen ALIGN-, PDF-, LCL-, HTML-, HTM-, XLF-, TMX-, XLIFF-, TXT-, DOCX- en XLSX-documenten uploaden.
+U kunt een vertaalsysteem opbouwen met behulp van eerder vertaalde documenten. Deze documenten bevatten specifieke terminologie en stijl van een domein, beter dan een standaard Vertaal systeem. Gebruikers kunnen ALIGN-, PDF-, LCL-, HTML-, HTM-, XLF-, TMX-, XLIFF-, TXT-, DOCX- en XLSX-documenten uploaden.
 
 Custom Translator accepteert ook parallelle gegevens op documentniveau om gegevens effectiever te kunnen verzamelen en voorbereiden. Als gebruikers toegang hebben tot versies van dezelfde inhoud in meerdere talen, maar wel in afzonderlijke documenten, is Custom Translator in staat om zinnen uit verschillende documenten automatisch te matchen.
 

@@ -10,12 +10,12 @@ ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: wesmc
-ms.openlocfilehash: e7346fa0f9cc977755c441077a50707dd207019f
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 79e565668db661d02833d22d2ef619fc67708115
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69638280"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266155"
 ---
 # <a name="connect-raspberry-pi-to-azure-iot-hub-nodejs"></a>Raspberry Pi verbinden met Azure IoT Hub (node. js)
 
@@ -135,7 +135,7 @@ Gebruik de breadboard-en jumper draden om een LED en een BME280 te verbinden met
 
 ![De Raspberry Pi-en sensor verbinding](./media/iot-hub-raspberry-pi-kit-node-get-started/3-raspberry-pi-sensor-connection.png)
 
-De BME280-sensor kan gegevens over Tempe ratuur en vochtigheid verzamelen. De LED knippert wanneer het apparaat een bericht naar de Cloud verzendt. 
+De BME280-sensor kan gegevens over Tempe ratuur en vochtigheid verzamelen. De LED knippert wanneer het apparaat een bericht naar de Cloud verzendt.
 
 Voor sensor pincodes gebruikt u de volgende bedrading:
 
@@ -148,7 +148,7 @@ Voor sensor pincodes gebruikt u de volgende bedrading:
 | LED VDD (PIN 18F)        | GPIO 24 (Pin 18)       | Witte kabel   |
 | LED GND (PIN 17F)        | GND (pincode 20)           | Zwarte kabel   |
 
-Klik hier om [Raspberry pi 2](https://developer.microsoft.com/windows/iot/docs/pinmappingsrpi) weer te geven &-toewijzing van 3 pincodes voor uw referentie.
+Klik hier om [Raspberry pi 2 weer te geven &-toewijzing van 3 pincodes](https://developer.microsoft.com/windows/iot/docs/pinmappingsrpi) voor uw referentie.
 
 Nadat u BME280 hebt verbonden met uw Raspberry Pi, zou deze moeten lijken op de onderstaande afbeelding.
 
@@ -170,8 +170,8 @@ Schakel pi in met behulp van de micro USB-kabel en de voeding. Gebruik de Ethern
 1. Maak verbinding met uw Raspberry Pi met een van de volgende SSH-clients van de hostcomputer:
 
    **Windows-gebruikers**
-  
-   a. Down load en [](https://www.putty.org/) Installeer putty voor Windows. 
+
+   a. Down load en Installeer [putty](https://www.putty.org/) voor Windows.
 
    b. Kopieer het IP-adres van uw Pi naar de sectie hostnaam (of IP-adres) en selecteer SSH als het verbindings type.
 
@@ -192,10 +192,10 @@ Schakel pi in met behulp van de micro USB-kabel en de voeding. Gebruik de Ethern
    node -v
    ```
 
-   Als de versie lager is dan 11. x, of als er geen node. js is op uw Pi, installeert u de nieuwste versie.
+   Als de versie lager is dan 10. x, of als er geen node. js is op uw Pi, installeert u de nieuwste versie.
 
    ```bash
-   curl -sL https://deb.nodesource.com/setup_11.x | sudo -E bash
+   curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash
    sudo apt-get -y install nodejs
    ```
 
@@ -209,7 +209,7 @@ Schakel pi in met behulp van de micro USB-kabel en de voeding. Gebruik de Ethern
 
    ```bash
    cd iot-hub-node-raspberrypi-client-app
-   sudo npm install
+   npm install
    ```
 
    > [!NOTE]
@@ -228,6 +228,8 @@ Schakel pi in met behulp van de micro USB-kabel en de voeding. Gebruik de Ethern
    Dit bestand bevat twee items die u kunt configureren. De eerste is `interval`, waarmee het tijds interval (in milliseconden) wordt gedefinieerd tussen berichten die naar de cloud worden verzonden. De tweede is `simulatedData`, een Booleaanse waarde die aangeeft of gesimuleerde sensor gegevens moeten worden gebruikt.
 
    Als u **de sensor niet hebt**, stelt u `simulatedData` de waarde `true` in op om te zorgen dat de voorbeeld toepassing gesimuleerde sensor gegevens maakt en gebruikt.
+
+   *Opmerking: Het I2C-adres dat in deze zelf studie wordt gebruikt, is standaard 0x77. Afhankelijk van uw configuratie kan het ook 0x76 zijn: als er een I2C-fout optreedt, probeert u de waarde te wijzigen in 118 en gaat u na of dit beter werkt. Als u wilt zien welk adres wordt gebruikt door uw sensor `sudo i2cdetect -y 1` , voert u uit in een shell op de Raspberry pi*
 
 2. Sla het bestand op en sluit het af door Control-O te typen > > Control-X in te voeren.
 

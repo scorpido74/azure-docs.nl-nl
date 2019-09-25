@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 4cabf2e7a1f0f1ff058f900ed823cc4df0ce80a6
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: c01931268642aebbf87c54080c292b105af15665
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "70999206"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71262765"
 ---
 # <a name="introduction-to-azure-security"></a>Inleiding tot Azure-beveiliging
 ## <a name="overview"></a>Overzicht
@@ -93,7 +93,7 @@ Application Insights maakt grafieken en tabellen waarin u bijvoorbeeld kunt zien
 Als er zich crashes, fouten of prestatie problemen voordoen, kunt u de gegevens in de telemetrie gedetailleerd doorzoeken om de oorzaak vast te stellen. En de service stuurt u e-mail berichten als er wijzigingen zijn in de beschik baarheid en prestaties van uw app. Toepassings inzicht wordt daarom een waardevol beveiligings programma, omdat het helpt bij de beschik baarheid van de beveiligings Triad van de vertrouwelijkheid, integriteit en beschik baarheid.
 
 ### <a name="azure-monitor"></a>Azure Monitor
-[Azure monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/) biedt visualisatie, query, route ring, waarschuwingen, automatisch schalen en automatisering op gegevens van de Azure-infra structuur ([activiteiten logboek](../../azure-monitor/platform/activity-logs-overview.md)) en elke afzonderlijke Azure-resource ([Diagnostische logboeken](../../azure-monitor/platform/diagnostic-logs-overview.md)). U kunt Azure Monitor gebruiken om u te waarschuwen voor beveiligings gebeurtenissen die worden gegenereerd in azure-Logboeken.
+[Azure monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/) biedt visualisatie, query, route ring, waarschuwingen, automatisch schalen en automatisering op gegevens van de Azure-infra structuur ([activiteiten logboek](../../azure-monitor/platform/activity-logs-overview.md)) en elke afzonderlijke Azure-resource ([Diagnostische logboeken](../../azure-monitor/platform/resource-logs-overview.md)). U kunt Azure Monitor gebruiken om u te waarschuwen voor beveiligings gebeurtenissen die worden gegenereerd in azure-Logboeken.
 
 ### <a name="azure-monitor-logs"></a>Azure Monitor-logboeken
 [Azure monitor-logboeken](https://azure.microsoft.com/documentation/services/log-analytics/) : voorziet in een IT-beheer oplossing voor zowel on-premises als Cloud infrastructuur op basis van derden (zoals AWS) naast Azure-resources. Gegevens van Azure Monitor kunnen rechtstreeks naar Azure Monitor-logboeken worden gerouteerd, zodat u meet waarden en logboeken voor uw hele omgeving op één plek kunt zien.
@@ -141,7 +141,7 @@ U kunt de volgende soorten logboeken in-of uitschakelen:
 
 -   Logboek registratie van webserver-informatie over HTTP-trans acties met de uitgebreide W3C-indeling van logboek bestand. Dit is handig bij het bepalen van de algemene metrische site gegevens, zoals het aantal verwerkte aanvragen of hoeveel aanvragen van een specifiek IP-adres.
 
-#### <a name="application-diagnostics"></a>Application diagnostics
+#### <a name="application-diagnostics"></a>Application Diagnostics
 Met [Application Diagnostics](../../app-service/troubleshoot-diagnostic-logs.md) kunt u gegevens vastleggen die zijn geproduceerd door een webtoepassing. ASP.NET-toepassingen kunnen de klasse [System. Diagnostics. trace](https://msdn.microsoft.com/library/system.diagnostics.trace) gebruiken om informatie te registreren in het logboek voor toepassings diagnose. In Application Diagnostics zijn er twee belang rijke typen gebeurtenissen, die betrekking hebben op de prestaties van toepassingen en die betrekking hebben op toepassings fouten en fouten. De fouten en fouten kunnen verder worden onderverdeeld in connectiviteits-, beveiligings-en fout problemen. Problemen met de fout zijn doorgaans gerelateerd aan een probleem met de toepassings code.
 
 In Application Diagnostics kunt u de gebeurtenissen weer geven die op de volgende manieren zijn gegroepeerd:

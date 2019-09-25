@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/26/2019
 ms.author: bwren
-ms.openlocfilehash: a80f99bc37d3a92a794a78f1f47ce32fbaae75a3
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 1bc4a7634e864f0e3feb0d33cef3b967e5b6741f
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989176"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71262215"
 ---
 # <a name="azure-monitor-overview"></a>Overzicht van Azure Monitor
 
-Azure Monitor maximaliseert de beschik baarheid en prestaties van uw toepassingen door een uitgebreide oplossing te bieden voor het verzamelen, analyseren en uitvoeren van telemetrie in uw Cloud-en on-premises omgevingen. Het helpt u begrijpen hoe uw toepassingen presteren en stelt proactief problemen vast die betrekking hebben op de toepassingen en de resources waarvan ze afhankelijk zijn.
+Met Azure Monitor worden de beschikbaarheid en prestaties van uw toepassing gemaximaliseerd, door een uitgebreide oplossing te bieden voor het verzamelen en analyseren van, en werken met telemetriegegevens vanuit uw cloudomgeving en on-premises omgeving. Het helpt u begrijpen hoe uw toepassingen presteren en stelt proactief problemen vast die betrekking hebben op de toepassingen en de resources waarvan ze afhankelijk zijn.
 
 > [!VIDEO https://www.youtube.com/embed/_hGff5bVtkM]
 
@@ -57,7 +57,7 @@ Azure Monitor kunt gegevens verzamelen van verschillende bronnen. U kunt de gege
 
 Zodra u een Azure-abonnement maakt en resources zoals virtuele machines en web-apps toevoegt, Azure Monitor begint met het verzamelen van gegevens.  [Activiteiten logboeken](platform/activity-logs-overview.md) record wanneer resources worden gemaakt of gewijzigd. Met [metrische gegevens](platform/data-platform.md) kunt u zien hoe de resource wordt uitgevoerd en welke resources deze gebruiken. 
 
-Breid de gegevens die u verzamelt, uit in de daad werkelijke bewerking van de resources door diagnostiek in te [scha kelen](platform/diagnostic-logs-overview.md) en [een agent](platform/agent-windows.md) toe te voegen om resources te berekenen. Hiermee wordt telemetrie verzameld voor de interne bewerking van de resource en kunt u verschillende [gegevens bronnen](platform/agent-data-sources.md) configureren voor het verzamelen van Logboeken en metrieken van Windows en Linux-gast besturingssystemen. 
+Breid de gegevens die u verzamelt, uit in de daad werkelijke bewerking van de resources door diagnostiek in te [scha kelen](platform/resource-logs-overview.md) en [een agent](platform/agent-windows.md) toe te voegen om resources te berekenen. Hiermee wordt telemetrie verzameld voor de interne bewerking van de resource en kunt u verschillende [gegevens bronnen](platform/agent-data-sources.md) configureren voor het verzamelen van Logboeken en metrieken van Windows en Linux-gast besturingssystemen. 
 
 Schakel bewaking in voor uw [app Services toepassing](app/azure-web-apps.md) of [virtuele machine en de toepassing](app/azure-vm-vmss-apps.md)voor de schaalset van virtual machines, zodat Application Insights gedetailleerde informatie over uw toepassing kunt verzamelen, waaronder pagina weergaven, toepassings aanvragen en uitzonderingen. Controleer de beschik baarheid van uw toepassing door een [beschikbaarheids test](app/monitor-web-app-availability.md) te configureren om gebruikers verkeer te simuleren.
 

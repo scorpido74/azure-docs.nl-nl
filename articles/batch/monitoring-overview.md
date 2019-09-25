@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: na
 ms.date: 04/05/2018
 ms.author: lahugh
-ms.openlocfilehash: 61e210d1b41966c493099e0619e969cf5ce30c50
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 3ac852b1d69c0e9fa224b449d6261eba6abaff32
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70093996"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71260953"
 ---
 # <a name="monitor-batch-solutions"></a>Batch-oplossingen controleren
 
@@ -33,7 +33,7 @@ Een manier om gebeurtenissen uit uw activiteiten logboek op te halen, is met beh
 
 ## <a name="batch-account-level-monitoring"></a>Bewaking op batch-account niveau
 
-Bewaak elk batch-account met behulp van de functies van [Azure monitor](../azure-monitor/overview.md). Azure Monitor verzamelt [metrische gegevens](../azure-monitor/platform/data-platform-metrics.md) en eventueel [Diagnostische logboeken](../azure-monitor/platform/diagnostic-logs-overview.md) voor resources die zijn afgestemd op het niveau van een batch-account, zoals Pools, Jobs en taken. Verzamel en gebruik deze gegevens hand matig of programmatisch om activiteiten in uw batch-account te bewaken en problemen te onderzoeken. Zie [metrische batches, waarschuwingen en logboeken voor diagnostische evaluatie en controle](batch-diagnostics.md)voor meer informatie.
+Bewaak elk batch-account met behulp van de functies van [Azure monitor](../azure-monitor/overview.md). Azure Monitor verzamelt [metrische gegevens](../azure-monitor/platform/data-platform-metrics.md) en eventueel [Diagnostische logboeken](../azure-monitor/platform/resource-logs-overview.md) voor resources die zijn afgestemd op het niveau van een batch-account, zoals Pools, Jobs en taken. Verzamel en gebruik deze gegevens hand matig of programmatisch om activiteiten in uw batch-account te bewaken en problemen te onderzoeken. Zie [metrische batches, waarschuwingen en logboeken voor diagnostische evaluatie en controle](batch-diagnostics.md)voor meer informatie.
  
 > [!NOTE]
 > Metrische gegevens zijn standaard beschikbaar in uw batch-account zonder extra configuratie en ze hebben een rolling geschiedenis van 30 dagen. U moet Diagnostische logboek registratie inschakelen voor een batch-account en u kunt extra kosten in rekening brengen om diagnostische logboek gegevens op te slaan of te verwerken. 

@@ -8,13 +8,12 @@ ms.service: search
 ms.topic: tutorial
 ms.date: 08/23/2019
 ms.author: luisca
-ms.subservice: cognitive-search
-ms.openlocfilehash: 726fdd6aeebac970142fa9225381af77114bfe42
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 6f7c5e2955c57e0e1891593504e5eec1a06bbb04
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70274117"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71265373"
 ---
 # <a name="tutorial-add-structure-to-unstructured-content-with-cognitive-search"></a>Zelfstudie: Structuur toevoegen aan ' ongestructureerde inhoud ' met cognitieve zoek functie
 
@@ -117,7 +116,7 @@ De aanvraag methoden die in deze zelf studie worden gebruikt, zijn **post**, **p
 
 Stel in headers ' content-type ' `application/json` in en stel `api-key` in op de beheer-API-sleutel van uw Azure Search service. Wanneer u de koppen hebt ingesteld, kunt u deze gebruiken voor elke aanvraag in deze oefening.
 
-  ![URL en header van Postman-aanvraag](media/search-get-started-postman/postman-url.png "URL en header van Postman-aanvraag")
+  ![URL en header] van Postman-aanvraag (media/search-get-started-postman/postman-url.png "URL en header") van Postman-aanvraag
 
 ## <a name="3---create-the-pipeline"></a>3: de pijp lijn maken
 

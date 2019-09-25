@@ -5,15 +5,15 @@ author: bwren
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 05/19/2019
+ms.date: 09/20/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: fa1737a8627fe9561a2a84e7f0ef69aefb6deb14
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: ee3a1fef379e2950172dddc389b30e0a363127ae
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70170625"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71262133"
 ---
 # <a name="overview-of-azure-activity-log"></a>Overzicht van Azure-activiteiten logboek
 
@@ -23,10 +23,10 @@ Gebruik het activiteiten logboek om te bepalen _wat_, _wie_en _Wanneer_ voor sch
 
 Het activiteiten logboek bevat geen lees bewerkingen (GET) of bewerkingen voor resources die gebruikmaken van het klassieke/RDFE-model.
 
-## <a name="comparison-to-diagnostic-logs"></a>Vergelijking met Diagnostische logboeken
-Er is één activiteiten logboek voor elk Azure-abonnement. Het bevat gegevens over de bewerkingen op een resource van de buiten kant (het "besturings vlak"). [Diagnostische logboeken](diagnostic-logs-overview.md) worden verzonden door een resource en bevatten informatie over de werking van die resource (het ' gegevens vlak '). U moet de diagnostische instellingen inschakelen voor elke resource.
+## <a name="comparison-to-resource-logs"></a>Vergelijking met resource logboeken
+Er is één activiteiten logboek voor elk Azure-abonnement. Het bevat gegevens over de bewerkingen op een resource van de buiten kant (het "besturings vlak"). [Bron logboeken](resource-logs-overview.md) worden verzonden door een resource en bevatten informatie over de werking van die resource (het ' gegevens vlak '). U moet een diagnostische instelling voor elke resource maken om bron logboeken te verzamelen.
 
-![Activiteiten logboeken vergeleken met Diagnostische logboeken](./media/activity-logs-overview/Activity_Log_vs_other_logs_v5.png)
+![Activiteiten logboeken vergeleken met resource logboeken](media/activity-logs-overview/Activity_Log_vs_other_logs_v5.png)
 
 
 > [!NOTE]
@@ -54,11 +54,11 @@ U kunt een waarschuwing maken wanneer bepaalde gebeurtenissen in het activiteite
 ## <a name="categories-in-the-activity-log"></a>Categorieën in het activiteiten logboek
 Elke gebeurtenis in het activiteiten logboek heeft een bepaalde categorie die wordt beschreven in de volgende tabel. Zie voor volledige informatie over de schema's van deze categorieën vallen [gebeurtenisschema in het Azure-activiteitenlogboek](activity-log-schema.md). 
 
-| Categorie | Description |
+| Category | Description |
 |:---|:---|
 | Beheer | Bevat de record van alle bewerkingen voor maken, bijwerken, verwijderen en acties die zijn uitgevoerd via Resource Manager. Voor beelden van beheer gebeurtenissen zijn het maken van een _virtuele machine_ en het verwijderen van de _netwerk beveiligings groep_.<br><br>Elke actie die door een gebruiker of toepassing wordt uitgevoerd met behulp van Resource Manager, is gemodelleerd als een bewerking voor een bepaald bron type. Als het bewerkings type _schrijven_, _verwijderen_of _actie_is, worden de records van zowel het begin als het slagen of mislukken van die bewerking vastgelegd in de beheer categorie. Beheer gebeurtenissen omvatten ook eventuele wijzigingen in op rollen gebaseerd toegangs beheer in een abonnement. |
 | Service Health | Bevat de record van alle service status incidenten die zich in azure hebben voorgedaan. Een voor beeld van een Service Health gebeurtenis _SQL Azure in VS-Oost_ondervindt downtime. <br><br>Service Health gebeurtenissen zijn beschikbaar in zes rassen: _Actie vereist_, _assistentie herstel_, _incident_, _onderhoud_, _informatie_of _beveiliging_. Deze gebeurtenissen worden alleen gemaakt als u een resource in het abonnement hebt die van invloed is op de gebeurtenis.
-| Resourcestatus | Bevat de record van de resource status gebeurtenissen die zijn opgetreden in uw Azure-resources. Een voor beeld van een Resource Health gebeurtenis is de status van de _virtuele machine is gewijzigd in niet beschikbaar_.<br><br>Resource Health gebeurtenissen kunnen een van de volgende vier statussen vertegenwoordigen: _Beschikbaar_, niet _beschikbaar_,gedegradeerd en _onbekend_. Daarnaast kunnen Resource Health gebeurtenissen worden gecategoriseerd als _platform gestart_ of door de _gebruiker gestart_. |
+| Resourcestatus | Bevat de record van de resource status gebeurtenissen die zijn opgetreden in uw Azure-resources. Een voor beeld van een Resource Health gebeurtenis is de status van de _virtuele machine is gewijzigd in niet beschikbaar_.<br><br>Resource Health gebeurtenissen kunnen een van de volgende vier statussen vertegenwoordigen: _Beschikbaar_, niet _beschikbaar_, _gedegradeerd_en _onbekend_. Daarnaast kunnen Resource Health gebeurtenissen worden gecategoriseerd als _platform gestart_ of door de _gebruiker gestart_. |
 | Waarschuwing | Bevat de registratie van activeringen voor Azure-waarschuwingen. Een voor beeld van een waarschuwings gebeurtenis is _CPU% op myVM heeft de afgelopen vijf minuten meer dan 80_.|
 | Automatisch schalen | Bevat de record van gebeurtenissen die betrekking hebben op de werking van de engine voor automatisch schalen op basis van de instellingen voor automatisch schalen die u hebt gedefinieerd in uw abonnement. Een voor beeld van een automatisch schalen-gebeurtenis is het _Omhoog schalen van de actie voor schalen is mislukt_. |
 | Aanbeveling | Bevat aanbevelings gebeurtenissen van Azure Advisor. |

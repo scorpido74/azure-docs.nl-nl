@@ -1,124 +1,67 @@
 ---
-title: Azure-Stream bewakingsgegevens naar Event Hubs
-description: Meer informatie over het streamen van uw Azure-bewakingsgegevens naar een event hub om op te halen van de gegevens in een SIEM-partner of analyseprogramma.
-author: nkiest
+title: Azure-bewakings gegevens streamen naar Event Hub
+description: Meer informatie over het streamen van uw Azure-bewakings gegevens naar een Event Hub om de gegevens op te halen in een partner SIEM of een analyse programma.
+author: bwren
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 11/01/2018
-ms.author: nikiest
+ms.date: 07/20/2019
+ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: 8a4de244d0fa07bfc162625f577015317fca7e6a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 535c74fd161019db28e691ff916ad03eaaf07c90
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67069340"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71260382"
 ---
-# <a name="stream-azure-monitoring-data-to-an-event-hub-for-consumption-by-an-external-tool"></a>Azure-Stream bewakingsgegevens naar een event hub voor gebruik door een extern hulpprogramma
+# <a name="stream-azure-monitoring-data-to-an-event-hub"></a>Azure-bewakings gegevens streamen naar een Event Hub
+Azure Monitor biedt een volledige stack bewakings oplossing voor toepassingen en services in azure, in andere Clouds en on-premises. Naast het gebruik van Azure Monitor voor het analyseren van die gegevens en het gebruiken voor verschillende bewakings scenario's, moet u deze mogelijk verzenden naar andere controle hulpprogramma's in uw omgeving. De meest efficiënte methode voor het streamen van bewakings gegevens naar externe hulpprogram ma's is in de meeste gevallen het gebruik van [Azure Event hubs](/azure/event-hubs/). In dit artikel vindt u een korte beschrijving van de manier waarop u bewakings gegevens uit verschillende bronnen kunt streamen naar een Event Hub en koppelingen naar gedetailleerde richt lijnen.
 
-Dit artikel helpt bij het instellen van de verschillende lagen van de gegevens van uw Azure-omgeving moet worden verzonden naar een enkele Event Hubs-naamruimte of event hub, waar deze kan worden verzameld door een extern hulpprogramma.
 
-> [!VIDEO https://www.youtube.com/embed/SPHxCgbcvSw]
+## <a name="create-an-event-hubs-namespace"></a>Een Event Hubs-naamruimte maken
 
-## <a name="what-data-can-i-send-into-an-event-hub"></a>Welke gegevens kan ik in een event hub verzenden?
+Voordat u streaming voor een gegevens bron configureert, moet u [een event hubs naam ruimte en Event hub maken](../../event-hubs/event-hubs-create.md). Deze naam ruimte en Event Hub is het doel voor al uw bewakings gegevens. Een Event Hubs naam ruimte is een logische groepering van Event hubs die hetzelfde toegangs beleid delen, net zoals een opslag account afzonderlijke blobs in dat opslag account heeft. Houd rekening met de volgende details over de Event hubs-naam ruimte en Event hubs die u gebruikt voor het streamen van bewakings gegevens:
 
-Er zijn verschillende 'categorieën' van de gegevens te controleren binnen uw Azure-omgeving, en de methode van de toegang tot gegevens van elke laag verschilt enigszins. Deze lagen kunnen normaal gesproken worden omschreven als:
+* Met het aantal doorvoer eenheden kunt u de doorvoer schaal voor uw event hubs verhogen. Normaal gesp roken is er slechts één doorvoer eenheid nodig. Als u de schaal van het logboek gebruik wilt verg Roten, kunt u het aantal doorvoer eenheden voor de naam ruimte hand matig verhogen of de automatische inflatie inschakelen.
+* Met het aantal partities kunt u het verbruik van verschillende gebruikers parallelliseren. Eén partitie kan Maxi maal 20MBps of ongeveer 20.000 berichten per seconde ondersteunen. Afhankelijk van het hulp programma dat de gegevens gebruikt, kan het al dan niet voor komen dat er meerdere partities worden verbruikt. Het kan zijn dat vier partities worden gestart als u niet zeker weet of u niet zeker weet of het aantal partities moet worden ingesteld.
+* U stelt de Bewaar periode voor berichten in op uw Event Hub ten minste 7 dagen. Als uw verbruikte hulp programma meer dan een dag uitvalt, zorgt u ervoor dat het hulp programma kan ophalen waar het niet langer dan zeven dagen oud was.
+* U moet de standaard Consumer groep voor uw Event Hub gebruiken. U hoeft geen andere consumenten groepen te maken of een afzonderlijke consumenten groep te gebruiken, tenzij u van plan bent om twee verschillende hulpprogram ma's dezelfde gegevens van dezelfde Event Hub te laten gebruiken.
+* Voor het Azure-activiteiten logboek kiest u een Event Hubs naam ruimte en Azure Monitor maakt u een Event Hub binnen die naam ruimte met de naam _Insights-logboeken: operationele logboeken_. Voor andere logboek typen kunt u een bestaande Event Hub kiezen of Azure Monitor een Event Hub per logboek categorie maken.
+* De uitgaande poort 5671 en 5672 moeten normaal gesp roken worden geopend op de computer of het VNET dat gegevens uit het Event Hub gebruiken.
 
-- **Bewakingsgegevens van de toepassing:** Gegevens over de prestaties en functionaliteit van de code die u hebt geschreven en worden uitgevoerd op Azure. Voorbeelden van gegevens voor toepassingsbewaking zijn prestatietraces, toepassingslogboeken en telemetrie van de gebruiker. Toepassing bewakingsgegevens worden meestal verzameld in een van de volgende manieren:
-  - Door het instrumenteren van uw code met een SDK, zoals de [Application Insights-SDK](../../azure-monitor/app/app-insights-overview.md).
-  - Door het uitvoeren van een bewakingsagent die luistert naar nieuwe op de machine toepassingslogboeken uitvoeren van uw toepassing, zoals de [Windows Azure Diagnoseagent](./../../azure-monitor/platform/diagnostics-extension-overview.md) of [Linux Azure Diagnoseagent](../../virtual-machines/extensions/diagnostics-linux.md).
-- **Bewakingsgegevens van Guest OS:** Gegevens over het besturingssysteem waarop uw toepassing wordt uitgevoerd. Voorbeelden van Gast OS bewakingsgegevens zou zijn Linux syslog- of Windows-systeemgebeurtenissen. Voor het verzamelen van dit soort gegevens, moet u een agent wilt installeren, zoals de [Windows Azure Diagnoseagent](./../../azure-monitor/platform/diagnostics-extension-overview.md) of [Linux Azure Diagnoseagent](../../virtual-machines/extensions/diagnostics-linux.md).
-- **Azure-resource door gegevens te controleren:** Gegevens over de werking van een Azure-resource. Voor bepaalde typen Azure-resource, zoals virtuele machines, moet u er een gastbesturingssysteem en toepassingen om te controleren binnen die Azure-service is. De resource door gegevens te controleren is het hoogste niveau van de gegevens die beschikbaar zijn voor andere Azure-resources, zoals Network Security Groups, (omdat er is geen gastbesturingssysteem of de toepassing die wordt uitgevoerd in die bronnen). Deze gegevens kan worden verzameld met behulp van [instellingen voor resourcediagnose](./../../azure-monitor/platform/diagnostic-logs-overview.md#diagnostic-settings).
-- **Azure-abonnement door gegevens te controleren:** Gegevens over de werking en het beheer van een Azure-abonnement, evenals gegevens over de status en de werking van Azure zelf. De [activiteitenlogboek](./../../azure-monitor/platform/activity-logs-overview.md) bevat de meeste abonnement, zoals service health incidenten en Azure Resource Manager-controle door gegevens te controleren. U kunt deze gegevens met behulp van een Logboekprofiel verzamelen.
-- **Azure-tenant door gegevens te controleren:** Gegevens over de werking van op tenantniveau-Azure-services, zoals Azure Active Directory. Controles van de Azure Active Directory en aanmeldingen zijn voorbeelden van de tenant door gegevens te controleren. Deze gegevens kan worden verzameld met behulp van de diagnostische instelling van een tenant.
 
-Gegevens van elke laag kunnen worden verzonden naar een event hub, waar deze kan worden opgehaald in een partner-hulpprogramma. Sommige gegevensbronnen kunnen worden geconfigureerd voor het verzenden van gegevens rechtstreeks naar een event hub, terwijl andere verwerken, zoals een logische App zijn vereist om de vereiste gegevens op te halen. De volgende secties wordt beschreven hoe u gegevens uit elke laag kunnen worden gestreamd naar een event hub kunt configureren. De stappen wordt ervan uitgegaan dat u de activa in die laag moet worden bewaakt al hebt.
+## <a name="monitoring-data-available"></a>Beschik bare bewakings gegevens
+[Bronnen van bewakings gegevens voor Azure monitor](data-sources.md) beschrijven de verschillende gegevens lagen voor Azure-toepassingen en de soorten beschik bare bewakings gegevens voor elk. De volgende tabel geeft een lijst van elk van deze lagen en een beschrijving van hoe deze gegevens naar een Event Hub kunnen worden gestreamd. Volg de onderstaande koppelingen voor meer informatie.
 
-## <a name="set-up-an-event-hubs-namespace"></a>Instellen van een Event Hubs-naamruimte
+| Laag | Data | Methode |
+|:---|:---|:---|
+| [Azure-Tenant](data-sources.md#azure-tenant) | Controle logboeken Azure Active Directory | Configureer een diagnostische instelling voor tenants op uw AAD-Tenant. Zie [zelf studie: Stream Azure Active Directory logboeken naar een Azure](../../active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md) Event hub voor meer informatie. |
+| [Azure-abonnement](data-sources.md#azure-subscription) | Azure-activiteitenlogboek | Maak een logboek profiel om gebeurtenissen in het activiteiten logboek te exporteren naar Event Hubs.  Zie [Azure-activiteiten logboek exporteren naar opslag of azure Event hubs](activity-log-export.md) voor meer informatie. |
+| [Azure-resources](data-sources.md#azure-resources) | Metrische platform gegevens<br>Diagnostische logboeken |Beide typen gegevens worden verzonden naar een Event Hub met behulp van de diagnostische instelling van de resource. Zie [Diagnostische logboeken van Azure naar een event hub stream](resource-logs-stream-event-hubs.md) voor meer informatie. |
+| [Besturings systeem (gast)](data-sources.md#operating-system-guest) | Virtuele machines van Azure | Installeer de [Azure Diagnostics-extensie](diagnostics-extension-overview.md) op virtuele Windows-en Linux-machines in Azure. Zie [Azure Diagnostics gegevens streamen in het warme pad met behulp van Event hubs](diagnostics-extension-stream-event-hubs.md) voor meer informatie over virtuele Windows-machines en [Linux diagnostische uitbrei ding voor het bewaken van gegevens en logboeken](../../virtual-machines/extensions/diagnostics-linux.md#protected-settings) voor meer informatie over Linux-vm's. |
+| [Toepassings code](data-sources.md#application-code) | Application Insights | Application Insights biedt geen directe methode voor het streamen van gegevens naar Event hubs. U kunt [continue export](../../azure-monitor/app/export-telemetry.md) van de Application Insights gegevens naar een opslag account instellen en vervolgens een logische app gebruiken om de gegevens naar een event hub te verzenden zoals beschreven in [hand matige streaming met logische app](#manual-streaming-with-logic-app). |
 
-Voordat u begint, moet u [maken van een Event Hubs-naamruimte en event hub](../../event-hubs/event-hubs-create.md). Deze naamruimte en event hub is de bestemming voor al uw bewakingsgegevens. Een Event Hubs-naamruimte is een logische groepering van eventhubs die toegang tot hetzelfde beleid delen, zoals een opslag veel heeft account afzonderlijke blobs in het storage-account. Houd er rekening mee enkele gegevens over de event hubs-naamruimte en eventhubs die u hebt gemaakt:
-* We raden u aan met behulp van een Standard Event Hubs-naamruimte.
-* Normaal gesproken is slechts één doorvoereenheid nodig. Als u nodig hebt om omhoog te schalen als uw logboek gebruik toeneemt, kunt u altijd handmatig het aantal doorvoereenheden voor de naamruimte later verhogen of automatisch inflatie inschakelen.
-* Het aantal doorvoereenheden kunt u schaalt de doorvoer voor uw eventhubs. Het aantal partities kunt u parallel verbruik in veel consumenten. Één partitie kan maximaal 20MBps of ongeveer 20.000 berichten per seconde. Afhankelijk van het hulpprogramma gebruiken van de gegevens, mogelijk of die uit meerdere partities mogelijk niet ondersteund. Als u niet zeker weet over het aantal partities om in te stellen, het beste beginnen met vier partities.
-* U wordt aangeraden dat u de bewaartermijn voor berichten ingesteld op uw event hub tot zeven dagen duren. Als de verbruikende tool uitgeschakeld voor meer dan een dag wordt, dit zorgt ervoor dat het hulpprogramma verder kan gaan waar deze is gestopt (voor gebeurtenissen tot 7 dagen).
-* Wordt u aangeraden de standaardgroep voor consumenten voor uw event hub. Er is niet nodig om te maken van andere consumentengroepen of een afzonderlijke consumergroep wilt gebruiken, tenzij u van plan bent twee verschillende hulpprogramma's gebruiken dezelfde gegevens uit de dezelfde event hub.
-* Voor de Azure-activiteitenlogboek, kiest u een Event Hubs-naamruimte en Azure Monitor maakt u een event hub in die naamruimte met de naam 'insights-logs-operational-logs.' Voor andere typen logboeken, kunt u een bestaande event hub (zodat u kunt het gebruiken van de dezelfde insights-logs-operational-logs event hub) kiezen of Azure Monitor een event hub per logboekcategorie maken.
-* Uitgaande poort 5671 en 5672 moet normaal gesproken worden geopend op de machine of het gebruiken van gegevens uit de event hub VNET.
+## <a name="manual-streaming-with-logic-app"></a>Hand matige streaming met logische app
+Voor gegevens die u niet rechtstreeks naar een Event Hub kunt streamen, schrijft u naar Azure Storage en gebruikt u vervolgens een met tijd geactiveerde logische app die [gegevens uit de Blob-opslag ophaalt](../../connectors/connectors-create-api-azureblobstorage.md#add-action) en [deze als een bericht naar de Event hub pusht](../../connectors/connectors-create-api-azure-event-hubs.md#add-action). 
 
-Ook raadpleegt u de [Veelgestelde vragen over Azure Event Hubs](../../event-hubs/event-hubs-faq.md).
 
-## <a name="azure-tenant-monitoring-data"></a>Azure-tenant door gegevens te controleren
+## <a name="tools-with-azure-monitor-integration"></a>Hulpprogram ma's met Azure Monitor-integratie
 
-Azure-tenant door gegevens te controleren is momenteel alleen beschikbaar voor Azure Active Directory. U kunt de gegevens van [Azure Active Directory-rapportage](../../active-directory/reports-monitoring/overview-reports.md), die de geschiedenis van aanmelding activiteit en audit audittrail van wijzigingen in een bepaalde tenant bevat.
+Door uw bewakings gegevens te routeren naar een Event Hub met Azure Monitor kunt u eenvoudig integreren met externe hulpprogram ma's voor SIEM en controle. Voor beelden van hulpprogram ma's met Azure Monitor-integratie zijn onder andere:
 
-### <a name="azure-active-directory-data"></a>Azure Active Directory-gegevens
+| Hulpprogramma | Description |
+|:---|:---|
+|  IBM QRadar | Het Microsoft Azure DSM en Microsoft Azure Event hub-protocol kunnen worden gedownload via [de website van IBM-ondersteuning](https://www.ibm.com/support). Meer informatie over de integratie met Azure vindt u in de [configuratie van QRADAR DSM](https://www.ibm.com/support/knowledgecenter/SS42VS_DSM/c_dsm_guide_microsoft_azure_overview.html?cp=SS42VS_7.3.0). |
+| Splunk | [De Azure monitor-invoeg toepassing voor Splunk](https://splunkbase.splunk.com/app/3534/) is een open-source project dat beschikbaar is in Splunkbase. De documentatie is beschikbaar op [Azure monitor addon voor Splunk](https://github.com/Microsoft/AzureMonitorAddonForSplunk/wiki/Azure-Monitor-Addon-For-Splunk).<br><br> Als u een invoeg toepassing in uw Splunk-exemplaar niet kunt installeren, als u bijvoorbeeld een proxy gebruikt of op een Splunk-Cloud wordt uitgevoerd, kunt u deze gebeurtenissen door sturen naar de Splunk HTTP-gebeurtenis verzamelaar met de [Azure-functie voor Splunk](https://github.com/Microsoft/AzureFunctionforSplunkVS), die wordt geactiveerd door nieuwe berichten in de Event Hub. |
+| SumoLogic | Instructies voor het instellen van SumoLogic om gegevens van een Event Hub te gebruiken, zijn beschikbaar in [Logboeken verzamelen voor de Azure audit-app vanuit Event hub](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure-Audit/02Collect-Logs-for-Azure-Audit-from-Event-Hub). |
+| ArcSight | De ArcSight Azure Event hub Smart connector is beschikbaar als onderdeel van [de verzameling van de ArcSight slimme connector](https://community.softwaregrp.com/t5/Discussions/Announcing-General-Availability-of-ArcSight-Smart-Connectors-7/m-p/1671852). |
+| Syslog-server | Als u Azure Monitor gegevens rechtstreeks naar een syslog-server wilt streamen, kunt u een [oplossing gebruiken op basis van een Azure-functie](https://github.com/miguelangelopereira/azuremonitor2syslog/).
 
-Voor het verzenden van gegevens uit de Azure Active Directory-logboek in een Event Hubs-naamruimte, instellen van de diagnostische instelling van een tenant van uw AAD-tenant. [Deze handleiding volgt](../../active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md) voor het instellen van de diagnostische instelling van een tenant.
-
-## <a name="azure-subscription-monitoring-data"></a>Azure-abonnement door gegevens te controleren
-
-Azure-abonnement door gegevens te controleren is beschikbaar in de [Azure-activiteitenlogboek](./../../azure-monitor/platform/activity-logs-overview.md). Hierin zijn de maken, bijwerken en verwijderen van bewerkingen van Resource Manager, de wijzigingen in [Azure-servicestatus](../../service-health/service-health-overview.md) die mogelijk van invloed op bronnen in uw abonnement, de [resourcestatus](../../service-health/resource-health-overview.md) status overgangen en diverse andere soorten gebeurtenissen op abonnementsniveau. [Dit artikel worden alle categorieën van gebeurtenissen die worden weergegeven in de Azure-activiteitenlogboek](./../../azure-monitor/platform/activity-log-schema.md).
-
-### <a name="activity-log-data"></a>Gegevens van een activiteitenlogboek
-
-Voor het verzenden van gegevens uit de Azure-activiteitenlogboek in een Event Hubs-naamruimte, instellen van een Logboekprofiel voor uw abonnement. [Deze handleiding volgt](./activity-logs-stream-event-hubs.md) voor het instellen van een Logboekprofiel voor uw abonnement. Doe dit eenmaal per abonnement dat u wilt bewaken.
-
-> [!TIP]
-> Een Logboekprofiel kunt op dit moment u alleen te selecteren van een Event Hubs-naamruimte waarin een event hub is gemaakt met de naam 'insights-operational-logs.' Het is nog niet mogelijk om op te geven van uw eigen naam event hub in een logboek-profiel.
-
-## <a name="azure-resource-metrics-and-diagnostics-logs"></a>Logboeken voor het metrische en diagnostische gegevens van Azure-resource
-
-Azure-resources verzenden twee soorten gegevens te controleren:
-1. [Diagnostische logboeken van resource](diagnostic-logs-overview.md)
-2. [Metrische gegevens](data-platform.md)
-
-Beide typen gegevens worden verzonden naar een event hub met behulp van de diagnostische instelling van een resource. [Deze handleiding volgt](diagnostic-logs-stream-event-hubs.md) voor het instellen van de diagnostische instelling van een resource op een bepaalde resource. Een resource diagnostische instelling voor elke bron van waaruit u wenst te verzamelen van logboeken instellen.
-
-> [!TIP]
-> U kunt Azure Policy gebruiken om ervoor te zorgen dat elke resource binnen een bepaald bereik altijd is ingesteld met een diagnostische instelling [met behulp van het DeployIfNotExists-effect in de beleidsregel](../../governance/policy/concepts/definition-structure.md#policy-rule).
-
-## <a name="guest-os-data"></a>Gast-OS-gegevens
-
-U moet een agent voor het verzenden van Gast OS bewakingsgegevens naar een event hub te installeren. Voor Windows of Linux geeft u de gegevens die u wilt dat moet worden verzonden naar de event hub, evenals de event hub waarnaar de gegevens moeten worden verzonden in een configuratiebestand en het configuratiebestand doorgeven aan de agent wordt uitgevoerd op de virtuele machine.
-
-### <a name="linux-data"></a>Linux-gegevens
-
-De [Linux Azure Diagnostics-agent](../../virtual-machines/extensions/diagnostics-linux.md) kan worden gebruikt voor het verzenden van gegevens van een Linux-machine naar een event hub te controleren. Dit doen door toe te voegen van de event hub als een sink in uw LAD beveiligde instellingen van configuratiebestand JSON. [Raadpleeg dit artikel voor meer informatie over het toevoegen van de event hub-sink aan uw Linux Azure Diagnostics-agent](../../virtual-machines/extensions/diagnostics-linux.md#protected-settings).
-
-> [!NOTE]
-> U kunt voor streaming van Gast-OS bewakingsgegevens naar een event hub in de portal instellen. In plaats daarvan moet u handmatig het configuratiebestand bewerken.
-
-### <a name="windows-data"></a>Windows-gegevens
-
-De [Windows Azure Diagnostics-agent](./../../azure-monitor/platform/diagnostics-extension-overview.md) kan worden gebruikt voor het verzenden van gegevens van een Windows-machine naar een event hub te controleren. Dit doen door de event hub als een sink in de sectie privateConfig van het configuratiebestand WAD toe te voegen. [Raadpleeg dit artikel voor meer informatie over het toevoegen van de event hub-sink aan uw Windows Azure Diagnostics-agent](./../../azure-monitor/platform/diagnostics-extension-stream-event-hubs.md).
-
-> [!NOTE]
-> U kunt voor streaming van Gast-OS bewakingsgegevens naar een event hub in de portal instellen. In plaats daarvan moet u handmatig het configuratiebestand bewerken.
-
-## <a name="application-monitoring-data"></a>Bewakingsgegevens van de toepassing
-
-Toepassing door gegevens te controleren is vereist dat uw code is uitgerust met een SDK, dus er is niet een algemene oplossing om routering toepassing bewakingsgegevens naar een event hub in Azure. Echter, [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) is een service die kan worden gebruikt voor het verzamelen van gegevens van Azure op toepassingsniveau. Als u Application Insights gebruikt, kunt u bewakingsgegevens naar een event hub streamen door het volgende te doen:
-
-1. [Instellen van continue export](../../azure-monitor/app/export-telemetry.md) van de Application Insights-gegevens naar een opslagaccount.
-
-2. Een timer wordt geactiveerd logische App instelt die [worden gegevens opgehaald uit de blob-opslag](../../connectors/connectors-create-api-azureblobstorage.md#add-action) en [wordt als een bericht naar de event hub gepusht](../../connectors/connectors-create-api-azure-event-hubs.md#add-action).
-
-## <a name="what-can-i-do-with-the-monitoring-data-being-sent-to-my-event-hub"></a>Wat kan ik doen met de gegevens worden verzonden naar de event hub?
-
-Routering van uw bewakingsgegevens naar een event hub met Azure Monitor kunt u eenvoudig kunt integreren met SIEM-partner- en controlehulpprogramma's. De meeste hulpprogramma's moeten de event hub-verbindingsreeks en bepaalde machtigingen aan uw Azure-abonnement om gegevens te lezen uit de event hub. Hier ziet u een onvolledige lijst met Azure Monitor-integratie:
-
-* **IBM QRadar** -DSM van de Microsoft Azure en Microsoft Azure Event Hub-Protocol zijn beschikbaar voor downloaden van [de ondersteuningswebsite van IBM](https://www.ibm.com/support). Informatie over [de integratie mat Azure vindt u hier](https://www.ibm.com/support/knowledgecenter/SS42VS_DSM/c_dsm_guide_microsoft_azure_overview.html?cp=SS42VS_7.3.0).
-* **Splunk** -afhankelijk van de instellingen Splunk, er zijn twee manieren:
-    1. [De Azure Monitor-invoegtoepassing voor Splunk](https://splunkbase.splunk.com/app/3534/) is beschikbaar in Splunkbase en een open-source-project. [Documentatie is hier](https://github.com/Microsoft/AzureMonitorAddonForSplunk/wiki/Azure-Monitor-Addon-For-Splunk).
-    2. Als u niet een invoegtoepassing in uw exemplaar van Splunk (bv installeren. Als een proxy of die worden uitgevoerd op Splunk Cloud), kunt u deze gebeurtenissen voor het gebruik van de Splunk HTTP Event Collector doorsturen [deze functie die wordt geactiveerd door nieuwe berichten in de event hub](https://github.com/Microsoft/AzureFunctionforSplunkVS).
-* **SumoLogic** -instructies voor het instellen van SumoLogic gebruiken voor gegevens van een event hub zijn [beschikbaar hier](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure-Audit/02Collect-Logs-for-Azure-Audit-from-Event-Hub)
-* **ArcSight** -slimme de ArcSight Azure Event Hub-connector is beschikbaar als onderdeel van [de ArcSight slimme connector verzameling hier](https://community.softwaregrp.com/t5/Discussions/Announcing-General-Availability-of-ArcSight-Smart-Connectors-7/m-p/1671852).
-* **Syslog-server** : als u wilt dat Azure Monitor om gegevens te streamen rechtstreeks naar een syslog-server, kunt u uitchecken [deze GitHub-opslagplaats](https://github.com/miguelangelopereira/azuremonitor2syslog/).
 
 ## <a name="next-steps"></a>Volgende stappen
-* [Het activiteitenlogboek naar een opslagaccount archiveren](../../azure-monitor/platform/archive-activity-log.md)
-* [Lees het overzicht van de Azure-activiteitenlogboek](../../azure-monitor/platform/activity-logs-overview.md)
-* [Instellen van een waarschuwing op basis van het activiteitenlogboek](../../azure-monitor/platform/alerts-log-webhook.md)
+* [Het activiteiten logboek archiveren in een opslag account](../../azure-monitor/platform/archive-activity-log.md)
+* [Lees het overzicht van het Azure-activiteiten logboek](../../azure-monitor/platform/activity-logs-overview.md)
+* [Een waarschuwing instellen op basis van een gebeurtenis in een activiteiten logboek](../../azure-monitor/platform/alerts-log-webhook.md)
 
 

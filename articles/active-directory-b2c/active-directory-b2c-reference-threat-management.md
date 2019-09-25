@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 07/10/2019
+ms.date: 09/26/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 281bd73671352e1e525e11a7bfde1882d3ef8864
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: eae82fbd56782faf5b15479c13fe530e189a0e3e
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71065423"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71256910"
 ---
 # <a name="manage-threats-to-resources-and-data-in-azure-active-directory-b2c"></a>Bedreigingen voor resources en gegevens in Azure Active Directory B2C beheren
 
@@ -37,10 +37,10 @@ De eerste 10 vergrendelings perioden zijn één minuut lang. De volgende 10 verg
 
 Instellingen voor wachtwoord beveiliging beheren, met inbegrip van de drempel waarde voor vergren deling:
 
-1. Navigeer naar [Azure Portal](https://portal.azure.com).
-1. Selecteer het filter **Directory + abonnement** in de rechter bovenhoek van de portal en selecteer vervolgens uw Azure AD B2C-Tenant.
-1. Selecteer **Azure Active Directory** in het linkermenu (of selecteer **alle services** in de linkerbovenhoek van de portal, zoek naar en selecteer *Azure Active Directory*).
-1. Selecteer onder **beveiliging** **verificatie methoden**en selecteer vervolgens **wachtwoord beveiliging**.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com)
+1. Gebruik het filter voor **adres lijst en abonnementen** in het bovenste menu om de map te selecteren die uw Azure AD B2C Tenant bevat.
+1. Selecteer in het linkermenu **Azure AD B2C**. U kunt ook **alle services** selecteren en **Azure AD B2C**zoeken en selecteren.
+1. Selecteer onder **beveiliging** **verificatie methoden (preview)** en selecteer vervolgens **wachtwoord beveiliging**.
 1. Voer de gewenste instellingen voor wachtwoord beveiliging in en selecteer vervolgens **Opslaan**.
 
     ![Azure Portal pagina wachtwoord beveiliging in azure AD-instellingen](media/active-directory-b2c-reference-threat-management/portal-02-password-protection.png)

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/26/2019
 ms.author: barclayn
-ms.openlocfilehash: 1f662c34f557d382b3d6181bac18a6402b233412
-ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
+ms.openlocfilehash: fc1657be4dbff1acee186e3a85d9d1e772055f73
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70061910"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71262747"
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Best practices voor beveiliging voor IaaS-workloads in Azure
 In dit artikel worden de aanbevolen beveiligings procedures voor Vm's en besturings systemen beschreven.
@@ -70,7 +70,7 @@ Uw abonnements beheerders en mede beheerders kunnen deze instelling wijzigen, zo
 Organisaties die de toegang tot de virtuele machine beheren en Setup verbeteren hun totale VM-beveiliging.
 
 ## <a name="use-multiple-vms-for-better-availability"></a>Gebruik meerdere Vm's voor een betere Beschik baarheid
-Als uw virtuele machine essentiële toepassingen uitvoert waarvoor hoge Beschik baarheid nodig is, raden we u ten zeerste aan meerdere Vm's te gebruiken. Gebruik een beschikbaarheidsset of beschikbaarheids [](../../virtual-machines/windows/manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy) [zones](../../availability-zones/az-overview.md)voor een betere Beschik baarheid.
+Als uw virtuele machine essentiële toepassingen uitvoert waarvoor hoge Beschik baarheid nodig is, raden we u ten zeerste aan meerdere Vm's te gebruiken. Gebruik een [beschikbaarheidsset](../../virtual-machines/windows/manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy) of beschikbaarheids [zones](../../availability-zones/az-overview.md)voor een betere Beschik baarheid.
 
 Een beschikbaarheidsset is een logische groepering die u in azure kunt gebruiken om ervoor te zorgen dat de VM-resources die u in de groep plaatst, van elkaar zijn geïsoleerd wanneer ze in een Azure-Data Center worden geïmplementeerd. Azure zorgt ervoor dat de Vm's die u in een beschikbaarheidsset plaatst, worden uitgevoerd op meerdere fysieke servers, reken rekken, opslag eenheden en netwerk switches. Als er sprake is van een hardware-of Azure-software fout, is dit alleen van invloed op een subset van uw virtuele machines en blijft uw volledige toepassing beschikbaar voor uw klanten. Beschikbaarheids sets vormen een essentiële mogelijkheid wanneer u betrouw bare cloud oplossingen wilt bouwen.
 
@@ -146,7 +146,7 @@ Misbruik van bronnen kan een probleem zijn wanneer VM-processen meer resources g
 
 U wordt aangeraden [Azure monitor](/azure/monitoring-and-diagnostics/monitoring-overview-metrics) te gebruiken om inzicht te krijgen in de status van uw resource. Azure Monitor functies:
 
-- [Diagnostische logboek bestanden](../../azure-monitor/platform/diagnostic-logs-overview.md)van de resource: Bewaakt uw VM-resources en identificeert mogelijke problemen waardoor de prestaties en beschik baarheid kunnen worden aangetast.
+- [Diagnostische logboek bestanden](../../azure-monitor/platform/resource-logs-overview.md)van de resource: Bewaakt uw VM-resources en identificeert mogelijke problemen waardoor de prestaties en beschik baarheid kunnen worden aangetast.
 - [Azure Diagnostics extensie](/azure/azure-monitor/platform/diagnostics-extension-overview): Biedt mogelijkheden voor bewaking en diagnostiek op Windows-Vm's. U kunt deze mogelijkheden inschakelen door de uitbrei ding op te nemen als onderdeel van de [Azure Resource Manager sjabloon](/azure/virtual-machines/windows/extensions-diagnostics-template).
 
 Organisaties die de prestaties van de virtuele machine niet controleren, kunnen niet bepalen of bepaalde wijzigingen in prestatie patronen normaal of abnormaal zijn. Een virtuele machine die meer resources verbruikt dan normaal, kan duiden op een aanval van een externe bron of een aangetast proces dat wordt uitgevoerd in de virtuele machine.

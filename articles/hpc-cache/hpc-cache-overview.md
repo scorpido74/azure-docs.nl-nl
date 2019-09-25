@@ -4,18 +4,18 @@ description: Hierin wordt de Azure HPC-cache, een oplossing voor bestands toegan
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: overview
-ms.date: 09/19/2019
+ms.date: 09/24/2019
 ms.author: v-erkell
-ms.openlocfilehash: f4c858d7a71cf02b4a8fe181deecbf3a1b652885
-ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
+ms.openlocfilehash: 093116a8def69e3f63af9aeb963abc60841cbe85
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71180683"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71257017"
 ---
 # <a name="what-is-azure-hpc-cache-preview"></a>Wat is Azure HPC Cache? (Preview)
 
-De Azure HPC-cache versnelt de toegang tot uw gegevens voor HPC-taken (High-Performance Computing). Door bestanden in Azure in de cache op te slaan, is de schaal baarheid van Cloud Computing ook beschikbaar voor werk stromen waarbij uw gegevens worden opgeslagen op WAN-koppelingen, zoals in uw lokale Data Center-network-attached storage omgeving (NAS).
+De Azure HPC-cache versnelt de toegang tot uw gegevens voor HPC-taken (High-Performance Computing). Door bestanden in Azure in de cache op te slaan, brengt Azure HPC cache de schaal baarheid van Cloud Computing over aan uw bestaande werk stroom. Deze service kan ook worden gebruikt voor werk stromen waarbij uw gegevens op WAN-koppelingen worden opgeslagen, zoals in uw lokale Data Center-network-attached storage omgeving (NAS).
 
 De Azure HPC-cache is eenvoudig te starten en te controleren vanaf de Azure Portal. Bestaande NFS-opslag of nieuwe BLOB-containers kunnen deel uitmaken van de geaggregeerde naam ruimte, waardoor client toegang eenvoudig kan worden gemaakt, zelfs als u het back-end-opslag doel wijzigt.
 
@@ -37,13 +37,13 @@ In media en entertainment kan Azure HPC cache de toegang tot gegevens versnellen
 
 Veel biowetenschappen-werk stromen kunnen profiteren van scale-out bestands caches.
 
-Een onderzoek instituut dat de genomic-analyse werk stromen in azure wil bepoorten, kan deze eenvoudig verplaatsen met behulp van de Azure HPC-cache. Omdat de cache POSIX-bestands toegang biedt, kunnen ze hun bestaande werk stroom aan de client zijde in de Cloud uitvoeren zonder dat er wijzigingen hoeven te worden aangebracht.
+Een onderzoek instituut dat de genomic-analyse werk stromen in azure wil bepoorten, kan deze eenvoudig verplaatsen met behulp van de Azure HPC-cache. Omdat de cache POSIX-bestands toegang biedt, zijn er geen wijzigingen aan de client zijde nodig om de bestaande client werk stroom in de Cloud uit te voeren.
 
 De Azure HPC-cache kan ook worden gebruikt om de efficiëntie te verbeteren van taken zoals secundaire analyse, farmacologische simulatie of AI-gestuurde afbeeldings analyse.
 
 ### <a name="financial-services-analytics"></a>Analyse voor financiële dienstverlening
 
-Een HPC-cache van Azure kan helpen bij het versnellen van kwantitatieve analyse berekeningen, workloads voor risico analyse en Monte Carlo-simulaties om financiële diensten bedrijven beter inzicht te geven in strategische beslissingen te nemen.
+Een implementatie van een Azure HPC-cache kan bijdragen aan het versnellen van kwantitatieve analyse berekeningen, workloads voor risico analyse en Monte Carlo-simulaties om financiële diensten bedrijven beter inzicht te geven in het nemen van strategische beslissingen.
 
 ## <a name="region-availability"></a>Beschikbaarheid in regio’s
 
@@ -60,7 +60,7 @@ Controleer de [product pagina van de Azure HPC-cache](https://azure.microsoft.co
 
 ## <a name="preview-availability"></a>Preview-Beschik baarheid
 
-De open bare preview van de Azure HPC-cache is beperkt om de kwaliteit van de service te garanderen. Vraag toegang aan door [dit formulier](https://aka.ms/onboard-hpc-cache)in te vullen. Nadat uw abonnement is toegevoegd aan de toegangs lijst, kunt u test caches maken.
+De open bare preview van de Azure HPC-cache is beperkt om de kwaliteit van de service te garanderen. Vraag toegang aan door [dit formulier](https://aka.ms/onboard-hpc-cache)in te vullen. Nadat uw abonnement is toegevoegd aan de lijst met toegangs rechten, kunt u test caches maken.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -9,12 +9,12 @@ ms.date: 06/01/2019
 ms.author: tamram
 ms.reviewer: hux
 ms.subservice: blobs
-ms.openlocfilehash: 6278b16221072b9b5bca371007296806454ba197
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: fcc5c4008c0fdef3b77e436761d8958fe31458d8
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71212423"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71257371"
 ---
 # <a name="store-business-critical-data-in-azure-blob-storage-immutably"></a>Bedrijfs kritieke gegevens opslaan in Azure Blob-opslag immutably 
 
@@ -42,7 +42,7 @@ Onveranderbare opslag ondersteunt het volgende:
 
 - **Configuratie op container niveau**: Gebruikers kunnen op het niveau van de opslag op basis van op tijd gebaseerd Bewaar beleid en geldige bewarings codes configureren. Met behulp van eenvoudige instellingen op container niveau kunnen gebruikers op tijd gebaseerd Bewaar beleid maken en vergren delen, bewaar intervallen uitbreiden, juridische bewaringen instellen en wissen. Deze beleids regels zijn van toepassing op alle blobs in de container, zowel bestaande als nieuwe.
 
-- **Ondersteuning voor controle logboeken**: Elke container bevat een beleids audit logboek. Het bevat Maxi maal zeven op tijd gebaseerde Bewaar opdrachten voor vergrendeld Bewaar beleid op basis van tijd en bevat de gebruikers-ID, het type opdracht, de tijds tempels en het Bewaar interval. Voor juridische bewaringen bevat het logboek de Tags gebruikers-ID, opdracht type, tijds tempels en juridische bewaring. Dit logboek wordt bewaard gedurende de levens duur van het beleid, overeenkomstig de richt lijnen van de 17a-4 (f). In het [activiteiten logboek van Azure](../../azure-monitor/platform/activity-logs-overview.md) wordt een uitgebreidere logboek van alle activiteiten van het controle vlak weer gegeven. bij het inschakelen van [Azure Diagnostische logboeken](../../azure-monitor/platform/diagnostic-logs-overview.md) worden de gegevenslaag bewerkingen bewaard en weer gegeven. Het is de verantwoordelijkheid van de gebruiker om deze logboeken permanent op te slaan, zoals vereist voor regelgevende of andere doel einden.
+- **Ondersteuning voor controle logboeken**: Elke container bevat een beleids audit logboek. Het bevat Maxi maal zeven op tijd gebaseerde Bewaar opdrachten voor vergrendeld Bewaar beleid op basis van tijd en bevat de gebruikers-ID, het type opdracht, de tijds tempels en het Bewaar interval. Voor juridische bewaringen bevat het logboek de Tags gebruikers-ID, opdracht type, tijds tempels en juridische bewaring. Dit logboek wordt bewaard gedurende de levens duur van het beleid, overeenkomstig de richt lijnen van de 17a-4 (f). In het [activiteiten logboek van Azure](../../azure-monitor/platform/activity-logs-overview.md) wordt een uitgebreidere logboek van alle activiteiten van het controle vlak weer gegeven. bij het inschakelen van [Azure Diagnostische logboeken](../../azure-monitor/platform/resource-logs-overview.md) worden de gegevenslaag bewerkingen bewaard en weer gegeven. Het is de verantwoordelijkheid van de gebruiker om deze logboeken permanent op te slaan, zoals vereist voor regelgevende of andere doel einden.
 
 ## <a name="how-it-works"></a>Hoe werkt het?
 

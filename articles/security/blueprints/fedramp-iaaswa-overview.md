@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/08/2018
 ms.author: jomolesk
-ms.openlocfilehash: e1d481c6019feebf3d62f0e23480f5572363869c
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: bcce4dcac35b783efefe81abc2090506502e9931
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946846"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71257280"
 ---
 # <a name="azure-security-and-compliance-blueprint-iaas-web-application-for-fedramp"></a>Azure-blauwdruk voor beveiliging en naleving: IaaS-webtoepassing voor FedRAMP
 
@@ -62,8 +62,8 @@ Deze oplossing maakt gebruik van de volgende Azure-Services. Details van de impl
 - Azure Load Balancer
 - Azure Application Gateway
     - (1) WAF-Application Gateway ingeschakeld
-        - firewall modus: voor komen
-        - regelset: OWASP 3,0
+        - Firewall modus: voor komen
+        - Regelset: OWASP 3,0
         - Listener: poort 443
 - Azure Storage
     - (7) geografisch redundante opslag accounts
@@ -139,18 +139,18 @@ De volgende technologieën bieden mogelijkheden voor identiteits beheer in de Az
 
 ### <a name="business-continuity"></a>Bedrijfscontinuïteit
 
-**Hoge beschikbaarheid**: Er is ten minste één virtuele machine beschikbaar tijdens een geplande of niet-geplande onderhouds gebeurtenis die voldoet aan de 99,95% Azure SLA. De oplossing implementeert alle virtuele machines met weblaag en gegevenslaag in [](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets)een beschikbaarheidsset. Beschikbaarheids sets zorgen ervoor dat de virtuele machines over meerdere geïsoleerde hardwareconfiguraties worden gedistribueerd om de beschik baarheid te verbeteren. Bovendien implementeert deze oplossing de SQL Server virtuele machines in een Beschikbaarheidsset als AlwaysOn- [beschikbaarheids groep](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-availability-group-overview). De functie AlwaysOn-beschikbaarheids groep biedt mogelijkheden voor hoge Beschik baarheid en herstel na nood gevallen.
+**Hoge beschikbaarheid**: Er is ten minste één virtuele machine beschikbaar tijdens een geplande of niet-geplande onderhouds gebeurtenis die voldoet aan de 99,95% Azure SLA. De oplossing implementeert alle virtuele machines met weblaag en gegevenslaag in een [beschikbaarheidsset](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets). Beschikbaarheids sets zorgen ervoor dat de virtuele machines over meerdere geïsoleerde hardwareconfiguraties worden gedistribueerd om de beschik baarheid te verbeteren. Bovendien implementeert deze oplossing de SQL Server virtuele machines in een Beschikbaarheidsset als [AlwaysOn-beschikbaarheids groep](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-availability-group-overview). De functie AlwaysOn-beschikbaarheids groep biedt mogelijkheden voor hoge Beschik baarheid en herstel na nood gevallen.
 
 **Recovery Services kluis**: De [Recovery Services kluis](https://docs.microsoft.com/azure/backup/backup-azure-recovery-services-vault-overview) maakt back-upgegevens en beveiligt alle configuraties van Azure virtual machines in deze architectuur. Met een Recovery Services kluis kunnen klanten bestanden en mappen herstellen vanaf een IaaS-VM zonder de hele virtuele machine te herstellen, waardoor de herstel tijd sneller verloopt.
 
 **Cloudwitness**: [Cloudwitness](https://docs.microsoft.com/windows-server/failover-clustering/whats-new-in-failover-clustering#BKMK_CloudWitness) is een type quorum-witness voor failoverclusters in Windows Server 2016 die Azure als arbitrage punt gebruikt. De Cloudwitness, zoals elke andere quorumwitness, haalt een stem op en kan deel nemen aan de quorum berekeningen, maar maakt gebruik van de standaard openbaar beschik bare Azure-Blob Storage. Dit elimineert de extra onderhouds overhead van Vm's die worden gehost in een open bare Cloud.
 
-### <a name="logging-and-auditing"></a>Logboek registratie en controle
+### <a name="logging-and-auditing"></a>Logboekregistratie en bewaking
 
-Azure Monitor Logboeken biedt uitgebreide logboek registratie van systeem-en gebruikers activiteiten, evenals de systeem status. De oplossing voor de [Azure monitor](../azure-security-disk-encryption-overview.md) -logboeken verzamelt en analyseert gegevens die zijn gegenereerd door resources in Azure-en on-premises omgevingen.
+Azure Monitor Logboeken biedt uitgebreide logboek registratie van systeem-en gebruikers activiteiten, evenals de systeem status. De oplossing voor de [Azure monitor-logboeken](../azure-security-disk-encryption-overview.md) verzamelt en analyseert gegevens die zijn gegenereerd door resources in Azure-en on-premises omgevingen.
 
 - **Activiteiten logboeken:**  [Activiteiten logboeken](../../azure-monitor/platform/activity-logs-overview.md) bieden inzicht in bewerkingen die worden uitgevoerd op resources in een abonnement. Activiteiten logboeken kunnen helpen bij het bepalen van de initiator, het tijdstip van de gebeurtenis en de status van een bewerking.
-- **Diagnostische logboeken:**  [Diagnostische logboeken](../../azure-monitor/platform/diagnostic-logs-overview.md) zijn alle logboeken die door elke resource worden gegenereerd. Deze logboeken bevatten Windows-gebeurtenis systeem logboeken, Azure-opslag logboeken, Key Vault controle logboeken en Application Gateway toegang en firewall Logboeken.
+- **Diagnostische logboeken:**  [Diagnostische logboeken](../../azure-monitor/platform/resource-logs-overview.md) zijn alle logboeken die door elke resource worden gegenereerd. Deze logboeken bevatten Windows-gebeurtenis systeem logboeken, Azure-opslag logboeken, Key Vault controle logboeken en Application Gateway toegang en firewall Logboeken.
 - **Archivering van Logboeken:**  Alle Diagnostische logboeken schrijven naar een gecentraliseerd en versleuteld Azure Storage-account voor archivering. De retentie kan door de gebruiker worden geconfigureerd, tot 730 dagen, om te voldoen aan de specifieke vereisten voor het bewaren van een organisatie. Deze logboeken maken verbinding met Azure Monitor logboeken voor verwerking, opslag en dashboard rapportage.
 
 Daarnaast worden de volgende bewakings oplossingen geïnstalleerd als onderdeel van deze architectuur. Houd er rekening mee dat het de verantwoordelijkheid van de klant is om deze oplossingen te configureren voor uitlijning met FedRAMP-beveiligings controles:

@@ -1,6 +1,6 @@
 ---
-title: Bewaken van diagnostische logboeken van de Media Services via Azure Monitor | Microsoft Docs
-description: In dit artikel laat zien hoe routeren en diagnostische logboeken via Azure Monitor weer te geven.
+title: Media Services Diagnostische logboeken bewaken via Azure Monitor | Microsoft Docs
+description: In dit artikel wordt beschreven hoe u Diagnostische logboeken kunt routeren en weer geven via Azure Monitor.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,38 +13,38 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2019
 ms.author: juliako
-ms.openlocfilehash: 233b043ffdc295fe94ed2e3ba837d4229848df22
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: 42724ae3619312c2cc172be0e143291cd7fa2a70
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67795840"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71261108"
 ---
-# <a name="monitor-media-services-diagnostic-logs"></a>Diagnostische logboeken van mediaservices controleren
+# <a name="monitor-media-services-diagnostic-logs"></a>Diagnostische logboeken van Media Services controleren
 
-[Azure Monitor](../../azure-monitor/overview.md) kunt u metrische gegevens controleren en tot diagnostische logboeken waarmee u inzicht in hoe uw toepassingen worden uitgevoerd. Voor een gedetailleerde beschrijving van deze functie en om te zien waarom u wilt met behulp van Logboeken voor het metrische en diagnostische gegevens van Azure Media Services, Zie [Media-Services controleren metrische gegevens en logboeken met diagnostische gegevens](media-services-metrics-diagnostic-logs.md).
+Met [Azure monitor](../../azure-monitor/overview.md) kunt u metrische gegevens en Diagnostische logboeken bewaken die u helpen begrijpen hoe uw toepassingen worden uitgevoerd. Zie [Media Services metrische gegevens en Diagnostische logboeken controleren](media-services-metrics-diagnostic-logs.md)voor een gedetailleerde beschrijving van deze functie en om te zien waarom u Azure Media Services metrische gegevens en Diagnostische logboeken wilt gebruiken.
 
-In dit artikel wordt beschreven hoe u gegevens doorsturen naar het opslagaccount en bekijk vervolgens de gegevens. 
+In dit artikel wordt beschreven hoe u gegevens naar het opslag account rondstuurt en vervolgens de gegevens bekijkt. 
 
 ## <a name="prerequisites"></a>Vereisten
 
 - [Een Azure Media Services-account maken](create-account-cli-how-to.md).
-- Beoordeling [Media-Services controleren metrische gegevens en logboeken met diagnostische gegevens](media-services-metrics-diagnostic-logs.md).
+- Controleren [Media Services metrische gegevens en Diagnostische logboeken](media-services-metrics-diagnostic-logs.md).
 
-## <a name="route-data-to-the-storage-account-using-the-portal"></a>Gegevens routeren naar het opslagaccount met behulp van de portal
+## <a name="route-data-to-the-storage-account-using-the-portal"></a>Gegevens naar het opslag account routeren met behulp van de portal
 
 1. Meld u aan bij Azure Portal op https://portal.azure.com.
-1. Navigeer naar uw Media Services-account in en klikt u op **diagnostische instellingen** onder **Monitor**. Hier kunt u een lijst zien van alle resources in uw abonnement die bewakingsgegevens via Azure Monitor genereren. 
+1. Navigeer naar uw Media Services-account in en klik op **Diagnostische instellingen** onder **monitor**. Hier kunt u een lijst zien van alle resources in uw abonnement die bewakingsgegevens via Azure Monitor genereren. 
 
     ![Sectie Diagnostische instellingen](media/media-services-diagnostic-logs/logs01.png)
 
-1. Klik op **diagnostische instelling toevoegen**.
+1. Klik op **Diagnostische instelling toevoegen**.
 
    De diagnostische instelling van een resource is een definitie van *welke* bewakingsgegevens moeten worden doorgestuurd vanuit een bepaalde resource en *waar* die bewakingsgegevens naartoe moeten worden gestuurd.
 
 1. Geef in de weergegeven sectie de instelling een **naam** en schakel het selectievakje in voor **Archiveren naar een opslagaccount**.
 
-    Selecteer het opslagaccount waarnaar u wilt verzenden van Logboeken en drukt u op **OK**.
+    Selecteer het opslag account waarnaar u logboeken wilt verzenden en druk op **OK**.
 1. Schakel alle selectievakjes onder **Logboek** en **Metrische gegevens** in. Afhankelijk van het resourcetype is er mogelijk maar één van deze opties beschikbaar. Met deze selectievakjes bepaalt u welke categorieën beschikbare logboekgegevens en metrische gegevens voor een bepaald resourcetype worden verzonden naar de bestemming die u hebt geselecteerd (in dit geval: een opslagaccount).
 
    ![Sectie Diagnostische instellingen](media/media-services-diagnostic-logs/logs02.png)
@@ -53,9 +53,9 @@ In dit artikel wordt beschreven hoe u gegevens doorsturen naar het opslagaccount
 
 Bewakingsgegevens uit uw resource worden nu doorgestuurd naar het opslagaccount.
 
-## <a name="route-data-to-the-storage-account-using-the-cli"></a>Gegevens routeren naar het opslagaccount met behulp van de CLI
+## <a name="route-data-to-the-storage-account-using-the-cli"></a>Gegevens naar het opslag account routeren met behulp van de CLI
 
-Om in te schakelen opslag van logboeken met diagnostische gegevens in een Storage-Account, moet u het volgende uitvoeren `az monitor diagnostic-settings` CLI-opdracht: 
+Als u de opslag van Diagnostische logboeken in een opslag account wilt inschakelen, `az monitor diagnostic-settings` voert u de volgende CLI-opdracht uit: 
 
 ```cli
 az monitor diagnostic-settings create --name <diagnostic name> \
@@ -83,7 +83,7 @@ az monitor diagnostic-settings create --name amsv3diagnostic \
     --logs '[{"category": "KeyDeliveryRequests",  "enabled": true, "retentionPolicy": {"days": 3, "enabled": true }}]'
 ```
 
-## <a name="view-data-in-the-storage-account-using-the-portal"></a>Gegevens weergeven in de storage-account met behulp van de portal
+## <a name="view-data-in-the-storage-account-using-the-portal"></a>Gegevens in het opslag account weer geven met behulp van de portal
 
 Als u de voorgaande stappen hebt gevolgd, worden gegevens nu doorgestuurd naar uw opslagaccount.
 
@@ -91,14 +91,14 @@ Wellicht moet u vijf minuten wachten voordat de gebeurtenis in het opslagaccount
 
 1. Navigeer in de portal naar de sectie **Opslagaccounts** vanuit de linker navigatiebalk.
 1. Identificeer het opslagaccount dat u in de voorgaande sectie hebt gemaakt en klik erop.
-1. Klik op **Blobs**, klikt u vervolgens op de container met het label **insights-logs-keydeliveryrequests**. Dit is de container met de logboeken. Bewakingsgegevens worden onderverdeeld in containers per resource-ID, klikt u vervolgens op datum en tijd.
+1. Klik op **blobs**en vervolgens op de container met het label **Insights-logs-keydeliveryrequests**. Dit is de container waarin uw logboeken zich bevinden. Bewakings gegevens worden in containers onderverdeeld op Resource-ID en vervolgens op datum en tijd.
 1. Ga naar het bestand PT1H.json door te klikken in de containers voor resource-id, datum en tijd. Klik op het bestand PT1H.json en op **Downloaden**.
 
  U kunt nu de JSON-gebeurtenis zien die in het opslagaccount werd opgeslagen.
 
-### <a name="examples-of-pt1hjson"></a>Voorbeelden van PT1H.json
+### <a name="examples-of-pt1hjson"></a>Voor beelden van PT1H. json
 
-#### <a name="clear-key-delivery-log"></a>Schakel sleutellevering log
+#### <a name="clear-key-delivery-log"></a>Sleutel leverings logboek wissen
 
 ```json
 {
@@ -136,7 +136,7 @@ Wellicht moet u vijf minuten wachten voordat de gebeurtenis in het opslagaccount
 }
 ```
 
-#### <a name="widevine-encrypted-key-delivery-log"></a>Widevine versleutelde sleutellevering log
+#### <a name="widevine-encrypted-key-delivery-log"></a>Widevine versleuteld sleutel leverings logboek
 
 ```json
 {
@@ -176,10 +176,10 @@ Wellicht moet u vijf minuten wachten voordat de gebeurtenis in het opslagaccount
 
 ## <a name="see-also"></a>Zie ook
 
-* [Azure Monitor Metrics](../../azure-monitor/platform/data-platform.md)
-* [Azure Monitor diagnostische logboeken](../../azure-monitor/platform/diagnostic-logs-overview.md)
-* [Het verzamelen en gebruiken van logboekgegevens van uw Azure-resources](../../azure-monitor/platform/diagnostic-logs-overview.md)
+* [Azure Monitor metrische gegevens](../../azure-monitor/platform/data-platform.md)
+* [Diagnostische logboeken Azure Monitor](../../azure-monitor/platform/resource-logs-overview.md)
+* [Logboek gegevens van uw Azure-resources verzamelen en gebruiken](../../azure-monitor/platform/resource-logs-overview.md)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Monitor voor metrische gegevens](media-services-metrics-howto.md)
+[Metrische gegevens bewaken](media-services-metrics-howto.md)

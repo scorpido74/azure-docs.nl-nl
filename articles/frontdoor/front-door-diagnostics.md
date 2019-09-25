@@ -1,6 +1,6 @@
 ---
-title: Bewaking van metrische gegevens en Logboeken in Azure-Service voordeur | Microsoft Docs
-description: Dit artikel beschrijft de verschillende metrische gegevens en Logboeken openen die ondersteuning biedt voor Azure voordeur Service
+title: Metrische gegevens en logboeken bewaken in de Azure front-deur-service | Microsoft Docs
+description: In dit artikel worden de verschillende metrische gegevens en toegangs logboeken beschreven die worden ondersteund door de Azure front-deur service
 services: frontdoor
 documentationcenter: ''
 author: sharad4u
@@ -11,86 +11,86 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/18/2018
 ms.author: sharadag
-ms.openlocfilehash: 16770ea0a320b3d9f081cc21a102ab050a6467f6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5f76df0045fc3939392759ed0edd266380295a85
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60736775"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71260173"
 ---
-# <a name="monitoring-metrics-and-logs-in-azure-front-door-service"></a>Metrische gegevens en Logboeken in Azure voordeur Service bewaken
+# <a name="monitoring-metrics-and-logs-in-azure-front-door-service"></a>Metrische gegevens en logboeken bewaken in de Azure front-deur-service
 
-Met behulp van Azure voordeur Service, kunt u resources kunt controleren op de volgende manieren:
+Met behulp van de Azure front-deur service kunt u bronnen op de volgende manieren controleren:
 
-- **Metrische gegevens**. Application Gateway biedt momenteel zeven metrische gegevens om prestatiemeteritems weer te geven.
-- **Logs**. Activiteit- en diagnostische logboeken kunnen prestaties, toegang en andere gegevens worden opgeslagen of gebruikt vanaf een resource voor bewakingsdoeleinden.
+- **Metrische gegevens**. Application Gateway heeft momenteel zeven metrische gegevens om prestatie meter items weer te geven.
+- **Logboeken**. Met activiteiten en Diagnostische logboeken kunnen prestaties, toegang en andere gegevens worden opgeslagen of verbruikt vanuit een resource voor bewakings doeleinden.
 
 ### <a name="metrics"></a>Metrische gegevens
 
-Metrische gegevens zijn een functie voor bepaalde Azure-resources die u kunt prestatiemeteritems bekijken in de portal. Hier volgen de beschikbare voordeur metrische gegevens:
+Metrische gegevens zijn een functie voor bepaalde Azure-resources waarmee u prestatie meter items in de portal kunt weer geven. Hieronder vindt u de beschik bare metrische gegevens voor de voor deur:
 
 | Gegevens | De naam van de metrische gegevens weergeven | Eenheid | Dimensies | Description |
 | --- | --- | --- | --- | --- |
-| RequestCount | Aantal aanvragen | Count | HttpStatus</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | Het aantal aanvragen van clients geleverd door de voordeur.  |
-| RequestSize | Aanvraaggrootte | Bytes | HttpStatus</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | Het aantal bytes dat als aanvragen van clients naar de voordeur worden verzonden. |
-| ResponseSize | Antwoordgrootte | Bytes | HttpStatus</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | Het aantal bytes dat als antwoorden vanaf de voordeur aan clients worden verzonden. |
-| TotalLatency | Totale latentie | Milliseconden | HttpStatus</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | De tijd berekend op basis van de aanvraag van de client ontvangen door de voordeur totdat de client de laatste byte van de reactie van de voordeur bevestigd. |
-| BackendRequestCount | Aantal back-end-aanvragen | Count | HttpStatus</br>HttpStatusGroup</br>Back-end | Het aantal aanvragen dat is verzonden vanaf de voordeur back-ends. |
-| BackendRequestLatency | Latentie van aanvraag van de back-end | Milliseconden | Back-end | De tijd die wordt berekend op basis van wanneer de aanvraag is verzonden door de voordeur naar de back-end totdat de voordeur de laatste byte van de reactie ontvangen van de back-end. |
-| BackendHealthPercentage | Percentage van de back-Endstatus | Procent | Back-end</br>BackendPool | Het percentage van geslaagde statusrapporten tests vanaf de voordeur back-ends. |
-| WebApplicationFirewallRequestCount | Aantal Web Application Firewall-aanvragen | Count | PolicyName</br>RuleName</br>Bewerking | Het aantal aanvragen van clients verwerkt door de laag voor Toepassingsbeveiliging van voordeur. |
+| RequestCount | Aantal aanvragen | Count | HttpStatus</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | Het aantal client aanvragen dat door de voor deur wordt geleverd.  |
+| RequestSize | Aanvraag grootte | Bytes | HttpStatus</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | Het aantal bytes dat is verzonden als aanvragen van clients naar de voor deur. |
+| ResponseSize | Grootte van antwoord | Bytes | HttpStatus</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | Het aantal bytes dat is verzonden als reacties van de voor deur naar clients. |
+| TotalLatency | Totale latentie | Milliseconden | HttpStatus</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | De tijd die wordt berekend op basis van de aanvraag van de client die wordt ontvangen door de voor deur totdat de client de laatste reactie van de voor deur heeft bevestigd. |
+| BackendRequestCount | Aantal back-aanvragen | Count | HttpStatus</br>HttpStatusGroup</br>Back-end | Het aantal aanvragen dat van de voor deur naar de back-end wordt verzonden. |
+| BackendRequestLatency | Latentie van back-upaanvraag | Milliseconden | Back-end | De tijd die wordt berekend vanaf het moment dat de aanvraag door de voor deur naar de back-end is verzonden tot de voor deur de laatste reactie byte van de back-end heeft ontvangen. |
+| BackendHealthPercentage | Back-status percentage | Percent | Back-end</br>BackendPool | Het percentage geslaagde status tests van front-deur naar back-end. |
+| WebApplicationFirewallRequestCount | Aantal aanvragen voor Web Application firewall | Count | policyName</br>RuleName</br>Action | Het aantal client aanvragen dat is verwerkt door de beveiligingslaag van de toepassingslaag. |
 
-## <a name="activity-log"></a>Activiteitenlogboeken
+## <a name="activity-log"></a>Activiteiten logboeken
 
-Activiteitenlogboeken bieden informatie over de bewerkingen uitgevoerd op de voordeur Service. Ze bepalen ook wat, wie, en wanneer u voor alle schrijfbewerkingen (put, post of delete) die wordt gemaakt op de voordeur Service.
+Activiteiten logboeken bevatten informatie over de bewerkingen die worden uitgevoerd op de voor deur van de service. Ze bepalen ook de What, wie en wanneer voor schrijf bewerkingen (put, post of Delete) die op de voor deur worden uitgevoerd.
 
 >[!NOTE]
->Activiteitenlogboeken bevatten geen lees (get)-bewerkingen. Ze ook niet-bewerkingen bevatten die u uitvoert met behulp van de Azure-portal of de oorspronkelijke Management-API.
+>Activiteiten logboeken bevatten geen lees bewerkingen (Get). Ze bevatten ook geen bewerkingen die u uitvoert met behulp van de Azure Portal of de oorspronkelijke beheer-API.
 
-Activiteitenlogboeken in uw Service voordeur of de logboeken van uw Azure-resources in Azure Monitor toegang. Activiteitenlogboeken weergeven:
+U krijgt toegang tot activiteiten Logboeken in uw front-deur service of alle logboeken van uw Azure-resources in Azure Monitor. Activiteitenlogboeken weergeven:
 
-1. Selecteer uw exemplaar van de voordeur.
-2. Selecteer **activiteitenlogboek**.
+1. Selecteer uw voor deur-exemplaar.
+2. Selecteer **activiteiten logboek**.
 
     ![Activiteitenlogboek](./media/front-door-diagnostics/activity-log.png)
 
-3. Kies een filteren bereik, en selecteer vervolgens **toepassen**.
+3. Kies een filter bereik en selecteer vervolgens **Toep assen**.
 
 ## <a name="diagnostic-logging"></a>Diagnostische logboeken
-Diagnoselogboeken bieden uitgebreide informatie over bewerkingen en fouten die belangrijk zijn voor controle en probleemoplossing. Diagnoselogboeken verschillen van activiteitenlogboeken.
+Diagnostische logboeken bieden uitgebreide informatie over bewerkingen en fouten die belang rijk zijn voor controle en probleem oplossing. Diagnostische logboeken verschillen van activiteiten Logboeken.
 
-Activiteitenlogboeken bieden inzicht in de bewerkingen uitgevoerd op Azure-resources. Diagnoselogboeken bieden inzicht in bewerkingen die de resources zelf zijn uitgevoerd. Zie voor meer informatie, [diagnostische logboeken van Azure Monitor](../azure-monitor/platform/diagnostic-logs-overview.md).
+Activiteiten logboeken bieden inzicht in de bewerkingen die worden uitgevoerd op Azure-resources. Diagnostische logboeken bieden inzicht in bewerkingen die door uw resource worden uitgevoerd. Zie [Azure monitor Diagnostische logboeken](../azure-monitor/platform/resource-logs-overview.md)voor meer informatie.
 
 ![Diagnostische logboeken](./media/front-door-diagnostics/diagnostic-log.png)
 
-Diagnostische logboeken configureren voor uw Service voordeur:
+Diagnostische logboeken configureren voor de voor deur-service:
 
-1. Selecteer uw Azure-voordeur-service.
+1. Selecteer uw Azure front-deur service.
 
-2. Kies **diagnostische instellingen**.
+2. Kies **Diagnostische instellingen**.
 
-3. Selecteer **diagnostische gegevens inschakelen**. Diagnostische logboeken samen met metrische gegevens naar een opslagaccount archiveren, ze naar een event hub streamen of ze verzenden naar Azure Monitor-Logboeken.
+3. Selecteer **diagnostische gegevens inschakelen**. Archiveer Diagnostische logboeken Samen met metrische gegevens naar een opslag account, stream ze naar een Event Hub of stuur ze naar Azure Monitor-Logboeken.
 
-Voordeur Service biedt momenteel diagnostische logboeken (ingedeeld in batches per uur). Diagnoselogboeken bieden afzonderlijke API-aanvragen waarbij elk item in het volgende schema:
+De voor deur-service biedt momenteel Diagnostische logboeken (batched per uur). Diagnostische logboeken bieden afzonderlijke API-aanvragen voor elke vermelding met het volgende schema:
 
 | Eigenschap  | Description |
 | ------------- | ------------- |
 | ClientIp | Het IP-adres van de client die de aanvraag heeft ingediend. |
 | ClientPort | De IP-poort van de client die de aanvraag heeft ingediend. |
-| HttpMethod | HTTP-methode die wordt gebruikt door de aanvraag. |
-| HttpStatusCode | De HTTP-statuscode is geretourneerd door de proxy. |
-| HttpStatusDetails | De resulterende status van de aanvraag. Betekenis van deze tekenreekswaarde kan worden gevonden op een tabel met de Status. |
-| HttpVersion | Het type van de aanvraag of de verbinding. |
-| RequestBytes | De grootte van het bericht van de HTTP-aanvraag in bytes, met inbegrip van de aanvraagheaders en hoofdtekst van de aanvraag. |
-| RequestUri | De URI van de aanvraag ontvangen. |
-| ResponseBytes | Bytes verzonden door de back-endserver als het antwoord.  |
-| RoutingRuleName | De naam van de regel voor doorsturen die aan de aanvraag. |
-| SecurityProtocol | De versie van het TLS/SSL-protocol gebruikt door de aanvraag of null als er geen versleuteling. |
-| timeTaken | De hoeveelheid tijd die de actie heeft uitgevoerd, in milliseconden. |
-| UserAgent | Het browsertype dat de client heeft gebruikt |
-| TrackingReference | De unieke referentie-tekenreeks die een aanvraag die is geleverd door de voordeur, identificeert ook als de header X-Azure-verwijzing naar de client verzonden. Vereist voor het zoeken naar gegevens in de logboeken openen voor een specifieke aanvraag. |
+| httpMethod | De HTTP-methode die door de aanvraag wordt gebruikt. |
+| Http status code | De HTTP-status code die is geretourneerd door de proxy. |
+| HttpStatusDetails | De resulterende status van de aanvraag. De betekenis van deze teken reeks waarde is te vinden in een status verwijzings tabel. |
+| httpVersion | Het type van de aanvraag of verbinding. |
+| RequestBytes | De grootte van het HTTP-aanvraag bericht in bytes, met inbegrip van de aanvraag headers en de hoofd tekst van de aanvraag. |
+| RequestUri | De URI van de ontvangen aanvraag. |
+| ResponseBytes | Bytes dat als reactie door de back-endserver wordt verzonden.  |
+| RoutingRuleName | De naam van de routerings regel die de aanvraag heeft gevonden. |
+| SecurityProtocol | De TLS/SSL-protocol versie die wordt gebruikt door de aanvraag of null als er geen versleuteling is. |
+| TimeTaken | De duur van de actie in milliseconden. |
+| User agent | Het browser type dat door de client wordt gebruikt |
+| TrackingReference | De unieke verwijzings reeks die een aanvraag identificeert die wordt geleverd door de voor deur, ook verzonden als X-Azure-ref-header naar de client. Vereist voor het zoeken naar details in de logboeken van de toegang voor een specifieke aanvraag. |
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Maak een profiel van de voordeur](quickstart-create-front-door.md)
-- [De werking van de voordeur](front-door-routing-architecture.md)
+- [Een voor deur profiel maken](quickstart-create-front-door.md)
+- [De werking van de voor deur](front-door-routing-architecture.md)

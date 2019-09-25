@@ -5,32 +5,32 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 5/6/2019
-ms.openlocfilehash: 43e6fe301cf28b7a342ba2e802c9fce19bfeec4d
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.date: 09/24/2019
+ms.openlocfilehash: 55e802aa1f7bdf0d67d1a9c3f020d255afdc8130
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68815854"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71261904"
 ---
 # <a name="migrate-your-postgresql-database-using-dump-and-restore"></a>Uw PostgreSQL-data base migreren met dump en herstel
-U kunt [pg_dump](https://www.postgresql.org/docs/9.3/static/app-pgdump.html) gebruiken om een postgresql-data base te extra heren in een dump bestand en [Pg_restore](https://www.postgresql.org/docs/9.3/static/app-pgrestore.html) om de postgresql-data base te herstellen vanuit een archief bestand dat door pg_dump is gemaakt.
+U kunt [pg_dump](https://www.postgresql.org/docs/current/static/app-pgdump.html) gebruiken om een postgresql-data base te extra heren in een dump bestand en [Pg_restore](https://www.postgresql.org/docs/current/static/app-pgrestore.html) om de postgresql-data base te herstellen vanuit een archief bestand dat door pg_dump is gemaakt.
 
 ## <a name="prerequisites"></a>Vereisten
 Als u deze hand leiding wilt door lopen, hebt u het volgende nodig:
 - Een [Azure database for postgresql server](quickstart-create-server-database-portal.md) met firewall regels om toegang en data base daaronder toe te staan.
-- [pg_dump](https://www.postgresql.org/docs/9.6/static/app-pgdump.html) -en [pg_restore](https://www.postgresql.org/docs/9.6/static/app-pgrestore.html) -opdracht regel Programma's geïnstalleerd
+- [pg_dump](https://www.postgresql.org/docs/current/static/app-pgdump.html) -en [pg_restore](https://www.postgresql.org/docs/current/static/app-pgrestore.html) -opdracht regel Programma's geïnstalleerd
 
 Voer de volgende stappen uit om uw PostgreSQL-data base te dumpen en te herstellen:
 
 ## <a name="create-a-dump-file-using-pg_dump-that-contains-the-data-to-be-loaded"></a>Maak een dump bestand met behulp van pg_dump dat de gegevens bevat die moeten worden geladen
 Voer de volgende opdracht uit om een back-up te maken van een bestaande PostgreSQL-Data Base op locatie of in een VM:
 ```bash
-pg_dump -Fc -v --host=<host> --username=<name> --dbname=<database name> > <database>.dump
+pg_dump -Fc -v --host=<host> --username=<name> --dbname=<database name> -f <database>.dump
 ```
 Als u bijvoorbeeld een lokale server en een Data Base met de naam **testdb**
 ```bash
-pg_dump -Fc -v --host=localhost --username=masterlogin --dbname=testdb > testdb.dump
+pg_dump -Fc -v --host=localhost --username=masterlogin --dbname=testdb -f testdb.dump
 ```
 
 
@@ -57,18 +57,18 @@ pg_restore -v --no-owner --host=mydemoserver.postgres.database.azure.com --port=
 Een manier om uw bestaande PostgreSQL-data base te migreren naar Azure Database for PostgreSQL-service is door een back-up te maken van de Data Base op de bron en deze te herstellen in Azure. Als u de benodigde tijd voor het volt ooien van de migratie wilt beperken, kunt u de volgende para meters gebruiken met de opdrachten back-up en herstellen.
 
 > [!NOTE]
-> Zie de artikelen [pg_dump](https://www.postgresql.org/docs/9.6/static/app-pgdump.html) en [pg_restore](https://www.postgresql.org/docs/9.6/static/app-pgrestore.html)voor gedetailleerde informatie over de syntaxis.
+> Zie de artikelen [pg_dump](https://www.postgresql.org/docs/current/static/app-pgdump.html) en [pg_restore](https://www.postgresql.org/docs/current/static/app-pgrestore.html)voor gedetailleerde informatie over de syntaxis.
 >
 
 ### <a name="for-the-backup"></a>Voor de back-up
 - Maak de back-up met de-FC-switch, zodat u de terugzet bewerking parallel kunt uitvoeren om deze sneller te maken. Bijvoorbeeld:
 
     ```
-    pg_dump -h MySourceServerName -U MySourceUserName -Fc -d MySourceDatabaseName > Z:\Data\Backups\MyDatabaseBackup.dump
+    pg_dump -h MySourceServerName -U MySourceUserName -Fc -d MySourceDatabaseName -f Z:\Data\Backups\MyDatabaseBackup.dump
     ```
 
 ### <a name="for-the-restore"></a>Voor de herstel bewerking
-- We raden aan dat u het back-upbestand verplaatst naar een virtuele machine van Azure in dezelfde regio als de Azure Database for PostgreSQL-server waarnaar u migreert en de pg_restore van die VM uitvoeren om de netwerk latentie te verminderen. We raden u ook aan om de virtuele machine te maken met versneld [netwerken](../virtual-network/create-vm-accelerated-networking-powershell.md) ingeschakeld.
+- We raden aan dat u het back-upbestand verplaatst naar een virtuele machine van Azure in dezelfde regio als de Azure Database for PostgreSQL-server waarnaar u migreert en de pg_restore van die VM uitvoeren om de netwerk latentie te verminderen. We raden u ook aan om de virtuele machine te maken met [versneld netwerken](../virtual-network/create-vm-accelerated-networking-powershell.md) ingeschakeld.
 
 - Deze moet standaard al worden uitgevoerd, maar open het dump bestand om te controleren of de instructies Create Index na het invoegen van de gegevens zijn. Als dat niet het geval is, verplaatst u de instructies Create Index nadat de gegevens zijn ingevoegd.
 

@@ -11,16 +11,16 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 12/19/2018
-ms.openlocfilehash: 8180fc4db10019a3183af40cf21d9d92b0102201
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: c25d37a4d1695ab94cc0667a13e36e4da640e12a
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567894"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71262153"
 ---
 # <a name="use-the-intelligent-insights-azure-sql-database-performance-diagnostics-log"></a>Het logboek voor diagnostische gegevens over het Intelligent Insights-Azure SQL Database gebruiken
 
-Deze pagina bevat informatie over het gebruik van het logboek voor Azure SQL Database prestatie diagnose dat is gegenereerd door [intelligent Insights](sql-database-intelligent-insights.md), de indeling en de gegevens die het bevat voor uw aangepaste ontwikkelings behoeften. U kunt dit diagnostische logboek verzenden naar [Azure monitor](../azure-monitor/insights/azure-sql.md)-logboeken, [Azure Event hubs](../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md), [Azure Storage](sql-database-metrics-diag-logging.md#stream-into-storage)of een oplossing van derden voor aangepaste DevOps-waarschuwingen en rapportage mogelijkheden.
+Deze pagina bevat informatie over het gebruik van het logboek voor Azure SQL Database prestatie diagnose dat is gegenereerd door [intelligent Insights](sql-database-intelligent-insights.md), de indeling en de gegevens die het bevat voor uw aangepaste ontwikkelings behoeften. U kunt dit diagnostische logboek verzenden naar [Azure monitor-logboeken](../azure-monitor/insights/azure-sql.md), [Azure Event hubs](../azure-monitor/platform/resource-logs-stream-event-hubs.md), [Azure Storage](sql-database-metrics-diag-logging.md#stream-into-storage)of een oplossing van derden voor aangepaste DevOps-waarschuwingen en rapportage mogelijkheden.
 
 ## <a name="log-header"></a>Logboek header
 
@@ -134,12 +134,12 @@ Het laatste deel van het Intelligent Insights prestatie logboek is van toepassin
 "rootCauseAnalysis_s" : "High data IO caused performance to degrade. It seems that this database is missing some indexes that could help."
 ```
 
-U kunt het Intelligent Insights prestatie logboek gebruiken met [Azure monitor]( https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql) -Logboeken of een oplossing van derden voor aangepaste DevOps-waarschuwingen en rapportage mogelijkheden.
+U kunt het Intelligent Insights prestatie logboek gebruiken met [Azure monitor-logboeken]( https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql) of een oplossing van derden voor aangepaste DevOps-waarschuwingen en rapportage mogelijkheden.
 
 ## <a name="next-steps"></a>Volgende stappen
 - Meer informatie over [intelligent Insights](sql-database-intelligent-insights.md) -concepten.
 - Meer informatie over het [oplossen van problemen met de prestaties van Azure SQL database met intelligent Insights](sql-database-intelligent-insights-troubleshoot-performance.md).
-- Meer informatie over het [bewaken van Azure SQL database](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql)met behulp van Azure SQL-analyse.
+- Meer informatie over het [bewaken van Azure SQL database met behulp van Azure SQL-analyse](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql).
 - Meer informatie over het [verzamelen en gebruiken van logboek gegevens van uw Azure-resources](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs).
 
 

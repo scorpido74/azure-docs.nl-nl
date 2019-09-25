@@ -1,49 +1,49 @@
 ---
-title: Migreren van een database met behulp van importeren en exporteren in Azure Database voor PostgreSQL - één Server
-description: Hierin wordt beschreven hoe een PostgreSQL-database voor het uitpakken naar een scriptbestand en importeer de gegevens in de doeldatabase van dat bestand.
+title: Een Data Base migreren met importeren en exporteren in Azure Database for PostgreSQL-één server
+description: Hierin wordt beschreven hoe u een PostgreSQL-data base uitpakt in een script bestand en de gegevens uit dat bestand in de doel database importeert.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 5/6/2019
-ms.openlocfilehash: 785e9ec77dea749546e3f1d59007706eac14f2ea
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 09/24/2019
+ms.openlocfilehash: 0803f56312ca9b650987c2203c4271cff21df9f8
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65067028"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71260365"
 ---
-# <a name="migrate-your-postgresql-database-using-export-and-import"></a>Migreren van de PostgreSQL-database met behulp van exporteren en importeren
-U kunt [pg_dump](https://www.postgresql.org/docs/current/static/app-pgdump.html) om op te halen van een PostgreSQL-database in een scriptbestand en [psql](https://www.postgresql.org/docs/current/static/app-psql.html) de gegevens importeren in de doeldatabase van dat bestand.
+# <a name="migrate-your-postgresql-database-using-export-and-import"></a>Uw PostgreSQL-data base migreren met behulp van exporteren en importeren
+U kunt [pg_dump](https://www.postgresql.org/docs/current/static/app-pgdump.html) gebruiken om een postgresql-Data Base op te halen in een script bestand en [psql](https://www.postgresql.org/docs/current/static/app-psql.html) om de gegevens uit dat bestand in de doel database te importeren.
 
 ## <a name="prerequisites"></a>Vereisten
-Als u wilt in deze gebruiksaanwijzing kunt doorlopen, hebt u het volgende nodig:
-- Een [Azure Database for PostgreSQL-server](quickstart-create-server-database-portal.md) aan de firewallregels voor het toestaan van toegang en database daaronder.
-- [pg_dump](https://www.postgresql.org/docs/9.6/static/app-pgdump.html) opdrachtregelprogramma moet zijn geïnstalleerd
-- [psql](https://www.postgresql.org/docs/9.6/static/app-psql.html) opdrachtregelprogramma moet zijn geïnstalleerd
+Als u deze hand leiding wilt door lopen, hebt u het volgende nodig:
+- Een [Azure database for postgresql server](quickstart-create-server-database-portal.md) met firewall regels om toegang en data base daaronder toe te staan.
+- [pg_dump](https://www.postgresql.org/docs/current/static/app-pgdump.html) -opdracht regel programma geïnstalleerd
+- [psql](https://www.postgresql.org/docs/current/static/app-psql.html) -opdracht regel programma geïnstalleerd
 
-Volg deze stappen als u wilt exporteren en importeren van de PostgreSQL-database.
+Volg deze stappen voor het exporteren en importeren van uw PostgreSQL-data base.
 
-## <a name="create-a-script-file-using-pgdump-that-contains-the-data-to-be-loaded"></a>Maken van een scriptbestand met behulp van pg_dump met de gegevens worden geladen
-Exporteren van uw bestaande PostgreSQL-database on-premises of in een virtuele machine naar een sql-script-bestand, kunt u de volgende opdracht uitvoeren in uw bestaande omgeving:
+## <a name="create-a-script-file-using-pg_dump-that-contains-the-data-to-be-loaded"></a>Een script bestand maken met behulp van pg_dump dat de gegevens bevat die moeten worden geladen
+Als u uw bestaande PostgreSQL-data base on-premises of in een virtuele machine naar een SQL-script bestand wilt exporteren, voert u de volgende opdracht uit in uw bestaande omgeving:
 ```bash
 pg_dump –-host=<host> --username=<name> --dbname=<database name> --file=<database>.sql
 ```
-Bijvoorbeeld, als u hebt een database met de naam en een lokale server **testdb** erin:
+Als u bijvoorbeeld een lokale server en een Data Base met de naam **testdb** bevat:
 ```bash
 pg_dump --host=localhost --username=masterlogin --dbname=testdb --file=testdb.sql
 ```
 
-## <a name="import-the-data-on-target-azure-database-for-postgresql"></a>Importeer de gegevens op de doel-Azure Database for PostgreSQL
-U kunt de psql-opdrachtregel en de parameter--dbname (-d) de gegevens importeren in de Azure Database for PostgreSQL-server en gegevens laden uit het sql-bestand.
+## <a name="import-the-data-on-target-azure-database-for-postgresql"></a>De gegevens op de doel Azure Database for PostgreSQL importeren
+U kunt de psql-opdracht regel en de--dbname para meter (-d) gebruiken om de gegevens te importeren in de Azure Database for PostgreSQL-server en gegevens uit het SQL-bestand te laden.
 ```bash
 psql --file=<database>.sql --host=<server name> --port=5432 --username=<user@servername> --dbname=<target database name>
 ```
-In dit voorbeeld maakt gebruik van hulpprogramma psql en een scriptbestand met de naam **testdb.sql** uit de vorige stap om gegevens te importeren in de database **mypgsqldb** op de doelserver  **mydemoserver.postgres.database.Azure.com**.
+In dit voor beeld maakt gebruik van het psql-hulp programma en een script bestand met de naam **testdb. SQL** uit de vorige stap om gegevens te importeren in de Data Base **mypgsqldb** op de doel server **mydemoserver.postgres.database.Azure.com**.
 ```bash
 psql --file=testdb.sql --host=mydemoserver.database.windows.net --port=5432 --username=mylogin@mydemoserver --dbname=mypgsqldb
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-- Zie voor het migreren van een PostgreSQL-database met behulp van dumpen en terugzetten, [migreren van de PostgreSQL-database met behulp van dumpen en terugzetten](howto-migrate-using-dump-and-restore.md).
-- Voor meer informatie over het migreren van databases met Azure Database voor PostgreSQL, Zie de [handleiding voor databasemigratie](https://aka.ms/datamigration). 
+- Als u een PostgreSQL-Data Base wilt migreren met dump en herstellen, raadpleegt u [uw postgresql-data base migreren met dump en herstellen](howto-migrate-using-dump-and-restore.md).
+- Zie de [hand leiding voor database migratie](https://aka.ms/datamigration)voor meer informatie over het migreren van data bases naar Azure database for PostgreSQL. 

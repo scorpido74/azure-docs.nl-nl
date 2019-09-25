@@ -1,82 +1,82 @@
 ---
-title: Serverlogboeken voor Azure Database voor MariaDB
-description: Beschrijving van de logboeken die beschikbaar zijn in Azure Database voor MariaDB en de beschikbare parameters voor het inschakelen van van verschillende logboekregistratieniveaus.
+title: Server logboeken voor Azure Database for MariaDB
+description: Hierin worden de Logboeken beschreven die beschikbaar zijn in Azure Database for MariaDB en de beschik bare para meters voor het inschakelen van verschillende registratie niveaus.
 author: rachel-msft
 ms.author: raagyema
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 06/12/2019
-ms.openlocfilehash: 7a517be49a249b0b73c901137381bd05946aa4cc
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 10dbd4d7fa838ee7f8a3f70b3caadb570877d685
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67065704"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71259973"
 ---
-# <a name="slow-query-logs-in-azure-database-for-mariadb"></a>Logboeken van de langzame query's in Azure Database voor MariaDB
-In Azure Database voor MariaDB is het logboek voor langzame query's beschikbaar voor gebruikers. Toegang tot het transactielogboek wordt niet ondersteund. Het logboek voor langzame query's kan worden gebruikt om knelpunten in de prestaties voor het oplossen van problemen.
+# <a name="slow-query-logs-in-azure-database-for-mariadb"></a>Trage query Logboeken in Azure Database for MariaDB
+In Azure Database for MariaDB is het langzame query logboek beschikbaar voor gebruikers. Toegang tot het transactie logboek wordt niet ondersteund. Het logboek met trage query's kan worden gebruikt om prestatie knelpunten voor het oplossen van problemen te identificeren.
 
-Zie voor meer informatie over het logboek voor langzame query's, de MariaDB-documentatie voor [logboek voor langzame query's](https://mariadb.com/kb/en/library/slow-query-log-overview/).
+Zie de MariaDB-documentatie voor [langzame query logboeken](https://mariadb.com/kb/en/library/slow-query-log-overview/)voor meer informatie over het langzame query logboek.
 
-## <a name="access-slow-query-logs"></a>Langzame-querylogboeken van toegang
-U kunt weergeven en downloaden van Azure Database voor MariaDB van Logboeken voor langzame query's met behulp van de Azure-portal en de Azure CLI.
+## <a name="access-slow-query-logs"></a>Toegang tot langzame query logboeken
+U kunt Azure Database for MariaDB langzame query logboeken weer geven en downloaden met behulp van de Azure Portal en de Azure CLI.
 
-Selecteer uw Azure Database voor MariaDB-server in de Azure-portal. Onder de **bewaking** kop, selecteer de **serverlogboeken** pagina.
+Selecteer uw Azure Database for MariaDB server in het Azure Portal. Selecteer de pagina **Server logboeken** onder de sectie **bewaking** .
 
-Zie voor meer informatie over Azure-CLI [configureren en -server-logboeken met behulp van Azure CLI](howto-configure-server-logs-cli.md).
+Zie [Server logboeken configureren en openen met Azure cli](howto-configure-server-logs-cli.md)voor meer informatie over Azure cli.
 
-## <a name="log-retention"></a>Logboekbehoud
-Logboeken zijn beschikbaar voor maximaal zeven dagen van hun maken. Als de totale grootte van de beschikbare logboeken 7 GB overschrijdt, worden de oudste bestanden verwijderd totdat ruimte beschikbaar is.
+## <a name="log-retention"></a>Bewaar periode logboek
+Logboeken zijn Maxi maal zeven dagen beschikbaar vanaf het maken ervan. Als de totale grootte van de beschik bare logboeken groter is dan 7 GB, worden de oudste bestanden verwijderd totdat er ruimte beschikbaar is.
 
-Logboeken zijn geroteerd elke 24 uur of 7 GB, afhankelijk van wat eerst komt.
+Logboeken worden elke 24 uur of 7 GB gedraaid, afhankelijk van wat het eerste komt.
 
-## <a name="configure-slow-query-logging"></a>Logboekregistratie voor langzame query's configureren
-Het logboek voor langzame query's is standaard uitgeschakeld. Als u wilt inschakelen, stelt u slow_query_log op ON.
+## <a name="configure-slow-query-logging"></a>Langzame query logboek registratie configureren
+Het logboek voor langzame query's is standaard uitgeschakeld. Als u deze wilt inschakelen, stelt u slow_query_log in op ON.
 
-Er zijn andere parameters die u kunt aanpassen:
+Andere para meters die u kunt aanpassen zijn onder andere:
 
-- **long_query_time**: als een query langer duurt dan long_query_time (in seconden) deze query wordt geregistreerd. De standaardwaarde is 10 seconden.
-- **log_slow_admin_statements**: als u op administratieve instructies zoals ALTER_TABLE en ANALYZE_TABLE in de instructies naar de slow_query_log geschreven bevat.
-- **log_queries_not_using_indexes**: Hiermee bepaalt u of query's die geen gebruik maken van indexen worden geregistreerd in de slow_query_log
-- **log_throttle_queries_not_using_indexes**: Deze parameter beperkt het aantal niet-index-query's die kunnen worden geschreven naar het logboek voor langzame query's. Deze parameter wordt van kracht wanneer log_queries_not_using_indexes is ingesteld op ON.
+- **long_query_time**: als een query langer duurt dan long_query_time (in seconden) dat de query wordt geregistreerd. De standaard waarde is 10 seconden.
+- **log_slow_admin_statements**: als het gaat om beheer instructies zoals ALTER_TABLE en ANALYZE_TABLE in de instructies die naar de slow_query_log zijn geschreven.
+- **log_queries_not_using_indexes**: bepaalt of query's die geen indexen gebruiken, worden geregistreerd in de slow_query_log
+- **log_throttle_queries_not_using_indexes**: Met deze para meter wordt het aantal niet-index query's beperkt dat naar het langzame query logboek kan worden geschreven. Deze para meter wordt van kracht wanneer log_queries_not_using_indexes is ingesteld op ON.
 
-Zie de MariaDB [trage query-documentatie voor log](https://mariadb.com/kb/en/library/slow-query-log-overview/) voor een volledige beschrijving van de parameters voor het vastleggen van langzame query's.
+Zie de documentatie voor MariaDB [langzame query logboeken](https://mariadb.com/kb/en/library/slow-query-log-overview/) voor volledige beschrijvingen van de para meters van de langzame query-Logboeken.
 
 ## <a name="diagnostic-logs"></a>Diagnostische logboeken
-Azure Database voor MariaDB is geïntegreerd met Azure Monitor diagnostische logboeken. Als u Logboeken voor langzame query's hebt ingeschakeld op uw server MariaDB, kunt u deze naar Azure Monitor-Logboeken, Event Hubs of Azure Storage verzonden. Zie voor meer informatie over het inschakelen van diagnostische logboeken, het gedeelte van de [diagnostische logboeken documentatie](../azure-monitor/platform/diagnostic-logs-overview.md).
+Azure Database for MariaDB is geïntegreerd met Azure Monitor Diagnostische logboeken. Zodra u langzame query logboeken op uw MariaDB-server hebt ingeschakeld, kunt u ervoor kiezen om deze aan Azure Monitor-logboeken, Event Hubs of Azure Storage uit te geven. Zie de sectie over de [documentatie van Diagnostische logboeken](../azure-monitor/platform/resource-logs-overview.md)voor meer informatie over het inschakelen van Diagnostische logboeken.
 
 > [!IMPORTANT]
-> Deze diagnostische functies voor server-Logboeken is alleen beschikbaar in het algemeen gebruik en geoptimaliseerd voor geheugen [Prijscategorieën](concepts-pricing-tiers.md).
+> Deze diagnostische functie voor Server Logboeken is alleen beschikbaar in de [prijs categorie](concepts-pricing-tiers.md)algemeen en geoptimaliseerd voor geheugen.
 
-De volgende tabel wordt beschreven wat er in elk logboek. Afhankelijk van de uitvoermethode, zijn de velden die zijn opgenomen en de volgorde waarin ze worden weergegeven kunnen verschillen.
+In de volgende tabel wordt de inhoud van elk logboek beschreven. Afhankelijk van de uitvoer methode worden de opgenomen velden en de volg orde waarin ze worden weer gegeven, mogelijk verschillend.
 
 | **Eigenschap** | **Beschrijving** |
 |---|---|
-| `TenantId` | Uw tenant-ID |
+| `TenantId` | Uw Tenant-ID |
 | `SourceSystem` | `Azure` |
-| `TimeGenerated` [UTC] | Tijdstempel wanneer het logboek is vastgelegd in UTC |
+| `TimeGenerated`UTC | Tijds tempel voor het vastleggen van het logboek in UTC |
 | `Type` | Het type van het logboek. Altijd `AzureDiagnostics` |
 | `SubscriptionId` | GUID voor het abonnement waartoe de server behoort |
-| `ResourceGroup` | Naam van de resourcegroep die de server behoort |
-| `ResourceProvider` | De naam van de resourceprovider. Altijd `MICROSOFT.DBFORMARIADB` |
+| `ResourceGroup` | Naam van de resource groep waartoe de server behoort |
+| `ResourceProvider` | De naam van de resource provider. Altijd `MICROSOFT.DBFORMARIADB` |
 | `ResourceType` | `Servers` |
 | `ResourceId` | Resource-URI |
 | `Resource` | Naam van de server |
 | `Category` | `MySqlSlowLogs` |
 | `OperationName` | `LogEvent` |
 | `Logical_server_name_s` | Naam van de server |
-| `start_time_t` [UTC] | Tijd die de query is begonnen |
-| `query_time_s` | Totale tijd dat de query duurde om uit te voeren |
+| `start_time_t`UTC | Tijdstip waarop de query is gestart |
+| `query_time_s` | De totale tijd die de query heeft uitgevoerd |
 | `lock_time_s` | Totale tijd dat de query is vergrendeld |
 | `user_host_s` | Gebruikersnaam |
-| `rows_sent_s` | Aantal rijen dat is verzonden |
-| `rows_examined_s` | Aantal rijen onderzocht |
+| `rows_sent_s` | Aantal verzonden rijen |
+| `rows_examined_s` | Aantal onderzochte rijen |
 | `last_insert_id_s` | [last_insert_id](https://mariadb.com/kb/en/library/last_insert_id/) |
-| `insert_id_s` | ID ingevoegd |
-| `sql_text_s` | Volledige-query |
-| `server_id_s` | Server-ID |
+| `insert_id_s` | Invoeg-ID |
+| `sql_text_s` | Volledige query |
+| `server_id_s` | Server-id |
 | `thread_id_s` | Thread-ID |
 | `\_ResourceId` | Resource-URI |
 
 ## <a name="next-steps"></a>Volgende stappen
-- [Over het configureren en serverlogboeken openen vanuit de Azure-portal](howto-configure-server-logs-portal.md).
+- [Het configureren en openen van server logboeken vanuit de Azure Portal](howto-configure-server-logs-portal.md).

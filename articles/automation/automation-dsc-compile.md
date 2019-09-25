@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 09/10/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 5d72b474e5f5e62ded6423fcc756e1cd51b905f4
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 10ddb7272de164e6f92022a6f512df31753f7e31
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68850669"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71265134"
 ---
 # <a name="compiling-dsc-configurations-in-azure-automation-state-configuration"></a>DSC-configuraties compileren in Azure Automation status configuratie
 
@@ -37,8 +37,8 @@ U kunt configuraties voor desired state Configuration (DSC) op twee manieren com
 
 1. Klik in uw Automation-account op **State Configuration (DSC)** .
 1. Klik op het tabblad **configuraties** en klik vervolgens op de naam van de configuratie die u wilt compileren.
-1. Klikop compileren.
-1. Als de configuratie geen para meters heeft, wordt u gevraagd om te bevestigen of u deze wilt compileren. Als de configuratie para meters heeft, wordt de Blade **configuratie** voor compileren geopend, zodat u parameter waarden kunt opgeven. Zie de sectie [**basis parameters**](#basic-parameters) voor meer informatie over para meters.
+1. Klik op **compileren**.
+1. Als de configuratie geen para meters heeft, wordt u gevraagd om te bevestigen of u deze wilt compileren. Als de configuratie para meters heeft, wordt de Blade **configuratie voor compileren** geopend, zodat u parameter waarden kunt opgeven. Zie de sectie [**basis parameters**](#basic-parameters) voor meer informatie over para meters.
 1. De pagina **compilatie taak** wordt geopend, zodat u de status van de compilatie taak kunt volgen en de knooppunt configuraties (MOF-configuratie documenten) die het veroorzaakt worden op de Azure Automation status configuratie pull server.
 
 ### <a name="azure-powershell"></a>Azure PowerShell
@@ -259,7 +259,7 @@ De configuratie van een ondertekend knoop punt wordt lokaal geverifieerd op een 
 > [!NOTE]
 > Een configuratie bestand voor een knoop punt mag niet groter zijn dan 1 MB zodat het kan worden geïmporteerd in Azure Automation.
 
-Zie voor meer informatie over het ondertekenen van knooppunt configuraties [verbeteringen in WMF 5,1-configuratie en module ondertekenen](/powershell/wmf/5.1/dsc-improvements#dsc-module-and-configuration-signing-validations).
+Zie voor meer informatie over het ondertekenen van knooppunt configuraties [verbeteringen in WMF 5,1-configuratie en module ondertekenen](/powershell/scripting/wmf/whats-new/dsc-improvements#dsc-module-and-configuration-signing-validations).
 
 ### <a name="compiling-a-configuration-in-windows-powershell"></a>Een configuratie in Windows Power shell compileren
 

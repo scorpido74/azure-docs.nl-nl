@@ -1,6 +1,6 @@
 ---
-title: Azure Monitor-gegevensplatform | Microsoft Docs
-description: Bewaking van de gegevens die zijn verzameld door Azure Monitor is verdeeld in de logboeken die worden gebruikt voor geavanceerde analyse en metrische gegevens die zijn lichtgewicht en kan in de buurt van realtime scenario's ondersteunen.
+title: Azure Monitor gegevens platform | Microsoft Docs
+description: Bewakings gegevens die door Azure Monitor worden verzameld, worden onderverdeeld in metrische waarden die lichter zijn en die vrijwel realtime scenario's en logboeken kunnen ondersteunen die worden gebruikt voor geavanceerde analyse.
 documentationcenter: ''
 author: bwren
 manager: carmonm
@@ -11,84 +11,84 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
-ms.openlocfilehash: 00c0fea9d8ca7ee299a9a19473917eba90edd675
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 48357adccea201aaeb99863b39e9c8cabce915ce
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606978"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71262056"
 ---
-# <a name="azure-monitor-data-platform"></a>Azure Monitor-gegevensplatform
+# <a name="azure-monitor-data-platform"></a>Azure Monitor gegevens platform
 
-Verzamelen van operationele gegevens uit elke laag en elk onderdeel van het gedistribueerde systeem observability inschakelen via de hedendaagse complexe computeromgevingen uitvoeren van gedistribueerde toepassingen die afhankelijk van zowel de cloud als on-premises services zijn, worden vereist. U moet kunt diepe inzichten uitvoeren op deze gegevens en deze te consolideren in een enkel glazen met verschillende perspectieven ter ondersteuning van het grote aantal belanghebbenden in uw organisatie.
+Het inschakelen van de betrouw bare waarde voor de complexe reken omgevingen van vandaag waarop gedistribueerde toepassingen worden uitgevoerd die afhankelijk zijn van zowel Cloud-als on-premises Services, vereist het verzamelen van operationele gegevens uit elke laag en elk onderdeel van het gedistribueerde systeem. U moet in staat zijn om op deze gegevens dieper inzichten uit te voeren en deze samen te voegen in één glas venster met verschillende perspectieven ter ondersteuning van de talrijke belanghebbenden in uw organisatie.
 
-[Azure Monitor](../overview.md) verzamelt en verzamelt gegevens uit een groot aantal bronnen in een algemeen gegevensplatform waar deze kan worden gebruikt voor analyse, visualisatie en waarschuwingen. Het biedt een consistente ervaring op gegevens uit meerdere bronnen, waardoor u veel inzicht in uw bewaakte resources en zelfs met gegevens van andere services die hun gegevens opslaan in Azure Monitor.
+[Azure monitor](../overview.md) verzamelt en integreert gegevens uit verschillende bronnen in een gemeen schappelijk gegevens platform waar het kan worden gebruikt voor analyse, visualisatie en waarschuwingen. Het biedt een consistente ervaring op het niveau van gegevens uit meerdere bronnen, waarmee u inzicht krijgt in al uw bewaakte resources en zelfs met gegevens uit andere services die hun gegevens in Azure Monitor opslaan.
 
 
 ![Overzicht van Azure Monitor](media/data-platform/overview.png)
 
-## <a name="observability-data-in-azure-monitor"></a>Observability gegevens in Azure Monitor
-Metrische gegevens, logboeken en gedistribueerde traceringen worden vaak aangeduid als de drie pijlers van observability. Dit zijn de verschillende soorten gegevens die een hulpprogramma voor bewaking moet verzamelen en analyseren voor voldoende observability van een bewaakt systeem. Observability kan worden bereikt door het correleren van gegevens uit meerdere onderdelen en aggregeren van gegevens voor de volledige set van resources die worden bewaakt. Omdat gegevens uit meerdere bronnen samen worden opgeslagen in Azure Monitor, worden de gegevens kunnen worden gecorreleerd en geanalyseerd op basis van een gemeenschappelijke set hulpprogramma's. Deze ook een koppeling tussen van gegevens op meerdere Azure-abonnementen en tenants, naast het hosten van gegevens voor andere services.
+## <a name="observability-data-in-azure-monitor"></a>Waarneem bare gegevens in Azure Monitor
+Metrische gegevens, logboeken en gedistribueerde traceringen worden meestal aangeduid als de drie pijlers van de waarneem baarheid. Dit zijn de verschillende soorten gegevens die een bewakings programma moet verzamelen en analyseren om voldoende waarneem bare informatie te bieden over een bewaakt systeem. De berekenings functie kan worden bereikt door gegevens van meerdere pijlers te correleren en gegevens samen te voegen over de volledige set van resources die worden bewaakt. Omdat Azure Monitor gegevens uit meerdere bronnen tegelijk opslaat, kunnen de gegevens worden gecorreleerd en geanalyseerd met behulp van een gemeen schappelijke set hulpprogram ma's. Daarnaast worden gegevens over meerdere Azure-abonnementen en-tenants gecorreleerd, naast het hosten van gegevens voor andere services.
 
-Azure-resources genereren een aanzienlijke hoeveelheid gegevens te controleren. Azure Monitor consolideert deze gegevens, samen met de bewaking van gegevens uit andere bronnen bij een platform voor metrische gegevens of Logboeken. Elk is geoptimaliseerd voor bepaalde bewakingsscenario's en elk biedt ondersteuning voor verschillende functies in Azure Monitor. Functies zoals data-analyse, visualisaties of waarschuwingen moeten u weten wat de verschillen, zodat u uw vereiste scenario op de meest efficiënte en voordelige manier implementeren kunt. Inzichten in Azure Monitor, zoals [Application Insights](../app/app-insights-overview.md) of [Azure Monitor voor virtuele machines](../insights/vminsights-overview.md) hebt analyseprogramma's waarmee u zich kunt richten op het opgegeven controle scenario zonder dat u begrijpt de verschillen tussen de twee typen gegevens. 
+Azure-resources genereren een aanzienlijke hoeveelheid bewakings gegevens. Azure Monitor consolideert deze gegevens samen met de bewaking van gegevens van andere bronnen in een meet-of Logboeken platform. Elk is geoptimaliseerd voor bepaalde bewakings scenario's en elk ondersteunt verschillende functies in Azure Monitor. Voor functies als gegevens analyse, visualisaties of waarschuwingen moet u inzicht krijgen in de verschillen zodat u uw vereiste scenario op de meest efficiënte en rendabele manier kunt implementeren. Inzichten in Azure Monitor zoals [Application Insights](../app/app-insights-overview.md) of [Azure monitor voor VM's](../insights/vminsights-overview.md) hulpprogram ma's voor analyse hebben waarmee u zich kunt richten op het specifieke bewakings scenario zonder dat u de verschillen tussen de twee typen gegevens hoeft te begrijpen. 
 
 
 ### <a name="metrics"></a>Metrische gegevens
-[Metrische gegevens](data-platform-metrics.md) zijn numerieke waarden die een bepaald aspect van een systeem op een bepaald punt in tijd beschrijven. Ze worden verzameld met regelmatige tussenpozen en worden aangeduid met een tijdstempel, een naam, een waarde en een of meer definiëren labels. Metrische gegevens kunnen worden samengevoegd met behulp van verschillende algoritmen, in vergelijking met andere metrische gegevens en geanalyseerd voor trends na verloop van tijd. 
+[Metrische gegevens](data-platform-metrics.md) zijn numerieke waarden die een aspect van een systeem op een bepaald moment beschrijven. Ze worden regel matig verzameld en worden geïdentificeerd met een tijds tempel, een naam, een waarde en een of meer labels definiëren. Metrische gegevens kunnen worden geaggregeerd met behulp van verschillende algoritmen, vergeleken met andere metrische gegevens, en gedurende een bepaalde periode geanalyseerd. 
 
-Metrische gegevens in Azure Monitor worden opgeslagen in een time series-database die is geoptimaliseerd voor het analyseren van gegevens met tijdstempel. Dit worden metrische gegevens, met name geschikt voor waarschuwingen en snelle detectie van problemen. Ze kunnen laat u weten hoe uw systeem wordt uitgevoerd, maar meestal moeten worden gecombineerd met logboeken naar de hoofdoorzaak van problemen identificeren.
+Metrische gegevens in Azure Monitor worden opgeslagen in een Data Base met een tijd reeks die is geoptimaliseerd voor het analyseren van tijdgebonden data. Dit maakt metrische gegevens bijzonder geschikt voor waarschuwingen en snelle detectie van problemen. Ze kunnen u vertellen hoe uw systeem wordt uitgevoerd, maar normaal gesp roken moet worden gecombineerd met Logboeken om de hoofd oorzaak van problemen te identificeren.
 
-Metrische gegevens zijn beschikbaar voor interactieve analyses in Azure portal met [Metrics Explorer](../app/metrics-explorer.md). Ze kunnen worden toegevoegd aan een [Azure-dashboard](../learn/tutorial-app-dashboards.md) voor visualisatie in combinatie met andere gegevens en gebruikt voor bijna realtime [waarschuwingen](alerts-metric.md).
+Metrische gegevens zijn beschikbaar voor interactieve analyse in de Azure Portal met [Metrics Explorer](../app/metrics-explorer.md). Ze kunnen worden toegevoegd aan een [Azure-dash board](../learn/tutorial-app-dashboards.md) voor visualisatie in combi natie met andere gegevens en worden gebruikt voor vrijwel real time- [waarschuwingen](alerts-metric.md).
 
-Meer informatie over Azure Monitor Metrics, met inbegrip van de bronnen van de gegevens in [metrische gegevens in Azure Monitor](data-platform-metrics.md).
+Lees meer over de metrische gegevens van Azure Monitor, inclusief de brongegevens in [metrieken in azure monitor](data-platform-metrics.md).
 
 ### <a name="logs"></a>Logboeken
-[Logboeken](data-platform-logs.md) zijn gebeurtenissen die hebben plaatsgevonden binnen het systeem. Ze kunnen verschillende soorten gegevens bevatten en mag worden gestructureerd of vrije tekst met een tijdstempel. Ze kunnen sporadisch worden gemaakt als gebeurtenissen in de omgeving logboekvermeldingen genereren en een systeem zwaar belast wordt doorgaans meer logboekvolume gegenereerd.
+[Logboeken](data-platform-logs.md) zijn gebeurtenissen die in het systeem hebben plaatsgevonden. Ze kunnen verschillende soorten gegevens bevatten en kunnen worden gestructureerd of vrije tekst met een tijds tempel. Ze kunnen sporadisch worden gemaakt als gebeurtenissen in de omgeving logboek vermeldingen genereren en een systeem onder zware belasting genereert normaal gesp roken meer logboek volume.
 
-Logboeken in Azure Monitor worden opgeslagen in een Log Analytics-werkruimte die gebaseerd op [Azure Data Explorer](/azure/data-explorer/) waarmee u een krachtige analyse-engine en [uitgebreide querytaal](/azure/kusto/query/). Logboeken meestal voldoende informatie gegeven om bieden volledige context van het probleem worden geïdentificeerd en zijn nuttig voor het identificeren van hoofdmap geval van problemen.
+Logboeken in Azure Monitor worden opgeslagen in een Log Analytics werk ruimte die is gebaseerd op [Azure Data Explorer](/azure/data-explorer/) en die een krachtige analyse-engine en een [uitgebreide query taal](/azure/kusto/query/)biedt. Logboeken bevatten doorgaans voldoende informatie om te voorzien in de volledige context van het probleem dat wordt geïdentificeerd en zijn waardevol voor het identificeren van het hoofd geval van problemen.
 
 > [!NOTE]
-> Het is belangrijk onderscheid maken tussen Azure Monitor-logboeken en bronnen van logboekgegevens in Azure. Bijvoorbeeld, abonnement op gebeurtenissen in Azure worden geschreven naar een [activiteitenlogboek](activity-logs-overview.md) die u kunt bekijken in het menu Azure Monitor. De meeste resources schrijft operationele gegevens naar een [diagnostisch logboek](diagnostic-logs-overview.md) die u kunt doorsturen naar verschillende locaties. Logboeken in Azure Monitor is een platform voor logboeken die worden verzameld van activiteitenlogboeken en diagnostische logboeken samen met andere bewakingsgegevens voor geavanceerde analyse voor de volledige set van resources.
+> Het is belang rijk om onderscheid te maken tussen Azure Monitor logboeken en bronnen van logboek gegevens in Azure. Gebeurtenissen op abonnements niveau in Azure worden bijvoorbeeld geschreven naar een [activiteiten logboek](activity-logs-overview.md) dat u kunt weer geven in het menu Azure monitor. De meeste resources schrijven operationele informatie naar een [diagnostisch logboek](resource-logs-overview.md) dat u kunt door sturen naar verschillende locaties. Azure Monitor-Logboeken is een platform voor gegevens in een logboek waarbij activiteiten logboeken en Diagnostische logboeken Samen met andere bewakings gegevens worden verzameld om een diepe analyse te bieden over uw hele set resources.
 
 
- U kunt werken met [query's bijgehouden](../log-query/log-query-overview.md) interactief met [Log Analytics](../log-query/portals.md) in Azure portal of toevoegen van de resultaten naar een [Azure-dashboard](../learn/tutorial-app-dashboards.md) voor visualisatie in combinatie met andere gegevens. U kunt ook maken [waarschuwingen voor activiteitenlogboeken](alerts-log.md) die een waarschuwing op basis van de resultaten van een schema-query wordt geactiveerd.
+ U kunt [logboek query's](../log-query/log-query-overview.md) interactief gebruiken met [Log Analytics](../log-query/portals.md) in de Azure portal of de resultaten toevoegen aan een [Azure-dash board](../learn/tutorial-app-dashboards.md) voor visualisatie in combi natie met andere gegevens. U kunt ook [logboek waarschuwingen](alerts-log.md) maken waarmee een waarschuwing wordt geactiveerd op basis van de resultaten van een plannings query.
 
-Meer informatie over Azure Monitor-logboeken met inbegrip van gegevens in hun [registreert in Azure Monitor](data-platform-logs.md).
+Lees meer over Azure Monitor-logboeken met inbegrip van de gegevens bronnen in de [Logboeken van Azure monitor](data-platform-logs.md).
 
 ### <a name="distributed-traces"></a>Gedistribueerde traceringen
-Traceringen worden reeks gerelateerde gebeurtenissen die de aanvraag van een gebruiker via een gedistribueerd systeem volgen. Ze kunnen worden gebruikt om te bepalen het gedrag van toepassingscode en de prestaties van andere transacties. Terwijl Logboeken vaak door de afzonderlijke onderdelen van een gedistribueerd systeem gemaakt wordt, meet een tracering de werking en prestaties van uw toepassing voor de volledige set van onderdelen.
+Traceringen zijn reeksen gerelateerde gebeurtenissen die een gebruikers aanvraag volgen via een gedistribueerd systeem. Ze kunnen worden gebruikt om het gedrag van de toepassings code en de prestaties van verschillende trans acties te bepalen. Hoewel logboeken vaak worden gemaakt door afzonderlijke onderdelen van een gedistribueerd systeem, wordt door een tracering de werking en prestaties van uw toepassing in de hele set onderdelen gemeten.
 
-Gedistribueerde tracering in Azure Monitor is ingeschakeld met de [Application Insights-SDK](../app/distributed-tracing.md), en traceringsgegevens worden opgeslagen met een andere toepassing logboekgegevens die zijn verzameld door Application Insights. Dit maakt ze beschikbaar voor de dezelfde analyseprogramma's als andere logboekgegevens met inbegrip van Logboeken-query's, -dashboards en -waarschuwingen.
+Gedistribueerde tracering in Azure Monitor is ingeschakeld met de [Application INSIGHTS SDK](../app/distributed-tracing.md)en traceer gegevens worden opgeslagen met andere toepassings logboek gegevens die door Application Insights zijn verzameld. Dit maakt het beschikbaar voor dezelfde analyse hulpprogramma's als andere logboek gegevens, waaronder logboek query's, Dash boards en waarschuwingen.
 
-Meer informatie over gedistribueerde tracering op [wat is er gedistribueerde tracering?](../app/distributed-tracing.md).
+Lees meer over gedistribueerde tracering bij [Wat is gedistribueerde](../app/distributed-tracing.md)tracering?.
 
 
-## <a name="compare-azure-monitor-metrics-and-logs"></a>Vergelijk logboeken en metrische gegevens met Azure Monitor
+## <a name="compare-azure-monitor-metrics-and-logs"></a>Azure Monitor metrische gegevens en logboeken vergelijken
 
-De volgende tabel vergelijkt de metrische gegevens en Logboeken in Azure Monitor.
+In de volgende tabel worden metrische gegevens en Logboeken in Azure Monitor vergeleken.
 
 | Kenmerk  | Metrische gegevens | Logboeken |
 |:---|:---|:---|
-| Voordelen | Lichtgewicht en geschikt voor bijna realtime scenario's zoals waarschuwingen. Ideaal voor de snelle detectie van problemen. | Geanalyseerd met krachtige querytaal. Ideaal voor grondige analyse en het identificeren van de hoofdoorzaak te achterhalen. |
-| Data | Alleen numerieke waarden | Tekst- of numerieke gegevens |
-| structuur | De standaardset van eigenschappen zoals tijd van de steekproef, resource, die worden bewaakt, een numerieke waarde. Sommige metrische gegevens over bevatten meerdere dimensies voor verdere definitie. | Unieke set eigenschappen, afhankelijk van het logboektype. |
-| Collection | Verzameld met regelmatige intervallen. | Kan worden verzameld sporadisch als gebeurtenissen een record die activeren moet worden gemaakt. |
-| Weergeven in Azure portal | Metrics Explorer | Log Analytics |
-| Gegevensbronnen opnemen | Platform metrische gegevens verzameld van Azure-resources.<br>Toepassingen bewaakt door Application Insights.<br>Aangepaste gedefinieerd door de toepassing of API. | Toepassings- en diagnostische logboeken.<br>Bewakingsoplossingen.<br>Agents en VM-extensies.<br>Toepassing aanvragen en uitzonderingen.<br>Azure Security Center.<br>Gegevensverzamelaar-API. |
+| Voordelen | Licht gewicht en geschikt voor realtime scenario's zoals waarschuwingen. Ideaal voor snelle detectie van problemen. | Geanalyseerd met uitgebreide query taal. Ideaal voor een grondige analyse en het identificeren van de hoofd oorzaak. |
+| Data | Alleen numerieke waarden | Tekst of numerieke gegevens |
+| Structuur | Standaardset eigenschappen, waaronder de voorbeeld tijd, de bron die wordt bewaakt, een numerieke waarde. Sommige metrische gegevens bevatten meerdere dimensies voor verdere definitie. | Unieke set eigenschappen, afhankelijk van het logboek type. |
+| Collection | Verzameld met regel matige tussen pozen. | Kan sporadisch worden verzameld als gebeurtenissen een record activeren die moet worden gemaakt. |
+| Weer geven in Azure Portal | Metrics Explorer | Log Analytics |
+| Gegevens bronnen bevatten | De metrische gegevens van het platform worden verzameld van Azure-resources.<br>Toepassingen die worden bewaakt door Application Insights.<br>Aangepast gedefinieerd door toepassing of API. | Toepassings-en diagnose Logboeken.<br>Bewakings oplossingen.<br>Agents en VM-extensies.<br>Toepassings aanvragen en-uitzonde ringen.<br>Azure Security Center.<br>Data Collector-API. |
 
-## <a name="collect-monitoring-data"></a>Verzamelen van gegevens
-Verschillende [gegevensbronnen voor Azure Monitor](data-sources.md) wordt geschreven naar een Log Analytics-werkruimte (Logboeken) of de database in Azure Monitor metrics (metrische gegevens) of beide. Sommige bronnen wordt rechtstreeks naar deze gegevensarchieven schrijven, terwijl anderen kunnen naar een andere locatie, zoals Azure storage schrijven en sommige configuratie voor het vullen van Logboeken of metrische gegevens vereisen. 
+## <a name="collect-monitoring-data"></a>Bewakings gegevens verzamelen
+Verschillende [gegevens bronnen voor Azure monitor](data-sources.md) schrijven naar een log Analytics-werk ruimte (Logboeken) of de data base van de Azure monitor metriek (metrisch) of beide. Sommige bronnen schrijven rechtstreeks naar deze gegevens archieven, terwijl andere kunnen schrijven naar een andere locatie, zoals Azure Storage, en een bepaalde configuratie nodig heeft om Logboeken of metrieken te vullen. 
 
-Zie [metrische gegevens in Azure Monitor](data-platform-metrics.md) en [registreert in Azure Monitor](data-platform-logs.md) voor een overzicht van verschillende gegevensbronnen die elk type.
+Bekijk de [metrische gegevens in azure monitor](data-platform-metrics.md) en [meldt zich aan bij Azure monitor](data-platform-logs.md) voor een vermelding van de verschillende bronnen die elk type vullen.
 
 
 ## <a name="stream-data-to-external-systems"></a>Stream-gegevens met externe systemen
-Naast het gebruik van de hulpprogramma's in Azure voor het analyseren van gegevens, mogelijk hebt u een vereiste dit doorsturen naar een extern hulpprogramma, zoals een security information en event management (SIEM) product. Doorsturen van dit gebeurt meestal rechtstreeks vanuit de bewaakte resources via [Azure Event Hubs](/azure/event-hubs/). Sommige gegevensbronnen kunnen worden geconfigureerd voor het verzenden van gegevens rechtstreeks naar een event hub, terwijl u een ander proces, zoals een logische App gebruiken kunt om de vereiste gegevens te halen. Zie [Stream Azure-bewakingsgegevens naar een event hub voor gebruik door een extern hulpprogramma](stream-monitoring-data-event-hubs.md) voor meer informatie.
+Naast het gebruik van de hulpprogramma's in Azure voor het analyseren van gegevens, mogelijk hebt u een vereiste dit doorsturen naar een extern hulpprogramma, zoals een security information en event management (SIEM) product. Doorsturen van dit gebeurt meestal rechtstreeks vanuit de bewaakte resources via [Azure Event Hubs](/azure/event-hubs/). Sommige bronnen kunnen worden geconfigureerd om gegevens rechtstreeks naar een Event Hub te verzenden terwijl u een ander proces, zoals een logische app, kunt gebruiken om de vereiste gegevens op te halen. Zie [Azure monitoring-gegevens streamen naar een event hub voor gebruik door een extern hulp programma](stream-monitoring-data-event-hubs.md) voor meer informatie.
 
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over [metrische gegevens in Azure Monitor](data-platform-metrics.md).
-- Meer informatie over [registreert in Azure Monitor](data-platform-logs.md).
+- Meer informatie over [metrische gegevens vindt u in azure monitor](data-platform-metrics.md).
+- Lees meer over de [Logboeken in azure monitor](data-platform-logs.md).
 - Meer informatie over de [bewakingsgegevens beschikbaar](data-sources.md) voor verschillende resources in Azure.

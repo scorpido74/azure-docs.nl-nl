@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 71b7e4bd9406e7fb300ebccd86908820b7628c29
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: 4ebb31a839a645bcb1312405ee0222f39dbbcd1e
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71000764"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71261272"
 ---
 # <a name="how-to-generate-and-transfer-hsm-protected-keys-for-azure-key-vault"></a>Met HSM beveiligde sleutels genereren en overdragen voor Azure Key Vault
 
@@ -41,7 +41,7 @@ Meer informatie over het genereren en overdragen van een met HSM beschermde sleu
 
 ## <a name="more-information-about-ncipher-hsms-and-microsoft-services"></a>Meer informatie over nCipher Hsm's en micro soft-Services
 
-nCipher Security is een toonaangevende wereld wijde provider van gegevens versleuteling en Cyber-beveiligings oplossingen voor de sectoren financiële services, hoge technologie, productie, overheid en technologie. Met een 40 jaar bijhouden van de bescherming van bedrijfs-en overheids informatie, worden nCipher-beveiligings oplossingen gebruikt door vier van de vijf grootste energie-en lucht bedrijven. Hun oplossingen worden ook gebruikt door 22 NAVO landen/regio's en beveiligen meer dan 80 procent van de wereld wijde betalings transacties.
+nCipher-beveiliging, een Entrust Datacard bedrijf, is een leider op de HSM-markt voor algemeen gebruik, die wereld wijde organisaties biedt door vertrouwen, integriteit en controle te leveren aan hun bedrijfs kritieke informatie en toepassingen. de cryptografische oplossingen van nCipher beveiligen opkomende technologieën – Cloud, IoT, Block Chain, digitale betalingen, en helpen om te voldoen aan nieuwe nalevings mandaten, met behulp van dezelfde bewezen beproefde technologie waar wereld wijde organisaties hun gevoelige gegevens, netwerk communicatie en bedrijfs infrastructuur. nCipher zorgt voor een vertrouwen voor bedrijfskritische toepassingen, waardoor de integriteit van gegevens en klanten te allen tijde volledig kunnen worden beheerd.
 
 Micro soft heeft samengewerkt met nCipher-beveiliging om de status van Art voor Hsm's te verbeteren. Deze verbeteringen bieden u de mogelijkheid om de typische voor delen van gehoste services te krijgen zonder dat u de verliest controle over uw sleutels hoeft te nemen. Met deze verbeteringen kan micro soft de Hsm's beheren, zodat u dit niet hoeft te doen. Als Cloud service Azure Key Vault zo snel omhoog geschaald om te voldoen aan de gebruiks pieken van uw organisatie. Op hetzelfde moment wordt uw sleutel beschermd in de Hsm's van micro soft: U behoudt de controle over de levens cyclus van de sleutel, omdat u de sleutel genereert en deze overdraagt naar de Hsm's van micro soft.
 
@@ -287,6 +287,10 @@ Dit programma maakt een **beveiligings wereld** bestand op%NFAST_KMDATA%\local\w
 
 > [!NOTE]
 > Als uw HSM de nieuwere coderings Suite-DLf3072s256mRijndael niet ondersteunt, kunt u--cipher-Suite = DLf3072s256mRijndael vervangen door--cipher-Suite = DLf1024s160mRijndael
+> 
+> De beveiligings wereld die is gemaakt met New-World. exe, die wordt geleverd met nCipher-software versie 12,50 is niet compatibel met deze BYOK-procedure. Er zijn twee opties beschikbaar:
+> 1) Downgrade nCipher-software versie naar 12.40.2 om een nieuwe beveiligings wereld te maken.
+> 2) Neem contact op met nCipher-ondersteuning en vraag hen om een hotfix te bieden voor 12,50-software versie, waarmee u 12.40.2-versie van New-World. exe kunt gebruiken die compatibel is met deze BYOK procedure.
 
 Ga daarna als volgt te werk:
 

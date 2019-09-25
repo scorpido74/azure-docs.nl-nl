@@ -14,18 +14,16 @@ ms.topic: overview
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/23/2019
+ms.date: 09/24/2019
 ms.author: rkarlin
-ms.openlocfilehash: 19291e233e4086815488973629167cc7d7dc9f4a
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: 964ba16fb7421c58f43d8b7d0d0d96f5cd377579
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240536"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71261870"
 ---
 # <a name="what-is-azure-sentinel"></a>Wat is Azure Sentinel?
-
-
 
 Microsoft Azure Sentinel is een schaal bare, Cloud-native, SIEM-oplossing (Security **Information Event Management)** en **via (Security Orchestration Automated Response)** . Azure Sentinel levert intelligente beveiligings analyses en bedreigings informatie over de hele onderneming, waardoor er één oplossing is voor waarschuwings detectie, zicht baarheid van bedreigingen, proactieve jacht en reactie op bedreigingen. 
 
@@ -73,10 +71,9 @@ Als u bijvoorbeeld het ServiceNow-ticket systeem gebruikt, kunt u de hulpprogram
 ![Playbooks](./media/tutorial-respond-threats-playbook/logic-app.png)
 
 
+## <a name="investigation"></a>Onderzoek
 
-## <a name="investigation-preview"></a>Onderzoek (preview-versie)
-
-De hulpprogram ma's voor [grondige onderzoek](tutorial-investigate-cases.md) van Azure geven u een beter inzicht in het bereik en vinden de hoofd oorzaak van een mogelijke beveiligings risico. U kunt een entiteit kiezen in de interactieve grafiek om interessante vragen te stellen voor een specifieke entiteit, en inzoomen op die entiteit en de bijbehorende verbindingen om de hoofd oorzaak van de dreiging te bereiken. 
+Met de preview-versie van Azure Sentinel [grondige onderzoek](tutorial-investigate-cases.md) kunt u momenteel het bereik begrijpen en de hoofd oorzaak van een mogelijke beveiligings risico vinden. U kunt een entiteit kiezen in de interactieve grafiek om interessante vragen te stellen voor een specifieke entiteit, en inzoomen op die entiteit en de bijbehorende verbindingen om de hoofd oorzaak van de dreiging te bereiken. 
 
 ![Onderzoek](./media/tutorial-investigate-cases/map-timeline.png)
 

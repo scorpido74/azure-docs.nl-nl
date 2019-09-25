@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: ad690fa78f794b26b6cf496ea4485599486752b0
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: af99f369245d6006d0d4784e572020b820e406a3
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71146962"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266041"
 ---
 # <a name="migrate-data-to-azure-cosmos-db-cassandra-api-account-using-striim"></a>Gegevens migreren naar Azure Cosmos DB Cassandra-API-account met behulp van Realtimeplatform
 
@@ -155,7 +155,7 @@ In deze sectie configureert u de Azure Cosmos DB Cassandra-API account als doel 
 
    ![Verbinding maken met doel](./media/cosmosdb-cassandra-api-migrate-data-striim/connect-to-target.png)
 
-1. Voordat u het doel configureert, moet u ervoor zorgen dat u een [Baltimore-basis certificaat hebt toegevoegd aan de Java-omgeving van realtimeplatform](/java/java-sdk-add-certificate-ca-store?view=azure-java-stable#to-add-a-root-certificate-to-the-cacerts-store).
+1. Voordat u het doel configureert, moet u ervoor zorgen dat u een [Baltimore-basis certificaat hebt toegevoegd aan de Java-omgeving van realtimeplatform](/azure/java/java-sdk-add-certificate-ca-store#to-add-a-root-certificate-to-the-cacerts-store).
 
 1. Voer de configuratie-eigenschappen van uw doel Azure Cosmos DB exemplaar in en selecteer **Opslaan** om door te gaan. Hier volgen de belangrijkste para meters die u moet weten:
 

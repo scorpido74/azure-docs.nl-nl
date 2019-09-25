@@ -1,6 +1,6 @@
 ---
 title: Problemen met Azure Log Analytics Linux-Agent oplossen | Microsoft Docs
-description: Beschrijf de symptomen, de oorzaken en de oplossing voor de meest voorkomende problemen met de Log Analytics-agent voor Linux in Azure Monitor.
+description: Beschrijf de symptomen, oorzaken en oplossingen voor de meest voorkomende problemen met de Log Analytics agent voor Linux in Azure Monitor.
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: magoedte
-ms.openlocfilehash: 83f9cc050694344cdc5f4f5a2070bc875fcba3d9
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 2922bbd2e85a671cd17b6042c0b544d3936de884
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67071661"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71262108"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-linux"></a>Het oplossen van problemen met de Log Analytics-agent voor Linux 
 
-Dit artikel bevat informatie over het oplossen van fouten die u mogelijk ondervindt met de Log Analytics-agent voor Linux in Azure Monitor en mogelijke oplossingen om op te lossen ze stelt.
+In dit artikel vindt u informatie over het oplossen van problemen die u mogelijk ondervindt met de Log Analytics-agent voor Linux in Azure Monitor en worden mogelijke oplossingen voorgesteld om deze op te lossen.
 
 Als geen van deze stappen voor u werkt, zijn ook de volgende ondersteuningskanalen beschikbaar:
 
@@ -60,7 +60,7 @@ Als geen van deze stappen voor u werkt, zijn ook de volgende ondersteuningskanal
 | NOT_DEFINED | Omdat de vereiste afhankelijkheden niet zijn geïnstalleerd, wordt niet de auoms auditd-invoegtoepassing geïnstalleerd | Installatie van auoms is mislukt, installeer pakket auditd. |
 | 2 | Ongeldige optie opgegeven voor de shell-bundel. Voer `sudo sh ./omsagent-*.universal*.sh --help` voor gebruik |
 | 3 | Er is geen optie opgegeven voor de shell-bundel. Voer `sudo sh ./omsagent-*.universal*.sh --help` voor gebruik. |
-| 4 | Typt u het pakket is ongeldig of ongeldige proxy-instellingen. omsagent -*rpm*.sh pakketten kunnen alleen worden geïnstalleerd op de RPM-systemen, en omsagent -*deb*.sh pakketten kunnen alleen worden geïnstalleerd op Debian gebaseerde systemen. Het is raadzaam om het gebruik van de universal installer uit de [nieuwste release](../../azure-monitor/learn/quick-collect-linux-computer.md#install-the-agent-for-linux). Lees ook om te controleren of de proxy-instellingen. |
+| 4 | Typt u het pakket is ongeldig of ongeldige proxy-instellingen. omsagent -*rpm*.sh pakketten kunnen alleen worden geïnstalleerd op de RPM-systemen, en omsagent -*deb*.sh pakketten kunnen alleen worden geïnstalleerd op Debian gebaseerde systemen. Het is raadzaam om het gebruik van de universal installer uit de [nieuwste release](../../azure-monitor/learn/quick-collect-linux-computer.md#install-the-agent-for-linux). Controleer ook de verificatie van uw proxy-instellingen. |
 | 5 | De shell-bundel moet worden uitgevoerd als root of er is 403-fout geretourneerd tijdens onboarding. Voer uw opdracht met `sudo`. |
 | 6 | Ongeldige pakket-architectuur of er is fout 200-fout geretourneerd tijdens onboarding; omsagent -*x64.sh pakketten kunnen alleen worden geïnstalleerd op 64-bits systemen, en omsagent -* x86.sh pakketten kunnen alleen worden geïnstalleerd op 32-bits systemen. Download het juiste pakket voor de architectuur van de [nieuwste release](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/latest). |
 | 17 | Installatie van de OMS-pakket is mislukt. Bekijk de uitvoer van de opdracht voor het root-mislukken. |
@@ -70,7 +70,7 @@ Als geen van deze stappen voor u werkt, zijn ook de volgende ondersteuningskanal
 | 22 | Installatie van gebundelde pakket is mislukt. Bekijk de uitvoer van de opdracht voor het root-fout |
 | 23 | SCX of OMI pakket is al geïnstalleerd. Gebruik `--upgrade` in plaats van `--install` voor het installeren van de shell-bundel. |
 | 30 | Fout bij het interne bundel. Bestand een [GitHub-probleem](https://github.com/Microsoft/OMS-Agent-for-Linux/issues) met informatie uit de uitvoer. |
-| 55 | Niet-ondersteunde openssl-versie of kan geen verbinding maken met Azure Monitor of dpkg is vergrendeld of ontbrekende curl programma. |
+| 55 | Niet-ondersteunde openssl-versie of kan geen verbinding maken met Azure Monitor of met dpkg is een vergrendeld of ontbrekend krul-programma. |
 | 61 | Ontbrekende Python ctypes-bibliotheek. Installeer de Python-bibliotheek voor ctypes of het pakket (python-ctypes). |
 | 62 | Ontbrekende tar programma tar installeren. |
 | 63 | Ontbrekende sed programma installeren sed. |
@@ -85,7 +85,7 @@ Als geen van deze stappen voor u werkt, zijn ook de volgende ondersteuningskanal
 | 3 | Ongeldige configuratie opgegeven voor het script omsadmin. Voer `sudo sh /opt/microsoft/omsagent/bin/omsadmin.sh -h` voor gebruik. |
 | 4 | Ongeldige proxy opgegeven voor het script omsadmin. Controleer of de proxy en Zie onze [documentatie voor het gebruik van een HTTP-proxy](log-analytics-agent.md#network-firewall-requirements). |
 | 5 | 403 HTTP-fout ontvangen van Azure Monitor. Zie de volledige uitvoer van het script omsadmin voor meer informatie. |
-| 6 | Niet-200 HTTP-fout bij het ontvangen van Azure Monitor. Zie de volledige uitvoer van het script omsadmin voor meer informatie. |
+| 6 | Er is een niet-200 HTTP-fout ontvangen van Azure Monitor. Zie de volledige uitvoer van het script omsadmin voor meer informatie. |
 | 7 | Kan geen verbinding maken met Azure Monitor. Zie de volledige uitvoer van het script omsadmin voor meer informatie. |
 | 8 | Onboarding van de fout naar Log Analytics-werkruimte. Zie de volledige uitvoer van het script omsadmin voor meer informatie. |
 | 30 | Interne scriptfout. Bestand een [GitHub-probleem](https://github.com/Microsoft/OMS-Agent-for-Linux/issues) met informatie uit de uitvoer. |
@@ -115,7 +115,7 @@ Als geen van deze stappen voor u werkt, zijn ook de volgende ondersteuningskanal
 </match>
  ```
 
-Logboekregistratie voor foutopsporing kunt u zien in batch uploaden naar Azure Monitor gescheiden op type, aantal gegevensitems en de tijd die nodig is om te verzenden:
+Met logboek registratie voor fout opsporing kunt u batch-uploads zien die worden Azure Monitor gescheiden door type, het aantal gegevens items en de gebruikte tijd voor verzen ding:
 
 *Voorbeeld van het logboek voor foutopsporing ingeschakeld:*
 
@@ -153,18 +153,18 @@ Onder de uitvoer-invoegtoepassing, verwijder opmerkingen bij de volgende sectie 
 </match>
 ```
 
-## <a name="issue--unable-to-connect-through-proxy-to-azure-monitor"></a>Probleem:  Kan geen verbinding maken via proxy naar Azure Monitor
+## <a name="issue--unable-to-connect-through-proxy-to-azure-monitor"></a>Probleem:  Kan geen verbinding maken via een proxy met Azure Monitor
 
 ### <a name="probable-causes"></a>Waarschijnlijke oorzaken
 * De proxy die is opgegeven tijdens de voorbereiding is onjuist
-* De Azure Monitor en Azure Automation-Service-eindpunten zijn niet opgenomen in de whitelist in uw datacenter 
+* De Azure Monitor-en Azure Automation Service-eind punten zijn niet white list in uw Data Center 
 
 ### <a name="resolution"></a>Oplossing
-1. Reonboard naar Azure Monitor met de Log Analytics-agent voor Linux met behulp van de volgende opdracht uit met de optie `-v` ingeschakeld. Hiermee kunt uitgebreide uitvoer van de agent verbinding te maken via de proxy voor Azure Monitor. 
+1. Onboarding voor Azure monitor met de log Analytics-agent voor Linux met behulp van de volgende `-v` opdracht met de optie ingeschakeld. Hiermee kan uitgebreide uitvoer van de agent die verbinding maakt met de proxy, worden Azure Monitor. 
 `/opt/microsoft/omsagent/bin/omsadmin.sh -w <Workspace ID> -s <Workspace Key> -p <Proxy Conf> -v`
 
 2. Raadpleeg de sectie [proxy-instellingen bijwerken](agent-manage.md#update-proxy-settings) om te controleren of de agent kan communiceren via een proxyserver goed is geconfigureerd.    
-* Controleer of de volgende Azure Monitor-eindpunten opgenomen in de whitelist zijn:
+* Controleer of de volgende Azure Monitor-eind punten white list zijn:
 
     |Agentresource| Poorten | Richting |
     |------|---------|----------|  
@@ -173,7 +173,7 @@ Onder de uitvoer-invoegtoepassing, verwijder opmerkingen bij de volgende sectie 
     |*.blob.core.windows.net | Poort 443| Binnenkomend en uitgaand |  
     |*.azure-automation.net | Poort 443| Binnenkomend en uitgaand | 
 
-## <a name="issue-you-receive-a-403-error-when-trying-to-onboard"></a>Probleem: U ontvangt een 403-fout bij het vrijgeven
+## <a name="issue-you-receive-a-403-error-when-trying-to-onboard"></a>Probleem: Er wordt een 403-fout weer gegeven wanneer u probeert onboarding uit te voeren
 
 ### <a name="probable-causes"></a>Waarschijnlijke oorzaken
 * Datum en tijd is niet correct op Linux-Server 
@@ -185,46 +185,46 @@ Onder de uitvoer-invoegtoepassing, verwijder opmerkingen bij de volgende sectie 
 2. Controleer of dat u de nieuwste versie van de Log Analytics-agent voor Linux hebt geïnstalleerd.  De nieuwste versie wordt nu waarschuwt u als tijdverschilbereik wordt veroorzaakt door het onboarding-fout.
 3. Reonboard met behulp van de juiste werkruimte-ID en Werkruimtesleutel na de installatie-instructies eerder in dit artikel.
 
-## <a name="issue-you-see-a-500-and-404-error-in-the-log-file-right-after-onboarding"></a>Probleem: U ziet een 500 en 404-fout in het logboekbestand direct na de onboarding
+## <a name="issue-you-see-a-500-and-404-error-in-the-log-file-right-after-onboarding"></a>Probleem: U ziet de fout 500 en 404 in het logboek bestand nadat de voor bereiding is uitgevoerd
 Dit is een bekend probleem dat zich op de eerste uploaden van gegevens van Linux in een Log Analytics-werkruimte voordoet. Dit heeft geen invloed op gegevens die worden verzonden of service-ervaring.
 
 
-## <a name="issue-you-see-omiagent-using-100-cpu"></a>Probleem: U ziet omiagent 100% van de CPU
+## <a name="issue-you-see-omiagent-using-100-cpu"></a>Probleem: U ziet omiagent met een CPU van 100%
 
 ### <a name="probable-causes"></a>Waarschijnlijke oorzaken
-Een regressie in nss pem pakket [v1.0.3 5.el7](https://centos.pkgs.org/7/centos-x86_64/nss-pem-1.0.3-5.el7.x86_64.rpm.html) veroorzaakt een ernstige prestatieprobleem, die we hebben gezien komen veel in Redhat/Centos 7.x distributies. Voor meer informatie over dit probleem, controleert u de volgende documentatie: Bug [1667121 prestaties regressie in libcurl](https://bugzilla.redhat.com/show_bug.cgi?id=1667121).
+Een regressie in nss-PEM Package [v 1.0.3 -5. EL7](https://centos.pkgs.org/7/centos-x86_64/nss-pem-1.0.3-7.el7.x86_64.rpm.html) heeft een ernstig prestatie probleem veroorzaakt, die we hebben gezien een heleboel in RedHat/CentOS 7. x-distributies. Raadpleeg de volgende documentatie voor meer informatie over dit probleem: Bug [1667121 prestatie regressie in libkrul](https://bugzilla.redhat.com/show_bug.cgi?id=1667121).
 
-Prestaties gerelateerde fouten die niet voortdurend gebeuren, en ze zijn zeer moeilijk is om te reproduceren. Als u dit probleem is met omiagent ondervindt moet u het script omiHighCPUDiagnostics.sh die de stack-trace van de omiagent worden verzameld wanneer een bepaalde drempelwaarde overschrijden.
+Problemen met betrekking tot prestaties doen zich niet altijd voor en ze zijn zeer lastig te reproduceren. Als u een dergelijk probleem ondervindt met omiagent, moet u het script omiHighCPUDiagnostics.sh gebruiken waarmee de stack tracering van de omiagent wordt verzameld wanneer een bepaalde drempel waarde wordt overschreden.
 
 1. Het script downloaden <br/>
 `wget https://raw.githubusercontent.com/microsoft/OMS-Agent-for-Linux/master/tools/LogCollector/source/omiHighCPUDiagnostics.sh`
 
-2. Diagnose uitvoeren voor 24 uur aan 30% CPU-drempel <br/>
+2. Diagnostische gegevens 24 uur uitvoeren met een CPU-drempel van 30% <br/>
 `bash omiHighCPUDiagnostics.sh --runtime-in-min 1440 --cpu-threshold 30`
 
-3. Aanroepstack zal worden gedumpt in omiagent_trace-bestand als u merkt dat veel Curl en NSS functieaanroepen, volgt u onderstaande stappen voor het oplossen.
+3. Call stack wordt gedumpt in het omiagent_trace-bestand, als u veel krul-en NSS-functie aanroepen ziet, volgt u de onderstaande stappen voor de oplossing.
 
-### <a name="resolution-step-by-step"></a>Resolutie (stap voor stap)
+### <a name="resolution-step-by-step"></a>Oplossing (stapsgewijze stap)
 
-1. Upgrade van het pakket nss pem [v1.0.3 5.el7_6.1](https://centos.pkgs.org/7/centos-updates-x86_64/nss-pem-1.0.3-5.el7_6.1.x86_64.rpm.html). <br/>
+1. Voer een upgrade uit voor het pakket nss-PEM naar [v 1.0.3 -5. EL7 _ 6.1](https://centos.pkgs.org/7/centos-x86_64/nss-pem-1.0.3-7.el7.x86_64.rpm.html). <br/>
 `sudo yum upgrade nss-pem`
 
-2. Als nss pem niet beschikbaar voor de upgrade is (meestal gebeurt op Centos), klikt u vervolgens downgraden curl naar 7.29.0-46. Als per ongeluk hebt u 'yum-update' uitvoert, curl worden geüpgraded naar 7.29.0-51 en het probleem opnieuw wordt uitgevoerd. <br/>
+2. Als nss-PEM niet beschikbaar is voor upgrade (meestal gebeurt op CentOS), downgradet u krul naar 7.29.0-46. Als u per ongeluk ' yum update ' uitvoert, wordt krul bijgewerkt naar 7.29.0-51 en wordt het probleem opnieuw uitgevoerd. <br/>
 `sudo yum downgrade curl libcurl`
 
-3. OMI opnieuw: <br/>
+3. OMI opnieuw starten: <br/>
 `sudo scxadmin -restart`
 
-## <a name="issue-you-are-not-seeing-any-data-in-the-azure-portal"></a>Probleem: U ziet geen gegevens in Azure portal
+## <a name="issue-you-are-not-seeing-any-data-in-the-azure-portal"></a>Probleem: U ziet geen gegevens in de Azure Portal
 
 ### <a name="probable-causes"></a>Waarschijnlijke oorzaken
 
-- Onboarding van Azure Monitor is mislukt
-- Verbinding met Azure Monitor is geblokkeerd
+- Onboarding naar Azure Monitor is mislukt
+- De verbinding met de Azure Monitor is geblokkeerd
 - Log Analytics-agent voor Linux-gegevens een back-up
 
 ### <a name="resolution"></a>Oplossing
-1. Controleer of het onboarding-Azure Monitor geslaagd is door te controleren of het volgende bestand bestaat: `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsadmin.conf`
+1. Controleer of het voorbereidings Azure Monitor is geslaagd door te controleren of het volgende bestand bestaat:`/etc/opt/microsoft/omsagent/<workspace id>/conf/omsadmin.conf`
 2. Met behulp van Reonboard de `omsadmin.sh` opdrachtregelinstructies
 3. Als u een proxy gebruikt, raadpleegt u de stappen voor het oplossen van proxy die eerder is verkregen.
 4. In sommige gevallen, wanneer de Log Analytics-agent voor Linux kan niet met de service communiceren gegevens op de agent is in de wachtrij voor de volledige buffergrootte, 50 MB. De agent moet opnieuw worden gestart door de volgende opdracht uit: `/opt/microsoft/omsagent/bin/service_control restart [<workspace id>]`. 
@@ -233,7 +233,7 @@ Prestaties gerelateerde fouten die niet voortdurend gebeuren, en ze zijn zeer mo
     >Dit probleem is opgelost in agent versie 1.1.0-28 en hoger.
 
 
-## <a name="issue-you-are-not-seeing-forwarded-syslog-messages"></a>Probleem: U ziet geen doorgestuurde Syslog-berichten 
+## <a name="issue-you-are-not-seeing-forwarded-syslog-messages"></a>Probleem: U ziet geen doorgestuurde syslog-berichten 
 
 ### <a name="probable-causes"></a>Waarschijnlijke oorzaken
 * De configuratie die is toegepast op de Linux-server staat niet toe dat de verzameling van de verzonden faciliteiten en/of de logboekniveaus
@@ -247,7 +247,7 @@ Prestaties gerelateerde fouten die niet voortdurend gebeuren, en ze zijn zeer mo
 * Simuleren van een Syslog-bericht voor het gebruik van Log Analytics `logger` opdracht
   * `logger -p local0.err "This is my test message"`
 
-## <a name="issue-you-are-receiving-errno-address-already-in-use-in-omsagent-log-file"></a>Probleem: U ontvangt Errno adres al in gebruik is in het logboekbestand omsagent
+## <a name="issue-you-are-receiving-errno-address-already-in-use-in-omsagent-log-file"></a>Probleem: Het ontvangen errno-adres wordt al gebruikt in het omsagent-logboek bestand
 Als u ziet `[error]: unexpected error error_class=Errno::EADDRINUSE error=#<Errno::EADDRINUSE: Address already in use - bind(2) for "127.0.0.1" port 25224>` in omsagent.log.
 
 ### <a name="probable-causes"></a>Waarschijnlijke oorzaken
@@ -268,7 +268,7 @@ Deze fout geeft aan dat de Linux Diagnostic-extensie (LAD) naast de Log Analytic
 3. Opnieuw opstarten omsagent `sudo /opt/microsoft/omsagent/bin/service_control restart`.
 4. Syslog-service opnieuw starten.
 
-## <a name="issue-you-are-unable-to-uninstall-omsagent-using-purge-option"></a>Probleem: U bent niet verwijderen met de optie opschonen omsagent
+## <a name="issue-you-are-unable-to-uninstall-omsagent-using-purge-option"></a>Probleem: U kunt omsagent niet verwijderen met de optie leegmaken
 
 ### <a name="probable-causes"></a>Waarschijnlijke oorzaken
 
@@ -279,7 +279,7 @@ Deze fout geeft aan dat de Linux Diagnostic-extensie (LAD) naast de Log Analytic
 1. Verwijder de Linux Diagnostic-extensie (LAD).
 2. Verwijder bestanden van de Linux Diagnostic-extensie van de machine als deze aanwezig zijn in de volgende locatie: `/var/lib/waagent/Microsoft.Azure.Diagnostics.LinuxDiagnostic-<version>/` en `/var/opt/microsoft/omsagent/LAD/`.
 
-## <a name="issue-you-cannot-see-data-any-nagios-data"></a>Probleem: U zien geen gegevens alle Nagios-gegevens 
+## <a name="issue-you-cannot-see-data-any-nagios-data"></a>Probleem: U kunt geen gegevens van nagios weer geven 
 
 ### <a name="probable-causes"></a>Waarschijnlijke oorzaken
 * Omsagent gebruiker heeft geen machtigingen om te lezen uit Nagios-logbestand
@@ -302,11 +302,11 @@ Deze fout geeft aan dat de Linux Diagnostic-extensie (LAD) naast de Log Analytic
     </filter>
     ```
 
-## <a name="issue-you-are-not-seeing-any-linux-data"></a>Probleem: U ziet geen alle Linux-gegevens 
+## <a name="issue-you-are-not-seeing-any-linux-data"></a>Probleem: U ziet geen Linux-gegevens 
 
 ### <a name="probable-causes"></a>Waarschijnlijke oorzaken
-* Onboarding van Azure Monitor is mislukt
-* Verbinding met Azure Monitor is geblokkeerd
+* Onboarding naar Azure Monitor is mislukt
+* De verbinding met de Azure Monitor is geblokkeerd
 * Virtuele machine opnieuw is opgestart
 * OMI pakket is handmatig bijgewerkt naar een nieuwere versie in vergelijking met wat is geïnstalleerd door de Log Analytics-agent voor Linux-pakket
 * Logboeken voor DSC-resource *klasse is niet gevonden* fout in `omsconfig.log` logboekbestand
@@ -315,12 +315,12 @@ Deze fout geeft aan dat de Linux Diagnostic-extensie (LAD) naast de Log Analytic
 
 ### <a name="resolution"></a>Oplossing
 1. Installeer alle afhankelijkheden zoals auditd-pakket.
-2. Controleer of het onboarding naar Azure Monitor geslaagd is door te controleren of het volgende bestand bestaat: `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsadmin.conf`.  Als dat niet het geval is, is via de opdrachtregel omsadmin.sh reonboard [instructies](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/OMS-Agent-for-Linux.md#onboarding-using-the-command-line).
+2. Controleer of er een onboarding van Azure Monitor is geslaagd door te controleren of het `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsadmin.conf`volgende bestand bestaat:.  Als dat niet het geval is, is via de opdrachtregel omsadmin.sh reonboard [instructies](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/OMS-Agent-for-Linux.md#onboarding-using-the-command-line).
 4. Als u een proxy, controleert u bovenstaande stappen voor probleemoplossing proxy.
 5. In sommige distributiesystemen Azure omid OMI-server-daemon niet wordt gestart nadat de virtuele machine opnieuw wordt opgestart. Dit leidt er geen Audit voor wijzigingen bijhouden of UpdateManagement oplossing-gerelateerde gegevens weergegeven. De tijdelijke oplossing is om handmatig te starten omi-server door te voeren `sudo /opt/omi/bin/service_control restart`.
 6. Na de upgrade handmatig OMI-pakket naar een nieuwere versie, is het handmatig opnieuw worden gestart om Log Analytics-agent blijven werken. Deze stap is vereist voor sommige distributies waar OMI-server niet automatisch wordt gestart nadat het is bijgewerkt. Voer `sudo /opt/omi/bin/service_control restart` OMI opnieuw starten.
 7. Als u DSC-resource ziet *klasse is niet gevonden* fout in omsconfig.log, voeren `sudo /opt/omi/bin/service_control restart`.
-8. In sommige gevallen, wanneer de Log Analytics-agent voor Linux kan niet met Azure Monitor communiceren op de agent de back-up naar de volledige buffergrootte: 50 MB. De agent moet opnieuw worden gestart met de volgende opdracht `/opt/microsoft/omsagent/bin/service_control restart`.
+8. In sommige gevallen wordt er een back-up gemaakt van de gegevens op de agent, wanneer de Log Analytics-agent voor Linux niet kan communiceren met Azure Monitor. 50 MB. De agent moet opnieuw worden gestart met de volgende opdracht `/opt/microsoft/omsagent/bin/service_control restart`.
 
     >[!NOTE]
     >Dit probleem is opgelost in Agent versie 1.1.0-28 of hoger
@@ -372,7 +372,7 @@ Deze fout geeft aan dat de Linux Diagnostic-extensie (LAD) naast de Log Analytic
     sudo service crond start
     ```
 
-## <a name="issue-when-configuring-collection-from-the-portal-for-syslog-or-linux-performance-counters-the-settings-are-not-applied"></a>Probleem: Bij het configureren van het verzamelen van de portal voor Syslog- of Linux-prestatiemeteritems, worden de instellingen niet toegepast
+## <a name="issue-when-configuring-collection-from-the-portal-for-syslog-or-linux-performance-counters-the-settings-are-not-applied"></a>Probleem: Wanneer u een verzameling configureert vanuit de portal voor syslog-of Linux-prestatie meter items, worden de instellingen niet toegepast
 
 ### <a name="probable-causes"></a>Waarschijnlijke oorzaken
 * De Log Analytics-agent voor Linux is niet doorgevoerd. de meest recente configuratie
@@ -384,12 +384,12 @@ Deze fout geeft aan dat de Linux Diagnostic-extensie (LAD) naast de Log Analytic
 * In sommige gevallen kan de Log Analytics-agent voor Linux-configuratie-agent niet mogelijk om te communiceren met de portal configuratieservice, wat resulteert in de meest recente configuratie niet wordt toegepast.
   1. Controleer of de `omsconfig` -agent is geïnstalleerd door het uitvoeren van `dpkg --list omsconfig` of `rpm -qi omsconfig`.  Als niet is geïnstalleerd, installeert u de nieuwste versie van de Log Analytics-agent voor Linux opnieuw.
 
-  2. Controleer of de `omsconfig` agent kan communiceren met Azure Monitor met de volgende opdracht `sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/GetDscConfiguration.py'`. Met deze opdracht retourneert de configuratie die agent ontvangt van de service, waaronder instellingen voor Syslog-, Linux-prestatiemeteritems en aangepaste logboeken. Als deze opdracht mislukt, voert u de volgende opdracht `sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/PerformRequiredConfigurationChecks.py'`. Met deze opdracht zorgt ervoor dat de agent omsconfig om te communiceren met Azure Monitor en de meest recente configuratie op te halen.
+  2. Controleer of de `omsconfig` agent kan communiceren met Azure monitor door de volgende opdracht `sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/GetDscConfiguration.py'`uit te voeren. Met deze opdracht retourneert de configuratie die agent ontvangt van de service, waaronder instellingen voor Syslog-, Linux-prestatiemeteritems en aangepaste logboeken. Als deze opdracht mislukt, voert u de volgende opdracht `sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/PerformRequiredConfigurationChecks.py'`. Met deze opdracht wordt de omsconfig-agent gedwongen om over Azure Monitor te praten en de nieuwste configuratie op te halen.
 
-## <a name="issue-you-are-not-seeing-any-custom-log-data"></a>Probleem: U ziet geen eventuele aangepaste logboekgegevens 
+## <a name="issue-you-are-not-seeing-any-custom-log-data"></a>Probleem: U ziet geen aangepaste logboek gegevens 
 
 ### <a name="probable-causes"></a>Waarschijnlijke oorzaken
-* Onboarding van Azure Monitor is mislukt.
+* Het onboarden van Azure Monitor is mislukt.
 * De instelling **de volgende configuratie toepassen op mijn Linux-Servers** niet is geselecteerd.
 * omsconfig heeft niet de meest recente configuratie van het aangepaste logboek van de service opgehaald.
 * Log Analytics-agent voor Linux-gebruiker `omsagent` geen toegang krijgt tot het aangepaste logboek vanwege ontoereikende machtigingen of niet kan worden gevonden.  U ziet mogelijk de volgende fouten:
@@ -398,21 +398,21 @@ Deze fout geeft aan dat de Linux Diagnostic-extensie (LAD) naast de Log Analytic
 * Bekend probleem met een zeldzame situatie vast in Log Analytics-agent voor Linux-versie 1.1.0-217
 
 ### <a name="resolution"></a>Oplossing
-1. Controleer of onboarding naar Azure Monitor is geslaagd door te controleren of het volgende bestand bestaat: `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsadmin.conf`. Als niet, beide:  
+1. Controleer of het volgende bestand bestaat `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsadmin.conf`als de onboarding van Azure monitor is geslaagd. Als niet, beide:  
 
   1. Via de opdrachtregel omsadmin.sh Reonboard [instructies](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/OMS-Agent-for-Linux.md#onboarding-using-the-command-line).
   2. Onder **geavanceerde instellingen** in Azure portal, zorg ervoor dat de instelling **de volgende configuratie toepassen op mijn Linux-Servers** is ingeschakeld.  
 
-2. Controleer of de `omsconfig` agent kan communiceren met Azure Monitor met de volgende opdracht `sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/GetDscConfiguration.py'`.  Met deze opdracht retourneert de configuratie die agent ontvangt van de service, waaronder instellingen voor Syslog-, Linux-prestatiemeteritems en aangepaste logboeken. Als deze opdracht mislukt, voert u de volgende opdracht `sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/PerformRequiredConfigurationChecks.py`. Met deze opdracht zorgt ervoor dat de agent omsconfig om te communiceren met Azure Monitor en de meest recente configuratie op te halen.
+2. Controleer of de `omsconfig` agent kan communiceren met Azure monitor door de volgende opdracht `sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/GetDscConfiguration.py'`uit te voeren.  Met deze opdracht retourneert de configuratie die agent ontvangt van de service, waaronder instellingen voor Syslog-, Linux-prestatiemeteritems en aangepaste logboeken. Als deze opdracht mislukt, voert u de volgende opdracht `sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/PerformRequiredConfigurationChecks.py`. Met deze opdracht wordt de omsconfig-agent gedwongen om over Azure Monitor te praten en de nieuwste configuratie op te halen.
 
-**Achtergrond:** In plaats van de Log Analytics-agent voor Linux wordt uitgevoerd als een bevoegde gebruiker - `root`, de agent wordt uitgevoerd als de `omsagent` gebruiker. In de meeste gevallen moet de expliciete machtiging worden verleend aan deze gebruiker in volgorde van bepaalde bestanden worden gelezen. Toestemming te verlenen voor `omsagent` gebruiker, voer de volgende opdrachten uit:
+**Achtergrondbitmap** In plaats van de log Analytics- `root`agent voor Linux dat als een bevoegde gebruiker wordt uitgevoerd, wordt de agent uitgevoerd als de `omsagent` gebruiker. In de meeste gevallen moet de expliciete machtiging worden verleend aan deze gebruiker in volgorde van bepaalde bestanden worden gelezen. Toestemming te verlenen voor `omsagent` gebruiker, voer de volgende opdrachten uit:
 
 1. Voeg de `omsagent` gebruiker aan een specifieke groep `sudo usermod -a -G <GROUPNAME> <USERNAME>`
 2. Universele leestoegang tot het vereiste bestand `sudo chmod -R ugo+rx <FILE DIRECTORY>`
 
 Er is een bekend probleem met een zeldzame situatie met de Log Analytics-agent voor Linux-versie ouder is dan 1.1.0-217. Na het bijwerken naar de meest recente agent, voert u de volgende opdracht om de meest recente versie van de uitvoer-invoegtoepassing `sudo cp /etc/opt/microsoft/omsagent/sysconf/omsagent.conf /etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.conf`.
 
-## <a name="issue-you-are-trying-to-reonboard-to-a-new-workspace"></a>Probleem: U probeert te reonboard aan een nieuwe werkruimte
+## <a name="issue-you-are-trying-to-reonboard-to-a-new-workspace"></a>Probleem: U probeert uit te voeren voor een nieuwe werk ruimte
 Wanneer u te reonboard een agent naar een nieuwe werkruimte probeert, moet de configuratie van de Log Analytics-agent worden opgeschoond voordat u reonboarding. Uitvoeren om op te schonen oude configuratie van de agent, de shell-bundel met `--purge`
 
 ```
@@ -426,7 +426,7 @@ sudo sh ./onboard_agent.sh --purge
 
 U kunt reonboard nadat u de `--purge` optie
 
-## <a name="log-analytics-agent-extension-in-the-azure-portal-is-marked-with-a-failed-state-provisioning-failed"></a>Log Analytics agent-extensie in de Azure-portal is gemarkeerd met een mislukte status: Het inrichten is mislukt
+## <a name="log-analytics-agent-extension-in-the-azure-portal-is-marked-with-a-failed-state-provisioning-failed"></a>Log Analytics agent-extensie in de Azure Portal is gemarkeerd met een mislukte status: Inrichten is mislukt
 
 ### <a name="probable-causes"></a>Waarschijnlijke oorzaken
 * Log Analytics-agent is verwijderd uit het besturingssysteem
@@ -440,7 +440,7 @@ Voer de volgende stappen uit om het probleem te verhelpen.
 * Wacht enkele minuten en de Inrichtingsstatus is gewijzigd in **inrichting geslaagd**.
 
 
-## <a name="issue-the-log-analytics-agent-upgrade-on-demand"></a>Probleem: De Log Analytics-agent bijwerken op aanvraag
+## <a name="issue-the-log-analytics-agent-upgrade-on-demand"></a>Probleem: De upgrade van de Log Analytics-agent op aanvraag
 
 ### <a name="probable-causes"></a>Waarschijnlijke oorzaken
 

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 3/13/2019
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: 40e54daa60efedd84b32c72f29d1e2a8858c27da
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7349287945a56bb7674e364f515d0b763015ed59
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66162258"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71262316"
 ---
 # <a name="tutorial-set-up-and-use-metrics-and-diagnostic-logs-with-an-iot-hub"></a>Zelfstudie: Metrische gegevens en diagnostische logboeken instellen en gebruiken met een IoT-hub
 
@@ -126,7 +126,7 @@ az iot hub device-identity show --device-id $iotDeviceName \
 
 ## <a name="enable-the-diagnostic-logs"></a>De diagnostische logboeken inschakelen 
 
-[Diagnostische logboeken](../azure-monitor/platform/diagnostic-logs-overview.md) zijn standaard uitgeschakeld wanneer u een nieuwe IoT-hub maakt. Schakel in deze sectie de diagnostische logboeken voor uw hub in.
+[Diagnostische logboeken](../azure-monitor/platform/resource-logs-overview.md) zijn standaard uitgeschakeld wanneer u een nieuwe IoT-hub maakt. Schakel in deze sectie de diagnostische logboeken voor uw hub in.
 
 1. Als u nog niet op uw hub in de portal bent, klikt u eerst op **Resourcegroepen** en vervolgens op de resourcegroep Contoso-Resources. Selecteer de hub in de lijst met weergegeven resources. 
 
@@ -274,7 +274,7 @@ IoT Hub is nog niet gemigreerd naar de [metrische gegevens in Azure Monitor](/az
 
 Eerder in het scriptinstellingsgedeelte stelt u een apparaat in voor de simulatie via een IoT-apparaat. In deze sectie downloadt u een .NET-consoletoepassing die een apparaat simuleert dat apparaat-naar-cloud-berichten naar een IoT Hub verzendt.  
 
-Download de oplossing voor de [IoT-apparaatsimulatie](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip). Deze link downloadt u een opslagplaats met meerdere toepassingen in. de oplossing die u zoekt is in iot-hub/zelfstudies/routering /.
+Download de oplossing voor de [IoT-apparaatsimulatie](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip). Met deze koppeling wordt een opslag plaats gedownload met verschillende toepassingen. de oplossing die u zoekt, bevindt zich in IOT-hub/zelf studies/route ring/.
 
 Dubbelklik op het oplossingsbestand (SimulatedDevice.sln om de code in Visual Studio) te openen en open vervolgens Program.cs. Vervang `{iot hub hostname}` door de hostnaam van de IoT Hub. De indeling van de hostnaam van de IoT Hub is **{iot-hub-name} .azure-devices.net**. Voor deze zelfstudie is de naam van de hubhost **ContosoTestHub.azure devices.net**. Vervang vervolgens `{device key}` door de apparaatsleutel die u eerder hebt opgeslagen bij het instellen van het gesimuleerde apparaat. 
 

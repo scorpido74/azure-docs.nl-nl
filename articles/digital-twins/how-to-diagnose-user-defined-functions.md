@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: v-adgera
 ms.custom: seodec18
-ms.openlocfilehash: 24dc01d47bece4191d1b142a58c4ad7b6d9fb6cf
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: c1bd33ea5cbe45d6ff862645d614d54d20110ef4
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69876568"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71260847"
 ---
 # <a name="how-to-debug-user-defined-functions-in-azure-digital-twins"></a>Fout opsporing door door de gebruiker gedefinieerde functies in azure Digital Apparaatdubbels
 
@@ -35,7 +35,7 @@ Azure Digital Apparaatdubbels ondersteunt robuuste logboek registratie, bewaking
 
 * Lees [hoe u bewaking en logboek registratie configureert](./how-to-configure-monitoring.md)voor logboek registratie configuratie die specifiek is voor Azure Digital apparaatdubbels.
 * Raadpleeg het [Azure monitor](../azure-monitor/overview.md) -overzicht voor meer informatie over de krachtige logboek instellingen die via Azure monitor kunnen worden ingeschakeld.
-* Raadpleeg het artikel [gegevens verzamelen en gebruiken van uw Azure-resources](../azure-monitor/platform/diagnostic-logs-overview.md) voor het configureren van instellingen voor Diagnostische logboeken in azure Digital Apparaatdubbels via Azure Portal, Azure CLI of Power shell.
+* Raadpleeg het artikel [gegevens verzamelen en gebruiken van uw Azure-resources](../azure-monitor/platform/resource-logs-overview.md) voor het configureren van instellingen voor Diagnostische logboeken in azure Digital Apparaatdubbels via Azure Portal, Azure CLI of Power shell.
 
 Na de configuratie kunt u alle logboek categorieën, metrische gegevens en krachtige Azure Monitor Log Analytics-werk ruimten gebruiken ter ondersteuning van uw fout opsporing.
 

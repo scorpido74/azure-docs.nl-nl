@@ -11,12 +11,12 @@ author: aamalvea
 ms.author: aamalvea
 ms.reviewer: jrasnik, carlrab
 ms.date: 11/02/2018
-ms.openlocfilehash: 9468dbd71ee8da88cbabc3ca9f76c77d47adc221
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 3103b556098d0b9ccbfca7348ab70c183a69753d
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567929"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71262234"
 ---
 # <a name="create-alerts-for-azure-sql-database-and-data-warehouse-using-azure-portal"></a>Waarschuwingen voor Azure SQL Database en Data Warehouse maken met behulp van Azure Portal
 
@@ -84,10 +84,10 @@ Zodra u een waarschuwing hebt gemaakt, kunt u deze selecteren en:
 | SQL-database | connection_successful | Geslaagde verbindingen | Totaal | 10 minuten |
 | SQL-database | connection_failed | Mislukte verbindingen | Totaal | 10 minuten |
 | SQL-database | blocked_by_firewall | Geblokkeerd door de firewall | Totaal | 10 minuten |
-| SQL-database | constateer | Deadlocks | Totaal | 10 minuten |
+| SQL-database | Constateer | Deadlocks | Totaal | 10 minuten |
 | SQL-database | storage_percent | Databaseomvangpercentage | Maximum | 30 minuten |
 | SQL-database | xtp_storage_percent | Percentage OLTP-opslag in het geheugen (preview-versie) | Average | 5 minuten |
-| SQL-database | workers_percent | Werknemerspercentage | Average | 5 minuten |
+| SQL-database | workers_percent | Percentage werkrollen | Average | 5 minuten |
 | SQL-database | sessions_percent | Percentage sessies | Average | 5 minuten |
 | SQL-database | dtu_limit | DTU-limiet | Average | 5 minuten |
 | SQL-database | dtu_used | DTU gebruikt | Average | 5 minuten |
@@ -97,26 +97,26 @@ Zodra u een waarschuwing hebt gemaakt, kunt u deze selecteren en:
 | Elastische pool | log_write_percent | Percentage logboek-IO | Average | 10 minuten |
 | Elastische pool | dtu_consumption_percent | DTU-percentage | Average | 10 minuten |
 | Elastische pool | storage_percent | Opslag percentage | Average | 10 minuten |
-| Elastische pool | workers_percent | Werknemerspercentage | Average | 10 minuten |
+| Elastische pool | workers_percent | Percentage werkrollen | Average | 10 minuten |
 | Elastische pool | eDTU_limit | eDTU-limiet | Average | 10 minuten |
 | Elastische pool | storage_limit | Opslag limiet | Average | 10 minuten |
 | Elastische pool | eDTU_used | eDTU gebruikt | Average | 10 minuten |
-| Elastische pool | storage_used | Opslag gebruikt | Average | 10 minuten |
+| Elastische pool | storage_used | Gebruikte opslag | Average | 10 minuten |
 ||||||               
-| SQL data warehouse | cpu_percent | Processorpercentage | Average | 10 minuten |
-| SQL data warehouse | physical_data_read_percent | Percentage gegevens-IO | Average | 10 minuten |
-| SQL data warehouse | connection_successful | Geslaagde verbindingen | Totaal | 10 minuten |
-| SQL data warehouse | connection_failed | Mislukte verbindingen | Totaal | 10 minuten |
-| SQL data warehouse | blocked_by_firewall | Geblokkeerd door de firewall | Totaal | 10 minuten |
-| SQL data warehouse | service_level_objective | Servicelaag van de data base | Totaal | 10 minuten |
-| SQL data warehouse | dwu_limit | limiet voor dwu | Maximum | 10 minuten |
-| SQL data warehouse | dwu_consumption_percent | Percentage DWU | Average | 10 minuten |
-| SQL data warehouse | dwu_used | DWU gebruikt | Average | 10 minuten |
+| SQL Data Warehouse | cpu_percent | Processorpercentage | Average | 10 minuten |
+| SQL Data Warehouse | physical_data_read_percent | Percentage gegevens-IO | Average | 10 minuten |
+| SQL Data Warehouse | connection_successful | Geslaagde verbindingen | Totaal | 10 minuten |
+| SQL Data Warehouse | connection_failed | Mislukte verbindingen | Totaal | 10 minuten |
+| SQL Data Warehouse | blocked_by_firewall | Geblokkeerd door de firewall | Totaal | 10 minuten |
+| SQL Data Warehouse | service_level_objective | Servicelaag van de data base | Totaal | 10 minuten |
+| SQL Data Warehouse | dwu_limit | limiet voor dwu | Maximum | 10 minuten |
+| SQL Data Warehouse | dwu_consumption_percent | Percentage DWU | Average | 10 minuten |
+| SQL Data Warehouse | dwu_used | DWU gebruikt | Average | 10 minuten |
 ||||||
 
 
 ## <a name="next-steps"></a>Volgende stappen
 * [Bekijk een overzicht van Azure-bewaking](../monitoring-and-diagnostics/monitoring-overview.md) , inclusief de typen gegevens die u kunt verzamelen en controleren.
 * Meer informatie over het [configureren van webhooks in waarschuwingen](../azure-monitor/platform/alerts-webhooks.md).
-* Bekijk een [overzicht van Diagnostische logboeken](../azure-monitor/platform/diagnostic-logs-overview.md) en verzamel gedetailleerde metrische gegevens over hoge frequentie voor uw service.
+* Bekijk een [overzicht van Diagnostische logboeken](../azure-monitor/platform/resource-logs-overview.md) en verzamel gedetailleerde metrische gegevens over hoge frequentie voor uw service.
 * Bekijk een [overzicht van de verzameling metrische gegevens](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md) om te controleren of uw service beschikbaar is en reageert.

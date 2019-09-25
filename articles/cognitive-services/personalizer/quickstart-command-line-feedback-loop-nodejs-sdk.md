@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: quickstart
 ms.date: 09/12/2019
 ms.author: diberry
-ms.openlocfilehash: 49fa2cd53ebefa811673ea25a1851081f8cfa415
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: ab593ae33f11fe3e39846c50e9f43f73f80894ba
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70958918"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71265963"
 ---
 # <a name="quickstart-personalize-client-library-for-nodejs"></a>Quickstart: Client bibliotheek personaliseren voor node. js
 
@@ -143,6 +143,11 @@ De volgende herhalings code loopt door een cyclus waarbij de gebruiker om voor k
 [!code-javascript[Create the learning loop](~/samples-personalizer/quickstarts/node/sample.js?name=mainLoop)]
 
 Bekijk de rang en belonings gesprekken in de volgende secties.
+
+Voeg de volgende methoden toe, die [de inhouds keuzes ophalen](#get-content-choices-represented-as-actions)voordat u het code bestand uitvoert:
+
+* getActionsList
+* getContextFeaturesList
 
 ## <a name="request-a-rank"></a>Een positie aanvragen
 

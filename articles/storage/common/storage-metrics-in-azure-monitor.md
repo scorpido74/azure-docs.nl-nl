@@ -8,12 +8,12 @@ ms.date: 09/05/2017
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: e31ad78e24f329eb46cd85ba4a5962442a216779
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: c2f6847a286a9c106fc094e9f0aa315d6b1f337d
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68844825"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71257089"
 ---
 # <a name="azure-storage-metrics-in-azure-monitor"></a>Metrische gegevens van Azure Storage in Azure Monitor
 
@@ -25,7 +25,7 @@ Azure Monitor biedt uniforme gebruikers interfaces voor bewaking in verschillend
 
 Azure Monitor biedt meerdere manieren voor toegang tot metrische gegevens. U kunt ze openen via de [Azure Portal](https://portal.azure.com), de Azure monitor-API'S (rest en .net) en analyse oplossingen zoals Event hubs. Zie [Azure monitor metrische](../../monitoring-and-diagnostics/monitoring-overview-metrics.md)gegevens voor meer informatie.
 
-Metrieken zijn standaard ingeschakeld en u hebt toegang tot de afgelopen 93 dagen aan gegevens. Als u behouden van gegevens voor een langere periode wilt, kunt u metrische gegevens om een Azure Storage-account te archiveren. Dit is geconfigureerd in [diagnostische instellingen](../../azure-monitor/platform/diagnostic-logs-overview.md) in Azure Monitor.
+Metrieken zijn standaard ingeschakeld en u hebt toegang tot de afgelopen 93 dagen aan gegevens. Als u behouden van gegevens voor een langere periode wilt, kunt u metrische gegevens om een Azure Storage-account te archiveren. Dit is geconfigureerd in [diagnostische instellingen](../../azure-monitor/platform/resource-logs-overview.md) in Azure Monitor.
 
 ### <a name="access-metrics-in-the-azure-portal"></a>Toegang tot metrische gegevens in de Azure Portal
 
@@ -302,19 +302,19 @@ Hieronder ziet u de indeling voor het opgeven van de resource-ID voor een opslag
 
 Hieronder ziet u de indeling voor het opgeven van de resource-ID voor elk van de opslag Services.
 
-* Resource-ID Blob service
+* Resource-id van Blob service
 ```
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}/blobServices/default
 ```
-* Resource-ID Table service
+* Resource-id van Table service
 ```
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}/tableServices/default
 ```
-* Resource-ID Queue-service
+* Resource-id van Queue-service
 ```
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}/queueServices/default
 ```
-* Resource-ID van bestands service
+* Resource-id van bestandsservice
 ```
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}/fileServices/default
 ```
@@ -393,7 +393,7 @@ Azure Storage ondersteunt de volgende dimensies voor metrische gegevens in Azure
 | Dimensienaam | Description |
 | ------------------- | ----------------- |
 | **BlobType** | Het type BLOB voor alleen metrische gegevens van blobs. De ondersteunde waarden zijn **BlockBlob**, **PageBlob**en **Azure data Lake Storage**. Toevoeg-blob is opgenomen in BlockBlob. |
-| **BlobTier** | Azure Storage biedt verschillende toegangs lagen, waarmee u gegevens van blob-objecten op de meest rendabele manier kunt opslaan. Meer weer geven in [Azure Storage BLOB-laag](../blobs/storage-blob-storage-tiers.md). De ondersteunde waarden zijn onder andere: <br/> <li>**Warm**: Warme laag</li> <li>**Cool**: Cool-laag</li> <li>**Archief**: Laag van archief</li> <li>**Premium**: Premium-laag voor blok-BLOB</li> <li>**P4/P6/P10/P15/P20/P30/P40/P50/P60**: Laag typen voor Premium-pagina-BLOB</li> <li>**Standaard**: Laag type voor de standaard pagina-BLOB</li> <li>Ongelaagd: Laag type voor v1-opslag account voor algemeen gebruik</li> |
+| **BlobTier** | Azure Storage biedt verschillende toegangs lagen, waarmee u gegevens van blob-objecten op de meest rendabele manier kunt opslaan. Meer weer geven in [Azure Storage BLOB-laag](../blobs/storage-blob-storage-tiers.md). De ondersteunde waarden zijn onder andere: <br/> <li>**Warm**: Warme laag</li> <li>**Cool**: Cool-laag</li> <li>**Archief**: Laag van archief</li> <li>**Premium**: Premium-laag voor blok-BLOB</li> <li>**P4/P6/P10/P15/P20/P30/P40/P50/P60**: Laag typen voor Premium-pagina-BLOB</li> <li>**Standaard**: Laag type voor de standaard pagina-BLOB</li> <li>**Ongelaagd**: Laag type voor v1-opslag account voor algemeen gebruik</li> |
 | **GeoType** | Trans actie van het primaire of secundaire cluster. De beschik bare waarden zijn onder andere **primaire** en **secundaire**. Dit is van toepassing op lees toegang geografisch redundante opslag (RA-GRS) bij het lezen van objecten van een secundaire Tenant. |
 | **ResponseType** | Antwoord type voor de trans actie. De beschikbare waarden zijn onder meer: <br/><br/> <li>**ServerOtherError**: alle overige serverfouten, behalve diegene die zijn beschreven </li> <li>**ServerBusyError**: geverifieerde aanvraag waardoor een HTTP 503-statuscode is geretourneerd. </li> <li>**ServerTimeoutError**: geverifieerde aanvraag met time-out waardoor een HTTP 500-statuscode is geretourneerd. De time-out is opgetreden vanwege een serverfout. </li> <li>**AuthorizationError**: geverifieerde aanvraag die is mislukt vanwege niet-geautoriseerde toegang tot gegevens of een autorisatiefout. </li> <li>**NetworkError**: geverifieerde aanvraag die is mislukt vanwege netwerkfouten. Treedt meestal op als dooreen client voortijdig een verbinding wordt verbroken voordat de time-out voorbij is. </li> <li>**ClientThrottlingError**: Beperkingsfout aan de client-zijde. </li> <li>**ClientTimeoutError**: geverifieerde aanvraag met time-out waardoor een HTTP 500-statuscode is geretourneerd. Als de time-out van het clientnetwerk of van de aanvraag is ingesteld op een lagere waarde dan door de opslagservice wordt verwacht, is er sprake van een verwachte time-out. Anders wordt deze als ServerTimeoutError gerapporteerd. </li> <li>**ClientOtherError**: alle overige fouten aan de clientzijde, behalve diegene die zijn beschreven. </li> <li>**Geslaagd**: Succesvolle aanvraag</li> <li> **SuccessWithThrottling**: De aanvraag is voltooid wanneer een SMB-client wordt beperkt tijdens de eerste poging (en), maar na nieuwe pogingen slaagt.</li> |
 | **ApiName** | De naam van de bewerking. Bijvoorbeeld: <br/> <li>**CreateContainer**</li> <li>**DeleteBlob**</li> <li>**GetBlob**</li> Zie [document](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages)voor alle bewerkings namen. |

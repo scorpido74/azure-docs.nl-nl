@@ -1,6 +1,6 @@
 ---
 title: Team Data Science Process rollen en taken
-description: Een overzicht van de belangrijke onderdelen, het personeel functies en de bijbehorende taken voor een data science-teamproject.
+description: Een overzicht van de belangrijkste onderdelen, mede werkers rollen en de bijbehorende taken voor een Data Science-groep.
 author: marktab
 manager: cgronlun
 editor: cgronlun
@@ -8,137 +8,122 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 09/04/2017
+ms.date: 09/12/2019
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 05fc742bba535ea3968e60cd0f40c80b812c09fd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bbc066f4b01a01a589849ad524b58a9b5d9dfae1
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61043042"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71260655"
 ---
 # <a name="team-data-science-process-roles-and-tasks"></a>Team Data Science Process rollen en taken
 
-Het Team Data Science Process is een framework ontwikkeld door Microsoft en die een gestructureerde methode voor het bouwen van predictive analytics-oplossingen en intelligente toepassingen efficiënt biedt. In dit artikel bevat een overzicht van de belangrijkste personeel-rollen en de bijbehorende taken die worden beheerd door een data science-team standaardiseren over dit proces.
+Het team data Science process (TDSP) is een door micro soft ontwikkelde framework dat een gestructureerde methodologie biedt om efficiënt predictive analytics oplossingen en intelligente toepassingen te bouwen. In dit artikel vindt u een overzicht van de belangrijkste personeels rollen en bijbehorende taken voor een Data Science-team dat wordt gestandardization op dit proces.
 
-Deze inleiding koppelingen naar zelfstudies die instructies voor het bevatten instellen van de TDSP-omgeving voor de groep van volledige data science, data-scienceteams en projecten.
-Het biedt gedetailleerde richtlijnen met behulp van Azure DevOps in de zelfstudies. Azure DevOps biedt een platform voor hosten van code en flexibele planning hulpprogramma teamtaken beheren, toegangsbeheer en beheren van de opslagplaatsen.
+Dit inleidende artikel heeft koppelingen naar zelf studies over het instellen van de TDSP-omgeving voor een hele data Science-groep, data Science teams en TDSP-projecten. De zelf studies bieden gedetailleerde richt lijnen voor het gebruik van Azure DevOps Projects, Azure opslag plaatsen-opslag plaatsen en hulpprogram ma's voor het flexibel plannen van Azure-kaarten om de toegang te beheren, de code te hosten en te delen en om team taken te beheren.
 
-U kunt deze informatie gebruiken voor het implementeren van TDSP op uw eigen code-hosting en flexibele planning hulpprogramma.
+De zelf studies gebruiken Azure DevOps omdat u TDSP bij micro soft implementeert. Azure DevOps vereenvoudigt samen werking door beveiliging op basis van rollen, beheer en tracering van werk items en code-hosting, delen en broncode beheer te integreren. De zelf studies gebruiken ook een Azure [Data Science virtual machine](https://aka.ms/dsvm) (DSVM) als het Analytics Desktop, met een aantal populaire hulpprogram ma's voor gegevens wetenschap, vooraf geconfigureerd en geïntegreerd met micro soft-software en Azure-Services. 
 
-## <a name="structures-of-data-science-groups-and-teams"></a>Structuur van de data science-groepen en teams
+U kunt de zelf studies gebruiken om TDSP te implementeren met andere code hosting-, flexibele plannings-en ontwikkel hulpprogramma's en-omgevingen, maar sommige functies zijn mogelijk niet beschikbaar.
 
-Data science-functies in ondernemingen kunnen vaak worden ingedeeld in de volgende hiërarchie:
+## <a name="structure-of-data-science-groups-and-teams"></a>Structuur van data Science-groepen en teams
 
-1. ***Data science groep/s***
+Data Science-functies in ondernemingen zijn vaak ingedeeld in de volgende hiërarchie:
 
-2. ***Data science-team/s in de groep/s***
+- Data Science-groep
+  - Data Science Team/s binnen de groep
 
-In deze structuur zijn er groep en team leads. Een data science-project wordt gewoonlijk gedaan door een team data science, die kan bestaan uit het project leads (voor beheer en beheer van projecttaken) en gegevenswetenschappers of technici (afzonderlijke inzenders / technisch personeel) die de data science wordt uitgevoerd en data engineering-onderdelen van het project. De installatie en beheer wordt uitgevoerd, wordt uitgevoerd door de groep, team of project leads.
+In een dergelijke structuur zijn er groeps leads en team leiders. Normaal gesp roken wordt een Data Science-project uitgevoerd door een Data Science-Team. Data Science-teams hebben project leiders voor project management en beheer taken, en individuele gegevens wetenschappers en technici om de gegevens wetenschap en data engineering onderdelen van het project uit te voeren. De eerste project instellingen en governance worden uitgevoerd door de groep, het team of de project leads.
 
-## <a name="definition-of-four-tdsp-roles"></a>Definitie van de vier TDSP-rollen
-Met de bovenstaande veronderstelling zijn er vier verschillende rollen voor het personeel team:
+## <a name="definition-and-tasks-for-the-four-tdsp-roles"></a>Definitie en taken voor de vier TDSP-rollen
+Met de veronderstelling dat de data Science-eenheid bestaat uit teams binnen een groep, zijn er vier afzonderlijke rollen voor TDSP personeel:
 
-1. ***Groepsbeheerder***. Groepsbeheerder is de manager van de volledige data science-eenheid in een onderneming. Een data science-eenheid mogelijk meerdere teams, die elk is bezig met meerdere data science-projecten in afzonderlijk zakelijk verticalen. De Manager van een groep mogelijk hun taken delegeren aan een vervangend, maar de taken die zijn gekoppeld aan de rol niet te wijzigen.
-
-2. ***Team Lead***. Een lead team is een team in de data science-eenheid van een onderneming beheren. Een team bestaat uit meerdere gegevenswetenschappers. Voor data science-eenheid met slechts een beperkt aantal gegevenswetenschappers, Manager van de groep en het Team leiden mogelijk dezelfde persoon.
-
-3. ***Project Lead***. Een lead project beheert de dagelijkse werkzaamheden van afzonderlijke datawetenschappers in een specifieke data science-project.
-
-4. ***Individuele Inzender project***. Gegevenswetenschapper, bedrijfsanalist, Data engineering, Architect, enzovoort. De individuele Inzender van een project wordt uitgevoerd een data science-project.
-
+1. **Groeps beheerder**: Beheert de gehele data Science-eenheid in een onderneming. Een data science-eenheid mogelijk meerdere teams, die elk is bezig met meerdere data science-projecten in afzonderlijk zakelijk verticalen. De Manager van een groep mogelijk hun taken delegeren aan een vervangend, maar de taken die zijn gekoppeld aan de rol niet te wijzigen.
+   
+2. **Team leider**: Beheert een team in de data Science-eenheid van een onderneming. Een team bestaat uit meerdere gegevenswetenschappers. Voor een kleine data Science-eenheid kunnen de groeps Manager en de team leider dezelfde persoon zijn.
+   
+3. **Project leider**: Beheert de dagelijkse activiteiten van afzonderlijke gegevens wetenschappers op een specifiek data Science-project.
+   
+4. **Afzonderlijke inzenders projecteren**: Gegevens wetenschappers, bedrijfs analisten, gegevens technici, architecten en anderen die een Data Science-project uitvoeren.
 
 > [!NOTE]
-> Afhankelijk van de structuur in een onderneming, één persoon kan meer dan één rol spelen of kunnen er meer dan één persoon die aan een rol werkt. Dit kan vaak het geval in kleine ondernemingen of ondernemingen met een klein aantal medewerkers in de data science-organisatie zijn.
+> Afhankelijk van de structuur en grootte van een onderneming mag één persoon meer dan één rol spelen of kan meer dan één persoon een rol invullen.
 
-## <a name="tasks-to-be-completed-by-four-personnel"></a>Taken worden voltooid door vier personeel
+### <a name="tasks-to-be-completed-by-the-four-roles"></a>Taken die moeten worden uitgevoerd door de vier rollen
 
-De volgende afbeelding ziet u de taken op het hoogste niveau voor personeel dat door de rol bij de goedkeuring en implementatie van het Team Data Science Process als conceptualized door Microsoft.
+In het volgende diagram ziet u de taken op het hoogste niveau voor elke rol van team data Science process. Dit schema en de volgende, gedetailleerder overzicht van taken voor elke TDSP-rol kunnen u helpen bij het kiezen van de zelf studie die u nodig hebt op basis van uw verantwoordelijkheden.
 
 ![Overzicht van functies en taken](./media/roles-tasks/overview-tdsp-top-level.png)
 
-Dit schema en de volgende, meer gedetailleerd overzicht van taken die zijn toegewezen aan elke rol in de TDSP kunt u de relevante zelfstudie op basis van uw verantwoordelijkheden in de organisatie kiezen.
-
-> [!NOTE]
-> De volgende instructies laten zien stappen over het instellen van een TDSP-omgeving en andere data science-taken in Azure DevOps. We geven over het uitvoeren van deze taken met Azure DevOps, omdat dat wat we gebruiken voor het implementeren van TDSP bij Microsoft. Azure DevOps vergemakkelijkt de samenwerking door de integratie van het beheer van de werkitems die deze taken volgen en een code hosting service die wordt gebruikt voor het delen van hulpprogramma's, versies organiseren en beveiliging op basis van rollen. U zijn kunt andere platforms, als u liever, voor het implementeren van de taken die worden beschreven door de TDSP. Maar afhankelijk van uw platform, sommige functies van Azure DevOps gebruikt mogelijk niet beschikbaar.
->
->Instructies hier wordt ook gebruikt de [Data Science Virtual Machine (DSVM)](https://aka.ms/dsvm) op de Azure cloud-als de analysebureaublad met verschillende populaire data science-hulpprogramma's vooraf is geconfigureerd en geïntegreerd met diverse Microsoft-software en Azure Services. U kunt de DSVM of andere ontwikkelomgeving gebruiken voor het implementeren van TDSP.
-
-
 ## <a name="group-manager-tasks"></a>Groepsbeheerder taken
 
-De volgende taken worden uitgevoerd door de Manager van de groep (of een aangewezen TDSP-systeembeheerder) die zich conformeerde aan de TDSP:
+De groeps beheerder of een aangewezen TDSP systeem beheerder voert de volgende taken uit om de TDSP te nemen:
 
-- Maak een **groepsaccount** op een code die als host fungeert platform (zoals GitHub, Git, Azure DevOps of anderen)
-- Maak een **project sjabloonopslagplaats** op het groepsaccount en seeding uit de projectopslagplaats van de sjabloon die is ontwikkeld door Microsoft-TDSP-team. De opslagplaats voor sjablonen TDSP-project van Microsoft
-    - biedt een **mapstructuur gestandaardiseerd** mappen voor gegevens, code en -documenten, inclusief
-    - biedt een set **documentsjablonen gestandaardiseerd** als richtlijn voor een efficiënte datatechnologisch proces.
-- Maak een **hulpprogramma opslagplaats**, en het seeden vanuit de opslagplaats van het hulpprogramma die zijn ontwikkeld door Microsoft-TDSP-team. De opslagplaats van de TDSP hulpprogramma van Microsoft biedt
-    - een set van nuttige hulpprogramma's voor het maken van het werk van een gegevenswetenschapper efficiënter, waaronder hulpprogramma's voor interactieve gegevensverkenning, analyse en rapportage en basislijn gegevensmodellering en -rapportage.
-- Instellen van de **beveiligingsbeleid van het besturingselement** van de volgende twee opslagplaatsen op uw groepsaccount.
+- Hiermee maakt u een Azure DevOps **-organisatie** en een groeps project binnen de organisatie. 
+- Maakt een **project sjabloon opslagplaats** in het Azure DevOps-groeps project en zaait deze van de project sjabloon opslagplaats die is ontwikkeld door het micro soft TDSP-team. De micro soft TDSP project-sjabloon opslagplaats biedt:
+  - Een **gestandaardiseerde mapstructuur**, inclusief mappen voor gegevens, code en documenten.
+  - Een reeks **gestandaardiseerde document sjablonen** die een efficiënt data Science proces kunnen begeleiden.
+- Hiermee maakt u een **opslag plaats voor hulpprogram ma's**en zaait u deze vanuit de bibliotheek met hulp programma die is ontwikkeld door het micro soft TDSP-team. De opslag plaats TDSP van micro soft biedt een aantal nuttige hulpprogram ma's om het werk van een gegevens wetenschapper efficiënter te maken. De micro soft Utility repository bevat hulpprogram ma's voor interactieve gegevens verkenning, analyse, rapportage en basis modellering en-rapportage.
+- Hiermee stelt u het **beleid voor beveiligings beheer** in voor het organisatie account.
 
-Zie voor gedetailleerde stapsgewijze instructies, [groepsbeheerder taken voor een team van gegevenswetenschappers](group-manager-tasks.md).
-
+Zie voor gedetailleerde instructies [groeps beheer taken voor een Data Science-Team](group-manager-tasks.md).
 
 ## <a name="team-lead-tasks"></a>Team Lead taken
 
-De volgende taken worden uitgevoerd door het Team leiden (of een beheerder aangewezen project) die zich conformeerde aan de TDSP:
+De team lead of een aangewezen Project beheerder voert de volgende taken uit om de TDSP aan te passen:
 
-- Als Azure DevOps is geselecteerd als de code hostingplatform voor versiebeheer en samenwerking, maakt u een **project** op van de groep Azure DevOps-Services. Anders wordt deze taak kan worden overgeslagen.
-- Maak de **project sjabloonopslagplaats** onder het project en de seeding van de groep sjabloon projectopslagplaats ingesteld door de manager van uw groep of het delegeren van de manager.
-- Maak de **team hulpprogramma opslagplaats**, en de hulpprogramma's voor team-specifieke toevoegen aan de opslagplaats.
-- (Optioneel) Maak **[Azure bestandsopslag](https://azure.microsoft.com/services/storage/files/)** moet worden gebruikt voor het opslaan van de gegevensassets die nuttig voor het hele team zijn kunnen. Andere teamleden kunnen deze bestandsarchief gedeelde cloud koppelen op hun eigen bureaublad analytics.
-- (Optioneel) Koppelen van de Azure file storage om de **Data Science Virtual Machine** (DSVM) van het team te leiden en gegevensassets toevoegen op het.
-- Instellen van de **beveiligingscontrole** door toe te voegen leden van een team en zijn bevoegdheden te configureren.
+- Hiermee maakt u een team **project** in de Azure DevOps-organisatie van de groep.
+- Maakt de **project sjabloon opslagplaats** in het project en zaait deze uit de opslag plaats van de groeps project sjabloon die is ingesteld door de groeps Manager of gemachtigde.
+- Hiermee maakt u de **opslag plaats voor team hulpprogramma's**, zaait u deze uit de opslag plaats voor groeps hulpprogramma's en voegt u team afhankelijke hulpprogram ma's toe aan de opslag plaats.
+- Hiermee maakt u eventueel [Azure File Storage](https://azure.microsoft.com/services/storage/files/) om nuttige gegevensassets voor het team op te slaan. Andere teamleden kunnen deze bestandsarchief gedeelde cloud koppelen op hun eigen bureaublad analytics.
+- De Azure-bestands opslag wordt eventueel gekoppeld aan de **DSVM** van het team en er worden hieraan team gegevensassets toegevoegd.
+- Hiermee stelt u **beveiligings beheer** in door team leden toe te voegen en hun machtigingen te configureren.
 
-Zie voor gedetailleerde stapsgewijze instructies, [teamleider taken voor een team van gegevenswetenschappers](team-lead-tasks.md).
+Zie [team lead taken voor een Data Science-Team](team-lead-tasks.md)voor gedetailleerde instructies.
 
 
 ## <a name="project-lead-tasks"></a>Projecttaken Lead
 
-De volgende taken worden uitgevoerd door het Project leiden vast te stellen de TDSP:
+De project leider voert de volgende taken uit om de TDSP te nemen:
 
-- Maak een **projectopslagplaats** onder het project en seed-uit de opslagplaats van de sjabloon project.
-- (Optioneel) Maak **Azure bestandsopslag** moet worden gebruikt voor het opslaan van gegevensassets van het project.
-- (Optioneel) Koppelen van de Azure file storage om de **Data Science Virtual Machine** (DSVM) van het Project leiden en project gegevensassets erop toevoegen.
-- Instellen van de **beveiligingscontrole** door projectleden toe te voegen en zijn bevoegdheden te configureren.
+- Hiermee maakt u een **project opslagplaats** in het team project en zaait u deze uit de opslag plaats van de project sjabloon.
+- Hiermee maakt u optioneel **Azure File Storage** voor het opslaan van de gegevensassets van het project.
+- Koppelt de Azure-bestands opslag eventueel aan de **DSVM** en voegt hieraan project gegevensassets toe.
+- Hiermee stelt u **beveiligings beheer** in door Project leden toe te voegen en hun machtigingen te configureren.
 
-Zie voor gedetailleerde stapsgewijze instructies, [Project leiden taken voor een team van gegevenswetenschappers](project-lead-tasks.md).
+Zie [Project Lead tasks for a data Science Team](project-lead-tasks.md)(Engelstalig) voor gedetailleerde instructies.
 
 ## <a name="project-individual-contributor-tasks"></a>Individuele Inzender van projecttaken
 
-De volgende taken worden uitgevoerd door een Project individuele Inzender (meestal een Gegevenswetenschapper) voor het uitvoeren van de data science-project van de TDSP gebruiken:
+Het project Individuele Inzender, meestal een Data wetenschapper, voert de volgende taken uit met behulp van de TDSP:
 
-- Kloon de **projectopslagplaats** instellen door de projectleider.
-- (Optioneel) Koppel de gedeelde **Azure bestandsopslag** van het team en het project op hun **Data Science Virtual Machine** (DSVM).
-- Voer het project.
+- De **project opslagplaats** die is ingesteld door de project leider wordt gekloond.
+- Koppelt eventueel het gedeelde team en project **Azure File Storage** op hun **Data Science virtual machine** (DSVM).
+- Het project wordt uitgevoerd.
 
+Zie voor gedetailleerde instructies voor het voorbereiden op een project [afzonderlijke Inzender taken voor een Data Science-Team](project-ic-tasks.md).
 
-Zie voor gedetailleerde stapsgewijze instructies voor het toevoegen aan een project, [afzonderlijke inzenders Project voor een team van gegevenswetenschappers](project-ic-tasks.md).
+## <a name="data-science-project-execution-workflow"></a>Werk stroom voor het uitvoeren van data Science-projecten
 
+Door de relevante zelf studies, gegevens wetenschappers, project leiders en team leiders te volgen, kunnen werk items worden gemaakt om alle taken en fasen voor het project van begin tot eind bij te houden. Het gebruik van Azure opslag plaatsen bevordert de samen werking tussen gegevens wetenschappers en zorgt ervoor dat de artefacten die tijdens de project uitvoering worden gegenereerd, versie worden beheerd en gedeeld door alle project leden. Met Azure DevOps kunt u uw werk items van Azure-kaarten koppelen aan uw Azure opslag plaatsen-opslag plaats vertakkingen en kunt u eenvoudig bijhouden wat er is gedaan voor een werk item.
 
-## <a name="data-science-project-execution"></a>Data science-project uitvoeren
+De volgende afbeelding geeft een overzicht van de TDSP-werk stroom voor het uitvoeren van projecten:
 
-Door de betreffende set instructies te volgen, kunnen gegevenswetenschappers, projectleider en team leads werkitems voor het volgen van alle taken en -fasen die een project moet aan het einde van het begin maken. Met behulp van git ook bevordert samenwerking tussen gegevenswetenschappers en zorgt ervoor dat de artefacten die zijn gegenereerd tijdens het uitvoeren van project versie beheerd en gedeeld door alle projectleden.
+![Typische werk stroom van data Science project](./media/roles-tasks/overview-project-execute.png)
 
-De instructies voor de projectuitvoering van het zijn ontwikkeld op basis van de veronderstelling dat beide werkitems en git-opslagplaatsen op Azure DevOps zijn-project. Met behulp van Azure DevOps voor beide, kunt u het koppelen van uw werkitems met de Git-vertakkingen van uw project-opslagplaatsen. Op deze manier kunt u eenvoudig bijhouden wat voor een werkitem is voltooid.
+De werk stroom stappen kunnen worden gegroepeerd in drie activiteiten:
 
-De volgende afbeelding geeft een overzicht van deze werkstroom voor de projectuitvoering van het met behulp van de TDSP.
+- Project leiders voeren Sprint planning
+- Gegevens wetenschappers bouwen artefacten op `git` branches voor het oplossen van werk items
+- Project leiders of andere team leden doen code beoordelingen en voegen werk vertakkingen samen in de hoofd vertakking
 
-![Typische Data Science-Project kan worden uitgevoerd](./media/roles-tasks/overview-project-execute.png)
+Zie [flexibele ontwikkeling van data Science-projecten](agile-development.md)voor gedetailleerde instructies voor de werk stroom voor het uitvoeren van projecten.
 
-De werkstroom bevat de stappen die kunnen worden gegroepeerd in drie activiteiten:
+## <a name="tdsp-project-template-repository"></a>Opslag plaats voor TDSP-project sjabloon
 
-- Sprint plannen (Project leiden)
-- Het ontwikkelen van artefacten op git vertakkingen om werkitems (Gegevenswetenschapper)
-- Code bekijken en samenvoegen van branches weergegeven met de master vertakkingen (Project leiden of andere teamleden)
-
-Zie voor gedetailleerde stapsgewijze instructies voor het project uitvoeringswerkstroom, [uitvoering van wetenschappelijke gegevensprojecten](project-execution.md).
-
-## <a name="project-structure"></a>Projectstructuur
-
-Gebruik deze [project sjabloonopslagplaats](https://github.com/Azure/Azure-TDSP-ProjectTemplate) ter ondersteuning van efficiënte projectuitvoering en samenwerking. Deze opslagplaats beschikt u over een gestandaardiseerde directory-structuur en het document sjablonen die u kunt gebruiken voor uw eigen TDSP-project.
+Gebruik de opslag plaats van de [project sjabloon](https://github.com/Azure/Azure-TDSP-ProjectTemplate) van het micro soft TDSP-team ter ondersteuning van efficiënte project uitvoering en-samen werking. De opslag plaats biedt u een gestandaardiseerde mapstructuur en document sjablonen die u voor uw eigen TDSP-projecten kunt gebruiken.
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -147,4 +132,4 @@ Meer gedetailleerde beschrijvingen van de functies en taken die zijn gedefinieer
 - [Groepsbeheerder taken voor een team van gegevenswetenschappers](group-manager-tasks.md)
 - [Team Lead taken voor een team van gegevenswetenschappers](team-lead-tasks.md)
 - [Project Lead taken voor een team van gegevenswetenschappers](project-lead-tasks.md)
-- [Afzonderlijke inzenders project voor een team van gegevenswetenschappers](project-ic-tasks.md)
+- [Individuele Inzender taken projecteren voor een Data Science-Team](project-ic-tasks.md)

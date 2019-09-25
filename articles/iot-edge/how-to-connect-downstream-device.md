@@ -4,17 +4,17 @@ description: Stroomafwaartse of Leaf-apparaten configureren om verbinding te mak
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 06/07/2019
+ms.date: 09/07/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 41039d148e0aae7303dbc95c832bed842acdcc90
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 822e58d1d35cfb9b62565ca78ea2277b8d194bc0
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "70999410"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266109"
 ---
 # <a name="connect-a-downstream-device-to-an-azure-iot-edge-gateway"></a>Een downstream-apparaat verbinden met Azure IoT Edge-gateway
 
@@ -33,6 +33,10 @@ In dit artikel identificeert bekende problemen met downstream apparaatverbinding
 * Azure IoT hek voorbeelden in verschillende talen om u te helpen aan de slag. 
 
 In dit artikel, de voorwaarden *gateway* en *IoT Edge-gateway* verwijzen naar een IoT Edge-apparaat dat is geconfigureerd als een transparante gateway. 
+
+## <a name="prerequisites"></a>Vereisten 
+
+Laat het certificaat bestand **Azure-IOT-test-only. root. ca. cert. pem** dat is gegenereerd in [een IOT edge apparaat configureren om te fungeren als een transparante gateway die](how-to-create-transparent-gateway.md) beschikbaar is op uw downstream-apparaat. Het downstream-apparaat gebruikt dit certificaat om de identiteit van het gateway-apparaat te valideren. 
 
 ## <a name="prepare-a-downstream-device"></a>Een downstream apparaat voorbereiden
 
@@ -89,6 +93,14 @@ U ziet een bericht waarin wordt gemeld, "Updating certificaten in /etc/ssl/certs
 ### <a name="windows"></a>Windows
 
 De volgende stappen zijn een voorbeeld van een CA-certificaat installeren op een Windows-host. In dit voor beeld wordt ervan uitgegaan dat u het certificaat **Azure-IOT-test-only. root. ca. cert. pem** gebruikt uit de artikelen van de vereisten en dat u het certificaat hebt gekopieerd naar een locatie op het downstream-apparaat.
+
+U kunt certificaten installeren met behulp van het [import-certificaat](https://docs.microsoft.com/powershell/module/pkiclient/import-certificate?view=win10-ps) van Power shell als beheerder:
+
+```powershell
+import-certificate  <file path>\azure-iot-test-only.root.ca.cert.pem -certstorelocation cert:\LocalMachine\root
+```
+
+U kunt certificaten ook installeren met het hulp programma **certlm** : 
 
 1. Zoek in het menu Start en selecteer **computercertificaten beheren**. Een hulpprogramma **certlm** wordt geopend.
 2. Navigeer naar **certificaten - lokale Computer** > **Trusted Root Certification Authorities**.

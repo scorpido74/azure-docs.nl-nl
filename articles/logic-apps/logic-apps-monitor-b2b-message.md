@@ -1,6 +1,6 @@
 ---
-title: Bewaken met Azure Monitor-logs - Azure Logic Apps B2B-berichten | Microsoft Docs
-description: AS2, X 12 en EDIFACT-berichten voor integratieaccounts en Azure Logic Apps bewaken en het instellen van logboekregistratie van diagnostische gegevens met Azure Monitor-Logboeken
+title: B2B-berichten bewaken met Azure Monitor-logboeken-Azure Logic Apps | Microsoft Docs
+description: AS2-, X12-en EDIFACT-berichten bewaken voor integratie accounts en Azure Logic Apps en logboek registratie van diagnostische gegevens met Azure Monitor-logboeken instellen
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -9,136 +9,136 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.date: 10/23/2018
-ms.openlocfilehash: 12799a308157c3c0e19de1f82c0fe3df44fad37e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a4a7f951d34455f2e333f2c11e30d24efdfd22c1
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62106297"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71261209"
 ---
-# <a name="monitor-b2b-messages-with-azure-monitor-logs-in-azure-logic-apps"></a>B2B-berichten met Azure Monitor-Logboeken in Azure Logic Apps bewaken
+# <a name="monitor-b2b-messages-with-azure-monitor-logs-in-azure-logic-apps"></a>B2B-berichten bewaken met Azure Monitor-Logboeken in Azure Logic Apps
 
-Na het instellen van B2B-communicatie tussen handelspartners in uw integratie-account, kan deze partners berichten met elkaar kunnen uitwisselen. Om te controleren dat deze communicatie werkt zoals verwacht, u AS2, X12, bewaken kunt en EDIFACT-berichten en het instellen van diagnostische gegevens van logboekregistratie voor uw integratie-account met [logboeken van Azure Monitor](../log-analytics/log-analytics-overview.md). Deze service controleert uw cloud en on-premises omgevingen, helpen u hun beschikbaarheid en prestaties te onderhouden en verzamelt runtime-gegevens en gebeurtenissen voor uitgebreidere foutopsporing. U kunt deze gegevens ook gebruiken met andere services zoals Azure Storage en Azure Event Hubs.
+Nadat u B2B-communicatie tussen handels partners in uw integratie account hebt ingesteld, kunnen deze partners berichten uitwisselen met elkaar. Als u wilt controleren of deze communicatie werkt zoals verwacht, kunt u AS2-, X12-en EDIFACT-berichten controleren en diagnostische logboek registratie instellen voor uw integratie account met [Azure monitor-logboeken](../log-analytics/log-analytics-overview.md). Met deze service worden uw Cloud-en on-premises omgevingen gecontroleerd, kunt u hun Beschik baarheid en prestaties behouden en runtime Details en-gebeurtenissen verzamelen voor uitgebreidere fout opsporing. U kunt deze gegevens ook gebruiken met andere services, zoals Azure Storage en Azure Event Hubs.
 
 > [!NOTE]
-> Deze pagina mogelijk nog steeds verwijzingen naar Microsoft Operations Management Suite (OMS), die is [buiten gebruik stellen in januari 2019](../azure-monitor/platform/oms-portal-transition.md), maar deze stappen vervangt met Azure Log Analytics waar mogelijk. 
+> Deze pagina kan nog steeds verwijzingen bevatten naar Microsoft Operations Management Suite (OMS), die [in januari 2019 worden buiten gebruik gesteld](../azure-monitor/platform/oms-portal-transition.md), maar deze stappen worden zo mogelijk vervangen door Azure log Analytics. 
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een logische app die ingesteld met de logboekregistratie van diagnostische gegevens. Informatie over [over het maken van een logische app](quickstart-create-first-logic-app-workflow.md) en [over het instellen van logboekregistratie voor deze logische app](../logic-apps/logic-apps-monitor-your-logic-apps.md#azure-diagnostics).
+* Een logische app die is ingesteld met diagnostische logboek registratie. Meer informatie [over het maken van een logische app](quickstart-create-first-logic-app-workflow.md) en [het instellen van logboek registratie voor die logische app](../logic-apps/logic-apps-monitor-your-logic-apps.md#azure-diagnostics).
 
-* Nadat u voldoet aan de bovenstaande vereisten, moet u ook een Log Analytics-werkruimte die u gebruiken voor het controleren en bijhouden van B2B-communicatie via Azure Monitor-Logboeken. Als u een Log Analytics-werkruimte hebt, krijgt u informatie [over het maken van een Log Analytics-werkruimte](../azure-monitor/learn/quick-create-workspace.md).
+* Nadat u aan de vorige vereisten hebt voldaan, hebt u ook een Log Analytics-werk ruimte nodig die u kunt gebruiken voor het controleren en bijhouden van B2B-communicatie via Azure Monitor-Logboeken. Als u geen Log Analytics-werk ruimte hebt, leert u [hoe u een log Analytics-werk ruimte maakt](../azure-monitor/learn/quick-create-workspace.md).
 
-* Een integratieaccount dat gekoppeld aan uw logische app. Informatie over [hoe u een integratieaccount maakt met een koppeling naar uw logische app](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md).
+* Een integratie account dat is gekoppeld aan uw logische app. Meer informatie [over het maken van een integratie account met een koppeling naar uw logische app](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md).
 
-## <a name="turn-on-diagnostics-logging"></a>Diagnostische logboekregistratie inschakelen
+## <a name="turn-on-diagnostics-logging"></a>Diagnostische logboek registratie inschakelen
 
-U kunt inschakelen logboekregistratie rechtstreeks vanaf uw integratie-account of [via de service Azure Monitor](#azure-monitor-service). Azure Monitor biedt basiscontrole met gegevens op infrastructuurniveau. Meer informatie over [Azure Monitor](../azure-monitor/overview.md).
+U kunt logboek registratie rechtstreeks vanuit uw integratie account of [via de Azure Monitor-service](#azure-monitor-service)inschakelen. Azure Monitor biedt eenvoudige bewaking met gegevens op infrastructuur niveau. Meer informatie over [Azure monitor](../azure-monitor/overview.md).
 
-### <a name="turn-on-logging-from-integration-account"></a>Logboekregistratie van integratie-account inschakelen
+### <a name="turn-on-logging-from-integration-account"></a>Logboek registratie inschakelen vanuit integratie account
 
-1. In de [Azure-portal](https://portal.azure.com), zoek en selecteer uw integratie-account. Onder **bewaking**, selecteer **diagnostische instellingen**.
+1. Zoek en selecteer uw integratie account in de [Azure Portal](https://portal.azure.com). Onder **bewaking**, selecteer **diagnostische instellingen**.
 
-   ![Zoek en selecteer uw integratieaccount, selecteert u 'Diagnostische instellingen'](media/logic-apps-monitor-b2b-message/find-integration-account.png)
+   ![Zoek en selecteer uw integratie account, selecteer Diagnostische instellingen](media/logic-apps-monitor-b2b-message/find-integration-account.png)
 
-1. Nu zoeken en selecteer uw integratieaccount. In een lijst met een filter, selecteert u de waarden die betrekking hebben op uw integratie-account.
-Wanneer u klaar bent, kiest u **diagnostische instelling toevoegen**.
+1. Zoek en selecteer het integratie account. Selecteer in filter lijsten de waarden die van toepassing zijn op uw integratie account.
+Wanneer u klaar bent, kiest u **Diagnostische instelling toevoegen**.
 
    | Eigenschap | Waarde | Description | 
    |----------|-------|-------------|
-   | **Abonnement** | <*Azure-subscription-name*> | De Azure-abonnement dat is gekoppeld aan uw integratie-account | 
-   | **Resourcegroep** | <*Azure-resource-group-name*> | De Azure-resourcegroep voor uw integratie-account | 
-   | **Resourcetype** | **Integratieaccounts** | Het type voor de Azure-resource waar u wilt logboekregistratie inschakelen | 
-   | **Resource** | <*integration-account-name*> | De naam voor uw Azure-resource waar u wilt logboekregistratie inschakelen | 
+   | **Abonnement** | <*Azure-subscription-name*> | Het Azure-abonnement dat is gekoppeld aan uw integratie account | 
+   | **Resourcegroep** | <*Azure-resource-group-name*> | De Azure-resource groep voor uw integratie account | 
+   | **Resourcetype** | **Integratieaccounts** | Het type voor de Azure-resource waarvoor u logboek registratie wilt inschakelen | 
+   | **Resource** | <*integratie-account-naam*> | De naam voor uw Azure-resource waarvoor u logboek registratie wilt inschakelen | 
    ||||  
 
    Bijvoorbeeld:
 
-   ![Diagnostische gegevens voor uw integratie-account instellen](media/logic-apps-monitor-b2b-message/turn-on-diagnostics-integration-account.png)
+   ![Diagnostische gegevens instellen voor uw integratie account](media/logic-apps-monitor-b2b-message/turn-on-diagnostics-integration-account.png)
 
-1. Geef een naam op voor uw nieuwe diagnostische instelling en selecteer uw Log Analytics-werkruimte en de gegevens die u wilt registreren.
+1. Geef een naam op voor de nieuwe diagnostische instelling en selecteer uw Log Analytics-werk ruimte en de gegevens die u wilt registreren.
 
-   1. Selecteer **verzenden naar Log Analytics**. 
+   1. Selecteer **verzenden naar log Analytics**. 
 
-   1. Onder **Log Analytics**, selecteer **configureren**. 
+   1. Selecteer onder **log Analytics** **configureren**. 
 
-   1. Onder **OMS-werkruimten**, selecteert u de Log Analytics-werkruimte die u wilt gebruiken voor aanmelding. 
+   1. Selecteer onder **OMS-werk ruimten**de log Analytics werk ruimte die u wilt gebruiken voor logboek registratie. 
 
       > [!NOTE]
-      > OMS-werkruimten worden vervangen door Log Analytics-werkruimten. 
+      > OMS-werk ruimten worden vervangen door Log Analytics werk ruimten. 
 
-   1. Onder **Log**, selecteer de **IntegrationAccountTrackingEvents** categorie, en kies **opslaan**.
+   1. Selecteer onder **logboek**de categorie **IntegrationAccountTrackingEvents** en kies **Opslaan**.
 
    Bijvoorbeeld: 
 
-   ![Logboeken van Azure Monitor instellen, zodat u diagnostische gegevens naar een logboek verzenden kunt](media/logic-apps-monitor-b2b-message/send-diagnostics-data-log-analytics-workspace.png)
+   ![Azure Monitor logboeken instellen, zodat u Diagnostische gegevens naar een logboek kunt verzenden](media/logic-apps-monitor-b2b-message/send-diagnostics-data-log-analytics-workspace.png)
 
-1. Nu [bijhouden voor uw B2B-berichten in de logboeken van Azure Monitor instellen](../logic-apps/logic-apps-track-b2b-messages-omsportal.md).
+1. [Stel nu bijhouden in voor uw B2B-berichten in azure monitor-logboeken](../logic-apps/logic-apps-track-b2b-messages-omsportal.md).
 
 <a name="azure-monitor-service"></a>
 
-### <a name="turn-on-logging-through-azure-monitor"></a>Schakel logboekregistratie in via Azure Monitor
+### <a name="turn-on-logging-through-azure-monitor"></a>Logboek registratie via Azure Monitor inschakelen
 
-1. In de [Azure-portal](https://portal.azure.com), selecteer in het hoofdmenu van Azure **Monitor**. Onder **instellingen**, selecteer **diagnostische instellingen**. 
+1. Selecteer in de [Azure Portal](https://portal.azure.com)in het hoofd menu van Azure de optie **monitor**. Onder **instellingen**, selecteert u **instellingen voor diagnostische gegevens**. 
 
-   ![Selecteer 'Monitor' > "Diagnostische instellingen" > uw integratie-account](media/logic-apps-monitor-b2b-message/monitor-diagnostics-settings.png)
+   ![Selecteer controleren > Diagnostische instellingen > uw integratie account](media/logic-apps-monitor-b2b-message/monitor-diagnostics-settings.png)
 
-1. Nu zoeken en selecteer uw integratieaccount. In een lijst met een filter, selecteert u de waarden die betrekking hebben op uw integratie-account.
-Wanneer u klaar bent, kiest u **diagnostische instelling toevoegen**.
+1. Zoek en selecteer het integratie account. Selecteer in filter lijsten de waarden die van toepassing zijn op uw integratie account.
+Wanneer u klaar bent, kiest u **Diagnostische instelling toevoegen**.
 
    | Eigenschap | Waarde | Description | 
    |----------|-------|-------------|
-   | **Abonnement** | <*Azure-subscription-name*> | De Azure-abonnement dat is gekoppeld aan uw integratie-account | 
-   | **Resourcegroep** | <*Azure-resource-group-name*> | De Azure-resourcegroep voor uw integratie-account | 
-   | **Resourcetype** | **Integratieaccounts** | Het type voor de Azure-resource waar u wilt logboekregistratie inschakelen | 
-   | **Resource** | <*integration-account-name*> | De naam voor uw Azure-resource waar u wilt logboekregistratie inschakelen | 
+   | **Abonnement** | <*Azure-subscription-name*> | Het Azure-abonnement dat is gekoppeld aan uw integratie account | 
+   | **Resourcegroep** | <*Azure-resource-group-name*> | De Azure-resource groep voor uw integratie account | 
+   | **Resourcetype** | **Integratieaccounts** | Het type voor de Azure-resource waarvoor u logboek registratie wilt inschakelen | 
+   | **Resource** | <*integratie-account-naam*> | De naam voor uw Azure-resource waarvoor u logboek registratie wilt inschakelen | 
    ||||  
 
    Bijvoorbeeld:
 
-   ![Diagnostische gegevens voor uw integratie-account instellen](media/logic-apps-monitor-b2b-message/turn-on-diagnostics-integration-account.png)
+   ![Diagnostische gegevens instellen voor uw integratie account](media/logic-apps-monitor-b2b-message/turn-on-diagnostics-integration-account.png)
 
-1. Geef een naam op voor uw nieuwe diagnostische instelling en selecteer uw Log Analytics-werkruimte en de gegevens die u wilt registreren.
+1. Geef een naam op voor de nieuwe diagnostische instelling en selecteer uw Log Analytics-werk ruimte en de gegevens die u wilt registreren.
 
-   1. Selecteer **verzenden naar Log Analytics**. 
+   1. Selecteer **verzenden naar log Analytics**. 
 
-   1. Onder **Log Analytics**, selecteer **configureren**. 
+   1. Selecteer onder **log Analytics** **configureren**. 
 
-   1. Onder **OMS-werkruimten**, selecteert u de Log Analytics-werkruimte die u wilt gebruiken voor aanmelding. 
+   1. Selecteer onder **OMS-werk ruimten**de log Analytics werk ruimte die u wilt gebruiken voor logboek registratie. 
 
       > [!NOTE]
-      > OMS-werkruimten worden vervangen door Log Analytics-werkruimten. 
+      > OMS-werk ruimten worden vervangen door Log Analytics werk ruimten. 
 
-   1. Onder **Log**, selecteer de **IntegrationAccountTrackingEvents** categorie, en kies **opslaan**.
+   1. Selecteer onder **logboek**de categorie **IntegrationAccountTrackingEvents** en kies **Opslaan**.
 
    Bijvoorbeeld: 
 
-   ![Logboeken van Azure Monitor instellen, zodat u diagnostische gegevens naar een logboek verzenden kunt](media/logic-apps-monitor-b2b-message/send-diagnostics-data-log-analytics-workspace.png)
+   ![Azure Monitor logboeken instellen, zodat u Diagnostische gegevens naar een logboek kunt verzenden](media/logic-apps-monitor-b2b-message/send-diagnostics-data-log-analytics-workspace.png)
 
-1. Nu [bijhouden voor uw B2B-berichten in de logboeken van Azure Monitor instellen](../logic-apps/logic-apps-track-b2b-messages-omsportal.md).
+1. [Stel nu bijhouden in voor uw B2B-berichten in azure monitor-logboeken](../logic-apps/logic-apps-track-b2b-messages-omsportal.md).
 
 ## <a name="use-diagnostic-data-with-other-services"></a>Diagnostische gegevens met andere services gebruiken
 
-Samen met Azure Monitor-Logboeken, kunt u uitbreiden hoe u diagnostische gegevens van uw logische app gebruiken met andere Azure-services, bijvoorbeeld: 
+Naast Azure Monitor-Logboeken kunt u uitbreiden hoe u de diagnostische gegevens van uw logische app gebruikt met andere Azure-Services, bijvoorbeeld: 
 
-* [Azure Diagnostics-in Azure-opslag logboeken archiveren](../azure-monitor/platform/archive-diagnostic-logs.md)
-* [Stream diagnostische logboeken van Azure naar Azure Eventhubs](../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md) 
+* [Azure Diagnostics-logboeken archiveren in Azure Storage](../azure-monitor/platform/archive-diagnostic-logs.md)
+* [Azure Diagnostics logboeken streamen naar Azure Event Hubs](../azure-monitor/platform/resource-logs-stream-event-hubs.md) 
 
-U kunt vervolgens get realtime bewaking met behulp van Telemetrie en analyses van andere services, zoals [Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md) en [Power BI](../azure-monitor/platform/powerbi.md). Bijvoorbeeld:
+U kunt vervolgens realtime-bewaking krijgen door telemetrie en analyses uit andere services te gebruiken, zoals [Azure stream Analytics](../stream-analytics/stream-analytics-introduction.md) en [Power bi](../azure-monitor/platform/powerbi.md). Bijvoorbeeld:
 
-* [Stream-gegevens van Gebeurtenishubs met Stream Analytics](../stream-analytics/stream-analytics-define-inputs.md)
-* [Met Stream Analytics streaming-gegevens analyseren en een realtime analytics-dashboard maken in Power BI](../stream-analytics/stream-analytics-power-bi-dashboard.md)
+* [Gegevens streamen van Event Hubs naar Stream Analytics](../stream-analytics/stream-analytics-define-inputs.md)
+* [Analyseer streaminggegevens met Stream Analytics en maak een real-time analyse dashboard in Power BI](../stream-analytics/stream-analytics-power-bi-dashboard.md)
 
-Op basis van de opties die u instellen wilt, zorg ervoor dat u eerst [maken van een Azure storage-account](../storage/common/storage-create-storage-account.md) of [maken van een Azure event hub](../event-hubs/event-hubs-create.md). Vervolgens kunt u de doelen waar u voor het verzenden van diagnostische gegevens.
-Bewaarperioden langer dan gelden alleen wanneer u wilt gebruiken van een storage-account.
+Op basis van de opties die u wilt instellen, moet u ervoor zorgen dat u eerst [een Azure-opslag account maakt](../storage/common/storage-create-storage-account.md) of [een Azure-Event hub maakt](../event-hubs/event-hubs-create.md). U kunt vervolgens de doelen selecteren waarnaar u de diagnostische gegevens wilt verzenden.
+De Bewaar periode is alleen van toepassing wanneer u ervoor kiest om een opslag account te gebruiken.
 
-![Gegevens verzenden naar Azure storage-account of event hub](./media/logic-apps-monitor-b2b-message/diagnostics-storage-event-hub-log-analytics.png)
+![Gegevens verzenden naar een Azure Storage-account of Event Hub](./media/logic-apps-monitor-b2b-message/diagnostics-storage-event-hub-log-analytics.png)
 
-## <a name="supported-tracking-schemas"></a>Ondersteunde volgschema 's
+## <a name="supported-tracking-schemas"></a>Ondersteunde tracking schema's
 
-Azure biedt ondersteuning voor deze tracering schematypen waarin alle schema's met uitzondering van het type aangepast hebt opgelost.
+Azure ondersteunt deze tracking schema typen, die allemaal vaste schema's hebben, met uitzonde ring van het aangepaste type.
 
 * [Volgschema voor AS2](../logic-apps/logic-apps-track-integration-account-as2-tracking-schemas.md)
 * [Volgschema voor X12](../logic-apps/logic-apps-track-integration-account-x12-tracking-schema.md)
@@ -146,6 +146,6 @@ Azure biedt ondersteuning voor deze tracering schematypen waarin alle schema's m
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [B2B-berichten bijhouden in Logboeken van Azure Monitor](../logic-apps/logic-apps-track-b2b-messages-omsportal.md "bijhouden B2B-berichten in de logboeken van Azure Monitor")
-* [Meer informatie over het Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md "meer informatie over Enterprise Integration Pack")
+* [B2B-berichten bijhouden in Azure Monitor-logboeken](../logic-apps/logic-apps-track-b2b-messages-omsportal.md "B2B-berichten bijhouden in Azure Monitor-logboeken")
+* [Meer informatie over de Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md "Meer informatie over Enterprise Integration Pack")
 

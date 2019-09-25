@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 09/09/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e95143da96ce9891c3820479e536e9ea6a18617
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: b07c6d6317d8ca284008d271f507b965414bfbc1
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70861355"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71257503"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-tableau-server"></a>Zelfstudie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met tableau-server
 
@@ -158,7 +158,7 @@ In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebru
     h. Klik op **Opslaan**
 
     > [!NOTE]
-    > De klant moet een certificaat uploaden in de SAML SSO-configuratie van de tableau-server en wordt genegeerd in de SSO-stroom. Als u hulp nodig hebt bij het configureren van SAML op tableau server, raadpleegt u dit artikel [SAML configureren](https://help.tableau.com/current/server/en-gb/saml_config_steps_tsm_ui.htm).
+    > De klant moet een certificaat uploaden in de SAML SSO-configuratie van de tableau-server en wordt genegeerd in de SSO-stroom. Als u hulp nodig hebt bij het configureren van SAML op tableau server, raadpleegt u dit artikel [SAML configureren](https://help.tableau.com/current/online/en-us/saml_config_azure_ad.htm).
 
 ### <a name="create-tableau-server-test-user"></a>Test gebruiker voor tableau-server maken
 

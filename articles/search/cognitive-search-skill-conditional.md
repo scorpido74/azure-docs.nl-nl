@@ -5,17 +5,16 @@ services: search
 manager: nitinme
 author: luiscabrer
 ms.service: search
-ms.subservice: cognitive-search
 ms.workload: search
 ms.topic: conceptual
 ms.date: 05/01/2019
 ms.author: luisca
-ms.openlocfilehash: 29e50a3d978338eaa46566574e6a20685a14bda4
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: ea6113b96e2acf70a877e170651be3daa578e518
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70186395"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71265815"
 ---
 #   <a name="conditional-skill"></a>Voorwaardelijke vaardigheid
 
@@ -82,16 +81,16 @@ De volgende items zijn geldige waarden van een expressie:
         "= $(/document/lengthInMeters) / 0.3049" // division
     ```
 
-Omdat de voorwaardelijke vaardigheid evaluatie ondersteunt, kunt u deze gebruiken in scenario's voor kleine trans formatie. Zie bijvoorbeeld vaardigheids [definitie 4](#transformation-example).
+Omdat de voorwaardelijke vaardigheid evaluatie ondersteunt, kunt u deze gebruiken in scenario's voor kleine trans formatie. Zie bijvoorbeeld [vaardigheids definitie 4](#transformation-example).
 
 ## <a name="skill-inputs"></a>Vaardigheids invoer
 De invoer is hoofdlettergevoelig.
 
 | Invoer   | Description |
 |-------------|-------------|
-| condition   | Deze invoer is een [geëvalueerd veld](#evaluated-fields) dat staat voor de voor waarde die moet worden geëvalueerd. Deze voor waarde moet resulteren in een Booleaanse waarde (*waar* of onwaar).   <br/>  Voorbeelden: <br/> "= True" <br/> "= $ (/document/Language) = = ' fr '" <br/> "= $ (/document/Pages/\*/Language) = = $ (/document/expectedLanguage)" <br/> |
+| condition   | Deze invoer is een [geëvalueerd veld](#evaluated-fields) dat staat voor de voor waarde die moet worden geëvalueerd. Deze voor waarde moet resulteren in een Booleaanse waarde (*waar* of *Onwaar*).   <br/>  Voorbeelden: <br/> "= True" <br/> "= $ (/document/Language) = = ' fr '" <br/> "= $ (/document/Pages/\*/Language) = = $ (/document/expectedLanguage)" <br/> |
 | whenTrue    | Deze invoer is een [geëvalueerd veld](#evaluated-fields) dat de waarde vertegenwoordigt die moet worden geretourneerd als de voor waarde wordt geëvalueerd als *waar*. Constanten teken reeksen moeten worden geretourneerd tussen enkele aanhalings tekens (' en '). <br/>Voorbeeld waarden: <br/> "=" contract ""<br/>"= $ (/document/contractType)" <br/> "= $ (/document/entities/\*)" <br/> |
-| whenFalse   | Deze invoer is een [geëvalueerd veld](#evaluated-fields) dat de waarde vertegenwoordigt die moet worden geretourneerd als de voor waardewordt geëvalueerd als onwaar. <br/>Voorbeeld waarden: <br/> "=" contract ""<br/>"= $ (/document/contractType)" <br/> "= $ (/document/entities/\*)" <br/>
+| whenFalse   | Deze invoer is een [geëvalueerd veld](#evaluated-fields) dat de waarde vertegenwoordigt die moet worden geretourneerd als de voor waarde wordt geëvalueerd als *Onwaar*. <br/>Voorbeeld waarden: <br/> "=" contract ""<br/>"= $ (/document/contractType)" <br/> "= $ (/document/entities/\*)" <br/>
 
 ## <a name="skill-outputs"></a>Vaardigheids uitvoer
 Er is één uitvoer die gewoon "uitvoer" wordt genoemd. Retourneert de waarde *whenFalse* als de voor waarde ONWAAR is of *whenTrue* als de voor waarde waar is.

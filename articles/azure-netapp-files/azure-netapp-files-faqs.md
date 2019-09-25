@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/14/2019
+ms.date: 09/24/2019
 ms.author: b-juche
-ms.openlocfilehash: f97bb4842d9e24d879dd47757fda75b16bca48cf
-ms.sourcegitcommit: 5604661655840c428045eb837fb8704dca811da0
+ms.openlocfilehash: 66d0d65065f323f53095782e165f179125aa35ac
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68494810"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71264986"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Veelgestelde vragen over Azure NetApp Files
 
@@ -58,7 +58,9 @@ Alle Azure NetApp Files volumes worden versleuteld met behulp van de FIPS 140-2-
 
 ### <a name="how-are-encryption-keys-managed"></a>Hoe worden versleutelings sleutels beheerd? 
 
-Sleutel beheer voor Azure NetApp Files wordt verwerkt door de service.  Op dit moment worden door de gebruiker beheerde sleutels (uw eigen sleutels meenemen) niet ondersteund.
+Sleutel beheer voor Azure NetApp Files wordt verwerkt door de service. Voor elk volume wordt een unieke XTS-AES-256-gegevens versleutelings sleutel gegenereerd. Een versleutelings sleutel hiërarchie wordt gebruikt om alle volume sleutels te versleutelen en te beveiligen. Deze versleutelings sleutels worden nooit weer gegeven of gerapporteerd in een niet-versleutelde indeling. Versleutelings sleutels worden direct verwijderd wanneer een volume wordt verwijderd.
+
+Op dit moment worden door de gebruiker beheerde sleutels (uw eigen sleutels meenemen) niet ondersteund.
 
 ### <a name="can-i-configure-the-nfs-export-policy-rules-to-control-access-to-the-azure-netapp-files-service-mount-target"></a>Kan ik de NFS-export beleids regels configureren om de toegang tot het Azure NetApp Files service-koppelings doel te beheren?
 

@@ -1,5 +1,5 @@
 ---
-title: Correlatie-id's toevoegen aan IoT-berichten met gedistribueerde tracering (preview)
+title: Correlatie-Id's toevoegen aan IoT-berichten met gedistribueerde tracering (preview-versie)
 description: ''
 author: jlian
 manager: briz
@@ -8,89 +8,89 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/06/2019
 ms.author: jlian
-ms.openlocfilehash: 302c382a7e19e9dcc4c979d31ddc0768655a1465
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e4403c245a3cae671f83260ae313ed400b0f7721
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60400785"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71259354"
 ---
-# <a name="trace-azure-iot-device-to-cloud-messages-with-distributed-tracing-preview"></a>Traceringsberichten Azure IoT-apparaat-naar-cloud met gedistribueerde tracering (preview)
+# <a name="trace-azure-iot-device-to-cloud-messages-with-distributed-tracing-preview"></a>Azure IoT-apparaat-naar-Cloud-berichten traceren met gedistribueerde tracering (voor beeld)
 
-Microsoft Azure IoT Hub biedt momenteel ondersteuning voor gedistribueerde tracering als een [preview-functie](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+Microsoft Azure IoT Hub ondersteunt momenteel gedistribueerde tracering als een [Preview-functie](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-IoT Hub is een van de eerste Azure-services voor de ondersteuning van gedistribueerde tracering. Als u meer Azure-services ondersteunen gedistribueerde tracering, zult u kunt traceringsberichten IoT in de Azure-services die betrokken zijn bij uw oplossing. Zie voor een achtergrond op gedistribueerde tracering [gedistribueerde tracering](../azure-monitor/app/distributed-tracing.md).
+IoT Hub is een van de eerste Azure-Services ter ondersteuning van gedistribueerde tracering. Naarmate meer Azure-Services gedistribueerde tracering ondersteunen, kunt u IoT-berichten traceren in de Azure-Services die bij uw oplossing betrokken zijn. Zie [gedistribueerde tracering](../azure-monitor/app/distributed-tracing.md)voor een achtergrond van gedistribueerde tracering.
 
-Gedistribueerde tracering voor IoT Hub kunt u de testomgeving:
+Door gedistribueerde tracering in te scha kelen voor IoT Hub hebt u de volgende mogelijkheden:
 
-- Nauwkeurig bewaken van de stroom van elk bericht via IoT Hub met behulp van [trace context](https://github.com/w3c/trace-context). Deze trace-context bevat de correlatie-id's waarmee u kunt gebeurtenissen van het ene correleren met gebeurtenissen uit een ander onderdeel. Deze kan worden toegepast voor een subset of alle berichten met IoT-apparaat met behulp van [apparaatdubbel](iot-hub-devguide-device-twins.md).
-- Automatisch aanmelden de trace-context [diagnostische logboeken van Azure Monitor](iot-hub-monitor-resource-health.md).
-- Meten en begrijpen van de berichtenstroom en de latentie van apparaten naar IoT Hub en routering eindpunten.
-- Overweegt hoe wilt u gedistribueerde tracering voor de niet-Azure-services implementeren in uw IoT-oplossing.
+- Bewaak de stroom van elk bericht nauw keurig via IoT Hub met behulp van de [tracerings context](https://github.com/w3c/trace-context). Deze tracerings context bevat correlatie-Id's waarmee u gebeurtenissen van het ene onderdeel kunt correleren met gebeurtenissen van een ander onderdeel. Het kan worden toegepast voor een subset of alle IoT-apparaten met behulp van [device-twee](iot-hub-devguide-device-twins.md).
+- De tracerings context automatisch in een logboek vastleggen voor het [Azure monitor van Diagnostische logboeken](iot-hub-monitor-resource-health.md).
+- Meet en begrijp de berichten stroom en latentie van apparaten tot IoT Hub en routerings eindpunten.
+- Ga eerst na hoe u gedistribueerde tracering wilt implementeren voor de niet-Azure-Services in uw IoT-oplossing.
 
-In dit artikel gebruikt u de [Azure IoT device-SDK voor C](./iot-hub-device-sdk-c-intro.md) met gedistribueerde tracering. Ondersteuning voor gedistribueerde tracering wordt nog steeds uitgevoerd voor de andere SDK's.
+In dit artikel gebruikt u de [Azure IOT Device SDK voor C](./iot-hub-device-sdk-c-intro.md) met gedistribueerde tracering. Ondersteuning voor gedistribueerde tracering wordt nog steeds uitgevoerd voor de andere Sdk's.
 
 ## <a name="prerequisites"></a>Vereisten
 
-- De Preview-versie van gedistribueerde tracering is momenteel alleen ondersteund voor IoT-Hubs die zijn gemaakt in de volgende regio's:
+- De preview-versie van gedistribueerde tracering wordt momenteel alleen ondersteund voor IoT-hubs die in de volgende regio's zijn gemaakt:
 
-  - **Noord-Europa**
+  - **Europa - noord**
   - **Zuidoost-Azië**
   - **VS-West 2**
 
-- In dit artikel wordt ervan uitgegaan dat u bekend bent met berichten over telemetrie verzenden naar uw IoT-hub. Zorg ervoor dat u hebt voltooid, de [verzenden van telemetrie C snelstartgids](./quickstart-send-telemetry-c.md).
+- In dit artikel wordt ervan uitgegaan dat u bekend bent met het verzenden van telemetrie-berichten naar uw IoT-hub. Zorg ervoor dat u de Snelstartgids voor het [verzenden van telemetrie C](./quickstart-send-telemetry-c.md)hebt voltooid.
 
-- Een apparaat te registreren bij uw IoT hub (beschikbaar in elke snelstartgids stappen) en noteert u de verbindingsreeks.
+- Registreer een apparaat met uw IoT-hub (de stappen die beschikbaar zijn in elke Snelstartgids) en noteer de connection string.
 
 - Installeer de meest recente versie van [Git](https://git-scm.com/download/).
 
 ## <a name="configure-iot-hub"></a>IoT Hub configureren
 
-In deze sectie configureert u een IoT-Hub voor logboekregistratie van gedistribueerde tracering kenmerken (correlatie-id's en tijdstempels).
+In deze sectie configureert u een IoT Hub voor het registreren van gedistribueerde traceer kenmerken (correlatie-Id's en tijds tempels).
 
-1. Navigeer naar uw IoT-hub in de [Azure-portal](https://portal.azure.com/).
+1. Ga in het [Azure Portal](https://portal.azure.com/)naar uw IOT-hub.
 
-1. In het linkerdeelvenster voor uw IoT-hub, schuif omlaag naar de **bewaking** sectie en klikt u op **diagnostische instellingen**.
+1. Schuif in het linkerdeel venster voor uw IoT-hub omlaag naar het gedeelte **bewaking** en klik op **Diagnostische instellingen**.
 
-1. Als diagnostische instellingen zijn niet is ingeschakeld, klikt u op **diagnostische gegevens inschakelen**. Als u diagnostische instellingen al hebt ingeschakeld, klikt u op **diagnostische instelling toevoegen**.
+1. Als de diagnostische instellingen nog niet zijn ingeschakeld, klikt u op **Diagnostische gegevens inschakelen**. Als u Diagnostische instellingen al hebt ingeschakeld, klikt u op **Diagnostische instelling toevoegen**.
 
-1. In de **naam** en voer een naam op voor een nieuwe diagnostische instelling. Bijvoorbeeld, **DistributedTracingSettings**.
+1. Voer in het veld **naam** een naam in voor een nieuwe diagnostische instelling. Bijvoorbeeld **DistributedTracingSettings**.
 
-1. Kies een of meer van de volgende opties om te bepalen waar de logboekregistratie wordt verzonden:
+1. Kies een of meer van de volgende opties om te bepalen waar de logboek registratie wordt verzonden:
 
-    - **Archiveren naar een opslagaccount**: Configureer een opslagaccount voor de logboekregistratie informatie bevatten.
-    - **Stream naar een event hub**: Configureer een event hub bevat gegevens in het logboek.
-    - **Verzenden naar Log Analytics**: Configureer een log analytics-werkruimte als u wilt de logboekregistratie informatie bevatten.
+    - **Archiveren naar een opslag account**: Een opslag account configureren om de logboek gegevens te bevatten.
+    - **Streamen naar een event hub**: Configureer een Event Hub om de logboek gegevens te bevatten.
+    - **Verzenden naar log Analytics**: Configureer een log Analytics-werk ruimte om de logboek gegevens te bevatten.
 
-1. In de **Log** sectie, selecteert u de bewerkingen die u wilt dat gegevens voor logboekregistratie.
+1. Selecteer in de sectie **logboek** de bewerkingen waarvoor u logboek registratie gegevens wilt.
 
-    Zorg ervoor dat u **DistributedTracing**, en configureer een **retentie** voor hoeveel dagen u wilt dat de logboekregistratie bewaard. Logboekbehoud heeft invloed op de kosten voor opslag.
+    Zorg ervoor dat u **DistributedTracing**opneemt en een **Bewaar periode** configureert voor het aantal dagen dat de logboek registratie moet worden bewaard. De Bewaar periode van het logboek heeft invloed op de opslag kosten.
 
-    ![Schermopname die laat zien waar de categorie DistributedTracing is bedoeld voor IoT diagnostische instellingen](./media/iot-hub-distributed-tracing/diag-logs.png)
+    ![Scherm opname van de categorie DistributedTracing voor IoT Diagnostic Settings](./media/iot-hub-distributed-tracing/diag-logs.png)
 
-1. Klik op **opslaan** voor de nieuwe instelling.
+1. Klik op **Opslaan** voor de nieuwe instelling.
 
-1. (Optioneel) Om te zien van de berichten naar verschillende locaties stromen, instellen van [routeringsregels op ten minste twee verschillende eindpunten](iot-hub-devguide-messages-d2c.md).
+1. Beschrijving Als u de berichten stroom naar verschillende locaties wilt weer geven, stelt [u routerings regels in op ten minste twee verschillende eind punten](iot-hub-devguide-messages-d2c.md).
 
-Zodra de logboekregistratie is ingeschakeld, registreert IoT Hub een logboek wanneer een bericht weergegeven met geldige eigenschappen is aangetroffen in een van de volgende situaties:
+Zodra de logboek registratie is ingeschakeld, registreert IoT Hub een logboek wanneer een bericht met geldige tracerings eigenschappen wordt aangetroffen in een van de volgende situaties:
 
-- De berichten bij IoT-Hub gateway aankomt.
-- Het bericht is verwerkt door de IoT-Hub.
-- Het bericht wordt doorgestuurd naar aangepaste eindpunten. Routering moet zijn ingeschakeld.
+- De berichten arriveren op de gateway van IoT Hub.
+- Het bericht wordt verwerkt door de IoT Hub.
+- Het bericht wordt doorgestuurd naar aangepaste eind punten. Route ring moet zijn ingeschakeld.
 
-Zie voor meer informatie over deze logboeken en hun schema's, [gedistribueerde tracering in IoT Hub diagnostische logboeken](iot-hub-monitor-resource-health.md#distributed-tracing-preview).
+Zie [gedistribueerde tracering in IOT hub Diagnostische logboeken](iot-hub-monitor-resource-health.md#distributed-tracing-preview)voor meer informatie over deze logboeken en de bijbehorende schema's.
 
 ## <a name="set-up-device"></a>Apparaat instellen
 
-In dit gedeelte bereidt u een ontwikkelomgeving voor gebruik met de [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c). Vervolgens, wijzigt u een van de voorbeelden voor het inschakelen van gedistribueerde tracering op berichten over telemetrie van uw apparaat te maken.
+In deze sectie bereidt u een ontwikkel omgeving voor op gebruik met de [Azure IOT C-SDK](https://github.com/Azure/azure-iot-sdk-c). Vervolgens wijzigt u een van de voor beelden om gedistribueerde tracering in te scha kelen op de telemetrie-berichten van uw apparaat.
 
-Deze instructies zijn voor het bouwen van het voorbeeld op Windows. Zie voor andere omgevingen [Compileer de SDK voor C](https://github.com/Azure/azure-iot-sdk-c/blob/master/iothub_client/readme.md#compile) of [voorverpakt C-SDK voor de ontwikkeling van de Platform-specifieke](https://github.com/Azure/azure-iot-sdk-c/blob/master/iothub_client/readme.md#prepackaged-c-sdk-for-platform-specific-development).
+Deze instructies zijn voor het bouwen van het voor beeld in Windows. Zie voor andere omgevingen [de c SDK compileren of de](https://github.com/Azure/azure-iot-sdk-c/blob/master/iothub_client/readme.md#compile) [voor verpakking van de c SDK voor platform-specifieke ontwikkeling](https://github.com/Azure/azure-iot-sdk-c/blob/master/iothub_client/readme.md#prepackaged-c-sdk-for-platform-specific-development).
 
-### <a name="clone-the-source-code-and-initialize"></a>Klonen van de broncode en initialiseren
+### <a name="clone-the-source-code-and-initialize"></a>De bron code klonen en initialiseren
 
-1. Installeer ['Desktop development with C++'-werkbelasting](https://docs.microsoft.com/cpp/build/vscpp-step-0-installation?view=vs-2017) voor Visual Studio 2015 of 2017.
+1. Installeer [' Desktop Development ' C++met ' workload '](https://docs.microsoft.com/cpp/build/vscpp-step-0-installation?view=vs-2017) voor Visual Studio 2015 of 2017.
 
-1. Installeer [CMake](https://cmake.org/). Zorg ervoor dat deel uitmaakt van uw `PATH` door te typen `cmake -version` vanaf een opdrachtprompt.
+1. Installeer [cmake](https://cmake.org/). Zorg ervoor dat deze in uw `PATH` typt door `cmake -version` te typen vanaf een opdracht prompt.
 
 1. Open een opdrachtprompt of Git Bash-shell. Voer de volgende opdracht uit voor het klonen van de [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) GitHub-opslagplaats:
 
@@ -109,7 +109,7 @@ Deze instructies zijn voor het bouwen van het voorbeeld op Windows. Zie voor and
     cmake ..
     ```
 
-    Als `cmake` uw C++-compiler niet kan vinden kunnen er build optreden tijdens het uitvoeren van de bovenstaande opdracht. Als dit gebeurt, voert u deze opdracht uit bij de [Visual Studio-opdrachtprompt](https://docs.microsoft.com/dotnet/framework/tools/developer-command-prompt-for-vs). 
+    Als `cmake` u uw C++ compiler niet kunt vinden, kunt u tijdens het uitvoeren van de bovenstaande opdracht build-fouten krijgen. Als dit gebeurt, voert u deze opdracht uit bij de [Visual Studio-opdrachtprompt](https://docs.microsoft.com/dotnet/framework/tools/developer-command-prompt-for-vs). 
 
     Zodra het bouwen is voltooid, zijn de laatste paar uitvoerregels vergelijkbaar met de volgende uitvoer:
 
@@ -127,105 +127,105 @@ Deze instructies zijn voor het bouwen van het voorbeeld op Windows. Zie voor and
     -- Build files have been written to: E:/IoT Testing/azure-iot-sdk-c/cmake
     ```
 
-### <a name="edit-the-send-telemetry-sample-to-enable-distributed-tracing"></a>Bewerken van het voorbeeld van de telemetrie verzenden voor gedistribueerde tracering inschakelen
+### <a name="edit-the-send-telemetry-sample-to-enable-distributed-tracing"></a>Bewerk het voor beeld telemetrie verzenden om gedistribueerde tracering in te scha kelen
 
-1. Een editor gebruiken om te openen de `azure-iot-sdk-c/iothub_client/samples/iothub_ll_telemetry_sample/iothub_ll_telemetry_sample.c` bronbestand.
+1. Gebruik een editor om het `azure-iot-sdk-c/iothub_client/samples/iothub_ll_telemetry_sample/iothub_ll_telemetry_sample.c` bron bestand te openen.
 
 1. Zoek de declaratie van de `connectionString` constante:
 
     [!code-c[](~/samples-iot-distributed-tracing/iothub_ll_telemetry_sample-c/iothub_ll_telemetry_sample.c?name=snippet_config&highlight=2)]
 
-    Vervang de waarde van de `connectionString` constante met de apparaatverbindingsreeks u genoteerd in de [Registreer een apparaat](./quickstart-send-telemetry-c.md#register-a-device) sectie van de [verzenden van telemetrie C snelstartgids](./quickstart-send-telemetry-c.md).
+    Vervang de waarde van de `connectionString` constante door het apparaat Connection String u een notitie hebt gemaakt in de sectie [een apparaat registreren](./quickstart-send-telemetry-c.md#register-a-device) van de [Snelstartgids voor het verzenden van telemetrie C](./quickstart-send-telemetry-c.md).
 
-1. Wijzig de `MESSAGE_COUNT` definiëren voor `5000`:
+1. Wijzig de `MESSAGE_COUNT` definitie in `5000`:
 
     [!code-c[](~/samples-iot-distributed-tracing/iothub_ll_telemetry_sample-c/iothub_ll_telemetry_sample.c?name=snippet_config&highlight=3)]
 
-1. Zoek de regel van code die wordt aangeroepen `IoTHubDeviceClient_LL_SetConnectionStatusCallback` voor het registreren van een verbinding status retouraanroepfunctie voordat de berichtenlus van het verzenden. Voeg de code onder die regel toe zoals hieronder wordt weergegeven om aan te roepen `IoTHubDeviceClient_LL_EnablePolicyConfiguration` gedistribueerde tracering voor het apparaat:
+1. Zoek de regel met code die aanroept `IoTHubDeviceClient_LL_SetConnectionStatusCallback` voor het registreren van een call back functie van een verbindings status vóór de lus bericht verzenden. Voeg code toe onder die regel zoals hieronder wordt weer `IoTHubDeviceClient_LL_EnablePolicyConfiguration` gegeven om het inschakelen van gedistribueerde tracering voor het apparaat aan te roepen:
 
     [!code-c[](~/samples-iot-distributed-tracing/iothub_ll_telemetry_sample-c/iothub_ll_telemetry_sample.c?name=snippet_tracing&highlight=5)]
 
-    De `IoTHubDeviceClient_LL_EnablePolicyConfiguration` functie kan beleidsregels voor specifieke IoTHub-functies die zijn geconfigureerd via [apparaatdubbels](./iot-hub-devguide-device-twins.md). Eenmaal `POLICY_CONFIGURATION_DISTRIBUTED_TRACING` is ingeschakeld met de regel van de bovenstaande code, het gedrag van de tracering van het apparaat gedistribueerde tracering van wijzigingen op het dubbele apparaat weer.
+    De `IoTHubDeviceClient_LL_EnablePolicyConfiguration` functie maakt beleids regels mogelijk voor specifieke IoTHub-functies die zijn geconfigureerd via [apparaat apparaatdubbels](./iot-hub-devguide-device-twins.md). Eenmaal `POLICY_CONFIGURATION_DISTRIBUTED_TRACING` ingeschakeld met de bovenstaande regel code wordt met het tracerings gedrag van het apparaat gedistribueerde tracerings wijzigingen weer gegeven die zijn aangebracht op het apparaat dubbele.
 
-1. Toevoegen om te voorkomen dat de voorbeeldapp die wordt uitgevoerd zonder gebruik te maken van uw quotum aanvragen, een vertraging van één seconde aan het einde van de bericht-lus verzenden:
+1. Als u de voor beeld-app wilt blijven uitvoeren zonder gebruik te maken van al uw quota, voegt u aan het einde van de lus Send Message een vertraging toe van een seconde:
 
     [!code-c[](~/samples-iot-distributed-tracing/iothub_ll_telemetry_sample-c/iothub_ll_telemetry_sample.c?name=snippet_sleep&highlight=8)]
 
 ### <a name="compile-and-run"></a>Compileren en uitvoeren
 
-1. Navigeer naar de *iothub_ll_telemetry_sample* projectmap uit de map CMake (`azure-iot-sdk-c/cmake`) u eerder hebt gemaakt en compileren van het voorbeeld:
+1. Ga naar de projectmap *iothub_ll_telemetry_sample* in de cmake-map (`azure-iot-sdk-c/cmake`) die u eerder hebt gemaakt en compileer het voor beeld:
 
     ```cmd
     cd iothub_client/samples/iothub_ll_telemetry_sample
     cmake --build . --target iothub_ll_telemetry_sample --config Debug
     ```
 
-1. Voer de toepassing uit. Het apparaat verzendt telemetrie gedistribueerde tracering ondersteunen.
+1. Voer de toepassing uit. Het apparaat verzendt telemetrie ondersteuning voor gedistribueerde tracering.
 
     ```cmd
     Debug/iothub_ll_telemetry_sample.exe
     ```
 
-1. Houd de app die wordt uitgevoerd. (Optioneel) ziet u het bericht wordt verzonden naar IoT Hub door te kijken in het consolevenster.
+1. Zorg ervoor dat de app wordt uitgevoerd. Bekijk eventueel het bericht dat wordt verzonden naar IoT Hub door te kijken naar het console venster.
 
 <!-- For a client app that can receive sampling decisions from the cloud, check out [this sample](https://aka.ms/iottracingCsample).  -->
 
-### <a name="workaround-for-third-party-clients"></a>Tijdelijke oplossing voor externe clients
+### <a name="workaround-for-third-party-clients"></a>Tijdelijke oplossing voor clients van derden
 
-Er **niet trivial** om een voorbeeld van de functie voor gedistribueerde tracering zonder gebruik van de C-SDK. Deze methode wordt daarom niet aanbevolen.
+Het is **niet** eenvoudig om een voor beeld van de gedistribueerde tracerings functie te bekijken zonder de C SDK te gebruiken. Daarom wordt deze methode niet aanbevolen.
 
-Eerst moet u alle primitieven van de IoT Hub-protocol in uw berichten implementeren door de dev-handleiding [maken en lezen IoT Hub-berichten](iot-hub-devguide-messages-construct.md). Wijzig de eigenschappen voor protocol in de berichten MQTT/AMQP om toe te voegen `tracestate` als **systeemeigenschap**. Met name:
+Eerst moet u alle IoT Hub protocol primitieven in uw berichten implementeren door de ontwikkelaars gids te volgen om [IOT hub berichten te maken en te lezen](iot-hub-devguide-messages-construct.md). Bewerk vervolgens de protocol eigenschappen in de MQTT/AMQP-berichten om toe `tracestate` te voegen als **systeem eigenschap**. Met name:
 
-* Voeg voor MQTT, `%24.tracestate=timestamp%3d1539243209` naar het onderwerp bericht waar `1539243209` moet worden vervangen door de aanmaaktijd van het bericht in de notatie van de unix-tijdstempel. Als u bijvoorbeeld verwijzen naar de implementatie [in de C-SDK](https://github.com/Azure/azure-iot-sdk-c/blob/6633c5b18710febf1af7713cf1a336fd38f623ed/iothub_client/src/iothubtransport_mqtt_common.c#L761)
-* Voeg voor AMQP, `key("tracestate")` en `value("timestamp=1539243209")` als aantekening bericht. Zie voor een implementatie ter referentie [hier](https://github.com/Azure/azure-iot-sdk-c/blob/6633c5b18710febf1af7713cf1a336fd38f623ed/iothub_client/src/uamqp_messaging.c#L527).
+* Voor MQTT voegt `%24.tracestate=timestamp%3d1539243209` u toe aan het bericht onderwerp, `1539243209` waar moet worden vervangen door de aanmaak tijd van het bericht in de Unix-Time Stamp-indeling. Zie als voor beeld de implementatie [in de C SDK](https://github.com/Azure/azure-iot-sdk-c/blob/6633c5b18710febf1af7713cf1a336fd38f623ed/iothub_client/src/iothubtransport_mqtt_common.c#L761)
+* Voor AMQP, toevoegen `key("tracestate")` en `value("timestamp=1539243209")` als aantekening van een bericht. Zie [hier](https://github.com/Azure/azure-iot-sdk-c/blob/6633c5b18710febf1af7713cf1a336fd38f623ed/iothub_client/src/uamqp_messaging.c#L527)voor een referentie-implementatie.
 
-Voor het beheren van het percentage van de berichten die deze eigenschap bevat logica om te luisteren naar gebeurtenissen, zoals apparaatdubbel werkt bij cloud geïnitieerde te implementeren.
+Voor het beheren van het percentage berichten dat deze eigenschap bevat, implementeert u logica om te Luis teren naar gebeurtenissen die in de cloud worden gestart, zoals dubbele updates.
 
-## <a name="update-sampling-options"></a>Opties voor het bijwerken van lijnen 
+## <a name="update-sampling-options"></a>Sampling opties bijwerken 
 
-Als u wilt wijzigen van het percentage van de berichten vanuit de cloud worden getraceerd, moet u het dubbele apparaat bijwerken. U kunt dit met inbegrip van de JSON-editor in de portal en de IoT Hub-service-SDK op meerdere manieren uitvoeren. De volgende subsecties vindt u voorbeelden.
+Als u het percentage berichten wilt wijzigen dat moet worden getraceerd vanuit de Cloud, moet u het apparaat dubbele bijwerken. U kunt dit op meerdere manieren doen, met inbegrip van de JSON-editor in portal en de IoT Hub Service-SDK. In de volgende subsecties vindt u voor beelden.
 
 ### <a name="update-using-the-portal"></a>Bijwerken met behulp van de portal
 
-1. Navigeer naar uw IoT-hub in [Azure-portal](https://portal.azure.com/), klikt u vervolgens op **IoT-apparaten**.
+1. Ga in [Azure Portal](https://portal.azure.com/)naar uw IOT-hub en klik vervolgens op **IOT-apparaten**.
 
-1. Klik op het apparaat.
+1. Klik op uw apparaat.
 
-1. Zoek naar **inschakelen gedistribueerde tracering (preview)** en selecteer vervolgens **inschakelen**.
+1. Zoek naar **gedistribueerde tracering inschakelen (preview)** en selecteer **inschakelen**.
 
-    ![Gedistribueerde tracering inschakelen in Azure portal](./media/iot-hub-distributed-tracing/azure-portal.png)
+    ![Gedistribueerde tracering inschakelen in Azure Portal](./media/iot-hub-distributed-tracing/azure-portal.png)
 
-1. Kies een **samplefrequentie** tussen 0 en 100%.
+1. Kies een **sampling frequentie** tussen 0% en 100%.
 
 1. Klik op **Opslaan**.
 
-1. Wacht een paar seconden en klikt u op **vernieuwen**, en vervolgens als is bevestigd door het apparaat, een pictogram synchroniseren met een vinkje wordt weergegeven.
+1. Wacht een paar seconden en klik op **vernieuwen**. Als u het apparaat hebt bevestigd, wordt het pictogram synchroniseren weer gegeven.
 
-1. Ga terug naar het consolevenster voor de app telemetrie-bericht. Ziet u berichten worden verzonden met `tracestate` in de toepassingseigenschappen van de.
+1. Ga terug naar het console venster voor de app voor telemetrie-berichten. Berichten die worden verzonden met `tracestate` in de toepassings eigenschappen worden weer gegeven.
 
-    ![Status traceren](./media/iot-hub-distributed-tracing/MicrosoftTeams-image.png)
+    ![Traceer status](./media/iot-hub-distributed-tracing/MicrosoftTeams-image.png)
 
-1. (Optioneel) De samplingfrequentie op een andere waarde en Zie dat de wijziging in de frequentie waarmee berichten omvatten `tracestate` in de toepassingseigenschappen van de.
+1. Beschrijving Wijzig de sampling frequentie in een andere waarde en Bekijk de wijziging in de frequentie die berichten bevatten `tracestate` in de eigenschappen van de toepassing.
 
-### <a name="update-using-azure-iot-hub-toolkit-for-vs-code"></a>Bijwerken met behulp van Azure IoT Hub-Toolkit voor Visual Studio Code
+### <a name="update-using-azure-iot-hub-toolkit-for-vs-code"></a>Bijwerken met behulp van Azure IoT Hub Toolkit voor VS code
 
-1. Visual Studio Code installeren en installeer de nieuwste versie van Azure IoT Hub-Toolkit voor Visual Studio-Code [hier](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools).
+1. Installeer VS code en Installeer [hier](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)de nieuwste versie van Azure IOT hub Toolkit voor VS code.
 
-1. VS Code opent en [instellen van IoT Hub-verbindingsreeks](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit#user-content-prerequisites).
+1. Open VS code en [stel IoT Hub Connection String](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit#user-content-prerequisites)in.
 
-1. Vouw het apparaat en zoek naar **gedistribueerde tracering instelling (Preview)** . Klik hieronder op **gedistribueerde tracering instelling bijwerken (Preview)** van subknooppunt.
+1. Vouw het apparaat uit en zoek naar de **instelling voor gedistribueerde tracering (preview)** . Klik daaronder op **Update gedistribueerde tracerings instelling (preview)** van SubNode.
 
-    ![Gedistribueerde tracering inschakelen in Azure IoT Hub Toolkit](./media/iot-hub-distributed-tracing/update-distributed-tracing-setting-1.png)
+    ![Gedistribueerde tracering inschakelen in azure IoT Hub Toolkit](./media/iot-hub-distributed-tracing/update-distributed-tracing-setting-1.png)
 
-1. Selecteer in het pop-upvenster **inschakelen**, druk op Enter om te bevestigen van 100 als samplingfrequentie.
+1. Selecteer in het pop-upvenster **inschakelen**en druk vervolgens op Enter om 100 te bevestigen als sampling frequentie.
 
-    ![Samplingmodus bijwerken](./media/iot-hub-distributed-tracing/update-distributed-tracing-setting-2.png)
+    ![Sampling-modus bijwerken](./media/iot-hub-distributed-tracing/update-distributed-tracing-setting-2.png)
 
-    ![Steekproeffrequentie bijwerken](./media/iot-hub-distributed-tracing/update-distributed-tracing-setting-3.png)
+    ![Sampling frequentie bijwerken](./media/iot-hub-distributed-tracing/update-distributed-tracing-setting-3.png)
 
-### <a name="bulk-update-for-multiple-devices"></a>Bulk-update voor meerdere apparaten
+### <a name="bulk-update-for-multiple-devices"></a>Bulksgewijs bijwerken voor meerdere apparaten
 
-Gebruiken voor het bijwerken van de configuratie van de gedistribueerde tracering sampling voor meerdere apparaten, [automatische apparaatconfiguratie](iot-hub-auto-device-config.md). Zorg ervoor dat u dit schema dubbele volgen:
+Voor het bijwerken van de configuratie van de gedistribueerde tracerings sampling voor meerdere apparaten, gebruikt u [automatische apparaatconfiguratie](iot-hub-auto-device-config.md). Zorg ervoor dat u dit dubbele schema volgt:
 
 ```json
 {
@@ -242,16 +242,16 @@ Gebruiken voor het bijwerken van de configuratie van de gedistribueerde tracerin
 
 | De naam van element | Vereist | Type | Description |
 |-----------------|----------|---------|-----------------------------------------------------|
-| `sampling_mode` | Ja | Geheel getal | Waarden van de twee modi worden momenteel ondersteund om in te schakelen van steekproeven in of uit. `1` is ingeschakeld en `2` is uitgeschakeld. |
-| `sampling_rate` | Ja | Geheel getal | Deze waarde is een percentage. Alleen waarden tussen `0` naar `100` (inclusief) zijn toegestaan.  |
+| `sampling_mode` | Ja | Integer | Op dit moment worden twee modus waarden ondersteund om steek proeven in en uit te scha kelen. `1`is ingeschakeld en `2` is uit. |
+| `sampling_rate` | Ja | Integer | Deze waarde is een percentage. Alleen waarden van `0` tot `100` (inclusief) zijn toegestaan.  |
 
-## <a name="query-and-visualize"></a>Opvragen en visualiseren
+## <a name="query-and-visualize"></a>Query's uitvoeren en visualiseren
 
-Query om te zien van alle traces die zijn geregistreerd door een IoT-Hub, de log-store die u hebt geselecteerd in de diagnostische instellingen. Dit gedeelte doorloopt samen met een aantal andere opties.
+Als u alle traceringen wilt weer geven die door een IoT Hub zijn geregistreerd, moet u een query uitvoeren op het logboek archief dat u in de diagnostische instellingen hebt geselecteerd. In deze sectie vindt u een aantal verschillende opties.
 
-### <a name="query-using-log-analytics"></a>Met Log Analytics-query uitvoeren
+### <a name="query-using-log-analytics"></a>Query's uitvoeren met Log Analytics
 
-Als u hebt ingesteld [Log Analytics met diagnostische logboeken](../azure-monitor/platform/diagnostic-logs-stream-log-store.md), query door te zoeken naar Logboeken in de `DistributedTracing` categorie. Deze query geeft bijvoorbeeld de traceringen die zijn geregistreerd:
+Als u [log Analytics met Diagnostische logboeken](../azure-monitor/platform/resource-logs-collect-storage.md)hebt ingesteld, kunt u in de `DistributedTracing` categorie zoeken naar Logboeken. Deze query bevat bijvoorbeeld alle traceer logboeken die zijn vastgelegd:
 
 ```Kusto
 // All distributed traces 
@@ -261,63 +261,63 @@ AzureDiagnostics
 | order by TimeGenerated asc  
 ```
 
-Voorbeeld van de logboeken zoals aangegeven in Log Analytics:
+Voorbeeld logboeken, zoals weer gegeven door Log Analytics:
 
-| TimeGenerated | OperationName | Category | Niveau | CorrelationId | DurationMs | Properties |
+| TimeGenerated | OperationName | Category | Niveau | CorrelationId | DurationMs | properties |
 |--------------------------|---------------|--------------------|---------------|---------------------------------------------------------|------------|------------------------------------------------------------------------------------------------------------------------------------------|
-| 2018-02-22T03:28:28.633Z | DiagnosticIoTHubD2C | DistributedTracing | Informatief | 00-8cd869a412459a25f5b4f31311223344-0144d2590aacd909-01 |  | {"deviceId":"AZ3166","messageSize":"96","callerLocalTimeUtc":"2018-02-22T03:27:28.633Z","calleeLocalTimeUtc":"2018-02-22T03:27:28.687Z"} |
-| 2018-02-22T03:28:38.633Z | DiagnosticIoTHubIngress | DistributedTracing | Informatief | 00-8cd869a412459a25f5b4f31311223344-349810a9bbd28730-01 | 20 | {"isRoutingEnabled":"false","parentSpanId":"0144d2590aacd909"} |
-| 2018-02-22T03:28:48.633Z | DiagnosticIoTHubEgress | DistributedTracing | Informatief | 00-8cd869a412459a25f5b4f31311223344-349810a9bbd28730-01 | 23 | {"endpointType":"EventHub","endpointName":"myEventHub", "parentSpanId":"0144d2590aacd909"} |
+| 2018-02-22T03:28:28.633 Z | DiagnosticIoTHubD2C | DistributedTracing | Informatief | 00-8cd869a412459a25f5b4f31311223344-0144d2590aacd909-01 |  | {"deviceId": "AZ3166", "messageSize": "96", "callerLocalTimeUtc": "2018-02-22T03:27:28.633 Z", "calleeLocalTimeUtc": "2018-02-22T03:27:28.687 Z"} |
+| 2018-02-22T03:28:38.633 Z | DiagnosticIoTHubIngress | DistributedTracing | Informatief | 00-8cd869a412459a25f5b4f31311223344-349810a9bbd28730-01 | 20 | {"isRoutingEnabled":"false","parentSpanId":"0144d2590aacd909"} |
+| 2018-02-22T03:28:48.633 Z | DiagnosticIoTHubEgress | DistributedTracing | Informatief | 00-8cd869a412459a25f5b4f31311223344-349810a9bbd28730-01 | 23 | {"endpointType": "EventHub", "eind punt": "myEventHub", "parentSpanId": "0144d2590aacd909"} |
 
-Zie voor meer informatie over de verschillende typen logboeken, [diagnostische logboeken van Azure IoT Hub](iot-hub-monitor-resource-health.md#distributed-tracing-preview).
+Zie [Azure IOT hub Diagnostische logboeken](iot-hub-monitor-resource-health.md#distributed-tracing-preview)voor meer informatie over de verschillende soorten logboeken.
 
 ### <a name="application-map"></a>Toepassingskaart
 
-Als u wilt de stroom van IoT-berichten visualiseren, instellen van het Toepassingsoverzicht voorbeeld-app. De voorbeeld-app verzendt de logboeken gedistribueerde tracering [Toepassingsoverzicht](../application-insights/app-insights-app-map.md) met behulp van een Azure-functie en een Event Hub.
+Als u de stroom van IoT-berichten wilt visualiseren, stelt u de voor beeld-app voor de toepassings toewijzing in. De voor beeld-app verzendt de gedistribueerde tracerings logboeken naar de [toepassings toewijzing](../application-insights/app-insights-app-map.md) met behulp van een Azure-functie en een event hub.
 
 > [!div class="button"]
-> <a href="https://github.com/Azure-Samples/e2e-diagnostic-provision-cli" target="_blank">Ophalen van het voorbeeld op Github</a>
+> <a href="https://github.com/Azure-Samples/e2e-diagnostic-provision-cli" target="_blank">Het voor beeld op github ophalen</a>
 
-Deze onderstaande afbeelding ziet u gedistribueerde tracering in App-kaart met drie routering eindpunten:
+In onderstaande afbeelding ziet u gedistribueerde tracering in de app-toewijzing met drie routerings eindpunten:
 
-![IoT gedistribueerde tracering in App-kaart](./media/iot-hub-distributed-tracing/app-map.png)
+![IoT-gedistribueerde tracering in de app-kaart](./media/iot-hub-distributed-tracing/app-map.png)
 
-## <a name="understand-azure-iot-distributed-tracing"></a>Informatie over dat Azure IoT gedistribueerde tracering
+## <a name="understand-azure-iot-distributed-tracing"></a>Meer informatie over gedistribueerde Azure IoT-tracering
 
 ### <a name="context"></a>Context
 
-Veel IoT-oplossingen, met inbegrip van onze eigen [referentiearchitectuur](https://aka.ms/iotrefarchitecture) (alleen Engels), volgt u in het algemeen een variant van de [microservice-architectuur](https://docs.microsoft.com/azure/architecture/microservices/). Wanneer een IoT-oplossing complexere groeit, krijgt u uiteindelijk met behulp van meer dan tien of meer microservices. Deze microservices al dan niet van Azure. Kan moeilijk zijn om dicht waar IoT-berichten zijn neer te zetten of te vertragen. U hebt bijvoorbeeld een IoT-oplossing die gebruikmaakt van 5 verschillende Azure-services en 1500 actieve apparaten. Elk apparaat verzendt 10-apparaat-naar-cloud-berichten per seconde (voor een totaal van 15.000 berichten/seconde), maar u ziet dat uw web-app alleen 10.000 berichten per seconde ziet. Waar is het probleem? Hoe kunt u het overmatig vinden?
+Veel IoT-oplossingen, waaronder onze eigen [referentie architectuur](https://aka.ms/iotrefarchitecture) (alleen Engels), volgen doorgaans een variant van de [micro service-architectuur](https://docs.microsoft.com/azure/architecture/microservices/). Naarmate een IoT-oplossing complexer wordt, kunt u een dozijn of meer micro Services gebruiken. Deze micro Services kunnen al dan niet afkomstig zijn van Azure. Het herkennen van IoT-berichten die worden verwijderd of vertraagd, kan lastig worden. U hebt bijvoorbeeld een IoT-oplossing die gebruikmaakt van vijf verschillende Azure-Services en 1500 actieve apparaten. Elk apparaat verzendt 10 apparaat-naar-Cloud-berichten per seconde (voor een totaal van 15.000 berichten/seconde), maar u ziet dat uw web-app alleen 10.000 berichten per seconde ziet. Waar is het probleem? Hoe vindt u de culprit?
 
-### <a name="distributed-tracing-pattern-in-microservice-architecture"></a>Patroon voor gedistribueerde tracering microservice-architectuur
+### <a name="distributed-tracing-pattern-in-microservice-architecture"></a>Gedistribueerd tracerings patroon in micro service-architectuur
 
-Als u wilt de stroom van een IoT-bericht naar verschillende services reconstrueren, elke service moet doorgeven een *correlatie-ID* die een unieke identificatie van het bericht. Zodra verzameld in een gecentraliseerde systeem, wordt er correlatie-id's kunnen u om te zien van een berichtenstroom. Deze methode wordt aangeroepen de [gedistribueerde tracering patroon](https://docs.microsoft.com/azure/architecture/microservices/logging-monitoring#distributed-tracing).
+Voor het opnieuw samen stellen van de stroom van een IoT-bericht over verschillende services moet elke service een *correlatie-id* door geven waarmee het bericht uniek wordt geïdentificeerd. Nadat de correlatie-Id's in een gecentraliseerd systeem zijn verzameld, kunt u de berichten stroom zien. Deze methode wordt het [gedistribueerde tracerings patroon](https://docs.microsoft.com/azure/architecture/microservices/logging-monitoring#distributed-tracing)genoemd.
 
-Ter ondersteuning van grotere acceptatie voor gedistribueerde tracering, Microsoft aanbiedt [W3C standard voorstel voor gedistribueerde tracering](https://w3c.github.io/trace-context/).
+Micro soft draagt bij aan het gebruik van het standaard W3C-voor deel [voor gedistribueerde tracering](https://w3c.github.io/trace-context/)om de uitgebreide acceptatie van gedistribueerde tracering te ondersteunen.
 
 ### <a name="iot-hub-support"></a>Ondersteuning voor IoT Hub
 
-Eenmaal is ingeschakeld, wordt ondersteuning voor gedistribueerde tracering voor IoT-Hub volgen dit patroon:
+Als de functie voor gedistribueerde tracering voor IoT Hub is ingeschakeld, volgt deze stroom:
 
-1. Een bericht wordt op het IoT-apparaat gegenereerd.
-1. De IoT-apparaat besluit (met behulp van de cloud) dat dit bericht moet worden toegewezen aan een trace-context.
-1. De SDK wordt toegevoegd een `tracestate` die aan de eigenschap van de toepassing bericht bevat de timestamp van het maken van het bericht.
-1. De IoT-apparaat wordt het bericht verzonden naar IoT Hub.
-1. Het bericht binnenkomt bij IoT hub gateway.
-1. Zoekt naar IoT Hub de `tracestate` in de berichteigenschappen van de toepassing en controles om te zien of deze in de juiste indeling.
-1. Als dus IoT Hub wordt gegenereerd en registreert de `trace-id` en `span-id` tot diagnostische logboeken van Azure Monitor in de categorie `DiagnosticIoTHubD2C`.
-1. Als de berichtverwerking is voltooid, IoT-Hub genereert een andere `span-id` en registreert deze samen met de bestaande `trace-id` onder de categorie `DiagnosticIoTHubIngress`.
-1. Als routering is ingeschakeld voor het bericht, IoT-Hub schrijft deze naar het eindpunt van de aangepaste en andere logboeken `span-id` met dezelfde `trace-id` onder de categorie `DiagnosticIoTHubEgress`.
-1. De bovenstaande stappen worden herhaald voor elk bericht dat wordt gegenereerd.
+1. Er wordt een bericht gegenereerd op het IoT-apparaat.
+1. Het IoT-apparaat beslist (met de hulp van de Cloud) dat dit bericht moet worden toegewezen aan een tracerings context.
+1. De SDK voegt een `tracestate` toe aan de eigenschap van de bericht toepassing die de tijds tempel voor het maken van het bericht bevat.
+1. Het IoT-apparaat verzendt het bericht naar IoT Hub.
+1. Het bericht arriveert bij de IoT hub-gateway.
+1. IOT hub zoekt naar de `tracestate` in de eigenschappen van de Message-toepassing en controleert of het de juiste indeling heeft.
+1. Als dit het geval is, genereert IOT hub `trace-id` de `span-id` en registreert deze en worden de `DiagnosticIoTHubD2C`Diagnostische logboeken in de categorie Azure monitor.
+1. Zodra de bericht verwerking is voltooid, wordt er door `span-id` IOT hub een andere gegenereerd en wordt deze `trace-id` samen met de `DiagnosticIoTHubIngress`bestaande onder de categorie geregistreerd.
+1. Als route ring is ingeschakeld voor het bericht, wordt het door IOT hub naar het aangepaste eind punt geschreven `span-id` en wordt er `trace-id` een andere logboek `DiagnosticIoTHubEgress`registratie met dezelfde categorie.
+1. De bovenstaande stappen worden herhaald voor elk gegenereerd bericht.
 
-## <a name="public-preview-limits-and-considerations"></a>Openbare preview-beperkingen en overwegingen
+## <a name="public-preview-limits-and-considerations"></a>Limieten en overwegingen voor de open bare preview
 
-- Voorstel voor W3C Trace Context standard is momenteel een concept werken.
-- Op dit moment is de enige talen ondersteund door de client-SDK een C.
-- Cloud-naar-apparaat dubbele mogelijkheid is niet beschikbaar voor [IoT Hub basic-laag](iot-hub-scaling.md#basic-and-standard-tiers). IoT Hub wordt echter nog steeds aanmelden naar Azure Monitor als er een juist samengesteld trace context-header.
-- Om ervoor te zorgen efficiënte bewerking, wordt de IoT Hub een vertraging in de frequentie van logboekregistratie die als onderdeel van gedistribueerde tracering optreden kan opleggen.
+- Het voor stel voor de W3C-tracerings context Standard is momenteel een Working-concept.
+- Op dit moment is de enige ontwikkel taal die wordt ondersteund door de client-SDK C.
+- De ondersteuning voor de dubbele Cloud-naar-apparaat-laag is niet beschikbaar voor [IOT hub Basic](iot-hub-scaling.md#basic-and-standard-tiers). IoT Hub meldt zich echter nog steeds aan Azure Monitor als er een goed opgebouwde tracerings context header wordt weer te zien.
+- Om ervoor te zorgen dat een efficiënte bewerking wordt uitgevoerd, wordt door IoT Hub een beperking opgelegd voor de frequentie van logboek registratie die kan optreden als onderdeel van gedistribueerde tracering.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie voor meer informatie over het algemeen gedistribueerde tracering-patroon in microservices, [Microservice-architectuurpatroon: gedistribueerde tracering](https://microservices.io/patterns/observability/distributed-tracing.html).
-- Om in te stellen de configuratie van gedistribueerde traceringsinstellingen toepassen op een groot aantal apparaten, Zie [configureren en controleren van IoT-apparaten op schaal](iot-hub-auto-device-config.md).
-- Zie voor meer informatie over Azure Monitor, [wat is Azure Monitor?](../azure-monitor/overview.md).
+- Zie voor meer informatie over het algemene gedistribueerde tracerings patroon in micro Services, het [volgende: gedistribueerde tracering-architectuur patroon](https://microservices.io/patterns/observability/distributed-tracing.html)
+- Zie [IOT-apparaten op schaal configureren en controleren](iot-hub-auto-device-config.md)om configuratie in te stellen voor het Toep assen van gedistribueerde tracerings instellingen op een groot aantal apparaten.
+- Zie [Wat is Azure monitor?](../azure-monitor/overview.md)voor meer informatie over Azure monitor.

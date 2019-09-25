@@ -8,12 +8,12 @@ author: spelluru
 ms.topic: conceptual
 ms.date: 08/13/2019
 ms.author: spelluru
-ms.openlocfilehash: 311f69ffa436eebb261fb8aa5ee72886ad9fe9d0
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 37ca2b655d30ffd330d5430da20d07d9548a7c84
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70035913"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71260875"
 ---
 # <a name="configure-customer-managed-keys-for-encrypting-azure-event-hubs-data-at-rest-by-using-the-azure-portal"></a>Door de klant beheerde sleutels voor het versleutelen van Azure Event Hubs-gegevens op rest configureren met behulp van de Azure Portal
 Azure Event Hubs zorgt voor versleuteling van gegevens in rust met Azure Storage-service versleuteling (Azure SSE). Event Hubs is afhankelijk van Azure Storage om de gegevens op te slaan en standaard worden alle gegevens die zijn opgeslagen met Azure Storage versleuteld met door micro soft beheerde sleutels. 
@@ -84,7 +84,7 @@ Zodra de versleutelings sleutel is ingetrokken, wordt de Event Hubs-service op d
 > Als u een bestaande versleutelings sleutel uit de sleutel kluis verwijdert en deze vervangt door een nieuwe sleutel in de naam ruimte Event Hubs, omdat de sleutel delete nog steeds geldig is (omdat deze in de cache wordt opgeslagen) gedurende een uur, worden de oude gegevens (die zijn versleuteld met de oude sleutel) mogelijk nog steeds toegankelijk via  met de nieuwe gegevens, die nu alleen toegankelijk zijn met de nieuwe sleutel. Dit gedrag is inherent aan het ontwerp van de preview-versie van de functie. 
 
 ## <a name="set-up-diagnostic-logs"></a>Diagnostische logboeken instellen 
-Door Diagnostische logboeken in te stellen voor met BYOK ingeschakelde naam ruimten, beschikt u over de vereiste informatie over de bewerkingen wanneer een naam ruimte wordt versleuteld met door de klant beheerde sleutels. Deze logboeken kunnen worden ingeschakeld en later naar een Event Hub worden gestreamd of geanalyseerd via log Analytics of worden gestreamd naar opslag om aangepaste analyses uit te voeren. Zie [overzicht van Diagnostische logboeken van Azure](../azure-monitor/platform/diagnostic-logs-overview.md)voor meer informatie over Diagnostische logboeken.
+Door Diagnostische logboeken in te stellen voor met BYOK ingeschakelde naam ruimten, beschikt u over de vereiste informatie over de bewerkingen wanneer een naam ruimte wordt versleuteld met door de klant beheerde sleutels. Deze logboeken kunnen worden ingeschakeld en later naar een Event Hub worden gestreamd of geanalyseerd via log Analytics of worden gestreamd naar opslag om aangepaste analyses uit te voeren. Zie [overzicht van Diagnostische logboeken van Azure](../azure-monitor/platform/resource-logs-overview.md)voor meer informatie over Diagnostische logboeken.
 
 ## <a name="enable-user-logs"></a>Gebruikers Logboeken inschakelen
 Volg deze stappen om Logboeken in te scha kelen voor door de klant beheerde sleutels.
@@ -110,7 +110,7 @@ Alle logboeken worden opgeslagen in JavaScript Object Notation (JSON)-indeling. 
 | ActivityId | Interne ID die wordt gebruikt voor tracering. |
 | category | Hiermee wordt de classificatie van de taak gedefinieerd. Als de sleutel van uw sleutel kluis bijvoorbeeld wordt uitgeschakeld, zou dit een informatie categorie zijn, of als een sleutel niet kan worden teruggedraaid, kan dit onder een fout vallen. |
 | resourceId | Resource-ID Azure Resource Manager |
-| keyVault | Volledige naam van de sleutel kluis. |
+| KeyVault | Volledige naam van de sleutel kluis. |
 | key | De naam van de sleutel die wordt gebruikt voor het versleutelen van de Event Hubs naam ruimte. |
 | version | De versie van de sleutel die wordt gebruikt. |
 | operation | De bewerking die wordt uitgevoerd op de sleutel in uw sleutel kluis. Schakel bijvoorbeeld de sleutel, de tekst terugloop of de terugloop uit |

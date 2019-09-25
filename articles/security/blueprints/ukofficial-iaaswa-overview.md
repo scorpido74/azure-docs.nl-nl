@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 02/08/2018
 ms.author: jomolesk
-ms.openlocfilehash: 602e4356ccd9eb45855462a7a25e0966dc176b4f
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 4a30e496c96fcc90417e58b0f921717985b89693
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69899945"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71262801"
 ---
 # <a name="azure-security-and-compliance-blueprint---three-tier-iaas-web-application-for-uk-official"></a>Azure-blauwdruk voor beveiliging en naleving-IaaS-webtoepassing met drie lagen voor UK-officiële
 
@@ -149,7 +149,7 @@ Storage
 
 Door de **gebruiker gedefinieerde routes**: Door de [gebruiker gedefinieerde routes](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview) worden gebruikt voor het definiëren van de stroom van IP-verkeer binnen Azure VNets.
 
-**Netwerkpeered VNETs**: De productie-en beheer VNets zijn verbonden met behulp van [VNet](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview)-peering.
+**Netwerkpeered VNETs**: De productie-en beheer VNets zijn verbonden met behulp van [VNet-peering](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview).
 Deze VNets worden nog steeds beheerd als afzonderlijke resources, maar weer gegeven als een voor alle connectiviteits doeleinden voor deze virtuele machines. Deze netwerken communiceren rechtstreeks met elkaar met behulp van privé-IP-adressen. VNet-peering is onderhevig aan de VNets die zich in dezelfde Azure-regio bevindt.
 
 **Netwerk beveiligings groepen**: [Nsg's](../../virtual-network/virtual-network-vnet-plan-design-arm.md) bevatten Access Control-lijsten waarmee verkeer binnen een VNet wordt toegestaan of geweigerd. Nsg's kan worden gebruikt om verkeer op een subnet of een afzonderlijk VM-niveau te beveiligen.
@@ -164,7 +164,7 @@ Deze VNets worden nog steeds beheerd als afzonderlijke resources, maar weer gege
 
 ### <a name="business-continuity"></a>Bedrijfscontinuïteit
 
-**Hoge Beschik baarheid**: Server werkbelastingen worden gegroepeerd in [](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-manage-availability?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) een beschikbaarheidsset om te zorgen voor een hoge Beschik baarheid van virtuele machines in Azure. Deze configuratie zorgt ervoor dat tijdens een geplande of niet-geplande onderhouds gebeurtenis ten minste één virtuele machine beschikbaar is en voldoet aan de 99,95% Azure SLA.
+**Hoge Beschik baarheid**: Server werkbelastingen worden gegroepeerd in een [beschikbaarheidsset](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-manage-availability?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) om te zorgen voor een hoge Beschik baarheid van virtuele machines in Azure. Deze configuratie zorgt ervoor dat tijdens een geplande of niet-geplande onderhouds gebeurtenis ten minste één virtuele machine beschikbaar is en voldoet aan de 99,95% Azure SLA.
 
 ### <a name="logging-and-audit"></a>Logboek registratie en controle
 
@@ -172,11 +172,11 @@ Deze VNets worden nog steeds beheerd als afzonderlijke resources, maar weer gege
 
 **Activiteiten logboeken**: Configureer [Azure-activiteiten logboeken](../../azure-monitor/platform/activity-logs-overview.md) om inzicht te krijgen in de bewerkingen die zijn uitgevoerd op de resources in uw abonnement.
 
-**Diagnostische logboeken**: [Diagnostische logboeken](../../azure-monitor/platform/diagnostic-logs-overview.md) zijn alle logboeken die door een bron worden gegenereerd. Deze logboeken kunnen Windows-gebeurtenis systeem logboeken, blob, tabel en wachtrij logboeken bevatten.
+**Diagnostische logboeken**: [Diagnostische logboeken](../../azure-monitor/platform/resource-logs-overview.md) zijn alle logboeken die door een bron worden gegenereerd. Deze logboeken kunnen Windows-gebeurtenis systeem logboeken, blob, tabel en wachtrij logboeken bevatten.
 
 **Firewall logboeken**: Application Gateway biedt volledige diagnostische gegevens en toegangs logboeken. Er zijn firewalllogboeken beschikbaar voor Application Gateway-resources waarvoor WAF is ingeschakeld.
 
-**Archivering**van Logboeken: Logboek gegevens opslag kan worden geconfigureerd om te schrijven naar een gecentraliseerd Azure Storage-account voor archivering en een gedefinieerde Bewaar periode. Logboeken kunnen worden verwerkt met behulp van Azure Monitor-Logboeken of SIEM-systemen van derden.
+**Archivering van Logboeken**: Logboek gegevens opslag kan worden geconfigureerd om te schrijven naar een gecentraliseerd Azure Storage-account voor archivering en een gedefinieerde Bewaar periode. Logboeken kunnen worden verwerkt met behulp van Azure Monitor-Logboeken of SIEM-systemen van derden.
 
 ### <a name="identity"></a>Identiteit
 

@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/13/2018
 ms.author: jomolesk
-ms.openlocfilehash: c0163b5280de942491f2174aa371fa7cc83d5984
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 1f6eeea85a348bb8e88a387fa0fc6bed55e41a5e
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946526"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71262774"
 ---
 # <a name="azure-security-and-compliance-blueprint-paas-web-application-hosting-for-uk-official-workloads"></a>Azure-blauwdruk voor beveiliging en naleving: Host voor PaaS-webtoepassingen voor de officiële workloads van het Verenigd Konink rijk
 
@@ -37,7 +37,7 @@ Deze blauw druk is gericht op het inrichten van een beveiligd Foundation- [platf
 
 Met behulp van [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) sjablonen en Azure Command line interface scripts implementeert de blauw druk een omgeving die wordt afgestemd op het UK National Cyber NCSC-beveiligings centrum voor de [Cloud](https://www.ncsc.gov.uk/guidance/implementing-cloud-security-principles) , en het Center voor Internet Security (CIS) [essentiële beveiligings controles](https://www.cisecurity.org/critical-controls.cfm). De NCSC raadt aan de Cloud beveiligings principes door klanten te worden gebruikt om de beveiligings eigenschappen van de service te evalueren en om inzicht te krijgen in de verdeling van de verantwoordelijkheid tussen de klant en de leverancier. Micro soft heeft informatie over elk van deze principes verstrekt, zodat u beter inzicht krijgt in de splitsing van verantwoordelijkheden. Deze architectuur en bijbehorende Azure Resource Manager sjablonen worden ondersteund door de micro soft-white paper- [beveiligings controles voor de 14-Cloud voor UK in de Cloud met behulp van Microsoft Azure](https://gallery.technet.microsoft.com/14-Cloud-Security-Controls-670292c1). Deze architectuur is gecontroleerd door de NCSC en is afgestemd op de beveiligings principes van het Verenigd Konink rijk van NCSC 14, waardoor organisaties in de publieke sector snel hun capaciteit kunnen volgen om te voldoen aan de nalevings verplichtingen met behulp van Cloud Services die wereld wijd en in het Verenigd Konink rijk zijn op de Microsoft Azure Cloud. Met deze sjabloon wordt de infra structuur voor de werk belasting geïmplementeerd. Toepassings code en ondersteunende software voor bedrijfslaag en gegevenslaag moeten door klanten worden geïnstalleerd en geconfigureerd. Gedetailleerde implementatie-instructies zijn [hier](https://aka.ms/ukofficial-paaswa-repo/)beschikbaar.
 
-Deze blauw druk is een kern architectuur. Onze klanten kunnen deze blauw druk gebruiken als basis voor hun officiële classificatie op het web gebaseerde workloads en de sjablonen en resources uitbreiden met hun eigen vereisten. Deze blauw druk is gebaseerd op de beginselen van de [OFFICAL met drie lagen IaaS](https://aka.ms/ukofficial-iaaswa) webtoepassingen die onze klanten zowel [Infrastructure as a Service (IaaS) als](https://azure.microsoft.com/overview/what-is-iaas/) PaaS implementatie opties bieden voor het hosten van op internet gebaseerde workloads.
+Deze blauw druk is een kern architectuur. Onze klanten kunnen deze blauw druk gebruiken als basis voor hun officiële classificatie op het web gebaseerde workloads en de sjablonen en resources uitbreiden met hun eigen vereisten. Deze blauw druk is gebaseerd op de beginselen van de [OFFICAL met drie lagen IaaS webtoepassingen](https://aka.ms/ukofficial-iaaswa) die onze klanten zowel [Infrastructure as a Service (IaaS) als](https://azure.microsoft.com/overview/what-is-iaas/) PaaS implementatie opties bieden voor het hosten van op internet gebaseerde workloads.
 
 Als u deze blauw druk wilt implementeren, is een Azure-abonnement vereist. Als u geen Azure-abonnement hebt, kunt u zich snel en eenvoudig op een gratis manier aanmelden: Aan de slag met Azure. Klik [hier](https://aka.ms/ukofficial-paaswa-repo/) voor implementatie-instructies.
 
@@ -113,7 +113,7 @@ Met deze sjabloon worden de volgende App Service-functies geïmplementeerd:
 - Meerdere App Service [implementatie sleuven](https://docs.microsoft.com/azure/app-service/deploy-staging-slots): Dev, preview, QA, bedoeld en training Production (standaard sleuf).
 - [Beheerde identiteiten voor Azure-resources](https://docs.microsoft.com/azure/app-service/overview-managed-identity) om verbinding te maken met [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) (dit kan ook worden gebruikt om toegang te verlenen tot [Azure SQL database](https://azure.microsoft.com/services/sql-database/) 
 - Integratie met [Azure-toepassing Insights](../../azure-monitor/app/azure-web-apps.md) voor het bewaken van de prestaties
-- [Diagnostische logboeken](../../azure-monitor/platform/diagnostic-logs-overview.md) 
+- [Diagnostische logboeken](../../azure-monitor/platform/resource-logs-overview.md) 
 - Metrische [waarschuwingen](../../azure-monitor/app/alerts.md) 
 - [Azure API Apps](https://azure.microsoft.com/services/app-service/api/) 
 
@@ -170,7 +170,7 @@ Gedetailleerde informatie over het beveiligen van Azure Storage vindt u in de [b
 
 #### <a name="azure-monitor-logs"></a>Azure Monitor-logboeken
 
-[Azure monitor](https://azure.microsoft.com/services/log-analytics/) -Logboeken is een service in azure die u helpt bij het verzamelen en analyseren van gegevens die zijn gegenereerd door resources in uw Cloud-en on-premises-omgevingen.
+[Azure monitor-logboeken](https://azure.microsoft.com/services/log-analytics/) is een service in azure die u helpt bij het verzamelen en analyseren van gegevens die zijn gegenereerd door resources in uw Cloud-en on-premises-omgevingen.
 
 #### <a name="azure-monitor-logs-in-this-blueprint"></a>Azure Monitor Logboeken in deze blauw druk
 

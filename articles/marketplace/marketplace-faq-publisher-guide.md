@@ -5,14 +5,14 @@ services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: qianw211
 ms.service: marketplace
 ms.topic: article
-ms.date: 07/11/2019
+ms.date: 9/24/2019
 ms.author: ellacroi
-ms.openlocfilehash: 209905eaf90e006ded232be73ab2a3a428568eda
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 6b9cc80dfb397d5bf330d0be947f468e9b802139
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70309026"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71259946"
 ---
 # <a name="marketplace-faqs"></a>Veelgestelde vragen over Marketplace
 
@@ -205,7 +205,7 @@ MOSP: [micro soft online Subscription Program](https://azure.microsoft.com/suppo
 
 Hoewel de meeste micro soft-abonnementen eenvoudig kunnen worden omgezet naar een Enterprise Agreement, kunnen Azure Marketplace-aankopen binnen die abonnementen niet.
 
-Als u andere services die zijn gekocht op Azure Marketplace wilt migreren naar een EA-abonnement, annuleert u eerst de toepassingen vanuit het bestaande MOSP-abonnement en schaft u deze toepassingen opnieuw aan binnen het EA-abonnement. Als u dit doet, kunt u een krediet aanvraag indienen voor een teruggave tijdens de mogelijke maand van overlappende dekking tussen de Marketplace-service abonnementen. Maak een [ondersteunings ticket](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview).
+Als u andere services die zijn gekocht op Azure Marketplace wilt migreren naar een EA-abonnement, annuleert u eerst de toepassingen vanuit het bestaande MOSP-abonnement en schaft u deze toepassingen opnieuw aan binnen het EA-abonnement. Als u dit doet, kunt u een krediet aanvraag indienen voor een teruggave tijdens de mogelijke maand van overlappende dekking tussen de Marketplace-service abonnementen. Maak een ondersteunings [ticket](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview).
 
 **Wat is het verschil tussen de *prijs*, de *Software prijs*en de *totale prijs* in de kosten structuur voor aanbiedingen van virtuele machines in de Azure Marketplace?**
 
@@ -244,6 +244,14 @@ Neem contact op met de uitgever provider voor alle technische product ondersteun
 Aankopen die zijn gedaan vanuit [Azure Marketplace](https://azuremarketplace.microsoft.com/) kunnen niet worden geretourneerd, maar kunnen worden geannuleerd/verwijderd. Aanbiedingen op basis van verbruik worden gefactureerd op basis van het gebruik, dus wanneer het wordt gestopt, worden de kosten ook gestopt. Abonnementen worden geannuleerd en de huidige facturerings periode wordt niet in rekening gebracht. Als een abonnement kort na de aankoop is geannuleerd (24 uur per maand en 14 dagen voor jaarlijks), wordt een volledige restitutie gegeven.
 
 Klanten moeten rechtstreeks contact opnemen met de uitgever voor technische problemen met betrekking tot hun Marketplace-service of-aankoop. Contact gegevens van de uitgever en/of een koppeling naar de ondersteunings website vindt u op de pagina met details van de oplossing op Azure Marketplace.
+
+**Hoe worden licentie toevoegingen afgehandeld bij een verhoogde middel lange termijn?**
+
+Licenties die zijn toegevoegd aan een bestaand abonnement, worden Pro-beoordeeld voor de rest van de duur van het abonnement.
+
+**Hoe worden de licenties verwijderd wanneer de mid-term?**
+
+Het terugbetalings beleid dat is gevonden in deze veelgestelde vragen, is onderhevig aan licenties die worden geannuleerd.  Alle licenties die worden geannuleerd, worden direct verwijderd uit uw account en kunnen niet meer worden gebruikt.
 
 ## <a name="faq-for-publishers"></a>Veelgestelde vragen voor uitgevers
 
@@ -319,7 +327,7 @@ Leads zijn klanten die uw producten implementeren via Marketplace. Of uw product
 
 **Waar kan ik hulp krijgen bij het instellen van mijn lead bestemming?**
 
-Meer informatie vindt u in [Cloud Partner-Portal-documentatie over klanten leads](./cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads.md) of een ondersteunings ticket verzenden via [https://aka.ms/marketplacepublishersupport](https://aka.ms/marketplacepublishersupport) door uw aanbiedings type en Lead beheer te selecteren.
+Meer informatie vindt u in [Cloud Partner-Portal-](./cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads.md) documentatie over klanten leads of een ondersteunings ticket verzenden via [https://aka.ms/marketplacepublishersupport](https://aka.ms/marketplacepublishersupport) door uw aanbiedings type en Lead beheer te selecteren.
 
 **Ben ik verplicht een lead bestemming te configureren voor het publiceren van een aanbieding op Marketplace?**
 
@@ -376,7 +384,7 @@ Ga naar [micro soft gtm Services](https://partner.microsoft.com/reach-customers/
 
 **Waar worden Azure Marketplace-oplossingen bevorderd in micro soft-webeigenschappen?**
 
-Azure Marketplace-oplossingen zijn beschikbaar op de website micro soft [Azure-portal]en [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/). Cloud ontwikkelaars en IT-professionals die Azure gebruiken, hebben een risico op partner oplossingen wanneer ze zich aanmelden. Een subset van partner oplossingen wordt ook getoond en gedraaid op de [Azure Marketplace-start](https://azuremarketplace.microsoft.com/marketplace) pagina en de [Azure-oplossingenpagina](https://azure.microsoft.com/solutions/).
+Azure Marketplace-oplossingen zijn beschikbaar op de website micro soft [Azure-portal]en [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/). Cloud ontwikkelaars en IT-professionals die Azure gebruiken, hebben een risico op partner oplossingen wanneer ze zich aanmelden. Een subset van partner oplossingen wordt ook getoond en gedraaid op de [Azure Marketplace-start](https://azuremarketplace.microsoft.com/marketplace) pagina en de [Azure](https://azure.microsoft.com/solutions/)-oplossingenpagina.
 
 ### <a name="billing-and-payments"></a>Facturering en betalingen
 

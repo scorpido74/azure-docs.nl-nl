@@ -14,17 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: ebb727055296ba7886a9307ada113ab5a6e0c9e0
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: 764fb4c22bcce5fc5b045e68dc512243e783020e
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240194"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71261833"
 ---
-# <a name="connect-data-from-azure-advanced-threat-protection-atp---preview"></a>Verbinding maken met gegevens van Azure Advanced Threat Protection (ATP)-Preview
+# <a name="connect-data-from-azure-advanced-threat-protection-atp"></a>Gegevens verbinden vanuit Azure Advanced Threat Protection (ATP)
 
-
-
+> [!IMPORTANT]
+> De Azure Advanced Threat Protection-gegevens connector in azure Sentinel is momenteel beschikbaar als open bare preview.
+> Deze functie wordt zonder service level agreement gegeven en wordt niet aanbevolen voor productie werkbelastingen. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
 
 U kunt Logboeken van [Azure Advanced Threat Protection](https://docs.microsoft.com/azure-advanced-threat-protection/what-is-atp) streamen naar Azure Sentinel met één klik.
 
@@ -41,7 +42,7 @@ Als Azure ATP is geïmplementeerd en uw gegevens worden opgenomen, kunnen verdac
 
 1. Als u Azure ATP wilt verbinden met Azure Sentinel, moet u eerst integratie tussen Azure ATP en Microsoft Cloud App Security inschakelen. Zie [integratie van Azure Advanced Threat Protection](https://docs.microsoft.com/cloud-app-security/aatp-integration)voor informatie over hoe u dit doet.
 
-1. Selecteer in azure Sentinel **Data connectors** en klik vervolgens op de tegel **Azure ATP** .
+1. Selecteer in azure Sentinel **Data connectors** en klik vervolgens op de tegel **Azure Advanced Threat Protection (preview)** .
 
 1. U kunt selecteren of u wilt dat de waarschuwingen van Azure ATP automatisch incidenten genereren in azure Sentinel automatisch. Selecteer **inschakelen** onder **incidenten maken** om de standaard analyse regel in te scha kelen waarmee incidenten automatisch worden gemaakt op basis van waarschuwingen die zijn gegenereerd in de verbonden beveiligings service. U kunt deze regel vervolgens bewerken onder **analyse** en vervolgens op **actieve regels**.
 

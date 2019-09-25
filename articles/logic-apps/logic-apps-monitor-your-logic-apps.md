@@ -10,12 +10,12 @@ ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.assetid: 5c1b1e15-3b6c-49dc-98a6-bdbe7cb75339
 ms.date: 07/21/2017
-ms.openlocfilehash: 840124a35ed4389699757e011aaf5d05a9400836
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: f6ece10c43c2c4a6bea92d14a8bf6fbdb49fd318
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68385538"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71261355"
 ---
 # <a name="monitor-status-set-up-diagnostics-logging-and-turn-on-alerts-for-azure-logic-apps"></a>Status controleren, diagnostische logboek registratie instellen en waarschuwingen voor Azure Logic Apps inschakelen
 
@@ -80,7 +80,7 @@ Voordat u begint, moet u beschikken over een Log Analytics-werk ruimte. Meer inf
 
 1. Zoek en selecteer uw logische app in de [Azure Portal](https://portal.azure.com). 
 
-2. Kies in het menu Blade van de logische app onder  > **controle**de optie diagnostische **Diagnostische instellingen**.
+2. Kies in het menu Blade van de logische app onder > **controle**de optie diagnostische **Diagnostische instellingen**.
 
    ![Ga naar bewaking, diagnostische gegevens en diagnostische instellingen](media/logic-apps-monitor-your-logic-apps/logic-app-diagnostics.png)
 
@@ -158,7 +158,7 @@ Als u de query wilt verfijnen door een filter toe te voegen, kiest u **+ toevoeg
 Naast Azure Monitor-Logboeken kunt u uitbreiden hoe u de diagnostische gegevens van uw logische app gebruikt met andere Azure-Services, bijvoorbeeld: 
 
 * [Azure Diagnostics-logboeken archiveren in Azure Storage](../azure-monitor/platform/archive-diagnostic-logs.md)
-* [Azure Diagnostics logboeken streamen naar Azure Event Hubs](../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md) 
+* [Azure Diagnostics logboeken streamen naar Azure Event Hubs](../azure-monitor/platform/resource-logs-stream-event-hubs.md) 
 
 U kunt vervolgens realtime-bewaking krijgen door telemetrie en analyses uit andere services te gebruiken, zoals [Azure stream Analytics](../stream-analytics/stream-analytics-introduction.md) en [Power bi](../azure-monitor/platform/powerbi.md). Bijvoorbeeld:
 
@@ -180,7 +180,7 @@ Als u specifieke metrische gegevens of drempel waarden voor uw logische app wilt
 
 Voer de volgende stappen uit om waarschuwingen in te stellen zonder [Azure monitor logboeken](../log-analytics/log-analytics-overview.md). [Stel Azure monitor](#azure-diagnostics) -logboeken ook in voor meer geavanceerde waarschuwings criteria en-acties.
 
-1. Kies in het menu Blade van de logische app onder  >  **bewaking**de optie diagnostische**waarschuwings regels** > **waarschuwing toevoegen** , zoals hier wordt weer gegeven:
+1. Kies in het menu Blade van de logische app onder >  **bewaking**de optie diagnostische**waarschuwings regels** > **waarschuwing toevoegen** , zoals hier wordt weer gegeven:
 
    ![Een waarschuwing voor uw logische app toevoegen](media/logic-apps-monitor-your-logic-apps/set-up-alerts.png)
 
