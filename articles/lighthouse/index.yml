@@ -1,61 +1,99 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Documentatie voor Azure Lighthouse
+summary: Azure Lighthouse biedt serviceproviders de mogelijkheid om Azure-resources bij al hun klanten te beheren met een grotere mate van automatisering en schaalbaarheid en verbeterde governance.
 metadata:
   title: Documentatie voor Azure Lighthouse
   description: Informatie over hoe u klantenresource op schaal beheert
-  author: JnHs
-  manager: carmonm
   ms.service: lighthouse
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
-  ms.date: 07/11/2019
+  ms.collection: collection
+  author: JnHs
   ms.author: jenhayes
-abstract:
-  description: 'Azure Lighthouse biedt serviceproviders een enkel bedieningspaneel om Azure bij al hun klanten te bekijken en beheren, met hogere automatisering, op schaal en verbeterde governance.'
-sections:
-  - title: Concepten
-    items:
-      - type: paragraph
-        text: Meer informatie over de belangrijkste aspecten van Azure Lighthouse.
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="concepts/azure-delegated-resource-management">Meer informatie over gedelegeerd resourcebeheer</a>
-          - html: <a href="concepts/cross-tenant-management-experience">Beheerervaring in meerdere tenants</a>
-          - html: <a href="concepts/managed-services-offers">Aanbiedingen voor beheerde services in Azure Marketplace</a>
-          - html: <a href="concepts/recommended-security-practices.md">Aanbevolen beveiligingsprocedures</a>
-          - html: <a href="concepts/cloud-solution-provider.md">Overwegingen voor een Cloud Solution Provider-programma</a>
-  - title: Handleidingen
-    items:
-      - type: paragraph
-        text: Informatie over hoe u klanten plaatst voor gedelegeerd Azure-resourcebeheer en hoe u hun resources beheert.
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="how-to/onboard-customer">Een klant in gedelegeerd Azure-resourcebeheer plaatsen</a>
-          - html: <a href="how-to/publish-managed-services-offers">Een aanbieding voor beheerde services publiceren in Azure Marketplace</a>
-          - html: <a href="how-to/view-manage-customers">Klanten en gedelegeerde resources weergeven en beheren</a>
-          - html: <a href="how-to/view-manage-service-providers">Serviceproviders weergeven en beheren</a>
-  - title: Voorbeelden
-    items:
-      - type: paragraph
-        text: Bekijk de voorbeelden en sjablonen die beschikbaar zijn om u te helpen Azure Lighthouse te gebruiken.
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: <a href="samples/index">Index van voorbeelden</a>
-  - title: Naslaginformatie
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Opdrachtregel
-            html: '<p><a href="https://docs.microsoft.com/cli/azure/managedservices?view=azure-cli-latest">Azure-CLI</a></p><p><a href="https://docs.microsoft.com/powershell/module/az.managedservices/?view=azps-2.4.0#managed_services">Azure PowerShell</a></p>'
-          - title: Talen
-            html: '<p><a href="/dotnet/api/Microsoft.Azure.Management.ManagedServices">Azure-SDK voor .NET</a></p><p><a href="https://www.nuget.org/packages/Microsoft.Azure.Management.ManagedServices/">Azure SDK voor .NET (NuGet)</a></p><p><a href="https://docs.microsoft.com/python/api/azure-mgmt-managedservices">Azure-SDK voor Python</a></p><p><a href="https://pypi.org/project/azure-mgmt-managedservices/">Azure-SDK voor Python (PyPi)</a></p>'
-          - title: REST
-            html: '<p><a href="https://docs.microsoft.com/rest/api/managedservices/">API-naslaginformatie</a></p><p><a href="https://github.com/Azure/azure-rest-api-specs/tree/master/specification/managedservices/resource-manager/Microsoft.ManagedServices/stable/2019-06-01">2019-06-01 (OpenAPI)</a></p>'
+  ms.date: 09/19/2019
+  ms.openlocfilehash: b0ab72431c0a5f7f22426aa27ece1fb3da5f5a13
+  ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+  ms.translationtype: HT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 09/24/2019
+  ms.locfileid: "71219776"
+landingContent:
+- title: Over Azure Lighthouse
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Wat is Azure Lighthouse?
+      url: ./overview.md
+  - linkListType: concept
+    links:
+    - text: Meer informatie over gedelegeerd resourcebeheer
+      url: ./concepts/azure-delegated-resource-management.md
+    - text: Beheerervaring in meerdere tenants
+      url: ./concepts/cross-tenant-management-experience.md
+- title: Aan de slag
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Een klant in gedelegeerd Azure-resourcebeheer plaatsen
+      url: ./how-to/onboard-customer.md
+  - linkListType: concept
+    links:
+    - text: Aanbevolen beveiligingsprocedures
+      url: ./concepts/recommended-security-practices.md
+    - text: Overwegingen voor een Cloud Solution Provider-programma
+      url: ./concepts/cloud-solution-provider.md
+- title: Marketplace-aanbiedingen
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Aanbiedingen voor beheerde services in Azure Marketplace
+      url: ./concepts/managed-services-offers.md
+  - linkListType: how-to-guide
+    links:
+    - text: Aanbiedingen voor beheerde services publiceren
+      url: ./how-to/publish-managed-services-offers.md
+- title: Voorbeelden en sjablonen
+  linkLists:
+  - linkListType: deploy
+    links:
+    - text: Opslagplaats met Azure Lighthouse-voorbeelden (GitHub)
+      url: https://github.com/Azure/Azure-Lighthouse-samples/
+    - text: Index van Azure Lighthouse-voorbeelden
+      url: ./samples/index.md
+- title: Naslaginformatie - downloads
+  linkLists:
+  - linkListType: download
+    links:
+    - text: OpenAPI - 2019-06-01
+      url: https://github.com/Azure/azure-rest-api-specs/tree/master/specification/managedservices/resource-manager/Microsoft.ManagedServices/stable/2019-06-01
+    - text: SDK voor .NET - NuGet
+      url: https://www.nuget.org/packages/Microsoft.Azure.Management.ManagedServices/
+    - text: SDK voor Python - PyPi
+      url: https://pypi.org/project/azure-mgmt-managedservices/
+- title: Naslag - SDK's
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Azure PowerShell
+      url: /powershell/module/az.managedservices/
+    - text: Azure-CLI
+      url: /cli/azure/managedservices
+    - text: REST
+      url: /rest/api/managedservices/
+    - text: .NET
+      url: /dotnet/api/Microsoft.Azure.Management.ManagedServices
+    - text: Python
+      url: /python/api/azure-mgmt-managedservices
+- title: Ervaringen met Azure-portal
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Klanten weergeven en beheren
+      url: ./how-to/view-manage-customers.md
+    - text: Serviceproviders weergeven en beheren
+      url: ./how-to/view-manage-service-providers.md
+- title: Doe mee
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: Productfuncties aanvragen
+      url: https://feedback.azure.com/forums/922753
