@@ -1,8 +1,8 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: Preview-documentatie voor Azure Sentinel
+title: Documentatie voor Azure Sentinel
 metadata:
-  title: 'Preview-documentatie voor Azure Sentinel - zelfstudies, quickstarts | Microsoft Docs'
+  title: 'Documentatie voor Azure Sentinel - zelfstudies, quickstarts | Microsoft Docs'
   meta.description: Azure Sentinel is a cloud-native SIEM that provides intelligent security analytics for your entire enterprise at cloud scale.
   services: sentinel
   author: cmcclister
@@ -15,7 +15,7 @@ metadata:
   ms.date: 02/28/19
   ms.author: cmcclister
 abstract:
-  description: 'Azure Sentinel Preview is een cloud-eigen SIEM met intelligente beveiligingsanalyses voor uw hele onderneming in de cloud. Ontvang onbeperkte cloudsnelheid en pas de schaal aan om in te zoomen op wat echt belangrijk is. Verzamel eenvoudig gegevens van al uw cloudassets of on-premises assets, Office 365, Azure-resources en andere clouds. Detecteer effectief bedreigingen met ingebouwde machine learning van beveiligingsanalyse-experts van Microsoft. Automatiseer de reactie op bedreigingen met behulp van ingebouwde indeling en automatiseringsplaybooks.'
+  description: 'Azure Sentinel is een cloud-SIEM met intelligente beveiligingsanalyses voor uw hele onderneming in de cloud. Ontvang onbeperkte cloudsnelheid en pas de schaal aan om in te zoomen op wat echt belangrijk is. Verzamel eenvoudig gegevens van al uw cloudassets of on-premises assets, Office 365, Azure-resources en andere clouds. Detecteer effectief bedreigingen met ingebouwde machine learning van beveiligingsanalyse-experts van Microsoft. Automatiseer de reactie op bedreigingen met behulp van ingebouwde indeling en automatiseringsplaybooks.'
 sections:
   - title: QuickStarts van vijf minuten
     items:

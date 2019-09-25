@@ -227,6 +227,10 @@
           href: spark-api-introduction.md
         - name: Lambda-architectuur
           href: lambda-architecture.md
+    - name: Ingebouwde analyse met Jupyter-notebooks
+      items:
+        - name: Overzicht van Jupyter-notebooks
+          href: cosmosdb-jupyter-notebooks.md
     - name: Programmeren op de server
       items:
         - name: 'Opgeslagen procedures, triggers en UDF''s'
@@ -675,6 +679,10 @@
         - name: Streamen met Apache Kafka en Cosmos DB
           href: /azure/hdinsight/apache-kafka-spark-structured-streaming-cosmosdb
           maintainContext: true
+    - name: Ingebouwde Jupyter-notebooks
+      items:
+        - name: Notebooks inschakelen
+          href: enable-notebooks.md
     - name: Programmeren op de server
       items:
         - name: 'Opgeslagen procedures, triggers en UDF''s schrijven'

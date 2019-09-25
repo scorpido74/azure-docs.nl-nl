@@ -56,6 +56,8 @@
       href: getting-started-improving-your-classifier.md
     - name: De voorspellings-API gebruiken
       href: use-prediction-api.md
+    - name: Voorgestelde tags gebruiken
+      href: suggested-tags.md
     - name: Exportmodellen
       items:
         - name: Uw model exporteren naar mobiele apparaten

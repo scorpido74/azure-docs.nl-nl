@@ -1,4 +1,4 @@
-- name: Preview-documentatie voor Azure Sentinel
+- name: Documentatie voor Azure Sentinel
   href: index.yml
 - name: Overzicht
   href: overview.md
@@ -11,12 +11,22 @@
       href: quickstart-get-visibility.md
 - name: Zelfstudies
   items:
-    - name: Verdachte bedreigingen detecteren
-      href: tutorial-detect-threats.md
+    - name: Ingebouwde analyses gebruiken om bedreigingen te detecteren
+      href: tutorial-detect-threats-built-in.md
+    - name: Aangepaste regels maken voor het detecteren van bedreigingen
+      href: tutorial-detect-threats-custom.md
+    - name: Uw gegevens bewaken
+      href: tutorial-monitor-your-data.md
     - name: Incidenten onderzoeken
       href: tutorial-investigate-cases.md
     - name: Op bedreigingen reageren
       href: tutorial-respond-threats-playbook.md
+- name: Concepten
+  items:
+    - name: Machtigingen toewijzen met behulp van rollen
+      href: roles.md
+    - name: Geavanceerde detectie van aanvallen met meerdere stappen
+      href: fusion.md
 - name: Handleidingen
   items:
     - name: Verbinding maken met gegevensbronnen
@@ -74,6 +84,10 @@
           href: connect-threat-intelligence.md
         - name: Verbinding maken met virtuele Azure Stack-machines
           href: connect-azure-stack.md
+    - name: Meerdere tenants (MSSP)
+      href: multiple-tenants-service-providers.md
+    - name: Incidenten maken op basis van waarschuwingen
+      href: create-incidents-from-alerts.md
     - name: Zoeken
       href: hunting.md
       items:
@@ -81,8 +95,8 @@
           href: notebooks.md
         - name: Bladwijzers gebruiken om te zoeken
           href: bookmarks.md
-    - name: Fusie inschakelen
-      href: connect-fusion.md
+    - name: Azure Sentinel verwijderen
+      href: offboard.md
 - name: Resources
   items:
     - name: Nuttige informatie

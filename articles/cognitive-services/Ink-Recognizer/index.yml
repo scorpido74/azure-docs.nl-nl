@@ -1,81 +1,67 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Documentatie voor Ink Recognizer
+### YamlMime:Landing
+title: Documentatie voor Ink Recognizer-API
+summary: Leer de Ink Recognizer-API te gebruiken om digitale inktherkenning aan uw apps en services toe te voegen. De API is een cloudservice die machine learning gebruikt om handgeschreven tekst en tekeningen in een willekeurige context te herkennen.
 metadata:
-  title: 'Documentatie voor Ink Recognizer - snelstartgidsen, zelfstudies, API-referentiemateriaal - Azure Cognitive Services | Microsoft Docs'
-  description: Informatie over hoe u Translator Text gebruikt om tekst in meerdere talen te vertalen.
+  title: Ink Recognizer-API - zelfstudies, quickstarts, API-referentiemateriaal
+  titleSuffix: Azure Cognitive Services
+  description: Digital Inking verwijst naar technologieën die digitale representaties mogelijk maken van input zoals handgeschreven tekst en tekeningen. Omdat apparaten rijke digitale inktwaarneming mogelijk maken, kunnen kunstmatige intelligentie en machine learning geschreven vormen en tekst in vrijwel elke context herkennen. De Ink Recognizer-API is een cloud-gebaseerde service waarmee u inktlijnen kunt verzenden en gedetailleerde digitale informatie daarover kunt verkrijgen.
   services: cognitive-services
-  author: erhopf
+  author: aahill
   manager: nitinme
+  layout: LandingPage
   ms.service: cognitive-services
   ms.subservice: ink-recognizer
   ms.topic: landing-page
-  ms.date: 05/02/2019
-  ms.author: erhopf
-abstract:
-  description: 'Digital Inking verwijst naar technologieën die digitale representaties mogelijk maken van input zoals handgeschreven tekst en tekeningen. Omdat apparaten rijke digitale inktwaarneming mogelijk maken, kunnen kunstmatige intelligentie en machine learning geschreven vormen en tekst in vrijwel elke context herkennen. De Ink Recognizer-API is een cloud-gebaseerde service waarmee u inktlijnen kunt verzenden en gedetailleerde digitale informatie daarover kunt verkrijgen.'
-sections:
-  - items:
-      - type: list
-        style: cards
-        className: cardsM
-        columns: 3
-        items:
-          - href: /azure/cognitive-services/ink-recognizer/overview
-            html: <p>Meer informatie over Ink Recognizer en hoe u deze in uw producten kunt integreren</p>
-            image:
-              src: ../media/index/i_overview.svg
-            title: Wat is de Ink Recognizer-API?
-          - href: concepts/send-ink-data.md
-            html: <p>Meer informatie over aanbevolen oproeppatronen bij het gebruik van de API</p>
-            image:
-              src: ../media/index/i_overview.svg
-            title: Inktgegevens naar de Ink Recognizer-API verzenden
-  - title: QuickStarts van vijf minuten
-    items:
-      - type: paragraph
-        text: 'Aan de slag met de Ink Recognizer-API:'
-      - type: table
-        style: dataMatrix
-        columns:
-          - image:
-              src: media/index/logo-csharp.svg
-            title: 'C#'
-          - image:
-              src: media/index/logo-java.svg
-            title: Java
-          - image:
-              src: media/index/logo-js.svg
-            title: Javascript
-        rows:
-          - title: Digitale inktlijnen herkennen
-            values:
-              - href: quickstarts/csharp.md
-              - href: quickstarts/java.md
-              - href: quickstarts/javascript.md
-  - title: Voorbeelden
-    items:
-      - type: paragraph
-        text: 'Gebruik deze voorbeeldprogramma''s om te zien hoe u de Ink Recognizer-API kunt integreren in uw toepassingen:'
-      - type: paragraph
-        text: '<a href="https://go.microsoft.com/fwlink/?linkid=2089803">C# en Universal Windows Platform (UWP)</a>'
-      - type: paragraph
-        text: '<a href="https://go.microsoft.com/fwlink/?linkid=2089804">C# en Windows Presentation Foundation (WPF)</a>'
-      - type: paragraph
-        text: '<a href="https://go.microsoft.com/fwlink/?linkid=2089908">Webbrowser-app (Javascript)</a>'
-      - type: paragraph
-        text: '<a href="https://go.microsoft.com/fwlink/?linkid=2089906">Mobiele app (Java en Android)</a>'
-      - type: paragraph
-        text: '<a href="https://go.microsoft.com/fwlink/?linkid=2089805">Mobiele app (Swift en iOS)</a>'
-  - title: Naslaginformatie
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: REST-API
-            html: '<p><a href="https://go.microsoft.com/fwlink/?linkid=2089907">REST API-referentiemateriaal</a></p>'
-          - title: PowerShell
-            html: '<p><a href=https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services">Azure PowerShell</a></p>'
-          - title: CLI
-            html: '<p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices">Azure-CLI</a></p>'
+  ms.date: 09/23/2019
+  ms.author: aahi
+  ms.openlocfilehash: 985cdb6492445c89462e79cc2931d28bc34abb58
+  ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+  ms.translationtype: HT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 09/24/2019
+  ms.locfileid: "71219527"
+landingContent:
+- title: Over de Ink Recognizer-API
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Wat is de Ink Recognizer-API?
+      url: overview.md
+- title: Digitale inktlijnen herkennen
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: C# gebruiken
+      url: quickstarts/csharp.md
+    - text: Java gebruiken
+      url: quickstarts/java.md
+    - text: JavaScript gebruiken
+      url: quickstarts/javascript.md
+  - linkListType: concept
+    links:
+    - text: Gegevens over inktlijnen naar de API verzenden
+      url: concepts/send-ink-data.md
+- title: Naslaginformatie
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: REST-API
+      url: https://go.microsoft.com/fwlink/?linkid=2089907
+    - text: Azure PowerShell
+      url: https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services
+    - text: Azure-CLI
+      url: https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az_cognitiveservices_list
+- title: Voorbeelden
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: C# en Universal Windows Platform (UWP)
+      url: https://go.microsoft.com/fwlink/?linkid=2089803
+    - text: C# en Windows Presentation Foundation (WPF)
+      url: https://go.microsoft.com/fwlink/?linkid=2089804
+    - text: Webbrowser-app (Javascript)
+      url: https://go.microsoft.com/fwlink/?linkid=2089908
+    - text: Mobiele app (Java en Android)
+      url: https://go.microsoft.com/fwlink/?linkid=2089906
+    - text: Mobiele app (Swift en iOS)
+      url: https://go.microsoft.com/fwlink/?linkid=2089805

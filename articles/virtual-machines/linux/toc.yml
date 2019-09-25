@@ -476,6 +476,8 @@
           href: expand-disks.md
         - name: Een momentopname maken van een schijf
           href: snapshot-copy-managed-disk.md
+        - name: Een incrementele momentopname maken
+          href: disks-incremental-snapshots.md
         - name: Back-up maken van niet-beheerde schijven
           href: incremental-snapshots.md
         - name: Migratie en conversie
