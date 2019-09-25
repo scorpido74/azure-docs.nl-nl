@@ -141,11 +141,11 @@ Gebruiken `AADClientCertificate`:
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
 | publisher | Microsoft.Azure.Security | string |
-| Type | AzureDiskEncryptionForLinux | string |
+| type | AzureDiskEncryptionForLinux | string |
 | typeHandlerVersion | 0,1, 1,1 | int |
-| (0,1-schema) AADClientID | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | guid | 
-| (0,1-schema) AADClientSecret | password | string |
-| (0,1-schema) AADClientCertificate | thumbprint | string |
+| (0.1-schema) AADClientID | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | guid | 
+| (0.1-schema) AADClientSecret | password | string |
+| (0.1-schema) AADClientCertificate | thumbprint | string |
 | DiskFormatQuery | {"dev_path":"","name":"","file_system":""} | JSON-woorden lijst |
 | EncryptionOperation | EnableEncryption, EnableEncryptionFormatAll | string | 
 | KeyEncryptionAlgorithm | 'RSA-OAEP', 'RSA-OAEP-256', 'RSA1_5' | string |
