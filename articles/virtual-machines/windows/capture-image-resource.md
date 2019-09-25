@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 09/27/2018
 ms.author: cynthn
-ms.openlocfilehash: 33f3b03ba76a0c3fd33e057d0f15b2ab7a0f44e4
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: c133431bb2b84525a8ea875dea94cec8595733bb
+ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70089488"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71273868"
 ---
 # <a name="create-a-managed-image-of-a-generalized-vm-in-azure"></a>Een beheerde installatie kopie maken van een gegeneraliseerde VM in azure
 
@@ -205,9 +205,9 @@ U kunt een beheerde installatie kopie maken op basis van een moment opname van e
     ``` 
 
 
-## <a name="create-an-image-from-a-vhd-in-a-storage-account"></a>Een installatie kopie maken van een VHD in een opslag account
+## <a name="create-an-image-from-a-vm-that-uses-a-storage-account"></a>Een installatie kopie maken van een virtuele machine die gebruikmaakt van een opslag account
 
-Een beheerde installatie kopie maken van een gegeneraliseerde VHD met een besturings systeem in een opslag account. U hebt de URI van de VHD in het opslag account nodig. deze heeft de volgende indeling: https://*mystorageaccount*. blob.core.Windows.net/*vhdcontainer*/*vhdfilename. VHD*. In dit voor beeld bevindt de VHD zich in *mystorageaccount*, in een container met de naam *VHDCONTAINER*en de VHD-bestands naam *vhdfilename. VHD*.
+Als u een beheerde installatie kopie wilt maken op basis van een virtuele machine die geen beheerde schijven gebruikt, hebt u de URI van de besturingssysteem-VHD in het opslag account nodig, in de volgende indeling: https://*mystorageaccount*. blob.core.Windows.net/*vhdcontainer* /  *vhdfilename. VHD*. In dit voor beeld bevindt de VHD zich in *mystorageaccount*, in een container met de naam *VHDCONTAINER*en de VHD-bestands naam *vhdfilename. VHD*.
 
 
 1.  Maak enkele variabelen.

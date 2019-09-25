@@ -1,6 +1,6 @@
 ---
-title: Voorbereiden voor de indeling wijzigen naar diagnostische logboeken van Azure Monitor
-description: Diagnostische logboeken in Azure worden verplaatst naar het gebruik van toevoeg-blobs op 1 November 2018.
+title: De indelings wijziging voorbereiden op Azure Monitor Diagnostische logboeken
+description: De diagnostische logboeken van Azure worden verplaatst voor het gebruik van toevoeg-blobs op 1 november 2018.
 author: johnkemnetz
 services: monitoring
 ms.service: azure-monitor
@@ -8,56 +8,56 @@ ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: ab5fba6bbbf6ade83c7699edec937ba02b222939
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a5589828570455c61f857dbeadc896e8fef27178
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60237664"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71258390"
 ---
-# <a name="prepare-for-format-change-to-azure-monitor-diagnostic-logs-archived-to-a-storage-account"></a>Indeling wijzigen naar diagnostische logboeken van Azure Monitor gearchiveerd naar een opslagaccount voorbereiden
+# <a name="prepare-for-format-change-to-azure-monitor-diagnostic-logs-archived-to-a-storage-account"></a>De indelings wijziging voorbereiden op Azure Monitor Diagnostische logboeken die zijn gearchiveerd in een opslag account
 
 > [!WARNING]
-> Als u verzendt [diagnostische logboeken van Azure-resource of metrische gegevens naar een opslagaccount met behulp van de instellingen voor resourcediagnose](./../../azure-monitor/platform/archive-diagnostic-logs.md) of [activiteitenlogboeken streamen naar een opslagaccount door middel van logboekprofielen](./../../azure-monitor/platform/archive-activity-log.md), de indeling van de gegevens in het storage-account wordt gewijzigd in JSON-regels op 1 november 2018. De onderstaande instructies beschrijven de impact en het bijwerken van uw hulpprogramma's voor het afhandelen van de nieuwe indeling. 
+> Als u [Azure resource Diagnostic-Logboeken of-metrische gegevens naar een opslag account verzendt met behulp van diagnostische instellingen](./../../azure-monitor/platform/archive-diagnostic-logs.md) of [activiteiten logboeken naar een opslag account met behulp van logboek profielen](./../../azure-monitor/platform/archive-activity-log.md), wordt de indeling van de gegevens in het opslag account gewijzigd in JSON-lijnen op Nov. 1, 2018. De onderstaande instructies beschrijven de impact en het bijwerken van uw hulp programma voor het afhandelen van de nieuwe indeling. 
 >
 > 
 
-## <a name="what-is-changing"></a>Wat wordt gewijzigd
+## <a name="what-is-changing"></a>Wat er verandert
 
-Azure Monitor biedt een functie waarmee u voor het verzenden van diagnostische gegevens van resources en gegevens van een activiteitenlogboek in Azure storage-account, Event Hubs-naamruimte, of in een Log Analytics-werkruimte in Azure Monitor. Teneinde een prestatieprobleem systeem op **1 November 2018 om 12:00 middernacht UTC** de indeling van het logboek gegevens verzenden naar de blob storage wordt gewijzigd. Als u het hulpprogramma-dat wil zeggen lezen van gegevens uit blob-opslag hebt, moet u uw hulpprogramma's voor meer informatie over de indeling van de nieuwe bijwerken.
+Azure Monitor biedt een mogelijkheid waarmee u gegevens van diagnostische gegevens over de resource en het activiteiten logboek kunt verzenden naar een Azure-opslag account, Event Hubs naam ruimte of in een Log Analytics-werk ruimte in Azure Monitor. Als u een probleem met de systeem prestaties wilt oplossen, gaat u op **1 November 2018 om 12:00 MIDDERNACHT UTC** de indeling van logboek gegevens verzenden naar Blob-opslag wordt gewijzigd. Als u hulp nodig hebt bij het lezen van gegevens uit de Blob-opslag, moet u uw hulp programma bijwerken om inzicht te krijgen in de nieuwe gegevens indeling.
 
-* Donderdag, November 1 2018 om 12:00 middernacht UTC, de blob-indeling wordt gewijzigd, zodat worden [JSON regels](http://jsonlines.org/). Dit betekent dat elke record wordt worden gescheiden door een nieuwe regel, met geen matrix buitenste records en geen komma's tussen de JSON-records.
-* De wijzigingen aan de indeling blob voor alle diagnostische instellingen voor alle abonnementen in één keer. Het eerste bestand PT1H.json dat is verzonden voor 1 November gebruikmaken van deze nieuwe indeling. Namen van de blob en container blijven hetzelfde.
-* Wijzigen van een diagnostische instelling tussen nu en 1 November nog steeds het verzenden van gegevens in de huidige indeling tot 1 November.
-* Deze wijziging wordt in één keer uitgevoerd in alle openbare cloud-regio's. De wijziging wordt in Azure China of Azure Duitsland Azure Government-clouds nog hervat.
-* Deze wijziging heeft gevolgen voor de volgende gegevenstypen:
-  * [Diagnostische logboeken van Azure-resource](./../../azure-monitor/platform/archive-diagnostic-logs.md) ([lijst met resources hier Zie](./../../azure-monitor/platform/diagnostic-logs-schema.md))
-  * [Azure-resource metrische gegevens die worden geëxporteerd door de diagnostische instellingen](./../../azure-monitor/platform/diagnostic-logs-overview.md#diagnostic-settings)
-  * [Azure gegevens van een activiteitenlogboek wordt geëxporteerd met logboekprofielen](./../../azure-monitor/platform/archive-activity-log.md)
+* Op donderdag 1 november 2018 om 12:00 middernacht UTC wordt de BLOB-indeling gewijzigd in [JSON-lijnen](http://jsonlines.org/). Dit betekent dat elke record wordt gescheiden door een nieuwe regel, zonder een matrix van buitenste records en geen komma's tussen JSON-records.
+* De BLOB-indeling wordt gewijzigd voor alle diagnostische instellingen in alle abonnementen tegelijk. In het eerste bestand PT1H. json dat is verzonden voor 1 november, wordt deze nieuwe indeling gebruikt. De namen van de BLOB en de container blijven hetzelfde.
+* Als u een diagnostische instelling instelt tussen nu en 1 november, blijft de gegevens in de huidige indeling verzenden tot 1 november.
+* Deze wijziging vindt plaats in alle open bare Cloud regio's. De wijziging wordt niet doorgevoerd in Microsoft Azure die door 21Vianet, Azure Duitsland of Azure Government Clouds worden gebruikt.
+* Deze wijziging is van invloed op de volgende gegevens typen:
+  * [Diagnostische logboeken van Azure-resource](archive-diagnostic-logs.md) ([Zie hier een lijst met resources](diagnostic-logs-schema.md))
+  * [Metrische gegevens van Azure-resource die worden geëxporteerd door Diagnostische instellingen](diagnostic-settings.md)
+  * [Gegevens van Azure-activiteiten logboek worden geëxporteerd op logboek profielen](archive-activity-log.md)
 * Deze wijziging heeft geen invloed op:
-  * Netwerk-stroomlogboeken
-  * Azure-servicelogboeken niet beschikbaar gesteld via Azure Monitor nog (bijvoorbeeld, diagnostische logboeken van Azure App Service, analyselogboeken voor storage)
-  * Routering van diagnostische logboeken in Azure en activiteitenlogboeken streamen naar andere bestemmingen (Event Hubs, Log Analytics)
+  * Netwerk stroom logboeken
+  * Azure-service logboeken zijn nog niet via Azure Monitor beschikbaar gemaakt (bijvoorbeeld Azure App Service Diagnostische logboeken, logboeken voor opslag analyse)
+  * Route ring van Azure Diagnostische logboeken en activiteiten logboeken naar andere doelen (Event Hubs, Log Analytics)
 
-### <a name="how-to-see-if-you-are-impacted"></a>Hoe om te zien of u wordt beïnvloed
+### <a name="how-to-see-if-you-are-impacted"></a>Controleren of er gevolgen voor u hebben
 
-U wordt alleen beïnvloed door deze wijziging als u:
-1. Logboekgegevens verzenden naar Azure storage-account met behulp van een diagnostische instelling van de resource en
-2. Hulpprogramma's die afhankelijk zijn van de JSON-structuur van deze logboeken in de opslag hebben.
+U hebt deze wijziging alleen van invloed op de volgende wijzigingen:
+1. Verzendt logboek gegevens naar een Azure-opslag account met behulp van een diagnostische instelling voor bronnen en
+2. Laat hulp middelen afhangen van de JSON-structuur van deze logboeken in de opslag.
  
-Om te identificeren als u instellingen voor resourcediagnose die gegevens naar een Azure storage-account verzenden hebt, kunt u navigeren naar de **Monitor** sectie van de portal, klik op **diagnostische instellingen**, en identificeren alle resources die zijn **diagnostische Status** ingesteld op **ingeschakeld**:
+Als u wilt weten of u Diagnostische instellingen voor resources hebt die gegevens verzenden naar een Azure-opslag account, kunt u naar de sectie **monitor** van de portal gaan, op **Diagnostische instellingen**klikken en alle resources identificeren die zijn **diagnose Status** ingesteld op **ingeschakeld**:
 
-![Azure Monitor diagnostische instellingen-blade](./media/diagnostic-logs-append-blobs/portal-diag-settings.png)
+![Blade Diagnostische instellingen Azure Monitor](./media/diagnostic-logs-append-blobs/portal-diag-settings.png)
 
-Als diagnostische Status is ingesteld op ingeschakeld, hebt u een actieve diagnostische instelling voor die bron. Klik op de bron om te zien als alle instellingen voor diagnostische gegevens naar een opslagaccount verzenden:
+Als de status van de diagnose is ingesteld op ingeschakeld, hebt u een actieve diagnostische instelling voor die bron. Klik op de resource om te zien of er Diagnostische instellingen zijn die gegevens verzenden naar een opslag account:
 
-![Storage-account is ingeschakeld](./media/diagnostic-logs-append-blobs/portal-storage-enabled.png)
+![Opslag account ingeschakeld](./media/diagnostic-logs-append-blobs/portal-storage-enabled.png)
 
-Als u gegevens verzenden naar een opslagaccount met behulp van deze instellingen voor resourcediagnose resources hebt, wordt de indeling van de gegevens in dat opslagaccount worden beïnvloed door deze wijziging. Tenzij u aangepaste hulpprogramma's die de werking van deze opslagaccounts hebt, heeft de indeling wijziging geen gevolgen voor u.
+Als u resources hebt die gegevens verzenden naar een opslag account met behulp van deze diagnostische instellingen voor de resource, wordt de indeling van de gegevens in dat opslag account beïnvloed door deze wijziging. Tenzij u aangepaste hulp middelen hebt die van deze opslag accounts worden uitgevoerd, heeft dit geen invloed op de indelings wijziging.
 
-### <a name="details-of-the-format-change"></a>Details van de indeling wijzigen
+### <a name="details-of-the-format-change"></a>Details van de indelings wijziging
 
-De huidige indeling van het bestand PT1H.json in Azure blob-opslag maakt gebruik van een JSON-matrix van records. Hier volgt een voorbeeld van een logbestand KeyVault nu:
+De huidige indeling van het bestand PT1H. json in Azure Blob Storage maakt gebruik van een JSON-matrix van records. Hier volgt een voor beeld van een logboek bestand voor de sleutel kluis:
 
 ```json
 {
@@ -118,23 +118,23 @@ De huidige indeling van het bestand PT1H.json in Azure blob-opslag maakt gebruik
 }
 ```
 
-Maakt gebruik van de nieuwe indeling [JSON regels](http://jsonlines.org/), waarbij elke gebeurtenis een regel is en de nieuwe-regelteken geeft aan een nieuwe gebeurtenis dat. Dit is wat het bovenstaande voorbeeld ziet er als in het bestand PT1H.json na de wijziging:
+De nieuwe indeling maakt gebruik van [JSON-lijnen](http://jsonlines.org/), waarbij elke gebeurtenis een regel is en het teken voor nieuwe regel geeft aan dat er een gebeurtenis is. Hier ziet u hoe het bovenstaande voor beeld eruitziet in het bestand PT1H. json na de wijziging:
 
 ```json
 {"time": "2016-01-05T01:32:01.2691226Z","resourceId": "/SUBSCRIPTIONS/361DA5D4-A47A-4C79-AFDD-XXXXXXXXXXXX/RESOURCEGROUPS/CONTOSOGROUP/PROVIDERS/MICROSOFT.KEYVAULT/VAULTS/CONTOSOKEYVAULT","operationName": "VaultGet","operationVersion": "2015-06-01","category": "AuditEvent","resultType": "Success","resultSignature": "OK","resultDescription": "","durationMs": "78","callerIpAddress": "104.40.82.76","correlationId": "","identity": {"claim": {"http://schemas.microsoft.com/identity/claims/objectidentifier": "d9da5048-2737-4770-bd64-XXXXXXXXXXXX","http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn": "live.com#username@outlook.com","appid": "1950a258-227b-4e31-a9cf-XXXXXXXXXXXX"}},"properties": {"clientInfo": "azure-resource-manager/2.0","requestUri": "https://control-prod-wus.vaultcore.azure.net/subscriptions/361da5d4-a47a-4c79-afdd-XXXXXXXXXXXX/resourcegroups/contosoresourcegroup/providers/Microsoft.KeyVault/vaults/contosokeyvault?api-version=2015-06-01","id": "https://contosokeyvault.vault.azure.net/","httpStatusCode": 200}}
 {"time": "2016-01-05T01:33:56.5264523Z","resourceId": "/SUBSCRIPTIONS/361DA5D4-A47A-4C79-AFDD-XXXXXXXXXXXX/RESOURCEGROUPS/CONTOSOGROUP/PROVIDERS/MICROSOFT.KEYVAULT/VAULTS/CONTOSOKEYVAULT","operationName": "VaultGet","operationVersion": "2015-06-01","category": "AuditEvent","resultType": "Success","resultSignature": "OK","resultDescription": "","durationMs": "83","callerIpAddress": "104.40.82.76","correlationId": "","identity": {"claim": {"http://schemas.microsoft.com/identity/claims/objectidentifier": "d9da5048-2737-4770-bd64-XXXXXXXXXXXX","http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn": "live.com#username@outlook.com","appid": "1950a258-227b-4e31-a9cf-XXXXXXXXXXXX"}},"properties": {"clientInfo": "azure-resource-manager/2.0","requestUri": "https://control-prod-wus.vaultcore.azure.net/subscriptions/361da5d4-a47a-4c79-afdd-XXXXXXXXXXXX/resourcegroups/contosoresourcegroup/providers/Microsoft.KeyVault/vaults/contosokeyvault?api-version=2015-06-01","id": "https://contosokeyvault.vault.azure.net/","httpStatusCode": 200}}
 ```
 
-Deze nieuwe indeling kunt push-logboekbestanden met behulp van Azure Monitor [toevoeg-blobs](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-append-blobs), die zijn efficiënter voor voortdurend nieuwe gebeurtenisgegevens toe te voegen.
+Met deze nieuwe indeling Azure Monitor kunt u logboek bestanden pushen met behulp van [toevoeg-blobs](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-append-blobs). Dit is efficiënter voor het voortdurend toevoegen van nieuwe gebeurtenis gegevens.
 
-## <a name="how-to-update"></a>Het bijwerken van
+## <a name="how-to-update"></a>Update
 
-U hoeft alleen om updates te maken als u aangepaste hulpprogramma's die deze logboekbestanden voor verdere verwerking opnemen. Als u het gebruik van een externe log analytics of de SIEM-hulpprogramma, wordt aangeraden [met eventhubs voor opname van deze gegevens in plaats daarvan](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/). Event hubs-integratie is het gemakkelijker in termen van Logboeken van allerlei services verwerken en locatie in een bepaalde logboek bladwijzers.
+U hoeft alleen updates te maken als u aangepaste hulp middelen hebt waarmee deze logboek bestanden worden opgenomen voor verdere verwerking. Als u een externe log Analytics-of SIEM-hulp programma gebruikt, raden we [u aan Event hubs te gebruiken om in plaats daarvan deze gegevens op te](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/)nemen. De integratie van Event hubs is gemakkelijker voor het verwerken van logboeken van veel services en de locatie van de blad wijzers in een bepaald logboek.
 
-Aangepaste hulpprogramma's moeten worden bijgewerkt voor het afhandelen van zowel de huidige indeling en de regels van de JSON-indeling die hierboven worden beschreven. Dit zorgt ervoor dat wanneer gegevens wordt gestart in de nieuwe indeling worden weergegeven, uw hulpprogramma's niet verbreken.
+Aangepaste hulpprogram ma's moeten worden bijgewerkt om zowel de huidige indeling als de indeling van de JSON-lijnen te verwerken die hierboven wordt beschreven. Dit zorgt ervoor dat de hulpprogram ma's niet worden onderbroken wanneer gegevens worden weer gegeven in de nieuwe indeling.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over [diagnostische logboeken van de resource naar een opslagaccount archiveren](./../../azure-monitor/platform/archive-diagnostic-logs.md)
-* Meer informatie over [gegevens naar een opslagaccount van een activiteitenlogboek archiveren](./../../azure-monitor/platform/archive-activity-log.md)
+* Meer informatie over [het archiveren van Diagnostische logboeken van resources in een opslag account](./../../azure-monitor/platform/archive-diagnostic-logs.md)
+* Meer informatie over [het archiveren van activiteiten logboek gegevens naar een opslag account](./../../azure-monitor/platform/archive-activity-log.md)
 

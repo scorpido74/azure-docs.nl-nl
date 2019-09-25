@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/15/2019
 ms.author: iainfou
-ms.openlocfilehash: 965714fc4b02430653d3670ddec69fcd77cc7920
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: 2b10866adb1615b31446388fa0e9d0dabffd13da
+ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71075645"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71268693"
 ---
 # <a name="join-a-centos-linux-virtual-machine-to-an-azure-ad-domain-services-managed-domain"></a>Een virtuele CentOS Linux-machine toevoegen aan een door Azure AD Domain Services beheerd domein
 
@@ -69,7 +69,7 @@ Werk in het bestand *hosts* het *localhost* -adres bij. In het volgende voor bee
 Werk deze namen bij met uw eigen waarden:
 
 ```console
-127.0.0.1 centos centos.contoso.com
+127.0.0.1 centos.contoso.com centos
 ```
 
 Als u klaar bent, slaat u het *hosts* -bestand `:wq` op en sluit u het af met de opdracht van de editor.

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/06/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 69c63d4eb2e0bfd04bb232cb0cf39965a5b77193
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: be82ab1597021d7198d7936ecd24e4bec64fdf25
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70104240"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266905"
 ---
 ## <a name="benefits-of-managed-disks"></a>Voor delen van beheerde schijven
 
@@ -43,15 +43,21 @@ Managed disks biedt ondersteuning voor [Beschikbaarheidszones](../articles/avail
 
 U kunt op [rollen gebaseerd toegangs beheer (RBAC) van Azure](../articles/role-based-access-control/overview.md) gebruiken voor het toewijzen van specifieke machtigingen voor een beheerde schijf aan een of meer gebruikers. Beheerde schijven bieden diverse bewerkingen, waaronder lezen, schrijven (maken/bijwerken), verwijderen en ophalen van een [SAS-URI (Shared Access Signature)](../articles/storage/common/storage-dotnet-shared-access-signature-part-1.md) voor de schijf. U kunt alleen toegang verlenen aan de bewerkingen die een persoon nodig heeft om de taak uit te voeren. Als u bijvoorbeeld niet wilt dat een persoon een beheerde schijf naar een opslag account kopieert, kunt u ervoor kiezen geen toegang te verlenen tot de export actie voor die beheerde schijf. En als u niet wilt dat een gebruiker een SAS-URI gebruikt om een beheerde schijf te kopiëren, kunt u ervoor kiezen deze machtiging niet toe te kennen aan de beheerde schijf.
 
+### <a name="upload-your-vhd"></a>Uw VHD uploaden
+
+ Direct uploaden maakt het eenvoudig om uw VHD over te zetten naar een door Azure beheerde schijf. Voorheen moest u een recenter proces volgen dat de fase ring van uw gegevens in een opslag account bevat. Er zijn nu minder stappen. Het is eenvoudiger om on-premises Vm's naar Azure te uploaden, te uploaden naar grote beheerde schijven en het back-up-en herstel proces is vereenvoudigd. Het vermindert ook de kosten omdat u rechtstreeks gegevens naar Managed disks kunt uploaden zonder ze aan Vm's toe te voegen. U kunt direct uploaden gebruiken om vhd's met een grootte van Maxi maal 32 TiB te uploaden.
+
+ Zie de [cli](../articles/virtual-machines/linux/disks-upload-vhd-to-managed-disk-cli.md) -of [Power shell](../articles/virtual-machines/windows/disks-upload-vhd-to-managed-disk-powershell.md) -artikelen voor meer informatie over het overdragen van uw VHD naar Azure.
+
 ## <a name="encryption"></a>Versleuteling
 
-Beheerde schijven bieden twee verschillende soorten versleuteling. De eerste is Storage Service Encryption (SSE), die wordt uitgevoerd door de opslag service. De tweede is Azure Disk Encryption, die u kunt inschakelen op het besturings systeem en de gegevens schijven voor uw virtuele machines.
+Beheerde schijven bieden twee verschillende soorten versleuteling. De eerste is Storage Service Encryption (SSE), die wordt uitgevoerd door de opslag service. De tweede is Azure Disk Encryption (ADE), die u kunt inschakelen op het besturings systeem en de gegevens schijven voor uw virtuele machines.
 
 ### <a name="storage-service-encryption-sse"></a>Storage Service Encryption (SSE)
 
 [Azure Storage-service versleuteling](../articles/storage/common/storage-service-encryption.md) biedt versleuteling-at-rest en beschermt uw gegevens om te voldoen aan de beveiligings-en nalevings verplichtingen van uw organisatie. SSE is standaard ingeschakeld voor alle beheerde schijven, moment opnamen en installatie kopieën in alle regio's waar Managed disks beschikbaar zijn. Ga naar de [pagina met Managed disks Veelgestelde vragen](../articles/virtual-machines/windows/faq-for-disks.md#managed-disks-and-storage-service-encryption) voor meer informatie.
 
-### <a name="azure-disk-encryption-ade"></a>Azure Disk Encryption (ADE)
+### <a name="azure-disk-encryption"></a>Azure Disk Encryption
 
 Met Azure Disk Encryption kunt u het besturings systeem en de gegevens schijven versleutelen die worden gebruikt door een virtuele IaaS-machine. Deze versleuteling bevat beheerde schijven. Voor Windows worden de stations versleuteld met de standaard BitLocker-versleutelings technologie. Voor Linux worden de schijven versleuteld met de DM-cryptografie technologie. Het versleutelingsproces is geïntegreerd met Azure Key Vault zodat u de schijfversleutelingssleutels kunt controleren en beheren. Zie [Azure Disk Encryption voor IaaS vm's](../articles/security/azure-security-disk-encryption-overview.md)voor meer informatie.
 

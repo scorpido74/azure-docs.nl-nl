@@ -17,12 +17,12 @@ ms.date: 09/09/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b996b2387e324c7e318536c2a13bdc9de39a7a5e
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 648652ed32a5dea30de665b7fa49190171a7f10a
+ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70860874"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71268392"
 ---
 # <a name="desktop-app-that-calls-web-apis---app-registration"></a>Bureau blad-app die web-Api's aanroept-app-registratie
 
@@ -51,6 +51,7 @@ De omleidings-Uri's voor gebruik in een bureaublad toepassing zijn afhankelijk v
   > [!IMPORTANT]
   > Vandaag MSAL.NET maakt standaard gebruik van een andere omleidings-URI in bureaublad`urn:ietf:wg:oauth:2.0:oob`toepassingen die worden uitgevoerd op Windows (). In de toekomst wilt u deze standaard instelling wijzigen. u kunt daarom het beste`https://login.microsoftonline.com/common/oauth2/nativeclient`
 
+- Als u een systeem eigen doel-C of SWIFT-app bouwt voor macOS, wilt u de redirectUri registreren op basis van de bundel-id van uw toepassing in de volgende indeling: **msauth. < your. app. bundel. id >://auth** (< vervangen uw app. bundel. id-> met de bundel-id van uw toepassing)
 - Als uw app alleen gebruikmaakt van geïntegreerde Windows-verificatie of gebruikers naam/wacht woord, hoeft u geen omleidings-URI voor uw toepassing te registreren. Deze stromen maken een afronding van het micro soft Identity platform v 2.0-eind punt en uw toepassing wordt niet terugaangeroepen op een specifieke URI.
 - Voor het onderscheiden van de apparaatcode stroom, geïntegreerde Windows-verificatie en gebruikers naam/wacht woord van een vertrouwelijke client toepassings stroom die geen omleidings-Uri's heeft (de client referentie stroom die wordt gebruikt in de daemon-toepassingen), moet u uitdrukkelijk bepalen dat uw de toepassing is een open bare client toepassing. Voor deze configuratie gaat u naar het gedeelte **verificatie** voor uw toepassing. Klik in de Subsectie **Geavanceerde instellingen** in het standaard- **client type** op **Ja** als **een open bare client**om de vraag te behandelen.
 

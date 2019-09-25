@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 04/16/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 67e5364996be2945d67aa1a95cbc3ab8137e077e
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: b9d2dda589cc59be24b73ce16dcdcbbe79b31aef
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68850256"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71259162"
 ---
 # <a name="troubleshoot-desired-state-configuration-dsc"></a>Problemen met desired state Configuration (DSC) oplossen
 
@@ -40,7 +40,7 @@ Wanneer er fouten zijn opgetreden bij het compileren of implementeren van config
 
    Als u **xDscDiagnostics** wilt installeren op uw Azure-machine, kunt u [AZ VM Run-Command](/cli/azure/vm/run-command) of [invoke-AzVMRunCommand](/powershell/module/azurerm.compute/invoke-azurermvmruncommand)gebruiken. U kunt ook de **opdracht optie uitvoeren** vanuit de portal gebruiken door de stappen uit te voeren die zijn gevonden in [Power shell-scripts uitvoeren in uw Windows-VM met de opdracht uitvoeren](../../virtual-machines/windows/run-command.md).
 
-   Voor informatie over het gebruik van **xDscDiagnostics**raadpleegt u [xDscDiagnostics gebruiken voor het analyseren van DSC](/powershell/dsc/troubleshooting/troubleshooting#using-xdscdiagnostics-to-analyze-dsc-logs)-logboeken en [xDscDiagnostics](https://github.com/PowerShell/xDscDiagnostics#cmdlets)-cmdlets.
+   Voor informatie over het gebruik van **xDscDiagnostics**raadpleegt u [xDscDiagnostics gebruiken voor het analyseren van DSC-logboeken](/powershell/dsc/troubleshooting/troubleshooting#using-xdscdiagnostics-to-analyze-dsc-logs)en [xDscDiagnostics-cmdlets](https://github.com/PowerShell/xDscDiagnostics#cmdlets).
 3. **Zorg ervoor dat uw knoop punten en Automation-werk ruimte de vereiste modules hebben:** De gewenste status configuratie is afhankelijk van de modules die op het knoop punt zijn geïnstalleerd.  Wanneer u Azure Automation status configuratie gebruikt, importeert u de benodigde modules in uw Automation-account met behulp van de stappen die worden beschreven in [modules importeren](../shared-resources/modules.md#import-modules). Configuraties kunnen ook afhankelijk zijn van specifieke versies van modules.  Zie [problemen met modules oplossen](shared-resources.md#modules)voor meer informatie.
 
 ## <a name="common-errors-when-working-with-desired-state-configuration-dsc"></a>Veelvoorkomende fouten bij het werken met de desired state Configuration (DSC)
@@ -149,7 +149,7 @@ U hebt uw WMF-versie bijgewerkt en hebt WMI beschadigd.
 
 #### <a name="resolution"></a>Oplossing
 
-Volg de instructies in het artikel [bekende problemen en beperkingen van DSC](https://msdn.microsoft.com/powershell/wmf/5.0/limitation_dsc) om het probleem op te lossen.
+Volg de instructies in het artikel [bekende problemen en beperkingen van DSC](https://docs.microsoft.com/powershell/scripting/wmf/known-issues/known-issues-dsc) om het probleem op te lossen.
 
 ### <a name="issue-using-credential"></a>Omstandigheden Kan geen referentie gebruiken in een DSC-configuratie
 

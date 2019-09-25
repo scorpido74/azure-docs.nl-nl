@@ -10,14 +10,14 @@ ms.reviewer: v-mamcge, jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 08/08/2019
+ms.date: 09/23/2019
 ms.custom: seodec18
-ms.openlocfilehash: 602623d48457498963cb5928081d24c1d1132ad4
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 88734b0ee05f5193da89f33e1639e4e7a187f225
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68935256"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71264651"
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Verificatie en autorisatie voor Azure Time Series Insights-API
 
@@ -100,6 +100,50 @@ In het volgende voor **stap 3**kunt u met behulp van de referenties van uw toepa
     ```
 
 1. Het token kan vervolgens worden door gegeven in `Authorization` de header wanneer de toepassing de time series Insights-API aanroept.
+
+## <a name="common-headers-and-parameters"></a>Algemene kopteksten en para meters
+
+In deze sectie worden algemene HTTP-aanvraag headers en-para meters beschreven die worden gebruikt om query's uit te voeren op de Time Series Insights GA en preview-Api's. API-specifieke vereisten worden uitgebreid beschreven in de documentatie over het [Time Series Insights rest API](https://docs.microsoft.com/rest/api/time-series-insights/).
+
+### <a name="authentication"></a>Authentication
+
+Als u geverifieerde query's wilt uitvoeren op de [Time Series INSIGHTS rest api's](https://docs.microsoft.com/rest/api/time-series-insights/), moet er een geldig OAuth 2,0 Bearer-token worden door gegeven in de [autorisatie-header](/rest/api/apimanagement/authorizationserver/createorupdate) met behulp van een rest C#-client naar keuze (Postman, java script,). 
+
+> [!IMPORTANT]
+> Het token moet exact worden uitgegeven aan de `https://api.timeseries.azure.com/` resource (ook wel bekend als het ' publiek ' van het token).
+> * Uw [postman](https://www.getpostman.com/) - **AuthURL** in overeenstemming met:`https://login.microsoftonline.com/microsoft.onmicrosoft.com/oauth2/authorize?resource=https://api.timeseries.azure.com/`
+
+> [!TIP]
+> Raadpleeg de zelf studie [de Azure time series Insights java script-client bibliotheek verkennen](tutorial-explore-js-client-lib.md#authentication) om te zien hoe u via programma code kunt verifiëren met de time series Insights api's via de [Java script-client-SDK](https://github.com/microsoft/tsiclient/blob/master/docs/API.md).
+
+### <a name="http-headers"></a>HTTP-headers
+
+Vereiste aanvraag headers:
+
+- `Authorization`voor verificatie en autorisatie moet er een geldig OAuth 2,0 Bearer-token worden door gegeven in de autorisatie-header. Het token moet exact worden uitgegeven aan de `https://api.timeseries.azure.com/` resource (ook wel bekend als het ' publiek ' van het token).
+
+Optionele aanvraag headers:
+
+- `Content-type`-alleen `application/json` -wordt ondersteund.
+- `x-ms-client-request-id`-een client aanvraag-ID. Deze waarde wordt door service vastgelegd. Hiermee kan de service bewerkingen volgen tussen services.
+- `x-ms-client-session-id`-een client sessie-ID. Deze waarde wordt door service vastgelegd. Hiermee kan de service een groep gerelateerde bewerkingen in verschillende services traceren.
+- `x-ms-client-application-name`-de naam van de toepassing die deze aanvraag heeft gegenereerd. Deze waarde wordt door service vastgelegd.
+
+Antwoord headers:
+
+- `Content-type`-alleen `application/json` -wordt ondersteund.
+- `x-ms-request-id`-door de server gegenereerde aanvraag-ID. Kan worden gebruikt om contact op te nemen met micro soft om een aanvraag te onderzoeken.
+
+### <a name="http-parameters"></a>HTTP-para meters
+
+Vereiste URL-query teken reeks parameters:
+
+- `api-version=2016-12-12`
+- `api-version=2018-11-01-preview`
+
+Optionele URL-query teken reeks parameters:
+
+- `timeout=<timeout>`-time-out aan server zijde voor het uitvoeren van de aanvraag. Alleen van toepassing op de api's [Get Environment Events](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-events-api) en [Get Environment aggregaties](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-aggregates-api) . De time-outwaarde moet de ISO 8601-duur `"PT20S"` notatie hebben, bijvoorbeeld en moet `1-30 s`in het bereik liggen. De standaard waarde `30 s`is.
 
 ## <a name="next-steps"></a>Volgende stappen
 

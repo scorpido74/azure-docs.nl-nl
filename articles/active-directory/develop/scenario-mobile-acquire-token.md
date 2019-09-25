@@ -16,12 +16,12 @@ ms.author: jmprieur
 ms.reviwer: brandwe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d49717355cab5441d26608fa12333bd1b8b73d44
-ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
+ms.openlocfilehash: 454d62f871290d2e7dd8d0eee4b1a2429625a5fc
+ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68413532"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71268267"
 ---
 # <a name="mobile-app-that-calls-web-apis---get-a-token"></a>Mobiele app die web-Api's aanroept-een Token ophalen
 
@@ -40,7 +40,7 @@ String[] SCOPES = {"https://graph.microsoft.com/.default"};
 
 #### <a name="ios"></a>iOS
 ```swift
-let scopes: [String] = ["https://graph.microsoft.com/.default"]
+let scopes = ["https://graph.microsoft.com/.default"]
 ```
 
 #### <a name="xamarin"></a>Xamarin
@@ -50,7 +50,7 @@ var scopes = new [] {"https://graph.microsoft.com/.default"};
 
 ## <a name="get-tokens"></a>Tokens ophalen
 
-### <a name="via-msal"></a>Via MSAL
+### <a name="acquire-tokens-via-msal"></a>Tokens verkrijgen via MSAL
 
 MSAL staat apps toe om tokens op de achtergrond en interactief te verkrijgen. U hoeft deze methoden alleen aan te roepen en MSAL retourneert een toegangs token voor de aangevraagde bereiken. Het juiste patroon is om een stille aanvraag uit te voeren en terug te vallen op een interactieve aanvraag.
 
@@ -86,61 +86,114 @@ sampleApp.acquireToken(getActivity(), SCOPES, getAuthInteractiveCallback());
 
 #### <a name="ios"></a>iOS
 
+**Probeer eerst een token op de achtergrond te verkrijgen:**
+
+Doel-C:
+
+```objc
+
+NSArray *scopes = @[@"https://graph.microsoft.com/.default"];
+NSString *accountIdentifier = @"my.account.id";
+    
+MSALAccount *account = [application accountForIdentifier:accountIdentifier error:nil];
+    
+MSALSilentTokenParameters *silentParams = [[MSALSilentTokenParameters alloc] initWithScopes:scopes account:account];
+[application acquireTokenSilentWithParameters:silentParams completionBlock:^(MSALResult *result, NSError *error) {
+        
+    if (!error)
+    {
+        // You'll want to get the account identifier to retrieve and reuse the account
+        // for later acquireToken calls
+        NSString *accountIdentifier = result.account.identifier;
+            
+        // Access token to call the Web API
+        NSString *accessToken = result.accessToken;
+    }
+        
+    // Check the error
+    if (error && [error.domain isEqual:MSALErrorDomain] && error.code == MSALErrorInteractionRequired)
+    {
+        // Interactive auth will be required, call acquireTokenWithParameters:error:
+        return;
+    }
+}];
+```
+ 
+Swift
+
 ```swift
-// Initialize the app.
-guard let authorityURL = URL(string: kAuthority) else {
-    self.loggingText.text = "Unable to create authority URL"
-    return
-}
-let authority = try MSALAADAuthority(url: authorityURL)
-let msalConfiguration = MSALPublicClientApplicationConfig(clientId: kClientID, redirectUri: nil, authority: authority)
-self.applicationContext = try MSALPublicClientApplication(configuration: msalConfiguration)
 
-// Get tokens.
-let parameters = MSALSilentTokenParameters(scopes: kScopes, account: account)
-applicationContext.acquireTokenSilent(with: parameters) { (result, error) in
-    if let error = error {
-        let nsError = error as NSError
-
-        // interactionRequired means you need to ask the user to sign in. This usually happens
-        // when the user's refresh token is expired or when the user has changed the password,
-        // among other possible reasons.
-        if (nsError.domain == MSALErrorDomain) {
-            if (nsError.code == MSALError.interactionRequired.rawValue) {    
-                DispatchQueue.main.async {
-                    guard let applicationContext = self.applicationContext else { return }
-                    let parameters = MSALInteractiveTokenParameters(scopes: kScopes)
-                    applicationContext.acquireToken(with: parameters) { (result, error) in
-                        if let error = error {
-                            self.updateLogging(text: "Could not acquire token: \(error)")
-                            return
-                        }
-
-                        guard let result = result else {
-                            self.updateLogging(text: "Could not acquire token: No result returned")
-                            return
-                        }
-                        
-                        // Token is ready via interaction!
-                        self.accessToken = result.accessToken
-                    }
-                }
-                return
-            }
-        }
-
-        self.updateLogging(text: "Could not acquire token silently: \(error)")
-        return
-    }
-    guard let result = result else {
-        self.updateLogging(text: "Could not acquire token: No result returned")
-        return
-    }
-
-    // Token is ready via silent acquisition.
-    self.accessToken = result.accessToken
+let scopes = ["https://graph.microsoft.com/.default"]
+let accountIdentifier = "my.account.id"
+        
+guard let account = try? application.account(forIdentifier: accountIdentifier) else { return }
+let silentParameters = MSALSilentTokenParameters(scopes: scopes, account: account)
+application.acquireTokenSilent(with: silentParameters) { (result, error) in
+            
+    guard let authResult = result, error == nil else {
+                
+    let nsError = error! as NSError
+                
+    if (nsError.domain == MSALErrorDomain &&
+        nsError.code == MSALError.interactionRequired.rawValue) {
+                    
+            // Interactive auth will be required, call acquireToken()
+            return
+         }
+         return
+     }
+            
+    // You'll want to get the account identifier to retrieve and reuse the account
+    // for later acquireToken calls
+    let accountIdentifier = authResult.account.identifier
+            
+    // Access token to call the Web API
+    let accessToken = authResult.accessToken
 }
 ```
+
+**Als MSAL wordt geretourneerd `MSALErrorInteractionRequired`, kunt u tokens interactief ophalen:**
+
+Doel-C:
+
+```objc
+UIViewController *viewController = ...; // Pass a reference to the view controller that should be used when getting a token interactively
+MSALWebviewParameters *webParameters = [[MSALWebviewParameters alloc] initWithParentViewController:viewController];
+MSALInteractiveTokenParameters *interactiveParams = [[MSALInteractiveTokenParameters alloc] initWithScopes:scopes webviewParameters:webParameters];
+[application acquireTokenWithParameters:interactiveParams completionBlock:^(MSALResult *result, NSError *error) {
+    if (!error) 
+    {
+        // You'll want to get the account identifier to retrieve and reuse the account
+        // for later acquireToken calls
+        NSString *accountIdentifier = result.account.identifier;
+            
+        NSString *accessToken = result.accessToken;
+    }
+}];
+```
+
+Swift
+
+```swift
+let viewController = ... // Pass a reference to the view controller that should be used when getting a token interactively
+let webviewParameters = MSALWebviewParameters(parentViewController: viewController)
+let interactiveParameters = MSALInteractiveTokenParameters(scopes: scopes, webviewParameters: webviewParameters)
+application.acquireToken(with: interactiveParameters, completionBlock: { (result, error) in
+                
+    guard let authResult = result, error == nil else {
+        print(error!.localizedDescription)
+        return
+    }
+                
+    // Get access token from result
+    let accessToken = authResult.accessToken
+})
+```
+
+MSAL voor iOS en macOS ondersteunt diverse para meters bij het interactief of op de achtergrond ophalen van een token.
+* [Algemene para meters bij het ophalen van een token](https://azuread.github.io/microsoft-authentication-library-for-objc/Classes/MSALTokenParameters.html#/Configuration%20parameters)
+* [Para meters voor het verkrijgen van interactieve tokens](https://azuread.github.io/microsoft-authentication-library-for-objc/Classes/MSALInteractiveTokenParameters.html#/Configuring%20MSALInteractiveTokenParameters)
+* [Para meters voor de aanschaf van Silent tokens](https://azuread.github.io/microsoft-authentication-library-for-objc/Classes/MSALSilentTokenParameters.html)
 
 #### <a name="xamarin"></a>Xamarin
 
@@ -163,15 +216,15 @@ catch(MsalUiRequiredException)
 }
 ```
 
-### <a name="mandatory-parameters"></a>Verplichte para meters
+#### <a name="mandatory-parameters-in-msalnet"></a>Verplichte para meters in MSAL.NET
 
 `AcquireTokenInteractive`heeft slechts één verplichte para ``scopes``meter, die een opsomming bevat van teken reeksen die de bereiken definiëren waarvoor een token is vereist. Als het token voor de Microsoft Graph is, kunt u de vereiste bereiken vinden in API-verwijzing van elke micro soft Graph API in de sectie met de naam ' permissions '. Als u bijvoorbeeld [de contact personen van de gebruiker wilt weer geven](https://developer.microsoft.com/graph/docs/api-reference/v1.0/api/user_list_contacts), moet de scope ' gebruiker. read ', ' Contacts. read ' worden gebruikt. Zie ook [Microsoft Graph permissions Reference](https://developer.microsoft.com/graph/docs/concepts/permissions_reference)(Engelstalig).
 
 Als u deze niet hebt opgegeven bij het maken van de app op Android, moet u ook de bovenliggende activiteit (met behulp `.WithParentActivityOrWindow`van hieronder) opgeven, zodat het token na de interactie terugkeert naar die bovenliggende activiteit. Als u deze niet opgeeft, wordt er een uitzonde ring gegenereerd `.ExecuteAsync()`bij het aanroepen van.
 
-### <a name="specific-optional-parameters"></a>Specifieke optionele para meters
+#### <a name="specific-optional-parameters-in-msalnet"></a>Specifieke optionele para meters in MSAL.NET
 
-#### <a name="withprompt"></a>WithPrompt
+##### <a name="withprompt"></a>WithPrompt
 
 `WithPrompt()`wordt gebruikt om de interactiviteit met de gebruiker te beheren door een prompt op te geven
 
@@ -185,7 +238,7 @@ De klasse definieert de volgende constanten:
 - ``Never``(alleen voor .NET 4,5 en WinRT) wordt de gebruiker niet gevraagd, maar probeert in plaats daarvan de cookie te gebruiken die is opgeslagen in de verborgen Inge sloten webweergave (zie hieronder): Webweergaven in MSAL.NET). Het gebruik van deze optie kan mislukken en in dat `AcquireTokenInteractive` geval wordt een uitzonde ring gegenereerd om aan te geven dat een UI-interactie nodig is. u `Prompt` moet een andere para meter gebruiken.
 - ``NoPrompt``: Er wordt geen prompt verzonden naar de ID-provider. Deze optie is alleen nuttig voor het Azure AD B2C bewerken van profiel beleid (Zie [B2C-specifiek](https://aka.ms/msal-net-b2c-specificities)).
 
-#### <a name="withextrascopetoconsent"></a>WithExtraScopeToConsent
+##### <a name="withextrascopetoconsent"></a>WithExtraScopeToConsent
 
 Deze wijzigings functie wordt gebruikt in een geavanceerd scenario waarbij de gebruiker vooraf toestemming moet geven aan verschillende bronnen (en niet de incrementele toestemming wilt gebruiken, die normaal gesp roken wordt gebruikt met MSAL.NET/de micro soft Identity platform v 2.0). Zie [How to: de gebruiker vooraf toestemming geven voor verschillende bronnen](scenario-desktop-production.md#how-to-have--the-user-consent-upfront-for-several-resources)voor meer informatie.
 
@@ -195,11 +248,11 @@ var result = await app.AcquireTokenInteractive(scopesForCustomerApi)
                      .ExecuteAsync();
 ```
 
-#### <a name="other-optional-parameters"></a>Andere optionele para meters
+##### <a name="other-optional-parameters"></a>Andere optionele para meters
 
 Meer informatie over de andere optionele para meters `AcquireTokenInteractive` voor in de referentie documentatie voor [AcquireTokenInteractiveParameterBuilder](/dotnet/api/microsoft.identity.client.acquiretokeninteractiveparameterbuilder?view=azure-dotnet-preview#methods)
 
-### <a name="via-the-protocol"></a>Via het Protocol
+### <a name="acquire-tokens-via-the-protocol"></a>Tokens verkrijgen via het Protocol
 
 Het is niet raadzaam het protocol rechtstreeks te gebruiken. Als u dat wel doet, ondersteunt de app geen enkele eenmalige aanmelding (SSO), Apparaatbeheer en scenario's voor voorwaardelijke toegang.
 

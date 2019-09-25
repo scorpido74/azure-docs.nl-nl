@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 07/02/2019
 ms.author: memildin
-ms.openlocfilehash: 0d6f05524be41693ba280b0f0162f65b517ec281
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: 50d4023b09eb14fcfafe752ca60b8e888acc1fef
+ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71219630"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71273885"
 ---
 # <a name="threat-detection-for-vms-and-servers-in-azure-security-center"></a>Detectie van bedreigingen voor Vm's en servers in Azure Security Center
 
@@ -28,14 +28,14 @@ Dit onderwerp bevat de verschillende typen detectie methoden en waarschuwingen d
 
 Azure Security Center integreert met Azure-Services om uw op Windows gebaseerde computers te controleren en te beveiligen. Security Center toont de waarschuwingen en suggesties voor herstel van al deze services in een gemakkelijk te gebruiken indeling.
 
-### Windows Server Defender ATP<a nanme="windows-atp"></a>
+### Micro soft Defender ATP<a nanme="windows-atp"></a>
 
-Security Center breidt de beveiligings platforms voor Cloud werkbelasting uit door te integreren met behulp van Windows Server Defender Advanced Threat Protection (ATP). Dit biedt uitgebreide functionaliteit voor eindpunt detectie en-antwoorden (EDR).
+Security Center breidt de beveiligings platformen voor Cloud werkbelasting uit door te integreren met micro soft Defender Advanced Threat Protection (ATP). Dit biedt uitgebreide functionaliteit voor eindpunt detectie en-antwoorden (EDR).
 
 > [!NOTE]
-> De Windows Server Defender ATP-sensor wordt automatisch ingeschakeld op Windows-servers die gebruikmaken van Security Center.
+> De micro soft Defender ATP-sensor wordt automatisch ingeschakeld op Windows-servers die gebruikmaken van Security Center.
 
-Wanneer Windows Server Defender ATP een bedreiging detecteert, wordt er een waarschuwing gegenereerd. De waarschuwing wordt weer gegeven op het Security Center dash board. Vanuit het dash board kunt u naar de micro soft Defender ATP-console draaien en een gedetailleerd onderzoek uitvoeren om het bereik van de aanval te ontdekken. Voor meer informatie over Windows Server Defender ATP raadpleegt [u onboard servers voor de micro soft Defender ATP-service](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/configure-server-endpoints).
+Wanneer micro soft Defender ATP een bedreiging detecteert, wordt er een waarschuwing gegenereerd. De waarschuwing wordt weer gegeven op het Security Center dash board. Vanuit het dash board kunt u naar de micro soft Defender ATP-console draaien en een gedetailleerd onderzoek uitvoeren om het bereik van de aanval te ontdekken. Zie voor meer informatie over micro soft Defender ATP [servers onboarding voor de micro soft Defender ATP-service](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/configure-server-endpoints).
 
 ### Crash dump analyse<a nanme="windows-dump"></a>
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 895d44ea7ab6bfebee44014ad4e96016a555c08e
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 5ad8f24c9d23e9412a4f6e4e5f97692bba2c0c39
+ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70959926"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71268672"
 ---
 # <a name="deploy-azure-ad-password-protection"></a>Wachtwoordbeveiliging in Azure AD implementeren
 
@@ -40,26 +40,27 @@ Het is ook mogelijk om uw bestaande Active Directory domein controller implement
 
 Nadat de functie gedurende een redelijke periode in de controle modus is uitgevoerd, kunt u de configuratie van de *controle* wijzigen naar afdwingen om veiligere wacht woorden te vereisen. Het is een goed idee om te controleren of er momenteel gerichte bewaking is.
 
-## <a name="deployment-requirements"></a>Implementatievereisten
+## <a name="deployment-requirements"></a>Implementatie vereisten
 
 * Licentie vereisten voor Azure AD-wachtwoord beveiliging vindt u in het artikel [overbodige wacht woorden in uw organisatie elimineren](concept-password-ban-bad.md#license-requirements).
-* Alle domein controllers die de DC-Agent service voor Azure AD-wachtwoord beveiliging ophalen, moeten Windows Server 2012 of hoger uitvoeren. Deze vereiste impliceert niet dat het Active Directory domein of forest ook moet het domein of forest-functionaliteits niveau van Windows Server 2012. Zoals vermeld in [ontwerp principes](concept-password-ban-bad-on-premises.md#design-principles), is er geen mini maal DFL of FFL vereist voor het uitvoeren van de DC-agent of proxy software.
+* Op alle computers waarop de Azure AD-agent software voor wachtwoord beveiliging wordt geïnstalleerd, moet Windows Server 2012 of hoger worden uitgevoerd. Deze vereiste impliceert niet dat het Active Directory domein of forest ook moet het domein of forest-functionaliteits niveau van Windows Server 2012. Zoals vermeld in [ontwerp principes](concept-password-ban-bad-on-premises.md#design-principles), is er geen mini maal DFL of FFL vereist voor het uitvoeren van de DC-agent of proxy software.
 * Op alle computers waarop de DC-Agent service is geïnstalleerd, moet .NET 4,5 zijn geïnstalleerd.
-* Op alle computers waarop de proxy service voor Azure AD-wachtwoord beveiliging wordt geïnstalleerd, moet Windows Server 2012 R2 of later worden uitgevoerd.
+* Alle computers waarop de Azure AD-proxy service voor wachtwoord beveiliging wordt geïnstalleerd, moeten Windows Server 2012 R2 of hoger uitvoeren.
    > [!NOTE]
    > Proxy service-implementatie is een verplichte vereiste voor het implementeren van Azure AD-wachtwoord beveiliging, zelfs als de domein controller mogelijk uitgaande directe Internet connectiviteit heeft. 
    >
 * Op alle computers waarop de Azure AD-proxy service voor wachtwoord beveiliging wordt geïnstalleerd, moet .NET 4,7 zijn geïnstalleerd.
   .NET 4,7 moet al zijn geïnstalleerd op een volledig bijgewerkte Windows-Server. Als dat niet het geval is, downloadt en voert u het installatie programma uit dat is gevonden op [het .NET Framework 4,7 offline-installatie programma voor Windows](https://support.microsoft.com/help/3186497/the-net-framework-4-7-offline-installer-for-windows).
-* Op alle machines, met inbegrip van domein controllers, waarop Azure AD-wachtwoord beveiligings onderdelen worden geïnstalleerd, moet de universele C-runtime zijn geïnstalleerd. U kunt de runtime ophalen door ervoor te zorgen dat u alle updates van Windows Update hebt. U kunt deze ook verkrijgen in een specifiek update pakket. Zie [Update voor Universal C runtime in Windows](https://support.microsoft.com/help/2999226/update-for-uniersal-c-runtime-in-windows)voor meer informatie.
+* Op alle machines, met inbegrip van domein controllers, waarop Azure AD-onderdelen voor wachtwoord beveiliging zijn geïnstalleerd, moet de universele C-runtime zijn geïnstalleerd. U kunt de runtime ophalen door ervoor te zorgen dat u alle updates van Windows Update hebt. U kunt deze ook verkrijgen in een specifiek update pakket. Zie [Update voor Universal C runtime in Windows](https://support.microsoft.com/help/2999226/update-for-uniersal-c-runtime-in-windows)voor meer informatie.
 * Er moet een netwerk verbinding zijn tussen ten minste één domein controller in elk domein en ten minste één server die als host fungeert voor de proxy service voor wachtwoord beveiliging. Deze connectiviteit moet toestaan dat de domein controller toegang krijgt tot de RPC-eindpunttoewijzer poort 135 en de RPC-server poort op de proxy service. De RPC-server poort is standaard een dynamische RPC-poort, maar kan worden geconfigureerd voor het [gebruik van een statische poort](#static).
-* Alle computers die de proxy service hosten, moeten netwerk toegang hebben tot de volgende eind punten:
+* Alle computers waarop de Azure AD-proxy service voor wachtwoord beveiliging wordt geïnstalleerd, moeten netwerk toegang hebben tot de volgende eind punten:
 
     |**Endpoint**|**Doel**|
     | --- | --- |
     |`https://login.microsoftonline.com`|Verificatie aanvragen|
     |`https://enterpriseregistration.windows.net`|Azure AD-functionaliteit voor wachtwoord beveiliging|
 
+  U moet ook netwerk toegang inschakelen voor de set van poorten en url's die zijn opgegeven in de [installatie procedures van de toepassings proxy omgeving](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-add-on-premises-application#prepare-your-on-premises-environment). Deze configuratie stappen zijn vereist om de Microsoft Azure AD connect agent Updater-service te kunnen gebruiken (deze service wordt naast de proxy service geïnstalleerd). Het wordt afgeraden om Azure AD-wachtwoord beveiligings proxy en toepassings proxy naast elkaar op dezelfde computer te installeren vanwege incompatibiliteit tussen de versies van de Microsoft Azure AD de software van de verbinding met de agent Updater.
 * Alle computers die de proxy service voor wachtwoord beveiliging hosten, moeten worden geconfigureerd om domein controllers de mogelijkheid te geven zich aan te melden bij de proxy service. Dit wordt bepaald via de toewijzing van de bevoegdheid toegang tot deze computer vanaf het netwerk.
 * Alle computers die de proxy service voor wachtwoord beveiliging hosten, moeten zo worden geconfigureerd dat HTTP-verkeer voor uitgaande TLS 1,2 wordt toegestaan.
 * Een algemeen beheerders account voor het registreren van de proxy service voor wachtwoord beveiliging en forest met Azure AD.

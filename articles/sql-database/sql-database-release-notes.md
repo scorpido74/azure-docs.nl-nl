@@ -9,12 +9,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: sstein
-ms.openlocfilehash: 90482fc859c4dcdd04a70e91da2fd6adb079a795
-ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
+ms.openlocfilehash: 90be253a4763aebd31b663aa0e765c187c8bff92
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71162276"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266419"
 ---
 # <a name="sql-database-release-notes"></a>Opmerkingen bij de release SQL Database
 
@@ -70,7 +70,7 @@ De volgende functies zijn ingeschakeld in het implementatie model voor beheerde 
   - Ondersteuning voor <a href="https://docs.microsoft.com/sharepoint/administration/deploy-azure-sql-managed-instance-with-sharepoint-servers-2016-2019"> SharePoint 2016 en SharePoint 2019 </a> en <a href="https://docs.microsoft.com/business-applications-release-notes/october18/dynamics365-business-central/support-for-azure-sql-database-managed-instance"> Dynamics 365 Business Central </a>
   - Maak instanties met <a href="https://aka.ms/managed-instance-collation">sorteringen op server niveau</a> en <a href="https://azure.microsoft.com/updates/managed-instance-time-zone-ga/">tijd zone</a> van uw keuze.
   - Beheerde exemplaren zijn nu beveiligd met <a href="sql-database-managed-instance-management-endpoint-verify-built-in-firewall.md">ingebouwde firewall</a>.
-  - Configureer instanties voor het gebruik van [open bare eind punten](sql-database-managed-instance-public-endpoint-configure.md), een [proxy onderdrukkings](/sql-database-connectivity-architecture.md#connection-policy) verbinding om betere netwerk prestaties te krijgen, <a href="https://aka.ms/four-cores-sql-mi-update">4 vCores op GEN5 hardware genereren</a> of <a href="https://aka.ms/managed-instance-configurable-backup-retention">het bewaren van back-ups te configureren tot 35 dagen voor herstel naar een</a> bepaald tijdstip. Lange termijn retentie van back-ups (Maxi maal 10 jaar) is nog niet ingeschakeld, zodat u <a href="https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server">alleen back-ups met alleen-kopiëren</a> als alternatief kunt gebruiken.
+  - Configureer instanties voor het gebruik van [open bare eind punten](sql-database-managed-instance-public-endpoint-configure.md), een [proxy onderdrukkings](sql-database-connectivity-architecture.md#connection-policy) verbinding om betere netwerk prestaties te krijgen, <a href="https://aka.ms/four-cores-sql-mi-update">4 vCores op GEN5 hardware genereren</a> of <a href="https://aka.ms/managed-instance-configurable-backup-retention">het bewaren van back-ups te configureren tot 35 dagen voor herstel naar een</a> bepaald tijdstip. Lange termijn retentie van back-ups (Maxi maal 10 jaar) is nog niet ingeschakeld, zodat u <a href="https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server">alleen back-ups met alleen-kopiëren</a> als alternatief kunt gebruiken.
   - Dankzij nieuwe functies kunt u <a href="https://medium.com/@jocapc/geo-restore-your-databases-on-azure-sql-instances-1451480e90fa">uw data base met behulp van Power shell naar een ander Data Center herstellen, de</a> [naam van de data base wijzigen](https://azure.microsoft.com/updates/azure-sql-database-managed-instance-database-rename-is-supported/), het [virtuele cluster verwijderen](sql-database-managed-instance-delete-virtual-cluster.md).
   - Met de nieuwe [rol Inzender](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-managed-instance-contributor) voor ingebouwde instanties kunt u SoD-naleving met beveiligings principes en naleving van de bedrijfs normen.
   - Het beheerde exemplaar is beschikbaar in de volgende Azure Government regio's tot GA (US Gov-Texas, US Gov-Arizona), evenals in China-noord 2 en China-oost 2. Het is ook beschikbaar in de volgende open bare regio's: Australië-centraal, Australië-centraal 2, Brazilië-zuid, Frankrijk-zuid, UAE-centraal, UAE-noord, Zuid-Afrika-noord, Zuid-Afrika-west.

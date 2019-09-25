@@ -1,19 +1,19 @@
 ---
 title: 'Zelfstudie: Gegevens verwerken van Azure Event Hubs met Apache Spark in HDInsight'
 description: 'Zelf studie: Apache Spark in azure HDInsight verbinden met Azure Event Hubs en de streaminggegevens verwerken.'
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
+ms.service: hdinsight
 ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
 ms.date: 05/24/2019
-ms.openlocfilehash: 2483ba22d3d502479e87ae385bcc837ec87a103c
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: be21b809272a132ee6e63582036c36ad5dcdf4ad
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70735337"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266195"
 ---
 # <a name="tutorial-process-tweets-using-azure-event-hubs-and-apache-spark-in-hdinsight"></a>Zelfstudie: Tweets verwerken met Azure Event Hubs en Apache Spark in HDInsight
 
@@ -88,7 +88,7 @@ U gebruikt deze Event Hub om tweets op te slaan.
     |Resource group|Selecteer een bestaande resource groep in de vervolg keuzelijst of selecteer **nieuwe maken** om een nieuwe resource groep te maken.|
     |Location|Selecteer dezelfde **locatie** als uw Apache Spark-cluster in HDInsight om de latentie en kosten te verminderen.|
     |Automatisch verg Roten inschakelen (optioneel) |Automatisch verg Roten: Hiermee wordt het aantal doorvoer eenheden dat aan uw Event Hubs naam ruimte is toegewezen, geschaald wanneer uw verkeer de capaciteit van de toegewezen doorvoer eenheden overschrijdt.  |
-    |Maximum aantal doorvoer eenheden automatisch verg Roten (optioneel)|Deze schuif regelaar wordt alleen weer gegeven als u **automatisch verg Roten inschakelen inschakelt**.  |
+    |Maximum aantal doorvoer eenheden automatisch verg Roten (optioneel)|Deze schuif regelaar wordt alleen weer gegeven als u **automatisch verg Roten inschakelen**inschakelt.  |
 
     ![Een event hub naam opgeven voor het voor beeld van Spark-streaming](./media/apache-spark-eventhub-streaming/hdinsight-provide-event-hub-name-for-spark-streaming.png "Een event hub naam opgeven voor het voor beeld van Spark-streaming")
 
@@ -252,7 +252,7 @@ Met HDInsight worden uw gegevens opgeslagen in Azure Storage of Azure Data Lake 
 
 Open het cluster in Azure Portal en selecteer **Verwijderen**.
 
-![HDInsight-cluster verwijderen](./media/apache-spark-load-data-run-query/hdinsight-azure-portal-delete-cluster.png "HDInsight-cluster verwijderen")
+![HDInsight Azure Portal cluster verwijderen](./media/apache-spark-load-data-run-query/hdinsight-azure-portal-delete-cluster.png "HDInsight-cluster verwijderen")
 
 U kunt ook de naam van de resourcegroep selecteren om de pagina van de resourcegroep te openen en vervolgens **Resourcegroep verwijderen** selecteren. Als u de resourcegroep verwijdert, verwijdert u zowel het HDInsight Spark-cluster als het standaardopslagaccount.
 

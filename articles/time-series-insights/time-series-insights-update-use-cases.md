@@ -8,14 +8,14 @@ manager: cshankar
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 08/01/2019
+ms.date: 09/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: 726fc2d2f53e904fdf7f50be5aef7b274dcc51ac
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: f4eb1b69a1464cacaf666e49f4aff7422d63611d
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68736158"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71264520"
 ---
 # <a name="azure-time-series-insights-preview-use-cases"></a>Azure Time Series Insights preview-cases gebruiken
 
@@ -40,11 +40,15 @@ Verken en analyseer direct miljarden gebeurtenissen om afwijkingen te vinden en 
 
 [![Data Explorer](media/v2-update-use-cases/data-explorer.svg)](media/v2-update-use-cases/data-explorer.svg#lightbox)
 
-De meeste klanten komen overeen dat de tijd om inzicht te verkrijgen is tussen de krach tigste activa van Time Series Insights. Voor Time Series Insights is geen vooraf gegevens voorbereiding vereist. U kunt in enkele minuten snel verbinding maken met miljarden gebeurtenissen in uw Azure IoT Hub of Azure Event Hubs. Zodra u verbinding hebt gemaakt, kunt u miljarden gebeurtenissen visualiseren en analyseren om afwijkingen op te sporen en verborgen trends in uw gegevens te ontdekken.
+De meeste klanten komen overeen dat de minimale hoeveelheid tijd die nodig is om inzicht te krijgen, een van de belangrijkste-functies van Time Series Insights:
 
-Time Series Insights is intuïtief en eenvoudig te gebruiken. U kunt met uw gegevens werken zonder ook maar één regel code te schrijven. Er is ook geen nieuwe taal voor meer informatie. Time Series Insights biedt gedetailleerde, op tekst gebaseerde query's voor geavanceerde gebruikers die bekend zijn met SQL. U kunt er ook voor kiezen om te verkennen.
+* Voor Time Series Insights is geen vooraf gegevens voorbereiding vereist. 
+* U kunt in enkele minuten snel verbinding maken met miljarden gebeurtenissen in uw Azure IoT Hub of Azure Event Hubs. 
+* Zodra u verbinding hebt gemaakt, kunt u miljarden gebeurtenissen visualiseren en analyseren om afwijkingen op te sporen en verborgen trends in uw gegevens te ontdekken.
 
-Klanten profiteren van de snelheid om snel aan activa gerelateerde problemen te onderzoeken. Ze kunnen DevOps uitvoeren om de hoofd oorzaak van een bug in een IoT-oplossing te verkrijgen. Ze kunnen ook gebieden identificeren die moeten worden onderzocht op Data Science-initiatieven.  
+Time Series Insights is intuïtief en eenvoudig te gebruiken. U kunt met uw gegevens werken zonder ook maar één regel code te schrijven. Er is ook geen nieuwe taal die u nodig hebt om te leren, hoewel Time Series Insights een gedetailleerde Zoek taal op basis van tekst biedt voor ervaren gebruikers die bekend zijn met SQL. U kunt er ook voor kiezen om te verkennen.
+
+Klanten kunnen profiteren van de snelheid voor het snel diagnosticeren van problemen met activa. Ze kunnen DevOps-analyses uitvoeren om de hoofd oorzaak van een bug in een IoT-oplossing te verkrijgen. Ze kunnen ook gebieden identificeren die moeten worden gemarkeerd voor nader onderzoek als onderdeel van hun data Science-initiatieven.  
 
 Er zijn drie manieren om te communiceren met gegevens die zijn opgeslagen in Time Series Insights:
 

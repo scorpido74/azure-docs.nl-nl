@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: 87d0f08d67dbbe6a0fa1725aba850c8d9b6c5619
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: c67d2cd4e90b2fa61a4d95e89a68c888a6e1fe3f
+ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71104708"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71273634"
 ---
 # <a name="create-a-private-link-service-using-azure-cli"></a>Een persoonlijke koppelings service maken met behulp van Azure CLI
 In dit artikel wordt beschreven hoe u een persoonlijke koppelings service maakt in azure met behulp van Azure CLI.
@@ -29,13 +29,13 @@ Voordat u een virtueel netwerk kunt maken, moet u een resourcegroep maken die he
 az group create --name myResourceGroup --location westcentralus
 ```
 ### <a name="create-a-virtual-network"></a>Een virtueel netwerk maken
-Maak een virtueel netwerk met [az network vnet create](/cli/azure/network/az-network-vnet-create). In dit voor beeld wordt een standaard virtueel netwerk gemaakt met de naam *myVirtualNetwork* met één subnet met de naam *mySubnet*:
+Maak een virtueel netwerk met [az network vnet create](/cli/azure/network/vnet#az-network-vnet-create). In dit voor beeld wordt een standaard virtueel netwerk gemaakt met de naam *myVirtualNetwork* met één subnet met de naam *mySubnet*:
 
 ```azurecli-interactive
 az network vnet create --resource-group myResourceGroup --name myVirtualNetwork --address-prefix 10.0.0.0/16  
 ```
 ### <a name="create-a-subnet"></a>Een subnet maken
-Maak een subnet voor het virtuele netwerk met [AZ Network vnet subnet Create](/cli/azure/network/az-network-vnet-subnet-create). In dit voor beeld maakt u een subnet met de naam *mySubnet* in het virtuele netwerk *myVirtualNetwork* :
+Maak een subnet voor het virtuele netwerk met [AZ Network vnet subnet Create](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-create). In dit voor beeld maakt u een subnet met de naam *mySubnet* in het virtuele netwerk *myVirtualNetwork* :
 
 ```azurecli-interactive
 az network vnet subnet create --resource-group myResourceGroup --vnet-name myVirtualNetwork --name mySubnet --address-prefixes 10.0.0.0/24    
@@ -82,7 +82,7 @@ In dit voor beeld hebben we geen betrekking op het maken van virtuele machines. 
 
 
 ### <a name="disable-private-link-service-network-policies-on-subnet"></a>Particuliere koppeling service-netwerk beleid op subnet uitschakelen 
-De service voor persoonlijke koppelingen vereist een IP-adres van elk gewenst subnet in een virtueel netwerk. Op dit moment ondersteunen we geen netwerk beleid op deze IP-adressen.  Daarom moeten we het netwerk beleid op het subnet uitschakelen. Werk het subnet bij om het netwerk beleid van de privé koppelings service uit te scha kelen met [AZ Network vnet subnet update](/cli/azure/network/az-network-vnet-subnet-update).
+De service voor persoonlijke koppelingen vereist een IP-adres van elk gewenst subnet in een virtueel netwerk. Op dit moment ondersteunen we geen netwerk beleid op deze IP-adressen.  Daarom moeten we het netwerk beleid op het subnet uitschakelen. Werk het subnet bij om het netwerk beleid van de privé koppelings service uit te scha kelen met [AZ Network vnet subnet update](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-update).
 
 ```azurecli-interactive
 az network vnet subnet update --resource-group myResourceGroup --vnet-name myVirtualNetwork --name mySubnet --disable-private-link-service-network-policies true 
@@ -90,7 +90,7 @@ az network vnet subnet update --resource-group myResourceGroup --vnet-name myVir
  
 ## <a name="create-a-private-link-service"></a>Een Private Link-service maken  
  
-Een persoonlijke koppelings service maken met behulp van de front-end-IP-configuratie van Standard Load Balancer met [AZ Network Private-Link-service Create](/cli/azure/network/az-network-private-link-service-create). In dit voor beeld wordt een persoonlijke koppelings service met de naam *myPLS* gemaakt met behulp van Standard Load Balancer met de naam *myLoadBalancer* in de resource groep genaamd *myResourceGroup*. 
+Een persoonlijke koppelings service maken met behulp van de front-end-IP-configuratie van Standard Load Balancer met [AZ Network Private-Link-service Create](/cli/azure/network/private-link-service#az-network-private-link-service-create). In dit voor beeld wordt een persoonlijke koppelings service met de naam *myPLS* gemaakt met behulp van Standard Load Balancer met de naam *myLoadBalancer* in de resource groep genaamd *myResourceGroup*. 
  
 ```azurecli-interactive
 az network private-link-service create \
@@ -108,10 +108,10 @@ In deze fase is uw persoonlijke koppelings service gemaakt en is deze klaar om h
  
 Vervolgens laten we zien hoe u deze service kunt toewijzen aan een persoonlijk eind punt in een ander virtueel netwerk met behulp van Azure CLI. Het voor beeld is beperkt tot het maken van het persoonlijke eind punt en het verbinden met de persoonlijke koppelings service die hierboven is gemaakt met behulp van Azure CLI. Daarnaast kunt u virtuele machines in het virtuele netwerk maken voor het verzenden en ontvangen van verkeer naar het persoonlijke eind punt.        
  
-## <a name="private-endpoints"></a>Privé-eind punten
+## <a name="private-endpoints"></a>Privé-eindpunten
 
 ### <a name="create-the-virtual-network"></a>Het virtuele netwerk maken 
-Maak een virtueel netwerk met [AZ Network vnet Create](/cli/azure/network/az-network-vnet-create). In dit voor beeld wordt een virtueel netwerk gemaakt met de naam *myPEVNet* in de resource groep met de naam *myResourcegroup*: 
+Maak een virtueel netwerk met [AZ Network vnet Create](/cli/azure/network/vnet#az-network-vnet-create). In dit voor beeld wordt een virtueel netwerk gemaakt met de naam *myPEVNet* in de resource groep met de naam *myResourcegroup*: 
 ```azurecli-interactive
 az network vnet create \
 --resource-group myResourceGroup \
@@ -119,7 +119,7 @@ az network vnet create \
 --address-prefix 10.0.0.0/16  
 ```
 ### <a name="create-the-subnet"></a>Het subnet maken 
-Maak een subnet in een virtueel netwerk met [AZ Network vnet subnet Create](/cli/azure/network/az-network-vnet-subnet-create). In dit voor beeld wordt een subnet met de naam *mySubnet* gemaakt in het virtuele netwerk met de naam *myPEVnet* in de resource groep met de naam *myResourcegroup*: 
+Maak een subnet in een virtueel netwerk met [AZ Network vnet subnet Create](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-create). In dit voor beeld wordt een subnet met de naam *mySubnet* gemaakt in het virtuele netwerk met de naam *myPEVnet* in de resource groep met de naam *myResourcegroup*: 
 
 ```azurecli-interactive 
 az network vnet subnet create \
@@ -129,7 +129,7 @@ az network vnet subnet create \
 --address-prefixes 10.0.0.0/24 
 ```   
 ## <a name="disable-private-endpoint-network-policies-on-subnet"></a>Beleid voor privé-eindpunt netwerk op subnet uitschakelen 
-Persoonlijk eind punt kan in elk gewenst subnet binnen een virtueel netwerk worden gemaakt. Op dit moment ondersteunen we geen netwerk beleid op privé-eind punten.  Daarom moeten we het netwerk beleid op het subnet uitschakelen. Werk het subnet bij om beleid voor privé-eindpunt netwerk uit te scha kelen met [AZ Network vnet subnet update](/cli/azure/network/az-network-vnet-subnet-update). 
+Persoonlijk eind punt kan in elk gewenst subnet binnen een virtueel netwerk worden gemaakt. Op dit moment ondersteunen we geen netwerk beleid op privé-eind punten.  Daarom moeten we het netwerk beleid op het subnet uitschakelen. Werk het subnet bij om beleid voor privé-eindpunt netwerk uit te scha kelen met [AZ Network vnet subnet update](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-update). 
 
 ```azurecli-interactive
 az network vnet subnet update \
@@ -156,7 +156,7 @@ U kunt de *privé-verbinding-resource-id* ophalen met `az network private-link-s
  
 ## <a name="show-private-link-service-connections"></a>Verbindingen met de persoonlijke koppelings service weer geven 
  
-Zie verbindings aanvragen op uw privé koppelings service met [AZ Network Private-Link-service show](/cli/azure/network/az-network-private-link-service-show).    
+Zie verbindings aanvragen op uw privé koppelings service met [AZ Network Private-Link-service show](/cli/azure/network/private-link-service#az-network-private-link-service-show).    
 ```azurecli-interactive 
 az network private-link-service show --resource-group myResourceGroup --name myPLS 
 ```

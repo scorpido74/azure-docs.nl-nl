@@ -8,12 +8,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 04/22/2019
 ms.author: cawa
-ms.openlocfilehash: 2b923a381be9d6cdb1a83f582a541c9e17e117a4
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 43e76b9331eb8dbe95265810b9191a10d4caee08
+ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71086634"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71272029"
 ---
 # <a name="get-started-with-storage-explorer"></a>Aan de slag met Storage Explorer
 
@@ -79,7 +79,7 @@ Storage Explorer biedt verschillende manieren om verbinding te maken met opslaga
 ### <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
 > [!NOTE]
-> Om toegang te krijgen tot resources Nadat u zich hebt aangemeld, heeft Storage Explorer zowel beheer (Azure Resource Manager) als gegevenslaag machtigingen nodig. Dit betekent dat u de machtigingen voor Azure Active Directory (Azure AD) nodig hebt, waarmee u toegang krijgt tot uw opslag account, de containers in het account en de gegevens in de containers. Als u alleen machtigingen hebt op de gegevenslaag, kunt u overwegen om [een resource toe te voegen via Azure AD](#add-a-resource-via-azure-ad). Raadpleeg de [hand leiding voor probleem oplossing](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting?tabs=1804#role-based-access-control-permission-issues)voor meer informatie over de specifieke machtigingen die Storage Explorer vereist.
+> Om toegang te krijgen tot resources Nadat u zich hebt aangemeld, heeft Storage Explorer zowel beheer (Azure Resource Manager) als gegevenslaag machtigingen nodig. Dit betekent dat u de machtigingen voor Azure Active Directory (Azure AD) nodig hebt, waarmee u toegang krijgt tot uw opslag account, de containers in het account en de gegevens in de containers. Als u alleen machtigingen hebt op de gegevenslaag, kunt u overwegen om [een resource toe te voegen via Azure AD](#add-a-resource-via-azure-ad). Raadpleeg de [hand leiding voor probleem oplossing](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting#rbac-permissions-issues)voor meer informatie over de specifieke machtigingen die Storage Explorer vereist.
 
 1. In Storage Explorer selecteert u **accounts beheren** om naar het account beheer paneel te gaan.
 

@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/05/2019
+ms.date: 09/23/2019
 ms.author: ryanwi
 ms.reviewer: saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 79f462b8903033784f186032c715cc966dfae7b4
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 76c5214fc26d299c6abb72ed6cd448728903e78f
+ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69622710"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71272547"
 ---
 # <a name="what-is-authentication"></a>Wat is verificatie?
 
@@ -59,6 +59,25 @@ In het bovenstaande voorbeeldscenario kunt u apps classificeren aan de hand van 
 
 * Apps die veilig toegang nodig hebben tot resources
 * Apps die zelf de rol van resource hebben
+
+### <a name="how-each-flow-emits-tokens-and-codes"></a>Hoe elke stroom tokens en codes uitstraalt
+
+Afhankelijk van hoe uw client is gebouwd, kunnen er één (of meerdere) verificatie stromen worden gebruikt die worden ondersteund door het micro soft Identity-platform.  Deze stromen kunnen een aantal tokens (id_tokens, vernieuwings tokens, toegangs tokens) en autorisatie codes produceren, en vereisen verschillende tokens om ze te laten werken. In dit diagram wordt een overzicht proides:
+
+|Stroom | Nodig | id_token | toegangstoken | token vernieuwen | Autorisatie code | 
+|-----|----------|----------|--------------|---------------|--------------------|
+|[Autorisatie code stroom](v2-oauth2-auth-code-flow.md) | | x | x | x | x|  
+|[Impliciete stroom](v2-oauth2-implicit-grant-flow.md) | | x        | x    |      |                    |
+|[Hybride OIDC-stroom](v2-protocols-oidc.md#get-access-tokens)| | x  | |          |            x   |
+|[Aflossingen van token vernieuwen](v2-oauth2-auth-code-flow.md#refresh-the-access-token) | token vernieuwen | x | x | x| |
+|[Namens-stroom](v2-oauth2-on-behalf-of-flow.md) | toegangstoken| x| x| x| |
+|[Toestel code stroom](v2-oauth2-device-code.md) | | x| x| x| |
+|[Clientreferenties](v2-oauth2-client-creds-grant-flow.md) | | | x (alleen app)| | |
+
+**Opmerkingen**:
+
+Tokens die zijn uitgegeven via de impliciete modus, hebben een beperkte lengte omdat ze via de URL worden teruggestuurd naar `response_mode` de `query` browser `fragment`(waarbij of).  Voor sommige browsers geldt een limiet voor de grootte van de URL die in de browser balk kan worden geplaatst en die kan worden uitgevoerd als deze te lang is.  Daarom hebben `groups` `wids` deze tokens geen claims. 
+
 
 Nu u een overzicht van de basis principes hebt, leest u meer over het identiteits-app-model en de API, hoe Provisioning werkt in het micro soft Identity platform en koppelingen naar gedetailleerde informatie over de algemene scenario's die door micro soft Identity platform worden ondersteund.
 

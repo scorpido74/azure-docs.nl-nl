@@ -12,15 +12,15 @@ ms.custom: vs-azure
 ms.workload: azure-vs
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
-ms.date: 06/24/2019
+ms.date: 09/24/2019
 ms.author: phillee
 keywords: visualstudio
-ms.openlocfilehash: b62e7e993ba4b5784e28dd9a36979640e2e37da6
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 4664007bf892b2ae445d6b5174e4f346944e620b
+ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101540"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71272299"
 ---
 # <a name="visual-studio-images-on-azure"></a>Visual Studio-installatie kopieën op Azure
 Het gebruik van Visual Studio in een vooraf geconfigureerde Azure virtual machine (VM) is een snelle en eenvoudige manier om van niets naar een ontwikkel omgeving te gaan. Systeem kopieën met verschillende Visual Studio-configuraties zijn beschikbaar op de [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/compute?filters=virtual-machine-images%3Bmicrosoft%3Bwindows&page=1&subcategories=application-infrastructure).
@@ -30,18 +30,18 @@ Bent u nog niet bekend met Azure? [Maak een gratis Azure-account](https://azure.
 ## <a name="what-configurations-and-versions-are-available"></a>Welke configuraties en versies zijn er beschikbaar?
 Installatie kopieën voor de meest recente primaire versies, Visual Studio 2019, Visual Studio 2017 en Visual Studio 2015, vindt u op de Azure Marketplace.  Voor elke uitgebrachte primaire versie ziet u de oorspronkelijke versie van ' release to Web ' (RTW) en de meest recente bijgewerkte versies.  Elk van deze versies biedt Visual Studio Enter prise en de edities van de Visual Studio-community.  Deze installatie kopieën worden minstens elke maand bijgewerkt met de nieuwste Visual Studio-en Windows-updates.  Hoewel de namen van de afbeeldingen hetzelfde blijven, bevat de beschrijving van de installatie kopie de geïnstalleerde product versie en de datum van de installatie kopie.
 
-| Release versie                                                                                                                                                | Edities              | Productversie   |
+| Release versie                                                                                                                                                | Edities              | Product versie   |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------:|:-----------------:|
-| [Visual Studio 2019: Nieuwste (versie 16,1)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftvisualstudio.visualstudio2019latest?tab=Overview) | Enter prise, Community | Versie 16.1.3    |
-| [Visual Studio 2019: RTW](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftvisualstudio.visualstudio2019?tab=Overview)                         | Enter prise, Community | Versie 16.0.5    |
-| [Visual Studio 2017: Nieuwste (versie 15,9)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftvisualstudio.visualstudio?tab=Overview)           | Enter prise, Community | Versie 15.9.13   |
-| [Visual Studio 2017: RTW](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftvisualstudio.visualstudio?tab=Overview)                             | Enter prise, Community | Versie 15.0.24   |
+| [Visual Studio 2019: Nieuwste (versie 16,2)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftvisualstudio.visualstudio2019latest?tab=Overview) | Enter prise, Community | Versie 16.3.0    |
+| [Visual Studio 2019: RTW](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftvisualstudio.visualstudio2019?tab=Overview)                         | Enter prise, Community | Versie 16.0.8    |
+| [Visual Studio 2017: Nieuwste (versie 15,9)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftvisualstudio.visualstudio?tab=Overview)           | Enter prise, Community | Versie 15.9.16   |
+| [Visual Studio 2017: RTW](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftvisualstudio.visualstudio?tab=Overview)                             | Enter prise, Community | Versie 15.0.25   |
 | [Visual Studio 2015: Nieuwste (update 3)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftvisualstudio.visualstudio?tab=Overview)               | Enter prise, Community | Versie 14.0.25431.01 |
 
 > [!NOTE]
 > In overeenstemming met het micro soft-onderhouds beleid is de oorspronkelijk vrijgegeven (RTW) versie van Visual Studio 2015 verlopen voor onderhoud. Visual Studio 2015 update 3 is de enige resterende versie die wordt aangeboden voor de product lijn van Visual Studio 2015.
 
-Zie voor meer informatie het [Visual Studio](https://www.visualstudio.com/productinfo/vs-servicing-vs)-onderhouds beleid.
+Zie voor meer informatie het [Visual Studio-onderhouds beleid](https://www.visualstudio.com/productinfo/vs-servicing-vs).
 
 ## <a name="what-features-are-installed"></a>Welke functies zijn geïnstalleerd?
 Elke installatie kopie bevat de aanbevolen functieset voor die Visual Studio Edition. Over het algemeen geldt de volgende installatie:
@@ -88,7 +88,7 @@ Visual Studio volgt het model ' uw eigen licentie meenemen ' in Azure. Net als b
 - Meld u aan met een Microsoft-account dat is gekoppeld aan een Visual Studio-abonnement 
 - Ontgrendel Visual Studio met de product code die bij uw eerste aankoop werd geleverd
 
-Zie voor meer informatie [Aanmelden bij Visual Studio](/visualstudio/ide/signing-in-to-visual-studio) en [hoe u Visual Studio](/visualstudio/ide/how-to-unlock-visual-studio)kunt ontgrendelen.
+Zie voor meer informatie [Aanmelden bij Visual Studio](/visualstudio/ide/signing-in-to-visual-studio) en [hoe u Visual Studio kunt ontgrendelen](/visualstudio/ide/how-to-unlock-visual-studio).
 
 ## <a name="how-do-i-save-the-development-vm-for-future-or-team-use"></a>Hoe kan ik de ontwikkelings-VM opslaan voor toekomstig gebruik of voor een team?
 

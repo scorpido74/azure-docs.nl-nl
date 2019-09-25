@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 07/16/2019
+ms.date: 09/26/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: b7eb004dbeba499e6f67f98165b72d7ec8615f1b
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 8e858869d742120138e7997ce21d9e4cca93ed9b
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71065850"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71264366"
 ---
 # <a name="get-started-with-custom-policies-in-azure-active-directory-b2c"></a>Aan de slag met aangepast beleid in Azure Active Directory B2C
 
@@ -25,44 +25,45 @@ ms.locfileid: "71065850"
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Als u er nog geen hebt, moet u [een Azure AD B2C-Tenant maken](tutorial-create-tenant.md) die is gekoppeld aan uw Azure-abonnement.
+- Als u nog geen account hebt, [maakt u een Azure AD B2C-Tenant](tutorial-create-tenant.md) die is gekoppeld aan uw Azure-abonnement.
 - [Registreer uw toepassing](tutorial-register-applications.md) in de Tenant die u hebt gemaakt, zodat deze kan communiceren met Azure AD B2C.
+- Voer de stappen in [instellen registratie in en meld u aan met een Facebook-account](active-directory-b2c-setup-fb-app.md) om een Facebook-toepassing te configureren.
 
 ## <a name="add-signing-and-encryption-keys"></a>Ondertekenings-en versleutelings sleutels toevoegen
 
-1. Meld u als globale beheerder van de Azure AD B2C-tenant aan bij [Azure Portal](https://portal.azure.com/).
-2. Zorg ervoor dat u de map gebruikt die uw Azure AD B2C-Tenant bevat. Selecteer het filter **Directory + abonnement** in het bovenste menu en kies de map die uw Tenant bevat.
-3. Kies **Alle services** linksboven in de Azure Portal, zoek **Azure AD B2C** en selecteer deze.
-4. Selecteer op de pagina overzicht **identiteits ervaring-Framework**.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com)
+1. Gebruik het filter voor **adres lijst en abonnementen** in het bovenste menu om de map te selecteren die uw Azure AD B2C Tenant bevat.
+1. Selecteer in het linkermenu **Azure AD B2C**. U kunt ook **alle services** selecteren en **Azure AD B2C**zoeken en selecteren.
+1. Selecteer op de pagina overzicht **identiteits ervaring-Framework**.
 
 ### <a name="create-the-signing-key"></a>De handtekening sleutel maken
 
 1. Selecteer **beleids sleutels** en selecteer vervolgens **toevoegen**.
-2. Kies`Generate`voor **Opties**.
-3. Voer`TokenSigningKeyContainer`bij **naam**in. Het voor `B2C_1A_` voegsel kan automatisch worden toegevoegd.
-4. Selecteer voor **sleutel type** **RSA**.
-5. Selecteer voor **sleutel gebruik** **hand tekening**.
-6. Klik op **Create**.
+1. Kies`Generate`voor **Opties**.
+1. Voer`TokenSigningKeyContainer`bij **naam**in. Het voor `B2C_1A_` voegsel kan automatisch worden toegevoegd.
+1. Selecteer voor **sleutel type** **RSA**.
+1. Selecteer voor **sleutel gebruik** **hand tekening**.
+1. Selecteer **Maken**.
 
 ### <a name="create-the-encryption-key"></a>De versleutelings sleutel maken
 
 1. Selecteer **beleids sleutels** en selecteer vervolgens **toevoegen**.
-2. Kies`Generate`voor **Opties**.
-3. Voer`TokenEncryptionKeyContainer`bij **naam**in. Het voor `B2C_1A`voegsel _ kan automatisch worden toegevoegd.
-4. Selecteer voor **sleutel type** **RSA**.
-5. Voor **sleutel gebruik**selecteert u **versleuteling**.
-6. Klik op **Create**.
+1. Kies`Generate`voor **Opties**.
+1. Voer`TokenEncryptionKeyContainer`bij **naam**in. Het voor `B2C_1A`voegsel _ kan automatisch worden toegevoegd.
+1. Selecteer voor **sleutel type** **RSA**.
+1. Voor **sleutel gebruik**selecteert u **versleuteling**.
+1. Selecteer **Maken**.
 
 ### <a name="create-the-facebook-key"></a>De Facebook-sleutel maken
 
-Als u al een [Facebook-toepassings geheim](active-directory-b2c-setup-fb-app.md)hebt, voegt u dit toe als een beleids sleutel aan uw Tenant. Als dat niet het geval is, moet u de sleutel met een tijdelijke aanduiding waarde maken zodat uw beleid validatie doorgeeft.
+Voeg het [app-geheim](active-directory-b2c-setup-fb-app.md) van uw Facebook-toepassing toe als een beleids sleutel. U kunt het app-geheim gebruiken van de toepassing die u hebt gemaakt als onderdeel van de vereisten van dit artikel.
 
 1. Selecteer **beleids sleutels** en selecteer vervolgens **toevoegen**.
-2. Kies`Manual`voor **Opties**.
-3. Voer`FacebookSecret`in bij **naam**. Het voor `B2C_1A_` voegsel kan automatisch worden toegevoegd.
-4. Voer in het **geheim**uw Facebook-geheim in vanuit `0` developers.Facebook.com of als tijdelijke aanduiding. Deze waarde is het geheim, niet de toepassings-ID.
-5. Selecteer voor **sleutel gebruik** **hand tekening**.
-6. Klik op **Create**.
+1. Kies`Manual`voor **Opties**.
+1. Voer`FacebookSecret`in bij **naam**. Het voor `B2C_1A_` voegsel kan automatisch worden toegevoegd.
+1. Voer in het **geheim**het *app-geheim* van uw Facebook-toepassing in vanuit developers.Facebook.com. Deze waarde is het geheim, niet de toepassings-ID.
+1. Selecteer voor **sleutel gebruik** **hand tekening**.
+1. Selecteer **Maken**.
 
 ## <a name="register-identity-experience-framework-applications"></a>Identiteits ervaring-Framework toepassingen registreren
 
@@ -78,19 +79,19 @@ Azure AD B2C moet u twee toepassingen registreren die worden gebruikt om gebruik
 1. Voer`IdentityExperienceFramework`in bij **naam**.
 1. Kies voor **toepassings type** **Web-app/API**.
 1. Voer`https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com`bij **aanmeldings-URL**in, waarbij `your-tenant-name` de naam van uw Azure AD B2C Tenant domein. Alle Url's moeten nu gebruikmaken van [b2clogin.com](b2clogin.md).
-1. Klik op **Create**. Nadat de app is gemaakt, kopieert u de toepassings-ID en slaat u deze op voor later gebruik.
+1. Selecteer **Maken**. Nadat de app is gemaakt, kopieert u de toepassings-ID en slaat u deze op voor later gebruik.
 
 ### <a name="register-the-proxyidentityexperienceframework-application"></a>De ProxyIdentityExperienceFramework-toepassing registreren
 
 1. Selecteer in **app-registraties (verouderd)** de optie **nieuwe toepassing registreren**.
-2. Voer`ProxyIdentityExperienceFramework`in bij **naam**.
-3. Kies voor **toepassings type** **systeem eigen**.
-4. `your-tenant-name` Voer`https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com`voor omleidings-URI, waarbij uw Azure AD B2C Tenant.
-5. Klik op **Create**. Nadat de app is gemaakt, kopieert u de toepassings-ID en slaat u deze op voor later gebruik.
-6. Selecteer op de pagina instellingen de optie **vereiste machtigingen**en selecteer vervolgens **toevoegen**.
-7. Kies **een API selecteren**, zoek naar en selecteer **IdentityExperienceFramework**, en klik vervolgens op **selecteren**.
-9. Schakel het selectie vakje naast **toegangs IdentityExperienceFramework**in, klik op **selecteren**en klik vervolgens op **gereed**.
-10. Selecteer **machtigingen verlenen**en Bevestig door **Ja**te selecteren.
+1. Voer`ProxyIdentityExperienceFramework`in bij **naam**.
+1. Kies voor **toepassings type** **systeem eigen**.
+1. `your-tenant-name` Voer`https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com`voor omleidings-URI, waarbij uw Azure AD B2C Tenant.
+1. Selecteer **Maken**. Nadat de app is gemaakt, kopieert u de toepassings-ID en slaat u deze op voor later gebruik.
+1. Selecteer **instellingen**, selecteer de **gewenste machtigingen**en selecteer vervolgens **toevoegen**.
+1. Kies **een API selecteren**, zoek naar en selecteer **IdentityExperienceFramework**, en klik vervolgens op **selecteren**.
+1. Schakel het selectie vakje naast **toegangs IdentityExperienceFramework**in, klik op **selecteren**en klik vervolgens op **gereed**.
+1. Selecteer **machtigingen verlenen**en Bevestig door **Ja**te selecteren.
 
 ## <a name="custom-policy-starter-pack"></a>Aangepast beleids Starter Pack
 
@@ -160,7 +161,6 @@ Wanneer u de bestanden uploadt, voegt Azure het `B2C_1A_` voor voegsel toe aan e
 
 ## <a name="add-facebook-as-an-identity-provider"></a>Facebook toevoegen als een id-provider
 
-1. Voer de stappen in [instellen registratie in en meld u aan met een Facebook-account](active-directory-b2c-setup-fb-app.md) om een Facebook-toepassing te configureren.
 1. Vervang in `SocialAndLocalAccounts/` het **`TrustFrameworkExtensions.xml`** bestand de waarde van met `client_id` de id van de Facebook-toepassing:
 
    ```xml
@@ -172,7 +172,7 @@ Wanneer u de bestanden uploadt, voegt Azure het `B2C_1A_` voor voegsel toe aan e
 
 1. Upload het bestand *TrustFrameworkExtensions. XML* naar uw Tenant.
 1. Onder **aangepast beleid**selecteert u **B2C_1A_signup_signin**.
-1. Selecteer **nu uitvoeren** en selecteer Facebook om u aan te melden met Facebook en het aangepaste beleid te testen. Of roep het beleid rechtstreeks vanuit uw geregistreerde toepassing aan.
+1. Selecteer **nu uitvoeren** en selecteer Facebook om u aan te melden met Facebook en het aangepaste beleid te testen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

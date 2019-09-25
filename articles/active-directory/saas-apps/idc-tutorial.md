@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 09/19/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 642eb15c62c895e85add55b725318b150b51658e
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: df8dfc72dea9289fc13d648b05b59f6d1bd9b3e0
+ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71179965"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71273594"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-idc"></a>Zelfstudie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met IDC
 
@@ -90,7 +90,7 @@ Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
 
 1. Klik op **Extra URL's instellen** en voer de volgende stappen uit als u de toepassing in de met **SP** geïnitieerde modus wilt configureren:
 
-    In het tekstvak **Aanmeldings-URL** typt u een URL: `https://cas.idc.com/saml-welcome/AzureAppDirectory`
+    In het tekstvak **Aanmeldings-URL** typt u een URL: `https://www.idc.com/saml-welcome/<SamlWelcomeCode>`
 
     > [!NOTE]
     > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke id en antwoord-URL. Neem contact op met het [ondersteunings team van IDC-client](mailto:webchanneldev@idc.com) om deze waarden te verkrijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
@@ -139,7 +139,7 @@ Voor het configureren van eenmalige aanmelding op **IDC** -zijde moet u het gedo
 
 ### <a name="create-idc-test-user"></a>IDC-test gebruiker maken
 
-In deze sectie maakt u een gebruiker met de naam Julia Simon in IDC. Werk met het [IDC-ondersteunings team](mailto:webchanneldev@idc.com) om de gebruikers toe te voegen in het IDC-platform. Gebruikers moeten worden gemaakt en worden geactiveerd voordat u eenmalige aanmelding gebruiken.
+Een gebruiker hoeft niet vooraf in IDC te worden gemaakt. De gebruiker wordt automatisch gemaakt wanneer hij eenmalige aanmelding voor de eerste keer gebruikt.
 
 ## <a name="test-sso"></a>SSO testen 
 

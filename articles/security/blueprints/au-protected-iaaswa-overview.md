@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 08/23/2018
 ms.author: meladie
-ms.openlocfilehash: 50e410fc439be7b3a5f4c1e8d4bab5d60c3c4f52
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 5fe9cfe642585c4f5220d79813816e554fdf48ef
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946931"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71259188"
 ---
 # <a name="azure-security-and-compliance-blueprint---iaas-web-application-for-australia-protected"></a>Azure-blauwdruk voor beveiliging en naleving-IaaS-webtoepassing voor Australië beveiligd
 
@@ -65,7 +65,7 @@ Deze oplossing maakt gebruik van de volgende Azure-Services. Meer informatie vin
 - Azure Virtual Network
     - (4) netwerk beveiligings groepen
     - Azure Network Watcher
-- Recovery Services kluis
+- Recovery Services-kluis
 
 Deze blauw druk bevat Azure-Services die niet zijn gecertificeerd voor gebruik in de beveiligde classificatie van het Australische Cyber Security Center (ACSC). Alle services die deel uitmaken van deze referentie architectuur, zijn gecertificeerd door ACSC op het niveau van de DLM (Leveling Limit markers). Micro soft raadt klanten aan de gepubliceerde beveiligings-en controle rapporten te bekijken die betrekking hebben op deze Azure-Services en hun risico beheer Framework te gebruiken om te bepalen of de Azure-service geschikt is voor hun interne erkenning en te gebruiken op het Beveiligde classificatie.
 
@@ -123,7 +123,7 @@ Daarnaast kunt u met de volgende Azure Active Directory-functies de toegang tot 
 - Met [Azure Active Directory privileged Identity Management](../../active-directory/privileged-identity-management/pim-getting-started.md) kunnen klanten het aantal gebruikers dat toegang heeft tot bepaalde informatie minimaliseren. Beheerders kunnen Azure Active Directory Privileged Identity Management gebruiken om bevoegde identiteiten en hun toegang tot bronnen te detecteren, beperken en controleren. Deze functie kan ook worden gebruikt voor het afdwingen van alleen-in-time-beheer toegang op aanvraag als dat nodig is.
 - [Azure Active Directory Identity Protection](../../active-directory/identity-protection/overview.md) detecteert mogelijke beveiligings problemen die&#39;van invloed zijn op een organisatie s-identiteiten, configureert automatische antwoorden op&#39;gedetecteerde verdachte acties die betrekking hebben op de identiteit van een organisatie en onderzoekt verdachte incidenten om deze problemen op te lossen.
 
-**Azure multi-factor Authentication**: Als u identiteiten wilt beveiligen, moet multi-factor Authentication worden geïmplementeerd. [Multi-factor Authentication van Azure](https://azure.microsoft.com/services/multi-factor-authentication/) is een gebruiks vriendelijke, schaal bare en betrouw bare oplossing die een tweede verificatie methode biedt om gebruikers te beschermen. Azure multi-factor Authentication maakt gebruik van de kracht van de Cloud en integreert met on-premises Active Directory en aangepaste toepassingen. Deze beveiliging wordt uitgebreid naar essentiële scenario's met een hoge omvang.
+**Azure multi-factor Authentication**: Als u identiteiten wilt beveiligen, moet multi-factor Authentication worden geïmplementeerd. [Azure multi-factor Authentication](https://azure.microsoft.com/services/multi-factor-authentication/) is een gebruiks vriendelijke, schaal bare en betrouw bare oplossing die een tweede verificatie methode biedt om gebruikers te beschermen. Azure Multi-Factor Authentication maakt gebruik van de kracht van de Cloud en integreert met on-premises Active Directory en aangepaste toepassingen. Deze beveiliging wordt uitgebreid naar essentiële scenario's met een hoge omvang.
 
 ### <a name="security"></a>Beveiliging
 **Beheer van geheimen**: De oplossing maakt gebruik van [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) voor het beheer van sleutels en geheimen. Met Azure Sleutelkluis kunt u de cryptografische sleutels en geheimen beveiligen die door cloudtoepassingen en -services worden gebruikt. Met de volgende Azure Key Vault mogelijkheden kunnen klanten dergelijke gegevens beveiligen en benaderen:
@@ -167,10 +167,10 @@ Daarnaast gebruikt deze referentie architectuur de evaluatie van [beveiligings p
 
 **Cloudwitness**: [Cloudwitness](https://docs.microsoft.com/windows-server/failover-clustering/whats-new-in-failover-clustering#BKMK_CloudWitness) is een type quorum-witness voor failoverclusters in Windows Server 2016 die Azure als arbitrage punt gebruikt. De Cloudwitness, zoals elke andere quorumwitness, haalt een stem op en kan deel nemen aan de quorum berekeningen, maar maakt gebruik van de standaard openbaar beschik bare Azure-Blob Storage. Dit elimineert de extra onderhouds overhead van virtuele machines die worden gehost in een open bare Cloud.
 
-### <a name="logging-and-auditing"></a>Logboek registratie en controle
+### <a name="logging-and-auditing"></a>Logboekregistratie en bewaking
 Azure-Services registreren systeem-en gebruikers activiteiten uitvoerig, evenals systeem status:
 - **Activiteiten logboeken**: [Activiteiten logboeken](../../azure-monitor/platform/activity-logs-overview.md) bieden inzicht in bewerkingen die worden uitgevoerd op resources in een abonnement. Activiteiten logboeken kunnen helpen bij het bepalen van de initiator, het tijdstip van de gebeurtenis en de status van een bewerking.
-- **Diagnostische logboeken**: [Diagnostische logboeken](../../azure-monitor/platform/diagnostic-logs-overview.md) bevatten alle logboeken die elke resource heeft verzonden. Deze logboeken bevatten Windows-gebeurtenis systeem logboeken, Azure Storage logboeken, Key Vault controle logboeken en Application Gateway toegang en firewall Logboeken. Alle Diagnostische logboeken schrijven naar een gecentraliseerd en versleuteld Azure Storage-account voor archivering. De retentie kan door de gebruiker worden geconfigureerd, tot 730 dagen, om te voldoen aan de specifieke vereisten voor het bewaren van een organisatie.
+- **Diagnostische logboeken**: [Diagnostische logboeken](../../azure-monitor/platform/resource-logs-overview.md) bevatten alle logboeken die elke resource heeft verzonden. Deze logboeken bevatten Windows-gebeurtenis systeem logboeken, Azure Storage logboeken, Key Vault controle logboeken en Application Gateway toegang en firewall Logboeken. Alle Diagnostische logboeken schrijven naar een gecentraliseerd en versleuteld Azure Storage-account voor archivering. De retentie kan door de gebruiker worden geconfigureerd, tot 730 dagen, om te voldoen aan de specifieke vereisten voor het bewaren van een organisatie.
 
 **Azure monitor logboeken**: Deze logboeken worden samengevoegd in [Azure monitor logboeken](https://azure.microsoft.com/services/log-analytics/) voor verwerking, opslag en dashboard rapportage. Zodra de gegevens zijn verzameld, worden ze georganiseerd in aparte tabellen voor elk gegevenstype, zodat alle gegevens samen kunnen worden geanalyseerd, ongeacht de oorspronkelijke bron. Bovendien kan Azure Security Center worden geïntegreerd met Azure Monitor-logboeken, zodat klanten Kusto-query's kunnen gebruiken om toegang te krijgen tot de gegevens van de beveiligings gebeurtenis en deze te combi neren met gegevens uit andere services.
 

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 09/11/2019
 ms.author: raynew
-ms.openlocfilehash: 47914a635afe754cb4205a1e089622a69b706b51
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: cb46acf3f54b5955ba8542adf73b7ca896f20c28
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910446"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266414"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>Ondersteunings matrix voor nood herstel van virtuele VMware-machines en fysieke servers naar Azure
 
@@ -117,7 +117,7 @@ SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4) | [9.24][9.24 UR] | SP1 3.1
 
 **Onderdeel** | **Ondersteund**
 --- | ---
-Bestands systemen | ext3, ext4, XFS
+Bestandssystemen | ext3, ext4, XFS
 Volume manager | -LVM wordt ondersteund.<br/> -/boot op LVM wordt ondersteund door [Update pakket 31](https://support.microsoft.com/help/4478871/) (versie 9,20 van de Mobility-service). Het wordt niet ondersteund in eerdere versies van de Mobility-service.<br/> -Meerdere besturingssysteem schijven worden niet ondersteund.
 Geparavirtualiseerde-opslag apparaten | Apparaten die zijn geëxporteerd door geparavirtualiseerde stuurprogramma's worden niet ondersteund.
 Meerdere wacht rijen voor blok-i/o-apparaten | Wordt niet ondersteund.
@@ -156,7 +156,7 @@ Gast/Server netwerk meerdere Nic's | Ja.
 
 **Onderdeel** | **Ondersteund**
 --- | ---
-Azure ExpressRoute | Ja
+ExpressRoute van Azure | Ja
 ILB | Ja
 ELB | Ja
 Azure Traffic Manager | Ja
@@ -193,6 +193,7 @@ Hot-of-Remove-schijf voor gast/server | Nee
 Gast/server-schijf uitsluiten | Ja
 Meerdere paden gast/server (MPIO) | Nee
 GPT/server-GUID-partities | Er worden vijf partities ondersteund van [Update pakket 37](https://support.microsoft.com/help/4508614/) (versie 9,25 van de Mobility-service). Eerder werden er vier ondersteund.
+Referenties | Flexibel bestands systeem wordt ondersteund met Mobility Service versie 9,23 of hoger
 EFI/UEFI-opstart procedure voor gast/server | -Wordt ondersteund wanneer u Mobility Service versie 9,13 of hoger uitvoert.<br/> -Wordt ondersteund bij het migreren van virtuele VMware-machines of fysieke servers met Windows Server 2012 of hoger naar Azure.<br/> -U kunt Vm's alleen repliceren voor migratie. Failback naar on-premises wordt niet ondersteund.<br/> -Alleen NTFS wordt ondersteund <br/> -Secure UEFI-opstart type wordt niet ondersteund. <br/> -De sector grootte van de schijf moet 512 bytes per fysieke sector zijn.
 
 ## <a name="replication-channels"></a>Replicatie kanalen

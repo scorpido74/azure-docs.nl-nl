@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/27/2017
 ms.author: mikeray
-ms.openlocfilehash: 175ea1c0c25a0c6dd41c68ea0a340cc1b18cc8b0
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 1d0bdfbbad7e811ac8f1eeffb1991cc5430483a6
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100589"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71262896"
 ---
 # <a name="high-availability-and-disaster-recovery-for-sql-server-in-azure-virtual-machines"></a>Maximale beschikbaarheid en herstel na noodgeval voor SQL Server in SQL Server Virtual Machine
 
@@ -78,7 +78,11 @@ U kunt een oplossing voor herstel na nood geval hebben voor uw SQL Server-data b
 Azure-Vm's,-opslag en-netwerken hebben verschillende operationele kenmerken dan een on-premises, niet-gevirtualiseerde IT-infra structuur. Een geslaagde implementatie van een HADR SQL Server oplossing in azure vereist dat u deze verschillen begrijpt en uw oplossing ontwerpt om deze te kunnen ondersteunen.
 
 ### <a name="high-availability-nodes-in-an-availability-set"></a>Knoop punten met hoge Beschik baarheid in een beschikbaarheidsset
-Met beschikbaarheids sets in azure kunt u de Maxi maal beschik bare knoop punten in afzonderlijke fout domeinen (Fd's) en update domeinen (UDs) plaatsen. Azure-Vm's die in dezelfde beschikbaarheidsset moeten worden geplaatst, moeten worden geïmplementeerd in dezelfde Cloud service. Alleen knoop punten in dezelfde Cloud service kunnen deel nemen aan dezelfde beschikbaarheidsset. Zie voor meer informatie [De beschikbaarheid van virtuele machines beheren](../manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Met beschikbaarheids sets in azure kunt u de Maxi maal beschik bare knoop punten in afzonderlijke fout domeinen (Fd's) en update domeinen (UDs) plaatsen. Aan elke virtuele machine in uw beschikbaarheidsset wordt een update domein en een fout domein toegewezen door het onderliggende Azure-platform. Deze configuratie binnen een Data Center zorgt ervoor dat tijdens een geplande of niet-geplande onderhouds gebeurtenis ten minste één virtuele machine beschikbaar is en voldoet aan de 99,95% Azure SLA. Als u de instelling voor hoge Beschik baarheid wilt configureren, plaatst u alle deelnemende SQL-Virtual Machines in dezelfde beschikbaarheidsset om te voor komen dat toepassingen of gegevens verloren gaan tijdens een onderhouds gebeurtenis. Alleen knoop punten in dezelfde Cloud service kunnen deel nemen aan dezelfde beschikbaarheidsset. Zie voor meer informatie [De beschikbaarheid van virtuele machines beheren](../manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+
+### <a name="high-availability-nodes-in-an-availability-zone"></a>Knoop punten met hoge Beschik baarheid in een beschikbaarheids zone
+Beschikbaarheidszones zijn unieke fysieke locaties binnen een Azure-regio. Elke zone bestaat uit een of meer datacenters die zijn uitgerust met onafhankelijke voeding, koeling en netwerken. De fysieke schei ding van Beschikbaarheidszones binnen een regio beveiligt toepassingen en gegevens van datacenter fouten door ervoor te zorgen dat er ten minste één virtuele machine beschikbaar is en voldoet aan 99,99% Azure SLA. Als u maximale Beschik baarheid wilt configureren, plaatst u deelnemende SQL Virtual Machines verspreid over de beschik bare Beschikbaarheidszones in de regio. Er zijn extra kosten voor de gegevens overdracht van VM-naar-VM-zone met een andere Beschik baarheid. Zie [beschikbaarheids zones](/azure/availability-zones/az-overview)voor meer informatie. 
+
 
 ### <a name="failover-cluster-behavior-in-azure-networking"></a>Gedrag van failover-clusters in azure-netwerken
 De niet-RFC-compatibele DHCP-service in azure kan ertoe leiden dat het maken van bepaalde failover-cluster configuraties mislukt, omdat er een dubbel IP-adres aan de cluster naam wordt toegewezen, zoals hetzelfde IP-adres als een van de cluster knooppunten. Dit is een probleem bij het implementeren van beschikbaarheids groepen, die afhankelijk zijn van de functie Windows-failovercluster.

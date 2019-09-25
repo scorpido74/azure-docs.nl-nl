@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 04/15/2019
-ms.openlocfilehash: b3bd9b800da4f096639d02c78b718216441621a9
-ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
+ms.openlocfilehash: 5eb05df7ed97839ef80798a752565234d180f0e2
+ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70803981"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71268824"
 ---
 # <a name="copy-data-to-azure-data-explorer-using-azure-data-factory"></a>Gegevens kopiëren naar Azure Data Explorer met behulp van Azure Data Factory 
 
@@ -96,6 +96,9 @@ Er zijn twee manieren om gegevens in azure Data Explorer te laden met behulp van
     * Geef de waarde voor de **geheime toegangs sleutel** op.
     * Selecteer **verbinding testen** om de gekoppelde service verbinding te testen die u hebt gemaakt.
     * Selecteer **Finish**.
+    
+    > [!NOTE]
+    > In Amazon S3 selecteert u uw Amazon-gebruikers naam in de navigatie balk en selecteert u vervolgens **mijn beveiligings referenties** om uw **toegangs sleutel**te vinden. 
 
 1. Op de pagina **brongegevens archief** ziet u de nieuwe AmazonS31-verbinding. Selecteer **Volgende**.
 

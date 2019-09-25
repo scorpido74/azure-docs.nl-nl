@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: mbaldwin
-ms.openlocfilehash: a2749ca35e6137d42a09b79da9315c8f7b242c31
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 1ebf4feb0687d9580bba29cd8213030e542a06da
+ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71000800"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71268834"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Ontwikkelaars handleiding Azure Key Vault
 
@@ -29,26 +29,6 @@ Zie [Wat is Key Vault](key-vault-overview.md)voor meer algemene informatie over 
 ## <a name="public-previews"></a>Open bare voor beelden
 
 Er wordt regel matig een open bare preview van een nieuwe Key Vault-functie uitgebracht. Probeer deze uit en laat ons weten wat u ervan vindt azurekeyvault@microsoft.comvia het e-mail adres van feedback.
-
-### <a name="storage-account-keys---july-10-2017"></a>Sleutels van het opslag account-10 juli 2017
-
->[!NOTE]
->Voor deze update van Azure Key Vault wordt alleen de functie voor de sleutel van het **opslag account** in de preview-versie weer gegeven.
-
-Dit voor beeld bevat onze nieuwe functie voor het beheren van opslag accounts, die beschikbaar is via deze interfaces. [.Net/C#](/dotnet/api/microsoft.azure.keyvault/), [rest](/rest/api/keyvault/) en [Power shell](/powershell/module/az.keyvault/?view=azps-1.2.0#key_vault). 
-
-Zie [Azure Key Vault-overzicht van opslag accounts](key-vault-ovw-storage-keys.md)voor meer informatie over de nieuwe functie voor opslag accounts.
-
-## <a name="videos"></a>Video's
-
-In deze video ziet u hoe u uw eigen sleutel kluis maakt en hoe u deze kunt gebruiken in de voorbeeld toepassing ' Hello Key Vault '.
-
-- [Key Vault ontwikkel aars-Snelstartgids](https://channel9.msdn.com/Blogs/Azure/Azure-Key-Vault-Developer-Quick-Start/player)
-
-Bronnen die in de bovenstaande video worden vermeld:
-
-- [Azure PowerShell](https://go.microsoft.com/fwlink/p/?linkid=320376&clcid=0x409)
-- [Voorbeeld code Azure Key Vault](https://go.microsoft.com/fwlink/?LinkId=521527&clcid=0x409)
 
 ## <a name="creating-and-managing-key-vaults"></a>Sleutel kluizen maken en beheren
 
@@ -148,7 +128,7 @@ Deze artikelen zijn over andere scenario's en services die gebruikmaken van of w
 - In het [overzicht van Key Vault Storage-account sleutels](key-vault-ovw-storage-keys.md) worden de sleutels Key Vault Integration Azure Storage accounts beschreven.
 - [Key Vault Security-wereld](key-vault-ovw-security-worlds.md) beschrijft de relaties tussen regio's en beveiligings gebieden.
 
-## <a name="social"></a>Sociaal netwerken
+## <a name="social"></a>Sociaal
 
 - [Key Vault blog](https://aka.ms/kvblog)
 - [Key Vault forum](https://aka.ms/kvforum)

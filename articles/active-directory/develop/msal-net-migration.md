@@ -17,20 +17,28 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d4de1fa903120fa6adc50d34428d8c3e2a28cf23
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 9a132834952d2654f400217bd6eed1a3745efbf9
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68835018"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71264278"
 ---
 # <a name="migrating-applications-to-msalnet"></a>Toepassingen migreren naar MSAL.NET
 
-Zowel micro soft Authentication Library voor .NET (MSAL.NET) als Azure AD-verificatie bibliotheek voor .NET (ADAL.NET) worden gebruikt voor het verifiëren van Azure AD-entiteiten en het aanvragen van tokens van Azure AD. Tot nu toe hebben de meeste ontwikkel aars met Azure AD voor ontwikkel aars platform (v 1.0) gewerkt voor het verifiëren van Azure AD-identiteiten (werk-en school accounts) door tokens aan te vragen met behulp van Azure AD Authentication Library (ADAL). Nu kunt u met MSAL.NET een uitgebreidere set micro soft-identiteiten (Azure AD-identiteiten en micro soft-accounts en sociale en lokale accounts via Azure AD B2C) verifiëren via het micro soft Identity platform-eind punt. 
+Zowel micro soft Authentication Library voor .NET (MSAL.NET) als Azure AD-verificatie bibliotheek voor .NET (ADAL.NET) worden gebruikt voor het verifiëren van Azure AD-entiteiten en het aanvragen van tokens van Azure AD. Tot nu toe hebben de meeste ontwikkel aars met Azure AD voor ontwikkel aars platform (v 1.0) gewerkt voor het verifiëren van Azure AD-identiteiten (werk-en school accounts) door tokens aan te vragen met behulp van Azure AD Authentication Library (ADAL). MSAL gebruiken:
 
-In dit artikel wordt beschreven hoe u kunt kiezen tussen de micro soft Authentication Library voor .NET (MSAL.NET) en de Azure AD-verificatie bibliotheek voor .NET (ADAL.NET) en vergelijkt u de twee bibliotheken.  
+- u kunt een bredere set met micro soft-identiteiten (Azure AD-identiteiten en micro soft-accounts en sociale en lokale accounts via Azure AD B2C) verifiëren, zoals het micro soft Identity platform-eind punt gebruikt.
+- uw gebruikers krijgen de beste ervaring voor eenmalige aanmelding.
+- uw toepassing kan stapsgewijze toestemming bieden en het ondersteunen van voorwaardelijke toegang is eenvoudiger
+- u profiteert van de innovatie.
+
+**MSAL.net is nu de aanbevolen verificatie bibliotheek voor gebruik met het micro soft Identity-platform**. Er worden geen nieuwe functies geïmplementeerd op ADAL.NET. De inspanningen zijn gericht op het verbeteren van MSAL.
+
+In dit artikel worden de verschillen beschreven tussen de micro soft Authentication Library voor .NET (MSAL.NET) en Azure AD Authentication Library voor .NET (ADAL.NET) en kunt u migreren naar MSAL.  
 
 ## <a name="differences-between-adal-and-msal-apps"></a>Verschillen tussen ADAL-en MSAL-apps
+
 In de meeste gevallen wilt u MSAL.NET en het micro soft Identity platform-eind punt gebruiken. Dit is de nieuwste generatie micro soft-verificatie bibliotheken. Met MSAL.NET kunt u tokens verkrijgen voor gebruikers die zich aanmelden bij uw toepassing met Azure AD (werk-en school accounts), micro soft (persoonlijk) accounts (MSA) of Azure AD B2C. 
 
 Als u al bekend bent met het Azure AD voor ontwikkel aars (v 1.0)-eind punt (en ADAL.NET), wilt u wellicht lezen [wat er anders is dan het micro soft Identity platform (v 2.0)-eind punt?](active-directory-v2-compare.md).
@@ -47,7 +55,7 @@ Als u MSAL.net wilt gebruiken, moet u het NuGet-pakket [micro soft. Identity. cl
 
 ### <a name="scopes-not-resources"></a>Scopes die geen resources zijn
 
-ADAL.NET schaft tokens voor *bronnen*aan, maar MSAL.net verwerft tokensvoor scopes. Voor een aantal MSAL.NET AcquireToken-onderdrukkingen is een para meter met de naam`IEnumerable<string> scopes`scopes () vereist. Deze para meter is een eenvoudige lijst met teken reeksen die de gewenste machtigingen en benodigde bronnen declareren. Bekende bereiken zijn de [bereiken van de Microsoft Graph](/graph/permissions-reference).
+ADAL.NET schaft tokens voor *bronnen*aan, maar MSAL.net verwerft tokens voor *scopes*. Voor een aantal MSAL.NET AcquireToken-onderdrukkingen is een para meter met de naam`IEnumerable<string> scopes`scopes () vereist. Deze para meter is een eenvoudige lijst met teken reeksen die de gewenste machtigingen en benodigde bronnen declareren. Bekende bereiken zijn de [bereiken van de Microsoft Graph](/graph/permissions-reference).
 
 Het is ook mogelijk in MSAL.NET om toegang te krijgen tot v 1.0-resources. Zie de details in [bereiken voor een v 1.0-toepassing](#scopes-for-a-web-api-accepting-v10-tokens). 
 
@@ -206,7 +214,7 @@ var scopes = new [] {  ResourceId+"/.default"};
 
 ### <a name="scopes-to-request-in-the-case-of-client-credential-flow--daemon-app"></a>Bereiken die moeten worden aangevraagd in het geval van een client referentie stroom/daemon-app
 
-In het geval van een client referentie stroom is `/.default`het bereik dat moet worden door gegeven ook. Dit geeft aan Azure AD: ' alle machtigingen op app-niveau die de beheerder heeft ingestemd in de registratie van de toepassing.
+In het geval van een client referentie stroom is `/.default`het bereik dat moet worden door gegeven ook. Met deze scope krijgt u toegang tot Azure AD: ' alle machtigingen op app-niveau die de beheerder heeft ingestemd in de registratie van de toepassing.
 
 ## <a name="adal-to-msal-migration"></a>Migratie van ADAL naar MSAL
 
@@ -214,9 +222,9 @@ In ADAL.NET v2. X werden de vernieuwings tokens beschikbaar gemaakt, zodat u opl
 * Langlopende services die acties uitvoeren, zoals het vernieuwen van Dash boards namens de gebruikers, terwijl de gebruikers niet meer zijn verbonden. 
 * Webfarm-scenario's voor het inschakelen van de-client om de RT naar de webservice te brengen (caching wordt uitgevoerd aan client zijde, versleutelde cookie en niet aan server zijde)
 
-Dit is niet het geval bij MSAL.NET, maar als we het gebruik van vernieuwings tokens op deze manier niet meer gebruiken, wordt om veiligheids redenen niet meer aanbevolen. Dit kan moeilijk worden gemigreerd naar MSAL 3. x omdat de API geen manier biedt om eerder verkregen vernieuwings tokens door te geven. 
+MSAL.NET maakt geen vernieuwings tokens beschikbaar om veiligheids redenen: MSAL zorgt voor het vernieuwen van tokens voor u. 
 
-Gelukkig heeft MSAL.NET nu een API waarmee u uw vorige vernieuwings tokens kunt migreren naar de`IConfidentialClientApplication` 
+Gelukkig heeft MSAL.NET nu een API waarmee u uw vorige vernieuwings tokens (verkregen met ADAL) kunt migreren naar `IConfidentialClientApplication`:
 
 ```CSharp
 /// <summary>

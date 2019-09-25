@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 05/20/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: dbbe5a667b8d467b416e4a4a571d8d3599ec45b6
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: a8cffe83ec0f2cdfd2e71accfa55966e5dedcd89
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70051816"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71259143"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Ondersteunde metrische gegevens met Azure Monitor
 
@@ -146,9 +146,9 @@ Azure Monitor biedt verschillende manieren om te communiceren met metrische gege
 |---|---|---|---|---|---|
 |connectedclients|Verbonden clients|Count|Maximum||ShardId|
 |totalcommandsprocessed|Totaal aantal bewerkingen|Count|Totaal||ShardId|
-|cachehits|Cachetreffers|Count|Totaal||ShardId|
-|cachemisses|Cachemissers|Count|Totaal||ShardId|
-|getcommands|Opgehaalde items|Count|Totaal||ShardId|
+|cachehits|Cache treffers|Count|Totaal||ShardId|
+|cachemisses|Cache missers|Count|Totaal||ShardId|
+|getcommands|Methode|Count|Totaal||ShardId|
 |setcommands|Sets|Count|Totaal||ShardId|
 |operationsPerSecond|Bewerkingen per seconde|Count|Maximum||ShardId|
 |evictedkeys|Verwijderde sleutels|Count|Totaal||ShardId|
@@ -157,9 +157,9 @@ Azure Monitor biedt verschillende manieren om te communiceren met metrische gege
 |usedmemory|Gebruikt geheugen|Bytes|Maximum||ShardId|
 |usedmemorypercentage|Percentage gebruikt geheugen|Percent|Maximum||ShardId|
 |usedmemoryRss|Gebruikte geheugen-RSS|Bytes|Maximum||ShardId|
-|serverLoad|Serverbelasting|Percent|Maximum||ShardId|
+|serverLoad|Server belasting|Percent|Maximum||ShardId|
 |cacheWrite|Cache schrijven|BytesPerSecond|Maximum||ShardId|
-|cacheRead|Gelezen uit cache|BytesPerSecond|Maximum||ShardId|
+|cacheRead|Lees bewerking in cache|BytesPerSecond|Maximum||ShardId|
 |percentProcessorTime|CPU|Percent|Maximum||ShardId|
 |cacheLatency|Cache latentie micro seconden (preview-versie)|Count|Average||ShardId, SampleType|
 |fouten|Fouten|Count|Maximum||ShardId, error type|
@@ -361,19 +361,19 @@ Azure Monitor biedt verschillende manieren om te communiceren met metrische gege
 |DataIn|Inkomende gegevens|Bytes|Totaal|Grootte van binnenkomende gegevens in bytes.|ApiName, OperationName, Region|
 |DataOut|Uitgaande gegevens|Bytes|Totaal|Grootte van uitgaande gegevens in bytes.|ApiName, OperationName, Region|
 |Latentie|Latentie|MilliSeconds|Average|Latentie in milliseconden.|ApiName, OperationName, Region|
-|CharactersTranslated|Tekens vertaald|Count|Totaal|Totaal aantal tekens in binnenkomende-tekst aanvraag.|ApiName, OperationName, Region|
+|CharactersTranslated|Geconverteerde tekens|Count|Totaal|Totaal aantal tekens in binnenkomende-tekst aanvraag.|ApiName, OperationName, Region|
 |CharactersTrained|Getrainde tekens|Count|Totaal|Totaal aantal getrainde tekens.|ApiName, OperationName, Region|
-|SpeechSessionDuration|Duur van de spraaksessie|Seconden|Totaal|Totale duur van de spraak sessie in seconden.|ApiName, OperationName, Region|
-|TotalTransactions|Totaal van transacties|Count|Totaal|Totaal aantal trans acties.|Er zijn geen dimensies|
-|TotalTokenCalls|Totaal aantal tokenaanroepen|Count|Totaal|Totaal aantal token aanroepen.|ApiName, OperationName, Region|
+|SpeechSessionDuration|Spraak sessie duur|Seconden|Totaal|Totale duur van de spraak sessie in seconden.|ApiName, OperationName, Region|
+|TotalTransactions|Totaal aantal trans acties|Count|Totaal|Totaal aantal trans acties.|Er zijn geen dimensies|
+|TotalTokenCalls|Totaal aantal token aanroepen|Count|Totaal|Totaal aantal token aanroepen.|ApiName, OperationName, Region|
 
 ## <a name="microsoftcomputevirtualmachines"></a>Microsoft.Compute/virtualMachines
 
 |Gegevens|De naam van de metrische gegevens weergeven|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
 |Percentage CPU|Percentage CPU|Procent|Gemiddeld|Het percentage toegewezen berekeningseenheden dat momenteel door de virtuele machine(s) wordt gebruikt|Er zijn geen dimensies|
-|Netwerk in|Netwerk inkomend - factureerbaar|Bytes|Totaal|Het aantal factureer bare bytes dat is ontvangen op alle netwerk interfaces door de virtuele machine (s) (binnenkomend verkeer)|Er zijn geen dimensies|
-|Netwerk uit|Netwerk uitgaand - factureerbaar|Bytes|Totaal|Het aantal factureer bare bytes op alle netwerk interfaces door de virtuele machine (s) (uitgaand verkeer)|Er zijn geen dimensies|
+|Netwerk in|In factureer bare netwerk|Bytes|Totaal|Het aantal factureer bare bytes dat is ontvangen op alle netwerk interfaces door de virtuele machine (s) (binnenkomend verkeer)|Er zijn geen dimensies|
+|Netwerk uit|Onfactureerbaar netwerk|Bytes|Totaal|Het aantal factureer bare bytes op alle netwerk interfaces door de virtuele machine (s) (uitgaand verkeer)|Er zijn geen dimensies|
 |Gelezen bytes op de schijf|Gelezen bytes op de schijf|Bytes|Totaal|Gelezen bytes van de schijf tijdens de controle periode|Er zijn geen dimensies|
 |Geschreven bytes op de schijf|Geschreven bytes op de schijf|Bytes|Totaal|Naar schijf geschreven bytes tijdens de controle periode|Er zijn geen dimensies|
 |Lees bewerkingen op de schijf per seconde|Lees bewerkingen op de schijf per seconde|CountPerSecond|Average|Gelezen IOP's op de schijf|Er zijn geen dimensies|
@@ -416,8 +416,8 @@ Azure Monitor biedt verschillende manieren om te communiceren met metrische gege
 |Gegevens|De naam van de metrische gegevens weergeven|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
 |Percentage CPU|Percentage CPU|Procent|Gemiddeld|Het percentage toegewezen berekeningseenheden dat momenteel door de virtuele machine(s) wordt gebruikt|VMName|
-|Netwerk in|Netwerk inkomend - factureerbaar|Bytes|Totaal|Het aantal factureer bare bytes dat is ontvangen op alle netwerk interfaces door de virtuele machine (s) (binnenkomend verkeer)|VMName|
-|Netwerk uit|Netwerk uitgaand - factureerbaar|Bytes|Totaal|Het aantal factureer bare bytes op alle netwerk interfaces door de virtuele machine (s) (uitgaand verkeer)|VMName|
+|Netwerk in|In factureer bare netwerk|Bytes|Totaal|Het aantal factureer bare bytes dat is ontvangen op alle netwerk interfaces door de virtuele machine (s) (binnenkomend verkeer)|VMName|
+|Netwerk uit|Onfactureerbaar netwerk|Bytes|Totaal|Het aantal factureer bare bytes op alle netwerk interfaces door de virtuele machine (s) (uitgaand verkeer)|VMName|
 |Gelezen bytes op de schijf|Gelezen bytes op de schijf|Bytes|Totaal|Gelezen bytes van de schijf tijdens de controle periode|VMName|
 |Geschreven bytes op de schijf|Geschreven bytes op de schijf|Bytes|Totaal|Naar schijf geschreven bytes tijdens de controle periode|VMName|
 |Lees bewerkingen op de schijf per seconde|Lees bewerkingen op de schijf per seconde|CountPerSecond|Average|Gelezen IOP's op de schijf|VMName|
@@ -589,7 +589,7 @@ Azure Monitor biedt verschillende manieren om te communiceren met metrische gege
 |memory_percent|Geheugen percentage|Percent|Average|Geheugen percentage|Er zijn geen dimensies|
 |io_consumption_percent|IO-percentage|Percent|Average|IO-percentage|Er zijn geen dimensies|
 |storage_percent|Opslag percentage|Percent|Average|Opslag percentage|Er zijn geen dimensies|
-|storage_used|Opslag gebruikt|Bytes|Average|Opslag gebruikt|Er zijn geen dimensies|
+|storage_used|Gebruikte opslag|Bytes|Average|Gebruikte opslag|Er zijn geen dimensies|
 |storage_limit|Opslag limiet|Bytes|Average|Opslag limiet|Er zijn geen dimensies|
 |serverlog_storage_percent|Percentage server logboek opslag|Percent|Average|Percentage server logboek opslag|Er zijn geen dimensies|
 |serverlog_storage_usage|Gebruikte server logboek opslag|Bytes|Average|Gebruikte server logboek opslag|Er zijn geen dimensies|
@@ -609,7 +609,7 @@ Azure Monitor biedt verschillende manieren om te communiceren met metrische gege
 |memory_percent|Geheugen percentage|Percent|Average|Geheugen percentage|Er zijn geen dimensies|
 |io_consumption_percent|IO-percentage|Percent|Average|IO-percentage|Er zijn geen dimensies|
 |storage_percent|Opslag percentage|Percent|Average|Opslag percentage|Er zijn geen dimensies|
-|storage_used|Opslag gebruikt|Bytes|Average|Opslag gebruikt|Er zijn geen dimensies|
+|storage_used|Gebruikte opslag|Bytes|Average|Gebruikte opslag|Er zijn geen dimensies|
 |storage_limit|Opslag limiet|Bytes|Average|Opslag limiet|Er zijn geen dimensies|
 |serverlog_storage_percent|Percentage server logboek opslag|Percent|Average|Percentage server logboek opslag|Er zijn geen dimensies|
 |serverlog_storage_usage|Gebruikte server logboek opslag|Bytes|Average|Gebruikte server logboek opslag|Er zijn geen dimensies|
@@ -629,7 +629,7 @@ Azure Monitor biedt verschillende manieren om te communiceren met metrische gege
 |memory_percent|Geheugen percentage|Percent|Average|Geheugen percentage|Er zijn geen dimensies|
 |io_consumption_percent|IO-percentage|Percent|Average|IO-percentage|Er zijn geen dimensies|
 |storage_percent|Opslag percentage|Percent|Average|Opslag percentage|Er zijn geen dimensies|
-|storage_used|Opslag gebruikt|Bytes|Average|Opslag gebruikt|Er zijn geen dimensies|
+|storage_used|Gebruikte opslag|Bytes|Average|Gebruikte opslag|Er zijn geen dimensies|
 |storage_limit|Opslag limiet|Bytes|Average|Opslag limiet|Er zijn geen dimensies|
 |serverlog_storage_percent|Percentage server logboek opslag|Percent|Average|Percentage server logboek opslag|Er zijn geen dimensies|
 |serverlog_storage_usage|Gebruikte server logboek opslag|Bytes|Average|Gebruikte server logboek opslag|Er zijn geen dimensies|
@@ -650,7 +650,7 @@ Azure Monitor biedt verschillende manieren om te communiceren met metrische gege
 |memory_percent|Geheugen percentage|Percent|Average|Geheugen percentage|Er zijn geen dimensies|
 |IOPS|IOPS|Count|Average|I/o-bewerkingen per seconde|Er zijn geen dimensies|
 |storage_percent|Opslag percentage|Percent|Average|Opslag percentage|Er zijn geen dimensies|
-|storage_used|Opslag gebruikt|Bytes|Average|Opslag gebruikt|Er zijn geen dimensies|
+|storage_used|Gebruikte opslag|Bytes|Average|Gebruikte opslag|Er zijn geen dimensies|
 |active_connections|Actieve verbindingen|Count|Average|Actieve verbindingen|Er zijn geen dimensies|
 |network_bytes_egress|Netwerk uit|Bytes|Totaal|Netwerk uit over actieve verbindingen|Er zijn geen dimensies|
 |network_bytes_ingress|Netwerk in|Bytes|Totaal|Netwerk in meerdere actieve verbindingen|Er zijn geen dimensies|
@@ -743,7 +743,7 @@ Azure Monitor biedt verschillende manieren om te communiceren met metrische gege
 |DocumentCount|Aantal documenten|Count|Totaal|Totaal aantal documenten gemeld bij 5 minuten granulariteit|Verzamelingnaam, databasenaam, regio|
 |DocumentQuota|Document quotum|Bytes|Totaal|Totale opslag quotum gerapporteerd bij een granulatie van 5 minuten|Verzamelingnaam, databasenaam, regio|
 |IndexUsage|Index gebruik|Bytes|Totaal|Totaal gebruik van index gerapporteerd bij een granulatie van 5 minuten|Verzamelingnaam, databasenaam, regio|
-|MetadataRequests|Meta gegevens aanvragen|Count|Count|Aantal aanvragen voor meta gegevens. Cosmos DB onderhoudt de verzameling van meta gegevens van het systeem voor elk account, waarmee u verzamelingen, data bases, enzovoort en hun configuraties gratis kunt inventariseren.|DATABASENAME, verzamel-, regio, status code, |
+|MetadataRequests|Meta gegevens aanvragen|Count|Count|Aantal aanvragen voor meta gegevens. Cosmos DB onderhoudt de verzameling van meta gegevens van het systeem voor elk account, waarmee u verzamelingen, data bases, enzovoort, en hun configuraties, kosteloos kunt inventariseren.|DATABASENAME, verzamel-, regio, status code, |
 |MongoRequestCharge|Kosten voor Mongo-aanvragen|Count|Totaal|Verbruikte Mongo-aanvraag eenheden|DATABASENAME, verzamel-, regio, opdrachtnaam, error code|
 |MongoRequests|Mongo aanvragen|Count|Count|Aantal gemaakte Mongo-aanvragen|DATABASENAME, verzamel-, regio, opdrachtnaam, error code|
 |ProvisionedThroughput|Ingerichte doorvoer|Count|Maximum|Ingerichte doorvoer|DATABASENAME, verzamelnaam|
@@ -867,7 +867,7 @@ Azure Monitor biedt verschillende manieren om te communiceren met metrische gege
 |Gegevens|De naam van de metrische gegevens weergeven|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
 |availabilityResults/availabilityPercentage|Beschikbaarheid|Procent|Average|Percentage voltooide beschikbaarheids tests|availabilityResult/naam, availabilityResult/locatie|
-|availabilityResults/aantal|Beschikbaarheidstesten|Count|Count|Aantal beschikbaarheidstesten|availabilityResult/naam, availabilityResult/locatie, availabilityResult/geslaagd|
+|availabilityResults/aantal|Beschikbaarheidstests|Count|Count|Aantal beschikbaarheidstesten|availabilityResult/naam, availabilityResult/locatie, availabilityResult/geslaagd|
 |availabilityResults/duur|Duur beschikbaarheidstest|MilliSeconds|Average|Duur beschikbaarheidstest|availabilityResult/naam, availabilityResult/locatie, availabilityResult/geslaagd|
 |browserTimings/networkDuration|Netwerkverbindingstijd voor laden van pagina|MilliSeconds|Average|Tijd tussen de gebruikers aanvraag en de netwerk verbinding. Inclusief DNS-Zoek-en transport verbinding.|Er zijn geen dimensies|
 |browserTimings/processingDuration|Verwerkingstijd client|MilliSeconds|Average|Tijd tussen het ontvangen van de laatste byte van een document totdat de DOM is geladen. Asynchrone aanvragen kunnen nog steeds worden verwerkt.|Er zijn geen dimensies|
@@ -891,7 +891,7 @@ Azure Monitor biedt verschillende manieren om te communiceren met metrische gege
 |aanvragen/duur|Serverreactietijd|MilliSeconds|Average|Tijd tussen het ontvangen van een HTTP-aanvraag en het volt ooien van het verzenden van het antwoord.|aanvraag-requests, aanvraag-resultCode, bewerking/synthetisch, Cloud/roleInstance, aanvraag/geslaagd, Cloud/rolnaam|
 |aanvragen/aantal|Serveraanvragen|Count|Count|Aantal voltooide HTTP-aanvragen.|aanvraag-requests, aanvraag-resultCode, bewerking/synthetisch, Cloud/roleInstance, aanvraag/geslaagd, Cloud/rolnaam|
 |aanvragen/mislukt|Mislukte aanvragen|Count|Count|Het aantal HTTP-aanvragen dat is gemarkeerd als mislukt. In de meeste gevallen zijn dit aanvragen met een antwoord code > = 400 en niet gelijk is aan 401.|aanvraag-requests, aanvraag-resultCode, bewerking/synthetisch, Cloud/roleInstance, Cloud/rolnaam|
-|aanvragen/frequentie|Aantal server aanvragen|CountPerSecond|Average|Aantal server aanvragen per seconde|aanvraag-requests, aanvraag-resultCode, bewerking/synthetisch, Cloud/roleInstance, aanvraag/geslaagd, Cloud/rolnaam|
+|aanvragen/frequentie|Frequentie van serveraanvraag|CountPerSecond|Average|Aantal server aanvragen per seconde|aanvraag-requests, aanvraag-resultCode, bewerking/synthetisch, Cloud/roleInstance, aanvraag/geslaagd, Cloud/rolnaam|
 |uitzonde ringen/aantal|Uitzonderingen|Count|Count|Totaal aantal niet-onderschepte uitzonde ringen.|Cloud/rolnaam, Cloud/roleInstance, client/type|
 |uitzonde ringen/browser|Browseruitzonderingen|Count|Count|Aantal niet-onderschepte uitzonde ringen dat in de browser wordt gegenereerd.|Er zijn geen dimensies|
 |uitzonde ringen/server|Serveruitzonderingen|Count|Count|Aantal niet-onderschepte uitzonde ringen dat is opgetreden in de server toepassing.|Cloud/rolnaam, Cloud-roleInstance|
@@ -916,7 +916,7 @@ Azure Monitor biedt verschillende manieren om te communiceren met metrische gege
 |IngestionVolumeInMB|Opname volume (in MB)|Count|Totaal|Totaal volume van opgenomen gegevens aan het cluster (in MB)|Database|
 |IngestionLatencyInSeconds|Opname latentie (in seconden)|Seconden|Average|Opname tijd van de bron (bijvoorbeeld bericht is in EventHub) naar het cluster in enkele seconden|Geen|
 |EventProcessedForEventHubs|Verwerkte gebeurtenissen (voor Event Hubs)|Count|Totaal|Aantal gebeurtenissen dat door het cluster wordt verwerkt bij het opnemen vanuit Event hub|Geen|
-|IngestionResult|Opname resultaat|Count|Count|Aantal opname bewerkingen|Status|
+|IngestionResult|Opname resultaat|Count|Count|Aantal opname bewerkingen|State|
 |CPU|CPU|Percent|Average|Niveau CPU-gebruik|Geen|
 | ContinuousExportNumOfRecordsExported | Het aantal records dat wordt geëxporteerd in continue export | Count | Totaal | Het aantal records dat wordt geëxporteerd voor elk opslag artefact dat is geschreven tijdens de export bewerking  | Geen |
 | ExportUtilization | Gebruik exporteren | Percent | Maximum | Gebruik exporteren | Geen |
@@ -933,36 +933,36 @@ Azure Monitor biedt verschillende manieren om te communiceren met metrische gege
 
 |Gegevens|De naam van de metrische gegevens weergeven|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
-|RunsStarted|Gestarte uitvoeringen|Count|Totaal|Aantal uitvoeringen van werk stroom gestart.|Er zijn geen dimensies|
-|RunsCompleted|Voltooide uitvoeringen|Count|Totaal|Aantal voltooide werk stroom uitvoeringen.|Er zijn geen dimensies|
+|RunsStarted|Uitvoeringen gestart|Count|Totaal|Aantal uitvoeringen van werk stroom gestart.|Er zijn geen dimensies|
+|RunsCompleted|Uitvoeringen voltooid|Count|Totaal|Aantal voltooide werk stroom uitvoeringen.|Er zijn geen dimensies|
 |RunsSucceeded|Geslaagde uitvoeringen|Count|Totaal|Aantal geslaagde werk stroom uitvoeringen.|Er zijn geen dimensies|
-|RunsFailed|Mislukte uitvoeringen|Count|Totaal|Het aantal uitvoeringen van de werk stroom is mislukt.|Er zijn geen dimensies|
+|RunsFailed|Uitvoeringen mislukt|Count|Totaal|Het aantal uitvoeringen van de werk stroom is mislukt.|Er zijn geen dimensies|
 |RunsCancelled|Uitvoeringen geannuleerd|Count|Totaal|Aantal uitgevoerde werk stroom uitvoeringen geannuleerd.|Er zijn geen dimensies|
-|RunLatency|Latentie van uitvoeringen|Seconden|Average|Latentie van voltooide werk stroom uitvoeringen.|Er zijn geen dimensies|
-|RunSuccessLatency|Latentie van geslaagde uitvoeringen|Seconden|Average|Latentie van geslaagde werk stroom uitvoeringen.|Er zijn geen dimensies|
-|RunThrottledEvents|Door uitvoering vertraagde gebeurtenissen|Count|Totaal|Aantal werk stroom acties of trigger vertraagde gebeurtenissen.|Er zijn geen dimensies|
+|RunLatency|Uitvoerings latentie|Seconden|Average|Latentie van voltooide werk stroom uitvoeringen.|Er zijn geen dimensies|
+|RunSuccessLatency|Latentie van geslaagde uitvoering|Seconden|Average|Latentie van geslaagde werk stroom uitvoeringen.|Er zijn geen dimensies|
+|RunThrottledEvents|Vertraagde gebeurtenissen uitvoeren|Count|Totaal|Aantal werk stroom acties of trigger vertraagde gebeurtenissen.|Er zijn geen dimensies|
 |RunFailurePercentage|Percentage mislukte uitvoeringen|Percent|Totaal|Percentage mislukte werk stroom uitvoeringen.|Er zijn geen dimensies|
 |ActionsStarted|Gestarte acties |Count|Totaal|Aantal gestarte werk stroom acties.|Er zijn geen dimensies|
-|ActionsCompleted|Voltooide acties |Count|Totaal|Aantal voltooide werk stroom acties.|Er zijn geen dimensies|
-|ActionsSucceeded|Geslaagde acties |Count|Totaal|Aantal geslaagde werk stroom acties.|Er zijn geen dimensies|
+|ActionsCompleted|Acties voltooid |Count|Totaal|Aantal voltooide werk stroom acties.|Er zijn geen dimensies|
+|ActionsSucceeded|Acties geslaagd |Count|Totaal|Aantal geslaagde werk stroom acties.|Er zijn geen dimensies|
 |ActionsFailed|Mislukte acties|Count|Totaal|Aantal mislukte werk stroom acties.|Er zijn geen dimensies|
 |ActionsSkipped|Overgeslagen acties |Count|Totaal|Aantal overgeslagen werk stroom acties.|Er zijn geen dimensies|
-|ActionLatency|Actielatentie |Seconden|Average|Latentie van voltooide werk stroom acties.|Er zijn geen dimensies|
+|ActionLatency|Actie latentie |Seconden|Average|Latentie van voltooide werk stroom acties.|Er zijn geen dimensies|
 |ActionSuccessLatency|Latentie geslaagde acties |Seconden|Average|Latentie van geslaagde werk stroom acties.|Er zijn geen dimensies|
 |ActionThrottledEvents|Door actie vertraagde gebeurtenissen|Count|Totaal|Aantal door werk stroom actie vertraagde gebeurtenissen..|Er zijn geen dimensies|
-|TriggersStarted|Gestarte triggers |Count|Totaal|Aantal gestarte werk stroom triggers.|Er zijn geen dimensies|
-|TriggersCompleted|Voltooide triggers |Count|Totaal|Aantal voltooide werk stroom triggers.|Er zijn geen dimensies|
+|TriggersStarted|Triggers gestart |Count|Totaal|Aantal gestarte werk stroom triggers.|Er zijn geen dimensies|
+|TriggersCompleted|Triggers voltooid |Count|Totaal|Aantal voltooide werk stroom triggers.|Er zijn geen dimensies|
 |TriggersSucceeded|Geslaagde triggers |Count|Totaal|Aantal geslaagde werk stroom triggers.|Er zijn geen dimensies|
 |TriggersFailed|Mislukte triggers |Count|Totaal|Aantal mislukte werk stroom triggers.|Er zijn geen dimensies|
-|TriggersSkipped|Overgeslagen triggers|Count|Totaal|Aantal overgeslagen werk stroom triggers.|Er zijn geen dimensies|
+|TriggersSkipped|Triggers overgeslagen|Count|Totaal|Aantal overgeslagen werk stroom triggers.|Er zijn geen dimensies|
 |TriggersFired|Geactiveerde triggers |Count|Totaal|Aantal geactiveerde werk stroom triggers.|Er zijn geen dimensies|
 |TriggerLatency|Latentie van trigger |Seconden|Average|Latentie van voltooide werk stroom triggers.|Er zijn geen dimensies|
-|TriggerFireLatency|Latentie van triggeractivering |Seconden|Average|Latentie van geactiveerde werk stroom triggers.|Er zijn geen dimensies|
-|TriggerSuccessLatency|Latentie van geslaagde triggers |Seconden|Average|Latentie van geslaagde werk stroom triggers.|Er zijn geen dimensies|
-|TriggerThrottledEvents|Door trigger vertraagde gebeurtenissen|Count|Totaal|Aantal door werk stroom trigger vertraagde gebeurtenissen.|Er zijn geen dimensies|
-|BillableActionExecutions|Factureerbare uitvoeringen van acties|Count|Totaal|Aantal uitvoeringen van werk stroom acties dat wordt gefactureerd.|Er zijn geen dimensies|
-|BillableTriggerExecutions|Factureerbare uitvoeringen van activeringen|Count|Totaal|Aantal uitvoeringen van werk stroom trigger dat wordt gefactureerd.|Er zijn geen dimensies|
-|TotalBillableExecutions|Totaal aantal factureerbare uitvoeringen|Count|Totaal|Aantal uitgevoerde werk stroom uitvoeringen dat wordt gefactureerd.|Er zijn geen dimensies|
+|TriggerFireLatency|Brand latentie activeren |Seconden|Average|Latentie van geactiveerde werk stroom triggers.|Er zijn geen dimensies|
+|TriggerSuccessLatency|Latentie van trigger geslaagd |Seconden|Average|Latentie van geslaagde werk stroom triggers.|Er zijn geen dimensies|
+|TriggerThrottledEvents|Trigger beperkings gebeurtenissen|Count|Totaal|Aantal door werk stroom trigger vertraagde gebeurtenissen.|Er zijn geen dimensies|
+|BillableActionExecutions|Factureer bare actie-uitvoeringen|Count|Totaal|Aantal uitvoeringen van werk stroom acties dat wordt gefactureerd.|Er zijn geen dimensies|
+|BillableTriggerExecutions|Factureer bare trigger uitvoeringen|Count|Totaal|Aantal uitvoeringen van werk stroom trigger dat wordt gefactureerd.|Er zijn geen dimensies|
+|TotalBillableExecutions|Totaal aantal factureer bare uitvoeringen|Count|Totaal|Aantal uitgevoerde werk stroom uitvoeringen dat wordt gefactureerd.|Er zijn geen dimensies|
 |BillingUsageNativeOperation|Facturerings gebruik voor uitvoering van systeem eigen bewerkingen|Count|Totaal|Aantal uitvoeringen van de native bewerking dat wordt gefactureerd.|Er zijn geen dimensies|
 |BillingUsageStandardConnector|Facturerings gebruik voor het uitvoeren van standaard-connectors|Count|Totaal|Aantal uitvoeringen van Standard-connector dat wordt gefactureerd.|Er zijn geen dimensies|
 |BillingUsageStorageConsumption|Facturerings gebruik voor uitvoeringen van opslag verbruik|Count|Totaal|Aantal uitvoeringen van opslag verbruik dat wordt gefactureerd.|Er zijn geen dimensies|
@@ -974,34 +974,34 @@ Azure Monitor biedt verschillende manieren om te communiceren met metrische gege
 
 |Gegevens|De naam van de metrische gegevens weergeven|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
-|RunsStarted|Gestarte uitvoeringen|Count|Totaal|Aantal uitvoeringen van werk stroom gestart.|Er zijn geen dimensies|
-|RunsCompleted|Voltooide uitvoeringen|Count|Totaal|Aantal voltooide werk stroom uitvoeringen.|Er zijn geen dimensies|
+|RunsStarted|Uitvoeringen gestart|Count|Totaal|Aantal uitvoeringen van werk stroom gestart.|Er zijn geen dimensies|
+|RunsCompleted|Uitvoeringen voltooid|Count|Totaal|Aantal voltooide werk stroom uitvoeringen.|Er zijn geen dimensies|
 |RunsSucceeded|Geslaagde uitvoeringen|Count|Totaal|Aantal geslaagde werk stroom uitvoeringen.|Er zijn geen dimensies|
-|RunsFailed|Mislukte uitvoeringen|Count|Totaal|Het aantal uitvoeringen van de werk stroom is mislukt.|Er zijn geen dimensies|
+|RunsFailed|Uitvoeringen mislukt|Count|Totaal|Het aantal uitvoeringen van de werk stroom is mislukt.|Er zijn geen dimensies|
 |RunsCancelled|Uitvoeringen geannuleerd|Count|Totaal|Aantal uitgevoerde werk stroom uitvoeringen geannuleerd.|Er zijn geen dimensies|
-|RunLatency|Latentie van uitvoeringen|Seconden|Average|Latentie van voltooide werk stroom uitvoeringen.|Er zijn geen dimensies|
-|RunSuccessLatency|Latentie van geslaagde uitvoeringen|Seconden|Average|Latentie van geslaagde werk stroom uitvoeringen.|Er zijn geen dimensies|
-|RunThrottledEvents|Door uitvoering vertraagde gebeurtenissen|Count|Totaal|Aantal werk stroom acties of trigger vertraagde gebeurtenissen.|Er zijn geen dimensies|
-|RunStartThrottledEvents|Vertraagde gebeurtenissen uitvoeren|Count|Totaal|Aantal uitgevoerde vertraagde gebeurtenissen voor de werk stroom.|Er zijn geen dimensies|
+|RunLatency|Uitvoerings latentie|Seconden|Average|Latentie van voltooide werk stroom uitvoeringen.|Er zijn geen dimensies|
+|RunSuccessLatency|Latentie van geslaagde uitvoering|Seconden|Average|Latentie van geslaagde werk stroom uitvoeringen.|Er zijn geen dimensies|
+|RunThrottledEvents|Vertraagde gebeurtenissen uitvoeren|Count|Totaal|Aantal werk stroom acties of trigger vertraagde gebeurtenissen.|Er zijn geen dimensies|
+|RunStartThrottledEvents|Door start van uitvoering vertraagde gebeurtenissen|Count|Totaal|Aantal uitgevoerde vertraagde gebeurtenissen voor de werk stroom.|Er zijn geen dimensies|
 |RunFailurePercentage|Percentage mislukte uitvoeringen|Percent|Totaal|Percentage mislukte werk stroom uitvoeringen.|Er zijn geen dimensies|
 |ActionsStarted|Gestarte acties |Count|Totaal|Aantal gestarte werk stroom acties.|Er zijn geen dimensies|
-|ActionsCompleted|Voltooide acties |Count|Totaal|Aantal voltooide werk stroom acties.|Er zijn geen dimensies|
-|ActionsSucceeded|Geslaagde acties |Count|Totaal|Aantal geslaagde werk stroom acties.|Er zijn geen dimensies|
+|ActionsCompleted|Acties voltooid |Count|Totaal|Aantal voltooide werk stroom acties.|Er zijn geen dimensies|
+|ActionsSucceeded|Acties geslaagd |Count|Totaal|Aantal geslaagde werk stroom acties.|Er zijn geen dimensies|
 |ActionsFailed|Mislukte acties |Count|Totaal|Aantal mislukte werk stroom acties.|Er zijn geen dimensies|
 |ActionsSkipped|Overgeslagen acties |Count|Totaal|Aantal overgeslagen werk stroom acties.|Er zijn geen dimensies|
-|ActionLatency|Actielatentie |Seconden|Average|Latentie van voltooide werk stroom acties.|Er zijn geen dimensies|
+|ActionLatency|Actie latentie |Seconden|Average|Latentie van voltooide werk stroom acties.|Er zijn geen dimensies|
 |ActionSuccessLatency|Latentie geslaagde acties |Seconden|Average|Latentie van geslaagde werk stroom acties.|Er zijn geen dimensies|
 |ActionThrottledEvents|Door actie vertraagde gebeurtenissen|Count|Totaal|Aantal door werk stroom actie vertraagde gebeurtenissen..|Er zijn geen dimensies|
-|TriggersStarted|Gestarte triggers |Count|Totaal|Aantal gestarte werk stroom triggers.|Er zijn geen dimensies|
-|TriggersCompleted|Voltooide triggers |Count|Totaal|Aantal voltooide werk stroom triggers.|Er zijn geen dimensies|
+|TriggersStarted|Triggers gestart |Count|Totaal|Aantal gestarte werk stroom triggers.|Er zijn geen dimensies|
+|TriggersCompleted|Triggers voltooid |Count|Totaal|Aantal voltooide werk stroom triggers.|Er zijn geen dimensies|
 |TriggersSucceeded|Geslaagde triggers |Count|Totaal|Aantal geslaagde werk stroom triggers.|Er zijn geen dimensies|
 |TriggersFailed|Mislukte triggers |Count|Totaal|Aantal mislukte werk stroom triggers.|Er zijn geen dimensies|
-|TriggersSkipped|Overgeslagen triggers|Count|Totaal|Aantal overgeslagen werk stroom triggers.|Er zijn geen dimensies|
+|TriggersSkipped|Triggers overgeslagen|Count|Totaal|Aantal overgeslagen werk stroom triggers.|Er zijn geen dimensies|
 |TriggersFired|Geactiveerde triggers |Count|Totaal|Aantal geactiveerde werk stroom triggers.|Er zijn geen dimensies|
 |TriggerLatency|Latentie van trigger |Seconden|Average|Latentie van voltooide werk stroom triggers.|Er zijn geen dimensies|
-|TriggerFireLatency|Latentie van triggeractivering |Seconden|Average|Latentie van geactiveerde werk stroom triggers.|Er zijn geen dimensies|
-|TriggerSuccessLatency|Latentie van geslaagde triggers |Seconden|Average|Latentie van geslaagde werk stroom triggers.|Er zijn geen dimensies|
-|TriggerThrottledEvents|Door trigger vertraagde gebeurtenissen|Count|Totaal|Aantal door werk stroom trigger vertraagde gebeurtenissen.|Er zijn geen dimensies|
+|TriggerFireLatency|Brand latentie activeren |Seconden|Average|Latentie van geactiveerde werk stroom triggers.|Er zijn geen dimensies|
+|TriggerSuccessLatency|Latentie van trigger geslaagd |Seconden|Average|Latentie van geslaagde werk stroom triggers.|Er zijn geen dimensies|
+|TriggerThrottledEvents|Trigger beperkings gebeurtenissen|Count|Totaal|Aantal door werk stroom trigger vertraagde gebeurtenissen.|Er zijn geen dimensies|
 |IntegrationServiceEnvironmentWorkflowProcessorUsage|Gebruik van werk stroom processor voor Integratieserviceomgeving|Percent|Average|Gebruik van werk stroom processoren voor de integratie service omgeving.|Er zijn geen dimensies|
 |IntegrationServiceEnvironmentWorkflowMemoryUsage|Geheugen gebruik van werk stroom voor Integratieserviceomgeving|Percent|Average|Geheugen gebruik van werk stroom voor de integratie service omgeving.|Er zijn geen dimensies|
 |IntegrationServiceEnvironmentConnectorProcessorUsage|Processor gebruik van connector voor Integratieserviceomgeving|Percent|Average|Het processor gebruik van de connector voor de integratie service omgeving.|Er zijn geen dimensies|
@@ -1039,16 +1039,16 @@ Azure Monitor biedt verschillende manieren om te communiceren met metrische gege
 |IoBytesPerTotalOps|I/o-bytes per op alle bewerkingen|bytes/op|Average|Som van alle bewerkingen in/uit bytes|Er zijn geen dimensies|
 |IoBytesPerWriteOps|I/o-bytes per write OPS|bytes/op|Average|Aantal in/uit bytes per schrijf bewerking|Er zijn geen dimensies|
 |OtherIops|Andere IOPS|bewerkingen per seconde|Average|Andere in/uit-bewerking per seconde|Er zijn geen dimensies|
-|OtherThroughput|Andere door Voer|MB|Average|Andere door Voer (dat is niet lezen of schrijven) in mega bytes per seconde|Er zijn geen dimensies|
+|OtherThroughput|Andere door Voer|Mbps|Average|Andere door Voer (dat is niet lezen of schrijven) in mega bytes per seconde|Er zijn geen dimensies|
 |ReadIops|IOPS lezen|bewerkingen per seconde|Average|In-en uitvoer bewerkingen per seconde|Er zijn geen dimensies|
-|ReadThroughput|Lees doorvoer|MB|Average|Lees doorvoer in mega bytes per seconde|Er zijn geen dimensies|
+|ReadThroughput|Lees doorvoer|Mbps|Average|Lees doorvoer in mega bytes per seconde|Er zijn geen dimensies|
 |TotalIops|Totaal aantal IOPS|bewerkingen per seconde|Average|Som van alle in-en uitvoer bewerkingen per seconde|Er zijn geen dimensies|
-|TotalThroughput|Totale doorvoer|MB|Average|Som van alle door Voer in mega bytes per seconde|Er zijn geen dimensies|
+|TotalThroughput|Totale doorvoer|Mbps|Average|Som van alle door Voer in mega bytes per seconde|Er zijn geen dimensies|
 |VolumeAllocatedSize|Grootte van toegewezen volume|bytes|Average|Toegewezen grootte van het volume (niet de werkelijk gebruikte bytes)|Er zijn geen dimensies|
 |VolumeLogicalSize|Logische volume grootte|bytes|Average|Logische grootte van het volume (gebruikte bytes)|Er zijn geen dimensies|
 |VolumeSnapshotSize|Grootte van moment opname van volume|bytes|Average|Grootte van alle moment opnamen in volume|Er zijn geen dimensies|
 |WriteIops|IOPS schrijven|bewerkingen per seconde|Average|In-en uitvoer bewerkingen per seconde|Er zijn geen dimensies|
-|WriteThroughput|Schrijf doorvoer|MB|Average|Schrijf doorvoer in mega bytes per seconde|Er zijn geen dimensies|
+|WriteThroughput|Schrijf doorvoer|Mbps|Average|Schrijf doorvoer in mega bytes per seconde|Er zijn geen dimensies|
 
 ## <a name="microsoftnetappnetappaccountscapacitypools"></a>Microsoft.NetApp/netAppAccounts/capacityPools
 
@@ -1133,7 +1133,7 @@ Azure Monitor biedt verschillende manieren om te communiceren met metrische gege
 |---|---|---|---|---|---|
 |Doorvoer|Doorvoer|BytesPerSecond|Totaal|Aantal bytes per seconde dat de Application Gateway heeft bediend|Er zijn geen dimensies|
 |UnhealthyHostCount|Aantal hosts met slechte status|Count|Average|Aantal beschadigde backend-hosts|BackendSettingsPool|
-|HealthyHostCount|Aantal goede hosts|Count|Average|Aantal gezonde backend-hosts|BackendSettingsPool|
+|healthyHostCount|Aantal goede hosts|Count|Average|Aantal gezonde backend-hosts|BackendSettingsPool|
 |TotalRequests|Totaal aantal aanvragen|Count|Totaal|Aantal geslaagde aanvragen dat Application Gateway heeft bediend|BackendSettingsPool|
 |FailedRequests|Mislukte aanvragen|Count|Totaal|Aantal mislukte aanvragen dat Application Gateway heeft bediend|BackendSettingsPool|
 |ResponseStatus|Reactie status|Count|Totaal|Http-antwoord status geretourneerd door Application Gateway|HttpStatusGroup|
@@ -1207,67 +1207,67 @@ Azure Monitor biedt verschillende manieren om te communiceren met metrische gege
 
 |Gegevens|De naam van de metrische gegevens weergeven|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
-|registratie. alle|Registratiebewerkingen|Count|Totaal|Het aantal voltooide registratie bewerkingen (gemaakte bijwerk query's en verwijderingen). |Er zijn geen dimensies|
-|registratie. Create|Bewerkingen voor het maken van registraties|Count|Totaal|Het aantal gemaakte registraties.|Er zijn geen dimensies|
-|registratie. update|Bewerkingen voor het bijwerken van registraties|Count|Totaal|Het aantal voltooide registratie-updates.|Er zijn geen dimensies|
-|registratie. ophalen|Bewerkingen voor het lezen van registraties|Count|Totaal|Het aantal geslaagde registratie query's.|Er zijn geen dimensies|
-|registratie. Delete|Bewerkingen voor het verwijderen van registraties|Count|Totaal|Het aantal voltooide registraties dat is verwijderd.|Er zijn geen dimensies|
-|e-mail|Binnenkomende berichten|Count|Totaal|Het aantal geslaagde verzend-API-aanroepen. |Er zijn geen dimensies|
-|inkomend. gepland|Geplande pushmeldingen verzonden|Count|Totaal|Geplande push meldingen geannuleerd|Er zijn geen dimensies|
+|registratie. alle|Registratie bewerkingen|Count|Totaal|Het aantal voltooide registratie bewerkingen (gemaakte bijwerk query's en verwijderingen). |Er zijn geen dimensies|
+|registratie. Create|Bewerkingen voor het maken van registratie|Count|Totaal|Het aantal gemaakte registraties.|Er zijn geen dimensies|
+|registratie. update|Registratie-update bewerkingen|Count|Totaal|Het aantal voltooide registratie-updates.|Er zijn geen dimensies|
+|registratie. ophalen|Lees bewerkingen voor registratie|Count|Totaal|Het aantal geslaagde registratie query's.|Er zijn geen dimensies|
+|registratie. Delete|Verwijderings bewerkingen voor registratie|Count|Totaal|Het aantal voltooide registraties dat is verwijderd.|Er zijn geen dimensies|
+|E-mail|Binnenkomende berichten|Count|Totaal|Het aantal geslaagde verzend-API-aanroepen. |Er zijn geen dimensies|
+|inkomend. gepland|Geplande push meldingen verzonden|Count|Totaal|Geplande push meldingen geannuleerd|Er zijn geen dimensies|
 |Binnenkomend. gepland. annuleren|Geplande push meldingen geannuleerd|Count|Totaal|Geplande push meldingen geannuleerd|Er zijn geen dimensies|
 |gepland. in behandeling|Geplande meldingen in behandeling|Count|Totaal|Geplande meldingen in behandeling|Er zijn geen dimensies|
-|installatie. alle|Installatiebeheerbewerkingen|Count|Totaal|Installatiebeheerbewerkingen|Er zijn geen dimensies|
-|installation.get|Installatiebewerkingen ophalen|Count|Totaal|Installatiebewerkingen ophalen|Er zijn geen dimensies|
-|installatie. upsert|Installatiebewerkingen maken of bijwerken|Count|Totaal|Installatiebewerkingen maken of bijwerken|Er zijn geen dimensies|
-|installatie. patch|Installatiebewerkingen patchen|Count|Totaal|Installatiebewerkingen patchen|Er zijn geen dimensies|
-|installation.delete|Installatiebewerkingen verwijderen|Count|Totaal|Installatiebewerkingen verwijderen|Er zijn geen dimensies|
-|outgoing.allpns.success|Voltooide meldingen|Count|Totaal|Het aantal geslaagde meldingen.|Er zijn geen dimensies|
-|outgoing.allpns.invalidpayload|Fouten met nettolading|Count|Totaal|Het aantal pushes dat is mislukt omdat de PNS een ongeldige Payload-fout heeft geretourneerd.|Er zijn geen dimensies|
-|uitgaande. allpns. pnserror|Fouten met het externe meldingssysteem|Count|Totaal|Het aantal pushes dat is mislukt omdat er een probleem is opgetreden bij het communiceren met de PNS (er zijn verificatie problemen uitgesloten).|Er zijn geen dimensies|
-|uitgaande. allpns. channelerror|Fouten met kanaal|Count|Totaal|Het aantal pushes dat is mislukt omdat het kanaal ongeldig is en niet is gekoppeld aan de juiste app beperkt of verlopen.|Er zijn geen dimensies|
-|outgoing.allpns.badorexpiredchannel|Fouten met slecht of verlopen kanaal|Count|Totaal|Het aantal pushes dat is mislukt omdat het kanaal/token-registratie in de registratie is verlopen of ongeldig is.|Er zijn geen dimensies|
-|outgoing.wns.success|Meldingen over voltooide WNS|Count|Totaal|Het aantal geslaagde meldingen.|Er zijn geen dimensies|
+|installatie. alle|Bewerkingen voor installatie beheer|Count|Totaal|Bewerkingen voor installatie beheer|Er zijn geen dimensies|
+|installation.get|Installatie bewerkingen ophalen|Count|Totaal|Installatie bewerkingen ophalen|Er zijn geen dimensies|
+|installatie. upsert|Installatie bewerkingen maken of bijwerken|Count|Totaal|Installatie bewerkingen maken of bijwerken|Er zijn geen dimensies|
+|installatie. patch|Patch-installatie bewerkingen|Count|Totaal|Patch-installatie bewerkingen|Er zijn geen dimensies|
+|installation.delete|Installatie bewerkingen verwijderen|Count|Totaal|Installatie bewerkingen verwijderen|Er zijn geen dimensies|
+|outgoing.allpns.success|Geslaagde meldingen|Count|Totaal|Het aantal geslaagde meldingen.|Er zijn geen dimensies|
+|outgoing.allpns.invalidpayload|Payload-fouten|Count|Totaal|Het aantal pushes dat is mislukt omdat de PNS een ongeldige Payload-fout heeft geretourneerd.|Er zijn geen dimensies|
+|uitgaande. allpns. pnserror|Externe meldingen systeem fouten|Count|Totaal|Het aantal pushes dat is mislukt omdat er een probleem is opgetreden bij het communiceren met de PNS (er zijn verificatie problemen uitgesloten).|Er zijn geen dimensies|
+|uitgaande. allpns. channelerror|Kanaal fouten|Count|Totaal|Het aantal pushes dat is mislukt omdat het kanaal ongeldig is en niet is gekoppeld aan de juiste app beperkt of verlopen.|Er zijn geen dimensies|
+|outgoing.allpns.badorexpiredchannel|Ongeldige of verlopen kanaal fouten|Count|Totaal|Het aantal pushes dat is mislukt omdat het kanaal/token-registratie in de registratie is verlopen of ongeldig is.|Er zijn geen dimensies|
+|outgoing.wns.success|Geslaagde meldingen WNS|Count|Totaal|Het aantal geslaagde meldingen.|Er zijn geen dimensies|
 |outgoing.wns.invalidcredentials|WNS-verificatie fouten (ongeldige referenties)|Count|Totaal|Het aantal pushes dat is mislukt omdat de PNS de opgegeven referenties niet heeft geaccepteerd of de referenties zijn geblokkeerd. (Windows Live herkent de referenties niet).|Er zijn geen dimensies|
-|outgoing.wns.badchannel|WNS-fout wegens slecht kanaal|Count|Totaal|Het aantal pushes dat is mislukt omdat de kanaal in de registratie niet is herkend (WNS-status: 404 niet gevonden).|Er zijn geen dimensies|
-|outgoing.wns.expiredchannel|WNS-fout wegens verlopen kanaal|Count|Totaal|Het aantal pushes dat is mislukt omdat de kanaal is verlopen (WNS-status: 410 verdwenen).|Er zijn geen dimensies|
-|uitgaande. wns. throttled|Meldingen over beperkte WNS|Count|Totaal|Het aantal pushes dat is mislukt omdat WNS deze app beperkt (WNS-status: 406 niet toegestaan).|Er zijn geen dimensies|
+|outgoing.wns.badchannel|WNS ongeldige kanaal fout|Count|Totaal|Het aantal pushes dat is mislukt omdat de kanaal in de registratie niet is herkend (WNS-status: 404 niet gevonden).|Er zijn geen dimensies|
+|outgoing.wns.expiredchannel|WNS-fout met verlopen kanaal|Count|Totaal|Het aantal pushes dat is mislukt omdat de kanaal is verlopen (WNS-status: 410 verdwenen).|Er zijn geen dimensies|
+|uitgaande. wns. throttled|WNS beperkte meldingen|Count|Totaal|Het aantal pushes dat is mislukt omdat WNS deze app beperkt (WNS-status: 406 niet toegestaan).|Er zijn geen dimensies|
 |outgoing.wns.tokenproviderunreachable|WNS-verificatie fouten (onbereikbaar)|Count|Totaal|Windows Live is niet bereikbaar.|Er zijn geen dimensies|
 |uitgaande. wns. invalidtoken|WNS-verificatie fouten (ongeldig token)|Count|Totaal|Het token dat is door gegeven aan WNS is niet geldig (WNS-status: 401 niet gemachtigd).|Er zijn geen dimensies|
 |outgoing.wns.wrongtoken|WNS-autorisatie fouten (onjuist token)|Count|Totaal|Het token dat is door gegeven aan WNS is geldig, maar voor een andere toepassing (WNS-status: 403 verboden). Dit kan gebeuren als de kanaal in de registratie is gekoppeld aan een andere app. Controleer of de client-app is gekoppeld aan dezelfde app waarvan de referenties zich in de notification hub bevinden.|Er zijn geen dimensies|
-|outgoing.wns.invalidnotificationformat|Ongeldige indeling van de WNS-melding|Count|Totaal|De indeling van de melding is ongeldig (WNS-status: 400). Houd er rekening mee dat WNS niet alle ongeldige payloads weigert.|Er zijn geen dimensies|
-|outgoing.wns.invalidnotificationsize|Fout met ongeldige grootte van de WNS-melding|Count|Totaal|De meldings lading is te groot (WNS-status: 413).|Er zijn geen dimensies|
-|outgoing.wns.channelthrottled|De verbinding met het WNS-kanaal is beperkt|Count|Totaal|De melding is verwijderd omdat de kanaal in de registratie is beperkt (WNS-reactie header: X-WNS-notification status: channelThrottled).|Er zijn geen dimensies|
-|outgoing.wns.channeldisconnected|De verbinding met het WNS-kanaal is verbroken|Count|Totaal|De melding is verwijderd omdat de kanaal in de registratie is beperkt (WNS-reactie header: X-WNS-DeviceConnectionStatus: verbinding verbroken).|Er zijn geen dimensies|
-|uitgaande. wns. dropd|Meldingen over verloren WNS|Count|Totaal|De melding is verwijderd omdat de kanaal in de registratie is beperkt (X-WNS-notification status: verwijderd maar niet X-WNS-DeviceConnectionStatus: disconnected).|Er zijn geen dimensies|
+|outgoing.wns.invalidnotificationformat|Ongeldige indeling van WNS-melding|Count|Totaal|De indeling van de melding is ongeldig (WNS-status: 400). Houd er rekening mee dat WNS niet alle ongeldige payloads weigert.|Er zijn geen dimensies|
+|outgoing.wns.invalidnotificationsize|Fout met ongeldige grootte van WNS-melding|Count|Totaal|De meldings lading is te groot (WNS-status: 413).|Er zijn geen dimensies|
+|outgoing.wns.channelthrottled|WNS-kanaal beperkt|Count|Totaal|De melding is verwijderd omdat de kanaal in de registratie is beperkt (WNS-reactie header: X-WNS-notification status: channelThrottled).|Er zijn geen dimensies|
+|outgoing.wns.channeldisconnected|Verbinding met WNS-kanaal verbroken|Count|Totaal|De melding is verwijderd omdat de kanaal in de registratie is beperkt (WNS-reactie header: X-WNS-DeviceConnectionStatus: verbinding verbroken).|Er zijn geen dimensies|
+|uitgaande. wns. dropd|WNS-verwijderde meldingen|Count|Totaal|De melding is verwijderd omdat de kanaal in de registratie is beperkt (X-WNS-notification status: verwijderd maar niet X-WNS-DeviceConnectionStatus: disconnected).|Er zijn geen dimensies|
 |uitgaande. wns. pnserror|WNS-fouten|Count|Totaal|Er is geen melding bezorgd vanwege fouten in de communicatie met WNS.|Er zijn geen dimensies|
-|uitgaande. wns. authenticationerror|WNS-verificatiefouten|Count|Totaal|Er is een melding niet bezorgd omdat er fouten zijn opgetreden tijdens de communicatie met Windows Live ongeldige referenties of een onjuist token.|Er zijn geen dimensies|
-|outgoing.apns.success|Meldingen over voltooide APNS|Count|Totaal|Het aantal geslaagde meldingen.|Er zijn geen dimensies|
-|outgoing.apns.invalidcredentials|APNS-verificatiefouten|Count|Totaal|Het aantal pushes dat is mislukt omdat de PNS de opgegeven referenties niet heeft geaccepteerd of de referenties zijn geblokkeerd.|Er zijn geen dimensies|
-|outgoing.apns.badchannel|APNS-fout wegens slecht kanaal|Count|Totaal|Het aantal pushes dat is mislukt omdat het token ongeldig is (status code voor het binaire APNS-Protocol: 8. Status code van APNS-HTTP-protocol: 400 met "BadDeviceToken").|Er zijn geen dimensies|
-|outgoing.apns.expiredchannel|APNS-fout wegens verlopen kanaal|Count|Totaal|Het aantal tokens dat ongeldig is gemaakt door het APNS-feedback kanaal.|Er zijn geen dimensies|
-|outgoing.apns.invalidnotificationsize|Fout met ongeldige grootte van APNS-melding|Count|Totaal|Het aantal pushes dat is mislukt omdat de payload te groot is (status code van het binaire APNS-Protocol: 7).|Er zijn geen dimensies|
+|uitgaande. wns. authenticationerror|WNS-verificatie fouten|Count|Totaal|Er is een melding niet bezorgd omdat er fouten zijn opgetreden tijdens de communicatie met Windows Live ongeldige referenties of een onjuist token.|Er zijn geen dimensies|
+|outgoing.apns.success|Geslaagde meldingen van APNS|Count|Totaal|Het aantal geslaagde meldingen.|Er zijn geen dimensies|
+|outgoing.apns.invalidcredentials|APNS-autorisatie fouten|Count|Totaal|Het aantal pushes dat is mislukt omdat de PNS de opgegeven referenties niet heeft geaccepteerd of de referenties zijn geblokkeerd.|Er zijn geen dimensies|
+|outgoing.apns.badchannel|Fout met ongeldige APNS-kanaal|Count|Totaal|Het aantal pushes dat is mislukt omdat het token ongeldig is (status code voor het binaire APNS-Protocol: 8. Status code van APNS-HTTP-protocol: 400 met "BadDeviceToken").|Er zijn geen dimensies|
+|outgoing.apns.expiredchannel|Fout bij verlopen van APNS-kanaal|Count|Totaal|Het aantal tokens dat ongeldig is gemaakt door het APNS-feedback kanaal.|Er zijn geen dimensies|
+|outgoing.apns.invalidnotificationsize|Fout door ongeldige grootte van APNS-melding|Count|Totaal|Het aantal pushes dat is mislukt omdat de payload te groot is (status code van het binaire APNS-Protocol: 7).|Er zijn geen dimensies|
 |outgoing.apns.pnserror|APNS-fouten|Count|Totaal|Het aantal pushes dat is mislukt vanwege fouten in de communicatie met APNS.|Er zijn geen dimensies|
-|outgoing.gcm.success|Meldingen over voltooide GCM|Count|Totaal|Het aantal geslaagde meldingen.|Er zijn geen dimensies|
+|outgoing.gcm.success|Geslaagde meldingen GCM|Count|Totaal|Het aantal geslaagde meldingen.|Er zijn geen dimensies|
 |outgoing.gcm.invalidcredentials|GCM-verificatie fouten (ongeldige referenties)|Count|Totaal|Het aantal pushes dat is mislukt omdat de PNS de opgegeven referenties niet heeft geaccepteerd of de referenties zijn geblokkeerd.|Er zijn geen dimensies|
-|outgoing.gcm.badchannel|GCM-fout wegens slecht kanaal|Count|Totaal|Het aantal pushes dat is mislukt omdat de registratie in de registratie niet is herkend (GCM-resultaat: Ongeldige registratie).|Er zijn geen dimensies|
-|outgoing.gcm.expiredchannel|GCM-fout wegens verlopen kanaal|Count|Totaal|Het aantal pushes dat is mislukt omdat de registratie in de registratie is verlopen (GCM resultaat: NotRegistered).|Er zijn geen dimensies|
-|uitgaande. GCM. throttled|Meldingen over beperkte GCM|Count|Totaal|Het aantal pushes dat is mislukt omdat GCM deze app heeft beperkt (GCM-status code: 501-599 of resultaat: niet beschikbaar).|Er zijn geen dimensies|
+|outgoing.gcm.badchannel|GCM ongeldige kanaal fout|Count|Totaal|Het aantal pushes dat is mislukt omdat de registratie in de registratie niet is herkend (GCM-resultaat: Ongeldige registratie).|Er zijn geen dimensies|
+|outgoing.gcm.expiredchannel|GCM-fout met verlopen kanaal|Count|Totaal|Het aantal pushes dat is mislukt omdat de registratie in de registratie is verlopen (GCM resultaat: NotRegistered).|Er zijn geen dimensies|
+|uitgaande. GCM. throttled|GCM beperkte meldingen|Count|Totaal|Het aantal pushes dat is mislukt omdat GCM deze app heeft beperkt (GCM-status code: 501-599 of resultaat: niet beschikbaar).|Er zijn geen dimensies|
 |uitgaande. GCM. invalidnotificationformat|Ongeldige indeling van GCM-melding|Count|Totaal|Het aantal pushes dat is mislukt omdat de payload niet juist is geformatteerd (GCM-resultaat: InvalidDataKey of InvalidTtl).|Er zijn geen dimensies|
 |outgoing.gcm.invalidnotificationsize|Fout met ongeldige grootte van GCM-melding|Count|Totaal|Het aantal pushes dat is mislukt omdat de payload te groot is (GCM-resultaat: MessageTooBig).|Er zijn geen dimensies|
-|outgoing.gcm.wrongchannel|GCM-fout wegens onjuist kanaal|Count|Totaal|Het aantal pushes dat is mislukt omdat de registratie in de registratie niet is gekoppeld aan de huidige app (GCM-resultaat: InvalidPackageName).|Er zijn geen dimensies|
+|outgoing.gcm.wrongchannel|GCM onjuiste kanaal fout|Count|Totaal|Het aantal pushes dat is mislukt omdat de registratie in de registratie niet is gekoppeld aan de huidige app (GCM-resultaat: InvalidPackageName).|Er zijn geen dimensies|
 |uitgaande. GCM. pnserror|GCM-fouten|Count|Totaal|Het aantal pushes dat is mislukt vanwege fouten in de communicatie met GCM.|Er zijn geen dimensies|
-|uitgaande. GCM. authenticationerror|GCM-verificatiefouten|Count|Totaal|Het aantal pushes dat is mislukt omdat de PNS de opgegeven referenties niet heeft geaccepteerd, de referenties zijn geblokkeerd of de SenderId niet juist is geconfigureerd in de app (GCM-resultaat: MismatchedSenderId).|Er zijn geen dimensies|
-|uitgaand. mpns. geslaagd|Meldingen over voltooide MPNS|Count|Totaal|Het aantal geslaagde meldingen.|Er zijn geen dimensies|
-|outgoing.mpns.invalidcredentials|Ongeldige MPNS-referenties|Count|Totaal|Het aantal pushes dat is mislukt omdat de PNS de opgegeven referenties niet heeft geaccepteerd of de referenties zijn geblokkeerd.|Er zijn geen dimensies|
-|outgoing.mpns.badchannel|MPNS-fout wegens slecht kanaal|Count|Totaal|Het aantal pushes dat is mislukt omdat de kanaal in de registratie niet is herkend (MPNS-status: 404 niet gevonden).|Er zijn geen dimensies|
-|uitgaande. mpns. throttled|Meldingen over beperkte MPNS|Count|Totaal|Het aantal pushes dat is mislukt omdat MPNS deze app beperkt (WNS MPNS: 406 niet toegestaan).|Er zijn geen dimensies|
-|uitgaande. mpns. invalidnotificationformat|Ongeldige indeling van de MPNS-melding|Count|Totaal|Het aantal pushes dat is mislukt omdat de payload van de melding te groot is.|Er zijn geen dimensies|
-|outgoing.mpns.channeldisconnected|De verbinding met het MPNS-kanaal is verbroken|Count|Totaal|Het aantal pushes dat is mislukt omdat de kanaal van de registratie is verbroken (MPNS-status: 412 niet gevonden).|Er zijn geen dimensies|
-|uitgaande. mpns. dropd|Meldingen over verloren MPNS|Count|Totaal|Het aantal pushes dat is verwijderd door MPNS (MPNS-reactie header: X-notification status: QueueFull of onderdrukt).|Er zijn geen dimensies|
+|uitgaande. GCM. authenticationerror|GCM-verificatie fouten|Count|Totaal|Het aantal pushes dat is mislukt omdat de PNS de opgegeven referenties niet heeft geaccepteerd, de referenties zijn geblokkeerd of de SenderId niet juist is geconfigureerd in de app (GCM-resultaat: MismatchedSenderId).|Er zijn geen dimensies|
+|uitgaand. mpns. geslaagd|Geslaagde meldingen MPNS|Count|Totaal|Het aantal geslaagde meldingen.|Er zijn geen dimensies|
+|outgoing.mpns.invalidcredentials|Ongeldige referenties MPNS|Count|Totaal|Het aantal pushes dat is mislukt omdat de PNS de opgegeven referenties niet heeft geaccepteerd of de referenties zijn geblokkeerd.|Er zijn geen dimensies|
+|outgoing.mpns.badchannel|MPNS ongeldige kanaal fout|Count|Totaal|Het aantal pushes dat is mislukt omdat de kanaal in de registratie niet is herkend (MPNS-status: 404 niet gevonden).|Er zijn geen dimensies|
+|uitgaande. mpns. throttled|MPNS beperkte meldingen|Count|Totaal|Het aantal pushes dat is mislukt omdat MPNS deze app beperkt (WNS MPNS: 406 niet toegestaan).|Er zijn geen dimensies|
+|uitgaande. mpns. invalidnotificationformat|Ongeldige indeling van MPNS-melding|Count|Totaal|Het aantal pushes dat is mislukt omdat de payload van de melding te groot is.|Er zijn geen dimensies|
+|outgoing.mpns.channeldisconnected|Verbinding met MPNS-kanaal verbroken|Count|Totaal|Het aantal pushes dat is mislukt omdat de kanaal van de registratie is verbroken (MPNS-status: 412 niet gevonden).|Er zijn geen dimensies|
+|uitgaande. mpns. dropd|MPNS-verwijderde meldingen|Count|Totaal|Het aantal pushes dat is verwijderd door MPNS (MPNS-reactie header: X-notification status: QueueFull of onderdrukt).|Er zijn geen dimensies|
 |uitgaande. mpns. pnserror|MPNS-fouten|Count|Totaal|Het aantal pushes dat is mislukt vanwege fouten in de communicatie met MPNS.|Er zijn geen dimensies|
-|uitgaande. mpns. authenticationerror|MPNS-verificatiefouten|Count|Totaal|Het aantal pushes dat is mislukt omdat de PNS de opgegeven referenties niet heeft geaccepteerd of de referenties zijn geblokkeerd.|Er zijn geen dimensies|
+|uitgaande. mpns. authenticationerror|MPNS-verificatie fouten|Count|Totaal|Het aantal pushes dat is mislukt omdat de PNS de opgegeven referenties niet heeft geaccepteerd of de referenties zijn geblokkeerd.|Er zijn geen dimensies|
 |notificationhub. pushes|Alle uitgaande meldingen|Count|Totaal|Alle uitgaande meldingen van de notification hub|Er zijn geen dimensies|
-|binnenkomende. alle. aanvragen|Alle binnenkomende aanvragen|Count|Totaal|Totaal aantal binnenkomende aanvragen voor een notification hub|Er zijn geen dimensies|
+|binnenkomende. alle. aanvragen|Alle inkomende aanvragen|Count|Totaal|Totaal aantal binnenkomende aanvragen voor een notification hub|Er zijn geen dimensies|
 |inkomend. alle. failedrequests|Alle binnenkomende mislukte aanvragen|Count|Totaal|Totaal aantal binnenkomende mislukte aanvragen voor een notification hub|Er zijn geen dimensies|
 
 ## <a name="microsoftoperationalinsightsworkspaces"></a>Microsoft.OperationalInsights/workspaces
@@ -1399,8 +1399,8 @@ Azure Monitor biedt verschillende manieren om te communiceren met metrische gege
 |ActiveMessages|Aantal actieve berichten in een wachtrij/onderwerp. (Preview)|Count|Average|Aantal actieve berichten in een wachtrij/onderwerp. (Preview)|EntityName|
 |DeadletteredMessages|Aantal onbestelbare berichten in een wachtrij/onderwerp. (Preview)|Count|Average|Aantal onbestelbare berichten in een wachtrij/onderwerp. (Preview)|EntityName|
 |ScheduledMessages|Aantal geplande berichten in een wachtrij/onderwerp. (Preview)|Count|Average|Aantal geplande berichten in een wachtrij/onderwerp. (Preview)|EntityName|
-|CPUXNS|CPU-gebruik per naamruimte|Percent|Maximum|Metrische gegevens voor CPU-gebruik van service bus Premium-naam ruimte|Er zijn geen dimensies|
-|WSXNS|Geheugengebruik per naamruimte|Percent|Maximum|Metrische gegevens over geheugen gebruik voor service bus Premium-naam ruimte|Er zijn geen dimensies|
+|CPUXNS|CPU-gebruik per naam ruimte|Percent|Maximum|Metrische gegevens voor CPU-gebruik van service bus Premium-naam ruimte|Er zijn geen dimensies|
+|WSXNS|Gebruik van geheugen grootte per naam ruimte|Percent|Maximum|Metrische gegevens over geheugen gebruik voor service bus Premium-naam ruimte|Er zijn geen dimensies|
 
 ## <a name="microsoftservicefabricmeshapplications"></a>Microsoft.ServiceFabricMesh/applications
 
@@ -1441,11 +1441,11 @@ Azure Monitor biedt verschillende manieren om te communiceren met metrische gege
 |connection_successful|Geslaagde verbindingen|Count|Totaal|Geslaagde verbindingen|Er zijn geen dimensies|
 |connection_failed|Mislukte verbindingen|Count|Totaal|Mislukte verbindingen|Er zijn geen dimensies|
 |blocked_by_firewall|Geblokkeerd door de firewall|Count|Totaal|Geblokkeerd door de firewall|Er zijn geen dimensies|
-|constateer|Deadlocks|Count|Totaal|Impassen. Niet van toepassing op data warehouses.|Er zijn geen dimensies|
+|Constateer|Deadlocks|Count|Totaal|Impassen. Niet van toepassing op data warehouses.|Er zijn geen dimensies|
 |storage_percent|Percentage gebruikte gegevens ruimte|Percent|Maximum|Percentage van de database grootte. Niet van toepassing op data warehouses of grootschalige-data bases.|Er zijn geen dimensies|
 |xtp_storage_percent|Percentage OLTP-opslag in het geheugen|Percent|Average|Percentage OLTP-opslag in het geheugen. Niet van toepassing op data warehouses.|Er zijn geen dimensies|
-|workers_percent|Werknemerspercentage|Percent|Average|Werknemers percentage. Niet van toepassing op data warehouses.|Er zijn geen dimensies|
-|sessions_percent|Sessiepercentage|Percent|Average|Percentage sessies. Niet van toepassing op data warehouses.|Er zijn geen dimensies|
+|workers_percent|Percentage werkrollen|Percent|Average|Werknemers percentage. Niet van toepassing op data warehouses.|Er zijn geen dimensies|
+|sessions_percent|Percentage sessies|Percent|Average|Percentage sessies. Niet van toepassing op data warehouses.|Er zijn geen dimensies|
 |dtu_limit|DTU-limiet|Count|Average|DTU-limiet. Is van toepassing op DTU-gebaseerde data bases.|Er zijn geen dimensies|
 |dtu_used|DTU gebruikt|Count|Average|DTU gebruikt. Is van toepassing op DTU-gebaseerde data bases.|Er zijn geen dimensies|
 |cpu_limit|CPU-limiet|Count|Average|CPU-limiet. Is van toepassing op vCore-data bases.|Er zijn geen dimensies|
@@ -1458,7 +1458,7 @@ Azure Monitor biedt verschillende manieren om te communiceren met metrische gege
 |cache_hit_percent|Percentage cache treffers|Percent|Maximum|Percentage van cache treffer. Is alleen van toepassing op data warehouses.|Er zijn geen dimensies|
 |cache_used_percent|Percentage gebruikt cache|Percent|Maximum|Percentage gebruikt cache. Is alleen van toepassing op data warehouses.|Er zijn geen dimensies|
 |local_tempdb_usage_percent|Lokaal TempDB-percentage|Percent|Average|Lokaal TempDB-percentage. Is alleen van toepassing op data warehouses.|Er zijn geen dimensies|
-|app_cpu_billed|Gefactureerde app-CPU|Count|Totaal|App CPU gefactureerd. Is van toepassing op serverloze data bases.|Er zijn geen dimensies|
+|app_cpu_billed|App gefactureerd voor-CPU-gebruik|Count|Totaal|App CPU gefactureerd. Is van toepassing op serverloze data bases.|Er zijn geen dimensies|
 |app_cpu_percent|CPU-percentage van app|Percent|Average|CPU-percentage van de app. Is van toepassing op serverloze data bases.|Er zijn geen dimensies|
 |app_memory_percent|Percentage gebruikt geheugen van app|Percent|Average|Percentage gebruikt geheugen voor app. Is van toepassing op serverloze data bases.|Er zijn geen dimensies|
 |allocated_data_storage|Toegewezen gegevensruimte|Bytes|Average|Toegewezen gegevens ruimte. Niet van toepassing op data warehouses.|Er zijn geen dimensies|
@@ -1472,12 +1472,12 @@ Azure Monitor biedt verschillende manieren om te communiceren met metrische gege
 |log_write_percent|Percentage logboek-IO|Percent|Average|Percentage logboek-IO|Er zijn geen dimensies|
 |dtu_consumption_percent|DTU-percentage|Percent|Average|DTU-percentage. Is van toepassing op op DTU gebaseerde elastische Pools.|Er zijn geen dimensies|
 |storage_percent|Percentage gebruikte gegevens ruimte||Percent|Average|Opslag percentage|Er zijn geen dimensies|
-|workers_percent|Werknemerspercentage|Percent|Average|Werknemerspercentage|Er zijn geen dimensies|
-|sessions_percent|Sessiepercentage|Percent|Average|Sessiepercentage|Er zijn geen dimensies|
+|workers_percent|Percentage werkrollen|Percent|Average|Percentage werkrollen|Er zijn geen dimensies|
+|sessions_percent|Percentage sessies|Percent|Average|Percentage sessies|Er zijn geen dimensies|
 |eDTU_limit|eDTU-limiet|Count|Average|eDTU-limiet. Is van toepassing op op DTU gebaseerde elastische Pools.|Er zijn geen dimensies|
 |storage_limit|Maximale grootte van gegevens|Bytes|Average|Opslag limiet|Er zijn geen dimensies|
 |eDTU_used|eDTU gebruikt|Count|Average|eDTU gebruikt. Is van toepassing op op DTU gebaseerde elastische Pools.|Er zijn geen dimensies|
-|storage_used|Gebruikte gegevensruimte|Bytes|Average|Opslag gebruikt|Er zijn geen dimensies|
+|storage_used|Gebruikte gegevensruimte|Bytes|Average|Gebruikte opslag|Er zijn geen dimensies|
 |xtp_storage_percent|Percentage OLTP-opslag in het geheugen|Percent|Average|Percentage OLTP-opslag in het geheugen|Er zijn geen dimensies|
 |cpu_limit|CPU-limiet|Count|Average|CPU-limiet. Is van toepassing op op vCore gebaseerde elastische Pools.|Er zijn geen dimensies|
 |cpu_used|CPU gebruikt|Count|Average|CPU gebruikt. Is van toepassing op op vCore gebaseerde elastische Pools.|Er zijn geen dimensies|
@@ -1681,8 +1681,8 @@ Azure Monitor biedt verschillende manieren om te communiceren met metrische gege
 |AverageMemoryWorkingSet|Gemiddeld geheugenwerkset|Bytes|Average|Gemiddeld geheugenwerkset|Exemplaar|
 |AverageResponseTime|Gemiddelde reactietijd|Seconden|Average|Gemiddelde reactietijd|Exemplaar|
 |AppConnections|Verbindingen|Count|Average|Verbindingen|Exemplaar|
-|Ingangen|Aantal ingangen|Count|Average|Aantal ingangen|Exemplaar|
-|Threads|Aantal threads|Count|Average|Aantal threads|Exemplaar|
+|Formuleer|Aantal ingangen|Count|Average|Aantal ingangen|Exemplaar|
+|Lijnen|Aantal threads|Count|Average|Aantal threads|Exemplaar|
 |PrivateBytes|Privébytes|Bytes|Average|Privébytes|Exemplaar|
 |IoReadBytesPerSecond|I/O gelezen bytes per seconde|BytesPerSecond|Totaal|I/O gelezen bytes per seconde|Exemplaar|
 |IoWriteBytesPerSecond|I/O geschreven bytes per seconde|BytesPerSecond|Totaal|I/O geschreven bytes per seconde|Exemplaar|
@@ -1747,8 +1747,8 @@ Azure Monitor biedt verschillende manieren om te communiceren met metrische gege
 |FunctionExecutionUnits|Functie-uitvoeringseenheden|Count|Totaal|Functie-uitvoeringseenheden|Exemplaar|
 |FunctionExecutionCount|Aantal uitvoeringen van functie|Count|Totaal|Aantal uitvoeringen van functie|Exemplaar|
 |AppConnections|Verbindingen|Count|Average|Verbindingen|Exemplaar|
-|Ingangen|Aantal ingangen|Count|Average|Aantal ingangen|Exemplaar|
-|Threads|Aantal threads|Count|Average|Aantal threads|Exemplaar|
+|Formuleer|Aantal ingangen|Count|Average|Aantal ingangen|Exemplaar|
+|Lijnen|Aantal threads|Count|Average|Aantal threads|Exemplaar|
 |PrivateBytes|Privébytes|Bytes|Average|Privébytes|Exemplaar|
 |IoReadBytesPerSecond|I/O gelezen bytes per seconde|BytesPerSecond|Totaal|I/O gelezen bytes per seconde|Exemplaar|
 |IoWriteBytesPerSecond|I/O geschreven bytes per seconde|BytesPerSecond|Totaal|I/O geschreven bytes per seconde|Exemplaar|
@@ -1804,4 +1804,4 @@ Azure Monitor biedt verschillende manieren om te communiceren met metrische gege
 ## <a name="next-steps"></a>Volgende stappen
 * [Meer informatie over metrische gegevens in Azure Monitor](data-platform.md)
 * [Waarschuwingen maken voor metrische gegevens](alerts-overview.md)
-* [Metrische gegevens exporteren naar opslag, Event hub of Log Analytics](diagnostic-logs-overview.md)
+* [Metrische gegevens exporteren naar opslag, Event hub of Log Analytics](resource-logs-overview.md)

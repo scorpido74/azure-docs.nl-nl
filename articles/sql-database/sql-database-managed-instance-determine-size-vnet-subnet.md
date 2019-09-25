@@ -11,12 +11,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 ms.date: 02/22/2019
-ms.openlocfilehash: 4b627b13fb79cd5105a95d9161d9239f28f2e062
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 167e243b1fe4ea5ba9403ac3ca1fcea42f02f59a
+ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567509"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71273559"
 ---
 # <a name="determine-vnet-subnet-size-for-azure-sql-database-managed-instance"></a>De grootte van het VNet-subnet bepalen voor het beheerde exemplaar van Azure SQL Database
 
@@ -29,7 +29,7 @@ Wanneer u een beheerd exemplaar maakt, wijst Azure een aantal virtuele machines 
 Een beheerd exemplaar heeft standaard Mini maal 16 IP-adressen in een subnet nodig en kan Maxi maal 256 IP-adressen gebruiken. Als gevolg hiervan kunt u een subnetmasker tussen/28 en/24 gebruiken bij het definiëren van de IP-adresbereiken van uw subnet. Een netwerkmask van/28 (14 hosts per netwerk) is een goede grootte voor een implementatie met één algemeen doel of essentieel bedrijf. Een mask-bit van/27 (30 hosts per netwerk) is ideaal voor meerdere implementaties van beheerde exemplaren binnen hetzelfde VNet. Met de masker-bit-instellingen van/26 (62 hosts) en/24 (254-hosts) kunt u het VNet verder verg Roten of verkleinen om extra beheerde instanties te ondersteunen.
 
 > [!IMPORTANT]
-> Een subnet-grootte met 16 IP-adressen is het bare minimum met een beperkt potentieel voor het uitbreiden van het beheerde exemplaar. Het kiezen van een subnet met het voor voegsel/27 of hieronder wordt nadrukkelijk aanbevolen.
+> Een subnet-grootte met 16 IP-adressen is het bare minimum met een beperkt potentieel waarbij een schaal bewerking, zoals vCore grootte, niet wordt ondersteund. Het kiezen van een subnet met het voor voegsel/27 of het langste voor voegsel wordt sterk aanbevolen.
 
 ## <a name="determine-subnet-size"></a>De grootte van het subnet bepalen
 

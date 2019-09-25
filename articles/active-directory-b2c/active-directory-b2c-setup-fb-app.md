@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/08/2019
+ms.date: 09/26/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: c13f3166c50d9afc03125d66155ce654c84e5e0a
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 77b2fccaeba3cd1d164a3ce428c04083fd69fb5a
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71065237"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71264205"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-facebook-account-using-azure-active-directory-b2c"></a>Registratie instellen en aanmelden met een Facebook-account met Azure Active Directory B2C
 
@@ -25,20 +25,20 @@ Als u een Facebook-account wilt gebruiken als een [ID-provider](active-directory
 
 1. Meld u aan bij [Facebook voor ontwikkel aars](https://developers.facebook.com/) met de referenties van uw Facebook-account.
 1. Als u dit nog niet hebt gedaan, moet u zich registreren als Facebook-ontwikkelaar. U doet dit door aan de rechter bovenhoek van de pagina aan de **slag te gaan** , het beleid van Facebook te accepteren en de registratie stappen te volt ooien.
-1. Selecteer **mijn apps** en voeg vervolgens een **nieuwe app toe**.
+1. Selecteer **mijn apps** en maak vervolgens een **app**.
 1. Voer een **weergave naam** in en geef een geldig **e-mail adres voor de contact persoon op**.
-1. Klik op **App-ID maken**. Hiervoor moet u mogelijk het Facebook-platform beleid accepteren en een online beveiligings controle volt ooien.
+1. Selecteer **App-ID maken**. Hiervoor moet u mogelijk het Facebook-platform beleid accepteren en een online beveiligings controle volt ooien.
 1. Selecteer **instellingen** > **basis**.
 1. Kies bijvoorbeeld `Business and Pages`een categorie. Deze waarde is vereist voor Facebook, maar wordt niet gebruikt voor Azure AD B2C.
 1. Selecteer onder aan de pagina **platform toevoegen**en selecteer vervolgens **website**.
 1. `your-tenant-name` Voer`https://your-tenant-name.b2clogin.com/` in site-URL vervangen in met de naam van uw Tenant. Voer een URL in voor de URL van het **Privacybeleid**, `http://www.contoso.com`bijvoorbeeld. De beleids-URL is een pagina die u kunt onderhouden voor het verstrekken van privacy-informatie voor uw toepassing.
 1. Selecteer **Save changes**.
 1. Kopieer de waarde van de **App-ID**aan de bovenkant van de pagina.
-1. Klik op **weer geven** en kopieer de waarde van het **app-geheim**. U kunt beide gebruiken om Facebook te configureren als een id-provider in uw Tenant. **App-geheim** is een belang rijke beveiligings referentie.
+1. Selecteer **weer geven** en kopieer de waarde van het **app-geheim**. U kunt beide gebruiken om Facebook te configureren als een id-provider in uw Tenant. **App-geheim** is een belang rijke beveiligings referentie.
 1. Selecteer het plus teken naast **producten**en selecteer vervolgens **instellen** onder **Facebook-aanmelding**.
 1. Selecteer onder **Facebook-aanmelding**de optie **instellingen**.
-1. Voer`https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`in **geldige OAuth omleidings-uri's**in. Vervang `your-tenant-name` door de naam van uw Tenant. Klik onder aan de pagina op **wijzigingen opslaan** .
-1. Als u uw Facebook-toepassing beschikbaar wilt maken voor Azure AD B2C, klikt u op de status kiezer rechtsboven op de pagina en schakelt u deze **in** om de toepassing openbaar te maken en klikt u vervolgens op **bevestigen**.  Op dit moment moet de status worden gewijzigd van **ontwikkeling** naar **Live**.
+1. Voer`https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`in **geldige OAuth omleidings-uri's**in. Vervang `your-tenant-name` door de naam van uw Tenant. Selecteer **wijzigingen opslaan** onder aan de pagina.
+1. Als u uw Facebook-toepassing beschikbaar wilt maken voor Azure AD B2C, selecteert u in de rechter bovenhoek van de pagina de status kiezer en schakelt u deze **in** om de toepassing openbaar te maken en vervolgens **Switch modus**te selecteren.  Op dit moment moet de status worden gewijzigd van **ontwikkeling** naar **Live**.
 
 ## <a name="configure-a-facebook-account-as-an-identity-provider"></a>Een Facebook-account configureren als een id-provider
 

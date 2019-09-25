@@ -12,21 +12,18 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 09/15/2019
 ms.author: cithomas
-ms.openlocfilehash: 8cd76a67715898972aac8fc24707085883da8618
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 653710d2f57385fa6d608a501f72b0dde2f3bb46
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71174667"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71258496"
 ---
 # <a name="application-insights-for-worker-service-applications-non-http-applications"></a>Application Insights voor Worker-service toepassingen (niet-HTTP-toepassingen)
 
 Application Insights brengt een nieuwe SDK uit, `Microsoft.ApplicationInsights.WorkerService`die het meest geschikt is voor niet-http-workloads zoals Messa ging, achtergrond taken, console toepassingen, enzovoort. Deze typen toepassingen hebben niet het principe van een binnenkomende HTTP-aanvraag, zoals een traditionele ASP.NET/ASP.NET core-webtoepassing, en daarom wordt het gebruik van Application Insights-pakketten voor [ASP.net](asp-net.md) of [ASP.net core](asp-net-core.md) toepassingen niet ondersteund.
 
 De nieuwe SDK voert geen telemetrie-verzameling op zichzelf uit. In plaats daarvan wordt een andere bekende Application Insights automatische verzamelaars zoals [DependencyCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector/), [PerfCounterCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.PerfCounterCollector/), [ApplicationInsightsLoggingProvider](https://www.nuget.org/packages/Microsoft.Extensions.Logging.ApplicationInsights) enz. Deze SDK bevat uitbreidings methoden `IServiceCollection` om telemetrie-verzameling in te scha kelen en te configureren.
-
-> [!NOTE]
-> Dit artikel is een nieuw pakket van Application Insights SDK voor Worker-Services. Dit pakket is momenteel beschikbaar als een bèta pakket. Dit document wordt bijgewerkt wanneer er een stabiel pakket beschikbaar is.
 
 ## <a name="supported-scenarios"></a>Ondersteunde scenario's
 
@@ -43,7 +40,7 @@ Een geldige Application Insights instrumentatie sleutel. Deze sleutel is vereist
 
 ```xml
     <ItemGroup>
-        <PackageReference Include="Microsoft.ApplicationInsights.WorkerService" Version="2.8.0-beta3" />
+        <PackageReference Include="Microsoft.ApplicationInsights.WorkerService" Version="2.8.0" />
     </ItemGroup>
 ```
 
@@ -299,7 +296,7 @@ Hieronder ziet u de volledige telemetrie die automatisch is verzameld door Appli
 
 ### <a name="live-metrics"></a>Live Metrics
 
-[Live Metrics](https://docs.microsoft.com/azure/application-insights/app-insights-live-stream) kunnen worden gebruikt om snel te controleren of Application Insights correct is ingesteld. Het kan enkele minuten duren voordat telemetrie in de portal en de analyse wordt weer gegeven. met Live metrische gegevens wordt het CPU-gebruik van het actieve proces in bijna realtime weer gegeven. Het kan ook andere telemetrie weer geven, zoals aanvragen, afhankelijkheden, traceringen, enzovoort.
+[Live Metrics](https://docs.microsoft.com/azure/application-insights/app-insights-live-stream) kunnen worden gebruikt om snel te controleren of Application Insights bewaking op de juiste wijze is geconfigureerd. Het kan enkele minuten duren voordat telemetrie in de portal en de analyse wordt weer gegeven. met Live metrische gegevens wordt het CPU-gebruik van het actieve proces in bijna realtime weer gegeven. Het kan ook andere telemetrie weer geven, zoals aanvragen, afhankelijkheden, traceringen, enzovoort.
 
 ### <a name="ilogger-logs"></a>ILogger-logboeken
 
@@ -311,31 +308,7 @@ De afhankelijkheids verzameling is standaard ingeschakeld. In [Dit](asp-net-depe
 
 ### <a name="eventcounter"></a>Event Counter
 
-[Event Counter](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.Tracing/documentation/EventCounterTutorial.md)is een platformoverschrijdende methode voor het publiceren en gebruiken van tellers in .NET/.net core. Hoewel deze functie voorheen bestond, waren er geen ingebouwde providers die deze items hebben gepubliceerd. Vanaf .NET Core 3,0 worden verschillende tellers uit het vak gepubliceerd, zoals CLR-tellers, CPU etc.
-
-Standaard verzamelt de SDK de volgende prestatie meter items (alleen beschikbaar in .NET Core 3,0 of hoger) en kunnen deze prestatie meter items worden opgevraagd in Metrics Explorer of door gebruik te maken van een analyse query die gericht is op de tabel Performance Counter. De naam van de prestatie meter items heeft de indeling ' Category | Teller ".
-
-|Categorie | Teller|
-|---------------|-------|
-|`System.Runtime` | `cpu-usage` |
-|`System.Runtime` | `working-set` |
-|`System.Runtime` | `gc-heap-size` |
-|`System.Runtime` | `gen-0-gc-count` |
-|`System.Runtime` | `gen-1-gc-count` |
-|`System.Runtime` | `gen-2-gc-count` |
-|`System.Runtime` | `time-in-gc` |
-|`System.Runtime` | `gen-0-size` |
-|`System.Runtime` | `gen-1-size` |
-|`System.Runtime` | `gen-2-size` |
-|`System.Runtime` | `loh-size` |
-|`System.Runtime` | `alloc-rate` |
-|`System.Runtime` | `assembly-count` |
-|`System.Runtime` | `exception-count` |
-|`System.Runtime` | `threadpool-thread-count` |
-|`System.Runtime` | `monitor-lock-contention-count` |
-|`System.Runtime` | `threadpool-queue-length` |
-|`System.Runtime` | `threadpool-completed-items-count` |
-|`System.Runtime` | `active-timer-count` |
+`EventCounterCollectionModule`is standaard ingeschakeld en er wordt een standaardset tellers van .NET Core 3,0-apps verzameld. De [Event Counter](eventcounters.md) zelf studie bevat de standaardset met verzamelde items. Het bevat ook instructies voor het aanpassen van de lijst.
 
 ### <a name="manually-tracking-additional-telemetry"></a>Hand matig extra telemetrie bijhouden
 

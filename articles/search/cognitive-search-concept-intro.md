@@ -5,16 +5,15 @@ manager: nitinme
 author: HeidiSteen
 services: search
 ms.service: search
-ms.subservice: cognitive-search
 ms.topic: overview
 ms.date: 08/15/2019
 ms.author: heidist
-ms.openlocfilehash: 4987c17eabf5d9e140352e3581b38a7d29049c5f
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: aa8ab3a3bc2f243e8b0ee404228926ef46bc46db
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69899965"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266393"
 ---
 # <a name="what-is-cognitive-search-in-azure-search"></a>Wat is ' cognitieve zoek functie ' in Azure Search?
 
@@ -98,7 +97,7 @@ Indexen worden gegenereerd op basis van een index schema waarmee de velden, kenm
 
 | Concept | Description| Koppelingen |
 |---------|------------|-------|
-| Vaardig heden | Een resource op het hoogste niveau met een verzameling van vaardig heden. Een vakkennisset is de verrijkings pijplijn. De functie wordt aangeroepen tijdens het indexeren door een Indexeer functie. | [Een vaardig heden definiëren](cognitive-search-defining-skillset.md) |
+| Vaardighedenset | Een resource op het hoogste niveau met een verzameling van vaardig heden. Een vakkennisset is de verrijkings pijplijn. De functie wordt aangeroepen tijdens het indexeren door een Indexeer functie. | [Een vaardig heden definiëren](cognitive-search-defining-skillset.md) |
 | Cognitieve vaardigheid | Een Atomic-trans formatie in een verrijkings pijplijn. Vaak is het een onderdeel dat de structuur extraheert of afleidt, en waarmee u uw inzichten in de invoer gegevens kunt verbeteren. Bijna altijd is de uitvoer op tekst gebaseerd en de verwerking is natuurlijke taal verwerking of afbeeldings verwerking, die tekst uit de afbeeldings invoer extraheert of genereert. Uitvoer van een vaardigheid kan worden toegewezen aan een veld in een index of worden gebruikt als invoer voor een downstream-verrijking. Een vaardigheid is vooraf gedefinieerd en wordt verzorgd door micro soft, of aangepast: gemaakt en geïmplementeerd door u. | [Vooraf gedefinieerde vaardig heden](cognitive-search-predefined-skills.md) |
 | Ophalen van gegevens | Bevat een breed scala aan verwerking, maar heeft betrekking op cognitieve zoek acties, de kwalificatie voor entiteits herkenning wordt meestal gebruikt voor het extra heren van gegevens (een entiteit) van een bron die deze informatie niet zelf verstrekt. | [Vaardigheid van entiteits herkenning](cognitive-search-skill-entity-recognition.md)| 
 | Verwerking van installatiekopieën | Hiermee wordt tekst afgeleid van een afbeelding, zoals de mogelijkheid om een oriëntatie punt te herkennen of tekst uit een afbeelding uit te pakken. Veelvoorkomende voor beelden zijn onder andere OCR voor het opheffen van tekens uit een gescand document bestand (JPEG) of het herkennen van een straat naam in een foto met een straat teken. | [Vaardigheid van afbeeldings analyse](cognitive-search-skill-image-analysis.md) of [OCR-vaardigheid](cognitive-search-skill-ocr.md)

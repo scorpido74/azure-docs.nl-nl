@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/20/2018
 ms.author: magoedte
-ms.openlocfilehash: 9fac349657340486674e4a899b21821b45cc0703
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 46045664e9ddeebc45c2dae7c1f0a9f6a0d6b004
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69982593"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71265173"
 ---
 # <a name="gather-insights-about-your-dns-infrastructure-with-the-dns-analytics-preview-solution"></a>Verzamel inzichten over uw DNS-infrastructuur met de oplossing DNS Analytics Preview
 
@@ -179,6 +179,12 @@ U kunt een query maken op de pagina zoeken in Logboeken. U kunt uw zoekresultate
 1. In de **query zoekvak**, type `DnsInventory` om alle DNS-inventarisatie-gerelateerde gegevens voor de DNS-servers worden beheerd door de oplossing weer te geven. De lijst met resultaten de logboekgegevens voor DNS-servers, DNS-zones en resourcerecords.
 
     ![Zoeken in Logboeken DnsInventory](./media/dns-analytics/log-search-dnsinventory.png)
+    
+### <a name="troubleshooting"></a>Problemen oplossen
+
+Commopn stappen voor probleem oplossing:
+
+1. Ontbrekende DNS-Zoek gegevens: als u dit probleem wilt oplossen, probeert u het configuratie bestand opnieuw in te stellen of zojuist de configuratie pagina in de portal te laden. Als u de instelling opnieuw wilt instellen, wijzigt u een instelling in een andere waarde, wijzigt u deze in de oorspronkelijke waarde en slaat u de configuratie op.
 
 ## <a name="feedback"></a>Feedback
 

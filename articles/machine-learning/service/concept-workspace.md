@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 08/06/2019
-ms.openlocfilehash: 84aad0f1a797bb7eccf1872bd291e72ecefa7eee
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 677a52572658f80d9cde4de28dd02d6e957407d2
+ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71035327"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71269201"
 ---
 # <a name="what-is-an-azure-machine-learning-workspace"></a>Wat is een Azure Machine Learning-werk ruimte?
 
@@ -87,7 +87,7 @@ Er zijn meerdere manieren om een werk ruimte te maken.
 * Gebruik de [Azure Portal](how-to-manage-workspace.md) voor een punt-en-klik-interface om elke stap stapsgewijs te door lopen.
 * De [Azure machine learning SDK voor python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py#workspace) gebruiken om een werk ruimte te maken in de vlucht vanuit Python-scripts of Jupiter-notebooks
 * Gebruik een [Azure Resource Manager sjabloon](how-to-create-workspace-template.md) of de [Azure machine learning cli](reference-azure-machine-learning-cli.md) wanneer u het maken van de zakelijke beveiligings normen wilt automatiseren of aanpassen.
-* Als u in Visual Studio code werkt, gebruikt u de [VS code-extensie](how-to-vscode-tools.md#get-started-with-azure-machine-learning).
+* Als u in Visual Studio code werkt, gebruikt u de [VS code-extensie](how-to-vscode-tools.md#get-started-with-azure-machine-learning-for-visual-studio-code).
 
 ## <a name="resources"></a>Gekoppelde resources
 

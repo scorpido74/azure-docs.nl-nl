@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.author: dacurwin
-ms.openlocfilehash: 85c0cbc1e516730018f80e1978ba565e311117fe
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: ab03056557c7c67c5b75d701c9995c9ad500caae
+ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71018174"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71268781"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Azure Backup fout oplossen: Problemen met de agent of uitbrei ding
 
@@ -110,7 +110,7 @@ Nadat u een virtuele machine voor de Azure Backup-service hebt geregistreerd en 
 **Fout code**: UserErrorUnsupportedDiskSize <br>
 **Fout bericht**: De geconfigureerde schijf grootte (s) wordt momenteel niet ondersteund door Azure Backup. <br>
 
-De back-upbewerking kan mislukken bij het maken van een back-up van een virtuele machine met een schijf grootte van meer dan 30 TB. Het maken van een back-up van versleutelde schijven die groter zijn dan 4 TB, wordt momenteel niet ondersteund. Zorg ervoor dat de schijf grootte (s) kleiner is dan of gelijk is aan de ondersteunde limiet door de schijven te splitsen.
+De back-upbewerking kan mislukken bij het maken van een back-up van een virtuele machine met een schijf grootte van meer dan 30 TB. Het maken van een back-up van versleutelde schijven met een grootte van meer dan 4 TB wordt momenteel niet ondersteund. Zorg ervoor dat de schijf grootte (s) kleiner is dan of gelijk is aan de ondersteunde limiet door de schijven te splitsen.
 
 ## <a name="usererrorbackupoperationinprogress---unable-to-initiate-backup-as-another-backup-operation-is-currently-in-progress"></a>UserErrorBackupOperationInProgress: kan geen back-up initiëren omdat er momenteel een andere back-upbewerking wordt uitgevoerd
 
@@ -233,7 +233,11 @@ Bij het uitvoeren van deze stappen wordt de extensie opnieuw geïnstalleerd tijd
 
 ### <a name="clean_up_restore_point_collection"></a>Herstel punt verzameling opruimen
 
-Na het verwijderen van de vergren deling, moeten de herstel punten worden opgeruimd. Volg een van de volgende methoden om de herstel punten op te schonen:<br>
+Na het verwijderen van de vergren deling, moeten de herstel punten worden opgeruimd.
+
+Als u de resource groep van de virtuele machine of de virtuele machine zelf verwijdert, blijven de moment opnamen voor direct terugzetten van beheerde schijven actief en verlopen op basis van de Bewaar termijn. Als u de moment opnamen voor direct terugzetten wilt verwijderen (als u deze niet meer nodig hebt) die zijn opgeslagen in de herstel punt verzameling, reinigt u de verzameling met herstel punten op basis van de onderstaande stappen.
+
+Volg een van de volgende methoden om de herstel punten op te schonen:<br>
 
 - [Herstel punt verzameling opschonen door ad hoc-back-up uit te voeren](#clean-up-restore-point-collection-by-running-ad-hoc-backup)<br>
 - [Herstel punt verzameling opschonen van Azure Portal](#clean-up-restore-point-collection-from-azure-portal)<br>

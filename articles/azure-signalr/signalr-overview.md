@@ -1,19 +1,19 @@
 ---
-title: Wat is Azure SignalR Service?
-description: Een overzicht van de Azure SignalR-Service.
+title: Wat is de Azure signalerings service?
+description: Een overzicht van de Azure signalerings service.
 author: sffamily
 ms.service: signalr
 ms.topic: overview
 ms.date: 06/20/2019
 ms.author: zhshang
-ms.openlocfilehash: dc7ba3585ec49921c0a0e66185fc5550d3d4a006
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: e7bdc62f7fa46bbacce7f264d8f331ea64b05430
+ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67303624"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71273697"
 ---
-# <a name="what-is-azure-signalr-service"></a>Wat is Azure SignalR Service?
+# <a name="what-is-azure-signalr-service"></a>Wat is de Azure signalerings service?
 
 Met de service Azure SignalR wordt het proces van het toevoegen van realtimewebfunctionaliteit aan toepassingen via HTTP vereenvoudigd. Dankzij deze realtimefunctionaliteit kunnen via de service inhoudsupdates worden gepusht naar verbonden clients, zoals een enkele webpagina of mobiele toepassing. Zo worden clients bijgewerkt zonder de server te hoeven pollen of nieuwe HTTP-bijwerkaanvragen te hoeven verzenden.
 
@@ -22,55 +22,55 @@ In dit artikel vindt u een overzicht van de service Azure SignalR.
 
 ## <a name="what-is-azure-signalr-service-used-for"></a>Waarvoor wordt de service Azure SignalR gebruikt?
 
-Elk scenario waarvoor het pushen van gegevens van server naar de client in realtime, kan Azure SignalR Service kunt gebruiken.
+Elk scenario waarvoor het pushen van gegevens van de server naar de client in realtime is vereist, kan de Azure signalerings service gebruiken.
 
-Traditionele realtime functies die vaak polling van server vereisen, kunt ook Azure SignalR Service gebruiken.
+Traditionele realtime-functies waarvoor vaak polling van de server nodig is, kunnen ook gebruikmaken van de service Azure signalering.
 
-Azure SignalR-Service is gebruikt in een groot aantal bedrijfstakken, voor elk toepassingstype waarvoor realtime inhoudsupdates. Wij enkele voorbeelden die geschikt zijn voor het gebruik van Azure SignalR Service zijn in de lijst:
+De Azure Signalr-service is in een groot aantal branches gebruikt voor elk toepassings type waarvoor realtime-inhouds updates zijn vereist. We vermelden enkele voor beelden die geschikt zijn voor het gebruik van de Azure signalerings service:
 
-* **Hoge frequentie Gegevensupdates:** spelen van games, stemmen, polling, veiling.
-* **Dashboards en -bewaking:** bedrijfsgegevens dashboard, financiële markt, bijwerking van directe verkoop, game ranglijst voor meerdere spelers en bewaking van IoT.
-* **Chat:** live chatruimte, chatbot, online klantondersteuning, realtime winkelwagen assistant, messenger, in-game chat, enzovoort.
-* **Realtime locatie op de kaart:** logistieke bijhouden, levering status bijhouden, transport statusupdates, GPS-apps.
-* **Realtime gerichte advertenties:** gepersonaliseerde lezen tijd push advertenties en aanbiedingen, interactieve advertenties.
-* **Apps in samenwerkingsverband:** cocreatie, whiteboard apps en voldoen aan de software-team.
-* **Pushmeldingen verzenden:** sociale netwerken, e-mail, game, reizen waarschuwing.
-* **Realtime broadcasting:** live uitzenden audio/video, live uitzenden van closed captioning, vertalen, gebeurtenissen/nieuws.
-* **IoT en verbonden apparaten:** realtime IoT-metrische gegevens, beheer op afstand, realtimestatussen en locatie bijhouden.
-* **Automation:** realtime trigger van de upstream-gebeurtenissen.
+* **Gegevens updates met hoge frequentie:** gaming, stem, polling, veiling.
+* **Dash boards en bewaking:** bedrijfs dashboard, financiële markt gegevens, direct verkoop update, Game leider van het spel voor meerdere spelers en IOT-bewaking.
+* **Chat:** live chat room, chat bot, on line klant ondersteuning, realtime boodschappen assistentie, Mess enger, chatten in games, enzovoort.
+* **Real-time locatie op kaart:** logistiek volgen, bezorgings status bijhouden, transport status updates, GPS-Apps.
+* **Real-time gerichte advertenties:** gepersonaliseerde realtime push advertenties en aanbiedingen, interactieve advertenties.
+* **Samenwerkings toepassingen:** cocreatie, White Board-apps en software voor team vergaderingen.
+* **Push meldingen:** sociaal netwerk, e-mail, Game, reis waarschuwing.
+* **Realtime-uitzending:** live audio/video-uitzending, Live ondertiteling, trans acties/nieuws uitzending.
+* **IOT en verbonden apparaten:** realtime IOT-metrische gegevens, beheer op afstand, realtime status en bijhouden van locaties.
+* **Automation:** realtime activeren vanuit upstream-gebeurtenissen.
 
-## <a name="what-are-the-benefits-using-azure-signalr-service"></a>Wat zijn de voordelen met Azure SignalR Service?
+## <a name="what-are-the-benefits-using-azure-signalr-service"></a>Wat zijn de voor delen van het gebruik van de Azure signalerings service?
 
-**Standaard op basis van:**
+**Standaard gebaseerd:**
 
 SignalR biedt een aantal verschillende technieken voor het bouwen van realtimewebtoepassingen. [WebSockets](https://wikipedia.org/wiki/WebSocket) is de optimale transportmethode, maar als bepaalde opties niet beschikbaar zijn, worden ook andere methoden zoals [SSE (Server-Sent Events)](https://wikipedia.org/wiki/Server-sent_events) en Long Polling gebruikt. In SignalR wordt automatisch de juiste transportmethode gedetecteerd en geïnitialiseerd, afhankelijk van welke functies op de server en de client worden ondersteund.
 
-**Systeemeigen ondersteuning voor ASP.NET Core:**
+**Ondersteuning voor systeem eigen ASP.NET Core:**
 
-SignalR-Service biedt systeemeigen programmeren met ASP.NET Core en ASP.NET. Het ontwikkelen van nieuwe SignalR-toepassing met SignalR-Service of migreren van bestaande SignalR is op basis van de toepassing met SignalR-Service vereist minimale inspanningen.
-SignalR-Service biedt ook ondersteuning voor nieuwe functie van ASP.NET Core, Server-side Blazor.
+De Signa lering-service biedt systeem eigen programmerings ervaring met ASP.NET Core en ASP.NET. Het ontwikkelen van een nieuwe seingevings toepassing met de seingevings service of het migreren van een bestaande toepassing op basis van een Signa lering naar de signaal service vereist minimale inspanningen.
+De Signa lering-service biedt ook ondersteuning voor de nieuwe functie van ASP.NET Core, aan de server zijde.
 
-**Clientondersteuning voor brede:**
+**Uitgebreide ondersteuning voor clients:**
 
-SignalR-Service werkt met een breed scala aan clients, zoals web en mobiele browsers, bureaublad-apps, mobiele apps, server-proces, IoT-apparaten en spelconsoles. SignalR-Service biedt SDK's in verschillende talen. Naast de systeemeigen ASP.NET Core- of ASP.NET C# SDK's, SignalR-Service biedt ook JavaScript-client-SDK, om in te schakelen webclients en veel JavaScript-frameworks. SDK voor Java-client wordt ook ondersteund voor Java-toepassingen, met inbegrip van systeemeigen Android-apps. REST-API biedt ondersteuning voor SignalR-Service en serverloze via integratie met Azure Functions en Event Grid.
+De signalerings service werkt met een breed scala aan clients, zoals web-en mobiele browsers, desktop-apps, mobiele apps, Server proces, IoT-apparaten en spel consoles. De Signa lering-service biedt Sdk's in verschillende talen. Naast systeem eigen ASP.NET Core-of ASP.NET C# Sdk's biedt signalr service ook Java script-client-SDK, voor het inschakelen van webclients en vele java script-frameworks. De Java-client-SDK wordt ook ondersteund voor Java-toepassingen, waaronder systeem eigen Android-apps. De Signa lering-service ondersteunt REST API en serverloos via integraties met Azure Functions en Event Grid.
 
-**Verwerken van grootschalige clientverbindingen:**
+**Grootschalige client verbindingen verwerken:**
 
-SignalR-Service is ontworpen voor grootschalig realtime-toepassingen. SignalR-Service kunnen meerdere exemplaren kunnen samenwerken om te schalen naar miljoenen-clientverbindingen. De service ondersteunt ook meerdere wereldwijde regio's voor sharding, hoge beschikbaarheid en noodherstel.
+De Signa lering-service is ontworpen voor grootschalige realtime toepassingen. Met de seingevings service kunnen meerdere instanties samen werken om te schalen naar miljoenen client verbindingen. De service ondersteunt ook meerdere globale regio's voor sharding, hoge Beschik baarheid of herstel na nood gevallen.
 
-**De overhead voor het hosten van SignalR zelf verwijderen:**
+**Verwijder de last-to-host-Signa lering:**
 
-Vergeleken met de zelf-hostend SignalR-toepassingen, wordt overschakelen naar SignalR-Service de noodzaak voor het beheren van vorige vlakken die verwerking van de schaal en -clientverbindingen. De volledig beheerde service ook webtoepassingen vereenvoudigt en worden opgeslagen die als host fungeert kosten. SignalR-Service biedt wereldwijd bereik en eersteklas datacenter en netwerk, kan worden geschaald naar miljoenen verbindingen, garandeert SLA, terwijl alle naleving en beveiliging op Azure standard.
+Vergeleken met zelf-hostende seingevings toepassingen, wordt door het overschakelen naar de signaal service de nood zaak voor het beheren van back-upabonnementen voor het verwerken van schalen en client verbindingen verwijderd. De volledig beheerde service vereenvoudigt ook webtoepassingen en bespaart kosten voor hosting. De Signa lering-service biedt wereld wijd bereik en hoogwaardige Data Center en netwerk, schaalt naar miljoenen verbindingen, garandeert de SLA en biedt alle compatibiliteit en beveiliging van Azure Standard.
 
-![Beheerde SignalR-Service](./media/signalr-overview/managed-signalr-service.png)
+![Beheerde Signa lering-service](./media/signalr-overview/managed-signalr-service.png)
 
-**Bieden rijke API's voor verschillende berichtpatronen:**
+**Bieden uitgebreide Api's voor verschillende bericht patronen:**
 
-SignalR-Service kan de server berichten te verzenden naar een bepaalde verbinding, alle verbindingen, of een subset van verbindingen die deel uitmaken van een specifieke gebruiker of in een willekeurige groep zijn geplaatst.
+Met de seingevings service kan de server berichten verzenden naar een bepaalde verbinding, alle verbindingen of een subset van verbindingen die tot een specifieke gebruiker behoren of in een wille keurige groep zijn geplaatst.
 
 ## <a name="how-to-use-azure-signalr-service"></a>De service Azure SignalR gebruiken
 
-Er zijn veel verschillende manieren om te programmeren met Azure SignalR Service als sommige van de voorbeelden die hier worden vermeld:
+Er zijn veel verschillende manieren om te Program meren met de Azure signalerings service, op enkele van de voor beelden die hier worden weer gegeven:
 
 - **[Een ASP.NET Core SignalR-app schalen](signalr-concept-scale-aspnet-core.md)** : integreer de service Azure SignalR met een ASP.NET Core SignalR-toepassing om uit te schalen naar duizenden verbindingen.
 - **[Serverloze realtimeapps bouwen](signalr-concept-azure-functions.md)** : gebruik de integratie van Azure Functions met de service Azure SignalR om serverloze realtimetoepassingen te bouwen in talen zoals JavaScript, C# en Java.

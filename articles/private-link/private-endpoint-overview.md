@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: 7394a9e1b1fa90741bc26fc0e9b6b7e6284d75e0
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 80f2e8a8fd41fbafbaf6d30bc1001b86c5dcdd50
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71104682"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266372"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Wat is een persoonlijk Azure-eind punt?
 
@@ -43,7 +43,7 @@ Hier volgen enkele belang rijke informatie over persoonlijke eind punten:
  
 - Er kunnen meerdere persoonlijke eind punten worden gemaakt met behulp van dezelfde persoonlijke koppelings resource. Voor één netwerk dat gebruikmaakt van een gemeen schappelijke DNS-server configuratie, is het aanbevolen een enkel persoonlijk eind punt te gebruiken voor een bepaalde persoonlijke koppelings bron om dubbele vermeldingen of conflicten in DNS-omzetting te voor komen. 
  
-- Meerdere persoonlijke eind punten kunnen worden gemaakt op dezelfde of verschillende subnetten binnen hetzelfde virtuele netwerk. Er zijn limieten voor het aantal privé-eind punten dat u in een abonnement kunt maken. Zie [Azure-limieten](https://docs.microsoft.com/azure/azure-subscription-service-limits.md#networking-limits)voor meer informatie.
+- Meerdere persoonlijke eind punten kunnen worden gemaakt op dezelfde of verschillende subnetten binnen hetzelfde virtuele netwerk. Er zijn limieten voor het aantal privé-eind punten dat u in een abonnement kunt maken. Zie [Azure-limieten](https://docs.microsoft.com/azure/azure-subscription-service-limits#networking-limits)voor meer informatie.
 
 
  

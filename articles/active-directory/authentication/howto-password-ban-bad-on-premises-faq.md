@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 74f81cb1f9b62755d2dd2707518b828466e9ed1b
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 2c2e737360d6b1eeb8df28a95b8c36d4cca80ee4
+ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71097573"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71268660"
 ---
 # <a name="azure-ad-password-protection-on-premises---frequently-asked-questions"></a>On-premises Veelgestelde vragen over Azure AD-wachtwoord beveiliging
 
@@ -100,6 +100,8 @@ Nee. Omdat de proxy server stateless is, is het niet belang rijk welke specifiek
 **V: Is het een goed hulp middel om de Azure AD-proxy service voor wachtwoord beveiliging te implementeren naast andere services, zoals Azure AD Connect?**
 
 Ja. De Azure AD-proxy service voor wachtwoord beveiliging en Azure AD Connect mogen nooit direct met elkaar conflicteren.
+
+Helaas is er een incompatibiliteit gevonden tussen de versie van de Microsoft Azure AD connect agent Updater-service die is geïnstalleerd door de Azure AD-proxy software voor wachtwoord beveiliging en de versie van de service die is geïnstalleerd door [Azure Active Application proxy](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy) -software van de Directory. Deze incompatibiliteit kan ertoe leiden dat de agent Updater-service geen verbinding kan maken met Azure voor software-updates. Het wordt niet aanbevolen om Azure AD-wachtwoord beveiligings proxy en Azure Active Directory-toepassingsproxy op dezelfde computer te installeren.
 
 **V: In welke volg orde moeten de DC-agents en-proxy's worden geïnstalleerd en geregistreerd?**
 

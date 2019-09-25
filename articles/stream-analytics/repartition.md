@@ -7,12 +7,12 @@ ms.author: mamccrea
 ms.date: 09/19/2019
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: 82e4a225d26bac04ed4754169cc4a79e0a8f9b32
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: fcbef434d3b88c20cdaaeab92a973e5fbe41680d
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71101513"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266448"
 ---
 # <a name="use-repartitioning-to-optimize-processing-with-azure-stream-analytics"></a>Opnieuw partitioneren gebruiken om de verwerking met Azure Stream Analytics te optimaliseren
 
@@ -56,7 +56,7 @@ Experimenteer en Bekijk het resource gebruik van uw taak om het exacte aantal pa
 
 Wanneer uw taak SQL database voor uitvoer gebruikt, gebruikt u expliciete herpartitionering om het maximale aantal partities te maximaliseren. Omdat SQL het meest geschikt is voor acht schrijvers, moet u de stroom opnieuw partitioneren naar acht vóór het leegmaken of ergens anders, waardoor de taak prestaties kunnen worden verzorgd. 
 
-Wanneer er meer dan 8 invoer partities zijn, is het overnemen van het schema voor de invoer partitie mogelijk niet de juiste keuze. Overweeg in uw query om het aantal uitvoer schrijvers [expliciet op te](/stream-analytics-query/into-azure-stream-analytics.md#into-shard-count) geven. 
+Wanneer er meer dan 8 invoer partities zijn, is het overnemen van het schema voor de invoer partitie mogelijk niet de juiste keuze. Overweeg in uw query om het aantal uitvoer schrijvers [expliciet op te](/stream-analytics-query/into-azure-stream-analytics#into-shard-count) geven. 
 
 In het volgende voor beeld wordt gelezen van de invoer, ongeacht of het op natuurlijke wijze is gepartitioneerd, en wordt de stroom tienvoudige opnieuw gepartitioneerd volgens de DeviceID-dimensie en worden de gegevens verwijderd naar uitvoer. 
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/21/2019
 ms.author: apimpm
-ms.openlocfilehash: cfb4bda597b2b7ab4658244c46253f5118723402
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 3201edd3b90d6db1393286db688b24065ea8dc6b
+ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073807"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71273546"
 ---
 # <a name="api-management-access-restriction-policies"></a>API Management restrictie beleid voor toegang
 
@@ -27,8 +27,8 @@ In dit onderwerp vindt u een verwijzing naar de volgende API Management-beleids 
 ## <a name="AccessRestrictionPolicies"></a>Toegangs restrictie beleid
 
 -   [Controleer de http-header](api-management-access-restriction-policies.md#CheckHTTPHeader) : Hiermee wordt het bestaan en/of de waarde van een http-header afgedwongen.
--   De aanroepen per [abonnement beperken](api-management-access-restriction-policies.md#LimitCallRate) : hiermee voor komt u dat het API-gebruik piekt door de oproep frequentie te beperken, op basis van een abonnement.
--   Beperk de aanroepen per [sleutel](#LimitCallRateByKey) : Hiermee wordt voor komen dat het API-gebruik pieken oploopt door de oproep frequentie per sleutel te beperken.
+-   De [aanroepen per abonnement beperken](api-management-access-restriction-policies.md#LimitCallRate) : hiermee voor komt u dat het API-gebruik piekt door de oproep frequentie te beperken, op basis van een abonnement.
+-   [Beperk de aanroepen per sleutel](#LimitCallRateByKey) : Hiermee wordt voor komen dat het API-gebruik pieken oploopt door de oproep frequentie per sleutel te beperken.
 -   [Aanroeper Ip's beperken](api-management-access-restriction-policies.md#RestrictCallerIPs) : filters (toestaan/weigeren) aanroepen van specifieke IP-adressen en/of adresbereiken.
 -   [Gebruiks quotum per abonnement instellen](api-management-access-restriction-policies.md#SetUsageQuota) : Hiermee kunt u een Verleng bare of levensduur oproep volume en/of bandbreedte quota afdwingen op basis van elk abonnement.
 -   [Gebruiks quotum instellen op sleutel](#SetUsageQuotaByKey) : Hiermee kunt u een Verleng bare of levensduur oproep volume en/of bandbreedte quotum per sleutel afdwingen.
@@ -122,7 +122,7 @@ Het `rate-limit` beleid voor komt dat het API-gebruik piekt per abonnement door 
 
 | Name      | Description                                                                                                                                                                                                                                                                                              | Vereist |
 | --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-| set-limit | Hoofd element.                                                                                                                                                                                                                                                                                            | Ja      |
+| frequentie limiet | Hoofd element.                                                                                                                                                                                                                                                                                            | Ja      |
 | api       | Voeg een of meer van deze elementen toe om een aanroep frequentie limiet te leggen voor Api's binnen het product. De limieten voor product-en API-aanroepen worden onafhankelijk toegepast. Naar de API kan worden verwezen via `name` of `id`. Als beide kenmerken worden gegeven, `id` wordt gebruikt en `name` wordt deze genegeerd.                    | Nee       |
 | operation | Voeg een of meer van deze elementen toe om een aanroep frequentie limiet in te stellen voor bewerkingen binnen een API. Product-, API-en bewerkings frequentie limieten worden onafhankelijk toegepast. U kunt naar de bewerking verwijzen via `name` of `id`. Als beide kenmerken worden gegeven, `id` wordt gebruikt en `name` wordt deze genegeerd. | Nee       |
 
@@ -185,9 +185,9 @@ In het volgende voor beeld wordt de frequentie limiet ingesteld op basis van het
 
 ### <a name="elements"></a>Elementen
 
-| Name      | Description   | Vereist |
-| --------- | ------------- | -------- |
-| set-limit | Hoofd element. | Ja      |
+| Name              | Description   | Vereist |
+| ----------------- | ------------- | -------- |
+| frequentie per sleutel | Hoofd element. | Ja      |
 
 ### <a name="attributes"></a>Kenmerken
 
@@ -542,7 +542,7 @@ In dit voor beeld ziet u hoe u het JWT-beleid [valideren](api-management-access-
 | query-parameter-name            | De naam van de query parameter die het token bewaart.                                                                                                                                                                                                                                                                                                                                                                                                     | Een van `header-name` `query-parameter-name` of`token-value` moet worden opgegeven. | N/A                                                                               |
 | token-waarde                     | Expressie die een teken reeks met een JWT-token retourneert                                                                                                                                                                                                                                                                                                                                                                                                     | Een van `header-name` `query-parameter-name` of`token-value` moet worden opgegeven. | N/A                                                                               |
 | id                              | Met `id` het kenmerk van `key` het element kunt u de teken reeks opgeven die overeenkomt `kid` met de claim in het token (indien aanwezig) om de juiste sleutel te vinden die moet worden gebruikt voor handtekening validatie.                                                                                                                                                                                                                                           | Nee                                                                               | N/A                                                                               |
-| overeenkomst                           | Het `match` kenmerk van het `claim` element geeft aan of elke claim waarde in het beleid aanwezig moet zijn in het token om de validatie te kunnen volt ooien. Mogelijke waarden zijn:<br /><br /> - `all`-elke claim waarde in het beleid moet aanwezig zijn in het token om de validatie te volt ooien.<br /><br /> - `any`-Er moet ten minste één claim waarde aanwezig zijn in het token om de validatie te volt ooien.                                                       | Nee                                                                               | alle                                                                               |
+| overeenkomst                           | Het `match` kenmerk van het `claim` element geeft aan of elke claim waarde in het beleid aanwezig moet zijn in het token om de validatie te kunnen volt ooien. Mogelijke waarden zijn:<br /><br /> - `all`-elke claim waarde in het beleid moet aanwezig zijn in het token om de validatie te volt ooien.<br /><br /> - `any`-Er moet ten minste één claim waarde aanwezig zijn in het token om de validatie te volt ooien.                                                       | Nee                                                                               | all                                                                               |
 | require-expiration-time         | True. Hiermee geeft u op of er een verval claim vereist is in het token.                                                                                                                                                                                                                                                                                                                                                                               | Nee                                                                               | true                                                                              |
 | vereisen-schema                  | De naam van het token schema, bijvoorbeeld ' Bearer '. Als dit kenmerk is ingesteld, zorgt het beleid ervoor dat het opgegeven schema aanwezig is in de waarde van de autorisatie-header.                                                                                                                                                                                                                                                                                    | Nee                                                                               | N/A                                                                               |
 | vereisen: ondertekende tokens           | True. Hiermee geeft u op of een token moet worden ondertekend.                                                                                                                                                                                                                                                                                                                                                                                           | Nee                                                                               | true                                                                              |

@@ -16,12 +16,12 @@ ms.author: lizross
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e6bb926aeab4f88f2d41c578ae3962737df7b2f3
-ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
+ms.openlocfilehash: ea6e654037e545a1b969aa2a9b41245fb2892bff
+ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70872862"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71273812"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Wat is er nieuw in Azure Active Directory?
 
@@ -91,7 +91,7 @@ Als u aanvullende machtigingen of bronnen nodig hebt die momenteel niet worden w
 Er zijn nieuwe inrichtings logboeken beschikbaar om u te helpen bij het controleren en oplossen van problemen met de implementatie van gebruikers en groepen. Deze nieuwe logboek bestanden bevatten informatie over:
 
 - Welke groepen zijn gemaakt in [ServiceNow](https://docs.microsoft.com/azure/active-directory/saas-apps/servicenow-provisioning-tutorial)
-- Welke rollen zijn geïmporteerd uit [Amazon Web Services (AWS)](https://docs.microsoft.com/azure/active-directory/saas-apps/amazon-web-service-tutorial#configure-and-test-azure-ad-single-sign-on)
+- Welke rollen zijn geïmporteerd uit [Amazon Web Services (AWS)](https://docs.microsoft.com/azure/active-directory/saas-apps/amazon-web-service-tutorial#configure-and-test-azure-ad-single-sign-on-for-amazon-web-services-aws)
 - De werk nemers die niet zijn geïmporteerd uit [workday](https://docs.microsoft.com/azure/active-directory/saas-apps/workday-inbound-tutorial)
 
 Zie [inrichtings rapporten in de Azure Active Directory Portal (preview)](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs)voor meer informatie.
@@ -203,7 +203,7 @@ Zie [regels voor dynamische lidmaatschap beheren](https://docs.microsoft.com/azu
 
 **Type:** Gewijzigde functie  
 **Service categorie:** Toegangsbeoordelingen  
-**Product mogelijkheden:** Identiteitsbeheer
+**Product mogelijkheden:** Identity Governance
 
 We hebben een nieuwe Microsoft Graph app-machtiging geïntroduceerd `AccessReview.ReadWrite.Membership`, waarmee apps automatisch toegangs Beoordelingen voor groepslid maatschappen en app-toewijzingen kunnen maken en ophalen. Deze machtiging kan worden gebruikt door uw geplande taken of als onderdeel van uw automatisering zonder dat hiervoor een aangemelde gebruikers context nodig is.
 
@@ -808,8 +808,8 @@ Voor meer informatie over de vernieuwde versie van Azure AD Identity Protection 
 ### <a name="azure-ad-entitlement-management-is-now-available-public-preview"></a>Het beheer van rechten van Azure AD is nu beschikbaar (open bare preview)
 
 **Type:** Nieuwe functie  
-**Service categorie:** Identiteitsbeheer  
-**Product mogelijkheden:** Identiteitsbeheer
+**Service categorie:** Identity Governance  
+**Product mogelijkheden:** Identity Governance
 
 Het beheer van rechten van Azure AD, nu in open bare preview, helpt klanten bij het delegeren van beheer van toegangs pakketten, waarmee wordt gedefinieerd hoe werk nemers en zakelijke partners toegang kunnen vragen, wie moet goed keuren en hoelang ze toegang hebben. Toegangs pakketten kunnen lidmaatschap beheren in azure AD en Office 365-groepen, roltoewijzingen in zakelijke toepassingen, en roltoewijzingen voor share point online-sites. Meer informatie over rechten beheer vindt u in het [overzicht van het beheer van rechten van Azure AD](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-overview). Zie [Wat is Azure AD Identity governance?](../governance/identity-governance-overview.md)voor meer informatie over de breedte van Azure AD Identity governance functies, waaronder privileged Identity Management, toegangs beoordelingen en gebruiks voorwaarden.
 
@@ -871,7 +871,7 @@ Zie voor meer informatie over de apps [SaaS-toepassing-integratie met Azure Acti
 
 **Type:** Nieuwe functie  
 **Service categorie:** Toegangsbeoordelingen  
-**Product mogelijkheden:** Identiteitsbeheer
+**Product mogelijkheden:** Identity Governance
 
 Met nieuwe updates in azure AD-toegangs beoordelingen kunt u het volgende doen:
 

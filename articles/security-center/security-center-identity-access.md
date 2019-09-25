@@ -13,18 +13,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/30/2018
 ms.author: memildin
-ms.openlocfilehash: d035dc4e8f77bb64a9e845a9dae0668365a6aacb
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 8b069bedd3c36f27828e54a1110443ae6dfcdf3f
+ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202273"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71268866"
 ---
 # <a name="monitor-identity-and-access-in-azure-security-center-preview"></a>Identiteit en toegang bewaken in Azure Security Center (preview-versie)
 In dit artikel leest u hoe u Azure Security Center kunt gebruiken om de identiteit en toegangsactiviteiten van gebruikers te bewaken.
-
-> [!NOTE]
-> De koppeling *klassieke* identiteits & toegang weer geven wordt op 31 juli 2019. Klik [hier](security-center-features-retirement-july2019.md#menu_classicidentity) voor meer informatie over alternatieve Services.
 
 > [!NOTE]
 > Bewakings identiteit en-toegang zijn in preview-versie en zijn alleen beschikbaar voor de standaard-laag van Security Center. Bekijk de pagina [Prijzen](security-center-pricing.md) voor meer informatie over de tariefopties van Security Center.
@@ -67,7 +64,7 @@ Onder **identiteits & toegang**bevinden zich twee tabbladen:
 ### <a name="overview-section"></a>Overzichts sectie
 Onder **overzicht**vindt u een lijst met aanbevelingen. De eerste kolom bevat de aanbeveling. De tweede kolom bevat het totale aantal abonnementen dat door deze aanbeveling wordt beïnvloed. De derde kolom toont de ernst van het probleem.
 
-1. Selecteer een aanbeveling. Het venster van de aanbeveling wordt geopend en geeft het volgende weer:
+1. Selecteer een aanbeveling. Het venster aanbevelingen wordt geopend en geeft het volgende weer:
 
    - Beschrijving van de aanbeveling
    - Lijst met slechte en goede abonnementen
@@ -80,7 +77,7 @@ Onder **overzicht**vindt u een lijst met aanbevelingen. De eerste kolom bevat de
 ### <a name="subscriptions-section"></a>Sectie abonnementen
 Onder **abonnementen**bevindt zich een lijst met abonnementen. De eerste kolom bevat de abonnementen. De tweede kolom geeft het totale aantal aanbevelingen voor elk abonnement. In de derde kolom worden de ernst van de problemen weer gegeven.
 
-![Tabblad abonnement][4]
+![Tabblad abonnementen][4]
 
 1. Selecteer een abonnement. Een overzicht wordt geopend met drie tabbladen:
 
@@ -125,13 +122,13 @@ Gebruik de onderstaande tabel als referentie om inzicht te krijgen in de beschik
 > Als u een beleid voor voorwaardelijke toegang hebt gemaakt waarvoor MFA is vereist, maar er uitsluitingen zijn ingesteld, beschouwt de Security Center MFA-aanbevelings beoordeling het beleid dat niet compatibel is, omdat sommige gebruikers zich kunnen aanmelden bij Azure zonder MFA.
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie de volgende onderwerpen voor meer informatie over aanbevelingen die betrekking hebben op andere typen Azure-resources:
+Raadpleeg de volgende artikelen voor meer informatie over de aanbevelingen die van toepassing zijn op andere Azure-resource typen:
 
 - [Uw machines en toepassingen beveiligen in Azure Security Center](security-center-virtual-machine-protection.md)
 - [Protecting your network in Azure Security Center](security-center-network-recommendations.md) (Uw netwerk beveiligen in Azure Security Center)
 - [Uw Azure SQL-service en-gegevens beveiligen in Azure Security Center](security-center-sql-service-recommendations.md)
 
-Zie de volgende onderwerpen voor meer informatie over het Beveiligingscentrum:
+Zie de volgende artikelen voor meer informatie over Security Center:
 * [Beveiligingswaarschuwingen beheren en erop reageren in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts). Informatie over het beheren van waarschuwingen en het reageren op beveiligingsincidenten in Security Center.
 * [Beveiligingswaarschuwingen in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-alerts-type). Meer informatie over de verschillende typen beveiligingswaarschuwingen.
 * [Veelgestelde vragen over Azure Security Center](security-center-faq.md). Vind antwoorden op veelgestelde vragen over het gebruik van Security Center.

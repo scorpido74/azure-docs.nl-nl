@@ -4,16 +4,15 @@ description: Maak een Azure Search kennis Archief voor persistentie van verrijki
 author: lisaleib
 services: search
 ms.service: search
-ms.subservice: cognitive-search
 ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: v-lilei
-ms.openlocfilehash: 14996d0ac9ee4e086a5dccd9275ef694adca06ca
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: fb979a7ff4144694aecad0985c5bce9be2de05bd
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70963020"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71265197"
 ---
 # <a name="create-an-azure-search-knowledge-store-in-the-azure-portal"></a>Een Azure Search kennis archief maken in de Azure Portal
 

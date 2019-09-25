@@ -146,6 +146,12 @@
           href: concepts-hyperscale-choose-distribution-column.md
         - name: Tabelcolocatie
           href: concepts-hyperscale-colocation.md
+        - name: Gegevenstoegang en -beveiliging
+          items:
+            - name: Firewall-regels
+              href: concepts-hyperscale-firewall-rules.md
+            - name: SSL configureren
+              href: concepts-hyperscale-ssl-connection-security.md
         - name: PostgreSQL-extensies
           href: concepts-hyperscale-extensions.md
         - name: Resources
@@ -154,86 +160,96 @@
               href: concepts-hyperscale-configuration-options.md
 - name: Handleidingen
   items:
-    - name: Gebruikers maken
-      href: howto-create-users.md
-    - name: Optimaliseren
+    - name: Enkele server
       items:
-        - name: Bulksgewijs invoegen
-          href: howto-optimize-bulk-inserts.md
-        - name: Autovacuum
-          href: howto-optimize-autovacuum.md
-        - name: Query op statistiekverzameling uitvoeren
-          href: howto-optimize-query-stats-collection.md
-        - name: Strategie voor toast-tabellen
-          href: howto-optimize-query-time-with-toast-table-storage-strategy.md
-    - name: Firewall beheren
+        - name: Gebruikers maken
+          href: howto-create-users.md
+        - name: Optimaliseren
+          items:
+            - name: Bulksgewijs invoegen
+              href: howto-optimize-bulk-inserts.md
+            - name: Autovacuum
+              href: howto-optimize-autovacuum.md
+            - name: Query op statistiekverzameling uitvoeren
+              href: howto-optimize-query-stats-collection.md
+            - name: Strategie voor toast-tabellen
+              href: howto-optimize-query-time-with-toast-table-storage-strategy.md
+        - name: Firewall beheren
+          items:
+            - name: Azure Portal
+              href: howto-manage-firewall-using-portal.md
+            - name: Azure-CLI
+              href: howto-manage-firewall-using-cli.md
+        - name: Een server terugzetten
+          items:
+            - name: Azure Portal
+              href: howto-restore-server-portal.md
+            - name: Azure-CLI
+              href: howto-restore-server-cli.md
+        - name: Een database migreren
+          items:
+            - name: Dumpen en terugzetten
+              href: howto-migrate-using-dump-and-restore.md
+            - name: Importeren en exporteren
+              href: howto-migrate-using-export-and-import.md
+            - name: Migratie met minimale downtime
+              href: howto-migrate-online.md
+        - name: Parameters van de server configureren
+          items:
+            - name: Azure Portal
+              href: howto-configure-server-parameters-using-portal.md
+            - name: Azure-CLI
+              href: howto-configure-server-parameters-using-cli.md
+        - name: Opslag automatisch vergroten
+          items:
+            - name: Azure Portal
+              href: howto-auto-grow-storage-portal.md
+            - name: Azure-CLI
+              href: howto-auto-grow-storage-cli.md
+        - name: Serverlogboeken openen
+          items:
+            - name: Azure Portal
+              href: howto-configure-server-logs-in-portal.md
+            - name: Azure-CLI
+              href: howto-configure-server-logs-using-cli.md
+        - name: Controleren
+          items:
+            - name: Waarschuwingen maken op basis van metrische gegevens
+              href: howto-alert-on-metric.md
+        - name: Problemen oplossen
+          items:
+            - name: Verbindingsfouten oplossen
+              href: howto-troubleshoot-common-connection-issues.md
+        - name: Advanced Threat Protection
+          items:
+            - name: Azure Portal
+              href: howto-database-threat-protection-portal.md
+        - name: Virtual Network
+          items:
+            - name: Azure Portal
+              href: howto-manage-vnet-using-portal.md
+            - name: Azure-CLI
+              href: howto-manage-vnet-using-cli.md
+        - name: Server opnieuw opstarten
+          items:
+            - name: Azure Portal
+              href: howto-restart-server-portal.md
+            - name: Azure-CLI
+              href: howto-restart-server-cli.md
+        - name: Replicatie
+          items:
+            - name: Leesreplica's beheren in de Azure-portal
+              href: howto-read-replicas-portal.md
+            - name: 'Leesreplica''s beheren met de Azure CLI, REST API'
+              href: howto-read-replicas-cli.md
+    - name: Hyperscale (Citus)
       items:
-        - name: Azure Portal
-          href: howto-manage-firewall-using-portal.md
-        - name: Azure-CLI
-          href: howto-manage-firewall-using-cli.md
-    - name: Een server terugzetten
-      items:
-        - name: Azure Portal
-          href: howto-restore-server-portal.md
-        - name: Azure-CLI
-          href: howto-restore-server-cli.md
-    - name: Een database migreren
-      items:
-        - name: Dumpen en terugzetten
-          href: howto-migrate-using-dump-and-restore.md
-        - name: Importeren en exporteren
-          href: howto-migrate-using-export-and-import.md
-        - name: Migratie met minimale downtime
-          href: howto-migrate-online.md
-    - name: Parameters van de server configureren
-      items:
-        - name: Azure Portal
-          href: howto-configure-server-parameters-using-portal.md
-        - name: Azure-CLI
-          href: howto-configure-server-parameters-using-cli.md
-    - name: Opslag automatisch vergroten
-      items:
-        - name: Azure Portal
-          href: howto-auto-grow-storage-portal.md
-        - name: Azure-CLI
-          href: howto-auto-grow-storage-cli.md
-    - name: Serverlogboeken openen
-      items:
-        - name: Azure Portal
-          href: howto-configure-server-logs-in-portal.md
-        - name: Azure-CLI
-          href: howto-configure-server-logs-using-cli.md
-    - name: Controleren
-      items:
-        - name: Waarschuwingen maken op basis van metrische gegevens
-          href: howto-alert-on-metric.md
-    - name: Problemen oplossen
-      items:
-        - name: Verbindingsfouten oplossen
-          href: howto-troubleshoot-common-connection-issues.md
-    - name: Advanced Threat Protection
-      items:
-        - name: Azure Portal
-          href: howto-database-threat-protection-portal.md
-    - name: Virtual Network
-      items:
-        - name: Azure Portal
-          href: howto-manage-vnet-using-portal.md
-        - name: Azure-CLI
-          href: howto-manage-vnet-using-cli.md
-    - name: Server opnieuw opstarten
-      items:
-        - name: Azure Portal
-          href: howto-restart-server-portal.md
-        - name: Azure-CLI
-          href: howto-restart-server-cli.md
-    - name: Replicatie
-      items:
-        - name: Leesreplica's beheren in de Azure-portal
-          href: howto-read-replicas-portal.md
-        - name: 'Leesreplica''s beheren met de Azure CLI, REST API'
-          href: howto-read-replicas-cli.md
+        - name: Schalen
+          href: howto-hyperscale-scaling.md
+        - name: Firewall beheren
+          items:
+            - name: Azure Portal
+              href: howto-hyperscale-manage-firewall-using-portal.md
 - name: Naslaginformatie
   items:
     - name: Azure-CLI

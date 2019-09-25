@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 12/11/2018
 ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: 0c87a6968e5c6fd0e587c240b0a5df0a73f9909b
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 28914244f7ea84ec133821d4b125cbd3b0378348
+ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68321655"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71272336"
 ---
 # <a name="tutorial-render-a-scene-with-azure-batch"></a>Zelfstudie: Een scène weergeven met Azure Batch 
 
@@ -168,20 +168,20 @@ az storage container create \
     --name job-myrenderjob
 ```
 
-Batch moet een SAS-token (Shared Access Signature) gebruiken om uitvoerbestanden naar de container te kunnen schrijven. Maak het token met de opdracht [az storage account generate-sas](/cli/azure/storage/account#az-storage-account-generate-sas). In dit voorbeeld wordt een token gemaakt om te schrijven naar elke blobcontainer in het account en het token verloopt op 15 november 2018:
+Batch moet een SAS-token (Shared Access Signature) gebruiken om uitvoerbestanden naar de container te kunnen schrijven. Maak het token met de opdracht [az storage account generate-sas](/cli/azure/storage/account#az-storage-account-generate-sas). In dit voor beeld wordt een token gemaakt om te schrijven naar een BLOB-container in het account en het token verloopt op 15 november 2020:
 
 ```azurecli-interactive
 az storage account generate-sas \
     --permissions w \
     --resource-types co \
     --services b \
-    --expiry 2019-11-15
+    --expiry 2020-11-15
 ```
 
 Noteer het token dat wordt geretourneerd door de opdracht. Dit token ziet er ongeveer als volgt uit. U gebruikt dit token in een latere stap.
 
 ```
-se=2018-11-15&sp=rw&sv=2017-04-17&ss=b&srt=co&sig=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+se=2020-11-15&sp=rw&sv=2019-09-24&ss=b&srt=co&sig=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 ```
 
 ## <a name="render-a-single-frame-scene"></a>Een scène met één frame renderen
@@ -217,7 +217,7 @@ Wijzig de elementen `blobSource` en `containerURL` in het JSON-bestand, zodat ze
   "commandLine": "cmd /c \"%3DSMAX_2018%3dsmaxcmdio.exe -secure off -v:5 -rfw:0 -start:1 -end:1 -outputName:\"dragon.jpg\" -w 400 -h 300 MotionBlur-DragonFlying.max\"",
   "resourceFiles": [
     {
-        "blobSource": "https://mystorageaccount.blob.core.windows.net/scenefiles/MotionBlur-DragonFlying.max",
+        "httpUrl": "https://mystorageaccount.blob.core.windows.net/scenefiles/MotionBlur-DragonFlying.max",
         "filePath": "MotionBlur-DragonFlying.max"
     }
   ],

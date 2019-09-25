@@ -1,27 +1,27 @@
 ---
 title: Prestaties van Apache Spark workloads met Azure HDInsight IO-cache (preview-versie)
 description: Meer informatie over de Azure HDInsight i/o-cache en hoe u deze kunt gebruiken om de prestaties van Apache Spark te verbeteren.
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
+ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/15/2018
-ms.openlocfilehash: f3f171d4dfd3642dc71724afbe084c3fcbf8beaa
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: ecb393ea1f64897f17ce73170da1673886ef8916
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71091076"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266190"
 ---
-# <a name="improve-performance-of-apache-spark-workloads-using-azure-hdinsight-io-cache"></a>Verbeter de prestaties van Apache Spark werk belastingen met behulp van de Azure HDInsight IO-cache 
+# <a name="improve-performance-of-apache-spark-workloads-using-azure-hdinsight-io-cache"></a>Verbeter de prestaties van Apache Spark werk belastingen met behulp van de Azure HDInsight IO-cache
 
 I/o-cache is een service voor gegevens cache voor Azure HDInsight waarmee de prestaties van Apache Spark taken worden verbeterd. I/o-cache werkt ook met [Apache TEZ](https://tez.apache.org/) en [Apache Hive](https://hive.apache.org/) workloads, die op [Apache Spark](https://spark.apache.org/) -clusters kunnen worden uitgevoerd. I/o-cache maakt gebruik van een open-source cache onderdeel met de naam RubiX. RubiX is een lokale schijf cache voor gebruik met big data Analytics-engines die toegang hebben tot gegevens van opslag systemen in de Cloud. RubiX is uniek voor caching-systemen, omdat het gebruik maakt van Ssd's (Solid-state drives) in plaats van dat het besturings geheugen wordt gereserveerd voor cache doeleinden. De i/o-cache service start en beheert RubiX-meta gegevens servers op elk worker-knoop punt van het cluster. Ook worden alle services van het cluster geconfigureerd voor transparant gebruik van RubiX-cache.
 
 De meeste Ssd's bieden meer dan 1 GByte per seconde band breedte. Deze band breedte, aangevuld met de bestands cache van het besturings systeem, biedt voldoende band breedte om te laden big data engines voor reken verwerking, zoals Apache Spark. Het besturings geheugen is beschikbaar voor Apache Spark voor het verwerken van sterk geheugen afhankelijke taken, zoals wille keurige volg orde. Als u exclusief gebruikt voor het gebruik van het geheugen, kunt u met Apache Spark optimaal gebruik van resources krijgen.  
 
->[!Note]  
->I/o-cache maakt momenteel gebruik van RubiX als een cache onderdeel, maar dit kan worden gewijzigd in toekomstige versies van de service. Gebruik de i/o-cache interfaces en neem geen afhankelijkheden op de RubiX-implementatie.
+> [!Note]  
+> I/o-cache maakt momenteel gebruik van RubiX als een cache onderdeel, maar dit kan worden gewijzigd in toekomstige versies van de service. Gebruik de i/o-cache interfaces en neem geen afhankelijkheden op de RubiX-implementatie.
 
 ## <a name="benefits-of-azure-hdinsight-io-cache"></a>Voor delen van de Azure HDInsight IO-cache
 
@@ -70,7 +70,7 @@ Er kunnen schijf ruimte fouten optreden bij het uitvoeren van Spark-taken na het
 
 1. Selecteer **opnieuw opstarten** > **alle beïnvloed**.
 
-    ![Alle betrokken software opnieuw opstarten](./media/apache-spark-improve-performance-iocache/ambariui-restart-all-affected.png "Alle betrokken software opnieuw opstarten")
+    ![Apache Ambari alle betrokken software opnieuw opstarten](./media/apache-spark-improve-performance-iocache/ambariui-restart-all-affected.png "Alle betrokken software opnieuw opstarten")
 
 1. Selecteer **Bevestig opnieuw opstarten**.
 

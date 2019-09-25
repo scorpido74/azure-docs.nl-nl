@@ -2,25 +2,17 @@
 title: Een VPN-gatewayverbinding tussen VNet's configureren met behulp van Azure Portal | Microsoft Docs
 description: Een VPN-gatewayverbinding maken tussen VNets met behulp van Resource Manager en Azure Portal.
 services: vpn-gateway
-documentationcenter: na
 author: cherylmc
-manager: jpconnock
-editor: ''
-tags: azure-resource-manager
-ms.assetid: a7015cfc-764b-46a1-bfac-043d30a275df
 ms.service: vpn-gateway
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 12/03/2018
+ms.date: 09/24/2019
 ms.author: cherylmc
-ms.openlocfilehash: 94b32595cf2c884ccfd1362f6c8d03f542aabfc5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7ad83327d5b85784f523a5931f277cd00009e0ed
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62128378"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266449"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-by-using-the-azure-portal"></a>Een VPN-gatewayverbinding tussen VNet's configureren met behulp van Azure Portal
 
@@ -31,7 +23,7 @@ Dit artikel helpt u om virtuele netwerken (VNet's) te verbinden met behulp van h
 De stappen in dit artikel zijn van toepassing op het Azure Resource Manager-implementatiemodel en maken gebruik van Azure Portal. U kunt deze configuratie ook maken met een ander implementatieprogramma of -model, met behulp van de opties die worden beschreven in de volgende artikelen:
 
 > [!div class="op_single_selector"]
-> * [Azure Portal](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
+> * [Azure-portal](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
 > * [PowerShell](vpn-gateway-vnet-vnet-rm-ps.md)
 > * [Azure-CLI](vpn-gateway-howto-vnet-vnet-cli.md)
 > * [Azure Portal (klassiek)](vpn-gateway-howto-vnet-vnet-portal-classic.md)
@@ -39,7 +31,6 @@ De stappen in dit artikel zijn van toepassing op het Azure Resource Manager-impl
 > * [Verbinding maken tussen verschillende implementatiemodellen - PowerShell](vpn-gateway-connect-different-deployment-models-powershell.md)
 >
 >
-
 
 ## <a name="about-connecting-vnets"></a>Over het verbinden van VNet's
 
@@ -94,7 +85,6 @@ In dit artikel leest u hoe u VNet's verbindt met behulp van het verbindingstype 
     - **Gatewaysubnet**:
         - **Naam**: *GatewaySubnet* wordt automatisch ingevuld.
         - **Adresbereik**: Voer *10.11.255.0/27* in.
-    - **DNS-server**: Selecteer **Aangepast** en voer het IP-adres van uw DNS-server in.
 
 - **Instellingen voor virtuele-netwerkgateway** 
     - **Naam**: Voer *TestVNet1GW* in.
@@ -120,7 +110,6 @@ In dit artikel leest u hoe u VNet's verbindt met behulp van het verbindingstype 
    - **GatewaySubnet** 
       - **Naam**: *GatewaySubnet* wordt automatisch ingevuld.
       - **Adresbereik**: Voer *10.41.255.0/27* in.
-   - **DNS-server**: Selecteer **Aangepast** en voer het IP-adres van uw DNS-server in.
 
 - **Instellingen voor virtuele-netwerkgateway** 
     - **Naam**: Voer *TestVNet4GW* in.
@@ -133,7 +122,7 @@ In dit artikel leest u hoe u VNet's verbindt met behulp van het verbindingstype 
        - **Gedeelde sleutel**: Voer *abc123* in. U kunt de gedeelde sleutel zelf maken. Wanneer u de verbinding tussen de VNets maakt, moeten de waarden overeenkomen.
 
 ## <a name="create-and-configure-testvnet1"></a>TestVNet1 maken en configureren
-Als u al beschikt over een VNet, controleert u of de instellingen compatibel zijn met het ontwerp van de VPN-gateway. Let vooral op eventuele subnetten die met andere netwerken overlappen. Als u overlappende subnetten hebt, werkt de verbinding mogelijk niet goed. Als het VNet met de juiste instellingen is geconfigureerd, kunt u beginnen met de stappen in de sectie Een DNS-server opgeven.
+Als u al beschikt over een VNet, controleert u of de instellingen compatibel zijn met het ontwerp van de VPN-gateway. Let vooral op eventuele subnetten die met andere netwerken overlappen. Als u overlappende subnetten hebt, werkt de verbinding mogelijk niet goed.
 
 ### <a name="to-create-a-virtual-network"></a>Een virtueel netwerk maken
 [!INCLUDE [vpn-gateway-basic-vnet-rm-portal](../../includes/vpn-gateway-basic-vnet-rm-portal-include.md)]
@@ -143,26 +132,15 @@ Wanneer het VNet is gemaakt, kunt u er extra adresruimte en subnetten aan toevoe
 
 [!INCLUDE [vpn-gateway-additional-address-space](../../includes/vpn-gateway-additional-address-space-include.md)]
 
-## <a name="create-a-gateway-subnet"></a>Een gatewaysubnet maken
-Voordat u een virtuele netwerkgateway voor uw virtuele netwerk gaat maken, moet u eerst het gatewaysubnet maken. Het gatewaysubnet bevat de IP-adressen die door de virtuele netwerkgateway worden gebruikt. Indien mogelijk is het beste een gatewaysubnet met een CIDR-blok van /28 of /27 te gebruiken zodat er voldoende IP-adressen zijn om aan toekomstige aanvullende configuratievereisten te voldoen.
-
-Als u deze configuratie bij wijze van oefening maakt, gebruikt u deze [voorbeeldinstellingen](#example-settings) wanneer u het gatewaysubnet maakt.
-
-[!INCLUDE [vpn-gateway-no-nsg](../../includes/vpn-gateway-no-nsg-include.md)]
-
-### <a name="to-create-a-gateway-subnet"></a>Een gatewaysubnet maken
-[!INCLUDE [vpn-gateway-add-gwsubnet-rm-portal](../../includes/vpn-gateway-add-gwsubnet-rm-portal-include.md)]
-
-## <a name="specify-a-dns-server-optional"></a>Een DNS-server opgeven (optioneel)
-DNS is niet vereist voor VNet-naar-VNet-verbindingen. Als u echter naamomzetting wilt instellen voor resources die in uw virtuele netwerk worden geïmplementeerd, moet u wel een DNS-server opgeven. Met deze instelling kunt u de DNS-server opgeven die u wilt gebruiken voor de naamomzetting voor dit virtuele netwerk. Hierdoor wordt geen DNS-server gemaakt.
-
-[!INCLUDE [vpn-gateway-add-dns-rm-portal](../../includes/vpn-gateway-add-dns-rm-portal-include.md)]
-
 ## <a name="create-a-virtual-network-gateway"></a>De gateway van een virtueel netwerk maken
 In deze stap maakt u de virtuele netwerkgateway VNet. Het maken van een gateway duurt vaak 45 minuten of langer, afhankelijk van de geselecteerde gateway-SKU. Zie de [voorbeeldinstellingen](#example-settings) als u deze configuratie bij wijze van oefening maakt.
 
+[!INCLUDE [About gateway subnets](../../includes/vpn-gateway-about-gwsubnet-portal-include.md)]
+
 ### <a name="to-create-a-virtual-network-gateway"></a>De gateway van een virtueel netwerk maken
 [!INCLUDE [vpn-gateway-add-gw-rm-portal](../../includes/vpn-gateway-add-gw-rm-portal-include.md)]
+
+[!INCLUDE [vpn-gateway-no-nsg](../../includes/vpn-gateway-no-nsg-include.md)]
 
 ## <a name="create-and-configure-testvnet4"></a>TestVNet4 maken en configureren
 Nadat u TestVNet1 hebt geconfigureerd, maakt u TestVNet4 door de vorige stappen te herhalen en de waarden te vervangen door die van TestVNet4. U hoeft niet te wachten tot de gateway van het virtuele netwerk voor TestVNet1 is gemaakt voordat u TestVNet4 configureert. Als u uw eigen waarden gebruikt, mogen de adresruimten niet overlappen met een van de VNet's waarmee u verbinding wilt maken.

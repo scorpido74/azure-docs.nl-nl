@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 07/31/2019
 ms.custom: seodec18
-ms.openlocfilehash: 933ae5b70d8e0485360a94ede1fff99c02f75a4c
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 0bd4b1d969de0b54a1836048b5cb5910470f1ffa
+ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71034877"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71269226"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Een ontwikkelomgeving configureren voor Azure Machine Learning
 
@@ -36,7 +36,7 @@ Dit artikel bevat ook extra tips voor het gebruik van de volgende hulpprogram ma
 
 * [Jupyter](#jupyter)-notebooks: Als u de Jupyter Notebook al gebruikt, heeft de SDK enkele extra's die u moet installeren.
 
-* [Visual Studio Code](#vscode): Als u Visual Studio code gebruikt, beschikt u over een aantal nuttige uitbrei dingen die u kunt installeren.
+* [Visual Studio Code](#vscode): Als u Visual Studio code gebruikt, bevat de [uitbrei ding](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.vscode-ai) van de Azure machine learning uitgebreide taal ondersteuning voor python, evenals functies om met de Azure machine learning-service veel handiger en productief te maken.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -76,7 +76,7 @@ De VM van het notebook is:
 
 + **Aanpasbaar**. Tijdens een beheerde en beveiligde VM-aanbieding behoudt u volledige toegang tot de hardware-mogelijkheden en past u deze aan op de wensen van uw hart. Zo kunt u snel de nieuwste NVidia V100-VM maken om stapsgewijze fout opsporing van nieuwe Neural-netwerk architectuur uit te voeren.
 
-[Stop de VM van het notitie](tutorial-1st-experiment-sdk-train.md#clean-up-resources)blok om de VM-kosten van de notebook te stoppen. 
+[Stop de VM van het notitie](tutorial-1st-experiment-sdk-train.md#clean-up-resources)blok om de VM-kosten van de notebook te stoppen.
 
 ## <a id="dsvm"></a>Virtuele Machine voor Datatechnologie
 
@@ -90,7 +90,7 @@ De DSVM is een aangepaste installatie kopie van een virtuele machine (VM). Het i
 
 De Azure Machine Learning SDK werkt op de Ubuntu-of Windows-versie van de DSVM. Maar als u van plan bent om de DSVM te gebruiken als een reken doel, wordt alleen Ubuntu ondersteund.
 
-Ga als volgt te werk om de DSVM te gebruiken als een ontwikkel omgeving:
+De DSVM als een ontwikkel omgeving gebruiken:
 
 1. Maak een DSVM in een van de volgende omgevingen:
 
@@ -151,7 +151,7 @@ Zie [Data Science virtual machines](https://azure.microsoft.com/services/virtual
 
 ## <a id="local"></a>Lokale computer
 
-Wanneer u een lokale computer gebruikt (dit kan ook een externe virtuele machine zijn), maakt u een Anaconda-omgeving en installeert u de SDK door het volgende te doen:
+Wanneer u een lokale computer gebruikt (dit kan ook een externe virtuele machine zijn), maakt u een Anaconda-omgeving en installeert u de SDK. Hier volgt een voorbeeld:
 
 1. Down load en Installeer [Anaconda](https://www.anaconda.com/distribution/#download-section) (python 3,7-versie) als u dit nog niet hebt gedaan.
 
@@ -185,10 +185,10 @@ Wanneer u een lokale computer gebruikt (dit kan ook een externe virtuele machine
 
 1. Gebruik de volgende opdrachten om pakketten te installeren:
 
-    Met deze opdracht wordt de basis-Azure Machine Learning SDK met notebook-en automl-extra's geïnstalleerd. De `automl` extra is een grote installatie. u kunt de vier Kante haken verwijderen als u niet van plan bent om automatische machine learning experimenten uit te voeren. De `automl` extra bevat ook de Azure machine learning data prep SDK standaard als een afhankelijkheid.
+    Met deze opdracht wordt de basis-Azure machine learning SDK met `automl` notebook en extra's geïnstalleerd. De `automl` extra is een grote installatie. u kunt de vier Kante haken verwijderen als u niet van plan bent om automatische machine learning experimenten uit te voeren. De `automl` extra bevat ook de Azure machine learning data prep SDK standaard als een afhankelijkheid.
 
     ```shell
-    pip install azureml-sdk[notebooks,automl]
+    pip install azureml-sdk[notebooks, automl]
     ```
 
    > [!NOTE]
@@ -221,14 +221,16 @@ Wanneer u een lokale computer gebruikt (dit kan ook een externe virtuele machine
 
 Jupyter-notitieblokken maken deel uit van de [Jupyter Project](https://jupyter.org/). Ze bieden een interactieve ervaring met codering waar het maken van documenten die live code met verhalende tekst en afbeeldingen combineren. Jupyter-notebooks zijn ook een fantastische manier om uw resultaten te delen met anderen, omdat u de uitvoer van uw code secties in het document kunt opslaan. U kunt Jupyter-Notebooks installeren op een aantal verschillende platformen.
 
-De procedure in de sectie [lokale computer](#local) installeert de vereiste onderdelen voor het uitvoeren van Jupyter-notebooks in een Anaconda-omgeving. Ga als volgt te werk om deze onderdelen in uw Jupyter Notebook omgeving in te scha kelen:
+De procedure in de sectie [lokale computer](#local) installeert de vereiste onderdelen voor het uitvoeren van Jupyter-notebooks in een Anaconda-omgeving.
+
+Deze onderdelen in uw Jupyter Notebook omgeving inschakelen:
 
 1. Open een Anaconda-prompt en activeer uw omgeving.
 
     ```shell
     conda activate myenv
     ```
-    
+
 1. Kloon [de GitHub-opslag plaats](https://aka.ms/aml-notebooks) voor een aantal voorbeeld notitieblokken.
 
     ```CLI
@@ -254,34 +256,35 @@ De procedure in de sectie [lokale computer](#local) installeert de vereiste onde
     import sys
     sys.path
     ```
-    
+
 1. Als u de Jupyter Notebook wilt configureren voor het gebruik van uw Azure Machine Learning-werk ruimte, gaat u naar de sectie [een werkruimte configuratie bestand maken](#workspace) .
 
 
 ### <a id="vscode"></a>Visual Studio Code
 
-Visual Studio Code is een platformoverschrijdende code-editor. Afhankelijk van een lokale installatie van Python 3 en Conda voor Python-ondersteuning, maar het biedt extra hulpmiddelen voor het werken met AI. Het biedt ook ondersteuning voor het selecteren van de Conda-omgeving in de code-editor.
+Visual Studio code is een zeer populaire code-editor voor meerdere platforms die een uitgebreide set programmeer talen en hulpprogram ma's ondersteunt door middel van uitbrei dingen die beschikbaar zijn in de [Visual Studio Marketplace](https://marketplace.visualstudio.com/vscode). De [uitbrei ding Azure machine learning](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.vscode-ai) installeert de [python-extensie](https://marketplace.visualstudio.com/items?itemName=ms-python.python) voor het coderen van alle typen python-omgevingen (virtueel, Anaconda, enzovoort). Daarnaast bevat het hulp programma functies voor het werken met Azure Machine Learning-resources en het uitvoeren van Azure Machine Learning experimenten, zonder dat u Visual Studio code hoeft te verlaten.
 
-Ga als volgt te werk om Visual Studio code te gebruiken voor ontwikkeling:
+Visual Studio code gebruiken voor ontwikkeling:
 
-1. Zie aan de [slag met python in VSCode](https://code.visualstudio.com/docs/python/python-tutorial)voor meer informatie over het gebruik van Visual Studio code voor python-ontwikkeling.
-
-1. Als u de Conda-omgeving wilt selecteren, opent u VS code en selecteert u vervolgens CTRL + SHIFT + P (Linux en Windows) of Command + Shift + P (Mac).
-    De __opdracht pallet__ wordt geopend.
-
-1. Python __invoeren: Selecteer interpreter__en selecteer vervolgens de Conda-omgeving.
-
-1. Als u wilt valideren dat u de SDK kunt gebruiken, maakt u een nieuw python-bestand (. py) en voert u dit uit met de volgende code:
-
-    ```python
-    import azureml.core
-    azureml.core.VERSION
-    ```
-
-1. Zie [Hulpprogram ma's voor AI](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.vscode-ai)om de Azure machine learning extensie voor Visual Studio code te installeren.
+1. Installeer de Azure Machine Learning-extensie voor Visual Studio code, Zie [Azure machine learning](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.vscode-ai).
 
     Zie [Azure machine learning voor Visual Studio code gebruiken](how-to-vscode-tools.md)voor meer informatie.
 
+1. Meer informatie over het gebruik van Visual Studio code voor elk type python-ontwikkeling, Zie [aan de slag met python in VSCode](https://code.visualstudio.com/docs/python/python-tutorial).
+
+    - Als u de SDK python-omgeving met de SDK wilt selecteren, opent u VS code en selecteert u vervolgens CTRL + SHIFT + P (Linux en Windows) of Command + Shift + P (Mac).
+        - Het __opdracht palet__ wordt geopend.
+
+    - Python __invoeren: Selecteer interpreter__en selecteer vervolgens de juiste omgeving
+
+1. Als u wilt valideren dat u de SDK kunt gebruiken, maakt u een nieuw python-bestand (. py) dat de volgende code bevat:
+
+    ```python
+    #%%
+    import azureml.core
+    azureml.core.VERSION
+    ```
+    Voer deze code uit door te klikken op de "cel uitvoeren" code lens of eenvoudigweg op SHIFT + ENTER te drukken.
 <a name="aml-databricks"></a>
 
 ## <a name="azure-databricks"></a>Azure Databricks
@@ -302,7 +305,7 @@ Gebruik deze instellingen:
 | Instelling |Van toepassing op| Value |
 |----|---|---|
 | Clusternaam |altijd| yourclustername |
-| Databricks Runtime |altijd| Een niet-ML-runtime (niet ML 4. x, 5. x) |
+| Databricks Runtime |altijd| Een niet-ML runtime (niet-ML 4. x, 5. x) |
 | Python-versie |altijd| 3 |
 | Medewerkers |altijd| 2 of hoger |
 | VM-typen worker-knoop punt <br>(bepaalt het maximum aantal gelijktijdige iteraties) |Geautomatiseerde machine learning<br>alleen| Voorkeurs-VM geoptimaliseerd voor geheugen |
@@ -326,7 +329,7 @@ Zodra het cluster wordt uitgevoerd, [maakt u een bibliotheek](https://docs.datab
    * Selecteer niet **automatisch koppelen aan alle clusters**.
    * Selecteer **koppelen** naast de naam van uw cluster.
 
-1. Controleer op fouten totdat de status isgewijzigd in bijgevoegd. Dit kan enkele minuten duren.  Als deze stap mislukt, controleert u het volgende:
+1. Controleer op fouten totdat de status isgewijzigd in bijgevoegd. Dit kan enkele minuten duren.  Als deze stap mislukt:
 
    Probeer het cluster opnieuw te starten door:
    1. Selecteer **clusters**in het linkerdeel venster.

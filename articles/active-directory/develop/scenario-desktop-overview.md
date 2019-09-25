@@ -15,12 +15,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5288fe57b2f83522b140f65fa62e08f9c63a7af5
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: d56a07b46c4cd54577bcb3d81f2c45c03433fc31
+ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68852691"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71268350"
 ---
 # <a name="scenario-desktop-app-that-calls-web-apis"></a>Scenario: Desktop-app die web-API's aanroept
 
@@ -32,7 +32,7 @@ Meer informatie over wat u nodig hebt om een bureau blad-app te bouwen die web-A
 
 ## <a name="getting-started"></a>Aan de slag
 
-Als u dat nog niet hebt gedaan, maakt u uw eerste toepassing door de Snelstartgids van .NET desktop of de UWP Quick Start te volgen:
+Als u dat nog niet hebt gedaan, maakt u uw eerste toepassing door de Snelstartgids van .NET Desktop, de UWP Quick Start of de macOS systeem eigen app Quick Start te volgen:
 
 > [!div class="nextstepaction"]
 > [Snelstart: Een token verkrijgen en Microsoft Graph-API aanroepen vanuit een Windows-bureau blad-app](./quickstart-v2-windows-desktop.md)
@@ -41,13 +41,16 @@ Als u dat nog niet hebt gedaan, maakt u uw eerste toepassing door de Snelstartgi
 > [!div class="nextstepaction"]
 > [Snelstart: Een token verkrijgen en Microsoft Graph-API aanroepen vanuit een UWP-app](./quickstart-v2-uwp.md)
 
+> [!div class="nextstepaction"]
+> [Snelstart: Een token verkrijgen en Microsoft Graph-API aanroepen vanuit een macOS-systeem eigen app](./quickstart-v2-ios.md)
+
 ## <a name="overview"></a>Overzicht
 
 U schrijft een bureaublad toepassing en u wilt gebruikers aanmelden bij uw toepassing en Web-Api's aanroepen, zoals de Microsoft Graph, andere micro soft-Api's of uw eigen web-API. U hebt verschillende mogelijkheden:
 
 - U kunt de volgende aanschaf van het interactieve token gebruiken:
 
-  - Als uw bureaublad toepassing grafische besturings elementen ondersteunt, bijvoorbeeld als het een Windows. Form-toepassing of een WPF-toepassing is.
+  - Als uw bureaublad toepassing grafische besturings elementen ondersteunt, bijvoorbeeld als het een Windows. Form-toepassing, een WPF-toepassing of een macOS-systeem eigen toepassing is.
   - Van als het een .NET core-toepassing is en u akkoord gaat om de verificatie-interactie met Azure AD te laten plaatsvinden in de systeem browser
 
 - Voor Windows-toepassingen die worden gehost, is het ook mogelijk dat toepassingen die worden uitgevoerd op computers die lid zijn van een Windows-domein of AAD lid zijn van een token op de achtergrond met behulp van geïntegreerde Windows-verificatie.
