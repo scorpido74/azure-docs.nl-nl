@@ -472,6 +472,8 @@
         - name: Schijven implementeren met sjabloon
           displayName: 'Azure Resource Manager, ARM'
           href: using-managed-disks-template-deployments.md
+        - name: Een VHD uploaden naar een schijf - CLI
+          href: disks-upload-vhd-to-managed-disk-cli.md
         - name: De grootte van een schijf wijzigen
           href: expand-disks.md
         - name: Een momentopname maken van een schijf

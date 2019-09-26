@@ -95,22 +95,22 @@
       items:
         - name: Algemene fouten
           href: troubleshoot.md
-        - name: Algemene waarschuwingen
-          items:
-            - name: Algemene waarschuwingen
-              href: troubleshoot-alerts.md
-            - name: Problemen met netwerkconfiguratie oplossen
-              href: alert-nsg.md
-            - name: Ontbrekende service-principals herstellen
-              href: alert-service-principal.md
-            - name: Waarschuwingen met betrekking tot Secure LDAP
-              href: alert-ldaps.md
         - name: Fouten met niet-overeenkomende tenants
           href: mismatched-tenant-error.md
         - name: Onderbroken domeinen
           href: suspension.md
         - name: Secure LDAP
           href: tshoot-ldaps.md
+        - name: Bekende problemen
+          items:
+            - name: Algemene waarschuwingen
+              href: troubleshoot-alerts.md
+            - name: Netwerkwaarschuwingen
+              href: alert-nsg.md
+            - name: Service-principalwaarschuwingen
+              href: alert-service-principal.md
+            - name: Waarschuwingen met betrekking tot Secure LDAP
+              href: alert-ldaps.md
 - name: Resources
   items:
     - name: Veelgestelde vragen

@@ -84,7 +84,11 @@
     - name: Taken over VM's binnen een zone verdelen (CLI)
       href: load-balancer-standard-public-zonal-cli.md
     - name: Regels voor uitgaand verkeer configureren
-      href: configure-load-balancer-outbound-cli.md
+      items:
+        - name: Regels voor uitgaand verkeer configureren - CLI
+          href: configure-load-balancer-outbound-cli.md
+        - name: Regels voor uitgaand verkeer configureren - PowerShell
+          href: configure-load-balancer-outbound-powershell.md
     - name: Een Azure-load balancer maken met behulp van de REST API
       href: create-load-balancer-rest-api.md
     - name: Een load balancer van het type Basic maken (sjabloon)

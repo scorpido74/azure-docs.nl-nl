@@ -47,7 +47,7 @@
           href: security-center-incident.md
         - name: Detectie van bedreigingen voor VM's en servers
           href: security-center-alerts-iaas.md
-        - name: Detectie van bedreigingen voor cloud-compute
+        - name: Detectie van bedreigingen voor cloud-apps en containers
           href: security-center-alerts-compute.md
         - name: Detectie van bedreigingen voor dataservices
           href: security-center-alerts-data-services.md
@@ -71,7 +71,7 @@
       href: security-center-wdatp.md
     - name: Geavanceerde gegevensbeveiliging voor SQL in virtuele Azure-machines (openbare preview)
       href: security-center-iaas-advanced-data.md
-    - name: App Service beveiligen
+    - name: App Service gebruiken om uw toepassingen te beveiligen
       href: security-center-app-services.md
     - name: Werken met beveiligingsbeleid
       href: tutorial-security-policy.md
@@ -91,7 +91,7 @@
       href: security-center-policy-definitions.md
     - name: E-mailmeldingen
       href: security-center-provide-security-contact-details.md
-    - name: Prijscategorie
+    - name: Prijzen
       href: security-center-pricing.md
     - name: Tenant-brede zichtbaarheid
       href: security-center-management-groups.md
@@ -147,8 +147,6 @@
   items:
     - name: REST-API’s
       href: 'https://docs.microsoft.com/rest/api/securitycenter/'
-    - name: Service-updates
-      href: 'https://azure.microsoft.com/updates/?product=security-center'
     - name: Buitengebruikstelling van functies en API (juli 2019)
       href: security-center-features-retirement-july2019.md
     - name: Evaluatie van eindpuntbeveiliging en aanbevelingen
@@ -159,25 +157,25 @@
       href: /learn/browse/?term=securityS
     - name: Gebruikersgegevens beheren
       href: security-center-privacy.md
-    - name: IoT beheren
+    - name: Documentatie voor Azure Security Center for IoT
       href: 'https://docs.microsoft.com/en-us/azure/asc-for-iot/'
     - name: Veelgestelde vragen
       href: security-center-faq.md
-    - name: Azure-beveiliging
+    - name: Documentatie over beveiliging in Azure
       href: /azure/security/
-    - name: Azure-roadmap
-      href: 'https://azure.microsoft.com/roadmap/?category=security-identity'
+    - name: Azure-updates
+      href: 'https://azure.microsoft.com/updates/?category=security-identity'
     - name: Roadmap naar gereedheid
       href: security-center-readiness-roadmap.md
     - name: 'Blog over veiligheid, privacy en naleving met betrekking tot Azure'
       href: 'https://blogs.msdn.com/b/azuresecurity/'
-    - name: Stack Overflow
-      href: 'https://stackoverflow.com/search?q=security-center'
+    - name: Azure Security Center op Stack Overflow
+      href: 'https://stackoverflow.com/search?q=azure-security-center'
     - name: Video's
       href: 'https://azure.microsoft.com/documentation/videos/index/?services=security-center'
     - name: Prijzen
       href: 'https://azure.microsoft.com/pricing/details/security-center/'
     - name: Regionale beschikbaarheid
       href: 'https://azure.microsoft.com/regions/services/'
-    - name: Problemen oplossen
+    - name: Handleiding voor het oplossen van problemen
       href: security-center-troubleshooting-guide.md

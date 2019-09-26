@@ -19,6 +19,8 @@
           href: ./hdinsight-administer-use-powershell.md
     - name: Voorbeelden
       items:
+        - name: Azure CLI-voorbeelden
+          href: ./azure-cli-samples.md
         - name: .NET-voorbeelden
           href: ./hdinsight-sdk-dotnet-samples.md
         - name: Java-voorbeelden
@@ -613,6 +615,8 @@
               href: ./hbase/apache-hbase-provision-vnet.md
         - name: Problemen oplossen
           items:
+            - name: Prestatieproblemen van Apache Hbase oplossen
+              href: ./hbase/troubleshoot-hbase-performance-issues.md
             - name: hbase hbck retourneert inconsistenties
               href: ./hbase/hbase-troubleshoot-hbase-hbck-inconsistencies.md
             - name: Opslaguitzondering na opnieuw instellen van verbinding

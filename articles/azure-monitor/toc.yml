@@ -431,6 +431,8 @@
                   href: app/asp-net-trace-logs.md
                 - name: Prestatiemeteritems
                   href: app/performance-counters.md
+                - name: EventCounters
+                  href: app/eventcounters.md
                 - name: Afhankelijkheden
                   href: app/asp-net-dependencies.md
                 - name: ApplicationInsights.config
@@ -519,6 +521,8 @@
                   items:
                     - name: Overzicht
                       href: platform/diagnostics-extension-overview.md
+                    - name: Logboeken verzamelen
+                      href: platform/azure-storage-iis-table.md
                     - name: Windows
                       items:
                         - name: Versiegeschiedenis
@@ -644,22 +648,20 @@
               href: insights/service-map.md
             - name: Computergroepen
               href: platform/computer-groups.md
-        - name: Azure-resources
+        - name: Azure-platform
           items:
-            - name: Diagnostische logboeken
+            - name: Overzicht van platformlogboeken
+              href: platform/platform-logs-overview.md
+            - name: Resourcelogboeken
               items:
                 - name: Overzicht
-                  href: platform/diagnostic-logs-overview.md
-                - name: Verzamelen in Logboeken
-                  href: platform/diagnostic-logs-stream-log-store.md
-                - name: Verzamelen van Azure Storage
-                  href: platform/azure-storage-iis-table.md
+                  href: platform/resource-logs-overview.md
+                - name: Verzamelen in Azure Monitor-logboeken
+                  href: platform/resource-logs-collect-workspace.md
                 - name: Archiveren naar opslag
-                  href: platform/archive-diagnostic-logs.md
-                - name: Inschakelen met Resource Manager-sjablonen
-                  href: platform/diagnostic-logs-stream-template.md
-        - name: Azure-abonnement
-          items:
+                  href: platform/resource-logs-collect-storage.md
+                - name: Streamen naar Event Hubs
+                  href: platform/resource-logs-stream-event-hubs.md
             - name: Activiteitenlogboek
               items:
                 - name: Overzicht
@@ -674,6 +676,14 @@
                   href: platform/activity-log-export.md
                 - name: Schema
                   href: platform/activity-log-schema.md
+            - name: Diagnostische instellingen
+              items:
+                - name: Diagnostische instelling maken
+                  href: platform/diagnostic-settings.md
+                - name: Diagnostische instelling maken met Resource Manager
+                  href: platform/diagnostic-settings-template.md
+                - name: Wijzigingen in de blobopslagindeling
+                  href: platform/resource-logs-blob-format.md
             - name: Gegevens streamen naar Event Hubs
               href: platform/stream-monitoring-data-event-hubs.md
             - name: Key Vault-analyse
@@ -685,6 +695,7 @@
         - name: Storage
           items:
             - name: Azure Monitor voor Storage
+              displayname: 'storage, monitor, insights, storage accounts, azure storage'
               href: insights/storage-insights-overview.md
         - name: Databases
           items:
@@ -747,7 +758,7 @@
             - name: Verbinding maken met Configuration Manager
               href: platform/collect-sccm.md
         - name: Gegevens streamen naar Event Hubs
-          href: platform/diagnostic-logs-stream-event-hubs.md
+          href: platform/resource-logs-stream-event-hubs.md
     - name: Gegevens analyseren
       items:
         - name: Metrische gegevens

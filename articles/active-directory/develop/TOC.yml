@@ -9,7 +9,7 @@
       href: v2-overview.md
     - name: Snelstartgidsen
       items:
-        - name: Een ontwikkelaarsomgeving instellen
+        - name: Een tenant instellen
           href: quickstart-create-new-tenant.md
         - name: Een toepassing configureren
           items:
@@ -49,7 +49,7 @@
           items:
             - name: Android
               href: quickstart-v2-android.md
-            - name: iOS
+            - name: iOS en macOS
               href: quickstart-v2-ios.md
             - name: Universeel Windows-platform
               href: quickstart-v2-uwp.md
@@ -75,7 +75,7 @@
           items:
             - name: Android
               href: tutorial-v2-android.md
-            - name: iOS
+            - name: iOS en macOS
               href: tutorial-v2-ios.md
             - name: Universeel Windows-platform
               href: tutorial-v2-windows-uwp.md
@@ -223,12 +223,14 @@
           items:
             - name: Overzicht
               href: msal-overview.md
-            - name: Migratie
+            - name: Migratie vanuit ADAL
               items:
                 - name: Migreren naar MSAL.NET
                   href: msal-net-migration.md
                 - name: Migreren naar MSAL.js
                   href: msal-compare-msal-js-and-adal-js.md
+                - name: Migreren naar MSAL voor iOS en MacOS
+                  href: migrate-objc-adal-msal.md
                 - name: Xamarin-apps met brokers migreren van ADAL.NET naar MSAL.NET
                   href: msal-net-migration-ios-broker.md
             - name: Ondersteunde verificatiestromen
@@ -239,8 +241,6 @@
                   href: msal-acquire-cache-tokens.md
                 - name: Bereiken voor v1.0-apps
                   href: msal-v1-app-scopes.md
-                - name: Serialisatie van tokencache (.NET)
-                  href: msal-net-token-cache-serialization.md
             - name: Clienttoepassingen
               items:
                 - name: Clienttoepassingen
@@ -257,18 +257,28 @@
               href: msal-handling-exceptions.md
             - name: Logboekregistratie
               href: msal-logging.md
-            - name: Eenmalige aanmelding (JS)
-              href: msal-js-sso.md
-            - name: Promptgedrag (JS)
-              href: msal-js-prompt-behavior.md
-            - name: ADFS-ondersteuning (.NET)
-              href: msal-net-adfs-support.md
+            - name: Eenmalige aanmelding
+              items:
+                - name: Eenmalige aanmelding met MSAL.js
+                  href: msal-js-sso.md
+                - name: Eenmalige aanmelding met MSAL voor iOS en macOS
+                  items:
+                    - name: SSO tussen MSAL-apps
+                      href: single-sign-on-macos-ios.md
+                    - name: SSO tussen ADAL- en MSAL-apps
+                      href: sso-between-adal-msal-apps-macos-ios.md
+            - name: Integreren met ADFS
+              items:
+                - name: ADFS-ondersteuning in MSAL.NET
+                  href: msal-net-adfs-support.md
             - name: Integreren met Azure AD B2C
               items:
                 - name: Javascript
                   href: msal-b2c-overview.md
                 - name: .NET
                   href: msal-net-aad-b2c-considerations.md
+                - name: iOS en macOS
+                  href: 'config-authority.md#b2c'
             - name: Overwegingen en bekende problemen
               items:
                 - name: MSAL.NET
@@ -283,6 +293,10 @@
                       href: msal-js-known-issues-ie-edge-browsers.md
                     - name: Bekende problemen - Safari
                       href: msal-js-known-issues-safari-browser.md
+                - name: MSAL voor iOS en macOS
+                  items:
+                    - name: SSL-problemen
+                      href: ssl-issues.md
         - name: Verificatieprotocol
           items:
             - name: Toepassingstypen en OAuth 2.0
@@ -378,6 +392,8 @@
               items:
                 - name: Een token uit de cache ophalen
                   href: msal-net-acquire-token-silently.md
+                - name: Serialisatie van tokencache
+                  href: msal-net-token-cache-serialization.md
                 - name: De tokencache wissen
                   href: msal-net-clear-token-cache.md
                 - name: Een exemplaar maken van een openbare client met opties
@@ -394,6 +410,20 @@
                   href: msal-js-avoid-page-reloads.md
                 - name: De aangepaste status in verificatieaanvragen doorgeven
                   href: msal-js-pass-custom-state-authentication-request.md
+                - name: Promptgedrag
+                  href: msal-js-prompt-behavior.md
+            - name: MSAL voor iOS en macOS
+              items:
+                - name: Verschillen tussen de Microsoft-verificatiebibliotheek voor iOS en macOS
+                  href: msal-differences-ios-macos.md
+                - name: Sleutelketen configureren
+                  href: howto-v2-keychain-objc.md
+                - name: Browsers en WebView aanpassen
+                  href: customize-webviews.md
+                - name: Aangepaste claims aanvragen
+                  href: request-custom-claims.md
+                - name: URI-configuratie omleiden
+                  href: redirect-uris-ios.md
         - name: Werken met Visual Studio
           items:
             - name: De verbonden Active Directory-service gebruiken
@@ -428,7 +458,7 @@
       href: v1-overview.md
     - name: Snelstartgidsen
       items:
-        - name: Een ontwikkelaarsomgeving instellen
+        - name: Een tenant instellen
           href: quickstart-create-new-tenant.md
         - name: Een toepassing configureren
           items:
@@ -468,7 +498,7 @@
           items:
             - name: Android
               href: quickstart-v1-android.md
-            - name: iOS
+            - name: iOS en macOS
               href: quickstart-v1-ios.md
             - name: .NET voor Windows Desktop
               href: quickstart-v1-dotnet.md
