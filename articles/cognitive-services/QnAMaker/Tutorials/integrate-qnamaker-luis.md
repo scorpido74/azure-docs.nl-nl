@@ -11,14 +11,14 @@ ms.topic: article
 ms.date: 06/11/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 1792cf2359caef3211b4ce1ac86928eeb85d682b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 6605aa268a7ee7fe75254df5dbe96e9dfbc71d79
+ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67053162"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71272418"
 ---
-# <a name="use-bot-with-qna-maker-and-luis-to-distribute-your-knowledge-base"></a>Bot met QnA Maker en LUIS gebruiken voor het distribueren van uw knowledge base
+# <a name="use-bot-with-qna-maker-and-luis-to-distribute-your-knowledge-base"></a>Gebruik bot met QnA Maker en LUIS om uw Knowledge Base te distribueren
 Als uw QnA Maker knowledge base grote groeit, wordt het moeilijk te onderhouden als één monolithische ingesteld en er behoefte aan de knowledge base splitsen in kleinere logische segmenten.
 
 Het is eenvoudig te maken van meerdere knowledge bases in QnA Maker, moet u bepaalde logica voor het routeren van de binnenkomende vraag naar de juiste knowledge base. U kunt dit doen met behulp van LUIS.
@@ -27,7 +27,7 @@ Dit artikel wordt gebruikgemaakt van Bot Framework v3 SDK. Lees dit [Bot Framewo
 
 ## <a name="architecture"></a>Architectuur
 
-![QnA Maker met Language Understanding-architectuur](../media/qnamaker-tutorials-qna-luis/qnamaker-luis-architecture.PNG)
+![QnA Maker met Language Understanding architectuur](../media/qnamaker-tutorials-qna-luis/qnamaker-luis-architecture.PNG)
 
 In dit scenario, QnA Maker eerst de bedoeling van de binnenkomende vraag opgehaald uit een LUIS-model, en gebruik vervolgens die aan deze wordt doorgestuurd naar de juiste QnA Maker knowledge base.
 
@@ -51,7 +51,7 @@ In dit scenario, QnA Maker eerst de bedoeling van de binnenkomende vraag opgehaa
 
 ## <a name="web-app-bot"></a>Web app-Bot
 
-1. [Maak een 'Basic' Web-App-bot](https://docs.microsoft.com/azure/bot-service/bot-service-quickstart?view=azure-bot-service-4.0) waaronder automatisch een LUIS-app. Selecteer de 4.x SDK en de C# programmeertaal.
+1. [Maak een eenvoudige web-app-bot](https://docs.microsoft.com/azure/bot-service/bot-service-quickstart?view=azure-bot-service-4.0) die automatisch een Luis-app bevat. Selecteer C# programmeer taal.
 
 1. Zodra de web-app-bot wordt gemaakt in Azure portal, selecteert u de web-app-bot.
 1. Selecteer **toepassingsinstellingen** in de navigatiebalk van Web-app-bot service en schuif vervolgens omlaag naar **toepassingsinstellingen** sectie van de beschikbare instellingen.

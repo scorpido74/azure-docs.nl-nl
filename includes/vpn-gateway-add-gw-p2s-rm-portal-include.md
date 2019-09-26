@@ -5,15 +5,15 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 07/31/2019
+ms.date: 09/24/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: eba7dbb934bbc19ed7dc7452c15cbf22a9429bc3
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: 9ce9fa29a29559a1eaaff6173737159f11aa83d8
+ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68706756"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71268897"
 ---
 1. Klik in de portal aan de linkerkant op **Een resource maken** en typ in het zoekvak: 'virtuele netwerkgateway'. Klik op het zoekresultaat **Gateway van het virtuele netwerk**. Klik op de pagina **virtuele netwerk gateway** op **maken**. Hiermee opent u de pagina **Gateway van het virtuele netwerk maken**.
 
@@ -39,7 +39,7 @@ ms.locfileid: "68706756"
 
       **Adres bereik gateway-subnet**: Dit veld wordt alleen weer gegeven als het virtuele netwerk dat u hebt geselecteerd, geen gateway-subnet heeft. Vul het bereik in als u nog geen gateway-subnet hebt. Maak indien mogelijk het bereik/27 of groter (/26,/25 enz.)
 
-    **Openbaar IP-adres**: Met deze instelling geeft u het open bare IP-adres object op dat is gekoppeld aan de VPN-gateway. Het openbare IP-adres wordt dynamisch toegewezen aan dit object wanneer de VPN-gateway wordt gemaakt. VPN Gateway ondersteunt momenteel alleen *dynamische* toewijzing van openbare IP-adressen. Dit betekent echter niet dat het IP-adres wordt gewijzigd nadat het aan uw VPN Gateway is toegewezen. Het openbare IP-adres verandert alleen wanneer de gateway wordt verwijderd en opnieuw wordt gemaakt. Het verandert niet wanneer de grootte van uw VPN Gateway verandert, wanneer deze gateway opnieuw wordt ingesteld of wanneer andere interne onderhoudswerkzaamheden of upgrades worden uitgevoerd.
+   **Openbaar IP-adres**: Met deze instelling geeft u het open bare IP-adres object op dat is gekoppeld aan de VPN-gateway. Het openbare IP-adres wordt dynamisch toegewezen aan dit object wanneer de VPN-gateway wordt gemaakt. Het openbare IP-adres verandert alleen wanneer de gateway wordt verwijderd en opnieuw wordt gemaakt. Het verandert niet wanneer de grootte van uw VPN Gateway verandert, wanneer deze gateway opnieuw wordt ingesteld of wanneer andere interne onderhoudswerkzaamheden of upgrades worden uitgevoerd.
 
      - **Openbaar IP-adres**: Laat **Nieuwe maken** geselecteerd.
      - **Openbare IP-adresnaam**: Typ in het tekstvak een naam voor het exemplaar van het open bare IP-adres.

@@ -7,13 +7,13 @@ services: time-series-insights
 ms.service: time-series-insights
 author: kingdomofends
 ms.author: adgera
-ms.date: 08/08/2019
-ms.openlocfilehash: ed5cd9424630a90b989b8a4d76959961f82a53ec
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.date: 09/24/2019
+ms.openlocfilehash: ccfbd16f4db770558f1bc0284860a5f8d9fb8b68
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68935262"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266939"
 ---
 > [!IMPORTANT]
 > * De Blade nieuw **Azure Active Directory** > **app-registraties** vervangt de Blade verouderde **Azure Active Directory** > **app-registraties (verouderd)** 2019.
@@ -41,7 +41,7 @@ ms.locfileid: "68935262"
 
 1. De Blade **verificatie** specificeert belang rijke instellingen voor verificatie configuratie. 
 
-    1. Omleidings- **uri's** moeten overeenkomen met het adres dat is opgegeven door de verificatie aanvraag:
+    1. **Omleidings-uri's** moeten overeenkomen met het adres dat is opgegeven door de verificatie aanvraag:
 
         * Voor apps die worden gehost in een lokale ontwikkel omgeving selecteert u **open bare client (mobiele & bureau blad)** . Zorg ervoor dat het **standaard client type** is ingesteld op Ja.
         * Voor apps met één pagina die worden gehost op Azure App Service, selecteert u **Web**.

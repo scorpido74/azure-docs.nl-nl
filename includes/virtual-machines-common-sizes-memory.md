@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 08/08/2019
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: dce7cc2cd8e97eef81023eb803cace3f6d011171
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: 18a19f5f853206b06c617307c761a99033c9f92a
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "70174609"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266922"
 ---
 Voor geheugen geoptimaliseerde VM-grootten bieden een hoge geheugen-naar-CPU-verhouding die ideaal is voor relationele database servers, gemiddeld tot grote caches en analyse in het geheugen. In dit artikel vindt u informatie over het aantal Vcpu's, gegevens schijven en Nic's, evenals opslag doorvoer en netwerk bandbreedte voor elke grootte in deze groep.
 
 * De Ev3-serie bevat de E5-2673 2,3 v4-processor (Broadwell) in een configuratie met Hyper-Threading, met een betere waarde voor de meeste werk belastingen voor algemeen gebruik en brengt de Ev3 in op uitlijning met de virtuele machines voor algemeen gebruik van de meeste andere Clouds.  Het geheugen is uitgevouwen (van 7 GiB/vCPU tot 8 GiB/vCPU), terwijl de schijf-en netwerk limieten per kern zijn aangepast om te worden uitgelijnd met de verplaatsing van hyperthreading.  De Ev3 is de follow-up van de VM-grootten van het hoge geheugen van de D/dv2-families.
 
-* De Eav3-serie en de Easv3-serie gebruiken de 2.35 GHz EPYC<sup>TM</sup> 7452V-processor van AMD in een configuratie met meerdere threads met Maxi maal 256 MB L3-cache, waarmee u de meeste opties voor het uitvoeren van de meeste voor geheugen geoptimaliseerde werk belastingen kunt verhogen.  De Eav3-serie en de Easv3-serie hebben dezelfde geheugen-en schijf configuraties als de Ev3 & Esv3-serie.
+* De preview-grootten van de Eav3-serie en de Easv3-serie maken gebruik van de 2.35 GHz EPYC<sup>TM</sup> 7452-processor van AMD in een configuratie met meerdere threads met Maxi maal 256 MB L3-cache, waarmee u de meeste geheugen optimalisatie opties kunt uitvoeren.  De Eav3-serie en de Easv3-serie hebben dezelfde geheugen-en schijf configuraties als de Ev3 & Esv3-serie.
 
 * De Mv2-serie biedt het hoogste aantal vCPU (Maxi maal 208 Vcpu's) en het grootste geheugen (Maxi maal 5,7 TiB) van elke virtuele machine in de Cloud. Dit is ideaal voor zeer grote databases of andere toepassingen die zo kunnen profiteren van een groot aantal vCPU’s en grote hoeveelheden geheugen.
 
@@ -61,13 +61,15 @@ Er zijn <sup>2</sup> beperkte core-grootten beschikbaar.
 
 <sup>3</sup> exemplaar is geïsoleerd voor hardware die is toegewezen aan één klant.
 
-## <a name="easv3-series"></a>Easv3-serie
+## <a name="easv3-series-preview"></a>Easv3-serie (preview-versie)
 
 Premium-opslag: Ondersteund
 
 Premium Storage caching: Ondersteund
 
-Groottes van de Easv3-serie zijn gebaseerd op de 2.35 GHz AMD EPYC<sup>TM</sup> 7452V-processor die een gestimuleerd Fmax van 3.35 GHz kan bereiken en Premium-opslag gebruiken. De grootten van de Easv3-serie zijn ideaal voor geheugenintensieve bedrijfs toepassingen.
+Groottes van de Easv3-serie zijn gebaseerd op de 2.35 GHz AMD EPYC<sup>TM</sup> 7452-processor die een gestimuleerde Fmax van 3.35 GHz kan bereiken en Premium-opslag gebruiken. De grootten van de Easv3-serie zijn ideaal voor geheugenintensieve bedrijfs toepassingen.
+
+[Klik hier om u aan te melden voor de preview-versie](http://aka.ms/azureamdpreview).
 
 | Size | vCPU | Geheugen: GiB | Tijdelijke opslag (SSD): GiB |
 |---|---|---|---|
@@ -110,23 +112,25 @@ Er zijn <sup>2</sup> beperkte core-grootten beschikbaar.
 
 <sup>3</sup> exemplaar is geïsoleerd voor hardware die is toegewezen aan één klant.
 
-## <a name="eav3-series"></a>Eav3-serie
+## <a name="eav3-series-preview"></a>Eav3-serie (preview-versie)
 
 Premium-opslag: Niet ondersteund
 
 Premium Storage caching: Niet ondersteund
 
-Groottes van de Eav3-serie zijn gebaseerd op de 2.35 GHz AMD EPYC<sup>TM</sup> 7452V-processor die een gestimuleerd Fmax van 3.35 GHz kan bereiken en Premium-opslag gebruiken. De grootten van de Eav3-serie zijn ideaal voor geheugenintensieve bedrijfs toepassingen. Gegevensschijfopslag wordt apart van virtuele machines in rekening gebracht. Als u Premium Storage-schijven wilt gebruiken, gebruikt u de grootten van de Easv3-serie. De prijs-en facturerings meters voor Easv3-grootten zijn gelijk aan die van de Eav3-serie.
+Groottes van de Eav3-serie zijn gebaseerd op de 2.35 GHz AMD EPYC<sup>TM</sup> 7452-processor die een gestimuleerde Fmax van 3.35 GHz kan bereiken en Premium-opslag gebruiken. De grootten van de Eav3-serie zijn ideaal voor geheugenintensieve bedrijfs toepassingen. Gegevensschijfopslag wordt apart van virtuele machines in rekening gebracht. Als u Premium Storage-schijven wilt gebruiken, gebruikt u de grootten van de Easv3-serie. De prijs-en facturerings meters voor Easv3-grootten zijn gelijk aan die van de Eav3-serie.
 
-| Size | vCPU | Geheugen: GiB | Tijdelijke opslag (SSD): GiB |
-|---|---|---|---|---|---|
-| Standard_E2a_v3  | 2  | 16  | 50   |
-| Standard_E4a_v3  | 4  | 32  | 100  |
-| Standard_E8a_v3  | 8  | 64  | 200  |
-| Standard_E16a_v3 | 16 | 128 | 400  |
-| Standard_E32a_v3 | 32 | 256 | 800  |
-| Standard_E48a_v3 | 48 | 384 | 1200 |
-| Standard_E64a_v3 | 64 | 432 | 1600 |
+[Klik hier om u aan te melden voor de preview-versie](http://aka.ms/azureamdpreview).
+
+| Size             | vCPU | Geheugen: GiB | Tijdelijke opslag (SSD): GiB |
+|------------------|------|-------------|-------------------------|
+| Standard_E2a_v3  | 2    | 16          | 50                      |
+| Standard_E4a_v3  | 4    | 32          | 100                     |
+| Standard_E8a_v3  | 8    | 64          | 200                     |
+| Standard_E16a_v3 | 16   | 128         | 400                     |
+| Standard_E32a_v3 | 32   | 256         | 800                     |
+| Standard_E48a_v3 | 48   | 384         | 1200                    |
+| Standard_E64a_v3 | 64   | 432         | 1600                    |
 
 ## <a name="mv2-series"></a>Mv2-serie
 

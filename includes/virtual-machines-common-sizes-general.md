@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/08/2019
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: a47589728bdbe3842790a7c13fe35d04dbbe6883
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 5d89feaa5225aea56af86aa7f70d3666994fdaec
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68881625"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266888"
 ---
 VM-grootten voor algemeen gebruik bieden evenwichtige verhouding tussen CPU en geheugen. Ideaal voor testen en ontwikkelen, kleine tot middelgrote databases en webservers met weinig of gemiddeld verkeer. Dit artikel bevat informatie over het aantal Vcpu's, gegevens schijven en Nic's en de opslag doorvoer voor grootten in deze groepering.
 
@@ -80,13 +80,15 @@ De grootte van de Dsv3-serie is gebaseerd op de 2,4 GHz Intel Xeon® E5-2673 v3-
 
 <sup>1</sup> Dsv3-serie VM-functie Intel® Hyper-Threading-technologie
 
-## <a name="dasv3-series"></a>Dasv3-serie
+## <a name="dasv3-series-preview"></a>Dasv3-serie (preview-versie)
 
 Premium-opslag: Ondersteund
 
 Premium Storage caching: Ondersteund
 
-Groottes van de Dasv3-serie zijn gebaseerd op de 2.35 GHz AMD EPYC<sup>TM</sup> 7452V-processor die een gestimuleerd Fmax van 3.35 GHz kan bereiken en Premium-opslag gebruiken. De grootte van de Dasv3-serie biedt een combi natie van vCPU, geheugen en tijdelijke opslag voor de meeste productiewerk belastingen.
+Groottes van de Dasv3-serie zijn gebaseerd op de 2.35 GHz AMD EPYC<sup>TM</sup> 7452-processor die een gestimuleerde Fmax van 3.35 GHz kan bereiken en Premium-opslag gebruiken. De grootte van de Dasv3-serie biedt een combi natie van vCPU, geheugen en tijdelijke opslag voor de meeste productiewerk belastingen.
+
+[Klik hier om u aan te melden voor de preview-versie](http://aka.ms/azureamdpreview).
 
 | Size | vCPU | Geheugen: GiB | Tijdelijke opslag (SSD): GiB |
 |---|---|---|---|
@@ -123,13 +125,15 @@ Gegevensschijfopslag wordt apart van virtuele machines in rekening gebracht. Als
 
 <sup>1</sup> Dv3-serie VM-functie Intel® Hyper-Threading-technologie
 
-## <a name="dav3-series"></a>Dav3-serie
+## <a name="dav3-series-preview"></a>Dav3-serie (preview-versie)
 
 Premium-opslag: Niet ondersteund
 
 Premium Storage caching: Niet ondersteund
 
-De grootte van de Dav3-serie is gebaseerd op de 2.35 GHz AMD EPYC<sup>TM</sup> 7452V-processor die een gestimuleerd Fmax van 3.35 GHz kan bereiken. De grootte van de Dav3-serie biedt een combi natie van vCPU, geheugen en tijdelijke opslag voor de meeste productiewerk belastingen. Gegevensschijfopslag wordt apart van virtuele machines in rekening gebracht. Als u Premium Storage-schijven wilt gebruiken, gebruikt u de Dasv3-grootten. De prijs-en facturerings meters voor Dasv3-grootten zijn gelijk aan die van de Dav3-serie.
+De grootte van de Dav3-serie is gebaseerd op de 2.35 GHz AMD EPYC<sup>TM</sup> 7452-processor die een gestimuleerde Fmax van 3.35 GHz kan bereiken. De grootte van de Dav3-serie biedt een combi natie van vCPU, geheugen en tijdelijke opslag voor de meeste productiewerk belastingen. Gegevensschijfopslag wordt apart van virtuele machines in rekening gebracht. Als u Premium Storage-schijven wilt gebruiken, gebruikt u de Dasv3-grootten. De prijs-en facturerings meters voor Dasv3-grootten zijn gelijk aan die van de Dav3-serie.
+
+[Klik hier om u aan te melden voor de preview-versie](http://aka.ms/azureamdpreview).
 
 | Size | vCPU | Geheugen: GiB | Tijdelijke opslag (SSD): GiB |
 |---|---|---|---|

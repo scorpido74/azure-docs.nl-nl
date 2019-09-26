@@ -8,54 +8,54 @@ ms.topic: include
 ms.date: 02/20/2019
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 3893b79cee96c3928897f64f3601ebe4c490ebdd
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 2498711a5b7e5bce29cd0054ba40257f8f996d43
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67176143"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266820"
 ---
-### <a name="enable-logging-with-diagnostics-settings"></a>Logboekregistratie inschakelen met de diagnostische instellingen
+### <a name="enable-logging-with-diagnostics-settings"></a>Logboek registratie met Diagnostische instellingen inschakelen
 
 [!INCLUDE [updated-for-az](./updated-for-az.md)]
 
 1. Aanmelden bij de [Azure-portal](https://portal.azure.com) en navigeer naar uw IoT-hub.
 
-2. Selecteer **diagnostische instellingen**.
+2. Selecteer **instellingen voor diagnostische gegevens**.
 
 3. Selecteer **diagnostische gegevens inschakelen**.
 
    ![Diagnostische gegevens inschakelen](./media/iot-hub-diagnostics-settings/turnondiagnostics.png)
 
-4. De diagnostische instellingen voor een naam geven.
+4. Geef de diagnostische instellingen een naam.
 
-5. Kies waar u om de logboeken te verzenden. U kunt een willekeurige combinatie van de drie opties selecteren:
+5. Kies waar u de logboeken wilt verzenden. U kunt een combi natie van de drie opties selecteren:
 
    * Archiveren naar een opslagaccount
-   * Stream naar een event hub
+   * Streamen naar een Event Hub
    * Verzenden naar Log Analytics
 
-6. Kiezen welke bewerkingen u wilt bewaken, en schakel logboeken voor deze bewerkingen. Er zijn de bewerkingen die diagnostische instellingen kunnen worden weergegeven:
+6. Kies welke bewerkingen u wilt bewaken en schakel Logboeken in voor deze bewerkingen. De bewerkingen waarvan de diagnostische instellingen kunnen rapporteren, zijn:
 
    * Verbindingen
-   * Telemetrie van apparaten
+   * Telemetrie van apparaat
    * Cloud-naar-apparaat-berichten
-   * Bewerkingen voor apparaat-id
+   * Bewerkingen voor apparaat-id's
    * Uploaden van bestanden
    * Berichtroutering
-   * Cloud-naar-apparaat dubbele bewerkingen
-   * Dubbele apparaat-naar-cloud-bewerkingen
+   * Dubbele bewerkingen van het Cloud naar het apparaat
+   * Dubbele bewerkingen van het apparaat naar de Cloud
    * Dubbele bewerkingen
-   * Taakbewerkingen
+   * Taak bewerkingen
    * Directe methoden  
-   * Gedistribueerde tracering (preview)
+   * Gedistribueerde tracering (preview-versie)
    * Configuraties
-   * Apparaat-streams
+   * Streams van apparaat
    * Metrische gegevens van apparaat
 
-6. De nieuwe instellingen opslaan. 
+6. Sla de nieuwe instellingen op. 
 
-Als u inschakelen op de instellingen voor diagnostische gegevens met PowerShell wilt, gebruikt u de volgende code:
+Als u Diagnostische instellingen wilt inschakelen met Power shell, gebruikt u de volgende code:
 
 ```azurepowershell
 Connect-AzAccount
@@ -63,4 +63,4 @@ Select-AzSubscription -SubscriptionName <subscription that includes your IoT Hub
 Set-AzDiagnosticSetting -ResourceId <your resource Id> -ServiceBusRuleId <your service bus rule Id> -Enabled $true
 ```
 
-Nieuwe instellingen van kracht in ongeveer 10 minuten. Hierna logboeken worden weergegeven in de geconfigureerde archivering doel op de **diagnostische instellingen** blade. Zie voor meer informatie over het configureren van diagnostische gegevens [verzamelen en gebruiken van logboekgegevens van uw azure-resources](../articles/azure-monitor/platform/diagnostic-logs-overview.md).
+Nieuwe instellingen van kracht in ongeveer 10 minuten. Daarna worden logboeken weer gegeven in het geconfigureerde archief doel op de Blade **Diagnostische instellingen** . Zie [logboek gegevens verzamelen en gebruiken van uw Azure-resources](../articles/azure-monitor/platform/resource-logs-overview.md)voor meer informatie over het configureren van diagnostiek.

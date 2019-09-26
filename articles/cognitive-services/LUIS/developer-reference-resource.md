@@ -10,12 +10,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: diberry
-ms.openlocfilehash: 01d01461c540949693855ca407920d52b22ad714
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 97684a4668c1d495fa690674f7bd94e064737bd4
+ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71106854"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71273953"
 ---
 # <a name="developer-resources-for-language-understanding"></a>Bronnen voor ontwikkel aars voor Language Understanding
 
@@ -27,7 +27,7 @@ Gebruik de Azure Cognitive Services Management-laag voor het maken, bewerken, we
 
 Zoek naar de referentie documentatie op basis van het hulp programma:
 
-* [Azure-CLI](https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az_cognitiveservices_list)
+* [Azure-CLI](https://docs.microsoft.com/cli/azure/cognitiveservices#az-cognitiveservices-list)
 
 * [PowerShell voor Azure RM](https://docs.microsoft.com/powershell/module/azurerm.cognitiveservices/?view=azurermps-4.4.1#cognitive_services)
 

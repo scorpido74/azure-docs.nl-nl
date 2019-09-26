@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/13/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: c3201ec64ee7a3471b7d93b83664c62c2e7e0435
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: ffc77d2a175d300be306b1566324b2551e38aeab
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69541454"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266871"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Veelgestelde vragen over Azure IaaS-VM-schijven en beheerde en onbeheerde Premium-schijven
 
@@ -183,8 +183,26 @@ Nee, Azure Backup-ondersteuning is nog niet beschikbaar.
 **Kan ik een ultra schijf koppelen aan een virtuele machine die wordt uitgevoerd in een beschikbaarheidsset?**
 Nee, dit wordt nog niet ondersteund.
 
-**Kan ik Azure Site Recovery (ASR) inschakelen voor Vm's met ultra schijven?**
-Nee, ASR wordt nog niet ondersteund voor Ultra disks.
+**Kan ik Azure Site Recovery voor Vm's inschakelen met ultra schijven?**
+Nee, Azure Site Recovery wordt nog niet ondersteund voor Ultra disks.
+
+## <a name="uploading-to-a-managed-disk"></a>Uploaden naar een beheerde schijf
+
+**Kan ik gegevens uploaden naar een bestaande beheerde schijf?**
+
+Nee, uploaden kan alleen worden gebruikt tijdens het maken van een nieuwe lege schijf met de status **ReadyToUpload** .
+
+**Hoe kan ik uploaden naar een beheerde schijf?**
+
+Een beheerde schijf maken met de eigenschap [createOption](https://docs.microsoft.com/rest/api/compute/disks/createorupdate#diskcreateoption) van [creationData](https://docs.microsoft.com/rest/api/compute/disks/createorupdate#creationdata) ingesteld op ' Upload ' en vervolgens kunt u er gegevens naar uploaden.
+
+**Kan ik een schijf koppelen aan een virtuele machine terwijl deze een upload status heeft?**
+
+Nee.
+
+**Kan ik een moment opname van een beheerd-schijf maken in een upload status?**
+
+Nee.
 
 ## <a name="standard-ssd-disks"></a>Standard-SSD schijven
 

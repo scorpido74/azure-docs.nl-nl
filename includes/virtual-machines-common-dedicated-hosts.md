@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/26/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: a627592bdfcbebc3c7fcda911e31c0ae6f4a630f
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: d27b3613acb2980ff4116825197d018f9c183baa
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976625"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266854"
 ---
 ## <a name="benefits"></a>Voordelen 
 
@@ -113,6 +113,6 @@ Azure bewaakt en beheert de integriteits status van uw hosts. De volgende status
 |----------|----------------|
 | Host beschikbaar     | Er zijn geen bekende problemen met de host.   |
 | Host wordt onderzocht  | Er zijn enkele problemen met de host die we op zoek zijn. Dit is een overgangs status die vereist is voor Azure om het bereik en de hoofd oorzaak voor het geïdentificeerde probleem te identificeren. Voor virtuele machines die op de host worden uitgevoerd, kan dit gevolgen hebben. |
-| Toewijzing in afwachting van host   | Azure kan de host niet herstellen naar een goede status en u vraagt u uw virtuele machines opnieuw te implementeren vanaf deze host. Als `autoHealingOnFailure` is ingeschakeld, worden uw virtuele machines retoucheerd naar goede hardware. Anders kan de virtuele machine worden uitgevoerd op een host die op het punt staat om te mislukken.|
-| Toewijzing van host is ongedaan gemaakt  | Alle virtuele machines zijn van de host verwijderd. Er worden geen kosten meer in rekening gebracht voor deze host omdat de hardware niet is gedraaid.   |
+| Toewijzing in afwachting van host   | Azure kan de host niet herstellen naar een goede status en u vraagt u uw virtuele machines opnieuw te implementeren vanaf deze host. Als `autoReplaceOnFailure` is ingeschakeld, worden uw virtuele machines *retoucheerd* naar goede hardware. Anders kan de virtuele machine worden uitgevoerd op een host die op het punt staat om te mislukken.|
+| De toewijzing van de host is ongedaan gemaakt  | Alle virtuele machines zijn van de host verwijderd. Er worden geen kosten meer in rekening gebracht voor deze host omdat de hardware niet is gedraaid.   |
 
