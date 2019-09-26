@@ -8,19 +8,19 @@ ms.topic: include
 ms.date: 12/13/2018
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: d6c5d881c5ca6eee14835ab0ec10bff2749299dc
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: b0c6d80bfa7a7ae27e5dc6565b0d15b94eb7cdd3
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "68502280"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71310596"
 ---
 De volgende tabel bevat de quotum gegevens die specifiek zijn voor Azure Service Bus berichten. Voor informatie over prijzen en andere quota's voor Service Bus raadpleegt u [Service Bus prijzen](https://azure.microsoft.com/pricing/details/service-bus/).
 
 | Quotumnaam | Scope | Opmerkingen | Value |
 | --- | --- | --- | --- |
 | Maximum aantal basis-of standaard naam ruimten per Azure-abonnement |Naamruimte |Volgende aanvragen voor aanvullende Basic-of Standard-naam ruimten worden geweigerd door de Azure Portal. |100|
-| Maximum aantal Premium-naam ruimten per Azure-abonnement |Naamruimte |Volgende aanvragen voor aanvullende Premium-naam ruimten worden geweigerd door de portal. |50 |
+| Maximum aantal Premium-naam ruimten per Azure-abonnement |Naamruimte |Volgende aanvragen voor aanvullende Premium-naam ruimten worden geweigerd door de portal. |100 |
 | Grootte van de wachtrij of het onderwerp |Entiteit |Gedefinieerd bij het maken van de wachtrij of het onderwerp. <br/><br/> Volgende inkomende berichten worden geweigerd en er wordt een uitzonde ring ontvangen door de aanroepende code. |1, 2, 3, 4 GB of 5 GB.<br /><br />In de Premium-SKU en de standaard-SKU waarvoor [partitionering](/azure/service-bus-messaging/service-bus-partitioning) is ingeschakeld, is de maximum grootte voor de wachtrij of het onderwerp 80 GB. |
 | Aantal gelijktijdige verbindingen op een naam ruimte |Naamruimte |Volgende aanvragen voor extra verbindingen worden geweigerd en er wordt een uitzonde ring ontvangen door de aanroepende code. REST-bewerkingen tellen niet mee voor gelijktijdige TCP-verbindingen. |NetMessaging 1.000.<br /><br />AMQP 5.000. |
 | Aantal gelijktijdige ontvangen aanvragen voor een entiteit in een wachtrij, onderwerp of abonnement |Entiteit |Volgende ontvangen aanvragen worden afgewezen en er wordt een uitzonde ring ontvangen door de aanroepende code. Dit quotum is van toepassing op het gecombineerde aantal gelijktijdige ontvangst bewerkingen in alle abonnementen op een onderwerp. |5,000 |

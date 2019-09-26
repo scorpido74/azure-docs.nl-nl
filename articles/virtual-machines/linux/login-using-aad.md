@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/29/2019
 ms.author: cynthn
-ms.openlocfilehash: 0e3996c28750639b227475bf4e0196f3a0c3ab0d
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: e30adf8b694d744e64fb7528b75b85d4a772a723
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70163226"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71316760"
 ---
 # <a name="preview-log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication"></a>Preview: Meld u aan bij een virtuele Linux-machine in azure met Azure Active Directory-verificatie
 
@@ -86,6 +86,9 @@ az vm create \
 Het maken van de virtuele machine en de ondersteunende resources duurt enkele minuten.
 
 ## <a name="install-the-azure-ad-login-vm-extension"></a>De Azure AD-VM-extensie voor aanmelden installeren
+
+> [!NOTE]
+> Als u deze exention implementeert naar een eerder gemaakte virtuele machine, moet u ervoor zorgen dat er ten minste 1 GB geheugen aan de computer is toegewezen, anders kan de uitbrei ding niet worden geïnstalleerd
 
 Als u zich wilt aanmelden bij een virtuele Linux-machine met Azure AD-referenties, installeert u de Azure Active Directory aanmeld-VM-extensie. VM-extensies zijn kleine toepassingen die configuratie en automatiserings taken na de implementatie bieden op virtuele machines van Azure. Gebruik [AZ VM extension set](/cli/azure/vm/extension#az-vm-extension-set) om de *AADLoginForLinux* -extensie te installeren op de virtuele machine met de naam *MyVM* in de resource groep *myResourceGroup* :
 
@@ -159,7 +162,7 @@ De eerste keer dat u sudo uitvoert, wordt u gevraagd om een tweede keer te verif
 ```bash
 %aad_admins ALL=(ALL) ALL
 ```
-Met deze regel:
+met deze regel:
 
 ```bash
 %aad_admins ALL=(ALL) NOPASSWD:ALL

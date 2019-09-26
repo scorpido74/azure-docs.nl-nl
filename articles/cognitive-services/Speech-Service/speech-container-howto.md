@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 09/18/2019
+ms.date: 09/24/2019
 ms.author: dapine
-ms.openlocfilehash: 4b8ea102c7acc55acec05234303ff4c215a4bc0f
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: c8efc416555996ef9a1abd79ec5aafcb65186d6f
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71105162"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71316679"
 ---
 # <a name="install-and-run-speech-service-containers"></a>Speech Service-containers installeren en uitvoeren
 
@@ -108,7 +108,7 @@ De volgende code is een voor beeld van de indeling:
 
 De volgende tabel bevat de ondersteunde land instellingen voor **spraak naar tekst** in de 1.2.0-versie van de container:
 
-|Taal instelling|Labels|
+|Taal instelling|Tags|
 |--|--|
 |Chinees|`zh-cn`|
 |Engels |`en-us`<br>`en-gb`<br>`en-au`<br>`en-in`|
@@ -136,7 +136,7 @@ De volgende code is een voor beeld van de indeling:
 
 De volgende tabel bevat de ondersteunde land instellingen voor **tekst naar spraak** in de 1.2.0-versie van de container:
 
-|Taal instelling|Labels|Ondersteunde stemmen|
+|Taal instelling|Tags|Ondersteunde stemmen|
 |--|--|--|
 |Chinees|`zh-cn`|huihuirus<br>kangkang-apollo<br>yaoyao-apollo|
 |Engels |`en-au`|catherine<br>hayleyrus|
@@ -270,7 +270,9 @@ De container bevat REST-endpoint Api's die [hier](https://docs.microsoft.com/azu
 
 ## <a name="troubleshooting"></a>Problemen oplossen
 
-Wanneer u de container uitvoert, gebruikt de container **stdout** en **stderr** voor het uitvoeren van informatie die nuttig is voor het oplossen van problemen die zich voordoen tijdens het starten of uitvoeren van de container.
+Als u de container uitvoert met een uitvoer [koppeling](speech-container-configuration.md#mount-settings) en logboek registratie ingeschakeld, genereert de container logboek bestanden die handig zijn om problemen op te lossen die optreden tijdens het starten of uitvoeren van de container.
+
+[!INCLUDE [Cognitive Services FAQ note](../containers/includes/cognitive-services-faq-note.md)]
 
 ## <a name="billing"></a>Billing
 

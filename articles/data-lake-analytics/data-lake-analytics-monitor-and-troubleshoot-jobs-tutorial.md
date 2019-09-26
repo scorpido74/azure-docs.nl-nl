@@ -1,7 +1,6 @@
 ---
-title: Taken bewaken in Azure Data Lake Analytics met Azure portal
-description: In dit artikel wordt beschreven hoe u de Azure portal gebruiken voor het oplossen van Azure Data Lake Analytics-taken.
-services: data-lake-analytics
+title: Azure Data Lake Analytics-Azure Portal bewaken
+description: In dit artikel wordt beschreven hoe u de Azure Portal kunt gebruiken om Azure Data Lake Analytics taken op te lossen.
 ms.service: data-lake-analytics
 author: saveenr
 ms.author: saveenr
@@ -9,40 +8,40 @@ ms.reviewer: jasonwhowell
 ms.assetid: b7066d81-3142-474f-8a34-32b0b39656dc
 ms.topic: conceptual
 ms.date: 12/05/2016
-ms.openlocfilehash: 40864bab068659be016161f7dc40243ebbd45174
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7fb85f179f1e1e1ac873fc7d6d937b34c1d48ada
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60812581"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71316593"
 ---
-# <a name="monitor-jobs-in-azure-data-lake-analytics-using-the-azure-portal"></a>Taken bewaken in Azure Data Lake Analytics met behulp van de Azure-Portal
+# <a name="monitor-jobs-in-azure-data-lake-analytics-using-the-azure-portal"></a>Taken in Azure Data Lake Analytics bewaken met behulp van Azure Portal
 
-**Om te zien van alle taken**
+**Om alle taken weer te geven**
 
-1. Vanuit de Azure-portal, klikt u op **Microsoft Azure** in de linkerbovenhoek.
-2. Klik op de tegel met de naam van uw Data Lake Analytics-account.  Samenvatting van de taak wordt weergegeven op de **Taakbeheer** tegel.
+1. Klik in de Azure Portal op **Microsoft Azure** in de linkerbovenhoek.
+2. Klik op de tegel met de naam van uw Data Lake Analytics-account.  Het taak overzicht wordt weer gegeven op de tegel **taak beheer** .
 
-    ![Beheer van Azure Data Lake Analytics-taak](./media/data-lake-analytics-monitor-and-troubleshoot-tutorial/data-lake-analytics-job-management.png)
+    ![Azure Data Lake Analytics taak beheer](./media/data-lake-analytics-monitor-and-troubleshoot-tutorial/data-lake-analytics-job-management.png)
 
-    De taak Management biedt een overzicht van de status van de taak. Er is een mislukte taak.
-3. Klik op de **Taakbeheer** tegel om te zien van de taken. De taken zijn onderverdeeld in **met**, **in de wachtrij geplaatst**, en **beëindigd**. U ziet de mislukte taak in de **beëindigd** sectie. Het moet eerste item in de lijst zijn. Wanneer u een groot aantal taken hebt, kunt u klikken op **Filter** om u te helpen u bij het zoeken van taken.
+    Het taak beheer geeft u een overzicht van de taak status. U ziet dat er een mislukte taak is.
+3. Klik op de tegel **taak beheer** om de taken weer te geven. De taken worden gecategoriseerd in **actieve**, in de **wachtrij geplaatst**en **beëindigd**. De mislukte taak wordt weer geven in de sectie **beëindigd** . Het is de eerste in de lijst. Wanneer u veel taken hebt, kunt u op **filter** klikken om u te helpen bij het zoeken naar taken.
 
-    ![Azure Data Lake Analytics taken filteren](./media/data-lake-analytics-monitor-and-troubleshoot-tutorial/data-lake-analytics-filter-jobs.png)
-4. Klik op de mislukte taak uit de lijst om de taakdetails openen:
+    ![Azure Data Lake Analytics filter taken](./media/data-lake-analytics-monitor-and-troubleshoot-tutorial/data-lake-analytics-filter-jobs.png)
+4. Klik op de mislukte taak in de lijst om de taak details te openen:
 
-    ![Azure Data Lake Analytics taak is mislukt](./media/data-lake-analytics-monitor-and-troubleshoot-tutorial/data-lake-analytics-failed-job.png)
+    ![Azure Data Lake Analytics mislukte taak](./media/data-lake-analytics-monitor-and-troubleshoot-tutorial/data-lake-analytics-failed-job.png)
 
-    U ziet dat de **opnieuw indienen** knop. Nadat u het probleem wordt opgelost, kunt u de taak opnieuw indienen.
-5. Klik op de gemarkeerde onderdeel in de vorige schermafbeelding te openen van de foutdetails.  U ziet er ongeveer als:
+    Let op de knop **opnieuw verzenden** . Nadat u het probleem hebt opgelost, kunt u de taak opnieuw verzenden.
+5. Klik op gemarkeerd deel van de vorige scherm afbeelding om de fout details te openen.  U ziet iets als:
 
-    ![Azure Data Lake Analytics taakdetails is mislukt](./media/data-lake-analytics-monitor-and-troubleshoot-tutorial/data-lake-analytics-failed-job-details.png)
+    ![Details van mislukte taak Azure Data Lake Analytics](./media/data-lake-analytics-monitor-and-troubleshoot-tutorial/data-lake-analytics-failed-job-details.png)
 
-    Het vertelt u dat de bronmap is niet gevonden.
-6. Klik op **Script dubbele**.
-7. Update de **FROM** pad naar:
+    U krijgt de bronmap niet te vinden.
+6. Klik op **script dupliceren**.
+7. Werk het **van** -pad bij naar:
 
-    "/ Samples/Data/SearchLog.tsv"
+    Bestand/Samples/data/searchlog.TSV
 8. Klik op **Taak verzenden**.
 
 ## <a name="see-also"></a>Zie ook

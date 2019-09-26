@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 09/12/2019
+ms.date: 09/24/2019
 ms.author: dapine
-ms.openlocfilehash: 893beb479ee42f5de39d6e2e52251ab4113e3e43
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 69fc955bbd9fc584e0d95e02087b778624def11b
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71105078"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71316473"
 ---
 # <a name="install-and-run-text-analytics-containers"></a>Text Analytics containers installeren en uitvoeren
 
@@ -152,6 +152,8 @@ Gebruik de host, `http://localhost:5000`voor container-api's.
 ## <a name="troubleshooting"></a>Problemen oplossen
 
 Als u de container uitvoert met een uitvoer [koppeling](../text-analytics-resource-container-config.md#mount-settings) en logboek registratie ingeschakeld, genereert de container logboek bestanden die handig zijn om problemen op te lossen die optreden tijdens het starten of uitvoeren van de container.
+
+[!INCLUDE [Cognitive Services FAQ note](../../containers/includes/cognitive-services-faq-note.md)]
 
 ## <a name="billing"></a>Billing
 

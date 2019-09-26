@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 08/30/2019
+ms.date: 09/25/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 95b4978b66accce0182e58493cb9d600dbe5e35f
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: c0ceea5c86af8d733c838e19f77eaeadc8a12dbb
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70277484"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300241"
 ---
 # <a name="troubleshooting-for-qna-maker"></a>Problemen oplossen voor QnA Maker
 
@@ -49,6 +49,8 @@ QnA Maker biedt een **Help** -bot binnen de QnA Maker Portal om u te helpen. De 
 ## <a name="manage-the-knowledge-base"></a>De knowledge base beheren
 
 ### <a name="i-accidentally-deleted-a-part-of-my-qna-maker-what-should-i-do"></a>Ik heb een deel van mijn QnA Maker per ongeluk verwijderd, wat moet ik doen? 
+
+Verwijder geen van de Azure-Services die zijn gemaakt samen met de QnA Maker resource, zoals een zoek-of web-app. Deze zijn nodig om QnA Maker te kunnen werken, als u er een verwijdert, QnA Maker niet meer goed werkt.
 
 Alle verwijderingen worden permanent, met inbegrip van paren van vragen en antwoorden, bestanden, URL's, aangepaste vragen en antwoorden, knowledge bases of Azure-resources. Zorg ervoor dat u uw knowledge base van exporteert de **instellingen** pagina voordat u verwijdert een deel van uw knowledge base. 
 

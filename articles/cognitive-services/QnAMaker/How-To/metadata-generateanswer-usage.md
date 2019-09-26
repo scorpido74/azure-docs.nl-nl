@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 06/27/2019
 ms.author: diberry
-ms.openlocfilehash: c52455d69d027ff8802ef082453a3faaeee54743
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 2f9b624ffcc04963046ad817bb2bc9c025161506
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71066727"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300254"
 ---
 # <a name="get-an-answer-with-the-generateanswer-api-and-metadata"></a>Een antwoord krijgen met de GenerateAnswer-API en meta gegevens
 
@@ -59,7 +59,7 @@ U kunt ook uw eindpunt gegevens ophalen via het tabblad **instellingen** van de 
 
 ## <a name="generateanswer-request-configuration"></a>Configuratie van GenerateAnswer-aanvraag
 
-U roept GenerateAnswer aan met een HTTP POST-aanvraag. Raadpleeg de [Quick](../quickstarts/csharp.md)starts voor voorbeeld code die laat zien hoe u GenerateAnswer aanroept. 
+U roept GenerateAnswer aan met een HTTP POST-aanvraag. Raadpleeg de [Quick](../quickstarts/create-publish-kb-csharp-sdk.md#generate-an-answer-from-the-knowledge-base)starts voor voorbeeld code die laat zien hoe u GenerateAnswer aanroept. 
 
 De POST-aanvraag gebruikt:
 

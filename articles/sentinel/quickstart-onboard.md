@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 7f209ef8bb8c492245b59374c33187dbbe763aa5
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: 7f042cfe10bd8ca57d9a2dae511a13a82f053a67
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240476"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71316812"
 ---
 # <a name="on-board-azure-sentinel"></a>Azure-Sentinel op de trein
 
@@ -37,7 +37,7 @@ Nadat u verbinding hebt gemaakt met uw gegevens bronnen, kiest u uit een galerie
 
 - Actief Azure-abonnement: als u er nog geen hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
 
-- Log Analytics werk ruimte. Meer informatie over het [maken van een log Analytics-werk ruimte](../log-analytics/log-analytics-quick-create-workspace.md)
+- Log Analytics werk ruimte. Meer informatie over het [maken van een log Analytics-werk ruimte](../log-analytics/log-analytics-quick-create-workspace.md). Zie [de implementatie van uw Azure monitor-logboeken ontwerpen](../azure-monitor/platform/design-logs-deployment.md)voor meer informatie over log Analytics-werk ruimten.
 
 -  Als u Azure Sentinel wilt inschakelen, hebt u Inzender machtigingen nodig voor het abonnement waarin de Azure Sentinel-werk ruimte zich bevindt. 
 - Als u Azure Sentinel wilt gebruiken, hebt u Inzender-of lezer-machtigingen nodig voor de resource groep waartoe de werk ruimte behoort.

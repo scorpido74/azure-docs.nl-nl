@@ -15,12 +15,12 @@ ms.date: 04/01/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ba51e10503a3aab7afa2e9639453448d03b91852
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 26b00670ad93cceab8f570d3a5f56bd095fa80b5
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71170471"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71315258"
 ---
 # <a name="managing-user-account-provisioning-for-enterprise-apps-in-the-azure-portal"></a>Het inrichten van gebruikers accounts voor zakelijke apps beheren in de Azure Portal
 
@@ -88,7 +88,6 @@ Wijzig de **inrichtings status** in **uit** om de inrichtings service te onderbr
 Selecteer het selectie vakje **huidige status wissen en synchronisatie opnieuw starten** en selecteer **Opslaan** in:
 
 * De inrichtings service stoppen
-* De gegevens in de cache dumpen over welke accounts Azure AD beheert
 * De services opnieuw starten en de eerste cyclus opnieuw uitvoeren
 
 Met deze optie kunnen beheerders het implementatie proces voor de inrichting opnieuw starten.

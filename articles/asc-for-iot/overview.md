@@ -13,30 +13,32 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/23/2019
+ms.date: 09/26/2019
 ms.author: mlottner
-ms.openlocfilehash: fdccf486cacabda4f363f4629a4d6daa4a00c8e4
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 29add1cff184e234cd5dcc5050b94cdd50593731
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68597167"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71315916"
 ---
-# <a name="introducing-azure-security-center-for-iot"></a>Introductie van Azure Security Center voor IoT
+# <a name="introducing-azure-security-center-for-iot"></a>Kennismaking met Azure Security Center for IoT
 
 U kunt het beveiligings beheer combi neren en end-to-end detectie van bedreigingen en analyses voor de hybride Cloud werkbelastingen en uw Azure IoT-oplossing inschakelen. 
 
-## <a name="protect-iot-and-hybrid-cloud-workloads-against-evolving-cyber-attacks"></a>IoT-en hybride Cloud werkbelastingen beveiligen tegen het ontwikkelen van Cyber-aanvallen
+## <a name="secure-your-entire-iot-solution-from-iot-devices-to-azure-cloud"></a>Beveilig uw volledige IoT-oplossing van IoT-apparaten naar Azure-Cloud.
 
-De Internet of Things is een snelle trans formatie van onze wereld. Met de mogelijkheid om inzicht te verkrijgen op basis van uw verbonden apparaten en back-endsystemen, kunt u deze inzichten nu omzetten in krachtige toepassingen en services om uw organisatie te helpen ongekende niveaus van operationele en bedrijfs prestaties te bedekken. Als er echter miljarden nieuwe apparaten zijn verbonden met internet en zijn geïntegreerd in onze dagelijkse levens duur en onze bedrijven; uw beveiligings activiteiten moeten ervoor zorgen dat hun beveiligings strategieën snel genoeg worden ontwikkeld om deze nieuwe aanvals oppervlakken te kunnen behandelen. Net als bij elk ander systeem moet uw IoT-oplossing worden beveiligd in elke fase van uw implementatie. 
+U kunt kiezen uit onze naadloze oplossing zonder agents of profiteren van uitgebreide beveiliging op basis van een agent, Azure Security Center voor IoT zorgt voor preventie en analyse van bedreigingen voor elk apparaat, IoT Edge en IoT Hub, in uw IoT-middelen.
+
+Als miljarden nieuwe apparaten zijn verbonden met internet en geïntegreerd in onze dagelijkse levens duur en onze bedrijven; uw beveiligings activiteiten moeten ervoor zorgen dat hun beveiligings strategieën snel genoeg worden ontwikkeld om deze nieuwe aanvals oppervlakken te kunnen behandelen. Net als bij elk ander systeem moet uw IoT-oplossing worden beveiligd in elke fase van uw implementatie. 
 
 Azure Security Center voor IoT vereenvoudigt hybride beveiliging tegen werk belasting door eenvormige zicht baarheid en controle, adaptieve bedreigings preventie en intelligente bedreigings detectie en-respons te bieden voor werk belastingen die worden uitgevoerd op Edge, on-premises in azure, en in andere Clouds. 
 
-![Azure Security Center voor IoT-architectuur](./media/architecture/azure-iot-security-architecture.png)
+![Azure Security Center for IoT-architectuur](./media/architecture/azure-iot-security-architecture.png)
 
 ### <a name="unified-visibility-and-control"></a>Unified Visibility and Control
 
-U beschikt over een uniforme weergave van uw beveiliging voor alle on-premises en cloudwerkbelastingen, inclusief uw Azure IoT-oplossing. Nieuwe apparaten onboarden en beveiligings beleid Toep assen voor uw werk belastingen (Leaf-apparaten, micro soft edge-apparaten, IoT Hub) om te zorgen voor naleving van beveiligings normen en verbeterde beveiligings postuur.
+U beschikt over een uniforme weergave van uw beveiliging voor alle on-premises en cloudwerkbelastingen, inclusief uw Azure IoT-oplossing. Nieuwe apparaten onboarden en beveiligings beleid Toep assen voor uw werk belastingen (Leaf-apparaten, micro soft edge-apparaten, IoT Hub) om te zorgen voor naleving van beveiligings normen en verbeterde beveiligings postuur. 
 
 ### <a name="adaptive-threat-prevention"></a>Adaptieve bedreigingen voor komen
 

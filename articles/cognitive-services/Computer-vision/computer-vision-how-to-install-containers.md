@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 09/18/2019
+ms.date: 09/24/2019
 ms.author: dapine
 ms.custom: seodec18
-ms.openlocfilehash: 97a9b6c60539191850e8205eed4387565b79f6db
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.openlocfilehash: 98330e88b0b94c488fd968d8fc18806ec6908b26
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71129872"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71316200"
 ---
 # <a name="install-and-run-computer-vision-containers"></a>Computer Vision containers installeren en uitvoeren
 
@@ -343,7 +343,9 @@ U kunt de `POST /vision/v2.0/recognizeTextDirect` bewerking is synchroon gedrukt
 
 ## <a name="troubleshooting"></a>Problemen oplossen
 
-Als u de container uitvoert met een uitvoer [koppeling](./computer-vision-resource-container-config.md#mount-settings) en logboek registratie ingeschakeld, genereert de container logboek bestanden die handig zijn om problemen op te lossen die optreden tijdens het starten of uitvoeren van de container. 
+Als u de container uitvoert met een uitvoer [koppeling](./computer-vision-resource-container-config.md#mount-settings) en logboek registratie ingeschakeld, genereert de container logboek bestanden die handig zijn om problemen op te lossen die optreden tijdens het starten of uitvoeren van de container.
+
+[!INCLUDE [Cognitive Services FAQ note](../containers/includes/cognitive-services-faq-note.md)]
 
 ## <a name="billing"></a>Billing
 

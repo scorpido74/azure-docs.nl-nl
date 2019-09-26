@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/15/2019
 ms.author: dacurwin
 ms.assetid: 57854626-91f9-4677-b6a2-5d12b6a866e1
-ms.openlocfilehash: e6a1ec1d11404e6179fda919c58f581c3524c4d4
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: d5f3b98048cb04eab15479c3a9f5d27f16df1f3a
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69650344"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71309762"
 ---
 # <a name="back-up-and-restore-sql-databases-in-azure--vms-with-powershell"></a>Back-up en herstel van SQL-data bases in azure Vm's met Power shell
 
@@ -46,8 +46,6 @@ De object hiërarchie wordt in het volgende diagram samenvatten.
 Raadpleeg de naslag informatie **AZ. Recovery Services** [cmdlet](/powershell/module/az.recoveryservices) in de Azure-bibliotheek.
 
 ### <a name="set-up-and-install"></a>Instellen en installeren
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Stel Power shell als volgt in:
 
@@ -110,7 +108,7 @@ De Recovery Services kluis is een resource manager-resource, dus u moet deze in 
 3. Geef het type redundantie op dat moet worden gebruikt voor de kluis opslag.
 
     * U kunt [lokaal redundante opslag](../storage/common/storage-redundancy-lrs.md) of [geografisch redundante opslag](../storage/common/storage-redundancy-grs.md)gebruiken.
-    * In het volgende voor beeld wordt de optie **-BackupStorageRedundancy** ingesteld voor de[set-AzRecoveryServicesBackupProperty](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupproperty) cmd voor **testvault** ingesteld op georedundant.
+    * In het volgende voor beeld wordt de optie **-BackupStorageRedundancy** ingesteld voor de[set-AzRecoveryServicesBackupProperty](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupproperty) cmd voor **testvault** ingesteld op **georedundant**.
 
     ```powershell
     $vault1 = Get-AzRecoveryServicesVault -Name "testvault"
@@ -571,4 +569,4 @@ Laten we bijvoorbeeld uitgaan dat een SQL AG twee knoop punten heeft: ' SQL-Serv
 
 SQL-Server-0, SQL-Server-1 wordt ook weer gegeven als ' AzureVMAppContainer ' als [er back-upcontainers worden weer gegeven](https://docs.microsoft.com/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupContainer?view=azps-1.5.0).
 
-Haal alleen de relevante SQL database op voor het [inschakelen van back-ups](#configuring-backup) en de AD-cmdlets voor [adhoc-back-ups](#on-demand-backup) en [herstellen](#restore-sql-dbs) .
+Haal alleen de relevante SQL database op voor het [inschakelen van back-ups](#configuring-backup) en de AD- [cmdlets](#restore-sql-dbs) voor [adhoc-back-ups](#on-demand-backup) en herstellen.

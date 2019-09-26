@@ -10,12 +10,12 @@ author: anumjs
 ms.author: anjangsh
 ms.reviewer: jrasnick
 manager: craigg
-ms.openlocfilehash: b9058313886484e84000b2b27986280eb1ff30eb
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: f4ee3f78159cb5d9b677f0d43492325754065841
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71145633"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300825"
 ---
 # <a name="azure-sql-data-warehouse-release-notes"></a>Opmerkingen bij de release Azure SQL Data Warehouse
 
@@ -38,6 +38,7 @@ Gebruik de geïdentificeerde datum om te bevestigen welke release is toegepast o
 |**Persoonlijke Azure-koppeling (preview-versie)**|Met een [persoonlijke Azure-koppeling](https://azure.microsoft.com/blog/announcing-azure-private-link/)kunt u een persoonlijk eind punt in uw Virtual Network (VNet) maken en deze toewijzen aan uw Azure SQL DW. Deze resources zijn vervolgens toegankelijk via een privé-IP-adres in uw VNet, waardoor connectiviteit vanuit on-premises via Azure ExpressRoute private peering en/of VPN-gateway mogelijk wordt. Over het algemeen vereenvoudigt dit de netwerk configuratie door te voor komen dat u deze opent voor open bare IP-adressen. Dit biedt ook beveiliging tegen gegevens exfiltration Risico's. Zie [overzicht](/azure/private-link/private-link-overview) en [SQL DW-documentatie](/azure/sql-database/sql-database-private-endpoint-overview)voor meer informatie.|
 |**Classificatie van gegevens detectie & (GA)**|De functie voor [gegevens detectie en-classificatie](/azure/sql-database/sql-database-data-discovery-and-classification?toc=/azure/sql-data-warehouse/toc.json) is nu algemeen beschikbaar. Deze functie biedt geavanceerde mogelijkheden voor het **detecteren, classificeren en labelen & het beveiligen** van gevoelige gegevens in uw data bases.|
 |**Azure Advisor met één klik integreren**|SQL Data Warehouse is nu rechtstreeks geïntegreerd met Azure Advisor aanbevelingen op de Blade overzicht, samen met het bieden van een ervaring met één klik. U kunt nu aanbevelingen vinden op de Blade overzicht in plaats van naar de Azure Advisor-Blade te navigeren. Meer informatie over aanbevelingen vindt u [hier](sql-data-warehouse-concept-recommendations.md).|
+|**Isolatie van vastgelegde moment opnamen lezen (preview)**|U kunt ALTER database gebruiken om snap shot-isolatie in of uit te scha kelen voor een gebruikers database.  Als u wilt voor komen dat uw huidige workload wordt beïnvloed, kunt u deze optie instellen tijdens het onderhouds venster voor de data base of wachten totdat er geen andere actieve verbinding met de data base is. Zie [ALTER data base set Options](/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azure-sqldw-latest)(Engelstalig) voor meer informatie.|
 |**UITVOEREN als (Transact-SQL)**| [uitvoeren als](/sql/t-sql/statements/execute-as-transact-sql?view=azure-sqldw-latest) Ondersteuning voor T-SQL is nu beschikbaar in SQL Data Warehouse waarmee klanten de uitvoerings context van een sessie kunnen instellen voor de opgegeven gebruiker.|
 |**Aanvullende ondersteuning voor T-SQL**|De T-SQL-taal surface area voor SQL Data Warehouse is uitgebreid met ondersteuning voor: </br> - [FORMAT (Transact-SQL)](/sql/t-sql/functions/format-transact-sql?view=azure-sqldw-latest)</br> - [TRY_PARSE (Transact-SQL)](/sql/t-sql/functions/try-parse-transact-sql?view=azure-sqldw-latest)</br> - [TRY_CAST (Transact-SQL)](/sql/t-sql/functions/try-cast-transact-sql?view=azure-sqldw-latest)</br> - [TRY_CONVERT (Transact-SQL)](/sql/t-sql/functions/try-convert-transact-sql?view=azure-sqldw-latest)</br> - [sys. user_token (Transact-SQL)](/sql//relational-databases/system-catalog-views/sys-user-token-transact-sql?view=azure-sqldw-latest)|
 

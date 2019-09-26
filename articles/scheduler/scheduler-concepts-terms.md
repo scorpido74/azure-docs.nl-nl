@@ -10,17 +10,17 @@ ms.reviewer: klam
 ms.assetid: 3ef16fab-d18a-48ba-8e56-3f3e0a1bcb92
 ms.topic: conceptual
 ms.date: 08/18/2016
-ms.openlocfilehash: d701fba39685d781d1a4c2d8a6cf194ca7eb2908
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 7e31f891cfd758b888e4045566ad2cd2d9ab6fb8
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60530940"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300956"
 ---
 # <a name="concepts-terminology-and-entities-in-azure-scheduler"></a>Concepten, terminologie en entiteiten in Azure Scheduler
 
 > [!IMPORTANT]
-> [Azure Logic Apps](../logic-apps/logic-apps-overview.md) vervangt Azure Scheduler, die buiten gebruik wordt gesteld. [Probeer in plaats daarvan Azure Logic Apps](../scheduler/migrate-from-scheduler-to-logic-apps.md) als u taken wilt plannen. 
+> [Azure Logic apps](../logic-apps/logic-apps-overview.md) vervangt Azure scheduler, die buiten gebruik wordt [gesteld](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date). Als u wilt blijven werken met de taken die u in scheduler hebt ingesteld, moet u zo snel mogelijk [naar Azure Logic apps worden gemigreerd](../scheduler/migrate-from-scheduler-to-logic-apps.md) .
 
 ## <a name="entity-hierarchy"></a>Entiteitenhiërarchie
 
@@ -37,9 +37,9 @@ De volgende entiteiten of resources worden door de REST API voor Azure Scheduler
 
 Op hoog niveau maakt de REST API van de Scheduler deze bewerkingen voor het beheren van entiteiten beschikbaar.
 
-### <a name="job-management"></a>Jobbeheer
+### <a name="job-management"></a>Taakbeheer
 
-Biedt ondersteuning voor bewerkingen voor het maken en bewerken van jobs. Alle jobs moeten behoren tot een bestaande jobverzameling. Er wordt er dus niet impliciet een gemaakt. Zie [Scheduler REST API - Jobs](https://docs.microsoft.com/rest/api/scheduler/jobs) voor meer informatie. Hier is de URI-adres voor deze bewerkingen:
+Biedt ondersteuning voor bewerkingen voor het maken en bewerken van jobs. Alle jobs moeten behoren tot een bestaande jobverzameling. Er wordt er dus niet impliciet een gemaakt. Zie [Scheduler REST API - Jobs](https://docs.microsoft.com/rest/api/scheduler/jobs) voor meer informatie. Hier is het URI-adres voor deze bewerkingen:
 
 ```
 https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}/jobs/{jobName}
@@ -47,7 +47,7 @@ https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/{reso
 
 ### <a name="job-collection-management"></a>Beheer van jobverzameling
 
-Ondersteunt bewerkingen voor het maken en bewerken van jobs en jobverzamelingen, die worden toegewezen aan quota en gedeelde instellingen. Quota specificeren bijvoorbeeld het maximum aantal jobs en het kleinste terugkeerpatroon. Zie [Scheduler REST API - Job Collections](https://docs.microsoft.com/rest/api/scheduler/jobcollections) (Scheduler REST API - Jobverzamelingen) voor meer informatie. Hier is de URI-adres voor deze bewerkingen:
+Ondersteunt bewerkingen voor het maken en bewerken van jobs en jobverzamelingen, die worden toegewezen aan quota en gedeelde instellingen. Quota specificeren bijvoorbeeld het maximum aantal jobs en het kleinste terugkeerpatroon. Zie [Scheduler REST API - Job Collections](https://docs.microsoft.com/rest/api/scheduler/jobcollections) (Scheduler REST API - Jobverzamelingen) voor meer informatie. Hier is het URI-adres voor deze bewerkingen:
 
 ```
 https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}
@@ -55,7 +55,7 @@ https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/{reso
 
 ### <a name="job-history-management"></a>Beheer van jobgeschiedenis
 
-Biedt ondersteuning voor de GET-bewerking voor het ophalen van een geschiedenis van 60 dagen van uitgevoerde jobs, bijvoorbeeld de verstreken tijd van jobs en de resultaten van het uitvoeren van jobs. Omvat ondersteuning voor querytekenreeksparameters om te filteren op basis van toestand en status. Zie [Scheduler REST API - Jobs - List Job History](https://docs.microsoft.com/rest/api/scheduler/jobs/listjobhistory) (Scheduler REST API - Jobs - Lijst met jobgeschiedenissen) voor meer informatie. Hier is de URI-adres voor deze bewerking:
+Biedt ondersteuning voor de GET-bewerking voor het ophalen van een geschiedenis van 60 dagen van uitgevoerde jobs, bijvoorbeeld de verstreken tijd van jobs en de resultaten van het uitvoeren van jobs. Omvat ondersteuning voor querytekenreeksparameters om te filteren op basis van toestand en status. Zie [Scheduler REST API - Jobs - List Job History](https://docs.microsoft.com/rest/api/scheduler/jobs/listjobhistory) (Scheduler REST API - Jobs - Lijst met jobgeschiedenissen) voor meer informatie. Hier is het URI-adres voor deze bewerking:
 
 ```
 https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}/jobs/{jobName}/history
@@ -76,8 +76,8 @@ Op hoog niveau bevat een Scheduler-job uit de volgende basisonderdelen:
 
 * De actie die wordt uitgevoerd wanneer de timer van de job wordt gestart
 * Optioneel: De tijd voor het uitvoeren van de taak
-* Optioneel: Wanneer en hoe vaak de taak herhalen
-* Optioneel: Een foutactie die wordt uitgevoerd als de primaire actie mislukt
+* Optioneel: Wanneer en hoe vaak de taak moet worden herhaald
+* Optioneel: Een fout actie die wordt uitgevoerd als de primaire actie mislukt
 
 De job bevat ook door het systeem geleverde gegevens, zoals volgende geplande uitvoeringstijd van de job. De codedefinitie van de job is een object in de indeling JSON (JavaScript Object Notation). Deze bevat drie elementen:
 
@@ -227,7 +227,7 @@ Net als de primaire **action** kunt u voor de foutactie eenvoudige of samengeste
 
 <a name="recurrence"></a>
 
-## <a name="recurrence"></a>recurrence
+## <a name="recurrence"></a>terugkeer
 
 Een job wordt herhaald als de JSON-definitie van de job het object **recurrence** omvat, bijvoorbeeld:
 
@@ -251,7 +251,7 @@ Een job wordt herhaald als de JSON-definitie van de job het object **recurrence*
 | **interval** | Nee | 1 tot en met 1000 | Een positief geheel getal dat het aantal tijdseenheden tussen de opgetreden gevallen bepaalt op basis van **frequency** | 
 | **schedule** | Nee | Varieert | De details voor complexere en geavanceerdere schema's. Zie **hours**, **minutes**, **weekDays**, **months** en **monthDays** | 
 | **hours** | Nee | 1 tot 24 | Een matrix met de uuraanduidingen voor wanneer de job moet worden uitgevoerd | 
-| **minutes** | Nee | 0-59 | Een matrix met de minuutaanduidingen voor wanneer de job moet worden uitgevoerd | 
+| **minutes** | Nee | 0 tot 59 | Een matrix met de minuutaanduidingen voor wanneer de job moet worden uitgevoerd | 
 | **months** | Nee | 1 tot 12 | Een matrix met de maanden voor wanneer de job moet worden uitgevoerd | 
 | **monthDays** | Nee | Varieert | Een matrix met de dagen van de maand voor wanneer de job moet worden uitgevoerd | 
 | **weekDays** | Nee | Maandag, Dinsdag, Woensdag, Donderdag, Vrijdag, Zaterdag, Zondag | Een matrix met de dagen van de week voor wanneer de job moet worden uitgevoerd | 
@@ -286,7 +286,7 @@ Zie [High availability and reliability](../scheduler/scheduler-high-availability
 
 <a name="status"></a>
 
-## <a name="state"></a>state
+## <a name="state"></a>status
 
 De status van een job is **Ingeschakeld**, **Uitgeschakeld**, **Voltooid** of **Mislukt**, bijvoorbeeld: 
 

@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 0cbb6f022dbeded2bbfb19769595be69ec62c311
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: 6dcb7fd1ae2dc5ca3a950f5055e79d95f779b029
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910634"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300797"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Verzamelen van gegevens in Azure Security Center
 Security Center verzamelt gegevens van uw virtuele machines van Azure (Vm's), schaal sets voor virtuele machines, IaaS containers en niet-Azure-computers (inclusief on-premises) om te controleren op beveiligings problemen en bedreigingen. Gegevens worden verzameld met behulp van de Log Analytics-agent, die verschillende aan beveiliging gerelateerde configuraties en gebeurtenis logboeken van de computer leest en de gegevens naar uw werk ruimte kopieert voor analyse. Voorbeelden van dergelijke gegevens zijn: besturingssysteem systeemtype en versie, besturingssysteemlogboeken (Windows-gebeurtenislogboeken), actieve processen, computernaam, IP-adressen en aangemelde gebruiker. De Log Analytics-agent kopieert ook crash dump bestanden naar uw werk ruimte.
@@ -278,13 +278,13 @@ U kunt de Log Analytics-agent hand matig installeren, zodat Security Center beve
 
    3. De openbare configuratie en de persoonlijke configuratie met deze waarden vullen:
      
-           $PublicConf = '{
-               "workspaceId": "WorkspaceID value"
-           }' 
+           $PublicConf = @{
+               "workspaceId"= "<WorkspaceID value>"
+           }
  
-           $PrivateConf = '{
-               "workspaceKey": "<Primary key value>”
-           }' 
+           $PrivateConf = @{
+               "workspaceKey"= "<Primary key value>”
+           }
 
       - Wanneer u installeert op een Windows-VM:
         

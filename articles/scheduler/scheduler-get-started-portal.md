@@ -10,17 +10,17 @@ ms.reviewer: klam
 ms.assetid: e69542ec-d10f-4f17-9b7a-2ee441ee7d68
 ms.topic: conceptual
 ms.date: 09/17/2018
-ms.openlocfilehash: 3b2cfc932c6322df8237ec7cdf820fc4242bfa72
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 48e03f41fa0a39642330288fc05ef709179b4c62
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60531858"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300979"
 ---
 # <a name="create-and-schedule-your-first-job-with-azure-scheduler---azure-portal"></a>Uw eerste taak plannen en maken met Azure Scheduler - Azure Portal
 
 > [!IMPORTANT]
-> [Azure Logic Apps](../logic-apps/logic-apps-overview.md) vervangt Azure Scheduler, dat buiten gebruik wordt gesteld. [Probeer in plaats daarvan Azure Logic Apps](../scheduler/migrate-from-scheduler-to-logic-apps.md) als u taken wilt plannen. 
+> [Azure Logic apps](../logic-apps/logic-apps-overview.md) vervangt Azure scheduler, die buiten gebruik wordt [gesteld](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date). Als u wilt blijven werken met de taken die u in scheduler hebt ingesteld, moet u zo snel mogelijk [naar Azure Logic apps worden gemigreerd](../scheduler/migrate-from-scheduler-to-logic-apps.md) .
 
 In deze zelfstudie leert u hoe u gemakkelijk een taak kunt maken en plannen en die taak vervolgens kunt bewaken en beheren. 
 
@@ -40,7 +40,7 @@ Als u nog geen abonnement op Azure hebt, <a href="https://azure.microsoft.com/fr
 
    | Eigenschap | Voorbeeldwaarde | Description |
    |----------|---------------|-------------| 
-   | **Naam** | getMicrosoft | De naam van uw taak | 
+   | **Name** | getMicrosoft | De naam van uw taak | 
    | **Jobverzameling** | <*job-collection-name*> | Maak een taakverzameling of selecteer een bestaande verzameling. | 
    | **Abonnement** | <*Azure-subscription-name*> | De naam van uw Azure-abonnement | 
    |||| 
@@ -93,7 +93,7 @@ Selecteer een gebied voor meer informatie over deze gebieden:
 
 <a name="properties"></a>
 
-### <a name="properties"></a>Properties
+### <a name="properties"></a>properties
 
 Selecteer **Eigenschappen** om alleen-lezeneigenschappen te bekijken die de beheermetagegevens voor uw taak beschrijven.
 

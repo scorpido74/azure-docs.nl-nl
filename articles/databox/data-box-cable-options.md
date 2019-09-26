@@ -2,19 +2,18 @@
 title: Bekabelingsopties van Azure Data Box| Microsoft Docs
 description: Hier worden de diverse bekabelingsopties voor uw Azure Data Box beschreven.
 services: databox
-author: WenJason
+author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: overview
-origin.date: 10/24/2018
-ms.date: 02/25/2019
-ms.author: v-jay
-ms.openlocfilehash: 4759676eff03606998759a586f758b7a26ead23d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 10/24/2018
+ms.author: alkohli
+ms.openlocfilehash: 661cec672aa02f62b479b7f5831adfdaff9e6b21
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60728649"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71316554"
 ---
 # <a name="cabling-options-for-your-azure-data-box"></a>Bekabelingsopties voor uw Azure Data Box
 
@@ -40,7 +39,7 @@ Voer de volgende stappen uit om uw apparaat te bekabelen.
     - **IP-adres** op 192.168.100.5
     - **Subnet** op 255.255.255.0
 
-3. Toegang tot de lokale webgebruikersinterface van het apparaat op: 192.168.100.10. Meld u aan en ontgrendel de Data Box met behulp van het wachtwoord voor ontgrendelen op de Azure-portal.
+3. Toegang tot de lokale web-UI van het apparaat op: 192.168.100.10. Meld u aan en ontgrendel de Data Box met behulp van het wachtwoord voor ontgrendelen op de Azure-portal.
 
 
 ## <a name="transfer-via-data-port-with-static-ips"></a>Overdragen via DATA-poort met statische IP-adressen
@@ -68,14 +67,14 @@ Voer de volgende stappen uit om uw apparaat te bekabelen.
 
      ![Instelling met twee poorten](media/data-box-cable-options/cabling-2-port-setup.png)
 
-4. Toegang tot de lokale webgebruikersinterface van het apparaat op: 192.168.100.10. Meld u aan en ontgrendel de Data Box met behulp van het wachtwoord voor ontgrendelen op de Azure-portal.
-5. Wijs statische IP-adressen toe aan de gegevenspoorten die u hebt geconfigureerd.
+3. Toegang tot de lokale web-UI van het apparaat op: 192.168.100.10. Meld u aan en ontgrendel de Data Box met behulp van het wachtwoord voor ontgrendelen op de Azure-portal.
+4. Wijs statische IP-adressen toe aan de gegevenspoorten die u hebt geconfigureerd.
 
 ### <a name="option-2---initial-setup-via-separate-computer"></a>Optie 2: eerste setup via afzonderlijke computer
 
 Voer de volgende stappen uit om uw apparaat te bekabelen.
 
-1. Gebruik voor de configuratie een RJ45 Ethernet-kabel van de server rechtstreeks naar de MGMT-poort.
+1. Gebruik een RJ45 Ethernet-kabel van de afzonderlijke computer rechtstreeks naar de beheer poort voor configuratie.
 2. Gebruik een RJ45-kabel voor DATA 3 of SFP+-kabels om DATA 1 of DATA 2 te verbinden met de server. U wordt aangeraden om 10 GbE voor DATA 1- of DATA 2-poorten te gebruiken voor goede prestaties. De gegevenspoorten zijn verbonden via een 10 GbE-switch op de server met gegevens.
 3. Configureer de Ethernet-adapter op de laptop waarmee u verbinding maakt met het apparaat:
 
@@ -84,8 +83,8 @@ Voer de volgende stappen uit om uw apparaat te bekabelen.
 
      ![Installatie met twee poorten met een switch](media/data-box-cable-options/cabling-with-static-ip.png)
 
-4. Toegang tot de lokale webgebruikersinterface van het apparaat op: 192.168.100.10. Meld u aan en ontgrendel de Data Box met behulp van het wachtwoord voor ontgrendelen op de Azure-portal.
-5. Kijk welke IP-adressen er door de DHCP-server zijn toegewezen.
+3. Toegang tot de lokale web-UI van het apparaat op: 192.168.100.10. Meld u aan en ontgrendel de Data Box met behulp van het wachtwoord voor ontgrendelen op de Azure-portal.
+4. Kijk welke IP-adressen er door de DHCP-server zijn toegewezen.
 
 ## <a name="transfer-via-data-port-with-static-ips-using-a-switch"></a>Overdracht via DATA-poort met statische IP-adressen met een switch 
 
@@ -108,8 +107,8 @@ Voer de volgende stappen uit om uw apparaat te bekabelen.
 
      ![Installatie met twee poorten met een switch](media/data-box-cable-options/cabling-with-switch-static-ip.png)
 
-4. Toegang tot de lokale webgebruikersinterface van het apparaat op: 192.168.100.10. Meld u aan en ontgrendel de Data Box met behulp van het wachtwoord voor ontgrendelen op de Azure-portal.
-5. Wijs statische IP-adressen toe aan de gegevenspoorten die u hebt geconfigureerd.
+3. Toegang tot de lokale web-UI van het apparaat op: 192.168.100.10. Meld u aan en ontgrendel de Data Box met behulp van het wachtwoord voor ontgrendelen op de Azure-portal.
+4. Wijs statische IP-adressen toe aan de gegevenspoorten die u hebt geconfigureerd.
 
 
 ## <a name="transfer-via-data-port-in-a-dhcp-environment"></a>Overdracht via DATA-poort in een DHCP-omgeving

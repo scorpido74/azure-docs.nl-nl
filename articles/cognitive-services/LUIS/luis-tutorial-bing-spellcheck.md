@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/05/2019
+ms.date: 09/25/2019
 ms.author: diberry
-ms.openlocfilehash: 43cb2f0c3ef0f845afcd309dccb35bc632ffd324
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: 3bde609c83425d660c867939e034247d7e6898c5
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70390956"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300279"
 ---
 # <a name="correct-misspelled-words-with-bing-spell-check"></a>Juiste verkeerd gespelde woorden met Bing spellingcontrole
 
@@ -89,7 +89,13 @@ De eindpunt-URL heeft verschillende waarden die moeten correct worden doorgegeve
 ```
 
 ## <a name="ignore-spelling-mistakes"></a>Spelfouten negeren
-Als u niet wilt dat de Bing Spell Check-API voor Bing versie 7-service wilt gebruiken, kunt u een label uitingen waarvoor spelfouten zodat LUIS juiste spelling, evenals typfouten leren kunt. Deze optie vereist meer labelen inspanning dan het gebruik van een spellingcontrole.
+
+Als u de Bing Spellingcontrole-API V7-service niet wilt gebruiken, moet u de juiste en onjuiste spelling toevoegen. 
+
+Twee oplossingen zijn:
+
+* Voor beeld van een label uitingen die de verschillende spellingen hebben, zodat LUIS de juiste spelling en type fouten kan ontdekken. Deze optie vereist meer labelen inspanning dan het gebruik van een spellingcontrole.
+* Een woordgroepen lijst maken met alle variaties van het woord. Met deze oplossing hoeft u geen label te maken voor de woord variaties in het voor beeld uitingen. 
 
 ## <a name="publishing-page"></a>Pagina publiceren
 De [publishing](luis-how-to-publish-app.md) op de pagina een **inschakelen Bing spellingcontrole** selectievakje. Dit is nuttig om te maken van de sleutel en te begrijpen hoe de eindpunt-URL wordt gewijzigd. U moet nog steeds de juiste eindpunt-parameters gebruiken om spelling voor elke utterance gecorrigeerd. 

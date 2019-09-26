@@ -8,12 +8,12 @@ ms.service: digital-twins
 ms.topic: tutorial
 ms.date: 09/20/2019
 ms.author: alinast
-ms.openlocfilehash: e483ac8e56ce39cbb05c5d00634c6327b497bab5
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: bdf37225e815d3848a87b88737daf4b5a5d2560c
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71219911"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300053"
 ---
 # <a name="tutorial-provision-your-building-and-monitor-working-conditions-with-azure-digital-twins-preview"></a>Zelfstudie: Uw bedrijfs voorwaarden inrichten en bewaken met Azure Digital Apparaatdubbels preview
 
@@ -184,7 +184,7 @@ Let ook op de sectie met de naam **roleassignments**. Hiermee wordt de rol van S
 
 1. Kopieer de waarde van de `ConnectionString` uit de uitvoer in het opdrachtvenster onder de sectie `Devices` naar het Klembord. U hebt deze waarde nodig om de apparaatverbinding in de volgende sectie te simuleren.
 
-    ![Voorbeeld van inrichting](./media/tutorial-facilities-udf/run-provision-sample.png)
+    [![Voor beeld van inrichting](./media/tutorial-facilities-udf/run-provision-sample.png)](./media/tutorial-facilities-udf/run-provision-sample.png#lightbox)
 
 > [!TIP]
 > Als er tijdens het inrichtingsproces een foutbericht wordt weergegeven dat lijkt op 'De I/O-bewerking is afgebroken vanwege een afgesloten thread of een toepassingsaanvraag', moet u de opdracht opnieuw uitvoeren. Dit kan gebeuren als er een time-out van de HTTP-client heeft plaatsgevonden vanwege een netwerkprobleem.
@@ -245,7 +245,7 @@ De door de gebruiker gedefinieerde functie wordt telkens uitgevoerd als uw insta
 
 In het uitvoervenster ziet u hoe de door de gebruiker gedefinieerde functie wordt uitgevoerd en gebeurtenissen van de apparaatsimulatie onderschept. 
 
-   ![Uitvoer voor de UDF](./media/tutorial-facilities-udf/udf-running.png)
+   [![Uitvoer voor de UDF](./media/tutorial-facilities-udf/udf-running.png)](./media/tutorial-facilities-udf/udf-running.png#lightbox)
 
 Als er aan de gecontroleerd voorwaarde wordt voldaan, stelt de door de gebruiker gedefinieerde functie de waarde van de ruimte in met het betreffende bericht, zoals we [eerder](#create-a-user-defined-function) hebben gezien. De functie `GetAvailableAndFreshSpaces` drukt het bericht op de console af.
 

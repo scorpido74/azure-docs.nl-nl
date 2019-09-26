@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 08/22/2019
-ms.openlocfilehash: 7a6a2c35360f59c8c2e3d0a75e646ae76c0c9de2
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: 2034701008396f524e5b058ddb726ddce89e4e32
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71218295"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300605"
 ---
 # <a name="create-and-access-datasets-preview-in-azure-machine-learning"></a>Gegevens sets (preview) maken en openen in Azure Machine Learning
 
@@ -172,9 +172,9 @@ mnist_ds = Dataset.File.from_files(path=web_paths)
 
 ## <a name="register-datasets"></a>Gegevens sets registreren
 
-Als u het aanmaak proces wilt volt ooien, registreert u uw gegevens sets met de werk ruimte:
+Als u het aanmaak proces wilt volt ooien, registreert u uw gegevens sets met een werk ruimte.
 
-Gebruik de [`register()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#register-workspace--name--description-none--tags-none--visible-true--exist-ok-false--update-if-exist-false-) methode om gegevens sets te registreren in uw werk ruimte, zodat deze kunnen worden gedeeld met anderen en opnieuw worden gebruikt in verschillende experimenten.
+Gebruik de [`register()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#register-workspace--name--description-none--tags-none--visible-true--exist-ok-false--update-if-exist-false-) methode om gegevens sets met uw werk ruimte te registreren, zodat deze kunnen worden gedeeld met anderen en opnieuw worden gebruikt in verschillende experimenten.
 
 ```Python
 titanic_ds = titanic_ds.register(workspace = workspace,
@@ -187,7 +187,8 @@ titanic_ds = titanic_ds.register(workspace = workspace,
 
 ## <a name="version-datasets"></a>Versie gegevens sets
 
-U kunt een nieuwe gegevensset onder dezelfde naam registreren door een nieuwe versie te maken. De gegevensset-versie is een manier om de status van uw gegevens te bookmarkren, zodat u een specifieke versie van de gegevensset kunt Toep assen voor experimenten of toekomstige reproductie. Typische scenario's om versie beheer te overwegen:
+U kunt een nieuwe gegevensset onder dezelfde naam registreren door een nieuwe versie te maken. De gegevensset-versie is een manier om de status van uw gegevens te bookmarkren, zodat u een specifieke versie van de gegevensset kunt Toep assen voor experimenten of toekomstige reproductie. Typische scenario's voor het maken van versie beheer zijn: 
+
 * Wanneer nieuwe gegevens beschikbaar zijn voor retraining.
 * Wanneer u verschillende benaderingen voor gegevens voorbereiding of functie techniek toepast.
 

@@ -13,14 +13,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/23/2019
+ms.date: 09/26/2019
 ms.author: rkarlin
-ms.openlocfilehash: b31196887f900153c0dd213913eda2f8b74f4a20
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: 0bf95b499a7366dad1e7b78fa4298aa6a42bb5fe
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240463"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71316787"
 ---
 # <a name="permissions-in-azure-sentinel"></a>Machtigingen in azure Sentinel
 
@@ -60,7 +60,6 @@ In de volgende tabel worden de rollen en toegestane acties in azure Sentinel wee
 |--- |---|---|---|---|
 | Azure Sentinel Reader | -- | -- | -- | X |
 | Azure Sentinel responder|--|--| X | X |
-| Azure Sentinel incident Manager | -- | X | X | X |
 | Azure Sentinel-bijdrager | -- | X | X | X |
 | Inzender voor Azure Sentinel contributor + Logic apps | X | X | X | X |
 

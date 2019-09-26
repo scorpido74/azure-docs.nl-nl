@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: diberry
-ms.openlocfilehash: 3b1b31da68d821ff27fa30e75ec1522b9d4875c8
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 94f019205959d63a05ed3d90ede59fece3c05901
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70307443"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71316356"
 ---
 # <a name="language-and-region-support-for-luis"></a>Ondersteuning voor LUIS taal en regio
 
@@ -34,18 +34,18 @@ LUIS begrijpt uitingen in de volgende talen:
 |--|--|:--:|:--:|:--:|:--:|
 | Amerikaans-Engels |`en-US` | ✔ | ✔  |✔|✔|
 | *[Chinees](#chinese-support-notes) |`zh-CN` | ✔ | ✔ |✔|-|
-| Nederlands |`nl-NL` |-|  -   |-|✔|
-| Frans (Frankrijk) |`fr-FR` |-| ✔ |✔ |✔|
+| Nederlands |`nl-NL` |✔|  -   |-|✔|
+| Frans (Frankrijk) |`fr-FR` |✔| ✔ |✔ |✔|
 | Frans (Canada) |`fr-CA` |-|   -   |-|✔|
-| Duits |`de-DE` |-| ✔ |✔ |✔|
+| Duits |`de-DE` |✔| ✔ |✔ |✔|
 | Hindi | `hi-IN`|-|-|-|-|
-| Italiaans |`it-IT` |-| ✔ |✔|✔|
-| *[Japans](#japanese-support-notes) |`ja-JP` |-| ✔ |✔|Alleen sleuteluitdrukkingen|
-| Koreaans |`ko-KR` |-|   -   |-|Alleen sleuteluitdrukkingen|
-| Portugees (Brazilië) |`pt-BR` |-| ✔ |✔ |niet alle onderliggende culturen|
-| Spaans (Spanje) |`es-ES` |-| ✔ |✔|✔|
+| Italiaans |`it-IT` |✔| ✔ |✔|✔|
+| *[Japans](#japanese-support-notes) |`ja-JP` |✔| ✔ |✔|Alleen sleuteluitdrukkingen|
+| Koreaans |`ko-KR` |✔|   -   |-|Alleen sleuteluitdrukkingen|
+| Portugees (Brazilië) |`pt-BR` |✔| ✔ |✔ |niet alle onderliggende culturen|
+| Spaans (Spanje) |`es-ES` |✔| ✔ |✔|✔|
 | Spaans (Mexico)|`es-MX` |-|  -   |✔|✔|
-| Turks | `tr-TR` |-|-|-|Alleen sentiment|
+| Turks | `tr-TR` |✔|-|-|Alleen sentiment|
 
 
 Taalondersteuning varieert voor [vooraf gemaakte entiteiten](luis-reference-prebuilt-entities.md) en [vooraf gemaakte domeinen](luis-reference-prebuilt-domains.md).

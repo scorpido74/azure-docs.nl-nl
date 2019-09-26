@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: arthii, LADocs
 ms.topic: article
 ms.date: 09/01/2019
-ms.openlocfilehash: a070b224b0cb1378f0ba6729af33840715dc0a29
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 7384f058c82699095e1209e677dc5c6f61b57178
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71087713"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71309856"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>On-premises gegevens gateway voor Azure Logic Apps installeren
 
@@ -58,7 +58,7 @@ In dit artikel wordt beschreven hoe u uw on-premises gegevens gateway kunt downl
   * SSD-opslag (Solid-State Drive) voor spooling
 
   > [!NOTE]
-  > De gateway biedt geen ondersteuning voor Windows Server 2016 core.
+  > De gateway biedt geen ondersteuning voor Windows Server Core.
 
 * **Verwante overwegingen**
 
@@ -74,6 +74,8 @@ In dit artikel wordt beschreven hoe u uw on-premises gegevens gateway kunt downl
   * De regio die u voor de gateway-installatie selecteert, is dezelfde locatie die u moet selecteren wanneer u later de Azure-gateway resource voor uw logische app maakt. Deze regio is standaard dezelfde locatie als uw Azure AD-Tenant voor het beheren van uw Azure-account. U kunt de locatie echter wijzigen tijdens de installatie van de gateway.
 
   * De gateway heeft twee modi: standaard modus en persoonlijke modus, die alleen van toepassing is op Power BI. U kunt niet meer dan één gateway in dezelfde modus op dezelfde computer uitvoeren.
+
+  * Azure Logic Apps ondersteunt schrijf bewerkingen, met inbegrip van invoeg acties en updates via de gateway. Deze bewerkingen hebben echter [limieten voor de grootte van de nettolading](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem#considerations).
 
 <a name="install-gateway"></a>
 

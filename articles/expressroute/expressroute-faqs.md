@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: jaredro
 ms.custom: seodec18
-ms.openlocfilehash: 6e3045ba8363965fcfc198356ed68447a187308d
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: 886dd9b0f3c72fc7649b1e2fc3927cfa87f65312
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71123435"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71316512"
 ---
 # <a name="expressroute-faq"></a>Veelgestelde vragen ExpressRoute
 
@@ -91,6 +91,8 @@ ExpressRoute ondersteunt [drie routerings domeinen](expressroute-circuit-peering
 
 De omgevingen Dynamics 365 en Common Data Service (CDS) worden gehost op Azure en daarom kunnen klanten profiteren van de onderliggende ExpressRoute-ondersteuning voor Azure-resources. U kunt verbinding maken met de service-eind punten als uw router filter de Azure-regio's bevat waarin uw Dynamics 365/CDS-omgevingen worden gehost.
 
+> [!NOTE]
+> [ExpressRoute Premium](https://docs.microsoft.com/en-us/azure/expressroute/expressroute-faqs#expressroute-premium) is **niet** vereist voor Dynamics 365-connectiviteit via Azure ExpressRoute.
 
 ## <a name="data-and-connections"></a>Gegevens en verbindingen
 

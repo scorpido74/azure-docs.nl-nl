@@ -1,6 +1,6 @@
 ---
-title: Migreren van Managed Cache Service-toepassingen met Redis - Azure | Microsoft Docs
-description: Meer informatie over het migreren van Managed Cache Service en In-Role Cache-toepassingen met Azure-Cache voor Redis
+title: Managed Cache Service-toepassingen migreren naar redis-Azure | Microsoft Docs
+description: Meer informatie over het migreren van Managed Cache Service en het In-Role Cache van toepassingen naar Azure cache voor redis
 services: cache
 documentationcenter: na
 author: yegu-ms
@@ -14,79 +14,79 @@ ms.tgt_pltfrm: cache
 ms.workload: tbd
 ms.date: 05/30/2017
 ms.author: yegu
-ms.openlocfilehash: 116e54fd39af801cf8941a974da2b72c483097dc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 05638e17c2f41806a5c8aa3e0c3020eae82bdb60
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60830268"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71315957"
 ---
-# <a name="migrate-from-managed-cache-service-to-azure-cache-for-redis"></a>Migreren vanuit Managed cacheservice naar Azure Cache voor Redis
-Migreren van uw toepassingen die gebruikmaken van Azure Managed Cache Service met Azure-Cache voor Redis kan worden bewerkstelligd met minimale wijzigingen in uw toepassing, afhankelijk van de Managed Cache Service-functies die worden gebruikt door uw toepassing in het cachegeheugen. Terwijl de API's niet precies hetzelfde zijn ze zijn vergelijkbaar en veel van uw bestaande code die gebruikmaakt van Managed Cache Service voor toegang tot een cache met minimale wijzigingen opnieuw kan worden gebruikt. Dit artikel wordt beschreven hoe u de vereiste configuratie en toepassing verandert als u wilt migreren van uw Managed Cache Service-toepassingen met Azure Cache voor Redis en laat zien hoe sommige van de functies van Azure voor Redis-Cache kan worden gebruikt voor het implementeren van de functionaliteit van een Managed Cache Service-cache.
+# <a name="migrate-from-managed-cache-service-to-azure-cache-for-redis"></a>Migreren van Managed Cache Service naar Azure cache voor redis
+Het migreren van uw toepassingen die gebruikmaken van Azure Managed Cache Service naar Azure cache voor redis, kan worden uitgevoerd met minimale wijzigingen in uw toepassing, afhankelijk van de Managed Cache Service functies die worden gebruikt door uw cache toepassing. Hoewel de Api's niet precies hetzelfde zijn, zijn ze vergelijkbaar en zijn veel van de bestaande code die Managed Cache Service gebruikt voor toegang tot een cache, opnieuw met minimale wijzigingen. In dit artikel wordt uitgelegd hoe u de benodigde configuratie-en toepassings wijzigingen kunt aanbrengen om uw Managed Cache Service-toepassingen te migreren voor het gebruik van Azure cache voor redis, en laat zien hoe sommige van de functies van Azure cache voor redis kunnen worden gebruikt voor het implementeren van de functionaliteit van een Managed Cache Service-cache.
 
 >[!NOTE]
->Managed Cache Service en In-Role Cache zijn [buiten gebruik gesteld](https://azure.microsoft.com/blog/azure-managed-cache-and-in-role-cache-services-to-be-retired-on-11-30-2016/) 30 November 2016. Als u een In-Role Cache-implementaties die u wilt migreren naar Azure Cache voor Redis hebt, kunt u de stappen in dit artikel.
+>Managed Cache Service en In-Role Cache zijn [buiten gebruik gesteld](https://azure.microsoft.com/blog/azure-managed-cache-and-in-role-cache-services-to-be-retired-on-11-30-2016/) op 30 november 2016. Als u In-Role Cache implementaties hebt die u wilt migreren naar Azure cache voor redis, kunt u de stappen in dit artikel volgen.
 
-## <a name="migration-steps"></a>Migratiestappen
-De volgende stappen zijn vereist voor het migreren van een Managed Cache Service-toepassing met Azure Cache voor Redis.
+## <a name="migration-steps"></a>Migratie stappen
+De volgende stappen zijn vereist voor het migreren van een Managed Cache Service-toepassing om Azure cache te gebruiken voor redis.
 
-* Managed Cache Service-functies worden toegewezen aan Azure-Cache voor Redis
-* Kies een Cache-aanbieding
-* Een Cache maken
-* De Cacheclients configureren
-  * Verwijderen van de configuratie van Managed Cache Service
-  * Een cacheclient met behulp van het NuGet-pakket StackExchange.Redis configureren
+* Managed Cache Service-functies voor redis toewijzen aan Azure-cache
+* Een cache aanbieding kiezen
+* Een cache maken
+* De cache-clients configureren
+  * De Managed Cache Service configuratie verwijderen
+  * Een cache-client configureren met het NuGet-pakket stack Exchange. redis
 * Managed Cache Service code migreren
-  * Verbinding maken met de cache met behulp van de klasse ConnectionMultiplexer
-  * Toegang tot primitieve gegevenstypen in de cache
+  * Verbinding maken met de cache met behulp van de ConnectionMultiplexer-klasse
+  * Toegang tot primitieve gegevens typen in de cache
   * Werken met .NET-objecten in de cache
-* ASP.NET-sessiestatus migreren en de uitvoer naar Azure Cache voor Redis cache 
+* ASP.NET-sessie status-en uitvoer cache migreren naar Azure cache voor redis 
 
-## <a name="map-managed-cache-service-features-to-azure-cache-for-redis"></a>Managed Cache Service-functies worden toegewezen aan Azure-Cache voor Redis
-Azure Managed Cache Service en Azure voor Redis-Cache zijn vergelijkbaar, maar sommige van de functies op verschillende manieren implementeren. In deze sectie beschrijft een aantal van de verschillen en richtlijnen over het implementeren van de functies van Managed Cache Service in Azure Cache voor Redis.
+## <a name="map-managed-cache-service-features-to-azure-cache-for-redis"></a>Managed Cache Service-functies voor redis toewijzen aan Azure-cache
+Azure Managed Cache Service en Azure cache voor redis zijn vergelijkbaar, maar implementeren een aantal functies op verschillende manieren. In deze sectie worden enkele van de verschillen beschreven en vindt u richt lijnen voor het implementeren van de functies van Managed Cache Service in azure cache voor redis.
 
-| Beheerde Cache Service-functie | Ondersteuning voor beheerde Cache Service | Azure Cache voor Redis-ondersteuning |
+| Managed Cache Service functie | Ondersteuning voor Managed Cache Service | Azure-cache voor redis-ondersteuning |
 | --- | --- | --- |
-| Benoemde caches |Een standaardcache is geconfigureerd en in de cache standaard en Premium-aanbiedingen, maximaal negen extra caches met de naam kunnen worden geconfigureerd als gewenst. |Azure Redis-Cache heeft een configureerbaar aantal databases (standaard 16) die kunnen worden gebruikt voor het implementeren van een vergelijkbare functionaliteit als benoemde caches. Zie [Wat zijn Redis-databases?](cache-faq.md#what-are-redis-databases) en [Standaardconfiguratie voor Redis-server](cache-configure.md#default-redis-server-configuration) voor meer informatie. |
-| Hoge beschikbaarheid |Biedt hoge beschikbaarheid voor items in de cache in de Standard en Premium-cache-aanbiedingen. Als artikelen verbroken vanwege een fout zijn, wordt back-ups van de items in de cache nog steeds beschikbaar zijn. Schrijfbewerkingen naar de secundaire cache worden synchroon gemaakt. |Hoge beschikbaarheid is beschikbaar in de Standard en Premium-cache-aanbiedingen, waarvoor een configuratie primair/Replica met twee knooppunten (elke shard in een Premium-cache heeft de combinatie van een primaire/replica). Schrijfbewerkingen naar de replica worden asynchroon gedaan. Zie voor meer informatie, [Azure Cache voor Redis-prijsstelling](https://azure.microsoft.com/pricing/details/cache/). |
-| Meldingen |Hiermee kunnen clients asynchrone meldingen ontvangen wanneer diverse cachebewerkingen worden uitgevoerd in een benoemde cache. |Clienttoepassingen kunnen gebruikmaken van Redis pub/sub of [Keyspace-meldingen](cache-configure.md#keyspace-notifications-advanced-settings) op een vergelijkbare functionaliteit om meldingen te bereiken. |
-| Lokale cache |Lokaal een kopie van de objecten in de cache opgeslagen op de client voor extra snelle toegang. |Clienttoepassingen moet voor het implementeren van deze functionaliteit met behulp van een woordenlijst of een vergelijkbare gegevensstructuur. |
-| Verwijderingsbeleid |Geen of LRU. Het standaardbeleid is LRU. |Azure Redis-Cache biedt ondersteuning voor de volgende beleidsregels voor taakverwijdering: vluchtig lru, allkeys lru, vluchtig willekeurige, allkeys-willekeurige vluchtig-ttl, noeviction. Het standaardbeleid is vluchtige lru. Zie voor meer informatie, [configuratie van de standaardconfiguratie voor Redis-server](cache-configure.md#default-redis-server-configuration). |
-| Vervaldatum van het beleid |Het standaardbeleid voor de vervaldatum is Absolute en het standaardinterval voor de vervaldatum is 10 minuten. Schuiven en nooit beleidsregels zijn ook beschikbaar. |Standaard items in de cache niet verlopen, maar een vervaldatum kan worden geconfigureerd op basis van per schrijven met behulp van cache set overloads. |
-| Regio's en labels |Regio's zijn subgroepen voor items in de cache. Regio's ondersteunen ook het commentaar van items in de cache met extra beschrijvende tekenreeksen met de naam tags. Regio's ondersteunen de mogelijkheid om te zoekbewerkingen uitvoeren op de gemarkeerde items in deze regio. Alle items in een regio bevinden zich in een enkel knooppunt in de cachecluster. |een Azure-Cache voor Redis bestaat uit één knooppunt, (tenzij de Redis-cluster is ingeschakeld), zodat het concept van regio's van Managed Cache Service is niet van toepassing. Redis ondersteunt zoeken en jokertekenbewerkingen bij het ophalen van sleutels, zodat u beschrijvende labels kunnen worden ingesloten in de sleutelnamen en gebruikt voor het ophalen van de items later opnieuw. Zie voor een voorbeeld van de implementatie van een taggen oplossing met behulp van Redis [labelen met Redis cache implementeren](https://stackify.com/implementing-cache-tagging-redis/). |
-| Serialisatie |Managed Cache biedt ondersteuning voor NetDataContractSerializer BinaryFormatter en het gebruik van aangepaste objectserializers. De standaardwaarde is NetDataContractSerializer. |Het is de verantwoordelijkheid van de clienttoepassing .NET-objecten serialiseren voordat ze worden geplaatst in de cache, met de keuze van de serializer tot aan de ontwikkelaar van de client-toepassing. Zie voor meer informatie en voorbeeldcode [werken met .NET-objecten in de cache](cache-dotnet-how-to-use-azure-redis-cache.md#work-with-net-objects-in-the-cache). |
-| Cache-emulator |Managed Cache biedt een lokale cache-emulator. |Azure Redis-Cache heeft geen een emulator, maar u kunt [lokaal uitvoeren van de build MSOpenTech van redis-server.exe](cache-faq.md#cache-emulator) om een emulator-ervaring te bieden. |
+| Benoemde caches |Er is een standaard cache geconfigureerd, en in de standaard-en Premium-cache aanbiedingen kunnen Maxi maal negen extra benoemde caches worden geconfigureerd, indien gewenst. |Azure cache voor redis heeft een configureerbaar aantal data bases (standaard van 16) dat kan worden gebruikt voor het implementeren van een vergelijk bare functionaliteit op benoemde caches. Zie [Wat zijn Redis-databases?](cache-faq.md#what-are-redis-databases) en [Standaardconfiguratie voor Redis-server](cache-configure.md#default-redis-server-configuration) voor meer informatie. |
+| Hoge beschikbaarheid |Voorziet in hoge Beschik baarheid voor items in de cache in de standaard-en Premium-cache-aanbiedingen. Als items verloren zijn gegaan vanwege een fout, zijn back-upkopieën van de items in de cache nog steeds beschikbaar. Schrijf bewerkingen naar de secundaire cache worden synchroon gemaakt. |Hoge Beschik baarheid is beschikbaar in de Standard-en Premium-cache-aanbiedingen, die een primaire/replica-configuratie van twee knoop punten hebben (elke Shard in een Premium-cache heeft een primair/replica-paar). Schrijf bewerkingen naar de replica worden asynchroon uitgevoerd. Zie voor meer informatie [Azure cache for redis prijzen](https://azure.microsoft.com/pricing/details/cache/). |
+| Meldingen |Hiermee kunnen clients asynchrone meldingen ontvangen wanneer er diverse cache bewerkingen worden uitgevoerd op een benoemde cache. |Client toepassingen kunnen redis pub/sub-of keys [Space-meldingen](cache-configure.md#keyspace-notifications-advanced-settings) gebruiken om een vergelijk bare functionaliteit te krijgen voor meldingen. |
+| Lokale cache |Slaat een kopie van objecten in de cache lokaal op de client op voor extra snelle toegang. |Client toepassingen moeten deze functionaliteit implementeren met een woorden lijst of een vergelijk bare gegevens structuur. |
+| Verwijderingsbeleid |Geen of LRU. Het standaard beleid is LRU. |Azure cache voor redis ondersteunt het volgende verwijderings beleid: vluchtig-LRU, AllKeys-LRU, vluchtig-wille keurig, AllKeys-wille keurig, vluchtig-TTL, verwijderen. Het standaard beleid is vluchtig-LRU. Zie [default redis server Configuration](cache-configure.md#default-redis-server-configuration)(Engelstalig) voor meer informatie. |
+| Verloop beleid |Het standaard verloop beleid is absoluut en het standaard verloop interval is 10 minuten. Er zijn ook verschuivende en nooit-beleids regels beschikbaar. |Standaard worden items in de cache niet verlopen, maar een verval datum kan worden geconfigureerd op basis van een schrijf bewerking met behulp van het aantal Overloads van de cache. |
+| Regio's en labels |Regio's zijn subgroepen voor items in de cache. Regio's bieden ook ondersteuning voor de annotatie van items in de cache met aanvullende beschrijvende teken reeksen met de naam tags. Regio's ondersteunen de mogelijkheid om Zoek bewerkingen uit te voeren op gelabelde items in die regio. Alle items in een regio bevinden zich in één knoop punt van het cache cluster. |een Azure-cache voor redis bestaat uit één knoop punt (tenzij redis-cluster is ingeschakeld), zodat het concept van Managed Cache Service regio's niet van toepassing is. Redis ondersteunt zoeken en Joker bewerkingen tijdens het ophalen van sleutels zodat beschrijvende Tags kunnen worden inge sloten in de sleutel namen en worden gebruikt om de items later op te halen. Zie [implementatie van cache tagging met redis](https://stackify.com/implementing-cache-tagging-redis/)voor een voor beeld van de implementatie van een tagging-oplossing met behulp van redis. |
+| Serialisatie |Managed cache biedt ondersteuning voor NetDataContractSerializer, BinaryFormatter en het gebruik van aangepaste serialisatiefunctie. De standaard waarde is NetDataContractSerializer. |Het is de verantwoordelijkheid van de client toepassing om .NET-objecten te serialiseren voordat u ze in de cache plaatst, met de keuze van de serialisatiefunctie tot de ontwikkelaar van de client toepassing. Zie [werken met .net-objecten in de cache](cache-dotnet-how-to-use-azure-redis-cache.md#work-with-net-objects-in-the-cache)voor meer informatie en voorbeeld code. |
+| Cache-emulator |Managed cache biedt een lokale cache-emulator. |Azure cache voor redis heeft geen emulator, maar u kunt [de MSOpenTech-build van redis-server. exe lokaal uitvoeren](cache-faq.md#cache-emulator) om een emulator-ervaring te bieden. |
 
-## <a name="choose-a-cache-offering"></a>Kies een Cache-aanbieding
-Microsoft Azure Cache voor Redis is beschikbaar in de volgende lagen:
+## <a name="choose-a-cache-offering"></a>Een cache aanbieding kiezen
+Microsoft Azure cache voor redis is beschikbaar in de volgende lagen:
 
 * **Basic**: één knooppunt. Meerdere groottes tot 53 GB.
 * **Standard**: twee knooppunten (primair/replica). Meerdere groottes tot 53 GB. 99,9% SLA.
-* **Premium**: twee knooppunten (primair/replica) met maximaal 10 shards. Verschillende groottes tussen 6 en 530 GB. Alle functies van de lagen Standard en Premium bieden ondersteuning voor [Redis-cluster](cache-how-to-premium-clustering.md), [Redis-persistentie](cache-how-to-premium-persistence.md) en [Azure Virtual Network](cache-how-to-premium-vnet.md). 99,9% SLA.
+* **Premium**: twee knooppunten (primair/replica) met maximaal 10 shards. Meerdere grootten van 6 GB tot 1,2 TB. Alle functies van de lagen Standard en Premium bieden ondersteuning voor [Redis-cluster](cache-how-to-premium-clustering.md), [Redis-persistentie](cache-how-to-premium-persistence.md) en [Azure Virtual Network](cache-how-to-premium-vnet.md). 99,9% SLA.
 
-Elke laag verschilt wat functies en prijzen betreft. Verderop in deze handleiding, en voor meer informatie over prijzen voor de functies worden behandeld, Zie [prijsdetails voor caches](https://azure.microsoft.com/pricing/details/cache/).
+Elke laag verschilt wat functies en prijzen betreft. De functies worden verderop in deze hand leiding behandeld en Zie [prijs informatie voor cache](https://azure.microsoft.com/pricing/details/cache/)voor meer informatie over prijzen.
 
-Een startpunt voor de migratie is het kiezen van de grootte die overeenkomt met de grootte van uw vorige Managed Cache Service-cache, en vervolgens omhoog of omlaag schalen afhankelijk van de vereisten van uw toepassing. Zie voor meer informatie over het kiezen van de juiste Azure Cache voor Redis-aanbieding [welke Azure Cache voor Redis-aanbieding en de grootte moet ik gebruiken](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use).
+Een start punt voor migratie is het kiezen van de grootte die overeenkomt met de grootte van uw vorige Managed Cache Service cache en vervolgens omhoog of omlaag schalen, afhankelijk van de vereisten van uw toepassing. Zie voor meer informatie over het kiezen van de juiste Azure-cache voor redis-aanbieding [wat Azure-cache voor redis-aanbieding en grootte moet ik gebruiken](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use).
 
-## <a name="create-a-cache"></a>Een Cache maken
+## <a name="create-a-cache"></a>Een cache maken
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-create.md)]
 
-## <a name="configure-the-cache-clients"></a>De Cacheclients configureren
-Nadat de cache is gemaakt en geconfigureerd, wordt de volgende stap is het verwijderen van de configuratie van Managed Cache Service en de Azure-Cache voor Redis-configuratie toevoegen en verwijst naar zodat cache-clients toegang hebben tot de cache.
+## <a name="configure-the-cache-clients"></a>De cache-clients configureren
+Zodra de cache is gemaakt en geconfigureerd, is de volgende stap het verwijderen van de configuratie van de Managed Cache Service en het toevoegen van de Azure-cache voor redis-configuratie en-verwijzingen zodat de cache-clients toegang kunnen krijgen tot de cache.
 
-* Verwijderen van de configuratie van Managed Cache Service
-* Een cacheclient met behulp van het NuGet-pakket StackExchange.Redis configureren
+* De Managed Cache Service configuratie verwijderen
+* Een cache-client configureren met het NuGet-pakket stack Exchange. redis
 
-### <a name="remove-the-managed-cache-service-configuration"></a>Verwijderen van de configuratie van Managed Cache Service
-Voordat de clienttoepassingen kunnen worden geconfigureerd voor Cache voor Azure Redis, de bestaande Managed Cache Service configuratie en de assembly-verwijzingen worden verwijderd door het verwijderen van de Managed Cache Service NuGet-pakket.
+### <a name="remove-the-managed-cache-service-configuration"></a>De Managed Cache Service configuratie verwijderen
+Voordat de client toepassingen voor Azure-cache kunnen worden geconfigureerd voor redis, moeten de bestaande Managed Cache Service configuratie en assembly-verwijzingen worden verwijderd door het Managed Cache Service NuGet-pakket te verwijderen.
 
-Voor het verwijderen van de Managed Cache Service NuGet-pakket met de rechtermuisknop op de client-project in **Solution Explorer** en kies **NuGet-pakketten beheren**. Selecteer de **installatiepakketten** -knooppunt en typ W**indowsAzure.Caching** in het zoekvak van de geïnstalleerde pakketten. Selecteer **Windows** **Azure Cache** (of **Windows** **Azure Caching** afhankelijk van de versie van het NuGet-pakket), klikt u op **Verwijderen**, en klik vervolgens op **sluiten**.
+Als u het NuGet-pakket van Managed Cache Service wilt verwijderen, klikt u met de rechter muisknop op het client project in **Solution Explorer** en kiest u **NuGet-pakketten beheren**. Selecteer het knoop punt **geïnstalleerde pakketten** en typ W**indowsAzure. caching** in het vak geïnstalleerde pakketten zoeken. Selecteer **Windows** **Azure-cache** (of **Windows** **Azure caching** , afhankelijk van de versie van het NuGet-pakket), klik op **verwijderen**en klik vervolgens op **sluiten**.
 
 ![Azure Managed Cache Service NuGet-pakket verwijderen](./media/cache-migrate-to-redis/IC757666.jpg)
 
-De Managed Cache Service NuGet-pakket te verwijderen, worden de assembly's van Managed Cache Service en de Managed Cache Service vermeldingen in het app.config- of web.config van de clienttoepassing verwijderd. Omdat sommige aangepaste instellingen kunnen niet worden verwijderd tijdens het verwijderen van het NuGet-pakket, open web.config of app.config en zorg ervoor dat de volgende elementen zijn verwijderd.
+Als u Managed Cache Service het NuGet-pakket verwijdert, worden de Managed Cache Service-assembly's en de Managed Cache Service vermeldingen in de app. config of web. config van de client toepassing verwijderd. Omdat sommige aangepaste instellingen mogelijk niet worden verwijderd wanneer u het NuGet-pakket verwijdert, opent u web. config of app. config en zorgt u ervoor dat de volgende elementen worden verwijderd.
 
-Zorg ervoor dat de `dataCacheClients` vermelding wordt verwijderd uit de `configSections` element. Verwijder niet de gehele `configSections` element; alleen verwijderen de `dataCacheClients` vermelding, indien aanwezig.
+Zorg ervoor dat `dataCacheClients` de vermelding is verwijderd uit `configSections` het-element. Verwijder het hele `configSections` element niet; Verwijder de `dataCacheClients` vermelding alleen als deze aanwezig is.
 
 ```xml
 <configSections>
@@ -95,7 +95,7 @@ Zorg ervoor dat de `dataCacheClients` vermelding wordt verwijderd uit de `config
 </configSections>
 ```
 
-Zorg ervoor dat de `dataCacheClients` sectie is verwijderd. De `dataCacheClients` sectie is vergelijkbaar met het volgende voorbeeld.
+Zorg ervoor dat `dataCacheClients` de sectie wordt verwijderd. De `dataCacheClients` sectie ziet er ongeveer uit als in het volgende voor beeld.
 
 ```xml
 <dataCacheClients>
@@ -113,31 +113,31 @@ Zorg ervoor dat de `dataCacheClients` sectie is verwijderd. De `dataCacheClients
 </dataCacheClients>
 ```
 
-Wanneer de configuratie van Managed Cache Service is verwijderd, kunt u de cacheclient configureren zoals beschreven in de volgende sectie.
+Zodra de Managed Cache Service configuratie is verwijderd, kunt u de cache-client configureren, zoals wordt beschreven in de volgende sectie.
 
-### <a name="configure-a-cache-client-using-the-stackexchangeredis-nuget-package"></a>Een cacheclient met behulp van het NuGet-pakket StackExchange.Redis configureren
+### <a name="configure-a-cache-client-using-the-stackexchangeredis-nuget-package"></a>Een cache-client configureren met het NuGet-pakket stack Exchange. redis
 [!INCLUDE [redis-cache-configure](../../includes/redis-cache-configure-stackexchange-redis-nuget.md)]
 
 ## <a name="migrate-managed-cache-service-code"></a>Managed Cache Service code migreren
-De API voor de StackExchange.Azure Cache voor Redis-client is vergelijkbaar met de Managed Cache Service. In deze sectie biedt een overzicht van de verschillen.
+De API voor de cache voor stack Exchange. Azure voor redis-client is vergelijkbaar met de Managed Cache Service. In deze sectie vindt u een overzicht van de verschillen.
 
-### <a name="connect-to-the-cache-using-the-connectionmultiplexer-class"></a>Verbinding maken met de cache met behulp van de klasse ConnectionMultiplexer
-In de Managed Cache Service, de verbindingen met de cache zijn verwerkt door de `DataCacheFactory` en `DataCache` klassen. In Azure-Cache voor Redis, deze verbindingen worden beheerd door de `ConnectionMultiplexer` klasse.
+### <a name="connect-to-the-cache-using-the-connectionmultiplexer-class"></a>Verbinding maken met de cache met behulp van de ConnectionMultiplexer-klasse
+In Managed cache service zijn verbindingen met de cache verwerkt door de `DataCacheFactory` klassen and. `DataCache` In azure cache voor redis worden deze verbindingen beheerd door de `ConnectionMultiplexer` -klasse.
 
-Voeg de volgende gebruiksinstructie aan het begin van alle bestanden die u wilt krijgen tot de cache.
+Voeg de volgende instructie toe aan het begin van elk bestand dat u wilt gebruiken voor toegang tot de cache.
 
 ```csharp
 using StackExchange.Redis
 ```
 
-Als deze naamruimte niet kan worden opgelost, moet u dat u het StackExchange.Redis-pakket hebt toegevoegd zoals beschreven in [Quick Start: Azure Cache voor Redis gebruiken met een .NET-toepassing](cache-dotnet-how-to-use-azure-redis-cache.md).
+Als deze naam ruimte niet wordt opgelost, moet u ervoor zorgen dat u het NuGet-pakket stack Exchange. redis [hebt toegevoegd, zoals beschreven in Quick Start: Gebruik Azure cache voor redis met een .NET-](cache-dotnet-how-to-use-azure-redis-cache.md)toepassing.
 
 > [!NOTE]
-> Houd er rekening mee dat de client StackExchange.Redis is .NET Framework 4 of hoger vereist.
+> Houd er rekening mee dat de stack Exchange. redis-client .NET Framework 4 of hoger vereist.
 > 
 > 
 
-Als u wilt verbinding maken met een Azure-Cache voor Redis-exemplaar, roept u de statische `ConnectionMultiplexer.Connect` methode en geeft u het eindpunt en de sleutel. U kunt een exemplaar van `ConnectionMultiplexer` in uw toepassing delen door een statische eigenschap in te stellen die een verbonden exemplaar retourneert, zoals in het volgende voorbeeld. Deze benadering biedt een thread-veilige manier om te initialiseren van één verbonden `ConnectionMultiplexer` exemplaar. In dit voorbeeld `abortConnect` is ingesteld op false, dit betekent dat de aanroep slaagt, zelfs als een verbinding met de cache niet tot stand wordt gebracht. Een belangrijke functie van `ConnectionMultiplexer` is dat deze de verbinding met de cache automatisch herstelt als het netwerkprobleem of de andere oorzaken zijn opgelost.
+Als u verbinding wilt maken met een Azure-cache voor redis- `ConnectionMultiplexer.Connect` exemplaar, roept u de statische-methode aan en geeft u het eind punt en de sleutel door. U kunt een exemplaar van `ConnectionMultiplexer` in uw toepassing delen door een statische eigenschap in te stellen die een verbonden exemplaar retourneert, zoals in het volgende voorbeeld. Deze benadering biedt een thread-veilige manier om één verbonden `ConnectionMultiplexer` exemplaar te initialiseren. In dit voor `abortConnect` beeld is ingesteld op False, wat betekent dat de aanroep slaagt, zelfs als er geen verbinding met de cache tot stand is gebracht. Een belangrijke functie van `ConnectionMultiplexer` is dat deze de verbinding met de cache automatisch herstelt als het netwerkprobleem of de andere oorzaken zijn opgelost.
 
 ```csharp
 private static Lazy<ConnectionMultiplexer> lazyConnection = new Lazy<ConnectionMultiplexer>(() =>
@@ -154,9 +154,9 @@ public static ConnectionMultiplexer Connection
 }
 ```
 
-De cache-eindpunt, sleutels en poorten kunnen worden opgehaald van de **Azure Cache voor Redis** blade voor uw cache-exemplaar. Zie voor meer informatie, [Azure Cache voor Redis-eigenschappen](cache-configure.md#properties).
+Het cache-eind punt, sleutels en poorten kunnen worden opgehaald uit de **Azure-cache voor** de Blade redis voor uw cache-exemplaar. Zie [Azure cache voor redis-eigenschappen](cache-configure.md#properties)voor meer informatie.
 
-Zodra de verbinding tot stand is gebracht, retourneert een verwijzing naar de Azure-Cache voor Redis-database door het aanroepen van de `ConnectionMultiplexer.GetDatabase` methode. Het object dat door de `GetDatabase`-methode wordt geretourneerd, is een lichtgewicht doorvoerobject en hoeft niet te worden opgeslagen.
+Als de verbinding tot stand is gebracht, retourneert u een verwijzing naar de Azure-cache voor de `ConnectionMultiplexer.GetDatabase` redis-data base door de methode aan te roepen. Het object dat door de `GetDatabase`-methode wordt geretourneerd, is een lichtgewicht doorvoerobject en hoeft niet te worden opgeslagen.
 
 ```csharp
 IDatabase cache = Connection.GetDatabase();
@@ -171,11 +171,11 @@ string key1 = cache.StringGet("key1");
 int key2 = (int)cache.StringGet("key2");
 ```
 
-De StackExchange.Redis-client gebruikt de `RedisKey` en `RedisValue` typen voor het openen en opslaan van items in de cache. Deze typen toewijzen op meest primitieve taaltypen, met inbegrip van tekenreeks, en vaak worden niet gebruikt rechtstreeks. Redis-tekenreeksen zijn het meest eenvoudige type van de Redis-waarde en kunnen bevatten veel soorten gegevens, waaronder geserialiseerde binaire streams, en u mogelijk het type niet rechtstreeks gebruiken, gaat u methoden die bevatten `String` in de naam. Voor meest primitieve gegevenstypen, u gegevens kunt opslaan en ophalen van items uit de cache met behulp van de `StringSet` en `StringGet` methoden, tenzij u verzamelingen of andere Redis-gegevenstypen in de cache opslaat. 
+De stack Exchange. redis-client gebruikt `RedisKey` de `RedisValue` -en-typen voor het openen en opslaan van items in de cache. Deze typen worden toegewezen aan de meeste primitieve taal typen, met inbegrip van teken reeksen, en worden vaak niet rechtstreeks gebruikt. Redis-teken reeksen zijn de meest eenvoudige soort redis-waarde en kunnen veel soorten gegevens bevatten, met inbegrip van geserialiseerde binaire streams, en terwijl u het type niet rechtstreeks gebruikt, gebruikt u de methoden `String` die in de naam staan. Voor de meeste primitieve gegevens typen kunt u items opslaan en ophalen uit de cache met behulp `StringGet` van de `StringSet` -en-methoden, tenzij u verzamelingen opslaat of andere redis-gegevens typen in de cache. 
 
-`StringSet` en `StringGet` zijn vergelijkbaar met de Managed Cache Service `Put` en `Get` methoden, met een groot verschil is dat de voordat u een .NET-object in de cache ophalen en u deze eerst serialiseren moet. 
+`StringSet`en `StringGet` zijn vergelijkbaar met de Managed cache service `Put` en `Get` methoden, met één belang rijk verschil dat voordat u een .net-object in de cache instelt en ontvangt, het eerst moet worden geserialiseerd. 
 
-Bij het aanroepen van `StringGet`, als het object bestaat, deze wordt geretourneerd, en als dat niet het geval is, wordt null geretourneerd. In dit geval kunt u de waarde van de gewenste gegevensbron ophalen en opslaan in de cache voor later gebruik. Dit patroon wordt de cache-aside-patroon genoemd.
+`StringGet`Als het object bestaat, wordt dit geretourneerd, en als dit niet het geval is, wordt Null geretourneerd. In dit geval kunt u de waarde van de gewenste gegevens bron ophalen en deze in de cache opslaan voor later gebruik. Dit patroon wordt het cache-leggings patroon genoemd.
 
 Als u de vervaldatum van een item in de cache wilt opgeven, gebruikt u de parameter `TimeSpan` van `StringSet`.
 
@@ -183,11 +183,11 @@ Als u de vervaldatum van een item in de cache wilt opgeven, gebruikt u de parame
 cache.StringSet("key1", "value1", TimeSpan.FromMinutes(90));
 ```
 
-Azure Redis-Cache kunt werken met .NET-objecten als oudere gegevenstypen opslaan, maar voordat een .NET-object in de cache kan worden opgeslagen, moet worden geserialiseerd. Deze serialisatie is de verantwoordelijkheid van de ontwikkelaar van de toepassing en geeft de ontwikkelaar flexibiliteit bij de keuze van de serializer. Zie voor meer informatie en voorbeeldcode [werken met .NET-objecten in de cache](cache-dotnet-how-to-use-azure-redis-cache.md#work-with-net-objects-in-the-cache).
+Azure cache voor redis kan werken met .NET-objecten en primitieve gegevens typen, maar voordat een .NET-object in de cache kan worden opgeslagen, moet het worden geserialiseerd. Deze serialisatie is de verantwoordelijkheid van de toepassings ontwikkelaar en biedt de ontwikkel aars flexibiliteit in de keuze van de serialisatiefunctie. Zie [werken met .net-objecten in de cache](cache-dotnet-how-to-use-azure-redis-cache.md#work-with-net-objects-in-the-cache)voor meer informatie en voorbeeld code.
 
-## <a name="migrate-aspnet-session-state-and-output-caching-to-azure-cache-for-redis"></a>ASP.NET-sessiestatus migreren en de uitvoer naar Azure Cache voor Redis cache
-Azure Redis-Cache heeft providers voor ASP.NET-sessiestatus en pagina-uitvoer opslaan in cache. Als u wilt migreren van uw toepassing die gebruikmaakt van de Managed Cache Service-versies van deze providers, verwijdert u eerst de bestaande secties uit uw web.config en configureer vervolgens de Azure-Cache voor Redis-versies van de providers. Zie voor instructies over het gebruik van de Azure-Cache voor Redis-ASP.NET-providers [ASP.NET-Sessiestatusprovider voor Azure Cache voor Redis](cache-aspnet-session-state-provider.md) en [Cacheprovider voor ASP.NET voor Azure Cache voor Redis](cache-aspnet-output-cache-provider.md).
+## <a name="migrate-aspnet-session-state-and-output-caching-to-azure-cache-for-redis"></a>ASP.NET-sessie status-en uitvoer cache migreren naar Azure cache voor redis
+Azure cache voor redis heeft providers voor zowel de ASP.NET-sessie status als de cache voor pagina-uitvoer. Als u uw toepassing wilt migreren die gebruikmaakt van de Managed Cache Service versies van deze providers, verwijdert u eerst de bestaande secties uit de web. config en configureert u vervolgens de Azure-cache voor redis-versies van de providers. Zie voor instructies over het gebruik van de Azure-cache voor redis ASP.NET-providers [ASP.net-sessie status provider voor Azure cache voor redis](cache-aspnet-session-state-provider.md) en [ASP.net-uitvoer cache provider voor Azure cache voor redis](cache-aspnet-output-cache-provider.md).
 
 ## <a name="next-steps"></a>Volgende stappen
-Verken de [Azure Cache voor Redis-documentatie](https://azure.microsoft.com/documentation/services/cache/) voor zelfstudies, voorbeelden en video's.
+Verken de [Azure-cache voor redis-documentatie](https://azure.microsoft.com/documentation/services/cache/) voor zelf studies, voor beelden, Video's en meer.
 

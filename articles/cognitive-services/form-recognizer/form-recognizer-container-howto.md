@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: conceptual
-ms.date: 09/18/2019
+ms.date: 09/24/2019
 ms.author: dapine
-ms.openlocfilehash: c58f8ae0605f99952507a5f308316f784b3d8de1
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: eced3415db27562ea60b67f5c23ca7fafe09ccc0
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71105147"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71316650"
 ---
 # <a name="install-and-run-form-recognizer-containers"></a>Containers voor formulier herkenning installeren en uitvoeren
 
@@ -303,7 +303,9 @@ De container biedt REST-endpoint Api's, die u op de [formulier Recognizer API](h
 
 ## <a name="troubleshooting"></a>Problemen oplossen
 
-Wanneer u de container uitvoert, gebruikt de container **stdout** en **stderr** voor het uitvoeren van informatie die nuttig is voor het oplossen van problemen die zich voordoen wanneer u de container start of uitvoert.
+Als u de container uitvoert met een uitvoer [koppeling](form-recognizer-container-configuration.md#mount-settings) en logboek registratie ingeschakeld, genereert de container logboek bestanden die handig zijn om problemen op te lossen die optreden tijdens het starten of uitvoeren van de container.
+
+[!INCLUDE [Cognitive Services FAQ note](../containers/includes/cognitive-services-faq-note.md)]
 
 ## <a name="billing"></a>Billing
 

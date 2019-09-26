@@ -11,16 +11,16 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 08/2/2019
 ms.custom: seodec18
-ms.openlocfilehash: ecd1212385473e33d05f38f67db5708bff060daa
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: 9de3232bcd7908f775dadff4dc584f2a687b0c68
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71218235"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71299758"
 ---
 # <a name="access-data-in-azure-storage-services"></a>Toegang tot gegevens in azure Storage-services
 
- In dit artikel leert u hoe u eenvoudig toegang hebt tot uw gegevens in azure Storage-services via Azure Machine Learning gegevens opslag. Data stores worden gebruikt voor het opslaan van verbindings gegevens, zoals uw abonnements-ID en Token autorisatie, om toegang te krijgen tot uw opslag zonder dat u de informatie in uw scripts hoeft vast te maken.
+In dit artikel leert u hoe u eenvoudig toegang hebt tot uw gegevens in azure Storage-services via Azure Machine Learning gegevens opslag. Data stores worden gebruikt om verbindings gegevens op te slaan, zoals uw abonnements-ID en Token autorisatie. Door data stores te gebruiken, kunt u toegang krijgen tot uw opslag zonder dat u de verbindings gegevens van uw scripts hard kunt coderen.
 
 In deze procedure worden voor beelden van de volgende taken weer gegeven:
 * [Gegevens opslag registreren](#access)
@@ -49,7 +49,7 @@ Alle registratie methoden bevinden zich op [`Datastore`](https://docs.microsoft.
 
 In de volgende voor beelden ziet u hoe u een Azure Blob-container of een Azure-bestands share als een gegevens opslag registreert.
 
-+ Gebruik voor een **Azure Blob container-gegevens opslag**[`register_azure_blob-container()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py)
++ Gebruik voor een **Azure Blob container-gegevens opslag**[`register_azure_blob-container()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py#register-azure-blob-container-workspace--datastore-name--container-name--account-name--sas-token-none--account-key-none--protocol-none--endpoint-none--overwrite-false--create-if-not-exists-false--skip-validation-false--blob-cache-timeout-none--grant-workspace-access-false--subscription-id-none--resource-group-none-)
 
   ```Python
   datastore = Datastore.register_azure_blob_container(workspace=ws, 
@@ -84,7 +84,7 @@ Als u een specifieke gegevens opslag die in de huidige werk ruimte is [`get()`](
 #get named datastore from current workspace
 datastore = Datastore.get(ws, datastore_name='your datastore name')
 ```
-Als u de lijst met gegevens opslag die is geregistreerd met een bepaalde werk ruimte wilt ophalen `datastores` , kunt u de eigenschap gebruiken voor een werkruimte object:
+Als u de lijst met gegevens opslag die is geregistreerd met een bepaalde werk ruimte wilt ophalen [`datastores`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace%28class%29?view=azure-ml-py#datastores) , kunt u de eigenschap gebruiken voor een werkruimte object:
 
 ```Python
 #list all datastores registered in current workspace
@@ -110,7 +110,7 @@ ws.set_default_datastore('your datastore name')
 
 <a name="up-and-down"></a>
 ## <a name="upload--download-data"></a>Gegevens uploaden & downloaden
-De [`upload()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.azureblobdatastore?view=azure-ml-py#download-target-path--prefix-none--overwrite-false--show-progress-true-) methoden [`download()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.azureblobdatastore?view=azure-ml-py#download-target-path--prefix-none--overwrite-false--show-progress-true-) en die in de volgende voor beelden worden beschreven, zijn specifiek voor en worden identiek voor de klassen [AzureBlobDatastore](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.azureblobdatastore?view=azure-ml-py) en [AzureFileDatastore](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.azurefiledatastore?view=azure-ml-py) .
+De [`upload()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.azureblobdatastore?view=azure-ml-py#upload-src-dir--target-path-none--overwrite-false--show-progress-true-) methoden [`download()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.azureblobdatastore?view=azure-ml-py#download-target-path--prefix-none--overwrite-false--show-progress-true-) en die in de volgende voor beelden worden beschreven, zijn specifiek voor en worden identiek voor de klassen [AzureBlobDatastore](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.azureblobdatastore?view=azure-ml-py) en [AzureFileDatastore](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.azurefiledatastore?view=azure-ml-py) .
 
 ### <a name="upload"></a>Uploaden
 
@@ -155,8 +155,8 @@ De volgende tabel bevat de methoden die het reken doel vertellen hoe de gegevens
 Manier|Methode|Description|
 ----|-----|--------
 Koppelen| [`as_mount()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.abstractazurestoragedatastore?view=azure-ml-py#as-mount--)| Gebruiken om de gegevens opslag te koppelen aan het berekenings doel.
-Downloaden|[`as_download()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.abstractazurestoragedatastore?view=azure-ml-py#as-download-path-on-compute-none-)|Gebruik om de inhoud van uw gegevens archief te downloaden naar de locatie `path_on_compute`die is opgegeven door. <br> Deze down load gebeurt vóór de uitvoering.
-Uploaden|[`as_upload()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.abstractazurestoragedatastore?view=azure-ml-py#as-upload-path-on-compute-none-)| Gebruiken om een bestand te uploaden vanaf de locatie die `path_on_compute` is opgegeven door naar uw gegevens opslag. <br> Deze upload vindt plaats na de uitvoering.
+Downloaden|[`as_download()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.abstractazurestoragedatastore?view=azure-ml-py#as-download-path-on-compute-none-)|Gebruik om de inhoud van uw gegevens archief te downloaden naar de locatie `path_on_compute`die is opgegeven door. <br><br> Deze down load gebeurt vóór de uitvoering.
+Uploaden|[`as_upload()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.abstractazurestoragedatastore?view=azure-ml-py#as-upload-path-on-compute-none-)| Gebruiken om een bestand te uploaden vanaf de locatie die `path_on_compute` is opgegeven door naar uw gegevens opslag. <br><br> Deze upload vindt plaats na de uitvoering.
 
 Gebruik de methode Data Store [`path()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.abstractazurestoragedatastore?view=azure-ml-py#path-path-none--data-reference-name-none-) om te verwijzen naar een specifieke map of bestand in uw gegevens opslag en deze beschikbaar te maken op het Compute-doel.
 
@@ -168,13 +168,13 @@ datastore.as_mount()
 datastore.path('./bar').as_download()
 ```
 > [!NOTE]
-> Elk `datastore` `"$AZUREML_DATAREFERENCE_XXXX"`of `datastore.path` -object wordt omgezet in de naam van een omgevings variabele van de indeling, waarvan de waarde het pad voor koppelen/downloaden op de doel Compute vertegenwoordigt. Het Data Store-pad op de doel Compute kan niet hetzelfde zijn als het pad voor de uitvoering van het trainings script.
+> Alle opgegeven `datastore` of `datastore.path` -objecten worden omgezet in de naam van een omgevings `"$AZUREML_DATAREFERENCE_XXXX"`variabele van de indeling, waarvan de waarde het pad voor koppelen/downloaden op de doel comput aangeeft. Het Data Store-pad op de doel Compute kan niet hetzelfde zijn als het pad voor de uitvoering van het trainings script.
 
 ### <a name="examples"></a>Voorbeelden 
 
 De volgende code voorbeelden zijn specifiek voor de [`Estimator`](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py) -klasse om toegang te krijgen tot gegevens tijdens de training. 
 
-`script_params`is een woorden lijst met para meters voor de entry_script. U kunt deze gebruiken om in een gegevens Archief door te geven en te beschrijven hoe gegevens beschikbaar moeten worden gemaakt voor het reken doel. Meer informatie vindt u in onze end-to-end [zelf studie](tutorial-train-models-with-aml.md).
+`script_params`is een woorden lijst met para meters voor de entry_script. Gebruik deze functie om in een gegevens Archief door te geven en te beschrijven hoe gegevens beschikbaar worden gesteld op het reken doel. Meer informatie vindt u in onze end-to-end [zelf studie](tutorial-train-models-with-aml.md).
 
 ```Python
 from azureml.train.estimator import Estimator
@@ -241,7 +241,7 @@ Azure Machine Learning biedt verschillende manieren om uw modellen te gebruiken 
 | [Webservice](how-to-deploy-and-where.md) | &nbsp; | Model (len) implementeren als een webservice. |
 | [Module IoT Edge](how-to-deploy-and-where.md) | &nbsp; | Model (len) implementeren op IoT Edge apparaten. |
 
-In situaties waarin de SDK geen toegang biedt tot gegevens opslag, kunt u mogelijk aangepaste code maken met behulp van de relevante Azure SDK om toegang te krijgen tot de data. U kunt bijvoorbeeld de [Azure Storage SDK voor python](https://github.com/Azure/azure-storage-python) gebruiken om toegang te krijgen tot gegevens die zijn opgeslagen in blobs.
+In situaties waarin de SDK geen toegang biedt tot gegevens opslag, kunt u mogelijk aangepaste code maken met behulp van de relevante Azure SDK om toegang te krijgen tot de data. De [Azure Storage SDK voor python](https://github.com/Azure/azure-storage-python) is bijvoorbeeld een client bibliotheek die u kunt gebruiken om toegang te krijgen tot gegevens die zijn opgeslagen in blobs of bestanden.
 
 
 ## <a name="next-steps"></a>Volgende stappen

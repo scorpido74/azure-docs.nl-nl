@@ -10,12 +10,12 @@ ms.subservice: development
 ms.date: 03/15/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: d97326430eebcaea64770e99c26ab593b51d5847
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: 55da4e3dc9c7f1c1f86a649a654ce41ef59ad839
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68476750"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71310104"
 ---
 # <a name="designing-tables-in-azure-sql-data-warehouse"></a>Tabellen ontwerpen in Azure SQL Data Warehouse
 
@@ -68,7 +68,7 @@ Een externe tabel verwijst naar gegevens die zich bevinden in Azure Storage BLOB
 SQL Data Warehouse ondersteunt de meest gebruikte gegevens typen. Zie [gegevens typen in Create Table verwijzing](/sql/t-sql/statements/create-table-azure-sql-data-warehouse#DataTypes) in de CREATE TABLE-instructie voor een lijst met ondersteunde gegevens typen. Zie [gegevens typen](sql-data-warehouse-tables-data-types.md)voor hulp bij het gebruik van gegevens typen.
 
 ## <a name="distributed-tables"></a>Gedistribueerde tabellen
-Een fundamenteel onderdeel van SQL Data Warehouse is de manier waarop het kan worden opgeslagen en toegepast op [](massively-parallel-processing-mpp-architecture.md#distributions)tabellen in distributies.  SQL Data Warehouse ondersteunt drie methoden voor het distribueren van gegevens, Round Robin (standaard), hash en gerepliceerd.
+Een fundamenteel onderdeel van SQL Data Warehouse is de manier waarop het kan worden opgeslagen en toegepast op tabellen in [distributies](massively-parallel-processing-mpp-architecture.md#distributions).  SQL Data Warehouse ondersteunt drie methoden voor het distribueren van gegevens, Round Robin (standaard), hash en gerepliceerd.
 
 ### <a name="hash-distributed-tables"></a>Hash-gedistribueerde tabellen
 Een gedistribueerde hash-tabel distribueert rijen op basis van de waarde in de kolom distributie. Een gedistribueerde hash-tabel is ontworpen om hoge prestaties te leveren voor query's op grote tabellen. Er zijn verschillende factoren waarmee u rekening moet houden bij het kiezen van een distributie kolom. 
@@ -92,10 +92,10 @@ De tabel categorie bepaalt vaak welke optie u kiest voor het distribueren van de
 |:---------------|:--------------------|
 | Feit           | Hash-distributie met geclusterde column store-index gebruiken. De prestaties zijn verbeterd wanneer twee hash-tabellen worden gekoppeld aan dezelfde distributie kolom. |
 | Dimensie      | Gebruik gerepliceerde voor kleinere tabellen. Als tabellen te groot zijn om op elk reken knooppunt te worden opgeslagen, gebruikt u hash-gedistribueerd. |
-| Faseren        | Gebruik Round-Robin voor de faserings tabel. De belasting met CTAS is snel. Wanneer de gegevens zich in de faserings tabel bevindt, gebruikt u invoegen... Selecteer deze optie om de gegevens naar productie tabellen te verplaatsen. |
+| Fasering        | Gebruik Round-Robin voor de faserings tabel. De belasting met CTAS is snel. Wanneer de gegevens zich in de faserings tabel bevindt, gebruikt u invoegen... Selecteer deze optie om de gegevens naar productie tabellen te verplaatsen. |
 
 ## <a name="table-partitions"></a>Tabelpartities
-Een gepartitioneerde tabel bevat en voert bewerkingen uit op de tabel rijen op basis van gegevensbereiken. Een tabel kan bijvoorbeeld worden gepartitioneerd op dag, maand of jaar. U kunt de query prestaties verbeteren via partitie-eliminatie, waardoor een query scan wordt beperkt tot gegevens in een partitie. U kunt de gegevens ook onderhouden via partitie wisseling. Omdat de gegevens in SQL Data Warehouse al zijn gedistribueerd, kunnen er te veel partities de query prestaties vertragen. Zie [richt lijnen](sql-data-warehouse-tables-partition.md)voor partitioneren voor meer informatie.  Als de partitie wordt overgeschakeld naar tabel partities die niet leeg zijn, kunt u de optie TRUNCATE_TARGET in uw [ALTER TABLE](https://docs.microsoft.com/sql/t-sql/statements/alter-table-transact-sql) -instructie gebruiken als de bestaande gegevens moeten worden afgekapt. De onderstaande code schakelt in de getransformeerde dagelijkse gegevens naar de SalesFact die bestaande gegevens overschrijven. 
+Een gepartitioneerde tabel bevat en voert bewerkingen uit op de tabel rijen op basis van gegevensbereiken. Een tabel kan bijvoorbeeld worden gepartitioneerd op dag, maand of jaar. U kunt de query prestaties verbeteren via partitie-eliminatie, waardoor een query scan wordt beperkt tot gegevens in een partitie. U kunt de gegevens ook onderhouden via partitie wisseling. Omdat de gegevens in SQL Data Warehouse al zijn gedistribueerd, kunnen er te veel partities de query prestaties vertragen. Zie [richt lijnen voor partitioneren](sql-data-warehouse-tables-partition.md)voor meer informatie.  Als de partitie wordt overgeschakeld naar tabel partities die niet leeg zijn, kunt u de optie TRUNCATE_TARGET in uw [ALTER TABLE](https://docs.microsoft.com/sql/t-sql/statements/alter-table-transact-sql) -instructie gebruiken als de bestaande gegevens moeten worden afgekapt. De onderstaande code schakelt in de getransformeerde dagelijkse gegevens naar de SalesFact die bestaande gegevens overschrijven. 
 
 ```sql
 ALTER TABLE SalesFact_DailyFinalLoad SWITCH PARTITION 256 TO SalesFact PARTITION 256 WITH (TRUNCATE_TARGET = ON);  
@@ -108,6 +108,9 @@ Zie [Wat is er nieuw voor column Store-indexen](/sql/relational-databases/indexe
 
 ## <a name="statistics"></a>Statistieken
 De query optimalisatie maakt gebruik van statistieken op kolom niveau wanneer het plan voor het uitvoeren van een query wordt gemaakt. Om de query prestaties te verbeteren, is het belang rijk om statistieken te hebben over afzonderlijke kolommen, met name kolommen die worden gebruikt in query-samen voegingen. [Het maken van statistieken](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-statistics#automatic-creation-of-statistic) gebeurt automatisch.  Het bijwerken van statistieken gebeurt echter niet automatisch. Statistieken bijwerken nadat een groot aantal rijen zijn toegevoegd of gewijzigd. U kunt bijvoorbeeld statistieken bijwerken na een belasting. Zie [Statistieken-richt lijnen](sql-data-warehouse-tables-statistics.md)voor meer informatie.
+
+## <a name="primary-key-and-unique-key"></a>Primaire sleutel en unieke sleutel
+De primaire sleutel wordt alleen ondersteund als niet-geclusterd en niet afgedwongen worden gebruikt.  EEN unieke beperking wordt alleen ondersteund als er geen afgedwongen wordt toegepast.  Controleer [SQL Data Warehouse tabel beperkingen](sql-data-warehouse-table-constraints.md).
 
 ## <a name="commands-for-creating-tables"></a>Opdrachten voor het maken van tabellen
 U kunt een tabel maken als een nieuwe, lege tabel. U kunt ook een tabel maken en vullen met de resultaten van een SELECT-instructie. Hieronder vindt u de T-SQL-opdrachten voor het maken van een tabel.
@@ -128,8 +131,7 @@ Als er gegevens uit meerdere gegevens archieven afkomstig zijn, kunt u de gegeve
 ## <a name="unsupported-table-features"></a>Niet-ondersteunde tabel functies
 SQL Data Warehouse ondersteunt veel, maar niet alle, van de tabel functies die worden aangeboden door andere data bases.  De volgende lijst bevat enkele van de tabel functies die niet worden ondersteund in SQL Data Warehouse.
 
-- Primaire sleutel, refererende sleutels, unieke, [tabel beperkingen](/sql/t-sql/statements/alter-table-table-constraint-transact-sql) controleren
-
+- Refererende sleutel, [tabel beperkingen](/sql/t-sql/statements/alter-table-table-constraint-transact-sql) controleren
 - [Berekende kolommen](/sql/t-sql/statements/alter-table-computed-column-definition-transact-sql)
 - [Geïndexeerde weer gaven](/sql/relational-databases/views/create-indexed-views)
 - [Orde](/sql/t-sql/statements/create-sequence-transact-sql)

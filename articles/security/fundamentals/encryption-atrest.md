@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/24/2019
+ms.date: 09/26/2019
 ms.author: barclayn
-ms.openlocfilehash: b506c6f6101e8c5ce71231a8178f70fa5a0914d8
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 3b60a6da1e7961c7709bb0b19e91dc6f15a51a1c
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262810"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71316784"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Azure-gegevens versleuteling-at-rest
 
@@ -178,7 +178,7 @@ Voor het verkrijgen van een sleutel voor gebruik bij het versleutelen of ontsleu
 - De klant heeft volledige verantwoordelijkheid voor het beheer van de levens cyclus van sleutels
 - Extra installatie & configuratie overhead
 
-#### <a name="server-side-encryption-using-service-managed-keys-in-customer-controlled-hardware"></a>Versleuteling aan de server zijde met door service beheerde sleutels in door de klant bestuurde hardware
+#### <a name="server-side-encryption-using-customer-managed-keys-in-customer-controlled-hardware"></a>Versleuteling aan de server zijde met door de klant beheerde sleutels in door de klant bestuurde hardware
 
 Met sommige Azure-Services wordt de host van uw eigen sleutel (HYOK) Key Management model ingeschakeld. Deze beheer modus is handig in scenario's waarin de gegevens in rust moeten worden versleuteld en de sleutels in een eigen opslag plaats buiten de controle van micro soft moeten worden beheerd. In dit model moet de service de sleutel ophalen van een externe site. De prestaties en de beschik baarheid van de garantie worden beïnvloed en de configuratie is ingewik kelder. Omdat de service echter toegang heeft tot de DEK tijdens de versleutelings-en ontsleutelings bewerkingen, zijn de algemene beveiligings garanties van dit model vergelijkbaar met wanneer de sleutels door de klant worden beheerd in Azure Key Vault.  Als gevolg hiervan is dit model niet geschikt voor de meeste organisaties, tenzij ze specifieke vereisten voor sleutel beheer hebben. Als gevolg van deze beperkingen bieden de meeste Azure-Services geen ondersteuning voor versleuteling aan de server zijde met behulp van door de server beheerde sleutels in door de klant bewaakte hardware.
 
@@ -273,7 +273,7 @@ Versleuteling aan client zijde van Azure SQL Database gegevens wordt ondersteund
 | Azure Data Catalog               | Ja                | -                  | -                  |
 | Apache Kafka in azure HDInsight  | Ja                | Alle RSA-lengten.   | -                  |
 | Azure Data Explorer              | Ja                | -                  | -                  |
-| Azure Data Factory               | Ja                | -                  | -                  |
+| Azure Data Factory               | Ja                | Ja                | -                  |
 | Azure Data Lake Store            | Ja                | Ja, RSA 2048-bits  | -                  |
 | **Containers**                   |                    |                    |                    |
 | Azure Kubernetes Service         | Ja                | -                  | -                  |

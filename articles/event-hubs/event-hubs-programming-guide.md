@@ -1,5 +1,5 @@
 ---
-title: Programmeerhandleiding - Azure Event Hubs | Microsoft Docs
+title: .NET-programmeer handleiding-Azure Event Hubs | Microsoft Docs
 description: In dit artikel bevat informatie over het schrijven van code voor Azure Event Hubs met behulp van de Azure .NET SDK.
 services: event-hubs
 documentationcenter: na
@@ -7,16 +7,16 @@ author: ShubhaVijayasarathy
 ms.service: event-hubs
 ms.custom: seodec18
 ms.topic: article
-ms.date: 12/06/2018
+ms.date: 09/25/2019
 ms.author: shvija
-ms.openlocfilehash: 28b5c2db0f347b27beb31d427c7f189d74903dff
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: c2e23c38abbec5fd0e6010bdfc0feca882a6180d
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70913982"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71309816"
 ---
-# <a name="programming-guide-for-azure-event-hubs"></a>Programmeerhandleiding voor Azure Event Hubs
+# <a name="net-programming-guide-for-azure-event-hubs"></a>.NET-programmeer handleiding voor Azure Event Hubs
 Dit artikel worden enkele algemene scenario's bij het schrijven van code met Azure Event Hubs. Er wordt uitgegaan van een basisbegrip van Event Hubs. Zie het [Overzicht van Event Hubs](event-hubs-what-is-event-hubs.md) voor een conceptueel overzicht van Event Hubs.
 
 ## <a name="event-publishers"></a>Gebeurtenisuitgevers

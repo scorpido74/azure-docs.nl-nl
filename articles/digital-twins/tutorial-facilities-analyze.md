@@ -8,12 +8,12 @@ ms.service: digital-twins
 ms.topic: tutorial
 ms.date: 09/23/2019
 ms.author: alinast
-ms.openlocfilehash: d155d3566ef87e8a21cdc3e701892144c613f694
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: db62d2209207a807570e971ef4af5f9b10b06cb8
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71219281"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300068"
 ---
 # <a name="tutorial-visualize-and-analyze-events-from-your-azure-digital-twins-spaces-by-using-time-series-insights"></a>Zelfstudie: Gebeurtenissen uit uw Azure Digital Twins-ruimten visualiseren en analyseren met Time Series Insights
 
@@ -57,10 +57,10 @@ Gebruik de service [Event Hubs](../event-hubs/event-hubs-about.md) om een pijpli
 
 1. Selecteer in de implementatie van de Event Hubs naam ruimte het deel venster **overzicht** en selecteer vervolgens **naar resource**.
 
-    ![Event Hubs-naamruimte na implementatie](./media/tutorial-facilities-analyze/open-event-hub-ns.png)
+    [![Naam ruimte Event Hubs na implementatie](./media/tutorial-facilities-analyze/open-event-hub-ns.png)](./media/tutorial-facilities-analyze/open-event-hub-ns.png#lightbox)
 
 1. Selecteer bovenaan in het deelvenster **Overzicht** van de Event Hubs-naamruimte de knop **Event Hub**.
-    ![Knop Event Hub](./media/tutorial-facilities-analyze/create-event-hub.png)
+    [![Event hub-knop](./media/tutorial-facilities-analyze/create-event-hub.png)](./media/tutorial-facilities-analyze/create-event-hub.png#lightbox)
 
 1. Voer een **naam** in voor de Event Hub en selecteer **Maken**.
 
@@ -68,13 +68,13 @@ Gebruik de service [Event Hubs](../event-hubs/event-hubs-about.md) om een pijpli
 
 1. Selecteer bovenaan de knop **Consumentengroep** en voer een naam in voor de consumentengroep, bijvoorbeeld **tsievents**. Selecteer **Maken**.
 
-    ![Event Hub-consumentengroep](./media/tutorial-facilities-analyze/event-hub-consumer-group.png)
+    [![Event hub-consumenten groep](./media/tutorial-facilities-analyze/event-hub-consumer-group.png)](./media/tutorial-facilities-analyze/event-hub-consumer-group.png#lightbox)
 
    Nadat de consumenten groep is gemaakt, wordt deze weergegeven in de lijst onderaan het deelvenster **Overzicht** van de Event Hub.
 
 1. Open het deelvenster **Beleid voor gedeelde toegang** voor de Event Hub en selecteer de knop **Toevoegen**. Voer **ManageSend** in als de naam van het beleid, controleer of alle selectievakjes zijn ingeschakeld en selecteer **Maken**.
 
-    ![Event Hub-verbindingsreeksen](./media/tutorial-facilities-analyze/event-hub-connection-strings.png)
+    [![Event hub-verbindings reeksen](./media/tutorial-facilities-analyze/event-hub-connection-strings.png)](./media/tutorial-facilities-analyze/event-hub-connection-strings.png#lightbox)
 
 1. Open het beleid ManageSend dat u hebt gemaakt, en kopieer de waarden voor **Verbindingsreeks: primaire sleutel** en **Verbindingsreeks: secundaire sleutel** naar een tijdelijk bestand. U hebt deze waarden in de volgende sectie nodig om een eindpunt te maken voor de Event Hub.
 
@@ -127,7 +127,7 @@ Gebruik de service [Event Hubs](../event-hubs/event-hubs-about.md) om een pijpli
 
    Hiermee worden twee eindpunten gemaakt voor de Event Hub.
 
-   ![Eindpunten voor Event Hubs](./media/tutorial-facilities-analyze/dotnet-create-endpoints.png)
+   [![Eind punten voor Event Hubs](./media/tutorial-facilities-analyze/dotnet-create-endpoints.png)](./media/tutorial-facilities-analyze/dotnet-create-endpoints.png#lightbox)
 
 ## <a name="analyze-with-time-series-insights"></a>Analyseren met Time Series Insights
 
@@ -137,11 +137,11 @@ Gebruik de service [Event Hubs](../event-hubs/event-hubs-about.md) om een pijpli
 
 1. Voer een **naam** in voor het Time Series Insights-exemplaar en selecteer vervolgens uw **abonnement**. Selecteer de **Resourcegroep** die u hebt gebruikt voor het Digital Twins-exemplaar, en uw **Locatie**. Selecteer **Volgende: Knop gebeurtenis** bron of het tabblad **gebeurtenis bron** .
 
-    ![Selecties voor het maken van een Time Series Insights-exemplaar](./media/tutorial-facilities-analyze/create-tsi.png)
+    [![Selecties voor het maken van een Time Series Insights-exemplaar](./media/tutorial-facilities-analyze/create-tsi.png)](./media/tutorial-facilities-analyze/create-tsi.png#lightbox)
 
 1. Voer op het tabblad **gebeurtenis bron** een **naam**in, selecteer **Event hub** als **bron type**en zorg ervoor dat de andere waarden correct zijn geselecteerd. Selecteer **ManageSend** voor de naam van het **toegangs beleid van de Event hub**en selecteer vervolgens de Consumer groep die u hebt gemaakt in de vorige sectie voor de **Event hub-consumenten groep**. Selecteer **Controleren + maken**.
 
-    ![Selecties voor het maken van een gebeurtenisbron](./media/tutorial-facilities-analyze/tsi-event-source.png)
+    [![Selecties voor het maken van een gebeurtenis bron](./media/tutorial-facilities-analyze/tsi-event-source.png)](./media/tutorial-facilities-analyze/tsi-event-source.png#lightbox)
 
 1. Controleer in het deel venster **beoordelen en maken** de gegevens die u hebt ingevoerd en selecteer **maken**.
 
@@ -153,13 +153,13 @@ Gebruik de service [Event Hubs](../event-hubs/event-hubs-about.md) om een pijpli
 
 1. Nadat een aantal gesimuleerde gebeurtenissen is gegenereerd, gaar u terug naar de Time Series Insights-verkenner en selecteert u bovenaan de knop Vernieuwen. Als het goed is, ziet u dat er nu analytische grafieken worden gemaakt voor de gesimuleerde sensorgegevens. 
 
-    ![Grafiek met de Time Series Insights-verkenner](./media/tutorial-facilities-analyze/tsi-explorer.png)
+    [![Grafiek in de Time Series Insights Explorer](./media/tutorial-facilities-analyze/tsi-explorer.png)](./media/tutorial-facilities-analyze/tsi-explorer.png#lightbox)
 
 1. In de Time Series Insights-verkenner kunt u vervolgens grafieken en heatmaps genereren voor verschillende gebeurtenissen en gegevens van de ruimten, sensoren en andere resources. Gebruik de vervolgkeuzelijsten **MEASURE** en **SPLIT BY** aan de linkerkant om uw eigen visualisaties te maken. 
 
    Selecteer bijvoorbeeld **Gebeurtenissen** voor **MEASURE** en **DigitalTwins-SensorHardwareId** voor **SPLIT BY** om een heatmap te genereren voor elke sensor. De heatmap ziet er ongeveer uit als op de volgende afbeelding:
 
-   ![Heatmap in de Time Series Insights-verkenner](./media/tutorial-facilities-analyze/tsi-explorer-heatmap.png)
+   [![Heatmap in de Time Series Insights Explorer](./media/tutorial-facilities-analyze/tsi-explorer-heatmap.png)](./media/tutorial-facilities-analyze/tsi-explorer-heatmap.png#lightbox)
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 

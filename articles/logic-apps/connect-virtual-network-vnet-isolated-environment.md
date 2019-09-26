@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: conceptual
 ms.date: 07/26/2019
-ms.openlocfilehash: 4865a2b3b02a1e7a6db19418122b66aeb79dd332
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: d6cc87947ab861e8de4dbdf754164e195f0f458c
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70099458"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71309322"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>Verbinding maken met virtuele Azure-netwerken van Azure Logic Apps met behulp van een ISE (Integration service Environment)
 
@@ -44,18 +44,19 @@ In dit artikel wordt beschreven hoe u deze taken kunt volt ooien:
 
 * Een Azure-abonnement. Als u nog geen abonnement op Azure hebt, [registreer u dan nu voor een gratis Azure-account](https://azure.microsoft.com/free/).
 
-* Een [virtueel Azure-netwerk](../virtual-network/virtual-networks-overview.md). Als u geen virtueel netwerk hebt, leert u hoe u [een virtueel Azure-netwerk maakt](../virtual-network/quick-create-portal.md).
+* Een [virtueel Azure-netwerk](../virtual-network/virtual-networks-overview.md). Als u geen virtueel netwerk hebt, leert u hoe u [een virtueel Azure-netwerk maakt](../virtual-network/quick-create-portal.md). 
 
   * Het virtuele netwerk moet vier *lege* subnetten hebben voor het maken en implementeren van resources in uw ISE. U kunt deze subnetten vooraf maken, maar u kunt wachten totdat u de ISE maakt waar u subnetten tegelijk kunt maken. Meer informatie over de vereisten voor het [subnet](#create-subnet).
-  
-    > [!NOTE]
-    > Als u [ExpressRoute](../expressroute/expressroute-introduction.md)gebruikt, dat een particuliere verbinding met micro soft-Cloud Services biedt, moet u [een route tabel maken](../virtual-network/manage-route-table.md) die de volgende route bevat en die tabel koppelen aan elk subnet dat wordt gebruikt door uw ISE:
-    > 
-    > **Naam**: <*route naam*><br>
-    > **Adres voorvoegsel**: 0.0.0.0/0<br>
-    > **Volgende hop**: Internet
+
+  * De namen van subnetten moeten beginnen met een alfabetisch teken of een liggend streepje en mogen niet `<`de volgende tekens gebruiken `\\`: `?`, `/` `>`, `%`, `&`,,,. 
 
   * Zorg ervoor dat het virtuele netwerk [deze poorten beschikbaar maakt](#ports) , zodat uw ISE goed werkt en toegankelijk blijft.
+
+  * Als u [ExpressRoute](../expressroute/expressroute-introduction.md)gebruikt, dat een particuliere verbinding met micro soft-Cloud Services biedt, moet u [een route tabel maken](../virtual-network/manage-route-table.md) die de volgende route heeft en die tabel koppelen aan elk subnet dat wordt gebruikt door uw ISE:
+
+    **Naam**: <*route naam*><br>
+    **Adres voorvoegsel**: 0.0.0.0/0<br>
+    **Volgende hop**: Internet
 
 * Als u aangepaste DNS-servers wilt gebruiken voor uw virtuele Azure-netwerk, [stelt u die servers in door de volgende stappen uit te voeren](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md) voordat u uw ISE implementeert in uw virtuele netwerk. Anders moet u, telkens wanneer u de DNS-server wijzigt, uw ISE opnieuw opstarten. Dit is een functie die beschikbaar is in de open bare preview van ISE.
 
@@ -65,7 +66,7 @@ In dit artikel wordt beschreven hoe u deze taken kunt volt ooien:
 
 Wanneer u een ISE met een bestaand virtueel netwerk gebruikt, heeft een veelvoorkomend installatie probleem een of meer geblokkeerde poorten. De connectors die u gebruikt voor het maken van verbindingen tussen uw ISE en het doel systeem, hebben mogelijk ook hun eigen poort vereisten. Als u bijvoorbeeld met de FTP-connector communiceert met een FTP-systeem, moet u ervoor zorgen dat de poort die u op dat FTP-systeem gebruikt, zoals poort 21 voor het verzenden van opdrachten, beschikbaar is.
 
-Als u een nieuw virtueel netwerk en een subnet zonder beperkingen hebt gemaakt, hoeft u geen [netwerk beveiligings groepen (nsg's)](../virtual-network/security-overview.md) in te stellen in uw virtuele netwerk, zodat u verkeer tussen subnets kunt beheren. Voor een bestaand virtueel netwerk kunt u *optioneel* nsg's instellen door [netwerk verkeer te filteren](../virtual-network/tutorial-filter-network-traffic.md)op subnetten. Als u deze route kiest, moet u ervoor zorgen dat uw ISE specifieke poorten opent, zoals beschreven in de volgende tabel, op het virtuele netwerk met de Nsg's. Voor bestaande Nsg's of firewalls in uw virtuele netwerk, moet u er dus voor zorgen dat deze poorten worden geopend. Op die manier blijft uw ISE toegankelijk en werkt deze goed, zodat u geen toegang meer hebt tot uw ISE. Als de vereiste poorten niet beschikbaar zijn, werkt uw ISE niet meer.
+Als u een nieuw virtueel netwerk en een subnet zonder beperkingen hebt gemaakt, hoeft u geen [netwerk beveiligings groepen (nsg's)](../virtual-network/security-overview.md) in te stellen in uw virtuele netwerk, zodat u verkeer tussen subnets kunt beheren. Voor een bestaand virtueel netwerk kunt u *optioneel* nsg's instellen door [netwerk verkeer te filteren op subnetten](../virtual-network/tutorial-filter-network-traffic.md). Als u deze route kiest, moet u ervoor zorgen dat uw ISE specifieke poorten opent, zoals beschreven in de volgende tabel, op het virtuele netwerk met de Nsg's. Voor bestaande Nsg's of firewalls in uw virtuele netwerk, moet u er dus voor zorgen dat deze poorten worden geopend. Op die manier blijft uw ISE toegankelijk en werkt deze goed, zodat u geen toegang meer hebt tot uw ISE. Als de vereiste poorten niet beschikbaar zijn, werkt uw ISE niet meer.
 
 > [!IMPORTANT]
 > Voor interne communicatie binnen uw subnetten vereist ISE dat u alle poorten in die subnetten opent.
@@ -134,13 +135,17 @@ In het zoekvak voert u "Integration service Environment" in als uw filter.
 
    **Subnet maken**
 
-   Voor het maken en implementeren van resources in uw omgeving, heeft uw ISE vier *lege* subnetten nodig die niet worden overgedragen aan een service. U *kunt* deze subnet-adressen niet wijzigen nadat u uw omgeving hebt gemaakt. Elk subnet moet aan de volgende criteria voldoen:
-
-   * Heeft een naam die begint met een alfabet of een onderstrepings teken en heeft niet de volgende tekens `<`: `>`, `%`, `&`, `\\`, `?`,,`/`
+   Voor het maken en implementeren van resources in uw omgeving, heeft uw ISE vier *lege* subnetten nodig die niet worden overgedragen aan een service. U *kunt* deze subnet-adressen niet wijzigen nadat u uw omgeving hebt gemaakt.
+   
+   > [!IMPORTANT]
+   > 
+   > Subnetten moeten beginnen met een letter of een onderstrepings teken (geen getallen). de volgende tekens mogen niet worden `<`gebruikt `>`: `%`, `&`, `\\`, `?`, `/`,,.
+   
+   Daarnaast moet elk subnet aan de volgende vereisten voldoen:
 
    * Maakt gebruik van de [CIDR-notatie (Classless Inter-Domain Routing)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) en een klasse B-adres ruimte.
 
-   * Gebruikt ten minste a `/27` in de adres ruimte, omdat elk subnet *ten minste* 32 adressen moet hebben. Bijvoorbeeld:
+   * Gebruikt ten minste a `/27` in de adres ruimte, omdat elk subnet *ten minste* 32 adressen moet *hebben.* Bijvoorbeeld:
 
      * `10.0.0.0/27`heeft 32 adressen omdat 2<sup>(32-27)</sup> 2<sup>5</sup> of 32 is.
 
@@ -150,7 +155,7 @@ In het zoekvak voert u "Integration service Environment" in als uw filter.
 
      Zie voor meer informatie over het berekenen van adressen [IPv4 CIDR-blokken](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#IPv4_CIDR_blocks).
 
-   * Als u [ExpressRoute](../expressroute/expressroute-introduction.md)gebruikt, moet u [een route tabel maken](../virtual-network/manage-route-table.md) met de volgende route en deze tabel koppelen aan elk subnet dat wordt gebruikt door uw ISE:
+   * Als u [ExpressRoute](../expressroute/expressroute-introduction.md)gebruikt, moet u [een route tabel](../virtual-network/manage-route-table.md) met de volgende route maken en deze tabel koppelen aan elk subnet dat wordt gebruikt door uw ISE:
 
      **Naam**: <*route naam*><br>
      **Adres voorvoegsel**: 0.0.0.0/0<br>

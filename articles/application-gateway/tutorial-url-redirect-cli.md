@@ -8,16 +8,16 @@ ms.topic: tutorial
 ms.date: 7/30/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 8453c236f83c4501587789e96545599f1e976eea
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: b2a06e47eec52d860aecdd2d9b57310cce5aeb27
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68608054"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71315941"
 ---
 # <a name="tutorial-create-an-application-gateway-with-url-path-based-redirection-using-the-azure-cli"></a>Zelfstudie: Een toepassingsgateway maken met een omleiding op basis van een URL-pad met behulp van Azure CLI
 
-U kunt Azure CLI gebruiken om [op een URL-pad gebaseerde routeringsregels](application-gateway-url-route-overview.md) te configureren als u een [toepassingsgateway maakt](application-gateway-introduction.md). In deze zelfstudie maakt u back-endpools met behulp van [schaalsets voor virtuele machines](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md). Vervolgens maakt u URL-routeringsregels waardoor webverkeer wordt omgeleid naar de juiste back-endpool.
+U kunt Azure CLI gebruiken om [op een URL-pad gebaseerde routeringsregels](tutorial-url-route-cli.md) te configureren als u een [toepassingsgateway maakt](application-gateway-introduction.md). In deze zelfstudie maakt u back-endpools met behulp van [schaalsets voor virtuele machines](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md). Vervolgens maakt u URL-routeringsregels waardoor webverkeer wordt omgeleid naar de juiste back-endpool.
 
 In deze zelfstudie leert u het volgende:
 
