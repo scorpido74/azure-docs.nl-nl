@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 08/30/2019
 ms.author: v-erkell
-ms.openlocfilehash: 217f976d53a7be8931be9f8d21b000549a9ed68a
-ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
+ms.openlocfilehash: e1ca6fa4ea1ae4a5bf5996e88d32e1e00416f067
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71180987"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71299979"
 ---
 # <a name="azure-hpc-cache-preview-data-ingest---manual-copy-method"></a>Azure HPC-cache (preview) gegevens opname-hand matige Kopieer methode
 
@@ -23,7 +23,7 @@ Lees voor meer informatie over het verplaatsen van gegevens naar Blob Storage vo
 
 U kunt hand matig een kopie met meerdere threads maken op een client door meer dan één Kopieer opdracht tegelijk op de achtergrond uit te voeren op basis van vooraf gedefinieerde sets van bestanden of paden.
 
-De Linux/Unix ``cp`` -opdracht bevat het ``-p`` argument voor het behouden van de meta gegevens van eigendom en mtime. Het toevoegen van dit argument aan de onderstaande opdrachten is optioneel. (Het toevoegen van het argument verhoogt het aantal systeem aanroepen van de client naar het doel bestandssysteem voor het wijzigen van meta gegevens.)
+De Linux/Unix ``cp`` -opdracht bevat het ``-p`` argument voor het behouden van de meta gegevens van eigendom en mtime. Het toevoegen van dit argument aan de onderstaande opdrachten is optioneel. (Het toevoegen van het argument verhoogt het aantal bestandssysteem aanroepen dat vanaf de client naar het doel bestandssysteem wordt verzonden voor het wijzigen van meta gegevens.)
 
 In dit eenvoudige voor beeld worden twee bestanden parallel gekopieerd:
 
@@ -81,9 +81,9 @@ cp -R /mnt/source/dir1/dir1d /mnt/destination/dir1/ &
 
 ## <a name="when-to-add-mount-points"></a>Wanneer koppel punten toevoegen?
 
-Nadat u voldoende parallelle threads hebt uitgevoerd op een enkel koppelings punt van een bestemmings bestandssysteem, is er een punt waar het toevoegen van meer threads geen verdere door Voer biedt. (De door Voer wordt gemeten in bestanden/seconde of bytes per seconde, afhankelijk van het type gegevens.) Of erger dat er een doorvoer vermindering kan optreden bij over-threading.  
+Nadat u voldoende parallelle threads hebt uitgevoerd op een enkel doel bestandssysteem koppel punt, is er een punt waar het toevoegen van meer threads geen verdere door Voer biedt. (De door Voer wordt gemeten in bestanden/seconde of bytes per seconde, afhankelijk van het type gegevens.) Of erger dat er een doorvoer vermindering kan optreden bij over-threading.  
 
-Als dit het geval is, kunt u koppel punten aan client zijde toevoegen aan andere Azure HPC-cache koppel adressen met behulp van hetzelfde externe pad voor het bestands systeem koppelen:
+Als dit gebeurt, kunt u aan client zijde koppel punten toevoegen aan andere Azure HPC-cache koppel adressen met behulp van hetzelfde externe bestandssysteempad:
 
 ```bash
 10.1.0.100:/nfs on /mnt/sourcetype nfs (rw,vers=3,proto=tcp,addr=10.1.0.100)
@@ -136,7 +136,7 @@ Client4: cp -R /mnt/source/dir3/dir3d /mnt/destination/dir3/ &
 
 ## <a name="create-file-manifests"></a>Bestands manifesten maken
 
-Houd rekening met de volgende aanbevelingen nadat u de bovenstaande benaderingen (meerdere kopieën per doel, meerdere-threads per client, meerdere clients per netwerk bron bestandssysteem) hebt begrepen: Compileer bestands manifesten en gebruik deze vervolgens met Kopieer opdrachten op meerdere clients.
+Houd rekening met de volgende aanbevelingen nadat u de bovenstaande benaderingen (meerdere kopieën per doel, meerdere-threads per client, meerdere clients per netwerk bron bestand systeem) hebt begrepen: Compileer bestands manifesten en gebruik deze vervolgens met Kopieer opdrachten op meerdere clients.
 
 In dit scenario wordt de ``find`` UNIX-opdracht gebruikt voor het maken van manifesten van bestanden of mappen:
 

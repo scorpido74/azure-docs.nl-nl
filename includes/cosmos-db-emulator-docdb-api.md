@@ -16,11 +16,11 @@ ms.workload: ''
 ms.date: 04/13/2018
 ms.author: sngun
 ms.custom: include file
-ms.openlocfilehash: 85fe028e35165ece0bdb143181bb1d8a6d4e1841
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: c071cd289a1304a561a821fc6b5ad86d9bf986af
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "67175787"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71299334"
 ---
-[Probeer Azure Cosmos DB gratis uit](https://azure.microsoft.com/try/cosmosdb/) zonder Azure-abonnement, zonder kosten en zonder verplichtingen. Of u kunt de [Azure Cosmos DB Emulator](https://docs.microsoft.com/azure/cosmos-db/local-emulator) gebruiken met een URI van `https://localhost:8081`. De primaire sleutel wordt gegeven in [Aanvragen verifiëren](../articles/cosmos-db/local-emulator.md#authenticating-requests).
+[Probeer Azure Cosmos DB gratis uit](https://azure.microsoft.com/try/cosmosdb/) zonder Azure-abonnement, zonder kosten en zonder verplichtingen. Of u kunt de [Azure Cosmos DB Emulator](https://docs.microsoft.com/azure/cosmos-db/local-emulator) gebruiken met een URI van `https://localhost:8081`. Zie [verificatie aanvragen](../articles/cosmos-db/local-emulator.md#authenticating-requests)voor de sleutel die moet worden gebruikt met de emulator.

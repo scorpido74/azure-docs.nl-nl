@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-accelerators
 services: iot-accelerators
 manager: timlt
-ms.openlocfilehash: d9dd3ff2f24660404a1ab0440668c4d4da1e7319
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 1a27d748e16f892a748cf18569c13ca3f9ead1dd
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67080517"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71309521"
 ---
 # <a name="what-are-azure-iot-solution-accelerators"></a>Wat zijn Azure IoT-oplossingsversnellers?
 
@@ -38,7 +38,7 @@ Gebruik de [verbetering voor de externe bewakingsoplossing](iot-accelerators-rem
 
 U kunt het dashboard voor externe controle gebruiken om de telemetrie van verbonden apparaten te bekijken, nieuwe apparaten in te richten of de firmware op verbonden apparaten bij te werken:
 
-[![Dashboard van oplossing voor externe controle](./media/about-iot-accelerators/rm-dashboard-inline.png)](./media/about-iot-accelerators/rm-dashboard-expanded.png#lightbox)
+[![Dashboard van externe bewakingsoplossing](./media/about-iot-accelerators/rm-dashboard-inline.png)](./media/about-iot-accelerators/rm-dashboard-expanded.png#lightbox)
 
 ### <a name="connected-factory"></a>Verbonden factory
 
@@ -48,7 +48,7 @@ U kunt de verbonden factory gebruiken om industriële apparaten te controleren e
 
 [![Dashboard van oplossing voor verbonden factory](./media/about-iot-accelerators/cf-dashboard-inline.png)](./media/about-iot-accelerators/cf-dashboard-expanded.png#lightbox)
 
-### <a name="predictive-maintenance"></a>Predictief onderhoud
+### <a name="predictive-maintenance"></a>Voorspeld onderhoud
 
 Gebruik de [Predictive Maintenance-oplossingsversneller](iot-accelerators-predictive-walkthrough.md) om te voorspellen wanneer een extern apparaat naar verwachting defect raakt, zodat u onderhoud kunt plegen voordat het apparaat uitvalt. De oplossingsversneller maakt gebruik van machine learning-algoritmen om fouten op basis van telemetriegegevens van apparaten te voorspellen. Voorbeelden van dergelijke apparaten zijn vliegtuigmotoren en liften.
 
@@ -81,11 +81,11 @@ De oorspronkelijke oplossingsversnellers werden geschreven met behulp van .NET e
 | Oplossingsverbetering   | Architectuur  | Languages     |
 | ---------------------- | ------------- | ------------- |
 | Externe bewaking      | Microservices | [Java](https://github.com/Azure/azure-iot-pcs-remote-monitoring-java) en [.NET](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet) |
-| Predictief onderhoud | MVC           | [.NET](https://github.com/Azure/azure-iot-predictive-maintenance)          |
+| Voorspeld onderhoud | MVC           | [.NET](https://github.com/Azure/azure-iot-predictive-maintenance)          |
 | Verbonden factory      | MVC           | [.NET](https://github.com/Azure/azure-iot-connected-factory)          |
 | Apparaatsimulatie      | Microservices | [.NET](https://github.com/Azure/device-simulation-dotnet)          |
 
-Zie [Inleiding tot de Azure IoT-referentiearchitectuur](iot-accelerators-architecture-overview.md) voor meer informatie over de microservicearchitectuur.
+Zie [Inleiding tot de Azure IoT-referentiearchitectuur](https://docs.microsoft.com/azure/architecture/reference-architectures/iot/) voor meer informatie over de microservicearchitectuur.
 
 ## <a name="deployment-options"></a>Implementatieopties
 
@@ -103,7 +103,7 @@ De kosten voor het uitvoeren van een oplossingsversneller zijn de gecombineerde 
 
 Raadpleeg de quickstarts om een van de oplossingsverbeteringen uit te proberen:
 
-* [Een oplossing voor externe controle uitproberen](quickstart-remote-monitoring-deploy.md)
+* [Een externe bewakingsoplossing uitproberen](quickstart-remote-monitoring-deploy.md)
 * [Een oplossing voor verbonden factory uitproberen](quickstart-connected-factory-deploy.md)
 * [Een oplossing voor predictief onderhoud uitproberen](quickstart-predictive-maintenance-deploy.md)
 * [Een oplossing voor apparaatsimulatie uitproberen](quickstart-device-simulation-deploy.md)

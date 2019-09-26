@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 07/31/2019
 ms.author: danlep
-ms.openlocfilehash: d652c511a3f54fd0b756a95fbe183b4678416a10
-ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
+ms.openlocfilehash: d415bef80ed8c96ff6e5df81ae9281ae681a4879
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70873202"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300188"
 ---
 # <a name="delete-container-images-in-azure-container-registry-using-the-azure-cli"></a>Container installatie kopieën in Azure Container Registry verwijderen met behulp van de Azure CLI
 
@@ -259,9 +259,12 @@ if ($enableDelete) {
 }
 ```
 
+
 ## <a name="automatically-purge-tags-and-manifests-preview"></a>Automatisch tags en manifesten leegmaken (preview)
 
 Als alternatief voor het uitvoeren van scripts van Azure CLI-opdrachten voert u een taak op aanvraag of geplande ACR uit om alle labels te verwijderen die ouder zijn dan een bepaalde duur of die overeenkomen met een opgegeven naam filter. Zie [automatisch installatie kopieën verwijderen uit een Azure container Registry](container-registry-auto-purge.md)voor meer informatie.
+
+Stel eventueel een [Bewaar beleid](container-registry-retention-policy.md) in voor elk REGI ster om niet-gecodeerde manifesten te beheren. Wanneer u een Bewaar beleid inschakelt, worden installatie kopieën in het REGI ster die geen gekoppelde labels hebben en de onderliggende laag gegevens, automatisch verwijderd na een ingestelde periode.
 
 ## <a name="next-steps"></a>Volgende stappen
 

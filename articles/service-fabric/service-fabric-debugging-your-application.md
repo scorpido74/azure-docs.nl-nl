@@ -1,6 +1,6 @@
 ---
 title: Fouten opsporen in uw toepassing in Visual Studio | Microsoft Docs
-description: De betrouwbaarheid en prestaties van uw services verbeteren door te ontwikkelen en ze in Visual Studio-foutopsporing op een lokaal ontwikkelcluster.
+description: Verbeter de betrouw baarheid en prestaties van uw services door deze te ontwikkelen en fouten op te sporen in Visual Studio op een lokaal ontwikkelings cluster.
 services: service-fabric
 documentationcenter: .net
 author: vturecek
@@ -15,136 +15,143 @@ ms.custom: vs-azure
 ms.workload: azure-vs
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: 682059914b5d86f5e670e373a4acf3e4ac6246ba
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b9ab36343dd11bdb5bd7cc1adcf2c8b1b971dab3
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66428214"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300686"
 ---
 # <a name="debug-your-service-fabric-application-by-using-visual-studio"></a>Fouten opsporen in uw Service Fabric-toepassing met behulp van Visual Studio
 > [!div class="op_single_selector"]
-> * [Visual Studio/CSharp](service-fabric-debugging-your-application.md) 
-> * [Eclipse/Java](service-fabric-debugging-your-application-java.md)
+> * [Visual Studio-CSharp](service-fabric-debugging-your-application.md) 
+> * [Eclips/java](service-fabric-debugging-your-application-java.md)
 >
 
 
 ## <a name="debug-a-local-service-fabric-application"></a>Fouten opsporen in een lokale Service Fabric-toepassing
-U kunt tijd en geld besparen door te implementeren en opsporen van fouten in uw Azure Service Fabric-toepassing in een cluster van de ontwikkeling van lokale computer. Visual Studio 2019 of 2015 kan de toepassing implementeren in het lokale cluster en het foutopsporingsprogramma automatisch verbinding te maken met alle exemplaren van uw toepassing. Visual Studio moet worden uitgevoerd als beheerder om het foutopsporingsprogramma verbinding te maken.
+U kunt tijd en geld besparen door uw Azure Service Fabric-toepassing te implementeren en op te sporen in een cluster voor lokale computer ontwikkeling. Visual Studio 2019 of 2015 kan de toepassing implementeren in het lokale cluster en de Debugger automatisch verbinden met alle exemplaren van uw toepassing. Visual Studio moet als beheerder worden uitgevoerd om verbinding te maken met het fout opsporingsprogramma.
 
-1. Een lokaal ontwikkelcluster starten met de volgende stappen in [instellen van uw Service Fabric-ontwikkelomgeving](service-fabric-get-started.md).
-2. Druk op **F5** of klik op **Debug** > **Start Debugging**.
+1. Start een lokaal ontwikkel cluster door de stappen in [uw service Fabric-ontwikkel omgeving](service-fabric-get-started.md)in te stellen.
+2. Druk op **F5** of klik op **fout** > **opsporing starten**.
    
-    ![Foutopsporing in een toepassing starten][startdebugging]
-3. Onderbrekingspunten instellen in uw code en doorloop de toepassing door te klikken op de opdrachten in de **Debug** menu.
+    ![Fout opsporing in een toepassing starten][startdebugging]
+3. Stel onderbrekings punten in uw code in en door loop de toepassing door te klikken op opdrachten in het menu **fout opsporing** .
    
    > [!NOTE]
-   > Visual Studio koppelt aan alle exemplaren van uw toepassing. Terwijl u de code hebt doorlopen, krijgen onderbrekingspunten door meerdere processen, wat resulteert in gelijktijdige sessies bereikt. Probeer de onderbrekingspunten uitschakelen nadat ze zijn bereikt, door middel van elke onderbrekingspunt afhankelijk van de thread-ID of met behulp van diagnostische gebeurtenissen.
+   > Visual Studio wordt gekoppeld aan alle exemplaren van uw toepassing. Terwijl u code stapsgewijs doorloopt, kunnen onderbrekings punten worden bereikt door meerdere processen die in gelijktijdige sessies worden gegenereerd. Probeer de onderbrekings punten uit te scha kelen nadat deze zijn bereikt, door elk onderbrekings punt voor de thread-ID of door diagnostische gebeurtenissen te gebruiken.
    > 
    > 
-4. De **diagnostische gebeurtenissen** venster wordt automatisch geopend zodat u kunt diagnostische gebeurtenissen in realtime bekijken.
+4. Het venster **diagnostische gebeurtenissen** wordt automatisch geopend, zodat u in realtime diagnostische gebeurtenissen kunt weer geven.
    
-    ![Diagnostische gebeurtenissen in realtime weergeven][diagnosticevents]
-5. U kunt ook openen de **diagnostische gebeurtenissen** venster in de Cloud Explorer.  Onder **Service Fabric**, met de rechtermuisknop op een willekeurig knooppunt en kiest u **weergave Streaming traceringen**.
+    ![Diagnostische gebeurtenissen in realtime weer geven][diagnosticevents]
+5. U kunt ook het venster **diagnostische gebeurtenissen** openen in Cloud Explorer.  Klik onder **service Fabric**met de rechter muisknop op een knoop punt en kies **streaming-traceringen weer geven**.
    
-    ![Open het venster diagnostische gebeurtenissen][viewdiagnosticevents]
+    ![Het venster diagnostische gebeurtenissen openen][viewdiagnosticevents]
    
-    Als u filteren van uw traces aan een bepaalde service of toepassing wilt, schakelt u streaming traceringen op die specifieke service of toepassing.
-6. De diagnostische gebeurtenissen kunnen worden weergegeven in de automatisch gegenereerde **ServiceEventSource.cs** -bestand en worden aangeroepen vanuit de toepassingscode.
+    Als u uw traceringen wilt filteren op een bepaalde service of toepassing, schakelt u streaming traceringen in op die specifieke service of toepassing.
+6. De diagnostische gebeurtenissen kunnen worden weer gegeven in het automatisch gegenereerde **ServiceEventSource.cs** -bestand en worden aangeroepen vanuit toepassings code.
    
     ```csharp
     ServiceEventSource.Current.ServiceMessage(this, "My ServiceMessage with a parameter {0}", result.Value.ToString());
     ```
-7. De **diagnostische gebeurtenissen** venster biedt ondersteuning voor filteren, onderbreken, op te halen en gebeurtenissen in realtime.  Het filter is een eenvoudige tekenreeks zoeken in het gebeurtenisbericht, met inbegrip van de inhoud ervan.
+7. Het venster **diagnostische gebeurtenissen** ondersteunt het filteren, onderbreken en inspecteren van gebeurtenissen in realtime.  Het filter is een eenvoudige teken reeks zoekactie van het gebeurtenis bericht, inclusief de inhoud ervan.
    
-    ![Filteren, onderbreken en hervatten of gebeurtenissen in realtime controleren][diagnosticeventsactions]
-8. Foutopsporingsservices is vergelijkbaar met een andere toepassing voor foutopsporing. U zult normaal onderbrekingspunten via Visual Studio instellen voor eenvoudig foutopsporing. Hoewel betrouwbare verzamelingen op meerdere knooppunten repliceren, ze nog steeds als IEnumerable is geïmplementeerd. Deze implementatie betekent dat u de weergave van resultaten in Visual Studio gebruiken kunt terwijl u fouten opsporen in om te zien wat u hebt opgeslagen in. Stel een onderbrekingspunt overal in uw code om dit te doen.
+    ![Gebeurtenissen in realtime filteren, onderbreken en hervatten of controleren][diagnosticeventsactions]
+8. Fout opsporing van Services is vergelijkbaar met het opsporen van fouten in andere toepassingen. Normaal gesp roken stelt u onderbrekings punten in met Visual Studio voor eenvoudige fout opsporing. Hoewel betrouw bare verzamelingen worden gerepliceerd op meerdere knoop punten, implementeren ze nog steeds IEnumerable. Deze implementatie houdt in dat u de resultaten weergave in Visual Studio kunt gebruiken terwijl u fouten opspoort om te zien wat u hebt opgeslagen in. U doet dit door een onderbrekings punt in uw code in te stellen.
    
-    ![Foutopsporing in een toepassing starten][breakpoint]
+    ![Fout opsporing in een toepassing starten][breakpoint]
+
+
+### <a name="running-a-script-as-part-of-debugging"></a>Een script uitvoeren als onderdeel van fout opsporing
+In bepaalde scenario's moet u mogelijk een script uitvoeren als onderdeel van het starten van een foutopsporingssessie (bijvoorbeeld wanneer geen standaard services worden gebruikt).
+
+In Visual Studio kunt u een bestand met de naam **Start-service. ps1** toevoegen in de map **Scripts** van het service Fabric toepassings project (. sfproj). Dit script wordt aangeroepen nadat de toepassing is gemaakt in het lokale cluster.
+
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 
-## <a name="debug-a-remote-service-fabric-application"></a>Fouten opsporen in een externe Service Fabric-toepassing
-Als uw Service Fabric-toepassingen worden uitgevoerd op een Service Fabric-cluster in Azure, kunt u deze toepassingen, rechtstreeks vanuit Visual Studio op afstand fouten opsporen.
+## <a name="debug-a-remote-service-fabric-application"></a>Fouten opsporen in een toepassing voor externe Service Fabric
+Als uw Service Fabric toepassingen worden uitgevoerd op een Service Fabric cluster in azure, kunt u deze toepassingen rechtstreeks vanuit Visual Studio op afstand opsporen.
 
 > [!NOTE]
-> De functie vereist [Service Fabric SDK 2.0](https://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-VS2015) en [Azure SDK voor .NET 2.9](https://azure.microsoft.com/downloads/).    
+> Voor de functie is [service Fabric SDK 2,0](https://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-VS2015) en [Azure sdk voor .net 2,9](https://azure.microsoft.com/downloads/)vereist.    
 > 
 > 
 
 <!-- -->
 > [!WARNING]
-> Foutopsporing op afstand is bedoeld voor scenario's voor ontwikkelen/testen en niet moet worden gebruikt in een productieomgeving, vanwege de impact op de actieve toepassingen.
+> Externe fout opsporing is bedoeld voor ontwikkel-en test scenario's en niet voor gebruik in productie omgevingen, vanwege de invloed op de actieve toepassingen.
 > 
 > 
 
-1. Navigeer naar het cluster in **Cloud Explorer**. Met de rechtermuisknop op en kies **opsporen van fouten inschakelen**
+1. Navigeer naar uw cluster in **Cloud Explorer**. Klik met de rechter muisknop en kies **fout opsporing inschakelen**
    
-    ![Foutopsporing op afstand inschakelen][enableremotedebugging]
+    ![Fout opsporing op afstand inschakelen][enableremotedebugging]
    
-    Deze actie wordt het proces voor het inschakelen van de extensie voor externe foutopsporing op de clusterknooppunten en de vereiste netwerkconfiguraties Vliegende.
-2. Met de rechtermuisknop op het clusterknooppunt in **Cloud Explorer**, en kies **foutopsporingsprogramma koppelen**
+    Met deze actie wordt het proces van het inschakelen van de uitbrei ding voor externe fout opsporing op uw cluster knooppunten en de vereiste netwerk configuraties gestart.
+2. Klik met de rechter muisknop op het cluster knooppunt in **Cloud Explorer**en kies **fout opsporing koppelen**
    
-    ![Debugger koppelen][attachdebugger]
-3. In de **koppelen aan proces** dialoogvenster, kiest u het proces dat u wilt, fouten opsporen en klikt u op **koppelen**
+    ![Fout opsporingsprogramma koppelen][attachdebugger]
+3. Kies in het dialoog venster **aan proces koppelen** het proces dat u wilt opsporen en klik op **koppelen**
    
     ![Proces kiezen][chooseprocess]
    
-    De naam van het proces dat u koppelen wilt aan, gelijk is aan de naam van het assembly-naam van uw service-project.
+    De naam van het proces dat u wilt koppelen, is gelijk aan de naam van de naam van uw service project-assembly.
    
-    Het foutopsporingsprogramma zal worden gekoppeld aan alle knooppunten waarop het proces wordt uitgevoerd.
+    Het fout opsporingsprogramma wordt gekoppeld aan alle knoop punten waarop het proces wordt uitgevoerd.
    
-   * In het geval waar u fouten in een staatloze service opspoort, zijn alle exemplaren van de service op alle knooppunten onderdeel van de sessie voor foutopsporing.
-   * Als u foutopsporing op een stateful service, worden alleen de primaire replica van een partitie actief is en daarom onderschept door het foutopsporingsprogramma. Als de primaire replica wordt verplaatst tijdens de sessie voor foutopsporing, wordt de verwerking van die replica nog steeds deel uitmaken van de sessie voor foutopsporing.
-   * Alleen het afvangen relevante partities of verschillende exemplaren van een bepaalde service, kunt u voorwaardelijke onderbrekingspunten verbreken alleen een specifieke partitie of het exemplaar.
+   * Als u fouten opspoort voor een stateless service, maken alle exemplaren van de service op alle knoop punten deel uit van de foutopsporingssessie.
+   * Als u fouten opspoort voor een stateful service, wordt alleen de primaire replica van een partitie actief en daarom onderschept door de debugger. Als de primaire replica tijdens de foutopsporingssessie wordt verplaatst, blijft de verwerking van die replica deel uitmaken van de foutopsporingssessie.
+   * Als u alleen relevante partities of exemplaren van een bepaalde service wilt inventariseren, kunt u voorwaardelijke onderbrekings punten gebruiken om alleen een bepaalde partitie of een specifiek exemplaar te kraken.
      
-     ![Voorwaardelijke onderbrekingspunt][conditionalbreakpoint]
+     ![Voorwaardelijk onderbrekings punt][conditionalbreakpoint]
      
      > [!NOTE]
-     > We bieden momenteel geen ondersteuning opsporen van fouten in een Service Fabric-cluster met meerdere exemplaren van het uitvoerbare dezelfde service.
+     > Op dit moment wordt er geen ondersteuning geboden voor het opsporen van fouten in een Service Fabric cluster met meerdere exemplaren van dezelfde naam voor het uitvoer bare bestand.
      > 
      > 
-4. Wanneer u klaar bent met het opsporen van fouten in uw toepassing, kunt u de externe foutopsporing uitbreiding uitschakelen met de rechtermuisknop op het cluster in **Cloud Explorer** en kies **foutopsporing uitschakelen**
+4. Wanneer u de fout opsporing van uw toepassing hebt voltooid, kunt u de uitbrei ding voor externe fout opsporing uitschakelen door met de rechter muisknop op het cluster in **Cloud Explorer** te klikken en **fout opsporing uitschakelen** te kiezen
    
-    ![Externe foutopsporing uitschakelen][disableremotedebugging]
+    ![Fout opsporing op afstand uitschakelen][disableremotedebugging]
 
-## <a name="streaming-traces-from-a-remote-cluster-node"></a>Streaming traceringen vanuit een extern cluster-knooppunt
-Ook u kunt naar stream traceringen rechtstreeks vanuit een extern cluster-knooppunt met Visual Studio. Deze functie kunt u naar stream ETW-traceringsgebeurtenissen, die worden geproduceerd op het knooppunt van een Service Fabric-cluster.
+## <a name="streaming-traces-from-a-remote-cluster-node"></a>Streaming traceringen van een extern cluster knooppunt
+U kunt ook traceringen rechtstreeks vanuit een extern cluster knooppunt streamen naar Visual Studio. Met deze functie kunt u ETW-tracerings gebeurtenissen streamen die zijn geproduceerd op een Service Fabric cluster knooppunt.
 
 > [!NOTE]
-> Deze functie moet [Service Fabric SDK 2.0](https://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-VS2015) en [Azure SDK voor .NET 2.9](https://azure.microsoft.com/downloads/).
+> Voor deze functie is [service Fabric SDK 2,0](https://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-VS2015) en [Azure sdk voor .net 2,9](https://azure.microsoft.com/downloads/)vereist.
 > Deze functie biedt alleen ondersteuning voor clusters die worden uitgevoerd in Azure.
 > 
 > 
 
 <!-- -->
 > [!WARNING]
-> Streaming-traceringen is bedoeld voor scenario's voor ontwikkelen/testen en niet moet worden gebruikt in een productieomgeving, vanwege de impact op de actieve toepassingen.
-> In een productiescenario, moet u zijn gebaseerd op het doorsturen van gebeurtenissen met Azure Diagnostics.
+> Streaming-traceringen zijn bedoeld voor ontwikkel-en test scenario's en kunnen niet worden gebruikt in productie omgevingen, vanwege de invloed op de actieve toepassingen.
+> In een productie scenario moet u vertrouwen op het door sturen van gebeurtenissen met behulp van Azure Diagnostics.
 > 
 > 
 
-1. Navigeer naar het cluster in **Cloud Explorer**. Met de rechtermuisknop op en kies **Streaming traceringen inschakelen**
+1. Navigeer naar uw cluster in **Cloud Explorer**. Klik met de rechter muisknop en kies **streaming-traceringen inschakelen**
    
-    ![Externe streaming traceringen inschakelen][enablestreamingtraces]
+    ![Externe streaming-traceringen inschakelen][enablestreamingtraces]
    
-    Deze actie wordt een vliegende start het proces voor het inschakelen van de streaming traceringen-extensie op de clusterknooppunten, evenals de vereiste configuraties.
-2. Vouw de **knooppunten** -element in **Cloud Explorer**, met de rechtermuisknop op het knooppunt dat u wilt streamen traceringen uit en kies **weergave Streaming traceringen**
+    Met deze actie wordt het proces van het inschakelen van de uitbrei ding streaming-traceringen op uw cluster knooppunten en de vereiste netwerk configuraties gestart.
+2. Vouw het element **knoop punten** in **Cloud Explorer**uit, klik met de rechter muisknop op het knoop punt waarnaar u traceringen wilt streamen en kies **streaming-traceringen weer geven**
    
-    ![Externe streaming traceringen weergeven][viewremotestreamingtraces]
+    ![Externe streaming-traceringen weer geven][viewremotestreamingtraces]
    
-    Herhaal stap 2 voor zo veel knooppunten als u wilt zien van traceringen uit. Elke stroom knooppunten worden weergegeven in een specifieke venster.
+    Herhaal stap 2 voor alle knoop punten waarnaar u traceringen wilt zien. Elke knoop punten stroom wordt weer gegeven in een toegewezen venster.
    
-    U bent nu de traceringen gegenereerd door de Service Fabric en uw services zien. Als u filteren van de gebeurtenissen om weer te geven alleen een specifieke toepassing wilt, gewoon Typ de naam van de toepassing in het filter.
+    U kunt nu de traceringen zien die worden verzonden door Service Fabric, en uw services. Als u de gebeurtenissen wilt filteren zodat alleen een bepaalde toepassing wordt weer gegeven, typt u de naam van de toepassing in het filter.
    
-    ![Streaming-traceringen weergeven][viewingstreamingtraces]
-3. Wanneer u klaar bent streaming traceringen van het cluster, kunt u externe streaming traceringen, uitschakelen met de rechtermuisknop op het cluster in **Cloud Explorer** en kies **Streaming traceringen uitschakelen**
+    ![Streaming-traceringen weer geven][viewingstreamingtraces]
+3. Zodra u het streamen van traceringen vanuit uw cluster hebt uitgevoerd, kunt u externe streaming traces uitschakelen door met de rechter muisknop op het cluster in **Cloud Explorer** te klikken en **streaming-traceringen uitschakelen** te kiezen.
    
-    ![Externe streaming traceringen uitschakelen][disablestreamingtraces]
+    ![Traceringen voor externe streaming uitschakelen][disablestreamingtraces]
 
 ## <a name="next-steps"></a>Volgende stappen
-* [Een Service Fabric-service testen](service-fabric-testability-overview.md).
-* [Beheren van uw Service Fabric-toepassingen in Visual Studio](service-fabric-manage-application-in-visual-studio.md).
+* [Een service Fabric-service testen](service-fabric-testability-overview.md).
+* [Uw service Fabric-toepassingen beheren in Visual Studio](service-fabric-manage-application-in-visual-studio.md).
 
 <!--Image references-->
 [startdebugging]: ./media/service-fabric-debugging-your-application/startdebugging.png

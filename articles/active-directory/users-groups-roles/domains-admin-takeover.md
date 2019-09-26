@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 00753ee8d7d128222e9fb773f00a23720813a237
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: 44276c911768f588064245c37a1284adeda8138f
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71146467"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71315729"
 ---
 # <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>Een niet-beheerde Directory als beheerder overnemen in Azure Active Directory
 
@@ -101,7 +101,7 @@ De ondersteunde service plannen zijn onder andere:
 
 Externe beheerder overname wordt niet ondersteund voor een service met service plannen die share point, OneDrive of Skype voor bedrijven bevatten. bijvoorbeeld via een gratis Office-abonnement. 
 
-U kunt eventueel de [optie **ForceTakeover** ](#azure-ad-powershell-cmdlets-for-the-forcetakeover-option) gebruiken om de domein naam uit de niet-beheerde Tenant te verwijderen en deze te verifiëren op de gewenste Tenant. **De optie ForceTakeover gaat niet over gebruikers, of behoudt de toegang tot het abonnement. Met deze optie wordt alleen de domein naam verplaatst.**
+U kunt eventueel de [optie **ForceTakeover** ](#azure-ad-powershell-cmdlets-for-the-forcetakeover-option) gebruiken om de domein naam uit de niet-beheerde Tenant te verwijderen en deze te verifiëren op de gewenste Tenant. 
 
 #### <a name="more-information-about-rms-for-individuals"></a>Meer informatie over RMS voor personen
 

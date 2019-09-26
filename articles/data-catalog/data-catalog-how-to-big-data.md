@@ -1,19 +1,19 @@
 ---
-title: Werken met big data gegevens bronnen in Azure Data Catalog
+title: big data catalogiseren in Azure Data Catalog
 description: Instructies voor het markeren van patronen voor het gebruik van Azure Data Catalog met big data gegevens bronnen, waaronder Azure Blob Storage, Azure Data Lake en Hadoop HDFS.
 author: JasonWHowell
 ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 00b9d6ab6ca8d9b4154e0fba491081597dc08402
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 88dc85003fa2a3e41d8a31055ff8ba9b0fcc7492
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68882524"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300574"
 ---
-# <a name="how-to-work-with-big-data-sources-in-azure-data-catalog"></a>Werken met big data bronnen in Azure Data Catalog
+# <a name="how-to-catalog-big-data-in-azure-data-catalog"></a>big data catalogiseren in Azure Data Catalog
 
 ## <a name="introduction"></a>Inleiding
 

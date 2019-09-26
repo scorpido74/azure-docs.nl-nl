@@ -12,23 +12,24 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 03/18/2019
+ms.date: 09/22/2019
 ms.author: juliako
 ms.reviewer: johndeu
-ms.openlocfilehash: a51774a1db76086440742abd5aedce3fbd26c270
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: d1502b4e0e024a93db41a97589231eef1ed6696f
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "69016093"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71310154"
 ---
 # <a name="indexing-media-files-with-azure-media-indexer"></a>Media bestanden indexeren met Azure Media Indexer
+
+> [!NOTE]
+> De processor van [Azure media indexer](media-services-index-content.md) media wordt op 1 oktober 2020 buiten gebruik gesteld. [Azure Media Services video indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) vervangt deze verouderde media processor. Zie [Migrate from Azure media indexer en Azure media indexer 2 to Azure Media Services video indexer](migrate-indexer-v1-v2.md)voor meer informatie.
+
 Met Azure Media Indexer kunt u inhoud van uw media bestanden doorzoekbaar maken en een transcriptie van volledige tekst genereren voor ondertiteling en tref woorden. U kunt één mediabestand verwerken of meerdere mediabestanden als batch verwerken.  
 
-> [!IMPORTANT]
-> Wanneer u inhoud indexeert, moet u ervoor zorgen dat u media bestanden gebruikt met duidelijke spraak (zonder achtergrond muziek, ruis, effecten of microfoon hiss). Enkele voor beelden van de juiste inhoud zijn: vastgelegde vergaderingen, colleges of presentaties. De volgende inhoud is mogelijk niet geschikt voor indexering: films, TV-Program ma's, alles met gemengde audio en geluids effecten, slecht vastgelegde inhoud met achtergrond geluid (hiss).
-> 
-> 
+Wanneer u inhoud indexeert, moet u ervoor zorgen dat u media bestanden gebruikt met duidelijke spraak (zonder achtergrond muziek, ruis, effecten of microfoon hiss). Enkele voor beelden van de juiste inhoud zijn: vastgelegde vergaderingen, colleges of presentaties. De volgende inhoud is mogelijk niet geschikt voor indexering: films, TV-Program ma's, alles met gemengde audio en geluids effecten, slecht vastgelegde inhoud met achtergrond geluid (hiss).
 
 Een indexerings taak kan de volgende uitvoer genereren:
 
@@ -268,7 +269,7 @@ In het geval van een fout moet Azure Media Indexer een van de volgende fout code
 | 2006 |Te veel invoer bestanden |Er zijn meer dan 10 bestanden in het invoer manifest. |
 | 3000 |Kan Media bestand niet decoderen |Niet-ondersteunde media-codec <br/>of<br/> Beschadigd media bestand <br/>of<br/> Geen audio stroom in invoer media. |
 | 4000 |Batch indexeren is gedeeltelijk voltooid |Een aantal invoer media bestanden kan niet worden geïndexeerd. Zie <a href="#output_files">uitvoer bestanden</a>voor meer informatie. |
-| overig |Interne fouten |Neem contact op met het ondersteunings team. indexer@microsoft.com |
+| andere |Interne fouten |Neem contact op met het ondersteunings team. indexer@microsoft.com |
 
 ## <a id="supported_languages"></a>Ondersteunde talen
 Op dit moment worden de Engelse en Spaanse talen ondersteund. Zie [het blog bericht v 1.2 release](https://azure.microsoft.com/blog/2015/04/13/azure-media-indexer-spanish-v1-2/)voor meer informatie.

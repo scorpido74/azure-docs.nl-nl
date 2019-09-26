@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/22/2019
 ms.author: aschhab
-ms.openlocfilehash: 90fbefb46ea51ca5bb7bf05d556fe29c88543d0b
-ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
+ms.openlocfilehash: 86721907352f19cc7ed69fba1f1a021dcf1ed1b7
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71273672"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71299647"
 ---
 # <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-azure-service-bus-resources"></a>Een beheerde identiteit verifiëren met Azure Active Directory om toegang te krijgen tot Azure Service Bus bronnen
 [Identiteiten voor een Azure-resources beheerd](../active-directory/managed-identities-azure-resources/overview.md) is een cross-Azure-functie die u kunt maken van een veilige identiteit die is gekoppeld aan de implementatie waarmee uw toepassingscode wordt uitgevoerd. Daarna kunt u die identiteit koppelen met access-control-rollen die aangepaste machtigingen voor toegang tot specifieke Azure-resources die uw toepassing nodig heeft.
@@ -57,7 +57,7 @@ In de volgende lijst worden de niveaus beschreven waarmee u toegang tot Service 
 
 - **Wachtrij**, **onderwerp**of **abonnement**: De roltoewijzing is van toepassing op de specifieke Service Bus entiteit. Op dit moment biedt de Azure Portal geen ondersteuning voor het toewijzen van gebruikers/groepen/beheerde identiteiten aan Service Bus RBAC-rollen op abonnements niveau. Hier volgt een voor beeld van het gebruik van de Azure CLI-opdracht: [AZ-Role-Assignment-Create](/cli/azure/role/assignment?view=azure-cli-latest#az-role-assignment-create) om een identiteit toe te wijzen aan een service bus RBAC-rol: 
 
-    ```powershell
+    ```azurecli
     az role assignment create \
         --role $service_bus_role \
         --assignee $assignee_id \

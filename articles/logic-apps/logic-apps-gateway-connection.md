@@ -9,16 +9,18 @@ ms.author: estfan
 ms.reviewer: arthii, LADocs
 ms.topic: article
 ms.date: 09/01/2019
-ms.openlocfilehash: dcb0fe4da968408a261e387c636cc548fa757a09
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: d397adfb6ed2d3aef93bd40d14eb0ad199cdb90c
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71036659"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71309359"
 ---
 # <a name="connect-to-on-premises-data-sources-from-azure-logic-apps"></a>Verbinding maken met on-premises gegevens bronnen vanuit Azure Logic Apps
 
-Om toegang te krijgen tot gegevens bronnen on-premises vanuit uw Logic apps, maakt u een on-premises gegevens gateway resource in de Azure Portal. Uw Logic apps kunnen vervolgens gebruikmaken [van de on-premises connectors](../connectors/apis-list.md#on-premises-connectors). In dit artikel wordt beschreven hoe u uw Azure gateway-resource maakt *nadat* u [de gateway hebt gedownload en geïnstalleerd op een lokale computer](../logic-apps/logic-apps-gateway-install.md). Zie [hoe de gateway werkt](../logic-apps/logic-apps-gateway-install.md#gateway-cloud-service)voor meer informatie over de gateway.
+Om toegang te krijgen tot gegevens bronnen on-premises vanuit uw Logic apps, maakt u een on-premises gegevens gateway resource in de Azure Portal. Uw Logic apps kunnen vervolgens gebruikmaken [van de on-premises connectors](../connectors/apis-list.md#on-premises-connectors). Azure Logic Apps ondersteunt schrijf bewerkingen, met inbegrip van invoeg acties en updates via de gateway. Deze bewerkingen hebben echter [limieten voor de grootte van de nettolading](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem#considerations).
+
+In dit artikel wordt beschreven hoe u uw Azure gateway-resource maakt *nadat* u [de gateway hebt gedownload en geïnstalleerd op een lokale computer](../logic-apps/logic-apps-gateway-install.md). Zie [hoe de gateway werkt](../logic-apps/logic-apps-gateway-install.md#gateway-cloud-service)voor meer informatie over de gateway. 
 
 > [!TIP]
 > Als u verbinding wilt maken met virtuele netwerken van Azure, kunt u in plaats daarvan een [*integratie service omgeving*](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) maken. 

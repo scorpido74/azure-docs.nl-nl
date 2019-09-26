@@ -4,14 +4,14 @@ description: Vereisten voor het gebruik van Azure HPC cache
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 09/06/2019
+ms.date: 09/24/2019
 ms.author: v-erkell
-ms.openlocfilehash: 29dc5256424ea4fe7c3a72624ce8d1b3d9e59f3c
-ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
+ms.openlocfilehash: fab85785ea183736b4012c349af143ef3a8c784a
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71180913"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71299919"
 ---
 # <a name="prerequisites-for-azure-hpc-cache-preview"></a>Vereisten voor de Azure HPC-cache (preview-versie)
 
@@ -26,7 +26,7 @@ Een betaald abonnement wordt aanbevolen.
 
 ## <a name="network-infrastructure"></a>Netwerk infrastructuur
 
-Er moeten twee opties voor het netwerk worden ingesteld voordat u uw cache kunt gebruiken:
+Er moeten twee aan het netwerk gerelateerde vereisten worden ingesteld voordat u uw cache kunt gebruiken:
 
 * Een toegewezen subnet voor het Azure HPC-cache-exemplaar
 * DNS-ondersteuning zodat de cache toegang kan krijgen tot opslag en andere bronnen
@@ -37,13 +37,13 @@ Voor de Azure HPC-cache is een toegewezen subnet met de volgende kwaliteiten ver
 
 * Voor het subnet moeten ten minste 64 IP-adressen beschikbaar zijn.
 * Het subnet kan geen andere Vm's hosten, zelfs voor gerelateerde services zoals client machines.
-* Als u meerdere cache-instanties gebruikt, heeft elk een eigen subnet nodig.
+* Als u meerdere Azure HPC-cache-exemplaren gebruikt, heeft elk een eigen subnet nodig.
 
-De best practice is het maken van een nieuw subnet voor de cache. U kunt een nieuw virtueel netwerk en subnet maken als onderdeel van het maken van de cache.
+De best practice is het maken van een nieuw subnet voor elke cache. U kunt een nieuw virtueel netwerk en subnet maken als onderdeel van het maken van de cache.
 
 ### <a name="dns-access"></a>DNS-toegang
 
-De Azure HPC-cache moet DNS hebben om toegang te krijgen tot bronnen buiten het virtuele netwerk. Afhankelijk van de bronnen die u gebruikt, moet u mogelijk een aangepaste DNS-server instellen en door sturen configureren tussen die server en Azure DNS servers: 
+De cache heeft DNS nodig om toegang te krijgen tot bronnen buiten het virtuele netwerk. Afhankelijk van de bronnen die u gebruikt, moet u mogelijk een aangepaste DNS-server instellen en door sturen configureren tussen die server en Azure DNS servers:
 
 * Als u toegang wilt krijgen tot Azure Blob Storage-eind punten en andere interne resources, hebt u de op Azure gebaseerde DNS-server nodig.
 * Voor toegang tot on-premises opslag moet u een aangepaste DNS-server configureren die uw opslag hostnamen kan omzetten.
@@ -56,14 +56,16 @@ Meer informatie over Azure Virtual Networks en DNS-server configuraties in [naam
 
 Controleer deze aan de machtigingen gerelateerde vereisten voordat u begint met het maken van de cache.
 
-* De Azure HPC-cache moet virtuele netwerk interfaces (Nic's) kunnen maken. De gebruiker die de cache maakt, moet voldoende bevoegdheden hebben in het abonnement om Nic's te maken.
+* Het cache-exemplaar moet virtuele netwerk interfaces (Nic's) kunnen maken. De gebruiker die de cache maakt, moet voldoende bevoegdheden hebben in het abonnement om Nic's te maken.
 <!-- There are several ways to authorize this access; read [Additional prerequisites](media/preview-prereqs.md) to learn more. -->
 
-* Bij gebruik van Blob-opslag moet het Azure HPC-cache-exemplaar toegang hebben tot uw opslag account. U kunt op rollen gebaseerd toegangs beheer (RBAC) gebruiken om de cache toegang te geven tot uw Blob-opslag. Er zijn twee rollen vereist: Inzender voor opslag accounts en Inzender voor opslag-blobs. Volg de instructies in [opslag doelen toevoegen](hpc-cache-add-storage.md#add-the-access-control-roles-to-your-account).
+* Bij gebruik van Blob-opslag moet de Azure HPC-cache worden gemachtigd om toegang te krijgen tot uw opslag account. U kunt op rollen gebaseerd toegangs beheer (RBAC) gebruiken om de cache toegang te geven tot uw Blob-opslag. Er zijn twee rollen vereist: Inzender voor het opslag account en de gegevensfeed voor opslag-blobs. Volg de instructies in [opslag doelen toevoegen](hpc-cache-add-storage.md#add-the-access-control-roles-to-your-account) om de rollen toe te voegen.
 
 ## <a name="storage-infrastructure"></a>Opslag infrastructuur
 
-De cache ondersteunt Azure Blob-containers of NFS-hardware Storage-export. U kunt opslag doelen definiëren wanneer u de cache maakt, maar u kunt ze later ook toevoegen. 
+De cache ondersteunt Azure Blob-containers of NFS-hardware Storage-export. U kunt opslag doelen definiëren wanneer u de cache maakt, maar u kunt later ook opslag ruimte toevoegen.
+
+Elk opslag type heeft specifieke vereisten. 
 
 ### <a name="nfs-storage-requirements"></a>NFS-opslag vereisten
 
@@ -73,7 +75,7 @@ Opslag van NFS-back-end moet een compatibel hardware/software-platform zijn. Nee
 
 ### <a name="blob-storage-requirements"></a>Vereisten voor Blob-opslag
 
-Als u Azure Blob Storage wilt gebruiken met de Azure HPC-cache, hebt u een compatibel opslag account nodig en een lege BLOB-container of een container die is gevuld met gegevens in de Azure HPC-cache, zoals wordt beschreven in [gegevens verplaatsen naar Azure Blob-opslag](hpc-cache-ingest.md).
+Als u Azure Blob Storage wilt gebruiken met uw cache, hebt u een compatibel opslag account nodig en een lege BLOB-container of een container die is gevuld met gegevens in de Azure HPC-cache, zoals wordt beschreven in [gegevens verplaatsen naar Azure Blob-opslag](hpc-cache-ingest.md).
 
 Maak het account en de container voordat u deze probeert toe te voegen als een opslag doel.
 
@@ -85,6 +87,7 @@ Als u een compatibel opslag account wilt maken, gebruikt u deze instellingen:
 * Toegangs niveau (standaard): **hot**
 
 Het is een goed idee om een opslag account te gebruiken dat zich op dezelfde locatie bevinden als de cache.
+<!-- need to clarify location - same region or same resource group or same virtual network? -->
 
 U moet ook de cache toepassing toegang geven tot uw Azure-opslag account. Volg de beschrijving in [opslag doelen toevoegen](hpc-cache-add-storage.md#add-the-access-control-roles-to-your-account) om de toegang tot de rechten van het opslag account in de cache van Access rollen en de gegevensinzender voor opslag-blobs te geven. Als u niet de eigenaar van het opslag account bent, laat u de eigenaar deze stap uitvoeren.
 

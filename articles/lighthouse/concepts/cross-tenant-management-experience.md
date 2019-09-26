@@ -4,15 +4,15 @@ description: Azure delegated Resource Management maakt een cross-Tenant beheer m
 author: JnHs
 ms.service: lighthouse
 ms.author: jenhayes
-ms.date: 07/11/2019
+ms.date: 09/25/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: f6468e62e9969aa87d51e25ed220bf7d4bed989e
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 17a32d50e2e0330218ff51b849cb4f3aeadb3d13
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69971575"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71309656"
 ---
 # <a name="cross-tenant-management-experiences"></a>Beheerervaring in meerdere tenants
 
@@ -88,6 +88,10 @@ Op dit moment ondersteunt de functionaliteit voor cross-Tenant beheer de volgend
   - Zorg ervoor dat servers alleen de toepassingen en processen uitvoeren die ze moeten hebben met adaptieve toepassings besturings elementen
   - Wijzigingen in belang rijke bestanden en register vermeldingen bewaken met FIM (File Integrity Monitoring)
 
+[Azure-Sentinel](https://docs.microsoft.com/azure/sentinel/multiple-tenants-service-providers):
+
+- Azure-Sentinel-resources beheren in de tenants van de klant
+
 [Azure service Health](https://docs.microsoft.com/azure/service-health/):
 
 - Bewaak de status van klant bronnen met Azure Resource Health
@@ -128,5 +132,5 @@ Er zijn ook Api's die specifiek zijn voor het uitvoeren van Azure gedelegeerde r
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Laat uw klanten onboarded resource management ongedaan maken, hetzij met behulp van [Azure Resource Manager sjablonen](../how-to/onboard-customer.md) of door [een aanbieding voor privé-of openbaar beheerde services naar Azure Marketplace te publiceren](../how-to/publish-managed-services-offers.md).
+- Laat uw klanten onboarded resource management ongedaan maken, hetzij met [behulp van Azure Resource Manager sjablonen](../how-to/onboard-customer.md) of door [een aanbieding voor privé-of openbaar beheerde services naar Azure Marketplace te publiceren](../how-to/publish-managed-services-offers.md).
 - [Bekijk en beheer klanten](../how-to/view-manage-customers.md) door naar **mijn klanten** te gaan in de Azure Portal.

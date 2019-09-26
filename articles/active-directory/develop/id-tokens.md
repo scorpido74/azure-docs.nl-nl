@@ -17,12 +17,12 @@ ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms:custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4968d1acbccca9c2c46b4bbb6f0853b82e8d7f71
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: cb279441e8ed0c0110a5b18d32609ed5b01bd7e2
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70074266"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71291044"
 ---
 # <a name="microsoft-identity-platform-id-tokens"></a>Tokens van micro soft Identity platform ID
 
@@ -80,7 +80,7 @@ In deze lijst worden de claims weer gegeven die standaard in de meeste id_tokens
 |`email` | Tekenreeks | De `email` claim is standaard aanwezig voor gast accounts met een e-mail adres.  Uw app kan de e-mail claim voor beheerde gebruikers (die van dezelfde Tenant als de resource) aanvragen met `email` behulp van de [optionele claim](active-directory-optional-claims.md).  Op het v 2.0-eind punt kan uw app ook aanvragen `email` voor het OpenID Connect-verbindings bereik. u hoeft niet zowel de optionele claim als de scope op te vragen om de claim op te halen.  De e-mail claim ondersteunt alleen adresseer bare e-mail van de profiel gegevens van de gebruiker. |
 |`name` | Tekenreeks | De `name` claim levert een lees bare waarde die het onderwerp van het token aanduidt. De waarde is niet gegarandeerd uniek, is onveranderbaar en is ontworpen om alleen te worden gebruikt voor weergave doeleinden. Het `profile` bereik is vereist om deze claim te ontvangen. |
 |`nonce`| Tekenreeks | De nonce komt overeen met de para meter die is opgenomen in de oorspronkelijke/authorize-aanvraag voor de IDP. Als deze niet overeenkomt, moet uw toepassing het token afwijzen. |
-|`oid` | Teken reeks, een GUID | De onveranderbare id voor een object in het micro soft-identiteits systeem, in dit geval een gebruikers account. Met deze id wordt de gebruiker op unieke wijze in verschillende toepassingen geïdentificeerd: twee verschillende toepassingen die in dezelfde gebruiker worden ondertekend, ontvangen `oid` dezelfde waarde in de claim. De Microsoft Graph retourneert deze id als de `id` eigenschap voor een bepaald gebruikers account. Omdat meerdere apps `profile` toestaangebruikerstecorreleren,ishetbereikvereistomdeze`oid` claim te ontvangen. Houd er rekening mee dat als één gebruiker bestaat in meerdere tenants, de gebruiker een andere object-ID in elke Tenant bevat. deze worden beschouwd als verschillende accounts, zelfs als de gebruiker zich aanmeldt bij elke account met dezelfde referenties. |
+|`oid` | Teken reeks, een GUID | De onveranderbare id voor een object in het micro soft-identiteits systeem, in dit geval een gebruikers account. Met deze id wordt de gebruiker op unieke wijze in verschillende toepassingen geïdentificeerd: twee verschillende toepassingen die in dezelfde gebruiker worden ondertekend, ontvangen `oid` dezelfde waarde in de claim. De Microsoft Graph retourneert deze id als de `id` eigenschap voor een bepaald gebruikers account. Omdat meerdere apps `profile` toestaangebruikerstecorreleren,ishetbereikvereistomdeze`oid` claim te ontvangen. Houd er rekening mee dat als één gebruiker bestaat in meerdere tenants, de gebruiker een andere object-ID in elke Tenant bevat. deze worden beschouwd als verschillende accounts, zelfs als de gebruiker zich aanmeldt bij elke account met dezelfde referenties. De `oid` claim is een GUID en kan niet opnieuw worden gebruikt. |
 |`roles`| matrix van tekenreeksen | De set met rollen die zijn toegewezen aan de gebruiker die zich aanmeldt. |
 |`rh` | Dekkende teken reeks |Een interne claim die door Azure wordt gebruikt om tokens opnieuw te valideren. Moet worden genegeerd. |
 |`sub` | Teken reeks, een GUID | De principal over welke het token informatie bedient, zoals de gebruiker van een app. Deze waarde is onveranderbaar en kan niet opnieuw worden toegewezen of opnieuw worden gebruikt. Het onderwerp is een Pairwise id en is uniek voor een bepaalde toepassings-ID. Als één gebruiker zich bij twee verschillende apps aanmeldt met twee verschillende client-Id's, ontvangen deze apps twee verschillende waarden voor de claim van de certificaat houder. Dit kan al dan niet gewenst zijn, afhankelijk van uw architectuur en privacy-vereisten. |

@@ -10,12 +10,12 @@ manager: carmonm
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 09/20/2019
-ms.openlocfilehash: 1b0a7473f1cdfb6aa3533b261979da7c18605a16
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: 9271a659e18ab969e801fd8974b05984e11e783c
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71179588"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71309396"
 ---
 # <a name="perform-data-operations-in-azure-logic-apps"></a>Gegevens bewerkingen uitvoeren in Azure Logic Apps
 
@@ -175,55 +175,93 @@ Als u liever met de code weergave-editor werkt, kunt u het voor beeld voor het *
 
 ### <a name="customize-table-format"></a>Tabel indeling aanpassen
 
-De eigenschap **Columns** wordt standaard ingesteld om automatisch de tabel kolommen te maken op basis van de matrix items. 
-
-Voer de volgende stappen uit om aangepaste kopteksten en waarden op te geven:
+De eigenschap **Columns** wordt standaard ingesteld om automatisch de tabel kolommen te maken op basis van de matrix items. Voer de volgende stappen uit om aangepaste kopteksten en waarden op te geven:
 
 1. Open de lijst met **kolommen** en selecteer **aangepast**.
 
 1. Geef in de eigenschap **header** de aangepaste koptekst op die u in plaats daarvan wilt gebruiken.
 
-1. Geef in de **sleutel** eigenschap de aangepaste waarde op die u wilt gebruiken.
+1. Geef in de eigenschap **waarde** de aangepaste waarde op die u wilt gebruiken.
 
-Als u wilt verwijzen naar en bewerken van de waarden uit de matrix, `@item()` kunt u de functie gebruiken in de JSON-definitie van de actie **CSV-tabel maken** .
+Als u waarden uit de matrix wilt retour neren, kunt u de [ `item()` functie](../logic-apps/workflow-definition-language-functions-reference.md#item) gebruiken met de actie **CSV-tabel maken** . In een `For_each` lus kunt u de [ `items()` functie](../logic-apps/workflow-definition-language-functions-reference.md#items)gebruiken.
 
-1. Selecteer de **code weergave**op de werk balk van de ontwerp functie. 
-
-1. Bewerk de `inputs` sectie actie in de code-editor om de tabel uitvoer op de gewenste manier aan te passen.
-
-In dit voor beeld worden alleen de kolom waarden en niet de kopteksten van de `columns` matrix opgehaald door de eigenschap in te stellen op een lege waarde en de `header` verwijzing naar elke `value` eigenschap te verwijderen:
-
-```json
-"Create_CSV_table": {
-   "inputs": {
-      "columns": [
-         { 
-            "header": "",
-            "value": "@item()?['Description']"
-         },
-         { 
-            "header": "",
-            "value": "@item()?['Product_ID']"
-         }
-      ],
-      "format": "CSV",
-      "from": "@variables('myJSONArray')"
-   }
-}
-```
-
-Dit is het resultaat dat in dit voor beeld wordt geretourneerd:
+Stel dat u bijvoorbeeld tabel kolommen wilt met alleen de eigenschaps waarden en niet de namen van eigenschappen uit een matrix. Als u alleen deze waarden wilt retour neren, volgt u deze stappen voor het werken in de ontwerp weergave of in de code weergave. Dit is het resultaat dat in dit voor beeld wordt geretourneerd:
 
 ```text
-Results from Create CSV table action:
-
 Apples,1
 Oranges,2
 ```
 
-In de ontwerp functie wordt de actie **CSV-tabel maken** nu op de volgende manier weer gegeven:
+#### <a name="work-in-designer-view"></a>Werken in de ontwerp weergave
 
-!["CSV-tabel maken zonder kolom koppen](./media/logic-apps-perform-data-operations/create-csv-table-no-column-headers.png)
+In de actie moet u de kolom **koptekst** leeg laten. Op elke rij in de kolom **waarde** de verwijzing van elke matrix eigenschap die u wilt. Elke rij onder **waarde** retourneert alle waarden voor de opgegeven matrix eigenschap en wordt een kolom in de tabel.
+
+1. Klik onder **waarde**op elke gewenste rij, in het invoervak zodat de lijst met dynamische inhoud wordt weer gegeven.
+
+1. Selecteer **expressie**in de lijst met dynamische inhoud.
+
+1. Voer in de expressie-Editor deze expressie in die de waarde van de eigenschap matrix opgeeft en selecteer **OK**.
+
+   `item()?['<array-property-name>']`
+
+   Bijvoorbeeld:
+
+   * `item()?['Description']`
+   * `item()?['Product_ID']`
+
+   ![Expressie voor de verwijzings eigenschap](./media/logic-apps-perform-data-operations/csv-table-expression.png)
+
+1. Herhaal de vorige stappen voor elke matrix eigenschap die u wilt. Wanneer u klaar bent, ziet uw actie eruit als in dit voor beeld:
+
+   ![Voltooide expressies](./media/logic-apps-perform-data-operations/finished-csv-expression.png)
+
+1. Als u expressies in meer beschrijvende versies wilt omzetten, schakelt u over naar de code weergave en weer gave van de ontwerp functie en opent u de samengevouwen actie opnieuw:
+
+   De actie **CSV-tabel maken** ziet er nu uit als in dit voor beeld:
+
+   ![De actie CSV-tabel maken met opgeloste expressies en zonder kopteksten](./media/logic-apps-perform-data-operations/resolved-csv-expression.png)
+
+#### <a name="work-in-code-view"></a>Werken in de code weergave
+
+Stel in de JSON-definitie van de actie `columns` binnen de matrix de `header` eigenschap in op een lege teken reeks. Voor elke `value` eigenschap de verwijzing van elke matrix eigenschap die u wilt.
+
+1. Selecteer de **code weergave**op de werk balk van de ontwerp functie.
+
+1. Voeg in de code-editor in de matrix `columns` van de actie de eigenschap `header` Empty en deze `value` expressie toe voor elke kolom met matrix waarden die u wilt:
+
+   ```json
+   {
+      "header": "",
+      "value": "@item()?['<array-property-name>']"
+   }
+   ```
+
+   Bijvoorbeeld:
+
+   ```json
+   "Create_CSV_table": {
+      "inputs": {
+         "columns": [
+            { 
+               "header": "",
+               "value": "@item()?['Description']"
+            },
+            { 
+               "header": "",
+               "value": "@item()?['Product_ID']"
+            }
+         ],
+         "format": "CSV",
+         "from": "@variables('myJSONArray')"
+      }
+   }
+   ```
+
+1. Ga terug naar de ontwerp weergave en open de samengevouwen actie opnieuw.
+
+   De actie **CSV-tabel maken** wordt nu weer gegeven als in dit voor beeld en de expressies zijn omgezet in meer beschrijvende versies:
+
+   ![De actie CSV-tabel maken met opgeloste expressies en zonder kopteksten](./media/logic-apps-perform-data-operations/resolved-csv-expression.png)
 
 Zie de [tabel actie](../logic-apps/logic-apps-workflow-actions-triggers.md#table-action)voor meer informatie over deze actie in de onderliggende werk stroom definitie.
 
@@ -288,55 +326,93 @@ Als u liever met de code weergave-editor werkt, kunt u het voor beeld voor het m
 
 ### <a name="customize-table-format"></a>Tabel indeling aanpassen
 
-De eigenschap **Columns** wordt standaard ingesteld om automatisch de tabel kolommen te maken op basis van de matrix items. 
-
-Voer de volgende stappen uit om aangepaste kopteksten en waarden op te geven:
+De eigenschap **Columns** wordt standaard ingesteld om automatisch de tabel kolommen te maken op basis van de matrix items. Voer de volgende stappen uit om aangepaste kopteksten en waarden op te geven:
 
 1. Open de lijst met **kolommen** en selecteer **aangepast**.
 
 1. Geef in de eigenschap **header** de aangepaste koptekst op die u in plaats daarvan wilt gebruiken.
 
-1. Geef in de **sleutel** eigenschap de aangepaste waarde op die u wilt gebruiken.
+1. Geef in de eigenschap **waarde** de aangepaste waarde op die u wilt gebruiken.
 
-Als u wilt verwijzen naar en bewerken van de waarden uit de matrix, `@item()` kunt u de functie gebruiken in de JSON-definitie van de actie **HTML-tabel maken** .
+Als u waarden uit de matrix wilt retour neren, kunt u de [ `item()` functie](../logic-apps/workflow-definition-language-functions-reference.md#item) gebruiken met de actie **HTML-tabel maken** . In een `For_each` lus kunt u de [ `items()` functie](../logic-apps/workflow-definition-language-functions-reference.md#items)gebruiken.
 
-1. Selecteer de **code weergave**op de werk balk van de ontwerp functie. 
-
-1. Bewerk de `inputs` sectie actie in de code-editor om de tabel uitvoer op de gewenste manier aan te passen.
-
-In dit voor beeld worden alleen de kolom waarden en niet de kopteksten van de `columns` matrix opgehaald door de eigenschap in te stellen op een lege waarde en de `header` verwijzing naar elke `value` eigenschap te verwijderen:
-
-```json
-"Create_HTML_table": {
-   "inputs": {
-      "columns": [
-         { 
-            "header": "",
-            "value": "@item()?['Description']"
-         },
-         { 
-            "header": "",
-            "value": "@item()?['Product_ID']"
-         }
-      ],
-      "format": "HTML",
-      "from": "@variables('myJSONArray')"
-   }
-}
-```
-
-Dit is het resultaat dat in dit voor beeld wordt geretourneerd:
+Stel dat u bijvoorbeeld tabel kolommen wilt met alleen de eigenschaps waarden en niet de namen van eigenschappen uit een matrix. Als u alleen deze waarden wilt retour neren, volgt u deze stappen voor het werken in de ontwerp weergave of in de code weergave. Dit is het resultaat dat in dit voor beeld wordt geretourneerd:
 
 ```text
-Results from Create HTML table action:
-
-Apples    1
-Oranges   2
+Apples,1
+Oranges,2
 ```
 
-In de ontwerp functie wordt de actie **HTML-tabel maken** nu op de volgende manier weer gegeven:
+#### <a name="work-in-designer-view"></a>Werken in de ontwerp weergave
 
-![' HTML-tabel maken zonder kolom koppen](./media/logic-apps-perform-data-operations/create-html-table-no-column-headers.png)
+In de actie moet u de kolom **koptekst** leeg laten. Op elke rij in de kolom **waarde** de verwijzing van elke matrix eigenschap die u wilt. Elke rij onder **waarde** retourneert alle waarden voor de opgegeven eigenschap en wordt een kolom in de tabel.
+
+1. Klik onder **waarde**op elke gewenste rij, in het invoervak zodat de lijst met dynamische inhoud wordt weer gegeven.
+
+1. Selecteer **expressie**in de lijst met dynamische inhoud.
+
+1. Voer in de expressie-Editor deze expressie in die de waarde van de eigenschap matrix opgeeft en selecteer **OK**.
+
+   `item()?['<array-property-name>']`
+
+   Bijvoorbeeld:
+
+   * `item()?['Description']`
+   * `item()?['Product_ID']`
+
+   ![Expressie voor de verwijzings eigenschap](./media/logic-apps-perform-data-operations/html-table-expression.png)
+
+1. Herhaal de vorige stappen voor elke matrix eigenschap die u wilt. Wanneer u klaar bent, ziet uw actie eruit als in dit voor beeld:
+
+   ![Voltooide expressies](./media/logic-apps-perform-data-operations/finished-html-expression.png)
+
+1. Als u expressies in meer beschrijvende versies wilt omzetten, schakelt u over naar de code weergave en weer gave van de ontwerp functie en opent u de samengevouwen actie opnieuw:
+
+   De actie **HTML-tabel maken** ziet er nu uit als in dit voor beeld:
+
+   ![Actie ' HTML-tabel maken ' met opgeloste expressies en geen kopteksten](./media/logic-apps-perform-data-operations/resolved-html-expression.png)
+
+#### <a name="work-in-code-view"></a>Werken in de code weergave
+
+Stel in de JSON-definitie van de actie `columns` binnen de matrix de `header` eigenschap in op een lege teken reeks. Voor elke `value` eigenschap de verwijzing van elke matrix eigenschap die u wilt.
+
+1. Selecteer de **code weergave**op de werk balk van de ontwerp functie.
+
+1. Voeg in de code-editor in de matrix `columns` van de actie de eigenschap `header` Empty en deze `value` expressie toe voor elke kolom met matrix waarden die u wilt:
+
+   ```json
+   {
+      "header": "",
+      "value": "@item()?['<array-property-name>']"
+   }
+   ```
+
+   Bijvoorbeeld:
+
+   ```json
+   "Create_HTML_table": {
+      "inputs": {
+         "columns": [
+            { 
+               "header": "",
+               "value": "@item()?['Description']"
+            },
+            { 
+               "header": "",
+               "value": "@item()?['Product_ID']"
+            }
+         ],
+         "format": "HTML",
+         "from": "@variables('myJSONArray')"
+      }
+   }
+   ```
+
+1. Ga terug naar de ontwerp weergave en open de samengevouwen actie opnieuw.
+
+   De actie **HTML-tabel maken** wordt nu weer gegeven als in dit voor beeld en de expressies zijn omgezet in meer beschrijvende versies:
+
+   ![Actie ' HTML-tabel maken ' met opgeloste expressies en geen kopteksten](./media/logic-apps-perform-data-operations/resolved-html-expression.png)
 
 Zie de [tabel actie](../logic-apps/logic-apps-workflow-actions-triggers.md#table-action)voor meer informatie over deze actie in de onderliggende werk stroom definitie.
 

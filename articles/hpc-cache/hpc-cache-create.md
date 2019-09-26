@@ -4,14 +4,14 @@ description: Een Azure HPC-cache-exemplaar maken
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: tutorial
-ms.date: 09/06/2019
+ms.date: 09/24/2019
 ms.author: v-erkell
-ms.openlocfilehash: 1cc77b24c96514f40c86115f7d611076facd406b
-ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
+ms.openlocfilehash: a0590c14032595bea685c69962ef27dca14d1d69
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71181036"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300022"
 ---
 # <a name="create-an-azure-hpc-cache-preview"></a>Een HPC-cache van Azure maken (preview)
 
@@ -23,18 +23,20 @@ Gebruik de Azure Portal om uw cache te maken.
 
 ![scherm afbeelding van de pagina project details in Azure Portal](media/hpc-cache-create-basics.png)
 
-Selecteer in **Project Details**het abonnement en de resource groep die als host moet fungeren voor de Azure HPC-cache. Zorg ervoor dat het abonnement wordt weer gegeven in de lijst met [toegangs voorbeelden](hpc-cache-prereqs.md#azure-subscription) .
+Selecteer in **Project Details**het abonnement en de resource groep die als host moet fungeren voor de cache. Zorg ervoor dat het abonnement wordt weer gegeven in de lijst met [toegangs voorbeelden](hpc-cache-prereqs.md#azure-subscription) .
 
 Stel in **service Details**de naam van de cache en de andere kenmerken in:
 
 * Locatie: Selecteer een van de [ondersteunde regio's](hpc-cache-overview.md#region-availability).
 * Virtueel netwerk: u kunt een bestaande selecteren of een nieuw virtueel netwerk maken.
-* Subnet: Kies of maak een subnet met ten minste 64 IP-adressen (/24) dat alleen wordt gebruikt voor de Azure HPC-cache.
+* Subnet: Kies of maak een subnet met ten minste 64 IP-adressen (/24) die alleen worden gebruikt voor deze Azure HPC-cache-instantie.
 
 ## <a name="set-cache-capacity"></a>Cache capaciteit instellen
 <!-- referenced from GUI - update aka.ms link if you change this header text -->
 
-Op de pagina **cache** moet u de capaciteit van uw Azure HPC-cache instellen. Met deze waarde wordt bepaald hoeveel gegevens uw cache kan bevatten en hoe snel deze client aanvragen kunnen worden verwerkt. Na de open bare preview-periode is de capaciteit ook van invloed op de kosten van de cache.
+Op de pagina **cache** moet u de capaciteit van uw cache instellen. Met deze waarde wordt bepaald hoeveel gegevens uw cache kan bevatten en hoe snel deze client aanvragen kunnen worden verwerkt. 
+
+Na de open bare preview-periode is de capaciteit ook van invloed op de kosten van de cache.
 
 De cache capaciteit wordt gemeten in i/o-bewerkingen per seconde (IOPS). Kies de capaciteit door deze twee waarden in te stellen:
 
@@ -43,13 +45,13 @@ De cache capaciteit wordt gemeten in i/o-bewerkingen per seconde (IOPS). Kies de
 
 Kies een van de beschik bare doorvoer waarden en cache opslag grootten. De capaciteit van IOPS wordt berekend en weer gegeven onder de waarde-selectors.
 
-Houd er wel voor dat de werkelijke gegevens overdrachts snelheid afhankelijk is van de werk belasting, de netwerk snelheid en het type opslag doelen. Als een bestand zich niet in de cache bevindt of als verouderd is gemarkeerd, wordt door de service een bepaalde door Voer gebruikt voor het ophalen van de back-end-opslag. De waarde die u kiest, stelt de maximale door Voer voor de volledige cache in en niet alle voor client aanvragen.
+Houd er wel voor dat de werkelijke gegevens overdrachts snelheid afhankelijk is van de werk belasting, de netwerk snelheid en het type opslag doelen. De waarde die u kiest, stelt de maximale door Voer voor de volledige cache in en niet alle voor client aanvragen. Als een client bijvoorbeeld een bestand aanvraagt dat niet al in de cache is opgeslagen, of als het bestand is gemarkeerd als verouderd, gebruikt de cache een deel van de door Voer om het op te halen van back-end-opslag.
 
-Voor cache opslag beheert Azure HPC cache welke bestanden in de cache worden opgeslagen en vooraf worden geladen om de frequentie van de cache treffers te maximaliseren. De cache-inhoud wordt voortdurend beoordeeld en bestanden worden verplaatst naar lange termijn opslag wanneer ze minder vaak worden gebruikt. Kies een cache opslag grootte die kan worden ingesteld op de actieve set met werk bestanden, met extra ruimte voor meta gegevens en andere overhead.
+Met Azure HPC cache kunt u beheren welke bestanden in de cache worden opgeslagen en vooraf worden geladen om het aantal cache treffers te maximaliseren. De cache-inhoud wordt voortdurend beoordeeld en bestanden worden verplaatst naar lange termijn opslag wanneer ze minder vaak worden gebruikt. Kies een cache opslag grootte die kan worden ingesteld op de actieve set met werk bestanden, met extra ruimte voor meta gegevens en andere overhead.
 
 ![scherm afbeelding van de pagina cache grootte](media/hpc-cache-create-iops.png)
 
-## <a name="add-storage-targets"></a>Opslag doelen toevoegen
+## <a name="add-storage-targets"></a>Opslagdoelen toevoegen
 
 Opslag doelen zijn de back-end-lange termijn opslag voor de inhoud van uw cache.
 
@@ -63,7 +65,7 @@ U kunt Maxi maal tien verschillende opslag doelen definiëren.
 
 Stapsgewijze instructies voor het toevoegen van een opslag doel zijn opgenomen in [opslag doelen toevoegen](hpc-cache-add-storage.md). De procedure wijkt af van Blob Storage of voor NFS-exports.
 
-Hier volgen enkele tips: 
+Hier volgen enkele tips:
 
 * Voor beide typen opslag moet u opgeven hoe het back-end-opslag systeem (een NFS-adres of een BLOB-container naam) en het pad naar de client gerichte naam ruimte worden gezocht.
 
@@ -73,7 +75,7 @@ Hier volgen enkele tips:
 
 ## <a name="add-resource-tags-optional"></a>Resource Tags toevoegen (optioneel)
 
-Op de pagina **Tags** kunt u [resource Tags](https://go.microsoft.com/fwlink/?linkid=873112) toevoegen aan uw Azure HPC-cache. 
+Op de pagina **Tags** kunt u [resource Tags](https://go.microsoft.com/fwlink/?linkid=873112) toevoegen aan uw Azure HPC-cache-exemplaar.
 
 ## <a name="finish-creating-the-cache"></a>Het maken van de cache volt ooien
 

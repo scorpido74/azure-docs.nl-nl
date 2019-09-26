@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/20/2019
-ms.openlocfilehash: 7f97348999f2cab6509afeb44bc704d5109ee0f7
-ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
+ms.openlocfilehash: f50702688b9a261ed98c2eb3a5892d1bdbe8d11b
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71181108"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71308090"
 ---
 # <a name="information-about-using-hdinsight-on-linux"></a>Informatie over het gebruik van HDInsight in Linux
 
@@ -88,7 +88,7 @@ Zie voor meer informatie de [poorten die worden gebruikt door Apache Hadoop Serv
 
 Hadoop-gerelateerde bestanden kunnen worden gevonden op de cluster knooppunten op `/usr/hdp`. Deze map bevat de volgende submappen:
 
-* **2.6.5.3006-29**: De mapnaam is de versie van het Hortonworks-gegevens platform dat wordt gebruikt door HDInsight. Het nummer op uw cluster kan afwijken van het aantal dat hier wordt vermeld.
+* **2.6.5.3006-29**: De mapnaam is de versie van het Hadoop-platform dat wordt gebruikt door HDInsight. Het nummer op uw cluster kan afwijken van het aantal dat hier wordt vermeld.
 * **huidige**: Deze map bevat koppelingen naar submappen onder de Directory **2.6.5.3006-29** . Deze map bestaat, zodat u het versie nummer niet hoeft te onthouden.
 
 Voor beelden van gegevens-en JAR-bestanden vindt u `/example` op `/HdiSamples`Hadoop Distributed File System op en.

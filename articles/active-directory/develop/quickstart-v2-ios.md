@@ -17,12 +17,12 @@ ms.author: twhitney
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ce22b7e873cff57e4bf65bd706217e3d4635b8e6
-ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
+ms.openlocfilehash: 1b8637bb1a1ba397750bd04c88c6535fa3d1caa0
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71268478"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71309641"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-or-macos-app"></a>Quickstart: Gebruikers aanmelden en de Microsoft Graph-API aanroepen vanuit een iOS-of macOS-app
 
@@ -196,12 +196,9 @@ Uw app moet ook het volgende hebben in uw `AppDelegate`. Hiermee kan de MSAL SDK
 
  ```swift
  func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-         guard let sourceApplication = options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String else {
-             return false
-         }
-         
-         return MSALPublicClientApplication.handleMSALResponse(url, sourceApplication: sourceApplication)
-     }
+        
+        return MSALPublicClientApplication.handleMSALResponse(url, sourceApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String)
+    }
 
  ```
 

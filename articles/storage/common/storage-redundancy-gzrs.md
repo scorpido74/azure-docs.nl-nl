@@ -8,12 +8,12 @@ ms.date: 08/13/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 9019e6f72944823d7c256fa5f6b99b0aca84c845
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 321866279e076bfa77d1892e64deaf4b16c08366
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70036326"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300653"
 ---
 # <a name="build-highly-available-azure-storage-applications-with-geo-zone-redundant-storage-gzrs-preview"></a>Bouw Maxi maal beschik bare Azure Storage toepassingen met geo-zone-redundante opslag (GZRS) (preview)
 
@@ -29,11 +29,15 @@ Alleen voor algemeen gebruik v2-opslag accounts bieden ondersteuning voor GZRS e
 
 GZRS en RA-GZRS zijn momenteel beschikbaar als preview-versie in de volgende regio's:
 
+- Europa - noord
+- Europa - west
 - US - oost
+- US - oost 2
+- US - centraal
 
 Micro soft blijft GZRS en RA-GZRS inschakelen in extra Azure-regio's. Controleer regel matig de pagina met [updates](https://azure.microsoft.com/updates/) voor Azure-Services voor informatie over ondersteunde regio's.
 
-Raadpleeg voor meer informatie over de preview-prijzen GZRS preview- [](https://azure.microsoft.com/pricing/details/storage/blobs)prijzen voor blobs, [bestanden](https://azure.microsoft.com/pricing/details/storage/files/), [wacht rijen](https://azure.microsoft.com/pricing/details/storage/queues/)en [tabellen](https://azure.microsoft.com/pricing/details/storage/tables/).
+Raadpleeg voor meer informatie over de preview-prijzen GZRS preview-prijzen voor [blobs](https://azure.microsoft.com/pricing/details/storage/blobs), [bestanden](https://azure.microsoft.com/pricing/details/storage/files/), [wacht rijen](https://azure.microsoft.com/pricing/details/storage/queues/)en [tabellen](https://azure.microsoft.com/pricing/details/storage/tables/).
 
 > [!IMPORTANT]
 > Micro soft raadt aan om Preview-functies voor productie werkbelastingen te gebruiken.
@@ -97,7 +101,7 @@ Er zijn twee opties voor het migreren naar GZRS of RA-GZRS van een LRS-, GRS-of 
 
 #### <a name="perform-a-manual-migration"></a>Een hand matige migratie uitvoeren
 
-Als u de migratie op een bepaalde datum wilt volt ooien, kunt u een hand matige migratie uitvoeren. Een hand matige migratie biedt meer flexibiliteit dan een Livemigratie. Met een hand matige migratie hebt u de controle over de timing.
+Als u de migratie op een bepaalde datum wilt volt ooien, kunt u een hand matige migratie uitvoeren. Een handmatige migratie biedt meer flexibiliteit dan een livemigratie. Met een handmatige migratie hebt u de controle over de timing.
 
 Als u gegevens van een bestaand account hand matig naar een GZRS-of RA-GZRS-account wilt migreren, gebruikt u een hulp programma waarmee gegevens efficiënt kunnen worden gekopieerd. Voorbeelden zijn:
 
@@ -107,7 +111,7 @@ Als u gegevens van een bestaand account hand matig naar een GZRS-of RA-GZRS-acco
 
 #### <a name="perform-a-live-migration"></a>Een Livemigratie uitvoeren
 
-Een hand matige migratie kan leiden tot uitval tijd van toepassingen. Als voor uw toepassing hoge Beschik baarheid is vereist, biedt micro soft ook een optie voor Livemigratie. Een Livemigratie is een interne migratie zonder uitval tijd.
+Een hand matige migratie kan leiden tot uitval tijd van toepassingen. Als voor uw toepassing hoge beschikbaarheid is vereist, biedt Microsoft u de mogelijkheid tot het uitvoeren van een livemigratie. Een livemigratie is een in-place migratie zonder uitvaltijd.
 
 Tijdens een Livemigratie kunt u uw opslag account gebruiken terwijl uw gegevens worden gemigreerd tussen de bron-en doel opslag accounts. Tijdens het Live migratie proces blijft uw account voldoen aan de SLA voor duurzaamheid en beschik baarheid. Er wordt geen downtime of gegevens verlies veroorzaakt door de Livemigratie.
 
@@ -131,14 +135,14 @@ Als u een Live migratie wilt aanvragen, gebruikt u de [Azure Portal](https://ms
 
 1. Selecteer een **nieuwe ondersteunings aanvraag**.
 2. Voltooi de basis **beginselen** op basis van uw account gegevens. Selecteer in de sectie **service**  **opslag account beheer** en geef het account op dat moet worden gemigreerd.
-3. Selecteer **volgende**.
+3. Selecteer  **Volgende**.
 4. Geef de volgende waarden op voor het **probleem** gedeelte:
     - **Ernst**: De standaard waarde ongewijzigd laten.
     - **Probleem type**: Selecteer **gegevens migratie**.
     - **Categorie**: Selecteer **migreren naar (RA) GZRS binnen een regio**.
     - **Title**: Typ een beschrijvende titel, bijvoorbeeld **(RA-) GZRS-account migratie**.
     - **Details**: Typ aanvullende details in het vak **Details** , bijvoorbeeld "Ik wil migreren naar GZRS van [LRS, GRS] in de \_ \_ regio". of "Ik wil graag migreren naar RA-GZRS van [LRS, RA-GRS] in de \_ \_ regio"
-5. Selecteer **volgende**.
+5. Selecteer  **Volgende**.
 6. Controleer of de contact gegevens juist zijn op de Blade **contact gegevens** .
 7. Selecteer  **Maken**.
 

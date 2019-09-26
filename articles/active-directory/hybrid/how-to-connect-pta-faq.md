@@ -16,12 +16,12 @@ ms.date: 04/15/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c7199cd8e5dbde1f6ff2f5cea56a4191211c853
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 0d21bf0f2ba7c93a35952d2eb2dd4df49bb3260b
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779090"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71290761"
 ---
 # <a name="azure-active-directory-pass-through-authentication-frequently-asked-questions"></a>Pass-Through-verificatie Azure Active Directory: Veelgestelde vragen
 
@@ -41,11 +41,10 @@ Nee. Pass-Through-verificatie is alleen beschikbaar in het wereld wijde exemplaa
 
 ## <a name="does-conditional-accessactive-directory-conditional-access-azure-portalmd-work-with-pass-through-authentication"></a>Werkt [voorwaardelijke toegang](../active-directory-conditional-access-azure-portal.md) met Pass-Through-verificatie?
 
-Ja. Alle mogelijkheden voor voorwaardelijke toegang, waaronder Azure multi-factor Authentication, werken met Pass-Through-verificatie.
+Ja. Alle mogelijkheden voor voorwaardelijke toegang, inclusief Azure Multi-Factor Authentication, werken met Pass Through-verificatie.
 
 ## <a name="does-pass-through-authentication-support-alternate-id-as-the-username-instead-of-userprincipalname"></a>Ondersteunt Pass-Through-verificatie "alternatieve ID" als de gebruikers naam, in plaats van "userPrincipalName"?
-
-Ja, Pass Through-verificatie ondersteunt `Alternate ID` als de gebruikers naam wanneer deze is geconfigureerd in azure AD Connect. Azure AD Connect moet het on-premises Active Directory `UserPrincipalName` kenmerk synchroniseren met Azure AD als een vereiste. Zie voor meer informatie, [aangepaste installatie van Azure AD Connect](how-to-connect-install-custom.md). Niet alle Office 365-toepassingen `Alternate ID`ondersteunen. Raadpleeg de documentatie van de specifieke toepassings ondersteuning voor de toepassing.
+Bij een beperkt gebied ondersteunt Pass-Through-verificatie alternatieve ID als de gebruikers naam wanneer deze wordt geconfigureerd in Azure AD Connect. Azure AD Connect moet het on-premises Active Directory `UserPrincipalName` kenmerk synchroniseren met Azure AD als een vereiste. Dit maakt de `UserPrincipalName` on-premises AD-en Azure AD identiek. Als u een ander kenmerk wilt gebruiken om te synchroniseren van on-premises AD als de UPN voor Azure AD, moet u een wachtwoord hash-synchronisatie of AD FS gebruiken. Zie voor meer informatie, [aangepaste installatie van Azure AD Connect](how-to-connect-install-custom.md). Niet alle Office 365-toepassingen `Alternate ID`ondersteunen. Raadpleeg de documentatie van de specifieke toepassings ondersteuning voor de toepassing.
 
 ## <a name="does-password-hash-synchronization-act-as-a-fallback-to-pass-through-authentication"></a>Fungeert wachtwoord hash synchroniseren als terugval voor Pass-Through-verificatie?
 
@@ -65,7 +64,7 @@ Voor een goede werking van deze functie hebt u versie 1.1.750.0 of hoger nodig v
 
 ## <a name="what-happens-if-my-users-password-has-expired-and-they-try-to-sign-in-by-using-pass-through-authentication"></a>Wat gebeurt er als mijn gebruikers wachtwoord is verlopen en u zich probeert aan te melden met behulp van Pass-Through-verificatie?
 
-Als u het terugschrijven van [wacht woorden](../authentication/concept-sspr-writeback.md) voor een specifieke gebruiker hebt geconfigureerd en als de gebruiker zich aanmeldt met behulp van Pass-Through-verificatie, kunnen ze hun wacht woord wijzigen of opnieuw instellen. De wacht woorden worden teruggeschreven naar een on-premises Active Directory, zoals verwacht.
+Als u het [terugschrijven van wacht woorden](../authentication/concept-sspr-writeback.md) voor een specifieke gebruiker hebt geconfigureerd en als de gebruiker zich aanmeldt met behulp van Pass-Through-verificatie, kunnen ze hun wacht woord wijzigen of opnieuw instellen. De wacht woorden worden teruggeschreven naar een on-premises Active Directory, zoals verwacht.
 
 Als u het terugschrijven van wacht woorden niet hebt geconfigureerd voor een specifieke gebruiker of als aan de gebruiker geen geldige Azure AD-licentie is toegewezen, kan de gebruiker hun wacht woord niet bijwerken in de Cloud. Ze kunnen hun wacht woord niet bijwerken, zelfs niet als het wacht woord is verlopen. In plaats daarvan ziet de gebruiker het volgende bericht: "Uw organisatie staat niet toe dat u uw wacht woord op deze site bijwerkt. Werk het bij volgens de methode die door uw organisatie wordt aanbevolen of vraag uw beheerder om hulp nodig. " De gebruiker of de beheerder moet het wacht woord opnieuw instellen in on-premises Active Directory.
 
@@ -86,7 +85,7 @@ Als u het terugschrijven van wacht woorden niet hebt geconfigureerd voor een spe
 Ja. Als WPAD (Web Proxy Auto-Discovery) is ingeschakeld in uw on-premises omgeving, proberen verificatie agenten automatisch een webproxyserver in het netwerk te zoeken en te gebruiken.
 
 Als u geen WPAD hebt in uw-omgeving, kunt u proxy gegevens toevoegen (zoals hieronder wordt weer gegeven), zodat een Pass-Through-verificatie agent kan communiceren met Azure AD:
-- Configureer proxy-informatie in Internet Explorer voordat u de Pass-Through-verificatie agent op de server installeert. Hiermee kunt u de installatie van de verificatie agent volt ooien, maar deze wordt nog steeds weer gegeven als inactief in de beheer Portal.
+- Configureer proxy-informatie in Internet Explorer voordat u de Pass-Through-verificatie agent op de server installeert. Hiermee kunt u de installatie van de verificatie agent volt ooien, maar deze wordt nog steeds weer gegeven als **inactief** in de beheer Portal.
 - Ga op de-server naar ' C:\Program Files\Microsoft Azure AD Connect authentication agent '.
 - Bewerk het configuratie bestand ' AzureADConnectAuthenticationAgentService ' en voeg de volgende regels toe (Vervang '\:http//contosoproxy.com:8080 ' door het daad werkelijke proxy adres):
 
@@ -114,7 +113,7 @@ De communicatie tussen elke pass-through-verificatie agent en Azure AD wordt bev
 
 Zolang er een Pass-Through-verificatie agent wordt uitgevoerd, blijft deze actief en wordt de aanmeldings aanvragen van gebruikers continu verwerkt. Als u een verificatie agent wilt verwijderen, gaat u naar **configuratie scherm-> Program ma's-> Program ma's en onderdelen** en verwijdert u zowel de **Microsoft Azure AD Connect authentication agent** als de **Microsoft Azure AD connect agent Updater** ma's.
 
-Als u de Blade Pass-Through-verificatie in het [Azure Active Directory-beheer centrum](https://aad.portal.azure.com) controleert nadat u de vorige stap hebt voltooid, ziet u dat de verificatie agent wordt weer gegeven als inactief. Dit wordt _verwacht_. De verificatie agent wordt na een paar dagen automatisch verwijderd uit de lijst.
+Als u de Blade Pass-Through-verificatie in het [Azure Active Directory-beheer centrum](https://aad.portal.azure.com) controleert nadat u de vorige stap hebt voltooid, ziet u dat de verificatie agent wordt weer gegeven als **inactief**. Dit wordt _verwacht_. De verificatie agent wordt na een paar dagen automatisch verwijderd uit de lijst.
 
 ## <a name="i-already-use-ad-fs-to-sign-in-to-azure-ad-how-do-i-switch-it-to-pass-through-authentication"></a>Ik gebruik AD FS al om je aan te melden bij Azure AD. Hoe kan ik overschakelen naar Pass-Through-verificatie?
 

@@ -11,12 +11,12 @@ ms.reviewer: klam, LADocs
 ms.topic: conceptual
 ms.date: 06/20/2019
 tags: connectors
-ms.openlocfilehash: d57ea1a881980203b1c8f216239b27b64f0d71cd
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 8160cd2cb77a56f3d9b13f3c43929cc4ab7565b0
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70051057"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71309584"
 ---
 # <a name="create-and-manage-blobs-in-azure-blob-storage-with-azure-logic-apps"></a>Blobs in Azure Blob-opslag maken en beheren met Azure Logic Apps
 
@@ -25,7 +25,7 @@ In dit artikel wordt uitgelegd hoe u bestanden die zijn opgeslagen als blobs in 
 Stel dat u een hulp programma hebt dat wordt bijgewerkt op een Azure-website. die fungeert als de trigger voor uw logische app. Als deze gebeurtenis zich voordoet, kunt u uw logische app een bestand in de BLOB storage-container laten bijwerken. Dit is een actie in uw logische app.
 
 > [!NOTE]
-> Logic Apps biedt geen ondersteuning voor rechtstreekse verbinding met Azure Storage-accounts via firewalls. Voor toegang tot deze opslag accounts gebruikt u een van de volgende opties:
+> Logic apps hebben geen directe toegang tot Azure Storage-accounts die [firewall regels](../storage/common/storage-network-security.md) hebben en zich in dezelfde regio bevinden. Logic apps hebben echter toegang tot Azure Storage-accounts die zich in een andere regio bevinden, omdat een openbaar IP-adres wordt gebruikt voor de communicatie tussen regio's. U kunt ook een van beide opties gebruiken:
 >
 > * Een [integratie service omgeving](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)maken waarmee verbinding kan worden gemaakt met bronnen in een virtueel Azure-netwerk.
 >

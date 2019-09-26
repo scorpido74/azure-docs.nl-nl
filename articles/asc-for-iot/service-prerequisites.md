@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/28/2019
+ms.date: 09/25/2019
 ms.author: mlottner
-ms.openlocfilehash: cc2dc3a190e3ad06bdc048f2a5770eae2a6990ec
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 4440fec98d1f561da6375bcaadba4282076cc53b
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68596828"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71299466"
 ---
 # <a name="azure-security-center-for-iot-prerequisites"></a>Azure Security Center voor IoT-vereisten
 
-Dit artikel bevat een uitleg van de verschillende bouw stenen van de Azure Security Center (ASC) voor de IoT-service, wat u moet beginnen en legt de basis concepten uit om inzicht te krijgen in de service. 
+Dit artikel bevat een uitleg van de verschillende bouw stenen van de Azure Security Center voor IoT-service, wat u moet beginnen en legt de basis concepten uit om inzicht te krijgen in de service. 
 
 ## <a name="minimum-requirements"></a>Minimale vereisten
 
@@ -34,13 +34,13 @@ Dit artikel bevat een uitleg van de verschillende bouw stenen van de Azure Secur
 - Azure Security Center (aanbevolen)
     - Het gebruik van Azure Security Center is een aanbeveling en geen vereiste. Zonder Azure Security Center kunt u uw andere Azure-resources niet weer geven binnen IoT Hub. 
  
-## <a name="working-with-asc-for-iot-service"></a>Werken met ASC voor IoT-service
+## <a name="working-with-azure-security-center-for-iot-service"></a>Werken met Azure Security Center voor IoT-service
 
-ASC voor IoT Insights en rapportage zijn beschikbaar via Azure IoT Hub en Azure Security Center. Als u ASC wilt inschakelen voor IoT op uw Azure-IoT Hub, is een account met bevoegdheden op **eigenaars** niveau vereist. Nadat u ASC voor IoT hebt ingeschakeld in uw IoT Hub, worden de **beveiligings** functies in azure IOT hub en als **IOT** in azure Security Center weer gegeven. 
+Azure Security Center voor IoT Insights en rapportage zijn beschikbaar via Azure IoT Hub en Azure Security Center. Om Azure Security Center voor IoT in te scha kelen op uw Azure IoT Hub, is een account met bevoegdheden op **eigenaars** niveau vereist. Nadat u ASC voor IoT hebt ingeschakeld in uw IoT Hub, worden Azure Security Center voor IoT Insights weer gegeven als de **beveiligings** functie in azure IOT hub en als **IOT** in azure Security Center. 
 
 ## <a name="supported-service-regions"></a>Ondersteunde service regio's 
 
-ASC voor IoT wordt momenteel ondersteund voor IoT-hubs in de volgende Azure-regio's:
+Azure Security Center voor IoT wordt momenteel ondersteund voor IoT-hubs in de volgende Azure-regio's:
   - US - centraal  
   - East US 
   - US - oost 2
@@ -68,6 +68,8 @@ ASC voor IoT wordt momenteel ondersteund voor IoT-hubs in de volgende Azure-regi
   - Korea - zuid 
   - India - centraal
   - India - zuid
+
+Azure Security Center voor IoT routert al het verkeer van alle Europese regio's naar het Europa-west regionale Data Center en alle overige regio's naar het centrale regionale Data Center van de Verenigde Staten.  
   
 ## <a name="wheres-my-iot-hub"></a>Waar is mijn IoT Hub?
 
@@ -80,7 +82,7 @@ Controleer de locatie van uw IoT Hub om de beschik baarheid van de service te co
 
 ## <a name="supported-platforms-for-agents"></a>Ondersteunde platforms voor agents 
 
-ASC voor IoT-agents biedt ondersteuning voor een groeiende lijst met apparaten en platformen. Zie de [lijst met ondersteunde platforms](how-to-deploy-agent.md) om uw bestaande of geplande Apparaatbeheer te controleren.  
+Azure Security Center voor IoT-agents biedt ondersteuning voor een groeiende lijst met apparaten en platformen. Zie de [lijst met ondersteunde platforms](how-to-deploy-agent.md) om uw bestaande of geplande Apparaatbeheer te controleren.  
 
 ## <a name="next-steps"></a>Volgende stappen
 - Lees het [overzicht](overview.md) van Azure IOT Security

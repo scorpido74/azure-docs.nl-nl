@@ -4,26 +4,26 @@ description: Azure Blob-opslag vullen voor gebruik met de Azure HPC-cache
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 09/18/2019
+ms.date: 09/24/2019
 ms.author: v-erkell
-ms.openlocfilehash: 103470861383ff411cfaa670d70412086045a418
-ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
+ms.openlocfilehash: c18e1c9afab211a8ac076307eefc9074ae7c99d6
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71180721"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71299999"
 ---
-# <a name="move-data-to-azure-blob-storage-for-azure-hpc-cache-preview"></a>Gegevens verplaatsen naar Azure Blob-opslag voor Azure HPC-cache (preview-versie)
+# <a name="move-data-to-azure-blob-storage"></a>Gegevens verplaatsen naar Azure Blob-opslag
 
-Als uw werk stroom het verplaatsen van gegevens naar Azure Blob-opslag bevat, moet u ervoor zorgen dat u een efficiënte strategie gebruikt om uw gegevens te kopiëren via de Azure HPC-cache.
+Als uw werk stroom het verplaatsen van gegevens naar Azure Blob-opslag bevat, moet u ervoor zorgen dat u een efficiënte strategie gebruikt. U kunt gegevens in een nieuwe BLOB-container laden voordat u deze als opslag doel definieert, of de container toevoegen en uw gegevens vervolgens kopiëren met behulp van de HPC-cache van Azure.
 
 In dit artikel worden de beste manieren beschreven om gegevens te verplaatsen naar Blob Storage voor gebruik met de Azure HPC-cache.
 
 Houd u aan de volgende feiten:
 
-* Azure HPC cache maakt gebruik van een speciale opslag indeling voor het organiseren van gegevens in Blob Storage. Daarom moet een Blob Storage-doel een nieuwe, lege container of een BLOB-container zijn die eerder werd gebruikt voor de gegevens in de Azure HPC-cache. ([Avere vFXT voor Azure](https://azure.microsoft.com/services/storage/avere-vfxt/) gebruikt ook dit Cloud bestandssysteem.)
+* Azure HPC cache maakt gebruik van een speciale opslag indeling voor het organiseren van gegevens in Blob Storage. Daarom moet een Blob Storage-doel een nieuwe, lege container of een BLOB-container zijn die eerder werd gebruikt voor de gegevens in de Azure HPC-cache. ([Avere vFXT voor Azure](https://azure.microsoft.com/services/storage/avere-vfxt/) gebruikt ook dit Cloud bestands systeem.)
 
-* Het is raadzaam om gegevens te kopiëren via de Azure HPC-cache wanneer u meerdere clients en parallelle bewerkingen gebruikt. Met een eenvoudige Kopieer opdracht van één client worden gegevens langzaam verplaatst.
+* Het kopiëren van gegevens via de Azure HPC-cache naar een back-end-opslag doel is efficiënter wanneer u meerdere clients en parallelle bewerkingen gebruikt. Met een eenvoudige Kopieer opdracht van één client worden gegevens langzaam verplaatst.
 
 Een python-gebaseerd hulp programma is beschikbaar voor het laden van inhoud in een BLOB storage-container. Lees [vooraf geladen gegevens in Blob Storage](#pre-load-data-in-blob-storage-with-clfsload) voor meer informatie.
 
@@ -41,7 +41,7 @@ Gedetailleerde informatie is opgenomen in de avere CLFSLoad-distributie, die bes
 
 Een algemeen overzicht van het proces:
 
-1. Bereid een Linux-systeem (VM of fysiek) voor met python versie 3,6 of hoger. (Python 3,7 wordt aanbevolen voor betere prestaties.)
+1. Bereid een Linux-systeem (VM of fysiek) voor met python versie 3,6 of hoger. Python 3,7 wordt aanbevolen voor betere prestaties.
 1. Installeer de avere-CLFSLoad-software op het Linux-systeem.
 1. Voer de overdracht uit vanaf de Linux-opdracht regel.
 
@@ -50,7 +50,7 @@ Het hulp programma avere CLFSLoad heeft de volgende informatie nodig:
 * De ID van het opslag account die uw Blob Storage-container bevat
 * De naam van de lege Blob Storage-container
 * Een SAS-token (Shared Access Signature) waarmee het hulp programma naar de container kan schrijven
-* Een lokaal pad naar de gegevens Bron: een lokale map die de te kopiëren gegevens bevat of een lokaal pad naar een gekoppeld extern systeem met de gegevens.
+* Een lokaal pad naar de gegevens Bron: een lokale map die de te kopiëren gegevens bevat of een lokaal pad naar een gekoppeld extern systeem met de gegevens
 
 <!-- The requirements are explained in detail in the [Avere CLFSLoad readme](https://aka.ms/avere-clfsload). -->
 

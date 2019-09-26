@@ -1,6 +1,6 @@
 ---
-title: Uitvoeren van U-SQL lokaal en fouten opsporen in Azure Data Lake Tools voor Visual Studio Code
-description: Informatie over het gebruik van Azure Data Lake Tools voor Visual Studio Code uitvoeren en fouten opsporen in U-SQL-taken lokaal.
+title: Fouten opsporen in U-SQL-taken-Azure Data Lake-Hulpprogram Ma's voor Visual Studio code
+description: Meer informatie over het gebruik van Azure Data Lake-Hulpprogram Ma's voor Visual Studio code om U-SQL-taken lokaal uit te voeren en fouten op te sporen.
 services: data-lake-analytics
 ms.service: data-lake-analytics
 author: jejiang
@@ -9,84 +9,84 @@ ms.reviewer: jasonwhowell
 ms.assetid: dc9b21d8-c5f4-4f77-bcbc-eff458f48de2
 ms.topic: conceptual
 ms.date: 07/14/2017
-ms.openlocfilehash: 765bcaab0f91e097be827bfa6e8f505ef5330d57
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2d78523f776c909845057aaf8660a7c6fba3ef6a
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60814398"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71309889"
 ---
-# <a name="run-u-sql-and-debug-locally-in-visual-studio-code"></a>Uitvoeren van U-SQL lokaal en fouten opsporen in Visual Studio Code
-In dit artikel wordt beschreven hoe U-SQL-taken worden uitgevoerd op een computer lokale ontwikkeling te versnellen eerste fasen van de code of fouten opsporen in code lokaal in Visual Studio Code. Zie voor instructies voor Azure Data Lake-hulpprogramma voor Visual Studio Code, [gebruik Azure Data Lake Tools voor Visual Studio Code](data-lake-analytics-data-lake-tools-for-vscode.md).
+# <a name="run-u-sql-and-debug-locally-in-visual-studio-code"></a>U-SQL en lokaal fouten opsporen in Visual Studio code
+In dit artikel wordt beschreven hoe U U-SQL-taken uitvoert op een lokale ontwikkel computer om de vroege code fasen te versnellen of om code lokaal te debuggen in Visual Studio code. Zie [Azure data Lake-Hulpprogram ma's voor Visual Studio code gebruiken](data-lake-analytics-data-lake-tools-for-vscode.md)voor instructies over het Azure data Lake-hulp programma voor Visual Studio code.
 
-Alleen Windows-installaties van de Azure Data Lake Tools voor Visual Studio ondersteuning voor de actie voor het U-SQL lokaal uitvoeren en lokaal fouten opsporen in U-SQL. Installaties in macOS en Linux-besturingssystemen bieden geen ondersteuning voor deze functie.
+Alleen Windows-installaties van de Azure Data Lake-Hulpprogram Ma's voor Visual Studio ondersteunen de actie om U-SQL lokaal uit te voeren en U-SQL lokaal te debuggen. Installaties op macOS-en Linux-besturings systemen bieden geen ondersteuning voor deze functie.
 
-## <a name="set-up-the-u-sql-local-run-environment"></a>Stel de omgeving U-SQL lokaal uitvoeren
+## <a name="set-up-the-u-sql-local-run-environment"></a>De lokale uitvoerings omgeving van U-SQL instellen
 
-1. Selecteer Ctrl + Shift + P om het opdrachtenpalet te openen en voer vervolgens **ADL: Lokaal uitvoeren-pakket downloaden** voor het downloaden van de pakketten.  
+1. Selecteer CTRL + SHIFT + P om het opdracht palet te openen en voer **vervolgens ADL in: Down load het lokale** uitvoerings pakket om de pakketten te downloaden.  
 
-   ![De ADL LocalRun afhankelijke pakketten downloaden](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/downloadtheadllocalrunpackage.png)
+   ![De ADL LocalRun-afhankelijkheids pakketten downloaden](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/downloadtheadllocalrunpackage.png)
 
-2. Zoek de afhankelijkheidspakketten van het pad dat wordt weergegeven in de **uitvoer** in het deelvenster en installeer vervolgens BuildTools en Win10SDK 10240. Hier volgt een voorbeeld-pad:  
+2. Zoek de afhankelijkheids pakketten in het pad dat wordt weer gegeven in het deel venster **uitvoer** en installeer vervolgens build-en Win10SDK 10240. Hier volgt een voor beeld van een pad:  
 `C:\Users\xxx\AppData\Roaming\LocalRunDependency` 
 
-   ![Zoek de afhankelijkheidspakketten](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/LocateDependencyPath.png)
+   ![De afhankelijkheids pakketten zoeken](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/LocateDependencyPath.png)
 
-   2.1 voor het installeren van **BuildTools**, klikt u op visualcppbuildtools_full.exe in de map LocalRunDependency en volg de instructies van de wizard.   
+   2,1 als u de **build-versie**wilt installeren, klikt u op visualcppbuildtools_full. exe in de map LocalRunDependency en volgt u de instructies in de wizard.   
 
-    ![BuildTools installeren](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/InstallBuildTools.png)
+    ![Build-versie installeren](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/InstallBuildTools.png)
 
-   2.2 voor het installeren van **Win10SDK 10240**, klikt u op sdksetup.exe in de map LocalRunDependency/Win10SDK_10.0.10240_2 en volg de instructies van de wizard.  
+   2,2 om **Win10SDK 10240**te installeren, klikt u op sdksetup. exe in de map LocalRunDependency/win10sdk_ 10.0.10240 _2 en volgt u de instructies in de wizard.  
 
-    ![Installeer Win10SDK 10240](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/InstallWin10SDK.png)
+    ![Win10SDK 10240 installeren](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/InstallWin10SDK.png)
 
-3. Stel de omgevingsvariabele. Stel de **SCOPE_CPP_SDK** omgevingsvariabele:  
+3. Stel de omgevings variabele in. Stel de omgevings variabele **SCOPE_CPP_SDK** in op:  
 `C:\Users\XXX\AppData\Roaming\LocalRunDependency\CppSDK_3rdparty`  
 
 
-## <a name="start-the-local-run-service-and-submit-the-u-sql-job-to-a-local-account"></a>Start de service voor lokale uitvoering en verzenden van de U-SQL-taak op een lokaal account 
-Gebruik voor de gebruiker eerst **ADL: Lokaal uitvoeren-pakket downloaden** voor het downloaden van lokale uitvoering pakketten, als u niet hebt gedaan [instellen van U-SQL lokaal uitvoeren omgeving](#set-up-the-u-sql-local-run-environment).
+## <a name="start-the-local-run-service-and-submit-the-u-sql-job-to-a-local-account"></a>Start de lokale run-service en verzend de U-SQL-taak naar een lokaal account 
+Gebruik ADL voor de eerste keer dat de **gebruiker wordt gebruikt: Down load het lokale**run-pakket om lokale run-pakketten te downloaden als u geen [lokale run-SQL-omgeving hebt ingesteld](#set-up-the-u-sql-local-run-environment).
 
-1. Selecteer Ctrl + Shift + P om het opdrachtenpalet te openen en voer vervolgens **ADL: Lokale uitvoering starten**.   
-2. Selecteer **accepteren** te accepteren van de licentievoorwaarden voor Microsoft-Software voor de eerste keer. 
+1. Selecteer CTRL + SHIFT + P om het opdracht palet te openen en voer **vervolgens ADL in: Start de lokale uitvoerings**service.   
+2. Selecteer **accepteren** om de licentie voorwaarden voor micro soft-software voor de eerste keer te accepteren. 
 
-   ![Accepteer de licentievoorwaarden voor Microsoft-Software](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/AcceptEULA.png)   
-3. De cmd-console wordt geopend. Voor de eerste keer dat gebruikers, moet u invoeren **3**, en ga vervolgens naar het lokale pad naar uw invoer en uitvoer. U kunt de standaardwaarden gebruiken voor andere opties. 
+   ![De licentie voorwaarden voor micro soft-software accepteren](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/AcceptEULA.png)   
+3. De cmd-console wordt geopend. Voor de eerste keer dat gebruikers worden opgegeven, moet u **3**invoeren en vervolgens het pad naar de lokale map voor de invoer en uitvoer van uw gegevens zoeken. Voor andere opties kunt u de standaard waarden gebruiken. 
 
-   ![Data Lake Tools voor Visual Studio Code lokaal uitvoeren cmd](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/data-lake-tools-for-vscode-local-run-cmd.png)
-4. Selecteer Ctrl + Shift + P, open het opdrachtenpalet, geeft u **ADL: Taak verzenden**, en selecteer vervolgens **lokale** om de taak op uw lokale account te verzenden.
+   ![Data Lake-Hulpprogram Ma's voor Visual Studio code Local run CMD](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/data-lake-tools-for-vscode-local-run-cmd.png)
+4. Selecteer CTRL + SHIFT + P om het opdracht palet te openen, **Voer ADL in: Verzend taak**en selecteer vervolgens **lokaal** om de taak naar uw lokale account te verzenden.
 
-   ![Data Lake Tools voor Visual Studio Code selecteren lokale](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/data-lake-tools-for-vscode-select-local.png)
-5. Nadat u de taak hebt verzonden, kunt u de details van de verzending van weergeven. De inzending om details te bekijken, selecteert u **jobUrl** in de **uitvoer** venster. U kunt ook de status van de taak indienen vanuit de console cmd weergeven. Voer **7** in de cmd-console als u wilt meer taakdetails weten.
+   ![Data Lake-Hulpprogram Ma's voor Visual Studio code lokale selecteren](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/data-lake-tools-for-vscode-select-local.png)
+5. Nadat u de taak hebt verzonden, kunt u de details van de verzen ding bekijken. Selecteer **jobUrl** in het venster **uitvoer** om de details van de verzen ding weer te geven. U kunt ook de status van de taak inzending bekijken vanuit de cmd-console. Voer **7** in de cmd-console in als u meer taak details wilt weten.
 
-   ![Data Lake Tools voor Visual Studio Code-lokaal uitvoeren van uitvoer](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/data-lake-tools-for-vscode-local-run-result.png)
-   ![Data Lake Tools voor Visual Studio Code lokaal cmd uitvoeringsstatus](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/data-lake-tools-for-vscode-localrun-cmd-status.png) 
+   ![Data Lake tools for Visual Studio code Local run uitvoer](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/data-lake-tools-for-vscode-local-run-result.png)
+   ![data Lake tools for Visual Studio code Local run CMD status](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/data-lake-tools-for-vscode-localrun-cmd-status.png) 
 
 
-## <a name="start-a-local-debug-for-the-u-sql-job"></a>Een lokale foutopsporing voor de U-SQL-taak starten  
-Voor de gebruiker eerst:
+## <a name="start-a-local-debug-for-the-u-sql-job"></a>Een lokale fout opsporing starten voor de U-SQL-taak  
+Voor de eerste gebruiker:
 
-1. Gebruik **ADL: Lokaal uitvoeren-pakket downloaden** voor het downloaden van lokale uitvoering pakketten, als u niet hebt gedaan [instellen van U-SQL lokaal uitvoeren omgeving](#set-up-the-u-sql-local-run-environment).
-2. Installeer .NET Core SDK 2.0 zoals voorgesteld in het berichtenvak als niet is geïnstalleerd.
+1. Gebruik **ADL: Down load het lokale**run-pakket om lokale run-pakketten te downloaden als u geen [lokale run-SQL-omgeving hebt ingesteld](#set-up-the-u-sql-local-run-environment).
+2. Installeer .NET Core SDK 2,0, zoals wordt voorgesteld in het bericht venster, als dit niet is geïnstalleerd.
  
-  ![herinnering installeert Dotnet](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/remind-install-dotnet.png)
-3. Installeer C# voor Visual Studio Code zoals voorgesteld in het berichtenvak als niet is geïnstalleerd. Klik op **installeren** blijven en VSCode start opnieuw op.
+  ![herinnering installeert DotNet](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/remind-install-dotnet.png)
+3. Installeer C# voor Visual Studio-code zoals wordt voorgesteld in het bericht venster als dat niet is geïnstalleerd. Klik op **installeren** om door te gaan en VSCode opnieuw te starten.
 
-    ![Herinnering voor het installeren van C#](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/install-csharp.png)
+    ![Te installeren herinneringC#](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/install-csharp.png)
 
-Volg de stappen hieronder om het lokale foutopsporing uitvoeren:
+Volg de onderstaande stappen om lokaal fout opsporing uit te voeren:
   
-1. Selecteer Ctrl + Shift + P om het opdrachtenpalet te openen en voer vervolgens **ADL: Lokale uitvoering starten**. De cmd-console wordt geopend. Zorg ervoor dat de **DataRoot** is ingesteld.
-2. Stel een onderbrekingspunt in uw C#-code-behind.
-3. Terug naar de script-editor, klik met de rechtermuisknop en selecteert u **ADL: Lokaal fouten opsporen**.
+1. Selecteer CTRL + SHIFT + P om het opdracht palet te openen en voer **vervolgens ADL in: Start de lokale uitvoerings**service. De cmd-console wordt geopend. Zorg ervoor dat de **Data root** is ingesteld.
+2. Stel een onderbrekings punt C# in voor de code-behind.
+3. Terug naar de Script Editor, klik met de rechter **muisknop en selecteer ADL: Lokale fout**opsporing.
     
-   ![Data Lake Tools voor Visual Studio Code lokaal fouten opsporen resultaat](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/data-lake-tools-for-vscode-local-debug-result.png)
+   ![Data Lake-Hulpprogram Ma's voor Visual Studio code Local debug-resultaat](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/data-lake-tools-for-vscode-local-debug-result.png)
 
 
 ## <a name="next-steps"></a>Volgende stappen
 * [De Azure Data Lake-tools gebruiken voor Visual Studio-code](data-lake-analytics-data-lake-tools-for-vscode.md)
-* [U-SQL met Python, R en CSharp voor Azure Data Lake Analytics vscode ontwikkelen](data-lake-analytics-u-sql-develop-with-python-r-csharp-in-vscode.md)
-* [Aan de slag met Data Lake Analytics met behulp van PowerShell](data-lake-analytics-get-started-powershell.md)
-* [Aan de slag met Data Lake Analytics met Azure portal](data-lake-analytics-get-started-portal.md)
-* [Data Lake Tools voor Visual Studio gebruiken voor het ontwikkelen van U-SQL-toepassingen](data-lake-analytics-data-lake-tools-get-started.md)
-* [Data Lake gebruiken Analytics(U-SQL) catalogus](data-lake-analytics-use-u-sql-catalog.md)
+* [U-SQL ontwikkelen met python, R en CSharp voor Azure Data Lake Analytics in VSCode](data-lake-analytics-u-sql-develop-with-python-r-csharp-in-vscode.md)
+* [Aan de slag met Data Lake Analytics met behulp van Power shell](data-lake-analytics-get-started-powershell.md)
+* [Aan de slag met Data Lake Analytics met behulp van de Azure Portal](data-lake-analytics-get-started-portal.md)
+* [Data Lake-Hulpprogram Ma's voor Visual Studio gebruiken voor het ontwikkelen van U-SQL-toepassingen](data-lake-analytics-data-lake-tools-get-started.md)
+* [Data Lake Analytics-catalogus (U-SQL) gebruiken](data-lake-analytics-use-u-sql-catalog.md)

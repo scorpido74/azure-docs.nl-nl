@@ -16,12 +16,12 @@ ms.date: 09/23/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2a875e028a38c085d45d062984764cd840983fc3
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 66e53298625e2388e102b5a4e835fe22a9c81a21
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71212327"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71314964"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Releasegeschiedenis van versie
 Het Azure Active Directory (Azure AD)-team werkt Azure AD Connect regel matig bij met nieuwe functies en functionaliteit. Niet alle toevoegingen zijn van toepassing op alle doel groepen.
@@ -46,13 +46,8 @@ Niet alle versies van Azure AD Connect worden beschikbaar gesteld voor automatis
 ## <a name="14x0"></a>1.4. X. 0
 
 >[!IMPORTANT]
->Windows-computers die zijn geregistreerd als hybride Azure AD-join, worden weer gegeven in azure AD als objecten voor apparaten. Deze apparaatobject kunnen worden gebruikt voor voorwaardelijke toegang. Windows 10-computers worden gesynchroniseerd met de Cloud via Azure AD Connect, Windows-computers op lagere niveaus worden rechtstreeks geregistreerd met behulp van AD FS of naadloze eenmalige aanmelding.
->
->Alleen Windows 10-computers met een specifieke userCertificate-kenmerk waarde die is geconfigureerd met hybride Azure AD-deelname, moeten worden gesynchroniseerd met de Cloud door Azure AD Connect.  In eerdere versies van Azure AD Connect was deze vereiste niet strikt afgedwongen, wat leidt tot overbodige apparaatfuncties in azure AD. Dergelijke apparaten in azure AD nemen altijd de status ' in behandeling ' uit omdat deze computers niet zijn bedoeld om te worden geregistreerd bij Azure AD.
->
->Deze versie van Azure AD Connect synchroniseert alleen Windows 10-computers die correct zijn geconfigureerd om te worden toegevoegd aan hybride Azure AD. Azure AD Connect moet nooit [Windows-apparaten op lagere niveaus](../../active-directory/devices/hybrid-azuread-join-plan.md#windows-down-level-devices)synchroniseren.  Alle apparaten in azure AD die voorheen onjuist zijn gesynchroniseerd, worden nu verwijderd uit Azure AD.  Met deze wijziging worden echter geen Windows-apparaten verwijderd die correct zijn geregistreerd bij Azure AD voor hybride Azure AD-deelname. 
->
->Sommige klanten kunnen enkele of alle Windows-apparaten zien, verdwijnen van Azure AD. Dit is geen oorzaak van bezorgdheid, omdat deze apparaat-id's niet worden gebruikt door Azure AD tijdens de autorisatie van voorwaardelijke toegang. Sommige klanten moeten mogelijk opnieuw een bezoek [brengen over: Plan uw hybride Azure Active Directory deelname-](../../active-directory/devices/hybrid-azuread-join-plan.md) implementatie om hun Windows-computers op de juiste wijze te registreren en ervoor te zorgen dat dergelijke apparaten volledig kunnen deel nemen aan voorwaardelijke toegang op basis van een apparaat. Als Azure AD Connect probeert [Windows-apparaten van lager niveau](../../active-directory/devices/hybrid-azuread-join-plan.md#windows-down-level-devices) te verwijderen, is het apparaat niet de versie die is gemaakt door de [micro soft-Workplace join voor niet-Windows 10-computers MSI](https://www.microsoft.com/download/details.aspx?id=53554) en kan het niet worden gebruikt door een andere Azure AD-functie.  Als u het verwijderen van computer/apparaat-objecten in azure AD overschrijdt, wordt de drempel waarde voor het verwijderen van het exporteren weer geven.
+>Met deze versie van Azure AD Connect kunnen sommige klanten sommige of alle Windows-apparaten zien, verdwijnen van Azure AD. Dit is geen oorzaak van bezorgdheid, omdat deze apparaat-id's niet worden gebruikt door Azure AD tijdens de autorisatie van voorwaardelijke toegang. Zie [Wat is Azure AD Connect 1.4. xx. x-apparaat disappearnce](reference-connect-device-disappearance.md) voor meer informatie.
+
 
 ### <a name="release-status"></a>Release status
 9/10/2019: Alleen uitgebracht voor automatische upgrade
@@ -63,7 +58,7 @@ Niet alle versies van Azure AD Connect worden beschikbaar gesteld voor automatis
 - Klanten moeten worden geïnformeerd dat de afgeschafte WMI-eind punten voor MIIS_Service nu zijn verwijderd. Alle WMI-bewerkingen moeten nu worden uitgevoerd via PS-cmdlets.
 - Beveiligings verbetering door beperkte delegering op AZUREADSSOACC-object opnieuw in te stellen
 - Bij het toevoegen/bewerken van een synchronisatie regel worden de kenmerken automatisch toegevoegd aan de connector als er kenmerken worden gebruikt in de regel die zich in het connector-schema bevinden, maar niet zijn toegevoegd aan de connector. Hetzelfde geldt voor het object type waarop de regel van toepassing is. Als er iets wordt toegevoegd aan de connector, wordt de connector gemarkeerd voor volledige import bij de volgende synchronisatie cyclus.
-- Het gebruik van een ondernemings-of domein beheerder als Connector account wordt niet meer ondersteund.
+- Het gebruik van een ondernemings-of domein beheerder als Connector account wordt niet meer ondersteund in nieuwe AAD Connect-implementaties. Huidige AAD Connect-implementaties met behulp van een onderneming of een domein beheerder als het Connector account worden niet beïnvloed door deze versie.
 - In synchronisatie beheer wordt een volledige synchronisatie uitgevoerd bij het maken/bewerken/verwijderen van een regel. Er wordt een pop-upvenster weer gegeven bij elke regel wijziging waarmee de gebruiker wordt gewaarschuwd als volledige import of volledige synchronisatie wordt uitgevoerd.
 - De stappen voor het oplossen van problemen met wachtwoord fouten aan de pagina connectors > Eigenschappen > connectiviteit zijn toegevoegd
 - Er is een waarschuwing voor afschaffing toegevoegd voor de synchronisatie Service Manager op de eigenschappen pagina van de connector. Met deze waarschuwing wordt de gebruiker ervan op de hoogte gebracht dat er wijzigingen moeten worden aangebracht via de wizard AADC.

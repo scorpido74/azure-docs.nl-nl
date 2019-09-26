@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/11/2019
+ms.date: 09/25/2019
 ms.author: abpati
 ms.custom: aaddev
-ms.openlocfilehash: c5817427102bf10dcd1ece932b0f582d973efaf7
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 587e7a82e2a9cde8ff6d08274928ab22aa969061
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71257888"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71309612"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-python-web-app"></a>Quickstart: Aanmelden met micro soft toevoegen aan een Python-web-app
 
@@ -101,48 +101,35 @@ Als u dit voor beeld wilt uitvoeren, hebt u het volgende nodig:
 1. Open het bestand **app_config. py** , dat u kunt vinden in de hoofdmap en vervang door het volgende code fragment:
 
 ```python
-AUTHORITY = "https://login.microsoftonline.com/Enter_the_Tenant_Name_Here"
-CLIENT_ID = "Enter_the_Application_Id_here"
 CLIENT_SECRET = "Enter_the_Client_Secret_Here"
-SCOPE = ["https://graph.microsoft.com/User.Read"]
-REDIRECT_URI = "http://localhost:5000/getAToken"
+CLIENT_ID = "Enter_the_Application_Id_here"
 ```
 
 > [!div renderon="docs"]
 > Waar:
 >
 > - `Enter_the_Application_Id_here`: de toepassings-id voor de toepassing die u hebt geregistreerd.
-> - `Enter_the_Tenant_Info_Here`: is een van de onderstaande opties:
->   - Als uw toepassing **alleen mijn organisatie**ondersteunt, vervangt u deze waarde door de **Tenant-id** of **Tenant naam** (bijvoorbeeld contoso.onmicrosoft.com)
->   - Als uw toepassing **Accounts in elke organisatiemap** ondersteunt, vervang deze waarde dan door `organizations`
->   - Als uw toepassing **Alle Microsoft-accountgebruikers** ondersteunt, vervang deze waarde dan door `common`
 > - `Enter_the_Client_Secret_Here`-is het **client geheim** dat u in **Certificaten & geheimen** hebt gemaakt voor de toepassing die u hebt geregistreerd.
 
 #### <a name="step-4-run-the-code-sample"></a>Stap 4: Het code voorbeeld uitvoeren
 
-- U moet de MSAL python-bibliotheek installeren, kolf Framework, kolf-sessies voor sessie beheer aan de server zijde en aanvragen met behulp van PIP als volgt:
+1. U moet de MSAL python-bibliotheek installeren, kolf Framework, kolf-sessies voor sessie beheer aan de server zijde en aanvragen met behulp van PIP als volgt:
 
-```Shell
-pip install msal
-pip install flask
-pip install Flask-Session
-pip install requests
-```
+   ```Shell
+   pip install -r requirements.txt
+   ```
 
-- Als de omgevings variabele voor de fles al is ingesteld: Voer app.py uit vanuit de shell of de opdracht regel:
+2. Voer app.py uit vanuit de shell of de opdracht regel:
 
-```Shell
-python app.py
-```
+   ```Shell
+   python app.py
+   ```
 
-- Als de omgevings variabele voor de fles niet is ingesteld:
+## <a name="next-steps"></a>Volgende stappen
 
-    1. Typ de volgende opdrachten op de shell of de opdracht regel door te navigeren naar de projectmap:
+Meer informatie over web-apps waarmee gebruikers zich kunnen aanmelden en die web-Api's aanroept:
 
-```Shell
-export FLASK_APP=app.py
-export FLASK_DEBUG=1
-flask run
-```
+> [!div class="nextstepaction"]
+> [Scenario: Web-apps waarmee gebruikers zich aanmelden](scenario-web-app-sign-user-overview.md)
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]

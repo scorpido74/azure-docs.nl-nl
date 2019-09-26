@@ -1,19 +1,20 @@
 ---
 title: Veelgestelde vragen over Azure HDInsight
-description: Biedt een overzicht van Azure HDInsight
+description: Veelgestelde vragen over HDInsight
+keywords: Veelgestelde vragen
 author: Ramakoni1
 ms.author: ramakoni
-ms.reviewer: v-miegge
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/20/2019
-ms.openlocfilehash: 4accd8c2f58dd89fb5f918ca6e58e71caeaed57f
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 0a718786cc7c72ef4ee9573c3c3e40401c53a315
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71212753"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71308067"
 ---
 # <a name="azure-hdinsight-frequently-asked-questions"></a>Azure HDInsight: Veelgestelde vragen
 
@@ -27,7 +28,9 @@ Zie [clusters instellen in HDInsight met Apache Hadoop, Apache Spark, Apache Kaf
 
 ### <a name="how-do-i-delete-an-existing-hdinsight-cluster"></a>Hoe kan ik een bestaand HDInsight-cluster verwijderen?
 
-Voor meer informatie over het verwijderen van een cluster als het niet meer wordt gebruikt, raadpleegt u [een HDInsight-cluster verwijderen met uw browser, Power shell of de Azure cli](https://docs.microsoft.com/azure/hdinsight/hdinsight-delete-cluster). Het is raadzaam dat er ten minste 30 tot 60 minuten tussen de bewerking maken en verwijderen bestaan op één cluster. Anders mislukt de bewerking en wordt het volgende fout bericht weer gegeven:
+Zie [een HDInsight-cluster verwijderen](hdinsight-delete-cluster.md)voor meer informatie over het verwijderen van een cluster dat niet meer in gebruik is.
+
+Zorg ervoor dat er ten minste 30 tot 60 minuten tussen Create-en delete-bewerkingen staan. Anders kan de bewerking mislukken met het volgende fout bericht:
 
 ``Conflict (HTTP Status Code: 409) error when attempting to delete a cluster immediately after creation of a cluster. If you encounter this error, wait until the newly created cluster is in operational state before attempting to delete it.``
 
@@ -55,44 +58,49 @@ Uw abonnement mag worden geconfigureerd om het aantal kerngeheugens voor een reg
 
 Voer de volgende stappen uit om een quotumverhoging aan te vragen:
 
-1. Ga naar de Azure Portal en selecteer Help + ondersteuning.
-2. Selecteer een nieuwe ondersteunings aanvraag.
-3. Op de pagina nieuwe ondersteunings aanvraag selecteert u de volgende opties op het tabblad basis beginselen:
+1. Ga naar de [Azure Portal](https://portal.azure.com)en selecteer **Help + ondersteuning**.
+   
+1. Selecteer **Nieuwe ondersteuningsaanvraag**.
+   
+1. Op het tabblad **basis principes** van de pagina **nieuwe ondersteunings aanvraag** geeft u de volgende informatie op:
+   
+   - **Type probleem:** **Service-en abonnements limieten (quota's)** selecteren.
+   - **Abonnement:** Selecteer het abonnement dat u wilt wijzigen.
+   - **Quotum type:** Selecteer **HDInsight**.
 
-   * Type probleem: Service- en abonnementslimieten (quota)
-   * Abonnement: Het abonnement dat u wilt wijzigen
-   * Type quotum: HDInsight
-
-Zie voor meer informatie [een ondersteunings ticket maken om de kernen te verhogen](https://docs.microsoft.com/azure/hdinsight/hdinsight-capacity-planning#quotas).
+Raadpleeg [Create a support ticket to increase core](hdinsight-capacity-planning.md#quotas) (Een ondersteuningsticket maken om het aantal kerngeheugens te verhogen) voor meer informatie.
 
 ### <a name="what-are-the-various-types-of-nodes-in-an-hdinsight-cluster"></a>Wat zijn de verschillende typen knoop punten in een HDInsight-cluster?
 
 Azure HDInsight-clusters hebben verschillende typen virtuele machines of knoop punten. Elk knooppunt type speelt een rol in de werking van het systeem.
 
-Zie [resource typen in azure HDInsight-clusters](https://docs.microsoft.com/azure/hdinsight/hdinsight-virtual-network-architecture#resource-types-in-azure-hdinsight-clusters)voor meer informatie.
+Zie [resource typen in azure HDInsight-clusters](hdinsight-virtual-network-architecture.md#resource-types-in-azure-hdinsight-clusters)voor meer informatie.
 
 ## <a name="individual-components"></a>Afzonderlijke onderdelen
 
 ### <a name="can-i-install-additional-components-on-my-cluster"></a>Kan ik extra onderdelen installeren op mijn cluster?
 
-Ja, u kunt extra onderdelen installeren of cluster configuratie aanpassen met behulp van een van de volgende methoden:
+Ja. Als u extra onderdelen wilt installeren of cluster configuratie wilt aanpassen, gebruikt u:
 
-* Scripts gebruiken tijdens of na het maken. Dergelijke scripts worden aangeroepen via een [script actie](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux). Deze configuratie optie kan worden gebruikt vanuit de Azure Portal, HDInsight Windows Power shell-cmdlets of de HDInsight .NET SDK. 
-* Sudo of andere methoden gebruiken nadat het cluster is ingericht.
-* Het [HDInsight-toepassings platform](https://azure.microsoft.com/services/hdinsight/partner-ecosystem/) gebruiken om ecosystem-toepassingen te installeren.
+- Scripts tijdens of na het maken. Scripts worden aangeroepen via [script actie](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux), een configuratie optie die u kunt gebruiken vanuit de Azure Portal, Hdinsight Windows Power shell-cmdlets of de HDINSIGHT .NET SDK. Deze configuratie optie kan worden gebruikt vanuit de Azure Portal, HDInsight Windows Power shell-cmdlets of de HDInsight .NET SDK.
+
+- `sudo`of andere methoden nadat u het cluster hebt ingericht.
+  
+- [HDInsight-toepassings platform](https://azure.microsoft.com/services/hdinsight/partner-ecosystem/) voor het installeren van ecosysteem toepassingen.
 
 Microsoft Ondersteuning teams kunnen echter alleen ondersteuning bieden voor de volgende situaties:
 
-* Problemen of fouten die optreden tijdens het laden van het script. Fouten die optreden tijdens het uitvoeren van aangepaste scripts vallen buiten het bereik van een ondersteunings ticket. 
-* Aanvullende toepassingen die deel uitmaken van het proces dat door het cluster wordt gemaakt. 
+- Problemen of fouten die optreden tijdens het laden van het script. Fouten die optreden tijdens het uitvoeren van aangepaste scripts vallen buiten het bereik van een ondersteunings ticket.
+
+- Aanvullende toepassingen die deel uitmaken van het proces dat door het cluster wordt gemaakt. 
 
 Zie [Wat zijn de Apache Hadoop onderdelen en versies die beschikbaar zijn in HDInsight?](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#apache-hadoop-components-available-with-different-hdinsight-versions) voor een lijst met ondersteunde onderdelen?
 
 De ondersteuning voor afzonderlijke onderdelen kan ook variëren per clustertype. Spark wordt bijvoorbeeld niet ondersteund in een Kafka-cluster en vice versa.
 
-Neem contact op met de leverancier of service provider voor ondersteuning voor toepassingen of services buiten het proces voor het maken van het cluster. U kunt ook community-sites gebruiken ter ondersteuning van deze acties. Er zijn veel community-sites beschikbaar. Voor beelden zijn [MSDN-forum voor HDInsight](https://social.msdn.microsoft.com/Forums/home?forum=hdinsight) en [stack overflow](https://stackoverflow.com/questions/tagged/hdinsight). Apache-projecten hebben ook project sites op de [Apache-website](https://apache.org/). Een voor beeld is [Hadoop](https://hadoop.apache.org/).
+Neem voor toepassingen en services buiten het proces voor het maken van het cluster contact op met de leverancier of service provider voor ondersteuning. U kunt ook veel Community-ondersteunings sites gebruiken. Voor beelden zijn het [MSDN-forum voor HDInsight](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight) en [stack overflow](https://stackoverflow.com/). Apache-projecten hebben ook project sites op de [Apache-website](https://apache.org/). Een voor beeld is [Hadoop](https://hadoop.apache.org/). 
 
- Lees de [Veelgestelde vragen over ondersteuning van Azure](https://azure.microsoft.com/en-us/support/faq/)voor meer vragen over ondersteuning voor Azure.
+Zie de [Veelgestelde vragen over ondersteuning voor Azure](https://azure.microsoft.com/support/faq/)voor meer informatie over ondersteuning voor Azure.
 
 ### <a name="can-i-upgrade-the-individual-components-that-are-pre-installed-on-the-cluster"></a>Kan ik een upgrade uitvoeren voor de afzonderlijke onderdelen die vooraf zijn geïnstalleerd op het cluster?
 
@@ -102,7 +110,7 @@ Een upgrade van Hive als een afzonderlijk onderdeel wordt bijvoorbeeld niet onde
 
 ### <a name="can-spark-and-kafka-run-on-the-same-hdinsight-cluster"></a>Kan Spark en Kafka worden uitgevoerd op hetzelfde HDInsight-cluster?
 
-Nee, het is niet mogelijk om Apache Kafka en Apache Spark uit te voeren op hetzelfde HDInsight-cluster. Gebruikers moeten afzonderlijke clusters maken voor elk om problemen met bron conflicten te voor komen.
+Nee, het is niet mogelijk om Apache Kafka en Apache Spark uit te voeren op hetzelfde HDInsight-cluster. Maak afzonderlijke clusters voor Kafka en Spark om problemen met bron conflicten te voor komen.
 
 ### <a name="how-do-i-change-timezone-in-ambari"></a>Hoe kan ik tijd zone wijzigen in Ambari?
 
@@ -119,7 +127,7 @@ Nee, het is niet mogelijk om Apache Kafka en Apache Spark uit te voeren op hetze
 
 ### <a name="how-can-i-migrate-from-the-existing-metastore-to-azure-sql-server"></a>Hoe kan ik migreren van de bestaande meta Store naar Azure SQL Server? 
 
-Zie zelf studie voor informatie [over het migreren van SQL Server naar Azure SQL Server: SQL Server naar een enkele data base of gegroepeerde Data base in Azure SQL Database offline](https://docs.microsoft.com/azure/dms/tutorial-sql-server-to-azure-sql)migreren met behulp van DMS.
+Zie zelf studie voor informatie [over het migreren van SQL Server naar Azure SQL Server: SQL Server naar een enkele data base of gegroepeerde Data base in Azure SQL Database offline](../dms/tutorial-sql-server-to-azure-sql.md)migreren met behulp van DMS.
 
 ### <a name="is-the-hive-metastore-deleted-when-the-cluster-is-deleted"></a>Wordt het Hive-metastore verwijderd wanneer het cluster wordt verwijderd?
 
@@ -129,11 +137,11 @@ Voor een standaard-META Store: De standaard-META Store maakt deel uit van de clu
 
 Voor een aangepaste meta Store: De levens cyclus van de meta Store is niet gebonden aan de levens cyclus van een cluster. Daarom kunt u clusters maken en verwijderen zonder dat meta gegevens verloren gaan. Meta gegevens zoals uw Hive-schema's blijven behouden, zelfs nadat u het HDInsight-cluster hebt verwijderd en opnieuw hebt gemaakt.
 
-Zie [externe meta gegevens archieven gebruiken in azure HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-use-external-metadata-stores)voor meer informatie.
+Zie [externe meta gegevens archieven gebruiken in azure HDInsight](hdinsight-use-external-metadata-stores.md)voor meer informatie.
 
 ### <a name="does-migrating-a-hive-metastore-also-migrate-the-default-policies-of-the-ranger-database"></a>Migreert migratie van een Hive-metastore ook het standaard beleid van de zwerver-data base?
 
-Nee, de beleids definitie bevindt zich in de zwerver-data base. Daarom wordt het beleid niet gemigreerd door de zwerver-data base te migreren.
+Nee, de beleids definitie bevindt zich in de zwerver-data base, dus migreert de zwerver-data base het beleid.
 
 ### <a name="can-you-migrate-a-hive-metastore-from-an-enterprise-security-package-esp-cluster-to-a-non-esp-cluster-and-vice-versa"></a>Kunt u een Hive-metastore van een Enterprise Security Package (ESP)-cluster migreren naar een niet-ESP-cluster en vice versa?
 
@@ -141,7 +149,7 @@ Ja, u kunt een Hive-metastore migreren van een ESP naar een niet-ESP-cluster.
 
 ### <a name="how-can-i-estimate-the-size-of-a-hive-metastore-database"></a>Hoe kan ik een schatting maken van de omvang van een Hive-metastore-data base?
 
-Een Hive-metastore wordt gebruikt voor het opslaan van de meta gegevens voor gegevens bronnen die door de Hive-server worden gebruikt. Daarom worden de grootte vereisten beïnvloed door het aantal gegevens bronnen dat u mogelijk moet gebruiken voor de Hive en hoe complex de gegevens bronnen zijn. Daarom kan de grootte niet worden geschat. Zoals beschreven in [Hive-metastore aanbevolen procedures](https://docs.microsoft.com/azure/hdinsight/hdinsight-use-external-metadata-stores#hive-metastore-best-practices), vanaf een S2-laag, biedt 50 DTU en 250 GB opslag ruimte. Als er een knel punt optreedt, kunt u de data base omhoog schalen.
+Een Hive-metastore wordt gebruikt voor het opslaan van de meta gegevens voor gegevens bronnen die door de Hive-server worden gebruikt. De grootte vereisten zijn deels afhankelijk van het aantal en de complexiteit van uw Hive-gegevens bronnen en kunnen niet worden geschat aan de voor grond. Zoals beschreven in [Hive-metastore aanbevolen procedures](hdinsight-use-external-metadata-stores.md#hive-metastore-best-practices), kunt u beginnen met een S2-laag, die 50 DTU en 250 GB opslag biedt, en als u een knel punt ziet, kunt u de data base omhoog schalen.
 
 ### <a name="do-you-support-any-other-database-other-than-azure-sql-database-as-an-external-metastore"></a>Ondersteunt u andere data bases dan Azure SQL Database als een externe meta Store?
 
@@ -159,53 +167,55 @@ Als u poort 22 en poort 23 blokkeert, hebt u geen SSH-toegang tot het cluster. D
 
 Raadpleeg de volgende documenten voor meer informatie:
 
-* [Netwerk verkeer beheren](https://docs.microsoft.com/azure/hdinsight/hdinsight-plan-virtual-network-deployment#networktraffic)
-* [Binnenkomend verkeer naar HDInsight-clusters in een virtueel netwerk met een persoonlijk eind punt beveiligen](https://azure.microsoft.com/blog/secure-incoming-traffic-to-hdinsight-clusters-in-a-vnet-with-private-endpoint/)
-* [IP-adressen van HDInsight-beheer](https://docs.microsoft.com/azure/hdinsight/hdinsight-management-ip-addresses)
+- [Netwerk verkeer beheren](https://docs.microsoft.com/azure/hdinsight/hdinsight-plan-virtual-network-deployment#networktraffic)
+
+- [Binnenkomend verkeer naar HDInsight-clusters in een virtueel netwerk met een persoonlijk eind punt beveiligen](https://azure.microsoft.com/blog/secure-incoming-traffic-to-hdinsight-clusters-in-a-vnet-with-private-endpoint/)
+
+- [IP-adressen van HDInsight-beheer](https://docs.microsoft.com/azure/hdinsight/hdinsight-management-ip-addresses)
 
 ### <a name="can-i-deploy-an-additional-virtual-machine-within-the-same-subnet-as-an-hdinsight-cluster"></a>Kan ik een extra virtuele machine implementeren in hetzelfde subnet als een HDInsight-cluster?
 
 Ja, u kunt een extra virtuele machine implementeren binnen hetzelfde subnet als een HDInsight-cluster. De volgende configuraties zijn mogelijk:
 
-* Edge-knoop punten: U kunt nog een Edge-knoop punt toevoegen aan het cluster, zoals beschreven in [lege Edge-knoop punten gebruiken op Apache Hadoop clusters in HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-apps-use-edge-node). 
-* Zelfstandige knoop punten:  U kunt een zelfstandige virtuele machine toevoegen aan hetzelfde subnet en het cluster vanaf die virtuele machine openen met behulp van het persoonlijke eind `https://<CLUSTERNAME>-int.azurehdinsight.net`punt. Zie [netwerk verkeer beheren](https://docs.microsoft.com/azure/hdinsight/hdinsight-plan-virtual-network-deployment#networktraffic)voor meer informatie.
+- Edge-knoop punten: U kunt nog een Edge-knoop punt toevoegen aan het cluster, zoals beschreven in [lege Edge-knoop punten gebruiken op Apache Hadoop clusters in HDInsight](hdinsight-apps-use-edge-node.md).
+
+- Zelfstandige knoop punten:  U kunt een zelfstandige virtuele machine toevoegen aan hetzelfde subnet en het cluster vanaf die virtuele machine openen met behulp van het persoonlijke eind `https://<CLUSTERNAME>-int.azurehdinsight.net`punt. Zie [netwerk verkeer beheren](hdinsight-plan-virtual-network-deployment.md#networktraffic)voor meer informatie.
 
 ### <a name="can-i-add-an-existing-hdinsight-cluster-to-another-virtual-network"></a>Kan ik een bestaand HDInsight-cluster toevoegen aan een ander virtueel netwerk?
 
-Nee, u kunt geen bestaand HDInsight-cluster toevoegen aan een ander virtueel netwerk. Het virtuele netwerk moet worden opgegeven op het moment van de inrichting. Als er tijdens het inrichten geen virtueel netwerk is opgegeven, maakt de implementatie een intern netwerk dat niet toegankelijk is vanaf buiten. Zie [HDInsight toevoegen aan een bestaand virtueel netwerk](https://docs.microsoft.com/azure/hdinsight/hdinsight-plan-virtual-network-deployment#existingvnet)voor meer informatie.
+Nee, dat kan niet. Het virtuele netwerk moet worden opgegeven op het moment van de inrichting. Als er tijdens het inrichten geen virtueel netwerk is opgegeven, maakt de implementatie een intern netwerk dat niet toegankelijk is vanaf buiten. Zie [HDInsight toevoegen aan een bestaand virtueel netwerk](hdinsight-plan-virtual-network-deployment.md#existingvnet)voor meer informatie.
 
 ## <a name="security-and-certificates"></a>Beveiliging en certificaten
 
-Wat zijn de aanbevelingen van micro soft voor beveiliging tegen schadelijke software op Azure HD Insight-clusters?
+### <a name="what-are-the-recommendations-for-malware-protection-on-azure-hdinsight-clusters"></a>Wat zijn de aanbevelingen voor beveiliging tegen schadelijke software in azure HDInsight-clusters?
 
-Zie [micro soft antimalware voor Azure Cloud Services en virtual machines](https://docs.microsoft.com/azure/security/fundamentals/antimalware)voor informatie over beveiliging tegen schadelijke software.
+Zie [micro soft antimalware voor Azure Cloud Services en virtual machines](../security/fundamentals/antimalware.md)voor informatie over beveiliging tegen schadelijke software.
 
 ### <a name="how-do-i-create-a-keytab-for-an-hdinsight-esp-cluster"></a>Hoe kan ik een keytab voor een HDInsight ESP-cluster maken?
 
-U kunt een Kerberos-keytab maken voor de gebruikers naam van uw domein. U kunt deze keytab later gebruiken om te verifiëren bij clusters die zijn toegevoegd aan een extern domein zonder een wacht woord in te voeren. Let op de hoofd letters in de domein naam:
+Maak een Kerberos-keytab voor de gebruikers naam van uw domein. U kunt deze keytab later gebruiken om te verifiëren bij clusters die zijn toegevoegd aan een extern domein zonder een wacht woord in te voeren. De domein naam is hoofdletter:
 
-```
-o ktutil 
-o ktutil: addent -password -p stXX@ DOMAIN.COM -k 1 -e RC4-HMAC 
-o Password for stXX@DOMAIN.COM: provided by lab instructors 
-o ktutil: wkt stXX.keytab 
-o ktutil: q
+```shell
+ktutil
+ktutil: addent -password -p <username>@<DOMAIN.COM> -k 1 -e RC4-HMAC
+Password for <username>@<DOMAIN.COM>: <password>
+ktutil: wkt <username>.keytab
+ktutil: q
 ```
 
 ### <a name="can-i-use-an-existing-azure-active-directory-tenant-to-create-an-hdinsight-cluster-that-has-the-esp"></a>Kan ik een bestaande Azure Active Directory Tenant gebruiken om een HDInsight-cluster te maken dat de ESP heeft?
 
-Het inschakelen van Azure Active Directory Domain Services (AAD-DS) is een vereiste voordat u een HDInsight-cluster kunt maken dat ESP heeft. Open-source Hadoop is afhankelijk van Kerberos voor authenticatie (in plaats van OAuth).
+U moet Azure Active Directory Domain Services (Azure AD DS) inschakelen voordat u een HDInsight-cluster met ESP kunt maken. Open-source Hadoop is afhankelijk van Kerberos voor authenticatie (in plaats van OAuth).
 
-Als u virtuele machines wilt toevoegen aan een domein, is een domein controller vereist. AAD-DS is de beheerde domein controller. Het wordt beschouwd als een uitbrei ding van AAD die alle Kerberos-vereisten biedt om een veilig Hadoop-cluster op een beheerde manier te bouwen. HDInsight als beheerde service kan worden geïntegreerd met AAD-DS om de end-to-end beveiliging te bieden.
+Als u Vm's wilt toevoegen aan een domein, moet u een domein controller hebben. Azure AD DS is de beheerde domein controller en wordt beschouwd als een uitbrei ding van Azure Active Directory die alle Kerberos-vereisten biedt om een veilig Hadoop-cluster op een beheerde manier te bouwen. HDInsight als een beheerde service kan worden geïntegreerd met Azure AD DS om end-to-end beveiliging te bieden.
 
 ### <a name="can-i-use-a-self-signed-certificate-in-an-aad-ds-secure-ldap-setup-and-provision-an-esp-cluster"></a>Kan ik een zelfondertekend certificaat gebruiken in een beveiligde LDAP-installatie van AAD-DS en een ESP-cluster inrichten?
 
-Hoewel het gebruik van een certificaat dat is uitgegeven door een certificerings instantie (CA) wordt aanbevolen, wordt het gebruik van een zelfondertekend certificaat ook ondersteund op ESP.
+Het gebruik van een certificaat dat is uitgegeven door een certificerings instantie wordt aanbevolen, maar het gebruik van een zelfondertekend certificaat wordt ook ondersteund op ESP. Zie voor meer informatie:
 
-Zie voor meer informatie:
+- [Azure Active Directory Domain Services inschakelen](domain-joined/apache-domain-joined-configure-using-azure-adds.md#enable-azure-ad-ds)
 
-* [Azure AD-DS inschakelen](https://docs.microsoft.com/azure/hdinsight/domain-joined/apache-domain-joined-configure-using-azure-adds#enable-azure-ad-ds)
-* [Zelfstudie: Een beveiligd LDAP configureren voor een Azure Active Directory Domain Services beheerd domein](https://docs.microsoft.com/azure/active-directory-domain-services/tutorial-configure-ldaps)
+- [Zelfstudie: Een beveiligd LDAP configureren voor een Azure Active Directory Domain Services beheerd domein](../active-directory-domain-services/tutorial-configure-ldaps.md)
 
 ### <a name="how-can-i-pull-login-activity-shown-in-ranger"></a>Hoe kan ik de aanmeldings activiteiten in zwerver weer geven?
 
@@ -219,13 +229,13 @@ Dit proces is niet van invloed op een of meer cycli van andere processen. Er wor
 
 In scenario's waarin u het schema moet beheren, kunt u de volgende stappen uitvoeren:
 
-1. Schakel automatische uitvoering uit met behulp van de volgende opdracht:
-
-   ``/usr/local/vbin/azsecd config -s clamav -d Disabled``
-
-2. Maak een cron-taak die deze opdracht uitvoert als root:
-
-   ``/usr/local/bin/azsecd manual -s clamav``
+1. Schakel automatische uitvoering uit met de volgende opdracht:
+   
+   `/usr/local/vbin/azsecd config -s clamav -d Disabled`
+   
+1. Voeg een cron-taak toe die de volgende opdracht als root uitvoert:
+   
+   `/usr/local/bin/azsecd manual -s clamav`
 
 Zie [Hoe kan ik een cron instellen](https://askubuntu.com/questions/2368/how-do-i-set-up-a-cron-job)voor meer informatie over het instellen en uitvoeren van een cron-taak?
 
@@ -233,33 +243,34 @@ Zie [Hoe kan ik een cron instellen](https://askubuntu.com/questions/2368/how-do-
 
 ### <a name="can-i-add-an-azure-data-lake-storage-gen2-to-an-existing-hdinsight-cluster-as-an-additional-storage-account"></a>Kan ik een Azure Data Lake Storage Gen2 toevoegen aan een bestaand HDInsight-cluster als een extra opslag account?
 
-Nee. Op dit moment kunt u geen Azure Data Lake Storage Gen2 toevoegen aan een bestaand HDInsight-cluster dat Blob-opslag gebruikt als primaire opslag. Zie voor meer informatie [opslag opties vergelijken voor gebruik met Azure HDInsight-clusters](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-compare-storage-options). 
+Nee, het is momenteel niet mogelijk om een Azure Data Lake Storage Gen2 Storage-account toe te voegen aan een cluster met Blob Storage als primaire opslag. Zie voor meer informatie [opslag opties vergelijken](hdinsight-hadoop-compare-storage-options.md).
 
 ### <a name="how-can-i-find-the-currently-linked-service-principal-for-a-data-lake-storage-account"></a>Hoe kan ik de momenteel gekoppelde Service-Principal vinden voor een Data Lake Storage-account?
 
-U kunt deze instellingen controleren door Data Lake Storage Gen1 toegang te controleren onder de cluster eigenschappen in de portal. Zie [cluster installatie controleren](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-hdinsight-hadoop-use-portal#verify-cluster-set-up)voor meer informatie.
+U kunt uw instellingen vinden in **Data Lake Storage gen1 toegang** onder de cluster eigenschappen in de Azure Portal. Zie [cluster installatie controleren](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md#verify-cluster-set-up)voor meer informatie.
  
-Hoe kan ik het gebruik van opslag accounts en BLOB-containers berekenen voor mijn HDInsight-clusters?
-U kunt een van de volgende procedures gebruiken:
+### <a name="how-can-i-calculate-the-usage-of-storage-accounts-and-blob-containers-for-my-hdinsight-clusters"></a>Hoe kan ik het gebruik van opslag accounts en BLOB-containers berekenen voor mijn HDInsight-clusters?
 
-* [PowerShell gebruiken](https://docs.microsoft.com/azure/storage/scripts/storage-blobs-container-calculate-size-powershell)
-* U kunt ook de grootte van de/User/Hive/. vinden Prullen mand/map op de HDI-clusters met behulp van de volgende opdracht:
+Voer een van de volgende handelingen uit:
 
-   ``hdfs dfs -du -h /user/hive/.Trash/``
+- [PowerShell gebruiken](../storage/scripts/storage-blobs-container-calculate-size-powershell.md)
+
+- De grootte van de */User/Hive/. zoeken Prullen mand/* map op het HDInsight-cluster met behulp van de volgende opdracht regel:
+  
+  `hdfs dfs -du -h /user/hive/.Trash/`
 
 ### <a name="how-can-i-set-up-auditing-for-my-blob-storage-account"></a>Hoe kan ik controle instellen voor mijn Blob Storage-account?
 
-Als u Blob Storage-accounts wilt controleren, moet u de bewaking configureren voor het Blob Storage-account met behulp van de procedure die wordt beschreven [in een opslag account in het Azure Portal bewaken](https://docs.microsoft.com/azure/storage/common/storage-monitor-storage-account). Een HDFS-audit logboek biedt alleen controle-informatie voor het lokale bestands systeem HDFS (hdfs://mycluster).  Het bevat geen bewerkingen die worden uitgevoerd op externe opslag.
+Als u Blob Storage-accounts wilt controleren, configureert u bewaking met behulp van de procedure bij het [controleren van een opslag account in de Azure Portal](../storage/common/storage-monitor-storage-account.md). Een HDFS-audit logboek biedt alleen controle-informatie voor het lokale bestands systeem HDFS (hdfs://mycluster).  Het bevat geen bewerkingen die worden uitgevoerd op externe opslag.
 
 ### <a name="how-can-i-transfer-files-between-a-blob-container-and-an-hdinsight-head-node"></a>Hoe kan ik bestanden overdragen tussen een BLOB-container en een HDInsight-hoofd knooppunt?
 
-U kunt bestanden overdragen tussen een BLOB-container en een HDInsight-hoofd knooppunt door een shell script uit te voeren op het hoofd knooppunt, vergelijkbaar met het volgende voor beeld:
+Voer een script uit dat vergelijkbaar is met het volgende shell script op het hoofd knooppunt:
 
-```
+```shell
 for i in cat filenames.txt
-
 do
-         hadoop fs -get $i <local destination>
+   hadoop fs -get $i <local destination>
 done
 ```
  
@@ -268,44 +279,39 @@ done
  
 ### <a name="are-there-any-ranger-plugins-for-storage"></a>Zijn er zwerver-invoeg toepassingen voor opslag?
 
-Momenteel bestaan er geen zwerver-invoeg toepassingen voor Blob Storage, Azure Data Lake Storage (ADLS) gen1 of Azure Data Lake Storage Gen2. Voor ESP-clusters gebruikt u ADLS als best practice en stelt u nauw keurige machtigingen hand matig in op bestandssysteem niveau met behulp van HDFS-hulpprogram ma's. ESP-clusters hebben ook een deel van het toegangs beheer van het bestands systeem met behulp van AAD op cluster niveau wanneer u ADLS gebruikt. 
+Momenteel bestaat er geen zwerver-invoeg toepassing voor Blob Storage en Azure Data Lake Storage Gen1 of Gen2. Voor ESP-clusters moet u Azure Data Lake Storage gebruiken, omdat u Mini maal nauw keurige machtigingen hand matig op het bestandssysteem niveau kunt instellen met behulp van HDFS-hulpprogram ma's. Bij het gebruik van Azure Data Lake Storage worden ESP-clusters een deel van het toegangs beheer voor bestands systemen met behulp van Azure Active Directory op cluster niveau. 
 
-U moet de Azure Storage Explorer kunnen gebruiken om beleid voor gegevens toegang toe te wijzen aan beveiligings groepen waar uw gebruikers zich bevinden met behulp van de procedures die worden beschreven in de volgende artikelen:
+U kunt beleid voor gegevens toegang toewijzen aan de beveiligings groepen van uw gebruikers met behulp van de Azure Storage Explorer. Zie voor meer informatie:
 
-* [Hoe kan ik machtigingen instellen voor Azure AD-gebruikers om gegevens op te vragen in Data Lake Storage Gen2 met behulp van Hive of andere services?](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2#how-do-i-set-permissions-for-azure-ad-users-to-query-data-in-data-lake-storage-gen2-by-using-hive-or-other-services)
-* [Machtigingen voor bestanden en mapniveau instellen met behulp van Azure Storage Explorer met Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-how-to-set-permissions-storage-explorer)
+- [Hoe kan ik machtigingen instellen voor Azure AD-gebruikers om gegevens op te vragen in Data Lake Storage Gen2 met behulp van Hive of andere services?](hdinsight-hadoop-use-data-lake-storage-gen2.md#how-do-i-set-permissions-for-azure-ad-users-to-query-data-in-data-lake-storage-gen2-by-using-hive-or-other-services)
+- [Machtigingen voor bestanden en mapniveau instellen met behulp van Azure Storage Explorer met Azure Data Lake Storage Gen2](/azure/storage/blobs/data-lake-storage-how-to-set-permissions-storage-explorer)
 
 ### <a name="can-i-increase-hdfs-storage-on-a-cluster-without-increasing-the-disk-size-of-worker-nodes"></a>Kan ik de HDFS-opslag op een cluster verg Roten zonder de schijf grootte van worker-knoop punten te verhogen?
 
-Nee, u kunt de schijf grootte van geen enkel werk knooppunt verg Roten. De enige manier om de schijf grootte te verg Roten, is door het cluster te verwijderen en opnieuw te maken op grotere virtuele worker-machines.
-
-Micro soft raadt u niet aan om HDFS te gebruiken voor het opslaan van uw gegevens in HDInsight, omdat de gegevens worden verwijderd wanneer u het cluster verwijdert. In plaats daarvan raden we u aan om uw gegevens op te slaan in Azure. Door het cluster omhoog te schalen, kunt u ook meer capaciteit toevoegen aan uw HDInsight-cluster.
+Nee, u kunt de schijf grootte van een worker-knoop punt niet verhogen. de enige manier om de schijf grootte te verg Roten, is het verwijderen van het cluster en het opnieuw maken met grotere werk-Vm's. Gebruik geen HDFS om uw HDInsight-gegevens op te slaan, omdat de gegevens worden verwijderd als u het cluster verwijdert. In plaats daarvan slaat u uw gegevens op in Azure. Door het cluster omhoog te schalen, kunt u ook extra capaciteit toevoegen aan uw HDInsight-cluster.
 
 ## <a name="edge-nodes"></a>Edge-knooppunten
 
 ### <a name="can-i-add-an-edge-node-after-the-cluster-has-been-created"></a>Kan ik een Edge-knoop punt toevoegen nadat het cluster is gemaakt?
 
-Ja, u kunt een leeg Edge-knoop punt toevoegen aan een bestaand HDInsight-cluster of aan een nieuw cluster wanneer u het cluster maakt.
-
-Zie [Lege Edge-knooppunten op Apache Hadoop-clusters gebruiken in HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-apps-use-edge-node) voor meer informatie.
+HDInsight-cluster of een nieuw cluster bij het maken van het cluster. Zie [Lege Edge-knooppunten op Apache Hadoop-clusters gebruiken in HDInsight](hdinsight-apps-use-edge-node.md) voor meer informatie.
 
 ### <a name="how-can-i-connect-to-an-edge-node"></a>Hoe kan ik verbinding maken met een Edge-knoop punt?
 
-Nadat u een Edge-knoop punt hebt gemaakt, kunt u verbinding maken met het Edge-knoop punt met behulp van de SSH op poort 22. U kunt de naam van het Edge-knoop punt in de cluster Portal vinden (de namen zijn in het algemeen eindigen op '-Ed ').
+Nadat u een Edge-knoop punt hebt gemaakt, kunt u er verbinding mee maken via SSH op poort 22. U kunt de naam van het Edge-knoop punt vinden in de cluster Portal. De namen eindigen meestal met *-Ed*.
 
 ### <a name="why-are-persisted-scripts-not-running-automatically-on-newly-created-edge-nodes"></a>Waarom worden persistente scripts niet automatisch uitgevoerd op nieuw gemaakte Edge-knoop punten?
 
-Persistente scripts worden gebruikt voor het aanpassen van nieuwe werk knooppunten die aan het cluster worden toegevoegd via schaal bewerkingen en die niet van toepassing zijn op Edge-knoop punten.
+U gebruikt persistente scripts om nieuwe worker-knoop punten die aan het cluster worden toegevoegd, aan te passen via schaal bewerkingen. Persistente scripts zijn niet van toepassing op Edge-knoop punten.
 
 ## <a name="rest-api"></a>REST-API
 
 ### <a name="what-are-the-rest-api-calls-to-pull-a-tez-query-view-from-the-cluster"></a>Wat zijn de REST API-aanroepen om een TEZ-query weergave uit het cluster te halen?
 
-U kunt de volgende REST-eind punten gebruiken om de benodigde informatie te verzamelen waarbij het antwoord in JSON-indeling wordt weer. Basis verificatie headers kunnen worden gebruikt om deze aanvragen uit te voeren.
+U kunt de volgende REST-eind punten gebruiken om de benodigde gegevens in JSON-indeling te halen. Basis verificatie headers gebruiken om de aanvragen uit te voeren.
 
-* ' TEZ-query weer geven –`<cluster name>`https://. azurehdinsight.net/WS/v1/Timeline/HIVE_QUERY_ID/
-
-* "TEZ dag" View- https://`<cluster name>`. azurehdinsight.net/WS/v1/Timeline/TEZ_DAG_ID/
+- TEZ-query weergave: *https\/:/\<cluster naam >. azurehdinsight. net/WS/v1/Timeline/HIVE_QUERY_ID/*
+- TEZ dag weer gave: *https\/:/\<cluster naam >. azurehdinsight. net/WS/v1/Timeline/TEZ_DAG_ID/*
 
 ### <a name="how-do-i-retrieve-the-configuration-details-from-hdi-cluster-by-using-an-azure-active-directory-user"></a>Hoe kan ik de configuratie gegevens uit het HDI-cluster op te halen met behulp van een Azure Active Directory gebruiker?
 
@@ -315,15 +321,28 @@ Als u de juiste verificatie tokens met uw AAD-gebruiker wilt onderhandelen, gaat
 
 ### <a name="how-do-i-use-ambari-restful-api-to-monitor-yarn-performance"></a>Hoe kan ik Ambari rest API gebruiken om de prestaties van een garen te controleren?
 
-Als de krul opdracht wordt aangeroepen in hetzelfde VNet of een gelijkwaardige VNet, gebruikt u de volgende opdracht:
+Als u de krul opdracht aanroept in hetzelfde virtuele netwerk of in een gekoppeld virtueel netwerk, is de opdracht:
 
-``curl -u <cluster login username> -sS -G http://headnodehost:8080/api/v1/clusters/anssenllap/services/YARN/components/NODEMANAGER?fields=metrics/cpu``
+```curl
+curl -u <cluster login username> -sS -G
+http://<headnodehost>:8080/api/v1/clusters/<ClusterName>/services/YARN/components/NODEMANAGER?fields=metrics/cpu
+```
  
-Als de opdracht wordt aangeroepen vanuit buiten het VNet of een niet-gelijkwaardig VNet, is de opdracht indeling:
- 
-* Voor een niet-ESP-cluster:``curl -u <cluster login username> -sS -G https://ClusterName.azurehdinsight.net/api/v1/clusters/ClusterName/services/YARN/components/NODEMANAGER?fields=metrics/cpu``
- 
-* Voor een ESP-cluster:``curl -u <cluster login username> -sS -G https://ClusterName.azurehdinsight.net/api/v1/clusters/ClusterName/services/YARN/components/NODEMANAGER?fields=metrics/cpu``
+Als u de opdracht van buiten het virtuele netwerk of vanuit een niet-gekoppeld virtueel netwerk aanroept, is de opdracht indeling:
+
+- Voor een niet-ESP-cluster:
+  
+  ```curl
+  curl -u <cluster login username> -sS -G 
+  https://<ClusterName>.azurehdinsight.net/api/v1/clusters/<ClusterName>/services/YARN/components/NODEMANAGER?fields=metrics/cpu
+  ```
+
+- Voor een ESP-cluster:
+  
+  ```curl
+  curl -u <cluster login username>-sS -G 
+  https://<ClusterName>.azurehdinsight.net/api/v1/clusters/<ClusterName>/services/YARN/components/NODEMANAGER?fields=metrics/cpu
+  ```
 
 > [!NOTE]
 > Met krul wordt u om een wacht woord gevraagd. U moet een geldig wacht woord opgeven voor de gebruikers naam van het cluster.
@@ -340,7 +359,7 @@ Zie [uw Azure-abonnement annuleren](https://docs.microsoft.com/azure/billing/bil
 
 ### <a name="for-pay-as-you-go-subscriptions-what-happens-after-i-cancel-my-subscription"></a>Wat gebeurt er nadat ik mijn abonnement heb geannuleerd? voor betalen per gebruik-abonnementen?
 
-Zie [Wat gebeurt er nadat ik mijn abonnement heb geannuleerd?](https://docs.microsoft.com/azure/billing/billing-how-to-cancel-azure-subscription#what-happens-after-i-cancel-my-subscription) voor informatie over uw abonnement nadat dit is geannuleerd?
+Zie [Wat gebeurt er nadat ik mijn abonnement heb geannuleerd?](/azure/billing/billing-how-to-cancel-azure-subscription) voor informatie over uw abonnement nadat dit is geannuleerd?
 
 ## <a name="hive"></a>Hive
 
@@ -352,8 +371,8 @@ Hoewel alleen 1,2 wordt weer gegeven in de Ambari-gebruikers interface, bevat HD
 
 ### <a name="what-does-hdinsight-offer-in-terms-of-real-time-stream-processing-capabilities"></a>Wat biedt HDInsight voor real-time verwerking van stroom mogelijkheden?
 
-Voor informatie over de integratie mogelijkheden van stroom verwerking in azure HDInsight raadpleegt u [een stroom verwerkings technologie kiezen in azure](https://docs.microsoft.com/azure/architecture/data-guide/technology-choices/stream-processing).
+Voor informatie over de integratie mogelijkheden van stroom verwerking in azure HDInsight raadpleegt u [een stroom verwerkings technologie kiezen in azure](/azure/architecture/data-guide/technology-choices/stream-processing).
 
 ### <a name="is-there-a-way-to-dynamically-terminate-the-head-node-of-the-cluster-when-the-cluster-is-idle-for-a-specific-period"></a>Is er een manier om het hoofd knooppunt van het cluster dynamisch te beëindigen wanneer het cluster gedurende een bepaalde periode niet actief is?
 
-Nee, u kunt het hoofd knooppunt van het cluster niet dynamisch beëindigen. U kunt Azure Data Factory voor dit scenario gebruiken.
+U kunt dit niet doen met HDInsight-clusters. U kunt Azure Data Factory voor deze scenario's gebruiken.

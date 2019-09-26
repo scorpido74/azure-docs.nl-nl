@@ -4,14 +4,14 @@ description: Hierin wordt beschreven hoe u Azure Resource Manager sjablonen gebr
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 09/25/2019
 ms.author: tomfitz
-ms.openlocfilehash: 6d0d162f0f6f3024f6b4b63b8df1df9fd413afc8
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: 96f140cfa5e6151ad53ca242d1fc87ba3397316e
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70965296"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300156"
 ---
 # <a name="azure-resource-manager-templates"></a>Azure Resource Manager-sjablonen
 
@@ -47,9 +47,11 @@ Als u probeert te kiezen tussen het gebruik van Resource Manager-sjablonen en ee
 
 * **Implementatie blauw drukken**: U kunt gebruikmaken van [blauw drukken](../governance/blueprints/overview.md) van micro soft om te voldoen aan de normen voor regelgeving en naleving. Deze blauw drukken bevatten vooraf gemaakte sjablonen voor verschillende architecturen.
 
+* **CI/cd-integratie**: U kunt sjablonen integreren in de hulpprogram ma's voor continue integratie en doorlopende implementatie (CI/CD), waarmee u uw release pijplijnen kunt automatiseren voor snelle en betrouw bare updates van toepassingen en infra structuur. Met Azure DevOps en Resource Manager-sjabloon taak kunt u Azure-pijp lijnen gebruiken om voortdurend Azure Resource Manager-sjabloon projecten te bouwen en implementeren. Voor meer informatie raadpleegt u [VS project met pijp lijnen](./vs-resource-groups-project-devops-pipelines.md) en [doorlopende integratie met Azure-pijp lijnen](./resource-manager-tutorial-use-azure-pipelines.md).
+
 * **Exporteer bare code**: U kunt een sjabloon voor een bestaande resource groep ophalen door de huidige status van de resource groep te exporteren of door de sjabloon die wordt gebruikt voor een bepaalde implementatie weer te geven. Raadplegen van de [geëxporteerde sjabloon](export-template-portal.md) is een handige manier om de syntaxis van de sjabloon te leren kennen.
 
-* **Hulp middelen voor ontwerpen**: U kunt sjablonen ontwerpen met [Visual Studio code](resource-manager-tools-vs-code.md) en de extensie van het sjabloon programma. U krijgt IntelliSense, syntaxis markering, in line Help en veel andere taal functies.
+* **Hulp middelen voor ontwerpen**: U kunt sjablonen ontwerpen met [Visual Studio code](resource-manager-tools-vs-code.md) en de extensie van het sjabloon programma. U krijgt IntelliSense, syntaxis markering, in line Help en veel andere taal functies. Naast Visual Studio code kunt u ook [Visual Studio](./vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)gebruiken.
 
 ## <a name="template-file"></a>Sjabloon bestand
 
@@ -124,7 +126,4 @@ Zie [Using linked templates with Azure Resource Manager](resource-group-linked-t
 ## <a name="next-steps"></a>Volgende stappen
 
 * Zie [inzicht krijgen in de structuur en de syntaxis van Azure Resource Manager-sjablonen](resource-group-authoring-templates.md)voor meer informatie over de eigenschappen in sjabloon bestanden.
-* Zie [afhankelijkheden definiëren in azure Resource Manager sjablonen](resource-group-define-dependencies.md)om afhankelijkheden zo in te stellen dat er een resource wordt geïmplementeerd vóór een andere bron.
-* U kunt een resource toevoegen aan uw sjabloon en optioneel implementeren. Zie [voorwaardelijke implementatie in Resource Manager-sjablonen](conditional-resource-deployment.md)voor meer informatie.
-* In plaats van herhalende blokken JSON in uw sjabloon, kunt u meer dan één exemplaar van een variabele, eigenschap of resource opgeven. Zie voor meer informatie [resource, eigenschap of variabele herhaling in azure Resource Manager sjablonen](resource-group-create-multiple.md).
 * Voor meer informatie over het exporteren van [sjablonen raadpleegt u Quick Start: Azure Resource Manager-sjablonen maken en implementeren via Azure Portal](./resource-manager-quickstart-create-templates-use-the-portal.md).

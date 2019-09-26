@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: overview
 ms.date: 08/07/2019
 ms.author: helohr
-ms.openlocfilehash: 8827aa660d348ef9e42c617067c2837b8697ba6e
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 440ebfffec9378e0dad1fd04e0880c90571bb0f1
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69876779"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71301002"
 ---
 # <a name="what-is-windows-virtual-desktop-preview"></a>Wat is Windows virtueel bureau blad preview? 
 
@@ -76,6 +76,8 @@ Uw infra structuur heeft de volgende zaken nodig om virtueel bureau blad van Win
 * Een Windows Server-Active Directory gesynchroniseerd met Azure Active Directory. Dit kan worden ingeschakeld via:
   * Azure AD Connect
   * Azure AD Domain Services
+  >[!NOTE]
+  >Windows virtueel bureau blad ondersteunt alleen Azure AD Domain Services gebruikers die afkomstig zijn van Azure Active Directory. Gebruikers die afkomstig zijn van Windows Server AD, worden op dit moment niet ondersteund.
 * Een Azure-abonnement dat een virtueel netwerk bevat dat of die is verbonden met de Windows Server-Active Directory
   
 De virtuele machines van Azure die u maakt voor het virtuele bureau blad van Windows, moeten zijn:

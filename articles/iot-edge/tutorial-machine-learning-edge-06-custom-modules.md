@@ -8,12 +8,12 @@ ms.date: 06/13/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 4d03e5ee5faf39425e1bf927a3c0557b0ad01b82
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: e629cbdce55f236e095f606f56adec453b0b17c7
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840103"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71299866"
 ---
 # <a name="tutorial-create-and-deploy-custom-iot-edge-modules"></a>Zelfstudie: Aangepaste IoT Edge-modules maken en implementeren
 
@@ -27,7 +27,7 @@ IoT Edge hub vereenvoudigt module naar module communicatie. Als u de IoT Edge hu
 We willen dat het IoT Edge-apparaat vier dingen doet voor ons:
 
 * Gegevens ontvangen van de Blade-apparaten
-* RESTERENDE levens duur voors pellen voor het apparaat dat de gegevens heeft verzonden
+* Resterend nuttige levens duur (resterende levens duur) voors pellen voor het apparaat dat de gegevens heeft verzonden
 * Een bericht met alleen de resterende levens duur voor het apparaat naar IoT Hub verzenden (deze functie kan zodanig worden gewijzigd dat alleen gegevens worden verzonden als de resterende levens duur onder een bepaald niveau daalt)
 * Sla de gegevens van het Leaf-apparaat op in een lokaal bestand op het IoT Edge apparaat. Dit gegevens bestand wordt regel matig geüpload naar IoT Hub via het uploaden van bestanden om de training van het machine learning model te verfijnen. Het gebruik van bestanden uploaden in plaats van constante berichten streaming is rendabeler.
 
@@ -56,7 +56,7 @@ De stappen in dit artikel worden doorgaans uitgevoerd door een Cloud ontwikkelaa
 
 ## <a name="create-a-new-iot-edge-solution"></a>Een nieuwe IoT Edge oplossing maken
 
-Tijdens de uitvoering van de tweede van onze twee Azure Notebooks hebben we een container installatie kopie gemaakt en gepubliceerd met het resterende levens duur-model. Azure Machine Learning, als onderdeel van het proces voor het maken van de installatie kopie, gebouwd in de onderdelen, zodat de installatie kopie kan worden geïmplementeerd als een Azure IoT Edge-module. In deze stap gaan we een Azure IoT Edge-oplossing maken met behulp van de module ' Azure Machine Learning ' en de module naar de installatie kopie wijzen die we hebben gepubliceerd met behulp van Azure Notebooks.
+Tijdens de uitvoering van de tweede van onze twee Azure Notebooks hebben we een container installatie kopie gemaakt en gepubliceerd met het resterende levens duur-model. Azure Machine Learning, als onderdeel van het proces voor het maken van de installatie kopie, het model verpakt zodat de installatie kopie kan worden geïmplementeerd als een Azure IoT Edge-module. In deze stap gaan we een Azure IoT Edge-oplossing maken met behulp van de module ' Azure Machine Learning ' en de module naar de installatie kopie wijzen die we hebben gepubliceerd met behulp van Azure Notebooks.
 
 1. Open een extern-bureaublad sessie naar uw ontwikkel machine.
 
@@ -827,7 +827,7 @@ In dit artikel hebben we een IoT Edge oplossing gemaakt in Visual Studio code me
 
 Meer informatie vindt u op de volgende pagina's:
 
-* [Meer informatie over het implementeren van modules en het tot stand brengen van routes in IoT Edge](module-composition.md)
+* [Meer informatie over het implementeren van modules en het vaststellen van routes naar IoT Edge](module-composition.md)
 * [Query syntaxis voor het routeren van berichten IoT Hub](../iot-hub/iot-hub-devguide-routing-query-syntax.md)
 * [IoT Hub bericht routering: nu met route ring op bericht tekst](https://azure.microsoft.com/blog/iot-hub-message-routing-now-with-routing-on-message-body/)
 * [Bestanden uploaden met IoT Hub](../iot-hub/iot-hub-devguide-file-upload.md)

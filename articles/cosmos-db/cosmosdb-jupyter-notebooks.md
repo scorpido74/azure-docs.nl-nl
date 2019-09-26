@@ -6,16 +6,18 @@ ms.topic: overview
 ms.date: 09/22/2019
 author: rimman
 ms.author: rimman
-ms.openlocfilehash: 57df9e0bd6f359a45333fcde51c51f49321fec9e
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 8389cd4d73c5c5d881dcc32c688a59b86895a3e2
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71213878"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71309555"
 ---
 # <a name="built-in-jupyter-notebooks-support-in-azure-cosmos-db"></a>Ingebouwde Jupyter-notebooks ondersteunen in Azure Cosmos DB
 
 Jupyter notebook is een open-source webtoepassing waarmee u documenten kunt maken en delen met Live code, vergelijkingen, visualisaties en tekst. Azure Cosmos DB ondersteunt ingebouwde Jupyter-notebooks voor alle Api's, zoals Cassandra, MongoDB, SQL, Gremlin en Table. Met de ingebouwde ondersteuning voor notebooks voor alle Azure Cosmos DB Api's en gegevens modellen kunt u interactief query's uitvoeren. De Jupyter-notebooks worden uitgevoerd binnen de Azure Cosmos-accounts en ze stellen ontwikkel aars in staat om gegevens te verkennen, gegevens te reinigen, gegevens trans formaties, numerieke simulaties, statistische model lering, gegevens visualisatie en machine learning.
+
+![Visualisaties van Jupyter-notebooks in Azure Cosmos DB](./media/cosmosdb-jupyter-notebooks/cosmos-notebooks-overview.png)
 
 De Jupyter-notebooks ondersteunen Magic-functies die de mogelijkheden van de kernel uitbreiden door extra opdrachten te ondersteunen. Cosmos Magic is een opdracht die de mogelijkheden van de python-kernel in Jupyter notebook uitbreidt, zodat u Azure Cosmos SQL API-query's kunt uitvoeren naast Apache Spark. U kunt python-en SQL-API-query's eenvoudig combi neren om gegevens op te vragen en te visualiseren door gebruik te maken van uitgebreide visualisatie bibliotheken die zijn geïntegreerd met render-opdrachten.
 Azure Portal Jupyter Notebook-ervaring in systeem eigen integreert in azure Cosmos-accounts, zoals wordt weer gegeven in de volgende afbeelding:
@@ -56,9 +58,8 @@ Jupyter-notebooks kunnen diverse soorten onderdelen bevatten, die zijn ingedeeld
 
 Raadpleeg de volgende artikelen om aan de slag te gaan met ingebouwde Jupyter-notebooks in Azure Cosmos DB:
 
-* [Een notitie blok maken]()
-* [Afhankelijkheden in een notitie blok installeren]()
-* [Een notebook-en Cosmos Magic-extensie gebruiken om gegevens te analyseren]()
+* [Notitie blokken in een Azure Cosmos-account inschakelen](enable-notebooks.md)
+* [Functies en opdrachten van notitie blok gebruiken](use-notebook-features-and-commands.md)
 
 
 

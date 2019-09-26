@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/21/2019
 ms.author: juliako
-ms.openlocfilehash: 6ff23ca4c66094df18d1d18caac67192059e8f8d
-ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
+ms.openlocfilehash: d4f4cfc005b2d5a63512245baee5230e9a26cb37
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70019405"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71309212"
 ---
 # <a name="azure-media-services-legacy-components"></a>Azure Media Services verouderde onderdelen
 
@@ -26,12 +26,14 @@ Na verloop van tijd zijn er stabiele verbeteringen en verbeteringen aangebracht 
 
 ## <a name="legacy-components-and-migration-guidance"></a>Verouderde onderdelen en migratie richtlijnen
 
-### <a name="media-processors"></a>Media-processors
-
 Er wordt een afschaffing van de media processors van *Windows Azure Media Encoder* (WAME) en *Azure Media Encoder* (AAM) aangekondigd. Deze processors worden op 30 november 2019 buiten gebruik gesteld.
 
 * [Migreren van Windows Azure Media Encoder naar Media Encoder Standard](migrate-windows-azure-media-encoder.md)
 * [Migreren van Azure Media Encoder naar Media Encoder Standard](migrate-azure-media-encoder.md)
+
+We kondigen ook de afschaffing van *Azure media indexer* en *Azure media indexer 2*. De processor van [Azure media indexer](media-services-index-content.md) media wordt op 1 oktober 2020 buiten gebruik gesteld. De media processors van [[Azure media indexer 2 (preview)](media-services-process-content-with-indexer2.md) worden buiten gebruik gesteld op 1 januari van 2019.  [Azure Media Services video indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) vervangt deze verouderde media processors.
+
+* [Migreer van Azure media indexer en Azure media indexer 2 naar Azure Media Services video indexer](migrate-indexer-v1-v2.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 3c21c0bdce6f6a5cd3c8f634bf400600b30a8ead
-ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
+ms.openlocfilehash: 5a7e7fa011c0287d5e97ad7a8cd2e3ba77f298dd
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68414590"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71299850"
 ---
 # <a name="create-and-provision-an-iot-edge-device-using-symmetric-key-attestation"></a>Een IoT Edge apparaat maken en inrichten met behulp van symmetrische sleutel attest
 
@@ -100,11 +100,14 @@ Wanneer u een inschrijving in DPS maakt, hebt u de mogelijkheid om te declareren
 
    1. Selecteer **Opslaan**.
 
-Nu een inschrijving voor dit apparaat bestaat, kan de IoT Edge runtime automatisch het apparaat inrichten tijdens de installatie. Zorg ervoor dat u de waarde van de **primaire sleutel** van uw inschrijving kopieert om deze te gebruiken bij het maken van de apparaatcode.
+Nu een inschrijving voor dit apparaat bestaat, kan de IoT Edge runtime automatisch het apparaat inrichten tijdens de installatie. Zorg ervoor dat u de waarde van de **primaire sleutel** van uw registratie kopieert om te gebruiken tijdens de installatie van de IOT Edge runtime, of dat u een apparaatcode wilt maken voor gebruik met een groeps registratie.
 
 ## <a name="derive-a-device-key"></a>Een apparaatcode afleiden
 
-Uw apparaat gebruikt de afgeleide apparaatwachtwoord met uw unieke registratie-ID voor het uitvoeren van een symmetrische sleutel attest met de inschrijving tijdens het inrichten. Als u de apparaatcode wilt genereren, gebruikt u de sleutel die u hebt gekopieerd uit uw DPS-inschrijving om een [HMAC-sha256](https://wikipedia.org/wiki/HMAC) van de unieke registratie-id voor het apparaat te berekenen en zet u het resultaat om in Base64-indeling.
+> [!NOTE]
+> Deze sectie is alleen vereist als u een groeps registratie gebruikt.
+
+Elk apparaat gebruikt de afgeleide apparaatwachtwoord met uw unieke registratie-ID voor het uitvoeren van de symmetrische sleutel attest met de inschrijving tijdens het inrichten. Als u de apparaatcode wilt genereren, gebruikt u de sleutel die u hebt gekopieerd uit uw DPS-inschrijving om een [HMAC-sha256](https://wikipedia.org/wiki/HMAC) van de unieke registratie-id voor het apparaat te berekenen en zet u het resultaat om in Base64-indeling.
 
 Neem de primaire of secundaire sleutel van uw inschrijving niet op in uw apparaatcode.
 
@@ -159,7 +162,10 @@ U hebt de volgende informatie nodig bij het inrichten van uw apparaat:
 
 * De waarde voor het bereik van de DPS **-id**
 * De **registratie-id** van het apparaat dat u hebt gemaakt
-* De afgeleide apparaatwaarde van het apparaat voor de Attestation-sleutel van symmetrische sleutels
+* De **primaire sleutel** die u hebt gekopieerd uit de DPS-inschrijving
+
+> [!TIP]
+> Voor groeps registraties hebt u de [afgeleide sleutel](#derive-a-device-key) van elk apparaat nodig in plaats van de registratie sleutel voor DPS.
 
 ### <a name="linux-device"></a>Linux-apparaat
 

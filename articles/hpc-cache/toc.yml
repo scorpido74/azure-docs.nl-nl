@@ -23,12 +23,15 @@
             - name: Nieuwe Blob-opslag vooraf laden
               href: hpc-cache-ingest.md
             - name: Alternatieve methoden voor gegevensopname
-            - name: De cache met een parallelle kopie vullen
-              href: hpc-cache-ingest-parallelcp.md
-            - name: De cache met msrsync vullen
-              href: hpc-cache-ingest-msrsync.md
-            - name: De cache met een handmatige bestandskopie vullen
-              href: hpc-cache-ingest-manual.md
+              items:
+                - name: De cache met een parallelle kopie vullen
+                  href: hpc-cache-ingest-parallelcp.md
+                - name: De cache met msrsync vullen
+                  href: hpc-cache-ingest-msrsync.md
+                - name: De cache met een handmatige bestandskopie vullen
+                  href: hpc-cache-ingest-manual.md
+    - name: Verbinding maken met de cache
+      href: hpc-cache-mount.md
 - name: Resources
   items:
     - name: Een ondersteuningsticket openen

@@ -1,6 +1,6 @@
 ---
-title: Het configureren van beheerde identiteiten voor Azure-resources op een Azure-VM met behulp van PowerShell
-description: Stapsgewijze beheerde instructies voor het configureren van identiteiten voor een Azure-resources op een Azure-VM met behulp van PowerShell.
+title: Beheerde identiteiten voor Azure-resources configureren op een virtuele Azure-machine met behulp van Power shell
+description: Stapsgewijze instructies voor het configureren van beheerde identiteiten voor Azure-resources op een Azure-VM met behulp van Power shell.
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -12,23 +12,23 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/27/2017
+ms.date: 09/26/2019
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f76fef3d5e6515e9d546c709ace0a4a533c0a45
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 4ba8ce6fb8147736c8265148a9f3576390dcccc6
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66112689"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71309768"
 ---
-# <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-powershell"></a>Configureren van beheerde identiteiten voor Azure-resources op een Azure-VM met behulp van PowerShell
+# <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-powershell"></a>Beheerde identiteiten voor Azure-resources configureren op een virtuele Azure-machine met behulp van Power shell
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-Beheerde identiteiten voor Azure-resources biedt Azure-services met een automatisch beheerde identiteit in Azure Active Directory. U kunt deze identiteit gebruiken om te verifiëren bij een service die ondersteuning biedt voor Azure AD-verificatie, zonder referenties in uw code. 
+Beheerde identiteiten voor Azure-resources bieden Azure-Services met een automatisch beheerde identiteit in Azure Active Directory. U kunt deze identiteit gebruiken voor verificatie bij elke service die ondersteuning biedt voor Azure AD-verificatie, zonder dat u referenties hebt in uw code. 
 
-In dit artikel, leert met behulp van PowerShell, u hoe u voor het uitvoeren van de volgende beheerde identiteiten voor bewerkingen van de Azure-resources op een Azure-VM.
+In dit artikel wordt beschreven hoe u Power shell gebruikt om de volgende beheerde identiteiten uit te voeren voor Azure-bronnen bewerkingen op een Azure-VM.
 
 [!INCLUDE [az-powershell-update](../../../includes/updated-for-az.md)]
 
@@ -38,175 +38,170 @@ In dit artikel, leert met behulp van PowerShell, u hoe u voor het uitvoeren van 
 - Als u nog geen Azure-account hebt, [registreer u dan voor een gratis account](https://azure.microsoft.com/free/) voordat u verdergaat.
 - Installeer [de meest recente versie van Azure PowerShell](/powershell/azure/install-az-ps) als u dat nog niet gedaan hebt.
 
-## <a name="system-assigned-managed-identity"></a>Het systeem toegewezen beheerde identiteit
+## <a name="system-assigned-managed-identity"></a>Door het systeem toegewezen beheerde identiteit
 
-In deze sectie leert u hoe u kunt in- en uitschakelen van de door het systeem toegewezen beheerde identiteit met Azure PowerShell.
+In deze sectie wordt beschreven hoe u de door het systeem toegewezen beheerde identiteit in-en uitschakelt met behulp van Azure PowerShell.
 
-### <a name="enable-system-assigned-managed-identity-during-creation-of-an-azure-vm"></a>Het systeem toegewezen beheerde identiteit inschakelen tijdens het maken van een Azure VM
+### <a name="enable-system-assigned-managed-identity-during-creation-of-an-azure-vm"></a>Door het systeem toegewezen beheerde identiteit inschakelen tijdens het maken van een virtuele Azure-machine
 
-Voor het maken van een Azure-VM met de ingeschakeld door het systeem toegewezen beheerde identiteit, uw account moet de [Inzender voor virtuele machines](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) roltoewijzing.  Er zijn geen extra Azure AD directory-roltoewijzingen zijn vereist.
+Als u een Azure-VM wilt maken met de door het systeem toegewezen beheerde identiteit, moet uw account de roltoewijzing van de [virtuele machine](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) hebben.  Er zijn geen extra Azure AD-Directory roltoewijzingen vereist.
 
-1. Raadpleeg een van de volgende Quick starts Azure-VM, alleen de benodigde secties ("aanmelden bij Azure ', 'Resourcegroep maken', 'Maken netwerken groeperen', 'de virtuele machine maken') te voltooien.
+1. Raadpleeg een van de volgende Quick starts voor Azure VM, waarbij u alleen de benodigde secties (' aanmelden bij Azure ', ' resource groep maken ', ' netwerk groep maken ', ' de virtuele machine maken ', hebt voltooid.
     
-    Wanneer u naar de sectie 'Maken van de virtuele machine', een kleine wijziging aanbrengt in de [New-AzVMConfig](/powershell/module/az.compute/new-azvm) cmdlet-syntaxis. Zorg ervoor dat u toevoegt een `-AssignIdentity:$SystemAssigned` parameter voor het inrichten van de virtuele machine met de door het systeem toegewezen identiteit die wordt ingeschakeld, bijvoorbeeld:
+    Wanneer u de sectie ' de virtuele machine maken ' krijgt, brengt u een kleine wijziging aan in de syntaxis van de cmdlet [New-AzVMConfig](/powershell/module/az.compute/new-azvm) . Zorg ervoor dat u een `-AssignIdentity:$SystemAssigned` para meter toevoegt voor het inrichten van de virtuele machine met de door het systeem toegewezen identiteit is ingeschakeld, bijvoorbeeld:
       
     ```powershell
     $vmConfig = New-AzVMConfig -VMName myVM -AssignIdentity:$SystemAssigned ...
     ```
 
-   - [Maak een Windows-machine met behulp van PowerShell](../../virtual-machines/windows/quick-create-powershell.md)
-   - [Maken van een virtuele Linux-machine met behulp van PowerShell](../../virtual-machines/linux/quick-create-powershell.md)
+   - [Een virtuele Windows-machine maken met behulp van Power shell](../../virtual-machines/windows/quick-create-powershell.md)
+   - [Een virtuele Linux-machine maken met behulp van Power shell](../../virtual-machines/linux/quick-create-powershell.md)
 
-> [!NOTE]
-> Richt u eventueel de beheerde identiteiten voor VM-extensie voor Azure-resources, maar wordt binnenkort worden afgeschaft. Het is raadzaam om het eindpunt van Azure Instance Metadata identiteit gebruiken voor verificatie. Zie voor meer informatie, [migreren van de VM-extensie naar Azure IMDS eindpunt voor de verificatie](howto-migrate-vm-extension.md).
 
-### <a name="enable-system-assigned-managed-identity-on-an-existing-azure-vm"></a>Het systeem toegewezen beheerde identiteit van een bestaande VM in Azure inschakelen
 
-Om in te schakelen door het systeem toegewezen beheerde identiteit op een virtuele machine die oorspronkelijk is ingericht zonder, uw account moet de [Inzender voor virtuele machines](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) roltoewijzing.  Er zijn geen extra Azure AD directory-roltoewijzingen zijn vereist.
+### <a name="enable-system-assigned-managed-identity-on-an-existing-azure-vm"></a>Door het systeem toegewezen beheerde identiteit inschakelen op een bestaande virtuele machine van Azure
 
-1. Aanmelden bij Azure met `Connect-AzAccount`. Gebruik een account dat is gekoppeld aan het Azure-abonnement met de virtuele machine.
+Als u door het systeem toegewezen beheerde identiteit wilt inschakelen op een virtuele machine die oorspronkelijk is ingericht zonder deze, moet uw account de roltoewijzing van de [virtuele machine](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) hebben.  Er zijn geen extra Azure AD-Directory roltoewijzingen vereist.
+
+1. Meld u aan bij Azure `Connect-AzAccount`met. Gebruik een account dat is gekoppeld aan het Azure-abonnement dat de virtuele machine bevat.
 
    ```powershell
    Connect-AzAccount
    ```
 
-2. Eerst ophalen van de eigenschappen van de virtuele machine met behulp van de `Get-AzVM` cmdlet. Gebruik vervolgens om in te schakelen op een beheerde identiteit voor het systeem is toegewezen, de `-AssignIdentity` overschakelen op de [Update-AzVM](/powershell/module/az.compute/update-azvm) cmdlet:
+2. Haal eerst de VM-eigenschappen op `Get-AzVM` met behulp van de cmdlet. Gebruik vervolgens de `-AssignIdentity` Schakel optie voor de cmdlet [Update-AzVM](/powershell/module/az.compute/update-azvm) om een door het systeem toegewezen beheerde identiteit in te scha kelen:
 
    ```powershell
    $vm = Get-AzVM -ResourceGroupName myResourceGroup -Name myVM
    Update-AzVM -ResourceGroupName myResourceGroup -VM $vm -AssignIdentity:$SystemAssigned
    ```
 
-> [!NOTE]
-> Richt u eventueel de beheerde identiteiten voor VM-extensie voor Azure-resources, maar wordt binnenkort worden afgeschaft. Het is raadzaam om het eindpunt van Azure Instance Metadata identiteit gebruiken voor verificatie. Zie voor meer informatie, [migreren van de VM-extensie naar Azure IMDS eindpunt voor de verificatie](howto-migrate-vm-extension.md).
 
-### <a name="add-vm-system-assigned-identity-to-a-group"></a>Systeem toegewezen identiteit van VM toevoegen aan een groep
 
-Nadat u systeem toegewezen identiteit op een virtuele machine hebt ingeschakeld, kunt u deze toevoegen aan een groep.  De volgende procedure wordt van een virtuele machine systeem toegewezen identiteit toegevoegd aan een groep.
+### <a name="add-vm-system-assigned-identity-to-a-group"></a>Aan een groep toegewezen VM-systeem-id toevoegen
 
-1. Aanmelden bij Azure met `Connect-AzAccount`. Gebruik een account dat is gekoppeld aan het Azure-abonnement met de virtuele machine.
+Nadat u een door het systeem toegewezen identiteit op een virtuele machine hebt ingeschakeld, kunt u deze toevoegen aan een groep.  Met de volgende procedure voegt u de systeem-id van een virtuele machine toe aan een groep.
+
+1. Meld u aan bij Azure `Connect-AzAccount`met. Gebruik een account dat is gekoppeld aan het Azure-abonnement dat de virtuele machine bevat.
 
    ```powershell
    Connect-AzAccount
    ```
 
-2. Ophalen en noteer de `ObjectID` (zoals opgegeven in de `Id` veld van de geretourneerde waarden) van de service-principal van de virtuele machine:
+2. Haal de (zoals `ObjectID` opgegeven in het `Id` veld van de geretourneerde waarden) van de service-principal van de VM op en noteer deze:
 
    ```powerhshell
    Get-AzADServicePrincipal -displayname "myVM"
    ```
 
-3. Ophalen en noteer de `ObjectID` (zoals opgegeven in de `Id` veld van de geretourneerde waarden) van de groep:
+3. Haal de (zoals `ObjectID` opgegeven in het `Id` veld van de geretourneerde waarden) van de groep op en noteer deze:
 
    ```powershell
    Get-AzADGroup -searchstring "myGroup"
    ```
 
-4. Service-principal van de virtuele machine toevoegen aan de groep:
+4. De service-principal van de virtuele machine toevoegen aan de groep:
 
    ```powershell
    Add-AzureADGroupMember -ObjectId "<objectID of group>" -RefObjectId "<object id of VM service principal>"
    ```
 
-## <a name="disable-system-assigned-managed-identity-from-an-azure-vm"></a>Uitschakelen door het systeem toegewezen identiteit van een Azure VM beheerd
+## <a name="disable-system-assigned-managed-identity-from-an-azure-vm"></a>Door het systeem toegewezen beheerde identiteit uitschakelen vanuit een Azure-VM
 
-Als u wilt uitschakelen door het systeem toegewezen beheerde identiteit op een virtuele machine, uw account moet de [Inzender voor virtuele machines](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) roltoewijzing.  Er zijn geen extra Azure AD directory-roltoewijzingen zijn vereist.
+Als u een door het systeem toegewezen beheerde identiteit op een VM wilt uitschakelen, moet uw account de roltoewijzing van de [virtuele machine](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) hebben.  Er zijn geen extra Azure AD-Directory roltoewijzingen vereist.
 
-Als u een virtuele Machine die niet meer nodig is op het systeem toegewezen beheerde identiteit maar nog steeds moet gebruiker toegewezen identiteiten op beheerde hebt, gebruikt u de volgende cmdlet:
+Als u een virtuele machine hebt die de door het systeem toegewezen beheerde identiteit niet meer nodig heeft, maar nog steeds door de gebruiker toegewezen beheerde identiteiten nodig hebt, gebruikt u de volgende cmdlet:
 
-1. Aanmelden bij Azure met `Connect-AzAccount`. Gebruik een account dat is gekoppeld aan het Azure-abonnement met de virtuele machine.
+1. Meld u aan bij Azure `Connect-AzAccount`met. Gebruik een account dat is gekoppeld aan het Azure-abonnement dat de virtuele machine bevat.
 
    ```powershell
    Connect-AzAccount
    ```
 
-2. Ophalen van de eigenschappen van de virtuele machine met behulp van de `Get-AzVM` cmdlet en stel de `-IdentityType` parameter `UserAssigned`:
+2. Haal de VM-eigenschappen op `Get-AzVM` met behulp van `-IdentityType` de cmdlet `UserAssigned`en stel de para meter in op:
 
    ```powershell   
    $vm = Get-AzVM -ResourceGroupName myResourceGroup -Name myVM 
    Update-AzVm -ResourceGroupName myResourceGroup -VM $vm -IdentityType "UserAssigned"
    ```
 
-Als u een virtuele machine die niet langer nodig door het systeem toegewezen beheerde identiteit heeft en er geen beheerde gebruiker toegewezen identiteiten, gebruikt u de volgende opdrachten:
+Als u een virtuele machine hebt die door het systeem toegewezen beheerde identiteit niet meer nodig heeft en geen door de gebruiker toegewezen beheerde identiteiten heeft, gebruikt u de volgende opdrachten:
 
 ```powershell
 $vm = Get-AzVM -ResourceGroupName myResourceGroup -Name myVM
 Update-AzVm -ResourceGroupName myResourceGroup -VM $vm -IdentityType None
 ```
 
-> [!NOTE]
-> Als u de beheerde identiteit voor VM-extensie voor Azure-resources (om te worden afgeschaft) hebt ingericht, moet u deze verwijderen met behulp de [Remove-AzVMExtension](/powershell/module/az.compute/remove-azvmextension). Zie voor meer informatie, [migreren van VM-extensie naar Azure IMDS voor verificatie](howto-migrate-vm-extension.md).
+
 
 ## <a name="user-assigned-managed-identity"></a>Door een gebruiker toegewezen beheerde identiteit
 
-In deze sectie leert u hoe u kunt toevoegen en verwijderen van een gebruiker toegewezen beheerde identiteit van een virtuele machine met behulp van Azure PowerShell.
+In deze sectie leert u hoe u een door de gebruiker toegewezen beheerde identiteit kunt toevoegen aan en verwijderen uit een virtuele machine met behulp van Azure PowerShell.
 
-### <a name="assign-a-user-assigned-managed-identity-to-a-vm-during-creation"></a>Een gebruiker toegewezen beheerde identiteit toewijzen aan een virtuele machine tijdens het maken van
+### <a name="assign-a-user-assigned-managed-identity-to-a-vm-during-creation"></a>Een door de gebruiker toegewezen beheerde identiteit toewijzen aan een virtuele machine tijdens het maken
 
-Als u wilt een gebruiker toegewezen identiteit toewijzen aan een virtuele machine, uw account moet de [Inzender voor virtuele machines](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) en [beheerde identiteit Operator](/azure/role-based-access-control/built-in-roles#managed-identity-operator) roltoewijzingen. Er zijn geen extra Azure AD directory-roltoewijzingen zijn vereist.
+Als u een door de gebruiker toegewezen identiteit aan een VM wilt toewijzen, moet uw account de roltoewijzingen van de [virtuele machine](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) en de rollen voor de [beheerde identiteits operator](/azure/role-based-access-control/built-in-roles#managed-identity-operator) hebben. Er zijn geen extra Azure AD-Directory roltoewijzingen vereist.
 
-1. Raadpleeg een van de volgende Quick starts Azure-VM, alleen de benodigde secties ("aanmelden bij Azure ', 'Resourcegroep maken', 'Maken netwerken groeperen', 'de virtuele machine maken') te voltooien. 
+1. Raadpleeg een van de volgende Quick starts voor Azure VM, waarbij u alleen de benodigde secties (' aanmelden bij Azure ', ' resource groep maken ', ' netwerk groep maken ', ' de virtuele machine maken ', hebt voltooid. 
   
-    Wanneer u naar de sectie 'Maken van de virtuele machine', een kleine wijziging aanbrengt in de [ `New-AzVMConfig` ](/powershell/module/az.compute/new-azvm) cmdlet-syntaxis. Voeg de `-IdentityType UserAssigned` en `-IdentityID` parameters voor het inrichten van de virtuele machine met de identiteit van een gebruiker toegewezen.  Vervang `<VM NAME>`,`<SUBSCRIPTION ID>`, `<RESROURCE GROUP>`, en `<USER ASSIGNED IDENTITY NAME>` door uw eigen waarden.  Bijvoorbeeld:
+    Wanneer u de sectie ' de virtuele machine maken ' krijgt, moet u een kleine wijziging aanbrengen in de syntaxis van de [`New-AzVMConfig`](/powershell/module/az.compute/new-azvm) cmdlet. Voeg de `-IdentityType UserAssigned` para `-IdentityID` meters en toe om de virtuele machine in te richten met een door de gebruiker toegewezen identiteit.  Vervang `<VM NAME>`,`<SUBSCRIPTION ID>`, en`<USER ASSIGNED IDENTITY NAME>` door uw eigen waarden. `<RESROURCE GROUP>`  Bijvoorbeeld:
     
     ```powershell 
     $vmConfig = New-AzVMConfig -VMName <VM NAME> -IdentityType UserAssigned -IdentityID "/subscriptions/<SUBSCRIPTION ID>/resourcegroups/<RESROURCE GROUP>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<USER ASSIGNED IDENTITY NAME>..."
     ```
     
-    - [Maak een Windows-machine met behulp van PowerShell](../../virtual-machines/windows/quick-create-powershell.md)
-    - [Maken van een virtuele Linux-machine met behulp van PowerShell](../../virtual-machines/linux/quick-create-powershell.md)
+    - [Een virtuele Windows-machine maken met behulp van Power shell](../../virtual-machines/windows/quick-create-powershell.md)
+    - [Een virtuele Linux-machine maken met behulp van Power shell](../../virtual-machines/linux/quick-create-powershell.md)
 
-> [!NOTE]
-> Richt u eventueel de beheerde identiteiten voor VM-extensie voor Azure-resources, maar wordt binnenkort worden afgeschaft. Het is raadzaam om het eindpunt van Azure Instance Metadata identiteit gebruiken voor verificatie. Zie voor meer informatie, [migreren van de VM-extensie naar Azure IMDS eindpunt voor de verificatie](howto-migrate-vm-extension.md).
 
-### <a name="assign-a-user-assigned-managed-identity-to-an-existing-azure-vm"></a>Een gebruiker toegewezen beheerde identiteit toewijzen aan een bestaande VM in Azure
 
-Als u wilt een gebruiker toegewezen identiteit toewijzen aan een virtuele machine, uw account moet de [Inzender voor virtuele machines](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) en [beheerde identiteit Operator](/azure/role-based-access-control/built-in-roles#managed-identity-operator) roltoewijzingen. Er zijn geen extra Azure AD directory-roltoewijzingen zijn vereist.
+### <a name="assign-a-user-assigned-managed-identity-to-an-existing-azure-vm"></a>Een door de gebruiker toegewezen beheerde identiteit toewijzen aan een bestaande virtuele machine van Azure
 
-1. Aanmelden bij Azure met `Connect-AzAccount`. Gebruik een account dat is gekoppeld aan het Azure-abonnement met de virtuele machine.
+Als u een door de gebruiker toegewezen identiteit aan een VM wilt toewijzen, moet uw account de roltoewijzingen van de [virtuele machine](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) en de rollen voor de [beheerde identiteits operator](/azure/role-based-access-control/built-in-roles#managed-identity-operator) hebben. Er zijn geen extra Azure AD-Directory roltoewijzingen vereist.
+
+1. Meld u aan bij Azure `Connect-AzAccount`met. Gebruik een account dat is gekoppeld aan het Azure-abonnement dat de virtuele machine bevat.
 
    ```powershell
    Connect-AzAccount
    ```
 
-2. Maak een beheerde identiteit gebruiker toegewezen met de [New-AzUserAssignedIdentity](/powershell/module/az.managedserviceidentity/new-azuserassignedidentity) cmdlet.  Houd er rekening mee de `Id` in de uitvoer omdat u dit in de volgende stap moet.
+2. Maak een door de gebruiker toegewezen beheerde identiteit met behulp van de cmdlet [New-AzUserAssignedIdentity](/powershell/module/az.managedserviceidentity/new-azuserassignedidentity) .  Let op `Id` de in de uitvoer, omdat u dit in de volgende stap nodig hebt.
 
    > [!IMPORTANT]
-   > Het maken van beheerde identiteiten gebruiker toegewezen ondersteunt alleen alfanumerieke tekens, onderstrepingstekens en afbreekstreepjes (0-9 of a-z of A-Z, \_ of -) tekens. Naam moet bovendien beperkt van 3 tot 128 tekens voor de toewijzing van VM/VMSS goed te laten werken. Zie voor meer informatie [Veelgestelde vragen en bekende problemen](known-issues.md)
+   > Het maken van door de gebruiker toegewezen beheerde identiteiten ondersteunt alleen alfanumerieke, onderstrepings tekens en afbreek streepjes (0-9 \_ of a-z of a-z of-). Bovendien moet de naam van 3 tot 128 tekens worden beperkt zodat de toewijzing aan VM-VMSS goed werkt. Zie [Veelgestelde vragen en bekende problemen](known-issues.md) voor meer informatie
 
    ```powershell
    New-AzUserAssignedIdentity -ResourceGroupName <RESOURCEGROUP> -Name <USER ASSIGNED IDENTITY NAME>
    ```
-3. Ophalen van de eigenschappen van de virtuele machine met behulp van de `Get-AzVM` cmdlet. Als u wilt een beheerde identiteit voor de gebruiker toegewezen aan de Azure-VM toewijst, gebruikt u de `-IdentityType` en `-IdentityID` overschakelen op de [Update-AzVM](/powershell/module/az.compute/update-azvm) cmdlet.  De waarde voor de`-IdentityId` parameter wordt de `Id` u in de vorige stap hebt genoteerd.  Vervang `<VM NAME>`, `<SUBSCRIPTION ID>`, `<RESROURCE GROUP>`, en `<USER ASSIGNED IDENTITY NAME>` door uw eigen waarden.
+3. Haal de eigenschappen van de virtuele `Get-AzVM` machine op met de cmdlet. U kunt vervolgens een door de gebruiker toegewezen beheerde identiteit toewijzen aan de Azure VM met `-IdentityType` behulp van de-en `-IdentityID` -switch in de cmdlet [Update-AzVM](/powershell/module/az.compute/update-azvm) .  De waarde voor de`-IdentityId` para meter `Id` is die u in de vorige stap hebt genoteerd.  Vervang `<VM NAME>` ,`<SUBSCRIPTION ID>`, en`<USER ASSIGNED IDENTITY NAME>` door uw eigen waarden. `<RESROURCE GROUP>`
 
    > [!WARNING]
-   > Als u wilt behouden een eerder door de gebruiker toegewezen beheerde identiteiten die aan de virtuele machine is toegewezen, query de `Identity` eigenschap van de VM-object (bijvoorbeeld `$vm.Identity`).  Als een gebruiker toegewezen beheerde identiteiten worden geretourneerd, opnemen in de volgende opdracht samen met de nieuwe gebruiker toegewezen beheerde identiteit die u wilt toewijzen aan de virtuele machine.
+   > Als u eerder door de gebruiker toegewezen beheerde identiteiten wilt behouden die zijn toegewezen aan `Identity` de virtuele machine, moet u een query uitvoeren `$vm.Identity`op de eigenschap van het VM-object (bijvoorbeeld).  Als een door de gebruiker toegewezen beheerde identiteit wordt geretourneerd, neemt u deze op in de volgende opdracht, samen met de nieuwe door de gebruiker toegewezen beheerde identiteit die u aan de virtuele machine wilt toewijzen.
 
    ```powershell
    $vm = Get-AzVM -ResourceGroupName <RESOURCE GROUP> -Name <VM NAME>
    Update-AzVM -ResourceGroupName <RESOURCE GROUP> -VM $vm -IdentityType UserAssigned -IdentityID "/subscriptions/<SUBSCRIPTION ID>/resourcegroups/<RESROURCE GROUP>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<USER ASSIGNED IDENTITY NAME>"
    ```
 
-> [!NOTE]
-> Richt u eventueel de beheerde identiteiten voor VM-extensie voor Azure-resources, maar wordt binnenkort worden afgeschaft. Het is raadzaam om het eindpunt van Azure Instance Metadata identiteit gebruiken voor verificatie. Zie voor meer informatie, [migreren van de VM-extensie naar Azure IMDS eindpunt voor de verificatie](howto-migrate-vm-extension.md).
 
-### <a name="remove-a-user-assigned-managed-identity-from-an-azure-vm"></a>Verwijderen van een gebruiker toegewezen beheerde identiteit van een Azure VM
 
-Als u wilt verwijderen van een gebruiker toegewezen identiteit aan een virtuele machine, uw account moet de [Inzender voor virtuele machines](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) roltoewijzing.
+### <a name="remove-a-user-assigned-managed-identity-from-an-azure-vm"></a>Een door de gebruiker toegewezen beheerde identiteit verwijderen uit een Azure-VM
 
-Als uw virtuele machine meerdere beheerde identiteiten gebruiker toegewezen, kunt u alles behalve het laatste item met de volgende opdrachten verwijderen. Vervang de parameterwaarden `<RESOURCE GROUP>` en `<VM NAME>` door uw eigen waarden. De `<USER ASSIGNED IDENTITY NAME>` is van de gebruiker toegewezen beheerde identiteit van de naam van eigenschap, die op de virtuele machine moet blijven. Deze informatie kan worden gevonden door het opvragen van de `Identity` eigenschap van de VM-object.  Bijvoorbeeld, `$vm.Identity`:
+Als u een door de gebruiker toegewezen identiteit wilt verwijderen naar een virtuele machine, moet uw account de roltoewijzing van de [virtuele machines](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) hebben.
+
+Als uw VM meerdere door de gebruiker toegewezen beheerde identiteiten heeft, kunt u alle, behalve de laatste, verwijderen met de volgende opdrachten. Vervang de parameterwaarden `<RESOURCE GROUP>` en `<VM NAME>` door uw eigen waarden. De `<USER ASSIGNED IDENTITY NAME>` is de naam eigenschap van de door de gebruiker toegewezen beheerde identiteit, die op de virtuele machine moet blijven. Deze informatie kan worden gevonden door het opvragen van `Identity` de eigenschap van het VM-object.  Bijvoorbeeld `$vm.Identity`:
 
 ```powershell
 $vm = Get-AzVm -ResourceGroupName myResourceGroup -Name myVm
 Update-AzVm -ResourceGroupName myResourceGroup -VirtualMachine $vm -IdentityType UserAssigned -IdentityID <USER ASSIGNED IDENTITY NAME>
 ```
-Als uw virtuele machine beschikt niet over een systeem toegewezen beheerd wilt identiteits- en u alle beheerde identiteiten die door de gebruiker toegewezen van het apparaat verwijderen, gebruikt u de volgende opdracht uit:
+Als uw virtuele machine geen door het systeem toegewezen beheerde identiteit heeft en u alle door de gebruiker toegewezen beheerde identiteiten wilt verwijderen, gebruikt u de volgende opdracht:
 
 ```powershell
 $vm = Get-AzVm -ResourceGroupName myResourceGroup -Name myVm
 Update-AzVm -ResourceGroupName myResourceGroup -VM $vm -IdentityType None
 ```
-Als uw virtuele machine zowel door het systeem toegewezen als de gebruiker toegewezen beheerde identiteiten is, kunt u alle de gebruiker toegewezen beheerde identiteiten verwijderen door over te schakelen voor het gebruik van beheerde identiteiten alleen door het systeem is toegewezen.
+Als uw virtuele machine zowel door het systeem toegewezen als door de gebruiker toegewezen beheerde identiteiten heeft, kunt u alle door de gebruiker toegewezen beheerde identiteiten verwijderen door te scha kelen naar alleen door het systeem toegewezen beheerde identiteiten te gebruiken.
 
 ```powershell 
 $vm = Get-AzVm -ResourceGroupName myResourceGroup -Name myVm
@@ -216,7 +211,7 @@ Update-AzVm -ResourceGroupName myResourceGroup -VirtualMachine $vm -IdentityType
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Beheerde identiteiten voor een overzicht van Azure-resources](overview.md)
-- Zie voor het volledige Azure-VM maken snelstartgidsen:
+- Zie voor de volledige Snelstartgids voor het maken van virtuele Azure-machines:
   
-  - [Een Windows-machine maken met PowerShell](../../virtual-machines/windows/quick-create-powershell.md) 
-  - [Een virtuele Linux-machine maken met PowerShell](../../virtual-machines/linux/quick-create-powershell.md) 
+  - [Een virtuele Windows-machine maken met Power shell](../../virtual-machines/windows/quick-create-powershell.md) 
+  - [Een virtuele Linux-machine maken met Power shell](../../virtual-machines/linux/quick-create-powershell.md) 

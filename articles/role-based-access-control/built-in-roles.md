@@ -15,12 +15,12 @@ ms.date: 08/27/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: 5f273f2eb36b0bd1d6757eb1ffb2403641cd461f
-ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
+ms.openlocfilehash: c9a156c4cc6e334e04f5a604b91b7b05d9aed390
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70801369"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71289598"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Ingebouwde rollen voor Azure-resources
 
@@ -38,7 +38,7 @@ De volgende tabel bevat een korte beschrijving van elke ingebouwde rol. Klik op 
 | [Eigenaar](#owner) | Hiermee kunt u alles beheren, inclusief toegang tot resources. |
 | [Inzender](#contributor) | Hiermee beheert u alles behalve het verlenen van toegang tot resources. |
 | [Lezer](#reader) | Hiermee kunt u alles weer geven, maar geen wijzigingen aanbrengen. |
-| [AcrDelete](#acrdelete) | ACR verwijderen |
+| [AcrDelete](#acrdelete) | acr delete |
 | [AcrImageSigner](#acrimagesigner) | acr-afbeeldingsondertekenaar |
 | [AcrPull](#acrpull) | acr pull |
 | [AcrPush](#acrpush) | acr push |
@@ -183,8 +183,8 @@ De volgende tabel bevat een korte beschrijving van elke ingebouwde rol. Klik op 
 > | **Acties** |  |
 > | * | Resources van alle typen maken en beheren |
 > | **Intact** |  |
-> | Microsoft.Authorization/*/Delete | Rollen en roltoewijzingen verwijderen |
-> | Microsoft.Authorization/*/Write | Rollen en roltoewijzingen maken |
+> | Microsoft.Authorization/*/Delete | Rollen, beleids toewijzingen, beleids definities en definities van beleids sets verwijderen |
+> | Microsoft.Authorization/*/Write | Rollen, roltoewijzingen, beleids toewijzingen, beleids definities en definities van beleids sets maken |
 > | Microsoft.Authorization/elevateAccess/Action | Hiermee wordt de gebruiker toegang tot beheerders verleend in het Tenant bereik |
 > | Microsoft.Blueprint/blueprintAssignments/write | Blauw drukken artefacten maken of bijwerken |
 > | Microsoft.Blueprint/blueprintAssignments/delete | Alle blauwdrukartefacten verwijderen |
@@ -212,7 +212,7 @@ De volgende tabel bevat een korte beschrijving van elke ingebouwde rol. Klik op 
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Beschrijving** | ACR verwijderen |
+> | **Beschrijving** | acr delete |
 > | **Id** | c2f4ef07-c644-48eb-af81-4b1b4947fb11 |
 > | **Acties** |  |
 > | Microsoft.ContainerRegistry/registries/artifacts/delete | Artefact verwijderen in container register. |
@@ -496,7 +496,7 @@ De volgende tabel bevat een korte beschrijving van elke ingebouwde rol. Klik op 
 > | **NotDataActions** |  |
 > | *geen* |  |
 
-## <a name="avere-contributor"></a>AVERE-bijdrager
+## <a name="avere-contributor"></a>Inzender voor Avere
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -531,7 +531,7 @@ De volgende tabel bevat een korte beschrijving van elke ingebouwde rol. Klik op 
 > | **NotDataActions** |  |
 > | *geen* |  |
 
-## <a name="avere-operator"></a>AVERE-operator
+## <a name="avere-operator"></a>Avere-operator
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -726,7 +726,7 @@ De volgende tabel bevat een korte beschrijving van elke ingebouwde rol. Klik op 
 > | Microsoft.RecoveryServices/locations/* |  |
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/operationResults/* | Resultaten van de werking van het back-upbeheer beheren |
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/* | Back-upcontainers maken en beheren in back-upinfrastructuur van Recovery Services kluis |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/refreshContainers/action | Hiermee vernieuwt u de container lijst |
+> | Microsoft.RecoveryServices/Vaults/backupFabrics/refreshContainers/action | Hiermee vernieuwt u de containerlijst |
 > | Microsoft.RecoveryServices/Vaults/backupJobs/* | Back-uptaken maken en beheren |
 > | Microsoft.RecoveryServices/Vaults/backupJobsExport/action | Taken exporteren |
 > | Microsoft.RecoveryServices/Vaults/backupManagementMetaData/* | Meta gegevens met betrekking tot back-upbeheer maken en beheren |
@@ -749,19 +749,19 @@ De volgende tabel bevat een korte beschrijving van elke ingebouwde rol. Klik op 
 > | Microsoft.Storage/storageAccounts/read | Retourneert de lijst met opslag accounts of haalt de eigenschappen voor het opgegeven opslag account op. |
 > | Microsoft.RecoveryServices/Vaults/backupstorageconfig/* |  |
 > | Microsoft.RecoveryServices/Vaults/backupconfig/* |  |
-> | Microsoft.RecoveryServices/Vaults/backupValidateOperation/action | Bewerking voor beveiligd item valideren |
+> | Microsoft.RecoveryServices/Vaults/backupValidateOperation/action | Bewerking op het beveiligde item valideren |
 > | Microsoft.RecoveryServices/Vaults/write | Met de bewerking Kluis maken wordt een Azure-resource van het type vault gemaakt. |
 > | Microsoft.RecoveryServices/Vaults/backupOperations/read | Hiermee wordt de status van de back-upbewerking voor Recovery Services kluis geretourneerd. |
 > | Microsoft.RecoveryServices/Vaults/backupEngines/read | Hiermee worden alle servers voor back-upbeheer geretourneerd die in de kluis zijn geregistreerd. |
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/backupProtectionIntent/* |  |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectableContainers/read | Alle Beveilig bare containers ophalen |
+> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectableContainers/read | Alle beveiligbare containers ophalen |
 > | Microsoft.RecoveryServices/locations/backupStatus/action | De back-upstatus voor Recovery Services kluizen controleren |
 > | Microsoft.RecoveryServices/locations/backupPreValidateProtection/action |  |
 > | Microsoft.RecoveryServices/locations/backupValidateFeatures/action | Functies valideren |
 > | Microsoft.RecoveryServices/Vaults/monitoringAlerts/write | Hiermee wordt de waarschuwing opgelost. |
 > | Microsoft.RecoveryServices/operations/read | Met deze bewerking wordt de lijst met bewerkingen voor een resource provider geretourneerd |
 > | Microsoft.RecoveryServices/locations/operationStatus/read | Hiermee wordt de bewerkings status voor een bepaalde bewerking opgehaald |
-> | Microsoft.RecoveryServices/Vaults/backupProtectionIntents/read | Alle intenties van de back-upbeveiliging weer geven |
+> | Microsoft.RecoveryServices/Vaults/backupProtectionIntents/read | Alle back-upbeveiligingsintenties weergeven |
 > | Microsoft.Support/* | Ondersteunings tickets maken en beheren |
 > | **Intact** |  |
 > | *geen* |  |
@@ -789,15 +789,15 @@ De volgende tabel bevat een korte beschrijving van elke ingebouwde rol. Klik op 
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/read | Herstelpunten voor beveiligde items ophalen. |
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/restore/action | Herstelpunten voor beveiligde items herstellen. |
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/revokeInstantItemRecovery/action | Herstel van onmiddellijke items intrekken voor beveiligd item |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/write | Een beveiligd back-upitem maken |
+> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/write | Hiermee wordt een beveiligd back-upitem gemaakt |
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/read | Hiermee worden alle geregistreerde containers geretourneerd |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/refreshContainers/action | Hiermee vernieuwt u de container lijst |
+> | Microsoft.RecoveryServices/Vaults/backupFabrics/refreshContainers/action | Hiermee vernieuwt u de containerlijst |
 > | Microsoft.RecoveryServices/Vaults/backupJobs/* | Back-uptaken maken en beheren |
 > | Microsoft.RecoveryServices/Vaults/backupJobsExport/action | Taken exporteren |
 > | Microsoft.RecoveryServices/Vaults/backupManagementMetaData/read |  |
 > | Microsoft.RecoveryServices/Vaults/backupOperationResults/* | Resultaten van back-upbeheer bewerkingen maken en beheren |
 > | Microsoft.RecoveryServices/Vaults/backupPolicies/operationResults/read | Hiermee worden de resultaten van de beleidsbewerking opgehaald. |
-> | Microsoft.RecoveryServices/Vaults/backupPolicies/read | Hiermee worden alle beveiligings beleidsregels geretourneerd |
+> | Microsoft.RecoveryServices/Vaults/backupPolicies/read | Hiermee worden alle beveiligingsbeleidsregels geretourneerd |
 > | Microsoft.RecoveryServices/Vaults/backupProtectableItems/* | Items maken en beheren waarvan een back-up kan worden gemaakt |
 > | Microsoft.RecoveryServices/Vaults/backupProtectedItems/read | Hiermee wordt de lijst met alle beveiligde items geretourneerd. |
 > | Microsoft.RecoveryServices/Vaults/backupProtectionContainers/read | Hiermee worden alle containers van het abonnement geretourneerd |
@@ -816,15 +816,15 @@ De volgende tabel bevat een korte beschrijving van elke ingebouwde rol. Klik op 
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Hiermee worden resource groepen opgehaald of weer gegeven. |
 > | Microsoft.Storage/storageAccounts/read | Retourneert de lijst met opslag accounts of haalt de eigenschappen voor het opgegeven opslag account op. |
 > | Microsoft.RecoveryServices/Vaults/backupstorageconfig/* |  |
-> | Microsoft.RecoveryServices/Vaults/backupValidateOperation/action | Bewerking voor beveiligd item valideren |
+> | Microsoft.RecoveryServices/Vaults/backupValidateOperation/action | Bewerking op het beveiligde item valideren |
 > | Microsoft.RecoveryServices/Vaults/backupOperations/read | Hiermee wordt de status van de back-upbewerking voor Recovery Services kluis geretourneerd. |
 > | Microsoft.RecoveryServices/Vaults/backupPolicies/operations/read | Status van beleids bewerking ophalen. |
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/write | Hiermee maakt u een geregistreerde container |
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/inquire/action | Een query uitvoeren voor werk belastingen binnen een container |
 > | Microsoft.RecoveryServices/Vaults/backupEngines/read | Hiermee worden alle servers voor back-upbeheer geretourneerd die in de kluis zijn geregistreerd. |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/backupProtectionIntent/write | Een doel voor back-upbeveiliging maken |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/backupProtectionIntent/read | Een doel voor back-upbeveiliging verkrijgen |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectableContainers/read | Alle Beveilig bare containers ophalen |
+> | Microsoft.RecoveryServices/Vaults/backupFabrics/backupProtectionIntent/write | Een back-upbeveiligingsintentie maken |
+> | Microsoft.RecoveryServices/Vaults/backupFabrics/backupProtectionIntent/read | Een back-upbeveiligingsintentie ophalen |
+> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectableContainers/read | Alle beveiligbare containers ophalen |
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/items/read | Alle items in een container ophalen |
 > | Microsoft.RecoveryServices/locations/backupStatus/action | De back-upstatus voor Recovery Services kluizen controleren |
 > | Microsoft.RecoveryServices/locations/backupPreValidateProtection/action |  |
@@ -832,7 +832,7 @@ De volgende tabel bevat een korte beschrijving van elke ingebouwde rol. Klik op 
 > | Microsoft.RecoveryServices/Vaults/monitoringAlerts/write | Hiermee wordt de waarschuwing opgelost. |
 > | Microsoft.RecoveryServices/operations/read | Met deze bewerking wordt de lijst met bewerkingen voor een resource provider geretourneerd |
 > | Microsoft.RecoveryServices/locations/operationStatus/read | Hiermee wordt de bewerkings status voor een bepaalde bewerking opgehaald |
-> | Microsoft.RecoveryServices/Vaults/backupProtectionIntents/read | Alle intenties van de back-upbeveiliging weer geven |
+> | Microsoft.RecoveryServices/Vaults/backupProtectionIntents/read | Alle back-upbeveiligingsintenties weergeven |
 > | Microsoft.Support/* | Ondersteunings tickets maken en beheren |
 > | **Intact** |  |
 > | *geen* |  |
@@ -858,12 +858,12 @@ De volgende tabel bevat een korte beschrijving van elke ingebouwde rol. Klik op 
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/read | Herstelpunten voor beveiligde items ophalen. |
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/read | Hiermee worden alle geregistreerde containers geretourneerd |
 > | Microsoft.RecoveryServices/Vaults/backupJobs/operationResults/read | Hiermee wordt het resultaat van de taakbewerking geretourneerd. |
-> | Microsoft.RecoveryServices/Vaults/backupJobs/read | Hiermee worden alle taak objecten geretourneerd |
+> | Microsoft.RecoveryServices/Vaults/backupJobs/read | Hiermee worden alle taakobjecten geretourneerd |
 > | Microsoft.RecoveryServices/Vaults/backupJobsExport/action | Taken exporteren |
 > | Microsoft.RecoveryServices/Vaults/backupManagementMetaData/read |  |
 > | Microsoft.RecoveryServices/Vaults/backupOperationResults/read | Hiermee wordt het resultaat van de back-upbewerking voor een Recovery Services-kluis geretourneerd. |
 > | Microsoft.RecoveryServices/Vaults/backupPolicies/operationResults/read | Hiermee worden de resultaten van de beleidsbewerking opgehaald. |
-> | Microsoft.RecoveryServices/Vaults/backupPolicies/read | Hiermee worden alle beveiligings beleidsregels geretourneerd |
+> | Microsoft.RecoveryServices/Vaults/backupPolicies/read | Hiermee worden alle beveiligingsbeleidsregels geretourneerd |
 > | Microsoft.RecoveryServices/Vaults/backupProtectedItems/read | Hiermee wordt de lijst met alle beveiligde items geretourneerd. |
 > | Microsoft.RecoveryServices/Vaults/backupProtectionContainers/read | Hiermee worden alle containers van het abonnement geretourneerd |
 > | Microsoft.RecoveryServices/Vaults/backupUsageSummaries/read | Retourneert samen vattingen voor beveiligde items en beveiligde servers voor een Recovery Services. |
@@ -877,14 +877,14 @@ De volgende tabel bevat een korte beschrijving van elke ingebouwde rol. Klik op 
 > | Microsoft.RecoveryServices/Vaults/backupOperations/read | Hiermee wordt de status van de back-upbewerking voor Recovery Services kluis geretourneerd. |
 > | Microsoft.RecoveryServices/Vaults/backupPolicies/operations/read | Status van beleids bewerking ophalen. |
 > | Microsoft.RecoveryServices/Vaults/backupEngines/read | Hiermee worden alle servers voor back-upbeheer geretourneerd die in de kluis zijn geregistreerd. |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/backupProtectionIntent/read | Een doel voor back-upbeveiliging verkrijgen |
+> | Microsoft.RecoveryServices/Vaults/backupFabrics/backupProtectionIntent/read | Een back-upbeveiligingsintentie ophalen |
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/items/read | Alle items in een container ophalen |
 > | Microsoft.RecoveryServices/locations/backupStatus/action | De back-upstatus voor Recovery Services kluizen controleren |
 > | Microsoft.RecoveryServices/Vaults/monitoringConfigurations/* |  |
 > | Microsoft.RecoveryServices/Vaults/monitoringAlerts/write | Hiermee wordt de waarschuwing opgelost. |
 > | Microsoft.RecoveryServices/operations/read | Met deze bewerking wordt de lijst met bewerkingen voor een resource provider geretourneerd |
 > | Microsoft.RecoveryServices/locations/operationStatus/read | Hiermee wordt de bewerkings status voor een bepaalde bewerking opgehaald |
-> | Microsoft.RecoveryServices/Vaults/backupProtectionIntents/read | Alle intenties van de back-upbeveiliging weer geven |
+> | Microsoft.RecoveryServices/Vaults/backupProtectionIntents/read | Alle back-upbeveiligingsintenties weergeven |
 > | Microsoft.RecoveryServices/Vaults/usages/read | Hiermee worden de gebruiksgegevens voor een Recovery Services-kluis geretourneerd. |
 > | **Intact** |  |
 > | *geen* |  |
@@ -1219,7 +1219,7 @@ De volgende tabel bevat een korte beschrijving van elke ingebouwde rol. Klik op 
 > | **Id** | a97b65f3-24c7-4388-baec-2e87135dc908 |
 > | **Acties** |  |
 > | Microsoft.CognitiveServices/*/read |  |
-> | Microsoft.CognitiveServices/accounts/listkeys/action | Een lijst met sleutels maken |
+> | Microsoft.CognitiveServices/accounts/listkeys/action | Lijst met sleutels |
 > | Microsoft.Insights/alertRules/read | Een klassieke waarschuwing voor metrische gegevens lezen |
 > | Micro soft. Insights/diagnosticSettings/lezen | Een diagnostische instelling voor de resource lezen |
 > | Microsoft.Insights/logDefinitions/read | Logboekdefinities lezen |
@@ -1593,7 +1593,7 @@ De volgende tabel bevat een korte beschrijving van elke ingebouwde rol. Klik op 
 > | **NotDataActions** |  |
 > | *geen* |  |
 
-## <a name="hdinsight-cluster-operator"></a>HDInsight-cluster operator
+## <a name="hdinsight-cluster-operator"></a>HDInsight-clusteroperator
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -2266,13 +2266,13 @@ De volgende tabel bevat een korte beschrijving van elke ingebouwde rol. Klik op 
 > | Microsoft.RecoveryServices/vaults/replicationFabrics/checkConsistency/action | Hiermee wordt de consistentie van de infrastructuur gecontroleerd |
 > | Micro soft. Recovery Services/kluizen/replicationFabrics/lezen | Alle infra structuren lezen |
 > | Microsoft.RecoveryServices/vaults/replicationFabrics/reassociateGateway/action | Gateway opnieuw koppelen |
-> | Microsoft.RecoveryServices/vaults/replicationFabrics/renewcertificate/action | Certificaat voor Fabric vernieuwen |
+> | Microsoft.RecoveryServices/vaults/replicationFabrics/renewcertificate/action | Certificaat voor de infrastructuur vernieuwen |
 > | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationNetworks/read | Alle netwerken lezen |
 > | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationNetworks/replicationNetworkMappings/read | Netwerk toewijzingen lezen |
 > | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/read | Beveiligings containers lezen |
 > | Micro soft. Recovery Services/kluizen/replicationFabrics/replicationProtectionContainers/replicationProtectableItems/lezen | Beveilig bare items lezen |
-> | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/applyRecoveryPoint/action | Herstel punt Toep assen |
-> | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/failoverCommit/action | Failover door voeren |
+> | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/applyRecoveryPoint/action | Herstelpunt toepassen |
+> | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/failoverCommit/action | Failover doorvoeren |
 > | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/plannedFailover/action | Geplande failover |
 > | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/read | Alle beveiligde items lezen |
 > | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/recoveryPoints/read | Alle replicatie herstel punten lezen |
@@ -2281,7 +2281,7 @@ De volgende tabel bevat een korte beschrijving van elke ingebouwde rol. Klik op 
 > | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/testFailover/action | Failover testen |
 > | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/testFailoverCleanup/action | Failovertest opschonen |
 > | Micro soft. Recovery Services/kluizen/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/unplannedFailover/Action | Failover |
-> | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/updateMobilityService/action | Mobility-service bijwerken |
+> | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/updateMobilityService/action | De Mobility-service bijwerken |
 > | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectionContainerMappings/read | Alle beveiligings container toewijzingen lezen |
 > | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationRecoveryServicesProviders/read | Recovery Services Providers lezen |
 > | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationRecoveryServicesProviders/refreshProvider/action | Provider vernieuwen |
@@ -2290,13 +2290,13 @@ De volgende tabel bevat een korte beschrijving van elke ingebouwde rol. Klik op 
 > | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationvCenters/read | Alle vCenter lezen |
 > | Microsoft.RecoveryServices/vaults/replicationJobs/* | Replicatie taken maken en beheren |
 > | Microsoft.RecoveryServices/vaults/replicationPolicies/read | Alle beleids regels lezen |
-> | Microsoft.RecoveryServices/vaults/replicationRecoveryPlans/failoverCommit/action | Herstel plan voor failover door voeren |
-> | Microsoft.RecoveryServices/vaults/replicationRecoveryPlans/plannedFailover/action | Herstel plan voor geplande failover |
+> | Microsoft.RecoveryServices/vaults/replicationRecoveryPlans/failoverCommit/action | Herstelplan voor failover doorvoeren |
+> | Microsoft.RecoveryServices/vaults/replicationRecoveryPlans/plannedFailover/action | Herstelplan voor geplande failover |
 > | Microsoft.RecoveryServices/vaults/replicationRecoveryPlans/read | Herstel plannen lezen |
-> | Microsoft.RecoveryServices/vaults/replicationRecoveryPlans/reProtect/action | Herstel plan opnieuw beveiligen |
-> | Microsoft.RecoveryServices/vaults/replicationRecoveryPlans/testFailover/action | Herstel plan voor failover testen |
-> | Microsoft.RecoveryServices/vaults/replicationRecoveryPlans/testFailoverCleanup/action | Herstel plan voor het opschonen van de Failovertest |
-> | Microsoft.RecoveryServices/vaults/replicationRecoveryPlans/unplannedFailover/action | Herstel plan voor failover |
+> | Microsoft.RecoveryServices/vaults/replicationRecoveryPlans/reProtect/action | Herstelplan voor opnieuw beveiligen |
+> | Microsoft.RecoveryServices/vaults/replicationRecoveryPlans/testFailover/action | Herstelplan voor failover testen |
+> | Microsoft.RecoveryServices/vaults/replicationRecoveryPlans/testFailoverCleanup/action | Herstelplan voor het opschonen van de failovertest |
+> | Microsoft.RecoveryServices/vaults/replicationRecoveryPlans/unplannedFailover/action | Herstelplan voor de failover |
 > | Microsoft.RecoveryServices/Vaults/monitoringAlerts/* | Waarschuwingen voor de Recovery Services-kluis lezen |
 > | Microsoft.RecoveryServices/Vaults/monitoringConfigurations/notificationConfiguration/read |  |
 > | Microsoft.RecoveryServices/Vaults/storageConfig/read |  |
@@ -2467,7 +2467,7 @@ De volgende tabel bevat een korte beschrijving van elke ingebouwde rol. Klik op 
 > | **NotDataActions** |  |
 > | *geen* |  |
 
-## <a name="sql-managed-instance-contributor"></a>Inzender voor SQL Managed instance
+## <a name="sql-managed-instance-contributor"></a>Inzender voor beheerd SQL-exemplaar
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -2928,12 +2928,12 @@ De volgende tabel bevat een korte beschrijving van elke ingebouwde rol. Klik op 
 > | Microsoft.Network/virtualNetworks/read | De virtuele-netwerk definitie ophalen |
 > | Microsoft.Network/virtualNetworks/subnets/join/action | Voegt een virtueel netwerk samen. Niet Alertable. |
 > | Microsoft.RecoveryServices/locations/* |  |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/backupProtectionIntent/write | Een doel voor back-upbeveiliging maken |
+> | Microsoft.RecoveryServices/Vaults/backupFabrics/backupProtectionIntent/write | Een back-upbeveiligingsintentie maken |
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/*/read |  |
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/read | Hiermee worden object gegevens van het beveiligde item geretourneerd |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/write | Een beveiligd back-upitem maken |
-> | Microsoft.RecoveryServices/Vaults/backupPolicies/read | Hiermee worden alle beveiligings beleidsregels geretourneerd |
-> | Microsoft.RecoveryServices/Vaults/backupPolicies/write | Hiermee wordt een beveiligings beleid gemaakt |
+> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/write | Hiermee wordt een beveiligd back-upitem gemaakt |
+> | Microsoft.RecoveryServices/Vaults/backupPolicies/read | Hiermee worden alle beveiligingsbeleidsregels geretourneerd |
+> | Microsoft.RecoveryServices/Vaults/backupPolicies/write | Hiermee wordt een beveiligingsbeleid gemaakt |
 > | Microsoft.RecoveryServices/Vaults/read | Met de bewerking kluis ophalen wordt een object opgehaald dat de Azure-resource van het type ' kluis ' vertegenwoordigt. |
 > | Microsoft.RecoveryServices/Vaults/usages/read | Hiermee worden de gebruiksgegevens voor een Recovery Services-kluis geretourneerd. |
 > | Microsoft.RecoveryServices/Vaults/write | Met de bewerking Kluis maken wordt een Azure-resource van het type vault gemaakt. |

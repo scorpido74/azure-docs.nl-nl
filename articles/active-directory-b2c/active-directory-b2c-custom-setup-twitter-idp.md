@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/20/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: bfe8b1297b155ecd947140149c13da6c3a08c3c8
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 633287dc735828125754158d857543ee92b388ad
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71065988"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71315135"
 ---
 # <a name="set-up-sign-in-with-a-twitter-account-by-using-custom-policies-in-azure-active-directory-b2c"></a>Aanmelden met een Twitter-account instellen met behulp van aangepast beleid in Azure Active Directory B2C
 
@@ -28,7 +28,7 @@ Dit artikel laat u zien hoe u aanmelden voor gebruikers van een Twitter-account 
 - Voer de stappen in aan de [slag met aangepast beleid in azure Active Directory B2C](active-directory-b2c-get-started-custom.md).
 - Als u nog geen Twitter-account hebt, maakt u er een op de [aanmeldings pagina voor Twitter](https://twitter.com/signup).
 
-## <a name="create-an-application"></a>Een app maken
+## <a name="create-an-application"></a>Een toepassing maken
 
 Als u Twitter als een id-provider in Azure AD B2C wilt gebruiken, moet u een Twitter-toepassing maken.
 
@@ -154,15 +154,7 @@ Nu er een knop aanwezig is, moet u deze koppelen aan een actie. De actie in dit 
 
 ## <a name="create-an-azure-ad-b2c-application"></a>Een Azure AD B2C-toepassing maken
 
-Communicatie met Azure AD B2c vindt plaats via een toepassing die u in uw Tenant maakt. In deze sectie vindt u optionele stappen die u kunt uitvoeren om een test toepassing te maken als u dit nog niet hebt gedaan.
-
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
-2. Zorg ervoor dat u de map gebruikt die uw Azure AD B2C-Tenant bevat. Selecteer het filter **Directory + abonnement** in het bovenste menu en kies de map die uw Tenant bevat.
-3. Kies **Alle services** linksboven in de Azure Portal, zoek **Azure AD B2C** en selecteer deze.
-4. Selecteer **Toepassingen** en vervolgens **Toevoegen**.
-5. Voer een naam in voor de toepassing, bijvoorbeeld *testapp1*.
-6. Voor **Web-app/Web**-API `Yes`selecteert u en voert `https://jwt.ms` u vervolgens in voor de **antwoord-URL**.
-7. Klik op **Create**.
+[!INCLUDE [active-directory-b2c-appreg-idp](../../includes/active-directory-b2c-appreg-idp.md)]
 
 ## <a name="update-and-test-the-relying-party-file"></a>Het Relying Party bestand bijwerken en testen
 

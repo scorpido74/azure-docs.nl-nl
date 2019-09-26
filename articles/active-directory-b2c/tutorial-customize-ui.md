@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 69279da93197bcaaf1bf600bc9406287253d74bb
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 08edf6e841dc7d389573d5e5b5ea7e043f750e76
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71063282"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71291094"
 ---
 # <a name="tutorial-customize-the-interface-of-user-experiences-in-azure-active-directory-b2c"></a>Zelfstudie: De interface van gebruikers ervaringen aanpassen in Azure Active Directory B2C
 
@@ -63,7 +63,7 @@ Hoewel u uw bestanden op veel verschillende manieren kunt opslaan, slaat u deze 
 
 1. Selecteer **CORS**in het menu.
 2. Voer`https://your-tenant-name.b2clogin.com`in voor **toegestane oorsprongen**. Vervang `your-tenant-name` met de naam van uw Azure AD B2C-tenant. Bijvoorbeeld `https://fabrikam.b2clogin.com`. U moet alle kleine letters gebruiken bij het invoeren van de naam van uw Tenant.
-3. Voor **toegestane methoden**selecteert u beide `GET` en `OPTIONS`.
+3. Voor **toegestane methoden**selecteert u `GET`,`PUT`en `OPTIONS`.
 4. Voer een asterisk (*) in bij **toegestane headers**.
 5. Voer een asterisk (*) in voor **weer gegeven headers**.
 6. Voer 200 in als **maximum leeftijd**.

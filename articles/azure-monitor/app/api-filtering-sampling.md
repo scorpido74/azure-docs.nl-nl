@@ -1,6 +1,6 @@
 ---
-title: Filteren en voorverwerking in de Azure Application Insights-SDK | Microsoft Docs
-description: Schrijf telemetrie Processors en Initializers telemetrie voor de SDK om te filteren of eigenschappen toevoegen aan de gegevens voordat de telemetrie wordt verzonden naar de Application Insights-portal.
+title: Filters en voor verwerking in de Azure-toepassing Insights-SDK | Microsoft Docs
+description: U kunt telemetrie-processors en initialisatie functies voor telemetrie voor de SDK schrijven om eigenschappen te filteren of toe te voegen aan de gegevens voordat de telemetrie naar de Application Insights portal wordt verzonden.
 services: application-insights
 documentationcenter: ''
 author: mrbullwinkle
@@ -12,94 +12,83 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 11/23/2016
 ms.author: mbullwin
-ms.openlocfilehash: d1c4005651518eb27eebde0005bd70b4adad6432
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: 095d539404412d34c66201646f6134ff740f86b7
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67798355"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71299263"
 ---
-# <a name="filtering-and-preprocessing-telemetry-in-the-application-insights-sdk"></a>Filteren en voorverwerking van telemetrie in Application Insights-SDK
+# <a name="filtering-and-preprocessing-telemetry-in-the-application-insights-sdk"></a>Telemetrie filteren en voor verwerking in de Application Insights SDK
 
+U kunt invoeg toepassingen schrijven en configureren voor de Application Insights SDK om aan te passen hoe telemetrie kan worden verrijkt en verwerkt voordat het naar de Application Insights-service wordt verzonden.
 
-U kunt schrijven en configureren van plug-ins voor de Application Insights SDK om aan te passen hoe telemetrie wordt vastgelegd en voordat deze wordt verzonden naar de Application Insights-service wordt verwerkt.
-
-* [Sampling](../../azure-monitor/app/sampling.md) reduceert de hoeveelheid telemetrie zonder gevolgen voor uw statistieken. Samen blijven gekoppeld zodat u tussen ervan navigeren kunt bij het oplossen van een probleem van gegevenspunten. In de portal worden vermenigvuldigd met het totale aantal om te compenseren voor de meting.
-* Filteren met telemetrie Processors [voor ASP.NET](#filtering) of [Java](../../azure-monitor/app/java-filter-telemetry.md) kunt u selecteren of wijzigen van telemetrie in de SDK voordat deze wordt verzonden naar de server. U kunt bijvoorbeeld de hoeveelheid telemetrie verminderen door aanvragen uitsluiten van robots. Maar filteren is een eenvoudige benadering voor het beperken van verkeer dan steekproeven. Hiermee kunt u meer controle over wat wordt verzonden, maar u moet er rekening mee dat dit van invloed op uw statistieken - bijvoorbeeld: als u alle geslaagde aanvragen filteren.
-* [Telemetrie Initializers eigenschappen toevoegen](#add-properties) aan elk telemetrie verzonden vanuit uw app, waaronder telemetrie van de standard-modules. U kunt bijvoorbeeld berekende waarden; toevoegen of versienummers waarmee de gegevens in de portal te filteren.
-* [De SDK-API](../../azure-monitor/app/api-custom-events-metrics.md) wordt gebruikt om aangepaste gebeurtenissen en metrische gegevens te verzenden.
+* Door [steek proeven](sampling.md) wordt het aantal telemetrie verminderd zonder dat dit van invloed is op uw statistieken. Het houdt gerelateerde gegevens punten bij zodat u ertussen kunt navigeren bij het vaststellen van een probleem. In de portal worden de totale aantallen vermenigvuldigd om de steek proeven te compenseren.
+* Met filters met telemetrie-processors kunt u telemetrie in de SDK filteren voordat deze naar de server wordt verzonden. U kunt bijvoorbeeld het volume van de telemetrie verminderen door aanvragen van robots uit te sluiten. Filteren is een meer algemene benadering van het verminderen van het verkeer dan de steek proef. Hiermee hebt u meer controle over wat er wordt verzonden, maar u moet er rekening mee houden dat dit van invloed is op uw statistieken, bijvoorbeeld als u alle succes volle aanvragen filtert.
+* Met de [initialisatie functies voor telemetrie kunt u eigenschappen toevoegen of wijzigen](#add-properties) voor alle telemetrie die vanuit uw app worden verzonden, inclusief telemetrie uit de standaard modules. U kunt bijvoorbeeld berekende waarden toevoegen. of de versie nummers waarmee de gegevens in de portal worden gefilterd.
+* [De SDK-API](../../azure-monitor/app/api-custom-events-metrics.md) wordt gebruikt voor het verzenden van aangepaste gebeurtenissen en metrische gegevens.
 
 Voordat u begint:
 
-* Installeer de Application Insights [SDK voor ASP.NET](../../azure-monitor/app/asp-net.md) of [SDK voor Java](../../azure-monitor/app/java-get-started.md) in uw app.
+* Installeer de juiste SDK voor uw toepassing. [ASP.net](asp-net.md) of [ASP.net core](asp-net-core.md) of [niet http/worker voor .net/.net core](worker-service.md) of [Java](../../azure-monitor/app/java-get-started.md) in uw app.
 
 <a name="filtering"></a>
 
 ## <a name="filtering-itelemetryprocessor"></a>Filteren: ITelemetryProcessor
-Deze techniek hebt u een meer rechtstreekse controle over wat is opgenomen of uitgesloten van de telemetriestroom. U kunt deze gebruiken in combinatie met Samples of afzonderlijk.
 
-Als u wilt filteren telemetrie, een processor telemetrie schrijven en registreren bij de SDK. Alle telemetrie verloopt via de processor en kunt u deze niet verwijderen uit de stream of eigenschappen toe te voegen. Dit omvat de telemetrie van de standard-modules, zoals de HTTP-aanvraag collector en de afhankelijkheid collector, evenals de telemetrie die u zelf hebt geschreven. U kunt bijvoorbeeld filteren om telemetrie over aanvragen van robots of geslaagde afhankelijkheidsaanroepen.
+Met deze techniek hebt u direct controle over wat er wordt opgenomen of uitgesloten van de telemetrie-stroom. Filteren kan worden gebruikt om telemetriegegevens te verwijderen van verzen ding naar Application Insights. U kunt deze gebruiken in combi natie met steek proeven of afzonderlijk.
+
+Als u telemetrie wilt filteren, schrijft u een telemetrie-processor `TelemetryConfiguration`en registreert u deze bij de. Alle telemetrie verloopt via uw processor en u kunt ervoor kiezen om deze te verwijderen uit de stroom of door te geven aan de volgende processor in de keten. Dit omvat telemetrie van de standaard modules, zoals de HTTP-aanvraag verzamelaar en de afhankelijkheids verzamelaar, en telemetrie die u zelf hebt gevolgd. U kunt bijvoorbeeld telemetrie filteren op aanvragen van robots of geslaagde afhankelijkheids aanroepen.
 
 > [!WARNING]
-> Filteren van de telemetrie van de SDK verzonden kunt met behulp van processors scheeftrekken de statistieken die u in de portal ziet, en soms moeilijk te volgen verwante items.
+> Filteren van de telemetrie die via de SDK is verzonden met behulp van processors, kunnen de statistieken die u in de portal ziet, worden schuingetrokken en kan het lastig zijn om verwante items te volgen.
 >
-> In plaats daarvan kunt u overwegen [steekproeven](../../azure-monitor/app/sampling.md).
+> Overweeg in plaats daarvan [steek proeven](../../azure-monitor/app/sampling.md)te gebruiken.
 >
 >
 
-### <a name="create-a-telemetry-processor-c"></a>Maken van een telemetrie-processor (C#)
-1. Controleer of de Application Insights-SDK in uw project is versie 2.0.0 of hoger. Met de rechtermuisknop op uw project in Visual Studio Solution Explorer en kies NuGet-pakketten beheren. Controleer in het NuGet-Pakketbeheer, Microsoft.ApplicationInsights.Web.
-2. U kunt een filter maken ITelemetryProcessor te implementeren. Dit is een andere uitbreidingspunt zoals telemetrie-module, telemetrische initializer en telemetrie-kanaal.
+### <a name="create-a-telemetry-processor-c"></a>Een telemetrie-processorC#maken ()
 
-    U ziet dat telemetrie Processors maken van een keten van verwerking. Als u een exemplaar maken van een telemetrie-processor, geeft u een koppeling naar de volgende processor in de keten. Wanneer een telemetrie-gegevenspunt wordt doorgegeven aan de methode proces, zijn werk doet en roept vervolgens de volgende telemetrie-Processor in de keten.
+1. Implementeren `ITelemetryProcessor`om een filter te maken.
 
-```csharp
-using Microsoft.ApplicationInsights.Channel;
-using Microsoft.ApplicationInsights.Extensibility;
+    U ziet dat telemetrie-processors een keten van verwerking bouwen. Wanneer u een telemetrie-processor maakt, krijgt u een verwijzing naar de volgende processor in de keten. Wanneer een telemetrie-gegevens punt wordt door gegeven aan de proces methode, wordt het werk uitgevoerd en wordt vervolgens de volgende telemetrie-processor in de keten aangeroepen (of niet).
 
-public class SuccessfulDependencyFilter : ITelemetryProcessor
-{
+    ```csharp
+    using Microsoft.ApplicationInsights.Channel;
+    using Microsoft.ApplicationInsights.Extensibility;
 
-    private ITelemetryProcessor Next { get; set; }
-
-    // You can pass values from .config
-    public string MyParamFromConfigFile { get; set; }
-
-    // Link processors to each other in a chain.
-    public SuccessfulDependencyFilter(ITelemetryProcessor next)
+    public class SuccessfulDependencyFilter : ITelemetryProcessor
     {
-        this.Next = next;
+        private ITelemetryProcessor Next { get; set; }
+
+        // next will point to the next TelemetryProcessor in the chain.
+        public SuccessfulDependencyFilter(ITelemetryProcessor next)
+        {
+            this.Next = next;
+        }
+
+        public void Process(ITelemetry item)
+        {
+            // To filter out an item, return without calling the next processor.
+            if (!OKtoSend(item)) { return; }
+
+            this.Next.Process(item);
+        }
+
+        // Example: replace with your own criteria.
+        private bool OKtoSend (ITelemetry item)
+        {
+            var dependency = item as DependencyTelemetry;
+            if (dependency == null) return true;
+
+            return dependency.Success != true;
+        }
     }
-    public void Process(ITelemetry item)
-    {
-        // To filter out an item, just return
-        if (!OKtoSend(item)) { return; }
-        // Modify the item if required
-        ModifyItem(item);
+    ```
 
-        this.Next.Process(item);
-    }
+2. Voeg uw processor toe.
 
-    // Example: replace with your own criteria.
-    private bool OKtoSend (ITelemetry item)
-    {
-        var dependency = item as DependencyTelemetry;
-        if (dependency == null) return true;
-
-        return dependency.Success != true;
-    }
-
-    // Example: replace with your own modifiers.
-    private void ModifyItem (ITelemetry item)
-    {
-        item.Context.Properties.Add("app-version", "1." + MyParamFromConfigFile);
-    }
-}
-```
-
-3. Toevoegen van de processor
-
-**ASP.NET-apps** invoegen in ApplicationInsights.config:
+**ASP.net-apps** Voeg dit fragment in ApplicationInsights. config in:
 
 ```xml
 <TelemetryProcessors>
@@ -110,19 +99,16 @@ public class SuccessfulDependencyFilter : ITelemetryProcessor
 </TelemetryProcessors>
 ```
 
-(Dit is dezelfde sectie waarin u een filter steekproeven initialiseren.)
-
-U kunt tekenreekswaarden doorgeven van het .config-bestand door te geven van openbare benoemde eigenschappen in uw klasse.
+U kunt teken reeks waarden uit het. config-bestand door geven door open bare benoemde eigenschappen in uw klasse op te geven.
 
 > [!WARNING]
-> Let erop dat overeenkomt met de naam van het type en de namen van alle eigenschappen in het .config-bestand met de namen van de klasse en de eigenschap in de code. Als het .config-bestand verwijst naar een niet-bestaande type of een eigenschap, mislukken de SDK op de achtergrond om alle telemetrie te verzenden.
->
+> Zorg ervoor dat u de naam van het type en de namen van eigenschappen in het. config-bestand overeenkomt met de klasse-en eigenschaps namen in de code. Als het. config-bestand verwijst naar een niet-bestaand type of een ongeldige eigenschap, kan de SDK een telemetrie niet op de achtergrond verzenden.
 >
 
-**U kunt ook** kunt u het filter in code initialiseren. In de keten van een initialisatieklasse geschikt - bijvoorbeeld AppStart in Global.asax.cs - invoegen de processor:
+U kunt het filter **ook** in code initialiseren. In een geschikte initialisatie klasse, bijvoorbeeld AppStart in `Global.asax.cs` -Voeg uw processor in de keten in:
 
 ```csharp
-var builder = TelemetryConfiguration.Active.TelemetryProcessorChainBuilder;
+var builder = TelemetryConfiguration.Active.DefaultTelemetrySink.TelemetryProcessorChainBuilder;
 builder.Use((next) => new SuccessfulDependencyFilter(next));
 
 // If you have more processors:
@@ -131,15 +117,14 @@ builder.Use((next) => new AnotherProcessor(next));
 builder.Build();
 ```
 
-TelemetryClients gemaakt na deze stap maakt gebruik van uw processors.
+TelemetryClients gemaakt na dit punt zullen uw processors gebruiken.
 
-**ASP.NET Core-apps**
+**ASP.NET Core/Worker-service-apps**
 
 > [!NOTE]
-> Toe te voegen initialisatiefunctie met behulp van `ApplicationInsights.config` of met behulp van `TelemetryConfiguration.Active` is niet geldig voor ASP.NET Core-toepassingen. 
+> Het toevoegen van `ApplicationInsights.config` een processor `TelemetryConfiguration.Active` met of gebruikt is niet geldig voor ASP.net core toepassingen of als u micro soft. ApplicationInsights. WorkerService SDK gebruikt.
 
-
-Voor [ASP.NET Core](asp-net-core.md#adding-telemetry-processors) toepassingen toe te voegen een nieuwe `TelemetryInitializer` wordt uitgevoerd door toe te voegen aan de container Afhankelijkheidsinjectie, zoals hieronder wordt weergegeven. Dit wordt gedaan `ConfigureServices` -methode van uw `Startup.cs` klasse.
+Voor apps die zijn geschreven met behulp van [ASP.net core](asp-net-core.md#adding-telemetry-processors) of [WorkerService](worker-service.md#adding-telemetry-processors), wordt het `AddApplicationInsightsTelemetryProcessor` toevoegen van een `IServiceCollection`nieuwe `TelemetryProcessor` uitgevoerd met behulp van de uitbreidings methode ingeschakeld, zoals hieronder wordt weer gegeven. Deze methode wordt aangeroepen in `ConfigureServices` de methode van `Startup.cs` uw klasse.
 
 ```csharp
     public void ConfigureServices(IServiceCollection services)
@@ -153,9 +138,11 @@ Voor [ASP.NET Core](asp-net-core.md#adding-telemetry-processors) toepassingen to
     }
 ```
 
-### <a name="example-filters"></a>Voorbeeld van de filters
+### <a name="example-filters"></a>Voorbeeld filters
+
 #### <a name="synthetic-requests"></a>Synthetische aanvragen
-Filteren bots en web tests. Hoewel Metrics Explorer de mogelijkheid biedt voor het filteren van synthetische bronnen, beperkt deze optie verkeer door deze te filteren op de SDK.
+
+Wegfilteren bots en webtests. Hoewel Metrics Explorer u de mogelijkheid geeft om synthetische bronnen uit te filteren, vermindert deze optie het verkeer en de opname grootte door deze te filteren op de SDK zelf.
 
 ```csharp
 public void Process(ITelemetry item)
@@ -168,7 +155,8 @@ public void Process(ITelemetry item)
 ```
 
 #### <a name="failed-authentication"></a>Mislukte verificatie
-Filteren aanvragen met een '401'-respons.
+
+Aanvragen filteren met een antwoord van het "401".
 
 ```csharp
 public void Process(ITelemetry item)
@@ -178,19 +166,21 @@ public void Process(ITelemetry item)
     if (request != null &&
     request.ResponseCode.Equals("401", StringComparison.OrdinalIgnoreCase))
     {
-        // To filter out an item, just terminate the chain:
+        // To filter out an item, return without calling the next processor.
         return;
     }
-    // Send everything else:
+
+    // Send everything else
     this.Next.Process(item);
 }
 ```
 
-#### <a name="filter-out-fast-remote-dependency-calls"></a>Snel externe afhankelijkheidsaanroepen filteren
-Als u wilt dat alleen op te sporen aanroepen die langzaam worden uitgevoerd, snel weg te filteren.
+#### <a name="filter-out-fast-remote-dependency-calls"></a>Snelle oproepen voor externe afhankelijkheid uitfilteren
+
+Als u alleen aanroepen wilt opsporen die langzaam zijn, filtert u de snelle verbindingen.
 
 > [!NOTE]
-> Hiermee wordt de statistische gegevens u in de portal ziet een verkeerd. De afhankelijkheid-grafiek eruitziet als de afhankelijkheidsaanroepen alle fouten zijn.
+> Hierdoor worden de statistieken in de portal scheefer.
 >
 >
 
@@ -208,19 +198,20 @@ public void Process(ITelemetry item)
 ```
 
 #### <a name="diagnose-dependency-issues"></a>Problemen als gevolg van diagnoseafhankelijkheid
-[Deze blog](https://azure.microsoft.com/blog/implement-an-application-insights-telemetry-processor/) beschrijft een project voor het vaststellen van afhankelijkheidsproblemen met door het automatisch verzenden van reguliere pings naar afhankelijkheden.
 
+In [deze blog](https://azure.microsoft.com/blog/implement-an-application-insights-telemetry-processor/) wordt een project beschreven voor het vaststellen van afhankelijkheids problemen door automatisch pings naar afhankelijkheden te verzenden.
 
 <a name="add-properties"></a>
 
-## <a name="add-properties-itelemetryinitializer"></a>Voeg eigenschappen toe: ITelemetryInitializer
-Telemetrie initializers gebruiken voor het definiëren van algemene eigenschappen die worden verzonden met alle telemetrie; en voor het geselecteerde probleem van de modules standaardtelemetrie overschrijven.
+## <a name="add-properties-itelemetryinitializer"></a>Eigenschappen toevoegen: ITelemetryInitializer
 
-Bijvoorbeeld, verzamelt de Application Insights voor webpakket telemetrie over HTTP-aanvragen. Standaard worden gemarkeerd als mislukt van elke aanvraag met een responscode > = 400. Maar als u 400 behandelen als een groot succes wilt, kunt u een telemetrie-initializer die de eigenschap succes opgeven.
+Gebruik initialisatie functies voor telemetrie om telemetrie te verrijken met aanvullende informatie en/of om de telemetrie-eigenschappen te overschrijven die zijn ingesteld door de standaard-telemetrie modules.
 
-Als u een telemetrische initializer opgeeft, is er sprake wanneer een van de Track*() methoden zijn aangeroepen. Dit omvat de methoden die worden aangeroepen door de telemetrie-modules. Deze modules stelt volgens de conventies wordt niet elke eigenschap die al door een initialisatiefunctie is ingesteld.
+Zo kan de Application Insights voor webpakket het verzamelen van telemetrie over HTTP-aanvragen. Standaard wordt een aanvraag met een antwoord code > = 400 als mislukt. Als u 400 als een succes wilt behandelen, kunt u een telemetrie-initialisatie functie opgeven waarmee de eigenschap Success wordt ingesteld.
 
-**De initialisatiefunctie definiëren**
+Als u een telemetrie-initialisatie functie opgeeft, wordt deze aangeroepen wanneer een van de methoden van de track * () wordt aangeroepen. Dit omvat `Track()` de methoden die worden aangeroepen door de standaard-telemetrie-modules. Per Conventie stellen deze modules geen eigenschap in die al is ingesteld door een initialisatie functie. Initialisatie functies voor telemetrie worden aangeroepen voordat telemetrie-processors worden aangeroepen. Verrijkingen die door initializers worden uitgevoerd, zijn dus zichtbaar voor processors.
+
+**De initialisatie functie definiëren**
 
 *C#*
 
@@ -251,16 +242,17 @@ namespace MvcWebRole.Telemetry
         {
             // If we set the Success property, the SDK won't change it:
             requestTelemetry.Success = true;
+
             // Allow us to filter these requests in the portal:
-            requestTelemetry.Context.Properties["Overridden400s"] = "true";
+            requestTelemetry.Properties["Overridden400s"] = "true";
         }
-        // else leave the SDK to set the Success property      
+        // else leave the SDK to set the Success property
     }
   }
 }
 ```
 
-**ASP.NET-apps: De initialisatiefunctie laden**
+**ASP.NET-Apps: De initialisatie functie laden**
 
 In ApplicationInsights.config:
 
@@ -274,7 +266,7 @@ In ApplicationInsights.config:
 </ApplicationInsights>
 ```
 
-*U kunt ook* kunt u de initialisatiefunctie in code, bijvoorbeeld in Global.aspx.cs instantiëren:
+U kunt *ook* een exemplaar van de initialisatie functie in code maken, bijvoorbeeld in Global.aspx.CS:
 
 ```csharp
 protected void Application_Start()
@@ -284,14 +276,14 @@ protected void Application_Start()
 }
 ```
 
-[Zie voor meer van dit voorbeeld.](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService/MvcWebRole)
+[Bekijk meer van dit voor beeld.](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService/MvcWebRole)
 
-**ASP.NET Core-apps: De initialisatiefunctie laden**
+**ASP.NET Core/Worker-service-apps: De initialisatie functie laden**
 
 > [!NOTE]
-> Toe te voegen initialisatiefunctie met behulp van `ApplicationInsights.config` of met behulp van `TelemetryConfiguration.Active` is niet geldig voor ASP.NET Core-toepassingen. 
+> Het toevoegen van initializer `ApplicationInsights.config` met `TelemetryConfiguration.Active` of gebruikt is niet geldig voor ASP.net core-toepassingen of als u de SDK van micro soft. ApplicationInsights. WorkerService gebruikt.
 
-Voor [ASP.NET Core](asp-net-core.md#adding-telemetryinitializers) toepassingen toe te voegen een nieuwe `TelemetryInitializer` wordt uitgevoerd door toe te voegen aan de container Afhankelijkheidsinjectie, zoals hieronder wordt weergegeven. Dit wordt gedaan `ConfigureServices` -methode van uw `Startup.cs` klasse.
+Voor apps die zijn geschreven met [ASP.net core](asp-net-core.md#adding-telemetryinitializers) of [WorkerService](worker-service.md#adding-telemetryinitializers), voegt `TelemetryInitializer` u een nieuw item toe door het toe te voegen aan de container voor de injectie van de afhankelijkheid, zoals hieronder wordt weer gegeven. Dit wordt gedaan met `Startup.ConfigureServices` de methode.
 
 ```csharp
  using Microsoft.ApplicationInsights.Extensibility;
@@ -302,9 +294,9 @@ Voor [ASP.NET Core](asp-net-core.md#adding-telemetryinitializers) toepassingen t
 }
 ```
 
-### <a name="java-telemetry-initializers"></a>Java telemetrie initializers
+### <a name="java-telemetry-initializers"></a>Initialisatie functies voor Java-telemetrie
 
-[Java SDK-documentatie](https://docs.microsoft.com/java/api/com.microsoft.applicationinsights.extensibility.telemetryinitializer?view=azure-java-stable)
+[Documentatie voor Java SDK](https://docs.microsoft.com/java/api/com.microsoft.applicationinsights.extensibility.telemetryinitializer?view=azure-java-stable)
 
 ```Java
 public interface TelemetryInitializer
@@ -313,7 +305,7 @@ public interface TelemetryInitializer
 void initialize(Telemetry telemetry); }
 ```
 
-Vervolgens de aangepaste initialisatiefunctie niet registreren in het applicationinsights.xml-bestand.
+Registreer vervolgens de aangepaste initialisatie functie in uw applicationinsights. XML-bestand.
 
 ```xml
 <Add type="mypackage.MyConfigurableContextInitializer">
@@ -321,10 +313,10 @@ Vervolgens de aangepaste initialisatiefunctie niet registreren in het applicatio
 </Add>
 ```
 
-### <a name="javascript-telemetry-initializers"></a>JavaScript telemetrie initializers
+### <a name="javascript-telemetry-initializers"></a>Initialisatie functies van Java script-telemetrie
 *JavaScript*
 
-Voeg een telemetrische initializer onmiddellijk na de van initialisatiecode die u hebt verkregen via de portal:
+Voeg direct na de initialisatie code die u hebt ontvangen van de portal, een telemetrie-initialisatie functie toe:
 
 ```JS
 <script type="text/javascript">
@@ -365,32 +357,69 @@ Voeg een telemetrische initializer onmiddellijk na de van initialisatiecode die 
 </script>
 ```
 
-Zie voor een overzicht van de niet-aangepaste eigenschappen die beschikbaar is op de telemetryItem [gegevensmodel voor Application Insights-exporteren](../../azure-monitor/app/export-data-model.md).
+Zie [Application Insights-gegevens model exporteren](../../azure-monitor/app/export-data-model.md)voor een samen vatting van de niet-aangepaste eigenschappen die beschikbaar zijn op de telemetryItem.
 
-U kunt zoveel initializers als u wilt toevoegen.
+U kunt zoveel initialisatie functies toevoegen als u wilt en ze worden aangeroepen in de volg orde waarin ze worden toegevoegd.
+
+### <a name="example-telemetryinitializers"></a>Voor beeld TelemetryInitializers
+
+#### <a name="add-custom-property"></a>Aangepaste eigenschap toevoegen
+
+De volgende voor beeld-initialisatie functie voegt een aangepaste eigenschap toe aan elke getraceerde telemetrie.
+
+```csharp
+public void Initialize(ITelemetry item)
+{
+  var itemProperties = item as ISupportProperties;
+  if(itemProperties != null && !itemProperties.ContainsKey("customProp"))
+    {
+        itemProperties.Properties["customProp"] = "customValue";
+    }
+}
+```
+
+#### <a name="add-cloud-role-name"></a>Rolnaam van Cloud toevoegen
+
+De volgende voor beeld-initialisatie functie stelt de naam van de Cloud functie in op elke getraceerde telemetrie.
+
+```csharp
+public void Initialize(ITelemetry telemetry)
+{
+    if(string.IsNullOrEmpty(telemetry.Context.Cloud.RoleName))
+    {
+        telemetry.Context.Cloud.RoleName = "MyCloudRoleName";
+    }
+}
+```
 
 ## <a name="itelemetryprocessor-and-itelemetryinitializer"></a>ITelemetryProcessor en ITelemetryInitializer
-Wat is het verschil tussen de telemetrie processors en telemetrie initializers?
 
-* Er zijn enkele overlappingen in wat u ermee kunt doen: beide eigenschappen toevoegen aan telemetrie kunnen worden gebruikt.
-* TelemetryInitializers wordt altijd uitgevoerd voordat TelemetryProcessors.
-* TelemetryProcessors kunt u volledig vervangen of verwijderen van een Telemetrisch item.
-* TelemetryProcessors verwerken geen prestaties teller telemetrie.
+Wat is het verschil tussen telemetrie-processors en initialisatie functies voor telemetrie?
 
-## <a name="troubleshooting-applicationinsightsconfig"></a>Oplossen van problemen met ApplicationInsights.config
-* Controleer of de volledig gekwalificeerde naam en de naam van assembly juist zijn.
-* Controleer of het bestand applicationinsights.config in uw map met de uitvoer is en de meest recente wijzigingen bevat.
+* Er zijn enkele overlap pingen in wat u ermee kunt doen: beide kunnen worden gebruikt om eigenschappen van telemetrie toe te voegen of te wijzigen, maar het wordt aanbevolen initialisatie functies voor dat doel te gebruiken.
+* TelemetryInitializers altijd uitgevoerd vóór TelemetryProcessors.
+* TelemetryInitializers kan meer dan één keer worden aangeroepen. Per Conventie hebben ze geen eigenschap ingesteld die al is ingesteld.
+* Met TelemetryProcessors kunt u een telemetrie-item volledig vervangen of verwijderen.
+* Alle geregistreerde TelemetryInitializers worden gegarandeerd aangeroepen voor elk telemetrie-item. Voor telemetrie-processors wordt door SDK gegarandeerd de eerste telemetrie-processor aan te roepen. Of de rest van de processors worden aangeroepen of niet, wordt bepaald door de voor gaande telemetrie-processors.
+* Gebruik TelemetryInitializers om telemetrie te verrijken met aanvullende eigenschappen, of een bestaande te overschrijven. Gebruik TelemetryProcessor om telemetrie te filteren.
+
+## <a name="troubleshooting-applicationinsightsconfig"></a>Problemen met ApplicationInsights. config oplossen
+
+* Controleer of de FQDN-naam en de naam van de assembly juist zijn.
+* Controleer of het bestand applicationinsights. config zich in de uitvoermap bevindt en of het recente wijzigingen bevat.
 
 ## <a name="reference-docs"></a>Referentiedocumenten
-* [API-overzicht](../../azure-monitor/app/api-custom-events-metrics.md)
-* [ASP.NET-naslaginformatie](https://msdn.microsoft.com/library/dn817570.aspx)
 
-## <a name="sdk-code"></a>SDK-Code
+* [API-overzicht](../../azure-monitor/app/api-custom-events-metrics.md)
+* [ASP.NET-verwijzing](https://msdn.microsoft.com/library/dn817570.aspx)
+
+## <a name="sdk-code"></a>SDK-code
+
 * [ASP.NET Core SDK](https://github.com/Microsoft/ApplicationInsights-aspnetcore)
 * [ASP.NET SDK](https://github.com/Microsoft/ApplicationInsights-dotnet)
 * [JavaScript SDK](https://github.com/Microsoft/ApplicationInsights-JS)
 
 ## <a name="next"></a>Volgende stappen
-* [Logboeken en gebeurtenissen voor zoeken](../../azure-monitor/app/diagnostic-search.md)
+* [Zoeken naar gebeurtenissen en Logboeken](../../azure-monitor/app/diagnostic-search.md)
 * [Steekproeven](../../azure-monitor/app/sampling.md)
 * [Problemen oplossen](../../azure-monitor/app/troubleshoot-faq.md)

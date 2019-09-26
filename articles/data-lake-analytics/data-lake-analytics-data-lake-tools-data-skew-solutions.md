@@ -1,6 +1,6 @@
 ---
-title: Gegevensverschil problemen oplossen met behulp van Azure Data Lake Tools voor Visual Studio
-description: Mogelijke oplossingen voor gegevensverschil problemen oplossen met behulp van Azure Data Lake Tools voor Visual Studio.
+title: Data-scheef Azure Data Lake-Hulpprogram Ma's voor Visual Studio oplossen
+description: Problemen oplossen met behulp van Azure Data Lake-Hulpprogram Ma's voor Visual Studio en mogelijke oplossingen voor gegevens verschilt.
 services: data-lake-analytics
 author: yanancai
 ms.author: yanacai
@@ -8,68 +8,68 @@ ms.reviewer: jasonwhowell
 ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 12/16/2016
-ms.openlocfilehash: 611439802c200b30586b73b82d0a4bbbc857e114
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 440a36d00334840688f66d0027152d7581b7158c
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65606706"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71309909"
 ---
-# <a name="resolve-data-skew-problems-by-using-azure-data-lake-tools-for-visual-studio"></a>Gegevensverschil problemen oplossen met behulp van Azure Data Lake Tools voor Visual Studio
+# <a name="resolve-data-skew-problems-by-using-azure-data-lake-tools-for-visual-studio"></a>Problemen met gegevens scheefheid oplossen met behulp van Azure Data Lake-Hulpprogram Ma's voor Visual Studio
 
-## <a name="what-is-data-skew"></a>Wat is data scheeftrekken?
+## <a name="what-is-data-skew"></a>Wat is gegevens scheefheid?
 
-Kort gezegd, is gegevensverschil een te veel weergegeven waarde. Stel dat u 50 belasting onderzoekers om te controleren van de belastingaangiften, een onderzoeker voor elke status van de Verenigde Staten hebt toegewezen. De onderzoeker Wyoming, heeft omdat de populatie er klein is, weinig te doen. In Californië, maar wordt de onderzoeker opgeslagen bezet vanwege de grote populatie van de status.
-    ![Voorbeeld van de probleem gegevensverschil](./media/data-lake-analytics-data-lake-tools-data-skew-solutions/data-skew-problem.png)
+Kort gezegd is gegevens scheefheid een over-weer gegeven waarde. Stel dat u 50-belasting onderzoekers hebt toegewezen om BTW-retour pogingen te controleren, één onderzoeker voor elke Amerikaanse staat. De Wyoming-onderzoeker, omdat de populatie er klein mee is. In Californië wordt de onderzoeker echter zeer bezet gehouden vanwege de grote populatie van de status.
+    ![Voor beeld van een probleem met gegevens verschil](./media/data-lake-analytics-data-lake-tools-data-skew-solutions/data-skew-problem.png)
 
-In ons scenario, is de gegevens ongelijkmatig verdeeld over alle btw-onderzoekers, dat betekent dat sommige onderzoekers meer dan anderen moeten samenwerken. In uw eigen baan, moet u vaak situaties, zoals in dit voorbeeld BTW-onderzoeker ervaren. Meer technische voorwaarden één hoekpunt nog veel meer gegevens dan de collega's worden opgehaald, een situatie waarin het hoekpunt werken meer dan de andere en die uiteindelijk een hele taak vertraagt. Wat is slechter, mislukt deze taak mogelijk, omdat hoekpunten kunnen hebben, bijvoorbeeld een beperking 5 uur runtime en een beperking 6 GB geheugen.
+In ons scenario zijn de gegevens onevenredig verdeeld over alle belasting onderzoekers, wat betekent dat sommige onderzoekers meer werk moeten doen dan andere. In uw eigen taak ondervindt u vaak veelvoorkomende situaties zoals het voor beeld van belasting onderzoek. In meer technische termen heeft één hoek punt veel meer gegevens dan de peers, een situatie waardoor het hoek punt langer werkt dan de andere en die uiteindelijk een volledige taak vertragen. Wat u kunt verergeren, kan de taak mislukken, omdat er hoek punten kunnen zijn, bijvoorbeeld een runtime limiet van 5 uur en een limiet van 6 GB geheugen.
 
-## <a name="resolving-data-skew-problems"></a>Gegevensverschil problemen oplossen
+## <a name="resolving-data-skew-problems"></a>Problemen met gegevens verhelpen oplossen
 
-Met behulp van Azure Data Lake Tools voor Visual Studio kunt u vaststellen of uw taak een gegevensverschil probleem is. Als er een probleem bestaat, kunt u deze kunt oplossen door te proberen de oplossingen die in deze sectie.
+Met Azure Data Lake-Hulpprogram Ma's voor Visual Studio kunt u detecteren of uw taak een probleem met het hellen van gegevens heeft. Als er een probleem optreedt, kunt u dit oplossen door de oplossingen in deze sectie te proberen.
 
-## <a name="solution-1-improve-table-partitioning"></a>Oplossing 1: Tabelpartities verbeteren
+## <a name="solution-1-improve-table-partitioning"></a>Oplossing 1: Tabel partities verbeteren
 
-### <a name="option-1-filter-the-skewed-key-value-in-advance"></a>Optie 1: De waarde van de asymmetrische sleutel vooraf filteren
+### <a name="option-1-filter-the-skewed-key-value-in-advance"></a>Optie 1: De gescheefe sleutel waarde vooraf filteren
 
-Als het heeft geen invloed op uw bedrijfslogica, kunt u de waarden van de hogere frequentie vooraf filteren. Bijvoorbeeld, als er een groot aantal 000-000-000 in kolom GUID, raadzaam niet om samen te voegen die waarde. Voordat u samen te voegen kunt u ' WHERE GUID! = "000-000-000" "voor het filteren van de waarde van de hoge frequentie.
+Als dit geen invloed heeft op uw bedrijfs logica, kunt u de waarden van de hogere frequentie vooraf filteren. Als er bijvoorbeeld sprake is van een groot aantal 000-000-000 in de kolom-GUID, wilt u deze waarde wellicht niet samen voegen. Voordat u samenvoegt, kunt u ' waar GUID! = ' 000-000-000 ' ' schrijven om de waarde voor hoge frequentie te filteren.
 
-### <a name="option-2-pick-a-different-partition-or-distribution-key"></a>Optie 2: Kies een andere partitie of distributie-sleutel
+### <a name="option-2-pick-a-different-partition-or-distribution-key"></a>Optie 2: Kies een andere partitie of distributie sleutel
 
-In het voorgaande voorbeeld, als u wilt dat alleen om te controleren van de werkbelasting van de btw-controle over de land/regio, kunt u verbeteren de verdeling van de gegevens door te selecteren van het ID-nummer als de sleutel. Verzamelen van een andere partitie of distributiesleutel soms beter kunt verdelen de gegevens, maar u moet ervoor zorgen dat deze optie heeft geen invloed op uw bedrijfslogica. Bijvoorbeeld, voor het berekenen van de som van de belasting voor elke status, kunt u aan te wijzen _status_ als de partitiesleutel. Als u dit probleem zich blijft voordoen, probeert u optie 3.
+Als u in het voor gaande voor beeld alleen de werk belasting belasting over het land of de regio wilt controleren, kunt u de distributie van gegevens verbeteren door het ID-nummer als uw sleutel te selecteren. Het kiezen van een andere partitie of distributie sleutel kan de gegevens soms meer gelijkmatig distribueren, maar u moet er wel voor zorgen dat deze keuze niet van invloed is op uw bedrijfs logica. Als u bijvoorbeeld de BTW-som voor elke status wilt berekenen, kunt u de _status_ instellen als de partitie sleutel. Als dit probleem zich blijft voordoen, kunt u de optie 3 gebruiken.
 
-### <a name="option-3-add-more-partition-or-distribution-keys"></a>Optie 3: Meer sleutels voor partitie of distributiepunt toevoegen
+### <a name="option-3-add-more-partition-or-distribution-keys"></a>Optie 3: Meer partities of distributie sleutels toevoegen
 
-In plaats van alleen _status_ als een partitiesleutel, kunt u meer dan één sleutel gebruiken voor het partitioneren van. Bijvoorbeeld, kunt u toevoegen _postcode_ als een aanvullende partitiesleutel om te verminderen van de grootte van gegevens-partities en meer gelijkmatig verdelen van de gegevens.
+In plaats van alleen _status_ te gebruiken als partitie sleutel, kunt u meer dan één sleutel gebruiken voor partitioneren. U kunt bijvoorbeeld een _zip-code_ toevoegen als een extra partitie sleutel om de grootte van de gegevens partitie te reduceren en de gegevens gelijkmatig te verdelen.
 
 ### <a name="option-4-use-round-robin-distribution"></a>Optie 4: Round robin-distributie gebruiken
 
-Als u niet een geschikte sleutel voor de partitie en distributie vinden, kunt u proberen te gebruiken van round robin-distributie. Round robin-distributie worden alle rijen gelijk behandeld en willekeurig, worden de tegels in de bijbehorende buckets. De gegevens gelijkmatig verdeeld, maar u verliest deze locatie-informatie, een nadeel van die prestaties van de taak voor bepaalde bewerkingen kan ook worden verminderd. Bovendien, als u cumulatie-instellingen voor de asymmetrische sleutel toch doet, wordt het probleem gegevensverschil behouden. Voor meer informatie over round-robin-distributie, Zie de sectie distributies van U-SQL-tabel in [CREATE TABLE (U-SQL): Het maken van een tabel met Schema](/u-sql/ddl/tables/create/managed/create-table-u-sql-creating-a-table-with-schema#dis_sch).
+Als u geen geschikte sleutel kunt vinden voor partitioneren en distribueren, kunt u gebruikmaken van round robin-distributie. Met round robin distributie worden alle rijen gelijkelijk en wille keurig in overeenkomende buckets geplaatst. De gegevens worden gelijkmatig verdeeld, maar er is geen informatie over de lokale locatie, een nadeel dat ook de taak prestaties voor bepaalde bewerkingen kan verminderen. Als u toch aggregatie voor de gescheefde sleutel uitvoert, blijft het probleem met het gegevens verschil behouden. Zie de sectie U-SQL-tabel distributies in [Create Table (u-SQL) voor meer informatie over round-robin-distributie: Een tabel maken met schema](/u-sql/ddl/tables/create/managed/create-table-u-sql-creating-a-table-with-schema#dis_sch).
 
-## <a name="solution-2-improve-the-query-plan"></a>Oplossing 2: Het queryplan verbeteren
+## <a name="solution-2-improve-the-query-plan"></a>Oplossing 2: Het query plan verbeteren
 
-### <a name="option-1-use-the-create-statistics-statement"></a>Optie 1: Gebruik de instructie CREATE STATISTICS
+### <a name="option-1-use-the-create-statistics-statement"></a>Optie 1: De instructie CREATE STATISTICs gebruiken
 
-U-SQL biedt de instructie CREATE STATISTICS voor tabellen. Deze instructie geeft meer informatie naar het queryoptimalisatieprogramma over de gegevenskenmerken, zoals de verdeling van de waarde, die zijn opgeslagen in een tabel. Voor de meeste query's, wordt het queryoptimalisatieprogramma al de benodigde statistieken voor een hoge kwaliteit queryplan gegenereerd. In sommige gevallen moet u mogelijk de queryprestaties verbeteren door het maken van aanvullende statistieken met CREATE STATISTICS of door het wijzigen van het ontwerp van de query. Zie voor meer informatie de [CREATE STATISTICS (U-SQL)](/u-sql/ddl/statistics/create-statistics) pagina.
+U-SQL biedt de instructie CREATE STATISTICs voor tabellen. Deze instructie geeft meer informatie over de query optimalisatie over de gegevens kenmerken, zoals de waarde voor de distributie, die zijn opgeslagen in een tabel. Voor de meeste query's genereert de query Optimizer al de benodigde statistieken voor een query plan van hoge kwaliteit. Soms moet u de query prestaties verbeteren door extra statistieken te maken met CREATE STATISTICs of door het query ontwerp te wijzigen. Zie de pagina [Statistieken maken (U-SQL)](/u-sql/ddl/statistics/create-statistics) voor meer informatie.
 
-Codevoorbeeld:
+Voorbeeld van code:
 
     CREATE STATISTICS IF NOT EXISTS stats_SampleTable_date ON SampleDB.dbo.SampleTable(date) WITH FULLSCAN;
 
 >[!NOTE]
->Statistische gegevens wordt niet automatisch bijgewerkt. Als u de gegevens in een tabel bijwerken zonder opnieuw maken van de statistieken, kunt de prestaties van query's weigeren.
+>Statistische gegevens worden niet automatisch bijgewerkt. Als u de gegevens in een tabel bijwerkt zonder de statistieken opnieuw te maken, kunnen de query prestaties worden geweigerd.
 
-### <a name="option-2-use-skewfactor"></a>Optie 2: Gebruik SKEWFACTOR
+### <a name="option-2-use-skewfactor"></a>Optie 2: SKEWFACTOR gebruiken
 
-Als u wilt de som van de belasting voor elke status, moet u de GROUP BY staat, een benadering die niet voorkomen het probleem gegevensverschil dat-gebruiken. U kunt echter een hint gegevens opgeven in de query voor het identificeren van gegevensverschil-sleutels, zodat het optimalisatieprogramma een uitvoeringsplan voor u voorbereiden kunt.
+Als u de belasting voor elke status wilt opsommen, moet u groeperen op status gebruiken. Dit is een benadering waarmee het probleem met het gegevens verschil niet wordt voor komen. U kunt echter een gegevens Hint opgeven in uw query om gegevens scheefheid in sleutels te identificeren, zodat de Optimizer een uitvoerings plan kan voorbereiden voor u.
 
-Meestal kunt u de parameter 0,5 als 1, wat betekent dat niet veel scheeftrekken en 1 betekenis zware scheeftrekken 0,5 instellen. Omdat de hint is van invloed op uitvoeringsplan optimalisatie voor de huidige instructie en alle downstream-instructies, moet u de hint toevoegen voordat u de kans vervormd key-wise aggregatie.
+Normaal gesp roken kunt u de para meter instellen op 0,5 en 1, met 0,5 betekent niet veel scheefheid en een zware scheefheid. Omdat de hint van invloed is op de optimalisatie van uitvoerings plannen voor de huidige instructie en alle downstream-instructies, moet u ervoor zorgen dat u de hint toevoegt vóór de mogelijk gescheefe sleutel aggregatie.
 
     SKEWFACTOR (columns) = x
 
     Provides a hint that the given columns have a skew factor x from 0 (no skew) through 1 (very heavy skew).
 
-Codevoorbeeld:
+Voorbeeld van code:
 
     //Add a SKEWFACTOR hint.
     @Impressions =
@@ -97,14 +97,14 @@ Codevoorbeeld:
                 ON @Sessions.Query == @Campaigns.Query
         ;   
 
-### <a name="option-3-use-rowcount"></a>Optie 3: Gebruik het aantal rijen  
-Naast SKEWFACTOR, kunt voor specifieke ongelijkmatig sleutel join gevallen, als u weet dat de andere is toegevoegd aan rijenset klein is, u zien het optimalisatieprogramma door toe te voegen een ROWCOUNT-hint in de U-SQL-instructie voor samenvoegen. Op deze manier kunt optimaliseren een broadcast join-strategie om prestaties te verbeteren. Let erop dat het gegevensverschil probleem niet wordt opgelost door het aantal rijen, maar deze extra hulp kan bieden.
+### <a name="option-3-use-rowcount"></a>Optie 3: ROWCOUNT gebruiken  
+Naast SKEWFACTOR, voor specifieke join-cases met een schuine sleutel, kunt u, als u weet dat de andere gekoppelde rij klein is, u de Optimizer vertelt door een ROWCOUNT-Hint toe te voegen in de U-SQL-instructie voordat U verbinding maakt. Op deze manier kan Optimizer een strategie voor deelname aan een uitzending kiezen om de prestaties te verbeteren. Houd er rekening mee dat ROWCOUNT het probleem met het hellen van gegevens niet kan oplossen, maar wel meer hulp kan bieden.
 
     OPTION(ROWCOUNT = n)
 
     Identify a small row set before JOIN by providing an estimated integer row count.
 
-Codevoorbeeld:
+Voorbeeld van code:
 
     //Unstructured (24-hour daily log impressions)
     @Huge   = EXTRACT ClientId int, ...
@@ -122,23 +122,23 @@ Codevoorbeeld:
                 INNER JOIN @Small ON Sessions.Client == @Small.Client
                 ;
 
-## <a name="solution-3-improve-the-user-defined-reducer-and-combiner"></a>Oplossing 3: De gebruiker gedefinieerde reducer en combiner verbeteren
+## <a name="solution-3-improve-the-user-defined-reducer-and-combiner"></a>Oplossing 3: De door de gebruiker gedefinieerde Reducer en combi natie verbeteren
 
-U kunt een door de gebruiker gedefinieerde operator logische gecompliceerd zijn getroffen soms schrijven en een goed geschreven reducer en combiner een gegevensverschil probleem in sommige gevallen mogelijk beperken.
+U kunt soms een door de gebruiker gedefinieerde operator schrijven om te omgaan met gecompliceerde proces logica en een goed geschreven Reducer en combi natie kan in sommige gevallen een probleem met het gegevens verschil oplossen.
 
-### <a name="option-1-use-a-recursive-reducer-if-possible"></a>Optie 1: Gebruik zo mogelijk een reducer recursieve
+### <a name="option-1-use-a-recursive-reducer-if-possible"></a>Optie 1: Indien mogelijk een recursieve verminderr gebruiken
 
-Een door de gebruiker gedefinieerde reducer wordt standaard uitgevoerd in de modus voor niet-recursieve, wat betekent dat de hoeveelheid werk voor een sleutel wordt gedistribueerd naar een hoekpunt. Maar als uw gegevens is vervormd, de enorme gegevenssets kan worden verwerkt in een hoekpunt en gedurende langere tijd worden uitgevoerd.
+Standaard wordt een door de gebruiker gedefinieerde versmaller uitgevoerd in de niet-recursieve modus, wat betekent dat het verminderen van de hoeveelheid werk voor een sleutel in één hoek punt wordt gedistribueerd. Als uw gegevens echter worden schuingetrokken, kunnen de enorme gegevens sets worden verwerkt in één hoek punt en gedurende lange tijd worden uitgevoerd.
 
-U kunt een kenmerk in de code voor het definiëren van reducer om uit te voeren in de modus voor recursieve toevoegen voor betere prestaties. De enorme gegevenssets kan vervolgens worden gedistribueerd naar meerdere hoekpunten en parallel uit te voeren die de taak wordt versneld.
+U kunt de prestaties verbeteren door een kenmerk in uw code toe te voegen om de verminderr te definiëren die in de recursieve modus moet worden uitgevoerd. De enorme gegevens sets kunnen vervolgens worden gedistribueerd naar meerdere hoek punten en parallel worden uitgevoerd. Dit versnelt uw taak.
 
-Als u een niet-recursieve reducer recursieve, moet u om ervoor te zorgen dat de algoritme associatieve is. Bijvoorbeeld, de som is associatieve en de mediaan is niet. U moet ook om ervoor te zorgen dat de invoer en uitvoer voor reducer hetzelfde schema blijven.
+Als u een niet-recursieve verminderr wilt instellen op recursief, moet u ervoor zorgen dat uw algoritme is gekoppeld. De som is bijvoorbeeld associatief en de mediaan niet. U moet er ook voor zorgen dat de invoer en uitvoer voor reduceerere hetzelfde schema blijven gebruiken.
 
-Kenmerk van recursieve reducer:
+Kenmerk van recursieve verminderr:
 
     [SqlUserDefinedReducer(IsRecursive = true)]
 
-Codevoorbeeld:
+Voorbeeld van code:
 
     [SqlUserDefinedReducer(IsRecursive = true)]
     public class TopNReducer : IReducer
@@ -150,30 +150,30 @@ Codevoorbeeld:
         }
     }
 
-### <a name="option-2-use-row-level-combiner-mode-if-possible"></a>Optie 2: Beveiliging op rijniveau combiner modus gebruiken, indien mogelijk
+### <a name="option-2-use-row-level-combiner-mode-if-possible"></a>Optie 2: Gebruik, indien mogelijk, de modus voor het combi neren van rijen.
 
-Net als bij de ROWCOUNT-hint voor specifieke ongelijkmatig sleutel join gevallen, combiner modus wil enorme ongelijkmatig-sleutel-waarde ingesteld op meerdere hoekpunten verdelen zodat het werk kan gelijktijdig worden uitgevoerd. Gegevensverschil problemen kan niet worden omgezet door combiner modus, maar aanvullende hulp voor sets met enorme ongelijkmatig-sleutel-waarde kunnen worden aangeboden.
+Net als bij de ROWCOUNT-Hint voor specifieke samenvoeg cases met een schuine sleutel, probeert de combine modus een enorme, gescheefe sleutel waarde sets te distribueren naar meerdere hoek punten zodat het werk gelijktijdig kan worden uitgevoerd. De combi natie modus kan problemen met het scheef trekken van gegevens niet oplossen, maar kan extra hulp bieden voor grote waarden sets met scheefe sleutels.
 
-Standaard is de modus combiner volledig, wat betekent dat de rij naar links en rechts rij kunnen niet worden gescheiden. De beveiligingsmodus instellen als links/rechts/Inner join voor beveiliging op rijniveau kunt. Het systeem scheidt het bijbehorende rij wordt ingesteld en worden ze verdeeld over meerdere hoekpunten die parallel worden uitgevoerd. Voordat u de modus combiner configureert, zijn echter zorgvuldig om ervoor te zorgen dat de bijbehorende rij sets kunnen worden gescheiden.
+De combi natie-modus is standaard vol. Dit betekent dat de set links en de rechter rij niet kan worden gescheiden. Als u de modus instelt op links/rechts/intern, wordt join op rijniveau ingeschakeld. Het systeem scheidt de overeenkomende Rijg sets en distribueert deze naar meerdere hoek punten die parallel worden uitgevoerd. Voordat u echter de combine modus configureert, moet u ervoor zorgen dat de overeenkomende Rijg sets kunnen worden gescheiden.
 
-Het volgende voorbeeld toont een rijenset gescheiden links. Elke rij van de uitvoer is afhankelijk van één invoer rij aan de linkerkant en mogelijk afhankelijk is van alle rijen vanaf de rechterkant met dezelfde sleutelwaarde. Als u de modus combiner links instelt, wordt het systeem worden gescheiden van de enorme links-rij instellen in kleine netwerken en toegewezen aan meerdere hoekpunten.
+In het voor beeld hieronder ziet u een set met gescheiden rijen. Elke uitvoermap is van links afhankelijk van één rij met invoer en mogelijk is deze afhankelijk van alle rijen van rechts met dezelfde sleutel waarde. Als u de modus voor de combi natie van de as links instelt, scheidt het systeem de enorme set links in kleine lijnen en wijst deze toe aan meerdere hoek punten.
 
-![Afbeelding van combiner-modus](./media/data-lake-analytics-data-lake-tools-data-skew-solutions/combiner-mode-illustration.png)
+![Afbeelding van de modus voor samen voegen](./media/data-lake-analytics-data-lake-tools-data-skew-solutions/combiner-mode-illustration.png)
 
 >[!NOTE]
->Als u de verkeerde combiner modus instelt, wordt de combinatie is minder efficiënt en de resultaten mogelijk onjuist.
+>Als u de verkeerde combine modus instelt, is de combi natie minder efficiënt en zijn de resultaten mogelijk onjuist.
 
-Kenmerken van combiner modus:
+Kenmerken van de modus voor samen voegen:
 
 - [SqlUserDefinedCombiner(Mode=CombinerMode.Full)]: Every output row potentially depends on all the input rows from left and right with the same key value.
 
-- SqlUserDefinedCombiner(Mode=CombinerMode.Left): Elke rij van de uitvoer is afhankelijk van één invoer rij vanaf de linkerkant (en mogelijk alle rijen vanaf de rechterkant met dezelfde sleutelwaarde).
+- SqlUserDefinedCombiner (modus = CombinerMode. left): Elke uitvoermap is afhankelijk van één rij met invoer van links (en mogelijk alle rijen van rechts met dezelfde sleutel waarde).
 
-- qlUserDefinedCombiner(Mode=CombinerMode.Right): Elke rij van de uitvoer is afhankelijk van één invoer rij van het recht (en mogelijk alle rijen vanaf de linkerkant met dezelfde sleutelwaarde).
+- qlUserDefinedCombiner (modus = CombinerMode. Right): Elke uitvoermap is afhankelijk van één invoer rij van rechts (en mogelijk alle rijen vanaf de linkerkant met dezelfde sleutel waarde).
 
-- SqlUserDefinedCombiner(Mode=CombinerMode.Inner): Elke rij van de uitvoer is afhankelijk van één invoer rij van de links en rechts met dezelfde waarde.
+- SqlUserDefinedCombiner (mode = CombinerMode. Inner): Elke uitvoermap is afhankelijk van één invoer rij aan de linkerkant en de rechter kant met dezelfde waarde.
 
-Codevoorbeeld:
+Voorbeeld van code:
 
     [SqlUserDefinedCombiner(Mode = CombinerMode.Right)]
     public class WatsonDedupCombiner : ICombiner

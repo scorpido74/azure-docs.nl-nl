@@ -5,21 +5,22 @@ ms.service: cosmos-db
 author: SnehaGunda
 ms.author: sngun
 ms.topic: conceptual
-ms.date: 07/23/2019
-ms.openlocfilehash: 5b482d00990add365a90f36bf6e8d047dc50efc0
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.date: 09/25/2019
+ms.openlocfilehash: ea7880d051303afad01ad8ba4a2d68d7331c6a89
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68467823"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71291148"
 ---
 # <a name="working-with-dates-in-azure-cosmos-db"></a>Werken met datums in Azure Cosmos DB
 Azure Cosmos DB biedt schemaflexibiliteit en geavanceerde indexeermogelijkheden via een systeemeigen [JSON](https://www.json.org) gegevensmodel. Alle Azure Cosmos DB-resources, zoals databases, containers, documenten en opgeslagen procedures worden gemodelleerd en opgeslagen als JSON-documenten. Als vereiste voor een draag bare, JSON-(en Azure Cosmos DB) ondersteunt slechts een kleine set basis typen: Teken reeks, getal, Booleaanse waarde, matrix, object en null. Echter, JSON is flexibel en kunnen ontwikkelaars en frameworks voor complexere typen met behulp van deze primitieven en samenstellen van deze objecten of-matrices. 
 
-Naast de eenvoudige typen veel toepassingen moeten de [datum-/](https://msdn.microsoft.com/library/system.datetime(v=vs.110).aspx) type datums en een tijdstempel vertegenwoordigt. Dit artikel wordt beschreven hoe ontwikkelaars kunnen opslaan, ophalen en query uitvoeren op datums in Azure Cosmos DB met behulp van de .NET SDK.
+Naast de basis typen hebben veel toepassingen het type datum/tijd nodig om datums en tijds tempels weer te geven. Dit artikel wordt beschreven hoe ontwikkelaars kunnen opslaan, ophalen en query uitvoeren op datums in Azure Cosmos DB met behulp van de .NET SDK.
 
 ## <a name="storing-datetimes"></a>Opslaan van datum/tijd
-Standaard de [Azure Cosmos DB SDK](sql-api-sdk-dotnet.md) serialiseert datum-/ tijdwaarden als [ISO 8601](https://www.iso.org/iso/catalogue_detail?csnumber=40874) tekenreeksen. De meeste toepassingen kunnen de tekenreeksweergave van standaard gebruiken voor datum/tijd voor de volgende redenen:
+
+Azure Cosmos DB ligt binnen het bereik van de JSON-typen die geen DateTime-type bevatten. In Azure Cosmos DB moeten datums dus worden opgeslagen als teken reeksen. Op dit moment biedt Azure Cosmos DB geen ondersteuning voor lokalisatie van datums. De aanbevolen notatie voor datum-en tijd teken `YYYY-MM-DDThh:mm:ss.sssZ` reeksen in azure Cosmos DB is die de ISO 8601 UTC-standaard volgt. Als u de teken reeksen in deze indeling opmaakt, zijn de sorteer datums lexicographically. Logica voor het afhandelen van niet-UTC-datums moet door de client worden gedefinieerd. De meeste toepassingen kunnen de tekenreeksweergave van standaard gebruiken voor datum/tijd voor de volgende redenen:
 
 * Tekenreeksen kunnen worden vergeleken, en de relatieve positie van de datum/tijd-waarden behouden blijft wanneer ze worden getransformeerd in tekenreeksen. 
 * Deze aanpak zijn vereist om een aangepaste code of kenmerken voor JSON-conversie.

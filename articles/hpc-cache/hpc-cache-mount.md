@@ -4,27 +4,31 @@ description: Clients verbinden met een Azure HPC cache-service
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 09/12/2019
+ms.date: 09/24/2019
 ms.author: v-erkell
-ms.openlocfilehash: 3b7a59afa0dea300e200b953d045d38218e99b22
-ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
+ms.openlocfilehash: ea23331ebc75b5ede22c9f7357a9e0de12d819e2
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71180920"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71299970"
 ---
 # <a name="mount-the-azure-hpc-cache-preview"></a>De Azure HPC-cache koppelen (preview)
 
 Nadat de cache is gemaakt, hebben NFS-clients toegang tot de server met een eenvoudige koppelings opdracht.
 
-Gebruik de koppelings adressen die worden vermeld op de pagina cache-overzicht en het pad van de virtuele naam ruimte dat u instelt tijdens het maken van het opslag doel. 
+De koppelings opdracht bestaat uit twee elementen:
+
+* Een van de koppel adressen van de cache (vermeld op de pagina overzicht van cache)
+* Het pad van de virtuele naam ruimte dat u instelt tijdens het maken van het opslag doel
 
 ![scherm afbeelding van de overzichts pagina van het Azure HPC-cache-exemplaar, met een markeer stift rond de lijst met koppelings adressen op de rechter benedenhoek](media/hpc-cache-mount-addresses.png)
 
 > [!NOTE] 
-> De cache koppel adressen komen overeen met netwerk interfaces in het subnet van de cache. Deze nic's worden weer gegeven in de resource groep met namen `-cluster-nic-` die eindigen op en een getal. Wijzig of verwijder deze interfaces niet, of de cache is niet meer beschikbaar.
+> De cache koppel adressen komen overeen met netwerk interfaces in het subnet van de cache. In een resource groep worden deze nic's vermeld met namen die eindigen op `-cluster-nic-` en een getal. Wijzig of verwijder deze interfaces niet, of de cache is niet meer beschikbaar.
 
-De virtuele naam ruimte paden worden weer gegeven op de pagina **opslag doelen** . Klik op de naam van het doel om details weer te geven, inclusief het geaggregeerde pad naar de naam ruimte (of de paden) die eraan zijn gekoppeld. 
+De virtuele naam ruimte paden worden weer gegeven op de pagina **opslag doelen** . Klik op een individuele opslag doel naam om de details ervan weer te geven, inclusief geaggregeerde naam ruimte-paden die eraan zijn gekoppeld.
+
 ![scherm afbeelding van het opslag doel paneel van de cache, met een markeer stift rond een vermelding in de kolom pad van de tabel](media/hpc-cache-view-namespace-paths.png)
 
 ## <a name="mount-command-syntax"></a>Syntaxis van koppelings opdracht
@@ -33,15 +37,15 @@ Gebruik een koppelings opdracht zoals de volgende:
 
 > sudo mount *cache_mount_address*:/*namespace_path* *local_path* {*Opties*}
 
-Voorbeeld: 
+Voorbeeld:
 
 ```
 root@test-client:/tmp# mkdir hpccache
-root@test-client:/tmp# sudo mount 10.0.0.28:/blob-demo-0722 ./hpccache/ -orw,tcp,mountproto=tcp,vers3,hard,intr
+root@test-client:/tmp# sudo mount 10.0.0.28:/blob-demo-0722 ./hpccache/ -orw,tcp,mountproto=tcp,vers3,hard
 root@test-client:/tmp# 
 ```
 
-Wanneer deze opdracht is geslaagd, moet de inhoud van de opslag export zichtbaar zijn in de ``hpccache`` Directory op de client. 
+Wanneer deze opdracht is geslaagd, moet de inhoud van de opslag export zichtbaar zijn in de ``hpccache`` Directory op de client.
 
 > [!NOTE] 
 > Uw clients moeten toegang hebben tot het virtuele netwerk en het subnet dat uw cache heeft. Maak bijvoorbeeld client-Vm's binnen hetzelfde virtuele netwerk, of gebruik een eind punt, gateway of andere oplossing in het virtuele netwerk voor toegang vanaf buiten. Houd er rekening mee dat niets anders kan worden gehost in het subnet van de cache.
@@ -50,7 +54,7 @@ Wanneer deze opdracht is geslaagd, moet de inhoud van de opslag export zichtbaar
 
 Voor een robuuste client koppeling geeft u deze instellingen en argumenten door in de opdracht Mount: 
 
-``mount -o hard,nointr,proto=tcp,mountproto=tcp,retry=30 ${CACHE_IP_ADDRESS}:/${NAMESPACE_PATH} ${LOCAL_FILESYSTEM_MOUNT_POINT}``
+``mount -o hard,proto=tcp,mountproto=tcp,retry=30 ${CACHE_IP_ADDRESS}:/${NAMESPACE_PATH} ${LOCAL_FILESYSTEM_MOUNT_POINT}``
 
 | Aanbevolen opdracht instellingen voor koppelen | |
 --- | --- 

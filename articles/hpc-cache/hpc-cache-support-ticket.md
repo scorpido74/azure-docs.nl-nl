@@ -4,14 +4,14 @@ description: Een Help-aanvraag voor Azure HPC-cache openen
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 09/12/2019
+ms.date: 09/24/2019
 ms.author: v-erkell
-ms.openlocfilehash: 29750ab19f74ef1ceab8c69792d12b9f9ca2a297
-ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
+ms.openlocfilehash: 630af5322483782c1e26cd792bf7d7957e555d84
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71180890"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71299949"
 ---
 # <a name="open-a-support-ticket-for-azure-hpc-cache-preview"></a>Open een ondersteunings ticket voor de Azure HPC-cache (preview-versie)
 
@@ -24,6 +24,8 @@ Selecteer uw abonnement in de lijst.
 Als u de preview-service van de Azure HPC-cache wilt zoeken, klikt u op de knop **alle services** en zoekt u op HPC.
 
 ![Scherm afbeelding van het tabblad ondersteunings aanvraag-basis beginselen, deels ingevuld zoals beschreven](media/hpc-cache-support-request.png)
+
+<!-- update screenshot after preview to update product name -->
 
 Vul de overige velden in met uw gegevens en voor keuren en verzend het ticket wanneer u klaar bent.
 

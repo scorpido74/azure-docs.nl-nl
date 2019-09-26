@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: overview
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: fc3ae87ce5c4547526ae50f371684ac14dfcf266
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 0c5541d7a80c3b6157ccadd979412163122ca8a2
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71104662"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300753"
 ---
 # <a name="what-is-azure-private-link-preview"></a>Wat is Azure Private Link? (Preview)
 Met Azure private link kunt u toegang krijgen tot Azure PaaS-Services (bijvoorbeeld Azure Storage en SQL Database) en Azure hosted Customer/partner-services via een [persoonlijk eind punt](private-endpoint-overview.md) in uw virtuele netwerk. Verkeer tussen uw virtuele netwerk en de services wordt via het backbonenetwerk van Microsoft geleid, waarmee de risico's van het openbare internet worden vermeden. U kunt ook uw eigen [privé koppelings service](private-link-service-overview.md) maken in uw virtuele netwerk (VNet) en deze privé leveren aan uw klanten. De installatie en consumptie-ervaring met behulp van persoonlijke Azure-koppeling is consistent voor Azure PaaS-, klanten-en Shared partner services.
@@ -40,11 +40,11 @@ Persoonlijke Azure-koppeling biedt de volgende voor delen:
 
 |Scenario  |Ondersteunde services   |Beschikbare regio's | State   |
 |---------|---------|---------|---------|
-|Persoonlijke koppeling voor services die eigendom zijn van de klant|Persoonlijke koppelings Services achter Standard Load Balancer |West-Centraal VS; WestUS VS Zuid-Centraal; VS-Oost; VS-Noord  |  Preview  |
+|Persoonlijke koppeling voor services die eigendom zijn van de klant|Persoonlijke koppelings Services achter Standard Load Balancer |West-Centraal VS; WestUS VS Zuid-Centraal; VS-Oost; VS Noord-Centraal  |  Preview  |
 |Persoonlijke koppeling voor Azure PaaS Services   | Azure Storage        |  VS-Oost, VS-West, Centraal-West       | Preview         |
 |  | Azure Data Lake Storage Gen2        |  VS-Oost, VS-West, Centraal-West       | Preview         |
-|  |  Azure SQL Database         | West-Centraal VS; WestUS VS Zuid-Centraal; VS-Oost; VS-Noord       |   Preview      |
-||Azure SQL Data Warehouse| West-Centraal VS; WestUS VS Zuid-Centraal; VS-Oost; VS-Noord |Preview|
+|  |  Azure SQL Database         | West-Centraal VS; WestUS VS Zuid-Centraal; VS-Oost; VS Noord-Centraal      |   Preview      |
+||Azure SQL Data Warehouse| West-Centraal VS; WestUS VS Zuid-Centraal; VS-Oost; VS Noord-Centraal |Preview|
 
 Controleer de [pagina Azure Virtual Network updates](https://azure.microsoft.com/updates/?product=virtual-network)voor de meest recente meldingen. 
 

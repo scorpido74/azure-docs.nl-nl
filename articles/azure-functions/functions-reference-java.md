@@ -11,24 +11,52 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: routlaw
-ms.openlocfilehash: aea1434acdbfd97bcc9096dddd497ef031a74b94
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: e3ab825fbf5b5dba74b67eaa894a38c74ed0b62a
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70170548"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71299380"
 ---
 # <a name="azure-functions-java-developer-guide"></a>Azure Functions Java-ontwikkelaars handleiding
 
 De Azure Functions-runtime ondersteunt [Java SE 8 LTS (Zulu 8.31.0.2-jre 8.0.181-win_x64)](https://repos.azul.com/azure-only/zulu/packages/zulu-8/8u181/). Deze hand leiding bevat informatie over de complexiteit voor het schrijven van Azure Functions met Java.
 
-Een Java-functie is `public` een methode die is gedecoreerd `@FunctionName`met de aantekening. Deze methode definieert de vermelding voor een Java-functie en moet uniek zijn in een bepaald pakket. 
+Wat er gebeurt met andere talen, kan een functie-app een of meer functies hebben. Een Java-functie is `public` een methode die is gedecoreerd `@FunctionName`met de aantekening. Deze methode definieert de vermelding voor een Java-functie en moet uniek zijn in een bepaald pakket. Een functie-app geschreven in Java kan meerdere klassen hebben met meerdere open bare methoden die aantekeningen `@FunctionName`hebben.
 
 In dit artikel wordt ervan uitgegaan dat u de [Azure functions Naslag informatie voor ontwikkel aars](functions-reference.md)al hebt gelezen. U moet ook de Snelstartgids van functions volt ooien om uw eerste functie te maken met behulp van [Visual Studio code](functions-create-first-function-vs-code.md) of [maven](functions-create-first-java-maven.md).
 
 ## <a name="programming-model"></a>Programmeermodel 
 
 De concepten van [Triggers en bindingen](functions-triggers-bindings.md) zijn fundamenteel voor Azure functions. Triggers starten de uitvoering van uw code. Bindingen bieden een manier om gegevens door te geven aan en gegevens van een functie te retour neren zonder dat u aangepaste gegevens toegangs code hoeft te schrijven.
+
+## <a name="project-scaffolding"></a>Project steigers
+
+De eenvoudigste manier om een op Java gebaseerd Azure function-project te gebruiken, `Apache Maven` is het gebruik van archetypes. U kunt ook wizards voor het genereren van projecten vinden op Visual Studio code en de Azure-Toolkit voor eclips en IntelliJ.
+
+Er zijn momenteel twee Azure Functions archetypes voor maven:
+
+### <a name="java-archetype"></a>Java-archetype
+
+Deze Archetype wordt gepubliceerd onder de volgende groupId en artifactId [com. micro soft. Azure: Azure-functions-archetype](https://search.maven.org/artifact/com.microsoft.azure/azure-functions-archetype/).
+
+```
+mvn archetype:generate \
+    -DarchetypeGroupId=com.microsoft.azure \
+    -DarchetypeArtifactId=azure-functions-archetype 
+```
+
+### <a name="kotlin-archetype-preview"></a>Kotlin archetype (preview-versie)
+
+Deze Archetype wordt gepubliceerd onder de volgende groupId en artifactId [com. micro soft. Azure: Azure-functions-Kotlin-archetype](https://search.maven.org/artifact/com.microsoft.azure/azure-functions-kotlin-archetype/).
+
+```
+mvn archetype:generate \
+    -DarchetypeGroupId=com.microsoft.azure \
+    -DarchetypeArtifactId=azure-functions-kotlin-archetype
+```
+
+De bron code van deze archetypes vindt u in de [Azure maven archetypes github-opslag plaats](https://github.com/microsoft/azure-maven-archetypes).
 
 ## <a name="folder-structure"></a>Mapstructuur
 
@@ -55,6 +83,8 @@ FunctionsProject
  | | | | - lib
  | - pom.xml
 ```
+
+_* Het Kotlin-project lijkt sterk op omdat het nog steeds maven is_
 
 U kunt een gedeeld [host. json](functions-host-json.md) -bestand gebruiken om de functie-app te configureren. Elke functie heeft een eigen code bestand (. java) en een bindings configuratie bestand (function. json).
 
@@ -109,7 +139,7 @@ Dit is de gegenereerde `function.json` corresponderende met de [Azure-functions-
 
 Voor lokale ontwikkeling van Java-functie-apps downloadt en gebruikt u de [Azul Zulu Enter prise voor Azure](https://assets.azul.com/files/Zulu-for-Azure-FAQ.pdf) Java 8 JDKs van [Azul Systems](https://www.azul.com/downloads/azure-only/zulu/). Azure Functions maakt gebruik van de Azul Java 8 JDK wanneer u uw functie-apps in de Cloud implementeert.
 
-[Ondersteuning voor Azure](https://azure.microsoft.com/support/) voor problemen met de JDKs-en functie-apps is beschikbaar in een ondersteunings [abonnement](https://azure.microsoft.com/support/plans/).
+[Ondersteuning voor Azure](https://azure.microsoft.com/support/) voor problemen met de JDKs-en functie-apps is beschikbaar in een [ondersteunings abonnement](https://azure.microsoft.com/support/plans/).
 
 ## <a name="customize-jvm"></a>JVM aanpassen
 

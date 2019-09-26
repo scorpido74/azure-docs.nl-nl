@@ -4,16 +4,16 @@ description: Hoe u opslag doelen definieert zodat uw Azure HPC-cache uw on-premi
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 09/06/2019
+ms.date: 09/24/2019
 ms.author: v-erkell
-ms.openlocfilehash: a17952e193f3e03becaab044f55637372bac7b0d
-ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
+ms.openlocfilehash: 7df0727a58f3d70289c5060175572dac1bbb4abb
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71181004"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300028"
 ---
-# <a name="add-storage-targets"></a>Opslag doelen toevoegen
+# <a name="add-storage-targets"></a>Opslagdoelen toevoegen
 
 *Opslag doelen* zijn back-end opslag voor bestanden die toegankelijk zijn via een Azure HPC-cache-exemplaar. U kunt NFS-opslag, zoals een on-premises hardwaresysteem, toevoegen of gegevens opslaan in Azure Blob.
 
@@ -21,11 +21,11 @@ U kunt Maxi maal tien verschillende opslag doelen definiëren voor één cache. 
 
 Houd er rekening mee dat de export van de opslag toegankelijk moet zijn vanuit het virtuele netwerk van uw cache. Voor on-premises hardwarematige opslag moet u mogelijk een DNS-server instellen die hostnamen voor NFS-opslag toegang kan omzetten. Meer informatie vindt u in [DNS-toegang](hpc-cache-prereqs.md#dns-access).
 
-U kunt opslag doelen toevoegen tijdens het maken van uw Azure HPC-cache of later. De procedure wijkt enigszins af, afhankelijk van of u Azure Blob-opslag of een NFS-export toevoegt. Hieronder vindt u meer informatie.
+U kunt opslag doelen toevoegen tijdens het maken van uw cache of achteraf. De procedure wijkt enigszins af, afhankelijk van of u Azure Blob-opslag of een NFS-export toevoegt. Hieronder vindt u meer informatie.
 
 ## <a name="add-storage-targets-while-creating-the-cache"></a>Opslag doelen toevoegen tijdens het maken van de cache
 
-Gebruik het tabblad **opslag doelen** van de wizard cache maken om opslag te definiëren op het moment dat u het cache-exemplaar maakt.
+Gebruik het tabblad **opslag doelen** van de Azure HPC-cache maken wizard om opslag te definiëren op het moment dat u het cache-exemplaar maakt.
 
 ![scherm afbeelding van de pagina opslag doelen](media/hpc-cache-storage-targets-pop.png)
 
@@ -39,11 +39,13 @@ Open in de Azure Portal uw cache-exemplaar en klik op **opslag doelen** op de zi
 
 ## <a name="add-a-new-azure-blob-storage-target"></a>Een nieuw Azure Blob-opslag doel toevoegen
 
-Een nieuw Blob-opslag doel vereist een lege BLOB-container of een container die is gevuld met gegevens in de bestands indeling van de Azure HPC-cache in de Cloud. Lees meer over het vooraf laden van een BLOB-container in [gegevens verplaatsen naar Azure Blob-opslag](hpc-cache-ingest.md).
+Een nieuw Blob-opslag doel vereist een lege BLOB-container of een container die is gevuld met gegevens in de bestandssysteem indeling van de Azure HPC-cache. Lees meer over het vooraf laden van een BLOB-container in [gegevens verplaatsen naar Azure Blob-opslag](hpc-cache-ingest.md).
 
 Als u een Azure Blob-container wilt definiëren, voert u deze informatie in.
 
 ![scherm afbeelding van de pagina opslag doel toevoegen, gevuld met informatie voor een nieuw Azure Blob-opslag doel](media/hpc-cache-add-blob.png)
+
+<!-- need to replace screenshot after note text is updated with both required RBAC roles -->
 
 * **Naam van opslag doel** : Stel een naam in die dit opslag doel identificeert in de Azure HPC-cache.
 * **Doel type** : Kies **BLOB**.
@@ -58,7 +60,7 @@ Wanneer u klaar bent, klikt u op **OK** om het opslag doel toe te voegen.
 
 ### <a name="add-the-access-control-roles-to-your-account"></a>De toegangs beheer rollen toevoegen aan uw account
 
-De Azure HPC-cache maakt gebruik [van op rollen gebaseerd toegangs beheer (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/index) om de cache toepassing toegang te geven tot uw opslag account voor Azure Blob Storage-doelen.
+Azure HPC cache maakt gebruik [van op rollen gebaseerd toegangs beheer (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/index) voor het machtigen van de cache toepassing voor toegang tot uw opslag account voor Azure Blob Storage-doelen.
 
 De eigenaar van het opslag account moet expliciet de Inzender rollen voor het [opslag account](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-account-contributor) en de [blobgegevens](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor) voor de gebruiker StorageCache resource provider toevoegen.
 
@@ -98,9 +100,14 @@ Geef deze informatie op voor een opslag doel met NFS-back-ups:
 
 * **Gebruiks model** : Kies een van de gegevens cache profielen op basis van uw werk stroom, zoals wordt beschreven in [een gebruiks model kiezen](#choose-a-usage-model).
 
-U kunt meerdere naam ruimte paden maken die verschillende exports op hetzelfde NFS-opslag systeem vertegenwoordigen, maar u moet ze allemaal maken op basis van één opslag doel.
+### <a name="nfs-namespace-paths"></a>NFS-naam ruimte paden
 
-Vul voor elke export deze waarden in:
+Een NFS-opslag doel kan meerdere virtuele paden hebben, zolang elk pad een andere export of submap op hetzelfde opslag systeem vertegenwoordigt.
+
+Alle paden van het ene opslag doel maken.
+<!-- You can create multiple namespace paths to represent different exports on the same NFS storage system, but you must create them all from one storage target. -->
+
+Vul deze waarden in voor elk pad naar de naam ruimte: 
 
 * **Pad naar virtuele naam ruimte** : Stel het client gerichte bestandspad in voor dit opslag doel. Lees de [geaggregeerde naam ruimte configureren](hpc-cache-namespace.md) voor meer informatie over de functie virtuele naam ruimte.
 

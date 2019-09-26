@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 04/08/2019
 ms.author: helohr
-ms.openlocfilehash: 4f325d9fc512fd9f6776fcd799b720aaf60ce472
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: c6c7a57a2093445d3922f9349242c9a902df7370
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69876768"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300707"
 ---
 # <a name="remote-desktop-client-connections"></a>Clientverbindingen met extern bureaublad
 
@@ -152,6 +152,11 @@ Volg deze algemene instructies voor het oplossen van problemen met fout codes vo
 **Wordt** Vm's waarmee de gebruiker probeert verbinding te maken, zijn geen lid van een domein.
 
 **Fix:** Voeg alle virtuele machines die deel uitmaken van een hostgroep toe aan de domein controller.
+
+### <a name="error-connectionfailedusersidinformationmismatch"></a>Fout: ConnectionFailedUserSIDInformationMismatch
+**Wordt** De SID van het Azure Active Directory (AD)-token van de gebruiker komt niet overeen met de SID die door de domein controller wordt geretourneerd bij het inschakelen van de gebruiker voor externe aanmelding. Deze fout treedt doorgaans op wanneer u zich probeert aan te melden bij een Azure Active Directory Domain Services-omgeving (Azure AD DS) met een gebruiker die oorspronkelijk is gebrond van een Windows Server AD.
+
+**Fix:** Dit scenario wordt op dit moment niet ondersteund. Alleen gebruikers die zijn afgeleid van Azure Active Directory kunnen zich aanmelden bij virtuele Windows-bureau blad-Vm's die zijn verbonden met Azure AD DS.
 
 ## <a name="user-connects-but-nothing-is-displayed-no-feed"></a>Gebruiker maakt verbinding, maar er wordt niets weer gegeven (geen feed)
 

@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1bd79b9a6fa8aedd45f41b64f8f81a908feab71f
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: f0f2d3f8d8d2298ec00532205e359ed6f8dbc87a
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70882998"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71315682"
 ---
 # <a name="azure-active-directory-cmdlets-for-configuring-group-settings"></a>Azure Active Directory cmdlets voor het configureren van groepsinstellingen
 Dit artikel bevat instructies voor het gebruik van Azure Active Directory (Azure AD) Power shell-cmdlets om groepen te maken en bij te werken. Deze inhoud is alleen van toepassing op Office 365-groepen (ook wel Unified groups genoemd). 
@@ -123,7 +123,7 @@ Dit zijn de instellingen die zijn gedefinieerd in de groep. Unified SettingsTemp
 |  <ul><li>AllowGuestsToBeGroupOwner<li>Type: Boolean-waarde<li>Prijs False | Een Booleaanse waarde die aangeeft of een gast gebruiker een eigenaar van groepen kan zijn. |
 |  <ul><li>AllowGuestsToAccessGroups<li>Type: Boolean-waarde<li>Prijs Waar | Een Booleaanse waarde die aangeeft of een gast gebruiker toegang kan hebben tot de inhoud van de Office 365-groep.  Voor deze instelling is geen Azure Active Directory Premium P1-licentie vereist.|
 |  <ul><li>GuestUsageGuidelinesUrl<li>Type: Tekenreeks<li>Standaard: | De URL van een koppeling naar de richt lijnen voor gast gebruik. |
-|  <ul><li>AllowToAddGuests<li>Type: Boolean-waarde<li>Prijs Waar | Een Booleaanse waarde die aangeeft of gasten aan deze map mogen worden toegevoegd.|
+|  <ul><li>AllowAddGuests<li>Type: Boolean-waarde<li>Prijs Waar | Een Booleaanse waarde die aangeeft of gasten aan deze map mogen worden toegevoegd.|
 |  <ul><li>ClassificationList<li>Type: Tekenreeks<li>Standaard: |Een door komma's gescheiden lijst met geldige classificatie waarden die kunnen worden toegepast op Office 365-groepen. |
 
 ## <a name="example-configure-guest-policy-for-groups-at-the-directory-level"></a>Voorbeeld: Gast beleid voor groepen op mapniveau configureren
@@ -140,9 +140,9 @@ Dit zijn de instellingen die zijn gedefinieerd in de groep. Unified SettingsTemp
    ```powershell
    $Setting = $template.CreateDirectorySetting()
    ```  
-4. Werk de instelling AllowToAddGuests vervolgens bij
+4. Werk de instelling AllowAddGuests vervolgens bij
    ```powershell
-   $Setting["AllowToAddGuests"] = $False
+   $Setting["AllowAddGuests"] = $False
    ```  
 5. Pas vervolgens de instelling toe:
   
@@ -196,7 +196,7 @@ Met deze stappen leest u de instellingen op mapniveau, die van toepassing zijn o
    AllowGuestsToAccessGroups     True
    GuestUsageGuidelinesUrl
    GroupCreationAllowedGroupId
-   AllowToAddGuests              True
+   AllowAddGuests              True
    UsageGuidelinesUrl            https://guideline.example.com
    ClassificationList
    EnableGroupCreation           True
@@ -233,7 +233,7 @@ Met deze stap worden de instellingen op mapniveau verwijderd, die van toepassing
 
 4. Stel de instelling in op de vereiste waarde:
    ```powershell
-   $SettingCopy["AllowToAddGuests"]=$False
+   $SettingCopy["AllowAddGuests"]=$False
    ```
 5. Haal de ID op van de groep waarop u deze instelling wilt Toep assen:
    ```powershell
@@ -259,7 +259,7 @@ Met deze stap worden de instellingen op mapniveau verwijderd, die van toepassing
    ```
 3. Werk de instelling van de groep zo nodig bij, bijvoorbeeld
    ```powershell
-   $Setting["AllowToAddGuests"] = $True
+   $Setting["AllowAddGuests"] = $True
    ```
 4. Vervolgens krijgt u de ID van de instelling voor deze specifieke groep:
    ```powershell

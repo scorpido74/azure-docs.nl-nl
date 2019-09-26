@@ -344,6 +344,8 @@
               href: v2-permissions-and-consent.md
             - name: Toestemmingsframework
               href: consent-framework.md
+            - name: toestemming van de beheerder
+              href: v2-admin-consent.md
             - name: Ervaringen met toepassingstoestemming
               href: application-consent-experience.md
         - name: Nationale clouds

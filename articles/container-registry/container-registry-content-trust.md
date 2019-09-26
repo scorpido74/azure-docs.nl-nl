@@ -1,6 +1,6 @@
 ---
 title: Inhoud vertrouwen in Azure Container Registry
-description: Meer informatie over het inschakelen van inhoud vertrouwen voor uw Azure-containerregister en ondertekende push- en pull-installatiekopieën.
+description: Meer informatie over het inschakelen van inhouds vertrouwen voor uw Azure container Registry en het pushen en pullen van ondertekende installatie kopieën.
 services: container-registry
 author: dlepow
 manager: gwallace
@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 09/06/2019
 ms.author: danlep
-ms.openlocfilehash: c0d4bd397c68fe3ed2d36404af9230e2316f3362
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: f14d4d32d2423b12786095da17305af605088fb7
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70959189"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300426"
 ---
 # <a name="content-trust-in-azure-container-registry"></a>Inhoud vertrouwen in Azure Container Registry
 

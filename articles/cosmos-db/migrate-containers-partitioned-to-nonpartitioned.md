@@ -4,14 +4,14 @@ description: Meer informatie over het migreren van alle bestaande niet-gepartiti
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/23/2019
+ms.date: 09/25/2019
 ms.author: mjbrown
-ms.openlocfilehash: d51c200ebff0d92b1bcdf2c8e3e0325103e214b7
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 77d70aaa9c1ae5a111a47e08f259c0ce95fd7c92
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69615023"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300118"
 ---
 # <a name="migrate-non-partitioned-containers-to-partitioned-containers"></a>Niet-gepartitioneerde containers migreren naar gepartitioneerde containers
 
@@ -19,12 +19,12 @@ Azure Cosmos DB ondersteunt het maken van containers zonder een partitie sleutel
 
 De niet-gepartitioneerde containers zijn verouderd en u moet uw bestaande niet-gepartitioneerde containers naar gepartitioneerde containers migreren om de opslag en door voer te schalen. Azure Cosmos DB biedt een systeem gedefinieerd mechanisme voor het migreren van niet-gepartitioneerde containers naar gepartitioneerde containers. In dit document wordt uitgelegd hoe alle bestaande niet-gepartitioneerde containers automatisch in gepartitioneerde containers worden gemigreerd. U kunt alleen profiteren van de functie voor automatisch migreren als u de V3-versie van Sdk's in alle talen gebruikt.
 
-> [!NOTE] 
-> Op dit moment kunt u de MongoDB-en Gremlin-API-accounts niet Azure Cosmos DB migreren met behulp van de stappen die in dit document worden beschreven. 
+> [!NOTE]
+> Op dit moment kunt u de MongoDB-en Gremlin-API-accounts niet Azure Cosmos DB migreren met behulp van de stappen die in dit document worden beschreven.
 
 ## <a name="migrate-container-using-the-system-defined-partition-key"></a>Container migreren met de door het systeem gedefinieerde partitie sleutel
 
-Ter ondersteuning van de migratie, Azure Cosmos DB definieert een door het systeem gedefinieerde `/_partitionkey` partitie sleutel met de naam op alle containers die geen partitie sleutel hebben. U kunt de partitie sleutel definitie niet wijzigen nadat de containers zijn gemigreerd. De definitie van een container die naar een gepartitioneerde container wordt gemigreerd, ziet er bijvoorbeeld als volgt uit: 
+Ter ondersteuning van de migratie bevat Azure Cosmos DB een door het systeem gedefinieerde partitie `/_partitionkey` sleutel met de naam op alle containers die geen partitie sleutel hebben. U kunt de partitie sleutel definitie niet wijzigen nadat de containers zijn gemigreerd. De definitie van een container die naar een gepartitioneerde container wordt gemigreerd, ziet er bijvoorbeeld als volgt uit:
 
 ```json
 {
@@ -37,10 +37,10 @@ Ter ondersteuning van de migratie, Azure Cosmos DB definieert een door het syste
   },
 }
 ```
- 
-Nadat de container is gemigreerd, kunt u documenten maken door de `_partitionKey` eigenschap samen met de andere eigenschappen van het document in te vullen. De `_partitionKey` eigenschap vertegenwoordigt de partitie sleutel van uw documenten. 
 
-Het kiezen van de juiste partitie sleutel is belang rijk om de ingerichte door Voer optimaal te benutten. Zie [het artikel een partitie sleutel kiezen](partitioning-overview.md) voor meer informatie. 
+Nadat de container is gemigreerd, kunt u documenten maken door de `_partitionKey` eigenschap samen met de andere eigenschappen van het document in te vullen. De `_partitionKey` eigenschap vertegenwoordigt de partitie sleutel van uw documenten.
+
+Het kiezen van de juiste partitie sleutel is belang rijk om de ingerichte door Voer optimaal te benutten. Zie [het artikel een partitie sleutel kiezen](partitioning-overview.md) voor meer informatie.
 
 > [!NOTE]
 > U kunt alleen gebruikmaken van de door het systeem gedefinieerde partitie sleutel als u de nieuwste/V3 versie van Sdk's in alle talen gebruikt.
@@ -65,37 +65,37 @@ public class DeviceInformationItem
     [JsonProperty(PropertyName = "deviceId")]
     public string DeviceId { get; set; }
 
-    [JsonProperty(PropertyName = "_partitionKey")]
+    [JsonProperty(PropertyName = "_partitionKey", NullValueHandling = NullValueHandling.Ignore)]
     public string PartitionKey {get {return this.DeviceId; set; }
 }
 
 CosmosContainer migratedContainer = database.Containers["testContainer"];
 
 DeviceInformationItem deviceItem = new DeviceInformationItem() {
-  Id = "1234", 
+  Id = "1234",
   DeviceId = "3cf4c52d-cc67-4bb8-b02f-f6185007a808"
-} 
+}
 
-CosmosItemResponse<DeviceInformationItem > response = 
-  await migratedContainer.Items.CreateItemAsync(
+ItemResponse<DeviceInformationItem > response = 
+  await migratedContainer.CreateItemAsync<DeviceInformationItem>(
     deviceItem.PartitionKey, 
     deviceItem
   );
 
 // Read back the document providing the same partition key
-CosmosItemResponse<DeviceInformationItem> readResponse = 
-  await migratedContainer.Items.ReadItemAsync<DeviceInformationItem>( 
+ItemResponse<DeviceInformationItem> readResponse = 
+  await migratedContainer.ReadItemAsync<DeviceInformationItem>( 
     partitionKey:deviceItem.PartitionKey, 
     id: device.Id
-  ); 
+  );
 
 ```
 
-Zie de GitHub-opslag plaats voor [.net](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/CodeSamples) -voor beelden voor het volledige voor beeld. 
+Zie de GitHub-opslag plaats voor [.net](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/CodeSamples) -voor beelden voor het volledige voor beeld.
                       
 ## <a name="migrate-the-documents"></a>De documenten migreren
 
-Hoewel de container definitie wordt uitgebreid met een partitie sleutel eigenschap, worden de documenten in de container niet automatisch gemigreerd. Dit betekent dat het pad naar de `/_partitionKey` eigenschap van de systeem partitie sleutel niet automatisch wordt toegevoegd aan de bestaande documenten. U moet de bestaande documenten opnieuw partitioneren door de documenten te lezen die zijn gemaakt zonder partitie sleutel en ze terug te schrijven naar `_partitionKey` de eigenschap in de documenten. 
+Hoewel de container definitie wordt uitgebreid met een partitie sleutel eigenschap, worden de documenten in de container niet automatisch gemigreerd. Dit betekent dat het pad naar de `/_partitionKey` eigenschap van de systeem partitie sleutel niet automatisch wordt toegevoegd aan de bestaande documenten. U moet de bestaande documenten opnieuw partitioneren door de documenten te lezen die zijn gemaakt zonder partitie sleutel en ze terug te schrijven naar `_partitionKey` de eigenschap in de documenten.
 
 ## <a name="access-documents-that-dont-have-a-partition-key"></a>Toegang tot documenten die geen partitie sleutel hebben
 
@@ -104,7 +104,7 @@ Toepassingen hebben toegang tot de bestaande documenten die geen partitie sleute
 ```csharp
 CosmosItemResponse<DeviceInformationItem> readResponse = 
 await migratedContainer.Items.ReadItemAsync<DeviceInformationItem>( 
-  partitionKey: CosmosContainerSettings.NonePartitionKeyValue, 
+  partitionKey: PartitionKey.None, 
   id: device.Id
 ); 
 

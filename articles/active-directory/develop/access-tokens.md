@@ -16,12 +16,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d89d861b48b0c198b06a45613db668adcf551b39
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 780ec85438990959b7b0ac686e05ad5db3f9eedf
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70074312"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71291085"
 ---
 # <a name="microsoft-identity-platform-access-tokens"></a>Toegangs tokens van micro soft Identity platform
 
@@ -114,6 +114,11 @@ Claims zijn alleen aanwezig als er een waarde bestaat om deze op te vullen. Uw a
 | `uti` | Dekkende teken reeks | Een interne claim die door Azure wordt gebruikt om tokens opnieuw te valideren. Resources mogen deze claim niet gebruiken. |
 | `rh` | Dekkende teken reeks | Een interne claim die door Azure wordt gebruikt om tokens opnieuw te valideren. Resources mogen deze claim niet gebruiken. |
 | `ver` | Teken reeks, `1.0` ofwel of`2.0` | Hiermee wordt de versie van het toegangs token aangegeven. |
+
+
+> [! Group overschrijding claim] als u ervoor wilt zorgen dat de token grootte de limieten voor de HTTP-header niet overschrijdt, beperkt Azure AD het aantal object-Id's dat is opgenomen in de claim van de groep. Als een gebruiker lid is van meer groepen dan de limiet van overschrijding (150 voor SAML-tokens, 200 voor JWT-tokens), levert Azure AD de groeps claim niet in het token. In plaats daarvan bevat het een overschrijding-claim in het token dat aangeeft dat de toepassing een query moet uitvoeren op de Graph API om het groepslid maatschap van de gebruiker op te halen.
+> { ... "_claim_names": {"Groups": "src1"}, {"_claim_sources": {"src1": {"eind punt": "[Graph URL to Get the Group Membership from]"}}    
+    ... } U kunt de `BulkCreateGroups.ps1` gegeven in de map [scripts](https://github.com/Azure-Samples/active-directory-dotnet-webapp-groupclaims/blob/master/AppCreationScripts/) voor het maken van apps gebruiken om overschrijding-scenario's te testen.
 
 #### <a name="v10-basic-claims"></a>v 1.0 basis claims
 

@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 07/22/2019
 ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 6ce702a9d27523b97a92ac8b4210e8e3151ae518
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 69aa140fcecae13aae0d7a165c9f7bea0ab87ca1
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68598797"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71301023"
 ---
 # <a name="tutorial-add-an-https-endpoint-to-an-aspnet-core-web-api-front-end-service-using-kestrel"></a>Zelfstudie: Een HTTPS-eindpunt toevoegen aan een front-end-service van ASP.NET Core Web-API met behulp van Kestrel
 
@@ -139,7 +139,7 @@ serviceContext =>
                     int port = serviceContext.CodePackageActivationContext.GetEndpoint("EndpointHttps").Port;
                     opt.Listen(IPAddress.IPv6Any, port, listenOptions =>
                     {
-                        listenOptions.UseHttps(GetCertificateFromStore());
+                        listenOptions.UseHttps(GetHttpsCertificateFromStore());
                         listenOptions.NoDelay = true;
                     });
                 })
@@ -164,21 +164,23 @@ serviceContext =>
 Voeg ook de volgende methode toe zodat Kestrel het certificaat kan vinden in het `Cert:\LocalMachine\My`-archief met behulp van het onderwerp.  
 
 Vervang '&lt;your_CN_value&gt;' door 'mytestcert' als u een zelfondertekend certificaat hebt gemaakt met de vorige PowerShell-opdracht, of gebruik de algemene naam van uw certificaat.
+Houd er rekening mee dat het in het geval van `localhost` een lokale implementatie de voor keur verdient om ' CN = localhost ' te gebruiken om verificatie-uitzonde ringen te voor komen.
 
 ```csharp
-private X509Certificate2 GetCertificateFromStore()
+private X509Certificate2 GetHttpsCertificateFromStore()
 {
-    var store = new X509Store(StoreName.My, StoreLocation.LocalMachine);
-    try
+    using (var store = new X509Store(StoreName.My, StoreLocation.LocalMachine))
     {
         store.Open(OpenFlags.ReadOnly);
         var certCollection = store.Certificates;
         var currentCerts = certCollection.Find(X509FindType.FindBySubjectDistinguishedName, "CN=<your_CN_value>", false);
-        return currentCerts.Count == 0 ? null : currentCerts[0];
-    }
-    finally
-    {
-        store.Close();
+        
+        if (currentCerts.Count == 0)
+                {
+                    throw new Exception("Https certificate is not found.");
+                }
+        
+        return currentCerts[0];
     }
 }
 ```

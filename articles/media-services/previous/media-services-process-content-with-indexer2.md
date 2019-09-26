@@ -11,35 +11,34 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 03/19/2019
+ms.date: 09/22/2019
 ms.author: juliako
 ms.reviewer: adsolank
-ms.openlocfilehash: 8aa3082b15886234905edaebbbc9e1458bd7e3f8
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: d03c3a15d9bccf93b73d36302f986dffd95c6428
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "69015020"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71309253"
 ---
 # <a name="indexing-media-files-with-azure-media-indexer-2-preview"></a>Media bestanden indexeren met Azure Media Indexer 2 Preview
-## <a name="overview"></a>Overzicht
+
+> [!NOTE]
+> De [Azure media indexer 2](media-services-process-content-with-indexer2.md) media processor wordt buiten gebruik gesteld op 1 januari van 2020. [Azure Media Services video indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) vervangt deze verouderde media processor. Zie [Migrate from Azure media indexer en Azure media indexer 2 to Azure Media Services video indexer](migrate-indexer-v1-v2.md)voor meer informatie.
+
 Met de **Azure media indexer 2 Preview** media processor (MP) kunt u media bestanden en inhoud doorzoekbaar maken, evenals ondertitelings tracks genereren. Vergeleken met de vorige versie van [Azure media indexer](media-services-index-content.md), heeft **Azure media indexer 2-Preview** snellere indexering en biedt het uitgebreidere taal ondersteuning. Ondersteunde talen zijn Engels, Spaans, Frans, Duits, Italiaans, Chinees (Mandarijn, vereenvoudigd), Portugees, Arabisch, Russisch en Japans.
 
 De **Azure media indexer 2 Preview** -MP is momenteel beschikbaar als preview-versie.
 
 In dit artikel wordt beschreven hoe u Indexeer taken maakt met **Azure media indexer 2-Preview**.
 
-> [!NOTE]
-> De volgende overwegingen zijn van toepassing:
-> 
-> Indexeer functie 2 wordt niet ondersteund in azure China en Azure Government.
-> 
-> Wanneer u inhoud indexeert, moet u ervoor zorgen dat u media bestanden gebruikt met zeer duidelijke spraak (zonder achtergrond muziek, ruis, effecten of microfoon hiss). Enkele voor beelden van de juiste inhoud zijn: vastgelegde vergaderingen, colleges of presentaties. De volgende inhoud is mogelijk niet geschikt voor indexering: films, TV-Program ma's, alles met gemengde audio en geluids effecten, slecht vastgelegde inhoud met achtergrond geluid (hiss).
-> 
-> 
+## <a name="considerations"></a>Overwegingen
 
-In dit artikel vindt u informatie over de **Preview-versie van Azure media indexer 2** en ziet u hoe u deze kunt gebruiken met Media Services SDK voor .net
-
+De volgende overwegingen zijn van toepassing:
+ 
+* Indexeer functie 2 wordt niet ondersteund in azure China 21Vianet en Azure Government.
+* Wanneer u inhoud indexeert, moet u ervoor zorgen dat u media bestanden gebruikt met zeer duidelijke spraak (zonder achtergrond muziek, ruis, effecten of microfoon hiss). Enkele voor beelden van de juiste inhoud zijn: vastgelegde vergaderingen, colleges of presentaties. De volgende inhoud is mogelijk niet geschikt voor indexering: films, TV-Program ma's, alles met gemengde audio en geluids effecten, slecht vastgelegde inhoud met achtergrond geluid (hiss).
+ 
 ## <a name="input-and-output-files"></a>Invoer-en uitvoer bestanden
 ### <a name="input-files"></a>Invoer bestanden
 Audio-of video bestanden

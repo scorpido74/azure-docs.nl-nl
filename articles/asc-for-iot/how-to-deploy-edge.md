@@ -1,5 +1,5 @@
 ---
-title: Azure Security Center implementeren voor IoT Edge module (preview) | Microsoft Docs
+title: Azure Security Center implementeren voor IoT Edge module | Microsoft Docs
 description: Meer informatie over het implementeren van een Azure Security Center voor IoT-beveiligings agent op IoT Edge.
 services: asc-for-iot
 ms.service: asc-for-iot
@@ -15,18 +15,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
-ms.openlocfilehash: 4e568d2322088d9f6f6b4f9ad6e4b3cd98f25a47
-ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
+ms.openlocfilehash: bb6a975d2a2fc2cc3e65fa8969f8b005be8b1417
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70376064"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71299704"
 ---
 # <a name="deploy-a-security-module-on-your-iot-edge-device"></a>Een beveiligings module op uw IoT Edge-apparaat implementeren
 
-> [!IMPORTANT]
-> Azure Security Center voor IoT IoT Edge-apparaat-ondersteuning is momenteel beschikbaar als open bare preview.
-> Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
 
 **Azure Security Center voor IOT** -module biedt een uitgebreide beveiligings oplossing voor uw IOT edge-apparaten.
 De beveiligings module verzamelt, aggregeert en analyseert onbewerkte beveiligings gegevens van uw besturings systeem en container systeem in aanbevelingen voor beveiliging en waarschuwingen.
@@ -40,19 +37,19 @@ Gebruik de volgende stappen om een Azure Security Center voor de IoT-beveiliging
 
 ### <a name="prerequisites"></a>Vereisten
 
-- Zorg ervoor dat uw apparaat is [geregistreerd als een IOT edge-apparaat](https://docs.microsoft.com/azure/iot-edge/how-to-register-device-portal)In uw IOT hub.
+1. Zorg ervoor dat uw apparaat is [geregistreerd als een IOT edge-apparaat](https://docs.microsoft.com/azure/iot-edge/how-to-register-device-portal)In uw IOT hub.
 
-- Voor Azure Security Center voor IoT Edge-module moet het [gecontroleerde Framework](https://linux.die.net/man/8/auditd) zijn geïnstalleerd op het IOT edge apparaat.
+1. Voor Azure Security Center voor IoT Edge-module moet het [gecontroleerde Framework](https://linux.die.net/man/8/auditd) op het IOT edge-apparaat zijn geïnstalleerd.
 
     - Installeer het Framework door de volgende opdracht uit te voeren op uw IoT Edge-apparaat:
    
-      `sudo apt-get install auditd audispd-plugins`
+    `sudo apt-get install auditd audispd-plugins`
+
+    - Controleer of controle actief is door de volgende opdracht uit te voeren: 
    
-    - Controleer of controle actief is door de volgende opdracht uit te voeren:
-   
-      `sudo systemctl status auditd`
-      
-        Het verwachte antwoord is `active (running)`. 
+    `sudo systemctl status auditd`<br>
+    - Het verwachte antwoord is:`active (running)` 
+        
 
 ### <a name="deployment-using-azure-portal"></a>Implementatie met behulp van Azure Portal
 
@@ -76,7 +73,7 @@ Er zijn drie stappen voor het maken van een IoT Edge implementatie voor Azure Se
 1. Klik op het tabblad **implementatie modules** van het gedeelte **modules toevoegen** op **AzureSecurityCenterforIoT**. 
    
 1. Wijzig de **naam** in **azureiotsecurity**.
-1. Wijzig de **afbeeldings-URI** in **MCR.Microsoft.com/ascforiot/azureiotsecurity:0.0.3**.
+1. Wijzig de **afbeeldings-URI** in **MCR.Microsoft.com/ascforiot/azureiotsecurity:1.0.0**.
 1. Controleer of de waarde voor het maken van de **container** is ingesteld op:      
     ``` json
     {
@@ -98,36 +95,30 @@ Er zijn drie stappen voor het maken van een IoT Edge implementatie voor Azure Se
 1. Controleer of **set de gewenste eigenschappen van de module** configureren is geselecteerd en wijzig het configuratie object in:
       
     ``` json
-      "properties.desired": {
-        "azureiot*com^securityAgentConfiguration^1*0*0": {
+    "desired": {
+        "ms_iotn:urn_azureiot_Security_SecurityAgentConfiguration": {
+          } 
         }
-      }
-      ```
+    ```
 
 1. Klik op **Opslaan**.
-1. Ga naar de onderkant van het tabblad en selecteer **Geavanceerde instellingen voor Edge-runtime configureren**.
+1. Ga naar de onderkant van het tabblad en selecteer **Geavanceerde instellingen voor Edge-runtime configureren**. 
    
-   
-1. Wijzig de **afbeelding** onder **Edge hub** in **MCR.Microsoft.com/ascforiot/edgehub:1.0.9-preview**.
-
-   >[!Note]
-   > Azure Security Center voor IoT-module is een gevorkte versie van IoT Edge hub vereist, gebaseerd op SDK-versie 1,20.
-   > Door IoT Edge hub-installatie kopie te wijzigen, geeft u uw IoT Edge apparaat de laatste stabiele versie te vervangen door de gesplitste release van IoT Edge hub. deze wordt niet officieel ondersteund door de IoT Edge-service.
+1. Wijzig de **afbeelding** onder **Edge hub** in **MCR.Microsoft.com/azureiotedge-hub:1.0.9-rc2**.
 
 1. Controleer of de **Create-opties** zijn ingesteld op: 
          
     ``` json
-    {
-      "HostConfig": {
-        "PortBindings": {
-          "8883/tcp": [{"HostPort": "8883"}],
-          "443/tcp": [{"HostPort": "443"}],
-          "5671/tcp": [{"HostPort": "5671"}]
+    { 
+    "HostConfig":{
+                    "PortBindings":{
+                    "8883/tcp": [{"HostPort": "8883"}],
+                    "443/tcp": [{"HostPort": "443"}],
+                    "5671/tcp": [{"HostPort": "5671"}]
+                    }
         }
-      }
     }
     ```
-      
 1. Klik op **Opslaan**.
    
 1. Klik op **Volgende**.
@@ -145,7 +136,7 @@ Er zijn drie stappen voor het maken van een IoT Edge implementatie voor Azure Se
     "ASCForIoTRoute": "FROM /messages/modules/azureiotsecurity/* INTO $upstream"
     ~~~
 
-#### <a name="step-3-review-deployment"></a>Stap 3: Implementatie controleren
+#### <a name="step-3-review-deployment"></a>Stap 3: Implementatie bekijken
 
 - Controleer uw implementatie gegevens op het tabblad beoordeling van de **implementatie** en selecteer vervolgens **verzenden** om de implementatie te volt ooien.
 
@@ -157,14 +148,14 @@ Als er een probleem optreedt, zijn container Logboeken de beste manier om meer t
 
 1. Voer de volgende opdracht uit op uw IoT Edge-apparaat:
     
-     `sudo docker ps`
+    `sudo docker ps`
    
 1. Controleer of de volgende containers worden uitgevoerd:
    
    | Name | BITMAPAFBEELDING |
    | --- | --- |
-   | azureiotsecurity | mcr.microsoft.com/ascforiot/azureiotsecurity:0.0.3 |
-   | edgeHub | mcr.microsoft.com/ascforiot/edgehub:1.0.9-preview |
+   | azureiotsecurity | mcr.microsoft.com/ascforiot/azureiotsecurity:1.0.0 |
+   | edgeHub | mcr.microsoft.com/azureiotedge-hub:1.0.9-rc2 |
    | edgeAgent | mcr.microsoft.com/azureiotedge-agent:1.0 |
    
    Als de mini maal vereiste containers niet aanwezig zijn, controleert u of uw IoT Edge-implementatie manifest is afgestemd op de aanbevolen instellingen. Zie [IOT Edge module implementeren](#deployment-using-azure-portal)voor meer informatie.

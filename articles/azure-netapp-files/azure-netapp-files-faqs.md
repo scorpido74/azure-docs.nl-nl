@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/24/2019
+ms.date: 09/25/2019
 ms.author: b-juche
-ms.openlocfilehash: 66d0d65065f323f53095782e165f179125aa35ac
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: ec0fa0ba7c7cad698cda0f7b440415c3dbb0236a
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71264986"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71299621"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Veelgestelde vragen over Azure NetApp Files
 
@@ -139,6 +139,8 @@ Azure NetApp Files ondersteunt momenteel één Active Directory-verbinding per a
 ### <a name="does-azure-netapp-files-support-azure-active-directory"></a>Ondersteunt Azure NetApp Files Azure Active Directory? 
 
 Zowel [Azure Active Directory (AD) Domain Services](https://docs.microsoft.com/azure/active-directory-domain-services/overview) en [Active Directory Domain Services (AD DS)](https://docs.microsoft.com/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview) worden ondersteund. U kunt bestaande Active Directory domein controllers gebruiken met Azure NetApp Files. Domein controllers kunnen zich in azure bevinden als virtuele machines, of on-premises via ExpressRoute of S2S VPN. Azure NetApp Files biedt op dit moment geen ondersteuning voor AD-deelname voor [Azure Active Directory](https://azure.microsoft.com/resources/videos/azure-active-directory-overview/) .
+
+Als u Azure NetApp files gebruikt met Azure Active Directory Domain Services, is `OU=AADDC Computers` het pad voor de organisatie-eenheid wanneer u Active Directory configureert voor uw NetApp-account.
 
 ### <a name="what-versions-of-windows-server-active-directory-are-supported"></a>Welke versies van Windows Server Active Directory worden ondersteund?
 

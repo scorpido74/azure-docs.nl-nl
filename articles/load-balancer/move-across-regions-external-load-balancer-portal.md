@@ -1,54 +1,52 @@
 ---
-title: Verplaats Azure externe Load Balancer naar een andere Azure-regio met behulp van de Azure Portal
-description: Gebruik Azure Resource Manager sjabloon om Azure External Load Balancer van de ene Azure-regio naar de andere te verplaatsen met behulp van de Azure Portal.
+title: Een externe Azure-load balancer verplaatsen naar een andere Azure-regio door gebruik te maken van de Azure Portal
+description: Gebruik een Azure Resource Manager sjabloon om een extern load balancer van een Azure-regio naar een andere te verplaatsen met behulp van de Azure Portal.
 author: asudbring
 ms.service: load-balancer
 ms.topic: article
 ms.date: 09/17/2019
 ms.author: allensu
-ms.openlocfilehash: ad7e4c5aaa20722e6158973571fb95eb8d853f4d
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: 9358d99c66b3b8e3d6988b1881e51c11848ad97b
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71219802"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300636"
 ---
-# <a name="move-azure-external-load-balancer-to-another-region-using-the-azure-portal"></a>Verplaats Azure externe Load Balancer naar een andere regio met behulp van de Azure Portal
+# <a name="move-an-external-load-balancer-to-another-region-by-using-the-azure-portal"></a>Een externe load balancer naar een andere regio verplaatsen met behulp van de Azure Portal
 
-Er zijn verschillende scenario's waarin u uw bestaande externe load balancer van de ene naar de andere regio wilt verplaatsen. U kunt bijvoorbeeld een externe load balancer maken met dezelfde configuratie voor testen. Het is ook mogelijk dat u een externe load balancer naar een andere regio wilt verplaatsen als onderdeel van de planning voor nood herstel.
+Er zijn verschillende scenario's waarin u een extern load balancer van de ene naar de andere regio wilt verplaatsen. Stel dat u een andere externe load balancer wilt maken met dezelfde configuratie voor testen. Het is ook mogelijk dat u een externe load balancer naar een andere regio wilt verplaatsen als onderdeel van de planning voor nood herstel.
 
-Externe Azure load balancers kunnen niet van de ene regio naar de andere worden verplaatst. U kunt echter een Azure Resource Manager sjabloon gebruiken om de bestaande configuratie en het open bare IP-adres van een externe load balancer te exporteren.  U kunt de resource vervolgens in een andere regio zetten door de load balancer en het open bare IP-adres naar een sjabloon te exporteren, de para meters te wijzigen zodat deze overeenkomen met de doel regio en vervolgens de sjablonen te implementeren in de nieuwe regio.  Zie [resource groepen exporteren naar sjablonen](https://docs.microsoft.com/azure/azure-resource-manager/manage-resource-groups-powershell#export-resource-groups-to-templates) voor meer informatie over Resource Manager en sjablonen
+U kunt in een letterlijke zin geen externe Azure-load balancer verplaatsen van de ene regio naar een andere. U kunt echter een Azure Resource Manager sjabloon gebruiken om de bestaande configuratie en het open bare IP-adres van een externe load balancer te exporteren. U kunt de resource vervolgens in een andere regio zetten door de load balancer en het open bare IP-adres naar een sjabloon te exporteren, de para meters te wijzigen zodat deze overeenkomen met de doel regio en vervolgens de sjabloon te implementeren in de nieuwe regio. Zie [resource groepen exporteren naar sjablonen](https://docs.microsoft.com/azure/azure-resource-manager/manage-resource-groups-powershell#export-resource-groups-to-templates)voor meer informatie over Resource Manager en sjablonen.
 
 
 ## <a name="prerequisites"></a>Vereisten
 
 - Zorg ervoor dat de externe Azure-load balancer zich bevindt in de Azure-regio van waaruit u wilt verplaatsen.
 
-- Externe Azure load balancers kunnen niet tussen regio's worden verplaatst.  U moet de nieuwe load balancer koppelen aan resources in de doel regio.
+- Externe Azure load balancers kunnen niet tussen regio's worden verplaatst. U moet de nieuwe load balancer koppelen aan resources in de doel regio.
 
-- Als u een externe load balancer configuratie wilt exporteren en een sjabloon wilt implementeren voor het maken van een externe load balancer in een andere regio, hebt u de rol netwerk bijdrager of hoger nodig.
+- Als u een externe load balancer configuratie wilt exporteren en een sjabloon wilt implementeren voor het maken van een externe load balancer in een andere regio, moet u de rol netwerk bijdrager of hoger toewijzen.
 
 - Identificeer de bron netwerk indeling en alle resources die u momenteel gebruikt. Deze indeling bevat, maar is niet beperkt tot load balancers, netwerk beveiligings groepen, open bare Ip's en virtuele netwerken.
 
-- Controleer of u met uw Azure-abonnement externe load balancers kunt maken in de doel regio die wordt gebruikt. Neem contact op met ondersteuning voor het inschakelen van het vereiste quotum.
+- Controleer of u met uw Azure-abonnement externe load balancers kunt maken in de doel regio. Neem contact op met ondersteuning voor het inschakelen van het vereiste quotum.
 
-- Zorg ervoor dat uw abonnement voldoende bronnen heeft ter ondersteuning van het toevoegen van load balancers voor dit proces.  Zie [Azure-abonnement en service limieten, quota's en beperkingen](https://docs.microsoft.com/azure/azure-subscription-service-limits#networking-limits)
-
+- Zorg ervoor dat uw abonnement voldoende bronnen heeft voor het ondersteunen van de toevoeging van load balancers. Raadpleeg [Azure-abonnement en -servicelimieten, quotums en beperkingen](https://docs.microsoft.com/azure/azure-subscription-service-limits#networking-limits).
 
 ## <a name="prepare-and-move"></a>Voorbereiden en verplaatsen
-De volgende stappen laten zien hoe u de externe load balancer voorbereidt voor de verplaatsing met behulp van een resource manager-sjabloon en de externe load balancer configuratie verplaatst naar de doel regio met behulp van de Azure Portal.  Als onderdeel van dit proces moet de open bare IP-configuratie van de externe load balancer worden opgenomen en moet ik dit eerst doen voordat de externe load balancer wordt verplaatst.
-
+De volgende procedures laten zien hoe u de externe load balancer voor de verplaatsing voorbereidt met behulp van een resource manager-sjabloon en de configuratie van de externe load balancer naar de doel regio kunt verplaatsen met behulp van de Azure Portal. U moet eerst de open bare IP-configuratie van externe load balancer exporteren.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-### <a name="export-the-public-ip-template-and-deploy-from-the-portal"></a>De open bare IP-sjabloon exporteren en implementeren vanuit de portal
+### <a name="export-the-public-ip-template-and-deploy-the-public-ip-from-the-portal"></a>De open bare IP-sjabloon exporteren en het open bare IP-adres implementeren via de portal
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com) > -**resource groepen**.
-2. Zoek de resource groep die de open bare bron-IP bevat en klik erop.
-3. Selecteer > **instellingen** > **sjabloon exporteren**.
-4. Kies **implementeren** op de Blade **sjabloon exporteren** .
-5. Klik op **sjabloon** > **bewerken para meters** om het bestand **para meters. json** in de online-editor te openen.
-8. Als u de para meter van de open bare IP-naam wilt bewerken, wijzigt u de eigenschap onder **parameter** > **waarde** van de naam van het open bare IP-bron adres in de naam van het open bare IP-adres. Controleer of de naam tussen aanhalings tekens is:
+1. Meld u aan bij [Azure Portal](https://portal.azure.com) en selecteer **Resourcegroepen**.
+2. Zoek de resource groep die de bron-open bare IP bevat en selecteer deze.
+3. **Instellingen** > **export sjabloon**selecteren.
+4. Selecteer **implementeren** onder **sjabloon exporteren**.
+5. Selecteer **sjabloon** > **bewerken para meters** om het bestand para meters. json in de online-editor te openen.
+8. Als u de para meter van de naam van het open bare IP-adres wilt bewerken, wijzigt u de eigenschap **Value** onder **para meters** van de open bare IP-bron naam in de naam van het open bare IP-adres. Plaats de naam tussen aanhalings tekens.
 
     ```json
             {
@@ -63,11 +61,11 @@ De volgende stappen laten zien hoe u de externe load balancer voorbereidt voor d
 
     ```
 
-    Klik op **Opslaan** in de editor.
+    Selecteer **Opslaan** in de editor.
 
-9.  Klik op sjabloon**bewerken sjabloon** om het bestand **Template. json** in de online-editor te openen. > 
+9.  Selecteer sjabloon**bewerken sjabloon** om het bestand template. json in de online-editor te openen. > 
 
-10. Als u de doel regio wilt bewerken waar het open bare IP-adres wordt verplaatst, wijzigt u de eigenschap **Location** onder **resources**:
+10. Als u de doel regio wilt bewerken waarnaar het open bare IP-adres wordt verplaatst, wijzigt u de eigenschap **Location** onder **resources**:
 
     ```json
             "resources": [
@@ -92,12 +90,12 @@ De volgende stappen laten zien hoe u de externe load balancer voorbereidt voor d
                }
              ]
     ```
+  
+    Zie [Azure-locaties](https://azure.microsoft.com/global-infrastructure/locations/)om regio-locatie codes op te halen. De code voor een regio is de naam van de regio zonder spaties. De code voor Central US is bijvoorbeeld **Centraal**.
+    
+12. U kunt indien nodig ook andere para meters in de sjabloon wijzigen, afhankelijk van uw vereisten:
 
-11. Zie [Azure-locaties](https://azure.microsoft.com/global-infrastructure/locations/)voor het verkrijgen van regio-locatie codes.  De code voor een regio is de naam van de regio zonder spaties, **Central VS** = -**Midden**.
-
-12. U kunt ook andere para meters in de sjabloon wijzigen als u ervoor kiest en zijn optioneel, afhankelijk van uw vereisten:
-
-    * **SKU** : u kunt de SKU van het open bare IP-adres in de configuratie wijzigen van standaard in Basic of Basic naar Standard door de eigenschap **SKU** > -**naam** te wijzigen in het bestand **sjabloon. json** :
+    * **SKU**. U kunt de SKU van het open bare IP-adres in de configuratie wijzigen van standaard in Basic of van Basic naar Standard door de eigenschap **name** onder **SKU** in het bestand sjabloon. json te wijzigen:
 
         ```json
           "resources": [
@@ -112,9 +110,9 @@ De volgende stappen laten zien hoe u de externe load balancer voorbereidt voor d
             },
         ```
 
-        Zie [een openbaar IP-adres maken, wijzigen of verwijderen](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address)voor meer informatie over de verschillen tussen open bare ip's van de Basic-en Standard-SKU:
+        Zie [een openbaar IP-adres maken, wijzigen of verwijderen](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address)voor meer informatie over de verschillen tussen open bare ip's van de Basic-en Standard-SKU.
 
-    * **Toewijzings methode voor openbaar IP-adres** en **time-out voor inactiviteit** : u kunt beide opties in de sjabloon wijzigen door de eigenschap **publicIPAllocationMethod** van **dynamisch** naar **statisch** of **statisch** naar dynamisch te veranderen. U kunt de time-out voor inactiviteit wijzigen door de eigenschap **idleTimeoutInMinutes** te wijzigen in de gewenste hoeveelheid.  De standaard waarde is **4**:
+    * **Open bare IP-toewijzings methode** en **time-out voor inactiviteit**. U kunt de open bare IP-toewijzings methode wijzigen door de eigenschap **publicIPAllocationMethod** van **dynamisch** naar **statisch** of van **statisch** naar **dynamisch**te wijzigen. U kunt de time-out voor inactiviteit wijzigen door de eigenschap **idleTimeoutInMinutes** te wijzigen in de gewenste waarde. De standaard waarde is **4**.
 
         ```json
           "resources": [
@@ -138,33 +136,34 @@ De volgende stappen laten zien hoe u de externe load balancer voorbereidt voor d
 
         ```
 
-        Zie [een openbaar IP-adres maken, wijzigen of verwijderen](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address)voor meer informatie over de toewijzings methoden en de time-outwaarden voor inactiviteit.
+        Zie [een openbaar IP-adres maken, wijzigen of verwijderen](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address)voor meer informatie over de toewijzings methoden en time-outwaarden.
 
+ 
+13. Selecteer **Opslaan** in de online editor.
 
-13. Klik op **Opslaan** in de online editor.
+14. Selecteer **basis** > **abonnement** om het abonnement te kiezen waarin het open bare doel-IP-adres wordt geïmplementeerd.
 
-14. Klik op **basis** > **abonnement** om het abonnement te kiezen waarin het open bare doel-IP-adres wordt geïmplementeerd.
+15. Selecteer de**resource groep** **basis beginselen** > om de resource groep te kiezen waarin het open bare doel-IP-adres wordt geïmplementeerd. U kunt **nieuwe maken** selecteren om een nieuwe resource groep te maken voor het open bare doel-IP-adres. Zorg ervoor dat de naam niet hetzelfde is als de bron resource groep van de bestaande open bare bron-IP.
 
-15. Klik op **basis** > **bronnen groep** om de resource groep te kiezen waarin het open bare doel-IP-adres wordt geïmplementeerd.  U kunt op **Nieuw maken** klikken om een nieuwe resource groep te maken voor het open bare doel-IP-adres.  Zorg ervoor dat de naam niet hetzelfde is als de bron resource groep van de bestaande open bare bron-IP.
+16. Controleer of de**locatie** van de **basis beginselen** > is ingesteld op de doel locatie waar u het open bare IP-adres wilt implementeren.
 
-16. De**locatie** van de **basis beginselen** > controleren is ingesteld op de doel locatie waar u het open bare IP-adres wilt implementeren.
+17. Controleer onder **instellingen**of de naam overeenkomt met de naam die u eerder hebt ingevoerd in de para meters-editor.
 
-17. Controleer onder **instellingen** of de naam overeenkomt met de naam die u hebt ingevoerd in de bovenstaande para meters-editor.
+18. Schakel het selectie vakje voor **waarden** in.
 
-18. Schakel het selectie vakje onder **voor waarden**in.
+19. Selecteer **kopen** om het doel-open bare IP-adres te implementeren.
 
-19. Klik op de knop **aanschaffen** om het doel-open bare IP-adres te implementeren.
-20. Als u een ander openbaar IP-adres gebruikt voor een uitgaand NAT-verkeer voor het load balancer dat wordt verplaatst, herhaalt u de bovenstaande stappen voor het exporteren en implementeren van het tweede uitgaande open bare IP-adres naar de doel regio.
+20. Als u een ander openbaar IP-adres gebruikt voor een uitgaand NAT-verkeer voor het load balancer dat wordt verplaatst, herhaalt u de vorige stappen om het tweede uitgaande open bare IP-adres te exporteren en te implementeren naar de doel regio.
 
-### <a name="export-the-external-load-balancer-template-and-deploy-from-the-azure-portal"></a>De externe load balancer sjabloon exporteren en implementeren vanuit de Azure Portal
+### <a name="export-the-external-load-balancer-template-and-deploy-the-load-balancer-from-the-azure-portal"></a>De externe load balancer sjabloon exporteren en de load balancer implementeren vanuit de Azure Portal
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com) > -**resource groepen**.
-2. Zoek de resource groep die de bron externe load balancer bevat en klik erop.
-3. Selecteer > **instellingen** > **sjabloon exporteren**.
-4. Kies **implementeren** op de Blade **sjabloon exporteren** .
-5. Klik op **sjabloon** > **bewerken para meters** om het bestand **para meters. json** in de online-editor te openen.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com) en selecteer **Resourcegroepen**.
+2. Zoek de resource groep die de bron externe load balancer bevat en selecteer deze.
+3. **Instellingen** > **export sjabloon**selecteren.
+4. Selecteer **implementeren** onder **sjabloon exporteren**.
+5. Selecteer **sjabloon** > **bewerken para meters** om het bestand para meters. json in de online-editor te openen.
 
-5. Als u de para meter van de naam van de externe load balancer wilt bewerken, wijzigt u de **waarde** van de eigenschap van de bron externe Load Balancer naam in de naam van de externe doel Load Balancer en controleert u of de naam tussen aanhalings tekens is:
+5. Als u de para meter van de naam van de externe load balancer wilt bewerken, wijzigt u de eigenschap **Value** van de bron externe Load Balancer naam in de naam van uw doel externe Load Balancer. Plaats de naam tussen aanhalings tekens.
 
     ```json
        "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
@@ -179,13 +178,13 @@ De volgende stappen laten zien hoe u de externe load balancer voorbereidt voor d
 
     ```
 
-6.  Als u de waarde van de open bare doel-IP die hierboven is verplaatst, wilt bewerken, moet u eerst de resource-ID ophalen en deze vervolgens kopiëren en plakken in het bestand **para meters. json** . De ID ophalen:
+6.  Als u de waarde van de open bare doel-IP wilt bewerken die u in de voor gaande stappen hebt verplaatst, moet u eerst de resource-ID ophalen en deze vervolgens plakken in het bestand para meters. json. De ID ophalen:
 
-    1. Meld u aan bij de [Azure Portal](https://portal.azure.com) > **resource groepen** op een ander browser tabblad of-venster.
-    2. Zoek de doel resource groep die het verplaatste open bare IP bevat uit de bovenstaande stappen en klik erop.
-    3. Selecteer**Eigenschappen**van > **instellingen** > .
-    4. Markeer de **resource-id** op de Blade aan de rechter kant en kopieer deze naar het klem bord.  U kunt ook op de knop **kopiëren naar klem bord** rechts van het **resource-id-** pad klikken.
-    5. Plak de resource-ID in de eigenschap **Value** in de editor **para meters bewerken** open in het andere browser venster of tabblad:
+    1. Meld u in een ander browser tabblad of-venster aan bij de [Azure Portal](https://portal.azure.com) en selecteer **resource groepen**.
+    2. Zoek de doel resource groep die het open bare IP-adres bevat dat u in de voor gaande stappen hebt verplaatst. Selecteer deze.
+    3. Selecteer **instellingen** > **Eigenschappen**.
+    4. Markeer de **resource-id** op de Blade aan de rechter kant en kopieer deze naar het klem bord. U kunt ook **kopiëren naar het klem bord** rechts van het **resource-id-** pad selecteren.
+    5. Plak de resource-ID in de eigenschap **waarde** in de editor **para meters bewerken** die is geopend in het andere browser venster of tabblad:
 
         ```json
            ```json
@@ -200,10 +199,10 @@ De volgende stappen laten zien hoe u de externe load balancer voorbereidt voor d
         },
 
         ```
-    6. Klik op **Opslaan** in de online editor.
+    6. Selecteer **Opslaan** in de online editor.
 
 
-7.  Als u uitgaande NAT en regels voor uitgaande verbindingen voor de load balancer hebt geconfigureerd, wordt in dit bestand een derde vermelding weer gegeven voor de externe ID voor het uitgaande open bare IP-adres.  Herhaal de bovenstaande stappen in de **doel regio** om de id voor het uitgaande open bare IP-adres te verkrijgen en plak die vermelding in het bestand **para meters. json** :
+7.  Als u uitgaande NAT en regels voor uitgaande verbindingen voor de load balancer hebt geconfigureerd, ziet u in dit bestand een derde vermelding voor de externe ID van het uitgaande open bare IP-adres. Herhaal de voor gaande stappen in de **doel regio** om de id voor het uitgaande open bare IP-adres te verkrijgen. Plak die ID in het bestand para meters. json:
 
     ```json
             "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -224,8 +223,8 @@ De volgende stappen laten zien hoe u de externe load balancer voorbereidt voor d
         },
     ```
 
-8.  Klik op sjabloon**bewerken sjabloon** om het bestand **Template. json** in de online-editor te openen. > 
-9.  Als u de doel regio wilt bewerken waar de configuratie van de externe load balancer wordt verplaatst, wijzigt u de eigenschap **Location** onder **resources** in het bestand **sjabloon. json** :
+8.  Selecteer sjabloon**bewerken sjabloon** om het bestand template. json in de online-editor te openen. > 
+9.  Als u de doel regio wilt bewerken waarnaar de configuratie van de externe load balancer wordt verplaatst, wijzigt u de eigenschap **Location** onder **resources** in het bestand sjabloon. json:
 
     ```json
         "resources": [
@@ -240,11 +239,11 @@ De volgende stappen laten zien hoe u de externe load balancer voorbereidt voor d
                 },
     ```
 
-10. Zie [Azure-locaties](https://azure.microsoft.com/global-infrastructure/locations/)voor het verkrijgen van regio-locatie codes.  De code voor een regio is de naam van de regio zonder spaties, **Central VS** = -**Midden**.
+10. Zie [Azure-locaties](https://azure.microsoft.com/global-infrastructure/locations/)om regio-locatie codes op te halen. De code voor een regio is de naam van de regio zonder spaties. De code voor Central US is bijvoorbeeld **Centraal**.
 
-11. U kunt ook andere para meters in de sjabloon wijzigen als u ervoor kiest en zijn optioneel, afhankelijk van uw vereisten:
+11. U kunt indien nodig ook andere para meters in de sjabloon wijzigen, afhankelijk van uw vereisten:
 
-    * **SKU** : u kunt de SKU van de externe Load Balancer in de configuratie wijzigen van standaard in Basic of Basic naar Standard door de eigenschap **SKU** > -**naam** te wijzigen in het bestand **sjabloon. json** :
+    * **SKU**. U kunt de SKU van de externe load balancer in de configuratie wijzigen van standaard in Basic of van Basic naar Standard door de eigenschap **name** onder **SKU** in het bestand sjabloon. json te wijzigen:
 
         ```json
         "resources": [
@@ -258,9 +257,9 @@ De volgende stappen laten zien hoe u de externe load balancer voorbereidt voor d
                 "tier": "Regional"
             },
         ```
-      Zie [overzicht van Azure Standard Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview) voor meer informatie over de verschillen tussen de Basic-en Standard SKU load balancers
+      Zie [overzicht van Azure Standard Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview)voor informatie over de verschillen tussen de basis-en standaard SKU load balancers.
 
-    * Taakverdelings **regels** : u kunt regels voor taak verdeling toevoegen aan of verwijderen uit de configuratie door vermeldingen toe te voegen aan of te verwijderen uit de sectie **loadBalancingRules** van het bestand **sjabloon. json** :
+    * Taakverdelings **regels**. U kunt regels voor taak verdeling toevoegen aan of verwijderen uit de configuratie door vermeldingen toe te voegen aan of te verwijderen uit de sectie **loadBalancingRules** van het bestand sjabloon. json:
 
         ```json
         "loadBalancingRules": [
@@ -290,9 +289,9 @@ De volgende stappen laten zien hoe u de externe load balancer voorbereidt voor d
                     }
                 ]
         ```
-       Zie [Wat is Azure Load Balancer?](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview) voor meer informatie over taakverdelings regels.
+       Zie [Wat is Azure Load Balancer?](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview)voor informatie over regels voor taak verdeling.
 
-    * **Tests** : u kunt een test toevoegen aan of verwijderen uit de Load Balancer in de configuratie door vermeldingen toe te voegen aan of te verwijderen uit het gedeelte **tests** van het bestand **sjabloon. json** :
+    * **Tests**. U kunt een test toevoegen aan of verwijderen uit de load balancer in de configuratie door vermeldingen toe te voegen aan of te verwijderen in het gedeelte **tests** van het bestand sjabloon. json:
 
         ```json
         "probes": [
@@ -310,9 +309,9 @@ De volgende stappen laten zien hoe u de externe load balancer voorbereidt voor d
                     }
                 ],
         ```
-       Zie [Load Balancer Health probe](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview) (Engelstalig) voor meer informatie over Azure Load Balancer status tests
+       Zie [Load Balancer Health probe](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview)(Engelstalig) voor meer informatie.
 
-    * **Binnenkomende NAT-regels** : u kunt binnenkomende NAT-regels voor de Load Balancer toevoegen of verwijderen door vermeldingen toe te voegen aan de sectie **inboundNatRules** van het bestand **sjabloon. json** :
+    * **Binnenkomende NAT-regels**. U kunt binnenkomende NAT-regels voor de load balancer toevoegen of verwijderen door vermeldingen toe te voegen aan of te verwijderen uit de sectie **inboundNatRules** van het bestand sjabloon. json:
 
         ```json
         "inboundNatRules": [
@@ -334,7 +333,7 @@ De volgende stappen laten zien hoe u de externe load balancer voorbereidt voor d
                     }
                 ]
         ```
-        Als u het toevoegen of verwijderen van een binnenkomende NAT-regel wilt volt ooien, moet de regel aanwezig zijn of worden verwijderd als een **type** -eigenschap aan het einde van het bestand **sjabloon. json** :
+        Als u het toevoegen of verwijderen van een binnenkomende NAT-regel wilt volt ooien, moet de regel aanwezig zijn of worden verwijderd als een **type** -eigenschap aan het einde van het bestand sjabloon. json:
 
         ```json
         {
@@ -358,9 +357,9 @@ De volgende stappen laten zien hoe u de externe load balancer voorbereidt voor d
             }
         }
         ```
-        Zie [Wat is Azure Load Balancer?](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview) voor meer informatie over binnenkomende NAT-regels.
+        Zie [Wat is Azure Load Balancer?](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview)voor meer informatie over binnenkomende NAT-regels.
 
-    * **Regels voor uitgaande verbindingen** : u kunt uitgaande regels toevoegen aan of verwijderen uit de configuratie door de eigenschap **outboundRules** in het bestand **Template. json** te bewerken:
+    * **Uitgaande regels**. U kunt uitgaande regels toevoegen aan of verwijderen uit de configuratie door de eigenschap **outboundRules** in het bestand template. json te bewerken:
 
         ```json
         "outboundRules": [
@@ -386,33 +385,33 @@ De volgende stappen laten zien hoe u de externe load balancer voorbereidt voor d
                 ]
         ```
 
-         Zie [Load Balancer regels voor uitgaande verbindingen](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-rules-overview) voor meer informatie over uitgaande regels
+         Zie [Load Balancer regels voor uitgaande verbindingen](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-rules-overview)voor meer informatie.
 
-12. Klik op **Opslaan** in de online editor.
+12. Selecteer **Opslaan** in de online editor.
 
-13. Klik op **basis** > **abonnement** om het abonnement te kiezen waarin de externe Load Balancer worden geïmplementeerd.
+13. Selecteer **basis** > **abonnement** om het abonnement te kiezen waarin de externe Load Balancer worden geïmplementeerd.
 
-15. Klik op **basis** > **bronnen groep** om de resource groep te kiezen waarin de doel-Load Balancer worden geïmplementeerd.  U kunt op **Nieuw maken** klikken om een nieuwe resource groep te maken voor de externe doel Load Balancer of de bestaande resource groep kiezen die hierboven is gemaakt voor het open bare IP-adres.  Zorg ervoor dat de naam niet hetzelfde is als de bron resource groep van de bestaande externe bron load balancer.
+15. Selecteer de**resource groep** **basis beginselen** > om de resource groep te kiezen waarin de doel-Load Balancer worden geïmplementeerd. U kunt **nieuwe maken** selecteren om een nieuwe resource groep te maken voor de externe Load Balancer doel. U kunt ook de bestaande resource groep kiezen die u eerder hebt gemaakt voor het open bare IP-adres. Zorg ervoor dat de naam niet hetzelfde is als de bron resource groep van de bestaande externe bron load balancer.
 
-16. De**locatie** van de **basis beginselen** > controleren is ingesteld op de doel locatie waar u de externe Load Balancer wilt implementeren.
+16. Controleer of de**locatie** van de **basis beginselen** > is ingesteld op de doel locatie waar u de externe Load Balancer wilt implementeren.
 
-17. Controleer onder **instellingen** of de naam overeenkomt met de naam die u hebt ingevoerd in de bovenstaande para meters-editor.  Controleer of de resource-Id's zijn ingevuld voor open bare IP-adressen in de configuratie.
+17. Controleer onder **instellingen**of de naam overeenkomt met de naam die u eerder hebt ingevoerd in de para meters-editor. Controleer of de resource-Id's zijn ingevuld voor open bare Ip's in de configuratie.
 
-18. Schakel het selectie vakje onder **voor waarden**in.
+18. Schakel het selectie vakje voor **waarden** in.
 
-19. Klik op de knop **aanschaffen** om het doel-open bare IP-adres te implementeren.
+19. Selecteer **kopen** om het doel-open bare IP-adres te implementeren.
 
 ## <a name="discard"></a>Verwijderen
 
-Als u het doel publiek en de externe load balancer wilt verwijderen, verwijdert u de resource groep die het open bare IP-adres en het externe load balancer bevat.  Hiervoor selecteert u de resource groep in het dash board in de portal en selecteert u **verwijderen** boven aan de pagina overzicht.
+Als u het doel-open bare IP-adres en de externe load balancer wilt verwijderen, verwijdert u de resource groep waarin deze zich bevinden. Als u dit wilt doen, selecteert u de resource groep in het dash board in de portal en selecteert u vervolgens **verwijderen** boven aan de pagina overzicht.
 
 ## <a name="clean-up"></a>Opruimen
 
-Als u de wijzigingen wilt door voeren en de open bare IP-en externe load balancer wilt verplaatsen, verwijdert u de open bare IP-bron en de externe load balancer of resource groep. Als u dit wilt doen, selecteert u het open bare IP-adres en het externe load balancer of de resource groep in het dash board in de portal en selecteert u **verwijderen** boven aan elke pagina.
+Als u de wijzigingen wilt door voeren en de open bare IP-en externe load balancer wilt verplaatsen, verwijdert u de open bare IP-bron en de externe load balancer of resource groep. Hiertoe selecteert u die resource groep in het dash board in de portal en selecteert u vervolgens **verwijderen** boven aan elke pagina.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelf studie hebt u een externe Azure-load balancer verplaatst van de ene regio naar de andere en de bron resources opgeschoond.  Raadpleeg voor meer informatie over het verplaatsen van resources tussen regio's en herstel na nood gevallen in Azure:
+In deze zelf studie hebt u een externe Azure-load balancer verplaatst van de ene regio naar de andere en de bron resources opgeschoond. Zie voor meer informatie over het verplaatsen van resources tussen regio's en herstel na nood gevallen in Azure:
 
 
 - [Resources verplaatsen naar een nieuwe resourcegroep of een nieuw abonnement](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources)

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/09/2019
 ms.author: iainfou
-ms.openlocfilehash: e18f990885a25b7e130dfeb5a0a3425530ee11e6
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 81d20a973454db600d8be9ce036f001dd41784e7
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71086590"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71314991"
 ---
 # <a name="virtual-network-design-considerations-and-configuration-options-for-azure-ad-domain-services"></a>Ontwerp overwegingen voor het virtuele netwerk en configuratie opties voor Azure AD Domain Services
 
@@ -46,7 +46,7 @@ Een door Azure AD DS beheerd domein maakt verbinding met een subnet in een virtu
 * Azure AD DS moet worden geïmplementeerd in een eigen subnet. Gebruik geen bestaand subnet of een gateway-subnet.
 * Er wordt een netwerk beveiligings groep gemaakt tijdens de implementatie van een door Azure AD DS beheerd domein. Deze netwerk beveiligings groep bevat de vereiste regels voor de juiste service communicatie.
     * Maak of gebruik geen bestaande netwerk beveiligings groep met uw eigen aangepaste regels.
-* Azure AD DS vereist tussen vijf en zeven IP-adressen. Zorg ervoor dat het IP-adres bereik van uw subnet dit aantal adressen kan bevatten.
+* Azure AD DS vereist 3-5 IP-adressen. Zorg ervoor dat het IP-adres bereik van uw subnet dit aantal adressen kan bevatten.
     * Het beperken van de beschik bare IP-adressen kan verhinderen dat Azure AD Domain Services twee domein controllers beheert.
 
 In het volgende voorbeeld diagram wordt een geldig ontwerp beschreven waarbij Azure AD DS een eigen subnet heeft, er is een gateway-subnet voor externe verbinding en de werk belasting van toepassingen bevindt zich in een verbonden subnet in het virtuele netwerk:

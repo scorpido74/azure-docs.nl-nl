@@ -13,12 +13,12 @@ ms.date: 08/10/2018
 ms.author: routlaw
 ms.reviewer: glenga
 ms.custom: mvc, devcenter, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 381298abcfa4fa707af6b382565b4bfb990e96e6
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 5447fdcfa86c35b7c5cf079ae8446c30785e893f
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70899505"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71299402"
 ---
 # <a name="quickstart-use-java-to-create-and-publish-a-function-to-azure-functions"></a>Quickstart: Java gebruiken om een functie te maken en te publiceren in Azure Functions
 
@@ -231,3 +231,6 @@ U hebt een Java-functie-app gemaakt met een eenvoudige HTTP-trigger en deze geï
 - U kunt extra functies met verschillende triggers toevoegen aan uw project met behulp van de Maven-target `azure-functions:add`.
 - Gebruik [Visual Studio Code](https://code.visualstudio.com/docs/java/java-azurefunctions), [IntelliJ](functions-create-maven-intellij.md) en [Eclipse](functions-create-maven-eclipse.md) om functies lokaal te schrijven en fouten op te sporen. 
 - Gebruik Visual Studio Code om fouten op te sporen in functies die zijn geïmplementeerd in Azure. Raadpleeg de Visual Studio Code-documentatie over [serverloze Java-toepassingen](https://code.visualstudio.com/docs/java/java-serverless#_remote-debug-functions-running-in-the-cloud) voor instructies.
+
+> [!NOTE] 
+> U kunt ook een Azure Functions project op basis van Kotlin maken met behulp van Azure-functions-Kotlin-Archetype in plaats daarvan. Ga naar de [github-opslag plaats](https://github.com/microsoft/azure-maven-archetypes/tree/develop/azure-functions-kotlin-archetype) voor meer informatie.

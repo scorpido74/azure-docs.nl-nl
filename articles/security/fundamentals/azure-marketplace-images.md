@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/11/2019
 ms.author: barclayn
-ms.openlocfilehash: b574f7c4f30c3bce8bd7d0e234cb523c965772e1
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 3d6b1ed2a3800058acba9fe5df2137811afed74a
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68727584"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300774"
 ---
 # <a name="security-recommendations-for-azure-marketplace-images"></a>Beveiligings aanbevelingen voor installatie kopieën van Azure Marketplace
 
@@ -56,7 +56,7 @@ Deze aanbevelingen kunnen ook handig zijn voor organisaties die geen installatie
 | Beveiliging                                                         | Gebruik een veilige basis installatie kopie van het besturings systeem. De VHD die wordt gebruikt voor de bron van een installatie kopie op basis van Windows Server moet afkomstig zijn uit de installatie kopieën van Windows Server-besturings systemen die via Microsoft Azure worden meegeleverd. |
 | Beveiliging                                                         | Installeer alle meest recente beveiligings updates.                                                                                                                                     |
 | Beveiliging                                                         | Toepassingen mogen geen afhankelijkheid hebben van beperkte gebruikers namen, zoals Administrator, root en admin.                                                                |
-| Beveiliging                                                         | BitLocker-stationsversleuteling wordt niet ondersteund op de vaste schijf van het besturings systeem. BitLocker kan worden gebruikt op gegevens schijven.                                                            |
+| Beveiliging                                                         | BitLocker-stationsversleuteling is ingeschakeld voor harde schijven van het besturings systeem en gegevens harde schijven.                                                             |
 | Beveiliging                                                         | Beperk de kwets baarheid door minimale footprint te behouden met alleen de benodigde Windows Server-functies,-onderdelen,-services en-netwerk poorten ingeschakeld.                         |
 | Beveiliging                                                         | Scan de bron code en de resulterende VM-installatie kopie voor malware.                                                                                                                     |
 | Beveiliging                                                         | Stel de beveiligings update voor Windows Server-installatie kopieën in op automatisch bijwerken.                                                                                                                |

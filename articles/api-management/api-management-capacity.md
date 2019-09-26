@@ -1,6 +1,6 @@
 ---
-title: Capaciteit van een exemplaar van Azure API Management | Microsoft Docs
-description: In dit artikel wordt uitgelegd wat de metriek capaciteit is en hoe u weloverwogen beslissingen te nemen of voor het schalen van een Azure API Management-exemplaar.
+title: Capaciteit van een Azure API Management-exemplaar | Microsoft Docs
+description: In dit artikel wordt uitgelegd wat de capaciteits metriek is en hoe u weloverwogen beslissingen kunt nemen, of u een Azure API Management-exemplaar wilt schalen.
 services: api-management
 documentationcenter: ''
 author: mikebudzynski
@@ -11,94 +11,99 @@ ms.workload: integration
 ms.topic: article
 ms.date: 06/18/2018
 ms.author: apimpm
-ms.openlocfilehash: c39c585d9947422260868734ec89814d8a510089
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.custom: fasttrack-edit
+ms.openlocfilehash: a585ab059319b15be1f2a86bf10b7dc58da72494
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67836955"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71299449"
 ---
 # <a name="capacity-of-an-azure-api-management-instance"></a>Capaciteit van een Azure API Management-exemplaar
 
-**Capaciteit** is de belangrijkste [metrische gegevens van Azure Monitor](api-management-howto-use-azure-monitor.md#view-metrics-of-your-apis) voor het maken van gefundeerde beslissingen te nemen of voor het schalen van een exemplaar van API Management om meer aankan. De constructie is complex en legt een bepaald gedrag.
+**Capaciteit** is de belangrijkste [Azure monitor meet waarde](api-management-howto-use-azure-monitor.md#view-metrics-of-your-apis) voor het nemen van gefundeerde beslissingen of het schalen van een API Management instantie voor meer belasting. De constructie is complex en legt een bepaald gedrag voor.
 
-In dit artikel wordt uitgelegd wat de **capaciteit** is en hoe deze zich gedraagt. U leert hoe u toegang tot **capaciteit** metrische gegevens in Azure portal en suggesties om te overwegen schalen of het upgraden van uw exemplaar van API Management.
+In dit artikel wordt uitgelegd wat de **capaciteit** is en hoe deze zich gedraagt. Hier ziet u hoe u de metrische gegevens van de **capaciteit** kunt openen in de Azure Portal en wordt voorgesteld wanneer u uw API Management exemplaar kunt schalen of bijwerken.
+
+> [!IMPORTANT]
+> In dit artikel wordt beschreven hoe u uw Azure API Management-exemplaar kunt controleren en schalen op basis van de metrische gegevens van de capaciteit. Het is echter even belang rijk om te begrijpen wat er gebeurt wanneer een afzonderlijke API Management instantie de capaciteit daad werkelijk heeft *bereikt* . In azure API Management wordt geen beperking op service niveau toegepast om te voor komen dat de instanties fysiek worden overbelast. Wanneer een exemplaar de fysieke capaciteit bereikt, zal dit vergelijkbaar zijn met alle overbelaste webservers die geen binnenkomende aanvragen kunnen verwerken: de latentie neemt toe, verbindingen worden verbroken, er worden time-outfouten gegenereerd, enzovoort. Dit betekent dat API-clients moeten worden voor bereid om te kunnen omgaan met deze mogelijkheid, vergelijkbaar met andere externe services (bijvoorbeeld door beleid voor opnieuw proberen toe te passen).
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u wilt volgen de stappen in dit artikel, moet u het volgende hebben:
+Als u de stappen in dit artikel wilt volgen, hebt u het volgende nodig:
 
 + Een actief Azure-abonnement.
 
     [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-+ Een APIM-instantie. Zie voor meer informatie, [maken van een Azure API Management-exemplaar](get-started-create-service-instance.md).
++ Een APIM-exemplaar. Zie [een Azure API Management-exemplaar maken](get-started-create-service-instance.md)voor meer informatie.
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
-## <a name="what-is-capacity"></a>Wat is capaciteit
+## <a name="what-is-capacity"></a>Wat is capaciteit?
 
 ![Metrische capaciteitswaarde](./media/api-management-capacity/capacity-ingredients.png)
 
-**Capaciteit** is een indicator van de belasting van een exemplaar van API Management. Het weergegeven verbruik van resources (CPU, geheugen) en network lengtes. CPU- en geheugengebruik blijkt verbruik van bronnen door:
+**Capaciteit** is een belasting indicator voor een API Management exemplaar. Het weerspiegelt het bronnen gebruik (CPU, geheugen) en de lengte van de netwerk wachtrij. Met het CPU-en geheugen gebruik worden bronnen verbruikt door:
 
-+ API Management-services, zoals management acties of aanvraag verwerkt, waaronder aanvragen doorsturen of het uitvoeren van een beleid kunt
-+ processen van het besturingssysteem, met inbegrip van processen die betrekking hebben op de kosten van het aantal SSL-handshakes op nieuwe verbindingen hebt geselecteerd.
++ API Management data vlak-Services, zoals aanvraag verwerking, waarmee doorstuur aanvragen kunnen worden toegevoegd of een beleid kan worden uitgevoerd.
++ Services voor API Management beheer, zoals beheer acties die via de Azure-portal of ARM worden toegepast, of de belasting die afkomstig is van de [ontwikkelaars Portal](api-management-howto-developer-portal.md).
++ Geselecteerde besturingssysteem processen, met inbegrip van processen waarbij de kosten van SSL-Handshakes voor nieuwe verbindingen betrokken zijn.
 
-Totaal aantal **capaciteit** is een gemiddelde van een eigen waarden van elke eenheid van een exemplaar van API Management.
+Totale **capaciteit** is een gemiddelde van de eigen waarden van elke eenheid van een API Management-exemplaar.
 
-Hoewel de **metrische gegevens voor capaciteit** is ontworpen voor surface problemen met uw exemplaar van API Management, er zijn gevallen wanneer problemen niet weerspiegeld in wijzigingen in de **capaciteit metriek**.
+Hoewel de **capaciteits metriek** is ontworpen om problemen met uw API Management-exemplaar op te sporen, zijn er gevallen waarin problemen niet worden weer gegeven in wijzigingen in de **capaciteits metriek**.
 
-## <a name="capacity-metric-behavior"></a>Capaciteit metrische gedrag
+## <a name="capacity-metric-behavior"></a>Gedrag van capaciteits metriek
 
-Vanwege de bouw, in de praktijk **capaciteit** kunnen worden beïnvloed door vele variabelen, bijvoorbeeld:
+Als gevolg van de constructie kan de **capaciteit** van het werkelijke leven worden beïnvloed door veel variabelen, bijvoorbeeld:
 
-+ verbinding patronen (nieuwe verbinding op een aanvraag voor Visual Studio opnieuw gebruiken van de bestaande verbinding)
++ verbindings patronen (nieuwe verbinding op basis van een aanvraag en de bestaande verbinding opnieuw gebruiken)
 + grootte van een aanvraag en antwoord
-+ beleidsregels die zijn geconfigureerd op elke API of het aantal clients verzenden van aanvragen.
++ beleids regels die zijn geconfigureerd op elke API of het aantal clients dat aanvragen verzendt.
 
-De complexe bewerkingen op de aanvragen bent, hoe hoger de **capaciteit** verbruik is. Bijvoorbeeld, verbruikt complexe transformatiebeleid veel meer CPU nodig is dan een eenvoudige aanvraag doorsturen. Antwoorden op trage back-end-service wordt het te verhogen.
+De complexere bewerkingen voor de aanvragen zijn, des te hoger het **capaciteits** verbruik is. Complexe transformatie beleidsregels gebruiken bijvoorbeeld veel meer CPU dan een eenvoudige aanvraag door sturen. Reacties van trage back-end-service worden ook verhoogd.
 
 > [!IMPORTANT]
-> **Capaciteit** is niet een directe meting van het aantal aanvragen dat wordt verwerkt.
+> De **capaciteit** is geen directe meting van het aantal aanvragen dat wordt verwerkt.
 
-![Capaciteit metrische pieken](./media/api-management-capacity/capacity-spikes.png)
+![Pieken bij capaciteits metrieken](./media/api-management-capacity/capacity-spikes.png)
 
-**Capaciteit** ook samen af en toe pieken of niet groter zijn dan nul, zelfs als er zijn geen aanvragen worden verwerkt. Het gebeurt door systeem - of platform-specifieke acties en moet niet in aanmerking worden genomen bij het bepalen of u een exemplaar schalen.
+**Capaciteit** kan ook af en toe gelijk zijn aan een waarde die groter is dan nul, zelfs als er geen aanvragen worden verwerkt. Dit gebeurt vanwege systeem-of platformspecifieke acties en moet niet in aanmerking worden genomen bij het bepalen of u een instantie wilt schalen.
 
-Lage **capaciteit metriek** hoeft niet te betekenen dat uw API Management-exemplaar is niet (s) eventuele problemen.
+De **metriek** voor weinig capaciteit betekent niet noodzakelijkerwijs dat uw API Management-exemplaar geen problemen ondervindt.
   
-## <a name="use-the-azure-portal-to-examine-capacity"></a>De Azure-Portal gebruiken voor het onderzoeken van capaciteit
+## <a name="use-the-azure-portal-to-examine-capacity"></a>De Azure Portal gebruiken om de capaciteit te controleren
   
 ![Metrische capaciteitswaarde](./media/api-management-capacity/capacity-metric.png)  
 
-1. Navigeer naar de APIM-instantie in de [Azure-portal](https://portal.azure.com/).
-2. Selecteer **metrische gegevens (preview)** .
-3. Selecteer in de sectie paarse **capaciteit** metrische gegevens van de beschikbare metrische gegevens en laat de standaardwaarde **Avg** aggregatie.
+1. Navigeer naar uw APIM-instantie in de [Azure Portal](https://portal.azure.com/).
+2. Selecteer **Metrische gegevens**.
+3. Selecteer in de sectie paars de optie **capaciteits** metriek van beschik bare metrische gegevens en behoud de standaard **Gem** aggregatie.
 
     > [!TIP]
-    > U moet altijd eerst gekeken een **capaciteit** metrische uitsplitsing per locatie om te voorkomen dat de verkeerde een perfecte ervaring bij.
+    > U moet altijd een **capaciteits** metriek op locatie bekijken om onjuiste interpretaties te voor komen.
 
-4. Selecteer in de sectie groen **locatie** voor het splitsen van de metrische gegevens per dimensie.
+4. Selecteer in het groene gedeelte **locatie** voor het splitsen van de metriek per dimensie.
 5. Kies een gewenste periode in de bovenste balk van de sectie.
 
-    U kunt een waarschuwing voor metrische gegevens zodat u weet wanneer er iets onverwachts gebeurt instellen. Bijvoorbeeld, meldingen ontvangen wanneer de APIM-instantie heeft de capaciteit van de verwachte piek meer dan 20 minuten is overschreden.
+    U kunt een waarschuwing instellen om u te laten weten wanneer er iets onverwachts plaatsvindt. Ontvang bijvoorbeeld meldingen wanneer uw APIM-exemplaar de verwachte piek capaciteit van meer dan 20 minuten overschrijdt.
 
     >[!TIP]
-    > U kunt waarschuwingen om u weten wanneer uw service is onvoldoende capaciteit of functionaliteit voor automatisch schalen van Azure Monitor gebruiken om toe te voegen automatisch een Azure API Management-eenheid te laten configureren. Schalen van de bewerking kan ongeveer 30 minuten duren, dus moet u uw regels dienovereenkomstig plannen.  
-    > Alleen schalen van de master locatie is toegestaan.
+    > U kunt waarschuwingen configureren om u op de hoogte te stellen wanneer uw service weinig capaciteit heeft of Azure Monitor functionaliteit voor automatisch schalen gebruiken om een Azure API Management-eenheid toe te voegen. De schaal bewerking kan ongeveer 30 minuten duren, dus u moet uw regels dienovereenkomstig plannen.  
+    > De hoofd locatie mag alleen worden geschaald.
 
-## <a name="use-capacity-for-scaling-decisions"></a>Met een capaciteit voor het schalen van beslissingen
+## <a name="use-capacity-for-scaling-decisions"></a>Capaciteit voor het schalen van beslissingen gebruiken
 
-**Capaciteit** is de metrische gegevens voor het nemen van besluiten al dan niet schalen van een exemplaar van API Management om meer aankan. Houd rekening met:
+**Capaciteit** is de metrische gegevens voor het nemen van beslissingen of een API Management-exemplaar moet worden geschaald om meer belasting te bieden. Neem
 
-+ Kijken naar een op de lange termijn trend en een gemiddelde.
-+ Wordt genegeerd plotselinge pieken die waarschijnlijk niet met betrekking tot een toename in load (Zie de sectie 'Capaciteit metrische gedrag' voor uitleg over).
-+ Een upgrade of schalen van uw exemplaar wanneer **capaciteit**van waarde hoger is dan 60% of 70% voor een langere periode (bijvoorbeeld 30 minuten). Verschillende waarden kunnen werken beter voor uw service of scenario.
++ Een lange termijn trend en gemiddeld te bekijken.
++ Het negeren van plotselinge pieken die waarschijnlijk niet zijn gerelateerd aan een toename van de belasting (Zie ' gedrag van capaciteits metriek ' voor uitleg).
++ Het bijwerken of schalen van uw exemplaar, wanneer de waarde van de **capaciteit**groter is dan 60% of 70% gedurende een langere periode (bijvoorbeeld 30 minuten). Verschillende waarden kunnen beter werken voor uw service of scenario.
 
 >[!TIP]  
-> Als u kunt vooraf schatting van uw verkeer, test u de APIM-instantie op werkbelastingen die u verwacht. U kunt de aanvraagbelasting op uw tenant geleidelijk verhoogd en controleren van welke waarde van de capaciteit metrische gegevens komt overeen met de piekbelasting. Volg de stappen uit de vorige sectie is het gebruik van Azure portal om te begrijpen hoeveel capaciteit wordt gebruikt op een bepaald moment.
+> Als u uw verkeer vooraf kunt schatten, test u uw APIM-exemplaar op workloads die u verwacht. U kunt de belasting van de aanvraag op uw Tenant geleidelijk verhogen en controleren welke waarde de capaciteits metriek overeenkomt met uw piek belasting. Volg de stappen in de vorige sectie om Azure Portal te gebruiken om te begrijpen hoeveel capaciteit er op een bepaald moment wordt gebruikt.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Het bijwerken van een Azure API Management-service-exemplaar of schalen](upgrade-and-scale.md)
+[Een Azure API Management service-exemplaar schalen of bijwerken](upgrade-and-scale.md)

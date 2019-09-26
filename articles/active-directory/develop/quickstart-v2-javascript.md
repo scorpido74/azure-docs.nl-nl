@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: nacanuma
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 59b5ddbff646104b3d4a35c26c1ecf3968dea31d
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 988c73236d9f5ef360ded03bca36a4bb24ebd308
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68852910"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71290823"
 ---
 # <a name="quickstart-sign-in-users-and-acquire-an-access-token-from-a-javascript-single-page-application"></a>Quickstart: Gebruikers aanmelden en een toegangs token verkrijgen van een Java script-toepassing met één pagina
 
@@ -59,7 +59,7 @@ Voor deze Quick start is de volgende configuratie vereist:
 > 1. Selecteer **nieuwe registratie**.
 > 1. Wanneer de pagina **Een toepassing registreren** wordt weergegeven, voert u een naam in voor de toepassing.
 > 1. Selecteer onder **Ondersteunde accounttypen** de optie **Accounts in een organisatieadreslijst en persoonlijke Microsoft-account**.
-> 1. Selecteer onder de sectie omleidings- **URI** in de vervolg keuzelijst het webplatform en stel vervolgens de waarde in op. `http://localhost:30662/`
+> 1. Selecteer onder de sectie omleidings- **URI** in de vervolg keuzelijst het **webplatform en** stel vervolgens de waarde in op `http://localhost:30662/`.
 > 1. Selecteer **Registreren**. Noteer de waarde van de **toepassing (client)** op de pagina app- **overzicht** voor later gebruik.
 > 1. Voor deze quickstart moet de [Impliciete toekenningsstroom](v2-oauth2-implicit-grant-flow.md) zijn ingeschakeld. Selecteer in het linkerdeel venster van de geregistreerde toepassing **verificatie**.
 > 1. Selecteer in de sectie **Geavanceerde instellingen** onder **impliciete toekenning**de selectie vakjes **id-tokens** en **toegangs tokens** . ID-tokens en toegangs tokens zijn vereist omdat deze app gebruikers moet aanmelden en een API kan aanroepen.
@@ -96,7 +96,8 @@ Selecteer de optie die geschikt is voor uw ontwikkel omgeving:
 var msalConfig = {
     auth: {
         clientId: "Enter_the_Application_Id_here",
-        authority: "https://login.microsoftonline.com/Enter_the_Tenant_info_here"
+        authority: "https://login.microsoftonline.com/Enter_the_Tenant_info_here",
+        redirectURI: "http://localhost:30662/"
     },
     cache: {
         cacheLocation: "localStorage",
@@ -169,7 +170,8 @@ In de Quick Start-code ziet u ook hoe u de MSAL-bibliotheek initialiseert:
 var msalConfig = {
     auth: {
         clientId: "Enter_the_Application_Id_here",
-        authority: "https://login.microsoftonline.com/Enter_the_Tenant_Info_Here"
+        authority: "https://login.microsoftonline.com/Enter_the_Tenant_Info_Here",
+        redirectURI: "http://localhost:30662/"
     },
     cache: {
         cacheLocation: "localStorage",
@@ -182,8 +184,9 @@ var myMSALObj = new Msal.UserAgentApplication(msalConfig);
 
 > |Waar  |  |
 > |---------|---------|
-> |`ClientId`     | De toepassings-ID van de toepassing die is geregistreerd in de Azure Portal.|
+> |`clientId`     | De toepassings-ID van de toepassing die is geregistreerd in de Azure Portal.|
 > |`authority`    | Beschrijving De CA-URL die ondersteuning biedt voor account typen, zoals eerder is beschreven in de sectie configuratie. De standaard instantie is `https://login.microsoftonline.com/common`. |
+> |`redirectURI`     | De geconfigureerde antwoord/omleidings-URI voor de registratie van de toepassing. In dit geval `http://localhost:30662/`. |
 > |`cacheLocation`  | Beschrijving Hiermee stelt u de opslag voor de browser in voor de verificatie status. De standaard waarde is sessionStorage.   |
 > |`storeAuthStateInCookie`  | Beschrijving De bibliotheek waarin de status van de verificatie aanvraag wordt opgeslagen die vereist is voor de validatie van de verificatie stromen in de browser cookies. Deze cookie is ingesteld voor IE-en Edge-browsers om bepaalde [bekende problemen](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues-on-IE-and-Edge-Browser#issues)te verhelpen. |
 

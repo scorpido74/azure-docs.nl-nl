@@ -16,12 +16,12 @@ ms.date: 04/19/2019
 ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7b5be74b0734a27b02030e2c6995b43ef0c02162
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: 0c8a96a4557a500bd4726b8df44ada5df328b7c3
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69562184"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71290890"
 ---
 # <a name="request-access-to-an-access-package-in-azure-ad-entitlement-management-preview"></a>Toegang aanvragen tot een toegangs pakket in azure AD-rechts beheer (preview-versie)
 
@@ -40,9 +40,9 @@ De eerste stap is om u aan te melden bij de portal mijn toegang, waar u toegang 
 
 **Vereiste rol:** Aanvrager
 
-1. Zoek naar een e-mail of een bericht van het project of Business Manager waarmee u werkt. Het e-mail bericht moet een koppeling bevatten naar het toegangs pakket waartoe u toegang nodig hebt. De koppeling begint met:
-
-    `https://myaccess.microsoft.com`
+1. Zoek naar een e-mail of een bericht van het project of Business Manager waarmee u werkt. Het e-mail bericht moet een koppeling bevatten naar het toegangs pakket waartoe u toegang nodig hebt. De koppeling begint met ' myaccess ', bevat een directory-hint en eindigt met een toegangs pakket-id vergelijkbaar met het volgende:
+ 
+    `https://myaccess.microsoft.com/@<directory_hint>#/access-packages/<access_package_id>`
 
 1. Open de koppeling.
 
@@ -81,7 +81,7 @@ Zodra u het toegangs pakket hebt gevonden in de portal van mijn toegang, kunt u 
 
 ## <a name="cancel-a-request"></a>Een aanvraag annuleren
 
-Als u een toegangs aanvraag verzendt en de aanvraag nog steeds de goedkeurings status in **behandeling** heeft, kunt u de aanvraag annuleren.
+Als u een toegangs aanvraag verzendt en de aanvraag nog steeds de **goedkeurings** status in behandeling heeft, kunt u de aanvraag annuleren.
 
 **Vereiste rol:** Aanvrager
 
@@ -89,7 +89,7 @@ Als u een toegangs aanvraag verzendt en de aanvraag nog steeds de goedkeurings s
 
 1. Klik op de koppeling **weer geven** voor de aanvraag die u wilt annuleren.
 
-1. Als de aanvraag de goedkeurings status in **behandeling** heeft, kunt u op **Aanvraag annuleren** klikken om de aanvraag te annuleren.
+1. Als de aanvraag de **goedkeurings** status in behandeling heeft, kunt u op **Aanvraag annuleren** klikken om de aanvraag te annuleren.
 
     ![Mijn toegangs Portal-aanvraag annuleren](./media/entitlement-management-request-access/my-access-cancel-request.png)
 

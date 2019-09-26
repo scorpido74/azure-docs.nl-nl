@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 9/20/2019
+ms.date: 9/25/2019
 ms.author: b-juche
-ms.openlocfilehash: a2cfd7937bff10dae4601cb9727cfe43e4d61ca0
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: 3d34caba9512dc0c0b20cf10476f5c38a2fab8ce
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71178271"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71299655"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>Een SMB-volume maken voor Azure NetApp Files
 
@@ -95,6 +95,9 @@ Er moet een subnet zijn gedelegeerd aan Azure NetApp Files.
 
     * **Pad naar de organisatie-eenheid**  
         Dit is het LDAP-pad voor de organisatie-eenheid (OE) waar de computer accounts van de SMB-server worden gemaakt. Dat wil zeggen OU = 2e niveau, OE = eerste niveau. 
+
+        Als u Azure NetApp files gebruikt met Azure Active Directory Domain Services, is `OU=AADDC Computers` het pad voor de organisatie-eenheid wanneer u Active Directory configureert voor uw NetApp-account.
+        
     * Referenties, inclusief uw **gebruikers naam** en **wacht woord**
 
     ![Active Directory toevoegen](../media/azure-netapp-files/azure-netapp-files-join-active-directory.png)

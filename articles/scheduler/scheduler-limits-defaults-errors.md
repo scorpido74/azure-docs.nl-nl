@@ -1,6 +1,6 @@
 ---
-title: Limieten, quota en drempelwaarden in Azure Scheduler
-description: Meer informatie over limieten, quota, standaardwaarden en beperken van drempelwaarden voor Azure Scheduler
+title: Limieten, quota en drempel waarden in azure scheduler
+description: Meer informatie over limieten, quota's, standaard waarden en bandbreedte drempels voor Azure scheduler
 services: scheduler
 ms.service: scheduler
 author: derek1ee
@@ -9,30 +9,30 @@ ms.reviewer: klam
 ms.assetid: 88f4a3e9-6dbd-4943-8543-f0649d423061
 ms.topic: article
 ms.date: 08/18/2016
-ms.openlocfilehash: 478afb20f3dabec74d66d00bec325408ce6604fc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 293cd956f8270a4863fcc657f58c970096cec1e3
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64713736"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300922"
 ---
-# <a name="limits-quotas-and-throttle-thresholds-in-azure-scheduler"></a>Limieten, quota en drempelwaarden beperken in Azure Scheduler
+# <a name="limits-quotas-and-throttle-thresholds-in-azure-scheduler"></a>Limieten, quota en beperkings drempels in azure scheduler
 
 > [!IMPORTANT]
-> [Azure Logic Apps](../logic-apps/logic-apps-overview.md) vervangt Azure Scheduler, dat buiten gebruik wordt gesteld. [Probeer in plaats daarvan Azure Logic Apps](../scheduler/migrate-from-scheduler-to-logic-apps.md) als u taken wilt plannen. 
+> [Azure Logic apps](../logic-apps/logic-apps-overview.md) vervangt Azure scheduler, die buiten gebruik wordt [gesteld](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date). Als u wilt blijven werken met de taken die u in scheduler hebt ingesteld, moet u zo snel mogelijk [naar Azure Logic apps worden gemigreerd](../scheduler/migrate-from-scheduler-to-logic-apps.md) .
 
-## <a name="limits-quotas-and-thresholds"></a>Limieten, quota en drempelwaarden
+## <a name="limits-quotas-and-thresholds"></a>Limieten, quota en drempel waarden
 
 [!INCLUDE [scheduler-limits-table](../../includes/scheduler-limits-table.md)]
 
-## <a name="x-ms-request-id-header"></a>de header x-ms-request-id
+## <a name="x-ms-request-id-header"></a>x-MS-Request-id-header
 
-Elke aanvraag ten opzichte van de Scheduler-service retourneert een antwoordheader met de naam **x-ms-request-id**. Deze header bevat een onduidelijke waarde die de aanvraag wordt aangeduid. Dus als een aanvraag consistent mislukt, en u vastgesteld dat de aanvraag is juist opgemaakt, kunt u rapporteren de fout naar Microsoft door te geven de **x-ms-request-id** antwoord-header-waarde en met inbegrip van deze gegevens: 
+Elke aanvraag die wordt gedaan voor de Scheduler-service retourneert een antwoord header met de naam **x-MS-Request-id**. Deze header bevat een ondoorzichtige waarde waarmee de aanvraag uniek wordt geïdentificeerd. Dus als een aanvraag consistent is mislukt en u hebt bevestigd dat de aanvraag juist is ingedeeld, kunt u de fout melden aan micro soft door de waarde voor **x-MS-Request-id** op te geven en deze gegevens op te nemen: 
 
-* De **x-ms-request-id** waarde
-* Bij benadering de tijd wanneer de aanvraag is gedaan 
-* De id's voor de Azure-abonnement, de taakverzameling en de taak 
-* Het type bewerking waarmee is geprobeerd de aanvraag
+* De waarde voor **x-MS-Request-id**
+* De geschatte tijd waarop de aanvraag is gedaan 
+* De id's voor het Azure-abonnement, de taak verzameling en de taak 
+* Het type bewerking dat de aanvraag heeft gedaan
 
 ## <a name="see-also"></a>Zie ook
 

@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 09/10/2019
+ms.date: 09/20/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 194b90ab27d02c1fa3eb05bb3ddd78395d351599
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 28666aaac4ec221acca00d937d54a753a4e6a055
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70898178"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71172661"
 ---
 ::: zone target="docs"
 
@@ -93,6 +93,26 @@ Voer de volgende stappen uit als u het apparaat vanuit de VS, Canada of Europa r
     In plaats van het ophalen te plannen, kunt u de Data Box ook zelf naar de dichtstbijzijnde inleverlocatie brengen.
 4. Nadat de Data Box door de vervoerder is opgehaald en gescand, verandert de orderstatus in de portal in **Opgehaald**. Er wordt ook een tracerings-id weergegeven.
 
+::: zone target="chromeless"
+
+## <a name="verify-data-upload-to-azure"></a>De gegevensupload naar Azure controleren
+
+[!INCLUDE [data-box-verify-upload](../../includes/data-box-verify-upload.md)]
+
+## <a name="erasure-of-data-from-data-box"></a>Gegevens verwijderen uit de Data Box
+ 
+Nadat de gegevens naar Azure zijn geüpload, worden de gegevens door de Data Box van de schijven gewist volgens de [richtlijnen van NIST SP 800-88 Revision 1](https://csrc.nist.gov/News/2014/Released-SP-800-88-Revision-1,-Guidelines-for-Medi).
+
+::: zone-end
+
+::: zone target="docs"
+
+[!INCLUDE [data-box-verify-upload-return](../../includes/data-box-verify-upload-return.md)]
+
+
+
+::: zone-end
+
 
 ## <a name="in-australiatabin-australia"></a>[In Australië](#tab/in-australia)
 
@@ -126,6 +146,24 @@ Voor informatie over uw bestelling via de telefoon:
 - Stuur eerst een e-mail over het ophalen.
 - Geef de naam van uw bestelling door via de telefoon.
 
+::: zone target="chromeless"
+
+## <a name="verify-data-upload-to-azure"></a>De gegevensupload naar Azure controleren
+
+[!INCLUDE [data-box-verify-upload](../../includes/data-box-verify-upload.md)]
+
+## <a name="erasure-of-data-from-data-box"></a>Gegevens verwijderen uit de Data Box
+ 
+Nadat de gegevens naar Azure zijn geüpload, worden de gegevens door de Data Box van de schijven gewist volgens de [richtlijnen van NIST SP 800-88 Revision 1](https://csrc.nist.gov/News/2014/Released-SP-800-88-Revision-1,-Guidelines-for-Medi).
+
+::: zone-end
+
+::: zone target="docs"
+
+[!INCLUDE [data-box-verify-upload-return](../../includes/data-box-verify-upload-return.md)]
+
+::: zone-end
+
 ## <a name="in-japantabin-japan"></a>[In Japan](#tab/in-japan) 
 
 1. Bewaar de oorspronkelijke doos om het apparaat terug te sturen.
@@ -156,69 +194,23 @@ Zo nodig kunt u contact opnemen met de ondersteuning van Quantium Solutions (in 
 - E-mail：Customerservice.JP@quantiumsolutions.com 
 - Telefoon: 03-5755-0150 
 
-::: zone target="docs"
-
-## <a name="verify-data-upload-to-azure"></a>De gegevensupload naar Azure controleren
-
-Wanneer Microsoft het apparaat heeft ontvangen en gescand, wordt de orderstatus bijgewerkt naar **Ontvangen**. Het apparaat wordt vervolgens fysiek gecontroleerd op schade of op tekenen dat ermee is geknoeid.
-
-Nadat de controle is uitgevoerd, wordt de Data Box met het netwerk in het Azure-datacenter verbonden. Het kopiëren van de gegevens start automatisch. Afhankelijk van de gegevensgrootte kan de kopieerbewerking enkele uren tot enkele dagen duren. U kunt de voortgang van de kopieertaak bewaken via de portal.
-
-Nadat de kopie is voltooid, wordt de orderstatus bijgewerkt naar **Voltooid**.
-
-Controleer of uw gegevens zijn geüpload naar Azure voordat u deze uit de bron verwijdert. Uw gegevens kunnen zich bevinden in:
-
-- Uw Azure Storage-account(s). Als u de gegevens naar Data Box kopieert, worden de gegevens naar een van de volgende paden in uw Azure Storage-account geüpload, afhankelijk van het gegevenstype.
-
-  - Voor blok-blobs en pagina-blobs: `https://<storage_account_name>.blob.core.windows.net/<containername>/files/a.txt`
-  - Voor Azure Files: `https://<storage_account_name>.file.core.windows.net/<sharename>/files/a.txt`
-
-    U kunt ook naar uw Azure-opslagaccount in de Azure-portal gaan en van daaruit navigeren.
-
-- Uw resourcegroep(en) op beheerde schijf. Bij het maken van beheerde schijven worden de VHD's geüpload als pagina-blobs en vervolgens naar beheerde schijven geconverteerd. De beheerde schijven worden gekoppeld aan de resourcegroepen die zijn opgegeven op het moment dat de order werd gemaakt. 
-
-    - Als het kopiëren naar beheerde schijven in Azure is geslaagd, gaat u naar **Orderdetails** in de Azure-portal en noteert u de resourcegroepen die zijn opgegeven voor beheerde schijven.
-
-        ![Resourcegroepen op beheerde schijven identificeren](media/data-box-deploy-copy-data-from-vhds/order-details-managed-disk-resource-groups.png)
-
-        Ga naar de genoteerde resourcegroep en zoek uw beheerde schijven.
-
-        ![Beheerde schijf gekoppeld aan resourcegroepen](media/data-box-deploy-copy-data-from-vhds/managed-disks-resource-group.png)
-
-    - Als u een VHDX of een dynamische/differentiërende VHD hebt gekopieerd, wordt de VHDX/VHD als een pagina-blob naar het faseringsopslagaccount geüpload, maar de conversie van de VHD naar een beheerde schijf mislukt. Ga naar uw **Faseringsopslagaccount > Blobs** en selecteer de juiste container: Standard - SSD, Standard - HDD of Premium - SSD. De VHD's worden als pagina-blobs geüpload in uw faseringsopslagaccount.
-
-::: zone-end
-
 ::: zone target="chromeless"
 
 ## <a name="verify-data-upload-to-azure"></a>De gegevensupload naar Azure controleren
 
 [!INCLUDE [data-box-verify-upload](../../includes/data-box-verify-upload.md)]
 
-::: zone-end
-
 ## <a name="erasure-of-data-from-data-box"></a>Gegevens verwijderen uit de Data Box
  
 Nadat de gegevens naar Azure zijn geüpload, worden de gegevens door de Data Box van de schijven gewist volgens de [richtlijnen van NIST SP 800-88 Revision 1](https://csrc.nist.gov/News/2014/Released-SP-800-88-Revision-1,-Guidelines-for-Medi).
 
+::: zone-end
+
 ::: zone target="docs"
 
-## <a name="next-steps"></a>Volgende stappen
-
-In deze zelfstudie bent u meer te weten gekomen over verschillende onderwerpen met betrekking tot Azure Data Box, zoals:
-
-> [!div class="checklist"]
-> * Vereisten
-> * Voorbereiding voor verzending
-> * De Data Box naar Microsoft verzenden
-> * De gegevensupload naar Azure controleren
-> * Gegevens verwijderen uit de Data Box
-
-Ga naar het volgende artikel voor informatie over het beheren van de Data Box via de lokale webgebruikersinterface.
-
-> [!div class="nextstepaction"]
-> [De lokale webgebruikersinterface gebruiken voor het beheren van de Azure Data Box](./data-box-local-web-ui-admin.md)
+[!INCLUDE [data-box-verify-upload-return](../../includes/data-box-verify-upload-return.md)]
 
 ::: zone-end
+
 
 

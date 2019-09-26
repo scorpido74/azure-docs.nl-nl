@@ -12,19 +12,19 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: lagayhar
-ms.openlocfilehash: 1074495f5ac9112b6ce4f67ad2d81ee57b28e720
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 5bef5a6037c6eb29d0dc48e313958e2d243904eb
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70012695"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71299572"
 ---
 # <a name="how-to-use-micrometer-with-azure-application-insights-java-sdk"></a>Micrometer gebruiken met Azure-toepassing Insights-Java-SDK
 Met de micrometer-toepassings bewaking worden metrische gegevens gemeten voor op JVM gebaseerde toepassings code en kunt u deze exporteren naar uw favoriete bewakings systemen. In dit artikel leert u hoe u micrometer kunt gebruiken met Application Insights voor zowel veer boot-als niet-veer boot-toepassingen.
 
 ## <a name="using-spring-boot-15x"></a>Lente boot gebruiken 1,5 x
 Voeg de volgende afhankelijkheden toe aan uw pom. XML-of build. gradle-bestand: 
-* [Application Insights lente-boot-starter](https://github.com/Microsoft/ApplicationInsights-Java/tree/master/azure-application-insights-spring-boot-starter)1.1.0-bèta of hoger
+* [Application Insights lente-boot-starter](https://github.com/Microsoft/ApplicationInsights-Java/tree/master/azure-application-insights-spring-boot-starter) 2.5.0 of hoger
 * Micrometer Azure Registry 1.1.0 of hoger
 * [Micrometer lente](https://micrometer.io/docs/ref/spring/1.5) verouderde 1.1.0 of hoger (dit backports de AutoConfig-code in het lente-Framework).
 * [ApplicationInsights Resource](../../azure-monitor/app/create-new-resource.md )
@@ -37,7 +37,7 @@ Stappen
     <dependency>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>applicationinsights-spring-boot-starter</artifactId>
-        <version>1.1.0-BETA</version>
+        <version>2.5.0</version>
     </dependency>
 
     <dependency>
@@ -64,7 +64,7 @@ Stappen
 Voeg de volgende afhankelijkheden toe aan uw pom. XML-of build. gradle-bestand:
 
 * Application Insights veer boot-starter 2.1.2 of hoger
-* Azure-veer-boot-metrische gegevens-starters 2.1.5 of hoger  
+* Azure-veer-boot-metrische gegevens-starters 2.0.7 of hoger
 * [Application Insights resource](../../azure-monitor/app/create-new-resource.md )
 
 Stappen:
@@ -75,21 +75,21 @@ Stappen:
     <dependency> 
           <groupId>com.microsoft.azure</groupId>
           <artifactId>azure-spring-boot-metrics-starter</artifactId>
-          <version>2.1.6</version>
+          <version>2.0.7</version>
     </dependency>
     ```
 1. Werk het bestand Application. Properties of yml bij met de Application Insights instrumentatie sleutel met behulp van de volgende eigenschap:
 
-     `management.metrics.export.azuremonitor.instrumentation-key=<your-instrumentation-key-here>`
+     `azure.application-insights.instrumentation-key=<your-instrumentation-key-here>`
 3. Uw toepassing bouwen en uitvoeren
 4. In het bovenstaande wordt weer gegeven met vooraf geaggregeerde metrische gegevens die automatisch worden verzameld voor Azure Monitor. Raadpleeg het [Leesmij-bestand op github](https://github.com/Microsoft/azure-spring-boot/releases/latest)voor meer informatie over het afstemmen van Application Insights Spring boot starter.
 
 Standaard metrische gegevens:
 
 *    Automatisch geconfigureerde metrische gegevens voor Tomcat, JVM, logback meet waarden, Log4J Metrics, metrische gegevens over tijds duur, metrische gegevens over processors, FileDescriptorMetrics.
-*    Bijvoorbeeld, als de Netflix Hystrix aanwezig is in het pad naar de klasse, worden deze metrische gegevens ook weer gegeven. 
+*    Als bijvoorbeeld Netflix Hystrix aanwezig is in het pad naar de klasse, worden deze metrische gegevens ook weer gegeven. 
 *    De volgende metrische gegevens kunnen beschikbaar zijn door het toevoegen van respectieve bonen. 
-        - CacheMetrics (CaffeineCache, EhCache2, GuavaCache, HazelcaseCache, Jcache)     
+        - CacheMetrics (CaffeineCache, EhCache2, GuavaCache, HazelcastCache, JCache)     
         - DataBaseTableMetrics 
         - HibernateMetrics 
         - JettyMetrics 
@@ -121,10 +121,8 @@ De automatische metrische gegevens verzameling uitschakelen:
 ## <a name="use-micrometer-with-non-spring-boot-web-applications"></a>Micrometer gebruiken met niet-veer boot-webtoepassingen
 
 Voeg de volgende afhankelijkheden toe aan uw pom. XML-of build. gradle-bestand:
- 
-* [Application Insight Core 2.2.0](https://www.nuget.org/packages/Microsoft.ApplicationInsights/2.2.0) of hoger
-* [Application Insights Web-2.2.0](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/2.2.0) of hoger
-* [Webfilter registreren](https://docs.microsoft.com/azure/application-insights/app-insights-java-get-started)
+
+* Application Insights Web auto 2.5.0 of hoger
 * Micrometer Azure Registry 1.1.0 of hoger
 * [Application Insights resource](../../azure-monitor/app/create-new-resource.md )
 
@@ -141,14 +139,41 @@ Stappen:
         
         <dependency>
             <groupId>com.microsoft.azure</groupId>
-            <artifactId>applicationinsights-web</artifactId>
-            <version>2.2.0</version>
-        </dependency
+            <artifactId>applicationinsights-web-auto</artifactId>
+            <version>2.5.0</version>
+        </dependency>
      ```
 
-2. Application Insights. XML in de map Resources plaatsen
+2. Bestand `ApplicationInsights.xml` in de map Resources plaatsen:
 
-    Voor beeld van een servlet-klasse (een metrische waarde voor een timer):
+    ```XML
+    <?xml version="1.0" encoding="utf-8"?>
+    <ApplicationInsights xmlns="http://schemas.microsoft.com/ApplicationInsights/2013/Settings" schemaVersion="2014-05-30">
+    
+       <!-- The key from the portal: -->
+       <InstrumentationKey>** Your instrumentation key **</InstrumentationKey>
+    
+       <!-- HTTP request component (not required for bare API) -->
+       <TelemetryModules>
+          <Add type="com.microsoft.applicationinsights.web.extensibility.modules.WebRequestTrackingTelemetryModule"/>
+          <Add type="com.microsoft.applicationinsights.web.extensibility.modules.WebSessionTrackingTelemetryModule"/>
+          <Add type="com.microsoft.applicationinsights.web.extensibility.modules.WebUserTrackingTelemetryModule"/>
+       </TelemetryModules>
+    
+       <!-- Events correlation (not required for bare API) -->
+       <!-- These initializers add context data to each event -->
+       <TelemetryInitializers>
+          <Add type="com.microsoft.applicationinsights.web.extensibility.initializers.WebOperationIdTelemetryInitializer"/>
+          <Add type="com.microsoft.applicationinsights.web.extensibility.initializers.WebOperationNameTelemetryInitializer"/>
+          <Add type="com.microsoft.applicationinsights.web.extensibility.initializers.WebSessionTelemetryInitializer"/>
+          <Add type="com.microsoft.applicationinsights.web.extensibility.initializers.WebUserTelemetryInitializer"/>
+          <Add type="com.microsoft.applicationinsights.web.extensibility.initializers.WebUserAgentTelemetryInitializer"/>
+       </TelemetryInitializers>
+    
+    </ApplicationInsights>
+    ```
+
+3. Voor beeld van een servlet-klasse (een metrische waarde voor een timer):
 
     ```Java
         @WebServlet("/hello")
@@ -187,7 +212,7 @@ Stappen:
     
     ```
 
-      Voorbeeld configuratie klasse:
+4. Voorbeeld configuratie klasse:
 
     ```Java
          @WebListener
@@ -252,5 +277,5 @@ Voeg de volgende bindings code toe aan het configuratie bestand:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Raadpleeg de officiële [micrometer-documentatie](https://micrometer.io/docs)voor meer informatie over micrometer.
-* Raadpleeg de officiële [lente op de Azure-documentatie](https://docs.microsoft.com/java/azure/spring-framework/?view=azure-java-stable)voor meer informatie over de lente in Azure.
+* Zie de officiële [micrometer-documentatie](https://micrometer.io/docs)voor meer informatie over micrometer.
+* Zie de [documentatie van de officiële lente op Azure](https://docs.microsoft.com/java/azure/spring-framework/?view=azure-java-stable)voor meer informatie over de lente op Azure.

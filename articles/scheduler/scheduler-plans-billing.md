@@ -1,6 +1,6 @@
 ---
-title: Abonnementen en facturering - Azure Scheduler
-description: Meer informatie over abonnementen en facturering voor Azure Scheduler
+title: Plannen en facturering-Azure scheduler
+description: Meer informatie over abonnementen en facturering voor Azure scheduler
 services: scheduler
 ms.service: scheduler
 author: derek1ee
@@ -9,76 +9,76 @@ ms.reviewer: klam
 ms.assetid: 13a2be8c-dc14-46cc-ab7d-5075bfd4d724
 ms.topic: article
 ms.date: 08/18/2016
-ms.openlocfilehash: 3a8664497d3d082ec1c7f584188854991e872d50
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4b63367ab9686eee66bf3f00dddc2e2efe4cb941
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64720444"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300875"
 ---
-# <a name="plans-and-billing-for-azure-scheduler"></a>Abonnementen en facturering voor Azure Scheduler
+# <a name="plans-and-billing-for-azure-scheduler"></a>Plannen en facturering voor Azure scheduler
 
 > [!IMPORTANT]
-> [Azure Logic Apps](../logic-apps/logic-apps-overview.md) vervangt Azure Scheduler, dat buiten gebruik wordt gesteld. [Probeer in plaats daarvan Azure Logic Apps](../scheduler/migrate-from-scheduler-to-logic-apps.md) als u taken wilt plannen. 
+> [Azure Logic apps](../logic-apps/logic-apps-overview.md) vervangt Azure scheduler, die buiten gebruik wordt [gesteld](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date). Als u wilt blijven werken met de taken die u in scheduler hebt ingesteld, moet u zo snel mogelijk [naar Azure Logic apps worden gemigreerd](../scheduler/migrate-from-scheduler-to-logic-apps.md) .
 
-## <a name="job-collection-plans"></a>Taak verzamelingsplannen
+## <a name="job-collection-plans"></a>Taak verzamelings plannen
 
-Een jobverzameling bevat in Azure Scheduler, een bepaald aantal taken. De taakverzameling is de factureerbare entiteit en is beschikbaar in standaard, P10 Premium of P20 Premium-abonnementen, die hier worden beschreven: 
+In azure scheduler bevat een taak verzameling een specifiek aantal taken. De taak verzameling is de factureer bare entiteit en wordt geleverd met de Premium-abonnementen Standard, P10 Premium en P20, die hier worden beschreven: 
 
-| Plan voor het verzamelen van taak | Max. aantal taken per verzameling | Max. terugkeerpatroon | Maximum aantal taakcollecties per abonnement | Limits | 
+| Taak verzamelings plan | Maximum aantal taken per verzameling | Max. terugkeer patroon | Maximum aantal taak verzamelingen per abonnement | Limieten | 
 |:--- |:--- |:--- |:--- |:--- |
-| **Standard** | 50 taken per verzameling | Een per minuut. Taken kan niet vaker dan één per minuut worden uitgevoerd. | Elk Azure-abonnement kan maximaal 100 Standard taakverzamelingen hebben. | Toegang tot de volledige functieset Scheduler | 
-| **P10 Premium** | 50 taken per verzameling | Een per minuut. Taken kan niet vaker dan één per minuut worden uitgevoerd. | Elk Azure-abonnement kan maximaal 10.000 P10 Premium-taakverzamelingen hebben. Voor meer verzamelingen <a href="mailto:wapteams@microsoft.com">contact met ons opnemen</a>. | Toegang tot de volledige functieset Scheduler |
-| **P20 Premium** | 1000 taken per verzameling | Een per minuut. Taken kan niet vaker dan één per minuut worden uitgevoerd. | Elk Azure-abonnement kan maximaal 5.000 P20 Premium-taakverzamelingen hebben. Voor meer verzamelingen <a href="mailto:wapteams@microsoft.com">contact met ons opnemen</a>. | Toegang tot de volledige functieset Scheduler |
+| **Standard** | 50 taken per verzameling | Eén per minuut. Kan taken niet vaker dan één per minuut uitvoeren. | Elk Azure-abonnement kan Maxi maal 100 standaard taak verzamelingen bevatten. | Toegang tot de volledige functieset van scheduler | 
+| **P10 Premium** | 50 taken per verzameling | Eén per minuut. Kan taken niet vaker dan één per minuut uitvoeren. | Elk Azure-abonnement kan Maxi maal 10.000 P10 Premium-taak verzamelingen bevatten. <a href="mailto:wapteams@microsoft.com">Neem contact met ons op</a>voor meer verzamelingen. | Toegang tot de volledige functieset van scheduler |
+| **P20 Premium** | 1000 taken per verzameling | Eén per minuut. Kan taken niet vaker dan één per minuut uitvoeren. | Elk Azure-abonnement kan Maxi maal 5.000 P20 Premium-taak verzamelingen bevatten. <a href="mailto:wapteams@microsoft.com">Neem contact met ons op</a>voor meer verzamelingen. | Toegang tot de volledige functieset van scheduler |
 |||||| 
 
 ## <a name="pricing"></a>Prijzen
 
-Zie voor prijsgegevens [Scheduler prijzen](https://azure.microsoft.com/pricing/details/scheduler/).
+Zie [prijzen van scheduler](https://azure.microsoft.com/pricing/details/scheduler/)voor meer informatie over prijzen.
 
-## <a name="upgrade-or-downgrade-plans"></a>Upgraden en downgraden plannen
+## <a name="upgrade-or-downgrade-plans"></a>Upgrade of downgrade plannen
 
-Op elk gewenst moment kunt u upgraden en downgraden van een plan voor het verzamelen van een taak in de standaard, P10 Premium of P20 Premium-abonnementen.
+U kunt op elk gewenst moment een abonnement op een taak verzameling bijwerken of een downgrade uitvoeren voor de Premium-abonnementen Standard, P10 Premium en P20.
 
-## <a name="active-status-and-billing"></a>Status van de actieve en facturering
+## <a name="active-status-and-billing"></a>Actieve status en facturering
 
-Taakcollecties zijn altijd actief, tenzij uw gehele Azure-abonnement in een tijdelijk uitgeschakeld vanwege problemen met de facturering gaat. En hoewel alle taken in een taakverzameling via één bewerking, u uitschakelen kunt, deze actie facturering status van de taakverzameling niet wijzigen, zodat de taakverzameling is *nog steeds* kosten in rekening gebracht. Lege taakverzamelingen worden beschouwd als actief en worden in rekening gebracht.
+Taak verzamelingen zijn altijd actief, tenzij uw volledige Azure-abonnement tijdelijk is uitgeschakeld vanwege problemen met de facturering. Hoewel u alle taken in een taak verzameling via één bewerking kunt uitschakelen, wordt met deze actie niet de facturerings status van de taak verzameling gewijzigd, zodat de taak verzameling *nog steeds* wordt gefactureerd. Lege taak verzamelingen worden beschouwd als actief en worden gefactureerd.
 
-Als u wilt controleren of dat een jobverzameling is niet in rekening gebracht, moet u de taakverzameling verwijderen.
+Als u er zeker van wilt zijn dat een taak verzameling niet wordt gefactureerd, moet u de taak verzameling verwijderen.
 
-## <a name="standard-billable-units"></a>Standaard-factureerbare eenheden
+## <a name="standard-billable-units"></a>Standaard factureer bare eenheden
 
-Een standaard factureerbare eenheid kan tot 10 Standard taakverzamelingen hebben. Omdat een standaard taakverzameling maximaal 50 taken per verzameling hebben kan, een standaard Factureringseenheid kunt uw Azure-abonnement hebt op 500 taken of tot bijna 22 *miljoen* taakuitvoeringen per maand. Deze lijst wordt uitgelegd hoe u wordt gefactureerd op basis van verschillende aantallen Standard taakverzamelingen:
+Een standaard factureer bare eenheid kan Maxi maal 10 standaard taak verzamelingen bevatten. Omdat een standaard taak verzameling Maxi maal 50 taken per verzameling kan hebben, kunt u met één standaard facturerings eenheid uw Azure-abonnement Maxi maal 500 taken, of tot bijna 22 *miljoen* uitvoeringen per maand. In deze lijst wordt uitgelegd hoe u wordt gefactureerd op basis van verschillende aantallen standaard taak verzamelingen:
 
-* Als u tussen 1 en 10 Standard taakverzamelingen hebt, kunt u wordt gefactureerd voor een standaard Factureringseenheid. 
+* Als u tussen 1 en 10 standaard taak verzamelingen hebt, wordt u gefactureerd voor één standaard facturerings eenheid. 
 
-* Als u tussen 11 en 20 Standard taakverzamelingen hebt, kunt u wordt gefactureerd voor twee standaard facturering-eenheden. 
+* Als u tussen 11 en 20 standaard taak verzamelingen hebt, wordt u gefactureerd voor twee standaard facturerings eenheden. 
 
-* Als u hebt tussen 21 en 30 Standard taakverzamelingen, u wordt gefactureerd voor drie eenheden van standard facturering, enzovoort.
+* Als u tussen 21 en 30 standaard taak verzamelingen hebt, wordt u gefactureerd voor drie standaard facturerings eenheden, enzovoort.
 
-## <a name="p10-premium-billable-units"></a>P10 premium factureerbare eenheden
+## <a name="p10-premium-billable-units"></a>Factureer bare eenheden voor P10 Premium
 
-Een P10 premium factureerbare eenheid kan maximaal 10.000 P10 Premium-taakverzamelingen hebben. Aangezien een taakverzameling P10 Premium maximaal 50 taken per verzameling hebben kan, een P10 premium Factureringseenheid kunt uw Azure-abonnement hebt op 500.000 taken of tot bijna 22 *miljard* taakuitvoeringen per maand. 
+Een factureer bare P10-eenheid voor Premium kan Maxi maal 10.000 P10 Premium-taak verzamelingen bevatten. Omdat een P10 Premium-taak verzameling Maxi maal 50 taken per verzameling kan hebben, kunt u met één factuur eenheid van P10 Premium Maxi maal 500.000 taken uitvoeren, of tot bijna 22 *miljard* taak uitvoeringen per maand. 
 
-P10 Premium-taakverzamelingen bieden dezelfde mogelijkheden als standaard-taakverzamelingen, maar bieden een pauze van de prijs voor apps die veel taakverzamelingen vereisen en bieden meer schaalbaarheid. Deze lijst wordt uitgelegd hoe u wordt gefactureerd op basis van verschillende aantallen P10 Premium-taakverzamelingen:
+P10 Premium-taak verzamelingen bieden dezelfde mogelijkheden als standaard taak verzamelingen, maar bieden een prijs grens voor apps waarvoor veel taak verzamelingen nodig zijn en die meer schaal baarheid bieden. In deze lijst wordt uitgelegd hoe u factureert op basis van verschillende aantallen P10 Premium-taak verzamelingen:
 
-* Als u tussen 1 en 10.000 P10 Premium-taakverzamelingen hebt, kunt u wordt gefactureerd voor een P10 premium Factureringseenheid. 
+* Als u tussen 1 en 10.000 Premium-taak verzamelingen hebt, wordt u gefactureerd voor één factuur eenheid van P10 Premium. 
 
-* Als u hebt tussen 10,001 en 20.000 P10 Premium-taakverzamelingen, u wordt in rekening gebracht voor 2 P10 premium factureringseenheden, enzovoort.
+* Als u tussen 10.001 en 20.000 P10 Premium-taak verzamelingen hebt, wordt u gefactureerd voor 2 P10 Premium-facturerings eenheden, enzovoort.
 
-## <a name="p20-premium-billable-units"></a>Factureerbare P20 premium-eenheden
+## <a name="p20-premium-billable-units"></a>Factureer bare eenheden voor P20 Premium
 
-Een factureerbaar P20 premium-eenheid kan maximaal 5.000 P20 Premium-taakverzamelingen hebben. Omdat een taakverzameling P20 Premium maximaal 1000 taken per taakverzameling hebben kan, een P20 premium-Factureringseenheid kunt uw Azure-abonnement hebt op 5.000.000 taken of tot bijna 220 *miljard* taakuitvoeringen per maand.
+Een factureer bare P20-eenheid voor Premium kan Maxi maal 5.000 P20 Premium-taak verzamelingen bevatten. Omdat een P20 Premium-taak verzameling Maxi maal 1.000 taken per taak verzameling kan hebben, kunt u met één P20 Premium-facturerings eenheid uw Azure-abonnement tot 5.000.000 taken of tot bijna 220 *miljard* taak uitvoeringen per maand.
 
-P20 Premium-taakverzamelingen bieden dezelfde mogelijkheden als P10 Premium-taakverzamelingen, maar bieden ook ondersteuning voor een groter aantal taken per verzameling en een groter totale aantal taken algehele dan P10 Premium, bieden meer schaalbaarheid.
+P20 Premium-taak verzamelingen bieden dezelfde mogelijkheden als P10 Premium-taak verzamelingen, maar bieden ook ondersteuning voor een groter aantal taken per verzameling en een groter aantal taken in het algemeen dan P10 Premium, waardoor u meer schaal baarheid kunt bieden.
 
 ## <a name="plan-comparison"></a>Vergelijking van abonnementen
 
-* Als u meer dan 100 Standard taakcollecties (10 facturering standaardeenheden) hebt, kunt u een betere deal ophalen door alle taakverzamelingen in een Premium-abonnement.
+* Als u meer dan 100 standaard taak verzamelingen (10 standaard facturerings eenheden) hebt, kunt u een betere deal krijgen door alle taak verzamelingen in een Premium-abonnement te hebben.
 
-* Als u een Standard jobverzameling en een Premium-taakverzameling hebt, wordt in voor een standaard Factureringseenheid gebracht rekening *en* één facturering premium-eenheid.
+* Als u één standaard taak verzameling en één Premium-taak verzameling hebt, wordt u gefactureerd voor één standaard facturerings eenheid *en* één Premium-facturerings eenheid.
 
-  De facturen van de Scheduler-service is op basis van het aantal actieve taakverzamelingen die standard- of premium zijn.
+  De Scheduler service-facturen op basis van het aantal actieve taak verzamelingen die standaard of Premium zijn.
 
 ## <a name="see-also"></a>Zie ook
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5ad8f24c9d23e9412a4f6e4e5f97692bba2c0c39
-ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
+ms.openlocfilehash: cfa8e8c570b47eb6437ed6ca6a53f6c8188e18a2
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71268672"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71314981"
 ---
 # <a name="deploy-azure-ad-password-protection"></a>Wachtwoordbeveiliging in Azure AD implementeren
 
@@ -50,7 +50,7 @@ Nadat de functie gedurende een redelijke periode in de controle modus is uitgevo
    > Proxy service-implementatie is een verplichte vereiste voor het implementeren van Azure AD-wachtwoord beveiliging, zelfs als de domein controller mogelijk uitgaande directe Internet connectiviteit heeft. 
    >
 * Op alle computers waarop de Azure AD-proxy service voor wachtwoord beveiliging wordt geïnstalleerd, moet .NET 4,7 zijn geïnstalleerd.
-  .NET 4,7 moet al zijn geïnstalleerd op een volledig bijgewerkte Windows-Server. Als dat niet het geval is, downloadt en voert u het installatie programma uit dat is gevonden op [het .NET Framework 4,7 offline-installatie programma voor Windows](https://support.microsoft.com/help/3186497/the-net-framework-4-7-offline-installer-for-windows).
+  .NET 4,7 moet al zijn geïnstalleerd op een volledig bijgewerkte Windows-Server. Als dat nodig is, downloadt en voert u het installatie programma uit dat is gevonden op [het .NET Framework 4,7 offline-installatie programma voor Windows](https://support.microsoft.com/help/3186497/the-net-framework-4-7-offline-installer-for-windows).
 * Op alle machines, met inbegrip van domein controllers, waarop Azure AD-onderdelen voor wachtwoord beveiliging zijn geïnstalleerd, moet de universele C-runtime zijn geïnstalleerd. U kunt de runtime ophalen door ervoor te zorgen dat u alle updates van Windows Update hebt. U kunt deze ook verkrijgen in een specifiek update pakket. Zie [Update voor Universal C runtime in Windows](https://support.microsoft.com/help/2999226/update-for-uniersal-c-runtime-in-windows)voor meer informatie.
 * Er moet een netwerk verbinding zijn tussen ten minste één domein controller in elk domein en ten minste één server die als host fungeert voor de proxy service voor wachtwoord beveiliging. Deze connectiviteit moet toestaan dat de domein controller toegang krijgt tot de RPC-eindpunttoewijzer poort 135 en de RPC-server poort op de proxy service. De RPC-server poort is standaard een dynamische RPC-poort, maar kan worden geconfigureerd voor het [gebruik van een statische poort](#static).
 * Alle computers waarop de Azure AD-proxy service voor wachtwoord beveiliging wordt geïnstalleerd, moeten netwerk toegang hebben tot de volgende eind punten:
@@ -59,9 +59,19 @@ Nadat de functie gedurende een redelijke periode in de controle modus is uitgevo
     | --- | --- |
     |`https://login.microsoftonline.com`|Verificatie aanvragen|
     |`https://enterpriseregistration.windows.net`|Azure AD-functionaliteit voor wachtwoord beveiliging|
+ 
+* Vereisten voor de Microsoft Azure AD verbinding maken met de agent updater
 
-  U moet ook netwerk toegang inschakelen voor de set van poorten en url's die zijn opgegeven in de [installatie procedures van de toepassings proxy omgeving](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-add-on-premises-application#prepare-your-on-premises-environment). Deze configuratie stappen zijn vereist om de Microsoft Azure AD connect agent Updater-service te kunnen gebruiken (deze service wordt naast de proxy service geïnstalleerd). Het wordt afgeraden om Azure AD-wachtwoord beveiligings proxy en toepassings proxy naast elkaar op dezelfde computer te installeren vanwege incompatibiliteit tussen de versies van de Microsoft Azure AD de software van de verbinding met de agent Updater.
-* Alle computers die de proxy service voor wachtwoord beveiliging hosten, moeten worden geconfigureerd om domein controllers de mogelijkheid te geven zich aan te melden bij de proxy service. Dit wordt bepaald via de toewijzing van de bevoegdheid toegang tot deze computer vanaf het netwerk.
+  De Microsoft Azure AD connect agent Updater-service wordt naast de Azure AD-proxy service voor wachtwoord beveiliging geïnstalleerd. Aanvullende configuratie is vereist om te kunnen werken met de Microsoft Azure AD connect agent Updater-Service:
+
+  Als in uw omgeving een http-proxy server wordt gebruikt, moet u de richt lijnen volgen die zijn opgegeven in [werken met bestaande on-premises proxy servers](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-configure-connectors-with-proxy-servers).
+
+  Netwerk toegang moet zijn ingeschakeld voor de set van poorten en url's die zijn opgegeven in de [installatie procedures van de toepassings proxy omgeving](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-add-on-premises-application#prepare-your-on-premises-environment).
+
+  > [!WARNING]
+  > Azure AD-wachtwoord beveiligings proxy en toepassings proxy installeren verschillende versies van de Microsoft Azure AD connect agent Updater-Service. Dit is de reden waarom de instructies verwijzen naar de inhoud van de toepassings proxy. Deze verschillende versies zijn incompatibel wanneer ze naast elkaar worden geïnstalleerd. het wordt daarom niet aanbevolen om Azure AD-wachtwoord beveiligings proxy en toepassings proxy naast elkaar op dezelfde computer te installeren.
+
+* Alle computers die de proxy service voor wachtwoord beveiliging hosten, moeten worden geconfigureerd om domein controllers de mogelijkheid te geven zich aan te melden bij de proxy service. Deze mogelijkheid wordt bepaald via de toewijzing van de bevoegdheid toegang tot deze computer vanaf het netwerk.
 * Alle computers die de proxy service voor wachtwoord beveiliging hosten, moeten zo worden geconfigureerd dat HTTP-verkeer voor uitgaande TLS 1,2 wordt toegestaan.
 * Een algemeen beheerders account voor het registreren van de proxy service voor wachtwoord beveiliging en forest met Azure AD.
 * Een account met Active Directory domein beheerders rechten in het forest-hoofd domein om het Windows Server Active Directory forest te registreren bij Azure AD.
@@ -211,7 +221,7 @@ Er zijn twee vereiste installatie Programma's voor Azure AD-wachtwoord beveiligi
 
    Registratie van de Active Directory-forest is slechts eenmaal nodig in de levens duur van het forest. Daarna zullen de domein controller agents in het forest automatisch andere nood zakelijke onderhoud uitvoeren. Wanneer `Register-AzureADPasswordProtectionForest` een forest is uitgevoerd, worden aanvullende aanroepen van de cmdlet wel geslaagd, maar zijn ze niet nodig.
 
-   `Register-AzureADPasswordProtectionForest` Hiervoor moet ten minste één domein controller met Windows Server 2012 of later beschikbaar zijn in het domein van de proxy server. De DC-agent software hoeft echter niet te worden geïnstalleerd op domein controllers vóór deze stap.
+   `Register-AzureADPasswordProtectionForest` Hiervoor moet ten minste één domein controller met Windows Server 2012 of later beschikbaar zijn in het domein van de proxy server. De DC-agent software hoeft niet te worden geïnstalleerd op domein controllers vóór deze stap.
 
 1. Configureer de proxy service voor wachtwoord beveiliging om te communiceren via een HTTP-proxy.
 
@@ -286,7 +296,7 @@ Er zijn twee vereiste installatie Programma's voor Azure AD-wachtwoord beveiligi
 
    Installeer de DC-Agent service voor wachtwoord beveiliging met behulp van het `AzureADPasswordProtectionDCAgentSetup.msi` pakket.
 
-   De software-installatie, of de installatie ervan, vereist een herstart. De reden hiervoor is dat Dll's voor wachtwoord filters alleen worden geladen of verwijderd door het opnieuw opstarten.
+   Voor de software-installatie of het ongedaan maken van de installatie moet opnieuw worden opgestart. Deze vereiste is omdat wachtwoord filter-Dll's alleen worden geladen of verwijderd door het opnieuw opstarten.
 
    U kunt de DC-Agent service installeren op een computer die nog geen domein controller is. In dit geval wordt de service gestart en uitgevoerd, maar blijft deze inactief totdat de computer is gepromoveerd tot een domein controller.
 
@@ -304,7 +314,7 @@ Wanneer er een nieuwere versie van de Azure AD-proxy software voor wachtwoord be
 
 Het is niet vereist om de huidige versie van de proxy software te verwijderen. het installatie programma voert een in-place upgrade uit. U hoeft niet opnieuw op te starten om de proxy software bij te werken. De software-upgrade kan worden geautomatiseerd met behulp van standaard `AzureADPasswordProtectionProxySetup.exe /quiet`MSI-procedures, bijvoorbeeld:.
 
-De proxy-agent ondersteunt automatische upgrades. Automatische upgrade maakt gebruik van de Microsoft Azure AD connect agent Updater-service die naast de proxy service is geïnstalleerd. Automatische upgrade is standaard ingeschakeld en kan worden in-of uitgeschakeld met de `Set-AzureADPasswordProtectionProxyConfiguration` cmdlet. De huidige instelling kan worden opgevraagd met behulp `Get-AzureADPasswordProtectionProxyConfiguration` van de cmdlet. Micro soft raadt aan dat de automatische upgrade ingeschakeld blijft.
+De proxy-agent ondersteunt automatische upgrades. Bij automatische upgrade wordt de Microsoft Azure AD connect agent Updater-Service gebruikt, die naast de proxy service wordt geïnstalleerd. Automatische upgrade is standaard ingeschakeld en kan worden in-of uitgeschakeld met de `Set-AzureADPasswordProtectionProxyConfiguration` cmdlet. De huidige instelling kan worden opgevraagd met behulp `Get-AzureADPasswordProtectionProxyConfiguration` van de cmdlet. Micro soft raadt u aan de instelling voor automatische upgrade altijd in te scha kelen.
 
 De `Get-AzureADPasswordProtectionProxy` cmdlet kan worden gebruikt om de software versie van alle geïnstalleerde proxy agenten in een forest op te vragen.
 
@@ -312,7 +322,7 @@ De `Get-AzureADPasswordProtectionProxy` cmdlet kan worden gebruikt om de softwar
 
 Wanneer er een nieuwere versie van de Azure AD-agent software voor wachtwoord beveiliging beschikbaar is, wordt de upgrade uitgevoerd door de nieuwste versie van `AzureADPasswordProtectionDCAgentSetup.msi` het software pakket uit te voeren. De nieuwste versie van de software is beschikbaar in het [micro soft Download centrum](https://www.microsoft.com/download/details.aspx?id=57071).
 
-Het is niet vereist om de huidige versie van de DC-agent software te verwijderen. het installatie programma voert een in-place upgrade uit. Opnieuw opstarten is altijd vereist bij het upgraden van de DC-agent software. dit wordt veroorzaakt door het kern gedrag van Windows. 
+Het is niet vereist om de huidige versie van de DC-agent software te verwijderen. het installatie programma voert een in-place upgrade uit. Opnieuw opstarten is altijd vereist bij het upgraden van de DC-agent software: deze vereiste wordt veroorzaakt door het basis gedrag van Windows. 
 
 De software-upgrade kan worden geautomatiseerd met behulp van standaard `msiexec.exe /i AzureADPasswordProtectionDCAgentSetup.msi /quiet /qn /norestart`MSI-procedures, bijvoorbeeld:.
 

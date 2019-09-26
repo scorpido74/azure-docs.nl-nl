@@ -1,6 +1,6 @@
 ---
-title: Java in Azure Application Insights traceerlogboeken verkennen | Microsoft Docs
-description: Search Log4J of Logback traceringen in Application Insights
+title: Java-traceer logboeken verkennen in Azure-toepassing Insights | Microsoft Docs
+description: Log4J-of logback-traceringen zoeken in Application Insights
 services: application-insights
 documentationcenter: java
 author: mrbullwinkle
@@ -12,27 +12,45 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/18/2019
 ms.author: mbullwin
-ms.openlocfilehash: 2703c97dc78983ef294b3aa50f7ace879c96f66d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ac9bd6021b5fcec36e3aadfdf4c30020971f3be5
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67061229"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71299252"
 ---
-# <a name="explore-java-trace-logs-in-application-insights"></a>Java in Application Insights traceerlogboeken verkennen
-Als u Logback en Log4J (versie 1.2 of 2.0) voor tracering, kunt u uw logboeken met traceringen automatisch verzonden naar Application Insights waar u kunt verkennen en zoeken op deze hebt.
+# <a name="explore-java-trace-logs-in-application-insights"></a>Java-traceer logboeken verkennen in Application Insights
+Als u logback of Log4J (v 1.2 of v 2.0) gebruikt voor tracering, kunt u uw traceer logboeken automatisch laten verzenden naar Application Insights waar u ze kunt verkennen en doorzoeken.
 
-## <a name="install-the-java-sdk"></a>Installeer de Java SDK
+## <a name="using-the-application-insights-java-agent"></a>De Application Insights Java-Agent gebruiken
 
-Volg de instructies voor het installeren van [Application Insights-SDK voor Java][java], als u die nog niet hebt gedaan.
+U kunt de Application Insights Java-agent zo configureren dat uw logboeken automatisch worden vastgelegd door de functie `AI-Agent.xml` in het bestand in te scha kelen:
 
-## <a name="add-logging-libraries-to-your-project"></a>Logboekregistratie bibliotheken toevoegen aan uw project
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<ApplicationInsightsAgent>
+   <Instrumentation>
+      <BuiltIn enabled="true">
+         <Logging enabled="true" />
+      </BuiltIn>
+   </Instrumentation>
+   <AgentLogger />
+</ApplicationInsightsAgent>
+```
+
+U kunt ook de onderstaande instructies volgen.
+
+## <a name="install-the-java-sdk"></a>De Java-SDK installeren
+
+Volg de instructies voor het installeren [van Application INSIGHTS SDK voor Java][java], als u dat nog niet hebt gedaan.
+
+## <a name="add-logging-libraries-to-your-project"></a>Logboek registratie bibliotheken toevoegen aan uw project
 *Kies de juiste methode voor uw project.*
 
 #### <a name="if-youre-using-maven"></a>Als u Maven gebruikt...
-Als uw project is al ingesteld voor gebruik van Maven voor build, voegt u een van de volgende codefragmenten in uw pom.xml-bestand.
+Als uw project al is ingesteld voor het gebruik van Maven voor Build, moet u een van de volgende code fragmenten in het bestand pom. XML samen voegen.
 
-Vernieuw vervolgens de Projectafhankelijkheden, om de binaire bestanden te downloaden.
+Vernieuw vervolgens de Project afhankelijkheden om de binaire bestanden te downloaden.
 
 *Logback*
 
@@ -74,9 +92,9 @@ Vernieuw vervolgens de Projectafhankelijkheden, om de binaire bestanden te downl
 ```
 
 #### <a name="if-youre-using-gradle"></a>Als u Gradle gebruikt...
-Als uw project is al ingesteld met Gradle voor bouwen, een van de volgende regels toevoegen de `dependencies` groep in uw build.gradle-bestand:
+Als uw project al is ingesteld voor het gebruik van Gradle voor Build, voegt u een van de volgende regels `dependencies` toe aan de groep in uw build. Gradle-bestand:
 
-Vernieuw vervolgens de Projectafhankelijkheden, om de binaire bestanden te downloaden.
+Vernieuw vervolgens de Project afhankelijkheden om de binaire bestanden te downloaden.
 
 **Logback**
 
@@ -98,17 +116,17 @@ Vernieuw vervolgens de Projectafhankelijkheden, om de binaire bestanden te downl
 ```
 
 #### <a name="otherwise-"></a>Of...
-Volg de richtlijnen voor het handmatig Application Insights Java SDK installeren, downloaden van de jar (na die binnenkomen in Maven Central pagina op 'jar' koppeling in de sectie downloaden) voor de juiste appender toe en toevoegen van de jar gedownloade appender toe aan het project.
+Volg de richt lijnen om Application Insights Java SDK hand matig te installeren, down load het jar (nadat u op de Maven-centrale pagina hebt geklikt op de koppeling ' jar ' in de sectie downloaden) voor de juiste appender en voeg de gedownloade toevoegder jar toe aan het project.
 
 | Logger | Downloaden | Bibliotheek |
 | --- | --- | --- |
-| Logback |[Logback appender toe Jar](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22applicationinsights-logging-logback%22) |applicationinsights-logging-logback |
-| Log4J v2.0 |[Log4J v2 appender toe Jar](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22applicationinsights-logging-log4j2%22) |applicationinsights-logging-log4j2 |
-| Log4j v1.2 |[Log4J v1.2 appender toe Jar](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22applicationinsights-logging-log4j1_2%22) |applicationinsights-logging-log4j1_2 |
+| Logback |[Logback-toevoeger jar](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22applicationinsights-logging-logback%22) |applicationinsights-logging-logback |
+| Log4J v 2.0 |[Log4J v2-toevoeger jar](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22applicationinsights-logging-log4j2%22) |applicationinsights-logging-log4j2 |
+| Log4j v1.2 |[Log4J v 1.2-toevoeger jar](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22applicationinsights-logging-log4j1_2%22) |applicationinsights-logging-log4j1_2 |
 
 
-## <a name="add-the-appender-to-your-logging-framework"></a>Voeg de appender toe aan uw framework voor logboekregistratie
-Als u wilt beginnen met het ophalen van traceringen, het relevante codefragment voor het configuratiebestand Log4J of Logback samen te voegen: 
+## <a name="add-the-appender-to-your-logging-framework"></a>Voeg de toevoegder toe aan uw Framework voor logboek registratie
+Als u wilt beginnen met het ophalen van traceringen, voegt u het relevante code fragment uit in het configuratie bestand Log4J of logback: 
 
 *Logback*
 
@@ -153,17 +171,17 @@ Als u wilt beginnen met het ophalen van traceringen, het relevante codefragment 
     </root>
 ```
 
-De Application Insights-appenders kunnen worden verwezen door een geconfigureerde logger en niet per se het root-logboek (zoals weergegeven in de bovenstaande voorbeelden van code).
+De Application Insights-toevoegers kunnen worden verwezen door een geconfigureerde logger en niet noodzakelijkerwijs door de hoofd logboek registratie (zoals weer gegeven in de bovenstaande code voorbeelden).
 
-## <a name="explore-your-traces-in-the-application-insights-portal"></a>Verken uw traceringen in de Application Insights-portal
-Nu dat u uw project voor het verzenden van traceringen naar Application Insights hebt geconfigureerd, kunt u bekijken en zoeken van deze traceringen in Application Insights-portal in de [zoeken] [ diagnostic] blade.
+## <a name="explore-your-traces-in-the-application-insights-portal"></a>Verken uw traceringen in de Application Insights Portal
+Nu u het project zodanig hebt geconfigureerd dat traceringen naar Application Insights worden verzonden, kunt u deze traceringen bekijken en zoeken in de Application Insights Portal, op de Blade [zoeken][diagnostic] .
 
-Uitzonderingen die zijn ingediend via kunt wordt weergegeven op de portal als Uitzonderingstelemetrie.
+Uitzonde ringen die via Logboeken worden verzonden, worden in de portal weer gegeven als een telemetrie-uitzonde ring.
 
-![Open in de Application Insights-portal zoeken](./media/java-trace-logs/01-diagnostics.png)
+![Open in de Application Insights Portal zoek opdracht](./media/java-trace-logs/01-diagnostics.png)
 
 ## <a name="next-steps"></a>Volgende stappen
-[Diagnostische gegevens doorzoeken][diagnostic]
+[Diagnostische gegevens zoeken][diagnostic]
 
 <!--Link references-->
 

@@ -1,5 +1,5 @@
 ---
-title: Berichtuitzonderingen - Azure Event Hubs | Microsoft Docs
+title: Uitzonde ringen voor berichten voor .NET-Azure Event Hubs | Microsoft Docs
 description: Dit artikel bevat een overzicht van Azure Event Hubs-berichtuitzonderingen en voorgestelde acties.
 services: event-hubs
 documentationcenter: na
@@ -11,27 +11,27 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.custom: seodec18
-ms.date: 12/06/2018
+ms.date: 09/25/2019
 ms.author: shvija
-ms.openlocfilehash: 7b6323e02225be3d954e4ee91ea06952bb3ce396
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b6680902180a1d4a3c75080e232569cf760ba078
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66001768"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71309848"
 ---
-# <a name="event-hubs-messaging-exceptions"></a>Event Hubs-berichtuitzonderingen
+# <a name="event-hubs-messaging-exceptions---net"></a>Uitzonde ringen voor Event Hubs berichten-.NET
 
-In dit artikel worden enkele van de uitzonderingen die worden gegenereerd door de Azure Service Bus messaging-API-bibliotheek, waaronder .NET Framework Event Hubs-API's. Deze referentie is onderhevig aan wijzigingen, dus kom binnenkort voor updates.
+In dit artikel vindt u een aantal van de .NET-uitzonde ringen die zijn gegenereerd door de Azure Service Bus Messa ging .NET API-bibliotheek, waaronder .NET Framework Event Hubs-Api's. Deze referentie is onderhevig aan wijzigingen, dus kom binnenkort voor updates.
 
 ## <a name="exception-categories"></a>Uitzondering categorieën
 
-De Event Hubs-API's genereren uitzonderingen die kunnen worden onderverdeeld in de volgende categorieën, samen met de gekoppelde actie die u ondernemen kunt om te proberen te corrigeren.
+De Event Hubs .NET-Api's genereren uitzonde ringen die kunnen vallen in de volgende categorieën, samen met de bijbehorende actie die u kunt uitvoeren om ze te herstellen.
 
-1. Gebruiker fout met de code: [System.ArgumentException](https://msdn.microsoft.com/library/system.argumentexception.aspx), [System.InvalidOperationException](https://msdn.microsoft.com/library/system.invalidoperationexception.aspx), [System.OperationCanceledException](https://msdn.microsoft.com/library/system.operationcanceledexception.aspx), [System.Runtime.Serialization.SerializationException](https://msdn.microsoft.com/library/system.runtime.serialization.serializationexception.aspx). Algemene actie: probeert op te lossen van de code voordat u doorgaat.
-2. Configuratie voor de installatie/fout: [Microsoft.ServiceBus.Messaging.MessagingEntityNotFoundException](/dotnet/api/microsoft.servicebus.messaging.messagingentitynotfoundexception), [Microsoft.Azure.EventHubs.MessagingEntityNotFoundException](/dotnet/api/microsoft.azure.eventhubs.messagingentitynotfoundexception), [System.UnauthorizedAccessException](https://msdn.microsoft.com/library/system.unauthorizedaccessexception.aspx). Algemene actie: de configuratie controleren en wijzig indien nodig.
-3. Tijdelijke uitzonderingen: [Microsoft.ServiceBus.Messaging.MessagingException](/dotnet/api/microsoft.servicebus.messaging.messagingexception), [Microsoft.ServiceBus.Messaging.ServerBusyException](#serverbusyexception), [Microsoft.Azure.EventHubs.ServerBusyException](#serverbusyexception), [ Microsoft.ServiceBus.Messaging.MessagingCommunicationException](/dotnet/api/microsoft.servicebus.messaging.messagingcommunicationexception). Algemene actie: Voer de bewerking opnieuw uit of gebruikers een melding ontvangen.
-4. Andere uitzonderingen: [System.Transactions.TransactionException](https://msdn.microsoft.com/library/system.transactions.transactionexception.aspx), [System.TimeoutException](#timeoutexception), [Microsoft.ServiceBus.Messaging.MessageLockLostException](/dotnet/api/microsoft.servicebus.messaging.messagelocklostexception), [ Microsoft.ServiceBus.Messaging.SessionLockLostException](/dotnet/api/microsoft.servicebus.messaging.sessionlocklostexception). Algemene actie: specifiek zijn voor het uitzonderingstype. Raadpleeg de tabel in de volgende sectie. 
+1. Fout bij gebruikers codering: [System.ArgumentException](https://msdn.microsoft.com/library/system.argumentexception.aspx), [System.InvalidOperationException](https://msdn.microsoft.com/library/system.invalidoperationexception.aspx), [System.OperationCanceledException](https://msdn.microsoft.com/library/system.operationcanceledexception.aspx), [System.Runtime.Serialization.SerializationException](https://msdn.microsoft.com/library/system.runtime.serialization.serializationexception.aspx). Algemene actie: probeert op te lossen van de code voordat u doorgaat.
+2. Setup/configuratie fout: [Microsoft.ServiceBus.Messaging.MessagingEntityNotFoundException](/dotnet/api/microsoft.servicebus.messaging.messagingentitynotfoundexception), [Microsoft.Azure.EventHubs.MessagingEntityNotFoundException](/dotnet/api/microsoft.azure.eventhubs.messagingentitynotfoundexception), [System.UnauthorizedAccessException](https://msdn.microsoft.com/library/system.unauthorizedaccessexception.aspx). Algemene actie: de configuratie controleren en wijzig indien nodig.
+3. Tijdelijke uitzonde ringen: [Micro soft. ServiceBus. Messa ging. MessagingException](/dotnet/api/microsoft.servicebus.messaging.messagingexception), [micro soft. ServiceBus. Messa ging. ServerBusyException](#serverbusyexception), [micro soft. Azure. Event hubs. ServerBusyException](#serverbusyexception), [ Micro soft. ServiceBus. Messa ging. MessagingCommunicationException](/dotnet/api/microsoft.servicebus.messaging.messagingcommunicationexception). Algemene actie: Voer de bewerking opnieuw uit of gebruikers een melding ontvangen.
+4. Andere uitzonde ringen: [System. Trans actions. TransactionException](https://msdn.microsoft.com/library/system.transactions.transactionexception.aspx), [System. TimeoutException](#timeoutexception), [micro soft. ServiceBus. Messa ging. MessageLockLostException](/dotnet/api/microsoft.servicebus.messaging.messagelocklostexception), [micro soft. ServiceBus. Messa ging. SessionLockLostException](/dotnet/api/microsoft.servicebus.messaging.sessionlocklostexception). Algemene actie: specifiek zijn voor het uitzonderingstype. Raadpleeg de tabel in de volgende sectie. 
 
 ## <a name="exception-types"></a>Uitzonderingstypen
 De volgende tabel bevat de uitzonderingstypen berichten, en hun oorzaken en opmerkingen bij de voorgestelde actie die u kunt ondernemen.
@@ -45,12 +45,12 @@ De volgende tabel bevat de uitzonderingstypen berichten, en hun oorzaken en opme
 | [ArgumentException](https://msdn.microsoft.com/library/system.argumentexception.aspx)<br /> [ArgumentNullException](https://msdn.microsoft.com/library/system.argumentnullexception.aspx)<br />[ArgumentOutOfRangeException](https://msdn.microsoft.com/library/system.argumentoutofrangeexception.aspx) | Een of meer argumenten doorgegeven aan de methode zijn ongeldig. De URI opgegeven [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) of [maken](/dotnet/api/microsoft.servicebus.messaging.messagingfactory) pad segmenten betreffende bedrijfsactiviteit bevat. Het URI-schema opgegeven [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) of [maken](/dotnet/api/microsoft.servicebus.messaging.messagingfactory) is ongeldig. De eigenschapswaarde is groter dan 32 KB. | Controleer de aanroepende code en controleer of dat de argumenten juist zijn. | Er kunnen niet opnieuw proberen. |
 | [Microsoft.ServiceBus.Messaging MessagingEntityNotFoundException](/dotnet/api/microsoft.servicebus.messaging.messagingentitynotfoundexception) <br /><br/> [Microsoft.Azure.EventHubs MessagingEntityNotFoundException](/dotnet/api/microsoft.azure.eventhubs.messagingentitynotfoundexception) | Entiteit die is gekoppeld aan de bewerking is niet aanwezig of is verwijderd. | Zorg ervoor dat de entiteit bestaat. | Er kunnen niet opnieuw proberen. |
 | [MessagingCommunicationException](/dotnet/api/microsoft.servicebus.messaging.messagingcommunicationexception) | Client kan geen verbinding maken met Event Hub. |Zorg ervoor dat de opgegeven hostnaam juist is en de host bereikbaar is. | Opnieuw proberen kan helpen als er onregelmatige connectiviteit. |
-| [Microsoft.ServiceBus.Messaging ServerBusyException](/dotnet/api/microsoft.servicebus.messaging.serverbusyexception) <br /> <br/>[Microsoft.Azure.EventHubs ServerBusyException](/dotnet/api/microsoft.azure.eventhubs.serverbusyexception) | Service is niet kan verwerken van de aanvraag op dit moment. | Client kan wachten op een bepaalde periode en voer de bewerking opnieuw uit. <br /> Zie [ServerBusyException](#serverbusyexception). | Client kan opnieuw proberen na bepaalde interval. Als u een nieuwe poging resulteert in een andere uitzondering, controleert u gedrag voor opnieuw proberen van de uitzondering. |
-| [MessagingException](/dotnet/api/microsoft.servicebus.messaging.messagingexception) | Algemene messaging uitzondering die kan worden gegenereerd in de volgende gevallen: Een poging wordt gedaan om het maken van een [QueueClient](/dotnet/api/microsoft.servicebus.messaging.queueclient) met behulp van een naam of het pad die deel uitmaakt van een andere entiteit-type (bijvoorbeeld een onderwerp). Een poging is gedaan voor het verzenden van een bericht groter is dan 1 MB. De server of -service is een fout opgetreden tijdens het verwerken van de aanvraag. Zie het bericht van uitzondering voor meer informatie. Deze uitzondering is doorgaans een tijdelijke uitzondering. | Controleer de code en ervoor te zorgen dat alleen serialiseerbare objecten worden gebruikt voor de hoofdtekst van bericht (of gebruik een aangepaste serializer). Raadpleeg de documentatie voor de typen ondersteunde waarde van de eigenschappen en alleen de gebruikstypen die worden ondersteund. Controleer de [IsTransient](/dotnet/api/microsoft.servicebus.messaging.messagingexception) eigenschap. Als het **waar**, kunt u de bewerking opnieuw. | Gedrag voor opnieuw proberen is niet gedefinieerd en niet kan helpen. |
+| [Micro soft. ServiceBus. Messa ging ServerBusyException](/dotnet/api/microsoft.servicebus.messaging.serverbusyexception) <br /> <br/>[Microsoft.Azure.EventHubs ServerBusyException](/dotnet/api/microsoft.azure.eventhubs.serverbusyexception) | Service is niet kan verwerken van de aanvraag op dit moment. | Client kan wachten op een bepaalde periode en voer de bewerking opnieuw uit. <br /> Zie [ServerBusyException](#serverbusyexception). | Client kan opnieuw proberen na bepaalde interval. Als u een nieuwe poging resulteert in een andere uitzondering, controleert u gedrag voor opnieuw proberen van de uitzondering. |
+| [MessagingException](/dotnet/api/microsoft.servicebus.messaging.messagingexception) | Generieke Messa ging-uitzonde ring die in de volgende gevallen kan worden gegenereerd: Er wordt geprobeerd een [QueueClient](/dotnet/api/microsoft.servicebus.messaging.queueclient) te maken met behulp van een naam of pad dat tot een ander type entiteit behoort (bijvoorbeeld een onderwerp). Er is een poging gedaan om een bericht te verzenden dat groter is dan 1 MB. De server of -service is een fout opgetreden tijdens het verwerken van de aanvraag. Zie het bericht van uitzondering voor meer informatie. Deze uitzondering is doorgaans een tijdelijke uitzondering. | Controleer de code en ervoor te zorgen dat alleen serialiseerbare objecten worden gebruikt voor de hoofdtekst van bericht (of gebruik een aangepaste serializer). Raadpleeg de documentatie voor de typen ondersteunde waarde van de eigenschappen en alleen de gebruikstypen die worden ondersteund. Controleer de [IsTransient](/dotnet/api/microsoft.servicebus.messaging.messagingexception) eigenschap. Als het **waar**, kunt u de bewerking opnieuw. | Gedrag voor opnieuw proberen is niet gedefinieerd en niet kan helpen. |
 | [MessagingEntityAlreadyExistsException](/dotnet/api/microsoft.servicebus.messaging.messagingentityalreadyexistsexception) | Poging tot het maken van een entiteit met een naam die al door een andere entiteit in die Servicenaamruimte gebruikt wordt. | Verwijder de bestaande entiteit of kies een andere naam voor de entiteit moet worden gemaakt. | Er kunnen niet opnieuw proberen. |
 | [QuotaExceededException](/dotnet/api/microsoft.servicebus.messaging.quotaexceededexception) | De Berichtentiteit heeft de maximale toegestane grootte bereikt. Deze uitzondering kan gebeuren als het maximum aantal ontvangers (dit is 5) is al geopend op het niveau van een per-consument. | Maak ruimte in de entiteit door het ontvangen van berichten van de entiteit of de subwachtrijen. <br /> Zie [QuotaExceededException](#quotaexceededexception) | Opnieuw proberen kan helpen als berichten in de tussentijd zijn verwijderd. |
 | [MessagingEntityDisabledException](/dotnet/api/microsoft.servicebus.messaging.messagingentitydisabledexception) | Aanvraag voor een Runtimebewerking op een uitgeschakelde entiteit. |Activeer de entiteit. | Opnieuw proberen kan helpen als de entiteit in de tussentijd is geactiveerd. |
-| [Microsoft.ServiceBus.Messaging MessageSizeExceededException](/dotnet/api/microsoft.servicebus.messaging.messagesizeexceededexception) <br /><br/> [Microsoft.Azure.EventHubs MessageSizeExceededException](/dotnet/api/microsoft.azure.eventhubs.messagesizeexceededexception) | Een berichtnettolading overschrijdt de limiet van 1 MB. Deze limiet van 1 MB is voor de totale bericht, waaronder eigenschappen en alle .NET-overhead. | Reduceer de grootte van de berichtnettolading van het en probeer het opnieuw. |Er kunnen niet opnieuw proberen. |
+| [Microsoft.ServiceBus.Messaging MessageSizeExceededException](/dotnet/api/microsoft.servicebus.messaging.messagesizeexceededexception) <br /><br/> [Microsoft.Azure.EventHubs MessageSizeExceededException](/dotnet/api/microsoft.azure.eventhubs.messagesizeexceededexception) | Een bericht lading overschrijdt de limiet van 1 MB. Deze limiet van 1 MB is voor het totale bericht, dat systeem eigenschappen en eventuele .NET-overhead kan bevatten. | Reduceer de grootte van de berichtnettolading van het en probeer het opnieuw. |Er kunnen niet opnieuw proberen. |
 
 ## <a name="quotaexceededexception"></a>QuotaExceededException
 [QuotaExceededException](/dotnet/api/microsoft.servicebus.messaging.quotaexceededexception) geeft aan dat een quotum voor een bepaalde entiteit is overschreden.
@@ -81,18 +81,18 @@ Deze fout kan optreden voor een van twee redenen:
 
 1. De belasting niet gelijkmatig is verdeeld over alle partities in de event hub en één partitie komt binnen via de lokale doorvoer eenheid beperking.
     
-    Oplossing: Wijzigen van de partitie distributiestrategie of probeert [EventHubClient.Send(eventDataWithOutPartitionKey)](/dotnet/api/microsoft.servicebus.messaging.eventhubclient) kan helpen.
+    Oplossing: Het wijzigen van de strategie voor partitie distributie of het proberen van [EventHubClient. send (eventDataWithOutPartitionKey)](/dotnet/api/microsoft.servicebus.messaging.eventhubclient) kan helpen.
 
 2. De Event Hubs-naamruimte beschikt niet over voldoende doorvoereenheden (u kunt controleren de **metrische gegevens** scherm in de Event Hubs-naamruimte venster in de [Azure-portal](https://portal.azure.com) om te bevestigen). De portal bevat samengevoegde (1 minuut) informatie, maar we de doorvoer in realtime – meten, zodat u alleen een schatting te maken.
 
-    Oplossing: Het verhogen van de throughput units op de naamruimte kan helpen. U kunt dit doen met deze bewerking in de portal in de **schaal** venster van het scherm van Event Hubs-naamruimte. Of u kunt [automatisch vergroten](event-hubs-auto-inflate.md).
+    Oplossing: Het verhogen van de doorvoer eenheden van de naam ruimte kan helpen. U kunt dit doen met deze bewerking in de portal in de **schaal** venster van het scherm van Event Hubs-naamruimte. Of u kunt [automatisch vergroten](event-hubs-auto-inflate.md).
 
 ### <a name="error-code-50001"></a>Foutcode 50001
 
 Deze fout moet zelden optreden. Dit gebeurt wanneer de uitvoering van code voor de naamruimte-container weinig CPU is – niet meer dan een paar seconden voordat de Event Hubs load balancer begint.
 
-### <a name="limit-on-calls-to-the-getruntimeinformation-method"></a>De limiet voor aanroepen naar de methode GetRuntimeInformation
-Azure Event Hubs biedt ondersteuning voor maximaal 50 aanroepen per seconde naar de GetRuntimeInfo per seconde. Zodra de limiet is bereikt, wordt een die vergelijkbaar is met de volgende uitzondering:
+### <a name="limit-on-calls-to-the-getruntimeinformation-method"></a>Limiet voor aanroepen naar de methode GetRuntimeInformation
+Azure Event Hubs ondersteunt Maxi maal 50 oproepen per seconde voor de GetRuntimeInfo per seconde. Er wordt een uitzonde ring weer gegeven die vergelijkbaar is met de volgende wanneer de limiet is bereikt:
 
 ```
 ExceptionId: 00000000000-00000-0000-a48a-9c908fbe84f6-ServerBusyException: The request was terminated because the namespace 75248:aaa-default-eventhub-ns-prodb2b is being throttled. Error code : 50001. Please wait 10 seconds and try again.
