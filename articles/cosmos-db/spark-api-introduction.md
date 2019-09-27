@@ -3,24 +3,21 @@ title: Inleiding tot de ingebouwde operationele analyse in Azure Cosmos DB met A
 description: Meer informatie over het gebruik van de ingebouwde ondersteuning voor Apache Spark in Azure Cosmos DB voor het uitvoeren van operationele analyses en AI
 ms.service: cosmos-db
 ms.topic: overview
-ms.date: 08/01/2019
+ms.date: 09/26/2019
 author: rimman
 ms.author: rimman
-ms.openlocfilehash: 0f070cb9a6e300dad0ec9e0b393b09b7f22d2942
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 952dd084bccd67a0a8833002d73d3aaf1d5dfb25
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71212590"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338616"
 ---
-# <a name="built-in-operational-analytics-in-azure-cosmos-db-with-apache-spark-preview"></a>Ingebouwde operationele analyse in Azure Cosmos DB met Apache Spark (preview-versie) 
+# <a name="built-in-operational-analytics-in-azure-cosmos-db-with-apache-spark"></a>Ingebouwde operationele analyse in Azure Cosmos DB met Apache Spark
 
-Met de ingebouwde ondersteuning voor Apache Spark in Azure Cosmos DB kunt u analyses uitvoeren vanuit Apache Spark van uw gegevens die zijn opgeslagen in een Azure Cosmos-account. Het biedt de systeem eigen ondersteuning voor Apache Spark taken om rechtstreeks uit te voeren op uw wereld wijd gedistribueerde Cosmos-data bases. Met deze mogelijkheden kunnen ontwikkel aars, gegevens technici en gegevens wetenschappers Azure Cosmos DB gebruiken als een flexibel, schaalbaar en geschikt gegevens platform voor het uitvoeren van zowel **OLTP-als OLAP-HTAP** -workloads. 
+Met Azure Cosmos DB kunt u wereld wijd gedistribueerde, lage latentie analyse en AI op transactionele gegevens uitvoeren. Met de ingebouwde ondersteuning voor Apache Spark-en Jupyter-notebooks, Azure Cosmos DB helpt de tijd te beperken tot inzichten. Omdat de gegevens worden opgenomen, geleverd en Analytics, worden uitgevoerd op basis van de lokale database replica in een Azure-regio. U kunt Apache Spark query's rechtstreeks uitvoeren op geïndexeerde gegevens van meerdere modellen die zijn opgeslagen in uw gegevens partities.
 
-Spark Compute is automatisch beschikbaar in alle Azure-regio's die zijn gekoppeld aan uw Azure Cosmos-account. Spark-taken gebruiken de functionaliteit voor meerdere masters van het Azure Cosmos DB en kunnen de lokale replica's in elke regio schrijven of er query's op uitvoeren. 
-
-> [!NOTE]
-> De ingebouwde ondersteuning voor Apache Spark in Azure Cosmos DB is momenteel een beperkte preview-versie. Als u zich wilt aanmelden voor de preview, gaat u naar [registreren voor de voorbeeld pagina](https://portal.azure.com/?feature.customportal=false#create/Microsoft.DocumentDB). 
+Met de ingebouwde ondersteuning voor Apache Spark in Azure Cosmos DB kunt u analyses uitvoeren vanuit Apache Spark van uw gegevens die zijn opgeslagen in een Azure Cosmos-account. Het biedt de systeem eigen ondersteuning voor Apache Spark taken om rechtstreeks uit te voeren op uw wereld wijd gedistribueerde Cosmos-data bases. Met deze mogelijkheden kunnen ontwikkel aars, gegevens technici en gegevens wetenschappers Azure Cosmos DB gebruiken als een flexibel, schaalbaar en geschikt gegevens platform voor het uitvoeren van zowel **OLTP-als OLAP-HTAP** -workloads.
 
 De Apache Spark ondersteuning in Azure Cosmos DB biedt de volgende voor delen:
 
@@ -43,15 +40,17 @@ De Apache Spark ondersteuning in Azure Cosmos DB biedt ingebouwde Machine Learni
 
 ## <a name="key-benefits"></a>Belangrijkste voordelen
 
-### <a name="globally-distributed-low-latency-operational-analytics-and-ai"></a>Wereld wijd gedistribueerde, operationele analyses met lage latentie en AI
+### <a name="low-latency-operational-analytics-and-ai"></a>Operationele analyse en AI met lage latentie
 
 Met Apache Spark op de wereld wijd gedistribueerde Azure Cosmos-Data Base kunt u nu snel en eenvoudig inzicht krijgen in de hele wereld. Azure Cosmos DB maakt **wereld wijde, gedistribueerde, lage latentie operationele analyses** mogelijk op elastische schaal met drie belang rijke technieken:
 
-* Omdat uw Azure Cosmos-data base wereld wijd is gedistribueerd, worden alle gegevens lokaal opgenomen, waar de producenten van de gegevens (bijvoorbeeld gebruikers) zich bevinden. De query's worden afgehandeld op basis van de lokale replica's die het dichtst bij de producenten en de consumenten van gegevens, ongeacht waar ze zich op de wereld bevinden. 
+* Omdat uw Azure Cosmos-data base wereld wijd is gedistribueerd, worden alle gegevens lokaal opgenomen, waar de producenten van de gegevens (bijvoorbeeld gebruikers) zich bevinden. De query's worden afgehandeld op basis van de lokale replica's die het dichtst bij de producenten en de consumenten van gegevens, ongeacht waar ze zich op de wereld bevinden.
 
-* Al uw analytische query's worden direct uitgevoerd op de geïndexeerde gegevens die zijn opgeslagen in de gegevens partities, zonder dat er onnodige gegevens verplaatsing nodig is. 
+* Al uw analytische query's worden direct uitgevoerd op de geïndexeerde gegevens die zijn opgeslagen in de gegevens partities, zonder dat er onnodige gegevens verplaatsing nodig is.
 
 * Omdat Spark naast Azure Cosmos DB, worden er minder tussenliggende vertalingen en gegevens verplaatsingen uitgevoerd, wat resulteert in betere prestaties en schaal baarheid.
+
+* Alle Azure Cosmos DB kern functies, zoals multi-master, automatische failover, Beschikbaarheidszones, enzovoort, zijn beschikbaar voor ingebouwde Apache Spark in Azure Cosmos DB.
 
 ### <a name="unified-serverless-experience-for-apache-spark"></a>Uniforme serverloze ervaring voor Apache Spark
 
@@ -61,81 +60,29 @@ Met de ondersteuning van Apache Spark in Azure Cosmos DB kunt u toepassingen die
 
 ### <a name="no-schema-or-index-management"></a>Geen schema- of indexbeheer
 
-In tegens telling tot traditionele analytische data bases, met Azure Cosmos DB, gegevens technici en gegevens wetenschappers hoeven niet meer te worden geconfronteerd met het ingewikkelde schema-en index beheer. Voor de data base-engine in Azure Cosmos DB zijn geen expliciete schema-of index beheer vereist. alle opgenomen gegevens kunnen automatisch worden geïndexeerd om de Apache Spark query's snel te kunnen verwerken. 
+In tegens telling tot traditionele analytische data bases, met Azure Cosmos DB, gegevens technici en gegevens wetenschappers hoeven niet meer te worden geconfronteerd met het ingewikkelde schema-en index beheer. Voor de data base-engine in Azure Cosmos DB zijn geen expliciete schema-of index beheer vereist. alle opgenomen gegevens kunnen automatisch worden geïndexeerd om de Apache Spark query's snel te kunnen verwerken.
 
 ### <a name="consistency-choices"></a>Consistentie opties
 
-Omdat de Apache Spark taken worden uitgevoerd in de gegevens partities van uw Azure Cosmos-data base, krijgen de query's de [vijf goed gedefinieerde consistentie opties](consistency-levels.md). Deze consistentie modellen bieden de flexibiliteit om strikte consistentie te bieden voor de meest nauw keurige resultaten voor machine learning algoritmen zonder de latentie en hoge Beschik baarheid in gevaar te brengen. 
+Omdat de Apache Spark taken worden uitgevoerd in de gegevens partities van uw Azure Cosmos-data base, krijgen de query's de [vijf goed gedefinieerde consistentie opties](consistency-levels.md). Deze consistentie modellen bieden de flexibiliteit om strikte consistentie te bieden voor de meest nauw keurige resultaten voor machine learning algoritmen zonder de latentie en hoge Beschik baarheid in gevaar te brengen.
 
 ### <a name="comprehensive-slas"></a>Uitgebreide SLA's
 
 De Apache Spark-taken hebben de Azure Cosmos DB voor delen zoals toonaangevende uitgebreide [sla's](https://azure.microsoft.com/support/legal/sla/documentdb/v1_1/) (99,999), zonder enige overhead van het beheer van afzonderlijke Apache Spark clusters. Deze Sla's omvatten de door Voer, latentie bij het 99e percentiel, consistentie en hoge Beschik baarheid. 
 
-### <a name="mixed-workloads"></a>Gemengde werk belastingen
+### <a name="mixed-operational-and-analytical-workloads-with-complete-isolation"></a>Gemengde operationele en analytische werk belastingen met volledige isolatie
 
-De integratie van Apache Spark in Azure Cosmos DB zorgt voor de transactionele en analytische schei ding, een van de belangrijkste knel punten van klanten bij het bouwen van Cloud toepassingen op wereld wijde schaal. 
+De integratie van Apache Spark in Azure Cosmos DB zorgt voor de transactionele en analytische schei ding, een van de belangrijkste knel punten van klanten bij het bouwen van Cloud toepassingen op wereld wijde schaal. De OLTP-en OLAP-werk belastingen worden naast elkaar uitgevoerd en zijn niet van invloed op elkaar.
 
-## <a name="scenarios-for-azure-cosmos-db-spark-support"></a>Scenario's voor Azure Cosmos DB Spark-ondersteuning
+### <a name="low-latency-analytical-and-transactional-storage"></a>Analytische en transactionele opslag met een lage latentie
 
-### <a name="retail-and-consumer-goods"></a>Retail-en consumenten goederen
+Azure Cosmos DB systeem eigen gegevens opslaat in twee afzonderlijke opslag lagen: transactionele (Row-georiënteerde) en analytische opslag (kolom-georiënteerd, in Apache Parquet-bestands indeling). De gegevens worden in elke laag globaal gerepliceerd en Hiermee kunnen gebruikers onafhankelijk gegevens in deze lagen beheren op basis van het Bewaar beleid.
 
-U kunt ondersteuning voor Spark in Azure Cosmos DB gebruiken om realtime-aanbevelingen en aanbiedingen te leveren. U kunt klanten helpen bij het detecteren van de items die ze nodig hebben met real-time personalisatie en product aanbevelingen.
+Deze opslag architectuur maakt zowel bedrijfskritische transactionele als analytische werk belastingen op dezelfde wereld wijd gedistribueerde gegevens mogelijk. Bij Cosmos DB hebt u geen ETL-bewerkingen nodig of kunt u geen onnodige gegevens verplaatsing uitvoeren. U kunt gewoon transactionele en analytische werk belastingen uitvoeren op dezelfde onderliggende gegevens. De transactionele werk belastingen kunnen gebruikmaken van de bekende transactionele toegangs-Api's, zoals SQL, Cassandra, MongoDB, Gremlin en Etcd. De analyse-en AI-workloads kunnen gebruikmaken van de ingebouwde Apache Spark SQL, ML frameworks en de volledige Apache Spark hulpprogramma keten.
 
-* U kunt de ingebouwde Machine Learning ondersteuning van de Apache Spark runtime gebruiken om realtime-aanbevelingen in de product catalogussen te genereren.
+### <a name="snapshots-and-historical-analytical-queries"></a>Moment opnamen en historische analytische query's
 
-* U kunt op stroom gegevens, aankoop gegevens en klant gegevens klikken om aanbevelingen te geven voor de levens duur van het apparaat.
-
-* Met behulp van de globale distributie functie van de Azure Cosmos DB kunnen grote hoeveel heden product gegevens die worden verdeeld over regio's, in milliseconden worden geanalyseerd.
-
-* U kunt snel inzichten verkrijgen voor de geografisch gedistribueerde gebruikers en gegevens. U kunt de conversie snelheid van de promotie verbeteren door de juiste advertentie op het juiste moment naar de juiste gebruiker te sturen.
-
-* U kunt gebruikmaken van de ingebouwde Spark streaming-mogelijkheid om Live gegevens te verrijken door deze te combi neren met statische klant gegevens. Op deze manier kunt u meer gepersonaliseerde en gerichte advertenties leveren in realtime en in de context van wat klanten doen.
-
-In de volgende afbeelding ziet u hoe Azure Cosmos DB Spark-ondersteuning wordt gebruikt voor het optimaliseren van prijzen en promoties:
-
-![Spark-ondersteuning van Azure Cosmos DB voor het optimaliseren van prijzen en promoties](./media/spark-api-introduction/optimize-pricing-and-promotions.png)
-
-
-In de volgende afbeelding ziet u hoe Azure Cosmos DB Spark-ondersteuning wordt gebruikt in realtime aanbevolen Engine:
-
-![Azure Cosmos DB Spark-ondersteuning in real-time aanbevelings engine](./media/spark-api-introduction/real-time-recommendation-engine.png)
-
-### <a name="manufacturing-and-iot"></a>Productie en IoT
-
-Met het in-builief Analytics-platform van Azure Cosmos DB kunt u real-time analyse van IoT-gegevens van miljoenen apparaten op wereld wijde schaal mogelijk maken. U kunt moderne innovaties maken zoals het voors pellen van weers patronen, voorspellende analyses en energie optimalisaties.
-
-* Met behulp van Azure Cosmos DB kunt u gegevens gebruiken zoals metrische waarden voor realtime en weers factoren en vervolgens slimme grid Analytics Toep assen om de prestaties van verbonden apparaten in het veld te optimaliseren. Slimme grid Analytics is de sleutel om de operationele kosten te beheren, om de betrouw baarheid van het raster te verbeteren en om persoonlijke energie services aan consumenten te leveren.
-
-De volgende afbeelding laat zien hoe de Spark-ondersteuning van Azure Cosmos DB wordt gebruikt voor het lezen van metrische gegevens van IoT-apparaten en het Toep assen van slimme grid Analytics:
-
-![Spark-ondersteuning van Azure Cosmos DB voor het lezen van metrische gegevens van IoT-apparaten](./media/spark-api-introduction/read-metrics-from-iot-devices.png)
-
-
-### <a name="predictive-maintenance"></a>Voorspeld onderhoud
-
-* Het onderhouden van assets, zoals compressoren die worden gebruikt in kleine boor platforms tot diepe water, is een ingewikkeld bedrijf. Deze activa bevinden zich overal ter wereld en genereren PETA bytes gegevens. U kunt met behulp van Azure Cosmos DB een end-to-end gegevens pijplijn maken die gebruikmaakt van Spark-streaming voor het verwerken van grote hoeveel heden sensor telemetrie, het opslaan van Asset-onderdelen en sensor toewijzings gegevens.
-
-* U kunt machine learning modellen bouwen en implementeren om activa fouten te voors pellen voordat ze plaatsvinden en onderhouds werk orders te verlenen voordat de fout optreedt.
-
-In de volgende afbeelding ziet u hoe de Spark-ondersteuning van Azure Cosmos DB wordt gebruikt voor het bouwen van een voorspellend onderhouds systeem:
-
-![Spark-ondersteuning van Azure Cosmos DB voor het bouwen van een voorspellend onderhouds systeem](./media/spark-api-introduction/predictive-maintenance-system.png)
-
-In de volgende afbeelding ziet u hoe de Spark-ondersteuning van Azure Cosmos DB wordt gebruikt voor het bouwen van een systeem voor diagnose van de real-time:
-
-![Spark-ondersteuning van Azure Cosmos DB voor het bouwen van een real-time diagnose systeem voor Voer tuigen](./media/spark-api-introduction/real-time-vehicle-diagnostic-system.png)
-
-### <a name="gaming"></a>Gaming
-
-* Met ingebouwde ondersteuning voor Spark kunt u met Azure Cosmos DB eenvoudig geavanceerde analyse-en machine learning modellen bouwen, schalen en implementeren in enkele minuten om de beste beleving van games mogelijk te maken.
-
-* U kunt speler-, aankoop-en gedrags gegevens analyseren om relevante gepersonaliseerde aanbiedingen te maken om hoge conversie tarieven te bereiken.
-
-* Met Spark machine learning kunt u informatie over het telemetrie van games analyseren en verkrijgen. U kunt een diagnose stellen en voor komen dat er trage laad tijden en spel problemen optreden.
-
-In de volgende afbeelding ziet u hoe de Spark-ondersteuning van Azure Cosmos DB wordt gebruikt in gaming Analytics:
-
-![Ondersteuning voor Spark van Azure Cosmos DB in gaming Analytics](./media/spark-api-introduction/gaming-analytics.png)
+U kunt moment opnamen op aanvraag of op schema maken van de in kolom vorm gecomprimeerde gegevens die zijn opgeslagen in de analytische laag om analytische query's rechtstreeks uit te voeren op een specifieke moment opname. Deze functie maakt Flashback of tijdrovende analytische query's, terugdraai acties, volledige historische controle sporen en reproduceer bare machine learning-en AI-experimenten.
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -144,7 +91,3 @@ In de volgende afbeelding ziet u hoe de Spark-ondersteuning van Azure Cosmos DB 
 * [Aan de slag met de Azure Cosmos DB Cassandra-API](cassandra-introduction.md)
 * [Aan de slag met de Azure Cosmos DB Gremlin-API](graph-introduction.md)
 * [Aan de slag met de Azure Cosmos DB Table-API](table-introduction.md)
-
-
-
-

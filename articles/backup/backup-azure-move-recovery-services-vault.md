@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: dacurwin
-ms.openlocfilehash: 960ddcc2a082b247951b0f79d0c990acc5e557e1
-ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
+ms.openlocfilehash: 6e95c012aed9fdcfda2b64c310458425df2b9f9e
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70210382"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71337891"
 ---
 # <a name="move-a-recovery-services-vault-across-azure-subscriptions-and-resource-groups"></a>Een Recovery Services kluis verplaatsen over Azure-abonnementen en-resource groepen
 
@@ -38,7 +38,7 @@ Resource verplaatsing voor Recovery Services kluis wordt ondersteund in Australi
 - De opties voor het verplaatsen van resources die via het klassieke model zijn geïmplementeerd, zijn afhankelijk van het feit of u de resources in een abonnement verplaatst of naar een nieuw abonnement. Zie [dit artikel](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources) voor meer informatie.
 - Het back-upbeleid dat voor de kluis is gedefinieerd, blijft behouden nadat de kluis over alle abonnementen of naar een nieuwe resource groep is verplaatst.
 - Het verplaatsen van de kluis met de Azure Files, Azure File Sync of SQL in IaaS Vm's tussen abonnementen en resource groepen wordt niet ondersteund.
-- Als u een kluis met VM-back-upgegevens verplaatst tussen abonnementen, moet u uw virtuele machines verplaatsen naar hetzelfde abonnement en dezelfde doel resource groep gebruiken om back-ups te hervatten.<br>
+- Als u een kluis met back-upgegevens voor de VM verplaatst, moet u de virtuele machines verplaatsen naar hetzelfde abonnement en dezelfde doel-VM-resource groepsnaam gebruiken (zoals in het oude abonnement) om door te gaan met back-ups.<br>
 
 > [!NOTE]
 >

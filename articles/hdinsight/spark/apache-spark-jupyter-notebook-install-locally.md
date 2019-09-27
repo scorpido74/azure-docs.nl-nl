@@ -1,19 +1,19 @@
 ---
 title: Jupyter lokaal installeren en verbinding maken met Spark in azure HDInsight
 description: Meer informatie over hoe u Jupyter notebook lokaal installeert op uw computer en hoe u het kunt verbinden met een Apache Spark-cluster.
-ms.service: hdinsight
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
+ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/06/2019
-ms.author: hrasheed
-ms.openlocfilehash: 6ce3ff8e00bc92911a7405de1bb0bb7286fb5c15
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 46164cfc0c2baff919808a831a67180b65a23ff7
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70993768"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71337657"
 ---
 # <a name="install-jupyter-notebook-on-your-computer-and-connect-to-apache-spark-on-hdinsight"></a>Jupyter notebook op uw computer installeren en verbinding maken met Apache Spark op HDInsight
 
@@ -146,7 +146,7 @@ In deze sectie configureert u de Spark Magic die u eerder hebt geïnstalleerd om
 
     a. Maak een nieuwe notebook. Selecteer in de rechter bovenhoek de optie **Nieuw**. De standaard-kernel **python 2** of **python 3** en de kernels die u hebt geïnstalleerd, worden weer geven. De werkelijke waarden kunnen variëren, afhankelijk van uw installatie opties.  Selecteer **PySpark**.
 
-    ![Kernels in Jupyter notebook](./media/apache-spark-jupyter-notebook-install-locally/jupyter-kernels-notebook.png "Kernels in Jupyter notebook")
+    ![Beschik bare kernels in Jupyter notebook]-(./media/apache-spark-jupyter-notebook-install-locally/jupyter-kernels-notebook.png "kernels in Jupyter notebook")
 
     > [!IMPORTANT]  
     > Nadat u **nieuwe** beoordeling van uw shell hebt geselecteerd, zijn er fouten opgetreden.  Als u de fout `TypeError: __init__() got an unexpected keyword argument 'io_loop'` ziet, kunt u een bekend probleem ondervinden met bepaalde versies van Tornado.  Als dit het geval is, stopt u de kernel en downgradet u de Tornado-installatie `pip install tornado==4.5.3`met de volgende opdracht:.

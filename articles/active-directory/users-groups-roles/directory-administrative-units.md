@@ -15,30 +15,32 @@ ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7b4bdced50f806367a53881d5ef0abd0a3710496
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 58b61186a876af90c812ec7faf41fa9f5b14bf4e
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68736789"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71336922"
 ---
-# <a name="administrative-units-management-in-azure-active-directory-public-preview"></a>Beheer van beheer eenheden in Azure Active Directory (open bare preview)
+# <a name="administrative-units-management-in-azure-active-directory-preview"></a>Beheer van beheer eenheden in Azure Active Directory (preview-versie)
 
-In dit artikel worden administratieve eenheden in Azure Active Directory (Azure AD) beschreven. Dit zijn een container met resources die kunnen worden gebruikt voor het delegeren van beheerders machtigingen voor subsets van gebruikers en het Toep assen van beleid op een subset van gebruikers. In azure AD kunnen centrale beheerders met administratieve eenheden machtigingen delegeren aan regionale beheerders of beleid op gedetailleerd niveau instellen.
+In dit artikel worden administratieve eenheden in Azure Active Directory (Azure AD) beschreven. Een beheer eenheid is een Azure AD-resource die een container kan zijn voor andere Azure AD-resources. In deze preview-versie kunnen deze resources alleen gebruikers zijn. Een beheerder van een gebruikers account met beheerders rechten kan bijvoorbeeld profiel gegevens bijwerken, wacht woorden opnieuw instellen en licenties voor gebruikers alleen in hun administratieve eenheid toewijzen.
 
-Dit is nuttig in organisaties met onafhankelijke divisies, bijvoorbeeld een grote universiteit die bestaat uit een groot aantal zelfstandige scholen (zakelijke school, technische school, enzovoort) die onafhankelijk van elkaar zijn. Deze divisies hebben hun eigen IT-beheerders die de toegang beheren, gebruikers beheren en beleids regels instellen die specifiek zijn voor hun afdeling. Centrale beheerders willen deze afdelings beheerders machtigingen kunnen verlenen via de gebruikers in hun specifieke divisies. Met name in dit voor beeld kan een centrale beheerder bijvoorbeeld een administratieve eenheid voor een bepaalde school (zakelijke school) maken en deze vullen met alleen de zakelijke school gebruikers. Vervolgens kan een centrale beheerder de IT-afdeling van de zakelijke school toevoegen aan een bereik functie, met andere woorden, de IT-afdeling van de beheer machtigingen van de zakelijke school alleen verlenen via de beheer eenheid van de zakelijke school.
+U kunt beheer eenheden gebruiken om beheerders machtigingen te delegeren via subsets van gebruikers en beleids regels toe te passen op een subset van gebruikers. U kunt administratieve eenheden gebruiken om machtigingen te delegeren aan regionale beheerders of om beleid op een gedetailleerd niveau in te stellen.
 
-> [!IMPORTANT]
-> Als u administratieve eenheden wilt gebruiken, moet de beheerder van de beheer eenheid een Azure Active Directory Premium licentie hebben. Zie [aan de slag met Azure AD Premium](../fundamentals/active-directory-get-started-premium.md)voor meer informatie.
->
+## <a name="deployment-scenario"></a>Implementatie scenario
 
-Vanuit het oogpunt van de centrale beheerder is een beheer eenheid een Directory-object dat kan worden gemaakt en gevuld met resources. **In deze preview-versie kunnen deze resources alleen gebruikers zijn.** Zodra de beheer eenheid is gemaakt en ingevuld, kan deze worden gebruikt als een bereik om de verleende machtiging alleen te beperken voor bronnen die zich in de beheer eenheid bevinden.
+Beheer eenheden kunnen nuttig zijn in organisaties met onafhankelijke divisies. Bekijk het voor beeld van een grote universiteit die bestaat uit een groot aantal zelfstandige scholen (school van bedrijf, school van engineering, enzovoort) die elk een eigen IT-beheerder heeft die de toegang beheert, gebruikers beheert en beleids regels voor hun school instellen. Een centrale beheerder kan een administratieve eenheid voor het school werk maken en deze vullen met alleen de studenten en mede werkers van de zakelijke school. De centrale beheerder kan de IT-afdeling van de zakelijke school toevoegen aan een scoped rol die beheerders machtigingen verleent voor alleen Azure AD-gebruikers in de beheer eenheid van de zakelijke school.
+
+## <a name="license-requirements"></a>Licentievereisten
+
+Voor het gebruik van beheer eenheden is een Azure Active Directory Premium licentie vereist voor elke beheerder van de beheer eenheid. Zie [aan de slag met Azure AD Premium](../fundamentals/active-directory-get-started-premium.md)voor meer informatie.
 
 ## <a name="managing-administrative-units"></a>Beheer eenheden beheren
 
-In deze preview-versie kunt u beheer eenheden maken en beheren met behulp van de Azure Active Directory-module voor Windows Power shell-cmdlets. Zie [werken met beheer eenheden](https://docs.microsoft.com/powershell/azure/active-directory/working-with-administrative-units?view=azureadps-2.0) voor meer informatie over hoe u dit doet.
+In deze preview-versie kunt u de enige manier voor het maken en beheren van beheer eenheden gebruikmaken van de Azure Active Directory-module voor Windows Power shell-cmdlets zoals beschreven in [werken met beheer eenheden](https://docs.microsoft.com/powershell/azure/active-directory/working-with-administrative-units?view=azureadps-2.0)
 
-Zie Azure Active Directory voor meer informatie over software vereisten en het installeren van de Azure AD-module, en voor meer informatie over de Azure AD-module-cmdlets voor het beheren van beheer eenheden, inclusief syntaxis, parameter beschrijvingen en voor beelden. [ Power shell](https://docs.microsoft.com/powershell/azure/active-directory/overview?view=azureadps-2.0).
+Zie Azure Active (Engelstalig) voor meer informatie over software vereisten en het installeren van de Azure AD-module, en voor naslag informatie over de Azure AD-module-cmdlets voor het beheren van beheer eenheden, inclusief syntaxis, parameter beschrijvingen en voor beelden. [ Directory Power shell](https://docs.microsoft.com/powershell/azure/active-directory/overview?view=azureadps-2.0).
 
 ## <a name="next-steps"></a>Volgende stappen
 

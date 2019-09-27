@@ -1,17 +1,17 @@
 ---
 title: Een abonnement voor delen intrekken in de preview-versie van Azure data share
 description: Een share-abonnement intrekken
-author: madams0013
+author: joannapea
+ms.author: joanpo
 ms.service: data-share
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.author: jasonh
-ms.openlocfilehash: dc14bb121d18179091aa5f6f2854b391e72632f1
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: 08a48202c26df1c24216572b1a52ac45506c6229
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70258631"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71326534"
 ---
 # <a name="how-to-revoke-a-consumers-share-subscription-in-azure-data-share-preview"></a>Het deel abonnement voor het delen van een consument in azure data share preview intrekken
 
@@ -23,7 +23,7 @@ In azure data share preview gaat u naar de verzonden share en selecteert u het t
 
 ![Abonnement op delen intrekken](./media/how-to/how-to-revoke-share-subscription/revoke-share-subscription.png) 
 
-Schakel de selectie vakjes in naast de ontvangers die de abonnementen delen die u wilt verwijderen en klik vervolgens op **intrekken**. De consument ontvangt geen updates meer voor hun gegevens.
+Schakel de selectie vakjes in naast de ontvangers die de abonnementen delen die u wilt verwijderen enklik vervolgens op intrekken. De consument ontvangt geen updates meer voor hun gegevens.
 
 ## <a name="next-steps"></a>Volgende stappen
-Meer informatie over het [bewaken van uw gegevens shares](how-to-monitor.md).
+Meer informatie over het bewaken van [uw gegevens shares](how-to-monitor.md).

@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 08/22/2019
-ms.openlocfilehash: b86c0d0de95581f7a47de428ffbf0b161353df83
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 84567b68c85a48d0fc02f6f6a4986d8092215a92
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71260752"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71326502"
 ---
 # <a name="deploy-a-model-using-a-custom-docker-base-image"></a>Een model implementeren met behulp van een aangepaste docker-basis installatie kopie
 
@@ -183,15 +183,16 @@ Micro soft biedt verschillende docker-installatie kopieën op een openbaar toega
 | Image | Description |
 | ----- | ----- |
 | `mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda` | Basis installatie kopie voor Azure Machine Learning |
-| `mcr.microsoft.com/azureml/onnxruntime:v0.4.0` | Bevat de ONNX-runtime. |
-| `mcr.microsoft.com/azureml/onnxruntime:v0.4.0-cuda10.0-cudnn7` | Bevat de ONNX runtime-en CUDA-onderdelen. |
-| `mcr.microsoft.com/azureml/onnxruntime:v0.4.0-tensorrt19.03` | Bevat ONNX runtime en TensorRT. |
+| `mcr.microsoft.com/azureml/onnxruntime:latest` | Bevat ONNX runtime voor CPU-inferecning |
+| `mcr.microsoft.com/azureml/onnxruntime:latest-cuda` | Bevat de ONNX runtime en CUDA voor GPU |
+| `mcr.microsoft.com/azureml/onnxruntime:latest-tensorrt` | Bevat ONNX runtime en TensorRT voor GPU |
+| `mcr.microsoft.com/azureml/onnxruntime:latest-openvino-vadm ` | Bevat de ONNX runtime en open-wijn<sup> </sup> voor het ontwerp van de Intel Vision Accelerator op basis van Movidius<sup>TM</sup> tallozex VPUs |
+| `mcr.microsoft.com/azureml/onnxruntime:latest-openvino-myriad` | Bevat ONNX runtime en-wijn<sup> </sup> voor Intel Movidius<sup>TM</sup> USB-sticks |
+
+Zie de [sectie ONNX runtime dockerfile](https://github.com/microsoft/onnxruntime/blob/master/dockerfiles/README.md) in de GitHub opslag plaats voor meer informatie over de basis installatie kopieën van ONNX-runtime.
 
 > [!TIP]
 > Omdat deze installatie kopieën openbaar beschikbaar zijn, hoeft u geen adres, gebruikers naam of wacht woord op te geven wanneer u deze gebruikt.
-
-> [!IMPORTANT]
-> Micro soft-installatie kopieën die gebruikmaken van CUDA of TensorRT, moeten alleen worden gebruikt op Microsoft Azure Services.
 
 Zie [Azure machine learning containers](https://github.com/Azure/AzureML-Containers)voor meer informatie.
 

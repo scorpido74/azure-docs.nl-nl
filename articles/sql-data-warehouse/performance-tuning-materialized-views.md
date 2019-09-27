@@ -10,12 +10,12 @@ ms.subservice: development
 ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: 6ed6e21f16287148c8764dd98bda378451440e58
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 593841ac95c4c6f17f33a8d35d6b3f83a6db1124
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71172782"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338908"
 ---
 # <a name="performance-tuning-with-materialized-views"></a>Prestaties afstemmen met gerealiseerde weer gaven 
 De gerealiseerde weer gaven in Azure SQL Data Warehouse bieden een lage onderhouds methode voor complexe analytische query's om snelle prestaties te krijgen zonder dat er query's worden gewijzigd. In dit artikel vindt u de algemene richt lijnen voor het gebruik van gerealiseerde weer gaven.
@@ -49,7 +49,7 @@ Een goed ontworpen gerealiseerde weer gave kan de volgende voor delen bieden:
 
 - De Optimizer in Azure SQL Data Warehouse kan automatisch geïmplementeerde gerealiseerde weer gaven gebruiken om plannen voor het uitvoeren van query's te verbeteren.  Dit proces is transparant voor gebruikers die snellere query prestaties bieden en er hoeven geen query's te worden uitgevoerd om direct naar de gerealiseerde weer gaven te verwijzen. 
 
-- Weinig onderhoud vereist voor de weer gaven.  In een gerealiseerde weer gave worden gegevens op twee plaatsen opgeslagen, een geclusterde column store-index voor de eerste gegevens op de weer gave en een Delta opslag voor de incrementele gegevens wijzigingen.  Alle gegevens wijzigingen van de basis tabellen worden op synchrone wijze automatisch toegevoegd aan de Delta opslag.  Een achtergrond proces (tuple-overschakeling) verplaatst de gegevens van het Delta archief periodiek naar de column store-index van de weer gave.  Met dit ontwerp kunt u query's uitvoeren op gerealiseerde weer gaven om dezelfde gegevens te retour neren als het rechtstreeks uitvoeren van query's op de basis tabellen. 
+- Weinig onderhoud vereist voor de weer gaven.  Alle incrementele gegevens wijzigingen ten opzichte van de basis tabellen worden op synchrone wijze automatisch toegevoegd aan de gerealiseerde weer gaven.  Met dit ontwerp kunt u query's uitvoeren op gerealiseerde weer gaven om dezelfde gegevens te retour neren als het rechtstreeks uitvoeren van query's op de basis tabellen. 
 - De gegevens in een gerealiseerde weer gave kunnen anders worden gedistribueerd vanuit de basis tabellen.  
 - Gegevens in gerealiseerde weer gaven hebben dezelfde hoge Beschik baarheid en tolerantie voor delen als gegevens in reguliere tabellen.  
  
@@ -90,7 +90,7 @@ Gebruikers kunnen UITLEGGEN WITH_RECOMMENDATIONS < SQL_statement-> uitvoeren voo
 
 **Houd rekening met de verhouding tussen snellere query's en de kosten** 
 
-Voor elke gerealiseerde weer gave zijn er kosten voor de gegevens opslag en de kosten voor het onderhouden van de weer gave.  Naarmate gegevens wijzigingen in basis tabellen worden aangebracht, neemt de grootte van de gerealiseerde weer gave toe en wordt de fysieke structuur ook gewijzigd.  Om te voor komen dat de prestaties van query's worden vertraagd, wordt elke gerealiseerde weer gave afzonderlijk beheerd door de Data Warehouse-engine, inclusief het verplaatsen van rijen uit het Delta archief naar de column store-index segmenten en het consolideren van gegevens wijzigingen.  De werk belasting van de onderhouds taken is hoger wanneer het aantal gerealiseerde weer gaven en basis tabel wijzigingen toeneemt.   Gebruikers moeten controleren of de kosten die zijn gemaakt voor alle gerealiseerde weer gaven, kunnen worden gecompenseerd door de prestatie verbetering van de query.  
+Voor elke gerealiseerde weer gave zijn er kosten voor de gegevens opslag en de kosten voor het onderhouden van de weer gave.  Naarmate gegevens wijzigingen in basis tabellen worden aangebracht, neemt de grootte van de gerealiseerde weer gave toe en wordt de fysieke structuur ook gewijzigd.  Om te voor komen dat de query prestaties verslechteren, wordt elke gerealiseerde weer gave afzonderlijk beheerd door de Data Warehouse-engine.  De werk belasting van de onderhouds taken is hoger wanneer het aantal gerealiseerde weer gaven en basis tabel wijzigingen toeneemt.   Gebruikers moeten controleren of de kosten die zijn gemaakt voor alle gerealiseerde weer gaven, kunnen worden gecompenseerd door de prestatie verbetering van de query.  
 
 U kunt deze query uitvoeren voor de lijst met gerealiseerde weer gaven in een Data Base: 
 
@@ -136,7 +136,7 @@ De optimalisatie van het Data Warehouse kan automatisch geïmplementeerde gereal
 
 **Gerealiseerde weer gaven bewaken** 
 
-Een gerealiseerde weer gave wordt in het Data Warehouse opgeslagen net als een tabel met geclusterde column store-index (CCI).  Het lezen van gegevens vanuit een gerealiseerde weer gave omvat het scannen van de index en het Toep assen van wijzigingen in het Delta-archief.  Wanneer het aantal rijen in de Delta opslag te hoog is, kan het oplossen van een query vanuit een gerealiseerde weer gave langer duren dan het rechtstreeks opvragen van query's in de basis tabellen.  Om te voor komen dat de prestaties van query's worden vertraagd, is het een goed idee om [DBCC PDW_SHOWMATERIALIZEDVIEWOVERHEAD](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-pdw-showmaterializedviewoverhead-transact-sql?view=azure-sqldw-latest) uit te voeren om de overhead_ratio van de weer gave (total_rows/base_view_row) te controleren.  Als de overhead_ratio te hoog is, overweeg dan om de gerealiseerde weer gave opnieuw te bouwen zodat alle rijen in de Delta opslag naar de column store-index worden verplaatst.  
+Een gerealiseerde weer gave wordt in het Data Warehouse opgeslagen net als een tabel met geclusterde column store-index (CCI).  Het lezen van gegevens vanuit een gerealiseerde weer gave omvat het scannen van de CCI-index segmenten en het Toep assen van incrementele wijzigingen van basis tabellen. Wanneer het aantal incrementele wijzigingen te hoog is, kan het omzetten van een query vanuit een gerealiseerde weer gave langer duren dan het rechtstreeks opvragen van de basis tabellen.  Om te voor komen dat de prestaties van query's teruglopen, is het een goed idee om [DBCC PDW_SHOWMATERIALIZEDVIEWOVERHEAD](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-pdw-showmaterializedviewoverhead-transact-sql?view=azure-sqldw-latest) uit te voeren om de overhead_ratio van de weer gave te controleren (total_rows/Max (1, base_view_row)).  Gebruikers moeten de gerealiseerde weer gave opnieuw samen stellen als de overhead_ratio te hoog is. 
 
 **Gerealiseerde weer gave en caching van resultaten sets**
 

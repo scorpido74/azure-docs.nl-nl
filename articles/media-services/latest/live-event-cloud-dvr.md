@@ -1,5 +1,5 @@
 ---
-title: Live-gebeurtenis en een Cloud-DVR Azure Media Services | Microsoft Docs
+title: Azure Media Services time-verschuivingen en Live-to-VOD (video on demand) gebruiken | Microsoft Docs
 description: In dit artikel wordt uitgelegd wat live output is en hoe u een Cloud-DVR gebruikt.
 services: media-services
 documentationcenter: ''
@@ -13,14 +13,14 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 08/27/2019
 ms.author: juliako
-ms.openlocfilehash: a10c76dd7fb4ef1e9a45666ff3a3ca0d937d2c94
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: ffcd279830cb49b64ddbb58a888ad7d653918b1b
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231225"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338843"
 ---
-# <a name="using-a-cloud-digital-video-recorder-dvr"></a>Een digitale video recorder (DVR) in de Cloud gebruiken
+# <a name="using-time-shifting-and-live-to-vod-video-on-demand"></a>Time-verschuivingen en Live-to-VOD (video on demand) gebruiken
 
 In Azure Media Services is een [Live uitvoer](https://docs.microsoft.com/rest/api/media/liveoutputs) object net als een digitale video recorder waarmee uw live stream wordt onderschept en opgenomen in een asset in uw Media Services-account. De opgenomen inhoud wordt opgeslagen in de container die is gedefinieerd door de bron van de [Asset](https://docs.microsoft.com/rest/api/media/assets) (de container bevindt zich in het Azure Storage-account dat aan uw account is gekoppeld). Met de live uitvoer kunt u ook enkele eigenschappen van de uitgaande Live Stream beheren, zoals hoeveel van de stroom wordt bewaard in de registratie van het archief (bijvoorbeeld de capaciteit van de Cloud-DVR) en of viewers de live stream kunnen bekijken. Het archief op schijf is een circulair Archief ' venster ' dat alleen de hoeveelheid inhoud bevat die is opgegeven in de eigenschap **archiveWindowLength** van de actieve uitvoer. Inhoud die buiten dit venster valt, wordt automatisch verwijderd uit de opslag container en kan niet worden hersteld. De waarde archiveWindowLength vertegenwoordigt een time-outwaarde van ISO-8601 (bijvoorbeeld PTHH: MM: SS), waarmee de capaciteit van het DVR wordt opgegeven en kan worden ingesteld op een minimum van 3 minuten tot een maximum van 25 uur.
 
@@ -54,5 +54,5 @@ Zie voor meer informatie:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Uw Video's](subclip-video-rest-howto.md)subfragmenten.
+* [Uw Video's subfragmenten](subclip-video-rest-howto.md).
 * [Definieer filters voor uw activa](filters-dynamic-manifest-rest-howto.md).

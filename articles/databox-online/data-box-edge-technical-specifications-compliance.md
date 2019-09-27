@@ -6,18 +6,37 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 09/11/2019
+ms.date: 09/26/2019
 ms.author: alkohli
-ms.openlocfilehash: f1199748782c40b2527a8778417588891b84f9fc
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: 365507f482217bd804bbd5017d4dbbaf8c187ad2
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910125"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71326880"
 ---
 # <a name="azure-data-box-edge-technical-specifications"></a>Azure Data Box Edge technische specificaties
 
 De hardwareonderdelen van uw Microsoft Azure Data Box Edge apparaat voldoen aan de technische specificaties en regelgevings normen als beschreven in dit artikel. De technische specificaties beschrijven de voedings eenheden (PSUs), opslag capaciteit, behuizingen en omgevings standaarden. 
+
+## <a name="compute-memory-specifications"></a>Compute, geheugen specificaties
+
+Het Data Box Edge-apparaat heeft de volgende specificaties voor Compute en geheugen:
+
+| Specificatie           | Value                  |
+|-------------------------|----------------------------|
+| CPU    | 2 X 10 core CPU                     |
+| Geheugen              | 128 GB RAM                  |
+
+
+## <a name="fpga-specifications"></a>FPGA-specificaties
+
+Een veld Programmeer bare Gate-matrix (FPGA) is opgenomen op elk Data Box Edge apparaat dat Machine Learning (ML) scenario's mogelijk maakt. 
+
+| Specificatie           | Value                  |
+|-------------------------|----------------------------|
+| FPGA   | Intel Arria 10 <br> Beschik bare DNN-modellen (diepe Neural Network) zijn hetzelfde als die [van Cloud FPGA-exemplaren](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-fpga-web-service#whats-supported-on-azure).| 
+
 
 ## <a name="power-supply-unit-specifications"></a>Specificaties van voedings eenheid voor voeding
 
@@ -55,11 +74,11 @@ In de volgende tabellen staan de verschillende specificaties van de behuizing vo
 
 De volgende tabel bevat de afmetingen van de behuizing in millimeters en inches.
 
-|     Sluit     |     Millimeters     |     Mm     |
+|     Behuizing     |     Millimeters     |     Mm     |
 |-------------------|---------------------|----------------|
 |    Hoogte         |    44,45            |    1,75 '          |
 |    Breedte          |    434,1           |    17,09 '          |
-|    Lengte          |    740,4           |    29,15 '          |
+|    Hoogte          |    740,4           |    29,15 '          |
 
 De volgende tabel bevat de afmetingen van het verzend pakket in millimeters en inches.
 
@@ -67,13 +86,13 @@ De volgende tabel bevat de afmetingen van het verzend pakket in millimeters en i
 |-------------------|---------------------|----------------|
 |    Hoogte         |    311,2            |    12,25 '          |
 |    Breedte          |    642,8          |    25,31 '          |
-|    Lengte          |   1\.051,1          |    41,38 '          |
+|    Hoogte          |   1\.051,1          |    41,38 '          |
 
 ### <a name="enclosure-weight"></a>Gewicht van behuizing
 
 Het apparaatstuurprogrammapakket weegt 66 lbs. en er zijn twee personen nodig om deze af te handelen. Het gewicht van het apparaat is afhankelijk van de configuratie van de behuizing.
 
-|     Sluit                                 |     Gewicht          |
+|     Behuizing                                 |     Gewicht          |
 |-----------------------------------------------|---------------------|
 |    Totaal gewicht inclusief de verpakking       |    61 lbs.          |
 |    Gewicht van het apparaat                       |    35 lbs.          |
@@ -84,14 +103,14 @@ In deze sectie vindt u de specificaties met betrekking tot de behuizing-omgeving
 
 ### <a name="temperature-and-humidity"></a>Tempe ratuur en vochtigheid
 
-|     Sluit         |     Omgevings temperatuur bereik     |     Relatieve lucht vochtigheid     |     Maximum Dew-punt     |
+|     Behuizing         |     Omgevings temperatuur bereik     |     Relatieve lucht vochtigheid     |     Maximum Dew-punt     |
 |-----------------------|--------------------------------------|--------------------------------------|---------------------------|
 |    Operationeel        |    10 °C-35 °C (50 °F-86 °F)         |    10%-80% niet-condenserend.         |    29 °C (84 °F)            |
 |    Niet-operationeel    |    -40 °C tot 65 °C (-40 °F-149 °F)     |    5%-95% niet-condenserend.          |    33 °C (91 °F)            |
 
 ### <a name="airflow-altitude-shock-vibration-orientation-safety-and-emc"></a>Lucht stroom, hoogte, schokken, trillingen, oriëntatie, veiligheid en EMC
 
-|     Sluit                           |     Operationele specificaties                                                                                                                                                                                         |
+|     Behuizing                           |     Operationele specificaties                                                                                                                                                                                         |
 |-----------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 |    Lucht stroom                              |    De stroom van het systeem is aan de achterzijde. Het systeem moet worden bediend met een installatie met een lage druk, een achterlopende uitlaat. <!--Back pressure created by rack doors and obstacles should not exceed 5 pascals (0.5 mm water gauge).-->    |
 |    Maximum hoogte, operationeel        |    3048 meters (10.000 meter) met een maximale gebruiks temperatuur van de nominale waarde bepaald door [de specificaties van de gebruiks temperatuur van de beoordeling](#operating-temperature-de-rating-specifications).                                                                                |

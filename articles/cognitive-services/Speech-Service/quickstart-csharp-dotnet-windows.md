@@ -8,35 +8,33 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 07/05/2019
+ms.date: 08/28/2019
 ms.author: wolfma
-ms.openlocfilehash: 47f955734070be4adfe7f58da98265b976e643d5
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: cb140647394858fbc0a9a00ea125365d5b7a08d5
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68554157"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71327053"
 ---
 # <a name="quickstart-recognize-speech-with-the-speech-sdk-for-net-framework-windows"></a>Quickstart: Spraak herkennen met de spraak-SDK voor .NET Framework (Windows)
 
-Quick starts zijn ook beschikbaar voor [tekst naar spraak](quickstart-text-to-speech-dotnet-windows.md) en [spraak omzetting](quickstart-translate-speech-dotnetframework-windows.md).
+Quick starts zijn ook beschikbaar voor [spraak-synthese](quickstart-text-to-speech-dotnet-windows.md) en [spraak omzetting](quickstart-translate-speech-dotnetframework-windows.md).
 
-Kies indien gewenst een andere programmeer taal en/of-omgeving:<br/>
+Als u wilt, kiest u een andere programmeer taal en/of-omgeving:<br/>
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
 Gebruik deze handleiding om een spraakconsoletoepassing voor -naar-tekst te maken met .NET Framework voor Windows en de Speech-SDK. Als u klaar bent, kunt u de microfoon van de computer gebruiken om in realtime spraak naar tekst te transcriberen.
 
-Voor een snelle demonstratie (zonder het Visual Studio-project zelf te bouwen zoals hieronder wordt weer gegeven):
-
-Down load de nieuwste [Cognitive Services Speech SDK](https://github.com/Azure-Samples/cognitive-services-speech-sdk) -voor beelden van github.
+Voor een snelle demonstratie (zonder zelf het Visual Studio-project te maken, zoals beschreven in dit artikel), haalt u de nieuwste [Cognitive Services Speech SDK](https://github.com/Azure-Samples/cognitive-services-speech-sdk) -voor beelden van github.
 
 ## <a name="prerequisites"></a>Vereisten
 
 Als u dit project wilt voltooien, hebt u het volgende nodig:
 
-* [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)
+* [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/).
 * Een abonnementssleutel voor de Speech Service. [Gratis downloaden](get-started.md).
-* Toegang tot de microfoon van uw computer
+* Toegang tot de microfoon van uw computer.
 
 ## <a name="create-a-visual-studio-project"></a>Een Visual Studio-project maken
 
@@ -44,29 +42,25 @@ Als u dit project wilt voltooien, hebt u het volgende nodig:
 
 ## <a name="add-sample-code"></a>Voorbeeldcode toevoegen
 
-1. Open `Program.cs` en vervang de automatisch gegenereerde code door dit voorbeeld:
+1. Open **Program.cs** en vervang de automatisch gegenereerde code door dit voor beeld:
 
-    [!code-csharp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/csharp-dotnet-windows/helloworld/Program.cs#code)]
+   [!code-csharp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/csharp-dotnet-windows/helloworld/Program.cs#code)]
 
-1. Zoek de teken reeks `YourSubscriptionKey` en vervang deze door uw abonnement sleutel voor spraak Services.
+1. Zoek de teken reeks `YourSubscriptionKey` en vervang deze door uw abonnements sleutel voor spraak Services.
 
-1. Vervang de tekenreeks `YourServiceRegion` door de [regio](regions.md) die aan uw abonnement is gekoppeld. Als u bijvoorbeeld gebruikmaakt van de gratis proefversie, dan is `westus` de regio.
+1. Zoek de teken reeks `YourServiceRegion` en vervang deze door de [regio](regions.md) die aan uw abonnement is gekoppeld. Als u bijvoorbeeld het gratis proef abonnement gebruikt, is de regio `westus`.
 
-1. Sla de wijzigingen aan het project op.
+1. Kies in de menu balk **bestand** > **Alles opslaan**.
 
 ## <a name="build-and-run-the-app"></a>De app bouwen en uitvoeren
 
-1. Selecteer in de menubalk **Build** > **Build Solution**. De code moet nu zonder fouten worden gecompileerd.
+1. Kies in de menu balk **build** > **Build-oplossing** om de toepassing te bouwen. De code moet nu zonder fouten worden gecompileerd.
 
-    ![Schermafbeelding van Visual Studio-toepassing met de optie Build Solution gemarkeerd](media/sdk/qs-csharp-dotnet-windows-08-build.png "Geslaagde build")
+1. Kies **fouten opsporen** > **fout opsporing starten** (of selecteer **F5**) om de toepassing **HelloWorld** te starten.
 
-1. Selecteer in de menubalk **Debug** > **Start Debugging** of druk op **F5** om de toepassing te starten.
+1. Spreek een Engelse zin of zin in op de microfoon van uw apparaat. De toepassing stuurt uw spraak naar de spraak Services, waarmee de getranscribeerde tekst terug naar de toepassing wordt verzonden voor weer gave.
 
-    ![Schermafbeelding van Visual Studio-toepassing met de optie Start Debugging gemarkeerd](media/sdk/qs-csharp-dotnet-windows-09-start-debugging.png "Start foutopsporing van de app")
-
-1. Er verschijnt een consolevenster en u wordt gevraagd te spreken. Zeg iets in het Engels. Uw spraak wordt verzonden naar de spraak Services en getranscribeerd naar tekst in real-time. Het resultaat wordt weergegeven in de console.
-
-    ![Schermafbeelding van console-uitvoer na geslaagde herkenning](media/sdk/qs-csharp-dotnet-windows-10-console-output.png "Console-uitvoer na geslaagde herkenning")
+   ![Gebruikers interface voor spraak herkenning](media/sdk/qs-csharp-dotnet-windows-10-console-output.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -75,5 +69,4 @@ Als u dit project wilt voltooien, hebt u het volgende nodig:
 
 ## <a name="see-also"></a>Zie ook
 
-- [Akoestische modellen aanpassen](how-to-customize-acoustic-models.md)
-- [Taalmodellen aanpassen](how-to-customize-language-model.md)
+- [Een model trainen voor Custom Speech](how-to-custom-speech-train-model.md)

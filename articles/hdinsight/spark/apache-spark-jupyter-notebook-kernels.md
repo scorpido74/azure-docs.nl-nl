@@ -1,160 +1,166 @@
 ---
-title: Kernels voor Jupyter-notebook in Spark-clusters in Azure HDInsight
-description: Meer informatie over de PySpark, PySpark3 en Spark kernels voor Jupyter-notitieblok met Spark-clusters in Azure HDInsight.
-keywords: jupyter notebook on spark,jupyter spark
+title: Kernels voor Jupyter notebook in Spark-clusters in azure HDInsight
+description: Meer informatie over de PySpark-, PySpark3-en Spark-kernels voor Jupyter notebook beschikbaar met Spark-clusters in azure HDInsight.
+keywords: jupyter notebook op Spark, jupyter Spark
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 05/27/2019
-ms.author: hrasheed
-ms.openlocfilehash: b2ae24c0449b009db6fcecdd8a1366ea5154629a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 371ba46b477b5dba245a116d2ea9d21d2b732a97
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66257798"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71337664"
 ---
-# <a name="kernels-for-jupyter-notebook-on-apache-spark-clusters-in-azure-hdinsight"></a>Kernels voor Jupyter-notebook op Apache Spark-clusters in Azure HDInsight 
+# <a name="kernels-for-jupyter-notebook-on-apache-spark-clusters-in-azure-hdinsight"></a>Kernels voor Jupyter notebook in Apache Spark-clusters in azure HDInsight
 
-HDInsight Spark-clusters bieden kernels die u kunt gebruiken met de Jupyter-notebook op [Apache Spark](https://spark.apache.org/) voor het testen van uw toepassingen. Een kernel is een programma dat wordt uitgevoerd en interpreteert van gebruikers in uw code. De drie kernels zijn:
+HDInsight Spark-clusters bieden kernels die u kunt gebruiken met de Jupyter notebook van [Apache Spark](https://spark.apache.org/) voor het testen van uw toepassingen. Een kernel is een programma dat uw code uitvoert en interpreteert. De drie kernels zijn:
 
-- **PySpark** : voor toepassingen die zijn geschreven in Python2.
-- **PySpark3** : voor toepassingen die zijn geschreven in Python3.
-- **Spark** : voor toepassingen die zijn geschreven in Scala.
+- **PySpark** -voor toepassingen die zijn geschreven in Python2.
+- **PySpark3** -voor toepassingen die zijn geschreven in Python3.
+- **Spark** -voor toepassingen die zijn geschreven in scala.
 
-In dit artikel leert u hoe u deze kernels en de voordelen van het gebruik ervan.
+In dit artikel leert u hoe u deze kernels en de voor delen van het gebruik ervan kunt gebruiken.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Een Apache Spark-cluster in HDInsight. Zie [Apache Spark-clusters maken in Azure HDInsight](apache-spark-jupyter-spark-sql.md) voor instructies.
+Een Apache Spark cluster in HDInsight. Zie [Apache Spark-clusters maken in Azure HDInsight](apache-spark-jupyter-spark-sql.md) voor instructies.
 
-## <a name="create-a-jupyter-notebook-on-spark-hdinsight"></a>Een Jupyter-notebook in Spark HDInsight maken
+## <a name="create-a-jupyter-notebook-on-spark-hdinsight"></a>Een Jupyter-notebook maken op Spark HDInsight
 
-1. Uit de [Azure-portal](https://portal.azure.com/), selecteert u uw Spark-cluster.  Zie [clusters tonen en vermelden](../hdinsight-administer-use-portal-linux.md#showClusters) voor instructies. De **overzicht** weer wordt geopend.
+1. Selecteer in de [Azure Portal](https://portal.azure.com/)uw Spark-cluster.  Zie de [lijst en clusters weer geven](../hdinsight-administer-use-portal-linux.md#showClusters) voor de instructies. De **overzichts** weergave wordt geopend.
 
-2. Uit de **overzicht** weergeven in de **Clusterdashboards** Schakel **Jupyter-notebook**. Voer de beheerdersreferenties voor het cluster in als u daarom wordt gevraagd.
+2. Selecteer in de weer gave **overzicht** in het vak **cluster dashboards** de optie **Jupyter notebook**. Voer de beheerdersreferenties voor het cluster in als u daarom wordt gevraagd.
 
-    ![Jupyter-notebook in Spark](./media/apache-spark-jupyter-notebook-kernels/hdinsight-spark-open-jupyter-interactive-spark-sql-query.png "Jupyter-notebook in Spark") 
+    ![Jupyter notebook op Apache Spark](./media/apache-spark-jupyter-notebook-kernels/hdinsight-spark-open-jupyter-interactive-spark-sql-query.png "Jupyter notebook in Spark")
   
    > [!NOTE]  
-   > U kunt ook contact opnemen de Jupyter-notebook in Spark-cluster door de volgende URL in uw browser te openen. Vervang **CLUSTERNAME** door de naam van uw cluster.
+   > U kunt ook het Jupyter-notebook in het Spark-cluster bereiken door de volgende URL in uw browser te openen. Vervang **CLUSTERNAME** door de naam van uw cluster.
    >
    > `https://CLUSTERNAME.azurehdinsight.net/jupyter`
 
-3. Selecteer **nieuw**, en selecteer vervolgens **Pyspark**, **PySpark3**, of **Spark** om een notitieblok te maken. Gebruik de Spark-kernel voor Scala-toepassingen, de PySpark-kernel voor Python2-toepassingen en PySpark3 kernel voor Python3-toepassingen.
+3. Selecteer **Nieuw**en selecteer vervolgens **Pyspark**, **PySpark3**of **Spark** om een notitie blok te maken. Gebruik de Spark-kernel voor scala-toepassingen, PySpark-kernel voor Python2-toepassingen en PySpark3 kernel voor Python3-toepassingen.
+
+    ![Kernels voor Jupyter notebook in Spark](./media/apache-spark-jupyter-notebook-kernels/kernel-jupyter-notebook-on-spark.png "Kernels voor Jupyter notebook in Spark")
+
+4. Er wordt een notitie blok geopend met de kernel die u hebt geselecteerd.
+
+## <a name="benefits-of-using-the-kernels"></a>Voor delen van het gebruik van de kernels
+
+Hier volgen enkele voor delen van het gebruik van de nieuwe kernels met Jupyter notebook in Spark HDInsight-clusters.
+
+- **Vooraf ingestelde contexten**. Met **PySpark**, **PySpark3**of **Spark** -kernels hoeft u de Spark-of Hive-contexten niet expliciet in te stellen voordat u met uw toepassingen begint te werken. Deze zijn standaard beschikbaar. Deze context zijn:
+
+  * **sc** -voor Spark-context
+  * **sqlContext** -voor Hive-context
    
-    ![Kernels voor Jupyter-notebook in Spark](./media/apache-spark-jupyter-notebook-kernels/kernel-jupyter-notebook-on-spark.png "Kernels voor Jupyter-notebook in Spark") 
-
-4. Een laptop wordt geopend met de kernel die u hebt geselecteerd.
-
-## <a name="benefits-of-using-the-kernels"></a>Voordelen van het gebruik van de kernels
-
-Hier volgen enkele voordelen van het gebruik van de nieuwe kernels op Jupyter-notebook in Spark HDInsight-clusters.
-
-- **Vooraf ingestelde contexten**. Met **PySpark**, **PySpark3**, of de **Spark** kernels, hoeft u niet expliciet de Spark- of Hive-contexten instellen voordat u aan de slag gaat met uw toepassingen. Dit zijn standaard beschikbaar zijn. Deze context zijn:
-   
-  * **sc** - voor Spark-context
-  * **sqlContext** - voor Hive-context
-   
-    U moet dus geen instructies als volgt om in te stellen de contexten worden uitgevoerd:
+    U hoeft dus geen instructies uit te voeren zoals de volgende om de contexten in te stellen:
    
          sc = SparkContext('yarn-client')
          sqlContext = HiveContext(sc)
-   
-    U kunt de vooraf ingestelde contexten in plaats daarvan rechtstreeks in uw toepassing gebruiken.
 
-- **Cel-magics**. De PySpark-kernel biedt enkele vooraf gedefinieerde "kunt", die zijn speciale opdrachten die u met aanroepen kunt `%%` (bijvoorbeeld `%%MAGIC` `<args>`). De magic-opdracht moet de eerste woord in een codecel en toestaan voor meerdere regels van inhoud. Het magische woord moet het eerste woord in de cel. Toevoegen van voordat de Magic-pakket, zelfs commentaar, veroorzaakt een fout.     Zie voor meer informatie over magics [hier](https://ipython.readthedocs.org/en/stable/interactive/magics.html).
-   
-    De volgende tabel geeft een lijst van de andere magics die beschikbaar zijn via de kernels.
+    In plaats daarvan kunt u rechtstreeks de vooraf ingestelde contexten in uw toepassing gebruiken.
 
-   | Magic-pakket | Voorbeeld | Description |
+- **Cel magics**. De PySpark-kernel biedt enkele vooraf gedefinieerde ' magics '. Dit zijn speciale opdrachten die u kunt aanroepen met `%%` (bijvoorbeeld `%%MAGIC` `<args>`). De Magic-opdracht moet het eerste woord in een code-cel zijn en meerdere regels inhoud toestaan. Het Magic-woord moet het eerste woord in de cel zijn. Het toevoegen van iets vóór het magische, zelfs opmerkingen, veroorzaakt een fout.     Zie [hier](https://ipython.readthedocs.org/en/stable/interactive/magics.html)voor meer informatie over magics.
+
+    De volgende tabel geeft een lijst van de verschillende magics die beschikbaar zijn via de kernels.
+
+   | magische | Voorbeeld | Description |
    | --- | --- | --- |
-   | Help |`%%help` |Genereert een tabel met alle beschikbare magics met voorbeeld en beschrijving |
-   | info |`%%info` |Uitvoer sessie-informatie voor het eindpunt van de huidige Livy |
-   | Configureren |`%%configure -f`<br>`{"executorMemory": "1000M"`,<br>`"executorCores": 4`} |Hiermee configureert u de parameters voor het maken van een sessie. De markering forceren (-f) is verplicht als een sessie al is gemaakt, die zorgt ervoor dat de sessie verwijderd en opnieuw gemaakt. Bekijk [van Livy POST /sessions aanvraagtekst](https://github.com/cloudera/livy#request-body) voor een lijst met geldige parameters op. Parameters moeten worden doorgegeven als een JSON-tekenreeks en moeten op de volgende regel na de Magic-pakket, zoals wordt weergegeven in de voorbeeldkolom. |
-   | SQL |`%%sql -o <variable name>`<br> `SHOW TABLES` |Voert een Hive-query op de sqlContext. Als de `-o` parameter is doorgegeven, het resultaat van de query worden bewaard de %% lokale Python-context als een [Pandas](https://pandas.pydata.org/) dataframe. |
-   | lokale |`%%local`<br>`a=1` |De code in de volgende regels wordt lokaal uitgevoerd. Code moet geldige Python2-code ook, ongeacht de kernel die u gebruikt. Dit het geval is, zelfs als u hebt geselecteerd **PySpark3** of **Spark** kernels tijdens het maken van het notitieblok, als u de `%%local` magic in een cel, die cel moet alleen geldige Python2 code hebben. |
-   | logs |`%%logs` |Voert de logboeken voor de huidige Livy-sessie. |
-   | delete |`%%delete -f -s <session number>` |Hiermee verwijdert u een specifieke sessie van de huidige Livy-eindpunt. U kunt de sessie die is gestart voor de kernel zelf niet verwijderen. |
-   | opruimen |`%%cleanup -f` |Hiermee verwijdert u alle sessies voor de huidige Livy-eindpunt, met inbegrip van dit notitieblok sessie. De vlag force -f is verplicht. |
+   | Help |`%%help` |Hiermee wordt een tabel met alle beschik bare magics gegenereerd met voor beeld en beschrijving |
+   | info |`%%info` |Hiermee worden sessie gegevens voor het huidige livy-eind punt uitgevoerd |
+   | configureren |`%%configure -f`<br>`{"executorMemory": "1000M"`,<br>`"executorCores": 4`} |Hiermee configureert u de para meters voor het maken van een sessie. De geforceerde vlag (-f) is verplicht als er al een sessie is gemaakt. Hiermee zorgt u ervoor dat de sessie wordt verwijderd en opnieuw wordt gemaakt. Bekijk [de hoofd tekst van de LIVY post/Sessions](https://github.com/cloudera/livy#request-body) voor een lijst met geldige para meters. Para meters moeten worden door gegeven als een JSON-teken reeks en moeten zich op de volgende regel na de Magic bevallen, zoals wordt weer gegeven in de kolom voor beeld. |
+   | sql |`%%sql -o <variable name>`<br> `SHOW TABLES` |Voert een Hive-query op de sqlContext. Als de para meter `-o` wordt door gegeven, wordt het resultaat van de query persistent gemaakt in de lokale python-context%% als een [Panda](https://pandas.pydata.org/) data frame. |
+   | lokaal |`%%local`<br>`a=1` |Alle code in de volgende regels wordt lokaal uitgevoerd. De code moet een geldige Python2-code zijn, zelfs als de kernel die u gebruikt. , Zelfs als u **PySpark3** of **Spark** -kernels hebt geselecteerd tijdens het maken van het notitie blok en u de `%%local` Magic in een cel gebruikt, mag die cel alleen een geldige Python2-code hebben. |
+   | logs |`%%logs` |Hiermee worden de logboeken voor de huidige livy-sessie uitgevoerd. |
+   | delete |`%%delete -f -s <session number>` |Hiermee verwijdert u een specifieke sessie van het huidige livy-eind punt. U kunt de sessie die voor de kernel zelf wordt gestart, niet verwijderen. |
+   | opruimen |`%%cleanup -f` |Hiermee verwijdert u alle sessies voor het huidige livy-eind punt, inclusief de sessie van dit notitie blok. De Force Flag-f is verplicht. |
 
    > [!NOTE]  
-   > Naast de magics die door de PySpark-kernel toegevoegd, kunt u ook gebruiken de [ingebouwde IPython magics](https://ipython.org/ipython-doc/3/interactive/magics.html#cell-magics), waaronder `%%sh`. U kunt de `%%sh` magic-blok van code en scripts uitvoeren op het hoofdknooppunt van het cluster.
+   > Naast de magics die door de PySpark-kernel worden toegevoegd, kunt u ook de [ingebouwde IPython magics](https://ipython.org/ipython-doc/3/interactive/magics.html#cell-magics)gebruiken, met inbegrip van `%%sh`. U kunt de `%%sh` Magic gebruiken voor het uitvoeren van scripts en code blok op het cluster hoofd knooppunt.
 
-- **Visualisatie automatisch**. De Pyspark-kernel visualiseert automatisch de uitvoer van Hive- en SQL-query's. U kunt kiezen tussen de verschillende typen visualisaties, met inbegrip van de tabel, Pie, regel, gebied, -balk.
+- **Automatische visualisatie**. De Pyspark-kernel visualiseert automatisch de uitvoer van Hive-en SQL-query's. U kunt kiezen uit verschillende soorten visualisaties, waaronder tabel, cirkel, lijn, vlak, staaf.
 
-## <a name="parameters-supported-with-the-sql-magic"></a>Parameters die worden ondersteund met de %% sql Magic-pakket
-De `%%sql` Magic-pakket biedt ondersteuning voor verschillende parameters die u gebruiken kunt voor het beheren van het type van de uitvoer die u ontvangt wanneer u query's uitvoeren. De volgende tabel bevat de uitvoer.
+## <a name="parameters-supported-with-the-sql-magic"></a>Para meters die worden ondersteund met%% SQL Magic
+
+De `%%sql` Magic ondersteunt verschillende para meters die u kunt gebruiken om het soort uitvoer te bepalen dat u ontvangt wanneer u query's uitvoert. De volgende tabel bevat de uitvoer.
 
 | Parameter | Voorbeeld | Description |
 | --- | --- | --- |
-| -o |`-o <VARIABLE NAME>` |Gebruik deze parameter om vast te leggen het resultaat van de query in de %% lokale Python-context, als een [Pandas](https://pandas.pydata.org/) dataframe. De naam van de variabele dataframe is de naam van de variabele die u opgeeft. |
-| -q |`-q` |Gebruik deze optie uitschakelen visualisaties voor de cel. Als u niet autovisualize de inhoud van een cel wilt en alleen wilt vastleggen als een dataframe, gebruikt u `-q -o <VARIABLE>`. Als u uitschakelen visualisaties wilt zonder het vastleggen van de resultaten (bijvoorbeeld voor het uitvoeren van een SQL-query, zoals een `CREATE TABLE` instructie), gebruikt u `-q` zonder op te geven een `-o` argument. |
-| -m |`-m <METHOD>` |Waar **methode** is **nemen** of **voorbeeld** (de standaardwaarde is **nemen**). Als u de methode **nemen**, de kernel kiest elementen vanaf de bovenkant van de resultatenset voor gegevens die worden opgegeven door MAXROWS (Zie verderop in deze tabel). Als u de methode **voorbeeld**, willekeurig voorbeelden elementen van de gegevensset op basis van de kernel `-r` parameter, die vervolgens worden beschreven in deze tabel. |
-| -r |`-r <FRACTION>` |Hier **FRACTIE** is een getal met drijvende komma tussen 0,0 en 1,0 liggen. Als de voorbeeldmethode voor de SQL-query is `sample`, en vervolgens de kernel willekeurig voorbeelden van de opgegeven fractie van de elementen van de resultatenset voor u. Bijvoorbeeld, als u een SQL-query uitvoeren met de argumenten `-m sample -r 0.01`, en vervolgens 1% van de Resultatenrijen willekeurig steekproeven worden genomen. |
-| -n |`-n <MAXROWS>` |**MAXROWS** is een geheel getal. De kernel beperkt het aantal rijen dat u uitvoer wilt **MAXROWS**. Als **MAXROWS** is een negatief getal zoals **-1**, en vervolgens het aantal rijen in de resultatenset niet beperkt is. |
+| -o |`-o <VARIABLE NAME>` |Gebruik deze para meter om het resultaat van de query op te slaan in de context%% Local python als een [Panda](https://pandas.pydata.org/) data frame. De naam van de variabele data frame is de naam van de variabele die u opgeeft. |
+| -q |`-q` |Gebruik deze optie om visualisaties voor de cel uit te scha kelen. Als u de inhoud van een cel niet wilt visualiseren en deze alleen wilt vastleggen als een data frame, gebruikt u `-q -o <VARIABLE>`. Als u visualisaties wilt uitschakelen zonder de resultaten vast te leggen (bijvoorbeeld voor het uitvoeren van een SQL-query, zoals een instructie `CREATE TABLE`), gebruikt u `-q` zonder het argument `-o` op te geven. |
+| -m |`-m <METHOD>` |Waarbij de **methode** ofwel **nemen** of voor **beeld** is (de standaard instelling **is).** Als de methode wordt **toegepast**, worden de elementen van de top van de resultatenset OPGEHAALD door MaxRows (verderop in deze tabel beschreven). Als de methode een voor **beeld**is, wordt de kernel wille keurig voor beelden van elementen van de gegevensset volgens de para meter `-r`, die wordt beschreven in de volgende tabel. |
+| -r |`-r <FRACTION>` |Hier is een **fractie** een getal met drijvende komma tussen 0,0 en 1,0. Als de voorbeeld methode voor de SQL-query `sample` is, wordt in wille keurige steek proef de opgegeven Fractie van de elementen van de resultatenset voor u weer gegeven. Als u bijvoorbeeld een SQL-query uitvoert met de argumenten `-m sample -r 0.01`, worden 1% van de resultaat rijen wille keurig weer steek proef. |
+| -n |`-n <MAXROWS>` |**MaxRows** is een geheel getal. De kernel beperkt het aantal uitvoer rijen tot **MaxRows**. Als **MaxRows** een negatief getal is, zoals **-1**, is het aantal rijen in de resultatenset niet beperkt. |
 
 **Voorbeeld:**
 
     %%sql -q -m sample -r 0.1 -n 500 -o query2
     SELECT * FROM hivesampletable
 
-De instructie hiervoor doet het volgende:
+De bovenstaande instructie doet het volgende:
 
-* Hiermee selecteert u alle records uit **hivesampletable**.
-* Omdat we - q, schakelt autovisualization.
-* Omdat we `-m sample -r 0.1 -n 500` het willekeurig 10% van de rijen in de hivesampletable-voorbeelden en de limiet voor de grootte van het resultaat ingesteld op 500 rijen.
-* Ten slotte, omdat we gebruikt `-o query2` Bovendien bespaart u de uitvoer in een dataframe met de naam **query2**.
+* Hiermee worden alle records uit **hivesampletable**geselecteerd.
+* Omdat we-q gebruiken, wordt de functie voor autovisualisatie uitgeschakeld.
+* Omdat we `-m sample -r 0.1 -n 500` gebruiken, wille keurig 10% van de rijen in de hivesampletable en wordt de grootte van het resultaat ingesteld op 500 rijen.
+* Ten slotte, omdat we `-o query2` hebben gebruikt, wordt de uitvoer ook opgeslagen in een data frame met de naam **query2**.
 
 ## <a name="considerations-while-using-the-new-kernels"></a>Overwegingen bij het gebruik van de nieuwe kernels
 
-Welke kernel die u gebruikt, verbruikt waardoor de laptops met de clusterresources.  Met deze kernels, omdat de contexten worden vooraf ingesteld, gewoon afsluiten van de notebooks de context niet beëindigen en kan daarom de clusterbronnen nog steeds worden gebruikt. Er is een goede gewoonte om te gebruiken de **sluiten en stoppen** optie uit van het notitieblok **bestand** menu wanneer u klaar met het notitieblok bent, beëindigt de context en vervolgens de notebook afgesloten.
+Welke kernel u gebruikt, waardoor de notitie blokken die worden uitgevoerd, verbruikt de cluster resources.  Met deze kernels, omdat de contexten vooraf worden ingesteld, wordt de context niet door de notitie blokken afgesloten, waardoor de cluster bronnen nog steeds in gebruik zijn. Het is een goed idee om de optie **sluiten en stoppen** te gebruiken in het menu **bestand** van het notitie blok wanneer u klaar bent met het notitie blok, waardoor de context wordt beëindigd en vervolgens het notitie blok wordt gesloten.
 
-## <a name="where-are-the-notebooks-stored"></a>Waar worden de notebooks opgeslagen?
+## <a name="where-are-the-notebooks-stored"></a>Waar worden de notitie blokken opgeslagen?
 
-Als uw cluster gebruikmaakt van Azure Storage als het standaardaccount voor opslag, Jupyter-notebooks worden opgeslagen naar storage-account onder de **/HdiNotebooks** map.  Notitieblokken, bestanden en mappen die u vanuit Jupyter maakt zijn toegankelijk is vanaf de storage-account.  Bijvoorbeeld, als u een map maken met Jupyter **mijnmap** en een laptop **myfolder/mynotebook.ipynb**, u hebt toegang tot die laptop `/HdiNotebooks/myfolder/mynotebook.ipynb` binnen het opslagaccount.  Het omgekeerde geldt ook, dat wil zeggen, als u een notitieblok rechtstreeks uploaden naar uw opslagaccount op `/HdiNotebooks/mynotebook1.ipynb`, de laptop is ook van Jupyter zichtbaar.  Notitieblokken blijven in de storage-account, zelfs nadat het cluster wordt verwijderd.
+Als uw cluster Azure Storage als standaard-opslag account gebruikt, worden Jupyter-notebooks opgeslagen in het opslag account in de map **/HdiNotebooks** .  Notebooks, tekst bestanden en mappen die u maakt vanuit Jupyter zijn toegankelijk vanuit het opslag account.  Als u bijvoorbeeld Jupyter gebruikt om een map **MyFolder** en een notebook **MyFolder/mynotebook. ipynb**te maken, hebt u toegang tot dat notebook op `/HdiNotebooks/myfolder/mynotebook.ipynb` binnen het opslag account.  Het omgekeerde is ook waar, dat wil zeggen, als u een notitie blok rechtstreeks naar uw opslag account uploadt op `/HdiNotebooks/mynotebook1.ipynb`, het notitie blok ook zichtbaar is vanuit Jupyter.  Notebooks blijven aanwezig in het opslag account, zelfs nadat het cluster is verwijderd.
 
 > [!NOTE]  
-> HDInsight-clusters met Azure Data Lake Storage als de standaardopslag geen notitieblokken opgeslagen in de bijbehorende opslag.
+> HDInsight-clusters met Azure Data Lake Storage als standaard opslag slaan geen notitie blokken op in gekoppelde opslag.
 
-De manier waarop notitieblokken worden opgeslagen in het opslagaccount is compatibel met [Apache Hadoop HDFS](https://hadoop.apache.org/docs/r1.2.1/hdfs_design.html). Dus als u SSH in het cluster dat kunt u opdrachten voor het beheer zoals wordt weergegeven in het volgende codefragment:
+De manier waarop notitie blokken worden opgeslagen in het opslag account, is compatibel met [Apache HADOOP HDFS](https://hadoop.apache.org/docs/r1.2.1/hdfs_design.html). Als u dus SSH in het cluster, kunt u de opdrachten voor bestands beheer gebruiken, zoals wordt weer gegeven in het volgende code fragment:
 
     hdfs dfs -ls /HdiNotebooks                            # List everything at the root directory – everything in this directory is visible to Jupyter from the home page
     hdfs dfs –copyToLocal /HdiNotebooks                   # Download the contents of the HdiNotebooks folder
     hdfs dfs –copyFromLocal example.ipynb /HdiNotebooks   # Upload a notebook example.ipynb to the root folder so it’s visible from Jupyter
 
-Ongeacht of het cluster maakt gebruik van Azure Storage of Azure Data Lake Storage als het standaardaccount voor opslag, worden ook de notebooks opgeslagen op het hoofdknooppunt van het cluster op `/var/lib/jupyter`.
+Ongeacht of het cluster Azure Storage of Azure Data Lake Storage gebruikt als het standaard opslag account, worden de notitie blokken ook opgeslagen op het cluster hoofd knooppunt op `/var/lib/jupyter`.
 
 ## <a name="supported-browser"></a>Ondersteunde browser
 
-Jupyter-notebooks in HDInsight Spark-clusters worden alleen ondersteund op Google Chrome.
+Jupyter-notebooks op Spark HDInsight-clusters worden alleen ondersteund op Google Chrome.
 
 ## <a name="feedback"></a>Feedback
 
-De nieuwe kernels zijn in de fase in ontwikkeling en zullen vervallen na verloop van tijd. Dit kan ook betekenen dat de API's wijzigen kan omdat deze kernels vervallen. We zouden alle feedback die u hebt tijdens het gebruik van deze nieuwe kernels waarderen. Dit is handig in de definitieve versie van deze kernels vormgeven. U kunt feedback uw opmerkingen/onder de **Feedback** sectie onder aan dit artikel.
+De nieuwe kernels bevinden zich in de ontwikkelings fase en zullen gedurende een periode vervallen. Dit kan ook betekenen dat Api's kunnen veranderen als deze kernels rijp zijn. We waarderen de feedback die u hebt bij het gebruik van deze nieuwe kernels. Dit is handig bij het vorm geven van de definitieve versie van deze kernels. U kunt uw opmerkingen/feedback in het gedeelte **feedback** onder aan dit artikel laten staan.
 
 ## <a name="seealso"></a>Zie ook
-* [Overzicht: Apache Spark in Azure HDInsight](apache-spark-overview.md)
+
+* [Krijgt Apache Spark in azure HDInsight](apache-spark-overview.md)
 
 ### <a name="scenarios"></a>Scenario's
-* [Apache Spark met BI: Interactieve gegevensanalyses met behulp van Spark in HDInsight met BI-hulpprogramma's uitvoeren](apache-spark-use-bi-tools.md)
-* [Apache Spark met Machine Learning: Spark in HDInsight gebruiken voor het analyseren van de gebouwtemperatuur met behulp van HVAC-gegevens](apache-spark-ipython-notebook-machine-learning.md)
-* [Apache Spark met Machine Learning: Spark in HDInsight gebruiken voor de resultaten van voedingsinspectie voorspellen](apache-spark-machine-learning-mllib-ipython.md)
-* [Websitelogboekanalyse met Apache Spark in HDInsight](apache-spark-custom-library-website-log-analysis.md)
+
+* [Apache Spark met BI: Interactieve gegevens analyse uitvoeren met behulp van Spark in HDInsight met BI-hulpprogram ma's](apache-spark-use-bi-tools.md)
+* [Apache Spark met Machine Learning: Spark in HDInsight gebruiken voor het analyseren van de gebouw temperatuur met behulp van HVAC-gegevens](apache-spark-ipython-notebook-machine-learning.md)
+* [Apache Spark met Machine Learning: Spark in HDInsight gebruiken om voedsel inspectie resultaten te voors pellen](apache-spark-machine-learning-mllib-ipython.md)
+* [Analyse van website logboeken met Apache Spark in HDInsight](apache-spark-custom-library-website-log-analysis.md)
 
 ### <a name="create-and-run-applications"></a>Toepassingen maken en uitvoeren
+
 * [Een zelfstandige toepassing maken met behulp van Scala](apache-spark-create-standalone-application.md)
 * [Apache Livy gebruiken om taken op afstand uit te voeren in een Apache Spark-cluster](apache-spark-livy-rest-interface.md)
 
 ### <a name="tools-and-extensions"></a>Tools en uitbreidingen
+
 * [De invoegtoepassing HDInsight Tools for IntelliJ IDEA gebruiken om Spark Scala-toepassingen te maken en in te dienen](apache-spark-intellij-tool-plugin.md)
-* [De invoegtoepassing HDInsight Tools for IntelliJ IDEA gebruiken om op te sporen Apache Spark-toepassingen op afstand](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
+* [De invoeg toepassing HDInsight tools for IntelliJ-idee gebruiken om op afstand fouten in Apache Spark toepassingen op te sporen](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
 * [Apache Zeppelin-notebooks gebruiken met een Apache Spark-cluster in HDInsight](apache-spark-zeppelin-notebook.md)
 * [Externe pakketten gebruiken met Jupyter-notebooks](apache-spark-jupyter-notebook-use-external-packages.md)
 * [Jupyter op uw computer installeren en verbinding maken met een HDInsight Spark-cluster](apache-spark-jupyter-notebook-install-locally.md)
 
 ### <a name="manage-resources"></a>Resources beheren
+
 * [Resources beheren voor het Apache Spark-cluster in Azure HDInsight](apache-spark-resource-manager.md)
 * [Taken die worden uitgevoerd in een Apache Spark-cluster in HDInsight, traceren en er fouten in oplossen](apache-spark-job-debugging.md)

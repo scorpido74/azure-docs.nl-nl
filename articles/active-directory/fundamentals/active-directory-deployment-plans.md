@@ -12,12 +12,12 @@ ms.date: 08/20/2019
 ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a335bcbb45b1aac48a3aaea282ffeffe1696f4c
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: b7c851c2d865a7b553be2cd0f619ad09985115a3
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69900067"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71336863"
 ---
 # <a name="azure-active-directory-deployment-plans"></a>Azure Active Directory-implementatieplannen
 Zoekt u end-to-end-richt lijnen voor het implementeren van Azure Active Directory (Azure AD)-mogelijkheden? Met Azure AD-implementatie plannen kunt u de bedrijfs waarde, plannings overwegingen en operationele procedures door lopen die nodig zijn om algemene Azure AD-mogelijkheden te implementeren.
@@ -47,6 +47,14 @@ Rollen kunnen de volgende zijn:
 - **C**ontributor naar plan en resultaat van project 
 
 - **Ik**nformed van het project plan en de resultaten
+
+
+## <a name="best-practices-for-a-pilot"></a>Aanbevolen procedures voor een pilot
+Met een pilot kunt u testen met een kleine groep voordat u een mogelijkheid voor iedereen inschakelt. Zorg ervoor dat als onderdeel van uw test, elke use-case binnen uw organisatie grondig wordt getest. Het is het beste om een specifieke groep proef gebruikers te richten voordat u deze naar uw organisatie als geheel implementeert.
+
+In uw eerste golf, richt IT, bruikbaarheid en andere geschikte gebruikers die kunnen testen en feedback geven. Deze feedback moet worden gebruikt om de communicatie en instructies die u naar uw gebruikers verzendt verder te ontwikkelen en om inzicht te krijgen in de soorten problemen die uw ondersteunings medewerkers kunnen zien. 
+
+Het uitbreiden van de implementatie naar grotere groepen gebruikers moet worden uitgevoerd door het bereik van de doel groep (en) te verg Roten. Dit kan worden gedaan via een [dynamisch groepslid maatschap](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-dynamic-membership)of door gebruikers hand matig toe te voegen aan de doel groep (en).
 
 
 ## <a name="deploy-authentication"></a>Verificatie implementeren

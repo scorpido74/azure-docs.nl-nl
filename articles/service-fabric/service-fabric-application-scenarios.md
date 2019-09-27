@@ -14,19 +14,19 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 4/24/2019
 ms.author: atsenthi
-ms.openlocfilehash: 6563d6e7c454f44e1a70d725191e56d3f90315c2
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 91e85f762e05c836fe32f5743cc48afed30ae983
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "67052598"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71327299"
 ---
 # <a name="service-fabric-application-scenarios"></a>Toepassings scenario's Service Fabric
 Azure Service Fabric biedt een betrouwbaar en flexibel platform waar u veel soorten bedrijfs toepassingen en-services kunt schrijven en uitvoeren. Deze toepassingen en micro Services kunnen stateless of stateful zijn, en de resources worden verdeeld over virtuele machines om de efficiëntie te maximaliseren. 
 
 Met de unieke architectuur van Service Fabric kunt u bijna realtime gegevens analyses uitvoeren, berekeningen in het geheugen, parallelle trans acties en gebeurtenis verwerking in uw toepassingen. U kunt uw toepassingen eenvoudig omhoog of omlaag schalen (in werkelijkheid of uitgaand), afhankelijk van de veranderende resource vereisten.
 
-Lees de [architectuur micro Services in Azure service Fabric](https://docs.microsoft.com/azure/architecture/reference-architectures/microservices/service-fabric) en [Aanbevolen procedures voor het ontwerpen](service-fabric-best-practices-applications.md)van toepassingen met behulp van service Fabric voor ontwerp richtlijnen voor het bouwen van apps.
+Lees de [architectuur micro Services in Azure service Fabric](https://docs.microsoft.com/azure/architecture/reference-architectures/microservices/service-fabric) en [Aanbevolen procedures voor het ontwerpen van toepassingen met behulp van service Fabric](service-fabric-best-practices-applications.md)voor ontwerp richtlijnen voor het bouwen van apps.
 
 Overweeg het gebruik van het Service Fabric platform voor de volgende typen toepassingen:
 
@@ -68,9 +68,9 @@ Stateful micro Services is van toepassing op toepassings ontwerpen omdat ze de n
 
 In de volgende diagrammen ziet u de verschillen tussen het ontwerpen van een toepassing die staatloos is en die de statussen heeft. Door gebruik te maken van de [reliable Services](service-fabric-reliable-services-introduction.md) -en [reliable actors](service-fabric-reliable-actors-introduction.md) -programmeer modellen, kunnen stateful Services de complexiteit van de toepassing beperken tijdens hoge door Voer en lage latentie.
 
-Hier volgt een voor beeld van een toepassing die stateless Services gebruikt: ![Toepassing die stateless Services gebruikt][Image1]
+Hier volgt een voor beeld van een toepassing die stateless Services gebruikt: ![Application die stateless Services gebruiken @ no__t-1
 
-Hier volgt een voor beeld van een toepassing die stateful Services gebruikt: ![Toepassing die stateless Services gebruikt][Image2]
+Hier volgt een voor beeld van een toepassing die stateful Services gebruikt: ![Application die stateless Services gebruiken @ no__t-1
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -87,5 +87,5 @@ Hier volgt een voor beeld van een toepassing die stateful Services gebruikt: ![T
   * [Service Fabric Services schalen](service-fabric-concepts-scalability.md)
   * [Service Fabric Services partitioneren](service-fabric-concepts-partitioning.md)
 
-[Image1]: media/service-fabric-application-scenarios/AppwithStatelessServices.jpg
-[Image2]: media/service-fabric-application-scenarios/AppwithStatefulServices.jpg
+[Image1]: media/service-fabric-application-scenarios/AppwithStatelessServices.png
+[Image2]: media/service-fabric-application-scenarios/AppwithStatefulServices.png

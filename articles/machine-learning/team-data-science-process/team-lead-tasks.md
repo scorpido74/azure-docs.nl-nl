@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 09/23/2019
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 84cca255d8cf768d44e01c8f3a892e3c9830184e
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.openlocfilehash: 9c6d0fcc20afc613094f10e9f3fb7c917ec6fa73
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71316714"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71327237"
 ---
 # <a name="tasks-for-the-team-lead-on-a-team-data-science-process-team"></a>Taken voor de team leider van een team data Science process team
 
@@ -140,7 +140,7 @@ Als u uw team opslagplaatsen wilt vullen met de inhoud van de groep algemene ops
    
    ![Import selecteren](./media/team-lead-tasks/import-repo.png)
    
-1. In het dialoog venster **een Git-opslag plaats importeren** selecteert u **Git** als **bron type**en voert u de URL in voor de opslag plaats van de gemeen schappelijke sjabloon onder **kloon-URL**. De URL is *https:\//\<server naam >/\<naam van de organisatie\<> naam van de opslag plaats/_git/>* . Bijvoorbeeld: *https:\//dev.Azure.com/DataScienceUnit/GroupCommon/_git/GroupProjectTemplate*. 
+1. In het dialoog venster **een Git-opslag plaats importeren** selecteert u **Git** als **bron type**en voert u de URL in voor de opslag plaats van de gemeen schappelijke sjabloon onder **kloon-URL**. De URL is *https: \/ @ no__t-2 @ no__t-3server name >/\<organization name >/_git/\<repository name >* . Bijvoorbeeld: *https: \//dev. Azure. com/DataScienceUnit/GroupCommon/_git/GroupProjectTemplate*. 
    
 1. Selecteer **importeren**. De inhoud van de opslag plaats van de groeps sjabloon wordt geïmporteerd in uw team sjabloon opslagplaats. 
    
@@ -230,7 +230,7 @@ git push
 > 
 > `git config --global user.name <your name>`
 > 
-> `git config --global user.email \<your email address>`
+> `git config --global user.email <your email address>`
 > 
 > Als u een aantal Git-opslag plaatsen wilt door voeren, gebruikt u dezelfde naam en hetzelfde e-mail adres voor alle. Het gebruik van dezelfde naam en hetzelfde e-mail adres is handig bij het bouwen van Power BI-Dash boards voor het bijhouden van uw Git-activiteiten in meerdere opslag plaatsen.
 

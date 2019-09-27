@@ -1,323 +1,263 @@
 ---
 title: Team Data Science Process manager groepstaken
-description: Een overzicht van de taken voor een groepmanager op een data science-teamproject.
+description: Een gedetailleerd overzicht van de taken voor een groeps beheerder in een Data Science-Team project.
 author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/13/2017
+ms.date: 09/24/2019
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 85a4aca0c4b80eaab1f43bcbec33dc9cf37aa655
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f95bb30f547e863fc7a796e69fffe1e2334e489c
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65950098"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71326795"
 ---
-# <a name="tasks-for-a-group-manager-on-a-data-science-team-project"></a>Taken voor een groepmanager op een data science-teamproject
+# <a name="team-data-science-process-group-manager-tasks"></a>Team Data Science Process manager groepstaken
 
-In dit onderwerp bevat de taken die de beheerder van een groep is opslagbewerkingen uit te voeren voor hun data science-organisatie. Het doel is het opzetten van gezamenlijke groepsomgeving die standaardiseert op de [Team Data Science Process](overview.md) (TDSP). Voor een overzicht van de rollen personeel en de bijbehorende taken die worden beheerd door een team van gegevenswetenschappers standaardiseren over dit proces, Zie [Team Data Science Process rollen en taken](roles-tasks.md).
+In dit artikel worden de taken beschreven die een *groeps Manager* voor een Data Science-organisatie heeft voltooid. De groeps beheerder beheert de gehele data Science-eenheid in een onderneming. Een Data Science-eenheid kan verschillende teams hebben, die allemaal aan een groot aantal data Science-projecten werken in afzonderlijke zakelijke verticales. Het doel van de groeps beheerder is om een groeps omgeving samen te stellen die wordt gestandaardiseerd op het [team data Science process](overview.md) (TDSP). Voor een overzicht van alle personeels rollen en bijbehorende taken die worden verwerkt door een Data Science-team dat wordt gestandardization op de TDSP, raadpleegt u [rollen en taken voor team data Science process](roles-tasks.md).
 
-De **groepsbeheerder** is de manager van de volledige data science-eenheid in een onderneming. Een data science-eenheid mogelijk meerdere teams, die elk is bezig met meerdere data science-projecten in afzonderlijk zakelijk verticalen. De Manager van een groep kunnen hun taken delegeren aan een vervangend, maar de taken die zijn gekoppeld aan de rol zijn hetzelfde. Er zijn zes belangrijkste taken, zoals wordt weergegeven in het volgende diagram:
+In het volgende diagram ziet u de zes installatie taken voor groeps beheer. Groeps beheerders kunnen hun taken overdragen aan vervangingen, maar de taken die aan de rol zijn gekoppeld, worden niet gewijzigd.
 
-![0](./media/group-manager-tasks/tdsp-group-manager.png)
+![Taken voor groeps beheer](./media/group-manager-tasks/tdsp-group-manager.png)
 
+1. Stel een **Azure DevOps-organisatie** in voor de groep.
+2. Maak het standaard **GroupCommon-project** in de Azure DevOps-organisatie.
+3. Maak de **GroupProjectTemplate** -opslag plaats in azure opslag plaatsen.
+4. Maak de **GroupUtilities** -opslag plaats in azure opslag plaatsen.
+5. Importeer de inhoud van de TDSP- **ProjectTemplate** en- **hulpprogram Ma's** van het micro soft-team in de groep algemene opslag plaatsen.
+6. Stel **lidmaatschap** en **machtigingen** voor team leden in voor toegang tot de groep.
 
-> [!NOTE] 
-> We een overzicht van de stappen die nodig zijn voor het instellen van een TDSP-groep-omgeving met Azure DevOps-Services in de volgende instructies. We geven over het uitvoeren van deze taken met Azure DevOps-Services vanwege de manier waarop we TDSP bij Microsoft implementeert. Als een andere code die als host fungeert platform wordt gebruikt voor uw groep, worden de taken die moeten worden uitgevoerd door de manager van de groep in het algemeen niet wijzigen. Maar de manier om deze taken uit te voeren afwijken.
-
-1. Instellen van **Azure DevOps Services** voor de groep.
-2. Maak een **group-project** op Azure DevOps-Services (voor gebruikers van Azure DevOps-Services)
-3. Maak de **GroupProjectTemplate** opslagplaats
-4. Maak de **GroupUtilities** opslagplaats
-5. Seed de **GroupProjectTemplate** en **GroupUtilities** opslagplaatsen voor het Azure DevOps-Services met inhoud van de TDSP-opslagplaatsen.
-6. Instellen van de **beveiligingsmechanismen** voor teamleden toegang krijgen tot de GroupProjectTemplate en GroupUtilities-opslagplaatsen.
-
-Elk van de voorgaande stappen wordt in detail beschreven. Maar eerst, we raakt u vertrouwd met de afkortingen en bespreken de vereisten voor het werken met opslagplaatsen.
-
-### <a name="abbreviations-for-repositories-and-directories"></a>Afkortingen voor opslagplaatsen en mappen
-
-In deze zelfstudie wordt de afgekorte naam voor opslagplaatsen en mappen. Deze definities wordt het eenvoudiger om te volgen de bewerkingen tussen de opslagplaatsen en mappen. Deze notatie wordt gebruikt in de volgende secties:
-
-- **G1**: De project-opslagplaats voor sjablonen die zijn ontwikkeld en beheerd door de TDSP-team van Microsoft.
-- **G2**: De opslagplaats van de hulpprogramma's die zijn ontwikkeld en beheerd door de TDSP-team van Microsoft.
-- **R1**: De opslagplaats GroupProjectTemplate op Git die u op de server van uw Azure DevOps-groep instelt.
-- **R2**: De opslagplaats GroupUtilities op Git die u op de server van uw Azure DevOps-groep instelt.
-- **LG1** en **LG2**: De lokale mappen op uw computer dat u G1 en G2, respectievelijk kloont.
-- **LR1** en **LR2**: De lokale mappen op uw computer dat u R1 en R2, respectievelijk kloont.
-
-### <a name="pre-requisites-for-cloning-repositories-and-checking-code-in-and-out"></a>Vereisten voor het klonen van opslagplaatsen en code in en uit controleren
-
-- GIT moet worden geïnstalleerd op uw computer. Als u gebruikmaakt van een Data Science Virtual Machine (DSVM), Git vooraf is geïnstalleerd en u bent klaar om te gaan. Raadpleeg anders de [platformen en hulpprogramma's voor bijlage](platforms-and-tools.md#appendix).
-- Als u een **Windows DSVM**, moet u beschikken over [Git Credential Manager (GCM)](https://github.com/Microsoft/Git-Credential-Manager-for-Windows) op uw computer geïnstalleerd. In het README.md-bestand, schuif omlaag naar de **Download en installeer** sectie en klikt u op de *nieuwste installatieprogramma van*. Deze stap gaat u naar de pagina van de meest recente installatieprogramma. Het .exe-installatieprogramma hier downloaden en uitvoeren.
-- Als u **Linux-DSVM**, het maken van een openbare SSH-sleutel op uw DSVM en toe te voegen aan uw groep Azure DevOps-Services. Zie voor meer informatie over SSH, de **openbare maken van SSH-sleutel** sectie de [platformen en hulpprogramma's voor bijlage](platforms-and-tools.md#appendix).
-
-
-## <a name="1-create-account-on-azure-devops-services"></a>1. Account maken op Azure DevOps-Services
-
-Het Azure DevOps-Services als host fungeert voor de volgende opslagplaatsen:
-
-- **algemene opslagplaatsen groep**: Voor algemene doeleinden opslagplaatsen die kunnen worden vastgesteld door meerdere teams binnen een groep voor meerdere data science-projecten. Bijvoorbeeld, de *GroupProjectTemplate* en *GroupUtilities* opslagplaatsen.
-- **team opslagplaatsen**:  Opslagplaatsen voor specifieke teams binnen een groep. Deze opslagplaatsen zijn specifiek voor de behoeften van een team, en kunnen worden vastgesteld door meerdere projecten uitgevoerd door dat team, maar geen algemene genoeg om nog nuttig zijn voor meerdere teams binnen een groep van data science.
-- **Project opslagplaatsen**: Opslagplaatsen beschikbaar gesteld voor specifieke projecten. Deze opslagplaatsen zijn mogelijk niet algemeen om nog nuttig zijn voor meerdere projecten uitgevoerd door een team en voor meerdere teams in de groep van een data science.
-
-
-### <a name="setting-up-the-azure-devops-services-sign-into-your-microsoft-account"></a>Instellen van het Azure DevOps Services Meld u aan bij uw Microsoft-account
-
-Ga naar [Visual Studio online](https://www.visualstudio.com/), klikt u op **aanmelden** in de rechterbovenhoek en meld u aan bij uw Microsoft-account.
-
-![1](./media/group-manager-tasks/login.PNG)
-
-Als u een Microsoft-account hebt, klikt u op **Meld u nu** voor het maken van een Microsoft-account en meldt u zich aan met behulp van dit account.
-
-Als uw organisatie een Visual Studio/MSDN-abonnement heeft, klikt u op de groene **Meld u aan met uw werk- of schoolaccount** vak en meld u aan met de referenties die zijn gekoppeld aan dit abonnement.
-
-![2](./media/group-manager-tasks/signin.PNG)
-
-
-
-Nadat u zich hebt aangemeld, klikt u op **nieuw Account maken** in de rechterbovenhoek zoals weergegeven in de volgende afbeelding:
-
-![3](./media/group-manager-tasks/create-account-1.PNG)
-
-Vul de gegevens voor de Azure DevOps-Services die u maken wilt de **maken van uw account** wizard met de volgende waarden:
-
-- **Server-URL**: Vervang *mysamplegroup* door uw eigen *servernaam*. De URL van uw server is het verstandig om: *https://\<servername\>. visualstudio.com*.
-- **Beheren met behulp van code:** Selecteer  **_Git_** .
-- **Naam van testproject:** Voer *GroupCommon*.
-- **Ordenen met behulp van werk:** Kies *flexibele*.
-- **Host uw projecten in:** Kies een geolocatie. In dit voorbeeld, kiezen wij *Zuid-centraal VS*.
-
-![4](./media/group-manager-tasks/fill-in-account-information.png)
+In de volgende zelf studie worden de stappen in detail besproken. 
 
 > [!NOTE] 
-> Als u het volgende pop-upvenster ziet nadat u op **nieuw account maken**, moet u klikken op **details wijzigen** om weer te geven van alle velden die zijn gespecificeerd.
-
-![5](./media/group-manager-tasks/create-account-2.png)
-
-
-Klik op **Doorgaan**.
-
-## <a name="2-groupcommon-project"></a>2. GroupCommon Project
-
-De **GroupCommon** pagina (*https://\<servername\>.visualstudio.com/GroupCommon*) wordt geopend nadat uw DevOps-Services van Azure is gemaakt.
-
-![6](./media/group-manager-tasks/server-created-2.PNG)
-
-## <a name="3-create-the-grouputilities-r2-repository"></a>3. Maken van de opslagplaats GroupUtilities (R2)
-
-Maakt de **GroupUtilities** opslagplaats onder Azure DevOps-Services (R2):
-
-- Om te openen de **maken van een nieuwe opslagplaats** wizard, klikt u op **nieuwe opslagplaats** op de **versiebeheer** tabblad van het project.
-
-  ![7](./media/group-manager-tasks/create-grouputilities-repo-1.png)
-
-- Selecteer *Git* als de **Type**, en voer *GroupUtilities* als de **naam**, en klik vervolgens op **maken**.
-
-  ![8](./media/group-manager-tasks/create-grouputilities-repo-2.png)
-
-Nu u twee Git-opslagplaatsen ziet **GroupProjectTemplate** en **GroupUtilities** in de linkerkolom van de **versiebeheer** pagina:
-
-![9](./media/group-manager-tasks/two-repo-under-groupCommon.PNG)
-
-
-## <a name="4-create-the-groupprojecttemplate-r1-repository"></a>4. Maken van de opslagplaats GroupProjectTemplate (R1)
-
-De installatie van de opslagplaatsen voor de server van het Azure DevOps-groep bestaat uit twee taken:
-
-- Wijzig de naam van de standaard **GroupCommon** opslagplaats***GroupProjectTemplate***.
-- Maak de **GroupUtilities** -opslagplaats in de Azure DevOps-Services onder project **GroupCommon**.
-
-Instructies voor de eerste taak zijn opgenomen in deze sectie na opmerkingen over naamconventies of onze opslagplaatsen en mappen. De instructies voor de tweede taak zijn opgenomen in de volgende sectie voor stap 4.
-
-### <a name="rename-the-default-groupcommon-repository"></a>Wijzig de naam van de standaard GroupCommon-opslagplaats
-
-Naam wijzigen van de standaard **GroupCommon** opslagplaats als *GroupProjectTemplate* (waarnaar wordt verwezen als **R1** in deze zelfstudie):
-
-- Klik op **samenwerken op code** op de **GroupCommon** -projectpagina. Hiermee gaat u naar de pagina standaard Git-opslagplaats van het project **GroupCommon**. Deze Git-opslagplaats is momenteel leeg.
-
-  ![10](./media/group-manager-tasks/rename-groupcommon-repo-3.png)
-
-- Klik op **GroupCommon** in de linkerbovenhoek (gemarkeerd met een rood kader in de volgende afbeelding) op de pagina van de Git-opslagplaats van **GroupCommon** en selecteer **beheren opslagplaatsen**(gemarkeerd met een groene vakje in de volgende afbeelding). Deze procedure wordt de **CONFIGURATIESCHERM**.
-- Selecteer de **versiebeheer** tabblad van het project.
-
-  ![11](./media/group-manager-tasks/rename-groupcommon-repo-4.png)
-
-- Klik op de **...**  aan de rechterkant van de **GroupCommon** -opslagplaats in het linkerdeelvenster en selecteer **naam opslagplaats**.
-
-  ![12](./media/group-manager-tasks/rename-groupcommon-repo-5.png)
-
-- In de **Wijzig de naam van de opslagplaats GroupCommon** wizard die POP's, voer *GroupProjectTemplate* in de **naam van de opslagplaats** vak en klik vervolgens op **wijzigen** .
-
-  ![13](./media/group-manager-tasks/rename-groupcommon-repo-6.png)
-
-
-
-## <a name="5-seed-the-r1--r2-repositories-on-the-azure-devops-services"></a>5. Seed-de R1 & R2 opslagplaatsen op het Azure DevOps-Services
-
-In deze fase van de procedure worden het seeden de *GroupProjectTemplate* (R1) en *GroupUtilities* (R2)-opslagplaatsen die u hebt ingesteld in de vorige sectie. Deze opslagplaatsen zijn gemaakt met de ***ProjectTemplate*** (**G1**) en ***hulpprogramma's voor*** (**G2**) opslagplaatsen die worden beheerd door Microsoft voor het Team Data Science Process. Wanneer deze seeding is voltooid:
-
-- uw opslagplaats R1 u dezelfde set van mappen en sjablonen die door de G1 worden ondersteund
-- de R2-opslagplaats zal bevatten van de set van data science-hulpprogramma's die zijn ontwikkeld door Microsoft.
-
-De seeding procedure gebruikt de mappen op uw lokale DSVM als tussenliggende staging-sites. Hier volgen de stappen in deze sectie wordt gevolgd:
-
-- G1 & G2 - gekloond naar LG1 & LG2 ->
-- R1 & R2 - gekloond naar LR1 & LR2 ->
-- LG1 & LG2 - bestanden gekopieerd naar LR1 & LR2 ->
-- (Optioneel) aanpassing van LR1 & LR2
-- LR1 & LR2 - inhoud toevoegen aan R1 & R2 ->
-
-
-### <a name="clone-g1--g2-repositories-to-your-local-dsvm"></a>G1 & G2 opslagplaatsen op uw lokale DSVM klonen
-
-In deze stap maakt u een de opslagplaats van Team Data Science Process (TDSP) ProjectTemplate (G1) en hulpprogramma's (G2) van de TDSP-GitHub-opslagplaatsen op mappen klonen in uw lokale DSVM als LG1 en LG2:
-
-- Maak een map om te fungeren als de hoofdmap voor het hosten van uw klonen van de opslagplaatsen.
-  -  Maak een map in de Windows-DSVM *C:\GitRepos\TDSPCommon*.
-  -  Maak een map in de Linux-DSVM *GitRepos\TDSPCommon* in de basismap.
-
-- Voer de volgende reeks opdrachten van de *GitRepos\TDSPCommon* directory.
-
-  `git clone https://github.com/Azure/Azure-TDSP-ProjectTemplate`<br>
-  `git clone https://github.com/Azure/Azure-TDSP-Utilities`
-
-  ![14](./media/group-manager-tasks/two-folder-cloned-from-TDSP-windows.PNG)
-
-- Met behulp van de namen van onze verkorte opslagplaats, is dit wat deze scripts hebben bereikt:
-    - G1 - gekloond in LG1 ->
-    - G2 - gekloond in LG2 ->
-- Nadat het klonen is voltooid, zou het mogelijk om te zien van twee directory's, _ProjectTemplate_ en _hulpprogramma's voor_onder **GitRepos\TDSPCommon** directory.
-
-### <a name="clone-r1--r2-repositories-to-your-local-dsvm"></a>R1 & R2 opslagplaatsen op uw lokale DSVM klonen
-
-In deze stap maakt u kloont de opslagplaats GroupProjectTemplate (R1) en GroupUtilities opslagplaats (R2) op de lokale mappen (waarnaar wordt verwezen als LR1 en LR2, respectievelijk) onder **GitRepos\GroupCommon** op uw DSVM.
-
-- Als u de URL's van de opslagplaatsen R1 en R2, gaat u naar uw **GroupCommon** startpagina op Azure DevOps-Services. Dit heeft meestal de URL *https://\<naam van uw Services voor Azure DevOps\>.visualstudio.com/GroupCommon*.
-- Klik op **CODE**.
-- Kies de **GroupProjectTemplate** en **GroupUtilities** opslagplaatsen. Kopiëren en opslaan van elk van de URL's (HTTPS voor Windows; SSH voor Linux) uit de **-kloon-URL** -element, op zijn beurt voor gebruik in de volgende scripts:
-
-  ![15](./media/group-manager-tasks/find_https_ssh_2.PNG)
-
-- Wijzig in het **GitRepos\GroupCommon** map op uw Windows of Linux-DSVM en voer een van de volgende sets opdrachten voor het klonen van R1 en R2 naar die map.
-
-Hier volgen de scripts voor Windows en Linux:
-
-    # Windows DSVM
-
-    git clone <the HTTPS URL of the GroupProjectTemplate repository>
-    git clone <the HTTPS URL of the GroupUtilities repository>
-
-![16](./media/group-manager-tasks/clone-two-empty-group-reo-windows-2.PNG)
-
-    # Linux DSVM
-
-    git clone <the SSH URL of the GroupProjectTemplate repository>
-    git clone <the SSH URL of the GroupUtilities repository>
-
-![17](./media/group-manager-tasks/clone-two-empty-group-reo-linux-2.PNG)
-
-> [!NOTE] 
-> Verwacht te ontvangen waarschuwingsberichten LR1 en LR2 leeg zijn.
-
-- Met behulp van de namen van onze verkorte opslagplaats, is dit wat deze scripts hebben bereikt:
-    - R1 - gekloond in LR1 ->
-    - LR2-R2 - gekloond in >   
-
-
-### <a name="seed-your-groupprojecttemplate-lr1-and-grouputilities-lr2"></a>Seed-uw GroupProjectTemplate (LR1) en GroupUtilities (LR2)
-
-Vervolgens in uw lokale computer, Kopieer de inhoud van hulpprogramma's en ProjectTemplate mappen (met uitzondering van de metagegevens in de mappen .git) onder GitRepos\TDSPCommon naar uw adreslijsten GroupProjectTemplate en GroupUtilities onder **GitRepos\ GroupCommon**. Dit zijn de twee taken in deze stap voltooien:
-
-- Kopieer de bestanden in GitRepos\TDSPCommon\ProjectTemplate (**LG1**) naar GitRepos\GroupCommon\GroupProjectTemplate (**LR1**)
-- Kopieer de bestanden in GitRepos\TDSPCommon\Utilities (**LG2** naar GitRepos\GroupCommon\Utilities (**LR2**).
-
-Voer de volgende scripts in PowerShell-console (Windows) of Shell-script (Linux) voor het bereiken van deze twee taken. U wordt gevraagd voor het invoeren van de volledige paden naar LG1, LR1 LG2 en LR2. De paden die u invoert worden gevalideerd. Wanneer u een map die niet bestaat, wordt u gevraagd voor het invoeren van het opnieuw.
-
-    # Windows DSVM
-    
-    wget "https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/TDSP/tdsp_local_copy_win.ps1" -outfile "tdsp_local_copy_win.ps1"
-    .\tdsp_local_copy_win.ps1 1
-
-![18](./media/group-manager-tasks/copy-two-folder-to-group-folder-windows-2.PNG)
-
-U kunt nu zien dat bestanden in mappen LG1 en LG1 (met uitzondering van bestanden in de map .git) zijn gekopieerd naar LR1 en LR2, respectievelijk.
-
-![19](./media/group-manager-tasks/copy-two-folder-to-group-folder-windows.PNG)
-
-    # Linux DSVM
-
-    wget "https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/TDSP/tdsp_local_copy_linux.sh"
-    bash tdsp_local_copy_linux.sh 1
-
-![20](./media/group-manager-tasks/copy-two-folder-to-group-folder-linux-2.PNG)
-
-U ziet nu dat de bestanden in de twee mappen (met uitzondering van bestanden in de map .git) respectievelijk GroupProjectTemplate en GroupUtilities worden gekopieerd.
-
-![21](./media/group-manager-tasks/copy-two-folder-to-group-folder-linux.PNG)
-
-- Met behulp van de namen van onze verkorte opslagplaats, is dit wat deze scripts hebben bereikt:
-    - LG1 - bestanden gekopieerd naar LR1 ->
-    - LG2 - bestanden gekopieerd naar LR2 ->
-
-### <a name="option-to-customize-the-contents-of-lr1--lr2"></a>Optie voor het aanpassen van de inhoud van LR1 & LR2
-    
-Als u aanpassen van de inhoud van LR1 en LR2 wilt om te voldoen aan de specifieke behoeften van uw groep, is dit de fase van de procedure waar die geschikt is. U kunt de sjabloon voor documenten wijzigen, wijzigen van de mapstructuur en bestaande hulpprogramma's die uw groep heeft ontwikkeld of die handig zijn voor uw hele groep toevoegen.
-
-### <a name="add-the-contents-in-lr1--lr2-to-r1--r2-on-group-server"></a>De inhoud in de LR1 & LR2 toevoegen aan R1 & R2 op de server voor groep
-
-Nu moet u de inhoud in LR1 en LR2 toevoegen aan opslagplaatsen R1 en R2. Hier volgen de git bash-opdrachten die u in Windows PowerShell- of Linux uitvoeren kunt.
-
-Voer de volgende opdrachten uit de map GitRepos\GroupCommon\GroupProjectTemplate:
-
-    git status
-    git add .
-    git commit -m"push from DSVM"
-    git push
-
-De m - optie kunt u een bericht voor de git-doorvoer instellen.
-
-![22](./media/group-manager-tasks/push-to-group-server-2.PNG)
-
-U kunt zien dat in van uw groep Azure DevOps-Services, in de opslagplaats GroupProjectTemplate de bestanden worden gesynchroniseerd direct.
-
-![23](./media/group-manager-tasks/push-to-group-server-showed-up-2.PNG)
-
-Ten slotte wijzigen in de **GitRepos\GroupCommon\GroupUtilities** directory en voer de dezelfde set git bash-opdrachten:
-
-    git status
-    git add .
-    git commit -m"push from DSVM"
-    git push
-
-> [!NOTE] 
-> Als dit de eerste keer dat u door te op een Git-opslagplaats voeren, moet u globale parameters configureren *user.name* en *user.email* voordat u de `git commit` opdracht. Voer de volgende twee opdrachten uit:
->
->  `git config --global user.name <your name>`  
->  `git config --global user.email <your email address>`
->
-> Als u gegevens worden doorgevoerd op meerdere Git-opslagplaatsen, gebruikt u dezelfde naam en e-mailadres wanneer u aan elk van deze. Met dezelfde naam en e-mailadres bewijst handige later op wanneer u Power BI-dashboards voor het bijhouden van uw Git-activiteiten op meerdere opslagplaatsen kunt bouwen.
-
-
-- Met behulp van de namen van onze verkorte opslagplaats, is dit wat deze scripts hebben bereikt:
-    - LR1 - inhoud toevoegen aan R1 ->
-    - LR2 - inhoud toevoegen aan R2 ->
-
-## <a name="6-add-group-members-to-the-group-server"></a>6. Groepsleden toevoegen aan de groep-server
-
-Startpagina van uw groep Azure DevOps Services, klik op de **tandwielpictogram** naast de naam van de gebruiker in de rechterbovenhoek, selecteert u vervolgens de **Security** tabblad. U kunt leden toevoegen aan uw groep met verschillende machtigingen.
-
-![24](./media/group-manager-tasks/add_member_to_group.PNG)
-
+> In dit artikel wordt gebruikgemaakt van Azure DevOps om een TDSP-groeps omgeving in te stellen, omdat dat gaat om TDSP te implementeren bij micro soft. Als uw groep gebruikmaakt van andere code hosting-of ontwikkelings platformen, zijn de taken van de groeps beheerder hetzelfde, maar de manier om deze te volt ooien, kan afwijken.
+
+## <a name="create-an-organization-and-project-in-azure-devops"></a>Een organisatie en project maken in azure DevOps
+
+1. Ga naar [VisualStudio.Microsoft.com](https://visualstudio.microsoft.com), selecteer **in** de rechter bovenhoek aanmelden en meld u aan bij uw Microsoft-account. 
+   
+   ![Meld u aan bij uw Microsoft-account](./media/group-manager-tasks/signinvs.png)
+   
+   Als u geen Microsoft-account hebt, selecteert u **nu registreren**, maakt u een Microsoft-account en meldt u zich aan met dit account. Als uw organisatie een Visual Studio-abonnement heeft, meldt u zich aan met de referenties voor dat abonnement.
+   
+1. Nadat u zich hebt aangemeld, selecteert u in de rechter bovenhoek van de Azure DevOps **-pagina nieuwe organisatie maken**.
+   
+   ![Nieuwe organisatie maken](./media/group-manager-tasks/create-organization.png)
+   
+1. Als u wordt gevraagd om akkoord te gaan met de service voorwaarden, de privacyverklaring en de gedrags code, selecteert u **continue**.
+   
+1. Geef in het dialoog venster voor aanmelding uw Azure DevOps-organisatie een naam en accepteer de toewijzing van de hostgebied en selecteer een andere regio. Selecteer vervolgens **Doorgaan**. 
+
+1. Voer onder **een project maken om aan de slag te gaan**, *GroupCommon*in en selecteer vervolgens **project maken**. 
+   
+   ![Project maken](./media/group-manager-tasks/create-project.png)
+
+De pagina **samen vatting** van **GroupCommon** -project wordt geopend. De URL van de pagina is *https: \/ @ no__t-2 @ no__t-3servername >/\<organization-name >/GroupCommon*.
+
+![Pagina project overzicht](./media/group-manager-tasks/project-summary.png)
+
+## <a name="set-up-the-group-common-repositories"></a>De algemene opslag plaatsen voor groepen instellen
+
+Azure opslag plaatsen fungeert als host voor de volgende typen opslag plaatsen voor uw groep:
+
+- **Algemene opslag plaatsen groeperen**: Opslag plaatsen voor algemene doel einden die meerdere teams binnen een Data Science-eenheid kunnen aannemen voor veel data Science-projecten. 
+- **Team opslagplaatsen**:  Opslag plaatsen voor specifieke teams binnen een Data Science-eenheid. Deze opslag plaatsen zijn specifiek voor de behoeften van een team en kunnen worden gebruikt voor meerdere projecten binnen dat team, maar zijn niet algemeen genoeg om te worden gebruikt in meerdere teams binnen een Data Science-eenheid.
+- **Project opslagplaatsen**: Opslag plaatsen voor specifieke projecten. Dergelijke opslag plaatsen zijn mogelijk niet algemeen genoeg voor meerdere projecten binnen een team of voor andere teams in een Data Science-eenheid.
+
+Als u de algemene opslag plaatsen voor groepen in uw project wilt instellen, kunt u het volgende doen: 
+- Wijzig de naam van de standaard **GroupCommon** -opslag plaats in **GroupProjectTemplate**
+- Een nieuwe **GroupUtilities** -opslag plaats maken
+
+### <a name="rename-the-default-project-repository-to-groupprojecttemplate"></a>De naam van de standaard project opslagplaats wijzigen in GroupProjectTemplate
+
+De naam van de standaard **GroupCommon** -project opslagplaats wijzigen in **GroupProjectTemplate**:
+
+1. Selecteer op de pagina **GroupCommon** project **Summary** **opslag plaatsen**. Met deze actie gaat u naar de standaard **GroupCommon** -opslag plaats van het GroupCommon-project, dat momenteel leeg is.
+   
+1. Klik boven aan de pagina op de pijl naast **GroupCommon** en selecteer **opslag plaatsen beheren**.
+   
+   ![Opslag plaatsen beheren](./media/group-manager-tasks/rename-groupcommon-repo-3.png)
+   
+1. Selecteer op de pagina **project instellingen** de optie **..** . naast **GroupCommon**en selecteer vervolgens **opslag locatie naam wijzigen**. 
+   
+   ![Selecteren... en selecteer vervolgens bibliotheek naam wijzigen](./media/group-manager-tasks/rename-groupcommon-repo-4.png)
+   
+1. Voer in het pop-upvenster **naam van de GroupCommon-opslag plaats de** optie *GroupProjectTemplate*in en selecteer **naam wijzigen**. 
+   
+   ![Naam van opslag plaats wijzigen](./media/group-manager-tasks/rename-groupcommon-repo-6.png)
+
+### <a name="create-the-grouputilities-repository"></a>De GroupUtilities-opslag plaats maken
+
+De **GroupUtilities** -opslag plaats maken:
+
+1. Selecteer op de pagina **GroupCommon** project **Summary** **opslag plaatsen**. 
+   
+1. Klik boven aan de pagina op de pijl naast **GroupProjectTemplate** en selecteer **nieuwe opslag plaats**.
+   
+   ![Nieuwe opslag plaats selecteren](./media/group-manager-tasks/create-grouputilities-repo-1.png)
+   
+1. In het dialoog venster **een nieuwe opslag plaats maken** selecteert u **Git** als het **type**, voert u *GroupUtilities* in als de naam van de **opslag plaats**en selecteert u **maken**.
+   
+   ![GroupUtilities-opslag plaats maken](./media/group-manager-tasks/create-grouputilities-repo-2.png)
+   
+1. Selecteer op de pagina **project instellingen** **opslag** plaatsen onder **opslag plaatsen** in de linkernavigatiebalk om de twee groeps opslagplaatsen te bekijken: **GroupProjectTemplate** en **GroupUtilities**.
+   
+   ![Twee groeps opslagplaatsen](./media/group-manager-tasks/two-repositories.png)
+
+## <a name="import-the-microsoft-tdsp-team-repositories"></a>Importeer de micro soft TDSP-team opslagplaatsen
+
+In dit deel van de zelf studie importeert u de inhoud van de opslag plaatsen **ProjectTemplate** en **hulpprogram ma's** die worden beheerd door het micro soft TDSP-team in uw **GroupProjectTemplate** -en **GroupUtilities** -opslag plaatsen. 
+
+De TDSP-team opslagplaatsen importeren:
+
+1. Selecteer op de start pagina van **GroupCommon** -project **opslag plaatsen** in het linkernavigatievenster. De standaard **GroupProjectTemplate** opslag plaats wordt geopend. 
+   
+1. Selecteer **importeren**op de pagina **GroupProjectTemplate is leeg** . 
+   
+   ![Import selecteren](./media/group-manager-tasks/import-repo.png)
+   
+1. In het dialoog venster **een Git-opslag plaats importeren** selecteert u **Git** als **bron type**en voert u *https: \//github. com/azure/Azure-TDSP-ProjectTemplate. git* in voor de **kloon-URL**. Selecteer vervolgens **importeren**. De inhoud van de ProjectTemplate-opslag plaats van micro soft TDSP team wordt geïmporteerd in uw GroupProjectTemplate-opslag plaats. 
+   
+   ![Micro soft TDSP-team opslagplaats importeren](./media/group-manager-tasks/import-repo-2.png)
+   
+1. Klik boven aan de pagina **opslag plaatsen** op de **GroupUtilities** -opslag plaats.
+   
+1. Herhaal het import proces om de inhoud van de opslag plaats van micro soft TDSP-team, *https: \//github. com/azure/Azure-TDSP-Utilities. git*, te importeren in uw **GroupUtilities** - **opslag plaats.** 
+   
+Elk van de twee groeps opslagplaatsen bevat nu alle bestanden, behalve die in de map *. git* , van de bijbehorende opslag plaats van het micro soft TDSP-team. 
+
+## <a name="customize-the-contents-of-the-group-repositories"></a>De inhoud van de groeps opslagplaatsen aanpassen
+
+Als u de inhoud van uw groeps opslagplaatsen wilt aanpassen om te voldoen aan de specifieke behoeften van uw groep, kunt u dat nu doen. U kunt de bestanden wijzigen, de mapstructuur wijzigen of bestanden toevoegen die uw groep heeft ontwikkeld of die handig zijn voor uw groep.
+
+### <a name="make-changes-in-azure-repos"></a>Wijzigingen aanbrengen in azure opslag plaatsen
+
+De inhoud van de opslag plaats aanpassen:
+
+1. Selecteer op de pagina **GroupCommon** project **Summary** **opslag plaatsen**. 
+   
+1. Selecteer boven aan de pagina de opslag plaats die u wilt aanpassen.
+
+1. Navigeer in de opslag plaats-mapstructuur naar de map of het bestand dat u wilt wijzigen. 
+   
+   - Als u nieuwe mappen of bestanden wilt maken, selecteert u de pijl naast **Nieuw**. 
+     
+     ![Nieuw bestand maken](./media/group-manager-tasks/new-file.png)
+     
+   - Als u bestanden wilt uploaden, selecteert u **bestand (en) uploaden**. 
+     
+     ![Bestanden uploaden](./media/group-manager-tasks/upload-files.png)
+     
+   - Als u bestaande bestanden wilt bewerken, gaat u naar het bestand en selecteert u vervolgens **bewerken**. 
+     
+     ![Een bestand bewerken](./media/group-manager-tasks/edit-file.png)
+     
+1. Nadat u bestanden hebt toegevoegd of bewerkt, selecteert u **door voeren**.
+   
+   ![Wijzigingen door voeren](./media/group-manager-tasks/commit.png)
+
+### <a name="make-changes-using-your-local-machine-or-dsvm"></a>Wijzigingen aanbrengen met behulp van uw lokale machine of DSVM
+
+Als u wijzigingen wilt aanbrengen met behulp van uw lokale machine of DSVM en de wijzigingen naar de groeps opslagplaatsen wilt pushen, moet u ervoor zorgen dat u beschikt over de vereisten voor het werken met Git en Dsvm:
+
+- Een Azure-abonnement als u een DSVM wilt maken.
+- Git geïnstalleerd op de computer. Als u een DSVM gebruikt, is Git vooraf geïnstalleerd. Raadpleeg anders de [platformen en hulpprogramma's voor bijlage](platforms-and-tools.md#appendix).
+- Als u een DSVM wilt gebruiken, wordt de Windows-of Linux-DSVM gemaakt en geconfigureerd in Azure. Zie de [Data Science virtual machine-documentatie](/azure/machine-learning/data-science-virtual-machine/)voor meer informatie en instructies.
+- Voor een Windows DSVM is [Git Credential Manager (GCM)](https://github.com/Microsoft/Git-Credential-Manager-for-Windows) op uw computer geïnstalleerd. Schuif in het bestand *README.MD* omlaag naar de sectie **downloaden en installeren** en selecteer het **nieuwste installatie programma**. Down load het installatie programma *. exe* op de pagina installatie programma en voer het uit. 
+- Voor een Linux-DSVM is een open bare SSH-sleutel ingesteld op uw DSVM en toegevoegd aan Azure DevOps. Zie de sectie **open bare SSH-sleutel maken** in de [bijlage platformen en hulpprogram ma's](platforms-and-tools.md#appendix)voor meer informatie en instructies. 
+
+Kopieer of *kloon* eerst de opslag plaats naar uw lokale machine. 
+   
+1. Selecteer op de pagina **GroupCommon** project **Summary** **opslag plaatsen**en selecteer boven aan de pagina de opslag plaats die u wilt klonen.
+   
+1. Selecteer op de pagina opslag plaats rechtsboven **klonen** .
+   
+1. In het dialoog venster kloon van de **opslag plaats** selecteert u **https** voor een http-verbinding of **SSH** voor een SSH-verbinding en kopieert u de kloon-URL onder de **opdracht regel** naar het klem bord.
+   
+   ![Opslag plaats klonen](./media/group-manager-tasks/clone.png)
+   
+1. Maak de volgende mappen op de lokale computer:
+   
+   - Voor Windows: **C:\GitRepos\GroupCommon**
+   - Voor Linux, **$/GitRepos/GroupCommon** in uw basismap 
+   
+1. Ga naar de map die u hebt gemaakt.
+   
+1. Voer in Git-Bash de opdracht uit `git clone <clone URL>.`
+   
+   Een van de volgende opdrachten kloont bijvoorbeeld de **GroupUtilities** -opslag plaats naar de *GroupCommon* -map op uw lokale computer. 
+   
+   **HTTPS-verbinding:**
+   
+   ```bash
+   git clone https://DataScienceUnit@dev.azure.com/DataScienceUnit/GroupCommon/_git/GroupUtilities
+   ```
+   
+   **SSH-verbinding:**
+   
+   ```bash
+   git clone git@ssh.dev.azure.com:v3/DataScienceUnit/GroupCommon/GroupUtilities
+   ```
+
+Nadat u alle gewenste wijzigingen in de lokale kloon van uw opslag plaats hebt aangebracht, kunt u de wijzigingen naar de algemene opslag plaatsen van de gedeelde groep pushen. 
+
+Voer de volgende Git Bash-opdrachten uit vanuit uw lokale **GroupProjectTemplate** -of **GroupUtilities** -map.
+
+```bash
+git add .
+git commit -m "push from local"
+git push
+```
+
+> [!NOTE]
+> Als dit de eerste keer is dat u een Git-opslag plaats doorvoert, moet u mogelijk de algemene para meters *User.name* en *User. email* configureren voordat u de `git commit` opdracht uitvoert. Voer de volgende twee opdrachten uit:
+> 
+> `git config --global user.name <your name>`
+> 
+> `git config --global user.email <your email address>`
+> 
+> Als u een aantal Git-opslag plaatsen wilt door voeren, gebruikt u dezelfde naam en hetzelfde e-mail adres voor alle. Het gebruik van dezelfde naam en hetzelfde e-mail adres is handig bij het bouwen van Power BI-Dash boards voor het bijhouden van uw Git-activiteiten in meerdere opslag plaatsen.
+
+## <a name="add-group-members-and-configure-permissions"></a>Groeps leden toevoegen en machtigingen configureren
+
+Leden toevoegen aan de groep:
+
+1. In azure DevOps selecteert u op de start pagina van het **GroupCommon** -project de optie **project instellingen** in het linkernavigatievenster. 
+   
+1. Selecteer op de pagina **project instellingen** links de optie **teams**en selecteer vervolgens **het** **team GroupCommon**. 
+   
+   ![Teams configureren](./media/group-manager-tasks/teams.png)
+   
+1. Selecteer op de pagina **team profiel** de optie **toevoegen**.
+   
+   ![Toevoegen aan GroupCommon-team](./media/group-manager-tasks/add-to-team.png)
+   
+1. In het dialoog venster **gebruikers en groepen toevoegen** zoekt en selecteert u leden om aan de groep toe te voegen en selecteert u vervolgens **wijzigingen opslaan**. 
+   
+   ![Gebruikers en groepen toevoegen](./media/group-manager-tasks/add-users.png)
+   
+
+Machtigingen voor leden configureren:
+
+1. Selecteer **machtigingen**in de **project instellingen** links in het navigatie venster. 
+   
+1. Selecteer op de pagina **machtigingen** de groep waaraan u leden wilt toevoegen. 
+   
+1. Selecteer op de pagina voor die groep de optie **leden**en selecteer vervolgens **toevoegen**. 
+   
+1. Zoek en selecteer leden in het pop-upvenster **leden** toevoegen aan de groep en selecteer vervolgens **Opslaan**. 
+   
+   ![Machtigingen verlenen aan leden](./media/group-manager-tasks/grant-permissions.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Hier vindt u koppelingen naar de meer gedetailleerde beschrijvingen van de functies en taken die zijn gedefinieerd door het Team Data Science Process:
+Hier vindt u koppelingen naar gedetailleerde beschrijvingen van de andere rollen en taken in het team data Science process:
 
-- [Groepsbeheerder taken voor een team van gegevenswetenschappers](group-manager-tasks.md)
 - [Team Lead taken voor een team van gegevenswetenschappers](team-lead-tasks.md)
 - [Project Lead taken voor een team van gegevenswetenschappers](project-lead-tasks.md)
-- [Afzonderlijke inzenders project voor een team van gegevenswetenschappers](project-ic-tasks.md)
+- [Individuele Inzender taken projecteren voor een Data Science-Team](project-ic-tasks.md)

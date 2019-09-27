@@ -3,7 +3,7 @@ title: Aanmelden bij een virtuele Linux-machine met Azure Active Directory refer
 description: Meer informatie over het maken en configureren van een virtuele Linux-machine om u aan te melden met Azure Active Directory-verificatie.
 services: virtual-machines-linux
 documentationcenter: ''
-author: cynthn
+author: iainfoulds
 manager: gwallace
 editor: ''
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/29/2019
-ms.author: cynthn
-ms.openlocfilehash: e30adf8b694d744e64fb7528b75b85d4a772a723
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.author: iainfou
+ms.openlocfilehash: b473844f1507285e0052ca1f8de00f6ca3207e6f
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71316760"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71327095"
 ---
 # <a name="preview-log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication"></a>Preview: Meld u aan bij een virtuele Linux-machine in azure met Azure Active Directory-verificatie
 
@@ -88,7 +88,7 @@ Het maken van de virtuele machine en de ondersteunende resources duurt enkele mi
 ## <a name="install-the-azure-ad-login-vm-extension"></a>De Azure AD-VM-extensie voor aanmelden installeren
 
 > [!NOTE]
-> Als u deze exention implementeert naar een eerder gemaakte virtuele machine, moet u ervoor zorgen dat er ten minste 1 GB geheugen aan de computer is toegewezen, anders kan de uitbrei ding niet worden geïnstalleerd
+> Als u deze uitbrei ding implementeert op een eerder gemaakte virtuele machine, controleert u of er ten minste 1 GB aan geheugen is toegewezen, anders kan de uitbrei ding niet worden geïnstalleerd
 
 Als u zich wilt aanmelden bij een virtuele Linux-machine met Azure AD-referenties, installeert u de Azure Active Directory aanmeld-VM-extensie. VM-extensies zijn kleine toepassingen die configuratie en automatiserings taken na de implementatie bieden op virtuele machines van Azure. Gebruik [AZ VM extension set](/cli/azure/vm/extension#az-vm-extension-set) om de *AADLoginForLinux* -extensie te installeren op de virtuele machine met de naam *MyVM* in de resource groep *myResourceGroup* :
 

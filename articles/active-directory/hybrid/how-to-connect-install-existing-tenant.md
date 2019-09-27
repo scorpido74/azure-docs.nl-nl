@@ -1,6 +1,6 @@
 ---
-title: 'Azure AD Connect: Wanneer u Azure AD al hebt | Microsoft Docs'
-description: In dit onderwerp wordt beschreven hoe u verbinding maken wanneer u een bestaande Azure AD-tenant hebt.
+title: 'Azure AD Connect: Wanneer u al Azure AD hebt | Microsoft Docs'
+description: In dit onderwerp wordt beschreven hoe u verbinding maken gebruikt wanneer u een bestaande Azure AD-Tenant hebt.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -16,62 +16,63 @@ ms.date: 04/25/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1495c14ae4c588661452aa3696019da00be47548
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3636b88b14cf7e76e4fb023434316e7ee31ded04
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64571374"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71336822"
 ---
-# <a name="azure-ad-connect-when-you-have-an-existent-tenant"></a>Azure AD Connect: Wanneer u een bestaande tenant hebt
-De meeste van de onderwerpen over het gebruik van Azure AD Connect wordt ervan uitgegaan dat u begint met een nieuwe Azure AD-tenant en dat er geen gebruikers of er andere objecten zijn. Maar als u hebt gestart met een Azure AD-tenant, gevuld zijn met gebruikers en andere objecten en wilt u nu verbinding maken met de, en in dit onderwerp is voor u.
+# <a name="azure-ad-connect-when-you-have-an-existent-tenant"></a>Azure AD Connect: Wanneer u een bestaande Tenant hebt
+In de meeste onderwerpen over het gebruik van Azure AD Connect wordt ervan uitgegaan dat u begint met een nieuwe Azure AD-Tenant en dat er geen gebruikers of andere objecten zijn. Maar als u bent begonnen met een Azure AD-Tenant, deze hebt gevuld met gebruikers en andere objecten en nu verbinding maken wilt gebruiken, is dit onderwerp voor u.
 
 ## <a name="the-basics"></a>De basisbeginselen
-Een object in Azure AD is ofwel gemaakt in de cloud (Azure AD) of on-premises. Voor één enkel object, kunt u bepaalde kenmerken on-premises en enkele andere kenmerken niet beheren in Azure AD. Elk object heeft een vlag die aangeeft waar het object wordt beheerd.
+Een object in azure AD is Mastered in de Cloud (Azure AD) of on-premises. Voor één enkel object kunt u bepaalde kenmerken niet on-premises en andere kenmerken in azure AD beheren. Elk object heeft een vlag waarmee wordt aangegeven waar het object wordt beheerd.
 
-U kunt sommige gebruikers on-premises en andere beheren in de cloud. Een veelvoorkomend scenario voor deze configuratie is een organisatie met een combinatie van accounting werknemers en verkoop. De accounting werknemers hebben een on-premises AD-account, maar de verkoop werknemers dat niet doet, ze hebben een account in Azure AD. Sommige gebruikers on-premises en soms in Azure AD beheren.
+U kunt on-premises en andere gebruikers in de Cloud beheren. Een veelvoorkomend scenario voor deze configuratie is een organisatie met een combi natie van boekhoud kundige werk nemers en verkoop medewerkers. De werk nemers van het bedrijf hebben een on-premises AD-account, maar de verkoop medewerkers hebben geen account in azure AD. U beheert sommige gebruikers on-premises en sommige in azure AD.
 
-Als u aan de slag voor het beheren van gebruikers in Azure AD die zich ook in on-premises AD en later wilt verbinding maken met de, en er zijn enkele aanvullende problemen u moet overwegen.
+Als u gebruikers in azure AD wilt beheren die zich ook in on-premises AD bevinden en later verbinding willen gebruiken, zijn er enkele extra zaken die u moet overwegen.
 
-## <a name="sync-with-existing-users-in-azure-ad"></a>Synchroniseren met bestaande gebruikers in Azure AD
-Wanneer u Azure AD Connect installeert en u begint met het synchroniseren, wordt de Azure AD sync-service (in Azure AD) biedt een controle op elk nieuw object en proberen te vinden van een bestaand object zodat deze overeenkomt met. Er zijn drie kenmerken die worden gebruikt voor dit proces: **userPrincipalName**, **proxyAddresses**, en **sourceAnchor**/**immutableID** . Een overeenkomst op **userPrincipalName** en **proxyAddresses** wordt ook wel een **zachte match**. Een overeenkomst op **sourceAnchor** staat bekend als **harde overeenkomst**. Voor de **proxyAddresses** alleen de waarde met het kenmerk **SMTP:** , dat wil zeggen het primaire e-mailadres wordt gebruikt voor de evaluatie.
+## <a name="sync-with-existing-users-in-azure-ad"></a>Synchroniseren met bestaande gebruikers in azure AD
+Wanneer u Azure AD Connect installeert en u begint met het synchroniseren, voert de Azure AD Sync-Service (in azure AD) een controle uit op elk nieuw object en probeert een bestaand object te vinden dat u wilt vergelijken. Er worden drie kenmerken gebruikt voor dit proces: **userPrincipalName**, **proxyAddresses**en **Source Anchor**/**immutableID**. Een overeenkomst op **userPrincipalName** en **proxyAddresses** wordt aangeduid als een **zachte overeenkomst**. Een overeenkomst op **Source Anchor** wordt aangeduid als **hard match**. Voor het kenmerk **proxyAddresses** wordt alleen de waarde met **SMTP:** , het primaire e-mail adres, gebruikt voor de evaluatie.
 
-De overeenkomst wordt alleen beoordeeld voor nieuwe objecten die afkomstig zijn van Connect. Als u een bestaand object wijzigen zodat deze met een van deze kenmerken overeen komt, klikt u vervolgens ziet u een fout in plaats daarvan.
+De overeenkomst wordt alleen geëvalueerd voor nieuwe objecten die afkomstig zijn van verbinding maken. Als u een bestaand object wijzigt zodat dit overeenkomt met een van deze kenmerken, ziet u in plaats daarvan een fout.
 
-Als Azure AD vindt een object waar de kenmerkwaarden zijn hetzelfde voor een object die afkomstig zijn van Connect en of deze al aanwezig zijn in Azure AD, wordt opnieuw verbinding maken met het object in Azure AD gebruikt. Het object eerder door de cloud beheerd is gemarkeerd als on-premises worden beheerd. Alle kenmerken in Azure AD met een waarde in de on-premises AD worden overschreven met de on-premises-waarde. De uitzondering is wanneer een kenmerk heeft een **NULL** on-premises-waarde. In dit geval wordt kunt nog steeds de waarde in Azure AD blijven, maar u deze alleen wijzigen on-premises op iets anders.
+Als in azure AD een object wordt gevonden waarbij de kenmerk waarden hetzelfde zijn voor een object dat afkomstig is van verbinding maken en dat al aanwezig is in azure AD, wordt het object in azure AD overgenomen door verbinding te maken. Het eerder door de Cloud beheerde object wordt gemarkeerd als on-premises beheerd. Alle kenmerken in azure AD met een waarde in on-premises AD worden overschreven door de on-premises waarde. De uitzonde ring is wanneer een kenmerk op locatie een **Null** -waarde heeft. In dit geval blijft de waarde in azure AD behouden, maar u kunt deze nog steeds alleen op locatie wijzigen in iets anders.
 
 > [!WARNING]
-> Omdat alle kenmerken in Azure AD worden overschreven door de waarde van de on-premises gaat, zorg ervoor dat u goede gegevens on-premises hebt. Bijvoorbeeld, als u alleen e-mailadres in Office 365 beheerde en niet bewaard bijgewerkt on-premises AD DS, en vervolgens u alle waarden in Azure AD/Office 365 niet aanwezig is in AD DS verliest.
+> Omdat alle kenmerken in azure AD worden overschreven door de on-premises waarde, moet u ervoor zorgen dat u beschikt over goede gegevens on-premises. Als u bijvoorbeeld alleen een beheerd e-mail adres in Office 365 hebt en dit niet in de on-premises AD DS hebt bijgewerkt, verliest u alle waarden in azure AD/Office 365 die niet aanwezig zijn in AD DS.
 
 > [!IMPORTANT]
-> Als u wachtwoord-sync, waarmee altijd door de express-instellingen gebruikt wordt, wordt het wachtwoord in Azure AD wordt overschreven met het wachtwoord in de on-premises AD. Als uw gebruikers worden gebruikt om verschillende wachtwoorden te beheren, moet u laat ze weten dat ze de on-premises wachtwoord gebruiken moeten wanneer u verbinding hebt geïnstalleerd.
+> Als u wachtwoord synchronisatie gebruikt, dat altijd wordt gebruikt door snelle instellingen, wordt het wacht woord in azure AD overschreven met het wacht woord in on-premises AD. Als uw gebruikers worden gebruikt voor het beheren van verschillende wacht woorden, moet u hen informeren dat ze het on-premises wacht woord moeten gebruiken wanneer u Connect hebt geïnstalleerd.
 
-De vorige sectie en de waarschuwing moeten worden beschouwd als in uw planning. Als u veel wijzigingen hebt aangebracht in Azure AD niet weerspiegeld in on-premises AD DS, moet u van plan bent voor het vullen van AD DS met de bijgewerkte waarden voordat u uw objecten met Azure AD Connect synchroniseert.
+In de vorige sectie en waarschuwing moet rekening worden gehouden met de planning. Als u veel wijzigingen in azure AD hebt aangebracht die niet worden weer gegeven in on-premises AD DS, moet u plannen hoe u AD DS kunt vullen met de bijgewerkte waarden voordat u uw objecten synchroniseert met Azure AD Connect.
 
-Als u overeenkomen met uw objecten met een zachte match, dan zal de **sourceAnchor** wordt toegevoegd aan het object in Azure AD, zodat een vaste overeenkomst kan later worden gebruikt.
+Als u uw objecten met een zachte overeenkomst hebt gevonden, wordt de **Source Anchor** toegevoegd aan het object in azure AD, zodat er later een vaste overeenkomst kan worden gebruikt.
 
 >[!IMPORTANT]
-> Microsoft raadt ten zeerste aan op basis van on-premises-accounts synchroniseren met bestaande beheerdersaccounts in Azure Active Directory.
+> Micro soft raadt u ten zeerste aan om on-premises accounts te synchroniseren met vooraf bestaande beheerders accounts in Azure Active Directory.
 
-### <a name="hard-match-vs-soft-match"></a>Harde-match vs zachte match
-Er is geen praktische verschil tussen een voorlopig- en een vaste-overeenkomst voor een nieuwe installatie van Connect. Het verschil is in een herstel na noodgevallen situatie. Als u uw server met Azure AD Connect is verbroken, kunt u een nieuw exemplaar installeren zonder verlies van gegevens. Een object met een sourceAnchor wordt verzonden naar Connect tijdens de eerste installatie. De overeenkomst kan vervolgens worden geëvalueerd door de client (Azure AD Connect), die veel sneller dan om hetzelfde te doen in Azure AD. Een vaste overeenkomst wordt geëvalueerd door Connect zowel door Azure AD. Een voorlopig overeenkomst wordt alleen beoordeeld door Azure AD.
+### <a name="hard-match-vs-soft-match"></a>Harde overeenkomst versus zachte overeenkomst
+Voor een nieuwe installatie van Connect is er geen praktisch verschil tussen een zacht en een harde overeenkomst. Het verschil bevindt zich in een nood herstel situatie. Als uw server met Azure AD Connect verloren is gegaan, kunt u een nieuwe instantie opnieuw installeren zonder dat er gegevens verloren gaan. Een object met een source anchor wordt verzonden om verbinding te maken tijdens de eerste installatie. De overeenkomst kan vervolgens worden geëvalueerd door de client (Azure AD Connect). Dit is veel sneller dan in azure AD. Er wordt een harde overeenkomst geëvalueerd door verbinding te maken en door Azure AD te verbinden. Een zachte overeenkomst wordt alleen geëvalueerd door Azure AD.
 
 ### <a name="other-objects-than-users"></a>Andere objecten dan gebruikers
-Voor groepen met e-mail en contactpersonen, u kunt zachte match op basis van proxyAddresses. Harde-match is niet van toepassing omdat u alleen de sourceAnchor/immutableID (met behulp van PowerShell) voor de gebruikers alleen kunt bijwerken. Voor groepen die niet e-mail zijn, is er momenteel geen ondersteuning voor zachte match of harde-overeenkomst.
+Voor groepen met e-mail functionaliteit en contact personen kunt u een tijdelijke overeenkomst op basis van proxyAddresses. De vaste overeenkomst is niet van toepassing omdat u alleen de source Anchor/immutableID (met behulp van Power shell) alleen voor gebruikers kunt bijwerken. Voor groepen waarvoor geen e-mail functionaliteit is ingeschakeld, is er momenteel geen ondersteuning voor zachte overeenkomsten of vaste overeenkomsten.
 
-### <a name="admin-role-considerations"></a>Overwegingen voor rol van beheerder
-Om te voorkomen dat niet-vertrouwde on-premises gebruikers die overeenkomt met een cloud-gebruiker die een beheerdersrol heeft, wordt Azure AD Connect niet overeen met on-premises gebruikersobjecten met objecten die een beheerdersrol hebben. Dit is standaard. Tijdelijke oplossing dit gedrag kunt u het volgende doen:
+### <a name="admin-role-considerations"></a>Overwegingen voor beheerdersrol
+Azure AD Connect komt niet overeen met on-premises gebruikers objecten met objecten die een beheerdersrol hebben om niet-vertrouwde on-premises gebruikers te voor komen dat ze overeenkomen met een Cloud gebruiker met een rol van beheerder. Dit is standaard. U kunt dit probleem als volgt oplossen:
 
-1.  De maprollen van de gebruikersdirectory die alleen-object verwijderen
-2.  Een synchronisatie activeren
-3.  (Optioneel) de maprollen toevoegen terug naar het gebruikersobject in de cloud, zodra het overeenkomende is opgetreden.
+1.  Verwijder de Directory functies uit het alleen-Cloud gebruikers object.
+2.  Als er een mislukte gebruikers synchronisatie poging is gedaan, verwijdert u het in quarantaine geplaatste object in de Cloud.
+3.  Activeer een synchronisatie.
+4.  Voeg eventueel de Directory-rollen toe aan het gebruikers object in de Cloud nadat de overeenkomst heeft plaatsgevonden.
 
 
 
-## <a name="create-a-new-on-premises-active-directory-from-data-in-azure-ad"></a>Maken van een nieuwe on-premises Active Directory van gegevens in Azure AD
-Sommige klanten beginnen met een cloud-only-oplossing met Azure AD en ze hebben niet een on-premises AD. Later ze willen gebruiken, on-premises bronnen en wilt maken van een on-premises AD op basis van Azure AD-gegevens. Azure AD Connect helpen u niet voor dit scenario. Maakt geen gebruikers on-premises en heeft geen een mogelijkheid om in te stellen van de on-premises wachtwoord naar hetzelfde als in Azure AD.
+## <a name="create-a-new-on-premises-active-directory-from-data-in-azure-ad"></a>Een nieuwe on-premises Active Directory maken op basis van gegevens in azure AD
+Sommige klanten beginnen met een Cloud oplossing met Azure AD en ze hebben geen on-premises AD. Later willen ze on-premises resources gebruiken en een on-premises AD maken op basis van Azure AD-gegevens. Azure AD Connect kan u niet helpen bij dit scenario. Er worden geen gebruikers on-premises gemaakt en er is geen mogelijkheid om het wacht woord on-premises in te stellen op hetzelfde als in azure AD.
 
-Als de enige reden waarom u van plan bent om toe te voegen on-premises AD dat is voor de ondersteuning van LOB's (Line-of-Business-apps), misschien kunt u overwegen gebruik [Azure AD domain services](../../active-directory-domain-services/index.yml) in plaats daarvan.
+Als u van plan bent om on-premises AD toe te voegen, is het mogelijk om LOBs (line-of-Business-Apps) te ondersteunen. in plaats daarvan kunt u overwegen om [Azure AD Domain Services](../../active-directory-domain-services/index.yml) te gebruiken.
 
 ## <a name="next-steps"></a>Volgende stappen
 Lees meer over het [integreren van uw on-premises identiteiten met Azure Active Directory](whatis-hybrid-identity.md).

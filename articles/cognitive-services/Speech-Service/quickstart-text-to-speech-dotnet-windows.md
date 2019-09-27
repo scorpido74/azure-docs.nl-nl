@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 07/05/2019
+ms.date: 08/27/2019
 ms.author: yinhew
-ms.openlocfilehash: 65db847c5df1a05671e3b1c0ac4541f00506c8fd
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 1a411455e4a6dea22e092cdfc8e70ee23b656435
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68854686"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71327452"
 ---
 # <a name="quickstart-synthesize-speech-with-the-speech-sdk-for-net-framework-windows"></a>Quickstart: Stem de spraak met de Speech SDK voor .NET Framework (Windows)
 
@@ -23,15 +23,13 @@ Quick starts zijn ook beschikbaar voor [spraak herkenning](quickstart-csharp-dot
 
 Gebruik deze hand leiding voor het maken van een tekst-naar-spraak-console toepassing met behulp van .NET Framework voor Windows en de spraak-SDK. Wanneer u klaar bent, kunt u spraak van tekst verwerken en de spraak op uw spreker in realtime belui Steren.
 
-Voor een snelle demonstratie (zonder het Visual Studio-project zelf te bouwen zoals hieronder wordt weer gegeven):
-
-Down load de nieuwste [Cognitive Services Speech SDK](https://github.com/Azure-Samples/cognitive-services-speech-sdk) -voor beelden van github.
+Voor een snelle demonstratie (zonder zelf het Visual Studio-project te maken, zoals beschreven in dit artikel), haalt u de nieuwste [Cognitive Services Speech SDK](https://github.com/Azure-Samples/cognitive-services-speech-sdk) -voor beelden van github.
 
 ## <a name="prerequisites"></a>Vereisten
 
 Als u dit project wilt voltooien, hebt u het volgende nodig:
 
-* [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
+* [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/).
 * Een abonnementssleutel voor de Speech Service. [Gratis downloaden](get-started.md).
 * Er is een spreker (of headset) beschikbaar.
 
@@ -41,29 +39,25 @@ Als u dit project wilt voltooien, hebt u het volgende nodig:
 
 ## <a name="add-sample-code"></a>Voorbeeldcode toevoegen
 
-1. Open `Program.cs` en vervang de automatisch gegenereerde code door dit voorbeeld:
+1. Open **Program.cs** en vervang de automatisch gegenereerde code door dit voor beeld:
 
-    [!code-csharp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/text-to-speech/csharp-dotnet-windows/helloworld/Program.cs#code)]
+   [!code-csharp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/text-to-speech/csharp-dotnet-windows/helloworld/Program.cs#code)]
 
-1. Zoek de teken reeks `YourSubscriptionKey` en vervang deze door uw abonnement sleutel voor spraak Services.
+1. Zoek de teken reeks `YourSubscriptionKey` en vervang deze door uw abonnements sleutel voor spraak Services.
 
-1. Vervang de tekenreeks `YourServiceRegion` door de [regio](regions.md) die aan uw abonnement is gekoppeld. Als u bijvoorbeeld gebruikmaakt van de gratis proefversie, dan is `westus` de regio.
+1. Zoek de teken reeks `YourServiceRegion` en vervang deze door de [regio](regions.md) die aan uw abonnement is gekoppeld. Als u bijvoorbeeld het gratis proef abonnement gebruikt, is de regio `westus`.
 
-1. Sla de wijzigingen aan het project op.
+1. Kies in de menu balk **bestand** > **Alles opslaan**.
 
-## <a name="build-and-run-the-app"></a>De app bouwen en uitvoeren
+## <a name="build-and-run-the-application"></a>De toepassing bouwen en uitvoeren.
 
-1. Selecteer in de menubalk **Build** > **Build Solution**. De code moet nu zonder fouten worden gecompileerd.
+1. Kies in de menu balk **build** > **Build-oplossing** om de toepassing te bouwen. De code moet nu zonder fouten worden gecompileerd.
 
-    ![Schermafbeelding van Visual Studio-toepassing met de optie Build Solution gemarkeerd](media/sdk/qs-csharp-dotnet-windows-08-build.png "Geslaagde build")
+1. Kies **fouten opsporen** > **fout opsporing starten** (of selecteer **F5**) om de toepassing **HelloWorld** te starten.
 
-1. Selecteer in de menubalk **Debug** > **Start Debugging** of druk op **F5** om de toepassing te starten.
+1. Voer een Engelse woord groep of zin in. De toepassing verzendt uw tekst naar de spraak Services, waarmee gesynthesizerde spraak naar de toepassing wordt verzonden om op uw spreker af te spelen.
 
-    ![Schermafbeelding van Visual Studio-toepassing met de optie Start Debugging gemarkeerd](media/sdk/qs-csharp-dotnet-windows-09-start-debugging.png "Start foutopsporing van de app")
-
-1. Er wordt een console venster weer gegeven waarin u wordt gevraagd om tekst te typen. Typ enkele woorden of een zin. De tekst die u hebt getypt, wordt verzonden naar de spraak Services en gesynthesizerd op spraak, die op uw spreker wordt afgespeeld.
-
-    ![Schermafbeelding van console-uitvoer na geslaagde herkenning](media/sdk/qs-tts-csharp-dotnet-windows-console-output.png "Console-uitvoer na geslaagde herkenning")
+   ![Gebruikers interface voor spraak synthese](media/sdk/qs-tts-csharp-dotnet-windows-console-output.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -72,5 +66,5 @@ Als u dit project wilt voltooien, hebt u het volgende nodig:
 
 ## <a name="see-also"></a>Zie ook
 
-- [Spraak lettertypen aanpassen](how-to-customize-voice-font.md)
-- [Spraak voorbeelden vastleggen](record-custom-voice-samples.md)
+- [Een aangepaste stem maken](how-to-custom-voice-create-voice.md)
+- [Aangepaste spraak voorbeelden vastleggen](record-custom-voice-samples.md)

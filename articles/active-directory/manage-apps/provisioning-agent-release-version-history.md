@@ -16,15 +16,15 @@ ms.date: 04/05/2019
 ms.subservice: app-mgmt
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: de6ef5dedb0779536cfbc1e6a3440e748ff78524
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 2ce9549765f6a912b3e95f99d11da20347b82ad8
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70862107"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71326467"
 ---
 # <a name="azure-ad-connect-provisioning-agent-version-release-history"></a>Azure AD Connect-inrichtings agent: Releasegeschiedenis van versie
-Dit artikel bevat een overzicht van de versies en functies van Azure AD Connect Provisioning agent die is uitgebracht. Het Azure AD-team werkt de inrichtings agent regel matig bij met nieuwe functies en functionaliteit. Inrichtings agenten worden automatisch bijgewerkt wanneer een nieuwe versie wordt uitgebracht. 
+Dit artikel bevat een overzicht van de versies en functies van Azure Active Directory Connect Provisioning agent die is uitgebracht. Het Azure AD-team werkt de inrichtings agent regel matig bij met nieuwe functies en functionaliteit. De inrichtings agent wordt automatisch bijgewerkt wanneer er een nieuwe versie wordt uitgebracht. 
 
 U wordt aangeraden automatische updates in te scha kelen voor uw agents om ervoor te zorgen dat u beschikt over de nieuwste functies en oplossingen voor fouten. Micro soft biedt direct ondersteuning voor de nieuwste versie van de agent en één versie voor.
 
@@ -37,13 +37,13 @@ U wordt aangeraden automatische updates in te scha kelen voor uw agents om ervoo
 ### <a name="new-features-and-improvements"></a>Nieuwe functies en verbeteringen
 
 * Mogelijkheid om extra tracering en logboek registratie te configureren voor problemen met het inrichten van inrichtings agent
-* De mogelijkheid om alleen de AD-kenmerken op te halen die zijn geconfigureerd in de toewijzing om de prestaties van synchronisatie te verbeteren
+* De mogelijkheid om alleen de Azure AD-kenmerken op te halen die zijn geconfigureerd in de toewijzing om de prestaties van synchronisatie te verbeteren
 
 ### <a name="fixed-issues"></a>Problemen opgelost
 
-* Er is een fout opgelost waarbij-in de agent niet meer reageert als er problemen zijn met AD-verbindings fouten
-* Er is een fout opgelost die problemen heeft veroorzaakt tijdens het lezen van binaire gegevens uit Active Directory
-* Er is een fout opgelost waarbij-in de agent geen vertrouwens relatie kan worden verlengd met de Cloud-Hybrid Identity-service
+* Er is een fout opgelost waarbij de agent niet meer reageert als er problemen zijn met Azure AD-verbindings fouten
+* Er is een fout opgelost die problemen heeft veroorzaakt tijdens het lezen van binaire gegevens uit Azure Active Directory
+* Er is een fout opgelost waarbij de agent geen vertrouwens relatie kan vernieuwen met de Cloud-Hybrid Identity-service
 
 ## <a name="11300"></a>1.1.30.0
 
@@ -53,7 +53,7 @@ U wordt aangeraden automatische updates in te scha kelen voor uw agents om ervoo
 
 ### <a name="new-features-and-improvements"></a>Nieuwe functies en verbeteringen
 
-* De inrichtings agent &-connector architectuur is vernieuwd voor betere prestaties, stabiliteit en betrouw baarheid 
-* Vereenvoudigde configuratie van de inrichtings agent met behulp van de door de gebruikers interface gebaseerde installatie wizard 
+* De inrichtings agent en connector architectuur zijn vernieuwd voor betere prestaties, stabiliteit en betrouw baarheid 
+* Vereenvoudigde configuratie van de inrichtings agent met behulp van de wizard voor de installatie van de gebruikers interface 
 * Er is ondersteuning toegevoegd voor automatische agent updates
 

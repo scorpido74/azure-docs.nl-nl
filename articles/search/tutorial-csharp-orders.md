@@ -1,60 +1,60 @@
 ---
-title: C#zelfstudie over het bestellen van resultaten - Azure Search
-description: Deze zelfstudie bouwt voort op het project "Paginering - Azure Search zoekresultaten", om toe te voegen de volgorde van de lijst met zoekresultaten. Meer informatie over het bestellen van resultaten op een primaire eigenschap en voor de resultaten die de dezelfde primaire eigenschap, het bestellen van resultaten op een secundaire eigenschap. Tot slot leert u hoe u resultaten op basis van een scoringprofiel.
+title: C#zelf studie over het ordenen van resultaten-Azure Search
+description: Deze zelf studie bouwt voort op het project Zoek resultaten pagineren-Azure Search om de volg orde van de zoek resultaten toe te voegen. Meer informatie over het best Ellen van resultaten voor een primaire eigenschap en voor resultaten met dezelfde primaire eigenschap, hoe u de resultaten van een secundaire eigenschap kunt ordenen. Tot slot leert u hoe u resultaten kunt ordenen op basis van een score profiel.
 services: search
 ms.service: search
 ms.topic: tutorial
 ms.author: v-pettur
 author: PeterTurcan
 ms.date: 06/21/2019
-ms.openlocfilehash: 32e253b4e131d753ab6937d0aa2a49bda471e091
-ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
+ms.openlocfilehash: 684ce33e5ecf587aa2030a817680f2d405225117
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67466566"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71327652"
 ---
-# <a name="c-tutorial-order-the-results---azure-search"></a>C#zelfstudie: Volgorde van de resultaten - Azure Search
+# <a name="c-tutorial-order-the-results---azure-search"></a>C#vind De resultaten sorteren-Azure Search
 
-Accountpagina dit punt in onze serie zelfstudies, worden de resultaten geretourneerd en in de standaardvolgorde van een weergegeven. Dit is de volgorde waarin de gegevens zich bevinden, of misschien een standaard _scoringprofiel_ is gedefinieerd, die wordt gebruikt wanneer er geen bestellen parameters zijn opgegeven. In deze zelfstudie gaan we in hoe u kunt de resultaten op basis van een eigenschap primair is, en vervolgens voor de resultaten die de dezelfde primaire eigenschap, het bestellen van die selectie op een secundaire eigenschap. Als alternatief voor het ordenen op basis van numerieke waarden in het laatste voorbeeld laat zien hoe rangschikken op basis van een aangepaste scoringprofiel. We zullen ook verdiep u iets in de weergave van _complexe typen_.
+Tot dat moment in onze reeks zelf studies worden resultaten geretourneerd en weer gegeven in een standaard volgorde. Dit kan de volg orde zijn waarin de gegevens zich bevinden, of er is mogelijk een standaard _Score profiel_ gedefinieerd, dat wordt gebruikt wanneer er geen para meters voor de volg orde worden opgegeven. In deze zelf studie gaan we naar de volg orde van de resultaten op basis van een primaire eigenschap en vervolgens voor resultaten die dezelfde primaire eigenschap hebben, de volg orde van de selectie op een secundaire eigenschap. Als alternatief voor het rangschikken op basis van numerieke waarden ziet u in het laatste voor beeld hoe u kunt sorteren op basis van een aangepast Score profiel. We gaan ook iets dieper in op de weer gave van _complexe typen_.
 
-Als u wilt vergelijken eenvoudig geretourneerde resultaten, dit project bouwt voort op het oneindig schuifbalkgebied project gemaakt de [ C# zelfstudie: Search-resultaten paginering - Azure Search](tutorial-csharp-paging.md) zelfstudie.
+Als u de geretourneerde resultaten eenvoudig wilt vergelijken, wordt dit project gebaseerd op het oneindig terugkerende project dat uC# in de zelf studie [ hebt gemaakt: Zoek resultaten pagineren-Azure Search @ no__t-0 zelf studie.
 
 In deze zelfstudie leert u het volgende:
 > [!div class="checklist"]
-> * Volgorde resultaten op basis van een eigenschap
-> * Volgorde resultaten op basis van meerdere eigenschappen
-> * Filteren van resultaten op basis van een afstand van een geografische punt
-> * Volgorde-resultaten op basis van een scoringprofiel
+> * Resultaten van de order op basis van één eigenschap
+> * Resultaten van de order op basis van meerdere eigenschappen
+> * Resultaten filteren op basis van een afstand van een geografisch punt
+> * Resultaten sorteren op basis van een score profiel
 
 ## <a name="prerequisites"></a>Vereisten
 
 Voor het voltooien van deze zelfstudie hebt u het volgende nodig:
 
-De oneindig schuifbalkgebied versie van de [ C# zelfstudie: Search-resultaten paginering - Azure Search](tutorial-csharp-paging.md) project ingesteld en geactiveerd. Dit project kunt uw eigen versie of installeer deze via GitHub: [Eerste app maken](https://github.com/Azure-Samples/azure-search-dotnet-samples).
+Beschikken over de oneindige schuif versie van deC# [ zelf studie: Paginering van zoek resultaten: Azure Search @ no__t-0 project actief. Dit project kan uw eigen versie zijn of installeren vanaf GitHub: [Maak de eerste app](https://github.com/Azure-Samples/azure-search-dotnet-samples).
 
-## <a name="order-results-based-on-one-property"></a>Volgorde resultaten op basis van een eigenschap
+## <a name="order-results-based-on-one-property"></a>Resultaten van de order op basis van één eigenschap
 
-Wanneer we bestellen resultaten op basis van één eigenschap, bijvoorbeeld hotel classificatie, willen we niet alleen de geordende resultaten, we willen dat ook bevestigen dat de volgorde juist is. Als we order niet op classificatie uitvoeren, moeten we de classificatie met andere woorden, weergegeven in de weergave.
+Als we de resultaten op basis van één eigenschap best Ellen, zegt u de classificatie van het Hotel, maar u wilt niet alleen de geordende resultaten controleren, maar ook om te bevestigen dat de order juist is. Met andere woorden, als we op classificatie indelen, moeten we de classificatie weer geven in de weer gave.
 
-In deze zelfstudie, zullen we ook toevoegen iets meer aan de weergave van resultaten, de goedkoopste ruimte-frequentie en de frequentie van ruimte duurste, voor elke hotel. Als we dieper ingaan op volgorde, we ook waarden om ervoor te zorgen wat we op volgorde wilt toevoegen, wordt ook weergegeven in de weergave.
+In deze zelf studie voegen we ook een beetje meer toe aan de weer gave van resultaten, het goedkoopste-kamer tempo en de duur van de meest dure kamer voor elk hotel. Zoals we in de praktijk hebben bestudeerd, zullen we ook waarden toevoegen om ervoor te zorgen dat de volg orde waarin we worden best Ellen ook wordt weer gegeven in de weer gave.
 
-Er is niet nodig om te wijzigen van de modellen te ordenen inschakelen. De weergave en controller nodig bijgewerkt. Open de startpagina controller eerst.
+Het is niet nodig om een van de modellen te wijzigen om de volg orde in te scha kelen. De weer gave en de controller moeten zijn bijgewerkt. Begin met het openen van de start controller.
 
-### <a name="add-the-orderby-property-to-the-search-parameters"></a>De eigenschap OrderBy toevoegen aan de zoekparameters
+### <a name="add-the-orderby-property-to-the-search-parameters"></a>De eigenschap OrderBy toevoegen aan de zoek parameters
 
-1. Alle die nodig is voor de order-resultaten op basis van een enkele numerieke eigenschap, is het instellen van de **OrderBy** parameter de naam van de eigenschap. In de **Index (SearchData model)** methode, voeg de volgende regel toe aan de zoekparameters.
+1. Alles wat u nodig hebt om resultaten te best Ellen op basis van één numerieke eigenschap, is door de **OrderBy** para meter in te stellen op de naam van de eigenschap. Voeg in de **index methode (SearchData model)** de volgende regel toe aan de zoek parameters.
 
     ```cs
         OrderBy = new[] { "Rating desc" },
     ```
 
     >[!Note]
-    > De standaard wordt oplopend, maar u kunt toevoegen **asc** met de eigenschap om dit te verduidelijken. Aflopende volgorde is opgegeven door toe te voegen **desc**.
+    > De standaard volgorde is oplopend, maar u kunt wel **ASC** toevoegen aan de eigenschap om dit duidelijk te maken. Aflopende volg orde wordt opgegeven door **DESC**toe te voegen.
 
-2. Nu de app uitvoeren en geef een algemene zoekterm. De resultaten kunnen of mogelijk niet in de juiste volgorde, noch als de ontwikkelaar, niet de gebruiker beschikt over een eenvoudige manier om de resultaten te controleren.
+2. Voer nu de app uit en voer een algemene zoek term in. De resultaten zijn mogelijk niet in de juiste volg orde, omdat u niet als ontwikkelaar, niet de gebruiker, een eenvoudige manier hebt om de resultaten te controleren.
 
-3. Laten we deze duidelijk de resultaten worden gesorteerd op classificatie. Vervang eerst de **Vak1** en **Vak2** klassen in het bestand hotels.css met de volgende klassen (deze klassen zijn de nieuwe licenties we nodig hebben voor deze zelfstudie).
+3. We gaan het wissen van de resultaten worden op waardering gesorteerd. Vervang eerst de klassen **box1** en **box2** in het bestand Hotels. CSS door de volgende klassen (deze klassen zijn allemaal de nieuwe typen die we nodig hebben voor deze zelf studie).
 
     ```html
     textarea.box1A {
@@ -113,21 +113,21 @@ Er is niet nodig om te wijzigen van de modellen te ordenen inschakelen. De weerg
     ```
 
     >[!Tip]
-    >Browsers meestal CSS-bestanden in de cache en dit kan leiden tot een oude CSS-bestand dat wordt gebruikt en uw bewerkingen genegeerd. Een goede manier ronde dit is het toevoegen van een querytekenreeks met een versieparameter op de koppeling. Bijvoorbeeld:
+    >In browsers worden doorgaans CSS-bestanden in de cache opgeslagen. Dit kan leiden tot een oud CSS-bestand dat wordt gebruikt en uw bewerkingen worden genegeerd. Een goede manier om dit te ronden is het toevoegen van een query reeks met een versie parameter aan de koppeling. Bijvoorbeeld:
     >
     >```html
     >   <link rel="stylesheet" href="~/css/hotels.css?v1.1" />
     >```
     >
-    >Het versienummer bijwerken als u denkt dat een oude CSS-bestand wordt gebruikt door uw browser.
+    >Werk het versie nummer bij als u denkt dat er een oud CSS-bestand wordt gebruikt door uw browser.
 
-4. Toevoegen de **waardering** eigenschap in op de **Selecteer** parameter in de **Index (SearchData model)** methode.
+4. Voeg de eigenschap **rating** toe aan de para meter **Select** in de **index (SearchData model)** -methode.
 
     ```cs
     Select = new[] { "HotelName", "Description", "Rating"},
     ```
 
-5. Open de weergave (index.cshtml) en vervang de rendering-lus ( **&lt;!--tonen de hotel.--&gt;** ) met de volgende code.
+5. Open de weer gave (index. cshtml) en vervang de rendering-lus ( **&lt;!--de Hotel gegevens weer geven.--&gt;** ) met de volgende code.
 
     ```cs
                 <!-- Show the hotel data. -->
@@ -142,7 +142,7 @@ Er is niet nodig om te wijzigen van de modellen te ordenen inschakelen. De weerg
                 }
     ```
 
-6. De classificatie moet beschikbaar zowel in de eerste pagina en in de volgende pagina's die worden aangeroepen via de oneindige schuiven. Voor de laatste van deze twee situaties, moeten we beide bijwerken de **volgende** actie in de controller en de **verschoven** functie in de weergave. Beginnen met de domeincontroller, wijzigt de **volgende** methode naar de volgende code. Deze code maakt en de classificatie-tekst communiceert.
+6. De classificatie moet beschikbaar zijn op de eerste weer gegeven pagina en op de volgende pagina's die worden aangeroepen via de oneindige schuif balk. Voor de laatste van deze twee situaties moeten we zowel de **volgende** actie in de controller als de **gescrollde** functie in de weer gave bijwerken. Begin met de controller, wijzig de **volgende** methode in de volgende code. Met deze code wordt de tekst van de beoordeling gemaakt en gecommuniceerd.
 
     ```cs
         public async Task<ActionResult> Next(SearchData model)
@@ -170,7 +170,7 @@ Er is niet nodig om te wijzigen van de modellen te ordenen inschakelen. De weerg
         }
     ```
 
-7. Nu bijwerken de **verschoven** functie in de weergave om de tekst van de beoordeling weer te geven.
+7. Werk nu de **gescrollde** functie in de weer gave bij om de beoordelings tekst weer te geven.
 
     ```javascript
             <script>
@@ -192,17 +192,17 @@ Er is niet nodig om te wijzigen van de modellen te ordenen inschakelen. De weerg
 
     ```
 
-8. Voer nu de app opnieuw uit. Zoeken naar een algemene term, zoals 'Wi-Fi', en controleer of dat de resultaten worden gesorteerd op aflopende volgorde van hotel classificatie.
+8. Voer de app nu opnieuw uit. Zoek op een gemeen schappelijke term, zoals ' WiFi ', en controleer of de resultaten worden gesorteerd op de aflopende volg orde van de Hotel classificatie.
 
-    ![Ordenen op basis van classificatie](./media/tutorial-csharp-create-first-app/azure-search-orders-rating.png)
+    ![Volg orde op basis van classificatie](./media/tutorial-csharp-create-first-app/azure-search-orders-rating.png)
 
-    U ziet dat verschillende hotels een identieke classificatie, en dus hun weergave in de weergave opnieuw de volgorde waarin de gegevens worden gevonden is, die willekeurig is.
+    U zult merken dat meerdere hotels een identieke classificatie hebben, zodat de weer gave in het scherm opnieuw de volg orde van de gegevens is, wat wille keurig is.
 
-    Voordat we naar een tweede niveau van de ordening kunt toevoegen, nu code toevoegen om het bereik van de tarieven van de ruimte weer te geven. We zijn deze code toevoegen aan beide show extraheren van gegevens uit een _complexe type_, en ook zodat we bespreken op basis van de prijs bestellen resultaten (goedkoopste eerste misschien).
+    Voordat we een tweede bestel niveau gaan toevoegen, voegen we code toe om het bereik van de kamer tarieven weer te geven. We voegen deze code toe om gegevens uit een _complex type_weer te geven. Daarnaast kunnen we de volg orde van de resultaten op basis van de prijs (goedkoopste First) bespreken.
 
-### <a name="add-the-range-of-room-rates-to-the-view"></a>Het bereik van de tarieven van de ruimte aan de weergave toevoegen
+### <a name="add-the-range-of-room-rates-to-the-view"></a>Het bereik van kamer tarieven toevoegen aan de weer gave
 
-1. Eigenschappen met de snelheid van de goedkoopste en meest kostbare ruimte aan het model Hotel.cs toevoegen.
+1. Voeg eigenschappen met de goedkoopste en de duurste kamer toe aan het Hotel.cs-model.
 
     ```cs
         // Room rate range
@@ -210,7 +210,7 @@ Er is niet nodig om te wijzigen van de modellen te ordenen inschakelen. De weerg
         public double expensive { get; set; }
     ```
 
-2. Berekenen van de tarieven van de ruimte aan het einde van de **Index (SearchData model)** actie in de home-controller. De berekeningen toe te voegen na de opslag van tijdelijke gegevens.
+2. Bereken de kamer tarieven aan het einde van de actie van de **index (SearchData model)** in de start controller. Voeg de berekeningen toe na het opslaan van tijdelijke gegevens.
 
     ```cs
                 // Ensure TempData is stored for the next call.
@@ -241,13 +241,13 @@ Er is niet nodig om te wijzigen van de modellen te ordenen inschakelen. De weerg
                 }
     ```
 
-3. Toevoegen de **ruimten** eigenschap in op de **Selecteer** parameter in de **Index (SearchData model)** actiemethode van de controller.
+3. Voeg de eigenschap **rooms** toe aan de **Select** -para meter in de index-actie methode **(SearchData model)** van de controller.
 
     ```cs
      Select = new[] { "HotelName", "Description", "Rating", "Rooms" },
     ```
 
-4. Wijzig de lus rendering in de weergave om het bereik van het tarief voor de eerste pagina van de resultaten weer te geven.
+4. Wijzig de rendering-lus in de weer gave om het frequentie bereik voor de eerste pagina met resultaten weer te geven.
 
     ```cs
                 <!-- Show the hotel data. -->
@@ -264,7 +264,7 @@ Er is niet nodig om te wijzigen van de modellen te ordenen inschakelen. De weerg
                 }
     ```
 
-5. Wijzig de **volgende** methode in de home-controller om te communiceren van het bereik van de snelheid, voor de volgende pagina's van resultaten.
+5. Wijzig de **volgende** methode in de start controller om het frequentie bereik te communiceren voor de volgende pagina's met resultaten.
 
     ```cs
         public async Task<ActionResult> Next(SearchData model)
@@ -294,7 +294,7 @@ Er is niet nodig om te wijzigen van de modellen te ordenen inschakelen. De weerg
         }
     ```
 
-6. Update de **verschoven** functie in de weergave voor het afhandelen van de kamer classificeert tekst.
+6. Werk de **gescrollde** functie in de weer gave bij om de tekst van de room-tarieven af te handelen.
 
     ```javascript
             <script>
@@ -316,17 +316,17 @@ Er is niet nodig om te wijzigen van de modellen te ordenen inschakelen. De weerg
             </script>
     ```
 
-7. De app uitvoeren en controleer of dat de bereiken van de snelheid ruimte worden weergegeven.
+7. Voer de app uit en controleer of de room-prijsbereiken worden weer gegeven.
 
-    ![Ruimte tarief bereiken weergeven](./media/tutorial-csharp-create-first-app/azure-search-orders-rooms.png)
+    ![Room-frequentie bereiken weer geven](./media/tutorial-csharp-create-first-app/azure-search-orders-rooms.png)
 
-De **OrderBy** eigenschap van de zoekparameters accepteert een vermelding zoals **Rooms.BaseRate** voor de goedkoopste ruimte snelheid, zelfs als de ruimten zijn al gesorteerd op basis van tarief (die ze niet zijn). Om hotels in de verzameling voorbeeldgegevens, gesorteerd op de snelheid van ruimte, weer te geven moet u de resultaten in de oorspronkelijke controller sorteren en deze resultaten verzenden naar de weergave in de gewenste volgorde.
+De eigenschap **OrderBy** van de zoek parameters accepteert geen vermelding zoals **kamers. BaseRate** om het goedkoopste-kamer tempo te bieden, zelfs als de kamers al zijn gesorteerd op rente. In dit geval worden de kamers niet gesorteerd op tarieven. Als u hotels wilt weer geven in de gegevensset voor de voor beeld, geordend op basis van een kamer, moet u de resultaten in de start controller sorteren en deze resultaten naar de weer gave in de gewenste volg orde verzenden.
 
-## <a name="order-results-based-on-multiple-values"></a>Volgorde resultaten op basis van meerdere waarden
+## <a name="order-results-based-on-multiple-values"></a>Resultaten van de order op basis van meerdere waarden
 
-Nu de vraag is hoe u onderscheid maken tussen hotels met de dezelfde classificatie. Een goede manier zou om op basis van de laatste keer dat het hotel is renovated zijn. Met andere woorden, hoe meer recent het hotel is renovated, hoe hoger het hotel wordt weergegeven in de resultaten.
+De vraag is nu om onderscheid te maken tussen Hotels met dezelfde classificatie. Een goede manier om te best Ellen op basis van de laatste keer dat het hotel werd renovated. Met andere woorden, hoe meer recent het Hotel renovated was, hoe hoger het hotel wordt weer gegeven in de resultaten.
 
-1. Als u wilt een tweede niveau voor het ordenen van toevoegen, wijzigen de **OrderBy** en **Selecteer** eigenschappen in de **Index (SearchData model)** methode om op te nemen de  **LastRenovationDate** eigenschap.
+1. Als u een tweede niveau wilt best Ellen, wijzigt u de eigenschappen **OrderBy** en **selecteert** u in de **index methode (SearchData model)** de eigenschap **LastRenovationDate** .
 
     ```cs
     OrderBy = new[] { "Rating desc", "LastRenovationDate desc" },
@@ -334,9 +334,9 @@ Nu de vraag is hoe u onderscheid maken tussen hotels met de dezelfde classificat
     ```
 
     >[!Tip]
-    >Een willekeurig aantal eigenschappen kan worden ingevoerd op de **OrderBy** lijst. Als hotels had de dezelfde classificatie en renovatie datum, kan de eigenschap van een derde onderscheid maken tussen deze worden ingevoerd.
+    >Een wille keurig aantal eigenschappen kan worden ingevoerd in de lijst **OrderBy** . Als Hotels dezelfde restrictie-en renovatie datum hadden, zou er een derde eigenschap kunnen worden ingevoerd om er onderscheid van te maken.
 
-2. Nogmaals, moeten we zien de renovatie datum in de weergave alleen dat u er zeker van te zijn dat de volgorde juist is. Voor dergelijke een ding als een renovatie, zijn waarschijnlijk slechts het jaar is vereist. Wijzig de lus rendering in de weergave in de volgende code.
+2. De datum van renovatie wordt weer gegeven in de weer gave, zodat u zeker weet dat de volg orde juist is. Voor een dergelijk renovatie is het waarschijnlijk dat alleen het jaar is vereist. Wijzig de rendering-lus in de weer gave in de volgende code.
 
     ```cs
                 <!-- Show the hotel data. -->
@@ -355,7 +355,7 @@ Nu de vraag is hoe u onderscheid maken tussen hotels met de dezelfde classificat
                 }
     ```
 
-3. Wijzig de **volgende** methode in de home-controller om door te sturen het jaargedeelte van de datum van laatste renovatie.
+3. Wijzig de **volgende** methode in de start controller om het jaar gedeelte van de laatste datum van renovatie door te sturen.
 
     ```cs
         public async Task<ActionResult> Next(SearchData model)
@@ -387,7 +387,7 @@ Nu de vraag is hoe u onderscheid maken tussen hotels met de dezelfde classificat
         }
     ```
 
-4. Wijzig de **verschoven** functie in de weergave om de renovatie tekst weer te geven.
+4. Wijzig de **gescrollde** functie in de weer gave om de tekst van renovatie weer te geven.
 
     ```javascript
             <script>
@@ -410,17 +410,17 @@ Nu de vraag is hoe u onderscheid maken tussen hotels met de dezelfde classificat
             </script>
     ```
 
-5. De app uitvoeren. Zoeken op een algemene term, zoals "groep" of "view", en controleer of hotels met de dezelfde classificatie worden nu weergegeven in aflopende volgorde van renovatie datum.
+5. Voer de app uit. Zoek op een gemeen schappelijke term, zoals ' groep ' of ' weer gave ', en controleer of er hotels met dezelfde classificatie nu in aflopende volg orde van renovatie datum worden weer gegeven.
 
-    ![Sorteren op datum renovatie](./media/tutorial-csharp-create-first-app/azure-search-orders-renovation.png)
+    ![Bestelling op renovatie datum](./media/tutorial-csharp-create-first-app/azure-search-orders-renovation.png)
 
-## <a name="filter-results-based-on-a-distance-from-a-geographical-point"></a>Filteren van resultaten op basis van een afstand van een geografische punt
+## <a name="filter-results-based-on-a-distance-from-a-geographical-point"></a>Resultaten filteren op basis van een afstand van een geografisch punt
 
-Classificatie en renovatie datum, zijn voorbeelden van eigenschappen die het beste in aflopende volgorde worden weergegeven. Een alfabetische lijst is een voorbeeld van een goed gebruik van oplopende volgorde (bijvoorbeeld, als er slechts een is **OrderBy** en deze eigenschap is ingesteld op **HotelName** en vervolgens een alfabetische volgorde zou worden weergegeven. ). Echter voor onze voorbeeldgegevens zou afstand van een geografische dat zijn meer.
+De classificatie en de datum van renovatie zijn voor beelden van eigenschappen die het beste in aflopende volg orde worden weer gegeven. Een alfabetische lijst zou een voor beeld zijn van een goed gebruik van een oplopende volg orde (bijvoorbeeld als er slechts één **OrderBy** -eigenschap was en deze is ingesteld op naam **Hotel** , dan wordt een alfabetische volg orde weer gegeven). Voor de voorbeeld gegevens is de afstand van een geografisch punt echter meer geschikt.
 
-Als u wilt weergeven van resultaten op basis van geografische afstand, zijn de verschillende stappen vereist.
+Om resultaten weer te geven op basis van de geografische afstand, zijn verschillende stappen vereist.
 
-1. Filter alle hotels die zich buiten een opgegeven radius van de willekeurig moment door te voeren van een filter met lengtegraad, breedtegraad en RADIUS-parameters. Lengtegraad wordt eerst aan de functie voor het gegeven. RADIUS is in kilometer zijn verwijderd.
+1. Alle hotels die zich buiten een opgegeven RADIUS van het opgegeven punt bevinden, filteren door een filter met de lengte graad, breedte graad en RADIUS-para meters in te voeren. De lengte graad moet eerst worden opgegeven voor de functie POINT. RADIUS is in kilo meters.
 
     ```cs
         // "Location" must match the field name in the Hotel class.
@@ -429,15 +429,15 @@ Als u wilt weergeven van resultaten op basis van geografische afstand, zijn de v
         Filter = $"geo.distance(Location, geography'POINT({model.lon} {model.lat})') le {model.radius}",
     ```
 
-2. Het bovenstaande filter heeft _niet_ volgorde van de resultaten op basis van op afstand, alleen de uitschieters verwijderd. Als u wilt de resultaten bestellen, voer een **OrderBy** instellen die Hiermee geeft u de methode geoDistance.
+2. Met het bovenstaande filter worden de resultaten _niet_ geordend op basis van de afstand, maar de uitschieters worden verwijderd. Als u de resultaten wilt ordenen, voert u een **OrderBy** -instelling in die de geoafstands methode opgeeft.
 
     ```cs
     OrderBy = new[] { $"geo.distance(Location, geography'POINT({model.lon} {model.lat})') asc" },
     ```
 
-3. Hoewel de resultaten zijn geretourneerd door Azure Search met behulp van een filter afstand, is het de berekende afstand tussen de gegevens en het opgegeven punt _niet_ geretourneerd. Deze waarde in de weergave of de controller opnieuw als u wilt weergeven in de resultaten.
+3. Hoewel de resultaten door Azure Search zijn geretourneerd met behulp van een filter voor afstand, wordt de berekende afstand tussen de gegevens en het opgegeven punt _niet_ geretourneerd. De waarde in de weer gave of de controller opnieuw berekenen als u deze wilt weer geven in de resultaten.
 
-    De volgende code wordt de afstand tussen de twee lat/ion punten berekend.
+    Met de volgende code wordt de afstand tussen twee Lat/Lon-punten berekend.
 
     ```cs
         const double EarthRadius = 6371;
@@ -458,22 +458,22 @@ Als u wilt weergeven van resultaten op basis van geografische afstand, zijn de v
         }
     ```
 
-4. U hebt nu deze concepten met elkaar verbinden. Deze fragmenten zijn echter zo ver onze zelfstudie gaat, het bouwen van dat een kaart-app bij wijze van oefening wordt gegeven voor de lezer. Als u dit voorbeeld verder, houd rekening met het invoeren van de naam van een plaats met een radius of zoeken naar een punt op een kaart en selecteren van een radius. Zie de volgende bronnen voor het onderzoeken van deze opties verder:
+4. Nu moet u deze concepten aan elkaar koppelen. Deze code fragmenten zijn echter wel hetzelfde als onze zelf studie, het bouwen van een app op basis van een kaart is een oefening voor de lezer. Als u dit voor beeld verder wilt doen, kunt u een plaatsnaam invoeren met een RADIUS of een punt op een kaart zoeken en een RADIUS selecteren. Raadpleeg de volgende bronnen om deze opties verder te onderzoeken:
 
 * [Azure Maps-documentatie](https://docs.microsoft.com/azure/azure-maps/)
-* [Zoeken naar een adres met behulp van de search-service van Azure Maps](https://docs.microsoft.com/azure/azure-maps/how-to-search-for-address)
+* [Een adres zoeken met behulp van de Azure Maps Search-service](https://docs.microsoft.com/azure/azure-maps/how-to-search-for-address)
 
-## <a name="order-results-based-on-a-scoring-profile"></a>Volgorde-resultaten op basis van een scoringprofiel
+## <a name="order-results-based-on-a-scoring-profile"></a>Resultaten sorteren op basis van een score profiel
 
-De voorbeelden die tot nu toe in de zelfstudie wordt getoond hoe rangschikken op basis van numerieke waarden (classificatie, renovatie datum, de geografische afstand), biedt een _exacte_ proces voor het ordenen van. Echter lenen enkele zoekopdrachten en enkele gegevens niet voor een eenvoudige vergelijking tussen de twee elementen. Azure Search bevat het concept van _scoren_. _Scoreprofielen_ kan worden opgegeven voor een set gegevens die kan worden gebruikt voor het leveren van meer complexe en kwalitatief vergelijkingen, die moeten worden het nuttigst wanneer, bijvoorbeeld eerst vergelijken van gegevens op basis van tekst om te bepalen die moet worden weergegeven.
+De voor beelden in de zelf studie laten zien hoe u de volg orde van de numerieke waarden (waardering, datum van renovatie, geografische afstand ) kunt best Ellen. Sommige Zoek opdrachten en sommige gegevens zijn echter niet geschikt voor een eenvoudige vergelijking tussen twee gegevens elementen. Azure Search omvat het concept van _scores_. _Score profielen_ kunnen worden opgegeven voor een set gegevens die kan worden gebruikt om complexere en kwalitatieve vergelijkingen te bieden, die het meest waardevol moeten zijn wanneer u gegevens op basis van tekst vergelijkt om te bepalen welke u als eerste moet worden weer gegeven.
 
-Scoreprofielen zijn niet gedefinieerd door gebruikers, maar doorgaans door beheerders van een gegevensset. Verschillende scoreprofielen zijn ingesteld op de gegevens hotels. Laten we kijken hoe een scoringprofiel wordt gedefinieerd en probeer het schrijven van code om op te zoeken.
+Score profielen worden niet door gebruikers gedefinieerd, maar doorgaans door beheerders van een gegevensset. Er zijn verschillende Score profielen ingesteld voor de hotels-gegevens. Laten we eens kijken hoe een score profiel is gedefinieerd en probeer vervolgens code te schrijven om erop te zoeken.
 
-### <a name="how-scoring-profiles-are-defined"></a>Hoe scoring-profielen zijn gedefinieerd
+### <a name="how-scoring-profiles-are-defined"></a>Score profielen definiëren
 
-Laten we kijken naar drie voorbeelden van scoreprofielen en houd rekening met hoe de _moet_ van invloed op de volgorde van de resultaten. Als een app-ontwikkelaar, u deze profielen geen schrijven, ze worden geschreven door de Gegevensbeheerder van de, echter is het handig om te kijken naar de syntaxis.
+Laten we eens kijken naar drie voor beelden van Score profielen _en bepalen hoe elk van_ invloed is op de volg orde van de resultaten. Als app-ontwikkelaar schrijft u deze profielen niet, ze zijn geschreven door de gegevens beheerder, maar het is wel handig om de syntaxis te bekijken.
 
-1. Dit is de standaardinstelling scoringprofiel voor de gegevensset hotels gebruikt wanneer u geen opgeeft **OrderBy** of **ScoringProfile** parameter. Dit profiel verhoogt de _score_ voor een hotel als de zoektekst in de hotelnaam, beschrijving of lijst met labels (faciliteiten) aanwezig is. U ziet hoe het gewicht van de beoordelingsresultaten voorkeur voor bepaalde velden. Als de zoektekst wordt weergegeven in een ander veld niet wordt vermeld, is er een gewicht van 1. Natuurlijk, hoe hoger de score eerder een resultaat wordt weergegeven in de weergave.
+1. Dit is het standaard Score profiel voor de gegevensverzameling hotels, gebruikt wanneer u geen **OrderBy** -of **ScoringProfile** -para meter opgeeft. Met dit profiel wordt de _Score_ voor een hotel verhoogd als de Zoek tekst aanwezig is in de naam, beschrijving of lijst met tags van het hotel (voorzieningen). U ziet hoe de gewichten van de Score van invloed zijn op bepaalde velden. Als de Zoek tekst in een ander veld wordt weer gegeven, is dit een gewicht van 1. Hoe hoger de score, hoe eerder een resultaat wordt weer gegeven in de weer gave.
 
      ```cs
     {
@@ -490,7 +490,7 @@ Laten we kijken naar drie voorbeelden van scoreprofielen en houd rekening met ho
 
     ```
 
-2. De volgende scoringprofiel verhoogt de score aanzienlijk, als een opgegeven parameter bevat een of meer van de lijst met labels (die we bellen 'faciliteiten'). Het belangrijkste punt van dit profiel is die een parameter _moet_ worden opgegeven, die de tekst bevat. Als de parameter leeg is of niet is opgegeven, is een fout wordt gegenereerd.
+2. Met het volgende Score profiel wordt de Score aanzienlijk verhoogd, als een opgegeven para meter een of meer van de Tags lijst bevat (waarmee we ' voorzieningen ' aanroepen). Het sleutel punt van dit profiel is dat er een para meter _moet_ worden opgegeven, die tekst bevat. Als de para meter leeg is of niet wordt opgegeven, wordt er een fout gegenereerd.
  
     ```cs
             {
@@ -508,7 +508,7 @@ Laten we kijken naar drie voorbeelden van scoreprofielen en houd rekening met ho
         }
     ```
 
-3. In dit derde voorbeeld geeft de classificatie een aanzienlijke verbetering tot de score. De laatste renovated datum wordt ook de score, maar alleen als die gegevens binnen 730 dagen (2 jaar valt) verhogen van de huidige datum.
+3. In dit derde voor beeld geeft de classificatie een aanzienlijke versterking van de score. De datum van de laatste renovated zal ook de Score verhogen, maar alleen als deze gegevens binnen 730 dagen (2 jaar) van de huidige datum vallen.
 
     ```cs
             {
@@ -539,11 +539,11 @@ Laten we kijken naar drie voorbeelden van scoreprofielen en houd rekening met ho
 
     ```
 
-    Nu, laat het ons Kijk als deze profielen als we denken dat zou moeten werken.
+    Nu laten we zien of deze profielen werken zoals we denken.
 
-### <a name="add-code-to-the-view-to-compare-profiles"></a>Voeg code toe aan de weergave om te vergelijken van profielen
+### <a name="add-code-to-the-view-to-compare-profiles"></a>Code toevoegen aan de weer gave om profielen te vergelijken
 
-1. Open het bestand index.cshtml en vervang de &lt;hoofdtekst&gt; sectie met de volgende code.
+1. Open het bestand index. cshtml en vervang de sectie &lt;body @ no__t-1 door de volgende code.
 
     ```cs
     <body>
@@ -651,7 +651,7 @@ Laten we kijken naar drie voorbeelden van scoreprofielen en houd rekening met ho
     </body>
     ```
 
-2. Open het bestand SearchData.cs en vervang de **SearchData** klasse met de volgende code.
+2. Open het SearchData.cs-bestand en vervang de klasse **SearchData** door de volgende code.
 
     ```cs
     public class SearchData
@@ -690,7 +690,7 @@ Laten we kijken naar drie voorbeelden van scoreprofielen en houd rekening met ho
     }
     ```
 
-3. Open het bestand hotels.css, en voeg de volgende HTML-klassen toe.
+3. Open het bestand Hotels. CSS en voeg de volgende HTML-klassen toe.
 
     ```html
     .facetlist {
@@ -712,15 +712,15 @@ Laten we kijken naar drie voorbeelden van scoreprofielen en houd rekening met ho
     }
     ```
 
-### <a name="add-code-to-the-controller-to-specify-a-scoring-profile"></a>Voeg code toe aan de domeincontroller een scoringprofiel opgeven
+### <a name="add-code-to-the-controller-to-specify-a-scoring-profile"></a>Code toevoegen aan de controller om een score profiel op te geven
 
-1. Open het bestand home-controller. Voeg de volgende **met behulp van** instructie (om u te helpen met het maken van een lijst met).
+1. Open het bestand Home controller. Voeg de volgende **using** -instructie toe (voor hulp bij het maken van lijsten).
 
     ```cs
     using System.Linq;
     ```
 
-2.  In dit voorbeeld moet de eerste aanroep **Index** naar iets meer dan alleen de eerste weergave kan retourneren. De methode is nu zoekt van maximaal 20 faciliteiten om weer te geven in de weergave.
+2.  Voor dit voor beeld hebben we de eerste aanroep van **index** nodig om iets meer te doen dan alleen de eerste weer gave retour neren. De methode zoekt nu tot 20 voorzieningen om weer te geven in de weer gave.
 
     ```cs
         public async Task<ActionResult> Index()
@@ -750,7 +750,7 @@ Laten we kijken naar drie voorbeelden van scoreprofielen en houd rekening met ho
         }
     ```
 
-3. Moeten we twee particuliere methoden voor de facetten opslaan naar de tijdelijke opslag, en voor ze kunt herstellen vanuit de tijdelijke opslag en vullen van een model.
+3. We hebben twee persoonlijke methoden nodig om de facetten op tijdelijke opslag op te slaan en om ze te herstellen vanaf tijdelijke opslag en een model te vullen.
 
     ```cs
         // Save the facet text to temporary storage, optionally saving the state of the check boxes.
@@ -788,7 +788,7 @@ Laten we kijken naar drie voorbeelden van scoreprofielen en houd rekening met ho
         }
     ```
 
-4. We moeten de **OrderBy** en **ScoringProfile** parameters naar behoefte. Vervang de bestaande **Index (SearchData model)** methode met de volgende stappen.
+4. We moeten de para meters **OrderBy** en **ScoringProfile** indien nodig instellen. Vervang de bestaande **index methode (SearchData model)** door het volgende.
 
     ```cs
         public async Task<ActionResult> Index(SearchData model)
@@ -937,40 +937,40 @@ Laten we kijken naar drie voorbeelden van scoreprofielen en houd rekening met ho
         }
     ```
 
-    Lees de opmerkingen voor elk van de **overschakelen** selecties.
+    Lees de opmerkingen voor elk van de geselecteerde **switches** .
 
-5. We hoeft niet te wijzigen naar de **volgende** actie, als u de aanvullende code voor de vorige sectie op volgorde op basis van meerdere eigenschappen voltooid.
+5. U hoeft geen wijzigingen aan te brengen in de **volgende** actie als u de aanvullende code voor de vorige sectie hebt ingevuld op basis van meerdere eigenschappen.
 
-### <a name="run-and-test-the-app"></a>Uitvoeren en testen van de app.
+### <a name="run-and-test-the-app"></a>De app uitvoeren en testen
 
-1. De app uitvoeren. Hier ziet u een volledige set voorzieningen in de weergave.
+1. Voer de app uit. U ziet een volledige set voorzieningen in de weer gave.
 
-2. Voor het bestellen geeft selecteren 'door een numerieke score' u de numerieke volgorde die u al in deze zelfstudie hebt geïmplementeerd met renovatie datum hotels van gelijk classificatie kiezen.
+2. Bij het selecteren van ' op numerieke waardering ' krijgt u de numerieke volg orde die u in deze zelf studie al hebt geïmplementeerd, waarbij de renovaties datum tussen Hotels met een gelijke classificatie.
 
-![Bestellen 'strand"op basis van classificatie](./media/tutorial-csharp-create-first-app/azure-search-orders-beach.png)
+![' Strand ' Best Ellen op basis van classificatie](./media/tutorial-csharp-create-first-app/azure-search-orders-beach.png)
 
-3. Probeer nu het profiel 'door faciliteiten'. Verschillende selecties van faciliteiten en controleer of dat hotels met deze voorzieningen wordt gevraagd om de lijst met resultaten.
+3. Probeer nu het profiel ' by voorzieningen '. Maak verschillende selecties van voorzieningen en controleer of Hotels met deze voorzieningen zijn bevorderd door de lijst met resultaten.
 
-![Bestellen 'strand"op basis van profiel](./media/tutorial-csharp-create-first-app/azure-search-orders-beach-profile.png)
+![' Strand ' Best Ellen op basis van het profiel](./media/tutorial-csharp-create-first-app/azure-search-orders-beach-profile.png)
 
-4. Probeer de 'Door Renovated datum/classificatie profiel' om te zien of u krijgt van wat u verwacht. Alleen onlangs renovated hotels deze krijgt een _webdocumenten_ boost.
+4. Probeer het profiel ' op renovated datum/beoordeling ' om te zien of u de verwachte waarde krijgt. Alleen onlangs gerenovatedeerde hotels moeten een _nieuwe_ verbetering hebben.
 
 ### <a name="resources"></a>Resources
 
-Zie voor meer informatie de volgende [scoreprofielen toevoegen aan een Azure Search-index](https://docs.microsoft.com/azure/search/index-add-scoring-profiles).
+Zie voor meer informatie de volgende [Score profielen toevoegen aan een Azure search index](https://docs.microsoft.com/azure/search/index-add-scoring-profiles).
 
 ## <a name="takeaways"></a>Opgedane kennis
 
-Houd rekening met de volgende takeaways van dit project:
+Houd rekening met de volgende Takeaways van dit project:
 
-* Gebruikers wordt verwacht dat de zoekresultaten worden besteld, meest relevante eerst.
-* Gegevens moet gestructureerd zodat bestellen is eenvoudig. We konden niet sorteren op 'goedkoopste' eerst eenvoudig, omdat de gegevens is niet correct gestructureerd als u wilt inschakelen om te worden uitgevoerd zonder extra code te bestellen.
-* Er zijn te bestellen, onderscheid maken tussen de resultaten die dezelfde waarde op een hoger niveau voor het ordenen van hebben veel niveaus.
-* Is het vanzelfsprekend bepaalde resultaten worden gesorteerd in oplopende volgorde (bijvoorbeeld afstand weg van een punt), en sommige in aflopende volgorde (bijvoorbeeld Gast beoordeling).
-* Scoreprofielen kan worden gedefinieerd als numerieke vergelijkingen niet beschikbaar zijn of niet genoeg voor een gegevensset Smart. Elk resultaat scoren help te bestellen en op intelligente wijze de resultaten weergeven.
+* Gebruikers verwachten dat Zoek resultaten worden besteld, die het meest relevant zijn voor het eerst.
+* Gegevens behoeften moeten zodanig zijn gestructureerd dat het eenvoudig kan worden geordend. Het is niet mogelijk om eerst eenvoudig op ' goedkoopste ' te sorteren, omdat de gegevens niet zijn gestructureerd, zodat het ordenen kan worden uitgevoerd zonder extra code.
+* Er kunnen veel niveaus zijn om te best Ellen, om onderscheid te maken tussen de resultaten met dezelfde waarde op een hoger niveau.
+* Het is natuurlijk dat sommige resultaten in oplopende volg orde (bijvoorbeeld op afstand van een punt) en in aflopende volg orde (bijvoorbeeld de classificatie van de gast) worden besteld.
+* Score profielen kunnen worden gedefinieerd wanneer numerieke vergelijkingen niet beschikbaar zijn of niet slim genoeg zijn voor een gegevensset. Met elk resultaat kunt u de resultaten op een slimme manier ordenen en weer geven.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-U hebt deze reeks C# zelfstudies - u moet hebben opgedaan waardevolle kennis van de Azure Search-API's.
+U hebt deze reeks C# zelf studies voltooid. u moet waardevolle kennis van de Azure Search-api's hebben opgedaan.
 
-Voor verdere verwijzing en zelfstudies, kunt u overwegen Bladeren [Microsoft Learn](https://docs.microsoft.com/learn/browse/?products=azure), of de andere zelfstudies in de [documentatie voor Azure Search](https://docs.microsoft.com/azure/search/).
+Voor verdere Naslag informatie en zelf studies kunt u overwegen [Microsoft Learn](https://docs.microsoft.com/learn/browse/?products=azure)te bladeren of de andere zelf studies in de [Azure Search documentatie](https://docs.microsoft.com/azure/search/).

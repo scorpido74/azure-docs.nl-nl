@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: alinast
 ms.custom: seodec18
-ms.openlocfilehash: 6853ebf16c1a9d6b0d363277b22c7dd2583d37e5
-ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
+ms.openlocfilehash: 8a39a79f4b3aeacd267a0c4b9351d2400f11d1ff
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69013973"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71336895"
 ---
 # <a name="how-to-create-user-defined-functions-in-azure-digital-twins"></a>Door de gebruiker gedefinieerde functies maken in azure Digital Apparaatdubbels
 
@@ -44,7 +44,7 @@ Matchers zijn grafiek objecten die bepalen welke door de gebruiker gedefinieerde
   - `SensorDevice`
   - `SensorSpace`
 
-In het volgende voor beeld wordt ' True ' geëvalueerd als een wille keurige `"Temperature"` telemetrie-gebeurtenis van een sensor met als waarde voor het gegevens type. U kunt meerdere matchers maken op basis van een door de gebruiker gedefinieerde functie door een geverifieerde HTTP POST-aanvraag in te stellen:
+In het volgende voor beeld wordt ' True ' geëvalueerd voor een telemetrie-gebeurtenis sensor met `"Temperature"` als waarde voor het gegevens type. U kunt meerdere matchers maken op basis van een door de gebruiker gedefinieerde functie door een geverifieerde HTTP POST-aanvraag in te stellen:
 
 ```plaintext
 YOUR_MANAGEMENT_API_URL/matchers
@@ -113,18 +113,18 @@ function process(telemetry, executionContext) {
 | YOUR_SPACE_IDENTIFIER | De ruimte-id  |
 | YOUR_MATCHER_IDENTIFIER | De ID van de overeenkomst die u wilt gebruiken |
 
-1. Controleer of de headers het volgende `Content-Type: multipart/form-data; boundary="USER_DEFINED_BOUNDARY"`bevatten:.
+1. Controleer of de headers het volgende bevatten: `Content-Type: multipart/form-data; boundary="USER_DEFINED_BOUNDARY"`.
 1. Controleer of de hoofd tekst meerdelige is:
 
    - Het eerste deel bevat de vereiste meta gegevens van de door de gebruiker gedefinieerde functie.
    - Het tweede deel bevat de Java script-Compute-logica.
 
-1. Vervang de waarden voor **spaceId** `YOUR_SPACE_IDENTIFIER`() en matchers ( `YOUR_MATCHER_IDENTIFIER`) in de sectie **USER_DEFINED_BOUNDARY** .
-1. Controleer of de door de gebruiker gedefinieerde Java script-functie `Content-Type: text/javascript`is opgegeven als.
+1. Vervang in de sectie **USER_DEFINED_BOUNDARY** de waarden **spaceId** (`YOUR_SPACE_IDENTIFIER`) en **matchers** (`YOUR_MATCHER_IDENTIFIER`).
+1. Controleer of de door de gebruiker gedefinieerde Java script-functie is opgegeven als `Content-Type: text/javascript`.
 
 ### <a name="example-functions"></a>Voorbeeld functies
 
-Stel de telemetrie van de sensor zo in dat deze rechtstreekswordt `sensor.DataType`gelezen voor de sensor met gegevens type temperatuur:
+Stel de telemetrie van de sensor zo in dat deze rechtstreeks wordt gelezen voor de sensor met gegevens type **temperatuur**, `sensor.DataType`:
 
 ```JavaScript
 function process(telemetry, executionContext) {
@@ -140,7 +140,7 @@ function process(telemetry, executionContext) {
 }
 ```
 
-De telemetrie-para meter bevat de **SensorId** -en **bericht** kenmerken die overeenkomen met een bericht dat door een sensor wordt verzonden. De para meter **executionContext** stelt de volgende kenmerken beschikbaar:
+De **telemetrie** -para meter bevat de **SensorId** -en **bericht** kenmerken die overeenkomen met een bericht dat door een sensor wordt verzonden. De para meter **executionContext** stelt de volgende kenmerken beschikbaar:
 
 ```csharp
 var executionContext = new UdfExecutionContext
@@ -197,16 +197,16 @@ Zie voor een complexere door de gebruiker gedefinieerde functie code voor beeld 
 
 Maak een roltoewijzing voor de door de gebruiker gedefinieerde functie die u wilt uitvoeren. Als er geen roltoewijzing voor de door de gebruiker gedefinieerde functie bestaat, beschikt u niet over de juiste machtigingen om te communiceren met de beheer-API of kunt u geen acties uitvoeren op Graph-objecten. Acties die door een door de gebruiker gedefinieerde functie kunnen worden uitgevoerd, worden opgegeven en gedefinieerd via op rollen gebaseerd toegangs beheer binnen de Azure Digital Apparaatdubbels Management-Api's. Door de gebruiker gedefinieerde functies kunnen bijvoorbeeld worden beperkt in het bereik door bepaalde rollen of bepaalde toegangscontrole paden op te geven. Zie de documentatie [op basis van op rollen gebaseerde toegangs beheer](./security-role-based-access-control.md) voor meer informatie.
 
-1. [Vraag de systeem-API](./security-create-manage-role-assignments.md#all) voor alle rollen op om de rol-id op te halen die u wilt toewijzen aan uw door de gebruiker gedefinieerde functie. Doe dit door een geverifieerde HTTP GET-aanvraag in te stellen voor:
+1. [Vraag de systeem-API](./security-create-manage-role-assignments.md#retrieve-all-roles) voor alle rollen op om de rol-id op te halen die u wilt toewijzen aan uw door de gebruiker gedefinieerde functie. Doe dit door een geverifieerde HTTP GET-aanvraag in te stellen voor:
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/system/roles
     ```
-   Behoud de gewenste rol-ID. Het wordt door gegeven als het JSON Body- kenmerk roleId`YOUR_DESIRED_ROLE_IDENTIFIER`() hieronder.
+   Behoud de gewenste rol-ID. Het wordt door gegeven als het JSON-kenmerk **roleId** (`YOUR_DESIRED_ROLE_IDENTIFIER`) hieronder.
 
-1. **objectId** (`YOUR_USER_DEFINED_FUNCTION_ID`) is de door de gebruiker gedefinieerde functie-id die eerder is gemaakt.
-1. Zoek de waarde van **Path** (`YOUR_ACCESS_CONTROL_PATH`) door uw Spaces te doorzoeken `fullpath`met.
-1. Kopieer de geretourneerde `spacePaths` waarde. U gaat hiervoor het volgende gebruiken. Een geverifieerde HTTP GET-aanvraag indienen voor:
+1. **objectId** (`YOUR_USER_DEFINED_FUNCTION_ID`) wordt de door de gebruiker gedefinieerde functie-id die eerder is gemaakt.
+1. Zoek de waarde van het **pad** (`YOUR_ACCESS_CONTROL_PATH`) door uw Spaces te doorzoeken met `fullpath`.
+1. Kopieer de geretourneerde waarde `spacePaths`. U gaat hiervoor het volgende gebruiken. Een geverifieerde HTTP GET-aanvraag indienen voor:
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/spaces?name=YOUR_SPACE_NAME&includes=fullpath
@@ -216,7 +216,7 @@ Maak een roltoewijzing voor de door de gebruiker gedefinieerde functie die u wil
     | --- | --- |
     | YOUR_SPACE_NAME | De naam van de ruimte die u wilt gebruiken |
 
-1. Plak de geretourneerde `spacePaths` waarde in **pad** om een door de gebruiker gedefinieerde functie toewijzing te maken door een geverifieerde http post-aanvraag in te stellen:
+1. Plak de geretourneerde `spacePaths`-waarde in **pad** om een door de gebruiker gedefinieerde functie toewijzing te maken door een geverifieerde HTTP POST-aanvraag in te stellen:
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/roleassignments

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: mbullwin
-ms.openlocfilehash: af157204ad1e1b28639ae2d8f192b3122afa8147
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: ff9d4bb98a79c379fda2c1a0a0ab9d5e0ec212ce
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71299227"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338096"
 ---
 # <a name="monitor-dependencies-caught-exceptions-and-method-execution-times-in-java-web-apps"></a>Afhankelijkheden, onderschepte uitzonde ringen en methode-uitvoerings tijden in Java-Web-apps bewaken
 
@@ -122,7 +122,7 @@ Voeg het volgende toe aan AI-Agent. XML:
 
 In het ideale geval is dit de situatie waarin al uw services zijn bijgewerkt naar een nieuwere versie van Sdk's die W3C-protocol ondersteunen. Het wordt sterk aanbevolen om zo snel mogelijk over te stappen op een nieuwere versie van Sdk's met W3C-ondersteuning.
 
-Zorg ervoor dat de configuraties voor inkomend en uitgaand verkeer **(agent) [](correlation.md#w3c-distributed-tracing)**  precies hetzelfde zijn.
+Zorg ervoor dat de configuraties voor inkomend en uitgaand verkeer **(agent) [](correlation.md#enable-w3c-distributed-tracing-support-for-java-apps)**  precies hetzelfde zijn.
 
 ## <a name="view-the-data"></a>De gegevens weer geven
 In de Application Insights resource worden de geaggregeerde externe afhankelijkheden en de uitvoerings tijden van de methode weer gegeven [onder de tegel prestaties][metrics].

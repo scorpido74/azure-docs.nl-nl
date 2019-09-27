@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 08/08/2019
 ms.author: iainfou
-ms.openlocfilehash: 45fb2daaeaf9ee788207d43d805e070320372ca0
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 19a618bd576687fcb0d92f8e35613e4cdc749e70
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69617128"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71320448"
 ---
 # <a name="password-and-account-lockout-policies-on-managed-domains"></a>Wacht woord-en account vergrendelings beleid in beheerde domeinen
 
@@ -36,7 +36,7 @@ U hebt de volgende resources en bevoegdheden nodig om dit artikel te volt ooien:
   * Als dat nodig is, voltooit u de zelf studie voor het [maken en configureren van een Azure Active Directory Domain Services-exemplaar][create-azure-ad-ds-instance].
 * Een Windows Server Management-VM die deel uitmaakt van het door Azure AD DS beheerde domein.
   * Als dat nodig is, voltooit u de zelf studie voor het [maken van een beheer-VM][tutorial-create-management-vm].
-* Een gebruikers account dat lid is van de groep *Azure AD DC* -Administrators in uw Azure AD-Tenant.
+* Een gebruikers account dat lid is van de groep *Azure AD DC-Administrators* in uw Azure AD-Tenant.
 
 ## <a name="fine-grained-password-policies-fgpp-overview"></a>Overzicht van verfijnde wachtwoord beleid (FGPP)
 
@@ -44,11 +44,11 @@ Met een verfijnd wachtwoord beleid (FGPPs) kunt u specifieke beperkingen voor wa
 
 De volgende wachtwoord instellingen kunnen worden geconfigureerd met behulp van FGPP:
 
-* Minimale wachtwoord lengte
+* Minimale wachtwoordlengte
 * Wachtwoord geschiedenis
 * Wacht woorden moeten voldoen aan complexiteits vereisten
-* Minimale wachtwoord duur
-* Maximale wachtwoord duur
+* Minimale wachtwoordduur
+* Maximumleeftijd voor wachtwoorden
 * Account vergrendelings beleid
   * Account vergrendelings duur
   * Aantal mislukte aanmeldings pogingen toegestaan
@@ -74,7 +74,7 @@ De volgende beleids regels voor account vergrendeling worden standaard geconfigu
 
 Met deze standaard instellingen worden gebruikers accounts gedurende 30 minuten geblokkeerd als vijf ongeldige wacht woorden binnen twee minuten worden gebruikt. Accounts worden na 30 minuten automatisch ontgrendeld.
 
-U kunt het standaard ingebouwde wachtwoord beleid niet wijzigen of verwijderen. In plaats daarvan kunnen leden van de groep *Aad DC* -Administrators een aangepaste FGPP maken en configureren voor onderdrukking (prioriteit hebben boven) de standaard ingebouwde FGPP, zoals wordt weer gegeven in de volgende sectie.
+U kunt het standaard ingebouwde wachtwoord beleid niet wijzigen of verwijderen. In plaats daarvan kunnen leden van de groep *Aad DC-Administrators* een aangepaste FGPP maken en configureren voor onderdrukking (prioriteit hebben boven) de standaard ingebouwde FGPP, zoals wordt weer gegeven in de volgende sectie.
 
 ## <a name="create-a-custom-fine-grained-password-policy"></a>Een aangepast beleid voor een verfijnd wacht woord maken
 
@@ -85,11 +85,14 @@ U kunt een aangepaste FGPP maken en deze Toep assen op specifieke groepen in uw 
 Als u een nauw keurig wachtwoord beleid wilt maken, gebruikt u de Active Directory-beheer Programma's van een VM die is gekoppeld aan een domein. Met de Active Directory-beheercentrum kunt u resources weer geven, bewerken en maken in een beheerd domein van Azure AD DS, met inbegrip van organisatie-eenheden.
 
 > [!NOTE]
-> Als u een nauw keurig wachtwoord beleid wilt maken in een door Azure AD DS beheerd domein, moet u zijn aangemeld bij een gebruikers account dat lid is van de groep *Aad DC* -Administrators.
+> Als u een nauw keurig wachtwoord beleid wilt maken in een door Azure AD DS beheerd domein, moet u zijn aangemeld bij een gebruikers account dat lid is van de groep *Aad DC-Administrators* .
 
 1. Selecteer in het Start scherm de optie **systeem beheer**. Er wordt een lijst met beschik bare beheer hulpprogramma's weer gegeven die in de zelf studie zijn geïnstalleerd om [een beheer-VM te maken][tutorial-create-management-vm].
 1. Als u organisatie-eenheden wilt maken en beheren, selecteert u **Active Directory-beheercentrum** in de lijst met beheer Programma's.
 1. Kies in het linkerdeel venster uw door Azure AD DS beheerde domein, zoals *contoso.com*.
+1. Open de **systeem** container en vervolgens de container voor **wachtwoord instellingen** .
+
+    Er wordt een ingebouwde FGPP voor het beheerde domein van Azure AD DS weer gegeven. U kunt deze ingebouwde FGPP niet wijzigen. Maak in plaats daarvan een nieuwe aangepaste FGPP om de standaard FGPP te onderdrukken.
 1. Selecteer in het deel venster **taken** aan de rechter kant **nieuwe > wachtwoord instellingen**.
 1. Voer in het dialoog venster **wacht woord instellingen maken** een naam in voor het beleid, zoals *MyCustomFGPP*. Stel de prioriteit in op de juiste manier om de standaard FGPP ( *200*), zoals *1*, te overschrijven.
 

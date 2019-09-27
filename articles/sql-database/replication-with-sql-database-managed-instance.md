@@ -11,12 +11,12 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: mathoma
 ms.date: 02/07/2019
-ms.openlocfilehash: 3b76dc546b46718378d9b22ad80e17849eaf532d
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: b940be1d1b68e4e2a41e3f8353cb54fdb51bb886
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68884079"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338740"
 ---
 # <a name="configure-replication-in-an-azure-sql-database-managed-instance-database"></a>Replicatie configureren in een Azure SQL Database beheerde exemplaar database
 
@@ -38,10 +38,10 @@ Transactionele replicatie bevindt zich in de open bare preview van [Azure SQL da
 Als u een beheerd exemplaar wilt configureren voor de functie van een uitgever en/of een distributeur, moet u het volgende doen:
 
 - Dat het beheerde exemplaar momenteel geen deel uitmaakt van een geo-replicatie relatie.
-- Of het beheerde exemplaar van de uitgever zich in hetzelfde virtuele netwerk bevindt als de Distributor en de abonnee, of dat [vNet](../virtual-network/tutorial-connect-virtual-networks-powershell.md) -peering tot stand is gebracht tussen de virtuele netwerken van alle drie de entiteiten. 
+- Of het beheerde exemplaar van de uitgever zich in hetzelfde virtuele netwerk bevindt als de Distributor en de abonnee, of dat [vNet-peering](../virtual-network/tutorial-connect-virtual-networks-powershell.md) tot stand is gebracht tussen de virtuele netwerken van alle drie de entiteiten. 
 - Connectiviteit maakt gebruik van SQL-verificatie tussen replicatiedeelnemers.
 - Een Azure Storage-account share voor de werkmap voor replicatie.
-- Poort 445 (TCP uitgaand) is geopend in de beveiligings regels van NSG voor de beheerde instanties voor toegang tot de Azure-bestands share. 
+- Poort 445 (TCP uitgaand) is geopend in de beveiligings regels van NSG voor de beheerde instanties voor toegang tot de Azure-bestands share.  Als u de fout melding ' kan geen verbinding maken met Azure Storage \<storage-account naam > met OS-fout 53 ' verschijnt, moet u een regel voor uitgaande verbindingen toevoegen aan de NSG van het betreffende SQL Managed instance-subnet.
 
 
  > [!NOTE]
@@ -50,7 +50,7 @@ Als u een beheerd exemplaar wilt configureren voor de functie van een uitgever e
 
 ## <a name="features"></a>Functies
 
-Ondersteunt:
+Steun
 
 - De combi natie van transactionele en momentopname replicatie van SQL Server on-premises en beheerde instanties in Azure SQL Database.
 - Abonnees kunnen deel uitmaken van on-premises SQL Server-data bases, afzonderlijke data bases/beheerde instanties in Azure SQL Database, of gegroepeerde Data bases in Azure SQL Database elastische Pools.
@@ -63,7 +63,7 @@ De volgende functies worden niet ondersteund in een beheerd exemplaar in Azure S
  
 ## <a name="1---create-a-resource-group"></a>1: een resource groep maken
 
-Gebruik de [Azure Portal](https://portal.azure.com) om een resource groep met de naam `SQLMI-Repl`te maken.  
+Gebruik de [Azure Portal](https://portal.azure.com) om een resource groep te maken met de naam `SQLMI-Repl`.  
 
 ## <a name="2---create-managed-instances"></a>2-beheerde instanties maken
 
@@ -78,15 +78,15 @@ U moet ook [een Azure VM configureren om verbinding te maken](sql-database-manag
 
 [Maak een Azure Storage-account](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account#create-a-storage-account) voor de werkmap en maak een [Bestands share](../storage/files/storage-how-to-create-file-share.md) in het opslag account. 
 
-Kopieer het pad naar de bestands share met de volgende indeling:`\\storage-account-name.file.core.windows.net\file-share-name`
+Kopieer het pad naar de bestands share in de indeling van: `\\storage-account-name.file.core.windows.net\file-share-name`
 
-Kopieer de toegangs sleutels voor opslag in de volgende indeling:`DefaultEndpointsProtocol=https;AccountName=<Storage-Account-Name>;AccountKey=****;EndpointSuffix=core.windows.net`
+Kopieer de toegangs sleutels voor opslag in de indeling van: `DefaultEndpointsProtocol=https;AccountName=<Storage-Account-Name>;AccountKey=****;EndpointSuffix=core.windows.net`
 
  Zie [Opslagtoegangssleutels bekijken en kopiëren](../storage/common/storage-account-manage.md#access-keys) voor meer informatie. 
 
 ## <a name="4---create-a-publisher-database"></a>4-een Publisher-data base maken
 
-Maak verbinding met `sql-mi-pub` uw beheerde exemplaar met behulp van SQL Server Management Studio en voer de volgende Transact-SQL-code (T-SQL) uit om uw Publisher-data base te maken:
+Maak verbinding met uw beheerde `sql-mi-pub`-exemplaar met behulp van SQL Server Management Studio en voer de volgende Transact-SQL-code (T-SQL) uit om uw Publisher-data base te maken:
 
 ```sql
 USE [master]
@@ -120,7 +120,7 @@ GO
 
 ## <a name="5---create-a-subscriber-database"></a>5-een abonnee database maken
 
-Maak verbinding met `sql-mi-sub` uw beheerde exemplaar met behulp van SQL Server Management Studio en voer de volgende T-SQL-code uit om uw lege abonnee database te maken:
+Maak verbinding met uw beheerde `sql-mi-sub`-exemplaar met behulp van SQL Server Management Studio en voer de volgende T-SQL-code uit om uw lege abonnee database te maken:
 
 ```sql
 USE [master]
@@ -141,7 +141,7 @@ GO
 
 ## <a name="6---configure-distribution"></a>6-distributie configureren
 
-Maak verbinding met `sql-mi-pub` uw beheerde exemplaar met behulp van SQL Server Management Studio en voer de volgende T-SQL-code uit om uw distributie database te configureren. 
+Maak verbinding met uw beheerde `sql-mi-pub`-exemplaar met behulp van SQL Server Management Studio en voer de volgende T-SQL-code uit om uw distributie database te configureren. 
 
 ```sql
 USE [master]
@@ -154,7 +154,7 @@ GO
 
 ## <a name="7---configure-publisher-to-use-distributor"></a>7: de uitgever configureren voor het gebruik van Distributor 
 
-Wijzig de uitvoering van de `sql-mi-pub`query in de [Sqlcmd](/sql/ssms/scripting/edit-sqlcmd-scripts-with-query-editor) -modus van het beheerde exemplaar van de uitgever en voer de volgende code uit om de nieuwe Distributor bij uw uitgever te registreren. 
+Wijzig de uitvoering van de query in de [Sqlcmd](/sql/ssms/scripting/edit-sqlcmd-scripts-with-query-editor) -modus van het beheerde exemplaar van de uitgever `sql-mi-pub` en voer de volgende code uit om de nieuwe Distributor bij uw uitgever te registreren. 
 
 ```sql
 :setvar username loginUsedToAccessSourceManagedInstance
@@ -322,7 +322,7 @@ EXEC sp_dropdistributor @no_checks = 1
 GO
 ```
 
-U kunt uw Azure-resources opschonen door [de beheerde exemplaar resources van de resource groep te verwijderen](../azure-resource-manager/manage-resources-portal.md#delete-resources) en vervolgens de `SQLMI-Repl`resource groep te verwijderen. 
+U kunt uw Azure-resources opschonen door [de beheerde exemplaar resources van de resource groep te verwijderen](../azure-resource-manager/manage-resources-portal.md#delete-resources) en vervolgens de resource groep `SQLMI-Repl` te verwijderen. 
 
    
 ## <a name="see-also"></a>Zie ook

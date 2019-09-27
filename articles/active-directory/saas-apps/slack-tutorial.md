@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/23/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1c2d877a1dc611e02e9fbc245df230ca669a2ae4
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: b94607691b662dcfcf0e166cd5c339b00ed0573d
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70171435"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71326685"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-slack"></a>Zelfstudie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met toegestane vertraging
 
@@ -79,7 +79,7 @@ Als u Azure AD SSO wilt configureren en testen met toegestane vertraging, voltoo
 
 Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
 
-1. Zoek in het [Azure Portal](https://portal.azure.com/)op de pagina **toegestane** toepassings integratie de sectie **beheren** en selecteer eenmalige **aanmelding**.
+1. Zoek in het [Azure Portal](https://portal.azure.com/)op de pagina **toegestane** toepassings integratie de sectie **beheren** en selecteer **eenmalige aanmelding**.
 1. Selecteer op de pagina **Eén aanmeldings methode selecteren** de optie **SAML**.
 1. Klik op de pagina **eenmalige aanmelding met SAML instellen** op het pictogram bewerken/pen voor **eenvoudige SAML-configuratie** om de instellingen te bewerken.
 
@@ -87,7 +87,7 @@ Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
 
 1. Voer in de sectie **basis configuratie van SAML** de waarden in voor de volgende velden:
 
-    a. In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://<companyname>.slack.com`
+    a. In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://<your Slack company>.slack.com`
 
     b. Typ een URL in het vak **Id (Entiteits-id)** : `https://slack.com`
 
@@ -136,7 +136,7 @@ In deze sectie schakelt u B. Simon in om de eenmalige aanmelding van Azure te ge
 
 1. Meld u in een ander browser venster aan bij de bedrijfs site van de toegestane vertraging als beheerder.
 
-2. Navigeer naar **Microsoft Azure AD** en ga naar **Teaminstellingen**.
+2. Navigeer aan de linkerkant naar de bedrijfs naam van de toegestane vertraging, die in ons geval is ingesteld als **Microsoft Azure AD** en ga vervolgens naar **team instellingen** , zoals weer gegeven in de volgende scherm afbeelding.
 
      ![Eenmalige aanmelding configureren aan de kant van de app](./media/slack-tutorial/tutorial_slack_001.png)
 

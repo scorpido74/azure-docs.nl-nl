@@ -6,12 +6,12 @@ ms.service: governance
 ms.date: 05/22/2019
 ms.author: rithorn
 ms.topic: conceptual
-ms.openlocfilehash: 7fd9a8e00072bfb8d3a0e57fb552822588111019
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 28bfabd5c28fe833050551e7be690c0ea3d1e6a0
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70241199"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338936"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>Uw resources beheren met beheer groepen
 
@@ -281,7 +281,7 @@ az account management-group subscription remove --name 'Contoso' --subscription 
 
 ## <a name="move-management-groups-in-the-hierarchy"></a>Beheer groepen verplaatsen in de hiërarchie  
 
-Wanneer u een bovenliggende beheer groep verplaatst, wordt de hiërarchie onder die groep verplaatst. Zie [toegang tot de beheer groep](index.md#management-group-access)voor de toegang die u nodig hebt om beheer groepen te verplaatsen.
+Wanneer u een bovenliggende beheer groep verplaatst, wordt de hiërarchie onder die groep verplaatst. Zie [toegang tot de beheer groep](overview.md#management-group-access)voor de toegang die u nodig hebt om beheer groepen te verplaatsen.
 
 ### <a name="move-management-groups-in-the-portal"></a>Beheer groepen verplaatsen in de portal
 

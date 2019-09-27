@@ -1,6 +1,6 @@
 ---
-title: Ophalen van een token met behulp van een Android-toepassing in Azure Active Directory B2C | Microsoft Docs
-description: Dit artikel wordt beschreven hoe u een Android-app die gebruikmaakt van AppAuth met Azure Active Directory B2C voor het beheren van gebruikers-id's en verifiëren van gebruikers maakt.
+title: Een token verkrijgen met een Android-toepassing in Azure Active Directory B2C | Microsoft Docs
+description: In dit artikel wordt uitgelegd hoe u een Android-app maakt die gebruikmaakt van AppAuth met Azure Active Directory B2C om gebruikers identiteiten te beheren en gebruikers te verifiëren.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,19 +10,19 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 4db4806b6be018bfc53a155627de825bf62d8395
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 29f1fc2a6fd23ef3a770f58fd78d5067672136dd
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66510112"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71326311"
 ---
 # <a name="sign-in-using-an-android-application-in-azure-active-directory-b2c"></a>Meld u aan met een Android-toepassing in Azure Active Directory B2C
 
-Op het Microsoft Identity-platform wordt gebruikgemaakt van open standaarden, zoals OAuth2 en OpenID Connect. Deze standaarden kunnen u gebruikmaken van een bibliotheek die u wilt integreren met Azure Active Directory B2C. Als u andere bibliotheken gebruiken, kunt u een scenario zoals deze te laten zien hoe het configureren van 3e partij bibliotheken die u moet verbinding maken met het Microsoft identity-platform. De meeste bibliotheken die implementeren [de RFC6749 OAuth2-specificatie](https://tools.ietf.org/html/rfc6749) verbinding kan maken met het Microsoft Identity-platform.
+Op het Microsoft Identity-platform wordt gebruikgemaakt van open standaarden, zoals OAuth2 en OpenID Connect. Met deze standaarden kunt u gebruikmaken van elke bibliotheek die u wilt integreren met Azure Active Directory B2C. Om u te helpen andere bibliotheken te gebruiken, kunt u een scenario als deze gebruiken om te laten zien hoe u bibliotheken van derden configureert om verbinding te maken met het micro soft Identity-platform. De meeste bibliotheken die [de RFC6749 OAuth2-spec](https://tools.ietf.org/html/rfc6749) implementeren, kunnen verbinding maken met het micro soft Identity-platform.
 
 > [!WARNING]
-> Microsoft biedt geen oplossingen voor 3e partij bibliotheken en een overzicht van deze bibliotheken niet heeft gedaan. In dit voorbeeld maakt gebruik van een 3e partij library, die AppAuth die is getest op compatibiliteit in algemene scenario's met de Azure AD B2C. Problemen en functie-aanvragen moeten worden omgeleid naar de open source-project van de bibliotheek. Raadpleeg [in dit artikel](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-libraries) voor meer informatie.  
+> Micro soft biedt geen oplossingen voor bibliotheken van derden en heeft geen beoordeling uitgevoerd van die bibliotheken. In dit voor beeld wordt een bibliotheek van derden gebruikt met de naam AppAuth die is getest op compatibiliteit in basis scenario's met de Azure AD B2C. Problemen en functie aanvragen moeten worden omgeleid naar het open-source project van de bibliotheek. Raadpleeg [dit artikel](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-libraries) voor meer informatie.
 >
 >
 
@@ -32,50 +32,50 @@ Als u nog geen ervaring hebt met OAuth2 of OpenID Connect, zal een groot gedeelt
 
 Voordat u Azure AD B2C kunt gebruiken, moet u een directory, of tenant, maken. Een directory is een container voor alle gebruikers, apps, groepen en meer. Als u nog geen directory hebt, [maakt u een B2C-directory](tutorial-create-tenant.md) voordat u verdergaat.
 
-## <a name="create-an-application"></a>Een app maken
+## <a name="create-an-application"></a>Een toepassing maken
 
-Vervolgens maakt u een app in uw B2C-directory. Hiermee geeft u informatie door aan Azure AD die nodig is om veilig te communiceren met uw app. Voor het maken van een mobiele app, gaat u als volgt [deze instructies](active-directory-b2c-app-registration.md). Zorg ervoor dat:
+Registreer vervolgens een toepassing in uw Azure AD B2C-Tenant. Dit geeft Azure AD de informatie die nodig is om veilig te communiceren met uw app.
 
-* Bevatten een **Native Client** in de toepassing.
-* U de **toepassings-id** kopieert die is toegewezen aan uw app. U moet dit later opnieuw.
-* Instellen van een systeemeigen client **omleidings-URI** (bijvoorbeeld com.onmicrosoft.fabrikamb2c.exampleapp://oauth/redirect). Deze hebt u ook later nodig.
+[!INCLUDE [active-directory-b2c-appreg-native](../../includes/active-directory-b2c-appreg-native.md)]
 
-## <a name="create-your-user-flows"></a>Uw gebruikersstromen maken
+Noteer de **toepassings-id** voor gebruik in een latere stap. Selecteer vervolgens de toepassing in de lijst en noteer de **aangepaste omleidings-URI**, ook voor gebruik in een latere stap. Bijvoorbeeld `com.onmicrosoft.contosob2c.exampleapp://oauth/redirect`.
 
-In Azure AD B2C, wordt elke gebruikerservaring gedefinieerd door een [gebruikersstroom](active-directory-b2c-reference-policies.md), dit is een set beleidsregels die de werking van Azure AD beheren. Deze toepassing moet een stroom aanmelden en meld u aan de gebruiker. Wanneer u de gebruikersstroom maakt, moet u naar:
+## <a name="create-your-user-flows"></a>Uw gebruikers stromen maken
 
-* Kies de **weergavenaam** als een aanmelding kenmerk in de gebruikersstroom.
-* Kies de **weergavenaam** en **Object-ID** toepassingsclaims in de gebruikersstroom van elke. U kunt ook andere claims kiezen.
-* Kopieer de **naam** van elk beleid nadat u dit hebt gemaakt. Deze moet het voorvoegsel `b2c_1_` bevatten.  U moet de flow-naam van de gebruiker later opnieuw.
+In Azure AD B2C wordt elke gebruikers ervaring gedefinieerd door een [gebruikers stroom](active-directory-b2c-reference-policies.md). Dit is een set beleids regels die het gedrag van Azure AD regelen. Deze toepassing vereist een aanmeldings-en registratie-gebruikers stroom. Wanneer u de gebruikers stroom maakt, moet u het volgende doen:
 
-Nadat u uw gebruikersstromen hebt gemaakt, bent u klaar om uw app te bouwen.
+* Kies de **weergave naam** als een aanmeldings kenmerk in uw gebruikers stroom.
+* Kies de **weergave naam** en de **object-id** toepassings claims in elke gebruikers stroom. U kunt ook andere claims kiezen.
+* Kopieer de **naam** van elke gebruikers stroom nadat u deze hebt gemaakt. Deze moet het voorvoegsel `b2c_1_` bevatten.  U hebt de naam van de gebruikers stroom later nodig.
 
-## <a name="download-the-sample-code"></a>Download de voorbeeldcode
+Nadat u de gebruikers stromen hebt gemaakt, bent u klaar om uw app te bouwen.
 
-We bieden een werkende-voorbeeld dat gebruikmaakt van AppAuth met Azure AD B2C [op GitHub](https://github.com/Azure-Samples/active-directory-android-native-appauth-b2c). U kunt de code downloaden en uitvoeren. U kunt snel aan de slag met uw eigen app met behulp van uw eigen Azure AD B2C-configuratie door de instructies in de [README.md](https://github.com/Azure-Samples/active-directory-android-native-appauth-b2c/blob/master/README.md).
+## <a name="download-the-sample-code"></a>De voorbeeld code downloaden
 
-Het voorbeeld is een wijziging van het voorbeeld dat is opgegeven door [AppAuth](https://openid.github.io/AppAuth-Android/). Ga naar de pagina voor meer informatie over AppAuth en de bijbehorende functies.
+We hebben een werkend voor beeld gegeven dat gebruikmaakt van AppAuth met Azure AD B2C [op github](https://github.com/Azure-Samples/active-directory-android-native-appauth-b2c). U kunt de code downloaden en uitvoeren. U kunt snel aan de slag met uw eigen app met uw eigen Azure AD B2C configuratie door de instructies in de [README.MD](https://github.com/Azure-Samples/active-directory-android-native-appauth-b2c/blob/master/README.md)te volgen.
 
-## <a name="modifying-your-app-to-use-azure-ad-b2c-with-appauth"></a>Wijzigen van uw app voor het gebruik van Azure AD B2C met AppAuth
+Het voor beeld is een wijziging van het voor beeld dat wordt verschaft door [AppAuth](https://openid.github.io/AppAuth-Android/). Ga naar de pagina voor meer informatie over AppAuth en de bijbehorende functies.
+
+## <a name="modifying-your-app-to-use-azure-ad-b2c-with-appauth"></a>Uw app wijzigen om Azure AD B2C te gebruiken met AppAuth
 
 > [!NOTE]
-> AppAuth biedt ondersteuning voor Android API 16 (Jellybean) en hoger. Wordt geadviseerd om API 23 en hoger.
+> AppAuth biedt ondersteuning voor Android API 16 (Jellybean) en hoger. U kunt het beste API 23 en hoger gebruiken.
 >
 
 ### <a name="configuration"></a>Configuratie
 
-U kunt de communicatie met Azure AD B2C configureren door een van beide op te geven de detectie URI of door de autorisatie-eindpunt en de token eindpunt-URI's op te geven. In beide gevallen moet u de volgende informatie:
+U kunt communicatie met Azure AD B2C configureren door ofwel de detectie-URI op te geven of door zowel het autorisatie-eind punt als het token-eind punt-Uri's op te geven. In beide gevallen hebt u de volgende informatie nodig:
 
 * Tenant-ID (bijvoorbeeld contoso.onmicrosoft.com)
-* Userjourney-naam (bijvoorbeeld B2C\_1\_SignUpIn)
+* Gebruikers stroom naam (bijvoorbeeld B2C @ no__t-01 @ no__t-1SignUpIn)
 
-Als u ervoor kiest voor het automatisch detecteren van de autorisatie en token-eindpunt URI's, moet u voor het ophalen van gegevens uit de URI van de detectie. De detectie URI worden gegenereerd door het vervangen van de Tenant\_-ID en het beleid\_naam in de volgende URL:
+Als u ervoor kiest om automatisch de autorisatie en Token-eind punt-Uri's te detecteren, moet u de gegevens van de detectie-URI ophalen. De detectie-URI kan worden gegenereerd door de Tenant @ no__t-0ID en het beleid @ no__t-1Name in de volgende URL te vervangen:
 
 ```java
 String mDiscoveryURI = "https://<Tenant_name>.b2clogin.com/<Tenant_ID>/v2.0/.well-known/openid-configuration?p=<Policy_Name>";
 ```
 
-Vervolgens kunt u de autorisatie en token-eindpunt URI's verkrijgen en maken van een object AuthorizationServiceConfiguration door het uitvoeren van de volgende:
+U kunt vervolgens de autorisatie-en Token-eind punt-Uri's ophalen en een AuthorizationServiceConfiguration-object maken door het volgende uit te voeren:
 
 ```java
 final Uri issuerUri = Uri.parse(mDiscoveryURI);
@@ -96,7 +96,7 @@ AuthorizationServiceConfiguration.fetchFromIssuer(
   });
 ```
 
-In plaats van detectie voor het verkrijgen van de autorisatie en token-eindpunt URI's, kunt u ook opgeven expliciet door de Tenant\_-ID en het beleid\_naam in van de URL hieronder:
+In plaats van detectie te gebruiken om de autorisatie-en Token-eind punt-Uri's te verkrijgen, kunt u ze ook expliciet opgeven door de Tenant @ no__t-0ID en het beleid @ no__t-1Name in de onderstaande URL te vervangen:
 
 ```java
 String mAuthEndpoint = "https://<Tenant_name>.b2clogin.com/<Tenant_ID>/oauth2/v2.0/authorize?p=<Policy_Name>";
@@ -104,7 +104,7 @@ String mAuthEndpoint = "https://<Tenant_name>.b2clogin.com/<Tenant_ID>/oauth2/v2
 String mTokenEndpoint = "https://<Tenant_name>.b2clogin.com/<Tenant_ID>/oauth2/v2.0/token?p=<Policy_Name>";
 ```
 
-Voer de volgende code om uw AuthorizationServiceConfiguration-object te maken:
+Voer de volgende code uit om uw AuthorizationServiceConfiguration-object te maken:
 
 ```java
 AuthorizationServiceConfiguration config =
@@ -115,12 +115,12 @@ AuthorizationServiceConfiguration config =
 
 ### <a name="authorizing"></a>Autoriseren
 
-Na het configureren van of bij het ophalen van een serviceconfiguratie autorisatie, kan een autorisatieaanvraag worden samengesteld. Voor het maken van de aanvraag, moet u de volgende informatie:
+Na het configureren of ophalen van een configuratie van een autorisatie service kan een autorisatie aanvraag worden samengesteld. Als u de aanvraag wilt maken, hebt u de volgende gegevens nodig:
 
-* Client-ID (bijvoorbeeld 00000000-0000-0000-0000-000000000000)
-* Omleidings-URI met een aangepast schema (bijvoorbeeld com.onmicrosoft.fabrikamb2c.exampleapp://oauthredirect)
+* De client-ID (toepassings-ID) die u eerder hebt vastgelegd. Bijvoorbeeld `00000000-0000-0000-0000-000000000000`.
+* Aangepaste omleidings-URI die u eerder hebt vastgelegd. Bijvoorbeeld `com.onmicrosoft.contosob2c.exampleapp://oauth/redirect`.
 
-Beide items moeten zijn opgeslagen wanneer u [uw app registreert](#create-an-application).
+Beide items moeten zijn opgeslagen bij [het registreren van uw app](#create-an-application).
 
 ```java
 AuthorizationRequest req = new AuthorizationRequest.Builder(
@@ -131,5 +131,4 @@ AuthorizationRequest req = new AuthorizationRequest.Builder(
     .build();
 ```
 
-Raadpleeg de [AppAuth handleiding](https://openid.github.io/AppAuth-Android/) voor het uitvoeren van de rest van het proces. Als u snel aan de slag met een werkende app wilt, bekijk dan [ons voorbeeld](https://github.com/Azure-Samples/active-directory-android-native-appauth-b2c). Volg de stappen in de [README.md](https://github.com/Azure-Samples/active-directory-android-native-appauth-b2c/blob/master/README.md) in te voeren van uw eigen Azure AD B2C-configuratie.
-
+Raadpleeg de AppAuth- [hand leiding](https://openid.github.io/AppAuth-Android/) voor informatie over hoe u de rest van het proces kunt volt ooien. Als u snel aan de slag wilt gaan met een werkende app, kunt u het voor [beeld](https://github.com/Azure-Samples/active-directory-android-native-appauth-b2c)bekijken. Volg de stappen in de [README.MD](https://github.com/Azure-Samples/active-directory-android-native-appauth-b2c/blob/master/README.md) om uw eigen Azure AD B2C configuratie in te voeren.

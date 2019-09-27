@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: overview
 ms.date: 08/07/2019
 ms.author: helohr
-ms.openlocfilehash: 440ebfffec9378e0dad1fd04e0880c90571bb0f1
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 7d312f54da91c8bc8b3f659ff92f531136cdecb3
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71301002"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338587"
 ---
 # <a name="what-is-windows-virtual-desktop-preview"></a>Wat is Windows virtueel bureau blad preview? 
 
@@ -87,6 +87,17 @@ De virtuele machines van Azure die u maakt voor het virtuele bureau blad van Win
 
 >[!NOTE]
 >Als u een Azure-abonnement nodig hebt, kunt u [zich aanmelden voor een gratis proef versie van één maand](https://azure.microsoft.com/free/). Als u de gratis proef versie van Azure gebruikt, moet u Azure AD Domain Services gebruiken om uw Windows Server-Active Directory gesynchroniseerd te laten met Azure Active Directory.
+
+De virtuele machines van Azure die u voor virtuele Windows-Bureau bladen maakt, moeten uitgaande TCP 443-toegang hebben tot de volgende Url's:
+* *. wvd.microsoft.com
+* *.blob.core.windows.net
+* *.core.windows.net
+* *.servicebus.windows.net
+* prod.warmpath.msftcloudes.com
+* catalogartifact.azureedge.net
+
+>[!NOTE]
+>Het openen van deze Url's is essentieel voor een betrouw bare implementatie van een virtueel bureau blad in Windows. Het blok keren van de toegang tot deze Url's wordt niet ondersteund en heeft invloed op de service functionaliteit. Deze Url's zijn alleen van toepassing op virtuele bureau blad-sites en-bronnen van Windows en bevatten geen URL'S voor andere services, zoals Azure AD.
 
 Virtueel bureau blad van Windows bestaat uit de Windows-Desk tops en-apps die u levert aan gebruikers en de beheer oplossing, die als een service op Azure wordt gehost door micro soft. Tijdens de open bare preview-versie kunnen Desk tops en apps worden geïmplementeerd op virtuele machines (Vm's) in elke Azure-regio. de beheer oplossing en de gegevens voor deze Vm's bevinden zich in de Verenigde Staten (VS Oost 2-regio). Dit kan ertoe leiden dat gegevens worden overgedragen naar de Verenigde Staten terwijl u de service test tijdens de open bare preview-versie. We beginnen met het uitschalen van de beheer oplossing en de gegevens lokalisatie naar alle Azure-regio's, beginnend bij de algemene Beschik baarheid.
 

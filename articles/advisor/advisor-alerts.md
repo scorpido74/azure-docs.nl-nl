@@ -9,12 +9,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/09/2019
 ms.author: sagupt
-ms.openlocfilehash: a67034752b4c43533a5735b857186ee83934717a
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: d641008a7caf4a006344d886aec945a6e8da2568
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70935636"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71326621"
 ---
 # <a name="create-azure-advisor-alerts-on-new-recommendations"></a>Azure Advisor-waarschuwingen maken voor nieuwe aanbevelingen 
 
@@ -24,8 +24,8 @@ Wanneer Azure Advisor een nieuwe aanbeveling voor een van uw resources detecteer
 
 U kunt ook de typen aanbevelingen vaststellen met behulp van de volgende eigenschappen:
 
-* Categorie
-* Impact niveau
+* Category
+* Impactniveau
 * Type aanbeveling
 
 U kunt ook de actie configureren die wordt uitgevoerd wanneer een waarschuwing wordt geactiveerd door:  
@@ -33,7 +33,7 @@ U kunt ook de actie configureren die wordt uitgevoerd wanneer een waarschuwing w
 * Een bestaande actie groep selecteren
 * Een nieuwe actie groep maken
 
-Zie [actie groepen maken en beheren] (. voor meer informatie over actie groepen). /azure-monitor/platform/action-groups.md.
+Raadpleeg [Actiegroepen maken en beheren](../azure-monitor/platform/action-groups.md) voor meer informatie over actiegroepen.
 
 > [!NOTE] 
 > Advisor-waarschuwingen zijn momenteel alleen beschikbaar voor aanbevelingen voor hoge Beschik baarheid, prestaties en kosten. Beveiligings aanbevelingen worden niet ondersteund. 

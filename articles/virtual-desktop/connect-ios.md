@@ -1,20 +1,20 @@
 ---
 title: Verbinding maken met het virtuele bureau blad van Windows vanuit iOS-Azure
-description: Verbinding maken met het virtuele bureau blad van Windows vanuit iOS.
+description: Verbinding maken met het virtuele bureau blad van Windows met behulp van de iOS-client.
 services: virtual-desktop
 author: heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: helohr
-ms.openlocfilehash: 3e77a77dfa2de003722419f861e957d4cb011b71
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.openlocfilehash: 764ed4fefd1a3aba1f0b7812fa2965505aa34161
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71310319"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338693"
 ---
-# <a name="connect-from-ios"></a>Verbinding maken vanaf iOS
+# <a name="connect-with-the-ios-client"></a>Verbinding maken met de iOS-client
 
 > Van toepassing op: iOS 8,0 of hoger. Compatibel met iPhone, iPad en iPod Touch.
 
@@ -52,6 +52,6 @@ Daarna moeten de externe bronnen worden weer gegeven in het verbindings centrum.
 
 Zodra u bent geabonneerd op een feed, wordt de inhoud van de feed regel matig automatisch bijgewerkt. Resources kunnen worden toegevoegd, gewijzigd of verwijderd op basis van wijzigingen die zijn aangebracht door de beheerder.
 
-## <a name="client-documentation"></a>Documentatie van de client
+## <a name="next-steps"></a>Volgende stappen
 
 Raadpleeg de documentatie aan de [slag met de IOS-client](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/remote-desktop-ios) voor meer informatie over het gebruik van de IOS bèta-client.

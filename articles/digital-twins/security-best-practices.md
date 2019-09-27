@@ -1,19 +1,19 @@
 ---
-title: Meer informatie over best practices voor Azure Digital Apparaatdubbels-beveiliging | Microsoft Docs
-description: Best practices voor Azure Digital Apparaatdubbels-beveiliging.
+title: Uitleg over aanbevolen beveiligings procedures-Azure Digital Apparaatdubbels | Microsoft Docs
+description: Meer informatie over best practices voor beveiliging voor Azure Digital Apparaatdubbels en de Internet of Things.
 author: kingdomofends
 manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 08/19/2019
+ms.date: 09/17/2019
 ms.author: v-adgera
-ms.openlocfilehash: f211206bc2408fe55f6742622b5b0e56d1ab4d90
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 181176e00595daa307504d4dea7494aefa7f1942
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69656529"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71336694"
 ---
 # <a name="security-best-practices"></a>Aanbevolen procedures voor beveiliging
 
@@ -46,7 +46,7 @@ Enkele belang rijke procedures voor het veilig beveiligen van een IoT-ruimte zij
 > [!div class="checklist"]
 > * Opgeslagen, opgeslagen of permanente gegevens versleutelen.
 > * Vereisen dat wacht woorden of sleutels regel matig worden gewijzigd of vernieuwd.
-> * Beperk de toegang en machtigingen op rol nauw keurig. Raadpleeg de sectie [Aanbevolen procedures voor toegangs beheer op basis van rollen](#rbac) hieronder.
+> * Beperk de toegang en machtigingen op rol nauw keurig. Raadpleeg de sectie [Aanbevolen procedures voor toegangs beheer op basis van rollen](#role-based-access-control-best-practices) hieronder.
 > * Overweeg een gesplitste netwerk topologie zodat apparaten op elk netwerk van elkaar zijn geïsoleerd.
 > * Gebruik krachtige versleuteling. Lange wacht woorden vereisen en beveiligde protocollen en twee ledige verificatie gebruiken.
 
@@ -66,8 +66,6 @@ Azure Digital Apparaatdubbels maakt gebruik van Azure Active Directory om gebrui
 > * Controleer de tijds duur dat een token geldig is en of een token geldig blijft.
 > * Stel de juiste tijds duur in waarvoor tokens geldig zijn.
 > * Vernieuw verlopen tokens.
-
-<div id="rbac"></div>
 
 ## <a name="role-based-access-control-best-practices"></a>Aanbevolen procedures voor toegangs beheer op basis van rollen
 

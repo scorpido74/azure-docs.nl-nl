@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 09/03/2019
-ms.openlocfilehash: b5d3a687adc8ecefcf581f7eda3b9e13d1973c62
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 6287f51d4fa0a1e4c2fb27b7cde873262ad6b3fe
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71004027"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71327232"
 ---
 # <a name="tutorial-train-your-first-ml-model"></a>Zelfstudie: Uw eerste ML model trainen
 
@@ -50,6 +50,9 @@ In dit deel van de zelf studie voert u de code uit in het voor beeld `tutorials/
    Deze map bevindt zich in het [opslag account](concept-workspace.md#resources) van de werk ruimte, in plaats van op de VM van de notebook zelf.  Als u de VM van de notebook verwijdert, blijft u al uw werk behouden.  Wanneer u later een nieuwe VM voor een notitie blok maakt, wordt dezelfde map geladen. Als u uw werk ruimte deelt met anderen, wordt uw map weer geven en ziet u de mappen.
 
 1. Open de `samples-*` submap en open vervolgens de Jupyter-notebook `tutorials/tutorial-1st-experiment-sdk-train.ipynb`, **niet** het `.yml` bestand met dezelfde naam. 
+
+> [!Warning]
+> Maak **geen** *Nieuw* notitie blok in de Jupyter-interface. Het notitie blok `tutorials/tutorial-1st-experiment-sdk-train.ipynb` is inclusief **alle code en gegevens die nodig zijn** voor deze zelf studie.
 
 ## <a name="connect-workspace-and-create-experiment"></a>Verbinding maken met werk ruimte en experiment maken
 

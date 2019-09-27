@@ -9,12 +9,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 05/16/2019
 ms.author: heidist
-ms.openlocfilehash: e83e84cc8627be468ce0074b35549d5ea7def4f5
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: d0c93d941047413c5056b3718f57b360357affbd
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69640536"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71327140"
 ---
 # <a name="monitor-resource-consumption-and-query-activity-in-azure-search"></a>Resource verbruik en query activiteit in Azure Search bewaken
 
@@ -26,21 +26,21 @@ In dit artikel vindt u meer informatie over uw bewakings opties, het inschakelen
 
 ## <a name="metrics-at-a-glance"></a>Metrische gegevens in één oogopslag
 
-De bewerkings-en **bewakings** secties die in het overzichts venster zijn ingebouwd, worden opgenomen in het Resource verbruik en de metrische gegevens van de query uitvoering Deze informatie wordt beschikbaar zodra u de service gaat gebruiken, zonder dat de configuratie is vereist. Deze pagina wordt om de paar minuten vernieuwd. Als u besluit [om te bepalen welke laag moet worden gebruikt voor werk belastingen voor de productie](search-sku-tier.md), of als u [het aantal actieve replica's en partities wilt aanpassen](search-capacity-planning.md), kunt u aan de hand van deze maat regelen zien hoe snel resources worden verbruikt. en hoe goed de huidige configuratie de bestaande belasting verwerkt.
+De bewerkings-en **bewakings** secties die in het overzichts venster zijn **ingebouwd, worden** opgenomen in het Resource verbruik en de metrische gegevens van de query uitvoering Deze informatie wordt beschikbaar zodra u de service gaat gebruiken, zonder dat de configuratie is vereist. Deze pagina wordt om de paar minuten vernieuwd. Als u besluit [om te bepalen welke laag moet worden gebruikt voor werk belastingen voor de productie](search-sku-tier.md), of als u [het aantal actieve replica's en partities wilt aanpassen](search-capacity-planning.md), kunt u aan de hand van deze maat regelen zien hoe snel resources worden verbruikt. en hoe goed de huidige configuratie de bestaande belasting verwerkt.
 
 Op het tabblad **gebruik** ziet u de beschik baarheid van resources ten opzichte van huidige [limieten](search-limits-quotas-capacity.md). De volgende afbeelding is voor de gratis service, die wordt afgelimiteerd bij 3 objecten van elk type en 50 MB aan opslag. Een Basic-of Standard-Service heeft hogere limieten en als u het aantal partities verhoogt, wordt de maximale opslag proportioneel.
 
-![Gebruiks status relatief ten](./media/search-monitor-usage/usage-tab.png
- "opzichte van de gebruiks status van de doel matigste limieten")
+![Gebruiks status relatief ten opzichte van de effectief limieten](./media/search-monitor-usage/usage-tab.png
+ "Usage-status ten opzichte van de effectief limieten @ no__t
 
 ## <a name="queries-per-second-qps-and-other-metrics"></a>Query's per seconde (QPS) en andere metrische gegevens
 
 Het tabblad **bewaking** toont zwevende gemiddelden voor metrische gegevens, zoals zoek *query's per seconde* (qps), geaggregeerd per minuut. 
-*Zoek latentie* is de hoeveelheid tijd die de zoek service nodig heeft om Zoek query's, geaggregeerd per minuut, te verwerken. *Percentage vertraagde Zoek query's* (niet weer gegeven) is het percentage Zoek query's dat is beperkt, ook samengevoegd per minuut.
+*Zoek latentie* is de hoeveelheid tijd die de zoek service nodig heeft om Zoek query's, geaggregeerd per minuut, te verwerken. *Percentage van vertraagde Zoek query's* (niet weer gegeven) is het percentage Zoek query's dat is beperkt, ook samengevoegd per minuut.
 
 Deze getallen zijn van benadering en zijn bedoeld om u een algemeen idee te geven van de manier waarop uw systeem bezig is met het verwerken van aanvragen. De werkelijke QPS kan hoger of lager zijn dan het getal dat u in de portal hebt gerapporteerd.
 
-![Query's per seconde-activiteit](./media/search-monitor-usage/monitoring-tab.png "Query's per seconde-activiteit")
+Query's per seconde voor activiteiten van een ![activiteit]per(./media/search-monitor-usage/monitoring-tab.png "tweede activiteit")
 
 ## <a name="activity-logs"></a>Activiteitenlogboeken
 
@@ -59,11 +59,11 @@ De volgende tabel vergelijkt de opties voor het opslaan van Logboeken en het toe
 | Resource | Gebruikt voor |
 |----------|----------|
 | [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) | Geregistreerde gebeurtenissen en query gegevens, op basis van de onderstaande schema's, worden gecorreleerd met gebruikers gebeurtenissen in uw app. Dit is de enige oplossing waarmee gebruikers acties of signalen worden gebruikt voor het toewijzen van gebeurtenissen van door de gebruiker geïnitieerde Zoek opdrachten, in tegens telling tot het filteren van aanvragen die worden verzonden door de toepassings code. Als u deze aanpak wilt gebruiken, kopieert u de instrumentatie code naar uw bron bestanden om de aanvraag informatie naar Application Insights te routeren. Zie voor meer informatie [Search Traffic Analytics](search-traffic-analytics.md)(Engelstalig). |
-| [Azure Monitor-logboeken](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview) | Vastgelegde gebeurtenissen en query gegevens, op basis van de onderstaande schema's. Gebeurtenissen worden geregistreerd in een Log Analytics-werk ruimte. U kunt query's uitvoeren op een werk ruimte om gedetailleerde informatie uit het logboek te retour neren. Zie [aan de slag met Azure monitor](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-viewdata) -logboeken voor meer informatie. |
+| [Azure Monitor-logboeken](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview) | Vastgelegde gebeurtenissen en query gegevens, op basis van de onderstaande schema's. Gebeurtenissen worden geregistreerd in een Log Analytics-werk ruimte. U kunt query's uitvoeren op een werk ruimte om gedetailleerde informatie uit het logboek te retour neren. Zie [aan de slag met Azure monitor-logboeken](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-viewdata) voor meer informatie. |
 | [Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) | Vastgelegde gebeurtenissen en query gegevens, op basis van de onderstaande schema's. Gebeurtenissen worden geregistreerd in een BLOB-container en opgeslagen in JSON-bestanden. Een JSON-editor gebruiken om de inhoud van een bestand weer te geven.|
 | [Event Hub](https://docs.microsoft.com/azure/event-hubs/) | Vastgelegde gebeurtenissen en query gegevens, op basis van de schema's die in dit artikel worden beschreven. Kies deze optie als een alternatieve service voor het verzamelen van gegevens voor zeer grote logboeken. |
 
-Zowel de Azure Monitor-Logboeken als de Blob-opslag zijn beschikbaar als een gratis gedeelde service, zodat u deze zonder enige kosten kunt uitproberen voor de levens duur van uw Azure-abonnement. Application Insights is gratis aan te melden en te gebruiken zolang de grootte van de toepassings gegevens onder bepaalde limieten ligt (Zie de [pagina met prijzen](https://azure.microsoft.com/pricing/details/monitor/) voor meer informatie).
+Zowel de Azure Monitor-Logboeken als de Blob-opslag zijn beschikbaar als gratis service, zodat u ze gratis kunt uitproberen voor de levens duur van uw Azure-abonnement. Application Insights is gratis aan te melden en te gebruiken zolang de grootte van de toepassings gegevens onder bepaalde limieten ligt (Zie de [pagina met prijzen](https://azure.microsoft.com/pricing/details/monitor/) voor meer informatie).
 
 In de volgende sectie wordt stapsgewijs uitgelegd hoe u Azure Blob Storage inschakelt en gebruikt om logboek gegevens te verzamelen en te openen die zijn gemaakt door Azure Search bewerkingen.
 
@@ -79,13 +79,13 @@ In deze sectie leert u hoe u Blob Storage kunt gebruiken voor het opslaan van va
 
 2. Open de overzichts pagina van de zoek service. Schuif in het linkerdeel venster omlaag naar **bewaking** en klik op **bewaking inschakelen**.
 
-   ![Bewaking inschakelen](./media/search-monitor-usage/enable-monitoring.png "Bewaking inschakelen")
+   ![](./media/search-monitor-usage/enable-monitoring.png "Bewaking") inschakelen inschakelen
 
 3. Kies de gegevens die u wilt exporteren: Logboeken, metrische gegevens of beide. U kunt het kopiëren naar een opslag account, het naar een Event Hub verzenden of het exporteren naar Azure Monitor-Logboeken.
 
    Voor archivering naar Blob Storage moet alleen het opslag account bestaan. Containers en blobs worden zo gemaakt als nodig wanneer logboek gegevens worden geëxporteerd.
 
-   ![Blob Storage-archief configureren](./media/search-monitor-usage/configure-blob-storage-archive.png "Blob Storage-archief configureren")
+   ![Blob Storage-archief configureren](./media/search-monitor-usage/configure-blob-storage-archive.png "Blob Storage-archief")
 
 4. Sla het profiel op.
 
@@ -96,7 +96,7 @@ Logboek registratie is ingeschakeld wanneer u het profiel opslaat. Containers wo
 * Insights-logs-operationlogs: voor zoeken in logboeken over webverkeer
 * Insights-metrics-pt1m: voor metrische gegevens
 
-**Het duurt één uur voordat de containers worden weer gegeven in de Blob-opslag. Er is één blob, per uur, per container.**
+**It duurt één uur voordat de containers in de Blob-opslag worden weer gegeven. Er is één blob, per uur, per container.**
 
 U kunt [Visual Studio code](#download-and-open-in-visual-studio-code) of een andere JSON-editor gebruiken om de bestanden weer te geven. 
 
@@ -159,7 +159,7 @@ U kunt een JSON-editor gebruiken om het logboek bestand weer te geven. Als u er 
 
 1. Open uw opslag account in Azure Portal. 
 
-2. Klik in het navigatie deel venster aan delinkerkant op blobs. U ziet **inzichten-logs-operationlogs** en **Insights-metrische gegevens-pt1m**. Deze containers worden gemaakt door Azure Search wanneer de logboek gegevens worden geëxporteerd naar de Blob-opslag.
+2. Klik in het navigatie deel venster aan de linkerkant op **blobs**. U ziet **inzichten-logs-operationlogs** en **Insights-metrische gegevens-pt1m**. Deze containers worden gemaakt door Azure Search wanneer de logboek gegevens worden geëxporteerd naar de Blob-opslag.
 
 3. Klik op omlaag in de maphiërarchie totdat het JSON-bestand is bereikt.  Gebruik het context menu om het bestand te downloaden.
 

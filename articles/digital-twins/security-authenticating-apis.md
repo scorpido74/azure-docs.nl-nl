@@ -1,29 +1,32 @@
 ---
-title: Meer informatie over Azure Digital Apparaatdubbels API-verificatie | Microsoft Docs
-description: Azure Digital Apparaatdubbels gebruiken om verbinding te maken en te verifiëren met Api's
+title: API-verificatie begrijpen met behulp van Azure Digital Apparaatdubbels | Microsoft Docs
+description: Meer informatie over hoe u verbinding kunt maken met Api's en hoe u deze kunt verifiëren met behulp van Azure Digital Apparaatdubbels.
 author: lyrana
 manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 09/17/2019
 ms.author: lyhughes
-ms.openlocfilehash: c0b4b6a13143f613bec64c8507f1726e2450be44
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: ad51fbe7d2f8e8f115adf03d6333c0747765ee43
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68815544"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338608"
 ---
-# <a name="connect-and-authenticate-to-apis"></a>Verbinding maken met Api's en deze verifiëren
+# <a name="connect-to-and-authenticate-with-apis"></a>Verbinding maken met en verifiëren met Api's
 
 Azure Digital Apparaatdubbels maakt gebruik van Azure Active Directory (Azure AD) om gebruikers te verifiëren en toepassingen te beveiligen. Azure AD biedt ondersteuning voor verificatie voor verschillende moderne architecturen. Ze zijn allemaal gebaseerd op de industrie standaard protocollen OAuth 2,0 of OpenID Connect Connect. Daarnaast kunnen ontwikkel aars Azure AD gebruiken om single tenant-en LOB-toepassingen (line-of-Business) te bouwen. Ontwikkel aars kunnen ook Azure AD gebruiken voor het ontwikkelen van multi tenant-toepassingen.
 
-Ga voor een overzicht van Azure AD naar de [pagina fundamentals](https://docs.microsoft.com/azure/active-directory/fundamentals/index) voor stapsgewijze hand leidingen, concepten en Quick starts.
+Ga voor een overzicht van Azure AD naar de [pagina fundamentals](https://docs.microsoft.com/azure/active-directory/fundamentals/) voor stapsgewijze hand leidingen, concepten en Quick starts.
 
-Om een toepassing of service met Azure Active Directory te integreren, moet een ontwikkelaar de toepassing eerst bij Azure Active Directory registreren. Zie voor gedetailleerde instructies en scherm afbeeldingen [deze Snelstartgids](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-add-azure-ad-app).
+> [!TIP]
+> Volg de [zelf studie](tutorial-facilities-setup.md) om een Azure Digital apparaatdubbels-voor beeld-app in te stellen en uit te voeren.
 
-Er worden [vijf primaire toepassings scenario's](https://docs.microsoft.com/azure/active-directory/develop/v2-app-types) ondersteund door Azure AD:
+Om een toepassing of service met Azure Active Directory te integreren, moet een ontwikkelaar de toepassing eerst bij Azure Active Directory registreren. Zie voor gedetailleerde instructies en scherm afbeeldingen [deze Snelstartgids](../active-directory/develop/quickstart-register-app.md).
+
+Er worden [vijf primaire toepassings scenario's](../active-directory/develop/v2-app-types.md) ondersteund door Azure AD:
 
 * Toepassing met één pagina (SPA): Een gebruiker moet zich aanmelden bij een toepassing met één pagina die wordt beveiligd door Azure AD.
 * Webbrowser voor webtoepassing: Een gebruiker moet zich aanmelden bij een webtoepassing die wordt beveiligd door Azure AD.
@@ -31,7 +34,7 @@ Er worden [vijf primaire toepassings scenario's](https://docs.microsoft.com/azur
 * Webtoepassing voor web-API: Een webtoepassing moet resources ophalen van een web-API die wordt beveiligd door Azure AD.
 * Daemon of server toepassing op Web-API: Een daemon-toepassing of een server toepassing zonder webgebruikersinterface moet resources ophalen van een web-API die wordt beveiligd door Azure AD.
 
-De Windows Azure-verificatie bibliotheek biedt een groot aantal manieren om Active Directory-tokens te verkrijgen. Raadpleeg [dit artikel](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki)voor meer informatie over de bibliotheek en code voorbeelden.
+De Windows Azure-verificatie bibliotheek biedt een groot aantal manieren om Active Directory-tokens te verkrijgen. Zie [de ADAL.net-wiki](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki)voor meer informatie over de bibliotheek en code voorbeelden.
 
 ## <a name="call-digital-twins-from-a-middle-tier-web-api"></a>Digital Apparaatdubbels aanroepen vanuit een web-API in de middelste laag
 

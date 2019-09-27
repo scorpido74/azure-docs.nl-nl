@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 06/21/2019
 ms.author: juliako
-ms.openlocfilehash: 28b9c8f343437c20e277d2f3ba53767afa45a5c2
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 6e52a51c82529a98ef679dd747b9c8b7d177b660
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68501259"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338816"
 ---
 # <a name="media-services-v3-frequently-asked-questions"></a>Veelgestelde vragen over Media Services v3
 
@@ -65,6 +65,14 @@ U kunt een [Live on-premises encoder](recommended-on-premises-live-encoders.md) 
 Klanten zich vaak afvragen of ze AES-versleuteling of een DRM-systeem gebruiken moeten. Het belangrijkste verschil tussen de twee systemen is dat met AES-versleuteling de inhouds sleutel via TLS naar de client wordt verzonden, zodat de sleutel tijdens de overdracht wordt versleuteld, maar zonder extra versleuteling (' in de Clear '). Als gevolg hiervan is de sleutel die wordt gebruikt om de inhoud te ontsleutelen toegankelijk voor de client speler en kan deze worden weer gegeven in een netwerk tracering op de client als tekst zonder opmaak. Een AES-128 Clear sleutel versleuteling is geschikt voor gebruik waarbij de viewer een vertrouwde partij is (bijvoorbeeld het versleutelen van bedrijfs Video's die binnen een bedrijf worden gedistribueerd om door werk nemers te worden weer gegeven).
 
 DRM-systemen zoals PlayReady, Widevine en FairPlay bieden een extra versleutelings niveau voor de sleutel die wordt gebruikt om de inhoud te ontsleutelen vergeleken met een AES-128 Clear-sleutel. De inhouds sleutel wordt versleuteld met een sleutel die wordt beveiligd door de DRM-runtime, in aanvulling op transport niveau versleuteling van TLS. Bovendien wordt ontsleuteling verwerkt in een beveiligde omgeving op het niveau van het besturingssysteem, waar is het moeilijker voor een kwaadwillende gebruiker om aan te vallen. DRM wordt aanbevolen voor gebruik gevallen waarbij de viewer mogelijk niet een vertrouwde partij en u het hoogste niveau van beveiliging nodig hebt.
+
+### <a name="how-to-show-a-video-only-to-users-who-have-a-specific-permission-without-using-azure-ad"></a>Hoe kan ik een video alleen weer geven voor gebruikers die een specifieke machtiging hebben, zonder Azure AD te gebruiken?
+
+U hoeft geen specifieke token provider (zoals Azure AD) te gebruiken. U kunt uw eigen [JWT](https://jwt.io/) -provider (dat wil zeggen STS, Secure Token Service) maken met behulp van asymmetrische sleutel versleuteling. In uw aangepaste STS kunt u claims toevoegen op basis van uw bedrijfs logica.
+
+Zorg ervoor dat de uitgever, de doel groep en de claims exact overeenkomen met wat is in de JWT en de ContentKeyPolicyRestriction die wordt gebruikt in ContentKeyPolicy.
+
+Zie [uw inhoud beveiligen met Media Services Dynamic Encryption](content-protection-overview.md)(Engelstalig) voor meer informatie.
 
 ### <a name="how-and-where-to-get-jwt-token-before-using-it-to-request-license-or-key"></a>Hoe en waar u kunt JWT-token ophalen om de aanvraag-licentie of sleutel u?
 

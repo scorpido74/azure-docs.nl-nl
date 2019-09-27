@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: beb9e1344f5dd3bf4b3c3d293e38a7a28170771c
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 76637c566d85816b3af6d0ed457031e7d4cd4068
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71212003"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71327676"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Planning voor de implementatie van Azure Files
 
@@ -96,6 +96,8 @@ Op dit moment kunt u niet rechtstreeks converteren tussen een standaard bestands
 
 > [!IMPORTANT]
 > Premium-bestands shares zijn beschikbaar voor LRS in de meeste regio's die opslag accounts en ZRS in een kleinere subset van regio's aanbieden. Zie de pagina [producten beschikbaar per regio](https://azure.microsoft.com/global-infrastructure/services/?products=storage) voor Azure als u wilt weten of Premium-bestands shares op dit moment beschikbaar zijn in uw regio. Zie [ondersteuning voor dekking en regionale Beschik baarheid](../common/storage-redundancy-zrs.md#support-coverage-and-regional-availability)als u wilt weten welke regio's ZRS ondersteunen.
+>
+> Vul deze [enquête](https://aka.ms/pfsfeedback)in om u te helpen bij het bepalen van de prioriteit van nieuwe regio's en de functies van de Premium-laag.
 
 #### <a name="provisioned-shares"></a>Ingerichte shares
 

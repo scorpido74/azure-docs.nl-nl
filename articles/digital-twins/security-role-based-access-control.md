@@ -1,19 +1,19 @@
 ---
-title: Meer informatie over het op rollen gebaseerd toegangs beheer van Azure Digital Apparaatdubbels | Microsoft Docs
-description: Meer informatie over verificatie in digitale Apparaatdubbels met toegangs beheer op basis van rollen.
+title: Meer informatie over op rollen gebaseerd toegangs beheer-Azure Digital Apparaatdubbels | Microsoft Docs
+description: Meer informatie over op rollen gebaseerd toegangs beheer en het beheren van machtigingen in azure Digital Apparaatdubbels.
 author: lyrana
 manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 09/17/2019
 ms.author: lyhughes
-ms.openlocfilehash: 6602a4df2c6e313156010102780240ba19fbac95
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 4e29cb488c9b491ec551ead1873e8cfd2d33a93b
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68815568"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71336739"
 ---
 # <a name="role-based-access-control-in-azure-digital-twins"></a>Op rollen gebaseerd toegangs beheer in azure Digital Apparaatdubbels
 
@@ -49,20 +49,20 @@ Een ontwikkelaar kan RBAC gebruiken voor het volgende:
 
 ### <a name="role-definitions"></a>Roldefinities
 
-Een roldefinitie is een verzameling machtigingen en andere kenmerken die een rol vormen. Met een roldefinitie worden de toegestane bewerkingen vermeld, waaronder *maken*, *lezen*, *bijwerken*en *verwijderen* , die een wille keurig object met die rol kan uitvoeren. Er wordt ook opgegeven op welke object typen machtigingen van toepassing zijn.
+Een roldefinitie is een verzameling machtigingen en andere kenmerken die een rol vormen. Met een roldefinitie worden de toegestane bewerkingen vermeld, waaronder *maken*, *lezen*, *bijwerken*en *verwijderen* , die een wille keurig object met die rol kan uitvoeren. Ook wordt aangegeven op welke object typen de machtigingen van toepassing zijn.
 
 [!INCLUDE [digital-twins-roles](../../includes/digital-twins-roles.md)]
 
 >[!NOTE]
 > Als u de volledige definities voor de vorige rollen wilt ophalen, moet u een query uitvoeren op de systeem/rollen-API.
-> Lees meer informatie door [roltoewijzingen te maken en te beheren](./security-create-manage-role-assignments.md#all).
+> Lees meer informatie door [roltoewijzingen te maken en te beheren](./security-create-manage-role-assignments.md#retrieve-all-roles).
 
 ### <a name="object-identifier-types"></a>Object-id-typen
 
 [!INCLUDE [digital-twins-object-types](../../includes/digital-twins-object-id-types.md)]
 
 >[!TIP]
-> Meer informatie over het verlenen van machtigingen aan de Service-Principal door [het maken en beheren van roltoewijzingen](./security-create-manage-role-assignments.md#grant).
+> Meer informatie over het verlenen van machtigingen aan de Service-Principal door [het maken en beheren van roltoewijzingen](./security-create-manage-role-assignments.md#grant-permissions-to-your-service-principal).
 
 In de volgende naslag documentatie artikelen wordt beschreven:
 

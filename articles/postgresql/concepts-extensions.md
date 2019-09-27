@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 09/10/2019
-ms.openlocfilehash: 383f5acb9f106bb4697433be99c53bb78d00b396
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.date: 09/26/2019
+ms.openlocfilehash: 467a8b1de3f6c234d9dfdfaf6132025688757997
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71091131"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71327119"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql---single-server"></a>PostgreSQL-extensies in Azure Database for PostgreSQL-één server
 PostgreSQL biedt de mogelijkheid om de functionaliteit van uw data base uit te breiden met behulp van extensies. Extensies bundelen meerdere gerelateerde SQL-objecten in één pakket dat kan worden geladen of verwijderd uit uw data base met één opdracht. Nadat de gegevens zijn geladen in de data base, functioneren de extensies als ingebouwde functies.
@@ -62,6 +62,7 @@ De volgende uitbrei dingen zijn beschikbaar op Azure Database for PostgreSQL ser
 > |[postgis_topology](https://postgis.net/docs/Topology.html)             | 2.5.1           | Ruimtelijke typen en functies van de PostGIS-topologie|
 > |[postgres_fdw](https://www.postgresql.org/docs/11/postgres-fdw.html)                 | 1.0             | externe-gegevens wrapper voor externe PostgreSQL-servers|
 > |[tablefunc](https://www.postgresql.org/docs/11/tablefunc.html)                    | 1.0             | functies voor het bewerken van hele tabellen, inclusief Kruistabel query's|
+> |[timescaledb](https://docs.timescale.com/latest)                    | 1.3.2             | Schakelt schaal bare invoegen en complexe query's voor tijdreeks gegevens in|
 > |[unaccent](https://www.postgresql.org/docs/11/unaccent.html)                     | 1.1             | Zoek woordenlijst voor tekst die accenten verwijdert|
 > |[uuid-ossp](https://www.postgresql.org/docs/11/uuid-ossp.html)                    | 1.1             | Universele unieke id's (UUID) genereren|
 
@@ -206,7 +207,7 @@ De volgende uitbrei dingen zijn beschikbaar op Azure Database for PostgreSQL ser
 De uitbrei ding pg_stat_statements is vooraf geladen op elke Azure Database for PostgreSQL-server, zodat u de uitvoerings statistieken van SQL-instructies kunt volgen.
 De instelling `pg_stat_statements.track`, die bepaalt welke instructies door de uitbrei ding worden geteld, wordt `top`standaard ingesteld op, wat betekent dat alle instructies die rechtstreeks door clients worden uitgegeven, worden bijgehouden. De twee andere tracking niveaus zijn `none` en `all`. Deze instelling kan worden geconfigureerd als een server parameter via de [Azure Portal](https://docs.microsoft.com/azure/postgresql/howto-configure-server-parameters-using-portal) of de [Azure cli](https://docs.microsoft.com/azure/postgresql/howto-configure-server-parameters-using-cli).
 
-Er is een verhouding tussen de pg_stat_statements voor het uitvoeren van query's en de invloed op de prestaties van de server bij het vastleggen van elke SQL-instructie. Als u de pg_stat_statements-extensie niet actief gebruikt, wordt u aangeraden om `pg_stat_statements.track` in `none`te stellen op. Houd er rekening mee dat sommige bewakings services van derden afhankelijk zijn van pg_stat_statements om query prestaties te kunnen leveren, dus bevestig of dit het geval voor u is.
+Er is een verhouding tussen de pg_stat_statements voor het uitvoeren van query's en de invloed op de prestaties van de server bij het vastleggen van elke SQL-instructie. Als u de pg_stat_statements-extensie niet actief gebruikt, raden we u aan om `pg_stat_statements.track` in te stellen op `none`. Houd er rekening mee dat sommige bewakings services van derden afhankelijk zijn van pg_stat_statements om query prestaties te kunnen leveren, dus bevestig of dit het geval voor u is.
 
 ## <a name="dblink-and-postgres_fdw"></a>dblink en postgres_fdw
 dblink en postgres_fdw bieden u de mogelijkheid om verbinding te maken tussen een PostgreSQL-server en een andere Data Base op dezelfde server. De ontvangende server moet verbindingen vanaf de verzendende server via de Firewall toestaan. Als u deze uitbrei dingen gebruikt om verbinding te maken tussen Azure Database for PostgreSQL-servers, kunt u dit doen door de optie toegang tot Azure-Services toestaan in te stellen op aan. Dit is ook nodig als u de uitbrei dingen wilt gebruiken om naar dezelfde server te gaan. De instelling toegang tot Azure-Services toestaan vindt u op de pagina Azure Portal voor de post gres-server, onder verbindings beveiliging. Als u toegang tot Azure-Services toestaan inschakelt, worden alle Azure Ip's in de acceptatie lijst geplaatst.
@@ -227,9 +228,6 @@ Meer [informatie over TimescaleDB](https://docs.timescale.com/latest), een gereg
 
 ### <a name="installing-timescaledb"></a>TimescaleDB installeren
 Als u TimescaleDB wilt installeren, moet u deze toevoegen aan de gedeelde vooraf geladen bibliotheken van de server. Voor een wijziging van de `shared_preload_libraries` para meter post gres moet de **server opnieuw worden opgestart** . U kunt para meters wijzigen met behulp van de [Azure Portal](howto-configure-server-parameters-using-portal.md) of de [Azure cli](howto-configure-server-parameters-using-cli.md).
-
-> [!NOTE]
-> TimescaleDB kan worden ingeschakeld op Azure Database for PostgreSQL versies 9,6 en 10
 
 Met behulp van de [Azure Portal](https://portal.azure.com/):
 

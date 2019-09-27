@@ -8,12 +8,12 @@ ms.service: search
 ms.topic: tutorial
 ms.date: 05/02/2019
 ms.author: heidist
-ms.openlocfilehash: d0f0abade5d1eea952c5abde293ae90745ee9b04
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 1ba0a965de356cfbe7d9a1cfc8d6d2e8da092934
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69640651"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71327180"
 ---
 # <a name="c-tutorial-crawl-an-azure-sql-database-using-azure-search-indexers"></a>C#Vind Een Azure SQL-database verkennen met de indexeerfuncties van Azure Search
 
@@ -67,7 +67,7 @@ Verbindingsgegevens voor benodigde services worden opgegeven in het bestand **ap
 
 1. Open **appSettings. json** in Solution Explorer zodat u elke instelling kunt invullen.  
 
-De eerste twee vermeldingen die u nu kunt invullen, met behulp van de URL en de beheer sleutels voor uw Azure Search service. Op basis van een `https://mydemo.search.windows.net`eind punt van is `mydemo`de te bieden service naam.
+De eerste twee vermeldingen die u nu kunt invullen, met behulp van de URL en de beheer sleutels voor uw Azure Search service. Op basis van een eind punt van `https://mydemo.search.windows.net`, is de te bieden service naam `mydemo`.
 
 ```json
 {
@@ -159,7 +159,7 @@ In deze zelfstudie haalt de indexeerfunctie gegevens op uit één gegevensbron. 
 
 Het hoofd programma bevat logica voor het maken van een-client, een index, een gegevens bron en een Indexeer functie. De code controleert op en verwijdert bestaande resources met dezelfde naam, waarbij ervan wordt uitgegaan dat u dit programma meerdere keren uitvoert.
 
-Het gegevens bron object is geconfigureerd met instellingen die specifiek zijn voor Azure SQL database-resources, [](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#capture-new-changed-and-deleted-rows) inclusief incrementele indexering voor het gebruik van de ingebouwde functie voor het [detecteren van wijzigingen](https://docs.microsoft.com/sql/relational-databases/track-changes/about-change-tracking-sql-server) van Azure SQL. De voorbeeld database van de demo in Azure SQL heeft een kolom ' voorlopig verwijderen ' met de naam **IsDeleted**. Als deze kolom is ingesteld op True in de data base, verwijdert de Indexeer functie het bijbehorende document uit de Azure Search index.
+Het gegevens bron object is geconfigureerd met instellingen die specifiek zijn voor Azure SQL database-resources, inclusief [incrementele indexering](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#capture-new-changed-and-deleted-rows) voor het gebruik van de ingebouwde functie voor het [detecteren van wijzigingen](https://docs.microsoft.com/sql/relational-databases/track-changes/about-change-tracking-sql-server) van Azure SQL. De voorbeeld database van de demo in Azure SQL heeft een kolom ' voorlopig verwijderen ' met de naam **IsDeleted**. Als deze kolom is ingesteld op True in de data base, verwijdert de Indexeer functie het bijbehorende document uit de Azure Search index.
 
   ```csharp
   Console.WriteLine("Creating data source...");
@@ -230,7 +230,7 @@ Uw code wordt lokaal uitgevoerd in Visual Studio en maakt verbinding met uw zoek
 
 + Gegevens over de databaseverbinding in **appsettings.json**. Dit moet de ADO.NET-verbindingsreeks zijn die u hebt verkregen via de portal en die is gewijzigd, zodat deze een gebruikersnaam en wachtwoord bevat die geldig zijn voor uw database. Het gebruikersaccount moet machtigingen hebben om gegevens op te halen.
 
-+ Bronlimieten. Onthoud dat voor de gedeelde (gratis) service een limiet van 3 indexen, indexeerfuncties en gegevensbronnen geldt. Een service met de maximale limiet kan geen nieuwe objecten maken.
++ Bronlimieten. De laag gratis heeft een limiet van 3 indexen, Indexeer functies en gegevens bronnen. Een service met de maximale limiet kan geen nieuwe objecten maken.
 
 ## <a name="search-the-index"></a>Zoeken in de index 
 

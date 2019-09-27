@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/26/2019
 ms.author: mlottner
-ms.openlocfilehash: 29add1cff184e234cd5dcc5050b94cdd50593731
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.openlocfilehash: adb1b840fd733353e449224c9ac752e94329bde6
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71315916"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71326736"
 ---
 # <a name="introducing-azure-security-center-for-iot"></a>Kennismaking met Azure Security Center for IoT
 
@@ -30,7 +30,7 @@ U kunt het beveiligings beheer combi neren en end-to-end detectie van bedreiging
 
 U kunt kiezen uit onze naadloze oplossing zonder agents of profiteren van uitgebreide beveiliging op basis van een agent, Azure Security Center voor IoT zorgt voor preventie en analyse van bedreigingen voor elk apparaat, IoT Edge en IoT Hub, in uw IoT-middelen.
 
-Als miljarden nieuwe apparaten zijn verbonden met internet en geïntegreerd in onze dagelijkse levens duur en onze bedrijven; uw beveiligings activiteiten moeten ervoor zorgen dat hun beveiligings strategieën snel genoeg worden ontwikkeld om deze nieuwe aanvals oppervlakken te kunnen behandelen. Net als bij elk ander systeem moet uw IoT-oplossing worden beveiligd in elke fase van uw implementatie. 
+Omdat miljarden nieuwe apparaten zijn verbonden met het internet en zijn geïntegreerd in onze dagelijkse levens duur en onze bedrijven, moeten uw beveiligings strategieën ervoor zorgen dat hun beveiligings strategie snel genoeg worden ontwikkeld om elk nieuw aanvals oppervlak te kunnen behandelen. Net als bij elk ander systeem, om uw IoT-oplossing uitgebreid te beveiligen, is beveiliging in elke fase van de implementatie vereist. 
 
 Azure Security Center voor IoT vereenvoudigt hybride beveiliging tegen werk belasting door eenvormige zicht baarheid en controle, adaptieve bedreigings preventie en intelligente bedreigings detectie en-respons te bieden voor werk belastingen die worden uitgevoerd op Edge, on-premises in azure, en in andere Clouds. 
 

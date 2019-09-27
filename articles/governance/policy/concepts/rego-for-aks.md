@@ -1,55 +1,55 @@
 ---
 title: Meer informatie over het controleren van de inhoud van een virtuele machine
-description: Meer informatie over hoe Azure Policy Rego en Open-beleidsagent gebruikt voor het beheren van clusters op Azure Kubernetes Service.
+description: Meer informatie over hoe Azure Policy Rego gebruikt en beleids agent opent voor het beheren van clusters op de Azure Kubernetes-service.
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 06/24/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: fdb392533e28df1d50e90c842d0117385afb254b
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: e16c40c6a4f3539aa286c4c2d0859459ca18a91c
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67453903"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338368"
 ---
-# <a name="understand-azure-policy-for-azure-kubernetes-service"></a>Meer informatie over Azure Policy voor Azure Kubernetes Service
+# <a name="understand-azure-policy-for-azure-kubernetes-service"></a>Meer informatie over Azure Policy voor de Azure Kubernetes-service
 
-Azure-beleid kan worden geïntegreerd met de [Azure Kubernetes Service](../../../aks/intro-kubernetes.md) (AKS) om toe te passen op schaal enforcements en de beveiliging op uw clusters in een gecentraliseerd, consistente manier.
-Door het gebruik van uitbreiden [GateKeeper](https://github.com/open-policy-agent/gatekeeper), een _toelating controller webhook_ voor [Open beleidsagent](https://www.openpolicyagent.org/) (OPA), Azure Policy maakt het mogelijk om te beheren en te rapporteren over de naleving status van uw Azure-resources en de AKS-clusters vanaf één locatie.
+Azure Policy integreert met de [Azure Kubernetes-service](../../../aks/intro-kubernetes.md) (AKS) om op schaal afdwingingen en beveiligingen op uw clusters op een gecentraliseerde, consistente manier toe te passen.
+Door het gebruik van [gate keeper](https://github.com/open-policy-agent/gatekeeper), een _toegangs controller Webhook_ voor [Open Policy Agent](https://www.openpolicyagent.org/) (opa) uit te breiden, kunt Azure Policy de nalevings status van uw Azure-resources en AKS-clusters op één plek beheren en rapporteren.
 
 > [!NOTE]
-> Azure Policy voor AKS is beperkte Preview-versie en biedt alleen ondersteuning voor ingebouwde beleidsdefinities.
+> Azure Policy voor AKS is een beperkte preview-versie en ondersteunt alleen ingebouwde beleids definities.
 
 ## <a name="overview"></a>Overzicht
 
-Als u wilt inschakelen en gebruiken van Azure Policy voor AKS met uw AKS-cluster, moet u de volgende acties uitvoeren:
+Als u Azure Policy wilt inschakelen en gebruiken voor AKS met uw AKS-cluster, voert u de volgende acties uit:
 
-- [Aanmelden voor preview-functies](#opt-in-for-preview)
-- [De Azure Policy-invoegtoepassing installeren](#installation-steps)
-- [Een beleidsdefinitie toewijzen voor AKS](#built-in-policies)
-- [Wacht op validatie](#validation-and-reporting-frequency)
+- [Opt-in voor preview-functies](#opt-in-for-preview)
+- [De Azure Policy-invoeg toepassing installeren](#installation-steps)
+- [Een beleids definitie voor AKS toewijzen](#built-in-policies)
+- [Wachten op validatie](#validation-and-reporting-frequency)
 
-## <a name="opt-in-for-preview"></a>Aanmelden voor Preview-versie
+## <a name="opt-in-for-preview"></a>Opt-in voor preview
 
-Voordat u de Azure Policy-invoegtoepassing installeren of inschakelen van een van de service-functies, het abonnement moet inschakelen de **Microsoft.ContainerService** resourceprovider en de **Microsoft.PolicyInsights**resourceprovider, en vervolgens om de Preview-versie lid te worden goedgekeurd. Als u wilt deelnemen aan de Preview-versie, volg deze stappen in de Azure portal of met Azure CLI:
+Voordat u de Azure Policy invoeg toepassing installeert of een van de service functies inschakelt, moet uw abonnement de resource provider **micro soft. container service** en de resource provider **micro soft. PolicyInsights** inschakelen en vervolgens worden goedgekeurd om Neem lid van de preview-versie. Als u wilt deel nemen aan de preview, volgt u deze stappen in de Azure Portal of met Azure CLI:
 
 - Azure Portal:
 
-  1. Registreert de **Microsoft.ContainerService** en **Microsoft.PolicyInsights** resourceproviders. Zie voor stappen [resourceproviders en typen](../../../azure-resource-manager/resource-manager-supported-services.md#azure-portal).
+  1. Registreer de resource providers **micro soft. container service** en **micro soft. PolicyInsights** . Zie [resource providers en-typen](../../../azure-resource-manager/resource-manager-supported-services.md#azure-portal)voor instructies.
 
   1. Start de Azure Policy-service in Azure Portal door **Alle services** te selecteren en dan **Beleid** te zoeken en te selecteren.
 
-     ![Zoeken naar beleid in alle Services](../media/rego-for-aks/search-policy.png)
+     ![Beleid zoeken in alle services](../media/rego-for-aks/search-policy.png)
 
-  1. Selecteer **Join Preview** aan de linkerkant van de Azure Policy-pagina.
+  1. Selecteer **deel nemen** aan de linkerkant van de pagina Azure Policy.
 
-     ![Deelnemen aan het beleid voor het AKS-preview](../media/rego-for-aks/join-aks-preview.png)
+     ![Word lid van het beleid voor AKS preview](../media/rego-for-aks/join-aks-preview.png)
 
-  1. Selecteer de rij van het abonnement dat u wilt toevoegen aan de Preview-versie.
+  1. Selecteer de rij van het abonnement dat u wilt toevoegen aan de preview.
 
-  1. Selecteer de **Opt-in voor** knop aan de bovenkant van de lijst met abonnementen.
+  1. Selecteer de knop **opt-in** boven aan de lijst met abonnementen.
 
 - Azure CLI:
 
@@ -69,24 +69,24 @@ Voordat u de Azure Policy-invoegtoepassing installeren of inschakelen van een va
   az feature register --namespace Microsoft.PolicyInsights --name AKS-DataplaneAutoApprove
   ```
 
-## <a name="azure-policy-add-on"></a>Azure Policy-invoegtoepassing
+## <a name="azure-policy-add-on"></a>Invoeg toepassing Azure Policy
 
-De _Azure Policy-invoegtoepassing_ voor Kubernetes de Azure Policy-service wordt verbonden met de GateKeeper toelating controller. De invoegtoepassing, die is geïnstalleerd in de _azure-beleid_ naamruimte enacts de volgende functies:
+De _Azure Policy-invoeg toepassing_ voor Kubernetes verbindt de Azure Policy-service met de gate keeper Admission controller. De invoeg toepassing, die is geïnstalleerd in de naam ruimte van het _Azure-beleid_ , heeft de volgende functies:
 
-- Controle met Azure Policy voor toewijzingen aan het AKS-cluster
-- Gedownload en in de cache opgeslagen beleid voor meer informatie, inclusief de _rego_ beleidsdefinitie, als **configmaps**
-- Controle op naleving voor een volledige scan op het AKS-cluster wordt uitgevoerd
-- Controle van rapporten en compatibiliteitsdetails terug naar Azure Policy
+- Controleert met Azure Policy voor toewijzingen aan het AKS-cluster
+- Hiermee worden beleids gegevens gedownload en in de cache opgeslagen, met inbegrip van de _Rego_ -beleids definitie, zoals **configmaps**
+- Hiermee wordt een volledige controle op de naleving van het AKS-cluster uitgevoerd
+- Rapporteert controle-en nalevings details terug naar Azure Policy
 
-### <a name="installing-the-add-on"></a>De invoegtoepassing installeren
+### <a name="installing-the-add-on"></a>De invoeg toepassing installeren
 
 #### <a name="prerequisites"></a>Vereisten
 
-Voordat u de invoegtoepassing in uw AKS-cluster installeert, moet de preview-extensie worden geïnstalleerd. Deze stap wordt uitgevoerd met Azure CLI:
+Voordat u de invoeg toepassing in uw AKS-cluster installeert, moet de uitbrei ding van de preview-versie zijn geïnstalleerd. Deze stap wordt uitgevoerd met Azure CLI:
 
-1. U moet de Azure CLI versie 2.0.62 of later geïnstalleerd en geconfigureerd. Voer `az --version` uit om de versie te bekijken. Als u uw CLI wilt installeren of upgraden, raadpleegt u [De Azure CLI installeren](/cli/azure/install-azure-cli).
+1. U moet de Azure CLI-versie 2.0.62 of hoger hebben geïnstalleerd en geconfigureerd. Voer `az --version` uit om de versie te bekijken. Als u uw CLI wilt installeren of upgraden, raadpleegt u [De Azure CLI installeren](/cli/azure/install-azure-cli).
 
-1. Het AKS-cluster moet versie _1.10_ of hoger. Gebruik het volgende script naar uw AKS-clusterversie valideren:
+1. Het AKS-cluster moet versie _1,10_ of hoger zijn. Gebruik het volgende script om uw AKS-cluster versie te valideren:
 
    ```azurecli-interactive
    # Log in first with az login if you're not using Cloud Shell
@@ -95,7 +95,7 @@ Voordat u de invoegtoepassing in uw AKS-cluster installeert, moet de preview-ext
    az aks list
    ```
 
-1. Installeer versie _0.4.0_ preview van Azure CLI-extensie voor AKS, `aks-preview`:
+1. Installeer versie _0.4.0_ van de Azure cli preview-uitbrei ding voor AKS, `aks-preview`:
 
    ```azurecli-interactive
    # Log in first with az login if you're not using Cloud Shell
@@ -108,28 +108,28 @@ Voordat u de invoegtoepassing in uw AKS-cluster installeert, moet de preview-ext
    ```
 
    > [!NOTE]
-   > Als u eerder hebt geïnstalleerd het _aks-preview_ -extensie, moet u eerst een bijgewerkt met behulp van de `az extension update --name aks-preview` opdracht.
+   > Als u de uitbrei ding _voor AKS-preview_ eerder hebt geïnstalleerd, installeert u updates met behulp van de opdracht `az extension update --name aks-preview`.
 
-#### <a name="installation-steps"></a>Installatiestappen
+#### <a name="installation-steps"></a>Installatie stappen
 
-Zodra de vereisten zijn voltooid, installeert u de invoegtoepassing Azure Policy in het AKS-cluster dat u wilt beheren.
+Zodra de vereisten zijn voltooid, installeert u de Azure Policy-invoeg toepassing in het AKS-cluster dat u wilt beheren.
 
 - Azure Portal
 
-  1. Start de AKS-service in Azure portal door te klikken op **alle services**, zoeken en te selecteren **Kubernetes-services**.
+  1. Start de AKS-service in de Azure Portal door op **alle services**te klikken en vervolgens op **Kubernetes Services**te zoeken en te selecteren.
 
   1. Selecteer een van uw AKS-clusters.
 
-  1. Selecteer **beleid (preview)** aan de linkerkant van de pagina van de Kubernetes-service.
+  1. Selecteer **beleid (preview-versie)** aan de linkerkant van de Kubernetes-service pagina.
 
-     ![Beleid van het AKS-cluster](../media/rego-for-aks/policies-preview-from-aks-cluster.png)
+     ![Beleids regels van het AKS-cluster](../media/rego-for-aks/policies-preview-from-aks-cluster.png)
 
-  1. Selecteer in de hoofdpagina van de **invoegtoepassing inschakelen** knop.
+  1. Selecteer op de hoofd pagina de knop **invoeg toepassing inschakelen** .
 
-     ![De Azure-beleid voor de AKS-invoegtoepassing inschakelen](../media/rego-for-aks/enable-policy-add-on.png)
+     ![De Azure Policy voor de invoeg toepassing voor AKS inschakelen](../media/rego-for-aks/enable-policy-add-on.png)
 
      > [!NOTE]
-     > Als de **invoegtoepassing inschakelen** knop is uitgeschakeld, het abonnement nog niet is toegevoegd aan de Preview-versie. Zie [Opt-in voor de Preview-versie](#opt-in-for-preview) voor de vereiste stappen.
+     > Als de knop **invoeg toepassing inschakelen** grijs wordt weer gegeven, is het abonnement nog niet toegevoegd aan de preview-versie. Zie [opt-in voor een voor beeld](#opt-in-for-preview) voor de vereiste stappen.
 
 - Azure-CLI
 
@@ -139,48 +139,48 @@ Zodra de vereisten zijn voltooid, installeert u de invoegtoepassing Azure Policy
   az aks enable-addons --addons azure-policy --name MyAKSCluster --resource-group MyResourceGroup
   ```
 
-### <a name="validation-and-reporting-frequency"></a>Validatie en rapportage van frequentie
+### <a name="validation-and-reporting-frequency"></a>Validatie-en rapportage frequentie
 
-De invoegtoepassing wordt gecontroleerd met Azure Policy voor wijzigingen in toewijzingen van beleid om de 5 minuten. Tijdens deze vernieuwingscyclus, verwijdert u de invoegtoepassing alle _configmaps_ in de _azure-beleid_ naamruimte stelt vervolgens de _configmaps_ voor gebruik van de GateKeeper.
+De invoeg toepassing controleert met Azure Policy op wijzigingen in beleids toewijzingen om de vijf minuten. Tijdens deze vernieuwings cyclus verwijdert de invoeg toepassing alle _configmaps_ in de naam ruimte van _Azure-beleid_ en wordt vervolgens de _Configmaps_ voor het gebruik van gate keeper opnieuw gemaakt.
 
 > [!NOTE]
-> Terwijl een _cluster admin_ gemachtigd is om te het _azure-beleid_ naamruimte, is het niet aanbevolen of ondersteund wijzigingen wilt aanbrengen in de naamruimte. Handmatige wijzigingen gaan verloren tijdens de vernieuwingscyclus.
+> Hoewel een _cluster beheerder_ machtiging kan hebben voor de naam ruimte van _Azure-beleid_ , wordt dit niet aanbevolen of wordt niet ondersteund voor het aanbrengen van wijzigingen in de naam ruimte. Hand matige wijzigingen die zijn aangebracht, gaan verloren tijdens de vernieuwings cyclus.
 
-Elke 5 minuten, aanroepen de invoegtoepassing voor een volledige scan van het cluster. Nadat het verzamelen van gegevens van de volledige scan en een realtime evaluaties door GateKeeper van wijzigingen aan het cluster, de invoegtoepassing rapporteert de resultaten terug naar Azure-beleid voor opname in [compatibiliteitsdetails](../how-to/get-compliance-data.md) , zoals een Azure-beleid toewijzing. Alleen resultaten voor actieve beleidstoewijzingen worden geretourneerd tijdens de controlecyclus.
+Elke 5 minuten wordt de invoeg toepassing aangeroepen voor een volledige scan van het cluster. Na het verzamelen van Details van de volledige scan en eventuele realtime-evaluaties door gate keeper van pogingen om wijzigingen aan te brengen in het cluster, worden de resultaten weer gegeven in Azure Policy om te worden opgenomen in [compatibiliteits Details](../how-to/get-compliance-data.md) zoals een Azure Policy toewijzing. Er worden alleen resultaten voor actieve beleids toewijzingen geretourneerd tijdens de controle cyclus.
 
-## <a name="policy-language"></a>Beleid voor taal
+## <a name="policy-language"></a>Beleids taal
 
-De structuur van de Azure Policy taal voor het beheren van AKS volgt die van bestaande beleidsregels. Het effect _EnforceRegoPolicy_ wordt gebruikt voor het beheren van uw AKS-clusters en het duurt _details_ eigenschappen die specifiek zijn voor het werken met OPA en GateKeeper. Zie voor meer informatie en voorbeelden, de [EnforceRegoPolicy](effects.md#enforceregopolicy) effect.
+De Azure Policy taal structuur voor het beheren van AKS volgt die van bestaande beleids regels. Het effect _EnforceRegoPolicy_ wordt gebruikt voor het beheren van uw AKS-clusters en bevat _gedetailleerde_ eigenschappen die specifiek zijn voor het werken met opa en gate keeper. Zie het effect [EnforceRegoPolicy](effects.md#enforceregopolicy) voor meer informatie en voor beelden.
 
-Als onderdeel van de _details.policy_ eigenschap in de beleidsdefinitie, Azure Policy wordt de URI van een beleid rego doorgegeven aan de invoegtoepassing. Rego is de taal die OPA en GateKeeper wordt ondersteund als u wilt valideren of muteren een aanvraag voor het Kubernetes-cluster. Door een bestaande standaard ondersteuning voor het beheer van Kubernetes, maakt Azure Policy het mogelijk hergebruik bestaande regels en ze worden gekoppeld met Azure Policy een geïntegreerde cloud-naleving rapportervaring. Zie voor meer informatie, [wat is er Rego?](https://www.openpolicyagent.org/docs/how-do-i-write-policies.html#what-is-rego).
+Als onderdeel van de eigenschap _Details. beleid_ in de beleids definitie geeft Azure Policy de URI van een Rego-beleid door aan de invoeg toepassing. Rego is de taal die OPA en gate keeper ondersteunen voor het valideren of mutate van een aanvraag naar het Kubernetes-cluster. Dankzij de ondersteuning van een bestaande standaard voor Kubernetes-beheer, maakt Azure Policy het mogelijk om bestaande regels opnieuw te gebruiken en deze te koppelen aan Azure Policy voor een uniforme rapportage van de naleving van de Cloud. Zie [Wat is Rego?](https://www.openpolicyagent.org/docs/how-do-i-write-policies.html#what-is-rego)voor meer informatie.
 
 ## <a name="built-in-policies"></a>Ingebouwd beleid
 
-Als u zoekt het ingebouwde beleid voor het beheren van AKS met behulp van de Azure portal, de volgende stappen uit:
+Voer de volgende stappen uit om het ingebouwde beleid voor het beheren van AKS met behulp van de Azure Portal te vinden:
 
-1. Start de Azure Policy-service in Azure portal. Selecteer **alle services** in het linkerdeelvenster en vervolgens zoeken naar en selecteer **beleid**.
+1. Start de Azure Policy-service in de Azure Portal. Selecteer **alle services** in het linkerdeel venster en zoek en selecteer vervolgens **beleid**.
 
-1. Selecteer in het linkerdeelvenster van de pagina Azure Policy, **definities**.
+1. Selecteer in het linkerdeel venster van de pagina Azure Policy **definities**.
 
-1. Klik in de vervolgkeuzelijst met categorie gebruiken **Alles selecteren** schakelt u het filter en selecteer vervolgens **Kubernetes-service**.
+1. Gebruik in de vervolg keuzelijst Categorie de **optie Alles selecteren** om het filter te wissen en selecteer vervolgens **Kubernetes-service**.
 
-1. Selecteer de beleidsdefinitie, en selecteer vervolgens de **toewijzen** knop.
+1. Selecteer de beleids definitie en selecteer vervolgens de knop **toewijzen** .
 
 > [!NOTE]
-> Bij het toewijzen van het Azure-beleid voor AKS-definitie, de **bereik** de AKS-cluster-bron moet bevatten.
+> Bij het toewijzen van de Azure Policy voor AKS definitie moet het **bereik** de AKS-cluster resource bevatten.
 
-U kunt ook gebruik van de [een beleid toewijzen - Portal](../assign-policy-portal.md) Snelstartgids voor het zoeken en toewijzen van een AKS-beleid. Zoeken naar de definitie van een Kubernetes-beleid in plaats van het voorbeeld 'virtuele machines controleren'.
+U kunt ook de Snelstartgids [een beleid toewijzen-Portal](../assign-policy-portal.md) gebruiken om een AKS-beleid te zoeken en toe te wijzen. Zoek in plaats van het voor beeld ' vm's controleren ' naar een Kubernetes-beleids definitie.
 
 ## <a name="logging"></a>Logboekregistratie
 
-### <a name="azure-policy-add-on-logs"></a>Logboeken van de invoegtoepassing Azure Policy
+### <a name="azure-policy-add-on-logs"></a>Azure Policy-invoeg logboeken
 
-Als een Kubernetes-controller/container houdt u de invoegtoepassing Azure Policy Logboeken in het AKS-cluster. De logboeken worden weergegeven in de **Insights** pagina van het AKS-cluster. Zie voor meer informatie, [begrijpen AKS-cluster prestaties met Azure Monitor voor containers](../../../azure-monitor/insights/container-insights-analyze.md).
+Als Kubernetes-controller/-container houdt de invoeg toepassing Azure Policy Logboeken in het AKS-cluster. De logboeken worden weer gegeven op de pagina **inzichten** van het AKS-cluster. Zie [inzicht in AKS-cluster prestaties met Azure monitor voor containers](../../../azure-monitor/insights/container-insights-analyze.md)voor meer informatie.
 
-### <a name="gatekeeper-logs"></a>GateKeeper-Logboeken
+### <a name="gatekeeper-logs"></a>Gate keeper logboeken
 
-Volg de stappen in om in te schakelen GateKeeper-logboeken voor de nieuwe resourceaanvragen, [inschakelen en controleren van master knooppunt in AKS logboeken Kubernetes](../../../aks/view-master-logs.md).
-Hier volgt een voorbeeld van een query om weer te geven geweigerde gebeurtenissen op de nieuwe resourceaanvragen:
+Als u gate keeper logboeken voor nieuwe bron aanvragen wilt inschakelen, volgt u de stappen in [Logboeken van het Kubernetes-hoofd knooppunt inschakelen en controleren in AKS](../../../aks/view-master-logs.md).
+Hier volgt een voorbeeld query voor het weer geven van geweigerde gebeurtenissen voor nieuwe resource aanvragen:
 
 ```kusto
 | where Category == "kube-audit"
@@ -188,25 +188,25 @@ Hier volgt een voorbeeld van een query om weer te geven geweigerde gebeurtenisse
 | limit 100
 ```
 
-Als u logboeken van GateKeeper containers, volg de stappen in [inschakelen en controleren van master knooppunt in AKS logboeken Kubernetes](../../../aks/view-master-logs.md) en controleer de _kube-apiserver_ optie in de **diagnostische instellingen** deelvenster.
+Als u logboeken van gate keeper-containers wilt weer geven, volgt u de stappen in [Enable and check Kubernetes master node logs in AKS](../../../aks/view-master-logs.md) en controleert u de optie _uitvoeren-apiserver_ in het deel venster **Diagnostische instellingen** .
 
-## <a name="remove-the-add-on"></a>Verwijderen van de invoegtoepassing
+## <a name="remove-the-add-on"></a>De invoeg toepassing verwijderen
 
-Als u wilt verwijderen van de invoegtoepassing Azure Policy van uw AKS-cluster, gebruikt de Azure portal of Azure CLI:
+Als u de invoeg toepassing Azure Policy wilt verwijderen uit uw AKS-cluster, gebruikt u de Azure Portal of Azure CLI:
 
 - Azure Portal
 
-  1. Start de AKS-service in Azure portal door te klikken op **alle services**, zoeken en te selecteren **Kubernetes-services**.
+  1. Start de AKS-service in de Azure Portal door op **alle services**te klikken en vervolgens op **Kubernetes Services**te zoeken en te selecteren.
 
-  1. Selecteer uw AKS-cluster waar u de Azure Policy-invoegtoepassing wilt uitschakelen.
+  1. Selecteer uw AKS-cluster waarvoor u de invoeg toepassing Azure Policy wilt uitschakelen.
 
-  1. Selecteer **beleid (preview)** aan de linkerkant van de pagina van de Kubernetes-service.
+  1. Selecteer **beleid (preview-versie)** aan de linkerkant van de Kubernetes-service pagina.
 
-     ![Beleid van het AKS-cluster](../media/rego-for-aks/policies-preview-from-aks-cluster.png)
+     ![Beleids regels van het AKS-cluster](../media/rego-for-aks/policies-preview-from-aks-cluster.png)
 
-  1. Selecteer in de hoofdpagina van de **invoegtoepassing uit te schakelen** knop.
+  1. Op de hoofd pagina selecteert u de knop **invoeg toepassing uitschakelen** .
 
-     ![De Azure-beleid voor de AKS-invoegtoepassing uitschakelen](../media/rego-for-aks/disable-policy-add-on.png)
+     ![De Azure Policy voor de invoeg toepassing AKS uitschakelen](../media/rego-for-aks/disable-policy-add-on.png)
 
 - Azure-CLI
 
@@ -218,10 +218,10 @@ Als u wilt verwijderen van de invoegtoepassing Azure Policy van uw AKS-cluster, 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Bekijk voorbeelden op [voorbeelden voor Azure Policy](../samples/index.md).
+- Bekijk voor beelden op [Azure Policy voor beelden](../samples/index.md).
 - Bekijk de [structuur van Azure Policy-definities](definition-structure.md).
 - Lees [Informatie over de effecten van het beleid](effects.md).
-- Begrijpen hoe u [programmatisch beleid maken](../how-to/programmatically-create.md).
-- Meer informatie over het [ophalen compatibiliteitsgegevens](../how-to/getting-compliance-data.md).
-- Meer informatie over het [herstellen van niet-compatibele resources](../how-to/remediate-resources.md).
-- Lees wat een beheergroep met is [organiseren van uw resources met Azure-beheergroepen](../../management-groups/index.md).
+- Meer informatie over het [programmatisch maken van beleids regels](../how-to/programmatically-create.md).
+- Meer informatie over het [ophalen van compatibiliteits gegevens](../how-to/getting-compliance-data.md).
+- Meer informatie over het [oplossen van niet-compatibele resources](../how-to/remediate-resources.md).
+- Bekijk wat een beheer groep is met [het organiseren van uw resources met Azure-beheer groepen](../../management-groups/overview.md).

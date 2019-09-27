@@ -1,6 +1,6 @@
 ---
-title: Meer informatie over Azure Security Center voor de samen voeging van IoT-oplossings gebeurtenissen | Microsoft Docs
-description: Meer informatie over hoe gebeurtenissen worden geaggregeerd in Azure Security Center voor IoT-service.
+title: Informatie over Azure Security Center voor IoT-gebeurtenis aggregatie | Microsoft Docs
+description: Meer informatie over Azure Security Center voor IoT-gebeurtenis aggregatie.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/21/2019
+ms.date: 09/26/2019
 ms.author: mlottner
-ms.openlocfilehash: b8100fc78eced9aa26fe185a8d68244d8f665ff2
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: b1a14cf4c8aec2f3dbfa7bc4fd0800d9fd1fb0aa
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70933906"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71327318"
 ---
-# <a name="security-agent-event-aggregation"></a>Aggregatie van beveiligings agent gebeurtenissen
+# <a name="azure-security-center-for-iot-event-aggregation"></a>Azure Security Center voor IoT-gebeurtenis aggregatie
 
-Azure Security Center voor IoT-beveiligings agenten verzamelen gegevens en systeem gebeurtenissen van uw lokale apparaat en verzenden deze gegevens naar de Azure-Cloud voor verwerking en analyse. De beveiligings agent verzamelt veel soorten apparaatfuncties, waaronder nieuw proces en nieuwe verbindings gebeurtenissen. Het nieuwe proces en de nieuwe verbindings gebeurtenissen kunnen zich binnen een tweede keer regel matig voordoen op een apparaat, en als belang rijk voor de robuuste en uitgebreide beveiliging, kan de hoeveelheid berichten waarmee de beveiligings agenten worden verzonden, snel worden bereikt of groter worden dan uw IoT Hub quota en kosten limieten. Deze gebeurtenissen bevatten echter zeer waardevolle beveiligings informatie die essentieel is voor het beveiligen van uw apparaat.
+Azure Security Center voor IoT-beveiligings agenten verzamelt gegevens en systeem gebeurtenissen van uw lokale apparaat en verzendt deze gegevens naar de Azure-Cloud voor verwerking en analyse. De beveiligings agent verzamelt veel soorten apparaatfuncties, waaronder nieuw proces en nieuwe verbindings gebeurtenissen. Het nieuwe proces en de nieuwe verbindings gebeurtenissen kunnen zich in een tweede keer regel matig voordoen op een apparaat, en hoewel belang rijk voor de robuuste en uitgebreide beveiliging, kan het aantal berichten dat beveiligings agenten voor verzen ding worden geforceerd snel bereiken of groter worden dan uw IoT Hub quota en kosten limieten. Deze gebeurtenissen bevatten echter zeer waardevolle beveiligings informatie die essentieel is voor het beveiligen van uw apparaat.
 
 Azure Security Center voor IoT-agents deze typen gebeurtenissen samen voegen om het extra quotum en de kosten te verminderen terwijl uw apparaten beveiligd blijven.
 
@@ -44,8 +44,8 @@ De agent verhoogt het aantal treffers van deze specifieke gebeurtenis, wanneer d
 
 Gebeurtenissen worden alleen als identiek beschouwd wanneer aan de volgende voor waarden wordt voldaan: 
 
-* ProcessCreate-gebeurtenissen: wanneer **commandline**, **uitvoer bare bestand**, **gebruikers naam** en gebruikers- **id** identiek zijn
-* ConnectionCreate-gebeurtenissen: **Wanneer commandline**, **GebruikersID**, **Direction**, **lokaal adres**, **extern adres**, **protocol** en **doel poort** identiek zijn
+* ProcessCreate-gebeurtenissen: wanneer **commandline**, **uitvoer bare bestand**, * * gebruikers naam en **gebruikers-id** identiek zijn
+* ConnectionCreate-gebeurtenissen: wanneer **commandline**, **GebruikersID**, **Direction**, **lokaal adres**, **extern adres**, * * protocol en **doel poort** identiek zijn
 * ProcessTerminate-gebeurtenissen: wanneer het **uitvoer bare bestand** en de status van het **Afsluiten** identiek zijn
 
 ### <a name="working-with-aggregated-events"></a>Werken met geaggregeerde gebeurtenissen
@@ -57,14 +57,14 @@ Tijdens aggregatie worden gebeurtenis eigenschappen die niet worden geaggregeerd
 ## <a name="event-aggregation-based-alerts"></a>Waarschuwingen op basis van gebeurtenis aggregatie 
 Na analyse maakt Azure Security Center voor IoT beveiligings waarschuwingen voor verdachte geaggregeerde gebeurtenissen. Waarschuwingen die zijn gemaakt op basis van geaggregeerde gebeurtenissen, worden slechts één keer voor elke geaggregeerde gebeurtenis weer gegeven.
 
-Begin tijd van de aggregatie, de eind tijd en het aantal treffers voor elke gebeurtenis worden vastgelegd in het veld gebeurtenis **ExtraDetails** binnen log Analytics voor gebruik tijdens het onderzoek. 
+De begin tijd van de aggregatie, de eind tijd en het aantal treffers voor elke gebeurtenis worden vastgelegd in het veld gebeurtenis **ExtraDetails** binnen log Analytics voor gebruik tijdens het onderzoek. 
 
-Elke geaggregeerde gebeurtenis vertegenwoordigt een periode van 24 uur aan verzamelde waarschuwingen. Met het menu gebeurtenis opties in de linkerbovenhoek van elke gebeurtenis kunt u elke afzonderlijke statistische gebeurtenis **sluiten** .    
+Elke samengevoegde gebeurtenis vertegenwoordigt een periode van 24 uur verzamelde waarschuwingen. Met het menu gebeurtenis opties in de linkerbovenhoek van elke gebeurtenis kunt u elke afzonderlijke statistische gebeurtenis **sluiten** .    
 
 ## <a name="event-aggregation-twin-configuration"></a>Dubbele configuratie gebeurtenis aggregatie
 Breng wijzigingen aan in de configuratie van Azure Security Center voor IoT-gebeurtenis aggregatie in het object van de [agent configuratie](how-to-agent-configuration.md) van de module dubbele identiteit van de module **azureiotsecurity** .
 
-| Configuratie naam | Mogelijke waarden | Details | Opmerkingen |
+| Configuratienaam | Mogelijke waarden | Details | Opmerkingen |
 |:-----------|:---------------|:--------|:--------|
 | aggregationEnabledProcessCreate | boolean | Gebeurtenis aggregatie voor het maken van proces gebeurtenissen in-of uitschakelen |
 | aggregationIntervalProcessCreate | ISO8601 time span-teken reeks | Aggregatie-interval voor het maken van proces gebeurtenissen |
@@ -76,7 +76,7 @@ Breng wijzigingen aan in de configuratie van Azure Security Center voor IoT-gebe
 
 ## <a name="default-configurations-settings"></a>Standaard configuratie-instellingen
 
-| Configuratie naam | Standaardwaarden |
+| Configuratienaam | Standaardwaarden |
 |:-----------|:---------------|
 | aggregationEnabledProcessCreate | true |
 | aggregationIntervalProcessCreate | PT1H|

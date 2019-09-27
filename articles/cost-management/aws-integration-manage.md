@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: cost-management
 manager: ormaoz
 ms.custom: ''
-ms.openlocfilehash: 6767644e037c6abb3e3044c8707e923a9137a01c
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: 772f6cdde575a9ac669c73ecca039914357ffe2f
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69019551"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338886"
 ---
 # <a name="manage-aws-costs-and-usage-in-azure"></a>Kosten en gebruik van AWS in azure beheren
 
@@ -183,4 +183,4 @@ Deze fout heeft betrekking op de definitie van het AWS-kosten-en gebruiks rappor
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Als u uw Azure-omgeving nog niet hebt geconfigureerd met beheer groepen, raadpleegt u de [eerste instellingen van beheer groepen](../governance/management-groups/index.md#initial-setup-of-management-groups).
+- Als u uw Azure-omgeving nog niet hebt geconfigureerd met beheer groepen, raadpleegt u de [eerste instellingen van beheer groepen](../governance/management-groups/overview.md#initial-setup-of-management-groups).

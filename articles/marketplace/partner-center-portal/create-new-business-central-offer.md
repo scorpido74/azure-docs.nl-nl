@@ -1,18 +1,18 @@
 ---
 title: Maak een nieuwe aanbieding voor Dynamics 365 Business Central in de commerciële Marketplace
 description: Het maken van een nieuwe Dynamics 365 Business Central-aanbieding voor het aanbieden of verkopen in azure Marketplace, AppSource of via het programma Cloud Solution Provider (CSP) met behulp van de commerciële Marketplace-Portal in micro soft Partner Center.
-author: JnHs
+author: ChJenk
 manager: evansma
-ms.author: jenhayes
+ms.author: v-chjen
 ms.service: marketplace
 ms.topic: conceptual
-ms.date: 08/26/2019
-ms.openlocfilehash: e127d937dfaeb8afaad6b9a95383f0008f5ea898
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.date: 09/26/2019
+ms.openlocfilehash: 8c57fd2a2c9c5c059480f3d6ad48454724e5cc61
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70033265"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71327628"
 ---
 # <a name="create-a-new-dynamics-365-business-central-offer"></a>Een nieuwe Dynamics 365 Business Central-aanbieding maken
 
@@ -28,7 +28,7 @@ Selecteer de knop **+ nieuwe aanbieding** en selecteer vervolgens het menu-item 
 
 ### <a name="offer-id-and-alias"></a>Aanbiedings-ID en alias
 
-- **Offer ID**: De unieke id voor elke aanbieding in uw account. Deze ID is zichtbaar voor klanten in het URL-adres voor de Marketplace-aanbieding en Azure Resource Manager sjablonen (indien van toepassing). De aanbiedings-ID moet kleine letters en alfanumerieke tekens zijn (inclusief afbreek streepjes en onderstrepingen, maar geen witruimte), beperkt tot 50 tekens en kan niet worden gewijzigd nadat u **maken**hebt geselecteerd.  Als u hier bijvoorbeeld *test-aanbieding-1* invoert, is de URL `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`van de aanbieding.
+- **Offer ID**: De unieke id voor elke aanbieding in uw account. Deze ID is zichtbaar voor klanten in het URL-adres voor de Marketplace-aanbieding en Azure Resource Manager sjablonen (indien van toepassing). De aanbiedings-ID moet kleine letters en alfanumerieke tekens zijn (inclusief afbreek streepjes en onderstrepingen, maar geen witruimte), beperkt tot 50 tekens en kan niet worden gewijzigd nadat u **maken**hebt geselecteerd.  Als u hier bijvoorbeeld *test-aanbieding-1* invoert, wordt de URL van de aanbieding `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`.
 
 - **Aanbiedings alias**: De naam die wordt gebruikt om te verwijzen naar de aanbieding binnen het partner centrum. Deze naam wordt niet gebruikt in Marketplace en wijkt af van de naam van de aanbieding en andere waarden die aan klanten worden weer gegeven. Deze waarde kan niet worden gewijzigd nadat u **maken**hebt geselecteerd.
 
@@ -92,7 +92,7 @@ Vergeet niet om te **slaan** voordat u verdergaat met de volgende sectie.
 
 Op de pagina **Eigenschappen** kunt u de categorieën en industrieën definiëren die worden gebruikt voor het groeperen van uw aanbieding op Marketplace, uw app-versie en de juridische contracten die uw aanbieding ondersteunen. Selecteer **Opslaan** nadat u deze pagina hebt voltooid.
 
-### <a name="category"></a>Categorie
+### <a name="category"></a>Category
 
 Selecteer mini maal één en Maxi maal drie categorieën. deze worden gebruikt om uw aanbieding in de juiste Zoek gebieden voor Marketplace te plaatsen. Neem contact op met de manier waarop uw aanbod deze categorieën ondersteunt in de beschrijving van de aanbieding. 
 
@@ -172,9 +172,9 @@ Voer de URL in voor het privacybeleid van uw organisatie. U bent verantwoordelij
 
 ### <a name="contacts"></a>Contactpersonen
 
-In deze sectie moet u de naam, het e-mail adres en het telefoon nummer opgeven voor een ondersteunings **contact** en een **technische contact persoon**. Deze informatie wordt niet weer gegeven aan klanten, maar is beschikbaar voor micro soft en kan worden verschaft aan CSP-partners.
+In deze sectie moet u de naam, het e-mail adres en het telefoon nummer opgeven voor een **ondersteunings contact** en een **technische contact persoon**. Deze informatie wordt niet weer gegeven aan klanten, maar is beschikbaar voor micro soft en kan worden verschaft aan CSP-partners.
 
-In het gedeelte **ondersteuning voor contact opnemen** moet u ook de ondersteunings- **URL** opgeven waar CSP-partners ondersteuning voor uw aanbieding kunnen vinden.
+In het gedeelte **ondersteuning voor contact opnemen** moet u ook de **ondersteunings-URL** opgeven waar CSP-partners ondersteuning voor uw aanbieding kunnen vinden.
 
 ### <a name="supporting-documents"></a>Ondersteunende documenten
 
@@ -194,11 +194,11 @@ De afbeelding van de held is optioneel. Als u een waarde opgeeft, moet deze 815 
 
 #### <a name="screenshots"></a>Schermopnamen
 
-Scherm afbeeldingen toevoegen die laten zien hoe uw aanbieding werkt. Ten minste één scherm opname is vereist en u kunt Maxi maal vijf toevoegen. Alle scherm afbeeldingen moeten 1280 x 720 pixels zijn.
+Scherm afbeeldingen toevoegen die laten zien hoe uw aanbieding werkt. Er zijn ten minste drie scherm afbeeldingen vereist en u kunt Maxi maal vijf toevoegen. Alle scherm afbeeldingen moeten 1280 x 720 pixels zijn.
 
 #### <a name="videos"></a>Video's
 
-U kunt optioneel Maxi maal vier Video's toevoegen die uw aanbieding aantonen. Deze Video's moeten worden gehost op YouTube en/of Vimeo. Voer voor elke video de naam, de URL en een miniatuur afbeelding van de video in (1280 x 720 pixels)
+U kunt optioneel Maxi maal vijf Video's toevoegen die uw aanbieding aantonen. Deze Video's moeten worden gehost op YouTube en/of Vimeo. Voer voor elke video de naam, de URL en een miniatuur afbeelding van de video in (1280 x 720 pixels)
 
 #### <a name="additional-marketplace-listing-resources"></a>Aanvullende bronnen voor Marketplace-lijst
 
@@ -252,7 +252,7 @@ Vereist als uw aanbieding moet worden geïnstalleerd samen met een andere extens
 
 #### <a name="dependency-package-file"></a>Afhankelijkheids pakket bestand
 
-Vereist als uw aanbieding moet worden geïnstalleerd samen met een andere extensie die al op de Marketplace is gepubliceerd. Als dit het geval is `.app` , `.zip` uploadt u het of bestand hier.
+Vereist als uw aanbieding moet worden geïnstalleerd samen met een andere extensie die al op de Marketplace is gepubliceerd. Als dit het geval is, uploadt u het bestand `.app` of `.zip` hier.
 
 ### <a name="url-to-app-installation"></a>URL voor installatie van de app
 
@@ -295,9 +295,9 @@ Micro soft kan de complexiteit van het instellen van een test drive verwijderen 
 
 - **Duur van test drive** (vereist): Geef aan hoe lang het test station actief blijft door het aantal uren te definiëren. Na dit aantal uur wordt de sessie beëindigd en wordt een van uw licenties niet meer verbruikt. We raden een waarde van 2-24 uur aan, afhankelijk van de complexiteit van uw aanbieding. Bij deze duur mag alleen een treffer worden ingesteld met een geheel aantal uur (bijvoorbeeld ' 2 ' uur, ' 1,5 ' is niet geldig).  De gebruiker kan een nieuwe sessie aanvragen als deze niet langer actief zijn en de test drive opnieuw willen gebruiken.
 
-- **URL van instantie** (vereist): De URL waar de klant de test drive moet beginnen. Doorgaans de URL van uw Dynamics 365-exemplaar waarop uw app wordt uitgevoerd, waarbij voorbeeld gegevens zijn https://testdrive.crm.dynamics.com) geïnstalleerd (bijvoorbeeld.
+- **URL van instantie** (vereist): De URL waar de klant de test drive moet beginnen. Doorgaans de URL van uw Dynamics 365-exemplaar waarop uw app wordt uitgevoerd, waarbij voorbeeld gegevens zijn geïnstalleerd (bijvoorbeeld https://testdrive.crm.dynamics.com).
 
-- **URL van Web-API voor exemplaar** (vereist): Haal de Web-API-URL voor uw Dynamics 365-exemplaar op door u aan te melden bij uw Microsoft 365-account en te navigeren naar **instellingen** \&gt; **Aanpassing** \&gt; **Bronnen voor ontwikkel aars** \&gt; **Web-API van het exemplaar (Service root URL)** , kopieer de hier gevonden URL ( https://testdrive.crm.dynamics.com/api/data/v9.0) bijvoorbeeld.
+- **URL van Web-API voor exemplaar** (vereist): Haal de Web-API-URL voor uw Dynamics 365-exemplaar op door u aan te melden bij uw Microsoft 365-account en te navigeren naar **instellingen** \&gt; **Aanpassing** \&gt; **Bronnen voor ontwikkel aars** \&gt; **Web-API van het exemplaar (Service root URL)** , kopieer de URL die u hier kunt vinden (bijvoorbeeld https://testdrive.crm.dynamics.com/api/data/v9.0).
 
 - **Rolnaam** (vereist): Geef de naam van de beveiligingsrol op die u hebt gedefinieerd in uw aangepaste Dynamics 365 test drive, die wordt toegewezen aan de gebruiker tijdens hun test drive (bijvoorbeeld test station-Role).
 
@@ -362,15 +362,15 @@ Geef aan welke release van micro soft Dynamics business Central uw oplossings do
 
 ### <a name="supported-editions"></a>Ondersteunde versies
 
-Als voor uw aanbieding de Premium-editie van micro soft Dynamics 365 Business Central is vereist, selecteert u alleen **Premium** . Als dat niet het geval is, selecteert u zowel kernen als **Premium**.
+Als voor uw aanbieding de Premium-editie van micro soft Dynamics 365 Business Central is vereist, selecteert u alleen **Premium** . Als dat niet het geval is, selecteert u zowel **kernen** als **Premium**.
 
 ### <a name="key-usage-scenario"></a>Scenario voor sleutel gebruik
 
-U moet een `.pdf` bestand ploaden met een lijst met de scenario's voor het gebruik van sleutels die zijn opgenomen in een document (PDF-indeling). Alle scenario's die hier worden vermeld, kunnen door ons validatie team worden geverifieerd voordat we uw aanbieding voor Marketplace goed keuren.
+U moet een `.pdf`-bestand met een overzicht van de ploaden van uw aanbieding weer gegeven in een document (PDF-indeling). Alle scenario's die hier worden vermeld, kunnen door ons validatie team worden geverifieerd voordat we uw aanbieding voor Marketplace goed keuren.
 
 ### <a name="app-tests-automation"></a>Automatisering van app-tests
 
-U kunt eventueel een automatiserings bestand voor **app-tests** uploaden (. app).
+U kunt eventueel een **automatiserings** bestand voor app-tests uploaden (. app).
 
 ### <a name="test-accounts"></a>Test accounts
 

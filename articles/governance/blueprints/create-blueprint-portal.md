@@ -7,12 +7,12 @@ ms.date: 03/11/2019
 ms.topic: quickstart
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 473e16c610e7dee0b2838cb1a54ef7cd98958889
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 225f5cfe36daaafb7f6ab5d64e77c626e52edaac
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232982"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338199"
 ---
 # <a name="quickstart-define-and-assign-a-blueprint-in-the-portal"></a>Quickstart: Een blauw druk in de portal definiëren en toewijzen
 
@@ -36,7 +36,7 @@ De eerste stap bij het definiëren van een standaardpatroon voor naleving bestaa
 
 1. Selecteer op de pagina links **blauw** drukken en selecteer de knop **+ blauw drukken maken** boven aan de pagina.
 
-   Of selecteer **maken** op de pagina aan de slag om direct een blauw druk te maken.
+   Of selecteer **maken** op **de pagina aan de slag om** direct een blauw druk te maken.
 
    ![Een blauw druk maken op de pagina met definities van blauw drukken](./media/create-blueprint-portal/create-blueprint-button.png)
 
@@ -44,7 +44,7 @@ De eerste stap bij het definiëren van een standaardpatroon voor naleving bestaa
 
 1. Selecteer in het vak **definitie locatie** het beletsel teken aan de rechter kant, selecteer de [beheer groep](../management-groups/overview.md) of het abonnement waar u de blauw druk wilt opslaan en kies **selecteren**.
 
-1. Controleer of de gegevens correct zijn. De velden **blauw druk** en **definitie locatie** kunnen niet later worden gewijzigd. Selecteer **volgende: artefacten** onderaan de pagina of op het tabblad **Artefacten** bovenaan de pagina.
+1. Controleer of de gegevens correct zijn. De velden **blauw druk** en **definitie locatie** kunnen niet later worden gewijzigd. Selecteer vervolgens **Next: artefacten** onderaan de pagina of op het tabblad **Artefacten** bovenaan de pagina.
 
 1. Een roltoewijzing toevoegen op het abonnements niveau:
 
@@ -89,7 +89,7 @@ De eerste stap bij het definiëren van een standaardpatroon voor naleving bestaa
 
 1. Voeg een sjabloon toe onder de resource groep:
 
-   1. Selecteer de rij voor het **toevoegen** van artefacten onder de vermelding **ResourceGroup** .
+   1. Selecteer de rij voor het **toevoegen van artefacten** onder de vermelding **ResourceGroup** .
 
    1. Selecteer **Azure Resource Manager sjabloon** voor **artefact type**, stel **weergave naam voor artefact** in op **Storage account**en laat de **Beschrijving** leeg.
 
@@ -223,7 +223,7 @@ Nadat een blauw druk is gepubliceerd, kan deze worden toegewezen aan een abonnem
 
    1. Selecteer de beschik bare **aanbieding** in de vervolg keuzelijst.
 
-   1. Gebruik het beletsel teken om de [beheer groep](../management-groups/index.md) te selecteren waarvan het abonnement een onderliggend element is.
+   1. Gebruik het beletsel teken om de [beheer groep](../management-groups/overview.md) te selecteren waarvan het abonnement een onderliggend element is.
 
    1. Selecteer **Maken** onderaan de pagina.
 
@@ -284,7 +284,7 @@ Als u een blauw druk-toewijzing niet meer nodig hebt, verwijdert u deze uit een 
 
 1. Selecteer **Toegewezen blauwdrukken** op de pagina aan de linkerkant.
 
-1. Selecteer in de lijst met blauw drukken de blauw druk die u wilt verwijderen. Selecteer vervolgens de knop voor het opheffen van de **blauw druk** boven aan de pagina.
+1. Selecteer in de lijst met blauw drukken de blauw druk die u wilt verwijderen. Selecteer vervolgens de knop voor het **opheffen van de blauw druk** boven aan de pagina.
 
 1. Lees het bevestigings bericht en selecteer **OK**.
 
@@ -300,7 +300,7 @@ Als u een blauw druk-toewijzing niet meer nodig hebt, verwijdert u deze uit een 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over de [levens duur van de blauw druk](./concepts/lifecycle.md).
+- Meer informatie over de [levenscyclus van een blauwdruk](./concepts/lifecycle.md).
 - Meer informatie over hoe u [statische en dynamische parameters](./concepts/parameters.md) gebruikt.
 - Meer informatie over hoe u de [blauwdrukvolgorde](./concepts/sequencing-order.md) aanpast.
 - Meer informatie over hoe u gebruikmaakt van [resourcevergrendeling in blauwdrukken](./concepts/resource-locking.md).

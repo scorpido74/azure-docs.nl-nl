@@ -1,111 +1,111 @@
 ---
-title: 'Zelfstudie: gegevens delen met klanten en partners met behulp van Azure Data Share-Preview'
-description: 'Zelfstudie: gegevens delen met klanten en partners met behulp van Azure Data Share-Preview'
+title: 'Zelfstudie: Share buiten uw organisatie-preview van Azure data-share'
+description: 'Zelf studie: gegevens delen met klanten en partners met behulp van Azure data share preview'
 author: joannapea
+ms.author: joanpo
 ms.service: data-share
 ms.topic: tutorial
 ms.date: 07/10/2019
-ms.author: joanpo
-ms.openlocfilehash: 01888f3656765b922c1b646e7ca8e07d81e799f3
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: f7df46a6a6f149ef0228fda8c967469a25dc3d50
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67838430"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71327422"
 ---
-# <a name="tutorial-share-your-data-using-azure-data-share-preview"></a>Zelfstudie: Deel uw gegevens met behulp van Azure Data Share-Preview
+# <a name="tutorial-share-your-data-using-azure-data-share-preview"></a>Zelfstudie: Uw gegevens delen met behulp van Azure data share preview
 
-In deze zelfstudie leert u hoe u een nieuwe Azure het delen van gegevens instellen en begin met het delen van uw gegevens met klanten en partners buiten uw organisatie Azure. 
+In deze zelf studie leert u hoe u een nieuwe Azure-gegevens share instelt en hoe u uw gegevens met klanten en partners buiten uw Azure-organisatie gaat delen. 
 
 In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
-> * Maak een Gegevensshare.
-> * Gegevenssets toevoegen aan het delen van uw gegevens.
-> * Schakel een synchronisatieplanning voor het delen van uw gegevens. 
-> * Geadresseerden toevoegen aan het delen van uw gegevens. 
+> * Maak een gegevens share.
+> * Voeg gegevens sets toe aan uw gegevens share.
+> * Een synchronisatie schema inschakelen voor uw gegevens share. 
+> * Voeg ontvangers toe aan uw gegevens share. 
 
 ## <a name="prerequisites"></a>Vereisten
 
 * Azure-abonnement: Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
-* Een Azure Storage-account: Als u dit niet al hebt, kunt u een [Azure Storage-account](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
-* Machtiging roltoewijzing toevoegen aan de storage-account, deze is beschikbaar in de *Microsoft.Authorization/role toewijzingen schrijftijd* machtiging. Deze machtiging bestaat in de rol van eigenaar. 
-* Uw ontvangers Azure-aanmelding e-mailadres (met behulp van hun e-mailadres werkt niet).
+* Een Azure Storage-account: Als u er nog geen hebt, kunt u een [Azure Storage account](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) maken
+* Machtiging voor het toevoegen van roltoewijzing aan het opslag account dat aanwezig is in de machtiging *micro soft. Authorization/roltoewijzingen/schrijven* . Deze machtiging bevindt zich in de rol van eigenaar. 
+* Het e-mail adres van uw ontvangers voor Azure (met behulp van hun e-mail alias) werkt niet.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
 Meld u aan bij [Azure Portal](https://portal.azure.com/).
 
-## <a name="create-a-data-share-account"></a>Een gegevens-Share-Account maken
+## <a name="create-a-data-share-account"></a>Een gegevens share-account maken
 
-Maak een resource delen van de Azure-gegevens in een Azure-resourcegroep.
+Een Azure-gegevens share bron maken in een Azure-resource groep.
 
 1. Selecteer de knop **Een resource maken** (+) in de linkerbovenhoek van de portal.
 
-1. Zoeken naar *het delen van gegevens*.
+1. Zoeken naar *gegevens share*.
 
-1. Selecteer het delen van gegevens (preview) en selecteer **maken**.
+1. Selecteer gegevens share (preview) en selecteer **maken**.
 
-1. Vul de basisgegevens van uw resource Azure het delen van gegevens met de volgende informatie. 
+1. Vul de basis gegevens van uw Azure-gegevens share bron in met de volgende gegevens. 
 
      **Instelling** | **Voorgestelde waarde** | **Beschrijving van veld**
     |---|---|---|
-    | Name | *datashareacount* | Geef een naam voor uw gegevens delen van een account. |
-    | Subscription | Uw abonnement | Selecteer het Azure-abonnement dat u wilt gebruiken voor uw gegevens delen van een account.|
+    | Name | *datashareacount* | Geef een naam op voor uw gegevens share-account. |
+    | Subscription | Uw abonnement | Selecteer het Azure-abonnement dat u wilt gebruiken voor uw gegevens share-account.|
     | Resource group | *test-resource-group* | Gebruik een bestaande resourcegroep of maak een nieuwe. |
-    | Location | *VS-Oost 2* | Selecteer een regio voor uw gegevens delen van een account.
+    | Location | *VS-Oost 2* | Selecteer een regio voor uw gegevens share-account.
     | | |
 
-1. Selecteer **maken** voor het inrichten van uw gegevens delen van een account. Inrichten van een nieuwe gegevens delen van een account doorgaans duurt het ongeveer 2 minuten of minder. 
+1. Selecteer **maken** om uw gegevens share-account in te richten. Het inrichten van een nieuw gegevens share account duurt doorgaans ongeveer 2 minuten of minder. 
 
 1. Nadat de implementatie is voltooid, selecteert u **Ga naar resource**.
 
-## <a name="create-a-data-share"></a>Maak een Gegevensshare
+## <a name="create-a-data-share"></a>Een gegevens share maken
 
-1. Navigeer naar de pagina overzicht van Data-Share.
+1. Ga naar de pagina overzicht van gegevens delen.
 
-    ![Uw gegevens delen](./media/share-receive-data.png "uw gegevens delen") 
+    ![Uw gegevens]delen met(./media/share-receive-data.png "uw gegevens") 
 
-1. Selecteer **Start met het delen van uw gegevens**.
+1. Selecteer **beginnen met het delen van uw gegevens**.
 
 1. Selecteer **Maken**.   
 
-1. Vul de details in voor het delen van uw gegevens. Geef een naam, beschrijving van share-inhoud en de gebruiksvoorwaarden (optioneel). 
+1. Vul de details in voor uw gegevens share. Geef een naam, beschrijving van de share-inhoud en gebruiks voorwaarden op (optioneel). 
 
-    ![EnterShareDetails](./media/enter-share-details.png "sharedetails invoeren") 
+    ![EnterShareDetails](./media/enter-share-details.png "invoeren") 
 
-1. Selecteer **gaan**
+1. Selecteer **door gaan**
 
-1. Selecteer om gegevenssets toe aan het delen van uw gegevens **gegevenssets toevoegen**. 
+1. Selecteer gegevens **sets toevoegen**om gegevens sets toe te voegen aan uw gegevens share. 
 
-    ![Datasets](./media/datasets.png "Datasets")
+    ![](./media/datasets.png "Gegevens sets") gegevensgegevens sets
 
-1. Selecteer het gegevenssettype die u wilt toevoegen. 
+1. Selecteer het type gegevensset dat u wilt toevoegen. 
 
-    ![AddDatasets](./media/add-datasets.png "gegevenssets toevoegen")    
+    ![](./media/add-datasets.png "Gegevens sets AddDatasets toevoegen")    
 
-1. Ga naar het object dat u wilt delen en selecteer 'Gegevenssets toevoegen'. 
+1. Navigeer naar het object dat u wilt delen en selecteer gegevens sets toevoegen. 
 
-    ![SelectDatasets](./media/select-datasets.png "gegevenssets selecteren")    
+    ![SelectDatasets](./media/select-datasets.png "selecteren")    
 
-1. Voer in het e-mailadressen van de consumenten van uw gegevens door te selecteren op het tabblad ontvangers ' + ontvanger toevoegen '. 
+1. Voer op het tabblad ontvangers in de e-mail adressen van uw gegevens consument in door + ontvanger toevoegen te selecteren. 
 
-    ![AddRecipients](./media/add-recipient.png "geadresseerden toevoegen") 
+    ![AddRecipients](./media/add-recipient.png "toevoegen") 
 
-1. Selecteer **gaan**
+1. Selecteer **door gaan**
 
-1. Als u uw gegevensverbruiker wilt kunnen incrementele updates van uw gegevens ophalen, moet u de momentopname-planning inschakelt. 
+1. Als u wilt dat uw gegevens gebruiker incrementele updates van uw gegevens kan ophalen, moet u het schema voor de moment opname inschakelen. 
 
-    ![EnableSnapshots](./media/enable-snapshots.png "momentopnamen inschakelen") 
+    ![EnableSnapshots]-(./media/enable-snapshots.png "moment opnamen inschakelen") 
 
-1. Selecteer een start-interval voor tijd en het terugkeerpatroon. 
+1. Selecteer een begin tijd en een herhalings interval. 
 
-1. Selecteer **gaan**
+1. Selecteer **door gaan**
 
-1. In de beoordeling + tab maken, Controleer uw pakketinhoud, de instellingen, de ontvangers en het synchronisatie-instellingen. Selecteer **Maken**
+1. Controleer op het tabblad controleren en maken de inhoud, instellingen, ontvangers en synchronisatie-instellingen van uw pakket. Selecteer **Maken**
 
-Het delen van uw Azure-gegevens is nu gemaakt en de ontvanger van het delen van uw gegevens is nu klaar om uw uitnodiging te accepteren. 
+Uw Azure-gegevens share is nu gemaakt en de ontvanger van uw gegevens share is nu klaar om uw uitnodiging te accepteren. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt vernomen u dat het delen van een Azure-gegevens maken en geadresseerden uitnodigen. Voor meer informatie over hoe een Gegevensgebruiker kunnen accepteren en het delen van een gegevens ontvangen, blijven de [accepteren en gegevens ontvangen](subscribe-to-data-share.md) zelfstudie. 
+In deze zelf studie leert u hoe u een Azure-gegevens share maakt en ontvangers uitnodigt. Ga door naar de zelf studie voor het [accepteren en ontvangen van gegevens](subscribe-to-data-share.md) voor meer informatie over hoe een gegevens gebruiker een gegevens share kan accepteren en ontvangen. 

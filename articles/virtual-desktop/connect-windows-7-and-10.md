@@ -1,77 +1,60 @@
 ---
-title: Verbinding maken met Windows virtuele bureaublad Preview-versie van Windows 10 of Windows 7 - Azure
-description: Klik hier voor meer informatie over het verbinding maken met de Windows-Preview voor virtuele bureaublad van Windows 10 of Windows 7.
+title: Verbinding maken met Windows virtueel bureau blad preview van Windows 10 of Windows 7-Azure
+description: Verbinding maken met het virtuele bureau blad van Windows met behulp van de Windows-desktop-client.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 04/24/2019
+ms.date: 09/24/2019
 ms.author: helohr
-ms.openlocfilehash: 66b423ea27cc0f9112349964fcfd0d75f08c12bd
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 49431f75fb801c683a167e1809724eeeef208561
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67620123"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338454"
 ---
-# <a name="connect-from-windows-10-or-windows-7"></a>Verbinding maken vanaf Windows 10 of Windows 7
+# <a name="connect-with-the-windows-desktop-client"></a>Verbinding maken met de Windows-desktop-client
 
-> Van toepassing op: Windows 7 en Windows 10.
+> Van toepassing op: Windows 7 en Windows 10
 
-Een downloadbare client beschikbaar is dat toegang biedt tot Windows Virtual Desktop Preview resources op apparaten met Windows 7 en Windows 10.
+U hebt toegang tot de virtuele bureau blad-bronnen van Windows op apparaten met Windows 7 of Windows 10 met behulp van de Windows-bureaubladclient.
 
 > [!IMPORTANT]
-> Gebruik geen **RemoteApp- en bureaublad-verbindingen (RADC)** of **Remote Desktop Connection (MSTSC)** voor toegang tot resources van de virtuele Windows-bureaublad omdat de client biedt geen ondersteuning voor virtuele Windows-bureaublad.
+> Windows virtueel bureau blad biedt geen ondersteuning voor de client RemoteApp-en bureaublad verbindingen (RADC) of de Verbinding met extern bureaublad-client (MSTSC).
 
-## <a name="install-the-client"></a>De client installeren
+## <a name="install-the-windows-desktop-client"></a>De Windows-Desktop-Client installeren
 
-[Download](https://go.microsoft.com/fwlink/?linkid=2068602) en installeer de client op uw lokale computer. De installatie vereist beheerdersrechten.
+Dit zijn de clients die u momenteel kunt downloaden:
+
+- [Windows 64-bits](https://go.microsoft.com/fwlink/?linkid=2068602)
+
+Deze lijst wordt bijgewerkt wanneer de client beschikbaar wordt voor meer versies van Windows.
+
+U kunt de client installeren voor de huidige gebruiker, waarvoor geen beheerders rechten zijn vereist, of uw beheerder kan de client installeren en configureren zodat alle gebruikers op het apparaat toegang hebben.
+
+Nadat de client is geïnstalleerd, kan deze vanuit het menu Start worden gestart door te zoeken naar **extern bureaublad**.
 
 ## <a name="subscribe-to-a-feed"></a>Abonneren op een feed
 
-De lijst met beheerde resources beschikbaar voor u ophalen Abonneer u op de feed die wordt geleverd door uw beheerder. Abonneren, maakt de resources beschikbaar op de lokale computer.
+Haal de lijst van beheerde beschik bare bronnen op door u te abonneren op de feed die door uw beheerder wordt aangeboden. Als u een abonnement maakt, worden de resources beschikbaar op uw lokale PC.
 
-Om u te abonneren op een feed:
+Abonneren op een feed:
 
-1. Start de client uit de lijst met alle Apps, zoekt u naar voor **extern bureaublad**.
-1. Selecteer **abonneren** op de hoofdpagina verbinding maken met de service en uw resources ophalen.
-1. **Meld u aan** met uw gebruikersaccount wanneer u hierom wordt gevraagd.
+1. Open de Windows-desktop-client.
+2. Selecteer **Abonneren** op de hoofd pagina om verbinding te maken met de service en uw resources op te halen.
+3. Meld u aan met uw gebruikers account wanneer u hierom wordt gevraagd.
 
-Verificatie is gelukt, ziet u nu een lijst van beschikbare resources voor u.
+Nadat u zich hebt aangemeld, ziet u een lijst met de resources die u kunt openen.
 
-U kunt resources starten door een van twee methoden.
+U kunt resources op een van de volgende twee manieren starten.
 
-- Dubbelklik op een bron uit voor het starten van de hoofdpagina van de client.
-- Start een resource, zoals u gewend andere apps vanuit het Menu Start.
-  - U kunt ook zoeken naar de apps in de zoekbalk.
+- Dubbel klik op de hoofd pagina van de client op een resource om deze te starten.
+- Start een resource op dezelfde manier als andere apps in het menu Start.
+  - U kunt ook zoeken naar de apps in de zoek balk.
 
-Zodra u zich hebt geabonneerd op een feed, wordt de inhoud van de feed automatisch regelmatig bijgewerkt. Resources kunnen worden toegevoegd, gewijzigd of verwijderd op basis van wijzigingen die zijn aangebracht door uw beheerder.
+Zodra u bent geabonneerd op een feed, wordt de inhoud van de feed regel matig automatisch bijgewerkt. Resources kunnen worden toegevoegd, gewijzigd of verwijderd op basis van wijzigingen die zijn aangebracht door de beheerder.
 
-## <a name="view-the-details-of-a-feed"></a>Bekijk de details van een feed
+## <a name="next-steps"></a>Volgende stappen
 
-Nadat u een abonnement, kunt u aanvullende informatie over de feed weergeven door het openen van het deelvenster met details.
-
-1. Op de hoofdpagina van de client, selecteer het weglatingsteken ( **...** ) aan de rechterkant van de naam van de feed.
-1. Selecteer in het vervolgkeuzemenu **Details**.
-1. Het deelvenster met Details wordt weergegeven aan de rechterkant van de client.
-
-Het deelvenster met Details bevat nuttige informatie over de feed:
-
-- De URL en de gebruikersnaam die wordt gebruikt om u te abonneren
-- Het aantal apps en pc 's
-- De datum/tijd van de laatste update
-- De status van de laatste update
-
-Indien nodig, kunt u een handmatige update starten door te selecteren op **nu bijwerken**.
-
-## <a name="unsubscribe-from-a-feed"></a>Afmelden bij een feed
-
-In deze sectie leert u hoe u afmelden voor een feed. U kunt zich afmelden op te abonneren opnieuw met een ander account of uw resources te verwijderen uit het systeem.
-
-1. Op de hoofdpagina van de client, selecteer het weglatingsteken ( **...** ) aan de rechterkant van de naam van de feed.
-1. Selecteer in het vervolgkeuzemenu **Afmelden**.
-1. Bekijk en selecteer **doorgaan** in het dialoogvenster.
-
-## <a name="update-the-client"></a>De client bijwerken
-
-Wanneer een nieuwe versie van de client beschikbaar is, krijgt u een bericht door de client en het Actiecentrum van Windows. Selecteer de melding om de updateproces te starten.
+Ga voor meer informatie over het gebruik van de Windows-desktop-client naar [aan de slag met de Windows desktop-client](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/windowsdesktop).

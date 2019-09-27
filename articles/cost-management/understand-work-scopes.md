@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: cost-management
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: 66bad9c9c647fe87fdcf6b99a8d17f319b1ef9fc
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: 41d83d4a6c5aad4c3b575513c6b3e2e25a425829
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479985"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338642"
 ---
 # <a name="understand-and-work-with-scopes"></a>Bereiken begrijpen en gebruiken
 
@@ -37,7 +37,7 @@ Cost Management werkt in alle bereiken boven de resources om organisaties in sta
 
 Azure ondersteunt drie bereiken voor resource beheer. Elk bereik biedt ondersteuning voor het beheer van toegang en governance, inclusief, maar niet beperkt tot, kosten beheer.
 
-- [**Beheer groepen**](../governance/management-groups/index.md) -hiërarchische containers, Maxi maal acht niveaus, om Azure-abonnementen te organiseren.
+- [**Beheer groepen**](../governance/management-groups/overview.md) -hiërarchische containers, Maxi maal acht niveaus, om Azure-abonnementen te organiseren.
 
     Resource type: [Microsoft.Management/managementGroups](/rest/api/resources/managementgroups)
 
@@ -75,14 +75,14 @@ Enterprise Agreement (EA)-facturerings accounts, ook wel inschrijvingen genoemd,
 
 - [**Facturerings account**](../billing/billing-view-all-accounts.md) : vertegenwoordigt een EA-inschrijving. Facturen worden op dit bereik gegenereerd. Aankopen waarvoor geen gebruik is gemaakt, zoals Marketplace en reserve ringen, zijn alleen beschikbaar in dit bereik. Ze worden niet weer gegeven in afdelingen of inschrijvings accounts.
 
-    Resource type:`Microsoft.Billing/billingAccounts (accountType = Enrollment)`
+    Resource type: `Microsoft.Billing/billingAccounts (accountType = Enrollment)`
 - **Afdeling** -optioneel groepering van inschrijvings accounts.
 
-    Resource type:`Billing/billingAccounts/departments`
+    Resource type: `Billing/billingAccounts/departments`
 
 - **Inschrijvings account** : vertegenwoordigt een enkele eigenaar van een account. Biedt geen ondersteuning voor het verlenen van toegang aan meerdere personen.
 
-    Resource type:`Microsoft.Billing/billingAccounts/enrollmentAccounts`
+    Resource type: `Microsoft.Billing/billingAccounts/enrollmentAccounts`
 
 Hoewel governance-bereiken zijn gebonden aan één map, zijn geen EA-facturerings bereik. Een EA-facturerings account kan abonnementen hebben op elk wille keurig aantal Azure AD-directory's.
 
@@ -118,15 +118,15 @@ Factuur accounts voor micro soft-klanten overeenkomst hebben de volgende bereike
 
 - **Facturerings account** : vertegenwoordigt een klant overeenkomst voor meerdere micro soft-producten en-services. Facturerings accounts van klant overeenkomst zijn niet functioneel hetzelfde als EA-inschrijvingen. EA-inschrijvingen zijn nauw keuriger afgestemd op facturerings profielen.
 
-    Resource type:`Microsoft.Billing/billingAccounts (accountType = Organization)`
+    Resource type: `Microsoft.Billing/billingAccounts (accountType = Organization)`
 
 - **Facturerings profiel** : Hiermee worden de abonnementen gedefinieerd die zijn opgenomen in een factuur. Facturerings profielen zijn het functionele equivalent van een EA-inschrijving, omdat dat de omvang is van facturen die op worden gegenereerd. Op dezelfde manier zijn aankopen waarvoor geen gebruik is gemaakt (zoals Marketplace en reserve ringen) alleen beschikbaar in dit bereik. Ze zijn niet opgenomen in de gedeelten van de factuur.
 
-    Resource type:`Microsoft.Billing/billingAccounts/billingProfiles`
+    Resource type: `Microsoft.Billing/billingAccounts/billingProfiles`
 
 - **Factuur gedeelte** : dit is een groep abonnementen in een factuur of facturerings profiel. Factuur secties zijn vergelijkbaar met afdelingen: meerdere personen kunnen toegang hebben tot een factuur gedeelte.
 
-    Resource type:`Microsoft.Billing/billingAccounts/invoiceSections`
+    Resource type: `Microsoft.Billing/billingAccounts/invoiceSections`
 
 In tegens telling tot EA-facturerings bereiken _zijn_ facturerings accounts voor klant overeenkomsten gebonden aan één map en kunnen ze geen abonnementen hebben op meerdere Azure AD-directory's.
 
@@ -148,11 +148,11 @@ Nadat de AWS-integratie is voltooid, raadpleegt [u de installatie en configurati
 
 - **Externe facturerings account** : vertegenwoordigt een klant overeenkomst met een externe leverancier. Dit is vergelijkbaar met het facturerings account EA.
 
-    Resource type:`Microsoft.CostManagement/externalBillingAccounts`
+    Resource type: `Microsoft.CostManagement/externalBillingAccounts`
     
 - **Extern abonnement** : vertegenwoordigt een operationeel gebruikers account met een externe leverancier. Dit is vergelijkbaar met een Azure-abonnement.
 
-    Resource type:`Microsoft.CostManagement/externalSubscriptions`
+    Resource type: `Microsoft.CostManagement/externalSubscriptions`
 
 ## <a name="cloud-solution-provider-csp-scopes"></a>De scopes van de Cloud Solution Provider (CSP)
 
@@ -160,7 +160,7 @@ Cloud Solution Provider-partners (CSP) worden niet ondersteund in Cost Managemen
 
 ## <a name="switch-between-scopes-in-cost-management"></a>Scha kelen tussen bereiken in Cost Management
 
-Alle Cost Management weer gaven in de Azure Portal bevatten een **bereik** selectie Pill in de linkerbovenhoek van de weer gave. Gebruik het om het bereik snel te wijzigen. Klik op de **Scope** Pill om de bereik kiezer te openen. Hierin worden facturerings accounts, de hoofd beheer groep en abonnementen weer gegeven die niet zijn genest onder de hoofd beheer groep. Als u een bereik wilt selecteren, klikt u op de achtergrond om deze te markeren en klikt u onderaan op **selecteren** . Als u wilt inzoomen op geneste bereiken, zoals resource groepen in een abonnement, klikt u op de koppeling Scope naam. Als u het bovenliggende bereik op een genest niveau wilt selecteren, klikt u op  **&lt;dit bereik&gt; selecteren** boven aan de bereik kiezer.
+Alle Cost Management weer gaven in de Azure Portal bevatten een **bereik** selectie Pill in de linkerbovenhoek van de weer gave. Gebruik het om het bereik snel te wijzigen. Klik op de **Scope** Pill om de bereik kiezer te openen. Hierin worden facturerings accounts, de hoofd beheer groep en abonnementen weer gegeven die niet zijn genest onder de hoofd beheer groep. Als u een bereik wilt selecteren, klikt u op de achtergrond om deze te markeren en klikt u onderaan op **selecteren** . Als u wilt inzoomen op geneste bereiken, zoals resource groepen in een abonnement, klikt u op de koppeling Scope naam. Als u het bovenliggende bereik op een genest niveau wilt selecteren, klikt u op **deze &lt;scope @ no__t-2 selecteren** bovenaan de bereik kiezer.
 
 ## <a name="identify-the-resource-id-for-a-scope"></a>De resource-ID voor een bereik identificeren
 
@@ -171,7 +171,7 @@ Wanneer u werkt met Cost Management Api's, weet u zeker dat de scope kritiek is.
 1. Open de Azure Portal en navigeer vervolgens naar **Cost Management en facturering** in de lijst met Services.
 2. Selecteer **Eigenschappen** in het menu van het facturerings account.
 3. Kopieer de ID van het facturerings account.
-4. Uw bereik is:`"/providers/Microsoft.Billing/billingAccounts/{billingAccountId}"`
+4. Uw bereik is: `"/providers/Microsoft.Billing/billingAccounts/{billingAccountId}"`
 
 ### <a name="billing-profiles"></a>Factureringsprofielen
 
@@ -180,7 +180,7 @@ Wanneer u werkt met Cost Management Api's, weet u zeker dat de scope kritiek is.
 3. Klik op de naam van het gewenste facturerings profiel.
 4. Selecteer **Eigenschappen** in het menu van het facturerings profiel.
 5. Kopieer het facturerings account en de facturerings profiel-Id's.
-6. Uw bereik is:`"/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}"`
+6. Uw bereik is: `"/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}"`
 
 ### <a name="invoice-sections"></a>Factuursecties
 
@@ -189,7 +189,7 @@ Wanneer u werkt met Cost Management Api's, weet u zeker dat de scope kritiek is.
 3. Klik op de naam van de gewenste factuur sectie.
 4. Selecteer **Eigenschappen** in het menu van de factuur sectie.
 5. Kopieer de id van het facturerings account en de factuur sectie.
-6. Uw bereik is:`"/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/invoiceSections/{invoiceSectionId}"`
+6. Uw bereik is: `"/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/invoiceSections/{invoiceSectionId}"`
 
 ### <a name="ea-departments"></a>EA-afdelingen
 
@@ -198,7 +198,7 @@ Wanneer u werkt met Cost Management Api's, weet u zeker dat de scope kritiek is.
 3. Klik op de naam van de gewenste afdeling.
 4. Selecteer **Eigenschappen** in het menu afdeling.
 5. Kopieer het facturerings account en de afdelings-Id's.
-6. Uw bereik is:`"/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}"`
+6. Uw bereik is: `"/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}"`
 
 ### <a name="ea-enrollment-account"></a>EA-inschrijvings account
 
@@ -207,20 +207,20 @@ Wanneer u werkt met Cost Management Api's, weet u zeker dat de scope kritiek is.
 3. Klik op de naam van het gewenste inschrijvings account.
 4. Selecteer **Eigenschappen** in het menu inschrijvings account.
 5. Kopieer de id van het facturerings account en het inschrijvings account.
-6. Uw bereik is:`"/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}"`
+6. Uw bereik is: `"/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}"`
 
 ### <a name="management-group"></a>Beheergroep
 
 1. Open de Azure Portal en navigeer naar **beheer groepen** in de lijst met Services.
 2. Ga naar de gewenste beheer groep.
 3. Kopieer de ID van de beheer groep uit de tabel.
-4. Uw bereik is:`"/providers/Microsoft.Management/managementGroups/{id}"`
+4. Uw bereik is: `"/providers/Microsoft.Management/managementGroups/{id}"`
 
 ### <a name="subscription"></a>Subscription
 
 1. Open de Azure Portal en navigeer naar **abonnementen** in de lijst met Services.
 2. Kopieer de abonnements-ID uit de tabel.
-3. Uw bereik is:`"/subscriptions/{id}"`
+3. Uw bereik is: `"/subscriptions/{id}"`
 
 ### <a name="resource-groups"></a>Resourcegroepen
 
@@ -228,7 +228,7 @@ Wanneer u werkt met Cost Management Api's, weet u zeker dat de scope kritiek is.
 2. Klik op de naam van de gewenste resource groep.
 3. Selecteer **Eigenschappen** in het menu van de resource groep.
 4. Kopieer de waarde van het veld Resource-ID.
-5. Uw bereik is:`"/subscriptions/{id}/resourceGroups/{name}"`
+5. Uw bereik is: `"/subscriptions/{id}/resourceGroups/{name}"`
 
 Cost Management wordt momenteel ondersteund in [Azure Global](https://management.azure.com) en [Azure Government](https://management.usgovcloudapi.net). Zie [Azure Global and Government API-eind punten](../azure-government/documentation-government-developer-guide.md#endpoint-mapping)voor meer informatie over Azure Government _._
 

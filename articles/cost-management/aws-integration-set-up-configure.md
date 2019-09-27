@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: cost-management
 manager: ormaoz
 ms.custom: ''
-ms.openlocfilehash: 9664beca514abcbad4eca7c8f9dc1b494018802e
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: deb13b833707849bcbce8bcae7b05aeb5e0bce3b
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69535187"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338883"
 ---
 # <a name="set-up-and-configure-aws-cost-and-usage-report-integration"></a>AWS voor kosten-en gebruiks rapporten instellen en configureren
 
@@ -42,7 +42,7 @@ Gebruik de pagina **kosten & gebruiks rapporten** van de console facturering en 
     2. Voer de naam van een Bucket in en de regio waar u een nieuwe Bucket wilt maken en klik op **volgende**.
 10. Selecteer **Ik heb bevestigd dat dit beleid juist is**en klik vervolgens op **Opslaan**.
 11. Beschrijving Voer voor het voor voegsel van het rapport-pad het pad naar het rapport traject in dat u wilt toevoegen aan de naam van het rapport.
-Als u geen voor voegsel opgeeft, is het standaard voorvoegsel de naam die u voor het rapport hebt opgegeven. Het datum bereik heeft de `/report-name/date-range/` notatie.
+Als u geen voor voegsel opgeeft, is het standaard voorvoegsel de naam die u voor het rapport hebt opgegeven. Het datum bereik heeft de `/report-name/date-range/`-indeling.
 12. Voor **tijds eenheid**kiest u **elk uur**.
 13. Voor **rapport versie beheer**kiest u of u wilt dat elke versie van het rapport de vorige versie overschrijft, of dat u aanvullende nieuwe rapporten wilt.
 14. Voor het **inschakelen van gegevens integratie voor**is het niet nodig om te selecteren.
@@ -79,7 +79,7 @@ Gebruik de wizard een nieuwe rol maken:
 Machtiging voor het kosten-en gebruiks rapport configureren:
 
 1. Voer het **kosten-en gebruiks rapport**in.
-2. Selecteer **toegangs niveau** > **DescribeReportDefinitions** **lezen** > . Met deze stap kunt Cost Management lezen wat de huidige rapporten zijn gedefinieerd en bepalen of ze overeenkomen met de vereiste voor de rapport definitie.
+2. Selecteer **toegangs niveau** > **Lees** > **DescribeReportDefinitions**. Met deze stap kunt Cost Management lezen wat de huidige rapporten zijn gedefinieerd en bepalen of ze overeenkomen met de vereiste voor de rapport definitie.
 3. Selecteer **extra machtigingen toevoegen**.
 
 Machtiging voor uw S3-Bucket en-objecten configureren:
@@ -87,7 +87,7 @@ Machtiging voor uw S3-Bucket en-objecten configureren:
 1. Selecteer **een service kiezen**.
 2. Voer **S3**in.
 3. Selecteer **toegangs niveau** > **lijst** > **ListBucket**. Met deze actie wordt de lijst met objecten in de S3-Bucket opgehaald.
-4. Selecteer **toegangs niveau** > **GetObject** **lezen** > . Met deze actie kunnen facturerings bestanden worden gedownload.
+4. Selecteer **toegangs niveau** >   > **GetObject** **lezen**. Met deze actie kunnen facturerings bestanden worden gedownload.
 5. **Resources**selecteren.
 6. Selecteer **Bucket – Arn toevoegen**.
 7. Voer in **Bucket naam**de Bucket in die wordt gebruikt voor het opslaan van de gecurte bestanden.
@@ -100,7 +100,7 @@ Machtiging voor de kosten Verkenner configureren:
 
 1. Selecteer **een service kiezen**.
 2. Voer de **service cost Explorer**in.
-3. **Alle service acties van kosten Verkenner (CE:\*)** selecteren. Met deze actie wordt gecontroleerd of de verzameling juist is.
+3. **Alle service acties van kosten Verkenner selecteren (CE: \*)** . Met deze actie wordt gecontroleerd of de verzameling juist is.
 4. Selecteer **extra machtigingen toevoegen**.
 
 Machtiging toevoegen voor AWS-organisaties:
@@ -151,12 +151,12 @@ De JSON van het beleid moet eruitzien als in het volgende voor beeld. Vervang _B
 Gebruik de volgende informatie om een AWS-connector te maken en te beginnen met het bewaken van uw AWS-kosten:
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com).
-2. Ga naar **Cost Management en facturerings** > **Cost Management**.
+2. Ga naar **Cost Management en facturering** > **Cost Management**.
 3. Selecteer onder **instellingen**de optie **Cloud connectors (preview)** .  
-    ![Voor beeld met de instelling voor Cloud connectors (](./media/aws-integration-setup-configure/cloud-connectors-preview01.png)preview)).
+    ![Example met de instelling voor Cloud connectors (preview)) ](./media/aws-integration-setup-configure/cloud-connectors-preview01.png).
 4. Selecteer **+ toevoegen** boven aan de pagina om een connector te maken.
 5. Voer op de pagina **een AWS-connector maken** in **weergave naam**een naam in voor de connector.  
-    ![Voor beeld van de pagina voor het maken van een AWS-connector](./media/aws-integration-setup-configure/create-aws-connector01.png)
+    ![Example van de pagina voor het maken van een AWS-connector @ no__t-1
 6. Selecteer desgewenst de standaard beheer groep. Alle gedetecteerde gekoppelde accounts worden opgeslagen. U kunt deze later instellen.
 7. Selecteer in de sectie **facturering** **automatisch het bedrag van 1% bij algemene Beschik baarheid** als u een doorlopende werking wilt garanderen wanneer de preview-periode verloopt. Als u de automatische optie selecteert, moet u een facturerings abonnement selecteren.
 8. Voer voor **Role Arn**de waarde in die u hebt gebruikt bij het instellen van de functie in AWS.
@@ -172,7 +172,7 @@ Het toewijzen van connector machtigingen aan gebruikers na detectie vindt geen m
 
 ## <a name="take-additional-steps"></a>Aanvullende stappen uitvoeren
 
-- [Stel beheer groepen](../governance/management-groups/index.md#initial-setup-of-management-groups)in, als u dat nog niet hebt gedaan.
+- [Stel beheer groepen](../governance/management-groups/overview.md#initial-setup-of-management-groups)in, als u dat nog niet hebt gedaan.
 - Controleer of er nieuwe scopes zijn toegevoegd aan de bereik kiezer. Selecteer **vernieuwen** om de meest recente gegevens weer te geven.
 - Selecteer op de pagina **Cloud connectors** de connector en selecteer **naar facturerings account gaan** om het gekoppelde account aan beheer groepen toe te wijzen.
 
@@ -189,7 +189,7 @@ Wanneer u een connector selecteert op de pagina **Cloud connectors** , kunt u he
 
 ## <a name="set-up-azure-management-groups"></a>Azure-beheer groepen instellen
 
-Plaats uw Azure-abonnementen en AWS gekoppelde accounts in dezelfde beheer groep om één locatie te maken waar u gegevens over de cross-Cloud provider kunt zien. Als u uw Azure-omgeving nog niet hebt geconfigureerd met beheer groepen, raadpleegt u de [eerste instellingen van beheer groepen](../governance/management-groups/index.md#initial-setup-of-management-groups).
+Plaats uw Azure-abonnementen en AWS gekoppelde accounts in dezelfde beheer groep om één locatie te maken waar u gegevens over de cross-Cloud provider kunt zien. Als u uw Azure-omgeving nog niet hebt geconfigureerd met beheer groepen, raadpleegt u de [eerste instellingen van beheer groepen](../governance/management-groups/overview.md#initial-setup-of-management-groups).
 
 Als u kosten wilt scheiden, kunt u een beheer groep maken die alleen AWS gekoppelde accounts bevat.
 
