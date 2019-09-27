@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 07/25/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: a928640aa6d56f0a39011a2cabcf979b4d907a46
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 1d95d14398bc6b5acdec89428ebe22a672551a8a
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561463"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338789"
 ---
 # <a name="protect-your-content-by-using-media-services-dynamic-encryption"></a>Uw inhoud beveiligen met behulp van Media Services dynamische versleuteling
 
@@ -35,7 +35,7 @@ In de volgende afbeelding ziet u de werk stroom voor Media Services inhouds beve
 
 ![Werk stroom voor Media Services beveiliging van inhoud](./media/content-protection/content-protection.svg)
   
-&#42;*Dynamische versleuteling ondersteunt AES-128 Clear Key, CBCS en CENC. Zie de ondersteunings [matrix](#streaming-protocols-and-encryption-types)voor meer informatie.*
+&#42;*Dynamic-versleuteling ondersteunt AES-128 Clear Key, CBCS en CENC. Zie de [ondersteunings matrix](#streaming-protocols-and-encryption-types)voor meer informatie.*
 
 In dit artikel worden de concepten en terminologie beschreven die u helpen de beveiliging van inhoud met Media Services te begrijpen.
 
@@ -68,17 +68,17 @@ Het voorbeeld wordt getoond hoe u:
      ```
 2. Maak een [streaming-Locator](streaming-locators-concept.md) die is geconfigureerd voor het streamen van het versleutelde activum. 
   
-   De streaming-Locator moet worden gekoppeld aan een [streaming-beleid](streaming-policy-concept.md). In het voor beeld is het `StreamingLocator.StreamingPolicyName` beleid ' Predefined_MultiDrmCencStreaming ' ingesteld. 
+   De streaming-Locator moet worden gekoppeld aan een [streaming-beleid](streaming-policy-concept.md). In het voor beeld wordt `StreamingLocator.StreamingPolicyName` ingesteld op het beleid ' Predefined_MultiDrmCencStreaming '. 
       
    De PlayReady-en Widevine-versleuteling worden toegepast en de sleutel wordt aan de client voor afspelen geleverd op basis van de geconfigureerde DRM-licenties. Als u de stroom ook wilt versleutelen met CBCS (FairPlay), gebruikt u het beleid ' Predefined_MultiDrmStreaming '.
 
    De streaming-Locator is ook gekoppeld aan het inhouds sleutel beleid dat u hebt gedefinieerd.
 3. Maken van een test-token.
 
-   De `GetTokenAsync` -methode laat zien hoe u een test token maakt.
+   De `GetTokenAsync`-methode laat zien hoe u een test token maakt.
 4. De streaming-URL maken.
 
-   De `GetDASHStreamingUrlAsync` -methode laat zien hoe u de streaming-URL bouwt. In dit geval wordt de streep inhoud door de URL gestreamd.
+   De `GetDASHStreamingUrlAsync`-methode laat zien hoe u de streaming-URL bouwt. In dit geval wordt de streep inhoud door de URL gestreamd.
 
 ### <a name="player-with-an-aes-or-drm-client"></a>Speler met een AES-of DRM-client 
 
@@ -172,7 +172,7 @@ Een open-beperkt beleid voor inhouds sleutels kan worden gebruikt wanneer u een 
 
 Met een token-beperkt beleid voor inhouds sleutels wordt de inhouds sleutel alleen verzonden naar een client die een geldige JWT-token of een eenvoudige webtoken (SWT) in de licentie/sleutel aanvraag levert. Dit token moet worden uitgegeven door een STS. 
 
-U kunt Azure AD als STS gebruiken of een aangepaste STS implementeren. De STS moeten worden geconfigureerd voor het maken van een token dat is ondertekend met de opgegeven sleutel en probleem claims die u hebt opgegeven in de configuratie van de tokenbeperking. De Media Services licentie/key delivery service retourneert de aangevraagde licentie of sleutel bij de client als aan beide volgende voor waarden wordt voldaan:
+U kunt Azure AD als STS gebruiken of een [aangepaste STS](#using-a-custom-sts)implementeren. De STS moeten worden geconfigureerd voor het maken van een token dat is ondertekend met de opgegeven sleutel en probleem claims die u hebt opgegeven in de configuratie van de tokenbeperking. De Media Services licentie/key delivery service retourneert de aangevraagde licentie of sleutel bij de client als aan beide volgende voor waarden wordt voldaan:
 
 * Het token is geldig. 
 * De claims in het token komen overeen met die zijn geconfigureerd voor de licentie of sleutel.
@@ -238,13 +238,13 @@ Bijvoorbeeld:
 streamingPolicy.EnvelopEncryption.customKeyAcquisitionUrlTemplate = "https://mykeyserver.hostname.com/envelopekey/{AlternativeMediaId}/{ContentKeyId}";
 ```
 
-`ContentKeyId`heeft een waarde van de aangevraagde sleutel. U kunt gebruiken `AlternativeMediaId` als u de aanvraag aan een entiteit aan uw zijde wilt toewijzen. `AlternativeMediaId` Kan bijvoorbeeld worden gebruikt om u te helpen bij het opzoeken van machtigingen.
+`ContentKeyId` heeft een waarde van de aangevraagde sleutel. U kunt `AlternativeMediaId` gebruiken als u de aanvraag aan een entiteit aan uw zijde wilt toewijzen. @No__t-0 kan bijvoorbeeld worden gebruikt om u te helpen bij het opzoeken van machtigingen.
 
  Zie [streaming-beleid-maken](https://docs.microsoft.com/rest/api/media/streamingpolicies/create)voor rest-voor beelden die gebruikmaken van url's voor aangepaste licentie/sleutel overname.
 
 ## <a name="troubleshoot"></a>Problemen oplossen
 
-Als u de `MPE_ENC_ENCRYPTION_NOT_SET_IN_DELIVERY_POLICY` fout melding krijgt, moet u ervoor zorgen dat u het juiste streaming-beleid opgeeft.
+Als u de `MPE_ENC_ENCRYPTION_NOT_SET_IN_DELIVERY_POLICY`-fout krijgt, moet u ervoor zorgen dat u het juiste streaming-beleid opgeeft.
 
 Als er fouten optreden die eindigen `_NOT_SPECIFIED_IN_URL`op, zorg er dan voor dat u de versleutelings indeling opgeeft in de URL. Een voorbeeld is `…/manifest(format=m3u8-cmaf,encryption=cbcs-aapl)`. Zie [streaming protocollen en versleutelings typen](#streaming-protocols-and-encryption-types).
 
@@ -259,4 +259,4 @@ Bekijk het [Azure Media Services Community](media-services-community.md) -artike
 * [Multi-DRM-inhouds beschermings systeem ontwerpen met toegangs beheer](design-multi-drm-system-with-access-control.md)
 * [Versleuteling van opslag side](storage-account-concept.md#storage-side-encryption)
 * [Veelgestelde vragen](frequently-asked-questions.md)
-
+* [JSON Web Token-handler](https://docs.microsoft.com/dotnet/framework/security/json-web-token-handler)

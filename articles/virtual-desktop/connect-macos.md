@@ -1,20 +1,20 @@
 ---
 title: Verbinding maken met het virtuele bureau blad van Windows vanuit macOS-Azure
-description: Verbinding maken met het virtuele bureau blad van Windows vanuit macOS.
+description: Verbinding maken met het virtuele bureau blad van Windows met behulp van de macOS-client.
 services: virtual-desktop
 author: heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: helohr
-ms.openlocfilehash: bf6bfb52bd763eabd88f23701c3d1f240cdf4844
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.openlocfilehash: fa61d69ae7aa650b6011696fd45d05ba20d2ac8b
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71310189"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338711"
 ---
-# <a name="connect-from-macos"></a>Verbinding maken vanaf macOS
+# <a name="connect-with-the-macos-client"></a>Verbinding maken met de macOS-client
 
 > Van toepassing op: macOS 10,12 of hoger
 
@@ -44,6 +44,6 @@ Nadat u zich hebt aangemeld, ziet u een lijst met beschik bare resources.
 
 Zodra u bent geabonneerd op een feed, wordt de inhoud van de feed op regel matige basis automatisch bijgewerkt. Resources kunnen worden toegevoegd, gewijzigd of verwijderd op basis van wijzigingen die zijn aangebracht door de beheerder.
 
-## <a name="client-documentation"></a>Documentatie van de client
+## <a name="next-steps"></a>Volgende stappen
 
 Voor meer informatie over de macOS-client raadpleegt u de documentatie [aan de slag met de MacOS-client](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/remote-desktop-mac) .

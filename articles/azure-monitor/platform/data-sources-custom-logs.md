@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/28/2019
+ms.date: 09/26/2019
 ms.author: bwren
-ms.openlocfilehash: 9ecae51d996e2e065b15d1fa70bdaf796f8f197b
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 39691c0efbac7b7a48dd844641d63e0ca178e95f
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70124153"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71327467"
 ---
 # <a name="custom-logs-in-azure-monitor"></a>Aangepaste Logboeken in Azure Monitor
 
@@ -57,8 +57,8 @@ Gebruik de volgende procedure om een aangepast logboek bestand te definiëren.  
 De wizard aangepast logboek wordt uitgevoerd in de Azure Portal en stelt u in staat om een nieuw aangepast logboek te definiëren dat u wilt verzamelen.
 
 1. Selecteer in de Azure Portal **log Analytics werk ruimten** > uw werk ruimte > **Geavanceerde instellingen**.
-2. Klik op**aangepaste logboeken**voor **gegevens** > .
-3. Standaard worden alle wijzigingen in de configuratie automatisch doorgegeven naar alle agents.  Voor Linux-agents wordt een configuratie bestand verzonden naar de gefluente gegevens verzamelaar.  Als u dit bestand hand matig op elke Linux-agent wilt wijzigen, schakelt u het selectie vakje de *onderstaande configuratie Toep assen op mijn Linux-machines*uit.
+2. Klik op **gegevens** > **aangepaste logboeken**.
+3. Standaard worden alle wijzigingen in de configuratie automatisch doorgegeven naar alle agents. Voor Linux-agents wordt een configuratie bestand verzonden naar de gefluente gegevens verzamelaar.
 4. Klik op **toevoegen +** om de wizard Aangepaste logboeken te openen.
 
 ### <a name="step-2-upload-and-parse-a-sample-log"></a>Stap 2. Een voorbeeld logboek uploaden en parseren
@@ -77,7 +77,7 @@ Als er een tijds tempel scheidings teken wordt gebruikt, wordt de eigenschap Tim
 ### <a name="step-3-add-log-collection-paths"></a>Stap 3. Paden van logboekverzamelingen toevoegen
 U moet een of meer paden definiëren op de agent waar het aangepaste logboek kan worden gevonden.  U kunt een specifiek pad en naam opgeven voor het logboek bestand, of u kunt een pad met een Joker teken voor de naam. Dit biedt ondersteuning voor toepassingen die elke dag een nieuw bestand maken of wanneer een bestand een bepaalde grootte heeft bereikt. U kunt ook meerdere paden opgeven voor één logboek bestand.
 
-Een toepassing kan bijvoorbeeld elke dag een logboek bestand maken met de datum die is opgenomen in de naam in log20100316. txt. Een patroon voor een dergelijk logboek kan *\*log. txt* zijn die van toepassing zou zijn op elk logboek bestand volgens het naamgevings schema van de toepassing.
+Een toepassing kan bijvoorbeeld elke dag een logboek bestand maken met de datum die is opgenomen in de naam in log20100316. txt. Een patroon voor een dergelijk logboek kan *log\*.txt* zijn die van toepassing zou zijn op elk logboek bestand volgens het naamgevings schema van de toepassing.
 
 De volgende tabel bevat voor beelden van geldige patronen om andere logboek bestanden op te geven.
 
@@ -86,16 +86,16 @@ De volgende tabel bevat voor beelden van geldige patronen om andere logboek best
 | Alle bestanden in *C:\Logs* met de extensie. txt op de Windows-agent |C:\Logs\\\*.txt |
 | Alle bestanden in *C:\Logs* met een naam die begint met log en een. txt-extensie in Windows-agent |C:\Logs\log\*.txt |
 | Alle bestanden in */var/log/audit* met de extensie. txt in de Linux-agent |/var/log/audit/*. txt |
-| Alle bestanden in */var/log/audit* met een naam die begint met log en een. txt-extensie in de Linux-agent |/var/log/audit/log\*. txt |
+| Alle bestanden in */var/log/audit* met een naam die begint met log en een. txt-extensie in de Linux-agent |/var/log/audit/log\*.txt |
 
 1. Selecteer Windows of Linux om op te geven welke indeling u wilt toevoegen.
-2. Typ het pad en klik op de **+** knop.
+2. Typ het pad en klik op de knop **+** .
 3. Herhaal dit proces voor alle extra paden.
 
 ### <a name="step-4-provide-a-name-and-description-for-the-log"></a>Stap 4. Geef een naam en beschrijving voor het logboek op
 De naam die u opgeeft, wordt gebruikt voor het logboek type zoals hierboven is beschreven.  Deze wordt altijd beëindigd met _CL om het te onderscheiden als een aangepast logboek.
 
-1. Typ een naam voor het logboek.  Het cl-achtervoegsel wordt automatisch ingevuld.  **\_**
+1. Typ een naam voor het logboek.  Het achtervoegsel **@no__t 1CL** wordt automatisch ingevuld.
 2. Voeg een optionele **Beschrijving**toe.
 3. Klik op **volgende** om de aangepaste definitie van het logboek op te slaan.
 
@@ -147,7 +147,7 @@ We bieden een van de logboek bestanden en kunnen de gebeurtenissen zien die word
 ![Een voorbeeld logboek uploaden en parseren](media/data-sources-custom-logs/delimiter.png)
 
 ### <a name="add-log-collection-paths"></a>Paden van logboekverzamelingen toevoegen
-De logboek bestanden worden opgeslagen in *C:\MyApp\Logs*.  Er wordt elke dag een nieuw bestand gemaakt met een naam die de datum bevat in het patroon *appYYYYMMDD. log*.  Een voldoende patroon voor dit logboek is *\\C:\MyApp\Logs\*. log*.
+De logboek bestanden worden opgeslagen in *C:\MyApp\Logs*.  Er wordt elke dag een nieuw bestand gemaakt met een naam die de datum bevat in het patroon *appYYYYMMDD. log*.  Een voldoende patroon voor dit logboek is *C:\MyApp\Logs @ no__t-1\*.log*.
 
 ![Pad naar logboek verzameling](media/data-sources-custom-logs/collection-path.png)
 

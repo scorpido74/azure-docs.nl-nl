@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/06/2019
 ms.author: akjosh; cynthn
 ms.custom: include file
-ms.openlocfilehash: 529a8b6136a5d9c69b044df2614644bdbd4fd4f4
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: d86976ad191ffffa343ad7a94b8171759ad102c3
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "69012096"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338341"
 ---
 Galerie met gedeelde afbeeldingen is een service die u helpt bij het bouwen van structuur en organisatie rond uw beheerde installatie kopieën. Galerieën met gedeelde afbeeldingen bieden:
 
@@ -52,15 +52,15 @@ Er zijn drie para meters voor elke definitie van de installatie kopie die worden
 
 |Definitie van installatiekopie|Uitgever|Aanbieding|Sku|
 |---|---|---|---|
-|myImage1|Contoso|Financiën|Back-end|
-|myImage2|Contoso|Financiën|Front-end|
-|myImage3|Testen|Financiën|Front-end|
+|myImage1|Contoso|Financieel|Back-end|
+|myImage2|Contoso|Financieel|Front|
+|myImage3|Testen|Financieel|Front|
 
 Alle drie deze hebben unieke sets waarden. De indeling is vergelijkbaar met de manier waarop u op dit moment Publisher, aanbieding en SKU kunt opgeven voor [installatie kopieën van Azure Marketplace](../articles/virtual-machines/windows/cli-ps-findimage.md) in azure PowerShell om de nieuwste versie van een Marketplace-installatie kopie te verkrijgen. Elke afbeeldings definitie moet een unieke set van deze waarden hebben.
 
 Hieronder ziet u andere para meters die kunnen worden ingesteld voor de definitie van uw installatie kopie, zodat u uw resources gemakkelijker kunt bijhouden:
 
-* Status van het besturings systeem: u kunt de besturingssysteem status instellen op gegeneraliseerd of gespecialiseerd, maar alleen gegeneraliseerd wordt momenteel ondersteund. Installatie kopieën moeten worden gemaakt op basis van vm's die zijn gegeneraliseerd met Sysprep voor `waagent -deprovision` Windows of voor Linux.
+* Status van het besturings systeem: u kunt de besturingssysteem status instellen op gegeneraliseerd of gespecialiseerd, maar alleen gegeneraliseerd wordt momenteel ondersteund. Installatie kopieën moeten worden gemaakt op basis van Vm's die zijn gegeneraliseerd met Sysprep voor Windows of `waagent -deprovision` voor Linux.
 * Besturings systeem: dit kan Windows of Linux zijn.
 * Beschrijving: gebruik beschrijving om meer gedetailleerde informatie te geven over waarom de definitie van de installatie kopie bestaat. U kunt bijvoorbeeld een definitie van een installatie kopie hebben voor de front-end-server waarop de toepassing vooraf is geïnstalleerd.
 * EULA: kan worden gebruikt om te verwijzen naar een gebruiksrecht overeenkomst die specifiek is voor de definitie van de installatie kopie.
@@ -83,10 +83,10 @@ De bron regio's worden weer gegeven in de volgende tabel. Alle open bare regio's
 | Australië - oost      | East US         | US - noord-centraal | India - west      |
 | Australië - zuidoost | US - oost 2       | Europa - noord     | US - west         |
 | Brazilië - zuid        | US - oost 2 EUAP  | US - zuid-centraal | US - west 2       |
-| Canada - midden      | Frankrijk - centraal  | India - zuid      |                 |
-| Canada - oost         | Frankrijk - zuid    | Azië - zuidoost   |                 |
-| India - centraal       | Japan - oost      | Verenigd Koninkrijk Zuid         |                 |
-| US - centraal          | Japan - west      | Verenigd Koninkrijk West          |                 |
+| Canada - midden      | Frankrijk - centraal  | India - zuid      | China - oost      |
+| Canada - oost         | Frankrijk - zuid    | Azië - zuidoost   | China - oost 2    |
+| India - centraal       | Japan - oost      | Verenigd Koninkrijk Zuid         | China - noord     |
+| US - centraal          | Japan - west      | Verenigd Koninkrijk West          | China - noord 2   |
 
 
 
@@ -97,7 +97,7 @@ Er zijn limieten, per abonnement, voor het implementeren van resources met behul
 - 1\.000 installatie kopie definities, per abonnement, per regio
 - 10.000 installatie kopie versies, per abonnement, per regio
 
-Zie voor meer informatie [resource gebruik controleren](https://docs.microsoft.com/azure/networking/check-usage-against-limits) op limieten voor voor beelden van het controleren van uw huidige gebruik.
+Zie voor meer informatie [resource gebruik controleren op limieten](https://docs.microsoft.com/azure/networking/check-usage-against-limits) voor voor beelden van het controleren van uw huidige gebruik.
  
 
 ## <a name="scaling"></a>Schalen
@@ -106,8 +106,8 @@ Met de galerie voor gedeelde afbeeldingen kunt u het aantal replica's opgeven da
 
 Met de galerie voor gedeelde afbeeldingen kunt u nu tot 1.000 VM-exemplaren implementeren in een schaalset voor virtuele machines (tot 600 met beheerde installatie kopieën). Image replica's bieden betere implementatie prestaties, betrouw baarheid en consistentie.  U kunt in elke doel regio een ander aantal replica's instellen, op basis van de schaal behoeften voor de regio. Omdat elke replica een diepe kopie van uw installatie kopie is, kunt u hiermee uw implementaties lineair schalen met elke extra replica. We begrijpen dat er niet twee installatie kopieën of regio's hetzelfde zijn. Hier volgt onze algemene richt lijnen voor het gebruik van replica's in een regio:
 
-- Voor elke 20 Vm's die u gelijktijdig maakt, raden we u aan één replica te blijven gebruiken. Als u 120 Vm's gelijktijdig maakt met behulp van dezelfde installatie kopie in een regio, wordt u aangeraden minstens 6 replica's van uw installatie kopie te gebruiken. 
-- Voor elke implementatie van schaal sets met Maxi maal 600 exemplaren, raden we u aan ten minste één replica te gebruiken. Als u bijvoorbeeld vijf schaal sets gelijktijdig maakt, waarbij elk 600 VM-exemplaren dezelfde installatie kopie in één regio gebruikt, wordt u aangeraden ten minste vijf replica's van uw installatie kopie te gebruiken. 
+- Voor implementaties met een niet-virtuele machine Scale set (VMSS): voor elke 20 Vm's die u gelijktijdig maakt, raden we u aan één replica te blijven gebruiken. Als u 120 Vm's gelijktijdig maakt met behulp van dezelfde installatie kopie in een regio, wordt u aangeraden minstens 6 replica's van uw installatie kopie te gebruiken. 
+- Voor implementaties van Virtual Machine Scale set (VMSS): voor elke implementatie van een schaalset met Maxi maal 600 exemplaren, raden we u aan ten minste één replica te gebruiken. Als u bijvoorbeeld vijf schaal sets gelijktijdig maakt, waarbij elk 600 VM-exemplaren dezelfde installatie kopie in één regio gebruikt, wordt u aangeraden ten minste vijf replica's van uw installatie kopie te gebruiken. 
 
 We raden u altijd aan het aantal replica's te overtreffen door factoren zoals afbeeldings grootte, inhoud en type besturings systeem.
 
@@ -137,14 +137,14 @@ De regio's waarvan een versie van de gedeelde installatie kopie wordt gereplicee
 
 Aangezien de galerie met gedeelde afbeeldingen, de afbeeldings definitie en de versie van de installatie kopie alle resources zijn, kunnen ze worden gedeeld met behulp van de ingebouwde systeem eigen Azure RBAC-besturings elementen. Met RBAC kunt u deze resources delen met andere gebruikers, service-principals en groepen. U kunt zelfs toegang delen voor personen buiten de Tenant waarin deze zijn gemaakt. Zodra een gebruiker toegang heeft tot de versie van de gedeelde installatie kopie, kunnen ze een virtuele machine of een VM-Schaalset implementeren.  Dit is de matrix voor delen waarmee u begrijpt waarover de gebruiker toegang krijgt:
 
-| Gedeeld met gebruiker     | Gedeelde installatiekopiegalerie | Definitie van installatiekopie | Beeldversie |
+| Gedeeld met gebruiker     | Shared Image Gallery | Definitie van installatiekopie | Beeldversie |
 |----------------------|----------------------|--------------|----------------------|
-| Gedeelde installatiekopiegalerie | Ja                  | Ja          | Ja                  |
+| Shared Image Gallery | Ja                  | Ja          | Ja                  |
 | Definitie van installatiekopie     | Nee                   | Ja          | Ja                  |
 
 U wordt aangeraden op Galerie niveau te delen voor de beste ervaring. Het is niet raadzaam om afzonderlijke versies van een installatie kopie te delen. Zie [toegang tot Azure-resources beheren met RBAC](../articles/role-based-access-control/role-assignments-portal.md)voor meer informatie over RBAC.
 
-Installatie kopieën kunnen ook worden gedeeld, op schaal, zelfs via tenants met behulp van een multi tenant-app-registratie. Zie [Galerie-VM-installatie kopieën delen in azure](../articles/virtual-machines/linux/share-images-across-tenants.md)-tenants voor meer informatie over het delen van installatie kopieën tussen tenants.
+Installatie kopieën kunnen ook worden gedeeld, op schaal, zelfs via tenants met behulp van een multi tenant-app-registratie. Zie [Galerie-VM-installatie kopieën delen in azure-tenants](../articles/virtual-machines/linux/share-images-across-tenants.md)voor meer informatie over het delen van installatie kopieën tussen tenants.
 
 ## <a name="billing"></a>Billing
 Er zijn geen extra kosten verbonden aan het gebruik van de Shared Image Gallery-service. Er worden kosten in rekening gebracht voor de volgende resources:
@@ -271,7 +271,7 @@ Als u het aantal regionale replica's wilt opgeven, geeft u de locatie door, same
 
 Als er voor elke locatie geen regionaal aantal replica's is opgegeven, is het standaard aantal replica's het aantal gemeen schappelijke replica's dat u hebt opgegeven. 
 
-Als u het aantal algemene replica's in cli wilt opgeven, gebruikt u het argument **--replica-Count** in de `az sig image-version create` opdracht.
+Als u het aantal algemene replica's in CLI wilt opgeven, gebruikt u het argument **--replica-Count** in de `az sig image-version create` opdracht.
 
 
 **V:** Kan ik de galerie met gedeelde afbeeldingen maken op een andere locatie dan die waar ik de definitie van de installatie kopie en de installatie kopie versie wil maken?
