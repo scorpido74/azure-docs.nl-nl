@@ -67,16 +67,16 @@ Een entiteit List is een goede keuze voor dit type gegevens wanneer:
 
     |Voorbeelden van utterances|
     |--|
-    |move John W. Smith to the accounting department|
-    |transfer Jill Jones from to R&D|
-    |Dept 1234 has a new member named Bill Bradstreet|
-    |Place John Jackson in Engineering |
-    |move Debra Doughtery to Inside Sales|
-    |mv Jill Jones to IT|
-    |Shift Alice Anderson to DevOps|
-    |Carl Chamerlin to Finance|
-    |Steve Standish to 1234|
-    |Tanner Thompson to 3456|
+    |Smith naar de boekhoudafdeling|
+    |Jill Jones overdragen van naar R&D|
+    |Afdeling 1234 heeft een nieuw lid genaamd Bill Bradstreet|
+    |Plaats John Jackson in Engineering |
+    |verplaats Debra Doughtery naar Inside Sales|
+    |mv Jill Jones aan IT|
+    |Verplaats Alice Anderson naar DevOps|
+    |Carl Chamerlin voor Finance|
+    |Steve Standish tot 1234|
+    |Tanner Thompson naar 3456|
 
     [![Schermafbeelding van intentie met voorbeelden van utterances](media/luis-quickstart-intent-and-list-entity/intent-transfer-employee-to-department.png "Schermafbeelding van intentie met voorbeelden van utterances")](media/luis-quickstart-intent-and-list-entity/intent-transfer-employee-to-department.png#lightbox)
 
