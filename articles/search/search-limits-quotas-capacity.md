@@ -8,15 +8,15 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 07/01/2019
 ms.author: heidist
-ms.openlocfilehash: 308eb90e7ae244442a603491044e90dc3b8d052a
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
-ms.translationtype: MT
+ms.openlocfilehash: c2d4cae1689701704c866833c99ca616bbd01ec5
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70141155"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300662"
 ---
 # <a name="service-limits-in-azure-search"></a>Service limieten in Azure Search
-De maximum limieten voor opslag, werk belastingen en hoeveel heden indexen, documenten en andere objecten zijn afhankelijk van het feit of u [Azure Search hebt ingericht](search-create-service-portal.md) , **basis**, **standaard**of voor **opslag geoptimaliseerde** prijs categorieën.
+De maximum limieten voor opslag, werk belastingen en hoeveel heden indexen, documenten en andere objecten zijn afhankelijk van het feit of uAzure Search hebt [ingericht](search-create-service-portal.md) , **basis**, **standaard**of voor **opslag geoptimaliseerde** prijs categorieën.
 
 + **Gratis** is een multi tenant-gedeelde service die wordt geleverd bij uw Azure-abonnement.
 
@@ -62,11 +62,13 @@ De maximum limieten voor opslag, werk belastingen en hoeveel heden indexen, docu
 
 ## <a name="document-limits"></a>Document limieten 
 
-Vanaf oktober 2018 zijn er geen document limieten meer voor nieuwe services die zijn gemaakt in een wille keurige laag (Basic, S1, S2, S3, S3 HD) in een wille keurige regio. Hoewel de meeste regio's een onbeperkt aantal documenten hebben gehad sinds november/december 2017, waren er vijf regio's die de document limieten bleven oplopen. Afhankelijk van wanneer en waar u een zoek service hebt gemaakt, kunt u een service uitvoeren die nog steeds aan de document limieten is onderworpen.
+Vanaf oktober 2018 zijn er geen document limieten meer<sup>1</sup> voor nieuwe services die zijn gemaakt in een wille keurige laag (Basic, S1, S2, S3, S3 HD) in een wille keurige regio. Hoewel de meeste regio's een onbeperkt aantal documenten hebben gehad sinds november/december 2017, waren er vijf regio's die de document limieten bleven oplopen. Afhankelijk van wanneer en waar u een zoek service hebt gemaakt, kunt u een service uitvoeren die nog steeds aan de document limieten is onderworpen.
 
 Als u wilt bepalen of uw service document limieten heeft, controleert u de tegel gebruik op de pagina overzicht van uw service. Document tellingen zijn onbeperkt of zijn onderworpen aan een limiet op basis van de laag.
 
   ![Gebruikstegel](media/search-limits-quotas-capacity/portal-usage-tile.png)
+
+<sup>1</sup> hoewel er geen SKU-specifieke document limieten zijn, is voor elke index nog steeds een maximale kluis limiet van toepassing om de stabiliteit van de service te garanderen. Deze limiet is afkomstig van Lucene. Elk Azure Search-document wordt intern geïndexeerd als een of meer lucene-documenten. Het aantal lucene-documenten per Azure-Zoek document is afhankelijk van het totale aantal elementen in complexe verzamelings velden. Elk element wordt als een afzonderlijk lucene-document geïndexeerd. Een document met 3 elementen in een veld met een complexe verzameling wordt bijvoorbeeld geïndexeerd als 4 lucene-documenten-1 voor het document zelf en 3 voor de elementen. Het maximum aantal lucene-documenten is ongeveer 25.000.000.000 per index.
 
 ### <a name="regions-previously-having-document-limits"></a>Regio's die eerder document limieten hebben
 

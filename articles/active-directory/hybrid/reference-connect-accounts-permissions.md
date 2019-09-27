@@ -13,16 +13,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 04/29/2019
+ms.date: 09/25/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c5460033902b71174dc3a10615811f657081f0e4
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: 6760677a94855c259501103a54a96d687c87910b
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70186299"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71290971"
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect: Accounts en machtigingen
 
@@ -48,10 +48,15 @@ Naast deze drie accounts die worden gebruikt om Azure AD Connect uit te voeren, 
 
 - **SQL-SA-account (optioneel)** : wordt gebruikt voor het maken van de ADSync-data base wanneer de volledige versie van SQL Server wordt gebruikt.  Deze SQL Server kan lokaal of extern zijn voor de Azure AD Connect installatie.  Dit account kan hetzelfde account zijn als de ondernemings beheerder.  Het inrichten van de data base kan nu buiten de band worden uitgevoerd door de SQL-beheerder en vervolgens worden geïnstalleerd door de beheerder van de Azure AD Connect met de rechten van de data base-eigenaar.  Zie voor meer informatie [installeren Azure AD Connect met behulp van SQL delegated Administrator Permissions](how-to-connect-install-sql-delegation.md)
 
+<<<<<<< HEAD
+>[!IMPORTANT]
+> Vanaf build 1.4. # # #. # het is niet meer mogelijk om een ondernemings Administrator of een domein beheerders account te gebruiken als AD DS Connector-account.  Als u probeert een account in te voeren dat een ondernemings beheerder of domein beheerder is wanneer u **bestaand account gebruiken**opgeeft, wordt er een fout bericht weer gegeven.
+=======
 > [!NOTE]
 > Het wordt ondersteund voor het beheren van de beheer accounts die worden gebruikt in Azure AD Connect vanuit een ESAE-beheer forest (ook wel bekend als ' rode forest ').
 > Met specifieke administratieve forests kunnen organisaties beheerders accounts, werk stations en groepen hosten in een omgeving met betere beveiligings controles dan de productie omgeving.
 > Raadpleeg voor meer informatie over specifieke administratieve forests de [ontwerp benadering ESAE administratieve forests](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material#esae-administrative-forest-design-approach)
+>>>>>>> e683a61b0ed62ae739941410f658a127534e2481
 
 ## <a name="installing-azure-ad-connect"></a>Azure AD Connect installeren
 De installatie wizard van Azure AD Connect biedt twee verschillende paden:
@@ -80,7 +85,7 @@ Het account voor de AD DS-connector is gemaakt voor het lezen van en schrijven n
 
 | Machtiging | Gebruikt voor |
 | --- | --- |
-| <li>Directory wijzigingen repliceren</li><li>Wijzigingen in Directory repliceren |Wachtwoord-hash-synchronisatie |
+| <li>Directory wijzigingen repliceren</li><li>Wijzigingen in Directory repliceren |Wachtwoord-hashsynchronisatie |
 | Alle eigenschappen van lezen/schrijven gebruiker |Hybride importeren en uitwisselen |
 | Alle eigenschappen lezen/schrijven iNetOrgPerson |Hybride importeren en uitwisselen |
 | Alle eigenschappen groep lezen/schrijven |Hybride importeren en uitwisselen |
@@ -137,7 +142,7 @@ Welke machtigingen u nodig hebt, is afhankelijk van de optionele functies die u 
 | Functie | Machtigingen |
 | --- | --- |
 | functie MS-DS-ConsistencyGuid |Schrijf machtigingen voor het kenmerk MS-DS-ConsistencyGuid dat wordt beschreven in [ontwerp concepten-MS-DS-ConsistencyGuid gebruiken als source Anchor](plan-connect-design-concepts.md#using-ms-ds-consistencyguid-as-sourceanchor). | 
-| Wachtwoord-hash-synchronisatie |<li>Directory wijzigingen repliceren</li>  <li>Wijzigingen in Directory repliceren |
+| Wachtwoord-hashsynchronisatie |<li>Directory wijzigingen repliceren</li>  <li>Wijzigingen in Directory repliceren |
 | Hybride implementatie voor Exchange |Schrijf machtigingen voor de kenmerken die worden beschreven in [hybride write-back van Exchange](reference-connect-sync-attributes-synchronized.md#exchange-hybrid-writeback) voor gebruikers, groepen en contact personen. |
 | Open bare map voor Exchange-e-mail |Lees machtigingen voor de kenmerken die in de [open bare map voor Exchange mail](reference-connect-sync-attributes-synchronized.md#exchange-mail-public-folder) voor open bare mappen worden beschreven. | 
 | Write-back van wachtwoord |Schrijf machtigingen voor de kenmerken die worden beschreven in [aan de slag met wachtwoord beheer](../authentication/howto-sspr-writeback.md) voor gebruikers. |
@@ -193,7 +198,7 @@ Labels
 - sMSA- [zelfstandig beheerd service account](https://technet.microsoft.com/library/dd548356.aspx)
 - gMSA: door [groep beheerd service account](https://technet.microsoft.com/library/hh831782.aspx)
 
-| | LocalDB</br>Express | LocalDB/LocalSQL</br>Aanpassen | Externe SQL</br>Aanpassen |
+| | LocalDB</br>Spoed | LocalDB/LocalSQL</br>Aanpassen | Externe SQL</br>Aanpassen |
 | --- | --- | --- | --- |
 | **zelfstandige computer/werk groep** | Niet ondersteund | **VSA**</br>Lokaal account (2008)</br>Lokaal account |  Niet ondersteund |
 | **computer die lid is van een domein** | **VSA**</br>Lokaal account (2008) | **VSA**</br>Lokaal account (2008)</br>Lokaal account</br>Domeinaccount</br>sMSA, gMSA | **gMSA**</br>Domeinaccount |
