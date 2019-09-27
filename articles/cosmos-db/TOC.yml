@@ -691,6 +691,8 @@
       items:
         - name: Notebooks inschakelen
           href: enable-notebooks.md
+        - name: Ingebouwde notebookopdrachten gebruiken
+          href: use-notebook-features-and-commands.md
     - name: Programmeren op de server
       items:
         - name: 'Opgeslagen procedures, triggers en UDF''s schrijven'

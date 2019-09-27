@@ -1,63 +1,91 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Documentatie voor Azure Sentinel
+summary: In dit artikel worden gebruikscases gegeven om aan de slag te gaan met Azure Sentinel. Ontdek en stop bedreigingen voordat deze schade kunnen aanrichten, met de voor de moderne wereld opnieuw ontwikkelde SIEM. Azure Sentinel biedt u een totaaloverzicht van uw onderneming.
 metadata:
-  title: 'Documentatie voor Azure Sentinel - zelfstudies, quickstarts | Microsoft Docs'
-  meta.description: Azure Sentinel is a cloud-native SIEM that provides intelligent security analytics for your entire enterprise at cloud scale.
+  title: Documentatie voor Azure Sentinel
+  description: In dit artikel worden gebruikscases en scenario's gegeven om aan de slag te gaan met Azure Sentinel. Ontdek en stop bedreigingen voordat deze schade kunnen aanrichten, met de voor de moderne wereld opnieuw ontwikkelde SIEM. Azure Sentinel geeft een totaaloverzicht van uw onderneming.# Vereist; artikelbeschrijving dat wordt weergegeven in zoekresultaten. < 160 tekens.
   services: sentinel
-  author: cmcclister
-  manager: carolz
-  ms.service: azure-sentinel
+  ms.service: sentinel
   ms.subservice: azure-sentinel
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
-  ms.date: 02/28/19
-  ms.author: cmcclister
-abstract:
-  description: 'Azure Sentinel is een cloud-SIEM met intelligente beveiligingsanalyses voor uw hele onderneming in de cloud. Ontvang onbeperkte cloudsnelheid en pas de schaal aan om in te zoomen op wat echt belangrijk is. Verzamel eenvoudig gegevens van al uw cloudassets of on-premises assets, Office 365, Azure-resources en andere clouds. Detecteer effectief bedreigingen met ingebouwde machine learning van beveiligingsanalyse-experts van Microsoft. Automatiseer de reactie op bedreigingen met behulp van ingebouwde indeling en automatiseringsplaybooks.'
-sections:
-  - title: QuickStarts van vijf minuten
-    items:
-      - type: paragraph
-        text: Leer hoe u uw gegevens voorbereidt op Azure Sentinel en krijg inzicht in uw gegevens en mogelijke bedreigingen.
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: media/index/deploy.svg
-            text: Azure Sentinel voorbereiden
-            href: /azure/sentinel/quickstart-onboard
-          - image:
-              src: media/index/get-started.svg
-            text: Aan de slag met Azure Sentinel
-            href: /azure/sentinel/quickstart-get-visibility
-  - title: Zelfstudies met stapsgewijze instructies
-    items:
-      - type: paragraph
-        text: 'Meer informatie over hoe u beveiligingsbeleid opstelt, uw resources beveiligt tegen schadelijke activiteit en adequaat reageert op beveiligingswaarschuwingen en incidenten.'
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="/azure/sentinel/tutorial-detect-threats">Bedreigingen detecteren met Azure Sentinel</a>
-          - html: <a href="/azure/sentinel/tutorial-respond-threats-playbook">Geautomatiseerde bedreigingsreacties instellen</a>
-  - title: Uw vaardigheden ontwikkelen met Microsoft Learn
-    items:
-      - type: list
-        style: cards
-        className: cardsFTitle
-        items:
-          - title: Inleiding tot beveiliging in Azure
-            href: 'https://docs.microsoft.com/learn/azure'
-            image:
-              src: media/index/tutorial.svg
-              href: 'https://docs.microsoft.com/learn/azure'
-      - type: paragraph
-        text: <a href="/learn/browse/?term=security">Meer interactief leren...</a>
-  - title: Naslaginformatie
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - html: '<a href="https://azure.microsoft.com/updates/?product=sentinel">Service-updates</a>'
+  ms.collection: collection
+  author: rkarlin
+  ms.author: rkarlin
+  ms.date: 25/09/2019
+  ms.openlocfilehash: 8f8815645b7dfcdcc5e1ed5212ecd1ec298f8644
+  ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+  ms.translationtype: HT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 09/26/2019
+  ms.locfileid: "71316489"
+landingContent:
+- title: Over Azure Sentinel
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Wat is Azure Sentinel?
+      url: overview.md
+- title: Aan de slag
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Azure Sentinel voorbereiden
+      url: quickstart-onboard.md
+    - text: Inzicht krijgen in waarschuwingen
+      url: quickstart-get-visibility.md
+  - linkListType: how-to-guide
+    links:
+    - text: Gegevens verbinden met Azure Sentinel
+      url: connect-data-sources.md
+- title: Aanvullende gegevensbronnen verbinden
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Verbinding maken met Azure AD
+      url: connect-azure-active-directory.md
+    - text: Verbinding maken met Azure Information Protection
+      url: connect-azure-information-protection.md
+    - text: Verbinding maken met AWS
+      url: connect-aws.md
+    - text: Verbinding maken met Palo Alto Networks
+      url: connect-paloalto.md
+    - text: Verbinding maken met bedreigingsinformatie
+      url: connect-threat-intelligence.md
+- title: Met meerdere tenants werken
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Hoe u ondersteuning voor meerdere tenants inschakelt in Azure Sentinel
+      url: multiple-tenants-service-providers.md
+- title: Weet wat er gebeurt in uw omgeving
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Uw gegevens bewaken
+      url: tutorial-monitor-your-data.md
+    - text: Incidenten onderzoeken
+      url: tutorial-investigate-cases.md
+- title: Bedreigingen detecteren
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Ingebouwde analyses gebruiken om bedreigingen te detecteren
+      url: tutorial-detect-threats-built-in.md
+    - text: Aangepaste detectieregels maken
+      url: tutorial-detect-threats-custom.md
+- title: Bedreigingspreventie automatiseren
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Automatisch reageren op bedreigingen
+      url: tutorial-respond-threats-playbook.md
+    - text: Jupyter Notebooks gebruiken om bedreigingen voor de beveiliging op te sporen
+      url: notebooks.md
+- title: Proactief bezig zijn met detectie van bedreigingen
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Verbinding maken met bedreigingsinformatie
+      url: connect-threat-intelligence.md
+    - text: Bedreigingen opsporen
+      url: hunting.md

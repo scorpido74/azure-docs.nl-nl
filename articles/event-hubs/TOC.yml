@@ -114,7 +114,7 @@
           href: event-hubs-get-connection-string.md
         - name: Gebeurtenissen uitwisselen tussen toepassingen die gebruikmaken van verschillende protocollen
           href: event-hubs-exchange-events-different-protocols.md
-        - name: Programmeergids
+        - name: .NET-programmeergids
           href: event-hubs-programming-guide.md
         - name: 'Gebeurtenissen verzenden, ontvangen en vastleggen met behulp van Python'
           href: event-hubs-python.md

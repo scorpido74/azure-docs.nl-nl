@@ -1,89 +1,149 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Documentatie voor de Text Analytics API
+### YamlMime:Landing
+title: Documentatie voor de Text Analytics-API
+summary: 'De Text Analytics-API is een service in de cloud die geavanceerde verwerking van natuurlijke taal biedt voor onbewerkte tekst. De service bevat vier hoofdfuncties: sentimentanalyse, sleuteltermextractie, benoemde entiteitsherkenning en taaldetectie.'
 metadata:
-  title: 'Documentatie voor de Text Analytics API - zelfstudies, API-verwijzing - Azure Cognitive Services  | Microsoft Docs'
-  description: 'De Text Analytics-API is een op de cloud gebaseerde service die geavanceerde verwerking van natuurlijke taal biedt voor onbewerkte tekst. De service bevat vier hoofdfuncties: sentimentanalyse, sleuteltermextractie, benoemde entiteitsherkenning en taaldetectie.'
+  title: Documentatie voor de Text Analytics API - zelfstudies, API-verwijzing - Azure Cognitive Services  | Microsoft Docs
+  titleSuffix: Azure Cognitive Services
   services: cognitive-services
-  author: nitinme
+  description: 'De Text Analytics-API is een service in de cloud die geavanceerde verwerking van natuurlijke taal biedt voor onbewerkte tekst. De service bevat vier hoofdfuncties: sentimentanalyse, sleuteltermextractie, benoemde entiteitsherkenning en taaldetectie. Leer hoe u inhoud op verschillende manieren kunt analyseren met behulp van onze snelstartgidsen, zelfstudies en voorbeelden.'
+  author: aahill
   manager: nitinme
   layout: LandingPage
   ms.service: cognitive-services
   ms.subservice: text-analytics
   ms.topic: landing-page
   ms.date: 07/29/2019
-  ms.author: nitinme
-abstract:
-  description: 'De Text Analytics-API is een op de cloud gebaseerde service die geavanceerde verwerking van natuurlijke taal biedt voor onbewerkte tekst. De service bevat vier hoofdfuncties: sentimentanalyse, sleuteltermextractie, benoemde entiteitsherkenning en taaldetectie. Leer hoe u inhoud op verschillende manieren kunt analyseren met behulp van onze snelstartgidsen, zelfstudies en voorbeelden.'
-sections:
-  - items:
-      - type: list
-        style: cards
-        className: cardsM
-        columns: 3
-        items:
-          - href: /azure/cognitive-services/text-analytics/overview
-            html: <p>Informatie over de Text Analytics-API</p>
-            image:
-              src: ../media/index/i_overview.svg
-            title: Wat is Text Analytics?
-          - href: /azure/cognitive-services/cognitive-services-apis-create-account
-            html: <p>Uitleg over het registreren voor de Text Analytics-API.</p>
-            image:
-              src: ../media/index/i_get-started.svg
-            title: Registreren voor de Text Analytics-API
-          - href: /azure/cognitive-services/text-analytics/whats-new
-            html: <p>Blijf op de hoogte over recente ontwikkelingen in de Text Analytics-API.</p>
-            image:
-              src: ../media/index/i_tasks.svg
-            title: Wat is er nieuw in de Text Analytics-API?
-  - title: QuickStarts van vijf minuten
-    items:
-      - type: paragraph
-        text: 'Ga aan de slag met de Text Analytics-API door de taal te detecteren, de toon te analyseren, belangrijke woordgroepen te extraheren en entiteiten te herkennen:'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: media/index/logo_csharp.svg
-            text: 'C&#35;'
-            href: quickstarts/csharp
-          - image:
-              src: media/index/logo_java.svg
-            text: Java
-            href: quickstarts/java
-          - image:
-              src: media/index/logo_nodejs.svg
-            text: Node.js
-            href: quickstarts/nodejs-sdk
-          - image:
-              src: media/index/logo_python.svg
-            text: Python
-            href: quickstarts/python-sdk
-          - image:
-              src: media/index/logo_go.svg
-            text: Aan de slag
-            href: quickstarts/go-sdk
-  - title: Zelfstudies met stapsgewijze instructies
-    items:
-      - type: paragraph
-        text: 'Leer apps te ontwikkelen met behulp van de Text Analytics-API:'
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="tutorials/tutorial-power-bi-key-phrases.md">Text Analytics met Power BI</a>
-          - html: '<a href="https://powerapps.microsoft.com/tutorials/cognitive-services-api/">Text Analytics in PowerApps</a>'
-  - title: Naslaginformatie
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: REST
-            html: '<p><a href="https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7">API-naslaginformatie</a></p>'
-          - title: SDK's
-            html: '<p><a href="https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/textanalytics?view=azure-dotnet">.NET</a></p> <p><a href="https://docs.microsoft.com/javascript/api/azure-cognitiveservices-textanalytics?view=azure-node-latest">Node.js</a></p> <p><a href="https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/textanalytics?view=azure-python">Python</a></p> <p><a href="https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/textanalytics?view=azure-java-stable>Java</a></p> <p><a href="https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics">Go</a></p>'
-          - title: PowerShell
-            html: '<p><a href=https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services">Azure PowerShell</a></p>'
-          - title: CLI
-            html: '<p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest">Azure-CLI</a></p>'
+  ms.author: aahi
+  ms.openlocfilehash: 3a95cedb76c25b8e22e0d93c60221015e5836506
+  ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+  ms.translationtype: HT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 09/26/2019
+  ms.locfileid: "71300482"
+landingContent:
+- title: Over de Text Analytics-API
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Wat is Text Analytics-API?
+      url: overview.md
+    - text: Voorbeeldgebruikerscenario's
+      url: text-analytics-user-scenarios.md
+  - linkListType: video
+    links:
+    - text: Tekst begrijpen met Cognitive Services
+      url: https://channel9.msdn.com/Shows/AI-Show/Understanding-Text-using-Cognitive-Services/player
+  - linkListType: whats-new
+    links:
+    - text: Wat is nieuw?
+      url: whats-new.md
+- title: Sentimentanalyse
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: C# gebruiken
+      url: quickstarts/csharp.md#sentiment-analysis
+    - text: Python gebruiken
+      url: quickstarts/python-sdk.md#sentiment-analysis
+    - text: Node.js gebruiken
+      url: quickstarts/nodejs-sdk.md#sentiment-analysis
+    - text: Go gebruiken
+      url: quickstarts/go-sdk.md#sentiment-analysis
+    - text: Ruby gebruiken
+      url: quickstarts/ruby-sdk.md#sentiment-analysis
+  - linkListType: tutorial
+    links:
+    - text: Power BI integreren om klantensentiment te analyseren
+      url: tutorials/tutorial-power-bi-key-phrases.md
+    - text: Flask gebruiken om tekst te vertalen, gevoel te analyseren en spraak na te bootsen
+      url: https://docs.microsoft.com/azure/cognitive-services/translator/tutorial-build-flask-app-translation-synthesis?toc=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure%2Fcognitive-services%2Ftext-analytics%2Ftoc.json&bc=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure%2Fbread%2Ftoc.json
+  - linkListType: how-to-guide
+    links:
+    - text: Sentimentanalyse
+      url: how-tos/text-analytics-how-to-sentiment-analysis.md
+- title: Taaldetectie
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: C# gebruiken
+      url: quickstarts/csharp.md#language-detection
+    - text: Python gebruiken
+      url: quickstarts/python-sdk.md#language-detection
+    - text: Node.js gebruiken
+      url: quickstarts/nodejs-sdk.md#language-detection
+    - text: Go gebruiken
+      url: quickstarts/go-sdk.md#language-detection
+    - text: Ruby gebruiken
+      url: quickstarts/ruby-sdk.md#language-detection
+  - linkListType: how-to-guide
+    links:
+    - text: Taaldetectie
+      url: how-tos/text-analytics-how-to-language-detection.md
+- title: Sleuteltermextractie
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: C# gebruiken
+      url: quickstarts/csharp.md#key-phrase-extraction
+    - text: Python gebruiken
+      url: quickstarts/python-sdk.md#key-phrase-extraction
+    - text: Node.js gebruiken
+      url: quickstarts/nodejs-sdk.md#key-phrase-extraction
+    - text: Go gebruiken
+      url: quickstarts/go-sdk.md#key-phrase-extraction
+    - text: Ruby gebruiken
+      url: quickstarts/ruby-sdk.md#key-phrase-extraction
+  - linkListType: how-to-guide
+    links:
+    - text: Extractie van trefwoorden
+      url: how-tos/text-analytics-how-to-keyword-extraction.md
+- title: Herkenning van entiteiten
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: C# gebruiken
+      url: quickstarts/csharp.md#entity-recognition
+    - text: Python gebruiken
+      url: quickstarts/python-sdk.md#entity-recognition
+    - text: Node.js gebruiken
+      url: quickstarts/nodejs-sdk.md#entity-recognition
+    - text: Go gebruiken
+      url: quickstarts/go-sdk.md#entity-recognition
+    - text: Ruby gebruiken
+      url: quickstarts/ruby-sdk.md#entity-recognition
+  - linkListType: how-to-guide
+    links:
+    - text: Herkenning van entiteiten
+      url: how-tos/text-analytics-how-to-entity-linking.md
+- title: Naslaginformatie
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: REST-API
+      url: https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7
+    - text: .NET-clientbibliotheek
+      url: https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/textanalytics?view=azure-dotnet
+    - text: Python-clientbibliotheek
+      url: https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/textanalytics?view=azure-python
+    - text: Node.js-clientbibliotheek
+      url: https://docs.microsoft.com/javascript/api/azure-cognitiveservices-textanalytics?view=azure-node-latest
+    - text: Java-clientbibliotheek
+      url: https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/textanalytics?view=azure-java-stable
+    - text: Go-clientbibliotheek
+      url: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics
+    - text: Azure PowerShell
+      url: https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services"
+    - text: Azure-CLI
+      url: https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest
+- title: Docker-containers gebruiken
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: De Text Analytics-containers installeren en uitvoeren
+      url: how-tos/text-analytics-how-to-install-containers.md
+    - text: Text Analytics-containers configureren
+      url: text-analytics-resource-container-config.md
+    - text: Een containerinstantie implementeren in Azure
+      url: how-tos/text-analytics-how-to-use-container-instances.md
+    - text: Een container implementeren in Azure Kubernetes Service (AKS)
+      url: how-tos/text-analytics-how-to-use-kubernetes-service.md

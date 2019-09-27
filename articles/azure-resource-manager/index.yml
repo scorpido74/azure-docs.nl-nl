@@ -1,78 +1,127 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Documentatie voor Resource Manager in Azure
+### YamlMime:Landing
+title: Documentatie voor Azure Resource Manager
+summary: Resource Manager-sjabloon is een JavaScript Object Notation-bestand (JSON) dat de infrastructuur en configuratie van uw project definieert.
 metadata:
-  title: 'Documentatie over Resource Manager in Azure - zelfstudies, voorbeelden, verwijzingen en resources'
-  description: Leer hoe u Resource Manager kunt gebruiken om oplossingsresources als groep te implementeren en beheren en hoe u sjablonen kunt maken voor consistente en herhaalbare resource-implementatie.
+  title: Documentatie voor Azure Resource Manager
+  description: Meer informatie over hoe u Azure Resource Manager-sjablonen ontwikkelt en gebruikt om Azure-resources te implementeren
   services: azure-resource-manager
   ms.service: azure-resource-manager
-  keywords: 'Resource Manager, azure, devops, zelfstudies, voorbeelden, verwijzing, documentatie'
-  author: mumian
-  manager: dougeby
-  ms.author: jgao
+  ms.subservice: na
   ms.topic: landing-page
-  ms.date: 12/10/2018
-abstract:
-  description: 'Leer hoe u Resource Manager kunt gebruiken om oplossingsresources als groep te implementeren, bewaken en beheren. Zelfstudies, API-verwijzingen en andere documentatie laten zien hoe u resourcegroepen kunt instellen en sjablonen kunt maken voor consistente en herhaalbare implementatie.'
-sections:
-  - title: Snelstartgidsen
-    items:
-      - type: paragraph
-        text: Gebruik verschillende hulpprogramma's om Azure Resource Manager-sjablonen te maken om Azure-resources te implementeren.
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/media/common/i_portal.svg'
-            text: Een sjabloon genereren met Azure Portal
-            href: 'https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal'
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_vs-code.svg'
-            text: Een sjabloon maken met Visual Studio Code
-            href: 'https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-visual-studio-code'
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_visual-studio.svg'
-            text: Een sjabloon maken met Visual Studio
-            href: 'https://docs.microsoft.com/azure/azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy'
-  - title: Zelfstudies met stapsgewijze instructies
-    items:
-      - type: paragraph
-        text: Informatie over hoe u Azure Resource Manager-sjablonen maakt om Azure-resources te implementeren.
-      - type: list
-        style: unordered
-        items:
-          - html: '<a href="https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-create-encrypted-storage-accounts">De verwijzing voor Resource Manager-sjablonen gebruiken</a>.'
-          - html: '<a href="https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-create-multiple-instances">Meerdere exemplaren van een Azure-resource maken</a>.'
-          - html: '<a href="https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-create-templates-with-dependent-resources">Implementatievolgorde van resources instellen</a>.'
-          - html: '<a href="https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-use-conditions">Voorwaarden gebruiken</a>.'
-          - html: '<a href="https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-use-key-vault">Azure Key Vault integreren</a>.'
-          - html: '<a href="https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-create-linked-templates">Gekoppelde sjablonen maken</a>.'
-          - html: '<a href="https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-deploy-vm-extensions">Extensies van virtuele machines implementeren</a>.'
-          - html: '<a href="https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-deploy-sql-extensions-bacpac">SQL-extensies implementeren</a>.'
-          - html: '<a href="https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-secure-artifacts">Sjabloon-artefacten beveiligen</a>.'
-          - html: '<a href="https://docs.microsoft.com/azure/azure-resource-manager/deployment-manager-tutorial">Veilige implementatiemethoden gebruiken</a>.'
-          - html: '<a href="https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-troubleshoot">Problemen met sjabloonimplementatie oplossen</a>.'
-  - title: Voorbeelden
-    items:
-      - type: paragraph
-        text: Voorbeelden van configuratiesjablonen voor veelvoorkomende implementatietaken.
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: '<a href="https://azure.microsoft.com/resources/templates/">Azure-snelstartsjablonen</a>'
-          - html: '<a href="https://resources.azure.com/">Azure Resource Explorer (preview)</a>'
-  - title: Naslaginformatie
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Sjablonen
-            html: <p><a href="/azure/templates/">Sjabloonverwijzing</a></p><p><a href="/azure/resource-group-template-functions">Sjabloonfuncties</a></p><p><a href="/azure/azure-resource-manager/managed-application-createuidefinition-functions">Functies voor interfacedefinitie</a></p><p><a href="/azure/azure-resource-manager/managed-application-createuidefinition-elements">Elementen voor interfacedefinitie</a></p>
-          - title: Opdrachtregel
-            html: <p><a href="/cli/azure/resource">Azure-CLI</a></p><p><a href="/powershell/module/az.resources">Azure PowerShell</a></p>
-          - title: Talen
-            html: <p><a href="/dotnet/api/microsoft.azure.management.resourcemanager">.NET</a></p><p><a href="/java/api/com.microsoft.azure.management.resources">Java</a></p><p><a href="/python/api/overview/azure/resources?view=azure-python">Python</a></p>
-          - title: REST
-            html: <p><a href="/rest/api/resources/">REST API</a></p>
+  ms.collection: na
+  author: mumian
+  ms.author: jgao
+  ms.date: 09/25/2019
+  ms.openlocfilehash: 4981000d942bfa49503a63ce2a82ec994efc3c6e
+  ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+  ms.translationtype: HT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 09/26/2019
+  ms.locfileid: "71299515"
+landingContent:
+- title: Over Resource Manager
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Wat is Resource Manager?
+      url: resource-group-overview.md
+    - text: Wat is een Resource Manager-sjabloon?
+      url: template-deployment-overview.md
+  - linkListType: concept
+    links:
+    - text: Aanbevolen procedures
+      url: template-best-practices.md
+    - text: Implementatiemodi
+      url: deployment-modes.md
+    - text: Gekoppelde sjablonen
+      url: resource-group-linked-templates.md
+    - text: Implementatie op abonnementsniveau
+      url: deploy-to-subscription.md
+    - text: Configuratiebeheer
+      url: deployment-manager-overview.md
+- title: Aan de slag
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Sjablonen maken - portal
+      url: resource-manager-quickstart-create-templates-use-the-portal.md
+    - text: Sjablonen maken - VS Code
+      url: resource-manager-quickstart-create-templates-use-visual-studio-code.md
+    - text: Sjablonen maken - Visual Studio
+      url: vs-azure-tools-resource-groups-deployment-projects-create-deploy.md
+  - linkListType: tutorial
+    links:
+    - text: Meerdere exemplaren implementeren
+      url: resource-manager-tutorial-create-multiple-instances.md
+    - text: Implementatievolgorde instellen
+      url: resource-manager-tutorial-create-templates-with-dependent-resources.md
+    - text: Key Vault integreren
+      url: resource-manager-tutorial-use-key-vault.md
+- title: Sjablonen ontwikkelen
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: VS Code gebruiken
+      url: resource-manager-tools-vs-code.md
+    - text: Functies gebruiken
+      url: resource-group-template-functions.md
+    - text: Parameters definiëren
+      url: template-parameters.md
+    - text: Variabelen definiëren
+      url: template-variables.md
+    - text: Resources definiëren
+      url: child-resource-name-type.md
+    - text: Uitvoer definiëren
+      url: template-outputs.md
+  - linkListType: reference
+    links:
+    - text: Azure-quickstartsjablonen
+      url: /resources/templates/
+- title: Sjablonen implementeren
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Met PowerShell
+      url: resource-group-template-deploy.md
+    - text: Met CLI
+      url: resource-group-template-deploy-cli.md
+    - text: Met de portal
+      url: resource-group-template-deploy-portal.md
+    - text: Met REST API
+      url: resource-group-template-deploy-rest.md
+- title: Sjablonen beheren
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Sjablonen exporteren
+      url: export-template-portal.md
+    - text: CI/CD
+      url: vs-resource-groups-project-devops-pipelines.md
+- title: Resources beheren
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Resources verplaatsen
+      url: resource-group-move-resources.md
+    - text: Resources taggen
+      url: resource-group-using-tags.md
+    - text: Resources vergrendelen
+      url: resource-group-lock-resources.md
+- title: Controleren en problemen oplossen
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Activiteitenlogboeken bekijken
+      url: resource-group-audit.md
+    - text: Implementatiebewerking bekijken
+      url: resource-manager-deployment-operations.md
+    - text: Implementatiefouten oplossen
+      url: resource-manager-common-deployment-errors.md
+- title: Naslaginhoud verkennen
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Resourceproviders en -typen
+      url: resource-manager-supported-services.md
+    - text: Sjabloonverwijzing
+      url: /azure/templates/

@@ -71,6 +71,8 @@
           items:
             - name: Afbeeldingsgegevens verwijderen - CLI
               href: container-registry-delete.md
+            - name: Bewaarbeleid voor manifesten zonder tags (preview)
+              href: container-registry-retention-policy.md
             - name: Automatisch tags en manifesten leegmaken (preview)
               href: container-registry-auto-purge.md
         - name: Een klassiek register upgraden

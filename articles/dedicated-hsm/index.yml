@@ -1,59 +1,52 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Documentatie voor toegewezen HSM in Azure
+### YamlMime:Landing
+title: Documentatie voor Azure Dedicated HSM
+summary: Meer informatie over hoe u Azure Dedicated HSM gebruikt om sleutels te maken en te onderhouden waarmee u de resources, apps en oplossingen in de cloud kunt openen en versleutelen. Zelfstudies, API-verwijzingen en meer.
 metadata:
-  title: 'Documentatie voor toegewezen HSM in Azure - zelfstudies, API-verwijzing | Microsoft Docs'
-  meta.description: 'Learn how to use Azure Dedicated HSM to create and maintain keys that access and encrypt your cloud resources, apps, and solutions. Tutorials, API references, and more.'
+  title: Documentatie voor Azure Dedicated HSM
+  description: Meer informatie over hoe u Azure Dedicated HSM gebruikt om sleutels te maken en te onderhouden waarmee u de resources, apps en oplossingen in de cloud kunt openen en versleutelen. Zelfstudies, API-verwijzingen en meer.
   services: dedicated-hsm
-  author: msmbaldwin
-  manager: rkarlin
-  layout: LandingPage
-  ms.assetid: null
   ms.service: dedicated-hsm
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
-  ms.date: 11/21/2018
+  author: msmbaldwin
   ms.author: mbaldwin
-abstract:
-  description: Meer informatie over toegewezen HSM-functionaliteit en of deze van toepassing is op uw omgeving.
-sections:
-  - items:
-      - type: list
-        style: cards
-        className: cardsM
-        columns: 3
-        items:
-          - href: /azure/dedicated-hsm/overview
-            html: <p>Ontdek wat toegewezen HSM in Azure precies inhoudt.</p>
-            image:
-              src: media/index/hsm.svg
-            title: Overzicht toegewezen HSM in Azure
-          - href: /azure/dedicated-hsm/faq
-            html: <p>Ontwerpoverwegingen bij het gebruik van toegewezen HSM</p>
-            image:
-              src: media/index/guide.svg
-            title: Een implementatie-architectuur kiezen
-  - title: Zelfstudies met stapsgewijze instructies
-    items:
-      - type: paragraph
-        text: ''
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: media/index/cli.svg
-            text: Azure-CLI
-            href: /azure/dedicated-hsm/tutorial-deploy-hsm-cli
-          - image:
-              src: media/index/logo_powershell.svg
-            text: PowerShell
-            href: /azure/dedicated-hsm/tutorial-deploy-hsm-powershell
-  - title: Naslaginformatie
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Veelgestelde vragen
-            html: <p><a href="/azure/dedicated-hsm/faq/">Veelgestelde vragen</a></p>
+  manager: rkarlin
+  ms.date: 09/19/2019
+  ms.openlocfilehash: 9e592fdb5fa87487f131bb0aca0c6176175e5385
+  ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+  ms.translationtype: HT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 09/26/2019
+  ms.locfileid: "71300103"
+landingContent:
+- title: Over Dedicated HSM
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Wat is Toegewezen HSM?
+      url: overview.md
+  - linkListType: concept
+    links:
+    - text: Hoge beschikbaarheid
+      url: high-availability.md
+    - text: Fysieke beveiliging
+      url: physical-security.md
+    - text: Netwerken
+      url: networking.md
+    - text: Ondersteuning
+      url: supportability.md
+    - text: Bewaking
+      url: monitoring.md
+- title: Aan de slag
+  linkLists:
+  - linkListType: deploy
+    links:
+    - text: Implementeren in een virtueel netwerk met de Azure CLI
+      url: tutorial-deploy-hsm-cli.md
+    - text: Implementeren in een virtueel netwerk met Azure PowerShell
+      url: tutorial-deploy-hsm-powershell.md
+- title: Scenario's
+  linkLists:
+  - linkListType: architecture
+    links:
+    - text: Implementatiearchitectuur van Azure Dedicated HSM
+      url: deployment-architecture.md

@@ -352,3 +352,5 @@
       href: reference-connect-adconnectivitytools.md
     - name: msExchUserHoldPolicies en cloudMSExchUserHoldPolicies
       href: reference-connect-msexchuserholdpolicies.md
+    - name: Inzicht in de verdwijning van Azure AD Connect 1.4.xx.x-apparaten
+      href: reference-connect-device-disappearance.md

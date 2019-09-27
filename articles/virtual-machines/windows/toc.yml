@@ -474,6 +474,8 @@
           href: disks-upload-vhd-to-managed-disk-powershell.md
         - name: De grootte van een schijf wijzigen
           href: expand-os-disk.md
+        - name: Storage Explorer gebruiken om schijven te beheren
+          href: disks-use-storage-explorer-managed-disks.md
         - name: Een momentopname maken van een schijf
           href: snapshot-copy-managed-disk.md
         - name: Een incrementele momentopname maken

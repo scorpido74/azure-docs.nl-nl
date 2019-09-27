@@ -28,6 +28,10 @@
           href: connect-windows-7-and-10.md
         - name: Verbinding maken via een webbrowser
           href: connect-web.md
+        - name: Verbinding maken met de macOS-client
+          href: connect-macos.md
+        - name: Verbinding maken met de iOS-client
+          href: connect-ios.md
     - name: Een hostpool maken met een Azure Resource Manager-sjabloon
       href: create-host-pools-arm-template.md
     - name: Een hostpool maken met PowerShell
