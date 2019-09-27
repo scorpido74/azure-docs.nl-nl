@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/01/2019
 ms.author: banders
-ms.openlocfilehash: 507ad62a917120689bee3f1e293e23c9ab8b0f66
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: f2f5b2ecf096d7dc8babb79a38d00158a2120688
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "68598094"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71218071"
 ---
 # <a name="get-enterprise-agreement-reservation-costs-and-usage"></a>Reserveringskosten en gebruiksgegevens voor Enterprise Agreement opvragen
 
@@ -57,18 +57,20 @@ Er zijn aanpassingen doorgevoerd in andere gegevens die beschikbaar zijn voor Az
 - Term: 12 of 36 maanden.
 - RINormalizationRatio: beschikbaar onder AdditionalInfo. Dit is de verhouding waarmee de reservering wordt toegepast op de gebruiksrecord. Als flexibiliteit van instantiegrootte is ingeschakeld voor uw reservering, kan dit van toepassing zijn op andere grootten. De waarde toont de verhouding waarmee de reservering is toegepast voor de gebruiksrecord.
 
+[Zie de velddefinitie](https://docs.microsoft.com/rest/api/consumption/usagedetails/list#definitions)
+
 ## <a name="get-azure-consumption-and-reservation-usage-data-using-api"></a>Gebruiks- en reserveringsgegevens van Azure opvragen met een API
 
 U kunt de gegevens opvragen met behulp van de API of door ze te downloaden uit de Azure-portal.
 
-Als u nieuwe gegevens wilt opvragen, roept u de [API voor gebruiksgegevens](/rest/api/consumption/usagedetails/list) met API-versie &quot;2019-04-01-preview&quot; aan. Zie de [gebruiksvoorwaarden](billing-understand-your-usage.md)voor meer informatie over de gebruikte terminologie. De persoon die de aanroep verstuurt, moet een ondernemingsbeheerder zijn voor de Enterprise Agreement en hiervoor moet de [EA-portal](https://ea.azure.com) worden gebruikt. Ondernemingsbeheerders met de bevoegdheid Alleen-lezen kunnen de gegevens ook opvragen.
+Als u nieuwe gegevens wilt opvragen, roept u de [API voor gebruiksgegevens](/rest/api/consumption/usagedetails/list) aan. Zie de [gebruiksvoorwaarden](billing-understand-your-usage.md)voor meer informatie over de gebruikte terminologie. De persoon die de aanroep verstuurt, moet een ondernemingsbeheerder zijn voor de Enterprise Agreement en hiervoor moet de [EA-portal](https://ea.azure.com) worden gebruikt. Ondernemingsbeheerders met de bevoegdheid Alleen-lezen kunnen de gegevens ook opvragen.
 
 De gegevens zijn niet beschikbaar in [Reporting APIs for Enterprise customers - Usage Details](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail) (Rapportage-API's voor Enterprise-klanten - Gebruiksgegevens).
 
 Hier ziet u een voorbeeld van een aanroep naar de API:
 
 ```
-https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{enrollmentId}/providers/Microsoft.Billing/billingPeriods/{billingPeriodId}/providers/Microsoft.Consumption/usagedetails?metric={metric}&amp;api-version=2019-04-01-preview&amp;$filter={filter}
+https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{enrollmentId}/providers/Microsoft.Billing/billingPeriods/{billingPeriodId}/providers/Microsoft.Consumption/usagedetails?metric={metric}&amp;api-version=2019-05-01&amp;$filter={filter}
 ```
 
 Zie het artikel over [de API voor gebruiksgegevens](https://docs.microsoft.com/rest/api/consumption/usagedetails/list) voor meer informatie over {enrollmentId} en {billingPeriodId}.

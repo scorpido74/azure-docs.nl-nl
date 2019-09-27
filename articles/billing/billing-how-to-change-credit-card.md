@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: banders
-ms.openlocfilehash: 05b1fe3d061e735322e6eb6c65e60f63d8adb4d6
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: f89f9a08feb2ea2bcb7a9e8180002557df1d2b56
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70933866"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300311"
 ---
 # <a name="add-update-or-remove-a-credit-card-for-azure"></a>Een creditcard toevoegen, bijwerken of verwijderen voor Azure
 
@@ -106,55 +106,6 @@ Als u meer abonnementen heeft met dezelfde actieve betalingswijze, wordt de acti
 1. Klik op **Verwijderen**.
 
 Als uw creditcard de actieve betalingswijze is voor een van uw Microsoft-abonnementen, kunt u deze niet verwijderen uit uw Azure-account. Wijzig de actieve betalingswijze voor alle abonnementen die zijn gekoppeld aan deze creditcard, en probeer het opnieuw
-<!-- # Add, update, or remove a credit card for Azure
-
-In the Account Center, you can add a new credit card, update an existing credit card, or delete a credit card that you don't use. You must be an [Account Administrator](billing-subscription-transfer.md#whoisaa) to make these changes.
-
-**Want to switch to pay by invoice?** See [Pay for Azure subscriptions by invoice](billing-how-to-pay-by-invoice.md).
-
-<a id="addcard"></a>
-
-## Add a new credit card
-
-1. Sign in to the [Account Center](https://account.windowsazure.com/Subscriptions) as the [Account Administrator](billing-subscription-transfer.md#whoisaa).
-1. Select a subscription.
-1. On the right side of the page, select **Manage payment methods**.
-
-    ![Screenshot that shows Manage payment methods option selected.](./media/billing-how-to-change-credit-card/changesub_new.png)
-1. Select “+” to add a card.
-
-    ![Screenshot that shows the edit option next to the payment method.](./media/billing-how-to-change-credit-card/editcard_new.png)
-1. Enter credit card details.
-1. Select **Save**.
-
-If you get an error after you add the credit card, see [Credit card declined at Azure sign-up](billing-credit-card-fails-during-azure-sign-up.md).
-
-## Update existing credit card
-
-If your credit card gets renewed and the number remains the same, update the existing credit card details like the expiration date. If your credit card number changes because the card is lost, stolen, or expired, follow the steps in the [Add a credit card as a payment method](#addcard) section. You don't need to update the CVV.
-
-1. Sign in to the [Azure Account Center](https://account.windowsazure.com/Subscriptions) as the [Account Administrator](billing-subscription-transfer.md#whoisaa).
-1. Select the subscription that's linked to the card.
-1. Select **Manage payment methods**.
-1. Select **Edit** next to the card you want to update.
-1. Update the credit card details.
-1. Select **Save**.
-
-## Use a different credit card for the Azure subscription
-
-1. Sign in to the [Azure Account Center](https://account.windowsazure.com/Subscriptions) as the [Account Administrator](billing-subscription-transfer.md#whoisaa).
-1. Select the subscription that's linked to the card.
-1. On the right side of the page, select **Manage payment methods**.
-1. Click **Use Instead** next to the card that you want to use. This also updates any other subscriptions currently associated with this card.
-
-## Remove a credit card from the account
-
-1. Sign in to the [Azure Account Center](https://account.windowsazure.com/Subscriptions) as the [Account Administrator](billing-subscription-transfer.md#whoisaa).
-1. Select the subscription that's linked to the card.
-3. On the right side of the page, select **Manage payment methods**.
-4. Click **Delete** for the credit card that you want to delete.
-
-If your credit card is associated with other active Microsoft subscriptions, you can't remove it from your Azure account. Remove the credit card from all active subscriptions that you have with Microsoft and try again. -->
 
 ## <a name="change-payment-method-for-a-billing-profile"></a>Betalingswijze voor een factureringsprofiel wijzigen
 
@@ -166,10 +117,10 @@ Als u de standaardbetalingswijze wilt wijzigen in cheque/directe overboeking, le
 1. Zoek naar **kostenbeheer en facturering**.
 1. Klik in het menu aan de linkerkant op **Factureringsprofielen**.
 
-    ![Schermopname van het factureringsprofiel in het menu](./media/billing-how-to-change-credit-card/billing-profile.png)
+    ![schermopname van het factureringsprofiel in het menu](./media/billing-how-to-change-credit-card/billing-profile.png)
 
 1. Selecteer een factureringsprofiel.
-1. Selecteer in het menu aan de linkerkant de optie **Betalingswijzen**.
+1. Selecteer in het menu aan de linkerkant de optie **Betalingsmethoden**.
 
    ![Schermopname van de betalingswijze in het menu](./media/billing-how-to-change-credit-card/billing-profile-payment-methods.png)
 
@@ -178,6 +129,9 @@ Als u de standaardbetalingswijze wilt wijzigen in cheque/directe overboeking, le
     ![Schermopname van de wijzigingsknop](./media/billing-how-to-change-credit-card/customer-led-switch-credit-card.png)
 
 1. Selecteer een bestaande creditcard of voeg een nieuwe toe.
+
+## <a name="troubleshooting"></a>Problemen oplossen
+Als u fouten krijgt bij het toevoegen of bijwerken van uw creditcard, probeer dan uw browser in privémodus te openen.
 
 ## <a name="frequently-asked-questions"></a>Veelgestelde vragen
 In de volgende secties worden veelgestelde vragen beantwoord over het wijzigen van uw creditcardgegevens.
@@ -209,9 +163,9 @@ Als u een btw-nummer wilt toevoegen of bijwerken, werkt u uw profiel bij in het 
 ## <a name="check-access-to-a-microsoft-customer-agreement"></a>Toegang tot een Microsoft-klantovereenkomst controleren
 [!INCLUDE [billing-check-mca](../../includes/billing-check-mca.md)]
 
-## <a name="need-help-contact-us"></a>Hulp nodig? Neem contact met ons op.
+## <a name="need-help-contact-us"></a>Hebt u hulp nodig? Neem contact met ons op.
 
-Voor vragen of hulp [kunt u een ondersteuningsaanvraag maken](https://go.microsoft.com/fwlink/?linkid=2083458).
+Als u vragen hebt of hulp nodig hebt, [kunt u een ondersteuningsaanvraag maken](https://go.microsoft.com/fwlink/?linkid=2083458).
 
 ## <a name="next-steps"></a>Volgende stappen
 - Krijg meer informatie over [Azure-reserveringen](billing-save-compute-costs-reservations.md) om te zien of ze geld kunnen besparen.

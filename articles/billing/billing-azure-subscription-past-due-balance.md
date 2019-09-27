@@ -4,7 +4,7 @@ description: Hierin wordt beschreven hoe u een betaling doet als uw Azure-abonne
 services: ''
 documentationcenter: ''
 author: genlin
-manager: jureid
+manager: dcscontentpm
 editor: ''
 tags: billing
 ms.assetid: d0b88c92-fb9d-4d12-931b-c26104ad63e9
@@ -15,14 +15,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: banders
-ms.openlocfilehash: f58969b167b6c0f0a66d46731ad76c1f6e9acc41
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: cd3c29c4b65f45863647599ae2447584845f27c8
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "67491457"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300291"
 ---
 # <a name="resolve-past-due-balance-for-your-azure-subscription"></a>Verschuldigd bedrag betalen voor uw Azure-abonnement
+
+Dit artikel is van toepassing op klanten met een account voor het Microsoft Online Services-programma.
 
 Als uw betaling niet is ontvangen of als de betaling niet kan worden verwerkt, krijgt u mogelijk een e-mail of een waarschuwing in de Azure-portal of het accountcentrum.
 Als u de [accountbeheerder](billing-subscription-transfer.md#whoisaa) bent, kunt u de openstaande kosten betalen in de [Azure-portal](https://portal.azure.com). Als u per factuur betaalt, gebruikt u voor uw betaling de gegevens die onder aan uw factuur worden weergegeven.
@@ -43,6 +45,13 @@ Als u de [accountbeheerder](billing-subscription-transfer.md#whoisaa) bent, kunt
 1. Als voor de geselecteerde betalingswijze ook openstaande betalingen zijn voor Microsoft-services, wordt dit weerspiegeld in het totale openstaande saldo. U moet deze openstaande kosten dan ook betalen.
 1. Klik op **Betalen**.
 
+## <a name="troubleshoot-declined-credit-card"></a>Problemen met een geweigerde creditcard oplossen
+
+Als een betaling via uw creditcard door uw financiële instelling is geweigerd, neemt u contact op deze instelling om het probleem op te lossen. Controleer bij uw bank of aan de volgende voorwaarden is voldaan:
+- Internationale transacties zijn ingeschakeld op de kaart.
+- De kaart heeft voldoende kredietlimiet of financiële dekking om het saldo te vereffenen.
+- Terugkerende betalingen zijn ingeschakeld op de kaart.
+
 ## <a name="not-getting-billing-email-notifications"></a>Ontvangt u geen e-mailmeldingen voor facturering?
 
 Als u de accountbeheerder bent, [controleert u welk e-mailadres wordt gebruikt voor meldingen](billing-how-to-change-azure-account-profile.md). U kunt het beste een e-mailadres gebruiken dat u regelmatig controleert. Als het e-mailadres klopt, controleert u de map met ongewenste e-mail.
@@ -53,6 +62,7 @@ De service wordt geannuleerd en uw resources zijn niet meer beschikbaar. Uw Azur
 
 Als u weet dat uw betaling is verwerkt, maar uw abonnement nog steeds is uitgeschakeld, neemt u contact op met de [ondersteuning voor Azure](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 
+
 ## <a name="need-help-contact-us"></a>Hulp nodig? Neem contact met ons op.
 
-Als u een vraag wilt stellen of hulp nodig hebt, maakt u een [ondersteuningsaanvraag](https://go.microsoft.com/fwlink/?linkid=2083458).
+Als u vragen hebt of hulp nodig hebt, [kunt u een ondersteuningsaanvraag maken](https://go.microsoft.com/fwlink/?linkid=2083458).
