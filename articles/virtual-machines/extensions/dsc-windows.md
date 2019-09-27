@@ -101,8 +101,8 @@ De volgende JSON toont het schema voor het gedeelte instellingen van de DSC-uitb
 | ---- | ---- | ---- |
 | apiVersion | 10-01-2018 | date |
 | publisher | Microsoft.Powershell.DSC | string |
-| Type | DSC | string |
-| typeHandlerVersion | 2,77 | int |
+| type | DSC | string |
+| typeHandlerVersion | 2.77 | int |
 
 ### <a name="settings-property-values"></a>Eigenschaps waarden van instellingen
 
