@@ -39,8 +39,8 @@ Deze extensie ondersteunt de volgende OS distributies, afhankelijk van de onders
 | Distributie | Version |
 |---|---|
 | Linux: Ubuntu | 16,04 LTS, 18,04 LTS |
-| Linux: Red Hat Enterprise Linux | 7,3, 7,4, 7,5, 7,6 |
-| Linux: CentOS | 7,3, 7,4, 7,5, 7,6 |
+| Linux: Red Hat Enterprise Linux | 7.3, 7.4, 7.5, 7.6 |
+| Linux: CentOS | 7.3, 7.4, 7.5, 7.6 |
 
 ### <a name="internet-connectivity"></a>Internetconnectiviteit
 
