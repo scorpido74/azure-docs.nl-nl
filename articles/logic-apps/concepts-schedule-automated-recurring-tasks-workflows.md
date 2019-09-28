@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: deli, klam, LADocs
 ms.topic: conceptual
 ms.date: 05/25/2019
-ms.openlocfilehash: 7716c477cea2200e6fee901f7b5f63cd4b833bd7
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: 31260be6c65f5948eba6b9c6228b5ead695278d1
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68232670"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350703"
 ---
 # <a name="schedule-and-run-recurring-automated-tasks-processes-and-workflows-with-azure-logic-apps"></a>Terugkerende geautomatiseerde taken, processen en werk stromen plannen en uitvoeren met Azure Logic Apps
 
@@ -119,7 +119,7 @@ Dus hoe ver in het verleden u de start tijd opgeeft, bijvoorbeeld 2017-09-**05**
 
 Hier volgen enkele voor beelden van herhalingen die u kunt instellen voor de triggers die ondersteuning bieden voor de opties:
 
-| Trigger | Terugkeerpatroon | Interval | Frequentie | Begintijd | Op deze dagen | Op deze uren | Op deze minuten | Opmerking |
+| Trigger | Terugkeerpatroon | Interval | Frequentie | Begintijd | Deze dagen | Deze uren | Deze minuten | Opmerking |
 |---------|------------|----------|-----------|------------|---------------|----------------|------------------|------|
 | Optreden <br>Sliding window | Wordt elke 15 minuten uitgevoerd (geen begin datum en-tijd) | 15 | Minuut | geen | {unavailable} | geen | geen | Dit schema wordt onmiddellijk gestart, waarna toekomstige terugkeer patronen worden berekend op basis van de laatste uitvoerings tijd. |
 | Optreden <br>Sliding window | Wordt elke 15 minuten uitgevoerd (met begin datum en-tijd) | 15 | Minuut | *startDate*T*startTime*Z | {unavailable} | geen | geen | Dit schema wordt niet *eerder* gestart dan de opgegeven begin datum en-tijd, waarna toekomstige terugkeer patronen worden berekend op basis van de laatste uitvoerings tijd. |
@@ -127,20 +127,19 @@ Hier volgen enkele voor beelden van herhalingen die u kunt instellen voor de tri
 | Optreden <br>Sliding window | Elk uur wordt elke dag uitgevoerd (geen begin datum en-tijd) | 1 | Uur | geen | {unavailable} | geen | geen | Dit schema wordt onmiddellijk gestart en berekent toekomstige terugkeer patronen op basis van de tijd van de laatste uitvoering. <p>Als de frequentie ' week ' of ' maand ' is, wordt in deze planning slechts één dag per week of één dag per maand uitgevoerd. |
 | Optreden <br>Sliding window | Elk uur wordt elke dag uitgevoerd (met begin datum en-tijd) | 1 | Uur | *startDate*T*startTime*Z | {unavailable} | geen | geen | Dit schema wordt niet *eerder* gestart dan de opgegeven begin datum en-tijd, waarna toekomstige terugkeer patronen worden berekend op basis van de laatste uitvoerings tijd. <p>Als de frequentie ' week ' of ' maand ' is, wordt in deze planning slechts één dag per week of één dag per maand uitgevoerd. |
 | Optreden <br>Sliding window | Wordt elke 15 minuten na het hele uur uitgevoerd, elk uur (met de begin datum en-tijd) | 1 | Uur | *startDate*T00:15:00Z | {unavailable} | geen | geen | Dit schema start niet *eerder* dan de opgegeven begin datum en-tijd. Toekomstige herhalingen worden uitgevoerd met de ' 15 ' minuut markering, die wordt berekend op basis van de begin tijd, dus om 00:15 uur, 1:15 uur, 2:15 uur, enzovoort. |
-| Terugkeerpatroon | Wordt elke 15 minuten na het hele uur uitgevoerd, elk uur (geen begin datum en-tijd) | 1 | Dag | geen | {unavailable} | 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23 | 15 | Deze planning wordt uitgevoerd om 00:15 uur, 1:15 uur, 2:15 uur, enzovoort. Dit schema is ook gelijk aan de frequentie ' hour ' en een begin tijd met ' 15 ' minuten. |
-| Terugkeerpatroon | Wordt elke 15 minuten uitgevoerd bij de opgegeven minuut tekens (geen begin datum en-tijd). | 1 | Dag | geen | {unavailable} | 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23 | 0, 15, 30, 45 | Dit schema wordt pas gestart als de volgende opgegeven markering van 15 minuten. |
-| Terugkeerpatroon | Wordt elke dag uitgevoerd om 8:00 uur (geen begin datum en-tijd) | 1 | Dag | geen | {unavailable} | 8 | geen | Deze planning wordt elke dag om 8:00 uur uitgevoerd, op basis van de opgegeven planning. |
-| Terugkeerpatroon | Wordt elke dag om 8:00 uur uitgevoerd (met de begin datum en-tijd) | 1 | Dag | *startDate*T08:00:00Z | {unavailable} | geen | geen | In dit schema wordt elke dag 8:00 uur uitgevoerd op basis van de opgegeven begin tijd. | 
-| Terugkeerpatroon | Wordt elke dag uitgevoerd om 8:30 uur (geen begin datum en-tijd) | 1 | Dag | geen | {unavailable} | 8 | 30 | Deze planning wordt elke dag om 8:30 uur uitgevoerd, op basis van de opgegeven planning. |
-| Terugkeerpatroon | Wordt elke dag om 8:30 uur uitgevoerd (met de begin datum en-tijd) | 1 | Dag | *startDate*T08:30:00Z | {unavailable} | geen | geen | Dit schema begint op de opgegeven begin datum om 8:30 uur. |
-| Terugkeerpatroon | Wordt elke dag om 8:30 uur en 4:30 uur uitgevoerd | 1 | Dag | geen | {unavailable} | 8, 16 | 30 | |
-| Terugkeerpatroon | Wordt elke dag uitgevoerd om 8:30 uur, 8:45 uur, 4:30 uur en 4:45 PM | 1 | Dag | geen | {unavailable} | 8, 16 | 30, 45 | |
-| Terugkeerpatroon | Elke zaterdag wordt uitgevoerd om 5 uur (geen begin datum en-tijd) | 1 | Wekelijks | geen | Zaterdag | 17 | 00 | Deze planning wordt elke zaterdag om 5:00 uur uitgevoerd. |
-| Terugkeerpatroon | Elke zaterdag wordt uitgevoerd om 5 uur (met begin datum en-tijd) | 1 | Wekelijks | *startDate*T17:00:00Z | Zaterdag | geen | geen | Dit schema start niet *eerder* dan de opgegeven begin datum en-tijd, in dit geval 9 september 2017 om 5:00 uur. Toekomstige herhalingen worden elke zaterdag om 5:00 uur uitgevoerd. |
-| Terugkeerpatroon | Uitvoeren elke dinsdag, donderdag om 5 uur | 1 | Wekelijks | geen | "Dinsdag", "donderdag" | 17 | geen | Deze planning wordt elke dinsdag en donderdag om 5:00 uur uitgevoerd. |
-| Terugkeerpatroon | Elk uur uitvoeren tijdens werk uren | 1 | Wekelijks | geen | Selecteer alle dagen behalve zaterdag en zondag. | Selecteer de uren van de dag die u wilt. | Selecteer een wille keurig aantal minuten van het gewenste uur. | Als uw werk uren bijvoorbeeld 8:00 AM tot 5:00 uur zijn, selecteert u "8, 9, 10, 11, 12, 13, 14, 15, 16, 17" als uren van de dag. <p>Als uw werk uren 8:30 uur tot 5:30 uur zijn, selecteert u de vorige uren van de dag plus "30" als minuten van het uur. |
-| Terugkeerpatroon | Eenmaal per dag uitvoeren in weekends | 1 | Wekelijks | geen | ' Zaterdag ', ' zondag ' | Selecteer de uren van de dag die u wilt. | Selecteer eventueel een wille keurig aantal minuten van het uur. | Deze planning wordt elke zaterdag en zondag op het opgegeven schema uitgevoerd. |
-| Terugkeerpatroon | Elke 15 minuten twee wekelijks alleen op elke maandag uitvoeren | 2 | Wekelijks | geen | Bedraagt | 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23 | 0, 15, 30, 45 | Deze planning wordt elke maandag om de 15 minuten uitgevoerd. |
+| Terugkeerpatroon | Wordt elke 15 minuten na het hele uur uitgevoerd, elk uur (geen begin datum en-tijd) | 1 | Day | geen | {unavailable} | 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23 | 15 | Deze planning wordt uitgevoerd om 00:15 uur, 1:15 uur, 2:15 uur, enzovoort. Dit schema is ook gelijk aan de frequentie ' hour ' en een begin tijd met ' 15 ' minuten. |
+| Terugkeerpatroon | Wordt elke 15 minuten uitgevoerd bij de opgegeven minuut tekens (geen begin datum en-tijd). | 1 | Day | geen | {unavailable} | 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23 | 0, 15, 30, 45 | Dit schema wordt pas gestart als de volgende opgegeven markering van 15 minuten. |
+| Terugkeerpatroon | Voer dagelijks uit om 8 uur *plus* de minuut na het opslaan van de logische app | 1 | Day | geen | {unavailable} | 8 | geen | Zonder een begin datum en-tijd wordt deze planning uitgevoerd op basis van de tijd dat u de logische app opslaat (PUT-bewerking). |
+| Terugkeerpatroon | Dagelijks uitgevoerd om 8:00 uur (met de begin datum en-tijd) | 1 | Day | *startDate*T08:00:00Z | {unavailable} | geen | geen | Dit schema start niet *eerder* dan de opgegeven begin datum en-tijd. Toekomstige instanties worden dagelijks om 8:00 uur uitgevoerd. | 
+| Terugkeerpatroon | Dagelijks uitgevoerd om 8:30 uur (geen begin datum en-tijd) | 1 | Day | geen | {unavailable} | 8 | 30 | Deze planning wordt elke dag om 8:30 uur uitgevoerd. |
+| Terugkeerpatroon | Voer dagelijks uit om 8:30 uur en 4:30 uur | 1 | Day | geen | {unavailable} | 8, 16 | 30 | |
+| Terugkeerpatroon | Voer dagelijks uit om 8:30 uur, 8:45 uur, 4:30 uur en 4:45 uur | 1 | Day | geen | {unavailable} | 8, 16 | 30, 45 | |
+| Terugkeerpatroon | Elke zaterdag wordt uitgevoerd om 5 uur (geen begin datum en-tijd) | 1 | Week | geen | Zaterdag | 17 | 00 | Deze planning wordt elke zaterdag om 5:00 uur uitgevoerd. |
+| Terugkeerpatroon | Elke zaterdag wordt uitgevoerd om 5 uur (met begin datum en-tijd) | 1 | Week | *startDate*T17:00:00Z | Zaterdag | geen | geen | Dit schema start niet *eerder* dan de opgegeven begin datum en-tijd, in dit geval 9 september 2017 om 5:00 uur. Toekomstige herhalingen worden elke zaterdag om 5:00 uur uitgevoerd. |
+| Terugkeerpatroon | Elke dinsdag, donderdag om 5 uur en de minuut na het opslaan *van de logische* app wordt uitgevoerd| 1 | Week | geen | "Dinsdag", "donderdag" | 17 | geen | |
+| Terugkeerpatroon | Elk uur uitvoeren tijdens werk uren | 1 | Week | geen | Selecteer alle dagen behalve zaterdag en zondag. | Selecteer de uren van de dag die u wilt. | Selecteer een wille keurig aantal minuten van het gewenste uur. | Als uw werk uren bijvoorbeeld 8:00 AM tot 5:00 uur zijn, selecteert u "8, 9, 10, 11, 12, 13, 14, 15, 16, 17" als uren van de dag. <p>Als uw werk uren 8:30 uur tot 5:30 uur zijn, selecteert u de vorige uren van de dag plus "30" als minuten van het uur. |
+| Terugkeerpatroon | Eenmaal per dag uitvoeren in weekends | 1 | Week | geen | ' Zaterdag ', ' zondag ' | Selecteer de uren van de dag die u wilt. | Selecteer eventueel een wille keurig aantal minuten van het uur. | Deze planning wordt elke zaterdag en zondag op het opgegeven schema uitgevoerd. |
+| Terugkeerpatroon | Elke 15 minuten twee wekelijks alleen op elke maandag uitvoeren | 2 | Week | geen | Bedraagt | 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23 | 0, 15, 30, 45 | Deze planning wordt elke maandag om de 15 minuten uitgevoerd. |
 | Terugkeerpatroon | Elke maand uitvoeren | 1 | Maand | *startDate*T*startTime*Z | {unavailable} | {unavailable} | {unavailable} | Dit schema start niet *eerder* dan de opgegeven begin datum en-tijd en berekent toekomstige terugkeer patronen op de begin datum en-tijd. Als u geen start datum en-tijd opgeeft, gebruikt dit schema de aanmaak datum en-tijd. |
 | Terugkeerpatroon | Elk uur uitvoeren voor één dag per maand | 1 | Maand | {Zie opmerking} | {unavailable} | 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23 | {Zie opmerking} | Als u geen start datum en-tijd opgeeft, gebruikt dit schema de aanmaak datum en-tijd. Als u de minuten voor de terugkeer planning wilt beheren, geeft u het aantal minuten van het uur, een begin tijd op of gebruikt u de aanmaak tijd. Als de begin tijd of aanmaak tijd 8:25 uur is, wordt deze planning bijvoorbeeld uitgevoerd om 8:25 uur, 9:25 uur, 10:25 uur, enzovoort. |
 |||||||||

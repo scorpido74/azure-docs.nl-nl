@@ -14,12 +14,12 @@ ms.workload: big-compute
 ms.date: 08/29/2019
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: bd630fec16ddfb269ead5f1f62af882f52501a86
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: 364861e57f37192a3ae454e27fedf732ee8d513e
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70390486"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350181"
 ---
 # <a name="develop-large-scale-parallel-compute-solutions-with-batch"></a>Grootschalige parallelle rekenoplossingen ontwikkelen met Batch
 
@@ -149,9 +149,9 @@ Wanneer u een pool maakt, moet u afhankelijk van het besturingssysteem van de ba
 
 #### <a name="custom-images-for-virtual-machine-pools"></a>Aangepaste installatiekopieën voor VM-pools
 
-Als u een aangepaste installatiekopie wilt maken, moet u de kopie voorbereiden door deze te generaliseren. Zie [How to create an image of a virtual machine or VHD ](../virtual-machines/linux/capture-image.md) (Een installatiekopie van een virtuele machine of VHD maken) voor meer informatie over het maken van aangepaste Linux-installatiekopieën van virtuele Azure-machines. Zie [Create a managed image of a generalized VM in Azure](../virtual-machines/windows/capture-image-resource.md) (Een beheerde VM-installatiekopie maken van een gegeneraliseerde VM in Azure) voor meer informatie over het maken van aangepaste Windows-installatiekopieën op basis van Azure VM's. 
+Zie [de galerie met gedeelde afbeeldingen gebruiken om een aangepaste groep te maken](batch-sig-images.md)voor meer informatie over het maken van een groep met aangepaste installatie kopieën.
 
-Zie [Use a custom image to create a pool of virtual machines](batch-custom-images.md) (Een aangepaste installatiekopie gebruiken om een pool van virtuele machines te maken) voor gedetailleerde vereisten en stappen.
+U kunt ook een aangepaste pool met virtuele machines maken met behulp van een [beheerde installatie kopie](batch-custom-images.md) bron. Zie [How to create an image of a virtual machine or VHD ](../virtual-machines/linux/capture-image.md) (Een installatiekopie van een virtuele machine of VHD maken) voor meer informatie over het maken van aangepaste Linux-installatiekopieën van virtuele Azure-machines. Zie [Create a managed image of a generalized VM in Azure](../virtual-machines/windows/capture-image-resource.md) (Een beheerde VM-installatiekopie maken van een gegeneraliseerde VM in Azure) voor meer informatie over het maken van aangepaste Windows-installatiekopieën op basis van Azure VM's.
 
 #### <a name="container-support-in-virtual-machine-pools"></a>Ondersteuning voor containers in virtuele machine-pools
 
@@ -355,7 +355,7 @@ U kunt aangepaste omgevingsvariabelen instellen op het niveau van de taak of de 
 
 Uw client toepassing of service kan de omgevings variabelen van een taak, zowel door service gedefinieerde als aangepaste, ophalen met behulp van de bewerking [informatie over een taak ophalen][rest_get_task_info] (batch rest) of door de eigenschap [CloudTask. EnvironmentSettings][net_cloudtask_env] te openen ( Batch .NET). Processen die op een rekenknooppunt worden uitgevoerd, kunnen ook toegang krijgen tot deze en andere omgevingsvariabelen in het knooppunt, bijvoorbeeld met behulp van de vertrouwde syntaxis van `%VARIABLE_NAME%` (Windows) of `$VARIABLE_NAME` (Linux).
 
-U kunt een volledige lijst met alle door de service gedefinieerde omgevings variabelen vinden in de [omgevings variabelen van het reken knooppunt][msdn_env_vars].
+U kunt een volledige lijst met alle door de service gedefinieerde omgevings variabelen vinden in de omgevings variabelen van het [reken knooppunt][msdn_env_vars].
 
 ## <a name="files-and-directories"></a>Bestanden en mappen
 
@@ -522,7 +522,7 @@ In situaties waarin een aantal taken mislukken, kan uw Batch-clienttoepassing of
 * **Het knoop punt opnieuw opstarten** ([rest][rest_reboot] | [.net][net_reboot])
 
     Soms kunnen latente problemen zoals vastgelopen of gecrashte processen worden opgelost door het knooppunt opnieuw op te starten. Als uw pool een begin taak gebruikt of als uw taak een taak voorbereidings taak gebruikt, worden deze uitgevoerd wanneer het knoop punt opnieuw wordt opgestart.
-* **De installatie kopie van het knoop punt** terugzetten ([rest][rest_reimage] | [.net][net_reimage])
+* **Installatie kopie van het knoop punt** terugzetten ([rest][rest_reimage] | [.net][net_reimage])
 
     Hiermee wordt het besturingssysteem opnieuw geïnstalleerd in het knooppunt. Net als bij het opnieuw opstarten van een knooppunt worden begintaken en jobvoorbereidingstaken opnieuw uitgevoerd nadat de installatiekopie van het knooppunt is teruggezet.
 * **Het knoop punt uit de pool verwijderen** ([rest][rest_remove] | [.net][net_remove])
@@ -530,7 +530,7 @@ In situaties waarin een aantal taken mislukken, kan uw Batch-clienttoepassing of
     Soms is het nodig om het knooppunt volledig uit de pool te verwijderen.
 * **Taak planning op het knoop punt uitschakelen** ([rest][rest_offline] | [.net][net_offline])
 
-    Hierdoor wordt het knooppunt effectief offline geplaatst, zodat er geen taken meer aan worden toegewezen, maar het knooppunt wel actief en in de pool blijft. Zo kunt u verder onderzoek verrichten naar de oorzaak van de fouten zonder verlies van gegevens van de mislukte taak en zonder dat het knooppunt extra taakfouten veroorzaakt. U kunt bijvoorbeeld de taakplanning in het knooppunt uitschakelen en u vervolgens [extern aanmelden](#connecting-to-compute-nodes) om de gebeurtenislogboeken van het knooppunt te onderzoeken of een andere probleemoplossing uitvoeren. Nadat u klaar bent met het onderzoek, kunt u het knoop punt weer online plaatsen door de taak planning in te scha kelen ([rest][rest_online] | [.net][net_online]) of door een van de andere acties uit te voeren die eerder zijn besproken.
+    Hierdoor wordt het knooppunt effectief offline geplaatst, zodat er geen taken meer aan worden toegewezen, maar het knooppunt wel actief en in de pool blijft. Zo kunt u verder onderzoek verrichten naar de oorzaak van de fouten zonder verlies van gegevens van de mislukte taak en zonder dat het knooppunt extra taakfouten veroorzaakt. U kunt bijvoorbeeld de taakplanning in het knooppunt uitschakelen en u vervolgens [extern aanmelden](#connecting-to-compute-nodes) om de gebeurtenislogboeken van het knooppunt te onderzoeken of een andere probleemoplossing uitvoeren. Nadat u klaar bent met het onderzoek, kunt u het knoop punt weer online plaatsen door de taak planning in te scha kelen ([REST][rest_online] | [.net][net_online]) of door een van de andere acties uit te voeren die eerder zijn besproken.
 
 > [!IMPORTANT]
 > Met elk van de acties die in deze sectie zijn besproken (opnieuw opstarten, installatiekopie terugzetten, verwijderen en taakplanning uitschakelen), kunt u opgeven hoe taken die momenteel in het knooppunt worden uitgevoerd, worden afgehandeld wanneer u de actie uitvoert. Als u bijvoorbeeld het plannen van taken op een knoop punt met behulp van de batch .NET-client bibliotheek uitschakelt, kunt u een [DisableComputeNodeSchedulingOption][net_offline_option] Enum-waarde opgeven om op te geven of actieve taken moeten worden **beëindigd** en opnieuw **in de wachtrij** moet worden geplaatst planning op andere knoop punten of toestaan dat taken worden voltooid voordat de actie wordt uitgevoerd (**TaskCompletion**).

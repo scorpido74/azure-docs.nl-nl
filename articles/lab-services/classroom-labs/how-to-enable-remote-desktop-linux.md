@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/20/2019
 ms.author: spelluru
-ms.openlocfilehash: 86ad892f514513840ff33e46921607221896db84
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.openlocfilehash: c67ca111bf87c9dbfa69c93149d29dbd32767fbd
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71315734"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350765"
 ---
 # <a name="enable-remote-desktop-for-linux-virtual-machines-in-a-lab-in-azure-lab-services"></a>Extern bureau blad voor virtuele Linux-machines in een Lab inschakelen in Azure Lab Services
 In dit artikel leest u hoe u de volgende taken kunt uitvoeren:
@@ -38,7 +38,7 @@ Selecteer in het vak **verbinding met extern bureaublad bericht inschakelen** de
 > [!IMPORTANT] 
 > Het inschakelen van **verbinding met extern bureau blad** opent alleen de **RDP** -poort op Linux-machines. Als RDP al is geïnstalleerd en geconfigureerd op de installatie kopie van de virtuele machine (bijvoorbeeld: Ubuntu Data Science Virtual Machine-installatie kopie), kunnen u/studenten verbinding maken met Vm's via RDP zonder extra stappen te volgen.
 > 
-> Als RDP niet is geïnstalleerd en geconfigureerd op de installatie kopie van de virtuele machine, moet u voor het eerst verbinding maken met de Linux-computer en vervolgens RDP-en GUI-pakketten installeren, zodat u/studenten later met RDP verbinding kunnen maken met de Linux-machine. Vervolgens publiceert u de installatie kopie zodat studenten RDP kunnen hebben in de student Linux-Vm's.
+> Als RDP niet is geïnstalleerd en geconfigureerd op de installatie kopie van de virtuele machine, moet u voor het eerst verbinding maken met de Linux-computer en vervolgens RDP-en GUI-pakketten installeren, zodat u/studenten later met RDP verbinding kunnen maken met de Linux-machine. Zie [extern bureaublad installeren en configureren om verbinding te maken met een virtuele Linux-machine in azure](../../virtual-machines/linux/use-remote-desktop.md)voor meer informatie. Vervolgens publiceert u de installatie kopie zodat studenten RDP kunnen hebben in de student Linux-Vm's. 
 
 ## <a name="supported-operating-systems"></a>Ondersteunde besturingssystemen
 Op dit moment wordt de verbinding met extern bureau blad ondersteund voor de volgende besturings systemen:

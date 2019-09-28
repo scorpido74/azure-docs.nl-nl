@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 12/17/2018
 ms.author: lahugh
-ms.openlocfilehash: c3c54b003017f7512cd40c7798fc351e4e4a3f69
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: c8fa96e41b98cfa227fd25dc4b3bd66a171ff3c8
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70094922"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350132"
 ---
 # <a name="use-rdma-or-gpu-instances-in-batch-pools"></a>RDMA-of GPU-instanties gebruiken in batch-Pools
 
@@ -86,7 +86,7 @@ Als u een speciale VM-grootte voor de batch-pool wilt configureren, hebt u versc
 
     * [Ubuntu-Server (met GPU-en RDMA-Stuur Programma's) voor Azure Batch container Pools](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-azure-batch.ubuntu-server-container-rdma?tab=Overview)
 
-* Maak een [aangepaste Windows-of Linux-VM-installatie kopie](batch-custom-images.md) waarop u stuur Programma's, software of andere instellingen hebt geïnstalleerd die vereist zijn voor de VM-grootte. 
+* Maak een [aangepaste Windows-of Linux-VM-installatie kopie](batch-sig-images.md) waarop u stuur Programma's, software of andere instellingen hebt geïnstalleerd die vereist zijn voor de VM-grootte. 
 
 * Maak een batch- [toepassings pakket](batch-application-packages.md) op basis van een zip-stuur programma of toepassings installatie programma en configureer batch om het pakket te implementeren op pool knooppunten en installeer eenmaal wanneer elk knoop punt is gemaakt. Als het toepassings pakket bijvoorbeeld een installatie programma is, maakt u een opdracht regel voor een [begin taak](batch-api-basics.md#start-task) om de app op de achtergrond te installeren op alle groeps knooppunten. Overweeg het gebruik van een toepassings pakket en een taak voor het starten van een pool als uw werk belasting afhankelijk is van een bepaalde versie van het stuur programma.
 
@@ -123,9 +123,9 @@ Als u CUDA-toepassingen wilt uitvoeren op een groep Linux NC-knoop punten, moet 
 1. Implementeer een Azure NC-Series-VM met Ubuntu 16,04 LTS. Maak bijvoorbeeld de virtuele machine in de regio VS Zuid-Centraal. 
 2. Voeg de [uitbrei ding](../virtual-machines/extensions/hpccompute-gpu-linux.md
 ) NVIDIA GPU-Stuur Programma's toe aan de virtuele machine met behulp van de Azure Portal, een client computer die verbinding maakt met het Azure-abonnement of Azure Cloud shell. U kunt ook de stappen volgen om verbinding te maken met de virtuele machine en [CUDA-Stuur Programma's](../virtual-machines/linux/n-series-driver-setup.md) hand matig te installeren.
-3. Volg de stappen voor het maken van een [moment opname en aangepaste Linux-VM-installatie kopie](batch-custom-images.md) voor batch.
+3. Volg de stappen voor het maken van een afbeelding voor de [Galerie met gedeelde afbeeldingen](batch-sig-images.md) voor batch.
 4. Maak een batch-account in een regio die NC-Vm's ondersteunt.
-5. Maak met behulp van de batch-Api's of de Azure Portal een pool [met behulp van de aangepaste installatie kopie](batch-custom-images.md) en met het gewenste aantal knoop punten en schaal. De volgende tabel bevat voor beelden van groeps instellingen voor de installatie kopie:
+5. Maak met behulp van de batch-Api's of de Azure Portal een pool [met behulp van de aangepaste installatie kopie](batch-sig-images.md) en met het gewenste aantal knoop punten en schaal. De volgende tabel bevat voor beelden van groeps instellingen voor de installatie kopie:
 
 | Instelling | Value |
 | ---- | ---- |
@@ -143,8 +143,8 @@ Als u Windows MPI-toepassingen wilt uitvoeren op een groep Azure H16r VM-knoop p
 ) een Azure PowerShell opdracht uit te voeren vanaf een client computer die verbinding maakt met uw Azure-abonnement of Azure Cloud shell gebruikt. 
 1. Een Extern bureaublad verbinding maken met de virtuele machine.
 1. Down load het [installatie pakket](https://www.microsoft.com/download/details.aspx?id=57467) (MSMpiSetup. exe) voor de nieuwste versie van micro soft MPI en installeer micro soft MPI.
-1. Volg de stappen voor het maken van een [moment opname en aangepaste Windows VM-installatie kopie](batch-custom-images.md) voor batch.
-1. Maak met behulp van de batch-Api's of de Azure Portal een pool [met behulp van de aangepaste installatie kopie](batch-custom-images.md) en met het gewenste aantal knoop punten en schaal. De volgende tabel bevat voor beelden van groeps instellingen voor de installatie kopie:
+1. Volg de stappen voor het maken van een afbeelding voor de [Galerie met gedeelde afbeeldingen](batch-sig-images.md) voor batch.
+1. Maak met behulp van de batch-Api's of de Azure Portal een pool [met behulp van de galerie met gedeelde afbeeldingen](batch-sig-images.md) en met het gewenste aantal knoop punten en schaal. De volgende tabel bevat voor beelden van groeps instellingen voor de installatie kopie:
 
 | Instelling | Value |
 | ---- | ---- |

@@ -1,26 +1,26 @@
 ---
-title: Veelgestelde vragen over Azure Marketplace
-description: Antwoorden op algemene vragen over de Microsoft Azure Marketplace
+title: Veelgestelde vragen over micro soft Commercial Marketplace
+description: Antwoorden op veelgestelde vragen over Azure Marketplace en Microsoft AppSource
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: qianw211
 ms.service: marketplace
 ms.topic: article
-ms.date: 9/24/2019
+ms.date: 9/26/2019
 ms.author: ellacroi
-ms.openlocfilehash: 6b9cc80dfb397d5bf330d0be947f468e9b802139
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: abc3b3a6be5f8c61c07fb29a6f168c8738733099
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71259946"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350381"
 ---
-# <a name="marketplace-faqs"></a>Veelgestelde vragen over Marketplace
+# <a name="microsoft-commercial-marketplace-faqs"></a>Veelgestelde vragen over micro soft Commercial Marketplace
 
-Antwoorden op veelgestelde vragen over de Microsoft Azure Marketplace.
+Antwoorden op veelgestelde vragen over de Azure Marketplace en de Microsoft AppSource.
 
 ## <a name="faq-for-customers"></a>Veelgestelde vragen voor klanten
 
-### <a name="what-you-need-to-know-about-azure-marketplace"></a>Wat u moet weten over Azure Marketplace
+### <a name="what-you-need-to-know-about-azure-marketplace-and-microsoft-appsource"></a>Wat u moet weten over Azure Marketplace en Microsoft AppSource
 
 **Wat is Azure Marketplace?**
 
@@ -253,9 +253,26 @@ Licenties die zijn toegevoegd aan een bestaand abonnement, worden Pro-beoordeeld
 
 Het terugbetalings beleid dat is gevonden in deze veelgestelde vragen, is onderhevig aan licenties die worden geannuleerd.  Alle licenties die worden geannuleerd, worden direct verwijderd uit uw account en kunnen niet meer worden gebruikt.
 
+**Worden er restituties ondersteund voor aanbiedingen op basis van verbruik?**
+
+Kosten op basis van verbruik: of het per uur Vm's of aangepaste meters is, kan niet via annulering worden terugbetaald. Zodra het verbruik heeft plaatsgevonden, worden de kosten verwerkt door het commerce-platform van micro soft en eventuele geschillen met de kwaliteit van de service waarbij een restitutie wordt aangevraagd, worden buiten micro soft-systemen tussen de uitgever en de klant rechtstreeks afgehandeld. Aanbiedingen die ondersteuning bieden voor een vast tarief plus factuur met data limiet, volgen het standaard beleid voor restitutie voor de kosten met een vast tarief.
+
+**Is het mogelijk om de middel lange termijn van plannen te wijzigen?**
+
+Nee, het is niet mogelijk om tussen maandelijks en jaarlijks te scha kelen.
+
+**Kan een klant twee plannen van dezelfde aanbieding aanschaffen?**
+
+Ja, het is mogelijk dat een klant twee plannen van dezelfde aanbieding tegelijk bezit.
+
+**Is terugbetaling en beleid voor het wijzigen van de planning anders per winkel?**
+
+Nee, het bedrijfs beleid is consistent op Azure Marketplace en Microsoft AppSource. Als een partner in het programma Cloud Solution levert, kan de partner een ander beleid voor hun klanten afdwingen.
+
+
 ## <a name="faq-for-publishers"></a>Veelgestelde vragen voor uitgevers
 
-### <a name="what-you-need-to-know-about-azure-marketplace"></a>Wat u moet weten over Azure Marketplace
+### <a name="what-you-need-to-know-about-azure-marketplace-and-microsoft-appsource"></a>Wat u moet weten over Azure Marketplace en Microsoft AppSource
 
 **Wat is Azure Marketplace?**
 

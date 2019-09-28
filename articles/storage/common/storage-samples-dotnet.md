@@ -7,12 +7,12 @@ ms.date: 09/06/2019
 ms.service: storage
 ms.subservice: common
 ms.topic: sample
-ms.openlocfilehash: 57249bd2fa4d3c8aefe19a85ec9a2b6b584b00d2
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.openlocfilehash: 9d6e441adeb7025e09b8d73764d2defab439dd90
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70743960"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350901"
 ---
 # <a name="azure-storage-samples-using-net"></a>Voor beelden Azure Storage met .NET
 
@@ -98,5 +98,6 @@ Bekijk de volgende hand leidingen als u op zoek bent naar instructies voor het i
 Voor informatie over voor beelden voor andere talen:
 
 * Java: [Azure Storage-voorbeelden met behulp van Java](storage-samples-java.md)
+* Java script/node. js: [Azure Storage voor beelden met behulp van Java script](storage-samples-javascript.md)
 * Python: [Azure Storage voor beelden met behulp van python](storage-samples-python.md)
 * Alle andere talen: [Azure Storage-voor beelden](../storage-samples.md)

@@ -7,16 +7,16 @@ ms.date: 09/06/2019
 ms.service: storage
 ms.subservice: common
 ms.topic: sample
-ms.openlocfilehash: 5d823059842bf539f00ad372127fc8b636c74b65
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.openlocfilehash: 3fc18646270bbec3836845bcf317afc2c1d3a6df
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70746039"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71351156"
 ---
 # <a name="azure-storage-samples-using-python"></a>Azure Storage voor beelden met behulp van python
 
-De volgende tabel bevat een overzicht van onze voor beelden van opslag plaatsen en de scenario's die in elk voor beeld worden behandeld. Klik op de koppelingen om de bijbehorende voorbeeld code in GitHub weer te geven.
+In de volgende tabellen vindt u een overzicht van onze voor beelden van opslag plaatsen en de scenario's die in elk voor beeld worden behandeld. Klik op de koppelingen om de bijbehorende voorbeeld code in GitHub weer te geven.
 
 ## <a name="blob-samples"></a>BLOB-voor beelden
 
@@ -99,4 +99,5 @@ Voor informatie over voor beelden voor andere talen:
 
 * .NET: [Azure Storage-voorbeelden met behulp van .NET](storage-samples-dotnet.md)
 * Java: [Azure Storage-voorbeelden met behulp van Java](storage-samples-java.md)
+* Java script/node. js: [Azure Storage voor beelden met behulp van Java script](storage-samples-javascript.md)
 * Alle andere talen: [Azure Storage-voor beelden](storage-samples.md)

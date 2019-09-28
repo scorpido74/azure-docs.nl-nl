@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/26/2019
+ms.date: 09/27/2019
 ms.author: mlottner
-ms.openlocfilehash: e742848df56e4e2be1b9edf42586e642f0c938cb
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: dc9dcbfd00b5205fa5c66e334b30c76d549d8a42
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70933791"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71348515"
 ---
 # <a name="pricing-and-associated-costs"></a>Prijs en bijbehorende kosten
 
@@ -34,20 +34,17 @@ Het prijs model Azure Security Center voor IoT bestaat uit twee delen en wordt g
 
 - Kosten per bericht: Verbeterde beveiligings mogelijkheden op basis van beveiligings berichten van IoT Edge of blad apparaten.
 
-  >[!Note]
-  > Beveiligings berichten ontstaan ook het quotum verbruik op IoT Hub.
 
 Zie [Security Center prijzen](https://azure.microsoft.com/pricing/details/security-center/)voor meer informatie.
 
 ## <a name="associated-costs"></a>Gekoppelde kosten
 
-Azure Security Center voor IoT heeft twee soorten gekoppelde kosten, die geen deel uitmaken van de prijzen voor direct:
+Er zijn kosten verbonden aan Azure Security Center voor IoT, die geen deel uitmaken van de rechtstreekse prijzen:
 
-- Quota verbruik IoT Hub
 
 - Opslag kosten Log Analytics
 
-U kunt de gekoppelde kosten verlagen door de instellingen van bepaalde functies te wijzigen.
+U kunt de gekoppelde kosten verlagen door te kiezen voor bepaalde oplossings functies. Afmelden door uw instellingen te wijzigen.
 
 Uw instellingen wijzigen:
 
@@ -61,8 +58,6 @@ De volgende tabel bevat een samen vatting van de bijbehorende kosten en implicat
 
 |     | Gebruik | Opmerking |
 | --- | --- | --- |
-| **Quota verbruik IoT Hub** |  |
-| Taak voor het exporteren van een [apparaat](https://docs.microsoft.com/azure/iot-hub/iot-hub-bulk-identity-mgmt#export-devices) (dubbele export) | Eenmaal per dag | _Verzameling van dubbele meta gegevens_ uitschakelen |
 | **Opslag Log Analytics** |  |
 | Aanbeveling en waarschuwingen van het apparaat| Beveiligings aanbeveling en waarschuwingen die worden gegenereerd door de service | Niet optioneel |
 | Onbewerkte beveiligings gegevens| Onbewerkte beveiligings gegevens van IoT-apparaten, verzameld door beveiligings agenten | _Beveiligings gebeurtenissen voor het opslaan van onbewerkte apparaten_ uitschakelen |

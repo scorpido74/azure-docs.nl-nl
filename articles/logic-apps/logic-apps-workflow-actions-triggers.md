@@ -9,12 +9,12 @@ ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.topic: reference
 ms.date: 06/19/2019
-ms.openlocfilehash: df1b03d5fbb5b8ef8cda9407e4a595bc2de8ce54
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 3311ca3665083ec8c71f48b28e7195aa8c14f13d
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70918961"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350666"
 ---
 # <a name="reference-for-trigger-and-action-types-in-workflow-definition-language-for-azure-logic-apps"></a>Naslag informatie voor trigger-en actie typen in de werk stroom definitie taal voor Azure Logic Apps
 
@@ -156,7 +156,7 @@ Deze trigger *controleert of* doorstuurt een eind punt met behulp van door [micr
  
 | Element | type | Description |
 |---------|------|-------------|
-| Koppen | JSON-object | De kopteksten van het antwoord |
+| kopteksten | JSON-object | De kopteksten van het antwoord |
 | body | JSON-object | De hoofd tekst van de reactie |
 | Status code | Integer | De status code van het antwoord |
 |||| 
@@ -329,7 +329,7 @@ Met deze trigger wordt het opgegeven eind punt gecontroleerd of pollt dit op bas
 
 | Element | type | Description |
 |---------|------|-------------| 
-| Koppen | JSON-object | De kopteksten van het antwoord | 
+| kopteksten | JSON-object | De kopteksten van het antwoord | 
 | body | JSON-object | De hoofd tekst van de reactie | 
 | Status code | Integer | De status code van het antwoord | 
 |||| 
@@ -424,7 +424,7 @@ Sommige waarden, zoals <*methode-type*>, zijn beschikbaar voor zowel de `"subscr
 
 | Element | type | Description |
 |---------|------|-------------| 
-| Koppen | JSON-object | De kopteksten van het antwoord | 
+| kopteksten | JSON-object | De kopteksten van het antwoord | 
 | body | JSON-object | De hoofd tekst van de reactie | 
 | Status code | Integer | De status code van het antwoord | 
 |||| 
@@ -656,7 +656,7 @@ Met deze trigger wordt aangegeven dat een inkomende aanvraag de HTTP POST-method
 
 <a name="trigger-conditions"></a>
 
-## <a name="trigger-conditions"></a>Activerings voorwaarden
+## <a name="trigger-conditions"></a>Triggervoorwaarden
 
 Voor elke trigger en alleen triggers kunt u een matrix met een of meer expressies toevoegen voor voor waarden die bepalen of de werk stroom moet worden uitgevoerd. Als u de `conditions` eigenschap wilt toevoegen aan een trigger in uw werk stroom, opent u de logische app in de code weergave-editor.
 
@@ -1538,7 +1538,7 @@ Met deze actie wordt een matrix met JSON-objecten gemaakt door items van een and
 |-------|------|-------------| 
 | <*array*> | Array | De matrix of expressie die de bron items levert. Zorg ervoor dat u een expressie tussen dubbele aanhalings tekens plaatst. <p>**Opmerking**: Als de bron matrix leeg is, maakt de actie een lege matrix. | 
 | <*key-name*> | String | De eigenschaps naam die is toegewezen aan het resultaat van <*expressie*> <p>Als u een nieuwe eigenschap wilt toevoegen voor alle objecten in de uitvoer matrix, geeft u een <*sleutel naam*> voor die eigenschap en een <*expressie*> voor de waarde van de eigenschap. <p>Als u een eigenschap van alle objecten in de matrix wilt verwijderen, moet u de <*sleutel naam*> voor die eigenschap weglaten. | 
-| <*expressie*> | String | De expressie die het item in de bron matrix transformeert en het resultaat toewijst aan <*sleutel naam*> | 
+| <*expressie*> | Tekenreeks | De expressie die het item in de bron matrix transformeert en het resultaat toewijst aan <*sleutel naam*> | 
 |||| 
 
 Met de actie **selecteren** wordt een matrix als uitvoer gemaakt, dus elke actie die deze uitvoer wil gebruiken, moet een matrix accepteren of u moet de matrix Converteren naar het type dat door de actie van de gebruiker wordt geaccepteerd. Als u de uitvoer matrix bijvoorbeeld wilt omzetten in een teken reeks, kunt u die matrix door geven aan de actie **opstellen** en vervolgens naar de uitvoer van de actie **opstellen** in uw andere acties verwijzen.
@@ -2402,12 +2402,38 @@ U kunt het standaard gedrag voor triggers en acties wijzigen met de `operationOp
 
 ### <a name="change-trigger-concurrency"></a>Gelijktijdigheid van triggers wijzigen
 
-Standaard worden logische app-exemplaren gelijktijdig uitgevoerd, of parallel op basis van de [standaard limiet](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Elke trigger instantie wordt dus gestart voordat het vorige werk stroom exemplaar wordt uitgevoerd. Deze limiet helpt bij het bepalen van het aantal aanvragen dat door de back-end-systemen wordt ontvangen. 
+Standaard worden logische app-exemplaren tegelijkertijd uitgevoerd (gelijktijdig of parallel) tot de [standaard limiet](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Elke trigger instantie wordt dus gestart voordat het vorige werk stroom exemplaar wordt uitgevoerd. Deze limiet helpt bij het bepalen van het aantal aanvragen dat door de back-end-systemen wordt ontvangen. 
 
-Als u de standaard limiet wilt wijzigen, kunt u de code weergave-editor of Logic apps Designer gebruiken, omdat het wijzigen van de gelijktijdigheids instelling via de ontwerper `runtimeConfiguration.concurrency.runs` de eigenschap in de onderliggende trigger definitie toevoegt of bijwerkt en vice versa. Deze eigenschap bepaalt het maximum aantal werk stroom exemplaren dat parallel kan worden uitgevoerd. 
+Als u de standaard limiet wilt wijzigen, kunt u de code weergave-editor of Logic apps Designer gebruiken, omdat het wijzigen van de gelijktijdigheids instelling via de ontwerper `runtimeConfiguration.concurrency.runs` de eigenschap in de onderliggende trigger definitie toevoegt of bijwerkt en vice versa. Deze eigenschap bepaalt het maximum aantal werk stroom exemplaren dat parallel kan worden uitgevoerd. Hier volgen enkele overwegingen wanneer u gebruikmaakt van het gelijktijdigheids beheer:
 
-> [!NOTE] 
-> Als u instelt dat de trigger opeenvolgend moet worden uitgevoerd met behulp van de ontwerp functie of de code weergave-editor, stelt `operationOptions` u de `SingleInstance` eigenschap van de trigger niet in op de code weergave-editor. Anders krijgt u een validatie fout. Zie [instanties opeenvolgend activeren](#sequential-trigger)voor meer informatie.
+* Hoewel gelijktijdig gebruik is ingeschakeld, kan een langlopende logische app-instantie ertoe leiden dat nieuwe logische app-exemplaren een wacht status invoeren. Deze status voor komt dat Azure Logic Apps nieuwe instanties maakt en er gebeurt zelfs wanneer het aantal gelijktijdige uitvoeringen kleiner is dan het opgegeven maximum aantal gelijktijdige uitvoeringen.
+
+  * Als u deze status wilt onderbreken, annuleert u de eerste exemplaren die *nog worden uitgevoerd*.
+
+    1. Selecteer **overzicht**in het menu van de logische app.
+
+    1. Selecteer in de sectie **uitvoerings geschiedenis** het eerste exemplaar dat nog steeds actief is, bijvoorbeeld:
+
+       ![Eerste uitgevoerd exemplaar selecteren](./media/logic-apps-workflow-actions-triggers/waiting-runs.png)
+
+       > [!TIP]
+       > Als u alleen exemplaren wilt weer geven die nog worden uitgevoerd, opent u de lijst **alle** en selecteert u **uitvoeren**.    
+
+    1. Selecteer **uitvoering annuleren**onder **Logic app run**.
+
+       ![Het oudste uitgevoerde exemplaar zoeken](./media/logic-apps-workflow-actions-triggers/cancel-run.png)
+
+  * Als u deze mogelijkheid wilt omzeilen, voegt u een time-out toe aan elke actie die deze uitvoeringen kan bevatten. Zie de [asynchrone duur wijzigen](#asynchronous-limits)als u in de code-editor werkt. Als u de ontwerp functie gebruikt, voert u de volgende stappen uit:
+
+    1. Selecteer in de logische app, op de actie waar u een time-out wilt toevoegen, de knop met weglatings tekens ( **...** ) in de rechter bovenhoek en selecteer vervolgens **instellingen**.
+
+       ![Actie-instellingen openen](./media/logic-apps-workflow-actions-triggers/action-settings.png)
+
+    1. Geef onder **time-out**de time-outduur op in de [ISO 8601-indeling](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations).
+
+       ![Time-outperiode opgeven](./media/logic-apps-workflow-actions-triggers/timeout.png)
+
+* Als u de logische app opeenvolgend wilt uitvoeren, kunt u de gelijktijdigheid van de trigger instellen op `1` met behulp van de code weergave editor of de ontwerp functie. Stel de eigenschap `operationOptions` echter niet in op `SingleInstance` in de code weergave-editor. Anders krijgt u een validatie fout. Zie [instanties opeenvolgend activeren](#sequential-trigger)voor meer informatie.
 
 #### <a name="edit-in-code-view"></a>Bewerken in de code weergave 
 

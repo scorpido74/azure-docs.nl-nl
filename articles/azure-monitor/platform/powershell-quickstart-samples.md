@@ -1,6 +1,6 @@
 ---
-title: Voorbeelden om snel aan de slag met Azure Monitor PowerShell
-description: PowerShell gebruiken voor toegang tot Azure Monitor-functies zoals automatisch schalen, waarschuwingen, webhooks en activiteitenlogboeken te zoeken.
+title: Voor beelden van Azure Monitor Power shell-snel starten
+description: Gebruik Power shell om toegang te krijgen tot Azure Monitor functies, zoals automatisch schalen, waarschuwingen, webhooks en het zoeken naar activiteiten Logboeken.
 author: rboucher
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,205 +8,205 @@ ms.topic: conceptual
 ms.date: 2/14/2018
 ms.author: robb
 ms.subservice: ''
-ms.openlocfilehash: ada62fbfa51604a6b3188c27d5c14da40c8ac116
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 886eb8578e004eba3b6fabc1deb42db0fb7fac70
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66400207"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350242"
 ---
-# <a name="azure-monitor-powershell-quick-start-samples"></a>Voorbeelden om snel aan de slag met Azure Monitor PowerShell
-In dit artikel ziet u PowerShell-opdrachten kunt u toegang tot de functies van Azure Monitor een steekproef.
+# <a name="azure-monitor-powershell-quick-start-samples"></a>Voor beelden van Azure Monitor Power shell-snel starten
+In dit artikel wordt beschreven hoe u Power shell-opdrachten kunt gebruiken om toegang te krijgen tot Azure Monitor-functies.
 
 > [!NOTE]
-> Azure Monitor is de nieuwe naam voor wat er is met de naam 'Azure Insights' tot 25 september 2016. Echter, de naamruimten en dus de volgende opdrachten nog steeds het woord 'insights'.
+> Azure Monitor is de nieuwe naam voor wat ' Azure Insights ' werd genoemd tot Sept 25e, 2016. De naam ruimten en daarom bevatten de volgende opdrachten nog steeds het woord ' Insights '.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="set-up-powershell"></a>PowerShell instellen
-Als u niet hebt gedaan, kunt u instellen van PowerShell om uit te voeren op uw computer. Zie voor meer informatie, [installeren en configureren van PowerShell](/powershell/azure/overview).
+## <a name="set-up-powershell"></a>Power shell instellen
+Als u dat nog niet hebt gedaan, stelt u in dat Power shell op uw computer moet worden uitgevoerd. Zie [Power Shell installeren en configureren](/powershell/azure/overview)voor meer informatie.
 
-## <a name="examples-in-this-article"></a>Voorbeelden in dit artikel
-De voorbeelden in het artikel ziet u hoe u Azure Monitor-cmdlets kunt gebruiken. U kunt ook de volledige lijst met Azure Monitor PowerShell-cmdlets op bekijken [Cmdlets van Azure Monitor (inzichten)](https://docs.microsoft.com/powershell/module/az.applicationinsights).
+## <a name="examples-in-this-article"></a>Voor beelden in dit artikel
+In de voor beelden in dit artikel wordt beschreven hoe u Azure Monitor-cmdlets kunt gebruiken. U kunt ook de volledige lijst met Azure Monitor Power shell-cmdlets bekijken bij [Azure monitor-cmdlets (inzichten)](https://docs.microsoft.com/powershell/module/az.applicationinsights).
 
-## <a name="sign-in-and-use-subscriptions"></a>Meld u aan en abonnementen gebruiken
-Eerst, meld u aan bij uw Azure-abonnement.
+## <a name="sign-in-and-use-subscriptions"></a>Aanmelden en abonnementen gebruiken
+Meld u eerst aan bij uw Azure-abonnement.
 
 ```powershell
 Connect-AzAccount
 ```
 
-Hier ziet u een aanmeldingsscherm. Nadat u uw Account, TenantID, zich aanmelden en standaard abonnements-ID worden weergegeven. Alle Azure-cmdlets werken in de context van uw standaardabonnement. U hebt toegang tot de volgende opdracht gebruiken om de lijst met abonnementen weer te geven:
+Er wordt een aanmeldings scherm weer gegeven. Zodra u zich hebt aangemeld met uw account, TenantID en standaard abonnements-ID worden weer gegeven. Alle Azure-cmdlets werken in de context van uw standaard abonnement. Als u de lijst met abonnementen waartoe u toegang hebt, wilt weer geven, gebruikt u de volgende opdracht:
 
 ```powershell
 Get-AzSubscription
 ```
 
-Om te zien van de context van uw werkende (welk abonnement uw opdrachten worden uitgevoerd op), gebruikt u de volgende opdracht:
+Gebruik de volgende opdracht om de werk context te bekijken (welk abonnement uw opdrachten worden uitgevoerd):
 
 ```powershell
 Get-AzContext
 ```
-Als u wilt uw context werken naar een ander abonnement wijzigen, gebruik de volgende opdracht:
+Als u uw werk context wilt wijzigen in een ander abonnement, gebruikt u de volgende opdracht:
 
 ```powershell
 Set-AzContext -SubscriptionId <subscriptionid>
 ```
 
 
-## <a name="retrieve-activity-log-for-a-subscription"></a>Activiteitenlogboek voor een abonnement ophalen
-Gebruik de [Get-AzLog](https://docs.microsoft.com/powershell/module/az.monitor/get-azlog) cmdlet.  Hier volgen enkele algemene voorbeelden. Het activiteitenlogboek bevat de afgelopen 90 dagen van bewerkingen. Datums voordat deze resultaten gebruiken in een foutbericht weergegeven.  
+## <a name="retrieve-activity-log-for-a-subscription"></a>Activiteiten logboek ophalen voor een abonnement
+Gebruik de cmdlet [Get-AzLog](https://docs.microsoft.com/powershell/module/az.monitor/get-azlog) .  Hier volgen enkele algemene voor beelden. Het activiteiten logboek bevat de laatste 90 dagen aan bewerkingen. Het gebruik van datums vóór deze tijd resulteert in een fout bericht.  
 
-Zie wat de huidige datum en tijd zijn om te controleren wat tijden gebruiken in de onderstaande opdrachten:
+Bekijk wat de huidige datum/tijd is om te controleren welke tijden moeten worden gebruikt in de onderstaande opdrachten:
 ```powershell
 Get-Date
 ```
 
-Logboekvermeldingen ophalen uit deze tijd/datum om weer te geven:
+Logboek vermeldingen ophalen van deze tijd/datum om te presen teren:
 
 ```powershell
 Get-AzLog -StartTime 2019-03-01T10:30
 ```
 
-Logboekvermeldingen tussen een datum-/ bereik ophalen:
+Logboek vermeldingen ophalen tussen een tijd/datum bereik:
 
 ```powershell
 Get-AzLog -StartTime 2019-01-01T10:30 -EndTime 2015-01-01T11:30
 ```
 
-Logboekvermeldingen ophalen uit een specifieke resourcegroep:
+Logboek vermeldingen ophalen van een specifieke resource groep:
 
 ```powershell
 Get-AzLog -ResourceGroup 'myrg1'
 ```
 
-Logboekvermeldingen ophalen uit een specifieke resourceprovider tussen een datum-/ bereik:
+Logboek vermeldingen ophalen van een specifieke resource provider tussen een tijd/datum bereik:
 
 ```powershell
 Get-AzLog -ResourceProvider 'Microsoft.Web' -StartTime 2015-01-01T10:30 -EndTime 2015-01-01T11:30
 ```
 
-Haal alle logboekvermeldingen met een specifieke aanroeper:
+Alle logboek vermeldingen ophalen met een specifieke aanroeper:
 
 ```powershell
 Get-AzLog -Caller 'myname@company.com'
 ```
 
-De volgende opdracht haalt de laatste 1000 gebeurtenissen uit het activiteitenlogboek:
+Met de volgende opdracht worden de laatste 1000 gebeurtenissen uit het activiteiten logboek opgehaald:
 
 ```powershell
 Get-AzLog -MaxRecord 10
 ```
 
-`Get-AzLog` biedt ondersteuning voor veel andere parameters. Zie de `Get-AzLog` verwijzing voor meer informatie.
+`Get-AzLog` ondersteunt veel andere para meters. Zie de referentie `Get-AzLog` voor meer informatie.
 
 > [!NOTE]
-> `Get-AzLog` biedt alleen 15 dagen. Met behulp van de **- MaxRecords** parameter kunt u een query uitvoeren op de laatste N-gebeurtenissen langer dan 15 dagen. Voor toegang tot gebeurtenissen die ouder zijn dan 15 dagen, moet u de REST-API of SDK (voorbeeld van C# met behulp van de SDK) gebruiken. Als u geen **StartTime**, dan is de standaardwaarde **EndTime** min één uur. Als u geen **EndTime**, en vervolgens de standaardwaarde is de huidige tijd. Alle tijden zijn in UTC.
+> `Get-AzLog` biedt alleen 15 dagen aan geschiedenis. Met de para meter **-MaxRecords** kunt u een query uitvoeren op de laatste N gebeurtenissen, na 15 dagen. Als u toegang wilt hebben tot gebeurtenissen die ouder zijn dan 15 dagen,C# gebruikt u de rest API of SDK (steek proef met de SDK). Als u **StartTime**niet opneemt, wordt de standaard waarde **EndTime** min één uur. Als u geen **EndTime**opgeeft, is de standaard waarde huidige tijd. Alle tijden zijn in UTC.
 > 
 > 
 
 ## <a name="retrieve-alerts-history"></a>Geschiedenis van waarschuwingen ophalen
-Als u wilt weergeven van alle waarschuwingsgebeurtenissen, kunt u een query de logboeken van de Azure Resource Manager met behulp van de volgende voorbeelden.
+Als u alle waarschuwings gebeurtenissen wilt weer geven, kunt u een query uitvoeren op de Azure Resource Manager logboeken met behulp van de volgende voor beelden.
 
 ```powershell
 Get-AzLog -Caller "Microsoft.Insights/alertRules" -DetailedOutput -StartTime 2015-03-01
 ```
 
-Als u de geschiedenis voor een specifieke waarschuwingsregel, kunt u de `Get-AzAlertHistory` cmdlet, doorgeven in de resource-ID van de waarschuwingsregel.
+Als u de geschiedenis voor een specifieke waarschuwings regel wilt weer geven, kunt u de cmdlet `Get-AzAlertHistory` gebruiken om de resource-ID van de waarschuwings regel door te geven.
 
 ```powershell
 Get-AzAlertHistory -ResourceId /subscriptions/s1/resourceGroups/rg1/providers/microsoft.insights/alertrules/myalert -StartTime 2016-03-1 -Status Activated
 ```
 
-De `Get-AzAlertHistory` cmdlet biedt ondersteuning voor verschillende parameters. Meer informatie, Zie [Get-AlertHistory](https://msdn.microsoft.com/library/mt282453.aspx).
+De cmdlet `Get-AzAlertHistory` ondersteunt verschillende para meters. Zie [Get-AlertHistory](https://msdn.microsoft.com/library/mt282453.aspx)voor meer informatie.
 
-## <a name="retrieve-information-on-alert-rules"></a>Ophalen van informatie over de regels voor waarschuwingen
-Alle van de volgende opdrachten fungeren in een resourcegroep met de naam 'montest'.
+## <a name="retrieve-information-on-alert-rules"></a>Informatie over waarschuwings regels ophalen
+Alle volgende opdrachten worden toegepast op een resource groep met de naam ' montest '.
 
-Alle eigenschappen van de waarschuwingsregel weergeven:
+Bekijk alle eigenschappen van de waarschuwings regel:
 
 ```powershell
 Get-AzAlertRule -Name simpletestCPU -ResourceGroup montest -DetailedOutput
 ```
 
-Alle waarschuwingen voor een resourcegroep ophalen:
+Alle waarschuwingen ophalen voor een resource groep:
 
 ```powershell
 Get-AzAlertRule -ResourceGroup montest
 ```
 
-Alle regels voor waarschuwingen instellen voor een doelresource worden opgehaald. Bijvoorbeeld, instellen alle waarschuwingsregels op een virtuele machine.
+Alle waarschuwings regels ophalen die zijn ingesteld voor een doel resource. Bijvoorbeeld alle waarschuwings regels die zijn ingesteld op een virtuele machine.
 
 ```powershell
 Get-AzAlertRule -ResourceGroup montest -TargetResourceId /subscriptions/s1/resourceGroups/montest/providers/Microsoft.Compute/virtualMachines/testconfig
 ```
 
-`Get-AzAlertRule` biedt ondersteuning voor andere parameters. Zie [Get-AlertRule](https://msdn.microsoft.com/library/mt282459.aspx) voor meer informatie.
+`Get-AzAlertRule` ondersteunt andere para meters. Zie [Get-AlertRule](https://msdn.microsoft.com/library/mt282459.aspx) voor meer informatie.
 
 ## <a name="create-metric-alerts"></a>Metrische waarschuwingen maken
-U kunt de `Add-AlertRule` cmdlet voor het maken, bijwerken of een waarschuwingsregel uitschakelen.
+U kunt de cmdlet `Add-AlertRule` gebruiken om een waarschuwings regel te maken, bij te werken of uit te scha kelen.
 
-U kunt maken e-mail en webhook-eigenschappen met behulp van `New-AzAlertRuleEmail` en `New-AzAlertRuleWebhook`, respectievelijk. In de waarschuwingsregel-cmdlet kunt u deze eigenschappen toewijzen als acties aan de **acties** eigenschap van de waarschuwingsregel.
+U kunt de eigenschappen e-mail en webhook met respectievelijk `New-AzAlertRuleEmail` en `New-AzAlertRuleWebhook` maken. Wijs in de cmdlet waarschuwings regel deze eigenschappen toe als acties voor de eigenschap **Actions** van de waarschuwings regel.
 
-De volgende tabel beschrijft de parameters en waarden die worden gebruikt voor het maken van een waarschuwing met behulp van een metrische waarde.
+De volgende tabel beschrijft de para meters en waarden die worden gebruikt om een waarschuwing te maken met behulp van een metriek.
 
 | parameter | value |
 | --- | --- |
 | Name |simpletestdiskwrite |
-| Locatie van deze waarschuwingsregel |East US |
-| ResourceGroup |montest |
+| Locatie van deze waarschuwings regel |East US |
+| Resourcegroep |montest |
 | TargetResourceId |/subscriptions/s1/resourceGroups/montest/providers/Microsoft.Compute/virtualMachines/testconfig |
-| MetricName van de waarschuwing die is gemaakt |\PhysicalDisk(_Total)\Disk Writes/sec. See the `Get-MetricDefinitions` cmdlet about how to retrieve the exact metric names |
-| operator |GreaterThan |
-| De waarde voor drempel (aantal per seconde in voor deze metrische gegevens) |1 |
-| Venstergrootte (uu: mm: indeling) |00:05:00 |
-| aggregator (statistiek op van de metrische gegevens, die in dit geval maakt gebruik van gemiddeld aantal) |Average |
-| aangepaste e-mailberichten (string-matrix) |'foo@example.com','bar@example.com' |
-| e-mail sturen naar eigenaars, medewerkers en lezers |-SendToServiceOwners |
+| Metrische waarde van de waarschuwing die wordt gemaakt |\PhysicalDisk(_Total)\Disk Writes/sec. See the `Get-MetricDefinitions` cmdlet about how to retrieve the exact metric names |
+| And |GreaterThan |
+| Drempel waarde (aantal per seconde in voor deze metrische gegevens) |1 |
+| WindowSize (UU: mm: SS-indeling) |00:05:00 |
+| aggregator (statistiek van de metrische gegevens, waarbij het gemiddelde aantal in dit geval wordt gebruikt) |Average |
+| aangepaste e-mail berichten (teken reeks matrix) |'foo@example.com','bar@example.com' |
+| e-mail verzenden naar eigen aars, mede werkers en lezers |-SendToServiceOwners |
 
-Maken van een e-mailactie
+Een e-mail actie maken
 
 ```powershell
 $actionEmail = New-AzAlertRuleEmail -CustomEmail myname@company.com
 ```
 
-De webhookactie van een maken
+Een webhook-actie maken
 
 ```powershell
 $actionWebhook = New-AzAlertRuleWebhook -ServiceUri https://example.com?token=mytoken
 ```
 
-De waarschuwingsregel op de CPU % metrische gegevens op een klassieke virtuele machine maken
+De waarschuwings regel maken voor de CPU% metric op een klassieke virtuele machine
 
 ```powershell
 Add-AzMetricAlertRule -Name vmcpu_gt_1 -Location "East US" -ResourceGroup myrg1 -TargetResourceId /subscriptions/s1/resourceGroups/myrg1/providers/Microsoft.ClassicCompute/virtualMachines/my_vm1 -MetricName "Percentage CPU" -Operator GreaterThan -Threshold 1 -WindowSize 00:05:00 -TimeAggregationOperator Average -Action $actionEmail, $actionWebhook -Description "alert on CPU > 1%"
 ```
 
-De waarschuwingsregel ophalen
+De waarschuwings regel ophalen
 
 ```powershell
 Get-AzAlertRule -Name vmcpu_gt_1 -ResourceGroup myrg1 -DetailedOutput
 ```
 
-De waarschuwing toevoegen-cmdlet werkt ook de regel als er al een waarschuwingsregel voor de opgegeven eigenschappen bestaat. Als u wilt een waarschuwingsregel uitschakelen, de parameter opnemen **- DisableRule**.
+Met de cmdlet Add alert wordt de regel ook bijgewerkt als er al een waarschuwings regel bestaat voor de opgegeven eigenschappen. Als u een waarschuwings regel wilt uitschakelen, neemt u de para meter **-DisableRule**op.
 
-## <a name="get-a-list-of-available-metrics-for-alerts"></a>Een lijst met beschikbare metrische gegevens ophalen voor waarschuwingen
-U kunt de `Get-AzMetricDefinition` cmdlet om de lijst met alle metrische gegevens voor een specifieke resource weer te geven.
+## <a name="get-a-list-of-available-metrics-for-alerts"></a>Een lijst met beschik bare metrische gegevens voor waarschuwingen ophalen
+U kunt de cmdlet `Get-AzMetricDefinition` gebruiken om de lijst met alle metrische gegevens voor een specifieke resource weer te geven.
 
 ```powershell
 Get-AzMetricDefinition -ResourceId <resource_id>
 ```
 
-Het volgende voorbeeld wordt een tabel met de naam van de metriek en de eenheid voor het gegenereerd.
+In het volgende voor beeld wordt een tabel met de metrische naam en de eenheid gegenereerd.
 
 ```powershell
 Get-AzMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,Unit
 ```
 
-Een volledige lijst met beschikbare opties voor `Get-AzMetricDefinition` is beschikbaar op [Get-MetricDefinitions](https://msdn.microsoft.com/library/mt282458.aspx).
+U kunt een volledige lijst met beschik bare opties voor `Get-AzMetricDefinition` vinden op [Get-MetricDefinitions](https://msdn.microsoft.com/library/mt282458.aspx).
 
-## <a name="create-and-manage-activity-log-alerts"></a>Waarschuwingen voor activiteitenlogboek maken en beheren
-U kunt de `Set-AzActivityLogAlert` cmdlet om in te stellen van een waarschuwing voor activiteitenlogboek. Een waarschuwing voor activiteitenlogboek, moet u eerst uw voorwaarden definiëren als een woordenlijst met de voorwaarden en maken van een waarschuwing die gebruikmaakt van deze voorwaarden.
+## <a name="create-and-manage-activity-log-alerts"></a>Waarschuwingen voor activiteiten logboeken maken en beheren
+U kunt de cmdlet `Set-AzActivityLogAlert` gebruiken om een waarschuwing voor een activiteiten logboek in te stellen. Een waarschuwing voor een activiteiten logboek vereist dat u eerst uw voor waarden definieert als een woorden lijst en vervolgens een waarschuwing maakt die deze voor waarden gebruikt.
 
 ```powershell
 
@@ -219,28 +219,28 @@ Set-AzActivityLogAlert -Location 'Global' -Name 'alert on VM create' -ResourceGr
 
 ```
 
-De aanvullende webhookeigenschappen zijn optioneel. U kunt teruggaan de inhoud van een activiteit Log waarschuwing met `Get-AzActivityLogAlert`.
+De aanvullende eigenschappen van de webhook zijn optioneel. U kunt de inhoud van een waarschuwing voor een activiteiten logboek terughalen met behulp van `Get-AzActivityLogAlert`.
 
-## <a name="create-and-manage-autoscale-settings"></a>Maken en beheren van instellingen voor automatisch schalen
-Een resource (zoals een Web-app, VM, Cloudservice of door virtuele-Machineschaalset) kan slechts één functie voor automatisch schalen instelling die is geconfigureerd voor deze hebben.
-Elke instelling voor automatisch schalen kan echter meerdere profielen hebben. Bijvoorbeeld, een voor een schaalprofiel op basis van prestaties en een tweede voor een profiel op basis van een planning. Elk profiel kan meerdere regels geconfigureerd voor hebben. Zie voor meer informatie over automatisch schalen, [automatisch schalen van een toepassing](../../cloud-services/cloud-services-how-to-scale-portal.md).
+## <a name="create-and-manage-autoscale-settings"></a>Instellingen voor automatisch schalen maken en beheren
+Voor een resource (een web-app, VM, Cloud service of virtuele-machine Schaalset) kan slechts één instelling voor automatisch schalen zijn geconfigureerd.
+Elke instelling voor automatisch schalen kan echter meerdere profielen hebben. Een voor beeld: een voor een schaal profiel op basis van prestaties en een tweede voor een op een planning gebaseerd profiel. Voor elk profiel kunnen meerdere regels worden geconfigureerd. Zie [een toepassing automatisch schalen](../../cloud-services/cloud-services-how-to-scale-portal.md)voor meer informatie over automatisch schalen.
 
-Hier volgen de stappen om te gebruiken:
+Hier volgen de stappen die u moet gebruiken:
 
-1. Maak (s).
-2. Maak profielen eerder de regels die u hebt gemaakt voor toewijzing aan de profielen.
-3. Optioneel: Meldingen voor automatisch schalen maken door webhook en het e-eigenschappen te configureren.
-4. Maak een instelling voor automatisch schalen met een naam voor de doelbron door het toewijzen van de profielen en meldingen die u in de vorige stappen hebt gemaakt.
+1. Regel (s) maken.
+2. Maak een of meer profielen toewijzing van de regels die u eerder hebt gemaakt voor de profielen.
+3. Optioneel: Meldingen voor automatisch schalen maken door webhook en e-mail eigenschappen te configureren.
+4. Maak een instelling voor automatisch schalen met een naam op de doel resource door de profielen en meldingen toe te wijzen die u in de vorige stappen hebt gemaakt.
 
-De volgende voorbeelden ziet u hoe u een instelling voor automatisch schalen voor een virtuele-Machineschaalset opgehaald voor een Windows-besturingssysteem op basis van met behulp van de CPU-gebruik metrische gegevens kunt maken.
+In de volgende voor beelden ziet u hoe u een instelling voor automatisch schalen kunt maken voor een Schaalset voor virtuele machines voor een Windows-besturings systeem op basis van de metrische gegevens van het CPU-gebruik.
 
-Maak eerst een regel voor uitschalen, met een toename in exemplaar.
+Maak eerst een regel om uit te schalen, met een toename van het aantal exemplaren.
 
 ```powershell
 $rule1 = New-AzAutoscaleRule -MetricName "Percentage CPU" -MetricResourceId /subscriptions/s1/resourceGroups/big2/providers/Microsoft.Compute/virtualMachineScaleSets/big2 -Operator GreaterThan -MetricStatistic Average -Threshold 60 -TimeGrain 00:01:00 -TimeWindow 00:10:00 -ScaleActionCooldown 00:10:00 -ScaleActionDirection Increase -ScaleActionValue 1
 ```        
 
-Maak vervolgens een regel voor inschalen, met een aantal exemplaar verkleinen.
+Maak vervolgens een regel om in te schalen, waarbij het aantal exemplaren afneemt.
 
 ```powershell
 $rule2 = New-AzAutoscaleRule -MetricName "Percentage CPU" -MetricResourceId /subscriptions/s1/resourceGroups/big2/providers/Microsoft.Compute/virtualMachineScaleSets/big2 -Operator GreaterThan -MetricStatistic Average -Threshold 30 -TimeGrain 00:01:00 -TimeWindow 00:10:00 -ScaleActionCooldown 00:10:00 -ScaleActionDirection Decrease -ScaleActionValue 1
@@ -252,100 +252,100 @@ Maak vervolgens een profiel voor de regels.
 $profile1 = New-AzAutoscaleProfile -DefaultCapacity 2 -MaximumCapacity 10 -MinimumCapacity 2 -Rules $rule1,$rule2 -Name "My_Profile"
 ```
 
-De eigenschap van een webhook maken.
+Een webhook-eigenschap maken.
 
 ```powershell
 $webhook_scale = New-AzAutoscaleWebhook -ServiceUri "https://example.com?mytoken=mytokenvalue"
 ```
 
-Maak de eigenschap melding voor de instelling voor automatisch schalen, met inbegrip van e-mailadres en de webhook die u eerder hebt gemaakt.
+Maak de meldings eigenschap voor de instelling voor automatisch schalen, inclusief e-mail en de webhook die u eerder hebt gemaakt.
 
 ```powershell
 $notification1= New-AzAutoscaleNotification -CustomEmails ashwink@microsoft.com -SendEmailToSubscriptionAdministrators SendEmailToSubscriptionCoAdministrators -Webhooks $webhook_scale
 ```
 
-Maak ten slotte de instelling voor automatisch schalen om toe te voegen van het profiel dat u eerder hebt gemaakt. 
+Maak ten slotte de instelling voor automatisch schalen om het profiel toe te voegen dat u eerder hebt gemaakt. 
 
 ```powershell
 Add-AzAutoscaleSetting -Location "East US" -Name "MyScaleVMSSSetting" -ResourceGroup big2 -TargetResourceId /subscriptions/s1/resourceGroups/big2/providers/Microsoft.Compute/virtualMachineScaleSets/big2 -AutoscaleProfiles $profile1 -Notifications $notification1
 ```
 
-Zie voor meer informatie over het beheren van instellingen voor automatisch schalen [Get-AutoscaleSetting](https://msdn.microsoft.com/library/mt282461.aspx).
+Zie [Get-AutoscaleSetting](https://msdn.microsoft.com/library/mt282461.aspx)voor meer informatie over het beheren van instellingen voor automatisch schalen.
 
-## <a name="autoscale-history"></a>Historie van automatisch schalen
-Het volgende voorbeeld ziet u hoe u recente schalings- en waarschuwingsgebeurtenissen kunt bekijken. Gebruik de activiteit zoeken in Logboeken om de geschiedenis voor automatisch schalen weer te geven.
+## <a name="autoscale-history"></a>Geschiedenis van automatisch schalen
+In het volgende voor beeld ziet u hoe u recente automatisch schalen en waarschuwings gebeurtenissen kunt weer geven. Gebruik de zoek functie voor activiteiten Logboeken om de geschiedenis van automatisch schalen weer te geven.
 
 ```powershell
 Get-AzLog -Caller "Microsoft.Insights/autoscaleSettings" -DetailedOutput -StartTime 2015-03-01
 ```
 
-U kunt de `Get-AzAutoScaleHistory` cmdlet voor het ophalen van de geschiedenis voor automatisch schalen.
+U kunt de `Get-AzAutoScaleHistory`-cmdlet gebruiken om de geschiedenis van automatisch schalen op te halen.
 
 ```powershell
 Get-AzAutoScaleHistory -ResourceId /subscriptions/s1/resourceGroups/myrg1/providers/microsoft.insights/autoscalesettings/myScaleSetting -StartTime 2016-03-15 -DetailedOutput
 ```
 
-Zie voor meer informatie, [Get-AutoscaleHistory](https://msdn.microsoft.com/library/mt282464.aspx).
+Zie [Get-AutoscaleHistory](https://msdn.microsoft.com/library/mt282464.aspx)voor meer informatie.
 
-### <a name="view-details-for-an-autoscale-setting"></a>Bekijk de details voor een instelling voor automatisch schalen
-U kunt de `Get-Autoscalesetting` cmdlet voor het ophalen van meer informatie over de instelling voor automatisch schalen.
+### <a name="view-details-for-an-autoscale-setting"></a>Details weer geven voor een instelling voor automatisch schalen
+U kunt de cmdlet `Get-Autoscalesetting` gebruiken om meer informatie over de instelling voor automatisch schalen op te halen.
 
-Het volgende voorbeeld ziet details over alle instellingen voor automatisch schalen in de resource group 'myrg1'.
+In het volgende voor beeld ziet u details over alle instellingen voor automatisch schalen in de resource groep ' myrg1 '.
 
 ```powershell
 Get-AzAutoscalesetting -ResourceGroup myrg1 -DetailedOutput
 ```
 
-Het volgende voorbeeld ziet details over alle instellingen voor automatisch schalen in de resource group 'myrg1' en specifiek de instelling voor automatisch schalen met de naam 'MyScaleVMSSSetting'.
+In het volgende voor beeld ziet u details over alle instellingen voor automatisch schalen in de resource groep ' myrg1 ' en met name de instelling voor automatisch schalen met de naam ' MyScaleVMSSSetting '.
 
 ```powershell
 Get-AzAutoscalesetting -ResourceGroup myrg1 -Name MyScaleVMSSSetting -DetailedOutput
 ```
 
 ### <a name="remove-an-autoscale-setting"></a>Een instelling voor automatisch schalen verwijderen
-U kunt de `Remove-Autoscalesetting` cmdlet voor het verwijderen van een instelling voor automatisch schalen.
+U kunt de cmdlet `Remove-Autoscalesetting` gebruiken om een instelling voor automatisch schalen te verwijderen.
 
 ```powershell
 Remove-AzAutoscalesetting -ResourceGroup myrg1 -Name MyScaleVMSSSetting
 ```
 
-## <a name="manage-log-profiles-for-activity-log"></a>Logboekprofielen voor het activiteitenlogboek beheren
-U kunt maken een *logboekprofiel* en gegevens uit uw activiteitenlogboek exporteren naar een opslagaccount en u kunt het bewaren van gegevens voor het configureren. U kunt eventueel ook de gegevens streamen naar uw Event Hub. Deze functie is momenteel in Preview en u kunt slechts één logboekprofiel per abonnement maken. U kunt de volgende cmdlets gebruiken met uw huidige abonnement naar het logboekprofielen maken en beheren. U kunt ook een bepaald abonnement. Hoewel PowerShell standaard ingesteld op het huidige abonnement, kunt u altijd wijzigen dat door `Set-AzContext`. Activiteitenlogboek het routeren van gegevens naar een opslagaccount of Event Hub in dat abonnement, kunt u configureren. Gegevens worden geschreven als blob-bestanden in de JSON-indeling.
+## <a name="manage-log-profiles-for-activity-log"></a>Logboek profielen voor het activiteiten logboek beheren
+U kunt een *logboek profiel* maken en gegevens uit uw activiteiten logboek exporteren naar een opslag account en u kunt de gegevens retentie configureren. U kunt eventueel ook de gegevens streamen naar uw event hub. Deze functie is momenteel beschikbaar als preview-versie en u kunt slechts één logboek profiel per abonnement maken. U kunt de volgende cmdlets gebruiken met uw huidige abonnement om logboek profielen te maken en te beheren. U kunt ook een bepaald abonnement kiezen. Hoewel Power Shell standaard het huidige abonnement heeft, kunt u dit altijd wijzigen met behulp van `Set-AzContext`. U kunt het activiteiten logboek configureren voor het routeren van gegevens naar een opslag account of event hub binnen dat abonnement. Gegevens worden geschreven als blob-bestanden in JSON-indeling.
 
-### <a name="get-a-log-profile"></a>Ophalen van een logboekprofiel
-Om op te halen van uw bestaande logboekprofielen, gebruikt u de `Get-AzLogProfile` cmdlet.
+### <a name="get-a-log-profile"></a>Een logboek profiel ophalen
+Gebruik de `Get-AzLogProfile`-cmdlet om uw bestaande logboek profielen op te halen.
 
-### <a name="add-a-log-profile-without-data-retention"></a>Toevoegen van een logboekprofiel zonder het bewaren van gegevens
+### <a name="add-a-log-profile-without-data-retention"></a>Een logboek profiel zonder gegevens retentie toevoegen
 ```powershell
-Add-AzLogProfile -Name my_log_profile_s1 -StorageAccountId /subscriptions/s1/resourceGroups/myrg1/providers/Microsoft.Storage/storageAccounts/my_storage -Locations global,westus,eastus,northeurope,westeurope,eastasia,southeastasia,japaneast,japanwest,northcentralus,southcentralus,eastus2,centralus,australiaeast,australiasoutheast,brazilsouth,centralindia,southindia,westindia
+Add-AzLogProfile -Name my_log_profile_s1 -StorageAccountId /subscriptions/s1/resourceGroups/myrg1/providers/Microsoft.Storage/storageAccounts/my_storage -Location global,westus,eastus,northeurope,westeurope,eastasia,southeastasia,japaneast,japanwest,northcentralus,southcentralus,eastus2,centralus,australiaeast,australiasoutheast,brazilsouth,centralindia,southindia,westindia
 ```
 
-### <a name="remove-a-log-profile"></a>Een logboekprofiel verwijderen
+### <a name="remove-a-log-profile"></a>Een logboek profiel verwijderen
 ```powershell
 Remove-AzLogProfile -name my_log_profile_s1
 ```
 
-### <a name="add-a-log-profile-with-data-retention"></a>Een logboekprofiel met het bewaren van gegevens toevoegen
-U kunt opgeven de **- RetentionInDays** eigenschap met het aantal dagen, als een positief geheel getal, waarbij de gegevens worden bewaard.
+### <a name="add-a-log-profile-with-data-retention"></a>Een logboek profiel met gegevens retentie toevoegen
+U kunt de eigenschap **-RetentionInDays** opgeven met het aantal dagen, als een positief geheel getal, waarbij de gegevens behouden blijven.
 
 ```powershell
-Add-AzLogProfile -Name my_log_profile_s1 -StorageAccountId /subscriptions/s1/resourceGroups/myrg1/providers/Microsoft.Storage/storageAccounts/my_storage -Locations global,westus,eastus,northeurope,westeurope,eastasia,southeastasia,japaneast,japanwest,northcentralus,southcentralus,eastus2,centralus,australiaeast,australiasoutheast,brazilsouth,centralindia,southindia,westindia -RetentionInDays 90
+Add-AzLogProfile -Name my_log_profile_s1 -StorageAccountId /subscriptions/s1/resourceGroups/myrg1/providers/Microsoft.Storage/storageAccounts/my_storage -Location global,westus,eastus,northeurope,westeurope,eastasia,southeastasia,japaneast,japanwest,northcentralus,southcentralus,eastus2,centralus,australiaeast,australiasoutheast,brazilsouth,centralindia,southindia,westindia -RetentionInDays 90
 ```
 
-### <a name="add-log-profile-with-retention-and-eventhub"></a>Logboekprofiel met retentie en het Event hub toevoegen
-Naast de routering van uw gegevens naar storage-account, kunt u deze ook streamen naar een Event Hub. In deze preview-versie de configuratie van het storage-account is verplicht, maar de configuratie van de Event Hub is optioneel.
+### <a name="add-log-profile-with-retention-and-eventhub"></a>Een logboek profiel met retentie en EventHub toevoegen
+Naast het door sturen van uw gegevens naar een opslag account, kunt u deze ook streamen naar een event hub. In deze preview-versie is de configuratie van het opslag account verplicht, maar is de Event hub-configuratie optioneel.
 
 ```powershell
-Add-AzLogProfile -Name my_log_profile_s1 -StorageAccountId /subscriptions/s1/resourceGroups/myrg1/providers/Microsoft.Storage/storageAccounts/my_storage -serviceBusRuleId /subscriptions/s1/resourceGroups/Default-ServiceBus-EastUS/providers/Microsoft.ServiceBus/namespaces/mytestSB/authorizationrules/RootManageSharedAccessKey -Locations global,westus,eastus,northeurope,westeurope,eastasia,southeastasia,japaneast,japanwest,northcentralus,southcentralus,eastus2,centralus,australiaeast,australiasoutheast,brazilsouth,centralindia,southindia,westindia -RetentionInDays 90
+Add-AzLogProfile -Name my_log_profile_s1 -StorageAccountId /subscriptions/s1/resourceGroups/myrg1/providers/Microsoft.Storage/storageAccounts/my_storage -serviceBusRuleId /subscriptions/s1/resourceGroups/Default-ServiceBus-EastUS/providers/Microsoft.ServiceBus/namespaces/mytestSB/authorizationrules/RootManageSharedAccessKey -Location global,westus,eastus,northeurope,westeurope,eastasia,southeastasia,japaneast,japanwest,northcentralus,southcentralus,eastus2,centralus,australiaeast,australiasoutheast,brazilsouth,centralindia,southindia,westindia -RetentionInDays 90
 ```
 
-## <a name="configure-diagnostics-logs"></a>Logboeken met diagnostische gegevens configureren
-Veel Azure-services bieden extra logboeken en telemetrie die een of meer van de volgende kunt doen: 
- - worden geconfigureerd voor het opslaan van gegevens in uw Azure Storage-account
+## <a name="configure-diagnostics-logs"></a>Diagnostische logboeken configureren
+Veel Azure-Services bieden extra logboeken en telemetrie die een of meer van de volgende kunnen doen: 
+ - worden geconfigureerd om gegevens in uw Azure Storage-account op te slaan
  - verzonden naar Event Hubs
- - verzonden naar Log Analytics-werkruimte. 
+ - verzonden naar een Log Analytics-werk ruimte. 
 
-De bewerking kan alleen worden uitgevoerd op het resourceniveau van een. De storage-account of event hub moet worden gebruikt in dezelfde regio als de doelresource waar de diagnostische instelling is geconfigureerd.
+De bewerking kan alleen op resource niveau worden uitgevoerd. Het opslag account of Event Hub moet zich in dezelfde regio bevinden als de doel resource waar de diagnostische instelling is geconfigureerd.
 
 ### <a name="get-diagnostic-setting"></a>Diagnostische instelling ophalen
 ```powershell
@@ -358,43 +358,43 @@ Diagnostische instelling uitschakelen
 Set-AzDiagnosticSetting -ResourceId /subscriptions/s1/resourceGroups/myrg1/providers/Microsoft.Logic/workflows/andy0315logicapp -StorageAccountId /subscriptions/s1/resourceGroups/Default-Storage-WestUS/providers/Microsoft.Storage/storageAccounts/mystorageaccount -Enable $false
 ```
 
-Schakel diagnostische instelling zonder bewaren
+Diagnostische instelling inschakelen zonder Bewaar periode
 
 ```powershell
 Set-AzDiagnosticSetting -ResourceId /subscriptions/s1/resourceGroups/myrg1/providers/Microsoft.Logic/workflows/andy0315logicapp -StorageAccountId /subscriptions/s1/resourceGroups/Default-Storage-WestUS/providers/Microsoft.Storage/storageAccounts/mystorageaccount -Enable $true
 ```
 
-Diagnostische instelling met een bewaarperiode van inschakelen
+Diagnostische instellingen inschakelen met retentie
 
 ```powershell
 Set-AzDiagnosticSetting -ResourceId /subscriptions/s1/resourceGroups/myrg1/providers/Microsoft.Logic/workflows/andy0315logicapp -StorageAccountId /subscriptions/s1/resourceGroups/Default-Storage-WestUS/providers/Microsoft.Storage/storageAccounts/mystorageaccount -Enable $true -RetentionEnabled $true -RetentionInDays 90
 ```
 
-Schakel diagnostische instelling met een bewaarperiode voor een specifieke logboekcategorie
+Diagnostische instellingen inschakelen met retentie voor een specifieke logboek categorie
 
 ```powershell
 Set-AzDiagnosticSetting -ResourceId /subscriptions/s1/resourceGroups/insights-integration/providers/Microsoft.Network/networkSecurityGroups/viruela1 -StorageAccountId /subscriptions/s1/resourceGroups/myrg1/providers/Microsoft.Storage/storageAccounts/sakteststorage -Categories NetworkSecurityGroupEvent -Enable $true -RetentionEnabled $true -RetentionInDays 90
 ```
 
-Schakel diagnostische instelling voor Event Hubs
+Diagnostische instelling voor Event Hubs inschakelen
 
 ```powershell
 Set-AzDiagnosticSetting -ResourceId /subscriptions/s1/resourceGroups/insights-integration/providers/Microsoft.Network/networkSecurityGroups/viruela1 -serviceBusRuleId /subscriptions/s1/resourceGroups/Default-ServiceBus-EastUS/providers/Microsoft.ServiceBus/namespaces/mytestSB/authorizationrules/RootManageSharedAccessKey -Enable $true
 ```
 
-Schakel diagnostische instelling voor Log Analytics
+Diagnostische instelling voor Log Analytics inschakelen
 
 ```powershell
 Set-AzDiagnosticSetting -ResourceId /subscriptions/s1/resourceGroups/insights-integration/providers/Microsoft.Network/networkSecurityGroups/viruela1 -WorkspaceId /subscriptions/s1/resourceGroups/insights-integration/providers/providers/microsoft.operationalinsights/workspaces/myWorkspace -Enabled $true
 
 ```
 
-Houd er rekening mee dat de werkruimte-id voor deze eigenschap is de *resource-ID* van de werkruimte. U vindt de resource-ID van uw Log Analytics-werkruimte met de volgende opdracht:
+Houd er rekening mee dat de eigenschap WorkspaceId de *resource-id* van de werk ruimte gebruikt. U vindt de resource-ID van uw Log Analytics-werkruimte met de volgende opdracht:
 
 ```powershell
 (Get-AzOperationalInsightsWorkspace).ResourceId
 
 ```
 
-Deze opdrachten kunnen worden gecombineerd om gegevens te verzenden naar meerdere bestemmingen.
+Deze opdrachten kunnen worden gecombineerd om gegevens naar meerdere bestemmingen te verzenden.
 

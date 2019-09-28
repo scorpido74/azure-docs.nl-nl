@@ -11,12 +11,12 @@ author: aliceku
 ms.author: aliceku
 ms.reviewer: vanto
 ms.date: 07/18/2019
-ms.openlocfilehash: 6b1b706e68b090090ed4268b70b7c9d254f8b629
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 095ecc360e5639a5d47dff4bc4675fc237cf81da
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68596708"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71348917"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-keys-in-azure-key-vault-bring-your-own-key-support"></a>Azure SQL Transparent Data Encryption met door de klant beheerde sleutels in Azure Key Vault: Ondersteuning voor Bring Your Own Key
 
@@ -60,7 +60,7 @@ Wanneer TDE voor het eerst is geconfigureerd voor het gebruik van een TDE-Protec
 - Zorg ervoor dat Azure Key Vault en het Azure SQL Database/beheerde exemplaar zich in dezelfde Tenant bevinden.  De cross-Tenant sleutel kluis en server interacties **worden niet ondersteund**.
 - Als u een Tenant wilt verplaatsen, moet u TDE met Azure opnieuw configureren, meer informatie over het [verplaatsen van resources](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources).
 - Bij het configureren van TDE met Azure Key Vault is het belang rijk dat u de belasting op de sleutel kluis beoordeelt door herhaalde of onverpakte bewerkingen. Omdat alle data bases die zijn gekoppeld aan een SQL Database Server bijvoorbeeld dezelfde TDE-Protector gebruiken, wordt een failover van die server geactiveerd als veel belang rijke bewerkingen voor de kluis als er data bases op de server zijn. Op basis van onze ervaring en gedocumenteerde [sleutel kluis-service limieten](https://docs.microsoft.com/azure/key-vault/key-vault-service-limits)wordt u aangeraden maxi maal 500 standaard/Algemeen of 200 Premium/bedrijfskritiek data bases te koppelen aan één Azure Key Vault in één abonnement om te zorgen voor consistent hoge Beschik baarheid bij toegang tot de TDE-Protector in de kluis.
-- Aanbevelingen Bewaar een kopie van de TDE-Protector on-premises.  Hiervoor is een HSM-apparaat vereist voor het lokaal maken van een TDE-Protector en een belang rijk borg systeem voor het opslaan van een lokale kopie van de TDE-Protector.  Meer informatie [over het overdragen van een sleutel van een lokale HSM naar Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-hsm-protected-keys).
+- Aanbevolen: Bewaar een kopie van de TDE-Protector on-premises.  Hiervoor is een HSM-apparaat vereist voor het lokaal maken van een TDE-Protector en een belang rijk borg systeem voor het opslaan van een lokale kopie van de TDE-Protector.  Meer informatie [over het overdragen van een sleutel van een lokale HSM naar Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-hsm-protected-keys).
 
 
 ### <a name="guidelines-for-configuring-azure-key-vault"></a>Richt lijnen voor het configureren van Azure Key Vault
@@ -149,7 +149,7 @@ In de volgende sectie vindt u meer informatie over de installatie-en configurati
 - Maak twee Azure-sleutel kluizen in twee verschillende regio's met behulp van [Power shell om de eigenschap "zacht-delete" in te scha kelen](https://docs.microsoft.com/azure/key-vault/key-vault-soft-delete-powershell) voor de sleutel kluizen (deze optie is nog niet beschikbaar vanuit de Azure-Portal, maar vereist voor SQL).
 - Beide Azure-sleutel kluizen moeten zich bevinden in de twee regio's die beschikbaar zijn in dezelfde Azure geo om back-up en herstel van sleutels te kunnen uitvoeren.  Als u wilt dat de twee sleutel kluizen in verschillende geografische gebieden zich bevinden om te voldoen aan de vereisten van SQL geo-DR, volgt u het [BYOK-proces](https://docs.microsoft.com/azure/key-vault/key-vault-hsm-protected-keys) waarmee sleutels kunnen worden geïmporteerd uit een on-premises HSM.
 - Een nieuwe sleutel maken in de eerste sleutel kluis:  
-  - RSA/RSA-HSA 2048 key
+  - RSA/RSA-HSM 2048-sleutel
   - Geen verval datums
   - Sleutel is ingeschakeld en heeft machtigingen voor het uitvoeren van Get-, terugloop-en uitpakken van sleutel bewerkingen
 - Maak een back-up van de primaire sleutel en zet de sleutel terug naar de tweede sleutel kluis.  Zie [BackupAzureKeyVaultKey](https://docs.microsoft.com/powershell/module/az.keyvault/backup-azkeyvaultkey) en [Restore-AzKeyVaultKey](https://docs.microsoft.com/powershell/module/az.keyvault/restore-azkeyvaultkey).

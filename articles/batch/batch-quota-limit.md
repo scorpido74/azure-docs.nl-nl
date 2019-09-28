@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 08/13/2019
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 1e7d64aabba19f04fb98bd208389dc0b2077bfe4
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 8b089a1b32ee70479072522372c060713108957c
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70094703"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350094"
 ---
 # <a name="batch-service-quotas-and-limits"></a>Quota en limieten voor Batch-service
 
@@ -52,7 +52,7 @@ Limieten voor groeps grootte worden ingesteld door de batch-service. In tegens t
 | **Reken knooppunten in de [groep communicatie tussen knoop](batch-mpi.md) punten**  ||
 | Pool toewijzings modus Batch-service | 100 |
 | Groeps toewijzings modus Batch-abonnement | 80 |
-| **Reken knooppunten in een [groep die is gemaakt met een aangepaste VM-installatie kopie](batch-custom-images.md)**  <sup>1</sup> ||
+| **Reken knooppunten in [de groep die zijn gemaakt met een beheerde installatie kopie bron](batch-custom-images.md)** <sup>1</sup> ||
 | Toegewezen knooppunten | 2000 |
 | Knooppunten met lage prioriteit | 1000 |
 

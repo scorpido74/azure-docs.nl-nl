@@ -17,12 +17,12 @@ ms.author: twhitney
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1b8637bb1a1ba397750bd04c88c6535fa3d1caa0
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.openlocfilehash: bdb1ae92b17bef281e3b82a8c1a21344fa37f0da
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71309641"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71345529"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-or-macos-app"></a>Quickstart: Gebruikers aanmelden en de Microsoft Graph-API aanroepen vanuit een iOS-of macOS-app
 
@@ -94,11 +94,11 @@ Navigeer in een Terminal venster naar de map met het gedownloade code voorbeeld 
 > 1. Pak het zip-bestand uit en open het project in XCode.
 > 1. Bewerk **View Controller. Swift** en vervang de regel die begint met ' laat kClientID ' door het volgende code fragment. Vergeet niet om de waarde voor `kClientID` te wijzigen voor met de client-id die u hebt opgeslagen toen u uw app in de portal eerder in de Quick Start hebt geregistreerd:
 >    ```swift
->    let kClientID = "<ENTER_YOUR_APPLICATION/CLIENT_ID>"
+>    let kClientID = "Enter_the_Application_Id_Here"
 >    ```
 > 1. Open de project instellingen. Voer in de sectie **identiteit** de **bundel-id** in die u hebt ingevoerd in de portal.
 > 1. Alleen voor IOS: Klik met de rechter muisknop op **info. plist** en selecteer **openen als** > **bron code**.
-> 1. Alleen voor IOS, onder het hoofd knooppunt dict, vervangt `Enter_the_bundle_Id_Here`u door de ***bundel-id*** die u hebt ingevoerd in de portal.
+> 1. Voor alleen iOS, onder het hoofd knooppunt dict, vervangt u `CFBundleURLSchemes` door de ***bundel-id*** die u hebt ingevoerd in de portal.
 >
 >    ```xml
 >    <key>CFBundleURLTypes</key>
@@ -120,11 +120,11 @@ Navigeer in een Terminal venster naar de map met het gedownloade code voorbeeld 
 > 1. Pak het zip-bestand uit en open het project in XCode.
 > 1. Bewerk **View Controller. Swift** en vervang de regel die begint met ' laat kClientID ' door het volgende code fragment. Vergeet niet om de waarde bij `kClientID` te werken voor met de clientID die u hebt opgeslagen tijdens het registreren van uw app in de portal eerder in deze Quick Start:
 >    ```swift
->    let kClientID = "<ENTER_YOUR_APPLICATION/CLIENT_ID>"
+>    let kClientID = "Enter_the_Application_Id_Here"
 >    ```
 > 1. Open de project instellingen. Voer in de sectie **identiteit** de **bundel-id** in die u hebt ingevoerd in de portal.
 > 1. Alleen voor IOS: Klik met de rechter muisknop op **info. plist** en selecteer **openen als** > **bron code**.
-> 1. Alleen voor IOS, onder het hoofd knooppunt dict, vervangt `Enter_the_bundle_Id_Here`u door de ***bundel-id*** die u in de portal hebt gebruikt.
+> 1. Voor alleen iOS, onder het hoofd knooppunt dict, vervangt u `Enter_the_bundle_Id_Here` door de ***bundel-id*** die u in de portal hebt gebruikt.
 >
 >    ```xml
 >    <key>CFBundleURLTypes</key>

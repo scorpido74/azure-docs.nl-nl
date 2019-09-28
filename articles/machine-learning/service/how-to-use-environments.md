@@ -9,13 +9,13 @@ ms.reviewer: nibaccam
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 09/16/2019
-ms.openlocfilehash: b46ca59bc93477c338001009ff7eeeddc7248684
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.date: 09/27/2019
+ms.openlocfilehash: 2056970a91a90fc14528b13650472722a235c354
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71147331"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350481"
 ---
 # <a name="create-and-manage-reusable-environments-for-training-and-deployment-with-azure-machine-learning"></a>Maak en beheer herbruikbare omgevingen voor training en implementatie met Azure Machine Learning.
 
@@ -42,7 +42,9 @@ In het volgende voor beeld ziet u dat hetzelfde omgevings object kan worden gebr
 
 ### <a name="types-of-environments"></a>Typen omgevingen
 
-Omgevingen kunnen breed worden onderverdeeld in twee categorieën: door de **gebruiker beheerde** en door het **systeem beheerde**.
+Omgevingen kunnen breed worden onderverdeeld in drie categorieën: met **curator**, door de **gebruiker beheerd** en door **het systeem beheerd**.
+
+Gehoste omgevingen worden verzorgd door Azure Machine Learning en zijn standaard beschikbaar in uw werk ruimte. Ze bevatten verzamelingen van Python-pakketten en instellingen waarmee u verschillende machine learning Frameworks kunt starten. 
 
 Voor een door een gebruiker beheerde omgeving bent u verantwoordelijk voor het instellen van uw omgeving en het installeren van elk pakket dat nodig is voor uw trainings script voor het Compute-doel. Conda controleert uw omgeving niet en installeert niets voor u. 
 
@@ -53,13 +55,46 @@ Door systeem beheerde omgevingen worden gebruikt wanneer u wilt dat [Conda](http
 * De Azure Machine Learning SDK voor python is [geïnstalleerd](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).
 * Een [Azure machine learning-werk ruimte](how-to-manage-workspace.md).
 
+
 ## <a name="create-an-environment"></a>Een omgeving maken
 
 Er zijn meerdere manieren om een omgeving te maken voor uw experimenten.
 
+### <a name="use-curated-environment"></a>Gecuratore omgeving gebruiken
+
+U kunt een van de gestarte omgevingen selecteren om te beginnen met. 
+
+* De omgeving met __AzureML-minimale__ bevat een minimale set pakketten voor het inschakelen van tracking en het uploaden van activa. U kunt deze gebruiken als uitgangs punt voor uw eigen omgeving.
+
+* De omgeving voor de __AzureML-zelf studie__ bevat algemene data Science-pakketten, zoals Scikit-learn, Pandas en matplotlib, en een grotere set van AzureML-SDK-pakketten.
+
+In de cache geplaatste docker-installatie kopieën worden er back-ups van gemaakt.
+
+Gebruik de methode __environment. Get__ om een van de met de curator gevoerde omgevingen te selecteren:
+
+```python
+from azureml.core import Workspace, Environment
+
+ws = Workspace.from_config()
+env = Environment.get(workspace=ws, name="AzureML-Minimal")
+```
+
+U kunt de gegroepeerde omgevingen en hun pakketten weer geven met behulp van de volgende code:
+```python
+envs = Environment.list(workspace=ws)
+
+for env in envs:
+    if env.startswith("AzureML"):
+        print("Name",env)
+        print("packages", envs[env].python.conda_dependencies.serialize_to_string())
+```
+
+> [!WARNING]
+>  Start niet uw eigen omgevings naam met het voor voegsel voor _AzureML_ . Het is gereserveerd voor gecuratore omgevingen.
+
 ### <a name="instantiate-an-environment-object"></a>Een omgevings object instantiëren
 
-Als u hand matig een omgeving wilt maken, importeert u de omgevings klasse uit de SDK en maakt u een instantie van een omgevings object met de volgende code.
+Als u hand matig een omgeving wilt maken, importeert u de omgevings klasse vanuit de SDK en maakt u een instantie van een omgevings object met de volgende code.
 
 ```python
 from azureml.core import Environment
@@ -85,7 +120,7 @@ myenv = Environment.from_pip_requirements(name = "myenv"
 
 Als u een bestaande Conda-omgeving op uw lokale computer hebt, biedt de service een oplossing voor het maken van een omgevings object. Op deze manier kunt u uw lokale interactieve omgeving opnieuw gebruiken op externe uitvoeringen.
 
-Hieronder wordt een omgevings object van de bestaande Conda-omgeving `mycondaenv` gemaakt met de methode [from_existing_conda_environment ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py#from-existing-conda-environment-name--conda-environment-name-) .
+Met de volgende code wordt een omgevings object gemaakt van de bestaande Conda-omgeving `mycondaenv` met de methode [from_existing_conda_environment ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py#from-existing-conda-environment-name--conda-environment-name-) .
 
 ``` python
 myenv = Environment.from_existing_conda_environment(name = "myenv",
@@ -114,7 +149,7 @@ run = myexp.submit(config=runconfig)
 run.wait_for_completion(show_output=True)
 ```
 
-Op dezelfde manier kunt u, [`Estimator`](https://docs.microsoft.com//python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py) als u een object gebruikt voor de training, het Estimator-exemplaar rechtstreeks als een uitvoering verzenden zonder dat u een omgeving hoeft `Estimator` op te geven. Dit komt doordat het object de omgeving en het reken doel al heeft ingekapseld.
+Op dezelfde manier kunt u, als u een [`Estimator`-](https://docs.microsoft.com//python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py) object gebruikt voor training, het Estimator-exemplaar rechtstreeks als een uitvoering verzenden zonder dat u een omgeving hoeft op te geven. Het `Estimator`-object heeft de omgeving en het reken doel al ingekapseld.
 
 
 ## <a name="add-packages-to-an-environment"></a>Pakketten toevoegen aan een omgeving
@@ -162,7 +197,7 @@ Omgevingen beheren zodat u ze kunt bijwerken, volgen en opnieuw gebruiken in rek
 
 De omgeving wordt automatisch bij uw werk ruimte geregistreerd wanneer u een uitvoeren of een webservice implementeert. U kunt de omgeving ook hand matig registreren met de methode [REGI ster ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment(class)?view=azure-ml-py#register-workspace-) . Met deze bewerking wordt de omgeving omgezet in een entiteit die wordt bijgehouden en geversiond in de Cloud en kan worden gedeeld tussen werk ruimte gebruikers.
 
-De volgende registreren de omgeving, `myenv`, in de `ws`werk ruimte.
+Met de volgende code wordt de omgeving, `myenv`, geregistreerd bij de werk ruimte, `ws`.
 
 ```python
 myenv.register(workspace=ws)
@@ -176,12 +211,7 @@ De omgevings klasse biedt methoden waarmee u bestaande omgevingen in uw werk rui
 
 #### <a name="view-list-of-environments"></a>Lijst met omgevingen weer geven
 
-Bekijk de omgevingen in uw werk ruimte met [lijst ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment(class)?view=azure-ml-py#list-workspace-)en selecteer vervolgens een omgeving om opnieuw te gebruiken.
-
-```python
-from azureml.core import Environment
-list("workspace_name")
-```
+Bekijk de omgevingen in uw werk ruimte met [`Environment.list(workspace="workspace_name")`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment(class)?view=azure-ml-py#list-workspace-)en selecteer vervolgens een omgeving om opnieuw te gebruiken.
 
 #### <a name="get-environment-by-name"></a>Omgeving ophalen op naam
 
@@ -228,17 +258,14 @@ Wanneer u `enable` docker hebt, bouwt de service een docker-installatie kopie en
 myenv.docker.enabled = True
 ```
 
-Als de docker-installatie kopie eenmaal is gemaakt, wordt deze standaard weer gegeven in de Azure Container Registry die aan de werk ruimte is gekoppeld.  De naam van de opslag plaats heeft de indeling *azureml\>/azureml_\<uuid*. Het onderdeel voor de unieke id (*uuuid*) komt overeen met een hash die is berekend op basis van de configuratie van de omgeving. Hiermee kan de service bepalen of een installatie kopie die overeenkomt met de opgegeven omgeving al bestaat voor hergebruik.
+Als de docker-installatie kopie eenmaal is gemaakt, wordt deze standaard weer gegeven in de Azure Container Registry die aan de werk ruimte is gekoppeld.  De naam van de opslag plaats heeft de indeling *azureml/azureml_ @ no__t-1uuid @ no__t-2*. Het onderdeel voor de unieke id (*uuuid*) komt overeen met een hash die is berekend op basis van de configuratie van de omgeving. Hiermee kan de service bepalen of een installatie kopie die overeenkomt met de opgegeven omgeving al bestaat voor hergebruik.
 
-Daarnaast gebruikt de service automatisch een van de op Ubuntu Linux gebaseerde [basis installatie kopieën](https://github.com/Azure/AzureML-Containers)en installeert de opgegeven Python-pakketten. De basis installatie kopie heeft CPU-en GPU-versies en u kunt de GPU-installatie `gpu_support=True`kopie opgeven door in te stellen.
+Daarnaast gebruikt de service automatisch een van de op Ubuntu Linux gebaseerde [basis installatie kopieën](https://github.com/Azure/AzureML-Containers)en installeert de opgegeven Python-pakketten. De basis installatie kopie heeft CPU-en GPU-versies. Azure Machine Learning-service detecteert automatisch welke versie moet worden gebruikt.
 
 ```python
 # Specify custom Docker base image and registry, if you don't want to use the defaults
 myenv.docker.base_image="your_base-image"
 myenv.docker.base_image_registry="your_registry_location"
-
-# Specify GPU image
-myenv.docker.gpu_support=True
 ```
 
 > [!NOTE]
@@ -250,7 +277,7 @@ Als u een trainings uitvoering wilt verzenden, moet u uw omgeving, het [berekeni
 
 Wanneer u een trainings uitvoering verzendt, kan het maken van een nieuwe omgeving enkele minuten duren, afhankelijk van de grootte van de vereiste afhankelijkheden. De omgevingen worden in de cache opgeslagen door de service, dus als de omgevings definitie ongewijzigd blijft, wordt de volledige instel tijd slechts eenmaal in rekening gebracht.
 
-Hier volgt een voor beeld van een lokaal script dat u [ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.script_run_config.scriptrunconfig?view=azure-ml-py) als uw wrapper-object zou gebruiken.
+In het volgende voor beeld van een lokaal script wordt aangegeven waar u [ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.script_run_config.scriptrunconfig?view=azure-ml-py) als uw wrapper-object zou gebruiken.
 
 ```python
 from azureml.core import Environment, ScriptRunConfig, Experiment
@@ -263,10 +290,10 @@ myenv = Environment(name="myenv")
 runconfig = ScriptRunConfig(source_directory=".", script="train.py")
 
 # Attach compute target to run config
-runconfig.compute_target = "local"
+runconfig.run_config.target = "local"
 
 # Attach environment to run config
-runconfig.environment = myenv
+runconfig.run_config.environment = myenv
 
 # Submit run 
 run = exp.submit(runconfig)
@@ -281,7 +308,7 @@ Als u de omgeving niet opgeeft in de configuratie van de uitvoering, wordt door 
 
 Als u een [Estimator](how-to-train-ml-models.md) voor training gebruikt, kunt u het Estimator-exemplaar gewoon rechtstreeks indienen, omdat het de omgeving en het reken doel al heeft ingekapseld.
 
-Hieronder wordt een Estimator gebruikt voor een training met één knoop punt dat wordt uitgevoerd op een externe Compute voor een scikit-leer model, en wordt ervan uitgegaan dat `compute_target` er een eerder gemaakt `ds`Compute-doel object en een Data Store-object is.
+De volgende code maakt gebruik van een Estimator voor een training met één knoop punt dat wordt uitgevoerd op een externe Compute voor een scikit-leer model en gaat ervan uit dat een eerder gemaakt Compute-doel object, `compute_target` en Data Store-object, `ds`.
 
 ```python
 from azureml.train.estimator import Estimator

@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/22/2019
-ms.openlocfilehash: 56d8dff7d158cedb4ab33e811cf5134cdbc475ab
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: b0024bc12f29a76da02c9f7e62af7727b9af7249
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "70999432"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350639"
 ---
 # <a name="understand-automated-machine-learning-results"></a>Automatische machine learning resultaten begrijpen
 
@@ -30,7 +30,7 @@ Meer informatie over:
 
 * Een Azure-abonnement. Als u nog geen Azure-abonnement hebt, maakt u een gratis account voordat u begint. Probeer vandaag nog de [gratis of betaalde versie van Azure machine learning](https://aka.ms/AMLFree) .
 
-* Maak een geautomatiseerd machine learning experiment, hetzij met de SDK, in de Azure Portal of op de landings pagina van uw werk ruimte (preview).
+* Maak een experiment voor uw geautomatiseerde machine learning uitvoeren, hetzij met de SDK, in de Azure Portal of op de landings pagina van uw werk ruimte (preview).
 
     * De SDK gebruiken om een [classificatie model](how-to-auto-train-remote.md) of [regressie model](tutorial-auto-train-models.md) te bouwen
     * Gebruik de [Azure portal of de landings pagina van uw werk ruimte (preview)](how-to-create-portal-experiments.md) om een classificatie of regressie model te maken door de juiste gegevens te uploaden.
@@ -117,7 +117,7 @@ De term die precisie vertegenwoordigt die mogelijkheid voor een classificatie vo
 
 Voorbeeld 1: Een classificatie model met lage precisie en laag ![een classificatie model met lage precisie en laag intrekken](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-precision-recall1.png)
 
-Voorbeeld 2: Een classificatie model met ~ 100% Precision en ~ 100% intrekken (ideaal ![) een classificatie model met hoge precisie en intrekken](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-precision-recall2.png)
+Voorbeeld 2: Een classificatie model met ~ 100% Precision en ~ 100% intrekken (ideaal) ![A-classificatie model hoge precisie en intrekken @ no__t-1
 
 ### <a name="roc"></a>ROC
 

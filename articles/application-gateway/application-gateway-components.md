@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 02/20/2019
 ms.author: absha
-ms.openlocfilehash: d6d7b4cda4bd3b3246b9bc5573246546d8020b38
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 73b5c86030d9e106cb3ea24d3100faa56e323815
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68597380"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71348941"
 ---
 # <a name="application-gateway-components"></a>Application Gateway-onderdelen
 
@@ -28,17 +28,17 @@ Een frontend-IP-adres is het IP-adres dat is gekoppeld aan een toepassings gatew
 
 De SKU v2 van de Azure-toepassing gateway kan worden geconfigureerd voor het ondersteunen van zowel een statisch intern IP-adres als een statisch openbaar IP-adres, of alleen een statisch openbaar IP-adres. Het kan niet worden geconfigureerd voor ondersteuning van alleen statisch intern IP-adres.
 
-De V1-SKU kan worden geconfigureerd ter ondersteuning van een statisch intern IP-adres en een dynamisch openbaar IP-adres, alleen een statisch intern IP-adres of alleen een dynamisch openbaar IP-adres of alleen een dynamisch privé-IP-adres en een dynamisch privé-IP-adres. Het dynamische IP-adres van Application Gateway wordt niet gewijzigd op een actieve gateway. Het kan alleen worden gewijzigd wanneer u de gateway stopt of start. Deze wijziging is niet van invloed op systeem fouten, updates, updates van Azure-hosts enz. 
+De V1-SKU kan worden geconfigureerd voor het ondersteunen van statisch of dynamisch intern IP-adres en dynamisch openbaar IP-adres. Het dynamische IP-adres van Application Gateway wordt niet gewijzigd op een actieve gateway. Het kan alleen worden gewijzigd wanneer u de gateway stopt of start. Deze wijziging is niet van invloed op systeem fouten, updates, updates van Azure-hosts enz. 
 
 De DNS-naam die is gekoppeld aan een toepassings gateway wordt niet gewijzigd gedurende de levens cyclus van de gateway. Als gevolg hiervan moet u een CNAME-alias gebruiken en deze verwijzen naar het DNS-adres van de toepassings gateway.
 
 ## <a name="listeners"></a>Listeners
 
-Een listener is een logische entiteit die controleert op binnenkomende verbindings aanvragen. Een listener accepteert een aanvraag als het Protocol, de poort, de host en het IP-adres dat is gekoppeld aan de aanvraag, overeenkomen met de elementen die zijn gekoppeld aan de configuratie van de listener.
+Een listener is een logische entiteit die controleert op binnenkomende verbindings aanvragen. Een listener accepteert een aanvraag als het Protocol, de poort, de hostnaam en het IP-adres dat is gekoppeld aan de aanvraag, overeenkomen met de elementen die zijn gekoppeld aan de configuratie van de listener.
 
 Voordat u een toepassings gateway gebruikt, moet u ten minste één listener toevoegen. Er kunnen meerdere listeners zijn gekoppeld aan een toepassings gateway en ze kunnen worden gebruikt voor hetzelfde protocol.
 
-Nadat een listener inkomende aanvragen van clients heeft gedetecteerd, stuurt de Application Gateway deze aanvragen door naar leden in de back-end-pool. De toepassings gateway gebruikt de routerings regels voor aanvragen die zijn gedefinieerd voor de listener die de inkomende aanvraag heeft ontvangen.
+Nadat een listener binnenkomende aanvragen van clients heeft gedetecteerd, stuurt de Application Gateway deze aanvragen door naar leden in de back-endadresgroep die in de regel is geconfigureerd.
 
 Listeners ondersteunen de volgende poorten en protocollen.
 
@@ -49,12 +49,13 @@ Een poort is de locatie waar een listener luistert naar de client aanvraag. U ku
 ### <a name="protocols"></a>Protocollen
 
 Application Gateway ondersteunt vier protocollen: HTTP, HTTPS, HTTP/2 en WebSocket:
+>[!NOTE]
+>Ondersteuning voor HTTP/2-protocollen is alleen beschikbaar voor clients die verbinding maken met de gateway-listeners van de toepassing. De communicatie met back-endserver-Server groepen is altijd over HTTP/1.1. HTTP/2-ondersteuning is standaard uitgeschakeld. U kunt ervoor kiezen om deze functie in te scha kelen.
 
 - Geef de HTTP-en HTTPS-protocollen op in de configuratie van de listener.
-- Ondersteuning voor [Websockets en http/2-protocollen](https://docs.microsoft.com/azure/application-gateway/overview#websocket-and-http2-traffic) wordt systeem eigen en WebSocket- [ondersteuning](https://docs.microsoft.com/azure/application-gateway/application-gateway-websocket) is standaard ingeschakeld. Er is geen door de gebruiker configureerbare instelling om selectief WebSocket-ondersteuning in of uit te schakelen. Gebruik websockets met HTTP-en HTTPS-listeners.
-- Ondersteuning voor HTTP/2-protocollen is alleen beschikbaar voor clients die verbinding maken met de gateway-listeners van de toepassing. De communicatie met back-endserver-Server groepen is via HTTP/1.1. HTTP/2-ondersteuning is standaard uitgeschakeld. U kunt ervoor kiezen om deze functie in te scha kelen.
+- Ondersteuning voor [Websockets en http/2-protocollen](https://docs.microsoft.com/azure/application-gateway/overview#websocket-and-http2-traffic) wordt systeem eigen en [WebSocket-ondersteuning](https://docs.microsoft.com/azure/application-gateway/application-gateway-websocket) is standaard ingeschakeld. Er is geen door de gebruiker configureerbare instelling om selectief WebSocket-ondersteuning in of uit te schakelen. Gebruik websockets met HTTP-en HTTPS-listeners.
 
-Gebruik een HTTPS-listener voor SSL-beëindiging. Een HTTPS-listener versleutelt de versleuteling en ontsleuteling van uw toepassings gateway, zodat uw webservers niet worden belast met overhead. Uw apps zijn dan gratis op bedrijfs logica gericht.
+Gebruik een HTTPS-listener voor SSL-beëindiging. Een HTTPS-listener versleutelt de versleuteling en ontsleuteling van uw toepassings gateway, zodat uw webservers niet worden belast met de overhead.
 
 ### <a name="custom-error-pages"></a>Aangepaste foutpagina's
 
@@ -96,7 +97,7 @@ Met de regel voor aanvraag routering kunt u het verkeer omleiden naar de Applica
 
 U kunt kiezen dat het doel van de omleiding een andere listener is (waarmee automatische HTTP-naar-HTTPS-omleiding kan worden ingeschakeld) of een externe site. U kunt er ook voor kiezen om de omleiding tijdelijk of permanent te laten, of om het URI-pad en de query reeks toe te voegen aan de omgeleide URL.
 
-Zie verkeer omleiden naar [uw toepassings gateway](https://docs.microsoft.com/azure/application-gateway/redirect-overview)voor meer informatie.
+Zie [verkeer omleiden naar uw toepassings gateway](https://docs.microsoft.com/azure/application-gateway/redirect-overview)voor meer informatie.
 
 ### <a name="rewrite-http-headers"></a>HTTP-headers opnieuw genereren
 

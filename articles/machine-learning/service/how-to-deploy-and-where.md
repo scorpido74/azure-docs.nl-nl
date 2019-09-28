@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 09/13/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 30164824cab19aae9cc9665304eb66f595e082da
-ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
+ms.openlocfilehash: 1349a81bc4f0f3eed4093bbe91abea68264b4021
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71162568"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350657"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>Modellen met Azure Machine Learning implementeren
 
@@ -467,7 +467,9 @@ def run(request):
 
 De configuratie voor afnemen beschrijft hoe u het model configureert om voor spellingen te maken. Deze configuratie maakt geen deel uit van uw invoer script. Het verwijst naar uw invoer script en wordt gebruikt voor het zoeken van alle resources die vereist zijn voor de implementatie. Het wordt later gebruikt wanneer u het model implementeert.
 
-De configuratie voor het afwijzen van een Dede ring kan gebruikmaken van Azure Machine Learning omgevingen om de vereiste software afhankelijkheden voor uw implementatie te definiëren. Met omgevingen kunt u de software-afhankelijkheden maken, beheren en opnieuw gebruiken die zijn vereist voor training en implementatie. In het volgende voor beeld ziet u hoe u een omgeving laadt vanuit uw werk ruimte en deze vervolgens gebruikt met de configuratie voor inschakeling:
+De configuratie voor het afwijzen van een Dede ring kan gebruikmaken van Azure Machine Learning omgevingen om de vereiste software afhankelijkheden voor uw implementatie te definiëren. Met omgevingen kunt u de software-afhankelijkheden maken, beheren en opnieuw gebruiken die zijn vereist voor training en implementatie. Wanneer u een-omgeving gebruikt, worden model bestanden en uw verschafte bronmap rechtstreeks aan de actieve container gekoppeld. ze worden niet gekopieerd naar de container installatie kopie of in het container register.
+
+In het volgende voor beeld ziet u hoe u een omgeving laadt vanuit uw werk ruimte en deze vervolgens gebruikt met de configuratie voor inschakeling:
 
 ```python
 from azureml.core import Environment

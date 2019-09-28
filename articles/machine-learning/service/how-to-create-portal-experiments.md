@@ -11,12 +11,12 @@ author: tsikiksr
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 09/09/2019
-ms.openlocfilehash: 3a47977f2589227347582dc6fcaff25120e380d7
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 45207eb1cdc62f2468d8b0c052723337c18d5021
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71034836"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350548"
 ---
 # <a name="create-explore-and-deploy-automated-machine-learning-experiments-with-azure-machine-learnings-workspace-landing-page-preview"></a>Automatische machine learning experimenten maken, verkennen en implementeren met behulp van de landings pagina van Azure Machine Learning werk ruimte (preview)
 
@@ -32,12 +32,11 @@ ms.locfileid: "71034836"
 
 ## <a name="get-started"></a>Aan de slag
 
-
 1. Meld u aan bij [de pagina voor het land van de werk ruimte](https://ml.azure.com/workspaceportal/). 
 
 1. Selecteer uw abonnement en werk ruimte. 
 
-1. Ga naar het linkerdeel venster. Selecteer **automatische ml** onder het gedeelte **ontwerpen** .
+1. Ga naar het linkerdeel venster. Selecteer **automatische ml** onder het gedeelte **Auteur** .
 
 [![Navigatie deel venster Azure Portal](media/how-to-create-portal-experiments/nav-pane.png)](media/how-to-create-portal-experiments/nav-pane-expanded.png)
 
@@ -59,7 +58,7 @@ Anders ziet u uw **geautomatiseerde machine learning** -dash board met een overz
     ---|---
     Compute-naam| Voer een unieke naam in die uw berekenings context identificeert.
     Grootte van de virtuele machine| Selecteer de grootte van de virtuele machine voor de reken kracht.
-    Aanvullende instellingen| *Min. knoop punt*: Voer het minimum aantal knoop punten in voor de reken kracht. Het minimum aantal knoop punten voor de AML-Compute is 0. Als u gegevens profilering wilt inschakelen, moet u één of meer knoop punten hebben. <br> *Maximum knoop punt*: Voer het maximum aantal knoop punten in voor de reken kracht. De standaard waarde is 6 knoop punten voor een AML-berekening.
+    Min-maximum aantal knoop punten (in geavanceerde instellingen)| Als u wilt profiel gegevens, moet u één of meer knoop punten opgeven. Voer het maximum aantal knoop punten in voor de reken kracht. De standaard waarde is 6 knoop punten voor een AML-berekening.
     
     Selecteer **Maken**. Het maken van een nieuwe berekening kan enkele minuten duren.
 
@@ -83,7 +82,7 @@ Anders ziet u uw **geautomatiseerde machine learning** -dash board met een overz
 
         Veld| Description
         ----|----
-        Bestands indeling| Hiermee definieert u de indeling en het type van de gegevens die zijn opgeslagen in een bestand.
+        Bestandsindeling| Hiermee definieert u de indeling en het type van de gegevens die zijn opgeslagen in een bestand.
         Scheidingsteken| Een of meer tekens voor het opgeven van de grens tussen afzonderlijke, onafhankelijke regio's in tekst zonder opmaak of andere gegevens stromen.
         Encoding| Hiermee wordt aangegeven welke bits-schema tabel moet worden gebruikt om de gegevensset te lezen.
         Kolomkoppen| Hiermee wordt aangegeven hoe de headers van de gegevensset, indien aanwezig, worden behandeld.
@@ -109,7 +108,7 @@ Anders ziet u uw **geautomatiseerde machine learning** -dash board met een overz
     Geavanceerde instellingen|Description
     ------|------
     Primaire metriek| De belangrijkste waarde die wordt gebruikt voor het scoren van uw model. Meer [informatie over de metrische gegevens van modellen](how-to-configure-auto-train.md#explore-model-metrics).
-    Afsluit criteria| Wanneer aan een van deze criteria wordt voldaan, wordt de trainings taak beëindigd voordat deze volledig is voltooid. <br> *Tijd trainings taak (minuten)* : Hoe lang het duurt om de trainings taak uit te voeren.  <br> *Maximum aantal herhalingen*: Maximum aantal pijp lijnen (iteraties) om in de trainings taak te testen. De taak wordt niet meer uitgevoerd dan het opgegeven aantal iteraties. <br> *Drempel waarde voor metrische Score*:  Minimale metrische score voor alle pijp lijnen. Dit zorgt ervoor dat als u een gedefinieerde doel metriek hebt die u wilt bereiken, u niet meer tijd op de trainings taak brengt dan nodig is.
+    Afsluit criteria| Wanneer aan een van deze criteria wordt voldaan, wordt de trainings taak gestopt. <br> *Tijd trainings taak (minuten)* : Hoe lang het duurt om de trainings taak uit te voeren.  <br> *Maximum aantal herhalingen*: Maximum aantal pijp lijnen (iteraties) om in de trainings taak te testen. De taak wordt niet meer uitgevoerd dan het opgegeven aantal iteraties. <br> *Drempel waarde voor metrische Score*:  Minimale metrische score voor alle pijp lijnen. Dit zorgt ervoor dat als u een gedefinieerde doel metriek hebt die u wilt bereiken, u niet meer tijd op de trainings taak brengt dan nodig is.
     Verwerking| Selecteer deze optie om de voor verwerking van automatische machine learning in of uit te scha kelen. Preverwerking omvat het automatisch opschonen van gegevens, voorbereiden en transformeren voor het genereren van synthetische functies. [Meer informatie over voor verwerking](#preprocess).
     Validatie| Selecteer een van de opties voor kruis validatie die u wilt gebruiken in de trainings taak. Meer [informatie over Kruis validatie](how-to-configure-auto-train.md).
     Gelijktijdigheid| Selecteer de limieten voor meerdere kernen die u wilt gebruiken bij het gebruik van multi-core-berekening.
@@ -134,11 +133,11 @@ Min.| Minimum waarde van de kolom. Er worden geen lege items weer gegeven voor f
 Max.| De maximum waarde van de kolom. 
 Count| Totaal aantal ontbrekende en niet-ontbrekende vermeldingen in de kolom.
 Niet-ontbrekend aantal| Het aantal vermeldingen in de kolom die niet ontbreken. Lege teken reeksen en fouten worden beschouwd als waarden, zodat ze niet bijdragen aan het aantal niet-ontbrekende items.
-Quantiles| Geschatte waarden bij elke quantile om een idee te geven van de distributie van de gegevens.
+Kwantielen| Geschatte waarden bij elke quantile om een idee te geven van de distributie van de gegevens.
 Gemiddeld| Reken kundige gemiddelde of gemiddelde van de kolom.
 Standaarddeviatie| Meting van de hoeveelheid sprei ding of variatie van de gegevens van deze kolom.
-Variantie| De mate waarin de gegevens van deze kolom worden verdeeld uit de gemiddelde waarde. 
-Asymmetrie| Meting van de manier waarop de gegevens van de andere kolom van een normale distributie zijn.
+Afwijking| De mate waarin de gegevens van deze kolom worden verdeeld uit de gemiddelde waarde. 
+Scheefheid| Meting van de manier waarop de gegevens van de andere kolom van een normale distributie zijn.
 Kurtosis| Meting van hoe sterk de gegevens van deze kolom worden vergeleken met een normale distributie.
 
 <a name="preprocess"></a>

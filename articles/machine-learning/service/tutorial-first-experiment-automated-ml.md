@@ -10,12 +10,12 @@ ms.author: tzvikei
 author: tsikiksr
 ms.reviewer: nibaccam
 ms.date: 09/26/2019
-ms.openlocfilehash: 38c319fb89e8c763f8231c18cbb59bef099193e2
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 3ddd228488d8ba4adc6780db1f65fdb634291d3b
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71259315"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350498"
 ---
 # <a name="tutorial-create-your-first-classification-model-with-automated-machine-learning"></a>Zelfstudie: Uw eerste classificatie model maken met geautomatiseerde machine learning
 
@@ -50,7 +50,7 @@ U maakt een werk ruimte via de Azure Portal, een webconsole voor het beheren van
 
 ## <a name="create-and-run-the-experiment"></a>Het experiment maken en uitvoeren
 
-U voltooit de volgende proef installatie en voert de stappen uit op de pagina voor het land van de werk ruimte, een geconsolideerde interface met machine learning-hulpprogram ma's voor het uitvoeren van data Science-scenario's voor data Science-artsen van alle vaardigheids niveaus.
+U voltooit de volgende proef installatie en voert de stappen uit op de pagina voor het land van de werk ruimte, een geconsolideerde interface met machine learning-hulpprogram ma's voor het uitvoeren van data Science-scenario's voor data Science-artsen van alle vaardigheids niveaus. De landings pagina voor de werk ruimte wordt niet ondersteund in Internet Explorer-browsers.
 
 1. Meld u aan bij de pagina voor het land van de [werk ruimte](https://ml.azure.com/workspaceportal/).
 
@@ -58,7 +58,7 @@ U voltooit de volgende proef installatie en voert de stappen uit op de pagina vo
 
 1. Selecteer **aan de slag**.
 
-1. Selecteer in het linkerdeel venster **automatische ml** onder het gedeelte **ontwerpen** .
+1. Selecteer in het linkerdeel venster **automatische ml** onder het gedeelte **Auteur** .
 
    Aangezien dit uw eerste geautomatiseerde ML-experiment is, ziet u het scherm aan de slag.
 
@@ -99,23 +99,21 @@ U voltooit de volgende proef installatie en voert de stappen uit op de pagina vo
        
     1. Controleer of de **instellingen en het voorbeeld** formulier als volgt zijn ingevuld en selecteer **volgende**.
         
-        Veld|Waarde voor zelf studie
-        ---|---
-        Bestandsindeling| Met scheidingstekens
-        Scheidingsteken| Komma
-        Encoding| UTF-8
-        Kolomkoppen| Alle bestanden hebben dezelfde kopteksten
-        Rijen overs Laan | Geen
+        Veld|Description| Waarde voor zelf studie
+        ---|---|---
+        Bestandsindeling|Hiermee definieert u de indeling en het type van de gegevens die zijn opgeslagen in een bestand.| Met scheidingstekens
+        Scheidingsteken|Een of meer tekens voor het opgeven van de grens tussen @ no__t-0 afzonderlijke, onafhankelijke regio's in tekst zonder opmaak of andere gegevens stromen. |Komma
+        Encoding|Hiermee wordt aangegeven welke bits-schema tabel moet worden gebruikt om de gegevensset te lezen.| UTF-8
+        Kolomkoppen| Hiermee wordt aangegeven hoe de headers van de gegevensset, indien aanwezig, worden behandeld.| Alle bestanden hebben dezelfde kopteksten
+        Rijen overs Laan | Hiermee wordt aangegeven hoeveel, indien van toepassing, rijen in de gegevensset worden overgeslagen.| Geen
     
-    1. Met het **schema** formulier kunt u uw gegevens voor dit experiment verder configureren. Voor dit voor beeld selecteert u de wissel knop voor de functie **day_of_week** , zodat u deze niet voor dit experiment kunt gebruiken. Selecteer **gereed**om het uploaden en het maken van de gegevensset voor uw experiment te volt ooien.
-
         ![Configuratie van het tabblad voor beeld](media/tutorial-1st-experiment-automated-ml/schema-tab-config.gif)
 
 1. Selecteer **classificatie** als de Voorspellings taak.
 
 1. Selecteer **y** als doel kolom, wat u wilt voors pellen. Deze kolom geeft aan of de client is geabonneerd op een term deposit of niet.
 
-1. Vouw **Geavanceerde instellingen** uit en vul de velden als volgt in.
+1. Vouw **Geavanceerde instellingen** uit en vul de velden als volgt in. Deze instellingen zijn een betere controle over de trainings taak. Anders worden de standaard waarden toegepast op basis van het experiment en de gegevens.
 
    >[!NOTE]
    > In deze zelf studie stelt u geen metrische Score of maximale kernen per herhalings drempel in. U kunt ook voor komen dat algoritmen worden getest.
@@ -138,10 +136,10 @@ U voltooit de volgende proef installatie en voert de stappen uit op de pagina vo
 
 ##  <a name="explore-iteration-results"></a>Iteratie resultaten verkennen
 
-Naarmate het experiment vordert, werkt het scherm het **iteratie diagram** en de **herhalings lijst** bij met de verschillende iteraties (modellen) die zijn gemaakt tijdens de voltooiing en worden ze gesorteerd op metrische Score. Standaard beoordeelt het model dat het hoogste verlaagt op basis van de gekozen **AUC_weighted** metrische gegevens boven aan de lijst.
+Wanneer het experiment wordt uitgevoerd, werkt het scherm het **iteratie diagram** en de **iteratie lijst** bij met de verschillende iteraties (modellen) die zijn gemaakt als ze zijn voltooid. Standaard worden de herhalingen gesorteerd op metrische Score. Voor deze zelf studie is het model dat de hoogste score op basis van de gekozen **AUC_weighted** metriek boven aan de lijst weer gegeven.
 
 Terwijl u wacht totdat alle experiment-iteraties zijn voltooid, selecteert u de **naam** van een voltooide iteratie om de prestatie details te verkennen. 
-   
+
 Hieronder ziet u de grafieken en voert u metrische gegevens uit die zijn gegenereerd voor elke herhaling, zoals een curve voor het intrekken van een precisie, Verwar ring matrix, gewogen nauw keurigheid, enzovoort. 
 
 ![Details van herhaling uitvoeren](media/tutorial-1st-experiment-automated-ml/run-detail.gif)
@@ -199,6 +197,7 @@ In deze zelf studie voor automatisch machine learning hebt u de landings pagina 
 + Meer informatie over voor [verwerking](how-to-create-portal-experiments.md#preprocess).
 + Meer informatie over [gegevens profilering](how-to-create-portal-experiments.md#profile).
 + Meer informatie over [automatische machine learning](concept-automated-ml.md).
++ Zie het artikel over [geautomatiseerde machine learning resultaten](how-to-understand-automated-ml.md#classification) voor meer informatie over classificatie gegevens en diagrammen.
 
 >[!NOTE]
 > Deze gegevensset voor Bank marketing wordt beschikbaar gesteld onder [de Creative Commons (CCO: Open bare domein)](https://creativecommons.org/publicdomain/zero/1.0/). Alle rechten in de afzonderlijke inhoud van de Data Base worden in licentie gegeven onder de licentie voor de [Data Base-inhoud](https://creativecommons.org/publicdomain/zero/1.0/) en beschikbaar op [Kaggle](https://www.kaggle.com/janiobachmann/bank-marketing-dataset). Deze gegevensset is oorspronkelijk beschikbaar in de [icb machine learning-data base](https://archive.ics.uci.edu/ml/datasets/bank+marketing).<br><br>

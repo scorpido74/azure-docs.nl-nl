@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/23/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 68e1bcfeaa998b0698554fd93fd7ed2e88a29739
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 9eb10260573978355a3b6996a6f06c0c612abe4c
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70143001"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350022"
 ---
 # <a name="using-azure-data-lake-storage-gen2-for-big-data-requirements"></a>Azure Data Lake Storage Gen2 gebruiken voor big data vereisten
 
@@ -31,7 +31,7 @@ Maak eerst een opslag account en een container. Verleen vervolgens toegang tot d
 
 Een Data Lake Storage Gen2 account is een opslag account met een hiërarchische naam ruimte. 
 
-Als u er een wilt [maken, raadpleegt u Quick Start: Maak een Azure Data Lake Storage Gen2 Storage-](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-quickstart-create-account?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)account.
+Als u er een wilt maken, raadpleegt u [Quickstart: Maak een Azure Data Lake Storage Gen2 Storage-](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-quickstart-create-account?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)account.
 
 ## <a name="create-a-container"></a>Een container maken
 
@@ -77,7 +77,7 @@ In deze tabel ziet u hoe u toegang verleent voor elke Azure-service of elk hulp 
 
 Zie deze artikelen voor meer informatie over het verlenen van toegang tot specifieke bestanden en mappen.
 
-* [Machtigingen voor bestanden en mapniveau instellen met behulp van Azure Storage Explorer met Azure Data Lake Storage Gen2](https://review.docs.microsoft.com/azure/storage/blobs/data-lake-storage-how-to-set-permissions-storage-explorer)
+* [Machtigingen voor bestanden en mapniveau instellen met behulp van Azure Storage Explorer met Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-how-to-set-permissions-storage-explorer)
 
 * [Toegangs beheer lijsten voor bestanden en mappen](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control#access-control-lists-on-files-and-directories)
 
@@ -163,20 +163,20 @@ Met Azure ExpressRoute kunt u particuliere verbindingen maken tussen Azure-data 
 
 Zodra de gegevens beschikbaar zijn in Data Lake Storage Gen2 kunt u analyses uitvoeren op die gegevens met behulp van de ondersteunde big data toepassingen. 
 
-![Gegevens in data Lake Storage Gen2 analyseren](./media/data-lake-storage-data-scenarios/analyze-data.png "Gegevens in data Lake Storage Gen2 analyseren")
+![Gegevens analyseren in data Lake Storage Gen2](./media/data-lake-storage-data-scenarios/analyze-data.png "gegevens in data Lake Storage Gen2 analyseren")
 
 Hier volgt een lijst met hulpprogram ma's die u kunt gebruiken om taken voor gegevens analyse uit te voeren voor gegevens die zijn opgeslagen in Data Lake Storage Gen2.
 
 |Hulpprogramma | Richtlijnen |
 |---|--|
 |Azure HDInsight | [Azure Data Lake Storage Gen2 gebruiken met Azure HDInsight-clusters](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2) |
-|Azure Databricks | [Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html)<br><br>[Snelstart: Gegevens in Azure Data Lake Storage Gen2 analyseren met behulp van Azure Databricks](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-quickstart-create-databricks-account?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)<br><br>[Zelfstudie: Gegevens uitpakken, transformeren en laden met behulp van Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/databricks-extract-load-sql-data-warehouse?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
+|Azure Databricks | [Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html)<br><br>[Snelstart: Gegevens in Azure Data Lake Storage Gen2 analyseren met behulp van Azure Databricks @ no__t-0<br><br>[Zelfstudie: Gegevens uitpakken, transformeren en laden met behulp van Azure Databricks @ no__t-0|
 
 ## <a name="visualize-the-data"></a>De gegevens visualiseren
 
 U kunt een combi natie van Services gebruiken om visuele weer gaven te maken van gegevens die zijn opgeslagen in Data Lake Storage Gen2.
 
-![Gegevens visualiseren in data Lake Storage Gen2](./media/data-lake-storage-data-scenarios/visualize-data.png "Gegevens visualiseren in data Lake Storage Gen2")
+![Gegevens visualiseren in data Lake Storage Gen2](./media/data-lake-storage-data-scenarios/visualize-data.png "gegevens visualiseren in data Lake Storage Gen2")
 
 * U kunt beginnen met [Azure Data Factory om gegevens te verplaatsen van data Lake Storage Gen2 naar Azure SQL Data Warehouse](../../data-factory/copy-activity-overview.md)
 * Daarna kunt u [Power bi integreren met Azure SQL Data Warehouse](../../sql-data-warehouse/sql-data-warehouse-get-started-visualize-with-power-bi.md) om een visuele weer gave van de gegevens te maken.
@@ -189,7 +189,7 @@ U kunt ook gegevens downloaden of verplaatsen van Azure Data Lake Storage Gen2 v
 
 * Down load gegevens naar uw lokale computer voor verwerking in IDE-omgevingen tijdens het maken van prototypen van toepassingen.
 
-Uitgaande ![gegevens van data Lake Storage Gen2] Uitgaande (./media/data-lake-storage-data-scenarios/egress-data.png "gegevens van data Lake Storage Gen2")
+Uitgaande ![gegevens van data Lake Storage Gen2]uitgaand(./media/data-lake-storage-data-scenarios/egress-data.png "gegevens van data Lake Storage Gen2")
 
 Hier volgt een lijst met hulpprogram ma's die u kunt gebruiken om gegevens te downloaden van Data Lake Storage Gen2.
 

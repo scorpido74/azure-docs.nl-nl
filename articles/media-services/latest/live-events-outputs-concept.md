@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 09/25/2019
 ms.author: juliako
-ms.openlocfilehash: 7cb158490bd8a8520e101dbe321b8594cad059f9
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.openlocfilehash: efe0aaf7c7d5516401f8c72721121a5dff247b95
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71309673"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350365"
 ---
 # <a name="live-events-and-live-outputs"></a>Live gebeurtenissen en live uitvoer
 
@@ -35,7 +35,7 @@ Met Azure Media Services kunt u live gebeurtenissen aan uw klanten leveren via d
 
 Een [live gebeurtenis](https://docs.microsoft.com/rest/api/media/liveevents) kan een van de volgende twee typen zijn: Pass-Through en live encoding. De typen worden tijdens het maken ingesteld met behulp van [LiveEventEncodingType](https://docs.microsoft.com/rest/api/media/liveevents/create#liveeventencodingtype):
 
-* **LiveEventEncodingType. none** : een on-premises Live coderings programma verzendt een stream met meerdere bitrates. De opgenomen streams passeren de live-gebeurtenis zonder verdere verwerking. 
+* **LiveEventEncodingType. none** : een on-premises Live coderings programma verzendt een stream met meerdere bitrates. De opgenomen stroom slaagt via de live-gebeurtenis zonder verdere verwerking. 
 * **LiveEventEncodingType. Standard** : een on-premises Live coderings programma verzendt een stream met één bitsnelheid naar de live-gebeurtenis en Media Services maakt meerdere bitrate-streams. Als de bijdrage-feed van 720p of hoger is, wordt met de voor instelling **Default720p** een set van 6 omzetting/bitrate-paren gecodeerd.
 * **LiveEventEncodingType. Premium1080p** : een on-premises Live coderings programma verzendt een stream met één bitsnelheid naar de live-gebeurtenis en Media Services maakt meerdere bitrate-streams. De Default1080p-voor instelling bepaalt de uitvoerset van de paren Resolution/bitrates. 
 
@@ -66,7 +66,9 @@ De resoluties en bitrates die zijn opgenomen in de uitvoer van het Live codering
 > [!NOTE]
 > Als u de voor instelling voor Live encoding wilt aanpassen, kunt u een ondersteunings ticket openen via Azure Portal. Geef de gewenste tabel met resoluties en bitrates op. Zorg ervoor dat er slechts één laag op 720p is (als u een voor instelling voor een standaard-Live Encoder aanvraagt) of op 1080p (als u een voor instelling voor een Premium1080p Live Encoder wilt aanvragen) en Maxi maal 6 lagen.
 
-## <a name="live-event-creation-options"></a>Opties voor het maken van Live-gebeurtenissen
+## <a name="creating-live-events"></a>Live-gebeurtenissen maken 
+
+### <a name="options"></a>Opties
 
 Wanneer u een live gebeurtenis maakt, kunt u de volgende opties opgeven:
 
@@ -77,7 +79,14 @@ Wanneer u een live gebeurtenis maakt, kunt u de volgende opties opgeven:
 * IP-beperkingen voor de opname en voorbeeldweergave. U kunt de IP-adressen definiëren die zijn toegestaan om een video van deze livegebeurtenis op te nemen. Toegestane IP-adressen kunnen worden opgegeven als één IP-adres (bijvoorbeeld 10.0.0.1), een IP-adresbereik met een IP-adres en een CIDR-subnetmasker (bijvoorbeeld 10.0.0.1/22) of een IP-adresbereik met een IP-adres en een decimaal subnetmasker met punten (bijvoorbeeld , ' 10.0.0.1(255.255.252.0)').<br/>Als geen IP-adressen zijn opgegeven en er geen regeldefinitie bestaat, zijn er geen IP-adressen toegestaan. Als u IP-adres(sen) wilt toestaan, maakt u een regel en stelt u 0.0.0.0/0 in.<br/>De IP-adressen moeten een van de volgende indelingen hebben: IpV4-adres met 4 cijfers, CIDR-adresbereik.
 
     Als u bepaalde Ip's wilt inschakelen op uw eigen firewalls of als u invoer wilt beperken voor uw Live-gebeurtenissen in azure IP-adressen, downloadt u een JSON-bestand van de IP-adresbereiken van het [Azure-Data Center](https://www.microsoft.com/download/details.aspx?id=41653). Klik voor meer informatie over dit bestand op de sectie **Details** op de pagina.
-    
+        
+### <a name="naming-rules"></a>Naamgevingsregels
+
+* De maximale naam van een live-gebeurtenis is 32 tekens.
+* De naam moet volgen op dit [regex](https://docs.microsoft.com/dotnet/standard/base-types/regular-expression-language-quick-reference) -patroon: `^[a-zA-Z0-9]+(-*[a-zA-Z0-9])*$`.
+
+Zie ook [naam conventies voor streaming-eind punten](streaming-endpoint-concept.md#naming-convention).
+
 ## <a name="live-event-ingest-urls"></a>Url's voor Live Event opname
 
 Wanneer de livegebeurtenis is gemaakt, kunt u URL's voor opnemen ophalen die u aan de on-premises live-encoder levert. De live-encoder gebruikt deze URL's voor het invoeren van een live-stream. Zie [Aanbevolen on-premises Live coderings](recommended-on-premises-live-encoders.md)Programma's voor meer informatie. 

@@ -11,8 +11,6 @@
       href: /azure/cloudfoundry/create-cloud-foundry-on-azure
     - name: CF-app implementeren in Azure
       href: /azure/virtual-machines/linux/cloudfoundry-deploy-your-first-app
-    - name: OSBA gebruiken met een app op PCF
-      href: /azure/cloudfoundry/use-osba-pcf-app
     - name: Cloud Foundry in Azure
       href: /azure/virtual-machines/linux/cloudfoundry-get-started
     - name: CF OMS Nozzle implementeren

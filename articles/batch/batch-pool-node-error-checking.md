@@ -7,12 +7,12 @@ author: mscurrell
 ms.author: markscu
 ms.date: 08/23/2019
 ms.topic: conceptual
-ms.openlocfilehash: d115b7d56609b95f2ea10b3fee2f8900102b94e4
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 3c8e189e84e0a467125995b3e2d633c285eb7367
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70012477"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350059"
 ---
 # <a name="check-for-pool-and-node-errors"></a>Controleren op groeps-en knooppunt fouten
 
@@ -37,12 +37,12 @@ Veelvoorkomende oorzaken voor het wijzigen van de grootte zijn:
   - Als u een groot aantal knoop punten toewijst, is het raadzaam om de time-outwaarde in te stellen op 30 minuten. Bijvoorbeeld wanneer u het formaat van een installatie kopie van een Azure Marketplace of van meer dan 300 knooppunten wijzigt in meer dan 1.000 knoop punten.
 - Onvoldoende kern quotum
   - Een batch-account is beperkt in het aantal kernen dat kan worden toegewezen in alle groepen. Batch stopt met het toewijzen van knoop punten nadat het quotum is bereikt. U [kunt](https://docs.microsoft.com/azure/batch/batch-quota-limit) het kern quotum verhogen zodat batch meer knoop punten kan toewijzen.
-- Onvoldoende subnet-IP-adressen wanneer een [groep zich in een virtueel netwerk](https://docs.microsoft.com/azure/batch/batch-virtual-network) bevindt
+- Onvoldoende subnet-IP-adressen wanneer een [groep zich in een virtueel netwerk bevindt](https://docs.microsoft.com/azure/batch/batch-virtual-network)
   - Een subnet van een virtueel netwerk moet voldoende niet-toegewezen IP-adressen hebben om aan elk aangevraagde groeps knooppunt toe te wijzen. Anders kunnen de knoop punten niet worden gemaakt.
-- Onvoldoende resources wanneer een [groep zich in een virtueel netwerk](https://docs.microsoft.com/azure/batch/batch-virtual-network) bevindt
+- Onvoldoende resources wanneer een [groep zich in een virtueel netwerk bevindt](https://docs.microsoft.com/azure/batch/batch-virtual-network)
   - U kunt resources zoals load-balancers, open bare Ip's en netwerk beveiligings groepen maken in hetzelfde abonnement als het batch-account. Controleer of de abonnements quota's voldoende zijn voor deze resources.
 - Grote Pools met aangepaste VM-installatie kopieën
-  - Grote Pools die gebruikmaken van aangepaste VM-installatie kopieën, kunnen langer duren en kunnen worden gewijzigd.  Zie [een aangepaste installatie kopie gebruiken om een pool van virtuele machines te maken](https://docs.microsoft.com/azure/batch/batch-custom-images) voor aanbevelingen over limieten en configuratie.
+  - Grote Pools die gebruikmaken van aangepaste VM-installatie kopieën, kunnen langer duren en kunnen worden gewijzigd.  Zie [een groep maken met de galerie met gedeelde afbeeldingen](batch-sig-images.md) voor aanbevelingen over limieten en configuratie.
 
 ### <a name="automatic-scaling-failures"></a>Fouten bij automatisch schalen
 
@@ -84,17 +84,17 @@ Start taken moeten worden herhaald, omdat het mogelijk is dat de begin taak meer
 
 U kunt een of meer toepassings pakketten voor een groep opgeven. Batch downloadt de opgegeven pakket bestanden naar elk knoop punt en decomprimeert de bestanden nadat het knoop punt is gestart, maar voordat taken worden gepland. Het is gebruikelijk om een opdracht regel voor starten van de taak te gebruiken in combi natie met toepassings pakketten. Bijvoorbeeld om bestanden te kopiëren naar een andere locatie of om Setup uit te voeren.
 
-De eigenschap knooppunt [fouten](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodeerror) rapporteert een fout bij het downloaden en het ongedaan maken van de compressie van een toepassings pakket; de status van het knoop puntis ingesteld op onbruikbaar.
+De eigenschap knooppunt [fouten](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodeerror) rapporteert een fout bij het downloaden en het ongedaan maken van de compressie van een toepassings pakket; de status van het knoop punt is ingesteld op **onbruikbaar**.
 
 ### <a name="container-download-failure"></a>Fout bij downloaden van container
 
-U kunt een of meer container verwijzingen opgeven voor een groep. Batch downloadt de opgegeven containers naar elk knoop punt. De eigenschap knooppunt [fouten](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodeerror) rapporteert een fout bij het downloaden van een container en stelt de status van het knoop punt in op onbruikbaar.
+U kunt een of meer container verwijzingen opgeven voor een groep. Batch downloadt de opgegeven containers naar elk knoop punt. De eigenschap knooppunt [fouten](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodeerror) rapporteert een fout bij het downloaden van een container en stelt de status van het knoop punt in op **onbruikbaar**.
 
 ### <a name="node-in-unusable-state"></a>Het knoop punt kan niet worden gebruikt
 
-Azure Batch kan de status van het [knoop punt](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodestate) om een groot aantal redenen worden ingesteld op onbruikbaar. Als de status van het knooppunt is ingesteld op onbruikbaar, kunnen taken niet worden gepland voor het knoop punt, maar worden er nog steeds kosten in rekening gebracht.
+Azure Batch kan de status van het [knoop punt](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodestate) om een groot aantal redenen worden ingesteld op **onbruikbaar** . Als de status van het knoop punt is ingesteld op **onbruikbaar**, kunnen taken niet worden gepland voor het knoop punt, maar worden er nog steeds kosten in rekening gebracht.
 
-Knoop punten in een niet- **bruikbare** status, maar zonder [fouten](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodeerror) betekent dat de batch niet kan communiceren met de virtuele machine. In dit geval probeert batch altijd de virtuele machine te herstellen. Er wordt niet automatisch geprobeerd om Vm's te herstellen waarvoor geen toepassings pakketten of containers konden worden geïnstalleerd, ook alis de status onbruikbaar.
+Knoop punten in een niet- **bruikbare** status, maar zonder [fouten](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodeerror) betekent dat de batch niet kan communiceren met de virtuele machine. In dit geval probeert batch altijd de virtuele machine te herstellen. Er wordt niet automatisch geprobeerd om Vm's te herstellen waarvoor geen toepassings pakketten of containers konden worden geïnstalleerd, ook al is de status **onbruikbaar**.
 
 Als batch de oorzaak kan bepalen, wordt deze door de eigenschap voor knooppunt [fouten](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodeerror) gerapporteerd.
 
@@ -133,7 +133,7 @@ Andere bestanden worden geschreven voor elke taak die wordt uitgevoerd op een kn
 De grootte van het tijdelijke station is afhankelijk van de grootte van de virtuele machine. Een overweging bij het kiezen van een VM-grootte is om ervoor te zorgen dat de tijdelijke schijf voldoende ruimte heeft.
 
 - In de Azure Portal wanneer u een groep toevoegt, kan de volledige lijst met VM-grootten worden weer gegeven en de kolom ' bron schijf grootte '.
-- De artikelen waarin alle VM-grootten worden beschreven, hebben tabellen met de kolom Temp Storage. voor beeld van [geoptimaliseerde VM](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-compute) -grootten
+- De artikelen waarin alle VM-grootten worden beschreven, hebben tabellen met de kolom Temp Storage. voor beeld van [geoptimaliseerde VM-grootten](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-compute)
 
 Voor bestanden die door elke taak zijn geschreven, kan een Bewaar periode worden opgegeven voor elke taak die bepaalt hoe lang de taak bestanden worden bewaard voordat ze automatisch worden opgeruimd. De retentie tijd kan worden gereduceerd om de opslag vereisten te verlagen.
 

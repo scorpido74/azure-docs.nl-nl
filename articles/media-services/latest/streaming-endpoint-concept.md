@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 07/11/2019
 ms.author: juliako
-ms.openlocfilehash: 831ba217e99d1610383320ddf5706c6acfcdf48a
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: cd1dc7b55060e8262b300022f5ffd1b4da5f7922
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67848907"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350346"
 ---
 # <a name="streaming-endpoints"></a>Streaming-eindpunten 
 
@@ -31,11 +31,16 @@ Wanneer u een Media Services account maakt, wordt er een **standaard** streaming
 
 ## <a name="naming-convention"></a>Naamgevings Conventie
 
-Voor het standaard eindpunt:`{AccountName}-{DatacenterAbbreviation}.streaming.media.azure.net`
+De indeling van de hostnaam van de streaming-URL is: `{servicename}-{accountname}-{regionname}.streaming.media.azure.net`, waarbij `servicename` = de naam van het streaming-eind punt of de naam van de live-gebeurtenis. 
 
-Voor alle extra eind punten:`{EndpointName}-{AccountName}-{DatacenterAbbreviation}.streaming.media.azure.net`
+Wanneer het standaard streaming-eind punt wordt gebruikt, wordt `servicename` wegge laten, zodat de URL: `{accountname}-{regionname}.streaming.azure.net`. 
 
-## <a name="types"></a>Dergelijke  
+### <a name="limitations"></a>Beperkingen
+
+* De naam van het streaming-eind punt heeft een maximale waarde van 24 tekens.
+* De naam moet volgen op dit [regex](https://docs.microsoft.com/dotnet/standard/base-types/regular-expression-language-quick-reference) -patroon: `^[a-zA-Z0-9]+(-*[a-zA-Z0-9])*$`.
+
+## <a name="types"></a>Typen  
 
 Er zijn twee typen **streaming-eindpunten**: **Standaard** (preview) en **Premium**. Het type wordt gedefinieerd door het aantal schaal eenheden (`scaleUnits`) dat u toewijst voor het streaming-eind punt. 
 
@@ -128,7 +133,7 @@ In de meeste gevallen moet CDN zijn ingeschakeld. Als u echter een maximale geli
 
 ### <a name="considerations"></a>Overwegingen
 
-* Het streaming- `hostname` eind punt en de streaming-URL blijven hetzelfde, ongeacht of u CDN inschakelt.
+* Het streaming-eind punt `hostname` en de streaming-URL blijven hetzelfde, ongeacht of u CDN inschakelt.
 * Als u de mogelijkheid wilt bieden om uw inhoud te testen met of zonder CDN, kunt u een ander streaming-eind punt maken dat niet is ingeschakeld voor CDN.
 
 ### <a name="detailed-explanation-of-how-caching-works"></a>Gedetailleerde uitleg over hoe caching werkt

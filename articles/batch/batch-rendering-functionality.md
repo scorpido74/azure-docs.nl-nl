@@ -1,98 +1,98 @@
 ---
-title: Functies - rendering Azure Batch
-description: Mogelijkheden voor specifieke rendering in Azure Batch
+title: Weergave mogelijkheden-Azure Batch
+description: Specifieke weergave mogelijkheden in Azure Batch
 services: batch
 ms.service: batch
 author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: conceptual
-ms.openlocfilehash: be6c0f9a8874507433606903bcbd58c7723d6a8a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b5eaaa6d41b9dae97a2d6219ffa44fb75ed67e61
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62118684"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350040"
 ---
-# <a name="azure-batch-rendering-capabilities"></a>Mogelijkheden van Azure Batch rendering
+# <a name="azure-batch-rendering-capabilities"></a>Mogelijkheden voor Azure Batch Rendering
 
-Standaard Azure Batch-functies worden gebruikt voor rendering van workloads en toepassingen kunt uitvoeren. Batch bevat ook specifieke functies voor het ondersteunen van rendering-workloads.
+Standaard Azure Batch mogelijkheden worden gebruikt voor het uitvoeren van werk belastingen en toepassingen voor rendering. Batch bevat ook specifieke functies ter ondersteuning van het weer geven van werk belastingen.
 
-Zie voor een overzicht van concepten van Batch, pools, jobs en taken, waaronder [in dit artikel](https://docs.microsoft.com/azure/batch/batch-api-basics).
+Zie [dit artikel](https://docs.microsoft.com/azure/batch/batch-api-basics)voor een overzicht van batch concepten, inclusief Pools, taken en taken.
 
 ## <a name="batch-pools"></a>Batch-Pools
 
-### <a name="rendering-application-installation"></a>Rendering van de installatie van toepassing
+### <a name="rendering-application-installation"></a>De installatie van een toepassing weer geven
 
-Een Azure Marketplace rendering VM-installatiekopie kan worden opgegeven in de configuratie van de groep van toepassingen als alleen de vooraf geïnstalleerde toepassingen hoeft te worden gebruikt.
+Een Azure Marketplace-rendering VM-installatie kopie kan worden opgegeven in de groeps configuratie als alleen de vooraf geïnstalleerde toepassingen moeten worden gebruikt.
 
-Er is een Windows 2016-installatiekopie en een CentOS-installatiekopie.  In de [Azure Marketplace](https://azuremarketplace.microsoft.com), kunnen u de VM-installatiekopieën vinden door te zoeken naar 'batch rendering'.
+Er is een installatie kopie van Windows 2016 en een CentOS-installatie kopie.  In [Azure Marketplace](https://azuremarketplace.microsoft.com)kunt u de VM-installatie kopieën vinden door te zoeken naar batch rendering.
 
-Zie voor een voorbeeldconfiguratie van toepassingen, de [zelfstudie voor Azure CLI-rendering](https://docs.microsoft.com/azure/batch/tutorial-rendering-cli).  De Azure-portal en Batch Explorer bieden GUI-hulpprogramma's om te selecteren van een rendering-VM-installatiekopie wanneer u een pool maakt.  Als u een Batch-API gebruikt, geeft u de volgende eigenschapswaarden voor [ImageReference](https://docs.microsoft.com/rest/api/batchservice/pool/add#imagereference) bij het maken van een groep:
+Zie de [zelf studie over Azure cli-rendering](https://docs.microsoft.com/azure/batch/tutorial-rendering-cli)voor een voor beeld van een pool configuratie.  De Azure Portal en Batch Explorer bieden GUI-hulpprogram ma's voor het selecteren van een VM-installatie kopie die wordt weer gegeven wanneer u een groep maakt.  Als u een batch-API gebruikt, geeft u voor [ImageReference](https://docs.microsoft.com/rest/api/batchservice/pool/add#imagereference) de volgende eigenschaps waarden op bij het maken van een groep:
 
 | Uitgever | Aanbieding | Sku | Version |
 |---------|---------|---------|--------|
-| batch | rendering-centos73 | rendering | meest recente |
-| batch | rendering-windows2016 | rendering | meest recente |
+| batch | rendering-centos73 | aanwijzer | latest |
+| batch | Rendering-windows2016 | aanwijzer | latest |
 
-Andere opties zijn beschikbaar als aanvullende toepassingen zijn vereist voor de pool-VM's:
+Er zijn andere opties beschikbaar als er extra toepassingen vereist zijn voor de virtuele machines van de groep:
 
-* Een aangepaste installatiekopie op basis van een standard Marketplace-installatiekopie:
-  * Met deze optie kunt u uw virtuele machine configureren met de exacte toepassingen en specifieke versies die u nodig hebt. Zie voor meer informatie, [een aangepaste installatiekopie gebruiken om een pool van virtuele machines te maken](https://docs.microsoft.com/azure/batch/batch-custom-images). Autodesk en Chaos Group hebt gewijzigd Arnold en V-Ray respectievelijk, om te valideren op basis van een Azure Batch service-licentieverlening. Zorg ervoor dat u beschikt over de versies van deze toepassingen met deze ondersteuning, anders werkt de licentieverlening voor betalen per gebruik niet. Huidige versies van Maya of 3ds Max licentieserver niet vereisen bij het uitvoeren van headless (in batch/opdrachtregelmodus). Neem contact op met ondersteuning van Azure als u niet zeker weet hoe u om door te gaan met deze optie.
-* [Toepassingspakketten](https://docs.microsoft.com/azure/batch/batch-application-packages):
-  * Verpakt met behulp van ZIP-bestanden die een of meer bestanden voor de toepassing, uploaden via de Azure-portal en geef het pakket in de configuratie van de groep. Wanneer de pool-VM's zijn gemaakt, de ZIP-bestanden worden gedownload en de bestanden hebt uitgepakt.
-* Resourcebestanden:
-  * Toepassingsbestanden zijn geüpload naar Azure blob-opslag en u verwijzingen naar de bestanden in de [pool-begintaak](https://docs.microsoft.com/rest/api/batchservice/pool/add#starttask). Wanneer een groep VM's zijn gemaakt, worden de resourcebestanden worden gedownload op elke virtuele machine.
+* Een aangepaste installatie kopie uit de galerie met gedeelde afbeeldingen:
+  * Met deze optie kunt u uw virtuele machine configureren met de exacte toepassingen en specifieke versies die u nodig hebt. Zie [een groep maken met de galerie gedeelde afbeeldingen](batch-sig-images.md)voor meer informatie. Auto Desk-en chaos-groep hebben respectievelijk Arnold en V-Ray aangepast om te valideren op basis van een Azure Batch Licensing-service. Zorg ervoor dat u beschikt over de versies van deze toepassingen met deze ondersteuning, anders werkt de licentie voor betalen per gebruik niet. Voor de huidige versies van Maya of 3ds Max is geen licentie server vereist bij het uitvoeren van headless (in batch/opdracht regel modus). Neem contact op met de ondersteuning van Azure als u niet zeker weet hoe u kunt door gaan met deze optie.
+* [Toepassings pakketten](https://docs.microsoft.com/azure/batch/batch-application-packages):
+  * Verpakt de toepassings bestanden met een of meer ZIP-bestanden, upload via de Azure Portal en geef het pakket op in de groeps configuratie. Wanneer u groeps-Vm's maakt, worden de ZIP-bestanden gedownload en worden de bestanden uitgepakt.
+* Bron bestanden:
+  * Toepassings bestanden worden geüpload naar Azure Blob-opslag en u geeft bestands verwijzingen op in de [taak groep starten](https://docs.microsoft.com/rest/api/batchservice/pool/add#starttask). Wanneer u groeps-Vm's maakt, worden de bron bestanden gedownload op elke virtuele machine.
 
-### <a name="pay-for-use-licensing-for-pre-installed-applications"></a>Betalen voor gebruik licentieverlening voor vooraf geïnstalleerde toepassingen
+### <a name="pay-for-use-licensing-for-pre-installed-applications"></a>Licentie verlening voor gebruik voor vooraf geïnstalleerde toepassingen
 
-De toepassingen die worden gebruikt en een vergoeding voor licentieverlening hebben moeten worden opgegeven in de configuratie van de pool.
+De toepassingen die worden gebruikt en waarvoor licentie kosten gelden, moeten worden opgegeven in de groeps configuratie.
 
-* Geef de `applicationLicenses` eigenschap wanneer [het maken van een groep](https://docs.microsoft.com/rest/api/batchservice/pool/add#request-body).  De volgende waarden kunnen worden opgegeven in de matrix van tekenreeksen - "vray", "arnold", "3dsmax", 'maya'.
-* Wanneer u een of meer toepassingen opgeeft, wordt de kosten van deze toepassingen toegevoegd aan de kosten van de virtuele machines.  Prijzen van de toepassing worden weergegeven op de [Azure Batch-pagina met prijzen](https://azure.microsoft.com/pricing/details/batch/#graphic-rendering).
+* Geef de eigenschap `applicationLicenses` op bij [het maken van een groep](https://docs.microsoft.com/rest/api/batchservice/pool/add#request-body).  De volgende waarden kunnen worden opgegeven in de matrix met teken reeksen: "Vray", "Arnold", "3dsmax", "Maya".
+* Wanneer u een of meer toepassingen opgeeft, worden de kosten van deze toepassingen toegevoegd aan de kosten van de Vm's.  Toepassings prijzen worden vermeld op de [pagina met Azure batch prijzen](https://azure.microsoft.com/pricing/details/batch/#graphic-rendering).
 
 > [!NOTE]
-> Als u in plaats daarvan u verbinding maakt met een licentieserver de rendering-toepassingen te gebruiken, geeft u de `applicationLicenses` eigenschap.
+> Als u in plaats daarvan verbinding maakt met een licentie server voor het gebruik van de rendering-toepassingen, geeft u niet de eigenschap `applicationLicenses` op.
 
-U kunt de Azure portal of de Batch Explorer toepassingen selecteren en weergeven van de prijzen van toepassing.
+U kunt de Azure Portal of Batch Explorer gebruiken om toepassingen te selecteren en de prijzen van de toepassing weer te geven.
 
-Als een poging is gedaan om een toepassing te gebruiken, maar de toepassing nog niet is opgegeven de `applicationLicenses` eigenschap van de configuratie van de groep of kiest, wordt er geen bereik een licentieserver en vervolgens het uitvoeren van toepassingen is mislukt met een licentiefout en de afsluitcode dan nul.
+Als er een poging wordt gedaan om een toepassing te gebruiken, maar de toepassing niet is opgegeven in de eigenschap `applicationLicenses` van de pool configuratie of als er geen licentie server is bereikt, mislukt de uitvoering van de toepassing met een licentie fout en afsluit code die niet gelijk is aan nul.
 
-### <a name="environment-variables-for-pre-installed-applications"></a>Omgevingsvariabelen voor vooraf geïnstalleerde toepassingen
+### <a name="environment-variables-for-pre-installed-applications"></a>Omgevings variabelen voor vooraf geïnstalleerde toepassingen
 
-Als u de opdrachtregel voor rendering-taken maken, moet de locatie van de installatie van de rendering toepassing uitvoerbare bestanden worden opgegeven.  Systeemomgevingsvariabelen zijn gemaakt in de Azure Marketplace VM-installatiekopieën die kunnen worden gebruikt in plaats van dat om op te geven van de daadwerkelijke paden.  Deze omgevingsvariabelen worden naast de [standaard Batch-omgevingsvariabelen](https://docs.microsoft.com/azure/batch/batch-compute-node-environment-variables) voor elke taak gemaakt.
+Als u de opdracht regel voor het weer geven van taken wilt maken, moet u de installatie locatie van de uitvoer bare bestanden van de rendering-toepassing opgeven.  Er zijn systeem omgevingsvariabelen gemaakt op de VM-installatie kopieën van Azure Marketplace. deze kunnen worden gebruikt in plaats van dat ze daad werkelijke paden moeten opgeven.  Deze omgevings variabelen zijn een aanvulling op de [standaard batch omgevings variabelen](https://docs.microsoft.com/azure/batch/batch-compute-node-environment-variables) die voor elke taak zijn gemaakt.
 
-|Toepassing|Uitvoerbare bestand van toepassing|Omgevingsvariabele|
+|Toepassing|Uitvoer bare toepassing|Omgevingsvariabele|
 |---------|---------|---------|
-|Autodesk 3ds Max 2018.|3dsmaxcmdio.exe|3DSMAX_2018_EXEC|
-|Autodesk 3ds Max 2019|3dsmaxcmdio.exe|3DSMAX_2019_EXEC|
+|Auto Desk 3ds Max 2018|3dsmaxcmdio.exe|3DSMAX_2018_EXEC|
+|Auto Desk 3ds Max 2019|3dsmaxcmdio.exe|3DSMAX_2019_EXEC|
 |Autodesk Maya 2017|render.exe|MAYA_2017_EXEC|
 |Autodesk Maya 2018|render.exe|MAYA_2018_EXEC|
-|Chaos Group V-Ray zelfstandige|vray.exe|VRAY_3.60.4_EXEC|
-Arnold 2017 vanaf de opdrachtregel|kick.exe|ARNOLD_2017_EXEC|
-|2018 Arnold-opdrachtregel|kick.exe|ARNOLD_2018_EXEC|
+|Chaos-groeps V-Ray-zelfstandig|vray.exe|VRAY_3.60.4_EXEC|
+Arnold 2017-opdracht regel|kick.exe|ARNOLD_2017_EXEC|
+|Arnold 2018-opdracht regel|kick.exe|ARNOLD_2018_EXEC|
 |Blender|blender.exe|BLENDER_2018_EXEC|
 
 ### <a name="azure-vm-families"></a>Azure VM-families
 
-Net als bij andere werkbelastingen uitvoert, rendering toepassing systeemvereisten variëren en prestatie-eisen voor taken en projecten variëren.  Een grote verscheidenheid aan VM-families zijn beschikbaar in Azure, afhankelijk van uw vereisten – de laagste kosten, beste prijs-prestatieverhouding, beste prestaties, enzovoort.
-Sommige toepassingen rendering, zoals Arnold, worden op basis van CPU; anderen, zoals V-Ray en Blender cycli kunnen CPU's en/of GPU's gebruiken.
-Voor een beschrijving van de beschikbare VM-reeksen en VM-grootten, [Zie VM-typen en -grootten](https://docs.microsoft.com/azure/virtual-machines/windows/sizes).
+Net als bij andere werk belastingen kunnen de systeem vereisten voor het renderen van toepassingen verschillen en de prestatie vereisten verschillen voor taken en projecten.  Een groot aantal verschillende VM-families is beschikbaar in azure, afhankelijk van uw vereisten: de laagste kosten, de beste prijs/prestaties, de beste prestaties, enzovoort.
+Sommige rendering-toepassingen, zoals Arnold, zijn gebaseerd op een CPU. andere, zoals V-Ray en overvloei cycli, kunnen Cpu's en/of Gpu's gebruiken.
+[Zie VM-typen en-grootten](https://docs.microsoft.com/azure/virtual-machines/windows/sizes)voor een beschrijving van de beschik bare VM-families en VM-grootten.
 
 ### <a name="low-priority-vms"></a>Virtuele machines met lage prioriteit
 
-Net als bij andere werkbelastingen uitvoert, kunnen de virtuele machines met lage prioriteit in Batch-pools voor rendering worden gebruikt.  VM's met lage prioriteit hetzelfde zijn als normale toegewezen virtuele machines uitvoeren, maar overtollige capaciteit voor Azure gebruiken en zijn beschikbaar voor een hoge kortingen.  De verhouding voor het gebruik van virtuele machines met lage prioriteit is dat deze virtuele machines mogelijk niet beschikbaar moet worden toegewezen of kunnen worden verschoven op elk gewenst moment, afhankelijk van de beschikbare capaciteit. Daarom gaan VM's met lage prioriteit zijn niet geschikt voor alle renderingtaken. Bijvoorbeeld, als installatiekopieën worden vele uren om weer te geven en vervolgens is het waarschijnlijk die de rendering van deze installatiekopieën wordt onderbroken en opnieuw worden opgestart vanwege VM's wordt verschoven zou niet acceptabel.
+Net als bij andere workloads kunnen virtuele machines met lage prioriteit worden gebruikt in batch-Pools voor rendering.  Virtuele machines met lage prioriteit hebben hetzelfde als normale, specifieke Vm's, maar gebruiken de Azure-capaciteit van overschot en zijn beschikbaar voor een grote korting.  Het saldo voor het gebruik van virtuele machines met lage prioriteit is dat deze Vm's mogelijk niet kunnen worden toegewezen of op elk gewenst moment kunnen worden gebruikt, afhankelijk van de beschik bare capaciteit. Daarom zullen Vm's met lage prioriteit niet geschikt zijn voor alle rendering-taken. Als afbeeldingen bijvoorbeeld veel uur duren om weer te geven, is het waarschijnlijk dat de rendering van die installatie kopieën wordt onderbroken en opnieuw wordt gestart, omdat de Vm's die worden afgebroken niet acceptabel zijn.
 
-Voor meer informatie over de eigenschappen van virtuele machines met lage prioriteit en de verschillende manieren om deze te configureren met behulp van Batch, Zie [VM's met lage prioriteit gebruiken met Batch](https://docs.microsoft.com/azure/batch/batch-low-pri-vms).
+Zie [virtuele machines met lage prioriteit gebruiken met batch](https://docs.microsoft.com/azure/batch/batch-low-pri-vms)voor meer informatie over de kenmerken van vm's met lage prioriteit en verschillende manieren om ze te configureren met behulp van batch.
 
-## <a name="jobs-and-tasks"></a>Jobs en taken
+## <a name="jobs-and-tasks"></a>Taken en taken
 
-Er is geen ondersteuning voor rendering-specifieke is vereist voor jobs en taken.  Het belangrijkste configuratie-item is de taak vanaf de opdrachtregel, die moet verwijzen naar de vereiste toepassing.
-Wanneer de Azure Marketplace VM-installatiekopieën worden gebruikt, klikt u vervolgens is de aanbevolen procedure het gebruik van de omgevingsvariabelen om op te geven van het pad en de uitvoerbare toepassing.
+Er is geen rendering-specifieke ondersteuning vereist voor taken en taken.  Het hoofd configuratie-item is de opdracht regel van de taak, die moet verwijzen naar de vereiste toepassing.
+Wanneer de VM-installatie kopieën van Azure Marketplace worden gebruikt, is het best practice om de omgevings variabelen te gebruiken om het pad en het uitvoer bare bestand van de toepassing op te geven.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Voor voorbeelden van Batch rendering proberen de twee zelfstudies:
+Voor voor beelden van batch rendering kunt u de twee zelf studies uitproberen:
 
-* [Rendering met de Azure CLI](https://docs.microsoft.com/azure/batch/tutorial-rendering-cli)
-* [Rendering met behulp van Batch Explorer](https://docs.microsoft.com/azure/batch/tutorial-rendering-batchexplorer-blender)
+* [Rendering met behulp van Azure CLI](https://docs.microsoft.com/azure/batch/tutorial-rendering-cli)
+* [Rendering met Batch Explorer](https://docs.microsoft.com/azure/batch/tutorial-rendering-batchexplorer-blender)

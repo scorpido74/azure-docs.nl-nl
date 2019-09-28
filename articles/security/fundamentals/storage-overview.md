@@ -15,19 +15,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 249380b5bd9d95e969a9c7a812102b694b9d1e3b
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: e273d913d07d8d7b77289695a4a28a478a64123a
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68726550"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350304"
 ---
 # <a name="azure-storage-security-overview"></a>Overzicht van Azure Storage beveiliging
 
 Dit artikel bevat een overzicht van de Azure-beveiligings functies die u kunt gebruiken met Azure Storage. Azure Storage is de oplossing voor opslag in de cloud voor moderne toepassingen die afhankelijk zijn van duurzaamheid, beschikbaarheid en schaalbaarheid om te voldoen aan de behoeften van klanten. Azure Storage biedt een uitgebreide reeks beveiligings mogelijkheden. U kunt:
 
 * Beveilig het opslag account met behulp van op rollen gebaseerde Access Control (RBAC) en Azure Active Directory.
-* Beveilig gegevens in transit tussen een toepassing en Azure met behulp van versleuteling aan de client zijde, HTTPS of SMB 3,0.
+* Data-in-transit beveiligen tussen een toepassing en Azure met behulp van versleuteling aan de clientzijde, HTTPS of SMB 3.0.
 * Stel in dat gegevens automatisch moeten worden versleuteld wanneer deze naar Azure Storage worden geschreven met behulp van Storage Service Encryption.
 * Stel besturings systeem-en gegevens schijven die worden gebruikt door virtuele machines (Vm's) die moeten worden versleuteld met behulp van Azure Disk Encryption.
 * Verleen toegang tot de gegevens objecten in Azure Storage met behulp van hand tekeningen voor gedeelde toegang (SASs).
@@ -37,7 +37,7 @@ Raadpleeg de [Azure Storage-beveiligings handleiding](../../storage/common/stora
 
 ## <a name="role-based-access-control"></a>Op rollen gebaseerd toegangsbeheer
 
-U kunt uw opslag account beveiligen door gebruik te maken van Access Control op basis van rollen. Het beperken van de toegang op basis van [de beveiligings principes](https://en.wikipedia.org/wiki/Principle_of_least_privilege) van de [nood zaak om te kennen](https://en.wikipedia.org/wiki/Need_to_know) , is van cruciaal belang voor organisaties die beveiligings beleid voor gegevens toegang willen afdwingen. Deze toegangs rechten worden verleend door de juiste RBAC-rol toe te wijzen aan groepen en toepassingen bij een bepaald bereik. U kunt [Ingebouwde RBAC-rollen](/azure/role-based-access-control/built-in-roles), zoals Inzender voor opslag accounts, gebruiken om machtigingen toe te wijzen aan gebruikers.
+U kunt uw opslag account beveiligen door gebruik te maken van Access Control op basis van rollen. Het beperken van de toegang op basis van de beveiligings principes van de [nood zaak om te kennen](https://en.wikipedia.org/wiki/Need_to_know) , is van cruciaal belang voor organisaties [die beveiligings beleid](https://en.wikipedia.org/wiki/Principle_of_least_privilege) voor gegevens toegang willen afdwingen. Deze toegangs rechten worden verleend door de juiste RBAC-rol toe te wijzen aan groepen en toepassingen bij een bepaald bereik. U kunt [Ingebouwde RBAC-rollen](/azure/role-based-access-control/built-in-roles), zoals Inzender voor opslag accounts, gebruiken om machtigingen toe te wijzen aan gebruikers.
 
 Meer informatie:
 
@@ -65,7 +65,7 @@ Versleuteling in transit is een mechanisme voor het beveiligen van gegevens wann
 Meer informatie over versleuteling aan de client zijde:
 
 * [Versleuteling aan client zijde voor Microsoft Azure Storage](https://blogs.msdn.microsoft.com/windowsazurestorage/2015/04/28/client-side-encryption-for-microsoft-azure-storage-preview/)
-* [Serie beveiligings controles in de Cloud: Gegevens in transit versleutelen](https://cloudblogs.microsoft.com/microsoftsecure/2015/08/10/cloud-security-controls-series-encrypting-data-in-transit/)
+* 0Cloud voor beveiligings controle van de @no__t: Gegevens in transit versleutelen @ no__t-0
 
 ## <a name="encryption-at-rest"></a>Versleuteling 'at rest'
 
@@ -88,7 +88,7 @@ Schijf versleuteling voor Vm's werkt voor Linux-en Windows-besturings systemen. 
 
 Meer informatie
 
-* [Azure Disk Encryption voor Windows-en Linux IaaS Virtual Machines](https://gallery.technet.microsoft.com/Azure-Disk-Encryption-for-a0018eb0)
+* [Overzicht van Azure Disk Encryption](https://docs.microsoft.com/azure/security/azure-security-disk-encryption-overview)
 
 ## <a name="firewalls-and-virtual-networks"></a>Firewalls en virtuele netwerken
 

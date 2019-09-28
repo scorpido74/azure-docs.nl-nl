@@ -7,12 +7,12 @@ ms.date: 09/06/2019
 ms.service: storage
 ms.subservice: common
 ms.topic: sample
-ms.openlocfilehash: 03a036ce5381130af4bbcea88c87d77cd93cf6a9
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.openlocfilehash: e2816d8e6fdd900473cceebb20c96794f3f9f0f9
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70743887"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350872"
 ---
 # <a name="azure-storage-samples"></a>Voorbeelden van Azure Storage
 
@@ -40,13 +40,7 @@ Down load de [python Storage-client bibliotheek](https://github.com/azure/azure-
 ## <a name="nodejs-samples"></a>Node.js-voorbeelden
 Down load de [node. js-opslag-client bibliotheek](https://github.com/Azure/azure-storage-node)om de voor beelden van node. js te verkennen.
 
-* [Uploader voor BLOB](https://github.com/Azure/azure-storage-node/tree/master/examples/blobuploader)
-* [BLOB uploaden en downloaden](https://github.com/Azure/azure-storage-node/blob/master/examples/samples/blobuploaddownloadsample.js)
-* [Vervolg token](https://github.com/Azure/azure-storage-node/blob/master/examples/samples/continuationsample.js)
-* [Beleid voor opnieuw proberen](https://github.com/Azure/azure-storage-node/blob/master/examples/samples/retrypolicysample.js)
-* [Shared Access Signature](https://github.com/Azure/azure-storage-node/blob/master/examples/samples/sassample.js)
-* [Snapshot](https://github.com/Azure/azure-storage-node/blob/master/examples/samples/snapshotsample.js)
-* [Tabel query](https://github.com/Azure/azure-storage-node/blob/master/examples/samples/tablequerysample.js)
+* [Azure Storage voor beelden met behulp van Java script/node. js](storage-samples-javascript.md)
 
 ## <a name="c-samples"></a>C++voor beelden
 Down load de C++ [ C++ Storage-client bibliotheek](https://www.nuget.org/packages/wastorage/) van NuGet om de voor beelden te verkennen.
@@ -71,4 +65,5 @@ De volgende artikelen indexeert elk van de voor beelden per service (BLOB, besta
 
 * [Azure Storage-voorbeelden met behulp van .NET](storage-samples-dotnet.md)
 * [Azure Storage-voorbeelden met behulp van Java](storage-samples-java.md)
+* [Azure Storage voor beelden met behulp van Java script](storage-samples-javascript.md)
 * [Azure Storage voor beelden met behulp van python](storage-samples-python.md)

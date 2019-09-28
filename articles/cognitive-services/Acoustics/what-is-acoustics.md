@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 03/20/2019
 ms.author: noelc
 ROBOTS: NOINDEX
-ms.openlocfilehash: 51bfcc47961e870fb7fb87b26a78aea0f1564d46
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: 65678f08399f378b8580eed79e49197dd4d84c64
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70390308"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71351146"
 ---
 # <a name="what-is-project-acoustics"></a>Wat is Project Acoustics?
 Project akoestische is een golf akoestische engine voor 3D-interactieve ervaringen. De IT-modellen zijn wave-effecten zoals bedekking, obstructie, portaling en reverberation-effecten in complexe scènes zonder hand matige zone markeringen of CPU-intensieve raytracing. Het omvat ook Game-Engine en integratie van de audio-middleware. De "filosofie van het project" is vergelijkbaar met de statische belichting: maken gedetailleerde fysieke fysica offline om een fysieke basis lijn te bieden en gebruik een licht gewicht runtime met duidelijke ontwerp besturings elementen om te voldoen aan uw artistieke doelen voor de akoestische van uw virtuele wereld.
@@ -31,7 +31,7 @@ De sleutel innovatie van een project is het koppelen van echte geluids simulatie
 ![Animatie waarin een horizon taal 2D-segment met een golf door een scène wordt weer gegeven](media/wave-simulation.gif)
 
 ## <a name="video-presentation-from-gdc-2019-30-min"></a>Video presentatie van GDC 2019 (~ 30 minuten)
-Video over project akoestische(https://img.youtube.com/vi/uY4G-GUAQIE/0.jpg)](https://www.youtube.com/watch?v=uY4G-GUAQIE "Klik hier om de video af te spelen") [ ![]
+[Video over de 1Project-akoestische @no__t](https://img.youtube.com/vi/uY4G-GUAQIE/0.jpg)](https://www.youtube.com/watch?v=uY4G-GUAQIE "Klik om de video af te spelen")
 
 ## <a name="setup"></a>Instellen
 De integratie van de unit van het [project](unity-integration.md) is slepen en neerzetten en bevat een invoeg toepassing voor eenheids audio-engine. Breid de besturings elementen voor unit-audio bron toe door een onderdeel C# van een project akoestische controles toe te voegen aan elk audio object.
@@ -58,11 +58,10 @@ De invoeg toepassing voor de project akoestische editor is beschikbaar voor de v
 ## <a name="download"></a>Downloaden
 * [Invoeg toepassing en voor beelden van de project akoestische eenheid](https://www.microsoft.com/en-us/download/details.aspx?id=57346)
 * [Projectbudget Unreal & WWise-invoeg toepassingen en-voor beelden](https://www.microsoft.com/download/details.aspx?id=58090)
-  * Voor Xbox binaire bestanden en ondersteuning kunt u contact met ons opnemen via het onderstaande aanmeldings formulier
+  * Neem contact met ons op via het [forum](https://github.com/microsoft/ProjectAcoustics/issues)voor binaire bestanden van Xbox en andere ondersteuning.
 
 ## <a name="contact-us"></a>Contact opnemen
 * [Discussie over project akoestische en probleem rapportage](https://github.com/microsoft/ProjectAcoustics/issues)
-* [Meld u aan voor het ontvangen van updates voor project akoestische](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRwMoAEhDCLJNqtVIPwQN6rpUOFRZREJRR0NIQllDOTQ1U0JMNVc4OFNFSy4u)
 
 ## <a name="next-steps"></a>Volgende stappen
 * Probeer een [Snelstartgids voor project akoestische voor unititeit](unity-quickstart.md) of voor [Unreal](unreal-quickstart.md)
