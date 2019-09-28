@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
-ms.date: 07/24/2019
+ms.date: 09/27/2019
 ms.author: diberry
-ms.openlocfilehash: ca9f8b570ee28b1913c8ec81c66a5b70827c04d6
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 2a9e3d16f745e8f51d1d375a774d7c687e987efe
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559955"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350816"
 ---
 # <a name="list-entity"></a>Lijstentiteit 
 
@@ -61,6 +61,10 @@ In de vorige utterance, het woord `paris` is toegewezen aan het item Parijs als 
 ]
 ```
 
+|Data-object|De naam van de entiteit|Value|
+|--|--|--|
+|Entiteit weer geven|`Cities`|`paris`|
+
 Een ander voorbeeld-utterance, met behulp van een synoniem voor Parijs:
 
 `book 2 tickets to roissy`
@@ -81,9 +85,9 @@ Een ander voorbeeld-utterance, met behulp van een synoniem voor Parijs:
 ]
 ```
 
-|Data-object|De naam van de entiteit|Waarde|
+|Data-object|De naam van de entiteit|Value|
 |--|--|--|
-|Eenvoudige entiteit|`Customer`|`bob jones`|
+|Entiteit weer geven|`Cities`|`roissy`|
 
 ## <a name="next-steps"></a>Volgende stappen
 

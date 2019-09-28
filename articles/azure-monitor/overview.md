@@ -12,23 +12,28 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/26/2019
 ms.author: bwren
-ms.openlocfilehash: 1bc4a7634e864f0e3feb0d33cef3b967e5b6741f
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 140a5cba6926e8711f0b70896ade55c11d332e0d
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262215"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71345293"
 ---
 # <a name="azure-monitor-overview"></a>Overzicht van Azure Monitor
 
-Met Azure Monitor worden de beschikbaarheid en prestaties van uw toepassing gemaximaliseerd, door een uitgebreide oplossing te bieden voor het verzamelen en analyseren van, en werken met telemetriegegevens vanuit uw cloudomgeving en on-premises omgeving. Het helpt u begrijpen hoe uw toepassingen presteren en stelt proactief problemen vast die betrekking hebben op de toepassingen en de resources waarvan ze afhankelijk zijn.
+Azure Monitor maximaliseert de beschik baarheid en prestaties van uw toepassingen en services door een uitgebreide oplossing te bieden voor het verzamelen, analyseren en uitvoeren van telemetrie in uw Cloud-en on-premises omgevingen. Het helpt u begrijpen hoe uw toepassingen presteren en stelt proactief problemen vast die betrekking hebben op de toepassingen en de resources waarvan ze afhankelijk zijn.
 
-> [!VIDEO https://www.youtube.com/embed/_hGff5bVtkM]
+Er zijn slechts enkele voor beelden van wat u kunt doen met Azure Monitor:
+
+- Detectie en diagnose van problemen in toepassingen en afhankelijkheden met [Application Insights](app/app-insights-overview.md).
+- Correleer infrastructuur problemen met [Azure monitor voor VM's](insights/vminsights-overview.md) en [Azure monitor voor containers](insights/container-insights-overview.md).
+- Bekijk uw bewakings gegevens met [log Analytics](log-query/log-query-overview.md) voor probleem oplossing en uitgebreide diagnose.
+- Ondersteunings bewerkingen op schaal met [slimme waarschuwingen](platform/alerts-smartgroups-overview.md) en [geautomatiseerde acties](platform/alerts-action-rules.md).
+- Maak visualisaties met Azure- [Dash boards](learn/tutorial-logs-dashboards.md) en- [werkmappen](app/usage-workbooks.md).
 
 ## <a name="overview"></a>Overzicht
 Het volgende diagram toont een weer gave op hoog niveau van Azure Monitor. In het midden van het diagram vindt u de gegevens archieven voor metrieken en Logboeken. Dit zijn de twee basis typen gegevens die door Azure Monitor worden gebruikt. Aan de linkerkant ziet u de [bronnen van bewakings gegevens](platform/data-sources.md) waarmee deze [gegevens archieven](platform/data-platform.md)worden gevuld. Rechts zijn de verschillende functies die Azure Monitor worden uitgevoerd met deze verzamelde gegevens, zoals analyse, waarschuwingen en streaming naar externe systemen.
 
-[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ![Overzicht van Azure Monitor](media/overview/overview.png)
 

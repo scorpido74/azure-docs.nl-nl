@@ -10,12 +10,12 @@ ms.service: billing
 ms.topic: article
 ms.date: 05/30/2019
 ms.author: byvinyal
-ms.openlocfilehash: 0f036462eb9b37b4ec783bcf8957d307cc55f7ac
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: ccddd13ddd8c10daba84f959b1cc1f8a4a80deb1
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71018523"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71345552"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure-abonnement en servicelimieten, quota's en beperkingen
 Dit document bevat enkele van de meest voorkomende Microsoft Azure limieten, ook wel quota's genoemd. Dit document geldt momenteel niet voor alle Azure-Services. De lijst wordt na verloop van tijd uitgebreid en bijgewerkt om meer services te kunnen behandelen.
@@ -94,6 +94,7 @@ In de volgende lijst met limieten wordt een nieuwe tabel weer gegeven met versch
   * [Persoonlijke koppeling](#private-link-limits)
   * [Traffic Manager](#traffic-manager-limits)
   * [Virtueel netwerk](#networking-limits)
+  * [Virtueel WAN](#virtual-wan-limits)
 * [Notification Hubs](#notification-hubs-limits)
 * [Resourcegroep](#resource-group-limits)
 * [Op rollen gebaseerd toegangsbeheer](#role-based-access-control-limits)
@@ -161,6 +162,9 @@ De meest recente waarden voor Azure Machine Learning Compute quota vindt u op de
 
 #### <a name="expressroute-limits"></a>Limieten voor ExpressRoute
 [!INCLUDE [expressroute-limits](../includes/expressroute-limits.md)]
+
+#### <a name="virtual-wan-limits"></a>Virtuele WAN-limieten
+[!INCLUDE [virtual-wan-limits](../includes/virtual-wan-limits.md)]
 
 #### <a name="application-gateway-limits"></a>Application Gateway limieten
 

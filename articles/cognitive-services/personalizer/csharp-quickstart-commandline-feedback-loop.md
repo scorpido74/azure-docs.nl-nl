@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: quickstart
-ms.date: 09/12/2019
+ms.date: 09/26/2019
 ms.author: diberry
-ms.openlocfilehash: 2289c21fcc172c8dffd7d6b3f9c0e2e11736e71a
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: 174f0f3d8984e102e098b4c981d3784f50c7d7c6
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71266004"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71345232"
 ---
 # <a name="quickstart-personalize-client-library-for-net"></a>Quickstart: Client bibliotheek voor .NET personaliseren
 
@@ -33,9 +33,17 @@ Ga aan de slag met de Personaler-client bibliotheek voor .NET. Volg deze stappen
 * Azure-abonnement: [Maak er gratis een](https://azure.microsoft.com/free/)
 * De huidige versie van [.net core](https://dotnet.microsoft.com/download/dotnet-core).
 
-## <a name="setting-up"></a>Instellen
+## <a name="using-this-quickstart"></a>Deze Snelstartgids gebruiken
 
-### <a name="create-a-personalizer-azure-resource"></a>Een persoonlijke Azure-resource maken
+Er zijn verschillende stappen voor het gebruik van deze Snelstartgids:
+
+* Maak een persoonlijke resource in de Azure Portal
+* Wijzig de update frequentie van het model op de pagina **instellingen** van de Azure portal voor de persoonlijke resource.
+* Maak in een code-editor een code bestand en bewerk het code bestand
+* Vanaf de opdracht regel of Terminal installeert u de SDK vanaf de opdracht regel
+* Voer in de opdracht regel of Terminal het code bestand uit
+
+## <a name="create-a-personalizer-azure-resource"></a>Een persoonlijke Azure-resource maken
 
 Azure-Cognitive Services worden vertegenwoordigd door Azure-resources waarop u zich abonneert. Maak een resource voor Personaler met behulp van de [Azure Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) of [Azure cli](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) op uw lokale machine. U kunt ook het volgende doen:
 
@@ -50,15 +58,15 @@ Nadat u een sleutel van uw proef abonnement of resource hebt ontvangen, maakt u 
 
 In de Azure Portal zijn de sleutel-en eindpunt waarden beschikbaar op de pagina **Quick Start** .
 
-### <a name="change-the-model-update-frequency"></a>De update frequentie van het model wijzigen
+## <a name="change-the-model-update-frequency"></a>De update frequentie van het model wijzigen
 
-Wijzig de **Update frequentie** van het model in de Azure Portal persoonlijker in de resource in 10 seconden. Hiermee wordt de service snel getraind, zodat u kunt zien hoe de belangrijkste actie voor elke herhaling wordt gewijzigd.
+Wijzig in het Azure Portal, in de resource Personaler op de pagina **instellingen** , de **Update frequentie** van het model in 10 seconden. Hiermee wordt de service snel getraind, zodat u kunt zien hoe de belangrijkste actie voor elke herhaling wordt gewijzigd.
 
 ![Update frequentie van het model wijzigen](./media/settings/configure-model-update-frequency-settings.png)
 
 Wanneer een aangepaste lus voor het eerst wordt geïnstantieerd, is er geen model, omdat er geen belonings-API-aanroepen zijn voor de trein van. Rang gesprekken retour neren een gelijke kansen voor elk item. Uw toepassing moet toch altijd inhoud plaatsen met de uitvoer van RewardActionId.
 
-### <a name="create-a-new-c-application"></a>Een nieuwe C# toepassing maken
+## <a name="create-a-new-c-application"></a>Een nieuwe C# toepassing maken
 
 Maak een nieuwe .NET core-toepassing in uw voorkeurs editor of IDE. 
 
@@ -84,7 +92,7 @@ Build succeeded.
 ...
 ```
 
-### <a name="install-the-sdk"></a>De SDK installeren
+## <a name="install-the-sdk"></a>De SDK installeren
 
 Installeer in de toepassingsmap de Personaler-client bibliotheek voor .NET met de volgende opdracht:
 

@@ -11,24 +11,24 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 06/26/2019
 ms.author: diberry
-ms.openlocfilehash: 585dc03503a61ff6666d3da3374586287e24283f
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 318df27ebb822f49c1f8881d0bf68ac7167dea36
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68966703"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71351297"
 ---
-# <a name="use-follow-up-prompts-to-create-multiple-turns-of-a-conversation"></a>Volg prompts gebruiken om meerdere beurten van een gesprek te maken
+# <a name="use-follow-up-prompts-to-create-multiple-turns-of-a-conversation"></a>Opvolgprompts gebruiken om meerdere beurten in een gesprek te maken
 
 Gebruik opvolgings prompts en context voor het beheren van de meerdere beurten, ook wel bekend als _multi-turn_, voor uw bot van de ene vraag naar de andere.
 
 Bekijk de volgende demonstratie video om te zien hoe u werkt met meerdere zetten:
 
-[![Gesprek op meerdere beurten in QnA Maker](../media/conversational-context/youtube-video.png)](https://aka.ms/multiturnexample)
+[![Multi: gesprek inschakelen QnA Maker](../media/conversational-context/youtube-video.png)](https://aka.ms/multiturnexample)
 
 ## <a name="what-is-a-multi-turn-conversation"></a>Wat is een gesprek op meerdere locaties?
 
-Sommige vragen kunnen niet in één keer worden beantwoord. Wanneer u uw client toepassing (chat-bot) ontwerpt, kan een gebruiker een vraag stellen die moet worden gefilterd of verfijnd om het juiste antwoord te bepalen. U doet dit door de beschik bare vragen te presen teren door de gebruiker *te*laten opvolgen.
+Sommige vragen kunnen niet in één keer worden beantwoord. Wanneer u uw client toepassing (chat-bot) ontwerpt, kan een gebruiker een vraag stellen die moet worden gefilterd of verfijnd om het juiste antwoord te bepalen. U doet dit door de beschik bare vragen te presen teren door de gebruiker *te laten opvolgen*.
 
 Wanneer een gebruiker een vraag stelt, retourneert QnA Maker het antwoord _en_ eventuele vervolg vragen. Met deze reactie kunt u de opvolgings vragen presen teren als keuzes. 
 
@@ -67,7 +67,7 @@ Wanneer u het PDF-document importeert, bepaalt QnA Maker opvolgings aanwijzingen
 1. Een bestaande QnA Maker-service maken of gebruiken. In het voor gaande voor beeld van micro soft, omdat het PDF-bestand te groot is voor een kleinere laag, gebruikt u een QnA Maker-service met een **Zoek service** van **B** (15 indexen) of hoger.
 1. Voer een naam in voor uw Knowledge Base, zoals **hand matig Opper vlak**.
 1. Schakel het selectie vakje **extractie van meerdere schakelingen van url's, PDF-of DOCX-bestanden inschakelen** in. 
-1. Selecteer de hand matige URL **https://github.com/Azure-Samples/cognitive-services-sample-data-files/raw/master/qna-maker/data-source-formats/product-manual.pdf** voor het Opper vlak.
+1. Selecteer de hand matige URL voor het Opper vlak, **https://github.com/Azure-Samples/cognitive-services-sample-data-files/raw/master/qna-maker/data-source-formats/product-manual.pdf** .
 
 1. Selecteer de knop **uw KB maken** . 
 
@@ -95,9 +95,9 @@ De oorspronkelijke vraag, **Mijn account**, heeft vervolg vragen, zoals **accoun
 
 Voeg een opvolgings prompt toe aan een bestaand vraag-en antwoord paar dat momenteel niet is gekoppeld. Omdat de vraag niet is gekoppeld aan een vraag-en-antwoord paar, moet de huidige weer gave-instelling worden gewijzigd.
 
-1. Als u een bestaand vraag-en antwoord paar wilt koppelen als een opvolgings prompt, selecteert u de rij voor het vraag-en-antwoord paar. Zoek voor de hand leiding voor het Opper vlak naar afmelden om de lijst te verminderen.
-1. In de rij voor **Afmelden**in de kolom **antwoord** selecteert u opvolgings **prompt toevoegen**.
-1. Voer in de velden in het pop-upvenster opvolgings **prompt (preview)** de volgende waarden in:
+1. Als u een bestaand vraag-en antwoord paar wilt koppelen als een opvolgings prompt, selecteert u de rij voor het vraag-en-antwoord paar. Zoek voor de hand leiding voor het Opper vlak naar **Afmelden** om de lijst te verminderen.
+1. In de rij voor **Afmelden**in de kolom **antwoord** selecteert u **opvolgings prompt toevoegen**.
+1. Voer in de velden in het pop-upvenster **opvolgings prompt (preview)** de volgende waarden in:
 
     |Veld|Value|
     |--|--|
@@ -122,7 +122,7 @@ Wanneer er een opvolgings prompt wordt gemaakt en een bestaand vraag-en-antwoord
 
     ![De opdracht bewerken voor de weergave tekst](../media/conversational-context/edit-existing-display-text.png)
 
-1. Wijzig de bestaande weergave tekst in het pop-upvenster opvolgings **prompt** . 
+1. Wijzig de bestaande weergave tekst in het pop-upvenster **opvolgings prompt** . 
 1. Wanneer u klaar bent met het bewerken van de weergave tekst, selecteert u **Opslaan**. 
 1. In de bovenste navigatie balk kunt u **opslaan en trainen**.
 
@@ -195,7 +195,7 @@ Als u multi-turn niet inschakelt, wordt het antwoord geretourneerd, maar worden 
 
 ## <a name="a-json-request-to-return-an-initial-answer-and-follow-up-prompts"></a>Een JSON-aanvraag om een eerste antwoord en opvolgings prompts te retour neren
 
-Gebruik het lege `context` object om het antwoord op de vraag van de gebruiker aan te vragen en een opvolgings prompt op te geven. 
+Gebruik het lege `context`-object om het antwoord op de vraag van de gebruiker aan te vragen en opvolgings aanwijzingen op te geven. 
 
 ```JSON
 {
@@ -274,7 +274,7 @@ In de voor gaande sectie is een antwoord aangevraagd en wordt u gevraagd om **ac
 }
 ```
 
-De `prompts` matrix bevat tekst in de `displayText` eigenschap en de `qnaId` waarde. U kunt deze antwoorden weer geven als de volgende weer gegeven keuzes in de conversatie stroom en vervolgens de `qnaId` geselecteerde terug naar QnA Maker verzenden in de volgende aanvraag. 
+De matrix `prompts` bevat tekst in de eigenschap `displayText` en de waarde `qnaId`. U kunt deze antwoorden weer geven als de volgende weer gegeven keuzes in de conversatie stroom en de geselecteerde `qnaId` terug naar QnA Maker verzenden in de volgende aanvraag. 
 
 <!--
 
@@ -284,7 +284,7 @@ The `promptsToDelete` array provides the ...
 
 ## <a name="a-json-request-to-return-a-non-initial-answer-and-follow-up-prompts"></a>Een JSON-aanvraag om een niet-eerste antwoord en opvolgings prompts te retour neren
 
-Vul het `context` object in om de vorige context op te laten bevatten.
+Vul het `context`-object in om de vorige context op te laten bevatten.
 
 In de volgende JSON-aanvraag gebruikt de huidige vraag *Windows hello om u aan te melden* . de vorige vraag is *accounts en*u aan te melden. 
 
@@ -304,7 +304,7 @@ In de volgende JSON-aanvraag gebruikt de huidige vraag *Windows hello om u aan t
 
 ##  <a name="a-json-response-to-return-a-non-initial-answer-and-follow-up-prompts"></a>Een JSON-antwoord om een niet-eerste antwoord en opvolgings prompts te retour neren
 
-Het _GenerateAnswer_ JSON-antwoord QnA Maker bevat de vervolg prompts in de `context` eigenschap van het eerste item in het `answers` object:
+Het _GenerateAnswer_ JSON-antwoord QnA Maker bevat de opvolgings aanwijzingen in de eigenschap `context` van het eerste item in het `answers`-object:
 
 ```JSON
 {
@@ -364,7 +364,7 @@ Het _GenerateAnswer_ JSON-antwoord QnA Maker bevat de vervolg prompts in de `con
 
 ## <a name="query-the-knowledge-base-with-the-qna-maker-id"></a>De Knowledge Base doorzoeken met de QnA Maker-ID
 
-In het antwoord van de eerste vraag worden eventuele vervolg vragen en de bijbehorende koppeling `qnaId` geretourneerd. Nu u de ID hebt, kunt u deze door geven in de aanvraag tekst van de opvolgings prompt. Als de aanvraag tekst de `qnaId`bevat en het context object (dat de vorige QnA Maker eigenschappen bevat), retourneert GenerateAnswer de exacte vraag op id, in plaats van het classificatie algoritme te gebruiken om het antwoord te vinden op basis van de vraag tekst. 
+In het antwoord van de eerste vraag worden eventuele vervolg vragen en de bijbehorende `qnaId` geretourneerd. Nu u de ID hebt, kunt u deze door geven in de aanvraag tekst van de opvolgings prompt. Als de aanvraag tekst het `qnaId` bevat en het context object (dat de vorige QnA Maker eigenschappen bevat), retourneert GenerateAnswer de exacte vraag op ID, in plaats van het classificatie algoritme te gebruiken om het antwoord te vinden op basis van de vraag tekst. 
 
 ## <a name="display-prompts-and-send-context-in-the-client-application"></a>Prompts weer geven en context verzenden in de client toepassing 
 
@@ -382,12 +382,12 @@ FIX - Need to go to parent, then answer column, then edit answer.
 
 ## <a name="create-knowledge-base-with-multi-turn-prompts-with-the-create-api"></a>Maak een kennis database met de prompts in meerdere richtingen met de API maken
 
-U kunt met behulp van de [QnA Maker Create API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create)een kennis Case maken met vragen over meerdere schakelingen. De prompts worden toegevoegd in `context` de matrix `prompts` van de eigenschap. 
+Met de [QnA Maker Create API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create)kunt u een kennis database maken met behulp van meerdere prompts. De prompts worden toegevoegd in de @no__t-matrix van de eigenschap `context`. 
 
 
 ## <a name="add-or-delete-multi-turn-prompts-with-the-update-api"></a>Vragen om meerdere zetten toe te voegen of te verwijderen met de API voor bijwerken
 
-U kunt vragen over meerdere schakelingen toevoegen of verwijderen met de [API QnA Maker update](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update).  De prompts worden toegevoegd in `context` de matrix `promptsToAdd` van de eigenschap `promptsToDelete` en de matrix. 
+U kunt vragen over meerdere schakelingen toevoegen of verwijderen met de [API QnA Maker update](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update).  De prompts worden toegevoegd in de @no__t-matrix van de eigenschap `context` en de matrix `promptsToDelete`. 
 
 
 ## <a name="next-steps"></a>Volgende stappen

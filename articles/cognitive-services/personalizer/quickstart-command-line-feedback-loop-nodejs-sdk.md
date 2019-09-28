@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: quickstart
-ms.date: 09/12/2019
+ms.date: 09/26/2019
 ms.author: diberry
-ms.openlocfilehash: ab593ae33f11fe3e39846c50e9f43f73f80894ba
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: b7ea28f98340d3c3547b0ed66771b3982a03143d
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265963"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71345244"
 ---
 # <a name="quickstart-personalize-client-library-for-nodejs"></a>Quickstart: Client bibliotheek personaliseren voor node. js
 
@@ -31,11 +31,21 @@ Ga aan de slag met de Personaler-client bibliotheek voor node. js. Volg deze sta
 ## <a name="prerequisites"></a>Vereisten
 
 * Azure-abonnement: [Maak er gratis een](https://azure.microsoft.com/free/)
-* De huidige versie van [node. js](https://nodejs.org).
+* De huidige versie van [node. js](https://nodejs.org) en NPM.
 
-## <a name="setting-up"></a>Instellen
+## <a name="using-this-quickstart"></a>Deze Snelstartgids gebruiken
 
-### <a name="create-a-personalizer-azure-resource"></a>Een persoonlijke Azure-resource maken
+
+Er zijn verschillende stappen voor het gebruik van deze Snelstartgids:
+
+* Maak een persoonlijke resource in de Azure Portal
+* Wijzig de update frequentie van het model op de pagina **instellingen** van de Azure portal voor de persoonlijke resource.
+* Maak in een code-editor een code bestand en bewerk het code bestand
+* Vanaf de opdracht regel of Terminal installeert u de SDK vanaf de opdracht regel
+* Voer in de opdracht regel of Terminal het code bestand uit
+
+
+## <a name="create-a-personalizer-azure-resource"></a>Een persoonlijke Azure-resource maken
 
 Azure-Cognitive Services worden vertegenwoordigd door Azure-resources waarop u zich abonneert. Maak een resource voor Personaler met behulp van de [Azure Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) of [Azure cli](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) op uw lokale machine. U kunt ook het volgende doen:
 
@@ -50,7 +60,7 @@ Nadat u een sleutel van uw proef abonnement of resource hebt ontvangen, maakt u 
 In de Azure Portal zijn de sleutel-en eindpunt waarden beschikbaar op de pagina **Quick Start** .
 
 
-### <a name="create-a-new-nodejs-application"></a>Een nieuwe Node.js-toepassing maken
+## <a name="create-a-new-nodejs-application"></a>Een nieuwe Node.js-toepassing maken
 
 Maak in een console venster (zoals cmd, Power shell of bash) een nieuwe map voor uw app en navigeer ernaar. 
 
@@ -64,7 +74,7 @@ Voer de `npm init -y` opdracht uit om een `package.json` bestand te maken.
 npm init -y
 ```
 
-### <a name="install-the-nodejs-library-for-personalizer"></a>De node. JS-bibliotheek installeren voor persoonlijkere
+## <a name="install-the-nodejs-library-for-personalizer"></a>De node. JS-bibliotheek installeren voor persoonlijkere
 
 Installeer de Personaler-client bibliotheek voor node. js met de volgende opdracht:
 
@@ -78,9 +88,9 @@ Installeer de resterende NPM-pakketten voor deze Quick Start:
 npm install @azure/ms-rest-azure-js @azure/ms-rest-js readline-sync uuid --save
 ```
 
-### <a name="change-the-model-update-frequency"></a>De update frequentie van het model wijzigen
+## <a name="change-the-model-update-frequency"></a>De update frequentie van het model wijzigen
 
-Wijzig de **Update frequentie** van het model in de Azure Portal persoonlijker in de resource in 10 seconden. Hiermee wordt de service snel getraind, zodat u kunt zien hoe de belangrijkste actie voor elke herhaling wordt gewijzigd.
+Wijzig in het Azure Portal, in de resource Personaler op de pagina **instellingen** , de **Update frequentie** van het model in 10 seconden. Hiermee wordt de service snel getraind, zodat u kunt zien hoe de belangrijkste actie voor elke herhaling wordt gewijzigd.
 
 ![Update frequentie van het model wijzigen](./media/settings/configure-model-update-frequency-settings.png)
 

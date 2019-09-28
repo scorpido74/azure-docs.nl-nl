@@ -5,18 +5,18 @@ services: azure-resource-manager
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 09/03/2019
+ms.date: 09/27/2019
 ms.author: tomfitz
-ms.openlocfilehash: b349576f5e9f5410afc29f48e40c38e12168252d
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: 3a0761fad32b2cfb0387cca79b6c1c0dc83c8e98
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70258901"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71345418"
 ---
 # <a name="resource-property-or-variable-iteration-in-azure-resource-manager-templates"></a>Herhaling van resources, eigenschappen of variabelen in Azure Resource Manager sjablonen
 
-In dit artikel wordt beschreven hoe u in uw Azure Resource Manager-sjabloon meer dan één exemplaar van een resource, variabele of eigenschap maakt. Als u meerdere exemplaren wilt maken, `copy` voegt u het object toe aan uw sjabloon.
+In dit artikel wordt beschreven hoe u in uw Azure Resource Manager-sjabloon meer dan één exemplaar van een resource, variabele of eigenschap maakt. Als u meerdere exemplaren wilt maken, voegt u het object `copy` toe aan uw sjabloon.
 
 Bij gebruik in combi natie met een resource heeft het object kopiëren de volgende indeling:
 
@@ -49,7 +49,7 @@ Zie [voor waarde-element](conditional-resource-deployment.md)als u wilt opgeven 
 
 Als u het aantal iteraties wilt opgeven, geeft u een waarde op voor de eigenschap Count. De telling mag niet groter zijn dan 800.
 
-De telling kan geen negatief getal zijn. Als u een sjabloon implementeert met Azure PowerShell 2,6 of hoger of REST API versie **2019-05-10** of hoger, kunt u Count instellen op nul. Eerdere versies van Power shell en het REST API bieden geen ondersteuning voor aantal nul. Op dit moment ondersteunt Azure CLI geen nul voor Count, maar deze ondersteuning wordt toegevoegd in een toekomstige release.
+De telling kan geen negatief getal zijn. Als u een sjabloon implementeert met Azure PowerShell 2,6 of hoger, Azure CLI 2.0.74 of hoger of REST API versie **2019-05-10** of hoger, kunt u Count instellen op nul. Eerdere versies van Power shell, CLI en de REST API bieden geen ondersteuning voor aantal nul.
 
 Wees voorzichtig met het gebruik van de implementatie van de [volledige modus](deployment-modes.md) met Copy. Als u de volledige modus opnieuw implementeert naar een resource groep, worden alle resources verwijderd die niet zijn opgegeven in de sjabloon na het omzetten van de Kopieer bewerking.
 
@@ -57,7 +57,7 @@ De limieten voor het aantal zijn gelijk aan die van een resource, variabele of e
 
 ## <a name="resource-iteration"></a>Resource herhaling
 
-Als u tijdens de implementatie moet bepalen of u een of meer exemplaren van een resource wilt maken `copy` , voegt u een element toe aan het resource type. Geef in het element copy het aantal iteraties en een naam voor deze lus op.
+Als u tijdens de implementatie moet bepalen of u een of meer exemplaren van een resource wilt maken, voegt u een `copy`-element toe aan het resource type. Geef in het element copy het aantal iteraties en een naam voor deze lus op.
 
 De resource voor het maken van verschillende tijden heeft de volgende indeling:
 
@@ -86,7 +86,7 @@ De resource voor het maken van verschillende tijden heeft de volgende indeling:
 }
 ```
 
-U ziet dat de naam van elke resource de `copyIndex()` functie bevat, die de huidige iteratie in de lus retourneert. `copyIndex()` is gebaseerd op nul. Het volgende voor beeld:
+U ziet dat de naam van elke resource de functie `copyIndex()` bevat, die de huidige iteratie in de lus retourneert. `copyIndex()` is gebaseerd op nul. Het volgende voor beeld:
 
 ```json
 "name": "[concat('storage', copyIndex())]",
@@ -110,28 +110,28 @@ Hiermee maakt u deze namen:
 * storage2
 * storage3
 
-De Kopieer bewerking is handig bij het werken met matrices, omdat u elk element in de matrix kunt door lopen. Gebruik de `length` functie op de matrix om het aantal voor herhalingen op te geven `copyIndex` en om de huidige index in de matrix op te halen. Het volgende voor beeld:
+De Kopieer bewerking is handig bij het werken met matrices, omdat u elk element in de matrix kunt door lopen. Gebruik de functie `length` op de matrix om het aantal voor herhalingen op te geven en `copyIndex` om de huidige index in de matrix op te halen. Het volgende voor beeld:
 
 ```json
-"parameters": { 
-  "org": { 
-    "type": "array", 
-    "defaultValue": [ 
-      "contoso", 
-      "fabrikam", 
-      "coho" 
-    ] 
+"parameters": {
+  "org": {
+    "type": "array",
+    "defaultValue": [
+      "contoso",
+      "fabrikam",
+      "coho"
+    ]
   }
-}, 
-"resources": [ 
-  { 
-    "name": "[concat('storage', parameters('org')[copyIndex()])]", 
-    "copy": { 
-      "name": "storagecopy", 
-      "count": "[length(parameters('org'))]" 
-    }, 
+},
+"resources": [
+  {
+    "name": "[concat('storage', parameters('org')[copyIndex()])]",
+    "copy": {
+      "name": "storagecopy",
+      "count": "[length(parameters('org'))]"
+    },
     ...
-  } 
+  }
 ]
 ```
 
@@ -143,7 +143,7 @@ Hiermee maakt u deze namen:
 
 Resource Manager maakt standaard de resources parallel. Er geldt geen limiet voor het aantal resources dat parallel is geïmplementeerd, met uitzonde ring van de totale limiet van 800 resources in de sjabloon. De volg orde waarin ze worden gemaakt, is niet gegarandeerd.
 
-Het is echter mogelijk dat u wilt opgeven dat de resources in de juiste volg orde worden geïmplementeerd. Wanneer u bijvoorbeeld een productie omgeving bijwerkt, wilt u mogelijk de updates spreiden zodat alleen een bepaald aantal tegelijk wordt bijgewerkt. Als u meer dan één exemplaar van een bron wilt implementeren, stelt `mode` u in op `batchSize` **serie** en op het aantal exemplaren dat tegelijk moet worden geïmplementeerd. Met de seriële modus maakt Resource Manager een afhankelijkheid van eerdere instanties in de lus, zodat deze geen batch Start totdat de vorige batch is voltooid.
+Het is echter mogelijk dat u wilt opgeven dat de resources in de juiste volg orde worden geïmplementeerd. Wanneer u bijvoorbeeld een productie omgeving bijwerkt, wilt u mogelijk de updates spreiden zodat alleen een bepaald aantal tegelijk wordt bijgewerkt. Als u meer dan één exemplaar van een resource op een seriële schaal wilt implementeren, stelt u `mode` in op **serie** en `batchSize` op het aantal exemplaren dat u tegelijk wilt implementeren. Met de seriële modus maakt Resource Manager een afhankelijkheid van eerdere instanties in de lus, zodat deze geen batch Start totdat de vorige batch is voltooid.
 
 Als u opslag accounts bijvoorbeeld twee keer tegelijk wilt implementeren, gebruikt u:
 
@@ -180,13 +180,13 @@ Zie [using Copy](resource-group-linked-templates.md#using-copy)voor informatie o
 
 ## <a name="property-iteration"></a>Eigenschaps herhaling
 
-Als u meer dan één waarde voor een eigenschap voor een resource wilt maken, `copy` voegt u een matrix toe aan het element Properties. Deze matrix bevat objecten en elk object heeft de volgende eigenschappen:
+Als u meer dan één waarde voor een eigenschap voor een resource wilt maken, voegt u een `copy`-matrix toe aan het element Properties. Deze matrix bevat objecten en elk object heeft de volgende eigenschappen:
 
 * naam: de naam van de eigenschap voor het maken van verschillende waarden voor
 * Count-het aantal waarden dat moet worden gemaakt.
-* invoer-een object dat de waarden bevat die aan de eigenschap moeten worden toegewezen  
+* invoer-een object dat de waarden bevat die aan de eigenschap moeten worden toegewezen
 
-In het volgende voor beeld ziet u `copy` hoe u kunt Toep assen op de eigenschap data disks op een virtuele machine:
+In het volgende voor beeld ziet u hoe u `copy` toepast op de eigenschap data disks op een virtuele machine:
 
 ```json
 {
@@ -207,9 +207,9 @@ In het volgende voor beeld ziet u `copy` hoe u kunt Toep assen op de eigenschap 
       ...
 ```
 
-U ziet dat wanneer `copyIndex` u een eigenschaps herhaling gebruikt, de naam van de herhaling moet opgeven. U hoeft de naam niet op te geven wanneer u deze gebruikt met resource iteratie.
+Let op: wanneer u `copyIndex` in een eigenschaps herhaling gebruikt, moet u de naam van de herhaling opgeven. U hoeft de naam niet op te geven wanneer u deze gebruikt met resource iteratie.
 
-Resource Manager breidt de `copy` matrix uit tijdens de implementatie. De naam van de matrix wordt de naam van de eigenschap. De invoer waarden worden de object eigenschappen. De geïmplementeerde sjabloon wordt:
+Resource Manager breidt de `copy`-matrix uit tijdens de implementatie. De naam van de matrix wordt de naam van de eigenschap. De invoer waarden worden de object eigenschappen. De geïmplementeerde sjabloon wordt:
 
 ```json
 {
@@ -302,7 +302,7 @@ U kunt resource en eigenschaps herhaling samen gebruiken. Verwijzing naar eigens
 
 ## <a name="variable-iteration"></a>Variabele herhaling
 
-Als u meerdere exemplaren van een variabele wilt maken, `copy` gebruikt u de eigenschap in de sectie variabelen. U maakt een matrix van elementen die zijn gemaakt op basis van `input` de waarde in de eigenschap. U kunt de `copy` eigenschap binnen een variabele of op het hoogste niveau van de sectie Varia bles gebruiken. Wanneer u `copyIndex` binnen een variabele herhaling gebruikt, moet u de naam van de herhaling opgeven.
+Als u meerdere exemplaren van een variabele wilt maken, gebruikt u de eigenschap `copy` in de sectie Varia bles. U maakt een matrix van elementen die zijn gemaakt op basis van de waarde in de eigenschap `input`. U kunt de eigenschap `copy` gebruiken binnen een variabele of op het hoogste niveau van de sectie Varia bles. Wanneer u `copyIndex` in een variabele iteratie gebruikt, moet u de naam van de herhaling opgeven.
 
 Zie [matrix sjabloon kopiëren](https://github.com/bmoore-msft/AzureRM-Samples/blob/master/copy-array/azuredeploy.json)voor een eenvoudig voor beeld van het maken van een matrix van teken reeks waarden.
 
@@ -426,7 +426,7 @@ En retourneert de variabele met de naam **teken reeks-matrix op het hoogste nive
 
 ## <a name="depend-on-resources-in-a-loop"></a>Is afhankelijk van resources in een lus
 
-U geeft aan dat een resource wordt geïmplementeerd na een andere resource met `dependsOn` behulp van het-element. Als u een resource wilt implementeren die afhankelijk is van de verzameling van resources in een lus, geeft u de naam van de Kopieer-lus op in het element dependsOn. In het volgende voor beeld ziet u hoe u drie opslag accounts implementeert voordat u de virtuele machine implementeert. De volledige definitie van de virtuele machine wordt niet weer gegeven. U ziet dat de naam van het element Copy `storagecopy` is ingesteld op en het dependsOn-element voor het virtual machines `storagecopy`ook is ingesteld op.
+U geeft aan dat een resource wordt geïmplementeerd na een andere resource met behulp van het element `dependsOn`. Als u een resource wilt implementeren die afhankelijk is van de verzameling van resources in een lus, geeft u de naam van de Kopieer-lus op in het element dependsOn. In het volgende voor beeld ziet u hoe u drie opslag accounts implementeert voordat u de virtuele machine implementeert. De volledige definitie van de virtuele machine wordt niet weer gegeven. U ziet dat de naam van het element Copy is ingesteld op `storagecopy` en het element dependsOn voor de Virtual Machines ook is ingesteld op `storagecopy`.
 
 ```json
 {
@@ -450,9 +450,9 @@ U geeft aan dat een resource wordt geïmplementeerd na een andere resource met `
       }
     },
     {
-      "apiVersion": "2015-06-15", 
-      "type": "Microsoft.Compute/virtualMachines", 
-      "name": "[concat('VM', uniqueString(resourceGroup().id))]",  
+      "apiVersion": "2015-06-15",
+      "type": "Microsoft.Compute/virtualMachines",
+      "name": "[concat('VM', uniqueString(resourceGroup().id))]",
       "dependsOn": ["storagecopy"],
       ...
     }
@@ -488,7 +488,7 @@ Stel bijvoorbeeld dat u een gegevensset definieert als een onderliggende bron in
 
 Als u meer dan één gegevensset wilt maken, verplaatst u deze buiten het data factory. De gegevensset moet op hetzelfde niveau zijn als de data factory, maar het is nog steeds een onderliggende resource van de data factory. U behoudt de relatie tussen de gegevensset en data factory via de eigenschappen type en naam. Omdat het type niet meer kan worden afgeleid van de positie in de sjabloon, moet u het volledig gekwalificeerde type opgeven in de notatie: `{resource-provider-namespace}/{parent-resource-type}/{child-resource-type}`.
 
-Als u een bovenliggende/onderliggende relatie met een exemplaar van de data factory wilt instellen, geeft u een naam op voor de gegevensset die de naam van de bovenliggende resource bevat. Gebruik de indeling: `{parent-resource-name}/{child-resource-name}`.  
+Als u een bovenliggende/onderliggende relatie met een exemplaar van de data factory wilt instellen, geeft u een naam op voor de gegevensset die de naam van de bovenliggende resource bevat. Gebruik de indeling: `{parent-resource-name}/{child-resource-name}`.
 
 In het volgende voor beeld ziet u de implementatie:
 

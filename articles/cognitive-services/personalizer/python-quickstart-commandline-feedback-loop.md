@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: quickstart
-ms.date: 09/12/2019
+ms.date: 09/26/2019
 ms.author: diberry
-ms.openlocfilehash: 014a5f264b9beed666f718cda52d197381d58876
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: 877a28e5f672bbd61bad2b4c5c9175c7dafa71ab
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71266260"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71345330"
 ---
 # <a name="quickstart-personalize-client-library-for-python"></a>Quickstart: Client bibliotheek personaliseren voor python
 
@@ -33,9 +33,19 @@ Ga aan de slag met de Personaler-client bibliotheek voor python. Volg deze stapp
 * Azure-abonnement: [Maak er gratis een](https://azure.microsoft.com/free/)
 * [Python 3.x](https://www.python.org/)
 
-## <a name="setting-up"></a>Instellen
+## <a name="using-this-quickstart"></a>Deze Snelstartgids gebruiken
 
-### <a name="create-a-personalizer-azure-resource"></a>Een persoonlijke Azure-resource maken
+
+Er zijn verschillende stappen voor het gebruik van deze Snelstartgids:
+
+* Maak een persoonlijke resource in de Azure Portal
+* Wijzig de update frequentie van het model op de pagina **instellingen** van de Azure portal voor de persoonlijke resource.
+* Maak in een code-editor een code bestand en bewerk het code bestand
+* Vanaf de opdracht regel of Terminal installeert u de SDK vanaf de opdracht regel
+* Voer in de opdracht regel of Terminal het code bestand uit
+
+
+## <a name="create-a-personalizer-azure-resource"></a>Een persoonlijke Azure-resource maken
 
 Azure-Cognitive Services worden vertegenwoordigd door Azure-resources waarop u zich abonneert. Maak een resource voor Personaler met behulp van de [Azure Portal](https://portal.azure.com/) of [Azure cli](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) op uw lokale machine. Raadpleeg [hoe u een Cognitive Services resource maakt met behulp van de Azure Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) voor meer informatie. U kunt ook het volgende doen:
 
@@ -50,7 +60,7 @@ Nadat u een sleutel van uw proef abonnement of resource hebt ontvangen, maakt u 
 In de Azure Portal zijn de sleutel-en eindpunt waarden beschikbaar op de pagina **Quick Start** .
 
 
-### <a name="install-the-python-library-for-personalizer"></a>De python-bibliotheek installeren voor personaliseren
+## <a name="install-the-python-library-for-personalizer"></a>De python-bibliotheek installeren voor personaliseren
 
 Installeer de Personaler-client bibliotheek voor python met de volgende opdracht:
 
@@ -60,9 +70,9 @@ pip install azure-cognitiveservices-personalizer
 
 Als u de Visual Studio IDE gebruikt, is de client bibliotheek beschikbaar als een downloadbaar NuGet-pakket.
 
-### <a name="change-the-model-update-frequency"></a>De update frequentie van het model wijzigen
+## <a name="change-the-model-update-frequency"></a>De update frequentie van het model wijzigen
 
-Wijzig de **Update frequentie** van het model in de Azure Portal persoonlijker in de resource in 10 seconden. Hiermee wordt de service snel getraind, zodat u kunt zien hoe de belangrijkste actie voor elke herhaling wordt gewijzigd.
+Wijzig in het Azure Portal, in de resource Personaler op de pagina **instellingen** , de **Update frequentie** van het model in 10 seconden. Hiermee wordt de service snel getraind, zodat u kunt zien hoe de belangrijkste actie voor elke herhaling wordt gewijzigd.
 
 ![Update frequentie van het model wijzigen](./media/settings/configure-model-update-frequency-settings.png)
 
@@ -92,7 +102,7 @@ Maak een nieuwe python-toepassing in uw voorkeurs editor of IDE `sample.py`met d
 
 ## <a name="add-the-dependencies"></a>De afhankelijkheden toevoegen
 
-Open het **Program.cs** -bestand in de map van het project in uw voorkeurs editor of IDE. Vervang de bestaande `using` code door de volgende `using` instructies:
+Open het **sample.py** -bestand in de map van het project in uw voorkeurs editor of IDE. Voeg het volgende toe:
 
 [!code-python[Add module dependencies](~/samples-personalizer/quickstarts/python/sample.py?name=Dependencies)]
 
