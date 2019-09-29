@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: e6cfc18f01bb23d0b318ac1b924cf8cbb9f7a2b6
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 5a0f2922763f8fccb9f3eec8bab4d6eddee7e446
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71259978"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350610"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Automatische ML experimenten configureren in python
 
@@ -328,7 +328,7 @@ U kunt uw trainings resultaten weer geven in een widget of inline als u zich in 
 
 Elk model dat is gemaakt met behulp van automatische ML omvat de volgende stappen:
 + Geautomatiseerde functie techniek (indien preprocess = True)
-+ Schalen/normaliseren en algoritmen met hypermeter-waarden
++ Schalen/normaliseren en algoritmen met afstemming-waarden
 
 We maken het transparant om deze informatie op te halen uit de fitted_model-uitvoer van automatische MILLILITERs.
 
@@ -410,7 +410,7 @@ Gebruik deze 2 Api's voor de eerste stap van het model voor meer informatie.  Be
    |EngineeringFeatureCount|Aantal functies dat wordt gegenereerd via geautomatiseerde functie technische trans formaties.|
    |Transformaties|Lijst met trans formaties die zijn toegepast op de invoer functies voor het genereren van ontworpen functies.|
 
-### <a name="scalingnormalization-and-algorithm-with-hypermeter-values"></a>Schalen/normaliseren en algoritmen met hypermeter-waarden:
+### <a name="scalingnormalization-and-algorithm-with-hyperparameter-values"></a>Schalen/normaliseren en algoritmen met afstemming-waarden:
 
 Als u inzicht wilt krijgen in de waarden voor schalen/normalisatie en algoritme/afstemming voor een pijp lijn, gebruikt u fitted_model. Steps. Meer [informatie over schalen/normalisatie](concept-automated-ml.md#preprocess). Hier volgt een voorbeeld van uitvoer:
 

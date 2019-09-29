@@ -1,6 +1,6 @@
 ---
 title: Controle lijst voor SAP-werk belasting plannen en implementeren | Microsoft Docs
-description: controle lijst voor het plannen en implementeren van SAP-workloads op Azure
+description: Controle lijst voor het plannen van SAP-werkbelasting implementaties naar Azure en het implementeren van de werk belastingen
 services: virtual-machines-linux,virtual-machines-windows
 documentationcenter: ''
 author: msjuergent
@@ -15,264 +15,268 @@ ms.workload: infrastructure
 ms.date: 07/15/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2d6170dead4e8577cea6883ffea25b90ebe39b88
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 34d1ba13689eb820db754c5c0d9573dcdc235205
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70078997"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350832"
 ---
-# <a name="sap-workload-on-azure-planning-and-deployment-checklist"></a>SAP-werk belasting op de Azure-planning en implementatie Controlelijst 
+# <a name="sap-workloads-on-azure-planning-and-deployment-checklist"></a>SAP-workloads op Azure: controle lijst voor planning en implementatie
 
-Deze controle lijst is ontworpen voor klanten die hun SAP NetWeaver-, S/4HANA-en Hybris-toepassingen verplaatsen naar een Azure-infra structuur als een service.  Deze controle lijst moet worden gecontroleerd door een klant en/of SAP-partner tijdens de duur van het project. Het is belang rijk dat veel van de controles aan het begin van het project en in de plannings fase worden uitgevoerd. Zodra de implementatie is voltooid, kunnen elementaire wijzigingen in de geïmplementeerde Azure-infra structuur of SAP-software versies ingewikkeld worden. Bekijk deze controle lijst op belang rijke mijl palen in een project.  Er kunnen kleine problemen worden gedetecteerd voordat ze grote problemen worden en er voldoende tijd is om de nood zakelijke wijzigingen te hergebruiken en te testen. De controle lijst op geen enkele manier om claims te volt ooien. Afhankelijk van uw situatie is het mogelijk dat er veel meer controles moeten worden uitgevoerd. 
+Deze controle lijst is ontworpen voor klanten die SAP NetWeaver-, S/4HANA-en Hybris-toepassingen verplaatsen naar een Azure-infra structuur als een service. Gedurende de loop tijd van het project moet een klant en/of SAP-partner de controle lijst controleren. Het is belang rijk te weten dat veel van de controles aan het begin van het project en tijdens de plannings fase zijn voltooid. Wanneer de implementatie is voltooid, kunnen eenvoudige wijzigingen in de geïmplementeerde Azure-infra structuur of SAP-software versies ingewikkeld worden.
 
-De verzamelde controle lijst bevat geen taken die onafhankelijk zijn van Azure.  Voorbeeld: SAP-toepassings interfaces worden gewijzigd tijdens een overstap naar een open bare Azure-Cloud of een hosting provider.    
+Raadpleeg de controle lijst bij belang rijke mijl palen tijdens uw project. Als u dit doet, kunt u kleine problemen detecteren voordat ze grote problemen worden. U hebt ook voldoende tijd om opnieuw te kunnen samen stellen en alle benodigde wijzigingen te testen. Bekijk deze controle lijst niet. Afhankelijk van uw situatie moet u mogelijk veel meer controles uitvoeren.
 
-Deze controle lijst kan ook worden gebruikt voor reeds geïmplementeerde systemen. Nieuwe functies, zoals Write Accelerator, Beschikbaarheidszones en nieuwe VM-typen, zijn mogelijk toegevoegd sinds u hebt geïmplementeerd.  Daarom is het handig om de controle lijst regel matig te bekijken, zodat u op de hoogte bent van de nieuwe functies van het Azure-platform. 
+De controle lijst bevat geen taken die onafhankelijk zijn van Azure. SAP-toepassings interfaces veranderen bijvoorbeeld tijdens een verplaatsing naar het Azure-platform of een hosting provider.
+
+Deze controle lijst kan ook worden gebruikt voor systemen die al zijn geïmplementeerd. Nieuwe functies, zoals Write Accelerator en Beschikbaarheidszones, en nieuwe VM-typen zijn mogelijk toegevoegd sinds u hebt geïmplementeerd. Het is dus handig om de controle lijst regel matig te bekijken, zodat u op de hoogte bent van de nieuwe functies van het Azure-platform.
 
 ## <a name="project-preparation-and-planning-phase"></a>Project voorbereiding en plannings fase
-In deze fase wordt een migratie van SAP-werk belasting naar een open bare Azure-Cloud gepland. Het minimum aantal entiteiten en gediscussiete onderdelen en de gedefinieerde lijst, zoals:
+Tijdens deze fase plant u de migratie van uw SAP-werk belasting naar het Azure-platform. Tijdens deze fase moet u ten minste de volgende documenten maken en de volgende elementen van de migratie definiëren en bespreken:
 
-1. Ontwerp document op hoog niveau: dit document moet het volgende bevatten:
-    1. De huidige inventaris van SAP-onderdelen en-toepassingen en de inventaris van doel toepassingen op Azure
-    2. Een RACI (verantwoordelijkheids toewijzings matrix) maken en gebruiken waarmee de verantwoordelijkheden en toewijzingen van de betrokken partijen worden gedefinieerd. Begin op het hoge niveau en werk met meer nauw keurige meer gedetailleerde niveaus door Voer de planning en eerste implementaties
-    2. Een oplossings architectuur op hoog niveau
-    3. Beslissing over Azure-regio's om in te implementeren. Controleer de [Azure-regio's](https://azure.microsoft.com/global-infrastructure/regions/)voor een lijst met Azure-regio's. Voor services die beschikbaar zijn in elk van de Azure-regio's, controleert u de artikel [producten die beschikbaar zijn per regio](https://azure.microsoft.com/global-infrastructure/services/)
-    4. Netwerk architectuur om vanuit on-premises verbinding te maken met Azure. Begin met het maken [van de blauw druk van Virtual Data Center voor Azure](https://docs.microsoft.com/azure/architecture/vdc/)
-    5. Beveiligings principes voor het uitvoeren van belang rijke Bedrijfs gegevens in Azure. Begin met [Azure Security-documentatie](https://docs.microsoft.com/azure/security/) voor lees materiaal
-2.  Technisch ontwerp document – dat bevat:
-    1.  Een diagram van de oplossings blok 
-    2.  Grootte van compute-, opslag-en netwerk onderdelen in Azure. Voor SAP-grootte van virtuele Azure-machines raadpleegt u SAP-ondersteunings opmerking [#1928533](https://launchpad.support.sap.com/#/notes/1928533) 
-    3.  Architectuur voor bedrijfs continuïteit en herstel na nood gevallen
-    4.  Gedetailleerde versies van het besturings systeem, DB, kernel en SAP-ondersteunings pakket. Het is niet toegestaan dat elke besturingssysteem versie die wordt ondersteund door SAP NetWeaver of S/4HANA wordt ondersteund in azure Vm's. Hetzelfde geldt voor DBMS-releases. Het is verplicht om de volgende bronnen te laten uitlijnen en zo nodig upgrade SAP-releases, DBMS-releases of versies van het besturings systeem in een ondersteund SAP-en Azure-venster te maken. Het is verplicht dat u binnen SAP-en Azure-ondersteunde release combinaties bent om volledige ondersteuning door SAP en micro soft te krijgen. Indien nodig moet u een upgrade van sommige software onderdelen plannen. Meer informatie over ondersteunde SAP-, OS-en DBMS-software wordt beschreven op de volgende locaties:
-        1.  SAP-ondersteunings opmerking [#1928533](https://launchpad.support.sap.com/#/notes/1928533). In deze opmerking worden de minimale OS-Releases gedefinieerd die worden ondersteund in azure Vm's. Ook worden de minimale database releases gedefinieerd die vereist zijn voor de meeste niet-HANA-data base. De notitie bevat ook de SAP-grootte van de verschillende door SAP ondersteunde Azure VM-typen.
-        2.  SAP-ondersteunings opmerking [#2039619](https://launchpad.support.sap.com/#/notes/2039619). De notitie definieert de Oracle-ondersteunings matrix op Azure. Beseft dat Oracle alleen ondersteuning biedt voor Windows en Oracle Linux als gast besturingssysteem in azure voor SAP-workload. Deze ondersteunings verklaring is ook van toepassing op SAP-toepassings lagen met SAP-exemplaren. Oracle biedt echter geen ondersteuning voor hoge Beschik baarheid voor SAP Central-Services in Oracle Linux via pacemaker. Als u maximale Beschik baarheid voor ASCS op Oracle Linux nodig hebt, moet u gebruikmaken van de SIOS Protection Suite voor Linux. Voor gedetailleerde SAP-certificerings gegevens raadpleegt u SAP-ondersteuning opmerking [#1662610: ondersteunings Details voor de SIOS-beveiligings Suite voor Linux](https://launchpad.support.sap.com/#/notes/1662610). Voor Windows wordt de door SAP ondersteunde Windows failover cluster-failover-oplossing voor SAP Central-Services ondersteund in combi natie met Oracle als DBMS-laag. 
-        3.  SAP-ondersteunings notitie [#2235581](https://launchpad.support.sap.com/#/notes/2235581) om de ondersteunings matrix voor SAP Hana te krijgen in de verschillende versies van het besturings systeem
-        4.  SAP HANA ondersteunde Azure-Vm's en [Hana grote instanties](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) worden [hier](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) weer gegeven
-        5.  [SAP-product beschikbaarheids matrix](https://support.sap.com/en/)
-        6.  Andere SAP-opmerkingen voor andere SAP-specifieke producten  
-    5.  We raden u aan om op te bieden van SAP-productie systemen strikte 3-tier ontwerpen. Het combi neren van ASCS +-APP-servers op dezelfde VM wordt niet aanbevolen.  Het gebruik van multi-SID-cluster configuraties voor SAP Central-Services wordt ondersteund door Windows als gast besturingssysteem in Azure. Terwijl multi-SID-cluster configuraties van SAP Central Services niet worden ondersteund met Linux-besturings systemen in Azure. Documentatie voor de Windows-gast besturingssysteem Case vindt u in:
-        1.  [SAP ASCS/SCS instance multi-SID hoge Beschik baarheid met Windows Server Failover Clustering en gedeelde schijf op Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-ascs-ha-multi-sid-wsfc-shared-disk)
-        2.  [SAP ASCS/SCS instance multi-SID hoge Beschik baarheid met Windows Server Failover Clustering en file share op Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-ascs-ha-multi-sid-wsfc-file-share)
-    6.  Architectuur met hoge Beschik baarheid en herstel na nood gevallen
-        1.  Definieer op basis van RTO en RPO waarvan de architectuur voor hoge Beschik baarheid en herstel na nood gevallen eruitziet
-        2.  Voor hoge Beschik baarheid binnen dezelfde zone, controleert u wat de gewenste DBMS in azure moet aanbieden. De meeste DBMS bieden synchrone methoden van een synchrone hot standby-stand. deze worden aanbevolen voor productie systemen. Raadpleeg ook de SAP-gerelateerde documentatie voor de verschillende data bases, te beginnen met [overwegingen voor Azure virtual machines DBMS-implementatie voor SAP-werk belasting](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general) en gerelateerde documenten
-            1.  Het gebruik van de Windows failover cluster-service met de configuratie van de gedeelde schijf voor de DBMS-laag als bijvoorbeeld hier wordt beschreven voor SQL Server wordt [hier](https://docs.microsoft.com/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server?view=sql-server-2017) **niet** ondersteund. In plaats daarvan worden oplossingen zoals:
-                1.  [SQL Server AlwaysOn](https://docs.microsoft.com/azure/virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-ps-sql-alwayson-availability-groups) 
-                2.  [Oracle Data Guard](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/configure-oracle-dataguard)
-                3.  [HANA-systeem replicatie](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.01/en-US/b74e16a9e09541749a745f41246a065e.html)
-        3.  Voor herstel na nood gevallen in verschillende Azure-regio's, controleert u welke mogelijkheden er worden geboden door de verschillende DBMS-leveranciers. De meeste hiervan ondersteunen asynchrone replicatie of logboek-verzen ding
-        4.  Voor de SAP-toepassingslaag definieert u of u uw zakelijke regressie test systemen wilt uitvoeren, die in het ideale geval replica's zijn van uw productie-implementaties, in dezelfde Azure-regio of in uw DR-regio. In het laatste geval kunt u het regressie systeem van dat bedrijf richten als een DR-doel voor uw productie
-        5.  Als u besluit de niet-productie systemen te plaatsen op de DR-site, kijkt u naar Azure Site Recovery als levensvat bare methode om de SAP-toepassingslaag te repliceren naar de Azure DR-regio. Zie ook [herstel na nood gevallen instellen voor een app-implementatie met SAP NetWeaver op meerdere lagen](https://docs.microsoft.com/azure/site-recovery/site-recovery-sap) 
-        6.  Als u besluit een gecombineerde HA/DR-configuratie te gebruiken, maakt het gebruik van [Azure-beschikbaarheidszones](https://docs.microsoft.com/azure/availability-zones/az-overview) vertrouwd met de Azure-regio's waar Beschikbaarheidszones beschikbaar zijn en met beperkingen die kunnen worden geïntroduceerd door extra netwerk latentie tussen twee Beschikbaarheidszones  
-3.  Klant/partner moet een inventarisatie maken van alle SAP-interfaces (SAP en niet-SAP). 
-4.  Ontwerp van Foundation Services-ontwerp-dit ontwerp bevat items zoals
-    1.  Active Directory-en DNS-ontwerp
-    2.  Netwerk topologie binnen Azure en toewijzing van verschillende SAP-systemen
-    3.  [Toegangs structuur op basis van rollen](https://docs.microsoft.com/azure/role-based-access-control/overview) voor uw verschillende teams die de infra structuur en SAP-toepassingen in azure beheren
-    3.  Topologie van resource groep 
-    4.  [Strategie voor Tags toevoegen](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags#tags-and-billing)
-    5.  Naamgevings regels voor Vm's en andere infrastructuur onderdelen en/of logische namen
-5.  Micro soft Premier Supporting-contract: Identificeer MS Technical Account Manager (TAM). Zie voor ondersteunings vereisten voor SAP-ondersteunings [#2015553](https://launchpad.support.sap.com/#/notes/2015553) 
-6.  Definieer het aantal Azure-abonnementen en het kern quotum voor de verschillende abonnementen. [Open ondersteunings aanvragen om de quota van Azure-abonnementen indien nodig te verhogen](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request) 
-7.  Gegevens reductie en gegevens migratie plan voor het migreren van SAP-gegevens naar Azure. SAP NetWeaver Systems bevat richt lijnen voor het beperken van het volume van een groot aantal gegevens. SAP heeft [deze progevondene-hand leiding](https://help.sap.com/http.svc/rc/2eb2fba8f8b1421c9a37a8d7233da545/7.0/en-US/Data_Management_Guide_Version_70E.PDF) gepubliceerd over gegevens beheer in SAP ERP-systemen. Sommige inhoud is echter van toepassing op netweave en S/4HANA-systemen in het algemeen.
-8.  Definieer en beslis de methode voor automatische implementatie. Doel van automatisering achter infrastructuur implementaties in Azure is om op een deterministische manier te implementeren en deterministische resultaten te krijgen. Veel klanten gebruiken scripts op basis van Power shell of CLI. Er zijn echter verschillende open-source technologieën die kunnen worden gebruikt voor het implementeren van Azure-infra structuur voor SAP en het installeren van SAP-software. Voor beelden vindt u in GitHub:
-    1.  [Geautomatiseerde SAP-implementaties in azure Cloud](https://github.com/Azure/sap-hana)
-    2.  [Installatie van SAP HANA](https://github.com/AzureCAT-GSI/SAP-HANA-ARM)
-9.  Definieer een regel matige ontwerp-en implementatie uitgebracht tussen u als klant, systeem integrator, micro soft en andere betrokken partijen
+1. Ontwerp document op hoog niveau. Dit document moet het volgende bevatten:
+    - De huidige inventaris van SAP-onderdelen en-toepassingen en een inventarisatie van de doel toepassing voor Azure.
+    - Een RACI (verantwoordelijkheids toewijzings matrix) die de verantwoordelijkheden en toewijzingen van de betrokken partijen definieert. Begin op een hoog niveau en werk aan meer granulaire niveaus tijdens de planning en de eerste implementaties.
+    - Een oplossings architectuur op hoog niveau.
+    - Een beslissing over welke Azure-regio's moeten worden geïmplementeerd. Bekijk de [lijst met Azure-regio's](https://azure.microsoft.com/global-infrastructure/regions/). Zie [producten beschikbaar per regio](https://azure.microsoft.com/global-infrastructure/services/)voor meer informatie over welke services beschikbaar zijn in elke regio.
+    - Een netwerk architectuur om verbinding te maken tussen on-premises en Azure. Begin met het verkennen [van de blauw druk van Virtual Data Center voor Azure](https://docs.microsoft.com/azure/architecture/vdc/).
+    - Beveiligings principes voor het uitvoeren van belang rijke Bedrijfs gegevens in Azure. Als u meer wilt weten over de beveiliging van gegevens, gaat u naar de [Azure Security-documentatie](https://docs.microsoft.com/azure/security/).
+2.  Technisch ontwerp document. Dit document moet het volgende bevatten:
+    - Een blok diagram voor de oplossing.
+    - De grootte van compute-, opslag-en netwerk onderdelen in Azure. Zie [SAP-ondersteunings opmerking #1928533](https://launchpad.support.sap.com/#/notes/1928533)voor SAP-grootte van virtuele machines van Azure.
+    - Architectuur voor bedrijfs continuïteit en herstel na nood gevallen.
+    - Gedetailleerde informatie over versies van het besturings systeem, DB, kernel en SAP-ondersteunings pakketten. Het is niet nood zakelijk dat elke besturingssysteem versie die wordt ondersteund door SAP NetWeaver of S/4HANA wordt ondersteund op virtuele machines van Azure. Hetzelfde geldt voor de DBMS-releases. Controleer de volgende bronnen om de SAP-releases, DBMS-releases en versies van het besturings systeem bij te werken en zo nodig upgrades voor SAP-en Azure-ondersteuning te garanderen. U moet beschikken over release combinaties die worden ondersteund door SAP en Azure om volledige ondersteuning van SAP en micro soft te krijgen. Indien nodig moet u een upgrade van bepaalde software onderdelen plannen. Meer informatie over ondersteunde SAP-, OS-en DBMS-software wordt hier beschreven:
+        - [SAP-ondersteunings opmerking #1928533](https://launchpad.support.sap.com/#/notes/1928533). In deze opmerking worden de minimale OS-Releases gedefinieerd die worden ondersteund op virtuele machines van Azure. Ook worden de mini maal vereiste database releases gedefinieerd voor de meeste niet-HANA-data bases. Ten slotte biedt het de SAP-grootte voor door SAP ondersteunde Azure VM-typen.
+        - [SAP-ondersteunings opmerking #2039619](https://launchpad.support.sap.com/#/notes/2039619). Deze notitie definieert de Oracle-ondersteunings matrix voor Azure. Oracle ondersteunt alleen Windows en Oracle Linux als gast besturingssystemen op Azure voor SAP-workloads. Deze ondersteunings instructie is ook van toepassing op de SAP-toepassingslaag waarop SAP-exemplaren worden uitgevoerd. Oracle biedt echter geen ondersteuning voor hoge Beschik baarheid voor SAP Central-Services in Oracle Linux via pacemaker. Als u maximale Beschik baarheid voor ASCS op Oracle Linux nodig hebt, moet u de SIOS-beveiligings Suite voor Linux gebruiken. Voor gedetailleerde SAP-certificerings gegevens raadpleegt u SAP-ondersteuning opmerking [#1662610: ondersteunings Details voor de SIOS-beveiligings Suite voor Linux](https://launchpad.support.sap.com/#/notes/1662610). Voor Windows wordt de door SAP ondersteunde Windows Server failover clustering-oplossing voor SAP Central Services ondersteund in combi natie met Oracle als de DBMS-laag.
+        - [SAP-ondersteunings opmerking #2235581](https://launchpad.support.sap.com/#/notes/2235581). Deze opmerking bevat de ondersteunings matrix voor SAP HANA in verschillende versies van het besturings systeem.
+        - Virtuele Azure-machines met SAP HANA-ondersteuning en [Hana grote instanties](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) worden weer gegeven op de [SAP-website](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure).
+        - [SAP-product beschikbaarheids matrix](https://support.sap.com/en/).
+        - SAP-notities voor andere SAP-specifieke producten.     
+    - U kunt het beste strikte drie lagen ontwerpen voor SAP-productie systemen. Het is niet raadzaam om ASCS-en app-servers te combi neren op één virtuele machine. Het gebruik van multi-SID-cluster configuraties voor SAP Central-Services wordt ondersteund op Windows-gast besturingssystemen in Azure. Deze configuratie wordt echter niet ondersteund voor SAP Central-Services op Linux-besturings systemen in Azure. In deze artikelen vindt u documentatie voor het scenario voor het Windows-gast besturingssysteem:
+        - [SAP ASCS/SCS instance multi-SID hoge Beschik baarheid met Windows Server Failover Clustering en gedeelde schijf op Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-ascs-ha-multi-sid-wsfc-shared-disk)
+        - [SAP ASCS/SCS instance multi-SID hoge Beschik baarheid met Windows Server Failover Clustering en file share op Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-ascs-ha-multi-sid-wsfc-file-share)
+    - Architectuur met hoge Beschik baarheid en herstel na nood gevallen.
+        - Bepaal op basis van RTO en RPO hoe de architectuur voor hoge Beschik baarheid en herstel na nood gevallen moet worden weer geven.
+        - Voor maximale Beschik baarheid binnen een zone, controleert u wat de gewenste DBMS in azure moet aanbieden. De meeste DBMS-pakketten bieden synchrone methoden van een synchrone hot stand-by, die we aanraden voor productie systemen. Raadpleeg ook de SAP-gerelateerde documentatie voor verschillende data bases, te beginnen met [overwegingen voor Azure virtual machines DBMS-implementatie voor SAP-werk belastingen](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general) en gerelateerde documenten.
+           Het gebruik van Windows Server failover clustering met een gedeelde schijf configuratie voor de DBMS-laag als bijvoorbeeld [beschreven voor SQL Server](https://docs.microsoft.com/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server?view=sql-server-2017), wordt niet ondersteund. Gebruik in plaats daarvan oplossingen zoals:
+           - [SQL Server altijd aan](https://docs.microsoft.com/azure/virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-ps-sql-alwayson-availability-groups)
+           - [Oracle Data Guard](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/configure-oracle-dataguard)
+           - [HANA-systeem replicatie](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.01/en-US/b74e16a9e09541749a745f41246a065e.html)
+        - Bekijk voor herstel na nood gevallen tussen Azure-regio's de oplossingen die worden aangeboden door verschillende DBMS-leveranciers. De meeste hiervan ondersteunen asynchrone replicatie of logboek verzending.
+        - Bepaal voor de SAP-toepassingslaag of u uw zakelijke regressie test systemen wilt uitvoeren, die in het ideale geval replica's zijn van uw productie-implementaties, in dezelfde Azure-regio of in uw DR-regio. In het tweede geval kunt u het regressie systeem van het bedrijf als het DR-doel voor uw productie-implementaties richten.
+        - Als u besluit de niet-productie systemen te plaatsen op de DR-site, kijkt u naar Azure Site Recovery als methode voor het repliceren van de SAP-toepassingslaag naar de Azure DR-regio. Zie voor meer informatie een [herstel na nood geval instellen voor een implementatie van SAP NetWeaver met meerdere lagen](https://docs.microsoft.com/azure/site-recovery/site-recovery-sap).
+        - Als u besluit een gecombineerde HADR-configuratie te gebruiken met behulp van [Azure-beschikbaarheidszones](https://docs.microsoft.com/azure/availability-zones/az-overview), moet u vertrouwd raken met de Azure-regio's waar Beschikbaarheidszones beschikbaar zijn. Houd ook rekening met de beperkingen die kunnen worden geïntroduceerd door extra netwerk latentie tussen twee Beschikbaarheidszones.  
+3.  Een inventarisatie van alle SAP-interfaces (SAP en niet-SAP).
+4.  Ontwerp van Foundation-Services. Dit ontwerp moet de volgende items bevatten:
+    - Active Directory-en DNS-ontwerp.
+    - Netwerk topologie binnen Azure en toewijzing van verschillende SAP-systemen.
+    - [Op rollen gebaseerde toegangs](https://docs.microsoft.com/azure/role-based-access-control/overview) structuur voor teams die de infra structuur en SAP-toepassingen in azure beheren.
+    - Topologie van resource groep.
+    - [Strategie voor Tags Toep assen](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags#tags-and-billing).
+    - Naamgevings regels voor Vm's en andere infrastructuur onderdelen en/of logische namen.
+5.  Micro soft Premier Support-contract. Identificeer uw Technical Account Manager (TAM) van micro soft. Zie SAP-ondersteunings [opmerking #2015553](https://launchpad.support.sap.com/#/notes/2015553)voor SAP-ondersteunings vereisten.
+6.  Het aantal Azure-abonnementen en het kern quotum voor de abonnementen. [Open ondersteunings aanvragen om de quota van Azure-abonnementen naar behoefte te verhogen](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request) .
+7.  Gegevens reductie en gegevens migratie plan voor het migreren van SAP-gegevens naar Azure. SAP NetWeaver Systems bevat richt lijnen voor het beperken van het volume van grote hoeveel heden gegevens. Zie [deze SAP-hand leiding](https://help.sap.com/http.svc/rc/2eb2fba8f8b1421c9a37a8d7233da545/7.0/en-US/Data_Management_Guide_Version_70E.PDF) over gegevens beheer in SAP ERP-systemen. Een deel van de inhoud is ook van toepassing op netweave en S/4HANA-systemen in het algemeen.
+8.  Een geautomatiseerde implementatie methode. Het doel van de automatisering van infrastructuur implementaties in Azure is om op een deterministische manier te implementeren en de deterministische resultaten te verkrijgen. Veel klanten gebruiken scripts op basis van Power shell of CLI. Er zijn echter verschillende open-source technologieën die u kunt gebruiken om Azure-infra structuur voor SAP te implementeren en zelfs SAP-software te installeren. U kunt voor beelden vinden op GitHub:
+    - [Geautomatiseerde SAP-implementaties in azure Cloud](https://github.com/Azure/sap-hana)
+    - [Installatie van SAP HANA](https://github.com/AzureCAT-GSI/SAP-HANA-ARM)
+9.  Definieer een regel matige ontwerp-en implementatie uitgebracht tussen u als de klant, de systeem integrator, micro soft en andere betrokken partijen.
 
  
 ## <a name="pilot-phase-strongly-recommended"></a>Test fase (sterk aanbevolen)
  
-De pilot kan worden uitgevoerd vóór of parallel aan project planning en-voor bereiding. De fase kan ook worden gebruikt om benaderingen en ontwerpen te testen die zijn aangebracht in de plannings-en voorbereidings fase. De test fase kan worden uitgerekt tot een echt bewijs van concepten. Het is raadzaam om een volledige HA/DR-oplossing en beveiligings ontwerp in te stellen en te valideren tijdens een proef implementatie. In sommige klant gevallen kunnen schaalbaarheids tests ook in deze fase worden uitgevoerd. Andere klanten gebruiken de implementatie van SAP-sandboxsystemen als pilot fase. We gaan ervan uit dat u een systeem hebt geïdentificeerd dat u wilt migreren naar Azure voor het uitvoeren van een pilot.
+U kunt een pilot uitvoeren vóór of tijdens de planning en voor bereiding van het project. U kunt ook de pilot fase gebruiken om benaderingen en ontwerpen te testen die zijn aangebracht tijdens de plannings-en voorbereidings fase. En u kunt de test fase uitbreiden om het een echt concept te maken.
 
-1. Optimaliseer de gegevens overdracht naar Azure. Zeer afhankelijk van klant gevallen die via [Azure ExpressRoute](https://azure.microsoft.com/services/expressroute/) van on-premises worden overgedragen, is het snelst als het snelle circuit voldoende band breedte heeft. Met andere klanten wordt het Internet teruggeleid om sneller te zijn
-2. In het geval van een SAP-heterogene platform migratie, waarbij de gegevens van de Data Base worden geëxporteerd en geïmporteerd, de export-en import fase worden getest en geoptimaliseerd. Voor grote migraties met SQL Server als doel platform, kunt u [hier](https://techcommunity.microsoft.com/t5/Running-SAP-Applications-on-the/SAP-OS-DB-Migration-to-SQL-Server-8211-FAQ-v6-2-April-2017/ba-p/368070)aanbevelingen vinden. U kunt de benadering van de migratie monitor/SWPM maken voor het geval u geen gecombineerde release-upgrade of [SAP DMO](https://blogs.sap.com/2013/11/29/database-migration-option-dmo-of-sum-introduction/) -proces nodig hebt wanneer u de migratie combineert met een SAP-release-upgrade en bepaalde combi Naties van bron-en doel database platformen wilt uitvoeren als gedocumenteerd, bijvoorbeeld in [Data Base Migration Option (DMO) van SUM 2,0 SP03](https://launchpad.support.sap.com/#/notes/2631152). 
-   1.  Exporteren naar bron, export bestand uploaden naar Azure en prestaties importeren.  De overlap ping tussen exporteren en importeren maximaliseren
-   2.  Evalueer het volume van de data base tussen het doel en het doel platform om weer te geven in de infrastructuur grootte    
-   3.  Timing valideren en optimaliseren 
-3. Technische validatie 
-   1. Soorten VM
-      1.  Valideer de resources in SAP-ondersteunings notities, SAP HANA hardwarebronnen en SAP PAM opnieuw om er zeker van te zijn dat er geen wijzigingen zijn in ondersteunde Vm's voor Azure, ondersteunde versies van besturings systemen voor deze VM-typen en ondersteunde SAP-en DBMS-releases
-      2.  Valideer opnieuw de grootte van uw toepassing en de infra structuur die u in azure implementeert. In het geval van het verplaatsen van bestaande toepassingen kunt u de benodigde SAP'S afleiden van de infra structuur die u gebruikt en de [SAP-benchmark pagina](https://www.sap.com/dmc/exp/2018-benchmark-directory/#/sd) en deze vergelijken met de sap's-nummers die worden vermeld in de SAP-ondersteunings opmerking [#1928533](https://launchpad.support.sap.com/#/notes/1928533). Houd [dit artikel](https://techcommunity.microsoft.com/t5/Running-SAP-Applications-on-the/SAPS-ratings-on-Azure-VMs-8211-where-to-look-and-where-you-can/ba-p/368208) ook in acht
-      3.  Evalueer en test de grootte van uw Azure-Vm's met betrekking tot de maximale opslag doorvoer en netwerk doorvoer van de verschillende VM-typen die u in de plannings fase hebt gekozen. De gegevens vindt u in:
-          1.  [Grootten voor virtuele Windows-machines in azure](https://docs.microsoft.com/azure/virtual-machines/windows/sizes?toc=%2fazure%2fvirtual-network%2ftoc.json). Het is belang rijk dat u rekening houdt met de Maxi maal beschik bare **schijf doorvoer** in de cache voor grootte
-          2.  [Grootten voor virtuele Linux-machines in azure](https://docs.microsoft.com/azure/virtual-machines/linux/sizes?toc=%2fazure%2fvirtual-network%2ftoc.json) Het is belang rijk dat u rekening houdt met de Maxi maal beschik bare **schijf doorvoer** in de cache voor grootte
-   2. Storage
-      1.  [Azure Standard-SSD-opslag](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#standard-ssd) gebruiken als mini maal voor VM'S die SAP-toepassings lagen vertegenwoordigen en voor niet-prestatie gevoelige DBMS-implementaties
-      2.  U wordt aangeraden [Azure Standard-HDD-schijven](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#standard-hdd) in het algemeen niet te gebruiken
-      2.  [Azure Premium Storage](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#premium-ssd) gebruiken voor de DBMS-vm's die op afstand gevoelig zijn
-      2.  [Azure Managed disks](https://azure.microsoft.com/services/managed-disks/) gebruiken
-      3.  Gebruik Azure Write Accelerator voor DBMS-logboek stations met een M-serie. Houd rekening met de limieten voor schrijf versneller en het gebruik zoals beschreven in [Write Accelerator](https://docs.microsoft.com/azure/virtual-machines/linux/how-to-enable-write-accelerator)
-      4.  Voor de verschillende DBMS-typen raadpleegt u de [algemene SAP gerelateerde DBMS-documentatie](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general) en de DBMS-specifieke documentes van het algemene document waarnaar u kunt verwijzen
-      5.  Voor SAP HANA worden meer details beschreven in [SAP Hana infrastructuur configuraties en-bewerkingen op Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations)
-      6.  Koppel nooit Azure-gegevens schijven aan een Azure Linux-VM met behulp van de apparaat-ID. Gebruik in plaats daarvan de UUID (Universally Unique Identifier). Wees voorzichtig wanneer u grafische hulpprogram ma's gebruikt om Azure-gegevens schijven te koppelen. Controleer de vermeldingen in bestand/etc/fstab om er zeker van te zijn dat de schijven zijn gekoppeld met behulp van de UUID
-          1.  Meer informatie vindt [hier](https://docs.microsoft.com/azure/virtual-machines/linux/attach-disk-portal#connect-to-the-linux-vm-to-mount-the-new-disk)
-   3. Netwerken
-      1.  De VNet-infra structuur en de distributie van uw SAP-toepassingen op of binnen de verschillende virtuele Azure-netwerken testen en evalueren
-          1.  Evalueer de aanpak van hub-en spoke Virtual Network-architectuur of microsegmentatie binnen één virtueel Azure-netwerk op basis van
-              1.  Kosten als gevolg van gegevens uitwisseling tussen gepeerde [Azure VNets](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview). [Virtual Network prijzen](https://azure.microsoft.com/pricing/details/virtual-network/) voor de kosten controleren
-              2.  Voor deel van het snel verbreken van de peering tussen virtuele Azure-netwerken in vergelijking met het wijzigen van NSG om een subnet in een virtueel netwerk te isoleren voor gevallen waarin toepassingen of Vm's die worden gehost in een subnet van het virtuele netwerk een beveiligings risico vormen
-              3.  Centrale logboek registratie en controle van netwerk verkeer tussen on-premises, buiten wereld en het virtuele Data Center dat u hebt gemaakt in azure
-          2.  Evalueer en test het gegevenspad tussen SAP Application Layer en SAP DBMS-laag. 
-              1.  Elke plaatsing van [virtuele Azure-netwerk apparaten](https://azure.microsoft.com/solutions/network-appliances/) in het communicatie traject tussen de SAP-toepassing en de DBMS-laag van een SAP NetWeaver-, hybris-of S/4HANA-gebaseerde SAP-systemen wordt helemaal niet ondersteund
-              2.  Het plaatsen van SAP Application Layer en SAP DBMS in verschillende virtuele netwerken van Azure die niet peered zijn, wordt niet ondersteund
-              3.  [Azure ASG-en NSG-regels](https://docs.microsoft.com/azure/virtual-network/security-overview) worden ondersteund voor het definiëren van routes tussen de SAP Application Layer en de SAP DBMS-laag
-          3.  Zorg ervoor dat [Azure versneld netwerken](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/) is ingeschakeld op de virtuele machines die worden gebruikt op de SAP-toepassingslaag en de SAP-DBMS-laag. Houd er bij dat er verschillende besturingssysteem niveaus nodig zijn voor de ondersteuning van versneld netwerken in Azure:
-              1.  Windows Server 2012 R2 of nieuwere versies
-              2.  SUSE Linux 12 SP3 of nieuwere versies
-              3.  RHEL 7,4 of hoger
-              4.  Oracle Linux 7,5. Met behulp van de RHCKL-kernel moet de release 3.10.0-862.13.1. EL7 zijn. U moet de Oracle UEK kernel release 5 gebruiken
-          4.   Test en evalueer de netwerk latentie tussen SAP Application Layer-VM en DBMS-VM volgens SAP-ondersteuning opmerking [#500235](https://launchpad.support.sap.com/#/notes/500235) en SAP-ondersteunings opmerking [#1100926](https://launchpad.support.sap.com/#/notes/1100926/E). Evalueer de resultaten op basis van de richt lijnen voor netwerk latentie van SAP-ondersteunings opmerking [#1100926](https://launchpad.support.sap.com/#/notes/1100926/E). De netwerk latentie moet in het gemiddelde en het goede bereik liggen. Uitzonde ringen zijn van toepassing op verkeer tussen virtuele machines en HANA grote instantie-eenheden, zoals [hier](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-network-architecture#networking-architecture-for-hana-large-instance) wordt beschreven
-          5.   Zorg ervoor dat ILB-implementaties zijn ingesteld om direct server return te gebruiken. Met deze instelling wordt de latentie beperkt in gevallen waarin Azure ILBs worden gebruikt voor configuraties met hoge Beschik baarheid op de DBMS-laag
-          6.   Als u Azure Load Balancer gebruikt in combi natie met Linux-gast besturingssystemen, controleert u of de Linux-netwerk parameter **net. IPv4. TCP _timestamps** is ingesteld op **0**. Voor de aanbevelingen in oudere versies van SAP Note [#2382421](https://launchpad.support.sap.com/#/notes/2382421). De SAP-Opmerking ondertussen wordt bijgewerkt met het feit dat de para meter moet worden ingesteld op 0 om samen te werken met Azure load balancers.
-          7.   Overweeg het gebruik van [Azure proximity placement Group](https://docs.microsoft.com/azure/virtual-machines/linux/co-location) zoals beschreven in het artikel [Azure proximity placement groups voor optimale netwerk latentie met SAP-toepassingen](sap-proximity-placement-scenarios.md) om de meest optimale netwerk latentie te verkrijgen.
-   4. Hoge Beschik baarheid en implementaties voor herstel na nood gevallen. 
-      1. Als u de SAP-toepassingslaag implementeert zonder een specifieke Azure-beschikbaarheids zone te definiëren, moet u ervoor zorgen dat alle Vm's met SAP-dialoog instanties of middleware-exemplaren van één [](https://docs.microsoft.com/azure/virtual-machines/windows/manage-availability)SAP-systeem worden geïmplementeerd in een beschikbaarheidsset. 
-         1.   Als u geen hoge Beschik baarheid voor de SAP Central-Services en DBMS nodig hebt, kunnen deze virtuele machines worden geïmplementeerd in dezelfde Beschikbaarheidsset als de SAP-toepassingslaag
-      2. Als u de SAP Central-Services en de DBMS-laag beveiligt voor maximale Beschik baarheid met passieve replica's, hebt u de twee knoop punten voor SAP Central-Services in één afzonderlijke Beschikbaarheidsset en het twee DBMS-knoop punt in een andere Beschikbaarheidsset
-      3. Als u in Azure-beschikbaarheidszones implementeert, kunt u geen gebruik maken van beschikbaarheids sets. U moet er echter voor zorgen dat u de knoop punten actief en passieve centrale Services implementeert in twee verschillende Beschikbaarheidszones, waarin de kleinste latentie tussen zones wordt weer gegeven.
-         1.   Houd er rekening mee dat u [Azure Standard Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones) moet gebruiken voor het maken van Windows-of pacemaker-failoverclusters voor de DBMS en SAP Central Services-laag voor alle Beschikbaarheidszones. [Basis Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview#skus) kan niet worden gebruikt voor zonegebonden-implementaties 
-   5. Time-outinstellingen
-      1. Controleer de SAP NetWeaver-ontwikkelaars traceringen van de verschillende SAP-instanties en zorg ervoor dat er geen verbindings onderbrekingen tussen de server in de wachtrij en de SAP-werk processen worden vermeld. Deze verbindings onderbrekingen kunnen worden vermeden door de volgende twee register parameters in te stellen:
-         1.   HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\KeepAliveTime = 120000-Zie ook [dit artikel](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-2000-server/cc957549(v=technet.10))
-         2.   HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\KeepAliveInterval = 120000-Zie ook [dit artikel](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-2000-server/cc957548(v=technet.10)) 
-      2. Controleer of de volgende para meters zijn ingesteld in het standaard. PFL-of het exemplaar profiel om te voor komen dat GUI-time-outs tussen één-premises geïmplementeerde SAP-GUI-interface en SAP-toepassings lagen zijn geïmplementeerd in Azure:
-         1.   rdisp/keepalive_timeout = 3600
-         2.   rdisp/keepalive = 20
-      3. De para meter enque/encni/set_so_keepalive moet worden ingesteld op ' True ' om te voor komen dat de ingestelde verbindingen tussen het SAP-bewerkings proces en de SAP-workprocesse worden verstoord. Zie ook [SAP Note #2743751](https://launchpad.support.sap.com/#/notes/2743751)  
-      3. Als u een configuratie van een Windows-failovercluster gebruikt, moet u ervoor zorgen dat de tijd die moet worden gereageerd op niet-reagerende knoop punten correct is ingesteld voor Azure. In de micro soft-artikel [tuning failover cluster network drempels](https://techcommunity.microsoft.com/t5/Failover-Clustering/Tuning-Failover-Cluster-Network-Thresholds/ba-p/371834) worden de para meters weer gegeven en wordt uitgelegd hoe de failover-sensitivities. Ervan uitgaande dat de cluster knooppunten zich in hetzelfde subnet bevinden, moeten de volgende para meters worden gewijzigd:
-         1.   SameSubNetDelay = 2000
-         2.   SameSubNetThreshold = 15
-         3.   RoutingHistorylength = 30
-4. Uw hoge Beschik baarheid en nood herstel procedure testen
-   1. Simuleer failover-situaties door Vm's (Windows-gast besturingssysteem) af te sluiten of besturings systemen in de modus paniek (Linux-gast besturingssysteem) in te stellen, zodat u kunt nagaan of uw failover-configuraties werken zoals is ontworpen. 
-   2. Meet de tijd die nodig is om een failover uit te voeren. Als de tijden te lang duren, kunt u het volgende overwegen:
-      1.   Voor SUSE Linux gebruikt u SBD-apparaten in plaats van de Azure omheinings agent om failover te versnellen
-      2.   Voor SAP HANA, als het opnieuw laden van gegevens te lang duurt, overweeg dan om meer opslag bandbreedte in te richten
-   3. Testen van back-ups/herstel sequentie en timing, indien nodig. Zorg ervoor dat niet alleen back-uptijden voldoende zijn. Test ook de herstel bewerking en neem de timing over herstel activiteiten. Zorg ervoor dat de herstel tijden binnen uw RTO-Sla's vallen waarin uw RTO afhankelijk is van een Data Base of een VM-herstel proces
-   4. Testen in regio DR-functionaliteit en-architectuur
-5. Beveiligings controles
-   1.  Test de geldigheid van de RBAC-architectuur (Azure Role based Access) die u hebt geïmplementeerd. Doel is om de toegang en machtigingen van verschillende teams te scheiden en te beperken. SAP-team leden moeten bijvoorbeeld Vm's kunnen implementeren en schijven vanuit Azure Storage toewijzen aan een bepaald Azure Virtual Network. Het SAP-basis team zou echter geen eigen virtuele netwerken mogen maken of de instellingen van bestaande virtuele netwerken kunnen wijzigen. Aan de andere kant kunnen leden van het netwerk team geen Vm's implementeren in virtuele netwerken waar de virtuele machines van SAP-toepassingen en-DBMS worden uitgevoerd. Ook kunnen leden van het netwerk team kenmerken van Vm's wijzigen of zelfs Vm's of schijven verwijderen.  
-   2.  Controleren of [NSG-en ASC](https://docs.microsoft.com/azure/virtual-network/security-overview) -regels werken zoals verwacht en de beveiligde bronnen afschermen
-   3.  Zorg ervoor dat alle resources die moeten worden versleuteld, zijn versleuteld. Definieer en voer processen uit om een back-up te maken van certificaten, opslag en toegang te krijgen tot deze certificaten en herstel de versleutelde entiteiten. 
-   4.  Gebruik [Azure Disk Encryption](https://docs.microsoft.com/azure/security/azure-security-disk-encryption-faq) en/of voor besturingssysteem schijven waar mogelijk vanuit een besturings systeem wordt weer gegeven.
-   5.  Controleer of er niet te veel versleutelings lagen zijn gebruikt. Het maakt niet alleen gebruik van Azure Disk Encryption en vervolgens op een van de transparante data base-versleutelings methoden van DBMS
-6. Prestatietesten
-   1.  In SAP op basis van SAP-tracering en-metingen, de Top 10 online-rapporten vergelijken met de huidige implementatie, indien van toepassing 
-   2.  In SAP op basis van SAP-tracering en-metingen, de eerste 10 batch-taken vergelijken met de huidige implementatie, indien van toepassing 
-   3.  In SAP op basis van SAP-tracering en-metingen, vergelijkt u gegevens overdracht via interfaces in het SAP-systeem. Richt u op de interfaces waar u weet dat de overdracht nu plaatsvindt tussen verschillende locaties, zoals van on-premises naar Azure 
+U wordt aangeraden een volledige HADR-oplossing en beveiligings ontwerp in te stellen en te valideren tijdens een pilot implementatie. Sommige klanten voeren schaal baarheid-tests uit tijdens deze fase. Andere klanten gebruiken implementaties van SAP-sandboxsystemen als een pilot fase. We gaan ervan uit dat u al een systeem hebt geïdentificeerd dat u wilt migreren naar Azure voor de pilot.
+
+1. Optimaliseer de gegevens overdracht naar Azure. De optimale keuze is zeer afhankelijk van het specifieke scenario. Overdracht van on-premises via [Azure ExpressRoute](https://azure.microsoft.com/services/expressroute/) is snelst als het ExpressRoute-circuit voldoende band breedte heeft. In andere gevallen is het overbrengen via internet sneller.
+2. Voor een heterogene SAP-platform migratie waarbij gegevens worden geëxporteerd en geïmporteerd, moet u de export-en import fasen testen en optimaliseren. Voor grote migraties waarin SQL Server het doel platform is, kunt u [aanbevelingen](https://techcommunity.microsoft.com/t5/Running-SAP-Applications-on-the/SAP-OS-DB-Migration-to-SQL-Server-8211-FAQ-v6-2-April-2017/ba-p/368070)vinden. U kunt de migratie monitor/SWPM gebruiken als u geen gecombineerde versie-upgrade nodig hebt. U kunt het [SAP DMO](https://blogs.sap.com/2013/11/29/database-migration-option-dmo-of-sum-introduction/) -proces gebruiken wanneer u de migratie combineert met een SAP-versie-upgrade. Hiervoor moet u voldoen aan bepaalde vereisten voor de combi natie van bron-en doel database platform. Dit proces wordt beschreven in [Data Base Migration Option (DMO) van SUM 2,0 SP03](https://launchpad.support.sap.com/#/notes/2631152).
+   1.  Exporteren naar bron, export bestand uploaden naar Azure en prestaties importeren. Maximaliseer overlap ping tussen exporteren en importeren.
+   2.  Evalueer het volume van de Data Base op de doel-en doel platformen om de infra structuur te verg Roten.
+   3.  Timing valideren en optimaliseren.
+1. Technische validatie.
+   1. VM-typen.
+        - Bekijk de resources in SAP-ondersteunings notities, in de SAP HANA hardware-map en de SAP PAM-module opnieuw. Zorg ervoor dat er geen wijzigingen zijn in ondersteunde Vm's voor Azure, ondersteunde versies van besturings systemen voor deze VM-typen en ondersteunde SAP-en DBMS-releases.
+        - Valideer opnieuw de grootte van uw toepassing en de infra structuur die u in azure implementeert. Als u bestaande toepassingen verplaatst, kunt u vaak de benodigde SAP'S afleiden van de infra structuur die u gebruikt en de [SAP-benchmark pagina](https://www.sap.com/dmc/exp/2018-benchmark-directory/#/sd) en deze vergelijken met de sap's-nummers die worden vermeld in de [SAP-ondersteunings Opmerking #1928533](https://launchpad.support.sap.com/#/notes/1928533). Houd [dit artikel ook bij op sap's-classificaties](https://techcommunity.microsoft.com/t5/Running-SAP-Applications-on-the/SAPS-ratings-on-Azure-VMs-8211-where-to-look-and-where-you-can/ba-p/368208) .
+        - Evalueer en test de grootte van uw Azure-Vm's met betrekking tot de maximale opslag doorvoer en netwerk doorvoer van de VM-typen die u tijdens de plannings fase hebt gekozen. U kunt de gegevens hier vinden:
+           -  [Grootten voor virtuele Windows-machines in azure](https://docs.microsoft.com/azure/virtual-machines/windows/sizes?toc=%2fazure%2fvirtual-network%2ftoc.json). Het is belang rijk dat u rekening houdt met de Maxi maal beschik bare *schijf doorvoer* in de cache voor grootte.
+           -  [Grootten voor virtuele Linux-machines in azure](https://docs.microsoft.com/azure/virtual-machines/linux/sizes?toc=%2fazure%2fvirtual-network%2ftoc.json). Het is belang rijk dat u rekening houdt met de Maxi maal beschik bare *schijf doorvoer* in de cache voor grootte.
+   1. Opslag.
+        - Gebruik ten minste [Azure Standard-SSD Storage](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#standard-ssd) voor virtuele machines die een SAP-toepassings lagen vertegenwoordigen en voor de implementatie van DBMSs die geen prestatie gevoelig zijn.
+        - In het algemeen wordt het gebruik van [Azure Standard-HDD-schijven](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#standard-hdd)niet aangeraden.
+        - Gebruik [Azure Premium Storage](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#premium-ssd) voor alle DBMS-vm's die op afstand gevoelig zijn.
+        - Gebruik [Azure Managed disks](https://azure.microsoft.com/services/managed-disks/).
+        - Gebruik Azure Write Accelerator voor DBMS-logboek stations met een M-serie. Houd rekening met Write Accelerator limieten en het gebruik, zoals wordt beschreven in [Write Accelerator](https://docs.microsoft.com/azure/virtual-machines/linux/how-to-enable-write-accelerator).
+        - Voor de verschillende DBMS-typen raadpleegt u de [algemene SAP-gerelateerde DBMS-documentatie](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general) en de DBMS-specifieke documentatie waarnaar het algemene document verwijst.
+        - Zie [SAP Hana Infrastructure-configuraties en-bewerkingen op Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations)voor meer informatie over SAP Hana.
+        - Koppel nooit Azure-gegevens schijven aan een Azure Linux-VM met behulp van de apparaat-ID. Gebruik in plaats daarvan de UUID (Universally Unique Identifier). Wees voorzichtig wanneer u grafische hulpprogram ma's gebruikt om Azure-gegevens schijven te koppelen. Controleer de vermeldingen in bestand/etc/fstab om te controleren of de UUID wordt gebruikt om de schijven te koppelen. In [dit artikel](https://docs.microsoft.com/azure/virtual-machines/linux/attach-disk-portal#connect-to-the-linux-vm-to-mount-the-new-disk)vindt u meer informatie.
+   1. Inbel.
+        - Test en evalueer uw virtuele netwerk infrastructuur en de distributie van uw SAP-toepassingen over of binnen de verschillende virtuele netwerken van Azure.
+        -  Evalueer de architectuur van de hub en het spoke-netwerk of de microsegmentatie aanpak binnen één virtueel Azure-netwerk. Baseer deze evaluatie op:-kosten van gegevens uitwisseling tussen [gepeerde virtuele netwerken van Azure](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview). Zie [Virtual Network prijzen](https://azure.microsoft.com/pricing/details/virtual-network/)voor meer informatie over de kosten.
+                  -Voor delen van een snelle verbinding van de peering tussen virtuele netwerken van Azure in plaats van de netwerk beveiligings groep wijzigen om een subnet in een virtueel netwerk te isoleren. Deze evaluatie is voor gevallen waarin toepassingen of Vm's die worden gehost in een subnet van het virtuele netwerk een beveiligings risico vormen.
+                  -Centrale logboek registratie en controle van netwerk verkeer tussen on-premises, de buiten wereld en het virtuele Data Center dat u in azure hebt gemaakt.
+        - Evalueer en test het gegevenspad tussen de SAP-toepassingslaag en de SAP DBMS-laag.
+            -  Plaatsing van [virtuele Azure-netwerk apparaten](https://azure.microsoft.com/solutions/network-appliances/) in het communicatie traject tussen de SAP-toepassing en de DBMS-laag van SAP-systemen op basis van SAP NetWeaver, hybris of S/4HANA wordt niet ondersteund.
+            -  Plaatsing van de SAP-toepassingslaag en SAP DBMS in verschillende virtuele netwerken van Azure die niet worden gekoppeld, wordt niet ondersteund.
+            -  U kunt [toepassings beveiligings groep en regels voor netwerk beveiligings groepen](https://docs.microsoft.com/azure/virtual-network/security-overview) gebruiken om routes te definiëren tussen de SAP-toepassingslaag en de SAP-DBMS-laag.
+        - Zorg ervoor dat [Azure versneld netwerken](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/) is ingeschakeld op de virtuele machines die worden gebruikt in de SAP-toepassingslaag en de SAP-DBMS-laag. Houd er bij dat er verschillende besturingssysteem niveaus nodig zijn voor de ondersteuning van versneld netwerken in Azure:
+            - Windows Server 2012 R2 of hoger.
+            - SUSE Linux 12 SP3 of hoger.
+            - RHEL 7,4 of hoger.
+            - Oracle Linux 7,5. Als u de RHCKL-kernel gebruikt, is release 3.10.0-862.13.1. EL7 vereist. Als u de Oracle UEK-kernel gebruikt, is release 5 vereist.
+        - Test en evalueer de netwerk latentie tussen de virtuele machines van de SAP-toepassingslaag en de DBMS-Vm's op basis van SAP-ondersteunings opmerkingen [#500235](https://launchpad.support.sap.com/#/notes/500235) en [#1100926](https://launchpad.support.sap.com/#/notes/1100926/E). Controleer de resultaten op basis van de richt lijnen voor netwerk latentie in [SAP-ondersteunings opmerking #1100926](https://launchpad.support.sap.com/#/notes/1100926/E). De netwerk latentie moet in het gemiddelde of het goede bereik liggen. Uitzonde ringen zijn van toepassing op verkeer tussen Vm's en HANA grote instantie-eenheden, zoals beschreven in [dit artikel](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-network-architecture#networking-architecture-for-hana-large-instance).
+        - Zorg ervoor dat ILB-implementaties zijn ingesteld om direct server return te gebruiken. Met deze instelling wordt de latentie verminderd wanneer Azure ILBs wordt gebruikt voor configuraties met hoge Beschik baarheid op de DBMS-laag.
+        - Als u Azure Load Balancer samen met Linux-gast besturingssystemen gebruikt, controleert u of de Linux-netwerk parameter **net. IPv4. TCP _timestamps** is ingesteld op **0**. Deze aanbeveling is in conflict met aanbevelingen in oudere versies van [SAP note #2382421](https://launchpad.support.sap.com/#/notes/2382421). De SAP-notitie wordt nu bijgewerkt met de status dat deze para meter moet worden ingesteld op **0** om te kunnen werken met Azure load balancers.
+        - Overweeg het gebruik van [Azure proximity placement groups](https://docs.microsoft.com/azure/virtual-machines/linux/co-location) om een optimale netwerk latentie te verkrijgen. Zie voor meer informatie [Azure proximity placement groups voor optimale netwerk latentie met SAP-toepassingen](sap-proximity-placement-scenarios.md).
+   1. Hoge Beschik baarheid en implementaties voor herstel na nood gevallen.
+        - Als u de SAP-toepassingslaag implementeert zonder een specifieke Azure-beschikbaarheids zone te definiëren, moet u ervoor zorgen dat alle virtuele machines waarop SAP-dialoog instanties of middleware-exemplaren van één SAP-systeem worden uitgevoerd, worden geïmplementeerd in een [beschikbaarheidsset](https://docs.microsoft.com/azure/virtual-machines/windows/manage-availability).
+        - Als u geen hoge Beschik baarheid voor SAP Central-Services en het DBMS nodig hebt, kunt u deze Vm's implementeren in dezelfde beschikbaarheidsset als de SAP-toepassingslaag.
+        - Als u SAP Central-Services en de DBMS-laag voor hoge Beschik baarheid beveiligt met behulp van passieve replicatie, plaatst u de twee knoop punten voor SAP Central-Services in één afzonderlijke beschikbaarheidsset en de twee DBMS-knoop punten in een andere beschikbaarheidsset.
+        - Als u in Azure-beschikbaarheidszones implementeert, kunt u geen beschikbaarheids sets gebruiken. Maar u moet ervoor zorgen dat u de knoop punten actief en passieve centrale Services implementeert in twee verschillende Beschikbaarheidszones. Gebruik Beschikbaarheidszones die de laagste latentie ertussen hebben.
+          Houd er rekening mee dat u [Azure Standard Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones) moet gebruiken voor het gebruik van om Windows-of pacemaker-failoverclusters te maken voor de DBMS en SAP Central Services-laag voor alle Beschikbaarheidszones. U kunt geen [basis Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview#skus) gebruiken voor zonegebonden-implementaties.
+   1. Time-outinstellingen.
+        - Controleer de SAP NetWeaver-ontwikkelaars traceringen van de SAP-exemplaren om ervoor te zorgen dat er geen verbindings onderbrekingen tussen de bewerkings-en SAP-processen zijn. U kunt deze verbindings onderbrekingen vermijden door deze twee register parameters in te stellen:
+            - HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\KeepAliveTime = 120000. Zie [KeepAliveTime](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-2000-server/cc957549(v=technet.10))voor meer informatie.
+            - HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\KeepAliveInterval = 120000. Zie [KeepAliveInterval](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-2000-server/cc957548(v=technet.10))voor meer informatie.
+        - Als u wilt voor komen dat GUI-time-outs tussen on-premises SAP GUI-interfaces en SAP-toepassings lagen in azure zijn geïmplementeerd, controleert u of deze para meters zijn ingesteld in het standaard. PFL-of het exemplaar profiel:
+            - rdisp/keepalive_timeout = 3600
+            - rdisp/keepalive = 20
+        - U moet de para meter **enque/encni/set_so_keepalive** instellen op **True**om te voor komen dat er verbinding wordt gemaakt tussen de SAP-in-en SAP-werk processen. Zie ook [SAP-opmerking #2743751](https://launchpad.support.sap.com/#/notes/2743751).  
+        - Als u een configuratie van een Windows-failovercluster gebruikt, moet u ervoor zorgen dat de tijd die moet worden gereageerd op niet-reagerende knoop punten correct is ingesteld voor Azure. In het artikel de [drempel waarden voor het afstemmen van het failover cluster-netwerk](https://techcommunity.microsoft.com/t5/Failover-Clustering/Tuning-Failover-Cluster-Network-Thresholds/ba-p/371834) worden de para meters weer gegeven. Ervan uitgaande dat de cluster knooppunten zich in hetzelfde subnet bevinden, moet u deze para meters wijzigen:
+            - SameSubNetDelay = 2000
+            - SameSubNetThreshold = 15
+            - RoutingHistorylength = 30
+1. Test uw hoge Beschik baarheid en nood herstel procedures.
+   1. Failover-situaties simuleren door Vm's (Windows-gast besturingssystemen) af te sluiten of besturings systemen in de modus paniek (Linux-gast besturingssystemen) te zetten. Met deze stap kunt u nagaan of uw failover-configuraties werken zoals is ontworpen.
+   1. Meet hoe lang het duurt om een failover uit te voeren. Als de tijden te lang zijn, kunt u het volgende overwegen:
+        - Voor SUSE Linux gebruikt u SBD-apparaten in plaats van de Azure Fence-agent om failover te versnellen.
+        - Voor SAP HANA, als het opnieuw laden van gegevens te lang duurt, kunt u overwegen om meer opslag bandbreedte in te richten.
+   1. Test uw back-up/herstel volgorde en timing en breng zo nodig wijzigingen aan. Zorg ervoor dat de back-uptijden voldoende zijn. U moet ook de herstel-en tijd herstel activiteiten testen. Zorg ervoor dat de herstel tijden binnen uw RTO-Sla's vallen, waar uw RTO afhankelijk is van een Data Base-of VM-herstel proces.
+   1. De DR-functionaliteit en-architectuur van meerdere regio's testen.
+1. Beveiligings controles.
+   1. Test de validiteit van uw op Azure Role gebaseerde Access Control (RBAC)-architectuur. Het doel is om de toegang en machtigingen van verschillende teams te scheiden en te beperken. SAP-team leden moeten bijvoorbeeld Vm's kunnen implementeren en schijven toewijzen van Azure Storage in een bepaald Azure Virtual Network. Het SAP-basis team mag echter geen eigen virtuele netwerken maken of de instellingen van bestaande virtuele netwerken wijzigen. Leden van het netwerk team mogen geen Vm's implementeren in virtuele netwerken waarin SAP-toepassingen en DBMS-Vm's worden uitgevoerd. Ook kunnen leden van dit team kenmerken van Vm's wijzigen of zelfs Vm's of schijven verwijderen.  
+   1.  Controleer of de [netwerk beveiligings groep en de ASC](https://docs.microsoft.com/azure/virtual-network/security-overview) -regels naar behoren werken en de beveiligde resources afschermen.
+   1.  Zorg ervoor dat alle resources die moeten worden versleuteld, zijn versleuteld. Definieer en implementeer processen voor het maken van back-ups van certificaten, opslag en toegang tot die certificaten en herstel de versleutelde entiteiten.
+   1.  Gebruik [Azure Disk Encryption](https://docs.microsoft.com/azure/security/azure-security-disk-encryption-faq) voor besturingssysteem schijven waar mogelijk vanuit een besturings systeem-ondersteunings punt wordt weer gegeven.
+   1.  Zorg ervoor dat u niet te veel versleutelings lagen gebruikt. In sommige gevallen is het zinvol om Azure Disk Encryption te gebruiken in combi natie met een van de DBMS Transparent Data Encryption-methoden.
+1. Prestatie testen. In SAP voert u de volgende vergelijkingen uit op basis van SAP-tracering en-metingen:
+   1. Indien van toepassing, kunt u de 10 beste online rapporten vergelijken met uw huidige implementatie.
+   1. Indien van toepassing, kunt u de eerste 10 batch-taken vergelijken met uw huidige implementatie.
+   1. Vergelijkt gegevens overdracht via interfaces naar het SAP-systeem. Focus op interfaces waar u weet dat de overdracht nu plaatsvindt tussen verschillende locaties, zoals van on-premises naar Azure.
 
 
 ## <a name="non-production-phase"></a>Niet-productie fase 
-In deze fase gaan we ervan uit dat u, na een geslaagde pilot of haalbaarheids test, u begint met het implementeren van niet-productie SAP-systemen in Azure. Alle geleerde informatie en ervaringen van het concept van concepten moeten worden aangepast aan een dergelijke implementatie. Alle criteria en stappen die in de haalbaarheids lijst worden vermeld, zijn ook van toepassing op dit type implementaties. In deze fase implementeert u doorgaans Ontwikkel systemen, systemen voor eenheids tests en bedrijfs systemen voor regressie tests in Azure. Het is raadzaam om ten minste één niet-productie systeem in één SAP-toepassings lijn de volledige configuratie van hoge Beschik baarheid te laten hebben als het toekomstige productie systeem zal zijn. In deze fase moet u rekening houden met de volgende aanvullende stappen:  
+In deze fase gaan we ervan uit dat u, na een geslaagde pilot of proef van het concept (haalbaarheids test), u begint met het implementeren van niet-productie SAP-systemen naar Azure. Integreer alles wat u hebt geleerd en ervaring hebt tijdens de haalbaarheids test voor deze implementatie. Alle criteria en stappen die worden vermeld voor POCs, zijn ook van toepassing op deze implementatie.
 
-1.  Voordat u systemen van het oude platform verplaatst naar Azure resource verbruiks gegevens verzamelen, zoals CPU-gebruik, opslag doorvoer en IOPS-gegevens. Met name van de DBMS-laag eenheden, maar ook uit de eenheden van de toepassingslaag. Meet ook netwerk-en opslag latentie.
-2.  Registreer de tijd patronen voor het beschikbaarheids gebruik van de systemen. Doel is te bepalen of niet-productie systemen 24x7 beschikbaar moeten zijn of dat er niet-productie systemen zijn die kunnen worden afgesloten tijdens bepaalde fasen van een week of maand
-3.  Test en geef aan of u eigen installatie kopieën voor het besturings systeem wilt maken voor uw virtuele machines in azure of dat u een installatie kopie uit de galerie met installatie kopieën van Azure wilt gebruiken. Als u een installatie kopie uit de Azure-Galerie gebruikt, zorg er dan voor dat u de juiste afbeelding hebt die het ondersteunings contract weerspiegelt met de leverancier van uw besturings systeem. Voor sommige leveranciers van het besturings systeem kunnen Azure-galerieën uw eigen licentie-installatie kopieën meenemen. Voor andere installatie kopieën van het besturings systeem is ondersteuning opgenomen in de prijs die door Azure wordt vermeld. Als u besluit om uw eigen installatie kopieën voor het besturings systeem te maken, kunt u de documentatie vinden in deze artikelen:
-    1.  Op basis van [deze documentatie](https://docs.microsoft.com/azure/virtual-machines/windows/capture-image-resource) kunt u een gegeneraliseerde installatie kopie maken van een Windows-VM die in Azure is geïmplementeerd
-    2.  Op basis van [deze documentatie](https://docs.microsoft.com/azure/virtual-machines/linux/capture-image) kunt u een gegeneraliseerde installatie kopie maken van een virtuele Linux-machine die is geïmplementeerd in azure
-3.  Als u SUSE-en Red Hat Linux-installatie kopieën in de Azure VM-Galerie gebruikt, moet u de installatie kopieën voor SAP van de Linux-leveranciers gebruiken in de Azure VM-galerie
-4.  Zorg ervoor dat u voldoet aan de ondersteunings vereisten SAP heeft betrekking op micro soft-ondersteunings overeenkomsten. Informatie vindt u in SAP-ondersteunings opmerking [#2015553](https://launchpad.support.sap.com/#/notes/2015553). Voor HANA grote instanties raadpleegt u de vereisten voor het document [voorbereiden](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-onboarding-requirements)
-4.  Zorg ervoor dat de juiste personen [geplande onderhouds meldingen](https://azure.microsoft.com/blog/a-new-planned-maintenance-experience-for-your-virtual-machines/)ontvangen, zodat u de downtime en het opnieuw opstarten van vm's in de tijd kunt kiezen.
-5.  De Azure-documentatie van micro soft-presentaties wordt steeds gecontroleerd op kanalen zoals [Channel 9](https://channel9.msdn.com/) voor nieuwe functionaliteit die mogelijk van toepassing is op uw implementaties
-6.  Raadpleeg SAP-notities met betrekking tot Azure, zoals een ondersteunings opmerking [#1928533](https://launchpad.support.sap.com/#/notes/1928533) voor nieuwe VM-sku's, of onlangs ondersteund besturings systeem en DBMS-versie. Vergelijk nieuwe VM-typen met oudere VM-typen in prijzen, zodat u virtuele machines met de beste prijs-prestatie verhouding kunt implementeren
-7.  Valideer de resources in SAP-ondersteunings notities, SAP HANA hardwarebronnen en SAP PAM opnieuw om ervoor te zorgen dat er geen wijzigingen zijn in ondersteunde Vm's voor Azure, ondersteunde besturingssysteem releases in deze Vm's en ondersteunde SAP-en DBMS-releases
-8.  [Hier vindt](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) u een overzicht van nieuwe Hana-gecertificeerde Sku's in Azure en vergelijk prijzen met de kosten die u hebt gepland en uiteindelijk wijzigt om de eenheden met een betere prijs-prestatie verhouding te verkrijgen 
-9.  Uw implementatie scripts aanpassen om gebruik te maken van nieuwe VM-typen en nieuwe functies van Azure toe te passen die u wilt gebruiken
-10. Na de implementatie van de infra structuur test en evalueert u de netwerk latentie tussen de virtuele machine van SAP Application Layer en de DBMS-VM volgens SAP-ondersteunings opmerking [#500235](https://launchpad.support.sap.com/#/notes/500235) en SAP-ondersteunings opmerking [#1100926](https://launchpad.support.sap.com/#/notes/1100926/E). Evalueer de resultaten op basis van de richt lijnen voor netwerk latentie van SAP-ondersteunings opmerking [#1100926](https://launchpad.support.sap.com/#/notes/1100926/E). De netwerk latentie moet in het gemiddelde en het goede bereik liggen. Uitzonde ringen zijn van toepassing op verkeer tussen virtuele machines en HANA grote instantie-eenheden, zoals [hier](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-network-architecture#networking-architecture-for-hana-large-instance)wordt beschreven. Zorg ervoor dat geen van de beperkingen die worden vermeld in [overwegingen voor azure virtual machines DBMS-implementatie voor SAP-werk belasting](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general#azure-network-considerations) en [SAP Hana infrastructuur configuraties en-bewerkingen in azure van](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations) toepassing zijn op uw implementatie
-11. Zorg ervoor dat de virtuele machines zijn geïmplementeerd met behulp van de juiste [Azure proximity-plaatsings groep](https://docs.microsoft.com/azure/virtual-machines/linux/co-location) zoals beschreven in het artikel [Azure proximity placement groups voor optimale netwerk latentie met SAP-toepassingen](sap-proximity-placement-scenarios.md)
-11. Alle andere controles uitvoeren zoals vermeld in de fase concepten testen voordat u de werk belasting toepast
-12. Als workload van toepassing is, noteert u het Resource verbruik van deze systemen in Azure en vergelijkt u met de records die u van uw oude platform hebt ontvangen. Pas de VM-grootte van toekomstige implementaties aan als u ziet dat u grotere verschillen hebt. Houd er rekening mee dat in het geval van Overweeg-, opslag-en netwerk bandbreedten van een virtuele machine ook worden verminderd:
-    1.  [Grootten voor virtuele Windows-machines in azure](https://docs.microsoft.com/azure/virtual-machines/windows/sizes?toc=%2fazure%2fvirtual-network%2ftoc.json). 
-    2.  [Grootten voor Linux Virtual Machines in Azure](https://docs.microsoft.com/azure/virtual-machines/linux/sizes?toc=%2fazure%2fvirtual-network%2ftoc.json) 
-13. Werk op systeem kopie functionaliteit en-processen. Doel is om het eenvoudig te maken om een ontwikkelings systeem of een test systeem te kopiëren, zodat project teams snel nieuwe systemen kunnen verkrijgen. U kunt [SAP LaMa](https://wiki.scn.sap.com/wiki/display/ATopics/SAP+Landscape+Management+%28SAP+LaMa%29+at+a+Glance) beschouwen als een hulp programma dat dergelijke taken uitvoert.
-14. Optimaliseer en verdeel de Azure Role-toegang,-machtigingen en-processen van uw team om ervoor te zorgen dat u een schei ding van het recht aan de ene kant hebt. Aan de andere kant wilt u dat alle teams ingeschakeld zijn om hun taken uit te voeren in de Azure-infra structuur.
-15. Ontwikkel, test en documenteer procedures voor hoge Beschik baarheid en herstel na nood gevallen om uw mede werkers in staat te stellen dergelijke taken uit te voeren. Tekortkomingen identificeren en nieuwe Azure-functionaliteit aanpassen die u integreert in uw implementaties
+Tijdens deze fase implementeert u doorgaans Ontwikkel systemen, eenheids test systemen en zakelijke regressie test systemen naar Azure. Het is raadzaam dat ten minste één niet-productie systeem in één SAP-toepassings lijn de volledige configuratie van hoge Beschik baarheid heeft die het toekomstige productie systeem zal hebben. Hier volgen enkele extra stappen die u moet uitvoeren tijdens deze fase:  
+
+1.  Voordat u systemen van het oude platform naar Azure verplaatst, verzamelt u gegevens over het verbruik van bronnen, zoals CPU-gebruik, opslag doorvoer en IOPS-gegevens. Dit geldt met name voor het verzamelen van gegevens uit de DBMS-laag eenheden, maar u kunt deze ook verzamelen uit de eenheden van de toepassingslaag. Meet ook netwerk-en opslag latentie.
+2.  Registreer de tijd patronen voor het beschikbaarheids gebruik van uw systemen. Het doel is te bepalen of niet-productie systemen elke dag en elke dag beschikbaar moeten zijn, en of er niet-productie systemen zijn die kunnen worden afgesloten tijdens bepaalde fasen van een week of maand.
+3.  Test en bepaal of u uw eigen installatie kopieën voor het besturings systeem wilt maken voor uw virtuele machines in azure of dat u een installatie kopie wilt gebruiken uit de galerie met gedeelde installatie kopieën van Azure. Als u een installatie kopie uit de galerie met gedeelde afbeeldingen gebruikt, moet u ervoor zorgen dat u een installatie kopie gebruikt die het ondersteunings contract weerspiegelt met de leverancier van uw besturings systeem. Voor sommige leveranciers van het besturings systeem kunt u met de galerie met gedeelde installatie kopieën uw eigen licentie-installatie kopieën meenemen. Voor andere installatie kopieën van besturings systemen is ondersteuning opgenomen in de prijs die door Azure wordt vermeld. Als u besluit om uw eigen installatie kopieën voor het besturings systeem te maken, kunt u de documentatie vinden in deze artikelen:
+    -   [Een gegeneraliseerde installatie kopie maken van een Windows-VM die is geïmplementeerd in azure](https://docs.microsoft.com/azure/virtual-machines/windows/capture-image-resource)
+    -   [Een gegeneraliseerde installatie kopie maken van een virtuele Linux-machine die is geïmplementeerd in azure](https://docs.microsoft.com/azure/virtual-machines/linux/capture-image)
+3.  Als u SUSE-en Red Hat Linux-installatie kopieën uit de galerie met gedeelde afbeeldingen gebruikt, moet u de installatie kopieën voor SAP van de Linux-leveranciers gebruiken in de galerie met gedeelde installatie kopieën.
+4.  Zorg ervoor dat u voldoet aan de SAP-ondersteunings vereisten voor micro soft-ondersteunings overeenkomsten. Zie [SAP-ondersteunings opmerking #2015553](https://launchpad.support.sap.com/#/notes/2015553). Zie [vereisten voor onboarding](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-onboarding-requirements)voor Hana grote instanties.
+4.  Zorg ervoor dat de juiste mensen [gepland onderhouds meldingen](https://azure.microsoft.com/blog/a-new-planned-maintenance-experience-for-your-virtual-machines/) ontvangen, zodat u de beste downtime kunt kiezen.
+5.  Controleer regel matig op Azure-presentaties op kanalen als [Channel 9](https://channel9.msdn.com/) voor nieuwe functionaliteit die mogelijk van toepassing is op uw implementaties.
+6.  Raadpleeg SAP-notities met betrekking tot Azure, zoals de [ondersteunings opmerking #1928533](https://launchpad.support.sap.com/#/notes/1928533), voor nieuwe VM-sku's en nieuw ondersteund besturings systeem en DBMS-releases. Vergelijk de prijzen van nieuwe VM-typen met de oudere VM-typen, zodat u Vm's kunt implementeren met de beste prijs-prestatie verhouding.
+7.  Raadpleeg SAP-ondersteunings opmerkingen, de SAP HANA hardware-map en de SAP PAM opnieuw. Zorg ervoor dat er geen wijzigingen zijn in ondersteunde Vm's voor Azure, ondersteunde besturingssysteem versies op deze Vm's en ondersteunde SAP-en DBMS-releases.
+8.  Raadpleeg [de SAP-website](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) voor nieuwe met Hana gecertificeerde Sku's in Azure. Vergelijk de prijs van nieuwe Sku's met de prijzen die u voor gebruik hebt gepland. Breng uiteindelijk de benodigde wijzigingen aan voor het gebruik ervan met de beste prijs-prestatie verhouding.
+9.  Uw implementatie scripts aanpassen om nieuwe VM-typen te gebruiken en nieuwe Azure-functies te integreren die u wilt gebruiken.
+10. Na de implementatie van de-infra structuur test en evalueert u de netwerk latentie tussen de virtuele machines van de SAP-toepassingslaag en de DBMS-Vm's op basis van SAP-ondersteunings opmerkingen [#500235](https://launchpad.support.sap.com/#/notes/500235) en [#1100926](https://launchpad.support.sap.com/#/notes/1100926/E). Controleer de resultaten op basis van de richt lijnen voor netwerk latentie in [SAP-ondersteunings opmerking #1100926](https://launchpad.support.sap.com/#/notes/1100926/E). De netwerk latentie moet in het gemiddelde of het goede bereik liggen. Uitzonde ringen zijn van toepassing op verkeer tussen Vm's en HANA grote instantie-eenheden, zoals beschreven in [dit artikel](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-network-architecture#networking-architecture-for-hana-large-instance). Zorg ervoor dat geen van de beperkingen die worden vermeld in [overwegingen voor azure virtual machines DBMS-implementatie voor SAP-workloads](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general#azure-network-considerations) en [SAP Hana infrastructuur configuraties en-bewerkingen op Azure van](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations) toepassing zijn op uw implementatie.
+11. Zorg ervoor dat uw virtuele machines worden geïmplementeerd in de juiste [Azure proximity-plaatsings groep](https://docs.microsoft.com/azure/virtual-machines/linux/co-location), zoals beschreven in [Azure-plaatsings groepen voor optimale netwerk latentie met SAP-toepassingen](sap-proximity-placement-scenarios.md).
+11. Voer alle andere controles uit die worden vermeld voor de concept fase testen voordat u de werk belasting toepast.
+12. Als de werk belasting van toepassing is, noteert u het Resource verbruik van de systemen in Azure. Vergelijk dit verbruik met records van uw oude platform. Pas de VM-grootte van toekomstige implementaties aan als u ziet dat er grote verschillen zijn. Houd er rekening mee dat als u krimpen, opslag en netwerk bandbreedten van Vm's worden gereduceerd.
+    - [Grootten voor Windows Virtual Machines in Azure](https://docs.microsoft.com/azure/virtual-machines/windows/sizes?toc=%2fazure%2fvirtual-network%2ftoc.json)
+    - [Grootten voor Linux Virtual Machines in Azure](https://docs.microsoft.com/azure/virtual-machines/linux/sizes?toc=%2fazure%2fvirtual-network%2ftoc.json) 
+13. Experimenteer met de functionaliteit en processen van systeem kopieën. Het doel is om het eenvoudig te maken om een ontwikkelings systeem of een test systeem te kopiëren, zodat project teams snel nieuwe systemen kunnen verkrijgen. Overweeg het gebruik van [SAP LaMa](https://wiki.scn.sap.com/wiki/display/ATopics/SAP+Landscape+Management+%28SAP+LaMa%29+at+a+Glance) voor deze taken.
+14. Optimaliseer en verwerk de op rollen gebaseerde toegang, machtigingen en processen van uw team om ervoor te zorgen dat u een schei ding van taken hebt. Op hetzelfde moment moet u ervoor zorgen dat alle teams hun taken in de Azure-infra structuur kunnen uitvoeren.
+15. Ontwikkel, test en documenteer procedures voor hoge Beschik baarheid en herstel na nood gevallen om uw mede werkers in staat te stellen deze taken uit te voeren. Identificeer tekortkomingen en pas nieuwe Azure-functionaliteit aan die u integreert in uw implementaties.
 
  
 ## <a name="production-preparation-phase"></a>Fase productie voorbereiding 
-In deze fase wilt u alle ervaringen en kennis van uw niet-productie-implementaties verzamelen en deze Toep assen in de toekomstige productie-implementaties. Daarnaast moet u ook het werk van de gegevens overdracht tussen de huidige hosting locatie en Azure voorbereiden. 
+In deze fase verzamelt u wat u hebt ervaren en geleerd tijdens uw implementaties zonder productie en past u deze toe op toekomstige productie-implementaties. U moet ook het werk van de gegevens overdracht voorbereiden tussen de huidige hosting locatie en Azure.
 
-1.  Gebruik de nodige SAP-release-upgrades van uw productie systemen voordat u overstapt op Azure
-2.  Ga akkoord met de zakelijke eigen aren van de functionele en zakelijke tests die moeten worden uitgevoerd na de migratie van het productie systeem
-    1.  Zorg ervoor dat al deze tests worden uitgevoerd met de bron systemen in de huidige hosting locatie. U wilt voor komen dat testen worden uitgevoerd voor de eerste keer wanneer het systeem is verplaatst naar Azure
-2.  Test het productie migratie proces in Azure. Als niet alle productie systemen in hetzelfde tijds bestek naar Azure worden verplaatst, bouwt u groepen productie systemen die zich op dezelfde hosting locatie moeten bevinden. Gegevens migratie uitoefenen en testen. Lijst met veelvoorkomende methoden zoals:
-    1.  DBMS-methoden zoals back-up/herstel gebruiken in combi natie met SQL Server AlwaysOn, HANA-systeem replicatie of logboek verzending voor het seeden en synchroniseren van database inhoud in azure
-    2.  Back-up/herstel gebruiken voor kleinere data bases
-    3.  SAP-migratie monitor gebruiken die is geïmplementeerd in het SAP SWPM-hulp programma voor het uitvoeren van heterogene migraties
-    4.  Gebruik het [SAP DMO](https://blogs.sap.com/2013/11/29/database-migration-option-dmo-of-sum-introduction/) -proces als u wilt combi neren met een SAP-versie-upgrade. Houd er wel bij dat niet alle combi Naties tussen bron-en doel-DBMS worden ondersteund. Meer informatie vindt u in de specifieke SAP-ondersteunings opmerkingen voor de verschillende versies van DMO. Bijvoorbeeld, [Data Base Migration Option (DMO) van SUM 2,0 SP04](https://launchpad.support.sap.com/#/notes/2644872)
-    5.  Test of gegevens overdracht via internet of via ExpressRoute beter is in de door Voer voor het geval u back-ups of SAP-export bestanden moet verplaatsen. Voor het verplaatsen van gegevens via internet, moet u mogelijk enkele van uw NSG/ASG-beveiligings regels wijzigen die u nodig hebt voor toekomstige productie systemen
-3.  Voordat u systemen van het oude platform verplaatst naar Azure resource verbruiks gegevens verzamelen, zoals CPU-gebruik, opslag doorvoer en IOPS-gegevens. Met name van de DBMS-laag eenheden, maar ook uit de eenheden van de toepassingslaag. Meet ook netwerk-en opslag latentie.
-4.  Valideer de resources in SAP-ondersteunings notities, SAP HANA hardwarebronnen en SAP PAM opnieuw om ervoor te zorgen dat er geen wijzigingen zijn in ondersteunde Vm's voor Azure, ondersteunde besturingssysteem releases in deze Vm's en ondersteunde SAP-en DBMS-releases 
-4.  Implementatie scripts aanpassen aan de meest recente wijzigingen die u hebt gekozen voor VM-typen en Azure-functionaliteit
-5.  Ga na de implementatie van de infra structuur en toepassing door een reeks controles om te controleren:
-    1.  De juiste VM-typen zijn geïmplementeerd met de juiste kenmerken en opslag grootten
-    2.  Controleer of de Vm's zich op de juiste en gewenste versies van het besturings systeem en patches bevinden en uniform zijn
-    3.  Controleren of de virtuele machines zo nodig en uniform worden gehard
-    4.  Controleer of de juiste toepassings releases en patches zijn geïnstalleerd en geïmplementeerd
-    5.  De virtuele machines die zijn geïmplementeerd in azure-beschikbaarheids sets, zoals gepland
-    6.  Azure Premium Storage is gebruikt voor de latentie gevoelige schijven of de [Sla voor één VM van 99,9%](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/) is vereist
-    7.  Controleren op de juiste implementatie van Azure Write Accelerator
-        1.  Zorg ervoor dat binnen de virtuele machine, opslag ruimten of stripesets op de juiste wijze is gebouwd op schijven waarvoor Azure Write Accelerator-ondersteuning nodig is
-            1.  Controleer de [configuratie van software-RAID op Linux](https://docs.microsoft.com/azure/virtual-machines/linux/configure-raid)
-            2.  Controleren [LVM op een Linux-vm in azure configureren](https://docs.microsoft.com/azure/virtual-machines/linux/configure-lvm)
-    8.  [Azure Managed disks](https://azure.microsoft.com/services/managed-disks/) zijn exclusief gebruikt
-    9.  Virtuele machines die zijn geïmplementeerd in de juiste beschikbaarheids sets en Beschikbaarheidszones
-    10. Zorg ervoor dat [Azure versneld netwerken](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/) is ingeschakeld op de virtuele machines die worden gebruikt op de SAP-toepassingslaag en de SAP DBMS-laag
-    11. Er zijn geen [virtuele Azure-netwerk apparaten](https://azure.microsoft.com/solutions/network-appliances/) in het communicatie traject tussen de SAP-toepassing en de DBMS-laag van een SAP NetWeaver, hybris of S/4HANA op basis van SAP-systemen
-    12. Met ASG-en NSG-regels kunnen communicatie zoals gewenst en gepland worden uitgevoerd en wordt de communicatie geblokkeerd, indien nodig
-    13. De time-outinstellingen zoals eerder beschreven, zijn correct ingesteld
-    14. Zorg ervoor dat de virtuele machines zijn geïmplementeerd met behulp van de juiste [Azure proximity-plaatsings groep](https://docs.microsoft.com/azure/virtual-machines/linux/co-location) zoals beschreven in het artikel [Azure proximity placement groups voor optimale netwerk latentie met SAP-toepassingen](sap-proximity-placement-scenarios.md)
-    15. Test en evalueer de netwerk latentie tussen SAP Application Layer-VM en DBMS-VM volgens SAP-ondersteuning opmerking [#500235](https://launchpad.support.sap.com/#/notes/500235) en SAP-ondersteunings opmerking [#1100926](https://launchpad.support.sap.com/#/notes/1100926/E). Evalueer de resultaten op basis van de richt lijnen voor netwerk latentie van SAP-ondersteunings opmerking [#1100926](https://launchpad.support.sap.com/#/notes/1100926/E). De netwerk latentie moet in het gemiddelde en het goede bereik liggen. Uitzonde ringen zijn van toepassing op verkeer tussen virtuele machines en HANA grote instantie-eenheden, zoals [hier](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-network-architecture#networking-architecture-for-hana-large-instance) wordt beschreven
-    15. Controleer of de versleuteling zo nodig is geïmplementeerd en met de versleutelings methode vereist
-    16. Controleren of interfaces en andere toepassingen verbinding kunnen maken met de zojuist geïmplementeerde infra structuur
-6.  Maak een Playbook voor het reageren op geplande Azure-onderhoud. Definieer de volg orde van de systemen en Vm's die opnieuw moeten worden opgestart in het geval van gepland onderhoud
+1.  Voltooi de benodigde SAP-release-upgrades van uw productie systemen voordat u overstapt op Azure.
+1.  Ga akkoord met de zakelijke eigen aren van functionele en zakelijke tests die moeten worden uitgevoerd na de migratie van het productie systeem.
+1.  Zorg ervoor dat deze tests zijn voltooid met de bron systemen in de huidige hosting locatie. Vermijd het uitvoeren van tests voor de eerste keer nadat het systeem is verplaatst naar Azure.
+1.  Test het proces van het migreren van productie systemen naar Azure. Als u gedurende hetzelfde tijds bestek niet alle productie systemen naar Azure verplaatst, bouwt u groepen productie systemen op die zich op dezelfde hosting locatie moeten bevinden. Test gegevens migratie. Hier volgen enkele veelvoorkomende methoden:
+    - Gebruik DBMS-methoden zoals back-up maken/herstellen in combi natie met SQL Server always on, HANA System Replication of log shipping to Seed and Synchronize data base content in Azure.
+    - Back-up/herstel gebruiken voor kleinere data bases.
+    - Gebruik SAP-migratie monitor, die is geïntegreerd in SAP SWPM, om heterogene migraties uit te voeren.
+    - Gebruik het [SAP DMO](https://blogs.sap.com/2013/11/29/database-migration-option-dmo-of-sum-introduction/) -proces als u uw migratie wilt combi neren met een SAP-versie-upgrade. Denk eraan dat niet alle combi Naties van bron-DBMS en doel-DBMS worden ondersteund. U vindt meer informatie in de specifieke SAP-ondersteunings opmerkingen voor de verschillende versies van DMO. Bijvoorbeeld, [Data Base Migration Option (DMO) van SUM 2,0 SP04](https://launchpad.support.sap.com/#/notes/2644872).
+    - Testen of de door Voer van gegevens overdracht beter is via internet of via ExpressRoute, voor het geval u back-ups of SAP-export bestanden moet verplaatsen. Als u gegevens verplaatst via internet, moet u mogelijk een aantal van de regels voor de beveiligings groep van uw netwerk groep/toepassing wijzigen die u nodig hebt voor toekomstige productie systemen.
+1.  Verzamel gegevens over resource verbruik voordat u systemen van uw oude platform naar Azure verplaatst. Nuttige gegevens zijn onder andere CPU-gebruik, opslag doorvoer en IOPS-gegevens. Dit geldt met name voor het verzamelen van gegevens uit de DBMS-laag eenheden, maar u kunt deze ook verzamelen uit de eenheden van de toepassingslaag. Meet ook netwerk-en opslag latentie.
+1.  Raadpleeg SAP-ondersteunings opmerkingen, de SAP HANA hardware-map en de SAP PAM opnieuw. Zorg ervoor dat er geen wijzigingen zijn in ondersteunde Vm's voor Azure, ondersteunde besturingssysteem versies in deze Vm's en ondersteunde SAP-en DBMS-releases.
+1.  Update implementatie scripts om rekening te houden met de meest recente beslissingen die u hebt genomen voor VM-typen en Azure-functionaliteit.
+1.  Nadat u de infra structuur en toepassingen hebt geïmplementeerd, controleert u of:
+    - De juiste VM-typen zijn geïmplementeerd, met de juiste kenmerken en opslag grootten.
+    - De virtuele machines bevinden zich op de juiste en gewenste versies van het besturings systeem en patches en zijn uniform.
+    - Vm's worden zo nodig en op een uniforme manier gehard.
+    - De juiste toepassings releases en patches zijn geïnstalleerd en geïmplementeerd.
+    - De virtuele machines zijn in azure-beschikbaarheids sets geïmplementeerd zoals gepland.
+    - Azure Premium Storage wordt gebruikt voor latentie gevoelige schijven of als de [Sla met één virtuele machine van 99,9%](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/) is vereist.
+    - Azure Write Accelerator is correct geïmplementeerd.
+        - Zorg ervoor dat de opslag ruimten of stripesets op de juiste wijze in de Vm's zijn gebouwd op schijven die Write Accelerator nodig hebben.
+        - Controleer de [configuratie van de software-RAID op Linux](https://docs.microsoft.com/azure/virtual-machines/linux/configure-raid).
+        - Controleer de [configuratie van LVM op Linux-vm's in azure](https://docs.microsoft.com/azure/virtual-machines/linux/configure-lvm).
+    - [Azure Managed disks](https://azure.microsoft.com/services/managed-disks/) worden uitsluitend gebruikt.
+    - Vm's zijn geïmplementeerd in de juiste beschikbaarheids sets en Beschikbaarheidszones.
+    - [Versneld netwerken van Azure](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/) is ingeschakeld op de virtuele machines die worden gebruikt in de SAP-toepassingslaag en de SAP-DBMS-laag.
+    - Er bevinden zich geen [virtuele Azure-netwerk apparaten](https://azure.microsoft.com/solutions/network-appliances/) in het communicatie traject tussen de SAP-toepassing en de DBMS-laag van SAP-systemen op basis van SAP NetWeaver, hybris of S/4HANA.
+    - Met de regels voor toepassings beveiligings groepen en netwerk beveiligings groepen kan de communicatie naar wens worden gecommuniceerd en wordt de communicatie, indien nodig, worden geblokkeerd.
+    - Time-outinstellingen zijn juist ingesteld, zoals eerder is beschreven.
+    - Virtuele machines worden geïmplementeerd in de juiste [Azure proximity-plaatsings groep](https://docs.microsoft.com/azure/virtual-machines/linux/co-location), zoals beschreven in [Azure proximity placement groups voor optimale netwerk latentie met SAP-toepassingen](sap-proximity-placement-scenarios.md).
+    - De netwerk latentie tussen de virtuele machines van de SAP-toepassingslaag en de DBMS Vm's wordt getest en gevalideerd zoals beschreven in de SAP-ondersteunings opmerkingen [#500235](https://launchpad.support.sap.com/#/notes/500235) en [#1100926](https://launchpad.support.sap.com/#/notes/1100926/E). Controleer de resultaten op basis van de richt lijnen voor netwerk latentie in [SAP-ondersteunings opmerking #1100926](https://launchpad.support.sap.com/#/notes/1100926/E). De netwerk latentie moet in het gemiddelde of het goede bereik liggen. Uitzonde ringen zijn van toepassing op verkeer tussen Vm's en HANA grote instantie-eenheden, zoals beschreven in [dit artikel](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-network-architecture#networking-architecture-for-hana-large-instance).
+    - Versleuteling is geïmplementeerd indien nodig en met de juiste versleutelings methode.
+    - Interfaces en andere toepassingen kunnen verbinding maken met de zojuist geïmplementeerde infra structuur.
+1.  Maak een Playbook voor het reageren op geplande Azure-onderhoud. Bepaal de volg orde waarin systemen en Vm's opnieuw moeten worden opgestart voor gepland onderhoud.
     
 
-## <a name="go-live-phase"></a>Live-fase
-Voor de Go-Live-fase moet u ervoor zorgen dat u voldoet aan uw playbooks die u in eerdere fasen hebt ontwikkeld. Voer de stappen uit die u hebt getest en getraind. Accepteer geen wijzigingen in de laatste minuut in configuraties en processen. Dit is niet alleen van toepassing op de volgende maat regelen:
+## <a name="go-live-phase"></a>Go-Live-fase
+Zorg ervoor dat u tijdens de Go-Live-fase de playbooks volgt die u hebt ontwikkeld tijdens eerdere fasen. Voer de stappen uit die u hebt getest en gepraktijkd. Accepteer geen wijzigingen in de laatste minuut in configuraties en processen. Voer ook de volgende stappen uit:
 
-1. Controleer of Azure Portal controle en andere controle hulpprogramma's werken.  Aanbevolen hulpprogram ma's zijn perfmon (Windows) of SAR (Linux): 
-    1.  CPU-items 
-        1.  Gemiddelde CPU-tijd – totaal (alle CPU)
-        2.  Gemiddelde CPU-tijd: elke afzonderlijke processor (dus 128 processors op m128 VM)
-        3.  CPU-tijd kernel: elke afzonderlijke processor
-        4.  CPU-tijd gebruiker: elke afzonderlijke processor
-    5.  Geheugen 
-        1.  Beschikbaar geheugen
-        2.  Geheugen pagina in per seconde
-        3.  Geheugen pagina uit per seconde
-    4.  Schijf 
-        1.  Lees-en schrijf bewerkingen per seconde voor elke afzonderlijke schijf 
-        2.  Lees bewerkingen per seconde op afzonderlijke schijven
-        3.  Lees-en schrijf-naar-schijf-per afzonderlijke schijf
-        4.  Geschreven en gelezen bytes per seconde voor elke afzonderlijke schijf 
-        5.  Schrijf bewerkingen per seconde van de schijf op afzonderlijke schijven
-        6.  Schrijf MS/Read-schijf-per afzonderlijke schijf
-    5.  Netwerk 
-        1.  Netwerk pakketten in per seconde
-        2.  Netwerk pakketten per seconde
-        3.  Netwerk KB per seconde
-        4.  Netwerk KB uit per seconde 
-2.  Voer na de migratie van de gegevens alle validatie tests uit die u hebt geaccepteerd bij de zakelijke eigen aren. Alleen resultaten van validatie tests accepteren waarbij u resultaten voor de oorspronkelijke bron systemen hebt
-3.  Controleren of de interfaces functioneren en of andere toepassingen kunnen communiceren met de zojuist geïmplementeerde productie systemen
-4.  Controleer het Trans Port-en correctie systeem via SAP Trans Action STMS
-5.  Database back-ups uitvoeren zodra het systeem is vrijgegeven voor productie
-6.  VM-back-ups uitvoeren voor de SAP Application Layer-Vm's zodra het systeem is vrijgegeven voor productie
-7.  Voor SAP-systemen die geen deel uitmaken van de huidige Go-Live-fase, maar wel met de SAP-systemen die u in deze Go-Live hebt verplaatst, moet u de buffer van de hostnaam opnieuw instellen in SM51. Deze stap verwijdert de oude IP-adressen in de cache die zijn gekoppeld aan de namen van de toepassings exemplaren die u naar Azure hebt verplaatst  
+1. Controleer of Azure Portal controle en andere controle hulpprogramma's werken. U kunt het beste Windows prestatie meter (PerfMon) voor Windows en SAR voor Linux.
+    - CPU-tellers.
+        - Gemiddelde CPU-tijd, totaal (alle Cpu's)
+        - Gemiddelde CPU-tijd, elke afzonderlijke processor (128 processors op M128 Vm's)
+        - CPU-kerneltijd, elke afzonderlijke processor
+        - CPU-gebruikers tijd, elke afzonderlijke processor
+    - Geheugenmetabase.
+        - Beschikbaar geheugen
+        - Geheugen pagina in per seconde
+        - Geheugen pagina uit per seconde
+    - Schijf.
+        - Schijf gelezen in KBps, per afzonderlijke schijf
+        - Lees-en schrijf bewerkingen per seconde op afzonderlijke schijven
+        - Schijf lezen in micro seconden/lezen, per afzonderlijke schijf
+        - Schijf schrijven in KBps, per afzonderlijke schijf
+        - Schijf schrijf bewerkingen per seconde, op afzonderlijke schijven
+        - Schrijf bewerkingen naar de schijf in micro seconden/lezen, per afzonderlijke schijf
+    - Netwerk.
+        - Netwerk pakketten in/seconde
+        - Netwerk pakketten uit per seconde
+        - Netwerk KB per seconde
+        - Netwerk KB uit/seconde
+1.  Voer na de gegevens migratie alle validatie tests uit die u hebt geaccepteerd bij de zakelijke eigen aren. Alleen validatie test resultaten accepteren als er resultaten voor de oorspronkelijke bron systemen zijn.
+1.  Controleer of de interfaces functioneren en of andere toepassingen kunnen communiceren met de zojuist geïmplementeerde productie systemen.
+1.  Controleer het Trans Port en het correctie systeem via SAP Trans Action STMS.
+1.  Database back-ups uitvoeren nadat het systeem is vrijgegeven voor productie.
+1.  Voer VM-back-ups uit voor de SAP Application Layer-Vm's nadat het systeem is vrijgegeven voor productie.
+1.  Voor SAP-systemen die geen deel uitmaken van de huidige Go-Live-fase, maar die communiceren met de SAP-systemen die u tijdens deze go-live-fase hebt verplaatst naar Azure, moet u de buffer van de hostnaam opnieuw instellen in SM51. Als u dit doet, worden de oude IP-adressen in de cache verwijderd die zijn gekoppeld aan de namen van de exemplaren van de toepassing die u naar Azure hebt verplaatst.  
 
 
 ## <a name="post-production"></a>Na productie
-In deze fase gaat het om het systeem te bewaken, te gebruiken en te beheren. Vanuit een SAP-oogpunt zijn de gebruikelijke taken die u nodig had om uit te voeren met uw oude hosting locatie van toepassing. De specifieke Azure-taken die u wilt uitvoeren:
+Deze fase is informatie over het bewaken, het beheren van en het beheer van het systeem. Vanuit een SAP-oogpunt zijn de gebruikelijke taken die u nodig had om te volt ooien in uw oude hosting locatie van toepassing. Voer deze specifieke Azure-taken ook uit:
 
-1. Azure-facturen voor hoogwaardige systemen analyseren
-2. Optimaliseer de prijs-prestatie verhouding van de kant-en opslag zijde van de virtuele machine
-3. Optimalisatie van tijd systemen kan worden afgesloten  
+1. Bekijk Azure-facturen voor systemen met hoge beladen.
+2. Optimaliseer de prijs-prestatie verhouding van de virtuele machine en de opslag zijde.
+3. Optimaliseer de tijden wanneer u systemen kunt uitschakelen.  
 
 
 ## <a name="next-steps"></a>Volgende stappen
-Raadpleeg de documentatie:
+Zie de volgende artikelen:
 
 - [Azure Virtual Machines planning en implementatie voor SAP net-Weaver](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide)
 - [Azure Virtual Machines-implementatie voor SAP NetWeaver](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/deployment-guide)
