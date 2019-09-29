@@ -4,17 +4,17 @@ description: Zone-redundante opslag (ZRS) biedt een eenvoudige manier om Maxi ma
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/28/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: f7639eb2807654aab38a4e849c2e58d77f15bc31
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: a343601ec126549926cfd4035d901862c0a585a8
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71036254"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71673092"
 ---
 # <a name="zone-redundant-storage-zrs-for-building-highly-available-azure-storage-applications"></a>Zone-redundante opslag (ZRS) voor het bouwen van Maxi maal beschik bare Azure Storage toepassingen
 
@@ -66,26 +66,26 @@ Voor het migreren van gegevens naar ZRS is een andere strategie vereist. ZRS-mig
 
 Er zijn twee primaire opties voor migratie naar ZRS: 
 
-- Gegevens hand matig kopiëren of verplaatsen naar een nieuw ZRS-account vanuit een bestaand account.
-- Een Live migratie aanvragen.
+- Gegevens handmatig kopiëren of verplaatsen van een bestaand account naar een nieuw ZRS-account.
+- Een livemigratie aanvragen.
 
 > [!IMPORTANT]
 > Livemigratie wordt momenteel niet ondersteund voor Premium-bestands shares. Op dit moment worden alleen hand matig gekopieerde of verplaatsen van gegevens ondersteund.
 
-Als u de migratie op een bepaalde datum wilt volt ooien, kunt u een hand matige migratie uitvoeren. Een hand matige migratie biedt meer flexibiliteit dan een Livemigratie. Met een hand matige migratie hebt u de controle over de timing.
+Als u de migratie vóór een bepaalde datum wilt voltooien, kunt u een handmatige migratie uitvoeren. Een handmatige migratie biedt meer flexibiliteit dan een livemigratie. Met een handmatige migratie hebt u de controle over de timing.
 
 Als u een hand matige migratie wilt uitvoeren, hebt u de volgende opties:
 - Gebruik bestaande hulp middelen, zoals AzCopy, een van de Azure Storage-client bibliotheken of betrouw bare hulpprogram ma's van derden.
 - Als u bekend bent met Hadoop of HDInsight, koppelt u het bron-en doel account (ZRS) aan uw cluster. Parallelliseren vervolgens het proces voor het kopiëren van gegevens met een hulp programma zoals DistCp.
 - Bouw uw eigen hulp programma met behulp van een van de Azure Storage-client bibliotheken.
 
-Een hand matige migratie kan leiden tot uitval tijd van toepassingen. Als voor uw toepassing hoge Beschik baarheid is vereist, biedt micro soft ook een optie voor Livemigratie. Een Livemigratie is een interne migratie zonder uitval tijd. 
+Een hand matige migratie kan leiden tot uitval tijd van toepassingen. Als voor uw toepassing hoge beschikbaarheid is vereist, biedt Microsoft u de mogelijkheid tot het uitvoeren van een livemigratie. Een livemigratie is een in-place migratie zonder uitvaltijd. 
 
-Tijdens een Livemigratie kunt u uw opslag account gebruiken terwijl uw gegevens worden gemigreerd tussen de bron-en doel opslag tempels. Tijdens het migratie proces hebt u hetzelfde niveau van de SLA-en beschik baarheid op de gebruikelijke manier.
+Tijdens een livemigratie kunt u uw opslagaccount gebruiken terwijl uw gegevens worden gemigreerd van de bronopslagstempel naar de doelopslagstempel. Tijdens het migratieproces hebt u hetzelfde SLA-niveau voor duurzaamheid en beschikbaarheid als normaal.
 
 Houd u aan de volgende beperkingen voor Livemigratie:
 
-- Microsoft verwerkt uw aanvraag voor livemigratie onmiddellijk, maar er is geen garantie wanneer een livemigratie wordt voltooid. Als u wilt dat uw gegevens op een bepaalde datum worden gemigreerd naar ZRS, raadt micro soft u aan om in plaats daarvan een hand matige migratie uit te voeren. In het algemeen geldt dat hoe meer gegevens u voor uw account hebt, hoe langer het duurt om die gegevens te migreren. 
+- Microsoft verwerkt uw aanvraag voor livemigratie onmiddellijk, maar er is geen garantie wanneer een livemigratie wordt voltooid. Als u uw gegevens vóór een bepaalde datum naar ZRS wilt migreren, wordt u aangeraden een handmatige migratie uit te voeren. In het algemeen geldt dat hoe meer gegevens u voor uw account hebt, hoe langer het duurt om die gegevens te migreren. 
 - Livemigratie wordt alleen ondersteund voor opslag accounts die gebruikmaken van de replicatie van LRS of GRS. Als uw account gebruikmaakt van RA-GRS, moet u eerst het replicatie type van uw account wijzigen in LRS of GRS voordat u doorgaat. Deze intermediair-stap verwijdert het secundaire alleen-lezen eindpunt dat door RA-GRS vóór de migratie wordt gegeven.
 - Uw account moet gegevens bevatten.
 - U kunt alleen gegevens binnen dezelfde regio migreren. Als u uw gegevens wilt migreren naar een ZRS-account dat zich in een andere regio dan het bron account bevindt, moet u een hand matige migratie uitvoeren.
@@ -103,7 +103,7 @@ U kunt Live migratie aanvragen via de [ondersteunings portal van Azure](https://
     - **Probleem type**: Selecteer **gegevens migratie**.
     - **Categorie**: Selecteer **migreren naar ZRS**.
     - **Title**: Typ een beschrijvende titel, bijvoorbeeld ZRS- **account migratie**.
-    - **Details**: Typ meer details in het vak **Details** . Ik wil bijvoorbeeld migreren naar ZRS vanuit [LRS, GRS] in de \_ \_ regio. 
+    - **Details**: Typ meer details in het vak **Details** . Ik wil bijvoorbeeld migreren naar ZRS vanuit [LRS, GRS] in de regio \_ @ no__t-2. 
 5. Selecteer **Volgende**.
 6. Controleer of de contact gegevens juist zijn op de Blade **contact gegevens** .
 7. Selecteer **Maken**.
@@ -114,11 +114,11 @@ Een ondersteunings medewerker neemt contact met u op en geeft u hulp die u nodig
 
 **Moet ik een uitval tijd plannen tijdens de migratie?**
 
-Er wordt geen downtime veroorzaakt door de migratie. Tijdens een Livemigratie kunt u uw opslag account blijven gebruiken terwijl uw gegevens worden gemigreerd tussen de bron-en doel opslag tempels. Tijdens het migratie proces hebt u hetzelfde niveau van de SLA-en beschik baarheid op de gebruikelijke manier.
+Er wordt geen downtime veroorzaakt door de migratie. Tijdens een Livemigratie kunt u uw opslag account blijven gebruiken terwijl uw gegevens worden gemigreerd tussen de bron-en doel opslag tempels. Tijdens het migratieproces hebt u hetzelfde SLA-niveau voor duurzaamheid en beschikbaarheid als normaal.
 
 **Is er gegevens verlies gekoppeld aan de migratie?**
 
-Er is geen gegevens verlies gekoppeld aan de migratie. Tijdens het migratie proces hebt u hetzelfde niveau van de SLA-en beschik baarheid op de gebruikelijke manier.
+Er is geen gegevens verlies gekoppeld aan de migratie. Tijdens het migratieproces hebt u hetzelfde SLA-niveau voor duurzaamheid en beschikbaarheid als normaal.
 
 **Zijn er updates vereist voor de toepassing (en) wanneer de migratie is voltooid?**
 

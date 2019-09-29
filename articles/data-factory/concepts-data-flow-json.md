@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.openlocfilehash: cde42dda47d54c03c50895bc625f99c9350b53e3
-ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
+ms.openlocfilehash: ad21ddffdb22f7abf999bfa12f4a8ed86f42cfa2
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70210687"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71673445"
 ---
 # <a name="mapping-data-flow-json-handling"></a>JSON-verwerking van gegevens stroom toewijzen
 
@@ -22,11 +22,11 @@ ms.locfileid: "70210687"
 Het is eenvoudiger om een complexe kolom toe te voegen aan uw gegevens stroom via de afgeleide kolom expressie-editor. Nadat u een nieuwe kolom hebt toegevoegd en de editor hebt geopend, zijn er twee opties: Voer de JSON-structuur hand matig in of gebruik de gebruikers interface om interactief subkolomlen toe te voegen.
 
 #### <a name="interactive-ui-json-design"></a>Interactief JSON-ontwerp voor gebruikers interface
-In het deel venster uitvoer schema aan de zijkant kunnen nieuwe subkolomen worden toegevoegd `+` met behulp van het menu: ![Subkolom toevoegen](media/data-flow/addsubcolumn.png "Subkolom toevoegen")
+In het deel venster uitvoer schema aan de zijkant kunnen nieuwe subkolomen worden toegevoegd met behulp van het menu `+`: ![Subkolom toevoegen]Voeg(media/data-flow/addsubcolumn.png "subkolom toe")
 
 Van daaruit kunnen nieuwe kolommen en subkolomen op dezelfde manier worden toegevoegd. Voor elk niet-complex veld kan een expressie in de expressie-editor aan de rechter kant worden toegevoegd.
 
-![Complexe kolom](media/data-flow/complexcolumn.png "Complexe kolom")
+Complexe ![kolom](media/data-flow/complexcolumn.png "complex")
 
 #### <a name="manual-json-design"></a>Hand matig JSON-ontwerp
 Als u hand matig een JSON-structuur wilt toevoegen, voegt u een nieuwe kolom toe en voert u de expressie in de editor in. De expressie volgt de volgende algemene notatie:
@@ -144,7 +144,7 @@ File3.json
 { "json": "record 3" }
 ```
 
-# <a name="higher-order-functions"></a>Functies met hogere volg orde
+## <a name="higher-order-functions"></a>Functies met hogere volg orde
 ## <a name="filter"></a>filter
 Hiermee worden elementen van de matrix gefilterd die niet voldoen aan het gegeven predicaat. Het filter verwacht een verwijzing naar één element in de predicaat functie als #item.
 
@@ -173,7 +173,7 @@ reduce(['1', '2', '3', '4'], '0', #acc + #item, #result) => '01234'
 reduce([1, 2, 3, 4], 0, #acc + #item, #result + 15) => 25
 ```
 
-## <a name="sort"></a>acties
+## <a name="sort"></a>Acties
 Sorteert de matrix met behulp van de meegeleverde predicaat functie. Bij het sorteren wordt een verwijzing verwacht naar twee opeenvolgende elementen in de expressie-functie als #item1 en #item2.
 
 ### <a name="examples"></a>Voorbeelden

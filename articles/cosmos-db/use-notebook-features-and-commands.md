@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/23/2019
 ms.author: dech
-ms.openlocfilehash: 1eda8271a3b8aa2c9e247252bd755279d23b6e10
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.openlocfilehash: 4a9bd554e0858024d656dbf35d6fb00995e6f4bd
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71310345"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71672493"
 ---
 # <a name="use-built-in-notebook-commands-and-features-in-azure-cosmos-db"></a>Ingebouwde notebook opdrachten en-functies gebruiken in Azure Cosmos DB
 
@@ -25,7 +25,10 @@ In een nieuwe code-cel, voegt u de volgende code in en ``PackageToBeInstalled`` 
 import sys
 !{sys.executable} -m pip install PackageToBeInstalled –user
 ```
-Dit pakket is beschikbaar voor gebruik vanuit elke notebook in het Azure Cosmos-account. 
+Dit pakket is beschikbaar voor gebruik vanuit elk notebook in de Azure Cosmos-account werkruimte. 
+
+> [!TIP]
+> Als uw notitie blok een aangepast pakket vereist, raden we u aan een cel in uw notitie blok toe te voegen om het pakket te installeren, omdat pakketten worden verwijderd als u [de werk ruimte opnieuw instelt](#reset-notebooks-workspace).  
 
 ## <a name="run-a-sql-query"></a>Een SQL-query uitvoeren
 
@@ -150,6 +153,11 @@ primary_key = os.environ["COSMOS_KEY"]
 ```
 > [!IMPORTANT]
 > De ``COSMOS_ENDPOINT`` omgevings variabelen en ``COSMOS_KEY`` zijn alleen van toepassing op de SQL-API. Voor andere Api's zoekt u het eind punt en de sleutel in de **verbindings reeksen** of de Blade **sleutels** in uw Cosmos-account.  
+
+## <a name="reset-notebooks-workspace"></a>Werk ruimte notitie blokken opnieuw instellen
+Als u de werk ruimte notitie blokken opnieuw wilt instellen op de standaard instellingen, selecteert u **werk ruimte opnieuw instellen** op de opdracht balk. Hiermee worden alle aangepaste geïnstalleerde pakketten verwijderd en wordt de Jupyter-server opnieuw gestart. Uw notitie blokken, bestanden en Cosmos-resources worden niet beïnvloed.  
+
+![Werk ruimte notitie blokken opnieuw instellen](media/use-notebook-features-and-commands/reset-workspace.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 

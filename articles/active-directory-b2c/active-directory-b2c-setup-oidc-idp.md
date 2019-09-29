@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: fe49a57e74822c0b4349b2919ea8aa89cbfb458d
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 0303f8c7e18a5c229bc5a8c5e9b90d95cdaccbe7
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69622297"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71672905"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-openid-connect-using-azure-active-directory-b2c"></a>Registratie instellen en aanmelden met OpenID Connect Connect met behulp van Azure Active Directory B2C
 
@@ -30,7 +30,7 @@ ms.locfileid: "69622297"
 
 ## <a name="configure-the-identity-provider"></a>De ID-provider configureren
 
-Elke OpenID Connect Connect-ID-provider beschrijft een meta gegevens document met de meeste informatie die nodig is om de aanmelding uit te voeren. Dit omvat informatie zoals de Url's die moeten worden gebruikt en de locatie van de open bare handtekeningen sleutels van de service. Het OpenID Connect Connect meta data-document bevindt zich altijd op een `.well-known\openid-configuration`eind punt dat eindigt op. Voer de meta gegevens-URL in voor de OpenID Connect Connect-ID-provider die u wilt toevoegen.
+Elke OpenID Connect Connect-ID-provider beschrijft een meta gegevens document met de meeste informatie die nodig is om de aanmelding uit te voeren. Dit omvat informatie zoals de Url's die moeten worden gebruikt en de locatie van de open bare handtekeningen sleutels van de service. Het OpenID Connect Connect meta data-document bevindt zich altijd op een eind punt dat eindigt op `.well-known\openid-configuration`. Voer de meta gegevens-URL in voor de OpenID Connect Connect-ID-provider die u wilt toevoegen.
 
 ## <a name="client-id-and-secret"></a>Client-ID en geheim
 
@@ -41,26 +41,25 @@ Om gebruikers toe te staan zich aan te melden, vereist de ID-provider ontwikkel 
 
 ## <a name="scope"></a>Scope
 
-Met het bereik worden de informatie en machtigingen gedefinieerd die u wilt verzamelen uit uw aangepaste ID-provider. OpenID Connect Connect-aanvragen moeten de `openid` bereik waarde bevatten om het id-token van de ID-provider te ontvangen. Zonder het ID-token kunnen gebruikers zich niet aanmelden bij Azure AD B2C met behulp van de aangepaste ID-provider. Andere bereiken kunnen worden toegevoegd, gescheiden door een spatie. Raadpleeg de documentatie van de aangepaste ID-provider om te zien welke andere bereiken mogelijk beschikbaar zijn.
+Met het bereik worden de informatie en machtigingen gedefinieerd die u wilt verzamelen uit uw aangepaste ID-provider. OpenID Connect Connect-aanvragen moeten de bereik waarde van @no__t 0 bevatten om het ID-token van de ID-provider te ontvangen. Zonder het ID-token kunnen gebruikers zich niet aanmelden bij Azure AD B2C met behulp van de aangepaste ID-provider. Andere bereiken kunnen worden toegevoegd, gescheiden door een spatie. Raadpleeg de documentatie van de aangepaste ID-provider om te zien welke andere bereiken mogelijk beschikbaar zijn.
 
 ## <a name="response-type"></a>Reactietype
 
-Het antwoord type beschrijft wat voor soort informatie wordt weer gegeven in de eerste aanroep `authorization_endpoint` van de aangepaste ID-provider. De volgende antwoord typen kunnen worden gebruikt:
+Het antwoord type beschrijft wat voor soort informatie wordt weer gegeven in de eerste aanroep van de `authorization_endpoint` van de aangepaste ID-provider. De volgende antwoord typen kunnen worden gebruikt:
 
-* `code`: Volgens de [autorisatie code stroom](https://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth)wordt een code geretourneerd naar Azure AD B2C. Azure AD B2C opbrengsten om de code `token_endpoint` aan te roepen voor het token.
-* `token`: Er wordt een toegangs token geretourneerd naar Azure AD B2C van de aangepaste ID-provider.
+* `code`: Volgens de [autorisatie code stroom](https://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth)wordt een code geretourneerd naar Azure AD B2C. Azure AD B2C opbrengst om de `token_endpoint` aan te roepen om de code voor het token uit te wisselen.
 * `id_token`: Er wordt een ID-token geretourneerd naar Azure AD B2C van de aangepaste ID-provider.
 
 ## <a name="response-mode"></a>Antwoordmodus
 
 De antwoord modus definieert de methode die moet worden gebruikt om de gegevens terug van de aangepaste ID-provider naar Azure AD B2C te verzenden. De volgende antwoord modi kunnen worden gebruikt:
 
-* `form_post`: Deze antwoord modus wordt aanbevolen voor de beste beveiliging. Het antwoord wordt verzonden via de http `POST` -methode, waarbij de code of het token wordt gecodeerd in de hoofd `application/x-www-form-urlencoded` tekst met de-indeling.
+* `form_post`: Deze antwoord modus wordt aanbevolen voor de beste beveiliging. Het antwoord wordt verzonden via de HTTP-methode `POST`, waarbij de code of het token wordt gecodeerd in de hoofd tekst met de `application/x-www-form-urlencoded`-indeling.
 * `query`: De code of het token wordt geretourneerd als een query parameter.
 
 ## <a name="domain-hint"></a>Domeinhint
 
-De domein hint kan worden gebruikt om rechtstreeks over te slaan op de aanmeldings pagina van de opgegeven id-provider, in plaats van dat de gebruiker een selectie maakt tussen de lijst met beschik bare id-providers. Als u dit gedrag wilt toestaan, voert u een waarde in voor de domein hint. Als u naar de aangepaste ID-provider wilt gaan, `domain_hint=<domain hint value>` voegt u de para meter toe aan het einde van uw aanvraag wanneer u Azure AD B2C aanroept om u aan te melden.
+De domein hint kan worden gebruikt om rechtstreeks over te slaan op de aanmeldings pagina van de opgegeven id-provider, in plaats van dat de gebruiker een selectie maakt tussen de lijst met beschik bare id-providers. Als u dit gedrag wilt toestaan, voert u een waarde in voor de domein hint. Als u naar de aangepaste ID-provider wilt gaan, voegt u de para meter `domain_hint=<domain hint value>` toe aan het einde van uw aanvraag wanneer u Azure AD B2C aanroept om u aan te melden.
 
 ## <a name="claims-mapping"></a>Claim toewijzing
 

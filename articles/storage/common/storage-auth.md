@@ -4,17 +4,17 @@ description: Meer informatie over de verschillende manieren om toegang te verlen
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 3cdbb6587871b970c0188c0b8f510cc9f1f4fe07
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: c20f699a2d2270d11935b0216b1655390ece211c
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68985184"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71671063"
 ---
 # <a name="authorizing-access-to-azure-storage"></a>Toegang tot Azure Storage autoriseren
 
@@ -36,7 +36,7 @@ Elke autorisatie optie wordt hieronder beschreven:
 
 - **Azure AD Domain Services (DS) Integration (preview)** voor bestanden. Azure Files ondersteunt verificatie op basis van identiteiten via Server Message Block (SMB) via Azure AD DS. Dit biedt RBAC voor nauw keurige controle over de toegang van een client tot bronnen in een opslag account. Voor meer informatie over Azure AD-integratie voor bestanden met Domain Services, Zie [overzicht van de verificatie ondersteuning voor Azure Files Azure Active Directory Domain Service (Aad DS) voor SMB-toegang (preview)](../files/storage-files-active-directory-overview.md).
 
-- **Gedeelde sleutel autorisatie** voor blobs, bestanden, wacht rijen en tabellen. Een client die een gedeelde sleutel gebruikt, geeft een header door elke aanvraag die is ondertekend met de toegangs sleutel voor het opslag account. Zie autoriseren [met gedeelde sleutel](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-shared-key/)voor meer informatie.
+- **Gedeelde sleutel autorisatie** voor blobs, bestanden, wacht rijen en tabellen. Een client die een gedeelde sleutel gebruikt, geeft een header door elke aanvraag die is ondertekend met de toegangs sleutel voor het opslag account. Zie [autoriseren met gedeelde sleutel](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-shared-key/)voor meer informatie.
 - **Shared Access signatures** voor blobs, bestanden, wacht rijen en tabellen. Shared Access signatures (SAS) bieden beperkte gedelegeerde toegang tot resources in een opslag account. Door beperkingen toe te voegen aan het tijds interval waarvoor de hand tekening geldig is of op machtigingen die door deze worden verleend, biedt het beheer van de toegang flexibiliteit. Zie [using Shared Access signatures (SAS) (Engelstalig)](storage-sas-overview.md)voor meer informatie.
 - **Anonieme open bare Lees toegang** voor containers en blobs. Autorisatie is niet vereist. Zie [Anonieme leestoegang tot containers en blobs beheren](../blobs/storage-manage-access-to-resources.md) voor meer informatie.  
 

@@ -1,22 +1,22 @@
 ---
-title: Een taak in de cloud Azure Stream Analytics maken in Visual Studio Code (Preview)
-description: In deze Quick Start laat zien hoe u aan de slag met het maken van een Stream Analytics-taak, het configureren van de invoer en uitvoer en het definiëren van een query met Visual Studio Code.
+title: Een Azure Stream Analytics Cloud taak maken in Visual Studio code (preview)
+description: In deze Quick start ziet u hoe u aan de slag gaat met het maken van een Stream Analytics taak, het configureren van invoer, uitvoer en het definiëren van een query met Visual Studio code.
 ms.service: stream-analytics
 author: mamccrea
 ms.author: mamccrea
-ms.date: 05/06/2019
+ms.date: 09/16/2019
 ms.topic: quickstart
 ms.custom: mvc
-ms.openlocfilehash: 894f43a7da0abd129123d5c4ddf2bb95347c42c5
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: 3301be3a067982cb90e663fe3782319eb0b90ba0
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65825391"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71673133"
 ---
-# <a name="quickstart-create-an-azure-stream-analytics-cloud-job-in-visual-studio-code-preview"></a>Quickstart: Een taak in de cloud Azure Stream Analytics maken in Visual Studio Code (Preview)
+# <a name="quickstart-create-an-azure-stream-analytics-cloud-job-in-visual-studio-code-preview"></a>Quickstart: Een Azure Stream Analytics Cloud taak maken in Visual Studio code (preview)
 
-Deze quickstart laat zien hoe u maakt en een Stream Analytics-taak uitvoeren met de Azure Stream Analytics-extensie voor Visual Studio Code. De voorbeeldtaak leest streaminggegevens vanaf een IoT Hub-apparaat. U definieert een taak die de gemiddelde temperatuur bij meer dan 27° berekent en de resulterende uitvoergebeurtenissen naar een nieuw bestand in blobopslag schrijft.
+In deze Quick start ziet u hoe u een Stream Analytics-taak kunt maken en uitvoeren met behulp van de Azure Stream Analytics-extensie voor Visual Studio code. De voorbeeldtaak leest streaminggegevens vanaf een IoT Hub-apparaat. U definieert een taak die de gemiddelde temperatuur bij meer dan 27° berekent en de resulterende uitvoergebeurtenissen naar een nieuw bestand in blobopslag schrijft.
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
@@ -30,23 +30,23 @@ Deze quickstart laat zien hoe u maakt en een Stream Analytics-taak uitvoeren met
 
 1. Open Visual Studio Code.
 
-2. Van **extensies** zoeken in het linkerdeelvenster naar **Stream Analytics** en selecteer **installeren** op de **Azure Stream Analytics** extensie.
+2. Zoek **in het** linkerdeel venster naar **Stream Analytics** en selecteer **installeren** op de uitbrei ding **Azure stream Analytics** .
 
-3. Nadat de extensie is geïnstalleerd, Controleer **Azure Stream Analytics-hulpprogramma's** zichtbaar is in uw **ingeschakeld extensies**.
+3. Nadat de uitbrei ding is geïnstalleerd, controleert u of **Azure stream Analytics-Hulpprogram ma's** zichtbaar zijn in de **ingeschakelde uitbrei dingen**.
 
-   ![Azure Stream Analytics-hulpprogramma's onder ingeschakelde uitbreidingen in Visual Studio Code](./media/quick-create-vs-code/enabled-extensions.png)
+   ![Azure Stream Analytics-Hulpprogram Ma's onder ingeschakelde uitbrei dingen in Visual Studio code](./media/quick-create-vs-code/enabled-extensions.png)
 
-## <a name="activate-the-azure-stream-analytics-extension"></a>Activeren van de Azure Stream Analytics-extensie
+## <a name="activate-the-azure-stream-analytics-extension"></a>De Azure Stream Analytics-extensie activeren
 
-1. Selecteer de **Azure** pictogram op de balk van de activiteit VS Code. **Stream Analytics** zichtbaar in de zijbalk. Onder **Stream Analytics**, selecteer **aanmelden bij Azure**. 
+1. Selecteer het pictogram van **Azure** op de activiteiten balk VS-code. **Stream Analytics** is zichtbaar in de zijbalk. Onder **Stream Analytics**selecteert **u aanmelden bij Azure**. 
 
-   ![Aanmelden bij Azure in Visual Studio Code](./media/quick-create-vs-code/azure-sign-in.png)
+   ![Aanmelden bij Azure in Visual Studio code](./media/quick-create-vs-code/azure-sign-in.png)
 
-2. Wanneer u bent aangemeld, is de naam van uw Azure-account wordt weergegeven op de statusbalk in de linkerbenedenhoek van het venster VS Code.
+2. Wanneer u bent aangemeld, wordt de naam van uw Azure-account weer gegeven op de status balk in de linkerbenedenhoek van het VS code-venster.
 
 > [!NOTE]
-> Azure Stream Analytics-hulpprogramma's wordt automatisch in de volgende keer dat zich als u niet afmelden. Als uw account verificatie met twee factoren heeft, verdient het aanbeveling telefonische verificatie in plaats van gebruik van een PINCODE te gebruiken.
-> Als u problemen met resources hebt, kunt afmelden en meldt u zich meestal opnieuw. Als u wilt afmelden, voer de opdracht `Azure: Sign Out`.
+> Azure Stream Analytics-hulpprogram ma's worden de volgende keer automatisch aangemeld als u zich niet afmeldt. Als uw account twee ledige verificatie heeft, is het raadzaam om verificatie via telefoon te gebruiken in plaats van een pincode te gebruiken.
+> Als u problemen ondervindt met het aanbieden van resources, kunt u zich niet meer afmelden en opnieuw aanmelden. Als u zich wilt afmelden, voert u de opdracht `Azure: Sign Out` in.
 
 ## <a name="prepare-the-input-data"></a>De invoergegevens voorbereiden
 
@@ -60,8 +60,8 @@ Voordat u de Stream Analytics-taak definieert, moet u de gegevens voorbereiden d
    
    |**Instelling**  |**Voorgestelde waarde**  |**Beschrijving**  |
    |---------|---------|---------|
-   |Abonnement  | \<Uw abonnement\> |  Selecteer het Azure-abonnement dat u wilt gebruiken. |
-   |Resourcegroep   |   asaquickstart-resourcegroup  |   Selecteer **Nieuwe maken** en voer een naam voor de nieuwe resourcegroep voor uw account in. |
+   |Subscription  | \<Uw abonnement\> |  Selecteer het Azure-abonnement dat u wilt gebruiken. |
+   |Resource group   |   asaquickstart-resourcegroup  |   Selecteer **Nieuwe maken** en voer een naam voor de nieuwe resourcegroep voor uw account in. |
    |Regio  |  \<Selecteer de regio die het dichtst bij uw gebruikers is gelegen\> | Selecteer een geografische locatie waar u de IoT-hub kunt hosten. Gebruik de locatie die het dichtst bij uw gebruikers is. |
    |Naam van de IoT-hub  | MyASAIoTHub  |   Selecteer een naam voor de IoT-hub.   |
 
@@ -89,7 +89,7 @@ Voordat u de Stream Analytics-taak definieert, moet u de gegevens voorbereiden d
 
 2. Voer in het deelvenster **Opslagaccount maken** een opslagaccountnaam, locatie en resourcegroep in. Kies dezelfde locatie en resourcegroep als de IoT-hub die u hebt gemaakt. Klik vervolgens op **Controleren en maken** om het account te maken.
 
-   ![Opslagaccount maken](./media/quick-create-vs-code/create-storage-account.png)
+   ![Een opslagaccount maken](./media/quick-create-vs-code/create-storage-account.png)
 
 3. Zodra het opslagaccount is gemaakt, selecteert u in het deelvenster **Overzicht** de tegel **Blobs**.
 
@@ -101,74 +101,28 @@ Voordat u de Stream Analytics-taak definieert, moet u de gegevens voorbereiden d
 
 ## <a name="create-a-stream-analytics-project"></a>Een Stream Analytics-project maken
 
-1. Druk in Visual Studio Code, op **Ctrl + Shift + P** het opdrachtenpalet te openen. Typ vervolgens **ASA** en selecteer **ASA: Nieuw Project maken**.
+1. Druk in Visual Studio code op **CTRL + SHIFT + P** om het opdracht palet te openen. Typ **ASA** en selecteer **ASA: Nieuw project maken @ no__t-0.
 
    ![Nieuw project maken](./media/quick-create-vs-code/create-new-project.png)
 
-2. Voer de naam van uw project, zoals **myASAproj** en selecteer een map voor uw project.
+2. Voer de naam van uw project in, zoals **myASAproj** en selecteer een map voor uw project.
 
-    ![Naam van het project maken](./media/quick-create-vs-code/create-project-name.png)
+    ![Project naam maken](./media/quick-create-vs-code/create-project-name.png)
 
-3. Het nieuwe project wordt toegevoegd aan uw werkruimte. Een ASA-project bestaat uit het query-script **(*.asaql)**, een **JobConfig.json** -bestand en een **asaproj.json** configuratiebestand.
+3. Het nieuwe project wordt toegevoegd aan uw werk ruimte. Een ASA-project bestaat uit het query script **(*. asaql)** , een **JobConfig. json** -bestand en een **asaproj. json** -configuratie bestand.
 
-   ![Stream Analytics-projectbestanden in VS Code](./media/quick-create-vs-code/asa-project-files.png)
+   ![Stream Analytics project bestanden in VS code](./media/quick-create-vs-code/asa-project-files.png)
 
-4. De **asaproj.json** configuratie-item bevat de invoer, uitvoer en taak bestand configuratiegegevens die nodig zijn voor het indienen van de Stream Analytics-taak naar Azure.
+4. Het configuratie bestand **asaproj. json** bevat de invoer-, uitvoer-en taak configuratie bestand gegevens die nodig zijn voor het indienen van de stream Analytics-taak naar Azure.
 
-   ![Stream Analytics-taak-configuratiebestand in VS Code](./media/quick-create-vs-code/job-configuration.png)
+   ![Stream Analytics taak configuratie bestand in VS code](./media/quick-create-vs-code/job-configuration.png)
 
 > [!Note]
-> Bij het toevoegen van invoer en uitvoer van het opdrachtenpalet, wordt de bijbehorende paden worden toegevoegd aan **asaproj.json** automatisch. Als u toevoegt of rechtstreeks in- of uitvoer op schijf verwijderen, moet u handmatig toevoegen of verwijderen van **asaproj.json**. U kunt kiezen om de invoer en uitvoer in een plaats en ernaar te verwijzen in verschillende taken door de paden op te geven in elk **asaproj.json**.
-
-## <a name="define-an-input"></a>Invoer definiëren
-
-1. Selecteer **Ctrl + Shift + P** het opdrachtenpalet te openen en voeren **ASA: Invoer toevoegen**.
-
-   ![Stream Analytics-invoer in VS Code toevoegen](./media/quick-create-vs-code/add-input.png)
-
-2. Kies **IoT-Hub** voor het invoertype.
-
-   ![IoT-Hub als invoer optie selecteren](./media/quick-create-vs-code/iot-hub.png)
-
-3. Kies de ASA-query-script dat wordt gebruikt voor de invoer. Het moet wordt automatisch gevuld met het pad naar **myASAproj.asaql**.
-
-   ![Selecteer een ASA-script in Visual Studio Code](./media/quick-create-vs-code/asa-script.png)
-
-4. Voer de naam van het bestand voor invoer als **IotHub.json**.
-
-5. Bewerken **IoTHub.json** met de volgende waarden. Houd de standaardwaarden voor de velden niet die hieronder worden vermeld. U kunt de CodeLens gebruiken om u te helpen bij het invoeren van een tekenreeks, selecteren in een vervolgkeuzelijst of wijzig de tekst rechtstreeks in het bestand.
-
-   |Instelling|Voorgestelde waarde|Description|
-   |-------|---------------|-----------|
-   |Name|Invoer|Voer een unieke naam in voor de invoer van de taak.|
-   |IotHubNamespace|MyASAIoTHub|Kies uw IoT-hub, of voer de naam ervan in. Namen van IoT-hubs worden automatisch gedetecteerd als ze worden gemaakt in hetzelfde abonnement.|
-   |Eindpunt|Berichten| |
-   |SharedAccessPolicyName|iothubowner| |
-
-## <a name="define-an-output"></a>Uitvoer definiëren
-
-1. Selecteer **Ctrl + Shift + P** het opdrachtenpalet te openen. Voer vervolgens **ASA: Uitvoer toevoegen**.
-
-   ![Stream Analytics-uitvoer in VS Code toevoegen](./media/quick-create-vs-code/add-output.png)
-
-2. Kies **Blob-opslag** voor het Sink-type.
-
-3. Kies de ASA-query-script dat wordt gebruikt voor deze invoer.
-
-4. Voer de naam van het uitvoerbestand als **BlobStorage.json**.
-
-5. Bewerken **BlobStorage.json** met de volgende waarden. Houd de standaardwaarden voor de velden niet die hieronder worden vermeld. De CodeLens gebruiken om u te helpen bij het invoeren van een tekenreeks of selecteert u in een vervolgkeuzelijst weergegeven.
-
-   |Instelling|Voorgestelde waarde|Description|
-   |-------|---------------|-----------|
-   |Name|Uitvoer| Voer een unieke naam voor uitvoer van de taak.|
-   |Opslagaccount|asaquickstartstorage|Kies of typ de naam van uw opslagaccount. Namen van opslagaccounts worden automatisch gedetecteerd als ze worden gemaakt in hetzelfde abonnement.|
-   |Container|container1|Selecteer de bestaande container die u in uw opslagaccount hebt gemaakt.|
-   |Padpatroon|uitvoer|Voer de naam in van een bestandspad dat in de container moet worden gemaakt.|
+> Wanneer u invoer en uitvoer toevoegt vanuit het opdracht palet, worden de bijbehorende paden automatisch toegevoegd aan **asaproj. json** . Als u invoer of uitvoer rechtstreeks aan de schijf toevoegt of verwijdert, moet u deze hand matig toevoegen aan of verwijderen uit **asaproj. json**. U kunt ervoor kiezen om de invoer en uitvoer op één plek te plaatsen en hiernaar te verwijzen in verschillende taken door de paden op te geven in elke **asaproj. json**.
 
 ## <a name="define-the-transformation-query"></a>De transformatiequery definiëren
 
-1. Open **myASAproj.asaql** van de projectmap.
+1. Open **myASAproj. asaql** uit de projectmap.
 
 2. Voeg de volgende query toe:
 
@@ -178,40 +132,100 @@ Voordat u de Stream Analytics-taak definieert, moet u de gegevens voorbereiden d
    FROM Input
    HAVING Temperature > 27
    ```
+## <a name="test-with-sample-data"></a>Testen met voorbeeldgegevens
+Voordat u de query in de Cloud uitvoert, kunt u uw query testen met lokale voorbeeld gegevens om de query logica te controleren.
+
+Volg de instructies in [test met voorbeeld gegevens](vscode-local-run.md) voor meer informatie. 
+
+ ![Testen met voorbeeld gegevens in VS code](./media/quick-create-vs-code/vscode-localrun.gif)
+
+## <a name="define-an-input"></a>Invoer definiëren
+
+1. Selecteer **CTRL + SHIFT + P** om het opdracht palet te openen en voer **ASA: Invoer @ no__t-0 toevoegen.
+
+   ![Stream Analytics invoer in VS code toevoegen](./media/quick-create-vs-code/add-input.png)
+
+2. Kies **IOT hub** voor het invoer type.
+
+   ![IoT Hub selecteren als invoer optie](./media/quick-create-vs-code/iot-hub.png)
+
+3. Kies het ASA-query script waarmee de invoer wordt gebruikt. Het bestand moet automatisch worden ingevuld met het bestandspad naar **myASAproj. asaql**.
+
+   ![Een ASA-script in Visual Studio code selecteren](./media/quick-create-vs-code/asa-script.png)
+
+4. Voer de naam van het invoer bestand in als **IotHub**.
+
+5. Bewerk **IoTHub. json** met de volgende waarden. Behoud de standaard waarden voor velden die hieronder niet worden genoemd. U kunt de code lens gebruiken om een teken reeks in te voeren, een keuze lijst te selecteren of de tekst rechtstreeks in het bestand te wijzigen.
+
+   |Instelling|Voorgestelde waarde|Description|
+   |-------|---------------|-----------|
+   |Name|Invoer|Voer een unieke naam in voor de invoer van de taak.|
+   |IotHubNamespace|MyASAIoTHub|Kies uw IoT-hub, of voer de naam ervan in. Namen van IoT-hubs worden automatisch gedetecteerd als ze worden gemaakt in hetzelfde abonnement.|
+   |SharedAccessPolicyName|iothubowner| |
+
+   ![Invoer in Visual Studio code configureren](./media/quick-create-vs-code/configure-input.png)
+
+
+
+## <a name="define-an-output"></a>Uitvoer definiëren
+
+1. Selecteer **CTRL + SHIFT + P** om het opdracht palet te openen. Voer vervolgens **ASA: Uitvoer @ no__t-0 toevoegen.
+
+   ![Stream Analytics uitvoer in VS code toevoegen](./media/quick-create-vs-code/add-output.png)
+
+2. Kies **Blob Storage** voor het sink-type.
+
+3. Kies het ASA-query script dat deze invoer gebruikt.
+
+4. Voer de naam van het uitvoer bestand in als **BlobStorage**.
+
+5. Bewerk **BlobStorage** met de volgende waarden. Behoud de standaard waarden voor velden die hieronder niet worden genoemd. Gebruik de code lens om u te helpen bij het selecteren van een vervolg keuzelijst of om een teken reeks in te voeren. 
+
+   |Instelling|Voorgestelde waarde|Description|
+   |-------|---------------|-----------|
+   |Name|Output| Voer een naam in om de uitvoer van de taak te identificeren.|
+   |Opslagaccount|asaquickstartstorage|Kies of typ de naam van uw opslag account. Namen van opslagaccounts worden automatisch gedetecteerd als ze worden gemaakt in hetzelfde abonnement.|
+   |Container|container1|Selecteer de bestaande container die u in uw opslagaccount hebt gemaakt.|
+   |Padpatroon|uitvoer|Voer de naam in van een bestandspad dat in de container moet worden gemaakt.|
+
+ ![Uitvoer in Visual Studio code configureren](./media/quick-create-vs-code/configure-output.png)
 
 ## <a name="compile-the-script"></a>Het script compileren
 
-Script compilatie doet twee dingen: Controleer de syntaxis en genereren van de Azure Resource Manager-sjablonen voor automatische implementatie.
+Script compilatie voert twee dingen uit: de syntaxis controleren en de Azure Resource Manager sjablonen voor de autodeployment genereren.
 
-Er zijn twee manieren voor het activeren van de compilatie script:
+Er zijn twee manieren om script compilatie te activeren:
 
-1. Het script van de werkruimte te selecteren en vervolgens compileren vanuit het opdrachtenpalet te activeren. 
+1. Selecteer het script in de werk ruimte en activeer vervolgens compileren vanuit het opdracht palet. 
 
-   ![Gebruik het opdrachtenpalet van VS Code voor het compileren van het script](./media/quick-create-vs-code/compile-script1.png)
+   ![Het VS code-opdracht palet gebruiken om het script te compileren](./media/quick-create-vs-code/compile-script1.png)
 
-2. Klik met de rechtermuisknop op het script en selecteer **ASA: script compileren**.
+2. Klik met de rechter muisknop op het script en selecteer **ASA: script compileren**.
 
-    ![Met de rechtermuisknop op de ASA-script voor het compileren](./media/quick-create-vs-code/compile-script2.png)
+    ![Klik met de rechter muisknop op het ASA-script dat u wilt compileren](./media/quick-create-vs-code/compile-script2.png)
 
-3. Na de compilatie, vindt u de twee gegenereerde Azure Resource Manager-sjablonen in **implementeren** map van uw project. Deze twee bestanden worden gebruikt voor automatische implementatie.
+3. Na de compilatie vindt u de twee gegenereerde Azure Resource Manager sjablonen in de map **Deploy** van uw project. Deze twee bestanden worden gebruikt voor de autodeployment.
 
-    ![Sjablonen voor de Stream Analytics-implementatie in Windows Verkenner](./media/quick-create-vs-code/deployment-templates.png)
+    ![Stream Analytics implementatie sjablonen in Verkenner](./media/quick-create-vs-code/deployment-templates.png)
 
-## <a name="submit-a-stream-analytics-job-to-azure"></a>Een Stream Analytics-taak naar Azure verzenden
+## <a name="submit-a-stream-analytics-job-to-azure"></a>Een Stream Analytics taak naar Azure verzenden
 
-1. Selecteer in de script-editor-venster van Visual Studio Code **selecteren bij uw abonnementen**.
+1. Selecteer in het venster Script Editor van Visual Studio code **selecteren in uw abonnementen**.
 
-   ![Selecteer in de tekst van uw abonnementen in script-editor](./media/quick-create-vs-code/select-subscription.png)
+   ![Selecteer een optie in de tekst van uw abonnementen in de Script Editor](./media/quick-create-vs-code/select-subscription.png)
 
-2. Selecteer uw abonnement in de lijst met het pop-upvenster.
+2. Selecteer uw abonnement in de lijst met pop-ups.
 
-3. Selecteer een taak **. Kies maken vervolgens een nieuwe taak.
+3. Selecteer een taak * *. Kies vervolgens een nieuwe taak maken.
 
-4. Voer de taaknaam van uw **myASAjob** en volg de instructies voor het kiezen van de resourcegroep en locatie.
+4. Voer de naam van de taak **myASAjob** in en volg de instructies om de resource groep en de locatie te kiezen.
 
-5. Selecteer **verzenden naar Azure**. De logboeken vindt u in het uitvoervenster weergegeven. 
+5. Selecteer **verzenden naar Azure**. De logboeken vindt u in het uitvoer venster. 
 
-6. Wanneer de taak is gemaakt, kunt u deze zien in de Stream Analytics-Verkenner.
+6. Wanneer de taak is gemaakt, kunt u deze bekijken in de **Stream Analytics Explorer**.
+
+![Taak weer geven in Stream Analytics Explorer](./media/quick-create-vs-code/list-job.png)
+
 
 ## <a name="run-the-iot-simulator"></a>De IoT-simulator uitvoeren
 
@@ -225,17 +239,17 @@ Er zijn twee manieren voor het activeren van de compilatie script:
 
 ## <a name="start-the-stream-analytics-job-and-check-output"></a>Stream Analytics-taak starten en uitvoer controleren
 
-1. Open **Stream Analytics Explorer** in Visual Studio Code en zoek uw taak **myASAJob**.
+1. Open **Stream Analytics Explorer** in Visual Studio code en zoek de taak **myASAJob**.
 
-2. Met de rechtermuisknop op de taaknaam. Selecteer **Start** in het contextmenu.
+2. Klik met de rechter muisknop op de naam van de taak. Selecteer vervolgens **starten** in het context menu.
 
-   ![Stream Analytics-taak te starten in VS Code](./media/quick-create-vs-code/start-asa-job-vs-code.png)
+   ![Stream Analytics-taak starten in VS code](./media/quick-create-vs-code/start-asa-job-vs-code.png)
 
 3. Kies **nu** in het pop-upvenster om de taak te starten.
 
-4. Houd er rekening mee de taak de status is gewijzigd in **met**. Met de rechtermuisknop op de taaknaam van de en kies **Open taak weergeven in Portal** om te zien van de invoer en uitvoer van de gebeurtenis metrische gegevens. Deze actie kan enkele minuten duren.
+4. Houd er rekening mee dat de taak status is gewijzigd in **wordt uitgevoerd**. Klik met de rechter muisknop op de naam van de taak en kies **taak weergave openen in portal** om de metrische gegevens voor de invoer-en uitvoer gebeurtenis weer te geven. Deze actie kan enkele minuten duren.
 
-5. De resultaten weergeven, opent u de blob-opslag in de Visual Studio Code-extensie of in Azure portal.
+5. Als u de resultaten wilt weer geven, opent u de Blob-opslag in de Visual Studio code extension of in de Azure Portal.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
@@ -247,7 +261,7 @@ Wanneer u een resourcegroep niet meer nodig hebt, verwijdert u de resourcegroep,
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze quickstart maakt u een eenvoudige Stream Analytics-taak met behulp van Visual Studio Code geïmplementeerd. U kunt ook implementeren met Stream Analytics-taken met behulp van de [Azure-portal](stream-analytics-quick-create-portal.md), [PowerShell](stream-analytics-quick-create-powershell.md), en Visual Studio (stream-analytics-quick-maken-vs.md). 
+In deze Quick Start hebt u een eenvoudige Stream Analytics-taak geïmplementeerd met Visual Studio code. U kunt ook Stream Analytics-taken implementeren met behulp van de [Azure Portal](stream-analytics-quick-create-portal.md), [Power shell](stream-analytics-quick-create-powershell.md)en Visual Studio (stream-Analytics-Quick-Create-vs.MD). 
 
 Ga voor meer informatie over Azure Stream Analytics-hulpprogramma's voor Visual Studio naar het volgende artikel:
 

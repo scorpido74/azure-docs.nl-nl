@@ -4,17 +4,17 @@ description: Azure Storage ondersteunt de failover van een account (preview) voo
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: b2cd7232bce674dfa5aa2c6f4b6d9386fa7a189b
-ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
+ms.openlocfilehash: 4a621f8976efe395014c073a6bd7c5d09d19d915
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70376450"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71671084"
 ---
 # <a name="disaster-recovery-and-storage-account-failover-preview-in-azure-storage"></a>Herstel na nood gevallen en failover van het opslag account (preview) in Azure Storage
 
@@ -50,7 +50,7 @@ Het is belang rijk om uw toepassing te ontwerpen voor hoge Beschik baarheid vana
 * [Flexibele toepassingen ontwerpen voor Azure](https://docs.microsoft.com/azure/architecture/resiliency/): Een overzicht van de belangrijkste concepten voor het ontwikkelen van Maxi maal beschik bare toepassingen in Azure.
 * [Beschikbaarheids controlelijst](https://docs.microsoft.com/azure/architecture/checklist/availability): Een controle lijst voor het controleren of uw toepassing de aanbevolen ontwerp procedures voor hoge Beschik baarheid implementeert.
 * [Maxi maal beschik bare toepassingen ontwerpen met behulp van Ra-GRS](storage-designing-ha-apps-with-ragrs.md): Ontwerp richt lijnen voor het ontwikkelen van toepassingen om gebruik te maken van RA-GRS.
-* [Zelfstudie: Een Maxi maal beschik bare toepassing bouwen](../blobs/storage-create-geo-redundant-storage.md)met Blob-opslag: Een zelf studie waarin wordt uitgelegd hoe u een Maxi maal beschik bare toepassing bouwt die automatisch schakelt tussen eind punten als storingen en herstel bewerkingen worden gesimuleerd. 
+* [Zelfstudie: Een Maxi maal beschik bare toepassing bouwen met Blob Storage @ no__t-0: Een zelf studie waarin wordt uitgelegd hoe u een Maxi maal beschik bare toepassing bouwt die automatisch schakelt tussen eind punten als storingen en herstel bewerkingen worden gesimuleerd. 
 
 Houd bovendien de volgende aanbevolen procedures voor het onderhouden van hoge Beschik baarheid voor uw Azure Storage gegevens:
 

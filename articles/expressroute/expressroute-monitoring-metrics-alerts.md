@@ -2,18 +2,18 @@
 title: 'Controleren, metrische gegevens en waarschuwingen: Azure ExpressRoute | Microsoft Docs'
 description: Deze pagina bevat informatie over het controleren van ExpressRoute
 services: expressroute
-author: cherylmc
+author: mialdrid
 ms.service: expressroute
 ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: dbe03ef29bd28d465fa671abc915d63d4b038cb2
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: 40e5561c9a55595340568ec660cbc6dd6e1eab51
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71154772"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71672058"
 ---
 # <a name="expressroute-monitoring-metrics-and-alerts"></a>Bewaking, metrische gegevens en waarschuwingen voor ExpressRoute
 
@@ -72,9 +72,41 @@ U kunt bijna de real-time Beschik baarheid van [ARP](https://docs.microsoft.com/
 
 ![ARP-Beschik baarheid per peer](./media/expressroute-monitoring-metrics-alerts/erArpAvailabilityMetrics.jpg) 
 
+## <a name="expressroute-direct-metrics"></a>Directe metrische gegevens voor ExpressRoute
+
+### <a name="admin-state---split-by-link"></a>Beheer status-splitsen op koppeling
+U kunt de status van de beheerder voor elke koppeling van het directe poort paar ExpressRoute bekijken.
+
+![directe beheerders status](./media/expressroute-monitoring-metrics-alerts/adminstate-per-link.jpg)
+
+### <a name="bits-in-per-second---split-by-link"></a>Bits per seconde-splitsen op koppeling
+U kunt de bits per seconde weer geven voor beide koppelingen van het directe poort paar ExpressRoute. 
+
+![er direct-bits per seconde](./media/expressroute-monitoring-metrics-alerts/bits-in-per-second-per-link.jpg)
+
+### <a name="bits-out-per-second---split-by-link"></a>Aantal bits per seconde-splitsen op koppeling
+U kunt ook de bits per seconde weer geven over beide koppelingen van het directe poort paar ExpressRoute. 
+
+![Er is geen directe-bits per seconde](./media/expressroute-monitoring-metrics-alerts/bits-out-per-second-per-link.jpg)
+
+### <a name="line-protocol---split-by-link"></a>Lijn protocol-splitsen op koppeling
+U kunt het regel protocol weer geven op elke koppeling van het directe poort paar ExpressRoute.
+
+![Er is geen direct line-protocol](./media/expressroute-monitoring-metrics-alerts/line-protocol-per-link.jpg)
+
+### <a name="rx-light-level---split-by-link"></a>RX licht niveau-splitsen op koppeling
+U kunt het RX-licht niveau (het licht niveau dat de ExpressRoute directe poort **ontvangt**) weer geven voor elke poort. Gezonde RX Light-niveaus vallen doorgaans binnen een bereik van-10 tot 0 dBm
+
+![Lampje directe lijn RX licht niveau](./media/expressroute-monitoring-metrics-alerts/rxlight-level-per-link.jpg)
+
+### <a name="tx-light-level---split-by-link"></a>TX licht niveau-splitsen op koppeling
+U kunt het TX licht niveau (het licht niveau dat de ExpressRoute directe poort **verzendt**) weer geven voor elke poort. Gezonde TX Light-niveaus vallen doorgaans binnen een bereik van-10 tot 0 dBm
+
+![Lampje directe lijn RX licht niveau](./media/expressroute-monitoring-metrics-alerts/txlight-level-per-link.jpg)
+
 ## <a name="expressroute-gateway-connections-in-bitsseconds"></a>ExpressRoute-gateway-verbindingen in bits/seconden
 
-![gateway-verbindingen](./media/expressroute-monitoring-metrics-alerts/erconnections.jpg ) 
+![gateway-verbindingen](./media/expressroute-monitoring-metrics-alerts/erconnections.jpg )
 
 ## <a name="alerts-for-expressroute-gateway-connections"></a>Waarschuwingen voor ExpressRoute-gateway-verbindingen
 

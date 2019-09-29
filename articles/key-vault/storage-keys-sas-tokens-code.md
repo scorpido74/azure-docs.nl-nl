@@ -7,18 +7,18 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/10/2019
-ms.openlocfilehash: a20f5b16b90b9bac7e6bc3ff808cf443b252fb44
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 75561c643c2b8881e4b390be885b77f2fff4971d
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71204547"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71673459"
 ---
-# <a name="fetch-shared-access-signature-tokens-in-code"></a>Shared Access Signature-tokens in code ophalen
+# <a name="fetch-shared-access-signature-tokens-in-code"></a>Shared Acces Signature-tokens in code ophalen
 
 U kunt uw opslag account beheren met de [tokens voor gedeelde toegangs handtekeningen](../storage/common/storage-dotnet-shared-access-signature-part-1.md) in uw sleutel kluis. In dit artikel vindt u C# voor beelden van code waarmee een SAS-token wordt opgehaald en waarmee bewerkingen worden uitgevoerd.  Zie voor meer informatie over het maken en opslaan van SAS-tokens [sleutels voor opslag accounts beheren met Key Vault en de Azure CLI of de](key-vault-ovw-storage-keys.md) [sleutels van het opslag account beheren met Key Vault en Azure PowerShell](key-vault-overview-storage-keys-powershell.md).
 
-# <a name="code-samples"></a>Codevoorbeelden
+## <a name="code-samples"></a>Codevoorbeelden
 
 In dit voor beeld wordt met de code een SAS-token uit uw sleutel kluis opgehaald, gebruikt om een nieuw opslag account te maken en wordt een nieuwe Blob service-client gemaakt.  
 

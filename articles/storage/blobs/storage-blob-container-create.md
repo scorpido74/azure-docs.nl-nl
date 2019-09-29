@@ -4,16 +4,16 @@ description: Meer informatie over het maken of verwijderen van een BLOB-containe
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 99773b83f15ea4b386c1078eed510fc233322f0f
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: d1218b10eadf0788752bab2aec4b21614666888c
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68985692"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71671286"
 ---
 # <a name="create-or-delete-a-container-in-azure-storage-with-net"></a>Een container maken of verwijderen in Azure Storage met .NET
 

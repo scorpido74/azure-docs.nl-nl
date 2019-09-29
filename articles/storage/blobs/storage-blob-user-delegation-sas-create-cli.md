@@ -4,17 +4,17 @@ description: Meer informatie over het maken van een SA'S voor het delegeren van 
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: blobs
-ms.openlocfilehash: 6ea4dbf07c8ef99c43dbe7add1ae9270056f708c
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 077fe69d80ec433d8e37f18e04120102fc8ca390
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70164329"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71673326"
 ---
 # <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-the-azure-cli-preview"></a>Een SAS voor gebruikers overdracht maken voor een container of BLOB met Azure CLI (preview)
 
@@ -30,7 +30,7 @@ Als u de Azure CLI wilt gebruiken om een SAS met Azure AD-referenties te beveili
 
 ## <a name="sign-in-with-azure-ad-credentials"></a>Aanmelden met Azure AD-referenties
 
-Meld u aan bij de Azure CLI met uw Azure AD-referenties. Zie [Aanmelden met de Azure cli](/cli/azure/authenticate-azure-cli)voor meer informatie.
+Meld u aan bij de Azure CLI met uw Azure AD-referenties. Zie [Aanmelden met de Azure CLI](/cli/azure/authenticate-azure-cli) voor meer informatie.
 
 ## <a name="assign-permissions-with-rbac"></a>Machtigingen toewijzen met RBAC
 
@@ -57,7 +57,7 @@ Wanneer u een SAS voor gebruikers overdracht maakt met de Azure CLI, wordt de sl
 
 Omdat het maximale interval waarover de gebruikers overdracht-sleutel geldig is, zeven dagen na de begin datum is, moet u een verloop tijd opgeven voor de SA'S die binnen zeven dagen na de begin tijd vallen. De SAS is ongeldig nadat de gebruikers delegerings sleutel is verlopen, waardoor een SAS met een verloop tijd van meer dan zeven dagen nog geldig is gedurende 7 dagen.
 
-Wanneer u een SAS voor gebruikers overdracht maakt `--auth-mode login` , `--as-user parameters` zijn de en vereist. Geef de *aanmeldings naam* op voor de `--auth-mode` para meter zodat aanvragen voor Azure Storage worden geautoriseerd met uw Azure AD-referenties. Geef de `--as-user` para meter op om aan te geven dat de geretourneerde sa's een SAS voor gebruikers overdracht moeten zijn.
+Wanneer u een SAS voor gebruikers overdracht maakt, zijn de `--auth-mode login` en `--as-user parameters` vereist. Geef de *aanmeldings naam* op voor de para meter `--auth-mode` zodat aanvragen voor Azure Storage worden geautoriseerd met uw Azure AD-referenties. Geef de para meter `--as-user` op om aan te geven dat de geretourneerde SA'S een SAS voor gebruikers overdracht moeten zijn.
 
 ### <a name="create-a-user-delegation-sas-for-a-container"></a>Een SAS voor gebruikers overdracht maken voor een container
 
@@ -89,7 +89,7 @@ Als u een gebruikers delegering SA'S wilt maken voor een blob met de Azure CLI, 
 
 Ondersteunde machtigingen voor een gebruikers delegering SA'S voor een BLOB zijn: toevoegen, maken, verwijderen, lezen en schrijven. Machtigingen kunnen afzonderlijk of gecombineerd worden opgegeven. Zie [een gebruiker delegering Sa's maken](/rest/api/storageservices/create-user-delegation-sas)voor meer informatie over deze machtigingen.
 
-De volgende syntaxis retourneert een gebruikers delegering SA'S voor een blob. In het voor beeld `--full-uri` wordt de para meter opgegeven, die de BLOB-URI retourneert waaraan het SAS-token is toegevoegd. Vergeet niet om de waarden van de tijdelijke aanduidingen tussen vier Kante haken te vervangen door uw eigen waarden:
+De volgende syntaxis retourneert een gebruikers delegering SA'S voor een blob. In het voor beeld wordt de para meter `--full-uri` opgegeven, die de BLOB-URI retourneert waaraan het SAS-token is toegevoegd. Vergeet niet om de waarden van de tijdelijke aanduidingen tussen vier Kante haken te vervangen door uw eigen waarden:
 
 ```azurecli-interactive
 az storage blob generate-sas \

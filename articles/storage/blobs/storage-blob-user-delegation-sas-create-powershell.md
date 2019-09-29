@@ -4,17 +4,17 @@ description: Meer informatie over het maken van een Shared Access Signature (SAS
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: blobs
-ms.openlocfilehash: 8a455fdb8ef81b0e06d1f77f7a9cdd5bec351b2b
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 0164c97adf720a618179908298223c54bf48824e
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70164271"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71673345"
 ---
 # <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-powershell-preview"></a>Een gebruikers delegering SA'S maken voor een container of BLOB met Power shell (preview)
 
@@ -102,7 +102,7 @@ Wanneer u een SAS voor gebruikers overdracht met Azure PowerShell maakt, wordt d
 
 Omdat het maximale interval waarover de gebruikers overdracht-sleutel geldig is, zeven dagen na de begin datum is, moet u een verloop tijd opgeven voor de SA'S die binnen zeven dagen na de begin tijd vallen. De SAS is ongeldig nadat de gebruikers delegerings sleutel is verlopen, waardoor een SAS met een verloop tijd van meer dan zeven dagen nog geldig is gedurende 7 dagen.
 
-Als u een gebruikers delegering SAS voor een container of BLOB met Azure PowerShell wilt maken, moet u eerst een nieuw Azure Storage `-UseConnectedAccount` context-object maken, waarbij u de para meter opgeeft. De `-UseConnectedAccount` para meter geeft aan dat met de opdracht het context object wordt gemaakt onder het Azure ad-account waarmee u zich hebt aangemeld.
+Als u een gebruikers delegering SAS voor een container of BLOB met Azure PowerShell wilt maken, moet u eerst een nieuw Azure Storage context-object maken, waarbij u de para meter `-UseConnectedAccount` opgeeft. De para meter `-UseConnectedAccount` geeft aan dat de opdracht het context object maakt onder het Azure AD-account waarmee u zich hebt aangemeld.
 
 Vergeet niet om de waarden van de tijdelijke aanduidingen tussen punt haken te vervangen door uw eigen waarden:
 
@@ -134,7 +134,7 @@ Het geretourneerde SAS-token voor gebruikers overdracht is vergelijkbaar met:
 
 Als u een SAS-token voor gebruikers overdracht voor een BLOB wilt retour neren, roept u de opdracht [New-AzStorageBlobSASToken](/powershell/module/az.storage/new-azstorageblobsastoken) aan en geeft u het object Azure Storage context door dat u eerder hebt gemaakt.
 
-De volgende syntaxis retourneert een gebruikers delegering SA'S voor een blob. In het voor beeld `-FullUri` wordt de para meter opgegeven, die de BLOB-URI retourneert waaraan het SAS-token is toegevoegd. Vergeet niet om de waarden van de tijdelijke aanduidingen tussen vier Kante haken te vervangen door uw eigen waarden:
+De volgende syntaxis retourneert een gebruikers delegering SA'S voor een blob. In het voor beeld wordt de para meter `-FullUri` opgegeven, die de BLOB-URI retourneert waaraan het SAS-token is toegevoegd. Vergeet niet om de waarden van de tijdelijke aanduidingen tussen vier Kante haken te vervangen door uw eigen waarden:
 
 ```powershell
 New-AzStorageBlobSASToken -Context $ctx `

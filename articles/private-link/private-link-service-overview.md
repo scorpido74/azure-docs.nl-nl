@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: 67bddea31a4bb375657b0df5e21fab1ab3d732f5
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: cad8e3e4f32a8773fe914362b637d39765a23c21
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265558"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71672514"
 ---
 # <a name="what-is-azure-private-link-service"></a>Wat is Azure Private Link service?
 
@@ -100,6 +100,7 @@ De actie voor het goed keuren van de verbindingen kan worden geautomatiseerd met
 Hier volgen de bekende beperkingen bij het gebruik van de service private link:
 - Alleen ondersteund op Standard Load Balancer 
 - Ondersteunt alleen IPv4-verkeer
+- Biedt alleen ondersteuning voor TCP-verkeer
 - Alleen bereikbaar vanaf privé-eind punten in dezelfde regio
 - Het maken en beheren van de ervaring van Azure Portal wordt niet ondersteund
 - Client verbindings gegevens via proxy protocol zijn niet beschikbaar voor service provider

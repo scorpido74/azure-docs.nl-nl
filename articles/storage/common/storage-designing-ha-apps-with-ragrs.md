@@ -4,17 +4,17 @@ description: Azure RA-GZRS-of RA-GRS-opslag gebruiken om een Maxi maal beschik b
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/14/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 1a5d80d6cd31621f8c3931b1845050f0a212ef08
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: a6d724f834fb8a4c54cd613c61ca90a77a36bdea
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69036605"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71673119"
 ---
 # <a name="designing-highly-available-applications-using-read-access-geo-redundant-storage"></a>Maxi maal beschik bare toepassingen ontwerpen met geografisch redundante opslag met lees toegang
 
@@ -27,7 +27,7 @@ Opslag accounts die zijn geconfigureerd voor geo-redundante replicatie, worden s
 
 In dit artikel wordt uitgelegd hoe u uw toepassing kunt ontwerpen voor het afhandelen van een storing in de primaire regio. Als de primaire regio niet beschikbaar is, kan uw toepassing worden aangepast om Lees bewerkingen uit te voeren op de secundaire regio. Zorg ervoor dat uw opslag account is geconfigureerd voor RA-GRS of RA-GZRS voordat u aan de slag gaat.
 
-Zie [bedrijfs continuïteit en herstel na nood gevallen (BCDR) voor meer informatie over welke primaire regio's worden gekoppeld aan de secundaire regio's. gekoppelde Azure-regio's](https://docs.microsoft.com/azure/best-practices-availability-paired-regions) voor meer informatie.
+Zie [Business continuïteit en herstel na nood gevallen (BCDR) voor meer informatie over welke primaire regio's worden gekoppeld aan de secundaire regio's. gekoppelde Azure-regio's](https://docs.microsoft.com/azure/best-practices-availability-paired-regions) voor meer informatie.
 
 Er zijn code fragmenten opgenomen in dit artikel en een koppeling naar een volledig voor beeld aan het einde dat u kunt downloaden en uitvoeren.
 
@@ -148,7 +148,7 @@ Een andere overweging is hoe u meerdere exemplaren van een toepassing kunt verwe
 
 Er zijn drie belang rijke opties voor het bewaken van de frequentie van nieuwe pogingen in de primaire regio om te bepalen wanneer moet worden overgeschakeld naar de secundaire regio en de toepassing te wijzigen zodat deze wordt uitgevoerd in de modus alleen-lezen.
 
-* Een handler toevoegen voor het [](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.operationcontext.retrying) [**OperationContext**](https://docs.microsoft.com/java/api/com.microsoft.applicationinsights.extensibility.context.operationcontext) -object dat u aan uw opslag aanvragen door gegeven. Dit is de methode die wordt weer gegeven in dit artikel en wordt gebruikt in het bijbehorende voor beeld. Deze gebeurtenissen worden geactiveerd wanneer de client een aanvraag opnieuw probeert, zodat u kunt bijhouden hoe vaak de client herstel bare fouten op een primair eind punt tegen komt.
+* Een handler toevoegen [**voor het**](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.operationcontext.retrying) [**OperationContext**](https://docs.microsoft.com/java/api/com.microsoft.applicationinsights.extensibility.context.operationcontext) -object dat u aan uw opslag aanvragen door gegeven. Dit is de methode die wordt weer gegeven in dit artikel en wordt gebruikt in het bijbehorende voor beeld. Deze gebeurtenissen worden geactiveerd wanneer de client een aanvraag opnieuw probeert, zodat u kunt bijhouden hoe vaak de client herstel bare fouten op een primair eind punt tegen komt.
 
     ```csharp
     operationContext.Retrying += (sender, arguments) =>
@@ -159,7 +159,7 @@ Er zijn drie belang rijke opties voor het bewaken van de frequentie van nieuwe p
     };
     ```
 
-* In de [](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.iextendedretrypolicy.evaluate) methode Evaluate in een aangepast beleid voor opnieuw proberen kunt u aangepaste code uitvoeren wanneer een nieuwe poging plaatsvindt. Naast het vastleggen wanneer een nieuwe poging gebeurt, biedt dit ook de mogelijkheid om het gedrag voor opnieuw proberen aan te passen.
+* In de methode [**Evaluate**](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.iextendedretrypolicy.evaluate) in een aangepast beleid voor opnieuw proberen kunt u aangepaste code uitvoeren wanneer een nieuwe poging plaatsvindt. Naast het vastleggen wanneer een nieuwe poging gebeurt, biedt dit ook de mogelijkheid om het gedrag voor opnieuw proberen aan te passen.
 
     ```csharp 
     public RetryInfo Evaluate(RetryContext retryContext,
@@ -195,23 +195,23 @@ Bij het derde scenario wordt het pingen van het primaire opslag eindpunt weer ge
 
 ## <a name="handling-eventually-consistent-data"></a>Uiteindelijk consistente gegevens verwerken
 
-Geografisch redundante opslag werkt door trans acties te repliceren van de primaire naar de secundaire regio. Dit replicatie proces garandeert dat de gegevens in de secundaire regio *uiteindelijk consistent*zijn. Dit betekent dat alle trans acties in de primaire regio uiteindelijk worden weer gegeven in de secundaire regio, maar dat er een vertraging kan optreden voordat ze worden weer gegeven en dat er geen garantie is dat de trans acties in de secundaire regio worden ontvangen in dezelfde volg orde als waarin ze oorspronkelijk zijn toegepast in de primaire regio. Als uw trans acties in de secundaire regio buiten de juiste volg orde arriveren, kunt u de gegevens in de secundaire regio inconsistent maken, totdat de service wordt opgevangen.
+Geografisch redundante opslag werkt door trans acties te repliceren van de primaire naar de secundaire regio. Dit replicatie proces garandeert dat de gegevens in de secundaire regio *uiteindelijk consistent*zijn. Dit betekent dat alle trans acties in de primaire regio uiteindelijk worden weer gegeven in de secundaire regio, maar dat er een vertraging kan optreden voordat ze worden weer gegeven en dat er geen garantie is dat de trans acties in de secundaire regio worden ontvangen in dezelfde volg orde als waarin ze oorspronkelijk zijn toegepast in de primaire regio. Als uw trans acties in de secundaire regio buiten de juiste volg orde arriveren, *kunt u de* gegevens in de secundaire regio inconsistent maken, totdat de service wordt opgevangen.
 
-In de volgende tabel ziet u een voor beeld van wat er kan gebeuren wanneer u de details van een werk nemer bijwerkt om ze lid te maken van de rol Administrators. Voor dit voor beeld moet u de entiteit **werk nemer** bijwerken en een entiteit **rol beheerder** bijwerken met een telling van het totale aantal beheerders. U ziet hoe de updates in de secundaire regio in de juiste volg orde worden toegepast.
+In de volgende tabel ziet u een voor beeld van wat er kan gebeuren wanneer u de details van een werk nemer bijwerkt om ze lid te maken van de rol *Administrators* . Voor dit voor beeld moet u de entiteit **werk nemer** bijwerken en een entiteit **rol beheerder** bijwerken met een telling van het totale aantal beheerders. U ziet hoe de updates in de secundaire regio in de juiste volg orde worden toegepast.
 
 | **Tegelijk** | **Trans actie**                                            | **Replicatie**                       | **Tijdstip van de laatste synchronisatie** | **Daardoor** |
 |----------|------------------------------------------------------------|---------------------------------------|--------------------|------------| 
 | T0       | Trans actie A: <br> Werk nemer invoegen <br> entiteit in primaire |                                   |                    | Trans actie A ingevoegd op primaire,<br> nog niet gerepliceerd. |
 | T1       |                                                            | Trans actie A <br> gerepliceerd naar<br> secundair | T1 | Trans actie A gerepliceerd naar secundair. <br>Laatste synchronisatie tijd bijgewerkt.    |
-| T2       | Trans actie B:<br>Update<br> entiteit werk nemer<br> in primaire  |                                | T1                 | Trans actie B, geschreven naar primair,<br> nog niet gerepliceerd.  |
+| T2       | Trans actie B:<br>Update<br> Entiteit werk nemer<br> in primaire  |                                | T1                 | Trans actie B, geschreven naar primair,<br> nog niet gerepliceerd.  |
 | T3       | Trans actie C:<br> Update <br>beheerder<br>rol-entiteit in<br>primair |                    | T1                 | Trans actie C geschreven naar primair,<br> nog niet gerepliceerd.  |
 | *T4*     |                                                       | Trans actie C <br>gerepliceerd naar<br> secundair | T1         | Trans actie C gerepliceerd naar secundair.<br>LastSyncTime is niet bijgewerkt omdat <br>trans actie B is nog niet gerepliceerd.|
 | *T5*     | Entiteiten lezen <br>van secundaire                           |                                  | T1                 | U krijgt de verouderde waarde voor werk nemer <br> entiteit omdat trans actie B niet <br> gerepliceerd. U krijgt de nieuwe waarde voor<br> entiteit van beheerdersrol omdat C<br> bijgewerkt. Laatste synchronisatie tijd nog niet<br> bijgewerkt omdat trans actie B<br> is niet gerepliceerd. U kunt de<br>entiteit van beheerdersrol is inconsistent <br>omdat de datum/tijd van de entiteit na <br>de laatste synchronisatie tijd. |
 | *T6*     |                                                      | Trans actie B<br> gerepliceerd naar<br> secundair | T6                 | *T6* : alle trans acties via C hebben <br>gerepliceerd, laatste synchronisatie tijd<br> is bijgewerkt. |
 
-In dit voor beeld wordt ervan uitgegaan dat de client overschakelt van de secundaire regio op t 5. De entiteit **rol van beheerder** kan op dit moment worden gelezen, maar de entiteit bevat een waarde voor het aantal beheerders dat niet consistent is met het aantal entiteiten van **werk nemers** dat is gemarkeerd als Administrators in de secundaire regio op dit moment. Uw client zou deze waarde gewoon kunnen weer geven, met het risico dat het inconsistente informatie is. De client kan ook proberen te bepalen dat de beheerdersrol een mogelijk inconsistente status heeft omdat de updates in de juiste volg orde zijn verlopen en vervolgens de gebruiker op de hoogte stellen van dit feit.
+In dit voor beeld wordt ervan uitgegaan dat de client overschakelt van de secundaire regio op t 5. De entiteit **rol van beheerder** kan op dit moment worden gelezen, maar de entiteit bevat een waarde voor het aantal beheerders dat niet consistent is met het aantal entiteiten van **werk nemers** dat is gemarkeerd als Administrators in de secundaire regio op dit moment. Uw client zou deze waarde gewoon kunnen weer geven, met het risico dat het inconsistente informatie is. De client kan ook proberen te bepalen dat de beheerdersrol een mogelijk inconsistente **status heeft omdat** de updates in de juiste volg orde zijn verlopen en vervolgens de gebruiker op de hoogte stellen van dit feit.
 
-Om te herkennen dat het mogelijk inconsistente gegevens bevat, kan de client de waarde van de *laatste synchronisatie tijd* gebruiken die u op elk gewenst moment kunt bereiken door een opslag service te doorzoeken. Dit geeft u het tijdstip waarop de gegevens in de secundaire regio voor het laatst consistent zijn en toen de service alle trans acties vóór dat moment heeft toegepast. In het bovenstaande voor beeld, nadat de **werknemers** entiteit in de secundaire regio is ingevoegd, wordt de laatste synchronisatie tijd ingesteld op *T1*. Deze blijft op *T1* totdat de service de **werknemers** entiteit in de secundaire regio bijwerkt wanneer deze is ingesteld op *T6*. Als de client de laatste synchronisatie tijd ophaalt bij het lezen van de entiteit op *T5*, kan deze worden vergeleken met de tijds tempel van de entiteit. Als de tijds tempel van de entiteit later is dan de laatste synchronisatie tijd, heeft de entiteit een mogelijk inconsistente status en kunt u de juiste actie ondernemen voor uw toepassing. Als u dit veld wilt gebruiken, moet u weten wanneer de laatste update voor de primaire is voltooid.
+Om te herkennen dat het mogelijk inconsistente gegevens bevat, kan de client de waarde van de *laatste synchronisatie tijd* gebruiken die u op elk gewenst moment kunt bereiken door een opslag service te doorzoeken. Dit geeft u het tijdstip waarop de gegevens in de secundaire regio voor het laatst consistent zijn en toen de service alle trans acties vóór dat moment heeft toegepast. In het bovenstaande voor beeld, nadat de **werknemers** entiteit in de secundaire regio is ingevoegd, wordt de laatste synchronisatie tijd ingesteld op *T1*. Deze blijft op *T1* totdat de service de werknemers entiteit in de secundaire regio **bijwerkt** wanneer deze is ingesteld op *T6*. Als de client de laatste synchronisatie tijd ophaalt bij het lezen van de entiteit op *T5*, kan deze worden vergeleken met de tijds tempel van de entiteit. Als de tijds tempel van de entiteit later is dan de laatste synchronisatie tijd, heeft de entiteit een mogelijk inconsistente status en kunt u de juiste actie ondernemen voor uw toepassing. Als u dit veld wilt gebruiken, moet u weten wanneer de laatste update voor de primaire is voltooid.
 
 ## <a name="getting-the-last-sync-time"></a>De laatste synchronisatie tijd ophalen
 
@@ -235,7 +235,7 @@ $lastSyncTime = $(Get-AzStorageAccount -ResourceGroupName <resource-group> `
 
 ### <a name="azure-cli"></a>Azure-CLI
 
-Als u de laatste synchronisatie tijd voor het opslag account wilt ophalen met behulp van Azure CLI, controleert u de eigenschap **geoReplicationStats. lastSyncTime** van het opslag account. Gebruik de `--expand` para meter om waarden te retour neren voor de eigenschappen die onder **geoReplicationStats**zijn genest. Vergeet niet om de waarden van de tijdelijke aanduidingen te vervangen door uw eigen waarden:
+Als u de laatste synchronisatie tijd voor het opslag account wilt ophalen met behulp van Azure CLI, controleert u de eigenschap **geoReplicationStats. lastSyncTime** van het opslag account. Gebruik de para meter `--expand` om waarden te retour neren voor de eigenschappen die onder **geoReplicationStats**zijn genest. Vergeet niet om de waarden van de tijdelijke aanduidingen te vervangen door uw eigen waarden:
 
 ```azurecli
 $lastSyncTime=$(az storage account show \

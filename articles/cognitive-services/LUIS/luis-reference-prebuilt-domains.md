@@ -11,23 +11,23 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: diberry
-ms.openlocfilehash: f5810a813b6c54f190d95061e79914457f51d19c
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 7e2b5c5c5d2ca4c0d6ab820866341c5f30082c5f
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71067601"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71672775"
 ---
 # <a name="prebuilt-domain-reference-for-your-luis-app"></a>Vooraf ontwikkelde domein referentie voor uw LUIS-app
 Deze referentie bevat informatie over de [vooraf gemaakte domeinen](luis-how-to-use-prebuilt-domains.md), die zijn vooraf gemaakte verzamelingen van intenties en entiteiten die LUIS biedt.
 
 [Aangepaste domeinen](luis-how-to-start-new-app.md), daarentegen, beginnen met geen intents en modellen. U kunt een vooraf gedefinieerde domein intenties en entiteiten toevoegen aan een aangepast model.
 
-# <a name="supported-domains-across-cultures"></a>Ondersteunde domeinen in cult uren
+## <a name="supported-domains-across-cultures"></a>Ondersteunde domeinen in cult uren
 
 De volgende tabel bevat een overzicht van de momenteel ondersteunde domeinen. Ondersteuning voor Engels is meestal meer dan andere. 
 
-| Entiteits type       | EN-US      | ZH-CN   | DE    | FR     | ES    | IT      | PT-BR |  JP  |      KO |        NL |    TR |
+| Entiteittype       | EN-US      | ZH-CN   | DE    | FR     | ES    | IT      | PT-BR |  JP  |      KO |        NL |    TR |
 |:-----------------:|:-------:|:-------:|:-----:|:------:|:-----:|:-------:| :-------:| :-------:| :-------:| :-------:|  :-------:| 
 | [Agenda](#calendar)    | ✓    | ✓       | ✓    | ✓     | ✓     | ✓  | ✓      | ✓    | ✓    | ✓     | ✓  |
 | [Verbindings](#communication)   | ✓    | ✓       | ✓    | ✓     | ✓     | ✓  | ✓  | ✓      | ✓    | ✓    | ✓     | ✓  |
@@ -47,7 +47,7 @@ Vooraf ontwikkelde domeinen worden **niet ondersteund** in:
 * Hindi
 * Spaans (Mexico)
 
-# <a name="description-for-luis-prebuilt-domains"></a>Beschrijving van vooraf gemaakte LUIS-domeinen
+## <a name="description-for-luis-prebuilt-domains"></a>Beschrijving van vooraf gemaakte LUIS-domeinen
 ## <a name="calendar"></a>**Agenda**
 Agenda is alles over persoonlijke vergaderingen en afspraken, geen open bare gebeurtenis (bijvoorbeeld planningen voor de WK, agenda in Seattle) of een algemene agenda (bijvoorbeeld op welke dag het vandaag is, wat is het begin, wanneer de dag van de arbeid is).
 ### <a name="intents"></a>**Intents**
@@ -76,7 +76,7 @@ ShowNext | Controleer de volgende gebeurtenis. <br> _**Kennisgeving**: Raadpleeg
  TimeRemaining | Controleer de resterende tijd tot de volgende gebeurtenis. | Weer geven hoeveel tijd ik voor mijn vergaderingen heb. <br> De hoeveelheid tijd weer geven die ik heb voordat mijn volgende vergadering begint.
  
 ### <a name="entities"></a>**Rijg**
-De naam van de entiteit | Entiteits type | Description | Voorbeelden | Sleuven
+Naam van entiteit | Entiteittype | Description | Voorbeelden | Sleuven
 -------|-----------------------|-------------|---------|--------
 Naam contactpersoon | personName | De naam van een deel nemer aan een contact persoon of vergadering. | Ontmoet u met **Betsy**. <br>  Ontmoet met **Aubrey** op 3 juli om 17.00 uur | Betsy <br> Aubrey <br> Karen 
 DestinationCalendar | Simple | De naam van de doel kalender. | lunch met mom dinsdag 12 **persoonlijk** <br> Mijn **Google** Calendar gebruiken als mijn standaard agenda. <br> Yoga-klasse bijwerken naar ma-wo om 15:00 uur in **persoonlijke** agenda weer geven. | Google <br> Personal <br> bedrijf <br> hoofd
@@ -88,14 +88,14 @@ MeetingRoom | Simple | Ruimte voor een vergadering of afspraak. | Toevoegen aan 
 MoveEarlierTimeSpan | datetime | De tijd gebruiker wil een vergadering of afspraak eerder verplaatsen. | Verplaats mijn lunch datum met **30 minuten**vooruit. | 30 minuten <br> twee uur 
 MoveLaterTimeSpan |  datetime | De tijd gebruiker wil een vergadering of afspraak later verplaatsen. | mijn vergadering pushen met orchidee Box **4 uur**terug. | 4 uur <br> 15 minuten 
 OrderReference | Simple | De rangtelwoord of relatieve positie in een lijst, het identificeren van een item om op te halen. | Wat is mijn volgende afspraak voor morgen? | volgende
-OriginalEndDate | datetime | De oorspronkelijke eind datum van een vergadering of afspraak. | Mijn vakantie wijzigen van eindigt op **vrijdag** in maandag | vrijdag 
+OriginalEndDate | datetime | De oorspronkelijke eind datum van een vergadering of afspraak. | Mijn vakantie wijzigen van eindigt op **vrijdag** in maandag | Vrijdag 
 OriginalEndTime | datetime | De oorspronkelijke eind tijd van een vergadering of afspraak. | Hiermee wordt het abonnement dat eindigt op **3** ga tot 4 | 3
 OriginalStartDate | datetime | De oorspronkelijke begin datum van een vergadering of afspraak. | Wijzig de afspraak van **morgen**van 10 uur tot en met woensdag om 9:00 uur  | morgen 
 OriginalStartTime | datetime | De oorspronkelijke begin tijd van een vergadering of afspraak. | Wijzig de afspraak van morgen van **10 uur** tot en met woensdag om 9:00 uur | 10 uur
 PositionReference | ordinal | De absolute positie in een lijst, waarmee een item wordt geïdentificeerd dat moet worden opgehaald. | De **tweede** | seconde <br> Nee. 3 <br> nummer 5
 RelationshipName | list | De relatie naam van een contact persoon. | lunch toevoegen om 1:00 uur met mijn **vrouw** | vrouw <br> veehouderij <br> zus 
 SlotAttribute | Simple | De kenmerk gebruiker wil een query of bewerking uitvoeren. | gebeurtenis **locatie** wijzigen <br> Wijzig de **tijd** in zeven uur | location <br> time 
-Begin | datetime | De begin datum van een vergadering of afspraak. | Een vergadering maken op **woensdag** om 16:00 uur | woensdag 
+Begin | datetime | De begin datum van een vergadering of afspraak. | Een vergadering maken op **woensdag** om 16:00 uur | Woensdag 
 StartTime | datetime | Begin tijd van een vergadering of afspraak. | een vergadering maken op woensdag om **16:00 uur** | 4 uur
 Subject | eenvoudig, patroon. Iedere | Onderwerp, zoals de titel van een vergadering of afspraak. | Welke tijd is de **partij voorbereidings** vergadering? | Tand arts <br> Lunch met Julia 
 Message | eenvoudig, patroon. Iedere | Het bericht dat naar de deel nemers moet worden verzonden. | Deel nemers van het diner om **te gaan**. | Ik ben te laat
@@ -129,7 +129,7 @@ Negeren | Een binnenkomende oproep negeren. | Geen antwoord <br>   Aanroep neger
 IgnoreWithMessage | Een binnenkomende oproep negeren en reageren met de tekst in plaats daarvan. | Geen deze oproep wordt beantwoord, maar in plaats daarvan een bericht verzenden. <br>   Negeren en terug tekstbericht te verzenden.
 Inbelverbinding | Een telefoongesprek. | Jim aanroepen <br>   Bel 311.
 FindSpeedDial | Zoek de speedial nummer een telefoonnummer in dat is ingesteld op en vice versa. | Wat is mijn telefoonnummer 5? <br>   Heb ik snelheid set kiezen? <br>   Wat is het telefoonnummer van 941-5555-333?
-Doorsturen | Een e-mailbericht doorsturen | Stuur deze e-mail door naar Greg.
+Vooruit | Een e-mail door sturen | Stuur deze e-mail door naar Greg.
 ReadAloud | Lees een bericht of een e-mailbericht naar de gebruiker. | Lees de tekst. <br>   Wat ze zeggen in het bericht?
 PressKey | Druk op een knop of een getal op het toetsenbord. | Ster met kiezen. <br>   Druk op 1-2-3.
 QueryLastText | De laatste tekst of het vorige bericht opvragen. | Wie heb ik tekst? <br>   Wie heb ik onlangs aangemeld?
@@ -147,11 +147,11 @@ TurnSpeakerOff | De telefoon spreker uitschakelen. | Breng me uit spreker. <br> 
 TurnSpeakerOn | Schakel de sprekerherkenning-telefoon. | Handsfree-modus. <br>   Plaats Handsfree op.
 
 ### <a name="entities"></a>**Rijg**
-De naam van de entiteit | Entiteits type | Description | Voorbeelden | Sleuven
+Naam van entiteit | Entiteittype | Description | Voorbeelden | Sleuven
 ------|-------|----------|--------------|---------------
 Attachment | Simple | De bijlage die de gebruiker wil verzenden per tekst of e-mail bericht. | Een **bestand** vanuit OneNote e-mailen. <br> Verzend mijn housekeeping- **document** naar Katie. | file <br> documenten
 AudioDeviceType | Simple | Type audio apparaat (spreker, headset, microfoon, enzovoort). | Antwoord met behulp van **hands free**. <br> Kies opnieuw op de telefoon met de **spreker**. | woont <br> Hands Free <br> Apparaatklasse
-Categorie | Simple | De categorie van een bericht of e-mail, de categorie moet een duidelijke definitie hebben in het e-mail systeem, zoals ' ongelezen ', ' vlag '. De definitie van de beschrijving met een lees-o, bijvoorbeeld ' nieuw ' en ' recent ' zijn geen categorieën. | Alle e-mail markeren als **gelezen**  <br> Nieuwe e-mail met **hoge prioriteit** voor Paul | belangrijk <br> hoge prioriteit <br> lezen
+Category | Simple | De categorie van een bericht of e-mail, de categorie moet een duidelijke definitie hebben in het e-mail systeem, zoals ' ongelezen ', ' vlag '. De definitie van de beschrijving met een lees-o, bijvoorbeeld ' nieuw ' en ' recent ' zijn geen categorieën. | Alle e-mail markeren als **gelezen**  <br> Nieuwe e-mail met **hoge prioriteit** voor Paul | belangrijk <br> hoge prioriteit <br> lezen
 ContactAttribute | Simple | Een kenmerk van de contact persoon voor wie de gebruikers vragen zijn.| **Verjaar dagen** volgende maand waarover ik moet weten? | verjaar dagen <br> address <br> Telefoon nummer
 Naam contactpersoon | personName  | De naam van de ontvanger van een contactpersoon of een bericht. | Verzend het e-mail bericht naar **Stevens** | Stevens
 Date/Time | datetime | Datum/tijd van een ontvangen e-mail. | De e-mail van **vandaag**lezen <br> Wie heb ik **vandaag**per e-mail gestuurd? <br> Wie heeft ik op **7 uur**gebeld? | vandaag <br> morgen
@@ -186,13 +186,13 @@ SearchMessages | Zoek de berichten op enkele voor waarden, zoals de naam van de 
 EmailVerzenden | Een e-mail verzenden. | E-mail aan Mark: Mike, de afgelopen week was Splendid. <br> Stuur een e-mail naar Bob.
 ShowNext | De volgende items in een lijst met tekst berichten of e-mails weer geven. <br> ***Kennisgeving**: Raadpleeg het domein **Hulpprogram ma's** voor meer ShowNext algemene uitingen. * | Het volgende object weergeven. <br> Ga naar de volgende pagina.
 ShowPrevious | De vorige items in een lijst met tekst berichten of e-mails weer geven. <br> ***Kennisgeving**: Raadpleeg het domein **Hulpprogram ma's** voor meer ShowPrevious algemene uitingen. * | Het vorige voorbeeld weergegeven. <br> Bestaande. <br> Ga naar vorige.
-Doorsturen | Een e-mail door sturen. | Stuur deze e-mail door naar Greg.
+Vooruit | Een e-mail door sturen. | Stuur deze e-mail door naar Greg.
 AddFlag | Voeg een markering toe aan een e-mail bericht. | Dit e-mail bericht markeren <br> Voeg een markering toe aan dit e-mail bericht.
 QueryLastText | Vraag de laatste e-mail op. | Wie heeft e-mail naar mij gestuurd? <br> Wie heb ik onlangs per e-mail gestuurd?
 
 
 ### <a name="entities"></a>**Rijg**
-De naam van de entiteit | Entiteits type | Description | Voorbeelden | Sleuven
+Naam van entiteit | Entiteittype | Description | Voorbeelden | Sleuven
 ------|-------|----------|--------------|---------------
 Attachment | Simple | De bijlage die de gebruiker wil verzenden per tekst of e-mail bericht. | Een **bestand** vanuit OneNote e-mailen. <br> Verzend mijn housekeeping- **document** naar Katie. | file <br> documenten
 Naam contactpersoon | personName  | De naam van de ontvanger van een contactpersoon of een bericht. | Verzend het e-mail bericht naar **Stevens** | Stevens
@@ -202,7 +202,7 @@ EmailSubject | eenvoudig, patroon. Iedere | De tekst die wordt gebruikt als de o
 SenderName | personName | De naam van de afzender. | Het e-mail bericht van **David** lezen <br> E-mail berichten van Chanda | David <br> Chanda
 FromRelationshipName | Simple | De relatie naam van de afzender. | Bericht lezen van **pa**. <br> Lees ik alle SMS-berichten van **mom**? | Je vader <br> Mama 
 Message | eenvoudig, patroon. Iedere |  Het bericht te verzenden als een e-mailadres of tekst.  | E-mail verzenden met de melding**Ik ben bezet**. | Ik ben bezet
-Categorie | Simple | De categorie van een bericht of e-mail, de categorie moet een duidelijke definitie hebben in het e-mail systeem, zoals ' ongelezen ', ' vlag '. De definitie van de beschrijving met een lees-o, bijvoorbeeld ' nieuw ' en ' recent ' zijn geen categorieën. | Alle e-mail markeren als **gelezen**  <br> Nieuwe e-mail met **hoge prioriteit** voor Paul | belangrijk <br> hoge prioriteit <br> lezen
+Category | Simple | De categorie van een bericht of e-mail, de categorie moet een duidelijke definitie hebben in het e-mail systeem, zoals ' ongelezen ', ' vlag '. De definitie van de beschrijving met een lees-o, bijvoorbeeld ' nieuw ' en ' recent ' zijn geen categorieën. | Alle e-mail markeren als **gelezen**  <br> Nieuwe e-mail met **hoge prioriteit** voor Paul | belangrijk <br> hoge prioriteit <br> lezen
 OrderReference | Simple | De rangtelwoord of relatieve positie in een lijst, het identificeren van een item om op te halen. | Wat is het **laatste** bericht dat ik heb verzonden? <br> Lees de **laatste** e-mail van Nokia. <br> Lees **nieuwe** tekst berichten. | duren <br> latest <br> Afgelopen <br> nieuwste
 PositionReference | eenvoudig, rang telwoord | De rangtelwoord of relatieve positie in een lijst, het identificeren van een item om op te halen.| Wat is het **eerste** bericht dat ik heb verzonden? <br> De **derde** .| Eerste <br> externe
 RelationshipName | Simple | De relatie naam van een contact persoon of geadresseerde van het bericht. | E-mail verzenden naar mijn **vrouw** | vrouw
@@ -232,7 +232,7 @@ Doel naam | Description | Voorbeelden
  TurnUp | Instellingen of helderheid van apparaten in te scha kelen. | De lichten met 75 procent opfleuren. <br> Hier de helderheid van 10 procent.  <br> Maak het warmer in de woon kamer.
  TurnDown | Het wordt uitgeschakeld, maar niet uitschakelen van een apparaat, hetzij via dimmen, de Tempe ratuur of de helderheid van de lichten. | Zet de tape wisselaar met 44% omlaag. <br> De lichten lichter. <br> Maak de room-koeling.
 ### <a name="entities"></a>**Rijg**
-De naam van de entiteit | Entiteits type | Description | Voorbeelden
+Naam van entiteit | Entiteittype | Description | Voorbeelden
 -------|----------|--------------|---------------
 Apparaatnaam | List | Door de gebruiker gedefinieerde tekst voor hun apparaten. | Blauw<br> Kerst <br> Eigen
 DeviceType | List | Ondersteunde apparaten. | Verlichting <br> Air-voor waarde <br> nightlight
@@ -263,13 +263,13 @@ RemoveSentence | Een zin voor een notitie verwijderen. | De laatste zin verwijde
 ChangeTitle | Wijzig de titel van de notitie. | Deze notitie krijgt de naam "planning".
 
 ### <a name="entities"></a>**Rijg**
-De naam van de entiteit | Entiteits type | Description | Voorbeelden 
+Naam van entiteit | Entiteittype | Description | Voorbeelden 
 ------- | ------- | ------- | -------
 Text | eenvoudig, patroon. Iedere | De tekst van een opmerking of een herinnering. | voordat u walking uitbreiden <br> lange termijn morgen
 Titel | eenvoudig, patroon. Iedere | De titel van een opmerking. | boodschappen <br> mensen om aan te roepen <br> taak
 CreationDate | datetimeV2 | Deze sleuf geldt wanneer de gebruiker wordt gevraagd om notities te maken binnen een bepaald datum-en tijd venster. | 
 Kwantiteits meter | List | Wanneer een gebruiker wordt gevraagd een actie uit te voeren op ' alle ', ' elke ' of ' alle ' items of alle tekst in een notitie. | all <br> Iedere <br> elke
-OrderReference | ordinal | De gebruiker wil acties uitvoeren met ' First ', ' last ', ' Next ', enzovoort. | instantie <br> duren
+OrderReference | ordinal | De gebruiker wil acties uitvoeren met ' First ', ' last ', ' Next ', enzovoort. | first <br> duren
 
 
 ## <a name="places"></a>**Gelegenheden**
@@ -291,7 +291,7 @@ RatePlace | Beoordeel een plaats. | 4 sterren-classificatie voor Maxi maal pizza
 AddFavoritePlace | De gebruiker wil een locatie toevoegen aan hun favorieten of MVP-lijst. | Deze locatie opslaan in mijn favorieten. <br> Beste aankoop toevoegen aan mijn favorieten.
 
 ### <a name="entities"></a>**Rijg**
-LUIS-entiteiten | Entiteits type | Description | Voorbeelden | Utterance-voor beelden
+LUIS-entiteiten | Entiteittype | Description | Voorbeelden | Utterance-voor beelden
 --------------|-------------|-------------|----------|-------------------
 AbsoluteLocation | Simple | De locatie of het adres van een centrale locatie. | Palo Alto <br> 300 112th Ave SE <br> Seattle | **1020 Middlefield extern bureau blad.** in **Palo Alto** <br> vogel Seed-winkels in **Seattle** <br> Haal de afstand van hier naar **300 112Th Laan se**.
 Recreatie | Simple | De objectieve kenmerken en voor delen van een open bare plaats. | afgebakend <br> gratis vervangende domeinpagina | Kirkland **afgebakende** -restaurants. <br> Is er een **gratis parkeren** bij de buurt?
@@ -323,7 +323,7 @@ FindReservationWhen | De exacte tijd van de reserve ring controleren | Wanneer i
 Afwijzen | De gebruiker weigert welke virtuele assistent er is voorgesteld voor het beheren van een reserve ring. <br> ***Let**op:P lease Raadpleeg het domein **hulpprogram ma's** voor meer informatie over de algemene uitingen. * | Het is niet nodig om de gebeurtenis in te stellen. | Nee, ik wil de reserve ring niet wijzigen. <br> Nee, ik wil niet boeken, ik heb een fout gemaakt.
 
 ### <a name="entities"></a>**Rijg**
-LUIS entiteit | Entiteits type | Description | Voorbeelden
+LUIS entiteit | Entiteittype | Description | Voorbeelden
 -------|------|---------|-------------------
 Adres | Simple | Een locatie van de gebeurtenis of het adres voor een reservering. | Palo Alto<br>300 112th Ave SE<br>Seattle
 Lucht | List | Een beschrijving van de atmosfeer van een restaurant. | Romantisch<br>illegaal<br>goed voor groepen<br>gedaan
@@ -350,7 +350,7 @@ ShowPreviousPage | Lijst items weer geven op de vorige pagina voor de gebruiker.
 ShowToDo | Alle items in de taken lijst weer geven. | Mijn boodschappen lijst weer geven. <br> Mijn boodschappen lijst weer geven.
 
 ### <a name="entities"></a>**Rijg**
-LUIS entiteit | Entiteits type | Description | Voorbeelden
+LUIS entiteit | Entiteittype | Description | Voorbeelden
 -------|------|---------|-------------------
 ContainsAll | Simple | Alle items in de taken lijst weer geven | kunt u helpen om **alle** taken te verwijderen. <br> **Alles**volt ooien.
 ordinal | ordinal | Een rang telwoord of numerieke verwijzing naar een item. | De **derde** markeren als voltooid. <br> De **eerste** taak verwijderen.
@@ -382,7 +382,7 @@ Doel naam | Description | Voorbeelden
  ReadAloud | Iets hardop voor de gebruiker lezen. | Lees deze pagina. <br> Lees dit hardop.
 
 ### <a name="entities"></a>**Rijg**
-LUIS entiteit | Entiteits type | Description | Voorbeelden
+LUIS entiteit | Entiteittype | Description | Voorbeelden
 ------------|-------------|-------------|---------
 ordinal | ordinal | Een rang telwoord of numerieke verwijzing naar een item. | De **tweede** . <br> **Volgende** .
 nummer | nummer | Aantal items dat door de gebruiker wil | De volgende **3** items
@@ -400,7 +400,7 @@ Doel naam | Description | Voorbeelden
  GetWeatherAdvisory | Ontvang weers-en waarschuwings adviezen van een specifieke locatie. | Zijn er weer adviezen in Memphis? <br> Zijn er weer waarschuwingen voor mijn gebied?
 
 ### <a name="entities"></a>**Rijg**
-LUIS entiteit | Entiteits type | Description | Voorbeelden
+LUIS entiteit | Entiteittype | Description | Voorbeelden
 ------------|-------------|-------------|---------
 Location | Geografie | De absolute of impliciete locatie voor een weer aanvraag. | Palo Alto<br>Sjanghai<br>Seattle<br>Delvina<br>
 Date/Time   | datetime | Datum/tijd voor het opvragen van het weer. | November<br>per uur<br>ochtend<br>Dit weekend<br>10 dagen<br>
@@ -422,7 +422,7 @@ Doel naam | Description | Voorbeelden
  Webzoekopdracht | Een aanvraag om naar een opgegeven website te navigeren of te zoeken in een zoek machine. | Zoek vlak in google.com. <br> Een prettige verjaardag nummer op het web zoeken <br> Ga naar www.twitter.com.
 
 ### <a name="entities"></a>**Rijg**
-LUIS entiteit | Entiteits type | Description | Voorbeelden
+LUIS entiteit | Entiteittype | Description | Voorbeelden
 ------------|-------------|-------------|---------
 Search Engine | List | De gebruiker van de zoek machine wil gebruiken. | Bing <br> Google
 Tekst | eenvoudig, patroon. Iedere | De tekst gebruiker wil zoeken. <br> _"Vrienden in Facebook" als brons markeren als de website na "in" geen zoek machine is. De URL moet ook worden gelabeld als brons._ | Film <br> Deep learning <br> Piet

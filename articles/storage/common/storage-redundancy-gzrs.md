@@ -3,17 +3,17 @@ title: Bouw Maxi maal beschik bare Azure Storage toepassingen met geo-zone-redun
 description: Geo-zone-redundante opslag (GZRS) trouwt de hoge Beschik baarheid van zone-redundante opslag (ZRS) met beveiliging van regionale storingen zoals bepaald door Geo-redundante opslag (GRS). Gegevens in een GZRS-opslag account worden gerepliceerd tussen Azure-beschikbaarheids zones in de primaire regio en worden ook gerepliceerd naar een secundaire geografische regio voor beveiliging tegen regionale rampen.
 author: tamram
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/13/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 321866279e076bfa77d1892e64deaf4b16c08366
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 737bad504519a2ec7eee9764593245e0fee28cc3
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300653"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71673070"
 ---
 # <a name="build-highly-available-azure-storage-applications-with-geo-zone-redundant-storage-gzrs-preview"></a>Bouw Maxi maal beschik bare Azure Storage toepassingen met geo-zone-redundante opslag (GZRS) (preview)
 
@@ -55,7 +55,7 @@ Wanneer u een opslag account maakt, geeft u op hoe gegevens in dat account moete
 
 Wanneer u RA-GZRS inschakelt voor uw opslag account, kunnen uw gegevens worden gelezen van het secundaire eind punt en van het primaire eind punt voor uw opslag account. Het secundaire eind punt voegt het achtervoegsel *(secundair* ) toe aan de account naam. Als uw primaire eind punt voor de BLOB service bijvoorbeeld is `myaccount.blob.core.windows.net`, is `myaccount-secondary.blob.core.windows.net`het secundaire eind punt. De toegangs sleutels voor uw opslag account zijn hetzelfde voor zowel de primaire als de secundaire eind punten.
 
-Als u gebruik wilt maken van RA-GZRS in het geval van een regionale storing, moet u uw toepassing vooraf ontwerpen om dit scenario af te handelen. Uw toepassing moet lezen van en schrijven naar het primaire eind punt, maar overschakelen naar het gebruik van het secundaire eind punt in het geval dat de primaire regio niet beschikbaar is. Zie voor hulp bij het ontwerpen voor hoge Beschik baarheid met RA-GZRS [ontwerpen van Maxi maal beschik bare toepassingen met Ra-GZRS of Ra-GRS](https://docs.microsoft.com/en-us/azure/storage/common/storage-designing-ha-apps-with-ragrs).
+Als u gebruik wilt maken van RA-GZRS in het geval van een regionale storing, moet u uw toepassing vooraf ontwerpen om dit scenario af te handelen. Uw toepassing moet lezen van en schrijven naar het primaire eind punt, maar overschakelen naar het gebruik van het secundaire eind punt in het geval dat de primaire regio niet beschikbaar is. Zie voor hulp bij het ontwerpen voor hoge Beschik baarheid met RA-GZRS [ontwerpen van Maxi maal beschik bare toepassingen met Ra-GZRS of Ra-GRS](https://docs.microsoft.com/azure/storage/common/storage-designing-ha-apps-with-ragrs).
 
 Omdat gegevens asynchroon naar de secundaire regio worden gerepliceerd, is de secundaire regio vaak achter de primaire regio. Om te bepalen welke schrijf bewerkingen zijn gerepliceerd naar de secundaire regio, controleert uw toepassing de laatste synchronisatie tijd voor uw opslag account. Alle schrijf bewerkingen die zijn geschreven naar de primaire regio vóór de laatste synchronisatie tijd zijn gerepliceerd naar de secundaire regio, wat betekent dat ze kunnen worden gelezen van de secundaire. Schrijf bewerkingen die worden geschreven naar de primaire regio na de laatste synchronisatie tijd, kunnen al dan niet zijn gerepliceerd naar de secundaire regio, wat inhoudt dat ze mogelijk niet beschikbaar zijn voor lees bewerkingen.
 
@@ -141,7 +141,7 @@ Als u een Live migratie wilt aanvragen, gebruikt u de [Azure Portal](https://ms
     - **Probleem type**: Selecteer **gegevens migratie**.
     - **Categorie**: Selecteer **migreren naar (RA) GZRS binnen een regio**.
     - **Title**: Typ een beschrijvende titel, bijvoorbeeld **(RA-) GZRS-account migratie**.
-    - **Details**: Typ aanvullende details in het vak **Details** , bijvoorbeeld "Ik wil migreren naar GZRS van [LRS, GRS] in de \_ \_ regio". of "Ik wil graag migreren naar RA-GZRS van [LRS, RA-GRS] in de \_ \_ regio"
+    - **Details**: Typ meer details in de **details** box, bijvoorbeeld ' Ik wil migreren naar GZRS van [LRS, GRS] in de regio \_ @ no__t-3 '. of "Ik wil graag migreren naar RA-GZRS van [LRS, RA-GRS] in de regio \_ @ no__t-1."
 5. Selecteer  **Volgende**.
 6. Controleer of de contact gegevens juist zijn op de Blade **contact gegevens** .
 7. Selecteer  **Maken**.

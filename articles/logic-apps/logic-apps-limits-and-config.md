@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 07/19/2019
-ms.openlocfilehash: 9d89bc2318049f068b2bab8c0345605458678b41
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 463cd350eb3c878a7d080cdfa7c8e0fabffd1a93
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350699"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71672675"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Limieten en configuratie-informatie voor Azure Logic Apps
 
@@ -264,21 +264,27 @@ Wanneer u een logische app verwijdert, worden geen nieuwe uitvoeringen gemaakt. 
 
 ## <a name="firewall-configuration-ip-addresses"></a>Firewallconfiguratie: IP-adressen
 
-Alle Logic apps in dezelfde regio gebruiken dezelfde IP-adresbereiken. Ter ondersteuning van de aanroepen die uw Logic apps rechtstreeks aanbrengt met [http](../connectors/connectors-native-http.md), [http + Swagger](../connectors/connectors-native-http-swagger.md)en andere HTTP-aanvragen, stelt u uw firewalls in met *alle* [inkomende](#inbound) *en* [uitgaande](#outbound) IP-adressen die worden gebruikt door de Logic apps service, op basis van de regio's waar uw Logic apps bestaan. Deze adressen worden weer gegeven onder de kopteksten binnenkomend en uitgaand in deze sectie en worden per regio gesorteerd.
+De IP-adressen die Azure Logic Apps gebruikt voor binnenkomende en uitgaande aanroepen, zijn afhankelijk van de regio waar uw logische app zich bevindt. *Alle* Logic apps die zich in dezelfde regio bevinden, maken gebruik van dezelfde IP-adresbereiken.
 
-Om de aanroepen te ondersteunen die door [micro soft beheerde connectors](../connectors/apis-list.md) worden gemaakt, stelt u uw firewall in met *alle* [uitgaande](#outbound) IP-adressen die door deze connectors worden gebruikt, op basis van de regio's waar uw Logic apps bestaan. Deze adressen worden weer gegeven onder de kop uitgaand in deze sectie en worden per regio gesorteerd. Voor Logic apps die worden uitgevoerd in een Integration service Environment (ISE), moet u [deze poorten openen](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#ports).
+> [!NOTE]
+> Sommige Microsoft Flow-aanroepen, zoals **http-** en **http + OpenAPI** -aanvragen, gaan rechtstreeks via de Azure Logic apps-service en zijn afkomstig van de IP-adressen die hier worden vermeld. Zie [limieten en configuratie in Microsoft flow](https://docs.microsoft.com/flow/limits-and-config#ip-address-configuration)voor meer informatie over IP-adressen die worden gebruikt door Microsoft flow.
 
-Voor aangepaste connectors, [Azure Government](../azure-government/documentation-government-overview.md)en [Azure China 21vianet](https://docs.microsoft.com/azure/china/)zijn vaste of gereserveerde IP-adressen niet beschikbaar.
+* Ter ondersteuning van de aanroepen die uw Logic apps rechtstreeks aanbrengt met [http](../connectors/connectors-native-http.md), [http + SWAGGER](../connectors/connectors-native-http-swagger.md)en andere HTTP-aanvragen, stelt u uw firewall in met *alle* [inkomende](#inbound) *en* [uitgaande](#outbound) IP-adressen die worden gebruikt door de Logic apps service, op basis van de regio's waar uw Logic apps bestaan. Deze adressen worden weer gegeven onder de kopteksten binnenkomend en uitgaand in deze sectie en worden per regio gesorteerd.
+
+* Om de aanroepen te ondersteunen die door [micro soft beheerde connectors](../connectors/apis-list.md) worden gemaakt, stelt u uw firewall in met *alle* [uitgaande](#outbound) IP-adressen die door deze connectors worden gebruikt, op basis van de regio's waar uw Logic apps bestaan. Deze adressen worden weer gegeven onder de kop uitgaand in deze sectie en worden per regio gesorteerd. 
+
+* Voor Logic apps die worden uitgevoerd in een Integration service Environment (ISE), moet u [deze poorten openen](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#ports).
+
+* Logic apps hebben geen directe toegang tot Azure Storage-accounts die [firewall regels](https://docs.microsoft.com/azure/storage/common/storage-network-security) hebben en zich in dezelfde regio bevinden. Logic apps hebben echter toegang tot Azure Storage-accounts die zich in een andere regio bevinden, omdat een openbaar IP-adres wordt gebruikt voor de communicatie tussen regio's. U kunt ook een van beide opties gebruiken:
+
+  * Een [integratie service omgeving](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)maken waarmee verbinding kan worden gemaakt met bronnen in een virtueel Azure-netwerk.
+
+  * Als u API Management al gebruikt, kunt u deze service gebruiken voor dit scenario. Zie [eenvoudige architectuur voor ondernemings integratie](https://aka.ms/aisarch)voor meer informatie.
+
+* Voor aangepaste connectors, [Azure Government](../azure-government/documentation-government-overview.md)en [Azure China 21vianet](https://docs.microsoft.com/azure/china/)zijn vaste of gereserveerde IP-adressen niet beschikbaar.
 
 > [!IMPORTANT]
->
-> Als u bestaande configuraties hebt, moet u deze **zo snel mogelijk vóór 1 September 2018** bijwerken, zodat deze overeenkomen met de IP-adressen in deze lijsten voor de regio's waar uw Logic apps zijn opgenomen.
-
-Logic Apps biedt geen ondersteuning voor rechtstreekse verbinding met Azure Storage-accounts via firewalls. Voor toegang tot deze opslag accounts gebruikt u een van de volgende opties:
-
-* Een [integratie service omgeving](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)maken waarmee verbinding kan worden gemaakt met bronnen in een virtueel Azure-netwerk.
-
-* Als u API Management al gebruikt, kunt u deze service gebruiken voor dit scenario. Zie [eenvoudige architectuur voor ondernemings integratie](https://aka.ms/aisarch)voor meer informatie.
+> Als u een firewall configuratie hebt die u vóór 1 september 2018 hebt ingesteld, moet u ervoor zorgen dat deze overeenkomen met de huidige IP-adressen in deze lijsten voor de regio's waar uw Logic apps bestaan.
 
 <a name="inbound"></a>
 

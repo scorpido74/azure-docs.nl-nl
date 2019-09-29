@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 06/12/2019
 ms.author: apimpm
-ms.openlocfilehash: da75ca43a2576e3214d4b67f9eb61c7bad3bd5cc
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: c015b1afbc61e1501e656aaa480ee2a4e19ba094
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073517"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71672794"
 ---
 # <a name="access-and-customize-the-new-developer-portal-in-azure-api-management"></a>De nieuwe ontwikkelaars Portal openen en aanpassen in azure API Management
 
@@ -39,7 +39,7 @@ In dit artikel wordt beschreven hoe u toegang krijgt tot de nieuwe Azure API Man
 
 U kunt uw ontwikkelaars Portal op twee manieren bouwen:
 
-- **Beheerde versie** : door de portal te bewerken en aan te passen, die in uw API Management-exemplaar is ingebouwd en toegankelijk `<your-api-management-instance-name>.developer.azure-api.net`is via de URL.
+- **Beheerde versie** : door de portal te bewerken en aan te passen, die is ingebouwd in uw API Management-exemplaar en toegankelijk is via de URL `<your-api-management-instance-name>.developer.azure-api.net`.
 - **Zelf-hostende versie** : door uw portal buiten een API Management-exemplaar te implementeren en zelf te hosten. Met deze aanpak kunt u de code base van de portal bewerken en de meegeleverde kern functionaliteit uitbreiden. Raadpleeg de [github-opslag plaats met de bron code van de portal][1]voor meer informatie en instructies.
 
 ## <a name="managed-access"></a>Toegang tot de beheerde versie van de portal
@@ -79,7 +79,7 @@ De uitzonde ringen zijn de *toepassingen* en *problemen* van de oude Portal, die
 
 ### <a name="ive-found-bugs-andor-id-like-to-request-a-feature"></a>Ik heb fouten gevonden en/of ik wil een functie aanvragen.
 
-Goed gedaan. U kunt ons feedback geven, een functie aanvraag indienen of een fouten rapport verzenden via [de sectie problemen van de GitHub-opslag plaats](https://github.com/Azure/api-management-developer-portal/issues). U bent er ook zeker van dat u feedback hebt over de problemen die met het `community` label zijn gemarkeerd.
+Goed gedaan. U kunt ons feedback geven, een functie aanvraag indienen of een fouten rapport verzenden via [de sectie problemen van de GitHub-opslag plaats](https://github.com/Azure/api-management-developer-portal/issues). U bent er ook zeker van dat u feedback hebt over de problemen die zijn gemarkeerd met het label `community`.
 
 ### <a name="i-want-to-move-the-content-of-the-new-portal-between-environments-how-can-i-do-that-and-do-i-need-to-go-with-the-self-hosted-version"></a>Ik wil de inhoud van de nieuwe portal verplaatsen tussen omgevingen. Hoe kan ik dat doen en moet ik met de zelf-hostende versie gaan?
 
@@ -87,13 +87,21 @@ U kunt dit doen in beide Portal versies, beheerd en zelf-hosten. De nieuwe ontwi
 
 We werken nog steeds aan het uitlijnen van dit proces met de API Management DevOps Resource Kit.
 
+### <a name="what-do-i-need-to-configure-for-the-new-portal-to-work-in-my-api-management-service-in-vnet"></a>Wat moet ik configureren voor de nieuwe portal om in mijn API Management-service in VNET te werken?
+
+Tijdens de preview-versie van de nieuwe ontwikkelaars Portal moet u verbinding maken met Azure Storage-services in de regio vs-West om de beheerde portal te laten werken in een API Management-service in VNET. Meer informatie vindt u in de [opslag documentatie](../storage/common/storage-network-security.md#available-virtual-network-regions).
+
+De bovenstaande installatie is niet langer nodig nadat de nieuwe portal algemeen beschikbaar wordt.
+
+De zelf-hostende versie van de portal vereist mogelijk aanvullende configuratie van de verbinding, afhankelijk van uw installatie.
+
 ### <a name="how-can-i-select-a-layout-when-creating-a-new-page"></a>Hoe kan ik een *indeling* selecteren bij het maken van een nieuwe *pagina*?
 
-Een *indeling* wordt toegepast op een pagina door te voldoen aan de URL-sjabloon van de *pagina* . *Indeling* met een URL-sjabloon van `/wiki/*` wordt bijvoorbeeld toegepast op elke *pagina* met `/wiki/` het segment: `/wiki/getting-started`, `/wiki/styles`, enzovoort.
+Een *indeling* wordt toegepast op een pagina door te voldoen aan de URL-sjabloon van de *pagina* . Zo wordt *indeling* met een URL-sjabloon van `/wiki/*` toegepast op elke *pagina* met het `/wiki/` segment: `/wiki/getting-started`, `/wiki/styles`, enzovoort.
 
 ### <a name="why-doesnt-the-interactive-developer-console-work"></a>Waarom werkt de interactieve ontwikkelaars console niet?
 
-Het is waarschijnlijk gerelateerd aan CORS. De interactieve console maakt een API aan de client zijde via de browser. U kunt het CORS-probleem oplossen door [een CORS-beleid](https://docs.microsoft.com/azure/api-management/api-management-cross-domain-policies#CORS) toe te voegen aan uw API (s). U kunt alle para meters hand matig opgeven (bijvoorbeeld oorsprong als https://contoso.com) of een Joker teken `*` waarde gebruiken.
+Het is waarschijnlijk gerelateerd aan CORS. De interactieve console maakt een API aan de client zijde via de browser. U kunt het CORS-probleem oplossen door [een CORS-beleid](https://docs.microsoft.com/azure/api-management/api-management-cross-domain-policies#CORS) toe te voegen aan uw API (s). U kunt alle para meters hand matig opgeven (bijvoorbeeld Origin als https://contoso.com) of een Joker `*` -waarde gebruiken.
 
 ## <a name="next-steps"></a>Volgende stappen
 

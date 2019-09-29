@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 59450fc93052a1e169d13fab5b80cbc57c169e0f
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: dafc78e49cb0118181bae4522d4cb456509ea2cb
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70909771"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71673426"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Dynamische lidmaatschaps regels voor groepen in Azure Active Directory
 
@@ -64,7 +64,7 @@ user.department -eq "Sales"
 
 Haakjes zijn optioneel voor één expressie. De totale lengte van de hoofd tekst van de lidmaatschaps regel mag niet langer zijn dan 2048 tekens.
 
-# <a name="constructing-the-body-of-a-membership-rule"></a>De hoofd tekst van een lidmaatschaps regel samen stellen
+## <a name="constructing-the-body-of-a-membership-rule"></a>De hoofd tekst van een lidmaatschaps regel samen stellen
 
 Een lidmaatschaps regel die automatisch een groep met gebruikers of apparaten vult, is een binaire expressie die resulteert in het resultaat True of false. De drie delen van een eenvoudige regel zijn:
 
@@ -114,7 +114,7 @@ Hier volgen de gebruikers eigenschappen die u kunt gebruiken om één expressie 
 | Postcode |Een wille keurige teken reeks waarde of *Null* |(gebruiker. post code-EQ "waarde") |
 | preferredLanguage |ISO 639-1-code |(user.preferredLanguage -eq "en-US") |
 | sipProxyAddress |Een wille keurige teken reeks waarde of *Null* |(User. sipProxyAddress-EQ "waarde") |
-| toestand |Een wille keurige teken reeks waarde of *Null* |(User. State-EQ "waarde") |
+| status |Een wille keurige teken reeks waarde of *Null* |(User. State-EQ "waarde") |
 | streetAddress |Een wille keurige teken reeks waarde of *Null* |(User. streetAddress-EQ "waarde") |
 | Achternaam |Een wille keurige teken reeks waarde of *Null* |(User. achternaam-EQ "waarde") |
 | telephoneNumber |Een wille keurige teken reeks waarde of *Null* |(user.telephoneNumber -eq "value") |

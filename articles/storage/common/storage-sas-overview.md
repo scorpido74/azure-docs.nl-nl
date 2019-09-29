@@ -4,17 +4,17 @@ description: Meer informatie over het gebruik van Shared Access signatures (SAS)
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 4cf4f87e42508c60cd9195cb8d1e4127134f64aa
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 0410da26a2ea5811c5a107ce233f2442b60fd9ca
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69034923"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71670835"
 ---
 # <a name="grant-limited-access-to-azure-storage-resources-using-shared-access-signatures-sas"></a>Beperkte toegang verlenen tot Azure Storage-resources met behulp van Shared Access signatures (SAS)
 
@@ -34,7 +34,7 @@ Azure Storage ondersteunt drie typen hand tekeningen voor gedeelde toegang:
 Een Shared Access Signature kan een van de twee volgende vormen hebben:
 
 - **Ad-hoc SAS:** Wanneer u een ad-hoc SAS maakt, worden de start tijd, de verloop tijd en de machtigingen voor de SA'S opgegeven in de SAS-URI (of impliciet als de begin tijd wordt wegge laten). Elk type SAS kan een ad-hoc-SAS zijn.
-- **Service-SA'S met opgeslagen toegangs beleid:** Een opgeslagen toegangs beleid wordt gedefinieerd in een resource container. Dit kan een BLOB-container, tabel, wachtrij of bestands share zijn. Het beleid voor opgeslagen toegang kan worden gebruikt om beperkingen te beheren voor een of meer hand tekeningen voor gedeelde toegang van services. Wanneer u een service-SAS koppelt aan een opgeslagen toegangs beleid, neemt de SAS de&mdash;beperkingen op voor de start tijd, de verloop tijd&mdash;en de machtigingen die zijn gedefinieerd voor het opgeslagen toegangs beleid.
+- **Service-SA'S met opgeslagen toegangs beleid:** Een opgeslagen toegangs beleid wordt gedefinieerd in een resource container. Dit kan een BLOB-container, tabel, wachtrij of bestands share zijn. Het beleid voor opgeslagen toegang kan worden gebruikt om beperkingen te beheren voor een of meer hand tekeningen voor gedeelde toegang van services. Wanneer u een service-SAS koppelt aan een opgeslagen toegangs beleid, neemt de SAS de beperkingen @ no__t-0the-start tijd, verloop tijd en machtigingen @ no__t-1defined over voor het opgeslagen toegangs beleid.
 
 > [!NOTE]
 > Een SAS van gebruikers of een account-SAS moet een ad-hoc-SA'S zijn. Opgeslagen toegangs beleid wordt niet ondersteund voor de gebruikers delegering SA'S of de account-SAS.

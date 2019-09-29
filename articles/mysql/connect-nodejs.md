@@ -4,18 +4,18 @@ description: Deze snelstartgids bevat enkele voorbeelden van Node.js-code die u 
 author: ajlam
 ms.author: andrela
 ms.service: mysql
-ms.custom: mvc
+ms.custom: mvc, seo-javascript-september2019
 ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 11/21/2018
-ms.openlocfilehash: ad022f6ac9cebbe92cdca3a4b368524d828a9cbb
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 5ad6fecc3cc06d2c4e2962640201ffcd6f96d87e
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68931564"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71672500"
 ---
-# <a name="azure-database-for-mysql-use-nodejs-to-connect-and-query-data"></a>Azure Database for MySQL: Node.js gebruiken om verbinding te maken met gegevens en er query's op uit te voeren
+# <a name="quickstart-use-nodejs-to-connect-and-query-data-in-azure-database-for-mysql"></a>Quickstart: Node. js gebruiken om verbinding te maken en gegevens op te vragen in Azure Database for MySQL
 In deze snelstartgids ziet u hoe u vanuit de platformen Windows, Ubuntu Linux, en Mac met behulp van [Node.js](https://nodejs.org/) verbinding maakt met een Azure Database voor MySQL. U ziet hier hoe u SQL-instructies gebruikt om gegevens in de database op te vragen, in te voegen, bij te werken en te verwijderen. In dit artikel wordt ervan uitgegaan dat u bekend bent met het ontwikkelen met behulp van Node.js, maar geen ervaring hebt met het werken met Azure Database for MySQL.
 
 ## <a name="prerequisites"></a>Vereisten
@@ -33,7 +33,7 @@ Afhankelijk van uw platform volgt u de instructies in de bijbehorende sectie voo
 ### <a name="windows"></a>**Windows**
 1. Ga naar de [downloadpagina van Node.js](https://nodejs.org/en/download/) en selecteer het gewenste Windows-installatieprogramma.
 2. Maak een lokale projectmap, zoals `nodejsmysql`. 
-3. Open de opdracht prompt en wijzig de map in de projectmap, zoals`cd c:\nodejsmysql\`
+3. Open de opdracht prompt en wijzig de map in de projectmap, zoals `cd c:\nodejsmysql\`
 4. Voer het hulpprogramma NPM uit om de mysql-bibliotheek in de projectmap te installeren.
 
    ```cmd
@@ -90,8 +90,8 @@ Haal de verbindingsgegevens op die nodig zijn om verbinding te maken met de Azur
 
 ## <a name="running-the-javascript-code-in-nodejs"></a>De JavaScript-code in Node.js uitvoeren
 1. Plak de JavaScript-code in tekstbestanden en sla deze op in een projectmap met de bestandsextensie .js (zoals C:\nodejsmysql\createtable.js of /home/username/nodejsmysql/createtable.js).
-2. Open de opdracht prompt of de bash-shell en wijzig vervolgens de map in de `cd nodejsmysql`projectmap.
-3. Als u de toepassing wilt uitvoeren, voert u de knooppunt opdracht in, gevolgd door de `node createtable.js`bestands naam, zoals.
+2. Open de opdracht prompt of de bash-shell en wijzig vervolgens de map in de projectmap `cd nodejsmysql`.
+3. Als u de toepassing wilt uitvoeren, voert u de knooppunt opdracht in, gevolgd door de bestands naam, zoals `node createtable.js`.
 4. In Windows moet u als de knooppunttoepassing zich niet in uw omgevingsvariabelepad bevindt mogelijk het volledige pad gebruiken om de knooppunttoepassing te starten, zoals `"C:\Program Files\nodejs\node.exe" createtable.js`
 
 ## <a name="connect-create-table-and-insert-data"></a>Verbinden, tabel maken en gegevens invoegen

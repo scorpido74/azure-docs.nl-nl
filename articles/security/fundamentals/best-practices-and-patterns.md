@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 5/03/2019
 ms.author: terrylan
-ms.openlocfilehash: 64cac3d200a2cfc3b826dc75bfacc6457a01f294
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: e2e829fba9846c2429e362903f5ce49b9344e1bd
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68727557"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71672619"
 ---
 # <a name="azure-security-best-practices-and-patterns"></a>Aanbevolen procedures en patronen voor Azure-beveiliging
 
@@ -28,7 +28,7 @@ De onderstaande artikelen bevatten aanbevolen procedures voor beveiliging bij he
 
 De aanbevolen procedures zijn bedoeld als resource voor IT-professionals. Dit kan ontwerpers, architecten, ontwikkel aars en testers zijn die beveiligde Azure-oplossingen bouwen en implementeren.
 
-* [Best practices voor beveiliging van Azure boundary](network-best-practices.md)
+* [Best practices voor beveiliging van Azure boundary](https://docs.microsoft.com/en-us/azure/security/fundamentals/network-best-practices#adopt-a-zero-trust-approach)
 * [Aanbevolen procedures voor Azure data base-beveiliging](database-best-practices.md)
 * [Aanbevolen procedures voor Azure-gegevens beveiliging en-versleuteling](data-encryption-best-practices.md)
 * [Aanbevolen procedures voor de beveiliging van Azure Identity Management en Access Control](identity-management-best-practices.md)

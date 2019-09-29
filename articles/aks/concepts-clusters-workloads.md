@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.author: mlearned
-ms.openlocfilehash: 6120eee5bbd2f385fa8e76da093f7fadccb4904e
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 3792eed170d3e3e1cdd267c0c88d2d2d6c520733
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71348967"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71672816"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Kubernetes core-concepten voor Azure Kubernetes service (AKS)
 
@@ -76,39 +76,34 @@ Als u een ander host-besturings systeem, container runtime of aangepaste pakkett
 
 ### <a name="resource-reservations"></a>Resource reserveringen
 
-Knooppunt resources worden gebruikt door AKS om de knooppunt functie als onderdeel van het cluster te maken. Dit kan een discrepency maken tussen het totale aantal resources van het knoop punt en de bronnen die kunnen worden verplaatst bij gebruik in AKS. Dit is belang rijk om te weten wanneer aanvragen en limieten voor uw geïmplementeerde peul worden ingesteld.
+Knooppunt resources worden gebruikt door AKS om de knooppunt functie als onderdeel van het cluster te maken. Dit kan een discrepency maken tussen het totale aantal resources van het knoop punt en de bronnen die kunnen worden verplaatst bij gebruik in AKS. Dit is belang rijk om te weten wanneer u aanvragen en limieten instelt voor een door de gebruiker geïmplementeerde peul.
 
 Ga als volgt te werk om te zoeken naar de toewijs bare resources van een knoop punt:
 ```kubectl
-kubectl describe node [NODE_NAME] | grep Allocatable -B 4 -A 3
+kubectl describe node [NODE_NAME]
 
 ```
 
-De volgende Compute-bronnen worden op elk knoop punt gereserveerd om de prestaties en functionaliteit van knoop punten te behouden. Naarmate een knoop punt groter wordt in resources, neemt de resource reservering toe als gevolg van een grotere mate van gebruiker die heel veel beheer nodig heeft.
+Als u de prestaties en functionaliteit van knoop punten wilt behouden, worden de resources op elk knoop punt gereserveerd door AKS. Naarmate een knoop punt groter wordt in resources, neemt de resource reservering toe als gevolg van een grotere mate van gebruiker die heel veel beheer nodig heeft.
 
 >[!NOTE]
 > Door invoeg toepassingen zoals OMS te gebruiken, worden extra knooppunt bronnen gebruikt.
 
-- **CPU** -afhankelijk van knooppunt type
+- **CPU-** gereserveerde CPU is afhankelijk van het knooppunt type en de cluster configuratie, waardoor er minder TOEWIJS bare CPU kan optreden vanwege het uitvoeren van extra functies
 
 | CPU-kernen op de host | 1 | 2 | 4 | 8 | 16 | 32|64|
 |---|---|---|---|---|---|---|---|
-|Kubelet (millicores)|60|100|140|180|260|420|740|
+|Uitvoeren-gereserveerd (millicores)|60|100|140|180|260|420|740|
 
-- **Geheugen** -20% van het beschik bare geheugen, Maxi maal 4 GiB maximum
+- **Geheugen** -reserve ring van geheugen volgt in een progressief tempo
+  - 25% van de eerste 4 GB geheugen
+  - 20% van de volgende 4 GB geheugen (Maxi maal 8 GB)
+  - 10% van de volgende 8 GB geheugen (Maxi maal 16 GB)
+  - 6% van de volgende 112 GB geheugen (Maxi maal 128 GB)
+  - 2% van de geheugens boven 128 GB
 
 Deze reserve ringen betekenen dat de hoeveelheid beschik bare CPU en het geheugen voor uw toepassingen lager kan worden weer gegeven dan het knoop punt zelf bevat. Als er sprake is van resource beperkingen vanwege het aantal toepassingen dat u uitvoert, zorgen deze reserve ringen ervoor dat de CPU en het geheugen beschikbaar blijven voor de belangrijkste Kubernetes-onderdelen. De resource reserveringen kunnen niet worden gewijzigd.
 
-Bijvoorbeeld:
-
-- **Standaard DS2 v2** -knooppunt grootte bevat 2 vCPU en 7 GiB geheugen
-    - 20% van 7 GiB geheugen = 1,4 GiB
-    - Er is een totaal van *(7-1,4) = 5,6 GiB* geheugen beschikbaar voor het knoop punt
-    
-- **Standaard E4s v3** -knooppunt grootte bevat 4 vCPU en 32 GiB geheugen
-    - 20% van 32 GiB geheugen = 6,4 GiB, maar AKS reserveert slechts een maximum van 4 GiB
-    - Totaal van *(32-4) = 28 GiB* is beschikbaar voor het knoop punt
-    
 Het onderliggende knooppunt besturingssysteem vereist ook een aantal CPU-en geheugen bronnen om zijn eigen kern functies te volt ooien.
 
 Zie [Best Practices for Basic scheduler-functies in AKS][operator-best-practices-scheduler]voor gekoppelde aanbevolen procedures.

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/12/2019
 ms.author: kumud
-ms.openlocfilehash: 836a9fd0b441ff9669c224dc41537e3c177d7dde
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: a6ba401d9d10e900fef5e2d296e74a07f84162cd
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70389709"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71670752"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Veelgestelde vragen over Azure Virtual Network
 
@@ -66,7 +66,7 @@ Elk IP-adres bereik dat is gedefinieerd in [RFC 1918](https://tools.ietf.org/htm
 Ja. Zie [een virtueel netwerk maken](manage-virtual-network.md#create-a-virtual-network)voor meer informatie over open bare IP-adresbereiken. Openbare IP-adressen zijn niet rechtstreeks toegankelijk via internet.
 
 ### <a name="is-there-a-limit-to-the-number-of-subnets-in-my-vnet"></a>Geldt er een limiet voor het aantal subnetten in mijn VNet?
-Ja. Zie [Azure-limieten](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits) voor meer informatie. De adres ruimten van het subnet mogen elkaar niet overlappen.
+Ja. Zie [Azure](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits) -limieten voor meer informatie. De adres ruimten van het subnet mogen elkaar niet overlappen.
 
 ### <a name="are-there-any-restrictions-on-using-ip-addresses-within-these-subnets"></a>Zijn er beperkingen voor het gebruik van IP-adressen in deze subnetten?
 Ja. In Azure worden vijf IP-adressen gereserveerd in elk subnet. Dit zijn x. x. x. 0-x. x. x. 3 en het laatste adres van het subnet. x. x. x. 1-x. x. x. 3 is gereserveerd in elk subnet voor Azure-Services.   
@@ -200,9 +200,9 @@ Ja. U moet een schaalset voor een virtuele machine verbinden met een VNet.
 ### <a name="is-there-a-complete-list-of-azure-services-that-can-i-deploy-resources-from-into-a-vnet"></a>Is er een volledige lijst met Azure-Services waarmee u resources kunt implementeren in een VNet?
 Ja, Zie [virtuele netwerk integratie voor Azure-Services](virtual-network-for-azure-services.md)voor meer informatie.
 
-### <a name="which-azure-paas-resources-can-i-restrict-access-to-from-a-vnet"></a>Met welke Azure PaaS-bronnen kan ik de toegang tot een VNet beperken?
+### <a name="how-can-i-restrict-access-to-azure-paas-resources-from-a-vnet"></a>Hoe kan ik de toegang tot Azure PaaS-resources beperken vanuit een VNet?
 
-Resources die via sommige Azure PaaS-Services (zoals Azure Storage en Azure SQL Database) zijn geïmplementeerd, kunnen de netwerk toegang tot alleen bronnen in een VNet beperken door het gebruik van de service-eind punten van het virtuele netwerk. Zie [overzicht van virtuele netwerk service-eind punten](virtual-network-service-endpoints-overview.md)voor meer informatie.
+Resources die via sommige Azure PaaS-Services (zoals Azure Storage en Azure SQL Database) zijn geïmplementeerd, kunnen de netwerk toegang tot VNet beperken via het gebruik van de service-eind punten voor virtuele netwerken of met een persoonlijke Azure-koppeling. Zie [overzicht van virtuele netwerk service-eind punten](virtual-network-service-endpoints-overview.md), [overzicht van Azure private link](../private-link/private-link-overview.md) voor meer informatie
 
 ### <a name="can-i-move-my-services-in-and-out-of-vnets"></a>Kan ik mijn Services in en uit VNets verplaatsen?
 Nee. U kunt Services in en uit VNets niet verplaatsen. Als u een resource wilt verplaatsen naar een ander VNet, moet u de resource verwijderen en opnieuw implementeren.
