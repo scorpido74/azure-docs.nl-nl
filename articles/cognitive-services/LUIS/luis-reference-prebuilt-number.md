@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 05/07/2019
+ms.date: 09/27/2019
 ms.author: diberry
-ms.openlocfilehash: f2868610bf9215b1414ea3ba342e3064b9c54f63
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: cb97cc5b0004442e00b970202dd01f76aa971a2a
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68933504"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71677576"
 ---
 # <a name="number-prebuilt-entity-for-a-luis-app"></a>Aantal vooraf samengestelde entiteiten voor een LUIS-app
 Er zijn veel manieren waarin numerieke waarden te kwantificeren, express en beschrijven stukjes informatie worden gebruikt. Dit artikel behandelt alleen enkele van de mogelijke voorbeelden. LUIS interpreteert de variaties faciliteren voor de gebruiker uitingen en consistente numerieke waarden als resultaat. Omdat deze entiteit wordt al getraind, hoeft u niet om toe te voegen voorbeeld uitingen met getal tot de toepassing intents. 
@@ -43,7 +43,7 @@ LUIS omvat de herkende waarde van een **`builtin.number`** entiteit in de `resol
 ## <a name="resolution-for-prebuilt-number"></a>Oplossing voor vooraf gedefinieerde getal
 
 
-### <a name="api-version-2x"></a>API-versie 2. x
+#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2-antwoord op Voorspellings eindpunt](#tab/V2)
 
 Het volgende voorbeeld ziet een JSON-antwoord van LUIS, die de resolutie van de waarde van 24 uur per dag, voor de utterance "tientallen" bevat.
 
@@ -83,9 +83,9 @@ Het volgende voorbeeld ziet een JSON-antwoord van LUIS, die de resolutie van de 
 }
 ```
 
-### <a name="preview-api-version-3x"></a>Preview-API versie 3. x
+#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3-Voorspellings eindpunt antwoord](#tab/V3)
 
-De volgende JSON is met de `verbose` para meter ingesteld `false`op:
+De volgende JSON is met de para meter `verbose` ingesteld op `false`:
 
 ```json
 {
@@ -107,7 +107,7 @@ De volgende JSON is met de `verbose` para meter ingesteld `false`op:
 }
 ```
 
-De volgende JSON is met de `verbose` para meter ingesteld `true`op:
+De volgende JSON is met de para meter `verbose` ingesteld op `true`:
 
 ```json
 {
@@ -141,6 +141,10 @@ De volgende JSON is met de `verbose` para meter ingesteld `true`op:
 }
 ```
 
+* * * 
+
 ## <a name="next-steps"></a>Volgende stappen
+
+Meer informatie over het [v3-Voorspellings eindpunt](luis-migration-api-v3.md).
 
 Meer informatie over de [valuta](luis-reference-prebuilt-currency.md), [rangtelwoord](luis-reference-prebuilt-ordinal.md), en [percentage](luis-reference-prebuilt-percentage.md). 

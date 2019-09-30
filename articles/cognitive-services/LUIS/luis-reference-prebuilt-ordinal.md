@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 06/25/2019
+ms.date: 09/27/2019
 ms.author: diberry
-ms.openlocfilehash: 51f1082034a710ed9d0f78b79bc6ae469771459e
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: d1d69b256c4fc7e7b9d1c84b7c409d01a9f8ce52
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68933472"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71677544"
 ---
 # <a name="ordinal-prebuilt-entity-for-a-luis-app"></a>Vooraf gebouwde ordinale entiteit voor een LUIS-app
 Rangtelwoord is een numerieke representatie van een object in een set: `first`, `second`, `third`. Omdat deze entiteit wordt al getraind, hoeft u niet om toe te voegen van de voorbeeld-uitingen met rangtelwoord voor de toepassing intents. Rangtelwoord entiteit wordt ondersteund in [veel culturen](luis-reference-prebuilt-entities.md). 
@@ -26,7 +26,7 @@ Rang telwoord wordt beheerd vanuit de map [recognizers-text github-](https://git
 
 ## <a name="resolution-for-prebuilt-ordinal-entity"></a>Oplossing voor vooraf gedefinieerde rangtelwoord entiteit
 
-### <a name="api-version-2x"></a>API-versie 2. x
+#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2-antwoord op Voorspellings eindpunt](#tab/V2)
 
 Het volgende voorbeeld ziet u de resolutie van de **builtin.ordinal** entiteit.
 
@@ -61,9 +61,9 @@ Het volgende voorbeeld ziet u de resolutie van de **builtin.ordinal** entiteit.
 }
 ```
 
-### <a name="preview-api-version-3x"></a>Preview-API versie 3. x
+#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3-Voorspellings eindpunt antwoord](#tab/V3)
 
-De volgende JSON is met de `verbose` para meter ingesteld `false`op:
+De volgende JSON is met de para meter `verbose` ingesteld op `false`:
 
 ```json
 {
@@ -88,7 +88,7 @@ De volgende JSON is met de `verbose` para meter ingesteld `false`op:
 }
 ```
 
-De volgende JSON is met de `verbose` para meter ingesteld `true`op:
+De volgende JSON is met de para meter `verbose` ingesteld op `true`:
 
 ```json
 {
@@ -128,6 +128,10 @@ De volgende JSON is met de `verbose` para meter ingesteld `true`op:
 }
 ```
 
+* * * 
+
 ## <a name="next-steps"></a>Volgende stappen
+
+Meer informatie over het [v3-Voorspellings eindpunt](luis-migration-api-v3.md).
 
 Meer informatie over de [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md), het [telefoon nummer](luis-reference-prebuilt-phonenumber.md)en de [temperatuur](luis-reference-prebuilt-temperature.md) entiteiten. 

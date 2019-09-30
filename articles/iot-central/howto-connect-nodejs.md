@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 75b900ecb37ae8d092d4e37129b7f39f801c470d
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: ccded68cfaa00e6e13e2bb32e114b81108742829
+ms.sourcegitcommit: 6013bacd83a4ac8a464de34ab3d1c976077425c7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71066456"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71686669"
 ---
 # <a name="connect-a-generic-client-application-to-your-azure-iot-central-application-nodejs"></a>Een algemene client toepassing verbinden met uw Azure IoT Central-toepassing (node. js)
 
@@ -53,7 +53,7 @@ Voeg de volgende status toe op de pagina **metingen** :
 
 | Weergavenaam | Veldnaam  | Waarde 1 | Weergavenaam | Waarde 2 | Weergavenaam |
 | ------------ | ----------- | --------| ------------ | ------- | ------------ | 
-| Ventilatormodus     | ventilatormodus     | 1       | Wordt uitgevoerd      | 0       | Gestopt      |
+| Ventilatormodus     | ventilatormodus     | 1       | In uitvoering      | 0       | Gestopt      |
 
 > [!NOTE]
 > Het gegevens type van de status meting is teken reeks.
@@ -111,7 +111,7 @@ Voeg de volgende opdracht toe op de pagina **opdrachten** :
 
 | Weergavenaam    | Veldnaam     | Standaardtime-out | Gegevenstype |
 | --------------- | -------------- | --------------- | --------- |
-| Geteld       | geteld      | 30              | nummer    |
+| Geteld       | Geteld      | 30              | nummer    |
 
 Voeg het volgende invoer veld toe aan de opdracht Aftel tijd:
 
@@ -164,7 +164,7 @@ De volgende stappen laten zien hoe u een client toepassing kunt maken die het we
     var provisioningHost = 'global.azure-devices-provisioning.net';
     var idScope = '{your Scope ID}';
     var registrationId = '{your Device ID}';
-    var symmetricKey = '{your Primary Key};
+    var symmetricKey = '{your Primary Key}';
     var provisioningSecurityClient = new SymmetricKeySecurityClient(registrationId, symmetricKey);
     var provisioningClient = ProvisioningDeviceClient.create(provisioningHost, idScope, new ProvisioningTransport(), provisioningSecurityClient);
     var hubClient;

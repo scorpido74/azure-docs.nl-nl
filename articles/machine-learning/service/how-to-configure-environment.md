@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 07/31/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0bd4b1d969de0b54a1836048b5cb5910470f1ffa
-ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
+ms.openlocfilehash: b4d7a21e8d9b660463f508513c158032be81a35c
+ms.sourcegitcommit: 6013bacd83a4ac8a464de34ab3d1c976077425c7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71269226"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71686965"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Een ontwikkelomgeving configureren voor Azure Machine Learning
 
@@ -188,7 +188,7 @@ Wanneer u een lokale computer gebruikt (dit kan ook een externe virtuele machine
     Met deze opdracht wordt de basis-Azure machine learning SDK met `automl` notebook en extra's geïnstalleerd. De `automl` extra is een grote installatie. u kunt de vier Kante haken verwijderen als u niet van plan bent om automatische machine learning experimenten uit te voeren. De `automl` extra bevat ook de Azure machine learning data prep SDK standaard als een afhankelijkheid.
 
     ```shell
-    pip install azureml-sdk[notebooks, automl]
+    pip install azureml-sdk[notebooks,automl]
     ```
 
    > [!NOTE]

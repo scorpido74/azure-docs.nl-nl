@@ -4,14 +4,14 @@ description: Een lijst met de Azure-resource typen die kunnen worden verplaatst 
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: reference
-ms.date: 09/06/2019
+ms.date: 09/30/2019
 ms.author: tomfitz
-ms.openlocfilehash: 9dc86fe7876a050fe67ec73a665be6141a4b98da
-ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
+ms.openlocfilehash: b34c244708c52ec7324c766286aff8ee9340db0b
+ms.sourcegitcommit: 6013bacd83a4ac8a464de34ab3d1c976077425c7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70801361"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71687124"
 ---
 # <a name="move-operation-support-for-resources"></a>Ondersteuning voor het verplaatsen van resources voor bronnen
 Dit artikel geeft een overzicht van de vraag of een Azure-resource type de verplaatsings bewerking ondersteunt. Het bevat ook informatie over speciale voor waarden die u moet overwegen bij het verplaatsen van een resource.
@@ -72,7 +72,6 @@ Ga naar de naam ruimte van een resource provider:
 > - [Microsoft.Devices](#microsoftdevices)
 > - [Microsoft.DevSpaces](#microsoftdevspaces)
 > - [Microsoft.DevTestLab](#microsoftdevtestlab)
-> - [microsoft.dns](#microsoftdns)
 > - [Microsoft.DocumentDB](#microsoftdocumentdb)
 > - [Microsoft.DomainRegistration](#microsoftdomainregistration)
 > - [Microsoft.EnterpriseKnowledgeGraph](#microsoftenterpriseknowledgegraph)
@@ -462,7 +461,7 @@ Ga naar de naam ruimte van een resource provider:
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | bedrijfs | Ja | Ja |
+> | centrale punten | Ja | Ja |
 
 ## <a name="microsoftdatabox"></a>Microsoft.DataBox
 
@@ -506,7 +505,7 @@ Ga naar de naam ruimte van een resource provider:
 > | Resourcetype | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
 > | pakketten | Nee | Nee |
-> | plant | Nee | Nee |
+> | plannen | Nee | Nee |
 
 ## <a name="microsoftdatafactory"></a>Microsoft.DataFactory
 
@@ -596,7 +595,7 @@ Ga naar de naam ruimte van een resource provider:
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | fungeren | Ja | Ja |
+> | Fungeren | Ja | Ja |
 
 ## <a name="microsoftdevtestlab"></a>Microsoft.DevTestLab
 
@@ -609,21 +608,6 @@ Ga naar de naam ruimte van een resource provider:
 > | Labs-servicerunners | Ja | Ja |
 > | Labs-informatie | Ja | Nee |
 > | schema's | Ja | Ja |
-
-## <a name="microsoftdns"></a>microsoft.dns
-
-> [!div class="mx-tableFixed"]
-> | Resourcetype | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | dnszones | Nee | Nee |
-> | dnszones/a | Nee | Nee |
-> | dnszones/AAAA | Nee | Nee |
-> | dnszones/CNAME | Nee | Nee |
-> | dnszones/MX | Nee | Nee |
-> | dnszones/PTR | Nee | Nee |
-> | dnszones/SRV | Nee | Nee |
-> | dnszones/txt | Nee | Nee |
-> | trafficmanagerprofiles | Nee | Nee |
 
 ## <a name="microsoftdocumentdb"></a>Microsoft.DocumentDB
 
@@ -727,7 +711,7 @@ Ga naar de naam ruimte van een resource provider:
 > | activitylogalerts | Nee | Nee |
 > | alertrules | Ja | Ja |
 > | autoscalesettings | Ja | Ja |
-> | materialen | Ja | Ja |
+> | Materialen | Ja | Ja |
 > | guestdiagnosticsettings | Nee | Nee |
 > | metricalerts | Nee | Nee |
 > | notificationgroups | Nee | Nee |

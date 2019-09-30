@@ -11,19 +11,19 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: a9da5089c9309ec06f29fd3e0868102cfa538049
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: b5f4855c03c1c003df8f58b135cb809f1757e58f
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68933446"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71677485"
 ---
 # <a name="personname-prebuilt-entity-for-a-luis-app"></a>De vooraf samengestelde entiteit van de persoon voor een LUIS-app
 De vooraf gedefinieerde personName entiteit detecteert de namen van personen. Omdat deze entiteit wordt al getraind, hoeft u niet om toe te voegen voorbeeld uitingen met personName naar de toepassing intents. personName entiteit wordt ondersteund in het Engels en Chinees [culturen](luis-reference-prebuilt-entities.md).
 
 ## <a name="resolution-for-personname-entity"></a>Oplossing voor personName entiteit
 
-### <a name="api-version-2x"></a>API-versie 2. x
+#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2-antwoord op Voorspellings eindpunt](#tab/V2)
 
 Het volgende voorbeeld ziet u de resolutie van de **builtin.personName** entiteit.
 
@@ -44,10 +44,10 @@ Het volgende voorbeeld ziet u de resolutie van de **builtin.personName** entitei
   ]
 }
 ```
+#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3-Voorspellings eindpunt antwoord](#tab/V3)
 
-### <a name="preview-api-version-3x"></a>Preview-API versie 3. x
 
-De volgende JSON is met de `verbose` para meter ingesteld `false`op:
+De volgende JSON is met de para meter `verbose` ingesteld op `false`:
 
 ```json
 {
@@ -69,7 +69,7 @@ De volgende JSON is met de `verbose` para meter ingesteld `false`op:
 }
 ```
 
-De volgende JSON is met de `verbose` para meter ingesteld `true`op:
+De volgende JSON is met de para meter `verbose` ingesteld op `true`:
 
 ```json
 {
@@ -103,6 +103,10 @@ De volgende JSON is met de `verbose` para meter ingesteld `true`op:
 }
 ```
 
+* * * 
+
 ## <a name="next-steps"></a>Volgende stappen
+
+Meer informatie over het [v3-Voorspellings eindpunt](luis-migration-api-v3.md).
 
 Meer informatie over de [e](luis-reference-prebuilt-email.md), [getal](luis-reference-prebuilt-number.md), en [rangtelwoord](luis-reference-prebuilt-ordinal.md) entiteiten. 

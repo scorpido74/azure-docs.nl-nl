@@ -1,22 +1,22 @@
 ---
-title: Een Tenant maken in Windows virtueel bureau blad preview-Azure
-description: Hierin wordt beschreven hoe u Windows Virtual Desktop-Preview-tenants instelt in Azure Active Directory.
+title: Een Tenant maken in virtueel bureau blad van Windows-Azure
+description: Hierin wordt beschreven hoe u Windows Virtual Desktop-tenants instelt in Azure Active Directory.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 09/06/2019
 ms.author: helohr
-ms.openlocfilehash: 66441e852ebe0a391a5807b90eeadae230130815
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: 04a65442e86168239f08fb71303b8d9e9e152e72
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70734451"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71679474"
 ---
-# <a name="tutorial-create-a-tenant-in-windows-virtual-desktop-preview"></a>Zelfstudie: Een Tenant maken in Windows virtueel bureau blad preview
+# <a name="tutorial-create-a-tenant-in-windows-virtual-desktop"></a>Zelfstudie: Een tenant maken in Windows Virtual Desktop
 
-Het maken van een Tenant in Windows virtueel bureau blad preview is de eerste stap bij het bouwen van uw Desktop Virtualization-oplossing. Een Tenant is een groep van een of meer hostgroepen. Elke hostgroep bestaat uit meerdere sessie-hosts die worden uitgevoerd als virtuele machines in Azure en die zijn geregistreerd bij de virtueel bureau blad-service van Windows. Elke hostgroep bestaat ook uit een of meer app-groepen die worden gebruikt voor het publiceren van extern bureau blad-en externe toepassings bronnen voor gebruikers. Met een Tenant kunt u hostgroepen maken, app-groepen maken, gebruikers toewijzen en verbindingen via de service maken.
+Het maken van een Tenant in Windows Virtual Desktop is de eerste stap bij het bouwen van uw Desktop Virtualization-oplossing. Een Tenant is een groep van een of meer hostgroepen. Elke hostgroep bestaat uit meerdere sessie-hosts die worden uitgevoerd als virtuele machines in Azure en die zijn geregistreerd bij de virtueel bureau blad-service van Windows. Elke hostgroep bestaat ook uit een of meer app-groepen die worden gebruikt voor het publiceren van extern bureau blad-en externe toepassings bronnen voor gebruikers. Met een Tenant kunt u hostgroepen maken, app-groepen maken, gebruikers toewijzen en verbindingen via de service maken.
 
 In deze zelfstudie leert u het volgende:
 
@@ -73,9 +73,9 @@ De toepassingsrol van de TenantCreator toewijzen:
    Als u met meerdere Azure Active Directory tenants werkt, is het een best practice om een persoonlijke browser sessie te openen en de Url's te kopiëren en in de adres balk te plakken.
 2. Zoek in de zoek balk binnen het Azure Portal naar **bedrijfs toepassingen** en selecteer de vermelding die wordt weer gegeven onder de categorie **Services** .
 3. Zoek in **bedrijfs toepassingen**naar **virtueel bureau blad van Windows**. In de vorige sectie ziet u de twee toepassingen waarvoor u toestemming hebt gegeven. Van deze twee apps selecteert u **virtueel bureau blad van Windows**.
-   ![Een scherm opname van de zoek resultaten bij het zoeken naar ' Windows virtueel bureau blad ' in ' bedrijfs toepassingen '. De app met de naam ' Windows virtueel bureau blad ' is gemarkeerd.](media/tenant-enterprise-app.png)
+   ![A scherm opname van de zoek resultaten bij het zoeken naar ' Windows virtueel bureau blad ' in ' bedrijfs toepassingen '. De app met de naam ' Windows virtueel bureau blad ' is gemarkeerd. ](media/tenant-enterprise-app.png)
 4. Selecteer **Gebruikers en groepen**. U ziet mogelijk dat de beheerder die toestemming heeft verleend voor de toepassing, al wordt vermeld met de **standaard Access** -rol toegewezen. Dit is niet voldoende voor het maken van een virtuele bureau blad-Tenant van Windows. Ga door met de volgende instructies om de rol **TenantCreator** toe te voegen aan een gebruiker.
-   ![Een scherm opname van de gebruikers en groepen die zijn toegewezen voor het beheren van de bedrijfs toepassing Windows Virtual Desktop. In de scherm opname ziet u slechts één toewijzing, die is ingesteld op standaard toegang.](media/tenant-default-access.png)
+   ![A scherm opname van de gebruikers en groepen die zijn toegewezen voor het beheren van de bedrijfs toepassing Windows Virtual Desktop. In de scherm opname ziet u slechts één toewijzing, die is ingesteld op standaard toegang. ](media/tenant-default-access.png)
 5. Selecteer **gebruiker toevoegen**en selecteer vervolgens **gebruikers en groepen** op de Blade **toewijzing toevoegen** .
 6. Zoek naar een gebruikers account dat uw Windows Virtual Desktop-Tenant maakt. Voor de eenvoud kan dit het account van de globale beheerder zijn.
    - Als u een micro soft-identiteits provider contosoadmin@live.com gebruikt contosoadmin@outlook.com, zoals of, kunt u zich mogelijk niet aanmelden bij Windows virtueel bureau blad. U kunt het beste een domein-specifiek account admin@contoso.com gebruiken admin@contoso.onmicrosoft.com , zoals in de plaats.
@@ -87,7 +87,7 @@ De toepassingsrol van de TenantCreator toewijzen:
 
 7. Selecteer het gebruikers account, kies de knop **selecteren** en selecteer vervolgens **toewijzen**.
 8. Controleer op de pagina **virtueel bureau blad van Windows-gebruikers en groepen** of er een nieuw item wordt weer gegeven met de **TenantCreator** -rol die is toegewezen aan de gebruiker die de virtueel bureau blad-Tenant van Windows gaat maken.
-   ![Een scherm opname van de gebruikers en groepen die zijn toegewezen voor het beheren van de bedrijfs toepassing Windows Virtual Desktop. De scherm opname bevat nu een tweede vermelding van een gebruiker die is toegewezen aan de rol ' TenantCreator '.](media/tenant-tenant-creator-added.png)
+   ![A scherm opname van de gebruikers en groepen die zijn toegewezen voor het beheren van de bedrijfs toepassing Windows Virtual Desktop. De scherm opname bevat nu een tweede vermelding van een gebruiker die is toegewezen aan de rol ' TenantCreator '. ](media/tenant-tenant-creator-added.png)
 
 Voordat u doorgaat met het maken van uw virtuele bureau blad-Tenant voor Windows, hebt u twee soorten informatie nodig:
 - Uw Azure Active Directory Tenant-ID (of **Directory-id**)
@@ -95,19 +95,19 @@ Voordat u doorgaat met het maken van uw virtuele bureau blad-Tenant voor Windows
 
 Uw Azure Active Directory Tenant-ID (of **Directory-id**) zoeken:
 1. In dezelfde Azure Portal-sessie zoekt u naar **Azure Active Directory** op de zoek balk en selecteert u de vermelding die wordt weer gegeven onder de categorie **Services** .
-   ![Een scherm opname van de zoek resultaten voor ' Azure Active Directory ' in de Azure Portal. Het Zoek resultaat onder ' Services ' is gemarkeerd.](media/tenant-search-azure-active-directory.png)
+   ![A scherm opname van de zoek resultaten voor ' Azure Active Directory ' in de Azure Portal. Het Zoek resultaat onder ' Services ' is gemarkeerd. ](media/tenant-search-azure-active-directory.png)
 2. Schuif omlaag totdat u **Eigenschappen**hebt gevonden en selecteer deze.
 3. Zoek naar **Directory-id**en selecteer vervolgens het pictogram van het klem bord. Plak het op een handige locatie, zodat u deze later kunt gebruiken als de **AadTenantId** waarde.
-   ![Een scherm opname van de Azure Active Directory eigenschappen. De muis aanwijzer boven het pictogram van het klem bord voor map-ID om te kopiëren en plakken.](media/tenant-directory-id.png)
+   ![Een scherm opname van de Azure Active Directory eigenschappen. De muis aanwijzer boven het pictogram van het klem bord voor ' map-ID ' om te kopiëren en te plakken. ](media/tenant-directory-id.png)
 
 Uw Azure-abonnements-ID zoeken:
 1. In dezelfde Azure Portal-sessie zoekt u naar **abonnementen** op de zoek balk en selecteert u de vermelding die wordt weer gegeven onder de categorie **Services** .
-   ![Een scherm opname van de zoek resultaten voor ' Azure Active Directory ' in de Azure Portal. Het Zoek resultaat onder ' Services ' is gemarkeerd.](media/tenant-search-subscription.png)
+   ![A scherm opname van de zoek resultaten voor ' Azure Active Directory ' in de Azure Portal. Het Zoek resultaat onder ' Services ' is gemarkeerd. ](media/tenant-search-subscription.png)
 2. Selecteer het Azure-abonnement dat u wilt gebruiken voor het ontvangen van meldingen van de Windows-service voor virtuele Bureau bladen.
 3. Zoek naar **abonnements-id**en beweeg de muis aanwijzer over de waarde totdat een pictogram van het klem bord wordt weer gegeven. Selecteer het pictogram van het klem bord en plak het op een handige locatie, zodat u het later kunt gebruiken als de **AzureSubscriptionId** waarde.
-   ![Een scherm afbeelding van de eigenschappen van het Azure-abonnement. De muis aanwijzer boven het pictogram van het klem bord voor ' abonnements-ID ' om te kopiëren en te plakken.](media/tenant-subscription-id.png)
+   ![Een scherm afbeelding van de eigenschappen van het Azure-abonnement. De muis aanwijzer boven het pictogram van het klem bord voor "abonnements-ID" om te kopiëren en te plakken. ](media/tenant-subscription-id.png)
 
-## <a name="create-a-windows-virtual-desktop-preview-tenant"></a>Een Windows-Tenant voor virtueel bureau blad-voor beeld maken
+## <a name="create-a-windows-virtual-desktop-tenant"></a>Een virtueel bureau blad-Tenant voor Windows maken
 
 Nu u de machtigingen voor de Windows Virtual Desktop-service hebt gekregen om Azure Active Directory te zoeken en de rol TenantCreator aan een gebruikers account hebt toegewezen, kunt u een virtuele Windows-bureau blad-Tenant maken.
 

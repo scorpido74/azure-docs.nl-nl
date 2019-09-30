@@ -1,22 +1,22 @@
 ---
-title: Problemen met de functie diagnostische gegevens van het Windows-bureau blad preview identificeren-Azure
-description: Hierin wordt de functie diagnostische gegevens over Windows Virtual Desktop Preview beschreven en wordt uitgelegd hoe u deze kunt gebruiken.
+title: Problemen met de Windows-functie diagnostische gegevens van virtueel bureau blad identificeren-Azure
+description: Hierin wordt de Windows-functie diagnostische gegevens voor virtuele Bureau bladen beschreven en wordt uitgelegd hoe u deze kunt gebruiken.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: helohr
-ms.openlocfilehash: c07086feef1851f1a6e2a5cda2f541d52a50d91d
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: f041889f1594ef3852c8f2393be93bb7a6513b4c
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70163495"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71676633"
 ---
 # <a name="identify-issues-with-the-diagnostics-feature"></a>Problemen met de diagnostische functie identificeren
 
-Windows virtueel bureau blad preview biedt een functie voor diagnostische gegevens waarmee de beheerder problemen kan identificeren via één interface. De Windows-functies voor virtuele Bureau bladen registreren een diagnostische activiteit wanneer een gebruiker met het systeem communiceert. Elk logboek bevat relevante informatie zoals de Windows-functies voor virtueel bureau blad die betrokken zijn bij de trans actie, fout berichten, Tenant gegevens en gebruikers informatie. Diagnostische activiteiten worden gemaakt door eind gebruikers en administratieve acties en kunnen worden gecategoriseerd in drie hoofd verzamelingen:
+Virtueel bureau blad van Windows biedt een functie voor diagnostische gegevens waarmee de beheerder problemen kan identificeren via één interface. De Windows-functies voor virtuele Bureau bladen registreren een diagnostische activiteit wanneer een gebruiker met het systeem communiceert. Elk logboek bevat relevante informatie zoals de Windows-functies voor virtueel bureau blad die betrokken zijn bij de trans actie, fout berichten, Tenant gegevens en gebruikers informatie. Diagnostische activiteiten worden gemaakt door eind gebruikers en administratieve acties en kunnen worden gecategoriseerd in drie hoofd verzamelingen:
 
 * Activiteiten voor feed-abonnementen: de eind gebruiker activeert deze activiteiten wanneer ze verbinding proberen te maken met hun feed via Microsoft Extern bureaublad toepassingen.
 * Verbindings activiteiten: de eind gebruiker activeert deze activiteiten wanneer ze verbinding proberen te maken met een bureau blad of RemoteApp via Microsoft Extern bureaublad toepassingen.
@@ -136,7 +136,7 @@ Fout scenario's worden intern gecategoriseerd voor de service en extern naar vir
 De volgende tabel bevat algemene fouten die door uw beheerders kunnen worden uitgevoerd.
 
 >[!NOTE]
->Dit voor beeld bevat geen volledige categorisatie van fouten en wordt regel matig bijgewerkt. Om ervoor te zorgen dat u de meest recente informatie hebt, moet u dit artikel ten minste één keer per maand opnieuw controleren.
+>Deze lijst bevat de meest voorkomende fouten en wordt bijgewerkt op een gewone uitgebracht. Om ervoor te zorgen dat u de meest recente informatie hebt, moet u dit artikel ten minste één keer per maand opnieuw controleren.
 
 ### <a name="external-management-error-codes"></a>Externe beheer fout codes
 
@@ -176,6 +176,6 @@ De volgende tabel bevat algemene fouten die door uw beheerders kunnen worden uit
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie voor meer informatie over functies in Windows virtueel bureau blad de [Windows-voorbeeld omgeving voor virtueel bureau blad](environment-setup.md).
+Zie [Windows Virtual Desktop Environment](environment-setup.md)(Engelstalig) voor meer informatie over de functies van virtuele Bureau bladen van Windows.
 
 Zie de [Power shell-referentie](/powershell/windows-virtual-desktop/overview)voor een lijst met beschik bare Power shell-cmdlets voor virtuele Windows-Bureau bladen.

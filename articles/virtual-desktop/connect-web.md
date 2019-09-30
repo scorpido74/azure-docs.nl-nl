@@ -1,5 +1,5 @@
 ---
-title: Verbinding maken met Windows virtueel bureau blad preview vanuit een webbrowser-Azure
+title: Verbinding maken met een virtueel bureau blad van Windows via een webbrowser-Azure
 description: Verbinding maken met het virtuele bureau blad van Windows via de webclient.
 services: virtual-desktop
 author: Heidilohr
@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 09/24/2019
 ms.author: helohr
-ms.openlocfilehash: 961eb98bed712e3dde1b1e7ed2ec997e8992e600
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: e7fa1d2b21bfde6495a63676bc2aa1faa07e6bc5
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71338663"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71676759"
 ---
 # <a name="connect-with-the-web-client"></a>Verbinding maken met de webclient
 

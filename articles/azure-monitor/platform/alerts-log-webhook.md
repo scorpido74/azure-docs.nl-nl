@@ -1,19 +1,19 @@
 ---
 title: Webhook-acties voor logboek waarschuwingen in azure-waarschuwingen
 description: In dit artikel wordt beschreven hoe u een waarschuwings regel voor het logboek maakt met behulp van de Log Analytics-werk ruimte of de Application Insights, hoe de waarschuwing gegevens pusht als een HTTP-webhook en de details van de verschillende aanpassingen die mogelijk zijn.
-author: msvijayn
+author: yanivlavi
 services: monitoring
 ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 06/25/2019
-ms.author: vinagara
+ms.author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: 8bdd0d5230feeeb4c80775ce63aa7e4eaccb601c
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: 3e29bdf41b0421aa4461b11fbf9bc0535179486d
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68226794"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71677755"
 ---
 # <a name="webhook-actions-for-log-alert-rules"></a>Webhook-acties voor waarschuwings regels voor logboeken
 Wanneer er een [logboek waarschuwing wordt gemaakt in azure](alerts-log.md), kunt u [deze configureren met behulp van actie groepen](action-groups.md) om een of meer acties uit te voeren. In dit artikel worden de verschillende webhook-acties beschreven die beschikbaar zijn en wordt getoond hoe u een aangepaste JSON-gebaseerde webhook configureert.

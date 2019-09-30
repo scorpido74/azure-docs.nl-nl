@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 69924674fba44595e4f5a9702607579d8c7a8bc8
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 8cb5c82e551ed6299f754f518ebeebca0be4964d
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71064473"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71679302"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-ad-b2c"></a>De gegevens stroom van het wacht woord voor de resource-eigenaar configureren in Azure AD B2C
 
@@ -53,17 +53,13 @@ De volgende stromen worden niet ondersteund:
 
 ## <a name="register-an-application"></a>Een toepassing registreren
 
-1. Selecteer in de B2C-instellingen de optie **toepassingen**en selecteer vervolgens **toevoegen**.
-2. Voer een naam in voor de toepassing, zoals *ROPC_Auth_app*.
-3. Selecteer **Nee** voor **Web-app/Web-API**en selecteer vervolgens **Ja** voor **native client**.
-4. Zorg ervoor dat alle andere waarden behouden blijven, en selecteer vervolgens **maken**.
-5. Selecteer de nieuwe toepassing en noteer de toepassings-ID voor later gebruik.
+[!INCLUDE [active-directory-b2c-appreg-ropc](../../includes/active-directory-b2c-appreg-ropc.md)]
 
 ## <a name="test-the-user-flow"></a>De gebruikers stroom testen
 
 Gebruik uw favoriete API-ontwikkelings toepassing om een API-aanroep te genereren en Bekijk het antwoord op fout opsporing van uw gebruikers stroom. Maak een aanroep als dit met de informatie in de volgende tabel als hoofd tekst van de POST-aanvraag:
 - *Vervang\<yourtenant. onmicrosoft. com >* door de naam van uw B2C-Tenant.
-- *Vervang\<B2C_1A_ROPC_Auth >* door de volledige naam van het beleid voor wachtwoord referenties van uw resource-eigenaar.
+- Vervang *\<B2C_1A_ROPC_Auth >* door de volledige naam van het beleid voor wachtwoord referenties van uw resource-eigenaar.
 - *Vervang\<bef2222d56-552f-4a5b-b90a-1988a7d634c3 >* door de toepassings-id van uw registratie.
 
 `https://yourtenant.b2clogin.com/<yourtenant.onmicrosoft.com>/oauth2/v2.0/token?p=B2C_1_ROPC_Auth`

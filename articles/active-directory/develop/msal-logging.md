@@ -1,5 +1,5 @@
 ---
-title: Logboek registratie in MSAL-toepassingen | Micro soft Identity-platform
+title: Logboek registratie in micro soft Authentication Library (MSAL)-toepassingen | Azure
 description: Meer informatie over logboek registratie in micro soft Authentication Library (MSAL)-toepassingen.
 services: active-directory
 documentationcenter: dev-center-name
@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 08/28/2019
+ms.date: 09/05/2019
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4dad8a276cd40b1ff04bbced833b5d70cec4fc87
-ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
+ms.openlocfilehash: d3235037d2b60322ab3e5c393c0a19b1a42bdc6c
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71268585"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71678037"
 ---
 # <a name="logging-in-msal-applications"></a>Logboek registratie in MSAL-toepassingen
 
@@ -44,14 +44,14 @@ Standaard worden in de MSAL-logger geen zeer gevoelige persoonlijke of bedrijfs 
 ## <a name="logging-in-msalnet"></a>Aanmelden MSAL.NET
 
  > [!NOTE]
- > Bekijk de [MSAL.net-wiki](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki)voor meer informatie over MSAL.net. Bekijk voor beelden van MSAL.NET-logboek registratie en meer.
- 
+ > Zie de [MSAL.net-wiki](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki) voor voor beelden van MSAL.net-logboek registratie en meer.
+
 In MSAL 3. x wordt logboek registratie per toepassing ingesteld bij het maken van de `.WithLogging` app met behulp van de opbouw functie voor Builder. Deze methode accepteert optionele para meters:
 
-- *Niveau* kunt u bepalen welk registratie niveau u wilt. Als u deze instelt op fouten, worden er alleen fouten opgehaald
-- Met *PiiLoggingEnabled* kunt u persoonlijke en organisatie gegevens registreren indien ingesteld op waar. Deze instelling is standaard ingesteld op ONWAAR, zodat uw toepassing geen persoonlijke gegevens kan registreren.
-- *LogCallback* wordt ingesteld op een gemachtigde die de logboek registratie doet. Als *PiiLoggingEnabled* is ingesteld op True, ontvangt deze methode de berichten twee keer: wanneer de para meter *containsPii* gelijk is aan False en het bericht zonder persoons gegevens, en een tweede keer waarbij de para meter *containsPii* gelijk is aan True en de het bericht kan persoons gegevens bevatten. In sommige gevallen (wanneer het bericht geen persoonlijke gegevens bevat), is het bericht hetzelfde.
-- *DefaultLoggingEnabled* schakelt de standaard logboek registratie in voor het platform. De standaard instelling is False. Als u deze instelt op True, wordt gebeurtenis tracering gebruikt in Desktop/UWP-toepassingen, NSLog op iOS en logcat op Android.
+- met `Level` kunt u bepalen welk registratie niveau u wilt. Als u deze instelt op fouten, worden er alleen fouten opgehaald
+- met `PiiLoggingEnabled` kunt u persoonlijke en bedrijfs gegevens registreren indien ingesteld op waar. Deze instelling is standaard ingesteld op ONWAAR, zodat uw toepassing geen persoonlijke gegevens registreert.
+- `LogCallback` wordt ingesteld op een gemachtigde die de logboek registratie doet. Als `PiiLoggingEnabled` waar is, ontvangt deze methode de berichten twee keer: wanneer de para meter `containsPii` gelijk is aan False en het bericht zonder persoons gegevens, en een tweede keer waarbij de para meter `containsPii` gelijk is aan True en het bericht persoonlijke gegevens kan bevatten. In sommige gevallen (wanneer het bericht geen persoonlijke gegevens bevat), is het bericht hetzelfde.
+- `DefaultLoggingEnabled` schakelt de standaard logboek registratie in voor het platform. De standaard instelling is False. Als u deze instelt op True, wordt gebeurtenis tracering gebruikt in Desktop/UWP-toepassingen, NSLog op iOS en logcat op Android.
 
 ```csharp
 class Program
@@ -80,16 +80,54 @@ class Program
  }
  ```
 
- ## <a name="logging-in-msaljs"></a>Logboek registratie in MSAL. js
+## <a name="logging-in-msal-for-android-using-java"></a>Logboek registratie in MSAL voor Android met behulp van Java
 
- U kunt logboek registratie inschakelen in MSAL. js door een traceer object door te geven tijdens de configuratie `UserAgentApplication` voor het maken van een exemplaar. Dit logger object heeft de volgende eigenschappen:
+Schakel logboek registratie in bij het maken van een app door het maken van een logboek registratie. De retour aanroep heeft de volgende para meters:
+
+- `tag` is een teken reeks die door de bibliotheek wordt door gegeven aan de retour aanroep. Het is gekoppeld aan de logboek vermelding en kan worden gebruikt om logboek registratie berichten te sorteren.
+- met `logLevel` kunt u bepalen welk registratie niveau u wilt. De ondersteunde logboek niveaus zijn: `Error`, `Warning`, `Info` en `Verbose`.
+- `message` is de inhoud van de logboek vermelding.
+- `containsPII` geeft aan of berichten met persoonlijke gegevens of organisatie gegevens worden geregistreerd. Deze instelling is standaard ingesteld op ONWAAR, zodat uw toepassing geen persoonlijke gegevens kan registreren. Als `containsPII` `true` is, ontvangt deze methode de berichten twee keer: eenmaal met de para meter `containsPII` ingesteld op `false` en de `message` zonder persoonlijke gegevens, en een tweede keer waarbij de para meter `containsPii` is ingesteld op `true` en het bericht mogelijk persoonlijke gegevens bevat. In sommige gevallen (wanneer het bericht geen persoonlijke gegevens bevat), is het bericht hetzelfde.
+
+```java
+private StringBuilder mLogs;
+
+mLogs = new StringBuilder();
+Logger.getInstance().setExternalLogger(new ILoggerCallback()
+{
+   @Override
+   public void log(String tag, Logger.LogLevel logLevel, String message, boolean containsPII)
+   {
+      mLogs.append(message).append('\n');
+   }
+});
+```
+
+Standaard worden door de MSAL-logger geen persoonlijke Identificeer bare gegevens of informatie over de organisatie vastgelegd.
+De logboek registratie van persoons gegevens of door de organisatie geïdentificeerde informatie inschakelen:
+
+```java
+Logger.getInstance().setEnablePII(true);
+```
+
+Logboek registratie van persoonlijke gegevens en organisatie gegevens uitschakelen:
+
+```java
+Logger.getInstance().setEnablePII(false);
+```
+
+Logboek registratie in logcat is standaard uitgeschakeld. In te scha kelen: 
+```java
+Logger.getInstance().setEnableLogcatLog(true);
+```
+
+## <a name="logging-in-msaljs"></a>Logboek registratie in MSAL. js
+
+ Schakel logboek registratie in MSAL. js in door een traceer object door te geven tijdens de configuratie voor het maken van een `UserAgentApplication`-exemplaar. Dit logger object heeft de volgende eigenschappen:
 
 - `localCallback`: een call back-instantie die kan worden geleverd door de ontwikkelaar om logboeken op een aangepaste manier te gebruiken en publiceren. Implementeer de localCallback-methode, afhankelijk van hoe u logboeken wilt omleiden.
-
-- `level`(optioneel): het Configureer bare logboek niveau. De ondersteunde logboek niveaus zijn: Fout, waarschuwing, info, uitgebreid. De standaard waarde is info.
-
-- `piiLoggingEnabled`(optioneel): Hiermee kunt u persoonlijke en bedrijfs gegevens registreren indien ingesteld op waar. Deze instelling is standaard ingesteld op ONWAAR, zodat uw toepassing geen persoonlijke gegevens kan registreren. Persoonlijke gegevens logboeken worden nooit geschreven naar de standaard uitvoer, zoals console, Logcat of NSLog. De standaard waarde is ingesteld op ONWAAR.
-
+- `level`(optioneel): het Configureer bare logboek niveau. De ondersteunde logboek niveaus zijn: `Error`, `Warning`, `Info` en `Verbose`. De standaardwaarde is `Info`.
+- `piiLoggingEnabled` (optioneel): als deze optie is ingesteld op waar, worden persoonlijke en organisatie gegevens vastgelegd in een logboek. Standaard is dit false, zodat uw toepassing geen persoonlijke gegevens kan registreren. Persoonlijke gegevens logboeken worden nooit geschreven naar de standaard uitvoer, zoals console, Logcat of NSLog.
 - `correlationId`(optioneel): een unieke id, die wordt gebruikt om de aanvraag toe te wijzen met het antwoord op fout opsporing. De standaard instelling is RFC4122-versie 4 GUID (128 bits).
 
 ```javascript
@@ -99,7 +137,7 @@ function loggerCallback(logLevel, message, containsPii) {
 
 var msalConfig = {
     auth: {
-        clientId: “abcd-ef12-gh34-ikkl-ashdjhlhsdg”,
+        clientId: “<Enter your client id>”,
     },
      system: {
              logger: new Msal.Logger(

@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 05/07/2019
+ms.date: 09/27/2019
 ms.author: diberry
-ms.openlocfilehash: e28b541c1b5aa8f733c9f4ed44fd2ea5296b34d8
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 04bc3019a55920351b0e91c87e63b8309d94e34c
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68933544"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71677615"
 ---
 # <a name="geographyv2-prebuilt-entity-for-a-luis-app"></a>GeographyV2 prebuiled-entiteit voor een LUIS-app
 De vooraf gedefinieerde geographyV2 entiteit detecteert plaatsen. Omdat deze entiteit wordt al getraind, hoeft u niet om toe te voegen van de voorbeeld-uitingen GeographyV2 die aan de toepassing intents. GeographyV2 entiteit wordt ondersteund in het Engels [cultuur](luis-reference-prebuilt-entities.md).
@@ -35,7 +35,7 @@ De geografische locaties zijn subtypen:
 
 ## <a name="resolution-for-geographyv2-entity"></a>Oplossing voor GeographyV2 entiteit
 
-### <a name="api-version-2x"></a>API-versie 2. x
+#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2-antwoord op Voorspellings eindpunt](#tab/V2)
 
 Het volgende voorbeeld ziet u de resolutie van de **builtin.geographyV2** entiteit.
 
@@ -93,9 +93,9 @@ Het volgende voorbeeld ziet u de resolutie van de **builtin.geographyV2** entite
 } 
 ```
 
-### <a name="preview-api-version-3x"></a>Preview-API versie 3. x
+#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3-Voorspellings eindpunt antwoord](#tab/V3)
 
-De volgende JSON is met de `verbose` para meter ingesteld `false`op:
+De volgende JSON is met de para meter `verbose` ingesteld op `false`:
 
 ```json
 {
@@ -121,7 +121,7 @@ De volgende JSON is met de `verbose` para meter ingesteld `false`op:
 }
 ```
 
-De volgende JSON is met de `verbose` para meter ingesteld `true`op:
+De volgende JSON is met de para meter `verbose` ingesteld op `true`:
 
 ```json
 {
@@ -191,6 +191,10 @@ De volgende JSON is met de `verbose` para meter ingesteld `true`op:
 }
 ```
 
+* * * 
+
 ## <a name="next-steps"></a>Volgende stappen
+
+Meer informatie over het [v3-Voorspellings eindpunt](luis-migration-api-v3.md).
 
 Meer informatie over de [e](luis-reference-prebuilt-email.md), [getal](luis-reference-prebuilt-number.md), en [rangtelwoord](luis-reference-prebuilt-ordinal.md) entiteiten. 

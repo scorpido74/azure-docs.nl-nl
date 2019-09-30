@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 87d46fad1c0a5494910a8218c4e40994fc140386
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 77cd720ffd2763b2ad3d73559a5363989f9e3e3a
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71103402"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71679297"
 ---
 # <a name="tutorial-grant-access-to-an-aspnet-web-api-using-azure-active-directory-b2c"></a>Zelfstudie: Toegang verlenen aan een web-API van ASP.NET met behulp van Azure Active Directory B2C
 
@@ -54,23 +54,17 @@ Web-API-resources moeten worden geregistreerd in uw tenant voordat deze in staat
 
 Bereiken bieden een manier om toegang tot beveiligde resources te reguleren. Bereiken worden door de web-API gebruikt om toegangsbeheer op basis van een bereik te implementeren. Bijvoorbeeld: gebruikers van de web-API kunnen zowel lees- als schrijftoegang hebben of alleen leestoegang. In deze zelfstudie gebruikt u bereiken om lees- en schrijfmachtigingen voor de web-API te definiëren.
 
-1. Selecteer **Toepassingen** en vervolgens *webapi1*.
-2. Selecteer **Gepubliceerde bereiken**.
-3. Voer voor **Bereik** `Hello.Read` in en voor beschrijving `Read access to hello`.
-4. Voer voor **Bereik** `Hello.Write` in en voor beschrijving `Write access to hello`.
-5. Klik op **Opslaan**.
-
-De gepubliceerde bereiken kunnen worden gebruikt om een clienttoepassingstoestemming te verlenen aan de web-API.
+[!INCLUDE [active-directory-b2c-scopes](../../includes/active-directory-b2c-scopes.md)]
 
 ## <a name="grant-permissions"></a>Machtigingen verlenen
 
 Als u een beveiligde web-API wilt aanroepen vanuit een app, moet u uw toepassing machtigingen verlenen tot de API. In de vereiste zelfstudie hebt u een webtoepassing in Azure AD B2C gemaakt met de naam *webapp1*. Met deze toepassing kunt u de web-API aanroepen.
 
 1. Selecteer **Toepassingen** en vervolgens *webapp1*.
-2. Selecteer **API-toegang**, en selecteer vervolgens **Toevoegen**.
-3. Selecteer *webapi1* in de vervolgkeuzelijst **API selecteren**.
-4. Selecteer in de vervolgkeuzelijst **Bereiken selecteren** de bereiken **Hello.Read** en **Hello.Write** die u eerder hebt gedefinieerd.
-5. Klik op **OK**.
+1. Selecteer **API-toegang**, en selecteer vervolgens **Toevoegen**.
+1. Selecteer *webapi1* in de vervolgkeuzelijst **API selecteren**.
+1. Selecteer in de vervolg keuzelijst **bereiken selecteren** de bereiken die u eerder hebt gedefinieerd. Bijvoorbeeld: *demo. Read* en *demo. write*.
+1. Selecteer **OK**.
 
 Uw toepassing is geregistreerd voor het aanroepen van de beveiligde web-API. Een gebruiker voert een verificatie uit bij Azure AD B2C om de toepassing te kunnen gebruiken. De toepassing verkrijgt een autorisatietoekenning van Azure AD B2C voor toegang tot de beveiligde web-API.
 
@@ -99,8 +93,8 @@ Deze twee projecten bevinden zich in de voorbeeldoplossing:
 
     ```csharp
     <add key="api:ApiIdentifier" value="https://<Your tenant name>.onmicrosoft.com/api/" />
-    <add key="api:ReadScope" value="Hello.Read" />
-    <add key="api:WriteScope" value="Hello.Write" />
+    <add key="api:ReadScope" value="demo.read" />
+    <add key="api:WriteScope" value="demo.write" />
     ```
 
 ### <a name="configure-the-web-api"></a>De web-API configureren
@@ -128,8 +122,8 @@ Deze twee projecten bevinden zich in de voorbeeldoplossing:
 1. Configureer de instellingen voor bereiken zodat deze overeenkomen met de scopes die u in de portal hebt gemaakt.
 
     ```csharp
-    <add key="api:ReadScope" value="Hello.Read" />
-    <add key="api:WriteScope" value="Hello.Write" />
+    <add key="api:ReadScope" value="demo.read" />
+    <add key="api:WriteScope" value="demo.write" />
     ```
 
 ## <a name="run-the-sample"></a>De voorbeeldtoepassing uitvoeren

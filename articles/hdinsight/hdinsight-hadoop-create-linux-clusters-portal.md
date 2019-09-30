@@ -1,19 +1,19 @@
 ---
 title: Apache Hadoop clusters maken met een webbrowser, Azure HDInsight
-description: Meer informatie over het maken van Apache Hadoop-, Apache HBase-, Apache Storm-of Apache Spark-clusters op Linux voor HDInsight met behulp van een webbrowser en de Azure preview-Portal.
+description: Meer informatie over het maken van Apache Hadoop-, Apache HBase-, Apache Storm-of Apache Spark-clusters op Linux voor HDInsight met behulp van een webbrowser en de Azure Portal.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/29/2019
-ms.openlocfilehash: b2a5168cbda209d1d975db5e5f1c810a798ddb97
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.date: 09/28/2019
+ms.openlocfilehash: 687fde2e203ed471e2f0164f1f4a670de4afc74e
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71098697"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71677089"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-by-using-the-azure-portal"></a>Op Linux gebaseerde clusters maken in HDInsight met behulp van de Azure Portal
 
@@ -36,13 +36,13 @@ De Azure Portal bevat de meeste cluster eigenschappen. Door Azure Resource Manag
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 
-1. Selecteer **+ Een resource maken** in het menu aan de linkerkant.
-
-1. Onder **Azure Marketplace**selecteert u **analyse**.
-
-1. Onder **Aanbevolen** selecteert u **HDInsight**.
+1. Ga in het menu links naar **+ een resource** >  **Analytics** > **HDInsight**maken.
 
     ![Een nieuw cluster maken in de Azure Portal](./media/hdinsight-hadoop-create-linux-clusters-portal/hdinsight-create-cluster.png "Een nieuw cluster maken in de Azure Portal")
+
+1. Selecteer op de pagina **HDInsight-cluster maken** de optie **Ga naar klassieke maken-ervaring**.
+
+    ![Ga naar klassieke ervaring maken](./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-cluster-create-classic.png)
 
 1. Op de **HDInsight** -pagina selecteert u **aangepast (grootte, instellingen, apps)** .
 
@@ -71,13 +71,13 @@ De Azure Portal bevat de meeste cluster eigenschappen. Door Azure Resource Manag
 
     * Selecteer **volgende** om naar de volgende pagina te gaan.
 
-4. U kunt met behulp van de beschik bare vervolg keuzelijst van **2 beveiliging en netwerken**uw cluster verbinden met een virtueel netwerk. Selecteer een virtueel Azure-netwerk en het subnet als u het cluster in een virtueel netwerk wilt plaatsen. Zie [een implementatie van een virtueel netwerk plannen voor Azure HDInsight-clusters](hdinsight-plan-virtual-network-deployment.md)voor meer informatie over het gebruik van HDInsight met een virtueel netwerk. Het artikel bevat specifieke configuratie vereisten voor het virtuele netwerk. 
+1. U kunt met behulp van de beschik bare vervolg keuzelijst van **2 beveiliging en netwerken**uw cluster verbinden met een virtueel netwerk. Selecteer een virtueel Azure-netwerk en het subnet als u het cluster in een virtueel netwerk wilt plaatsen. Zie [een implementatie van een virtueel netwerk plannen voor Azure HDInsight-clusters](hdinsight-plan-virtual-network-deployment.md)voor meer informatie over het gebruik van HDInsight met een virtueel netwerk. Het artikel bevat specifieke configuratie vereisten voor het virtuele netwerk.
 
     Als u de **Enterprise Security Package**wilt gebruiken, volgt u deze instructies: [Configureer een HDInsight-cluster met Enterprise Security Package met behulp van Azure Active Directory Domain Services](https://docs.microsoft.com/azure/hdinsight/domain-joined/apache-domain-joined-configure-using-azure-adds).
 
     Selecteer **volgende** om naar de volgende pagina te gaan.
 
-5. Geef bij **3 opslag**op of u Azure Storage of Azure data Lake Storage als standaard opslag wilt. Zie de volgende tabel voor meer informatie.
+1. Geef bij **3 opslag**op of u Azure Storage of Azure data Lake Storage als standaard opslag wilt. Zie de volgende tabel voor meer informatie.
 
      ![HDInsight-cluster opslag maken](./media/hdinsight-hadoop-create-linux-clusters-portal/hdinsight-create-cluster-storage.png "Een nieuw cluster maken in de Azure Portal")
 
@@ -92,11 +92,11 @@ De Azure Portal bevat de meeste cluster eigenschappen. Door Azure Resource Manag
 
      Selecteer **volgende** om naar de volgende pagina te gaan.
 
-6. Selecteer de gewenste toepassingen van **4 toepassingen (optioneel)** . Micro soft, Independent Software Vendors (Isv's), of u kunt deze toepassingen ontwikkelen. Zie [toepassingen installeren tijdens het maken](hdinsight-apps-install-applications.md#install-applications-during-cluster-creation)van een cluster voor meer informatie.
+1. Selecteer de gewenste toepassingen van **4 toepassingen (optioneel)** . Micro soft, Independent Software Vendors (Isv's), of u kunt deze toepassingen ontwikkelen. Zie [toepassingen installeren tijdens het maken](hdinsight-apps-install-applications.md#install-applications-during-cluster-creation)van een cluster voor meer informatie.
 
     Selecteer **volgende** om naar de volgende pagina te gaan.
 
-6. **5 cluster grootte** geeft informatie weer over de knoop punten die worden gebruikt voor dit cluster. Stel het aantal worker-knoop punten in dat u nodig hebt voor het cluster. De geschatte kosten voor het uitvoeren van het cluster worden ook weer gegeven.
+1. **5 cluster grootte** geeft informatie weer over de knoop punten die worden gebruikt voor dit cluster. Stel het aantal worker-knoop punten in dat u nodig hebt voor het cluster. De geschatte kosten voor het uitvoeren van het cluster worden ook weer gegeven.
 
     ![HDInsight-cluster knooppunten maken](./media/hdinsight-hadoop-create-linux-clusters-portal/hdinsight-create-cluster-nodes.png "Aantal cluster knooppunten opgeven")
 
@@ -107,18 +107,18 @@ De Azure Portal bevat de meeste cluster eigenschappen. Door Azure Resource Manag
 
     Selecteer **volgende** om naar de volgende pagina te gaan.
 
-8. Vanuit **6 script acties**kunt u een cluster aanpassen om aangepaste onderdelen te installeren. Deze optie werkt als u een aangepast script wilt gebruiken voor het aanpassen van een cluster, wanneer het cluster wordt gemaakt. Zie [HDInsight-clusters op basis van Linux aanpassen met behulp van script acties](hdinsight-hadoop-customize-cluster-linux.md)voor meer informatie over script acties.
+1. Vanuit **6 script acties**kunt u een cluster aanpassen om aangepaste onderdelen te installeren. Deze optie werkt als u een aangepast script wilt gebruiken voor het aanpassen van een cluster, wanneer het cluster wordt gemaakt. Zie [HDInsight-clusters op basis van Linux aanpassen met behulp van script acties](hdinsight-hadoop-customize-cluster-linux.md)voor meer informatie over script acties.
 
    Selecteer **volgende** om naar de volgende pagina te gaan.
 
-9. Controleer in **7 samen vatting**de informatie die u eerder hebt ingevoerd. Selecteer vervolgens **Maken**.
+1. Controleer in **7 samen vatting**de informatie die u eerder hebt ingevoerd. Selecteer vervolgens **Maken**.
 
      ![HDInsight-cluster overzicht maken](./media/hdinsight-hadoop-create-linux-clusters-portal/hdinsight-create-cluster-summary.png "Aantal cluster knooppunten opgeven")
     
     > [!NOTE]  
     > Meestal duurt het genereren van het cluster ongeveer 20 minuten. Bewaak **meldingen** om het inrichtings proces te controleren.
 
-10. Nadat het proces is gemaakt, selecteert **u naar resource gaan** vanuit de melding **implementatie geslaagd** . Het cluster venster bevat de volgende informatie:
+1. Nadat het proces is gemaakt, selecteert **u naar resource gaan** vanuit de melding **implementatie geslaagd** . Het cluster venster bevat de volgende informatie:
 
     ![Overzicht van HDI-Azure Portal cluster](./media/hdinsight-hadoop-create-linux-clusters-portal/hdinsight-create-cluster-completed.png "Cluster eigenschappen")
 
@@ -169,4 +169,3 @@ U hebt een HDInsight-cluster gemaakt. Meer informatie over het werken met uw clu
 * [Taken op afstand uitvoeren op een Apache Spark cluster met behulp van Apache livy](spark/apache-spark-livy-rest-interface.md)
 * [Apache Spark met BI: Interactieve gegevens analyse uitvoeren met behulp van Spark in HDInsight met BI-hulpprogram ma's](spark/apache-spark-use-bi-tools.md)
 * [Apache Spark met Machine Learning: Spark in HDInsight gebruiken om voedsel inspectie resultaten te voors pellen](spark/apache-spark-machine-learning-mllib-ipython.md)
-

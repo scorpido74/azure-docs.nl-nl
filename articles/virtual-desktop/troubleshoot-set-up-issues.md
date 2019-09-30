@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 07/10/2019
 ms.author: helohr
-ms.openlocfilehash: 93f111eb4439b89ac367ad7e7b951e26cecb86e4
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 811fdd0b177e3a255ca91145e39005de1d2328ad
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69981097"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71676458"
 ---
 # <a name="tenant-and-host-pool-creation"></a>Tenants en hostpools maken
 
@@ -20,13 +20,13 @@ In dit artikel komen problemen aan bod tijdens de eerste installatie van de virt
 
 ## <a name="provide-feedback"></a>Feedback geven
 
-Er worden momenteel geen ondersteunings kwesties in rekening gebracht terwijl het virtuele bureau blad van Windows in preview is. Ga naar de [technische community van Windows virtueel bureau blad](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) voor het bespreken van de Windows Virtual Desktop-service met het product team en de actieve leden van de community.
+Ga naar de [technische community van Windows virtueel bureau blad](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) voor het bespreken van de Windows Virtual Desktop-service met het product team en de actieve leden van de community.
 
 ## <a name="acquiring-the-windows-10-enterprise-multi-session-image"></a>De afbeelding voor meerdere sessies van Windows 10 Enter prise ophalen
 
-Als u de Windows 10 Enter prise-installatie kopie voor meerdere sessies wilt gebruiken, gaat u naar Azure Marketplace en selecteert u aan de **slag** > met**micro soft Windows 10** > en [Windows 10 Enter prise voor virtuele Bureau bladen preview, versie 1809](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsdesktop.windows-10?tab=PlansAndPrice).
+Als u de Windows 10 Enter prise-installatie kopie voor meerdere sessies wilt gebruiken, gaat u naar Azure Marketplace en selecteert u aan de **slag** > **micro soft Windows 10** > en [Windows 10 Enter prise voor virtuele Bureau bladen versie 1809](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsdesktop.windows-10?tab=PlansAndPrice).
 
-![Een scherm opname van het selecteren van Windows 10 Enter prise voor virtuele Bureau bladen preview versie 1809.](media/AzureMarketPlace.png)
+![Een scherm opname van het selecteren van Windows 10 Enter prise voor virtuele Bureau bladen, versie 1809.](media/AzureMarketPlace.png)
 
 ## <a name="creating-windows-virtual-desktop-tenant"></a>Tenant voor Windows virtueel bureau blad maken
 
@@ -167,7 +167,7 @@ Voor beeld van onbewerkte fout:
 
 ```Error
 { "id": "/subscriptions/EXAMPLE/resourceGroups/demoHostD/providers/Microsoft.Resources/deployments/
- rds.wvd-hostpool4-preview-20190129132410/operations/5A0757AC9E7205D2", "operationId": "5A0757AC9E7205D2", "properties":
+ rds.wvd-provision-host-pool-20190129132410/operations/5A0757AC9E7205D2", "operationId": "5A0757AC9E7205D2", "properties":
  { "provisioningOperation": "Create", "provisioningState": "Failed", "timestamp": "2019-01-29T21:43:05.1416423Z",
  "duration": "PT7M56.8150879S", "trackingId": "43c4f71f-557c-4abd-80c3-01f545375455", "statusCode": "Conflict",
  "statusMessage": { "status": "Failed", "error": { "code": "ResourceDeploymentFailure", "message":
@@ -277,9 +277,9 @@ Voor beeld van onbewerkte fout:
 
 ```Error
 \\\"The DSC Extension failed to execute: Error downloading
-https://catalogartifact.azureedge.net/publicartifacts/rds.wvd-hostpool-3-preview-
-2dec7a4d-006c-4cc0-965a-02bbe438d6ff-private-preview-
-1/Artifacts/DSC/Configuration.zip after 29 attempts: The remote name could not be
+https://catalogartifact.azureedge.net/publicartifacts/rds.wvd-provision-host-pool-
+2dec7a4d-006c-4cc0-965a-02bbe438d6ff-prod
+/Artifacts/DSC/Configuration.zip after 29 attempts: The remote name could not be
 resolved: 'catalogartifact.azureedge.net'.\\nMore information about the failure can
 be found in the logs located under
 'C:\\\\WindowsAzure\\\\Logs\\\\Plugins\\\\Microsoft.Powershell.DSC\\\\2.77.0.0' on
@@ -314,9 +314,9 @@ Add-RdsAccount -DeploymentUrl “https://rdbroker.wvd.microsoft.com”
 New-RdsRoleAssignment -TenantName <Windows Virtual Desktop tenant name> -RoleDefinitionName “RDS Contributor” -SignInName <UPN>
 ```
 
-### <a name="error-user-requires-azure-multi-factor-authentication-mfa"></a>Fout: Gebruiker vereist Azure Multi-Factor Authentication (MFA)
+### <a name="error-user-requires-azure-multi-factor-authentication-mfa"></a>Fout: Gebruiker vereist Azure multi-factor Authentication (MFA)
 
-![Scherm opname van de implementatie is mislukt vanwege een gebrek aan Multi-Factor Authentication (MFA)](media/MFARequiredError.png)
+![Scherm opname van de implementatie is mislukt vanwege een gebrek aan multi-factor Authentication (MFA)](media/MFARequiredError.png)
 
 Voor beeld van onbewerkte fout:
 
@@ -324,7 +324,7 @@ Voor beeld van onbewerkte fout:
 "message": "{\r\n  \"status\": \"Failed\",\r\n  \"error\": {\r\n    \"code\": \"ResourceDeploymentFailure\",\r\n    \"message\": \"The resource operation completed with terminal provisioning state 'Failed'.\",\r\n    \"details\": [\r\n      {\r\n        \"code\": \"VMExtensionProvisioningError\",\r\n        \"message\": \"VM has reported a failure when processing extension 'dscextension'. Error message: \\\"DSC Configuration 'FirstSessionHost' completed with error(s). Following are the first few: PowerShell DSC resource MSFT_ScriptResource  failed to execute Set-TargetResource functionality with error message: One or more errors occurred.  The SendConfigurationApply function did not succeed.\\\".\"\r\n      }\r\n    ]\r\n  }\r\n}"
 ```
 
-**Wordt** De opgegeven Tenant beheerder voor Windows Virtual Desktop vereist Azure Multi-Factor Authentication (MFA) om u aan te melden.
+**Wordt** Voor de opgegeven Tenant beheerder van het Windows-bureau blad is Azure multi-factor Authentication (MFA) vereist om u aan te melden.
 
 **Fix:** Maak een Service-Principal en wijs hieraan een rol toe voor uw Windows Virtual Desktop-Tenant door de [stappen in de volgende zelf studie uit te voeren: Service-principals en roltoewijzingen maken met Power](https://docs.microsoft.com/azure/virtual-desktop/create-service-principal-role-powershell)shell. Nadat u hebt gecontroleerd of u zich kunt aanmelden bij het virtuele bureau blad van Windows met de Service-Principal, voert u de Azure Marketplace-aanbieding of de GitHub Azure Resource Manager-sjabloon uit, afhankelijk van de methode die u gebruikt. Volg de onderstaande instructies om de juiste para meters voor uw methode op te geven.
 
@@ -348,7 +348,7 @@ Als u de GitHub-Azure Resource Manager sjabloon uitvoert, geeft u waarden op voo
 - Zie voor het oplossen van problemen bij het configureren van een virtuele machine (VM) in Windows virtueel bureau blad de [virtuele machine configuratie](troubleshoot-vm-configuration.md)van de host.
 - Zie [extern bureaublad-client verbindingen](troubleshoot-client-connection.md)voor het oplossen van problemen met Windows-client verbindingen met virtueel bureau blad.
 - Zie [Windows Virtual Desktop Power shell](troubleshoot-powershell.md)(Engelstalig) voor informatie over het oplossen van problemen met het gebruik van Power shell met Windows virtueel bureau blad.
-- Zie voor meer informatie over de preview-service de [Windows-voorbeeld omgeving voor virtueel bureau blad](https://docs.microsoft.com/azure/virtual-desktop/environment-setup).
+- Zie [Windows Virtual Desktop Environment](https://docs.microsoft.com/azure/virtual-desktop/environment-setup)(Engelstalig) voor meer informatie over de service.
 - Zie [zelf studie voor het oplossen van problemen met de zelf studie: Problemen oplossen met implementaties](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-troubleshoot)van Resource Manager-sjablonen.
 - Zie [bewerkingen controleren met Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-audit)voor meer informatie over controle acties.
 - Zie [implementatie bewerkingen weer geven](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-operations)voor meer informatie over acties om de fouten te bepalen tijdens de implementatie.

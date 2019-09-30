@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: quickstart
-ms.date: 06/12/2019
+ms.date: 09/27/2019
 ms.custom: mvc
-ms.openlocfilehash: e4d6013692e12b64247a0f3553c0b2b3ad4f06ac
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: a4c7fe0d01bc9e5045cfe585c3f235636aa3dd22
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71337703"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71676977"
 ---
 # <a name="quickstart-create-apache-spark-cluster-in-azure-hdinsight-using-azure-portal"></a>Quickstart: Apache Spark cluster maken in azure HDInsight met behulp van Azure Portal
 
@@ -32,37 +32,38 @@ Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.
 
     ![Azure Portal een bron hdinsight](./media/apache-spark-jupyter-spark-sql-use-portal/azure-portal-create-hdinsight-spark-cluster.png "hdinsight maken op Azure Portal")
 
-2. Geef onder **Basis** de volgende waarden op:
+1. Geef onder **Basis** de volgende waarden op:
 
     |Eigenschap  |Description  |
     |---------|---------|
-    |**Clusternaam**     | Geef een naam op voor het HDInsight Spark-cluster. De clusternaam die we gebruiken voor deze snelstartgids is **myspark20180403**.|
-    |**Abonnement**     | Kies in de vervolgkeuzelijst een Azure-abonnement voor dit cluster. Het abonnement dat we gebruiken voor deze snelstartgids is **&lt;Azure-abonnement**. |
-    |**Clustertype**| Vouw het item uit, selecteer vervolgens **Spark** als het clustertype en geef de versie van het Spark-cluster op. <br/> <img src="./media/apache-spark-jupyter-spark-sql-use-portal/azure-portal-create-hdinsight-spark-cluster-type.png" alt = "Azure portal select HDInsight cluster type" /> |
-    |**Gebruikersnaam voor clusteraanmeldgegevens**| Voer de gebruikersnaam voor aanmelding bij het cluster in.  De standaardnaam is *admin*. U gebruikt dit account om u verderop in de snelstartgids aan te melden bij het Jupyter-notebook. |
-    |**Wachtwoord voor clusteraanmeldgegevens**| Voer het wachtwoord voor aanmelding bij het cluster in. |
-    |**SSH-gebruikersnaam (Secure Shell)**| Voer de SSH-gebruikersnaam in. De SSH-gebruikersnaam voor deze snelstartgids is **sshuser**. De standaardinstelling is dat voor dit account hetzelfde wachtwoord wordt gebruikt als voor *Gebruikersnaam voor clusteraanmeldgegevens*. |
-    |**Resourcegroep**     | Geef aan of u een nieuwe resourcegroep wilt maken of een bestaande groep wilt gebruiken. Een resourcegroep is een container met gerelateerde resources voor een Azure-oplossing. De naam van de resourcegroep die we gebruiken voor deze snelstartgids is **myspark20180403rg**. |
-    |**Location**     | Selecteer een locatie voor de resourcegroep. De sjabloon gebruikt deze locatie voor het maken van het cluster en als standaardclusteropslag. De locatie voor deze snelstart is **US - oost 2**. |
+    |Subscription  | Kies in de vervolgkeuzelijst een Azure-abonnement voor dit cluster. Het abonnement dat voor deze Quick Start wordt gebruikt, is **Azure**. |
+    |Resource group | Geef aan of u een nieuwe resourcegroep wilt maken of een bestaande groep wilt gebruiken. Een resourcegroep is een container met gerelateerde resources voor een Azure-oplossing. De naam van de resource groep die voor deze Quick Start wordt gebruikt, is **myResourceGroup**. |
+    |Clusternaam | Geef een naam op voor het HDInsight Spark-cluster. De cluster naam die voor deze Quick Start wordt gebruikt, is **myspark2019**.|
+    |Location   | Selecteer een locatie voor de resourcegroep. De sjabloon gebruikt deze locatie voor het maken van het cluster en als standaardclusteropslag. De locatie die wordt gebruikt voor deze Quick start is **VS-Oost**. |
+    |Clustertype| Selecteer **Spark** als het cluster type.|
+    |Clusterversie|Dit veld wordt automatisch ingevuld met de standaard versie zodra het cluster type is geselecteerd.|
+    |Gebruikersnaam voor clusteraanmeldgegevens| Voer de gebruikersnaam voor aanmelding bij het cluster in.  De standaardnaam is *admin*. U gebruikt dit account om u verderop in de snelstartgids aan te melden bij het Jupyter-notebook. |
+    |Wachtwoord voor clusteraanmeldgegevens| Voer het wachtwoord voor aanmelding bij het cluster in. |
+    |SSH-gebruikersnaam (Secure Shell)| Voer de SSH-gebruikersnaam in. De SSH-gebruikersnaam voor deze snelstartgids is **sshuser**. De standaardinstelling is dat voor dit account hetzelfde wachtwoord wordt gebruikt als voor *Gebruikersnaam voor clusteraanmeldgegevens*. |
 
-    ![HDInsight Spark-cluster maken - basisconfiguratie](./media/apache-spark-jupyter-spark-sql-use-portal/azure-portal-create-hdinsight-spark-cluster-basic2.png "Spark-cluster maken in HDInsight - basisconfiguratie")
+    ![HDInsight Spark-cluster maken - basisconfiguratie](./media/apache-spark-jupyter-spark-sql-use-portal/azure-portal-cluster-basics-spark.png "Spark-cluster maken in HDInsight - basisconfiguratie")
 
-    Selecteer **Volgende** om naar de pagina **Opslag** te gaan.
+    Selecteer **Volgende: Opslag > >**  om door te gaan naar de **opslag** pagina.
 
-3. Geef onder **Opslag** de volgende waarden op:
+1. Geef onder **Opslag** de volgende waarden op:
 
-   - **Selecteer een opslagaccount**: selecteer **Nieuw** en geef vervolgens een naam op voor het nieuwe opslagaccount. De naam van het opslagaccount dat we gebruiken voor deze snelstartgids is **myspark20180403store**.
+    |Eigenschap  |Description  |
+    |---------|---------|
+    |Type van primaire opslag|Gebruik de standaard waarde **Azure Storage**.|
+    |Selectiemethode|Gebruik de standaard waarde **uit de lijst**.|
+    |Primair opslagaccount|De automatisch ingevulde waarde gebruiken.|
+    |Container|De automatisch ingevulde waarde gebruiken.|
 
-     ![HDInsight Spark-cluster maken - opslagconfiguratie](./media/apache-spark-jupyter-spark-sql-use-portal/azure-portal-create-hdinsight-spark-cluster-storage.png "Spark-cluster maken in HDInsight - opslagconfiguratie")
+    ![HDInsight Spark-cluster maken - basisconfiguratie](./media/apache-spark-jupyter-spark-sql-use-portal/azure-portal-cluster-storage-spark.png "Spark-cluster maken in HDInsight - basisconfiguratie")
 
-     > [!NOTE]  
-     > In de schermafbeelding staat **Bestaande selecteren**. De koppeling heeft achtereenvolgens de naam **Nieuw** en **Bestaande selecteren**.
+    Selecteer **controleren + maken** om door te gaan.
 
-     De **standaardcontainer** heeft een standaardnaam.  U kunt deze naam desgewenst wijzigen.
-
-     Selecteer **Volgende** om naar de pagina **Overzicht** te gaan.
-
-4. Selecteer **Maken** op het tabblad **Overzicht**. Het duurt ongeveer 20 minuten om het cluster te maken. Het cluster moet zijn gemaakt voordat u verder kunt gaan met de volgende sessie.
+1. Selecteer onder **controleren en maken**de optie **maken**. Het duurt ongeveer 20 minuten om het cluster te maken. Het cluster moet zijn gemaakt voordat u verder kunt gaan met de volgende sessie.
 
 Als u een probleem ondervindt met het maken van HDInsight-clusters, beschikt u mogelijk niet over de juiste machtigingen om dit te doen. Zie [Vereisten voor toegangsbeheer](../hdinsight-hadoop-create-linux-clusters-portal.md) voor meer informatie.
 
@@ -71,15 +72,16 @@ Als u een probleem ondervindt met het maken van HDInsight-clusters, beschikt u m
 Jupyter Notebook is een interactieve notitieblokomgeving die ondersteuning biedt voor verschillende programmeertalen. Via het notitieblok kunt u interactie hebben met uw gegevens, code combineren met markdown-tekst en eenvoudige visualisaties uitvoeren.
 
 1. Open de [Azure Portal](https://portal.azure.com).
-2. Selecteer **HDInsight-clusters** en selecteer vervolgens het cluster dat u hebt gemaakt.
+
+1. Selecteer **HDInsight-clusters** en selecteer vervolgens het cluster dat u hebt gemaakt.
 
     ![HDInsight-cluster openen in Azure Portal](./media/apache-spark-jupyter-spark-sql/azure-portal-open-hdinsight-cluster.png)
 
-3. Selecteer **Clusterdashboard** in het portal en selecteer vervolgens **Jupyter Notebook**. Voer de aanmeldingsreferenties voor het cluster in als u daarom wordt gevraagd.
+1. Selecteer **Clusterdashboard** in het portal en selecteer vervolgens **Jupyter Notebook**. Voer de aanmeldingsreferenties voor het cluster in als u daarom wordt gevraagd.
 
    ![Jupyter Notebook openen om de interactieve Spark SQL-query uit te voeren](./media/apache-spark-jupyter-spark-sql/hdinsight-spark-open-jupyter-interactive-spark-sql-query.png "Jupyter Notebook openen om de interactieve Apache Spark SQL-query uit te voeren")
 
-4. Selecteer **Nieuw** > **PySpark** om een notebook te maken. 
+1. Selecteer **Nieuw** > **PySpark** om een notebook te maken.
 
    ![Jupyter Notebook maken om de interactieve Spark SQL-query uit te voeren](./media/apache-spark-jupyter-spark-sql/hdinsight-spark-create-jupyter-interactive-spark-sql-query.png "Jupyter Notebook maken om de interactieve Apache Spark SQL-query uit te voeren")
 
@@ -136,4 +138,4 @@ U kunt ook de naam van de resourcegroep selecteren om de pagina van de resourceg
 In deze snelstart hebt u geleerd hoe u een HDInsight Spark-cluster maakt en een eenvoudige Spark SQL-query uitvoert. Ga naar de volgende zelfstudie voor informatie over het gebruik van een HDInsight Spark-cluster om interactieve query's uit te voeren op voorbeeldgegevens.
 
 > [!div class="nextstepaction"]
->[Interactieve query's uitvoeren in Apache Spark](./apache-spark-load-data-run-query.md)
+> [Interactieve query's uitvoeren in Apache Spark](./apache-spark-load-data-run-query.md)

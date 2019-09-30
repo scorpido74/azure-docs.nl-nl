@@ -6,14 +6,17 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/22/2019
 ms.author: dech
-ms.openlocfilehash: 824a562cb5f0562a235d903fbd4e575bc9c22572
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 22bad3b31b8cbe54900b96bd4b327f18916e81a3
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71672739"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71677150"
 ---
 # <a name="enable-notebooks-for-azure-cosmos-db-accounts"></a>Notebooks inschakelen voor Azure Cosmos DB accounts
+
+> [!IMPORTANT]
+> Ingebouwde notitie blokken voor Azure Cosmos DB zijn momenteel beschikbaar in de volgende Azure-regio's: Australië-oost, VS-Oost, VS-Oost 2, Europa-noord, Zuid-Centraal VS, Zuidoost-Azië, UK-zuid, Europa-west en VS-West 2. Als u notebooks wilt gebruiken, [maakt u een nieuw account met notitie blokken](#enable-notebooks-in-a-new-cosmos-account) of [schakelt u notitie blokken in voor een bestaand account](#enable-notebooks-in-an-existing-cosmos-account) in een van deze regio's.
 
 Met ingebouwde Jupyter-notebooks in Azure Cosmos DB kunt u uw gegevens van de Azure Portal analyseren en visualiseren. In dit artikel wordt beschreven hoe u deze functie inschakelt voor uw Azure Cosmos DB-account.
 
@@ -67,4 +70,3 @@ U kunt ook **Nieuw notitie blok** selecteren om een nieuw notitie blok te maken 
 ## <a name="next-steps"></a>Volgende stappen
 
 - Meer informatie over de voor delen van [Azure Cosmos DB Jupyter-notebooks](cosmosdb-jupyter-notebooks.md)
-- Meer informatie over [het gebruik van notitieblok functies en-opdrachten](use-notebook-features-and-commands.md)

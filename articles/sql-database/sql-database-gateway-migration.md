@@ -10,12 +10,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 07/01/2019
-ms.openlocfilehash: 2e578c6bfdfb25eaba3d0c692ff33aa5b0572669
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: a2064e0012abea237c1b4c0c6f7e35119c1aeff5
+ms.sourcegitcommit: 6013bacd83a4ac8a464de34ab3d1c976077425c7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70305999"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71686810"
 ---
 # <a name="azure-sql-database-traffic-migration-to-newer-gateways"></a>Azure SQL Database verkeer migratie naar nieuwere gateways
 
@@ -52,7 +52,7 @@ U hebt de volgende gevolgen:
 
 ## <a name="what-to-do-you-do-if-youre-affected"></a>Wat u moet doen als dit van invloed is
 
-We raden u aan om uitgaand verkeer naar IP-adressen toe te staan voor alle [IP-adressen van de Azure SQL database gateway](sql-database-connectivity-architecture.md#azure-sql-database-gateway-ip-addresses) in de regio op TCP-poort 1433 en poort bereik 11000-11999 op uw firewall-apparaat. Zie [verbindings beleid](sql-database-connectivity-architecture.md#connection-policy)voor meer informatie over poortbereiken.
+We raden u aan om uitgaand verkeer naar IP-adressen toe te staan voor alle [IP-adressen van de Azure SQL database gateway](sql-database-connectivity-architecture.md#azure-sql-database-gateway-ip-addresses) in de regio op TCP-poort 1433 en poort bereik 11000-11999. Deze aanbeveling is van toepassing op clients die vanaf on-premises verbinding maken en die verbinding maken via service-eind punten. Zie [verbindings beleid](sql-database-connectivity-architecture.md#connection-policy)voor meer informatie over poortbereiken.
 
 Voor verbindingen die zijn gemaakt via toepassingen met het micro soft JDBC-stuur programma onder versie 4,0, kan het certificaat niet worden gevalideerd. Lagere versies van micro soft JDBC zijn afhankelijk van de algemene naam (CN) in het veld onderwerp van het certificaat. De beperking is om ervoor te zorgen dat de eigenschap hostNameInCertificate is ingesteld op *. database.windows.net. Zie [verbinding maken met SSL-versleuteling](/sql/connect/jdbc/connecting-with-ssl-encryption)voor meer informatie over het instellen van de eigenschap hostNameInCertificate.
 

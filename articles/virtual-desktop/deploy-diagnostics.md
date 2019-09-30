@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/14/2019
 ms.author: helohr
-ms.openlocfilehash: 625515223da12751b7765baa795bc68d2a7b46b4
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 07a45f54eb7c00e20abcfb05979e24493e5b9604
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70233250"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71676662"
 ---
 # <a name="deploy-the-diagnostics-tool"></a>Het diagnosehulpprogramma implementeren
 
@@ -98,13 +98,13 @@ U kunt als volgt de aanbevolen prestatie meter items hand matig configureren:
 1. Open uw Internet browser en meld u aan bij de [Azure Portal](https://portal.azure.com/) met uw beheerders account.
 2. Ga vervolgens naar **log Analytics-werk ruimten** om de geconfigureerde Windows-prestatie meter items te controleren.
 3. Selecteer in de sectie **instellingen** de optie **Geavanceerde instellingen**.
-4. Daarna gaat u naar **gegevens** > **prestatie meter items van Windows** en voegt u de volgende tellers toe:
+4. Daarna gaat u naar **gegevens** > **Windows-prestatie meter items** en voegt u de volgende tellers toe:
 
-    -   Logische schijf\*(\|)% beschik bare ruimte
-    -   Logische schijf (C\\:) gem. Lengte van de wachtrij voor de schijf
-    -   Beschik\*bare\\MB geheugen ()
-    -   Processor informatie (\*)\\processor tijd
-    -   Gebruikers invoer vertraging per sessie (\*)\\maximale invoer vertraging
+    -   Logische schijf (\*) \|% beschik bare ruimte
+    -   Logische schijf (C:) \\Avg. Lengte van de wachtrij voor de schijf
+    -   Geheugen (\*) \\Available Mbytes
+    -   Processor informatie (\*) \\Processor tijd
+    -   Gebruikers invoer vertraging per sessie (\*) @no__t-invoer vertraging 1Max
 
 Meer informatie over de prestatie meter items [in Windows-en Linux-prestatie gegevens bronnen in azure monitor](/azure/azure-monitor/platform/data-sources-performance-counters).
 
@@ -134,11 +134,11 @@ Zorg ervoor dat uw Log Analytics-werk ruimte de vooraf geconfigureerde Windows-p
 3. Daarna gaat u naar **gegevens** > **Windows-prestatie meter items**.
 4. Zorg ervoor dat de volgende prestatie meter items zijn geconfigureerd:
 
-   - Logische schijf\*(\|)% beschik bare ruimte: Hier wordt de hoeveelheid beschik bare ruimte van de totale bruikbare ruimte op de schijf weer gegeven als een percentage.
-   - Logische schijf (C\\:) gem. Wachtrij lengte voor schijf: De lengte van de aanvraag voor het overdragen van schijven voor uw C-station. De waarde mag niet langer zijn dan 2 gedurende een korte periode.
-   - Beschik\*bare\\mega bytes () geheugen (): Het beschik bare geheugen voor het systeem in mega bytes.
-   - Processor informatie (\*)\\processor tijd: het percentage van de verstreken tijd dat de processor nodig heeft om een niet-inactieve thread uit te voeren.
-   - Gebruikers invoer vertraging per sessie (\*)\\maximale invoer vertraging
+   - Logische schijf (\*) \|% beschik bare ruimte: Hier wordt de hoeveelheid beschik bare ruimte van de totale bruikbare ruimte op de schijf weer gegeven als een percentage.
+   - Logische schijf (C:) \\Avg. Wachtrij lengte voor schijf: De lengte van de aanvraag voor het overdragen van schijven voor uw C-station. De waarde mag niet langer zijn dan 2 gedurende een korte periode.
+   - Geheugen (\*) @no__t 1Available Mbytes: Het beschik bare geheugen voor het systeem in mega bytes.
+   - Processor informatie (\*) \\Processor tijd: het percentage van de verstreken tijd dat de processor nodig heeft om een niet-inactieve thread uit te voeren.
+   - Gebruikers invoer vertraging per sessie (\*) @no__t-invoer vertraging 1Max
 
 ### <a name="connect-to-vms-in-your-log-analytics-workspace"></a>Verbinding maken met virtuele machines in uw Log Analytics-werk ruimte
 
@@ -173,15 +173,15 @@ De omleidings-URI instellen:
 
 1.  Ga in het [Azure Portal](https://portal.azure.com/)naar **app Services** en zoek de toepassing die u hebt gemaakt.
 2.  Ga naar de pagina overzicht en kopieer de URL die u hier vindt.
-3.  Navigeer naar **app** -registraties en selecteer de app die u wilt implementeren.
+3.  Navigeer naar **app-registraties** en selecteer de app die u wilt implementeren.
 4.  Selecteer in het linkerdeel venster onder sectie beheren de optie **verificatie**.
-5.  Voer de gewenste omleidings-URI in het tekstvak omleidings- **URI** in en selecteer vervolgens **Opslaan** in de linkerbovenhoek van het menu.
+5.  Voer de gewenste omleidings-URI in het tekstvak **omleidings-URI** in en selecteer vervolgens **Opslaan** in de linkerbovenhoek van het menu.
 6. Selecteer **Web** in de vervolg keuzelijst onder Type.
 7. Voer de URL van de overzichts pagina van de app in en voeg **/Security/signin-callback** toe aan het eind. Bijvoorbeeld: `https://<yourappname>.azurewebsites.net/security/signin-callback`.
 
    ![De omleidings-URI-pagina](media/redirect-uri-page.png)
 
-8. Ga nu naar uw Azure-resources, selecteer de Azure-app Services-resource met de naam die u hebt ingevoerd in de sjabloon en navigeer naar de URL die eraan is gekoppeld. (Als de naam van de app die u in de sjabloon `contosoapp45`hebt gebruikt, bijvoorbeeld is, is <https://contosoapp45.azurewebsites.net>de bijbehorende URL).
+8. Ga nu naar uw Azure-resources, selecteer de Azure-app Services-resource met de naam die u hebt ingevoerd in de sjabloon en navigeer naar de URL die eraan is gekoppeld. (Als de naam van de app die u in de sjabloon hebt gebruikt, bijvoorbeeld is `contosoapp45`, is de gekoppelde URL <https://contosoapp45.azurewebsites.net>).
 9. Meld u aan met het juiste Azure Active Directory gebruikers account.
 10.   Selecteer **Accepteren**.
 
@@ -189,8 +189,8 @@ De omleidings-URI instellen:
 
 Voordat u het hulp programma voor diagnostische gegevens beschikbaar maakt voor uw gebruikers, moet u ervoor zorgen dat ze over de volgende machtigingen beschikken:
 
-- Gebruikers hebben lees toegang nodig voor log Analytics. Zie [aan de slag met rollen, machtigingen en beveiliging met Azure monitor](/azure/azure-monitor/platform/roles-permissions-security)voor meer informatie.
--  Gebruikers hebben ook lees toegang nodig voor de Windows-Tenant voor virtueel bureau blad (functie voor RDS-lezer). Zie voor meer informatie [gedelegeerde toegang in Windows virtueel bureau blad preview](delegated-access-virtual-desktop.md).
+- Gebruikers hebben lees toegang nodig voor log Analytics. Zie [aan de slag met rollen, machtigingen en beveiliging met Azure monitor](/articles/azure-monitor/platform/roles-permissions-security.md)voor meer informatie.
+-  Gebruikers hebben ook lees toegang nodig voor de Windows-Tenant voor virtueel bureau blad (functie voor RDS-lezer). Zie voor meer informatie [gedelegeerde toegang in virtueel bureau blad van Windows](delegated-access-virtual-desktop.md).
 
 U moet uw gebruikers ook de volgende informatie geven:
 
@@ -226,25 +226,25 @@ U kunt ook communiceren met gebruikers op de sessiehost:
 
 ### <a name="windows-performance-counter-thresholds"></a>Drempel waarden voor prestatie meter items voor Windows
 
-- Logische schijf\*(\|)% beschik bare ruimte:
+- Logische schijf (\*) \|% beschik bare ruimte:
 
     - Hiermee wordt het percentage van de totale bruikbare ruimte op de logische schijf weer gegeven die vrij is.
     - Spreek Minder dan 20% is gemarkeerd als beschadigd.
 
-- Logische schijf (C\\:) gem. Wachtrij lengte voor schijf:
+- Logische schijf (C:) \\Avg. Wachtrij lengte voor schijf:
 
     - Geeft de voor waarden van het opslag systeem aan.
     - Spreek Hoger dan 5 is gemarkeerd als beschadigd.
 
-- Beschik\*bare\\mega bytes () geheugen ():
+- Geheugen (\*) @no__t 1Available Mbytes:
 
     - Het beschik bare geheugen voor het systeem.
     - Spreek Minder dan 500 mega bytes gemarkeerd als beschadigd.
 
-- Processor informatie (\*)\\processor tijd:
+- Processor informatie (\*) \\Processor tijd:
 
     - Spreek Meer dan 80% is gemarkeerd als beschadigd.
 
-- [Gebruikers invoer vertraging per sessie (\*)\\maximale invoer vertraging](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-rdsh-performance-counters):
+- [Gebruikers invoer vertraging per sessie (\*) @no__t-invoer vertraging 2Max](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-rdsh-performance-counters):
 
     - Spreek Meer dan 2000 MS is gemarkeerd als beschadigd.

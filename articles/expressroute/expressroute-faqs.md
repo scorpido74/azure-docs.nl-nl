@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: jaredro
 ms.custom: seodec18
-ms.openlocfilehash: 886dd9b0f3c72fc7649b1e2fc3927cfa87f65312
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.openlocfilehash: 4fd27acc58f5aaeb9b7680062ad97aaba22dec51
+ms.sourcegitcommit: 6013bacd83a4ac8a464de34ab3d1c976077425c7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71316512"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71686995"
 ---
 # <a name="expressroute-faq"></a>Veelgestelde vragen ExpressRoute
 
@@ -70,7 +70,7 @@ ExpressRoute ondersteunt [drie routerings domeinen](expressroute-circuit-peering
 * De meeste van de Azure-services worden ondersteund. Controleer of rechtstreeks met de service die u wilt gebruiken om te controleren of de ondersteuning.<br><br>**De volgende services worden niet ondersteund**:
     * CDN
     * Azure Front Door
-    * Multi-Factor Authentication
+    * Multi-factor Authentication-Server (verouderd)
     * Traffic Manager
 
 ### <a name="public-peering"></a>Openbare peering
@@ -84,7 +84,7 @@ ExpressRoute ondersteunt [drie routerings domeinen](expressroute-circuit-peering
   **De volgende services worden niet ondersteund**:
     * CDN
     * Azure Front Door
-    * Multi-Factor Authentication
+    * Multi-factor Authentication-Server (verouderd)
     * Traffic Manager
 
 ### <a name="is-dynamics-365-supported-on-expressroute"></a>Wordt Dynamics 365 ondersteund op ExpressRoute?

@@ -1,22 +1,22 @@
 ---
 title: Een VHD-model installatie kopie voorbereiden en aanpassen-Azure
-description: Een installatie kopie van een virtuele Windows Desktop-Preview Master voorbereiden, aanpassen en uploaden naar Azure.
+description: Een installatie kopie van een virtueel bureau blad van Windows voorbereiden, aanpassen en uploaden naar Azure.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: helohr
-ms.openlocfilehash: 8127c0a42ec42a661af31cc489964cc40cb4937d
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 379664fb7170249b8f21ec9826f8b0b6fbe19892
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69981080"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71679531"
 ---
 # <a name="prepare-and-customize-a-master-vhd-image"></a>Een VHD-hoofdinstallatiekopie voorbereiden en aanpassen
 
-In dit artikel leest u hoe u een installatie kopie van een virtuele harde schijf (VHD) voor het uploaden naar Azure voorbereidt, inclusief het maken van virtuele machines (Vm's) en het installeren van software. Deze instructies gelden voor een Windows-voor beeld-specifieke configuratie voor virtuele Bureau bladen die kan worden gebruikt met de bestaande processen van uw organisatie.
+In dit artikel leest u hoe u een installatie kopie van een virtuele harde schijf (VHD) voor het uploaden naar Azure voorbereidt, inclusief het maken van virtuele machines (Vm's) en het installeren van software. Deze instructies gelden voor een Windows-specifieke configuratie voor virtueel bureau blad die kan worden gebruikt met de bestaande processen van uw organisatie.
 
 ## <a name="create-a-vm"></a>Een virtuele machine maken
 
@@ -72,7 +72,7 @@ Als uw gebruikers toegang moeten hebben tot bepaalde LOB-toepassingen, raden we 
 
 Automatische updates via lokale groepsbeleid uitschakelen:
 
-1. Open **lokale Groepsbeleidsobjecteditor\\\\Beheersjablonen\\Windows-onderdelen Windows Update**.
+1. Open **lokale Groepsbeleidsobjecteditor @ no__t-1Administrative templates @ no__t-2Windows Components @ no__t-3Windows update**.
 2. Klik met de rechter muisknop op **Automatische updates configureren** en stel deze in op **uitgeschakeld**.
 
 U kunt ook de volgende opdracht uitvoeren op een opdracht prompt om Automatische updates uit te scha kelen.
@@ -101,7 +101,7 @@ Deze configuratie verwijdert alleen het scannen van VHD-en VHDX-bestanden tijden
 
 Zie [Windows Defender anti virus-uitsluitingen configureren op Windows Server](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/configure-server-exclusions-windows-defender-antivirus)voor meer gedetailleerde instructies voor het configureren van Windows Defender op Windows Server.
 
-Zie uitsluitingen [configureren en valideren op basis van bestands extensie en maplocatie](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/configure-extension-file-exclusions-windows-defender-antivirus)voor meer informatie over het configureren van Windows Defender om bepaalde bestanden uit te sluiten.
+Zie [uitsluitingen configureren en valideren op basis van bestands extensie en maplocatie](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/configure-extension-file-exclusions-windows-defender-antivirus)voor meer informatie over het configureren van Windows Defender om bepaalde bestanden uit te sluiten.
 
 ### <a name="configure-session-timeout-policies"></a>Sessietime-outbeleid configureren
 
@@ -109,7 +109,7 @@ Externe-sessie beleidsregels kunnen worden afgedwongen op groepsbeleid niveau, o
 
 Beleid voor externe sessies configureren:
 
-1. Navigeer naar **Beheersjablonen** > **Windows** > -onderdelenexternbureaublad-services > de limieten voor**sessies**van**extern bureaublad sessie**- > sessiehost.
+1. Navigeer naar **Beheersjablonen** > **Windows-onderdelen**@no__t-**3 Extern bureaublad-services** > **extern bureaublad sessiehost** > **sessie tijds limieten**.
 2. Selecteer in het deel venster aan de rechter kant het beleid **tijds limiet instellen voor actieve maar niet-actieve Extern bureaublad-services sessies** .
 3. Nadat het modale venster wordt weer gegeven, wijzigt u de beleids optie van **niet geconfigureerd** in **ingeschakeld** om het beleid te activeren.
 4. Stel de hoeveelheid tijd in het vervolg keuzemenu onder de beleids optie in op **3 uur**.
@@ -134,7 +134,7 @@ Tijd zones omleiden:
 1. Open de **console Groepsbeleidbeheer**op de Active Directory-server.
 2. Breid uw domein en groepsbeleid objecten uit.
 3. Klik met de rechter muisknop op het **Groepsbeleid-object** dat u hebt gemaakt voor de instellingen voor groeps beleid en selecteer **bewerken**.
-4. Ga in het **Groepsbeleidsbeheer-editor**naar **computer configuratie** > **beleid** > **Beheersjablonen** > **Windows-onderdelen**  >   **Extern bureaublad-services** > **extern bureaublad Session**host > -**apparaat en-bron omleiding**.
+4. Ga in het **Groepsbeleidsbeheer-editor**naar **computer configuratie** > **beleid** > **Beheersjablonen** > **Windows-onderdelen** > **extern bureaublad-services**@no__ t-10**extern bureaublad Session Host**2**apparaat en omleiding van bronnen**.
 5. Schakel de instelling **tijd zone omleiding toestaan** in.
 
 U kunt deze opdracht ook uitvoeren op de hoofd installatie kopie om tijd zones om te leiden:
@@ -225,7 +225,7 @@ In de volgende instructies wordt uitgelegd hoe u uw master installatie kopie upl
 Nu u een installatie kopie hebt, kunt u hostgroepen maken of bijwerken. Raadpleeg de volgende artikelen voor meer informatie over het maken en bijwerken van hostgroepen:
 
 - [Een hostgroep met een Azure Resource Manager-sjabloon maken](create-host-pools-arm-template.md)
-- [Zelfstudie: Een hostgroep maken met Azure Marketplace](create-host-pools-azure-marketplace.md)
+- [Zelfstudie: Een hostgroep maken met Azure Marketplace @ no__t-0
 - [Een hostgroep maken met Power shell](create-host-pools-powershell.md)
 - [Een profiel container maken voor een hostgroep met een bestands share](create-host-pools-user-profile.md)
 - [De taakverdelings methode voor virtuele Bureau bladen van Windows configureren](configure-host-pool-load-balancing.md)

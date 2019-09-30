@@ -9,18 +9,18 @@ ms.author: robreed
 ms.date: 05/22/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 253e01b6bfa6609b4ec41d69a3c4b1bbe405ba5a
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: 253fc940cfb42aa9bf7e93dd631d2ca596f7db6f
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240285"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71677872"
 ---
 # <a name="update-management-solution-in-azure"></a>Updatebeheer oplossing in azure
 
 U kunt de Updatebeheer-oplossing in Azure Automation gebruiken om updates van besturings systemen te beheren voor uw Windows-en Linux-computers in azure, in on-premises omgevingen of in andere cloud providers. U kunt snel de status van de beschikbare updates op alle agentcomputers beoordelen en de procedure voor het installeren van vereiste updates voor servers beheren.
 
-U kunt Updatebeheer voor virtuele machines rechtstreeks inschakelen vanuit uw Azure Automation-account. Zie [updates voor meerdere virtuele machines beheren](manage-update-multi.md)voor meer informatie over het inschakelen van updatebeheer voor virtuele machines vanuit uw Automation-account. U kunt Updatebeheer ook inschakelen voor een virtuele machine vanaf de pagina virtuele machine in de Azure Portal. Dit scenario is beschikbaar voor virtuele [Linux](../virtual-machines/linux/tutorial-monitoring.md#enable-update-management) -en [Windows](../virtual-machines/windows/tutorial-monitoring.md#enable-update-management) -machines.
+U kunt Updatebeheer voor virtuele machines rechtstreeks inschakelen vanuit uw Azure Automation-account. Zie [updates voor meerdere virtuele machines beheren](manage-update-multi.md)voor meer informatie over het inschakelen van updatebeheer voor virtuele machines vanuit uw Automation-account. U kunt Updatebeheer ook inschakelen voor een virtuele machine vanaf de pagina virtuele machine in de Azure Portal. Dit scenario is beschikbaar voor virtuele [Linux](../virtual-machines/linux/tutorial-config-management.md#enable-update-management) -en [Windows](../virtual-machines/windows/tutorial-config-management.md#enable-update-management) -machines.
 
 > [!NOTE]
 > Voor de Updatebeheer oplossing moet u een Log Analytics-werk ruimte koppelen aan uw Automation-account. Zie [Azure Workspace-toewijzingen](./how-to/region-mappings.md)voor een definitieve lijst met ondersteunde regio's. De regio toewijzingen hebben geen invloed op de mogelijkheid om virtuele machines in een andere regio dan uw Automation-account te beheren.
@@ -222,7 +222,7 @@ Als u een zoek opdracht in het logboek wilt uitvoeren die informatie over de com
 
 ## <a name="install-updates"></a>Updates installeren
 
-Nadat de updates zijn beoordeeld voor alle Linux-en Windows-computers in uw werk ruimte, kunt u de vereiste updates installeren door een *Update-implementatie*te maken. Als u een update-implementatie wilt maken, moet u schrijf toegang hebben tot het Automation-account en schrijf toegang hebben tot de Azure-Vm's die in de implementatie zijn gericht. Een update-implementatie is een geplande installatie van de vereiste updates voor een of meer computers. U geeft de datum en tijd op voor de implementatie en een computer of groep computers die moeten worden opgenomen in het bereik van een implementatie. Zie [computer groepen in azure monitor](../azure-monitor/platform/computer-groups.md)-logboeken voor meer informatie over computer groepen.
+Nadat de updates zijn beoordeeld voor alle Linux-en Windows-computers in uw werk ruimte, kunt u de vereiste updates installeren door een *Update-implementatie*te maken. Als u een update-implementatie wilt maken, moet u schrijf toegang hebben tot het Automation-account en schrijf toegang hebben tot Azure-Vm's die in de implementatie zijn gericht. Een update-implementatie is een geplande installatie van de vereiste updates voor een of meer computers. U geeft de datum en tijd op voor de implementatie en een computer of groep computers die moeten worden opgenomen in het bereik van een implementatie. Zie [computer groepen in azure monitor](../azure-monitor/platform/computer-groups.md)-logboeken voor meer informatie over computer groepen.
 
 Wanneer u computer groepen opneemt in uw update-implementatie, wordt het groepslid maatschap slechts één keer geëvalueerd, op het moment dat het schema wordt gemaakt. Volgende wijzigingen aan een groep worden niet doorgevoerd. Om deze [dynamische groepen](#using-dynamic-groups)te gebruiken, worden deze groepen tijdens de implementatie omgezet en worden ze gedefinieerd door een query voor virtuele machines in azure of een opgeslagen zoek opdracht voor niet-Azure vm's.
 

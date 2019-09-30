@@ -1,25 +1,25 @@
 ---
 title: Beheer hulpprogramma implementeren-Azure
-description: Een gebruikers interface-hulp programma installeren voor het beheren van de preview-bronnen van Windows virtueel bureau blad.
+description: Een gebruikers interface-hulp programma installeren voor het beheren van virtuele bureau blad-resources van Windows.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 06/04/2019
 ms.author: helohr
-ms.openlocfilehash: e0f9dbd9bf6b0c12d3e3f028ab9cd4c80cdb5124
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: f07403d8d0b2c6d0dd7a6b851a87b47b0c32501a
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68816499"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71679489"
 ---
 # <a name="tutorial-deploy-a-management-tool"></a>Zelfstudie: Een hulpprogramma voor beheer implementeren
 
-Het beheer programma biedt een gebruikers interface (UI) voor het beheren van micro soft-preview-bronnen voor virtuele Bureau bladen. In deze zelf studie leert u hoe u het beheer programma implementeert en er verbinding mee maakt.
+Het beheer programma biedt een gebruikers interface (UI) voor het beheren van micro soft-resources voor virtuele Bureau bladen. In deze zelf studie leert u hoe u het beheer programma implementeert en er verbinding mee maakt.
 
 >[!NOTE]
->Deze instructies gelden voor een Windows-voor beeld-specifieke configuratie voor virtuele Bureau bladen die kan worden gebruikt met de bestaande processen van uw organisatie.
+>Deze instructies gelden voor een Windows-specifieke configuratie voor virtueel bureau blad die kan worden gebruikt met de bestaande processen van uw organisatie.
 
 ## <a name="important-considerations"></a>Belang rijke overwegingen
 
@@ -31,7 +31,7 @@ Dit beheer programma is een voor beeld. Micro soft zal belang rijke updates voor
 
 Voordat u de Azure Resource Manager-sjabloon implementeert, hebt u een Azure Active Directory gebruiker nodig om de beheer GEBRUIKERSINTERFACE te implementeren. Deze gebruiker moet:
 
-- Azure multi-factor Authentication (MFA) is uitgeschakeld
+- Azure Multi-Factor Authentication (MFA) is uitgeschakeld
 - Machtiging voor het maken van resources in uw Azure-abonnement
 - Toestemming voor het maken van een Azure AD-toepassing. Volg deze stappen om te controleren of uw gebruiker over de [vereiste machtigingen](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#required-permissions)beschikt.
 
@@ -50,15 +50,15 @@ Volg deze instructies voor het implementeren van de Azure resource management-sj
     - Als u in een Cloud Solution Provider-abonnement implementeert, volgt u deze instructies om te implementeren in Azure:
         1. Schuif omlaag en klik met de rechter muisknop op **implementeren naar Azure**, en selecteer vervolgens **koppelings locatie kopiëren**.
         2. Open een tekst editor zoals Klad blok en plak de koppeling daar.
-        3. Voer direct <https://portal.azure.com/> na en vóór de hashtag (#) een apen staartje (@) in, gevolgd door de domein naam van de Tenant. Hier volgt een voor beeld van de notatie <https://portal.azure.com/@Contoso.onmicrosoft.com#create/>:.
+        3. Voer direct na <https://portal.azure.com/> en vóór de hashtag (#) een apen staartje (@) in, gevolgd door de domein naam van de Tenant. Hier volgt een voor beeld van de notatie: <https://portal.azure.com/@Contoso.onmicrosoft.com#create/>.
         4. Meld u aan bij de Azure Portal als gebruiker met beheerders-en Inzender machtigingen voor het Cloud Solution Provider-abonnement.
         5. Plak de koppeling die u naar de tekst editor hebt gekopieerd naar de adres balk.
 
 ### <a name="guidance-for-template-parameters"></a>Richt lijnen voor sjabloon parameters
 U kunt als volgt para meters invoeren voor het configureren van het hulp programma:
 
-- Dit is de URL van de extern bureau blad\/-Broker: https:/rdbroker.WVD.Microsoft.com/
-- Dit is de bron-URL: https\/:/Mrs-Prod.AME.GBL/Mrs-RDInfra-Prod
+- Dit is de URL van de extern bureau blad-Broker: https: \//rdbroker. WVD. Microsoft. com/
+- Dit is de bron-URL: https: \//Mrs-Prod. AAM. GBL/Mevr-RDInfra-Prod
 - Gebruik uw AAD-referenties met MFA uitgeschakeld om u aan te melden bij Azure. Bekijk [wat u nodig hebt om de Azure Resource Manager-sjabloon uit te voeren](#what-you-need-to-run-the-azure-resource-manager-template).
 - Gebruik een unieke naam voor de toepassing die wordt geregistreerd in uw Azure Active Directory voor het beheer programma. bijvoorbeeld Apr3UX.
 

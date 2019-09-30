@@ -1,22 +1,22 @@
 ---
-title: Een hostgroep voor virtuele Windows-Bureau bladen maken met Power shell-Azure
-description: Een hostgroep maken in Windows virtueel bureau blad Preview met Power shell-cmdlets.
+title: Een Windows-hostgroep voor virtueel bureau blad maken met Power shell-Azure
+description: Een hostgroep in Windows Virtual Desktop maken met Power shell-cmdlets.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: helohr
-ms.openlocfilehash: 1fb377d482277a4776214d08b879d99f4234ca40
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: a5e228417610a19c38acf9ce2db6e743ec122580
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70163680"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71679577"
 ---
 # <a name="create-a-host-pool-with-powershell"></a>Een hostpool maken met PowerShell
 
-Hostgroepen zijn een verzameling van een of meer identieke virtuele machines in Windows Virtual Desktop-Preview-Tenant omgevingen. Elke hostgroep kan een app-groep bevatten waarmee gebruikers kunnen communiceren, op dezelfde manier als op een fysiek bureau blad.
+Hostgroepen zijn een verzameling van een of meer identieke virtuele machines in Windows-Tenant omgevingen voor virtueel bureau blad. Elke hostgroep kan een app-groep bevatten waarmee gebruikers kunnen communiceren, op dezelfde manier als op een fysiek bureau blad.
 
 ## <a name="use-your-powershell-client-to-create-a-host-pool"></a>De Power shell-client gebruiken voor het maken van een hostgroep
 
@@ -48,7 +48,7 @@ Add-RdsAppGroupUser -TenantName <tenantname> -HostPoolName <hostpoolname> -AppGr
 
 De cmdlet **add-RdsAppGroupUser** biedt geen ondersteuning voor het toevoegen van beveiligings groepen en voegt slechts één gebruiker tegelijk toe aan de app-groep. Als u meerdere gebruikers wilt toevoegen aan de app-groep, voert u de cmdlet opnieuw uit met de juiste UPN-namen.
 
-Voer de volgende cmdlet uit om het registratie token te exporteren naar een variabele, die u later gaat gebruiken in [REGI Steren van de virtuele machines naar de hostgroep van het virtuele Windows-bureau blad](#register-the-virtual-machines-to-the-windows-virtual-desktop-preview-host-pool).
+Voer de volgende cmdlet uit om het registratie token te exporteren naar een variabele, die u later gaat gebruiken in [REGI Steren van de virtuele machines naar de hostgroep van het virtuele Windows-bureau blad](#register-the-virtual-machines-to-the-windows-virtual-desktop-host-pool).
 
 ```powershell
 $token = (Export-RdsRegistrationInfo -TenantName <tenantname> -HostPoolName <hostpoolname>).Token
@@ -64,9 +64,12 @@ U kunt op verschillende manieren een virtuele machine maken:
 - [Een virtuele machine maken op basis van een beheerde installatie kopie](https://docs.microsoft.com/azure/virtual-machines/windows/create-vm-generalized-managed)
 - [Een virtuele machine maken op basis van een onbeheerde installatie kopie](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-from-user-image)
 
+>[!NOTE]
+>Als u een virtuele machine implementeert met Windows 7 als besturings systeem van de host, is het proces voor maken en implementeren iets anders. Zie [een virtuele Windows 7-machine implementeren op het virtuele bureau blad van Windows](deploy-windows-7-virtual-machine.md)voor meer informatie.
+
 Nadat u de virtuele machines van de sessiehost hebt gemaakt, [past u een Windows-licentie toe op een host-VM](./apply-windows-license.md#apply-a-windows-license-to-a-session-host-vm) om uw Windows-of Windows Server-machines uit te voeren zonder dat u voor een andere licentie betaalt. 
 
-## <a name="prepare-the-virtual-machines-for-windows-virtual-desktop-preview-agent-installations"></a>De virtuele machines voorbereiden voor de Windows-preview-agent installaties voor virtuele Bureau bladen
+## <a name="prepare-the-virtual-machines-for-windows-virtual-desktop-agent-installations"></a>De virtuele machines voorbereiden voor installaties van Virtual Desktop agent voor Windows
 
 U moet de volgende stappen uitvoeren om uw virtuele machines voor te bereiden voordat u de virtuele bureau blad-agents van Windows kunt installeren en de virtuele machines aan uw Windows Virtual Desktop host-groep moet registreren:
 
@@ -82,9 +85,9 @@ Ga als volgt te werk op elke virtuele machine voor een geslaagde domein koppelin
 5. Verifieer met een domein account dat bevoegdheden heeft voor computers die lid zijn van een domein.
 
     >[!NOTE]
-    > Als u uw Vm's lid maakt van een Azure Active Directory Domain Services-omgeving (Azure AD DS), moet u ervoor zorgen dat uw domein deelname ook lid is van de [groep Aad DC](../active-directory-domain-services/tutorial-create-instance.md#configure-an-administrative-group)-Administrators.
+    > Als u uw Vm's lid maakt van een Azure Active Directory Domain Services-omgeving (Azure AD DS), moet u ervoor zorgen dat uw domein deelname ook lid is van de [groep Aad DC-Administrators](../active-directory-domain-services/tutorial-create-instance.md#configure-an-administrative-group).
 
-## <a name="register-the-virtual-machines-to-the-windows-virtual-desktop-preview-host-pool"></a>De virtuele machines registreren bij de hostgroep voor Windows virtueel bureau blad-voor beeld
+## <a name="register-the-virtual-machines-to-the-windows-virtual-desktop-host-pool"></a>De virtuele machines registreren bij de hostgroep voor virtuele Windows-Bureau bladen
 
 Het registreren van de virtuele machines in een Windows-hostgroep voor virtueel bureau blad is net zo eenvoudig als het installeren van de virtuele bureau blad-agents van Windows.
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: Spring
 ms.workload: tbd
 ms.date: 01/08/2019
 ms.author: yidon
-ms.openlocfilehash: e27635d153e58f96dad7db6870ed1dc3f640236a
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: f4ebbd4f37422c5aa2fea07a243eb624ec9e2961
+ms.sourcegitcommit: 6013bacd83a4ac8a464de34ab3d1c976077425c7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326474"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71687028"
 ---
 # <a name="quickstart-create-a-java-spring-app-with-azure-app-configuration"></a>Quickstart: Een Java-lente-app maken met Azure-app configuratie
 
@@ -37,7 +37,7 @@ In deze Snelstartgids neemt u Azure-app configuratie op in een Java lente-app om
 
 6. Selecteer **configuratie Explorer** >  **+ maken** om de volgende sleutel-waardeparen toe te voegen:
 
-    | Sleutel | Waarde |
+    | Sleutel | Value |
     |---|---|
     | /application/config.message | Hallo! |
 
@@ -68,7 +68,7 @@ U gebruikt de [lente initialisatie functie](https://start.spring.io/) om een nie
     <dependency>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>spring-cloud-starter-azure-appconfiguration-config</artifactId>
-        <version>1.1.0.M3</version>
+        <version>1.1.0.M4</version>
     </dependency>
     ```
 

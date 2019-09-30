@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab
 ms.date: 07/16/2019
-ms.openlocfilehash: 9bc6cfdcbc67761e99150c730adeb23602232632
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 8b2147ead7c1a6226b68588b9d0dab53da954bf2
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70032946"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71676949"
 ---
 # <a name="sql-database-managed-instance-frequently-asked-questions-faq"></a>Veelgestelde vragen over SQL Database beheerde exemplaren
 
@@ -38,12 +38,19 @@ Zie [technische verschillen tussen service lagen](sql-database-managed-instance-
 
 Zie [bekende problemen](sql-database-managed-instance-transact-sql-information.md#Issues)voor bugs en bekende problemen.
 
+## <a name="where-can-i-find-latest-features-and-the-features-in-public-preview"></a>Waar vind ik de nieuwste functies en de functies van de open bare preview?
+
+Zie [release opmerkingen](/azure/sql-database/sql-database-release-notes?tabs=managed-instance)voor nieuwe en preview-functies.
+
+## <a name="how-much-time-takes-to-create-or-update-instance-or-to-restore-a-database"></a>Hoe lang duurt het om een exemplaar te maken of bij te werken of om een Data Base te herstellen?
+
+De verwachte tijd voor het maken van een nieuw beheerd exemplaar of het wijzigen van de servicelaag (vCores, opslag) is afhankelijk van verschillende factoren. Bekijk de [beheer bewerkingen](/azure/sql-database/sql-database-managed-instance#managed-instance-management-operations) 
+
 ## <a name="can-a-managed-instance-have-the-same-name-as-on-premises-sql-server"></a>Kan een beheerd exemplaar dezelfde naam hebben als de on-premises SQL Server?
 
 Het beheerde exemplaar moet een naam hebben die eindigt op *database.Windows.net*. Als u een andere DNS-zone wilt gebruiken in plaats van de standaard waarde, bijvoorbeeld **mi-een andere naam**. contoso.com: 
 - Gebruik CliConfig voor het definiëren van een alias. Het hulp programma is slechts een wrapper voor register instellingen en kan daarom ook worden uitgevoerd met groeps beleid of script.
 - Gebruik *CNAME* met de optie *TrustServerCertificate = True* .
-
 
 ## <a name="how-can-i-move-database-from-managed-instance-back-to-sql-server-or-azure-sql-database"></a>Hoe kan ik data base van een beheerd exemplaar terugplaatsen naar SQL Server of Azure SQL Database?
 
@@ -55,7 +62,7 @@ Systeem `COPY_ONLY` eigen back-ups die zijn gemaakt van het beheerde exemplaar, 
 
 ## <a name="how-can-i-migrate-my-instance-database-to-a-single-azure-sql-database"></a>Hoe kan ik mijn exemplaar database migreren naar een enkele Azure SQL Database?
 
-U kunt [de data base ook exporteren naar een BACPAC](sql-database-export.md) en vervolgens [het BACPAC-bestand importeren]( sql-database-import.md). 
+U kunt [de data base ook exporteren naar een BACPAC](sql-database-export.md) en vervolgens [het BACPAC-bestand importeren](sql-database-import.md). 
 
 Dit is de aanbevolen benadering als uw data base kleiner is dan 100 GB. Transactionele replicatie kan worden gebruikt als alle tabellen in de data base primaire sleutels hebben.
 
@@ -125,7 +132,8 @@ Klanten wordt aangeraden een aantal beveiligings instellingen en-besturings elem
 Case-study's voor beheerde instanties:
 
 - [Komatsu](https://customers.microsoft.com/story/komatsu-australia-manufacturing-azure)
-- [powerdetails](https://customers.microsoft.com/story/powerdetails-partner-professional-services-azure-sql-database-managed-instance)
+- [KMD](https://customers.microsoft.com/en-ca/story/kmd-professional-services-azure-sql-database)
+- [PowerDETAILS](https://customers.microsoft.com/story/powerdetails-partner-professional-services-azure-sql-database-managed-instance)
 - [Allscripts](https://customers.microsoft.com/story/allscripts-partner-professional-services-azure)  
 Als u een beter inzicht wilt krijgen in de voor delen, kosten en risico's die zijn gekoppeld aan het implementeren van Azure SQL Database beheerde instantie, is er ook een voor beeld van een Forrester: [Totale economische impact van Mi](https://azure.microsoft.com/resources/forrester-tei-sql-database-managed-instance).
 

@@ -1,67 +1,67 @@
 ---
-title: Windows virtuele bureaublad Preview-omgeving - Azure
-description: De basiselementen van een Windows Virtual Desktop Preview-omgeving.
+title: Windows Virtual Desktop-omgeving-Azure
+description: De basis elementen van een virtueel-bureaublad omgeving van Windows.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 04/12/2019
 ms.author: helohr
-ms.openlocfilehash: 6aa6c7326759e480235df5fe9d4b0878cd11024d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 23bf9be8e3e5f1c52546faa9ed5171c140eba59a
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65142387"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71676630"
 ---
-# <a name="windows-virtual-desktop-preview-environment"></a>Windows virtuele bureaublad Preview-omgeving
+# <a name="windows-virtual-desktop-environment"></a>Windows Virtual Desktop-omgeving
 
-Windows virtuele bureaublad Preview is een service waarmee gebruikers eenvoudig en veilig toegang tot hun gevirtualiseerde desktops en RemoteApps biedt. In dit onderwerp ziet u iets meer over de algemene structuur van de virtuele Windows-bureaublad-omgeving.
+Virtueel bureau blad van Windows is een service waarmee gebruikers eenvoudig en veilig toegang krijgen tot hun gevirtualiseerde Bureau bladen en RemoteApps. In dit onderwerp vindt u meer informatie over de algemene structuur van de virtueel-bureaublad omgeving van Windows.
 
-## <a name="tenants"></a>Tenants
+## <a name="tenants"></a>tenants
 
-De tenant virtuele bureaublad van Windows is de primaire interface voor het beheren van uw virtuele Windows-bureaublad-omgeving. Elke tenant virtuele Windows-bureaublad moet worden gekoppeld met de Azure Active Directory met de gebruikers die zullen zich aanmelden bij de omgeving. Van de tenant virtuele Windows-bureaublad kunt u beginnen met het maken van pools van de host om uit te voeren van uw gebruikers workloads.
+De Windows Virtual Desktop-Tenant is de primaire interface voor het beheren van uw virtuele Windows-bureau blad-omgeving. Elke virtuele bureau blad-Tenant van Windows moet worden gekoppeld aan de Azure Active Directory met de gebruikers die zich aanmelden bij de omgeving. Vanuit de virtuele bureau blad-Tenant van Windows kunt u beginnen met het maken van hostgroepen om de werk belastingen van uw gebruikers uit te voeren.
 
-## <a name="host-pools"></a>Host-pools
+## <a name="host-pools"></a>Hostgroepen
 
-Een groep host is een verzameling van Azure virtuele machines die op virtuele Windows-bureaublad als sessie hosts registreren tijdens het uitvoeren van de virtuele bureaublad van Windows-agent. Alle sessie hosten van virtuele machines in een groep host moet worden afkomstig is van dezelfde installatiekopie voor een consistente gebruikerservaring.
+Een hostgroep is een verzameling virtuele Azure-machines die als sessie-hosts worden geregistreerd bij Windows virtueel bureau blad wanneer u de virtueel-bureaublad agent van Windows uitvoert. Alle virtuele machines van de host in een hostgroep moeten vanuit dezelfde installatie kopie worden gebrond voor een consistente gebruikers ervaring.
 
-Een groep host kan een van twee typen zijn:
+Een hostgroep kan een van de volgende twee typen zijn:
 
-- Persoonlijk, waarbij elke sessiehost is toegewezen aan individuele gebruikers.
-- Gepoold waar sessie hosts kunnen verbindingen accepteren van een gebruiker aan een app-groep in de groep host is geautoriseerd.
+- Persoonlijk, waarbij elke sessiehost wordt toegewezen aan individuele gebruikers.
+- Gepoold, waarbij sessie-hosts verbindingen kunnen accepteren van alle gebruikers die zijn gemachtigd voor een app-groep in de hostgroep.
 
-U kunt extra eigenschappen instellen op de host van toepassingen de load-balancing om gedrag te wijzigen, het aantal sessies elke sessiehost duren kan, en wat de gebruiker kan doen om sessie hosts in de groep host terwijl aangemeld bij hun virtuele Windows-bureaublad-sessies. U de resources die zijn uitgegeven aan gebruikers via app-groepen beheren.
+U kunt extra eigenschappen instellen voor de hostgroep om het gedrag van de taak verdeling te wijzigen, het aantal sessies dat elke sessie-host kan uitvoeren en wat de gebruiker kan doen om in de hostgroep sessies in te stellen, terwijl u zich aanmeldt bij de virtuele Windows-bureaublad sessies. U beheert de resources die worden gepubliceerd voor gebruikers via app-groepen.
 
 ## <a name="app-groups"></a>App-groepen
 
-Een app-groep is een logische groepering van toepassingen zijn geïnstalleerd op de sessie-hosts in de groep host. Een app-groep kan een van twee typen zijn:
+Een app-groep is een logische groepering van toepassingen die zijn geïnstalleerd op sessie-hosts in de hostgroep. Een app-groep kan een van de volgende twee typen zijn:
 
-- RemoteApp, waar gebruikers toegang krijgen de RemoteApps tot u afzonderlijk selecteren en publiceren naar de app-groep
-- Bureaublad, waar gebruikers toegang het volledige bureaublad tot
+- RemoteApp, waar gebruikers toegang hebben tot de RemoteApps die u afzonderlijk selecteert en publiceert naar de app-groep
+- Bureau blad, waar gebruikers toegang tot het volledige bureau blad hebben
 
-Een bureaublad-app-groep (met de naam 'Desktop Application groeperen') wordt standaard automatisch gemaakt wanneer u een host-pool maakt. U kunt deze app-groep op elk gewenst moment verwijderen. U niet kan echter een andere bureaublad-app-groep in de groep host maken terwijl een desktop-app-groep bestaat. Als u wilt publiceren RemoteApps, moet u een RemoteApp-app-groep maken. U kunt meerdere groepen van RemoteApp-app om te voldoen aan andere werknemer scenario's maken. Andere RemoteApp-app-groepen kunnen ook bevatten overlappende RemoteApps.
+Standaard wordt een bureau blad-app-groep (met de naam bureau blad-toepassings groep) automatisch gemaakt wanneer u een hostgroep maakt. U kunt deze app-groep op elk gewenst moment verwijderen. U kunt echter geen andere bureau blad-app-groep maken in de hostgroep terwijl er een bureau blad-app-groep bestaat. Als u RemoteApps wilt publiceren, moet u een RemoteApp-app-groep maken. U kunt meerdere RemoteApp-app-groepen maken die geschikt zijn voor verschillende werk scenario's. Verschillende RemoteApp-app-groepen kunnen ook overlappende RemoteApps bevatten.
 
-Voor het publiceren van bronnen aan gebruikers, moet u ze toewijzen aan app-groepen. Wanneer gebruikers toewijzen aan app-groepen, moet u rekening houden met de volgende zaken:
+Als u resources naar gebruikers wilt publiceren, moet u deze toewijzen aan app-groepen. Houd rekening met de volgende zaken wanneer u gebruikers aan app-groepen toewijst:
 
-- Een gebruiker kan niet worden toegewezen aan zowel een desktop-app-groep en een RemoteApp-app-groep in de groep met dezelfde host.
-- Een gebruiker kan worden toegewezen aan meerdere app-groepen binnen de pool met dezelfde host en de feed is een opeenstapeling van beide app-groepen.
+- Een gebruiker kan niet worden toegewezen aan zowel een bureau blad-app-groep als een RemoteApp-app-groep in dezelfde hostgroep.
+- Een gebruiker kan worden toegewezen aan meerdere app-groepen binnen dezelfde hostgroep en hun feed wordt een accumulatie van beide app-groepen.
 
-## <a name="tenant-groups"></a>Tenant-groepen
+## <a name="tenant-groups"></a>Tenant groepen
 
-In de virtuele Windows-bureaublad is de virtuele Windows-bureaublad-tenant waar de meeste van de installatie en configuratie plaatsvindt. De tenant virtuele Windows-bureaublad bevat de host-pools, app-groepen en toewijzingen van app-groep gebruikers. Er kunnen wel bepaalde situaties voordoen waarin u moet voor het beheren van meerdere virtuele Windows-bureaublad tenants tegelijk, met name als u een Cloud Service Provider (CSP) of een hosting-partner bent. In deze situaties kunt u een aangepaste groep van de virtuele Windows-bureaublad-tenant plaatst u elk van de klant virtuele Windows-bureaublad tenants en centraal beheren en toegang. Als u slechts één virtuele Windows-bureaublad tenant beheert, het concept van de groep tenant is niet van toepassing en u kunt blijven gebruiken en beheren van uw tenant aanwezig is op de standaardgroep van de tenant.
+In virtueel bureau blad van Windows bevindt de virtuele bureau blad-Tenant van Windows zich de meeste van de installatie en configuratie. De Windows Virtual Desktop Tenant bevat de hostgroepen, app-groepen en toepassings toewijzingen van de app-groep. Er kunnen echter bepaalde situaties zijn waarin u meerdere virtuele bureau blad-tenants tegelijk moet beheren, met name als u een Cloud serviceprovider (CSP) of een hosting partner bent. In deze situaties kunt u een aangepaste virtuele bureau blad-Tenant groep van Windows gebruiken om elk van de virtuele Bureau bladen van Windows te plaatsen en de toegang centraal te beheren. Als u echter slechts één virtueel bureau blad-Tenant van Windows beheert, is het concept van de Tenant groep niet van toepassing en kunt u blijven werken en uw Tenant beheren die voor komt in de standaard Tenant groep.
 
-## <a name="end-users"></a>Eindgebruikers
+## <a name="end-users"></a>Eind gebruikers
 
-Nadat u gebruikers hebt toegewezen aan de app-groepen, kunnen ze verbinding maken met een virtuele Windows-bureaublad-implementatie met een van de virtuele Windows-bureaublad-clients.
+Nadat u gebruikers aan hun app-groepen hebt toegewezen, kunnen ze verbinding maken met een virtuele Windows-bureau blad-implementatie met een van de virtuele bureau blad-clients van Windows.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over gedelegeerde toegang en rollen toewijzen aan gebruikers op [gedelegeerde toegang in Windows Virtual Desktop Preview](delegated-access-virtual-desktop.md).
+Meer informatie over gedelegeerde toegang en het toewijzen van rollen aan gebruikers op het [virtuele bureau blad van Windows](delegated-access-virtual-desktop.md).
 
-Zie voor meer informatie over het instellen van uw tenant virtuele Windows-bureaublad, [een tenant maken in Windows Virtual Desktop Preview](tenant-setup-azure-active-directory.md).
+Zie [een Tenant maken in virtueel bureau blad van Windows](tenant-setup-azure-active-directory.md)voor meer informatie over het instellen van uw virtuele bureau blad-Tenant voor Windows.
 
-Als u wilt weten hoe u verbinding maken met virtuele Windows-bureaublad, ziet u een van de volgende artikelen:
+Zie een van de volgende artikelen voor meer informatie over het maken van verbinding met Windows Virtual Desktop:
 
 - [Verbinding maken vanaf Windows 10 of Windows 7](connect-windows-7-and-10.md)
 - [Verbinding maken via een webbrowser](connect-web.md)

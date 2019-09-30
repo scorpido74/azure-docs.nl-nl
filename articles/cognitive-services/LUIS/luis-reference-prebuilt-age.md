@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 05/07/2019
+ms.date: 09/27/2019
 ms.author: diberry
-ms.openlocfilehash: d72af0c2126ef74f95697755a7ead354214f695c
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 1b2ff6b64661010136d43b8d1f10abb58a88102a
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932556"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71677734"
 ---
 # <a name="age-prebuilt-entity-for-a-luis-app"></a>Leeftijd preconstrueerde entiteit voor een LUIS-app
 De vooraf gedefinieerde leeftijd entiteit bevat de leeftijdwaarde zowel numeriek en in termen van dagen, weken, maanden en jaren. Omdat deze entiteit wordt al getraind, hoeft u niet om toe te voegen van de voorbeeld-uitingen met leeftijd aan de toepassing intents. Leeftijd entiteit wordt ondersteund in [veel culturen](luis-reference-prebuilt-entities.md). 
@@ -26,7 +26,7 @@ De leeftijd wordt beheerd vanuit de map [recognizers-text](https://github.com/Mi
 
 ## <a name="resolution-for-prebuilt-age-entity"></a>Oplossing voor vooraf gedefinieerde leeftijd entiteit
 
-### <a name="api-version-2x"></a>API-versie 2. x
+#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2-antwoord op Voorspellings eindpunt](#tab/V2)
 
 Het volgende voorbeeld ziet u de resolutie van de **builtin.age** entiteit.
 
@@ -52,9 +52,9 @@ Het volgende voorbeeld ziet u de resolutie van de **builtin.age** entiteit.
 }
 ```
 
-### <a name="preview-api-version-3x"></a>Preview-API versie 3. x
+#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3-Voorspellings eindpunt antwoord](#tab/V3)
 
-De volgende JSON is met de `verbose` para meter ingesteld `false`op:
+De volgende JSON is met de para meter `verbose` ingesteld op `false`:
 
 ```json
 {
@@ -79,7 +79,7 @@ De volgende JSON is met de `verbose` para meter ingesteld `false`op:
 }
 ```
 
-De volgende JSON is met de `verbose` para meter ingesteld `true`op:
+De volgende JSON is met de para meter `verbose` ingesteld op `true`:
 
 ```json
 {
@@ -116,6 +116,10 @@ De volgende JSON is met de `verbose` para meter ingesteld `true`op:
 }
 ```
 
+* * * 
+
 ## <a name="next-steps"></a>Volgende stappen
+
+Meer informatie over het [v3-Voorspellings eindpunt](luis-migration-api-v3.md).
 
 Meer informatie over de [valuta](luis-reference-prebuilt-currency.md), [datetimeV2](luis-reference-prebuilt-datetimev2.md), en [dimensie](luis-reference-prebuilt-dimension.md) entiteiten. 

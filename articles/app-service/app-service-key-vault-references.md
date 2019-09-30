@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 09/03/2019
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: 9c7f920c6b66995d53ef742a9faf574286a51d69
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: cf4eade598de24e323a8c8647a64921f8797e3a2
+ms.sourcegitcommit: 6013bacd83a4ac8a464de34ab3d1c976077425c7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70390449"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71686738"
 ---
 # <a name="use-key-vault-references-for-app-service-and-azure-functions-preview"></a>Key Vault verwijzingen gebruiken voor App Service en Azure Functions (preview-versie)
 
@@ -36,7 +36,7 @@ Als u geheimen van Key Vault wilt lezen, moet er een kluis zijn gemaakt en moet 
    > [!NOTE] 
    > Key Vault verwijzingen worden momenteel alleen door het systeem toegewezen beheerde identiteiten ondersteund. Door de gebruiker toegewezen identiteiten kunnen niet worden gebruikt.
 
-1. Maak een [toegangs beleid in Key Vault](../key-vault/key-vault-secure-your-key-vault.md#key-vault-access-policies) voor de toepassings-id die u eerder hebt gemaakt. Schakel de geheime machtiging ' Get ' in voor dit beleid. Configureer de "geautoriseerde toepassing" of `applicationId` instellingen niet, omdat deze niet compatibel is met een beheerde identiteit.
+1. Maak een [toegangs beleid in Key Vault](../key-vault/key-vault-secure-your-key-vault.md#key-vault-access-policies) voor de toepassings-id die u eerder hebt gemaakt. Schakel de geheime machtiging ' Get ' in voor dit beleid. Configureer de instellingen voor ' geautoriseerde toepassing ' of `applicationId` niet, omdat deze niet compatibel is met een beheerde identiteit.
 
     > [!NOTE]
     > Key Vault verwijzingen zijn niet in staat om geheimen op te lossen die zijn opgeslagen in een sleutel kluis met [netwerk beperkingen](../key-vault/key-vault-overview-vnet-service-endpoints.md).
@@ -197,7 +197,7 @@ Als de syntaxis juist is, kunt u andere oorzaken voor fouten weer geven door de 
 ### <a name="using-the-detector-for-app-service"></a>De detector voor App Service gebruiken
 
 1. Navigeer in de portal naar uw app.
-2. Selecteer **diagnosticeren en prolems oplossen**.
+2. Selecteer **problemen vaststellen en oplossen**.
 3. Kies **Beschik baarheid en prestaties** en selecteer **Web-app lager.**
 4. Zoek **Key Vault diagnostische gegevens over toepassings instellingen** en klik op **meer informatie**.
 
@@ -206,6 +206,6 @@ Als de syntaxis juist is, kunt u andere oorzaken voor fouten weer geven door de 
 
 1. Navigeer in de portal naar uw app.
 2. Navigeer naar **platform functies.**
-3. Selecteer **diagnosticeren en prolems oplossen**.
+3. Selecteer **problemen vaststellen en oplossen**.
 4. Kies **Beschik baarheid en prestaties** en selecteer **functie-app omlaag of rapportage fouten.**
 5. Klik op **Key Vault diagnostische gegevens over toepassings instellingen.**

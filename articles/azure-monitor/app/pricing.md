@@ -11,14 +11,14 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.reviewer: mbullwin
-ms.date: 09/17/2019
+ms.date: 09/30/2019
 ms.author: dalek
-ms.openlocfilehash: 62f2ea36468e30b20ef08bde21bfde961faae8f9
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 448469d4c1ff15ed2ba814dfaa653c4d3c7e3452
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71067020"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71677821"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Het gebruik en de kosten voor Application Insights beheren
 
@@ -30,7 +30,7 @@ Als u vragen hebt over de werking van prijzen voor Application Insights, kunt u 
 
 ## <a name="pricing-model"></a>Prijsmodel
 
-Prijzen voor [Azure-toepassing Insights][start] is gebaseerd op gegevens volume opgenomen. Elke Application Insights resource wordt in rekening gebracht als een afzonderlijke service en draagt bij aan de factuur voor uw Azure-abonnement.
+Prijzen voor [Azure-toepassing Insights][start] is gebaseerd op gegevens volume opgenomen en optioneel voor langere gegevens retentie. Elke Application Insights resource wordt in rekening gebracht als een afzonderlijke service en draagt bij aan de factuur voor uw Azure-abonnement.
 
 ### <a name="data-volume-details"></a>Details van gegevens volume
 
@@ -47,7 +47,7 @@ Voor [webtests met meerdere stappen](../../azure-monitor/app/availability-multis
 
 Er worden geen afzonderlijke kosten in rekening gebracht voor *ping-tests* van één pagina. Telemetrie van ping-tests en tests met meerdere stappen wordt in rekening gebracht op hetzelfde als andere telemetrie van uw app.
 
-## <a name="review-usage-and-estimate-costs"></a>Gebruik controleren en kosten ramen
+## <a name="understand-your-usage-and-estimate-costs"></a>Inzicht in uw gebruik en geschatte kosten
 
 Application Insights maakt het eenvoudig om te begrijpen wat uw kosten waarschijnlijk zijn op basis van recente gebruiks patronen. Ga naar de pagina **gebruik en geschatte kosten** in het Azure Portal om aan de slag te gaan voor de Application Insights resource:
 
@@ -110,11 +110,17 @@ Hier volgen enkele dingen die u kunt doen om uw gegevens volume te verminderen:
 * Splits uw telemetrie over afzonderlijke instrumentatie sleutels. 
 * Vooraf samengestelde metrische gegevens. Als u aanroepen naar TrackMetric in uw app opneemt, kunt u het verkeer verminderen door gebruik te maken van de overbelasting die uw berekening van de gemiddelde en standaard afwijking van een batch metingen accepteert. U kunt ook een pakket met [vooraf aggregatie](https://www.myget.org/gallery/applicationinsights-sdk-labs)gebruiken.
 
-## <a name="manage-the-maximum-daily-data-volume"></a>Het maximale dagelijkse gegevensvolume beheren
+## <a name="manage-your-maximum-daily-data-volume"></a>Uw maximale dagelijkse gegevens volume beheren
 
 U kunt het dagelijks volume kapje gebruiken om de verzamelde gegevens te beperken. Als de limiet is bereikt, wordt echter een verlies van alle telemetriegegevens verzonden vanuit uw toepassing voor de rest van de dag. Het is *niet raadzaam* om uw toepassing te laten overlopen op het dagelijkse kapje. U kunt de status en prestaties van uw toepassing niet volgen nadat u de dagelijkse limiet hebt bereikt.
 
 In plaats van de dagelijkse volume limiet te gebruiken, gebruikt u [steek proeven](../../azure-monitor/app/sampling.md) om het gegevens volume op het gewenste niveau af te stemmen. Gebruik het dagelijks kapje alleen als een ' laatste redmiddel ' voor het geval uw toepassing een grote grotere hoeveelheid telemetrie verstuurt.
+
+### <a name="identify-what-daily-data-limit-to-define"></a>Identificeren welke dagelijkse limiet voor gegevens definiëren
+
+Bekijk Application Insights gebruik en de geschatte kosten om inzicht te krijgen in de trend van de gegevens opname en wat het dagelijkse volume Cap is dat moet worden gedefinieerd. Deze moet worden overwogen zorgvuldig, omdat het niet mogelijk om te controleren van uw bronnen nadat de limiet is bereikt. 
+
+### <a name="set-the-daily-cap"></a>Het dagelijks kapje instellen
 
 Als u het dagelijks kapje wilt wijzigen, selecteert u in de sectie **configureren** van uw Application Insights-resource op de pagina **gebruik en geschatte kosten** de optie **dagelijks Cap**.
 
@@ -122,7 +128,7 @@ Als u het dagelijks kapje wilt wijzigen, selecteert u in de sectie **configurere
 
 Als u [het dagelijks kapje wilt wijzigen via Azure Resource Manager](../../azure-monitor/app/powershell.md), wijzigt `dailyQuota`u de eigenschap in.  Via Azure Resource Manager kunt u ook de `dailyQuotaResetTime` en de dagelijkse `warningThreshold`Cap instellen. 
 
-## <a name="sampling"></a>Steekproeven
+## <a name="sampling"></a>Steekproef nemen
 [Steek proeven](../../azure-monitor/app/sampling.md) zijn een methode om de snelheid waarmee telemetrie wordt verzonden naar uw app te verminderen, terwijl u de mogelijkheid houdt om gerelateerde gebeurtenissen te vinden tijdens diagnostische Zoek opdrachten. U behoudt ook de juiste gebeurtenis aantallen.
 
 Steek proeven zijn een efficiënte manier om kosten te verlagen en binnen uw maandelijkse quotum te blijven. De bemonsterings algoritme houdt gerelateerde items van telemetrie bij, zodat u bijvoorbeeld de aanvraag met betrekking tot een bepaalde uitzonde ring kunt vinden wanneer u zoekt. Het algoritme behoudt ook de juiste aantallen, zodat u de juiste waarden ziet in metrische Explorer voor aanvraag tarieven, uitzonderings snelheden en andere aantallen.
@@ -160,6 +166,10 @@ Als u de retentie wilt wijzigen Application Insights, gaat u naar de pagina **ge
 ![Het dagelijkse volume limiet voor telemetrie aanpassen](./media/pricing/pricing-005.png)
 
 Wanneer facturering is ingeschakeld voor een langere retentie, worden gegevens die langer zijn dan 90 dagen in rekening gebracht als het tarief dat momenteel wordt gefactureerd voor Azure Log Analytics gegevens retentie. Meer informatie vindt u op de [pagina met Azure monitor prijzen](https://azure.microsoft.com/pricing/details/monitor/). Blijf op de hoogte van de voortgang van de herbewaaring van variabelen door te [stemmen op deze suggestie](https://feedback.azure.com/forums/357324-azure-monitor-application-insights/suggestions/17454031). 
+
+## <a name="data-transfer-charges-using-application-insights"></a>Kosten voor gegevens overdracht met behulp van Application Insights
+
+Bij het verzenden van gegevens naar Application Insights kunnen kosten voor de gegevens bandbreedte worden berekend. Zoals beschreven op de [pagina met prijzen voor Azure-band breedte](https://azure.microsoft.com/pricing/details/bandwidth/), wordt gegevens overdracht tussen Azure-Services in twee regio's in rekening gebracht als uitgaande gegevens overdracht tegen het normale tarief. Inkomende gegevens overdracht is gratis. Deze kosten zijn echter zeer klein (aantal%) vergeleken met de kosten voor de opname van Application Insights logboek gegevens. Als gevolg van het beheer van de kosten voor Log Analytics moet u zich richten op uw opgenomen gegevens volume, en wij hebben richt lijnen om die [hier](https://docs.microsoft.com/azure/azure-monitor/app/pricing#managing-your-data-volume)te helpen begrijpen.   
 
 ## <a name="limits-summary"></a>Limieten overzicht
 

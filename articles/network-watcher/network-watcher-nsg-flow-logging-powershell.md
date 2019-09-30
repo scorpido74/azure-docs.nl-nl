@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
-ms.openlocfilehash: c34ed9c5f1b5e422ba9e4e0b12fbaf833c8a4a7c
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: 508fe6f7dc6c5fef99e5f62a2ce75b0c81b1577f
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69563466"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71676332"
 ---
 # <a name="configuring-network-security-group-flow-logs-with-powershell"></a>Stroom logboeken voor netwerk beveiligings groepen configureren met Power shell
 
@@ -61,7 +61,7 @@ Set-AzNetworkWatcherConfigFlowLog -NetworkWatcher $NW -TargetResourceId $nsg.Id 
 Set-AzNetworkWatcherConfigFlowLog -NetworkWatcher $NW -TargetResourceId $nsg.Id -StorageAccountId $storageAccount.Id -EnableFlowLog $true -FormatType Json -FormatVersion 2
 
 #Configure Version 2 FLow Logs with Traffic Analytics Configured
-Set-AzNetworkWatcherConfigFlowLog -NetworkWatcher $NW -TargetResourceId $nsg.Id -StorageAccountId $storageAccount.Id -EnableFlowLog $true -FormatType Json -FormatVersion 2 -EnableTrafficAnalytics -WorkspaceResourceId $workspaceResourceId -WorkspaceGUID $workspaceid -WorkspaceLocation $workspaceRegion
+Set-AzNetworkWatcherConfigFlowLog -NetworkWatcher $NW -TargetResourceId $nsg.Id -StorageAccountId $storageAccount.Id -EnableFlowLog $true -FormatType Json -FormatVersion 2 -EnableTrafficAnalytics -WorkspaceResourceId $workspaceResourceId -WorkspaceGUID $workspaceGUID -WorkspaceLocation $workspaceLocation
 
 #Query Flow Log Status
 Get-AzNetworkWatcherFlowLogStatus -NetworkWatcher $NW -TargetResourceId $nsg.Id
@@ -91,7 +91,7 @@ Als er een opslag account is opgegeven, worden flow-logboek bestanden opgeslagen
 https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecuritygroupflowevent/resourceId=/SUBSCRIPTIONS/{subscriptionID}/RESOURCEGROUPS/{resourceGroupName}/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/{nsgName}/y={year}/m={month}/d={day}/h={hour}/m=00/macAddress={macAddress}/PT1H.json
 ```
 > [!IMPORTANT]
-> Er is momenteel een probleem waarbij de [NSG-stroom Logboeken (netwerk beveiligings groep)](network-watcher-nsg-flow-logging-overview.md) voor Network Watcher niet automatisch worden verwijderd uit Blob Storage op basis van de instellingen voor het Bewaar beleid. Als u een bestaand Bewaar beleid voor niet-nul hebt, raden we u aan om regel matig de opslag-blobs te verwijderen die de Bewaar periode hebben verstreken om te voor komen dat er kosten in rekening worden gebracht. Zie voor meer informatie over het verwijderen van de opslag blog van het NSG-stroom logboek de opslag-blobs voor [NSG stroom logboeken verwijderen](network-watcher-delete-nsg-flow-log-blobs.md).
+> Er is momenteel een probleem waarbij de [NSG-stroom Logboeken (netwerk beveiligings groep)](network-watcher-nsg-flow-logging-overview.md) voor Network Watcher niet automatisch worden verwijderd uit Blob Storage op basis van de instellingen voor het Bewaar beleid. Als u een bestaand Bewaar beleid voor niet-nul hebt, raden we u aan om regel matig de opslag-blobs te verwijderen die de Bewaar periode hebben verstreken om te voor komen dat er kosten in rekening worden gebracht. Zie voor meer informatie over het verwijderen van de opslag blog van het NSG-stroom logboek de [opslag-blobs voor NSG stroom logboeken verwijderen](network-watcher-delete-nsg-flow-log-blobs.md).
 
 Voor informatie over de structuur van het logboek gaat u naar [overzicht stroom logboek netwerk beveiligings groep](network-watcher-nsg-flow-logging-overview.md)
 

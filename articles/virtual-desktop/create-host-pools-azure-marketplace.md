@@ -1,22 +1,22 @@
 ---
-title: Een hostgroep voor virtuele Windows-Bureau bladen maken met behulp van Azure Marketplace-Azure
-description: Een hostgroep voor virtuele Windows-Bureau bladen maken met behulp van Azure Marketplace.
+title: Een Windows-hostgroep voor virtueel bureau blad maken met behulp van Azure Marketplace-Azure
+description: Een Windows-hostgroep voor virtueel bureau blad maken met behulp van Azure Marketplace.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 08/30/2019
 ms.author: helohr
-ms.openlocfilehash: d6628f1522880f650bfd8c728fe46fd050a8e6a0
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: c0b93529872de774e1a6e915ef8254c5c0e0a1a9
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70208381"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71676712"
 ---
 # <a name="tutorial-create-a-host-pool-by-using-the-azure-marketplace"></a>Zelfstudie: Een hostpool maken met behulp van Azure Marketplace
 
-Hostgroepen zijn een verzameling van een of meer identieke virtuele machines in Windows Virtual Desktop-Preview-Tenant omgevingen. Elke hostgroep kan een app-groep bevatten waarmee gebruikers kunnen communiceren, op dezelfde manier als op een fysiek bureau blad.
+Hostgroepen zijn een verzameling van een of meer identieke virtuele machines in Windows-Tenant omgevingen voor virtueel bureau blad. Elke hostgroep kan een app-groep bevatten waarmee gebruikers kunnen communiceren, op dezelfde manier als op een fysiek bureau blad.
 
 In deze zelf studie wordt beschreven hoe u een hostgroep maakt in een virtuele Windows-bureau blad-Tenant met behulp van een Microsoft Azure Marketplace aanbieding. De taken omvatten:
 
@@ -52,7 +52,7 @@ Ga als volgt te werk voor de Blade **basis beginselen** :
 
 1. Voer een naam in voor de hostgroep die uniek is binnen de Windows Virtual Desktop-Tenant.
 2. Selecteer de juiste optie voor een persoonlijk bureau blad. Als u **Ja**selecteert, wordt elke gebruiker die verbinding maakt met deze hostgroep permanent toegewezen aan een virtuele machine.
-3. Voer een door komma's gescheiden lijst in van gebruikers die zich kunnen aanmelden bij de virtueel-bureaubladclient van Windows en toegang hebben tot een bureau blad nadat de Azure Marketplace-aanbieding is voltooid. Als u bijvoorbeeld wilt user1@contoso.com toewijzen en user2@contoso.com toegang wilt krijgen, voert u 'user1@contoso.com,user2@contoso.com' in.
+3. Voer een door komma's gescheiden lijst in van gebruikers die zich kunnen aanmelden bij de virtueel-bureaubladclient van Windows en toegang hebben tot een bureau blad nadat de Azure Marketplace-aanbieding is voltooid. Als u bijvoorbeeld user1@contoso.com en user2@contoso.com-toegang wilt toewijzen, voert u ' user1@contoso.com, user2@contoso.com ' in.
 4. Selecteer **nieuwe maken** en geef een naam op voor de nieuwe resource groep.
 5. Voor **locatie**selecteert u dezelfde locatie als het virtuele netwerk dat verbinding heeft met de Active Directory-server.
 6. Selecteer **OK**.
@@ -73,14 +73,14 @@ Voor de Blade **virtuele machines configureren** :
 Voor de Blade instellingen van de **virtuele machine** :
 
 >[!NOTE]
-> Als u uw Vm's lid maakt van een Azure Active Directory Domain Services-omgeving (Azure AD DS), moet u ervoor zorgen dat uw domein deelname ook lid is van de [groep Aad DC](../active-directory-domain-services/tutorial-create-instance.md#configure-an-administrative-group)-Administrators.
+> Als u uw Vm's lid maakt van een Azure Active Directory Domain Services-omgeving (Azure AD DS), moet u ervoor zorgen dat uw domein deelname ook lid is van de [groep Aad DC-Administrators](../active-directory-domain-services/tutorial-create-instance.md#configure-an-administrative-group).
 
 1. Voor **installatie kopie bron**selecteert u de bron en voert u de juiste informatie in voor het vinden ervan en hoe u deze kunt opslaan. Als u ervoor kiest geen Managed disks te gebruiken, selecteert u het opslag account dat het. VHD-bestand bevat.
 2. Voer de user principal name en het wacht woord in voor het domein account dat wordt toegevoegd aan de virtuele machines in het Active Directory domein. Dezelfde gebruikers naam en hetzelfde wacht woord worden als een lokaal account op de virtuele machines gemaakt. U kunt deze lokale accounts later opnieuw instellen.
 3. Selecteer het virtuele netwerk dat verbinding met de Active Directory server heeft en kies vervolgens een subnet om de virtuele machines te hosten.
 4. Selecteer **OK**.
 
-### <a name="windows-virtual-desktop-preview-tenant-information"></a>Tenant gegevens voor Windows-voor beeld van Virtual Desktop
+### <a name="windows-virtual-desktop-tenant-information"></a>Windows-Tenant gegevens voor virtueel bureau blad
 
 Voor de Blade **Tenant gegevens van Windows virtueel bureau blad** :
 
@@ -118,7 +118,7 @@ Gebruikers toevoegen aan de groep bureau blad-toepassing met behulp van deze cmd
 Add-RdsAppGroupUser <tenantname> <hostpoolname> "Desktop Application Group" -UserPrincipalName <userupn>
 ```
 
-De UPN van de gebruiker moet overeenkomen met de identiteit van de gebruiker in Azure Active Directory user1@contoso.com(bijvoorbeeld). Als u meerdere gebruikers wilt toevoegen, moet u deze cmdlet voor elke gebruiker uitvoeren.
+De UPN van de gebruiker moet overeenkomen met de identiteit van de gebruiker in Azure Active Directory (bijvoorbeeld user1@contoso.com). Als u meerdere gebruikers wilt toevoegen, moet u deze cmdlet voor elke gebruiker uitvoeren.
 
 Nadat u deze stappen hebt voltooid, kunnen gebruikers die zijn toegevoegd aan de groep bureau blad, zich aanmelden bij een virtueel bureau blad van Windows met ondersteunde Extern bureaublad clients en een resource voor een sessie bureau blad bekijken.
 

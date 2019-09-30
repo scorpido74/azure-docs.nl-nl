@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 07/25/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my local site to my VNets using Virtual WAN and I don't want to go through a Virtual WAN partner.
-ms.openlocfilehash: e9be7ef5c4f37c66f7cbf2c6226936438b367108
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: 357cc23c9dedb49dfd19dc897102762066ffd1b2
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68515154"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71679350"
 ---
 # <a name="tutorial-create-a-site-to-site-connection-using-azure-virtual-wan"></a>Zelfstudie: Een site-naar-site-verbinding maken met behulp van Azure Virtual WAN
 
@@ -53,7 +53,7 @@ Open een browser, ga naar [Azure Portal](https://aka.ms/azurevirtualwanpreviewfe
 
 Maak het aantal sites dat u nodig hebt voor uw fysieke locaties. Als u bijvoorbeeld een filiaal in NY, een filiaal in Londen en een filiaal in LA hebt, maakt u drie afzonderlijke sites. Deze sites bevatten de eindpunten voor uw on-premises VPN-apparaat. Op dit moment kunt u slechts één privé-adresruimte voor uw site opgeven.
 
-1. Klik op het WAN dat u hebt gemaakt. Op de WAN-pagina bij **WAN-architectuur** klikt u op **VPN-sites** om de pagina met de VPN-sites te openen.
+1. Klik op het WAN dat u hebt gemaakt. Klik op de WAN-pagina onder **virtuele WAN-architectuur**op **VPN-sites** om de pagina VPN-sites te openen.
 2. Op de pagina **VPN sites** klikt u op **+Site maken**.
 3. Vul de volgende velden in op de pagina **Site maken**:
 

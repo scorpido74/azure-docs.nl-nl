@@ -7,18 +7,16 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: helohr
-ms.openlocfilehash: fe45adc3eb65631c0b127872240f8d76400f9102
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 5e52275cc7215f6c54c2ff6a11faf82114c414b4
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69899667"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71676598"
 ---
 # <a name="fslogix-profile-containers-and-azure-files"></a>FSLogix-profielcontainers en Azure Files
 
-De Windows-preview-service voor virtuele Bureau bladen beveelt FSLogix-profiel containers aan als een gebruikers profiel oplossing. FSLogix is ontworpen om profielen te roamen in omgevingen met externe computers, zoals Windows virtueel bureau blad. Er wordt een volledig gebruikers profiel opgeslagen in één container. Bij het aanmelden wordt deze container dynamisch gekoppeld aan de computer omgeving met behulp van systeem eigen ondersteunde virtuele harde schijven (VHD) en Hyper-V virtuele harde schijf (VHDX). Het gebruikers profiel is onmiddellijk beschikbaar en wordt in het systeem weer gegeven op dezelfde manier als een systeem eigen gebruikers profiel.
-
-In dit artikel worden FSLogix-profiel containers beschreven die worden gebruikt met Azure Files. De informatie bevindt zich in de context van het virtuele bureau blad van Windows, dat werd [aangekondigd op 3/21](https://www.microsoft.com/microsoft-365/blog/2019/03/21/windows-virtual-desktop-public-preview/).
+De Windows Virtual Desktop-service beveelt FSLogix-profiel containers aan als een gebruikers profiel oplossing. FSLogix is ontworpen om profielen te roamen in omgevingen met externe computers, zoals Windows virtueel bureau blad. Er wordt een volledig gebruikers profiel opgeslagen in één container. Bij het aanmelden wordt deze container dynamisch gekoppeld aan de computer omgeving met behulp van systeem eigen ondersteunde virtuele harde schijven (VHD) en Hyper-V virtuele harde schijf (VHDX). Het gebruikers profiel is onmiddellijk beschikbaar en wordt in het systeem weer gegeven op dezelfde manier als een systeem eigen gebruikers profiel. In dit artikel wordt beschreven hoe FSLogix-profiel containers die worden gebruikt met Azure Files functie in Windows virtueel bureau blad.
 
 ## <a name="user-profiles"></a>Gebruikersprofielen
 
@@ -55,7 +53,7 @@ In de volgende tabel worden de voor delen en beperkingen van eerdere gebruikers 
 
 #### <a name="performance"></a>Prestaties
 
-UPD vereist [opslagruimten direct (S2D)](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-storage-spaces-direct-deployment) om prestatie vereisten te verhelpen. UPD maakt gebruik van het SMB-protocol (Server Message Block). Het profiel wordt gekopieerd naar de virtuele machine waarin de gebruiker wordt geregistreerd. UPD met S2D is de oplossing die het RDS-team adviseert voor Windows Virtual Desktop tijdens de preview-versie van de service.  
+UPD vereist [opslagruimten direct (S2D)](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-storage-spaces-direct-deployment) om prestatie vereisten te verhelpen. UPD maakt gebruik van het SMB-protocol (Server Message Block). Het profiel wordt gekopieerd naar de virtuele machine waarin de gebruiker wordt geregistreerd. UPD met S2D is de oplossing die we voor het virtuele bureau blad van Windows raden.  
 
 #### <a name="cost"></a>Kosten
 
@@ -81,7 +79,7 @@ De prestaties en functies van FSLogix-profiel containers profiteren van de Cloud
 
 ## <a name="best-practices-for-windows-virtual-desktop"></a>Aanbevolen procedures voor virtueel bureau blad van Windows
 
-Virtueel bureau blad van Windows biedt volledige controle over de grootte, het type en het aantal Vm's dat door klanten wordt gebruikt. Zie [Wat is Windows virtueel bureau blad-preview?](overview.md)voor meer informatie.
+Virtueel bureau blad van Windows biedt volledige controle over de grootte, het type en het aantal Vm's dat door klanten wordt gebruikt. Zie [Wat is Windows virtueel bureau blad?](overview.md)voor meer informatie.
 
 Om ervoor te zorgen dat uw virtuele Windows-bureau blad-omgeving de best practices volgt:
 

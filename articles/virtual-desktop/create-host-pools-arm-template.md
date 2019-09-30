@@ -1,22 +1,22 @@
 ---
-title: Een hostgroep voor virtuele Windows-Bureau bladen maken met een Azure Resource Manager sjabloon-Azure
-description: Een hostgroep maken in Windows virtueel bureau blad Preview met een Azure Resource Manager sjabloon.
+title: Een Windows-hostgroep voor virtueel bureau blad maken met een Azure Resource Manager sjabloon-Azure
+description: Het maken van een hostgroep in virtueel bureau blad van Windows met een Azure Resource Manager sjabloon.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: helohr
-ms.openlocfilehash: 27fe19c2b1f92b67e02b4e09d5fcd607759d8abd
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: b96ecad93c481a762b81a7888940850ed3a73e5f
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70163744"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71679615"
 ---
 # <a name="create-a-host-pool-with-an-azure-resource-manager-template"></a>Een hostpool maken met een Azure Resource Manager-sjabloon
 
-Hostgroepen zijn een verzameling van een of meer identieke virtuele machines in Windows Virtual Desktop-Preview-Tenant omgevingen. Elke hostgroep kan een app-groep bevatten waarmee gebruikers kunnen communiceren, op dezelfde manier als op een fysiek bureau blad.
+Hostgroepen zijn een verzameling van een of meer identieke virtuele machines in Windows-Tenant omgevingen voor virtueel bureau blad. Elke hostgroep kan een app-groep bevatten waarmee gebruikers kunnen communiceren, op dezelfde manier als op een fysiek bureau blad.
 
 Volg de instructies in deze sectie voor het maken van een hostgroep voor een Windows Virtual Desktop-Tenant met een Azure Resource Manager-sjabloon die door micro soft wordt verschaft. In dit artikel leest u hoe u een hostgroep maakt in virtueel bureau blad van Windows, een resource groep maakt met virtuele machines in een Azure-abonnement, deze Vm's toevoegt aan het AD-domein en de Vm's registreert met behulp van virtueel bureau blad van Windows.
 
@@ -42,7 +42,7 @@ Als u in een Cloud Solution Provider-abonnement implementeert, voert u de volgen
 
 1. Schuif omlaag en klik met de rechter muisknop op **implementeren naar Azure**, en selecteer vervolgens **koppelings locatie kopiëren**.
 2. Open een tekst editor zoals Klad blok en plak de koppeling daar.
-3. Direct na "https://portal.azure.com/ " en vóór de hashtag (#) voert u een apen staartje (@) in, gevolgd door de domein naam van de Tenant. Hier volgt een voor beeld van de indeling die u moet https://portal.azure.com/@Contoso.onmicrosoft.com#create/ gebruiken:.
+3. Direct na ' https://portal.azure.com/ ' en vóór de hashtag (#) voert u een apen staartje (@) in, gevolgd door de domein naam van de Tenant. Hier volgt een voor beeld van de indeling die u moet gebruiken: https://portal.azure.com/@Contoso.onmicrosoft.com#create/.
 4. Meld u aan bij de Azure Portal als gebruiker met beheerders-en Inzender machtigingen voor het Cloud Solution Provider-abonnement.
 5. Plak de koppeling die u naar de tekst editor hebt gekopieerd naar de adres balk.
 
@@ -66,7 +66,7 @@ Daarna voegt u gebruikers toe aan de groep bureau blad-toepassing met deze cmdle
 Add-RdsAppGroupUser <tenantname> <hostpoolname> "Desktop Application Group" -UserPrincipalName <userupn>
 ```
 
-De UPN van de gebruiker moet overeenkomen met de identiteit van de gebruiker in Azure Active Directory user1@contoso.com(bijvoorbeeld). Als u meerdere gebruikers wilt toevoegen, moet u deze cmdlet voor elke gebruiker uitvoeren.
+De UPN van de gebruiker moet overeenkomen met de identiteit van de gebruiker in Azure Active Directory (bijvoorbeeld user1@contoso.com). Als u meerdere gebruikers wilt toevoegen, moet u deze cmdlet voor elke gebruiker uitvoeren.
 
 Nadat u deze stappen hebt voltooid, kunnen gebruikers die zijn toegevoegd aan de groep bureau blad, zich aanmelden bij een virtueel bureau blad van Windows met ondersteunde Extern bureaublad clients en een resource voor een sessie bureau blad bekijken.
 

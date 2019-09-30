@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 414dc4e69fda8ccd79b5a48b19bccee35bd11a45
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 2f3eb2c0071eecb20bbf5616a01c80e55645207a
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71063711"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71678130"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-active-directory-b2c-using-a-custom-policy"></a>De gegevens stroom van het wacht woord voor de resource-eigenaar configureren in Azure Active Directory B2C met behulp van een aangepast beleid
 
@@ -41,14 +41,7 @@ Voer de stappen in aan de [slag met aangepast beleid in azure Active Directory B
 
 ## <a name="register-an-application"></a>Een toepassing registreren
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
-2. Zorg ervoor dat u de map met uw Azure AD B2C-Tenant gebruikt door het filter **Directory + abonnement** te selecteren in het bovenste menu en de map te kiezen die uw Tenant bevat.
-3. Kies **Alle services** linksboven in de Azure Portal, zoek **Azure AD B2C** en selecteer deze.
-4. Selecteer **Toepassingen** en vervolgens **Toevoegen**.
-5. Voer een naam in voor de toepassing, zoals *ROPC_Auth_app*.
-6. Selecteer **Nee** voor **Web-app/Web-API**en selecteer vervolgens **Ja** voor **native client**.
-7. Zorg ervoor dat alle andere waarden behouden blijven, en selecteer vervolgens **maken**.
-8. Selecteer de nieuwe toepassing en noteer de toepassings-ID voor later gebruik.
+[!INCLUDE [active-directory-b2c-appreg-ropc](../../includes/active-directory-b2c-appreg-ropc.md)]
 
 ##  <a name="create-a-resource-owner-policy"></a>Een beleid voor de eigenaar van een resource maken
 
@@ -278,7 +271,7 @@ Gebruik uw favoriete API-ontwikkelings toepassing om een API-aanroep te generere
 
 - Vervang `user-account` door de naam van een gebruikers account in uw Tenant.
 - Vervang `password1` door het wacht woord van het gebruikers account.
-- Vervang `application-id` door de toepassings-id uit de *ROPC_Auth_app* -registratie.
+- Vervang `application-id` door de toepassings-ID van de *ROPC_Auth_app* -registratie.
 - *Offline_access* is optioneel als u een vernieuwings token wilt ontvangen.
 
 De werkelijke POST-aanvraag ziet er ongeveer uit als in het volgende voor beeld:
@@ -320,8 +313,8 @@ Een POST-aanroep maken zoals deze wordt weer gegeven. Gebruik de informatie in d
 | resource | `application-id` |
 | refresh_token | `refresh-token` |
 
-- Vervang `application-id` door de toepassings-id uit de *ROPC_Auth_app* -registratie.
-- Vervang `refresh-token` door het **refresh_token** dat in het vorige antwoord is teruggestuurd.
+- Vervang `application-id` door de toepassings-ID van de *ROPC_Auth_app* -registratie.
+- Vervang `refresh-token` door het **refresh_token** dat in het vorige antwoord terug is verzonden.
 
 Een geslaagde reactie ziet eruit als in het volgende voor beeld:
 

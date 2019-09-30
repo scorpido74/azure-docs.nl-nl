@@ -1,22 +1,22 @@
 ---
-title: Wat is Windows virtueel bureau blad preview?  - Azure
-description: Een overzicht van de Windows-preview-versie van virtueel bureau blad.
+title: Wat is Windows Virtual Desktop?  - Azure
+description: Een overzicht van Windows virtueel bureau blad.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: overview
 ms.date: 08/07/2019
 ms.author: helohr
-ms.openlocfilehash: 7d312f54da91c8bc8b3f659ff92f531136cdecb3
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: 97087b7fdc6e4cdaccf922a1c72f35284c7a7040
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71338587"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71676555"
 ---
-# <a name="what-is-windows-virtual-desktop-preview"></a>Wat is Windows virtueel bureau blad preview? 
+# <a name="what-is-windows-virtual-desktop"></a>Wat is Windows Virtual Desktop? 
 
-Windows virtueel bureau blad preview is nu beschikbaar in de open bare preview. Dit is een desktop-en app Virtualization-service die in de Cloud wordt uitgevoerd.
+Virtueel bureau blad van Windows is een desktop-en app Virtualization-service die in de Cloud wordt uitgevoerd.
 
 U kunt het volgende doen wanneer u Windows virtueel bureau blad op Azure uitvoert:
 
@@ -89,6 +89,7 @@ De virtuele machines van Azure die u maakt voor het virtuele bureau blad van Win
 >Als u een Azure-abonnement nodig hebt, kunt u [zich aanmelden voor een gratis proef versie van één maand](https://azure.microsoft.com/free/). Als u de gratis proef versie van Azure gebruikt, moet u Azure AD Domain Services gebruiken om uw Windows Server-Active Directory gesynchroniseerd te laten met Azure Active Directory.
 
 De virtuele machines van Azure die u voor virtuele Windows-Bureau bladen maakt, moeten uitgaande TCP 443-toegang hebben tot de volgende Url's:
+
 * *. wvd.microsoft.com
 * *.blob.core.windows.net
 * *.core.windows.net
@@ -99,7 +100,7 @@ De virtuele machines van Azure die u voor virtuele Windows-Bureau bladen maakt, 
 >[!NOTE]
 >Het openen van deze Url's is essentieel voor een betrouw bare implementatie van een virtueel bureau blad in Windows. Het blok keren van de toegang tot deze Url's wordt niet ondersteund en heeft invloed op de service functionaliteit. Deze Url's zijn alleen van toepassing op virtuele bureau blad-sites en-bronnen van Windows en bevatten geen URL'S voor andere services, zoals Azure AD.
 
-Virtueel bureau blad van Windows bestaat uit de Windows-Desk tops en-apps die u levert aan gebruikers en de beheer oplossing, die als een service op Azure wordt gehost door micro soft. Tijdens de open bare preview-versie kunnen Desk tops en apps worden geïmplementeerd op virtuele machines (Vm's) in elke Azure-regio. de beheer oplossing en de gegevens voor deze Vm's bevinden zich in de Verenigde Staten (VS Oost 2-regio). Dit kan ertoe leiden dat gegevens worden overgedragen naar de Verenigde Staten terwijl u de service test tijdens de open bare preview-versie. We beginnen met het uitschalen van de beheer oplossing en de gegevens lokalisatie naar alle Azure-regio's, beginnend bij de algemene Beschik baarheid.
+Virtueel bureau blad van Windows bestaat uit de Windows-Desk tops en-apps die u levert aan gebruikers en de beheer oplossing, die als een service op Azure wordt gehost door micro soft. Desk tops en apps kunnen worden geïmplementeerd op virtuele machines (Vm's) in elke Azure-regio, en de beheer oplossing en gegevens voor deze Vm's bevinden zich in de Verenigde Staten (VS Oost 2-regio). Dit kan ertoe leiden dat gegevens worden overgedragen naar de Verenigde Staten.
 
 Zorg ervoor dat uw netwerk voldoet aan de volgende vereisten voor optimale prestaties:
 
@@ -119,11 +120,28 @@ De volgende Extern bureaublad-clients ondersteunen Windows virtueel bureau blad:
 Het virtuele bureau blad van Windows ondersteunt de volgende installatie kopieën van besturings systemen:
 
 * Windows 10 Enter prise-meerdere sessies
+* Windows 10 Enter prise
+* Windows 7 Enterprise
+* Windows Server 2019
 * Windows Server 2016
+* Windows Server 2012 R2
+
+De beschik bare opties voor automatisering en implementatie zijn afhankelijk van het besturings systeem en de versie die u kiest, zoals wordt weer gegeven in de volgende tabel: 
+
+|Besturingssysteem|Galerie met installatie kopieën van Azure|Hand matige VM-implementatie|Integratie van Azure Resource Manager-sjabloon|Hostgroep inrichten op Azure Marketplace|Windows Virtual Desktop agent-updates|
+|--------------------------------------|:------:|:------:|:------:|:------:|:------:|
+|Windows 10-meerdere sessies, versie 1903|Ja|Ja|Ja|Ja|Automatisch|
+|Windows 10-meerdere sessies, versie 1809|Ja|Ja|Nee|Nee|Automatisch|
+|Windows 10 Enter prise, versie 1903|Ja|Ja|Ja|Ja|Automatisch|
+|Windows 10 Enter prise, versie 1809|Ja|Ja|Nee|Nee|Automatisch|
+|Windows 7 Enterprise|Ja|Ja|Nee|Nee|Handmatig|
+|Windows Server 2019|Ja|Ja|Nee|Nee|Automatisch|
+|Windows Server 2016|Ja|Ja|Ja|Ja|Automatisch|
+|Windows Server 2012 R2|Ja|Ja|Nee|Nee|Automatisch|
 
 ## <a name="next-steps"></a>Volgende stappen
 
 Als u aan de slag wilt gaan, moet u een Tenant maken. Voor meer informatie over het maken van een Tenant gaat u verder met de zelf studie voor het maken van een Tenant.
 
 > [!div class="nextstepaction"]
-> [Een Tenant maken in Windows virtueel bureau blad preview](tenant-setup-azure-active-directory.md)
+> [Een tenant maken in Windows Virtual Desktop](tenant-setup-azure-active-directory.md)

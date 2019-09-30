@@ -1,18 +1,18 @@
 ---
 title: Waarschuwingen voor activiteiten logboek in Azure Monitor maken, weer geven en beheren
 description: Waarschuwingen voor activiteiten logboeken maken met behulp van de Azure Portal, een Azure Resource Manager sjabloon en Azure PowerShell.
-author: msvijayn
+author: rboucher
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 06/25/2019
-ms.author: vinagara
-ms.openlocfilehash: a7f80698791831b3d4404ea0f687a75c660c2222
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
+ms.author: robb
+ms.openlocfilehash: e93b6f9c74bb44cb7341f5763261ecb699432ae2
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67852747"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71675263"
 ---
 # <a name="create-view-and-manage-activity-log-alerts-by-using-azure-monitor"></a>Waarschuwingen voor activiteiten logboek maken, weer geven en beheren met behulp van Azure Monitor  
 
@@ -43,7 +43,7 @@ Gebruik de volgende procedure.
 1. Selecteer in de Azure Portal **controle** > **waarschuwingen**.
 2. Selecteer **nieuwe waarschuwings regel** in de linkerbovenhoek van het venster **waarschuwingen** .
 
-     ![Nieuwe waarschuwings regel](media/alerts-activity-log/AlertsPreviewOption.png)
+     ![Nieuwe waarschuwingsregel](media/alerts-activity-log/AlertsPreviewOption.png)
 
      Het venster **regel maken** wordt weer gegeven.
 
@@ -108,7 +108,7 @@ Een eenvoudige analoge waarde voor de voor waarden waarop waarschuwings regels k
 
 1. Selecteer in de Azure Portal **controle** > **waarschuwingen**. Selecteer **waarschuwings regels beheren** in de linkerbovenhoek van het venster.
 
-    ![Waarschuwings regels beheren](media/alerts-activity-log/manage-alert-rules.png)
+    ![Waarschuwingsregels beheren](media/alerts-activity-log/manage-alert-rules.png)
 
     De lijst met beschik bare regels wordt weer gegeven.
 
@@ -124,7 +124,7 @@ Een eenvoudige analoge waarde voor de voor waarden waarop waarschuwings regels k
 
 3. Selecteer de regel en dubbel klik om de regel opties te bewerken. Breng de gewenste wijzigingen aan en selecteer vervolgens **Opslaan**.
 
-   ![Waarschuwings regels beheren](media/alerts-activity-log/activity-log-rule-edit-page.png)
+   ![Waarschuwingsregels beheren](media/alerts-activity-log/activity-log-rule-edit-page.png)
 
 4. U kunt een regel inschakelen, uitschakelen of verwijderen. Selecteer de relevante optie boven aan het venster nadat u de regel hebt geselecteerd, zoals beschreven in stap 2.
 

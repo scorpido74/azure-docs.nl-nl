@@ -1,111 +1,111 @@
 ---
-title: Waarschuwingen in Azure Monitor
-description: Trigger e-mailberichten, meldingen, aanroepen websites URL's (webhooks) of automatisering van wanneer de analytische query door u opgegeven voorwaarden wordt voldaan voor Azure-waarschuwingen.
-author: msvijayn
+title: Waarschuwingen registreren in Azure Monitor
+description: Activeer e-mails, meldingen, Url's voor websites (webhooks) of automatisering wanneer de door u opgegeven analyse query voorwaarden worden vervuld voor Azure-waarschuwingen.
+author: yanivlavi
 services: monitoring
 ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 5/31/2019
-ms.author: vinagara
+ms.author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: ae35c735cffeb8cd85af1f32bb2d14ede6dc6b69
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f78f7c37fafd7f0b29f76220206b9adfb62f52c9
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66427409"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71677754"
 ---
-# <a name="log-alerts-in-azure-monitor"></a>Waarschuwingen in Azure Monitor
+# <a name="log-alerts-in-azure-monitor"></a>Waarschuwingen registreren in Azure Monitor
 
-Dit artikel vindt u details van waarschuwingen zijn een van de typen waarschuwingen die worden ondersteund in de [Azure-waarschuwingen](../../azure-monitor/platform/alerts-overview.md) en gebruikers van Azure-platform voor streaminganalyse gebruiken als basis voor waarschuwingen.
+In dit artikel vindt u informatie over logboek waarschuwingen, een van de typen waarschuwingen die worden ondersteund in de [Azure-waarschuwingen](../../azure-monitor/platform/alerts-overview.md) en waarmee gebruikers het Analytics platform van Azure kunnen gebruiken als basis voor waarschuwingen.
 
-Waarschuwing bestaat uit regels voor zoeken in logboeken die zijn gemaakt voor [logboeken van Azure Monitor](../../azure-monitor/learn/tutorial-viewdata.md) of [Application Insights](../../azure-monitor/app/cloudservices.md#view-azure-diagnostics-events). Zie voor meer informatie over het gebruik ervan, [waarschuwingen maken in Azure](../../azure-monitor/platform/alerts-log.md)
+De logboek waarschuwing bestaat uit logboek zoek regels die zijn gemaakt voor [Azure monitor logboeken](../../azure-monitor/learn/tutorial-viewdata.md) of [Application Insights](../../azure-monitor/app/cloudservices.md#view-azure-diagnostics-events). Zie [logboek waarschuwingen maken in azure](../../azure-monitor/platform/alerts-log.md) voor meer informatie over het gebruik ervan.
 
 > [!NOTE]
-> Populaire logboekgegevens van [logboeken van Azure Monitor](../../azure-monitor/learn/tutorial-viewdata.md) is nu ook beschikbaar op de metrische platform in Azure Monitor. Voor de detailweergave [metrische waarschuwingen voor logboeken](../../azure-monitor/platform/alerts-metric-logs.md)
+> Populaire logboek gegevens uit [Azure monitor-logboeken](../../azure-monitor/learn/tutorial-viewdata.md) zijn nu ook beschikbaar op het meet platform in azure monitor. Voor detail weergave, [metrische waarschuwing voor logboeken](../../azure-monitor/platform/alerts-metric-logs.md)
 
 
-## <a name="log-search-alert-rule---definition-and-types"></a>Search waarschuwingsregel - definitie en typen
+## <a name="log-search-alert-rule---definition-and-types"></a>Waarschuwings regel voor zoeken in Logboeken-definitie en typen
 
-Er worden door Azure Alerts regels gemaakt voor het zoeken in logboeken om met regelmatige intervallen automatisch opgegeven logboekzoekopdrachten uit te voeren.  Als de resultaten van de logboekzoekopdracht aan bepaalde criteria voldoen, wordt een waarschuwingsrecord gemaakt. De regel kan vervolgens automatisch een of meer acties uitvoeren met behulp van [actiegroepen](../../azure-monitor/platform/action-groups.md). [Inzender voor Azure Monitoring](../../azure-monitor/platform/roles-permissions-security.md) rol voor het maken, wijzigen en het bijwerken van waarschuwingen is mogelijk vereist; samen met toegang & query tot uitvoering van de rechten voor de analytics-doelen in waarschuwingsregel of Waarschuwingsquery. Als het maken van de gebruiker heeft geen toegang tot alle analytics doelen in waarschuwingsregel of Waarschuwingsquery - maken van de regel kan mislukken of de waarschuwingsregel wordt uitgevoerd met gedeeltelijke resultaten.
+Er worden door Azure Alerts regels gemaakt voor het zoeken in logboeken om met regelmatige intervallen automatisch opgegeven logboekzoekopdrachten uit te voeren.  Als de resultaten van de logboekzoekopdracht aan bepaalde criteria voldoen, wordt een waarschuwingsrecord gemaakt. De regel kan vervolgens automatisch een of meer acties uitvoeren met behulp van [actiegroepen](../../azure-monitor/platform/action-groups.md). De rol van [Azure monitoring-bijdrager](../../azure-monitor/platform/roles-permissions-security.md) voor het maken, wijzigen en bijwerken van logboek waarschuwingen is mogelijk vereist. samen met Access & uitvoerings rechten voor query's voor de analyse doel (en) in de waarschuwings regel of waarschuwings query. Als het maken van de gebruiker geen toegang heeft tot alle analyse doel (en) in een waarschuwings regel of waarschuwings query, kan het maken van de regel mislukken of kan de waarschuwings regel voor het logboek worden uitgevoerd met gedeeltelijke resultaten.
 
-Log search regels zijn gedefinieerd door de volgende gegevens:
+Zoek regels voor logboeken worden gedefinieerd door de volgende details:
 
-- **Meld u Query**.  De query die wordt uitgevoerd telkens als de waarschuwingsregel wordt geactiveerd.  De records die zijn geretourneerd door deze query worden gebruikt om te bepalen of een waarschuwing wordt geactiveerd. Analytics-query kan worden voor een specifieke Log Analytics-werkruimte of Application Insights-app en zelfs overbruggen [meerdere Log Analytics en Application Insights-resources](../../azure-monitor/log-query/cross-workspace-query.md#querying-across-log-analytics-workspaces-and-from-application-insights) mits de gebruiker toegang heeft, evenals rechten op alle query's uitvoeren resources. 
+- **Query registreren**.  De query die wordt uitgevoerd telkens wanneer de waarschuwings regel wordt geactiveerd.  De records die door deze query worden geretourneerd, worden gebruikt om te bepalen of een waarschuwing moet worden geactiveerd. Analytics-query's kunnen voor een specifieke Log Analytics werk ruimte of Application Insights app en zelfs over [meerdere log Analytics en Application Insights resources](../../azure-monitor/log-query/cross-workspace-query.md#querying-across-log-analytics-workspaces-and-from-application-insights) beschikken die de gebruiker toegang heeft, evenals de query rechten op alle resources. 
     > [!IMPORTANT]
-    > [meerdere bronnen query](../../azure-monitor/log-query/cross-workspace-query.md#querying-across-log-analytics-workspaces-and-from-application-insights) ondersteuning in waarschuwingen voor Application Insights en log waarschuwingen voor [Log Analytics geconfigureerd met behulp van scheduledQueryRules API](../../azure-monitor/platform/alerts-log-api-switch.md) alleen.
+    > ondersteuning voor [meerdere bronnen query's](../../azure-monitor/log-query/cross-workspace-query.md#querying-across-log-analytics-workspaces-and-from-application-insights) in logboek waarschuwingen voor Application Insights en logboek waarschuwingen voor [log Analytics geconfigureerd met behulp](../../azure-monitor/platform/alerts-log-api-switch.md) van de scheduledQueryRules-API.
 
-    Sommige combinaties van analytische opdrachten en zijn niet compatibel met gebruikt in waarschuwingen; voor meer informatie weergeven, [waarschuwingsquery's zich in Azure Monitor](../../azure-monitor/platform/alerts-log-query.md).
+    Sommige analyse opdrachten en combi Naties zijn incompatibel met gebruik in logboek waarschuwingen. voor meer informatie kunt u [waarschuwings Query's vastleggen in azure monitor](../../azure-monitor/platform/alerts-log-query.md).
 
-- **Periode**.  Hiermee geeft u het tijdsbereik voor de query. De query retourneert alleen de records die zijn gemaakt binnen dit tijdsbereik. Periode Hiermee beperkt u de gegevens opgehaald voor de query voor om misbruik te voorkomen en willekeurige opdracht van de tijd heeft (zoals geleden) gebruikt in logboekquery. <br>*Bijvoorbeeld, als de periode is ingesteld op 60 minuten en de query wordt uitgevoerd op 13:15 uur, wordt alleen de records die zijn gemaakt tussen 12:15 uur en 13:15 uur geretourneerd logboekquery uit te voeren. Als de logboekquery gebruikt tijd opdracht zoals geleden nu (7d), de logboekquery wordt uitgevoerd alleen voor gegevens die tussen 12:15 uur en 1:15 PM - als gegevens bestaan alleen de afgelopen 60 minuten. En niet voor zeven dagen aan gegevens die zijn opgegeven in de query voor.*
+- **Tijds periode**.  Hiermee geeft u het tijds bereik voor de query op. De query retourneert alleen de records die zijn gemaakt binnen dit tijdsbereik. De tijds duur beperkt de gegevens die zijn opgehaald voor de logboek query om misbruik te voor komen en elke keer dat de opdracht (zoals voorheen) wordt gebruikt in de logboek query te omzeilen. <br>*For-voor beeld: als de periode is ingesteld op 60 minuten en de query wordt uitgevoerd om 1:15 uur, worden alleen records die zijn gemaakt tussen 12:15 uur en 1:15 PM geretourneerd om de logboek query uit te voeren. Als de query van het logboek gebruik maakt van de tijd opdracht zoals voorheen (7d), wordt de logboek query alleen uitgevoerd voor gegevens tussen 12:15 uur en 1:15 uur, alsof gegevens alleen voor de afgelopen 60 minuten bestaan. En niet voor zeven dagen aan gegevens zoals opgegeven in de logboek query.*
 
-- **Frequentie**.  Hiermee geeft u op hoe vaak de query moet worden uitgevoerd. Een waarde tussen 5 minuten en 24 uur kan zijn. Moet gelijk zijn aan of kleiner is dan de periode.  Als de waarde groter dan de periode is, riskeert u records worden overgeslagen.<br>*Neem bijvoorbeeld een periode van 30 minuten en een frequentie van 60 minuten.  Als de query wordt uitgevoerd om 1:00, wordt er records tussen 12:30 en 13:00 uur.  De volgende keer dat de query wordt uitgevoerd, is 2:00 wanneer hij records tussen 1:30 en 2:00 terugkeert.  Alle records gemaakt tussen 1:00 uur en 1:30 zouden nooit worden geëvalueerd.*
+- **Frequentie**.  Hiermee geeft u op hoe vaak de query moet worden uitgevoerd. Dit kan een waarde zijn tussen 5 minuten en 24 uur. Moet gelijk zijn aan of korter zijn dan de tijds periode.  Als de waarde groter is dan de tijds periode, worden de risico records gemist.<br>*For-voor beeld kunt u een periode van 30 minuten en een frequentie van 60 minuten overwegen.  Als de query wordt uitgevoerd om 1:00, worden records tussen 12:30 en 1:00 uur geretourneerd.  De volgende keer dat de query wordt uitgevoerd, is 2:00 wanneer deze records retourneert tussen 1:30 en 2:00.  Records die zijn gemaakt tussen 1:00 en 1:30, worden nooit geëvalueerd.*
 
-- **Drempelwaarde**.  De resultaten van zoeken in Logboeken worden geëvalueerd om te bepalen of een waarschuwing moet worden gemaakt.  De drempelwaarde is verschillend voor de verschillende typen waarschuwingsregels zoeken.
+- **Drempel waarde**.  De resultaten van de zoek opdracht in het logboek worden geëvalueerd om te bepalen of er een waarschuwing moet worden gemaakt.  De drempel waarde verschilt voor de verschillende typen waarschuwings regels voor logboek zoeken.
 
-Log search regels worden voor [logboeken van Azure Monitor](../../azure-monitor/learn/tutorial-viewdata.md) of [Application Insights](../../azure-monitor/app/cloudservices.md#view-azure-diagnostics-events), zijn twee soorten. Elk van deze typen is beschreven in de volgende secties.
+De logboeken voor het zoeken naar [Azure monitor logboeken](../../azure-monitor/learn/tutorial-viewdata.md) of [Application Insights](../../azure-monitor/app/cloudservices.md#view-azure-diagnostics-events)kunnen van twee typen zijn. Elk van deze typen wordt gedetailleerd beschreven in de volgende secties.
 
-- **[Aantal resultaten](#number-of-results-alert-rules)** . Één waarschuwing gemaakt wanneer het aantal records geretourneerd door de zoeken in Logboeken groter zijn dan een opgegeven getal.
-- **[Meting van metrische gegevens](#metric-measurement-alert-rules)** .  Waarschuwing gemaakt voor elk object in de resultaten van zoeken in Logboeken met waarden die groter zijn dan de opgegeven drempelwaarde.
+- **[Aantal resultaten](#number-of-results-alert-rules)** . Er wordt één waarschuwing gemaakt wanneer de aantal records die worden geretourneerd door de logboek zoekactie een opgegeven aantal overschrijdt.
+- **[Meting van metrische gegevens](#metric-measurement-alert-rules)** .  Er is een waarschuwing gemaakt voor elk object in de resultaten van het zoeken naar Logboeken met waarden die de opgegeven drempel waarde overschrijden.
 
-De verschillen tussen waarschuwingsregel typen zijn als volgt.
+De verschillen tussen typen waarschuwings regels zijn als volgt.
 
-- *Aantal resultaten* waarschuwingsregels maakt altijd één waarschuwing, even *meting van metrische gegevens* waarschuwingsregel maakt een waarschuwing voor elk object dat de drempelwaarde overschrijdt.
-- *Aantal resultaten* waarschuwingsregels genereren een waarschuwing als de drempelwaarde voor één keer is overschreden. *Meting van metrische gegevens* waarschuwingsregels kunnen genereren een waarschuwing als de drempelwaarde wordt overschreden een bepaald aantal keren gedurende een bepaald tijdsinterval.
+- *Met het aantal resultaten regels voor* waarschuwingen wordt altijd één waarschuwing gemaakt, terwijl de regel waarschuwing voor *metrische metingen* een waarschuwing maakt voor elk object dat de drempel waarde overschrijdt.
+- *Aantal waarschuwings regels voor resultaten* er wordt een waarschuwing gemaakt wanneer de drempel waarde één keer wordt overschreden. Waarschuwings regels voor *metrische waarderingen* kunnen een waarschuwing maken wanneer de drempel een bepaald aantal keer voor een bepaald tijds interval wordt overschreden.
 
-### <a name="number-of-results-alert-rules"></a>Aantal resultaten waarschuwingsregels
+### <a name="number-of-results-alert-rules"></a>Aantal waarschuwings regels voor resultaten
 
-**Aantal resultaten** waarschuwingsregels één waarschuwing maken wanneer het aantal records dat wordt geretourneerd door de zoekopdracht langer zijn dan de opgegeven drempelwaarde. Dit type van de waarschuwingsregel is ideaal voor het werken met gebeurtenissen, zoals Windows-Logboeken, Syslog antwoord van de Web-App en aangepaste logboeken.  U wilt maken van een waarschuwing wanneer een bepaalde fout-gebeurtenis wordt gemaakt, of wanneer er meerdere gebeurtenissen op foutniveau worden gemaakt binnen een bepaalde periode.
+**Met het aantal resultaten** waarschuwings regels wordt één waarschuwing gemaakt wanneer het aantal records dat wordt geretourneerd door de zoek query de opgegeven drempel waarde overschrijdt. Dit type waarschuwings regel is ideaal voor het werken met gebeurtenissen, zoals Windows-gebeurtenis logboeken, syslog-, WebApp-reacties en aangepaste Logboeken.  U kunt een waarschuwing maken wanneer een bepaalde fout gebeurtenis wordt gemaakt, of wanneer er meerdere fout gebeurtenissen binnen een bepaalde tijds periode worden gemaakt.
 
-**Drempel**: De drempelwaarde voor een aantal resultaten waarschuwingsregels is groter dan of kleiner is dan een bepaalde waarde.  Als het aantal records dat wordt geretourneerd door de zoeken in Logboeken aan deze criteria voldoen, wordt een waarschuwing gemaakt.
+**Drempel**: De drempel waarde voor een aantal waarschuwings regels voor resultaten is groter dan of kleiner dan een bepaalde waarden.  Als het aantal records dat door de zoek opdracht in Logboeken wordt geretourneerd, overeenkomen met deze criteria, wordt er een waarschuwing gemaakt.
 
-Om u te waarschuwen wanneer één gebeurtenis, het aantal resultaten ingesteld op groter dan 0 en controleren op het exemplaar van een gebeurtenis die is gemaakt sinds de laatste keer dat de query is uitgevoerd. Sommige toepassingen kunnen zich aanmelden voor een incidentele fout mag niet per se een waarschuwing geven.  De toepassing kan bijvoorbeeld proberen het proces dat de foutgebeurtenis is gemaakt en slaagt de volgende keer.  In dit geval kunt u niet te maken van de waarschuwing, tenzij er meerdere gebeurtenissen worden gemaakt binnen een bepaalde periode.  
+Als u een waarschuwing wilt ontvangen voor één gebeurtenis, stelt u het aantal resultaten in op groter dan 0 en controleert u of er één gebeurtenis is gemaakt sinds de laatste keer dat de query is uitgevoerd. Sommige toepassingen kunnen een incidentele fout registreren die niet noodzakelijkerwijs een waarschuwing moet veroorzaken.  De toepassing kan bijvoorbeeld het proces voor het maken van de fout gebeurtenis opnieuw proberen en de volgende keer daarna slagen.  In dit geval is het wellicht niet verstandig om de waarschuwing te maken, tenzij er meerdere gebeurtenissen binnen een bepaalde periode zijn gemaakt.  
 
-In sommige gevallen kunt u een waarschuwing maken in de afwezigheid van een gebeurtenis.  Bijvoorbeeld, een proces kan zich aanmelden reguliere gebeurtenissen om aan te geven dat deze correct werkt.  Als dit niet een van deze gebeurtenissen zich binnen een bepaalde periode, moet klikt u vervolgens een waarschuwing worden gemaakt.  In dit geval stelt u de drempelwaarde op **minder dan 1**.
+In sommige gevallen wilt u mogelijk een waarschuwing maken als er geen gebeurtenis is.  Zo kan een proces regel matige gebeurtenissen registreren om aan te geven dat het goed werkt.  Als een van deze gebeurtenissen niet binnen een bepaalde tijds periode wordt geregistreerd, moet er een waarschuwing worden gemaakt.  In dit geval stelt u de drempel waarde in op **minder dan 1**.
 
-#### <a name="example-of-number-of-records-type-log-alert"></a>Voorbeeld van het type waarschuwing aantal Records
+#### <a name="example-of-number-of-records-type-log-alert"></a>Voor beeld van een logboek waarschuwing voor het type records
 
-U hebt een scenario waarin u wilt weten wanneer uw web-apps biedt een antwoord naar gebruikers met code 500 (dat wil zeggen) interne serverfout. U zou een waarschuwingsregel maken met de volgende details:  
+Overweeg een scenario waarin u wilt weten wanneer uw webtoepassing een reactie geeft op gebruikers met code 500 (dat wil zeggen) interne server fout. U maakt een waarschuwings regel met de volgende details:  
 
-- **Query:** aanvragen | waarbij resultCode == "500"<br>
-- **Tijdsperiode:** 30 minuten<br>
-- **Waarschuwingsfrequentie:** vijf minuten<br>
-- **Drempelwaarde:** Groter dan 0<br>
+- **Query:** aanvragen | Where resultCode = = "500"<br>
+- **Tijds periode:** 30 minuten<br>
+- **Waarschuwings frequentie:** vijf minuten<br>
+- **Drempel waarde:** Groter dan 0<br>
 
-Vervolgens waarschuwing zou de query uitvoeren om de 5 minuten, 30 minuten van gegevens - om te controleren of voor elke record waarop resultaatcode is 500. Als een dergelijke record wordt gevonden, wordt de waarschuwing wordt geactiveerd en activeert de actie die is geconfigureerd.
+Vervolgens wordt de query elke vijf minuten uitgevoerd, met 30 minuten aan gegevens-om te zoeken naar een record met een resultaat code van 500. Als er nog een record wordt gevonden, wordt de waarschuwing geactiveerd en wordt de geconfigureerde actie geactiveerd.
 
-### <a name="metric-measurement-alert-rules"></a>Waarschuwingsregels meting van metrische gegevens
+### <a name="metric-measurement-alert-rules"></a>Waarschuwings regels voor metrische maat eenheden
 
-**Meting van metrische gegevens** waarschuwingsregels een waarschuwing maken voor elk object in een query met een waarde die groter is dan een opgegeven drempelwaarde en triggervoorwaarde opgegeven. In tegenstelling tot **aantal resultaten** waarschuwingsregels, **meting van metrische gegevens** waarschuwingsregels werken als resultaat analytics een tijdreeks biedt. Ze hebben de volgende toch duidelijke verschillen van **aantal resultaten** waarschuwingsregels.
+Met regels voor **metrische waarderings** waarschuwingen wordt een waarschuwing voor elk object in een query gemaakt met een waarde die de opgegeven drempel waarden en de opgegeven trigger voorwaarde overschrijdt. In tegens telling tot het aantal waarschuwings regels **voor resultaten** , werken waarschuwings regels voor **metrische maat** eenheden wanneer het analyse resultaat een tijd reeks bevat. Ze hebben de volgende verschillende verschillen ten opzichte van het aantal waarschuwings regels **voor resultaten** .
 
-- **Statistische functie**: Hiermee bepaalt u de berekening die wordt uitgevoerd en mogelijk een numeriek veld om samen te voegen.  Bijvoorbeeld, **count()** retourneert het aantal records in de query **avg(CounterValue)** retourneert het gemiddelde van het veld CounterValue over het interval. Statistische functie in de query moet zijn met de naam/met de naam: AggregatedValue en geef een numerieke waarde. 
+- **Statistische functie**: Bepaalt de berekening die wordt uitgevoerd en mogelijk een numeriek veld om samen te voegen.  **Aantal ()** retourneert bijvoorbeeld het aantal records in de query, **AVG (CounterValue)** berekent het gemiddelde van het veld CounterValue voor het interval. De statistische functie in de query moet de naam/aangeroepen hebben: AggregatedValue en geef een numerieke waarde op. 
 
-- **Veld groep**: Een record met een geaggregeerde waarde voor elk exemplaar van dit veld is gemaakt en een waarschuwing worden gegenereerd voor elke.  Bijvoorbeeld, als u wilt dat er waarschuwingen gegenereerd voor elke computer, gebruikt u **per Computer**. In het geval, er zijn meerdere velden opgegeven in Waarschuwingsquery, kunt u opgeven welk veld moet worden gebruikt om te sorteren resultaten met behulp van de **cumulatieve op** (metricColumn)-parameter
-
-    > [!NOTE]
-    > *Cumulatieve op* (metricColumn)-optie is beschikbaar voor waarschuwingen voor type meting van metrische gegevens voor Application Insights en log waarschuwingen voor [Log Analytics geconfigureerd met behulp van scheduledQueryRules API](../../azure-monitor/platform/alerts-log-api-switch.md) alleen.
-
-- **Interval**:  Hiermee definieert u het tijdsinterval op waarover de gegevens worden samengevoegd.  Bijvoorbeeld, als u hebt opgegeven **vijf minuten**, een record voor elk exemplaar van het groepsveld samengevoegd met intervallen van 5 minuten gedurende de periode die is opgegeven voor de waarschuwing moet worden gemaakt.
+- **Groeps veld**: Er wordt een record met een geaggregeerde waarde voor elk exemplaar van dit veld gemaakt en er kan voor elke instantie een waarschuwing worden gegenereerd.  Als u bijvoorbeeld een waarschuwing wilt genereren voor elke computer, gebruikt u **per computer**. Als er meerdere groeps velden zijn opgegeven in de waarschuwings query, kan de gebruiker opgeven welk veld moet worden gebruikt voor het sorteren van de resultaten met behulp van de para meter **aggregate on** (metricColumn)
 
     > [!NOTE]
-    > BIn-functie moet worden gebruikt in query opgeven voor interval. Als bin() tot ongelijk tijdsintervallen leiden kan - wordt waarschuwing automatisch geconverteerd bin opdracht bin_at opdracht met de juiste tijd tijdens runtime, om ervoor te zorgen resultaten met een vast punt. Het type waarschuwing voor een meting van metrische gegevens is ontworpen voor gebruik met query's met maximaal drie exemplaren van de opdracht bin()
+    > De optie *aggregate op* (metricColumn) is beschikbaar voor metrische meet logboek waarschuwingen voor Application Insights en logboek waarschuwingen voor [log Analytics geconfigureerd met scheduledQueryRules-API](../../azure-monitor/platform/alerts-log-api-switch.md) .
+
+- **Interval**:  Hiermee definieert u het tijds interval waarover de gegevens worden geaggregeerd.  Als u bijvoorbeeld **vijf minuten**hebt opgegeven, wordt er een record gemaakt voor elke instantie van het groeps veld geaggregeerd met een interval van 5 minuten voor de periode die is opgegeven voor de waarschuwing.
+
+    > [!NOTE]
+    > De functie bin moet worden gebruikt in een query om een interval op te geven. Als bin () kan leiden tot ongelijke tijds intervallen. bij het uitvoeren van een waarschuwing wordt de bin-opdracht met de juiste tijd tijdens runtime automatisch geconverteerd naar de bin_at-opdracht, om ervoor te zorgen dat de resultaten met een vast punt worden Het meet type voor metrische gegevens van de logboek waarschuwing is ontworpen om te werken met query's met Maxi maal drie exemplaren van de opslag locatie ()-opdracht
     
-- **Drempel**: De drempelwaarde voor de meting van metrische gegevens waarschuwingsregels is gedefinieerd door een cumulatieve waarde en een aantal schendingen.  Als een gegevenspunt in de logboekzoekopdracht deze waarde overschrijdt, heeft deze beschouwd als een schending.  Als het aantal schendingen in voor een object in de resultaten de opgegeven waarde overschrijdt, wordt een waarschuwing gemaakt voor dat object.
+- **Drempel**: De drempel waarde voor waarschuwings regels voor metrische maat eenheden wordt gedefinieerd door een cumulatieve en een aantal schendingen.  Als een gegevens punt in de zoek opdracht voor logboeken deze waarde overschrijdt, wordt het beschouwd als een schending.  Als het aantal schendingen in voor een object in de resultaten de opgegeven waarde overschrijdt, wordt er een waarschuwing voor dat object gemaakt.
 
-Onjuiste configuratie van de *cumulatieve op* of *metricColumn* optie waarschuwingsregels naar ontstekingsfouten kan veroorzaken. Zie voor meer informatie, [problemen oplossen wanneer de waarschuwingsregel meting van metrische gegevens onjuist is](alert-log-troubleshoot.md#metric-measurement-alert-rule-is-incorrect).
+Onjuiste configuratie van de optie *aggregatie op* of *metricColumn* kan waarschuwings regels veroorzaken die niet kunnen worden gestart. Zie [problemen oplossen als waarschuwings regel voor metrische meting onjuist is](alert-log-troubleshoot.md#metric-measurement-alert-rule-is-incorrect)voor meer informatie.
 
-#### <a name="example-of-metric-measurement-type-log-alert"></a>Voorbeeld van een waarschuwing voor een type meting van metrische gegevens
+#### <a name="example-of-metric-measurement-type-log-alert"></a>Voor beeld van een waarschuwing voor het type metrische maat eenheid
 
-U hebt een scenario waarin u een waarschuwing wilt als een computer processorgebruik van 90% drie keer meer dan 30 minuten overschreden.  U zou een waarschuwingsregel maken met de volgende details:  
+Overweeg een scenario waarin u een waarschuwing wilt ontvangen als een computer het processor gebruik van 90% drie keer meer dan 30 minuten heeft overschreden.  U maakt een waarschuwings regel met de volgende details:  
 
-- **Query:** Perf | waarbij ObjectName == 'Processor' en CounterName == "% processortijd" | summarize AggregatedValue = avg(CounterValue) door bin (TimeGenerated, 5 min.), Computer<br>
-- **Tijdsperiode:** 30 minuten<br>
-- **Waarschuwingsfrequentie:** vijf minuten<br>
-- **Alert Logic - voorwaarde en drempelwaarde:** Groter is dan 90<br>
-- **Het veld van de groep (aggregaat-on):** Computer
-- **De waarschuwing activeren op basis van:** Totaal aantal kiezen oplossingen groter is dan 2<br>
+- **Query:** Prestaties | waarbij ObjectName = = "processor" en CounterName = = "% processor tijd" | samenvatten AggregatedValue = AVG (CounterValue) by bin (TimeGenerated, 5 min.), computer<br>
+- **Tijds periode:** 30 minuten<br>
+- **Waarschuwings frequentie:** vijf minuten<br>
+- **Waarschuwings logica-drempel waarde voor &:** Groter dan 90<br>
+- **Groeps veld (samen voegen):** Computer
+- **Waarschuwing activeren op basis van:** Totaal aantal inbreuken groter dan 2<br>
 
-De query maakt een gemiddelde waarde voor elke computer met 5 minuten durende intervallen.  Deze query worden uitgevoerd om de 5 minuten voor gegevens die worden verzameld in de vorige 30 minuten. Omdat het veld groep (aggregaat-on) gekozen kolommen 'Computer' - de AggregatedValue wordt verdeeld voor verschillende waarden van 'Computer' en gemiddelde CPU-gebruik voor elke computer wordt bepaald voor een opslaglocatie van de tijd van 5 minuten.  Resultaat van de voorbeeld-query voor drie computers (bijvoorbeeld) zou zijn als hieronder.
+De query maakt een gemiddelde waarde voor elke computer met een interval van vijf minuten.  Deze query wordt elke 5 minuten uitgevoerd voor gegevens die in de afgelopen 30 minuten zijn verzameld. Omdat het groeps veld (samen voegen) in kolom ' computer ' is gekozen, wordt de AggregatedValue voor de verschillende waarden van ' computer ' gesplitst en wordt het gemiddelde processor gebruik voor elke computer bepaald door een tijds lade van vijf minuten.  Een voor beeld van een query resultaat voor drie computers, zoals hieronder.
 
 
 |TimeGenerated [UTC] |Computer  |AggregatedValue  |
@@ -118,49 +118,49 @@ De query maakt een gemiddelde waarde voor elke computer met 5 minuten durende in
 |20xx-xx-xxT01:30:00Z     |   srv02.contoso.com      |    84     |
 |20xx-xx-xxT01:30:00Z     |   srv03.contoso.com      |    92     |
 
-Als resultaat van de query is om te worden uitgezet, wordt deze weergegeven als.
+Als het query resultaat moet worden uitgezet, wordt dit weer gegeven als.
 
-![De resultaten van de voorbeeld-query](media/alerts-unified-log/metrics-measurement-sample-graph.png)
+![Voorbeeld query resultaten](media/alerts-unified-log/metrics-measurement-sample-graph.png)
 
-In dit voorbeeld ziet u in bins van 5 minuten voor elk van de drie computers - gemiddelde CPU-gebruik als berekend voor 5 minuten. Drempelwaarde van 90 geschonden door slechts één keer srv01 om 1:25 bin. Ter vergelijking: srv02 overschrijdt 90 op 1:10, 1:15 en 1:25 opslaglocaties; terwijl srv03 groter is dan 90 drempelwaarde bij 1:10, 1:15, 1:20 en 1:30.
-Omdat de waarschuwing is geconfigureerd om te activeren op basis van het totaal aantal schendingen zijn meer dan twee, zien we dat srv02 en srv03 alleen voldoen aan de criteria. Afzonderlijke waarschuwingen zouden daarom worden gemaakt voor srv02 en srv03 omdat ze de drempelwaarde 90% tweemaal in meerdere tijd opslaglocaties geschonden.  Als de *waarschuwing activeren op basis van:* parameter in plaats daarvan is geconfigureerd voor *continue schendingen* optie, en vervolgens een waarschuwing zou worden geactiveerd **alleen** voor srv03 omdat deze geschonden de drempelwaarde voor drie opeenvolgende opslaglocaties van 1:10 tot en met 1:20. En **niet** geschonden voor srv02, omdat deze de drempelwaarde voor twee opeenvolgende opslaglocaties van 1:10 tot en met 1:15.
+In dit voor beeld zien we in opslag locaties van 5 minuten voor elk van de drie computers-gemiddeld processor gebruik, zoals berekend gedurende 5 minuten. De drempel van 90 wordt slechts één keer op 1:25 bin geschonden door Srv01. Ten opzichte van SRV02 overschrijdt de drempel waarde van 90 op 1:10, 1:15 en 1:25 bakken; Hoewel srv03 groter is dan 90 drempel op 1:10, 1:15, 1:20 en 1:30.
+Omdat de waarschuwing is geconfigureerd om te activeren op basis van het totale aantal schendingen zijn er meer dan twee, zien we dat SRV02 en srv03 alleen voldoen aan de criteria. Daarom worden afzonderlijke waarschuwingen gemaakt voor SRV02 en srv03, omdat ze de drempel waarde van 90% twee keer hebben geschonden over meerdere tijd bakken.  Als de *trigger waarschuwing gebaseerd op:* para meter is geconfigureerd voor de optie *voortdurende overtredingen* , wordt een waarschuwing **alleen** geactiveerd voor srv03 omdat deze de drempel waarde voor drie opeenvolgende tijd bakken van 1:10 tot 1:20 heeft geschonden. En **niet** voor SRV02, omdat deze de drempel waarde voor twee opeenvolgende tijd bakken van 1:10 tot 1:15 heeft geschonden.
 
-## <a name="log-search-alert-rule---firing-and-state"></a>Search waarschuwingsregel - starten en de status
+## <a name="log-search-alert-rule---firing-and-state"></a>Waarschuwings regel voor zoeken in Logboeken-activeren en status
 
-Waarschuwingsregel zoeken werkt op de logica echter door de gebruiker aan de hand van configuratie en de aangepaste analytics-query die wordt gebruikt. Sinds de bewakingslogica is met inbegrip van de exacte voorwaarde of de reden waarom de waarschuwingsregel moet activeren ingekapseld in een analytics-query - die in elke waarschuwingsregel kan verschillen. Azure-waarschuwingen heeft schaarse informatie van de specifieke onderliggende hoofdoorzaak (of) scenario wordt geëvalueerd wanneer de voorwaarde drempelwaarde van waarschuwingsregel zoeken is bereikt of overschreden. Waarschuwingen worden dus status zonder aangeduid. En logboekwaarschuwingsregels wordt behouden uitvoeren als de waarschuwing voorwaarde wordt voldaan door het resultaat van de opgegeven aangepaste analytics-query. Zonder de waarschuwing elke ophalen is opgelost, zoals de logica van de exacte oorzaak van de bewaking van de fout in de analytics-query die is opgegeven door de gebruiker wordt gemaskeerd. Er zijn momenteel geen mechanisme voor Azure Monitor-waarschuwingen naar afdoende deduceren hoofdoorzaak worden opgelost.
+De waarschuwings regel voor logboek registratie werkt met de logica die wordt gebruikt door de gebruiker, zoals per configuratie en de gebruikte aangepaste analyse query. Omdat de bewakings logica, inclusief de exacte voor waarde of de reden waarom de waarschuwings regel moet worden geactiveerd, wordt ingekapseld in een analyse query, die kan verschillen in elke waarschuwings regel voor Logboeken. Azure-waarschuwingen hebben schaarse informatie over de specifieke onderliggende hoofd oorzaak (of) die wordt geëvalueerd wanneer aan de drempel waarde voor de waarschuwings regel voor logboek registratie wordt voldaan of wordt overschreden. Logboek waarschuwingen worden dus status-less genoemd. En de waarschuwings regels voor logboeken blijven geactiveerd, zolang er wordt voldaan aan de waarschuwings voorwaarde door het resultaat van de opgegeven aangepaste analyse query. Zonder dat de waarschuwing elke keer wordt opgelost, omdat de logica van de exacte hoofd oorzaak van de bewakings fout wordt gemaskeerd in de analyse query die door de gebruiker is gegeven. Er is momenteel geen mechanisme voor Azure Monitor waarschuwingen om de hoofd oorzaak te verhelpen.
 
-Kunnen we zien dezelfde met een voorbeeld. Wordt ervan uitgegaan dat er een waarschuwingsregel met de naam *Contoso-Log-waarschuwing*, zoals per configuratie in de [voorbeeld dat is opgegeven voor het nummer van de resultaten type waarschuwing](#example-of-number-of-records-type-log-alert) - waar de aangepaste Waarschuwingsquery is ontworpen om te zoeken naar 500 resultaatcode in Logboeken.
+We zien hetzelfde met een praktisch voor beeld. Stel dat er een waarschuwings regel voor logboeken met de naam *Contoso-log-alert*is, volgens de configuratie in het voor [beeld van het type logboek waarschuwing voor het aantal resultaten](#example-of-number-of-records-type-log-alert) , waarbij de aangepaste waarschuwings query is ontworpen om 500-resultaat code in Logboeken te zoeken.
 
-- Op 1:05 uur als Contoso-Log-waarschuwing is uitgevoerd door Azure-waarschuwingen, resulteerde in het logboek zoekresultaat nul records met resultaatcode met 500. Aangezien nul lager dan de drempelwaarde is en niet door de waarschuwing wordt geactiveerd.
-- Op de volgende iteratie om 1:10 uur als Contoso-Log-waarschuwing is uitgevoerd door Azure-waarschuwingen opgegeven log zoekresultaat vijf records met resultaatcode 500. Aangezien vijf de drempelwaarde overschrijdt en de waarschuwing wordt geactiveerd met de bijbehorende acties ophalen geactiveerd.
-- Op 13:15 uur als Contoso-Log-waarschuwing is uitgevoerd door Azure-waarschuwingen, mits het zoekresultaat log twee records met 500 resultaatcode. Omdat twee is hoger dan de drempelwaarde en de waarschuwing wordt geactiveerd met de bijbehorende acties ophalen geactiveerd.
-- Op de volgende iteratie om 1:20 uur als Contoso-Log-waarschuwing is uitgevoerd door Azure waarschuwing opgegeven log zoekresultaat nu opnieuw nul records met 500 resultaatcode. Aangezien nul lager dan de drempelwaarde is en niet door de waarschuwing wordt geactiveerd.
+- Om 1:05 uur wanneer contoso-log-alert is uitgevoerd door Azure-waarschuwingen, resulteert het resultaat van zoeken in Logboeken in nul records met resultaat code van 500. Omdat nul lager is dan de drempel waarde, wordt de waarschuwing niet geactiveerd.
+- Bij de volgende iteratie om 1:10 uur wanneer contoso-log-alert is uitgevoerd door Azure-waarschuwingen, wordt in het Zoek resultaat van de logboeken vijf records met resultaat code gegenereerd als 500. Omdat vijf de drempel waarde overschrijdt en de waarschuwing wordt geactiveerd, worden de gekoppelde acties geactiveerd.
+- Om 1:15 uur wanneer contoso-log-alert is uitgevoerd door Azure-waarschuwingen, wordt in het resultaat van de logboek zoekopdracht twee records met 500 resultaat code gegeven. Omdat twee de drempel waarde overschrijdt en de waarschuwing wordt geactiveerd, worden de gekoppelde acties geactiveerd.
+- Nu bij de volgende iteratie op 1:20 uur wanneer contoso-log-alert is uitgevoerd door Azure-waarschuwing, wordt het resultaat van een zoek opdracht voor zoeken in Logboeken opnieuw nul records met 500 resultaat code weer gegeven. Omdat nul lager is dan de drempel waarde, wordt de waarschuwing niet geactiveerd.
 
-Maar in de hierboven vermelde geval op 13:15 uur - Azure-waarschuwingen kunnen niet bepalen dat de onderliggende problemen zien bij 1:10 zich blijven voordoen en als er netto nieuwe fouten. Als door gebruiker opgegeven query kan worden rekening houdend met oudere records - kunnen Azure-waarschuwingen moet zijn. Omdat de logica voor de waarschuwing wordt ingekapseld in de waarschuwing query - zodat de twee records met 500 resultaatcode gezien op 13:15 uur kunnen of mogelijk niet al gezien om 1:10 uur. Dus als u wilt err aan de zijkant van waarschuwing, wanneer de Contoso-Log-waarschuwing wordt uitgevoerd op 13:15 uur, wordt geconfigureerde actie opnieuw geactiveerd. Nu om 1:20 uur als nul records met 500 resultaatcode - zijn zichtbaar voor Azure-waarschuwingen kunnen niet worden bepaald dat de oorzaak van 500 resultaatcode gezien op 13:10 uur en 13:15 uur nu opgelost is en Azure Monitor-waarschuwingen kunnen vertrouwen deduceren de problemen 500 fout gebeurt niet om dezelfde reden s opnieuw. Contoso-Log-waarschuwing wordt daarom niet worden gewijzigd in opgelost in een waarschuwing voor Azure-dashboard en/of meldingen verzonden met vermelding van de resolutie van de waarschuwing. In plaats daarvan de gebruiker die de exacte voorwaarde of de reden voor de logica die is ingesloten in de analytics-query, begrijpt kunt [Markeer de waarschuwing als gesloten](alerts-managing-alert-states.md) indien nodig.
+Maar in het bovenstaande voor beeld kan bij 1:15 PM-Azure-waarschuwingen niet worden vastgesteld dat de onderliggende problemen die op 1:10 aanwezig zijn, behouden blijven en als er net nieuwe fouten optreden. Als query die door de gebruiker wordt verschaft, kan rekening worden gehouden met eerdere records. Azure-waarschuwingen kunnen er als volgt uitzien. Omdat de logica voor de waarschuwing in de waarschuwings query wordt ingekapseld, worden de twee records met de resultaat code van 500 weer gegeven om 1:15 uur, al dan niet op 1:10 uur. Als contoso-log-alert wordt uitgevoerd om 1:15 uur, treedt er daarom een fout op, wordt de geconfigureerde actie opnieuw geactiveerd. Nu om 1:20 uur wanneer nul records worden gezien met 500-resultaat code, kan het zijn dat de oorzaak van de resultaat code van 500 op 1:10 uur en 1:15 PM nu is opgelost en dat Azure Monitor waarschuwingen de fout problemen met de 500 kunnen verhelpen, om dezelfde reden niet worden uitgevoerd s opnieuw. Contoso-log-alert wordt niet gewijzigd in opgelost in het Azure-waarschuwings dashboard en/of meldingen waarin de omleiding van de waarschuwing wordt verzonden. In plaats daarvan kan de gebruiker die de exacte voor waarde of reden begrijpt voor de logica die is inge sloten in de analyse query, [de waarschuwing als gesloten markeren](alerts-managing-alert-states.md) als dat nodig is.
 
-## <a name="pricing-and-billing-of-log-alerts"></a>Prijzen en facturering van waarschuwingen
+## <a name="pricing-and-billing-of-log-alerts"></a>Prijzen en facturering van logboek waarschuwingen
 
-Prijzen voor Logboekwaarschuwingen wordt vermeld op de [prijzen voor Azure Monitor](https://azure.microsoft.com/pricing/details/monitor/) pagina. In de Azure-facturen, waarschuwingen worden weergegeven als type `microsoft.insights/scheduledqueryrules` met:
+De prijzen die van toepassing zijn op logboek waarschuwingen worden vermeld op de pagina [Azure monitor prijzen](https://azure.microsoft.com/pricing/details/monitor/) . In azure-facturen worden logboek waarschuwingen weer gegeven als type `microsoft.insights/scheduledqueryrules` met:
 
-- Waarschuwingen voor Application Insights weergegeven met de exacte naam van waarschuwing, samen met de resourcegroep en de eigenschappen van de waarschuwing
-- Waarschuwingen in Log Analytics weergegeven met de exacte naam van waarschuwing, samen met de resourcegroep en de eigenschappen van de waarschuwing; Wanneer gemaakt met behulp van [scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules)
+- Waarschuwingen registreren op Application Insights die worden weer gegeven met de naam van een exacte waarschuwing samen met de eigenschappen van de resource groep en de waarschuwing
+- Waarschuwingen in het logboek vastleggen op Log Analytics die worden weer gegeven met de naam van de resource groep en van de waarschuwing. Wanneer gemaakt met behulp van de [scheduledQueryRules-API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules)
 
-De [verouderde Log Analytics-API](../../azure-monitor/platform/api-alerts.md) heeft waarschuwingsacties en schema's als onderdeel van Log Analytics opgeslagen zoekopdracht en niet de juiste [Azure-Resources](../../azure-resource-manager/resource-group-overview.md). Kan de facturering voor dergelijke verouderde waarschuwingen inschakelen die zijn gemaakt voor het gebruik van Azure-portal van Log Analytics **zonder** [overschakelen naar de nieuwe API](../../azure-monitor/platform/alerts-log-api-switch.md) of via [verouderde Log Analytics-API](../../azure-monitor/platform/api-alerts.md) - verborgen pseudo-waarschuwingsregels worden gemaakt op `microsoft.insights/scheduledqueryrules` voor facturering in Azure. De verborgen pseudo waarschuwingsregels die zijn gemaakt voor facturering op `microsoft.insights/scheduledqueryrules` zoals wordt weergegeven als `<WorkspaceName>|<savedSearchId>|<scheduleId>|<ActionId>` samen met de resourcegroep en de eigenschappen van de waarschuwing.
+De [verouderde log Analytics-API](../../azure-monitor/platform/api-alerts.md) heeft waarschuwings acties en schema's als onderdeel van log Analytics opgeslagen zoek opdracht en niet de juiste [Azure-resources](../../azure-resource-manager/resource-group-overview.md). Daarom is het mogelijk om facturering in te scha kelen voor dergelijke verouderde logboek waarschuwingen die zijn gemaakt voor Log Analytics met behulp van Azure Portal **zonder** [over te scha kelen naar een nieuwe API](../../azure-monitor/platform/alerts-log-api-switch.md) of via [verouderde log Analytics API](../../azure-monitor/platform/api-alerts.md) -verborgen pseudo-waarschuwings regels worden op `microsoft.insights/scheduledqueryrules` gemaakt voor facturering op Azure De verborgen pseudo-waarschuwings regels die zijn gemaakt voor facturering op `microsoft.insights/scheduledqueryrules`, zoals wordt weer gegeven als `<WorkspaceName>|<savedSearchId>|<scheduleId>|<ActionId>` samen met de eigenschappen van de resource groep en de waarschuwing.
 
 > [!NOTE]
-> Als ongeldige tekens zoals `<, >, %, &, \, ?, /` aanwezig zijn, wordt deze vervangen door een `_` in de verborgen pseudo-waarschuwingsregel een naam geven en kan daarom ook in Azure kosten in rekening.
+> Als er ongeldige tekens zoals `<, >, %, &, \, ?, /` aanwezig zijn, worden deze vervangen door `_` in de naam van de verborgen pseudo-waarschuwing regel en dus ook in de Azure-factuur.
 
-Verwijderen van de verborgen scheduleQueryRules resources gemaakt voor facturering van regels voor waarschuwingen met behulp van [verouderde Log Analytics-API](api-alerts.md), gebruiker kan het volgende doen:
+Voor het verwijderen van de verborgen scheduleQueryRules-resources die zijn gemaakt voor het factureren van waarschuwings regels met behulp van [verouderde log Analytics-API](api-alerts.md), kan de gebruiker het volgende doen:
 
-- Een gebruiker kan [overschakelen API voorkeur voor de regels voor waarschuwingen in de Log Analytics-werkruimte](../../azure-monitor/platform/alerts-log-api-switch.md) en zonder verlies van hun waarschuwingsregels of controle verplaatsen naar Azure Resource Manager compatibel [scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules). Daardoor elimineert de noodzaak om te maken van regels voor waarschuwingen pseudo verborgen voor facturering.
-- Of als de gebruiker niet overschakelen van API-voorkeuren wilt, de gebruiker moet **verwijderen** de oorspronkelijke planning en het gebruik van de actie bij waarschuwing [verouderde Log Analytics-API](api-alerts.md) of verwijderen [Azure-portal de waarschuwingsregel oorspronkelijke](../../azure-monitor/platform/alerts-log.md#view--manage-log-alerts-in-azure-portal)
+- Beide gebruikers kunnen [de API-voor keuren voor de waarschuwings regels in de werk ruimte log Analytics](../../azure-monitor/platform/alerts-log-api-switch.md) en zonder verlies van hun waarschuwings regels of bewaking verplaatsen naar Azure Resource Manager compatibele [scheduledQueryRules-API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules). Hierdoor hoeft u geen pseudo-regels te maken om te worden gewaarschuwd voor facturering.
+- Of als de gebruiker de voor keur van de API niet wil wijzigen, moet de gebruiker de oorspronkelijke planning en waarschuwings actie **verwijderen** met behulp van [verouderde log Analytics-API](api-alerts.md) of verwijderen in [Azure Portal de oorspronkelijke waarschuwings regel](../../azure-monitor/platform/alerts-log.md#view--manage-log-alerts-in-azure-portal) voor het logboek
 
-Daarnaast voor de verborgen scheduleQueryRules-resources die zijn gemaakt voor facturering van regels voor waarschuwingen met behulp van [verouderde Log Analytics-API](api-alerts.md), elke bewerking die wordt gewijzigd, zoals PUT mislukken. Als de `microsoft.insights/scheduledqueryrules` type pseudo regels zijn voor het doel van de regels voor waarschuwingen die zijn gemaakt met facturering [verouderde Log Analytics-API](api-alerts.md). Wijzigingen van de waarschuwingsregel moet worden uitgevoerd met [verouderde Log Analytics-API](api-alerts.md) (of) gebruiker kan [overschakelen API voorkeur voor de waarschuwingsregels](../../azure-monitor/platform/alerts-log-api-switch.md) gebruiken [scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) in plaats daarvan.
+Daarnaast worden voor de verborgen scheduleQueryRules-resources die zijn gemaakt voor het factureren van waarschuwings regels met behulp van [verouderde log Analytics-API](api-alerts.md), een wijzigings bewerking zoals put mislukt. Omdat de pseudo-regels voor het `microsoft.insights/scheduledqueryrules`-type worden gebruikt om de waarschuwings regels te factureren die zijn gemaakt met [verouderde log Analytics API](api-alerts.md). Het wijzigen van waarschuwings regels moet worden uitgevoerd met behulp van een [verouderde log Analytics API](api-alerts.md) (of) gebruiker kan [de API-voor keur voor de waarschuwings regels voor het gebruik van](../../azure-monitor/platform/alerts-log-api-switch.md) [scheduledQueryRules-API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) wijzigen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over [maken in de waarschuwingen in Azure](../../azure-monitor/platform/alerts-log.md).
-* Inzicht in [webhooks in waarschuwingen in Azure](alerts-log-webhook.md).
+* Meer informatie over [het maken van waarschuwingen in Logboeken in azure](../../azure-monitor/platform/alerts-log.md).
+* Informatie [over webhooks in logboek waarschuwingen in azure](alerts-log-webhook.md).
 * Meer informatie over [Azure-waarschuwingen](../../azure-monitor/platform/alerts-overview.md).
 * Meer informatie over [Application Insights](../../azure-monitor/app/analytics.md).
-* Meer informatie over [Log Analytics](../../azure-monitor/log-query/log-query-overview.md).
+* Meer informatie over [log Analytics](../../azure-monitor/log-query/log-query-overview.md).

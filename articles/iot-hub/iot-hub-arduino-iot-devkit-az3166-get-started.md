@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 06/25/2019
 ms.author: wesmc
-ms.openlocfilehash: e4379c38d90f444102a9bbddbae64a8018defcf8
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: e8a186fbcb04dc29fcf57a2353adcf89ce46b119
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70844569"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71677937"
 ---
 # <a name="connect-iot-devkit-az3166-to-azure-iot-hub"></a>IoT DevKit AZ3166 verbinden met Azure IoT Hub
 
@@ -31,7 +31,7 @@ U kunt de [MXChip IOT DevKit](https://microsoft.github.io/azure-iot-developer-ki
 
 Hebt u nog geen DevKit? Probeer de [DevKit Simulator](https://azure-samples.github.io/iot-devkit-web-simulator/) of [Koop een DevKit](https://aka.ms/iot-devkit-purchase).
 
-U kunt de bron code voor alle DevKit-zelf studies vinden in de [IoTDevEnvExamples](https://github.com/IoTDevEnvExamples) -opslag plaats.
+U vindt de bron code voor alle DevKit-zelf studies uit de [Galerie met code voorbeelden](https://docs.microsoft.com/samples/browse/?term=mxchip).
 
 ## <a name="what-you-need"></a>Wat u nodig hebt
 
@@ -355,7 +355,7 @@ Het `GetStarted.ino` is het belangrijkste Arduino-schets bestand.
 
 Als u wilt zien hoe telemetrie van het apparaat wordt verzonden naar de `utility.cpp` Azure IOT hub, opent u het bestand in dezelfde map. Bekijk [API-verwijzing](https://microsoft.github.io/azure-iot-developer-kit/docs/apis/arduino-language-reference/) voor meer informatie over het gebruik van Sens oren en rand apparatuur op IOT DevKit.
 
-De `DevKitMQTTClient` gebruikte is een wrapper van de **iothub_client** van de [Microsoft Azure IOT sdk's en bibliotheken voor C](https://github.com/Azure/azure-iot-sdk-c/tree/master/iothub_client) om te communiceren met Azure IOT hub.
+De `DevKitMQTTClient` wordt gebruikt, is een wrapper van de **iothub_client** van de [Microsoft Azure IOT sdk's en bibliotheken voor C](https://github.com/Azure/azure-iot-sdk-c/tree/master/iothub_client) om te communiceren met Azure IOT hub.
 
 ## <a name="problems-and-feedback"></a>Problemen en feedback
 

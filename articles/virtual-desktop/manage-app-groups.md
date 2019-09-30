@@ -1,22 +1,22 @@
 ---
-title: App-groepen beheren voor Windows virtueel bureau blad-preview-Azure
-description: Hierin wordt beschreven hoe u Windows Virtual Desktop-Preview-tenants instelt in Azure Active Directory.
+title: App-groepen beheren voor virtueel Windows-bureau blad-Azure
+description: Hierin wordt beschreven hoe u Windows Virtual Desktop-tenants instelt in Azure Active Directory.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 08/29/2019
 ms.author: helohr
-ms.openlocfilehash: 2bec7e490443727fa294e7be9412bb20ae66e691
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: e158c0a6090493bec0169c144f030300de921516
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70163260"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71679459"
 ---
-# <a name="tutorial-manage-app-groups-for-windows-virtual-desktop-preview"></a>Zelfstudie: App-groepen beheren voor Windows virtueel bureau blad-preview
+# <a name="tutorial-manage-app-groups-for-windows-virtual-desktop"></a>Zelfstudie: App-groepen voor virtuele Windows-Bureau bladen beheren
 
-De standaard-app-groep die is gemaakt voor een nieuwe Windows-hostgroep voor virtuele bureau blad-voor beeld publiceert ook het volledige bureau blad. Daarnaast kunt u een of meer RemoteApp-toepassings groepen maken voor de hostgroep. Volg deze zelf studie voor het maken van een RemoteApp-app-groep en het publiceren van afzonderlijke apps in het **Start** menu.
+De standaard app-groep die is gemaakt voor een nieuwe Windows Virtual Desktop-hostgroep publiceert ook het volledige bureau blad. Daarnaast kunt u een of meer RemoteApp-toepassings groepen maken voor de hostgroep. Volg deze zelf studie voor het maken van een RemoteApp-app-groep en het publiceren van afzonderlijke apps in het **Start** menu.
 
 In deze zelfstudie leert u het volgende:
 
@@ -50,7 +50,7 @@ Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
    Get-RdsStartMenuApp <tenantname> <hostpoolname> <appgroupname>
    ```
    
-4. Voer de volgende cmdlet uit om de toepassing te installeren `AppAlias`op basis van. `AppAlias`wordt weer gegeven wanneer u de uitvoer uit stap 3 uitvoert.
+4. Voer de volgende cmdlet uit om de toepassing te installeren op basis van `AppAlias`. `AppAlias` wordt weer gegeven wanneer u de uitvoer uit stap 3 uitvoert.
 
    ```powershell
    New-RdsRemoteApp <tenantname> <hostpoolname> <appgroupname> -Name <remoteappname> -AppAlias <appalias>

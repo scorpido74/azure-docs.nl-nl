@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 05/23/2019
 ms.author: helohr
-ms.openlocfilehash: de849701365438b21244d1e46ae657495d16c307
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: b6a78fbf2fcb12962b42537965deea6c7912315d
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68816403"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71676535"
 ---
 # <a name="diagnose-graphics-performance-issues-in-remote-desktop"></a>Problemen met grafische prestaties in Extern bureaublad diagnosticeren
 
@@ -101,6 +101,6 @@ Als client bronnen het knel punt veroorzaken, kunt u een van de volgende benader
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie voor het maken van een door GPU geoptimaliseerde virtuele machine voor Azure de [versnelling van een GPU (graphics processing unit) configureren voor de Windows-preview-omgeving van virtueel bureau blad](https://docs.microsoft.com/azure/virtual-desktop/configure-vm-gpu).
+- Zie [Configure graphics processing unit (GPU) Acceleration (Engelstalig) voor virtuele Windows-desktop omgevingen](https://docs.microsoft.com/azure/virtual-desktop/configure-vm-gpu)om een door GPU geoptimaliseerde virtuele Azure-machine te maken.
 - Zie [probleemoplossings overzicht, feedback en ondersteuning](https://docs.microsoft.com/azure/virtual-desktop/troubleshoot-set-up-overview)voor een overzicht van het oplossen van problemen en escalatie sporen.
-- Zie [Windows Desktop Preview Environment](https://docs.microsoft.com/azure/virtual-desktop/environment-setup)(Engelstalig) voor meer informatie over de preview-service.
+- Zie [Windows Desktop Environment](https://docs.microsoft.com/azure/virtual-desktop/environment-setup)(Engelstalig) voor meer informatie over de service.

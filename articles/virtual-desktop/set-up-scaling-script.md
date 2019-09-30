@@ -1,22 +1,22 @@
 ---
-title: Windows Virtual Desktop Preview Session Host automatisch schalen-Azure
-description: Hierin wordt beschreven hoe u het script voor automatisch schalen instelt voor hosts met virtuele bureau blad-sessies voor Windows.
+title: Windows Virtual Desktop Session hosts automatisch schalen-Azure
+description: Hierin wordt beschreven hoe u het script voor automatisch schalen instelt voor Windows Virtual Desktop Session hosts.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: helohr
-ms.openlocfilehash: 7babfca617ab42da615518726d1b1d4cafe112b5
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: f0d847596ef21af67973b6572737e27e1d015991
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70163239"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71676491"
 ---
 # <a name="automatically-scale-session-hosts"></a>Sessiehosts automatisch schalen
 
-Voor veel Windows-preview-implementaties van virtuele Bureau bladen in azure vertegenwoordigen de kosten van de virtuele machine een aanzienlijk deel van de totale kosten voor de implementatie van Windows virtueel bureau blad. Om de kosten te reduceren, kunt u het beste de virtuele machines van de sessiehost afsluiten en de toewijzing ervan ongedaan maken tijdens daluren, en ze vervolgens opnieuw opstarten tijdens piek uren.
+Voor veel Windows-implementaties van virtuele Bureau bladen in azure vertegenwoordigen de kosten van de virtuele machine een aanzienlijk deel van de totale kosten voor de implementatie van Windows virtueel bureau blad. Om de kosten te reduceren, kunt u het beste de virtuele machines van de sessiehost afsluiten en de toewijzing ervan ongedaan maken tijdens daluren, en ze vervolgens opnieuw opstarten tijdens piek uren.
 
 In dit artikel wordt gebruikgemaakt van een eenvoudig schaalbaar script om de virtuele machines van de host automatisch in uw Windows Virtual Desktop-omgeving te schalen. Voor meer informatie over hoe het schaal script werkt, zie de sectie [How to Scaling script](#how-the-scaling-script-works) (Engelstalig).
 
@@ -49,10 +49,10 @@ In de volgende procedures wordt uitgelegd hoe u het schaal script implementeert.
 Bereid eerst uw omgeving voor op het schaal script:
 
 1. Meld u aan bij de virtuele machine (scaleer VM) waarmee de geplande taak wordt uitgevoerd met een domein beheerders account.
-2. Maak een map op de schaal machine om het schaal script en de configuratie ervan te bewaren (bijvoorbeeld **C:\\schalen-HostPool1**).
+2. Maak een map op de schaal machine om het schaal script en de configuratie ervan te bewaren (bijvoorbeeld **C: \\scaling-HostPool1**).
 3. Down load de bestanden **basicScale. ps1**, **config. XML**en **functions-PSStoredCredentials. ps1** en de map **PowershellModules** van de [opslag plaats](https://github.com/Azure/RDS-Templates/tree/master/wvd-sh/WVD%20scaling%20script) voor het schalen van het script en kopieer deze naar de map die u in stap 2 hebt gemaakt. Er zijn twee manieren om de bestanden op te halen voordat u ze naar de scaleer-machine kopieert:
     - Kloon de Git-opslag plaats naar uw lokale computer.
-    - Bekijk de onbewerkte versie van elk bestand, kopieer en plak de inhoud van elk bestand in een tekst editor en sla de bestanden vervolgens op met de bijbehorende bestands naam en dit bestands type. 
+    - Bekijk de **onbewerkte** versie van elk bestand, kopieer en plak de inhoud van elk bestand in een tekst editor en sla de bestanden vervolgens op met de bijbehorende bestands naam en dit bestands type. 
 
 ### <a name="create-securely-stored-credentials"></a>Veilig opgeslagen referenties maken
 
@@ -72,9 +72,9 @@ Vervolgens moet u de veilig opgeslagen referenties maken:
     Set-Variable -Name KeyPath -Scope Global -Value <LocalScalingScriptFolder>
     ```
     
-    Bijvoorbeeld: **set-variable-name sleutelpad-Scope Global-value "c:\\scaling-HostPool1"**
-5. Voer de cmdlet **New-StoredCredential- \$** sleutelpad. Wanneer u hierom wordt gevraagd, voert u de referenties voor uw Windows-bureau blad in met machtigingen voor het opvragen van de hostgroep (de hostgroep is opgegeven in het **bestand config. XML**).
-    - Als u verschillende service-principals of standaard account gebruikt, voert u de cmdlet **New-StoredCredential \$-sleutelpad pad** naar een keer uit voor elk account om lokale opgeslagen referenties te maken.
+    **Stel: set-variable-name-pad-het bereik Global-value "c: \\scaling-HostPool1"**
+5. Voer de cmdlet **New-StoredCredential-sleutelpad \$KeyPath** uit. Wanneer u hierom wordt gevraagd, voert u de referenties voor uw Windows-bureau blad in met machtigingen voor het opvragen van de hostgroep (de hostgroep is opgegeven in het **bestand config. XML**).
+    - Als u verschillende service-principals of standaard account gebruikt, voert u de cmdlet **New-StoredCredential-sleutelpad \$KeyPath** één keer uit voor elk account om lokale opgeslagen referenties te maken.
 6. Voer **Get-StoredCredential-List** uit om te bevestigen dat de referenties zijn gemaakt.
 
 ### <a name="configure-the-configxml-file"></a>Het bestand config. xml configureren
@@ -89,9 +89,9 @@ Voer de relevante waarden in de volgende velden in om de instellingen voor het s
 | currentAzureSubscriptionId    | De ID van het Azure-abonnement waar de host-Vm's voor de sessie worden uitgevoerd                        |
 | tenantName                    | Tenant naam van virtueel bureau blad van Windows                                                    |
 | hostPoolName                  | Naam van de Windows-hostgroep voor virtueel bureau blad                                                 |
-| RDBroker                      | URL naar de WVD-service, standaard waarde https\/:/rdbroker.WVD.Microsoft.com             |
+| RDBroker                      | URL naar de WVD-service, standaard waarde https: \//rdbroker. WVD. Microsoft. com             |
 | Gebruikersnaam                      | De ID van de Service-Principal-toepassing (dit is mogelijk dezelfde service-principal als in AADApplicationId) of standaard gebruiker zonder multi-factor Authentication |
-| isServicePrincipal            | Geaccepteerde waarden zijn **waar** of onwaar. Hiermee wordt aangegeven of de tweede set met gebruikte referenties een service-principal of een standaard account is. |
+| isServicePrincipal            | Geaccepteerde waarden zijn **waar** of **Onwaar**. Hiermee wordt aangegeven of de tweede set met gebruikte referenties een service-principal of een standaard account is. |
 | BeginPeakTime                 | Wanneer de piek gebruiks tijd begint                                                            |
 | EndPeakTime                   | Wanneer de piek gebruiks tijd eindigt                                                              |
 | TimeDifferenceInHours         | Tijd verschil tussen lokale tijd en UTC, in uren                                   |
@@ -109,9 +109,9 @@ Nadat u het XML-configuratie bestand hebt geconfigureerd, moet u de taak planner
 2. Selecteer in het venster **taak planner** de optie **taak maken...**
 3. In **het dialoog venster taak maken** selecteert u het tabblad **Algemeen** , voert u een **naam** in (bijvoorbeeld ' dynamische RDSH '), selecteert u **uitvoeren of gebruiker is aangemeld of niet** en **met de hoogste bevoegdheden uitvoeren**.
 4. Ga naar het tabblad **Triggers** en selecteer vervolgens **Nieuw...**
-5. Controleer in het dialoog venster **nieuwe trigger** onder **Geavanceerde instellingen**de optie **taak herhalen elke** en selecteer de gewenste periode en duur (bijvoorbeeld **15 minuten** of oneindig).
+5. Controleer in het dialoog venster **nieuwe trigger** onder **Geavanceerde instellingen**de optie **taak herhalen elke** en selecteer de gewenste periode en duur (bijvoorbeeld **15 minuten** of **oneindig**).
 6. Selecteer het tabblad **acties** en **Nieuw...**
-7. Voer in het dialoog venster **nieuwe actie** **Power shell. exe** in het veld **programma/script** in en **\\Voer vervolgens\\C: basicScale. ps1** in het veld **toevoegen (optioneel)** in.
+7. In het dialoog venster **nieuwe actie** voert u **Power shell. exe** in het veld **programma/script** in en voert u vervolgens **C: \\scaling @ no__t-5basicScale. Ps1** in het veld **para meters toevoegen (optioneel)** in.
 8. Ga naar de tabbladen **voor waarden** en **instellingen** en selecteer **OK** om de standaard instellingen voor elk te accepteren.
 9. Voer het wacht woord in voor het beheerders account waarop u het schaal script wilt uitvoeren.
 

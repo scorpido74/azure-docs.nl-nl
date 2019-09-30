@@ -11,18 +11,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/18/2018
 ms.author: sharadag
-ms.openlocfilehash: 5f76df0045fc3939392759ed0edd266380295a85
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 229706ff91b776363d3e9de080e02cee5edf9c77
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71260173"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71677897"
 ---
 # <a name="monitoring-metrics-and-logs-in-azure-front-door-service"></a>Metrische gegevens en logboeken bewaken in de Azure front-deur-service
 
 Met behulp van de Azure front-deur service kunt u bronnen op de volgende manieren controleren:
 
-- **Metrische gegevens**. Application Gateway heeft momenteel zeven metrische gegevens om prestatie meter items weer te geven.
+- **Metrische gegevens**. Azure front-deur heeft momenteel zeven metrische gegevens om prestatie meter items weer te geven.
 - **Logboeken**. Met activiteiten en Diagnostische logboeken kunnen prestaties, toegang en andere gegevens worden opgeslagen of verbruikt vanuit een resource voor bewakings doeleinden.
 
 ### <a name="metrics"></a>Metrische gegevens

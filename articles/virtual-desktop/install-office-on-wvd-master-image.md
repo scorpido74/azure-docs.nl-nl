@@ -1,18 +1,18 @@
 ---
 title: Office installeren op een hoofd-VHD-installatie kopie-Azure
-description: Office installeren en aanpassen op basis van een installatie kopie van een virtuele Windows-bureau blad-voor beeld in Azure.
+description: Office installeren en aanpassen op basis van een installatie kopie van een virtueel bureau blad van Windows in Azure.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: helohr
-ms.openlocfilehash: 79fe541d1bb3bea8447cf095673111362cec74d2
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 378be7ebc1cc04433d42b6a05d7eafc73a515568
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68816444"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71679524"
 ---
 # <a name="install-office-on-a-master-vhd-image"></a>Office installeren op een master-VHD-installatiekopie
 
@@ -23,7 +23,7 @@ In dit artikel wordt ervan uitgegaan dat u al een virtuele machine (VM) hebt gem
 In dit artikel wordt ervan uitgegaan dat u toegang hebt tot verhoogde bevoegdheden op de virtuele machine, ongeacht of deze is ingericht in azure of Hyper-V-beheer. Als dat niet het geval is, raadpleegt [u toegang verhogen om alle Azure-abonnementen en-beheer groepen te beheren](https://docs.microsoft.com/azure/role-based-access-control/elevate-access-global-admin).
 
 >[!NOTE]
->Deze instructies gelden voor een Windows-voor beeld-specifieke configuratie voor virtuele Bureau bladen die kan worden gebruikt met de bestaande processen van uw organisatie.
+>Deze instructies gelden voor een Windows-specifieke configuratie voor virtueel bureau blad die kan worden gebruikt met de bestaande processen van uw organisatie.
 
 ## <a name="install-office-in-shared-computer-activation-mode"></a>Office installeren in de activerings modus gedeelde computer
 
@@ -45,7 +45,7 @@ Deze XML-voorbeeld configuratie heeft de volgende kenmerken:
 - Activering van gedeelde computer inschakelen.
 
 >[!NOTE]
->De functie voor het zoeken naar een stencil in Visio werkt niet tijdens de preview-configuratie in het virtuele bureau blad van Windows.
+>De functie voor het zoeken naar het stencil van Visio werkt mogelijk niet zoals verwacht in Windows virtueel bureau blad.
 
 Dit is de XML-voorbeeld configuratie:
 
@@ -53,7 +53,7 @@ Dit is de XML-voorbeeld configuratie:
 - Installeer OneDrive in de modus per gebruiker. Zie voor meer informatie [OneDrive installeren in de modus per computer](#install-onedrive-in-per-machine-mode).
 
 >[!NOTE]
->Activering van gedeelde computers kan worden ingesteld via groepsbeleid objecten (Gpo's) of register instellingen. Het groeps beleidsobject bevindt zich in **computer configuratie\\beleid\\Beheersjablonen\\\\de licentie-instellingen voor Microsoft Office 2016 (computer)**
+>Activering van gedeelde computers kan worden ingesteld via groepsbeleid objecten (Gpo's) of register instellingen. Het groeps beleidsobject bevindt zich op **computer configuratie @ no__t-1Policies @ no__t-2Administrative sjablonen @ no__t-3Microsoft Office 2016 (machine) \\Licensing-instellingen**
 
 Het Office Deployment Tool bevat Setup. exe. Als u Office wilt installeren, voert u de volgende opdracht uit op de opdracht regel:
 
@@ -130,11 +130,11 @@ OneDrive wordt normaal gesp roken per gebruiker geïnstalleerd. In deze omgeving
 
 U kunt als volgt OneDrive installeren in de modus per computer:
 
-1. Maak eerst een locatie voor het faseren van het OneDrive-installatie programma. Een lokale schijf map of [\\\\UNC]-locatie (File://UNC) is nauw keurig.
+1. Maak eerst een locatie voor het faseren van het OneDrive-installatie programma. Een lokale schijf map of de locatie [\\ @ no__t-1unc] (file://unc) is nauw keurig.
 
-2. Down load OneDriveSetup. exe naar uw gefaseerde locatie met deze koppeling:<https://aka.ms/OneDriveWVD-Installer>
+2. Down load OneDriveSetup. exe naar uw gefaseerde locatie met deze koppeling: <https://aka.ms/OneDriveWVD-Installer>
 
-3. Als u Office met OneDrive hebt geïnstalleerd door  **\<ExcludeApp id =\>"OneDrive"** te verwijderen, verwijdert u alle bestaande installaties per gebruiker van onedrive van een opdracht prompt met verhoogde bevoegdheid door de volgende opdracht uit te voeren:
+3. Als u Office met OneDrive hebt geïnstalleerd door **\<EXCLUDEAPP id = "OneDrive"/\>** te laten verwijderen, verwijdert u alle bestaande installaties per gebruiker van onedrive van een opdracht prompt met verhoogde bevoegdheid door de volgende opdracht uit te voeren:
     
     ```batch
     "[staged location]\OneDriveSetup.exe" /uninstall

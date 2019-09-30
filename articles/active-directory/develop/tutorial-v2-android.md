@@ -16,12 +16,12 @@ ms.author: jmprieur
 ms.reviwer: brandwe
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a53a0d5ea8405c116d0286d3b67b1640f98ed96d
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 0a26a7fc27fa13d86eb3b82fd4be70e5b371581f
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68852449"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71677963"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-from-an-android-app"></a>Gebruikers aanmelden en de Microsoft Graph aanroepen vanuit een Android-app
 
@@ -49,7 +49,7 @@ In dit voor beeld wordt de micro soft-verificatie bibliotheek voor Android (MSAL
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Voor deze zelf studie is Android Studio versie 16 of hoger vereist (19 + wordt aanbevolen).
+* Voor deze zelf studie is Android Studio versie 3,5 vereist.
 
 ## <a name="create-a-project"></a>Een project maken
 
@@ -59,15 +59,16 @@ In deze zelf studie wordt een nieuw project gemaakt. Als u in plaats daarvan de 
 2. Selecteer **basis activiteit** en selecteer **volgende**.
 3. Geef uw toepassing een naam.
 4. Sla de naam van het pakket op. U gaat deze later in het Azure Portal invoeren.
-5. Stel het **minimale API-niveau** in op **API 19** of hoger en klik op **volt ooien**.
-6. Kies in de Project weergave **project** in de vervolg keuzelijst om bron-en niet-bron project bestanden weer te geven, open **app/build. gradle** en stel `targetSdkVersion` in op `27`.
+5. Wijzig de taal van **Kotlin** in **Java**.
+6. Stel het **minimale API-niveau** in op **API 19** of hoger en klik op **volt ooien**.
+7. Kies in de Project weergave **project** in de vervolg keuzelijst om bron-en niet-bron project bestanden weer te geven, open **app/build. gradle** en stel `targetSdkVersion` in op `28`.
 
 ## <a name="register-your-application"></a>Uw toepassing registreren
 
 1. Ga naar de [Azure Portal](https://aka.ms/MobileAppReg).
 2. Open de [blade app-registraties](https://ms.portal.azure.com/?feature.broker=true#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview) en klik op **+ nieuwe registratie**.
 3. Voer een **naam** in voor uw app en klik vervolgens zonder een omleidings-URI in te stellen op **registreren**.
-4. Selecteer in het gedeelte **beheren** van het deel venster dat wordt weer gegeven, de optie **verificatie** >  **+ een platform** > **Android**toevoegen.
+4. Selecteer in het gedeelte **beheren** van het deel venster dat wordt weer gegeven, de optie **verificatie** >  **+ een platform** > **Android**toevoegen. (Mogelijk moet u ' overschakelen naar de nieuwe ervaring ' boven aan de Blade selecteren om deze sectie weer te geven.
 5. Voer de pakket naam van uw project in. Als u de code hebt gedownload, is `com.azuresamples.msalandroidapp`deze waarde.
 6. Klik in de sectie **hash van hand tekening** van de pagina **uw Android-app configureren** op **een hash voor ontwikkel handtekeningen genereren.** Kopieer de opdracht voor het hulp programma om te gebruiken voor uw platform.
 
@@ -83,8 +84,8 @@ In deze zelf studie wordt een nieuw project gemaakt. Als u in plaats daarvan de 
 
 1. Ga in het deel venster Project van Android Studio naar **app\src\main\res**.
 2. Klik met de rechter muisknop op **Res** en kies **nieuwe** > **Directory**. Voer `raw` de naam van de nieuwe map in en klik op **OK**.
-3. Maak **in app** > **src** > **resource res** `auth_config.json` RAW een nieuw JSON-bestand met de naam en plak de MSAL-configuratie die u eerder hebt opgeslagen. >  Zie [MSAL-configuratie voor meer informatie](https://github.com/AzureAD/microsoft-authentication-library-for-android/wiki/Configuring-your-app).
-4. Voeg **in app** > **src** > **Main** **AndroidManifest.** XML de`BrowserTabActivity`onderstaandeactiviteittoe.  >  Met deze vermelding kan micro soft terugbellen naar uw toepassing nadat de verificatie is voltooid:
+3. In **app** > **src** > **main** > **Res** > **RAW**, maakt u een nieuw JSON-bestand met de naam `auth_config.json` en plakt u de MSAL-configuratie die u eerder hebt opgeslagen. Zie [MSAL-configuratie voor meer informatie](https://github.com/AzureAD/microsoft-authentication-library-for-android/wiki/Configuring-your-app).
+4. In **app** > **src** > **Main** > **AndroidManifest. XML**, voegt u de onderstaande `BrowserTabActivity`-activiteit toe aan de hoofd tekst van de toepassing. Met deze vermelding kan micro soft terugbellen naar uw toepassing nadat de verificatie is voltooid:
 
     ```xml
     <!--Intent filter to capture System Browser or Authenticator calling back to our app after sign-in-->
@@ -113,8 +114,8 @@ In deze zelf studie wordt een nieuw project gemaakt. Als u in plaats daarvan de 
 
 ### <a name="create-the-apps-ui"></a>De gebruikers interface van de app maken
 
-1. Navigeer in het venster Android Studio project naar **app** > **src** > **Main** > **Res** > **Layout** en open **activity_main. XML** en open de **tekst** weer gave.
-2. Wijzig de indeling van de activiteit, bijvoorbeeld `<androidx.coordinatorlayout.widget.CoordinatorLayout` : `<androidx.coordinatorlayout.widget.LinearLayout`in.
+1. Navigeer in het venster Android Studio project naar **app** > **src** > **main** > **Res** > **Layout** en open **activity_main. XML** en open de **tekst** weergave.
+2. Wijzig de indeling van de activiteit, bijvoorbeeld `<androidx.coordinatorlayout.widget.CoordinatorLayout` : `<androidx.coordinatorlayout.widget.DrawerLayout`in. 
 3. Voeg de `android:orientation="vertical"` eigenschap toe aan `LinearLayout` het knoop punt.
 4. Plak de volgende code in het `LinearLayout` knoop punt en vervang de huidige inhoud:
 
@@ -176,13 +177,13 @@ In deze zelf studie wordt een nieuw project gemaakt. Als u in plaats daarvan de 
 
     ```gradle  
     implementation 'com.android.volley:volley:1.1.1'
-    implementation 'com.microsoft.identity.client:msal:0.3.+'
+    implementation 'com.microsoft.identity.client:msal:1.0.+'
     ```
 
 ### <a name="use-msal"></a>MSAL gebruiken
 
 Breng nu wijzigingen `MainActivity.java` aan in om MSAL toe te voegen aan en te gebruiken in uw app.
-Navigeer in het venster Android Studio project naar **app** > **src** > **Main** > **Java** > **com. example. msal**en open `MainActivity.java`.
+Navigeer in het venster Android Studio project naar **app** > **src** > **main** > **Java** > **com. example. ( uw app)** en open `MainActivity.java`.
 
 #### <a name="required-imports"></a>Vereiste Imports
 

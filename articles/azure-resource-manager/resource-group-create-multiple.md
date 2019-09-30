@@ -7,12 +7,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 09/27/2019
 ms.author: tomfitz
-ms.openlocfilehash: 3a0761fad32b2cfb0387cca79b6c1c0dc83c8e98
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: f97f9dac76ac29cf295b5cedc08f916e85c4e317
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71345418"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71675086"
 ---
 # <a name="resource-property-or-variable-iteration-in-azure-resource-manager-templates"></a>Herhaling van resources, eigenschappen of variabelen in Azure Resource Manager sjablonen
 
@@ -57,7 +57,7 @@ De limieten voor het aantal zijn gelijk aan die van een resource, variabele of e
 
 ## <a name="resource-iteration"></a>Resource herhaling
 
-Als u tijdens de implementatie moet bepalen of u een of meer exemplaren van een resource wilt maken, voegt u een `copy`-element toe aan het resource type. Geef in het element copy het aantal iteraties en een naam voor deze lus op.
+Als u meer dan één exemplaar van een resource in een implementatie wilt maken, voegt u een `copy`-element toe aan het resource type. Geef in het element copy het aantal iteraties en een naam voor deze lus op.
 
 De resource voor het maken van verschillende tijden heeft de volgende indeling:
 

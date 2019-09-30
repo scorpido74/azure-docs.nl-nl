@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: quickstart
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: 74df4f8e3161576280e1d71c4a9b2f50a169dbb4
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: d7c2aee3ad73552a57776af5ce6585b36518d169
+ms.sourcegitcommit: 6013bacd83a4ac8a464de34ab3d1c976077425c7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350311"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71687053"
 ---
 # <a name="create-a-private-endpoint-using-azure-portal"></a>Een persoonlijk eind punt maken met Azure Portal
 
@@ -214,30 +214,31 @@ Nadat u **myVm*hebt gemaakt, kunt u als volgt verbinding maken met het Internet:
     Name:    myserver.privatelink.database.windows.net
     Address:  10.0.0.5
     Aliases:   myserver.database.windows.net
-3. Install [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017).
+    ```
+3. Installeer [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017).
 
-4. In **Connect to server**, enter or select this information:
+4. Typ of Selecteer in **verbinding maken met server**de volgende informatie:
 
-    | Setting | Value |
+    | Instelling | Value |
     | ------- | ----- |
-    | Server type| Select **Database Engine**.|
-    | Server name| Select *myserver.database.windows.net* |
-    | User name | Enter a password provided during the SQL server creation. |
-    |Password |Enter a password provided during the SQL server creation. |
-    |Remember password|Select **Yes**.|
+    | Servertype| Selecteer **Database Engine**.|
+    | Servernaam| *MyServer.database.Windows.net* selecteren |
+    | Gebruikersnaam | Voer een wacht woord in dat u hebt opgegeven tijdens het maken van de SQL-Server. |
+    |Wachtwoord |Voer een wacht woord in dat u hebt opgegeven tijdens het maken van de SQL-Server. |
+    |Wachtwoord onthouden|Selecteer **Ja**.|
     |||
-1. Select **Connect**.
-2. Browse databases from left menu.
-3. (Optionally) Create or query information from mydatabase.
-4. Close the remote desktop connection to *myVm*. 
+1. Selecteer **verbinding maken**.
+2. Bladeren door data bases vanuit het menu links.
+3. Eventueel Gegevens uit mydatabase maken of er een query op uitvoeren.
+4. Sluit de verbinding met extern bureau blad met *myVm*. 
 
-## Clean up resources 
-When you're done using the private endpoint, SQL server, and the VM, delete the resource group and all of the resources it contains: 
-1. Enter *myResourceGroup* in the **Search** box at the top of the portal and select *myResourceGroup* from the search results. 
-2. Select **Delete resource group**. 
-3. Enter myResourceGroup for **TYPE THE RESOURCE GROUP NAME** and select **Delete**.
+## <a name="clean-up-resources"></a>Resources opschonen 
+Wanneer u klaar bent met het persoonlijke eind punt, de SQL-Server en de virtuele machine, verwijdert u de resource groep en alle resources die deze bevat: 
+1. Voer *myResourceGroup* In de **Zoek** box aan de bovenkant van de portal en selecteer *myResourceGroup* from de zoek resultaten. 
+2. Selecteer **resource groep verwijderen**. 
+3. Voer myResourceGroup in bij **Typ de naam van de resource groep** And Selecteer **verwijderen**.
 
-## Next steps
+## <a name="next-steps"></a>Volgende stappen
 
-In this quickstart, you created a VM on a virtual network, a SQL database server, and a private endpoint for private access. You connected to one VM from the internet and securely communicated to the SQL database server using Private Link. To learn more about private endpoints, see [What is Azure private endpoint?](private-endpoint-overview.md).
+In deze Quick Start hebt u een VM gemaakt op een virtueel netwerk, een SQL database-server en een persoonlijk eind punt voor persoonlijke toegang. U hebt verbinding gemaakt met één virtuele machine via internet en u kunt veilig worden door gegeven aan de SQL database server met behulp van een persoonlijke koppeling. Zie [Wat is Azure private endpoint?](private-endpoint-overview.md)voor meer informatie over privé-eind punten.
 

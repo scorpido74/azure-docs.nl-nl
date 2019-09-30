@@ -15,12 +15,12 @@ ms.date: 07/23/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e7b731c9936ab85b19428687330044a46c563c49
-ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
+ms.openlocfilehash: 168fbb275f70acd229dfd8f2e3f0d4c325db0f94
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71268374"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71678022"
 ---
 # <a name="mobile-app-that-calls-web-apis---code-configuration"></a>Mobiele app die web-Api's aanroept-code configuratie
 
@@ -155,9 +155,13 @@ Op Android en iOS bieden makelaars de volgende opties:
 - Apparaat-id. Hiermee wordt het aan Azure AD-apparaat gekoppelde beleid voor voorwaardelijke toegang ingeschakeld door het certificaat van het apparaat te openen dat is gemaakt op het apparaat toen het was gekoppeld aan de werk plek.
 - Verificatie van de toepassings-id. Wanneer een toepassing de Broker aanroept, wordt de omleidings-URL door gegeven en wordt deze door de Broker gecontroleerd.
 
-### <a name="enable-the-brokers-on-xamarin"></a>De makelaars inschakelen op Xamarin
+### <a name="enable-the-broker-on-xamarin"></a>De Broker inschakelen op Xamarin
 
 Als u een van deze functies wilt inschakelen, `WithBroker()` gebruikt u de para `PublicClientApplicationBuilder.CreateApplication` meter bij het aanroepen van de-methode. `.WithBroker()`is standaard ingesteld op True. Volg de onderstaande stappen voor [Xamarin. IOS](#brokered-authentication-for-xamarinios).
+
+### <a name="enable-the-broker-for-msal-for-android"></a>De Broker inschakelen voor MSAL voor Android
+
+Zie [brokered auth in Android](brokered-auth.md) voor meer informatie over het inschakelen van een Broker op Android. 
 
 ### <a name="enable-the-broker-for-msal-for-ios-and-macos"></a>De Broker inschakelen voor MSAL voor iOS en macOS
 

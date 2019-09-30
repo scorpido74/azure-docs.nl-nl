@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: b3f809a21dab86ac50fcf7c194c886b05977e15e
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: db0921d709f842b004ec4c23d15a986f2e59ec23
+ms.sourcegitcommit: 6013bacd83a4ac8a464de34ab3d1c976077425c7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71327109"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71687077"
 ---
 # <a name="create-a-private-endpoint-using-azure-powershell"></a>Een persoonlijk eind punt maken met Azure PowerShell
 Een persoonlijk eind punt is de fundamentele bouw steen voor privé-koppeling in Azure. Hiermee kunnen Azure-resources, zoals Virtual Machines (Vm's), privé communiceren met persoonlijke koppelings bronnen. 
@@ -205,21 +205,19 @@ mstsc /v:<publicIpAddress>
     Name:    myserver.privatelink.database.windows.net
     Address:  10.0.0.5
     Aliases:   myserver.database.windows.net
-3. Install SQL Server Management Studio
-4. In Connect to server, enter or select this information:
-    Setting Value
-      Server type   Select Database Engine.
-      Server name   Select myserver.database.windows.net
-      Username  Enter a username provided during creation.
-      Password  Enter a password provided during creation.
-      Remember password Select Yes.
-5. Select Connect.
-6. Browse Databases from left menu. 
-7. (Optionally) Create or query information from mydatabase
-8. Close the remote desktop connection to *myVM*. 
+    ```
+3. SQL Server Management Studio installeren
+4. Typ of Selecteer in verbinding maken met server de volgende informatie: Waarde server type instellen data base-engine selecteren.
+      Server naam selecteren myserver.database.windows.net gebruikers naam Geef een gebruikers naam op die tijdens het maken is opgegeven.
+      Wacht woord voer een wacht woord in dat u hebt opgegeven tijdens het maken.
+      Wacht woord onthouden selecteren Ja.
+5. Selecteer verbinding maken.
+6. Bladeren door data bases vanuit het menu links. 
+7. Eventueel Gegevens uit mydatabase maken of er een query op uitvoeren
+8. Sluit de verbinding met extern bureau blad met *myVM*. 
 
-## Clean up resources 
-When you're done using the private endpoint, SQL Database server and the VM, use [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) to remove the resource group and all the resources it has:
+## <a name="clean-up-resources"></a>Resources opschonen 
+Wanneer u klaar bent met het persoonlijke eind punt, SQL Database Server en de virtuele machine, gebruikt u [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) om de resource groep en alle resources te verwijderen die het bevat:
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name myResourceGroup -Force

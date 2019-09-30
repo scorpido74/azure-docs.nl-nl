@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 05/07/2019
+ms.date: 09/27/2019
 ms.author: diberry
-ms.openlocfilehash: c4e83ed15c2b15ccb3339ff775b08c8d2dab4c32
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 4f46efaeddb0bfe789ef752abdd133c14da514da
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932520"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71677694"
 ---
 # <a name="datetimev2-prebuilt-entity-for-a-luis-app"></a>DatetimeV2 prebuiled-entiteit voor een LUIS-app
 
@@ -185,6 +185,8 @@ De matrix met waarden is twee keer elementen als de tijd of bereik niet eenduidi
 
 Het volgende voorbeeld laat zien hoe LUIS gebruikt **datetimeV2** om op te lossen de utterance waarvoor een tijdsbereik.
 
+#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2-antwoord op Voorspellings eindpunt](#tab/V2)
+
 ```json
   "entities": [
     {
@@ -206,15 +208,15 @@ Het volgende voorbeeld laat zien hoe LUIS gebruikt **datetimeV2** om op te losse
   ]
 ```
 
-## <a name="preview-api-version-3x"></a>Preview-API versie 3. x
+#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3-Voorspellings eindpunt antwoord](#tab/V3)
 
 DatetimeV2 JSON-antwoord is gewijzigd in de API v3. 
 
 Wijzigingen van API v2:
-* `datetimeV2.timex.type`de eigenschap wordt niet meer geretourneerd omdat deze wordt geretourneerd op het bovenliggende niveau `datetimev2.type`. 
-* De `datetimeV2.timex` naam van de eigenschap is gewijzigd in `datetimeV2.value`.
+* de eigenschap `datetimeV2.timex.type` wordt niet meer geretourneerd omdat deze wordt geretourneerd op het bovenliggende niveau, `datetimev2.type`. 
+* De naam van de eigenschap `datetimeV2.timex` is gewijzigd in `datetimeV2.value`.
 
-Voor de utterance `8am on may 2nd 2017`is de V3-versie van DatetimeV2:
+Voor de utterance, `8am on may 2nd 2017`, is de V3-versie van DatetimeV2:
 
 ```JSON
 {
@@ -244,7 +246,7 @@ Voor de utterance `8am on may 2nd 2017`is de V3-versie van DatetimeV2:
 }
 ```
 
-De volgende JSON is met de `verbose` para meter ingesteld `false`op:
+De volgende JSON is met de para meter `verbose` ingesteld op `false`:
 
 ```json
 {
@@ -289,6 +291,9 @@ De volgende JSON is met de `verbose` para meter ingesteld `false`op:
 }
 ```
 
+
+* * * 
+
 ## <a name="deprecated-prebuilt-datetime"></a>Afgeschafte vooraf gedefinieerde datum/tijd
 
 De `datetime` vooraf gedefinieerde entiteit is afgeschaft en vervangen door **datetimeV2**. 
@@ -301,6 +306,8 @@ Vervang `datetime` met `datetimeV2` in uw LUIS-app, de volgende stappen uitvoere
 4. Selecteer **datetimeV2** en klikt u op **opslaan**.
 
 ## <a name="next-steps"></a>Volgende stappen
+
+Meer informatie over het [v3-Voorspellings eindpunt](luis-migration-api-v3.md).
 
 Meer informatie over de [dimensie](luis-reference-prebuilt-dimension.md), [e](luis-reference-prebuilt-email.md) entiteiten, en [nummer](luis-reference-prebuilt-number.md). 
 

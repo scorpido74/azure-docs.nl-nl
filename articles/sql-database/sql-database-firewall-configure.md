@@ -11,12 +11,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: cebf5e80ea59a29efed984097a4157f5238fad5c
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.openlocfilehash: e3e65a6deadfbcad563a6b64c0a9f48182cdd571
+ms.sourcegitcommit: 6013bacd83a4ac8a464de34ab3d1c976077425c7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70744977"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71686475"
 ---
 # <a name="azure-sql-database-and-azure-sql-data-warehouse-ip-firewall-rules"></a>Azure SQL Database en Azure SQL Data Warehouse IP-firewall regels
 
@@ -38,7 +38,7 @@ Verbindings pogingen via internet en Azure moeten door de firewall worden door g
 
 ### <a name="server-level-ip-firewall-rules"></a>IP-firewallregels op serverniveau
 
-  Met deze regels kunnen clients toegang krijgen tot uw volledige Azure SQL-Server, dat wil zeggen, alle data bases op dezelfde SQL Database Server. De regels worden opgeslagen in de Data Base *Master* .
+  Met deze regels kunnen clients toegang krijgen tot uw volledige Azure SQL-Server, dat wil zeggen, alle data bases op dezelfde SQL Database Server. De regels worden opgeslagen in de Data Base *Master* . U kunt Maxi maal 128 IP-firewall regels op server niveau voor een Azure-SQL Server hebben.
   
   U kunt IP-firewall regels op server niveau configureren met behulp van de instructies Azure Portal, Power shell of Transact-SQL.
   - Als u de portal of Power shell wilt gebruiken, moet u de eigenaar van het abonnement of een mede werker van het abonnement zijn.

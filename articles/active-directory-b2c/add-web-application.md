@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: conceptual
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 50a4ead58cc70524ec464e52ce546b36f9685df5
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 3114f082a402fd005797b270cfdcd7527784dbe1
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71064535"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71679224"
 ---
 # <a name="add-a-web-api-application-to-your-azure-active-directory-b2c-tenant"></a>Een web-API-toepassing toevoegen aan uw Azure Active Directory B2C-Tenant
 
@@ -36,22 +36,16 @@ ms.locfileid: "71064535"
 
 Bereiken bieden een manier om toegang tot beveiligde resources te reguleren. Bereiken worden door de web-API gebruikt om toegangsbeheer op basis van een bereik te implementeren. Bijvoorbeeld: gebruikers van de web-API kunnen zowel lees- als schrijftoegang hebben of alleen leestoegang. In deze zelfstudie gebruikt u bereiken om lees- en schrijfmachtigingen voor de web-API te definiëren.
 
-1. Selecteer **Toepassingen** en vervolgens *webapi1*.
-2. Selecteer **Gepubliceerde bereiken**.
-3. Voer voor **Bereik** `Read` in en voor beschrijving `Read access to the application`.
-4. Voer voor **Bereik** `Write` in en voor beschrijving `Write access to the application`.
-5. Klik op **Opslaan**.
-
-De gepubliceerde bereiken kunnen worden gebruikt om een clienttoepassingstoestemming te verlenen aan de web-API.
+[!INCLUDE [active-directory-b2c-scopes](../../includes/active-directory-b2c-scopes.md)]
 
 ## <a name="grant-permissions"></a>Machtigingen verlenen
 
 Als u een beveiligde web-API wilt aanroepen vanuit een app, moet u uw toepassing machtigingen geven voor de API. Bijvoorbeeld, in [Zelfstudie: Een toepassing registreren in azure Active Directory B2C](tutorial-register-applications.md), wordt er een webtoepassing gemaakt in azure AD B2C met de naam *webapp1*. U kunt deze toepassing gebruiken om de Web-API aan te roepen.
 
 1. Selecteer **toepassingen**en selecteer vervolgens uw webtoepassing.
-2. Selecteer **API-toegang** en vervolgens **Toevoegen**.
-3. Selecteer *webapi1* in de vervolgkeuzelijst **API selecteren**.
-4. Selecteer in de vervolg keuzelijst **bereiken selecteren** de scopes voor **lezen** en **schrijven** die u eerder hebt gedefinieerd.
-5. Klik op **OK**.
+1. Selecteer **API-toegang** en vervolgens **Toevoegen**.
+1. Selecteer *webapi1* in de vervolgkeuzelijst **API selecteren**.
+1. Selecteer in de vervolg keuzelijst **bereiken selecteren** de bereiken die u eerder hebt gedefinieerd. Bijvoorbeeld: *demo. Read* en *demo. write*.
+1. Selecteer **OK**.
 
 Uw toepassing is geregistreerd voor het aanroepen van de beveiligde web-API. Een gebruiker voert een verificatie uit bij Azure AD B2C om de toepassing te kunnen gebruiken. De toepassing verkrijgt een autorisatietoekenning van Azure AD B2C voor toegang tot de beveiligde web-API.
