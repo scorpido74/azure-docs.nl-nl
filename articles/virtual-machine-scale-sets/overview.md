@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.custom: mvc
-ms.date: 05/21/2018
+ms.date: 09/26/2019
 ms.author: manayar
-ms.openlocfilehash: 98c183d65a18c186b515df8ec02ba26b8c2c4143
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.openlocfilehash: 73580814dcfe8f967684aca4ce433a40e7bbedc0
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66258312"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71679392"
 ---
 # <a name="what-are-virtual-machine-scale-sets"></a>Wat zijn schaalsets voor virtuele machines?
 Met behulp van schaalsets voor virtuele Azure-machines kunt u een groep identieke VM's met gelijke taakverdeling maken en beheren. Het aantal VM-exemplaren kan automatisch toenemen of afnemen in reactie op vraag of een ingesteld schema. Schaalsets bieden een hoge beschikbaarheid voor uw toepassingen. Een ander voordeel is dat u vanaf één plek een groot aantal virtuele machines kunt beheren, configureren en bijwerken. Met schaalsets voor virtuele machines kunt u grootschalige services bouwen voor zaken zoals rekenkracht, big data en containerworkloads.
@@ -46,14 +46,14 @@ Schaalsets voor virtuele Azure-machines bieden beheermogelijkheden voor toepassi
     - Automatisch schalen betekent enerzijds dat er geen overbodige VM-exemplaren actief zijn om uw toepassing uit te voeren op momenten dat de vraag klein is, en anderzijds dat klanten ook een aanvaardbaar prestatieniveau krijgen wanneer de vraag toeneemt omdat er dan automatisch extra VM-exemplaren worden toegevoegd. Hierdoor is het mogelijk om de kosten te verlagen en op een efficiënte manier Azure-resources te maken zodra deze nodig zijn.
 
 - **Werkt op grote schaal**
-    - Schaalsets ondersteunen maximaal 1000 VM-exemplaren. Als u maken en uw eigen aangepaste VM-installatiekopieën uploaden, is de limiet 600 VM-exemplaren.
+    - Schaalsets ondersteunen maximaal 1000 VM-exemplaren. Als u uw eigen aangepaste VM-installatie kopieën maakt en uploadt, is de limiet 600 VM-exemplaren.
     - Gebruik [Azure Managed Disks](../virtual-machines/windows/managed-disks-overview.md) voor de beste prestaties met productieworkloads.
 
 
 ## <a name="differences-between-virtual-machines-and-scale-sets"></a>Verschillen tussen virtuele machines en schaalsets
 Schaalsets zijn opgebouwd uit virtuele machines. Met schaalsets beschikt u automatisch over de beheer- en automatiseringslagen voor het uitvoeren en schalen van uw toepassingen. U kunt in plaats daarvan ook zelf afzonderlijke virtuele machines maken en beheren of bestaande hulpprogramma's integreren om een vergelijkbaar automatiseringsniveau te bereiken. In de volgende tabel worden de voordelen van schaalsets beschreven ten opzichte van het handmatig beheren van meerdere VM-exemplaren.
 
-| Scenario                           | Handmatig samengestelde groep VM's                                                                    | Schaalset voor virtuele machines |
+| Scenario                           | Handmatig samengestelde groep VM's                                                                    | Virtuele-machineschaalset |
 |------------------------------------|----------------------------------------------------------------------------------------|---------------------------|
 | Aanvullende VM-exemplaren toevoegen        | Handmatige proces voor maken, configureren en garanderen van naleving                             | Automatisch maken op basis van centrale configuratie |
 | Lastenverdeling en distributie van verkeer | Handmatig proces voor maken en configureren van Azure load balancer of Application Gateway      | Automatisch maken en integreren met Azure load balancer of Application Gateway |
@@ -62,6 +62,11 @@ Schaalsets zijn opgebouwd uit virtuele machines. Met schaalsets beschikt u autom
 
 Er zijn geen extra kosten verbonden aan het gebruik van schaalsets. U betaalt alleen voor de onderliggende rekenresources, zoals de VM-exemplaren, load balancer of opslag van beheerde schijven. Er worden naast het gebruik van de VM's geen extra kosten in rekening gebracht voor de beheer- en automatiseringsfuncties, zoals automatisch schalen en redundantie.
 
+## <a name="how-to-monitor-your-scale-sets"></a>Uw schaal sets bewaken
+
+Gebruik [Azure monitor voor VM's](../azure-monitor/insights/vminsights-overview.md), die een eenvoudig voorbereidings proces heeft en de verzameling van belang rijke prestatie meter items voor CPU, geheugen, schijf en netwerk automatiseert van de virtuele machines in uw schaalset. Het bevat ook extra bewakings mogelijkheden en vooraf gedefinieerde visualisaties waarmee u zich kunt concentreren op de beschik baarheid en prestaties van uw schaal sets.
+
+Schakel bewaking in voor uw toepassing voor de [schaalset van virtuele machines](../azure-monitor/app/azure-vm-vmss-apps.md) met Application Insights om gedetailleerde informatie over uw toepassing te verzamelen, zoals pagina weergaven, toepassings aanvragen en uitzonde ringen. Controleer de beschik baarheid van uw toepassing door een [beschikbaarheids test](../azure-monitor/app/monitor-web-app-availability.md) te configureren om gebruikers verkeer te simuleren.
 
 ## <a name="next-steps"></a>Volgende stappen
 U kunt nu aan de slag door uw eerste schaalset voor virtuele machines te maken in Azure Portal.

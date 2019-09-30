@@ -7,12 +7,12 @@ author: gvashishtha
 ms.author: gopalv
 ms.topic: quickstart
 ms.date: 09/10/2019
-ms.openlocfilehash: f50d784b7518bd01a3a0069cb474296d359420a8
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 951191422e80ef6224cd140beed782de31cb3822
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71200034"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71677851"
 ---
 # <a name="quickstart-set-up-the-data-science-virtual-machine-for-linux-ubuntu"></a>Quickstart: De Data Science Virtual Machine instellen voor Linux (Ubuntu)
 
@@ -21,6 +21,7 @@ Ga aan de slag met de Ubuntu-Data Science Virtual Machine.
 ## <a name="prerequisites"></a>Vereisten
 
 Als u een Windows-Data Science Virtual Machine wilt maken, moet u een Azure-abonnement hebben. [Probeer Azure gratis](https://azure.com/free)uit.
+Houd er rekening mee dat gratis Azure-accounts voor GPU ingeschakelde Sku's voor virtuele machines niet ondersteunen.
 
 ## <a name="create-your-data-science-virtual-machine-for-linux"></a>Maken van uw virtuele Machine voor Datatechnologie voor Linux
 

@@ -9,12 +9,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: overview
 ms.date: 02/22/2019
-ms.openlocfilehash: 3295a59ee4496d332f0d886c89ca900ab6b4bcd1
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: f40ad01d74df26e5a6d90c348a706e8a3c666f2f
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70191913"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71675081"
 ---
 # <a name="what-is-the-azure-data-science-virtual-machine-for-linux-and-windows"></a>Wat is de Azure-Data Science Virtual Machine voor Linux en Windows?
 
@@ -63,8 +63,8 @@ U kunt de DSVM gebruiken om hulp middelen als volgt te evalueren of te leren, me
 
 Omdat u de DSVM snel kunt instellen, kunt u deze Toep assen in andere gebruiks scenario's voor de korte termijn. Deze scenario's zijn onder andere het repliceren van gepubliceerde experimenten, het uitvoeren van demo's en het volgen van instructies in online sessies en zelf studies voor vergaderingen.
 
-### <a name="deep-learning"></a>Deep learning
-In de DSVM kunnen uw trainings modellen diepe leer algoritmen gebruiken op hardware die is gebaseerd op Gpu's (graphics processing units). Door gebruik te maken van de VM-schaal mogelijkheden van het Azure-platform, helpt de DSVM u bij het gebruik van op GPU gebaseerde hardware in de Cloud op basis van uw behoeften. U kunt overschakelen naar een op GPU gebaseerde VM wanneer u grote modellen bijwerkt of wanneer u hoge snelheids berekeningen nodig hebt terwijl dezelfde besturingssysteem schijf wordt bewaard.  
+### <a name="deep-learning-with-gpus"></a>Dieper leren met Gpu's
+In de DSVM kunnen uw trainings modellen diepe leer algoritmen gebruiken op hardware die is gebaseerd op Gpu's (graphics processing units). Door gebruik te maken van de VM-schaal mogelijkheden van het Azure-platform, helpt de DSVM u bij het gebruik van op GPU gebaseerde hardware in de Cloud op basis van uw behoeften. U kunt overschakelen naar een op GPU gebaseerde VM wanneer u grote modellen bijwerkt of wanneer u hoge snelheids berekeningen nodig hebt terwijl dezelfde besturingssysteem schijf wordt bewaard. U kunt een van de virtuele machines van de N-serie GPU die met DSVM zijn ingeschakeld, kiezen. Houd er rekening mee dat gratis Azure-accounts voor GPU ingeschakelde Sku's voor virtuele machines niet ondersteunen.
 
 De Windows Server 2016-versie van de DSVM wordt vooraf geïnstalleerd met GPU-Stuur Programma's, frameworks en GPU-versies van diepe leer raamwerken. Op de Linux-editie is dieper leren op Gpu's ingeschakeld op zowel de CentOS-als Ubuntu-Dsvm. 
 
@@ -97,7 +97,7 @@ In de volgende tabel vindt u een specificatie en vergelijking van de belangrijks
 | **Hulpprogramma**                                                           | **Windows-editie** | **Linux-editie** |
 | :------------------------------------------------------------------ |:-------------------:|:------------------:|
 | [Microsoft R Open](https://mran.microsoft.com/open/) met populaire pakketten die vooraf zijn geïnstalleerd   |J                      | J             |
-| [Microsoft machine learning server (R, python)](https://docs.microsoft.com/machine-learning-server/) Developer Edition bevat: <br />  &nbsp;&nbsp;&nbsp;&nbsp;[RevoScaleR/revoscalepy](https://docs.microsoft.com/machine-learning-server/r/concept-what-is-revoscaler) parallel en gedistribueerd Framework met hoge prestaties (R en python)<br />  &nbsp;&nbsp;&nbsp;&nbsp;[MicrosoftML](https://docs.microsoft.com/machine-learning-server/r/concept-what-is-the-microsoftml-package), nieuwe geavanceerde machine learning algoritmen van micro soft <br />  &nbsp;&nbsp;&nbsp;&nbsp;[R en python uitoefening](https://docs.microsoft.com/machine-learning-server/what-is-operationalization)                                            |J                      | J |
+| [Microsoft machine learning server (R, python)](https://docs.microsoft.com/machine-learning-server/) Developer Edition bevat: <br />  &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [RevoScaleR/revoscalepy](https://docs.microsoft.com/machine-learning-server/r/concept-what-is-revoscaler) parallel en gedistribueerd Framework met hoge prestaties (R en python)<br />  &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [MicrosoftML](https://docs.microsoft.com/machine-learning-server/r/concept-what-is-the-microsoftml-package), nieuwe geavanceerde machine learning algoritmen van micro soft <br />  &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [R en python uitoefening](https://docs.microsoft.com/machine-learning-server/what-is-operationalization)                                            |J                      | J |
 | [Microsoft Office](https://products.office.com/business/office-365-proplus-business-software) ProPlus met gedeelde activering: Excel, Word en Power Point   |J                      |N              |
 | [Anaconda Python](https://www.continuum.io/) 2,7 en 3,5 met populaire pakketten die vooraf zijn geïnstalleerd    |J                      |J              |
 | [JuliaPro](https://juliacomputing.com/products/juliapro.html) met populaire pakketten voor Julia-taal vooraf geïnstalleerd                         |J                      |J              |
@@ -105,64 +105,64 @@ In de volgende tabel vindt u een specificatie en vergelijking van de belangrijks
 | Databasehulpprogramma's                                                       |  SQL Server Management Studio <br/> SQL Server Integration Services<br/> [BCP, Sqlcmd](https://docs.microsoft.com/sql/tools/command-prompt-utility-reference-database-engine)<br />  ODBC/JDBC-Stuur Programma's|  [Squirrel SQL](http://squirrel-sql.sourceforge.net/) (hulp programma voor query's), <br />  BCP, Sqlcmd <br />  ODBC/JDBC-Stuur Programma's|
 | Schaal bare data base Analytics met SQL Server machine learning Services (R, python) | J     |N              |
 | [Jupyter notebook server](https://jupyter.org/) met de volgende kernels:                                  | J     | J |
-|     &nbsp;&nbsp;&nbsp;&nbsp;N | J | J |
-|     &nbsp;&nbsp;&nbsp;&nbsp;Python | J | J |
-|     &nbsp;&nbsp;&nbsp;&nbsp;Julia | J | J |
-|     &nbsp;&nbsp;&nbsp;&nbsp;PySpark | J | J |
-|     &nbsp;&nbsp;&nbsp;&nbsp;[Sparkmagic](https://github.com/jupyter-incubator/sparkmagic) | N | Y (alleen Ubuntu) |
-|     &nbsp;&nbsp;&nbsp;&nbsp;SparkR     | N | J |
+|     &nbsp; @ NO__T-1 @ NO__T-2 @ NO__T-3 R | J | J |
+|     &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 python | J | J |
+|     &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 Julia | J | J |
+|     &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 PySpark | J | J |
+|     &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [Sparkmagic](https://github.com/jupyter-incubator/sparkmagic) | N | Y (alleen Ubuntu) |
+|     &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 Spark     | N | J |
 | JupyterHub (notebook server voor meerdere gebruikers)| N | J |
 | Jjupyterlab (notebook server voor meerdere gebruikers) | N | Y (alleen Ubuntu) |
 | Ontwikkel hulpprogramma's, Ide's en code-editors:| | |
-| &nbsp;&nbsp;&nbsp;&nbsp;[Visual studio 2019 (Community Edition)](https://www.visualstudio.com/community/) met git-invoeg toepassing, Azure HDInsight (Hadoop), Azure Data Lake, SQL Server Data tools, [node. js](https://github.com/Microsoft/nodejstools), [python](https://aka.ms/ptvs)en [R tools for Visual Studio (RTVS)](https://microsoft.github.io/RTVS-docs/) | J | N |
-| &nbsp;&nbsp;&nbsp;&nbsp;[Visual Studio code](https://code.visualstudio.com/) | J | J |
-| &nbsp;&nbsp;&nbsp;&nbsp;[RStudio Desktop](https://www.rstudio.com/products/rstudio/#Desktop) | J | J |
-| &nbsp;&nbsp;&nbsp;&nbsp;[RStudio-server](https://www.rstudio.com/products/rstudio/#Server) | N | J |
-| &nbsp;&nbsp;&nbsp;&nbsp;[PyCharm Community-editie](https://www.jetbrains.com/pycharm/) | N | J |
-| &nbsp;&nbsp;&nbsp;&nbsp;[Atom](https://atom.io/) | N | J |
-| &nbsp;&nbsp;&nbsp;&nbsp;[Juno (Julia IDE)](https://junolab.org/)| J | J |
-| &nbsp;&nbsp;&nbsp;&nbsp;Vim en emacs | J | J |
-| &nbsp;&nbsp;&nbsp;&nbsp;Git-en git-bash | J | J |
-| &nbsp;&nbsp;&nbsp;&nbsp;OpenJDK | J | J |
-| &nbsp;&nbsp;&nbsp;&nbsp;.NET Framework | J | N |
+| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [Visual Studio 2019 (Community Edition)](https://www.visualstudio.com/community/) met git-invoeg toepassing, Azure HDInsight (Hadoop), Azure Data Lake, SQL Server Data tools, [node. js](https://github.com/Microsoft/nodejstools), [python](https://aka.ms/ptvs)en [R-hulpprogram ma's voor Visual Studio (RTVS)](https://microsoft.github.io/RTVS-docs/) | J | N |
+| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [Visual Studio code](https://code.visualstudio.com/) | J | J |
+| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [RStudio Desktop](https://www.rstudio.com/products/rstudio/#Desktop) | J | J |
+| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [RStudio-server](https://www.rstudio.com/products/rstudio/#Server) | N | J |
+| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [PyCharm Community Edition](https://www.jetbrains.com/pycharm/) | N | J |
+| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [Atom](https://atom.io/) | N | J |
+| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [Juno (Julia IDE)](https://junolab.org/)| J | J |
+| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 vim en emacs | J | J |
+| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 Git en git bash | J | J |
+| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 OpenJDK | J | J |
+| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 .NET Framework | J | N |
 | Power BI Desktop | J | N |
 | SDK's voor toegang tot Azure en services van de Cortana Intelligence Suite | J | J |
 | Hulpprogram ma's voor gegevens verplaatsing en-beheer: | | |
-| &nbsp;&nbsp;&nbsp;&nbsp;Azure Storage Explorer | J | J |
-| &nbsp;&nbsp;&nbsp;&nbsp;[Azure cli](https://docs.microsoft.com/cli/azure) | J | J |
-| &nbsp;&nbsp;&nbsp;&nbsp;Azure PowerShell | J | N |
-| &nbsp;&nbsp;&nbsp;&nbsp;[Azcopy](https://docs.microsoft.com/azure/storage/storage-use-azcopy) | J | N |
-| &nbsp;&nbsp;&nbsp;&nbsp;[Klodder-zeker stuur programma](https://github.com/Azure/azure-storage-fuse) | N | J |
-| &nbsp;&nbsp;&nbsp;&nbsp;[Adlcopy (Azure data Lake Storage)](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-copy-data-azure-storage-blob) | J | N |
-| &nbsp;&nbsp;&nbsp;&nbsp;[Azure Cosmos DB hulp programma voor gegevens migratie](https://docs.microsoft.com/azure/documentdb/documentdb-import-data) | J | N |
-| &nbsp;&nbsp;&nbsp;&nbsp;[Micro soft data management gateway](https://msdn.microsoft.com/library/dn879362.aspx): gegevens verplaatsen tussen on-premises en de Cloud | J | N |
-| &nbsp;&nbsp;&nbsp;&nbsp;Unix/Linux-opdracht regel Programma's | J | J |
+| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 Azure Storage Explorer | J | J |
+| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [Azure cli](https://docs.microsoft.com/cli/azure) | J | J |
+| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 Azure PowerShell | J | N |
+| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [Azcopy](https://docs.microsoft.com/azure/storage/storage-use-azcopy) | J | N |
+| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [BLOB-zeker stuur programma](https://github.com/Azure/azure-storage-fuse) | N | J |
+| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [Adlcopy (Azure data Lake Storage)](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-copy-data-azure-storage-blob) | J | N |
+| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [Azure Cosmos DB hulp programma voor gegevens migratie](https://docs.microsoft.com/azure/documentdb/documentdb-import-data) | J | N |
+| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [micro soft data management gateway](https://msdn.microsoft.com/library/dn879362.aspx): gegevens verplaatsen tussen on-premises en de Cloud | J | N |
+| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 Unix/Linux-opdracht regel Programma's | J | J |
 | [Apache-analyse](https://drill.apache.org) voor het verkennen van gegevens | J | J |
 | Machine learning-hulpprogram ma's: |||
-| &nbsp;&nbsp;&nbsp;&nbsp;Integratie met [Azure machine learning](https://azure.microsoft.com/services/machine-learning/) (R, python) | J | J |
-| &nbsp;&nbsp;&nbsp;&nbsp;[XGBoost](https://github.com/dmlc/xgboost) | J | J |
-| &nbsp;&nbsp;&nbsp;&nbsp;[Vowpal Wabbit](https://github.com/JohnLangford/vowpal_wabbit) | J | J |
-| &nbsp;&nbsp;&nbsp;&nbsp;[Fridge](https://www.cs.waikato.ac.nz/ml/weka/) | J | J |
-| &nbsp;&nbsp;&nbsp;&nbsp;[Rattle](https://togaware.com/rattle/) | J | J |
-| &nbsp;&nbsp;&nbsp;&nbsp;[LightGBM](https://github.com/Microsoft/LightGBM) | N | Y (alleen Ubuntu) |
-| &nbsp;&nbsp;&nbsp;&nbsp;[CatBoost](https://tech.yandex.com/catboost/) | N | Y (alleen Ubuntu) |
-| &nbsp;&nbsp;&nbsp;&nbsp;[H2O](https://www.h2o.ai/h2o/), [mousserend water](https://www.h2o.ai/sparkling-water/) | N | Y (alleen Ubuntu) |
+| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3-integratie met [Azure machine learning](https://azure.microsoft.com/services/machine-learning/) (R, python) | J | J |
+| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [XGBoost](https://github.com/dmlc/xgboost) | J | J |
+| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [Vowpal Wabbit](https://github.com/JohnLangford/vowpal_wabbit) | J | J |
+| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [Fridge](https://www.cs.waikato.ac.nz/ml/weka/) | J | J |
+| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [Rattle](https://togaware.com/rattle/) | J | J |
+| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [LightGBM](https://github.com/Microsoft/LightGBM) | N | Y (alleen Ubuntu) |
+| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [CatBoost](https://tech.yandex.com/catboost/) | N | Y (alleen Ubuntu) |
+| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [H2O](https://www.h2o.ai/h2o/), [mousserend water](https://www.h2o.ai/sparkling-water/) | N | Y (alleen Ubuntu) |
 | Uitgebreide leer hulpmiddelen die op een GPU of CPU werken: |  |  |
-| &nbsp;&nbsp;&nbsp;&nbsp;[Microsoft Cognitive Toolkit (CNTK)](https://docs.microsoft.com/cognitive-toolkit/) (Windows 2016) | J | J |
-| &nbsp;&nbsp;&nbsp;&nbsp;[Tensor flow](https://www.tensorflow.org/) | Y (Windows 2016) | J |
-| &nbsp;&nbsp;&nbsp;&nbsp;[Horovod](https://github.com/uber/horovod) | N | Y (Ubuntu) |
-| &nbsp;&nbsp;&nbsp;&nbsp;[MXNet](https://mxnet.io/) | Y (Windows 2016) | J|
-| &nbsp;&nbsp;&nbsp;&nbsp;[Caffe en Caffe2](https://github.com/caffe2/caffe2) | N | J |
-| &nbsp;&nbsp;&nbsp;&nbsp;[Chainer](https://chainer.org/) | N | J |
-| &nbsp;&nbsp;&nbsp;&nbsp;[Torch](http://torch.ch/) | N | J |
-| &nbsp;&nbsp;&nbsp;&nbsp;[Theano](https://github.com/Theano/Theano) | N | J |
-| &nbsp;&nbsp;&nbsp;&nbsp;[Keras](https://keras.io/)| N | J |
-| &nbsp;&nbsp;&nbsp;&nbsp;[PyTorch](https://pytorch.org/)| N | J |
-| &nbsp;&nbsp;&nbsp;&nbsp;[NVIDIA-cijfers](https://github.com/NVIDIA/DIGITS) | N | J |
-| &nbsp;&nbsp;&nbsp;&nbsp;[MXNet-model server](https://github.com/awslabs/mxnet-model-server) | N | J |
-| &nbsp;&nbsp;&nbsp;&nbsp;[Tensor flow](https://www.tensorflow.org/serving/) voor | N | J |
-| &nbsp;&nbsp;&nbsp;&nbsp;[TensorRT](https://developer.nvidia.com/tensorrt) | N | J |
-| &nbsp;&nbsp;&nbsp;&nbsp;[CUDA, cuDNN, nvidia-stuur programma](https://developer.nvidia.com/cuda-toolkit) | J | J |
+| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [Microsoft Cognitive Toolkit (CNTK)](https://docs.microsoft.com/cognitive-toolkit/) (Windows 2016) | J | J |
+| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [tensor flow](https://www.tensorflow.org/) | Y (Windows 2016) | J |
+| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [Horovod](https://github.com/uber/horovod) | N | Y (Ubuntu) |
+| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [MXNet](https://mxnet.io/) | Y (Windows 2016) | J|
+| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [Caffe en Caffe2](https://github.com/caffe2/caffe2) | N | J |
+| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3- [ketting](https://chainer.org/) | N | J |
+| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [Torch](http://torch.ch/) | N | J |
+| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [Theano](https://github.com/Theano/Theano) | N | J |
+| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [Keras](https://keras.io/)| N | J |
+| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [PyTorch](https://pytorch.org/)| N | J |
+| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [NVIDIA cijfers](https://github.com/NVIDIA/DIGITS) | N | J |
+| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [MXNet-model server](https://github.com/awslabs/mxnet-model-server) | N | J |
+| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [tensor flow](https://www.tensorflow.org/serving/) voor | N | J |
+| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [TensorRT](https://developer.nvidia.com/tensorrt) | N | J |
+| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [CUDA, cuDNN, nvidia-stuur programma](https://developer.nvidia.com/cuda-toolkit) | J | J |
 
 ## <a name="next-steps"></a>Volgende stappen
 
