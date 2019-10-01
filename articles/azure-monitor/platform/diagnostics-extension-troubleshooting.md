@@ -261,7 +261,7 @@ De bewakings agent verzamelt logboeken en artefacten als `.tsf` bestanden. Het `
 Er wordt een nieuw `<relevantLogFile>.csv` bestand met de naam gemaakt in hetzelfde pad als `.tsf` het bijbehorende bestand.
 
 >[!NOTE]
-> U hoeft dit hulp programma alleen uit te voeren op het Main. TSF-bestand (bijvoorbeeld PerformanceCountersTable. TSF). De bijbehorende\*bestanden (bijvoorbeeld PerformanceCountersTables_\*001. TSF, PerformanceCountersTables_\*\*002. TSF, enzovoort) worden automatisch verwerkt.
+> U hoeft dit hulp programma alleen uit te voeren op het Main. TSF-bestand (bijvoorbeeld PerformanceCountersTable. TSF). De bijbehorende bestanden (bijvoorbeeld PerformanceCountersTables_\*\*001. TSF, PerformanceCountersTables_\*\*002. TSF, enzovoort) worden automatisch verwerkt.
 
 ### <a name="more-about-missing-trace-logs"></a>Meer informatie over ontbrekende traceer logboeken
 

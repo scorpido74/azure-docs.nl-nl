@@ -38,6 +38,8 @@
       href: create-host-pools-arm-template.md
     - name: Een hostpool maken met PowerShell
       href: create-host-pools-powershell.md
+    - name: Een virtuele Windows 7-machine implementeren in Windows Virtual Desktop
+      href: deploy-windows-7-virtual-machine.md
     - name: Windows-licentie toepassen op Windows Virtual Desktop-sessiehosts
       href: apply-windows-license.md
     - name: Een profielcontainer maken voor een hostpool met behulp van een bestandsshare
@@ -86,6 +88,8 @@
       href: troubleshoot-set-up-issues.md
     - name: Configuratie van sessiehost-VM's
       href: troubleshoot-vm-configuration.md
+    - name: Problemen met virtuele Windows 7-machines in Windows Virtual Desktop oplossen
+      href: troubleshoot-windows-7-vm.md
     - name: Clientverbindingen met extern bureaublad
       href: troubleshoot-client-connection.md
     - name: Windows Virtual Desktop PowerShell

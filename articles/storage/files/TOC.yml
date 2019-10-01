@@ -183,6 +183,8 @@
       items:
         - name: 'Blobs, Queues en Files (versie 12.x - preview)'
           href: 'https://azure.github.io/azure-sdk-for-java/track2reports/index.html'
+        - name: 'Blobs, Queues en Files (versie 8)'
+          href: 'https://docs.microsoft.com/java/api/overview/azure/storage?view=azure-java-legacy'
         - name: Opslagresourceprovider
           href: /java/api/overview/azure/storage/management
     - name: Node.js
@@ -284,6 +286,8 @@
           href: 'https://www.nuget.org/packages/Microsoft.Azure.ConfigurationManager/'
         - name: Azure Storage-bibliotheek voor gegevensverplaatsing
           href: 'https://www.nuget.org/packages/Microsoft.Azure.Storage.DataMovement/'
+        - name: Bibliotheek voor opslagresourceprovider
+          href: 'https://www.nuget.org/packages/Microsoft.Azure.Management.Storage/'
     - name: Broncode
       items:
         - name: .NET
@@ -297,7 +301,7 @@
             - name: Bibliotheek voor gegevensverplaatsing
               href: 'https://github.com/Azure/azure-storage-net-data-movement'
             - name: Bibliotheek voor opslagresourceprovider
-              href: /dotnet/api/overview/azure/storage/management
+              href: 'https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Microsoft.Azure.Management.Storage'
         - name: Java
           items:
             - name: Azure Storage-clientbibliotheek versie 12.x (preview)
