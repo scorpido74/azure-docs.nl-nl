@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 07/09/2019
 ms.author: raynew
-ms.openlocfilehash: f27982b4e310d9865e497a3e1e10be9948beb928
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 9ddb63fcf4d960d2d8ed2671eba83fc38cddcbe4
+ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68640747"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71710057"
 ---
 # <a name="select-a-vmware-migration-option"></a>Selecteer een VMware-migratie optie
 
@@ -34,7 +34,7 @@ Gebruik deze geselecteerde vergelijkingen om u te helpen beslissen welke methode
 **Implementatie van het apparaat** | Het [Azure migrate apparaat](migrate-appliance.md) wordt on-premises geïmplementeerd. | Het [Azure migrate replicatie apparaat](migrate-replication-appliance.md) wordt on-premises geïmplementeerd.
 **Site Recovery compatibiliteit** | Browsercompatibele. | U kunt niet repliceren met Azure Migrate server migratie als u replicatie voor een machine hebt ingesteld met behulp van Site Recovery.
 **Doel schijf** | Managed Disks | Managed Disks
-**Schijf limieten** | Besturingssysteemschijf: 2 TB<br/><br/> Gegevensschijf: 4 TB<br/><br/> Maximum aantal schijven: 60 | Besturingssysteemschijf: 2 TB<br/><br/> Gegevensschijf: 4 TB<br/><br/> Maximum aantal schijven: 63
+**Schijf limieten** | Besturingssysteemschijf: 2 TB<br/><br/> Gegevensschijf: 4 TB<br/><br/> Maximum aantal schijven: 60 | Besturingssysteemschijf: 2 TB<br/><br/> Gegevensschijf: 8 TB<br/><br/> Maximum aantal schijven: 63
 **Passthrough-schijven** | Niet ondersteund | Ondersteund
 **UEFI-opstart** | Niet ondersteund | De gemigreerde VM in azure wordt automatisch geconverteerd naar een BIOS-opstart-VM.<br/><br/> De besturingssysteem schijf moet Maxi maal vier partities hebben en volumes moeten worden geformatteerd met NTFS.
 

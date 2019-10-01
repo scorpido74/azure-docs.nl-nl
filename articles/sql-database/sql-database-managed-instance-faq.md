@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab
 ms.date: 07/16/2019
-ms.openlocfilehash: 8b2147ead7c1a6226b68588b9d0dab53da954bf2
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 7ae3eb74b0d0c3f0bd6124362608e14555179697
+ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71676949"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71710155"
 ---
 # <a name="sql-database-managed-instance-frequently-asked-questions-faq"></a>Veelgestelde vragen over SQL Database beheerde exemplaren
 
@@ -76,7 +76,7 @@ Het wordt ten zeerste aangeraden de prestaties van werkelijke workloads te teste
 
 ## <a name="can-i-switch-my-managed-instance-hardware-generation-between-gen-4-and-gen-5-online"></a>Kan ik de hardware-generatie van beheerde exemplaren tussen gen 4 en Gen 5 online veranderen? 
 
-Geautomatiseerde online switches tussen de hardware is mogelijk als beide generaties beschikbaar zijn in de regio waar uw beheerde exemplaar is ingericht. In dit geval hebt u een optie in de sectie prijs categorie van de Azure Portal om te scha kelen tussen de hardware gegenereerd.
+Geautomatiseerde online switches tussen de hardware is mogelijk als beide generaties beschikbaar zijn in de regio waar uw beheerde exemplaar is ingericht. In dit geval kunt u [script uit een blog bericht](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Change-hardware-generation-on-Managed-Instance/ba-p/699824) gebruiken om uit te leggen hoe u tussen de hardware gegenereerd gaat.
 
 Dit is een langlopende bewerking als een nieuw beheerd exemplaar wordt ingericht op de achtergrond en data bases worden automatisch overgebracht tussen het oude en het nieuwe exemplaar met een snelle failover aan het einde van het proces. 
 

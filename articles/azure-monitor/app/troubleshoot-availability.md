@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 09/19/2019
 ms.reviewer: sdash
 ms.author: lagayhar
-ms.openlocfilehash: ee64a8af35f938def94e369bdb400fed6e2798c0
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: fd56fffe6b11d1c32d7abfe28140127d01933def
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71146604"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71695045"
 ---
 # <a name="troubleshooting"></a>Problemen oplossen
 
@@ -44,7 +44,7 @@ Dit artikel helpt u bij het oplossen van veelvoorkomende problemen die zich kunn
 |    |Het opnieuw routeren van bepaalde IP-adressen vindt plaats via (load balancers, geo Traffic managers, Azure Express route). 
 |    |Als u Azure ExpressRoute gebruikt, zijn er scenario's waarin pakketten kunnen worden verwijderd in gevallen waarin [asymmetrische route ring plaatsvindt](https://docs.microsoft.com/azure/expressroute/expressroute-asymmetric-routing).|
 
-## <a name="intermittent-test-failure-with-a-protocol-violation-error"></a>Onregelmatige test fout met een protocol fout
+## <a name="test-failure-with-a-protocol-violation-error"></a>Fout in de test fout met een schending van het Protocol
 
 |Symptoom/fout bericht| Mogelijke oorzaken| Mogelijke oplossingen |
 |----|---------|-----|

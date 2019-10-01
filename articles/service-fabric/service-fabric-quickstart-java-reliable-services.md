@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 01/29/2019
 ms.author: suhuruli
 ms.custom: mvc, devcenter, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: ca6a1063f6ddd5c42d0d08f43b87a3387cc46a14
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 4ef0db5f72f5849942bb043261f1166cf7c046b1
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70859266"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71703284"
 ---
 # <a name="quickstart--deploy-a-java-app-to-azure-service-fabric-on-linux"></a>Quickstart:  Een Java-app implementeren in azure Service Fabric op Linux
 
@@ -28,7 +28,7 @@ In deze Quick start ziet u hoe u uw eerste Java-toepassing implementeert in azur
 
 Azure Service Fabric is een platform voor gedistribueerde systemen voor het implementeren en distribueren van microservices en containers.
 
-![Schermafbeelding van de toepassing](./media/service-fabric-quickstart-java/votingapp.png)
+![Service Fabric stem voorbeeld van Azure](./media/service-fabric-quickstart-java/service-fabric-voting-sample.png)
 
 In deze snelstart leert u de volgende zaken:
 
@@ -62,22 +62,22 @@ git clone https://github.com/Azure-Samples/service-fabric-java-quickstart.git
     ```
     Het starten van het lokale cluster kan enige tijd duren. Open Service Fabric Explorer op **http://localhost:19080** om te controleren of het cluster volledig naar behoren functioneert. Als de vijf knooppunten in orde zijn, is het lokale cluster actief.
 
-    ![Lokaal cluster is in orde](./media/service-fabric-quickstart-java/localclusterup.png)
+    ![In azure Service Fabric Explorer worden de juiste knoop punten weer gegeven](./media/service-fabric-quickstart-java/service-fabric-explorer-healthy-nodes.png)
 
 2. Open Eclipse.
 3. Selecteer **bestand** > **importeren** **Gradle bestaand Gradle-project** en volg de wizard. >  > 
 4. Selecteer **Directory** en kies de `Voting` map uit de `service-fabric-java-quickstart` map die u hebt gekloond vanuit github. Selecteer **Finish**.
 
-    ![Het importdialoogvenster van Eclipse](./media/service-fabric-quickstart-java/eclipseimport.png)
+    ![Gradle-project importeren in eclips](./media/service-fabric-quickstart-java/eclipse-import-gradle-project.png)
 
 5. U hebt nu het project `Voting` in de pakketverkenner voor Eclipse.
 6. Klik met de rechter muisknop op het project en selecteer **toepassing publiceren** onder de vervolg keuzelijst **service Fabric** . Kies **PublishProfiles/local. json** als doel profiel en selecteer **publiceren**.
 
-    ![Het dialoogvenster Publiceren voor Local](./media/service-fabric-quickstart-java/localjson.png)
+    ![Lokale JSON publiceren met Azure Service Fabric](./media/service-fabric-quickstart-java/service-fabric-publish-local-json.png)
 
 7. Open uw favoriete webbrowser om `http://localhost:8080`toegang te krijgen tot de toepassing.
 
-    ![Front-end van de toepassing voor Local](./media/service-fabric-quickstart-java/runninglocally.png)
+    ![Lokale host van Azure Service Fabric](./media/service-fabric-quickstart-java/service-fabric-local-host.png)
 
 U kunt nu een reeks stemmingsopties toevoegen en beginnen met het verzamelen van stemmen. De toepassing wordt uitgevoerd en alle gegevens worden opgeslagen in het Service Fabric-cluster, zonder dat hiervoor een aparte database nodig is.
 
@@ -92,14 +92,14 @@ Voer de volgende stappen uit om de web-front-endservice te schalen:
 1. Open Service Fabric Explorer in het cluster - bijvoorbeeld: `https://localhost:19080`.
 2. Selecteer het beletsel teken ( **...** ) naast het knoop punt **Fabric:/stem/VotingWeb** in de structuur weergave en selecteer **service schalen**.
 
-    ![De Service Fabric Explorer-service schalen](./media/service-fabric-quickstart-java/scaleservicejavaquickstart.png)
+    ![Een service schalen in azure Service Fabric](./media/service-fabric-quickstart-java/service-fabric-scale-service.png)
 
     U kunt er nu voor kiezen om het aantal exemplaren van de web-front-endservice te schalen.
 
 3. Wijzig het getal in **2** en selecteer **service schalen**.
 4. Selecteer het knoop punt **Fabric:/stem/VotingWeb** in de structuur weergave en vouw het partitie knooppunt uit (vertegenwoordigd door een GUID).
 
-    ![Schalen van Service Fabric Explorer-service is voltooid](./media/service-fabric-quickstart-java/servicescaled.png)
+    ![Geschaalde service in azure Service Fabric](./media/service-fabric-quickstart-java/service-fabric-explorer-service-scaled.png)
 
     U ziet nu dat er twee exemplaren van de service zijn. In de structuurweergave ziet u op welke knooppunten de exemplaren worden uitgevoerd.
 

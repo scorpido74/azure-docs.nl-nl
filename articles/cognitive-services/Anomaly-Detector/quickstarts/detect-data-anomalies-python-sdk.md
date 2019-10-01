@@ -10,29 +10,29 @@ ms.subservice: anomaly-detector
 ms.topic: quickstart
 ms.date: 08/01/2019
 ms.author: aahi
-ms.openlocfilehash: 59a4d79cc68c57faf54bde3d42370fb17a317325
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 28dbcde723e25577545cfd44fed9ef00249d8f30
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68725562"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71694910"
 ---
 # <a name="quickstart-anomaly-detector-client-library-for-python"></a>Quickstart: Anomalie detectie client bibliotheek voor python
 
-Ga aan de slag met de anomalie detector-client bibliotheek voor .NET. Volg deze stappen om het pakket te installeren en de voorbeeld code voor basis taken uit te proberen. Met de anomalie detectie service kunt u afwijkingen in uw tijdreeks gegevens opsporen door automatisch de beste modellen te gebruiken, ongeacht de branche, het scenario of het gegevens volume.
+Ga aan de slag met de anomalie detectie-client bibliotheek voor python. Volg deze stappen om het pakket te installeren en de voorbeeld code voor basis taken uit te proberen. Met de anomalie detectie service kunt u afwijkingen in uw tijdreeks gegevens opsporen door automatisch de beste modellen te gebruiken, ongeacht de branche, het scenario of het gegevens volume.
 
 Gebruik de anomalie detectie-client bibliotheek voor python voor het volgende:
 
 * Anomalieën in uw time series-gegevensset detecteren, als een batch-aanvraag
 * De afwijkings status van het laatste gegevens punt in uw tijd reeks detecteren
 
-[Bibliotheek referentie documentatie](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector?view=azure-python) | [bibliotheek source code](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-anomalydetector) | [package (PyPi)-](https://pypi.org/project/azure-cognitiveservices-anomalydetector/) | voor[beelden](https://github.com/Azure-Samples/anomalydetector)
+[Bibliotheek referentie documentatie](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector?view=azure-python) | [bibliotheek bron code](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-anomalydetector) | [package (PyPi)](https://pypi.org/project/azure-cognitiveservices-anomalydetector/) | -voor[beelden](https://github.com/Azure-Samples/anomalydetector)
 
 ## <a name="prerequisites"></a>Vereisten
 
 * Azure-abonnement: [Maak er gratis een](https://azure.microsoft.com/free/)
 * [Python 3.x](https://www.python.org/)
-* De [bibliotheek voor gegevens analyse](https://pandas.pydata.org/) van Pandas
+* De [bibliotheek voor gegevens analyse van Pandas](https://pandas.pydata.org/)
  
 ## <a name="setting-up"></a>Instellen
 
@@ -70,7 +70,7 @@ De afwijkende detector respons is een [LastDetectResponse](https://docs.microsof
 
 ## <a name="code-examples"></a>Code voorbeelden 
 
-Deze code fragmenten laten zien hoe u het volgende kunt doen met de anomalie detectie-client bibliotheek voor .NET:
+Deze code fragmenten laten zien hoe u het volgende kunt doen met de anomalie detectie-client bibliotheek voor python:
 
 * [De client verifiëren](#authenticate-the-client)
 * [Een time series gegevensset laden vanuit een bestand](#load-time-series-data-from-a-file)
@@ -92,7 +92,7 @@ Down load de voorbeeld gegevens voor deze Quick Start van [github](https://githu
 
 Deze tijdreeks gegevens worden opgemaakt als een CSV-bestand en worden verzonden naar de anomalie detector-API.
 
-Laad uw gegevens bestand met de methode van de bibliotheek `read_csv()` van Pandas en maak een lege lijst variabele om uw gegevens reeksen op te slaan. Herhaal het bestand en voeg de gegevens toe als een [Point](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.point%28class%29?view=azure-python) -object. Dit object bevat de tijds tempel en de numerieke waarde van de rijen van uw CSV-gegevens bestand. 
+Laad uw gegevens bestand met de methode `read_csv()` van de Pandas-bibliotheek en maak een lege lijst variabele om uw gegevens reeksen op te slaan. Herhaal het bestand en voeg de gegevens toe als een [Point](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.point%28class%29?view=azure-python) -object. Dit object bevat de tijds tempel en de numerieke waarde van de rijen van uw CSV-gegevens bestand. 
 
 [!code-python[Load the data file](~/samples-anomaly-detector/quickstarts/sdk/python-sdk-sample.py?name=loadDataFile)]
 
@@ -114,7 +114,7 @@ Roep de anomalie detectie-API aan om te bepalen of uw laatste gegevens punt afwi
 
 ## <a name="run-the-application"></a>De toepassing uitvoeren
 
-Voer de toepassing uit in uw IDE of op de opdracht regel met de `python` opdracht en de naam van het bestand.
+Voer de toepassing uit in uw IDE of op de opdracht regel met de `python`-opdracht en de naam van het bestand.
  
 ## <a name="clean-up-resources"></a>Resources opschonen
 

@@ -9,12 +9,12 @@ ms.subservice: computer-vision
 ms.topic: quickstart
 ms.date: 09/10/2019
 ms.author: pafarley
-ms.openlocfilehash: 8d47ae84fd489b4841d8bcf7755da6c30cf6035d
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: c0a11c90b59c1c475f80b82073c6b151d57535c3
+ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70967002"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71709791"
 ---
 # <a name="quickstart-computer-vision-client-library-for-python"></a>Quickstart: Client bibliotheek voor python Computer Vision
 
@@ -64,7 +64,7 @@ Maak vervolgens variabelen voor het Azure-eind punt en de sleutel van uw resourc
 U kunt de client bibliotheek installeren met:
 
 ```console
-pip install --upgrade azure-cognitiveservices-Computer Vision
+pip install --upgrade azure-cognitiveservices-vision-computervision
 ```
 
 ## <a name="object-model"></a>Object model
@@ -128,7 +128,7 @@ Met de volgende code worden algemene objecten in de installatie kopie gedetectee
 
 Met de volgende code worden de bedrijfs merken en-logo's in de installatie kopie gedetecteerd en afgedrukt in de-console. Zie [merk detectie](../concept-brand-detection.md) voor meer informatie.
 
-[!code-python[](~/cognitive-services-quickstart-code/python/ComputerVision/ComputerVisionQuickstart.py?name=snippet_objects)]
+[!code-python[](~/cognitive-services-quickstart-code/python/ComputerVision/ComputerVisionQuickstart.py?name=snippet_brands)]
 
 ### <a name="detect-faces"></a>Gezichten detecteren
 

@@ -10,12 +10,12 @@ ms.topic: quickstart
 description: Snelle Kubernetes ontwikkeling met containers, micro Services en node. js op Azure
 keywords: Docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers, helm, service-net, service mesh routing, kubectl, K8S
 manager: gwallace
-ms.openlocfilehash: 8148f7858ac9de458daa1c15220507b0de1bad19
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 69d92db790157d67ea33a52304f0982973d9012e
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70772626"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71694773"
 ---
 # <a name="quickstart-debug-and-iterate-with-visual-studio-code-and-nodejs-on-kubernetes-using-azure-dev-spaces"></a>Quickstart: Fouten opsporen en herhalen met Visual Studio code en node. js op Kubernetes met behulp van Azure dev Spaces
 
@@ -24,6 +24,11 @@ In deze handleiding leert u het volgende:
 - Azure Dev Spaces instellen met een beheerd Kubernetes-cluster in Azure.
 - Ontwikkel iteratieve code in containers met Visual Studio code.
 - Fout opsporing voor de code in uw dev-ruimte vanuit Visual Studio code.
+
+Met Azure dev Spaces kunt u ook fouten opsporen en herhalen met:
+- [Java-en Visual Studio code](quickstart-java.md)
+- [.NET core en Visual Studio code](quickstart-netcore.md)
+- [.NET core en Visual Studio](quickstart-netcore-visualstudio.md)
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -130,7 +135,7 @@ Open uw service in een browser en Let op dat er geen bericht wordt weer gegeven.
 
 Tijdens het uitvoeren van uw service in Kubernetes met een fout opsporingsprogramma, hebt u volledige toegang tot fout opsporingsgegevens, zoals de aanroep stack, lokale variabelen en uitzonderings gegevens.
 
-Verwijder het onderbrekings punt door de cursor in regel 13 `server.js` in te plaatsen en op *F9 te drukken*.
+Verwijder het onderbrekings punt door de cursor op regel 13 in `server.js` te plaatsen en op *F9 te drukken*.
 
 Klik op *fout* opsporing en vervolgens op *fout opsporing stoppen* om het fout opsporingsprogramma te stoppen.
 

@@ -33,6 +33,8 @@
           href: visual-search-sdk-node.md
         - name: Python gebruiken
           href: visual-search-sdk-python.md
+        - name: Java gebruiken
+          href: visual-search-sdk-java.md
 - name: Zelfstudies
   items:
     - name: Een afbeelding uploaden

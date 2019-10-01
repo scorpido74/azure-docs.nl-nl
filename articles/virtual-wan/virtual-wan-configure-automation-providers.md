@@ -1,84 +1,85 @@
 ---
-title: Virtuele WAN-Azure-partners | Microsoft Docs
-description: Dit artikel helpt partners Azure virtuele WAN automation instellen.
+title: Virtuele WAN-partners van Azure | Microsoft Docs
+description: Dit artikel helpt partners bij het instellen van Azure Virtual WAN Automation.
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 05/22/2019
+ms.date: 09/30/2019
 ms.author: cherylmc
-ms.openlocfilehash: f286c02e0eb6e801f62d4f2e16f1197a1e9d44ce
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 72493f084b89d41c1e0d6ff60c35afa3491b0eda
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66304555"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71703447"
 ---
 # <a name="virtual-wan-partners"></a>Virtuele WAN-partners
 
-In dit artikel vindt u informatie over het instellen van de automatiseringsomgeving te koppelen en een vertakking-apparaat (een klant on-premises VPN-apparaat of SDWAN CPE) te configureren voor Azure virtuele WAN. Als u een provider die vertakking-apparaten die geschikt voor de VPN-verbinding via IPSec-/ IKEv2 of IPSec-/ IKEv1 bevat, wordt dit artikel is voor u.
+In dit artikel wordt uitgelegd hoe u de automatiserings omgeving kunt instellen om verbinding te maken en een vertakkings apparaat (een klant on-premises VPN-apparaat of SDWAN CPE) te configureren voor Azure Virtual WAN. Als u een provider bent die vertakkings apparaten biedt die VPN-verbindingen via IPsec/IKEv2 of IPsec/IKEv1 kunnen bevatten, is dit artikel voor u.
 
-Een dashboard controller/apparaat een vertakking-apparaat (een klant on-premises VPN-apparaat of SDWAN CPE) doorgaans gebruikt om te worden ingericht. Oplossing SD-WAN-beheerders kunnen vaak gebruiken voor een beheerconsole voor het vooraf inrichten van een apparaat voordat het wordt aangesloten op het netwerk. Deze VPN-apparaat dat compatibel haalt de besturingselement vlak logica van een domeincontroller. Het VPN-apparaat of de SD-WAN controller kunt Azure-API's gebruiken voor het automatiseren van de verbinding met Azure virtuele WAN. Dit type verbinding is vereist voor de on-premises apparaat dat een extern gericht openbaar IP-adres toegewezen.
+Een vertakkings apparaat (een on-premises VPN-apparaat of SDWAN CPE) van een klant gebruikt meestal een controller/apparaat-dash board dat moet worden ingericht. Beheerders van SD-WAN-oplossingen kunnen vaak een beheer console gebruiken om een apparaat vooraf in te richten voordat het wordt aangesloten op het netwerk. Op dit apparaat dat geschikt is voor VPN, wordt de besturings vlak logica van een controller opgehaald. Het VPN-apparaat of de SD-WAN-controller kan gebruikmaken van Azure Api's om de connectiviteit met Azure Virtual WAN te automatiseren. Voor dit type verbinding moet op het on-premises apparaat een extern gericht openbaar IP-adres worden toegewezen.
 
 ## <a name ="before"></a>Voordat u begint met het automatiseren van
 
-* Controleer of uw apparaat IPsec IKEv1/IKEv2 ondersteunt. Zie [standaard beleid](#default).
-* Zie de [REST-API's](https://docs.microsoft.com/rest/api/azure/) die u gebruikt voor het automatiseren van de verbinding met Azure virtuele WAN.
-* Testen van de ervaring van de portal van Azure virtuele WAN.
-* Vervolgens kunt u beslissen welk gedeelte van de stappen verbinding u wilt automatiseren. Ten minste, wordt u aangeraden automatiseren:
+* Controleer of het apparaat IPsec-IKEv1/IKEv2 ondersteunt. Zie [standaard beleidsregels](#default).
+* Bekijk de [rest-api's](https://docs.microsoft.com/rest/api/azure/) die u gaat gebruiken om de verbinding met Azure Virtual WAN te automatiseren.
+* De portal-ervaring van Azure Virtual WAN testen.
+* Bepaal vervolgens welk deel van de verbindings stappen u wilt automatiseren. We raden u aan ten minste het automatiseren van:
 
-  * Toegangsbeheer
-  * Het uploaden van gegevens van een apparaat in Azure virtuele WAN vertakking
-  * Downloaden van Azure-configuratie en het instellen van de connectiviteit van het apparaat van de vertakking in Azure virtuele WAN
+  * Access Control
+  * Gegevens van Branch-apparaten uploaden naar virtuele WAN van Azure
+  * Azure-configuratie downloaden en connectiviteit van het vertakkings apparaat instellen in azure Virtual WAN
 
-* Krijg inzicht in de verwachte klantervaring in combinatie met Azure virtuele WAN.
+* Inzicht in de verwachte ervaring van de klant in combi natie met Azure Virtual WAN.
 
-  1. Normaal gesproken wordt een virtueel WAN gebruiker het proces gestart door het maken van een virtuele WAN-resource.
-  2. De gebruiker wordt ingesteld met een service-principal op basis van resource-groepstoegang voor de on-premises systeem (uw vertakking controller of VPN-apparaat inrichten software) vertakkingsinformatie schrijven in Azure virtuele WAN.
-  3. De gebruiker besluiten op dit moment Meld u aan bij uw gebruikersinterface en de referenties voor de service-principal instellen. Eenmaal is voltooid, de controller moet kunnen gegevens van de vertakking met de automatisering die u levert uploaden. Het handmatige equivalent hiervan op de Azure-kant is Site maken.
-  4. Nadat de Site (vertakking apparaat)-informatie beschikbaar in Azure is, wordt de gebruiker de site met een hub koppelen. Een virtuele hub is een Microsoft-beheerde virtueel netwerk. De hub bevat verschillende service-eindpunten die verbindingen vanaf uw on-premises netwerk (vpnsite) mogelijk maken. De hub is de kern van uw netwerk in een regio. Er mag alleen bestaan uit één hub per Azure-regio en het vpn-eindpunt (VPN-gateway) in dat is gemaakt tijdens dit proces. De VPN-gateway is een schaalbare gateway welke grootten op de juiste wijze op basis van bandbreedte en verbinding behoeften. U kunt kiezen om virtuele hub- en VPN-gateway maken in uw vertakking apparaat controller-dashboard te automatiseren.
-  5. Zodra de virtuele Hub gekoppeld aan de site is, wordt een configuratiebestand wordt gegenereerd voor de gebruiker handmatig te downloaden. Dit is waar uw automation is beschikbaar in en de gebruikerservaring voor naadloze maakt. In plaats van de gebruiker hoeft te handmatig downloaden en configureren van het apparaat vertakking, kunt u de automatisering en minimale doorklikken ervaring bieden op uw gebruikersinterface, waardoor verlichten typische verbindingsproblemen zoals gedeelde sleutel komt niet overeen, IPSec-parameter komt niet overeen, configuratie-bestand leesbaarheid enzovoort.
-  6. Aan het einde van deze stap in uw oplossing, wordt de gebruiker een naadloze site-naar-site-verbinding tussen het filiaal apparaat en de virtuele hub hebben. U kunt ook extra verbindingen instellen voor andere hubs. Elke verbinding is een actief / actief-tunnel. Uw klanten kan kiezen met een andere provider voor elk van de koppelingen voor de tunnel.
+  1. Normaal gesp roken start een virtuele WAN-gebruiker het proces door een virtuele WAN-resource te maken.
+  2. De gebruiker stelt een service op basis van de toegang tot de resource groep in voor het on-premises systeem (uw vertakkings controller of het inrichten van het VPN-apparaat) om vertakkings gegevens te schrijven naar een virtueel WAN van Azure.
+  3. De gebruiker kan op dit moment besluiten om u aan te melden bij uw gebruikers interface en de referenties voor de Service-Principal in te stellen. Als dat is voltooid, moet de controller vertakkings informatie kunnen uploaden met de Automation die u gaat bieden. Het hand matige equivalent van dit aan de Azure-zijde is ' site maken '.
+  4. Zodra de gegevens van de site (vertakkings apparaat) beschikbaar zijn in azure, wordt de gebruiker verbonden met een hub. Een virtuele hub is een virtueel netwerk dat door micro soft wordt beheerd. De hub bevat verschillende service-eindpunten die verbindingen vanaf uw on-premises netwerk (vpnsite) mogelijk maken. De hub is de kern van uw netwerk in een regio. Er kan slechts één hub per Azure-regio en het VPN-eind punt (vpngateway) worden gemaakt tijdens dit proces. De VPN-gateway is een schaal bare gateway die op de juiste manier grootten is gebaseerd op de band breedte en de verbindings behoeften. U kunt ervoor kiezen om de virtuele hub te automatiseren en vpngateway te maken op basis van het dash board van uw vertakkings controller.
+  5. Zodra de virtuele hub aan de site is gekoppeld, wordt een configuratie bestand gegenereerd voor de gebruiker om het hand matig te downloaden. Dit is de plaats waar uw automatisering is ingebouwd en de gebruikers ervaring naadloos maakt. In plaats van de gebruiker hoeft het vertakkings apparaat niet hand matig te downloaden en te configureren, kunt u de automatisering instellen en een minimale click-through-ervaring bieden op uw gebruikers interface, waardoor typische verbindings problemen, zoals gedeelde sleutels niet overeenkomen, IPSec-para meter niet-overeenkomend, lees baarheid van configuratie bestand, enzovoort.
+  6. Aan het eind van deze stap in uw oplossing heeft de gebruiker een naadloze site-naar-site-verbinding tussen het vertakkings apparaat en de virtuele hub. U kunt ook extra verbindingen instellen tussen andere hubs. Elke verbinding is een actief/actief-tunnel. Uw klant kan ervoor kiezen om een andere ISP te gebruiken voor elk van de koppelingen voor de tunnel.
+  7. Overweeg probleemoplossings-en bewakings mogelijkheden te bieden in de CPE-beheer interface. Typische scenario's zijn onder andere ' klant kan geen toegang krijgen tot Azure-resources vanwege een CPE-probleem ', ' IPsec-para meters weer geven aan de CPE-zijde ' etc.
 
-## <a name ="understand"></a>Informatie over automation-details
+## <a name ="understand"></a>Details van automatisering begrijpen
 
 
-###  <a name="access"></a>Toegangsbeheer
+###  <a name="access"></a>Toegangs beheer
 
-Klanten moeten kunnen juiste toegangsbeheer voor virtuele WAN instellen in de gebruikersinterface van het apparaat. Dit wordt aanbevolen met behulp van een Service-Principal voor Azure. Toegang tot service-principal op basis van bevat het juiste apparaat controller-verificatie als u wilt uploaden vertakking informatie. Zie voor meer informatie, [service-principal maken](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application). Deze functionaliteit is buiten de Azure virtuele WAN aanbieding, wij in de lijst hieronder de gebruikelijke stappen voor het instellen van toegang in Azure, waarna de relevante gegevens in het dashboard voor beheer worden ingevoerde
+Klanten moeten het juiste toegangs beheer voor virtuele WAN-verbindingen kunnen instellen in de gebruikers interface van het apparaat. U wordt aangeraden een Azure-Service-Principal te gebruiken. Toegang op basis van de Service-Principal zorgt voor de juiste verificatie voor het uploaden van vertakkings informatie. Zie [Create Service Principal](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application)(Engelstalig) voor meer informatie. Hoewel deze functionaliteit buiten de Azure Virtual WAN-aanbieding valt, vermelden we de gebruikelijke stappen voor het instellen van de toegang in azure, waarna de relevante details worden gegenereerd in het dash board voor Apparaatbeheer
 
-* Maak een Azure Active Directory-toepassing voor uw on-premises apparaatcontroller.
-* Toepassing-ID en verificatiesleutel sleutel ophalen
+* Maak een Azure Active Directory-toepassing voor uw on-premises apparaat controller.
+* Toepassings-ID en verificatie sleutel ophalen
 * Tenant-id ophalen
-* Toepassing toewijzen aan rol 'Inzender'
+* Toepassing toewijzen aan rol ' bijdrager '
 
-###  <a name="branch"></a>Apparaatgegevens vertakking uploaden
+###  <a name="branch"></a>Gegevens van vertakkings apparaten uploaden
 
-Ontwerp van de gebruikerservaring voor filialen (on-premises site) gegevens uploaden naar Azure. [REST API's](https://docs.microsoft.com/rest/api/virtualwan/vpnsites) voor VPNSite kan worden gebruikt voor het maken van de site-informatie in een virtueel WAN. U kunt alle vertakking SDWAN/VPN-apparaten bieden of apparaat aanpassingen selecteren waar nodig.
+Ontwerp de gebruikers ervaring om vertakkingen (on-premises site) naar Azure te uploaden. [Rest-api's](https://docs.microsoft.com/rest/api/virtualwan/vpnsites) voor VPNSite kunnen worden gebruikt om de site-informatie in virtuele WAN te maken. U kunt alle Branch SDWAN/VPN-apparaten opgeven of zo nodig aanpassingen van het apparaat selecteren.
 
 
-### <a name="device"></a>Downloaden van configuratie-apparaat en connectiviteit
+### <a name="device"></a>Apparaatconfiguratie downloaden en connectiviteit
 
-Deze stap omvat het downloaden van Azure-configuratie en het instellen van de connectiviteit van het apparaat van de vertakking in Azure virtuele WAN. In deze stap klant die niet van een provider gebruikmaakt handmatig downloaden van de Azure-configuratie en pas deze toe op hun on-premises SDWAN/VPN-apparaat. Als een provider, moet u deze stap te automatiseren. De apparaatcontroller kunt aanroepen 'GetVpnConfiguration' REST-API voor het downloaden van de Azure-configuratie, die meestal als het volgende bestand eruit ziet.
+Deze stap omvat het downloaden van de Azure-configuratie en het instellen van connectiviteit vanuit het vertakkings apparaat in azure Virtual WAN. In deze stap zal een klant die geen provider gebruikt, de Azure-configuratie hand matig downloaden en Toep assen op hun on-premises SDWAN/VPN-apparaat. Als provider kunt u deze stap automatiseren. De apparaat-controller kan ' GetVpnConfiguration ' aanroepen REST API de Azure-configuratie te downloaden. dit ziet er meestal uit als in het volgende bestand.
 
-**Opmerkingen bij de configuratie**
+**Configuratie notities**
 
-  * Als Azure VNets zijn gekoppeld aan de virtuele hub, wordt deze weergegeven als ConnectedSubnets.
-  * VPN-verbinding maakt gebruik van op route gebaseerde configuratie en IKEv2/IKEv1.
+  * Als Azure VNets zijn gekoppeld aan de virtuele hub, worden ze weer gegeven als ConnectedSubnets.
+  * VPN-connectiviteit maakt gebruik van op route gebaseerde configuratie en ondersteunt zowel IKEv1-als IKEv2-protocollen.
 
-#### <a name="understanding-the-device-configuration-file"></a>Inzicht krijgen in het configuratiebestand van het apparaat
+#### <a name="understanding-the-device-configuration-file"></a>Informatie over het configuratie bestand van het apparaat
 
 Het apparaatconfiguratiebestand bevat de instellingen die u dient te gebruiken om uw on-premises VPN-apparaat te configureren. Wanneer u dit bestand bekijkt, ziet u de volgende informatie:
 
 * **vpnSiteConfiguration -** in deze sectie vindt u de apparaatgegevens, ingesteld als een site die verbinding maakt met het virtuele WAN. Hier vindt u ook de naam en het openbare ip-adres van het branch-apparaat.
 * **vpnSiteConnections -** deze sectie bevat informatie over het volgende:
 
-    * **Adresruimte** van de virtuele hub VNet.<br>Voorbeeld:
+    * **Adres ruimte** van de virtuele hub (s) VNet.<br>Voorbeeld:
  
         ```
         "AddressSpace":"10.1.0.0/24"
         ```
-    * **Adresruimte** van de VNets die zijn verbonden met de hub.<br>Voorbeeld:
+    * De **adres ruimte** van de VNets die zijn verbonden met de hub.<br>Voorbeeld:
 
          ```
         "ConnectedSubnets":["10.2.0.0/16","10.30.0.0/16"]
@@ -196,13 +197,13 @@ Het apparaatconfiguratiebestand bevat de instellingen die u dient te gebruiken o
    }
   ```
 
-## <a name="default"></a>Standaard-beleid voor IPSec-verbinding
+## <a name="default"></a>Standaard beleid voor IPsec-connectiviteit
 
 [!INCLUDE [IPsec](../../includes/virtual-wan-ipsec-include.md)]
 
-### <a name="does-everything-need-to-match-between-the-virtual-hub-vpngateway-policy-and-my-on-premises-sdwanvpn-device-or-sd-wan-configuration"></a>Alles wat moeten overeenkomen met tussen de virtuele hub-beleid voor VPN-gateway en mijn on-premises SDWAN/VPN-apparaat of de SD-WAN configuratie?
+### <a name="does-everything-need-to-match-between-the-virtual-hub-vpngateway-policy-and-my-on-premises-sdwanvpn-device-or-sd-wan-configuration"></a>Moet alles overeenkomen tussen het vpngateway-beleid van de virtuele hub en mijn on-premises SDWAN/VPN-apparaat of de configuratie van de SD-WAN?
 
-Uw on-premises SDWAN/VPN-apparaat of de SD-WAN-configuratie moet overeenkomen met of bevatten de volgende algoritmen en parameters die u in het Azure IPsec/IKE-beleid opgeeft.
+Uw on-premises SDWAN/VPN-apparaat of de configuratie van de SD-WAN moeten overeenkomen met de volgende algoritmen en para meters, die u opgeeft in het Azure IPsec/IKE-beleid.
 
 * IKE-versleutelingsalgoritme
 * IKE-integriteitsalgoritme
@@ -213,6 +214,6 @@ Uw on-premises SDWAN/VPN-apparaat of de SD-WAN-configuratie moet overeenkomen me
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie voor meer informatie over virtuele WAN [over Azure virtuele WAN](virtual-wan-about.md) en de [virtuele WAN-Veelgestelde vragen over Azure](virtual-wan-faq.md).
+Zie [informatie over Azure Virtual WAN](virtual-wan-about.md) en de [Veelgestelde vragen over Azure Virtual WAN](virtual-wan-faq.md)voor meer informatie over Virtual WAN.
 
-Voor aanvullende informatie, stuur een e-mail naar <azurevirtualwan@microsoft.com>. Vermeld uw bedrijfsnaam tussen '[ ]' in de onderwerpregel.
+Voor aanvullende informatie kunt u een e-mail sturen naar <azurevirtualwan@microsoft.com>. Vermeld uw bedrijfsnaam tussen '[ ]' in de onderwerpregel.

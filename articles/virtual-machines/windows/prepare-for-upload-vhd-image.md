@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 05/11/2019
 ms.author: genli
-ms.openlocfilehash: d2922f79c0b2ef7098e0f51e0c3bf6ab18a1b0e3
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: cbae4455ae4cfcc0397b8b50b7f86843f7f82a59
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71200293"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71695385"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Een VHD of VHDX van Windows voorbereiden om te uploaden naar Azure
 
@@ -440,7 +440,8 @@ De volgende instellingen zijn niet van invloed op het uploaden van de VHD. We ra
    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management' -name "PagingFiles" -Value "D:\pagefile.sys" -Type MultiString -force
    ```
   Als een gegevens schijf aan de virtuele machine is gekoppeld, is de stationsletter van het tijdelijke station meestal *D*. Deze aanwijzing kan verschillen, afhankelijk van de instellingen en het aantal beschik bare stations.
-
+  * Het is raadzaam om script blokken uit te scha kelen die mogelijk worden verschaft door antivirus software. Ze kunnen de Windows-inrichtings Agent-scripts die worden uitgevoerd wanneer u een nieuwe virtuele machine vanuit uw installatie kopie implementeert, belemmeren en blok keren.
+  
 ## <a name="next-steps"></a>Volgende stappen
 * [Een Windows VM-installatie kopie uploaden naar Azure voor implementaties van Resource Manager](upload-generalized-managed.md)
 * [Problemen met activering van Azure Windows VM oplossen](troubleshoot-activation-problems.md)

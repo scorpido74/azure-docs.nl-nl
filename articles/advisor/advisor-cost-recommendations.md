@@ -8,12 +8,12 @@ ms.service: advisor
 ms.topic: article
 ms.date: 01/29/2019
 ms.author: kasparks
-ms.openlocfilehash: 144b63131be68c9209835a1b8b3a01062245cfdd
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: 78429001b855e3347e72fbb0f0d4d3171731a8e2
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71326579"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71703037"
 ---
 # <a name="reduce-service-costs-using-azure-advisor"></a>Service kosten verminderen met behulp van Azure Advisor
 
@@ -21,7 +21,7 @@ Advisor helpt u uw totale Azure-uitgaven te optimaliseren en te verlagen door in
 
 ## <a name="optimize-virtual-machine-spend-by-resizing-or-shutting-down-underutilized-instances"></a>Optimaliseer de uitgaven van de virtuele machine door het formaat ervan te wijzigen of door ondergebruikte instanties te afsluiten 
 
-Hoewel bepaalde toepassings scenario's kunnen leiden tot een laag gebruik door ontwerp, bespaart u vaak geld door de grootte en het aantal van uw virtuele machines te beheren. Advisor bewaakt het gebruik van uw virtuele machines gedurende 7 dagen en identificeert vervolgens virtuele machines met weinig gebruik.  Virtuele machines worden beschouwd als laag gebruik als het CPU-gebruik 5% of minder is en het netwerk gebruik lager is dan 2% en de drempel waarde voor geheugen druk nummers heeft of als de huidige werk belasting kan worden aangepast aan de grootte van een kleinere virtuele machine.
+Hoewel bepaalde toepassings scenario's kunnen leiden tot een laag gebruik door ontwerp, bespaart u vaak geld door de grootte en het aantal van uw virtuele machines te beheren. De geavanceerde evaluatie modellen van Advisor hebben betrekking op een virtuele machine die moet worden afgesloten wanneer P95th van het maximum van de maximale waarde van CPU-gebruik minder dan 3% is en het netwerk gebruik minder dan 2% is gedurende een periode van 7 dagen. Virtuele machines worden gezien als juiste grootte wanneer het mogelijk is om de huidige belasting te passen in een kleinere SKU (binnen dezelfde SKU-familie) of een kleiner aantal exemplaren, zodat de huidige belasting niet meer gaat dan 80% gebruik wanneer niet-gebruikers gerichte workloads zijn en niet meer dan 40% bij een op de gebruiker gerichte werk belasting. Hier wordt het type werk belasting bepaald door de kenmerken van het CPU-gebruik van de werk belasting te analyseren.
 
 De aanbevolen acties zijn uitgeschakeld of worden verg root of verkleind, wat specifiek is voor de resource die wordt aanbevolen voor. Advisor toont u de geschatte kosten besparingen voor de aanbevolen acties/formaat wijzigen of afsluiten. Voor de aanbevolen actie voor verg Roten/verkleinen biedt Advisor ook huidige en doel-SKU-gegevens. 
 

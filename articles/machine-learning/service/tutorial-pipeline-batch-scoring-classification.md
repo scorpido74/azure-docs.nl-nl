@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Machine learning-pijp lijnen voor batch Score'
+title: 'Zelfstudie: ML-pijp lijnen voor batch Score'
 titleSuffix: Azure Machine Learning
 description: Bouw een machine learning-pijp lijn voor het uitvoeren van batch scoreing voor een afbeeldings classificatie model in Azure Machine Learning. Machine learning-pijp lijnen Optimaliseer uw werk stroom met snelheid, portabiliteit en hergebruik, zodat u zich kunt concentreren op uw expertise-machine learning in plaats van op infra structuur en automatisering.
 services: machine-learning
@@ -10,14 +10,14 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 09/05/2019
-ms.openlocfilehash: 978cfa7926e7a035494aae11351c15a45c0251e4
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 3fe25f0f8297a7b743ed5f522e8a35deb165a039
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350429"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71695620"
 ---
-# <a name="use-a-machine-learning-pipeline-for-batch-scoring"></a>Een machine learning pijp lijn voor batch scores gebruiken
+# <a name="build--use-an-azure-machine-learning-pipeline-for-batch-scoring"></a>Bouwen & een Azure Machine Learning pijp lijn voor batch scores gebruiken
 
 In deze zelf studie gebruikt u een pijp lijn in Azure Machine Learning om een batch Score taak uit te voeren. In het voor beeld wordt het convolutional Neural Network tensor flow model van het vooraf getrainde start [-v3-](https://arxiv.org/abs/1512.00567) netwerk gebruikt om niet-gelabelde afbeeldingen te classificeren. Nadat u een pijp lijn hebt gemaakt en gepubliceerd, configureert u een REST-eind punt dat u kunt gebruiken om de pijp lijn te activeren vanuit elke HTTP-bibliotheek op elk platform.
 

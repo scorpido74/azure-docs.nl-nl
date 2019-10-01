@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/18/2019
+ms.date: 09/27/2019
 ms.author: diberry
-ms.openlocfilehash: 97684a4668c1d495fa690674f7bd94e064737bd4
-ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
+ms.openlocfilehash: 0707ed3dfee9af27b7cab66c7952d1e7c1d57cb8
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71273953"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71703202"
 ---
 # <a name="developer-resources-for-language-understanding"></a>Bronnen voor ontwikkel aars voor Language Understanding
 
@@ -34,6 +34,8 @@ Zoek naar de referentie documentatie op basis van het hulp programma:
 ## <a name="language-understanding-authoring-and-prediction-requests"></a>Aanvragen voor ontwerpen Language Understanding en voor spellingen
 
 De Language Understanding-service wordt geopend vanuit een Azure-resource die u moet maken. Er zijn twee resources: ontwerp-en Voorspellings eindpunt resources. Met beide resources kunt u uw LUIS-resources beheren. 
+
+Meer informatie over het [v3-Voorspellings eindpunt](luis-migration-api-v3.md).
 
 ### <a name="rest-apis"></a>REST-API’s
 

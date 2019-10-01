@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: kgremban
 ms.custom: seodec18
-ms.openlocfilehash: ad5e78638f920401a83dd431c33a68b6d80144d7
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: e08999798c72545f9fa1d1b5d362e23450ce16f5
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68988631"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71695328"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-debian-based-linux-systems"></a>Installeer de Azure IoT Edge runtime op op Debian gebaseerde Linux-systemen
 
@@ -192,6 +192,7 @@ Zoek de inrichtings configuraties van het bestand en verwijder de sectie **hand 
    #     method: "tpm"
    #     registration_id: "{registration_id}"
 ```
+De inhoud van het klem bord plakken in nano `Shift+Right Click` of druk op `Shift+Insert`.
 
 Sla het bestand op en sluit het.
 
@@ -230,6 +231,8 @@ Zoek de inrichtings configuraties van het bestand en verwijder de sectie die ges
        method: "tpm"
        registration_id: "{registration_id}"
    ```
+
+De inhoud van het klem bord plakken in nano `Shift+Right Click` of druk op `Shift+Insert`.
 
 Sla het bestand op en sluit het.
 

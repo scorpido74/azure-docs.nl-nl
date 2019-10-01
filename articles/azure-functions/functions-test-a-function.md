@@ -10,12 +10,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: cshoe
-ms.openlocfilehash: 0bd6222a6f2a2582fb715dbaf364fe23e41630d5
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: ff3d7d1272f9067f6bf9791c7964f8bf5f71945b
+ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70085148"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71709341"
 ---
 # <a name="strategies-for-testing-your-code-in-azure-functions"></a>Strategieën voor het testen van uw code in Azure Functions
 
@@ -110,11 +110,11 @@ namespace Functions.Tests
 
 De `ListLogger` de volgende leden van de klasse wordt geïmplementeerd als aangegaan door de `ILogger` interface:
 
-- **BeginScope**: Bereiken voegen context toe aan uw logboek registratie. In dit geval wijst de test alleen naar het statische exemplaar op de `NullScope` klasse om de test te laten functioneren.
+- **BeginScope**: Bereiken voegen context toe aan uw logboek registratie. In dit geval wijst de test alleen naar het statische exemplaar op de klasse `NullScope`, zodat de test kan worden gebruikt.
 
-- **IsEnabled**: Er wordt een standaard `false` waarde van gegeven.
+- **IsEnabled**: Er wordt een standaard waarde van `false` gegeven.
 
-- **Logboek**: Deze methode maakt gebruik van `formatter` de geleverde functie om het bericht op te maken en vervolgens de `Logs` resulterende tekst aan de verzameling toe te voegen.
+- **Logboek**: Deze methode maakt gebruik van de geleverde `formatter` functie om het bericht op te maken en voegt de resulterende tekst vervolgens toe aan de `Logs`-collectie.
 
 De `Logs` verzameling is een exemplaar van `List<string>` en in de constructor is geïnitialiseerd.
 
@@ -197,7 +197,7 @@ De `TestFactory` klasse implementeert de volgende leden:
 
 - **Gegevens**: Deze eigenschap retourneert een [IEnumerable](https://docs.microsoft.com/dotnet/api/system.collections.ienumerable) -verzameling van voorbeeld gegevens. De sleutel-waardeparen vertegenwoordigen de waarden die in een queryreeks worden doorgegeven.
 
-- **CreateDictionary**: Deze methode accepteert een sleutel/waarde-paar als argumenten en retourneert een `Dictionary` nieuwe die wordt `QueryCollection` gebruikt om query teken reeks waarden weer te geven.
+- **CreateDictionary**: Deze methode accepteert een sleutel/waarde-paar als argumenten en retourneert een nieuwe `Dictionary` die wordt gebruikt om `QueryCollection` te maken om query teken reeks waarden weer te geven.
 
 - **CreateHttpRequest**: Met deze methode maakt u een HTTP-aanvraag die is geïnitialiseerd met de opgegeven query reeks parameters.
 
@@ -246,11 +246,11 @@ namespace Functions.Tests
 ```
 De leden die zijn geïmplementeerd in deze klasse zijn:
 
-- **Http_trigger_should_return_known_string**: Met deze test wordt een aanvraag met de query teken reeks `name=Bill` waarden van naar een http-functie gemaakt en wordt gecontroleerd of de verwachte reactie wordt geretourneerd.
+- **Http_trigger_should_return_known_string**: Met deze test wordt een aanvraag met de waarden van de query reeks van `name=Bill` naar een HTTP-functie gemaakt en wordt gecontroleerd of de verwachte reactie wordt geretourneerd.
 
 - **Http_trigger_should_return_string_from_member_data**: Deze test maakt gebruik van xUnit-kenmerken om voorbeeld gegevens aan de HTTP-functie toe te voegen.
 
-- **Timer_should_log_message**: Met deze test wordt een exemplaar `ListLogger` van gemaakt en door gegeven aan een timer-functie. Nadat de functie wordt uitgevoerd, wordt het logboek gecontroleerd om te controleren of dat de verwachte bericht aanwezig is.
+- **Timer_should_log_message**: Met deze test wordt een exemplaar van `ListLogger` gemaakt en door gegeven aan een timer-functie. Nadat de functie wordt uitgevoerd, wordt het logboek gecontroleerd om te controleren of dat de verwachte bericht aanwezig is.
 
 Als u toegang wilt krijgen tot toepassings instellingen in uw tests, kunt u [System. Environment. GetEnvironmentVariable](./functions-dotnet-class-library.md#environment-variables)gebruiken.
 
@@ -311,7 +311,7 @@ module.exports = {
 ```
 Deze module implementeert de `IsPastDue` eigenschap passief is als de instantie van een valse timer.
 
-Gebruik vervolgens de functies van Visual Studio Code-extensie voor [maken van een nieuwe functie van de JavaScript-HTTP-](https://code.visualstudio.com/tutorials/functions-extension/getting-started) en noem het *HttpTrigger*. Nadat de functie is gemaakt, Voeg een nieuw bestand in dezelfde map met de naam **index.test.js**, en voeg de volgende code toe:
+Gebruik vervolgens de functies van Visual Studio Code-extensie voor [maken van een nieuwe functie van de JavaScript-HTTP-](/azure/javascript/tutorial-vscode-serverless-node-01) en noem het *HttpTrigger*. Nadat de functie is gemaakt, Voeg een nieuw bestand in dezelfde map met de naam **index.test.js**, en voeg de volgende code toe:
 
 ```javascript
 const httpFunction = require('./index');

@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/24/2019
+ms.date: 09/30/2019
 ms.author: dapine
-ms.openlocfilehash: 7de529c9478b78ff9dd042df90a061f0a96f5427
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.openlocfilehash: a718a2335ed4928c6cd40ad4dc832eaf82bc6a2b
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71316404"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71695296"
 ---
 # <a name="install-and-run-luis-docker-containers"></a>LUIS docker-containers installeren en uitvoeren
  
@@ -325,7 +325,6 @@ Zie voor meer informatie over deze opties [containers configureren](luis-contain
 
 De meest recente container, uitgebracht op 2019 build, biedt ondersteuning voor:
 
-* Bing spelling controle: aanvragen aan het query Voorspellings eindpunt met de `&spellCheck=true&bing-spell-check-subscription-key={bingKey}` query teken reeks parameters. Gebruik de [Bing spellingcontrole V7-zelf studie](luis-tutorial-bing-spellcheck.md) voor meer informatie. Als deze functie wordt gebruikt, verzendt de container de utterance naar uw Bing Spellingcontrole V7-resource.
 * [Nieuwe, vooraf gemaakte domeinen](luis-reference-prebuilt-domains.md): deze domeinen in de onderneming bevatten onder andere entiteiten, voor beeld uitingen en patronen. Breid deze domeinen uit voor eigen gebruik. 
 
 <a name="unsupported-dependencies"></a>
@@ -343,6 +342,7 @@ Niet-ondersteunde app-configuraties|Details|
 |Niet-ondersteunde entiteiten voor de Engelse (en-US) cultuur|[GeographyV2](https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-prebuilt-geographyv2) vooraf gemaakte entiteiten|
 |Spraak gebeuren|Externe afhankelijkheden worden niet ondersteund in de container.|
 |Sentimentanalyse|Externe afhankelijkheden worden niet ondersteund in de container.|
+|Bing-spelling controle|Externe afhankelijkheden worden niet ondersteund in de container.|
 
 <!--blogs/samples/video courses -->
 [!INCLUDE [Discoverability of more container information](../../../includes/cognitive-services-containers-discoverability.md)]

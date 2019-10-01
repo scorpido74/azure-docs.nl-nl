@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/24/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 903492d790cdde93dfe84763de139fe85e26b234
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: 02765538ce8a351db539438837b6426c0896d2d4
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71218286"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71701897"
 ---
 # <a name="azure-ad-b2c-use-the-azure-ad-graph-api"></a>Azure AD B2C: De Azure AD Graph API gebruiken
 
@@ -43,16 +43,9 @@ Zodra u een Azure AD B2C Tenant hebt, moet u uw beheer toepassing registreren me
 
 ### <a name="register-application-in-azure-active-directory"></a>Toepassing registreren in Azure Active Directory
 
-Als u de Azure AD-Graph API wilt gebruiken met uw B2C-Tenant, moet u een toepassing registreren met behulp van de Azure Active Directory **app-registraties** -werk stroom.
+Als u de Azure AD-Graph API wilt gebruiken met uw B2C-Tenant, moet u een toepassing registreren met behulp van de Azure Active Directory registratie werk stroom van de toepassing.
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com) en ga naar de map met uw Azure AD B2C Tenant.
-1. Selecteer **Azure Active Directory** (*niet* Azure AD B2C) in het menu links. U kunt ook **alle services** selecteren en vervolgens zoeken naar en **Azure Active Directory**selecteren.
-1. Selecteer in het linkermenu onder **beheren** de optie **app-registraties (verouderd)** .
-1. **Nieuwe toepassings registratie** selecteren
-1. Voer een naam in voor de toepassing. Bijvoorbeeld beheer- *app*.
-1. Voer een geldige URL in voor de **aanmeldings-URL**. Bijvoorbeeld *https://localhost* . Dit eind punt hoeft niet bereikbaar te zijn, maar moet een geldige URL zijn.
-1. Selecteer **Maken**.
-1. Noteer de **toepassings-id** die wordt weer gegeven op de overzichts pagina van de **geregistreerde app** . U gebruikt deze waarde voor configuratie in een latere stap.
+[!INCLUDE [active-directory-b2c-appreg-mgmt](../../includes/active-directory-b2c-appreg-mgmt.md)]
 
 ### <a name="assign-api-access-permissions"></a>API-toegangs machtigingen toewijzen
 
@@ -83,7 +76,7 @@ Als u uw toepassing de mogelijkheid wilt geven om gebruikers te verwijderen of w
 1. Selecteer onder **beheren**de optie **rollen en beheerders**.
 1. Selecteer de rol **gebruikers beheerder** .
 1. Selecteer **toewijzing toevoegen**.
-1. Voer in het tekstvak **selecteren** de naam in van de toepassing die u eerder hebt geregistreerd, bijvoorbeeld *beheer-app*. Selecteer uw toepassing als deze wordt weer gegeven in de zoek resultaten.
+1. Voer in het tekstvak **selecteren** de naam in van de toepassing die u eerder hebt geregistreerd, bijvoorbeeld *managementapp1*. Selecteer uw toepassing als deze wordt weer gegeven in de zoek resultaten.
 1. Selecteer **Toevoegen**. Het kan enkele minuten duren voordat de machtigingen volledig zijn door gegeven.
 
 Uw Azure AD B2C-toepassing heeft nu de extra machtigingen die vereist zijn om gebruikers te verwijderen of hun wacht woord bij te werken in uw B2C-Tenant.

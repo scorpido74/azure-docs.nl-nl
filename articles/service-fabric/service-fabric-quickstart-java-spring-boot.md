@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 01/29/2019
 ms.author: suhuruli
 ms.custom: mvc, devcenter, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 2aa5879ee3960bd5d26855ac7e7c3e12994ee54e
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 4ec6addb348b8c13f124ec225e056d2003a93c38
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70861343"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71703528"
 ---
 # <a name="quickstart-deploy-a-java-spring-boot-app-on-azure-service-fabric"></a>Quickstart: Een Java Spring boot-app implementeren op Azure Service Fabric
 
@@ -28,7 +28,7 @@ In deze Quick start ziet u hoe u een Java Spring boot-toepassing implementeert i
 
 Deze snelstart gebruikt het [Aan de slag](https://spring.io/guides/gs/spring-boot/)-voorbeeld van de Spring-website. Met gebruik van vertrouwde opdrachtregelprogramma’s wordt u in deze snelstart stapsgewijs begeleid bij het implementeren van het Spring Boot-voorbeeld als een Service Fabric-toepassing. Als u klaar bent, werkt het Spring Boot Aan de slag-voorbeeld in Service Fabric.
 
-![Schermafbeelding van de toepassing](./media/service-fabric-quickstart-java-spring-boot/springbootsflocalhost.png)
+![Voor beeld van Spring boot Service Fabric](./media/service-fabric-quickstart-java-spring-boot/spring-boot-service-fabric-sample.png)
 
 In deze snelstart leert u de volgende zaken:
 
@@ -79,7 +79,7 @@ git clone https://github.com/spring-guides/gs-spring-boot.git
 
 1. Voer de volgende details in voor elke prompt.
 
-    ![Yeoman-vermeldingen](./media/service-fabric-quickstart-java-spring-boot/yeomanspringboot.png)
+    ![Yeoman vermeldingen voor Spring boot](./media/service-fabric-quickstart-java-spring-boot/yeoman-entries-spring-boot.png)
 
 1. Maak in de map `SpringServiceFabric/SpringServiceFabric/SpringGettingStartedPkg/code` een bestand met de naam `entryPoint.sh`. Voeg het volgende toe aan het bestand `entryPoint.sh`. 
 
@@ -147,7 +147,7 @@ In dit stadium hebt u een Service Fabric-toepassing voor het Spring Boot Aan de 
 
     Het starten van het lokale cluster kan enige tijd duren. Open Service Fabric Explorer op **http://localhost:19080** om te controleren of het cluster volledig naar behoren functioneert. Als de vijf knooppunten in orde zijn, is het lokale cluster actief. 
     
-    ![Lokaal cluster is in orde](./media/service-fabric-quickstart-java-spring-boot/sfxlocalhost.png)
+    ![Service Fabric Explorer toont goede knoop punten](./media/service-fabric-quickstart-java-spring-boot/service-fabric-explorer-healthy-nodes.png)
 
 1. Open de map `gs-spring-boot/SpringServiceFabric`.
 1. Voer de volgende opdracht uit om verbinding te maken met het lokale cluster.
@@ -163,7 +163,7 @@ In dit stadium hebt u een Service Fabric-toepassing voor het Spring Boot Aan de 
 
 1. Open uw favoriete webbrowser om `http://localhost:8080`toegang te krijgen tot de toepassing.
 
-    ![Front-end van de toepassing voor Local](./media/service-fabric-quickstart-java-spring-boot/springbootsflocalhost.png)
+    ![Voor beeld van Spring boot Service Fabric](./media/service-fabric-quickstart-java-spring-boot/spring-boot-service-fabric-sample.png)
 
 U hebt nu toegang tot de Spring Boot-toepassing die werd geïmplementeerd in een Service Fabric-cluster.
 
@@ -178,7 +178,7 @@ Voer de volgende stappen uit om de web-front-endservice te schalen:
 1. Open Service Fabric Explorer in het cluster - bijvoorbeeld: `http://localhost:19080`.
 1. Selecteer het beletsel teken ( **...** ) naast het knoop punt **Fabric:/SpringServiceFabric/springgettingstartedt** in de structuur weergave en selecteer **service schalen**.
 
-    ![De Service Fabric Explorer-service schalen](./media/service-fabric-quickstart-java-spring-boot/sfxscaleservicehowto.png)
+    ![Voor beeld van Service Fabric Explorer Scale-service](./media/service-fabric-quickstart-java-spring-boot/service-fabric-explorer-scale-sample.png)
 
     U kunt er nu voor kiezen om het aantal exemplaren van de service te schalen.
 
@@ -196,7 +196,7 @@ Voer de volgende stappen uit om de web-front-endservice te schalen:
 
 1. Selecteer het knoop punt **Fabric:/SpringServiceFabric/springgettingstartedt** in de structuur weergave en vouw het partitie knooppunt uit (vertegenwoordigd door een GUID).
 
-    ![Schalen van Service Fabric Explorer-service is voltooid](./media/service-fabric-quickstart-java-spring-boot/sfxscaledservice.png)
+    ![Service Fabric Explorer Scale-service is voltooid](./media/service-fabric-quickstart-java-spring-boot/service-fabric-explorer-partition-node.png)
 
     De service heeft drie exemplaren en de structuurweergave laat zien op welke knooppunten de exemplaren worden uitgevoerd.
 
@@ -209,10 +209,10 @@ Het opnieuw opstarten van een knooppunt kan worden gesimuleerd met behulp van Se
 1. Open Service Fabric Explorer in het cluster - bijvoorbeeld: `http://localhost:19080`.
 1. Selecteer het beletsel teken ( **...** ) naast het knoop punt waarop het exemplaar van uw service wordt uitgevoerd en start het knoop punt opnieuw op.
 
-    ![Knooppunt opnieuw starten in Service Fabric Explorer](./media/service-fabric-quickstart-java-spring-boot/sfxhowtofailover.png)
+    ![Knoop punt Service Fabric Explorer opnieuw starten](./media/service-fabric-quickstart-java-spring-boot/service=fabric-explorer-restart=node.png)
 1. Het service-exemplaar wordt naar een ander knooppunt verplaatst en er treedt geen downtime op voor de toepassing.
 
-    ![Knooppunt opnieuw starten in Service Fabric Explorer is voltooid](./media/service-fabric-quickstart-java-spring-boot/sfxfailedover.png)
+    ![Het knoop punt Service Fabric Explorer opnieuw starten is mislukt](./media/service-fabric-quickstart-java-spring-boot/service-fabric-explorer-service-moved.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 

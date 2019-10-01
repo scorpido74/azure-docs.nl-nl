@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 05/21/2018
+ms.date: 09/30/2019
 ms.author: spelluru
-ms.openlocfilehash: 964f5624a3a588a1520a08365c5fa9c783114e48
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 67ebce2130bf5594d3c8c671934f7141a02eb60d
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60303737"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71694653"
 ---
 # <a name="introduction-to-classroom-labs"></a>Inleiding tot leslokaallabs
 Met Azure Lab Services kunt u snel een omgeving voor een leslokaallab in de cloud instellen. Een docent maakt een leslokaallab, richt virtuele machines met Windows of Linux in, installeert de benodigde software en labhulpprogramma's in het leslokaal en maakt deze beschikbaar voor studenten. De studenten in het leslokaal maken verbinding met virtuele machines (VM's) in het lab en gebruiken deze voor hun projecten, opdrachten en klassikale oefeningen. 
@@ -33,6 +33,9 @@ Gebruikers die zijn uitgenodigd voor uw lab krijgen onmiddellijk toegang tot de 
 
 ## <a name="cost-optimization-and-tracking"></a>Kosten optimaliseren en bijhouden  
 Houd uw budget onder controle door exact te bepalen hoeveel uur uw labgebruikers de virtuele machines kunnen gebruiken. Stel schema’s in het lab in om gebruikers alleen toegang tot virtuele machines te bieden tijdens aangewezen tijdstippen of stel terugkerende tijdstippen voor automatisch afsluiten en starten in. Houd het gebruik van individuele gebruikers bij en stel limieten in.
+
+## <a name="example-class-types"></a>Voor beeld klassen typen
+U kunt Labs instellen voor verschillende typen klassen met Azure Lab Services. Zie de [klassen typen voor beeld in Azure Lab Services](class-types.md) artikel voor een aantal voor beelden van klassen waarvoor u labs met Azure Lab Services kunt instellen. 
 
 ## <a name="next-steps"></a>Volgende stappen
 Aan de slag met het instellen van een labaccount dat is vereist voor het maken van een leslokaallab met Azure Lab Services:

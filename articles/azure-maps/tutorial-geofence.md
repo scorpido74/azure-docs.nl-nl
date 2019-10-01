@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: a020ef91e52a5d801557399df827d3641bfb974e
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 176cde77810a1c75cc18c351969a128fa78348af
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70934189"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71694931"
 ---
 # <a name="set-up-a-geofence-by-using-azure-maps"></a>Een geofence instellen met behulp van Azure Maps
 
@@ -148,10 +148,24 @@ Open de Postman-app en volg de volgende stappen om de geofence van de bouwplaats
    }
    ```
 
-5. Klik op Send en controleer de reactieheader. De locatieheader bevat de URI waar u de gegevens voor toekomstig gebruik kunt vinden en downloaden. Deze bevat ook een unieke `udId` voor de geüploade gegevens.
+5. Klik op Send en controleer de reactieheader. Bij een geslaagde aanvraag bevat de **locatie** header de status-URI om de huidige status van de upload aanvraag te controleren. De status-URI heeft de volgende indeling. 
 
    ```HTTP
-   https://atlas.microsoft.com/mapData/{udId}/status?api-version=1.0&subscription-key={Subscription-key}
+   https://atlas.microsoft.com/mapData/{uploadStatusId}/status?api-version=1.0
+   ```
+
+6. Kopieer uw status-URI en voeg `subscription-key` een para meter toe met de waarde van uw Azure Maps account abonnements sleutel. De URI-indeling voor de status moet er als volgt uitzien:
+
+   ```HTTP
+   https://atlas.microsoft.com/mapData/{uploadStatusId}/status?api-version=1.0&subscription-key={Subscription-key}
+   ```
+
+7. Als u de wilt `udId` weer geven, opent u een nieuw tabblad in de app postman en selecteert u HTTP-methode ophalen op het tabblad opbouw functie en maakt u een GET-aanvraag op de status-URI. Als het uploaden van uw gegevens is geslaagd, ontvangt u een udId in de antwoord tekst. Kopieer de udId voor later gebruik.
+
+   ```JSON
+   {
+    "udid" : "{udId}"
+   }
    ```
 
 ## <a name="set-up-an-event-handler"></a>Een gebeurtenis-handler instellen

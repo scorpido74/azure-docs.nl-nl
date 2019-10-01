@@ -1,120 +1,126 @@
 ---
-title: 'Azure Active Directory Domain Services: Onderbroken domeinen | Microsoft Docs'
-description: Beheerde domein opschorting en verwijdering
+title: Onderbroken domeinen in Azure AD Domain Services | Microsoft Docs
+description: Meer informatie over de verschillende statussen voor een beheerd domein van Azure AD DS en hoe u een opgeschort domein herstelt.
 services: active-directory-ds
-documentationcenter: ''
 author: iainfoulds
 manager: daveba
-editor: curtand
 ms.assetid: 95e1d8da-60c7-4fc1-987d-f48fde56a8cb
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/20/2019
+ms.date: 09/27/2019
 ms.author: iainfou
-ms.openlocfilehash: 781a81589032c290cef7342e7210ee36f388b22a
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: 31a1c7cd72d57b9c680452d5e84f8fe78f47cebb
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68233993"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71693320"
 ---
-# <a name="understand-the-suspended-states-for-an-azure-active-directory-domain-services-managed-domain"></a>Meer informatie over de onderbroken statussen voor een beheerde Azure Active Directory Domain Services domein
+# <a name="understand-the-health-states-and-resolve-suspended-domains-in-azure-active-directory-domain-services"></a>Meer informatie over de statussen en het oplossen van onderbroken domeinen in Azure Active Directory Domain Services
 
-Als Azure Active Directory Domain Services (Azure AD DS) een beheerd domein gedurende een lange periode niet kan onderhouden, wordt het beheerde domein in een onderbroken status geplaatst. In dit artikel wordt uitgelegd waarom beheerde domeinen worden onderbroken en hoe een opgeschort domein kan worden hersteld.
+Als Azure Active Directory Domain Services (Azure AD DS) een beheerd domein gedurende een lange periode niet kan onderhouden, wordt het beheerde domein in een onderbroken status geplaatst. Als een beheerd domein vervolgens in onderbroken status blijft, wordt het automatisch verwijderd. Om uw Azure AD DS beheerd domein in orde te laten en onderbrekingen te voor komen, moet u eventuele waarschuwingen zo snel mogelijk oplossen.
 
+In dit artikel wordt uitgelegd waarom beheerde domeinen worden onderbroken en hoe u een opgeschort domein herstelt.
 
-## <a name="states-your-managed-domain-can-be-in"></a>Statussen van uw beheerde domein kunnen zijn
+## <a name="overview-of-managed-domain-states"></a>Overzicht van beheerde domein statussen
 
-![Tijd lijn van onderbroken domein](media/active-directory-domain-services-suspension/suspension-timeline.PNG)
+Door de levens cyclus van een door Azure AD DS beheerd domein, zijn er verschillende statussen die de status aangeven. Als het beheerde domein een probleem rapporteert, lost u de onderliggende oorzaak snel op om te voor komen dat de status wordt gedegradeerd.
 
-In de voor gaande afbeelding ziet u een overzicht van de mogelijke statussen van een beheerd domein van Azure AD DS.
+![De voortgang van de status dat een door Azure AD DS beheerd domein tot onderbreking neemt](media/active-directory-domain-services-suspension/suspension-timeline.PNG)
 
-### <a name="running-state"></a>Status wordt uitgevoerd
-Een beheerd domein dat op de juiste wijze is geconfigureerd en regel matig wordt uitgevoerd, heeft de status **bezig met uitvoeren** .
+Een door Azure AD DS beheerd domein kan een van de volgende statussen hebben:
 
-**Wat u kunt verwachten**
-* Micro soft kan de status van uw beheerde domein regel matig controleren.
-* Domein controllers voor uw beheerde domein worden regel matig patches en bijgewerkt.
-* Wijzigingen van Azure Active Directory worden regel matig gesynchroniseerd met uw beheerde domein.
-* Reguliere back-ups worden gemaakt voor uw beheerde domein.
+* [Wordt uitgevoerd](#running-state)
+* [Aandacht vereist](#needs-attention-state)
+* [Gebroken](#suspended-state)
+* [Vervallen](#deleted-state)
 
+## <a name="running-state"></a>Uitvoerings status
 
-### <a name="needs-attention-state"></a>Status ' aandacht vereist '
-Een beheerd domein bevindt zich in de attentie status **vereist** als een of meer problemen vereisen dat een beheerder actie onderneemt. Op de pagina status van uw beheerde domein worden een of meer waarschuwingen in deze status weer gegeven.
+Een Azure AD DS beheerd domein dat op de juiste wijze is geconfigureerd en zonder problemen wordt uitgevoerd, heeft de status *bezig met uitvoeren* . Dit is de gewenste status voor een beheerd domein.
 
-Als u bijvoorbeeld een beperkend NSG voor uw virtuele netwerk hebt geconfigureerd, kan micro soft uw beheerde domein mogelijk niet bijwerken en bewaken. Deze ongeldige configuratie activeert een waarschuwing die uw beheerde domein in de status ' aandacht vereist ' plaatst.
+### <a name="what-to-expect"></a>Wat u kunt verwachten
 
-Elke waarschuwing heeft een reeks oplossings stappen. Sommige waarschuwingen zijn tijdelijk en worden automatisch opgelost door de service. U kunt een aantal andere waarschuwingen oplossen door de instructies in de bijbehorende oplossings stappen voor die waarschuwing te volgen. Voor een aantal kritieke waarschuwingen moet u contact opnemen met micro soft ondersteuning om een oplossing te verkrijgen.
+* Het Azure-platform kan regel matig de status van het beheerde domein bewaken.
+* Domein controllers voor het beheerde domein worden regel matig patches en bijgewerkt.
+* Wijzigingen van Azure Active Directory worden regel matig gesynchroniseerd met het beheerde domein.
+* Reguliere back-ups worden gemaakt voor het beheerde domein.
 
-Zie [problemen met waarschuwingen in een beheerd domein oplossen](troubleshoot-alerts.md)voor meer informatie.
+## <a name="needs-attention-state"></a>Attentie status vereist
 
-**Wat u kunt verwachten**
+Een Azure AD DS beheerd domein met een of meer problemen die moeten worden opgelost, is in de status *attentie vereist* . Op de status pagina voor het beheerde domein worden de waarschuwingen vermeld en wordt aangegeven waar zich een probleem voordoet. Sommige waarschuwingen zijn tijdelijk en worden automatisch opgelost door het Azure-platform. Voor andere waarschuwingen kunt u het probleem oplossen door de meegeleverde stappen te volgen. Er is een kritieke waarschuwing, [Open een ondersteunings aanvraag voor Azure][azure-support] voor aanvullende hulp bij het oplossen van problemen.
 
-In sommige gevallen (bijvoorbeeld als u een ongeldige netwerk configuratie hebt), zijn de domein controllers voor uw beheerde domein mogelijk onbereikbaar. Als uw beheerde domein zich in de status ' attentie ' bevindt, kan micro soft niet garanderen dat het wordt bewaakt, patcht, bijgewerkt of een back-up maakt.
+Een voor beeld van een waarschuwing is wanneer er sprake is van een beperkende netwerk beveiligings groep. In deze configuratie is het mogelijk dat het Azure-platform het beheerde domein niet kan bijwerken en bewaken. Er wordt een waarschuwing gegenereerd en de status wordt gewijzigd in *vereist aandacht*.
 
-* Uw beheerde domein bevindt zich in een slechte staat en de status controle wordt mogelijk gestopt totdat de waarschuwing is opgelost.
-* Er kunnen geen patches of updates worden uitgevoerd voor domein controllers voor uw beheerde domein.
-* Wijzigingen van Azure Active Directory mogelijk niet gesynchroniseerd met uw beheerde domein.
-* Er kunnen, indien mogelijk, back-ups voor uw beheerde domein worden gemaakt.
-* Als u waarschuwingen oplost die van invloed zijn op uw beheerde domein, kunt u deze mogelijk herstellen naar de status ' wordt uitgevoerd '.
-* Kritieke waarschuwingen worden geactiveerd voor configuratie problemen waarbij micro soft uw domein controllers niet kan bereiken. Als dergelijke waarschuwingen niet binnen 15 dagen worden opgelost, wordt uw beheerde domein in de status ' opgeschort ' geplaatst.
+Zie [problemen met waarschuwingen voor een beheerd domein van Azure AD DS oplossen][resolve-alerts]voor meer informatie.
 
+### <a name="what-to-expect"></a>Wat u kunt verwachten
 
-### <a name="the-suspended-state"></a>De status ' opgeschort '
-Een beheerd domein wordt in de **onderbroken** status geplaatst om de volgende redenen:
+Wanneer een door Azure AD DS beheerd domein in de *attentie status vereist* is, is het mogelijk dat het Azure-platform niet regel matig gegevens bewaken, patcheert, bijwerkt of back-ups maakt. In sommige gevallen, zoals met een ongeldige netwerk configuratie, zijn de domein controllers voor het beheerde domein mogelijk onbereikbaar.
 
-* Een of meer kritieke waarschuwingen zijn in 15 dagen niet opgelost. Kritieke waarschuwingen kunnen worden veroorzaakt door een onjuiste configuratie waarmee de toegang wordt geblokkeerd tot resources die nodig zijn voor Azure AD DS.
-    * Bijvoorbeeld, de waarschuwing [AADDS104: De netwerk](alert-nsg.md) fout is langer dan 15 dagen in het beheerde domein niet meer geldig.
-* Er is een probleem met de facturering van uw Azure-abonnement of uw Azure-abonnement is verlopen.
+* Het beheerde domein bevindt zich in een slechte staat en de status controle wordt mogelijk gestopt totdat de waarschuwing is opgelost.
+* Domein controllers voor het beheerde domein kunnen niet worden gerepareerd of bijgewerkt.
+* Wijzigingen van Azure Active Directory kunnen mogelijk niet worden gesynchroniseerd met het beheerde domein.
+* Er kunnen geen back-ups worden gemaakt voor het beheerde domein.
+* Als u niet-kritieke waarschuwingen oplost die van invloed zijn op het beheerde domein, moet de status worden hersteld naar de status *actief* .
+* Kritieke waarschuwingen worden geactiveerd voor configuratie problemen waarbij het Azure-platform de domein controllers niet kan bereiken. Als deze kritieke waarschuwingen niet binnen 15 dagen worden opgelost, wordt de *onderbroken* status in het beheerde domein ingevoerd.
 
-Beheerde domeinen worden onderbroken wanneer micro soft het domein doorlopend niet kan beheren, bewaken, patchen of een back-up maakt.
+## <a name="suspended-state"></a>Onderbroken status
 
-**Wat u kunt verwachten**
-* Domein controllers voor uw beheerde domein worden onbeschikbaar gemaakt en zijn niet bereikbaar binnen het virtuele netwerk.
-* Secure LDAP toegang tot het beheerde domein via internet (als deze is ingeschakeld) niet meer werkt.
-* U ziet fouten in de verificatie bij het beheerde domein, aanmelden bij virtuele machines die lid zijn van een domein of verbinding maken via LDAP/LDAPS.
-* Back-ups voor uw beheerde domein worden niet langer ondernomen.
+Een door Azure AD DS beheerd domein voert de **onderbroken** status om een van de volgende redenen:
+
+* Een of meer kritieke waarschuwingen zijn in 15 dagen niet opgelost.
+    * Kritieke waarschuwingen kunnen worden veroorzaakt door een onjuiste configuratie waarmee de toegang wordt geblokkeerd tot resources die nodig zijn voor Azure AD DS. Bijvoorbeeld, de waarschuwing [AADDS104: De netwerk][alert-nsg] fout is langer dan 15 dagen in het beheerde domein niet meer geldig.
+* Er is een facturerings probleem met het Azure-abonnement of het Azure-abonnement is verlopen.
+
+Beheerde domeinen worden onderbroken wanneer het Azure-platform niet in staat is om het domein te beheren, te controleren, te bewaken of te maken. Een beheerd domein blijft 15 dagen in een *onderbroken* status. Als u de toegang tot het beheerde domein wilt behouden, moet u de kritieke waarschuwingen direct oplossen.
+
+### <a name="what-to-expect"></a>Wat u kunt verwachten
+
+Het volgende gedrag treedt op wanneer een door Azure AD DS beheerd domein zich in de *onderbroken* status bevindt:
+
+* Domein controllers voor het beheerde domein worden onbeschikbaar gemaakt en zijn niet bereikbaar binnen het virtuele netwerk.
+* Secure LDAP toegang tot het beheerde domein via internet, als deze functie is ingeschakeld, werkt niet meer.
+* Er zijn fouten opgetreden bij het verifiëren van het beheerde domein, aanmelden bij Vm's die lid zijn van een domein of verbinding maken via LDAP/LDAPS.
+* Back-ups voor het beheerde domein worden niet langer ondernomen.
 * Synchronisatie met Azure AD stopt.
 
-Nadat u de waarschuwing hebt opgelost, wordt het beheerde domein de status ' Suspended '. Vervolgens moet u contact opnemen met de ondersteuning.
-Ondersteuning kan uw beheerde domein herstellen, maar alleen als er een back-up van minder dan 30 dagen bestaat.
+### <a name="how-do-you-know-if-your-managed-domain-is-suspended"></a>Hoe weet u of uw beheerde domein is onderbroken?
 
-Het beheerde domein blijft gedurende 15 dagen alleen in een onderbroken status. Als u uw beheerde domein wilt herstellen, raadt micro soft u aan om de kritieke waarschuwingen onmiddellijk op te lossen.
+U ziet een [waarschuwing][resolve-alerts] op de pagina Azure AD DS Health in de Azure portal die het domein heeft gesuspendeerd. De status van het domein wordt ook weer gegeven als *onderbroken*.
 
+### <a name="restore-a-suspended-domain"></a>Een opgeschort domein herstellen
 
-### <a name="deleted-state"></a>Status verwijderd
-Een beheerd domein dat gedurende 15 dagen in de status ' opgeschort ' blijft, wordt **verwijderd**.
+Voer de volgende stappen uit om de status van een door Azure AD DS beheerd domein met de status *opgeschort* te herstellen:
 
-**Wat u kunt verwachten**
+1. Zoek en selecteer in het Azure Portal **Domain Services**.
+1. Kies uw door Azure AD DS beheerd domein in de lijst, zoals *contoso.com*, en selecteer vervolgens **status**.
+1. Selecteer de waarschuwing, zoals *AADDS503* of *AADDS504*, afhankelijk van de oorzaak van de onderbreking.
+1. Kies de oplossings koppeling die in de waarschuwing wordt weer gegeven en volg de stappen om deze op te lossen.
+
+Een beheerd domein kan alleen worden teruggezet naar de datum van de laatste back-up. De datum van de laatste back-up wordt weer gegeven op de pagina **status** van het beheerde domein. Wijzigingen die zijn opgetreden na de laatste back-up, worden niet hersteld. Back-ups voor een beheerd domein worden Maxi maal 30 dagen opgeslagen. Back-ups die ouder zijn dan 30 dagen, worden verwijderd.
+
+Nadat u de waarschuwingen hebt opgelost wanneer het beheerde domein zich in de *onderbroken* status bevindt, [opent u een ondersteunings aanvraag voor Azure][azure-support] om terug te keren naar de status in orde. Als er een back-up van minder dan 30 dagen is, kan Azure-ondersteuning het beheerde domein herstellen.
+
+## <a name="deleted-state"></a>Verwijderde status
+
+Als een door Azure AD DS beheerd domein gedurende 15 dagen in de *onderbroken* status blijft, wordt het verwijderd. Dit proces kan niet worden hersteld.
+
+### <a name="what-to-expect"></a>Wat u kunt verwachten
+
+Wanneer een door Azure AD DS beheerd domein de status *verwijderd* krijgt, wordt het volgende gedrag weer gegeven:
+
 * Alle bronnen en back-ups voor het beheerde domein worden verwijderd.
-* U kunt het beheerde domein niet herstellen en moet een nieuw beheerd domein maken om Azure AD DS te gebruiken.
+* U kunt het beheerde domein niet herstellen en u moet een vervangend domein maken om Azure AD DS opnieuw te gebruiken.
 * Nadat de app is verwijderd, worden er geen kosten in rekening gebracht voor het beheerde domein.
 
-
-## <a name="how-do-you-know-if-your-managed-domain-is-suspended"></a>Hoe weet u of uw beheerde domein is onderbroken?
-U ziet een [waarschuwing](troubleshoot-alerts.md) op de pagina Azure AD DS Health in de Azure portal die declareert dat het domein is onderbroken. De status van het domein bevat ook ' Suspended '.
-
-
-## <a name="restore-a-suspended-domain"></a>Een opgeschort domein herstellen
-Voer de volgende stappen uit om een domein met de status ' opgeschort ' te herstellen:
-
-1. Ga naar de [pagina Azure Active Directory Domain Services](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.AAD%2FdomainServices) in het Azure Portal.
-2. Selecteer het beheerde domein.
-3. Selecteer in het linkerdeel venster **status**.
-4. Selecteer de waarschuwing. De waarschuwings-ID is ofwel AADDS503 of AADDS504, afhankelijk van de oorzaak van de onderbreking.
-5. Selecteer de oplossings koppeling die in de waarschuwing wordt gegeven. Volg vervolgens de stappen om de waarschuwing op te lossen.
-
-Uw beheerde domein kan alleen worden hersteld op de datum van de laatste back-up. De datum van de laatste back-up wordt weer gegeven op de pagina status van uw beheerde domein. Wijzigingen die zijn opgetreden na de laatste back-up, worden niet hersteld. Back-ups voor een beheerd domein worden Maxi maal 30 dagen opgeslagen. Back-ups die ouder zijn dan 30 dagen, worden verwijderd.
-
-
 ## <a name="next-steps"></a>Volgende stappen
-- [Waarschuwingen voor uw beheerde domein oplossen](troubleshoot-alerts.md)
-- [Meer informatie over Azure Active Directory Domain Services](overview.md)
-- [Neem contact op met het product team](contact-us.md)
 
-## <a name="contact-us"></a>Contact opnemen
-Neem contact op met het product team van Azure Active Directory Domain Services om [feedback te delen of voor ondersteuning](contact-us.md).
+Meer informatie over het [oplossen van waarschuwingen voor uw beheerde domein][resolve-alerts]om uw Azure AD DS beheerd domein in orde te houden en het risico te beperken dat het wordt onderbroken.
+
+<!-- INTERNAL LINKS -->
+[alert-nsg]: alert-nsg.md
+[azure-support]: ../active-directory/fundamentals/active-directory-troubleshooting-support-howto.md
+[resolve-alerts]: troubleshoot-alerts.md

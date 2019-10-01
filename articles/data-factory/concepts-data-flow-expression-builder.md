@@ -1,80 +1,83 @@
 ---
-title: Azure Data Factory Mapping Data Flow Expression Builder
-description: De opbouwfunctie voor Azure Data Factory-toewijzingsgegevens stromen
+title: Opbouw functie voor gegevensstroom Expression Azure Data Factory koppelen
+description: De opbouw functie voor expressies voor het Azure Data Factory toewijzen van gegevens stromen
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 01/30/2019
-ms.openlocfilehash: df9cfb0c0e36f54c8b1fbee4def552c78e9d42c1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 09/30/2019
+ms.openlocfilehash: 67a6de6d85a58f48af4761e0b5d5b0a1a4d74b1a
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61269113"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71703400"
 ---
-# <a name="mapping-data-flow-expression-builder"></a>Mapping Data Flow Expression Builder
+# <a name="mapping-data-flow-expression-builder"></a>Opbouw functie voor gegevens stroom expressie koppelen
 
 [!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
-In Azure Data Factory toewijzing gegevensstroom vindt u expressievakken waarin u expressies voor gegevenstransformatie kunt invoeren. Kolommen, velden, variabelen, parameters, functies van de gegevensstroom in deze vakken gebruiken. Gebruik de opbouwfunctie voor expressies, die wordt gestart door te klikken in het tekstvak voor expressie in de transformatie voor het bouwen van de expressie. U ziet ook wel 'Berekende kolom' opties bij het selecteren van kolommen voor transformatie. Wanneer u daarop klikt, ziet u ook de opbouwfunctie voor expressies gestart.
+In Azure Data Factory gegevens stroom toewijzen vindt u expressie vakken waarin u expressies voor gegevens transformatie kunt invoeren. Gebruik kolommen, velden, variabelen, para meters, functies uit uw gegevens stroom in deze vakken. Als u de expressie wilt maken, gebruikt u de opbouw functie voor expressies, die wordt gestart door te klikken in het tekstvak expressie in de trans formatie. Soms ziet u ook de opties berekende kolom bij het selecteren van kolommen voor trans formatie. Als u hierop klikt, ziet u ook de opbouw functie voor expressies.
 
-![Opbouwfunctie voor expressies](media/data-flow/expression.png "opbouwfunctie voor expressies")
+Opbouw functie Expression ![Builder]-(media/data-flow/xpb1.png "expressie")
 
-De opbouwfunctie voor expressies hulpprogramma wordt standaard ingesteld op de optie voor tekst-editor. de functie automatisch aanvullen leest uit de gehele gegevensstroom van Azure Data Factory-objectmodel met syntaxis controleren en te markeren.
+Het hulp programma Expression Builder wordt standaard ingesteld op de tekst editor optie. de functie voor automatisch aanvullen leest uit het hele Azure Data Factory data flow-object model met syntaxis controle en markering.
 
-![Opbouwfunctie voor expressies automatisch aanvullen](media/data-flow/expb1.png "opbouwfunctie voor expressies automatisch aanvullen")
+Opbouw ![functie voor expressies automatisch volt ooien](media/data-flow/expb1.png "Expression Builder automatisch aanvullen")
 
-## <a name="currently-working-on-field"></a>Op dit moment werkt in veld
+## <a name="build-schemas-in-output-schema-pane"></a>Schema's maken in het deel venster uitvoer schema
 
-![Opbouwfunctie voor expressies](media/data-flow/exp3.png "momenteel bezig")
+![Complexe kolom]toevoegen(media/data-flow/complexcolumn.png "kolommen toevoegen")
 
-Links boven van de gebruikersinterface van de opbouwfunctie voor expressie, ziet u een veld met de naam 'Momenteel werken aan' met de naam van het veld dat u momenteel werkt. De expressie die u in de gebruikersinterface maakt wordt alleen op die momenteel werken veld worden toegepast. Als u een ander veld transformeren wilt, uw huidige werk op te slaan en deze vervolgkeuzelijst gebruiken voor het selecteren van een ander veld en een expressie voor de andere velden maken.
+In het deel venster uitvoer schema links ziet u de kolommen die u wijzigt en aan uw schema toevoegt. U kunt hier interactief eenvoudige en complexe gegevens structuren bouwen. Voeg extra velden toe met behulp van kolom toevoegen en maak hiërarchieën met behulp van ' subkolom toevoegen '.
 
-## <a name="data-preview-in-debug-mode"></a>Voorbeeld van gegevens in de foutopsporingsmodus
+![Subkolom toevoegen]Voeg(media/data-flow/addsubcolumn.png "subkolom toe")
 
-![Opbouwfunctie voor expressies](media/data-flow/exp4b.png "Gegevensvoorbeeld-expressie")
+## <a name="data-preview-in-debug-mode"></a>Voor beeld van gegevens in foutopsporingsmodus
 
-Wanneer u op uw expressies werkt, kunt u eventueel overschakelen op foutopsporingsmodus uit het ontwerpgebied gegevensstroom van Azure Data Factory Livevoorbeelden in uitvoering van de resultaten van uw gegevens uit de expressie die u bouwt inschakelen. Realtime live foutopsporing is ingeschakeld voor uw expressies.
+![](media/data-flow/exp4b.png "Voor beeld") van Expression Builder-expressie gegevens
 
-![Foutopsporingsmodus](media/data-flow/debugbutton.png "knop foutopsporing")
+Wanneer u aan uw gegevensstroom expressies werkt, schakelt u over op de foutopsporingsmodus in het ontwerp oppervlak van de Azure Data Factory gegevens stroom, waardoor de resultaten van een live in voortgang van uw gegevens worden weer gegeven op basis van de expressie die u bouwt. Real-time live fout opsporing is ingeschakeld voor uw expressies.
 
+![](media/data-flow/debugbutton.png "Knop") fout opsporing voor debug-modus
 
-![Opbouwfunctie voor expressies](media/data-flow/exp5.png "Gegevensvoorbeeld-expressie")
+Klik op de knop Vernieuwen om de resultaten van uw expressie bij te werken met een live voor beeld van uw bron in realtime.
+
+![](media/data-flow/exp5.png "Voor beeld") van Expression Builder-expressie gegevens
 
 ## <a name="comments"></a>Opmerkingen
 
-Opmerkingen toevoegen aan uw expressies met behulp van één regel en de syntaxis van meerdere regels:
+Voeg opmerkingen toe aan uw expressies met behulp van de syntaxis voor één regel en een opmerking met meerdere regels:
 
-![Opmerkingen](media/data-flow/comments.png "opmerkingen")
+![Opmerkingen bij](media/data-flow/comments.png "opmerkingen")
 
 ## <a name="regular-expressions"></a>Reguliere expressies
 
-De taal van de expressie gegevensstroom van Azure Data Factory [volledige naslaginformatie documentatie die hier beschikbaar](https://aka.ms/dataflowexpressions), kunnen functies die reguliere-expressiesyntaxis bevatten. Wanneer u de functies van de reguliere expressie, de opbouwfunctie voor expressies wordt geprobeerd om te interpreteren backslash (\\) als een escapereeks-teken. Wanneer u de backslash-tekens in uw reguliere expressie, ofwel de gehele reguliere expressie insluiten in tikken (\`) of gebruik een dubbele backslash.
+In de Azure Data Factory data flow-expressie taal, [volledige referentie documentatie](https://aka.ms/dataflowexpressions), kunt u hier functies gebruiken die een reguliere expressie syntaxis bevatten. Wanneer u reguliere-expressie functies gebruikt, probeert de opbouw functie voor expressies backslashes (@no__t 0) als escape-teken reeks te interpreteren. Wanneer u backslashes in uw reguliere expressie gebruikt, moet u de volledige regex insluiten in Ticks (\`) of een dubbele back slash gebruiken.
 
-Voorbeeld met behulp van maatstreepjes
+Voor beeld met behulp van maat streepjes
 
 ```
 regex_replace('100 and 200', `(\d+)`, 'digits')
 ```
 
-of met behulp van dubbele schuine streep
+of gebruik een dubbele slash
 
 ```
 regex_replace('100 and 200', '(\\d+)', 'digits')
 ```
 
-## <a name="addressing-array-indexes"></a>Matrixindexen-adressering
+## <a name="addressing-array-indexes"></a>Matrix indexen adresseren
 
-Gebruiken met de expressie-functies die matrices retourneren, vierkante haken [] om de specifieke indexen binnen dat matrixobject geretourneerde. De matrix is die zijn gebaseerd.
+Met expressie functies die matrices retour neren, gebruikt u vier Kante haken [] voor het oplossen van specifieke indexen binnen het object geretourneerde matrix. De matrix is gebaseerd op.
 
-![Expressie Builder matrix](media/data-flow/expb2.png "Gegevensvoorbeeld-expressie")
+(media/data-flow/expb2.png "Voor beeld") van ![Expression Builder-matrix]met gegevens
 
-## <a name="handling-names-with-special-characters"></a>Afhandeling van namen met speciale tekens
+## <a name="handling-names-with-special-characters"></a>Namen verwerken met speciale tekens
 
-Wanneer u de namen van kolommen die speciale tekens of spaties bevatten, plaatst u rond de naam met behulp van accolades.
+Wanneer u kolom namen hebt die speciale tekens of spaties bevatten, plaatst u de naam tussen accolades.
 * ```{[dbo].this_is my complex name$$$}```
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Begin met het maken van data transformation expressies](data-flow-expression-functions.md)
+[Beginnen met het bouwen van gegevens transformatie expressies](data-flow-expression-functions.md)

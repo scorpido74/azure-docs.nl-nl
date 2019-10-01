@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 09/30/2019
 ms.author: tomfitz
-ms.openlocfilehash: 6b027acc5a8a8b7660d5640ff4af335e51fd2dbf
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: b6d479935bc9e4bd731b93d3e027644b9ca4dbe0
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71676882"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71694978"
 ---
 # <a name="understand-the-structure-and-syntax-of-azure-resource-manager-templates"></a>Inzicht in de structuur en syntaxis van Azure Resource Manager sjablonen
 
@@ -88,7 +88,7 @@ Zie [para meters in azure Resource Manager Templates](template-parameters.md)voo
 
 ### <a name="data-types"></a>Gegevenstypen
 
-Geheeltallige typen kunnen variëren van-2147483648 tot 2147483647. Resource typen kunnen echter een lagere limiet voor een integer-eigenschap Toep assen.
+Voor gehele getallen die als inline-para meters worden door gegeven, kan het bereik van waarden worden beperkt door de SDK of het opdracht regel programma dat u voor implementatie gebruikt. Als u bijvoorbeeld Power shell gebruikt voor het implementeren van een sjabloon, kunnen integerwaarden variëren van-2147483648 tot 2147483647. Als u deze beperking wilt vermijden, geeft u grote waarden voor geheel getal op in een [parameter bestand](resource-manager-parameter-files.md). De resource typen hebben hun eigen limieten voor eigenschappen van gehele getallen.
 
 Wanneer u Boole-waarden en integerwaarden in uw sjabloon opgeeft, plaatst u de waarde niet tussen aanhalings tekens. Begin-en eind teken reeks waarden met dubbele aanhalings tekens.
 

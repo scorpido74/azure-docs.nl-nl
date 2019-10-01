@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 6b5be5271e2ff579d93cb70f7c8da93d861d4dc0
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: bb816658faff9fb924d075e0fca17e9643c18e40
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69648730"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71694748"
 ---
 # <a name="get-started-with-azcopy"></a>Aan de slag met AzCopy
 
@@ -27,26 +27,34 @@ AzCopy is een opdracht regel programma dat u kunt gebruiken voor het kopiëren v
 
 ## <a name="download-azcopy"></a>AzCopy downloaden
 
-Down load eerst het uitvoer bare bestand van AzCopy V10 toevoegen naar een map op uw computer.
+Down load eerst het uitvoer bare bestand van AzCopy V10 toevoegen naar een map op uw computer. AzCopy V10 toevoegen is slechts een uitvoerbaar bestand, dus er is niets om te installeren.
 
-- [Windows](https://aka.ms/downloadazcopy-v10-windows) telefoon
-- [Linux](https://aka.ms/downloadazcopy-v10-linux) tar
+- [Windows](https://aka.ms/downloadazcopy-v10-windows) (zip)
+- [Linux](https://aka.ms/downloadazcopy-v10-linux) (tar)
 - [MacOS](https://aka.ms/downloadazcopy-v10-mac) (zip)
 
-AzCopy V10 toevoegen is slechts een uitvoerbaar bestand, dus er is niets om te installeren.
+Deze bestanden worden gecomprimeerd als een zip-bestand (Windows en Mac) of een tar-bestand (Linux).
+
+U kunt deze opdrachten gebruiken om het tar-bestand in Linux te downloaden en te decomprimeren.
+
+```bash
+wget -O azcopy.tar.gz https://aka.ms/downloadazcopy-v10-linux
+tar -xf azcopy.tar.gz
+```
 
 > [!NOTE]
 > Als u gegevens wilt kopiëren van en naar uw [Azure Table Storage](https://docs.microsoft.com/azure/storage/tables/table-storage-overview) -service, installeert u vervolgens [AzCopy versie 7,3](https://aka.ms/downloadazcopynet).
+
 
 ## <a name="run-azcopy"></a>AzCopy uitvoeren
 
 Voor het gemak kunt u de maplocatie van het uitvoer bare bestand AzCopy toevoegen aan het systeempad om gebruiks gemak te gebruiken. Op die manier kunt u `azcopy` typen vanuit een wille keurige map op uw systeem.
 
-Als u ervoor kiest om de AzCopy-map niet aan uw pad toe te voegen, moet u de mappen wijzigen op de locatie van het `azcopy` uitvoer `.\azcopy` bare AzCopy-bestand en-type of in Windows Power shell-opdracht prompts.
+Als u ervoor kiest om de AzCopy-map niet aan uw pad toe te voegen, moet u de mappen wijzigen op de locatie van het uitvoer bare AzCopy-bestand. Typ `azcopy` of `.\azcopy` in Windows Power shell-opdracht prompts.
 
-Typ `azcopy -h` en druk op de Enter-toets om een lijst met opdrachten weer te geven.
+Als u een lijst met opdrachten wilt zien, typt u `azcopy -h` en drukt u vervolgens op ENTER.
 
-Als u meer wilt weten over een specifieke opdracht, neemt u alleen de naam van de opdracht `azcopy list -h`op (bijvoorbeeld:).
+Als u meer wilt weten over een specifieke opdracht, neemt u alleen de naam van de opdracht op (bijvoorbeeld: `azcopy list -h`).
 
 ![Inline-Help](media/storage-use-azcopy-v10/azcopy-inline-help.png)
 
@@ -113,7 +121,7 @@ Als u deel uitmaakt van meer dan één organisatie, neemt u de Tenant-ID op van 
 azcopy login --tenant-id=<tenant-id>
 ```
 
-Vervang de `<tenant-id>` tijdelijke aanduiding door de Tenant-id van de organisatie waartoe het opslag account behoort. Als u de Tenant-ID wilt vinden, selecteert u **Azure Active Directory > eigenschappen > Directory-id** in het Azure Portal.
+Vervang de tijdelijke aanduiding `<tenant-id>` door de Tenant-ID van de organisatie waartoe het opslag account behoort. Als u de Tenant-ID wilt vinden, selecteert u **Azure Active Directory > eigenschappen > Directory-id** in het Azure Portal.
 
 Met deze opdracht worden een verificatie code en de URL van een website geretourneerd. Open de website, geef de code op en kies vervolgens de knop **volgende** .
 
@@ -131,13 +139,13 @@ Voordat u een script uitvoert, moet u zich ten minste één keer interactief aan
 
 U kunt zich aanmelden bij uw account door gebruik te maken van een client geheim of door het wacht woord te gebruiken van een certificaat dat is gekoppeld aan de app-registratie van uw service-principal.
 
-Zie [How to: (Engelstalig) voor meer informatie over het maken van een service-principal. Gebruik de portal voor het maken van een Azure AD-toepassing en service-principal die toegang hebben tot resources](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
+Voor meer informatie over het maken van een Service-Principal raadpleegt u [How: Gebruik de portal voor het maken van een Azure AD-toepassing en service-principal die toegang hebben tot resources](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
 
 Zie [toepassings-en Service-Principal-objecten in azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals) voor meer informatie over service-principals in het algemeen.
 
 ##### <a name="using-a-client-secret"></a>Een client geheim gebruiken
 
-Begin door de `AZCOPY_SPA_CLIENT_SECRET` omgevings variabele in te stellen op het client geheim van de app-registratie van de Service-Principal.
+Stel eerst de `AZCOPY_SPA_CLIENT_SECRET`-omgevings variabele in op het client geheim van de app-registratie van de Service-Principal.
 
 > [!NOTE]
 > Zorg ervoor dat u deze waarde instelt vanaf de opdracht prompt en niet in de omgevings variabele-instellingen van uw besturings systeem. Op die manier is de waarde alleen beschikbaar voor de huidige sessie.
@@ -154,10 +162,10 @@ $env:AZCOPY_SPA_CLIENT_SECRET="$(Read-Host -prompt "Enter key")"
 Typ vervolgens de volgende opdracht en druk vervolgens op ENTER.
 
 ```azcopy
-azcopy login --service-principal --application-id <application-id>
+azcopy login --service-principal --application-id <application-id> --tenant-id=<tenant-id>
 ```
 
-Vervang de `<application-id>` tijdelijke aanduiding door de toepassings-id van de app-registratie van uw service-principal.
+Vervang de tijdelijke aanduiding `<application-id>` door de toepassings-ID van de app-registratie van uw service-principal. Vervang de tijdelijke aanduiding `<tenant-id>` door de Tenant-ID van de organisatie waartoe het opslag account behoort. Als u de Tenant-ID wilt vinden, selecteert u **Azure Active Directory > eigenschappen > Directory-id** in het Azure Portal. 
 
 ##### <a name="using-a-certificate"></a>Een certificaat gebruiken
 
@@ -165,7 +173,7 @@ Als u uw eigen referenties voor autorisatie wilt gebruiken, kunt u een certifica
 
 Naast het uploaden van uw certificaat naar de registratie van uw app, moet u ook een kopie van het certificaat hebben opgeslagen op de machine of VM waarop AzCopy wordt uitgevoerd. Deze kopie van het certificaat moet zich in bestaan. PFX of. PEM-indeling en moet de persoonlijke sleutel bevatten. De persoonlijke sleutel moet met een wacht woord zijn beveiligd. Als u Windows gebruikt en uw certificaat alleen bestaat in een certificaat archief, moet u het certificaat exporteren naar een PFX-bestand (met inbegrip van de persoonlijke sleutel). Zie [export-pfx](https://docs.microsoft.com/powershell/module/pkiclient/export-pfxcertificate?view=win10-ps) voor meer informatie.
 
-Vervolgens stelt u de `AZCOPY_SPA_CERT_PASSWORD` omgevings variabele in op het certificaat wachtwoord.
+Stel vervolgens de `AZCOPY_SPA_CERT_PASSWORD`-omgevings variabele in op het certificaat wachtwoord.
 
 > [!NOTE]
 > Zorg ervoor dat u deze waarde instelt vanaf de opdracht prompt en niet in de omgevings variabele-instellingen van uw besturings systeem. Op die manier is de waarde alleen beschikbaar voor de huidige sessie.
@@ -179,10 +187,10 @@ $env:AZCOPY_SPA_CERT_PASSWORD="$(Read-Host -prompt "Enter key")"
 Typ vervolgens de volgende opdracht en druk vervolgens op ENTER.
 
 ```azcopy
-azcopy login --service-principal --certificate-path <path-to-certificate-file>
+azcopy login --service-principal --certificate-path <path-to-certificate-file> --tenant-id=<tenant-id>
 ```
 
-Vervang de `<path-to-certificate-file>` tijdelijke aanduiding door het relatieve of volledig gekwalificeerde pad naar het certificaat bestand. AzCopy slaat het pad naar dit certificaat op, maar er wordt geen kopie van het certificaat opgeslagen. Zorg er dus voor dat u dat certificaat blijft bewaren.
+Vervang de tijdelijke aanduiding `<path-to-certificate-file>` door het relatieve of volledig gekwalificeerde pad naar het certificaat bestand. AzCopy slaat het pad naar dit certificaat op, maar er wordt geen kopie van het certificaat opgeslagen. Zorg er dus voor dat u dat certificaat blijft bewaren. Vervang de tijdelijke aanduiding `<tenant-id>` door de Tenant-ID van de organisatie waartoe het opslag account behoort. Als u de Tenant-ID wilt vinden, selecteert u **Azure Active Directory > eigenschappen > Directory-id** in het Azure Portal.
 
 > [!NOTE]
 > U kunt een prompt gebruiken zoals in dit voor beeld wordt weer gegeven. Op die manier wordt uw wacht woord niet weer gegeven in de opdracht geschiedenis van de console. 
@@ -217,19 +225,19 @@ Typ in de opdracht console een van de volgende opdrachten en druk vervolgens op 
 azcopy login --identity --identity-client-id "<client-id>"
 ```
 
-Vervang de `<client-id>` tijdelijke aanduiding door de client-id van de door de gebruiker toegewezen beheerde identiteit.
+Vervang de tijdelijke aanduiding `<client-id>` door de client-ID van de door de gebruiker toegewezen beheerde identiteit.
 
 ```azcopy
 azcopy login --identity --identity-object-id "<object-id>"
 ```
 
-Vervang de `<object-id>` tijdelijke aanduiding door de object-id van de door de gebruiker toegewezen beheerde identiteit.
+Vervang de tijdelijke aanduiding `<object-id>` door de object-ID van de door de gebruiker toegewezen beheerde identiteit.
 
 ```azcopy
 azcopy login --identity --identity-resource-id "<resource-id>"
 ```
 
-Vervang de `<resource-id>` tijdelijke aanduiding door de resource-id van de door de gebruiker toegewezen beheerde identiteit.
+Vervang de tijdelijke aanduiding `<resource-id>` door de resource-ID van de door de gebruiker toegewezen beheerde identiteit.
 
 ### <a name="option-2-use-a-sas-token"></a>Optie 2: Een SAS-token gebruiken
 
@@ -273,7 +281,7 @@ Voer de volgende opdracht uit om de koppeling te verkrijgen:
 | **Windows** | `(curl https://aka.ms/downloadazcopy-v10-windows -MaximumRedirection 0 -ErrorAction silentlycontinue).RawContent` |
 
 > [!NOTE]
-> Voor Linux `--strip-components=1` wordt op de `tar` opdracht de map op het hoogste niveau met de versie naam verwijderd en in plaats daarvan wordt het binaire bestand rechtstreeks naar de huidige map geëxtraheerd. Hierdoor kan het script worden bijgewerkt met een nieuwe versie van `azcopy` door alleen de `wget` URL bij te werken.
+> Voor Linux, `--strip-components=1` in de `tar`-opdracht, wordt de map op het hoogste niveau met de versie naam verwijderd en wordt het binaire bestand in plaats daarvan rechtstreeks naar de huidige map geëxtraheerd. Hierdoor kan het script worden bijgewerkt met een nieuwe versie van `azcopy` door alleen de URL van de `wget` bij te werken.
 
 De URL wordt weer gegeven in de uitvoer van deze opdracht. Uw script kan vervolgens AzCopy downloaden met behulp van deze URL.
 
@@ -284,13 +292,13 @@ De URL wordt weer gegeven in de uitvoer van deze opdracht. Uw script kan vervolg
 
 ### <a name="escape-special-characters-in-sas-tokens"></a>Speciale tekens in SAS-tokens escapepen
 
-In batch-bestanden met de `.cmd` extensie moet u de `%` tekens die worden weer gegeven in SAS-tokens weglaten. U kunt dit doen door een toevoeg `%` teken toe te voegen naast de bestaande `%` tekens in de SAS-token teken reeks.
+In batch-bestanden met de uitbrei ding `.cmd` moet u de `%`-tekens die worden weer gegeven in SAS-tokens escapepen. U kunt dit doen door een toevoeging `%` toe te voegen naast bestaande `%` tekens in de SAS-token teken reeks.
 
 ## <a name="use-azcopy-in-storage-explorer"></a>AzCopy gebruiken in Storage Explorer
 
 Als u de prestatie voordelen van AzCopy wilt benutten, maar u liever Storage Explorer gebruikt in plaats van de opdracht regel om met uw bestanden te communiceren, schakelt u AzCopy in Storage Explorer.
 
-Kies in Storage Explorer **Preview**->**AzCopy gebruiken voor verbeterde BLOB upload en down load**.
+**Kies In**Storage Explorer ->**AzCopy gebruiken voor verbeterde BLOB uploaden en downloaden**.
 
 ![AzCopy inschakelen als een overdrachts engine in Azure Storage Explorer](media/storage-use-azcopy-v10/enable-azcopy-storage-explorer.jpg)
 

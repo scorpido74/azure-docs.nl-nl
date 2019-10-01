@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 6cde60ee31b1654d79affd6e9050f426365ba29f
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: 0c7d88d76a3fea87b3cfe4032186140f38c263d3
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240961"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71693412"
 ---
 # <a name="tutorial-develop-iot-edge-modules-for-windows-devices"></a>Zelfstudie: IoT Edge-modules ontwikkelen voor Windows-apparaten
 
@@ -134,7 +134,7 @@ De uitbrei ding van de Azure IoT Edge-Hulpprogram Ma's biedt project sjablonen v
    | ----- | ----- |
    | Visual Studio-sjabloon | Selecteer  **C# de module**. | 
    | Modulenaam | Accepteer de standaard **IotEdgeModule1**. | 
-   | URL van opslag plaats | Een opslagplaats voor afbeeldingen bevat de naam van het containerregister en de naam van uw containerafbeelding. De container installatie kopie wordt vooraf ingevuld op basis van de waarde van de module Project naam. Vervang **localhost:5000** door de waarde van de aanmeldingsserver uit uw Azure-containerregister. U vindt de aanmeldingsserver op de overzichtspagina van het containerregister in de Azure-portal. <br><br> De uiteindelijke afbeeldings opslagplaats ziet \<eruit als\>register naam. azurecr.io/iotedgemodule1. |
+   | URL van opslag plaats | Een opslagplaats voor afbeeldingen bevat de naam van het containerregister en de naam van uw containerafbeelding. De container installatie kopie wordt vooraf ingevuld op basis van de waarde van de module Project naam. Vervang **localhost:5000** door de waarde van de aanmeldingsserver uit uw Azure-containerregister. U kunt de waarde van de **aanmeldings server** ophalen van de pagina **overzicht** van het container register in de Azure Portal. <br><br> De uiteindelijke afbeeldings opslagplaats ziet \<eruit als\>register naam. azurecr.io/iotedgemodule1. |
 
       ![Uw project configureren voor doel apparaat, module type en container register](./media/tutorial-develop-for-windows/add-module-to-solution.png)
 
@@ -143,33 +143,38 @@ De uitbrei ding van de Azure IoT Edge-Hulpprogram Ma's biedt project sjablonen v
 Wanneer het nieuwe project in het Visual Studio-venster wordt geladen, moet u even de tijd nemen om de gemaakte bestanden te verkennen: 
 
 * Een IoT Edge-project met de naam **CSharpTutorialApp**.
-    * De map **modules** bevat aanwijzers naar de modules die in het project zijn opgenomen. In dit geval moet deze alleen IotEdgeModule1 zijn. 
-    * Het bestand **Deployment. Temp late. json** is een sjabloon waarmee u een implementatie manifest maakt. Een *implementatie manifest* is een bestand dat precies aangeeft welke modules u wilt implementeren op een apparaat, hoe ze moeten worden geconfigureerd en hoe ze met elkaar en de Cloud kunnen communiceren. 
+  * De map **modules** bevat aanwijzers naar de modules die in het project zijn opgenomen. In dit geval moet deze alleen IotEdgeModule1 zijn. 
+  * Het verborgen **. env** -bestand bevat de referenties voor het container register. Deze referenties worden gedeeld met uw IoT Edge-apparaat, zodat het toegang heeft tot het ophalen van de container installatie kopieën.
+  * Het bestand **Deployment. Temp late. json** is een sjabloon waarmee u een implementatie manifest maakt. Een *implementatie manifest* is een bestand dat precies aangeeft welke modules u wilt implementeren op een apparaat, hoe ze moeten worden geconfigureerd en hoe ze met elkaar en de Cloud kunnen communiceren.
+    > [!TIP]
+    > In de sectie register referenties wordt het adres aangevuld met de informatie die u hebt ingevoerd tijdens het maken van de oplossing. De referentie variabelen gebruikers naam en wacht woord zijn opgeslagen in het. env-bestand. Dit is voor beveiliging, omdat het. env-bestand Git wordt genegeerd, maar de implementatie sjabloon niet.
 * Een IoT Edge module-project met de naam **IotEdgeModule1**.
-    * Het **Program.cs** -bestand bevat de C# standaard module code die bij de project sjabloon wordt geleverd. De standaard module maakt invoer van een bron en geeft deze door aan IoT Hub. 
-    * Het bestand **module. json** bevat details over de module, met inbegrip van de volledige opslag plaats voor de installatie kopie, de installatie kopie versie en welke Dockerfile moet worden gebruikt voor elk ondersteund platform.
+  * Het **Program.cs** -bestand bevat de C# standaard module code die bij de project sjabloon wordt geleverd. De standaard module maakt invoer van een bron en geeft deze door aan IoT Hub. 
+  * Het bestand **module. json** bevat details over de module, met inbegrip van de volledige opslag plaats voor de installatie kopie, de installatie kopie versie en welke Dockerfile moet worden gebruikt voor elk ondersteund platform.
 
 ### <a name="provide-your-registry-credentials-to-the-iot-edge-agent"></a>Geef uw register referenties voor de IoT Edge-agent op
 
-De IoT Edge runtime heeft uw register referenties nodig om de container installatie kopieën op het IoT Edge apparaat te halen. Voeg deze referenties toe aan de implementatie sjabloon. 
+De IoT Edge runtime heeft uw register referenties nodig om de container installatie kopieën op het IoT Edge apparaat te halen. De uitbrei ding van de IoT Edge probeert de container register gegevens op te halen uit Azure en deze in te vullen in de implementatie sjabloon.
 
-1. Open het bestand **Deployment. Temp late. json** .
+1. Open het bestand **Deployment. Temp late. json** in uw module oplossing.
 
-2. Zoek de eigenschap **registryCredentials** in de gewenste eigenschappen van de $edgeAgent. 
-
-3. Werk de eigenschap bij met uw referenties, met de volgende indeling: 
+1. Zoek de eigenschap **registryCredentials** in de gewenste eigenschappen $edgeAgent en controleer of deze de juiste informatie bevat.
 
    ```json
    "registryCredentials": {
      "<registry name>": {
-       "username": "<username>",
-       "password": "<password>",
+       "username": "$CONTAINER_REGISTRY_USERNAME_<registry name>",
+       "password": "$CONTAINER_REGISTRY_PASSWORD_<registry name>",
        "address": "<registry name>.azurecr.io"
      }
    }
    ```
 
-4. Sla het bestand deployment.template.json op. 
+1. Open het **. env** -bestand in de module oplossing. (Het wordt standaard verborgen in de Solution Explorer, dus u moet mogelijk de knop **alle bestanden weer geven** selecteren om deze weer te geven.)
+
+1. Voeg de waarden van de **gebruikers naam** en het **wacht woord** toe die u hebt gekopieerd uit uw Azure container Registry.
+
+1. Sla de wijzigingen in het. env-bestand op.
 
 ### <a name="review-the-sample-code"></a>De voorbeeldcode controleren
 

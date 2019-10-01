@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/14/2019
 ms.author: magoedte
-ms.openlocfilehash: 2b601825a58fe5739a43df607067acc8d629c5f4
-ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
+ms.openlocfilehash: 7cd915c47fa0661a9da66d7ca3315480ce7d6b98
+ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69558894"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71709430"
 ---
 # <a name="configure-agent-data-collection-for-azure-monitor-for-containers"></a>Gegevens verzameling van agents voor Azure Monitor voor containers configureren
 
@@ -45,11 +45,11 @@ Hieronder vindt u de instellingen die kunnen worden geconfigureerd om het verzam
 |----|----------|------|------------|
 |`schema-version` |Teken reeks (hoofdletter gevoelig) |v1 |Dit is de schema versie die door de agent wordt gebruikt bij het parseren van deze ConfigMap. Momenteel ondersteunde schema versie v1. Het wijzigen van deze waarde wordt niet ondersteund en wordt afgewezen wanneer ConfigMap wordt geëvalueerd.|
 |`config-version` |Tekenreeks | | Ondersteunt de mogelijkheid om de versie van dit configuratie bestand in uw bron beheersysteem of opslag plaats bij te houden. Het maximum aantal toegestane tekens is 10 en alle andere tekens worden afgekapt. |
-|`[log_collection_settings.stdout] enabled =` |Boolean | waar of onwaar | Hiermee wordt bepaald of de collectie stdout container log is ingeschakeld. Als deze optie `true` is ingesteld op en er geen naam ruimten worden uitgesloten voor`log_collection_settings.stdout.exclude_namespaces` de stdout-logboek verzameling (hieronder), worden de stdout-logboeken verzameld van alle containers in alle knoop punten in het cluster. Als dat niet is opgegeven in ConfigMaps, is `enabled = true`de standaard waarde. |
+|`[log_collection_settings.stdout] enabled =` |Boolean-waarde | true of false | Hiermee wordt bepaald of de collectie stdout container log is ingeschakeld. Als deze optie `true` is ingesteld op en er geen naam ruimten worden uitgesloten voor`log_collection_settings.stdout.exclude_namespaces` de stdout-logboek verzameling (hieronder), worden de stdout-logboeken verzameld van alle containers in alle knoop punten in het cluster. Als dat niet is opgegeven in ConfigMaps, is `enabled = true`de standaard waarde. |
 |`[log_collection_settings.stdout] exclude_namespaces =`|Tekenreeks | Door komma's gescheiden matrix |Matrix van Kubernetes-naam ruimten waarvoor stdout-logboeken worden niet verzameld. Deze instelling is alleen effectief als `log_collection_settings.stdout.enabled` deze is ingesteld `true`op. Als dat niet is opgegeven in ConfigMap, is `exclude_namespaces = ["kube-system"]`de standaard waarde.|
-|`[log_collection_settings.stderr] enabled =` |Boolean-waarde | waar of onwaar |Hiermee wordt bepaald of de logboek verzameling voor de stderr-container is ingeschakeld. Als deze optie `true` is ingesteld op en geen naam ruimten worden uitgesloten voor de`log_collection_settings.stderr.exclude_namespaces` stdout-logboek verzameling (instelling), worden stderr-logboeken verzameld van alle containers op alle knoop punten in het cluster. Als dat niet is opgegeven in ConfigMaps, is `enabled = true`de standaard waarde. |
+|`[log_collection_settings.stderr] enabled =` |Boolean-waarde | true of false |Hiermee wordt bepaald of de logboek verzameling voor de stderr-container is ingeschakeld. Als deze optie `true` is ingesteld op en geen naam ruimten worden uitgesloten voor de`log_collection_settings.stderr.exclude_namespaces` stdout-logboek verzameling (instelling), worden stderr-logboeken verzameld van alle containers op alle knoop punten in het cluster. Als dat niet is opgegeven in ConfigMaps, is `enabled = true`de standaard waarde. |
 |`[log_collection_settings.stderr] exclude_namespaces =` |Tekenreeks |Door komma's gescheiden matrix |Matrix van Kubernetes-naam ruimten waarvoor stderr-logboeken niet zullen worden verzameld. Deze instelling is alleen effectief als `log_collection_settings.stdout.enabled` deze is ingesteld `true`op. Als dat niet is opgegeven in ConfigMap, is `exclude_namespaces = ["kube-system"]`de standaard waarde. |
-| `[log_collection_settings.env_var] enabled =` |Boolean-waarde | waar of onwaar | Hiermee wordt bepaald of de verzameling van omgevings variabelen is ingeschakeld. Als deze instelling `false`is ingesteld op, worden er geen omgevings variabelen verzameld voor alle containers die worden uitgevoerd op alle knoop punten in het cluster. Als dat niet is opgegeven in ConfigMap, is `enabled = true`de standaard waarde. |
+| `[log_collection_settings.env_var] enabled =` |Boolean-waarde | true of false | Hiermee wordt bepaald of de verzameling van omgevings variabelen is ingeschakeld. Als deze instelling `false`is ingesteld op, worden er geen omgevings variabelen verzameld voor alle containers die worden uitgevoerd op alle knoop punten in het cluster. Als dat niet is opgegeven in ConfigMap, is `enabled = true`de standaard waarde. |
 
 ### <a name="prometheus-scraping-settings"></a>Instellingen voor Prometheus-uitval
 
@@ -75,9 +75,9 @@ Wanneer een URL is opgegeven, wordt het eind punt alleen door Azure Monitor voor
 | Cluster-breed | | | | Geef een van de volgende drie methoden op om eind punten voor metrische gegevens af te vallen. |
 | | `urls` | Tekenreeks | Door komma's gescheiden matrix | HTTP-eind punt (ofwel een IP-adres of een geldig URL-pad opgegeven). Bijvoorbeeld: `urls=[$NODE_IP/metrics]`. ($NODE _IP is een specifieke Azure Monitor voor containers-para meters en kan worden gebruikt in plaats van het IP-adres van het knoop punt. Mag alleen hoofd letters zijn.) |
 | | `kubernetes_services` | Tekenreeks | Door komma's gescheiden matrix | Een matrix met Kubernetes-Services voor het opwaarderen van metrische gegevens uit uitvoeren. Bijvoorbeeld`kubernetes_services = ["https://metrics-server.kube-system.svc.cluster.local/metrics", http://my-service-dns.my-namespace:9100/metrics]`.|
-| | `monitor_kubernetes_pods` | Boolean | waar of onwaar | Als deze optie `true` is ingesteld op in de instellingen voor het hele cluster, worden de Kubernetes voor de volgende Prometheus-aantekeningen door Azure monitor voor de agent van containers.<br> `prometheus.io/scrape:`<br> `prometheus.io/scheme:`<br> `prometheus.io/path:`<br> `prometheus.io/port:` |
-| | `prometheus.io/scrape` | Boolean | waar of onwaar | Hiermee schakelt u de pod in. `monitor_kubernetes_pods`moet worden ingesteld op `true`. |
-| | `prometheus.io/scheme` | Tekenreeks | http of https | De standaard instelling is het uitvallen van HTTP. Stel, indien nodig, `https`in op. | 
+| | `monitor_kubernetes_pods` | Boolean-waarde | true of false | Als deze optie `true` is ingesteld op in de instellingen voor het hele cluster, worden de Kubernetes voor de volgende Prometheus-aantekeningen door Azure monitor voor de agent van containers.<br> `prometheus.io/scrape:`<br> `prometheus.io/scheme:`<br> `prometheus.io/path:`<br> `prometheus.io/port:` |
+| | `prometheus.io/scrape` | Boolean-waarde | true of false | Hiermee schakelt u de pod in. `monitor_kubernetes_pods` moet worden ingesteld op `true`. |
+| | `prometheus.io/scheme` | Tekenreeks | http of https | De standaard instelling is het uitvallen van HTTP. Stel, indien nodig, in op `https`. | 
 | | `prometheus.io/path` | Tekenreeks | Door komma's gescheiden matrix | Het HTTP-bronpad waarvan de metrische gegevens moeten worden opgehaald. Als het pad naar metrische gegevens niet `/metrics`is, definieert u dit met deze aantekening. |
 | | `prometheus.io/port` | Tekenreeks | 9102 | Geef een poort op waarop moet worden geluisterd. Als poort niet is ingesteld, wordt de standaard waarde van 9102. |
 | Knooppunt-breed | `urls` | Tekenreeks | Door komma's gescheiden matrix | HTTP-eind punt (ofwel een IP-adres of een geldig URL-pad opgegeven). Bijvoorbeeld: `urls=[$NODE_IP/metrics]`. ($NODE _IP is een specifieke Azure Monitor voor containers-para meters en kan worden gebruikt in plaats van het IP-adres van het knoop punt. Mag alleen hoofd letters zijn.) |
@@ -95,7 +95,7 @@ Voer de volgende stappen uit om uw ConfigMap-configuratie bestand te configurere
 
     - Als u specifieke naam ruimten wilt uitsluiten voor de stdout-logboek verzameling, configureert u de sleutel/waarde met `[log_collection_settings.stdout] enabled = true exclude_namespaces = ["my-namespace-1", "my-namespace-2"]`behulp van het volgende voor beeld:.
     
-    - Als u de verzameling van omgevings variabelen voor een specifieke container wilt uitschakelen, `[log_collection_settings.env_var] enabled = true` stelt u de sleutel/waarde in om variabelen verzameling globaal [](container-insights-manage-agent.md#how-to-disable-environment-variable-collection-on-a-container) in te scha kelen en volgt u de onderstaande stappen om de configuratie voor de specifieke container te volt ooien.
+    - Als u de verzameling van omgevings variabelen voor een specifieke container wilt uitschakelen, `[log_collection_settings.env_var] enabled = true` stelt u de sleutel/waarde in om variabelen verzameling globaal in te scha kelen en volgt u de [onderstaande stappen om](container-insights-manage-agent.md#how-to-disable-environment-variable-collection-on-a-container) de configuratie voor de specifieke container te volt ooien.
     
     - Voor het uitschakelen van het hoofdletter gebruik van de logboek verzameling van stderr kunt u de sleutel/waarde configureren `[log_collection_settings.stderr] enabled = false`met het volgende voor beeld:.
     
@@ -163,7 +163,7 @@ Fouten zorgen ervoor dat omsagent het bestand niet kan parseren, waardoor het op
 
 ## <a name="applying-updated-configmap"></a>Bijgewerkte ConfigMap Toep assen
 
-Als u al een ConfigMap op uw cluster hebt geïmplementeerd en u deze wilt bijwerken met een nieuwere configuratie, kunt u het ConfigMap-bestand dat u eerder hebt gebruikt, bewerken en vervolgens op dezelfde opdracht Toep assen als `kubectl apply -f <configmap_yaml_file.yaml`voorheen.
+Als u al een ConfigMap op uw cluster hebt geïmplementeerd en u deze wilt bijwerken met een nieuwere configuratie, kunt u het ConfigMap-bestand dat u eerder hebt gebruikt, bewerken en vervolgens op dezelfde opdracht Toep assen als voorheen, `kubectl apply -f <configmap_yaml_file.yaml`.
 
 Het kan een paar minuten duren voordat de configuratie wijziging is doorgevoerd en alle omsagent in het cluster opnieuw worden opgestart. Het opnieuw opstarten is een rolling start voor alle omsagent-peulen, niet allemaal tegelijk opnieuw opstarten. Wanneer het opnieuw opstarten is voltooid, wordt een bericht weer gegeven dat er ongeveer als volgt uitziet en het resultaat bevat `configmap "container-azm-ms-agentconfig" updated`:.
 
@@ -187,6 +187,22 @@ De uitvoer ziet er ongeveer als volgt uit met het aantekening schema-versies:
 ```
 
 ## <a name="review-prometheus-data-usage"></a>Prometheus-gegevens gebruik controleren
+
+Als u Prometheus-metrische gegevens wilt weer geven die door Azure Monitor worden geschroot, geeft u "Prometheus" op als naam ruimte. Hier volgt een voor beeld van een query voor het weer geven van metrische gegevens over Prometheus uit de naam ruimte `default` kubernetes.
+
+```
+InsightsMetrics 
+| where Namespace contains "prometheus"
+| extend tags=parse_json(Tags)
+| where tostring(tags.namespace) == "default" 
+```
+
+Prometheus gegevens kunnen ook rechtstreeks worden doorzocht op naam.
+
+```
+InsightsMetrics 
+| where Name contains "some_prometheus_metric"
+```
 
 De volgende query wordt gegeven voor het identificeren van het opname volume van elke metrische grootte in GB per dag om te begrijpen of deze hoog is.
 

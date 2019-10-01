@@ -1,80 +1,80 @@
 ---
-title: Algemene waarschuwing schema voor Azure monitor-waarschuwingen
-description: Informatie over de algemene waarschuwing schema, waarom u gebruiken moet en hoe u deze inschakelen
+title: Algemeen waarschuwings schema voor Azure monitor-waarschuwingen
+description: Meer informatie over het algemene waarschuwings schema, waarom u het moet gebruiken en hoe u het kunt inschakelen
 author: anantr
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 03/14/2019
-ms.author: anantr
+ms.author: robb
 ms.subservice: alerts
-ms.openlocfilehash: 91ec5aa42367f6caaa93aaf808fde504e92fbc04
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 9b142e00543d425b73c4102914bba2dd92c75b8b
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67594328"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71702894"
 ---
 # <a name="common-alert-schema"></a>Algemeen waarschuwingsschema
 
-Dit artikel wordt beschreven wat het algemene schema van de waarschuwing is, de voordelen van het gebruik van deze en het inschakelen ervan.
+In dit artikel wordt beschreven wat het algemene waarschuwings schema is, wat de voor delen zijn van het gebruik en hoe dit kan worden ingeschakeld.
 
-## <a name="what-is-the-common-alert-schema"></a>Wat is het algemene schema van de waarschuwing?
+## <a name="what-is-the-common-alert-schema"></a>Wat is het algemene waarschuwings schema?
 
-Het algemene schema van de waarschuwing standaardiseert vandaag nog de ervaring voor waarschuwingen in Azure. De drie typen waarschuwingen in Azure vandaag (metrische gegevens, logboeken en het activiteitenlogboek) hebben in het verleden had hun eigen e-mailsjablonen, webhook-schema's, enzovoort. U kunt nu waarschuwingen met een consistent schema met het algemene schema van de waarschuwing ontvangen.
+Het algemene waarschuwings schema standaardisert de verbruiks ervaring voor waarschuwings meldingen in azure vandaag. In het verleden hebben de drie waarschuwings typen in azure vandaag (metrische gegevens, logboeken en activiteiten Logboeken) hun eigen e-mail sjablonen, webhook-schema's, enzovoort. Met het algemene waarschuwings schema kunt u nu waarschuwings meldingen met een consistent schema ontvangen.
 
-Beschrijving van elke waarschuwing instantie **de resource die betrokken** en **de oorzaak van de waarschuwing**, en deze instanties worden beschreven in het algemene schema in de volgende secties:
-* **Essentials**: Een set **velden gestandaardiseerd**, gebruikt voor alle Waarschuwingstypen beschrijven **welke resource** de waarschuwing is ingeschakeld, samen met aanvullende algemene waarschuwing metagegevens (bijvoorbeeld ernst of beschrijving). 
-* **Ontvang een waarschuwing Context**: Een set velden waarin de **ertoe leiden dat van de waarschuwing**, met velden die verschillen **op basis van het Waarschuwingstype**. Een waarschuwing voor metrische gegevens hoeft bijvoorbeeld velden, zoals de naam van de meetwaarde en de metrische waarde in de context van de waarschuwing, terwijl er een waarschuwing voor activiteitenlogboek informatie over de gebeurtenis die de waarschuwing heeft gegenereerd. 
+Elk waarschuwings exemplaar beschrijft **de bron die is beïnvloed** en **de oorzaak van de waarschuwing**, en deze instanties worden beschreven in het algemene schema in de volgende secties:
+* **Essentiële zaken**: Een set **gestandaardiseerde velden**, gemeen schappelijk voor alle waarschuwings typen, waarmee wordt beschreven in **welke resource** de waarschuwing zich bevindt, samen met aanvullende veelvoorkomende meta gegevens van waarschuwingen (bijvoorbeeld Ernst of beschrijving). 
+* **Waarschuwings context**: Een set velden waarin de **oorzaak van de waarschuwing**wordt beschreven, met velden die variëren op **basis van het waarschuwings type**. Een metrische waarschuwing heeft bijvoorbeeld velden als de metrische naam en metrische waarde in de context van de waarschuwing, terwijl een waarschuwing in het activiteiten logboek informatie bevat over de gebeurtenis die de waarschuwing heeft gegenereerd. 
 
-De integratie van typische scenario's die we luister naar klanten hebben betrekking op de routering van de waarschuwing exemplaar naar de betrokken team op basis van bepaalde pivot (bijvoorbeeld resourcegroep), waarna de verantwoordelijk team begint met werken op het. Met het algemene waarschuwing schema, kunt u hebben gestandaardiseerd routeringlogica voor Waarschuwingstypen door gebruik te maken van de essentiële velden verlaten van de velden in context, zoals is bedoeld voor de betrokken teams voor verder onderzoek.
+De typische integratie scenario's die we horen van klanten, omvatten de route ring van het waarschuwings exemplaar naar het betreffende team op basis van een draai tabel (bijvoorbeeld resource groep), waarna het verantwoordelijke team aan het werk gaat. Met het gemeen schappelijke waarschuwings schema kunt u gestandaardiseerde routerings logica hebben in waarschuwings typen door gebruik te maken van de essentiële velden, waardoor de context velden niet worden gebruikt voor de betrokken teams om verder te onderzoeken.
 
-Dit betekent dat u kunt mogelijk minder integraties, waardoor het proces van het beheer en onderhoud ervan een _veel_ eenvoudiger taak. Bovendien toekomstige alert payload enrichments (bijvoorbeeld, aanpassing, diagnostische verrijking, enzovoort) wordt alleen het oppervlak van in het algemene schema.
+Dit betekent dat u mogelijk minder integraties kunt hebben, waardoor het proces van het beheren en onderhouden van deze een _veel_ eenvoudiger taak kan worden uitgevoerd. Daarnaast zal toekomstige waarschuwingen voor nettoladingen in de toekomst (bijvoorbeeld aanpassing, diagnose van diagnostiek, enz.) alleen worden verhoogd in het algemene schema.
 
-## <a name="what-enhancements-does-the-common-alert-schema-bring"></a>Welke verbeteringen zijn brengen in het algemene schema van de waarschuwing?
+## <a name="what-enhancements-does-the-common-alert-schema-bring"></a>Welke verbeteringen bieden het algemene schema voor waarschuwingen?
 
-Het algemene schema van de waarschuwing wordt voornamelijk zelf manifest in uw meldingen van waarschuwingen. Hieronder vindt u de uitbreidingen die wordt weergegeven:
+Het algemene waarschuwings schema wordt in eerste instantie in uw waarschuwings meldingen gemanifesteerd. De uitbrei dingen die u ziet, worden hieronder weer gegeven:
 
 | Action | Verbeteringen|
 |:---|:---|
-| Sms | Een consistente SMS-sjabloon voor alle typen waarschuwingen. |
-| Email | Een consistente en gedetailleerde e-mailsjabloon, zodat u eenvoudig problemen in een oogopslag vaststellen. Ingesloten deep-koppelingen naar de waarschuwing exemplaar op de portal en de betreffende resource zorgen ervoor dat u snel kunt gaan in het herstelproces van. |
-| Webhook/Logic App/Azure-functie/Automation-Runbook | Een consistente JSON-structuur voor alle typen waarschuwingen, waarmee u eenvoudig integraties over de verschillende typen waarschuwingen. |
+| SMS | Een consistente SMS-sjabloon voor alle waarschuwings typen. |
+| Email | Een consistente en gedetailleerde e-mail sjabloon waarmee u problemen eenvoudig kunt onderzoeken in één oogopslag. Inge sloten diep gaande koppelingen naar het waarschuwings exemplaar op de portal en de betreffende resource zorgen ervoor dat u snel naar het herstel proces kunt gaan. |
+| Webhook/Logic-app/Azure function/Automation-Runbook | Een consistente JSON-structuur voor alle waarschuwings typen, waarmee u eenvoudig integraties kunt bouwen voor de verschillende typen waarschuwingen. |
 
-Het nieuwe schema wordt ook een rijkere ervaring voor waarschuwingen verbruik in zowel de Azure-portal en Azure mobile app inschakelen in de nabije toekomst. 
+Het nieuwe schema biedt ook een rijkere ervaring op het niveau van waarschuwingen voor zowel de Azure Portal als de Azure mobile app in de onmiddellijke toekomst. 
 
-[Meer informatie over de schemadefinities voor Webhooks/Logic Apps/Azure Functions/Automation-Runbooks.](https://aka.ms/commonAlertSchemaDefinitions)
-
-> [!NOTE]
-> De volgende acties bieden geen ondersteuning voor het algemene waarschuwing schema: ITSM-Connector.
-
-## <a name="how-do-i-enable-the-common-alert-schema"></a>Hoe kan ik het algemene schema van de waarschuwing inschakelen?
-
-U kunt ervoor kiezen of opt-out aan het algemene schema Waarschuwing via actiegroepen op zowel de portal en de REST-API. De wisselknop om over te schakelen naar het nieuwe schema bestaat op het actieniveau van een. U moet bijvoorbeeld afzonderlijk aanmelden voor een e-mailactie en een webhookactie.
+[Meer informatie over de schema definities voor webhooks/Logic Apps/Azure Functions/Automation-Runbooks.](https://aka.ms/commonAlertSchemaDefinitions)
 
 > [!NOTE]
-> 1. De volgende waarschuwingstypen ondersteuning voor het algemene schema standaard (geen opt-in vereist):
->     * Waarschuwingen voor slimme detectie
-> 1. De volgende waarschuwingstypen ondersteuning momenteel geen voor het algemene schema:
->     * Waarschuwingen die zijn gegenereerd door [Azure Monitor voor virtuele machines](https://docs.microsoft.com/azure/azure-monitor/insights/vminsights-overview)
+> De volgende acties bieden geen ondersteuning voor het algemene waarschuwings schema: ITSM-connector.
+
+## <a name="how-do-i-enable-the-common-alert-schema"></a>Het algemene waarschuwings schema Hoe kan ik inschakelen?
+
+U kunt in-of afmelden bij het algemene waarschuwings schema via actie groepen, op zowel de portal als via de REST API. De wissel knop om naar het nieuwe schema te scha kelen, bestaat op actie niveau. U moet zich bijvoorbeeld afzonderlijk aanmelden voor een e-mail actie en een webhook-actie.
+
+> [!NOTE]
+> 1. De volgende waarschuwings typen ondersteunen standaard het algemene schema (geen opt-in vereist):
+>     * Slimme detectie waarschuwingen
+> 1. De volgende waarschuwings typen bieden momenteel geen ondersteuning voor het algemene schema:
+>     * Waarschuwingen die zijn gegenereerd door [Azure monitor voor VM's](https://docs.microsoft.com/azure/azure-monitor/insights/vminsights-overview)
 >     * Waarschuwingen die zijn gegenereerd door [Azure Cost Management](https://docs.microsoft.com/azure/billing/billing-cost-management-budget-scenario)
 
-### <a name="through-the-azure-portal"></a>Via de Azure-portal
+### <a name="through-the-azure-portal"></a>Via de Azure Portal
 
-![Algemene waarschuwing schema opt-in](media/alerts-common-schema/portal-opt-in.png)
+![Opt-in voor algemeen waarschuwings schema](media/alerts-common-schema/portal-opt-in.png)
 
-1. Open een bestaande of een nieuwe actie in een actiegroep. 
-1. Selecteer 'Ja' voor de wisselknop om in te schakelen van het algemene schema van de waarschuwing, zoals wordt weergegeven.
+1. Open een bestaande of een nieuwe actie in een actie groep. 
+1. Selecteer Ja voor de wissel knop om het algemene waarschuwings schema in te scha kelen, zoals wordt weer gegeven.
 
-### <a name="through-the-action-groups-rest-api"></a>Via de actiegroepen REST-API
+### <a name="through-the-action-groups-rest-api"></a>Via de actie groepen REST API
 
-U kunt ook de [actie groepen API](https://docs.microsoft.com/rest/api/monitor/actiongroups) te schrijven voor het algemene schema van de waarschuwing. Tijdens het maken van de [maken of bijwerken](https://docs.microsoft.com/rest/api/monitor/actiongroups/createorupdate) REST API-aanroep kunt u instellen de vlag 'useCommonAlertSchema' op 'true' (opt-in) of 'onwaar' (voor opt-out) voor het gebruik van de volgende acties - webhook-e-mailadres/logic app/Azure-functie/automation-runbook.
+U kunt ook de [Action groups-API](https://docs.microsoft.com/rest/api/monitor/actiongroups) gebruiken om u aan te melden bij het algemene waarschuwings schema. Tijdens het maken van de aanroep [Create of update](https://docs.microsoft.com/rest/api/monitor/actiongroups/createorupdate) rest API, kunt u de vlag "useCommonAlertSchema" instellen op True (om aan te melden) of ' false ' (om uit te kiezen) voor een van de volgende acties: e-mail/webhook/Logic app/Azure function/Automation runbook.
 
-Bijvoorbeeld, de volgende aanvraagtekst aangebracht in de [maken of bijwerken](https://docs.microsoft.com/rest/api/monitor/actiongroups/createorupdate) REST-API wordt het volgende doen:
+De volgende hoofd tekst van de aanvraag in het REST API [maken of bijwerken](https://docs.microsoft.com/rest/api/monitor/actiongroups/createorupdate) gaat bijvoorbeeld als volgt te werk:
 
-* Het algemene waarschuwing schema voor de e-mailactie 'John Doe's e-mail' inschakelen
-* Het algemene waarschuwing schema voor de e-mailactie 'E-mail van Jane Smith' uitschakelen
-* Het algemene waarschuwing schema voor de webhookactie "Voorbeeld webhook" inschakelen
+* Schakel het algemene waarschuwings schema in voor de e-mail actie ' e-mail adres van John Splinter '
+* Het algemene waarschuwings schema uitschakelen voor de e-mail actie "Rob Smith e-mail"
+* Het algemene waarschuwings schema inschakelen voor de webhook-actie "voor beeld van webhook"
 
 ```json
 {
@@ -124,8 +124,8 @@ Bijvoorbeeld, de volgende aanvraagtekst aangebracht in de [maken of bijwerken](h
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Algemene waarschuwing schemadefinities voor Webhooks/Logic Apps/Azure Functions/Automation-Runbooks.](https://aka.ms/commonAlertSchemaDefinitions)
-- [Informatie over het maken van een logische app die gebruikmaakt van het algemene waarschuwing schema voor het afhandelen van al uw waarschuwingen.](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema-integrations) 
+- [Algemene schema definities voor waarschuwingen voor webhooks/Logic Apps/Azure Functions/Automation-Runbooks.](https://aka.ms/commonAlertSchemaDefinitions)
+- [Meer informatie over het maken van een logische app die gebruikmaakt van het algemene waarschuwings schema voor het afhandelen van al uw waarschuwingen.](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema-integrations) 
 
 
 

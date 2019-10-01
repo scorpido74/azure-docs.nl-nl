@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: a7ab908673f60a651db48ae0485592a362741b6d
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: c3e22b34dbb770af2b4a719f8b4eaf040b724c47
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70242322"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71695433"
 ---
 # <a name="about-microsoft-security-code-analysis"></a>Informatie over analyse van micro soft-beveiligings code
 
@@ -73,7 +73,7 @@ Wacht woorden en andere geheimen die zijn opgeslagen in de bron code, vormen een
 
 ### <a name="microsoft-security-risk-detection"></a>Micro soft-beveiligings risico detectie
 
-Micro soft beveiligings risico detectie (MSRD) is een Cloud service voor het testen op fuzz. Hiermee worden ongebruikte beveiligings fouten in software geïdentificeerd. Deze service vereist een afzonderlijk voorbereidings proces. Raadpleeg het [MSRD Developer Center](https://docs.microsoft.com/security-risk-detection/)voor meer informatie.
+Micro soft beveiligings risico detectie (MSRD) is een Cloud service voor het testen op fuzz. Hiermee worden ongebruikte beveiligings fouten in software geïdentificeerd. Deze service vereist een afzonderlijk abonnement en activering. Raadpleeg het [MSRD Developer Center](https://docs.microsoft.com/security-risk-detection/)voor meer informatie.
 
 ### <a name="roslyn-analyzers"></a>Roslyn-analyse functies
 
