@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 07/23/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to understand global transit network architecture as it relates to Virtual WAN.
-ms.openlocfilehash: 2376c77ecc328788c842e045aafb618cbad39b0e
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: 0a5059382c26afd6120dc14a1ab2c7e5d281e7a1
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68421423"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71695258"
 ---
 # <a name="global-transit-network-architecture-and-virtual-wan"></a>Wereld wijde doorvoer netwerk architectuur en virtueel WAN
 
@@ -21,7 +21,7 @@ Wereld wijde doorvoer netwerk architectuur wordt door ondernemingen goedgekeurd 
 
 ![architectuur](./media/virtual-wan-global-transit-network-architecture/architecture2.png)
 
-**Afbeelding 1: Wereld wijd Transit netwerk met virtuele WAN**
+**Afbeelding 1: Wereld wijd Transit netwerk met virtuele WAN @ no__t-0
 
 Moderne ondernemingen vereisen alomtegenwoordige-connectiviteit tussen Hyper-gedistribueerde toepassingen, gegevens en gebruikers in de Cloud en on-premises. Met Azure Virtual WAN kunt u een wereld wijde doorvoer netwerk architectuur door alomtegenwoordige, een wille keurige verbinding te maken tussen wereld wijd gedistribueerde sets van VNets, sites, toepassingen en gebruikers. Azure Virtual WAN is een door micro soft beheerde service. Alle netwerk onderdelen waarvan deze service bestaat, worden door micro soft gehost en beheerd. Zie het artikel [overzicht van Virtual WAN](virtual-wan-about.md) voor meer informatie over Virtual WAN.
 
@@ -42,9 +42,9 @@ In dit model kan een spoke zijn:
 
 ![diagram voor wereld wijde doorvoer hub en spoke](./media/virtual-wan-global-transit-network-architecture/architecture.png)
 
-**Afbeelding 2: Hub en spoke**
+**Afbeelding 2: Hub en spoke @ no__t-0
 
-In afbeelding 2 ziet u de logische weer gave van het wereld wijde netwerk waarin geografisch gedistribueerde gebruikers, fysieke sites en VNets zijn verbonden via een netwerkhub die wordt gehost in de Cloud. Met deze architectuur kan een logische Transit connectiviteit met één hop tussen de netwerk eindpunten worden ingeschakeld. De spokes zijn verbonden met de hub door verschillende Azure-netwerk services, zoals ExpressRoute of site-naar-site-VPN voor fysieke filialen, VNet-peering voor VNets en punt-naar-site-VPN voor externe gebruikers.
+In afbeelding 2 ziet u de logische weer gave van het wereld wijde netwerk waarin geografisch gedistribueerde gebruikers, fysieke sites en VNets zijn verbonden via een netwerkhub die wordt gehost in de Cloud. Met deze architectuur kan een logische Transit connectiviteit met één hop tussen de netwerk eindpunten worden ingeschakeld. De spokes zijn verbonden met de hub door verschillende Azure-netwerk services, zoals ExpressRoute of site-naar-site-VPN voor fysieke filialen, VNet-verbindingen voor VNets en punt-naar-site-VPN voor externe gebruikers.
 
 ## <a name="crossregion"></a>Connectiviteit tussen regio's
 
@@ -58,7 +58,7 @@ Elke verbinding, in de context van een wereld wijde architectuur, biedt een onde
 
 ![verkeers paden](./media/virtual-wan-global-transit-network-architecture/trafficpath.png)
 
-**Afbeelding 3: Paden voor virtuele WAN-verkeer**
+**Afbeelding 3: Virtuele WAN-verkeers paden @ no__t-0
 
 Azure Virtual WAN ondersteunt de volgende globale doorvoer connectiviteits paden. De letters tussen haakjes worden toegewezen aan afbeelding 3.
 
@@ -71,7 +71,7 @@ Azure Virtual WAN ondersteunt de volgende globale doorvoer connectiviteits paden
 
 ### <a name="branchvnet"></a>Vertakking-naar-VNet
 
-Vertakking-naar-VNet is het primaire pad dat door Azure Virtual WAN wordt ondersteund. Met dit pad kunt u vertakkingen verbinden met Azure IAAS Enter prise-workloads die zijn geïmplementeerd in azure VNets. Vertakkingen kunnen worden verbonden met het virtuele WAN via ExpressRoute of site-naar-site-VPN. Het verkeer transitt naar VNets die zijn verbonden met de virtuele WAN-hubs via VNet-verbindingen.
+Vertakking-naar-VNet is het primaire pad dat door Azure Virtual WAN wordt ondersteund. Met dit pad kunt u vertakkingen verbinden met Azure IAAS Enter prise-workloads die zijn geïmplementeerd in azure VNets. Vertakkingen kunnen worden verbonden met het virtuele WAN via ExpressRoute of site-naar-site-VPN. Het verkeer transitt naar VNets die zijn verbonden met de virtuele WAN-hubs via VNet-verbindingen. [Gateway-overdracht](../virtual-network/virtual-network-peering-overview.md#gateways-and-on-premises-connectivity) is niet vereist voor virtuele WAN, omdat door Virtual WAN automatisch gateway doorvoer naar filialen sites wordt ingeschakeld.
 
 ### <a name="branchbranch"></a>Vertakking-naar-vertakking
 
@@ -89,7 +89,7 @@ Via het externe User-to-Branch-pad kunnen externe gebruikers die gebruikmaken va
 
 ### <a name="vnetvnet"></a>Door Voer van VNet-naar-VNet met behulp van VNet-peering
 
-Gebruik VNet-peering om VNets te verbinden met meerdere lagen die zijn geïmplementeerd in verschillende VNets. Een VNet-naar-VNet-Transit scenario via Azure Virtual WAN wordt momenteel niet ondersteund, maar bevindt zich op het Azure-schema. Het verbinden van VNets via VNet-peering is de aanbevolen oplossing voor VNets die met elkaar moeten worden verbonden. [Gateway-Transit](../virtual-network/virtual-network-peering-overview.md#gateways-and-on-premises-connectivity) (in de context van VNet-peering) is niet vereist voor virtuele WAN, omdat door Virtual WAN automatisch gateway doorvoer wordt ingeschakeld.
+Gebruik VNet-peering om VNets te verbinden met meerdere lagen die zijn geïmplementeerd in verschillende VNets. Een VNet-naar-VNet-Transit scenario via Azure Virtual WAN wordt momenteel niet ondersteund, maar bevindt zich op het Azure-schema. Het verbinden van VNets via VNet-peering is de aanbevolen oplossing voor VNets die met elkaar moeten worden verbonden. 
 
 ### <a name="globalreach"></a>ExpressRoute Global Reach
 

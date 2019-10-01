@@ -244,7 +244,7 @@
             - name: Een kennisarchief maken in de Azure-portal
               href: knowledge-store-create-portal.md
             - name: Maken met behulp van REST en Postman
-              href: knowledge-store-howto.md
+              href: knowledge-store-create-rest.md
             - name: Weergeven met Storage Explorer
               href: knowledge-store-view-storage-explorer.md
             - name: Verbinden met Power BI

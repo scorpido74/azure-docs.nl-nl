@@ -7,12 +7,12 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 08/08/2019
 ms.author: antchu
-ms.openlocfilehash: fbae9d15ba8572a8ae2c493ec85eb0010c2664eb
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 728111548176a0a3212b1677eeb192ccdc47fe88
+ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68882176"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71709493"
 ---
 # <a name="quickstart-create-a-chat-room-with-azure-functions-and-signalr-service-using-python"></a>Quickstart: Maak een chat ruimte met Azure Functions en de signaal service met python
 
@@ -74,7 +74,7 @@ Meld u met uw Azure-account aan bij Azure Portal op <https://portal.azure.com/>.
 
 1. Plak in **local.settings.json** de verbindingsreeks in de waarde van de instelling **AzureSignalRConnectionString**. Sla het bestand op.
 
-1. Python-functies worden in mappen ingedeeld. In elke map zijn twee bestanden: *Function. json* definieert de bindingen die worden gebruikt in de functie en  *\_ \_init\_\_. py* is de hoofd tekst van de functie. Deze functie-app bevat twee met HTTP geactiveerde functies:
+1. Python-functies worden in mappen ingedeeld. In elke map zijn twee bestanden: *Function. json* definieert de bindingen die worden gebruikt in de functie en *\_ @ no__t-3init @ no__t-4\_.py* de hoofd tekst van de functie is. Deze functie-app bevat twee met HTTP geactiveerde functies:
 
     - **negotiate**: gebruikt de invoerbinding *SignalRConnectionInfo* om geldige verbindingsgegevens te genereren en te retourneren.
     - **messages**: ontvangt een chatbericht in de hoofdtekst van de aanvraag en gebruikt de uitvoerbinding *SignalR* om het bericht uit te zenden naar alle verbonden clienttoepassingen.
@@ -102,4 +102,4 @@ Meld u met uw Azure-account aan bij Azure Portal op <https://portal.azure.com/>.
 In deze Quick Start hebt u een realtime serverloze toepassing gemaakt en uitgevoerd in VS code. Nu volgt meer informatie over het implementeren van Azure Functions vanuit VS Code.
 
 > [!div class="nextstepaction"]
-> [Azure Functions met VS Code implementeren](https://code.visualstudio.com/tutorials/functions-extension/getting-started)
+> [Azure Functions met VS Code implementeren](/azure/javascript/tutorial-vscode-serverless-node-01)

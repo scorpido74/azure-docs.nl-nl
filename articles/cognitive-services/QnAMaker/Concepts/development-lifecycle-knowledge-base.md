@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 04/16/2019
+ms.date: 09/25/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 97a4673be2a611149806855e792c5bf1f7a0942a
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 530869928f7a25e779cb01f0fe392efdbb54c5ba
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68955178"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71695103"
 ---
 # <a name="knowledge-base-lifecycle-in-qna-maker"></a>Levenscyclus van de Knowledge base in QnA Maker
 QnA Maker leert beste in een iteratief cyclus van wijzigingen in het gegevensmodel, utterance voorbeelden, publiceren en verzamelen van gegevens van eindpunt query's. 
@@ -35,7 +35,7 @@ De knowledge base is klaar voor testen wanneer het wordt gevuld met inhoud, reda
 
 Deze lus van test-update gaat door totdat u tevreden met de resultaten bent. Meer informatie over het [uw knowledge base test](../How-To/test-knowledge-base.md).
 
-Gebruik voor grote kb's geautomatiseerde tests met de [generateAnswer-API](../how-to/metadata-generateanswer-usage.md#get-answer-predictions-with-the-generateanswer-api) en de `isTest` eigenschap Body die de `test` Knowledge Base doorzoekt in plaats van de gepubliceerde kennis database. 
+Gebruik voor grote Kb's geautomatiseerde tests met de [generateAnswer-API](../how-to/metadata-generateanswer-usage.md#get-answer-predictions-with-the-generateanswer-api) en de eigenschap `isTest` die de `test` Knowledge Base doorzoekt in plaats van de gepubliceerde kennis database. 
 
 ```json
 {
@@ -51,7 +51,7 @@ Zodra u klaar bent met testen van de knowledge base, kunt u deze publiceert. De 
 
 Op deze manier alle wijzigingen aan de testversie van de knowledge base niet van invloed op de gepubliceerde versie die mogelijk live in een productietoepassing.
 
-Elk van deze knowledge bases kan worden gericht voor het testen van afzonderlijk. Met behulp van de api's kunt u de test versie van de Knowledge Base `isTest` richten op de eigenschap Body in de generateAnswer-aanroep.
+Elk van deze knowledge bases kan worden gericht voor het testen van afzonderlijk. Met behulp van de Api's kunt u de test versie van de Knowledge Base richten op de eigenschap `isTest` in de generateAnswer-aanroep.
 
 Meer informatie over het [kennisbank publiceren](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base).
 
@@ -61,6 +61,14 @@ Als u zich de chatlogs van uw service, moet u Application Insights inschakelen w
 U kunt verschillende analyse van uw gebruik van de service ophalen. Meer informatie over hoe u application insights gebruiken om op te halen [analytics voor uw service QnA Maker](../How-To/get-analytics-knowledge-base.md).
 
 Op basis van wat u van uw analyses leert, Controleer juiste [updates voor uw knowledge base](../How-To/edit-knowledge-base.md).
+
+## <a name="version-control-of-a-knowledge-base"></a>Versie beheer van een Knowledge Base
+
+Versie beheer wordt niet verschaft door QnA Maker. U moet uw Knowledge Base exporteren via de pagina **instellingen** en uw eigen methodologie en hulpprogram ma's gebruiken.
+
+Het exporteren van de Knowledge Base naar de TSV-of XLS-indeling wordt voltooid vanaf de pagina **instellingen** . 
+
+Als u terug wilt gaan naar een specifieke versie, moet u het bestand importeren van het lokale systeem. Importeer op de pagina **instellingen** het TSV-of XLS-bestand. Hiermee worden vragen en antwoorden die momenteel in de Knowledge Base staan vervangen door de inhoud van het geïmporteerde bestand.   
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: kumud
 ms.reviewer: vinigam
-ms.openlocfilehash: 6c11f415fc1ea3a578893f6d14a60dfc1c4fddb0
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: ce59b46667f9139157a751d7d7b0205504d71ab0
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71203006"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71695658"
 ---
 # <a name="traffic-analytics"></a>Verkeersanalyse
 
@@ -182,11 +182,14 @@ Selecteer de volgende opties, zoals wordt weer gegeven in de afbeelding:
 4. Stel de **Bewaar periode** in op het aantal dagen waarvoor u gegevens wilt opslaan.
 > [!IMPORTANT]
 > Er is momenteel een probleem waarbij de [NSG-stroom Logboeken (netwerk beveiligings groep)](network-watcher-nsg-flow-logging-overview.md) voor Network Watcher niet automatisch worden verwijderd uit Blob Storage op basis van de instellingen voor het Bewaar beleid. Als u een bestaand Bewaar beleid voor niet-nul hebt, raden we u aan om regel matig de opslag-blobs te verwijderen die de Bewaar periode hebben verstreken om te voor komen dat er kosten in rekening worden gebracht. Zie voor meer informatie over het verwijderen van de opslag blog van het NSG-stroom logboek de [opslag-blobs voor NSG stroom logboeken verwijderen](network-watcher-delete-nsg-flow-log-blobs.md).
+
 5. Selecteer *aan* voor **Traffic Analytics status**.
 6. Selecteer een verwerkings interval. Op basis van uw keuze worden de stroom logboeken verzameld van het opslag account en verwerkt door Traffic Analytics. U kunt het verwerkings interval van elke 1 uur of elke 10 minuten kiezen. 
 7. Selecteer een bestaande Log Analytics (OMS)-werk ruimte of selecteer **nieuwe werk ruimte maken** om een nieuwe te maken. Een Log Analytics-werk ruimte wordt gebruikt door Traffic Analytics om de geaggregeerde en geïndexeerde gegevens op te slaan die vervolgens worden gebruikt voor het genereren van de analyse. Als u een bestaande werk ruimte selecteert, moet deze bestaan in een van de [ondersteunde regio's](#supported-regions-log-analytics-workspaces) en zijn bijgewerkt naar de nieuwe query taal. Als u een bestaande werk ruimte niet wilt upgraden of als u geen werk ruimte in een ondersteunde regio hebt, maakt u een nieuwe. Zie [Azure log Analytics upgrade uitvoeren naar nieuwe zoek opdracht in Logboeken](../log-analytics/log-analytics-log-search-upgrade.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)voor meer informatie over query talen.
 
-    De log Analytics-werk ruimte die als host fungeert voor de Traffic Analytics-oplossing en de Nsg's hoeven zich niet in dezelfde regio te bevinden. U kunt bijvoorbeeld Traffic Analytics hebben in een werk ruimte in de Europa-west regio, terwijl u mogelijk Nsg's hebt in VS-Oost en VS-West. Meerdere Nsg's kunnen in dezelfde werk ruimte worden geconfigureerd.
+> [!NOTE]
+>De log Analytics-werk ruimte die als host fungeert voor de Traffic Analytics-oplossing en de Nsg's hoeven zich niet in dezelfde regio te bevinden. U kunt bijvoorbeeld Traffic Analytics hebben in een werk ruimte in de Europa-west regio, terwijl u mogelijk Nsg's hebt in VS-Oost en VS-West. Meerdere Nsg's kunnen in dezelfde werk ruimte worden geconfigureerd.
+
 8. Selecteer **Opslaan**.
 
     ![Selectie van opslag account, Log Analytics werk ruimte en Traffic Analytics-activering](./media/traffic-analytics/ta-customprocessinginterval.png)

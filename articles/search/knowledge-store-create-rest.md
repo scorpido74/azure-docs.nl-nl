@@ -8,12 +8,12 @@ ms.subservice: cognitive-search
 ms.topic: tutorial
 ms.date: 09/13/2019
 ms.author: laobri
-ms.openlocfilehash: 50648d22a62199d27374a1cacf617858ce9e7d6a
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: ae0694c4c79527ef3b64ad68d32ef3bce0150462
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71329272"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71703579"
 ---
 # <a name="create-an-azure-search-knowledge-store-using-rest"></a>Een Azure Search Knowledge Store maken met behulp van REST
 
@@ -53,7 +53,7 @@ Laadt het het CSV-bestand van het Hotel in Azure Blob-opslag, zodat het toeganke
 
 ## <a name="3---configure-postman"></a>3-postman configureren
 
-Down load de [bron code van de Postman-verzameling](https://github.com/Azure-Samples/azure-search-postman-searches/Tutorial/Knowledge_Store/KnowledgeStore.postman_collection.json) en importeer deze in een postman met behulp van **bestand, importeren...** . Ga naar het tabblad **verzamelingen** en klik op de knop **..** . en selecteer **bewerken**. 
+Down load de [bron code van de Postman-verzameling](https://github.com/Azure-Samples/azure-search-postman-samples/knowledge-store/KnowledgeStore.postman_collection.json) en importeer deze in een postman met behulp van **bestand, importeren...** . Ga naar het tabblad **verzamelingen** en klik op de knop **..** . en selecteer **bewerken**. 
 
 ![Postman-app met navigatie](media/knowledge-store-create-rest/postman-edit-menu.png "Navigeer naar het menu bewerken in een bericht")
 

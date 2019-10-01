@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: helohr
-ms.openlocfilehash: 379664fb7170249b8f21ec9826f8b0b6fbe19892
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 57070b297446badb92ae1df4c435dd54cfe26823
+ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71679531"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71710179"
 ---
 # <a name="prepare-and-customize-a-master-vhd-image"></a>Een VHD-hoofdinstallatiekopie voorbereiden en aanpassen
 
@@ -204,7 +204,7 @@ Nadat de installatie kopie is voor bereid voor het uploaden, moet u ervoor zorge
 
 Deze sectie is alleen van toepassing wanneer de master installatie kopie lokaal is gemaakt.
 
-In de volgende instructies wordt uitgelegd hoe u uw master installatie kopie uploadt naar een Azure-opslag account. Als u nog geen Azure Storage-account hebt, volgt u de instructies in [dit artikel](https://code.visualstudio.com/tutorials/static-website/create-storage) om er een te maken.
+In de volgende instructies wordt uitgelegd hoe u uw master installatie kopie uploadt naar een Azure-opslag account. Als u nog geen Azure Storage-account hebt, volgt u de instructies in [dit artikel](/azure/javascript/tutorial-vscode-static-website-node-03) om er een te maken.
 
 1. Converteer de VM-installatie kopie (VHD) naar vast als u dat nog niet hebt gedaan. Als u de afbeelding niet naar vast hebt geconverteerd, is het niet mogelijk om de installatie kopie te maken.
 

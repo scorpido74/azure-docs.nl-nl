@@ -13,19 +13,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/19/2018
 ms.author: bwren
-ms.openlocfilehash: dacc4179483de5d5ef8a05fd836e4241c161deac
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.openlocfilehash: e2f195f648f08c31fbfe44543ee763aeed7459f0
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68741266"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71702973"
 ---
 # <a name="alert-management-solution-in-azure-log-analytics"></a>Waarschuwingenbeheeroplossing in Azure Log Analytics
 
 ![Pictogram voor het beheer van waarschuwing](media/alert-management-solution/icon.png)
 
 > [!NOTE]
->  Azure Monitor ondersteunt nu verbeterde mogelijkheden voor [het beheren van uw waarschuwingen op schaal](https://aka.ms/azure-alerts-overview), met inbegrip van de functies die worden gegenereerd door [controle hulpprogramma's als SCOM, zabbix of nagios](https://aka.ms/managing-alerts-other-monitoring-services).
+>  Azure Monitor ondersteunt nu verbeterde mogelijkheden voor [het beheren van uw waarschuwingen op schaal](https://aka.ms/azure-alerts-overview), met inbegrip van de functies die worden gegenereerd door [controle hulpprogramma's als System Center Operations Manager, zabbix of nagios](https://aka.ms/managing-alerts-other-monitoring-services).
 >  
 
 
@@ -74,7 +74,7 @@ Klik op de **Waarschuwingsbeheer** tegel om te openen de **Waarschuwingsbeheer**
 |:--- |:--- |
 | Kritieke waarschuwingen |Alle waarschuwingen met een ernst gegroepeerd op de naam van de waarschuwing kritiek.  Klik op de naam van een waarschuwing om uit te voeren van een logboekzoekopdracht die alle records voor deze waarschuwing. |
 | Waarschuwingsmeldingen |Alle waarschuwingen met een ernst van waarschuwing gegroepeerd op de naam van de waarschuwing.  Klik op de naam van een waarschuwing om uit te voeren van een logboekzoekopdracht die alle records voor deze waarschuwing. |
-| Actieve SCOM-waarschuwingen |Alle waarschuwingen die zijn verzameld uit Operations Manager met een staat met andere dan *gesloten* gegroepeerd op de bron die de waarschuwing heeft gegenereerd. |
+| Waarschuwingen voor actieve System Center Operations Manager |Alle waarschuwingen die zijn verzameld uit Operations Manager met een staat met andere dan *gesloten* gegroepeerd op de bron die de waarschuwing heeft gegenereerd. |
 | Alle actieve waarschuwingen |Alle waarschuwingen met een gegroepeerd op de naam van waarschuwing ernst. Bevat alleen de Operations Manager-waarschuwingen met een staat met andere dan *gesloten*. |
 
 Als u naar rechts schuift, het dashboard hier worden enkele algemene query's die u klikken kunt op om uit te voeren een [zoeken in logboeken](../../azure-monitor/log-query/log-query-overview.md) voor waarschuwingsgegevens.

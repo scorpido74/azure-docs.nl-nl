@@ -4,14 +4,14 @@ description: Vereisten voor het gebruik van Azure HPC cache
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 09/24/2019
-ms.author: v-erkell
-ms.openlocfilehash: fab85785ea183736b4012c349af143ef3a8c784a
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.date: 10/01/2019
+ms.author: rohogue
+ms.openlocfilehash: cfaa8f94dbb836a61b7f024c9426625d874dc524
+ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71299919"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71709960"
 ---
 # <a name="prerequisites-for-azure-hpc-cache-preview"></a>Vereisten voor de Azure HPC-cache (preview-versie)
 
@@ -57,15 +57,14 @@ Meer informatie over Azure Virtual Networks en DNS-server configuraties in [naam
 Controleer deze aan de machtigingen gerelateerde vereisten voordat u begint met het maken van de cache.
 
 * Het cache-exemplaar moet virtuele netwerk interfaces (Nic's) kunnen maken. De gebruiker die de cache maakt, moet voldoende bevoegdheden hebben in het abonnement om Nic's te maken.
-<!-- There are several ways to authorize this access; read [Additional prerequisites](media/preview-prereqs.md) to learn more. -->
 
 * Bij gebruik van Blob-opslag moet de Azure HPC-cache worden gemachtigd om toegang te krijgen tot uw opslag account. U kunt op rollen gebaseerd toegangs beheer (RBAC) gebruiken om de cache toegang te geven tot uw Blob-opslag. Er zijn twee rollen vereist: Inzender voor het opslag account en de gegevensfeed voor opslag-blobs. Volg de instructies in [opslag doelen toevoegen](hpc-cache-add-storage.md#add-the-access-control-roles-to-your-account) om de rollen toe te voegen.
 
 ## <a name="storage-infrastructure"></a>Opslag infrastructuur
 
-De cache ondersteunt Azure Blob-containers of NFS-hardware Storage-export. U kunt opslag doelen definiëren wanneer u de cache maakt, maar u kunt later ook opslag ruimte toevoegen.
+De cache ondersteunt Azure Blob-containers of NFS-hardware Storage-export. Voeg opslag doelen toe nadat u de cache hebt gemaakt.
 
-Elk opslag type heeft specifieke vereisten. 
+Elk opslag type heeft specifieke vereisten.
 
 ### <a name="nfs-storage-requirements"></a>NFS-opslag vereisten
 

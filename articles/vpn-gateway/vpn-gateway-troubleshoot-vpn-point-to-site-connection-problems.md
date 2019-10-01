@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/31/2019
+ms.date: 09/30/2019
 ms.author: genli
-ms.openlocfilehash: 0a32f9a9fde0983a5b97f7342a111d40ef01c686
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: cfa95f2aab5ba270aea0a36b037ae293b36c7b28
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71104822"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71695524"
 ---
 # <a name="troubleshooting-azure-point-to-site-connection-problems"></a>Meer Problemen met de verbinding met Azure Point-to-site
 
@@ -84,7 +84,7 @@ Windows 10 of Server 2016 voorbereiden voor IKEv2:
    | Windows 10 Version 1709 | 22 maart 2018 | [KB4089848](https://www.catalog.update.microsoft.com/search.aspx?q=kb4089848) |
    |  |  |  |  |
 
-2. De registersleutelwaarde instellen. Maak of stel `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\RasMan\ IKEv2\DisableCertReqPayload` de REG_DWORD-sleutel in het REGI ster in op 1.
+2. De registersleutelwaarde instellen. Maak of stel `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\RasMan\ IKEv2\DisableCertReqPayload` REG_DWORD-sleutel in het REGI ster in op 1.
 
 ## <a name="vpn-client-error-the-message-received-was-unexpected-or-badly-formatted"></a>VPN-client fout: Het ontvangen bericht is onverwacht of onjuist opgemaakt
 
@@ -250,32 +250,6 @@ U lost dit probleem op door het punt opnieuw te downloaden en te implementeren o
 ## <a name="too-many-vpn-clients-connected-at-once"></a>Er zijn te veel VPN-clients tegelijk verbonden
 
 Het maximum aantal toegestane verbindingen is bereikt. U kunt het totale aantal verbonden clients bekijken in de Azure Portal.
-
-## <a name="point-to-site-vpn-incorrectly-adds-a-route-for-100008-to-the-route-table"></a>Punt-naar-site-VPN voegt op onjuiste wijze een route voor 10.0.0.0/8 toe aan de route tabel
-
-### <a name="symptom"></a>Symptoom
-
-Wanneer u de VPN-verbinding op de punt-naar-site-client maakt, moet de VPN-client een route toevoegen naar het virtuele netwerk van Azure. De IP-Helper-service moet een route toevoegen voor het subnet van de VPN-clients. 
-
-Het bereik van de VPN-client hoort bij een kleiner subnet van 10.0.0.0/8, zoals 10.0.12.0/24. In plaats van een route voor 10.0.12.0/24 wordt een route voor 10.0.0.0/8 toegevoegd met een hogere prioriteit. 
-
-Deze onjuiste route verbreekt de connectiviteit met andere on-premises netwerken die tot een ander subnet binnen het bereik 10.0.0.0/8 behoren, zoals 10.50.0.0/24, waarvoor geen specifieke route is gedefinieerd. 
-
-### <a name="cause"></a>Oorzaak
-
-Dit gedrag is inherent aan het ontwerp voor Windows-clients. Wanneer de client het PPP IPCP-protocol gebruikt, wordt het IP-adres voor de tunnel interface opgehaald van de server (de VPN-gateway in dit geval). Vanwege een beperking in het protocol heeft de client echter niet het subnetmasker. Omdat er geen andere manier is om deze op te halen, probeert de client het subnetmasker te raden op basis van de klasse van het IP-adres van de tunnel interface. 
-
-Daarom wordt er een route toegevoegd op basis van de volgende statische toewijzing: 
-
-Als het adres van klasse A hoort--> Toep assen/8
-
-Als het adres behoort tot klasse B--> Toep assen/16
-
-Als het adres behoort tot klasse C--> Toep assen/24
-
-### <a name="solution"></a>Oplossing
-
-Routes voor andere netwerken worden geïnjecteerd in de routerings tabel met de langste voorvoegsel overeenkomst of een lagere metrische waarde (dus hogere prioriteit) dan het punt naar de site. 
 
 ## <a name="vpn-client-cannot-access-network-file-shares"></a>VPN-client kan geen toegang krijgen tot netwerk bestands shares
 

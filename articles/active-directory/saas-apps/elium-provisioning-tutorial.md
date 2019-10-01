@@ -15,144 +15,138 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/19/2019
 ms.author: Zhchia
-ms.openlocfilehash: 30f6f81234ce34e40a29a04f6b795aab991a8824
-ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
+ms.openlocfilehash: a4ddcf27869ea7484f98329d14d01bfad83af219
+ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70802860"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71709524"
 ---
 # <a name="tutorial-configure-elium-for-automatic-user-provisioning"></a>Zelfstudie: Elium configureren voor automatische gebruikers inrichting
 
-Het doel van deze zelf studie is het demonstreren van de stappen die moeten worden uitgevoerd in Elium en Azure Active Directory (Azure AD) om Azure AD te configureren voor het automatisch inrichten en ongedaan maken van de inrichting van gebruikers en/of groepen in Elium.
+In deze zelf studie leert u hoe u Elium en Azure Active Directory (Azure AD) configureert om automatisch gebruikers of groepen in te richten en te deactiveren naar Elium.
 
 > [!NOTE]
-> In deze zelf studie wordt een connector beschreven die boven op de Azure AD User Provisioning-Service is gebouwd. Zie [Gebruikers inrichten en de inrichting ongedaan maken voor SaaS-toepassingen met Azure Active Directory](../manage-apps/user-provisioning.md)voor belang rijke informatie over de werking van deze service, hoe deze werkt en veelgestelde vragen.
+> In deze zelf studie wordt een connector beschreven die boven op de Azure AD User Provisioning-Service is gebouwd. Zie Gebruikers inrichten en de inrichting ongedaan maken voor [SaaS-toepassingen met Azure Active Directory](../manage-apps/user-provisioning.md)voor belang rijke informatie over de werking van deze service en hoe deze werkt, en voor veelgestelde vragen.
 >
-> Deze connector bevindt zich momenteel in de open bare preview. Zie [aanvullende gebruiksrecht overeenkomst voor Microsoft Azure previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)voor meer informatie over de algemene Microsoft Azure gebruiksrecht overeenkomst voor preview-functies.
+> Deze connector is momenteel in preview. Zie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)voor de algemene gebruiks voorwaarden voor Azure-functies in preview.
 
 ## <a name="prerequisites"></a>Vereisten
 
-In het scenario dat in deze zelf studie wordt beschreven, wordt ervan uitgegaan dat u al beschikt over de volgende vereisten:
+In deze zelf studie wordt ervan uitgegaan dat u al beschikt over de volgende vereisten:
 
-* Een Azure AD-tenant.
+* Een Azure AD-Tenant
 * [Een Elium-Tenant](https://www.elium.com/pricing/)
-* Een gebruikers account in Elium met beheerders machtigingen.
+* Een gebruikers account in Elium met beheerders machtigingen
 
 ## <a name="assigning-users-to-elium"></a>Gebruikers toewijzen aan Elium
 
-Azure Active Directory gebruikt een concept met de naam *toewijzingen* om te bepalen welke gebruikers toegang moeten krijgen tot geselecteerde apps. In de context van het automatisch inrichten van gebruikers worden alleen de gebruikers en/of groepen die zijn toegewezen aan een toepassing in azure AD gesynchroniseerd.
+Azure AD gebruikt een concept met de naam *toewijzingen* om te bepalen welke gebruikers toegang krijgen tot geselecteerde apps. In de context van het automatisch inrichten van gebruikers worden alleen de gebruikers en groepen die zijn toegewezen aan een toepassing in azure AD gesynchroniseerd.
 
-Voordat u automatische gebruikers inrichting configureert en inschakelt, moet u beslissen welke gebruikers en/of groepen in azure AD toegang nodig hebben tot Elium. Eenmaal besloten, kunt u deze gebruikers en/of groepen toewijzen aan Elium door de volgende instructies te volgen:
-* [Een gebruiker of groep toewijzen aan een bedrijfs-app](../manage-apps/assign-user-or-group-access-portal.md)
+Voordat u automatische gebruikers inrichting configureert en inschakelt, moet u bepalen welke gebruikers en groepen in azure AD toegang nodig hebben tot Elium. Wijs deze gebruikers en groepen vervolgens toe aan Elium door de stappen in [een gebruiker of groep toewijzen aan een bedrijfs-app te](../manage-apps/assign-user-or-group-access-portal.md)volgen.
 
 ## <a name="important-tips-for-assigning-users-to-elium"></a>Belang rijke tips voor het toewijzen van gebruikers aan Elium 
 
-* U wordt aangeraden één Azure AD-gebruiker toe te wijzen aan Elium om de configuratie van automatische gebruikers inrichting te testen. Extra gebruikers en/of groepen kunnen later worden toegewezen.
+We raden u aan één Azure AD-gebruiker toe te wijzen aan Elium om de automatische inrichtings configuratie van de gebruiker te testen. U kunt later meer gebruikers en groepen toewijzen.
 
-* Wanneer u een gebruiker toewijst aan Elium, moet u een geldige toepassingsspecifieke rol (indien beschikbaar) selecteren in het dialoog venster toewijzing. Gebruikers met de rol **standaard toegang** worden uitgesloten van het inrichten.
+Wanneer u een gebruiker toewijst aan Elium, moet u een geldige toepassingsspecifieke rol (indien beschikbaar) selecteren in het dialoog venster toewijzing. Gebruikers met de **standaard toegangs** functie worden uitgesloten van het inrichten.
 
 ## <a name="set-up-elium-for-provisioning"></a>Elium instellen voor inrichting
 
-Voordat u Elium configureert voor het automatisch inrichten van gebruikers met Azure AD, moet u SCIM inrichten inschakelen op Elium.
+Voordat u Elium configureert voor het automatisch inrichten van gebruikers met Azure AD, moet u systeem inschakelen voor SCIM-inrichting (Cross-Domain Identity Management) op Elium. Volg deze stappen:
 
-1. Meld u aan bij Elium. Navigeer naar **Mijn profiel** > **instellingen**.
+1. Meld u aan bij Elium en ga naar **Mijn profiel** > -**instellingen**.
 
-    ![Elium](media/Elium-provisioning-tutorial/setting.png)
+    ![Menu-item instellingen in Elium](media/Elium-provisioning-tutorial/setting.png)
 
-2. Klik in de linkerbenedenhoek onder Geavanceerde **beveiliging**selecteren.
+1. Klik in de linkerbenedenhoek onder **Geavanceerd**op **beveiliging**.
 
-    ![Elium](media/Elium-provisioning-tutorial/security.png)
+    ![Beveiligings koppeling in Elium](media/Elium-provisioning-tutorial/security.png)
 
-3. Kopieer het **geheime token**. Deze waarde wordt ingevoerd in het veld **geheime token** op het tabblad inrichten van uw Elium-toepassing in de Azure Portal.
+1. Kopieer de **Tenant-URL** en **geheime token** waarden. U gebruikt deze waarden later in de bijbehorende velden op het tabblad **inrichten** van uw Elium-toepassing in de Azure Portal.
 
-    ![Elium](media/Elium-provisioning-tutorial/token.png)
+    ![De velden Tenant-URL en geheim token in Elium](media/Elium-provisioning-tutorial/token.png)
 
+## <a name="add-elium-from-the-gallery"></a>Elium toevoegen vanuit de galerie
 
-## <a name="add-elium--from-the-gallery"></a>Elium toevoegen vanuit de galerie
+Als u Elium wilt configureren voor het automatisch inrichten van gebruikers met Azure AD, moet u Elium ook toevoegen vanuit de Azure AD-toepassings galerie aan uw lijst met beheerde SaaS-toepassingen (Software-as-a-Service). Volg deze stappen:
 
-Als u Elium wilt configureren voor het automatisch inrichten van gebruikers met Azure AD, moet u Elium van de Azure AD-toepassings galerie toevoegen aan uw lijst met beheerde SaaS-toepassingen.
+1. Selecteer in de [Azure Portal](https://portal.azure.com)in het navigatie venster links **Azure Active Directory**.
 
-**Voer de volgende stappen uit om Elium toe te voegen vanuit de Azure AD-toepassings galerie:**
+    ![Menu-item Azure Active Directory](common/select-azuread.png)
 
-1. Selecteer in de **[Azure Portal](https://portal.azure.com)** in het navigatie venster links **Azure Active Directory**.
+1. Ga naar **bedrijfs toepassingen**en selecteer **alle toepassingen**.
 
-    ![De Azure Active Directory-knop](common/select-azuread.png)
+     ![Blade Azure AD-zakelijke toepassingen](common/enterprise-applications.png)
 
-2. Ga naar **bedrijfs toepassingen**en selecteer **alle toepassingen**.
+1. Als u een nieuwe toepassing wilt toevoegen, selecteert u **nieuwe toepassing** boven aan het deel venster.
 
-    ![De blade Enterprise-toepassingen](common/enterprise-applications.png)
+    ![Koppeling naar nieuwe toepassing](common/add-new-app.png)
 
-3. Als u een nieuwe toepassing wilt toevoegen, selecteert u de knop **nieuwe toepassing** boven aan het deel venster.
+1. Typ **Elium**in het zoekvak, selecteer **Elium** in de lijst met resultaten en selecteer **toevoegen** om de toepassing toe te voegen.
 
-    ![De knop nieuwe toepassing](common/add-new-app.png)
+    ![Zoekvak voor galerie](common/search-new-app.png)
 
-4. Typ **Elium**in het zoekvak, selecteer **Elium** in het deel venster resultaten en klik vervolgens op de knop **toevoegen** om de toepassing toe te voegen.
+## <a name="configure-automatic-user-provisioning-to-elium"></a>Automatische gebruikers inrichting configureren voor Elium
 
-    ![Elium in de lijst met resultaten](common/search-new-app.png)
-
-## <a name="configuring-automatic-user-provisioning-to-elium"></a>Automatische gebruikers inrichting configureren voor Elium  
-
-In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azure AD-inrichtings service om gebruikers en/of groepen in Elium te maken, bij te werken en uit te scha kelen op basis van gebruikers-en/of groeps toewijzingen in azure AD.
+In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azure AD-inrichtings service om gebruikers en groepen in Elium te maken, bij te werken en uit te scha kelen, op basis van gebruikers-en groeps toewijzingen in azure AD.
 
 > [!TIP]
-> U kunt er ook voor kiezen om eenmalige aanmelding op basis van SAML in te scha kelen voor Elium, gevolgd door de instructies in de [Elium-zelf studie voor eenmalige aanmelding](Elium-tutorial.md). Eenmalige aanmelding kan onafhankelijk van automatische gebruikers inrichting worden geconfigureerd, hoewel deze twee functies elkaar in de compliment
+> U kunt er ook voor kiezen om eenmalige aanmelding in te scha kelen voor Elium op basis van Security Assertion Markup Language (SAML) door de instructies in de [Elium-zelf studie voor eenmalige aanmelding](Elium-tutorial.md)te volgen. U kunt eenmalige aanmelding onafhankelijk van automatische gebruikers inrichting configureren, hoewel de twee functies elkaar aanvullen.
 
-### <a name="to-configure-automatic-user-provisioning-for-elium--in-azure-ad"></a>Automatische gebruikers inrichting configureren voor Elium in azure AD:
+Voer de volgende stappen uit om de automatische gebruikers inrichting voor Elium in azure AD te configureren:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen**en selecteer **alle toepassingen**.
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com), selecteer **zakelijke toepassingen**en selecteer vervolgens **alle toepassingen**.
 
-    ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
+    ![Blade Azure AD-zakelijke toepassingen](common/enterprise-applications.png)
 
-2. Selecteer **Elium** in de lijst met toepassingen.
+1. Selecteer **Elium** in de lijst met toepassingen.
 
-    ![De koppeling Elium in de lijst met toepassingen](common/all-applications.png)
+    ![Lijst met toepassingen op de Blade bedrijfs toepassingen](common/all-applications.png)
 
-3. Selecteer het tabblad **inrichten** .
+1. Selecteer het tabblad **inrichten** .
 
-    ![Tabblad inrichten](common/provisioning.png)
+    ![Het tabblad inrichten op de Blade bedrijfs toepassingen](common/provisioning.png)
 
-4. Stel de **inrichtings modus** in op **automatisch**.
+1. Stel de **inrichtings modus** in op **automatisch**.
 
-    ![Tabblad inrichten](common/provisioning-automatic.png)
+    ![Automatische instelling voor inrichtings modus](common/provisioning-automatic.png)
 
-5. Selecteer in de sectie beheerders referenties de `<tenantURL>/scim/v2` invoer waarbij **{TeanantURL}** de waarde is die eerder is opgehaald uit de Elium-beheer console. Voer de **geheime token** waarde in **geheim token** in en klik op **verbinding testen** om te controleren of Azure AD verbinding kan maken met Elium. Als de verbinding mislukt, zorg er dan voor dat uw Elium beheerders machtigingen heeft en probeer het opnieuw.
+1. Typ in de sectie **beheerders referenties** **\<tenantURL @ no__t-3/scim/v2** in het veld **Tenant-URL** . (De **tenantURL** is de waarde die eerder is opgehaald uit de Elium-beheer console.) Typ ook de waarde van het Elium **Secret-token** in het veld **geheime token** . Selecteer tot slot **verbinding testen** om te controleren of Azure AD verbinding kan maken met Elium. Als de verbinding mislukt, zorgt u ervoor dat uw Elium-account beheerders machtigingen heeft en probeer het opnieuw.
 
-    ![Tenant-URL + token](common/provisioning-testconnection-tenanturltoken.png)
+    ![Tenant-URL en geheime token velden in beheerders referenties](common/provisioning-testconnection-tenanturltoken.png)
 
-6. Voer in het veld **e-mail melding** het e-mail adres in van een persoon of groep die de inrichtings fout meldingen moet ontvangen en schakel het selectie vakje in om **een e-mail bericht te verzenden wanneer er een fout optreedt**.
+1. Voer in het veld **e-mail melding** het e-mail adres in van een persoon of groep die de inrichtings fout meldingen ontvangt. Schakel vervolgens het selectie vakje **e-mail melding verzenden wanneer een fout optreedt** in.
 
     ![E-mailmelding](common/provisioning-notification-email.png)
 
-7. Klik op **Opslaan**.
+1. Klik op **Opslaan**.
 
-8. Selecteer in de sectie **toewijzingen** de optie **Azure Active Directory gebruikers synchroniseren met Elium**.
+1. Selecteer in de sectie **toewijzingen** de optie **Azure Active Directory gebruikers synchroniseren met Elium**.
 
-    ![Elium-gebruikers toewijzingen](media/Elium-provisioning-tutorial/usermapping.png)
+    ![Koppeling synchroniseren voor het toewijzen van Azure AD-gebruikers aan Elium](media/Elium-provisioning-tutorial/usermapping.png)
 
-9. Controleer de gebruikers kenmerken die zijn gesynchroniseerd vanuit Azure AD naar Elium in de sectie **kenmerk toewijzing** . De kenmerken die zijn geselecteerd als **overeenkomende** eigenschappen worden gebruikt om te voldoen aan de gebruikers accounts in Elium voor bijwerk bewerkingen. Selecteer de knop **Opslaan** om eventuele wijzigingen door te voeren.
+1. Controleer de gebruikers kenmerken die zijn gesynchroniseerd vanuit Azure AD naar Elium in de sectie **kenmerk toewijzingen** . De kenmerken die zijn geselecteerd als **overeenkomende** eigenschappen worden gebruikt om te voldoen aan de gebruikers accounts in Elium voor bijwerk bewerkingen. Selecteer **Opslaan** om eventuele wijzigingen door te voeren.
 
-    ![Elium-gebruikers kenmerken](media/Elium-provisioning-tutorial/userattribute.png)
+    ![Kenmerk toewijzingen tussen Azure AD en Elium](media/Elium-provisioning-tutorial/userattribute.png)
 
+1. Als u bereik filters wilt configureren, volgt u de instructies in de [zelf studie](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)voor het filteren op bereik.
 
-11. Raadpleeg de volgende instructies in de [zelf studie](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)voor het filteren op bereik voor het configureren van bereik filters.
+1. Als u de Azure AD-inrichtings service voor **Elium wilt inschakelen, wijzigt u de** **inrichtings status** in in het gedeelte **instellingen** .
 
-12. Als u de Azure AD-inrichtings service voor **Elium wilt inschakelen, wijzigt u de** **inrichtings status** in in het gedeelte **instellingen** .
+    ![De inrichtings status is ingesteld op op](common/provisioning-toggle-on.png)
 
-    ![Inrichtings status inschakelt op](common/provisioning-toggle-on.png)
+1. Definieer de gebruikers en groepen die u wilt inrichten voor Elium door de gewenste waarden te selecteren in de vervolg keuzelijst **bereik** van het gedeelte **instellingen** .
 
-13. Definieer de gebruikers en/of groepen die u wilt inrichten voor Elium door de gewenste waarden in het **bereik** te kiezen in de sectie **instellingen** .
+    ![Keuze lijst voor het inrichten van het bereik](common/provisioning-scope.png)
 
-    ![Inrichtings bereik](common/provisioning-scope.png)
+1. Wanneer u klaar bent om in te richten, selecteert u **Opslaan**.
 
-14. Wanneer u klaar bent om in te richten, klikt u op **Opslaan**.
+    ![De knop Opslaan voor het inrichten van de configuratie](common/provisioning-configuration-save.png)
 
-    ![Inrichtings configuratie opslaan](common/provisioning-configuration-save.png)
+Met deze bewerking wordt de eerste synchronisatie gestart van alle gebruikers en groepen die in het **bereik** zijn gedefinieerd in de sectie **instellingen** . Dit initiële synchronisatie proces duurt langer dan latere synchronisaties. Zie [hoe lang het duurt om gebruikers in te richten](../manage-apps/application-provisioning-when-will-provisioning-finish-specific-user.md#how-long-will-it-take-to-provision-users)voor meer informatie over de tijd die nodig is voor het inrichten van de inrichting?.
 
-Met deze bewerking wordt de eerste synchronisatie gestart van alle gebruikers en/of groepen die in het **bereik** zijn gedefinieerd in de sectie **instellingen** . Het duurt langer voordat de initiële synchronisatie is uitgevoerd dan bij de volgende synchronisaties. Voor meer informatie over hoe lang het duurt voor het inrichten van gebruikers en/of groepen, raadpleegt u [hoe lang het duurt om gebruikers](../manage-apps/application-provisioning-when-will-provisioning-finish-specific-user.md#how-long-will-it-take-to-provision-users)in te richten.
-
-U kunt de **huidige status** sectie gebruiken om de voortgang te controleren en koppelingen naar uw inrichtings activiteiten rapport te volgen, waarin alle acties worden beschreven die worden uitgevoerd door de Azure AD Provisioning-Service op Elium. Zie [de status van gebruikers inrichten controleren](../manage-apps/application-provisioning-when-will-provisioning-finish-specific-user.md)voor meer informatie. Zie [rapportage over het automatisch inrichten van gebruikers accounts](../manage-apps/check-status-user-account-provisioning.md)voor informatie over het vastleggen van Azure AD-inrichtings Logboeken.
-
+Gebruik de sectie **huidige status** om de voortgang te bewaken en koppelingen naar uw inrichtings activiteiten rapport te volgen. In het rapport inrichtings activiteit worden alle acties beschreven die worden uitgevoerd door de Azure AD Provisioning-Service op Elium. Zie [de status van gebruikers inrichten controleren](../manage-apps/application-provisioning-when-will-provisioning-finish-specific-user.md)voor meer informatie. Zie [rapportage over het automatisch inrichten van gebruikers accounts](../manage-apps/check-status-user-account-provisioning.md)voor informatie over het vastleggen van Azure AD-inrichtings Logboeken.
 
 ## <a name="additional-resources"></a>Aanvullende resources
 

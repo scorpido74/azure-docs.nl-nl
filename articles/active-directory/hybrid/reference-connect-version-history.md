@@ -16,12 +16,12 @@ ms.date: 09/23/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 467fbc421cdd681d0aab52faf75a4987ee849b15
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: e7555dc44e533945d360a3d2e4120f71f953a6d2
+ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71345522"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71709362"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Releasegeschiedenis van versie
 Het Azure Active Directory (Azure AD)-team werkt Azure AD Connect regel matig bij met nieuwe functies en functionaliteit. Niet alle toevoegingen zijn van toepassing op alle doel groepen.
@@ -84,9 +84,7 @@ Niet alle versies van Azure AD Connect worden beschikbaar gesteld voor automatis
 - Verbeterde diagnostische gegevens en probleem oplossing rond groeps beleid waarmee de ADSync-service niet kan worden gestart wanneer deze voor het eerst wordt geïnstalleerd.
 - Er is een fout opgelost waarbij de weergave naam voor een Windows-computer onjuist is geschreven.
 - Corrigeer een bug waarbij het besturingssysteem type voor een Windows-computer onjuist is geschreven.
-- Er is een fout opgelost waarbij niet-Windows 10-computers onverwacht worden gesynchroniseerd. Houd er rekening mee dat het effect van deze wijziging is dat niet-Windows 10-computers die eerder zijn gesynchroniseerd, nu worden verwijderd. Dit heeft geen invloed op functies omdat de synchronisatie van Windows-computers alleen wordt gebruikt voor hybride Azure AD-domein deelname, die alleen werkt voor Windows-10-apparaten. 
-- Een bug oplossen waarbij de weergave naam voor een Windows-computer onjuist is geschreven.
-- Corrigeer een bug waarbij het besturingssysteem type voor een Windows-computer onjuist is geschreven.
+- Er is een fout opgelost waarbij niet-Windows 10-computers onverwacht worden gesynchroniseerd. Houd er rekening mee dat het effect van deze wijziging is dat niet-Windows 10-computers die eerder zijn gesynchroniseerd, nu worden verwijderd. Dit heeft geen invloed op functies omdat de synchronisatie van Windows-computers alleen wordt gebruikt voor hybride Azure AD-domein deelname, die alleen werkt voor Windows-10-apparaten.
 - Er zijn meerdere nieuwe (interne) cmdlets toegevoegd aan de ADSync Power shell-module.
 
 

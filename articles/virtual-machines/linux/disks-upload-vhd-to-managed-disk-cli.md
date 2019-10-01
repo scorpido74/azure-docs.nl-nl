@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: virtual-machines-linux
 ms.tgt_pltfrm: linux
 ms.subservice: disks
-ms.openlocfilehash: bc8932a9904a3e4e671edc3e624ff15e7253e1ed
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: 938f1696c95f8feb9aeebd28139870e3ce020613
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71326826"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71695451"
 ---
 # <a name="upload-a-vhd-to-azure-using-azure-cli"></a>Een VHD uploaden naar Azure met behulp van Azure CLI
 
@@ -32,7 +32,7 @@ Op dit moment wordt direct uploaden ondersteund voor standaard schijven, standaa
 
 ## <a name="create-an-empty-managed-disk"></a>Een lege beheerde schijf maken
 
-Als u uw VHD naar Azure wilt uploaden, moet u een lege beheerde schijf maken die specifiek is geconfigureerd voor dit upload proces. Voordat u er een maakt, moet u over deze schijven enige aanvullende informatie weten.
+Als u uw VHD naar Azure wilt uploaden, moet u een lege beheerde schijf maken die is geconfigureerd voor dit upload proces. Voordat u er een maakt, moet u over deze schijven enige aanvullende informatie weten.
 
 Dit soort beheerde schijven heeft twee unieke statussen:
 
@@ -43,7 +43,7 @@ In een van deze statussen wordt de beheerde schijf gefactureerd tegen [standaard
 
 Voordat u een lege standaard HDD voor het uploaden kunt maken, moet u de bestands grootte van de VHD die u wilt uploaden, in bytes hebben. Om dat te bereiken, kunt u een `wc -c <yourFileName>.vhd` of `ls -al <yourFileName>.vhd` gebruiken. Deze waarde wordt gebruikt bij het opgeven van de para meter **--Upload-size-bytes** .
 
-Maak een lege standaard HDD voor het uploaden door de para meter **--for-upload** en de para meter **--Upload-size-bytes** op te geven in een cmdlet voor het maken van een [schijf](/cli/azure/disk#az-disk-create) :
+Maak een lege standaard HDD voor het uploaden door zowel de para meter **--for-upload** als de para meter **--Upload-size-bytes** op te geven in een cmdlet voor het maken van een [schijf](/cli/azure/disk#az-disk-create) :
 
 ```azurecli-interactive
 az disk create -n mydiskname -g resourcegroupname -l westus2 --for-upload --upload-size-bytes 34359738880 --sku standard_lrs

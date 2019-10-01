@@ -9,16 +9,16 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/02/2019
+ms.date: 09/27/2019
 ms.author: diberry
-ms.openlocfilehash: 5a6c87da7ae62af54990e0a1a2c62065717a201a
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: 70e58077fa40ce685324cd24b447886ec3411034
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70256956"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71703187"
 ---
-# <a name="authoring-and-runtime-keys"></a>Sleutels voor ontwerpen en runtime
+# <a name="authoring-and-runtime-keys"></a>Ontwerp- en runtimesleutels
 
 
 >[!NOTE]
@@ -29,7 +29,7 @@ LUIS maakt gebruik van twee typen Azure-resources, elk type heeft sleutels:
 * [Ontwerpen](#programmatic-key) voor het maken van intents, entiteiten en label uitingen, trainen en publiceren. Wanneer u klaar bent om uw LUIS-app te publiceren, hebt u een [voor spelling-eindpunt sleutel nodig voor de runtime](luis-how-to-azure-subscription.md) die is toegewezen aan de app.
 * [De eindpunt sleutel voor voor spelling voor de runtime](#prediction-endpoint-runtime-key). Client-toepassingen, zoals een chat-bot, moeten toegang hebben tot het **query Voorspellings eindpunt** van de runtime via deze sleutel. 
 
-|Sleutel|Doel|Cognitieve service`kind`|Cognitieve service`type`|
+|Sleutel|Doel|@No__t van de cognitieve service-0|@No__t van de cognitieve service-0|
 |--|--|--|--|
 |[Sleutel ontwerpen](#programmatic-key)|Ontwerpen, trainen, publiceren, testen.|`LUIS.Authoring`|`Cognitive Services`|
 |[Runtime sleutel voor Voorspellings eindpunt](#prediction-endpoint-runtime-key)| Query prediction endpoint runtime met een gebruiker utterance om de intenties en entiteiten te bepalen.|`LUIS`|`Cognitive Services`|
@@ -83,12 +83,30 @@ Dit is een speciale resource die u voor u hebt gemaakt. Deze wordt niet weer geg
 ### <a name="use-runtime-key-in-query"></a>Runtime sleutel gebruiken in query
 Het LUIS-runtime-eind punt accepteert twee stijlen van de query, beide gebruiken de Voorspellings eindpunt runtime sleutel, maar op verschillende plaatsen.
 
-Het eind punt dat wordt gebruikt voor toegang tot de runtime maakt gebruik van een subdomein dat uniek is voor de regio van `{region}` uw resource, aangegeven in de volgende tabel. 
+Het eind punt dat wordt gebruikt voor toegang tot de runtime maakt gebruik van een subdomein dat uniek is voor de regio van uw resource, aangeduid met `{region}` in de volgende tabel. 
+
+
+#### <a name="v2-prediction-endpointtabv2"></a>[V2-Voorspellings eindpunt](#tab/V2)
 
 |term|Voorbeeld-url en de sleutel-locatie|
 |--|--|
-|[GET](https://{region}.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee78)|`https://{region}.api.cognitive.microsoft.com/luis/v2.0/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2?runtime-key=your-endpoint-key-here&verbose=true&timezoneOffset=0&q=turn%20on%20the%20lights`<br><br>waarde voor de QueryString voor `runtime-key`<br><br>Wijzig de waarde van uw eindpunt query voor de `runtime-key` uit de authoring (starter)-sleutel, aan de nieuwe eindpuntsleutel als u wilt gebruiken, de snelheid van LUIS-eindpunt sleutel quotum. Als u de sleutel maken en toewijzen van de sleutel, maar wijzig niet de waarde van de query eindpunt voor `runtime-key`, u niet met behulp van uw quotum aanvragen voor de sleutel van eindpunt.|
-|[POST](https://{region}.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee79)| `https://{region}.api.cognitive.microsoft.com/luis/v2.0/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2`<br><br> de waarde van de header voor `Ocp-Apim-Subscription-Key`<br>Als u de runtime sleutel maakt en de runtime sleutel toewijst, maar de eindpunt query waarde voor niet `Ocp-Apim-Subscription-Key`wijzigt voor, gebruikt u uw runtime sleutel niet.|
+|[GET](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee78)|`https://{region}.api.cognitive.microsoft.com/luis/v2.0/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2?runtime-key=your-endpoint-key-here&verbose=true&timezoneOffset=0&q=turn%20on%20the%20lights`|
+|[POST](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee79)| `https://{region}.api.cognitive.microsoft.com/luis/v2.0/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2`|
+
+#### <a name="v3-prediction-endpointtabv3"></a>[V3-Voorspellings eindpunt](#tab/V3)
+
+|term|Voorbeeld-url en de sleutel-locatie|
+|--|--|
+|[GET](https://westcentralus.dev.cognitive.microsoft.com/docs/services/luis-endpoint-api-v3-0-preview/operations/5cb0a91e54c9db63d589f433)|`https://{region}.api.cognitive.microsoft.com/luis/v3.0-preview/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2/slots/production/predict?runtime-key=your-endpoint-key-here&query=turn%20on%20the%20lights`|
+|[POST](https://westcentralus.dev.cognitive.microsoft.com/docs/services/luis-endpoint-api-v3-0-preview/operations/5cb0a5830f741b27cd03a061)| `https://{region}.api.cognitive.microsoft.com/luis/v3.0-preview/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2/slots/production/predict`| 
+
+Meer informatie over het [v3-Voorspellings eindpunt](luis-migration-api-v3.md).
+
+* * * 
+
+**OPHALEN**: Wijzig de waarde van uw eindpunt query voor de `runtime-key` uit de authoring (starter)-sleutel, aan de nieuwe eindpuntsleutel als u wilt gebruiken, de snelheid van LUIS-eindpunt sleutel quotum. Als u de sleutel maken en toewijzen van de sleutel, maar wijzig niet de waarde van de query eindpunt voor `runtime-key`, u niet met behulp van uw quotum aanvragen voor de sleutel van eindpunt.
+
+**POST**: Wijzig de waarde voor de header voor `Ocp-Apim-Subscription-Key`<br>Als u de runtime sleutel maakt en de runtime sleutel toewijst, maar de eindpunt query waarde voor `Ocp-Apim-Subscription-Key` niet wijzigt, gebruikt u uw runtime sleutel niet.
 
 De app-ID die wordt gebruikt in de vorige URL's, `df67dcdb-c37d-46af-88e1-8b97951ca1c2`, is de openbare IoT-app die wordt gebruikt voor de [interactieve demonstratie](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/). 
 
@@ -187,7 +205,7 @@ Een openbare app is gepubliceerd in alle regio's, zodat een gebruiker met een sl
 
 ## <a name="transfer-of-ownership"></a>Overdracht van eigendom
 
-**Voor [gemigreerde](luis-migration-authoring.md) apps voor de ontwerp bron**: 
+**Voor [gemigreerde](luis-migration-authoring.md) apps voor de ontwerp bron**: Als eigenaar van de resource kunt u een `contributor` toevoegen.
 
 **Voor apps die nog niet zijn gemigreerd**: Exporteer uw app als een JSON-bestand. Een andere LUIS-gebruiker kan de app importeren, waardoor de eigenaar van de app wordt. De nieuwe app heeft een andere app-ID.  
 

@@ -6,14 +6,14 @@ services: monitoring
 ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.author: anantr
+ms.author: robb
 ms.subservice: alerts
-ms.openlocfilehash: f97fa69926cd9c59a0617f409c72610336120333
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 91a770b522011f3955ae0956e289886eb204cf47
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70916015"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71702911"
 ---
 # <a name="manage-alert-instances-with-unified-alerts"></a>Waarschuwings instanties met Unified Alerts beheren
 Met de [geïntegreerde ervaring voor waarschuwingen](https://aka.ms/azure-alerts-overview) in azure monitor kunt u al uw verschillende soorten waarschuwingen in azure zien. Dit omvat meerdere abonnementen, in één deel venster. In dit artikel wordt beschreven hoe u uw waarschuwings instanties kunt weer geven en hoe u specifieke waarschuwings instanties vindt voor het oplossen van problemen.

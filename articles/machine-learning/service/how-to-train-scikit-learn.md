@@ -10,12 +10,12 @@ ms.author: maxluk
 author: maxluk
 ms.date: 08/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2b05ba7e4d38b596bdf76655fad0736425f8ce89
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 707c6d99d4c5f4335ff771bdd916b2ee37092604
+ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71002536"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71710068"
 ---
 # <a name="build-scikit-learn-models-at-scale-with-azure-machine-learning"></a>Scikit bouwen-modellen op schaal leren met Azure Machine Learning
 
@@ -31,7 +31,7 @@ Voer deze code uit in een van de volgende omgevingen:
  - Azure Machine Learning-notebook-VM-geen down loads of installatie vereist
 
     - U moet de [Zelfstudie: Omgeving en werk ruimte](tutorial-1st-experiment-sdk-setup.md) instellen voor het maken van een toegewezen notebook server vooraf geladen met de SDK en de voor beeld-opslag plaats.
-    - Zoek in de map met voor beelden-trainingen op de notebook server een volledig en uitgebreid notitie blok door naar deze map te navigeren: **instructies-to-use-azureml > training > Train-afstemming-Tune-Deploy-with-sklearn** folder.
+    - Zoek in de map met voor beelden-trainingen op de notebook server een volledig en uitgebreid notitie blok door naar deze map te navigeren: **How-to-use-azureml > ml-frameworks > scikit-leer > training > Train-afstemming-Tune-Deploy-with-sklearn** map.
 
  - Uw eigen Jupyter Notebook-server
 
@@ -40,7 +40,7 @@ Voer deze code uit in een van de volgende omgevingen:
     - Het gegevensset-en voorbeeld script bestand downloaden 
         - [Iris gegevensset](https://archive.ics.uci.edu/ml/datasets/iris)
         - [`train_iris.py`](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training/train-hyperparameter-tune-deploy-with-sklearn)
-    - U kunt ook een voltooide [Jupyter notebook versie](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-hyperparameter-tune-deploy-with-sklearn/train-hyperparameter-tune-deploy-with-sklearn.ipynb) van deze hand leiding vinden op de pagina met voor beelden van github. De notebook bevat een uitgebreide sectie voor het afstemmen van intelligente afstemming en het ophalen van het beste model op basis van primaire meet waarden.
+    - U kunt ook een voltooide [Jupyter notebook versie](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/ml-frameworks/scikit-learn/training/train-hyperparameter-tune-deploy-with-sklearn/train-hyperparameter-tune-deploy-with-sklearn.ipynb) van deze hand leiding vinden op de pagina met voor beelden van github. De notebook bevat een uitgebreide sectie voor het afstemmen van intelligente afstemming en het ophalen van het beste model op basis van primaire meet waarden.
 
 ## <a name="set-up-the-experiment"></a>Het experiment instellen
 
@@ -84,28 +84,20 @@ os.makedirs(project_folder, exist_ok=True)
 exp = Experiment(workspace=ws, name='sklearn-iris')
 ```
 
-### <a name="upload-dataset-and-scripts"></a>Gegevensset en scripts uploaden
+### <a name="prepare-training-script"></a>Trainings script voorbereiden
 
-Het gegevens [Archief](how-to-access-data.md) is een plek waar de informatie kan worden opgeslagen en geopend door het koppelen of kopiëren van de gegevens naar het reken doel. Elke werk ruimte biedt een standaard gegevens opslag. Upload de gegevens-en trainings scripts naar het gegevens archief zodat ze eenvoudig kunnen worden geopend tijdens de training.
+In deze zelf studie is het trainings script **train_iris. py** al voor u ingevuld. In de praktijk moet u een aangepast trainings script kunnen uitvoeren zoals dat is en dit kan worden uitgevoerd met Azure ML zonder dat u de code hoeft te wijzigen.
 
-1. Maak de map voor uw gegevens.
+Als u de mogelijkheden voor bijhouden en metrische gegevens van Azure ML wilt gebruiken, voegt u een kleine hoeveelheid Azure ML-code toe in uw trainings script.  In het trainings script **train_iris. py** ziet u hoe u bepaalde metrische gegevens in azure ml kunt vastleggen met behulp van het `Run`-object in het script.
 
-    ```Python
-    os.makedirs('./data/iris', exist_ok=True)
-    ```
+In het meegeleverde trainings script worden voorbeeld gegevens van de functie `iris = datasets.load_iris()` gebruikt.  Voor uw eigen gegevens moet u mogelijk stappen zoals [gegevensset uploaden en scripts](how-to-train-keras.md#data-upload) gebruiken om gegevens beschikbaar te maken tijdens de training.
 
-1. Upload de Iris-gegevensset naar de standaard gegevens opslag.
+Kopieer het trainings script **train_iris. py** in de projectmap.
 
-    ```Python
-    ds = ws.get_default_datastore()
-    ds.upload(src_dir='./data/iris', target_path='iris', overwrite=True, show_progress=True)
-    ```
-
-1. Upload het scikit-leer-trainings script `train_iris.py`,.
-
-    ```Python
-    shutil.copy('./train_iris.py', project_folder)
-    ```
+```
+import shutil
+shutil.copy('./train_iris.py', project_folder)
+```
 
 ## <a name="create-or-get-a-compute-target"></a>Een reken doel maken of ophalen
 

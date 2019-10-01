@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
-ms.date: 07/24/2019
+ms.date: 09/29/2019
 ms.author: diberry
-ms.openlocfilehash: 82cce359f2161800c53ccce7cdb0342bba759d43
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: ae46df875d588186cd083134820f349158d7e307
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559946"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71695217"
 ---
 # <a name="regular-expression-entity"></a>Een entiteit in de vorm van een reguliere expressie 
 
@@ -32,13 +32,13 @@ Een reguliere expressie is het meest geschikt voor onbewerkte utterance-tekst. D
 
 ## <a name="usage-considerations"></a>Gebruiks overwegingen
 
-Reguliere expressies kunnen overeenkomen met meer dan verwacht. Een voor beeld hiervan is een numerieke woord overeenkomst zoals `one` en `two`. Een voor beeld is de volgende regex die overeenkomt met `one` het nummer en andere getallen:
+Reguliere expressies kunnen overeenkomen met meer dan verwacht. Een voor beeld hiervan is een numeriek woord dat overeenkomt met `one` en `two`. Een voor beeld is de volgende regex die overeenkomt met het aantal `one` en andere getallen:
 
 ```javascript
 (plus )?(zero|one|two|three|four|five|six|seven|eight|nine)(\s+(zero|one|two|three|four|five|six|seven|eight|nine))*
 ``` 
 
-Deze regex-expressie komt ook overeen met een wille keurig woord dat met `phone`deze getallen eindigt, zoals. Als u problemen wilt oplossen, moet u ervoor zorgen dat de regex-overeenkomsten rekening houden met woord grenzen. De regex voor het gebruik van woord grenzen voor dit voor beeld wordt gebruikt in de volgende regex:
+Deze regex-expressie komt ook overeen met een wille keurig woord dat met deze getallen eindigt, zoals `phone`. Als u problemen wilt oplossen, moet u ervoor zorgen dat de regex-overeenkomsten rekening houden met woord grenzen. De regex voor het gebruik van woord grenzen voor dit voor beeld wordt gebruikt in de volgende regex:
 
 ```javascript
 \b(plus )?(zero|one|two|three|four|five|six|seven|eight|nine)(\s+(zero|one|two|three|four|five|six|seven|eight|nine))*\b
@@ -46,35 +46,63 @@ Deze regex-expressie komt ook overeen met een wille keurig woord dat met `phone`
 
 ### <a name="example-json"></a>Voorbeeld van JSON
 
-Als de `kb[0-9]{6}`definitie van de reguliere expressie-entiteit wordt gebruikt, is de volgende JSON-reactie een voor beeld van een utterance met de geretourneerde reguliere expressie-entiteiten voor de query: `When was kb123456 published?`
+Bij het gebruik van `kb[0-9]{6}`, als de reguliere expressie-entiteits definitie, is de volgende JSON-reactie een voor beeld van een utterance met de geretourneerde reguliere expressie-entiteiten voor de query:
+
+`When was kb123456 published?`:
+
+#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2-antwoord op Voorspellings eindpunt](#tab/V2)
 
 ```JSON
-{
-  "query": "when was kb123456 published?",
-  "topScoringIntent": {
-    "intent": "FindKBArticle",
-    "score": 0.933641255
-  },
-  "intents": [
-    {
-      "intent": "FindKBArticle",
-      "score": 0.933641255
-    },
-    {
-      "intent": "None",
-      "score": 0.04397359
-    }
-  ],
-  "entities": [
-    {
-      "entity": "kb123456",
-      "type": "KB number",
-      "startIndex": 9,
-      "endIndex": 16
-    }
-  ]
+"entities": [
+  {
+    "entity": "kb123456",
+    "type": "KB number",
+    "startIndex": 9,
+    "endIndex": 16
+  }
+]
+```
+
+
+#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3-Voorspellings eindpunt antwoord](#tab/V3)
+
+
+Dit is de JSON als `verbose=false` is ingesteld in de query reeks:
+
+```json
+"entities": {
+    "KB number": [
+        "kb123456"
+    ]
 }
 ```
+
+Dit is de JSON als `verbose=true` is ingesteld in de query reeks:
+
+```json
+"entities": {
+    "KB number": [
+        "kb123456"
+    ],
+    "$instance": {
+        "KB number": [
+            {
+                "type": "KB number",
+                "text": "kb123456",
+                "startIndex": 9,
+                "length": 8,
+                "modelTypeId": 8,
+                "modelType": "Regex Entity Extractor",
+                "recognitionSources": [
+                    "model"
+                ]
+            }
+        ]
+    }
+}
+```
+
+* * * 
 
 ## <a name="next-steps"></a>Volgende stappen
 

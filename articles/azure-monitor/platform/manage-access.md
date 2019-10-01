@@ -1,6 +1,6 @@
 ---
 title: Log Analytics-werk ruimten beheren in Azure Monitor | Microsoft Docs
-description: U kunt de toegang beheren tot gegevens die zijn opgeslagen in een Log Analytics-werk ruimten in Azure Monitor met behulp van resource, werk ruimte of machtigingen op tabel niveau. In dit artikel wordt uitgelegd hoe u dit kunt doen.
+description: U kunt de toegang beheren tot gegevens die zijn opgeslagen in een Log Analytics werk ruimte in Azure Monitor met behulp van resource, werk ruimte of machtiging op tabel niveau. In dit artikel wordt beschreven hoe u deze kunt volt ooien.
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/26/2019
+ms.date: 09/30/2019
 ms.author: magoedte
-ms.openlocfilehash: 9bf278b76846b98f58126957c589df87524bb8a4
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 920e470a8bc06050219d0f603ab842cfc267e6ce
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70034716"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71695010"
 ---
 # <a name="manage-access-to-log-data-and-workspaces-in-azure-monitor"></a>Toegang tot logboek gegevens en-werk ruimten in Azure Monitor beheren
 
@@ -42,7 +42,7 @@ U kunt de toegangs beheer modus die is geconfigureerd op een werk ruimte weer ge
 
 * Azure Resource Manager-sjabloon
 
-### <a name="from-the-azure-portal"></a>Van de Azure Portal
+### <a name="from-the-azure-portal"></a>van de Azure Portal
 
 U kunt de huidige toegangs beheer modus voor de werk ruimte weer geven op de pagina **overzicht** van de werk ruimte in het menu van de **log Analytics werk ruimte** .
 
@@ -70,10 +70,10 @@ DefaultWorkspace38917: True
 DefaultWorkspace21532: False
 ```
 
-Een waarde `False` betekent dat de werk ruimte is geconfigureerd met de toegangs modus voor de werk ruimte-context.  Een waarde `True` betekent dat de werk ruimte is geconfigureerd met de toegangs modus voor de resource context.
+Een waarde van `False` betekent dat de werk ruimte is geconfigureerd met de toegangs modus voor de werk ruimte-context.  Een waarde van `True` betekent dat de werk ruimte is geconfigureerd met de toegangs modus voor de resource context.
 
 > [!NOTE]
-> Als een werk ruimte wordt geretourneerd zonder een Booleaanse waarde en deze leeg is, komt dit ook overeen met `False` de resultaten van een waarde.
+> Als een werk ruimte wordt geretourneerd zonder een Booleaanse waarde en deze leeg is, komt dit ook overeen met de resultaten van een `False`-waarde.
 >
 
 Gebruik het volgende script om de toegangs beheer modus voor een specifieke werk ruimte in te stellen op de machtiging resource-context:
@@ -176,7 +176,7 @@ De rol Inzender van Log Analytics bevat de volgende Azure acties:
 | `Microsoft.ClassicStorage/storageAccounts/listKeys/action` <br> `Microsoft.Storage/storageAccounts/listKeys/action` | Geef de opslagaccountsleutel weer. Vereist om Log Analytics te configureren om logboeken uit Azure-opslagaccounts te lezen |
 | `Microsoft.Insights/alertRules/*` | Waarschuwingsregels toevoegen, bijwerken en verwijderen |
 | `Microsoft.Insights/diagnosticSettings/*` | Diagnostische instellingen bij Azure-resources toevoegen, bijwerken en verwijderen |
-| `Microsoft.OperationalInsights/*` | De configuratie voor Log Analytics-werk ruimten toevoegen, bijwerken en verwijderen. Gebruikers wensen `Microsoft.OperationalInsights/workspaces/write`om geavanceerde instellingen voor de werk ruimte te bewerken. |
+| `Microsoft.OperationalInsights/*` | De configuratie voor Log Analytics-werk ruimten toevoegen, bijwerken en verwijderen. Voor het bewerken van geavanceerde instellingen voor de werk ruimte moet de gebruiker `Microsoft.OperationalInsights/workspaces/write` hebben. |
 | `Microsoft.OperationsManagement/*` | Beheeroplossingen toevoegen en verwijderen |
 | `Microsoft.Resources/deployments/*` | Maak en verwijder implementaties. Vereist voor het toevoegen en verwijderen van oplossingen, werkruimten en Automation-accounts |
 | `Microsoft.Resources/subscriptions/resourcegroups/deployments/*` | Maak en verwijder implementaties. Vereist voor het toevoegen en verwijderen van oplossingen, werkruimten en Automation-accounts |
@@ -200,7 +200,7 @@ Wanneer gebruikers een query uitvoeren op Logboeken vanuit een werk ruimte met b
 | `Microsoft.Insights/logs/<tableName>/read`<br><br>Voorbeelden:<br>`Microsoft.Insights/logs/*/read`<br>`Microsoft.Insights/logs/Heartbeat/read` | De mogelijkheid om alle logboek gegevens voor de resource weer te geven.  |
 | `Microsoft.Insights/diagnosticSettings/write` | De mogelijkheid om Diagnostische instellingen te configureren om Logboeken in te stellen voor deze bron. |
 
-`/read`machtigingen worden meestal verleend vanuit een rol die  _\*/Read of_ _\*_ machtigingen bevat, zoals de ingebouwde functie [lezer](../../role-based-access-control/built-in-roles.md#reader) en [Inzender](../../role-based-access-control/built-in-roles.md#contributor) . Houd er rekening mee dat aangepaste rollen die specifieke acties of speciale ingebouwde rollen bevatten, deze machtiging mogelijk niet bevatten.
+de machtiging `/read` wordt doorgaans verleend vanuit een rol met _\*/Lees-of_ _\*-_ machtigingen, zoals de ingebouwde functie voor [lezer](../../role-based-access-control/built-in-roles.md#reader) en [Inzender](../../role-based-access-control/built-in-roles.md#contributor) . Houd er rekening mee dat aangepaste rollen die specifieke acties of speciale ingebouwde rollen bevatten, deze machtiging mogelijk niet bevatten.
 
 Zie [definiëren per-tabel toegangs beheer](#table-level-rbac) hieronder als u een ander toegangs beheer voor verschillende tabellen wilt maken.
 
@@ -210,32 +210,40 @@ Zie [definiëren per-tabel toegangs beheer](#table-level-rbac) hieronder als u e
 
     * De toegangs beheer modus voor de werk ruimte configureren voor het **gebruik van werk ruimte-of resource machtigingen**
 
-    * Ken gebruikers `*/read` of `Microsoft.Insights/logs/*/read` machtigingen toe aan hun resources. Als ze al de rol van [log Analytics lezer](../../role-based-access-control/built-in-roles.md#reader) in de werk ruimte zijn toegewezen, is het voldoende.
+    * Gebruikers `*/read` of `Microsoft.Insights/logs/*/read`-machtigingen verlenen aan hun resources. Als ze al de rol van [log Analytics lezer](../../role-based-access-control/built-in-roles.md#reader) in de werk ruimte zijn toegewezen, is het voldoende.
 
 2. Als u een gebruiker toegang wilt geven tot logboek gegevens van hun resources en de resources wilt configureren voor het verzenden van logboeken naar de werk ruimte, voert u de volgende handelingen uit:
 
     * De toegangs beheer modus voor de werk ruimte configureren voor het **gebruik van werk ruimte-of resource machtigingen**
 
-    * Gebruikers de volgende machtigingen verlenen voor de werk ruimte `Microsoft.OperationalInsights/workspaces/read` : `Microsoft.OperationalInsights/workspaces/sharedKeys/action`en. Met deze machtigingen kunnen gebruikers geen query's op werkruimte niveau uitvoeren.
+    * Gebruikers de volgende machtigingen verlenen voor de werk ruimte: `Microsoft.OperationalInsights/workspaces/read` en `Microsoft.OperationalInsights/workspaces/sharedKeys/action`. Met deze machtigingen kunnen gebruikers geen query's op werkruimte niveau uitvoeren. Ze kunnen de werk ruimte alleen inventariseren en gebruiken als doel voor Diagnostische instellingen of de configuratie van de agent.
 
-    * Gebruikers de volgende machtigingen verlenen voor hun resources: `Microsoft.Insights/logs/*/read` en `Microsoft.Insights/diagnosticSettings/write`. Als er al een rol voor het [log Analytics Inzender](../../role-based-access-control/built-in-roles.md#contributor) is toegewezen aan deze resource, is dit voldoende.
+    * Ken gebruikers de volgende machtigingen toe aan hun resources: `Microsoft.Insights/logs/*/read` en `Microsoft.Insights/diagnosticSettings/write`. Als aan de gebruiker [log Analytics](../../role-based-access-control/built-in-roles.md#contributor) de rol van rol van lezer is toegewezen, of `*/read` machtigingen aan deze resource is verleend, is deze voldoende.
 
-3. Als u een gebruiker toegang wilt geven tot logboek gegevens van hun resources, lees dan alle Azure AD-aanmeldingen en lees Updatebeheer logboek gegevens van de oplossing, voert u de volgende handelingen uit:
+3. Als u een gebruiker toegang wilt geven tot logboek gegevens vanuit hun resources zonder dat er beveiligings gebeurtenissen kunnen worden gelezen en gegevens worden verzonden, voert u de volgende handelingen uit:
+
+    * De toegangs beheer modus voor de werk ruimte configureren voor het **gebruik van werk ruimte-of resource machtigingen**
+
+    * Ken gebruikers de volgende machtigingen toe aan hun resources: `Microsoft.Insights/logs/*/read`.
+
+    * Voeg de volgende niet-actie toe om te voor komen dat gebruikers het type SecurityEvent lezen: `Microsoft.Insights/logs/SecurityEvent/read`. De niet-actie moet in dezelfde aangepaste rol worden uitgevoerd als de actie die de Lees machtiging biedt (`Microsoft.Insights/logs/*/read`). Als de gebruiker de actie lezen inherent van een andere rol die is toegewezen aan deze resource of aan het abonnement of de resource groep, kunnen ze alle logboek typen lezen. Dit geldt ook als ze `*/read` overnemen, bijvoorbeeld met de rol lezer of Inzender.
+
+4. Als u een gebruiker toegang wilt geven tot logboek gegevens van hun resources en alle Azure AD-aanmelding wilt lezen en Updatebeheer gegevens van het oplossings logboek van de werk ruimte wilt lezen, voert u de volgende handelingen uit:
 
     * De toegangs beheer modus voor de werk ruimte configureren voor het **gebruik van werk ruimte-of resource machtigingen**
 
     * Gebruikers de volgende machtigingen verlenen voor de werk ruimte: 
 
-        * `Microsoft.OperationalInsights/workspaces/read`-vereist zodat het gebruik de werk ruimte kan opsommen en de Blade werk ruimte openen in de Azure Portal
+        * `Microsoft.OperationalInsights/workspaces/read`: vereist zodat het gebruik de werk ruimte kan opsommen en de Blade werk ruimte kan openen in de Azure Portal
         * `Microsoft.OperationalInsights/workspaces/query/read`: vereist voor elke gebruiker die query's kan uitvoeren
-        * `Microsoft.OperationalInsights/workspaces/query/SigninLogs/read`– Als u logboeken van Azure AD-aanmelding wilt kunnen lezen
-        * `Microsoft.OperationalInsights/workspaces/query/Update/read`: Updatebeheer oplossingen voor logboeken kunnen lezen
-        * `Microsoft.OperationalInsights/workspaces/query/UpdateRunProgress/read`: Updatebeheer oplossingen voor logboeken kunnen lezen
-        * `Microsoft.OperationalInsights/workspaces/query/UpdateSummary/read`– Als u Logboeken voor update beheer wilt lezen
-        * `Microsoft.OperationalInsights/workspaces/query/Heartbeat/read`-vereist om Updatebeheer oplossing te kunnen gebruiken
-        * `Microsoft.OperationalInsights/workspaces/query/ComputerGroup/read`-vereist om Updatebeheer oplossing te kunnen gebruiken
+        * `Microsoft.OperationalInsights/workspaces/query/SigninLogs/read`: als u logboeken van Azure AD-aanmelding wilt kunnen lezen
+        * `Microsoft.OperationalInsights/workspaces/query/Update/read`: als u de logboeken van Updatebeheer oplossingen wilt kunnen lezen
+        * `Microsoft.OperationalInsights/workspaces/query/UpdateRunProgress/read`: als u de logboeken van Updatebeheer oplossingen wilt kunnen lezen
+        * `Microsoft.OperationalInsights/workspaces/query/UpdateSummary/read`: om logboeken voor update beheer te kunnen lezen
+        * `Microsoft.OperationalInsights/workspaces/query/Heartbeat/read`: vereist om Updatebeheer oplossing te kunnen gebruiken
+        * `Microsoft.OperationalInsights/workspaces/query/ComputerGroup/read`: vereist om Updatebeheer oplossing te kunnen gebruiken
 
-    * Gebruikers de volgende machtigingen verlenen voor hun resources: `*/read` of `Microsoft.Insights/logs/*/read`. Als aan de gebruiker de rol van [log Analytics lezer](../../role-based-access-control/built-in-roles.md#reader) is toegewezen in de werk ruimte, is dit voldoende.
+    * Ken gebruikers de volgende machtigingen toe aan hun resources: `*/read`, toegewezen aan de rol van lezer of `Microsoft.Insights/logs/*/read`. 
 
 ## <a name="table-level-rbac"></a>RBAC op tabel niveau
 

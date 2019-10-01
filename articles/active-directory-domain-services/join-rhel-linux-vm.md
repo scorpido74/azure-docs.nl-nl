@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/15/2019
 ms.author: iainfou
-ms.openlocfilehash: 9c9b4cdfb77f1605a6730d0735541eeb78dcd323
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: b90650fa2cd343c81b7bbb2fcea24c3a95f537b6
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71075533"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71702041"
 ---
 # <a name="join-a-red-hat-enterprise-linux-virtual-machine-to-an-azure-ad-domain-services-managed-domain"></a>Een virtuele Red Hat Enterprise Linux-computer toevoegen aan een beheerd domein van Azure AD Domain Services
 
@@ -78,14 +78,24 @@ Als u klaar bent, slaat u het *hosts* -bestand `:wq` op en sluit u het af met de
 
 De VM moet enkele extra pakketten hebben om de virtuele machine toe te voegen aan het door Azure AD DS beheerde domein. Als u deze pakketten wilt installeren en configureren, moet u de hulpprogram ma's voor domein `yum`deelname bijwerken en installeren met:
 
+ **RHEL 7** 
+
 ```console
 sudo yum install realmd sssd krb5-workstation krb5-libs oddjob oddjob-mkhomedir samba-common-tools
+```
+
+ **RHEL 6** 
+
+```console
+sudo yum install adcli sssd authconfig krb5-workstation
 ```
 
 ## <a name="join-vm-to-the-managed-domain"></a>Virtuele machine toevoegen aan het beheerde domein
 
 Nu de vereiste pakketten zijn geïnstalleerd op de VM, voegt u de virtuele machine toe aan het beheerde domein van Azure AD DS.
-
+ 
+  **RHEL 7**
+     
 1. Gebruik de `realm discover` opdracht om het beheerde domein van Azure AD DS te detecteren. In het volgende voor beeld wordt de realm- *CONTOSO.com*gedetecteerd. Geef in alle hoofd letters uw eigen Azure AD DS beheerde domein naam op:
 
     ```console
@@ -93,7 +103,7 @@ Nu de vereiste pakketten zijn geïnstalleerd op de VM, voegt u de virtuele machi
     ```
 
    Als de `realm discover` opdracht uw door Azure AD DS beheerde domein niet kan vinden, raadpleegt u de volgende stappen voor probleem oplossing:
-
+   
     * Zorg ervoor dat het domein bereikbaar is vanaf de VM. Probeer `ping contoso.com` te zien of er een positief antwoord wordt geretourneerd.
     * Controleer of de virtuele machine is geïmplementeerd op hetzelfde of een peered virtueel netwerk waarin het beheerde domein van Azure AD DS beschikbaar is.
     * Controleer of de DNS-server instellingen voor het virtuele netwerk zijn bijgewerkt zodat ze verwijzen naar de domein controllers van het door Azure AD DS beheerde domein.
@@ -101,10 +111,10 @@ Nu de vereiste pakketten zijn geïnstalleerd op de VM, voegt u de virtuele machi
 1. Initialiseer nu Kerberos met behulp `kinit` van de opdracht. Geef een gebruiker op die deel uitmaakt van de groep *Aad DC-Administrators* . Voeg, indien nodig, [een gebruikers account toe aan een groep in azure AD](../active-directory/fundamentals/active-directory-groups-members-azure-portal.md).
 
     De Azure AD DS Managed domain name moet in alle hoofd letters worden ingevoerd. In het volgende voor beeld wordt het account `contosoadmin@contoso.com` met de naam gebruikt voor het initialiseren van Kerberos. Voer uw eigen gebruikers account in dat lid is van de groep *Aad DC-Administrators* :
-
+    
     ```console
     kinit contosoadmin@CONTOSO.COM
-    ```
+    ``` 
 
 1. Voeg ten slotte de computer toe aan het beheerde domein van Azure AD DS `realm join` met behulp van de opdracht. Gebruik hetzelfde gebruikers account dat lid is van de groep *Aad DC-Administrators* die u in de vorige `kinit` `contosoadmin@CONTOSO.COM`opdracht hebt opgegeven, zoals:
 
@@ -118,7 +128,108 @@ Het kan even duren voordat de virtuele machine wordt toegevoegd aan het beheerde
 Successfully enrolled machine in realm
 ```
 
+  **RHEL 6** 
+
+1. Gebruik de `adcli info` opdracht om het beheerde domein van Azure AD DS te detecteren. In het volgende voor beeld wordt de realm- *CONTOSO.com*gedetecteerd. Geef in alle hoofd letters uw eigen Azure AD DS beheerde domein naam op:
+
+    ```console
+    sudo adcli info contoso.com
+    ```
+    
+   Als de `adcli info` opdracht uw door Azure AD DS beheerde domein niet kan vinden, raadpleegt u de volgende stappen voor probleem oplossing:
+   
+    * Zorg ervoor dat het domein bereikbaar is vanaf de VM. Probeer `ping contoso.com` te zien of er een positief antwoord wordt geretourneerd.
+    * Controleer of de virtuele machine is geïmplementeerd op hetzelfde of een peered virtueel netwerk waarin het beheerde domein van Azure AD DS beschikbaar is.
+    * Controleer of de DNS-server instellingen voor het virtuele netwerk zijn bijgewerkt zodat ze verwijzen naar de domein controllers van het door Azure AD DS beheerde domein.
+
+1. U moet eerst lid worden van het domein met behulp van de `adcli join`-opdracht. met deze opdracht wordt ook de keytab gemaakt om de computer te verifiëren. Gebruik een gebruikers account dat lid is van de groep *Aad DC-Administrators* . 
+
+    ```console
+    sudo adcli join contoso.com -U contosoadmin
+    ```
+
+1. Configureer nu de `/ect/krb5.conf` en maak de `/etc/sssd/sssd.conf`-bestanden om het domein `contoso.com` Active Directory te gebruiken. 
+   Zorg ervoor dat `CONTOSO.COM` wordt vervangen door uw eigen domein naam:
+
+    Open het bestand `/ect/krb5.conf` met een editor:
+
+    ```console
+    sudo vi /etc/krb5.conf
+    ```
+
+    Werk het `krb5.conf`-bestand bij zodat dit overeenkomt met het volgende voor beeld:
+
+    ```console
+    [logging]
+     default = FILE:/var/log/krb5libs.log
+     kdc = FILE:/var/log/krb5kdc.log
+     admin_server = FILE:/var/log/kadmind.log
+    
+    [libdefaults]
+     default_realm = CONTOSO.COM
+     dns_lookup_realm = true
+     dns_lookup_kdc = true
+     ticket_lifetime = 24h
+     renew_lifetime = 7d
+     forwardable = true
+    
+    [realms]
+     CONTOSO.COM = {
+     kdc = CONTOSO.COM
+     admin_server = CONTOSO.COM
+     }
+    
+    [domain_realm]
+     .CONTOSO.COM = CONTOSO.COM
+     CONTOSO.COM = CONTOSO.COM
+    ```
+    
+   Maak het `/etc/sssd/sssd.conf`-bestand:
+    
+    ```console
+    sudo vi /etc/sssd/sssd.conf
+    ```
+
+    Werk het `sssd.conf`-bestand bij zodat dit overeenkomt met het volgende voor beeld:
+
+    ```console
+    [sssd]
+     services = nss, pam, ssh, autofs
+     config_file_version = 2
+     domains = CONTOSO.COM
+    
+    [domain/CONTOSO.COM]
+    
+     id_provider = ad
+    ```
+
+1. Zorg ervoor dat `/etc/sssd/sssd.conf`-machtigingen 600 zijn en eigendom zijn van de hoofd gebruiker:
+
+    ```console
+    sudo chmod 600 /etc/sssd/sssd.conf
+    sudo chown root:root /etc/sssd/sssd.conf
+    ```
+
+1. Gebruik `authconfig` om de VM te instrueren over de integratie van AD Linux:
+
+    ```console
+    sudo authconfig --enablesssd --enablesssdauth --update
+    ```
+    
+1. Start de SSSD-service en schakel deze in:
+
+    ```console
+    sudo service sssd start
+    sudo chkconfig sssd on
+    ```
+
 Als uw virtuele machine het proces voor domein deelname niet kan volt ooien, moet u ervoor zorgen dat door de netwerk beveiligings groep van de virtuele machine uitgaand Kerberos-verkeer op TCP + UDP-poort 464 naar het subnet van het virtuele netwerk voor uw Azure AD DS beheerde domein is toegestaan.
+
+Controleer nu of u informatie over gebruikers-AD kunt opvragen met `getent`
+
+```console
+sudo getent passwd contosoadmin
+```
 
 ## <a name="allow-password-authentication-for-ssh"></a>Wachtwoord verificatie voor SSH toestaan
 
@@ -136,12 +247,20 @@ Standaard kunnen gebruikers zich alleen aanmelden bij een VM met behulp van open
     PasswordAuthentication yes
     ```
 
-    Als u klaar bent, slaat u het *sshd_conf* -bestand `:wq` op en sluit u het af met de opdracht van de editor.
+    Als u klaar bent, slaat u het *sshd_conf* -bestand op en sluit u het af met de `:wq`-opdracht van de editor.
 
 1. Als u de wijzigingen wilt Toep assen en gebruikers wilt laten aanmelden met een wacht woord, start u de SSH-service opnieuw:
 
+   **RHEL 7** 
+    
     ```console
     sudo systemctl restart sshd
+    ```
+
+   **RHEL 6** 
+    
+    ```console
+    sudo service sshd restart
     ```
 
 ## <a name="grant-the-aad-dc-administrators-group-sudo-privileges"></a>De groep ' AAD DC Administrators ' sudo privileges verlenen

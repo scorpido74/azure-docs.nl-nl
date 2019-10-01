@@ -12,12 +12,12 @@ keywords: Docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers, 
 manager: gwallace
 ms.custom: vs-azure
 ms.workload: azure-vs
-ms.openlocfilehash: ece47c86fba6bc975a4146f596fa001014352a4f
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 41dea16f7938d391f8cdf03e1a731e8082f74b26
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68725843"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71695474"
 ---
 # <a name="quickstart-debug-and-iterate-with-visual-studio-and-net-core-on-kubernetes-with-azure-dev-spaces"></a>Quickstart: Fouten opsporen en herhalen met Visual Studio en .NET Core op Kubernetes met Azure dev Spaces
 
@@ -26,6 +26,11 @@ In deze handleiding leert u het volgende:
 - Azure Dev Spaces instellen met een beheerd Kubernetes-cluster in Azure.
 - Iteratief code ontwikkelen in containers met Visual Studio.
 - Fout opsporing in code die wordt uitgevoerd in uw cluster met Visual Studio.
+
+Met Azure dev Spaces kunt u ook fouten opsporen en herhalen met:
+- [Java-en Visual Studio code](quickstart-java.md)
+- [Node. js en Visual Studio code](quickstart-nodejs.md)
+- [.NET core en Visual Studio code](quickstart-netcore.md)
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -99,7 +104,7 @@ Dit proces heeft mogelijk open bare toegang tot uw service uitgeschakeld. Als u 
 
 ## <a name="update-code"></a>Code bijwerken
 
-Als Visual Studio nog steeds is verbonden met uw dev-ruimte, klikt u op de knop stoppen. Regel 20 in wijzigen `Controllers/HomeController.cs` in:
+Als Visual Studio nog steeds is verbonden met uw dev-ruimte, klikt u op de knop stoppen. Wijzig regel 20 in `Controllers/HomeController.cs` in:
     
 ```csharp
 ViewData["Message"] = "Your application description page in Azure.";
@@ -117,7 +122,7 @@ Open uw service in een browser en Let op dat er geen bericht wordt weer gegeven.
 
 Tijdens het uitvoeren van uw service in Kubernetes met een fout opsporingsprogramma, hebt u volledige toegang tot fout opsporingsgegevens, zoals de aanroep stack, lokale variabelen en uitzonderings gegevens.
 
-Verwijder het onderbrekings punt door de cursor in regel 20 `Controllers/HomeController.cs` in te plaatsen en op *F9 te drukken*.
+Verwijder het onderbrekings punt door de cursor op regel 20 in `Controllers/HomeController.cs` te plaatsen en op *F9 te drukken*.
 
 ## <a name="clean-up-your-azure-resources"></a>Uw Azure-resources opschonen
 

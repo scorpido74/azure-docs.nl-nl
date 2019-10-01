@@ -10,12 +10,12 @@ ms.topic: quickstart
 description: Snelle Kubernetes ontwikkeling met containers, micro Services en Java op Azure
 keywords: Docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers, Java, helm, Service-Mesh, Service-Mesh-route ring, kubectl, K8S
 manager: gwallace
-ms.openlocfilehash: 28b6a2ecff756c878bb3bc0a69976e7cede5f7ee
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 160787ba9766d27f9497b4fd6822fc5bc25cd4ba
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70772664"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71695520"
 ---
 # <a name="quickstart-debug-and-iterate-with-visual-studio-code-and-java-on-kubernetes-using-azure-dev-spaces"></a>Quickstart: Fouten opsporen en herhalen met Visual Studio code en Java op Kubernetes met behulp van Azure dev Spaces
 
@@ -25,6 +25,10 @@ In deze handleiding leert u het volgende:
 - Ontwikkel iteratieve code in containers met Visual Studio code.
 - Fout opsporing voor de code in uw dev-ruimte vanuit Visual Studio code.
 
+Met Azure dev Spaces kunt u ook fouten opsporen en herhalen met:
+- [Node. js en Visual Studio code](quickstart-nodejs.md)
+- [.NET core en Visual Studio code](quickstart-netcore.md)
+- [.NET core en Visual Studio](quickstart-netcore-visualstudio.md)
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -115,7 +119,7 @@ Klik op *fout* opsporing en vervolgens op *fout opsporing stoppen* om het fout o
 Als u een bijgewerkte versie van uw service wilt implementeren, kunt u elk bestand in het project bijwerken en het *Java-programma starten (AZDS)* opnieuw uitvoeren. Bijvoorbeeld:
 
 1. Als uw toepassing nog steeds wordt uitgevoerd, klikt u op *fout* opsporing en *stopt u fout opsporing* .
-1. [Regel 19 `src/main/java/com/ms/sample/webfrontend/Application.java` ](https://github.com/Azure/dev-spaces/blob/master/samples/java/getting-started/webfrontend/src/main/java/com/ms/sample/webfrontend/Application.java#L19) bijwerken naar:
+1. [Regel 19 in `src/main/java/com/ms/sample/webfrontend/Application.java`](https://github.com/Azure/dev-spaces/blob/master/samples/java/getting-started/webfrontend/src/main/java/com/ms/sample/webfrontend/Application.java#L19) bijwerken naar:
     
     ```java
     return "Hello from webfrontend in Azure!";
@@ -136,7 +140,7 @@ Open uw service in een browser en Let op dat er geen bericht wordt weer gegeven.
 
 Tijdens het uitvoeren van uw service in Kubernetes met een fout opsporingsprogramma, hebt u volledige toegang tot fout opsporingsgegevens, zoals de aanroep stack, lokale variabelen en uitzonderings gegevens.
 
-Verwijder het onderbrekings punt door de cursor op regel 19 `src/main/java/com/ms/sample/webfrontend/Application.java` in te plaatsen en op *F9 te drukken*.
+Verwijder het onderbrekings punt door de cursor op regel 19 in `src/main/java/com/ms/sample/webfrontend/Application.java` te plaatsen en op *F9 te drukken*.
 
 ## <a name="update-code-from-visual-studio-code"></a>Code bijwerken vanuit Visual Studio code
 

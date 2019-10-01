@@ -1,35 +1,35 @@
 ---
-title: Waarschuwingen beheren van SCOM, Zabbix en Nagios in Azure Monitor
-description: Waarschuwingen beheren van SCOM, Zabbix en Nagios in Azure Monitor
+title: Waarschuwingen beheren vanuit System Center Operations Manager, zabbix en nagios in Azure Monitor
+description: Waarschuwingen beheren vanuit System Center Operations Manager, zabbix en nagios in Azure Monitor
 author: anantr
 services: monitoring
 ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.author: anantr
+ms.author: robb
 ms.subservice: alerts
-ms.openlocfilehash: 48fb9d8eaf2003834a420b48d649c830c608fd6e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6730402348069df7c2597aa0d73a4211669c2d66
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60712975"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71702835"
 ---
-# <a name="manage-alerts-from-scom-zabbix-and-nagios-in-azure-monitor"></a>Waarschuwingen beheren van SCOM, Zabbix en Nagios in Azure Monitor
+# <a name="manage-alerts-from-system-center-operations-manager-zabbix-and-nagios-in-azure-monitor"></a>Waarschuwingen beheren vanuit System Center Operations Manager, zabbix en nagios in Azure Monitor
 
-U kunt nu uw meldingen van Nagios en Zabbix System Center Operations Manager in weergeven [Azure Monitor](https://aka.ms/azure-alerts-overview). Deze waarschuwingen zijn afkomstig uit integraties met Nagios/Zabbix-servers of System Center Operations Manager in Log Analytics. 
+U kunt nu uw waarschuwingen weer geven via nagios, zabbix en System Center Operations Manager in [Azure monitor](https://aka.ms/azure-alerts-overview). Deze waarschuwingen zijn afkomstig van integraties met nagios/zabbix-servers of System Center Operations Manager in Log Analytics. 
 
 ## <a name="prerequisites"></a>Vereisten
-Alle records in de Log Analytics-opslagplaats met het type waarschuwing wordt geïmporteerd in Azure Monitor, zodat u de configuratie die is vereist voor het verzamelen van deze records moet uitvoeren.
-1. Voor **Nagios** en **Zabbix** waarschuwingen, [configureren die servers](https://docs.microsoft.com/azure/log-analytics/log-analytics-linux-agents) naar [waarschuwingen verzenden](https://docs.microsoft.com/azure/azure-monitor/platform/data-sources-alerts-nagios-zabbix?toc=%2Fazure%2Fazure-monitor%2Ftoc.json) naar Log Analytics.
-1. Voor **System Center Operations Manager** waarschuwingen, [uw Operations Manager-beheergroep verbinden met uw Log Analytics-werkruimte](https://docs.microsoft.com/azure/log-analytics/log-analytics-om-agents). Na deze implementatie van de [Waarschuwingsbeheer](https://docs.microsoft.com/azure/azure-monitor/platform/alert-management-solution) oplossing uit de marketplace met Azure-oplossingen. Zodra u klaar bent, worden alle waarschuwingen die zijn gemaakt in System Center Operations Manager geïmporteerd in Log Analytics.
+Alle records in de Log Analytics opslag plaats met een type waarschuwing worden geïmporteerd in Azure Monitor. u moet dus de configuratie uitvoeren die vereist is voor het verzamelen van deze records.
+1. Configureer voor **nagios** -en **zabbix** -waarschuwingen [die servers](https://docs.microsoft.com/azure/log-analytics/log-analytics-linux-agents) om waarschuwingen naar log Analytics te [verzenden](https://docs.microsoft.com/azure/azure-monitor/platform/data-sources-alerts-nagios-zabbix?toc=%2Fazure%2Fazure-monitor%2Ftoc.json) .
+1. Voor **System Center Operations Manager** waarschuwingen [verbindt u uw Operations Manager-beheer groep met uw log Analytics-werk ruimte](https://docs.microsoft.com/azure/log-analytics/log-analytics-om-agents). Hiertoe implementeert u de [Waarschuwingenbeheer](https://docs.microsoft.com/azure/azure-monitor/platform/alert-management-solution) oplossing van de Azure Solutions Marketplace. Zodra u klaar bent, worden alle waarschuwingen die zijn gemaakt in System Center Operations Manager, in Log Analytics geïmporteerd.
 
-## <a name="view-your-alert-instances"></a>Uw waarschuwing instanties weergeven
-Nadat u het importeren in Log Analytics hebt geconfigureerd, kunt u weergeven van waarschuwingen exemplaren van deze services in de bewaking starten [Azure Monitor](https://aka.ms/azure-alerts-overview). Zodra ze aanwezig in Azure Monitor zijn, kunt u [beheren van uw waarschuwingen exemplaren](https://aka.ms/managing-alert-instances), [slimme groepen die zijn gemaakt op deze waarschuwingen beheren](https://aka.ms/managing-smart-groups) en [invloed op de status van uw waarschuwingen en slimme groepen](https://aka.ms/managing-alert-smart-group-states).
+## <a name="view-your-alert-instances"></a>Uw waarschuwings instanties weer geven
+Zodra u het importeren in Log Analytics hebt geconfigureerd, kunt u waarschuwings instanties van deze bewakings Services in [Azure monitor](https://aka.ms/azure-alerts-overview)starten. Zodra ze aanwezig zijn in Azure Monitor, kunt u [uw waarschuwings instanties beheren](https://aka.ms/managing-alert-instances), [slimme groepen beheren die zijn gemaakt voor deze waarschuwingen](https://aka.ms/managing-smart-groups) en [de status van uw waarschuwingen en slimme groepen wijzigen](https://aka.ms/managing-alert-smart-group-states).
 
 > [!NOTE]
->  1. Deze oplossing kunt u alleen SCOM/Zabbix/Nagios geactiveerde waarschuwing exemplaren weergeven in Azure Monitor. Configuratie van waarschuwingsregel kan alleen worden weergegeven/bewerkt in de respectieve controleprogramma's. 
->  1. Alle exemplaren van geactiveerde waarschuwingen zijn beschikbaar in Azure Monitor en Azure Log Analytics. Er is momenteel geen manier om te kiezen tussen de twee of alleen specifieke waarschuwingen geactiveerde voor opnemen.
->  1. Alle waarschuwingen van SCOM, Zabbix en Nagios hebben de signaaltype 'Onbekend' omdat het onderliggende telemetrietype niet beschikbaar is.
->  1. Nagios-meldingen zijn bijvoorbeeld niet stateful – de [voorwaarde controleren](https://aka.ms/azure-alerts-overview) van een waarschuwing niet verandert van 'Fired' in 'Opgelost'. In plaats daarvan worden de "Fired" en "Opgelost" als afzonderlijke exemplaren van de waarschuwing weergegeven. 
+>  1. Met deze oplossing kunt u alleen System Center Operations Manager/zabbix/nagios geactiveerde waarschuwings instanties in Azure Monitor weer geven. De configuratie van de waarschuwings regel kan alleen worden weer gegeven/bewerkt in de respectieve controle hulpprogramma's. 
+>  1. Alle geactiveerde waarschuwings instanties zijn beschikbaar in Azure Monitor en Azure Log Analytics. Er is momenteel geen manier om te kiezen tussen de twee of opname alleen specifieke geactiveerde waarschuwingen.
+>  1. Alle waarschuwingen van System Center Operations Manager, zabbix en nagios hebben het signaal type ' onbekend ', omdat het onderliggende telemetrie-type niet beschikbaar is.
+>  1. Nagios-waarschuwingen zijn niet stateful: de [bewakings voorwaarde](https://aka.ms/azure-alerts-overview) van een waarschuwing gaat bijvoorbeeld niet van ' geactiveerd ' naar ' opgelost '. In plaats daarvan worden de ' geactiveerde ' en ' opgeloste ' als afzonderlijke waarschuwings instanties weer gegeven. 
 

@@ -9,17 +9,17 @@ ms.author: deli
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 09/23/2019
-ms.openlocfilehash: 6b80cbd16ac78f7f347bef9ab8e22c4d67d31058
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 73aa641fc4bb01ef3d06820ecd18b61197ab81e7
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71301033"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71695503"
 ---
 # <a name="migrate-azure-scheduler-jobs-to-azure-logic-apps"></a>Azure scheduler-taken migreren naar Azure Logic Apps
 
 > [!IMPORTANT]
-> [Azure Logic apps](../logic-apps/logic-apps-overview.md) vervangt Azure scheduler, die buiten gebruik wordt [gesteld](#retire-date). Als u wilt blijven werken met de taken die u in scheduler hebt ingesteld, gaat u naar Azure Logic Apps zo snel mogelijk door dit artikel te volgen.
+> [Azure Logic apps](../logic-apps/logic-apps-overview.md) vervangt Azure scheduler, die buiten gebruik wordt [gesteld](#retire-date). Als u wilt blijven werken met de taken die u in scheduler hebt ingesteld, gaat u naar Azure Logic Apps zo snel mogelijk door dit artikel te volgen. 
 
 In dit artikel wordt beschreven hoe u eenmalige en terugkerende taken kunt plannen door automatische werk stromen te maken met Azure Logic Apps, in plaats van met Azure scheduler. Wanneer u geplande taken met Logic Apps maakt, krijgt u de volgende voor delen:
 
@@ -38,6 +38,10 @@ Zie [Wat is Azure Logic apps?](../logic-apps/logic-apps-overview.md) of probeer 
 * Een Azure-abonnement. Als u nog geen abonnement op Azure hebt, [registreer u dan nu voor een gratis Azure-account](https://azure.microsoft.com/free/).
 
 * Als u uw logische app wilt activeren door HTTP-aanvragen te verzenden, gebruikt u een hulp programma zoals de [postman desktop-app](https://www.getpostman.com/apps).
+
+## <a name="migrate-by-using-a-script"></a>Migreren met behulp van een script
+
+Elke scheduler-taak is uniek, dus er bestaat geen hulp programma met één grootte dat geschikt is voor het migreren van scheduler-taken naar Azure Logic Apps. U kunt [Dit script echter bewerken](https://github.com/Azure/logicapps/tree/master/scripts/scheduler-migration) zodat het aan uw behoeften voldoet.
 
 ## <a name="schedule-one-time-jobs"></a>Eenmalige taken plannen
 
@@ -203,7 +207,7 @@ Zie voor meer informatie over het afhandelen van uitzonde [ringen afhandelen en 
 **A**: Als best practice, moet u altijd een back-up maken van uw werk. Controleer of de Logic apps die u hebt gemaakt, op de verwachte manier worden uitgevoerd voordat u de scheduler-taken verwijdert of uitschakelt. 
 
 **V**: Is er een hulp programma waarmee ik mijn taken kan migreren van scheduler naar Logic Apps? <br>
-**A**: Elke scheduler-taak is uniek, dus er bestaat geen hulp programma met één grootte dat past. Er zijn echter verschillende scripts die u kunt aanpassen aan uw behoeften. Ga terug naar de beschik baarheid van scripts en probeer het later opnieuw.
+**A**: Elke scheduler-taak is uniek, dus er bestaat geen hulp programma met één grootte dat past. Op basis van uw behoeften kunt u [Dit script echter bewerken om Azure scheduler-taken naar Azure Logic apps te migreren](https://github.com/Azure/logicapps/tree/master/scripts/scheduler-migration).
 
 **V**: Waar kan ik ondersteuning krijgen voor het migreren van mijn scheduler-taken? <br>
 **A**: Hier volgen enkele manieren om ondersteuning te krijgen: 

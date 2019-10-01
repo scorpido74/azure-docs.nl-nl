@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 08/28/2019
+ms.date: 09/30/2019
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fe6da9b1557293ee9002681c6ce90c1c6c62a25b
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: c3f3d7eb0fe544316aec1ce1ece45b2c7c1d9085
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231251"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71694717"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>Zelfstudie: Een on-premises toepassing voor externe toegang toevoegen via Application Proxy in Azure Active Directory
 
@@ -50,6 +50,9 @@ Om een hoge beschikbaarheid in uw productieomgeving te realiseren wordt aangerad
 
 1. Plaats de connectorserver fysiek dicht bij de toepassingsservers om de prestaties tussen de connector en de toepassing te optimaliseren. Zie [Overwegingen bij de netwerktopologie](application-proxy-network-topology.md) voor meer informatie.
 1. De connector-server en de Web-toepassings servers moeten deel uitmaken van hetzelfde Active Directory domein of dezelfde vertrouwens domeinen. Het hebben van de servers in hetzelfde domein of het vertrouwen van domeinen is een vereiste voor het gebruik van eenmalige aanmelding (SSO) met geïntegreerde Windows-verificatie (IWA) en Kerberos-beperkte delegering (KCD). Als de connectorserver en de webtoepassingsservers zich in verschillende Active Directory-domeinen bevinden, moet u delegatie op basis van resources gebruiken voor eenmalige aanmelding. Zie [KCD voor eenmalige aanmelding met Application Proxy](application-proxy-configure-single-sign-on-with-kcd.md) voor meer informatie.
+
+> [!WARNING]
+> Als u Azure AD-wacht woord voor wachtwoord beveiliging hebt geïmplementeerd, moet u Azure AD-toepassingsproxy-en Azure AD-wachtwoord beveiligings proxy niet samen op dezelfde computer installeren. Azure AD-toepassingsproxy en Azure AD-wachtwoord beveiligings proxy installeren verschillende versies van de Azure AD Connect agent Updater-Service. Deze verschillende versies zijn incompatibel wanneer ze samen op dezelfde computer worden geïnstalleerd.
 
 #### <a name="tls-requirements"></a>TLS-vereisten
 
@@ -94,9 +97,9 @@ Sta toegang tot de volgende URL's toe:
 | --- | --- |
 | \*.msappproxy.net<br>\*.servicebus.windows.net | Communicatie tussen de connector en de Application Proxy-cloudservice |
 | mscrl.microsoft.com:80<br>crl.microsoft.com:80<br>ocsp.msocsp.com:80<br>www.microsoft.com:80 | Azure gebruikt deze Url's om certificaten te verifiëren. |
-| login.windows.net<br>secure.aadcdn.microsoftonline-p.com<br>\*.microsoftonline.com<br>\*. microsoftonline-p.com<br>\*. msauth.net<br>\*. msauthimages.net<br>\*. msecnd.net<br>\*. msftauth.net<br>\*. msftauthimages.net<br>\*. phonefactor.net<br>enterpriseregistration.windows.net<br>management.azure.com<br>policykeyservice.dc.ad.msft.net | De connector gebruikt deze URL's tijdens het registratieproces. |
+| login.windows.net<br>secure.aadcdn.microsoftonline-p.com<br>\*.microsoftonline.com<br>\*.microsoftonline-p.com<br>\*.msauth.net<br>\*.msauthimages.net<br>\*.msecnd.net<br>\*.msftauth.net<br>\*.msftauthimages.net<br>\*.phonefactor.net<br>enterpriseregistration.windows.net<br>management.azure.com<br>policykeyservice.dc.ad.msft.net | De connector gebruikt deze URL's tijdens het registratieproces. |
 
-U kunt verbindingen met. \*msappproxy.net en \*. servicebus.Windows.net toestaan als uw firewall of proxy u in staat stelt om DNS-acceptatie lijsten te configureren. Als dat niet het geval is, moet u toegang tot de [Azure IP-bereiken en de service Tags-open bare Cloud](https://www.microsoft.com/download/details.aspx?id=56519)toestaan. die overigens elke week worden bijgewerkt.
+U kunt verbindingen met \*.msappproxy.net en \*.servicebus.windows.net toestaan als uw firewall of proxy u in staat stelt om DNS-acceptatie lijsten te configureren. Als dat niet het geval is, moet u toegang tot de [Azure IP-bereiken en de service Tags-open bare Cloud](https://www.microsoft.com/download/details.aspx?id=56519)toestaan. die overigens elke week worden bijgewerkt.
 
 ## <a name="install-and-register-a-connector"></a>Een connector installeren en registreren
 
@@ -119,7 +122,7 @@ De connector installeren:
 
 ### <a name="general-remarks"></a>Algemene opmerkingen
 
-Als u al een connector hebt geïnstalleerd, voert u een nieuwe installatie uit met de meest recente versie. Zie [toepassings proxy voor informatie over eerder uitgebrachte versies en de wijzigingen die ze bevatten: Release geschiedenis](application-proxy-release-version-history.md)van versie.
+Als u al een connector hebt geïnstalleerd, voert u een nieuwe installatie uit met de meest recente versie. Zie [Application-proxy voor informatie over eerder uitgebrachte versies en de wijzigingen die ze bevatten: Release geschiedenis van versie @ no__t-0.
 
 Als u meer dan één Windows-server voor uw on-premises toepassingen wilt, moet u de connector op elke server installeren en registreren. U kunt de connectors onderverdelen in connectorgroepen. Zie [Connectorgroepen](application-proxy-connector-groups.md) voor meer informatie.
 
@@ -169,7 +172,7 @@ Nu u uw omgeving hebt voorbereid en een connector hebt geïnstalleerd, kunt u on
     | Veld | Description |
     | :---- | :---------- |
     | **Name** | De naam van de toepassing die wordt weergegeven in het toegangsvenster en in de Azure-portal. |
-    | **Interne URL** | Dit is de URL voor toegang tot de toepassing vanuit uw particuliere netwerk. U kunt voor het publiceren een specifiek pad opgeven op de back-endserver, terwijl de rest van de server ongepubliceerd blijft. Op deze manier kunt u verschillende sites op dezelfde server als verschillende apps publiceren en elk daarvan een eigen naam en toegangsregels geven.<br><br>Als u een pad publiceert, moet u ervoor zorgen dat dit alle benodigde installatiekopieën, scripts en opmaakmodellen voor uw toepassing bevat. Als uw app bijvoorbeeld op https:\//yourapp/app en installatie kopieën gebruikt die zich bevinden op https:\//yourapp/media, moet u https:\//yourapp/als pad publiceren. Deze interne URL hoeft niet de bestemmingspagina te zijn die uw gebruikers te zien krijgen. Zie [Een aangepaste startpagina voor gepubliceerde apps instellen](application-proxy-configure-custom-home-page.md) voor meer informatie. |
+    | **Interne URL** | Dit is de URL voor toegang tot de toepassing vanuit uw particuliere netwerk. U kunt voor het publiceren een specifiek pad opgeven op de back-endserver, terwijl de rest van de server ongepubliceerd blijft. Op deze manier kunt u verschillende sites op dezelfde server als verschillende apps publiceren en elk daarvan een eigen naam en toegangsregels geven.<br><br>Als u een pad publiceert, moet u ervoor zorgen dat dit alle benodigde installatiekopieën, scripts en opmaakmodellen voor uw toepassing bevat. Als uw app bijvoorbeeld op https: \/-yourapp/-app en installatie kopieën gebruikt die zich bevinden op https: \//yourapp/media, moet u HTTPS publiceren: \//yourapp/als pad. Deze interne URL hoeft niet de bestemmingspagina te zijn die uw gebruikers te zien krijgen. Zie [Een aangepaste startpagina voor gepubliceerde apps instellen](application-proxy-configure-custom-home-page.md) voor meer informatie. |
     | **Externe URL** | Het adres voor gebruikers om toegang te krijgen tot de app van buiten uw netwerk. Als u het standaarddomein voor Application Proxy niet wilt gebruiken, lees dan de informatie over [aangepaste domeinen in Azure AD Application Proxy](application-proxy-configure-custom-domain.md).|
     | **Verificatie vooraf** | De manier waarop gebruikers door Application Proxy worden geverifieerd voordat ze toegang krijgen tot uw toepassing.<br><br>**Azure Active Directory**: de gebruikers worden omgeleid door Application Proxy zodat ze zich kunnen aanmelden met Azure AD. Hierbij worden hun machtigingen geverifieerd voor de map en de toepassing. U wordt aangeraden deze optie als standaard in te stellen, zodat u kunt profiteren van Azure AD-beveiligings functies zoals voorwaardelijke toegang en Multi-Factor Authentication. **Azure Active Directory** is vereist voor het bewaken van de toepassing met Microsoft Cloud Application Security.<br><br>**Passthrough** : gebruikers hoeven zich niet te verifiëren bij Azure AD om toegang te krijgen tot de toepassing. U kunt nog steeds verificatievereisten op de back-end instellen. |
     | **Connectorgroep** | Connectors verwerken de externe toegang tot uw toepassing en met connectorgroepen kunt u connectors en toepassingen indelen per regio, netwerk of doel. Als u nog geen connectorgroepen hebt gemaakt, wordt uw toepassing toegewezen als **Standaard**.<br><br>Als uw toepassing gebruikmaakt van WebSockets om verbinding te maken, moeten alle connectors in de groep versie 1.5.612.0 of hoger hebben.|
@@ -183,7 +186,7 @@ Nu u uw omgeving hebt voorbereid en een connector hebt geïnstalleerd, kunt u on
     | **Beveiligde cookies gebruiken**| Stel deze waarde in op **Ja** om cookies te verzenden via een beveiligd kanaal, zoals een versleutelde HTTPS-aanvraag.
     | **Permanente cookies gebruiken**| Houd deze waarde ingesteld op **Nee**. Gebruik deze instelling alleen voor toepassingen die geen cookies tussen processen kunnen delen. Zie [cookie-instellingen voor toegang tot on-premises toepassingen in azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-configure-cookie-settings)voor meer informatie over cookie-instellingen.
     | **URL's in headers vertalen** | Laat deze waarde op **Ja** staan, tenzij voor uw toepassing de oorspronkelijke host-header in de verificatieaanvraag moet zijn opgenomen. |
-    | **URL's vertalen in de hoofdtekst van de toepassing** | Bewaar deze waarde alleen als u hardcoded HTML-koppelingen naar andere on-premises toepassingen hebt en geen aangepaste domeinen gebruikt. Zie [Vertaling koppelen aan Application Proxy](application-proxy-configure-hard-coded-link-translation.md) voor meer informatie.<br><br>Stel deze waarde in op **Ja** als u van plan bent om deze toepassing te bewaken met Microsoft Cloud App Security (MCAS). Zie [realtime toegang tot toepassingen configureren met Microsoft Cloud app Security en Azure Active Directory](application-proxy-integrate-with-microsoft-cloud-application-security.md)voor meer informatie. |
+    | **URL's vertalen in de hoofdtekst van de toepassing** | Bewaar deze waarde alleen als u hardcoded HTML-koppelingen naar andere on-premises toepassingen hebt **en geen aangepaste** domeinen gebruikt. Zie [Vertaling koppelen aan Application Proxy](application-proxy-configure-hard-coded-link-translation.md) voor meer informatie.<br><br>Stel deze waarde in op **Ja** als u van plan bent om deze toepassing te bewaken met Microsoft Cloud App Security (MCAS). Zie [realtime toegang tot toepassingen configureren met Microsoft Cloud app Security en Azure Active Directory](application-proxy-integrate-with-microsoft-cloud-application-security.md)voor meer informatie. |
 
 1. Selecteer **Toevoegen**.
 

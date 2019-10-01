@@ -9,19 +9,16 @@ ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: lyhughes
 ms.custom: seodec18
-ms.openlocfilehash: 968ae62344f99edf8eb46eb62a4cf13f300c868f
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 2c43dd7c0700efdd2fbf2f16c57c9c9dc69d3c6b
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68815642"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71703354"
 ---
 # <a name="create-and-manage-role-assignments-in-azure-digital-twins"></a>Roltoewijzingen in azure Digital Apparaatdubbels maken en beheren
 
 Azure Digital Apparaatdubbels maakt gebruik van op rollen gebaseerd toegangs beheer ([RBAC](./security-role-based-access-control.md)) voor het beheren van de toegang tot bronnen.
-
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="role-assignments-overview"></a>Overzicht roltoewijzingen
 
@@ -43,9 +40,9 @@ In de volgende tabel wordt elk kenmerk beschreven:
 | --- | --- | --- | --- | --- |
 | roleId | Roldefinitie-id | Ja | Tekenreeks | De unieke ID van de gewenste roltoewijzing. Zoek roldefinities en hun id door een query uit te zoeken naar de onderstaande systeem-API of-tabel. |
 | object-id | Object-id | Ja | Tekenreeks | Een Azure Active Directory-ID, Service-Principal object-ID of domein naam. Waaraan de roltoewijzing is toegewezen. De roltoewijzing moet worden ingedeeld volgens het bijbehorende type. Voor de `DomainName` objectIdType moet objectId met het `“@”` teken beginnen. |
-| objectIdType | Type object-id | Ja | Reeks | Het soort object-id dat wordt gebruikt. Zie de **ondersteunde ObjectIdTypes** hieronder. |
-| path | Pad naar Space | Ja | Reeks | Het volledige toegangspad naar het `Space` object. Een voorbeeld is `/{Guid}/{Guid}`. Als een id de roltoewijzing voor de hele grafiek vereist, geeft `"/"`u op. Met dit teken wordt de hoofdmap aangeduid, maar het gebruik ervan wordt afgeraden. Volg altijd het principe van minimale bevoegdheden. |
-| tenantId | Tenant-id | Varieert | Tekenreeks | In de meeste gevallen wordt de Tenant-ID van Azure Active Directory. Niet toegestaan voor `DeviceId` en `TenantId` ObjectIdTypes. Vereist voor `UserId` en `ServicePrincipalId` ObjectIdTypes. Optioneel voor de DomainName-ObjectIdType. |
+| objectIdType | Type object-id | Ja | Tekenreeks | Het soort object-id dat wordt gebruikt. Zie de **ondersteunde ObjectIdTypes** hieronder. |
+| path | Pad naar Space | Ja | Tekenreeks | Het volledige toegangspad naar het `Space` object. Een voorbeeld is `/{Guid}/{Guid}`. Als een id de roltoewijzing voor de hele grafiek vereist, geeft `"/"`u op. Met dit teken wordt de hoofdmap aangeduid, maar het gebruik ervan wordt afgeraden. Volg altijd het principe van minimale bevoegdheden. |
+| TenantId | Tenant-id | Varieert | Tekenreeks | In de meeste gevallen wordt de Tenant-ID van Azure Active Directory. Niet toegestaan voor `DeviceId` en `TenantId` ObjectIdTypes. Vereist voor `UserId` en `ServicePrincipalId` ObjectIdTypes. Optioneel voor de DomainName-ObjectIdType. |
 
 ### <a name="supported-role-definition-identifiers"></a>Definitie-id's van ondersteunde rollen
 
@@ -63,7 +60,7 @@ Voorheen werd het kenmerk **objectIdType** geïntroduceerd.
 
 Azure Digital Apparaatdubbels ondersteunt volledige bewerkingen voor *maken*, *lezen*en *verwijderen* voor roltoewijzingen. *Update* bewerkingen worden verwerkt door roltoewijzingen toe te voegen, roltoewijzingen te verwijderen of de knoop punten van de [ruimtelijke Intelligence-grafiek](./concepts-objectmodel-spatialgraph.md) te wijzigen waarvan de roltoewijzingen toegang krijgen.
 
-![Eindpunten voor roltoewijzing][1]
+[eind punten van de toewijzing van @no__t 1Role](media/security-roles/roleassignments.png)](media/security-roles/roleassignments.png#lightbox)
 
 De opgegeven Swagger-referentie documentatie bevat meer informatie over alle beschik bare API-eind punten, aanvraag bewerkingen en definities.
 
@@ -71,23 +68,28 @@ De opgegeven Swagger-referentie documentatie bevat meer informatie over alle bes
 
 [!INCLUDE [Digital Twins Management API](../../includes/digital-twins-management-api.md)]
 
-<div id="grant"></div>
-
 ### <a name="grant-permissions-to-your-service-principal"></a>Machtigingen verlenen aan de Service-Principal
 
 Het verlenen van machtigingen aan de Service-Principal is vaak een van de eerste stappen die u moet uitvoeren wanneer u met Azure Digital Apparaatdubbels werkt. Dit omvat:
 
-1. Meld u aan bij uw Azure-exemplaar via Power shell.
+1. Meld u aan bij uw Azure-exemplaar via [Azure cli](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) of [Power shell](https://docs.microsoft.com/powershell/azure/).
 1. De gegevens van uw Service-Principal ophalen.
 1. Wijs de gewenste rol toe aan uw service-principal.
 
 Uw toepassings-ID wordt aan u verstrekt in Azure Active Directory. Lees de [Snelstartgids](./quickstart-view-occupancy-dotnet.md)voor meer informatie over het configureren en inrichten van een Azure Digital apparaatdubbels in Active Directory.
 
-Zodra u de toepassings-ID hebt, voert u de volgende Power shell-opdrachten uit:
+Wanneer u de toepassings-ID hebt, voert u een van de volgende opdrachten uit. In azure CLI:
 
-```shell
+```azurecli
+az login
+az ad sp show --id <ApplicationId>
+```
+
+In Power shell:
+
+```powershell
 Login-AzAccount
-Get-AzADServicePrincipal -ApplicationId  <ApplicationId>
+Get-AzADServicePrincipal -ApplicationId <ApplicationId>
 ```
 
 Een gebruiker met de rol **admin** kan de rol van de ruimte beheerder vervolgens toewijzen aan een gebruiker door een geverifieerde HTTP POST-aanvraag naar de URL te maken:
@@ -108,11 +110,9 @@ Met de volgende JSON-hoofd tekst:
 }
 ```
 
-<div id="all"></div>
-
 ### <a name="retrieve-all-roles"></a>Alle rollen ophalen
 
-![Systeem rollen][2]
+[![System rollen](media/security-roles/system.png)](media/security-roles/system.png#lightbox)
 
 Als u alle beschik bare rollen (roldefinities) wilt weer geven, maakt u een geverifieerde HTTP GET-aanvraag naar:
 
@@ -153,8 +153,6 @@ Een geslaagde aanvraag retourneert een JSON-matrix met vermeldingen voor elke ro
 ]
 ```
 
-<div id="check"></div>
-
 ### <a name="check-a-specific-role-assignment"></a>Een specifieke roltoewijzing controleren
 
 Als u een specifieke roltoewijzing wilt controleren, maakt u een geverifieerde HTTP GET-aanvraag naar:
@@ -165,10 +163,10 @@ YOUR_MANAGEMENT_API_URL/roleassignments/check?userId=YOUR_USER_ID&path=YOUR_PATH
 
 | **Parameter waarde** | **Vereist** |  **Type** |  **Beschrijving** |
 | --- | --- | --- | --- |
-| YOUR_USER_ID |  Waar | Reeks |   De objectId voor de gebruikers-id objectIdType. |
+| YOUR_USER_ID |  Waar | Tekenreeks |   De objectId voor de gebruikers-id objectIdType. |
 | YOUR_PATH | Waar | Tekenreeks |   Het gekozen pad om de toegang voor te controleren. |
 | YOUR_ACCESS_TYPE |  Waar | Tekenreeks |   Het toegangs type waarvoor moet worden gecontroleerd. |
-| YOUR_RESOURCE_TYPE | Waar | Reeks |  De resource die moet worden gecontroleerd. |
+| YOUR_RESOURCE_TYPE | Waar | Tekenreeks |  De resource die moet worden gecontroleerd. |
 
 Een geslaagde aanvraag retourneert een Booleaanse `true` waarde `false` of geeft aan of het toegangs type is toegewezen aan de gebruiker voor het gegeven pad en de opgegeven bron.
 
@@ -210,7 +208,7 @@ YOUR_MANAGEMENT_API_URL/roleassignments/YOUR_ROLE_ASSIGNMENT_ID
 | --- | --- |
 | *YOUR_ROLE_ASSIGNMENT_ID* | De **id** van de roltoewijzing die moet worden verwijderd |
 
-Een geslaagde VERWIJDERings aanvraag retourneert een 204-antwoord status. Controleer het verwijderen van de roltoewijzing door te [controleren](#check) of de roltoewijzing nog steeds aanwezig is.
+Een geslaagde VERWIJDERings aanvraag retourneert een 204-antwoord status. Controleer het verwijderen van de roltoewijzing door te [controleren](#check-a-specific-role-assignment) of de roltoewijzing nog steeds aanwezig is.
 
 ### <a name="create-a-role-assignment"></a>Een roltoewijzing maken
 
@@ -238,7 +236,7 @@ Een geslaagde aanvraag retourneert een 201-reactie status samen met de **id** va
 "d92c7823-6e65-41d4-aaaa-f5b32e3f01b9"
 ```
 
-## <a name="configuration-examples"></a>Configuratie voorbeelden
+## <a name="configuration-examples"></a>Configuratievoorbeelden
 
 De volgende voor beelden laten zien hoe u uw JSON-hoofd tekst kunt configureren in verschillende scenario's voor het toewijzen van rollen.
 
@@ -282,7 +280,3 @@ De volgende voor beelden laten zien hoe u uw JSON-hoofd tekst kunt configureren 
 - Voor het controleren van de op rollen gebaseerde Azure Digital Apparaatdubbels-Access-Control, Lees [Role-Base-Access-Control](./security-authenticating-apis.md).
 
 - Lees [API-verificatie](./security-authenticating-apis.md)voor meer informatie over de Azure Digital apparaatdubbels API-verificatie.
-
-<!-- Images -->
-[1]: media/security-roles/roleassignments.png
-[2]: media/security-roles/system.png

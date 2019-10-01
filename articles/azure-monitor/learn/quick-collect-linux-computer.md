@@ -14,14 +14,14 @@ ms.topic: quickstart
 ms.date: 08/22/2019
 ms.author: magoedte
 ms.custom: mvc, seo-javascript-september2019
-ms.openlocfilehash: cdaca0fd3e314ecb5c0b68438eaaf87fbfb699b0
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 72f50754a28f0bbf5648ae64299d28ff13e2ec31
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70933032"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71703059"
 ---
-# <a name="collect-data-from-a-linux-computer-in-a-hybrid-environment-with-azure-monitor"></a>Gegevens verzamelen van een Linux-computer in een hybride omgeving met Azure Monitor
+# <a name="quickstart-collect-data-from-a-linux-computer-in-a-hybrid-environment-with-azure-monitor"></a>Quickstart: Gegevens verzamelen van een Linux-computer in een hybride omgeving met Azure Monitor
 
 [Azure monitor](../overview.md) kunt gegevens rechtstreeks vanuit uw fysieke of virtuele Linux-computers in uw omgeving verzamelen in een log Analytics-werk ruimte voor gedetailleerde analyse en correlatie. Door de [log Analytics-agent](../platform/log-analytics-agent.md) te installeren, kan Azure monitor gegevens verzamelen van een Data Center of een andere cloud omgeving. In deze Quick start ziet u hoe u met een paar eenvoudige stappen gegevens van uw Linux-server configureert en verzamelt. Zie [gegevens verzamelen over Azure virtual machines](../../azure-monitor/learn/quick-collect-azurevm.md)voor meer informatie over Azure Linux-vm's.  
 

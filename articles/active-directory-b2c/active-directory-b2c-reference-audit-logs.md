@@ -11,12 +11,12 @@ ms.date: 09/14/2019
 ms.author: marsma
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: c216512aef117a332d3aabfc83ec5615b70b202c
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: a8e35254a79ac43b35f45d1a20f3d1f6815f32be
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71033835"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71702808"
 ---
 # <a name="accessing-azure-ad-b2c-audit-logs"></a>Toegang tot Azure AD B2C controle logboeken
 
@@ -90,34 +90,32 @@ Audit logboeken worden gepubliceerd op dezelfde pijp lijn als andere activiteite
 Als u toegang op basis van scripts of toepassingen wilt toestaan voor de rapportage-API van Azure AD, moet u een Azure Active Directory toepassing die in uw Azure AD B2C Tenant is geregistreerd met de volgende API-machtigingen:
 
 * Microsoft Graph
-  * Toepassing: Alle audit logboek gegevens lezen
+  * Toepassing: Alle auditlogboekgegevens lezen
 
 U kunt deze machtigingen inschakelen voor een bestaande Azure Active Directory van de toepassing in uw B2C-Tenant of een nieuw item maken dat specifiek is voor het gebruik van de functie voor het automatiseren van het controle logboek.
 
-Als u een nieuwe toepassing wilt maken, de vereiste API-machtigingen wilt toewijzen en een client geheim wilt maken, voert u de volgende stappen uit:
+Voer de volgende stappen uit om een toepassing te registreren, de vereiste Microsoft Graph API-machtigingen te verlenen en vervolgens een client geheim te maken.
 
-1. Toepassing registreren in Azure Active Directory
-    1. Meld u aan bij de [Azure Portal](https://portal.azure.com) en ga naar de map met uw Azure AD B2C Tenant.
-    1. Selecteer **Azure Active Directory** (*niet* Azure AD B2C) in het menu links. U kunt ook **alle services**selecteren en **Azure Active Directory**zoeken en selecteren.
-    1. Selecteer in het linkermenu onder **beheren** de optie **app-registraties (verouderd)** .
-    1. **Nieuwe toepassings registratie** selecteren
-    1. Voer een naam in voor de toepassing. Bijvoorbeeld de *app audit logboek*.
-    1. Voer een geldige URL in voor de **aanmeldings-URL**. Bijvoorbeeld *https://localhost* . Dit eind punt hoeft niet bereikbaar te zijn, maar moet een geldige URL zijn.
-    1. Selecteer **Maken**.
-    1. Noteer de **toepassings-id** die wordt weer gegeven op de pagina **geregistreerde app** . U hebt deze waarde nodig voor verificatie in Automation-scripts, zoals het Power shell-voorbeeld script dat in een latere sectie wordt weer gegeven.
-1. API-toegangs machtigingen toewijzen
-    1. Op de overzichts pagina van de **geregistreerde app** selecteert u **instellingen**.
-    1. Selecteer onder **API-toegang**de optie **vereiste machtigingen**.
-    1. Selecteer **toevoegen**en selecteer vervolgens **een API**.
-    1. Selecteer **Microsoft Graph**en **Selecteer**.
-    1. Selecteer **alle audit logboek gegevens lezen**onder **toepassings machtigingen**.
-    1. Selecteer de knop **selecteren** en selecteer vervolgens **gereed**.
-    1. Selecteer **machtigingen verlenen**, en selecteer vervolgens **Ja**.
-1. Client geheim maken
-    1. Selecteer onder **API-toegang**de optie **sleutels**.
-    1. Voer een beschrijving in voor de sleutel in het vak **sleutel beschrijving** . Bijvoorbeeld *controle logboek sleutel*.
-    1. Selecteer de geldigheids **duur**en selecteer vervolgens **Opslaan**.
-    1. Noteer de **waarde**van de sleutel. U hebt deze waarde nodig voor verificatie in Automation-scripts, zoals het Power shell-voorbeeld script dat in een latere sectie wordt weer gegeven.
+### <a name="register-application-in-azure-active-directory"></a>Toepassing registreren in Azure Active Directory
+
+[!INCLUDE [active-directory-b2c-appreg-mgmt](../../includes/active-directory-b2c-appreg-mgmt.md)]
+
+### <a name="assign-api-access-permissions"></a>API-toegangs machtigingen toewijzen
+
+1. Op de overzichts pagina van de **geregistreerde app** selecteert u **instellingen**.
+1. Selecteer onder **API-toegang**de optie **vereiste machtigingen**.
+1. Selecteer **toevoegen**en selecteer vervolgens **een API**.
+1. Selecteer **Microsoft Graph**en **Selecteer**.
+1. Selecteer **alle audit logboek gegevens lezen**onder **toepassings machtigingen**.
+1. Selecteer de knop **selecteren** en selecteer vervolgens **gereed**.
+1. Selecteer **machtigingen verlenen**, en selecteer vervolgens **Ja**.
+
+### <a name="create-client-secret"></a>Client geheim maken
+
+1. Selecteer onder **API-toegang**de optie **sleutels**.
+1. Voer een beschrijving in voor de sleutel in het vak **sleutel beschrijving** . Bijvoorbeeld *controle logboek sleutel*.
+1. Selecteer de geldigheids **duur**en selecteer vervolgens **Opslaan**.
+1. Noteer de **waarde**van de sleutel. U hebt deze waarde nodig voor verificatie in Automation-scripts, zoals het Power shell-voorbeeld script dat in een latere sectie wordt weer gegeven.
 
 U hebt nu een toepassing met de vereiste API-toegang, een toepassings-ID en een sleutel die u kunt gebruiken in uw automatiserings scripts. Zie de sectie Power shell-script verderop in dit artikel voor een voor beeld van hoe u activiteiten gebeurtenissen kunt ophalen met een script.
 

@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 06/26/2019
+ms.date: 09/25/2019
 ms.author: diberry
-ms.openlocfilehash: 318df27ebb822f49c1f8881d0bf68ac7167dea36
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: dc99626e2341e180ba0ab191003cf3a6ba9b72e9
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71351297"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71695148"
 ---
 # <a name="use-follow-up-prompts-to-create-multiple-turns-of-a-conversation"></a>Opvolgprompts gebruiken om meerdere beurten in een gesprek te maken
 
@@ -55,23 +55,37 @@ Wanneer u een Knowledge Base maakt, wordt in het gedeelte **uw KB invullen** het
 
 ![Selectie vakje voor het inschakelen van meerdere Schakel extractie](../media/conversational-context/enable-multi-turn.png)
 
-Wanneer u deze optie selecteert voor een geïmporteerd document, kan de conversatie met meerdere zetten worden geïmpliceerd vanuit de document structuur. Als deze structuur bestaat, wordt in QnA Maker de opvolgings prompt gemaakt waarmee vragen en antwoorden voor u worden opgenomen als onderdeel van het import proces. 
+Wanneer u deze optie selecteert, kan de multi-turn-conversatie worden geïmpliceerd vanuit de document structuur. Als deze structuur bestaat, wordt in QnA Maker de opvolgings prompt gemaakt waarmee vragen en antwoorden voor u worden opgenomen als onderdeel van het import proces. 
 
 Structuur voor meerdere scha kelen kan alleen worden afgeleid van Url's, PDF-bestanden of DOCX-bestanden. Voor een voor beeld van een structuur bekijkt u een afbeelding van een [hand matig PDF-bestand van micro soft Surface-gebruiker](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/product-manual.pdf). Vanwege de grootte van dit PDF-bestand, heeft de QnA Maker resource een **prijs categorie voor Zoek opdrachten** van **B** (15 indexen) of hoger nodig. 
 
 ![! [Voor beeld van structuur in een gebruikers handleiding] (.. /media/conversational-context/import-file-with-conversational-structure.png)](../media/conversational-context/import-file-with-conversational-structure.png#lightbox)
 
-Wanneer u het PDF-document importeert, bepaalt QnA Maker opvolgings aanwijzingen van de structuur om een conversatie stroom te maken. 
+### <a name="determine-multi-turn-structure-from-format"></a>De structuur voor meerdere scha kelen bepalen op basis van de indeling
 
-1. Selecteer in QnA Maker **een Knowledge Base maken**.
-1. Een bestaande QnA Maker-service maken of gebruiken. In het voor gaande voor beeld van micro soft, omdat het PDF-bestand te groot is voor een kleinere laag, gebruikt u een QnA Maker-service met een **Zoek service** van **B** (15 indexen) of hoger.
-1. Voer een naam in voor uw Knowledge Base, zoals **hand matig Opper vlak**.
-1. Schakel het selectie vakje **extractie van meerdere schakelingen van url's, PDF-of DOCX-bestanden inschakelen** in. 
-1. Selecteer de hand matige URL voor het Opper vlak, **https://github.com/Azure-Samples/cognitive-services-sample-data-files/raw/master/qna-maker/data-source-formats/product-manual.pdf** .
+QnA Maker bepaalt de structuur voor meerdere scha kelen vanuit:
 
-1. Selecteer de knop **uw KB maken** . 
+* Teken grootte van de kop: als u stijl, kleur of een ander mechanisme gebruikt om de structuur in uw document te impliceren, worden de prompts in meerdere richtingen niet geëxtraheerd QnA Maker. 
 
-    Nadat de Knowledge Base is gemaakt, wordt er een weer gave van de vraag-en-antwoord paren weer gegeven.
+Regels van koppen zijn onder andere:
+
+* Beëindig geen koptekst met een vraag teken `?`. 
+
+### <a name="add-file-with-multi-turn-prompts"></a>Een bestand met prompts voor meerdere schakelingen toevoegen
+
+Wanneer u een document met meerdere scha kelen toevoegt, bepaalt QnA Maker opvolgings aanwijzingen van de structuur om een conversatie stroom te maken. 
+
+1. In QnA Maker selecteert u een bestaande Knowledge Base die is gemaakt met het **inschakelen van meerdere Schakel extractie vanuit url's, PDF-of DOCX-bestanden.** ingeschakeld. 
+1. Ga naar de pagina **instellingen** , selecteer het bestand of de URL die u wilt toevoegen. 
+1. Sla de kennis database op **en Train** deze.
+
+> [!Caution]
+> Ondersteuning voor het gebruik van een geëxporteerd TSV-of XLS-Knowledge Base-bestand als gegevens bron voor een nieuwe of lege kennis database wordt niet ondersteund. U moet dit bestands type **importeren** op de pagina **instellingen** van de QnA Maker-Portal om de prompts voor het exporteren van meerdere zetten toe te voegen aan een kennis database.
+
+
+## <a name="create-knowledge-base-with-multi-turn-prompts-with-the-create-api"></a>Maak een kennis database met de prompts in meerdere richtingen met de API maken
+
+U kunt met behulp van de [QnA Maker Create API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create)een kennis Case maken met vragen over meerdere schakelingen. De prompts worden toegevoegd in de @no__t-matrix van de eigenschap `context`. 
 
 ## <a name="show-questions-and-answers-with-context"></a>Vragen en antwoorden met context weer geven
 
@@ -126,29 +140,6 @@ Wanneer er een opvolgings prompt wordt gemaakt en een bestaand vraag-en-antwoord
 1. Wanneer u klaar bent met het bewerken van de weergave tekst, selecteert u **Opslaan**. 
 1. In de bovenste navigatie balk kunt u **opslaan en trainen**.
 
-
-<!--
-
-## To find the best prompt answer, add metadata to follow-up prompts 
-
-If you have several follow-up prompts for a specific question-and-answer pair but you know, as the knowledge base manager, that not all prompts should be returned, use metadata to categorize the prompts in the knowledge base. You can then send the metadata from the client application as part of the GenerateAnswer request.
-
-In the knowledge base, when a question-and-answer pair is linked to follow-up prompts, the metadata filters are applied first, and then the follow-ups are returned.
-
-1. Add metadata to each of the two follow-up question-and-answer pairs:
-
-    |Question|Add metadata|
-    |--|--|
-    |*Feedback on a QnA Maker service*|"Feature":"all"|
-    |*Feedback on an existing feature*|"Feature":"one"|
-    
-    ![The "Metadata tags" column for adding metadata to a follow-up prompt](../media/conversational-context/add-metadata-feature-to-follow-up-prompt.png) 
-
-1. Select **Save and train**. 
-
-    When you send the question **Give feedback** with the metadata filter **Feature** with a value of **all**, only the question-and-answer pair with that metadata is returned. QnA Maker doesn't return both question-and-answer pairs, because both don't match the filter. 
-
--->
 
 ## <a name="add-a-new-question-and-answer-pair-as-a-follow-up-prompt"></a>Een nieuw vraag-en-antwoord paar toevoegen als vervolg prompt
 
@@ -374,21 +365,13 @@ U hebt prompts toegevoegd in de Knowledge Base en de stroom getest in het test v
 
 De [weergave tekst en weergave volgorde](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update#promptdto), geretourneerd in het JSON-antwoord, worden ondersteund voor bewerking door de [Update-API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update). 
 
-<!--
-
-FIX - Need to go to parent, then answer column, then edit answer. 
-
--->
-
-## <a name="create-knowledge-base-with-multi-turn-prompts-with-the-create-api"></a>Maak een kennis database met de prompts in meerdere richtingen met de API maken
-
-Met de [QnA Maker Create API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create)kunt u een kennis database maken met behulp van meerdere prompts. De prompts worden toegevoegd in de @no__t-matrix van de eigenschap `context`. 
-
-
 ## <a name="add-or-delete-multi-turn-prompts-with-the-update-api"></a>Vragen om meerdere zetten toe te voegen of te verwijderen met de API voor bijwerken
 
 U kunt vragen over meerdere schakelingen toevoegen of verwijderen met de [API QnA Maker update](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update).  De prompts worden toegevoegd in de @no__t-matrix van de eigenschap `context` en de matrix `promptsToDelete`. 
 
+## <a name="export-knowledge-base-for-version-control"></a>Knowledge Base exporteren voor versie beheer
+
+QnA Maker [ondersteunt versie beheer](../concepts/development-lifecycle-knowledge-base.md#version-control-of-a-knowledge-base) in de QnA Maker portal door de stappen voor het door voeren van meerdere discussies in het geëxporteerde bestand op te nemen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

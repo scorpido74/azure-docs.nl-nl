@@ -4,36 +4,28 @@ description: Hoe u opslag doelen definieert zodat uw Azure HPC-cache uw on-premi
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 09/24/2019
-ms.author: v-erkell
-ms.openlocfilehash: 7df0727a58f3d70289c5060175572dac1bbb4abb
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.date: 10/01/2019
+ms.author: rohogue
+ms.openlocfilehash: 302d727ede9604d11972eaa8f46a3e27f204858f
+ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300028"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71710029"
 ---
 # <a name="add-storage-targets"></a>Opslagdoelen toevoegen
 
-*Opslag doelen* zijn back-end opslag voor bestanden die toegankelijk zijn via een Azure HPC-cache-exemplaar. U kunt NFS-opslag, zoals een on-premises hardwaresysteem, toevoegen of gegevens opslaan in Azure Blob.
+*Opslag doelen* zijn back-end opslag voor bestanden die toegankelijk zijn via een Azure HPC-cache-exemplaar. U kunt NFS-opslag (zoals een on-premises hardware-systeem) toevoegen of gegevens opslaan in Azure Blob.
 
 U kunt Maxi maal tien verschillende opslag doelen definiëren voor één cache. De cache geeft alle opslag doelen weer in één geaggregeerde naam ruimte.
 
 Houd er rekening mee dat de export van de opslag toegankelijk moet zijn vanuit het virtuele netwerk van uw cache. Voor on-premises hardwarematige opslag moet u mogelijk een DNS-server instellen die hostnamen voor NFS-opslag toegang kan omzetten. Meer informatie vindt u in [DNS-toegang](hpc-cache-prereqs.md#dns-access).
 
-U kunt opslag doelen toevoegen tijdens het maken van uw cache of achteraf. De procedure wijkt enigszins af, afhankelijk van of u Azure Blob-opslag of een NFS-export toevoegt. Hieronder vindt u meer informatie.
+Voeg opslag doelen toe nadat u de cache hebt gemaakt. De procedure wijkt enigszins af, afhankelijk van of u Azure Blob-opslag of een NFS-export toevoegt. Hieronder vindt u meer informatie.
 
-## <a name="add-storage-targets-while-creating-the-cache"></a>Opslag doelen toevoegen tijdens het maken van de cache
+## <a name="open-the-storage-targets-page"></a>De pagina opslag doelen openen
 
-Gebruik het tabblad **opslag doelen** van de Azure HPC-cache maken wizard om opslag te definiëren op het moment dat u het cache-exemplaar maakt.
-
-![scherm afbeelding van de pagina opslag doelen](media/hpc-cache-storage-targets-pop.png)
-
-Klik op de koppeling **opslag doel toevoegen** om opslag toe te voegen.
-
-## <a name="add-storage-targets-from-the-cache"></a>Opslag doelen uit de cache toevoegen
-
-Open in de Azure Portal uw cache-exemplaar en klik op **opslag doelen** op de zijbalk aan de linkerkant. De pagina opslag doel bevat een lijst met alle bestaande doelen en bevat een koppeling om een nieuwe toe te voegen.
+Open in de Azure Portal uw cache-exemplaar en klik op **opslag doelen** op de zijbalk aan de linkerkant. De pagina opslag doelen bevat een lijst met alle bestaande doelen en bevat een koppeling om een nieuwe toe te voegen.
 
 ![scherm afbeelding van de koppeling opslag doelen op de zijbalk, onder de kop configureren, tussen de instellingen en controle van categorie koppen](media/hpc-cache-storage-targets-sidebar.png)
 
@@ -107,7 +99,7 @@ Een NFS-opslag doel kan meerdere virtuele paden hebben, zolang elk pad een ander
 Alle paden van het ene opslag doel maken.
 <!-- You can create multiple namespace paths to represent different exports on the same NFS storage system, but you must create them all from one storage target. -->
 
-Vul deze waarden in voor elk pad naar de naam ruimte: 
+Vul deze waarden in voor elk pad naar de naam ruimte:
 
 * **Pad naar virtuele naam ruimte** : Stel het client gerichte bestandspad in voor dit opslag doel. Lees de [geaggregeerde naam ruimte configureren](hpc-cache-namespace.md) voor meer informatie over de functie virtuele naam ruimte.
 
@@ -115,7 +107,7 @@ Vul deze waarden in voor elk pad naar de naam ruimte:
 
 * **Pad naar NFS-export** -Geef het pad op naar de NFS-export.
 
-* **Pad naar de submap** : als u een specifieke submap van de export wilt koppelen, voert u deze hier in. Als dat niet het geval is, laat u dit veld leeg. 
+* **Pad naar de submap** : als u een specifieke submap van de export wilt koppelen, voert u deze hier in. Als dat niet het geval is, laat u dit veld leeg.
 
 Wanneer u klaar bent, klikt u op **OK** om het opslag doel toe te voegen.
 
@@ -124,7 +116,7 @@ Wanneer u klaar bent, klikt u op **OK** om het opslag doel toe te voegen.
 
 Wanneer u een opslag doel maakt dat verwijst naar een NFS-opslag systeem, moet u het *gebruiks model* voor dat doel kiezen. Dit model bepaalt hoe de gegevens in de cache worden opgeslagen.
 
-* Zwaren: als u de cache voornamelijk gebruikt voor het versnellen van gegevens lees toegang, kiest u deze optie. 
+* Zwaren: als u de cache voornamelijk gebruikt voor het versnellen van gegevens lees toegang, kiest u deze optie.
 
 * Lezen/schrijven: als clients de cache gebruiken om te lezen en te schrijven, kiest u deze optie.
 

@@ -1,30 +1,30 @@
 ---
 title: Slimme groepen beheren
-description: Slimme groepen die zijn gemaakt via de waarschuwing instanties beheren
+description: Slimme groepen beheren die zijn gemaakt via uw waarschuwings instanties
 author: anantr
 services: monitoring
 ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.author: anantr
+ms.author: robb
 ms.subservice: alerts
-ms.openlocfilehash: a9434bebe82687b14f45b3c375572717d71d0e55
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 42b4bd7427191bcec531ff883efa0d3297a9fd1f
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60713335"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71702848"
 ---
 # <a name="manage-smart-groups"></a>Slimme groepen beheren
-[Slimme groepen](https://aka.ms/smart-groups) gebruiken machine learning-algoritmen aan groep samen waarschuwingen op basis van CO exemplaar of deze overeenkomst, zodat de gebruiker kunt nu smart groepen in plaats van dat voor het beheren van elke waarschuwing afzonderlijk beheren. In dit artikel begeleidt u bij het openen en gebruiken van slimme groepen in Azure Monitor.
-1.  Als u wilt zien dat de slimme groepen gemaakt voor uw waarschuwingen instanties kunt u deze
-     1. Klik op **slimme groepen** uit de **waarschuwingsoverzicht** pagina    
+[Slimme groepen](https://aka.ms/smart-groups) gebruiken machine learning algoritmen om waarschuwingen te groeperen op basis van een co-voorval of een soort gelijke toepassing, zodat de gebruiker nu slimme groepen kan beheren in plaats van elke waarschuwing afzonderlijk te beheren. In dit artikel vindt u informatie over het openen en gebruiken van slimme groepen in Azure Monitor.
+1.  Als u de slimme groepen wilt zien die zijn gemaakt voor uw waarschuwings instanties, kunt u
+     1. Klik op de pagina overzicht van **waarschuwingen** op **slimme groepen**    
     ![Controle](./media/alerts-managing-smart-groups/sg-alerts-summary.jpg)
-     2. Klik op waarschuwingen op basis van slimme groepen op de pagina met alle waarschuwingen   
+     2. Klik op de pagina alle waarschuwingen op waarschuwingen per Smart-groep   
      ![Bewaking](./media/alerts-managing-smart-groups/sg-all-alerts.jpg)
-2.  Hiermee gaat u naar de lijstweergave voor alle slimme groepen die zijn gemaakt via de waarschuwing instanties. In plaats van meerdere waarschuwingen doorspitten, u kunt nu te maken met de slimme groepen in plaats daarvan.   
+2.  Hiermee gaat u naar de lijst weergave voor alle slimme groepen die zijn gemaakt via uw waarschuwings exemplaren. In plaats van te zeven door meerdere waarschuwingen te gebruiken, kunt u nu met de slimme groepen omgaan.   
 ![Bewaking](./media/alerts-managing-smart-groups/sg-list.jpg)
-3.  Te klikken op een groep Smart opent u de pagina met details, waar u de reden groeperen, samen met de lid-waarschuwingen kunt zien. Met deze aggregatie kunt u om op te lossen met een enkel slimme groep, in plaats van meerdere waarschuwingen moet doornemen.   
+3.  Als u op een slimme groep klikt, wordt de pagina Details geopend, waar u de groeperings reden kunt zien, samen met de waarschuwingen van leden. Met deze aggregatie kunt u een enkelvoudige slimme groep behandelen, in plaats van meerdere waarschuwingen te gebruiken.   
 ![Bewaking](./media/alerts-managing-smart-groups/sg-details.jpg)
 
 

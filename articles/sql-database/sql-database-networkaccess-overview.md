@@ -11,12 +11,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 08/05/2019
-ms.openlocfilehash: 2d7cc217ff8ae45491c0f9d6b54ea8afea19cd2e
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: b2c1f01e53cfe41b72e3e079059c66e4e2409012
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69981243"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71703275"
 ---
 # <a name="azure-sql-database-and-data-warehouse-network-access-controls"></a>Netwerk toegangs beheer van Azure SQL Database en Data Warehouse
 
@@ -72,7 +72,9 @@ Op IP gebaseerde firewall is een functie van Azure SQL Server die ervoor zorgt d
 ## <a name="virtual-network-firewall-rules"></a>Firewall regels voor Virtual Network
 
 Naast de IP-regels, kunt u met de firewall van Azure SQL Server *virtuele netwerk regels*definiëren.  
-Zie [Virtual Network Service-eind punten en-regels voor Azure SQL database voor](sql-database-vnet-service-endpoint-rule-overview.md)meer informatie.
+Zie voor meer informatie [Virtual Network Service-eind punten en-regels voor Azure SQL database](sql-database-vnet-service-endpoint-rule-overview.md) of Bekijk deze video:
+
+> [!VIDEO https://channel9.msdn.com/Shows/Data-Exposed/Data-Exposed--Demo--Vnet-Firewall-Rules-for-SQL-Database/player?WT.mc_id=dataexposed-c9-niner]
 
  ### <a name="azure-networking-terminology"></a>Terminologie van Azure Networking  
 Houd rekening met de volgende Azure-netwerk termen wanneer u Virtual Network Firewall-regels bekijkt
@@ -105,7 +107,7 @@ Regels voor virtuele netwerken zijn eenvoudiger om de toegang tot stand te breng
 
 - Voor hulp bij het maken van verbinding met een Azure-SQL database van open-source of toepassingen van derden raadpleegt [u Quick Start code samples to SQL database](https://msdn.microsoft.com/library/azure/ee336282.aspx).
 
-- Voor informatie over aanvullende poorten die u mogelijk moet openen, raadpleegt u **de SQL database: Buiten het gedeelte van de [poorten boven 1433 voor ADO.net 4,5 en SQL database](sql-database-develop-direct-route-ports-adonet-v12.md)**
+- Zie de **SQL-Data Base voor meer informatie over aanvullende poorten die u mogelijk moet openen: Buiten de VS binnen @ no__t-0 sectie van [poorten boven 1433 voor ADO.NET 4,5 en SQL database](sql-database-develop-direct-route-ports-adonet-v12.md)
 
 - Zie [Azure SQL-connectiviteits architectuur](sql-database-connectivity-architecture.md) voor een overzicht van Azure SQL database connectiviteit
 

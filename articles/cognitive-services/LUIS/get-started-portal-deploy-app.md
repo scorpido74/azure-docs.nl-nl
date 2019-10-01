@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 09/02/2019
+ms.date: 09/27/2019
 ms.author: diberry
-ms.openlocfilehash: 4e9ecdad0fb4d02f160977fa28a484b2a3a5bb30
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: f640921e6f48559db3f1414551d6ed974df15e4f
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70257079"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71703224"
 ---
 # <a name="quickstart-deploy-an-app-in-the-luis-portal"></a>Quickstart: Een app implementeren in de LUIS-Portal
 
@@ -34,7 +34,7 @@ U maakt de Voorspellings eindpunt resource in de Azure Portal. Deze bron mag all
 
 1. Meld u aan bij [Azure Portal](https://ms.portal.azure.com/).
 
-1. Selecteer het groene **+** teken in het deel venster linksboven. `Cognitive Services` Zoek op de Marketplace en selecteer deze.
+1. Selecteer het groene **+-** teken in het deel venster linksboven. Zoek op de Marketplace naar `Cognitive Services` en selecteer deze.
 
 1. Configureer het abonnement met de volgende instellingen:
 
@@ -69,7 +69,7 @@ Telkens wanneer u een nieuwe resource voor LUIS maakt, moet u de resource toewij
 
    ![Een resource toewijzen aan uw app](./media/get-started-portal-deploy-app/assign-resource.png)
 
-1. De nieuwe rij in de tabel zoeken en kopieer de eindpunt-URL. Het is op de juiste wijze ingeconstrueerd voor het maken van een `HTTP GET` aanvraag naar het Luis API-eind punt voor een voor spelling.
+1. De nieuwe rij in de tabel zoeken en kopieer de eindpunt-URL. Het is op de juiste wijze samengesteld om een `HTTP GET`-aanvraag voor een voor spelling te maken naar het LUIS-API-eind punt.
 
 ## <a name="train-and-publish-the-app"></a>De app trainen en publiceren
 
@@ -85,51 +85,58 @@ Train de app wanneer u er klaar voor bent om deze te testen. Publiceer de app al
 
 1. Zoek op de pagina **sleutels en eindpunt instellingen** de lijst met toegewezen resources en de bijbehorende eind punt-url's aan de onderkant.
 
-1. Selecteer de eind punt-URL die is gekoppeld aan de nieuwe resource naam. Met deze actie wordt een webbrowser geopend met een correct geconstrueerde URL `GET` voor het uitvoeren van een aanvraag voor de runtime van de Voorspellings eindpunt.
+1. Selecteer de eind punt-URL die is gekoppeld aan de nieuwe resource naam. Met deze actie wordt een webbrowser geopend met een correct geconstrueerde URL om een `GET`-aanvraag te doen voor de Voorspellings eindpunt runtime.
 
-1. De `q=` aan het einde van de URL is kort voor de **query** en is de plaats waar de utterance van de gebruiker wordt toegevoegd aan de GET-aanvraag. Na de `q=`voert u dezelfde gebruikers utterance in die aan het einde van de vorige Snelstartgids zijn gebruikt:
+## <a name="prediction-endpoint-request"></a>Voorspellings eindpunt aanvraag
 
-    ```Is there a form named hrf-234098```
+<!-- V3FIX -->
 
-    In de browser wordt het antwoord weer gegeven. Dit is dezelfde JSON als uw client toepassing ontvangt:
+De `q=` aan het einde van de URL is kort voor de **query** en is de plaats waar de utterance van de gebruiker wordt toegevoegd aan de GET-aanvraag. Na de `q=` voert u dezelfde gebruikers utterance in die aan het einde van de vorige Snelstartgids worden gebruikt:
 
-    ```JSON
+```Is there a form named hrf-234098```
+
+In de browser wordt het antwoord weer gegeven. Dit is dezelfde JSON als uw client toepassing ontvangt:
+
+```JSON
+{
+"query": "Is there a form named hrf-234098",
+"topScoringIntent": {
+    "intent": "FindForm",
+    "score": 0.9768753
+},
+"intents": [
     {
-    "query": "Is there a form named hrf-234098",
-    "topScoringIntent": {
-        "intent": "FindForm",
-        "score": 0.9768753
+    "intent": "FindForm",
+    "score": 0.9768753
     },
-    "intents": [
-        {
-        "intent": "FindForm",
-        "score": 0.9768753
-        },
-        {
-        "intent": "None",
-        "score": 0.0216071066
-        }
-    ],
-    "entities": [
-        {
-        "entity": "hrf-234098",
-        "type": "Human Resources Form Number",
-        "startIndex": 22,
-        "endIndex": 31
-        }
-      ]
+    {
+    "intent": "None",
+    "score": 0.0216071066
     }
-    ```
+],
+"entities": [
+    {
+    "entity": "hrf-234098",
+    "type": "Human Resources Form Number",
+    "startIndex": 22,
+    "endIndex": 31
+    }
+    ]
+}
+```
 
-    Dit antwoord geeft u meer informatie dan het standaard test venster in de vorige zelf studie. Als u hetzelfde niveau van informatie in het test venster wilt zien, moet u de app publiceren. Nadat de app is gepubliceerd, selecteert u **vergelijken met gepubliceerd** in het test venster. Gebruik **JSON-weer gave weer geven** in het gepubliceerde test venster om dezelfde JSON te zien als de vorige stap. Op deze manier kunt u de huidige app waarmee u werkt vergelijken met een app die naar het eind punt wordt gepubliceerd.
+Dit antwoord geeft u meer informatie dan het standaard test venster in de vorige zelf studie. Als u hetzelfde niveau van informatie in het test venster wilt zien, moet u de app publiceren. Nadat de app is gepubliceerd, selecteert u **vergelijken met gepubliceerd** in het test venster. Gebruik **JSON-weer gave weer geven** in het gepubliceerde test venster om dezelfde JSON te zien als de vorige stap. Op deze manier kunt u de huidige app waarmee u werkt vergelijken met een app die naar het eind punt wordt gepubliceerd.
 
-    [![Huidige bewerking vergelijken versus gepubliceerde versie van de app](./media/get-started-portal-deploy-app/compare-test-pane.png)](./media/get-started-portal-deploy-app/compare-test-pane.png#lightbox)
+[![Compare die momenteel worden bewerkt versus gepubliceerde versie van de app](./media/get-started-portal-deploy-app/compare-test-pane.png)](./media/get-started-portal-deploy-app/compare-test-pane.png#lightbox)
+
+
+
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
 Wanneer u klaar bent met deze Snelstartgids, selecteert u **mijn apps** in het bovenste navigatie menu. Schakel het selectie vakje van de app in de lijst in en selecteer vervolgens **verwijderen** in de context werkbalk boven de lijst.
 
-[![App verwijderen uit de lijst met apps](./media/get-started-portal-build-app/delete-app.png)](./media/get-started-portal-build-app/delete-app.png#lightbox)
+[![Delete-app uit mijn lijst met apps](./media/get-started-portal-build-app/delete-app.png)](./media/get-started-portal-build-app/delete-app.png#lightbox)
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -10,12 +10,12 @@ ms.author: jmartens
 author: j-martens
 ms.date: 08/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5191f8b565762e9377f3718cc147c96e491f5a0d
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 61a42a8c1176cdd347fd2956a07c295ecf49321e
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71067734"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71695542"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Opmerkingen bij de release Azure Machine Learning
 
@@ -23,6 +23,58 @@ In dit artikel vindt u meer informatie over Azure Machine Learning releases.  Ga
 
 Zie [de lijst met bekende problemen](resource-known-issues.md) voor meer informatie over bekende problemen en oplossingen.
 
+## <a name="2019-09-30"></a>2019-09-30
+
+### <a name="azure-machine-learning-sdk-for-python-v1065"></a>Azure Machine Learning SDK voor python v-1.0.65
+
+  + **Nieuwe functies**
+    + Er zijn gecuratorde omgevingen toegevoegd. Deze omgevingen zijn vooraf geconfigureerd met bibliotheken voor algemene machine learning taken en zijn vooraf gemaakt en in cache geplaatst als docker-installatie kopieën voor een snellere uitvoering. Ze worden standaard weer gegeven in de lijst met omgevingen van de werk ruimte, met het voor voegsel ' AzureML '.
+  
+  + **azureml-train-automl**
+    + De ondersteuning voor ONNX-conversie is toegevoegd voor de ADB en HDI
+
++ **Preview-functies**  
+  + **azureml-train-automl**
+    + Ondersteunde BERT en BiLSTM als tekst featurizer (alleen preview-versie)
+    + Ondersteunde parametrisatie aanpassing voor de para meters voor het kolom doel en de transformator (alleen preview-versie)
+    + Ondersteunde onbewerkte uitleg wanneer de gebruiker tijdens de training model uitleg maakt (alleen preview-versie)
+    + Prophet voor tijds Erie-prognose toegevoegd als een trained pipeline (alleen preview-versie)
+  
+  + **azureml-contrib-datadrift**
+    + Pakketten die zijn verplaatst van azureml-contrib-datadrift naar azureml-datadrift; het contrib-pakket wordt in een toekomstige versie verwijderd 
+
++ **Oplossingen en verbeteringen voor oplossingen**
+  + **azureml-automl-core**
+    + FeaturizationConfig geïntroduceerd op AutoMLConfig en AutoMLBaseSettings
+      + Kolom doel negeren voor parametrisatie met de opgegeven kolom en het functie type
+      + Para meters voor transformator overschrijven
+    + Er is een afschaffing bericht toegevoegd voor explain_model () en retrieve_model_explanations ()
+    + Prophet toegevoegd als een trained-pijp lijn (alleen preview-versie)
+    + Er is ondersteuning toegevoegd voor automatische detectie van de doel-lags, de grootte van het rollen venster en de maximale waarde. Als een van target_lags, target_rolling_window_size of max_horizon is ingesteld op ' auto ', worden de heuristiek toegepast om de waarde van de overeenkomstige para meter te schatten op basis van de opleidings gegevens.
+    + Als er sprake is van een vaste prognose in het geval wanneer gegevensset één kolom korrel bevat, is deze korrel van een numeriek type en is er een hiaat tussen de trein-en testset
+    + Het fout bericht over de gedupliceerde index in de externe uitvoering in prognose taken is opgelost
+    + Er is een guardrail toegevoegd om te controleren of een gegevensset niet is gebalanceerd of niet. Als dat het geval is, wordt er een guardrail-bericht naar de-console geschreven.
+  + **azureml-core**
+    + De mogelijkheid om SAS-URL op te halen in het model-object wordt toegevoegd aan de opslag. Bijvoorbeeld: model. Get _sas_url ()
+    + @No__t-0 introduceren om gegevens sets op te halen die zijn gekoppeld aan de ingediende uitvoering
+    + Voeg API-`Dataset.Tabular.from_json_lines_files` toe om een TabularDataset te maken op basis van JSON-lijn bestanden. Ga voor meer informatie over deze tabellaire gegevens in JSON-regel bestanden op TabularDataset naar https://aka.ms/azureml-data voor documentatie.
+    + Er zijn extra VM-grootte velden (besturingssysteem schijf, aantal Gpu's) toegevoegd aan de functie supported_vmsizes ()
+    + Er zijn extra velden toegevoegd aan de functie list_nodes () om de uitvoering, het persoonlijke en het open bare IP-adres, de poort, enzovoort weer te geven.
+    + De mogelijkheid om tijdens het inrichten van het cluster een nieuw veld op te geven-remotelogin_port_public_access dat kan worden ingesteld op ingeschakeld of uitgeschakeld, afhankelijk van of u de SSH-poort open of gesloten wilt laten op het moment van het maken van het cluster. Als u deze niet opgeeft, wordt de poort slim geopend of gesloten, afhankelijk van het feit of u het cluster in een VNet implementeert.
+  + **azureml-explain-model**
+    + Verbeterde documentatie voor uitleg over uitvoer in het classificatie scenario.
+    + De mogelijkheid voor het uploaden van de voorspelde y-waarden is toegevoegd voor de uitleg voor de evaluatie voorbeelden. Hiermee ontgrendelt u nuttige visualisaties.
+    + Er is een uitleg eigenschap toegevoegd aan MimicWrapper om het ophalen van de onderliggende MimicExplainer in te scha kelen.
+  + **azureml-pipeline-core**
+    + Er is een notitie blok toegevoegd om module, ModuleVersion en ModuleStep te beschrijven
+  + **azureml-pipeline-steps**
+    + RScriptStep toegevoegd ter ondersteuning van het uitvoeren van R-script via AML-pijp lijn
+    + Er zijn geen vaste meta data-para meters voor het parseren in AzureBatchStep die het fout bericht ' toewijzing voor para meter SubscriptionId ' heeft veroorzaakt, niet opgegeven.
+  + **azureml-train-automl**
+    + Ondersteund training_data, validation_data, label_column_name, weight_column_name als invoer indeling voor gegevens
+    + Er is een afschaffing bericht toegevoegd voor explain_model () en retrieve_model_explanations ()
+
+  
 ## <a name="2019-09-16"></a>2019-09-16
 
 ### <a name="azure-machine-learning-sdk-for-python-v1062"></a>Azure Machine Learning SDK voor python v-1.0.62
@@ -118,7 +170,7 @@ Op het moment van deze release worden de volgende browsers ondersteund: Chrome, 
     + AutoML-modellen retour neren nu AutoMLExceptions
     + Met deze release worden de uitvoerings prestaties van automatische machine learning lokale uitvoeringen verbeterd.
   + **azureml-core**
-    + Maak een gegevensset. Get _all (werk ruimte), die een woorden `TabularDataset` boek `FileDataset` van en objecten retourneert op basis van hun registratie naam. 
+    + Maak een gegevensset. Get _all (werk ruimte), die een woorden lijst van `TabularDataset`-en `FileDataset`-objecten retourneert die worden gesleuteld op basis van hun registratie naam. 
     
     ```py 
     workspace = Workspace.from_config() 
@@ -266,7 +318,7 @@ Op het moment van deze release worden de volgende browsers ondersteund: Chrome, 
     + Er is ondersteuning toegevoegd voor het gebruik van een omgevings object bij het implementeren van een model naar een webservice. Het omgevings object kan nu worden opgenomen als onderdeel van het InferenceConfig-object.
     + Appinsifht toewijzing toevoegen voor nieuwe regio's-centraal-westus-northcentralus
     + Documentatie toegevoegd voor alle kenmerken in alle Data Store-klassen.
-    + De blob_cache_timeout-para `Datastore.register_azure_blob_container`meter is toegevoegd aan.
+    + De blob_cache_timeout-para meter is toegevoegd aan `Datastore.register_azure_blob_container`.
     + Save_to_directory-en load_from_directory-methoden zijn toegevoegd aan azureml. core. Environment. Environment.
     + De opdrachten "AZ ml Environment down load" en "AZ ml Environment REGI ster" zijn toegevoegd aan de CLI.
     + De methode environment. add _private_pip_wheel is toegevoegd.
@@ -290,7 +342,7 @@ Op het moment van deze release worden de volgende browsers ondersteund: Chrome, 
 ### <a name="azure-machine-learning-data-prep-sdk-v1110"></a>Azure Machine Learning data prep SDK v 1.1.10
 
 + **Nieuwe functies**
-  + U kunt nu een aanvraag indienen om specifieke controles uit te voeren (bijvoorbeeld een histogram, een spreidings tekening enzovoort) op specifieke kolommen.
+  + U kunt nu aanvragen voor het uitvoeren van specifieke controles (zoals histogram, spreidings plot enz.) op specifieke kolommen.
   + Het argument parallelliseren is toegevoegd `append_columns`aan. Indien waar, worden gegevens in het geheugen geladen, maar wordt de uitvoering parallel uitgevoerd. Als deze eigenschap onwaar is, wordt de uitvoering streaming, maar met één thread.
 
 ## <a name="2019-07-23"></a>2019-07-23
@@ -320,7 +372,7 @@ Op het moment van deze release worden de volgende browsers ondersteund: Chrome, 
     + Oude uitzonderings klassen verwijderen.
     + In prognose taken accepteert de `target_lags` para meter nu één geheel getal of een lijst met gehele getallen. Als het gehele getal is gegeven, wordt er slechts één vertraging gemaakt. Als er een lijst wordt weer gegeven, worden de unieke waarden van lags genomen. target_lags = [1, 2, 2, 4] maakt lags van één, 2 en 4 Peri Oden.
     + Los de fout op over het verliezen van kolom typen na de trans formatie (bug gekoppeld);
-    + In `model.forecast(X, y_query)`kan y_query een object type bevatten dat geen (en) bevat aan het begin (#459519).
+    + In `model.forecast(X, y_query)` mag y_query een object type bevatten dat geen (en) bevat aan het begin (#459519).
     + Verwachte waarden toevoegen aan automl-uitvoer
   + **azureml-contrib-datadrift**
     +  Verbeteringen in het voor beeld van een notebook, inclusief de overstap naar azureml-open datasets in plaats van contrib-open datasets en prestatie verbeteringen bij het verrijken van gegevens
@@ -967,7 +1019,7 @@ Azure Machine Learning-Computing kunnen worden gemaakt in Python, met behulp van
 + **Oplossingen voor problemen**
   * Gebruik nieuwste AML uitvoeren Token bij het lezen van en schrijven naar gegevensopslag op afstand wordt uitgevoerd. Voorheen als het Token voor het uitvoeren van AML wordt bijgewerkt in Python, zal de runtime gegevensvoorbereiding niet worden bijgewerkt met de bijgewerkte AML uitvoeren Token.
   * Aanvullende duidelijker foutberichten
-  * to_spark_dataframe () zal niet langer vastlopen wanneer Spark `Kryo` gebruikmaakt van serialisatie
+  * to_spark_dataframe () zal niet langer vastlopen wanneer Spark gebruikmaakt van `Kryo`-serialisatie
   * Aantal waarden Inspector kan nu meer dan 1000 unieke waarden weergeven
   * Willekeurige Split mislukt langer als de oorspronkelijke gegevensstroom beschikt niet over een naam  
 

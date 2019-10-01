@@ -11,12 +11,12 @@ ms.reviewer: klam, LADocs
 ms.topic: conceptual
 ms.date: 06/20/2019
 tags: connectors
-ms.openlocfilehash: 8160cd2cb77a56f3d9b13f3c43929cc4ab7565b0
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.openlocfilehash: ce59c238e50a1be6879b07e959b236f6181a8ce4
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71309584"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71703259"
 ---
 # <a name="create-and-manage-blobs-in-azure-blob-storage-with-azure-logic-apps"></a>Blobs in Azure Blob-opslag maken en beheren met Azure Logic Apps
 
@@ -25,11 +25,12 @@ In dit artikel wordt uitgelegd hoe u bestanden die zijn opgeslagen als blobs in 
 Stel dat u een hulp programma hebt dat wordt bijgewerkt op een Azure-website. die fungeert als de trigger voor uw logische app. Als deze gebeurtenis zich voordoet, kunt u uw logische app een bestand in de BLOB storage-container laten bijwerken. Dit is een actie in uw logische app.
 
 > [!NOTE]
-> Logic apps hebben geen directe toegang tot Azure Storage-accounts die [firewall regels](../storage/common/storage-network-security.md) hebben en zich in dezelfde regio bevinden. Logic apps hebben echter toegang tot Azure Storage-accounts die zich in een andere regio bevinden, omdat een openbaar IP-adres wordt gebruikt voor de communicatie tussen regio's. U kunt ook een van beide opties gebruiken:
+>
+> Logic apps hebben geen directe toegang tot Azure Storage-accounts die [firewall regels](../storage/common/storage-network-security.md) hebben en zich in dezelfde regio bevinden. Logic apps hebben echter toegang tot Azure Storage-accounts die zich in een andere regio bevinden, omdat een openbaar IP-adres wordt gebruikt voor de communicatie tussen regio's. Zorg ervoor dat u de [uitgaande IP-adressen voor beheerde connectors in uw regio](../logic-apps/logic-apps-limits-and-config.md#outbound)toestaat. U kunt ook meer geavanceerde opties gebruiken:
 >
 > * Een [integratie service omgeving](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)maken waarmee verbinding kan worden gemaakt met bronnen in een virtueel Azure-netwerk.
 >
-> * Als u API Management al gebruikt, kunt u deze service gebruiken voor dit scenario. Zie [eenvoudige architectuur voor ondernemings integratie](https://aka.ms/aisarch)voor meer informatie.
+> * Als u een toegewezen laag gebruikt voor API Management, kunt u de opslag-API vooraan gebruiken door gebruik te maken van API Management en de IP-adressen van de laatste via de firewall toe te staan. Voeg in principe het virtuele Azure-netwerk toe dat wordt gebruikt door API Management aan de firewall instelling van het opslag account. U kunt vervolgens de API Management actie of de HTTP-actie gebruiken om de Azure Storage-Api's aan te roepen. Als u deze optie kiest, moet u echter zelf het verificatie proces afhandelen. Zie [eenvoudige architectuur voor ondernemings integratie](https://aka.ms/aisarch)voor meer informatie.
 
 Als u geen ervaring hebt met Logic apps, raadpleegt u [Wat is Azure Logic apps](../logic-apps/logic-apps-overview.md) en [Quick Start: Maak uw eerste logische app](../logic-apps/quickstart-create-first-logic-app-workflow.md). Zie de naslag informatie voor [Azure Blob Storage-connector](/connectors/azureblobconnector/)voor connector-specifieke technische gegevens.
 

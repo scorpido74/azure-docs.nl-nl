@@ -17,12 +17,12 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5334c17b4f918e128ac69569e8ab6deeebac2182
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: f3e4a24e96b41955ca9e89f8307b693e7599b645
+ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71103946"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71709304"
 ---
 # <a name="token-cache-serialization-in-msalnet"></a>Serialisatie van token cache in MSAL.NET
 Nadat een [token is verkregen](msal-acquire-cache-tokens.md), wordt het in de cache opgeslagen door micro soft Authentication Library (MSAL).  De toepassings code moet proberen een token op te halen uit de cache voordat een token wordt verkregen met een andere methode.  In dit artikel wordt de standaard-en aangepaste serialisatie van de token cache in MSAL.NET beschreven.
@@ -277,7 +277,7 @@ In web apps of Web-Api's kan de cache gebruikmaken van de sessie, een redis-cach
 
 Bewaar in web apps of Web-Api's één token cache per account.  Voor web-apps moet de token cache worden gesleuteld met de account-ID.  Voor web-Api's moet het account worden gefilterd op de hash van het token dat wordt gebruikt om de API aan te roepen. MSAL.NET biedt aangepaste token cache-serialisatie in .NET Framework en .NET core-subplatformen. Gebeurtenissen die worden geactiveerd wanneer de cache wordt geopend, apps kunnen kiezen of de cache moet worden geserialiseerd of gedeserialiseerd. Als er sprake is van vertrouwelijke client toepassingen die gebruikers verwerken (Web-apps waarmee gebruikers zich aanmelden en Web-api's aanroepen, en webtoepassingen stroomafwaartse Web-Api's), kunnen er veel gebruikers zijn en worden de gebruikers parallel verwerkt. Uit veiligheids overwegingen is het aan te raden één cache per gebruiker te serialiseren. Met serialisatie-gebeurtenissen wordt een cache sleutel berekend op basis van de identiteit van de verwerkte gebruiker en wordt een token cache voor die gebruiker geserialiseerd/deserialie.
 
-Voor beelden van het gebruik van token caches voor web apps en Web-Api's zijn beschikbaar in de [zelf studie](https://ms-identity-aspnetcore-webapp-tutorial) voor de ASP.net core-web-app in de phase [2-2-token cache](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-2-TokenCache). Voor implementaties ziet u de volgende map [TokenCacheProviders](https://github.com/AzureAD/microsoft-authentication-extensions-for-dotnet/tree/master/src/Microsoft.Identity.Client.Extensions.Web/TokenCacheProviders) in de bibliotheek [micro soft-Authentication-Extensions-voor-dotnet](https://github.com/AzureAD/microsoft-authentication-extensions-for-dotnet) (in de map [micro soft. Identity. client. Extensions. Web](https://github.com/AzureAD/microsoft-authentication-extensions-for-dotnet/tree/master/src/Microsoft.Identity.Client.Extensions.Web) ). 
+Voor beelden van het gebruik van token caches voor web apps en Web-Api's zijn beschikbaar in de [zelf studie](https://ms-identity-aspnetcore-webapp-tutorial) voor de ASP.net core-web-app in de phase [2-2-token cache](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-2-TokenCache). Voor implementaties ziet u de map [TokenCacheProviders](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/Microsoft.Identity.Web/TokenCacheProviders) in de bibliotheek [micro soft-Authentication-Extensions-voor-dotnet](https://github.com/AzureAD/microsoft-authentication-extensions-for-dotnet) (in de map [micro soft. Identity. client. Extensions. Web](https://github.com/AzureAD/microsoft-authentication-extensions-for-dotnet/tree/master/src/Microsoft.Identity.Client.Extensions.Web) ). 
 
 ## <a name="next-steps"></a>Volgende stappen
 De volgende voor beelden illustreren de token cache-serialisatie.

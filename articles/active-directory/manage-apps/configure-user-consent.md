@@ -1,6 +1,6 @@
 ---
-title: Toestemming van de gebruiker aan een toepassing - Azure Active Directory configureren | Microsoft Docs
-description: Informatie over het beheren van de manier waarop gebruikers toestemming voor machtigingen van de toepassing geven. Verleent toestemming van een beheerder kunt u de gebruikerservaring vereenvoudigen. Deze methoden zijn van toepassing op alle gebruikers in uw tenant Azure Active Directory (Azure AD).
+title: Gebruikers vergunning configureren voor een toepassing-Azure Active Directory | Microsoft Docs
+description: Meer informatie over het beheren van de manier waarop gebruikers toestemming geven voor toepassings machtigingen. U kunt de gebruikers ervaring vereenvoudigen door toestemming van de beheerder te verlenen. Deze methoden zijn van toepassing op alle eind gebruikers in uw Azure Active Directory-Tenant (Azure AD).
 services: active-directory
 author: msmimart
 manager: CelesteDG
@@ -12,69 +12,70 @@ ms.date: 10/22/2018
 ms.author: mimart
 ms.reviewer: arvindh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4951984d05e75b0271cf6592c77c54ad13678994
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 6bd746e79bc9d70be23771f97b1757f090f6375f
+ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67476558"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71709274"
 ---
-# <a name="configure-the-way-end-users-consent-to-an-application-in-azure-active-directory"></a>De manier waarop eindgebruikers toestemming voor een toepassing in Azure Active Directory geven configureren
-Informatie over het configureren van de manier waarop gebruikers toestemming voor machtigingen van de toepassing geven. Verleent toestemming van een beheerder kunt u de gebruikerservaring vereenvoudigen. Dit artikel bevat de verschillende manieren waarop die u toestemming van de gebruiker kunt configureren. De methoden van toepassing op alle gebruikers in uw tenant Azure Active Directory (Azure AD). 
+# <a name="configure-the-way-end-users-consent-to-an-application-in-azure-active-directory"></a>De manier configureren waarop eind gebruikers toestemming geven voor een toepassing in Azure Active Directory
+Meer informatie over het configureren van de manier waarop gebruikers toestemming geven voor toepassings machtigingen. U kunt de gebruikers ervaring vereenvoudigen door toestemming van de beheerder te verlenen. In dit artikel worden de verschillende manieren beschreven waarop u de gebruikers toestemming kunt configureren. De methoden zijn van toepassing op alle eind gebruikers in uw Azure Active Directory-Tenant (Azure AD). 
 
-Zie voor meer informatie over het stemt ermee in dat toepassingen [Azure Active Directory-toestemmingsframework](../develop/consent-framework.md).
+Zie [Azure Active Directory instemming-Framework](../develop/consent-framework.md)voor meer informatie over het inzenden van toepassingen.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Verlenen van toestemming van een beheerder, moet u zich aanmeldt als hoofdbeheerder, een beheerder van de toepassing of een beheerder van de cloudtoepassing.
+Voor het verlenen van een beheerders toestemming moet u zich aanmelden als globale beheerder, een toepassings beheerder of een Cloud toepassings beheerder.
 
-Als u wilt beperken de toegang tot toepassingen, moet u Gebruikerstoewijzing vereisen en vervolgens gebruikers of groepen toewijzen aan de toepassing.  Zie voor meer informatie, [methoden voor het toewijzen van gebruikers en groepen](methods-for-assigning-users-and-groups.md).
+Als u de toegang tot toepassingen wilt beperken, moet u de gebruikers toewijzing vereisen en vervolgens gebruikers of groepen toewijzen aan de toepassing.  Zie [methoden voor het toewijzen van gebruikers en groepen](methods-for-assigning-users-and-groups.md)voor meer informatie.
 
-## <a name="grant-admin-consent-to-enterprise-apps-in-the-azure-portal"></a>Beheerder toestemming voor enterprise-apps in Azure portal
+## <a name="grant-admin-consent-to-enterprise-apps-in-the-azure-portal"></a>Toestemming geven aan de beheerder voor zakelijke apps in de Azure Portal
 
-Beheerderstoestemming voor een zakelijke app verlenen:
+Beheerders toestemming geven voor een bedrijfs-app:
 
-1. Aanmelden bij de [Azure-portal](https://portal.azure.com) als een globale beheerder, toepassingsbeheerder of een beheerder van de cloudtoepassing.
-2. Klik op **alle services** boven aan het navigatiemenu aan. De **Azure Active Directory-extensie** wordt geopend.
-3. Typ in het zoekvak filter **'Azure Active Directory'** en selecteer de **Azure Active Directory** item.
-4. Klik in het navigatiemenu op **bedrijfstoepassingen**.
-5. Selecteer de app om toestemming.
-6. Selecteer **machtigingen** en klik vervolgens op **verlenen van toestemming van een beheerder**. U wordt gevraagd zich aanmeldt bij het beheren van de toepassing.
-7. Meld u aan met een account met machtigingen voor het verlenen van toestemming van een beheerder voor de toepassing. 
-8. Instemming met de machtigingen van de toepassing.
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com) als een globale beheerder, een toepassings beheerder of een Cloud toepassings beheerder.
+2. Klik op **alle services** boven aan het navigatie menu aan de linkerkant. De **uitbrei ding Azure Active Directory** wordt geopend.
+3. In het zoekvak filteren typt u **' Azure Active Directory '** en selecteert u het **Azure Active Directory** item.
+4. Klik in het navigatie menu op **bedrijfs toepassingen**.
+5. Selecteer de app om toestemming te geven.
+6. Selecteer **machtigingen** en klik vervolgens op **toestemming beheerder verlenen**. U wordt gevraagd om u aan te melden om de toepassing te beheren.
+7. Meld u aan met een account dat gemachtigd is om de beheerder toestemming te geven voor de toepassing. 
+8. Toestemming geven aan de machtigingen van de toepassing.
 
-Deze optie werkt alleen als de toepassing is: 
+Deze optie werkt alleen als de toepassing: 
 
-- Geregistreerd in uw tenant, of
-- Geregistreerd in een andere Azure AD-tenant en toegestaan door ten minste één gebruiker. Wanneer een gebruiker heeft ingestemd met een toepassing, Azure AD een lijst met de toepassing onder **bedrijfsapps** in Azure portal.
+- Geregistreerd in uw Tenant of
+- Geregistreerd in een andere Azure AD-Tenant en door ten minste één eind gebruiker gezonden. Zodra een eind gebruiker heeft ingestemd met een toepassing, vermeldt Azure AD de toepassing onder de **Enter prise-apps** in de Azure Portal.
 
-## <a name="grant-admin-consent-when-registering-an-app-in-the-azure-portal"></a>Verlenen van toestemming van een beheerder bij het registreren van een app in Azure portal
+## <a name="grant-admin-consent-when-registering-an-app-in-the-azure-portal"></a>Toestemming van de beheerder geven bij het registreren van een app in de Azure Portal
 
-Beheerderstoestemming verlenen bij het registreren van een app: 
+Toestemming van de beheerder geven bij het registreren van een app: 
 
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com) als globale beheerder.
-2. Navigeer naar de **App-registraties** blade.
-3. Selecteer de toepassing om de toestemming.
+2. Navigeer naar de Blade **app-registraties** .
+3. Selecteer de toepassing voor de toestemming.
 4. Selecteer **API-machtigingen**.
-5. Klik op **verlenen van toestemming van een beheerder**.
+5. Klik op **toestemming beheerder verlenen**.
 
 
-## <a name="grant-admin-consent-through-a-url-request"></a>Verlenen van toestemming van een beheerder via een URL-aanvraag
+## <a name="grant-admin-consent-through-a-url-request"></a>Beheerder toestemming geven via een URL-aanvraag
 
-Verlenen van toestemming van een beheerder via een URL-aanvraag:
+Toestemming van de beheerder verlenen via een URL-aanvraag:
 
-1. Een aanvraag voor het samenstellen *login.microsoftonline.com* met uw app-configuraties en toe te voegen op `&prompt=admin_consent`. 
-2. Na het aanmelden met beheerdersreferenties, heeft toestemming voor alle gebruikers op de app zijn verleend.
+1. Maak een aanvraag voor *login.microsoftonline.com* met uw app-configuraties en voeg deze toe aan `&prompt=admin_consent`. De URL ziet er als volgt uit: `https://login.microsoftonline.com/<tenant-id>/oauth2/authorize?client_id=<client id>&response_type=code&redirect_uri=<Your-Redirect-URI-Https-Encoded>&nonce=1234&resource=<your-resource-Https-encoded>&prompt=admin_consent`
+2. Nadat u zich hebt aangemeld met beheerders referenties, is de app toestemming gegeven voor alle gebruikers.
 
 
-## <a name="force-user-consent-through-a-url-request"></a>Toestemming van de gebruiker via een URL-aanvraag afdwingen
+## <a name="force-user-consent-through-a-url-request"></a>Toestemming geven voor de gebruiker via een URL-aanvraag
 
-Om te vereisen dat eindgebruikers toestemming geven voor een toepassing telkens wanneer ze worden geverifieerd, append `&prompt=consent` verificatie aanvraag-URL.
+Als u wilt dat eind gebruikers elke keer dat ze worden geverifieerd, een aanvraag indienen, voegt u `&prompt=consent` toe aan de URL van de verificatie aanvraag.
+De URL ziet er als volgt uit: `https://login.microsoftonline.com/<tenant-id>/oauth2/authorize?client_id=<client id>&response_type=code&redirect_uri=<Your-Redirect-URI-Https-Encoded>&nonce=1234&resource=<your-resource-Https-encoded>&prompt=consent`
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Toestemming en het integreren van Apps aan AzureAD](../develop/quickstart-v1-integrate-apps-with-azure-ad.md)
+[Apps goed keuren en integreren met AzureAD](../develop/quickstart-v1-integrate-apps-with-azure-ad.md)
 
-[De toestemming en rollen voor AzureAD v2.0 geconvergeerde Apps](../develop/active-directory-v2-scopes.md)
+[Toestemming en machtiging voor AzureAD v 2.0 geconvergeerde apps](../develop/active-directory-v2-scopes.md)
 
 [AzureAD StackOverflow](https://stackoverflow.com/questions/tagged/azure-active-directory)

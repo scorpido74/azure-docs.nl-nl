@@ -1,50 +1,50 @@
 ---
 title: Statussen van waarschuwingen en slimme groepen beheren
-description: De status van de waarschuwing en slimme-instanties beheren
+description: De status van de instanties van de waarschuwing en de slimme groep beheren
 author: anantr
 services: monitoring
 ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.author: anantr
+ms.author: robb
 ms.subservice: alerts
-ms.openlocfilehash: 2aa521b0552b60e5a875a5f46ab9887c6e5b6e3e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f72abd1168d14cae703f7fcfc7b58eaa56bdc592
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60919600"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71702941"
 ---
 # <a name="manage-alert-and-smart-group-states"></a>Statussen van waarschuwingen en slimme groepen beheren
-Waarschuwingen in Azure Monitor beschikt nu over een [status en een controleconditie gewaarschuwd](https://aka.ms/azure-alerts-overview) en op dezelfde manier, slimme groepen hebben een [groepsstatus slimme](https://aka.ms/smart-groups). Wijzigingen in de staat worden nu in de geschiedenis die zijn gekoppeld aan de respectieve waarschuwing of smart-groep vastgelegd. In dit artikel begeleidt u bij het proces van het wijzigen van de status, voor zowel een waarschuwing als een slimme groep.
+Waarschuwingen in Azure Monitor hebben nu een [waarschuwings status en een monitor voorwaarde](https://aka.ms/azure-alerts-overview) , en op dezelfde manier hebben slimme groepen de status van een [slimme groep](https://aka.ms/smart-groups). Wijzigingen in de status worden nu vastgelegd in de geschiedenis die is gekoppeld aan de betreffende waarschuwing of slimme groep. Dit artikel begeleidt u bij het wijzigen van de status, zowel voor een waarschuwing als voor een slimme groep.
 
 ## <a name="change-the-state-of-an-alert"></a>De status van een waarschuwing wijzigen
-1. U kunt de status van een waarschuwing wijzigen in de volgende manieren: 
-    * Klikt u op het selectievakje naast de waarschuwingen die u wilt wijzigen van de status van alle waarschuwingen op de pagina en klikt u op status wijzigen.   
+1. U kunt de status van een waarschuwing op de volgende verschillende manieren wijzigen: 
+    * Klik op de pagina alle waarschuwingen op het selectie vakje naast de waarschuwingen waarvan u de status wilt wijzigen en klik op status wijzigen.   
     ![Bewaking](./media/alerts-managing-alert-states/state-all-alerts.jpg)
-    * In de pagina met Details van de waarschuwing voor een bepaalde instantie van de waarschuwing, klikt u op status wijzigen   
+    * U kunt op de pagina waarschuwings Details voor een bepaald waarschuwings exemplaar op status wijzigen klikken   
     ![Bewaking](./media/alerts-managing-alert-states/state-alert-details.jpg)
-    * In de pagina met Details van de waarschuwing voor een specifiek exemplaar van de waarschuwing, in het deelvenster Smart-groep, kunt u het selectievakje naast de waarschuwingen die u wilt    
+    * Op de pagina waarschuwings Details voor een specifiek waarschuwings exemplaar klikt u in het deel venster slimme groep op het selectie vakje naast de gewenste waarschuwingen    
     ![Bewaking](./media/alerts-managing-alert-states/state-alert-details-sg.jpg)
 
-    * Op de pagina slimme Groepsdetails in de lijst met waarschuwingen lid kunt u op het selectievakje naast de waarschuwingen die u wilt de status van wijzigen en klik op wijzigen Stateto wijzigen de status van en op status wijzigen.   
+    * Klik op de pagina Details van Smart Group, in de lijst met waarschuwingen voor leden, op het selectie vakje naast de waarschuwingen waarvan u de status wilt wijzigen en klik op wijzigen Stateto Wijzig de status van en klik op wijzigings status.   
     ![Bewaking](./media/alerts-managing-alert-states/state-sg-details-alerts.jpg)
-1. Op status wijzigen klikt, wordt een pop-upvenster geopend omhoog zodat u kunt de status (nieuw/bevestigd/gesloten) selecteren en voer een opmerking indien nodig.   
+1. Wanneer u op status wijzigen klikt, wordt er een pop-upvenster geopend, zodat u de status kunt selecteren (nieuw/bevestigd/gesloten) en een opmerking moet invoeren, indien nodig.   
 ![Bewaking](./media/alerts-managing-alert-states/state-alert-change.jpg)
-1. Zodra deze actie is uitgevoerd, wordt de wijziging in de status geregistreerd in de geschiedenis van de respectieve waarschuwing. Dit kan worden weergegeven door de bijbehorende detailpagina te openen en het controleren van de sectie Geschiedenis.    
+1. Zodra dit is gebeurd, wordt de status wijziging vastgelegd in de geschiedenis van de respectieve waarschuwing. Dit kan worden weer gegeven door de betreffende detail pagina te openen en het gedeelte geschiedenis te controleren.    
 ![Bewaking](./media/alerts-managing-alert-states/state-alert-history.jpg)
 
 ## <a name="change-the-state-of-a-smart-group"></a>De status van een slimme groep wijzigen
-1. U kunt de status van een slimme groep wijzigen in de volgende manieren:
-    1. Op de pagina van de lijst met smartcards groep, kunt u het selectievakje naast de slimme groepen die u wilt de status van wijzigen en klik op status wijzigen  
+1. U kunt de status van een slimme groep op de volgende manieren wijzigen:
+    1. Op de pagina lijst met slimme groepen kunt u klikken op het selectie vakje naast de slimme groepen waarvan u de status wilt wijzigen en klikt u op status wijzigen  
     ![Bewaking](./media/alerts-managing-alert-states/state-sg-list.jpg)
-    1. Pagina met Details van slimme groep, klikt u op status wijzigen        
+    1. Op de pagina Details van Smart Group kunt u klikken op status wijzigen        
     ![Bewaking](./media/alerts-managing-alert-states/state-sg-details.jpg)
-1. Op status wijzigen klikt, wordt een pop-upvenster geopend omhoog zodat u kunt de status (nieuw/bevestigd/gesloten) selecteren en voer een opmerking indien nodig. 
+1. Wanneer u op status wijzigen klikt, wordt er een pop-upvenster geopend, zodat u de status kunt selecteren (nieuw/bevestigd/gesloten) en een opmerking moet invoeren, indien nodig. 
 ![Controle](./media/alerts-managing-alert-states/state-sg-change.jpg)
    > [!NOTE]
-   >  Als u de status van een slimme groep wijzigt, wordt de status van de waarschuwingen afzonderlijk lid niet gewijzigd.
+   >  Als u de status van een Smart groep wijzigt, wordt de status van de waarschuwingen voor afzonderlijke leden niet gewijzigd.
 
-1. Zodra deze actie is uitgevoerd, wordt de wijziging in de status geregistreerd in de geschiedenis van de betreffende slimme groep. Dit kan worden weergegeven door de bijbehorende detailpagina te openen en het controleren van de sectie Geschiedenis.     
+1. Zodra dit is gebeurd, wordt de status wijziging vastgelegd in de geschiedenis van de respectieve slimme groep. Dit kan worden weer gegeven door de betreffende detail pagina te openen en het gedeelte geschiedenis te controleren.     
 ![Bewaking](./media/alerts-managing-alert-states/state-sg-history.jpg)
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/13/2017
 ms.author: huishao
-ms.openlocfilehash: cce66ff5d5270596ef9d9911764b7eb2a6460fd7
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: c1ac7a0310eda032b45fb57cea95ba38b753ef1d
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70083256"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71695349"
 ---
 # <a name="introduction-to-freebsd-on-azure"></a>Inleiding tot FreeBSD op Azure
 Dit artikel bevat een overzicht van het uitvoeren van een FreeBSD-virtuele machine in Azure.
@@ -29,19 +29,13 @@ FreeBSD voor Microsoft Azure is een geavanceerd computer besturingssysteem dat w
 
 Micro soft Corporation maakt installatie kopieën van FreeBSD beschikbaar in azure met de vooraf geconfigureerde [Azure VM-gast agent](https://github.com/Azure/WALinuxAgent/) . Momenteel worden de volgende FreeBSD-versies aangeboden als installatie kopieën van micro soft:
 
-- FreeBSD 10,3-RELEASE
-- FreeBSD 10,4-RELEASE
-- FreeBSD 11,1-RELEASE
+- [FreeBSD 10,4 op Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.FreeBSD104)
+- [FreeBSD 11,2 op Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.FreeBSD112)
+- [FreeBSD 12,0 op Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.FreeBSD120)
 
 De agent is verantwoordelijk voor de communicatie tussen de FreeBSD-VM en de Azure-infra structuur voor bewerkingen, zoals het inrichten van de virtuele machine bij het eerste gebruik (gebruikers naam, wacht woord of SSH-sleutel, hostnaam enzovoort) en het inschakelen van functionaliteit voor selectieve VM-extensies.
 
 Net als voor toekomstige versies van FreeBSD is de strategie actueel en zijn de meest recente releases beschikbaar zodra ze zijn gepubliceerd door het team van de FreeBSD-versie techniek.
-
-## <a name="deploying-a-freebsd-virtual-machine"></a>Een virtuele FreeBSD-machine implementeren
-Het implementeren van een virtuele FreeBSD-machine is een eenvoudig proces dat gebruikmaakt van een installatie kopie van Azure Marketplace vanuit de Azure Portal:
-
-- [FreeBSD 10,4 op Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.FreeBSD104)
-- [FreeBSD 11,2 op Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.FreeBSD112)
 
 ### <a name="create-a-freebsd-vm-through-azure-cli-on-freebsd"></a>Een FreeBSD-VM maken via Azure CLI op FreeBSD
 Eerst moet u [Azure cli](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) installeren, met de volgende opdracht op een FreeBSD-machine.
@@ -65,7 +59,7 @@ sudo rm /usr/local/bin/python 
 sudo ln -s /usr/local/bin/python3.5 /usr/local/bin/python
 ```
 
-Tijdens de installatie wordt u gevraagd `Modify profile to update your $PATH and enable shell/tab completion now? (Y/n)`. Als u antwoordt `y` en `/etc/rc.conf` `a path to an rc file to update`invoert, kunt u aan het probleem `ERROR: [Errno 13] Permission denied`voldoen. U kunt dit probleem oplossen door het schrijf recht toe te kennen aan de huidige gebruiker op `etc/rc.conf`het bestand.
+Tijdens de installatie wordt u gevraagd `Modify profile to update your $PATH and enable shell/tab completion now? (Y/n)` op te vragen. Als u `y` beantwoordt en `/etc/rc.conf` als `a path to an rc file to update` opgeeft, kunt u aan het probleem `ERROR: [Errno 13] Permission denied` voldoen. Als u dit probleem wilt oplossen, moet u het schrijf recht toekennen aan de huidige gebruiker op het bestand `etc/rc.conf`.
 
 Nu kunt u zich aanmelden bij Azure en uw FreeBSD-VM maken. Hieronder ziet u een voor beeld van het maken van een FreeBSD 11,0-VM. U kunt ook de para meter `--public-ip-address-dns-name` toevoegen met een wereld wijd unieke DNS-naam voor een nieuw, gemaakt openbaar IP-adres. 
 
@@ -116,7 +110,7 @@ De [CustomScript](https://github.com/Azure/azure-linux-extensions/tree/master/Cu
 ## <a name="authentication-user-names-passwords-and-ssh-keys"></a>Verificatie: gebruikers namen, wacht woorden en SSH-sleutels
 Wanneer u een virtuele FreeBSD-machine maakt met behulp van de Azure Portal, moet u een gebruikers naam, wacht woord of open bare SSH-sleutel opgeven.
 Gebruikers namen voor het implementeren van een virtuele FreeBSD-machine in azure mogen niet overeenkomen met de namen van systeem accounts (UID < 100) die al aanwezig zijn in de virtuele machine (bijvoorbeeld ' root ').
-Op dit moment wordt alleen de RSA SSH-sleutel ondersteund. Een SSH-sleutel met meerdere regels `---- BEGIN SSH2 PUBLIC KEY ----` moet beginnen met `---- END SSH2 PUBLIC KEY ----`en eindigen op.
+Op dit moment wordt alleen de RSA SSH-sleutel ondersteund. Een SSH-sleutel met meerdere regels moet beginnen met `---- BEGIN SSH2 PUBLIC KEY ----` en eindigen op `---- END SSH2 PUBLIC KEY ----`.
 
 ## <a name="obtaining-superuser-privileges"></a>Bevoegdheden van super gebruiker verkrijgen
 Het gebruikers account dat is opgegeven tijdens de implementatie van de virtuele machine-instantie op Azure is een bevoegd account. Het pakket met sudo is geïnstalleerd in de gepubliceerde FreeBSD-installatie kopie.
@@ -126,7 +120,7 @@ Nadat u bent aangemeld via dit gebruikers account, kunt u opdrachten uitvoeren a
 $ sudo <COMMAND>
 ```
 
-U kunt eventueel een basis shell verkrijgen met behulp `sudo -s`van.
+U kunt eventueel een basis shell verkrijgen met behulp van `sudo -s`.
 
 ## <a name="known-issues"></a>Bekende problemen
 De [Azure VM Guest agent](https://github.com/Azure/WALinuxAgent/) versie 2.2.2 heeft een [bekend probleem](https://github.com/Azure/WALinuxAgent/pull/517) dat ertoe leidt dat de inrichtings fout voor FreeBSD vm in azure wordt veroorzaakt. De oplossing is vastgelegd door de [Azure VM Guest agent](https://github.com/Azure/WALinuxAgent/) versie 2.2.3 en latere versies. 
