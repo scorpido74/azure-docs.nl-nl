@@ -1,69 +1,80 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Documentatie voor Azure Container Instances
+summary: Voer Docker-containers op aanvraag uit in een beheerde, serverloze Azure-omgeving. Azure Container Instances is een oplossing voor elk scenario dat kan functioneren in geïsoleerde containers zonder indeling. Voer op gebeurtenissen gebaseerde toepassingen uit, implementeer snel vanuit uw containers voor ontwikkelpijplijnen en voer taken voor gegevensverwerking en compilatie uit.
 metadata:
-  title: Documentatie voor Azure Container Instances - zelfstudies | Microsoft Docs
-  description: 'Azure Container Instances biedt u een zeer snelle en eenvoudige methode voor het uitvoeren van een container in Azure, waarbij het niet nodig is om virtuele machines in te richten of het serviceniveau te verhogen.'
-  services: container-instances
-  author: georgewallace
-  manager: gwallace
+  title: Documentatie voor Azure Container Instances - serverloze containers, op aanvraag
+  description: Voer Docker-containers uit in een beheerde, serverloze Azure-omgeving.
+  services: 
   ms.service: container-instances
   ms.topic: landing-page
-  ms.date: 07/26/2017
-  ms.author: gwallace
-abstract:
-  description: 'Azure Container Instances biedt u een zeer snelle en eenvoudige methode voor het uitvoeren van een container in Azure, waarbij het niet nodig is om virtuele machines in te richten of het serviceniveau te verhogen. Ontdek met onze snelstartgidsen, zelfstudies en voorbeelden hoe u containers maakt en beheert.<p>Als u een volledige oplossing voor het inrichten van containers nodig hebt, raadpleegt u de <a href="/azure/aks/">documentatie voor Azure Kubernetes Service (AKS)</a>.</p>'
-sections:
-  - title: QuickStarts van vijf minuten
-    items:
-      - type: paragraph
-        text: Leer hoe u containerinstallatiekopieën implementeert met Azure Container Instances.
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/media/common/i_cligeneric.svg'
-            text: Azure-CLI
-            href: /azure/container-instances/container-instances-quickstart
-          - image:
-              src: 'https://docs.microsoft.com/media/common/i_portal.svg'
-            text: Azure-portal
-            href: /azure/container-instances/container-instances-quickstart-portal
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_powershell.svg'
-            text: Azure PowerShell
-            href: /azure/container-instances/container-instances-quickstart-powershell
-  - title: Zelfstudies met stapsgewijze instructies
-    items:
-      - type: paragraph
-        text: Leer hoe u code verpakt in een containerinstallatiekopie en deze uitvoert in Azure Container Instances.
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="/azure/container-instances/container-instances-tutorial-prepare-app">Een toepassing verpakken in een containerinstallatiekopie</a>
-          - html: <a href="/azure/container-instances/container-instances-tutorial-prepare-acr">Een Azure Container Registry maken en de containerinstallatiekopie uploaden</a>
-          - html: <a href="/azure/container-instances/container-instances-tutorial-deploy-app">De containerinstallatiekopie implementeren in Azure Container Instances</a>
-  - title: Uw vaardigheden ontwikkelen met Microsoft Learn
-    items:
-      - type: list
-        style: cards
-        className: cardsFTitle
-        items:
-          - title: Docker-containers uitvoeren met Azure Container Instances
-            href: /learn/modules/run-docker-with-azure-container-instances/
-            image:
-              src: /learn/achievements/run-docker-with-azure-container-instances.svg
-      - type: paragraph
-        text: <a href="/learn/browse/?products=azure-container-instances">Meer interactief leren...</a>
-  - title: Naslaginformatie
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Opdrachtregel
-            html: <p><a href="/cli/azure/container">Azure-CLI</a></p><p><a href="/powershell/module/az.containerinstance">PowerShell</a></p>
-          - title: Talen
-            html: <p><a href="/dotnet/api/overview/azure/containerinstance">.NET</a></p><p><a href="/python/api/overview/azure/containerinstance">Python</a></p><p><a href="/java/api/overview/azure/containerinstance">Java</a></p><p><a href="/javascript/api/overview/azure/containerinstances">Node.js</a></p>
-          - title: REST
-            html: <p><a href="/rest/api/container-instances">Naslaginformatie over REST-API</a></p><p><a href="/azure/templates/microsoft.containerinstance/containergroups">Resource Manager-sjabloon</a></p>
+  ms.collection: collection
+  author: dlepow
+  ms.author: danlep
+  ms.date: 09/25/2019
+  ms.openlocfilehash: a031f70cfaad9369f79a0e18f3527250eb82bfeb
+  ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+  ms.translationtype: HT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 09/27/2019
+  ms.locfileid: "71326957"
+landingContent:
+- title: Over Azure Container Instances
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Wat is Azure Container Instances?
+      url: container-instances-overview.md
+    - text: Containergroepen
+      url: container-instances-container-groups.md
+    - text: Veelgestelde vragen
+      url: container-instances-faq.md
+- title: Aan de slag
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Een containerinstantie implementeren - CLI
+      url: container-instances-quickstart.md
+    - text: Een containerinstantie implementeren - Portal
+      url: container-instances-quickstart-portal.md
+  - linkListType: learn
+    links:
+    - text: Docker-containers uitvoeren met Azure Container Instances
+      url: /learn/modules/run-docker-with-azure-container-instances/
+- title: Groepen met meerdere containers maken
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Een containergroep implementeren - YAML
+      url: container-instances-multi-container-yaml.md
+    - text: Een containergroep implementeren - sjabloon
+      url: container-instances-multi-container-group.md
+- title: Implementatiescenario's
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Verbinding maken met een virtueel netwerk
+      url: container-instances-vnet.md
+    - text: Beleid voor opnieuw opstarten configureren
+      url: container-instances-restart-policy.md
+    - text: Omgevingsvariabelen instellen
+      url: container-instances-environment-variables.md
+- title: Container-apps beheren
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Containers starten en stoppen
+      url: container-instances-stop-start.md
+    - text: Actieve containers bijwerken
+      url: container-instances-update.md
+    - text: Gegevens delen tussen containers
+      url: container-instances-volume-emptydir.md
+- title: Integreren met Azure
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Installatiekopie implementeren vanuit Azure Container Registry
+      url: container-instances-using-azure-container-registry.md
+    - text: Een beheerde identiteit gebruiken
+      url: container-instances-managed-identity.md
+    - text: Azure-bestandsshare koppelen
+      url: container-instances-volume-azure-files.md

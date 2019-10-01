@@ -448,6 +448,8 @@
           href: sql-database-geo-replication-portal.md
         - name: Beveiliging voor geo-replica's configureren
           href: sql-database-geo-replication-security-config.md
+        - name: Failovergroep configureren
+          href: sql-database-configure-failover-group.md
         - name: Functies in het geheugen proberen
           href: sql-database-in-memory-sample.md
         - name: Automatisch instellen inschakelen

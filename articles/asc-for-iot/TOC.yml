@@ -39,6 +39,8 @@
       href: concept-security-alerts.md
     - name: Aanbevelingen voor beveiliging
       href: concept-recommendations.md
+    - name: Basislijn
+      href: concept-baseline.md
     - name: Aggregatie van gebeurtenissen
       href: event-aggregation.md
     - name: Prijs en bijbehorende kosten

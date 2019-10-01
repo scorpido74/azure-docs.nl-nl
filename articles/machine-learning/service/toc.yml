@@ -49,6 +49,10 @@
         - name: Classificatie (bankgegevens)
           displayName: 'automl, automated, auto ml, portal, ui'
           href: tutorial-first-experiment-automated-ml.md
+    - name: Machine learning-CLI
+      items:
+        - name: Een model trainen en implementeren
+          href: tutorial-train-deploy-model-cli.md
 - name: Voorbeelden
   items:
     - name: Notebooks
@@ -63,6 +67,9 @@
     - name: Rekendoel
       displayName: 'resource, dsvm, AKS, kubernetes, amlcompute, Data Science Virtual Machine, local, cluster, ACI, container instance, ADB, Databricks, data lake, lake, HDI, HDInsight'
       href: concept-compute-target.md
+    - name: Modeltraining
+      displayName: 'run config, estimator, machine learning pipeline, ml pipeline, train model'
+      href: concept-train-machine-learning-model.md
     - name: Visuele interface
       displayName: studio
       href: ui-concept-visual-interface.md
@@ -138,7 +145,7 @@
     - name: Modellen trainen
       items:
         - name: Een trainingsomgeving instellen
-          displayName: 'compute target, dsvm, Data Science Virtual Machine, local, cluster, ACI, container instance, Databricks, data lake, lake, HDI, HDInsight'
+          displayName: 'run config, compute target, dsvm, Data Science Virtual Machine, local, cluster, ACI, container instance, Databricks, data lake, lake, HDI, HDInsight'
           href: how-to-set-up-training-targets.md
         - name: Schattingen gebruiken om te trainen
           items:

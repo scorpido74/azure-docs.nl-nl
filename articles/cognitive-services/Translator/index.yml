@@ -1,113 +1,109 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Documentatie voor Translator Text
+summary: Translator Text is een cloudservice voor machinevertalingen die u kunt gebruiken om vrijwel in realtime tekst te vertalen via een eenvoudige REST API-aanroep. De API gebruikt de moderne technologie voor neurale machinevertaling en bevat ook statistische machinevertalingstechnologie. Custom Translator is een uitbreiding van de Translator Text-API, waarmee u neurale vertalingssystemen kunt bouwen. U kunt het aangepaste vertaalsysteem gebruiken om tekst te vertalen met de Translator Text-API of Microsoft Speech Services.
 metadata:
-  title: 'Documentatie voor Translator Text - snelstarts, zelfstudies, API-referentie - Azure Cognitive Services | Microsoft Docs'
-  description: Informatie over hoe u Translator Text gebruikt om tekst in meerdere talen te vertalen.
+  title: Documentatie voor Translator Text - quickstarts, zelfstudies, API-verwijzing
+  titleSuffix: Azure Cognitive Services
+  description: Translator Text is een cloudservice voor machinevertalingen die u kunt gebruiken om vrijwel in realtime tekst te vertalen via een eenvoudige REST API-aanroep. De API gebruikt de moderne technologie voor neurale machinevertaling en bevat ook statistische machinevertalingstechnologie. Custom Translator is een uitbreiding van de Translator Text-API, waarmee u neurale vertalingssystemen kunt bouwen. U kunt het aangepaste vertaalsysteem gebruiken om tekst te vertalen met de Translator Text-API of Microsoft Speech Services.
   services: cognitive-services
-  author: swmachan
+  author: erhopf
   manager: nitinme
+  layout: LandingPage
   ms.service: cognitive-services
   ms.subservice: translator-text
   ms.topic: landing-page
-  ms.date: 06/04/2019
-  ms.author: swmachan
-abstract:
-  description: 'Translator Text is een cloudservice voor machinevertalingen die u kunt gebruiken om vrijwel in realtime tekst te vertalen via een eenvoudige REST API-aanroep. De API gebruikt de moderne technologie voor neurale machinevertaling en bevat ook statistische machinevertalingstechnologie. Custom Translator is een uitbreiding van de Translator Text-API, waarmee u neurale vertalingssystemen kunt bouwen. U kunt het aangepaste vertaalsysteem gebruiken om tekst te vertalen met de Translator Text-API of de <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/">Microsoft Speech Services</a>. Voor de lijst met ondersteunde talen, voor zowel neurale als statistische machinevertaling, raadpleegt u <a href="languages.md">Ondersteunde talen</a>.'
-sections:
-  - items:
-      - type: list
-        style: cards
-        className: cardsM
-        columns: 3
-        items:
-          - href: /azure/cognitive-services/translator/translator-info-overview
-            html: <p>Meer informatie over de Translator Text-API</p>
-            image:
-              src: ../media/index/i_overview.svg
-            title: Wat is de Translator Text API?
-          - href: /azure/cognitive-services/translator/custom-translator/overview
-            html: <p>Meer informatie over Custom Translator</p>
-            image:
-              src: ../media/index/i_overview.svg
-            title: Wat is Custom Translator?
-          - href: /azure/cognitive-services/translator/custom-translator/quickstart-build-deploy-custom-model
-            html: <p>Lees hoe u snel aan de slag kunt gaan met Custom Translator</p>
-            image:
-              src: ../media/index/i_get-started.svg
-            title: Snelstart voor Custom Translator
-  - title: QuickStarts van vijf minuten
-    items:
-      - type: paragraph
-        text: 'Aan de slag met de Translator Text-API:'
-      - type: table
-        style: dataMatrix
-        columns:
-          - image:
-              src: media/index/logo_csharp.svg
-            title: 'C#'
-          - image:
-              src: media/index/logo_java.svg
-            title: Java
-          - image:
-              src: media/index/logo_nodejs.svg
-            title: Node.js
-          - image:
-              src: media/index/logo_python.svg
-            title: Python
-          - image:
-              src: media/index/logo_go.svg
-            title: Aan de slag
-        rows:
-          - title: Tekst vertalen
-            values:
-              - href: quickstart-translate?pivots=programming-language-csharp
-              - href: quickstart-translate?pivots=programming-language-java
-              - href: quickstart-translate?pivots=programming-language-nodejs
-              - href: quickstart-translate?pivots=programming-language-python
-              - href: quickstart-translate?pivots=programming-language-go
-          - title: Coverteer tekst van één script naar het andere
-            values:
-              - href: quickstart-transliterate?pivots=programming-language-csharp
-              - href: quickstart-transliterate?pivots=programming-language-java
-              - href: quickstart-transliterate?pivots=programming-language-nodejs
-              - href: quickstart-transliterate?pivots=programming-language-python
-              - href: quickstart-transliterate?pivots=programming-language-go
-          - title: De taal van een tekst detecteren
-            values:
-              - href: quickstart-detect?pivots=programming-language-csharp
-              - href: quickstart-detect?pivots=programming-language-java
-              - href: quickstart-detect?pivots=programming-language-nodejs
-              - href: quickstart-detect?pivots=programming-language-python
-              - href: quickstart-detect?pivots=programming-language-go
-          - title: Haal alternatieve vertalingen op en gebruik deze
-            values:
-              - href: quickstart-dictionary?pivots=programming-language-csharp
-              - href: quickstart-dictionary?pivots=programming-language-java
-              - href: quickstart-dictionary?pivots=programming-language-nodejs
-              - href: quickstart-dictionary?pivots=programming-language-python
-              - href: quickstart-dictionary?pivots=programming-language-go
-          - title: De zinlengte bepalen
-            values:
-              - href: quickstart-sentences?pivots=programming-language-csharp
-              - href: quickstart-sentences?pivots=programming-language-java
-              - href: quickstart-sentences?pivots=programming-language-nodejs
-              - href: quickstart-sentences?pivots=programming-language-python
-              - href: quickstart-sentences?pivots=programming-language-go
-          - title: Raadpleeg de volledige lijst met ondersteunde talen
-            values:
-              - href: quickstart-languages?pivots=programming-language-csharp
-              - href: quickstart-languages?pivots=programming-language-java
-              - href: quickstart-languages?pivots=programming-language-nodejs
-              - href: quickstart-languages?pivots=programming-language-python
-              - href: quickstart-languages?pivots=programming-language-go
-  - title: Zelfstudies met stapsgewijze instructies
-    items:
-      - type: paragraph
-        text: 'Leer apps te ontwikkelen die gebruikmaken van de Translator Text-API:'
-      - type: paragraph
-        text: '<li><a href="tutorial-wpf-translation-csharp.md">Een WPF-app maken voor Translator Text, C#</a></li><li><a href="tutorial-build-flask-app-translation-synthesis.md">Een Flask-app voor vertaling maken, Python</a></li>'
-  - title: Naslaginformatie
-    items:
-      - type: paragraph
-        text: <p><a href="reference/v3-0-reference.md">API-naslaginformatie</a></p>
+  ms.date: 09/05/2019
+  ms.author: erhopf
+  ms.openlocfilehash: 7bbe487ff6ed545f40cccc5abb041f54ea5f319d
+  ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+  ms.translationtype: HT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 09/29/2019
+  ms.locfileid: "71672560"
+landingContent:
+- title: Vertaler
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Translator Text-API
+      url: translator-info-overview.md
+    - text: Custom Translator
+      url: translator-info-overview.md
+    - text: Prijzen
+      url: https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/
+    - text: Naleving
+      url: https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/
+    - text: Een abonnement maken
+      url: translator-text-how-to-signup.md
+    - text: Veelgestelde vragen
+      url: https://www.microsoft.com/translator/faq.aspx
+- title: Translator Text-API
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Tekst vertalen
+      url: quickstart-translate.md
+    - text: Tekst transcriberen
+      url: quickstart-transliterate.md
+    - text: Taaldetectie
+      url: quickstart-detect.md
+    - text: Opzoeken in woordenboek
+      url: quickstart-dictionary.md
+    - text: De zinlengte bepalen
+      url: quickstart-sentences.md
+    - text: Ondersteunde talen vermelden
+      url: quickstart-languages.md
+  - linkListType: tutorial
+    links:
+    - text: Een WPF-vertaal-app maken, C#
+      url: tutorial-wpf-translation-csharp.md
+    - text: Een Flask-vertaal-app maken, REST
+      url: tutorial-build-flask-app-translation-synthesis.md
+  - linkListType: reference
+    links:
+    - text: Naslaginformatie Translator Text-API (v3)
+      url: reference/v3-0-reference.md
+    - text: Aanvraaglimieten
+      url: request-limits.md
+    - text: Ondersteuning voor taal en regio
+      url: language-support.md
+- title: Custom Translator
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Een aangepast model bouwen en implementeren
+      url: custom-translator/quickstart-build-deploy-custom-model.md
+  - linkListType: get-started
+    links:
+    - text: Een project maken
+      url: custom-translator/how-to-create-project.md
+    - text: Uw projecten beheren
+      url: custom-translator/how-to-search-edit-delete-projects.md
+    - text: Documenten uploaden
+      url: custom-translator/how-to-upload-document.md
+    - text: Uw model trainen
+      url: custom-translator/how-to-train-model.md
+  - linkListType: learn
+    links:
+    - text: Werkruimten en projecten
+      url: custom-translator/workspace-and-project.md
+    - text: Parallelle documenten
+      url: custom-translator/what-are-parallel-documents.md
+    - text: Woordenlijst
+      url: custom-translator/what-is-dictionary.md
+    - text: Ondersteunde documentindelingen
+      url: custom-translator/document-formats-naming-convention.md
+  - linkListType: reference
+    links:
+    - text: Taalondersteuning
+      url: language-support.md
+    - text: Woordenlijst
+      url: custom-translator/glossary.md
+- title: Resources
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Voorbeelden op GitHub
+      url: https://aka.ms/TranslatorGitHub
+    - text: Stack Overflow
+      url: https://stackoverflow.com/questions/tagged/microsoft-translator

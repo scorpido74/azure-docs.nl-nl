@@ -1,9 +1,9 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: Documentatie over Windows Virtual Desktop Preview
+title: Documentatie over Windows Virtual Desktop
 metadata:
-  title: 'Documentatie over Windows Virtual Desktop Preview - zelfstudies, quickstarts, API-verwijzingen | Microsoft Docs'
-  description: Windows Virtual Desktop Preview voor Azure is een Windows 10 Enterprise-ervaring voor meerdere gebruikers in de cloud.
+  title: 'Documentatie over Windows Virtual Desktop - zelfstudies, quickstarts, API-verwijzingen | Microsoft Docs'
+  description: Windows Virtual Desktop voor Azure is een Windows 10 Enterprise-ervaring voor meerdere gebruikers in de cloud.
   author: Heidilohr
   manager: daveba
   ms.service: virtual-desktop
@@ -17,11 +17,11 @@ sections:
   - title: Overzicht
     items:
       - type: paragraph
-        text: 'Meer informatie over Windows Virtual Desktop Preview en het gebruik ervan. Via zelfstudies, instructies, verwijzingen en meer leert u hoe u hostpools en tenants instelt en rollen toewijst aan gebruikers voor uw Windows Virtual Desktop-omgeving.'
+        text: 'Meer informatie over Windows Virtual Desktop en hoe u het gebruikt. Via zelfstudies, instructies, verwijzingen en meer leert u hoe u hostpools en tenants instelt en rollen toewijst aan gebruikers voor uw Windows Virtual Desktop-omgeving.'
       - type: list
         style: unordered
         items:
-          - html: <a href="/azure/virtual-desktop/overview">Wat is Windows Virtual Desktop Preview?</a>
+          - html: <a href="/azure/virtual-desktop/overview">Wat is Windows Virtual Desktop?</a>
   - title: Zelfstudies met stapsgewijze instructies
     items:
       - type: paragraph

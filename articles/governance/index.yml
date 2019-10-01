@@ -1,68 +1,205 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Azure Management - Governance
+### YamlMime:Hub
+title: Documentatie voor Azure-governance
+summary: Kies voor de meest geavanceerde set beheermogelijkheden van alle grote cloudproviders.
+brand: azure
 metadata:
-  title: Azure Management - Governance
-  description: 'Leer meer over de concepten en Azure-services die beschikbaar zijn om uw omgeving consistent te beheren door expliciet ontwerp en regels, en over hoe u controleert op naleving.'
-  author: DCtheGeek
-  manager: carmonm
+  title: Documentatie voor Azure-governance
+  description: Kies voor de meest geavanceerde set beheermogelijkheden van alle grote cloudproviders.
   ms.service: governance
-  ms.topic: landing-page
-  ms.date: 05/07/2019
+  ms.topic: hub-page
+  ms.collection: collection
+  author: DCtheGeek
   ms.author: dacoulte
-abstract:
-  description: 'Azure Governance is een verzameling concepten en services die zijn ontworpen om het beheer van verschillende Azure-resources op schaal mogelijk te maken. Deze services bieden de mogelijkheid om uw abonnementen op een logische manier te ordenen en te structureren, herbruikbare systeemeigen Azure-pakketten van resources maken en implementeren en om uw resources te definiëren, controleren en herstellen. Gebruik deze pagina om meer te leren over deze concepten en services en hoe u deze vandaag nog in uw omgeving inschakelt en gebruikt.'
-  aside:
-    image:
-      alt: null
-      height: 225
-      src: ./media/video.png
-      width: 250
-    title: 'Snelheid en controle over resources met Azure Governance (1:47)'
-    href: 'https://www.youtube.com/watch?v=MhGbKjlmuRs'
-    width: 250
-sections:
-  - title: Onderdelen en services
-  - items:
-      - type: list
-        style: cards
-        className: cardsD
-        columns: 2
-        items:
-          - href: ./management-groups/overview
-            html: <p>Leer meer over uw abonnementen groeperen en ordenen in een logische rangschikking waarmee de implementatie van andere Governance-services op een gestructureerde manier wordt ondersteund.<br /></p>
-            image:
-              alt: Beheergroepen
-              src: ./media/management-groups-illustration.svg
-            title: Beheergroepen
-          - href: ./resource-graph/
-            html: <p>Gebruik een krachtig opdrachtregelhulpprogramma (met ondersteuning voor Azure CLI en Azure PowerShell) om snel een query uit te voeren op complexe details van uw Azure-resources. Zoek en toon informatie dat eerder complexe en iteratieve scripts vereiste om die resources op schaal te ontdekken.</p>
-            image:
-              alt: Resource Graph
-              src: ./media/resource-graph-illustration.svg
-            title: Resource Graph
-          - href: ./policy/
-            html: '<p>Definieer standaarden voor resources in uw omgeving en pas deze toe. Voorkom dat ongewenste resources worden gemaakt, verbeter nieuwe resources met extra elementen en controleer de herstelresources in uw omgeving.</p>'
-            image:
-              alt: Beleid
-              src: ./media/policy-illustration.svg
-            title: Beleid
-          - href: ./blueprints/
-            html: '<p>Maak een systeemeigen Azure-pakket van <i>artefacten</i> (resourcegroepen, beleid, roltoewijzingen, Resource Manager-sjablonen en meer) dat dynamisch kan worden geïmplementeerd in abonnementen om consistente en herhaalbare omgevingen te maken.</p>'
-            image:
-              alt: Blueprints
-              src: ./media/blueprints-illustration.svg
-            title: Blueprints
-  - title: Cloud Adoption Framework
-  - items:
-      - type: list
-        style: cards
-        className: cardsZ
-        columns: 3
-        items:
-          - href: /azure/architecture/cloud-adoption/index?toc=/azure/governance/toc.json
-            html: '<p>Het Cloud Adoption Framework biedt technische richtlijnen voor Microsoft Azure. Aangezien klanten mogelijk nog geen cloudleverancier hebben gekozen, biedt dit framework waar mogelijk cloudagnostische richtlijnen voor moeilijkere beslissingen.</p>'
-            title: Overzicht
-          - href: /azure/architecture/cloud-adoption/governance/index?toc=/azure/governance/toc.json
-            html: '<p>Voor organisaties met bestaand beleid omtrent on-premises IT-omgevingen, vult cloudgovernance dat bedrijfsbeleid aan.<br /><br /></p>'
-            title: Governance-overzicht
+  ms.date: 09/10/2019
+  ms.openlocfilehash: 07db40943ae0ff9978cedcef6a42ba0b83f5f2cc
+  ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+  ms.translationtype: HT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 09/27/2019
+  ms.locfileid: "71337739"
+highlightedContent:
+  items:
+  - title: Governance-overzicht
+    itemType: overview
+    url: ./azure-management.md
+  - title: YouTube-kanaal over Governance
+    itemType: video
+    url: https://www.youtube.com/channel/UCZZ3-oMrVI5ssheMzaWC4uQ
+  - title: Governance in het Cloud Adoption Framework
+    itemType: architecture
+    url: /azure/architecture/cloud-adoption/governance
+  - title: Infrastructuurstandaarden toepassen en controleren met Azure Policy
+    itemType: learn
+    url: /learn/modules/intro-to-governance/
+productDirectory:
+  title: Onderdelen en services
+  items:
+  - title: Azure-beheergroepen
+    imageSrc: ./media/management-groups.svg
+    links:
+    - url: ./management-groups/overview.md
+      text: Overzicht
+    - url: ./management-groups/index.yml
+      text: Meer informatie >
+  - title: Azure Policy
+    imageSrc: ./media/azure-policy.svg
+    links:
+    - url: ./policy/overview.md
+      text: Overzicht
+    - url: ./policy/how-to/get-compliance-data.md
+      text: Naleving evalueren
+    - url: ./policy/concepts/rego-for-aks.md
+      text: AKS-configuratie beheren
+    - url: ./policy/concepts/guest-configuration.md
+      text: VM-configuratie beheren
+    - url: ./policy/index.yml
+      text: Meer informatie >
+  - title: Azure Blueprints
+    imageSrc: ./media/azure-blueprints.svg
+    links:
+    - url: ./blueprints/overview.md
+      text: Overzicht
+    - url: ./blueprints/tutorials/protect-new-resources.md
+      text: Resources beveiligen
+    - url: ./blueprints/index.yml
+      text: Meer informatie >
+  - title: Azure Resource Graph
+    imageSrc: ./media/azure-resource-graph.svg
+    links:
+    - url: ./resource-graph/overview.md
+      text: Overzicht
+    - url: ./resource-graph/concepts/explore-resources.md
+      text: Uw Azure-resources verkennen
+    - url: ./resource-graph/how-to/get-resource-changes.md
+      text: Wijzigingen bijhouden
+    - url: ./resource-graph/index.yml
+      text: Meer informatie >
+  - title: Cost Management
+    imageSrc: ./media/cost-management.svg
+    links:
+    - url: ../cost-management/overview-cost-mgt.md
+      text: Overzicht
+    - url: ../cost-management/aws-integration-manage.md
+      text: Kosten en gebruik van AWS beheren
+    - url: ../cost-management/index.yml
+      text: Meer informatie >
+tools:
+  title: Voorbeelden
+  summary: Beleidsdefinities, nalevingsblauwdrukken, resource-query's en meer
+  items:
+  - title: Azure Policy
+    imageSrc: ./media/azure-policy.svg
+    url: ./policy/samples/index.md
+  - title: Azure Blueprints
+    imageSrc: ./media/azure-blueprints.svg
+    url: ./blueprints/samples/index.md
+  - title: Azure Resource Graph
+    imageSrc: ./media/azure-resource-graph.svg
+    url: ./resource-graph/samples/starter.md
+  - title: Cost Management
+    imageSrc: ./media/cost-management.svg
+    url: https://github.com/Azure-Samples/Cost-Management-Samples
+additionalContent:
+  sections:
+  - title: Resources voor ontwikkelaars
+    items:
+    - title: Beheergroepen
+      links:
+      - text: Azure-CLI
+        url: /cli/azure/ext/managementgroups/?view=azure-cli-latest
+      - text: Azure PowerShell
+        url: /powershell/module/az.resources/#resources
+      - text: Azure-SDK voor .NET
+        url: /dotnet/api/overview/azure/managementgroups
+      - text: Azure SDK voor Node
+        url: /javascript/api/azure-arm-resource/managementgroups
+    - title: Azure Policy
+      links:
+      - text: Azure-CLI
+        url: /cli/azure/policy
+      - text: Azure PowerShell
+        url: /powershell/module/az.resources/#policies
+        note: (Beleid)
+      - text: Azure PowerShell
+        url: /powershell/module/az.policyinsights#policy_insights
+        note: (Policy Insights)
+      - text: Azure PowerShell
+        url: https://www.powershellgallery.com/packages/Az.GuestConfiguration
+        note: (Gastconfiguratie)
+      - text: Azure-SDK voor .NET
+        url: /dotnet/api/microsoft.azure.management.resourcemanager.models.policyassignment
+        note: (Toewijzingen)
+      - text: Azure-SDK voor .NET
+        url: /dotnet/api/microsoft.azure.management.resourcemanager.models.policydefinition
+        note: (Beleidsdefinities)
+      - text: REST
+        url: /rest/api/policy-insights/
+        note: (Policy Insights)
+      - text: REST
+        url: /rest/api/resources/policyassignments
+        note: (Toewijzingen)
+      - text: REST
+        url: /rest/api/resources/policydefinitions
+        note: (Definities)
+      - text: REST
+        url: /rest/api/resources/policysetdefinitions
+        note: (Initiatieven)
+      - text: REST
+        url: /rest/api/guestconfiguration/
+        note: (Gastconfiguratie)
+      - text: Resource Manager-sjablonen
+        url: /azure/templates/microsoft.authorization
+    - title: Azure Blueprints
+      links:
+      - text: Blueprint-functies
+        url: ./blueprints/reference/blueprint-functions.md
+      - text: Azure PowerShell
+        url: /powershell/module/az.blueprint/#blueprint
+      - text: Azure PowerShell
+        url: https://www.powershellgallery.com/packages/Az.Blueprint
+        note: (PS-galeriemodule)
+      - text: Azure-SDK voor .NET
+        url: /dotnet/api/overview/azure/blueprints/management
+      - text: REST
+        url: /rest/api/blueprints/
+    - title: Azure Resource Graph
+      links:
+      - text: Azure-CLI
+        url: /cli/azure/ext/resource-graph/graph
+      - text: Azure PowerShell
+        url: /powershell/module/az.resourcegraph/
+      - text: Azure PowerShell
+        url: https://www.powershellgallery.com/packages/Az.ResourceGraph
+        note: (PS-galeriemodule)
+      - text: Azure-SDK voor .NET
+        url: /dotnet/api/Microsoft.Azure.Management.ResourceGraph
+      - text: Azure-SDK voor .NET
+        url: https://www.nuget.org/packages/Microsoft.Azure.Management.ResourceGraph/
+        note: (NuGet)
+      - text: Azure SDK voor Go
+        url: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/resourcegraph/mgmt/2019-04-01/resourcegraph
+      - text: Azure SDK voor Java
+        url: /java/api/overview/azure/resourcegraph/management?view=azure-java-stable
+      - text: Azure SDK voor Java
+        url: https://search.maven.org/artifact/com.microsoft.azure.resourcegraph.v2019_04_01/azure-mgmt-resourcegraph/1.0.0-beta/jar
+        note: (Maven)
+      - text: Azure SDK voor Node
+        url: /javascript/api/@azure/arm-resourcegraph
+      - text: Azure-SDK voor Python
+        url: /python/api/azure-mgmt-resourcegraph/azure.mgmt.resourcegraph
+      - text: Azure-SDK voor Ruby
+        url: https://rubygems.org/gems/azure_mgmt_resourcegraph
+        note: (Gem)
+      - text: REST
+        url: /rest/api/azureresourcegraph/resources/resources
+    - title: Cost Management
+      links:
+      - text: REST
+        url: /rest/api/cost-management
+        note: (Cost Management)
+      - text: REST
+        url: /rest/api/consumption
+        note: (Verbruik)
+      - text: Resource Manager-sjablonen
+        url: /azure/templates/microsoft.consumption/budgets
+  footer: '[UserVoice](https://feedback.azure.com/forums/915958-azure-governance) | [Microsoft Tech Community - Azure-governance](https://techcommunity.microsoft.com/t5/Azure-Governance/bd-p/AzureGovernance) | [Azure-ondersteuning](https://azure.microsoft.com/support/create-ticket/)'

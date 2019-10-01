@@ -1,0 +1,88 @@
+### YamlMime:Hub
+title: Documentatie voor Azure Blockchain
+summary: Meer informatie over het gebruik van Azure Blockchain voor het ontwikkelen, testen en implementeren van beveiligde blockchain-apps.
+brand: azure
+metadata:
+  title: Documentatie voor Azure Blockchain
+  description: Meer informatie over het gebruik van Azure Blockchain voor het ontwikkelen, testen en implementeren van beveiligde blockchain-apps.
+  services: service
+  ms.service: azure-blockchain
+  ms.topic: hub-page
+  author: PatAltimore
+  ms.author: patricka
+  ms.date: 09/25/2019
+  ms.openlocfilehash: 93a1e54dd2f1c209792c688666782a9c9823214b
+  ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+  ms.translationtype: HT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 09/27/2019
+  ms.locfileid: "71328621"
+productDirectory:
+  items:
+  - title: Azure Blockchain-service
+    imageSrc: ./media/index/blockchain-service.svg
+    links:
+    - url: ./service/overview.md
+      text: Wat is Azure Blockchain Service?
+    - url: ./service/index.yml
+      text: Meer informatie >
+  - title: Azure Blockchain Workbench
+    imageSrc: ./media/index/blockchain-workbench.svg
+    links:
+    - url: ./workbench/overview.md
+      text: Wat is Azure Blockchain Workbench?
+    - url: ./workbench/index.yml
+      text: Meer informatie >
+conceptualContent:
+  title: Aan de slag
+  items:
+  - title: Bouwen en ontwikkelen met behulp van consortiumblockchainnetwerken
+    links:
+    - url: ./service/create-member.md
+      itemType: quickstart
+      text: Een blockchain-lid voor Azure Blockchain Service implementeren
+    - url: ./service/send-transaction.md
+      itemType: tutorial
+      text: Een zelfstudie volgen en een slim contract schrijven
+    - url: https://channel9.msdn.com/Shows/Blocktalk/Getting-started-with-Azure-Blockchain-Service-Part-I-Deploy-and-configure-your-network
+      itemType: video
+      text: Kijken hoe u uw netwerk kunt implementeren en configureren
+    - url: https://channel9.msdn.com/Shows/Blocktalk/Getting-started-with-Azure-Blockchain-Service-Part-II-Write-and-test-smart-contracts-with-VS-Code
+      itemType: video
+      text: Kijken hoe u een slim contract kunt schrijven met VS Code
+  - title: Een prototype van een blockchain-oplossing maken
+    links:
+    - url: ./workbench/deploy.md
+      itemType: how-to-guide
+      text: Een Azure Blockchain Workbench implementeren
+    - url: ./workbench/create-app.md
+      itemType: tutorial
+      text: Een zelfstudie volgen en een Block Chain Workbench-toepassing bouwen
+    - url: ./workbench/integration-patterns.md
+      itemType: concept
+      text: Meer informatie over het integreren van oplossingen met Blockchain Workbench
+    - url: https://channel9.msdn.com/Shows/Blocktalk/Building-your-first-Azure-Blockchain-Workbench-application
+      itemType: video
+      text: Kijken hoe u uw eerste toepassing kunt bouwen
+  - title: Bouwen met het grootboek dat bij uw situatie past
+    links:
+    - url: ./templates/ethereum-poa-deployment.md
+      itemType: how-to-guide
+      text: Een Ethereum-netwerk voor een consortium met meerdere leden implementeren op Azure, op basis van proof-of-authority
+    - url: ./templates/hyperledger-fabric-consortium-blockchain.md
+      itemType: how-to-guide
+      text: Een consortium-netwerk op basis van Hyperledger Fabric implementeren op Azure
+additionalContent:
+  sections:
+  - title: Ontwikkelhulpprogramma's en voorbeelden
+    summary: Ontwikkelhulpprogramma's en codevoorbeelden voor het ontwikkelen van blockchain-apps.
+    items:
+    - title: Azure Blockchain Development Kit voor Ethereum
+      summary: Doe ervaring op met ontwikkeling, implementatie, foutopsporing en beheer van Azure Blockchain Service-oplossingen.
+      url: https://marketplace.visualstudio.com/items?itemName=azblockchain.azure-blockchain
+    - title: Ethereum-blockchainconnector
+      summary: Gebruik Azure Logic Apps, Microsoft Flow en Microsoft PowerApps om acties met slimme contracten uit te voeren, zoals het verzenden van transacties, het lezen van de contractstatus en het activeren van stromen voor contractupdates.
+      url: https://docs.microsoft.com/connectors/blockchainethereum/
+    - title: Codevoorbeelden
+      summary: GitHub-opslagplaats met codevoorbeelden om aan de slag te gaan.
+      url: https://github.com/Azure-Samples/blockchain

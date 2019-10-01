@@ -8,47 +8,29 @@
       href: durable/durable-functions-overview.md
     - name: Serverloze vergelijking
       href: functions-compare-logic-apps-ms-flow-webjobs.md
+    - name: Opties voor hostingabonnementen
+      href: functions-scale.md
 - name: Snelstartgidsen
   expanded: true
   items:
-    - name: Functie maken - Visual Studio Code
-      href: functions-create-first-function-vs-code.md
-    - name: Functie maken - Visual Studio
+    - name: 'Functie maken - C#'
       href: functions-create-your-first-function-visual-studio.md
     - name: Functie maken - Java/Maven
       href: functions-create-first-java-maven.md
-    - name: Functie maken - Python
-      href: functions-create-first-function-python.md
+    - name: Functie maken - JavaScript
+      href: functions-create-first-function-vs-code.md
     - name: Functie maken - PowerShell
       href: functions-create-first-function-powershell.md
-    - name: Functie maken - Azure CLI
-      href: functions-create-first-azure-function-azure-cli.md
-    - name: Functie maken - portal
-      href: functions-create-first-azure-function.md
-    - name: Functie maken - Linux
-      href: functions-create-first-azure-function-azure-cli-linux.md
-    - name: Triggers
+    - name: Functie maken - Python
+      href: functions-create-first-function-python.md
+    - name: Verbinding maken met services
       items:
-        - name: Azure Cosmos DB
-          href: functions-create-cosmos-db-triggered-function.md
-        - name: Blob Storage
-          href: functions-create-storage-blob-triggered-function.md
-        - name: Queue Storage
-          href: functions-create-storage-queue-triggered-function.md
-        - name: Timer
-          href: functions-create-scheduled-function.md
-    - name: Integreren
-      items:
-        - name: Azure Cosmos DB
-          href: functions-integrate-store-unstructured-data-cosmosdb.md
+        - name: 'Opslag - C#'
+          href: functions-add-output-binding-storage-queue-vs.md
+        - name: Opslag - JavaScript
+          href: functions-add-output-binding-storage-queue-vs-code.md
         - name: Opslag - Python
           href: functions-add-output-binding-storage-queue-python.md
-        - name: Opslag - portal
-          href: functions-integrate-storage-queue-output-binding.md
-        - name: Opslag - Visual Studio Code
-          href: functions-add-output-binding-storage-queue-vs-code.md
-        - name: Opslag - Visual Studio
-          href: functions-add-output-binding-storage-queue-vs.md
 - name: Zelfstudies
   items:
     - name: Functions met Logic Apps
@@ -77,10 +59,12 @@
       items:
         - name: 'C#'
           href: /samples/browse/?products=azure-functions&languages=csharp
-        - name: Javascript
-          href: /samples/browse/?products=azure-functions&languages=javascript
         - name: Java
           href: /samples/browse/?products=azure-functions&languages=java
+        - name: Javascript
+          href: /samples/browse/?products=azure-functions&languages=javascript
+        - name: PowerShell
+          href: /samples/browse/?products=azure-functions&languages=azurepowershell
         - name: Python
           href: /samples/browse/?products=azure-functions&languages=python
         - name: TypeScript
@@ -92,8 +76,6 @@
     - name: Versies 1.x en 2.x vergelijken
       href: functions-versions.md
       displayName: 'migrate, migration'
-    - name: Schaal en hosting
-      href: functions-scale.md
     - name: Premium-abonnement
       href: functions-premium-plan.md
     - name: Implementaties
@@ -142,6 +124,7 @@
       href: functions-consumption-costs.md
     - name: Prestatieoverwegingen
       href: functions-best-practices.md
+      displayName: best practice
     - name: Functions-proxy's
       href: functions-proxies.md
     - name: Netwerkopties
@@ -156,36 +139,75 @@
       items:
         - name: Ontwikkelaarsgids
           href: functions-reference.md
-        - name: Functies testen
-          href: functions-test-a-function.md
-        - name: Lokaal ontwikkelen en fouten opsporen
-          href: functions-develop-local.md
-        - name: Ontwikkelen in Visual Studio Code
-          href: functions-develop-vs-code.md
-        - name: Ontwikkelen in Visual Studio
-          href: functions-develop-vs.md
-        - name: Ontwikkeling in Core Tools
-          href: functions-run-local.md
-        - name: IntelliJ IDEA-ontwikkeling
-          href: functions-create-maven-intellij.md
-        - name: Ontwikkelen in Eclipse
-          href: functions-create-maven-eclipse.md
-        - name: Een Linux-functie-app maken
-          href: create-function-app-linux-app-service-plan.md
-        - name: Fouten opsporen in lokale PowerShell-functies
-          href: functions-debug-powershell-local.md
+        - name: Lokale ontwikkeling
+          items:
+            - name: Lokaal ontwikkelen en fouten opsporen
+              href: functions-develop-local.md
+            - name: Ontwikkelen in Visual Studio Code
+              href: functions-develop-vs-code.md
+            - name: Ontwikkelen in Visual Studio
+              href: functions-develop-vs.md
+            - name: Ontwikkeling in Core Tools
+              href: functions-run-local.md
+        - name: Functies maken
+          items:
+            - name: HTTP-trigger
+              items:
+                - name: Azure Portal
+                  href: functions-create-first-azure-function.md
+                - name: Opdrachtregel
+                  href: functions-create-first-azure-function-azure-cli.md
+                - name: Visual Studio
+                  href: create-visual-studio.md
+                - name: Visual Studio Code
+                  href: create-visual-studio-code.md
+                - name: Java met behulp van Eclipse
+                  href: functions-create-maven-eclipse.md
+                - name: Java met behulp van IntelliJ IDEA
+                  href: functions-create-maven-intellij.md
+                - name: App Service-abonnement voor Linux
+                  href: create-function-app-linux-app-service-plan.md
+                - name: Verbruiksabonnement voor Linux
+                  href: functions-create-first-azure-function-azure-cli-linux.md
+                - name: Azure for Students Starter
+                  href: functions-create-student-starter.md
+            - name: Azure Cosmos DB-trigger
+              href: functions-create-cosmos-db-triggered-function.md
+            - name: Blob Storage-trigger
+              href: functions-create-storage-blob-triggered-function.md
+            - name: Queue Storage-trigger
+              href: functions-create-storage-queue-triggered-function.md
+            - name: Timertrigger
+              href: functions-create-scheduled-function.md
+        - name: Bindingen toevoegen
+          items:
+            - name: Azure Cosmos DB - portal
+              href: functions-integrate-store-unstructured-data-cosmosdb.md
+            - name: Opslag - Python
+              href: add-output-binding-storage-queue-python.md
+            - name: Opslag - portal
+              href: functions-integrate-storage-queue-output-binding.md
+            - name: Opslag - Visual Studio Code
+              href: add-output-binding-storage-queue-vs-code.md
+            - name: Opslag - Visual Studio
+              href: add-output-binding-storage-queue-vs.md
+        - name: Fouten opsporen en testen
+          items:
+            - name: Functies testen
+              href: functions-test-a-function.md
+            - name: Fouten opsporen in lokale PowerShell-functies
+              href: functions-debug-powershell-local.md
+            - name: Lokaal fouten opsporen in de Event Grid-trigger
+              href: functions-debug-event-grid-trigger-local.md
         - name: Afhankelijkheidsinjectie
           href: functions-dotnet-dependency-injection.md
         - name: Verbindingen beheren
           href: manage-connections.md
+          displayName: best practice
         - name: Foutafhandeling
           href: functions-bindings-error-pages.md
         - name: Handmatig een niet door HTTP geactiveerde functie uitvoeren
           href: functions-manually-run-non-http.md
-        - name: Lokaal fouten opsporen in de Event Grid-trigger
-          href: functions-debug-event-grid-trigger-local.md
-        - name: Azure for Students Starter
-          href: functions-create-student-starter.md
     - name: Implementeren
       items:
         - name: Doorlopende implementatie
@@ -249,6 +271,18 @@
           href: functions-geo-disaster-recovery.md
     - name: Integreren
       items:
+        - name: Bindingen toevoegen
+          items:
+            - name: Azure Cosmos DB - portal
+              href: functions-integrate-store-unstructured-data-cosmosdb.md
+            - name: Opslag - Python
+              href: functions-add-output-binding-storage-queue-python.md
+            - name: Opslag - portal
+              href: functions-integrate-storage-queue-output-binding.md
+            - name: Opslag - Visual Studio Code
+              href: functions-add-output-binding-storage-queue-vs-code.md
+            - name: Opslag - Visual Studio
+              href: functions-add-output-binding-storage-queue-vs.md
         - name: Verbinding maken met SQL Database
           href: functions-scenario-database-table-cleanup.md
         - name: Verbinding maken met een virtueel netwerk

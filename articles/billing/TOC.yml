@@ -165,6 +165,8 @@
       href: billing-use-existing-azure-account-for-office-365-subscription.md
 - name: Abonnement beheren
   items:
+    - name: Abonnementsstatussen
+      href: billing-azure-subscription-states.md
     - name: Abonnement opnieuw activeren
       href: billing-subscription-become-disable.md
     - name: Eigendom overdragen

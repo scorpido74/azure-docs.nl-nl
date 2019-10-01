@@ -36,13 +36,15 @@
     - name: 10 - Virtuele machines beheren
       href: tutorial-govern-resources.md
       displayName: scope policy RBAC lock tag
-    - name: 11 - Virtuele machines bewaken en bijwerken
-      href: tutorial-monitoring.md
-    - name: 12 - VM-beveiliging beheren
+    - name: 11 - Virtuele machines bijhouden en bijwerken
+      href: tutorial-config-management.md
+    - name: 12 - Virtuele machines bewaken
+      href: tutorial-monitor.md
+    - name: 13 - VM-beveiliging beheren
       href: tutorial-azure-security.md
-    - name: 13 - Een SQL\IIS\.NET-stack installeren
+    - name: 14 - Een SQL\IIS\.NET-stack installeren
       href: tutorial-iis-sql.md
-    - name: 14 - Webserver beveiligen met SSL
+    - name: 15 - Webserver beveiligen met SSL
       href: tutorial-secure-web-server.md
 - name: Voorbeelden
   items:

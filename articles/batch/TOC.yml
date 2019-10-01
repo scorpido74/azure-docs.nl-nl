@@ -80,6 +80,8 @@
         - name: Toegang tot rekenknooppunten configureren
           href: pool-endpoint-configuration.md
         - name: Een groep maken met de Shared Image Gallery
+          href: batch-sig-images.md
+        - name: Een groep maken met een resource voor een beheerde installatiekopie
           href: batch-custom-images.md
         - name: Een pool in een virtueel netwerk maken
           href: batch-virtual-network.md

@@ -1,88 +1,65 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Documentatie voor Azure Security Center
+summary: Azure Security Center biedt geïntegreerd beveiligingsbeheer en geavanceerde bedreigingsbeveiliging voor verschillende hybride cloudworkloads.
 metadata:
-  title: 'Documentatie voor Azure Security Center: zelfstudies, API-verwijzing | Microsoft Docs'
-  meta.description: 'Azure Security Center provides unified security management and advanced threat protection across hybrid cloud workloads. Learn how to get started with Security Center, apply security policies across your workloads, limit your exposure to threats, and detect and respond to attacks with our quickstarts and tutorials..'
+  title: Documentatie voor Azure Security Center
+  description: In onze quickstarts en zelfstudies vindt u meer informatie over hoe u aan de slag gaat met Security Center om uw workloads te beveiligen, risico's te beperken en aanvallen te detecteren en verijdelen.
   services: security-center
-  author: cmcclister
-  manager: carolz
   ms.service: security-center
-  ms.tgt_pltfrm: na
-  ms.devlang: na
+  ms.subservice: subservice
   ms.topic: landing-page
-  ms.date: 07/26/18
-  ms.author: cmcclister
-abstract:
-  description: 'Azure Security Center biedt geïntegreerd beveiligingsbeheer en geavanceerde bedreigingsbeveiliging voor verschillende hybride cloudworkloads. In onze snelstartgidsen en zelfstudies vindt u meer informatie over hoe u aan de slag gaat met Security Center, beveiligingsbeleid voor verschillende workloads toepast, blootstelling aan bedreigingen beperkt en adequaat op aanvallen reageert.'
-sections:
-  - title: QuickStarts van vijf minuten
-    items:
-      - type: paragraph
-        text: Meer informatie over hoe u voor uw VM's en computers onboarding uitvoert voor Security Center en hoe u verbinding maakt met uw beveiligingsoplossingen.
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: /media/common/i_subscription.svg
-            text: Onboarding voor Azure-abonnementen
-            href: /azure/security-center/security-center-get-started
-          - image:
-              src: /media/logos/logo_Windows.svg
-            text: Onboarding voor Windows-computers
-            href: /azure/security-center/quick-onboard-windows-computer
-          - image:
-              src: /media/logos/logo_linux.svg
-            text: Onboarding voor Linux-computers
-            href: /azure/security-center/quick-onboard-linux-computer
-          - image:
-              src: /media/common/i_multi-connect.svg
-            text: Verbinding maken met beveiligingsoplossingen
-            href: /azure/security-center/quick-security-solutions
-  - title: Zelfstudies met stapsgewijze instructies
-    items:
-      - type: paragraph
-        text: 'Meer informatie over hoe u beveiligingsbeleid opstelt, uw resources beveiligt tegen schadelijke activiteit en adequaat reageert op beveiligingswaarschuwingen en incidenten.'
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="/azure/security-center/tutorial-security-policy">Beveiligingsbeleid opstellen en beoordelen</a>
-          - html: <a href="/azure/security-center/tutorial-protect-resources">Uw resources beveiligen</a>
-          - html: <a href="/azure/security-center/tutorial-security-incident">Reageren op beveiligingsincidenten</a>
-  - title: Uw vaardigheden ontwikkelen met Microsoft Learn
-    items:
-      - type: list
-        style: cards
-        className: cardsFTitle
-        items:
-          - title: "\_\_Inleiding tot beveiliging in Azure"
-            href: /learn/modules/intro-to-security-in-azure/
-            image:
-              src: /learn/achievements/intro-to-security-in-azure.svg
-              href: /learn/modules/intro-to-security-in-azure/
-      - type: paragraph
-        text: <a href="/learn/browse/?term=security">Meer interactief leren...</a>
-  - title: Gratis videotraining
-    items:
-      - type: list
-        style: cards
-        className: cardsFTitle
-        items:
-          - title: Vereenvoudig bescherming van cloudresources met Azure Security Center - Ignite 2018
-            href: 'https://youtu.be/0txX1Y0GXDc'
-            image:
-              src: 'https://docs.microsoft.com/media/logos/logo_azure.svg'
-              href: 'https://youtu.be/0txX1Y0GXDc'
-          - title: Server-workloads beveiligen met Azure Security Center - Ignite 2018
-            href: 'https://youtu.be/Kb_xeIJVROo'
-            image:
-              src: 'https://docs.microsoft.com/media/logos/logo_azure.svg'
-              href: 'https://youtu.be/Kb_xeIJVROo'
-  - title: Naslaginformatie
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - html: '<a href="https://docs.microsoft.com/rest/api/securitycenter/">Naslaginformatie over REST API</a>'
-          - html: '<a href="https://azure.microsoft.com/updates/?product=security-center">Service-updates</a>'
+  ms.collection: collection
+  author: memildin
+  ms.author: memildin
+  ms.date: 09/26/2019
+  ms.openlocfilehash: 8574c69221d1f0f0528a0ab9b8d27df4ca9a0ef0
+  ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+  ms.translationtype: HT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 09/27/2019
+  ms.locfileid: "71327609"
+landingContent:
+- title: Over Security Center
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Wat zijn de belangrijkste mogelijkheden van Security Center?
+      url: security-center-intro.md
+    - text: Welke versies van Windows Server en Linux worden ondersteund?
+      url: security-center-os-coverage.md
+- title: Aan de slag
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: Uw beveiligingsbeleid configureren
+      url: tutorial-security-policy.md
+    - text: Instellingen van Security Center aanpassen
+      url: security-center-policies-overview.md
+    - text: Uw beveiligingsinstelling evalueren
+      url: security-center-secure-score.md
+    - text: Upgraden naar geavanceerde beveiliging
+      url: security-center-onboarding.md
+    - text: Integreren met andere Azure-beveiligingsproducten
+      url: security-center-alerts-integration.md
+- title: Uw secure score verbeteren
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Wat is een veilige score?
+      url: security-center-secure-score.md
+    - text: Beveiligingsaanbevelingen opvolgen
+      url: security-center-remediate-recommendations.md
+    - text: Uw beveiligingsaanbevelingen aanpassen
+      url: tutorial-security-policy.md
+    - text: Aanbevelingen gebruiken om de beveiliging te verbeteren
+      url: security-center-using-recommendations.md
+- title: Bedreigingen beperken
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Just-in-time-toegang beheren
+      url: security-center-just-in-time.md
+    - text: Adaptieve toepassingsregelaars. instellen
+      url: security-center-adaptive-application.md
+    - text: Adaptieve netwerkbeveiliging implementeren
+      url: security-center-adaptive-network-hardening.md

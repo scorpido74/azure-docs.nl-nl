@@ -249,6 +249,8 @@
               href: knowledge-store-view-storage-explorer.md
             - name: Verbinden met Power BI
               href: knowledge-store-connect-power-bi.md
+        - name: Verrijkingsproblemen oplossen
+          href: cognitive-search-common-errors-warnings.md
     - name: Query's uitvoeren voor documenten
       items:
         - name: Querytypen en querysamenstelling

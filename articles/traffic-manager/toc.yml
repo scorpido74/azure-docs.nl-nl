@@ -89,6 +89,12 @@
       href: traffic-manager-powershell-arm.md
     - name: Uw internetdomein instellen op Traffic Manager
       href: traffic-manager-point-internet-domain.md
+    - name: Subnet-overschrijving
+      items:
+        - name: Subnet-overschrijving configureren - Azure CLI
+          href: traffic-manager-subnet-override-cli.md
+        - name: Subnet-overschrijving configureren - PowerShell
+          href: traffic-manager-subnet-override-powershell.md
     - name: Problemen oplossen
       items:
         - name: Problemen oplossen met degraded status op Azure Traffic Manager

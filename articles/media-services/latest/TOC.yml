@@ -128,8 +128,8 @@
           displayName: 'vanity, ingest'
         - name: Aanbevolen live-encoders
           href: recommended-on-premises-live-encoders.md
-        - name: Een cloud-DVR gebruiken
-          displayName: archive
+        - name: Tijdsverschuiving en live-naar-VOD
+          displayName: 'archive, dvr'
           href: live-event-cloud-dvr.md
         - name: Vergelijking van functies
           href: live-event-types-comparison.md

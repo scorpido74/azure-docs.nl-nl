@@ -1,0 +1,16 @@
+- name: Documentatie voor Azure-beheergroepen
+  href: ./index.yml
+- name: Overzicht
+  expanded: true
+  items:
+    - name: Azure-beheer
+      href: ../azure-management.md
+    - name: Beheergroepen
+      href: ./overview.md
+- name: Handleidingen
+  expanded: true
+  items:
+    - name: Beheergroepen maken
+      href: ./create.md
+    - name: Uw resources beheren
+      href: ./manage.md

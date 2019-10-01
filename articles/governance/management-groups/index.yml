@@ -1,0 +1,39 @@
+### YamlMime:Landing
+title: Documentatie voor Azure-beheergroepen
+summary: Met Azure-beheergroepen kunt u uw resources en abonnementen ordenen.
+metadata:
+  title: Documentatie voor Azure-beheergroepen
+  description: Met Azure-beheergroepen kunt u uw resources en abonnementen ordenen.
+  ms.service: governance
+  ms.topic: landing-page
+  ms.collection: collection
+  author: DCtheGeek
+  ms.author: dacoulte
+  ms.date: 09/26/2019
+  ms.openlocfilehash: 9d91baaec7f1bd0e365f86ea07174d6f9e32725c
+  ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+  ms.translationtype: HT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 09/27/2019
+  ms.locfileid: "71341042"
+landingContent:
+- title: Over Azure-governance
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Overzicht van beheerservices in Azure
+      url: ../azure-management.md
+- title: Over Azure-beheergroepen
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure-beheergroepen
+      url: ./overview.md
+- title: Uw resources organiseren
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Beheergroepen maken
+      url: ./create.md
+    - text: Uw resources beheren
+      url: ./manage.md

@@ -24,10 +24,12 @@
   items:
     - name: Verbinding maken met Windows Virtual Desktop-resources
       items:
-        - name: Verbinding maken vanaf Windows 10 of Windows 7
+        - name: Verbinding maken met de Windows Desktop-client
           href: connect-windows-7-and-10.md
-        - name: Verbinding maken via een webbrowser
+        - name: Verbinding maken met de webclient
           href: connect-web.md
+        - name: Verbinding maken met de Android-client
+          href: connect-android.md
         - name: Verbinding maken met de macOS-client
           href: connect-macos.md
         - name: Verbinding maken met de iOS-client
@@ -72,6 +74,8 @@
       href: partners.md
     - name: Veelgestelde vragen over meervoudige Windows 10 Enterprise-sessies
       href: windows-10-multisession-faq.md
+    - name: Gegevenslocaties
+      href: data-locations.md
 - name: Problemen oplossen
   items:
     - name: 'Probleemoplossingsoverzicht, feedback en ondersteuning'
