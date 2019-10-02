@@ -129,7 +129,7 @@ In dit artikel worden algemene probleemoplossings methoden voor connectors in Az
 
 ### <a name="error-message-request-size-is-too-large"></a>Foutbericht: De aanvraag grootte is te groot
 
-- **Symptomen**: U kunt gegevens naar Azure Cosmos DB kopiëren met de standaard schrijf Batch grootte en de fout melding ' de grootte van de ***aanvraag is te groot**'* .
+- **Symptomen**: U kunt gegevens naar Azure Cosmos DB kopiëren met de standaard schrijf Batch grootte en de fout melding de grootte van de *'**aanvraag is te groot**'* .
 
 - **Oorzaak**: Cosmos DB beperkt de grootte van één aanvraag tot 2 MB. De formule is, aanvraag grootte = één document grootte * Batch grootte schrijven. Als de grootte van uw document groot is, wordt het standaard gedrag veroorzaakt door te grote aanvraag grootte. U kunt de grootte van de schrijf batch afstemmen.
 

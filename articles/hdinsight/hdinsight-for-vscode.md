@@ -429,7 +429,7 @@ Wanneer u een taak verzendt naar een HDInsight-cluster met behulp van Data Lake 
 
 ## <a name="sign-out"></a>Afmelden  
 
-Ga in de menu balk naar het**opdracht palet**  ****weer geven** > en voer Azure in: Meld u af.**
+Ga in de menu balk naar het**opdracht palet** **weer geven** > **en voer Azure in: Meld u af.**
 
 ## <a name="next-steps"></a>Volgende stappen
 

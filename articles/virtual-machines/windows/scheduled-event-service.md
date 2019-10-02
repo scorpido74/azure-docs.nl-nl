@@ -164,7 +164,7 @@ Zodra de gebeurtenissen naar Log Analytics zijn gepusht, kunt u de volgende [que
 1. Onder **acties**, selecteer **actie groep maken**. De pagina **actie groep toevoegen** wordt geopend.
 1. Typ *myActionGroup*in de naam van de **actie groep**.
 1. Typ **myActionGroup**in **short name**.
-1. Selecteer in **resource groep*** resourcegroupavailability * *.
+1. Selecteer in **resource groep***resourcegroupavailability* *.
 1. Onder acties, Typ in **actie naam** **e-mail**en selecteer vervolgens **e-mail/SMS/push/Voice**. De pagina **e-mail/SMS/push/Voice** wordt geopend.
 1. Selecteer **e-mail**, typ uw e-mail adres en selecteer vervolgens **OK**.
 1. Selecteer **OK**op de pagina **actie groep toevoegen** . 

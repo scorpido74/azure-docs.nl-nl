@@ -293,7 +293,7 @@ In plaats van Azure IoT Hub en het apparaat vanuit de Azure Portal in te richten
 
     ![Bord en COM selecteren](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/select-com.png)
 
-1. Klik `F1` om het opdracht palet te openen, typ en **Selecteer Azure IOT Device Workbench: Apparaatinstellingen configureren... en selecteer vervolgens **configuratie apparaat verbindings reeks > Selecteer IOT hub apparaat verbindings reeks.****
+1. Klik `F1` om het opdracht palet te openen, typ en **Selecteer Azure IOT Device Workbench: Apparaatinstellingen configureren...** en selecteer vervolgens **configuratie apparaat verbindings reeks > Selecteer IOT hub apparaat verbindings reeks.**
 
 1. Houd op DevKit de **knop** **opnieuw instellen** in de vervolg keuzelijst en laat deze knop los en laat vervolgens **knop a**los. Uw DevKit voert de configuratie modus in en slaat de connection string op.
 
