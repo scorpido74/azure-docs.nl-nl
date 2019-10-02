@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 08/13/2019
+ms.date: 10/01/2019
 ms.author: diberry
-ms.openlocfilehash: ad7986a0c4b0d59322ccebcaa6b1c70776164c48
-ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
+ms.openlocfilehash: 4393609bf426c6ae99c48a5d84162526aeff6fb7
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69015693"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71803524"
 ---
 # <a name="quickstart-qna-maker-rest-apis-for-nodejs"></a>Quickstart: QnA Maker REST-Api's voor node. js
 
@@ -30,12 +30,15 @@ Gebruik de QnA Maker REST-Api's voor node. js voor het volgende:
 * Een Knowledge base downloaden
 * Status van een bewerking ophalen
 
-[](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase) | Voor beelden van referentie documentatie[node. js](https://github.com/Azure-Samples/cognitive-services-qnamaker-nodejs/tree/master/documentation-samples/quickstarts/rest-api)
+[Referentie documentatie](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase) | [node. js](https://github.com/Azure-Samples/cognitive-services-qnamaker-nodejs/tree/master/documentation-samples/quickstarts/rest-api) -voor beelden
+
+[!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 ## <a name="prerequisites"></a>Vereisten
 
 * Azure-abonnement: [Maak er gratis een](https://azure.microsoft.com/free/)
 * De huidige versie van [node. js](https://nodejs.org).
+* U moet een [QnA Maker-service ](../How-To/set-up-qnamaker-service-azure.md) hebben. Als u de sleutel en het eind punt (inclusief de resource naam) wilt ophalen, selecteert u **Quick** start voor uw resource in het Azure Portal.
 
 ## <a name="setting-up"></a>Instellen
 
@@ -43,7 +46,7 @@ Gebruik de QnA Maker REST-Api's voor node. js voor het volgende:
 
 Azure-Cognitive Services worden vertegenwoordigd door Azure-resources waarop u zich abonneert. Maak een resource voor QnA Maker met behulp van de [Azure Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) of [Azure cli](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) op uw lokale machine. 
 
-Nadat u een sleutel van uw resource hebt opgehaald, [maakt u omgevings variabelen](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) voor `QNAMAKER_RESOURCE_KEY` de `QNAMAKER_AUTHORING_ENDPOINT`resource met de naam en. Gebruik de sleutel-en host waarden die zijn gevonden op de **Quick** start-pagina van de resource in het Azure Portal.
+Nadat u een sleutel van uw resource hebt opgehaald, [maakt u omgevings variabelen](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) voor `QNAMAKER_RESOURCE_KEY` de `QNAMAKER_AUTHORING_ENDPOINT`resource met de naam en. Gebruik de sleutel-en eindpunt waarden die zijn gevonden op de **Quick** start-pagina van de resource in het Azure Portal.
 
 ### <a name="create-a-new-nodejs-application"></a>Een nieuwe Node.js-toepassing maken
 
@@ -53,13 +56,13 @@ Maak in een console venster (zoals cmd, Power shell of bash) een nieuwe map voor
 mkdir myapp && cd myapp
 ```
 
-Voer de `npm init -y` opdracht uit om een knooppunt `package.json` bestand te maken. 
+Voer de `npm init -y`-opdracht uit om een knoop punt `package.json`-bestand te maken. 
 
 ```console
 npm init -y
 ```
 
-Voeg de `reqeuestretry` en `request` NPM-pakketten toe:
+Voeg de `reqeuestretry`-en `request` NPM-pakketten toe:
 
 ```console
 npm install requestretry request --save
@@ -80,7 +83,7 @@ Deze code fragmenten laten zien hoe u het volgende kunt doen met de QnA Maker RE
 
 
 
-Maak een bestand met `rest-apis.js` de naam en voeg de volgende instructie toe om HTTP-aanvragen te maken. 
+Maak een bestand met de naam `rest-apis.js` en voeg de volgende instructie _require_ toe om HTTP-aanvragen te maken. 
 
 ```javascript
 const request = require("requestretry");
@@ -135,7 +138,7 @@ Gebruik de [rest API om een Knowledge Base te verwijderen](https://docs.microsof
 
 ## <a name="get-status-of-an-operation"></a>Status van een bewerking ophalen
 
-Langlopende processen, zoals het aanmaak proces, retourneert een bewerkings-ID, die moet worden gecontroleerd met een afzonderlijke REST API aanroep. Deze functie neemt de hoofd tekst van het antwoord Create. De belang rijke sleutel is `operationState`de, waarmee wordt bepaald of u wilt door gaan met polling.
+Langlopende processen, zoals het aanmaak proces, retourneert een bewerkings-ID, die moet worden gecontroleerd met een afzonderlijke REST API aanroep. Deze functie neemt de hoofd tekst van het antwoord Create. De belang rijke sleutel is het `operationState`, dat bepaalt of u wilt door gaan met polling.
 
 Gebruik de [rest API om bewerkingen op een Knowledge Base te bewaken](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/operations/getdetails).
 

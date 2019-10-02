@@ -1,42 +1,41 @@
 ---
-title: Inhoud voor volwassenen en ongepaste-Computer Vision
+title: Volwassene, ongepaste, benchmarks-inhoud-Computer Vision
 titleSuffix: Azure Cognitive Services
-description: Concepten met betrekking tot het detecteren van inhoud voor volwassenen en ongepaste in afbeeldingen met behulp van de Computer Vision-APi.
+description: Concepten met betrekking tot het detecteren van inhoud voor volwassenen in afbeeldingen met behulp van de Computer Vision-APi.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 02/08/2019
+ms.date: 10/01/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: ca5f35ab47822d74de556671c38886942d23d9ff
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: ee18916a59bb081d65494f46e7aba7c29c7177cc
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946285"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71718519"
 ---
-# <a name="detect-adult-and-racy-content"></a>Inhoud voor volwassenen en ongepaste detecteren
+# <a name="detect-adult-content"></a>Inhoud voor volwassenen detecteren
 
-Computer Vision kunnen materiaal voor volwassenen in afbeeldingen detecteren zodat ontwikkel aars de weer gave van dergelijke installatie kopieën in hun software kunnen beperken. Inhouds vlaggen worden toegepast met een score tussen nul en één zodat ontwikkel aars de resultaten kunnen interpreteren op basis van hun eigen voor keuren. 
+Computer Vision kunnen materiaal voor volwassenen in afbeeldingen detecteren zodat ontwikkel aars de weer gave van deze installatie kopieën in hun software kunnen beperken. Inhouds vlaggen worden toegepast met een score tussen nul en één zodat ontwikkel aars de resultaten kunnen interpreteren op basis van hun eigen voor keuren.
 
 > [!NOTE]
-> Deze functie wordt ook aangeboden door de [Azure content moderator](https://docs.microsoft.com/azure/cognitive-services/content-moderator/overview) -service. Bekijk dit alternatief voor oplossingen voor meer strenge toezicht scenario's voor inhoud, zoals tekst toezicht en Human Review-werk stromen.
+> Veel van deze functionaliteit wordt aangeboden door de [Azure content moderator](https://docs.microsoft.com/azure/cognitive-services/content-moderator/overview) -service. Bekijk dit alternatief voor oplossingen voor meer strenge toezicht scenario's voor inhoud, zoals tekst toezicht en Human Review-werk stromen.
 
 ## <a name="content-flag-definitions"></a>Definities van inhouds markeringen
 
-Installatie kopieën voor **volwassenen** worden gedefinieerd als die voor een porno grafie en worden vaak genaakte en seksuele handelingen weer gegeven. 
+In de categorie ' volwassene ' zijn er verschillende categorieën:
 
-**Ongepaste** -installatie kopieën worden gedefinieerd als installatie kopieën die expliciet worden voorgesteld en bevatten vaak minder expliciete inhoud dan afbeeldingen die als volwasseneworden gelabeld. 
+- **Volwassene** installatie kopieën worden gedefinieerd als die van een expliciete seksuele aard zijn en vaak worden weer gegeven als naaktheid en seksuele daden.
+- **Ongepaste** -installatie kopieën worden gedefinieerd als installatie kopieën die expliciet worden voorgesteld en bevatten vaak minder expliciete inhoud dan afbeeldingen die als **volwassene**worden gelabeld.
+- **Benchmarks** -installatie kopieën worden gedefinieerd als die van Gore.
 
-## <a name="identify-adult-and-racy-content"></a>Inhoud voor volwassenen en ongepaste identificeren
+## <a name="use-the-api"></a>De API gebruiken
 
-De [analyse](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) -API.
+U kunt inhoud voor volwassenen detecteren met de API voor het [analyseren van afbeeldingen](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) . Wanneer u de waarde van `Adult` toevoegt aan de query parameter **visualFeatures** , retourneert de API drie Booleaanse eigenschappen @ no__t-2 @ no__t-3, `isRacyContent` en `isGoryContent` @ no__t-6IN het JSON-antwoord. De-methode retourneert ook overeenkomende eigenschappen @ no__t-0 @ no__t-1, `racyScore` en `goreScore` @ no__t-4which geven betrouwbaarheids scores weer tussen nul en één voor elke betreffende categorie.
 
-De methode voor het analyseren van afbeeldingen retourneert twee `isAdultContent` Booleaanse `isRacyContent`eigenschappen, en in het JSON-antwoord van de methode om respectievelijk inhoud van volwassene en ongepaste aan te geven. De methode retourneert ook twee eigenschappen `adultScore` en `racyScore`, die de betrouwbaarheids scores vertegenwoordigen voor respectievelijk het identificeren van volwassene en ongepaste-inhoud.
-
-## <a name="next-steps"></a>Volgende stappen
-
-Leer concepten over [het detecteren van serverspecifieke inhoud](concept-detecting-domain-content.md) en het [detecteren van gezichten](concept-detecting-faces.md).
+- [Snelstart: Een installatie kopie (.NET SDK) analyseren ](./quickstarts-sdk/csharp-analyze-sdk.md)
+- [Snelstart: Een afbeelding analyseren (REST API)](./quickstarts/csharp-analyze.md)

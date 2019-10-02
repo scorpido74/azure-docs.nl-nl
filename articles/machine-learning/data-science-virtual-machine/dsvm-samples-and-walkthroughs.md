@@ -10,18 +10,22 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: f3d683ffb91639db64000efa2d9791d13d84b79b
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: ad58adb85077a27bce65595738ffdbd92bace9bd
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70195678"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802442"
 ---
 # <a name="samples-on-azure-data-science-virtual-machines"></a>Voor beelden van Azure data Science Virtual Machines
 
 Azure data Science Virtual Machines (Dsvm) bevat een uitgebreide set voorbeeld code. Dit zijn voor beelden van Jupyter-notebooks en-scripts in talen als python en R.
 > [!NOTE]
 > Zie de sectie [toegangs Jupyter](#access-jupyter) voor meer informatie over het uitvoeren van Jupyter-notebooks op uw virtuele machines voor data technologie.
+
+## <a name="prerequisites"></a>Vereisten
+
+Als u deze voor beelden wilt uitvoeren, moet u een Data Science Virtual Machine hebben ingericht. Bekijk de Quick starts voor [Windows](./provision-vm.md) en [Ubuntu](./dsvm-ubuntu-intro.md).
 
 ## <a name="available-samples"></a>Beschik bare voor beelden
 | Voorbeelden van categorie | Description | Locaties |
@@ -42,7 +46,7 @@ Azure data Science Virtual Machines (Dsvm) bevat een uitgebreide set voorbeeld c
 
 ## <a name="access-jupyter"></a>Toegang tot Jupyter 
 
-Om toegang te krijgen tot Jupyter, selecteert u het pictogram **Jupyter** in het menu bureau blad of toepassing. U hebt ook toegang tot Jupyter op een Linux-editie van een DSVM. Als u extern vanuit een webbrowser wilt openen, gaat `https://<Full Domain Name or IP Address of the DSVM>:8000` u naar op Ubuntu.
+Om toegang te krijgen tot Jupyter, selecteert u het pictogram **Jupyter** in het menu bureau blad of toepassing. U hebt ook toegang tot Jupyter op een Linux-editie van een DSVM. Als u extern vanuit een webbrowser wilt openen, gaat u naar `https://<Full Domain Name or IP Address of the DSVM>:8000` op Ubuntu.
 
 Gebruik de volgende richt lijnen om uitzonde ringen toe te voegen en de toegang tot Jupyter via een browser beschikbaar te maken:
 

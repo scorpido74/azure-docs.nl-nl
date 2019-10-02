@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/11/2018
-ms.openlocfilehash: c8d78473a1128dd4f96f2cfa0c14d2d3b1b2c1e9
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 2a707eda6a7e32a95666dd70e196c8da3c3b7834
+ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300565"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71815951"
 ---
 # <a name="alert-and-monitor-data-factories-by-using-azure-monitor"></a>Gegevens fabrieken melden en bewaken met behulp van Azure Monitor
 
@@ -468,6 +468,9 @@ Diagnostische instellingen voor uw data factory maken of toevoegen.
 
 Na enkele ogen blikken wordt de nieuwe instelling weer gegeven in de lijst met instellingen voor deze data factory. Diagnostische logboeken worden naar die werk ruimte gestreamd zodra er nieuwe gebeurtenis gegevens worden gegenereerd. Maxi maal 15 minuten kan verstrijken tussen het moment dat een gebeurtenis wordt verzonden en wanneer deze wordt weer gegeven in Log Analytics.
 
+* In de _resource-specifieke_ modus, Diagnostische logboeken van Azure Data Factory flow in _ADFPipelineRun_-, _ADFTriggerRun_-en _ADFActivityRun_ -tabellen
+* In de _Diagnostische_ modus van Azure stroomt Diagnostische logboeken in _AzureDiagnostics_ -tabel
+
 > [!NOTE]
 > Omdat een Azure-logboek tabel niet meer dan 500 kolommen kan bevatten, raden we u ten zeerste aan de resource-specifieke modus te selecteren. Zie [log Analytics bekende beperkingen](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-stream-log-store#known-limitation-column-limit-in-azurediagnostics)voor meer informatie.
 
@@ -508,6 +511,9 @@ Als u Azure Data Factory Analytics installeert, wordt er een standaardset weer g
 U kunt de voor gaande metrische gegevens visualiseren, de query's achter deze metrische gegevens bekijken, de query's bewerken, waarschuwingen maken en andere acties uitvoeren.
 
 ![Grafische weer gave van de pijp lijn wordt uitgevoerd door data factory "](media/data-factory-monitor-oms/monitor-oms-image8.png)
+
+> [!NOTE]
+> Met Azure Data Factory Analytics (preview) worden Diagnostische logboeken naar _resource-specifieke_ doel tabellen verzonden. U kunt query's schrijven op basis van de volgende tabellen: _ADFPipelineRun_, _ADFTriggerRun_en _ADFActivityRun_.
 
 ## <a name="alerts"></a>Waarschuwingen
 

@@ -11,17 +11,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/31/2019
+ms.date: 10/01/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.custom: aaddev;it-pro;seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b135838558a493cff0e28a8429d31f5a03a69857
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 922e5a2d5c639d7df380f686ddf7843ab59fca59
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71033456"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802365"
 ---
 # <a name="using-system-for-cross-domain-identity-management-scim-to-automatically-provision-users-and-groups-from-azure-active-directory-to-applications"></a>Met behulp van systeem voor meerdere domeinen Identity Management (SCIM) voor het automatisch inrichten van gebruikers en groepen uit Azure Active Directory voor toepassingen
 
@@ -59,7 +59,7 @@ Toepassingen die ondersteuning bieden voor het SCIM-profiel dat wordt beschreven
 
 **Verbinding met het maken van een toepassing die ondersteuning biedt voor SCIM:**
 
-1. Meld u aan bij de [Azure Active Directory Portal](https://aad.portal.azure.com). 
+1. Meld u aan bij de [Azure Active Directory Portal](https://aad.portal.azure.com). Houd er rekening mee dat u toegang krijgt tot een gratis proef versie voor Azure Active Directory met P2-licenties door u aan te melden voor het [ontwikkelaars programma](https://developer.microsoft.com/office/dev-program)
 1. Selecteer **bedrijfs toepassingen** in het linkerdeel venster. Er wordt een lijst met alle geconfigureerde apps weer gegeven, met inbegrip van apps die zijn toegevoegd vanuit de galerie.
 1. Selecteer **+ nieuwe toepassing** > **alle** > **niet-galerie toepassingen**.
 1. Voer een naam in voor uw toepassing en selecteer **toevoegen** om een app-object te maken. De nieuwe app wordt toegevoegd aan de lijst met bedrijfs toepassingen en wordt geopend op het scherm voor het beheren van apps.
@@ -96,6 +96,9 @@ Zodra de eerste cyclus is gestart, kunt u **audit logboeken** selecteren in het 
 > [!NOTE]
 > De eerste cyclus duurt langer dan de volgende synchronisaties, wat ongeveer elke 40 minuten gebeurt, zolang de service wordt uitgevoerd.
 
+**Uw toepassing publiceren in de Azure AD-toepassings galerie:**
+
+Als u een toepassing bouwt die wordt gebruikt voor meer dan één Tenant, kunt u deze beschikbaar maken in de Azure AD-toepassings galerie. Dit maakt het eenvoudig voor organisaties om de toepassing te detecteren en inrichtingen te configureren. Het publiceren van uw app in de Azure AD-galerie en het beschikbaar maken van de inrichting voor anderen is eenvoudig. Bekijk de stappen die [hier](https://docs.microsoft.com/azure/active-directory/develop/howto-app-gallery-listing)worden beschreven. 
 ## <a name="understanding-the-azure-ad-scim-implementation"></a>Informatie over de Azure AD SCIM-implementatie
 
 Als u een toepassing bouwt die een SCIM 2,0-gebruikers beheer-API ondersteunt, wordt in dit gedeelte beschreven hoe de Azure AD SCIM-client wordt geïmplementeerd en hoe u de verwerking van de aanvraag en reacties van uw SCIM-protocol moet model leren. Nadat u uw SCIM-eind punt hebt geïmplementeerd, kunt u dit testen door de procedure te volgen die in de vorige sectie is beschreven.

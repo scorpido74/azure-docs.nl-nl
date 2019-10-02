@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 09/03/2019
+ms.date: 10/01/2019
 ms.author: diberry
-ms.openlocfilehash: 97e28165702e352c7840f12a3214776dcc8642bc
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 54f9e1eb9614708880c9a45cddcf9d7a282d0305
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70308086"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802857"
 ---
 # <a name="quickstart-publish-a-knowledge-base-in-qna-maker-using-python"></a>Snelstartgids: Een knowledge base in QnA Maker publiceren met behulp van Python
 
@@ -28,7 +28,7 @@ In deze snelstart worden QnA Maker-API's aangeroepen:
 ## <a name="prerequisites"></a>Vereisten
 
 * [Python 3.7](https://www.python.org/downloads/)
-* U moet een QnA Maker-service hebben. Selecteer onder Resourcebeheer de optie Sleutel om uw sleutel op te halen.
+* U moet een [QnA Maker-service ](../How-To/set-up-qnamaker-service-azure.md) hebben. Als u de sleutel en het eind punt (inclusief de resource naam) wilt ophalen, selecteert u **Quick** start voor uw resource in het Azure Portal.
 * Id voor knowledge base (KB) in QnA Maker gevonden in de URL in de parameter voor de kbid-queryreeks, zoals hieronder wordt weergegeven.
 
     ![Id voor knowledge base in QnA Maker](../media/qnamaker-quickstart-kb/qna-maker-id.png)

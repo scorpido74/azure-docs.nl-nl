@@ -16,14 +16,14 @@ ms.date: 07/09/2018
 ms.author: mlearned
 ms.custom: mvc, seo-javascript-september2019
 monikerRange: vsts
-ms.openlocfilehash: c59df73e7fa1d19db4c83a1c9a317f9b69ec8a37
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 9fc276626d2a863f7f2e53cd7312ab8b3be513dd
+ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71091166"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71815772"
 ---
-#  <a name="create-a-cicd-pipeline-for--nodejs-with-azure-devops-projects"></a>Een CI/CD-pijplijn voor Node.js maken met Azure DevOps Projects 
+#  <a name="quickstart-create-a-cicd-pipeline-in-azure-pipelines-for-nodejs-with-azure-devops-projects"></a>Quickstart: Een CI/CD-pijp lijn maken in azure-pijp lijnen voor node. js met Azure DevOps Projects
 
 Azure DevOps Projects biedt een vereenvoudigde ervaring voor het maken van Azure-resources en stelt een pijplijn in voor CI (Continue Integratie) en CD (Continue levering) voor uw Node.js-app in Azure Pipelines.  
 

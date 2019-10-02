@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 04/26/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 13c9003baaca11dce5a2192a8183674faddfa6dc
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: bd66df381e11582b30ded5e3b529070357f35ad2
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967287"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71720292"
 ---
 # <a name="assign-users-and-groups-to-an-application-in-azure-active-directory"></a>Gebruikers en groepen toewijzen aan een toepassing in Azure Active Directory
 Dit artikel leest u hoe gebruikers of groepen toewijzen aan een toepassing in Azure Active Directory (Azure AD). Gebruikers moeten eerst worden toegewezen aan een toepassing voordat u een beheerder kan hun toegang wordt verleend om het volgende doen:
@@ -50,7 +50,7 @@ Voordat u gebruikers en groepen aan een toepassing toewijzen kunt, moet u de Geb
 
 Als u wilt toewijzen een of meer gebruikers rechtstreeks aan een toepassing, de volgende stappen uit te voeren:
 
-1.  Open de [ **Azure-portal** ](https://portal.azure.com/) en meld u aan als een **globale beheerder.**
+1.  Open de [**Azure Portal**](https://portal.azure.com/) en meld u aan als **globale beheerder of als eigenaar van een niet-beheerders toepassing.**
 
 2.  Open de **Azure Active Directory-extensie** door te klikken op **alle services** boven aan het navigatiemenu links belangrijkste.
 
@@ -88,7 +88,7 @@ Na een korte periode kunnen de gebruikers die u hebt geselecteerd deze toepassin
 
 Als u wilt toewijzen een of meer groepen rechtstreeks aan een toepassing, de volgende stappen uit te voeren:
 
-1.  Open de [ **Azure-portal** ](https://portal.azure.com/) en meld u aan als een **globale beheerder.**
+1.  Open de [**Azure Portal**](https://portal.azure.com/) en meld u aan als **globale beheerder** of als eigenaar van een niet-beheerders toepassing waaraan een Azure AD Premium-licentie is toegewezen.
 
 2.  Open de **Azure Active Directory-extensie** door te klikken op **alle services** boven aan het navigatiemenu links belangrijkste.
 
@@ -148,9 +148,9 @@ Om in te schakelen Self-servicetoepassingen toegang tot een toepassing, de volge
 
 9. Klik vervolgens op de selector naast het label te selecteren in de groep waaraan de gebruikers die aanvragen toegang tot deze toepassing moet worden toegevoegd, **aan welke groep moeten toegewezen gebruikers worden toegevoegd?** en selecteert u een groep.
 
-10. **Optioneel:** Als u een zakelijke goed keuring wilt vereisen voordat gebruikers toegang worden verleend, stelt u de optie **goed keuring vereisen alvorens toegang tot deze toepassing verlenen** in.
+10. **Optioneel:** Als u een zakelijke goed keuring wilt vereisen voordat gebruikers toegang worden verleend, **stelt u de**optie **goed keuring vereisen alvorens toegang tot deze toepassing verlenen** in.
 
-11. **Optioneel: Voor toepassingen die alleen gebruikmaken van een wacht woord voor** eenmalige aanmelding, als u wilt toestaan dat gebruikers goed keurder de wacht woorden opgeven die worden verzonden naar deze toepassing voor goedgekeurde gebruiker, stelt u **in dat goed keurders toestaan om gebruikers wachtwoorden in te stellen voor dit toepassing?** Schakel over naar **Ja**.
+11. **Optioneel: Voor toepassingen die alleen gebruikmaken van een wacht woord voor eenmalige aanmelding,**  als u wilt toestaan dat deze goed keurders de wacht woorden opgeven die worden verzonden naar deze toepassing voor goedgekeurde gebruikers, stelt u de **goed keurders toestaan om gebruikers wachtwoorden in te stellen voor deze toepassing?** Schakel over naar **Ja**.
 
 12. **Optioneel:** Als u de zakelijke goed keurders wilt opgeven die de toegang tot deze toepassing mogen goed keuren, klikt u op de kiezer naast het label **dat de toegang tot deze toepassing mag goed keuren?** om Maxi maal 10 afzonderlijke goed keurders voor bedrijven te selecteren.
 
@@ -159,7 +159,7 @@ Om in te schakelen Self-servicetoepassingen toegang tot een toepassing, de volge
     >
     >
 
-13. **Optioneel:** Als u door selfservice goedgekeurde gebruikers wilt toewijzen aan een rol, klikt u op de selector naast de **rol waaraan gebruikers moeten worden toegewezen in deze toepassing?** om de rol te selecteren waaraan deze gebruikers moeten worden toegewezen.
+13. **Optioneel:** Als **u door selfservice**goedgekeurde gebruikers wilt toewijzen aan een rol, klikt u op de selector naast de **rol waaraan gebruikers moeten worden toegewezen in deze toepassing?** om de rol te selecteren waaraan deze gebruikers moeten worden toegewezen.
 
 14. Klik op de **opslaan** knop aan de bovenkant van het deelvenster om te voltooien.
 

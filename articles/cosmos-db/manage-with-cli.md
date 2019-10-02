@@ -4,14 +4,14 @@ description: Gebruik Azure CLI voor het beheren van uw Azure Cosmos DB-account,-
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 08/05/2019
+ms.date: 09/28/2019
 ms.author: mjbrown
-ms.openlocfilehash: f9d8bf9161343e4b36a3c16209873962b69d8af5
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 59f1a678b7a2edc64a2079eff0e819e206c2e509
+ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69615222"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71811688"
 ---
 # <a name="manage-azure-cosmos-resources-using-azure-cli"></a>Azure Cosmos-resources beheren met Azure CLI
 
@@ -23,94 +23,339 @@ Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor 
 
 ## <a name="create-an-azure-cosmos-db-account"></a>Maak een Azure Cosmos DB-account
 
-Als u een Azure Cosmos DB-account wilt maken met SQL API, sessie consistentie in de regio's VS-Oost en VS-West, voert u de volgende opdracht uit:
-
-```azurecli-interactive
-az cosmosdb create \
-   --name mycosmosdbaccount # must be lowercase and < 31 characters \
-   --resource-group myResourceGroup \
-   --kind GlobalDocumentDB \
-   --default-consistency-level Session \
-   --locations regionName=EastUS failoverPriority=0 isZoneRedundant=False \
-   --locations regionName=WestUS failoverPriority=1 isZoneRedundant=False \
-   --enable-multiple-write-locations false
-```
+Een Azure Cosmos DB-account maken met SQL API, sessie consistentie in de regio's vs-West 2 en VS-Oost 2:
 
 > [!IMPORTANT]
-> De naam van het Azure Cosmos-account moet kleine letters zijn.
-
-## <a name="create-a-database"></a>Een database maken
-
-Als u een Cosmos-Data Base wilt maken, voert u de volgende opdracht uit:
+> De naam van het Azure Cosmos-account moet kleine letters en minder dan 31 tekens bevatten.
 
 ```azurecli-interactive
-az cosmosdb database create \
-   --name mycosmosdbaccount \
-   --db-name myDatabase \
-   --resource-group myResourceGroup
+resourceGroupName='MyResourceGroup'
+accountName='mycosmosaccount' #needs to be lower case and less than 31 characters
+
+az cosmosdb create \
+    -n $accountName \
+    -g $resourceGroupName \
+    --default-consistency-level Session \
+    --locations regionName='West US 2' failoverPriority=0 isZoneRedundant=False \
+    --locations regionName='East US 2' failoverPriority=1 isZoneRedundant=False
 ```
 
-## <a name="create-a-container"></a>Een container maken
+## <a name="add-or-remove-regions"></a>Regio's toevoegen of verwijderen
 
-Als u een Cosmos-container met RU/s 400 en een partitie sleutel wilt maken, voert u de volgende opdracht uit:
+Maak een Azure Cosmos-account met twee regio's, voeg een regio toe en verwijder een regio.
+
+> [!NOTE]
+> U kunt geen regio's `locations` tegelijkertijd toevoegen of verwijderen en andere eigenschappen wijzigen voor een Azure Cosmos-account. Het wijzigen van regio's moet worden uitgevoerd als een afzonderlijke bewerking dan een andere wijziging in de account bron.
+> [!NOTE]
+> Met deze opdracht kunt u regio's toevoegen en verwijderen, maar kunt u geen failover-prioriteiten wijzigen of een hand matige failover starten. Zie [failover-prioriteit instellen](#set-failover-priority) en [hand matige failover activeren](#trigger-manual-failover).
 
 ```azurecli-interactive
-# Create a container
-az cosmosdb collection create \
-   --collection-name myContainer \
-   --name mycosmosdbaccount \
-   --db-name myDatabase \
-   --resource-group myResourceGroup \
-   --partition-key-path /myPartitionKey \
-   --throughput 400
+resourceGroupName = 'myResourceGroup'
+accountName = 'mycosmosaccount' # must be lower case and <31 characters
+
+# Create an account with 2 regions
+az cosmosdb create --name $accountName --resource-group $resourceGroupName \
+    --locations regionName= "West US 2" failoverPriority=0 isZoneRedundant=False \
+    --locations regionName= "East US 2" failoverPriority=1 isZoneRedundant=False
+
+# Add a region
+az cosmosdb update --name $accountName --resource-group $resourceGroupName \
+    --locations regionName= "West US 2" failoverPriority=0 isZoneRedundant=False \
+    --locations regionName= "East US 2" failoverPriority=1 isZoneRedundant=False \
+    --locations regionName= "South Central US" failoverPriority=2 isZoneRedundant=False
+
+# Remove a region
+az cosmosdb update --name $accountName --resource-group $resourceGroupName \
+    --locations regionName= "West US 2" failoverPriority=0 isZoneRedundant=False \
+    --locations regionName= "East US 2" failoverPriority=1 isZoneRedundant=False
 ```
 
-## <a name="change-the-throughput-of-a-container"></a>De door Voer van een container wijzigen
+## <a name="enable-multiple-write-regions"></a>Meerdere schrijf regio's inschakelen
 
-Als u de door Voer van een Cosmos-container wilt wijzigen in 1000 RU/s, voert u de volgende opdracht uit:
+Multi-Master inschakelen voor een Cosmos-account
 
 ```azurecli-interactive
-# Update container throughput
-az cosmosdb collection update \
-   --collection-name myContainer \
-   --name mycosmosdbaccount \
-   --db-name myDatabase \
-   --resource-group myResourceGroup \
-   --throughput 1000
+# Update an Azure Cosmos account from single to multi-master
+resourceGroupName = 'myResourceGroup'
+accountName = 'mycosmosaccount'
+
+# Get the account resource id for an existing account
+accountId=$(az cosmosdb show -g $resourceGroupName -n $accountName --query id -o tsv)
+
+az cosmosdb update --ids $accountId --enable-multiple-write-locations true
 ```
 
-## <a name="list-account-keys"></a>Lijst met account sleutels
+## <a name="set-failover-priority"></a>Prioriteit van failover instellen
 
-Als u de sleutels voor uw Cosmos-account wilt ophalen, voert u de volgende opdracht uit:
+De failover-prioriteit instellen voor een Azure Cosmos-account dat is geconfigureerd voor automatische failover
 
 ```azurecli-interactive
-# List account keys
+# Assume region order is initially 'West US 2'=0 'East US 2'=1 'South Central US'=2 for account
+resourceGroupName = 'myResourceGroup'
+accountName = 'mycosmosaccount'
+
+# Get the account resource id for an existing account
+accountId=$(az cosmosdb show -g $resourceGroupName -n $accountName --query id -o tsv)
+
+# Make South Central US the next region to fail over to instead of East US 2
+az cosmosdb failover-priority-change --ids $accountId \
+    --failover-policies 'West US 2'=0 'South Central US'=1 'East US 2'=2
+```
+
+## <a name="enable-automatic-failover"></a>Automatische failover inschakelen
+
+```azurecli-interactive
+# Enable automatic failover on an existing account
+resourceGroupName = 'myResourceGroup'
+accountName = 'mycosmosaccount'
+
+# Get the account resource id for an existing account
+accountId=$(az cosmosdb show -g $resourceGroupName -n $accountName --query id -o tsv)
+
+az cosmosdb update --ids $accountId --enable-automatic-failover true
+```
+
+## <a name="trigger-manual-failover"></a>Hand matige failover activeren
+
+> [!CAUTION]
+> Als u de regio met prioriteit = 0 wijzigt, wordt er een hand matige failover geactiveerd voor een Azure Cosmos-account. Bij elke andere wijziging van de prioriteit wordt een failover niet geactiveerd.
+
+```azurecli-interactive
+# Assume region order is initially 'West US 2'=0 'East US 2'=1 'South Central US'=2 for account
+resourceGroupName = 'myResourceGroup'
+accountName = 'mycosmosaccount'
+
+# Get the account resource id for an existing account
+accountId=$(az cosmosdb show -g $resourceGroupName -n $accountName --query id -o tsv)
+
+# Trigger a manual failover to promote East US 2 as new write region
+az cosmosdb failover-priority-change --ids $accountId \
+    --failover-policies 'East US 2'=0 'South Central US'=1 'West US 2'=2
+```
+
+## <a id="list-account-keys"></a>Alle account sleutels weer geven
+
+Alle sleutels ophalen voor een Cosmos-account.
+
+```azurecli-interactive
+# List all account keys
+resourceGroupName='MyResourceGroup'
+accountName='mycosmosaccount'
+
 az cosmosdb keys list \
-   --name  mycosmosdbaccount \
-   --resource-group myResourceGroup
+   -n $accountName \
+   -g $resourceGroupName
+```
+
+## <a name="list-read-only-account-keys"></a>Alleen-lezen-account sleutels weer geven
+
+Alleen-lezen sleutels ophalen voor een Cosmos-account.
+
+```azurecli-interactive
+# List read-only account keys
+resourceGroupName='MyResourceGroup'
+accountName='mycosmosaccount'
+
+az cosmosdb list-read-only-keys \
+   -n $accountName \
+   -g $resourceGroupName
 ```
 
 ## <a name="list-connection-strings"></a>Verbindings reeksen weer geven
 
-Als u de verbindings reeksen voor uw Cosmos-account wilt ophalen, voert u de volgende opdracht uit:
+De verbindings reeksen ophalen voor een Cosmos-account.
 
 ```azurecli-interactive
 # List connection strings
+resourceGroupName='MyResourceGroup'
+accountName='mycosmosaccount'
+
 az cosmosdb list-connection-strings \
-   --name mycosmosdbaccount \
-   --resource-group myResourceGroup
+    -n $accountName \
+    -g $resourceGroupName
 ```
 
 ## <a name="regenerate-account-key"></a>Account sleutel opnieuw genereren
 
-Als u een nieuwe primaire sleutel voor uw Cosmos-account opnieuw wilt genereren, voert u de volgende opdracht uit:
+Genereer een nieuwe sleutel voor een Cosmos-account.
 
 ```azurecli-interactive
-# Regenerate account key
+# Regenerate secondary account keys
+# key-kind values: primary, primaryReadonly, secondary, secondaryReadonly
 az cosmosdb regenerate-key \
-   --name mycosmosdbaccount \
-   --resource-group myResourceGroup \
-   --key-kind primary
+    -n $accountName \
+    -g $resourceGroupName \
+    --key-kind secondary
+```
+
+## <a name="create-a-database"></a>Een database maken
+
+Maak een Cosmos-data base.
+
+```azurecli-interactive
+resourceGroupName='MyResourceGroup'
+accountName='mycosmosaccount'
+databaseName='database1'
+
+az cosmosdb sql database create \
+    -a $accountName \
+    -g $resourceGroupName \
+    -n $databaseName
+```
+
+## <a name="create-a-database-with-shared-throughput"></a>Een Data Base maken met gedeelde door Voer
+
+Maak een Cosmos-data base met een gedeelde door voer.
+
+```azurecli-interactive
+resourceGroupName='MyResourceGroup'
+accountName='mycosmosaccount'
+databaseName='database1'
+throughput=400
+
+az cosmosdb sql database create \
+    -a $accountName \
+    -g $resourceGroupName \
+    -n $databaseName \
+    --throughput $throughput
+```
+
+## <a name="change-the-throughput-of-a-database"></a>De door Voer van een Data Base wijzigen
+
+Verhoog de door Voer van een Cosmos-data base met 1000 RU/s.
+
+```azurecli-interactive
+resourceGroupName='MyResourceGroup'
+accountName='mycosmosaccount'
+databaseName='database1'
+increaseRU=1000
+
+originalRU=$(az cosmosdb sql database throughput show \
+    -g $resourceGroupName -a $accountName -n $databaseName \
+    --query throughput -o tsv)
+
+newRU=$((originalRU + increaseRU))
+
+az cosmosdb sql database throughput update \
+    -a $accountName \
+    -g $resourceGroupName \
+    -n $databaseName \
+    --throughput $newRU
+```
+
+## <a name="create-a-container"></a>Een container maken
+
+Maak een Cosmos-container met het standaard index beleid, de partitie sleutel en RU/s van 400.
+
+```azurecli-interactive
+# Create a SQL API container
+resourceGroupName='MyResourceGroup'
+accountName='mycosmosaccount'
+databaseName='database1'
+containerName='container1'
+partitionKey='/myPartitionKey'
+throughput=400
+
+az cosmosdb sql container create \
+    -a $accountName -g $resourceGroupName \
+    -d $databaseName -n $containerName \
+    -p $partitionKey --throughput $throughput
+```
+
+## <a name="create-a-container-with-ttl"></a>Een container met TTL maken
+
+Maak een Cosmos-container met TTL ingeschakeld.
+
+```azurecli-interactive
+# Create an Azure Cosmos container with TTL of one day
+resourceGroupName = 'myResourceGroup'
+accountName = 'mycosmosaccount'
+databaseName = 'database1'
+containerName = 'container1'
+
+az cosmosdb sql container update \
+    -g $resourceGroupName \
+    -a $accountName \
+    -d $databaseName \
+    -n $containerName \
+    --ttl = 86400
+```
+
+## <a name="create-a-container-with-a-custom-index-policy"></a>Een container met een aangepast index beleid maken
+
+Maak een Cosmos-container met een aangepast index beleid, een ruimtelijke index, een samengestelde index, een partitie sleutel en RU/s van 400.
+
+```azurecli-interactive
+# Create a SQL API container
+resourceGroupName='MyResourceGroup'
+accountName='mycosmosaccount'
+databaseName='database1'
+containerName='container1'
+partitionKey='/myPartitionKey'
+throughput=400
+
+# Generate a unique 10 character alphanumeric string to ensure unique resource names
+uniqueId=$(env LC_CTYPE=C tr -dc 'a-z0-9' < /dev/urandom | fold -w 10 | head -n 1)
+
+# Define the index policy for the container, include spatial and composite indexes
+idxpolicy=$(cat << EOF
+{
+    "indexingMode": "consistent",
+    "includedPaths": [
+        {"path": "/*"}
+    ],
+    "excludedPaths": [
+        { "path": "/headquarters/employees/?"}
+    ],
+    "spatialIndexes": [
+        {"path": "/*", "types": ["Point"]}
+    ],
+    "compositeIndexes":[
+        [
+            { "path":"/name", "order":"ascending" },
+            { "path":"/age", "order":"descending" }
+        ]
+    ]
+}
+EOF
+)
+# Persist index policy to json file
+echo "$idxpolicy" > "idxpolicy-$uniqueId.json"
+
+
+az cosmosdb sql container create \
+    -a $accountName -g $resourceGroupName \
+    -d $databaseName -n $containerName \
+    -p $partitionKey --throughput $throughput \
+    --idx @idxpolicy-$uniqueId.json
+
+# Clean up temporary index policy file
+rm -f "idxpolicy-$uniqueId.json"
+```
+
+## <a name="change-the-throughput-of-a-container"></a>De door Voer van een container wijzigen
+
+Verhoog de door Voer van een Cosmos-container met 1000 RU/s.
+
+```azurecli-interactive
+resourceGroupName='MyResourceGroup'
+accountName='mycosmosaccount'
+databaseName='database1'
+containerName='container1'
+increaseRU=1000
+
+originalRU=$(az cosmosdb sql container throughput show \
+    -g $resourceGroupName -a $accountName -d $databaseName \
+    -n $containerName --query throughput -o tsv)
+
+newRU=$((originalRU + increaseRU))
+
+az cosmosdb sql container throughput update \
+    -a $accountName \
+    -g $resourceGroupName \
+    -d $databaseName \
+    -n $containerName \
+    --throughput $newRU
 ```
 
 ## <a name="next-steps"></a>Volgende stappen

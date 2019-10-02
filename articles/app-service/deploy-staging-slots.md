@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 09/19/2019
 ms.author: cephalin
-ms.openlocfilehash: 35618b80dc4731f4d679bab9f035987af50730e8
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.openlocfilehash: 436ab0a561349185de58c3783f334ea1dce9001d
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71129710"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71720116"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Faserings omgevingen instellen in Azure App Service
 <a name="Overview"></a>
@@ -106,7 +106,7 @@ Op een wille keurig punt van de wissel bewerking wordt al het werk van het initi
 
 Als u een app-instelling of connection string wilt configureren voor een specifieke sleuf (niet gewisseld), gaat u naar de pagina **configuratie** voor die sleuf. Voeg een instelling toe of bewerk deze en selecteer vervolgens **implementatie sleuf instelling**. Als u dit selectie vakje inschakelt, wordt App Service dat de instelling niet kan worden gewisseld. 
 
-![Instelling voor site](./media/web-sites-staged-publishing/SlotSetting.png)
+![Sleuf instelling](./media/web-sites-staged-publishing/SlotSetting.png)
 
 <a name="Swap"></a>
 
@@ -128,7 +128,7 @@ Implementatie sleuven wisselen:
 
 2. Selecteer de gewenste **bron** -en **doel** sleuf. Normaal gesp roken is het doel de productie site. Selecteer ook de tabbladen **bron wijzigingen** en **doel wijzigingen** en controleer of de configuratie wijzigingen worden verwacht. Wanneer u klaar bent, kunt u de sleuven direct wisselen door **wisselen**te selecteren.
 
-    ![Wisseling voltooien](./media/web-sites-staged-publishing/SwapImmediately.png)
+    ![Omwisselen voltooien](./media/web-sites-staged-publishing/SwapImmediately.png)
 
     Als u wilt zien hoe uw doel sleuf wordt uitgevoerd met de nieuwe instellingen voordat de swap daad werkelijk plaatsvindt, selecteert u niet **wisselen**, maar volgt u de instructies in [swap with preview](#Multi-Phase).
 
@@ -140,9 +140,6 @@ Zie [problemen met swaps oplossen](#troubleshoot-swaps)als u problemen hebt.
 
 ### <a name="swap-with-preview-multi-phase-swap"></a>Wisselen met preview (multi-phase swap)
 
-> [!NOTE]
-> Swap with preview wordt niet ondersteund in web apps op Linux.
-
 Voordat u naar productie verwisselt als doel sleuf, controleert u of de app wordt uitgevoerd met de Verwissel bare instellingen. De bron sleuf wordt ook opwarmd voordat de wisseling is voltooid, wat wenselijk is voor bedrijfs kritieke toepassingen.
 
 Wanneer u een swap met preview uitvoert, voert App Service dezelfde [wissel bewerking](#AboutConfiguration) uit, maar wordt er na de eerste stap gepauzeerd. U kunt vervolgens het resultaat controleren op de faserings sleuf voordat u de swap voltooit. 
@@ -153,7 +150,7 @@ Wisselen met preview:
 
 1. Volg de stappen in [wisselings implementatie sleuven](#Swap) , maar selecteer **swap uitvoeren met preview**.
 
-    ![Wisseling met voorbeeld](./media/web-sites-staged-publishing/SwapWithPreview.png)
+    ![Wisselen met preview](./media/web-sites-staged-publishing/SwapWithPreview.png)
 
     In het dialoog venster ziet u hoe de configuratie in de bron sleuf verandert in fase 1 en hoe de bron-en doel sleuf in fase 2 verandert.
 
@@ -204,7 +201,8 @@ Zie [problemen met swaps oplossen](#troubleshoot-swaps)als u problemen hebt.
 <a name="Warm-up"></a>
 
 ## <a name="specify-custom-warm-up"></a>Aangepaste warme voor bereiding opgeven
-Wanneer u [automatisch wisselen](#Auto-Swap)gebruikt, zijn voor sommige apps mogelijk aangepaste opwarm acties vereist voordat de wisseling kan worden uitgevoerd. Met `applicationInitialization` het configuratie-element in web. config kunt u aangepaste initialisatie acties opgeven. Tijdens de [wissel bewerking](#AboutConfiguration) wordt gewacht tot deze aangepaste warme start is voltooid voordat u met de doel sleuf kunt wisselen. Hier volgt een voor beeld van een web. config-fragment.
+
+Voor sommige apps zijn mogelijk aangepaste opwarm acties vereist voordat de wisseling kan worden uitgevoerd. Met `applicationInitialization` het configuratie-element in web. config kunt u aangepaste initialisatie acties opgeven. Tijdens de [wissel bewerking](#AboutConfiguration) wordt gewacht tot deze aangepaste warme start is voltooid voordat u met de doel sleuf kunt wisselen. Hier volgt een voor beeld van een web. config-fragment.
 
     <system.webServer>
         <applicationInitialization>
@@ -292,7 +290,7 @@ Azure PowerShell is een module die cmdlets biedt voor het beheren van Azure via 
 Zie [Microsoft Azure PowerShell installeren en configureren](/powershell/azure/overview)voor meer informatie over het installeren en configureren van Azure PowerShell en over het verifiëren van Azure PowerShell met uw Azure-abonnement.  
 
 ---
-### <a name="create-a-web-app"></a>Een web-app maken
+### <a name="create-a-web-app"></a>Een webtoepassing maken
 ```powershell
 New-AzWebApp -ResourceGroupName [resource group name] -Name [app name] -Location [location] -AppServicePlan [app service plan name]
 ```
@@ -317,7 +315,7 @@ Invoke-AzResourceAction -ResourceGroupName [resource group name] -ResourceType M
 ```
 
 ---
-### <a name="swap-deployment-slots"></a>Implementatie sleuven wisselen
+### <a name="swap-deployment-slots"></a>Implementatiesites omwisselen
 ```powershell
 $ParametersObject = @{targetSlot  = "[slot name – e.g. “production”]"}
 Invoke-AzResourceAction -ResourceGroupName [resource group name] -ResourceType Microsoft.Web/sites/slots -ResourceName [app name]/[slot name] -Action slotsswap -Parameters $ParametersObject -ApiVersion 2015-07-01
@@ -334,7 +332,61 @@ Get-AzLog -ResourceGroup [resource group name] -StartTime 2018-03-07 -Caller Slo
 Remove-AzResource -ResourceGroupName [resource group name] -ResourceType Microsoft.Web/sites/slots –Name [app name]/[slot name] -ApiVersion 2015-07-01
 ```
 
----
+## <a name="automate-with-arm-templates"></a>Automatiseren met ARM-sjablonen
+
+[Arm-sjablonen](https://docs.microsoft.com/en-us/azure/azure-resource-manager/template-deployment-overview) zijn DECLARATIEve json-bestanden die worden gebruikt voor het automatiseren van de implementatie en configuratie van Azure-resources. Als u sleuven wilt wisselen met ARM-sjablonen, stelt u twee eigenschappen in op de resources *micro soft. web/sites/sleuven* en *micro soft. web/sites* :
+
+- `buildVersion`: dit is een teken reeks eigenschap die de huidige versie vertegenwoordigt van de app die in de sleuf is geïmplementeerd. Bijvoorbeeld: "v1", "1.0.0.1" of "2019-09-20T11:53:25.2887393-07:00".
+- `targetBuildVersion`: dit is een teken reeks eigenschap waarmee wordt opgegeven wat `buildVersion` de sleuf moet hebben. Als de targetBuildVersion niet gelijk is aan de huidige `buildVersion`, wordt de wissel bewerking geactiveerd door de sleuf te zoeken met de opgegeven `buildVersion`.
+
+### <a name="example-arm-template"></a>Voor beeld van ARM-sjabloon
+
+Met de volgende ARM-sjabloon wordt de `buildVersion` van de faserings sleuf bijgewerkt en wordt de `targetBuildVersion` ingesteld op de productie site. Hierdoor worden de twee sleuven gewisseld. In de sjabloon wordt ervan uitgegaan dat u al een webapp hebt gemaakt met een sleuf met de naam "staging".
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "my_site_name": {
+            "defaultValue": "SwapAPIDemo",
+            "type": "String"
+        },
+        "sites_buildVersion": {
+            "defaultValue": "v1",
+            "type": "String"
+        }
+    },
+    "resources": [
+        {
+            "type": "Microsoft.Web/sites/slots",
+            "apiVersion": "2018-02-01",
+            "name": "[concat(parameters('my_site_name'), '/staging')]",
+            "location": "East US",
+            "kind": "app",
+            "properties": {
+                "buildVersion": "[parameters('sites_buildVersion')]"
+            }
+        },
+        {
+            "type": "Microsoft.Web/sites",
+            "apiVersion": "2018-02-01",
+            "name": "[parameters('my_site_name')]",
+            "location": "East US",
+            "kind": "app",
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/sites/slots', parameters('my_site_name'), 'staging')]"
+            ],
+            "properties": {
+                "targetBuildVersion": "[parameters('sites_buildVersion')]"
+            }
+        }        
+    ]
+}
+```
+
+Deze ARM-sjabloon is idempotent, wat inhoudt dat deze herhaaldelijk kan worden uitgevoerd en de status van de sleuven kan genereren. Na de eerste uitvoering komt `targetBuildVersion` overeen met de huidige `buildVersion`, waardoor een wissel niet wordt geactiveerd.
+
 <!-- ======== Azure CLI =========== -->
 
 <a name="CLI"></a>

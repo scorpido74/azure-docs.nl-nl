@@ -4,14 +4,14 @@ description: Meer informatie over het configureren en beheren van Time to Live i
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/17/2019
+ms.date: 09/28/2019
 ms.author: mjbrown
-ms.openlocfilehash: ddda7b96147892efb38cb0405120db3613e98cf8
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: e36b894ec9c7433bc114145e0de5f519f73486f1
+ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71104875"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71815919"
 ---
 # <a name="configure-time-to-live-in-azure-cosmos-db"></a>Time to Live configureren in Azure Cosmos DB
 
@@ -36,10 +36,16 @@ Gebruik de volgende stappen om Time to Live in te schakelen op een container zon
 
    ![Time to Live configureren in de Azure-portal](./media/how-to-time-to-live/how-to-time-to-live-portal.png)
 
+* Als DefaultTimeToLive leeg is, is uw Time to Live uitgeschakeld
+* Als DefaultTimeToLive is ingesteld op-1, is de instelling van uw Time to Live ingeschakeld (geen standaard waarde)
+* Als DefaultTimeToLive een andere int-waarde heeft (behalve 0), is de Time to Live instelling ingeschakeld
 
-- Als DefaultTimeToLive leeg is, is uw Time to Live uitgeschakeld
-- Als DefaultTimeToLive is ingesteld op-1, is de instelling van uw Time to Live ingeschakeld (geen standaard waarde)
-- Als DefaultTimeToLive een andere int-waarde heeft (behalve 0), is de Time to Live instelling ingeschakeld
+## <a name="enable-time-to-live-on-a-container-using-azure-cli-or-powershell"></a>Time to Live inschakelen voor een container met behulp van Azure CLI of Power shell
+
+Als u TTL wilt maken of inschakelen voor een container, raadpleegt u
+
+* [Een container met TTL maken met behulp van Azure CLI](manage-with-cli.md#create-a-container-with-ttl)
+* [Een container met TTL maken met behulp van Power shell](manage-with-powershell.md#create-container-unique-key-ttl)
 
 ## <a name="enable-time-to-live-on-a-container-using-sdk"></a>Time to Live inschakelen op een container met behulp van de SDK
 
@@ -185,11 +191,10 @@ SalesOrder salesOrder = new SalesOrder
 const itemDefinition = {
           id: "doc",
           name: "sample Item",
-          key: "value", 
+          key: "value",
           ttl: 2
         };
 ```
-
 
 ## <a name="reset-time-to-live"></a>Time to Live opnieuw instellen
 

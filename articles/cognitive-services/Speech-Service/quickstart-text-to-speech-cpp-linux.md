@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: yinhew
-ms.openlocfilehash: dbc9c2adc2663d3ba0ec3f9ea17b758ca2723441
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 0846af20a2ee993742f648840bcbe49e187f6db9
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68553694"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71803178"
 ---
 # <a name="quickstart-synthesize-speech-in-c-on-linux-by-using-the-speech-sdk"></a>Quickstart: Spraak C++ op Linux maken met behulp van de Speech SDK
 
@@ -30,8 +30,6 @@ U hebt een abonnement op spraak services nodig om deze Quick Start te volt ooien
 ## <a name="install-speech-sdk"></a>Speech SDK installeren
 
 [!INCLUDE [License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
-
-De huidige versie van de Speech SDK van Cognitive Services is `1.6.0`.
 
 De Speech SDK voor Linux kan worden gebruikt om zowel 32-bits als 64-bits toepassingen te compileren. De vereiste bibliotheken en headerbestanden kunnen als een TAR-bestand worden gedownload vanuit https://aka.ms/csspeech/linuxbinary.
 
@@ -88,7 +86,7 @@ Download en installeer de SDK als volgt:
 
    [!code-cpp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/text-to-speech/cpp-linux/helloworld.cpp#code)]
 
-1. Vervang in dit nieuwe bestand de teken reeks `YourSubscriptionKey` door de sleutel van uw speech Services-abonnement.
+1. Vervang in dit nieuwe bestand de teken reeks `YourSubscriptionKey` door uw abonnements sleutel voor spraak Services.
 
 1. Vervang de tekenreeks `YourServiceRegion` door de [regio](regions.md) die aan uw abonnement is gekoppeld (bijvoorbeeld `westus` voor het gratis proefabonnement).
 
@@ -109,6 +107,12 @@ Download en installeer de SDK als volgt:
   g++ helloworld.cpp -o helloworld -I "$SPEECHSDK_ROOT/include/cxx_api" -I "$SPEECHSDK_ROOT/include/c_api" --std=c++14 -lpthread -lMicrosoft.CognitiveServices.Speech.core -L "$SPEECHSDK_ROOT/lib/x86" -l:libasound.so.2
   ```
 
+* Voer op een **ARM64** -systeem (64-bits) de volgende opdracht uit om de toepassing te bouwen.
+
+  ```sh
+  g++ helloworld.cpp -o helloworld -I "$SPEECHSDK_ROOT/include/cxx_api" -I "$SPEECHSDK_ROOT/include/c_api" --std=c++14 -lpthread -lMicrosoft.CognitiveServices.Speech.core -L "$SPEECHSDK_ROOT/lib/arm64" -l:libasound.so.2
+  ```
+
 ## <a name="run-the-app"></a>De app uitvoeren
 
 1. Configureer het bibliotheekpad van het laadprogramma om te verwijzen naar de bibliotheek van de Speech SDK.
@@ -123,6 +127,12 @@ Download en installeer de SDK als volgt:
 
      ```sh
      export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$SPEECHSDK_ROOT/lib/x86"
+     ```
+
+   * Voer de volgende opdracht in op een **ARM64** -systeem (64-bits).
+
+     ```sh
+     export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$SPEECHSDK_ROOT/lib/arm64"
      ```
 
 1. Voer de toepassing uit.

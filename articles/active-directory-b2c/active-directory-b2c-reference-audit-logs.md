@@ -11,12 +11,12 @@ ms.date: 09/14/2019
 ms.author: marsma
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: a8e35254a79ac43b35f45d1a20f3d1f6815f32be
-ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
+ms.openlocfilehash: bf9b6a3ad40d46b628bfcdb3fa3e32b2419360c9
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71702808"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802110"
 ---
 # <a name="accessing-azure-ad-b2c-audit-logs"></a>Toegang tot Azure AD B2C controle logboeken
 
@@ -112,10 +112,7 @@ Voer de volgende stappen uit om een toepassing te registreren, de vereiste Micro
 
 ### <a name="create-client-secret"></a>Client geheim maken
 
-1. Selecteer onder **API-toegang**de optie **sleutels**.
-1. Voer een beschrijving in voor de sleutel in het vak **sleutel beschrijving** . Bijvoorbeeld *controle logboek sleutel*.
-1. Selecteer de geldigheids **duur**en selecteer vervolgens **Opslaan**.
-1. Noteer de **waarde**van de sleutel. U hebt deze waarde nodig voor verificatie in Automation-scripts, zoals het Power shell-voorbeeld script dat in een latere sectie wordt weer gegeven.
+[!INCLUDE [active-directory-b2c-client-secret](../../includes/active-directory-b2c-client-secret.md)]
 
 U hebt nu een toepassing met de vereiste API-toegang, een toepassings-ID en een sleutel die u kunt gebruiken in uw automatiserings scripts. Zie de sectie Power shell-script verderop in dit artikel voor een voor beeld van hoe u activiteiten gebeurtenissen kunt ophalen met een script.
 

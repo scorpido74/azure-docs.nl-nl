@@ -12,15 +12,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 07/15/2019
+ms.date: 10/01/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c56bfda2b4f74bf31ce847f1fdb42f77f43eb372
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: deffcb81a4f66783fedc89c3e21ea46b15ad1c64
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71677983"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71720001"
 ---
 # <a name="azure-proximity-placement-groups-for-optimal-network-latency-with-sap-applications"></a>Azure proximity placement groups voor optimale netwerk latentie met SAP-toepassingen
 SAP-toepassingen die zijn gebaseerd op de architectuur van SAP NetWeaver of SAP S/4HANA, zijn gevoelig voor netwerk latentie tussen de SAP-toepassingslaag en de SAP-gegevenslaag. Deze gevoeligheid is het resultaat van de meeste bedrijfs logica die wordt uitgevoerd in de toepassingslaag. Omdat de SAP-toepassingslaag de bedrijfs logica uitvoert, worden query's naar de data base-laag met een hoge frequentie, met een snelheid van duizenden of tien tallen per seconde, uitgegeven. In de meeste gevallen is de aard van deze query's eenvoudig. Ze kunnen vaak worden uitgevoerd op de database laag in 500 micro seconden of minder.
@@ -34,7 +34,7 @@ Om deze problemen te voor komen, biedt Azure [proximity placement groups](https:
 ## <a name="what-are-proximity-placement-groups"></a>Wat zijn proximity placement groups? 
 Een Azure proximity-plaatsings groep is een logische constructie. Als er een is gedefinieerd, is deze gebonden aan een Azure-regio en een Azure-resource groep. Wanneer Vm's zijn geïmplementeerd, wordt naar een plaatsings groep voor nabijheid verwezen door:
 
-- De eerste virtuele machine van Azure die is geïmplementeerd in het Data Center. U kunt de eerste virtuele machine beschouwen als een ' verankerde VM ' die is geïmplementeerd in een Data Center op basis van Azure-toewijzings algoritmen die uiteindelijk worden gecombineerd met de gebruikers definities voor een specifieke beschikbaarheids zone.
+- De eerste virtuele machine van Azure die is geïmplementeerd in het Data Center. U kunt de eerste virtuele machine beschouwen als een ' scope-VM ' die is geïmplementeerd in een Data Center op basis van Azure-toewijzings algoritmen die uiteindelijk worden gecombineerd met de gebruikers definities voor een specifieke beschikbaarheids zone.
 - Alle volgende Vm's die worden geïmplementeerd, verwijzen naar de plaatsings groep, om alle vervolgens geïmplementeerde Azure-Vm's in hetzelfde Data Center als de eerste virtuele machine te plaatsen.
 
 > [!NOTE]
@@ -44,7 +44,7 @@ Aan één [Azure-resource groep](https://docs.microsoft.com/azure/azure-resource
 
 Houd rekening met de volgende aandachtspunten wanneer u proximity-plaatsings groepen gebruikt:
 
-- Wanneer u de beste prestaties voor uw SAP-systeem hebt bereikt en u beperkt tot een enkel Azure-Data Center voor het systeem door gebruik te maken van proximity placement groups, kunt u mogelijk niet alle typen VM-families in de plaatsings groep combi neren. Deze beperkingen doen zich voor omdat de host-hardware die nodig is voor het uitvoeren van een bepaald VM-type, mogelijk niet aanwezig is in het Data Center waarnaar de anker-VM van de plaatsings groep is geïmplementeerd.
+- Wanneer u de beste prestaties voor uw SAP-systeem hebt bereikt en u beperkt tot een enkel Azure-Data Center voor het systeem door gebruik te maken van proximity placement groups, kunt u mogelijk niet alle typen VM-families in de plaatsings groep combi neren. Deze beperkingen doen zich voor omdat de host-hardware die nodig is voor het uitvoeren van een bepaald VM-type, mogelijk niet aanwezig is in het Data Center waarop de ' scoped VM ' van de plaatsings groep is geïmplementeerd.
 - Tijdens de levens cyclus van een dergelijk SAP-systeem kunt u het systeem gedwongen verplaatsen naar een ander Data Center. Deze overstap kan nodig zijn als u besluit om te bepalen of uw scale-out HANA DBMS-laag bijvoorbeeld van vier knoop punten naar 16 knoop punten moet verplaatsen en er onvoldoende capaciteit is voor het verkrijgen van een extra 12 Vm's van het type dat u in het Data Center hebt gebruikt.
 - Vanwege het buiten gebruik stellen van hardware, kan micro soft capaciteit bouwen voor een VM-type dat u in een ander Data Center hebt gebruikt, in plaats van de versie die u in eerste instantie hebt gebruikt. In dat scenario moet u mogelijk de Vm's van alle proximity-plaatsings groepen verplaatsen naar een ander Data Center.
 
@@ -55,7 +55,7 @@ In de meeste implementaties van klanten bouwen klanten één [Azure-resource gro
 
 Vermijd het bundelen van meerdere SAP-productie-of niet-productie systemen in één proximity-plaatsings groep. Wanneer een klein aantal SAP-systemen of een SAP-systeem en sommige omringende toepassingen netwerk communicatie met een lage latentie nodig hebben, kunt u overwegen om deze systemen te verplaatsen naar één proximity-plaatsings groep. U dient bundels van systemen te vermijden omdat de meer systemen die u in een proximity-plaatsings groep hebt gegroepeerd, hoger zijn dan de kans:
 
-- U hebt een VM-type nodig dat niet kan worden uitgevoerd in het specifieke Data Center waarin de Proximity-plaatsings groep is verankerd.
+- U hebt een VM-type nodig dat niet kan worden uitgevoerd in het specifieke Data Center waarin de Proximity-plaatsings groep ligt.
 - Deze bronnen van niet-mainstream Vm's, zoals virtuele machines uit de M-serie, kunnen uiteindelijk niet worden afgehandeld wanneer u meer nodig hebt omdat u gedurende een periode software toevoegt aan een proximity-plaatsings groep.
 
 De ideale configuratie, zoals beschreven, ziet er als volgt uit:

@@ -1,6 +1,6 @@
 ---
-title: Artikel over bekende problemen/migratie beperkingen met online migraties naar Azure Database for MySQL | Microsoft Docs
-description: Meer informatie over bekende problemen/migratie beperkingen met online migraties voor Azure Database for MySQL.
+title: Artikel over bekende problemen/migratie beperkingen met online migraties van PostgreSQL naar Azure Database for PostgreSQL-één server | Microsoft Docs
+description: Meer informatie over bekende problemen/migratie beperkingen met online migraties van PostgreSQL naar Azure Database for PostgreSQL.
 services: database-migration
 author: HJToland3
 ms.author: jtoland
@@ -10,17 +10,17 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 08/06/2019
-ms.openlocfilehash: 56758e2962adb41c9876171c89b37263a70ed0e4
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.date: 10/03/2019
+ms.openlocfilehash: 891e8a261e092de0ffcef3941dd48f01942a8030
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70743545"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802593"
 ---
-# <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-db-for-postgresql"></a>Bekende problemen/migratie beperkingen met online migraties naar Azure DB voor PostgreSQL
+# <a name="known-issuesmigration-limitations-with-online-migrations-from-postgresql-to-azure-db-for-postgresql-single-server"></a>Bekende problemen/migratie beperkingen met online migraties van PostgreSQL naar Azure DB voor PostgreSQL-één server
 
-Bekende problemen en beperkingen die zijn gekoppeld aan online migraties van PostgreSQL naar Azure Database for PostgreSQL worden beschreven in de volgende secties.
+Bekende problemen en beperkingen die zijn gekoppeld aan online migraties van PostgreSQL naar Azure Database for PostgreSQL-Eén server worden in de volgende secties beschreven.
 
 ## <a name="online-migration-configuration"></a>Configuratie van online migratie
 
@@ -42,7 +42,7 @@ Bekende problemen en beperkingen die zijn gekoppeld aan online migraties van Pos
 
 - De gebruiker moet beschikken over de machtiging super gebruiker op de server die als host fungeert voor de bron database
 - Afgezien van het hebben van ENUM in het schema van de bron database, moeten de bron-en doel database schema's overeenkomen.
-- Het schema in het doel Azure Database for PostgreSQL mag geen refererende sleutels hebben. Gebruik de volgende query om refererende sleutels te verwijderen:
+- Het schema in de doel Azure Database for PostgreSQL-één server mag geen refererende sleutels hebben. Gebruik de volgende query om refererende sleutels te verwijderen:
 
     ```
                                 SELECT Queries.tablename
@@ -73,7 +73,7 @@ Bekende problemen en beperkingen die zijn gekoppeld aan online migraties van Pos
 
     Voer het 'drop foreign key'-script (de tweede kolom) uit in het queryresultaat.
 
-- Het schema in de doel Azure Database for PostgreSQL mag geen triggers hebben. Gebruik het volgende om triggers in doel database uit te scha kelen:
+- Het schema in het doel Azure Database for PostgreSQL-één server mag geen triggers hebben. Gebruik het volgende om triggers in doel database uit te scha kelen:
 
      ```
     SELECT Concat('DROP TRIGGER ', Trigger_Name, ';') FROM  information_schema.TRIGGERS WHERE TRIGGER_SCHEMA = 'your_schema';

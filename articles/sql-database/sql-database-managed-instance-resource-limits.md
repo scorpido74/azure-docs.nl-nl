@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
 ms.date: 09/16/2019
-ms.openlocfilehash: 85ab8a61e0aebadf212217bc88e07e0066eca02b
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: 5eaade975adac86b6842d1d8f9f9b8f522d15bca
+ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71146794"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71816086"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Overzicht Azure SQL Database limieten voor beheerde exemplaar bronnen
 
@@ -38,12 +38,27 @@ Azure SQL Database Managed instance kan worden geïmplementeerd op twee hardware
 | Hardware | Intel E5-2673 v3 (Haswell) 2,4-GHz-processors, Attached SSD vCore = 1 PP (fysieke kern) | Intel E5-2673 v4 (Broadwell) 2,3-GHz processors, Fast NVMe SSD, vCore = 1 LP (Hyper-Thread) |
 | Aantal vCores | 8, 16, 24 vCores | 4, 8, 16, 24, 32, 40, 64, 80 vCores |
 | Maxi maal geheugen (geheugen/kern percentage) | 7 GB per vCore<br/>Voeg meer vCores toe om meer geheugen te verkrijgen. | 5,1 GB per vCore<br/>Voeg meer vCores toe om meer geheugen te verkrijgen. |
-| Maxi maal in-Memory OLTP-geheugen | Limiet voor instanties: 3 GB per vCore<br/>Database limieten:<br/> -8-kern: 8 GB per data base<br/> -16-core: 20 GB per data base<br/> -24-Core: 36 GB per data base | Limiet voor instanties: 2,5 GB per vCore<br/>Database limieten:<br/> -8-kern: 13 GB per data base<br/> -16-core: 32 GB per data base |
+| Maxi maal in-Memory OLTP-geheugen | Limiet voor instanties: 1-1,5 GB per vCore| Limiet voor instanties: 0,8-1,65 GB per vCore |
 | Maximum aantal gereserveerde exemplaren |  Algemeen: 8 TB<br/>Bedrijfskritiek: CAPACITEIT | Algemeen: 8 TB<br/> Bedrijfskritiek 1 TB, 2 TB of 4 TB afhankelijk van het aantal kernen |
 
 > [!IMPORTANT]
 > - Gen4-hardware wordt gefaseerd uitgevoerd. Het is raadzaam om nieuwe beheerde exemplaren te implementeren op GEN5-hardware.
 > - Gen4-hardware is op dit moment nog steeds alleen beschikbaar in de volgende regio's: Europa-noord, Europa-west, VS-Oost, Zuid-Centraal VS, Noord-Centraal VS, VS-West 2, VS-midden, Canada-centraal, India-zuid, Zuidoost-Azië en Korea-centraal.
+
+#### <a name="in-memory-oltp-available-space"></a>Beschik bare ruimte in geheugen voor OLTP 
+
+De hoeveelheid OLTP-ruimte in het geheugen is afhankelijk van het aantal vCores en de generatie van hardware. In de volgende tabel worden de limieten van het geheugen weer gegeven dat kan worden gebruikt voor OLTP-objecten in het geheugen.
+
+| In-Memory OLTP-ruimte per vCore    | **Gen5** | **Gen4** |
+| --- | --- | --- |
+| 4 | 3,14 GB | |   
+| 8 | 6,28 GB | 8 GB |
+| 16    | 15,77 GB | 20 GB |
+| 24    | 25,25 GB | 36 GB |
+| 32    | 37,94 GB | |
+| 40    | 52,23 GB | |
+| 64    | 99,9 GB   | |
+| 80    | 131,68 GB| |
 
 ### <a name="service-tier-characteristics"></a>Kenmerken van servicelaag
 

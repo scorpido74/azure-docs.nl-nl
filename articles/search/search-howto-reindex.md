@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 8a03472b72ea7c2dc69d79400e33d5ec65cc6126
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 863050b2646f6f7b3a3d9ba3487f11729bef22c8
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69647694"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71719853"
 ---
 # <a name="how-to-rebuild-an-azure-search-index"></a>Een Azure Search index opnieuw samen stellen
 
@@ -33,7 +33,7 @@ In tegens telling tot het opnieuw opbouwen waarbij een index offline wordt gehaa
 | Een analyse definitie in een index bijwerken of verwijderen | U kunt een bestaande analyse configuratie (Analyzer, tokenizer, token filter of char-filter) in de index niet verwijderen of wijzigen, tenzij u de volledige index opnieuw opbouwt. |
 | Een veld aan een suggestie toevoegen | Als er al een veld bestaat en u dit wilt toevoegen aan de construct [suggesties](index-add-suggesters.md) , moet u de index opnieuw samen stellen. |
 | Een veld verwijderen | Als u alle traceringen van een veld fysiek wilt verwijderen, moet u de index opnieuw samen stellen. Wanneer een onmiddellijke heropbouw niet praktisch is, kunt u de toepassings code wijzigen om de toegang tot het veld ' verwijderd ' uit te scha kelen. De definitie en inhoud van het veld blijven fysiek aanwezig in de index tot de volgende keer opnieuw wordt opgebouwd wanneer u een schema toepast dat het betreffende veld weglaat. |
-| Lagen wisselen | Als u meer capaciteit nodig hebt, is er geen in-place upgrade. Er wordt een nieuwe service gemaakt op het nieuwe capaciteits punt, en indexen moeten volledig worden gebouwd op basis van de nieuwe service. |
+| Lagen wisselen | Als u meer capaciteit nodig hebt, is er geen in-place upgrade in de Azure Portal. Er moet een nieuwe service worden gemaakt en indexen moeten op basis van de nieuwe service volledig worden gebouwd. Om dit proces te automatiseren, kunt u de voorbeeld code **index-Backup-Restore** gebruiken in dit [Azure Search .net-voor beeld opslag plaats](https://github.com/Azure-Samples/azure-search-dotnet-samples). Met deze app wordt een back-up gemaakt van uw index naar een reeks JSON-bestanden en wordt de index opnieuw in een zoek service opgegeven die u opgeeft.|
 
 Andere wijzigingen kunnen worden aangebracht zonder dat dit van invloed is op bestaande fysieke structuren. In het bijzonder vereist de volgende wijzigingen *geen* index opnieuw samen stellen:
 
@@ -57,7 +57,7 @@ Wat u gemakkelijk kunt doen, is echter het *vernieuwen van documenten* in een in
 
 [Indexeer functies](search-indexer-overview.md) vereenvoudigen de taak voor gegevens vernieuwing. Een Indexeer functie kan slechts één tabel of weer gave in de externe gegevens bron indexeren. Als u meerdere tabellen wilt indexeren, is het eenvoudig om een weer gave te maken die tabellen en projecten verbindt met de kolommen die u wilt indexeren. 
 
-Wanneer u Indexeer functies gebruikt voor het verkennen van externe gegevens bronnen, controleert u op een kolom met een hoog water merk in de bron gegevens. Als er een bestaat, kunt u deze gebruiken voor de detectie van incrementele wijzigingen door alleen de rijen met nieuwe of gewijzigde inhoud op te halen. Voor [Azure Blob-opslag](search-howto-indexing-azure-blob-storage.md#incremental-indexing-and-deletion-detection)wordt `lastModified` een veld gebruikt. In [Azure Table Storage](search-howto-indexing-azure-tables.md#incremental-indexing-and-deletion-detection)heeft `timestamp` hetzelfde doel. Op dezelfde manier hebben zowel [Azure SQL database Indexeer functie](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#capture-new-changed-and-deleted-rows) als [Azure Cosmos DB Indexeer functie](search-howto-index-cosmosdb.md#indexing-changed-documents) velden voor het markeren van bijgewerkte rijen. 
+Wanneer u Indexeer functies gebruikt voor het verkennen van externe gegevens bronnen, controleert u op een kolom met een hoog water merk in de bron gegevens. Als er een bestaat, kunt u deze gebruiken voor de detectie van incrementele wijzigingen door alleen de rijen met nieuwe of gewijzigde inhoud op te halen. Voor [Azure Blob-opslag](search-howto-indexing-azure-blob-storage.md#incremental-indexing-and-deletion-detection)wordt een `lastModified` veld gebruikt. In [Azure Table Storage](search-howto-indexing-azure-tables.md#incremental-indexing-and-deletion-detection)heeft `timestamp` hetzelfde doel. Op dezelfde manier hebben zowel [Azure SQL database Indexeer functie](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#capture-new-changed-and-deleted-rows) als [Azure Cosmos DB Indexeer functie](search-howto-index-cosmosdb.md#indexing-changed-documents) velden voor het markeren van bijgewerkte rijen. 
 
 Zie [overzicht van Indexeer functie](search-indexer-overview.md) en [Reset Indexeer functie rest API](https://docs.microsoft.com/rest/api/searchservice/reset-indexer)voor meer informatie over Indexeer functies.
 

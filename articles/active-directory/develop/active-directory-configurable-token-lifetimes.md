@@ -13,24 +13,24 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/22/2019
+ms.date: 09/17/2019
 ms.author: ryanwi
 ms.custom: aaddev, annaba, identityplatformtop40
 ms.reviewer: hirsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f9244dfabef8b13105ef830f9f4543da9cb2cca9
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: b3696ebc216062a6d52fd187819f07dfb0078057
+ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70842648"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71812581"
 ---
 # <a name="configurable-token-lifetimes-in-azure-active-directory-preview"></a>Configureer bare levens duur van tokens in Azure Active Directory (preview-versie)
 
 U kunt de levens duur opgeven van een token dat is uitgegeven door Azure Active Directory (Azure AD). U kunt de levens duur van tokens instellen voor alle apps in uw organisatie, voor een multi tenant-toepassing (meerdere organisaties) of voor een specifieke Service-Principal in uw organisatie.
 
 > [!IMPORTANT]
-> Nadat klanten tijdens de preview-periode hebben gehoord, hebben we [verificatie sessie beheer functies](https://go.microsoft.com/fwlink/?linkid=2083106) geïmplementeerd in voorwaardelijke toegang van Azure AD. Met deze nieuwe functie kunt u de levens duur van het vernieuwings token configureren door de aanmeldings frequentie in te stellen. Na 1 november 2019 kunt u het beleid voor de levens duur van de tokens niet meer gebruiken voor het configureren van vernieuwings tokens, maar dit kan nog wel worden gebruikt om toegangs tokens te configureren.
+> Nadat klanten tijdens de preview-periode hebben gehoord, hebben we [verificatie sessie beheer functies](https://go.microsoft.com/fwlink/?linkid=2083106) geïmplementeerd in voorwaardelijke toegang van Azure AD. Met deze nieuwe functie kunt u de levens duur van het vernieuwings token configureren door de aanmeldings frequentie in te stellen. Na 1 november 2019 kunt u de Configureer bare token levensduur beleid niet gebruiken voor het configureren van sessie-en vernieuwings tokens. U kunt de levens duur van toegangs tokens na de afschaffing nog steeds configureren.
 
 In azure AD vertegenwoordigt een beleids object een set regels die worden afgedwongen voor afzonderlijke toepassingen of voor alle toepassingen in een organisatie. Elk beleids type heeft een unieke structuur, met een reeks eigenschappen die worden toegepast op objecten waaraan ze zijn toegewezen.
 
@@ -389,7 +389,7 @@ New-AzureADPolicy -Definition <Array of Rules> -DisplayName <Name of Policy> -Is
 | <code>&#8209;DisplayName</code> |De teken reeks van de beleids naam. |`-DisplayName "MyTokenPolicy"` |
 | <code>&#8209;IsOrganizationDefault</code> |Indien waar, wordt het beleid ingesteld als standaard beleid van de organisatie. Als onwaar is, gebeurt er niets. |`-IsOrganizationDefault $true` |
 | <code>&#8209;Type</code> |Type beleid. Gebruik altijd ' TokenLifetimePolicy ' voor de levens duur van tokens. | `-Type "TokenLifetimePolicy"` |
-| <code>&#8209;AlternativeIdentifier</code>Beschrijving |Hiermee stelt u een alternatieve ID voor het beleid in. |`-AlternativeIdentifier "myAltId"` |
+| <code>&#8209;AlternativeIdentifier</code> [Optioneel] |Hiermee stelt u een alternatieve ID voor het beleid in. |`-AlternativeIdentifier "myAltId"` |
 
 </br></br>
 
@@ -402,7 +402,7 @@ Get-AzureADPolicy
 
 | Parameters | Description | Voorbeeld |
 | --- | --- | --- |
-| <code>&#8209;Id</code>Beschrijving |**ObjectId (id)** van het beleid dat u wilt. |`-Id <ObjectId of Policy>` |
+| <code>&#8209;Id</code> [Optioneel] |**ObjectId (id)** van het beleid dat u wilt. |`-Id <ObjectId of Policy>` |
 
 </br></br>
 
@@ -430,10 +430,10 @@ Set-AzureADPolicy -Id <ObjectId of Policy> -DisplayName <string>
 | --- | --- | --- |
 | <code>&#8209;Id</code> |**ObjectId (id)** van het beleid dat u wilt. |`-Id <ObjectId of Policy>` |
 | <code>&#8209;DisplayName</code> |De teken reeks van de beleids naam. |`-DisplayName "MyTokenPolicy"` |
-| <code>&#8209;Definition</code>Beschrijving |Matrix van stringified JSON die alle regels van het beleid bevat. |`-Definition @('{"TokenLifetimePolicy":{"Version":1,"MaxInactiveTime":"20:00:00"}}')` |
-| <code>&#8209;IsOrganizationDefault</code>Beschrijving |Indien waar, wordt het beleid ingesteld als standaard beleid van de organisatie. Als onwaar is, gebeurt er niets. |`-IsOrganizationDefault $true` |
-| <code>&#8209;Type</code>Beschrijving |Type beleid. Gebruik altijd ' TokenLifetimePolicy ' voor de levens duur van tokens. |`-Type "TokenLifetimePolicy"` |
-| <code>&#8209;AlternativeIdentifier</code>Beschrijving |Hiermee stelt u een alternatieve ID voor het beleid in. |`-AlternativeIdentifier "myAltId"` |
+| <code>&#8209;Definition</code> [Optioneel] |Matrix van stringified JSON die alle regels van het beleid bevat. |`-Definition @('{"TokenLifetimePolicy":{"Version":1,"MaxInactiveTime":"20:00:00"}}')` |
+| <code>&#8209;IsOrganizationDefault</code> [Optioneel] |Indien waar, wordt het beleid ingesteld als standaard beleid van de organisatie. Als onwaar is, gebeurt er niets. |`-IsOrganizationDefault $true` |
+| <code>&#8209;Type</code> [Optioneel] |Type beleid. Gebruik altijd ' TokenLifetimePolicy ' voor de levens duur van tokens. |`-Type "TokenLifetimePolicy"` |
+| <code>&#8209;AlternativeIdentifier</code> [Optioneel] |Hiermee stelt u een alternatieve ID voor het beleid in. |`-AlternativeIdentifier "myAltId"` |
 
 </br></br>
 
@@ -494,7 +494,7 @@ Remove-AzureADApplicationPolicy -Id <ObjectId of Application> -PolicyId <ObjectI
 
 </br></br>
 
-### <a name="service-principal-policies"></a>Service-principal-beleidsregels
+### <a name="service-principal-policies"></a>Service-Principal-beleid
 U kunt de volgende cmdlets gebruiken voor Service Principal-beleids regels.
 
 #### <a name="add-azureadserviceprincipalpolicy"></a>Add-AzureADServicePrincipalPolicy

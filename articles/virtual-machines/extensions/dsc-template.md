@@ -13,16 +13,16 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 10/05/2018
 ms.author: robreed
-ms.openlocfilehash: 458ba61adba294af99f2265e4907e874ed3a6956
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 59f8035aa69f21196a2134bf6bc1b12f3e5b34c4
+ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70084583"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71815710"
 ---
 # <a name="desired-state-configuration-extension-with-azure-resource-manager-templates"></a>Extensie voor desired state Configuration met Azure Resource Manager sjablonen
 
-In dit artikel wordt de Azure Resource Manager sjabloon voor de [extensie-handler voor desired state Configuration (DSC)](dsc-overview.md)beschreven. In veel van de voor beelden wordt **RegistrationURL** (gegeven als een teken reeks) en **RegistrationKey** (meegeleverd als een [PSCredential](/dotnet/api/system.management.automation.pscredential)) gebruikt om de onboarding met Azure Automation te kunnen uitvoeren. Zie voor meer informatie over het verkrijgen van deze waarden onboarding [machines voor beheer door Azure Automation status configuratie-beveiligde registratie](/azure/automation/automation-dsc-onboarding#secure-registration).
+In dit artikel wordt de Azure Resource Manager sjabloon voor de [extensie-handler voor desired state Configuration (DSC)](dsc-overview.md)beschreven. In veel van de voor beelden wordt **RegistrationURL** (gegeven als een teken reeks) en **RegistrationKey** (meegeleverd als een [PSCredential](/dotnet/api/system.management.automation.pscredential)) gebruikt om de onboarding met Azure Automation te kunnen uitvoeren. Zie voor meer informatie over het verkrijgen van deze waarden [onboarding machines voor beheer door Azure Automation status configuratie-beveiligde registratie](/azure/automation/automation-dsc-onboarding#secure-registration).
 
 > [!NOTE]
 > Er kunnen enigszins verschillende schema voorbeelden optreden. De wijziging in het schema is opgetreden in de release van oktober 2016. Zie [Update van een vorige indeling](#update-from-a-previous-format)voor meer informatie.
@@ -185,7 +185,7 @@ Zie het [standaard configuratie script](#default-configuration-script)voor een l
 | settings.configuration.function |string |Hiermee geeft u de naam van uw DSC-configuratie op. De configuratie met de naam moet worden opgenomen in het script dat door **Settings. Configuration. script** wordt gedefinieerd. Deze eigenschap is vereist als **instellingen. Configuration. URL** of **Settings. Configuration. functie** zijn gedefinieerd. Als er geen waarde wordt opgegeven voor deze eigenschappen, wordt het standaard configuratie script aangeroepen om de ICM-meta gegevens in te stellen, en moeten er argumenten worden opgegeven. |
 | settings.configurationArguments |Collection |Hiermee definieert u de para meters die u wilt door geven aan uw DSC-configuratie. Deze eigenschap is niet versleuteld. |
 | settings.configurationData.url |string |Hiermee geeft u de URL op waaruit uw psd1-bestand (configuratie gegevens) moet worden gedownload om te worden gebruikt als invoer voor uw DSC-configuratie. Als voor de opgegeven URL een SAS-token voor toegang vereist is, stelt u de eigenschap **protectedSettings. configurationDataUrlSasToken** in op de waarde van uw SAS-token. |
-| settings.privacy.dataCollection |string |Hiermee wordt de verzameling telemetrie in-of uitgeschakeld. De enige mogelijke waarden voor deze eigenschap zijn **Enable**, **Disable**, **' '** of **$Null**. Als u deze eigenschap leeg of null laat, kan telemetrie worden ingeschakeld. De standaard waarde is. Zie [Azure DSC extension-gegevens verzameling](https://blogs.msdn.microsoft.com/powershell/2016/02/02/azure-dsc-extension-data-collection-2/)voor meer informatie. |
+| settings.privacy.dataCollection |string |Hiermee wordt de verzameling telemetrie in-of uitgeschakeld. De enige mogelijke waarden voor deze eigenschap zijn **Enable**, **Disable**, **' '** of **$Null**. Als u deze eigenschap leeg of null laat, kan telemetrie worden ingeschakeld. De standaard waarde is **.** Zie [Azure DSC extension-gegevens verzameling](https://blogs.msdn.microsoft.com/powershell/2016/02/02/azure-dsc-extension-data-collection-2/)voor meer informatie. |
 | settings.advancedOptions.downloadMappings |Collection |Definieert alternatieve locaties van waaruit WMF kan worden gedownload. Zie [Azure DSC-extensie 2,8 en down loads van de extensie afhankelijkheden toewijzen aan uw eigen locatie](https://blogs.msdn.com/b/powershell/archive/2015/10/21/azure-dsc-extension-2-2-amp-how-to-map-downloads-of-the-extension-dependencies-to-your-own-location.aspx)voor meer informatie. |
 | protectedSettings.configurationArguments |Collection |Hiermee definieert u de para meters die u wilt door geven aan uw DSC-configuratie. Deze eigenschap is versleuteld. |
 | protectedSettings.configurationUrlSasToken |string |Hiermee geeft u het SAS-token dat moet worden gebruikt om toegang te krijgen tot de URL die door **Settings. Configuration. URL** wordt gedefinieerd. Deze eigenschap is versleuteld. |
@@ -202,8 +202,8 @@ U kunt het standaard configuratie script van de DSC-extensie gebruiken om alleen
 | settings.configurationArguments.RegistrationUrl |string |Eigenschap Required. Hiermee geeft u de URL op van het Automation-eind punt waar het knoop punt zich probeert te registreren. Deze waarde kan automatisch worden gedetecteerd met behulp van de **referentie** methode voor het Automation-account. |
 | settings.configurationArguments.NodeConfigurationName |string |Eigenschap Required. Hiermee geeft u de knooppunt configuratie in het Automation-account moet worden toegewezen aan het knoop punt. |
 | settings.configurationArguments.ConfigurationMode |string |Hiermee geeft u de modus voor LCM op. Geldige opties zijn **ApplyOnly**, **ApplyandMonitor**en **ApplyandAutoCorrect**.  De standaard waarde is **ApplyandMonitor**. |
-| settings.configurationArguments.RefreshFrequencyMins | uint32 | Hiermee geeft u op hoe vaak LCM met het Automation-account probeert te controleren op updates.  De standaard waarde is **30**.  De minimum waarde is **15**. |
-| settings.configurationArguments.ConfigurationModeFrequencyMins | uint32 | Hiermee geeft u op hoe vaak LCM de huidige configuratie valideert. De standaard waarde is **15**. De minimum waarde is **15**. |
+| settings.configurationArguments.RefreshFrequencyMins | Uint32 | Hiermee geeft u op hoe vaak LCM met het Automation-account probeert te controleren op updates.  De standaard waarde is **30**.  De minimum waarde is **15**. |
+| settings.configurationArguments.ConfigurationModeFrequencyMins | Uint32 | Hiermee geeft u op hoe vaak LCM de huidige configuratie valideert. De standaard waarde is **15**. De minimum waarde is **15**. |
 | settings.configurationArguments.RebootNodeIfNeeded | boolean | Hiermee geeft u op of een knoop punt automatisch opnieuw kan worden opgestart als een DSC-bewerking dit aanvraagt. De standaard waarde is **False**. |
 | settings.configurationArguments.ActionAfterReboot | string | Hiermee geeft u op wat er gebeurt na het opnieuw opstarten bij het Toep assen van een configuratie. Geldige opties zijn **ContinueConfiguration** en **de stopconfiguration**. De standaard waarde is **ContinueConfiguration**. |
 | settings.configurationArguments.AllowModuleOverwrite | boolean | Hiermee geeft u op of de LCM bestaande modules op het knoop punt overschrijft. De standaard waarde is **False**. |
@@ -236,8 +236,10 @@ Configuratie argumenten worden door gegeven aan het standaard configuratie scrip
 
 ```json
 "settings": {
-    "RegistrationUrl" : "[parameters('registrationUrl1')]",
-    "NodeConfigurationName" : "nodeConfigurationNameValue1"
+    "configurationArguments": {
+        "RegistrationUrl" : "[parameters('registrationUrl1')]",
+        "NodeConfigurationName" : "nodeConfigurationNameValue1"
+    }
 },
 "protectedSettings": {
     "configurationArguments": {
@@ -253,7 +255,7 @@ Configuratie argumenten worden door gegeven aan het standaard configuratie scrip
 
 Het volgende voor beeld is afkomstig uit het overzicht van de [DSC-extensie-handler](dsc-overview.md).
 In dit voor beeld worden Resource Manager-sjablonen gebruikt in plaats van cmdlets voor het implementeren van de uitbrei ding.
-Sla de configuratie van IisInstall. ps1 op en plaats deze in een zip-bestand ( `iisinstall.zip`bijvoorbeeld:) en upload het bestand vervolgens naar een toegankelijke URL.
+Sla de configuratie van IisInstall. ps1 op en plaats deze in een zip-bestand (bijvoorbeeld: `iisinstall.zip`) en upload het bestand vervolgens in een toegankelijke URL.
 In dit voor beeld wordt Azure Blob-opslag gebruikt, maar u kunt. zip-bestanden downloaden vanaf een wille keurige locatie.
 
 In de Resource Manager-sjabloon geeft de volgende code de virtuele machine de opdracht om het juiste bestand te downloaden en voert u vervolgens de juiste Power shell-functie uit:
@@ -331,8 +333,8 @@ Dit is de manier waarop de vorige notatie wordt aangepast aan de huidige indelin
 | --- | --- |
 | settings.wmfVersion |Instellingen. WMFVersion |
 | settings.configuration.url |settings.ModulesUrl |
-| settings.configuration.script |Eerste deel van instellingen. ConfigurationFunction (vóór \\) \\ |
-| settings.configuration.function |Tweede deel van instellingen. ConfigurationFunction (na \\) \\ |
+| settings.configuration.script |Eerste deel van instellingen. ConfigurationFunction (vóór \\ @ no__t-1) |
+| settings.configuration.function |Tweede deel van instellingen. ConfigurationFunction (na \\ @ no__t-1) |
 | settings.configuration.module.name | settings.ModuleSource |
 | Settings. Configuration. module. version | settings.ModuleVersion |
 | settings.configurationArguments |Instellingen. Eigenschappen |
@@ -349,9 +351,9 @@ Hier volgen enkele van de fouten die u kunt uitvoeren in en hoe u deze herstelt.
 
 ### <a name="invalid-values"></a>Ongeldige waarden
 
-Privacy. dataCollection is{0}.
+Privacy. dataCollection is {0}.
 De enige mogelijke waarden zijn ' ', ' inschakelen ' en ' uitschakelen ' '.
-' WmfVersion is{0}' '.
+"WmfVersion is {0}.
 Alleen mogelijke waarden zijn... en ' meest recent '.
 
 **Probleem**: Een gegeven waarde is niet toegestaan.
@@ -359,9 +361,9 @@ Alleen mogelijke waarden zijn... en ' meest recent '.
 **Oplossing**: Wijzig de ongeldige waarde in een geldige waarde.
 Zie de tabel in [Details](#details)voor meer informatie.
 
-### <a name="invalid-url"></a>De URL is ongeldig
+### <a name="invalid-url"></a>Ongeldige URL
 
-"ConfigurationData. URL is{0}. Dit is geen geldige URL: ' DataBlobUri is{0}' '. Dit is geen geldige URL "" configuratie. de URL is{0}. Dit is geen geldige URL '
+"ConfigurationData. URL is {0}. Dit is geen geldige URL: "DataBlobUri is {0}. Dit is geen geldige URL "" configuratie. de URL is {0}. Dit is geen geldige URL '
 
 **Probleem**: Een gegeven URL is niet geldig.
 
@@ -387,7 +389,7 @@ Zorg ervoor dat alle Url's worden omgezet naar geldige locaties waartoe de exten
 
 ### <a name="invalid-configurationargument-type"></a>Ongeldig ConfigurationArgument-type
 
-"Ongeldig configurationArguments- {0}type"
+"Ongeldig configurationArguments-type {0}"
 
 **Probleem**: De eigenschap *ConfigurationArguments* kan niet worden omgezet in een object met een **hash-tabel** .
 
@@ -396,7 +398,7 @@ Volg de indeling die wordt vermeld in de voor gaande voor beelden. Bekijk de aan
 
 ### <a name="duplicate-configurationarguments"></a>Dubbele ConfigurationArguments
 
-' Dubbele argumenten{0}gevonden ' ' in zowel open bare als beveiligde configurationArguments '
+' Dubbele argumenten ' {0} ' gevonden in zowel open bare als beveiligde configurationArguments '
 
 **Probleem**: De *ConfigurationArguments* in open bare instellingen en de *ConfigurationArguments* in beveiligde instellingen hebben eigenschappen met dezelfde naam.
 

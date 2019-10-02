@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: cbb86dd4b24cb325b8ea6708ebc2ffc89a697757
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 402bf198981641db74a86bbc420fab83124f0b47
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68553390"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802016"
 ---
 # <a name="quickstart-translate-speech-with-the-speech-sdk-for-java"></a>Quickstart: Omzetten van spraak met de spraak-SDK voor Java
 
-Quick starts zijn ook beschikbaar voor de virtuele assistent [spraak naar tekst](quickstart-java-jre.md) en [Voice-First](quickstart-virtual-assistant-java-jre.md).
+Quick starts zijn ook beschikbaar voor de virtuele assistent van [spraak naar tekst](quickstart-java-jre.md), [tekst naar spraak](quickstart-text-to-speech-java-jre.md)en spraak [-eerste](quickstart-virtual-assistant-java-jre.md).
 
 In deze quickstart maakt u een eenvoudige Java-toepassing waarmee spraak van gebruikers via de microfoon van de computer wordt vastgelegd, waarna de spraak wordt omgezet en de omgezette tekst in realtime wordt getranscribeerd naar de opdrachtregel. Deze toepassing is ontworpen om te worden uitgevoerd op 64-bits Windows-of 64-bits Linux (Ubuntu 16,04, Ubuntu 18,04, Debian 9) of op macOS 10,13 of hoger. Het is gebouwd met het Speech SDK maven-pakket en de eclips Java IDE.
 

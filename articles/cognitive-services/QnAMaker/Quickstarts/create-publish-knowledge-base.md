@@ -8,18 +8,20 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 09/04/2019
+ms.date: 10/01/2019
 ms.author: diberry
-ms.openlocfilehash: 229956b41f7f26637e6a6aa62e341c4b06b8a429
-ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
+ms.openlocfilehash: cafc1e2f3f195301a6c0f9485ebaa10111b08c7d
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70376366"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71803053"
 ---
 # <a name="quickstart-create-train-and-publish-your-qna-maker-knowledge-base"></a>Quickstart: Uw QnA Maker-knowledge base maken, trainen en publiceren
 
 U kunt een QnA Maker-knowledge base (KB) maken van uw eigen inhoud, zoals veelgestelde vragen of producthandleidingen. Dit artikel bevat een voor beeld van het maken van een QnA Maker Knowledge Base van een eenvoudige webpagina met veelgestelde vragen over het beantwoorden van vragen over BitLocker-sleutel herstel.
+
+[!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 ## <a name="prerequisite"></a>Vereiste
 
@@ -54,7 +56,7 @@ U kunt een QnA Maker-knowledge base (KB) maken van uw eigen inhoud, zoals veelge
 
 ## <a name="edit-the-knowledge-base"></a>De Knowledge Base bewerken
 
-1. Selecteer in de QnA Maker Portal, in de sectie **bewerken** , **QnA paar toevoegen** om een nieuwe rij aan de Knowledge Base toe te voegen. Typ onder **Question** (Vraag) **Hoi.** Typ onder **Answer** (Antwoord) **Hallo. Vragen over BitLocker-vragen.**
+1. Selecteer in de QnA Maker Portal, in de sectie **bewerken** , **QnA paar toevoegen** om een nieuwe rij aan de Knowledge Base toe te voegen. Typ onder **Question** (Vraag) **Hoi.** Typ onder **Answer** (Antwoord) **Hallo. Vraag me BitLocker-vragen.**
 
     ![Scherm opname van QnA Maker Portal](../media/qnamaker-quickstart-kb/add-qna-pair.png)
 

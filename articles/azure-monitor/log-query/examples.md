@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 10/03/2018
+ms.date: 10/01/2019
 ms.author: bwren
-ms.openlocfilehash: d50a680ed2b054f87a9cf36e761bd16d79677fb3
-ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
+ms.openlocfilehash: 7cdd471e6618e83483f6cc304f284a1669f3b67b
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68304700"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71718915"
 ---
 # <a name="azure-monitor-log-query-examples"></a>Voor beelden van Azure Monitor-logboek query
 Dit artikel bevat verschillende voor beelden van [query's](log-query-overview.md) met behulp van de [Kusto-query taal](/azure/kusto/query/) om verschillende soorten logboek gegevens op te halen uit Azure monitor. Er worden verschillende methoden gebruikt om gegevens samen te voegen en te analyseren. u kunt deze voor beelden gebruiken om verschillende strategieën te identificeren die u voor uw eigen vereisten kunt gebruiken.  
@@ -38,13 +38,13 @@ Event
 ```
 
 ### <a name="search-events-related-to-unmarshaling"></a>Zoek gebeurtenissen met betrekking tot het opmars hallen
-Zoek tabellen **gebeurtenis** -en **SecurityEvents** voor records die unmarshaling vermelden.
+Zoek tabellen **gebeurtenis** -en **SecurityEvents** voor records dieunmarshaling vermelden.
 
 ```Kusto
 search in (Event, SecurityEvent) "unmarshaling"
 ```
 
-## <a name="heartbeat"></a>Hart
+## <a name="heartbeat"></a>Heartbeat
 
 ### <a name="chart-a-week-over-week-view-of-the-number-of-computers-sending-data"></a>Grafiek een week-over-week weergave van het aantal computers dat gegevens verzendt
 
@@ -205,7 +205,7 @@ Perf
 | render timechart
 ```
 
-## <a name="protection-status"></a>Beveiligings status
+## <a name="protection-status"></a>Beveiligingsstatus
 
 ### <a name="computers-with-non-reporting-protection-status-duration"></a>Computers met een status duur van niet-rapportage beveiliging
 In dit voorbeeld geeft een lijst van computers waarop de beveiligingsstatus van _Not Reporting_ en de duur die ze in deze status zijn.
@@ -425,13 +425,12 @@ In dit voor beeld ziet u een lijst met computers waarvoor een of meer essentiël
 
 ```Kusto
 let ComputersMissingUpdates3DaysAgo = Update
-| where TimeGenerated between (ago(3d)..ago(2d))
-| where  Classification == "Critical Updates" and UpdateState != "Not needed" and UpdateState != "NotNeeded"
+| where TimeGenerated between (ago(30d)..ago(1h))
+| where Classification !has "Critical" and UpdateState =~ "Needed"
 | summarize makeset(Computer);
-
 Update
 | where TimeGenerated > ago(1d)
-| where  Classification == "Critical Updates" and UpdateState != "Not needed" and UpdateState != "NotNeeded"
+| where Classification has "Critical" and UpdateState =~ "Needed"
 | where Computer in (ComputersMissingUpdates3DaysAgo)
 | summarize UniqueUpdatesCount = dcount(Product) by Computer, OSType
 ```

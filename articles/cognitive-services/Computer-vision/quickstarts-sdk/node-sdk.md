@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 09/18/2019
+ms.date: 10/01/2019
 ms.author: pafarley
-ms.openlocfilehash: bcce9c53e2618f9501dde63905fb834bce7985ee
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: fdf2b132b5d07b2b12c679cb436968c6fb19887e
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71204504"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71719510"
 ---
 # <a name="quickstart-computer-vision-client-library-for-nodejs"></a>Quickstart: Computer Vision-client bibliotheek voor node. js
 
@@ -171,9 +171,9 @@ Definieer de hulp functie `formatRectFaces`:
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_formatfaces)]
 
-### <a name="detect-adult-or-racy-content"></a>Inhoud voor volwassenen of ongepaste detecteren
+### <a name="detect-adult-racy-or-gory-content"></a>Inhoud voor volwassenen, ongepaste of benchmarks detecteren
 
-Met de volgende code wordt de gedetecteerde aanwezigheid van inhoud voor volwassenen of ongepaste in de installatie kopie afgedrukt. Zie [inhoud voor volwassenen en ongepaste](../concept-detecting-adult-content.md) voor meer informatie.
+Met de volgende code wordt de gedetecteerde aanwezigheid van inhoud voor volwassenen afgedrukt in de installatie kopie. Zie [inhoud voor volwassenen, ongepaste, benchmarks](../concept-detecting-adult-content.md) voor meer informatie.
 
 Definieer de URL van de afbeelding die moet worden gebruikt:
 

@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: tutorial
-ms.date: 09/05/2019
+ms.date: 10/01/2019
 ms.author: diberry
-ms.openlocfilehash: e5b8cd01a64274e58927a5647897b1f9d86f7c24
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: f0888b25258f6a7830df1195995159432b19907d
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70390873"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802827"
 ---
 # <a name="tutorial-using-c-create-knowledge-base-then-answer-question"></a>Zelfstudie: C# gebruiken, een knowledge base maken en vervolgens een vraag beantwoorden
 
@@ -41,7 +41,7 @@ Deze Snelstartgids roept QnA Maker REST Api's aan:
 ## <a name="prerequisites"></a>Vereisten
 
 * De meest recente [**Visual Studio Community edition**](https://www.visualstudio.com/downloads/).
-* U moet een [QnA Maker-service ](../How-To/set-up-qnamaker-service-azure.md) hebben. Selecteer onder **Resourcebeheer** de optie **Sleutel** om uw sleutel op te halen. 
+* U moet een [QnA Maker-service ](../How-To/set-up-qnamaker-service-azure.md) hebben. Als u de sleutel en de resource naam wilt ophalen, selecteert u **Quick** start in het Azure portal voor uw QnA Maker resource. 
 
 > [!NOTE] 
 > Het bestand of de bestanden van de volledige oplossing zijn beschikbaar in de GitHub-opslagplaats [**Azure-Samples/cognitive-services-qnamaker-csharp**](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp/tree/master/documentation-samples/tutorials/create-publish-answer-knowledge-base).
@@ -146,17 +146,17 @@ De API-aanroep retourneert een 204-status voor een geslaagde publicatie zonder e
 Voor alle andere antwoorden wordt het antwoord ongewijzigd geretourneerd.
 
 ## <a name="generating-an-answer"></a>Een antwoord genereren
-Het programma heeft de _eindpunthost_ van de API voor KB-details nodig en de _primaire eindpuntsleutel_ van de eindpunten-API voor toegang tot de KB om een vraag te verzenden en het beste antwoord te ontvangen. Deze methoden bevinden zich in de volgende secties, samen met de methode voor het genereren van een antwoord. 
+Om toegang te krijgen tot de KB om een vraag te verzenden en het beste antwoord te ontvangen, heeft het programma de _resource naam_ nodig van de KB-informatie-API en de _primaire eindpunt sleutel_ van de API van het eind punt. Deze methoden bevinden zich in de volgende secties, samen met de methode voor het genereren van een antwoord. 
 
 In de volgende tabel wordt getoond hoe de gegevens worden gebruikt om de URI samen te stellen:
 
 |Antwoord-URI-sjabloon genereren|
 |--|
-|https://**HOSTNAME**.azurewebsites.net/qnamaker/knowledgebases/**KBID**/generateAnswer|
+|https://**your-resource name**. Azurewebsites.net/qnamaker/knowledgebases/**KBID**/generateAnswer|
 
 Het _primaire eindpunt_ wordt doorgegeven als header om de aanvraag te verifiëren voor het genereren van een antwoord:
 
-|Headernaam|Headerwaarde|
+|Headernaam|Koptekstwaarde|
 |--|--|
 |Authorization|`Endpoint` + **primaire eindpunt**<br>Voorbeeld: `Endpoint xxxxxxx`<br>Let op de ruimte tussen de tekst van `Endpoint` en de waarde van het primaire eindpunt. 
 
@@ -169,7 +169,7 @@ De juiste JSON moet worden doorgegeven via de hoofdtekst van de aanvraag:
 ```
 
 ## <a name="get-kb-details"></a>KB-details ophalen
-Voeg de volgende methode toe om de KB-details op te halen. Deze details bevatten de hostnaam van de KB. De hostnaam van de naam van de Azure-webservice QnA Maker die u hebt ingevoerd tijdens het maken van de QnA Maker-resource. 
+Voeg de volgende methode toe om de KB-details op te halen. Deze details bevatten de resource naam van de KB, ook wel `hostName` in de volgende JSON. De resource naam is de naam van de QnA Maker resource die u hebt ingevoerd bij het maken van de QnA Maker resource. 
 
 [!code-csharp[Get KB Details](~/samples-qnamaker-csharp/documentation-samples/tutorials/create-publish-answer-knowledge-base/QnaMakerQuickstart/Program.cs?range=260-273 "Add publish method")]
 

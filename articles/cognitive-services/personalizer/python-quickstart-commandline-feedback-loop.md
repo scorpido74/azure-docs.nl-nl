@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: quickstart
 ms.date: 09/26/2019
 ms.author: diberry
-ms.openlocfilehash: 877a28e5f672bbd61bad2b4c5c9175c7dafa71ab
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 4409f04f9fd370b862ee62f9595ffca9fe6e4406
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71345330"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802534"
 ---
 # <a name="quickstart-personalize-client-library-for-python"></a>Quickstart: Client bibliotheek personaliseren voor python
 
@@ -68,8 +68,6 @@ Installeer de Personaler-client bibliotheek voor python met de volgende opdracht
 pip install azure-cognitiveservices-personalizer
 ```
 
-Als u de Visual Studio IDE gebruikt, is de client bibliotheek beschikbaar als een downloadbaar NuGet-pakket.
-
 ## <a name="change-the-model-update-frequency"></a>De update frequentie van het model wijzigen
 
 Wijzig in het Azure Portal, in de resource Personaler op de pagina **instellingen** , de **Update frequentie** van het model in 10 seconden. Hiermee wordt de service snel getraind, zodat u kunt zien hoe de belangrijkste actie voor elke herhaling wordt gewijzigd.
@@ -108,7 +106,9 @@ Open het **sample.py** -bestand in de map van het project in uw voorkeurs editor
 
 ## <a name="add-personalizer-resource-information"></a>Informatie over persoonlijker resources toevoegen
 
-Maak in de klasse **Program** de variabelen voor de Azure-sleutel en het eind punt van uw resource die worden opgehaald `PERSONALIZER_RESOURCE_KEY` uit de omgevings variabelen met de naam en. `PERSONALIZER_RESOURCE_ENDPOINT` Als u de omgevings variabelen hebt gemaakt nadat de toepassing is gestart, moet de editor, IDE of shell die deze uitvoert, worden gesloten en opnieuw worden geladen om toegang te krijgen tot de variabele. De methoden worden verderop in deze Quick start gemaakt.
+Maak variabelen voor de Azure-sleutel en het eind punt van uw resource die worden opgehaald `PERSONALIZER_RESOURCE_KEY` uit `PERSONALIZER_RESOURCE_ENDPOINT`de omgevings variabelen met de naam en. Als u de omgevings variabelen hebt gemaakt nadat de toepassing is gestart, moet de editor, IDE of shell die deze uitvoert, worden gesloten en opnieuw worden geladen om toegang te krijgen tot de variabele. De methoden worden verderop in deze Quick start gemaakt.
+
+De resource naam maakt deel uit van de eind punt-URL: `https://<your-resource-name>.api.cognitive.microsoft.com/`.
 
 [!code-python[Create variables to hold the Personalizer resource key and endpoint values found in the Azure portal.](~/samples-personalizer/quickstarts/python/sample.py?name=AuthorizationVariables)]
 
@@ -120,7 +120,7 @@ Maak vervolgens een methode voor het retour neren van een Personaler-client. De 
 
 ## <a name="get-content-choices-represented-as-actions"></a>Inhouds keuzes ophalen die worden weer gegeven als acties
 
-Acties vertegenwoordigen de inhouds keuzes die persoonlijker moeten worden gerangschikt. Voeg de volgende methoden toe aan de klasse Program om de invoer van een gebruiker op te halen vanaf de opdracht regel voor het tijdstip van de dag en de huidige voedsel voorkeur.
+Acties vertegenwoordigen de inhouds keuzes die persoonlijker moeten worden gerangschikt. Voeg de volgende methoden toe om de invoer van een gebruiker te verkrijgen vanaf de opdracht regel voor het tijdstip van de dag en de huidige voedsel voorkeur.
 
 [!code-python[Present time out day preference to the user](~/samples-personalizer/quickstarts/python/sample.py?name=getActions)]
 
@@ -132,7 +132,7 @@ Acties vertegenwoordigen de inhouds keuzes die persoonlijker moeten worden geran
 
 De training voor persoonlijker leren is een cyclus van [positie](#request-a-rank) -en [belonings](#send-a-reward) aanroepen. In deze Quick Start wordt elke classificatie oproep, om de inhoud te personaliseren, gevolgd door een belonings oproep om persoonlijker te vertellen hoe goed de service de inhoud rangschikt. 
 
-Met de volgende code in `main` de methode van het programma wordt een cyclus door lopen van de gebruiker om de voor keuren te stellen op de opdracht regel. deze gegevens worden naar eigen smaak verzonden, waarbij de gerangschikte selectie aan de klant wordt gepresenteerd waaruit u kunt kiezen uit de en verstuurt vervolgens een vergoeding naar persoonlijkere signalen waarmee wordt aangegeven hoe goed de service de selectie heeft gevolgd.
+Met de volgende code wordt een cyclus voor het bepalen van de voor keuren van de gebruiker op de opdracht regel door lopen, waardoor die informatie naar persoonlijker kan worden geclassificeerd, waarbij de gerangschikte selectie aan de klant wordt gepresenteerd om uit de lijst te kiezen en vervolgens een beloning naar persoonlijker te sturen u kunt aangeven hoe goed de service heeft de selectie te rangschikken.
 
 [!code-python[The Personalizer learning loop ranks the request.](~/samples-personalizer/quickstarts/python/sample.py?name=mainLoop&highlight=9,10,29)]
 

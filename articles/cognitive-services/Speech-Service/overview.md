@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: overview
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 0aa4286d8cb630f221613bebd13f7ea722224ac6
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 993064a36bd12c95e83ffb7c9635c3e4dfcec0f0
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70068850"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71803349"
 ---
 # <a name="what-are-the-speech-services"></a>Wat zijn de Speech Services?
 
@@ -41,9 +41,11 @@ Deze functies vormen de spraak services van Azure. Gebruik de koppelingen in dez
 
 Meer informatie over wat er nieuw is in de Azure speech Services.
 
+* September 2019
+  * 1\.7.0 van vrijgegeven spraak-SDK. Zie [release opmerkingen](releasenotes.md)voor een volledige lijst met updates, verbeteringen en bekende problemen.
 * 2019 augustus
   * **Nieuwe zelf studie**: [Spraak inschakelen voor uw bot met de Speech-SDK, C#](tutorial-voice-enable-your-bot-speech-sdk.md)
-  * Er is voor de [`chat`](speech-synthesis-markup.md#adjust-speaking-styles) `en-US-JessaNeural` spraak een nieuwe spraak stijl toegevoegd. 
+  * Er is een nieuwe spraak stijl, [`chat`](speech-synthesis-markup.md#adjust-speaking-styles), toegevoegd voor de `en-US-JessaNeural`-stem. 
 * Juni 2019
   * 1\.6.0 van vrijgegeven spraak-SDK. Zie [release opmerkingen](releasenotes.md)voor een volledige lijst met updates, verbeteringen en bekende problemen.
 * Mei 2019-documentatie is nu beschikbaar voor [transcriptie](conversation-transcription-service.md), [Call Center transcriptie](call-center-transcription.md)en [spraak-eerste virtuele assistenten](voice-first-virtual-assistants.md).
@@ -68,8 +70,8 @@ We bieden Quick starts in de populairste programmeer talen, die allemaal ontworp
 Nadat u de spraak Services hebt gebruikt, kunt u zelf zelf studie proberen om de intenties van spraak te herkennen met behulp van de Speech SDK en LUIS.
 
 * [Zelfstudie: Intenties herkennen vanuit spraak met de Speech SDK en LUIS,C#](how-to-recognize-intents-from-speech-csharp.md)
-* [Zelfstudie: Stem uw bot in met de Speech SDK,C#](tutorial-voice-enable-your-bot-speech-sdk.md)
-* [Zelfstudie: Bouw een kolf-app voor het vertalen van tekst, analyseer sentiment en vertaalde tekst naar spraak, REST](https://docs.microsoft.com/azure/cognitive-services/translator/tutorial-build-flask-app-translation-synthesis?toc=%2fazure%2fcognitive-services%2fspeech-service%2ftoc.json&bc=%2fazure%2fcognitive-services%2fspeech-service%2fbreadcrumb%2ftoc.json&toc=%2Fen-us%2Fazure%2Fcognitive-services%2Fspeech-service%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json)
+* [Zelfstudie: Stem uw bot in met de Speech SDK, C#](tutorial-voice-enable-your-bot-speech-sdk.md)
+* [Zelfstudie: Bouw een kolf-app voor het vertalen van tekst, analyseer sentiment en vertaalde tekst naar spraak, REST @ no__t-0
 
 ## <a name="get-sample-code"></a>Voorbeeldcode ophalen
 

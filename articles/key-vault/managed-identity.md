@@ -1,5 +1,5 @@
 ---
-title: Een door een App Service door het systeem toegewezen beheerde identiteit gebruiken om toegang te krijgen tot Azure Key Vault
+title: Een door het systeem toegewezen beheerde identiteit gebruiken om toegang te krijgen tot Azure Key Vault
 description: Meer informatie over het maken van een beheerde identiteit voor App Service toepassingen en hoe u deze kunt gebruiken voor toegang tot Azure Key Vault
 services: key-vault
 author: msmbaldwin
@@ -9,18 +9,19 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 8ac6f9be80d31804089ae2589998079dc7df66b3
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 6c7a9fdb5ed60023a82984fd5be5b424c634e679
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71004304"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71720255"
 ---
-# <a name="use-an-app-service-managed-identity-to-access-azure-key-vault"></a>Een door App Service beheerde identiteit gebruiken om toegang te krijgen tot Azure Key Vault 
+# <a name="provide-key-vault-authentication-with-a-managed-identity"></a>Key Vault-verificatie bieden met een beheerde identiteit
 
-In dit artikel wordt beschreven hoe u een beheerde identiteit voor App Service toepassingen maakt en hoe u deze gebruikt om toegang te krijgen tot Azure Key Vault. Zie voor toepassingen die worden gehost in virtuele machines van Azure, [een door Windows-VM systeem toegewezen beheerde identiteit gebruiken om toegang te krijgen tot Azure Key Vault](../active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-nonaad.md). 
+Met een beheerde identiteit van Azure Active Directory kan uw app eenvoudig toegang krijgen tot andere met Azure AD beveiligde bronnen. De identiteit wordt beheerd door het Azure-platform en u hoeft geen geheimen in te richten of te draaien. Zie [beheerde identiteiten voor Azure-resources](../active-directory/managed-identities-azure-resources/overview.md)voor meer informatie. 
 
-Met een beheerde identiteit van Azure Active Directory kan uw app eenvoudig toegang krijgen tot andere met Azure AD beveiligde bronnen. De identiteit wordt beheerd door het Azure-platform en u hoeft geen geheimen in te richten of te draaien. Zie [beheerde identiteiten voor Azure-resources](../active-directory/managed-identities-azure-resources/overview.md)voor meer informatie over beheerde identiteiten in azure AD. 
+In dit artikel wordt beschreven hoe u een beheerde identiteit voor een App Service toepassing maakt en deze gebruikt om toegang te krijgen tot Azure Key Vault. Zie voor toepassingen die worden gehost in virtuele machines van Azure, [een door Windows-VM systeem toegewezen beheerde identiteit gebruiken om toegang te krijgen tot Azure Key Vault](../active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-nonaad.md).
+
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -32,7 +33,8 @@ Voor het volt ooien van deze hand leiding hebt u de volgende resources nodig.
    - [Een sleutel kluis maken met Azure CLI](quick-create-cli.md)
    - [Een sleutel kluis maken met Azure PowerShell](quick-create-powershell.md)
    - [Een sleutel kluis maken met de Azure Portal](quick-create-portal.md).
-- Een bestaande App Service-toepassing waaraan toegang tot de sleutel kluis moet worden verleend. U kunt een snelle versie maken door de stappen in de [app service documentatie](../app-service/overview.md) te volgen/
+- Een bestaande App Service-toepassing waaraan toegang tot de sleutel kluis moet worden verleend. U kunt een snelle versie maken door de stappen in de [app service-documentatie](../app-service/overview.md)te volgen.
+- [Azure cli](/cli/azure/install-azure-cli?view=azure-cli-latest) of [Azure PowerShell](/powershell/azure/overview). U kunt ook de [Azure Portal](http://portal.azure.com)gebruiken.
 
 
 ## <a name="adding-a-system-assigned-identity"></a>Een door het systeem toegewezen identiteit toevoegen 
@@ -101,7 +103,7 @@ Noteer de, die in `PrincipalId`de volgende sectie nodig is.
 
 ### <a name="azure-cli"></a>Azure-CLI
 
-Als u uw toepassing toegang wilt verlenen tot uw sleutel kluis, gebruikt u de Azure CLI [AZ set-Policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) opdracht, waarbij u de **ObjectId** -para meter opgeeft met de **principalId* die u hierboven hebt genoteerd.
+Als u uw toepassing toegang wilt verlenen tot uw sleutel kluis, gebruikt u de Azure CLI [AZ set-Policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) opdracht, waarbij u de **ObjectId** -para meter opgeeft met de **principalId** die u hierboven hebt genoteerd.
 
 ```azurecli-interactive
 az keyvault set-policy --name myKeyVault --object-id <PrincipalId> --secret-permissions get list 
@@ -109,7 +111,9 @@ az keyvault set-policy --name myKeyVault --object-id <PrincipalId> --secret-perm
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Een [overzicht van Azure Key Vault](key-vault-overview.md) lezen
-- Raadpleeg de [Azure Key Vault hand leiding voor ontwikkel aars](key-vault-developers-guide.md)
-- Meer informatie over [sleutels, geheimen en certificaten](about-keys-secrets-and-certificates.md)
+- [Azure Key Vault beveiliging: Identiteits-en toegangs beheer @ no__t-0
+- [Key Vault verificatie met een toegangscontrole beleid bieden](key-vault-group-permissions-for-apps.md)
+- [Informatie over sleutels, geheimen en certificaten](about-keys-secrets-and-certificates.md)
+- [Beveilig uw sleutel kluis](key-vault-secure-your-key-vault.md).
+- [Ontwikkelaars handleiding Azure Key Vault](key-vault-developers-guide.md)
 - [Azure Key Vault aanbevolen procedures](key-vault-best-practices.md) controleren

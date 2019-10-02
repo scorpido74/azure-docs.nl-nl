@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 09/21/2019
+ms.date: 09/26/2019
 ms.author: diberry
-ms.openlocfilehash: 6759b8fdf6e68d4f0030fc4eda5eee5d1ce608b1
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: ab3fa02f7285fdbde918f9e365d1ee96ba5e71a1
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71203221"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802996"
 ---
 # <a name="quickstart-qna-maker-client-library-for-nodejs"></a>Quickstart: QnA Maker-client bibliotheek voor node. js
 
@@ -29,6 +29,8 @@ Gebruik de QnA Maker-client bibliotheek voor node. js voor het volgende:
 
 [Naslag informatie over](https://docs.microsoft.com/javascript/api/azure-cognitiveservices-textanalytics) | het[bron code](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/Knowledge.QnAMaker) | pakket voor de documentatie bibliotheek[(NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-qnamaker) | [. js](https://github.com/Azure-Samples/cognitive-services-qnamaker-nodejs/blob/master/documentation-samples/quickstarts/knowledgebase_quickstart/knowledgebase_quickstart.js) -voor beelden
 
+[!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
+
 ## <a name="prerequisites"></a>Vereisten
 
 * Azure-abonnement: [Maak er gratis een](https://azure.microsoft.com/free/)
@@ -40,7 +42,7 @@ Gebruik de QnA Maker-client bibliotheek voor node. js voor het volgende:
 
 Azure-Cognitive Services worden vertegenwoordigd door Azure-resources waarop u zich abonneert. Maak een resource voor QnA Maker met behulp van de [Azure Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) of [Azure cli](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) op uw lokale machine. 
 
-Nadat u een sleutel van uw resource hebt opgehaald, [maakt u omgevings variabelen](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) voor `QNAMAKER_SUBSCRIPTION_KEY` de `QNAMAKER_HOST`resource met de naam en. Gebruik de sleutel-en host waarden die zijn gevonden op de pagina **sleutels** en **overzichts** pagina's in de Azure Portal.
+Nadat u een sleutel van uw resource hebt opgehaald, [maakt u omgevings variabelen](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) voor `QNAMAKER_SUBSCRIPTION_KEY` de `QNAMAKER_HOST`resource met de naam en. Gebruik de sleutel-en eindpunt waarden die zijn gevonden op de **sleutels** en **overzichts** pagina's van de resource in de Azure Portal.
 
 ### <a name="create-a-new-nodejs-application"></a>Een nieuwe Node.js-toepassing maken
 
@@ -94,11 +96,10 @@ Maak een bestand met de naam `index.js`. Voeg de QnA Maker-bibliotheek en de Azu
 
 Maak variabelen voor het Azure-eind punt en de sleutel van uw resource. Als u de omgevings variabele hebt gemaakt nadat u de toepassing hebt gestart, moet u de editor, IDE of shell waarmee deze wordt uitgevoerd, sluiten en opnieuw openen om toegang te krijgen tot de variabele.
 
-
 |Omgevingsvariabele|Node. js-variabele|Voorbeeld|
 |--|--|--|
 |`QNAMAKER_SUBSCRIPTION_KEY`|`subscription_key`|32 teken-GUID|
-|`QNAMAKER_HOST`|`endpoint`|`https://westus.api.cognitive.microsoft.com`|
+|`QNAMAKER_HOST`|`endpoint`|`https://your-resource-name.api.cognitive.microsoft.com`: Vervang het subdomein `your-resource-name` door de waarde van de naam van uw resource|
 ||||
 
 [!code-javascript[Azure resource variables](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/knowledgebase_quickstart/knowledgebase_quickstart.js?name=resourcekeys)]

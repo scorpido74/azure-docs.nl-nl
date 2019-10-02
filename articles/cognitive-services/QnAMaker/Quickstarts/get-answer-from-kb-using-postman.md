@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 07/16/2019
+ms.date: 01/01/2019
 ms.author: diberry
-ms.openlocfilehash: 7c419ea7cb5c9ae1d1cc419798961ec67f250160
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 3df2703ba24091d0d21f06ae55aca389837e93d9
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68563004"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71803032"
 ---
 # <a name="quickstart-get-an-answer-from-knowledge-base-using-postman"></a>Snelstart: Een antwoord ophalen uit knowledge base via Postman
 
@@ -71,7 +71,7 @@ Voor het genereren van een antwoord met Postman voert u de volgende stappen uit:
 
 ## <a name="use-staging-endpoint"></a>Faseringseindpunt gebruiken
 
-Als u een antwoord wilt ontvangen van het staging-eind punt, voegt u de URL `isTest` toe met de eigenschap Body.
+Als u een antwoord wilt ontvangen van het staging-eind punt, voegt u de URL toe met de eigenschap `isTest`.
 
 ## <a name="next-steps"></a>Volgende stappen
 

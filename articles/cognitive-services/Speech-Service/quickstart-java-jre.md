@@ -1,5 +1,5 @@
 ---
-title: 'Quickstart: Herkenning van spraak, java (Windows, Linux)-spraak service'
+title: 'Quickstart: Speech herkennen, java (Windows, Linux, macOS)-Speech Service'
 titleSuffix: Azure Cognitive Services
 description: In deze Quick Start leert u hoe u een eenvoudige Java-toepassing maakt waarmee gebruikers spraak van de microfoon van uw computer worden vastgelegd en getranscribeerd.
 services: cognitive-services
@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: fmegen
-ms.openlocfilehash: 498e41b08133113be9789ef49291b8e2bb0f3705
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 9438cd1345d324b068db8837216afb39241cb2a2
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68554118"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802463"
 ---
 # <a name="quickstart-recognize-speech-with-the-speech-sdk-for-java"></a>Quickstart: Spraak herkennen met de Speech-SDK voor Java
 
-Quick starts zijn ook beschikbaar voor de virtuele assistent [spraak naar spraak-vertalen](quickstart-translate-speech-java-jre.md) en [spraak-eerste](quickstart-virtual-assistant-java-jre.md).
+Quick starts zijn ook beschikbaar voor [spraak-naar-spraak-vertaling](quickstart-translate-speech-java-jre.md), de [eerste virtuele assistent van Voice](quickstart-virtual-assistant-java-jre.md)en [spraak synthese](quickstart-text-to-speech-java-jre.md).
 
 Kies indien gewenst een andere programmeer taal en/of-omgeving:<br/>
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
@@ -95,6 +95,7 @@ Op GitHub vindt u aanvullende voorbeelden, zoals hoe u spraak kunt lezen vanuit 
 
 ## <a name="see-also"></a>Zie ook
 
-- [Snelstart: Omzetten van spraak, Java (Windows, Linux)](quickstart-translate-speech-java-jre.md)
+- [Snelstart: Vertaal spraak, java (Windows, Linux, macOS) ](quickstart-translate-speech-java-jre.md)
+- [Snelstart: Bewaak spraak, java (Windows, Linux, macOS) ](quickstart-text-to-speech-java-jre.md)
 - [Akoestische modellen aanpassen](how-to-customize-acoustic-models.md)
 - [Taalmodellen aanpassen](how-to-customize-language-model.md)

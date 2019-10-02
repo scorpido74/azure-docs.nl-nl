@@ -17,12 +17,12 @@ ms.date: 09/25/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6760677a94855c259501103a54a96d687c87910b
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 8e7bd33d74d9ecf6ebc35981df7255ecc19253c7
+ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71290971"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71812602"
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect: Accounts en machtigingen
 
@@ -57,6 +57,9 @@ Naast deze drie accounts die worden gebruikt om Azure AD Connect uit te voeren, 
 > Met specifieke administratieve forests kunnen organisaties beheerders accounts, werk stations en groepen hosten in een omgeving met betere beveiligings controles dan de productie omgeving.
 > Raadpleeg voor meer informatie over specifieke administratieve forests de [ontwerp benadering ESAE administratieve forests](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material#esae-administrative-forest-design-approach)
 >>>>>>> e683a61b0ed62ae739941410f658a127534e2481
+
+> [!NOTE]
+> De rol van globale beheerder is niet vereist na de eerste installatie en het account van de **Directory Synchronization accounts** wordt door de rol Dat betekent niet necssarily dat u alleen het account met de rol van globale beheerder wilt verwijderen. Het is beter om de rol te wijzigen in een minder krachtige rol, omdat het volledig verwijderen van het account kan leiden tot problemen als u de wizard ooit opnieuw moet uitvoeren. Door de bevoegdheid van de rol te beperken, kunt u de rechten altijd opnieuw verhogen als u de wizard Azure AD Connect opnieuw moet gebruiken. 
 
 ## <a name="installing-azure-ad-connect"></a>Azure AD Connect installeren
 De installatie wizard van Azure AD Connect biedt twee verschillende paden:

@@ -8,17 +8,45 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/23/2019
-ms.author: jhakulin
+ms.date: 09/20/2019
+ms.author: brianem
 ms.custom: seodec18
-ms.openlocfilehash: 12eecc4998153cbeedeb907ecad33c56141a50e6
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 0e4d0eb19da2485b689b1c5d5192e344153aef0b
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559120"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71799961"
 ---
 # <a name="release-notes"></a>Releaseopmerkingen
+## <a name="speech-sdk-170-2019-september-release"></a>Speech SDK 1.7.0: 2019-release van september
+
+**Nieuwe functies**
+*   Bèta-ondersteuning toegevoegd voor Xamarin op Universeel Windows-platform (UWP), Android en iOS
+*   Ondersteuning voor iOS toegevoegd voor Unity
+*   Ondersteuning voor gecomprimeerde invoer toegevoegd voor ALaw, mulaw, FLAC op Android, iOS en Linux
+*   SendMessageAsync toegevoegd in de verbindings klasse voor het verzenden van een bericht naar de service
+*   SetMessageProperty toegevoegd in de verbindings klasse voor het instellen van de eigenschap van een bericht
+*   Aan TTS toegevoegde bindingen voor Java (jre en Android), Python, SWIFT en objectief-C
+*   TTS heeft ondersteuning voor afspelen toegevoegd voor macOS, iOS en Android.
+*   Informatie over woord grens toegevoegd voor TTS.
+
+**Oplossingen voor problemen**
+*   Probleem met vast IL2CPP-Build op unit 2019 voor Android
+*   Probleem opgelost met onjuiste headers in WAV-bestand invoer wordt onjuist verwerkt
+*   Er is een probleem opgelost met UUIDs die niet uniek zijn in sommige verbindings eigenschappen
+*   Enkele waarschuwingen over de specificaties van nulwaarden in de SWIFT-bindingen zijn opgelost (hiervoor zijn mogelijk kleine code wijzigingen vereist)
+*   Er is een fout opgelost waardoor WebSocket-verbindingen zonder problemen kunnen worden gesloten onder netwerk belasting
+*   iOS: ondersteuning voor arm7s-architectuur
+*   Er is een probleem opgelost in Android dat soms resulteert in dubbele indruk-Id's die worden gebruikt door DialogServiceConnector
+*   Verbeteringen in de stabiliteit van verbindingen tussen multi-turn-interacties en de rapportage van fouten (via geannuleerde gebeurtenissen) wanneer deze zich voordoen met DialogServiceConnector
+*   DialogServiceConnector-sessie start nu op juiste wijze gebeurtenissen, zoals bij het aanroepen van ListenOnceAsync () tijdens een actieve StartKeywordRecognitionAsync ()
+*   Een crash gericht op het ontvangen van DialogServiceConnector-activiteiten 
+
+**Voorbeelden**
+*   Quick start voor Xamarin
+*   Update CPP Snelstartgids met Linux ARM64 Information
+*   Quick start voor Unity update met iOS-gegevens
 
 ## <a name="speech-sdk-160-2019-june-release"></a>Speech SDK 1.6.0: 2019-juni release
 

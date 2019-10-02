@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: 3c122a68e9f28772be4e3a17a21e5457aa187ce6
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: a65b775a516bfccac2dee5ce00bc7d6495df256d
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70736102"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71718364"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---motivation-and-benefits"></a>On-premises Apache Hadoop clusters migreren naar Azure HDInsight-motivatie en voor delen
 
@@ -51,9 +51,9 @@ Azure HDInsight is een Cloud distributie van Hadoop-onderdelen. Azure HDInsight 
 
 - **Productiviteit** : u kunt verschillende hulpprogram Ma's voor Hadoop en Spark gebruiken in uw favoriete ontwikkel omgeving.
 
-- **Uitbreid baarheid met aangepaste hulpprogram ma's of toepassingen** van derden-HDInsight-clusters kunnen worden uitgebreid met geïnstalleerde onderdelen en kunnen ook worden geïntegreerd met de andere oplossingen van Big data met [één klik op](https://azure.microsoft.com/services/hdinsight/partner-ecosystem/) implementaties in de Azure-markt plaats.
+- **Uitbreid baarheid met aangepaste hulpprogram ma's of toepassingen** van derden-HDInsight-clusters kunnen worden uitgebreid met geïnstalleerde onderdelen en kunnen ook worden geïntegreerd met de andere oplossingen van Big data met [één klik](https://azure.microsoft.com/services/hdinsight/partner-ecosystem/) deployments van Azure Markt plaats.
 
-- **Eenvoudig beheer, beheer en controle** : Azure HDInsight kan worden geïntegreerd met [Azure monitor logboeken](../hdinsight-hadoop-oms-log-analytics-tutorial.md) om een enkele interface te bieden waarmee u al uw clusters kunt bewaken.
+- **Eenvoudig beheer, beheer en controle** : Azure HDInsight kan worden geïntegreerd met [Azure monitor-logboeken](../hdinsight-hadoop-oms-log-analytics-tutorial.md) to biedt één interface waarmee u al uw clusters kunt bewaken.
 
 - **Integratie met andere Azure-Services** -HDInsight kan eenvoudig worden geïntegreerd met andere populaire Azure-Services, zoals de volgende:
 
@@ -137,10 +137,10 @@ Deze sectie bevat sjabloon vragenlijsten waarmee u belang rijke informatie kunt 
 |Gegevens bestemmingen|HDFS, RDBMS, Kafka, MPP ||
 |**Onderwerp**: **Meta gegevens**|||
 |DATABASE type van Hive|MySQL, post gres||
-|Nee. van Hive-meta Stores|2||
-|Nee. van Hive-tabellen|100||
-|Nee. van Zwerver-beleids regels|20||
-|Nee. van Oozie-werk stromen|100||
+|Aantal Hive-meta Stores|2||
+|Aantal Hive-tabellen|100||
+|Aantal beleids regels voor Zwerver|20||
+|Aantal Oozie-werk stromen|100||
 |**Onderwerp**: **Schalen**|||
 |Gegevens volume inclusief replicatie|100 TB||
 |Dagelijks opname volume|50 GB||
@@ -152,11 +152,11 @@ Deze sectie bevat sjabloon vragenlijsten waarmee u belang rijke informatie kunt 
 |Gebruikte schijfruimte|75%||
 |Gemiddeld netwerk gebruikt%|25%
 |**Onderwerp**: **Mede**|||
-|Nee. van beheerders|2||
-|Nee. van ontwikkel aars|10||
-|Nee. van eind gebruikers|100||
+|Aantal beheerders|2||
+|Aantal ontwikkel aars|10||
+|Aantal eind gebruikers|100||
 |Vaardigheden|Hadoop, Spark||
-|Nee. beschik bare bronnen voor migratie taken|2||
+|Aantal beschik bare resources voor migratie taken|2||
 |**Onderwerp**: **Beperkingen**|||
 |Huidige beperkingen|Latentie is hoog||
 |Huidige uitdagingen|Probleem met gelijktijdigheid||
@@ -180,7 +180,7 @@ Deze sectie bevat sjabloon vragenlijsten waarmee u belang rijke informatie kunt 
 |Persoonlijke en beveiligde gegevens pijplijn?|Ja||
 |Aan het domein toegevoegd cluster (ESP)?|     Ja||
 |On-premises AD Sync naar de Cloud?|     Ja||
-|Nee. van AD-gebruikers om te synchroniseren?|          100||
+|Aantal AD-gebruikers dat moet worden gesynchroniseerd?|          100||
 |Wilt u wacht woorden synchroniseren met de Cloud?|    Ja||
 |Alleen gebruikers in de Cloud?|                 Ja||
 |MFA vereist?|                       Nee|| 

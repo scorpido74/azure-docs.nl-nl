@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 08/03/2017
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: d4aae2f2ef9ccbc645647125682d999c11c99ab6
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 600c619134cae18e69b5a200cb03fbebd82dee0f
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69649838"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71719892"
 ---
 # <a name="azure-search---frequently-asked-questions-faq"></a>Azure Search-Veelgestelde vragen (FAQ)
 
@@ -30,7 +30,7 @@ Azure Search ondersteunt meerdere gegevens bronnen, een [taal kundige analyse vo
 
 Bij het vergelijken van zoek technologieën vragen klanten regel matig om specifieke informatie over de manier waarop Azure Search vergelijkt met Elasticsearch. Klanten die Azure Search over Elasticsearch voor hun zoek toepassings projecten kiezen, doen dit meestal omdat we een belang rijke taak makkelijker hebben gemaakt of de ingebouwde integratie met andere micro soft-technologieën nodig hebben:
 
-+ Azure Search is een volledig beheerde Cloud service met 99,9% Service Level Agreements (SLA) bij het inrichten met voldoende redundantie (2 replica's voor lees toegang, 3 replica's voor lezen/schrijven).
++ Azure Search is een volledig beheerde Cloud service met 99,9% Service Level Agreements (SLA) bij het inrichten met voldoende redundantie (2 replica's voor lees toegang, drie replica's voor lezen/schrijven).
 + De [natuurlijke taal-processors](https://docs.microsoft.com/rest/api/searchservice/language-support) van micro soft bieden toonaangevende taal analyse van de rand.  
 + [Azure Search Indexeer functies](search-indexer-overview.md) kunnen een groot aantal Azure-gegevens bronnen verkennen voor initiële en incrementele indexering.
 + Als u snelle reacties op schommelingen in query-of indexerings volumes nodig hebt, kunt u [Schuif regelaars](search-manage.md#scale-up-or-down) gebruiken in de Azure portal of een [Power shell-script](search-manage-powershell.md)uitvoeren, zodat u het Shard-beheer rechtstreeks omzeilt.  
@@ -42,17 +42,27 @@ U kunt de service niet onderbreken. Reken-en opslag resources worden toegewezen 
 
 ## <a name="indexing-operations"></a>Indexerings bewerkingen
 
-### <a name="backup-and-restore-or-download-and-move-indexes-or-index-snapshots"></a>Back-up en herstel (of down load en verplaats) indexen of index momentopnamen?
+### <a name="move-backup-and-restore-indexes-or-index-snapshots"></a>Wilt u indexen of index momentopnamen verplaatsen, back-ups maken en herstellen?
 
-Hoewel u op elk gewenst moment [een index definitie kunt ophalen](https://docs.microsoft.com/rest/api/searchservice/get-index) , is er geen index extractie, moment opname of back-upfunctie voor het downloaden van een gevulde index die in de Cloud wordt uitgevoerd naar een lokaal systeem of het verplaatsen naar een andere Azure Search service.
+Tijdens de ontwikkelings fase wilt u mogelijk de index verplaatsen tussen de zoek services. U kunt bijvoorbeeld een basis-of gratis prijs categorie gebruiken om uw index te ontwikkelen en deze vervolgens te verplaatsen naar de Standard-of hogere laag voor productie gebruik. 
 
-Indexen worden gebouwd en gevuld met code die u schrijft en worden alleen uitgevoerd op Azure Search in de Cloud. Klanten die een index naar een andere service willen verplaatsen, doen dit doorgaans door hun code te bewerken voor het gebruik van een nieuw eind punt en vervolgens het indexeren opnieuw uit te voeren. Als u een moment opname wilt maken of een back-up wilt maken van een index, zet u een stem af op de stem van de [gebruiker](https://feedback.azure.com/forums/263029-azure-search/suggestions/8021610-backup-snapshot-of-index).
+U kunt ook een back-up maken van een index momentopname naar bestanden die kunnen worden gebruikt om deze later te herstellen. 
+
+U kunt al deze dingen doen met behulp van de voorbeeld code **index-Backup-Restore** in deze [Azure Search .net-voorbeeld opslag plaats](https://github.com/Azure-Samples/azure-search-dotnet-samples). 
+
+U kunt ook op elk gewenst moment [een index definitie ophalen](https://docs.microsoft.com/rest/api/searchservice/get-index) met behulp van de Azure Search rest API.
+
+Er is momenteel geen ingebouwde index voor het uitpakken, maken van een moment opname of het herstellen van back-ups in de Azure Portal. We gaan echter overwegen de functionaliteit voor back-up en herstel toe te voegen in een toekomstige release. Als u de ondersteuning voor deze functie wilt weer geven, moet u een stem op de [gebruikers stem](https://feedback.azure.com/forums/263029-azure-search/suggestions/8021610-backup-snapshot-of-index)casten.
 
 ### <a name="can-i-restore-my-index-or-service-once-it-is-deleted"></a>Kan ik mijn index of service herstellen nadat deze is verwijderd?
 
-Nee, u kunt geen indexen of services herstellen. Als u een Azure Search index verwijdert, is de bewerking definitief en kan de index niet worden hersteld. Wanneer u een Azure Search service verwijdert, worden alle indexen in de service permanent verwijderd. Ook als u een Azure-resource groep verwijdert die een of meer Azure Search Services bevat, worden alle services permanent verwijderd.  
+Nee, als u een Azure Search index of service verwijdert, kan deze niet worden hersteld. Wanneer u een Azure Search service verwijdert, worden alle indexen in de service permanent verwijderd. Als u een Azure-resource groep verwijdert die een of meer Azure Search Services bevat, worden alle services permanent verwijderd.  
 
-Voor het herstellen van resources zoals indexen, Indexeer functies, gegevens bronnen en vaardig heden moet u ze opnieuw maken op basis van code. In het geval van indexen moet u de gegevens van externe bronnen opnieuw indexeren. Daarom wordt het ten zeerste aanbevolen om een hoofd kopie of een back-up van de oorspronkelijke gegevens in een ander gegevens archief, zoals Azure SQL Database of Cosmos DB, te bewaren.
+Als u resources zoals indexen, Indexeer functies, gegevens bronnen en vaardig heden opnieuw wilt maken, moet u ze opnieuw maken op basis van code. 
+
+Als u een index opnieuw wilt maken, moet u de gegevens van externe bronnen opnieuw indexeren. Daarom is het raadzaam om een hoofd kopie of een back-up van de oorspronkelijke gegevens in een ander gegevens archief, zoals Azure SQL Database of Cosmos DB, te bewaren.
+
+Als alternatief kunt u de voorbeeld code **index-Backup-Restore** gebruiken in deze [Azure Search .net-voorbeeld opslag plaats](https://github.com/Azure-Samples/azure-search-dotnet-samples) om een back-up te maken van een index definitie en een moment opname van de index naar een reeks json-bestanden. Later kunt u het hulp programma en de bestanden gebruiken om de index, indien nodig, te herstellen.  
 
 ### <a name="can-i-index-from-sql-database-replicas-applies-to-azure-sql-database-indexershttpsdocsmicrosoftcomazuresearchsearch-howto-connecting-azure-sql-database-to-azure-search-using-indexers"></a>Kan ik indexeren vanuit SQL database replica's (van toepassing op [Azure SQL database Indexeer functies](https://docs.microsoft.com/azure/search/search-howto-connecting-azure-sql-database-to-azure-search-using-indexers))
 
@@ -66,17 +76,17 @@ Nee, deze bewerking wordt niet ondersteund. Het bereik van de zoek opdracht is a
 
 ### <a name="can-i-restrict-search-index-access-by-user-identity"></a>Kan ik de toegang tot de zoek index beperken door de identiteit van de gebruiker?
 
-U kunt [beveiligings filters](https://docs.microsoft.com/azure/search/search-security-trimming-for-azure-search) met behulp van `search.in()` filter implementeren. Het filter is goed samen met [identiteits beheer Services als Azure Active Directory (Aad)](https://docs.microsoft.com/azure/search/search-security-trimming-for-azure-search-with-aad) om Zoek resultaten te beperken op basis van gedefinieerd lidmaatschap van de gebruikers groep.
+U kunt [beveiligings filters](https://docs.microsoft.com/azure/search/search-security-trimming-for-azure-search) implementeren met `search.in()` filter. Het filter is goed samen met [identiteits beheer Services als Azure Active Directory (Aad)](https://docs.microsoft.com/azure/search/search-security-trimming-for-azure-search-with-aad) om Zoek resultaten te beperken op basis van gedefinieerd lidmaatschap van de gebruikers groep.
 
 ### <a name="why-are-there-zero-matches-on-terms-i-know-to-be-valid"></a>Waarom zijn er geen overeenkomsten met termen waarvan ik weet dat ze geldig zijn?
 
-Het meest voorkomende geval is niet weten dat elk query type verschillende Zoek gedragingen en niveau taal kundige analyses ondersteunt. Zoek opdracht in volledige tekst, wat de meest voorkomende werk belasting is, omvat een taal analyse fase waarmee de voor waarden naar hoofd formulieren worden gesplitst. Met dit aspect van het parseren van query's wordt een breder net over mogelijke overeenkomsten gecast, omdat de token-term overeenkomt met een groter aantal varianten.
+Het meest voorkomende geval is niet weten dat elk query type verschillende Zoek gedragingen en niveau taal kundige analyses ondersteunt. Zoeken in volledige tekst, wat de meest voorkomende werk belasting is, omvat een taal analyse fase die de voor waarden in hoofd formulieren opsplitsen. Met dit aspect van het parseren van query's wordt een breder net over mogelijke overeenkomsten gecast, omdat de token-term overeenkomt met een groter aantal varianten.
 
-Joker tekens, fuzzy-en regex-query's worden echter niet geanalyseerd zoals normale term of woordgroepen query's en kunnen leiden tot slecht terughalen als de query niet overeenkomt met de geanalyseerde vorm van het woord in de zoek index. Zie [query-architectuur](https://docs.microsoft.com/azure/search/search-lucene-query-architecture)voor meer informatie over het parseren en analyseren van query's.
+Joker tekens, fuzzy-en regex-query's worden echter niet geanalyseerd zoals normale term of woordgroepen query's en kunnen leiden tot slecht terughalen als de query niet overeenkomt met de geanalyseerde vorm van het woord in de zoek index. Zie [query architectuur](https://docs.microsoft.com/azure/search/search-lucene-query-architecture)voor meer informatie over het parseren en analyseren van query's.
 
 ### <a name="my-wildcard-searches-are-slow"></a>Mijn Zoek opdrachten met Joker tekens zijn langzaam.
 
-De meeste zoek query's met Joker tekens, zoals voor voegsel, fuzzy en regex, worden intern herschreven met overeenkomende voor waarden in de zoek index. Deze extra verwerking van het scannen van de zoek index wordt toegevoegd aan de latentie. Uitgebreide zoek query's, zoals `a*` bijvoorbeeld, die waarschijnlijk worden herschreven, kunnen erg traag zijn. Voor het uitvoeren van zoek opdrachten met Joker tekens kunt u een [aangepaste analyse functie](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search)definiëren.
+De meeste zoek query's met Joker tekens, zoals voor voegsel, fuzzy en regex, worden intern herschreven met overeenkomende voor waarden in de zoek index. Deze extra verwerking van het scannen van de zoek index wordt toegevoegd aan de latentie. Uitgebreide zoek query's, zoals `a*`, bijvoorbeeld die waarschijnlijk worden herschreven, kunnen erg traag zijn. Voor het uitvoeren van zoek opdrachten met Joker tekens kunt u een [aangepaste analyse functie](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search)definiëren.
 
 ### <a name="why-is-the-search-rank-a-constant-or-equal-score-of-10-for-every-hit"></a>Waarom rangschikt de zoek opdracht een constante of gelijke Score van 1,0 voor elke treffer?
 
@@ -96,6 +106,6 @@ Is uw vraag over een ontbrekend onderdeel of functionaliteit? Vraag de functie a
 
 ## <a name="see-also"></a>Zie ook
 
- [StackOverflow: Azure Search](https://stackoverflow.com/questions/tagged/azure-search)   
+ [StackOverflow: Azure Search @ no__t-0 @ no__t-1  
  [De manier waarop zoeken in volledige tekst werkt in Azure Search](search-lucene-query-architecture.md)  
  [Wat is Azure Search?](search-what-is-azure-search.md)

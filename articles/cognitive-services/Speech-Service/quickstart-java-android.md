@@ -10,19 +10,21 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: wolfma
-ms.openlocfilehash: c9b63685ae73fb4e056c72a640d6c4049e98b8b8
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 2f728231c01056ecb8709f84f13e834ef3618dc8
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559492"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71803317"
 ---
 # <a name="quickstart-recognize-speech-in-java-on-android-by-using-the-speech-sdk"></a>Quickstart: Gesproken tekst herkennen in Java onder Android met behulp van de Speech-SDK
+
+Quick starts zijn ook beschikbaar voor de [spraak-synthese](quickstart-text-to-speech-java-android.md) en de [eerste virtuele assistent](quickstart-virtual-assistant-java-android.md).
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
 In dit artikel leert u hoe u een Java-toepassing voor Android kunt ontwikkelen met behulp van de Cognitive Services Speech SDK om spraak om te zetten in tekst.
-De toepassing is gebaseerd op het Speech SDK maven-pakket, versie 1.6.0 en Android Studio 3,3.
+De toepassing is gebaseerd op het Speech SDK maven-pakket en Android Studio 3,3.
 De Speech SDK is op dit moment compatibel met Android-apparaten met 32/64-bits ARM- en Intel x86/x64-compatibele processors.
 
 > [!NOTE]

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 8579693052ea102e34d81d84abaced52d1e7440d
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: a2e43b72bda65c5f1e7515888ac33b0ac806e64c
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350958"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71803248"
 ---
 # <a name="quickstart-convert-text-to-speech-using-python"></a>Quickstart: Tekst-naar-spraak converteren met behulp van python
 
@@ -173,5 +173,6 @@ Denk eraan dat u eventuele vertrouwelijke informatie, zoals abonnementssleutels,
 ## <a name="see-also"></a>Zie ook
 
 * [Naslaginformatie voor de Text to Speech-API](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis)
+* [Met python en Speech SDK tekst-naar-spraak converteren](quickstart-text-to-speech-python.md)
 * [Het maken van aangepaste spraakstijlen](how-to-customize-voice-font.md)
 * [Record stem voorbeelden voor het maken van een aangepaste spraak](record-custom-voice-samples.md)

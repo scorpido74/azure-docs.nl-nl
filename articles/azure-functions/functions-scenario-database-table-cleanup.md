@@ -8,18 +8,18 @@ manager: jeconnoc
 ms.assetid: 076f5f95-f8d2-42c7-b7fd-6798856ba0bb
 ms.service: azure-functions
 ms.topic: conceptual
-ms.date: 10/28/2018
+ms.date: 10/02/2019
 ms.author: glenga
-ms.openlocfilehash: 0388c712d6f44755e768e491944df1a9451653b7
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 469e0149a3b9dce22f0590240a053ee3b183c7b9
+ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70085237"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71815980"
 ---
 # <a name="use-azure-functions-to-connect-to-an-azure-sql-database"></a>Azure Functions gebruiken om verbinding te maken met een Azure SQL Database
 
-In dit artikel leest u hoe u Azure Functions kunt gebruiken om een geplande taak te maken die verbinding maakt met een Azure SQL Database-exemplaar. Met de functie code worden rijen in een tabel in de data base opgeschoond. De nieuwe C# functie wordt gemaakt op basis van een vooraf gedefinieerde Timer trigger sjabloon in Visual Studio 2019. Als u dit scenario wilt ondersteunen, moet u ook een Data Base connection string instellen als een app-instelling in de functie-app. In dit scenario wordt een bulk bewerking voor de data base gebruikt. 
+Dit artikel laat u zien hoe u Azure Functions kunt gebruiken om een geplande taak te maken die verbinding maakt met een Azure SQL Database of een Azure SQL Managed instance. Met de functie code worden rijen in een tabel in de data base opgeschoond. De nieuwe C# functie wordt gemaakt op basis van een vooraf gedefinieerde Timer trigger sjabloon in Visual Studio 2019. Als u dit scenario wilt ondersteunen, moet u ook een Data Base connection string instellen als een app-instelling in de functie-app. Voor Azure SQL Managed instance moet u een [openbaar eind punt inschakelen](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure) om verbinding te kunnen maken vanaf Azure functions. In dit scenario wordt een bulk bewerking voor de data base gebruikt. 
 
 Als dit de eerste ervaring voor het werken C# met functions is, lees dan de [Azure functions C# Naslag informatie voor ontwikkel aars](functions-dotnet-class-library.md).
 
@@ -39,7 +39,7 @@ U moet de connection string ophalen voor de data base die u hebt gemaakt tijdens
 
 1. Selecteer **SQL-data bases** in het menu aan de linkerkant en selecteer uw Data Base op de pagina **SQL-data bases** .
 
-1. Selecteer **verbindings reeksen** onder **instellingen** en kopieer de volledige **ADO.net** -Connection String.
+1. Selecteer **verbindings reeksen** onder **instellingen** en kopieer de volledige **ADO.net** -Connection String. Voor Azure SQL Managed instance Copy connection string voor een openbaar eind punt.
 
     ![Kopieer de ADO.NET-connection string.](./media/functions-scenario-database-table-cleanup/adonet-connection-string.png)
 
@@ -49,11 +49,11 @@ Een functie-app fungeert als host voor de uitvoering van uw functies in Azure. A
 
 U moet uw app eerder hebben gepubliceerd naar Azure. Als u dit nog niet hebt gedaan, [kunt u de functie-app publiceren in azure](functions-develop-vs.md#publish-to-azure).
 
-1. Klik in Solution Explorer met de rechter muisknop op het project functie- > app en kies**instellingen van toepassing beheren...** . Selecteer **instelling toevoegen**in **naam van nieuwe app-instelling**, `sqldb_connection`type en selecteer **OK**.
+1. Klik in Solution Explorer met de rechter muisknop op het project functie-app en **kies @no__t-** 1**Toepassings instellingen beheren...** . Selecteer **instelling toevoegen**in **naam van nieuwe app-instelling**, typ `sqldb_connection` en selecteer **OK**.
 
     ![Toepassings instellingen voor de functie-app.](./media/functions-scenario-database-table-cleanup/functions-app-service-add-setting.png)
 
-1. Plak in de nieuwe **sqldb_connection** -instelling het Connection String dat u in de vorige sectie hebt gekopieerd naar het **lokale** veld `{your_username}` en `{your_password}` Vervang en tijdelijke aanduidingen door echte waarden. Selecteer **waarde invoegen van lokaal** om de bijgewerkte waarde te kopiëren naar het **externe** veld, en selecteer vervolgens **OK**.
+1. Plak in de nieuwe **sqldb_connection** -instelling het Connection String dat u in de vorige sectie hebt gekopieerd naar het **lokale** veld en vervang de tijdelijke aanduidingen `{your_username}` en `{your_password}` door echte waarden. Selecteer **waarde invoegen van lokaal** om de bijgewerkte waarde te kopiëren naar het **externe** veld, en selecteer vervolgens **OK**.
 
     ![SQL connection string-instelling toevoegen.](./media/functions-scenario-database-table-cleanup/functions-app-service-settings-connection-string.png)
 
@@ -69,7 +69,7 @@ U moet het NuGet-pakket met de SqlClient-bibliotheek toevoegen. Deze Data Access
 
 1. Zoek op het tabblad **Bladeren** naar ```System.Data.SqlClient``` en selecteer deze.
 
-1. Selecteer op de pagina **System. data. SqlClient** de optie `4.5.1` versie en klik vervolgens op **installeren**.
+1. Selecteer op de pagina **System. data. SqlClient** de optie versie `4.5.1` en klik vervolgens op **installeren**.
 
 1. Wanneer de installatie is voltooid, controleert u de wijzigingen en klikt u vervolgens op **OK** om het venster **Preview** te sluiten.
 
@@ -79,9 +79,9 @@ Nu kunt u de C# functie code toevoegen die verbinding maakt met uw SQL database.
 
 ## <a name="add-a-timer-triggered-function"></a>Een door een timer geactiveerde functie toevoegen
 
-1. Klik in Solution Explorer met de rechter muisknop op het project functie-app en kies**nieuwe Azure-functie** **toevoegen** > .
+1. Klik in Solution Explorer met de rechter muisknop op het project functie-app en kies  > **nieuwe Azure-functie** **toevoegen**.
 
-1. Als`DatabaseCleanup.cs` u de Azure functions sjabloon hebt geselecteerd, kunt u een naam opgeven voor het nieuwe item en vervolgens **toevoegen**selecteren.
+1. Als u de **Azure functions** sjabloon hebt geselecteerd, moet u een naam opgeven voor het nieuwe item, zoals `DatabaseCleanup.cs` en **toevoegen**.
 
 1. Kies in het dialoog venster **nieuwe Azure** -functie **Timer trigger** en klik vervolgens op **OK**. In dit dialoog venster wordt een code bestand gemaakt voor de functie Timer geactiveerd.
 
@@ -92,7 +92,7 @@ Nu kunt u de C# functie code toevoegen die verbinding maakt met uw SQL database.
     using System.Threading.Tasks;
     ```
 
-1. Vervang de bestaande `Run` functie door de volgende code:
+1. Vervang de bestaande functie `Run` door de volgende code:
 
     ```cs
     [FunctionName("DatabaseCleanup")]
@@ -116,7 +116,7 @@ Nu kunt u de C# functie code toevoegen die verbinding maakt met uw SQL database.
     }
     ```
 
-    Deze functie wordt elke 15 seconden uitgevoerd om de `Status` kolom bij te werken op basis van de verzend datum. Zie [Timer trigger voor Azure functions voor](functions-bindings-timer.md)meer informatie over de timer trigger.
+    Deze functie wordt elke 15 seconden uitgevoerd om de kolom @no__t 0 bij te werken op basis van de verzend datum. Zie [Timer trigger voor Azure functions voor](functions-bindings-timer.md)meer informatie over de timer trigger.
 
 1. Druk op **F5** om de functie-app te starten. Het venster voor het uitvoeren van [Azure functions core tools](functions-develop-local.md) wordt geopend achter Visual Studio.
 
@@ -124,9 +124,9 @@ Nu kunt u de C# functie code toevoegen die verbinding maakt met uw SQL database.
 
     ![De functie Logboeken weer geven.](./media/functions-scenario-database-table-cleanup/function-execution-results-log.png)
 
-    Bij de eerste uitvoering moet u 32 rijen met gegevens bijwerken. Met de volgende opdracht worden Update gegevens rijen uitgevoerd, tenzij u wijzigingen aanbrengt in de tabel gegevens van de SalesOrderHeader zodat er `UPDATE` meer rijen worden geselecteerd door de instructie.
+    Bij de eerste uitvoering moet u 32 rijen met gegevens bijwerken. De volgende gegevens rijen worden uitgevoerd, tenzij u wijzigingen aanbrengt in de tabel gegevens van SalesOrderHeader, zodat er meer rijen worden geselecteerd door de instructie `UPDATE`.
 
-Als u van plan bent om [deze functie te publiceren](functions-develop-vs.md#publish-to-azure), moet `TimerTrigger` u het kenmerk wijzigen in een redelijk [cron-schema](functions-bindings-timer.md#ncrontab-expressions) dan elke 15 seconden.
+Als u [deze functie wilt publiceren](functions-develop-vs.md#publish-to-azure), moet u niet verg eten het kenmerk `TimerTrigger` te wijzigen in een redelijk [cron-schema](functions-bindings-timer.md#ncrontab-expressions) dan elke 15 seconden.
 
 ## <a name="next-steps"></a>Volgende stappen
 

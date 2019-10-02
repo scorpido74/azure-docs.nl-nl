@@ -4,18 +4,18 @@ description: Deze Snelstartgids bevat een node. js-code voorbeeld dat u kunt geb
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
-ms.custom: mvc, devcenter
+ms.custom: seo-javascript-september2019
 ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 5/6/2019
-ms.openlocfilehash: 7e59e9b53143dcbea1c78f4c6131080ec8e9ea2c
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 072e2fca4d7d0c90e9e4e66b9ba2b63ef45723db
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68966755"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71719943"
 ---
-# <a name="azure-database-for-postgresql---single-server-use-nodejs-to-connect-and-query-data"></a>Azure Database for PostgreSQL-één server: Node.js gebruiken om verbinding te maken met gegevens en er query's op uit te voeren
+# <a name="quickstart-use-nodejs-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>Quickstart: Node. js gebruiken om verbinding te maken en gegevens op te vragen in Azure Database for PostgreSQL-één server
 In deze Quick Start ziet u hoe u met behulp van een [Node.js](https://nodejs.org/)-toepassing verbinding maakt met een Azure Database for PostgreSQL. U ziet hier hoe u SQL-instructies gebruikt om gegevens in de database op te vragen, in te voegen, bij te werken en te verwijderen. In de stappen van dit artikel wordt ervan uitgegaan dat u bekend bent met het ontwikkelen met behulp van Node.js en geen ervaring hebt met het werken met Azure Database for PostgreSQL.
 
 ## <a name="prerequisites"></a>Vereisten

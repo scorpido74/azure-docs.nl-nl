@@ -6,24 +6,24 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
-ms.date: 08/14/2019
+ms.date: 09/30/2019
 ms.custom: seodec18
-ms.openlocfilehash: a5dcd7d2204e7ec03bf6b11bce9be20870cb3054
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: 1c5d9f665c9b3e7a439a09f4259f304f8f8b1a0a
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71076472"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71718335"
 ---
 # <a name="troubleshoot-apache-hadoop-hdfs-by-using-azure-hdinsight"></a>Problemen met Apache Hadoop HDFS oplossen met behulp van Azure HDInsight
 
-Meer informatie over de belangrijkste problemen en hun oplossingen bij het werken met Hadoop Distributed File System (HDFS) Payloads in Apache Ambari.
+Meer informatie over de belangrijkste problemen en hun oplossingen bij het werken met Hadoop Distributed File System (HDFS) Payloads in Apache Ambari. Voor een volledige lijst met opdrachten raadpleegt u de hand leiding voor [HDFS-opdrachten](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HDFSCommands.html) en de shell-gids voor [bestands systemen](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html).
 
 ## <a name="how-do-i-access-local-hdfs-from-inside-a-cluster"></a>Hoe kan ik toegang tot de lokale HDFS vanuit een cluster?
 
 ### <a name="issue"></a>Probleem
 
-Open de lokale HDFS via de opdracht regel en toepassings code in plaats van met behulp van Azure Blob-opslag of Azure Data Lake Storage vanuit het HDInsight-cluster.   
+Open de lokale HDFS via de opdracht regel en toepassings code in plaats van met behulp van Azure Blob-opslag of Azure Data Lake Storage vanuit het HDInsight-cluster.
 
 ### <a name="resolution-steps"></a>Oplossingen
 
@@ -71,6 +71,30 @@ Open de lokale HDFS via de opdracht regel en toepassings code in plaats van met 
     hdfs://mycluster/tmp/hive/hive/a0be04ea-ae01-4cc4-b56d-f263baf2e314/inuse.info
     hdfs://mycluster/tmp/hive/hive/a0be04ea-ae01-4cc4-b56d-f263baf2e314/inuse.lck
     ```
+
+## <a name="du"></a>du
+
+Met de opdracht [-du](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html#du) worden de grootte van bestanden en mappen in de opgegeven map of de lengte van een bestand weer gegeven als dit een bestand is.
+
+De `-s` optie produceert een statistische samen vatting van de bestands lengten die worden weer gegeven.  
+Met de optie `-h` wordt de bestands grootte opgemaakt.
+
+Voorbeeld:
+
+```bash
+hdfs dfs -du -s -h hdfs://mycluster/
+hdfs dfs -du -s -h hdfs://mycluster/tmp
+```
+
+## <a name="rm"></a>RM
+
+Met de opdracht [-RM](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html#rm) worden de bestanden die zijn opgegeven als argumenten, verwijderd.
+
+Voorbeeld:
+
+```bash
+hdfs dfs -rm hdfs://mycluster/tmp/testfile
+```
 
 ## <a name="next-steps"></a>Volgende stappen
 

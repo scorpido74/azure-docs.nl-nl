@@ -11,12 +11,12 @@ ms.author: sanpil
 author: sanpil
 ms.date: 08/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: f1a0db395b86f473d2372a5ca779020e54186e45
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: af20c9e3a50c0c60135b1e447e7e1cba1fc36526
+ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71034842"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71815728"
 ---
 # <a name="create-and-run-machine-learning-pipelines-with-azure-machine-learning-sdk"></a>machine learning-pijp lijnen maken en uitvoeren met Azure Machine Learning SDK
 
@@ -436,7 +436,7 @@ U kunt deze opnieuw inschakelen met `p.enable()`. Zie referentie [PublishedPipel
 
 Om het gedrag van uw pijp lijnen te optimaliseren en aan te passen, kunt u enkele dingen doen om in de cache te plaatsen en opnieuw te gebruiken. U kunt bijvoorbeeld het volgende kiezen:
 + `allow_reuse=False` **Schakel de standaard instelling voor het opnieuw gebruiken van de uitvoer uitvoering** uit tijdens [stap definitie](https://docs.microsoft.com/python/api/azureml-pipeline-steps/?view=azure-ml-py). Hergebruik is essentieel voor het gebruik van pijp lijnen in een samenwerkings omgeving omdat het elimineren van overbodige uitvoeringen flexibiliteit biedt. U kunt het echter niet opnieuw gebruiken.
-+ **Breid hashing uit met het script**, om ook een absoluut pad of relatieve paden naar de bronmap naar andere bestanden en mappen toe te voegen met behulp van de`hash_paths=['<file or directory']` 
++ **Breid hashing verder uit met het script**, om ook een absoluut pad of relatieve paden naar de bronmap te gebruiken voor andere bestanden en mappen met behulp van de `hash_paths=['<file or directory']` 
 + **Het opnieuw genereren van uitvoer afdwingen voor alle stappen in een run** with`pipeline_run = exp.submit(pipeline, regenerate_outputs=False)`
 
 `allow_reuse` Voor stappen is standaard ingeschakeld en alleen het hoofd script bestand wordt gehasht. Als het script voor een gegeven stap hetzelfde blijft (`script_name`, invoer en de para meters), wordt de uitvoer van een vorige stap opnieuw gebruikt, wordt de taak niet verzonden naar de compute en worden de resultaten van de vorige uitvoering onmiddellijk beschikbaar voor de volgende stap. .  
@@ -449,11 +449,11 @@ step = PythonScriptStep(name="Hello World",
                         allow_reuse=False,
                         hash_paths=['hello_world.ipynb'])
 ```
- 
 
 ## <a name="next-steps"></a>Volgende stappen
 
 - Gebruik [deze Jupyter-notebooks in GitHub](https://aka.ms/aml-pipeline-readme) machine learning-pijplijnen verder verkennen.
 - Zie de SDK-Naslag informatie voor het pakket met het kern pakket voor [azureml-pijp lijnen](https://docs.microsoft.com/python/api/azureml-pipeline-core/?view=azure-ml-py) en de stappen voor het [oplossen van azureml-pijp lijnen](https://docs.microsoft.com/python/api/azureml-pipeline-steps/?view=azure-ml-py) .
+- Raadpleeg de [hand](how-to-debug-pipelines.md) leiding voor tips over het opsporen van fouten en pijp lijnen voor probleem oplossing.
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]

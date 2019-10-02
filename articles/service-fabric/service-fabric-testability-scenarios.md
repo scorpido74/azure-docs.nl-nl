@@ -1,6 +1,6 @@
 ---
-title: Chaos- en failovertests maken voor Azure Service Fabric | Microsoft Docs
-description: Met behulp van de Service Fabric chaos-test- en failover-en Testscenario's veroorzaken fouten en te controleren of de betrouwbaarheid van uw services.
+title: Chaos en failover-tests maken voor Azure Service Fabric | Microsoft Docs
+description: Met behulp van de test scenario's voor de Service Fabric chaos test en failover kunt u fouten opdoen en de betrouw baarheid van uw services controleren.
 services: service-fabric
 documentationcenter: .net
 author: motanv
@@ -12,50 +12,50 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 06/07/2017
+ms.date: 10/1/2019
 ms.author: motanv
-ms.openlocfilehash: d12c5097d4ba5e0ccfe0e2b2cbc8ccd758c32d98
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2ea30b59e3195a0229c2584212e2897aaff4ee31
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60865006"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71718235"
 ---
-# <a name="testability-scenarios"></a>Testbaarheidsscenario 's
-Grote gedistribueerde systemen cloudinfrastructuren zijn inherent onbetrouwbaar. Azure Service Fabric biedt ontwikkelaars de mogelijkheid om services om uit te voeren op onbetrouwbare infrastructuur te ontwikkelen. Ontwikkelaars moeten om te kunnen schrijven hoogwaardige services, om een dergelijke onbetrouwbare infrastructuur voor het testen van de stabiliteit van de services te kunnen.
+# <a name="testability-scenarios"></a>Test scenario's
+Grote gedistribueerde systemen zoals Cloud infrastructuren zijn inherent onbetrouwbaar. Azure Service Fabric biedt ontwikkel aars de mogelijkheid om services te schrijven voor het uitvoeren van een onbetrouwbare infra structuur. Ontwikkel aars die een hoogwaardige service willen schrijven, moeten een dergelijke onbetrouwbare infra structuur kunnen maken om de stabiliteit van hun services te testen.
 
-De Fault Analysis Service biedt ontwikkelaars de mogelijkheid om fouttolerantie bewerkingen voor het testen van services in geval van problemen veroorzaken. Echter, gerichte gesimuleerde fouten krijgt u alleen tot nu toe. Als u de controle verder, kunt u de Testscenario's gebruiken in Service Fabric: een chaos-test en een failovertest-. Deze scenario's simuleren continue interleaved fouten, verwijdering en geforceerde afsluiting in het cluster gedurende langere tijd. Wanneer een test is geconfigureerd met de snelheid en het soort fouten, kan het kan worden gestart via C#-API's of PowerShell, voor het genereren van fouten in het cluster en wordt uw service.
+De fout analyse service biedt ontwikkel aars de mogelijkheid om fout acties te ondernemen om services te testen bij de aanwezigheid van fouten. Bij doel gesimuleerde fouten krijgt u echter slechts tot nu toe. Als u de tests verder wilt uitvoeren, kunt u de test scenario's in Service Fabric gebruiken: een chaos-test en een failover-test. Deze scenario's simuleren continue Interleaved fouten, zowel gesimuleerd als zonder enige tijd, gedurende het hele cluster gedurende een lange periode. Zodra een test is geconfigureerd met de frequentie en het soort fouten, kan deze worden gestart via C# Api's of Power shell, om fouten te genereren in het cluster en uw service.
 
 > [!WARNING]
-> ChaosTestScenario wordt vervangen door een Chaos meer flexibele, op basis van een service. Raadpleeg het nieuwe artikel [beheerd Chaos](service-fabric-controlled-chaos.md) voor meer informatie.
+> ChaosTestScenario wordt vervangen door een meer robuuste, op Services gebaseerde chaos. Raadpleeg het nieuwe [chaos](service-fabric-controlled-chaos.md) -artikel voor meer informatie.
 > 
 > 
 
 ## <a name="chaos-test"></a>Chaos-test
-Het scenario chaos genereert fouten in de hele Service Fabric-cluster. Het scenario comprimeert fouten in het algemeen gezien in maanden of jaren tot enkele uren. De combinatie van interleaved fouten met de snelheid van hoge fouttolerantie vindt hoek gevallen die anders zijn gemist. Dit leidt tot een aanzienlijke verbetering van de kwaliteit van de code van de service.
+Het chaos-scenario genereert fouten in het volledige Service Fabric cluster. Het scenario comprimeert fouten doorgaans in maanden of jaren tot enkele uren. Door de combi natie van Interleaved fouten met het hoge fout aantal worden hoek cases gevonden die anderszins niet zijn gemist. Dit leidt tot een aanzienlijke verbetering van de code kwaliteit van de service.
 
-### <a name="faults-simulated-in-the-chaos-test"></a>Fouten in de simulatie in de chaos-test
-* Een knooppunt opnieuw starten
-* Opnieuw opstarten van een geïmplementeerde codepakket
+### <a name="faults-simulated-in-the-chaos-test"></a>Gesimuleerde fouten in de chaos-test
+* Een knoop punt opnieuw starten
+* Een geïmplementeerd code pakket opnieuw starten
 * Een replica verwijderen
-* Opnieuw opstarten van een replica
-* Verplaatsen van een primaire replica (optioneel)
-* Verplaatsen van een secundaire replica (optioneel)
+* Een replica opnieuw opstarten
+* Een primaire replica verplaatsen (optioneel)
+* Een secundaire replica verplaatsen (optioneel)
 
-De chaos-test meerdere pogingen van fouten en cluster validaties worden uitgevoerd voor de opgegeven periode. De tijd voor het cluster te laten stabiliseren en voor de validatie te voltooien, kan ook worden geconfigureerd. Het scenario mislukt wanneer u een storing in de clustervalidatie bereikt.
+De chaos-test voert meerdere herhalingen van fouten en cluster validaties uit voor de opgegeven periode. De tijd die nodig is om het cluster te stabiliseren en om de validatie te volt ooien, kan ook worden geconfigureerd. Het scenario mislukt als u één fout in de cluster validatie aanraakt.
 
-Bijvoorbeeld, kunt u overwegen een test ingesteld op gedurende één uur worden uitgevoerd met een maximum van drie gelijktijdige fouten. De test worden drie fouten veroorzaken en controleer vervolgens of de clusterstatus. De test wordt door de vorige stap herhalen tot het cluster slecht wordt of één uur wordt doorgegeven. Als het cluster wordt niet in orde in elke iteratie, dat wil zeggen het heeft niet stabiel binnen een geconfigureerde periode, de test mislukt met een uitzondering. Deze uitzondering geeft aan dat er iets is iets verkeerd gegaan en verder onderzoek nodig.
+Stel bijvoorbeeld dat een testset gedurende één uur wordt uitgevoerd met een maximum van drie gelijktijdige fouten. De test veroorzaakt drie fouten en valideert vervolgens de cluster status. Tijdens de test wordt de vorige stap herhaald totdat het cluster niet meer in orde is of één uur wordt weer gegeven. Als het cluster in een wille keurige herhaling wordt beschadigd, d.w.z. het niet binnen een geconfigureerde tijd wordt gestabiliseerd, mislukt de test met een uitzonde ring. Deze uitzonde ring geeft aan dat er iets mis is gegaan en verder moet worden onderzocht.
 
-In de huidige vorm induceert de engine voor het genereren van fouttolerantie in de chaos-test alleen veilige fouten. Dit betekent dat in de afwezigheid van externe fouten kunnen een quorum of gegevensverlies wordt nooit uitgevoerd.
+In het huidige formulier worden door de engine voor het genereren van fouten in de chaos-test alleen veilige fouten geinduceerd. Dit betekent dat als er geen externe fouten zijn, er geen quorum-of gegevens verlies optreedt.
 
-### <a name="important-configuration-options"></a>Belangrijke configuratie-opties
-* **TimeToRun**: Totale tijd dat de test wordt uitgevoerd voordat u met succes is voltooid. De test kan eerder voltooid in plaats van een mislukte validatie.
-* **MaxClusterStabilizationTimeout**: Maximale hoeveelheid tijd moet worden gewacht op het cluster op in orde worden voordat de test mislukt. Controles zijn of de clusterstatus van de OK is, de servicestatus van de is OK, de grootte van de doel-replica is bereikt voor de servicepartitie en geen InBuild-replica's bestaan.
-* **MaxConcurrentFaults**: Maximum aantal gelijktijdige fouten die in elke iteratie. Hoe hoger het getal, de agressiever de test, dus dit resulteert in meer complexe failovers en overgang combinaties. De test wordt gegarandeerd dat op de afwezigheid van externe fouten niet een quorum of gegevensverlies worden, ongeacht hoe hoog deze configuratie is.
-* **EnableMoveReplicaFaults**: Hiermee schakelt de fouten die worden veroorzaakt door het verplaatsen van de primaire of secundaire replica's of. Deze fouten zijn standaard uitgeschakeld.
-* **WaitTimeBetweenIterations**: Hoeveelheid tijd moet worden gewacht tussen pogingen, dat wil zeggen na een ronde van fouten en de bijbehorende validatie.
+### <a name="important-configuration-options"></a>Belang rijke configuratie opties
+* **TimeToRun**: De totale tijd dat de test wordt uitgevoerd voordat de uitvoering is voltooid. De test kan eerder worden voltooid in plaats van een validatie fout.
+* **MaxClusterStabilizationTimeout**: De maximale hoeveelheid tijd die moet worden gewacht totdat het cluster in orde is voordat de test is mislukt. De controles worden uitgevoerd, ongeacht of de status van het cluster OK is, de service status is OK, de grootte van de doel replicaset wordt behaald voor de service partitie en er zijn geen inbuild-replica's.
+* **MaxConcurrentFaults**: Het maximum aantal gelijktijdige fouten die zijn opgetreden tijdens elke iteratie. Hoe hoger de waarde, hoe sterker de test, dus wat resulteert in complexere failovers en overgangs combinaties. De test garandeert dat bij afwezigheid van externe fouten geen quorum of gegevens verlies optreedt, ongeacht hoe hoog deze configuratie is.
+* **EnableMoveReplicaFaults**: Hiermee worden de fouten die het verplaatsen van de primaire of secundaire replica's veroorzaken, in-of uitgeschakeld. Deze fouten zijn standaard uitgeschakeld.
+* **WaitTimeBetweenIterations**: Hoeveelheid tijd die moet worden gewacht tussen iteraties, d.w.z. na een afronding van fouten en de bijbehorende validatie.
 
-### <a name="how-to-run-the-chaos-test"></a>Het uitvoeren van de chaos-test
+### <a name="how-to-run-the-chaos-test"></a>De chaos-test uitvoeren
 C#-voorbeeld
 
 ```csharp
@@ -133,6 +133,8 @@ class Test
 
 PowerShell
 
+De Service Fabric Power shell-module bevat twee manieren om een chaos-scenario te starten. `Invoke-ServiceFabricChaosTestScenario` is client-gebaseerd en als de client computer halverwege de test wordt afgesloten, worden er geen verdere fouten geïntroduceerd. U kunt ook een reeks opdrachten gebruiken om te zorgen dat de test wordt uitgevoerd bij het afsluiten van de computer. `Start-ServiceFabricChaos` maakt gebruik van een stateful en betrouw bare systeem service met de naam FaultAnalysisService, zodat er fouten blijven worden geïntroduceerd totdat de TimeToRun actief is. `Stop-ServiceFabricChaos` kan worden gebruikt om het scenario hand matig te stoppen en `Get-ServiceFabricChaosReport` krijgt een rapport. Zie voor meer informatie de [Azure service Fabric Power shell-referentie](https://docs.microsoft.com/powershell/module/servicefabric/?view=azureservicefabricps) en het ontregelde [chaos in service Fabric-clusters](service-fabric-controlled-chaos.md).
+
 ```powershell
 $connection = "localhost:19000"
 $timeToRun = 60
@@ -147,25 +149,25 @@ Invoke-ServiceFabricChaosTestScenario -TimeToRunMinute $timeToRun -MaxClusterSta
 
 
 ## <a name="failover-test"></a>Failover testen
-Het scenario voor het testen van failover is een versie van het scenario voor het testen van chaos die gericht is op een specifieke service-partitie. Deze test het effect van failover op de partitie van een specifieke service terwijl de andere services niet beïnvloed. Nadat deze geconfigureerd met de doel-partitie-informatie en andere parameters, wordt deze uitgevoerd als een client-side-hulpprogramma dat gebruikmaakt van C#-API's of PowerShell voor het genereren van fouten voor de servicepartitie van een. Het scenario doorloopt een reeks gesimuleerde fouten en servicevalidatie, terwijl uw zakelijke logica wordt uitgevoerd aan de zijde voor een werkbelasting. Een fout in de servicevalidatie geeft een probleem dat moet worden verder onderzoek.
+Het test scenario voor de failover is een versie van het chaos-test scenario dat gericht is op een specifieke service partitie. Hiermee wordt het effect van een failover naar een specifieke service partitie getest, waarbij de andere services ongewijzigd blijven. Zodra deze is geconfigureerd met de informatie over de doel partitie en andere para meters, wordt deze uitgevoerd als een hulp programma C# aan de client zijde die Api's of Power shell gebruikt om fouten te genereren voor een service partitie. Het scenario doorloopt een opeenvolging van gesimuleerde fouten en service validatie terwijl uw bedrijfs logica aan de zijde wordt uitgevoerd om een werk belasting te leveren. Een fout in de service validatie geeft aan dat er een probleem is dat verder moet worden onderzocht.
 
-### <a name="faults-simulated-in-the-failover-test"></a>Fouten in de failovertest gesimuleerde
-* Een geïmplementeerde codepakket waar de partitie wordt gehost opnieuw opstarten
-* Een primaire/secundaire replica of een stateless exemplaar verwijderen
-* Een primaire, secundaire replica opnieuw opstarten (indien een persistente service)
-* Verplaatsen van een primaire replica
-* Verplaatsen van een secundaire replica
-* De partitie opnieuw starten
+### <a name="faults-simulated-in-the-failover-test"></a>Gesimuleerde fouten in de failover-test
+* Een geïmplementeerd code pakket waarop de partitie wordt gehost opnieuw opstarten
+* Een primaire/secundaire replica of stateless exemplaar verwijderen
+* Een primaire secundaire replica opnieuw opstarten (als er een persistente service is)
+* Een primaire replica verplaatsen
+* Een secundaire replica verplaatsen
+* De partitie opnieuw opstarten
 
-De failovertest induceert een fout is gekozen en voert vervolgens de validatie van de service om te controleren of de stabiliteit. De failovertest induceert maar één fout op een tijdstip, in plaats van mogelijk meerdere fouten in de chaos-test. Als de servicepartitie niet binnen de geconfigureerde time-out na elke fout stabiliseren heeft, wordt de test mislukt. De test induceert alleen veilige fouten. Dit betekent dat in de afwezigheid van externe storingen, een quorum of gegevensverlies wordt niet uitgevoerd.
+De failover-test veroorzaakt een gekozen fout en voert vervolgens validatie uit op de service om de stabiliteit te garanderen. De failover-test induceert slechts één fout per keer, in tegens telling tot meerdere fouten in de chaos-test. Als de service partitie niet stabiel is binnen de geconfigureerde time-out na elke fout, mislukt de test. De test induceert alleen veilige storingen. Dit betekent dat als er geen externe fouten optreden, er geen quorum-of gegevens verlies optreedt.
 
-### <a name="important-configuration-options"></a>Belangrijke configuratie-opties
-* **PartitionSelector**: Kiezer-object dat Hiermee geeft u de partitie die moet worden toegepast.
-* **TimeToRun**: Totale tijd dat de test wordt uitgevoerd voordat u klaar bent.
-* **MaxServiceStabilizationTimeout**: Maximale hoeveelheid tijd moet worden gewacht op het cluster op in orde worden voordat de test mislukt. Controles zijn of de servicestatus van de OK is, de grootte van de doel-replica is bereikt voor alle partities en geen InBuild-replica's bestaan.
-* **WaitTimeBetweenFaults**: Hoeveelheid tijd moet worden gewacht tussen elke cyclus domeinen met fouten en validatie.
+### <a name="important-configuration-options"></a>Belang rijke configuratie opties
+* **PartitionSelector**: Selector-object waarmee de partitie wordt opgegeven waarvoor een doel moet worden ingesteld.
+* **TimeToRun**: De totale tijd dat de test wordt uitgevoerd voordat deze wordt voltooid.
+* **MaxServiceStabilizationTimeout**: De maximale hoeveelheid tijd die moet worden gewacht totdat het cluster in orde is voordat de test is mislukt. De uitgevoerde controles zijn of de status van de service OK is, de grootte van de doel replicaset wordt bereikt voor alle partities en er bestaan geen inbouw replica's.
+* **WaitTimeBetweenFaults**: De hoeveelheid tijd die moet worden gewacht tussen elke fout en validatie cyclus.
 
-### <a name="how-to-run-the-failover-test"></a>Het uitvoeren van de failovertest
+### <a name="how-to-run-the-failover-test"></a>De failover-test uitvoeren
 **C#**
 
 ```csharp

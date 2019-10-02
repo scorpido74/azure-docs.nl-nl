@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 09/10/2019
+ms.date: 10/01/2019
 ms.author: pafarley
-ms.openlocfilehash: c0a11c90b59c1c475f80b82073c6b151d57535c3
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: ab6a0d5c2a4c4623506d90b76b77462abb8fe4af
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71709791"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71719496"
 ---
 # <a name="quickstart-computer-vision-client-library-for-python"></a>Quickstart: Client bibliotheek voor python Computer Vision
 
@@ -136,9 +136,9 @@ Met de volgende code worden de gedetecteerde gezichten in de afbeelding met hun 
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ComputerVision/ComputerVisionQuickstart.py?name=snippet_faces)]
 
-### <a name="detect-adult-or-racy-content"></a>Inhoud voor volwassenen of ongepaste detecteren
+### <a name="detect-adult-racy-or-gory-content"></a>Inhoud voor volwassenen, ongepaste of benchmarks detecteren
 
-Met de volgende code wordt de gedetecteerde aanwezigheid van inhoud voor volwassenen of ongepaste in de installatie kopie afgedrukt. Zie [inhoud voor volwassenen en ongepaste](../concept-detecting-adult-content.md) voor meer informatie.
+Met de volgende code wordt de gedetecteerde aanwezigheid van inhoud voor volwassenen afgedrukt in de installatie kopie. Zie [inhoud voor volwassenen, ongepaste, benchmarks](../concept-detecting-adult-content.md) voor meer informatie.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ComputerVision/ComputerVisionQuickstart.py?name=snippet_adult)]
 

@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 09/16/2019
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: 8e9cc93a74c299be6fb4898b4af143a43fc079f5
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 3c7ba10525dedf213a416d9ce6b55c80539fedd7
+ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71067027"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71812208"
 ---
 # <a name="monitor-the-availability-of-any-website"></a>Beschik baarheid van alle websites bewaken
 
@@ -31,7 +31,7 @@ Er zijn drie soorten beschikbaarheids tests:
 
 * [URL-pingtest](#create-a-url-ping-test): een eenvoudige test die u in Azure Portal kunt instellen.
 * [Webtest met meerdere stappen](availability-multistep.md): Een registratie van een reeks webaanvragen, die u kunt afspelen om complexe scenario's te testen. Webtests met meerdere stappen worden gemaakt in Visual Studio Enter prise en geüpload naar de portal voor uitvoering.
-* [Aangepaste beschikbaarheids testen](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability?view=azure-dotnet): De `TrackAvailability()` methode kan worden gebruikt om uw eigen aangepaste beschikbaarheids tests te maken.
+* [Aangepaste beschikbaarheids testen](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability?view=azure-dotnet): Als u besluit een aangepaste toepassing te maken om beschikbaarheids tests uit te voeren, kunt u de `TrackAvailability()`-methode gebruiken om de resultaten naar Application Insights te verzenden.
 
 **U kunt Maxi maal 100 beschik bare beschikbaarheids tests maken per Application Insights resource.**
 

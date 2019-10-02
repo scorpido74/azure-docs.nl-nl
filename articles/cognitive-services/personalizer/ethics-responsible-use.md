@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 06/12/2019
 ms.author: diberry
-ms.openlocfilehash: f565d95f8270612a8d83dd44a1e1bb895d1a4373
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: 11b626c0033814f0886ac76fff0c5d4087a80554
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68662789"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71720243"
 ---
 # <a name="guidelines-for-responsible-implementation-of-personalizer"></a>Richt lijnen voor de verantwoordelijke implementatie van Personaler
 
@@ -63,7 +63,8 @@ Bij het kiezen van use cases voor Personaler:
 
 * Start het ontwerp proces om te bepalen hoe de persoonlijke instellingen uw gebruikers helpen.
 * Houd rekening met de negatieve gevolgen voor de echte wereld als sommige items niet worden geclassificeerd voor gebruikers als gevolg van personalisatie patronen of verkennen.
-* Overweeg zelf te voldoen aan Prophecy-lussen. Dit kan gebeuren als een persoonlijke compensatie beloning een model traint, zodat het mogelijk is dat een demografische groep van toegang tot relevante inhoud wordt uitgesloten. Het is bijvoorbeeld mogelijk dat de meeste mensen in een laag-inkomen geen Premium-verzekerings aanbieding verkrijgen en dat ze nooit in de groep worden weer geven.
+* Houd rekening met het feit of uw use-case geautomatiseerde verwerking is die van invloed is op de gegevens onderwerpen die worden geregeld onder [AVG](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32016R0679) artikel 22 of andere wetgeving.
+* Overweeg zelf te voldoen aan Prophecy-lussen. Dit kan gebeuren als een persoonlijke compensatie beloning een model traint, zodat het mogelijk is dat een demografische groep van toegang tot relevante inhoud wordt uitgesloten. Het is bijvoorbeeld mogelijk dat de meeste mensen in een lage inkomsten groep geen Premium-verzekerings aanbieding verkrijgen en dat ze nooit in de groep worden weer geven om de aanbieding helemaal te zien als er onvoldoende is.
 * Sla kopieën van modellen en learning-beleids regels op voor het geval dat het nodig is om in de toekomst een persoonlijker te maken. U kunt dit regel matig doen of elke vernieuwings periode voor het model.
 * Denk na over het niveau van exploratie dat voldoende is voor de ruimte en hoe u het kunt gebruiken als hulp middel om de effecten van de echo kamer te verminderen.
 
@@ -131,7 +132,7 @@ Hier volgen de ontwerp gebieden voor de verantwoordelijke implementaties van AI.
 ### <a name="transparency"></a>Transparantie
 *AI-systemen moeten begrijpelijk zijn*. Met persoonlijke instellingen:
 
-* *Geef gebruikers informatie over de manier waarop de inhoud is aangepast.* U kunt bijvoorbeeld uw gebruikers weer geven `Why These Suggestions?` met een knop met het label dat wordt weer gegeven met de belangrijkste functies van de gebruiker en acties die een rol hebben gespeeld in de resultaten van personaler.
+* *Geef gebruikers informatie over de manier waarop de inhoud is aangepast.* U kunt bijvoorbeeld uw gebruikers weer geven met een knop met het label `Why These Suggestions?` waarin wordt weer gegeven welke belangrijkste functies van de gebruiker en acties een rol hebben gespeeld in de resultaten van Personaler.
 * Zorg ervoor dat uw gebruiksrecht overeenkomst vermeldt dat u informatie over gebruikers en hun gedrag gaat gebruiken om de ervaring te personaliseren.
 
 ### <a name="fairness"></a>Verdeling

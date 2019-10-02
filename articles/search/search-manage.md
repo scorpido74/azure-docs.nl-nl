@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/08/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 2c4b2a03e7e5c818453eaf4ad6881b2caba3b93c
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 9a73b4664e363e80c514ba4c01f754de3a2eed24
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69647680"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71719867"
 ---
 # <a name="service-administration-for-azure-search-in-the-azure-portal"></a>Service beheer voor Azure Search in het Azure Portal
 > [!div class="op_single_selector"]
@@ -79,10 +79,9 @@ Als u geen Indexeer functies gebruikt, gebruikt u uw toepassings code om objecte
 
 ## <a name="backup-and-restore"></a>Back-ups en herstellen
 
-Omdat Azure Search geen primaire oplossing voor gegevens opslag is, bieden we geen formeel mechanisme voor back-up en herstel van self-service. De toepassings code die wordt gebruikt voor het maken en vullen van een index, is de optie voor het terugzetten van de locatie als u per ongeluk een index verwijdert. 
+Omdat Azure Search geen primaire oplossing voor gegevens opslag is, bieden we geen formeel mechanisme voor back-up en herstel van self-service. U kunt echter de voorbeeld code **index-Backup-Restore** in dit [Azure Search .net-voor beeld opslag plaats](https://github.com/Azure-Samples/azure-search-dotnet-samples) gebruiken om een back-up te maken van de index definitie en moment opname naar een reeks json-bestanden en deze bestanden vervolgens gebruiken om de index te herstellen, indien nodig. Met dit hulp programma kunt u ook indexen verplaatsen tussen service lagen.
 
-Als u een index opnieuw wilt samen stellen, verwijdert u deze (ervan uitgaande dat deze bestaat), maakt u de index opnieuw in de service en laadt u deze opnieuw door gegevens op te halen uit uw primaire gegevens opslag.
-
+Anders is uw toepassings code die wordt gebruikt voor het maken en vullen van een index de optie voor het terugzetten van de index. Als u een index opnieuw wilt samen stellen, verwijdert u deze (ervan uitgaande dat deze bestaat), maakt u de index opnieuw in de service en laadt u deze opnieuw door gegevens op te halen uit uw primaire gegevens opslag.
 
 <a id="scale"></a>
 

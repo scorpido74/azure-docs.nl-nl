@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: bonova, sstein
 ms.date: 05/10/2019
-ms.openlocfilehash: 36bcb8f7a3ee75794741b44f91956950179e5544
-ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
+ms.openlocfilehash: 1d8379d0ee54332ae4971cd9abaa8b153d52084a
+ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71162290"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71816068"
 ---
 # <a name="azure-sql-database-features"></a>Azure SQL Database functies
 
@@ -35,7 +35,7 @@ De volgende tabel bevat de belangrijkste functies van SQL Server en geeft inform
 | **SQL-functie** | **Afzonderlijke data bases en elastische Pools** | **Beheerde instanties en exemplaar groepen** |
 | --- | --- | --- |
 | [Altijd versleuteld](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine) | Ja, Zie [certificaat archief](sql-database-always-encrypted.md) en [sleutel kluis](sql-database-always-encrypted-azure-key-vault.md) | Ja, Zie [certificaat archief](sql-database-always-encrypted.md) en [sleutel kluis](sql-database-always-encrypted-azure-key-vault.md) |
-| [AlwaysOn-beschikbaarheids groepen](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server) | [Hoge Beschik baarheid](sql-database-high-availability.md) is opgenomen in elke Data Base. Herstel na nood gevallen wordt beschreven in [overzicht van bedrijfs continuïteit met Azure SQL database](sql-database-business-continuity.md) | [Hoge Beschik baarheid](sql-database-high-availability.md) is opgenomen in elke Data Base en [kan niet worden beheerd door de gebruiker](sql-database-managed-instance-transact-sql-information.md#always-on-availability). Herstel na nood gevallen wordt beschreven in [overzicht van bedrijfs continuïteit met Azure SQL database](sql-database-business-continuity.md) |
+| [AlwaysOn-beschikbaarheids groepen](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server) | de [Beschik baarheid van 99,99-99.995%](sql-database-high-availability.md) wordt gegarandeerd voor elke Data Base. Herstel na nood gevallen wordt beschreven in [overzicht van bedrijfs continuïteit met Azure SQL database](sql-database-business-continuity.md) | [99,99.% Beschik baarheid](sql-database-high-availability.md) is gegarandeerd voor elke Data Base en [kan niet worden beheerd door de gebruiker](sql-database-managed-instance-transact-sql-information.md#always-on-availability). Herstel na nood gevallen wordt beschreven in [overzicht van bedrijfs continuïteit met Azure SQL database](sql-database-business-continuity.md). Gebruik [groepen voor automatische failover](sql-database-auto-failover-group.md) voor het configureren van secundaire altijd op een beheerd exemplaar in een andere regio. Andere SQL Server-instanties en afzonderlijke data bases kunnen niet worden gebruikt als secundaire zones voor een beheerd exemplaar. |
 | [Een Data Base koppelen](https://docs.microsoft.com/sql/relational-databases/databases/attach-a-database) | Nee | Nee |
 | [Controle](https://docs.microsoft.com/sql/relational-databases/security/auditing/sql-server-audit-database-engine) | [Ja](sql-database-auditing.md)| [Ja](sql-database-managed-instance-auditing.md), met enkele [verschillen](sql-database-managed-instance-transact-sql-information.md#auditing) |
 | [Azure Active Directory-verificatie (AAD)](sql-database-aad-authentication.md) | Ja. Alleen AAD-gebruikers. | Ja. Inclusief AAD-aanmeldingen op server niveau. |
@@ -57,7 +57,7 @@ De volgende tabel bevat de belangrijkste functies van SQL Server en geeft inform
 | [DDL-instructies](https://docs.microsoft.com/sql/t-sql/statements/statements) | De meeste-Zie afzonderlijke instructies | Ja, Zie [T-SQL-verschillen](sql-database-managed-instance-transact-sql-information.md) |
 | [DDL-triggers](https://docs.microsoft.com/sql/relational-databases/triggers/ddl-triggers) | Alleen data base |  Ja |
 | [Gedistribueerde partitie weergaven](https://docs.microsoft.com/sql/t-sql/statements/create-view-transact-sql#partitioned-views) | Nee | Ja |
-| [Gedistribueerde trans acties-MS DTC](https://docs.microsoft.com/sql/relational-databases/native-client-ole-db-transactions/supporting-distributed-transactions) | Nee-Zie [elastische trans acties](sql-database-elastic-transactions-overview.md) |  Geen-Zie [verschillen met gekoppelde servers](sql-database-managed-instance-transact-sql-information.md#linked-servers) |
+| [Gedistribueerde trans acties-MS DTC](https://docs.microsoft.com/sql/relational-databases/native-client-ole-db-transactions/supporting-distributed-transactions) | Nee-Zie [elastische trans acties](sql-database-elastic-transactions-overview.md) |  Nee, Zie [verschillen met gekoppelde servers](sql-database-managed-instance-transact-sql-information.md#linked-servers). Probeer data bases van verschillende gedistribueerde SQL Server exemplaren samen te voegen in één beheerd exemplaar tijdens de migratie. |
 | [DML-triggers](https://docs.microsoft.com/sql/relational-databases/triggers/create-dml-triggers) | De meeste-Zie afzonderlijke instructies |  Ja |
 | [DMV's](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views) | De meeste-Zie afzonderlijke Dmv's |  Ja, Zie [T-SQL-verschillen](sql-database-managed-instance-transact-sql-information.md) |
 | [Gebeurtenis meldingen](https://docs.microsoft.com/sql/relational-databases/service-broker/event-notifications) | Geen-Zie [waarschuwingen](sql-database-insights-alerts-portal.md) | Nee |
@@ -90,7 +90,7 @@ De volgende tabel bevat de belangrijkste functies van SQL Server en geeft inform
 | [Data base terugzetten vanuit een back-up](https://docs.microsoft.com/sql/relational-databases/backup-restore/back-up-and-restore-of-sql-server-databases#restore-data-backups) | Alleen uit automatische back-ups: Zie [SQL database herstel](sql-database-recovery-using-backups.md) | Van automatische back-ups: Zie [SQL database herstel](sql-database-recovery-using-backups.md) en de volledige back-ups die zijn geplaatst op Azure Blob Storage-Zie [back-upverschillen](sql-database-managed-instance-transact-sql-information.md#backup) |
 | [Data base terugzetten naar SQL Server](https://docs.microsoft.com/sql/relational-databases/backup-restore/back-up-and-restore-of-sql-server-databases#restore-data-backups) | Nee. Gebruik BACPAC of BCP in plaats van systeem eigen herstel. | Nee, omdat SQL Server data base-engine die in het beheerde exemplaar wordt gebruikt, een hogere versie heeft dan een RTM-versie van SQL Server die on-premises wordt gebruikt. Gebruik in plaats daarvan BACPAC, BCP of transactionele replicatie. |
 | [Semantisch zoeken](https://docs.microsoft.com/sql/relational-databases/search/semantic-search-sql-server) | Nee | Nee |
-| [Service Broker](https://docs.microsoft.com/sql/database-engine/configure-windows/sql-server-service-broker) | Nee | Ja, maar alleen binnen het exemplaar. [Service Broker verschillen](sql-database-managed-instance-transact-sql-information.md#service-broker) bekijken |
+| [Service Broker](https://docs.microsoft.com/sql/database-engine/configure-windows/sql-server-service-broker) | Nee | Ja, maar alleen binnen het exemplaar. Als u gebruikmaakt van externe Service Broker routes, probeert u data bases van verschillende gedistribueerde SQL Server instanties samen te voegen in één beheerd exemplaar tijdens de migratie en alleen lokale routes te gebruiken. [Service Broker verschillen](sql-database-managed-instance-transact-sql-information.md#service-broker) bekijken |
 | [Server configuratie-instellingen](https://docs.microsoft.com/sql/database-engine/configure-windows/server-configuration-options-sql-server) | Nee | Ja, Zie [T-SQL-verschillen](sql-database-managed-instance-transact-sql-information.md) |
 | [Set-instructies](https://docs.microsoft.com/sql/t-sql/statements/set-statements-transact-sql) | De meeste-Zie afzonderlijke instructies | Ja, Zie [T-SQL-verschillen](sql-database-managed-instance-transact-sql-information.md)|
 | [SQL Server Agent](https://docs.microsoft.com/sql/ssms/agent/sql-server-agent) | Nee, Zie [elastische taken](elastic-jobs-overview.md) | Ja, [SQL Server Agent verschillen](sql-database-managed-instance-transact-sql-information.md#sql-server-agent) bekijken |
@@ -133,7 +133,7 @@ Azure-platform biedt een aantal PaaS-mogelijkheden die als extra waarde worden t
 | [Herstel naar een bepaald tijdstip data base](https://docs.microsoft.com/sql/relational-databases/backup-restore/restore-a-sql-server-database-to-a-point-in-time-full-recovery-model) | Ja, alle service lagen met uitzonde ring van grootschalige-Zie [SQL database Recovery](sql-database-recovery-using-backups.md#point-in-time-restore) | Ja, Zie [SQL database herstellen](sql-database-recovery-using-backups.md#point-in-time-restore) |
 | Resource groepen | Ja, als [elastische Pools](sql-database-elastic-pool.md) | Ja. Eén beheerd exemplaar kan meerdere data bases hebben die dezelfde groep resources delen. Daarnaast kunt u meerdere beheerde exemplaren implementeren in [exemplaar groepen (preview)](sql-database-instance-pools.md) die de bronnen kunnen delen. |
 | Omhoog of omlaag schalen (online) | Ja, u kunt DTU of gereserveerde vCores of maximale opslag ruimte wijzigen met de minimale downtime. | Ja, u kunt gereserveerde vCores of maximale opslag ruimte wijzigen met de minimale downtime. |
-| SQL-alias | Ja, Zie [DNS-alias](dns-alias-overview.md) | Nee |
+| [SQL-alias](https://docs.microsoft.com/sql/database-engine/configure-windows/create-or-delete-a-server-alias-for-use-by-a-client) | Nee, [DNS-alias](dns-alias-overview.md) gebruiken | Nee, gebruik [Clicongf](https://techcommunity.microsoft.com/t5/Azure-Database-Support-Blog/Lesson-Learned-33-How-to-make-quot-cliconfg-quot-to-work-with/ba-p/369022) om aliassen op de client computers in te stellen. |
 | [SQL Analytics](https://docs.microsoft.com/azure/azure-monitor/insights/azure-sql) | Ja | Ja |
 | [SQL Data Sync](sql-database-get-started-sql-data-sync.md) | Ja | Nee |
 | [SQL Server Analysis Services (SSAS)](https://docs.microsoft.com/sql/analysis-services/analysis-services) | Nee, [Azure Analysis Services](https://azure.microsoft.com/services/analysis-services/) is een afzonderlijke Azure-Cloud service. | Nee, [Azure Analysis Services](https://azure.microsoft.com/services/analysis-services/) is een afzonderlijke Azure-Cloud service. |
@@ -142,6 +142,7 @@ Azure-platform biedt een aantal PaaS-mogelijkheden die als extra waarde worden t
 | [Query prestaties inzichten (QPI)](sql-database-query-performance.md) | Ja | Nee. Gebruik ingebouwde rapporten in SQL Server Management Studio en Azure Data Studio. |
 | [VNet](../virtual-network/virtual-networks-overview.md) | Gedeeltelijk, het maakt beperkte toegang mogelijk met behulp van [VNet-eind punten](sql-database-vnet-service-endpoint-rule-overview.md) | Ja, beheerd exemplaar wordt geïnjecteerd in het VNet van de klant. Zie [subnet](sql-database-managed-instance-transact-sql-information.md#subnet) en [VNet](sql-database-managed-instance-transact-sql-information.md#vnet) |
 | VNet-service-eind punt | [Ja](sql-database-vnet-service-endpoint-rule-overview.md) | Nee |
+| Globale VNet-peering | Ja, met behulp van [privé-IP-en service-eind punten](sql-database-vnet-service-endpoint-rule-overview.md) | Nee, [beheerd exemplaar wordt niet ondersteund](../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) als gevolg [van een Load Balancer-beperking in VNet Global peering](../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints).
 
 ## <a name="tools"></a>Hulpprogramma's
 Azure SQL database ondersteunt diverse hulp middelen voor gegevens die u kunnen helpen bij het beheren van uw gegevens.
@@ -161,7 +162,7 @@ Azure SQL database ondersteunt diverse hulp middelen voor gegevens die u kunnen 
 | [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) | Ja | Ja [, versie 18,0 en hoger](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) |
 | [SQL Server PowerShell](https://docs.microsoft.com/sql/relational-databases/scripting/sql-server-powershell) | Ja | Ja |
 | [SQL Server Profiler](https://docs.microsoft.com/sql/tools/sql-server-profiler/sql-server-profiler) | Geen-Zie [uitgebreide gebeurtenissen](sql-database-xevent-db-diff-from-svr.md) | Ja |
-| [System Center Operations Manager-SCOM](https://docs.microsoft.com/system-center/scom/welcome) | [Ja](https://www.microsoft.com/download/details.aspx?id=38829) | Ja, [in preview-versie](https://www.microsoft.com/download/details.aspx?id=100306) |
+| [System Center Operations Manager (SCOM)](https://docs.microsoft.com/system-center/scom/welcome) | [Ja](https://www.microsoft.com/download/details.aspx?id=38829) | Ja, [in preview-versie](https://www.microsoft.com/download/details.aspx?id=100306) |
 
 ## <a name="migration-methods"></a>Migratie methoden
 

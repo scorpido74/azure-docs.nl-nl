@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/24/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 02765538ce8a351db539438837b6426c0896d2d4
-ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
+ms.openlocfilehash: 2585b47d049047cc191bfc284c4486361917f1ed
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71701897"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802063"
 ---
 # <a name="azure-ad-b2c-use-the-azure-ad-graph-api"></a>Azure AD B2C: De Azure AD Graph API gebruiken
 
@@ -49,19 +49,11 @@ Als u de Azure AD-Graph API wilt gebruiken met uw B2C-Tenant, moet u een toepass
 
 ### <a name="assign-api-access-permissions"></a>API-toegangs machtigingen toewijzen
 
-1. Op de overzichts pagina van de **geregistreerde app** selecteert u **instellingen**.
-1. Selecteer onder **API-toegang**de optie **vereiste machtigingen**.
-1. Selecteer **Windows Azure Active Directory**.
-1. Selecteer onder **toepassings machtigingen**de optie **lezen en Directory gegevens schrijven**.
-1. Selecteer **Opslaan**.
-1. Selecteer **machtigingen verlenen**, en selecteer vervolgens **Ja**. Het kan enkele minuten duren voordat de machtigingen volledig zijn door gegeven.
+[!INCLUDE [active-directory-b2c-permissions-directory](../../includes/active-directory-b2c-permissions-directory.md)]
 
 ### <a name="create-client-secret"></a>Client geheim maken
 
-1. Selecteer onder **API-toegang**de optie **sleutels**.
-1. Voer een beschrijving in voor de sleutel in het vak **sleutel beschrijving** . Bijvoorbeeld *beheer sleutel*.
-1. Selecteer een **duur** geldigheid en selecteer vervolgens **Opslaan**.
-1. Noteer de **waarde**van de sleutel. U gebruikt deze waarde voor configuratie in een latere stap.
+[!INCLUDE [active-directory-b2c-client-secret](../../includes/active-directory-b2c-client-secret.md)]
 
 U hebt nu een toepassing die toestemming heeft om gebruikers in uw Azure AD B2C-Tenant te *maken*, te *lezen*en bij te *werken* . Ga verder met de volgende sectie om machtigingen voor het *verwijderen* van gebruikers en het *bijwerken van wacht woorden* toe te voegen.
 

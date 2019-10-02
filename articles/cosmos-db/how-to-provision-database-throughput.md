@@ -1,17 +1,17 @@
 ---
 title: Databasedoorvoer inrichten in Azure Cosmos DB
 description: Meer informatie over het inrichten van doorvoer op databaseniveau in Azure Cosmos DB
-author: rimman
+author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 07/03/2019
-ms.author: rimman
-ms.openlocfilehash: 29bc65c8afaa1fe4bdc39923bd2219184e8b3a96
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.date: 09/28/2019
+ms.author: mjbrown
+ms.openlocfilehash: 93961b44f1c0d063774395ab384cb84b1aa05d99
+ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70093000"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71812498"
 ---
 # <a name="provision-throughput-on-a-database-in-azure-cosmos-db"></a>Door Voer in te richten op een data base in Azure Cosmos DB
 
@@ -27,47 +27,19 @@ In dit artikel wordt uitgelegd hoe u de door Voer inricht voor een data base in 
 
 1. Open het deelvenster **Data Explorer** en selecteer **Nieuwe database**. Geef de volgende gegevens op:
 
-   * Voer een database-id in. 
+   * Voer een database-id in.
    * Selecteer **Doorvoer inrichten**.
    * Voer een doorvoer in, bijvoorbeeld 1000 RU's.
    * Selecteer **OK**.
 
-![Schermafbeelding van het dialoogvenster Nieuwe database](./media/how-to-provision-database-throughput/provision-database-throughput-portal-all-api.png)
+    ![Schermafbeelding van het dialoogvenster Nieuwe database](./media/how-to-provision-database-throughput/provision-database-throughput-portal-all-api.png)
 
+## <a name="provision-throughput-using-azure-cli-or-powershell"></a>Door Voer in te richten met behulp van Azure CLI of Power shell
 
-## <a name="provision-throughput-using-azure-cli"></a>Doorvoer inrichten met behulp van Azure CLI
+Als u een Data Base met gedeelde door voer wilt maken, raadpleegt u
 
-```azcli-interactive
-az cosmosdb database create --db-name
-                            [--key]
-                            [--name]
-                            [--resource-group-name]
-                            [--subscription]
-                            [--throughput]
-                            [--url-connection]
-```
-
-
-
-
-## <a name="provision-throughput-using-powershell"></a>Door Voer in te richten met Power shell
-
-```azurepowershell-interactive
-# Create a database and provision throughput of 400 RU/s
-$resourceGroupName = "myResourceGroup"
-$accountName = "mycosmosaccount"
-$databaseName = "database1"
-$databaseResourceName = $accountName + "/sql/" + $databaseName
-
-$databaseProperties = @{
-    "resource"=@{ "id"=$databaseName };
-    "options"=@{ "Throughput"= 400 }
-}
-
-New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts/apis/databases" `
-    -ApiVersion "2015-04-08" -ResourceGroupName $resourceGroupName `
-    -Name $databaseResourceName -PropertyObject $databaseProperties
-```
+* [Een Data Base maken met behulp van Azure CLI](manage-with-cli.md#create-a-database-with-shared-throughput)
+* [Een Data Base maken met behulp van Power shell](manage-with-powershell.md#create-db-ru)
 
 ## <a name="provision-throughput-using-net-sdk"></a>Doorvoer inrichten met behulp van .NET SDK
 
@@ -75,6 +47,7 @@ New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts/apis/databas
 > U kunt Cosmos Sdk's voor SQL API gebruiken om de door Voer voor alle Api's in te richten. U kunt ook het volgende voorbeeld voor Cassandra-API gebruiken.
 
 ### <a id="dotnet-all"></a>Alle API's
+
 ### <a name="net-v2-sdk"></a>.Net V2 SDK
 
 ```csharp
@@ -91,6 +64,7 @@ await client.CreateDatabaseIfNotExistsAsync(
 ```
 
 ### <a name="net-v3-sdk"></a>.Net v3-SDK
+
 [!code-csharp[](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos/tests/Microsoft.Azure.Cosmos.Tests/SampleCodeForDocs/DatabaseDocsSampleCode.cs?name=DatabaseCreateWithThroughput)]
 
 ### <a id="dotnet-cassandra"></a>Cassandra-API

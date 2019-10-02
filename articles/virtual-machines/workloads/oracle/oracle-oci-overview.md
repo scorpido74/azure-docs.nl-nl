@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 06/04/2019
 ms.author: rogirdh
 ms.custom: ''
-ms.openlocfilehash: 9947d28cbde7f4804283e03cc07093b9240ca6bf
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: 0f35f22d6bd32d75d5c3b07d8a20b4bb7714e247
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71241008"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71799564"
 ---
 # <a name="oracle-application-solutions-integrating-microsoft-azure-and-oracle-cloud-infrastructure-preview"></a>Oracle-toepassings oplossingen die Microsoft Azure en Oracle-Cloud infrastructuur integreren (preview-versie)
 
@@ -28,7 +28,7 @@ Micro soft en Oracle hebben een partnerschap voor de communicatie tussen verschi
 Met deze cross-Cloud-verbinding kunt u een toepassing met meerdere lagen partitioneren om uw databaserol uit te voeren op een Oracle Cloud Infrastructure (OCI) en de toepassing en andere lagen op Microsoft Azure. De ervaring is vergelijkbaar met het uitvoeren van de volledige oplossings stack in één Cloud. 
 
 > [!IMPORTANT]
-> Deze functionaliteit voor meerdere Clouds is momenteel beschikbaar als preview-versie en er [zijn beperkingen van toepassing](#preview-limitations). Als u verbinding met een lage latentie tussen Azure en OCI wilt inschakelen, moet uw Azure-abonnement eerst wit worden weer gegeven voor deze functie. U moet in de preview-periode inschrijven door dit korte [enquête formulier](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyzVVsi364tClw522rL9tkpUMVFGVVFWRlhMNUlRQTVWSTEzT0dXMlRUTyQlQCN0PWcu)in te vullen. U ontvangt een e-mailbevestiging zodra uw abonnement is geregistreerd. U kunt de mogelijkheid niet gebruiken totdat u een bevestigings-e-mail ontvangt. U kunt ook contact opnemen met uw micro soft-vertegenwoordiger om in te scha kelen voor deze preview. De toegang tot de preview-functie is onderhevig aan Beschik baarheid en is door micro soft beperkt. Het volt ooien van de enquête biedt geen garantie voor toegang. Deze preview is beschikbaar zonder service level agreement en mag niet worden gebruikt voor werk belastingen voor de productie. Bepaalde functies worden mogelijk niet ondersteund, zijn mogelijk beperkt of zijn mogelijk niet beschikbaar in alle Azure-locaties. Zie de [aanvullende gebruiks voorwaarden](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor Microsoft Azure-voor beelden voor meer informatie. Sommige aspecten van deze functie worden mogelijk nog gewijzigd voordat de functie algemeen beschikbaar wordt.
+> Deze functionaliteit voor meerdere Clouds is momenteel beschikbaar als preview-versie en er [zijn beperkingen van toepassing](#preview-limitations). Als u verbinding met een lage latentie tot stand wilt brengen tussen Azure en OCI, moet uw Azure-abonnement eerst worden ingeschakeld voor deze mogelijkheid. U moet in de preview-periode inschrijven door dit korte [enquête formulier](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyzVVsi364tClw522rL9tkpUMVFGVVFWRlhMNUlRQTVWSTEzT0dXMlRUTyQlQCN0PWcu)in te vullen. U ontvangt een e-mailbevestiging zodra uw abonnement is geregistreerd. U kunt de mogelijkheid niet gebruiken totdat u een bevestigings-e-mail ontvangt. U kunt ook contact opnemen met uw micro soft-vertegenwoordiger om in te scha kelen voor deze preview. De toegang tot de preview-functie is onderhevig aan Beschik baarheid en is door micro soft beperkt. Het volt ooien van de enquête biedt geen garantie voor toegang. Deze preview is beschikbaar zonder service level agreement en mag niet worden gebruikt voor werk belastingen voor de productie. Bepaalde functies worden mogelijk niet ondersteund, zijn mogelijk beperkt of zijn mogelijk niet beschikbaar in alle Azure-locaties. Zie de [aanvullende gebruiks voorwaarden](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor Microsoft Azure-voor beelden voor meer informatie. Sommige aspecten van deze functie worden mogelijk nog gewijzigd voordat de functie algemeen beschikbaar wordt.
 
 Als u geïnteresseerd bent in het volledig implementeren van Oracle-oplossingen in de Azure-infra structuur, raadpleegt u [Oracle VM-installatie kopieën en de implementatie ervan op Microsoft Azure](oracle-vm-solutions.md).
 

@@ -6,14 +6,14 @@ manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 09/17/2019
+ms.date: 09/30/2019
 ms.author: lyhughes
-ms.openlocfilehash: ad51fbe7d2f8e8f115adf03d6333c0747765ee43
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: 6d8d6f03847fcd22a6d78c445ae039c73e9badfa
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71338608"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71719171"
 ---
 # <a name="connect-to-and-authenticate-with-apis"></a>Verbinding maken met en verifiëren met Api's
 
@@ -34,7 +34,10 @@ Er worden [vijf primaire toepassings scenario's](../active-directory/develop/v2-
 * Webtoepassing voor web-API: Een webtoepassing moet resources ophalen van een web-API die wordt beveiligd door Azure AD.
 * Daemon of server toepassing op Web-API: Een daemon-toepassing of een server toepassing zonder webgebruikersinterface moet resources ophalen van een web-API die wordt beveiligd door Azure AD.
 
-De Windows Azure-verificatie bibliotheek biedt een groot aantal manieren om Active Directory-tokens te verkrijgen. Zie [de ADAL.net-wiki](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki)voor meer informatie over de bibliotheek en code voorbeelden.
+> [!IMPORTANT]
+> Azure Digital Apparaatdubbels ondersteunt de volgende verificatie bibliotheken:
+> * De recentere [micro soft Authentication Library (MSAL)](https://docs.microsoft.com/azure/active-directory/develop/msal-overview)
+> * De [Azure Active Directory-verificatie bibliotheek (ADAL)](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-libraries)
 
 ## <a name="call-digital-twins-from-a-middle-tier-web-api"></a>Digital Apparaatdubbels aanroepen vanuit een web-API in de middelste laag
 

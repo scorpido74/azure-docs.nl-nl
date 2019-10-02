@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/31/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 4c42959d46aa522042275456a87e590f9e009348
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: c5fb79fc3aa3297068f93b631d11e967c9345f4c
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70183062"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71717155"
 ---
 # <a name="secure-an-azure-api-management-api-with-azure-ad-b2c"></a>Een Azure API Management-API beveiligen met Azure AD B2C
 
@@ -53,7 +53,7 @@ Haal vervolgens de bekende configuratie-URL op voor een van uw Azure AD B2C gebr
     ![Bekende URI-Hyper link op de pagina nu uitvoeren van de Azure Portal](media/secure-apim-with-b2c-token/portal-01-policy-link.png)
 
 1. Selecteer de Hyper link om te bladeren naar de pagina met de bekende configuratie van de OpenID connect-verbinding.
-1. Noteer de `issuer` waarde op de pagina die in de browser wordt geopend, bijvoorbeeld:
+1. Noteer op de pagina die wordt geopend in uw browser de waarde voor @no__t 0, bijvoorbeeld:
 
     `https://your-b2c-tenant.b2clogin.com/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/v2.0/`
 
@@ -74,12 +74,12 @@ U bent nu klaar om het inkomende beleid toe te voegen aan Azure API Management d
 1. Selecteer **API's**.
 1. Selecteer de API die u met Azure AD B2C wilt beveiligen.
 1. Selecteer het tabblad **Ontwerpen**.
-1. Onder **inkomende verwerking**selecteert **\< / u omdebeleidscode-editorteopenen.\>**
-1. Plaats de volgende `<validate-jwt>` tag in het `<inbound>` beleid.
+1. Onder **inkomende verwerking**selecteert u **\< @ no__t-3 @ no__t-4** om de beleids code-editor te openen.
+1. Plaats de volgende `<validate-jwt>`-tag in het beleid `<inbound>`.
 
-    1. Werk de `url` waarde in het `<openid-config>` element bij met de bekende configuratie-URL van uw beleid.
-    1. Werk het `<audience>` element bij met de toepassings-id van de toepassing die u eerder in uw B2C-Tenant hebt gemaakt (bijvoorbeeld *webapp1*).
-    1. Werk het `<issuer>` element bij met het token uitgever-eind punt dat u eerder hebt vastgelegd.
+    1. Werk de `url`-waarde in het `<openid-config>`-element bij met de bekende configuratie-URL van uw beleid.
+    1. Werk het element `<audience>` bij met de toepassings-ID van de toepassing die u eerder in uw B2C-Tenant hebt gemaakt (bijvoorbeeld *webapp1*).
+    1. Werk het element `<issuer>` bij met het token uitgever-eind punt dat u eerder hebt vastgelegd.
 
     ```xml
     <policies>
@@ -103,19 +103,19 @@ U bent nu klaar om het inkomende beleid toe te voegen aan Azure API Management d
 
 ## <a name="validate-secure-api-access"></a>Beveiligde API-toegang valideren
 
-Om ervoor te zorgen dat alleen geverifieerde Bellers toegang hebben tot uw API, kunt u uw Azure API Management-configuratie [](https://www.getpostman.com/)valideren door de API aan te roepen met behulp van postman.
+Om ervoor te zorgen dat alleen geverifieerde Bellers toegang hebben tot uw API, kunt u uw Azure API Management-configuratie valideren door de API aan te roepen met behulp van [postman](https://www.getpostman.com/).
 
 Als u de API wilt aanroepen, moet u een toegangs token hebben dat is uitgegeven door Azure AD B2C en een APIM-abonnements sleutel.
 
 ### <a name="get-an-access-token"></a>Een toegangstoken opvragen
 
-U hebt eerst een token nodig dat is uitgegeven door Azure AD B2C om `Authorization` in de header in postman te gebruiken. U kunt er een ontvangen met behulp van de functie **nu uitvoeren** van uw gebruikers stroom voor aanmelden/aanmelden. u moet een van de vereisten hebben gemaakt.
+U moet eerst een token hebben uitgegeven door Azure AD B2C voor gebruik in de header `Authorization` in postman. U kunt er een ontvangen met behulp van de functie **nu uitvoeren** van uw gebruikers stroom voor aanmelden/aanmelden. u moet een van de vereisten hebben gemaakt.
 
 1. Blader naar uw Azure AD B2C-Tenant in de [Azure Portal](https://portal.azure.com).
 1. Selecteer onder **beleids regels** **gebruikers stromen (beleid)** .
 1. Selecteer een bestaande gebruikers stroom voor registreren/aanmelden, bijvoorbeeld *B2C_1_signupsignin1*.
 1. Selecteer voor **toepassing** *webapp1*.
-1. Kies`https://jwt.ms`voor **antwoord-URL**.
+1. Kies `https://jwt.ms` voor de **antwoord-URL**.
 1. Selecteer **gebruikers stroom uitvoeren**.
 
     ![De pagina gebruikers stroom uitvoeren voor aanmelding aanmelden gebruikers stroom in Azure Portal](media/secure-apim-with-b2c-token/portal-03-user-flow.png)
@@ -131,8 +131,8 @@ Een client toepassing (in dit geval Postman) die een gepubliceerde API aanroept,
 
 1. Blader naar uw Azure API Management service-exemplaar in de [Azure Portal](https://portal.azure.com).
 1. Selecteer **Abonnementen**.
-1. Selecteer het beletsel teken **voor product: Onbeperkt**, en selecteer vervolgens **sleutels weer geven/verbergen**.
-1. Registreer de **primaire sleutel** voor het product. U gebruikt deze sleutel voor de `Ocp-Apim-Subscription-Key` header in uw HTTP-aanvraag in postman.
+1. Selecteer het beletsel teken voor **Product: Onbeperkte @ no__t-0 en selecteer vervolgens **sleutels weer geven/verbergen**.
+1. Registreer de **primaire sleutel** voor het product. U gebruikt deze sleutel voor de `Ocp-Apim-Subscription-Key`-header in de HTTP-aanvraag in het bericht.
 
 ![Pagina abonnements sleutel met de toetsen weer geven/verbergen die zijn geselecteerd in Azure Portal](media/secure-apim-with-b2c-token/portal-04-api-subscription-key.png)
 
@@ -140,7 +140,7 @@ Een client toepassing (in dit geval Postman) die een gepubliceerde API aanroept,
 
 Met het toegangs token en de APIM-abonnements sleutel die u hebt geregistreerd, bent u nu klaar om te testen of u beveiligde toegang tot de API goed hebt geconfigureerd.
 
-1. Maak een nieuwe `GET` aanvraag in het [bericht](https://www.getpostman.com/). Geef voor de aanvraag-URL het eind punt van de lijst met luid sprekers op van de API die u als een van de vereisten hebt gepubliceerd. Bijvoorbeeld:
+1. Maak een nieuwe `GET`-aanvraag in het [bericht](https://www.getpostman.com/). Geef voor de aanvraag-URL het eind punt van de lijst met luid sprekers op van de API die u als een van de vereisten hebt gepubliceerd. Bijvoorbeeld:
 
     `https://contosoapim.azure-api.net/conference/speakers`
 
@@ -148,7 +148,7 @@ Met het toegangs token en de APIM-abonnements sleutel die u hebt geregistreerd, 
 
     | Sleutel | Value |
     | --- | ----- |
-    | `Authorization` | Gecodeerde token waarde die u eerder hebt vastgelegd, voorafgegaan `Bearer ` door (de spatie toevoegen na ' Bearer ') |
+    | `Authorization` | Versleutelde token waarde die u eerder hebt vastgelegd, voorafgegaan door `Bearer ` (de spatie na ' Bearer ' inbegrepen ') |
     | `Ocp-Apim-Subscription-Key` | APIM-abonnements sleutel die u eerder hebt geregistreerd |
 
     De URL van de **Get** -aanvraag en de **kopteksten** moeten er ongeveer als volgt uitzien:
@@ -184,13 +184,13 @@ Met het toegangs token en de APIM-abonnements sleutel die u hebt geregistreerd, 
 
 ### <a name="test-an-insecure-api-call"></a>Een onveilige API-oproep testen
 
-Nu u een succes volle aanvraag hebt ingediend, test u de fout melding om ervoor te zorgen dat aanroepen naar uw API met een *ongeldig* token worden afgewezen zoals verwacht. Een manier om de test uit te voeren, is door een paar tekens toe te voegen of te wijzigen in de `GET` waarde van het token en vervolgens dezelfde aanvraag als voorheen uit te voeren.
+Nu u een succes volle aanvraag hebt ingediend, test u de fout melding om ervoor te zorgen dat aanroepen naar uw API met een *ongeldig* token worden afgewezen zoals verwacht. Een manier om de test uit te voeren, is door een paar tekens toe te voegen of te wijzigen in de waarde van het token en vervolgens dezelfde `GET`-aanvraag als voorheen uit te voeren.
 
 1. Voeg verschillende tekens toe aan de token waarde om een ongeldig token te simuleren. Voeg bijvoorbeeld ' ongeldig ' toe aan de token waarde:
 
     ![De sectie headers van de gebruikers interface van Postman met ongeldige toevoeging aan token](media/secure-apim-with-b2c-token/postman-02-invalid-token.png)
 
-1. Selecteer de **Verzend** knop om de aanvraag uit te voeren. Met een ongeldig token is het verwachte resultaat een `401` niet-geautoriseerde status code:
+1. Selecteer de **Verzend** knop om de aanvraag uit te voeren. Met een ongeldig token is het verwachte resultaat een niet-geautoriseerde status code van @no__t 0:
 
     ```JSON
     {
@@ -199,21 +199,21 @@ Nu u een succes volle aanvraag hebt ingediend, test u de fout melding om ervoor 
     }
     ```
 
-Als u de `401` status code ziet, hebt u gecontroleerd dat alleen bellers met een geldig toegangs token dat is uitgegeven door Azure AD B2C, geslaagde aanvragen kunt indienen voor uw Azure API Management-API.
+Als u de status code `401` ziet, hebt u gecontroleerd dat alleen bellers met een geldig toegangs token dat is uitgegeven door Azure AD B2C, succes volle aanvragen voor uw Azure API Management API kunnen maken.
 
 ## <a name="support-multiple-applications-and-issuers"></a>Ondersteuning voor meerdere toepassingen en verleners
 
-Verschillende toepassingen communiceren doorgaans met één REST API. Als u meerdere toepassingen wilt toestaan om uw API aan te roepen, voegt u `<audiences>` hun toepassings-id's toe aan het-element in het inkomend APIM-beleid.
+Verschillende toepassingen communiceren doorgaans met één REST API. Als u wilt dat uw API tokens accepteert die bestemd zijn voor meerdere toepassingen, voegt u hun toepassings-Id's toe aan het `<audiences>`-element in het APIM-beleid voor binnenkomende verbindingen.
 
 ```XML
-<!-- Accept requests from multiple applications -->
+<!-- Accept tokens intended for these recipient applications -->
 <audiences>
     <audience>44444444-0000-0000-0000-444444444444</audience>
     <audience>66666666-0000-0000-0000-666666666666</audience>
 </audiences>
 ```
 
-Als u meerdere token verleners wilt ondersteunen, voegt u hun eind punt- `<audiences>` uri's toe aan het-element in het APIM-beleid voor binnenkomende verbindingen.
+Als u meerdere token verleners wilt ondersteunen, voegt u hun eind punt-Uri's toe aan het `<issuers>`-element in het APIM-beleid voor binnenkomende verbindingen.
 
 ```XML
 <!-- Accept tokens from multiple issuers -->
@@ -225,7 +225,7 @@ Als u meerdere token verleners wilt ondersteunen, voegt u hun eind punt- `<audie
 
 ## <a name="migrate-to-b2clogincom"></a>Migreren naar b2clogin.com
 
-Als u een APIM-API hebt die tokens valideert die zijn uitgegeven `login.microsoftonline.com` door het verouderde eind punt, moet u de API en de toepassingen die deze aanroepen, gebruiken om tokens te maken die zijn uitgegeven door [b2clogin.com](b2clogin.md).
+Als u een APIM-API hebt die tokens valideert die zijn uitgegeven door het verouderde `login.microsoftonline.com`-eind punt, moet u de API en de toepassingen die deze aanroepen, met behulp van tokens die zijn uitgegeven door [b2clogin.com](b2clogin.md), migreren.
 
 U kunt dit algemene proces volgen om een gefaseerde migratie uit te voeren:
 

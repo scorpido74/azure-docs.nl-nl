@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 09/21/2019
+ms.date: 10/01/2019
 ms.author: diberry
-ms.openlocfilehash: 90712012f904f7b098af01433fee4a97ee8f2160
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 81e5ac5e5017330d2c5ea8bf5b269c4ce70b495b
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71203772"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802839"
 ---
 # <a name="quickstart-qna-maker-client-library-for-python"></a>Quickstart: Client bibliotheek voor python QnA Maker
 
@@ -29,6 +29,8 @@ Gebruik de QnA Maker-client bibliotheek voor python voor het volgende:
 
 [Naslag Gids](https://docs.microsoft.com/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker?view=azure-python) | voor pypi ([Source code](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-knowledge-qnamaker) | [package)](https://pypi.org/project/azure-cognitiveservices-knowledge-qnamaker/) | van de documentatie bibliotheek[](https://github.com/Azure-Samples/cognitive-services-qnamaker-python/blob/master/documentation-samples/quickstarts/knowledgebase_quickstart/knowledgebase_quickstart.py)
 
+[!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
+
 ## <a name="prerequisites"></a>Vereisten
 
 * Azure-abonnement: [Maak er gratis een](https://azure.microsoft.com/free/)
@@ -40,7 +42,7 @@ Gebruik de QnA Maker-client bibliotheek voor python voor het volgende:
 
 Azure-Cognitive Services worden vertegenwoordigd door Azure-resources waarop u zich abonneert. Maak een resource voor QnA Maker met behulp van de [Azure Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) of [Azure cli](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) op uw lokale machine. 
 
-Nadat u een sleutel van uw resource hebt opgehaald, [maakt u omgevings variabelen](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) voor `QNAMAKER_KEY` de `QNAMAKER_HOST`resource met de naam en. Gebruik de sleutel-en host waarden die zijn gevonden in de Azure Portal.
+Nadat u een sleutel van uw resource hebt opgehaald, [maakt u omgevings variabelen](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) voor `QNAMAKER_KEY` de `QNAMAKER_HOST`resource met de naam en. Gebruik de sleutel-en eindpunt waarden die worden gevonden in de Azure Portal.
 
 ### <a name="install-the-python-library-for-qna-maker"></a>Installeer de python-bibliotheek voor QnA Maker
 
@@ -82,7 +84,7 @@ Maak variabelen voor het Azure-eind punt en de sleutel van uw resource. Als u de
 |Omgevingsvariabele|python-variabele|Voorbeeld|
 |--|--|--|
 |`QNAMAKER_KEY`|`subscription_key`|32 teken-GUID|
-|`QNAMAKER_HOST`|`host`|`https://westus.api.cognitive.microsoft.com`|
+|`QNAMAKER_HOST`|`host`|`https://your-resource-name.api.cognitive.microsoft.com`-`your-resource-name` wijzigen in uw eigen resource naam|
 ||||
 
 [!code-python[Azure resource variables](~/samples-qnamaker-python/documentation-samples/quickstarts/knowledgebase_quickstart/knowledgebase_quickstart.py?name=resourcekeys)]

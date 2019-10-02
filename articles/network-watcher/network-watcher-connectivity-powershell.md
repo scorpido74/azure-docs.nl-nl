@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/11/2017
 ms.author: kumud
-ms.openlocfilehash: 0f18140036ac762c7383ed1b1d8081aa8d5f877f
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 82bd92de8b2cbb0da4d6d37911a6a3f71186b592
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70165127"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802046"
 ---
 # <a name="troubleshoot-connections-with-azure-network-watcher-using-powershell"></a>Problemen met de verbinding met Azure Network Watcher oplossen met Power shell
 
@@ -39,7 +39,7 @@ Meer informatie over het gebruik van verbindings problemen oplossen om te contro
 * Virtuele machines voor het oplossen van verbindingen met.
 
 > [!IMPORTANT]
-> Verbindings problemen oplossen vereist dat de `AzureNetworkWatcherExtension` VM-extensie is geïnstalleerd op de VM die u wilt oplossen. Voor het installeren van de uitbrei ding op een Windows-VM gaat u naar [azure Network Watcher agent-extensie voor virtuele machines voor Windows](../virtual-machines/windows/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) en voor Linux VM gaat u naar de [Azure Network Watcher agent-extensie voor virtuele machines voor Linux](../virtual-machines/linux/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json). De uitbrei ding is niet vereist voor het eind punt van de bestemming.
+> Verbindings problemen oplossen vereist dat de VM-extensie `AzureNetworkWatcherExtension` is geïnstalleerd op de VM die u wilt oplossen. Voor het installeren van de uitbrei ding op een Windows-VM gaat u naar [azure Network Watcher agent-extensie voor virtuele machines voor Windows](../virtual-machines/windows/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) en voor Linux VM gaat u naar de [Azure Network Watcher agent-extensie voor virtuele machines voor Linux](../virtual-machines/linux/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json). De uitbrei ding is niet vereist voor het eind punt van de bestemming.
 
 ## <a name="check-connectivity-to-a-virtual-machine"></a>Controleer de verbinding met een virtuele machine
 
@@ -57,14 +57,14 @@ $RG = Get-AzResourceGroup -Name $rgName
 $VM1 = Get-AzVM -ResourceGroupName $rgName | Where-Object -Property Name -EQ $sourceVMName
 $VM2 = Get-AzVM -ResourceGroupName $rgName | Where-Object -Property Name -EQ $destVMName
 
-$networkWatcher = Get-AzResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq $VM1.Location} 
+$networkWatcher = Get-AzNetworkWatcher | Where-Object -Property Location -EQ -Value $VM1.Location 
 
 Test-AzNetworkWatcherConnectivity -NetworkWatcher $networkWatcher -SourceId $VM1.Id -DestinationId $VM2.Id -DestinationPort 80
 ```
 
 ### <a name="response"></a>Antwoord
 
-Het volgende antwoord is afkomstig uit het vorige voor beeld.  In dit antwoord is de `ConnectionStatus` onbereikbaar. U kunt zien dat alle probe-verzen ding is mislukt. De connectiviteit op het virtuele apparaat is mislukt vanwege een door de gebruiker `NetworkSecurityRule` geconfigureerde **UserRule_Port80**, geconfigureerd om inkomend verkeer op poort 80 te blok keren. Deze informatie kan worden gebruikt om verbindings problemen te onderzoeken.
+Het volgende antwoord is afkomstig uit het vorige voor beeld.  In dit antwoord is de `ConnectionStatus` **onbereikbaar**. U kunt zien dat alle probe-verzen ding is mislukt. De connectiviteit op het virtuele apparaat is mislukt vanwege een door de gebruiker geconfigureerd `NetworkSecurityRule` met de naam **UserRule_Port80**, die is geconfigureerd om inkomend verkeer op poort 80 te blok keren. Deze informatie kan worden gebruikt om verbindings problemen te onderzoeken.
 
 ```
 ConnectionStatus : Unreachable
@@ -148,14 +148,14 @@ $sourceVMName = "MultiTierApp0"
 $RG = Get-AzResourceGroup -Name $rgName
 $VM1 = Get-AzVM -ResourceGroupName $rgName | Where-Object -Property Name -EQ $sourceVMName
 
-$networkWatcher = Get-AzResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq $VM1.Location } 
+$networkWatcher = Get-AzNetworkWatcher | Where-Object -Property Location -EQ -Value $VM1.Location 
 
 Test-AzNetworkWatcherConnectivity -NetworkWatcher $networkWatcher -SourceId $VM1.Id -DestinationAddress 13.107.21.200 -DestinationPort 80
 ```
 
 ### <a name="response"></a>Antwoord
 
-In het volgende voor beeld wordt `ConnectionStatus` de wordt weer gegeven als onbereikbaar. In de `Hops` Details kunt u `Issues` zien dat het verkeer is geblokkeerd vanwege een `UserDefinedRoute`. 
+In het volgende voor beeld wordt de `ConnectionStatus` weer gegeven als **onbereikbaar**. In de `Hops`-Details kunt u onder `Issues` zien dat het verkeer is geblokkeerd vanwege een `UserDefinedRoute`. 
 
 ```
 ConnectionStatus : Unreachable
@@ -211,7 +211,7 @@ $sourceVMName = "MultiTierApp0"
 $RG = Get-AzResourceGroup -Name $rgName
 $VM1 = Get-AzVM -ResourceGroupName $rgName | Where-Object -Property Name -EQ $sourceVMName
 
-$networkWatcher = Get-AzResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq $VM1.Location } 
+$networkWatcher = Get-AzNetworkWatcher | Where-Object -Property Location -EQ -Value $VM1.Location 
 
 
 Test-AzNetworkWatcherConnectivity -NetworkWatcher $networkWatcher -SourceId $VM1.Id -DestinationAddress https://bing.com/
@@ -219,7 +219,7 @@ Test-AzNetworkWatcherConnectivity -NetworkWatcher $networkWatcher -SourceId $VM1
 
 ### <a name="response"></a>Antwoord
 
-In het volgende antwoord ziet u dat de `ConnectionStatus` weer gave kan worden weer gegeven als **bereikbaar**. Wanneer een verbinding tot stand is gebracht, worden er latentie waarden gegeven.
+In het volgende antwoord ziet u dat `ConnectionStatus` als **bereikbaar**wordt weer gegeven. Wanneer een verbinding tot stand is gebracht, worden er latentie waarden gegeven.
 
 ```
 ConnectionStatus : Reachable
@@ -264,14 +264,14 @@ $RG = Get-AzResourceGroup -Name $rgName
 
 $VM1 = Get-AzVM -ResourceGroupName $rgName | Where-Object -Property Name -EQ $sourceVMName
 
-$networkWatcher = Get-AzResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq $VM1.Location }
+$networkWatcher = Get-AzNetworkWatcher | Where-Object -Property Location -EQ -Value $VM1.Location
 
 Test-AzNetworkWatcherConnectivity -NetworkWatcher $networkWatcher -SourceId $VM1.Id -DestinationAddress https://contosostorageexample.blob.core.windows.net/ 
 ```
 
 ### <a name="response"></a>Antwoord
 
-De volgende JSON is het voorbeeld antwoord van het uitvoeren van de vorige cmdlet. Als de bestemming bereikbaar is, wordt de `ConnectionStatus` eigenschap weer gegeven als **bereikbaar**.  U vindt de details over het aantal hops dat is vereist om de opslag-Blob en latentie te bereiken.
+De volgende JSON is het voorbeeld antwoord van het uitvoeren van de vorige cmdlet. Als de bestemming bereikbaar is, wordt de eigenschap `ConnectionStatus` weer gegeven als **bereikbaar**.  U vindt de details over het aantal hops dat is vereist om de opslag-Blob en latentie te bereiken.
 
 ```json
 ConnectionStatus : Reachable

@@ -8,12 +8,12 @@ ms.reviewer: jasonwhowell
 ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 12/16/2016
-ms.openlocfilehash: 440a36d00334840688f66d0027152d7581b7158c
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.openlocfilehash: 9ff7ba5f04a8c1862f8ef136f8f3f6900f00a431
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71309909"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802558"
 ---
 # <a name="resolve-data-skew-problems-by-using-azure-data-lake-tools-for-visual-studio"></a>Problemen met gegevens scheefheid oplossen met behulp van Azure Data Lake-Hulpprogram Ma's voor Visual Studio
 
@@ -165,7 +165,7 @@ In het voor beeld hieronder ziet u een set met gescheiden rijen. Elke uitvoermap
 
 Kenmerken van de modus voor samen voegen:
 
-- [SqlUserDefinedCombiner(Mode=CombinerMode.Full)]: Every output row potentially depends on all the input rows from left and right with the same key value.
+- SqlUserDefinedCombiner (mode = CombinerMode. Full): Elke uitvoer rij is mogelijk afhankelijk van alle invoer rijen van links en rechts met dezelfde sleutel waarde.
 
 - SqlUserDefinedCombiner (modus = CombinerMode. left): Elke uitvoermap is afhankelijk van één rij met invoer van links (en mogelijk alle rijen van rechts met dezelfde sleutel waarde).
 

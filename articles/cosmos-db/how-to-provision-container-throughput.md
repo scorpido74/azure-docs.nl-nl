@@ -1,17 +1,17 @@
 ---
 title: Containerdoorvoer inrichten in Azure Cosmos DB
 description: Meer informatie over het inrichten van doorvoer op containerniveau in Azure Cosmos DB
-author: rimman
+author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 07/03/2019
-ms.author: rimman
-ms.openlocfilehash: 0975fe5135bbe9f5e1dc65ee0444cc3aab986a2e
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.date: 09/28/2019
+ms.author: mjbrown
+ms.openlocfilehash: 8da27773cc74324c1dde5a95de1abef3256c1f1c
+ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70093046"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71811681"
 ---
 # <a name="provision-throughput-on-an-azure-cosmos-container"></a>Doorvoer inrichten voor een Azure Cosmos-container
 
@@ -31,48 +31,17 @@ In dit artikel wordt uitgelegd hoe u de door Voer kunt inrichten voor een contai
    * Voer een door Voer in die u wilt inrichten (bijvoorbeeld 1000 RUs).
    * Selecteer **OK**.
 
-![Schermopname van Data Explorer met Nieuwe verzameling gemarkeerd](./media/how-to-provision-container-throughput/provision-container-throughput-portal-all-api.png)
+    ![Schermopname van Data Explorer met Nieuwe verzameling gemarkeerd](./media/how-to-provision-container-throughput/provision-container-throughput-portal-all-api.png)
 
-## <a name="provision-throughput-using-azure-cli"></a>Doorvoer inrichten met behulp van Azure CLI
+## <a name="provision-throughput-using-azure-cli-or-powershell"></a>Door Voer in te richten met behulp van Azure CLI of Power shell
 
-```azurecli-interactive
-# Create a container with a partition key and provision throughput of 400 RU/s
-az cosmosdb collection create \
-    --resource-group $resourceGroupName \
-    --collection-name $containerName \
-    --name $accountName \
-    --db-name $databaseName \
-    --partition-key-path /myPartitionKey \
-    --throughput 400
-```
+Als u een container met specifieke door voer wilt maken, raadpleegt u
 
-## <a name="provision-throughput-using-powershell"></a>Door Voer in te richten met Power shell
+* [Een container maken met behulp van Azure CLI](manage-with-cli.md#create-a-container)
+* [Een container maken met behulp van Power shell](manage-with-powershell.md#create-container)
 
-```azurepowershell-interactive
-# Create a container with a partition key and provision throughput of 400 RU/s
-$resourceGroupName = "myResourceGroup"
-$accountName = "mycosmosaccount"
-$databaseName = "database1"
-$containerName = "container1"
-$resourceName = $accountName + "/sql/" + $databaseName + "/" + $containerName
-
-$ContainerProperties = @{
-    "resource"=@{
-        "id"=$containerName;
-        "partitionKey"=@{
-            "paths"=@("/myPartitionKey");
-            "kind"="Hash"
-        }
-    };
-    "options"=@{ "Throughput"= 400 }
-}
-
-New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts/apis/databases/containers" `
-    -ApiVersion "2015-04-08" -ResourceGroupName $resourceGroupName `
-    -Name $resourceName -PropertyObject $ContainerProperties
-```
-
-Als u de door Voer inricht voor een container in een Azure Cosmos-account dat is geconfigureerd met de Azure Cosmos DB `/myShardKey` -API voor MongoDb, gebruikt u voor het pad van de partitie sleutel. Als u de door Voer inricht voor een container in een Azure Cosmos-account dat is `/myPrimaryKey` geconfigureerd met Cassandra-API, gebruikt u voor het pad van de partitie sleutel.
+> [!Note]
+> Als u de door Voer inricht voor een container in een Azure Cosmos-account dat is geconfigureerd met de Azure Cosmos DB-API voor MongoDB, gebruikt u `/myShardKey` voor het pad van de partitie sleutel. Als u de door Voer inricht voor een container in een Azure Cosmos-account dat is geconfigureerd met Cassandra-API, gebruikt u `/myPrimaryKey` voor het pad van de partitie sleutel.
 
 ## <a name="provision-throughput-by-using-net-sdk"></a>Doorvoer inrichten met behulp van .NET SDK
 

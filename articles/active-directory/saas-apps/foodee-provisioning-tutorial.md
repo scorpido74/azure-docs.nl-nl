@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: De levens gebruiker configureren voor het automatisch inrichten van gebruikers met Azure Active Directory | Microsoft Docs'
+title: 'Zelfstudie: De levens gebruiker configureren voor het automatisch inrichten van gebruikers met behulp van Azure Active Directory | Microsoft Docs'
 description: Meer informatie over het configureren van Azure Active Directory voor het automatisch inrichten en ongedaan maken van de inrichting van gebruikers accounts voor de levens gebruiker.
 services: active-directory
 documentationcenter: ''
@@ -15,156 +15,162 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/30/2019
 ms.author: Zhchia
-ms.openlocfilehash: 171a1141670e55814474390c59ae8d514491edbd
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: abf2a752eaf0f1d0a9a8b07072dfc0b4c1ae45b7
+ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71088093"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71812707"
 ---
 # <a name="tutorial-configure-foodee-for-automatic-user-provisioning"></a>Zelfstudie: De levens gebruiker configureren voor het automatisch inrichten van gebruikers
 
-Het doel van deze zelf studie is het demonstreren van de stappen die moeten worden uitgevoerd in de levens groep en Azure Active Directory (Azure AD) om Azure AD te configureren voor het automatisch inrichten en ongedaan maken van de inrichting van gebruikers en/of groepen voor de levens groep.
+In dit artikel wordt beschreven hoe u Azure Active Directory (Azure AD) configureert in de levens groep en Azure AD, zodat gebruikers of groepen automatisch worden ingericht of ongedaan worden gemaakt voor de levens groep.
 
 > [!NOTE]
-> In deze zelf studie wordt een connector beschreven die boven op de Azure AD User Provisioning-Service is gebouwd. Zie [Gebruikers inrichten en de inrichting ongedaan maken voor SaaS-toepassingen met Azure Active Directory](../manage-apps/user-provisioning.md)voor belang rijke informatie over de werking van deze service, hoe deze werkt en veelgestelde vragen.
+> In dit artikel wordt een connector beschreven die boven op de Azure AD User Provisioning-Service is gebouwd. Zie [Gebruikers inrichten en de inrichting ongedaan maken voor SaaS-toepassingen met Azure Active Directory](../manage-apps/user-provisioning.md)voor meer informatie over de werking van deze service en hoe deze werkt, en om antwoorden te krijgen op veelgestelde vragen.
 >
-> Deze connector bevindt zich momenteel in de open bare preview. Zie [aanvullende gebruiksrecht overeenkomst voor Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)previews voor meer informatie over de algemene Microsoft Azure gebruiksrecht overeenkomst voor preview-functies.
+> Deze connector is momenteel in preview. Voor meer informatie over de functie Azure-gebruiks voorwaarden voor preview-functies gaat u naar [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="prerequisites"></a>Vereisten
 
-In het scenario dat in deze zelf studie wordt beschreven, wordt ervan uitgegaan dat u al beschikt over de volgende vereisten:
+In deze zelf studie wordt ervan uitgegaan dat u aan de volgende vereisten voldoet:
 
-* Een Azure AD-tenant.
+* Een Azure AD-Tenant
 * [Een Tenant van een Food](https://www.food.ee/about/)
-* Een gebruikers account in de levens groep met beheerders machtigingen.
+* Een gebruikers account in de levens groep met beheerders machtigingen
 
-## <a name="assigning-users-to-foodee"></a>Gebruikers toewijzen aan de levens gebruiker 
+## <a name="assign-users-to-foodee"></a>Gebruikers toewijzen aan de levens gebruiker 
 
-Azure Active Directory gebruikt een concept met de naam *toewijzingen* om te bepalen welke gebruikers toegang moeten krijgen tot geselecteerde apps. In de context van het automatisch inrichten van gebruikers worden alleen de gebruikers en/of groepen die zijn toegewezen aan een toepassing in azure AD gesynchroniseerd.
+Azure AD gebruikt een concept met de naam *toewijzingen* om te bepalen welke gebruikers toegang moeten krijgen tot geselecteerde apps. In de context van het automatisch inrichten van gebruikers worden alleen de gebruikers of groepen die zijn toegewezen aan een toepassing in azure AD gesynchroniseerd.
 
-Voordat u automatische gebruikers inrichting configureert en inschakelt, moet u beslissen welke gebruikers en/of groepen in azure AD toegang nodig hebben tot de levens groep. Nadat u hebt besloten, kunt u deze gebruikers en/of groepen toewijzen aan de levens groep door de volgende instructies te volgen:
-* [Een gebruiker of groep toewijzen aan een bedrijfs-app](../manage-apps/assign-user-or-group-access-portal.md)
+Voordat u automatische gebruikers inrichting configureert en inschakelt, moet u beslissen welke gebruikers of groepen in azure AD toegang nodig hebben tot de levens groep. Nadat u deze bepaling hebt uitgevoerd, kunt u deze gebruikers of groepen toewijzen aan de levens groep door de instructies in [een gebruiker of groep toewijzen aan een bedrijfs-app te](../manage-apps/assign-user-or-group-access-portal.md)volgen.
 
 ## <a name="important-tips-for-assigning-users-to-foodee"></a>Belang rijke tips voor het toewijzen van gebruikers aan de levens gebruiker 
 
-* U wordt aangeraden één Azure AD-gebruiker toe te wijzen aan de levens eenheid om de configuratie van automatische gebruikers inrichting te testen. Extra gebruikers en/of groepen kunnen later worden toegewezen.
+Houd rekening met de volgende tips wanneer u gebruikers toewijst:
 
-* Wanneer u een gebruiker toewijst aan de genodigde, moet u een geldige toepassingsspecifieke rol (indien beschikbaar) selecteren in het dialoog venster toewijzing. Gebruikers met de rol **standaard toegang** worden uitgesloten van het inrichten.
+* We raden u aan één Azure AD-gebruiker toe te wijzen aan de levens eenheid om de configuratie van automatische gebruikers inrichting te testen. U kunt later aanvullende gebruikers of groepen toewijzen.
 
-## <a name="setup-foodee-for-provisioning"></a>De levens gevoede voor het inrichten
+* Wanneer u een gebruiker toewijst aan de groep, selecteert u een geldige toepassingsspecifieke rol, als deze beschikbaar is, in het deel venster **toewijzing** . Gebruikers met de *standaard toegangs* functie worden uitgesloten van het inrichten.
 
-Voordat u een levens gebruiker configureert voor het automatisch inrichten van gebruikers met Azure AD, moet u SCIM inrichten inschakelen voor de levens middelen.
+## <a name="set-up-foodee-for-provisioning"></a>De levens groep instellen voor inrichting
 
-1. Meld u aan bij een [levens middel](https://www.food.ee/login/). Klik op uw **Tenant-id**
+Voordat u een levens gebruiker configureert voor het automatisch inrichten van gebruikers met behulp van Azure AD, moet u het systeem inschakelen voor SCIM-inrichting (Cross-Domain Identity Management) in de levens werk.
+
+1. Meld u aan bij de [levens](https://www.food.ee/login/)bekiezen en selecteer vervolgens uw Tenant-id.
 
     ![Foodee](media/Foodee-provisioning-tutorial/tenant.png)
 
-2. Selecteer in Enter prise Portal de optie **eenmalige aanmelding**>.
+1. Selecteer in **Enter prise Portal**de optie **eenmalige aanmelding**.
 
-    ![Foodee](media/Foodee-provisioning-tutorial/scim.png)
+    ![Het menu Enterprise Portal van de levensmiddelen rechter](media/Foodee-provisioning-tutorial/scim.png)
 
-3. Kopieer het **API-token**. Deze waarden worden ingevoerd in het veld **geheime token** op het tabblad inrichten van uw toepassing in de Food in de Azure Portal.
+1. Kopieer de waarde in het vak **API-token** voor later gebruik. U voert deze in het vak **geheim** op het tabblad **inrichten** van uw toepassing in de levens middelen in de Azure Portal.
 
     ![Foodee](media/Foodee-provisioning-tutorial/token.png)
 
-
 ## <a name="add-foodee-from-the-gallery"></a>Levens middelen toevoegen vanuit de galerie
 
-Als u een levens gebruiker wilt configureren voor het automatisch inrichten van gebruikers met Azure AD, moet u de levens middelen van de Azure AD-toepassings galerie toevoegen aan uw lijst met beheerde SaaS-toepassingen.
+Als u een levens gebruiker wilt configureren voor het automatisch inrichten van gebruikers met behulp van Azure AD, moet u de levens middelen van de Azure AD-toepassings galerie toevoegen aan uw lijst met beheerde SaaS-toepassingen.
 
-**Voer de volgende stappen uit om een levens middel toe te voegen vanuit de Azure AD-toepassings galerie:**
+Ga als volgt te werk om een levens middel toe te voegen vanuit de Azure AD-toepassings galerie:
 
-1. Selecteer in de **[Azure Portal](https://portal.azure.com)** in het navigatie venster links **Azure Active Directory**.
+1. In de [Azure-portal](https://portal.azure.com), selecteert u in het linkerdeelvenster **Azure Active Directory**.
 
-    ![De Azure Active Directory-knop](common/select-azuread.png)
+    ![De Azure Active Directory opdracht](common/select-azuread.png)
 
-2. Ga naar **bedrijfs toepassingen**en selecteer **alle toepassingen**.
+1. Selecteer **Bedrijfstoepassingen** > **Alle toepassingen**.
 
-    ![De blade Enterprise-toepassingen](common/enterprise-applications.png)
+    ![Het deelvenster Bedrijfstoepassingen](common/enterprise-applications.png)
 
-3. Als u een nieuwe toepassing wilt toevoegen, selecteert u de knop **nieuwe toepassing** boven aan het deel venster.
+1. Als u een nieuwe toepassing wilt toevoegen, selecteert u **nieuwe toepassing** boven aan het deel venster.
 
     ![De knop nieuwe toepassing](common/add-new-app.png)
 
-4. Voer in het zoekvak een **voeding**in, selecteer de optie **levens middelen** in het paneel resultaten en klik vervolgens op de knop **toevoegen** om de toepassing toe te voegen.
+1. Voer in het zoekvak een **voeding**in, selecteer **levens middelen** in het resultaten venster en selecteer **toevoegen** om de toepassing toe te voegen.
 
     ![De levens middelen in de lijst met resultaten](common/search-new-app.png)
 
-## <a name="configuring-automatic-user-provisioning-to-foodee"></a>Automatische gebruikers inrichting configureren voor de levens gebruiker  
+## <a name="configure-automatic-user-provisioning-to-foodee"></a>Automatische gebruikers inrichting voor de levens gebruiker configureren 
 
-In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azure AD-inrichtings service om gebruikers en/of groepen in de levens groep te maken, bij te werken en uit te scha kelen op basis van gebruikers-en/of groepeer toewijzingen in azure AD.
+In deze sectie configureert u de Azure AD-inrichtings service om gebruikers of groepen in de levens groep te maken, bij te werken en uit te scha kelen op basis van de toewijzingen van gebruikers of groepen in azure AD.
 
 > [!TIP]
-> U kunt er ook voor kiezen om eenmalige aanmelding op basis van SAML in te scha kelen voor de levens middelen, gevolgd door de instructies in de [zelf studie voor eenmalige aanmelding](Foodee-tutorial.md)in de levens werk. Eenmalige aanmelding kan onafhankelijk van automatische gebruikers inrichting worden geconfigureerd, hoewel deze twee functies elkaar aanvullen.
+> U kunt ook eenmalige aanmelding op basis van SAML inschakelen voor de levens eenheid door de instructies in de [zelf studie voor eenmalige aanmelding](Foodee-tutorial.md)in de levens werk te volgen. U kunt eenmalige aanmelding configureren, onafhankelijk van het automatisch inrichten van gebruikers, hoewel deze twee functies elkaar aanvullen.
 
-### <a name="to-configure-automatic-user-provisioning-for-foodee-in-azure-ad"></a>Automatische gebruikers inrichting configureren voor de levens gebruiker in azure AD:
+Configureer de automatische gebruikers inrichting voor de levensmiddelen gebruiker in azure AD door de volgende handelingen uit te voeren:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen**en selecteer **alle toepassingen**.
+1. Selecteer in de [Azure Portal](https://portal.azure.com) **bedrijfs toepassingen** > **alle toepassingen**.
 
-    ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
+    ![Deel venster ondernemings toepassingen](common/enterprise-applications.png)
 
-2. Selecteer in de lijst toepassingen de optie **eten**.
+1. Selecteer in de lijst **toepassingen** de optie **eten**.
 
     ![De koppeling van de levens middelen in de lijst met toepassingen](common/all-applications.png)
 
-3. Selecteer het tabblad **inrichten** .
+1. Selecteer het tabblad **inrichten** .
 
     ![Tabblad inrichten](common/provisioning.png)
 
-4. Stel de **inrichtings modus** in op **automatisch**.
+1. Selecteer in de vervolg keuzelijst **inrichtings modus** de optie **automatisch**.
 
     ![Tabblad inrichten](common/provisioning-automatic.png)
 
-5. In het gedeelte beheerders referenties voert u de ` https://concierge.food.ee/scim/v2` token waarden voor en **API** in die respectievelijk eerder zijn opgehaald in de **Tenant-URL** en het **geheime token** . Klik op **verbinding testen** om te controleren of Azure AD verbinding kan maken met de levens gevoeder. Als de verbinding mislukt, zorg er dan voor dat uw levensmiddelen account beheerders machtigingen heeft en probeer het opnieuw.
+1. Ga als volgt te werk onder **beheerders referenties**:
 
-    ![Tenant-URL + token](common/provisioning-testconnection-tenanturltoken.png)
+   a. Voer in het vak **Tenant-URL** de **https://concierge.food.ee/scim/v2 -** waarde in die u eerder hebt opgehaald.
 
-6. Voer in het veld **e-mail melding** het e-mail adres in van een persoon of groep die de inrichtings fout meldingen moet ontvangen en schakel het selectie vakje in om **een e-mail bericht te verzenden wanneer er een fout optreedt**.
+   b. Voer in het vak **geheim token** de waarde van het **API-token** in die u eerder hebt opgehaald.
+   
+   c. Selecteer **verbinding testen**om ervoor te zorgen dat Azure AD verbinding kan maken met de bemiddelende. Als de verbinding mislukt, zorg er dan voor dat uw levensmiddelen account beheerders machtigingen heeft en probeer het opnieuw.
 
-    ![E-mailmelding](common/provisioning-notification-email.png)
+    ![De koppeling test verbinding](common/provisioning-testconnection-tenanturltoken.png)
 
-7. Klik op **Opslaan**.
+1. Voer in het vak **e-mail bericht** het e-mail adres in van een persoon of groep die de inrichtings fout meldingen moet ontvangen en schakel vervolgens het selectie vakje **e-mail melding verzenden wanneer een fout optreedt** in.
 
-8. Selecteer in de sectie **toewijzingen** de optie **Azure Active Directory gebruikers synchroniseren met de levens gebruiker**.
+    ![Het tekstvak voor de meldings-e-mail](common/provisioning-notification-email.png)
+
+1. Selecteer **Opslaan**.
+
+1. Selecteer onder **toewijzingen**de optie **Azure Active Directory gebruikers synchroniseren met de levens gebruiker**.
 
     ![Gebruikers toewijzingen van een gebruiker](media/Foodee-provisioning-tutorial/usermapping.png)
 
-9. Controleer de gebruikers kenmerken die zijn gesynchroniseerd van Azure AD naar de levens gebruiker in de sectie **kenmerk toewijzing** . De kenmerken die zijn geselecteerd als **overeenkomende** eigenschappen worden gebruikt om te voldoen aan de gebruikers accounts in de levens werk voor bijwerk bewerkingen. Selecteer de knop **Opslaan** om eventuele wijzigingen door te voeren.
+1. Controleer onder **kenmerk toewijzingen**de gebruikers kenmerken die zijn gesynchroniseerd vanuit Azure AD naar de levens gebruiker. De kenmerken die als **overeenkomende** eigenschappen zijn geselecteerd, worden gebruikt voor de *gebruikers accounts* in de levens werk voor bijwerk bewerkingen. 
 
-    ![Gebruikers kenmerken van de levensmiddelen gebruiker](media/Foodee-provisioning-tutorial/userattribute.png)
+    ![Gebruikers toewijzingen van een gebruiker](media/Foodee-provisioning-tutorial/userattribute.png)
 
-10. Selecteer in de sectie **toewijzingen** de optie * * Azure Active Directory groepen synchroniseren met de **levens** groep
+1. Selecteer **Opslaan**om uw wijzigingen door te voeren.
+1. Selecteer onder **toewijzingen**de optie **Azure Active Directory groepen synchroniseren met de levens groep**.
 
-    ![Gebruikers kenmerken van de levensmiddelen gebruiker](media/Foodee-provisioning-tutorial/groupmapping.png)
+    ![Gebruikers toewijzingen van een gebruiker](media/Foodee-provisioning-tutorial/groupmapping.png)
 
-11. Controleer de gebruikers kenmerken die zijn gesynchroniseerd van Azure AD naar de levens gebruiker in de sectie **kenmerk toewijzing** . De kenmerken die zijn geselecteerd als **overeenkomende** eigenschappen worden gebruikt om te voldoen aan de groeps accounts in de levens werk voor bijwerk bewerkingen. Selecteer de knop **Opslaan** om eventuele wijzigingen door te voeren.
+1. Controleer onder **kenmerk toewijzingen**de gebruikers kenmerken die zijn gesynchroniseerd vanuit Azure AD naar de levens gebruiker. De kenmerken die als **overeenkomende** eigenschappen zijn geselecteerd, worden gebruikt om te voldoen aan de *groeps accounts* in de levens werk voor bijwerk bewerkingen.
 
-    ![Gebruikers kenmerken van de levensmiddelen gebruiker](media/Foodee-provisioning-tutorial/groupattribute.png)
+    ![Gebruikers toewijzingen van een gebruiker](media/Foodee-provisioning-tutorial/groupattribute.png)
 
-12. Raadpleeg de volgende instructies in de [zelf studie](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)voor het filteren op bereik voor het configureren van bereik filters.
+1. Selecteer **Opslaan**om uw wijzigingen door te voeren.
+1. De bereik filters configureren. Raadpleeg de instructies in de [zelf studie](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)voor het filteren op bereik voor meer informatie.
 
-13. Als u de Azure AD-inrichtings service wilt inschakelen voor de levens afdeling, wijzigt **u de** **inrichtings status** in in het gedeelte **instellingen** .
+1. Als u de Azure AD-inrichtings service voor de levens middelen wilt inschakelen, wijzigt u de **inrichtings status** in het gedeelte **instellingen** in **op aan**.
 
-    ![Inrichtings status inschakelt op](common/provisioning-toggle-on.png)
+    ![De inrichtings status schakelaar](common/provisioning-toggle-on.png)
 
-14. Definieer de gebruikers en/of groepen die u wilt inrichten voor de levens groep door de gewenste waarden in het **bereik** te kiezen in de sectie **instellingen** .
+1. Definieer onder **instellingen**in de vervolg keuzelijst **bereik** de gebruikers of groepen die u wilt inrichten voor de levens groep.
 
-    ![Inrichtings bereik](common/provisioning-scope.png)
+    ![De vervolg keuzelijst voor het inrichtings bereik](common/provisioning-scope.png)
 
-15. Wanneer u klaar bent om in te richten, klikt u op **Opslaan**.
+1. Wanneer u klaar bent om in te richten, selecteert u **Opslaan**.
 
-    ![Inrichtings configuratie opslaan](common/provisioning-configuration-save.png)
+    ![De knop voor het inrichten van de configuratie](common/provisioning-configuration-save.png)
 
-Met deze bewerking wordt de eerste synchronisatie gestart van alle gebruikers en/of groepen die in het **bereik** zijn gedefinieerd in de sectie **instellingen** . Het duurt langer voordat de initiële synchronisatie is uitgevoerd dan bij de volgende synchronisaties. Voor meer informatie over hoe lang het duurt voor het inrichten van gebruikers en/of groepen, raadpleegt u [hoe lang het duurt om gebruikers](../manage-apps/application-provisioning-when-will-provisioning-finish-specific-user.md#how-long-will-it-take-to-provision-users)in te richten.
+Met de voor gaande bewerking wordt de eerste synchronisatie gestart van de gebruikers of groepen die u hebt gedefinieerd in de vervolg keuzelijst **bereik** . Het duurt langer voordat de initiële synchronisatie is uitgevoerd dan bij de volgende synchronisaties. Zie [hoe lang duurt het voor het inrichten van gebruikers?](../manage-apps/application-provisioning-when-will-provisioning-finish-specific-user.md#how-long-will-it-take-to-provision-users)voor meer informatie.
 
-U kunt de **huidige status** sectie gebruiken om de voortgang te bewaken en koppelingen naar uw inrichtings activiteiten rapport te volgen, waarin alle acties worden beschreven die worden uitgevoerd door de Azure AD Provisioning-Service voor de levens werk. Zie [de status van gebruikers inrichten controleren](../manage-apps/application-provisioning-when-will-provisioning-finish-specific-user.md)voor meer informatie. Zie [rapportage over het automatisch inrichten van gebruikers accounts](../manage-apps/check-status-user-account-provisioning.md)voor informatie over het vastleggen van Azure AD-inrichtings Logboeken.
-
-
+U kunt de **huidige status** sectie gebruiken om de voortgang te bewaken en koppelingen naar uw inrichtings activiteiten rapport te volgen. In het rapport worden alle acties beschreven die worden uitgevoerd door de Azure AD-inrichtings service op de levens plaats. Zie [de status van gebruikers inrichten controleren](../manage-apps/application-provisioning-when-will-provisioning-finish-specific-user.md)voor meer informatie. Zie [rapportage over het automatisch inrichten van gebruikers accounts](../manage-apps/check-status-user-account-provisioning.md)voor informatie over het vastleggen van Azure AD-inrichtings Logboeken.
 
 ## <a name="additional-resources"></a>Aanvullende resources
 
-* [Inrichten van gebruikers accounts voor zakelijke apps beheren](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Het inrichten van gebruikers accounts beheren voor zakelijke apps](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
 ## <a name="next-steps"></a>Volgende stappen

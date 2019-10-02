@@ -5,15 +5,15 @@ services: digital-twins
 author: dsk-2015
 ms.service: digital-twins
 ms.topic: include
-ms.date: 09/24/2019
+ms.date: 09/30/2019
 ms.author: dkshir
 ms.custom: include file
-ms.openlocfilehash: 1fc30ea5aa843329b6227bfa564b3d10e2273cd7
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 6e808fb64d004f117a3c25946ad97e26ddfadaa3
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71310489"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802377"
 ---
 >[!NOTE]
 >Deze sectie bevat instructies voor de [nieuwe Azure AD-App-registratie](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app). Als u nog steeds een oude systeem eigen app hebt geregistreerd, kunt u deze gebruiken zolang deze wordt ondersteund. Daarnaast kunt u, als de nieuwe manier voor het opnieuw aanmelden van apps niet werkt in uw installatie, proberen een verouderde systeem eigen AAD-app te maken. Lees [uw Azure Digital apparaatdubbels-app registreren met Azure Active Directory verouderd](../articles/digital-twins/how-to-use-legacy-aad.md) voor meer instructies. 
@@ -39,16 +39,18 @@ ms.locfileid: "71310489"
 
 1. Open het deel venster **API-machtigingen** voor de registratie van uw app. Selecteer **een machtigings knop toevoegen** . Selecteer in het deel venster **API-machtigingen voor aanvragen** de api's die **Mijn organisatie gebruikt** tabblad en zoek naar:
     
-    1. **Azure Digital apparaatdubbels**. Selecteer de **Azure Digital apparaatdubbels** -API.
+    1. `Azure Digital Twins`. Selecteer de **Azure Digital apparaatdubbels** -API.
 
         [![Zoek-API of Azure Digital Apparaatdubbels](./media/digital-twins-permissions/aad-aap-search-api-dt.png)](./media/digital-twins-permissions/aad-aap-search-api-dt.png#lightbox)
 
-    1. U kunt ook zoeken naar **Azure Smart Spaces**. Selecteer de **Azure Smart Spaces-service** -API.
+    1. U kunt ook zoeken naar `Azure Smart Spaces Service`. Selecteer de **Azure Smart Spaces-service** -API.
 
         [![Zoek-API voor Azure Smart Spaces](./media/digital-twins-permissions/aad-app-search-api.png)](./media/digital-twins-permissions/aad-app-search-api.png#lightbox)
 
-    > [!NOTE]
-    > De exacte naam die wordt weer gegeven wanneer deze wordt doorzocht, kan variëren, afhankelijk van de Azure-Tenant waarvan u deel uitmaakt.
+    > [!IMPORTANT]
+    > De naam en ID van de Azure AD-API die wordt weer gegeven, is afhankelijk van uw Tenant:
+    > * Test Tenant-en klant accounts moeten zoeken naar `Azure Digital Twins`.
+    > * Andere micro soft-accounts moeten zoeken naar `Azure Smart Spaces Service`.
 
 1. De geselecteerde API wordt weer gegeven als **Azure Digital apparaatdubbels** in het deel venster **API-machtigingen voor aanvragen** . Selecteer de vervolg keuzelijst **lezen (1)** en selecteer vervolgens **lezen. Schrijf** selectie vakje. Selecteer de knop **machtigingen toevoegen** .
 

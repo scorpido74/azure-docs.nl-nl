@@ -10,14 +10,14 @@ ms.service: application-insights
 ms.workload: mobile
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 12/17/2018
+ms.date: 09/16/2019
 ms.author: mbullwin
-ms.openlocfilehash: 778a95db8ce462d06e2464db56b542f8113a4960
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 94e994a3dc1cd9d5d5d0b7acb5aed4783d881915
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67875382"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802289"
 ---
 # <a name="application-insights-frequently-asked-questions"></a>Application Insights: Veelgestelde vragen
 
@@ -59,7 +59,7 @@ In het Enter prise-plan worden kosten in rekening gebracht voor elke dag dat elk
 
 [Lees het prijs plan](https://azure.microsoft.com/pricing/details/application-insights/).
 
-## <a name="how-much-is-it-costing"></a>Hoeveel kost het?
+## <a name="how-much-does-it-cost"></a>Wat kost deze oplossing?
 
 * Open de **pagina gebruik en geschatte kosten** in een Application Insights resource. Er is een grafiek van recent gebruik. Als u wilt, kunt u een limiet voor gegevens volumes instellen.
 * Open de [Blade Azure-facturering](https://portal.azure.com/#blade/Microsoft_Azure_Billing/BillingBlade/Overview) om uw rekeningen voor alle resources weer te geven.
@@ -139,6 +139,8 @@ We zoeken het IP-adres (IPv4 of IPv6) van de webclient met behulp van [GeoLite2]
 
 * Browser-telemetrie: Het IP-adres van de afzender wordt verzameld.
 * Server-telemetrie: De module Application Insights verzamelt het IP-adres van de client. Als `X-Forwarded-For` is ingesteld, wordt deze niet verzameld.
+* Raadpleeg dit [artikel](https://docs.microsoft.com/azure/azure-monitor/app/ip-collection)voor meer informatie over hoe IP-adres en geolocatie gegevens worden verzameld in Application Insights.
+
 
 U kunt de `ClientIpHeaderTelemetryInitializer` configureren om het IP-adres van een andere header te halen. In sommige systemen wordt het bijvoorbeeld verplaatst met een proxy, load balancer of CDN naar `X-Originating-IP`. [Meer informatie](https://apmtips.com/blog/2016/07/05/client-ip-address/).
 
@@ -197,7 +199,7 @@ Gebruik één resource voor alle onderdelen of rollen in één bedrijfs systeem.
 | Stack traceringen ophalen van uitzonde ringen |[TrackException-aanroepen invoegen in uw code](asp-net-exceptions.md) (maar sommige worden automatisch gerapporteerd) |Uitzonde ringen detecteren en diagnosticeren |
 | Logboek traceringen zoeken |[Een logboek registratie adapter toevoegen](asp-net-trace-logs.md) |Diagnose uitzonde ringen, prestatie problemen |
 | Basis beginselen van client gebruik: pagina weergaven, sessies,... |[Java script-initialisatie functie in webpagina's](javascript.md) |Gebruiksanalyse |
-| Aangepaste metrische gegevens van client |[Aanroepen bijhouden op webpagina's](api-custom-events-metrics.md) |Gebruikers ervaring verbeteren |
+| Aangepaste metrische gegevens van client |[Aanroepen bijhouden op webpagina's](api-custom-events-metrics.md) |Gebruikerservaring verbeteren |
 | Aangepaste metrische gegevens voor de server |[Tracerings aanroepen op server](api-custom-events-metrics.md) |Business intelligence |
 
 ## <a name="why-are-the-counts-in-search-and-metrics-charts-unequal"></a>Waarom zijn de aantallen in zoek-en metrische grafieken niet gelijk?

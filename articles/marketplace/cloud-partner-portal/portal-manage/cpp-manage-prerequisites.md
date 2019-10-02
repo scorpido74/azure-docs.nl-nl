@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: pabutler
-ms.openlocfilehash: 9c55688674fe16f64bfb27788a6e038059694a77
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 09bf8479921c9bd55b98e835a19ea995fa37e20b
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71087465"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71720069"
 ---
 # <a name="prerequisites-for-managing-accounts-on-the-cloud-partner-portal"></a>Vereisten voor het beheren van accounts op het Cloud Partner-portal 
 
@@ -28,8 +28,7 @@ Kies uw account naam zorgvuldig.  Het vertegenwoordigt uw organisatie, dus mag h
 
 ## <a name="registration-steps"></a>Registratie stappen
 
-De volgende tabel bevat de stappen die nodig zijn voor het volledig registreren als een micro soft-Cloud Uitgever.  Zie [een Cloud Marketplace-Uitgever](https://docs.microsoft.com/azure/marketplace/become-publisher
-)worden voor volledige instructies. 
+De volgende tabel bevat de stappen die nodig zijn voor het volledig registreren als een micro soft-Cloud Uitgever.  Zie [een Cloud Marketplace-uitgever worden](https://docs.microsoft.com/azure/marketplace/become-publisher)voor volledige instructies. 
 
 
 |                   Stap                   |  Resulterende registratie of resource                     |

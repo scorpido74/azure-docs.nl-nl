@@ -11,15 +11,15 @@ ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 10/01/2019
 ms.author: magoedte
 ms.subservice: ''
-ms.openlocfilehash: 5e325f7766e7b0d9764949eb3fbf9753d65db8b3
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: e21bad930bba02e4cbf715a050278ada812e55fa
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68619393"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71718926"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Gebruik en kosten beheren met Azure Monitor-logboeken
 
@@ -31,15 +31,20 @@ Azure Monitor-Logboeken is ontworpen voor het schalen en ondersteunen van het ve
 
 In dit artikel bekijken we hoe u proactief bewaken groei voor het volume en de opslag van gegevens, en limieten voor het beheren van de bijbehorende kosten definiëren. 
 
-De kosten van de gegevens zijn aanzienlijk, afhankelijk van de volgende factoren: 
 
-- Volume van gegevens die zijn gegenereerd en opgenomen in de werk ruimte 
-    - Aantal ingeschakelde beheer oplossingen
-    - Aantal bewaakte systemen
-    - Het type gegevens dat wordt verzameld van elke bewaakte resource 
-- Hoe lang u uw gegevens wilt bewaren 
+## <a name="pricing-model"></a>Prijsmodel
 
-## <a name="understand-your-workspaces-usage-and-estimated-cost"></a>Inzicht in het gebruik van uw werk ruimte en geschatte kosten
+Prijzen voor Log Analytics is gebaseerd op gegevens volume opgenomen en optioneel voor langere gegevens retentie. Elke Log Analytics-werk ruimte wordt in rekening gebracht als een afzonderlijke service en draagt bij aan de factuur voor uw Azure-abonnement. De hoeveelheid gegevens opname kan aanzienlijk zijn, afhankelijk van de volgende factoren: 
+
+  - Aantal ingeschakelde beheer oplossingen
+  - Gebruik van oplossingen met hun eigen facturerings model, bijvoorbeeld [Azure Security Center](https://azure.microsoft.com/en-us/pricing/details/security-center/)
+  - Aantal bewaakte Vm's
+  - Type gegevens die worden verzameld van elke bewaakte VM 
+
+> [!NOTE]
+> De prijs categorieën voor de onlangs aangekondigde capaciteits reservering zijn beschikbaar voor Log Analytics op 1 november 2019. Meer informatie vindt u op [https://azure.microsoft.com/en-us/pricing/details/monitor/](Azure Monitor pricing page).
+
+## <a name="understand-your-usage-and-estimate-costs"></a>Inzicht in uw gebruik en geschatte kosten
 
 Azure Monitor logboeken maakt het eenvoudig om te begrijpen wat de kosten waarschijnlijk zijn op basis van recente gebruiks patronen. Gebruik hiervoor **log Analytics gebruik en geschatte kosten** om het gegevens gebruik te controleren en analyseren. De ziet u hoeveel gegevens worden verzameld door elke oplossing, hoeveel gegevens worden bewaard en een schatting van uw kosten op basis van de hoeveelheid gegevens die zijn opgenomen en eventuele aanvullende bewaarperiode na de inbegrepen hoeveelheid.
 
@@ -53,20 +58,20 @@ Op de pagina **gebruik en geschatte kosten** kunt u uw gegevens volume voor de m
  
 Log Analytics kosten worden toegevoegd aan uw Azure-factuur. U kunt details van uw Azure onder de sectie facturering van Azure portal of in een factuur bekijken de [Azure Billing Portal](https://account.windowsazure.com/Subscriptions).  
 
-## <a name="daily-cap"></a>Daglimiet
+## <a name="manage-your-maximum-daily-data-volume"></a>Uw maximale dagelijkse gegevens volume beheren
 
 Een dagelijkse limiet configureren en de dagelijkse opname van gegevens voor uw werkruimte beperken, maar wees voorzichtig als het doel mag geen aan de dagelijkse limiet bereikt.  Anders verliest u de gegevens voor de rest van de dag die invloed kan zijn op andere Azure-services en oplossingen waarvan functionaliteit mogelijk afhankelijk van de meest recente gegevens beschikbaar worden gesteld in de werkruimte.  Als gevolg hiervan de mogelijkheid om te zien en krijg een waarschuwing wanneer de voorwaarden van de status van resources ondersteuning van IT-services worden beïnvloed.  Het dagelijks kapje is bedoeld om te worden gebruikt als een manier om de onverwachte toename van het gegevens volume van uw beheerde resources te beheren en binnen uw limiet te blijven, of wanneer u niet-geplande kosten voor uw werk ruimte wilt beperken.  
 
 Wanneer de dagelijkse limiet is bereikt, stopt het verzamelen van factureerbare gegevenstypen voor de rest van de dag. De banner van een waarschuwing wordt weergegeven aan de bovenkant van de pagina voor de geselecteerde Log Analytics-werkruimte en een bewerkingsgebeurtenis wordt verzonden naar de *bewerking* tabel onder **LogManagement** categorie. Het verzamelen van gegevens wordt hervat nadat de tijd voor opnieuw instellen die zijn gedefinieerd onder *dagelijkse limiet wordt ingesteld op*. Het is raadzaam om het definiëren van een waarschuwingsregel op basis van deze bewerkingsgebeurtenis, geconfigureerd om te melden wanneer de dagelijkse limiet is bereikt. 
 
 > [!NOTE]
-> Het dagelijks kapje stopt niet het verzamelen van gegevens uit Azure Security Center.
+> Het dagelijks kapje stopt niet het verzamelen van gegevens uit Azure Security Center, met uitzonde ring van werk ruimten waarin Azure Security Center is geïnstalleerd vóór 19 juni 2017. 
 
 ### <a name="identify-what-daily-data-limit-to-define"></a>Identificeren welke dagelijkse limiet voor gegevens definiëren
 
 Beoordeling [Log Analytics-gebruik en geraamde kosten](usage-estimated-costs.md) voor informatie over de trend voor het opnemen van gegevens en wat is de dagelijkse volumelimiet om te definiëren. Deze moet worden overwogen zorgvuldig, omdat het niet mogelijk om te controleren van uw bronnen nadat de limiet is bereikt. 
 
-### <a name="manage-the-maximum-daily-data-volume"></a>Het maximale dagelijkse gegevensvolume beheren
+### <a name="set-the-daily-cap"></a>Het dagelijks kapje instellen
 
 In de volgende stappen wordt beschreven hoe u een limiet kunt configureren voor het beheren van de hoeveelheid gegevens die Log Analytics werk ruimte wordt opgenomen per dag.  
 
@@ -87,8 +92,8 @@ Als u aan de slag te gaan, moet u hier de aanbevolen instellingen voor de waarsc
    - Signaal naam: Aangepaste zoek opdracht in Logboeken
    - Zoek query: Bewerking | Wat is een overschrijding van Details
    - Op basis van: Aantal resultaten
-   - Voorwaarde: Groter dan
-   - Drempelwaarde: 0
+   - Regeling Groter dan
+   - Spreek 0
    - Periodieke 5 (minuten)
    - Ingang 5 (minuten)
 - Naam van waarschuwings regel: Dagelijkse gegevens limiet bereikt
@@ -106,7 +111,9 @@ De volgende stappen wordt beschreven hoe u configureren hoe lang logboek gegeven
 
     ![Instelling voor het bewaren van gegevens van de werk ruimte wijzigen](media/manage-cost-storage/manage-cost-change-retention-01.png)
     
-De retentie kan ook [via arm worden ingesteld](https://docs.microsoft.com/azure/azure-monitor/platform/template-workspace-configuration#configure-a-log-analytics-workspace) met behulp van de `dataRetention` para meter. Als u de gegevens retentie instelt op 30 dagen, kunt u ook een onmiddellijke opschoning van oudere gegevens activeren met behulp van de `immediatePurgeDataOn30Days` para meter, wat nuttig kan zijn voor nalevings scenario's. Deze functionaliteit is alleen beschikbaar via ARM. 
+De retentie kan ook [via arm worden ingesteld](https://docs.microsoft.com/azure/azure-monitor/platform/template-workspace-configuration#configure-a-log-analytics-workspace) met behulp van de para meter `dataRetention`. Als u de gegevens retentie instelt op 30 dagen, kunt u ook een onmiddellijke opschoning van oudere gegevens activeren met behulp van de para meter `immediatePurgeDataOn30Days`, wat nuttig kan zijn voor nalevings scenario's. Deze functionaliteit is alleen beschikbaar via ARM. 
+
+Twee gegevens typen--`Usage` en `AzureActivity`--worden standaard 90 dagen bewaard en er worden geen kosten in rekening gebracht voor deze Bewaar periode van 90 dagen. Deze gegevens typen zijn ook gratis van de kosten voor gegevens opname. 
 
 ## <a name="legacy-pricing-tiers"></a>Verouderde prijs Categorieën
 
@@ -131,7 +138,7 @@ Als uw Log Analytics-werk ruimte toegang heeft tot verouderde prijs categorieën
 3. Onder **prijscategorie**, selecteer een prijscategorie en klik vervolgens op **Selecteer**.  
     ![Prijsplan geselecteerd](media/manage-cost-storage/workspace-pricing-tier-info.png)
 
-U kunt de [prijs categorie ook instellen via arm](https://docs.microsoft.com/azure/azure-monitor/platform/template-workspace-configuration#configure-a-log-analytics-workspace) met behulp van de `ServiceTier` para meter. 
+U kunt [de prijs categorie ook instellen via arm](https://docs.microsoft.com/azure/azure-monitor/platform/template-workspace-configuration#configure-a-log-analytics-workspace) met behulp van de para meter `ServiceTier`. 
 
 ## <a name="troubleshooting-why-log-analytics-is-no-longer-collecting-data"></a>Problemen oplossen waarom Log Analytics geen gegevens meer verzamelt
 
@@ -167,7 +174,7 @@ Heartbeat | where TimeGenerated > startofday(ago(31d))
 | render timechart
 ```
 
-Als u een lijst wilt ophalen met computers die worden gefactureerd als knoop punten als de werk ruimte zich in de prijs categorie verouderd per knoop punt bevindt, zoekt u naar knoop punten waarnaar gefactureerde **gegevens typen** worden verzonden (sommige gegevens typen zijn gratis). Als u dit wilt doen, `_IsBillable` gebruikt u de [eigenschap](log-standard-properties.md#_isbillable) en gebruikt u het meest linkse veld van de Fully Qualified Domain name. Hiermee wordt de lijst met computers met gefactureerde gegevens opgehaald:
+Als u een lijst wilt ophalen met computers die worden gefactureerd als knoop punten als de werk ruimte zich in de prijs categorie verouderd per knoop punt bevindt, zoekt u naar knoop punten waarnaar **gefactureerde gegevens typen** worden verzonden (sommige gegevens typen zijn gratis). Als u dit wilt doen, gebruikt u de [eigenschap](log-standard-properties.md#_isbillable) `_IsBillable` en gebruikt u het meest linkse veld van de Fully Qualified Domain name. Hiermee wordt de lijst met computers met gefactureerde gegevens opgehaald:
 
 ```kusto
 union withsource = tt * 
@@ -221,7 +228,7 @@ Usage | where TimeGenerated > startofday(ago(31d))| where IsBillable == true
 
 ### <a name="data-volume-by-computer"></a>Gegevensvolume per computer
 
-Als u de **grootte** van het aantal factureer bare gebeurtenissen per computer wilt zien `_BilledSize` , gebruikt u de [eigenschap](log-standard-properties.md#_billedsize), die de grootte in bytes levert:
+Als u de **grootte** van de factureer bare gebeurtenissen die per computer zijn opgenomen, wilt zien, gebruikt u de [eigenschap](log-standard-properties.md#_billedsize)`_BilledSize`, die de grootte in bytes levert:
 
 ```kusto
 union withsource = tt * 
@@ -230,7 +237,7 @@ union withsource = tt *
 | summarize Bytes=sum(_BilledSize) by  computerName | sort by Bytes nulls last
 ```
 
-De `_IsBillable` [eigenschap](log-standard-properties.md#_isbillable) geeft aan of de opgenomen gegevens kosten in rekening worden gebracht.
+De [eigenschap](log-standard-properties.md#_isbillable) `_IsBillable` geeft aan of de opgenomen gegevens kosten in rekening worden gebracht.
 
 Voor een overzicht van het aantal **factureer bare** gebeurtenissen dat per computer is opgenomen, gebruikt u 
 
@@ -260,7 +267,7 @@ union withsource = tt *
 | summarize Bytes=sum(_BilledSize) by _ResourceId | sort by Bytes nulls last
 ```
 
-Voor gegevens van knoop punten die worden gehost in azure, kunt u de **grootte** van het aantal factureer bare gebeurtenissen dat __per Azure-abonnement__wordt opgenomen, ophalen en de `_ResourceId` eigenschap parseren als:
+Voor gegevens van knoop punten die worden gehost in azure, kunt u de **grootte** van factureer bare gebeurtenissen ontvangen die __per Azure-abonnement__worden opgenomen, en de eigenschap `_ResourceId` parseren als:
 
 ```kusto
 union withsource = tt * 
@@ -270,7 +277,7 @@ union withsource = tt *
 | summarize Bytes=sum(_BilledSize) by subscriptionId | sort by Bytes nulls last
 ```
 
-Als `subscriptionId` u `resourceGroup` wijzigt in, wordt het factureer bare opgenomen gegevens volume per Azure-resource groep weer gegeven. 
+Als `subscriptionId` wordt gewijzigd in `resourceGroup`, wordt het factureer bare opgenomen gegevens volume door de Azure-resource groep weer gegeven. 
 
 
 > [!NOTE]
@@ -413,6 +420,10 @@ Bij het maken van de waarschuwing voor de tweede query - wanneer wordt voorspeld
 Maak een nieuwe [Actiegroep](action-groups.md) of geef een bestaande op, zodat u een melding ontvangt wanneer aan de criteria voor een logboekwaarschuwing wordt voldaan.
 
 Wanneer u een waarschuwing ontvangt, gebruikt u de stappen in de volgende sectie om te bepalen waarom het-gebruik is hoger dan verwacht.
+
+## <a name="data-transfer-charges-using-log-analytics"></a>Kosten voor gegevens overdracht met behulp van Log Analytics
+
+Bij het verzenden van gegevens naar Log Analytics kunnen kosten voor de gegevens bandbreedte worden berekend. Zoals beschreven op de [pagina met prijzen voor Azure-band breedte](https://azure.microsoft.com/en-us/pricing/details/bandwidth/), wordt gegevens overdracht tussen Azure-Services in twee regio's in rekening gebracht als uitgaande gegevens overdracht tegen het normale tarief. Inkomende gegevens overdracht is gratis. Deze kosten zijn echter zeer klein (aantal%) vergeleken met de kosten voor Log Analytics gegevens opname. Als gevolg van het beheer van de kosten voor Log Analytics moet u zich richten op uw opgenomen gegevens volume, en wij hebben richt lijnen om die [hier](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/manage-cost-storage#understanding-ingested-data-volume)te helpen begrijpen.   
 
 ## <a name="limits-summary"></a>Limieten overzicht
 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/24/2019
 ms.author: erhopf
-ms.openlocfilehash: 3d2c3e2bf693f763db13d90961a31e871aa25235
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: d12b952d298b41c8d06f0fcac141a45749de9051
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68558872"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71799943"
 ---
 # <a name="what-is-text-to-speech"></a>Wat is tekst-naar-spraak?
 
@@ -55,7 +55,7 @@ Alle tekst invoer die wordt verzonden naar de service tekst naar spraak moet zij
 Wanneer u de service tekst naar spraak gebruikt, wordt u gefactureerd voor elk teken dat naar spraak wordt geconverteerd, inclusief Lees tekens. Hoewel het SSML-document zelf niet factureerbaar is, worden optionele elementen die worden gebruikt voor het aanpassen van de manier waarop de tekst naar spraak wordt geconverteerd, zoals fonemen en pitch, geteld als factureer bare tekens. Hier volgt een lijst met wat factureerbaar is:
 
 * Tekst die wordt door gegeven aan de service tekst naar spraak in de SSML-hoofd tekst van de aanvraag
-* Alle opmaak in het tekst veld van de aanvraag tekst in de SSML-indeling, met `<speak>` uitzonde ring van de tags en `<voice>`
+* Alle opmaak in het tekst veld van de aanvraag tekst in de SSML-indeling, met uitzonde ring van `<speak>`-en `<voice>`-Tags
 * Letters, lees tekens, spaties, tabs, opmaak en alle spatie tekens
 * Elk code punt dat in Unicode is gedefinieerd
 
@@ -71,13 +71,13 @@ In deze tabel worden de belangrijkste functies voor tekst naar spraak weer gegev
 | Use-case | SDK | REST |
 |----------|-----|------|
 | Zet tekst om in spraak. | Ja | Ja |
-| Upload gegevens sets voor stem aanpassing. | Nee | Klikt\* |
-| Spraak lettertype modellen maken en beheren. | Nee | Klikt\* |
-| Implementaties van spraak lettertype maken en beheren. | Nee | Klikt\* |
-| Stem lettertype testen maken en beheren. | Nee | Klikt\* |
-| Abonnementen beheren. | Nee | Klikt\* |
+| Upload gegevens sets voor stem aanpassing. | Nee | Ja @ no__t-0 |
+| Spraak lettertype modellen maken en beheren. | Nee | Ja @ no__t-0 |
+| Implementaties van spraak lettertype maken en beheren. | Nee | Ja @ no__t-0 |
+| Stem lettertype testen maken en beheren. | Nee | Ja @ no__t-0 |
+| Abonnementen beheren. | Nee | Ja @ no__t-0 |
 
-\**Deze services zijn beschikbaar via het CRIS.ai-eind punt. Zie [Swagger-verwijzing](https://westus.cris.ai/swagger/ui/index). Deze aangepaste spraak training en beheer-Api's implementeren beperking waarbij aanvragen worden beperkt tot 25 per vijf seconden, terwijl de spraakherkennings-API zelf de beperking implementeert, waardoor er Maxi maal 200 aanvragen per seconde worden toegestaan. Wanneer er een beperking optreedt, wordt u gewaarschuwd via bericht headers.*
+\* *These Services zijn beschikbaar via het cris.ai-eind punt. Zie [Swagger-verwijzing](https://westus.cris.ai/swagger/ui/index). Deze aangepaste spraak training en beheer-Api's implementeren beperking waarbij aanvragen worden beperkt tot 25 per vijf seconden, terwijl de spraakherkennings-API zelf de beperking implementeert, waardoor er Maxi maal 200 aanvragen per seconde worden toegestaan. Als er een beperking optreedt, wordt u hiervan op de hoogte gesteld via bericht headers.*
 
 ## <a name="get-started-with-text-to-speech"></a>Aan de slag met tekst-naar-spraak
 
@@ -93,6 +93,13 @@ We bieden Quick starts die zijn ontworpen om code in minder dan 10 minuten uit t
 | [C#, Eenheid](quickstart-text-to-speech-csharp-unity.md) | Windows, Android | [Door](https://aka.ms/csspeech/csharpref) |
 | [C++](quickstart-text-to-speech-cpp-windows.md) | Windows | [Door](https://aka.ms/csspeech/cppref) |
 | [C++](quickstart-text-to-speech-cpp-linux.md) | Linux | [Door](https://aka.ms/csspeech/cppref) |
+| [Java](quickstart-text-to-speech-java-jre.md) | Windows, Linux, macOS | [Door](https://aka.ms/csspeech/javaref) |
+| [Java](quickstart-text-to-speech-java-android.md) | Android | [Door](https://aka.ms/csspeech/javaref) |
+| [Objective-C](quickstart-text-to-speech-objectivec-macos.md) | macOS | [Door](https://aka.ms/csspeech/objectivecref) |
+| [Objective-C](quickstart-text-to-speech-objectivec-ios.md) | iOS | [Door](https://aka.ms/csspeech/objectivecref) |
+| [Swift](quickstart-text-to-speech-swift-macos.md) | macOS | [Door](https://aka.ms/csspeech/objectivecref) |
+| [Swift](quickstart-text-to-speech-swift-ios.md) | iOS | [Door](https://aka.ms/csspeech/objectivecref) |
+| [Python](quickstart-text-to-speech-python.md) | Window, Linux, macOS | [Door](https://aka.ms/csspeech/pythonref) |
 
 ### <a name="rest-quickstarts"></a>REST-Quick starts
 

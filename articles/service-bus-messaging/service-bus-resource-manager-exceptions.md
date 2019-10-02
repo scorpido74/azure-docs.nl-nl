@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/26/2019
 ms.author: aschhab
-ms.openlocfilehash: 67e95133b9d78823f37ba48f291175ae8e9058d6
-ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
+ms.openlocfilehash: 7b9d4099734af3a04f43d35d89f07f8b005c90f9
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71703560"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802516"
 ---
 # <a name="service-bus-resource-manager-exceptions"></a>Uitzonde ringen voor Service Bus Resource Manager
 
@@ -36,8 +36,8 @@ Hieronder vindt u de verschillende uitzonde ringen/fouten die worden weer gegeve
 
 | Foutcode | Fout subcode | Foutbericht | Description | Aanbeveling |
 | ---------- | ------------- | ------------- | ----------- | -------------- |
-| Onjuiste aanvraag | 40000 | Subcode = 40000. De eigenschaps *naam* kan niet worden ingesteld bij het maken van een wachtrij, omdat de naam ruimte *name* van de naam ruimte de laag Basic gebruikt. Deze bewerking wordt alleen ondersteund in de laag Standard of Premium. | Op Azure Service Bus Basic-laag kunnen de onderstaande eigenschappen niet worden ingesteld of bijgewerkt: <ul> <li> RequiresDuplicateDetection </li> <li> AutoDeleteOnIdle </li> <li>RequiresSession</li> <li>DefaultMessageTimeToLive </li> <li> DuplicateDetectionHistoryTimeWindow </li> <li> EnableExpress </li> <li> ForwardTo </li> <li> Onderwerpen </li> </ul> | U kunt een upgrade uitvoeren van Basic naar Standard of Premium om gebruik te maken van deze functionaliteit. |
-| Onjuiste aanvraag | 40000 | Subcode = 40000. De waarde voor de eigenschap requiresDuplicateDetection van een bestaande wachtrij (of onderwerp) kan niet worden gewijzigd. | Duplicaten detectie moet zijn ingeschakeld/uitgeschakeld op het moment dat de entiteit wordt gemaakt. Nadat deze is gemaakt, kan de configuratie parameter voor duplicaten detectie niet worden gewijzigd. | Als u duplicaten detectie wilt inschakelen voor een eerder gemaakte wachtrij/onderwerp, kunt u een nieuwe wachtrij/onderwerp maken met duplicaten detectie en vervolgens door sturen van de oorspronkelijke wachtrij naar de nieuwe wachtrij/onderwerp. |
+| Onjuiste aanvraag | 40000 | Subcode = 40000. De eigenschaps *naam* kan niet worden ingesteld bij het maken van een wachtrij, omdat de naam ruimte *name* van de naam ruimte de laag Basic gebruikt. Deze bewerking wordt alleen ondersteund in de laag Standard of Premium. | Op Azure Service Bus Basic-laag kunnen de onderstaande eigenschappen niet worden ingesteld of bijgewerkt: <ul> <li> RequiresDuplicateDetection </li> <li> AutoDeleteOnIdle </li> <li>RequiresSession</li> <li>DefaultMessageTimeToLive </li> <li> DuplicateDetectionHistoryTimeWindow </li> <li> EnableExpress </li> <li> ForwardTo </li> <li> Onderwerpen </li> </ul> | Overweeg om een upgrade uit te scha kelen van Basic naar Standard of Premium om deze functionaliteit te gebruiken. |
+| Onjuiste aanvraag | 40000 | Subcode = 40000. De waarde voor de eigenschap requiresDuplicateDetection van een bestaande wachtrij (of onderwerp) kan niet worden gewijzigd. | Duplicaten detectie moet zijn ingeschakeld/uitgeschakeld op het moment dat de entiteit wordt gemaakt. De configuratie parameter duplicaten detectie kan niet worden gewijzigd nadat deze is gemaakt. | Als u duplicaten detectie wilt inschakelen voor een eerder gemaakte wachtrij/onderwerp, kunt u een nieuwe wachtrij/onderwerp maken met duplicaten detectie en vervolgens door sturen van de oorspronkelijke wachtrij naar de nieuwe wachtrij/onderwerp. |
 | Onjuiste aanvraag | 40000 | Subcode = 40000. De opgegeven waarde 16384 is ongeldig. De eigenschap MaxSizeInMegabytes moet een van de volgende waarden hebben: 1024; 2048; 3072; 4096; 5120. | De MaxSizeInMegabytes-waarde is ongeldig. | Zorg ervoor dat de MaxSizeInMegabytes een van de volgende is: 1024, 2048, 3072, 4096, 5120. |
 | Onjuiste aanvraag | 40000 | Subcode = 40000. Partitioneren kan niet worden gewijzigd voor wachtrij/onderwerp. | Partitioneren kan niet worden gewijzigd voor entiteit. | Maak een nieuwe entiteit (wachtrij of onderwerp) en schakel partities in. | 
 | Onjuiste aanvraag | geen | De naam ruimte *name* van de naam ruimte bestaat niet. | De naam ruimte bestaat niet in uw Azure-abonnement. | Voer de onderstaande stappen uit om deze fout op te lossen <ul> <li> Zorg ervoor dat het Azure-abonnement juist is. </li> <li> Zorg ervoor dat de naam ruimte bestaat. </li> <li> Controleer of de naam van de naam ruimte juist is (geen spel fouten of null-teken reeksen). </li> </ul> | 
@@ -58,4 +58,17 @@ Net als bij HTTP geeft "fout code 429" te veel aanvragen aan ". Het impliceert d
 | 429 | 40901 | Subcode = 40901. Er wordt een andere conflicterende bewerking uitgevoerd. | Er wordt een andere conflicterende bewerking uitgevoerd voor dezelfde resource/entiteit | Wacht tot de huidige bewerking in uitvoering is voltooid en probeer het opnieuw. |
 | 429 | 40900 | Subcode = 40900. Conflicteren. U vraagt een bewerking aan die niet is toegestaan in de huidige status van de resource. | Deze voor waarde kan worden bereikt wanneer meerdere aanvragen tegelijkertijd worden uitgevoerd om de bewerkingen op dezelfde entiteit (wachtrij, onderwerp, abonnement of regel) tegelijk uit te voeren. | Wacht een paar seconden en probeer het opnieuw |
 | 429 | geen | Er is een bron conflict opgetreden. Er wordt mogelijk een andere conflicterende bewerking uitgevoerd. Als dit een nieuwe poging is voor een mislukte bewerking, is het opruimen van de achtergrond nog in behandeling. Probeer het later opnieuw. | Deze voor waarde kan worden bereikt wanneer er een bewerking in behandeling is voor dezelfde entiteit. | Wacht tot de vorige bewerking is voltooid en probeer het opnieuw. |
+| 429 | geen | Er is een conflict opgetreden tussen de aanvraag op de entiteits *naam* en de andere aanvraag | Er wordt een andere conflicterende bewerking uitgevoerd voor dezelfde resource/entiteit | Wacht tot de vorige bewerking is voltooid en probeer het opnieuw. |
+| 429 | geen | Er wordt een andere update aanvraag uitgevoerd voor de entiteits *naam entiteit*. | Er wordt een andere conflicterende bewerking uitgevoerd voor dezelfde resource/entiteit | Wacht tot de vorige bewerking is voltooid en probeer het opnieuw. |
 
+
+## <a name="error-code-not-found"></a>Fout code: Niet gevonden
+
+Deze klasse van fouten geeft aan dat de bron niet is gevonden.
+
+| Foutcode | Fout subcode | Foutbericht | Description | Aanbeveling |
+| ---------- | ------------- | ------------- | ----------- | -------------- |
+| Niet gevonden | geen | Entiteit *' entiteit naam '* is niet gevonden. | De entiteit waartegen de bewerking niet is gevonden. | Controleer of de entiteit bestaat en probeer het opnieuw. |
+| Niet gevonden | geen | Niet gevonden. De bewerking bestaat niet. | De bewerking die u probeert uit te voeren, bestaat niet. | Controleer de bewerking en probeer het opnieuw. |
+| Niet gevonden | geen | De binnenkomende aanvraag wordt niet herkend als een naam ruimte beleid voor het opslaan van een aanvraag. | De hoofd tekst van de binnenkomende aanvraag is null en kan daarom niet worden uitgevoerd als een put-aanvraag. | Controleer de hoofd tekst van de aanvraag om er zeker van te zijn dat deze niet null is. | 
+| Niet gevonden | geen | De bericht entiteit *' entiteits naam '* is niet gevonden. | De entiteit waarvoor u de bewerking probeert uit te voeren, is niet gevonden. | Controleer of de entiteit bestaat en probeer het opnieuw. |

@@ -1,47 +1,47 @@
 ---
-title: 'Quickstart: Gebruik cURL antwoord ophalen uit knowledge base - QnA Maker'
+title: 'Quickstart: Gebruik krul om te antwoorden op de Knowledge Base-QnA Maker'
 titleSuffix: Azure Cognitive Services
-description: In deze snelstartgids helpt u bij het ophalen van een antwoord uit uw knowledge base met cURL.
+description: In deze Snelstartgids leert u hoe u een antwoord krijgt van uw Knowledge Base met behulp van krul.
 services: cognitive-services
 author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 07/16/2019
+ms.date: 10/01/2019
 ms.author: diberry
-ms.openlocfilehash: bb33e829853e1f9a975d29c7a80298b9033f0748
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: b698b40546ee1655ebbef3980692ede6b51fc7f1
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68249651"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71803026"
 ---
-# <a name="quickstart-get-answer-from-knowledge-base-using-curl"></a>Quickstart: Antwoord ophalen uit knowledge base met cURL
+# <a name="quickstart-get-answer-from-knowledge-base-using-curl"></a>Quickstart: Antwoord ophalen uit de Knowledge Base met behulp van krul
 
-In deze snelstartgids op basis van een cURL begeleidt u bij het ophalen van een antwoord uit uw knowledge base.
+In deze op krul gebaseerde Snelstartgids wordt u begeleid bij het verkrijgen van een antwoord uit uw Knowledge Base.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Meest recente [ **cURL**](https://curl.haxx.se/).
+* Meest recente [**krul**](https://curl.haxx.se/).
 * U moet over een [QnA Maker-service](../How-To/set-up-qnamaker-service-azure.md) en een [knowledge base met vragen en antwoorden](../Tutorials/create-publish-query-in-portal.md) beschikken.
 
 ## <a name="publish-to-get-endpoint"></a>Publiceren om eindpunten te verkrijgen
 
 Wanneer u klaar bent voor het genereren van een antwoord op een vraag uit uw knowledge base, [publiceert](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base) u uw knowledge base.
 
-## <a name="use-production-endpoint-with-curl"></a>Productie-eindpunt gebruiken met cURL
+## <a name="use-production-endpoint-with-curl"></a>Productie-eind punt met krul gebruiken
 
-Wanneer uw knowledge base is gepubliceerd, geeft de pagina **Publiceren** de instellingen van de HTTP-aanvraag weer voor het genereren van een antwoord. De **CURL** tabblad bevat de instellingen die vereist zijn voor het genereren van een antwoord van het opdrachtregelprogramma [CURL](https://www.getpostman.com).
+Wanneer uw knowledge base is gepubliceerd, geeft de pagina **Publiceren** de instellingen van de HTTP-aanvraag weer voor het genereren van een antwoord. Het tabblad **krul** bevat de instellingen die nodig zijn om een antwoord te genereren vanuit het opdracht regel programma, [krul](https://www.getpostman.com).
 
 [![Resultaten publiceren](../media/qnamaker-use-to-generate-answer/curl-command-on-publish-page.png)](../media/qnamaker-use-to-generate-answer/curl-command-on-publish-page.png#lightbox)
 
-Voor het genereren van een antwoord met CURL, voert u de volgende stappen uit:
+Als u een antwoord met krul wilt genereren, voert u de volgende stappen uit:
 
-1. Kopieer de tekst op het tabblad CURL. 
-1. Open een opdrachtregel of de terminal en plak de tekst.
-1. Bewerk de vraag om te worden relevant zijn voor uw knowledge base. Wees voorzichtig niet te verwijderen van de betreffende JSON rond de vraag.
-1. Voer de opdracht. 
+1. Kopieer de tekst op het tabblad krul. 
+1. Open een opdracht regel of Terminal en plak de tekst.
+1. Bewerk de vraag die relevant is voor uw Knowledge Base. Zorg ervoor dat u de bovenliggende JSON rond de vraag niet verwijdert.
+1. Voer de opdracht in. 
 1. Het antwoord bevat de relevante informatie over het antwoord. 
 
     ```bash
@@ -69,7 +69,7 @@ Voor het genereren van een antwoord met CURL, voert u de volgende stappen uit:
 
 ## <a name="use-staging-endpoint-with-curl"></a>Faseringseindpunt gebruiken met cURL
 
-Als u wilt dat op een antwoord van de staging-eindpunt, gebruikt u de `isTest` hoofdtekst van de eigenschap.
+Als u een antwoord wilt ontvangen van het staging-eind punt, gebruikt u de eigenschap `isTest`.
 
 ```json
 isTest:true
@@ -77,7 +77,7 @@ isTest:true
 
 ## <a name="next-steps"></a>Volgende stappen
 
-De pagina publiceren bevat ook informatie om [een antwoord genereren](get-answer-from-kb-using-postman.md) met Postman. 
+De pagina publiceren bevat ook informatie over het [genereren van een antwoord met een](get-answer-from-kb-using-postman.md) bericht. 
 
 > [!div class="nextstepaction"]
 > [Metagegevens gebruiken tijdens het genereren van een antwoord](../How-to/metadata-generateanswer-usage.md)

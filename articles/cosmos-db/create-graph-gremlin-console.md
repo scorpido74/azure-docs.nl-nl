@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-graph
 ms.topic: quickstart
 ms.date: 07/23/2019
 ms.author: lbosq
-ms.openlocfilehash: cb365517c581ebf83026046f385496afd3e28d7f
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 3f25bbbbc8b3f34bdb89ba8797b042826a88ca8d
+ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71261590"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71815956"
 ---
 # <a name="quickstart-create-query-and-traverse-an-azure-cosmos-db-graph-database-using-the-gremlin-console"></a>Quickstart: Een Azure Cosmos DB Graph-data base maken, doorzoeken en er een query op uitvoeren met behulp van de Gremlin-console
 
@@ -55,7 +55,7 @@ U moet ook de [Gremlin-console](https://tinkerpop.apache.org/) installeren. Gebr
 
     Instelling|Voorgestelde waarde|Description
     ---|---|---
-    hosts|[*account-name*.gremlin.cosmos.azure.com]|Zie de volgende schermafbeelding. Dit is de Gremlin URI-waarde op de pagina Overzicht van Azure Portal tussen vierkante haken, waarbij de afsluitende: 443/ is verwijderd.
+    hosts|[*account naam*. **Gremlin**. Cosmos.Azure.com]|Zie de volgende schermafbeelding. Dit is de **GREMLIN URI** -waarde op de pagina overzicht van de Azure Portal, tussen vier Kante haken, met het afsluitende: 443/verwijderd. Opmerking: Zorg ervoor dat u de waarde Gremlin gebruikt en **niet** de URI die eindigt op [*account naam*. Documents.Azure.com], wat waarschijnlijk zou resulteren in een uitzonde ring ' de host heeft niet op tijd gereageerd ' tijdens het uitvoeren van Gremlin query's later. 
     port|443|Ingesteld op 443.
     gebruikersnaam|*Uw gebruikersnaam*|De bron van het formulier `/dbs/<db>/colls/<coll>` waar `<db>` de naam van uw database is en `<coll>` de naam van uw verzameling is.
     password|*Uw primaire sleutel*| Zie de tweede onderstaande schermafbeelding. Dit is uw primaire sleutel, die u kunt ophalen van de pagina Sleutels in Azure Portal, in het vak Primaire sleutel. Gebruik de kopieerknop aan de linkerkant van het vak om de waarde te kopiëren.
@@ -85,7 +85,7 @@ zorg dat u de waarde van parameter hosts tussen vierkante haken [] plaatst.
 1. Voer in de terminal `:remote connect tinkerpop.server conf/remote-secure.yaml` uit om verbinding te maken met uw appservice.
 
     > [!TIP]
-    > Als u de foutmelding `No appenders could be found for logger` ontvangt, moet u controleren of u de serialisatiefunctiewaarde in het bestand afstand secure.yaml hebt bijgewerkt, zoals beschreven in stap 2. 
+    > Als u de foutmelding `No appenders could be found for logger` ontvangt, moet u controleren of u de serialisatiefunctiewaarde in het bestand afstand secure.yaml hebt bijgewerkt, zoals beschreven in stap 2. Als uw configuratie correct is, kan deze waarschuwing veilig worden genegeerd, omdat deze geen invloed zou hebben op het gebruik van de-console. 
 
 1. Voer vervolgens `:remote console` uit om alle consoleopdrachten om te leiden naar de externe server.
 

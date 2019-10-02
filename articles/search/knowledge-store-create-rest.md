@@ -6,14 +6,14 @@ services: search
 ms.service: search
 ms.subservice: cognitive-search
 ms.topic: tutorial
-ms.date: 09/13/2019
+ms.date: 10/01/2019
 ms.author: laobri
-ms.openlocfilehash: ae0694c4c79527ef3b64ad68d32ef3bce0150462
-ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
+ms.openlocfilehash: e28fa919c4c656b9ceb1d34806c3ef08aec2df2c
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71703579"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71719937"
 ---
 # <a name="create-an-azure-search-knowledge-store-using-rest"></a>Een Azure Search Knowledge Store maken met behulp van REST
 
@@ -29,7 +29,7 @@ Nadat u het kennis archief hebt gemaakt, kunt u meer informatie krijgen over toe
 
 + [Maak een Azure-opslag account](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) om de voorbeeld gegevens en het kennis archief op te slaan. Uw opslag account moet dezelfde locatie (zoals vs-West) voor uw Azure Search-service gebruiken. Het *type account* moet *StorageV2 (algemeen gebruik v2)* (standaard) of *opslag (algemeen gebruik v1)* zijn.
 
-+ Aanbevolen: [Postman desktop-app](https://www.getpostman.com/) voor het verzenden van aanvragen naar Azure Search. U kunt de REST API gebruiken met elk hulp programma dat kan werken met HTTP-aanvragen en-antwoorden. Postman is een goede keuze voor het verkennen van REST-Api's en wordt gebruikt in dit artikel. Daarnaast bevat de [bron code](https://github.com/Azure-Samples/azure-search-postman-searches/Tutorial/Knowledge_Store/KnowledgeStore.postman_collection.json) voor dit artikel een postman-verzameling van aanvragen. 
++ Aanbevolen: [Postman desktop-app](https://www.getpostman.com/) voor het verzenden van aanvragen naar Azure Search. U kunt de REST API gebruiken met elk hulp programma dat kan werken met HTTP-aanvragen en-antwoorden. Postman is een goede keuze voor het verkennen van REST-Api's en wordt gebruikt in dit artikel. Daarnaast bevat de [bron code](https://github.com/Azure-Samples/azure-search-postman-samples/blob/master/knowledge-store/KnowledgeStore.postman_collection.json) voor dit artikel een postman-verzameling van aanvragen. 
 
 ## <a name="2---store-the-data"></a>2: de gegevens opslaan
 
@@ -53,7 +53,7 @@ Laadt het het CSV-bestand van het Hotel in Azure Blob-opslag, zodat het toeganke
 
 ## <a name="3---configure-postman"></a>3-postman configureren
 
-Down load de [bron code van de Postman-verzameling](https://github.com/Azure-Samples/azure-search-postman-samples/knowledge-store/KnowledgeStore.postman_collection.json) en importeer deze in een postman met behulp van **bestand, importeren...** . Ga naar het tabblad **verzamelingen** en klik op de knop **..** . en selecteer **bewerken**. 
+Down load de [bron code van de Postman-verzameling](https://github.com/Azure-Samples/azure-search-postman-samples/blob/master/knowledge-store/KnowledgeStore.postman_collection.json) en importeer deze in een postman met behulp van **bestand, importeren...** . Ga naar het tabblad **verzamelingen** en klik op de knop **..** . en selecteer **bewerken**. 
 
 ![Postman-app met navigatie](media/knowledge-store-create-rest/postman-edit-menu.png "Navigeer naar het menu bewerken in een bericht")
 
@@ -88,7 +88,7 @@ Voor het maken van een kennis archief moet u vier HTTP-aanvragen doen:
 1. Een PUT-aanvraag om de vaardig heden te maken. De vaardig heden specificeert de verrijkingen die worden toegepast op uw gegevens en de structuur van het kennis archief.
 1. Een PUT-aanvraag om de Indexeer functie te maken. Als de Indexeer functie wordt uitgevoerd, worden de gegevens gelezen, wordt de vaardig heden toegepast en worden de resultaten opgeslagen. U moet deze aanvraag als laatste uitvoeren.
 
-De [bron code](https://github.com/Azure-Samples/azure-search-postman-searches/Tutorial/Knowledge_Store/KnowledgeStore.postman_collection.json) bevat een postman-verzameling met deze vier aanvragen. Als u de aanvragen wilt uitgeven, gaat u naar het tabblad aanvragen in postman en voegt u `api-key` en `Content-Type`-aanvraag headers toe. Stel de waarde van `api-key` in op `{{admin-key}}`. Stel de waarde `Content-type` in op `application/json`. 
+De [bron code](https://github.com/Azure-Samples/azure-search-postman-samples/blob/master/knowledge-store/KnowledgeStore.postman_collection.json) bevat een postman-verzameling met deze vier aanvragen. Als u de aanvragen wilt uitgeven, gaat u naar het tabblad aanvragen in postman en voegt u `api-key` en `Content-Type`-aanvraag headers toe. Stel de waarde van `api-key` in op `{{admin-key}}`. Stel de waarde `Content-type` in op `application/json`. 
 
 > [!div class="mx-imgBorder"]
 > ![Screenshot met de interface van Postman voor kopteksten @ no__t-1

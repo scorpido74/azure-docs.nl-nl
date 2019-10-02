@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: wolfma
-ms.openlocfilehash: d7d35c251848af5cfd5852080d01831085401227
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 12abb7fb6d5e93e226ae539f8161566e3c30bd65
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68554124"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71803331"
 ---
 # <a name="quickstart-recognize-speech-in-c-on-macos-by-using-the-speech-sdk"></a>Quickstart: Spraak herkennen in C++ macOS met behulp van de Speech SDK
 
@@ -31,9 +31,7 @@ U hebt een abonnement op spraak services nodig om deze Quick Start te volt ooien
 
 [!INCLUDE [License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
 
-De huidige versie van de Speech SDK van Cognitive Services is `1.6.0`.
-
-De Speech SDK voor macOS kan worden gedownload als een gezipte Framework-bundel https://aka.ms/csspeech/macosbinary van.
+De Speech SDK voor macOS kan worden gedownload als een gezipte Framework-bundel van https://aka.ms/csspeech/macosbinary.
 
 Download en installeer de SDK als volgt:
 
@@ -49,7 +47,7 @@ Download en installeer de SDK als volgt:
    mkdir -p "$SPEECHSDK_ROOT"
    ```
 
-1. Down load en pak `.zip` het archief uit dat het Speech SDK-Framework bevat:
+1. Down load en Extraheer het `.zip`-archief dat het Speech SDK-Framework bevat:
 
    ```sh
    wget -O SpeechSDK-macOS.zip https://aka.ms/csspeech/macosbinary
@@ -62,7 +60,7 @@ Download en installeer de SDK als volgt:
    ls -l "$SPEECHSDK_ROOT"
    ```
 
-   De mapweergave moet de kennisgevings-en licentie bestanden van derden, evenals een `MicrosoftCognitiveServicesSpeech.framework` Directory bevatten.
+   De mapweergave moet de kennisgevings-en licentie bestanden van derden bevatten, evenals een map `MicrosoftCognitiveServicesSpeech.framework`.
 
 ## <a name="add-sample-code"></a>Voorbeeldcode toevoegen
 
@@ -70,7 +68,7 @@ Download en installeer de SDK als volgt:
 
    [!code-cpp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/cpp-macos/helloworld.cpp#code)]
 
-1. Vervang in dit nieuwe bestand de teken reeks `YourSubscriptionKey` door de sleutel van uw speech Services-abonnement.
+1. Vervang in dit nieuwe bestand de teken reeks `YourSubscriptionKey` door uw abonnements sleutel voor spraak Services.
 
 1. Vervang de tekenreeks `YourServiceRegion` door de [regio](regions.md) die aan uw abonnement is gekoppeld (bijvoorbeeld `westus` voor het gratis proefabonnement).
 

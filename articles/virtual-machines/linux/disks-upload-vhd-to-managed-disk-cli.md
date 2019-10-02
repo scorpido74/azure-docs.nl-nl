@@ -1,6 +1,6 @@
 ---
 title: Een VHD uploaden naar Azure met behulp van Azure CLI
-description: Meer informatie over het uploaden van een VHD naar een Azure Managed disk met behulp van de Azure CLI.
+description: Meer informatie over het uploaden van een VHD naar een Azure Managed disk en het kopiëren van een beheerde schijf over regio's met behulp van de Azure CLI.
 services: virtual-machines-linux,storage
 author: roygara
 ms.author: rogarana
@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: virtual-machines-linux
 ms.tgt_pltfrm: linux
 ms.subservice: disks
-ms.openlocfilehash: 938f1696c95f8feb9aeebd28139870e3ce020613
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: d16e37849ce8ba043fdb1fddb13df2abe8732cda
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71695451"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71717172"
 ---
 # <a name="upload-a-vhd-to-azure-using-azure-cli"></a>Een VHD uploaden naar Azure met behulp van Azure CLI
 
@@ -29,6 +29,8 @@ Op dit moment wordt direct uploaden ondersteund voor standaard schijven, standaa
 - Down load de nieuwste [versie van AzCopy V10 toevoegen](../../storage/common/storage-use-azcopy-v10.md#download-and-install-azcopy).
 - [Installeer de Azure cli](/cli/azure/install-azure-cli).
 - Een VHD-bestand lokaal opgeslagen
+- Als u van plan bent om een VHD te uploaden vanaf pem: Een VHD die is [voor bereid voor Azure](../windows/prepare-for-upload-vhd-image.md), lokaal opgeslagen.
+- Of een beheerde schijf in azure, als u van plan bent om een kopieer actie uit te voeren.
 
 ## <a name="create-an-empty-managed-disk"></a>Een lege beheerde schijf maken
 
@@ -45,7 +47,7 @@ Voordat u een lege standaard HDD voor het uploaden kunt maken, moet u de bestand
 
 Maak een lege standaard HDD voor het uploaden door zowel de para meter **--for-upload** als de para meter **--Upload-size-bytes** op te geven in een cmdlet voor het maken van een [schijf](/cli/azure/disk#az-disk-create) :
 
-```azurecli-interactive
+```bash
 az disk create -n mydiskname -g resourcegroupname -l westus2 --for-upload --upload-size-bytes 34359738880 --sku standard_lrs
 ```
 
@@ -55,7 +57,7 @@ U hebt nu een lege beheerde schijf gemaakt die voor het upload proces is geconfi
 
 Gebruik de volgende opdracht om een Beschrijf bare SAS van uw lege beheerde schijf te genereren:
 
-```azurecli-interactive
+```bash
 az disk grant-access -n mydiskname -g resourcegroupname --access-level Write --duration-in-seconds 86400
 ```
 
@@ -75,7 +77,7 @@ Gebruik AzCopy V10 toevoegen om uw lokale VHD-bestand te uploaden naar een behee
 
 Deze upload heeft dezelfde door Voer als de equivalente [standaard HDD](disks-types.md#standard-hdd). Als u bijvoorbeeld een grootte hebt die gelijk is aan S4, hebt u een door Voer van Maxi maal 60 MiB/s. Maar als u een grootte hebt die gelijk is aan S70, hebt u een door Voer van Maxi maal 500 MiB/s.
 
-```
+```bash
 AzCopy.exe copy "c:\somewhere\mydisk.vhd" "sas-URI" --blob-type PageBlob
 ```
 
@@ -83,8 +85,41 @@ Als uw SAS verloopt tijdens het uploaden en u nog `revoke-access` geen sa's hebt
 
 Nadat het uploaden is voltooid en u geen gegevens meer naar de schijf hoeft te schrijven, trekt u de SAS in. Als u de SA'S intrekt, wordt de status van de beheerde schijf gewijzigd en kunt u de schijf koppelen aan een virtuele machine.
 
-```azurecli-interactive
+```bash
 az disk revoke-access -n mydiskname -g resourcegroupname
+```
+
+## <a name="copy-a-managed-disk"></a>Een beheerde schijf kopiëren
+
+Direct uploaden vereenvoudigt ook het proces van het kopiëren van een beheerde schijf. U kunt kopiëren binnen dezelfde regio of in meerdere regio's (naar een andere regio).
+
+Het volgende script zal dit voor u doen, het proces is vergelijkbaar met de stappen die eerder zijn beschreven, met een aantal verschillen sinds u met een bestaande schijf werkt.
+
+> [!IMPORTANT]
+> U moet een offset van 512 toevoegen wanneer u de schijf grootte in bytes van een beheerde schijf van Azure opgeeft. Dit komt doordat Azure de voet tekst weglaat wanneer de schijf grootte wordt geretourneerd. Als u dit niet doet, mislukt de kopie. Het volgende script doet dit al voor u.
+
+Vervang de `<sourceResourceGroupHere>`, `<sourceDiskNameHere>`, `<targetDiskNameHere>`, `<targetResourceGroupHere>` en `<yourTargetLocationHere>` (een voor beeld van een locatie waarde uswest2) met uw waarden en voer vervolgens het volgende script uit om een beheerde schijf te kopiëren.
+
+```bash
+sourceDiskName = <sourceDiskNameHere>
+sourceRG = <sourceResourceGroupHere>
+targetDiskName = <targetDiskNameHere>
+targetRG = <targetResourceGroupHere>
+targetLocale = <yourTargetLocationHere>
+
+sourceDiskSizeBytes= $(az disk show -g $sourceRG -n $sourceDiskName --query '[uniqueId]' -o tsv)
+
+az disk create -n $targetRG -n $targetDiskName -l $targetLocale --for-upload --upload-size-bytes $(($sourceDiskSizeBytes+512)) --sku standard_lrs
+
+targetSASURI = $(az disk grant-access -n $targetDiskName -g $targetRG  --access-level Write --duration-in-seconds 86400 -o tsv)
+
+sourceSASURI=$(az disk grant-access -n <sourceDiskNameHere> -g $sourceRG --duration-in-seconds 86400 --query [acessSas] -o tsv)
+
+.\azcopy copy $sourceSASURI $targetSASURI --blob-type PageBlob
+
+az disk revoke-access -n $sourceDiskName -g $sourceRG
+
+az disk revoke-access -n $targetDiskName -g $targetRG
 ```
 
 ## <a name="next-steps"></a>Volgende stappen

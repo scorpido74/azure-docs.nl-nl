@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: bidishac
-ms.openlocfilehash: b1be09a2af712277ccaad827b8e84e24ed9f5c5c
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: c5a6042e4b181190849b3759325e4aab0c22413b
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68553258"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71800042"
 ---
 # <a name="quickstart-create-a-voice-first-virtual-assistant-with-the-speech-sdk-java"></a>Quickstart: Maak een virtuele assistent met spraak-eerste met de spraak-SDK, java
 
-Quick starts zijn ook beschikbaar voor [spraak-naar-tekst](quickstart-java-jre.md) [-en spraak omzetting](quickstart-translate-speech-java-jre.md).
+Quick starts zijn ook beschikbaar voor [spraak naar tekst](quickstart-java-jre.md), [tekst naar spraak](quickstart-text-to-speech-java-jre.md)en [spraak omzetting](quickstart-translate-speech-java-jre.md).
 
 In dit artikel maakt u een Java-Console toepassing met behulp van de [Cognitive Services Speech SDK](speech-sdk.md). De toepassing maakt verbinding met een eerder geontwerpde bot die is geconfigureerd voor gebruik van het directe lijn spraak kanaal, verzendt een spraak aanvraag en retourneert een activiteit van een spraak reactie (indien geconfigureerd). De toepassing is gebouwd met het Speech SDK maven-pakket en de eclips Java IDE in Windows, Ubuntu Linux of op macOS. De toepassing wordt uitgevoerd op een 64-bit Java 8 runtime-omgeving (JRE).
 
@@ -48,7 +48,7 @@ Als u Windows (64-bits) gebruikt, moet u ervoor zorgen dat u de micro C++ Soft V
 
 ## <a name="optional-get-started-fast"></a>Optioneel: Snel aan de slag
 
-In deze Snelstartgids wordt stapsgewijs beschreven hoe u een eenvoudige client toepassing kunt maken om verbinding te maken met uw op spraak ingeschakelde bot. Als u voor het eerst wilt beginnen, is de volledige, kant-en-assembly-bron code die wordt gebruikt in deze Quick Start, beschikbaar in `quickstart` de voor [beelden van Speech SDK](https://aka.ms/csspeech/samples) onder de-map.
+In deze Snelstartgids wordt stapsgewijs beschreven hoe u een eenvoudige client toepassing kunt maken om verbinding te maken met uw op spraak ingeschakelde bot. Als u de voor keur geeft aan de volledige, kant-en-klare bron code die in deze Quick Start wordt gebruikt, is beschikbaar in de [Speech SDK](https://aka.ms/csspeech/samples) -voor beelden in de map `quickstart`.
 
 ## <a name="create-and-configure-project"></a>Project maken en configureren
 
@@ -72,7 +72,7 @@ Als u logboek registratie wilt inschakelen, moet u ook het bestand **pom. XML** 
 
    ![Schermopname van het venster Nieuwe Java-klasse](media/sdk/qs-java-jre-06-create-main-java.png)
 
-1. Open de zojuist gemaakte **hoofd** klasse en vervang de inhoud van het `Main.java` bestand door de volgende begin code.
+1. Open de zojuist gemaakte **hoofd** klasse en vervang de inhoud van het bestand `Main.java` door de volgende begin code.
 
     ```java
     package speechsdk.quickstart;
@@ -139,11 +139,11 @@ Als u logboek registratie wilt inschakelen, moet u ook het bestand **pom. XML** 
     }
     ```
 
-1. In de methode **Main** configureert u eerst uw `DialogServiceConfig` en gebruikt u deze om een `DialogServiceConnector` exemplaar te maken. Hiermee wordt verbinding gemaakt met het directe lijn spraak kanaal om te communiceren met uw bot. Er `AudioConfig` wordt ook een exemplaar gebruikt voor het opgeven van de bron voor audio-invoer. In dit voor beeld wordt de standaard microfoon gebruikt met `AudioConfig.fromDefaultMicrophoneInput()`.
+1. In de methode **Main** kunt u uw `DialogServiceConfig` eerst configureren en gebruiken om een `DialogServiceConnector`-exemplaar te maken. Hiermee wordt verbinding gemaakt met het directe lijn spraak kanaal om te communiceren met uw bot. Er wordt ook een `AudioConfig`-exemplaar gebruikt voor het opgeven van de bron voor audio-invoer. In dit voor beeld wordt de standaard microfoon gebruikt met `AudioConfig.fromDefaultMicrophoneInput()`.
 
-    * Vervang de teken `YourSubscriptionKey` reeks door uw abonnements sleutel, die u [hier](get-started.md)kunt bereiken.
-    * Vervang de teken `YourServiceRegion` reeks door de [regio](regions.md) die aan uw abonnement is gekoppeld.
-    * Vervang de teken `YourChannelSecret` reeks door het geheim van uw directe lijn spraak kanaal.
+    * Vervang de teken reeks `YourSubscriptionKey` door uw abonnements sleutel, die u [hier](get-started.md)kunt bereiken.
+    * Vervang de teken reeks `YourServiceRegion` door de [regio](regions.md) die aan uw abonnement is gekoppeld.
+    * Vervang de teken reeks `YourChannelSecret` door het geheim van het directe lijn spraak kanaal.
 
     > [!NOTE]
     > Direct line Speech (preview) is momenteel beschikbaar in een subset van de regio's met spraak Services. Raadpleeg [de lijst met ondersteunde regio's voor de eerste virtuele assistenten voor spraak](regions.md#voice-first-virtual-assistants) en zorg ervoor dat uw resources in een van deze regio's worden geïmplementeerd.
@@ -161,7 +161,7 @@ Als u logboek registratie wilt inschakelen, moet u ook het bestand **pom. XML** 
     final DialogServiceConnector connector = new DialogServiceConnector(botConfig, audioConfig);
     ```
 
-1. `DialogServiceConnector`is afhankelijk van verschillende gebeurtenissen om de bot-activiteiten, de resultaten van spraak herkenning en andere informatie te communiceren. Voeg deze gebeurtenislisteners toe volgende.
+1. `DialogServiceConnector` is afhankelijk van verschillende gebeurtenissen om de bot-activiteiten, de resultaten van spraak herkenning en andere informatie te communiceren. Voeg deze gebeurtenislisteners toe volgende.
 
     ```java
     // Recognizing will provide the intermediate recognized text while an audio stream is being processed
@@ -200,7 +200,7 @@ Als u logboek registratie wilt inschakelen, moet u ook het bestand **pom. XML** 
         });
     ```
 
-1. Verbind `DialogServiceConnector` de aan directe lijn spraak door de `connectAsync()` methode aan te roepen. Als u uw bot wilt testen, kunt u `listenOnceAsync` de methode aanroepen om audio-invoer van uw microfoon te verzenden. Daarnaast kunt u ook de `sendActivityAsync` methode gebruiken om een aangepaste activiteit te verzenden als een geserialiseerde teken reeks. Deze aangepaste activiteiten kunnen extra gegevens leveren die uw bot in het gesprek gebruikt.
+1. Verbind de `DialogServiceConnector` om een regel spraak te maken door de `connectAsync()`-methode aan te roepen. Als u uw bot wilt testen, kunt u de methode `listenOnceAsync` aanroepen om audio-invoer van uw microfoon te verzenden. Daarnaast kunt u ook de methode `sendActivityAsync` gebruiken om een aangepaste activiteit te verzenden als een geserialiseerde teken reeks. Deze aangepaste activiteiten kunnen extra gegevens leveren die uw bot in het gesprek gebruikt.
 
     ```java
     connector.connectAsync();
@@ -211,9 +211,9 @@ Als u logboek registratie wilt inschakelen, moet u ook het bestand **pom. XML** 
     // connector.sendActivityAsync(...)
     ```
 
-1. Sla de wijzigingen in `Main` het bestand op.
+1. Sla de wijzigingen in het bestand `Main` op.
 
-1. Als u het afspelen van antwoorden wilt ondersteunen, voegt u een extra klasse toe die het PullAudioOutputStream-object dat wordt geretourneerd door de getAudio-API naar een Java-InputStream voor gemakkelijke verwerking kunt transformeren. Deze ActivityAudioStream is een gespecialiseerde klasse waarmee geluids reacties van het "directe-lijn spraak kanaal" wordt verwerkt. Het biedt accesss de mogelijkheid om audio-indelings gegevens op te halen die nodig zijn voor het afhandelen van afspelen Voor dat **bestand** > selecteren**nieuwe** > **klasse**.
+1. Als u het afspelen van antwoorden wilt ondersteunen, voegt u een extra klasse toe die het PullAudioOutputStream-object dat wordt geretourneerd door de getAudio-API naar een Java-InputStream voor gemakkelijke verwerking kunt transformeren. Deze ActivityAudioStream is een gespecialiseerde klasse waarmee geluids reacties van het "directe-lijn spraak kanaal" wordt verwerkt. Het biedt accesss de mogelijkheid om audio-indelings gegevens op te halen die nodig zijn voor het afhandelen van afspelen Selecteer voor die **bestands** > **nieuwe** > -**klasse**.
 
 1. Voer in het venster **nieuwe Java** -klasse **speechsdk. Quick** start in het veld **pakket** in en **ActivityAudioStream** in het veld **naam** .
 
@@ -459,12 +459,12 @@ Als u logboek registratie wilt inschakelen, moet u ook het bestand **pom. XML** 
 
     ```
 
-1. Sla de wijzigingen in `ActivityAudioStream` het bestand op.
+1. Sla de wijzigingen in het bestand `ActivityAudioStream` op.
 
 ## <a name="build-and-run-the-app"></a>De app bouwen en uitvoeren
 
 Druk op F11 of selecteer **Uitvoeren** > **Fouten opsporen**.
-In de-console wordt een bericht weer gegeven met de tekst ' zeg iets ' op dit moment kunt u een Engelse zin of zin spreken die uw bot begrijpt. Uw spraak wordt via het directe lijn spraak kanaal naar uw bot verzonden, waar deze wordt herkend, verwerkt door uw bot en het antwoord wordt geretourneerd als een activiteit. Als uw bot spraak retourneert als reactie, wordt de audio afgespeeld met behulp van `AudioPlayer` de-klasse.
+In de-console wordt een bericht weer gegeven met de tekst ' zeg iets ' op dit moment kunt u een Engelse zin of zin spreken die uw bot begrijpt. Uw spraak wordt via het directe lijn spraak kanaal naar uw bot verzonden, waar deze wordt herkend, verwerkt door uw bot en het antwoord wordt geretourneerd als een activiteit. Als uw bot spraak retourneert als reactie, wordt de audio afgespeeld met behulp van de klasse `AudioPlayer`.
 
 ![Schermafbeelding van console-uitvoer na geslaagde herkenning](media/sdk/qs-java-jre-08-console-output.png)
 

@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: travisw
-ms.openlocfilehash: 1c203bb39a90fdb1c77c3a2c844318a748df7c63
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: f5b8623c835b4188d098ab2acf842abef30138e9
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559215"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71800054"
 ---
 # <a name="quickstart-create-a-voice-first-virtual-assistant-in-java-on-android-by-using-the-speech-sdk"></a>Quickstart: Een virtuele assistent met spraak herkenning maken in Java op Android met behulp van de Speech SDK
 
-Er is ook een Snelstartgids beschikbaar voor [spraak naar tekst](quickstart-java-android.md).
+Er is ook een Snelstartgids beschikbaar voor [spraak naar tekst](quickstart-java-android.md) en [tekst naar spraak](quickstart-text-to-speech-java-android.md).
 
 In dit artikel maakt u een virtuele assistent van het hoogste spraak met Java voor Android met behulp van de [spraak-SDK](speech-sdk.md). Met deze toepassing wordt verbinding gemaakt met een bot die u al hebt gemaakt en geconfigureerd met het [directe lijn spraak kanaal](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech). Er wordt dan een spraak aanvraag verzonden naar de bot en er wordt een reactie activiteit met spraak ingeschakeld.
 
@@ -43,7 +43,7 @@ Deze toepassing is gebouwd met het Speech SDK maven-pakket en Android Studio 3,3
 
 ## <a name="create-user-interface"></a>Gebruikersinterface maken
 
-In deze sectie maken we een Basic-gebruikers interface (UI) voor de toepassing. Laten we beginnen met het openen van de hoofd `activity_main.xml`activiteit:. De basis sjabloon bevat een titel balk met de naam van de toepassing en een `TextView` met het bericht ' Hello World! '.
+In deze sectie maken we een Basic-gebruikers interface (UI) voor de toepassing. Laten we beginnen met het openen van de hoofd activiteit: `activity_main.xml`. De basis sjabloon bevat een titel balk met de naam van de toepassing en een `TextView` met het bericht Hello World!.
 
 Vervang vervolgens de inhoud van de `activity_main.xml` door de volgende code:
 
@@ -96,9 +96,9 @@ Vervang vervolgens de inhoud van de `activity_main.xml` door de volgende code:
 
 Deze XML definieert een eenvoudige gebruikers interface voor interactie met uw bot.
 
-* Het `button` element initieert een interactie en roept de `onBotButtonClicked` methode aan wanneer erop wordt geklikt.
-* Het `recoText` element geeft de resultaten van de spraak-naar-tekst weer wanneer u met uw bot praat.
-* Het `activityText` element geeft de JSON-Payload voor de nieuwste bot-Framework activiteit van uw bot.
+* Het element `button` initieert een interactie en roept de `onBotButtonClicked`-methode aan wanneer erop wordt geklikt.
+* Met het element `recoText` worden de resultaten van de spraak-naar-tekst weer gegeven wanneer u praat met uw bot.
+* Het element `activityText` geeft de JSON-nettolading weer voor de nieuwste bot-Framework activiteit vanaf uw bot.
 
 De tekst en de grafische weergave van uw gebruikersinterface moeten er nu ongeveer als volgt uitzien:
 
@@ -106,7 +106,7 @@ De tekst en de grafische weergave van uw gebruikersinterface moeten er nu ongeve
 
 ## <a name="add-sample-code"></a>Voorbeeldcode toevoegen
 
-1. Open `MainActivity.java`en vervang de inhoud door de volgende code:
+1. Open `MainActivity.java` en vervang de inhoud door de volgende code:
 
    ```java
     package samples.speech.cognitiveservices.microsoft.com;
@@ -250,19 +250,19 @@ De tekst en de grafische weergave van uw gebruikersinterface moeten er nu ongeve
     }
    ```
 
-   * De `onCreate` methode bevat code die microfoon-en Internet machtigingen aanvraagt.
+   * De methode `onCreate` bevat code die microfoon-en Internet machtigingen aanvraagt.
 
    * De methode `onBotButtonClicked` is, zoals eerder gezegd, de methode voor het afhandelen van het klikken op de knop. Een knop indrukt een enkele interactie (' turn ') wordt geactiveerd met uw bot.
 
-   * De `registerEventListeners` -methode demonstreert de gebeurtenissen die worden `DialogServiceConnector` gebruikt door de en basis verwerking van binnenkomende activiteiten.
+   * De `registerEventListeners`-methode demonstreert de gebeurtenissen die worden gebruikt door de `DialogServiceConnector` en de basis verwerking van binnenkomende activiteiten.
 
 1. Vervang in hetzelfde bestand de configuratie teken reeksen zodat deze overeenkomen met uw resources:
 
-    * Vervang `YourChannelSecret` door het directe lijn spraak kanaal geheim voor uw bot.
+    * Vervang `YourChannelSecret` door het geheim van het directe lijn spraak kanaal voor uw bot.
 
     * Vervang `YourSpeechSubscriptionKey` door uw abonnementssleutel.
 
-    * Vervangen `YourServiceRegion` door de [regio](regions.md) die aan uw abonnement is gekoppeld alleen een subset van spraak Services regio's wordt momenteel ondersteund met direct line speech. Zie [regio's](regions.md#voice-first-virtual-assistants)voor meer informatie.
+    * Vervang `YourServiceRegion` door de [regio](regions.md) die aan uw abonnement is gekoppeld alleen een subset van spraak Services regio's wordt momenteel ondersteund met direct line speech. Zie [regio's](regions.md#voice-first-virtual-assistants)voor meer informatie.
 
 ## <a name="build-and-run-the-app"></a>De app bouwen en uitvoeren
 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/31/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 20c8fbd1626adaf67b790d500d8bfdeff6f27841
-ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
+ms.openlocfilehash: 8ec61a04d6bb7289f12becf8baebae5e47150897
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71702179"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802100"
 ---
 # <a name="azure-active-directory-b2c-user-migration"></a>Azure Active Directory B2C: Gebruikers migratie
 
@@ -59,22 +59,13 @@ Registreer eerst een toepassing die u kunt gebruiken voor beheer taken zoals geb
 
 Vervolgens verleent u de toepassing de Azure AD-Graph API machtigingen die zijn vereist voor het schrijven naar de map.
 
-1. Selecteer in het menu **instellingen** de optie **vereiste machtigingen**.
-1. Selecteer **Windows Azure Active Directory**.
-1. Selecteer in het deel venster **toegang inschakelen** onder **toepassings machtigingen**de optie **Lees-en schrijf Directory gegevens**en selecteer vervolgens **Opslaan**.
-1. Selecteer in het deel venster **vereiste machtigingen** de optie **verlenen machtigingen**en selecteer vervolgens **Ja**.
-
-   ![Selectie vakje Directory lezen/schrijven, opslaan en machtigingen verlenen gemarkeerd](media/active-directory-b2c-user-migration/pre-migration-app-registration-permissions.png)
+[!INCLUDE [active-directory-b2c-permissions-directory](../../includes/active-directory-b2c-permissions-directory.md)]
 
 ### <a name="step-13-create-the-application-secret"></a>Stap 1,3: Het toepassings geheim maken
 
 Maak een client geheim (sleutel) voor gebruik door de gebruikers migratie toepassing die u in een latere stap hebt geconfigureerd.
 
-1. Selecteer op de pagina **geregistreerde app** de optie **instellingen**.
-1. Selecteer **Sleutels**.
-1. Voeg onder **wacht woorden**een nieuwe sleutel toe (ook wel een client geheim genoemd) met de naam *MyClientSecret* of een andere naam van uw keuze, selecteer een verloop venster, selecteer **Opslaan**en kopieer de sleutel waarde voor later gebruik.
-
-    ![De waarde van de toepassings-ID en sleutels menu-item zijn gemarkeerd in Azure Portal](media/active-directory-b2c-user-migration/pre-migration-app-id-and-key.png)
+[!INCLUDE [active-directory-b2c-client-secret](../../includes/active-directory-b2c-client-secret.md)]
 
 U hebt nu een toepassing met machtigingen om gebruikers in uw Azure AD B2C-Tenant te maken, te lezen en bij te werken.
 

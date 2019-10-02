@@ -8,12 +8,12 @@ ms.date: 08/13/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 737bad504519a2ec7eee9764593245e0fee28cc3
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 4523d7bf8f6c0ffc0ebfbc57d20a19baec08c91b
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71673070"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71720361"
 ---
 # <a name="build-highly-available-azure-storage-applications-with-geo-zone-redundant-storage-gzrs-preview"></a>Bouw Maxi maal beschik bare Azure Storage toepassingen met geo-zone-redundante opslag (GZRS) (preview)
 
@@ -21,7 +21,7 @@ Geo-zone-redundante opslag (GZRS) (preview) trouwt de hoge Beschik baarheid van 
 
 Met een GZRS-opslag account kunt u door gaan met het lezen en schrijven van gegevens als een beschikbaarheids zone niet meer beschikbaar is of niet kan worden hersteld. Daarnaast zijn uw gegevens ook duurzaam in het geval van een volledige regionale onderbreking of een nood situatie waarin de primaire regio niet kan worden hersteld. GZRS is ontworpen om ten minste 99.99999999999999% (16 9) duurzaamheid van objecten in een bepaald jaar te bieden. GZRS biedt ook dezelfde [schaalbaarheids doelen](storage-scalability-targets.md) als LRS, ZRS, GRS of Ra-GRS. U kunt optioneel Lees toegang inschakelen voor gegevens in de secundaire regio met een geografisch redundante opslag met lees toegang (RA-GZRS) als uw toepassingen gegevens moeten kunnen lezen in het geval van een ramp in de primaire regio.
 
-Micro soft raadt aan om GZRS te gebruiken voor toepassingen die consistentie, duurzaamheid, hoge Beschik baarheid, uitstekende prestaties en flexibiliteit voor diaster-herstel vereisen. Voor de extra beveiliging van lees toegang tot de secundaire regio in het geval van een regionale ramp, schakelt u RA-GZRS in voor uw opslag account.
+Micro soft raadt aan om GZRS te gebruiken voor toepassingen die consistentie, duurzaamheid, hoge Beschik baarheid, uitstekende prestaties en flexibiliteit voor herstel na nood gevallen vereisen. Voor de extra beveiliging van lees toegang tot de secundaire regio in het geval van een regionale ramp, schakelt u RA-GZRS in voor uw opslag account.
 
 ## <a name="about-the-preview"></a>Over de preview-versie
 

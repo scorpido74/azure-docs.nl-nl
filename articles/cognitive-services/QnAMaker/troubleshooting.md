@@ -8,24 +8,25 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 09/25/2019
+ms.date: 09/26/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: c0ceea5c86af8d733c838e19f77eaeadc8a12dbb
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 00d3d63ff1a5b4d5dab0534e039145b97091af87
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300241"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802155"
 ---
 # <a name="troubleshooting-for-qna-maker"></a>Problemen oplossen voor QnA Maker
 
 De lijst met alle meest gestelde vragen met betrekking tot de QnA Maker-service helpt u de service sneller en met betere resultaten te gebruiken.
 
+<a name="how-to-get-the-qnamaker-service-hostname"></a>
 
-## <a name="how-to-get-the-qnamaker-service-hostname"></a>Over het verkrijgen van de hostnaam van de service QnAMaker
+## <a name="how-to-get-the-qnamaker-service-endpoint"></a>Het QnAMaker-service-eind punt ophalen
 
-Hostnaam van de QnAMaker-service is handig voor de foutopsporing als u contact op met ondersteuning voor QnAMaker of UserVoice. De hostnaam is een URL in dit formulier: https:// *{hostname}* . azurewebsites.net.
+QnAMaker service-eind punt is handig voor fout opsporing wanneer u contact opneemt met QnAMaker-ondersteuning of UserVoice. Het eind punt is een URL in dit formulier: https://your-resource-name.azurewebsites.net.
     
 1. Ga naar uw QnAMaker-service (resourcegroep) in de [Azure-portal](https://portal.azure.com)
 
@@ -35,9 +36,9 @@ Hostnaam van de QnAMaker-service is handig voor de foutopsporing als u contact o
 
      ![Selecteer QnAMaker App Service](./media/qnamaker-how-to-troubleshoot/qnamaker-azure-appservice.png)
 
-1. De URL van de hostnaam is beschikbaar in de sectie overzicht
+1. De eind punt-URL is beschikbaar in het gedeelte Overzicht
 
-    ![QnAMaker-hostnaam](./media/qnamaker-how-to-troubleshoot/qnamaker-azure-gethostname.png)
+    ![QnAMaker-eind punt](./media/qnamaker-how-to-troubleshoot/qnamaker-azure-gethostname.png)
     
 
 ## <a name="use-the-help-bot-in-the-qna-maker-portal"></a>De Help-bot gebruiken in de QnA Maker Portal
@@ -173,7 +174,7 @@ Volg de instructies in [dit](./Tutorials/create-qna-bot.md) documentatie voor he
 U moet over de volgende informatie beschikken over uw Knowledge Base:
 
 * De Knowledge Base-ID.
-* De gepubliceerde hostnaam van het eind punt van de Knowledge Base: gevonden op de pagina **instellingen** nadat u hebt gepubliceerd.
+* De aangepaste subdomeinnaam van het gepubliceerde eind punt, met de naam `host`, gevonden op de pagina **instellingen** nadat u hebt gepubliceerd.
 * De gepubliceerde eindpunt sleutel van de Knowledge Base-gevonden op de pagina **instellingen** nadat u deze hebt gepubliceerd. 
 
 Met deze informatie gaat u naar de app-service van uw bot in de Azure Portal. Wijzig de waarden onder **instellingen-> configuratie-> toepassings instellingen**.  

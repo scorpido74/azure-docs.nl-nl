@@ -6,16 +6,16 @@ keywords: hulpprogramma's voor datatechnologie, virtuele machine voor datatechno
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: data-science-vm
-author: vijetajo
-ms.author: vijetaj
+author: gvashishtha
+ms.author: gopalv
 ms.topic: conceptual
-ms.date: 09/11/2017
-ms.openlocfilehash: 0cedc9ede43d18d0b94b8a516170db53e3a27910
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.date: 09/27/2019
+ms.openlocfilehash: 586cdd6dc06a7685f17c78fa4c4ea2f2ebf52f3d
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70885630"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802405"
 ---
 # <a name="languages-supported-on-the-data-science-virtual-machine"></a>Talen die worden ondersteund op de Data Science Virtual Machine 
 
@@ -65,18 +65,17 @@ De Data Science Virtual Machine (DSVM) wordt geleverd met verschillende vooraf o
 
   De standaard python-omgevingen op de DSVM zijn wereld wijde omgevingen die door alle gebruikers kunnen worden gelezen. Maar alleen beheerders kunnen globale pakketten schrijven en installeren. Als u pakketten wilt installeren in de globale omgeving, activeert u de hoofd-of python2 `activate` -omgeving met behulp van de opdracht als beheerder. Vervolgens kunt u een pakket beheer programma gebruiken, `conda` zoals `pip` of om pakketten te installeren of bij te werken.
 
-## <a name="python-linux-and-windows-server-2012-edition"></a>Python (Linux en Windows Server 2012 Edition)
+## <a name="python-linux-edition"></a>Python (Linux Edition)
 
 |    |           |
 | ------------- | ------------- |
 | Ondersteunde taal versies | Python 2,7 en 3,5 |
-| Ondersteunde DSVM-edities      | Linux, Windows Server 2012    |
+| Ondersteunde DSVM-edities      | Linux   |
 | Hoe wordt deze geconfigureerd / geïnstalleerd op de DSVM?  | Er worden `conda` twee wereld wijde omgevingen gemaakt: <br /> * `root`de omgeving die `/anaconda/` zich bevindt in is Python 2,7. <br/> * `py35`de omgeving die `/anaconda/envs/py35`zich bevindt in is python 3,5.       |
 | Koppelingen naar voorbeelden      | Er zijn voor beelden van Jupyter-notebooks voor python opgenomen.     |
 | Gerelateerde hulpprogram ma's op de DSVM      | PySpark, R, Julia      |
 ### <a name="how-to-use-and-run-it"></a>Hoe gebruiken en uitvoeren    
 
-**Linux**
 * Uitvoeren in een Terminal:
 
   Open de Terminal en voer een van de volgende handelingen uit, afhankelijk van de versie van python die u wilt uitvoeren:
@@ -103,34 +102,6 @@ De Data Science Virtual Machine (DSVM) wordt geleverd met verschillende vooraf o
 
   De standaard Python-omgevingen op de DSVM zijn algemene omgevingen kan worden gelezen door alle gebruikers. Maar alleen beheerders kunnen globale pakketten schrijven en installeren. Als u pakketten wilt installeren in de globale omgeving, gaat u naar de hoofd-of py35 `source activate` -omgeving met behulp van de opdracht als Administrator of als gebruiker met sudo-machtigingen. Vervolgens kunt u een pakket beheer programma gebruiken, `conda` zoals `pip` of om pakketten te installeren of bij te werken.
 
-**Windows 2012**
-* Uitvoeren vanaf een opdracht prompt:
-
-  Open een opdracht prompt en voer een van de volgende handelingen uit, afhankelijk van de versie van python die u wilt uitvoeren:
-
-     ```
-    # To run Python 2.7
-    activate 
-    python --version
-    
-    # To run Python 3.5
-    activate py35
-    python --version
-    
-    ```
-* Gebruiken in een IDE:
-
-  Gebruik Python Tools voor Visual Studio (PTVS) in de Visual Studio Community-editie geïnstalleerd. De enige omgeving die automatisch wordt ingesteld in PTVS is Python 2,7.
-    > [!NOTE]
-    > Om PTVS te laten verwijzen naar python 3,5, moet u een aangepaste omgeving maken in PTVS. Als u dit pad naar de omgeving in Visual Studio Community Edition wilt instellen, gaat u naar **hulpprogram ma's** -> **python tools** -> **python-omgevingen** en selecteert u **+ Custom**. Vervolgens stelt u de locatie in `c:\anaconda\envs\py35` op en selecteert u _Automatische detectie_.
-
-* Gebruiken in Jupyter:
-
-  Open Jupyter en selecteer **Nieuw** om een nieuw notitie blok te maken. U kunt het kernel-type instellen als **python [Conda root]** voor python 2,7 en **python [Conda env: Py35]** voor python 3,5. 
-
-* Python-pakketten installeren:
-
-  De standaard python-omgevingen op de DSVM zijn wereld wijde omgevingen die door alle gebruikers kunnen worden gelezen. Maar alleen beheerders kunnen globale pakketten schrijven en installeren. Als u pakketten wilt installeren in de globale omgeving, activeert u de hoofd-of py35 `activate` -omgeving met behulp van de opdracht als beheerder. Vervolgens kunt u een pakket beheer programma gebruiken, `conda` zoals `pip` of om pakketten te installeren of bij te werken.
 
 ## <a name="r"></a>R
 

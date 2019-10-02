@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 09/17/2019
+ms.date: 10/01/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 81deaaffa301c4453842875f9cfd6b63bb6bbfd7
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: ab6139e1f87938edaa0a8a94453faa213d39e23f
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71672974"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71719014"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Azure gebruiken om SAP-werkbelasting scenario's te hosten en uit te voeren
 
@@ -120,6 +120,8 @@ Zie voor informatie over de integratie van Azure-Services in SAP-onderdelen:
 
 
 ## <a name="change-log"></a>Wijzigingenlogboek
+- 10/01/2019: Wijzig in grafische afbeeldingen van [Azure proximity placement groups voor een optimale netwerk latentie met SAP-toepassingen](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-proximity-placement-scenarios) om meer duidelijkheid te krijgen
+- 10/01/2019: Wijziging in [SAP Hana infrastructuur configuraties en-bewerkingen op Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations) om de instructies te corrigeren rond Maxi maal beschik bare NFS-share voor/Hana/Shared. 
 - 09/28/2019: Wijziging in het [instellen van pacemaker op Red Hat Enterprise Linux in azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-pacemaker) om te verduidelijken dat SBD als een omheinings mechanisme niet wordt ondersteund op RHEL-clusters  
 - 09/17/2019: Wijziging in de hand leiding voor planning en implementatie van netweave om de termen rond VM-extensie voor SAP samen te voegen  
 - 08/22/2019: Wijzigingen in het [instellen van pacemaker op SuSE Linux Enterprise Server in azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker) voor het bijwerken van de url's voor het maken van aangepaste rollen  

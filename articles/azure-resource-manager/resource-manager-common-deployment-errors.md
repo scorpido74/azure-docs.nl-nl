@@ -8,12 +8,12 @@ ms.service: azure-resource-manager
 ms.topic: troubleshooting
 ms.date: 08/30/2019
 ms.author: tomfitz
-ms.openlocfilehash: fc6fdde4daa2d671b9d93673c2a78c2d9d85963c
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 0e03cd3747fe6770be7dddaf36d634547ed75b39
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70275745"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71718940"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>Veelvoorkomende fouten bij Azure-implementatie met Azure Resource Manager oplossen
 
@@ -36,7 +36,7 @@ Als u op zoek bent naar informatie over een fout code en deze informatie niet in
 | Conflict | U vraagt een bewerking aan die niet is toegestaan in de huidige status van de resource. Het wijzigen van de grootte van een schijf is bijvoorbeeld alleen toegestaan bij het maken van een virtuele machine of wanneer de toewijzing van de virtuele machine ongedaan wordt gemaakt. | |
 | DeploymentActive | Wacht tot de gelijktijdige implementatie naar deze resource groep is voltooid. | |
 | Heeft | De heeft-fout is een algemene fout die niet de details biedt die u nodig hebt om de fout op te lossen. Bekijk de fout Details voor een fout code die meer informatie bevat. | [Fout code zoeken](#find-error-code) |
-| DeploymentQuotaExceeded | Als u de limiet van 800 implementaties per resource groep bereikt, verwijdert u implementaties uit de geschiedenis die niet meer nodig zijn. U kunt vermeldingen uit de geschiedenis verwijderen met [AZ Group Deployment delete](/cli/azure/group/deployment#az-group-deployment-delete) voor Azure CLI of [Remove-AzResourceGroupDeployment](/powershell/module/az.resources/remove-azresourcegroupdeployment) in Power shell. Het verwijderen van een item uit de implementatie geschiedenis heeft geen invloed op de resources implementeren. | |
+| DeploymentQuotaExceeded | Als u de limiet van 800 implementaties per resource groep bereikt, verwijdert u implementaties uit de geschiedenis die niet meer nodig zijn. | [Fout oplossen wanneer het aantal implementaties groter is dan 800](deployment-quota-exceeded.md) |
 | DnsRecordInUse | De naam van de DNS-record moet uniek zijn. Voer een andere naam in. | |
 | ImageNotFound | Controleer de instellingen van de VM-installatie kopie. |  |
 | InUseSubnetCannotBeDeleted | Deze fout kan optreden wanneer u een resource probeert bij te werken en de aanvraag wordt verwerkt door de resource te verwijderen en te maken. Zorg ervoor dat u alle ongewijzigde waarden opgeeft. | [Bron bijwerken](/azure/architecture/building-blocks/extending-templates/update-resource) |
@@ -248,6 +248,6 @@ Of stel dat u problemen ondervindt met de implementatie die zijn gerelateerd aan
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie [zelf studie voor het oplossen van problemen met de zelf studie: Problemen met implementaties van Resource Manager-sjablonen oplossen](./resource-manager-tutorial-troubleshoot.md)
+* Als u een zelf studie voor probleem oplossing wilt door lopen, raadpleegt u [Tutorial: Problemen met implementaties van Resource Manager-sjablonen oplossen @ no__t-0
 * Zie [bewerkingen controleren met Resource Manager](resource-group-audit.md)voor meer informatie over controle acties.
 * Zie [implementatie bewerkingen weer geven](resource-manager-deployment-operations.md)voor meer informatie over acties om de fouten te bepalen tijdens de implementatie.

@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 08/12/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: dc01f8556fb1c88899cae1a8767cb23d6b6041eb
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
-ms.translationtype: MT
+ms.openlocfilehash: 7f47798ec3d0be8885853454ced8c1ea4c2a268c
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71128871"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71720394"
 ---
 # <a name="managed-instance-t-sql-differences-limitations-and-known-issues"></a>T-SQL-verschillen, beperkingen en bekende problemen met beheerde exemplaren
 
@@ -149,7 +149,7 @@ Een beheerd exemplaar heeft geen toegang tot bestanden, zodat er geen cryptograf
 - Het instellen van een Azure AD-aanmelding die is toegewezen aan een Azure AD-groep, wordt niet ondersteund voor de eigenaar van de data base.
 - Imitatie van Azure AD-principals op server niveau met behulp van andere Azure AD-principals wordt ondersteund, zoals de component [Execute as](/sql/t-sql/statements/execute-as-transact-sql) . UITVOEREN als beperkingen zijn:
 
-  - UITVOEREN als gebruiker wordt niet ondersteund voor Azure AD-gebruikers wanneer de naam verschilt van de aanmeldings naam. Een voor beeld hiervan is wanneer de gebruiker wordt gemaakt via de syntaxis create user [myAadUser] vanjohn@contoso.comlogin [] en imitatie wordt geprobeerd via exec as User = _myAadUser_. Wanneer u een **gebruiker** maakt op basis van een Azure ad-server-principal (aanmelden), geeft u de gebruikers naam als dezelfde Login_name van **aanmelding**.
+  - UITVOEREN als gebruiker wordt niet ondersteund voor Azure AD-gebruikers wanneer de naam verschilt van de aanmeldings naam. Een voor beeld hiervan is wanneer de gebruiker wordt gemaakt via de syntaxis CREATE USER [myAadUser] FROM LOGIN [john@contoso.com] en imitatie wordt geprobeerd via de opdracht USER = _myAadUser_. Wanneer u een **gebruiker** maakt op basis van een Azure ad-server-principal (aanmelden), geeft u de gebruikers naam als dezelfde Login_name van **aanmelding**.
   - Alleen de principals op het SQL server niveau (aanmeldingen) die deel uitmaken van de `sysadmin` rol kunnen de volgende bewerkingen uitvoeren die zijn gericht op Azure AD-principals:
 
     - EXECUTE AS USER
@@ -317,7 +317,7 @@ De volgende tabel typen worden niet ondersteund:
 - [-](https://docs.microsoft.com/sql/relational-databases/blob/filestream-sql-server)
 - [BESTANDS TABEL](https://docs.microsoft.com/sql/relational-databases/blob/filetables-sql-server)
 - [externe tabel](https://docs.microsoft.com/sql/t-sql/statements/create-external-table-transact-sql) Poly base
-- [MEMORY_OPTIMIZED](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/introduction-to-memory-optimized-tables) (niet alleen ondersteund in Algemeen-laag)
+- [MEMORY_OPTIMIZED](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/introduction-to-memory-optimized-tables) (niet ondersteund in algemeen-laag)
 
 Zie [Create Table](https://docs.microsoft.com/sql/t-sql/statements/create-table-transact-sql) en [ALTER TABLE](https://docs.microsoft.com/sql/t-sql/statements/alter-table-transact-sql)voor meer informatie over het maken en wijzigen van tabellen.
 
@@ -348,7 +348,7 @@ Niet-gedocumenteerde DBCC-instructies die zijn ingeschakeld in SQL Server, worde
 
 - Slechts een beperkt aantal globale tracerings vlaggen wordt ondersteund. Sessie niveau `Trace flags` wordt niet ondersteund. Zie [tracerings vlaggen](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceon-trace-flags-transact-sql).
 - [DBCC TRACEOFF](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceoff-transact-sql) en [DBCC TRACEON](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceon-transact-sql) werken met het beperkte aantal globale traceer vlaggen.
-- [DBCC CHECKDB](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-checkdb-transact-sql) met de opties REPAIR_ALLOW_DATA_LOSS, REPAIR_FAST en REPAIR_REBUILD kan niet worden gebruikt, omdat de Data Base `SINGLE_USER` niet kan worden ingesteld in de modus-Zie [ALTER data base verschillen](#alter-database-statement). Mogelijke beschadigingen van de Data Base worden verwerkt door het ondersteunings team van Azure. Neem contact op met de ondersteuning van Azure als u een merkt-database beschadiging hebt die moet worden opgelost.
+- [DBCC CHECKDB](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-checkdb-transact-sql) met de opties REPAIR_ALLOW_DATA_LOSS, REPAIR_FAST en REPAIR_REBUILD kan niet worden gebruikt, omdat de data base niet kan worden ingesteld in de `SINGLE_USER`-modus. Zie [ALTER data base verschillen](#alter-database-statement). Mogelijke beschadigingen van de Data Base worden verwerkt door het ondersteunings team van Azure. Neem contact op met de ondersteuning van Azure als u een merkt-database beschadiging hebt die moet worden opgelost.
 
 ### <a name="distributed-transactions"></a>Gedistribueerde transacties
 
@@ -408,7 +408,7 @@ Externe tabellen die verwijzen naar de bestanden in HDFS of Azure Blob Storage, 
 
 - De typen moment opname en bidirectionele replicatie worden ondersteund. Samenvoeg replicatie, peer-to-peer-replicatie en bij te werken abonnementen worden niet ondersteund.
 - [Transactionele replicatie](sql-database-managed-instance-transactional-replication.md) is beschikbaar voor open bare preview op een beheerd exemplaar met enkele beperkingen:
-    - Alle typen replicatie deelnemers (uitgever, distributeur, pull-abonnee en push-abonnee) kunnen worden geplaatst op beheerde exemplaren, maar Publisher en Distributor kunnen niet op verschillende instanties worden geplaatst.
+    - Alle typen replicatie deelnemers (uitgever, distributeur, pull-abonnee en push-abonnee) kunnen worden geplaatst op beheerde exemplaren, maar de uitgever en de Distributor moeten zowel in de Cloud als in beide on-premises zijn.
     - Beheerde instanties kunnen communiceren met de recente versies van SQL Server. Zie de ondersteunde versies [hier](sql-database-managed-instance-transactional-replication.md#supportability-matrix-for-instance-databases-and-on-premises-systems).
     - Transactionele replicatie heeft enkele [extra netwerk vereisten](sql-database-managed-instance-transactional-replication.md#requirements).
 
@@ -515,7 +515,7 @@ De volgende variabelen, functies en weer gaven retour neren verschillende result
 - `SERVERPROPERTY('EngineEdition')`retourneert de waarde 8. Deze eigenschap is een unieke aanduiding voor een beheerd exemplaar. Zie [Server Property](https://docs.microsoft.com/sql/t-sql/functions/serverproperty-transact-sql).
 - `SERVERPROPERTY('InstanceName')`retourneert NULL omdat het concept van instance voor SQL Server niet van toepassing is op een beheerd exemplaar. Zie [Server Property (' instanceName ')](https://docs.microsoft.com/sql/t-sql/functions/serverproperty-transact-sql).
 - `@@SERVERNAME`retourneert een volledige DNS-naam (' connectable '), bijvoorbeeld my-managed-instance.wcus17662feb9ce98.database.windows.net. Zie [@@SERVERNAME](https://docs.microsoft.com/sql/t-sql/functions/servername-transact-sql). 
-- `SYS.SERVERS`retourneert de volledige DNS-naam ' connectable ', zoals `myinstance.domain.database.windows.net` voor de eigenschappen ' name ' en ' data_source '. Zie [sys. SERVERS](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-servers-transact-sql).
+- `SYS.SERVERS` retourneert een volledige DNS-naam (' connectable '), zoals `myinstance.domain.database.windows.net` voor de eigenschappen ' name ' en ' data_source '. Zie [sys. SERVERS](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-servers-transact-sql).
 - `@@SERVICENAME`retourneert NULL omdat het concept van de service bestaat voor SQL Server niet van toepassing is op een beheerd exemplaar. Zie [@@SERVICENAME](https://docs.microsoft.com/sql/t-sql/functions/servicename-transact-sql).
 - `SUSER_ID`wordt ondersteund. Retourneert NULL als de Azure AD-aanmelding zich niet in sys. syslogins bevindt. Zie [SUSER_ID](https://docs.microsoft.com/sql/t-sql/functions/suser-id-transact-sql). 
 - `SUSER_SID`wordt niet ondersteund. De verkeerde gegevens worden geretourneerd. Dit is een tijdelijk bekend probleem. Zie [SUSER_SID](https://docs.microsoft.com/sql/t-sql/functions/suser-sid-transact-sql). 
@@ -594,11 +594,11 @@ Imitatie met `EXECUTE AS USER` of `EXECUTE AS LOGIN` van volgende Aad-principals
 -   Aliased AAD-gebruikers. In dit geval `15517`wordt de volgende fout geretourneerd.
 - AAD-aanmeldingen en-gebruikers op basis van AAD-toepassingen of service-principals. De volgende fouten worden in dit geval `15517` en `15406`worden geretourneerd.
 
-### <a name="query-parameter-not-supported-in-sp_send_db_mail"></a>@queryde para meter wordt niet ondersteund in sp_send_db_mail
+### <a name="query-parameter-not-supported-in-sp_send_db_mail"></a>de para meter @query wordt niet ondersteund in sp_send_db_mail
 
 **Vallen** April 2019
 
-De `@query` para meter in de [sp_send_db_mail](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-send-dbmail-transact-sql) -procedure werkt niet.
+De `@query`-para meter in de [sp_send_db_mail](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-send-dbmail-transact-sql) -procedure werkt niet.
 
 ### <a name="transactional-replication-must-be-reconfigured-after-geo-failover"></a>Transactionele replicatie moet opnieuw worden geconfigureerd na geo-failover
 

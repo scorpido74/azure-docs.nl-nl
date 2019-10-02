@@ -2,18 +2,18 @@
 title: Gebruikers autoriseren voor Ambari-weer gaven-Azure HDInsight
 description: Ambari-gebruikers-en groeps machtigingen voor HDInsight-clusters beheren waarvoor ESP is ingeschakeld.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 09/26/2017
-ms.author: hrasheed
-ms.openlocfilehash: 533bd750056f2e961ca9239e995fbfc62b2381d0
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.date: 09/30/2019
+ms.openlocfilehash: 8fada1d944a3d6bb6c0f85b3fd456581b2b0bdc6
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71076685"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71720018"
 ---
 # <a name="authorize-users-for-apache-ambari-views"></a>Gebruikers machtigen voor Apache Ambari-weergaven
 
@@ -31,6 +31,139 @@ Als u dit nog niet hebt gedaan, volgt u [deze instructies](./domain-joined/apach
 Als u naar de **Ambari-beheer pagina** van de [Apache AMBARI-webgebruikersinterface](hdinsight-hadoop-manage-ambari.md)wilt **`https://<YOUR CLUSTER NAME>.azurehdinsight.net`** gaan, bladert u naar. Voer de gebruikers naam en het wacht woord in van de Cluster beheerder die u hebt gedefinieerd bij het maken van het cluster. Selecteer vervolgens in het Ambari-dash board de optie **Ambari beheren** onder het menu **beheerder** :
 
 ![Apache Ambari-dash board beheren](./media/hdinsight-authorize-users-to-ambari/manage-apache-ambari.png)
+
+## <a name="add-users"></a>Gebruikers toevoegen
+
+### <a name="add-users-through-the-portal"></a>Gebruikers toevoegen via de portal
+
+1. Selecteer op de pagina beheer de optie **gebruikers**.
+
+    ![Gebruikers van Apache Ambari-beheer pagina](./media/hdinsight-authorize-users-to-ambari/apache-ambari-management-page-users.png)
+
+1. Selecteer **+ lokale gebruiker maken**.
+
+1. Geef een **gebruikers naam** en **wacht woord**op. Selecteer **Opslaan**.
+
+### <a name="add-users-through-powershell"></a>Gebruikers toevoegen via Power shell
+
+Bewerk de onderstaande variabelen door `CLUSTERNAME`, `NEWUSER` en `PASSWORD` te vervangen door de juiste waarden.
+
+```powershell
+# Set-ExecutionPolicy Unrestricted
+
+# Begin user input; update values
+$clusterName="CLUSTERNAME"
+$user="NEWUSER"
+$userpass='PASSWORD'
+# End user input
+
+$adminCredentials = Get-Credential -UserName "admin" -Message "Enter admin password"
+
+$clusterName = $clusterName.ToLower()
+$createUserUrl="https://$($clusterName).azurehdinsight.net/api/v1/users"
+
+$createUserBody=@{
+    "Users/user_name" = "$user"
+    "Users/password" = "$userpass"
+    "Users/active" = "$true"
+    "Users/admin" = "$false"
+} | ConvertTo-Json
+
+# Create user
+$statusCode =
+Invoke-WebRequest `
+    -Uri $createUserUrl `
+    -Credential $adminCredentials `
+    -Method POST `
+    -Headers @{"X-Requested-By" = "ambari"} `
+    -Body $createUserBody | Select-Object -Expand StatusCode
+
+if ($statusCode -eq 201) {
+    Write-Output "User is created: $user"
+}
+else
+{
+    Write-Output 'User is not created'
+    Exit
+}
+
+$grantPrivilegeUrl="https://$($clusterName).azurehdinsight.net/api/v1/clusters/$($clusterName)/privileges"
+
+$grantPrivilegeBody=@{
+    "PrivilegeInfo" = @{
+        "permission_name" = "CLUSTER.USER"
+        "principal_name" = "$user"
+        "principal_type" = "USER"
+    }
+} | ConvertTo-Json
+
+# Grant privileges
+$statusCode =
+Invoke-WebRequest `
+    -Uri $grantPrivilegeUrl `
+    -Credential $adminCredentials `
+    -Method POST `
+    -Headers @{"X-Requested-By" = "ambari"} `
+    -Body $grantPrivilegeBody | Select-Object -Expand StatusCode
+
+if ($statusCode -eq 201) {
+    Write-Output 'Privilege is granted'
+}
+else
+{
+    Write-Output 'Privilege is not granted'
+    Exit
+}
+
+Write-Host "Pausing for 100 seconds"
+Start-Sleep -s 100
+
+$userCredentials = "$($user):$($userpass)"
+$encodedUserCredentials = [System.Convert]::ToBase64String([System.Text.Encoding]::ASCII.GetBytes($userCredentials))
+$zookeeperUrlHeaders = @{ Authorization = "Basic $encodedUserCredentials" }
+$getZookeeperurl="https://$($clusterName).azurehdinsight.net/api/v1/clusters/$($clusterName)/services/ZOOKEEPER/components/ZOOKEEPER_SERVER"
+
+# Perform query with new user
+$zookeeperHosts =
+Invoke-WebRequest `
+    -Uri $getZookeeperurl `
+    -Method Get `
+    -Headers $zookeeperUrlHeaders
+
+Write-Output $zookeeperHosts
+```
+
+### <a name="add-users-through-curl"></a>Gebruikers toevoegen via krul
+
+Bewerk de onderstaande variabelen door `CLUSTERNAME`, `ADMINPASSWORD`, `NEWUSER` en `USERPASSWORD` te vervangen door de juiste waarden. Het script is ontworpen om te worden uitgevoerd met bash. Er zijn kleine wijzigingen nodig voor een Windows-opdracht prompt.
+
+```bash
+export clusterName="CLUSTERNAME"
+export adminPassword='ADMINPASSWORD'
+export user="NEWUSER"
+export userPassword='USERPASSWORD'
+
+# create user
+curl -k -u admin:$adminPassword -H "X-Requested-By: ambari" -X POST \
+-d "{\"Users/user_name\":\"$user\",\"Users/password\":\"$userPassword\",\"Users/active\":\"true\",\"Users/admin\":\"false\"}" \
+https://$clusterName.azurehdinsight.net/api/v1/users
+
+echo "user created: $user"
+
+# grant permissions
+curl -k -u admin:$adminPassword -H "X-Requested-By: ambari" -X POST \
+-d '[{"PrivilegeInfo":{"permission_name":"CLUSTER.USER","principal_name":"'$user'","principal_type":"USER"}}]' \
+https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/privileges
+
+echo "Privilege is granted"
+
+echo "Pausing for 100 seconds"
+sleep 10s
+
+# perform query using new user account
+curl -k -u $user:$userPassword -H "X-Requested-By: ambari" \
+-X GET "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/services/ZOOKEEPER/components/ZOOKEEPER_SERVER"
+```
 
 ## <a name="grant-permissions-to-apache-hive-views"></a>Machtigingen verlenen voor het Apache Hive weer gaven
 
@@ -107,7 +240,7 @@ In de blok weergave wordt elke rol in een eigen rij weer gegeven en worden de ro
 
 ![Blok weergave van Apache Ambari-rollen](./media/hdinsight-authorize-users-to-ambari/ambari-roles-block-view.png)
 
-### <a name="list-view"></a>Lijst weergave
+### <a name="list-view"></a>Lijstweergave
 
 De lijst weergave biedt snelle bewerkings mogelijkheden in twee categorieën: Gebruikers en groepen.
 
@@ -139,3 +272,4 @@ We hebben onze Azure AD-domein gebruiker ' hiveuser2 ' toegewezen aan de gebruik
 * [ESP HDInsight-clusters beheren](./domain-joined/apache-domain-joined-manage.md)
 * [De weer gave Apache Hive gebruiken met Apache Hadoop in HDInsight](hadoop/apache-hadoop-use-hive-ambari-view.md)
 * [Azure AD-gebruikers synchroniseren met het cluster](hdinsight-sync-aad-users-to-cluster.md)
+* [HDInsight-clusters beheren met behulp van de Apache Ambari REST API](./hdinsight-hadoop-manage-ambari-rest-api.md)

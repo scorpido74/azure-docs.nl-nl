@@ -8,18 +8,18 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 08/14/2019
 ms.author: danlep
-ms.openlocfilehash: 3e65718a51f80d9c90a5579a2b1dd5be3bd9239a
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: c4c09a78f9bad1af1f7a904914ad6ad066ec0e40
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69543093"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71718434"
 ---
 # <a name="automatically-purge-images-from-an-azure-container-registry"></a>Afbeeldingen automatisch uit een Azure container Registry verwijderen
 
-Wanneer u een Azure container Registry gebruikt als onderdeel van een werk stroom voor ontwikkel aars, kan het REGI ster snel worden gevuld met afbeeldingen of andere artefacten die na een korte periode niet nodig zijn. Mogelijk wilt u alle labels verwijderen die ouder zijn dan een bepaalde duur of die overeenkomen met een opgegeven naam filter. Als u meerdere artefacten snel wilt verwijderen, wordt in `acr purge` dit artikel de opdracht geïntroduceerd die u kunt uitvoeren als een taak op aanvraag of [geplande](container-registry-tasks-scheduled.md) ACR. 
+Wanneer u een Azure container Registry gebruikt als onderdeel van een werk stroom voor ontwikkel aars, kan het REGI ster snel worden gevuld met afbeeldingen of andere artefacten die na een korte periode niet nodig zijn. Mogelijk wilt u alle labels verwijderen die ouder zijn dan een bepaalde duur of die overeenkomen met een opgegeven naam filter. Als u meerdere artefacten snel wilt verwijderen, wordt in dit artikel de `acr purge`-opdracht geïntroduceerd die u kunt uitvoeren als een taak op aanvraag of [geplande](container-registry-tasks-scheduled.md) ACR. 
 
-De `acr purge` opdracht wordt momenteel gedistribueerd in een open bare container installatie kopie die beschikbaar is via micro soft container Registry.
+De `acr purge`-opdracht wordt momenteel gedistribueerd in een open bare container installatie kopie (`mcr.microsoft.com/acr/acr-cli:0.1`), gebouwd op basis van de bron code in de [ACR-cli](https://github.com/Azure/acr-cli) opslag plaats in github.
 
 U kunt de Azure Cloud Shell of een lokale installatie van de Azure CLI gebruiken om de ACR-taak voorbeelden in dit artikel uit te voeren. Als u het lokaal wilt gebruiken, is versie 2.0.69 of hoger vereist. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren][azure-cli-install] als u de CLI wilt installeren of een upgrade wilt uitvoeren. 
 
@@ -27,37 +27,37 @@ U kunt de Azure Cloud Shell of een lokale installatie van de Azure CLI gebruiken
 > Deze functie is momenteel beschikbaar als preview-product. Previews worden voor u beschikbaar gesteld op voorwaarde dat u akkoord gaat met de [aanvullende gebruiksvoorwaarden][terms-of-use]. Sommige aspecten van deze functie worden mogelijk nog gewijzigd voordat de functie algemeen beschikbaar wordt.
 
 > [!WARNING]
-> Gebruik de `acr purge` opdracht met de waarschuwing-verwijderde afbeeldings gegevens zijn onherstelbaar. Als u systemen hebt die installatie kopieën pullen per manifest Digest (in plaats van de naam van de afbeelding), mag u geen niet-gelabelde installatie kopieën leegmaken. Als u niet-gelabelde afbeeldingen verwijdert, kunnen die systemen de installatie kopieën niet uit het REGI ster halen. In plaats van op manifest te halen, kunt u overwegen om een uniek schema voor *labels* te gebruiken, een [Aanbevolen best practice](container-registry-image-tag-version.md).
+> Gebruik de `acr purge` opdracht met waarschuwing: verwijderde afbeeldings gegevens zijn niet te herstellen. Als u systemen hebt die installatie kopieën pullen per manifest Digest (in plaats van de naam van de afbeelding), mag u geen niet-gelabelde installatie kopieën leegmaken. Als u niet-gelabelde afbeeldingen verwijdert, kunnen die systemen de installatie kopieën niet uit het REGI ster halen. In plaats van op manifest te halen, kunt u overwegen om een uniek schema voor *labels* te gebruiken, een [Aanbevolen best practice](container-registry-image-tag-version.md).
 
 Zie [container installatie kopieën in azure container Registry verwijderen](container-registry-delete.md)als u de tags of manifesten met één afbeelding wilt verwijderen met Azure cli-opdrachten.
 
 ## <a name="use-the-purge-command"></a>De opdracht leegmaken gebruiken
 
-De `acr purge` container opdracht verwijdert afbeeldingen op label in een opslag plaats die overeenkomen met een naam filter en die ouder zijn dan een opgegeven duur. Standaard worden alleen label verwijzingen verwijderd, niet de onderliggende manifesten [](container-registry-concepts.md#manifest) en laag gegevens. De opdracht heeft een optie om ook manifesten te verwijderen. 
+De `acr purge` container opdracht verwijdert afbeeldingen op label in een opslag plaats die overeenkomt met een naam filter en die ouder zijn dan een opgegeven duur. Standaard worden alleen label verwijzingen verwijderd, niet de onderliggende [manifesten](container-registry-concepts.md#manifest) en laag gegevens. De opdracht heeft een optie om ook manifesten te verwijderen. 
 
 > [!NOTE]
-> `acr purge`verwijdert geen afbeeldings code of opslag plaats waar het `write-enabled` kenmerk is `false`ingesteld. Zie [een container installatie kopie vergren delen in een Azure container Registry](container-registry-image-lock.md)voor meer informatie.
+> `acr purge` verwijdert geen afbeeldings code of opslag plaats waarvan het kenmerk `write-enabled` is ingesteld op `false`. Zie [een container installatie kopie vergren delen in een Azure container Registry](container-registry-image-lock.md)voor meer informatie.
 
-`acr purge`is ontworpen om te worden uitgevoerd als een container opdracht in een [ACR-taak](container-registry-tasks-overview.md), zodat deze automatisch wordt geverifieerd met het REGI ster waarin de taak wordt uitgevoerd. 
+`acr purge` is ontworpen om te worden uitgevoerd als een container opdracht in een [ACR-taak](container-registry-tasks-overview.md), zodat deze automatisch wordt geverifieerd met het REGI ster waarin de taak wordt uitgevoerd. 
 
-Geef ten minste het volgende op wanneer u uitvoert `acr purge`:
+Geef ten minste het volgende op wanneer u `acr purge` uitvoert:
 
-* `--registry`-Het Azure container Registry waar u de opdracht uitvoert. 
-* `--filter`-Een opslag plaats en een *reguliere expressie* voor het filteren van labels in de opslag plaats. Voor beelden `--filter "hello-world:.*"` : komt overeen met alle `hello-world` Tags in de `--filter "hello-world:^1.*"` opslag plaats en komt `1`overeen met de labels die beginnen met. Meerdere `--filter` para meters door geven om meerdere opslag plaatsen te verwijderen.
-* `--ago`-Een [teken reeks](https://golang.org/pkg/time/) met de duur van het type Go om een duur aan te geven waarboven de afbeeldingen worden verwijderd. De duur bestaat uit een reeks van een of meer decimale getallen, elk met een achtervoegsel van een eenheid. Geldige tijds eenheden zijn "d" voor dagen, "h" voor uren en "m" voor minuten. Zo `--ago 2d3h6m` selecteert u bijvoorbeeld alle gefilterde afbeeldingen die meer dan 2 dagen, 3 uur en 6 minuten geleden zijn gewijzigd `--ago 1.5h` , en selecteert u de afbeeldingen die voor het laatst zijn gewijzigd, meer dan 1,5 uur geleden.
+* `--registry`: het Azure container Registry waarin u de opdracht uitvoert. 
+* `--filter`: een opslag plaats en een *reguliere expressie* voor het filteren van labels in de opslag plaats. Voor beelden: `--filter "hello-world:.*"` komt overeen met alle tags in de opslag plaats `hello-world` en `--filter "hello-world:^1.*"` komt overeen met de labels die beginnen met `1`. Geef meerdere para meters van @no__t 0 door om meerdere opslag plaatsen te verwijderen.
+* `--ago`: een [teken reeks](https://golang.org/pkg/time/) met de duur van het type Go om een duur aan te geven waarboven de afbeeldingen worden verwijderd. De duur bestaat uit een reeks van een of meer decimale getallen, elk met een achtervoegsel van een eenheid. Geldige tijds eenheden zijn "d" voor dagen, "h" voor uren en "m" voor minuten. Zo selecteert `--ago 2d3h6m` alle gefilterde afbeeldingen die voor het laatst zijn gewijzigd, meer dan 2 dagen, 3 uur en 6 minuten geleden, en `--ago 1.5h` afbeeldingen die voor het laatst zijn gewijzigd, meer dan 1,5 uur geleden.
 
-`acr purge`ondersteunt verschillende optionele para meters. De volgende twee worden in voor beelden in dit artikel gebruikt:
+`acr purge` ondersteunt enkele optionele para meters. De volgende twee worden in voor beelden in dit artikel gebruikt:
 
-* `--untagged`-Geeft aan dat manifesten zonder gekoppelde labels (niet-*gecodeerde manifesten*) worden verwijderd.
-* `--dry-run`-Geeft aan dat er geen gegevens worden verwijderd, maar de uitvoer is hetzelfde als als de opdracht wordt uitgevoerd zonder deze vlag. Deze para meter is handig voor het testen van een opschoon opdracht om er zeker van te zijn dat de gegevens die u wilt behouden, niet per ongeluk worden verwijderd.
+* `--untagged`: Hiermee geeft u op dat manifesten zonder gekoppelde labels (niet-*gecodeerde manifesten*) worden verwijderd.
+* `--dry-run`: geeft aan dat er geen gegevens worden verwijderd, maar de uitvoer is hetzelfde als als de opdracht wordt uitgevoerd zonder deze vlag. Deze para meter is handig voor het testen van een opschoon opdracht om er zeker van te zijn dat de gegevens die u wilt behouden, niet per ongeluk worden verwijderd.
 
-Voer uit `acr purge --help`voor aanvullende para meters. 
+Voer `acr purge --help` uit voor aanvullende para meters. 
 
-`acr purge`ondersteunt andere functies van ACR-taken, zoals het [uitvoeren van variabelen](container-registry-tasks-reference-yaml.md#run-variables) en [taak uitvoer logboeken](container-registry-tasks-overview.md#view-task-logs) die zijn gestreamd en ook worden opgeslagen voor later ophalen.
+`acr purge` ondersteunt andere functies van ACR-taken, zoals het [uitvoeren van variabelen](container-registry-tasks-reference-yaml.md#run-variables) en [taak uitvoer logboeken](container-registry-tasks-overview.md#view-task-logs) die zijn gestreamd en ook worden opgeslagen voor later ophalen.
 
 ### <a name="run-in-an-on-demand-task"></a>Uitvoeren in een taak op aanvraag
 
-In het volgende voor beeld wordt de opdracht [AZ ACR run uitgevoerd][az-acr-run] om de `purge` opdracht op aanvraag uit te voeren. In dit voor beeld worden alle afbeeldings Tags en manifesten in de `hello-world` opslag plaats in *myregistry* verwijderd die meer dan 1 dag geleden zijn gewijzigd. De container opdracht wordt door gegeven met behulp van een omgevings variabele. De taak wordt uitgevoerd zonder bron context.
+In het volgende voor beeld wordt de opdracht [AZ ACR run uitgevoerd][az-acr-run] om de `purge`-opdracht op aanvraag uit te voeren. In dit voor beeld worden alle afbeeldings Tags en manifesten verwijderd uit de opslag plaats @no__t 0 in *myregistry* die meer dan 1 dag geleden zijn gewijzigd. De container opdracht wordt door gegeven met behulp van een omgevings variabele. De taak wordt uitgevoerd zonder bron context.
 
 ```azurecli
 # Environment variable for container command line
@@ -72,7 +72,7 @@ az acr run \
 
 ### <a name="run-in-a-scheduled-task"></a>Uitvoeren in een geplande taak
 
-In het volgende voor beeld wordt de opdracht [AZ ACR Task Create][az-acr-task-create] gebruikt om een [geplande ACR-taak](container-registry-tasks-scheduled.md)te maken. De taak verwijdert Tags die meer dan zeven dagen geleden zijn gewijzigd in `hello-world` de opslag plaats. De container opdracht wordt door gegeven met behulp van een omgevings variabele. De taak wordt uitgevoerd zonder bron context.
+In het volgende voor beeld wordt de opdracht [AZ ACR Task Create][az-acr-task-create] gebruikt om een [geplande ACR-taak](container-registry-tasks-scheduled.md)te maken. De taak verwijdert Tags die meer dan zeven dagen geleden zijn gewijzigd in de opslag plaats `hello-world`. De container opdracht wordt door gegeven met behulp van een omgevings variabele. De taak wordt uitgevoerd zonder bron context.
 
 ```azurecli
 # Environment variable for container command line
@@ -90,7 +90,7 @@ Voer de opdracht [AZ ACR Task show][az-acr-task-show] uit om te zien dat de time
 
 ### <a name="purge-large-numbers-of-tags-and-manifests"></a>Grote aantallen Tags en manifesten opschonen
 
-Het verwijderen van een groot aantal tags en manifesten kan enkele minuten of langer duren. Als u duizenden Tags en manifesten wilt verwijderen, moet de opdracht mogelijk langer worden uitgevoerd dan de standaardtime-outtijd van 600 seconden voor een taak op aanvraag of 3600 seconden voor een geplande taak. Als de time-outwaarde wordt overschreden, wordt alleen een subset van tags en manifesten verwijderd. Om ervoor te zorgen dat een grootschalige opschoon bewerking is voltooid, `--timeout` geeft u de para meter door om de waarde te verhogen. 
+Het verwijderen van een groot aantal tags en manifesten kan enkele minuten of langer duren. Als u duizenden Tags en manifesten wilt verwijderen, moet de opdracht mogelijk langer worden uitgevoerd dan de standaardtime-outtijd van 600 seconden voor een taak op aanvraag of 3600 seconden voor een geplande taak. Als de time-outwaarde wordt overschreden, wordt alleen een subset van tags en manifesten verwijderd. Om ervoor te zorgen dat een grootschalige opschoon bewerking is voltooid, geeft u de para meter `--timeout` door om de waarde te verhogen. 
 
 Met de volgende on-demand taak wordt bijvoorbeeld een time-outperiode van 3600 seconden ingesteld (1 uur):
 
@@ -108,13 +108,13 @@ az acr run \
 
 ## <a name="example-scheduled-purge-of-multiple-repositories-in-a-registry"></a>Voorbeeld: Geplande opschoning van meerdere opslag plaatsen in een REGI ster
 
-In dit voor beeld wordt `acr purge` uitgelegd hoe u meerdere opslag plaatsen in een REGI ster periodiek opschoont. U kunt bijvoorbeeld een ontwikkelings pijplijn hebben die installatie kopieën pusht naar de `samples/devimage1` `samples/devimage2` opslag plaatsen. U importeert regel matig ontwikkelings installatie kopieën in een productie opslagplaats voor uw implementaties, dus u hebt de ontwikkel installatie kopieën niet meer nodig. Op wekelijkse basis verwijdert u de `samples/devimage1` en `samples/devimage2` opslag plaatsen, ter voor bereiding op het werk van de volgende week.
+In dit voor beeld wordt gebruikgemaakt van `acr purge` om periodiek meerdere opslag plaatsen in een REGI ster op te schonen. U kunt bijvoorbeeld een ontwikkelings pijplijn hebben waarin afbeeldingen worden gepusht naar de opslag plaatsen `samples/devimage1` en `samples/devimage2`. U importeert regel matig ontwikkelings installatie kopieën in een productie opslagplaats voor uw implementaties, dus u hebt de ontwikkel installatie kopieën niet meer nodig. Op wekelijkse basis verwijdert u de opslag plaatsen `samples/devimage1` en `samples/devimage2`, ter voor bereiding op het werk van de volgende week.
 
 ### <a name="preview-the-purge"></a>Voor beeld van de opschoning
 
-Voordat u gegevens verwijdert, raden we u aan om een opschoon taak op aanvraag `--dry-run` uit te voeren met behulp van de para meter. Met deze optie kunt u de tags en manifesten zien die de opdracht opschoont, zonder dat er gegevens worden verwijderd. 
+Voordat u gegevens verwijdert, raden we u aan om een opschoon taak op aanvraag uit te voeren met de para meter `--dry-run`. Met deze optie kunt u de tags en manifesten zien die de opdracht opschoont, zonder dat er gegevens worden verwijderd. 
 
-In het volgende voor beeld selecteert het filter in elke opslag plaats alle tags. De `--ago 0d` para meter komt overeen met afbeeldingen van alle leeftijden in de opslag plaatsen die overeenkomen met de filters. Wijzig zo nodig de selectie criteria voor uw scenario. De `--untagged` para meter geeft aan dat er naast labels ook manifesten moeten worden verwijderd. De container opdracht wordt door gegeven aan de opdracht [AZ ACR run][az-acr-run] met behulp van een omgevings variabele.
+In het volgende voor beeld selecteert het filter in elke opslag plaats alle tags. De para meter `--ago 0d` komt overeen met afbeeldingen van alle leeftijden in de opslag plaatsen die overeenkomen met de filters. Wijzig zo nodig de selectie criteria voor uw scenario. De para meter `--untagged` geeft aan dat er naast labels ook manifesten moeten worden verwijderd. De container opdracht wordt door gegeven aan de opdracht [AZ ACR run][az-acr-run] met behulp van een omgevings variabele.
 
 ```azurecli
 # Environment variable for container command line

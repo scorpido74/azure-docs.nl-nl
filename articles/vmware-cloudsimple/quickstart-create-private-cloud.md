@@ -8,16 +8,20 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: bbb5b90ffac4a89c14a4a6df51022bb61b10fbb0
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: e5cea36760746eaa63451c9e9955368c71ba4472
+ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70845493"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71816132"
 ---
 # <a name="quickstart---configure-a-private-cloud-environment"></a>Snelstartgids-een Privécloud configureren
 
 In dit artikel leert u hoe u een CloudSimple-Privécloud maakt en uw Privécloud hebt ingesteld.
+
+## <a name="before-you-begin"></a>Voordat u begint
+
+Controleer de [netwerk vereisten](cloudsimple-network-checklist.md).
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
@@ -78,7 +82,7 @@ Een punt-naar-site-VPN-verbinding is de eenvoudigste manier om vanaf uw computer
 2. Selecteer **VPN gateway**.
 3. Klik op **nieuw VPN gateway**.
 
-    ![Een VPN-gateway maken](media/create-vpn-gateway.png)
+    ![VPN-gateway maken](media/create-vpn-gateway.png)
 
 4. Geef voor **Gateway configuratie**de volgende instellingen op en klik op **volgende**.
 
@@ -151,7 +155,7 @@ U kunt zich nu aanmelden bij vCenter om virtuele machines en beleids regels in t
 
 1. Als u toegang wilt krijgen tot vCenter, start u vanuit de CloudSimple-Portal. Klik op de start pagina onder **algemene taken**op **VSphere-client starten**.  Selecteer de privécloud en klik vervolgens op **vSphere-client starten** op de privécloud.
 
-    ![VSphere-client starten](media/launch-vcenter-from-cloudsimple-portal.png)
+    ![vSphere-client starten](media/launch-vcenter-from-cloudsimple-portal.png)
 
 2. Selecteer de gewenste vSphere-client om toegang te krijgen tot de vCenter en meld u aan met uw gebruikers naam en wacht woord.  De standaard waarden zijn:
     * Gebruikers naam: **CloudOwner@cloudsimple.local**

@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
-ms.openlocfilehash: 48c6d6ed60045d906fcb711bd07ab492b6bbf488
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: 642fcc9ac2513329e9223f59a33d51ac5005e1fd
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69543678"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802182"
 ---
 # <a name="azure-blob-storage-hot-cool-and-archive-access-tiers"></a>Azure Blob-opslag: dynamische, koele en archief toegangs lagen
 
@@ -25,12 +25,12 @@ Azure Storage biedt verschillende toegangs lagen, waarmee u gegevens van blob-ob
 
 De volgende overwegingen zijn van toepassing op de verschillende toegangs lagen:
 
-- Alleen de lagen hot en cool kunnen worden ingesteld op het niveau van de account. De Access-laag voor het archief is niet beschikbaar op account niveau.
+- Alleen de lagen hot en cool kunnen worden ingesteld op het niveau van de account. De toegangs laag voor het archief is niet beschikbaar op het account niveau.
 - De lagen hot, cool en Archive kunnen worden ingesteld op het niveau van de blob.
 - Gegevens in de laag voor coolbar kunnen een iets lagere Beschik baarheid verdragen, maar vereisen nog steeds een hoge duurzaamheid, een ophaal latentie en doorvoer kenmerken die vergelijkbaar zijn met dynamische gegevens. Voor coole gegevens zijn een iets lagere SLA (Service Level Agreement) voor Beschik baarheid en hogere toegangs kosten vergeleken met warme gegevens acceptabel voor lagere opslag kosten.
 - Archief opslag slaat gegevens offline op en biedt de laagste opslag kosten, maar ook de hoogste gegevens die opnieuw worden gehydrateerd en toegangs kosten.
 
-Gegevens die zijn opgeslagen in de Cloud, groeien in een exponentieel tempo. Voor een effectief beheer van de kosten voor uw groeiende opslagbehoeften is het vanwege kostenoptimalisatie een goed idee om de gegevens te ordenen op basis van kenmerken als toegangsfrequentie en geplande bewaarperiode. Gegevens die in de Cloud zijn opgeslagen, kunnen afwijken van de manier waarop deze worden gegenereerd, verwerkt en geopend gedurende de levens duur. Sommige gegevens worden tijdens hun hele levensduur actief geopend en gewijzigd. Andere gegevens worden in het begin van hun levensduur regelmatig geopend, terwijl dit naarmate de tijd verstrijkt, aanzienlijk minder vaak gebeurt. Sommige gegevens blijven niet actief in de Cloud en zijn zelden, indien ooit, toegankelijk nadat deze zijn opgeslagen.
+Gegevens die zijn opgeslagen in de Cloud, groeien in een exponentieel tempo. Voor een effectief beheer van de kosten voor uw groeiende opslagbehoeften is het vanwege kostenoptimalisatie een goed idee om de gegevens te ordenen op basis van kenmerken als toegangsfrequentie en geplande bewaarperiode. Gegevens die zijn opgeslagen in de Cloud, kunnen verschillen op basis van de manier waarop deze worden gegenereerd, verwerkt en geopend gedurende de levens duur. Sommige gegevens worden tijdens hun hele levensduur actief geopend en gewijzigd. Andere gegevens worden in het begin van hun levensduur regelmatig geopend, terwijl dit naarmate de tijd verstrijkt, aanzienlijk minder vaak gebeurt. Sommige gegevens blijven niet actief in de Cloud en zijn zelden, indien ooit, toegankelijk nadat deze zijn opgeslagen.
 
 Elk van deze scenario's voor gegevens toegang is voor deel van een andere toegangs laag die is geoptimaliseerd voor een specifiek toegangs patroon. Met warme, koude en archief toegangs lagen biedt Azure Blob Storage deze behoefte aan gedifferentieerde toegangs lagen met afzonderlijke prijs modellen.
 
@@ -38,17 +38,9 @@ Elk van deze scenario's voor gegevens toegang is voor deel van een andere toegan
 
 ## <a name="storage-accounts-that-support-tiering"></a>Storage-accounts die ondersteuning bieden voor opslaglagen
 
-De laag voor object opslag op dynamische, koude of archief wordt alleen ondersteund in Blob Storage en Algemeen v2-accounts (GPv2). General Purpose v1 (GPv1)-accounts bieden geen ondersteuning voor opslaglagen. Klanten kunnen echter eenvoudig hun bestaande GPv1- of Blob Storage-accounts met één muisklik converteren naar GPv2-accounts in Azure Portal. GPv2 biedt een nieuwe prijs structuur voor blobs, bestanden en wacht rijen, evenals toegang tot diverse nieuwe opslag functies. Verder zullen sommige nieuwe mogelijkheden en prijsverlagingen alleen in GPv2-accounts worden aangeboden. Daarom moeten klanten evalueren met behulp van GPv2-accounts na een grondige beoordeling van de nieuwe prijzen, aangezien sommige werk belastingen duurder kunnen zijn op GPv2 dan GPv1. Zie [Overzicht van Azure-opslagaccount](../common/storage-account-overview.md) voor meer informatie.
+De gegevenslaag van object opslag tussen hot, cool en Archive wordt alleen ondersteund in Blob Storage en Algemeen v2-accounts (GPv2). Algemeen v1 (GPv1)-accounts bieden geen ondersteuning voor lagen. Klanten kunnen hun bestaande GPv1-of Blob Storage-accounts eenvoudig converteren naar GPv2-accounts via de Azure Portal. GPv2 biedt nieuwe prijzen en functies voor blobs, bestanden en wacht rijen. Sommige functies en prijs delen worden alleen aangeboden in GPv2-accounts. Evalueer het gebruik van GPv2-accounts na een grondige beoordeling van de prijzen. Sommige werk belastingen kunnen duurder zijn voor GPv2 dan GPv1. Zie [Overzicht van Azure-opslagaccount](../common/storage-account-overview.md) voor meer informatie.
 
-Blob Storage-en GPv2-accounts bieden het kenmerk **toegangs niveau** op account niveau. Met dit kenmerk kunt u de standaardlaag voor toegang opgeven als dynamisch of koud voor een BLOB in het opslag account waarvoor geen expliciete laag is ingesteld op object niveau. Voor objecten met de op objectniveau ingestelde opslaglaag is het accountniveau niet van toepassing. De archief laag kan alleen op object niveau worden toegepast. U kunt op elk gewenst moment scha kelen tussen deze toegangs lagen.
-
-## <a name="premium-performance-block-blob-storage"></a>Premium-prestatie blok-blobopslag
-
-Met de Premium-opslag voor blok-blobs kunnen regel matig gebruikte gegevens worden gebruikt via hoogwaardige hardware. Gegevens in deze prestatie laag worden opgeslagen op Ssd's (Solid-state drives), die zijn geoptimaliseerd voor een lage en consistente latentie. Ssd's bieden een hogere transactionele snelheid en door Voer vergeleken met traditionele harde schijven.
-
-De Premium-Blob-opslag voor het blok keren van prestaties is ideaal voor werk belastingen waarvoor snelle en consistente reactie tijden zijn vereist. Het is het beste voor werk belastingen die veel kleine trans acties uitvoeren, zoals het vastleggen van telemetriegegevens, berichten en gegevens transformatie. Gegevens die betrekking hebben op eind gebruikers, zoals interactieve video bewerking, statische webinhoud en online trans acties zijn ook goede kandidaten.
-
-De Premium-Blob-opslag voor het blok keren van prestaties is alleen beschikbaar via het account type voor het blok-Blob-opslag en biedt momenteel geen ondersteuning voor het trapsgewijs koppelen van de toegangs lagen warme, koud of archief.
+Blob Storage-en GPv2-accounts bieden het kenmerk **toegangs niveau** op account niveau. Met dit kenmerk kunt u de standaardlaag voor toegang voor een BLOB opgeven die niet expliciet is ingesteld op object niveau. Voor objecten met de laag die op object niveau is ingesteld, is de laag van de account niet van toepassing. De archief laag kan alleen op object niveau worden toegepast. U kunt op elk gewenst moment scha kelen tussen deze toegangs lagen.
 
 ## <a name="hot-access-tier"></a>Hot Storage-toegangslaag
 
@@ -67,32 +59,27 @@ De laag voor coole toegang heeft lagere opslag kosten en hogere toegangs kosten 
 
 ## <a name="archive-access-tier"></a>Archive-toegangslaag
 
-De Access-laag voor het archief heeft de laagste kosten voor opslag en meer voor het ophalen van gegevens in vergelijking met warme en coole lagen. Deze laag is bedoeld voor gegevens die enkele uren latentie kunnen verdragen bij terughalen en die ten minste 180 dagen in de archieflaag verblijven.
+De toegangs laag voor het archief heeft de laagste opslag kosten. Maar het heeft een hogere kosten voor het ophalen van gegevens vergeleken met de warme en coole lagen. Het ophalen van gegevens in de archief laag kan enkele uren duren. Gegevens moeten gedurende ten minste 180 dagen in de archief laag worden geplaatst of moeten worden onderhevig aan de kosten voor vroegtijdige verwijdering.
 
 Hoewel een BLOB zich in archief opslag bevindt, zijn de BLOB-gegevens offline en kunnen ze niet worden gelezen, gekopieerd, overschreven of gewijzigd. U kunt geen moment opnamen maken van een BLOB in archief opslag. De BLOB-meta gegevens blijven echter online en beschikbaar, zodat u de BLOB en de bijbehorende eigenschappen kunt weer geven. De enige geldige bewerkingen voor blobs in archief zijn GetBlobProperties, GetBlobMetadata, ListBlobs, SetBlobTier en DeleteBlob.
 
 Voor beelden van gebruiks scenario's voor de Access-laag voor archiveren zijn:
 
 - Langetermijnback-up, secundaire back-up en gegevenssets voor archivering
-- Oorspronkelijke (onbewerkte) gegevens die moeten worden bewaard, zelfs nadat deze zijn verwerkt tot hun uiteindelijke, bruikbare vorm. (*Bijvoorbeeld*: onbewerkte mediabestanden na transcodering naar andere indelingen)
-- Compliance- en archiveringsgegevens die gedurende lange tijd moeten worden opgeslagen en bijna nooit worden geopend. (*Bijvoorbeeld*beeld materiaal van de beveiligings camera, oude X-stralen/MRIs voor gezondheids zorg, audio-opnames en transcripten van klant gesprekken voor financiële diensten)
-
-### <a name="blob-rehydration"></a>Rehydratatie van blobs
-
-[!INCLUDE [storage-blob-rehydrate-include](../../../includes/storage-blob-rehydrate-include.md)]
-Zie [BLOB-gegevens opnieuw inbreken van de archief laag](storage-blob-rehydration.md) voor meer informatie.  
+- Oorspronkelijke (onbewerkte) gegevens die moeten worden bewaard, zelfs nadat deze zijn verwerkt tot hun uiteindelijke, bruikbare vorm.
+- Compliance- en archiveringsgegevens die gedurende lange tijd moeten worden opgeslagen en bijna nooit worden geopend.
 
 ## <a name="account-level-tiering"></a>Lagen op account niveau
 
-Blobs in alle drie de toegangs lagen kunnen naast elkaar worden gebruikt in hetzelfde account. Een blob waaraan niet expliciet een laag is toegewezen, leidt de laag af die is ingesteld als toegangslaag voor het account. Als de toegangs laag wordt afgeleid van het account, ziet u de eigenschap voor de uitstelde blob van de **toegangs tier** ingesteld op ' True ' en de BLOB-eigenschap BLOB **Access tier** overeenkomen met de laag van de account. In de Azure Portal wordt de eigenschap voor de _toegang tot de laag_ weer gegeven met de BLOB-toegangs laag als **Hot (uitgesteld)** of **koud (uitgesteld)** .
+Blobs in alle drie de toegangs lagen kunnen naast elkaar worden gebruikt in hetzelfde account. Een blob die geen expliciet toegewezen laag heeft, leidt de laag af van de instelling van de toegangs laag voor het account. Als de toegangs laag afkomstig is van het account, ziet u de eigenschap voor de **uitstelde** blob van de toegangs laag die is ingesteld op ' True ', en de BLOB-eigenschap van de **Access-laag** overeenkomt met de account-laag. In de Azure Portal wordt de eigenschap voor de _toegang tot de laag_ weer gegeven met de BLOB-toegangs laag als **Hot (uitgesteld)** of **koud (uitgesteld)** .
 
-Het wijzigen van de toegangs laag van het account is van toepassing op alle in het account opgeslagen objecten waarvoor geen expliciete laag is ingesteld. Als u het accountniveau omschakelt van dynamisch naar statisch, worden alleen schrijfacties in rekening gebracht (per 10.000) voor alle blobs zonder een ingestelde opslaglaag in GPv2-accounts. Er worden geen kosten in rekening gebracht voor deze wijziging in Blob Storage-accounts. Er worden kosten in rekening gebracht voor zowel lees bewerkingen (per 10.000) als voor het ophalen van gegevens (per GB) als u van koud naar warm schakelt in Blob Storage-of GPv2-accounts.
+Het wijzigen van de toegangs laag voor het account is van toepassing op alle objecten in de _toegangs laag_ , die zijn opgeslagen in het account waarvoor geen expliciete laag is ingesteld. Als u de laag van dynamisch naar koud wisselt, wordt u in rekening gebracht voor schrijf bewerkingen (per 10.000) voor alle blobs zonder een set-laag in GPv2-accounts. Er worden geen kosten in rekening gebracht voor deze wijziging in Blob Storage-accounts. Er worden kosten in rekening gebracht voor zowel lees bewerkingen (per 10.000) als voor het ophalen van gegevens (per GB) als u van koud naar warm schakelt in Blob Storage-of GPv2-accounts.
 
 ## <a name="blob-level-tiering"></a>Laaginstelling op blobniveau
 
 De functie Laaginstelling op blob-niveau maakt het mogelijk om de laag van uw gegevens op objectniveau te wijzigen met behulp van een eenmalige bewerking met de naam [Blob-laag instellen](/rest/api/storageservices/set-blob-tier). U kunt de toegangslaag van een blob gemakkelijk wijzigen van Hot in Cool of Archive, plus alle mogelijke varianten. U kunt zo snel inspelen op veranderende gebruikspatronen zonder dat u gegevens tussen accounts hoeft te verplaatsen. Alle laag wijzigingen worden onmiddellijk uitgevoerd. Het reactiveren van een BLOB uit het archief kan echter enkele uren duren.
 
-Het tijdstip waarop de laatste wijziging aan de blob-laag heeft plaatsgevonden, wordt weergegeven via de blob-eigenschap **Access Tier Change Time**. Als een BLOB zich in de laag Archive bevindt, kan deze niet worden overschreven, dus het uploaden van dezelfde blob is in dit scenario niet toegestaan. U kunt een BLOB in een warme of koude laag overschrijven. in dat geval neemt de nieuwe BLOB de laag over van de blob die is overschreven.
+Het tijdstip waarop de laatste wijziging aan de blob-laag heeft plaatsgevonden, wordt weergegeven via de blob-eigenschap **Access Tier Change Time**. Als een BLOB zich in de laag Archive bevindt, kan deze niet worden overschreven, dus het uploaden van dezelfde blob is niet toegestaan in dit scenario. Wanneer een BLOB wordt overschreven in een warme of koude laag, neemt de nieuwe BLOB de laag over van de blob die is overschreven.
 
 > [!NOTE]
 > Archiefopslag en laaginstelling op blobniveau ondersteunen alleen blok-blobs. U kunt de laag van een blok-blob die moment opnamen bevat, momenteel ook niet wijzigen.
@@ -118,7 +105,7 @@ Wanneer een BLOB wordt verplaatst naar een warmere laag (archief-> cool, Archive
 
 ### <a name="cool-and-archive-early-deletion"></a>Vroege verwijdering voor Koud en Archief
 
-In aanvulling op de kosten per GB per maand is elke blob die wordt verplaatst naar de cool-opslaglaag (alleen GPv2-accounts) onderworpen aan een periode van 30 dagen van vroegtijdige verwijdering uit Cool en is elke blob die wordt verplaatst naar de Archive-laag onderworpen aan een periode van 180 dagen van vroegtijdige verwijdering uit Archive. Deze kosten zijn evenredig verdeeld. Als bijvoorbeeld een blob na 45 dagen wordt verplaatst naar de archieflaag en vervolgens wordt verwijderd of na 45 dagen wordt verplaatst naar de dynamische laag, worden kosten voor vroegtijdige verwijdering in rekening gebracht die gelijk zijn aan 135 (180 min 45) dagen van opslag van die blob in de archieflaag.
+Elke blob die wordt verplaatst naar de cool-laag (alleen GPv2-accounts), is onderhevig aan een leuke verwijderings periode van 30 dagen. Elke blob die wordt verplaatst naar de laag van het archief, is onderhevig aan een vroegtijdige verwijderings periode van 180 dagen van een archief. Deze kosten zijn evenredig verdeeld. Als een BLOB bijvoorbeeld wordt verplaatst naar Archive en vervolgens na 45 dagen wordt verwijderd of verplaatst naar de warme laag, worden de kosten voor vroegtijdige verwijdering in rekening gebracht die gelijk zijn aan 135 (180 min 45) dagen waarin de blob is opgeslagen in archief.
 
 U kunt de vroege verwijdering berekenen met behulp van de eigenschap blob, **Laatst gewijzigd**, als er geen wijzigingen zijn aangebracht in de laag. Anders kunt u gebruiken wanneer de Access-laag voor het laatst is gewijzigd in Cool of Archive door de BLOB-eigenschap te bekijken: **toegangs lagen-wijzigings tijd**. Zie [Eigenschappen van BLOB ophalen](https://docs.microsoft.com/rest/api/storageservices/get-blob-properties)voor meer informatie over blob-eigenschappen.
 
@@ -135,9 +122,9 @@ In de volgende tabel ziet u een vergelijking van de toegangs lagen voor het blok
 | **Minimale opslagduur**              | N/A                       | N/A          | 30 dagen<sup>1</sup> | 180 dagen
 | **Latentie** <br> **(Tijd tot eerste byte)** | Milliseconden met één cijfer | milliseconden | milliseconden        | uur<sup>2</sup> |
 
-<sup>1</sup> objecten in de cool-laag op GPv2-accounts hebben een minimale Bewaar periode van 30 dagen. Blob Storage-accounts hebben geen minimale Bewaar duur voor de cool-laag.
+<sup>1</sup> objecten in de cool-laag op GPv2-accounts hebben een minimale Bewaar periode van 30 dagen. Blob Storage-accounts hebben niet de minimale Bewaar duur voor de cool-laag.
 
-<sup>2</sup> Archive Storage ondersteunt momenteel 2 herstel prioriteiten, hoog en standaard, die verschillende ophaal latentie bieden. Zie [BLOB rehydratatie](#blob-rehydration)voor meer informatie.
+<sup>2</sup> Archive Storage ondersteunt momenteel 2 herstel prioriteiten, hoog en standaard, die verschillende latenties voor het ophalen bieden. Zie BLOB-gegevens opnieuw [inbreken vanuit de laag archief](storage-blob-rehydration.md)voor meer informatie.
 
 > [!NOTE]
 > Blob Storage-accounts ondersteunen dezelfde prestatie-en schaalbaarheids doelen als voor algemeen gebruik v2-opslag accounts. Zie [Azure Storage schaal baarheid en prestatie doelen](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)voor meer informatie.
@@ -155,11 +142,11 @@ In deze sectie worden de volgende scenario‘s toegelicht, waarbij gebruik wordt
 
 1. Ga naar uw opslagaccount, selecteer Alle resources en selecteer vervolgens uw opslagaccount.
 
-1. Klik in de Instellingen-blade op **Configuratie** om de accountconfiguratie te bekijken en/of te wijzigen.
+1. Klik in instellingen op **configuratie** om de account configuratie te bekijken en te wijzigen.
 
 1. Selecteer de juiste toegangs laag voor uw behoeften: Stel de **toegangs laag** in op **koud** of **dynamisch**.
 
-1. Klik op **Opslaan** boven aan de blade.
+1. Klik bovenaan op **Opslaan** .
 
 ### <a name="change-the-tier-of-a-blob-in-a-gpv2-or-blob-storage-account"></a>De laag van een BLOB in een GPv2 of Blob Storage-account wijzigen
 
@@ -167,22 +154,22 @@ In deze sectie worden de volgende scenario‘s toegelicht, waarbij gebruik wordt
 
 1. Als u naar de blob in uw opslagaccount wilt gaan, selecteert u achtereenvolgens Alle resources, uw opslagaccount, uw container en uw blob.
 
-1. Selecteer op de Blade **BLOB-eigenschappen** de knop **laag wijzigen** om de Blade laag te openen.
+1. Selecteer in de **BLOB**-eigenschappen **laag wijzigen**.
 
 1. Selecteer de Access-laag **Hot**, **cool**of **Archive** . Als uw BLOB zich momenteel in het archief bevindt en u wilt opnieuw worden gehydrateerd naar een online-laag, kunt u ook een onhydrate prioriteit van **Standard** of **High**selecteren.
 
-1. Klik op **OK** onder aan de blade.
+1. Selecteer onder **Opslaan** onder.
 
 ## <a name="pricing-and-billing"></a>Prijzen en facturering
 
 Alle opslag accounts gebruiken een prijs model voor blok-Blob-opslag op basis van de laag van elke blob. Houd rekening met de volgende overwegingen met betrekking tot facturering:
 
 - **Opslag kosten**: Naast de hoeveelheid opgeslagen gegevens kunnen de kosten voor het opslaan van gegevens variëren, afhankelijk van de toegangs laag. De kosten per GB nemen af als de laag minder dynamisch ('cooler') wordt.
-- **Kosten voor gegevens toegang**: De kosten voor gegevens toegang nemen toe naarmate de laag koeler wordt. Voor gegevens in de coole en archief-toegangs laag worden er kosten in rekening gebracht per gigabyte aan gegevens toegang voor lees bewerkingen.
+- **Kosten voor gegevens toegang**: De kosten voor gegevens toegang nemen toe naarmate de laag koeler wordt. Voor gegevens in de coole en archief-toegangs laag, worden er kosten in rekening gebracht voor gegevens toegang per gigabyte voor lees bewerkingen.
 - **Transactie kosten**: Er zijn kosten per trans actie voor alle lagen die toenemen naarmate de laag koeler wordt.
 - **Kosten voor gegevens overdracht met geo-replicatie**: Deze kosten zijn alleen van toepassing op accounts waarvoor geo-replicatie is geconfigureerd, inclusief GRS en RA-GRS. Kosten voor gegevensoverdracht met geo-replicatie worden in rekening gebracht per GB.
 - **Kosten voor uitgaande gegevens overdracht**: Uitgaande gegevens overdracht (gegevens die uit een Azure-regio worden overgebracht) kunnen per Gigabyte worden gefactureerd, op basis van de opslag accounts voor algemeen gebruik.
-- **De toegangs laag wijzigen**: Als u de toegangs laag van het account wijzigt, worden er kosten voor de laag wijziging in rekening gebracht voor niet-verstelde blobs van _toegangs lagen_ die zijn opgeslagen in het account waarvoor geen expliciete laag is ingesteld. Voor informatie over het wijzigen van de toegangs laag voor één BLOB raadpleegt u [facturering op BLOB-niveau](#blob-level-tiering-billing).
+- **De toegangs laag wijzigen**: Als u de toegangs laag van het account wijzigt, worden er kosten voor de laag wijziging in rekening gebracht voor niet- _verstelde_ blobs van toegangs lagen die zijn opgeslagen in het account waarvoor geen expliciete laag is ingesteld. Raadpleeg voor meer informatie over het wijzigen van de toegangs laag voor één BLOB de [facturering op BLOB-niveau](#blob-level-tiering-billing).
 
 > [!NOTE]
 > Zie Azure Storage-pagina met [prijzen](https://azure.microsoft.com/pricing/details/storage/blobs/) voor meer informatie over de prijzen voor blok-blobs. Zie de pagina [Prijsinformatie voor bandbreedte](https://azure.microsoft.com/pricing/details/data-transfers/) voor meer informatie over de kosten voor uitgaande gegevensoverdracht.
@@ -191,17 +178,17 @@ Alle opslag accounts gebruiken een prijs model voor blok-Blob-opslag op basis va
 
 **Moet ik Blob Storage- of GPv2-accounts gebruiken als ik mijn gegevens in lagen wil opslaan?**
 
-Wij raden u aan GPv2 te gebruiken in plaats van Blob Storage-accounts voor opslaglagen. GPv2-accounts ondersteunen alle functies die Blob Storage-accounts ondersteunen, plus nog veel meer. Prijzen van Blob Storage en GPv2 zijn bijna identiek, maar sommige nieuwe functies en prijsverlagingen zijn alleen beschikbaar bij GPv2-accounts. GPv1-accounts bieden geen ondersteuning voor opslaglagen.
+Wij raden u aan GPv2 te gebruiken in plaats van Blob Storage-accounts voor opslaglagen. GPv2-accounts ondersteunen alle functies die Blob Storage-accounts ondersteunen, plus nog veel meer. Prijzen van Blob Storage en GPv2 zijn bijna identiek, maar sommige nieuwe functies en prijsverlagingen zijn alleen beschikbaar bij GPv2-accounts. GPv1-accounts bieden geen ondersteuning voor lagen.
 
 De prijsstructuur tussen GPv1- en GPv2-accounts is verschillend en klanten moeten beide zorgvuldig evalueren alvorens te besluiten GPv2-accounts te gebruiken. U kunt een bestaand Blob Storage- of GPv1-account eenvoudig met één muisklik omzetten naar GPv2. Zie [Overzicht van Azure-opslagaccount](../common/storage-account-overview.md) voor meer informatie.
 
 **Kan ik objecten opslaan in alle drie de toegangs lagen (hot, cool en Archive) in hetzelfde account?**
 
-Ja. Het kenmerk van de **toegangs laag** die op account niveau is ingesteld, is de standaardlaag die van toepassing is op alle objecten in dat account zonder een expliciet ingestelde laag. Met laaginstelling op blobniveau kunt u echter de toegangslaag op objectniveau instellen, ongeacht de instelling van de toegangslaag voor het account. Blobs in een van de drie toegangs lagen (hot, cool of Archive) kunnen binnen hetzelfde account bestaan.
+Ja. Het kenmerk van de **toegangs laag** die op account niveau is ingesteld, is de standaardlaag die van toepassing is op alle objecten in dat account zonder een expliciet ingestelde laag. Met lagen op blobniveau kunt u de toegangs laag op object niveau instellen, ongeacht de instelling van de toegangs laag voor het account. Blobs in een van de drie toegangs lagen (hot, cool of Archive) kunnen binnen hetzelfde account bestaan.
 
 **Kan ik de standaard Access-laag van mijn BLOB of GPv2 Storage-account wijzigen?**
 
-Ja, u kunt de standaardlaag voor het account wijzigen door het kenmerk **toegangs niveau** in te stellen voor het opslag account. Het wijzigen van de servicelaag is van toepassing op alle objecten die zijn opgeslagen in het account dat geen expliciete laagset heeft (bijvoorbeeld **Hot (instel)** of **cool (uitgesteld)** ). Het in-of uitschakelen van de laag van dynamisch naar koeling-schrijf bewerkingen (per 10.000) voor alle blobs zonder een set-laag in GPv2-accounts en het omschakelen van ongevraagd naar dynamisch (per 10.000) en het ophalen van gegevens (per GB) voor alle blobs in Blob Storage en GPv2-accounts.
+Ja, u kunt de standaardlaag voor het account wijzigen door het kenmerk **toegangs niveau** in te stellen voor het opslag account. Het wijzigen van de servicelaag is van toepassing op alle objecten die zijn opgeslagen in het account waarvoor geen expliciete laag is ingesteld (bijvoorbeeld **Hot (instel)** of **cool (uitgesteld)** ). Het in-of uitschakelen van de laag van dynamisch naar koeling-schrijf bewerkingen (per 10.000) voor alle blobs zonder een set-laag in GPv2-accounts en het omschakelen van ongevraagd naar dynamisch (per 10.000) en het ophalen van gegevens (per GB) voor alle blobs in Blob Storage en GPv2-accounts.
 
 **Kan ik de toegangslaag van mijn standaardaccount instellen op Archive?**
 
@@ -219,17 +206,17 @@ Blobs in de laag voor coolbar hebben een service niveau met een iets lagere Besc
 
 **Zijn de bewerkingen tussen de dynamische-, statische- en archiefopslaglagen hetzelfde?**
 
-Alle bewerkingen tussen de dynamische en statische laag zijn 100% consistent. Alle geldige archief bewerkingen, waaronder GetBlobProperties, GetBlobMetadata, ListBlobs, SetBlobTier en DeleteBlob, zijn 100% consistent met warm en cool. BLOB-gegevens kunnen niet worden gelezen of gewijzigd in de laag van het archief voordat ze opnieuw zijn gehydrateerd. alleen lees bewerkingen voor BLOB-meta gegevens worden ondersteund in het archief.
+Alle bewerkingen tussen de dynamische en statische laag zijn 100% consistent. Alle geldige archief bewerkingen, waaronder GetBlobProperties, GetBlobMetadata, ListBlobs, SetBlobTier en DeleteBlob, zijn 100% consistent met warm en cool. BLOB-gegevens kunnen niet worden gelezen of gewijzigd in de laag van het archief voordat ze opnieuw worden gehydrateerd. alleen lees bewerkingen voor BLOB-meta gegevens worden ondersteund in het archief.
 
 **Als ik een blob reactiveer vanuit de archiefopslaglaag naar de dynamische- of statische-opslaglaag, hoe weet ik dan wanneer de reactivering is voltooid?**
 
-Tijdens het reactiveren kunt u gebruikmaken van de bewerking voor het ophalen van blob-eigenschappen om polling op het kenmerk **Archiefstatus** uit te voeren en te bevestigen dat de laagwijziging is voltooid. De status is "rehydrate-pending-to-hot" of "rehydrate-pending-to-cool", afhankelijk van de doellaag. Als de bewerking is voltooid, wordt de blob-eigenschap voor archiefstatus verwijderd en geeft de blob-eigenschap **Toegangslaag** aan of de opslaglaag dynamisch of statisch is.  
+Tijdens rehydratatie kunt u de bewerking BLOB-eigenschappen ophalen gebruiken om het kenmerk **Archive status** te controleren en te bevestigen wanneer de laag wijziging is voltooid. De status is "rehydrate-pending-to-hot" of "rehydrate-pending-to-cool", afhankelijk van de doellaag. Als de bewerking is voltooid, wordt de blob-eigenschap voor archiefstatus verwijderd en geeft de blob-eigenschap **Toegangslaag** aan of de opslaglaag dynamisch of statisch is.  
 
 **Na het instellen van de opslaglaag van een blob, wanneer wordt er dan gefactureerd tegen het juiste tarief?**
 
-Elke BLOB wordt altijd gefactureerd op basis van de laag die wordt aangegeven door de eigenschap **Access tier** van de blob. Wanneer u een nieuwe laag voor een BLOB instelt, wordt in de eigenschap **Access tier** onmiddellijk de nieuwe laag voor alle overgangen weer gegeven. Een blob terugplaatsen van de archieflaag naar een dynamische of statische laag kan echter enkele uren duren. In dit geval wordt u gefactureerd tegen archief tarieven totdat rehydratatie is voltooid, waarbij de eigenschap **Access tier** de nieuwe laag weerspiegelt. Op dat moment worden de blobs in rekening gebracht tegen de warme of gekoelde snelheid.
+Elke BLOB wordt altijd gefactureerd op basis van de laag die wordt aangegeven door de eigenschap **Access tier** van de blob. Wanneer u een nieuwe laag voor een BLOB instelt, wordt in de eigenschap **Access tier** onmiddellijk de nieuwe laag voor alle overgangen weer gegeven. Een blob terugplaatsen van de archieflaag naar een dynamische of statische laag kan echter enkele uren duren. In dit geval wordt u gefactureerd tegen archief tarieven totdat rehydratatie is voltooid, waarbij de eigenschap **Access tier** de nieuwe laag weerspiegelt. Op dat moment wordt u voor die BLOB gefactureerd tegen de warme of gekoelde snelheid.
 
-**Hoe bepaal ik of ik bij het verwijderen of verplaatsen van een blob uit de cool- of archive-laag een toeslag voor vroegtijdige verwijdering moet betalen?**
+**Hoe kan ik bepalen of er kosten voor de eerste keer dat ik een BLOB uit de cool-of opslaglaag-laag Verwijder of verplaats?**
 
 Voor elke blob die binnen 30 dagen of 180 dagen wordt verwijderd of verplaatst uit respectievelijk de statische (alleen GPv2-accounts) of archiefopslaglaag, wordt een vooraf vastgesteld bedrag voor vroegtijdige verwijdering in rekening gebracht. U kunt bepalen hoe lang een BLOB zich in de koele of archiefmap bevindt door de BLOB-eigenschap **wijziging tijd van de toegangs laag** te controleren. deze geeft een stempel van de laatste wijziging van de laag aan. Als de laag van de BLOB nooit is gewijzigd, kunt u de **laatste gewijzigde** BLOB-eigenschap controleren. Zie voor meer informatie [cool en archief vroegtijdig verwijderen](#cool-and-archive-early-deletion).
 
@@ -239,20 +226,16 @@ Azure Portal, PowerShell en CLI Tools en .NET, Java, Python en Node.js-clientbib
 
 **Hoeveel gegevens kan ik opslaan in de dynamische-, statische- en archiefopslaglaag?**
 
-Gegevens opslag en andere limieten worden ingesteld op account niveau en niet per toegangs laag. Daarom kunt u ervoor kiezen om al uw limieten in één laag of in alle drie de lagen te gebruiken. Zie [Azure Storage schaal baarheid en prestatie doelen](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)voor meer informatie.
+Gegevens opslag en andere limieten worden ingesteld op account niveau en niet per toegangs laag. U kunt ervoor kiezen om al uw limieten in één laag of in alle drie de lagen te gebruiken. Zie [Azure Storage schaal baarheid en prestatie doelen](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-### <a name="evaluate-hot-cool-and-archive-in-gpv2-and-blob-storage-accounts"></a>Evalueren van warme, koude en archief in GPv2-en Blob Storage-accounts
+Evalueren van warme, koude en archief in GPv2-en Blob Storage-accounts
 
-[De beschikbaarheid controleren van de dynamische, statische en archieflaag per regio](https://azure.microsoft.com/regions/#services)
-
-[De levens cyclus van Azure Blob-opslag beheren](storage-lifecycle-management-concepts.md)
-
-[Meer informatie over reactiveren BLOB-gegevens uit de laag archief](storage-blob-rehydration.md)
-
-[Gebruik van de huidige opslagaccounts evalueren door metrische gegevens voor Azure Storage in te schakelen](../common/storage-enable-and-view-metrics.md)
-
-[Prijzen voor de dynamische, statische en archieflaag controleren in Blob Storage- en GPv2-accounts per regio](https://azure.microsoft.com/pricing/details/storage/)
-
-[Prijzen voor gegevensoverdracht controleren](https://azure.microsoft.com/pricing/details/data-transfers/)
+- [De beschikbaarheid controleren van de dynamische, statische en archieflaag per regio](https://azure.microsoft.com/regions/#services)
+- [De levenscyclus van Azure Blob-opslag beheren](storage-lifecycle-management-concepts.md)
+- [Meer informatie over reactiveren BLOB-gegevens uit de laag archief](storage-blob-rehydration.md)
+- [Bepalen of Premium-prestaties uw app zouden voor u hebben](storage-blob-performance-tiers.md)
+- [Gebruik van de huidige opslagaccounts evalueren door metrische gegevens voor Azure Storage in te schakelen](../common/storage-enable-and-view-metrics.md)
+- [Prijzen voor de dynamische, statische en archieflaag controleren in Blob Storage- en GPv2-accounts per regio](https://azure.microsoft.com/pricing/details/storage/)
+- [Prijzen voor gegevensoverdracht controleren](https://azure.microsoft.com/pricing/details/data-transfers/)

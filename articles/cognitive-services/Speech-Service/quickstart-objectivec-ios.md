@@ -10,14 +10,16 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: chlandsi
-ms.openlocfilehash: 01a2b9d5bad7d490f5ee9f6a21af5bc1308bdab1
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: d87fd06b45d1d3636c442d962daa79cf526e74f2
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68553656"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71803270"
 ---
 # <a name="quickstart-recognize-speech-in-objective-c-on-ios-using-the-speech-sdk"></a>Quickstart: Gesproken tekst herkennen in Objective-C in iOS met behulp van de Speech SDK
+
+Quick starts zijn ook beschikbaar voor [spraak synthese](quickstart-text-to-speech-objectivec-ios.md).
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
@@ -34,8 +36,6 @@ Voordat u begint, bekijkt u de lijst vereisten:
 ## <a name="get-the-speech-sdk-for-ios"></a>De Speech-SDK voor iOS ophalen
 
 [!INCLUDE [License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
-
-De huidige versie van de Speech SDK van Cognitive Services is `1.6.0`.
 
 De Cognitive Services Speech SDK voor iOS wordt momenteel gedistribueerd als een cacao-Framework.
 Dit kan [hier](https://aka.ms/csspeech/iosbinary)worden gedownload. Download het bestand naar uw basismap.
@@ -87,10 +87,10 @@ Vervang de automatisch gegenereerde XML door deze code:
     <string>Need microphone access for speech recognition from microphone.</string>
     ```
 
-## <a name="building-and-running-the-sample"></a>De voorbeeldtoepassing bouwen en uitvoeren
+## <a name="build-and-run-the-sample"></a>Het voorbeeldproject compileren en uitvoeren
 
 1. Maak de foutopsporingsuitvoer zichtbaar (**View** > **Debug Area** > **Activate Console**).
-1. Kies de IOS-simulator of een IOS-apparaat dat is verbonden met uw ontwikkel computer als bestemming voor de app uit de lijst in het menu van de **product** > **bestemming** .
+1. Kies de iOS-Simulator of een iOS-apparaat dat is verbonden met uw ontwikkel computer als bestemming voor de app uit de lijst in het**doel** menu **product** > .
 1. Bouw de voorbeeldcode en voer deze uit in de iOS-simulator door **Product** > **Run** in het menu te selecteren of op de knop **Play** te klikken.
 1. Nadat u op de knop 'Recognize (File)' in de app hebt geklikt, ziet u de inhoud van het audiobestand 'What's the weather like?' in het onderste gedeelte van het scherm.
 

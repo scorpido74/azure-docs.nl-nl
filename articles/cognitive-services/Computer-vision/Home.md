@@ -8,19 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: overview
-ms.date: 07/03/2019
+ms.date: 10/01/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 915388b850b1b046dae91a20540881480694a944
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: db62f003f7eb8dd272305b86712cf1d721797114
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70967047"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71719545"
 ---
 # <a name="what-is-computer-vision"></a>Wat is Computer Vision?
 
-De Computer Vision-service van Azure geeft ontwikkelaars toegang tot geavanceerde algoritmen voor het verwerken van afbeeldingen en het retourneren van informatie. Voor het analyseren van een afbeelding kunt u een afbeeldingsindeling uploaden of een afbeeldings-URL opgeven. Met de algoritmen voor het verwerken van afbeeldingen kunt u de inhoud van een afbeelding op verschillende manieren analyseren, afhankelijk van de visuele kenmerken waarin u bent geïnteresseerd. Computer Vision kan bijvoorbeeld bepalen of een afbeelding inhoud voor volwassenen of ongepaste bevat of dat alle menselijke gezichten in een afbeelding worden gevonden.
+De Computer Vision-service van Azure geeft ontwikkelaars toegang tot geavanceerde algoritmen voor het verwerken van afbeeldingen en het retourneren van informatie. Voor het analyseren van een afbeelding kunt u een afbeeldingsindeling uploaden of een afbeeldings-URL opgeven. Met de algoritmen voor het verwerken van afbeeldingen kunt u de inhoud van een afbeelding op verschillende manieren analyseren, afhankelijk van de visuele kenmerken waarin u bent geïnteresseerd. Computer Vision kan bijvoorbeeld bepalen of een afbeelding inhoud voor volwassenen bevat of alle menselijke gezichten in een afbeelding vinden.
 
 U kunt Computer Vision in uw toepassing gebruiken met behulp van een systeemeigen SDK of door de REST-API rechtstreeks aan te roepen. Deze pagina laat grosso modo zien wat u kunt doen met Computer Vision.
 
@@ -52,7 +52,7 @@ U kunt ook de [OCR-API (Optical Character Recognition)](concept-recognizing-text
 
 ## <a name="moderate-content-in-images"></a>Beheren van inhoud in afbeeldingen
 
-U kunt Computer Vision gebruiken om [erotische en ongepaste inhoud te detecteren](concept-detecting-adult-content.md) in een afbeelding en voor beide een vertrouwensscore laten retourneren. U kunt het filter voor de detectie van inhoud voor volwassenen en ongepaste op een schuif schaal instellen om uw voor keuren aan te passen.
+U kunt Computer Vision gebruiken om [inhoud voor volwassenen te detecteren](concept-detecting-adult-content.md) in een afbeelding en betrouwbaarheids scores voor verschillende classificaties te retour neren. De drempel waarde voor het markeren van inhoud kan worden ingesteld op een schuif schaal om uw voor keuren aan te passen.
 
 ## <a name="use-containers"></a>Containers gebruiken
 

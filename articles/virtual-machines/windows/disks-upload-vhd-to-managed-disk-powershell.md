@@ -1,6 +1,6 @@
 ---
 title: Een VHD uploaden naar Azure met behulp van Azure PowerShell
-description: Meer informatie over het uploaden van een VHD naar een Azure Managed disk met behulp van Azure PowerShell.
+description: Meer informatie over het uploaden van een VHD naar een Azure Managed disk en het kopiëren van een beheerde schijf in verschillende regio's, met behulp van Azure PowerShell.
 author: roygara
 ms.author: rogarana
 ms.date: 05/06/2019
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: virtual-machines-linux
 ms.tgt_pltfrm: linux
 ms.subservice: disks
-ms.openlocfilehash: 5b7c612d349c3f596487db4af025e5e599b6589c
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: de9975151270ccce8d4a7abd58210c6550d40464
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71694780"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71720340"
 ---
 # <a name="upload-a-vhd-to-azure-using-azure-powershell"></a>Een VHD uploaden naar Azure met behulp van Azure PowerShell
 
@@ -27,7 +27,8 @@ Op dit moment wordt direct uploaden ondersteund voor standaard schijven, standaa
 
 - Down load de nieuwste [versie van AzCopy V10 toevoegen](../../storage/common/storage-use-azcopy-v10.md#download-and-install-azcopy).
 - [Installeer de Azure PowerShell-module](/powershell/azure/install-Az-ps).
-- Een VHD-bestand lokaal opgeslagen.
+- Als u van plan bent om een VHD te uploaden vanaf pem: Een VHD die is [voor bereid voor Azure](prepare-for-upload-vhd-image.md), lokaal opgeslagen.
+- Of een beheerde schijf in azure, als u van plan bent om een kopieer actie uit te voeren.
 
 ## <a name="create-an-empty-managed-disk"></a>Een lege beheerde schijf maken
 
@@ -82,6 +83,45 @@ Nadat het uploaden is voltooid en u geen gegevens meer naar de schijf hoeft te s
 
 ```powershell
 Revoke-AzDiskAccess -ResourceGroupName 'myResourceGroup' -DiskName 'myDiskName'
+```
+
+## <a name="copy-a-managed-disk"></a>Een beheerde schijf kopiëren
+
+Direct uploaden vereenvoudigt ook het proces van het kopiëren van een beheerde schijf. U kunt kopiëren binnen dezelfde regio of in meerdere regio's (naar een andere regio).
+
+Het volgende script zal dit voor u doen, het proces is vergelijkbaar met de stappen die eerder zijn beschreven, met een aantal verschillen sinds u met een bestaande schijf werkt.
+
+> [!IMPORTANT]
+> U moet een offset van 512 toevoegen wanneer u de schijf grootte in bytes van een beheerde schijf van Azure opgeeft. Dit komt doordat Azure de voet tekst weglaat wanneer de schijf grootte wordt geretourneerd. Als u dit niet doet, mislukt de kopie. Het volgende script doet dit al voor u.
+
+Vervang de `<sourceResourceGroupHere>`, `<sourceDiskNameHere>`, `<targetDiskNameHere>`, `<targetResourceGroupHere>`, `<yourOSTypeHere>` en `<yourTargetLocationHere>` (een voor beeld van een locatie waarde is uswest2) met uw waarden en voer vervolgens het volgende script uit om een beheerde schijf te kopiëren.
+
+```powershell
+
+$sourceRG = <sourceResourceGroupHere>
+$sourceDiskName = <sourceDiskNameHere>
+$targetDiskName = <targetDiskNameHere>
+$targetRG = <targetResourceGroupHere>
+$targetLocate = <yourTargetLocationHere>
+#Expected value for OS is either "Windows" or "Linux"
+$targetOS = <yourOSTypeHere>
+
+$sourceDisk = Get-AzDisk -ResourceGroupName $sourceRG -DiskName $sourceDiskName
+
+# Adding the sizeInBytes with the 512 offset, and the -Upload flag
+$targetDiskconfig = New-AzDiskConfig -SkuName 'Standard_LRS' -osType $targetOS -UploadSizeInBytes $($sourceDisk.DiskSizeBytes+512) -Location $targetLocate -CreateOption 'Upload'
+
+$targetDisk = New-AzDisk -ResourceGroupName $targetRG -DiskName $targetDiskName -Disk $targetDiskconfig
+
+$sourceDiskSas = Grant-AzDiskAccess -ResourceGroupName $sourceRG -DiskName $sourceDiskName -DurationInSecond 86400 -Access 'Read'
+
+$targetDiskSas = Grant-AzDiskAccess -ResourceGroupName $targetRG -DiskName $targetDiskName -DurationInSecond 86400 -Access 'Write'
+
+azcopy copy $sourceDiskSas.AccessSAS $targetDiskSas.AccessSAS --blob-type PageBlob
+
+Revoke-AzDiskAccess -ResourceGroupName $sourceRG -DiskName $sourceDiskName
+
+Revoke-AzDiskAccess -ResourceGroupName $targetRG -DiskName $targetDiskName 
 ```
 
 ## <a name="next-steps"></a>Volgende stappen

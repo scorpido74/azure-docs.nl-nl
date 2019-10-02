@@ -7,18 +7,24 @@ ms.date: 06/20/2019
 ms.topic: article
 ms.service: azure
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
-ms.openlocfilehash: 70ad44eade871d52591014ee24e645b95c52f1e5
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: c7860a098096d718a6c5d7cd661ef2b1c1b21e89
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68234881"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802672"
 ---
 # <a name="classic-deployment-model"></a>Klassiek implementatiemodel
 
-Klassiek implementatie model is de oudere generatie Azure-implementatie modus, waarbij een globale vCPU quotum limiet wordt afgedwongen voor virtuele machines en virtuele-machine schaal sets. Het klassieke implementatie model wordt niet meer aanbevolen en is nu vervangen door het Resource Manager-model. Raadpleeg de pagina Resource Manager-implementatie model voor meer informatie over deze twee implementatie modellen en voor delen van Resource Manager. Wanneer een nieuw abonnement wordt gemaakt, wordt er een standaard quotum van Vcpu's aan toegewezen. Telkens wanneer een nieuwe VM moet worden geïmplementeerd met het klassieke implementatie model, mag de som van het nieuwe en bestaande Vcpu's-gebruik in alle regio's niet groter zijn dan het vCPU quotum dat is goedgekeurd voor het klassieke implementatie model. Meer informatie over quota's op de [pagina Azure-abonnement en service limieten](https://aka.ms/quotalimits)
+Het klassieke implementatie model is het Azure-implementatie model van de oudere generatie. Hiermee wordt een globale vCPU-quotum limiet afgedwongen voor virtuele machines en virtuele-machine schaal sets. Het klassieke implementatie model wordt niet meer aanbevolen en wordt nu vervangen door het Resource Manager-model. 
 
-U kunt een verhoging van de Vcpu's-limiet voor het klassieke implementatie model aanvragen via de Blade Help en ondersteuning of de Blade gebruik + quotum in de portal.
+Raadpleeg de pagina [Resource Manager en klassieke implementatie](../azure-resource-manager/resource-manager-deployment-model.md) voor meer informatie over deze twee implementatie modellen en de voor delen van het gebruik van Resource Manager.
+ 
+Wanneer een nieuw abonnement wordt gemaakt, wordt er een standaard quotum van Vcpu's aan toegewezen. Wanneer een nieuwe VM moet worden geïmplementeerd met behulp van het klassieke implementatie model, mag de som van het nieuwe en bestaande vCPU-gebruik in alle regio's niet groter zijn dan het vCPU-quotum dat is goedgekeurd voor het klassieke implementatie model.
+ 
+Meer informatie over quota's op de pagina [Azure-abonnement en service limieten](https://aka.ms/quotalimits) .
+
+U kunt een verhoging van de vCPU-quotum limiet voor het klassieke implementatie model aanvragen via de Blade Help en ondersteuning of de Blade gebruik + quotum in de portal.
 
 ## <a name="request-per-vm-series-vcpu-quota-increase-at-subscription-level-using-the-help--support-blade"></a>Aanvraag per VM-serie vCPU quotum verhoging op abonnements niveau met behulp van de Blade **Help en ondersteuning**
 
@@ -78,7 +84,7 @@ Volg de onderstaande instructies voor het maken van een ondersteunings aanvraag 
 
 4. Selecteer in de rechter bovenhoek **aanvraag verhoging**.
 
-   ![Toename aanvragen](./media/resource-manager-core-quotas-request/request-increase.png)
+   ![Verhoging aanvragen](./media/resource-manager-core-quotas-request/request-increase.png)
 
 5. Selecteer **Compute-VM (kernen-vcpu's) de limiet** voor het offerte type wordt verhoogd. 
 

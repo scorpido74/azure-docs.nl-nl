@@ -13,19 +13,19 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2019
 ms.author: rogirdh
-ms.openlocfilehash: eb5d03d50a99978e4f3ee58fba206dd730f7d5fe
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 63543c0ac34536b736bd4b8cdbd47fdd98e9f9be
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100143"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802215"
 ---
 # <a name="set-up-a-direct-interconnection-between-azure-and-oracle-cloud-infrastructure"></a>Een directe interverbinding tussen Azure en Oracle Cloud Infrastructure instellen  
 
 Als u een [geïntegreerde multi-Cloud-ervaring](oracle-oci-overview.md) wilt maken (preview), biedt micro soft en Oracle direct interconnectie tussen Azure en Oracle Cloud Infrastructure (OCI) via [ExpressRoute](../../../expressroute/expressroute-introduction.md) en [FastConnect](https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/fastconnectoverview.htm). Via de ExpressRoute-en FastConnect-verbinding kunnen klanten met een lage latentie, een hoge door Voer en een particuliere directe connectiviteit tussen de twee Clouds profiteren.
 
 > [!IMPORTANT]
-> De verbinding tussen Microsoft Azure en OCI bevindt zich in de preview-fase. Als u verbinding met een lage latentie tussen Azure en OCI wilt inschakelen, moet uw Azure-abonnement eerst wit worden weer gegeven voor deze functie. U moet in de preview-periode inschrijven door dit korte [enquête formulier](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyzVVsi364tClw522rL9tkpUMVFGVVFWRlhMNUlRQTVWSTEzT0dXMlRUTyQlQCN0PWcu)in te vullen. U ontvangt een e-mailbevestiging zodra uw abonnement is geregistreerd. U kunt de mogelijkheid niet gebruiken totdat u een bevestigings-e-mail ontvangt. U kunt ook contact opnemen met uw micro soft-vertegenwoordiger om in te scha kelen voor deze preview. De toegang tot de preview-functie is onderhevig aan Beschik baarheid en is door micro soft beperkt. Het volt ooien van de enquête biedt geen garantie voor toegang. Deze preview is beschikbaar zonder service level agreement en mag niet worden gebruikt voor werk belastingen voor de productie. Bepaalde functies worden mogelijk niet ondersteund, zijn mogelijk beperkt of zijn mogelijk niet beschikbaar in alle Azure-locaties. Zie de [aanvullende gebruiks voorwaarden](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor Microsoft Azure-voor beelden voor meer informatie. Sommige aspecten van deze functie worden mogelijk nog gewijzigd voordat de functie algemeen beschikbaar wordt.
+> De verbinding tussen Microsoft Azure en OCI bevindt zich in de preview-fase. Als u verbinding met een lage latentie tot stand wilt brengen tussen Azure en OCI, moet uw Azure-abonnement eerst worden ingeschakeld voor deze mogelijkheid. U moet in de preview-periode inschrijven door dit korte [enquête formulier](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyzVVsi364tClw522rL9tkpUMVFGVVFWRlhMNUlRQTVWSTEzT0dXMlRUTyQlQCN0PWcu)in te vullen. U ontvangt een e-mailbevestiging zodra uw abonnement is geregistreerd. U kunt de mogelijkheid niet gebruiken totdat u een bevestigings-e-mail ontvangt. U kunt ook contact opnemen met uw micro soft-vertegenwoordiger om in te scha kelen voor deze preview. De toegang tot de preview-functie is onderhevig aan Beschik baarheid en is door micro soft beperkt. Het volt ooien van de enquête biedt geen garantie voor toegang. Deze preview is beschikbaar zonder service level agreement en mag niet worden gebruikt voor werk belastingen voor de productie. Bepaalde functies worden mogelijk niet ondersteund, zijn mogelijk beperkt of zijn mogelijk niet beschikbaar in alle Azure-locaties. Zie de [aanvullende gebruiks voorwaarden](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor Microsoft Azure-voor beelden voor meer informatie. Sommige aspecten van deze functie worden mogelijk nog gewijzigd voordat de functie algemeen beschikbaar wordt.
 
 De volgende afbeelding toont een overzicht op hoog niveau van de interverbinding:
 
@@ -37,7 +37,7 @@ De volgende afbeelding toont een overzicht op hoog niveau van de interverbinding
 
 * Connectiviteit is alleen mogelijk wanneer een Azure ExpressRoute-peering locatie zich in de buurt van of op dezelfde peering-locatie bevindt als de OCI FastConnect. Zie de [Preview-beperkingen](oracle-oci-overview.md#preview-limitations).
 
-* Uw Azure-abonnement moet white list zijn voor deze preview-functie.
+* Uw Azure-abonnement moet zijn ingeschakeld voor deze preview-functie.
 
 ## <a name="configure-direct-connectivity-between-expressroute-and-fastconnect"></a>Directe connectiviteit tussen ExpressRoute en FastConnect configureren
 
@@ -57,7 +57,7 @@ De volgende afbeelding toont een overzicht op hoog niveau van de interverbinding
 1. Maak een dynamische routerings gateway (DRG). U hebt dit nodig bij het maken van uw FastConnect-circuit. Zie de documentatie voor [dynamische routerings gateway](https://docs.cloud.oracle.com/iaas/Content/Network/Tasks/managingDRGs.htm) voor meer informatie.
 1. Maak een FastConnect-circuit onder uw Oracle-Tenant. Raadpleeg de [Oracle-documentatie](https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/azure.htm)voor meer informatie.
   
-    * Selecteer **Microsoft Azure onder configuratie FastConnect: ExpressRoute** als provider.
+    * Onder FastConnect-configuratie selecteert u **Microsoft Azure: ExpressRoute @ no__t-0 als provider.
     * Selecteer de dynamische routerings gateway die u in de vorige stap hebt ingericht.
     * Selecteer de band breedte die moet worden ingericht. Voor optimale prestaties moet de band breedte overeenkomen met de band breedte die is geselecteerd bij het maken van het ExpressRoute-circuit.
     * Plak de ExpressRoute-service sleutel in **Provider service sleutel**.

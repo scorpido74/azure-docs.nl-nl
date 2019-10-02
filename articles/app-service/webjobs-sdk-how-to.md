@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: 88664238fa7cf21381ad6f95e77e02ad89103556
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 67cd7f82597d306c8bf3c463d11457199aec7277
+ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68850848"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71815748"
 ---
 # <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>De Azure WebJobs SDK gebruiken voor op gebeurtenissen gebaseerde achtergrond verwerking
 
@@ -37,20 +37,20 @@ Indien mogelijk zijn er voor beelden beschikbaar voor versie 3. *x* en versie 2.
 > [!NOTE]
 > [Azure functions](../azure-functions/functions-overview.md) is gebaseerd op de webjobs SDK en dit artikel bevat koppelingen naar Azure functions documentatie voor sommige onderwerpen. Houd rekening met de volgende verschillen tussen functies en de webjobs SDK:
 > * Azure Functions versie 2. *x* komt overeen met webjobs SDK versie 3. *x*en Azure functions 1. *x* komt overeen met webjobs SDK 2. *x*. Bron code opslagplaatsen gebruiken de webjobs SDK-nummering.
-> * Voorbeeld code voor Azure functions C# class-bibliotheken is net als de `FunctionName` SDK-code van webjobs, behalve dat u geen kenmerk hebt in een webjobs SDK-project.
+> * Voorbeeld code voor Azure Functions C# class-bibliotheken is net als webjobs SDK-code, behalve dat u geen kenmerk `FunctionName` nodig hebt in een webjobs SDK-project.
 > * Sommige typen bindingen worden alleen ondersteund in functies, zoals HTTP (webhooks) en Event Grid (dat is gebaseerd op HTTP).
 >
 > Zie [compare the Webjobs SDK and Azure functions](../azure-functions/functions-compare-logic-apps-ms-flow-webjobs.md#compare-functions-and-webjobs)voor meer informatie.
 
 ## <a name="webjobs-host"></a>Webjobs-host
 
-De host is een runtime container voor functions.  Het luistert naar triggers en aanroepen-functies. In versie 3. *x*, de host is een implementatie van `IHost`. In versie 2. *x*gebruikt u het `JobHost` -object. U maakt een exemplaar van een host in uw code en schrijft code om het gedrag aan te passen.
+De host is een runtime container voor functions.  Het luistert naar triggers en aanroepen-functies. In versie 3. *x*, de host is een implementatie van `IHost`. In versie 2. *x*gebruikt u het object `JobHost`. U maakt een exemplaar van een host in uw code en schrijft code om het gedrag aan te passen.
 
 Dit is een belang rijk verschil tussen het rechtstreeks gebruiken van de webjobs SDK en het indirect via Azure Functions. In Azure Functions beheert de service de host en u kunt de host niet aanpassen door code te schrijven. Met Azure Functions kunt u het gedrag van de host aanpassen via instellingen in het bestand host. json. Deze instellingen zijn teken reeksen, geen code en Hiermee worden de soorten aanpassingen beperkt die u kunt uitvoeren.
 
 ### <a name="host-connection-strings"></a>Verbindingsteken reeksen voor de host
 
-De webjobs SDK zoekt naar Azure Storage en Azure Service Bus verbindings reeksen in het bestand local. settings. json wanneer u lokaal uitvoert, of in de omgeving van de Webtaak wanneer u uitvoert in Azure. Een opslag Connection String instelling met de naam `AzureWebJobsStorage` is standaard vereist.  
+De webjobs SDK zoekt naar Azure Storage en Azure Service Bus verbindings reeksen in het bestand local. settings. json wanneer u lokaal uitvoert, of in de omgeving van de Webtaak wanneer u uitvoert in Azure. Standaard is een opslag connection string instelling met de naam `AzureWebJobsStorage` vereist.  
 
 Versie 2. met *x* van de SDK kunt u uw eigen namen voor deze verbindings reeksen gebruiken of elders opslaan. U kunt namen in code instellen met behulp van de [`JobHostConfiguration`], zoals hier wordt weer gegeven:
 
@@ -80,7 +80,7 @@ U kunt de host uitvoeren in de ontwikkel modus om lokale ontwikkeling efficiënt
 
 | Eigenschap | Ontwikkelings instelling |
 | ------------- | ------------- |
-| `Tracing.ConsoleLevel` | `TraceLevel.Verbose`om de logboek uitvoer te maximaliseren. |
+| `Tracing.ConsoleLevel` | `TraceLevel.Verbose` om de logboek uitvoer te maximaliseren. |
 | `Queues.MaxPollingInterval`  | Een lage waarde om ervoor te zorgen dat wachtrij methoden direct worden geactiveerd.  |
 | `Singleton.ListenerLockPeriod` | 15 seconden om te helpen bij snelle herhalings ontwikkeling. |
 
@@ -88,7 +88,7 @@ Het proces voor het inschakelen van de ontwikkelings modus is afhankelijk van de
 
 #### <a name="version-3x"></a>Versie 3. *x*
 
-Versie 3. *x* maakt gebruik van de standaard ASP.net core-api's. Roep de [`UseEnvironment`](/dotnet/api/microsoft.extensions.hosting.hostinghostbuilderextensions.useenvironment) -methode aan [`HostBuilder`](/dotnet/api/microsoft.extensions.hosting.hostbuilder) voor het exemplaar. Geef een teken reeks `development`met de naam, zoals in dit voor beeld:
+Versie 3. *x* maakt gebruik van de standaard ASP.net core-api's. Roep de [`UseEnvironment`-](/dotnet/api/microsoft.extensions.hosting.hostinghostbuilderextensions.useenvironment) methode aan voor het [`HostBuilder`-](/dotnet/api/microsoft.extensions.hosting.hostbuilder) exemplaar. Geef een teken reeks met de naam `development` op, zoals in dit voor beeld:
 
 ```cs
 static void Main()
@@ -109,7 +109,7 @@ static void Main()
 
 #### <a name="version-2x"></a>Versie 2. *x*
 
-De `JobHostConfiguration` klasse heeft een `UseDevelopmentSettings` methode waarmee de ontwikkelings modus wordt ingeschakeld.  In het volgende voor beeld ziet u hoe u ontwikkelings instellingen gebruikt. Als u `config.IsDevelopment` de `true` retour nering wilt uitvoeren wanneer het lokaal wordt uitgevoerd, stelt `AzureWebJobsEnv` u een lokale `Development`omgevings variabele met de naam met de waarde in.
+De klasse `JobHostConfiguration` heeft een `UseDevelopmentSettings`-methode waarmee de ontwikkelings modus wordt ingeschakeld.  In het volgende voor beeld ziet u hoe u ontwikkelings instellingen gebruikt. Als `config.IsDevelopment` `true` retour neren wanneer het lokaal wordt uitgevoerd, stelt u een lokale omgevings variabele met de naam `AzureWebJobsEnv` in met de waarde `Development`.
 
 ```cs
 static void Main()
@@ -128,17 +128,17 @@ static void Main()
 
 ### <a name="jobhost-servicepointmanager-settings"></a>Gelijktijdige verbindingen beheren (versie 2. *x*)
 
-In versie 3. *x*, de verbindings limiet wordt standaard ingesteld op oneindige verbindingen. Als u deze limiet om een of andere reden moet wijzigen, kunt u de [`MaxConnectionsPerServer`](/dotnet/api/system.net.http.winhttphandler.maxconnectionsperserver) eigenschap van de [`WinHttpHandler`](/dotnet/api/system.net.http.winhttphandler) klasse gebruiken.
+In versie 3. *x*, de verbindings limiet wordt standaard ingesteld op oneindige verbindingen. Als u deze limiet om een of andere reden moet wijzigen, kunt u de eigenschap [`MaxConnectionsPerServer`](/dotnet/api/system.net.http.winhttphandler.maxconnectionsperserver) van de klasse [`WinHttpHandler`](/dotnet/api/system.net.http.winhttphandler) gebruiken.
 
 In versie 2. *x*, bepaalt u het aantal gelijktijdige verbindingen met een host met behulp van de API [ServicePointManager. DefaultConnectionLimit](/dotnet/api/system.net.servicepointmanager.defaultconnectionlimit#System_Net_ServicePointManager_DefaultConnectionLimit) . In 2. *x*moet u deze waarde verhogen van de standaard instelling van 2 voordat u de host voor webjobs start.
 
-Alle uitgaande HTTP-aanvragen die u vanuit een functie hebt gemaakt `HttpClient` met behulp van flow through. `ServicePointManager` Nadat u de waarde in hebt ingesteld `DefaultConnectionLimit`in `ServicePointManager` , wordt het in de wachtrij plaatsen van aanvragen gestart voordat ze worden verzonden. Stel dat `DefaultConnectionLimit` je is ingesteld op 2 en dat je code 1.000 HTTP-aanvragen maakt. In eerste instantie worden slechts twee aanvragen toegestaan via het besturings systeem. De andere 998 worden in de wachtrij geplaatst totdat er ruimte is. Dit betekent dat `HttpClient` er mogelijk een time-out optreedt omdat het lijkt alsof de aanvraag is gedaan, maar de aanvraag werd nooit verzonden door het besturings systeem naar de doel server. Het is dus mogelijk dat u het gedrag ziet dat niet duidelijk lijkt: `HttpClient` uw lokale bewerking neemt 10 seconden in beslag om een aanvraag te volt ooien, maar uw service retourneert elke aanvraag in 200 MS. 
+Alle uitgaande HTTP-aanvragen die u vanuit een functie maakt met behulp van `HttpClient`, loopt door `ServicePointManager`. Nadat u de waarde hebt ingesteld in `DefaultConnectionLimit`, wordt in `ServicePointManager` aanvragen in de wachtrij geplaatst voordat ze worden verzonden. Stel dat uw @no__t 0 is ingesteld op 2 en dat uw code 1.000 HTTP-aanvragen maakt. In eerste instantie worden slechts twee aanvragen toegestaan via het besturings systeem. De andere 998 worden in de wachtrij geplaatst totdat er ruimte is. Dit betekent dat uw `HttpClient` mogelijk een time-out veroorzaakt omdat het lijkt alsof de aanvraag is gedaan, maar de aanvraag werd nooit verzonden door het besturings systeem naar de doel server. Het is dus mogelijk dat uw lokale `HttpClient` 10 seconden duurt om een aanvraag te volt ooien, maar uw service retourneert elke aanvraag in 200 MS. 
 
-De standaard waarde voor ASP.NET-toepassingen `Int32.MaxValue`is en dat is waarschijnlijk goed geschikt voor webtaken die worden uitgevoerd in een basis-of hoger app service abonnement. Webjobs hebben doorgaans de instelling altijd aan nodig en alleen ondersteund door basis-en snellere App Service plannen.
+De standaard waarde voor ASP.NET-toepassingen is `Int32.MaxValue` en dat is waarschijnlijk goed geschikt voor webtaken die worden uitgevoerd in een basis-of hoger App Service plan. Webjobs hebben doorgaans de instelling altijd aan nodig en alleen ondersteund door basis-en snellere App Service plannen.
 
-Als uw Webtaak wordt uitgevoerd in een gratis of gedeeld App Service-abonnement, wordt uw toepassing beperkt door de App Service sandbox, die momenteel een [verbindings limiet van 300](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox#per-sandbox-per-appper-site-numerical-limits)heeft. Met een niet-afhankelijke verbindings limiet `ServicePointManager`in, is het waarschijnlijker dat de drempel waarde voor de sandbox-verbinding wordt bereikt en de site wordt afgesloten. In dat geval kan het `DefaultConnectionLimit` instellen op iets lager, zoals 50 of 100, ervoor zorgen dat dit niet gebeurt en toch voldoende door Voer toestaan.
+Als uw Webtaak wordt uitgevoerd in een gratis of gedeeld App Service-abonnement, wordt uw toepassing beperkt door de App Service sandbox, die momenteel een [verbindings limiet van 300](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox#per-sandbox-per-appper-site-numerical-limits)heeft. Met een niet-afhankelijke verbindings limiet in `ServicePointManager` is het waarschijnlijker dat de drempel waarde voor de sandbox-verbinding wordt bereikt en de site wordt afgesloten. In dat geval kan het instellen van `DefaultConnectionLimit` op iets lager, zoals 50 of 100, ervoor zorgen dat dit niet gebeurt en toch voldoende door Voer toestaan.
 
-De instelling moet worden geconfigureerd voordat er HTTP-aanvragen worden gedaan. Daarom mag de webjobs-host de instelling niet automatisch aanpassen. Er kunnen HTTP-aanvragen worden uitgevoerd voordat de host wordt gestart. Dit kan leiden tot onverwacht gedrag. De beste manier is om de waarde direct in uw methode `Main` in te stellen voordat `JobHost`u de initialisatie maakt, zoals hier wordt weer gegeven:
+De instelling moet worden geconfigureerd voordat er HTTP-aanvragen worden gedaan. Daarom mag de webjobs-host de instelling niet automatisch aanpassen. Er kunnen HTTP-aanvragen worden uitgevoerd voordat de host wordt gestart. Dit kan leiden tot onverwacht gedrag. De beste manier is om de waarde direct in uw `Main`-methode in te stellen voordat u `JobHost` initialiseert, zoals hier wordt weer gegeven:
 
 ```csharp
 static void Main(string[] args)
@@ -153,7 +153,7 @@ static void Main(string[] args)
 
 ## <a name="triggers"></a>Triggers
 
-Functies moeten open bare methoden zijn en moeten één trigger kenmerk of het [`NoAutomaticTrigger`](#manual-triggers) kenmerk hebben.
+Functies moeten open bare methoden zijn en moeten één trigger kenmerk of het kenmerk [`NoAutomaticTrigger`](#manual-triggers) hebben.
 
 ### <a name="automatic-triggers"></a>Automatische triggers
 
@@ -169,13 +169,13 @@ public static void Run(
 }
 ```
 
-Het `QueueTrigger` kenmerk vertelt de runtime om de functie aan te roepen wanneer er een wachtrij bericht `myqueue-items` in de wachtrij wordt weer gegeven. Het `Blob` kenmerk geeft de runtime de tijd om het wachtrij bericht te gebruiken voor het lezen van een BLOB in de container *sample-werk items* . De inhoud van het wachtrij bericht dat is door gegeven aan de functie in `myQueueItem` de para meter, is de naam van de blob.
+Het kenmerk `QueueTrigger` vertelt de runtime om de functie aan te roepen wanneer er een wachtrij bericht wordt weer gegeven in de wachtrij van `myqueue-items`. Het kenmerk `Blob` vertelt de runtime om het wachtrij bericht te gebruiken voor het lezen van een BLOB in de *werk items-* container. De inhoud van het wachtrij bericht dat is door gegeven aan de functie in de para meter `myQueueItem`, is de naam van de blob.
 
 [!INCLUDE [webjobs-always-on-note](../../includes/webjobs-always-on-note.md)]
 
 ### <a name="manual-triggers"></a>Hand matige triggers
 
-Als u een functie hand matig wilt activeren `NoAutomaticTrigger` , gebruikt u het kenmerk, zoals hier wordt weer gegeven:
+Als u een functie hand matig wilt activeren, gebruikt u het kenmerk `NoAutomaticTrigger`, zoals hier wordt weer gegeven:
 
 ```cs
 [NoAutomaticTrigger]
@@ -240,7 +240,7 @@ Het proces voor het installeren en beheren van bindings typen is afhankelijk van
 
 #### <a name="version-3x"></a>Versie 3. *x*
 
-In versie 3. *x*, de opslag bindingen zijn opgenomen in het `Microsoft.Azure.WebJobs.Extensions.Storage` pakket. Roep de `AddAzureStorage` uitbreidings methode aan in `ConfigureWebJobs` de-methode, zoals hier wordt weer gegeven:
+In versie 3. *x*, de opslag bindingen zijn opgenomen in het `Microsoft.Azure.WebJobs.Extensions.Storage`-pakket. Roep de `AddAzureStorage`-extensie methode aan in de `ConfigureWebJobs`-methode, zoals hier wordt weer gegeven:
 
 ```cs
 static void Main()
@@ -259,7 +259,7 @@ static void Main()
 }
 ```
 
-Als u andere typen triggers en bindingen wilt gebruiken, installeert u het NuGet-pakket dat `Add<binding>` deze bevat en roept u de extensie methode aan die in de uitbrei ding is geïmplementeerd. Als u bijvoorbeeld een Azure Cosmos DB binding wilt gebruiken, moet u deze als `Microsoft.Azure.WebJobs.Extensions.CosmosDB` volgt installeren `AddCosmosDB`en aanroepen:
+Als u andere typen triggers en bindingen wilt gebruiken, installeert u het NuGet-pakket dat deze bevat en roept u de extensie methode van `Add<binding>` aan die in de uitbrei ding is geïmplementeerd. Als u bijvoorbeeld een Azure Cosmos DB binding wilt gebruiken, installeert u `Microsoft.Azure.WebJobs.Extensions.CosmosDB` en roept u `AddCosmosDB` aan, bijvoorbeeld:
 
 ```cs
 static void Main()
@@ -278,17 +278,17 @@ static void Main()
 }
 ```
 
-Als u de timer trigger of de binding van de bestanden wilt gebruiken, die deel uitmaken van `AddTimers` de `AddFiles` kern Services, roept u respectievelijk de methoden of extensie aan.
+Als u de timer trigger of de binding van de bestanden wilt gebruiken die deel uitmaken van de kern Services, roept u de methoden van de `AddTimers`-of `AddFiles`-extensie aan.
 
 #### <a name="version-2x"></a>Versie 2. *x*
 
-Deze trigger-en bindings typen zijn opgenomen in versie 2. *x* van het `Microsoft.Azure.WebJobs` pakket:
+Deze trigger-en bindings typen zijn opgenomen in versie 2. *x* van het `Microsoft.Azure.WebJobs`-pakket:
 
 * Blob Storage
 * Queue Storage
 * Tabelopslag
 
-Als u andere typen triggers en bindingen wilt gebruiken, installeert u het NuGet-pakket dat `Use<binding>` deze bevat en `JobHostConfiguration` roept u een methode aan voor het object. Als u bijvoorbeeld een timer trigger wilt gebruiken, installeert `Microsoft.Azure.WebJobs.Extensions` en aanroept `UseTimers` u de `Main` -methode, zoals hier wordt weer gegeven:
+Als u andere typen triggers en bindingen wilt gebruiken, installeert u het NuGet-pakket dat deze bevat en roept u een `Use<binding>`-methode aan voor het `JobHostConfiguration`-object. Als u bijvoorbeeld een timer trigger wilt gebruiken, installeert u `Microsoft.Azure.WebJobs.Extensions` en roept u `UseTimers` aan in de `Main`-methode, zoals hier wordt weer gegeven:
 
 ```cs
 static void Main()
@@ -300,11 +300,11 @@ static void Main()
 }
 ```
 
-Voor het gebruik van de bestanden binding `Microsoft.Azure.WebJobs.Extensions` , installeren `UseFiles`en aanroepen.
+Als u de bestanden binding wilt gebruiken, installeert u `Microsoft.Azure.WebJobs.Extensions` en roept u `UseFiles` aan.
 
 ### <a name="executioncontext"></a>ExecutionContext
 
-Met webjobs kunt u verbinding maken [`ExecutionContext`]met een. Met deze binding krijgt u toegang tot de [`ExecutionContext`] as a-para meter in uw functie handtekening. De volgende code gebruikt bijvoorbeeld het context object om toegang te krijgen tot de aanroep-ID, die u kunt gebruiken voor het correleren van alle logboeken die zijn geproduceerd door een bepaalde functie aanroep.  
+Met webjobs kunt u verbinding maken met een [`ExecutionContext`]. Met deze binding krijgt u toegang tot de [`ExecutionContext`] als een para meter in uw functie handtekening. De volgende code gebruikt bijvoorbeeld het context object om toegang te krijgen tot de aanroep-ID, die u kunt gebruiken voor het correleren van alle logboeken die zijn geproduceerd door een bepaalde functie aanroep.  
 
 ```cs
 public class Functions
@@ -318,11 +318,11 @@ public class Functions
 }
 ```
 
-Het proces voor het verbinden met [`ExecutionContext`] de is afhankelijk van uw SDK-versie.
+Het proces voor het koppelen aan de [`ExecutionContext`] is afhankelijk van uw SDK-versie.
 
 #### <a name="version-3x"></a>Versie 3. *x*
 
-Roep de `AddExecutionContextBinding` uitbreidings methode aan in `ConfigureWebJobs` de-methode, zoals hier wordt weer gegeven:
+Roep de `AddExecutionContextBinding`-extensie methode aan in de `ConfigureWebJobs`-methode, zoals hier wordt weer gegeven:
 
 ```cs
 static void Main()
@@ -343,7 +343,7 @@ static void Main()
 
 #### <a name="version-2x"></a>Versie 2. *x*
 
-Het `Microsoft.Azure.WebJobs.Extensions` eerder genoemde pakket biedt ook een speciaal bindings type dat u kunt registreren door de `UseCore` methode aan te roepen. Met deze binding kunt u een [`ExecutionContext`] para meter definiëren in uw functie handtekening, die als volgt wordt ingeschakeld:
+Het eerder genoemde `Microsoft.Azure.WebJobs.Extensions`-pakket biedt ook een speciaal bindings type dat u kunt registreren door de `UseCore`-methode aan te roepen. Met deze binding kunt u een para meter [`ExecutionContext`] definiëren in de hand tekening van de functie. Dit is als volgt ingeschakeld:
 
 ```cs
 class Program
@@ -362,8 +362,8 @@ class Program
 
 U kunt het gedrag van sommige triggers en bindingen configureren. Het proces voor het configureren van deze onderdelen is afhankelijk van de SDK-versie.
 
-* **Versie 3. *x*:** Stel configuratie in wanneer `Add<Binding>` de methode wordt aangeroepen `ConfigureWebJobs`in.
-* **Versie 2. *x*:** Stel de configuratie in door eigenschappen in te stellen in een configuratie object dat `JobHost`u doorgeeft aan.
+* **Versie 3. *x*:** Stel configuratie in wanneer de methode `Add<Binding>` wordt aangeroepen in `ConfigureWebJobs`.
+* **Versie 2. *x*:** Stel de configuratie in door eigenschappen in te stellen in een configuratie object dat u door geeft aan `JobHost`.
 
 Deze binding-specifieke instellingen zijn gelijk aan instellingen in het [bestand host. json-project](../azure-functions/functions-host-json.md) in azure functions.
 
@@ -508,7 +508,7 @@ static void Main()
 }
 ```
 
-Zie het [SendGrid](../azure-functions/functions-bindings-sendgrid.md#hostjson-settings) -bindings artikel voor meer informatie.
+Zie het [SendGrid-bindings](../azure-functions/functions-bindings-sendgrid.md#hostjson-settings) artikel voor meer informatie.
 
 ### <a name="service-bus-trigger-configuration-version-3x"></a>Configuratie van Service Bus trigger (versie 3. *x*)
 
@@ -580,7 +580,7 @@ static void Main()
 
 ## <a name="binding-expressions"></a>Bindings expressies
 
-In kenmerk-constructor-para meters kunt u expressies gebruiken die worden omgezet in waarden van verschillende bronnen. In de volgende code maakt het pad voor het `BlobTrigger` kenmerk bijvoorbeeld een expressie met de naam. `filename` Wanneer deze wordt gebruikt voor de uitvoer `filename` binding, wordt omgezet naar de naam van de trigger-blob.
+In kenmerk-constructor-para meters kunt u expressies gebruiken die worden omgezet in waarden van verschillende bronnen. In de volgende code maakt het pad voor het kenmerk `BlobTrigger` bijvoorbeeld een expressie met de naam `filename`. Wanneer de uitvoer binding wordt gebruikt, wordt `filename` omgezet in de naam van de trigger-blob.
 
 ```cs
 public static void CreateThumbnail(
@@ -598,9 +598,9 @@ Zie [expressies en patronen binden](../azure-functions/functions-bindings-expres
 
 ### <a name="custom-binding-expressions"></a>Aangepaste bindings expressies
 
-Soms wilt u een wachtrij naam, een blobnaam of container of een tabel naam opgeven in de code in plaats van deze op te geven. U kunt bijvoorbeeld de naam van de wachtrij voor het `QueueTrigger` kenmerk opgeven in een configuratie bestand of omgevings variabele.
+Soms wilt u een wachtrij naam, een blobnaam of container of een tabel naam opgeven in de code in plaats van deze op te geven. U kunt bijvoorbeeld de naam van de wachtrij voor het kenmerk `QueueTrigger` opgeven in een configuratie bestand of omgevings variabele.
 
-U kunt dit doen door een `NameResolver` object door te geven aan het `JobHostConfiguration` object. U neemt tijdelijke aanduidingen op in de para meters voor de trigger- `NameResolver` of bindings kenmerken, en uw code levert de werkelijke waarden die moeten worden gebruikt in plaats van deze tijdelijke aanduidingen. U identificeert tijdelijke aanduidingen door deze te omheen met een percentage (%) tekens, zoals hier wordt weer gegeven:
+U kunt dit doen door een `NameResolver`-object in te geven in het `JobHostConfiguration`-object. U neemt tijdelijke aanduidingen op in de para meters voor de trigger-of bindings kenmerken en de code van @no__t 0 levert de werkelijke waarden die worden gebruikt in plaats van deze tijdelijke aanduidingen. U identificeert tijdelijke aanduidingen door deze te omheen met een percentage (%) tekens, zoals hier wordt weer gegeven:
 
 ```cs
 public static void WriteLog([QueueTrigger("%logqueue%")] string logMessage)
@@ -609,11 +609,11 @@ public static void WriteLog([QueueTrigger("%logqueue%")] string logMessage)
 }
 ```
 
-Met deze code kunt u een wachtrij gebruiken `logqueuetest` met de naam in de test omgeving `logqueueprod` en één met de naam in productie. In plaats van een in code vastgelegde wachtrij naam, geeft u de naam op van een vermelding `appSettings` in de verzameling.
+Met deze code kunt u een wachtrij met de naam `logqueuetest` gebruiken in de test omgeving en één met de naam `logqueueprod` in productie. In plaats van een in code vastgelegde wachtrij naam, geeft u de naam op van een vermelding in de verzameling `appSettings`.
 
-Er is een standaard `NameResolver` waarde die van kracht is als u geen aangepaste versie opgeeft. De standaard waarden worden opgehaald uit de app-instellingen of omgevings variabelen.
+Er is een standaard `NameResolver` dat van kracht wordt als u geen aangepaste versie opgeeft. De standaard waarden worden opgehaald uit de app-instellingen of omgevings variabelen.
 
-Uw `NameResolver` klasse haalt de naam van de `appSettings`wachtrij op, zoals hier wordt weer gegeven:
+De klasse `NameResolver` haalt de naam van de wachtrij op uit `appSettings`, zoals hier wordt weer gegeven:
 
 ```cs
 public class CustomNameResolver : INameResolver
@@ -627,13 +627,13 @@ public class CustomNameResolver : INameResolver
 
 #### <a name="version-3x"></a>Versie 3. *x*
 
-U kunt de resolver configureren met behulp van afhankelijkheids injectie. Deze voor beelden vereisen de `using` volgende instructie:
+U kunt de resolver configureren met behulp van afhankelijkheids injectie. Voor deze voor beelden is de volgende `using`-instructie vereist:
 
 ```cs
 using Microsoft.Extensions.DependencyInjection;
 ```
 
-U voegt de resolver toe door de [`ConfigureServices`] uitbreidings methode aan [`HostBuilder`](/dotnet/api/microsoft.extensions.hosting.hostbuilder)te roepen, zoals in dit voor beeld:
+U voegt de resolver toe door de [`ConfigureServices`-] uitbreidings methode aan te roepen op [`HostBuilder`](/dotnet/api/microsoft.extensions.hosting.hostbuilder), zoals in dit voor beeld:
 
 ```cs
 static async Task Main(string[] args)
@@ -655,7 +655,7 @@ static async Task Main(string[] args)
 
 #### <a name="version-2x"></a>Versie 2. *x*
 
-Geef uw `NameResolver` klasse door aan het `JobHost` object, zoals hier wordt weer gegeven:
+Geef uw `NameResolver`-klasse door aan het object `JobHost`, zoals hier wordt weer gegeven:
 
 ```cs
  static void Main(string[] args)
@@ -667,11 +667,11 @@ Geef uw `NameResolver` klasse door aan het `JobHost` object, zoals hier wordt we
 }
 ```
 
-Azure functions implementeert `INameResolver` om waarden op te halen uit de app-instellingen, zoals wordt weer gegeven in het voor beeld. Wanneer u de webjobs SDK rechtstreeks gebruikt, kunt u een aangepaste implementatie schrijven die waarden voor het vervangen van tijdelijke aanduidingen uit de gewenste bron ophaalt.
+Azure Functions implementeert `INameResolver` om waarden op te halen uit de app-instellingen, zoals wordt weer gegeven in het voor beeld. Wanneer u de webjobs SDK rechtstreeks gebruikt, kunt u een aangepaste implementatie schrijven die waarden voor het vervangen van tijdelijke aanduidingen uit de gewenste bron ophaalt.
 
 ## <a name="binding-at-runtime"></a>Binding tijdens runtime
 
-Als u een aantal werk in uw functie wilt uitvoeren voordat u een bindings kenmerk gebruikt `Queue`, `Blob`zoals, `Table`of, kunt u de `IBinder` interface gebruiken.
+Als u in uw functie wat werk moet doen voordat u een bindings kenmerk gebruikt, zoals `Queue`, `Blob` of `Table`, kunt u de `IBinder`-interface gebruiken.
 
 In het volgende voor beeld wordt een invoer wachtrij bericht gebruikt en wordt er een nieuw bericht gemaakt met dezelfde inhoud in een uitvoer wachtrij. De naam van de uitvoer wachtrij wordt ingesteld op code in de hoofd tekst van de functie.
 
@@ -694,7 +694,7 @@ Zie [binding tijdens runtime](../azure-functions/functions-dotnet-class-library.
 De Azure Functions documentatie bevat Naslag informatie over elk bindings type. U vindt de volgende informatie in elk referentie artikel over de binding. (Dit voor beeld is gebaseerd op de opslag wachtrij.)
 
 * [Pakketten](../azure-functions/functions-bindings-storage-queue.md#packages---functions-1x). Het pakket dat u moet installeren om ondersteuning te bieden voor de binding in een webjobs SDK-project.
-* [Voor beelden](../azure-functions/functions-bindings-storage-queue.md#trigger---example). Code voorbeelden. Het C# voor beeld van de klassen bibliotheek is van toepassing op de webjobs SDK. Laat het `FunctionName` kenmerk weg.
+* [Voor beelden](../azure-functions/functions-bindings-storage-queue.md#trigger---example). Code voorbeelden. Het C# voor beeld van de klassen bibliotheek is van toepassing op de webjobs SDK. Laat gewoon het kenmerk `FunctionName` weg.
 * [Kenmerken](../azure-functions/functions-bindings-storage-queue.md#trigger---attributes). De kenmerken die moeten worden gebruikt voor het bindings type.
 * [Configuratie](../azure-functions/functions-bindings-storage-queue.md#trigger---configuration). Uitleg van de kenmerk eigenschappen en constructor-para meters.
 * [Gebruik](../azure-functions/functions-bindings-storage-queue.md#trigger---usage). De typen waarmee u verbinding kunt maken en informatie over de werking van de binding. Bijvoorbeeld: polling-algoritme, verwerking van de verontreinigde wachtrij.
@@ -703,9 +703,9 @@ Zie ' ondersteunde bindingen ' in het artikel [Triggers en bindingen](../azure-f
 
 ## <a name="disable-attribute"></a>Kenmerk uitschakelen 
 
-Met [`Disable`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/DisableAttribute.cs) het kenmerk kunt u bepalen of een functie kan worden geactiveerd. 
+Met het kenmerk [`Disable`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/DisableAttribute.cs) kunt u bepalen of een functie kan worden geactiveerd. 
 
-In het volgende voor beeld wordt de functie niet `Disable_TestJob` uitgevoerd als de app `1` - `True` instelling een waarde heeft van of (niet hoofdletter gevoelig). In dat geval maakt de runtime een functie van het logboek bericht ' functions *. TestJob ' is uitgeschakeld*.
+In het volgende voor beeld wordt de functie niet uitgevoerd als de app-instelling `Disable_TestJob` een waarde heeft van `1` of `True` (niet hoofdletter gevoelig). In dat geval maakt de runtime een functie van het logboek bericht ' functions *. TestJob ' is uitgeschakeld*.
 
 ```cs
 [Disable("Disable_TestJob")]
@@ -721,7 +721,7 @@ Het kenmerk kan worden gedeclareerd op de para meter, methode of class-niveau. D
 
 ## <a name="timeout-attribute"></a>Time-outkenmerk
 
-Het [`Timeout`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/TimeoutAttribute.cs) kenmerk zorgt ervoor dat een functie wordt geannuleerd als deze niet binnen een opgegeven tijd wordt voltooid. In het volgende voor beeld wordt de functie uitgevoerd voor één dag zonder het kenmerk timeout. Time-out zorgt ervoor dat de functie na 15 seconden wordt geannuleerd.
+Het kenmerk [`Timeout`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/TimeoutAttribute.cs) zorgt ervoor dat een functie wordt geannuleerd als deze niet binnen de opgegeven tijd wordt voltooid. In het volgende voor beeld wordt de functie uitgevoerd voor één dag zonder het kenmerk timeout. Time-out zorgt ervoor dat de functie na 15 seconden wordt geannuleerd.
 
 ```cs
 [Timeout("00:00:15")]
@@ -736,13 +736,13 @@ public static async Task TimeoutJob(
 }
 ```
 
-U kunt het kenmerk timeout op het niveau van klasse of methode Toep assen en u kunt een globale time-out `JobHostConfiguration.FunctionTimeout`opgeven met behulp van. Time-outs van het niveau van klasse-of methode-niveau overschrijven globale time-outs.
+U kunt het kenmerk timeout op het niveau van klasse of methode Toep assen en u kunt een globale time-out opgeven met behulp van `JobHostConfiguration.FunctionTimeout`. Time-outs van het niveau van klasse-of methode-niveau overschrijven globale time-outs.
 
 ## <a name="singleton-attribute"></a>Singleton kenmerk
 
-Het [`Singleton`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/SingletonAttribute.cs) kenmerk zorgt ervoor dat er slechts één exemplaar van een functie wordt uitgevoerd, zelfs wanneer er meerdere exemplaren van de web-app voor de host zijn. Dit doet u met behulp van gedistribueerd [vergren delen](#viewing-lease-blobs).
+Het kenmerk [`Singleton`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/SingletonAttribute.cs) zorgt ervoor dat er slechts één exemplaar van een functie wordt uitgevoerd, zelfs wanneer er meerdere exemplaren van de web-app voor de host zijn. Dit doet u met behulp van [gedistribueerd vergren delen](#viewing-lease-blobs).
 
-In dit voor beeld wordt slechts één exemplaar van de `ProcessImage` functie op een bepaald moment uitgevoerd:
+In dit voor beeld wordt slechts één exemplaar van de functie @no__t 0 op een bepaald moment uitgevoerd:
 
 ```cs
 [Singleton]
@@ -756,15 +756,15 @@ public static async Task ProcessImage([BlobTrigger("images")] Stream image)
 
 Sommige triggers hebben ingebouwde ondersteuning voor gelijktijdigheids beheer:
 
-* **QueueTrigger**. Ingesteld `JobHostConfiguration.Queues.BatchSize` op `1`.
-* **ServiceBusTrigger**. Ingesteld `ServiceBusConfiguration.MessageOptions.MaxConcurrentCalls` op `1`.
-* **FileTrigger**. Ingesteld `FileProcessor.MaxDegreeOfParallelism` op `1`.
+* **QueueTrigger**. Stel `JobHostConfiguration.Queues.BatchSize` in op `1`.
+* **ServiceBusTrigger**. Stel `ServiceBusConfiguration.MessageOptions.MaxConcurrentCalls` in op `1`.
+* **FileTrigger**. Stel `FileProcessor.MaxDegreeOfParallelism` in op `1`.
 
-U kunt deze instellingen gebruiken om ervoor te zorgen dat de functie wordt uitgevoerd als een singleton op één exemplaar. Als u er zeker van wilt zijn dat er slechts één exemplaar van de functie wordt uitgevoerd wanneer de web-app naar meerdere exemplaren wordt geschaald, moet u een singleton-`[Singleton(Mode = SingletonMode.Listener)]`vergren deling op listener-niveau Toep assen op de functie (). Luister vergrendelingen worden verkregen wanneer de JobHost wordt gestart. Als drie uitgebreide exemplaren op hetzelfde moment allemaal worden gestart, wordt de vergren deling door slechts één van de instanties opgehaald en wordt slechts één listener gestart.
+U kunt deze instellingen gebruiken om ervoor te zorgen dat de functie wordt uitgevoerd als een singleton op één exemplaar. Als u er zeker van wilt zijn dat er slechts één exemplaar van de functie wordt uitgevoerd wanneer de web-app naar meerdere exemplaren wordt geschaald, moet u een singleton-vergren deling op listener-niveau Toep assen op de functie (`[Singleton(Mode = SingletonMode.Listener)]`). Luister vergrendelingen worden verkregen wanneer de JobHost wordt gestart. Als drie uitgebreide exemplaren op hetzelfde moment allemaal worden gestart, wordt de vergren deling door slechts één van de instanties opgehaald en wordt slechts één listener gestart.
 
 ### <a name="scope-values"></a>Bereik waarden
 
-U kunt een *bereik expressie/-waarde* opgeven voor een singleton. De expressie/waarde zorgt ervoor dat alle uitvoeringen van de functie op een specifiek bereik worden geserialiseerd. Als u op deze manier meer granulaire vergren delingen implementeert, kunt u een zekere mate van parallellisme voor uw functie toestaan tijdens het serialiseren van andere aanroepen zoals bepaald door uw vereisten. In de volgende code wordt de bereik expressie bijvoorbeeld gekoppeld aan de `Region` waarde van het inkomende bericht. Wanneer de wachtrij drie berichten bevat in de regio's Oost, Oost en West, worden de berichten met regio-Oosten serieel uitgevoerd terwijl het bericht met regio West parallel wordt uitgevoerd met die in Oost.
+U kunt een *bereik expressie/-waarde* opgeven voor een singleton. De expressie/waarde zorgt ervoor dat alle uitvoeringen van de functie op een specifiek bereik worden geserialiseerd. Als u op deze manier meer granulaire vergren delingen implementeert, kunt u een zekere mate van parallellisme voor uw functie toestaan tijdens het serialiseren van andere aanroepen zoals bepaald door uw vereisten. In de volgende code wordt de bereik expressie bijvoorbeeld gebonden aan de `Region`-waarde van het inkomende bericht. Wanneer de wachtrij drie berichten bevat in de regio's Oost, Oost en West, worden de berichten met regio-Oosten serieel uitgevoerd terwijl het bericht met regio West parallel wordt uitgevoerd met die in Oost.
 
 ```csharp
 [Singleton("{Region}")]
@@ -784,7 +784,7 @@ public class WorkItem
 
 ### <a name="singletonscopehost"></a>SingletonScope. host
 
-Het standaard bereik voor een vergren `SingletonScope.Function`deling is, wat betekent dat de vergren deling (het pad van de BLOB-lease) is gekoppeld aan de volledig gekwalificeerde functie naam. Als u de functies wilt vergren delen, geeft `SingletonScope.Host` u een scope-id op die gelijk is aan alle functies die u niet tegelijkertijd wilt uitvoeren, en gebruikt u deze naam. In het volgende voor beeld wordt slechts één exemplaar `AddItem` van `RemoveItem` of uitgevoerd op een tijdstip:
+Het standaard bereik voor een vergren deling is `SingletonScope.Function`, wat betekent dat het vergrendelings bereik (het pad van de BLOB-lease) is gekoppeld aan de volledig gekwalificeerde functie naam. Als u de functies wilt vergren delen, geeft u `SingletonScope.Host` op en gebruikt u een scope-ID met dezelfde naam voor alle functies die u niet tegelijkertijd wilt uitvoeren. In het volgende voor beeld wordt slechts één exemplaar van `AddItem` of `RemoveItem` uitgevoerd op een tijdstip:
 
 ```csharp
 [Singleton("ItemsLock", SingletonScope.Host)]
@@ -802,7 +802,7 @@ public static void RemoveItem([QueueTrigger("remove-item")] string message)
 
 ### <a name="viewing-lease-blobs"></a>Lease-blobs weer geven
 
-De webjobs SDK maakt gebruik van [Azure Blob](../storage/common/storage-concurrency.md#pessimistic-concurrency-for-blobs) -leases onder de kaften voor het implementeren van gedistribueerde vergren deling. De lease-blobs die worden gebruikt door Singleton, vindt `azure-webjobs-host` u in de `AzureWebJobsStorage` container in het opslag account onder het pad "sloten". Het is `ProcessImage` `locks/061851c758f04938a4426aa9ab3869c0/WebJobs.Functions.ProcessImage`bijvoorbeeld mogelijk dat het pad naar de lease-BLOB voor het eerste voor beeld dat eerder wordt weer gegeven. Alle paden bevatten de JobHost-ID, in dit geval 061851c758f04938a4426aa9ab3869c0.
+De webjobs SDK maakt gebruik van [Azure Blob-leases](../storage/common/storage-concurrency.md#pessimistic-concurrency-for-blobs) onder de kaften voor het implementeren van gedistribueerde vergren deling. De lease-blobs die worden gebruikt door Singleton, vindt u in de container `azure-webjobs-host` in het `AzureWebJobsStorage`-opslag account onder het pad "sloten". Bijvoorbeeld, het pad naar de lease-BLOB voor het eerste `ProcessImage`-voor beeld dat eerder is weer gegeven, kan `locks/061851c758f04938a4426aa9ab3869c0/WebJobs.Functions.ProcessImage` zijn. Alle paden bevatten de JobHost-ID, in dit geval 061851c758f04938a4426aa9ab3869c0.
 
 ## <a name="async-functions"></a>Async-functies
 
@@ -816,11 +816,11 @@ Voor informatie over het afhandelen van insluitings tokens raadpleegt u de Azure
 
 Als uw web-app wordt uitgevoerd op meerdere exemplaren, wordt een doorlopende webtoepassing uitgevoerd op elke instantie, die luistert naar triggers en aanroepende functies. De verschillende trigger bindingen zijn ontworpen om efficiënt werk samen te delen tussen verschillende instanties, zodat u met meer instanties kunt uitschalen om meer belasting te verwerken.
 
-De wachtrij-en BLOB-triggers voor komen automatisch dat een functie meer dan één keer een wachtrij bericht of BLOB verwerkt. functions hoeven niet idempotent te zijn.
+Hoewel sommige triggers kunnen leiden tot dubbele verwerking, wachtrij-en Blob Storage-triggers, voor komen dat een functie meer dan één keer een wachtrij bericht of BLOB verwerkt. Zie voor meer informatie [ontwerpen voor identieke invoer](../azure-functions/functions-idempotent.md) in de Azure functions documentatie.
 
 De timer trigger zorgt er automatisch voor dat er slechts één exemplaar van de timer wordt uitgevoerd, zodat er niet meer dan één functie-exemplaar wordt uitgevoerd op een bepaald gepland tijdstip.
 
-Als u er zeker van wilt zijn dat er slechts één exemplaar van een functie wordt uitgevoerd, zelfs wanneer er meerdere exemplaren van de Web-App van [`Singleton`](#singleton-attribute) de host zijn, kunt u het kenmerk gebruiken.
+Als u er zeker van wilt zijn dat er slechts één exemplaar van een functie wordt uitgevoerd, zelfs wanneer er meerdere exemplaren van de Web-App van de host zijn, kunt u het kenmerk [`Singleton`](#singleton-attribute) gebruiken.
 
 ## <a name="filters"></a>Filters
 
@@ -832,7 +832,7 @@ We raden aan het Framework voor logboek registratie dat is ontwikkeld voor ASP.N
 
 ### <a name="log-filtering"></a>Logboek filtering
 
-Elk logboek dat door een `ILogger` exemplaar wordt gemaakt, `Category` heeft `Level`een bijbehorend en. [`LogLevel`](/dotnet/api/microsoft.extensions.logging.loglevel)is een opsomming, en de gehele code geeft het relatieve belang aan:
+Elk logboek dat is gemaakt met een `ILogger`-exemplaar heeft een `Category` en `Level`. [`LogLevel`](/dotnet/api/microsoft.extensions.logging.loglevel) is een inventarisatie en de gehele code geeft de relatieve urgentie aan:
 
 |LogLevel    |Code|
 |------------|---|
@@ -844,19 +844,19 @@ Elk logboek dat door een `ILogger` exemplaar wordt gemaakt, `Category` heeft `Le
 |Kritiek    | 5 |
 |Geen        | 6 |
 
-U kunt elke categorie afzonderlijk filteren op een bepaald [`LogLevel`](/dotnet/api/microsoft.extensions.logging.loglevel)type. Het is bijvoorbeeld mogelijk dat u alle logboeken wilt weer geven voor de verwerking van `Error` BLOB-triggers, maar alleen en hoger voor alle andere.
+U kunt elke categorie onafhankelijk filteren op een bepaald [`LogLevel`](/dotnet/api/microsoft.extensions.logging.loglevel). Het is bijvoorbeeld mogelijk dat u alle logboeken wilt weer geven voor de verwerking van BLOB-triggers, maar alleen `Error` en hoger voor alle andere.
 
 #### <a name="version-3x"></a>Versie 3. *x*
 
-Versie 3. *x* van de SDK is afhankelijk van de filters die zijn ingebouwd in .net core. Met `LogCategories` de-klasse kunt u categorieën definiëren voor specifieke functies, triggers of gebruikers. Het definieert ook filters voor specifieke hostnamen, zoals `Startup` en `Results`. Zo kunt u de uitvoer van logboek registratie nauw keurig afstemmen. Als er geen overeenkomst wordt gevonden binnen de gedefinieerde categorieën, wordt het filter terugvallen `Default` op de waarde wanneer u beslist of het bericht moet worden gefilterd.
+Versie 3. *x* van de SDK is afhankelijk van de filters die zijn ingebouwd in .net core. Met de klasse `LogCategories` kunt u categorieën definiëren voor specifieke functies, triggers of gebruikers. Het definieert ook filters voor specifieke host-provincies, zoals `Startup` en `Results`. Zo kunt u de uitvoer van logboek registratie nauw keurig afstemmen. Als er geen overeenkomst wordt gevonden binnen de gedefinieerde categorieën, wordt het filter terugvallen op de waarde van @no__t 0 wanneer u beslist of het bericht moet worden gefilterd.
 
-`LogCategories`vereist de volgende using-instructie:
+voor `LogCategories` is het volgende met de instructie vereist:
 
 ```cs
 using Microsoft.Azure.WebJobs.Logging; 
 ```
 
-In het volgende voor beeld wordt een filter gebouwd dat standaard alle logboeken op het `Warning` niveau filtert. De `Function` categorieën `results` en (equivalent met `Host.Results` in versie 2). *x*) worden gefilterd `Error` op het niveau. Het filter vergelijkt de huidige categorie met alle geregistreerde niveaus in `LogCategories` het exemplaar en kiest de langste overeenkomst. Dit betekent dat het `Debug` niveau is geregistreerd `Host.Triggers` voor `Host.Triggers.Queue` overeenkomsten `Host.Triggers.Blob`of. Zo kunt u grotere categorieën beheren zonder dat u deze hoeft toe te voegen.
+In het volgende voor beeld wordt een filter gemaakt dat standaard alle logboeken op het niveau @no__t 0 filtert. De categorieën `Function` en `results` (gelijk aan `Host.Results` in versie 2). *x*) worden gefilterd op het niveau van de `Error`. Met het filter wordt de huidige categorie vergeleken met alle geregistreerde niveaus in het `LogCategories`-exemplaar en wordt de langste overeenkomst gekozen. Dit betekent dat het op @no__t 0 geregistreerde niveau voor `Host.Triggers` overeenkomt met `Host.Triggers.Queue` of `Host.Triggers.Blob`. Zo kunt u grotere categorieën beheren zonder dat u deze hoeft toe te voegen.
 
 ```cs
 static async Task Main(string[] args)
@@ -885,11 +885,11 @@ static async Task Main(string[] args)
 
 #### <a name="version-2x"></a>Versie 2. *x*
 
-In versie 2. *x* van de SDK gebruikt u de klasse `LogCategoryFilter` om de filtering te beheren. De `LogCategoryFilter` heeft een `Default` eigenschap met de aanvankelijke waarde `Information`van `Error`, wat inhoudt dat alle `Information`berichten `Warning`in de, `Critical` ,, of niveaus worden geregistreerd, maar dat `Debug` er berichten worden toegevoegd aan de of `Trace` niveaus worden gefilterd.
+In versie 2. *x* van de SDK gebruikt u de klasse `LogCategoryFilter` om het filteren te beheren. De `LogCategoryFilter` heeft een eigenschap `Default` met een begin waarde van `Information`, wat inhoudt dat alle berichten op de niveaus `Information`, `Warning`, `Error` of `Critical` worden geregistreerd, maar alle berichten op de `Debug`-of `Trace`-niveaus worden gefilterd.
 
-Net als `LogCategories` bij versie 3. *x*kunt u `CategoryLevels` met de eigenschap logboek niveaus opgeven voor specifieke categorieën, zodat u de uitvoer van logboek registratie kunt aanpassen. Als er geen overeenkomst wordt gevonden in `CategoryLevels` de woorden lijst, wordt het filter terugvallen op de `Default` waarde wanneer u beslist of het bericht moet worden gefilterd.
+Net als bij `LogCategories` in versie 3. *x*, met de eigenschap `CategoryLevels` kunt u logboek niveaus voor specifieke categorieën opgeven, zodat u de logboek registratie van de uitvoer kunt aanpassen. Als er geen overeenkomst wordt gevonden in de `CategoryLevels`-woorden lijst, wordt het filter terugvallen op de waarde van `Default` wanneer u bepaalt of het bericht moet worden gefilterd.
 
-In het volgende voor beeld wordt een filter gemaakt dat standaard alle logboeken op `Warning` het niveau filtert. De `Function` categorieën `Host.Results` en worden op het `Error` niveau gefilterd. De `LogCategoryFilter` huidige categorie vergelijkt met alle geregistreerde `CategoryLevels` en kiest de langste overeenkomst. Het `Debug` niveau dat is geregistreerd `Host.Triggers` voor zal `Host.Triggers.Queue` overeenkomen met of `Host.Triggers.Blob`. Zo kunt u grotere categorieën beheren zonder dat u deze hoeft toe te voegen.
+In het volgende voor beeld wordt een filter gemaakt dat standaard alle logboeken op het niveau van @no__t 0 filtert. De categorieën `Function` en `Host.Results` worden gefilterd op het niveau van `Error`. Met de `LogCategoryFilter` wordt de huidige categorie vergeleken met alle geregistreerde `CategoryLevels` en wordt de langste overeenkomst gekozen. Het niveau @no__t 0 dat voor `Host.Triggers` is geregistreerd, komt dus overeen met `Host.Triggers.Queue` of `Host.Triggers.Blob`. Zo kunt u grotere categorieën beheren zonder dat u deze hoeft toe te voegen.
 
 ```csharp
 var filter = new LogCategoryFilter();
@@ -909,14 +909,14 @@ Het proces voor het implementeren van aangepaste telemetriegegevens voor [Applic
 
 #### <a name="version-3x"></a>Versie 3. *x*
 
-Omdat versie 3. *x* van de webjobs SDK is afhankelijk van de algemene host van .net core, een aangepaste telemetrie-Factory is niet meer beschikbaar. Maar u kunt aangepaste telemetrie toevoegen aan de pijp lijn met behulp van afhankelijkheids injectie. Voor de voor beelden in deze sectie zijn `using` de volgende instructies vereist:
+Omdat versie 3. *x* van de webjobs SDK is afhankelijk van de algemene host van .net core, een aangepaste telemetrie-Factory is niet meer beschikbaar. Maar u kunt aangepaste telemetrie toevoegen aan de pijp lijn met behulp van afhankelijkheids injectie. Voor de voor beelden in deze sectie zijn de volgende `using`-instructies vereist:
 
 ```cs
 using Microsoft.ApplicationInsights.Extensibility;
 using Microsoft.ApplicationInsights.Channel;
 ```
 
-Met de volgende aangepaste implementatie [`ITelemetryInitializer`] van kunt u uw eigen [`ITelemetry`](/dotnet/api/microsoft.applicationinsights.channel.itelemetry) toepassing toevoegen aan [`TelemetryConfiguration`]de standaard instelling.
+Met de volgende aangepaste implementatie van [`ITelemetryInitializer`] kunt u uw eigen [`ITelemetry`](/dotnet/api/microsoft.applicationinsights.channel.itelemetry) toevoegen aan de standaard [`TelemetryConfiguration`].
 
 ```cs
 internal class CustomTelemetryInitializer : ITelemetryInitializer
@@ -928,7 +928,7 @@ internal class CustomTelemetryInitializer : ITelemetryInitializer
 }
 ```
 
-Bel [`ConfigureServices`] de opbouw functie om uw aangepaste [`ITelemetryInitializer`] toe te voegen aan de pijp lijn.
+Roep [`ConfigureServices`] aan in de opbouw functie om uw aangepaste [`ITelemetryInitializer`] toe te voegen aan de pijp lijn.
 
 ```cs
 static void Main()
@@ -964,17 +964,17 @@ static void Main()
 }
 ```
 
-Wanneer het [`TelemetryConfiguration`] is gebouwd, worden alle geregistreerde typen [`ITelemetryInitializer`] van opgenomen. Zie [Application Insights-API voor aangepaste gebeurtenissen en metrische gegevens](../azure-monitor/app/api-custom-events-metrics.md)voor meer informatie.
+Wanneer de [`TelemetryConfiguration`] is gebouwd, worden alle geregistreerde typen [`ITelemetryInitializer`] opgenomen. Zie [Application Insights-API voor aangepaste gebeurtenissen en metrische gegevens](../azure-monitor/app/api-custom-events-metrics.md)voor meer informatie.
 
-In versie 3. *x*, hoeft u niet meer te wissen [`TelemetryClient`] wanneer de host wordt gestopt. Het .net core-injectie beafhankelijkheidssysteem maakt automatisch een verwijdering van de `ApplicationInsightsLoggerProvider`geregistreerde, waardoor de [`TelemetryClient`]wordt leeg gemaakt.
+In versie 3. *x*, hoeft u de [`TelemetryClient`] niet langer leeg te laten wanneer de host wordt gestopt. Het geregistreerde `ApplicationInsightsLoggerProvider`, waarmee de [`TelemetryClient`]wordt leeg gemaakt, wordt automatisch verwijderd.
 
 #### <a name="version-2x"></a>Versie 2. *x*
 
-In versie 2. *x*, de [`TelemetryClient`] interne door de Application Insights provider voor de webjobs SDK gebruikte. [`ServerTelemetryChannel`](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/develop/src/ServerTelemetryChannel/ServerTelemetryChannel.cs) Wanneer het Application Insights-eind punt niet beschikbaar is of het beperken van binnenkomende aanvragen, slaat dit kanaal [aanvragen op in het bestands systeem van de web-app en verzendt deze later opnieuw](https://apmtips.com/blog/2015/09/03/more-telemetry-channels).
+In versie 2. *x*, de [`TelemetryClient`] die intern is gemaakt door de Application Insights provider voor de webjobs SDK [, gebruikt `ServerTelemetryChannel`](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/develop/src/ServerTelemetryChannel/ServerTelemetryChannel.cs). Wanneer het Application Insights-eind punt niet beschikbaar is of het beperken van binnenkomende aanvragen, slaat dit kanaal [aanvragen op in het bestands systeem van de web-app en verzendt deze later opnieuw](https://apmtips.com/blog/2015/09/03/more-telemetry-channels).
 
-De [`TelemetryClient`] wordt gemaakt door een klasse die wordt `ITelemetryClientFactory`geïmplementeerd. Standaard is dit de [`DefaultTelemetryClientFactory`](https://github.com/Azure/azure-webjobs-sdk/blob/dev/src/Microsoft.Azure.WebJobs.Logging.ApplicationInsights/DefaultTelemetryClientFactory.cs).
+De [`TelemetryClient`] wordt gemaakt door een klasse die `ITelemetryClientFactory` implementeert. Standaard is dit de [`DefaultTelemetryClientFactory`](https://github.com/Azure/azure-webjobs-sdk/blob/dev/src/Microsoft.Azure.WebJobs.Logging.ApplicationInsights/DefaultTelemetryClientFactory.cs).
 
-Als u een deel van de Application Insights-pijp lijn wilt wijzigen, kunt u uw eigen `ITelemetryClientFactory`klasse opgeven en wordt de host gebruikt voor het maken van een. [`TelemetryClient`] Deze code overschrijft `DefaultTelemetryClientFactory` bijvoorbeeld voor het wijzigen van een eigenschap van `ServerTelemetryChannel`:
+Als u een deel van de Application Insights pijp lijn wilt wijzigen, kunt u uw eigen `ITelemetryClientFactory` opgeven. de host gebruikt uw klasse om een [`TelemetryClient`]te maken. Deze code overschrijft bijvoorbeeld `DefaultTelemetryClientFactory` om een eigenschap van `ServerTelemetryChannel` te wijzigen:
 
 ```csharp
 private class CustomTelemetryClientFactory : DefaultTelemetryClientFactory
@@ -996,7 +996,7 @@ private class CustomTelemetryClientFactory : DefaultTelemetryClientFactory
 }
 ```
 
-Met `SamplingPercentageEstimatorSettings` het object worden [adaptieve steek proeven](https://docs.microsoft.com/azure/application-insights/app-insights-sampling)geconfigureerd. Dit betekent dat in bepaalde scenario's met grote volumes, toepassingen Insights een geselecteerde subset van telemetriegegevens naar de server verzendt.
+Het `SamplingPercentageEstimatorSettings`-object configureert [adaptieve steek proeven](https://docs.microsoft.com/azure/application-insights/app-insights-sampling). Dit betekent dat in bepaalde scenario's met grote volumes, toepassingen Insights een geselecteerde subset van telemetriegegevens naar de server verzendt.
 
 Nadat u de telemetrie-Factory hebt gemaakt, geeft u deze door aan de Application Insights logging provider:
 

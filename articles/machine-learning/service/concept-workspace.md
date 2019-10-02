@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 08/06/2019
-ms.openlocfilehash: 677a52572658f80d9cde4de28dd02d6e957407d2
-ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
+ms.openlocfilehash: de215502f1ecb55bc331f29057a4f7c3f30b0132
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71269201"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71720161"
 ---
 # <a name="what-is-an-azure-machine-learning-workspace"></a>Wat is een Azure Machine Learning-werk ruimte?
 
@@ -66,9 +66,6 @@ Machine learning-taken lezen en/of schrijven artefacten naar uw werk ruimte.
 + Machine learning artefacten weer geven, zoals experimenten, pijp lijnen, modellen en implementaties.
 + Modellen bijhouden en bewaken.
 
-
-
-
 ## <a name="workspace-management"></a>Werkruimte beheer
 
 U kunt ook de volgende beheer taken voor werk ruimten uitvoeren:
@@ -80,7 +77,7 @@ U kunt ook de volgende beheer taken voor werk ruimten uitvoeren:
 | Toegang tot de werk ruimte beheren    | **&check;**   | |  **&check;**    |
 | Een VM voor een notebook maken | **&check;**   | |     |
 
-### <a name='create-workspace'></a>Een werk ruimte maken
+## <a name='create-workspace'></a>Een werk ruimte maken
 
 Er zijn meerdere manieren om een werk ruimte te maken.
 

@@ -14,18 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 25ae54ea8dd75fae74d4578b33146483ade53e4c
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: e74dd54403ed599aa95e8fc8a94c2bd7a3ca41d8
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240753"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71719111"
 ---
 # <a name="connect-your-external-solution-using-common-event-format"></a>Verbind uw externe oplossing met de algemene gebeurtenis indeling
-
-> [!IMPORTANT]
-> Azure Sentinel is momenteel beschikbaar als open bare preview.
-> Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
 
 U kunt Azure Sentinel verbinden met een externe oplossing waarmee u logboek bestanden kunt opslaan in syslog. Als uw apparaat u in staat stelt om logboeken op te slaan als de algemene gebeurtenis indeling syslog (CEF), kunt u met de integratie met Azure Sentinel eenvoudig analyses en query's uitvoeren op de gegevens.
 
@@ -141,7 +137,7 @@ Het kan 20 minuten duren voordat uw logboeken in Log Analytics worden weer gegev
 
 7. Als u wilt controleren of er fouten zijn of als de logboeken niet arriveren, kijkt u in `tail /var/opt/microsoft/omsagent/<workspace id>/log/omsagent.log`. Als wordt aangegeven dat er fouten in de logboek indeling niet overeenkomen, gaat u `/etc/opt/microsoft/omsagent/{0}/conf/omsagent.d/security_events.conf "https://aka.ms/syslog-config-file-linux"` naar het bestand `security_events.conf`en kijkt u of uw logboeken overeenkomen met de regex-indeling die u ziet in dit bestand.
 
-8. Zorg ervoor dat de standaard grootte van het syslog-bericht is beperkt tot 2048 bytes (2 KB). Als de logboeken te lang zijn, werkt u het security_events. conf bij met behulp van de volgende opdracht:`message_length_limit 4096`
+8. Zorg ervoor dat de standaard grootte van het syslog-bericht is beperkt tot 2048 bytes (2 KB). Als de logboeken te lang zijn, werkt u het security_events. conf bij met behulp van deze opdracht: `message_length_limit 4096`
 
 
 ## <a name="next-steps"></a>Volgende stappen
