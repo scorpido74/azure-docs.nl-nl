@@ -17,6 +17,8 @@
           href: ./hdinsight-administer-use-dotnet-sdk.md
         - name: HDInsight-clusters beheren - PowerShell
           href: ./hdinsight-administer-use-powershell.md
+        - name: Een ETL-pijplijn bouwen
+          href: ./hdinsight-sales-insights-etl.md
     - name: Voorbeelden
       items:
         - name: Azure CLI-voorbeelden

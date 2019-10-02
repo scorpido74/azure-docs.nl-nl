@@ -421,7 +421,7 @@ Wanneer u een taak verzendt naar een HDInsight-cluster met behulp van Data Lake 
 
 ## <a name="unlink-cluster"></a>Cluster ontkoppelen
 
-1. Ga in de menu balk naar het**opdracht palet**  ****weer geven** > en voer Spark/component in: Een cluster**ontkoppelen.  
+1. Ga in de menu balk naar het **opdracht palet** > **weer g **even** en voer Spark/component in: Een cluster**ontkoppelen.  
 
 2. Selecteer een cluster om te ontkoppelen.  
 

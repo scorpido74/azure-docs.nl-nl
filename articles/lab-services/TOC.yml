@@ -70,6 +70,14 @@
               href: devtest-lab-use-claim-capabilities.md
 - name: Handleidingen
   items:
+    - name: Leslokaallabs - klastypen
+      items:
+        - name: Klastypen
+          href: classroom-labs/class-types.md
+        - name: Deep Learning in natuurlijke verwerking
+          href: classroom-labs/class-type-deep-learning-natural-processing.md
+        - name: Shell-scripts in Linux
+          href: classroom-labs/class-type-shell-scripting-linux.md
     - name: Leslokaallabs
       items:
         - name: Labaccounts maken en configureren (labaccounteigenaar)

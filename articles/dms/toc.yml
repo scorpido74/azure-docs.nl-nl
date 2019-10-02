@@ -2,7 +2,7 @@
   href: index.yml
 - name: Overzicht
   items:
-    - name: Wat is Database Migration Service (DMS)?
+    - name: Wat is Azure Database Migration Service?
       href: dms-overview.md
 - name: Snelstartgidsen
   items:
@@ -10,41 +10,41 @@
       href: quickstart-create-data-migration-service-portal.md
 - name: Zelfstudies
   items:
-    - name: SQL Server migreren naar offline Azure SQL DB
+    - name: SQL Server offline migreren naar een individuele Azure SQL-database
       href: tutorial-sql-server-to-azure-sql.md
-    - name: SQL Server migreren naar online Azure SQL DB
+    - name: SQL Server online migreren naar een individuele Azure SQL-database
       href: tutorial-sql-server-azure-sql-online.md
     - name: SQL Server migreren naar een met Azure SQL-database beheerd offline exemplaar
       href: tutorial-sql-server-to-managed-instance.md
     - name: SQL Server migreren naar een met Azure SQL-database beheerd online exemplaar
       href: tutorial-sql-server-managed-instance-online.md
-    - name: RDS SQL Server migreren naar Azure SQL DB of een met Azure SQL DB beheerd online exemplaar
+    - name: RDS SQL Server online migreren naar een individuele Azure SQL-database of een beheerd Azure SQL Database-exemplaar
       href: tutorial-rds-sql-server-azure-sql-and-managed-instance-online.md
     - name: MySQL online migreren naar Azure Database for MySQL
       href: tutorial-mysql-azure-mysql-online.md
     - name: RDS MySQL online migreren naar Azure Database for MySQL
       href: tutorial-rds-mysql-server-azure-db-for-mysql-online.md
-    - name: PostgreSQL online migreren naar Azure Database for PostgreSQL
+    - name: PostgreSQL online migreren naar Azure Database for PostgreSQL - individuele server
       href: tutorial-postgresql-azure-postgresql-online.md
-    - name: RDS PostgreSQL online migreren naar Azure Database for PostgreSQL
+    - name: RDS PostgreSQL online migreren naar Azure Database for PostgreSQL - individuele server
       href: tutorial-rds-postgresql-server-azure-db-for-postgresql-online.md
     - name: MongoDB offline migreren naar de Azure Cosmos DB Mongo-API
       href: tutorial-mongodb-cosmos-db.md
     - name: MongoDB online migreren naar de Azure Cosmos DB Mongo-API
       href: tutorial-mongodb-cosmos-db-online.md
-    - name: Oracle online migreren naar Azure Database for PostgreSQL
+    - name: Oracle online migreren naar Azure Database for PostgreSQL - individuele server
       href: tutorial-oracle-azure-postgresql-online.md
 - name: Handleidingen
   items:
-    - name: PowerShell gebruiken om SQL Server te migreren naar Azure SQL DB
+    - name: PowerShell gebruiken om SQL Server te migreren naar individuele Azure SQL-database
       href: howto-sql-server-to-azure-sql-powershell.md
-    - name: PowerShell gebruiken om SQL Server te migreren naar Azure SQL DB MI
+    - name: PowerShell gebruiken om SQL Server te migreren naar beheer Azure SQL-exemplaar
       href: howto-sql-server-to-azure-sql-mi-powershell.md
     - name: Migratieactiviteit bewaken
       href: how-to-monitor-migration-activity.md
-    - name: SSIS-pakketten migreren naar Azure SQL Database
+    - name: SSIS-pakketten opnieuw implementeren in individuele Azure SQL Database-database
       href: how-to-migrate-ssis-packages.md
-    - name: SSIS-pakketten migreren naar een beheerd exemplaar van Azure SQL Database
+    - name: SSIS-pakketten opnieuw implementeren in een beheerd exemplaar van Azure SQL Database
       href: how-to-migrate-ssis-packages-managed-instance.md
 - name: Resources
   expanded: true
@@ -61,11 +61,11 @@
           href: known-issues-troubleshooting-dms-source-connectivity.md
         - name: Algemene problemen en fouten oplossen
           href: known-issues-troubleshooting-dms.md
-        - name: Bekende problemen - Online migratie naar Azure SQL DB
+        - name: Bekende problemen - Online migratie naar individuele Azure SQL DB-database
           href: known-issues-azure-sql-online.md
         - name: Bekende problemen - Online migratie naar Azure Database for MySQL
           href: known-issues-azure-mysql-online.md
-        - name: Bekende problemen - Online migratie naar Azure Database for PostgreSQL
+        - name: Bekende problemen - Online migratie naar Azure Database for PostgreSQL - individuele server
           href: known-issues-azure-postgresql-online.md
     - name: Video's
       items:
@@ -97,6 +97,8 @@
           href: 'https://aka.ms/ssma'
         - name: Database Experimentation Assistant
           href: 'https://aka.ms/dea-docs'
+        - name: Migratietoolkit voor gegevenstoegang
+          href: 'https://marketplace.visualstudio.com/items?itemName=ms-databasemigration.data-access-migration-toolkit'
     - name: Veelgestelde vragen
       href: faq.md
     - name: Feedback van gebruikers

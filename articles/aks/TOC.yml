@@ -21,17 +21,17 @@
       items:
         - name: Concept gebruiken
           href: kubernetes-draft.md
-        - name: Java (VS Code en CLI) gebruiken
-          href: ../dev-spaces/quickstart-java.md
-          maintainContext: true
-        - name: .NET Core (VS Code en CLI) gebruiken
+        - name: Visual Studio Code en Azure Dev Spaces gebruiken
           href: ../dev-spaces/quickstart-netcore.md
           maintainContext: true
-        - name: .NET Core (Visual Studio 2017) gebruiken
+        - name: Visual Studio en Azure Dev Spaces gebruiken
           href: ../dev-spaces/quickstart-netcore-visualstudio.md
           maintainContext: true
-        - name: Node.js (VS Code en CLI) gebruiken
-          href: ../dev-spaces/quickstart-nodejs.md
+        - name: De CLI en Azure Dev Spaces gebruiken
+          href: ../dev-spaces/quickstart-cli.md
+          maintainContext: true
+        - name: Azure Dev Spaces gebruiken voor teamontwikkeling
+          href: ../dev-spaces/quickstart-team-development.md
           maintainContext: true
 - name: Zelfstudies
   items:

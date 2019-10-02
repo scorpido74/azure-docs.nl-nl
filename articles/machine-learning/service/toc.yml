@@ -32,10 +32,7 @@
               displayName: 'automl, automated, auto ml,'
               href: tutorial-auto-train-models.md
         - name: Machine Learning-pijplijnen (geavanceerd)
-          items:
-            - name: Een classificatiemodel batchgewijs scoren
-              displayName: pipelines
-              href: tutorial-pipeline-batch-scoring-classification.md
+          href: tutorial-pipeline-batch-scoring-classification.md
     - name: Visuele interface
       items:
         - name: 1. Regressiemodel trainen
@@ -45,14 +42,10 @@
           displayName: studio
           href: ui-tutorial-automobile-price-deploy.md
     - name: Automatische ML (interface)
-      items:
-        - name: Classificatie (bankgegevens)
-          displayName: 'automl, automated, auto ml, portal, ui'
-          href: tutorial-first-experiment-automated-ml.md
+      displayName: 'automl, automated, auto ml, portal, ui'
+      href: tutorial-first-experiment-automated-ml.md
     - name: Machine learning-CLI
-      items:
-        - name: Een model trainen en implementeren
-          href: tutorial-train-deploy-model-cli.md
+      href: tutorial-train-deploy-model-cli.md
 - name: Voorbeelden
   items:
     - name: Notebooks
@@ -222,29 +215,29 @@
         - name: Waar en hoe u implementeert
           displayName: 'publish, web, service, operationalize, aks, kubernetes, aci, container, cli, consume, docker'
           href: how-to-deploy-and-where.md
-        - name: Implementeren naar Azure Kubernetes Service
+        - name: Azure Kubernetes Service
           displayName: 'aks, aad, authentication, azure active directory'
           href: how-to-deploy-azure-kubernetes-service.md
-        - name: Implementeren voor GPU-interferentie
-          href: how-to-deploy-inferencing-gpus.md
-        - name: Implementeren naar Azure App Service
-          displayName: web app
-          href: how-to-deploy-app-service.md
-        - name: Implementeren naar Azure Container Instances
+        - name: Azure Container Instances
           displayName: aci
           href: how-to-deploy-azure-container-instance.md
-        - name: Implementeren op Notebook-VM's
+        - name: IoT Edge
+          href: /azure/iot-edge/tutorial-deploy-machine-learning?context=azure/machine-learning/service/context/ml-context
+        - name: FPGA-interferentie
+          href: how-to-deploy-fpga-web-service.md
+        - name: Inferentie van GPU
+          href: how-to-deploy-inferencing-gpus.md
+        - name: Azure App Service
+          displayName: web app
+          href: how-to-deploy-app-service.md
+        - name: Notebook-VM's
           href: how-to-deploy-local-container-notebook-vm.md
         - name: Aangepaste Docker-afbeelding gebruiken
           href: how-to-deploy-custom-docker-image.md
-        - name: Bestaande modellen implementeren
+        - name: Bestaande modellen gebruiken
           displayName: publish existing model
           href: how-to-deploy-existing-model.md
-        - name: Implementeren naar IoT Edge
-          href: /azure/iot-edge/tutorial-deploy-machine-learning?context=azure/machine-learning/service/context/ml-context
-        - name: Implementeren voor interferentie van FPGA's
-          href: how-to-deploy-fpga-web-service.md
-        - name: Problemen met implementaties opsporen en oplossen
+        - name: Problemen oplossen en fouten opsporen
           href: how-to-troubleshoot-deployment.md
     - name: Webservices gebruiken
       items:
