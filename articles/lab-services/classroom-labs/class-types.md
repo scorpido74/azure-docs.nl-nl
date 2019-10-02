@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 09/30/2019
 ms.author: spelluru
-ms.openlocfilehash: d24b22ad7f306e6334369ec859f5f01b2d32184e
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
-ms.translationtype: HT
+ms.openlocfilehash: c6a424ed6036016839f03f50f90ad5d911b05fad
+ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/01/2019
-ms.locfileid: "71695832"
+ms.locfileid: "71710007"
 ---
-# <a name="example-class-types-on-azure-lab-services"></a>Voor beeld klassen typen op Azure Lab Services
-Dit artikel bevat een lijst met voorbeeld klassen die u op Azure Lab Services kunt instellen.
+# <a name="class-types-overview---azure-lab-services"></a>Overzicht van klassen typen-Azure Lab Services
+Met Azure Lab Services kunt u klassikale test omgevingen snel instellen in de Cloud. De artikelen in deze sectie bieden richt lijnen voor het instellen van verschillende typen klassikale Labs met behulp van Azure Lab Services.
 
 ## <a name="deep-learning-in-natural-language-processing"></a>Diep gaande lessen in natuurlijke taal verwerking
 U kunt een Lab richten op diep leren in natuurlijke taal verwerking (NLP) met behulp van Azure Lab Services. De verwerking van natuurlijke taal (NLP) is een vorm van kunst matige intelligentie (AI) waarmee computers kunnen beschikken over mogelijkheden voor vertaling, spraak herkenning en andere talen. Studenten die een NLP-klasse gebruiken, halen een virtuele Linux-machine (VM) op voor meer informatie over het Toep assen van Neural-netwerk algoritmen voor het ontwikkelen van diepe leer modellen die worden gebruikt voor het analyseren van geschreven menselijke talen. 
