@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/22/2019
+ms.date: 09/30/2019
 ms.author: cwatson
-ms.openlocfilehash: fe0d0f0baa2b3d1c08e871541dce1511e00f7f87
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 2dc0f9cbec96277e133f07d1c3846f2774add5a1
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "60370199"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71701963"
 ---
 # <a name="understand-how-the-red-hat-linux-enterprise-software-reservation-plan-discount-is-applied-for-azure"></a>Meer informatie over hoe de abonnementskorting voor Red Hat Linux Enterprise-softwarereservering wordt toegepast voor Azure
 
@@ -35,8 +35,8 @@ De korting is afhankelijk van de verhouding die in de volgende tabellen wordt we
 Als u bijvoorbeeld een abonnement voor Red Hat Linux Enterprise Server koopt voor een virtuele machine met 3 of 4 vCPU's, is de verhouding voor die reservering 2. De korting geldt voor de kosten van de Red Hat-software voor:
 
 - 2 geïmplementeerde VM's met 1 of 2 vCPU's,
-- 1 geïmplementeerde VM met 3 of 4 vCPU's,
-- of 0,77 of ongeveer 77% van een virtuele machine met 5 of meer vCPU's.
+- 1 geïmplementeerde VM met 3 of 4 vCPU's
+- of 0,77 of ongeveer 77% van een VM machine met 5 of meer vCPU's
 
 De verhouding voor 5 of meer vCPU's is 2,6. Een reservering voor Red Hat met een VM met 5 of meer vCPU's dekt dus slechts een gedeelte van de softwarekosten, ongeveer 77%.
 
@@ -167,4 +167,4 @@ Raadpleeg voor meer informatie over reserveringen de volgende artikelen:
 
 ## <a name="need-help-contact-us"></a>Hulp nodig? Contact opnemen
 
-Als u een vraag wilt stellen of hulp nodig hebt, maakt u een [ondersteuningsaanvraag](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
+Als u vragen hebt of hulp nodig hebt, [kunt u een ondersteuningsaanvraag maken](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).

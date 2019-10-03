@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/06/2018
+ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: 8cfa429b18fb282f5c1f85d2fd1637704653b855
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 33fc6e59a0a85275b055524d8ccf5d78935725a8
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "68443053"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71718763"
 ---
 # <a name="review-subscription-billing-using-rest-apis"></a>Facturering van abonnementen controleren met behulp van REST-API's
 
@@ -48,7 +48,7 @@ De volgende headers zijn vereist:
 |Aanvraagheader|Beschrijving|
 |--------------------|-----------------|
 |*Content-Type:*|Vereist. Ingesteld op `application/json`.|
-|*Autorisatie:*|Vereist. Ingesteld op een geldig `Bearer` [toegangstoken](https://docs.microsoft.com/rest/api/azure/#authorization-code-grant-interactive-clients). |
+|*Authorization:*|Vereist. Ingesteld op een geldig `Bearer` [toegangstoken](https://docs.microsoft.com/rest/api/azure/#authorization-code-grant-interactive-clients). |
 
 ## <a name="response"></a>Antwoord
 
@@ -109,5 +109,5 @@ Andere statuscodes wijzen op een fout. In deze gevallen wordt in het antwoordobj
 
 ## <a name="next-steps"></a>Volgende stappen
 - Bekijk [Overzicht van Enterprise Reporting](https://docs.microsoft.com/azure/billing/billing-enterprise-api)
-- Onderzoek [Facturerings-REST API voor ondernemingen](https://docs.microsoft.com/rest/api/billing/)
+- Onderzoek [REST API voor Enterprise-facturering](https://docs.microsoft.com/rest/api/billing/)
 - [Aan de slag gaan met Azure REST API](https://docs.microsoft.com/rest/api/azure/)

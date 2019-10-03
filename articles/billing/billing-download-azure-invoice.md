@@ -10,14 +10,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/18/2019
+ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: 4dc5f88f7a5994e5bcd50d71c86bf1ba35b10734
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 862ec629504da4d8ee7eadd8f9b925984d96614c
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "68321771"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71718891"
 ---
 # <a name="view-and-download-your-microsoft-azure-invoice"></a>Uw Microsoft Azure-factuur weergeven en downloaden
 
@@ -28,7 +28,7 @@ Alleen bepaalde rollen zijn gemachtigd om facturen weer te geven. Zoals de accou
 Als u een [Microsoft-klantovereenkomst](#check-your-access-to-a-microsoft-customer-agreement) hebt, moet u een van de volgende rollen hebben om uw facturen te kunnen ontvangen:
 
 - Eigenaar van het factureringsprofiel
-- Bijdrager
+- Inzender
 - Lezer
 - Factuurbeheerder
 
@@ -42,7 +42,7 @@ Er kunnen verschillende redenen voor zijn dat u geen factuur ziet:
 
 - Azure factureert u aan het einde van uw factureringsperiode. Het is dus mogelijk dat er nog geen factuur is gegenereerd. Wacht tot het einde van de factureringsperiode.
 
-- U bent niet gemachtigd om facturen te bekijken. Als u een Microsoft-klantovereenkomst hebt, moet u eigenaar, bijdrager, lezer of factuurbeheerder van het factureringsprofiel zijn. Voor andere abonnementen ziet u mogelijk geen oude facturen als u niet de accountbeheerder bent. Zie [Toegang tot factureringsgegevens voor Azure beheren](billing-manage-access.md) voor meer informatie over het verkrijgen van toegang tot factureringsgegevens.
+- U bent niet gemachtigd om facturen te bekijken. Als u een Microsoft-klantovereenkomst hebt, moet u eigenaar, bijdrager of lezer van het factureringsprofiel zijn, of factuurbeheerder. Voor andere abonnementen ziet u mogelijk geen oude facturen als u niet de accountbeheerder bent. Zie [Toegang tot factureringsgegevens voor Azure beheren](billing-manage-access.md) voor meer informatie over het verkrijgen van toegang tot factureringsgegevens.
 
 - Als u een gratis proefversie of een maandelijks tegoed voor uw abonnement hebt, ontvangt u alleen een factuur wanneer u het maandelijks tegoed overschrijdt. Als u een Microsoft-klantovereenkomst hebt, ontvangt u altijd een factuur.
 
@@ -70,7 +70,7 @@ Zie [Meer informatie over uw factuur voor Microsoft Azure](billing-understand-yo
 
 Voor elk [factureringsprofiel](billing-mca-overview.md#billing-profiles) in de Microsoft-klant overeenkomst worden facturen gegenereerd. U moet eigenaar, bijdrager, lezer of factuurbeheerder van een factureringsprofiel zijn om facturen te kunnen downloaden van de Azure-portal.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 1. Zoek naar *Kostenbeheer en facturering*.
 1. Selecteer een factureringsprofiel. Afhankelijk van uw toegang moet u mogelijk eerst een factureringsrekening selecteren.
 1. Selecteer **Facturen**.
@@ -105,7 +105,7 @@ Hebt u de stappen gevolgd, maar toch geen e-mail ontvangen? Controleer dan of uw
 
 ### <a name="opt-out-of-getting-your-subscriptions-invoices-in-email"></a>Afmelden voor het via e-mail ontvangen van de facturen van uw abonnement
 
-Volg de voorgaande stappen om u af te melden voor ontvangst van uw factuur via e-mail en klik op **Afmelden voor facturen via e-mail**. Met deze optie worden alle e-mailadressen verwijderd die zijn ingesteld voor het ontvangen van facturen via e-mail. Als u zich weer aanmeldt, kunt u ontvangers opnieuw configureren.
+Volg de voorgaande stappen om u af te melden voor ontvangst van uw factuur via e-mail en klik op **Afmelden voor facturen via e-mail**. Met deze optie worden alle e-mailadressen verwijderd die zijn ingesteld voor het ontvangen van facturen via e-mail. Als u zich weer aanmeldt, kunt u opnieuw ontvangers configureren.
 
  ![Schermopname met de stappen voor afmelden](./media/billing-download-azure-invoice-daily-usage-date/InvoiceArticleStep4.PNG)
 
@@ -113,7 +113,7 @@ Volg de voorgaande stappen om u af te melden voor ontvangst van uw factuur via e
 
 Als u een Microsoft-klantovereenkomst hebt, kunt u zich aanmelden om uw factuur via e-mail te ontvangen. Alle eigenaren van het factureringsprofiel, bijdragers en factuurbeheerders ontvangen de factuur via e-mail. Lezers kunnen de voorkeur voor e-mailfacturen niet bijwerken.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 1. Zoek naar **Kostenbeheer en facturering**.
 1. Selecteer een factureringsprofiel. Afhankelijk van uw toegang moet u mogelijk eerst een factureringsrekening selecteren.
 1. Selecteer onder **Alle instellingen** de optie **Eigenschappen**.
@@ -133,7 +133,7 @@ Volg de voorgaande stappen om u af te melden voor ontvangst van uw factuur via e
 ## <a name="check-your-access-to-a-microsoft-customer-agreement"></a>Uw toegang tot een Microsoft-klantovereenkomst controleren
 [!INCLUDE [billing-check-mca](../../includes/billing-check-mca.md)]
 
-## <a name="need-help-contact-us"></a>Hebt u hulp nodig? Neem contact met ons op.
+## <a name="need-help-contact-us"></a>Hulp nodig? Neem contact met ons op.
 
 Als u vragen hebt of hulp nodig hebt, [kunt u een ondersteuningsaanvraag maken](https://go.microsoft.com/fwlink/?linkid=2083458).
 

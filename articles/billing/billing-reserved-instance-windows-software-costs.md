@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/30/2019
+ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: 52e2e2503303c2a7525a3a6c156f648c097b27dd
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: e74765ec09fb9cd2d219ceb3d784b4030c83e028
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "68478616"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71719647"
 ---
 # <a name="software-costs-not-included-with-azure-reserved-vm-instances"></a>Kosten van software zijn niet inbegrepen in Azure Reserved Virtual Machine Instances
 
@@ -80,4 +80,4 @@ Raadpleeg voor meer informatie over reserveringen voor Azure de volgende artikel
 
 ## <a name="need-help-contact-us"></a>Hulp nodig? Contact opnemen
 
-Voor vragen of hulp [kunt u een ondersteuningsaanvraag maken](https://go.microsoft.com/fwlink/?linkid=2083458).
+Als u vragen hebt of hulp nodig hebt, [kunt u een ondersteuningsaanvraag maken](https://go.microsoft.com/fwlink/?linkid=2083458).

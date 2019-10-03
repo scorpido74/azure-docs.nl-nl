@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: banders
 ms.openlocfilehash: 3074ed30c5e1f6edae78a8ef3c3d655e302a2663
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/14/2019
+ms.lasthandoff: 09/30/2019
 ms.locfileid: "70997278"
 ---
 # <a name="open-banking-psd2-and-strong-customer-authentication-sca-for-azure-customers"></a>Open Banking (PSD2) en Sterke Klantverificatie (SCA) voor Azure-klanten
@@ -46,7 +46,7 @@ Voor meer informatie raadpleegt u [Creditcard toevoegen, bijwerken of verwijdere
 
 Als uw bank de kosten weigert, verandert de status van uw Azure-account in de Azure-portal in **Achterstallig**. U kunt de status van uw account controleren door deze stappen te volgen:
 
-1. Meld u als accountbeheerder aan bij de [Azure-portal](https://portal.azure.com/).
+1. Meld u als accountbeheerder aan bij [Azure Portal](https://portal.azure.com/).
 2. Zoek op **Kostenbeheer en facturering**.
 3. Op de **overzichtspagina** **Kostenbeheer + facturering** kunt u de statuskolom in het raster **Mijn abonnementen** bekijken.
 4. Als uw abonnement de status **Achterstallig** heeft, klikt u op **Saldo vereffenen**. U wordt gevraagd om tijdens het proces meervoudige verificatie te doorlopen.
@@ -55,7 +55,7 @@ Als uw bank de kosten weigert, verandert de status van uw Azure-account in de Az
 
 Marketplace- en reserveringsaankopen worden niet samen met de Azure-services gefactureerd. Als uw bank de Marketplace- of reserveringskosten weigert, wordt uw factuurstatus in de Azure-portal als **Achterstallig** weergegeven. U kunt de status van uw Marketplace- en reserveringsfacturen controleren door deze stappen te volgen:
 
-1. Meld u als accountbeheerder aan bij de [Azure-portal](https://portal.azure.com/).
+1. Meld u als accountbeheerder aan bij [Azure Portal](https://portal.azure.com/).
 2. Zoek naar **Kostenbeheer en facturering**.
 3. Onder Facturering selecteert u **Facturen**.
 4. Klik aan de rechterkant op het tabblad **Azure Marketplace en reserveringen**.

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
-ms.date: 09/12/2019
+ms.date: 09/30/2019
 ms.author: diberry
-ms.openlocfilehash: 376c2efbf3269092d0534870108ef6d753f8743e
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: bad581fbc53292b5a7c25157ef839e07f33e131e
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70962526"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827883"
 ---
 # <a name="personalizer-settings"></a>Persoonlijke instellingen
 
@@ -45,9 +45,9 @@ Configureer de service-instellingen voor het gebruik van beloningen voor uw feed
 
 |Instelling|Doel|
 |--|--|
-|Wacht tijd op beloning|Hiermee stelt u de periode in waarin Personaler belonings waarden voor een classificatie oproep verzamelt, vanaf het moment dat de classificatie oproep plaatsvindt. Deze waarde wordt ingesteld door de volgende vraag: "Hoe lang moet Personaler wachten op de aanroepen van beloningen?" Elke beloning die wordt binnengekomen nadat dit venster wordt geregistreerd, wordt vastgelegd, maar niet voor Learning.|
-|Standaard beloning|Als er geen belonings oproep wordt ontvangen door Personaler tijdens het venster belonings wachttijd dat is gekoppeld aan een rang nummer, zal Personaler de standaard beloning toewijzen. In de meeste scenario's is de standaard beloning standaard nul.|
-|Belonings aggregatie|Als er meerdere beloningen worden ontvangen voor dezelfde positie-API-aanroep, wordt deze samenvoegings methode gebruikt: **Sum** of **oudste**. De eerste keer kiest de eerste ontvangen Score en wordt de rest verwijderd. Dit is handig als u een unieke beloning wilt hebben tussen mogelijk dubbele aanroepen. |
+|Wachttijd voor beloning|Hiermee stelt u de periode in waarin Personaler belonings waarden voor een classificatie oproep verzamelt, vanaf het moment dat de classificatie oproep plaatsvindt. Deze waarde wordt ingesteld door de volgende vraag: "Hoe lang moet Personaler wachten op de aanroepen van beloningen?" Elke beloning die wordt binnengekomen nadat dit venster wordt geregistreerd, wordt vastgelegd, maar niet voor Learning.|
+|Standaardbeloning|Als er geen belonings oproep wordt ontvangen door Personaler tijdens het venster belonings wachttijd dat is gekoppeld aan een rang nummer, zal Personaler de standaard beloning toewijzen. In de meeste scenario's is de standaard beloning standaard nul.|
+|Aggregatie van beloningen|Als er meerdere beloningen worden ontvangen voor dezelfde positie-API-aanroep, wordt deze samenvoegings methode gebruikt: **Sum** of **oudste**. De eerste keer kiest de eerste ontvangen Score en wordt de rest verwijderd. Dit is handig als u een unieke beloning wilt hebben tussen mogelijk dubbele aanroepen. |
 
 Nadat u deze instellingen hebt gewijzigd, moet u **Opslaan**selecteren.
 
@@ -61,7 +61,7 @@ Als u deze instelling wijzigt, wordt het huidige personalisatie model opnieuw in
 
 Wanneer u deze instelling hebt gewijzigd, selecteert u **Opslaan**.
 
-### <a name="model-update-frequency"></a>Frequentie van model updates
+### <a name="model-update-frequency"></a>Bijwerkfrequentie voor model
 
 Het meest recente model, dat is getraind vanuit belonings-API-aanroepen van elke actieve gebeurtenis, wordt niet automatisch gebruikt door de rang orde van Personaler. Met de frequentie van de **model updates** wordt ingesteld hoe vaak het model dat wordt gebruikt door de classificatie oproep up-to-date wordt bijgewerkt. 
 
@@ -87,6 +87,21 @@ Bekijk in het gedeelte resource beheer voor **model en beleid**het maken van het
 
 Importeer vanuit het gedeelte resource beheer voor **model en beleid**een nieuw trainings beleid of Exporteer het huidige leer beleid.
 U kunt Learning-beleids bestanden van eerdere export aanvragen of de geoptimaliseerde beleids regels downloaden die zijn gedetecteerd tijdens offline-evaluaties. Het maken van hand matige wijzigingen in deze bestanden is van invloed op machine learning prestaties en nauw keurigheid van offline-evaluaties, en micro soft kan niet op de nauw keurigheid van machine learning en evaluaties of service-uitzonde ringen die het gevolg zijn van hand matig bewerkings beleid
+
+## <a name="clear-data-for-your-learning-loop"></a>Gegevens voor uw leer proces wissen
+
+1. Selecteer in de Azure Portal voor uw persoonlijke resource op de pagina **model en beleid** de optie **gegevens wissen**.
+1. Schakel alle selectie vakjes 3 in om alle gegevens te wissen en de learning-lus opnieuw in te stellen op de oorspronkelijke staat.
+
+    ![In Azure Portal gegevens wissen uit de resource personaliseren.](./media/settings/clear-data-from-personalizer-resource.png)
+
+    |Instelling|Doel|
+    |--|--|
+    |Vastgelegde persoonlijke instellingen en belonings gegevens.|Deze logboek registratie gegevens worden gebruikt in offline-evaluaties. Wis de gegevens als u uw resource opnieuw instelt.|
+    |Stel het persoonlijke model opnieuw in.|Dit model wordt bij elke retraining gewijzigd. Deze frequentie van training is opgegeven bij **Upload model frequentie** op de pagina **instellingen** . |
+    |Stel het trainings beleid in op standaard.|Als u het trainings beleid hebt gewijzigd als onderdeel van een offline-evaluatie, wordt dit opnieuw ingesteld op het oorspronkelijke leer beleid.|
+
+1. Selecteer **geselecteerde gegevens wissen** om het wissen te starten. De status wordt gerapporteerd in azure-meldingen in de rechter navigatie. 
 
 ## <a name="next-steps"></a>Volgende stappen
 

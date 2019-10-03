@@ -6,14 +6,14 @@ author: yashesvi
 manager: yashar
 ms.service: billing
 ms.topic: conceptual
-ms.date: 07/10/2019
+ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: 99eb4de86aa227d558bec54d011a0b1548d27cf0
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 5ceef76bd5a5f6a2904d3619f310020e90cbec0e
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "67811256"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71719697"
 ---
 # <a name="optimize-azure-databricks-costs-with-a-pre-purchase"></a>De kosten voor Azure Databricks optimaliseren door hiervoor vooraf te betalen
 
@@ -25,11 +25,11 @@ De korting voor vooruitbetaling geldt alleen voor het DBU-gebruik. Andere kosten
 
 ## <a name="determine-the-right-size-to-buy"></a>Bepalen hoeveel DBCU's u moet kopen
 
-Vooraf gekochte Databricks-capaciteit is van toepassing op alle Databricks-workloads en -servicelagen. U kunt deze capaciteit beschouwen als een pool vooraf betaalde Databricks-doorvoereenheden. Het gebruik wordt in mindering gebracht op de pool, ongeacht de workload of de servicelaag. Hierbij wordt de volgende verhouding gehanteerd:
+Vooraf gekochte Databricks-capaciteit is van toepassing op alle Databricks-workloads en -servicelagen. U kunt de aankoop vooraf beschouwen als een pool met vooraf betaalde Databricks-doorvoereenheden. Het gebruik wordt in mindering gebracht op de pool, ongeacht de workload of de laag. Hierbij wordt de volgende verhouding gehanteerd:
 
 | **Workload** | **Verhouding DBU-toepassing - Standard-laag** | **Verhouding DBU-toepassing - Premium-laag** |
 | --- | --- | --- |
-| Gegevensanalyse | 0,4 | 0,55 |
+| Data Analytics | 0,4 | 0,55 |
 | Data Engineering | 0,15 | 0,30 |
 | Data Engineering Light | 0,07 | 0,22 |
 
@@ -47,7 +47,7 @@ U kunt Databricks-abonnementen kopen in de [Azure-portal](https://portal.azure.c
 
 **Ga als volgt te werk om gereserveerde capaciteit te kopen:**
 
-1. Ga naar de [Azure-portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22Databricks%22%7D).
+1. Ga naar de [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22Databricks%22%7D).
 1. Selecteer een abonnement. Selecteer in de lijst **Abonnementen** het abonnement dat u wilt gebruiken om voor de gereserveerde capaciteit te betalen. Via de betalingswijze voor het abonnement worden de kosten voor de gereserveerde capaciteit vooraf in rekening gebracht. De kosten worden in mindering gebracht op het toezeggingsbedrag van de inschrijving of in rekening gebracht als overschrijding.
 1. Selecteer een bereik. Gebruik de lijst **Bereik** om een abonnementsbereik te selecteren:
     - **Bereik van één resourcegroep**: de reserveringskorting wordt alleen toegepast op de overeenkomende resources in de geselecteerde resourcegroep.
@@ -73,7 +73,7 @@ Vooraf gekochte Databricks-capaciteit kan niet worden geannuleerd of omgewisseld
 
 ## <a name="need-help-contact-us"></a>Hulp nodig? Neem contact met ons op.
 
-Als u een vraag wilt stellen of hulp nodig hebt, maakt u een [ondersteuningsaanvraag](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
+Als u vragen hebt of hulp nodig hebt, [kunt u een ondersteuningsaanvraag maken](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 
 ## <a name="next-steps"></a>Volgende stappen
 

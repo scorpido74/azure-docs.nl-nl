@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: article
 ms.date: 06/14/2019
 ms.author: erhopf
-ms.openlocfilehash: cd380b4e2a7c05f0beedc2ab102b268aa4068f66
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: 539a35f170b2ee0c94762a30ed9376ca4a416210
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68516372"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827899"
 ---
 # <a name="enable-diagnostic-logging-for-azure-cognitive-services"></a>Diagnostische logboek registratie inschakelen voor Azure Cognitive Services
 
@@ -35,7 +35,7 @@ Als u diagnostische logboek registratie wilt inschakelen, moet u uw logboek gege
 Laten we beginnen door diagnostische logboek registratie in te scha kelen met behulp van de Azure Portal.
 
 > [!NOTE]
-> Als u deze functie wilt inschakelen met behulp van Power shell of de Azure CLI, gebruikt u de instructies in [logboek gegevens verzamelen en gebruiken van uw Azure-resources](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-overview#diagnostic-settings).
+> Als u deze functie wilt inschakelen met behulp van Power shell of de Azure CLI, gebruikt u de instructies in [logboek gegevens verzamelen en gebruiken van uw Azure-resources](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-overview).
 
 1. Navigeer naar het Azure Portal. Zoek en selecteer vervolgens een Cognitive Services bron. Bijvoorbeeld uw abonnement op Bing Web Search.   
 2. Zoek vervolgens in het navigatie menu aan de linkerkant naar **controle** en selecteer **Diagnostische instellingen**. Dit scherm bevat alle eerder gemaakte Diagnostische instellingen voor deze bron.
@@ -64,7 +64,7 @@ Volg deze instructies voor het verkennen van log Analytics-gegevens voor uw reso
 
 1. Zoek en selecteer in het Azure Portal **log Analytics** in het navigatie menu aan de linkerkant.
 2. Zoek en selecteer de resource die u hebt gemaakt bij het inschakelen van diagnostische gegevens.
-3. Zoek en selecteer Logboeken onder  **Algemeen**. Op deze pagina kunt u query's uitvoeren op uw logboeken.
+3. Zoek en selecteer **Logboeken**onder **Algemeen**. Op deze pagina kunt u query's uitvoeren op uw logboeken.
 
 ### <a name="sample-queries"></a>Voorbeeldquery's
 
