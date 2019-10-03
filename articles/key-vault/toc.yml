@@ -66,12 +66,12 @@
       items:
         - name: Beveiligingsoverzicht
           href: overview-security.md
-        - name: Ingebouwde beveiligingsmaatregelen
-          href: key-vault-security-controls.md
         - name: Beveiligingsgebieden
           href: key-vault-ovw-security-worlds.md
         - name: Uw Key Vault beveiligen
           href: key-vault-secure-your-key-vault.md
+        - name: Ingebouwde beveiligingsmaatregelen
+          href: key-vault-security-controls.md
     - name: Voorlopig verwijderen
       href: key-vault-ovw-soft-delete.md
     - name: Beperking
@@ -98,8 +98,12 @@
       items:
         - name: Aanbevelingen
           href: security-recommendations.md
-    - name: Een beheerde identiteit in App Service gebruiken
-      href: managed-identity.md
+    - name: Verificatie
+      items:
+        - name: Een beheerde identiteit in App Service gebruiken
+          href: managed-identity.md
+        - name: Een toegangscontrolebeleid gebruiken
+          href: key-vault-group-permissions-for-apps.md
     - name: Logboekregistratie voor Azure Key Vault
       href: key-vault-logging.md
     - name: Toegang achter firewalls
@@ -114,8 +118,6 @@
       href: key-vault-soft-delete-cli.md
     - name: De Key Vault-functie voor voorlopig verwijderen gebruiken met Azure PowerShell
       href: key-vault-soft-delete-powershell.md
-    - name: Groepen gebruiken om toegang te verlenen
-      href: key-vault-group-permissions-for-apps.md
     - name: Firewalls en virtuele netwerken configureren
       href: key-vault-network-security.md
     - name: Java-ontwikkeling

@@ -27,6 +27,8 @@
           href: tutorial-geofence.md
         - name: Ruimtelijke analyse
           href: tutorial-iot-hub-maps.md
+        - name: EV-routering met Azure Notebooks (Python)
+          href: tutorial-ev-routing.md
 - name: Concepten
   items:
     - name: Verificatie met Azure Maps

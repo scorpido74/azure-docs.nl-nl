@@ -10,6 +10,8 @@
     - name: Snelstartgids
       expanded: true
       items:
+        - name: Netwerkplanning
+          href: cloudsimple-network-checklist.md
         - name: Capaciteit initialiseren en inrichten
           href: quickstart-create-cloudsimple-service.md
         - name: Privécloudomgeving configureren
@@ -144,6 +146,8 @@
               href: configure-server-vrealize-automation-endpoint.md
             - name: Workload-VM's migreren naar een privécloud
               href: migrate-workloads.md
+            - name: Migratie met Azure Data Box
+              href: migration-using-azure-data-box.md
             - name: Hoge toepassingsbeschikbaarheid in VMware in Azure garanderen
               href: ensuring-high-availability.md
             - name: Een taakverdelingsoplossing kiezen

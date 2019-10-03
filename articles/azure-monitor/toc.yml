@@ -830,6 +830,8 @@
                   href: log-query/app-expression.md
                 - name: werkruimte-expressie
                   href: log-query/workspace-expression.md
+                - name: resource-expressie
+                  href: log-query/resource-expression.md
                 - name: Resources voor toepassingsgegevens samenbundelen
                   href: log-query/unify-app-resource-data.md
             - name: Voorbeelden en richtlijnen

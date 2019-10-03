@@ -276,6 +276,12 @@
               href: authentication-national-cloud.md
             - name: Verificatie
               href: msal-national-cloud.md
+        - name: Automatisch gebruikers inrichten (SCIM)
+          items:
+            - name: Wat is automatische inrichting van gebruikers?
+              href: /azure/active-directory/manage-apps/user-provisioning
+            - name: Een SCIM-eindpunt bouwen en integreren
+              href: /azure/active-directory/manage-apps/use-scim-to-provision-users-and-groups
     - name: Handleidingen
       items:
         - name: Verificatie

@@ -135,13 +135,15 @@
               href: ../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: HA-apps ontwerpen met RA-GRS
               href: ../common/storage-designing-ha-apps-with-ragrs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: Toegangslagen
+        - name: Toegang- en prestatielagen
           items:
             - name: Toegangslagen
               href: storage-blob-storage-tiers.md
-            - name: Gegevens vanuit Archive Storage reactiveren
+            - name: Gegevens reactiveren vanuit de archieflaag
               href: storage-blob-rehydration.md
-            - name: De levenscyclus van Azure Blob Storage beheren
+            - name: Prestatielagen
+              href: storage-blob-performance-tiers.md
+            - name: De levenscyclus van Azure Blob-opslag beheren
               href: storage-lifecycle-management-concepts.md
         - name: Prestaties en schalen
           items:

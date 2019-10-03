@@ -113,7 +113,7 @@
       href: concept-generating-thumbnails.md
     - name: Herkenning van afgedrukte en handgeschreven tekst
       href: concept-recognizing-text.md
-    - name: Detectie van erotische en ongepaste inhoud
+    - name: Detectie van erotische inhoud
       href: concept-detecting-adult-content.md
 - name: Handleidingen
   items:

@@ -72,7 +72,7 @@
   items:
     - name: Leslokaallabs - klastypen
       items:
-        - name: Klastypen
+        - name: Overzicht van klastypen
           href: classroom-labs/class-types.md
         - name: Deep Learning in natuurlijke verwerking
           href: classroom-labs/class-type-deep-learning-natural-processing.md
