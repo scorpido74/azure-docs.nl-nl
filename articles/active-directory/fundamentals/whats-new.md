@@ -367,7 +367,7 @@ Zie onze [beheerders documentatie](https://aka.ms/securityinfodocs) en onze [g
 
 3. Selecteer in de sectie **gebruikers kunnen preview-functies gebruiken voor het registreren en beheren van beveiligings gegevens-uitgebreid** gebied **geselecteerd**, en kies vervolgens een groep gebruikers of kies **alle** om deze functie in te scha kelen voor alle gebruikers in de Tenant.
 
-4. In de * * gebruikers kunnen preview-functies gebruiken voor het registreren en beheren van beveiliging * * info * * * * *. Selecteer **geen**.
+4. In de **gebruikers kunnen preview-functies gebruiken voor het registreren en beheren van beveiliging** **info**   Selecteer **geen**.
 
 5. Sla de instellingen op.
 
