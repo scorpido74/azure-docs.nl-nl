@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: memildin
-ms.openlocfilehash: 0ae2b695a64e55b493453549627860872166ed25
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: b3d05e71726ae37dd30bbb68ceb84b67a3bef0e5
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202498"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71822278"
 ---
 # <a name="apply-disk-encryption-in-azure-security-center"></a>Schijf versleuteling Toep assen in Azure Security Center
 Azure Security Center raadt u aan om schijf versleuteling toe te passen als u virtuele Windows-of Linux-schijven hebt die niet zijn versleuteld met Azure Disk Encryption. Met schijf versleuteling kunt u uw virtuele Windows-en Linux IaaS-VM-schijven versleutelen.  Versleuteling wordt aanbevolen voor het besturingssysteem en voor de gegevensvolumes op de VM.
@@ -43,7 +43,7 @@ Voor het versleutelen van Azure-Virtual Machines die zijn geïdentificeerd door 
 * De Azure Disk Encryption vereisten Azure PowerShell script verkrijgen en uitvoeren.
 * Versleutel uw virtuele machines.
 
-[Een Windows IaaS-VM met Azure PowerShell versleutelen](../security/azure-disk-encryption-linux-powershell-quickstart.md) , wordt u door de volgende stappen geleid. In dit onderwerp wordt ervan uitgegaan dat u een Windows-client computer gebruikt van waaruit u schijf versleuteling configureert.
+[Een Windows IaaS-VM met Azure PowerShell versleutelen](../virtual-machines/linux/disk-encryption-powershell-quickstart.md) , wordt u door de volgende stappen geleid. In dit onderwerp wordt ervan uitgegaan dat u een Windows-client computer gebruikt van waaruit u schijf versleuteling configureert.
 
 Er zijn veel benaderingen die kunnen worden gebruikt voor Azure Virtual Machines. Als u al goed bekend bent met Azure PowerShell of Azure CLI, maakt u mogelijk liever gebruik van een andere manier. Zie [Azure Disk Encryption](../security/azure-security-disk-encryption.md)(Engelstalig) voor meer informatie over deze andere benaderingen.
 
