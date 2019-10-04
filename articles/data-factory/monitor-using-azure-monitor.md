@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/11/2018
-ms.openlocfilehash: 2a707eda6a7e32a95666dd70e196c8da3c3b7834
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.openlocfilehash: 6f5472e42b7ef43123698f01ee76fb0e691aa45e
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/02/2019
-ms.locfileid: "71815951"
+ms.locfileid: "71827803"
 ---
 # <a name="alert-and-monitor-data-factories-by-using-azure-monitor"></a>Gegevens fabrieken melden en bewaken met behulp van Azure Monitor
 
@@ -472,7 +472,7 @@ Na enkele ogen blikken wordt de nieuwe instelling weer gegeven in de lijst met i
 * In de _Diagnostische_ modus van Azure stroomt Diagnostische logboeken in _AzureDiagnostics_ -tabel
 
 > [!NOTE]
-> Omdat een Azure-logboek tabel niet meer dan 500 kolommen kan bevatten, raden we u ten zeerste aan de resource-specifieke modus te selecteren. Zie [log Analytics bekende beperkingen](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-stream-log-store#known-limitation-column-limit-in-azurediagnostics)voor meer informatie.
+> Omdat een Azure-logboek tabel niet meer dan 500 kolommen kan bevatten, raden we u ten zeerste aan de resource-specifieke modus te selecteren. Zie [log Analytics bekende beperkingen](../azure-monitor/platform/resource-logs-collect-workspace.md#column-limit-in-azurediagnostics)voor meer informatie.
 
 ### <a name="install-azure-data-factory-analytics-from-azure-marketplace"></a>Azure Data Factory Analytics installeren vanuit Azure Marketplace
 

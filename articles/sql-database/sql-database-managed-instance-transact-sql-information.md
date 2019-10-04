@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 08/12/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 94e9a484afe42f8621380fa685f8bc9faeb894d3
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
-ms.translationtype: HT
+ms.openlocfilehash: 9796a4efdacef04390705607defb7b5cdd462886
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/02/2019
-ms.locfileid: "71816040"
+ms.locfileid: "71828730"
 ---
 # <a name="managed-instance-t-sql-differences-limitations-and-known-issues"></a>T-SQL-verschillen, beperkingen en bekende problemen met beheerde exemplaren
 
@@ -334,7 +334,7 @@ Een beheerd exemplaar heeft geen toegang tot bestands shares en Windows-mappen. 
 
 Een beheerd exemplaar heeft geen toegang tot bestands shares en Windows-mappen, dus de volgende beperkingen zijn van toepassing:
 
-- Alleen `CREATE ASSEMBLY FROM BINARY` wordt ondersteund. Zie [Assembly maken van binair](https://docs.microsoft.com/sql/t-sql/statements/create-assembly-transact-sql). 
+- Alleen `CREATE ASSEMBLY FROM BINARY` wordt ondersteund. Zie [ASSEM BLY maken op basis van een binair bestand](https://docs.microsoft.com/sql/t-sql/statements/create-assembly-transact-sql). 
 - `CREATE ASSEMBLY FROM FILE`wordt niet ondersteund. Zie [Assembly maken op basis van een bestand](https://docs.microsoft.com/sql/t-sql/statements/create-assembly-transact-sql).
 - `ALTER ASSEMBLY`kan niet verwijzen naar bestanden. Zie [ALTER assembly](https://docs.microsoft.com/sql/t-sql/statements/alter-assembly-transact-sql).
 
@@ -548,7 +548,7 @@ Een beheerd exemplaar plaatst uitgebreide informatie in fouten Logboeken. Er zij
 
 **Vallen** Okt 2019
 
-[De gebruiker mag een bestand dat niet leeg is, niet verwijderen](https://docs.microsoft.com/sql/relational-databases/databases/delete-data-or-log-files-from-a-database.md#Prerequisites)SQL Server/beheerd exemplaar. Als u een niet-leeg gegevens bestand probeert te verwijderen met behulp van de instructie `ALTER DATABASE REMOVE FILE`, wordt de fout `Msg 5042 – The file '<file_name>' cannot be removed because it is not empty` niet onmiddellijk geretourneerd. Het beheerde exemplaar zal blijven proberen het bestand te verwijderen en de bewerking zal mislukken na 30 min met `Internal server error`.
+[De gebruiker mag een bestand dat niet leeg is, niet verwijderen](https://docs.microsoft.com/sql/relational-databases/databases/delete-data-or-log-files-from-a-database#Prerequisites)SQL Server/beheerd exemplaar. Als u een niet-leeg gegevens bestand probeert te verwijderen met behulp van de instructie `ALTER DATABASE REMOVE FILE`, wordt de fout `Msg 5042 – The file '<file_name>' cannot be removed because it is not empty` niet onmiddellijk geretourneerd. Het beheerde exemplaar zal blijven proberen het bestand te verwijderen en de bewerking zal mislukken na 30 min met `Internal server error`.
 
 **Tijdelijke oplossing**: Verwijder de inhoud van het bestand met behulp van de `DBCC SHRINKFILE (N'<file_name>', EMPTYFILE)` opdracht. Als dit het enige bestand in de bestands groep is, moet u gegevens verwijderen uit de tabel of partitie die aan deze bestands groep is gekoppeld voordat u het bestand verkleint en deze gegevens optioneel laadt in een andere tabel/partitie.
 

@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 30751bebd397b378924453987462c9e2b3b55ebf
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: c4b46bc952782fc7c9b56d6f0c049fe17b63d0f2
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71803927"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71836397"
 ---
 # <a name="electric-vehicle-routing-using-azure-notebooks-python"></a>Elektriciteits wagen routering met behulp van Azure Notebooks (python)
 
-Azure Maps is een port Folio met georuimtelijke service-Api's die systeem eigen integreren in azure, waarmee ontwikkel aars, ondernemingen en Isv's locatie bewuste apps en IoT-, mobiliteits-, logistiek-en Asset Tracking-oplossingen kunnen maken. De Azure Maps REST-Api's kunnen worden aangeroepen vanuit talen als python en R voor het inschakelen van georuimtelijke gegevens analyse en machine learning scenario's. Azure Maps biedt een robuuste set [routerings-api's]([https://docs.microsoft.com/rest/api/maps/route) waarmee gebruikers routes tussen verschillende gegevens punten kunnen berekenen op basis van verschillende voor waarden, zoals een type Voer tuig of bereik bare ruimte. In deze zelf studie gaan we een scenario door lopen om een stuur programma voor elektrische Voer tuigen te helpen waarvan het Voer tuig weinig batterij kosten heeft, om het dichtstbijzijnde mogelijke laad station te vinden met betrekking tot drive tijd.
+Azure Maps is een port Folio met georuimtelijke service-Api's die systeem eigen integreren in azure, waarmee ontwikkel aars, ondernemingen en Isv's locatie bewuste apps en IoT-, mobiliteits-, logistiek-en Asset Tracking-oplossingen kunnen maken. De Azure Maps REST-Api's kunnen worden aangeroepen vanuit talen als python en R voor het inschakelen van georuimtelijke gegevens analyse en machine learning scenario's. Azure Maps biedt een robuuste set [routerings-api's](https://docs.microsoft.com/rest/api/maps/route) waarmee gebruikers routes tussen verschillende gegevens punten kunnen berekenen op basis van verschillende voor waarden, zoals een type Voer tuig of bereik bare ruimte. In deze zelf studie gaan we een scenario door lopen om een stuur programma voor elektrische Voer tuigen te helpen waarvan het Voer tuig weinig batterij kosten heeft, om het dichtstbijzijnde mogelijke laad station te vinden met betrekking tot drive tijd.
 
 In deze zelf studie doet u het volgende:
 

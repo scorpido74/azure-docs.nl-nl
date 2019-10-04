@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: ''
 ms.date: 12/18/2018
-ms.openlocfilehash: 5f6f4ce4fc77533a4d893472298ef3a20f153136
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: e3e819fc90e8900219ebc7809adb293369084a72
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567994"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828210"
 ---
 # <a name="in-memory-sample"></a>Voor beeld in het geheugen
 
@@ -25,7 +25,7 @@ In de geheugen technologieën in Azure SQL Database kunt u de prestaties van uw 
 In dit artikel ziet u twee voor beelden die het gebruik van in-Memory OLTP en column Store-indexen in Azure SQL Database illustreren.
 
 Zie voor meer informatie:
-- [Overzicht van in-Memory OLTP-en gebruiks scenario's](https://msdn.microsoft.com/library/mt774593.aspx) (bevat verwijzingen naar casestudy's van klanten en informatie om aan de slag te gaan)
+- [Overzicht van in-Memory OLTP en gebruiks scenario's](https://msdn.microsoft.com/library/mt774593.aspx) (bevat verwijzingen naar casestudy's van klanten en informatie om aan de slag te gaan)
 - [Documentatie voor in-Memory OLTP](https://msdn.microsoft.com/library/dn133186.aspx)
 - [Hand leiding voor column Store-indexen](https://msdn.microsoft.com/library/gg492088.aspx)
 - Hybride transactionele/analytische verwerking (HTAP), ook wel bekend als [real-time Operational Analytics](https://msdn.microsoft.com/library/dn817827.aspx)
@@ -49,9 +49,9 @@ Voor een meer vereenvoudigde, maar visueel aantrekkelijke prestatie demo voor in
 
 2. Maak verbinding met de data base met SQL Server Management Studio [(SSMS. exe)](https://msdn.microsoft.com/library/mt238290.aspx).
 
-3. Kopieer het [Transact-SQL-script van OLTP in het geheugen](https://raw.githubusercontent.com/Microsoft/sql-server-samples/master/samples/features/in-memory/t-sql-scripts/sql_in-memory_oltp_sample.sql) naar het klem bord. Het T-SQL-script maakt de benodigde in-Memory objecten in de AdventureWorksLT-voorbeeld database die u in stap 1 hebt gemaakt.
+3. Kopieer het [Transact-SQL-script van OLTP in het geheugen](https://raw.githubusercontent.com/microsoft/sql-server-samples/master/samples/features/in-memory-database/in-memory-oltp/t-sql-scripts/sql_in-memory_oltp_sample.sql) naar het klem bord. Het T-SQL-script maakt de benodigde in-Memory objecten in de AdventureWorksLT-voorbeeld database die u in stap 1 hebt gemaakt.
 
-4. Plak het T-SQL-script in SSMS en voer het script uit. De `MEMORY_OPTIMIZED = ON` component CREATE TABLE-instructies zijn van cruciaal belang. Bijvoorbeeld:
+4. Plak het T-SQL-script in SSMS en voer het script uit. De instructies van de component `MEMORY_OPTIMIZED = ON` CREATE TABLE zijn van cruciaal belang. Bijvoorbeeld:
 
 
 ```sql
@@ -171,7 +171,7 @@ end
 Als u de *_ondisk* -versie van het vorige T-SQL-script voor ostress. exe wilt maken, vervangt u beide exemplaren van de subtekenreeks *_inmem* door *_ondisk*. Deze vervangingen zijn van invloed op de namen van tabellen en opgeslagen procedures.
 
 
-### <a name="install-rml-utilities-and-ostress"></a>Installeer RML-hulpprogram ma's en`ostress`
+### <a name="install-rml-utilities-and-ostress"></a>RML-hulpprogram ma's en `ostress` installeren
 
 
 In het ideale geval wilt u ostress. exe uitvoeren op een virtuele Azure-machine (VM). U maakt een [virtuele Azure-machine](https://azure.microsoft.com/documentation/services/virtual-machines/) in dezelfde Azure-geografische regio waar uw AdventureWorksLT-data base zich bevindt. Maar u kunt in plaats daarvan ostress. exe uitvoeren op uw laptop.
@@ -198,10 +198,10 @@ whereas for SQL 2016+
 
 
 
-### <a name="run-the-inmem-stress-workload-first"></a>Voer eerst de *_inmem* stress-workload uit
+### <a name="run-the-_inmem-stress-workload-first"></a>Voer eerst de *_inmem* stress-workload uit
 
 
-U kunt een *RML cmd prompt* -venster gebruiken om de ostress. exe-opdracht regel uit te voeren. De opdracht regel parameters direct `ostress` naar:
+U kunt een *RML cmd prompt* -venster gebruiken om de ostress. exe-opdracht regel uit te voeren. De opdracht regel parameters direct `ostress` tot:
 
 - 100-verbindingen gelijktijdig uitvoeren (-N100).
 - Laat elke verbinding het T-SQL-script 50 keer (-R50) uitvoeren.
@@ -223,7 +223,7 @@ De voor gaande ostress. exe-opdracht regel uitvoeren:
 
 2. Kopieer de tekst van de voor gaande ostress. exe-opdracht regel naar het klem bord.
 
-3. Vervang de `<placeholders>` para meters-S-U-P-d door de juiste werkelijke waarden.
+3. Vervang de `<placeholders>` door de para meters-S-U-P-d door de juiste echte waarden.
 
 4. Voer de bewerkte opdracht regel uit in een RML CMD-venster.
 
@@ -231,12 +231,12 @@ De voor gaande ostress. exe-opdracht regel uitvoeren:
 #### <a name="result-is-a-duration"></a>Resultaat is een duur
 
 
-Als `ostress.exe` u klaar bent, wordt de uitvoerings duur als laatste uitvoer regel geschreven in het RML CMD-venster. Een korte test uitvoering heeft bijvoorbeeld ongeveer 1,5 minuten geduren:
+Als `ostress.exe` is voltooid, wordt de uitvoerings duur als laatste uitvoer regel in het RML CMD-venster geschreven. Een korte test uitvoering heeft bijvoorbeeld ongeveer 1,5 minuten geduren:
 
 `11/12/15 00:35:00.873 [0x000030A8] OSTRESS exiting normally, elapsed time: 00:01:31.867`
 
 
-#### <a name="reset-edit-for-ondisk-then-rerun"></a>Opnieuw instellen, bewerken voor *_ondisk*en opnieuw uitvoeren
+#### <a name="reset-edit-for-_ondisk-then-rerun"></a>Opnieuw instellen, bewerken voor *_ondisk*en opnieuw uitvoeren
 
 
 Nadat u het resultaat van de *_inmem* -uitvoering hebt, voert u de volgende stappen uit om de *_ondisk* uit te voeren:
@@ -256,7 +256,7 @@ Nadat u het resultaat van de *_inmem* -uitvoering hebt, voert u de volgende stap
 
 #### <a name="expected-comparison-results"></a>Verwachte vergelijkings resultaten
 
-Onze tests in het geheugen hebben laten zien dat de prestaties zijn verbeterd door **negen keer** voor deze vereenvoudigde `ostress` -werk belasting, waarbij wordt uitgevoerd op een virtuele Azure-machine in dezelfde Azure-regio als de data base.
+Onze tests in het geheugen hebben laten zien dat de prestaties zijn verbeterd door **negen keer** voor deze vereenvoudigde-werk belasting, met `ostress` uitgevoerd op een virtuele Azure-machine in dezelfde Azure-regio als de data base.
 
 <a id="install_analytics_manuallink" name="install_analytics_manuallink"></a>
 
@@ -279,7 +279,7 @@ Voor realtime analyses van een OLTP-werk belasting is het vaak het beste om een 
    - Gebruik die exacte naam.
    - Kies een Premium-servicelaag.
 
-2. Kopieer de [sql_in-memory_analytics_sample](https://raw.githubusercontent.com/Microsoft/sql-server-samples/master/samples/features/in-memory/t-sql-scripts/sql_in-memory_analytics_sample.sql) naar het klem bord.
+2. Kopieer de [sql_in-memory_analytics_sample](https://raw.githubusercontent.com/microsoft/sql-server-samples/master/samples/features/in-memory-database/in-memory-oltp/t-sql-scripts/sql_in-memory_analytics_sample.sql) naar het klem bord.
    - Het T-SQL-script maakt de benodigde in-Memory objecten in de AdventureWorksLT-voorbeeld database die u in stap 1 hebt gemaakt.
    - Het script maakt de dimensie tabel en twee feiten tabellen. De feiten tabellen worden gevuld met 3.500.000 rijen.
    - Het uitvoeren van het script kan 15 minuten duren.
@@ -302,14 +302,14 @@ Voor realtime analyses van een OLTP-werk belasting is het vaak het beste om een 
 #### <a name="key-queries-to-compare-the-columnstore-index"></a>Belangrijkste query's voor het vergelijken van de column store-index
 
 
-Er zijn [verschillende typen T-SQL-query's die u kunt uitvoeren](https://raw.githubusercontent.com/Microsoft/sql-server-samples/master/samples/features/in-memory/t-sql-scripts/clustered_columnstore_sample_queries.sql) om prestatie verbeteringen te bekijken. In stap 2 van het T-SQL-script moet u aandacht best Eden aan dit paar query's. Ze verschillen alleen op één regel:
+Er zijn [verschillende typen T-SQL-query's die u kunt uitvoeren](https://raw.githubusercontent.com/microsoft/sql-server-samples/master/samples/features/in-memory-database/in-memory-oltp/t-sql-scripts/clustered_columnstore_sample_queries.sql) om prestatie verbeteringen te bekijken. In stap 2 van het T-SQL-script moet u aandacht best Eden aan dit paar query's. Ze verschillen alleen op één regel:
 
 
 - `FROM FactResellerSalesXL_PageCompressed a`
 - `FROM FactResellerSalesXL_CCI a`
 
 
-Een geclusterde column store-index bevindt zich in de FactResellerSalesXL\_CCI-tabel.
+Een geclusterde column store-index bevindt zich in de tabel FactResellerSalesXL @ no__t-0CCI.
 
 In het volgende T-SQL-script fragment worden de statistieken voor de i/o en het tijdstip voor de query van elke tabel afgedrukt.
 
@@ -382,7 +382,7 @@ In een Data Base met de prijs categorie P2 kunt u ongeveer negen keer de prestat
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Snelstartgids 1: OLTP-technologieën in het geheugen voor snellere T-SQL-prestaties](https://msdn.microsoft.com/library/mt694156.aspx)
+- [Quickstart 1: OLTP-technologieën in het geheugen voor snellere T-SQL-prestaties @ no__t-0
 
 - [In-Memory OLTP gebruiken in een bestaande Azure SQL-toepassing](sql-database-in-memory-oltp-migration.md)
 

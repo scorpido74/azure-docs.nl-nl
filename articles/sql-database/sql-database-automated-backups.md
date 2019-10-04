@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
 manager: craigg
 ms.date: 09/26/2019
-ms.openlocfilehash: cc6041a228545ffef158e3d627de983a154513a5
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: a8cf17ab3eab31d4ac6113437f55d73f96425e4e
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350947"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71843305"
 ---
 # <a name="automated-backups"></a>Automatische back-ups
 
@@ -49,7 +49,7 @@ U kunt enkele van deze bewerkingen uitproberen met de volgende voor beelden:
 | Retentie van back-ups wijzigen | [Individuele database](sql-database-automated-backups.md#change-pitr-backup-retention-period-using-azure-portal) <br/> [Beheerd exemplaar](sql-database-automated-backups.md#managed-instance-database) | [Individuele database](sql-database-automated-backups.md#change-pitr-backup-retention-period-using-powershell) <br/>[Beheerd exemplaar](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstancedatabasebackupshorttermretentionpolicy) |
 | Lange termijn retentie van back-ups wijzigen | [Individuele database](sql-database-long-term-backup-retention-configure.md#configure-long-term-retention-policies)<br/>Beheerd exemplaar-N.v.t.  | [Individuele database](sql-database-long-term-backup-retention-configure.md#use-powershell-to-manage-long-term-backups)<br/>Beheerd exemplaar-N.v.t.  |
 | Data base terugzetten vanaf een bepaald tijdstip | [Individuele database](sql-database-recovery-using-backups.md#point-in-time-restore) | [Individuele database](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase) <br/> [Beheerd exemplaar](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqlinstancedatabase) |
-| Verwijderde database herstellen | [Individuele database](sql-database-recovery-using-backups.md#deleted-database-restore-using-azure-portal) | [Individuele database](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldeleteddatabasebackup) <br/> [Beheerd exemplaar](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldeletedinstancedatabasebackup)|
+| Verwijderde database herstellen | [Individuele database](sql-database-recovery-using-backups.md) | [Individuele database](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldeleteddatabasebackup) <br/> [Beheerd exemplaar](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldeletedinstancedatabasebackup)|
 | Data base terugzetten vanuit Azure Blob Storage | Eén data base-N.v.t. <br/>Beheerd exemplaar-N.v.t.  | Eén data base-N.v.t. <br/>[Beheerd exemplaar](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started-restore) |
 
 ## <a name="how-long-are-backups-kept"></a>Hoe lang worden back-ups bewaard?

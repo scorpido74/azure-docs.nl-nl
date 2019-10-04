@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 39395c9d082bc40836c14ee4c0d328341f96edca
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.openlocfilehash: 228ca0f43322c271b1a6db55a37c852ca1f66799
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/02/2019
-ms.locfileid: "71816115"
+ms.locfileid: "71828909"
 ---
 # <a name="quickstart---create-azure-vmware-solution-by-cloudsimple-service"></a>Quick Start: een Azure VMware-oplossing maken op basis van de CloudSimple-service
 
@@ -77,7 +77,7 @@ Als u betalen naar gebruik-capaciteit wilt instellen voor een CloudSimple Privé
 7. Voer het voor voegsel in om de knoop punten te identificeren.
 8. Selecteer de locatie voor de knooppunt resources.
 9. Selecteer de toegewezen locatie om de knooppunt resources te hosten.
-10. Selecteer het knooppunt type. U kunt de [optie CS28 of CS36](cloudsimple-node.md)kiezen. De laatste optie omvat de maximale reken-en geheugen capaciteit.
+10. Selecteer het [knooppunt type](cloudsimple-node.md).
 11. Selecteer het aantal knoop punten dat moet worden ingericht.
 12. Selecteer **Controleren + maken**.
 13. Controleer de instellingen. Als u instellingen wilt wijzigen, klikt u op **vorige**.

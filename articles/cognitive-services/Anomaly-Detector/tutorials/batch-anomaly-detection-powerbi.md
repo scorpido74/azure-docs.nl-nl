@@ -1,74 +1,74 @@
 ---
-title: Afwijkingen met behulp van batch-detectie- en Power BI visualiseren
+title: Afwijkingen visualiseren met batchgewijs detecteren en Power BI
 titleSuffix: Azure Cognitive Services
-description: Gebruik de API voor Afwijkingsdetectie Detector en Power BI afwijkingen in uw time series-gegevens visualiseren.
+description: Gebruik de anomalie detectie-API en Power BI voor het visualiseren van afwijkingen in uw tijdreeks gegevens.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: tutorial
-ms.date: 04/30/2019
+ms.date: 10/01/2019
 ms.author: aahi
-ms.openlocfilehash: 74b51d04f2706d890475c500e1e730cff75397c5
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: fa78e737cd863d19e294c5001dfd27b07760521f
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67721482"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71840870"
 ---
-# <a name="tutorial-visualize-anomalies-using-batch-detection-and-power-bi"></a>Zelfstudie: Afwijkingen met behulp van batch-detectie- en Power BI visualiseren
+# <a name="tutorial-visualize-anomalies-using-batch-detection-and-power-bi"></a>Zelfstudie: Afwijkingen visualiseren met batchgewijs detecteren en Power BI
 
-Met deze zelfstudie zoeken naar afwijkingen in een tijd-serie-gegevensset als een batch. Met behulp van Power BI desktop, wordt u nemen van een Excel-bestand, de gegevens voorbereiden voor de API van de detectie van afwijkingen en statistische afwijkingen in het visualiseren.
+Gebruik deze zelf studie om afwijkingen in een tijdreeks gegevensverzameling te vinden als een batch. Met Power BI bureau blad gaat u een Excel-bestand maken, de gegevens voorbereiden voor de anomalie detectie-API en statistische afwijkingen visualiseren.
 
 In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
-> * Power BI Desktop gebruiken om te importeren en transformeren van een gegevensset van time series
-> * Power BI Desktop integreren in de Anomaliedetectie Detector-API voor afwijkingsdetectie voor batch
-> * Afwijkingen vinden in uw gegevens, inclusief waarden verwacht en gezien en anomaly detection grenzen visualiseren.
+> * Power BI Desktop gebruiken voor het importeren en transformeren van een gegevensset voor een tijd reeks
+> * Power BI Desktop integreren met de anomalie detectie-API voor het opsporen van batch afwijkingen
+> * U kunt afwijkingen in uw gegevens visualiseren, waaronder verwachte en weer gegeven waarden en grenzen voor afwijkings detectie.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* [Microsoft Power BI Desktop](https://powerbi.microsoft.com/get-started/), dat verkrijgbaar is gratis.
-* Een excel-bestand (.xlsx) met time series-gegevens verwijst. De voorbeeldgegevens voor deze Quick Start kunt u vinden op [GitHub](https://go.microsoft.com/fwlink/?linkid=2090962)
+* [Micro soft power bi Desktop](https://powerbi.microsoft.com/get-started/)gratis beschikbaar.
+* Een Excel-bestand (. XLSX) dat gegevens punten van de tijd reeks bevat. De voorbeeld gegevens voor deze Quick Start vindt u op [github](https://go.microsoft.com/fwlink/?linkid=2090962)
 
 [!INCLUDE [cognitive-services-anomaly-detector-data-requirements](../../../../includes/cognitive-services-anomaly-detector-data-requirements.md)]
 
 [!INCLUDE [cognitive-services-anomaly-detector-signup-requirements](../../../../includes/cognitive-services-anomaly-detector-signup-requirements.md)]
 
-## <a name="load-and-format-the-time-series-data"></a>Laden en formatteren van de time series-gegevens
+## <a name="load-and-format-the-time-series-data"></a>De time series-gegevens laden en Format teren
 
-Als u wilt beginnen, opent u Power BI Desktop en laden van de time series-gegevens die u hebt gedownload van de vereisten. Dit excel-bestand bevat een reeks Coordinated Universal Time (UTC) tijdstempel / waarde-paren.  
+Als u aan de slag wilt gaan, opent u Power BI Desktop en laadt u de tijdreeks gegevens die u hebt gedownload van de vereisten. Dit Excel-bestand bevat een reeks UTC-tijds tempels (Coordinated Universal Time) en waardeparen.  
 
 > [!NOTE]
-> Power BI kunt gegevens uit een groot aantal bronnen, zoals CSV-bestanden, SQL databases, Azure blob-opslag en meer gebruiken.  
+> Power BI kunt gebruikmaken van gegevens uit een groot aantal bronnen, zoals CSV-bestanden, SQL-data bases, Azure Blob-opslag en nog veel meer.  
 
-Klik in het hoofdvenster van Power BI Desktop, op de **Start** lint. In de **externe gegevens** groep van het lint, open de **gegevens ophalen** vervolgkeuzelijst en klik op **Excel**.
+Klik in het hoofd venster van Power BI Desktop op het lint **Start** . Open in de groep **externe gegevens** van het lint de vervolg keuzelijst **gegevens ophalen** en klik op **Excel**.
 
-![Een afbeelding van de knop 'Gegevens ophalen' in Power BI](../media/tutorials/power-bi-get-data-button.png)
+![Een afbeelding van de knop gegevens ophalen in Power BI](../media/tutorials/power-bi-get-data-button.png)
 
-Nadat u het dialoogvenster wordt weergegeven, gaat u naar de map waar u het voorbeeld .xlsx-bestand hebt gedownload en selecteer deze. Na de **Navigator** dialoogvenster wordt weergegeven, klikt u op **Sheet1**, en vervolgens **bewerken**.
+Nadat het dialoog venster wordt weer gegeven, gaat u naar de map waar u het bestand example. xlsx hebt gedownload en selecteert u het. Nadat het dialoog venster **Navigator** wordt weer gegeven, klikt u op **Blad1**en vervolgens op **bewerken**.
 
-![Een installatiekopie van het scherm data source 'Navigator' in Power BI](../media/tutorials/navigator-dialog-box.png)
+![Een afbeelding van het scherm voor de gegevens bron navigator in Power BI](../media/tutorials/navigator-dialog-box.png)
 
-Power BI converteert de tijdstempels in de eerste kolom een `Date/Time` gegevenstype. Deze tijdstempels moet worden geconverteerd naar tekst om te worden verzonden naar de detectie van afwijkingen API. Als de Power Query-editor niet automatisch wordt geopend, klikt u op **query's bewerken** op het tabblad Start. 
+Power BI worden de tijds tempels in de eerste kolom geconverteerd naar een `Date/Time`-gegevens type. Deze tijds tempels moeten worden geconverteerd naar tekst om te worden verzonden naar de anomalie detector-API. Als de Power Query Editor niet automatisch wordt geopend, klikt u op **Query's bewerken** op het tabblad Start. 
 
-Klik op de **transformeren** lint in de Power Query-Editor. In de **elke kolom** groep, open de **gegevenstype:** vervolgkeuzelijst en selecteer **tekst**.
+Klik op het lint **Transformeren** in de Editor van Power query. Open in de **kolom** groep de optie **gegevens type:** vervolg keuzelijst en selecteer **tekst**.
 
-![Een installatiekopie van het scherm data source 'Navigator' in Power BI](../media/tutorials/data-type-drop-down.png)
+![Een afbeelding van het scherm voor de gegevens bron navigator in Power BI](../media/tutorials/data-type-drop-down.png)
 
-Wanneer u een melding ontvangt over het wijzigen van het kolomtype, klikt u op **huidige vervangen**. Daarna klikt u op **sluiten en toepassen** of **toepassen** in de **Start** lint. 
+Wanneer u een bericht ziet over het wijzigen van het kolom Type, klikt u op **huidige vervangen**. Klik daarna op **sluiten & Toep assen** of **Toep assen** in het lint **Start** . 
 
-## <a name="create-a-function-to-send-the-data-and-format-the-response"></a>Maak een functie voor het verzenden van de gegevens en formatteren van de reactie
+## <a name="create-a-function-to-send-the-data-and-format-the-response"></a>Een functie maken voor het verzenden van de gegevens en het format teren van het antwoord
 
-Als u wilt opmaken en het gegevensbestand verzenden naar de Anomaliedetectie-API voor Detector, kunt u een query op de tabel hierboven gemaakte aanroepen. In de Power Query-Editor van het **Start** lint, open de **nieuwe bron** vervolgkeuzelijst en klik op **lege Query**.
+Als u het gegevens bestand wilt opmaken en verzenden naar de anomalie detectie-API, kunt u een query aanroepen voor de tabel die hierboven is gemaakt. Open in de Power Query Editor op het lint **Start** de vervolg keuzelijst **nieuwe bron** en klik op **lege query**.
 
-Zorg ervoor dat uw nieuwe query is geselecteerd en klik vervolgens op **geavanceerde Editor**. 
+Zorg ervoor dat de nieuwe query is geselecteerd en klik vervolgens op **Geavanceerde editor**. 
 
-![Een afbeelding van de knop 'Geavanceerde Editor' in Power BI](../media/tutorials/advanced-editor-screen.png)
+![Een afbeelding van de knop ' Geavanceerde editor ' in Power BI](../media/tutorials/advanced-editor-screen.png)
 
-Gebruik het volgende codefragment in de Power Query M om de kolommen uit de tabel te verzenden naar de API in de geavanceerde Editor. De query wordt later een tabel maken van het JSON-antwoord en retourneren. Vervang de `apiKey` variabele door de geldige Anomaliedetectie Detector API-sleutel en `endpoint` aan uw eindpunt. Nadat u de query in de geavanceerde Editor hebt ingevoerd, klikt u op **gedaan**.
+Gebruik in de Geavanceerde editor het volgende Power Query M-fragment om de kolommen uit de tabel op te halen en te verzenden naar de API. Daarna maakt de query een tabel op basis van het JSON-antwoord en retourneert deze. Vervang de variabele `apiKey` door de geldige Anomaliey-API-sleutel en `endpoint` met uw eind punt. Nadat u de query hebt ingevoerd in de Geavanceerde editor, klikt u op **gereed**.
 
 ```M
 (table as table) => let
@@ -112,67 +112,67 @@ Gebruik het volgende codefragment in de Power Query M om de kolommen uit de tabe
  in results
 ```
 
-Aanroepen van de query op het gegevensblad door te selecteren `Sheet1` hieronder **parameterwaarde invoeren**, en klikt u op **Invoke**. 
+Roep de query aan op uw gegevens blad door `Sheet1` onder **Enter para meter**in te scha kelen en op **aanroepen**te klikken. 
 
-![Een afbeelding van de knop 'Geavanceerde Editor'](../media/tutorials/invoke-function-screenshot.png)
+![Een afbeelding van de knop Geavanceerde editor](../media/tutorials/invoke-function-screenshot.png)
 
-## <a name="data-source-privacy-and-authentication"></a>Bron-privacy van gegevens en -verificatie
+## <a name="data-source-privacy-and-authentication"></a>Privacy en verificatie van gegevens bronnen
 
 > [!NOTE]
-> Houd rekening met het beleid van uw organisatie voor de privacy van gegevens- en toegangsbeheer. Zie [privacyniveaus van Power BI Desktop](https://docs.microsoft.com/power-bi/desktop-privacy-levels) voor meer informatie.
+> Houd rekening met het beleid van uw organisatie voor privacy en toegang tot gegevens. Zie [Power bi Desktop privacyniveaus](https://docs.microsoft.com/power-bi/desktop-privacy-levels) voor meer informatie.
 
-Krijgt u mogelijk een waarschuwingsbericht wordt weergegeven wanneer u probeert uit te voeren van de query omdat deze gebruikmaakt van een externe gegevensbron. 
+Er wordt mogelijk een waarschuwing weer gegeven wanneer u probeert de query uit te voeren, omdat deze een externe gegevens bron gebruikt. 
 
-![Een afbeelding van een waarschuwing gemaakt door Power BI](../media/tutorials/blocked-function.png)
+![Een afbeelding met een waarschuwing die is gemaakt door Power BI](../media/tutorials/blocked-function.png)
 
-U kunt dit verhelpen, klikt u op **bestand**, en **opties en instellingen**. Klik vervolgens op **opties**. Hieronder **huidige bestand**, selecteer **Privacy**, en **negeren de privacyniveaus en mogelijk verbeterde prestaties**. 
+Klik op **bestand**en kies **Opties en instellingen**om dit probleem op te lossen. Klik vervolgens op **Opties**. Selecteer onder **Huidig bestand**de optie **Privacy**en **Negeer de privacyniveaus en mogelijk verbeterde prestaties**. 
 
-Bovendien krijgt u mogelijk een bericht waarin u wordt gevraagd om op te geven hoe u wilt verbinding maken met de API.
+Daarnaast kunt u een bericht ontvangen waarin u wordt gevraagd hoe u verbinding wilt maken met de API.
 
-![Een afbeelding van een aanvraag voor het opgeven van referenties voor toegang](../media/tutorials/edit-credentials-message.png)
+![Een afbeelding met een aanvraag voor het opgeven van toegangs referenties](../media/tutorials/edit-credentials-message.png)
 
-U kunt dit verhelpen, klikt u op **referenties bewerken** in het bericht. Nadat u het dialoogvenster wordt weergegeven, selecteert u **anoniem** anoniem verbinding maken met de API. Klik vervolgens op **Verbinden**. 
+Klik op **referenties bewerken** in het bericht om dit probleem op te lossen. Nadat het dialoog venster wordt weer gegeven, selecteert u **anoniem** om verbinding met de API anoniem te maken. Klik vervolgens op **Verbinden**. 
 
-Daarna klikt u op **sluiten en toepassen** in de **Start** lint om de wijzigingen te passen.
+Klik daarna op **sluiten & Toep assen** op het lint **Start** om de wijzigingen toe te passen.
 
-## <a name="visualize-the-anomaly-detector-api-response"></a>Visualiseer de Anomaliedetectie Detector API-reactie
+## <a name="visualize-the-anomaly-detector-api-response"></a>Het antwoord voor de anomalie detectie-API visualiseren
 
-In het hoofdvenster van Power BI, beginnen met behulp van de query's hierboven hebt gemaakt om de gegevens te visualiseren. Selecteer eerst **lijndiagram** in **visualisaties**. Vervolgens de tijdstempel van de aangeroepen functie toevoegen aan het lijndiagram **as**. Met de rechtermuisknop op deze en selecteer **Timestamp**. 
+Begin in het hoofd venster van Power BI de eerder gemaakte query's te gebruiken om de gegevens te visualiseren. Selecteer eerst **lijn diagram** in **Visualisaties**. Voeg vervolgens de tijds tempel van de aangeroepen functie toe aan de **as**van de lijn grafiek. Klik er met de rechter muisknop op en selecteer **tijds tempel**. 
 
-![Met de rechtermuisknop op de waarde Timestamp](../media/tutorials/timestamp-right-click.png)
+![Klik met de rechter muisknop op de waarde van de tijds tempel](../media/tutorials/timestamp-right-click.png)
 
-Voeg de volgende velden uit de **aangeroepen functie** aan van de grafiek **waarden** veld. Gebruik de onderstaande schermafbeelding voor het opbouwen van de grafiek.
+Voeg de volgende velden van de **aangeroepen functie** toe aan het veld **waarden** van de grafiek. Gebruik de onderstaande scherm afbeelding om uw grafiek te bouwen.
 
-    * Waarde
+    * Value
     * UpperMargins
     * LowerMargins
     * ExpectedValues
 
-![Een installatiekopie van het nieuwe snelle meting scherm](../media/tutorials/chart-settings.png)
+![Een afbeelding van het scherm nieuwe snelle meting](../media/tutorials/chart-settings.png)
 
-Na het toevoegen van de velden, klik op de grafiek en pas de grootte ervan alle van de gegevenspunten weergeven. De grafiek ziet eruit als de in de schermafbeelding hieronder:
+Nadat u de velden hebt toegevoegd, klikt u op het diagram en past u het formaat aan om alle gegevens punten weer te geven. Uw grafiek ziet er ongeveer als volgt uit:
 
-![Een installatiekopie van het nieuwe snelle meting scherm](../media/tutorials/chart-visualization.png)
+![Een afbeelding van het scherm nieuwe snelle meting](../media/tutorials/chart-visualization.png)
 
-### <a name="display-anomaly-data-points"></a>Anomaliedetectie-gegevenspunten worden weergegeven
+### <a name="display-anomaly-data-points"></a>Afwijkende gegevens punten weer geven
 
-Aan de rechterkant van het Power BI-venster onder de **velden** in het deelvenster met de rechtermuisknop op **waarde** onder de **aangeroepen functiequery**, en klikt u op **nieuwe snelle meting**.
+Klik aan de rechter kant van het Power BI venster onder het deel venster **velden** met de rechter muisknop op **waarde** onder de **aangeroepen functie query**en klikt u op **nieuwe snelle meting**.
 
-![Een installatiekopie van het nieuwe snelle meting scherm](../media/tutorials/new-quick-measure.png)
+![Een afbeelding van het scherm nieuwe snelle meting](../media/tutorials/new-quick-measure.png)
 
-Selecteer op het scherm dat verschijnt, **gefilterde waarde** als de berekening. Stel **baseren waarde** naar `Sum of Value`. Sleep vervolgens `IsAnomaly` uit de **aangeroepen functie** velden **Filter**. Selecteer `True` uit de **Filter** vervolgkeuzelijst.
+Selecteer op het scherm dat wordt weer gegeven **gefilterde waarde** als berekening. Stel de **basis waarde** in op `Sum of Value`. Sleep vervolgens `IsAnomaly` van de **aangeroepen functie** velden om te **filteren**. Selecteer `True` in de vervolg keuzelijst **filter** .
 
-![Een installatiekopie van het nieuwe snelle meting scherm](../media/tutorials/new-quick-measure-2.png)
+![Een afbeelding van het scherm nieuwe snelle meting](../media/tutorials/new-quick-measure-2.png)
 
-Nadat u hebt geklikt **Ok**, hebt u een `Value for True` veld onder aan de lijst met velden. Met de rechtermuisknop op het en wijzig de naam **Anomaliedetectie**. Toe te voegen aan van de grafiek **waarden**. Selecteer vervolgens de **indeling** hulpprogramma en het type x-as instellen op **Categorisch**.
+Nadat u op **OK**hebt geklikt, bevat het veld `Value for True` onder aan de lijst met velden. Klik er met de rechter muisknop op en wijzig de naam ervan in **afwijkingen**. Voeg deze toe aan de **waarden**van de grafiek. Selecteer vervolgens het hulp programma **opmaken** en stel het type X-as in op **categorische**.
 
-![Een installatiekopie van het nieuwe snelle meting scherm](../media/tutorials/format-x-axis.png)
+![Een afbeelding van het scherm nieuwe snelle meting](../media/tutorials/format-x-axis.png)
 
-Kleuren toepassen op de grafiek door te klikken op de **indeling** hulpprogramma en **gegevenskleuren**. De grafiek moet er ongeveer als volgt uitzien:
+Pas kleuren toe op uw grafiek door te klikken op het hulp programma **opmaken** en **gegevens kleuren**. De grafiek moet er ongeveer als volgt uitzien:
 
-![Een installatiekopie van het nieuwe snelle meting scherm](../media/tutorials/final-chart.png)
+![Een afbeelding van het scherm nieuwe snelle meting](../media/tutorials/final-chart.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
->[Streaming afwijkingsdetectie met Azure Databricks](anomaly-detection-streaming-databricks.md)
+>[Anomalie detectie met Azure Databricks streamen](anomaly-detection-streaming-databricks.md)

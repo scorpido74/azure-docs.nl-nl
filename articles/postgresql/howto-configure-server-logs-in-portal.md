@@ -1,71 +1,70 @@
 ---
-title: Configureren en logboeken van de access-server voor Azure Database voor PostgreSQL - één Server in Azure Portal
-description: Dit artikel wordt beschreven hoe u configureert en toegang krijgen tot de serverlogboeken in Azure Database voor PostgreSQL - servergegevens uit het Azure-Portal.
+title: Server logboeken configureren en openen in Azure Database for PostgreSQL-één server van de Azure Portal
+description: In dit artikel wordt beschreven hoe u de server logboeken van Azure Database for PostgreSQL-één server kunt configureren en openen vanuit de Azure Portal.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: 13a8c1ee4b7ca114211f93245d74866e5aa5d52c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c77e708e14d34545754ca38095aedb63ff0172a1
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65067452"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71841510"
 ---
-# <a name="configure-and-access-azure-database-for-postgresql---single-server-logs-in-the-azure-portal"></a>Configureren en toegang tot Azure Database voor PostgreSQL - logboeken voor één Server in Azure portal
+# <a name="configure-and-access-azure-database-for-postgresql---single-server-logs-from-the-azure-portal"></a>Azure Database for PostgreSQL-logboeken met één server configureren en gebruiken vanuit de Azure Portal
 
-U kunt configureren, weergeven en downloaden de [Azure Database for PostgreSQL-logboeken](concepts-server-logs.md) vanuit Azure portal.
+U kunt de [Azure database for PostgreSQL logboeken](concepts-server-logs.md) van de Azure Portal configureren, weer geven en downloaden.
 
 ## <a name="prerequisites"></a>Vereisten
-Als u wilt in deze gebruiksaanwijzing kunt doorlopen, hebt u het volgende nodig:
-- [Azure Database for PostgreSQL-server](quickstart-create-server-database-portal.md)
+Voor de stappen in dit artikel moet [Azure database for postgresql server](quickstart-create-server-database-portal.md)zijn geïnstalleerd.
 
-## <a name="configure-logging"></a>Logboekregistratie configureren
-Toegang tot de logboeken voor query's en de foutenlogboeken configureren. 
+## <a name="configure-logging"></a>Logboek registratie configureren
+De toegang tot de query logboeken en fout logboeken configureren. 
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 
 2. Selecteer uw Azure Database for PostgreSQL-server.
 
-3. Onder de **bewaking** sectie in de zijbalk, selecteer **serverlogboeken**. 
+3. Selecteer in de sectie **bewaking** in de zijbalk **Server logboeken**. 
 
-   ![Selecteer serverlogboeken en selecteer 'Klik hier om in te schakelen...'](./media/howto-configure-server-logs-in-portal/1-select-server-logs-configure.png)
+   ![Scherm opname van opties voor Server logboeken](./media/howto-configure-server-logs-in-portal/1-select-server-logs-configure.png)
 
-4. Selecteer de kop **Klik hier om Logboeken inschakelen en configureren van logboekparameters** om te zien van de parameters van de server.
+4. Selecteer om de server parameters weer te geven de optie **Klik hier om Logboeken in te scha kelen en logboek parameters te configureren**.
 
-5. Hiermee wijzigt u de parameters die u nodig hebt om aan te passen. Alle wijzigingen die u in deze sessie aanbrengt worden in paars gemarkeerd.
+5. Wijzig de para meters die u wilt aanpassen. Alle wijzigingen die u aanbrengt in deze sessie, worden in paars gemarkeerd.
 
-   Nadat u de parameters hebt gewijzigd, kunt u klikken op **opslaan**. U kunt ook **negeren** uw wijzigingen. 
+   Nadat u de para meters hebt gewijzigd, selecteert u **Opslaan**. Of u kunt uw wijzigingen negeren. 
 
-   ![Lange lijst met parameters met de wijzigingen op te slaan of te negeren](./media/howto-configure-server-logs-in-portal/3-save-discard.png)
+   ![Scherm opname van opties voor server parameters](./media/howto-configure-server-logs-in-portal/3-save-discard.png)
 
-6. Ga terug naar de lijst met Logboeken door te klikken op de **knop Sluiten** (het pictogram X) op de **serverparameters** pagina.
+Op de pagina **server parameters** kunt u teruggaan naar de lijst met Logboeken door de pagina te sluiten.
 
-## <a name="view-list-and-download-logs"></a>Weergeven en logboeken downloaden
-Zodra logboekregistratie wordt gestart, kunt u een lijst met beschikbare logboeken weergeven en downloaden van afzonderlijke logboekbestanden op de Server Logs-deelvenster. 
+## <a name="view-list-and-download-logs"></a>Lijst weer geven en logboeken downloaden
+Nadat de logboek registratie is gestart, kunt u een lijst met beschik bare logboeken bekijken en afzonderlijke logboek bestanden downloaden. 
 
 1. Open Azure Portal.
 
 2. Selecteer uw Azure Database for PostgreSQL-server.
 
-3. Onder de **bewaking** sectie in de zijbalk, selecteer **serverlogboeken**. De pagina bevat een overzicht van uw logboekbestanden, zoals wordt weergegeven:
+3. Selecteer in de sectie **bewaking** in de zijbalk **Server logboeken**. Op de pagina wordt een lijst met uw logboek bestanden weer gegeven.
 
-   ![Lijst met servers-Logboeken](./media/howto-configure-server-logs-in-portal/4-server-logs-list.png)
+   ![Scherm opname van de pagina Server logboeken, met de lijst met gemarkeerde logboeken](./media/howto-configure-server-logs-in-portal/4-server-logs-list.png)
 
    > [!TIP]
-   > De naamgevingsconventie van het logboek is **postgresql-jjjj-mm-dd_hh0000.log**. De datum en tijd die wordt gebruikt in de bestandsnaam is het tijd is wanneer het logboek is uitgegeven. De logboekbestanden draaien om één uur of de grootte van 100 MB, afhankelijk van wat het eerste komt.
+   > De naam Conventie van het logboek is **postgresql-yyyy-mm-dd_hh0000. log**. De datum en tijd die in de bestands naam wordt gebruikt, is het tijdstip waarop het logboek is uitgegeven. De logboek bestanden draaien elk uur of 100 MB, afhankelijk van wat het eerste komt.
 
-4. Als het nodig is, gebruikt u de **zoekvak** snel verfijnen naar een bepaald op basis van datum/tijd. De zoekopdracht is op de naam van het logboek.
+4. Gebruik, indien nodig, het zoekvak om snel naar een specifiek logboek te beperken, op basis van datum en tijd. De zoek opdracht bevindt zich op de naam van het logboek.
 
-   ![Voorbeeld van de zoekopdracht op logboeknamen](./media/howto-configure-server-logs-in-portal/5-search.png)
+   ![Scherm opname van de pagina Server logboeken, met zoekvak en resultaten gemarkeerd](./media/howto-configure-server-logs-in-portal/5-search.png)
 
-5. Downloaden van afzonderlijke logboekbestanden met behulp van de **downloaden** knop (omlaag pijlpictogram) naast elke log-bestand in een rij in de tabel, zoals wordt weergegeven:
+5. Als u afzonderlijke logboek bestanden wilt downloaden, selecteert u het pictogram met de pijl-omlaag naast elk logboek bestand in de tabelrij.
 
-   ![Klik op het downloadpictogram](./media/howto-configure-server-logs-in-portal/6-download.png)
+   ![Scherm opname van de pagina Server logboeken, met pictogram met de pijl-omlaag gemarkeerd](./media/howto-configure-server-logs-in-portal/6-download.png)
 
 ## <a name="next-steps"></a>Volgende stappen
-- Zie [serverlogboeken openen in de CLI](howto-configure-server-logs-using-cli.md) voor meer informatie over hoe u kunt Logboeken downloaden die u via een programma.
-- Meer informatie over [serverlogboeken](concepts-server-logs.md) in Azure database voor PostgreSQL. 
-- Zie voor meer informatie over de parameterdefinities en PostgreSQL-logboekregistratie, de PostgreSQL-documentatie op [foutrapportage en logboekregistratie](https://www.postgresql.org/docs/current/static/runtime-config-logging.html).
+- Zie [toegangs server Logboeken in cli](howto-configure-server-logs-using-cli.md) voor meer informatie over het programmatisch downloaden van Logboeken.
+- Meer informatie over [Server logboeken](concepts-server-logs.md) in azure database for PostgreSQL. 
+- Zie de PostgreSQL-documentatie over [fout rapportage en logboek registratie](https://www.postgresql.org/docs/current/static/runtime-config-logging.html)voor meer informatie over de parameter definities en postgresql-logboek registratie.
 

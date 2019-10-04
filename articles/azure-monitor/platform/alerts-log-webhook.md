@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.date: 06/25/2019
 ms.author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: 3e29bdf41b0421aa4461b11fbf9bc0535179486d
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 3a072ae64104f8fded49ff6a00f5b58902c39903
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71677755"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71838571"
 ---
 # <a name="webhook-actions-for-log-alert-rules"></a>Webhook-acties voor waarschuwings regels voor logboeken
 Wanneer er een [logboek waarschuwing wordt gemaakt in azure](alerts-log.md), kunt u [deze configureren met behulp van actie groepen](action-groups.md) om een of meer acties uit te voeren. In dit artikel worden de verschillende webhook-acties beschreven die beschikbaar zijn en wordt getoond hoe u een aangepaste JSON-gebaseerde webhook configureert.
 
 > [!NOTE]
-> U kunt ook het [algemene waarschuwings schema](https://aka.ms/commonAlertSchemaDocs) voor uw webhook-integraties gebruiken. Het algemene waarschuwings schema biedt het voor deel dat er één uitbreid bare en Unified alert Payload is voor alle waarschuwings Services in Azure Monitor. [Meer informatie over de algemene schema definities voor waarschuwingen.](https://aka.ms/commonAlertSchemaDefinitions)
+> U kunt ook het [algemene waarschuwings schema](https://aka.ms/commonAlertSchemaDocs) voor uw webhook-integraties gebruiken. Het algemene waarschuwings schema biedt het voor deel dat er één uitbreid bare en Unified alert Payload is voor alle waarschuwings Services in Azure Monitor. Houd er rekening mee dat het algemene waarschuwings schema de aangepaste JSON-optie voor logboek waarschuwingen niet in de hand heeft. De waarschuwing wordt uitgesteld naar de nettolading van het algemene waarschuwings schema als dat is geselecteerd, ongeacht de aanpassing die u mogelijk hebt gedaan op het niveau van de waarschuwings regel. [Meer informatie over de algemene schema definities voor waarschuwingen.](https://aka.ms/commonAlertSchemaDefinitions)
 
 ## <a name="webhook-actions"></a>Webhookacties
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 9c750522123995685191001988ae0081d9454ccf
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 090242cde79f6c31b0f70e1a75240778dca89fa7
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68728362"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828569"
 ---
 # <a name="security-frame-communication-security--mitigations"></a>Beveiligings frame: Communicatie beveiliging | Oplossingen 
 | Product/Service | Artikel |
@@ -33,7 +33,7 @@ ms.locfileid: "68728362"
 | **Database** | <ul><li>[Zorg ervoor dat SQL Server-verbindings versleuteling en certificaat validatie worden](#sqlserver-validation)</li><li>[Versleutelde communicatie met SQL server afdwingen](#encrypted-sqlserver)</li></ul> |
 | **Azure Storage** | <ul><li>[Zorg ervoor dat de communicatie met Azure Storage over HTTPS is](#comm-storage)</li><li>[MD5-hash valideren na het downloaden van de BLOB als HTTPS niet kan worden ingeschakeld](#md5-https)</li><li>[SMB 3,0-compatibele client gebruiken om te zorgen voor in-transit gegevens versleuteling naar Azure-bestands shares](#smb-shares)</li></ul> |
 | **Mobiele client** | <ul><li>[Certificaat vastmaken implementeren](#cert-pinning)</li></ul> |
-| **WCF** | <ul><li>[HTTPS-beveiligd transport kanaal inschakelen](#https-transport)</li><li>[WCF: Beveiligings niveau voor bericht beveiliging instellen op EncryptAndSign](#message-protection)</li><li>[WCF: Een account met minimale bevoegdheden gebruiken om uw WCF-service uit te voeren](#least-account-wcf)</li></ul> |
+| **WCF** | <ul><li>[HTTPS-beveiligd transport kanaal inschakelen](#https-transport)</li><li>[WCF: Het beveiligings niveau voor bericht beveiliging instellen op EncryptAndSign @ no__t-0</li><li>[WCF: Gebruik een account met minimale bevoegdheden om uw WCF-service uit te voeren @ no__t-0</li></ul> |
 | **Web-API** | <ul><li>[Alle verkeer naar web-Api's via HTTPS-verbinding afdwingen](#webapi-https)</li></ul> |
 | **Azure Cache voor Redis** | <ul><li>[Zorg ervoor dat de communicatie met Azure cache voor redis meer dan SSL is](#redis-ssl)</li></ul> |
 | **IoT-veld Gateway** | <ul><li>[Communicatie tussen het apparaat en de veld Gateway beveiligen](#device-field)</li></ul> |
@@ -136,7 +136,7 @@ Het volgende voor beeld bevat een eenvoudige regel voor het herschrijven van URL
   </system.webServer>
 </configuration>
 ```
-Deze regel werkt door het retour neren van een HTTP-status code van 301 (permanente omleiding) wanneer de gebruiker een pagina aanvraagt via HTTP. De 301 leidt de aanvraag om naar dezelfde URL als de door de bezoeker aangevraagde, maar vervangt het HTTP-gedeelte van de aanvraag met HTTPS. Wordt bijvoorbeeld HTTP://contoso.com omgeleid naar HTTPS://contoso.com. 
+Deze regel werkt door het retour neren van een HTTP-status code van 301 (permanente omleiding) wanneer de gebruiker een pagina aanvraagt via HTTP. De 301 leidt de aanvraag om naar dezelfde URL als de door de bezoeker aangevraagde, maar vervangt het HTTP-gedeelte van de aanvraag met HTTPS. @No__t-0 wordt bijvoorbeeld omgeleid naar HTTPS://contoso.com. 
 
 ## <a id="http-hsts"></a>HTTP-strikte transport beveiliging (HSTS) inschakelen
 
@@ -147,7 +147,7 @@ Deze regel werkt door het retour neren van een HTTP-status code van 301 (permane
 | **Toepasselijke technologieën** | Encarta |
 | **Eigenschappen**              | N/A  |
 | **Referentie**              | [Cheat-blad OWASP HTTP strict-Trans Port beveiliging](https://www.owasp.org/index.php/HTTP_Strict_Transport_Security_Cheat_Sheet) |
-| **Stappen** | <p>HTTP strict Trans Port Security (HSTS) is een opt-in-beveiligings verbetering die is opgegeven door een webtoepassing via het gebruik van een speciale antwoord header. Zodra een ondersteunde browser deze header ontvangt, kan de browser voor komen dat er communicatie via HTTP naar het opgegeven domein wordt verzonden en wordt in plaats daarvan alle communicatie verzonden via HTTPS. Er wordt ook voor komen dat met HTTPS wordt geklikt op vragen over browsers.</p><p>Voor het implementeren van HSTS moet de volgende reactie header worden geconfigureerd voor een website globaal, hetzij in code of in configuratie. Strict-Trans Port-Security: Max-Age = 300; includeSubDomains HSTS behandelt de volgende bedreigingen:</p><ul><li>Gebruikers bladwijzer of hand matig https://example.com typen en is onderhevig aan een man-in-the-Middle-aanvaller: HSTS stuurt automatisch HTTP-aanvragen om naar HTTPS voor het doel domein</li><li>Webtoepassingen die louter HTTPS bedoeld zijn, bevatten per ongeluk HTTP-koppelingen of verzendt inhoud via HTTP: HSTS stuurt automatisch HTTP-aanvragen om naar HTTPS voor het doel domein</li><li>Een man-in-the-Middle-aanvaller probeert verkeer te onderscheppen van een slacht offer-gebruiker met een ongeldig certificaat en wil de gebruiker het onjuiste certificaat accepteert: HSTS staat niet toe dat een gebruiker het ongeldige certificaat bericht overschrijft</li></ul>|
+| **Stappen** | <p>HTTP strict Trans Port Security (HSTS) is een opt-in-beveiligings verbetering die is opgegeven door een webtoepassing via het gebruik van een speciale antwoord header. Zodra een ondersteunde browser deze header ontvangt, kan de browser voor komen dat er communicatie via HTTP naar het opgegeven domein wordt verzonden en wordt in plaats daarvan alle communicatie verzonden via HTTPS. Er wordt ook voor komen dat met HTTPS wordt geklikt op vragen over browsers.</p><p>Voor het implementeren van HSTS moet de volgende reactie header worden geconfigureerd voor een website globaal, hetzij in code of in configuratie. Strict-Trans Port-Security: Max-Age = 300; includeSubDomains HSTS behandelt de volgende bedreigingen:</p><ul><li>Gebruikers bladwijzer of typen hand matig https://example.com en zijn onderworpen aan een man-in-the-Middle-aanvaller: HSTS stuurt automatisch HTTP-aanvragen om naar HTTPS voor het doel domein</li><li>Webtoepassingen die louter HTTPS bedoeld zijn, bevatten per ongeluk HTTP-koppelingen of verzendt inhoud via HTTP: HSTS stuurt automatisch HTTP-aanvragen om naar HTTPS voor het doel domein</li><li>Een man-in-the-Middle-aanvaller probeert verkeer te onderscheppen van een slacht offer-gebruiker met een ongeldig certificaat en wil de gebruiker het onjuiste certificaat accepteert: HSTS staat niet toe dat een gebruiker het ongeldige certificaat bericht overschrijft</li></ul>|
 
 ## <a id="sqlserver-validation"></a>Zorg ervoor dat SQL Server-verbindings versleuteling en certificaat validatie worden
 
@@ -158,7 +158,7 @@ Deze regel werkt door het retour neren van een HTTP-status code van 301 (permane
 | **Toepasselijke technologieën** | SQL Azure  |
 | **Eigenschappen**              | SQL-versie-V12 |
 | **Referentie**              | [Aanbevolen procedures voor het schrijven van beveiligde verbindings reeksen voor SQL Database](https://social.technet.microsoft.com/wiki/contents/articles/2951.windows-azure-sql-database-connection-security.aspx#best) |
-| **Stappen** | <p>Alle communicatie tussen SQL Database en een client toepassing is te allen tijde versleuteld met behulp van Secure Sockets Layer (SSL). SQL Database biedt geen ondersteuning voor niet-versleutelde verbindingen. Om certificaten te valideren met toepassings code of hulpprogram ma's, vraagt u expliciet een versleutelde verbinding aan en vertrouwt u de server certificaten niet. Als uw toepassings code of hulpprogram ma's geen versleutelde verbinding aanvragen, worden er nog steeds versleutelde verbindingen ontvangen</p><p>Ze kunnen de server certificaten echter niet valideren en zijn dus vatbaar voor man in het midden. Certificaten valideren met ADO.net toepassings code, set `Encrypt=True` en `TrustServerCertificate=False` in de data base Connection String. Als u certificaten wilt valideren via SQL Server Management Studio, opent u het dialoog venster verbinding maken met server. Klik op verbinding versleutelen op het tabblad verbindings eigenschappen</p>|
+| **Stappen** | <p>Alle communicatie tussen SQL Database en een client toepassing is te allen tijde versleuteld met behulp van Secure Sockets Layer (SSL). SQL Database biedt geen ondersteuning voor niet-versleutelde verbindingen. Om certificaten te valideren met toepassings code of hulpprogram ma's, vraagt u expliciet een versleutelde verbinding aan en vertrouwt u de server certificaten niet. Als uw toepassings code of hulpprogram ma's geen versleutelde verbinding aanvragen, worden er nog steeds versleutelde verbindingen ontvangen</p><p>Ze kunnen de server certificaten echter niet valideren en zijn dus vatbaar voor man in het midden. Als u certificaten met een ADO.NET-toepassings code wilt valideren, stelt u `Encrypt=True` en `TrustServerCertificate=False` in de connection string van de data base in. Als u certificaten wilt valideren via SQL Server Management Studio, opent u het dialoog venster verbinding maken met server. Klik op verbinding versleutelen op het tabblad verbindings eigenschappen</p>|
 
 ## <a id="encrypted-sqlserver"></a>Versleutelde communicatie met SQL server afdwingen
 
@@ -213,7 +213,7 @@ Deze regel werkt door het retour neren van een HTTP-status code van 301 (permane
 | **Toepasselijke technologieën** | Generic, Windows Phone |
 | **Eigenschappen**              | N/A  |
 | **Referentie**              | [Certificaat en open bare sleutel vastmaken](https://www.owasp.org/index.php/Certificate_and_Public_Key_Pinning#.Net) |
-| **Stappen** | <p>Certificaat vastmaken beschermt tegen man-in-the-middle-aanvallen (MITM). Vastmaken is het proces van het koppelen van een host met het verwachte x509-certificaat of de open bare sleutel. Zodra een certificaat of open bare sleutel bekend of zichtbaar is voor een host, wordt het certificaat of de open bare sleutel gekoppeld of vastgemaakt aan de host. </p><p>Wanneer een kwaadwillende persoon een SSL-MITM-aanval probeert uit te voeren, wordt tijdens de SSL-Handshake de sleutel van de server van de aanvaller afwijkend van de sleutel van de vastgemaakte certificaten en wordt de aanvraag verwijderd, waardoor MITM certificaat vastmaken kan worden bereikt door de gemachtigde van `ServerCertificateValidationCallback` de ServicePointManager implementeren.</p>|
+| **Stappen** | <p>Certificaat vastmaken beschermt tegen man-in-the-middle-aanvallen (MITM). Vastmaken is het proces van het koppelen van een host met het verwachte x509-certificaat of de open bare sleutel. Zodra een certificaat of open bare sleutel bekend of zichtbaar is voor een host, wordt het certificaat of de open bare sleutel gekoppeld of vastgemaakt aan de host. </p><p>Wanneer een kwaadwillende persoon een SSL-MITM-aanval probeert uit te voeren, wordt tijdens de SSL-Handshake de sleutel van de server van de aanvaller afwijkend van de sleutel van de vastgemaakte certificaten en wordt de aanvraag verwijderd, waardoor MITM certificaat vastmaken kan worden bereikt door de gemachtigde van de ServicePointManager `ServerCertificateValidationCallback` implementeren.</p>|
 
 ### <a name="example"></a>Voorbeeld
 ```csharp
@@ -289,8 +289,8 @@ namespace CertificatePinningExample
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | NET Framework 3 |
 | **Eigenschappen**              | N/A  |
-| **Referentie**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [Fortify Konink rijk](https://vulncat.fortify.com/en/detail?id=desc.semantic.dotnet.wcf_misconfiguration_transport_security_enabled) |
-| **Stappen** | De configuratie van de toepassing moet ervoor zorgen dat HTTPS wordt gebruikt voor alle toegang tot gevoelige informatie.<ul><li>**EXPLANATION:** Als een toepassing gevoelige informatie verwerkt en geen versleuteling op bericht niveau gebruikt, mag deze alleen communiceren via een versleuteld transport kanaal.</li><li>**VEREISTEN** Zorg ervoor dat HTTP-Trans Port is uitgeschakeld en schakel in plaats daarvan HTTPS-Trans Port in. Vervang bijvoorbeeld de `<httpTransport/>` with `<httpsTransport/>` -tag. Vertrouw niet op een netwerk configuratie (firewall) om te garanderen dat de toepassing alleen toegankelijk is via een beveiligd kanaal. Vanuit een Philosophical-weergave punt moet de toepassing niet afhankelijk zijn van het netwerk voor de beveiliging.</li></ul><p>Vanuit een praktisch oogpunt van de gebruikers die verantwoordelijk zijn voor het beveiligen van het netwerk, worden de beveiligings vereisten van de toepassing niet altijd gevolgd tijdens het ontwikkelen.</p>|
+| **Referentie**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [Fortify Konink rijk](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_transport_security_enabled) |
+| **Stappen** | De configuratie van de toepassing moet ervoor zorgen dat HTTPS wordt gebruikt voor alle toegang tot gevoelige informatie.<ul><li>**EXPLANATION:** Als een toepassing gevoelige informatie verwerkt en geen versleuteling op bericht niveau gebruikt, mag deze alleen communiceren via een versleuteld transport kanaal.</li><li>**VEREISTEN** Zorg ervoor dat HTTP-Trans Port is uitgeschakeld en schakel in plaats daarvan HTTPS-Trans Port in. Vervang bijvoorbeeld het `<httpTransport/>` door de tag `<httpsTransport/>`. Vertrouw niet op een netwerk configuratie (firewall) om te garanderen dat de toepassing alleen toegankelijk is via een beveiligd kanaal. Vanuit een Philosophical-weergave punt moet de toepassing niet afhankelijk zijn van het netwerk voor de beveiliging.</li></ul><p>Vanuit een praktisch oogpunt van de gebruikers die verantwoordelijk zijn voor het beveiligen van het netwerk, worden de beveiligings vereisten van de toepassing niet altijd gevolgd tijdens het ontwikkelen.</p>|
 
 ## <a id="message-protection"></a>WCF: Beveiligings niveau voor bericht beveiliging instellen op EncryptAndSign
 
@@ -301,10 +301,10 @@ namespace CertificatePinningExample
 | **Toepasselijke technologieën** | .NET Framework 3 |
 | **Eigenschappen**              | N/A  |
 | **Referentie**              | [MSDN](https://msdn.microsoft.com/library/ff650862.aspx) |
-| **Stappen** | <ul><li>**EXPLANATION:** Wanneer het beveiligings niveau is ingesteld op ' geen ', wordt de beveiliging van berichten uitgeschakeld. Vertrouwelijkheid en integriteit wordt bereikt met het juiste niveau van de instelling.</li><li>**VEREISTEN**<ul><li>Wanneer `Mode=None` -schakelt bericht beveiliging uit</li><li>Als `Mode=Sign` -ondertekenen, maar het bericht niet versleutelen; moet worden gebruikt als de gegevens integriteit belang rijk is</li><li>het `Mode=EncryptAndSign` bericht wanneer-ondertekenen en versleutelen</li></ul></li></ul><p>Overweeg versleuteling uit te scha kelen en uw bericht alleen te ondertekenen wanneer u alleen de integriteit van de gegevens moet valideren zonder dat u zich zorgen hoeft te maken. Dit kan handig zijn voor bewerkingen of service contracten waarin u de oorspronkelijke afzender moet valideren, maar er geen gevoelige gegevens worden verzonden. Zorg er bij het verminderen van het beveiligings niveau voor dat het bericht geen persoons gegevens (PII) bevat.</p>|
+| **Stappen** | <ul><li>**EXPLANATION:** Wanneer het beveiligings niveau is ingesteld op ' geen ', wordt de beveiliging van berichten uitgeschakeld. Vertrouwelijkheid en integriteit wordt bereikt met het juiste niveau van de instelling.</li><li>**VEREISTEN**<ul><li>Wanneer `Mode=None`-schakelt bericht beveiliging uit</li><li>Als `Mode=Sign`-tekens, maar het bericht niet versleutelt. moet worden gebruikt als de gegevens integriteit belang rijk is</li><li>Als `Mode=EncryptAndSign`-tekent en versleutelt het bericht</li></ul></li></ul><p>Overweeg versleuteling uit te scha kelen en uw bericht alleen te ondertekenen wanneer u alleen de integriteit van de gegevens moet valideren zonder dat u zich zorgen hoeft te maken. Dit kan handig zijn voor bewerkingen of service contracten waarin u de oorspronkelijke afzender moet valideren, maar er geen gevoelige gegevens worden verzonden. Zorg er bij het verminderen van het beveiligings niveau voor dat het bericht geen persoonlijke gegevens bevat.</p>|
 
 ### <a name="example"></a>Voorbeeld
-Het configureren van de service en de bewerking om het bericht alleen te ondertekenen wordt weer gegeven in de volgende voor beelden. Voor beeld van service `ProtectionLevel.Sign`contract van: Hier volgt een voor beeld van het gebruik van ProtectionLevel. Sign op service contract niveau: 
+Het configureren van de service en de bewerking om het bericht alleen te ondertekenen wordt weer gegeven in de volgende voor beelden. Voor beeld van service contract van `ProtectionLevel.Sign`: Hier volgt een voor beeld van het gebruik van ProtectionLevel. Sign op service contract niveau: 
 ```
 [ServiceContract(Protection Level=ProtectionLevel.Sign] 
 public interface IService 
@@ -314,7 +314,7 @@ public interface IService
 ```
 
 ### <a name="example"></a>Voorbeeld
-Voor beeld van een `ProtectionLevel.Sign` bewerkings contract van (voor gedetailleerde controle): Hier volgt een voor beeld van het `ProtectionLevel.Sign` gebruik op het niveau van de OperationContract:
+Voor beeld van een bewerkings contract van `ProtectionLevel.Sign` (voor het besturings element gedetailleerd): Hier volgt een voor beeld van het gebruik van `ProtectionLevel.Sign` op het niveau van OperationContract:
 
 ```
 [OperationContract(ProtectionLevel=ProtectionLevel.Sign] 

@@ -10,12 +10,12 @@ ms.devlang: java
 ms.topic: quickstart
 ms.custom: mvc, seo-java-august2019, seo-java-september2019
 ms.date: 06/21/2019
-ms.openlocfilehash: a97081101df5199d3201a6ec47df4c2ac2747416
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: a808216b62459869e9adfd88afc60ee53259221d
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70309145"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71838664"
 ---
 # <a name="quickstart-send-telemetry-to-an-azure-iot-hub-and-read-it-with-a-java-application"></a>Quickstart: Telemetrie verzenden naar een Azure IoT hub en deze lezen met een Java-toepassing
 
@@ -125,7 +125,7 @@ De toepassing voor het gesimuleerde apparaat maakt verbinding met een apparaatsp
 
     In de volgende schermafbeelding ziet u de uitvoer op het moment dat de toepassing voor het gesimuleerde apparaat telemetriegegevens naar uw IoT-hub verzendt:
 
-    ![Het gesimuleerde apparaat uitvoeren](media/quickstart-send-telemetry-java/SimulatedDevice.png)
+    ![Uitvoer van de telemetrie die door het apparaat wordt verzonden naar uw IoT-hub](media/quickstart-send-telemetry-java/iot-hub-simulated-device.png)
 
 ## <a name="read-the-telemetry-from-your-hub"></a>De telemetrie van uw hub lezen
 
@@ -155,7 +155,7 @@ De back-endtoepassing maakt verbinding met het eindpunt **Events** aan de servic
 
     In de volgende schermafbeelding ziet u de uitvoer op het moment dat de back-endtoepassing telemetriegegevens ontvangt die door het gesimuleerde apparaat naar de hub zijn verzonden:
 
-    ![De back-endtoepassing uitvoeren](media/quickstart-send-telemetry-java/ReadDeviceToCloud.png)
+    ![Uitvoer als back-end-toepassing telemetriegegevens ontvangt die worden verzonden naar uw IoT-hub](media/quickstart-send-telemetry-java/iot-hub-read-device-to-cloud.png)
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 

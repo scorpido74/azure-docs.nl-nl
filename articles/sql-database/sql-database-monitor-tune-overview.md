@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: jrasnick, carlrab
 ms.date: 01/25/2019
-ms.openlocfilehash: 83ff39e9f3b7f95256466c74011e55ebdc22a7a9
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: 5df9df1474489d7f1b1fb4e1089143cca63a3e42
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910533"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71935605"
 ---
 # <a name="monitoring-and-performance-tuning"></a>Prestaties bewaken en afstemmen
 
@@ -187,7 +187,7 @@ Een hercompilatie (of nieuwe compilatie na verwijdering van de cache) kan nog st
 
 Nadat u het probleem hebt vastgesteld, kunt u de probleem query's afstemmen of de berekenings grootte of servicelaag upgraden om de capaciteit van uw SQL database te verg Roten om de CPU-vereisten te absorberen. 
 
-Zie voor meer informatie bronnen voor het [schalen van één data base in Azure SQL database](sql-database-single-database-scale.md) en het [schalen van elastische pool resources in Azure SQL database](sql-database-elastic-pool-scale.md). Zie [resource limieten op exemplaar niveau](sql-database-managed-instance-resource-limits.md#instance-level-resource-limits)voor meer informatie over het schalen van een beheerd exemplaar.
+Zie voor meer informatie bronnen voor het [schalen van één data base in Azure SQL database](sql-database-single-database-scale.md) en het [schalen van elastische pool resources in Azure SQL database](sql-database-elastic-pool-scale.md). Zie [resource limieten voor de service tier](sql-database-managed-instance-resource-limits.md#service-tier-characteristics)voor meer informatie over het schalen van een beheerd exemplaar.
 
 ### <a name="performance-problems-caused-by-increased-workload-volume"></a>Prestatie problemen als gevolg van een toegenomen hoeveelheid werk belasting
 

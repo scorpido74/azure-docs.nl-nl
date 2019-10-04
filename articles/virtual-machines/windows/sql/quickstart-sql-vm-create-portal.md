@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 07/11/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 3ba804f76f8d443c0b49a9b4e5425333f01f0b9a
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: bbf127f105f0ef22a23f00541396c2ac66b0e5f9
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102331"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828366"
 ---
 # <a name="quickstart-create-a-sql-server-2017-windows-virtual-machine-in-the-azure-portal"></a>Quickstart: Een virtuele SQL Server 2017-machine voor Windows maken in Azure Portal
 
@@ -43,7 +43,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 1. Selecteer **Azure SQL** in het linkermenu van de Azure Portal. Als **Azure SQL** niet voor komt in de lijst, selecteert u **alle services**en typt u vervolgens *Azure SQL* in het zoekvak.
 1. Selecteer **+ toevoegen** om de **optie pagina SQL-implementatie selecteren** te openen. U kunt aanvullende informatie weer geven door **Details weer geven** te selecteren op de tegel **virtuele SQL-machines** .
-1. Selecteer de installatiekopie met de naam **Gratis licentie voor SQL Server: SQL Server 2017 Developer op Windows Server 2016** -installatie kopie in de vervolg keuzelijst.
+1. Selecteer de installatiekopie met de naam **Gratis licentie voor SQL Server: SQL Server 2017-ontwikkelaar in Windows Server 2016 @ no__t-0-installatie kopie in de vervolg keuzelijst.
 
    ![Nieuw zoekvenster](./media/quickstart-sql-vm-create-portal/select-sql-2017-vm-image.png)
 
@@ -81,9 +81,10 @@ Geef op het tabblad **basis beginselen** de volgende informatie op:
 Configureer op het tabblad **SQL Server instellingen** de volgende opties:
 
 1. Onder **Beveiliging & netwerken**selecteert u _openbaar (Internet_) voor **SQL-connectiviteit** en wijzigt u de `1401` poort om te voor komen dat u een bekend poort nummer gebruikt in het open bare scenario. 
-1. Selecteer **inschakelen**onder **SQL-verificatie**. De SQL-aanmeldingsgegevens zijn ingesteld op dezelfde combinatie van gebruikersnaam en wachtwoord als u voor de virtuele machine hebt geconfigureerd. Gebruik de standaard instellingen voor **Azure Key Vault integratie** en **opslag configuratie**.  
+1. Selecteer **inschakelen**onder **SQL-verificatie**. De SQL-aanmeldingsgegevens zijn ingesteld op dezelfde combinatie van gebruikersnaam en wachtwoord als u voor de virtuele machine hebt geconfigureerd. Gebruik de standaard instelling voor de [**integratie van Azure Key Vault**](virtual-machines-windows-ps-sql-keyvault.md). De **opslag configuratie** is niet beschikbaar voor de basis installatie kopie van SQL Server VM, maar u kunt meer informatie vinden over de beschik bare opties voor andere installatie kopieën bij de [opslag configuratie](virtual-machines-windows-sql-server-storage-configuration.md#new-vms).  
 
    ![Beveiligings instellingen van SQL Server](media/quickstart-sql-vm-create-portal/sql-server-settings.png)
+
 
 1. Wijzig indien nodig de andere instellingen en selecteer vervolgens **controleren + maken**. 
 

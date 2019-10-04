@@ -15,79 +15,79 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/26/2019
 ms.author: Zhchia
-ms.openlocfilehash: f94c12ed355b25e6a10c8d71e176d9bf3bf78758
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 46972209a8fa509ff2f17832ab8329aa3cef2548
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70847099"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71840330"
 ---
 # <a name="tutorial-configure-wrike-for-automatic-user-provisioning"></a>Zelfstudie: Wrike configureren voor automatische gebruikers inrichting
 
-Het doel van deze zelf studie is het demonstreren van de stappen die moeten worden uitgevoerd in Wrike en Azure Active Directory (Azure AD) om Azure AD te configureren voor het automatisch inrichten en ongedaan maken van de inrichting van gebruikers en/of groepen in Wrike.
+Het doel van deze zelf studie is het demonstreren van de stappen die u uitvoert in Wrike en Azure Active Directory (Azure AD) om Azure AD te configureren voor het automatisch inrichten en ongedaan maken van de inrichting van gebruikers of groepen in Wrike.
 
 > [!NOTE]
-> In deze zelf studie wordt een connector beschreven die boven op de Azure AD User Provisioning-Service is gebouwd. Zie [Gebruikers inrichten en de inrichting ongedaan maken voor SaaS-toepassingen met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)voor belang rijke informatie over de werking van deze service, hoe deze werkt en veelgestelde vragen.
+> In deze zelf studie wordt een connector beschreven die boven op de Azure AD User Provisioning-Service is gebouwd. Zie voor belang rijke informatie over de werking van deze service, hoe deze werkt en veelgestelde vragen [gebruikers automatisch inrichten en ongedaan maken van de inrichting van SaaS-toepassingen (Software-as-a-Service) met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning).
 >
-> Deze connector bevindt zich momenteel in de open bare preview. Zie [aanvullende gebruiksrecht overeenkomst voor Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)previews voor meer informatie over de algemene Microsoft Azure gebruiksrecht overeenkomst voor preview-functies.
+> Deze connector bevindt zich momenteel in de open bare preview. Zie [aanvullende gebruiksrecht overeenkomst voor Microsoft Azure previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)voor meer informatie over de algemene Microsoft Azure gebruiksrecht overeenkomst voor preview-functies.
 
 ## <a name="prerequisites"></a>Vereisten
 
 In het scenario dat in deze zelf studie wordt beschreven, wordt ervan uitgegaan dat u al beschikt over de volgende vereisten:
 
 * Een Azure AD-Tenant
-* [Een Wrike-Tenant](https://www.wrike.com/price/).
-* Een gebruikers account in Wrike met beheerders machtigingen.
+* [Een Wrike-Tenant](https://www.wrike.com/price/)
+* Een gebruikers account in Wrike met beheerders machtigingen
 
 ## <a name="assign-users-to-wrike"></a>Gebruikers toewijzen aan Wrike
-Azure Active Directory gebruikt een concept met de naam toewijzingen om te bepalen welke gebruikers toegang moeten krijgen tot geselecteerde apps. In de context van het automatisch inrichten van gebruikers worden alleen de gebruikers en/of groepen die zijn toegewezen aan een toepassing in azure AD gesynchroniseerd.
+Azure Active Directory gebruikt een concept met de naam *toewijzingen* om te bepalen welke gebruikers toegang moeten krijgen tot geselecteerde apps. In de context van het automatisch inrichten van gebruikers worden alleen de gebruikers of groepen die zijn toegewezen aan een toepassing in azure AD gesynchroniseerd.
 
-Voordat u automatische gebruikers inrichting configureert en inschakelt, moet u beslissen welke gebruikers en/of groepen in azure AD toegang nodig hebben tot Wrike. Eenmaal besloten, kunt u deze gebruikers en/of groepen toewijzen aan Wrike door de volgende instructies te volgen:
+Voordat u automatische gebruikers inrichting configureert en inschakelt, moet u bepalen welke gebruikers of groepen in azure AD toegang nodig hebben tot Wrike. Wijs deze gebruikers of groepen vervolgens toe aan Wrike door de volgende instructies te volgen:
 
 * [Een gebruiker of groep toewijzen aan een bedrijfs-app](../manage-apps/assign-user-or-group-access-portal.md)
 
 ## <a name="important-tips-for-assigning-users-to-wrike"></a>Belang rijke tips voor het toewijzen van gebruikers aan Wrike
 
-* U wordt aangeraden één Azure AD-gebruiker toe te wijzen aan Wrike om de configuratie van automatische gebruikers inrichting te testen. Extra gebruikers en/of groepen kunnen later worden toegewezen.
+* We raden u aan één Azure AD-gebruiker toe te wijzen aan Wrike om de configuratie van automatische gebruikers inrichting te testen. Extra gebruikers of groepen kunnen later worden toegewezen.
 
-* Wanneer u een gebruiker toewijst aan Wrike, moet u een geldige toepassingsspecifieke rol (indien beschikbaar) selecteren in het dialoog venster toewijzing. Gebruikers met de rol **standaard toegang** worden uitgesloten van het inrichten.
+* Wanneer u een gebruiker toewijst aan Wrike, moet u een geldige toepassingsspecifieke rol (indien beschikbaar) selecteren in het dialoog venster toewijzing. Gebruikers met de rol standaard toegang worden uitgesloten van het inrichten.
 
 ## <a name="set-up-wrike-for-provisioning"></a>Wrike instellen voor inrichting
 
-Voordat u Wrike configureert voor het automatisch inrichten van gebruikers met Azure AD, moet u SCIM inrichten inschakelen op Wrike.
+Voordat u Wrike configureert voor het automatisch inrichten van gebruikers met Azure AD, moet u systeem inschakelen voor SCIM-inrichting (Cross-Domain Identity Management) op Wrike.
 
-1. Meld u aan bij de [Wrike-beheer console](https://www.Wrike.com/login/). Navigeer naar uw Tenant-ID. Selecteer **APPS & integraties**.
+1. Meld u aan bij de [Wrike-beheer console](https://www.Wrike.com/login/). Ga naar uw Tenant-ID. Selecteer **Apps & integraties**.
 
-    ![Wrike-beheer console](media/Wrike-provisioning-tutorial/admin.png)
+    ![Integraties van apps &](media/Wrike-provisioning-tutorial/admin.png)
 
-2.  Navigeer naar **Azure AD**. Selecteer deze.
+2.  Ga naar **Azure AD** en selecteer deze.
 
-    ![Wrike-beheer console](media/Wrike-provisioning-tutorial/Capture01.png)
+    ![Azure AD](media/Wrike-provisioning-tutorial/Capture01.png)
 
-3.  Selecteer de SCIM. Kopieer de **basis-URL**.
+3.  Selecteer SCIM. Kopieer de **basis-URL**.
 
-    ![Wrike-beheer console](media/Wrike-provisioning-tutorial/Wrike-tenanturl.png)
+    ![Basis-URL](media/Wrike-provisioning-tutorial/Wrike-tenanturl.png)
 
-4. Klik op **API** > Selecteer **Azure scim**.
+4. Selecteer **API** > **Azure scim**.
 
-    ![SCIM Wrike toevoegen](media/Wrike-provisioning-tutorial/Wrike-add-scim.png)
+    ![Azure-SCIM](media/Wrike-provisioning-tutorial/Wrike-add-scim.png)
 
-5.  Er wordt een pop-up geopend. Voer het wacht woord in dat u eerder hebt gemaakt voor het maken van het account 
+5.  Er wordt een pop-up geopend. Voer het wacht woord in dat u eerder hebt gemaakt om een account te maken.
 
     ![Wrike-token maken](media/Wrike-provisioning-tutorial/password.png)
 
-6.  Kopieer het **geheime token** en plak het in azure AD. Klik op **Opslaan** om de inrichtings configuratie op Wrike te volt ooien.
+6.  Kopieer het **geheime token**en plak het in azure AD. Selecteer **Opslaan** om de inrichtings configuratie op Wrike te volt ooien.
 
-    ![Wrike-token maken](media/Wrike-provisioning-tutorial/Wrike-create-token.png)
+    ![Permanent toegangs token](media/Wrike-provisioning-tutorial/Wrike-create-token.png)
 
 
 ## <a name="add-wrike-from-the-gallery"></a>Wrike toevoegen vanuit de galerie
 
-Voordat u Wrike configureert voor het automatisch inrichten van gebruikers met Azure AD, moet u Wrike van de Azure AD-toepassings galerie toevoegen aan uw lijst met beheerde SaaS-toepassingen.
+Voordat u Wrike configureert voor het automatisch inrichten van gebruikers met Azure AD, voegt u Wrike van de Azure AD-toepassings galerie toe aan uw lijst met beheerde SaaS-toepassingen.
 
-**Voer de volgende stappen uit om Wrike toe te voegen vanuit de Azure AD-toepassings galerie:**
+Voer de volgende stappen uit om Wrike toe te voegen vanuit de Azure AD-toepassings galerie.
 
-1. Selecteer in de **[Azure Portal](https://portal.azure.com)** in het navigatie venster links **Azure Active Directory**.
+1. Selecteer **Azure Active Directory**in de [Azure Portal](https://portal.azure.com)in het navigatie deel venster links.
 
     ![De Azure Active Directory-knop](common/select-azuread.png)
 
@@ -99,23 +99,23 @@ Voordat u Wrike configureert voor het automatisch inrichten van gebruikers met A
 
     ![De knop nieuwe toepassing](common/add-new-app.png)
 
-4. Typ **Wrike**in het zoekvak, selecteer **Wrike** in het deel venster resultaten en klik vervolgens op de knop **toevoegen** om de toepassing toe te voegen.
+4. Typ **Wrike**in het zoekvak, selecteer **Wrike** in het deel venster resultaten en selecteer **toevoegen** om de toepassing toe te voegen.
 
     ![Wrike in de lijst met resultaten](common/search-new-app.png)
 
 
-## <a name="configuring-automatic-user-provisioning-to-wrike"></a>Automatische gebruikers inrichting configureren voor Wrike 
+## <a name="configure-automatic-user-provisioning-to-wrike"></a>Automatische gebruikers inrichting configureren voor Wrike 
 
-In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azure AD-inrichtings service om gebruikers en/of groepen in Wrike te maken, bij te werken en uit te scha kelen op basis van gebruikers-en/of groeps toewijzingen in azure AD.
+In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azure AD-inrichtings service om gebruikers of groepen in Wrike te maken, bij te werken en uit te scha kelen op basis van gebruikers-of groeps toewijzingen in azure AD.
 
 > [!TIP]
-> U kunt er ook voor kiezen om eenmalige aanmelding op basis van SAML in te scha kelen voor Wrike, gevolgd door de instructies in de [Wrike-zelf studie voor eenmalige aanmelding](wrike-tutorial.md). Eenmalige aanmelding kan onafhankelijk van automatische gebruikers inrichting worden geconfigureerd, hoewel deze twee functies elkaar aanvullen.
+> Als u eenmalige aanmelding op basis van SAML wilt inschakelen voor Wrike, volgt u de instructies in de [Wrike-zelf studie voor eenmalige aanmelding](wrike-tutorial.md). Eenmalige aanmelding kan onafhankelijk van automatische gebruikers inrichting worden geconfigureerd, hoewel deze twee functies elkaar aanvullen.
 
-### <a name="to-configure-automatic-user-provisioning-for-wrike-in-azure-ad"></a>Automatische gebruikers inrichting configureren voor Wrike in azure AD:
+### <a name="configure-automatic-user-provisioning-for-wrike-in-azure-ad"></a>Automatische gebruikers inrichting configureren voor Wrike in azure AD
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen**en selecteer **alle toepassingen**.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen** > **alle toepassingen**.
 
-    ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
+    ![Alle toepassingen](common/enterprise-applications.png)
 
 2. Selecteer in de lijst toepassingen de optie **Wrike**.
 
@@ -127,47 +127,47 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
 4. Stel de **inrichtings modus** in op **automatisch**.
 
-    ![Tabblad inrichten](common/provisioning-automatic.png)
+    ![Inrichtings modus ingesteld op automatisch](common/provisioning-automatic.png)
 
-5. In het gedeelte beheerders referenties voert u de waarden in voor de **basis-URL** en het **permanente toegangs token** die respectievelijk eerder zijn opgehaald in de **Tenant-URL** en het **geheime token** . Klik op **verbinding testen** om te controleren of Azure AD verbinding kan maken met Wrike. Als de verbinding mislukt, zorg er dan voor dat uw Wrike-account beheerders machtigingen heeft en probeer het opnieuw.
+5. In het gedeelte beheerders referenties voert u de waarden van de **basis-URL** en het **permanente toegangs token** in die respectievelijk eerder zijn opgehaald in de **Tenant-URL** en het **geheime token**. Selecteer **verbinding testen** om te controleren of Azure AD verbinding kan maken met Wrike. Als de verbinding mislukt, zorgt u ervoor dat uw Wrike-account beheerders machtigingen heeft en probeer het opnieuw.
 
     ![Tenant-URL + token](common/provisioning-testconnection-tenanturltoken.png)
 
-7. Voer in het veld **e-mail melding** het e-mail adres in van een persoon of groep die de inrichtings fout meldingen moet ontvangen en schakel het selectie vakje in om **een e-mail bericht te verzenden wanneer er een fout optreedt**.
+7. Voer in het vak **e-mail bericht** het e-mail adres in van een persoon of groep die de inrichtings fout meldingen moet ontvangen. Schakel het selectie vakje **e-mail melding verzenden wanneer een fout optreedt** in.
 
-    ![E-mailmelding](common/provisioning-notification-email.png)
+    ![E-mailadres voor meldingen](common/provisioning-notification-email.png)
 
-8. Klik op **Opslaan**.
+8. Selecteer **Opslaan**.
 
 9. Selecteer in de sectie **toewijzingen** de optie **Azure Active Directory gebruikers synchroniseren met Wrike**.
 
     ![Wrike-gebruikers toewijzingen](media/Wrike-provisioning-tutorial/Wrike-user-mappings.png)
 
-10. Controleer de gebruikers kenmerken die zijn gesynchroniseerd vanuit Azure AD naar Wrike in de sectie **kenmerk toewijzing** . De kenmerken die zijn geselecteerd als **overeenkomende** eigenschappen worden gebruikt om te voldoen aan de gebruikers accounts in Wrike voor bijwerk bewerkingen. Selecteer de knop **Opslaan** om eventuele wijzigingen door te voeren.
+10. Controleer de gebruikers kenmerken die zijn gesynchroniseerd vanuit Azure AD naar Wrike in de sectie **kenmerk toewijzingen** . De kenmerken die zijn geselecteerd als **overeenkomende** eigenschappen worden gebruikt om te voldoen aan de gebruikers accounts in Wrike voor bijwerk bewerkingen. Selecteer **Opslaan** om eventuele wijzigingen door te voeren.
 
     ![Wrike-gebruikers kenmerken](media/Wrike-provisioning-tutorial/Wrike-user-attributes.png)
 
-11. Raadpleeg de volgende instructies in de [zelf studie](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)voor het filteren op bereik voor het configureren van bereik filters.
+11. Als u bereik filters wilt configureren, volgt u de instructies in de [zelf studie](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)voor het filteren op bereik.
 
 12. Als u de Azure AD-inrichtings service voor **Wrike wilt inschakelen, wijzigt u de** **inrichtings status** in in het gedeelte **instellingen** .
 
     ![Inrichtings status inschakelt op](common/provisioning-toggle-on.png)
 
-13. Definieer de gebruikers en/of groepen die u wilt inrichten voor Wrike door de gewenste waarden in het **bereik** te kiezen in de sectie **instellingen** .
+13. Definieer de gebruikers of groepen die u wilt inrichten voor Wrike door de gewenste waarden in het **bereik** te kiezen in de sectie **instellingen** .
 
     ![Inrichtings bereik](common/provisioning-scope.png)
 
-14. Wanneer u klaar bent om in te richten, klikt u op **Opslaan**.
+14. Wanneer u klaar bent om in te richten, selecteert u **Opslaan**.
 
     ![Inrichtings configuratie opslaan](common/provisioning-configuration-save.png)
 
-Met deze bewerking wordt de eerste synchronisatie gestart van alle gebruikers en/of groepen die in het **bereik** zijn gedefinieerd in de sectie **instellingen** . Het duurt langer voordat de initiële synchronisatie is uitgevoerd dan bij de volgende synchronisaties. Voor meer informatie over hoe lang het duurt voor het inrichten van gebruikers en/of groepen, raadpleegt u [hoe lang het duurt om gebruikers](../manage-apps/application-provisioning-when-will-provisioning-finish-specific-user.md#how-long-will-it-take-to-provision-users)in te richten.
+Met deze bewerking wordt de eerste synchronisatie gestart van alle gebruikers of groepen die in het **bereik** zijn gedefinieerd in de sectie **instellingen** . Het duurt langer voordat de initiële synchronisatie is uitgevoerd dan bij de volgende synchronisaties. Voor meer informatie over hoe lang het duurt voor het inrichten van gebruikers of groepen, raadpleeg dan [hoe lang het duurt om gebruikers in te richten?](../manage-apps/application-provisioning-when-will-provisioning-finish-specific-user.md#how-long-will-it-take-to-provision-users)
 
 U kunt de **huidige status** sectie gebruiken om de voortgang te controleren en koppelingen naar uw inrichtings activiteiten rapport te volgen, waarin alle acties worden beschreven die worden uitgevoerd door de Azure AD Provisioning-Service op Wrike. Zie [de status van gebruikers inrichten controleren](../manage-apps/application-provisioning-when-will-provisioning-finish-specific-user.md)voor meer informatie. Zie [rapportage over het automatisch inrichten van gebruikers accounts](../manage-apps/check-status-user-account-provisioning.md)voor informatie over het vastleggen van Azure AD-inrichtings Logboeken.
 
 ## <a name="additional-resources"></a>Aanvullende resources
 
-* [Inrichten van gebruikers accounts voor zakelijke apps beheren](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Het inrichten van gebruikers accounts beheren voor zakelijke apps](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
 ## <a name="next-steps"></a>Volgende stappen

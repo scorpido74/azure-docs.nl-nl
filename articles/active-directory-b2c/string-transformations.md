@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 83379cc194f23ebff977babc7124a7bc90f4bc60
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 77f0b196777ae0f2ff0b870eac0a01b11854190b
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71063441"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71936812"
 ---
 # <a name="string-claims-transformations"></a>Teken reeks claim transformaties
 
@@ -29,8 +29,8 @@ Vergelijk twee claims en verwerp een uitzonde ring als deze niet gelijk zijn aan
 
 | Item | TransformationClaimType | Gegevenstype | Opmerkingen |
 | ---- | ----------------------- | --------- | ----- |
-| inputClaim | inputClaim1 | string | Het eerste claim type, dat moet worden vergeleken. |
-| inputClaim | inputClaim2 | string | Tweede claim type, dat moet worden vergeleken. |
+| InputClaim | inputClaim1 | string | Het eerste claim type, dat moet worden vergeleken. |
+| InputClaim | inputClaim2 | string | Tweede claim type, dat moet worden vergeleken. |
 | InputParameter | stringComparison | string | vergelijking van teken reeksen, een van de volgende waarden: Rang telwoord, OrdinalIgnoreCase. |
 
 De **AssertStringClaimsAreEqual** -claim transformatie wordt altijd uitgevoerd op basis van een [validatie technische profiel](validation-technical-profile.md) dat wordt aangeroepen door een [zelf-bevestigd technisch profiel](self-asserted-technical-profile.md). De meta gegevens van het zelfondertekende technische profiel **UserMessageIfClaimsTransformationStringsAreNotEqual** bepalen het fout bericht dat aan de gebruiker wordt gepresenteerd.
@@ -154,8 +154,8 @@ Bepaal of een claim van een teken reeks gelijk is aan een andere. Het resultaat 
 
 | Item | TransformationClaimType | Gegevenstype | Opmerkingen |
 | ---- | ----------------------- | --------- | ----- |
-| inputClaim | inputClaim1 | string | Eerste claim type, dat moet worden vergeleken. |
-| inputClaim | inputClaim2 | string | Tweede claim type, dat moet worden vergeleken. |
+| InputClaim | inputClaim1 | string | Eerste claim type, dat moet worden vergeleken. |
+| InputClaim | inputClaim2 | string | Tweede claim type, dat moet worden vergeleken. |
 | InputParameter | And | string | Mogelijke waarden: `EQUAL` of `NOT EQUAL`. |
 | InputParameter | ignoreCase | boolean | Hiermee geeft u op of deze vergelijking het hoofdletter gebruik moet negeren van de teken reeksen die worden vergeleken. |
 | OutputClaim | outputClaim | boolean | Het claim type dat is geproduceerd nadat deze claim transformatie is aangeroepen. |
@@ -195,7 +195,7 @@ Hiermee wordt bepaald of een claim waarde gelijk is aan de waarde van de invoer 
 
 | Item | TransformationClaimType | Gegevenstype | Opmerkingen |
 | ---- | ----------------------- | --------- | ----- |
-| inputClaim | inputClaim1 | string | Het claim type, dat moet worden vergeleken. |
+| InputClaim | inputClaim1 | string | Het claim type, dat moet worden vergeleken. |
 | InputParameter | And | string | Mogelijke waarden: `EQUAL` of `NOT EQUAL`. |
 | InputParameter | compareTo | string | vergelijking van teken reeksen, een van de volgende waarden: Rang telwoord, OrdinalIgnoreCase. |
 | InputParameter | ignoreCase | boolean | Hiermee geeft u op of deze vergelijking het hoofdletter gebruik moet negeren van de teken reeksen die worden vergeleken. |
@@ -238,8 +238,8 @@ Hiermee maakt u een wille keurige teken reeks met de generator wille keurige get
 | InputParameter | randomGeneratorType | string | Hiermee geeft u de wille keurige `GUID` waarde moet worden gegenereerd, ( `INTEGER` globale unieke id) of (een getal). |
 | InputParameter | stringFormat | string | Beschrijving Format teer de wille keurige waarde. |
 | InputParameter | base64 | boolean | Beschrijving Zet de wille keurige waarde om in base64. Als de teken reeks indeling wordt toegepast, wordt de waarde na de teken reeks indeling gecodeerd in base64. |
-| InputParameter | maximumNumber | int | Beschrijving Alleen `INTEGER` voor randomGeneratorType. Geef het maximum aantal op. |
-| InputParameter | meerder  | int | Beschrijving Alleen `INTEGER` voor randomGeneratorType. Geef het Seed op voor de wille keurige waarde. Opmerking: hetzelfde zaad levert dezelfde reeks wille keurige getallen op. |
+| InputParameter | maximumNumber | int | Beschrijving Alleen voor `INTEGER`-randomGeneratorType. Geef het maximum aantal op. |
+| InputParameter | meerder  | int | Beschrijving Alleen voor `INTEGER`-randomGeneratorType. Geef het Seed op voor de wille keurige waarde. Opmerking: hetzelfde zaad levert dezelfde reeks wille keurige getallen op. |
 | OutputClaim | outputClaim | string | De ClaimTypes die wordt geproduceerd nadat deze claim transformatie is aangeroepen. De wille keurige waarde. |
 
 In het volgende voor beeld wordt een algemene unieke ID gegenereerd. Deze claim transformatie wordt gebruikt om de wille keurige UPN (User Principle Name) te maken.
@@ -282,7 +282,7 @@ In het volgende voor beeld wordt een wille keurige waarde voor geheel getal gege
 - Invoer parameters:
     - **randomGeneratorType**: INTEGER
     - **maximumNumber**: 1000
-    - **stringFormat**: AUTHENTIC{0}
+    - **stringFormat**: OTP_ @ NO__T-0
     - **Base64**: onwaar
 - Uitvoer claims:
     - **outputClaim**: OTP_853
@@ -504,7 +504,7 @@ Controleert of een teken reeks claim `matchTo` en invoer parameter gelijk zijn, 
 
 | Item | TransformationClaimType | Gegevenstype | Opmerkingen |
 | ---- | ----------------------- | --------- | ----- |
-| inputClaim | inputClaim | string | Het claim type, dat moet worden vergeleken. |
+| InputClaim | inputClaim | string | Het claim type, dat moet worden vergeleken. |
 | InputParameter | matchTo | string | De teken reeks waarmee moet worden `inputClaim`vergeleken. |
 | InputParameter | stringComparison | string | Mogelijke waarden: `Ordinal` of `OrdinalIgnoreCase`. |
 | InputParameter | stringMatchMsg | string | De eerste waarde die moet worden ingesteld als teken reeksen gelijk zijn. |
@@ -553,7 +553,7 @@ Controleert of een teken reeks claim `matchTo` en invoer parameter gelijk zijn, 
 
 | Item | TransformationClaimType | Gegevenstype | Opmerkingen |
 | ---- | ----------------------- | --------- | ----- |
-| inputClaim | claimToMatch | string | Het claim type, dat moet worden vergeleken. |
+| InputClaim | claimToMatch | string | Het claim type, dat moet worden vergeleken. |
 | InputParameter | matchTo | string | De teken reeks die moet worden vergeleken met input claim. |
 | InputParameter | stringComparison | string | Mogelijke waarden: `Ordinal` of `OrdinalIgnoreCase`. |
 | InputParameter | outputClaimIfMatched | string | De waarde die moet worden ingesteld als teken reeksen gelijk zijn. |

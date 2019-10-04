@@ -17,12 +17,12 @@ ms.date: 09/11/2018
 ms.author: ryanwi
 ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8024130b986d111abe3b470d6b06e86ed6419dc4
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: def5dc82f8cbda93f6ac18f8a2af41d5c82ce5da
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68320922"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71936755"
 ---
 # <a name="add-a-multitenant-application-to-the-azure-ad-application-gallery"></a>Een multi tenant-toepassing toevoegen aan de Azure AD-toepassings galerie
 
@@ -33,7 +33,7 @@ Azure Active Directory (Azure AD) is een op de cloud gebaseerde identiteits serv
 ## <a name="if-your-application-supports-saml-or-openidconnect"></a>Als uw toepassing SAML of OpenIDConnect ondersteunt
 Als u een multi tenant-toepassing hebt die u wilt weer geven in de Azure AD-toepassings galerie, moet u er eerst voor zorgen dat uw toepassing ondersteuning biedt voor een van de volgende technologieën voor eenmalige aanmelding:
 
-- **OpenID connect verbinding maken**: Als u uw app wilt weer geven, maakt u de multi tenant-toepassing in azure AD en implementeert u het [Azure AD-instemming raamwerk](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications) voor uw toepassing. Verzend de aanmeldings aanvraag naar een gemeen schappelijk eind punt zodat elke klant toestemming kan geven voor de toepassing. U kunt de toegang van een gebruiker beheren op basis van de Tenant-ID en de UPN van de gebruiker die in het token is ontvangen. Verzend de toepassing met behulp van het proces dat wordt beschreven in [uw toepassing weer geven in de galerie met Azure Active Directory toepassingen](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing).
+- **OpenID connect verbinding maken**: Als u uw app wilt weer geven, maakt u de multi tenant-toepassing in azure AD en implementeert u het [Azure AD-instemming raamwerk](https://docs.microsoft.com/azure/active-directory/develop/consent-framework) voor uw toepassing. Verzend de aanmeldings aanvraag naar een gemeen schappelijk eind punt zodat elke klant toestemming kan geven voor de toepassing. U kunt de toegang van een gebruiker beheren op basis van de Tenant-ID en de UPN van de gebruiker die in het token is ontvangen. Verzend de toepassing met behulp van het proces dat wordt beschreven in [uw toepassing weer geven in de galerie met Azure Active Directory toepassingen](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing).
 
 - **SAML**: Als uw toepassing SAML 2,0 ondersteunt, kan de app worden weer gegeven in de galerie. Volg de instructies in [uw toepassing weer geven in de galerie met Azure Active Directory toepassingen](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing).
 

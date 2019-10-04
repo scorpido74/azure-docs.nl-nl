@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 07/11/2019
 ms.author: magoedte
-ms.openlocfilehash: 3ac5d5d31bb54ce87859a6eec52dbe5948864d4c
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: 810ecbd4421eec8e8e809b429270601a0c94d623
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147330"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71840905"
 ---
 # <a name="manage-log-analytics-workspace-using-azure-resource-manager-templates"></a>Log Analytics-werk ruimte beheren met Azure Resource Manager sjablonen
 
@@ -121,7 +121,7 @@ In het volgende voor beeld wordt een werk ruimte gemaakt op basis van een sjablo
 
 2. De sjabloon bijwerken om aan uw eisen voldoen. Beoordeling [Microsoft.OperationalInsights/workspaces sjabloon](https://docs.microsoft.com/azure/templates/microsoft.operationalinsights/workspaces) verwijzing voor meer informatie over welke eigenschappen en waarden worden ondersteund. 
 3. Sla dit bestand als **deploylaworkspacetemplate.json** naar een lokale map.
-4. U kunt deze sjabloon nu implementeren. U kunt Power shell of de opdracht regel gebruiken om de werk ruimte te maken, waarbij u de naam en locatie van de werk ruimte opgeeft als onderdeel van de opdracht.
+4. U kunt deze sjabloon nu implementeren. U kunt Power shell of de opdracht regel gebruiken om de werk ruimte te maken, waarbij u de naam en locatie van de werk ruimte opgeeft als onderdeel van de opdracht. De naam van de werk ruimte moet globaal uniek zijn in alle Azure-abonnementen.
 
    * Gebruik voor Power shell de volgende opdrachten uit de map met de sjabloon:
    
@@ -596,7 +596,7 @@ In het volgende sjabloon voorbeeld ziet u hoe u:
 
 De voorbeeld sjabloon implementeren:
 
-1. Sla het bijgevoegde voor beeld op in een bestand, bijvoorbeeld`azuredeploy.json` 
+1. Sla het bijgevoegde voor beeld op in een bestand, bijvoorbeeld `azuredeploy.json` 
 2. Bewerk de sjabloon voor de gewenste configuratie
 3. Power shell of de opdracht regel gebruiken om de sjabloon te implementeren
 

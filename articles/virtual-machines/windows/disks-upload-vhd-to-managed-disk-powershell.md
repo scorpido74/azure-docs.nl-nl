@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: virtual-machines-linux
 ms.tgt_pltfrm: linux
 ms.subservice: disks
-ms.openlocfilehash: de9975151270ccce8d4a7abd58210c6550d40464
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
-ms.translationtype: HT
+ms.openlocfilehash: 88b5cacf432e467c893dac6fc5839c468b2eafbd
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/02/2019
-ms.locfileid: "71720340"
+ms.locfileid: "71828660"
 ---
 # <a name="upload-a-vhd-to-azure-using-azure-powershell"></a>Een VHD uploaden naar Azure met behulp van Azure PowerShell
 
@@ -74,7 +74,7 @@ Gebruik AzCopy V10 toevoegen om uw lokale VHD-bestand te uploaden naar een behee
 Deze upload heeft dezelfde door Voer als de equivalente [standaard HDD](disks-types.md#standard-hdd). Als u bijvoorbeeld een grootte hebt die gelijk is aan S4, hebt u een door Voer van Maxi maal 60 MiB/s. Maar als u een grootte hebt die gelijk is aan S70, hebt u een door Voer van Maxi maal 500 MiB/s.
 
 ```
-AzCopy.exe copy "c:\somewhere\mydisk.vhd" $diskSas --blob-type PageBlob
+AzCopy.exe copy "c:\somewhere\mydisk.vhd" $diskSas.AccessSAS --blob-type PageBlob
 ```
 
 Als uw SAS verloopt tijdens het uploaden en u nog geen `revoke-access` sa's hebt aangeroepen, kunt u een nieuwe SAS krijgen om het uploaden `grant-access`met opnieuw te laten verlopen.

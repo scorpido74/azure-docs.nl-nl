@@ -14,12 +14,12 @@ ms.tgt_pltfrm: cache
 ms.workload: tbd
 ms.date: 07/05/2017
 ms.author: yegu
-ms.openlocfilehash: ddb9dd49af4557e6ff8d38110de4a99a9cf6fed7
-ms.sourcegitcommit: 6013bacd83a4ac8a464de34ab3d1c976077425c7
+ms.openlocfilehash: eb6773d1547499fcd3a73aebf8f17ec61b6dc06a
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71687002"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827587"
 ---
 # <a name="how-to-administer-azure-cache-for-redis"></a>Azure-cache beheren voor redis
 In dit onderwerp wordt beschreven hoe u beheer taken uitvoert, zoals het [opnieuw opstarten](#reboot) en het [plannen van updates](#schedule-updates) voor uw Azure-cache voor redis-exemplaren.
@@ -83,7 +83,7 @@ Ja, voor Power shell-instructies Zie [een Azure-cache opnieuw opstarten voor red
 Opnieuw opstarten is beschikbaar voor alle prijs categorieën.
 
 ## <a name="schedule-updates"></a>Updates plannen
-Op de Blade **updates plannen** kunt u een onderhouds venster voor uw Premium-laag cache aanwijzen. Wanneer het onderhouds venster is opgegeven, worden er redis-server updates gemaakt tijdens dit venster. 
+Op de Blade **updates plannen** kunt u een onderhouds venster voor uw cache-exemplaar aanwijzen. Wanneer het onderhouds venster is opgegeven, worden er redis-server updates gemaakt tijdens dit venster. 
 
 > [!NOTE] 
 > Het onderhouds venster is alleen van toepassing op redis-server updates en niet op Azure-updates of updates voor het besturings systeem van de virtuele machines die de cache hosten.

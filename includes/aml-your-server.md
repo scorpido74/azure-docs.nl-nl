@@ -8,20 +8,15 @@ ms.author: sgilley
 manager: cgronlund
 ms.custom: include file
 ms.topic: include
-ms.date: 01/25/2019
-ms.openlocfilehash: 6c93d1243db1b3c4277a54cf71e10f6bbc648d26
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.date: 09/26/2019
+ms.openlocfilehash: 85d1c1cd294bfc02a2e0e327073bb6a80366548b
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68846014"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71841109"
 ---
-- De Azure Machine Learning SDK voor python is geïnstalleerd. Volg de instructies in [Azure machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py) om het volgende te doen:
-
-
-1. Volg de instructies in [Azure machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py) om het volgende te doen:
-    * Een Miniconda-omgeving maken [Azure Machine Learning service-werk ruimten maken en beheren]
-    * De Azure Machine Learning SDK voor python installeren
+1. Volg de instructies op [Azure machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py) om de Azure machine learning SDK voor python te installeren
 
 1. Maak een [Azure machine learning service-werk ruimte](../articles/machine-learning/service/how-to-manage-workspace.md).
 

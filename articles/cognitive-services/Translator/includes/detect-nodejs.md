@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: b342838c41ad72609cf9917b345ef0f72b352f2e
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: c180a5d751b44346760706b1bd3d1e8acb70099d
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69907216"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71837534"
 ---
 [!INCLUDE [Prerequisites](prerequisites-nodejs.md)]
 
@@ -31,7 +31,7 @@ Deze modules zijn vereist om de HTTP-aanvraag te maken en om een unieke id voor 
 
 ## <a name="set-the-subscription-key-and-endpoint"></a>De abonnements sleutel en het eind punt instellen
 
-In dit voor beeld wordt geprobeerd uw Translator text-abonnements sleutel en-eind punt te lezen `TRANSLATOR_TEXT_SUBSCRIPTION_KEY` uit `TRANSLATOR_TEXT_ENDPOINT`deze omgevings variabelen: en. Als u niet bekend bent met omgevings variabelen, kunt u `subscriptionKey` en `endpoint` als teken reeksen instellen en de voorwaardelijke instructies van commentaar voorzien.
+In dit voor beeld wordt geprobeerd de Translator Text-abonnements sleutel en het eind punt van deze omgevings variabelen te lezen: `TRANSLATOR_TEXT_SUBSCRIPTION_KEY` en `TRANSLATOR_TEXT_ENDPOINT`. Als u niet bekend bent met omgevings variabelen, kunt u `subscriptionKey` en `endpoint` als teken reeksen instellen en de voorwaardelijke instructies van commentaar voorzien.
 
 Kopieer deze code naar uw project:
 
@@ -51,9 +51,6 @@ var endpoint = process.env[endpoint_var];
 ## <a name="configure-the-request"></a>Aanvraag configureren
 
 Met de methode `request()`, beschikbaar gesteld via de aanvraagmodule, kunt u de HTTP-methode, URL, aanvraagparameters, headers en de JSON-hoofdtekst doorgeven als een `options`-object. In dit codefragment configureert u de aanvraag:
-
->[!NOTE]
-> Meer informatie over eindpunten, routes en aanvraagparameters vindt u in [Translator Text-API 3.0: detecteren](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-detect).
 
 ```javascript
 let options = {
@@ -76,7 +73,7 @@ let options = {
 ```
 U kunt aanvragen het eenvoudigst verifiëren door uw abonnementssleutel op te geven als `Ocp-Apim-Subscription-Key`-header. Dat doen we in dit voorbeeld dan ook. Als alternatief kunt u in plaats van uw abonnementssleutel een toegangstoken gebruiken en het toegangstoken opgeven als `Authorization`-header voor het valideren van uw aanvraag.
 
-Als u een Cognitive Services abonnement op meerdere services gebruikt, moet u ook de `Ocp-Apim-Subscription-Region` in uw aanvraag headers toevoegen.
+Als u een Cognitive Services abonnement op meerdere services gebruikt, moet u ook de `Ocp-Apim-Subscription-Region` in de aanvraag headers toevoegen.
 
 Zie [Verificatie](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication) voor meer informatie.
 
@@ -103,7 +100,10 @@ node detect.js
 
 ## <a name="sample-response"></a>Voorbeeldantwoord
 
-Zoek de afkorting van het land/de regio in deze [lijst met talen](https://docs.microsoft.com/azure/cognitive-services/translator/language-support).
+Nadat u het voor beeld hebt uitgevoerd, ziet u het volgende afgedrukt op Terminal:
+
+> [!NOTE]
+> Zoek de afkorting van het land/de regio in deze [lijst met talen](https://docs.microsoft.com/azure/cognitive-services/translator/language-support).
 
 ```json
 [

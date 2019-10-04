@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 09/03/2019
+ms.date: 10/02/2019
 ms.author: diberry
-ms.openlocfilehash: eeea0cff1d6445abd45715eda707b97843107341
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 4ee622c944c5ccd39331ab395eca7b6ff9692b35
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70308108"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71836070"
 ---
 # <a name="quickstart-publish-a-knowledge-base-in-qna-maker-using-java"></a>Snelstartgids: Een knowledge base publiceren in QnA Maker met behulp van Java
 
@@ -33,7 +33,7 @@ In deze snelstart worden QnA Maker-API's aangeroepen:
     * httpcore-4.4.6.jar
     * commons-logging-1.2.jar
 * [Visual Studio Code](https://code.visualstudio.com/)
-* U moet een [QnA Maker-service ](../How-To/set-up-qnamaker-service-azure.md) hebben. Selecteer **Sleutels** onder **Resourcebeheer** in het Azure-dashboard voor de QnA Maker-resource om uw sleutel op te halen. . 
+* U moet een [QnA Maker-service ](../How-To/set-up-qnamaker-service-azure.md) hebben. Als u de sleutel en het eind punt (inclusief de resource naam) wilt ophalen, selecteert u **Quick** start voor uw resource in het Azure Portal.
 * Id voor knowledge base (KB) in QnA Maker gevonden in de URL in de parameter voor de kbid-queryreeks, zoals hieronder wordt weergegeven.
 
     ![Id voor knowledge base in QnA Maker](../media/qnamaker-quickstart-kb/qna-maker-id.png)

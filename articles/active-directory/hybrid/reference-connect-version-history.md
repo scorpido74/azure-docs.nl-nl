@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/23/2019
+ms.date: 10/2/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e7555dc44e533945d360a3d2e4120f71f953a6d2
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: e6776d7ff21599a1cfab47fd0e4ab0fbef5d3d8c
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71709362"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827101"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Releasegeschiedenis van versie
 Het Azure Active Directory (Azure AD)-team werkt Azure AD Connect regel matig bij met nieuwe functies en functionaliteit. Niet alle toevoegingen zijn van toepassing op alle doel groepen.
@@ -42,6 +42,17 @@ Downloaden | [Down load Azure AD Connect](https://go.microsoft.com/fwlink/?LinkI
 >Het uitgeven van een nieuwe versie van Azure AD Connect is een proces waarbij verschillende kwaliteitscontrole stappen nodig zijn om de werking van de service te waarborgen, terwijl we dit proces door lopen, het versie nummer van een nieuwe release en de release status wordt bijgewerkt om de meest recente status weer te geven.
 Hoewel we dit proces door lopen, wordt het versie nummer van de release weer gegeven met een ' X ' in de positie van het kleine release nummer, zoals in ' 1.3. X. 0 '. Dit betekent dat de release opmerkingen in dit document geldig zijn voor alle versies die beginnen met ' 1,3 '. Zodra het release proces is voltooid, wordt het versie nummer van de release bijgewerkt naar de meest recente versie en wordt de release status bijgewerkt naar ' vrijgegeven voor downloaden en automatische upgrade '.
 Niet alle versies van Azure AD Connect worden beschikbaar gesteld voor automatische upgrade. De release status geeft aan of een release beschikbaar moet worden gesteld voor automatische upgrade of alleen voor down loads. Als automatische upgrade is ingeschakeld op uw Azure AD Connect server, wordt die server automatisch bijgewerkt naar de meest recente versie van Azure AD Connect die is uitgebracht voor automatische upgrade. Houd er rekening mee dat niet alle Azure AD Connect configuraties in aanmerking komen voor automatische upgrade. Volg deze link voor meer informatie over [automatische upgrade](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-automatic-upgrade)
+
+## <a name="14250"></a>1.4.25.0
+
+### <a name="release-status"></a>Release status
+9/28/2019: Vrijgegeven voor automatische upgrade om tenants te selecteren. Niet beschikbaar voor downloaden.
+
+Deze versie corrigeert een bug waarbij sommige servers die automatisch zijn bijgewerkt van een eerdere versie naar 1.4.18.0 en problemen ondervonden met selfservice voor wachtwoord herstel (SSPR) en het terugschrijven van wacht woorden.
+
+### <a name="fixed-issues"></a>Problemen opgelost
+
+Onder bepaalde omstandigheden werden servers die automatisch zijn bijgewerkt naar versie 1.4.18.0, de selfservice voor wachtwoord herstel en het terugschrijven van wacht woorden niet opnieuw inschakelen nadat de upgrade is voltooid. Deze automatische upgrade release corrigeert die de selfservice voor het opnieuw instellen van wacht woorden en het terugschrijven van wacht woorden opnieuw mogelijk maakt.
 
 ## <a name="14180"></a>1.4.18.0
 

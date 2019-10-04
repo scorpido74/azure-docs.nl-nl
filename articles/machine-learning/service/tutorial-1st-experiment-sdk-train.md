@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 09/03/2019
-ms.openlocfilehash: 6287f51d4fa0a1e4c2fb27b7cde873262ad6b3fe
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: c775b16eaa15ccd7115f4770bf197545a9de2500
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71327232"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828022"
 ---
 # <a name="tutorial-train-your-first-ml-model"></a>Zelfstudie: Uw eerste ML model trainen
 
@@ -35,21 +35,12 @@ De enige vereiste is om deel één van deze zelf studie, [installatie omgeving e
 
 In dit deel van de zelf studie voert u de code uit in het voor beeld `tutorials/tutorial-1st-experiment-sdk-train.ipynb` -Jupyter-notitie blok dat is geopend aan het einde van deel 1. In dit artikel wordt uitgelegd hoe dezelfde code in het notitie blok zich bevindt.
 
-## <a name="launch-jupyter-web-interface"></a>Jupyter web interface starten
+## <a name="open-the-notebook"></a>Open het notitie blok
 
-1. Selecteer op de pagina werk ruimte in de Azure Portal **laptop-vm's** aan de linkerkant.
+1. Meld u aan bij de pagina voor het land van de [werk ruimte](https://ml.azure.com/).
 
-1. Selecteer **Jupyter** in de kolom **URI** voor de virtuele machine die u in deel één van deze zelf studie hebt gemaakt.
+1. Open de **zelf studie-1ste experiment-SDK-Train. ipynb** in uw map, zoals weer gegeven in [deel één](tutorial-1st-experiment-sdk-setup.md#open).
 
-    ![De Jupyter-notebook server starten](./media/tutorial-1st-experiment-sdk-setup/start-server.png)
-
-   Met de koppeling wordt uw notebook server gestart en wordt de Jupyter-notebook-webpagina geopend in een nieuw browser tabblad.  Deze koppeling werkt alleen voor de persoon die de virtuele machine heeft gemaakt. Elke gebruiker van de werk ruimte moet een eigen VM maken.
-
-1. Selecteer op de webpagina van de Jupyter-notebook de naam van de hoofdmap.  
-
-   Deze map bevindt zich in het [opslag account](concept-workspace.md#resources) van de werk ruimte, in plaats van op de VM van de notebook zelf.  Als u de VM van de notebook verwijdert, blijft u al uw werk behouden.  Wanneer u later een nieuwe VM voor een notitie blok maakt, wordt dezelfde map geladen. Als u uw werk ruimte deelt met anderen, wordt uw map weer geven en ziet u de mappen.
-
-1. Open de `samples-*` submap en open vervolgens de Jupyter-notebook `tutorials/tutorial-1st-experiment-sdk-train.ipynb`, **niet** het `.yml` bestand met dezelfde naam. 
 
 > [!Warning]
 > Maak **geen** *Nieuw* notitie blok in de Jupyter-interface. Het notitie blok `tutorials/tutorial-1st-experiment-sdk-train.ipynb` is inclusief **alle code en gegevens die nodig zijn** voor deze zelf studie.
@@ -60,7 +51,7 @@ In dit deel van de zelf studie voert u de code uit in het voor beeld `tutorials/
 > De rest van dit artikel bevat dezelfde inhoud als u ziet in het notitie blok.  
 >
 > Schakel nu over naar het Jupyter-notebook als u wilt lezen tijdens het uitvoeren van de code. 
-> Als u één code-cel in een notitie blok wilt uitvoeren, klikt u op de cel code en drukt u op **SHIFT + ENTER**. Of voer het hele notitie blok uit door in het bovenste menu op **cel > alles uitvoeren** te klikken.
+> Als u één code-cel in een notitie blok wilt uitvoeren, klikt u op de cel code en drukt u op **SHIFT + ENTER**. U kunt ook het hele notitie blok uitvoeren door **alles uitvoeren** op de bovenste werk balk te kiezen.
 
 Importeer de `Workspace` klasse en laad uw abonnements gegevens uit het bestand `config.json` met behulp van `from_config().` de functie deze zoekt standaard naar het JSON-bestand in de huidige map, maar u kunt ook een pad-para meter opgeven om naar het bestand te verwijzen gebruiken `from_config(path="your/file/path")`. In een Cloud notebook server bevindt het bestand zich automatisch in de hoofdmap.
 
@@ -182,7 +173,7 @@ print("Best run_id rmse: " + str(minimum_rmse))
     Best run_id: 864f5ce7-6729-405d-b457-83250da99c80
     Best run_id rmse: 57.234760283951765
 
-Gebruik de beste run-id om de afzonderlijke uitvoering op te `Run` halen met behulp van de constructor en het experiment-object. Roep `get_file_names()` vervolgens alle bestanden weer die beschikbaar zijn voor downloaden vanuit deze run. In dit geval hebt u slechts één bestand geüpload voor elke run tijdens de training.
+Gebruik de beste run-ID om de afzonderlijke uitvoering op te halen met behulp van de constructor `Run` samen met het object experiment. Roep `get_file_names()` vervolgens alle bestanden weer die beschikbaar zijn voor downloaden vanuit deze run. In dit geval hebt u slechts één bestand geüpload voor elke run tijdens de training.
 
 ```python
 from azureml.core import Run

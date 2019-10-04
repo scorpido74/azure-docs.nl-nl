@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.reviewer: sgilley
 ms.date: 04/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: 43597113c439f2b88bee0834dddc8cb37ec0202a
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 73887c39ebcee2efc4a31925f4aacfffb3c53ca7
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71213532"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828057"
 ---
 # <a name="train-models-with-azure-machine-learning-using-estimator"></a>Modellen trainen met Azure Machine Learning met behulp van estimator
 
@@ -113,7 +113,7 @@ Parameter | Description | Standaard
 `custom_docker_image`| Naam van de installatiekopie die u wilt gebruiken. Geef alleen installatiekopieën die beschikbaar zijn in de openbare docker-opslagplaatsen (in dit geval Docker Hub). Als u een afbeelding uit een privé-docker-opslag plaats wilt gebruiken, `environment_definition` gebruikt u in plaats daarvan de constructor-para meter. [Zie voor beeld](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/how-to-use-estimator/how-to-use-estimator.ipynb). | `None`
 `node_count`| Het aantal knooppunten moet worden gebruikt voor de trainingstaak. | `1`
 `process_count_per_node`| Het aantal processen (of 'werknemers') om uit te voeren op elk knooppunt. In dit geval gebruikt u de `2` GPU's die beschikbaar zijn op elk knooppunt.| `1`
-`distributed_training`| [MPIConfiguration]('https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.mpiconfiguration?view=azure-ml-py') -object voor het starten van gedistribueerde training met MPI-back-end.  | `None`
+`distributed_training`| [MPIConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.mpiconfiguration?view=azure-ml-py) -object voor het starten van gedistribueerde training met MPI-back-end.  | `None`
 
 
 Ten slotte verzendt u de trainingstaak:

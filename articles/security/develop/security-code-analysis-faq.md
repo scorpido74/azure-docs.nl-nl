@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 846f0ecdd49fc1c501893209b60fa9acc8a32ed2
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: b28d02dd0ca375451f6ff75b1253ae8874bf2ab4
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70242334"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828237"
 ---
 # <a name="frequently-asked-questions"></a>Veelgestelde vragen
 Vragen? Bekijk de volgende veelgestelde vragen voor meer informatie.
@@ -48,7 +48,7 @@ De Azure DevOps-build-taken zijn in het algemeen direct wrappers rond de opdrach
 
 Merk bare verschillen:
 
-- Hulpprogram ma's worden uitgevoerd vanuit de bronmap van de agent $ (build. SourcesDirectory) of van% BUILD_SOURCESDIRECTORY%. Een voor beeld is\_C:\agent work\1\s.
+- Hulpprogram ma's worden uitgevoerd vanuit de bronmap van de agent $ (build. SourcesDirectory) of van% BUILD_SOURCESDIRECTORY%. Een voor beeld is C:\agent @ no__t-0work\1\s.
 - Paden in de argumenten kunnen relatief zijn ten opzichte van de hoofdmap van de eerder vermelde bron directory. Paden kunnen ook absoluut zijn. U krijgt absolute paden met behulp van Azure DevOps build-variabelen of door een on-premises agent uit te voeren met bekende implementatie locaties van lokale bronnen.
 - Hulpprogram ma's geven automatisch een pad naar een uitvoer bestand of een map. Als u een uitvoer locatie voor een build-taak opgeeft, wordt die locatie vervangen door een pad naar de bekende locatie van de logboeken op de build-agent
 - Enkele aanvullende opdracht regel argumenten zijn gewijzigd voor sommige hulpprogram ma's. Een voor beeld hiervan is het toevoegen of verwijderen van opties die ervoor zorgen dat er geen GUI wordt gestart.
@@ -63,7 +63,7 @@ Met de build-taken wordt een aantal gebruikers invoer gefilterd. De locatie van 
 
 ### <a name="where-are-the-output-files-generated-by-the-tools-saved"></a>Waar worden de uitvoer bestanden gegenereerd door de hulpprogram ma's die worden opgeslagen? 
 
-De build-taken voegen automatisch uitvoer paden toe aan deze bekende locatie op de build-agent: $ (agent.\_BuildDirectory) sdt\logs. Omdat we op deze locatie standaard worden gestandaardiseerd, hebben alle teams die logboeken voor code analyse produceren of gebruiken toegang tot de uitvoer.
+De build-taken voegen automatisch uitvoer paden toe aan deze bekende locatie op de build-agent: $ (agent. BuildDirectory) \_sdt \ logs. Omdat we op deze locatie standaard worden gestandaardiseerd, hebben alle teams die logboeken voor code analyse produceren of gebruiken toegang tot de uitvoer.
 
 ### <a name="can-i-queue-a-build-to-run-these-tasks-on-a-hosted-build-agent"></a>Kan ik een build in de wachtrij plaatsen om deze taken uit te voeren op een gehoste build-agent? 
 
@@ -123,7 +123,7 @@ De hash-sleutel van het geheim van het uitvoer bestand CredScan is vereist, zoal
 
 De bestands expressie kan een bestands naam zijn. Het kan ook het grondtal van een volledig bestandspad of een bestands naam zijn. Jokertekens worden niet ondersteund.
 
-In de volgende voor beelden ziet u hoe u \<het bestand InputPath > \src\JS\lib\angular.js onderdrukt
+In de volgende voor beelden ziet u hoe u het bestand kunt onderdrukken \<InputPath > \src\JS\lib\angular.js
 
 Voor beelden van geldige onderdrukkings regels:
 
@@ -152,12 +152,6 @@ Voor beelden van geldige onderdrukkings regels:
 
 #### <a name="what-are-recommended-guidelines-for-managing-secrets"></a>Wat zijn de aanbevolen richt lijnen voor het beheren van geheimen?
 
-Het is handig om snel vastgelegde geheimen te detecteren en de Risico's te verminderen. Maar voor komt u dat geheimen nog beter zijn ingecheckt.
-
-Micro soft heeft een vroegtijdige preview van Credential scanner Code Analyzer uitgebracht als onderdeel van de [micro soft DevLabs-extensie](https://marketplace.visualstudio.com/items?itemName=VSIDEDevOpsMSFT.ContinuousDeliveryToolsforVisualStudio) voor Visual Studio. De analyse functie is een vroege preview-versie. Het biedt ontwikkel aars een inline-ervaring voor het detecteren van potentiële geheimen in hun code. Door dit te doen, biedt de Analyzer ontwikkel aars ook de mogelijkheid om deze problemen in realtime op te lossen.
-
-Zie het blog bericht [geheimen veilig beheren in de Cloud](https://devblogs.microsoft.com/visualstudio/managing-secrets-securely-in-the-cloud/)voor meer informatie.
-
 De volgende bronnen helpen u veilig geheimen te beheren en toegang te krijgen tot gevoelige informatie in uw toepassingen:
 
  - [Azure Key Vault](../../key-vault/index.yml)
@@ -166,6 +160,9 @@ De volgende bronnen helpen u veilig geheimen te beheren en toegang te krijgen to
  - [Beheerde identiteiten voor Azure-resources](../../active-directory/managed-identities-azure-resources/overview.md)
  - [Beheerde identiteiten in Azure App Service en Azure Functions](../../app-service/overview-managed-identity.md)
  - [AppAuthentication-bibliotheek](../../key-vault/service-to-service-authentication.md)
+
+
+Zie het blog bericht [geheimen veilig beheren in de Cloud](https://devblogs.microsoft.com/visualstudio/managing-secrets-securely-in-the-cloud/)voor meer informatie.
 
 #### <a name="can-i-write-my-own-custom-searchers"></a>Kan ik mijn eigen aangepaste zoekers schrijven?
 
@@ -176,7 +173,7 @@ Een inhouds zoekmachine wordt als volgt gedefinieerd:
 - **Naam**: De beschrijvende naam van de zoek functie die moet worden gebruikt in de uitvoer bestanden voor referentie scanners. We raden u aan de Camel-Case-naamgevings Conventie voor namen van zoek functies te gebruiken.
 - **RuleId**: De stabiele dekkende ID van de zoek functie:
     - Een standaard zoekmachine voor referentie scanners is toegewezen aan een **RuleId** -waarde zoals CSCAN0010, CSCAN0020 of CSCAN0030. Het laatste cijfer is gereserveerd voor het mogelijk samen voegen of delen van zoek groepen via reguliere expressies (regex).
-    - De **RuleId** -waarde voor een aangepaste zoek functie moet een eigen naam ruimte hebben. Voor beelden zijn onder\<andere\>CSCAN naam ruimte 0010\<,\>CSCAN-namespace 0020 en\<CSCAN\>-namespace 0030.
+    - De **RuleId** -waarde voor een aangepaste zoek functie moet een eigen naam ruimte hebben. Voor beelden zijn onder andere CSCAN-\<Namespace @ no__t-10010, CSCAN-\<Namespace @ no__t-30020 en CSCAN-\<Namespace @ no__t-50030.
     - Een volledig gekwalificeerde Zoek naam is de combi natie van een **RuleId** -waarde en een naam van een zoek programma. Voor beelden zijn CSCAN0010. KeyStoreFiles en CSCAN0020. Base64EncodedCertificate.
 - **ResourceMatchPattern**: Regex van bestands extensies die moeten worden gecontroleerd op de zoek functie.
 - **ContentSearchPatterns**: Een matrix met teken reeksen die overeenkomen met regex-instructies. Als er geen Zoek patronen zijn gedefinieerd, worden alle bestanden geretourneerd die overeenkomen met de waarde van **ResourceMatchPattern** .
@@ -205,13 +202,13 @@ In een stap tussen uw belangrijkste build-en Roslyn-analyse stappen is het mogel
 
 Het volledige fout bericht:
 
-' CSC. exe ' is afgesloten met fout code 1--er kan geen exemplaar van Analyzer *AAAA* worden gemaakt van C:\\*BBBB*. dll: Kan bestand of Assembly ' micro soft. CodeAnalysis, Version =*x. x. x. x*, Culture = neutral, PublicKeyToken = 31bf3856ad364e35 ' of een van de bijbehorende afhankelijkheden niet laden. Het systeem het opgegeven bestand vinden niet."
+' CSC. exe ' is afgesloten met fout code 1--er kan geen exemplaar van Analyzer *AAAA* worden gemaakt van C: \\*BBBB*. dll: Kan bestand of Assembly ' micro soft. CodeAnalysis, Version =*x. x. x. x*, Culture = neutral, PublicKeyToken = 31bf3856ad364e35 ' of een van de bijbehorende afhankelijkheden niet laden. Het systeem het opgegeven bestand vinden niet."
 
 Zorg ervoor dat uw compiler Roslyn-analyse functies ondersteunt. Het uitvoeren van de opdracht **CSC. exe/version** moet een versie waarde van 2,6 of hoger rapporteren.
 
 Soms kan een. csproj-bestand de installatie van de Visual Studio voor het bouwen van de machine overschrijven door te verwijzen naar een pakket van Microsoft.Net. compilers. Als u geen specifieke versie van de compiler wilt gebruiken, verwijdert u verwijzingen naar Microsoft.Net. compilers. Controleer anders of de versie van het pakket waarnaar wordt verwezen ook 2,6 of hoger is.
 
-Probeer het pad naar het fouten logboek op te halen dat is opgegeven in de optie **CSC. exe/errorlog** . De optie en het pad worden weer gegeven in het logboek voor de taak Roslyn-Analyseën maken. Ze zien er ongeveer als **/errorlog: f:\ts-Services-123\_work\456\s\Some\Project\Code\Code.csproj.Sarif**
+Probeer het pad naar het fouten logboek op te halen dat is opgegeven in de optie **CSC. exe/errorlog** . De optie en het pad worden weer gegeven in het logboek voor de taak Roslyn-Analyseën maken. Ze zien er ongeveer als **/errorlog: F:\ts-Services-123 @ no__t-1work\456\s\Some\Project\Code\Code.csproj.Sarif**
 
 ##### <a name="the-c-compiler-version-isnt-recent-enough"></a>De C# versie van het Compileer programma is niet recent genoeg
 

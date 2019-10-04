@@ -5,16 +5,16 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 08/29/2019
+ms.date: 10/02/2019
 ms.author: helohr
-ms.openlocfilehash: f0d847596ef21af67973b6572737e27e1d015991
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 932fbe6814df8ec324dd3360bcacfcbcf1c19b62
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71676491"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71842770"
 ---
-# <a name="automatically-scale-session-hosts"></a>Sessiehosts automatisch schalen
+# <a name="scale-session-hosts-dynamically"></a>Sessie hosts dynamisch schalen
 
 Voor veel Windows-implementaties van virtuele Bureau bladen in azure vertegenwoordigen de kosten van de virtuele machine een aanzienlijk deel van de totale kosten voor de implementatie van Windows virtueel bureau blad. Om de kosten te reduceren, kunt u het beste de virtuele machines van de sessiehost afsluiten en de toewijzing ervan ongedaan maken tijdens daluren, en ze vervolgens opnieuw opstarten tijdens piek uren.
 

@@ -5,16 +5,16 @@ services: time-series-insights
 author: ashannon7
 ms.service: time-series-insights
 ms.topic: tutorial
-ms.date: 07/29/2019
+ms.date: 10/02/2019
 ms.author: dpalled
 manager: cshankar
 ms.custom: seodec18
-ms.openlocfilehash: 4c81daa1f55167fa868c69f3bff388dbaa4887cd
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 6144fd58a98376f9091fc7045d0e60e99feda709
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68725741"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71841855"
 ---
 # <a name="tutorial-create-an-azure-time-series-insights-environment"></a>Zelfstudie: Een Azure Time Series Insights-omgeving maken
 
@@ -46,7 +46,7 @@ In de Time Series Insights omgeving worden apparaatgegevens verzameld en opgesla
 
 Azure IoT Hub is de gebeurtenis bron die door alle apparaten (gesimuleerd of fysiek) in de zelf studie wordt gebruikt om veilig verbinding te maken met gegevens en deze te verzenden naar uw Azure-Cloud.
 
-In deze zelf studie wordt ook gebruikgemaakt van een [IOT](https://www.azureiotsolutions.com) -oplossings versneller voor het genereren en streamen van voor beelden van telemetriegegevens voor IOT hub.
+In deze zelf studie wordt ook gebruikgemaakt van een [IOT-oplossings versneller](https://www.azureiotsolutions.com) voor het genereren en streamen van voor beelden van telemetriegegevens voor IOT hub.
 
 >[!TIP]
 > [IOT-oplossings Accelerators](https://www.azureiotsolutions.com) bieden vooraf geconfigureerde oplossingen op ondernemings niveau die u kunt gebruiken om de ontwikkeling van aangepaste IOT-oplossingen te versnellen.
@@ -57,7 +57,7 @@ Maak eerst de simulatie oplossing voor apparaten, waarmee test gegevens worden g
 
 1. Ga in een apart venster of tabblad naar [azureiotsolutions.com](https://www.azureiotsolutions.com). Meld u aan met hetzelfde account voor het Azure-abonnement en selecteer de **apparaat simulatie** Accelerator.
 
-   [![De Device simulatie Accelerator uitvoeren](media/tutorial-create-populate-tsi-environment/sa-main.png)](media/tutorial-create-populate-tsi-environment/sa-main.png#lightbox)
+   [![Run de Device simulatie Accelerator](media/tutorial-create-populate-tsi-environment/sa-main.png)](media/tutorial-create-populate-tsi-environment/sa-main.png#lightbox)
 
 1. Voer de vereiste para meters in op de pagina oplossing voor het maken van een **apparaat simulatie** .
 
@@ -70,18 +70,18 @@ Maak eerst de simulatie oplossing voor apparaten, waarmee test gegevens worden g
 
    Wanneer u klaar bent, selecteert u **oplossing maken** om de Azure-resources van de oplossing in te richten. Het kan Maxi maal 20 minuten duren voordat dit proces is voltooid.
 
-   [![De simulatie oplossing voor apparaten inrichten](media/tutorial-create-populate-tsi-environment/sa-create-device-sim-solution.png)](media/tutorial-create-populate-tsi-environment/sa-create-device-sim-solution.png#lightbox)
+   [![Provision de simulatie oplossing voor apparaten](media/tutorial-create-populate-tsi-environment/sa-create-device-sim-solution.png)](media/tutorial-create-populate-tsi-environment/sa-create-device-sim-solution.png#lightbox)
 
 1. Nadat het inrichten is voltooid, verandert de tekst boven uw nieuwe oplossing van **inrichting** in **gereed**.
 
    >[!IMPORTANT]
    > Selecteer nog niet **starten** . Laat deze webpagina geopend omdat u deze later weer gaat gebruiken.
 
-   [![Inrichting van Device simulatie oplossing voltooid](media/tutorial-create-populate-tsi-environment/sa-create-device-sim-solution-dashboard-ready.png)](media/tutorial-create-populate-tsi-environment/sa-create-device-sim-solution-dashboard-ready.png#lightbox)
+   [inrichting van 1Device-simulatie oplossing voor @no__t voltooid](media/tutorial-create-populate-tsi-environment/sa-create-device-sim-solution-dashboard-ready.png)](media/tutorial-create-populate-tsi-environment/sa-create-device-sim-solution-dashboard-ready.png#lightbox)
 
 1. Inspecteer nu de zojuist gemaakte resources in het Azure Portal. Op de pagina **resource groepen** ziet u dat er een nieuwe resource groep is gemaakt met behulp van de **oplossings naam** die in de laatste stap is opgenomen. Noteer de resources die zijn gemaakt voor de simulatie van het apparaat.
 
-   [![Simulatie bronnen voor apparaten](media/tutorial-create-populate-tsi-environment/ap-device-sim-solution-resources.png)](media/tutorial-create-populate-tsi-environment/ap-device-sim-solution-resources.png#lightbox)
+   [1Device-simulatie resources @no__t](media/tutorial-create-populate-tsi-environment/ap-device-sim-solution-resources.png)](media/tutorial-create-populate-tsi-environment/ap-device-sim-solution-resources.png#lightbox)
 
 ## <a name="create-an-environment"></a>Een omgeving maken
 
@@ -106,29 +106,29 @@ Maak vervolgens een Time Series Insights omgeving in uw Azure-abonnement.
 
    Wanneer u klaar bent, selecteert u **controleren + maken** om door te gaan naar de volgende stap.
 
-   [![Een resource voor een Time Series Insights omgeving maken](media/tutorial-create-populate-tsi-environment/ap-create-resource-tsi-params.png)](media/tutorial-create-populate-tsi-environment/ap-create-resource-tsi-params.png#lightbox)
+   [![Create een Time Series Insights omgevings resource](media/tutorial-create-populate-tsi-environment/ap-create-resource-tsi-params.png)](media/tutorial-create-populate-tsi-environment/ap-create-resource-tsi-params.png#lightbox)
 
-1. Verbind de Time Series Insights-omgeving nu met de IoT-hub die is gemaakt met de oplossings versneller. Stel **Selecteer een hub** in `Select existing`op. Kies vervolgens de IoT-hub die is gemaakt door de oplossings versneller bij het instellen van **IOT hub naam**.
+1. Verbind de Time Series Insights-omgeving nu met de IoT-hub die is gemaakt met de oplossings versneller. Stel **Select a hub** to `Select existing`. Kies vervolgens de IoT-hub die is gemaakt door de oplossings versneller bij het instellen van **IOT hub naam**.
 
-   [![De Time Series Insights-omgeving verbinden met de gemaakte IoT-hub](media/tutorial-create-populate-tsi-environment/ap-create-resource-iot-hub.png)](media/tutorial-create-populate-tsi-environment/ap-create-resource-iot-hub.png#lightbox)
+   [de Time Series Insights omgeving @no__t 1Connect naar de gemaakte IoT-hub](media/tutorial-create-populate-tsi-environment/ap-create-resource-iot-hub.png)](media/tutorial-create-populate-tsi-environment/ap-create-resource-iot-hub.png#lightbox)
 
 1. Controleer het deel venster **meldingen** om de voltooiing van de implementatie te bewaken. 
 
-   [![Implementatie van Time Series Insights-omgeving is voltooid](media/tutorial-create-populate-tsi-environment/ap-create-resource-tsi-deployment-succeeded.png)](media/tutorial-create-populate-tsi-environment/ap-create-resource-tsi-deployment-succeeded.png#lightbox)
+   [implementatie van ![Time Series Insights-omgeving is voltooid](media/tutorial-create-populate-tsi-environment/ap-create-resource-tsi-deployment-succeeded.png)](media/tutorial-create-populate-tsi-environment/ap-create-resource-tsi-deployment-succeeded.png#lightbox)
 
 ## <a name="run-device-simulation"></a>Simulatie van apparaten uitvoeren
 
-Nu de implementatie en de initiële configuratie zijn voltooid, vult u de Time Series Insights omgeving in met voorbeeld gegevens van gesimuleerde [apparaten die door de Accelerator zijn gemaakt](#create-a-device-simulation).
+Nu de implementatie en de initiële configuratie zijn voltooid, vult u de Time Series Insights omgeving in met voorbeeld gegevens van [gesimuleerde apparaten die door de Accelerator zijn gemaakt](#create-a-device-simulation).
 
 Samen met de IoT-hub is een Azure App Service-webtoepassing gegenereerd voor het maken en verzenden van gesimuleerde telemetrie van apparaten.
 
 1. Ga terug naar het dashboard [Oplossingsverbeteringen](https://www.azureiotsolutions.com/Accelerators#dashboard). Meld u indien nodig opnieuw aan met behulp van hetzelfde Azure-account dat u in deze zelf studie hebt gebruikt. U kunt nu **starten** selecteren onder uw ' Device simulatie ' oplossing.
 
-     [![Dash board voor oplossings versnellers](media/tutorial-create-populate-tsi-environment/sa-create-device-sim-solution-dashboard.png)](media/tutorial-create-populate-tsi-environment/sa-create-device-sim-solution-dashboard.png#lightbox)
+     [1Solution-dash board voor @no__t-Accelerators](media/tutorial-create-populate-tsi-environment/sa-create-device-sim-solution-dashboard.png)](media/tutorial-create-populate-tsi-environment/sa-create-device-sim-solution-dashboard.png#lightbox)
 
 1. De web-app voor Device simulatie begint met de vraag of u de webtoepassing de machtiging ' aanmelden en uw profiel lezen ' wilt verlenen. Met deze machtiging kan de toepassing de gebruikers profiel gegevens ophalen die nodig zijn om de werking van de toepassing te ondersteunen.
 
-     [![Toestemming voor webtoepassingen voor Device simulatie](media/tutorial-create-populate-tsi-environment/sawa-signin-consent.png)](media/tutorial-create-populate-tsi-environment/sawa-signin-consent.png#lightbox)
+     [toestemming voor 1Device simulatie van webtoepassingen @no__t](media/tutorial-create-populate-tsi-environment/sawa-signin-consent.png)](media/tutorial-create-populate-tsi-environment/sawa-signin-consent.png#lightbox)
 
 1. Nadat de pagina **simulatie installatie** is geladen, voert u de vereiste para meters in.
 
@@ -136,41 +136,41 @@ Samen met de IoT-hub is een Azure App Service-webtoepassing gegenereerd voor het
    ---|---
    **Doel-IoT-hub** | Selecteer **vooraf ingerichte IOT hub gebruiken**.
    **Apparaatmodel** | Selecteer **Koelunit**.
-   **Aantal apparaten**  | Voer `1000` onder **bedrag**in.
+   **Aantal apparaten**  | Geef `1000` op onder **bedrag**.
    **Telemetriefrequentie** | Voer `10` seconden in.
    **Simulatieduur** | Selecteer **beëindigen in:** en voer `5` minuten in.
 
    Wanneer u klaar bent, selecteert u **simulatie starten**. De simulatie wordt in totaal 5 minuten uitgevoerd. Er worden om de 10 seconden gegevens van 1.000 gesimuleerde apparaten gegenereerd. 
 
-   [![Simulatie instellen voor apparaten](media/tutorial-create-populate-tsi-environment/sawa-simulation-setup.png)](media/tutorial-create-populate-tsi-environment/sawa-simulation-setup.png#lightbox)
+   [1Device simulatie instellen @no__t](media/tutorial-create-populate-tsi-environment/sawa-simulation-setup.png)](media/tutorial-create-populate-tsi-environment/sawa-simulation-setup.png#lightbox)
 
-1. Terwijl de simulatie wordt uitgevoerd, ziet u dat de velden **Totaal aantal berichten** en **berichten per seconde** worden bijgewerkt, ongeveer elke tien seconden. De simulatie eindigt na ongeveer 5 minuten en keert u terug naar het **instellen**van simulaties.
+1. Terwijl de simulatie wordt uitgevoerd, ziet u dat de velden **Totaal aantal berichten** en **berichten per seconde** worden bijgewerkt, ongeveer elke tien seconden. De simulatie eindigt na ongeveer 5 minuten en keert u terug naar het **instellen van simulaties**.
 
-   [![Simulatie van apparaten](media/tutorial-create-populate-tsi-environment/sawa-simulation-running.png)](media/tutorial-create-populate-tsi-environment/sawa-simulation-running.png#lightbox)
+   [![Device simulatie uitvoeren](media/tutorial-create-populate-tsi-environment/sawa-simulation-running.png)](media/tutorial-create-populate-tsi-environment/sawa-simulation-running.png#lightbox)
 
 ## <a name="verify-the-telemetry-data"></a>De telemetriegegevens verifiëren
 
 In dit laatste gedeelte controleert u of de telemetriegegevens zijn gegenereerd en opgeslagen in de Time Series Insights omgeving. Voor het verifiëren van de gegevens gebruikt u de verkenner van Time Series Insights, die wordt gebruikt voor het opvragen en analyseren van telemetriegegevens.
 
-1. Ga terug naar de overzichts pagina van de resource groep van de time series Insights omgeving. Selecteer de Time Series Insights omgeving.
+1. Ga terug naar de **overzichts** pagina van de resource groep van de time series Insights omgeving. Selecteer de Time Series Insights omgeving.
 
-   [![Resource groep en omgeving van Time Series Insights omgeving](media/tutorial-create-populate-tsi-environment/ap-view-tsi-env-rg.png)](media/tutorial-create-populate-tsi-environment/ap-view-tsi-env-rg.png#lightbox)
+   [resource groep en omgeving van de ![Time Series Insights-omgeving](media/tutorial-create-populate-tsi-environment/ap-view-tsi-env-rg.png)](media/tutorial-create-populate-tsi-environment/ap-view-tsi-env-rg.png#lightbox)
 
 1. Selecteer op de pagina **overzicht** van Time Series Insights-omgeving de **Time Series INSIGHTS Explorer-URL** om time series Insights Explorer te openen.
 
-   [![Time Series Insights Explorer](media/tutorial-create-populate-tsi-environment/ap-view-tsi-env-explorer-url.png)](media/tutorial-create-populate-tsi-environment/ap-view-tsi-env-explorer-url.png#lightbox)
+   [![Time Series Insights-Verkenner](media/tutorial-create-populate-tsi-environment/ap-view-tsi-env-explorer-url.png)](media/tutorial-create-populate-tsi-environment/ap-view-tsi-env-explorer-url.png#lightbox)
 
 1. De Time Series Insights Explorer wordt geladen en geverifieerd met behulp van uw Azure Portal-account. U kunt bij de eerste weer gave in het grafiek gebied zien dat de Time Series Insights omgeving is gevuld met gesimuleerde telemetriegegevens. Als u een smallere periode wilt filteren, selecteert u de vervolg keuzelijst in de linkerbovenhoek. Voer een tijds bereik in dat groot genoeg is om de duur van de simulatie van het apparaat te beslaan. Selecteer vervolgens het vergroot glas voor zoeken.
 
-   [![Filter tijd bereik Time Series Insights Explorer](media/tutorial-create-populate-tsi-environment/tsie-filter-time-range.png)](media/tutorial-create-populate-tsi-environment/tsie-filter-time-range.png#lightbox)
+   [tijds bereik filter ![Time Series Insights](media/tutorial-create-populate-tsi-environment/tsie-filter-time-range.png)](media/tutorial-create-populate-tsi-environment/tsie-filter-time-range.png#lightbox)
 
-1. Als u het tijds bereik beperkt, kan de grafiek in-of uitzoomen op de afzonderlijke bursts van gegevens overdracht naar de IoT-hub en de Time Series Insights omgeving. U ziet ook de tekst voor het afhandelen van gegevens in de rechter bovenhoek, waarin het totale aantal gevonden gebeurtenissen wordt weer gegeven. U kunt ook de schuif regelaar voor de **interval grootte** slepen om de nauw keurigheid van het tekening diagram te bepalen.
+1. Als u het tijds bereik beperkt, kan de grafiek in-of uitzoomen op de afzonderlijke bursts van gegevens overdracht naar de IoT-hub en de Time Series Insights omgeving. U ziet ook de tekst voor het **afhandelen** van gegevens in de rechter bovenhoek, waarin het totale aantal gevonden gebeurtenissen wordt weer gegeven. U kunt ook de schuif regelaar voor de **interval grootte** slepen om de nauw keurigheid van het tekening diagram te bepalen.
 
-   [![Gefilterde weer gave Time Series Insights Explorer-tijd bereik](media/tutorial-create-populate-tsi-environment/tsie-view-time-range.png)](media/tutorial-create-populate-tsi-environment/tsie-view-time-range.png#lightbox)
+   [gefilterde weer gave ![Time Series Insights-Verkenner](media/tutorial-create-populate-tsi-environment/tsie-view-time-range.png)](media/tutorial-create-populate-tsi-environment/tsie-view-time-range.png#lightbox)
 
 1. Ten slotte kunt u ook met de rechter muisknop op een regio klikken om een bereik te filteren. Klik vervolgens met de rechter muisknop en gebruik **verkennen** om gebeurtenis details weer te geven in de weer gave **gebeurtenissen** in tabel vorm.
 
-   [![Gefilterde weer gave en gebeurtenissen Time Series Insights Explorer-tijd bereik](media/tutorial-create-populate-tsi-environment/tsie-view-time-range-events.png)](media/tutorial-create-populate-tsi-environment/tsie-view-time-range-events.png#lightbox)
+   [gefilterde weer gave en gebeurtenissen ![Time Series Insights Explorer-bereik](media/tutorial-create-populate-tsi-environment/tsie-view-time-range-events.png)](media/tutorial-create-populate-tsi-environment/tsie-view-time-range-events.png#lightbox)
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 

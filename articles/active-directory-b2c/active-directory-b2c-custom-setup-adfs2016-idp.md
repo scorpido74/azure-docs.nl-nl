@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/07/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 202414260deacc4b196cd789e923ff00ca650b4d
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.openlocfilehash: 80accdc4a14a2246ed91a92f6472490479327e2a
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71315216"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827206"
 ---
 # <a name="add-adfs-as-a-saml-identity-provider-using-custom-policies-in-azure-active-directory-b2c"></a>Voeg ADFS toe als een SAML-ID-provider met behulp van aangepast beleid in Azure Active Directory B2C
 
@@ -187,6 +187,8 @@ Open een browser en navigeer naar de URL. Zorg ervoor dat u de juiste URL typt e
 14. Selecteer de Relying Party-vertrouwens relatie die u hebt gemaakt, selecteer **bijwerken uit federatieve meta gegevens**en klik vervolgens op **bijwerken**.
 
 ## <a name="create-an-azure-ad-b2c-application"></a>Een Azure AD B2C-toepassing maken
+
+Communicatie met Azure AD B2C vindt plaats via een toepassing die u registreert in uw B2C-Tenant. In deze sectie vindt u optionele stappen die u kunt uitvoeren om een test toepassing te maken als u dit nog niet hebt gedaan.
 
 [!INCLUDE [active-directory-b2c-appreg-idp](../../includes/active-directory-b2c-appreg-idp.md)]
 

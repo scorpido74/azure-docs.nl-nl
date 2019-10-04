@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 5806198968d98fea4c5cbf8731358ca4041f0935
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: eb033425d18b472c9da1a2d6a1bb6f166702905e
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972870"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828182"
 ---
 # <a name="provision-nodes-for-azure-vmware-solution-by-cloudsimple"></a>Knoop punten inrichten voor Azure VMware-oplossing op CloudSimple
 
@@ -40,7 +40,7 @@ Meld u aan bij de Azure Portal op [https://portal.azure.com](https://portal.azur
 7. Voer het voor voegsel in om de knoop punten te identificeren.
 8. Selecteer de locatie voor de knooppunt resources.
 9. Selecteer de toegewezen locatie om de knooppunt resources te hosten.
-10. Selecteer het knooppunt type. U kunt de [optie CS28 of CS36](cloudsimple-node.md)kiezen. De laatste optie omvat de maximale reken-en geheugen capaciteit.
+10. Selecteer het [knooppunt type](cloudsimple-node.md).
 11. Selecteer het aantal knoop punten dat moet worden ingericht.
 12. Selecteer **Controleren + maken**.
 13. Controleer de instellingen. Als u instellingen wilt wijzigen, klikt u op **vorige**.

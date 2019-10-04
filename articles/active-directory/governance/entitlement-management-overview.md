@@ -16,12 +16,12 @@ ms.date: 09/03/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c99ee1987b592a2e8314d529b118fb26945271e
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 07a51b9f21d32fb3efdfef7c7f74cb3a1088115a
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70241698"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827146"
 ---
 # <a name="what-is-azure-ad-entitlement-management-preview"></a>Wat is Azure AD-rechtenbeheer? (Preview)
 
@@ -122,13 +122,13 @@ Bekijk de volgende voor waarden om het rechten beheer en de bijbehorende documen
 | Term of concept | Description |
 | --- | --- |
 | beheer rechten | Een service waarmee toegangs pakketten worden toegewezen, ingetrokken en beheerd. |
-| toegangs pakket | Een verzameling machtigingen en beleids regels voor resources die gebruikers kunnen aanvragen. Een toegangs pakket bevindt zich altijd in een catalogus. |
-| toegangs aanvraag | Een aanvraag voor toegang tot een toegangs pakket. Een aanvraag loopt doorgaans via een werk stroom. |
+| toegangspakket | Een bundel van resources die een team of project nodig heeft en die wordt beheerd door beleid. Een toegangs pakket bevindt zich altijd in een catalogus. |
+| toegangs aanvraag | Een aanvraag voor toegang tot de resources in een toegangs pakket. Een aanvraag loopt doorgaans via een werk stroom. |
 | policy | Een set regels die de toegangs levenscyclus definieert, bijvoorbeeld hoe gebruikers toegang krijgen, wie kan goed keuren en hoelang gebruikers toegang hebben. Voor beelden van beleids regels zijn toegang tot werk nemers en externe toegang. |
 | catalog | Een container met gerelateerde resources en toegangs pakketten. |
 | Algemene catalogus | Een ingebouwde catalogus die altijd beschikbaar is. Om resources toe te voegen aan de algemene catalogus, zijn bepaalde machtigingen vereist. |
 | resource | Een activum of service (zoals een Office-groep, een beveiligings groep, een toepassing of een share point online-site) waaraan een gebruiker machtigingen kan verlenen. |
-| resourcetype | Het type resource, met inbegrip van groepen, toepassingen en share point online-sites. |
+| brontype | Het type resource, met inbegrip van groepen, toepassingen en share point online-sites. |
 | resource functie | Een verzameling machtigingen die zijn gekoppeld aan een resource. |
 | Resource Directory | Een map met een of meer resources die moeten worden gedeeld. |
 | toegewezen gebruikers | Een toewijzing van een toegangs pakket aan een gebruiker, zodat de gebruiker alle resource rollen van dat toegangs pakket heeft. |

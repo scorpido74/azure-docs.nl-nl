@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 9/25/2019
+ms.date: 10/02/2019
 ms.author: b-juche
-ms.openlocfilehash: 3d34caba9512dc0c0b20cf10476f5c38a2fab8ce
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: bd00c04ecfc211ae4ed410e886c0fe6553bea241
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71299655"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827513"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>Een SMB-volume maken voor Azure NetApp Files
 
@@ -68,7 +68,11 @@ Er moet een subnet zijn gedelegeerd aan Azure NetApp Files.
 
     Zie de [richt lijnen voor het Azure NetApp files-netwerk planning](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-network-topologies) voor ondersteunde netwerk topologieën.
 
-    De netwerk beveiligings groepen (Nsg's) en firewalls moeten de juiste geconfigureerde regels hebben om Active Directory-en DNS-verkeers aanvragen toe te staan.
+    De netwerk beveiligings groepen (Nsg's) en firewalls moeten de juiste geconfigureerde regels hebben om Active Directory-en DNS-verkeers aanvragen toe te staan. 
+
+* Het Azure NetApp Files overgedragen subnet moet alle Active Directory Domain Services (toevoegen) domein controllers in het domein, inclusief alle lokale en externe domein controllers, kunnen bereiken. Anders kan er sprake zijn van een onderbreking van de service.  
+
+    Als u domein controllers hebt die niet bereikbaar zijn via het Azure NetApp Files gedelegeerde subnet, kunt u een ondersteunings aanvraag voor Azure verzenden om de scope te wijzigen van **Algemeen** (standaard) naar **site**.  Azure NetApp Files moet alleen communiceren met domein controllers in de site waar de Azure NetApp Files adres ruimte van het geplaatste subnet zich bevindt.
 
     Zie [de site topologie ontwerpen](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/designing-the-site-topology) over AD-sites en-services. 
 

@@ -16,25 +16,22 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: nacanuma
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 988c73236d9f5ef360ded03bca36a4bb24ebd308
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: c41dedf6b4fe52ba3250ada14b0cca6bbeb636af
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71290823"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827119"
 ---
 # <a name="quickstart-sign-in-users-and-acquire-an-access-token-from-a-javascript-single-page-application"></a>Quickstart: Gebruikers aanmelden en een toegangs token verkrijgen van een Java script-toepassing met één pagina
 
-In deze Quick Start leert u hoe u een code voorbeeld gebruikt dat laat zien hoe een Java script-toepassing met één pagina (SPA) kan aanmelden bij gebruikers van persoonlijke accounts, werk accounts en school accounts. Een Java script-SPA kan ook een toegangs token verkrijgen om de Microsoft Graph-API of een web-API aan te roepen.
-
-![Hoe de voor beeld-app in deze Snelstartgids werkt](media/quickstart-v2-javascript/javascriptspa-intro.svg)
+In deze Snelstartgids gebruikt u een code voorbeeld om te zien hoe een Java script-toepassing met één pagina (SPA) gebruikers van persoonlijke accounts, werk accounts en school accounts kan aanmelden. Een Java script-SPA kan ook een toegangs token verkrijgen om de Microsoft Graph-API of een web-API aan te roepen. (Zie [hoe het voor beeld werkt](#how-the-sample-works) voor een illustratie.)
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voor deze Quick start is de volgende configuratie vereist:
-* Als u het project wilt uitvoeren met een node. js-server, downloadt en installeert u [node. js](https://nodejs.org/en/download/).
-* Als u de project bestanden wilt bewerken, downloadt en installeert u [Visual Studio code](https://code.visualstudio.com/download).
-* Down load en Installeer [Visual studio 2019](https://visualstudio.microsoft.com/downloads/)om het project uit te voeren als een Visual Studio-oplossing.
+* Azure-abonnement: [Maak er gratis een](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+* [Node.js](https://nodejs.org/en/download/).
+* [Visual Studio code](https://code.visualstudio.com/download) (om project bestanden te bewerken) of [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/) (ro voert het project uit als een Visual Studio-oplossing).
 
 > [!div renderon="docs"]
 > ## <a name="register-and-download-your-quickstart-application"></a>De quickstart-toepassing registreren en downloaden
@@ -82,8 +79,6 @@ Selecteer de optie die geschikt is voor uw ontwikkel omgeving:
 
 * Beschrijving Als u het project wilt uitvoeren met de IIS-server, [downloadt u het Visual Studio-project](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/vsquickstart.zip). Pak het zip-bestand uit naar een lokale map (bijvoorbeeld *C:\Azure-samples*).
 
-
-
 #### <a name="step-3-configure-your-javascript-app"></a>Stap 3: Configureer de JavaScript-app
 
 > [!div renderon="docs"]
@@ -114,8 +109,8 @@ var msalConfig = {
 > [!div renderon="docs"]
 >
 > Waar:
-> - Enter_the_Application_Id_here > is de **client-id** van de toepassing die u hebt geregistreerd.  *\<*
-> - Enter_the_Tenant_info_here > is ingesteld op een van de volgende opties:  *\<*
+> - *\<Enter_the_Application_Id_here >* is de **toepassings-id** van de toepassing die u hebt geregistreerd.
+> - *\<Enter_the_Tenant_info_here >* is ingesteld op een van de volgende opties:
 >    - Als uw toepassing *accounts in deze organisatie Directory*ondersteunt, vervangt u deze waarde door de **Tenant-id** of **Tenant naam** (bijvoorbeeld *contoso.Microsoft.com*).
 >    - Als uw toepassing *accounts in een organisatorische Directory*ondersteunt, vervangt u deze waarde door **organisaties**.
 >    - Als uw toepassing *accounts in een organisatorische map en persoonlijke micro soft-accounts*ondersteunt, vervangt u deze waarde door **common**. Als u de ondersteuning voor *persoonlijke micro soft-accounts*wilt beperken, moet u deze waarde vervangen door **consumenten**.
@@ -144,6 +139,10 @@ var msalConfig = {
 Nadat de toepassing door de browser is geladen, selecteert u **Aanmelden**. De eerste keer dat u zich aanmeldt, wordt u gevraagd uw toestemming te geven om uw profiel te openen en u aan te melden. Nadat u bent aangemeld, moeten de gegevens van uw gebruikers profiel worden weer gegeven op de pagina.
 
 ## <a name="more-information"></a>Meer informatie
+
+### <a name="how-the-sample-works"></a>Hoe het voor beeld werkt
+
+![Hoe de voor beeld-app in deze Snelstartgids werkt](media/quickstart-v2-javascript/javascriptspa-intro.svg)
 
 ### <a name="msaljs"></a>msal.js
 

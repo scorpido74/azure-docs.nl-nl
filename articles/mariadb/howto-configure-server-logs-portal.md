@@ -1,25 +1,24 @@
 ---
-title: Server logboeken voor Azure Database for MariaDB in Azure Portal configureren en openen
+title: De server Logboeken in Azure Database for MariaDB van de Azure Portal configureren en openen
 description: In dit artikel wordt beschreven hoe u de server Logboeken in Azure Database for MariaDB kunt configureren en openen vanuit de Azure Portal.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/30/2019
-ms.openlocfilehash: c8be9519d3393330b3022fadd2de6a49e58ecdcf
-ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
+ms.openlocfilehash: c7e95521e503ad2d92bf13ae7e410b71ed6dfcd3
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71703502"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71844699"
 ---
-# <a name="configure-and-access-server-logs-in-the-azure-portal"></a>Server logboeken configureren en openen in de Azure Portal
+# <a name="configure-and-access-server-logs-from-the-azure-portal"></a>Server logboeken van de Azure Portal configureren en openen
 
 U kunt de [Azure database for MariaDB langzame query logboeken](concepts-server-logs.md) configureren, weer geven en downloaden vanuit de Azure Portal.
 
 ## <a name="prerequisites"></a>Vereisten
-Als u deze hand leiding wilt door lopen, hebt u het volgende nodig:
-- [Azure Database for MariaDB server](quickstart-create-mariadb-server-database-using-azure-portal.md)
+Voor de stappen in dit artikel moet [Azure database for MariaDB server](quickstart-create-mariadb-server-database-using-azure-portal.md)zijn geïnstalleerd.
 
 ## <a name="configure-logging"></a>Logboek registratie configureren
 Configureer de toegang tot het logboek voor langzame query's. 
@@ -29,53 +28,53 @@ Configureer de toegang tot het logboek voor langzame query's.
 2. Selecteer uw Azure Database for MariaDB-server.
 
 3. Selecteer in de sectie **bewaking** in de zijbalk **Server logboeken**. 
-   ![Select-server logboeken, klik om te configureren @ no__t-1
+   ![Screenshot van opties voor Server logboeken @ no__t-1
 
-4. Selecteer de kop **Klik hier om Logboeken in te scha kelen en logboek parameters te configureren** om de server parameters weer te geven.
+4. Selecteer om de server parameters weer te geven de optie **Klik hier om Logboeken in te scha kelen en logboek parameters te configureren**.
 
-5. Wijzig de para meters die u wilt aanpassen, waaronder het ' slow_query_log ' in ' aan '. Alle wijzigingen die u aanbrengt in deze sessie, worden in paars gemarkeerd. 
+5. Wijzig de para meters die u wilt aanpassen, met inbegrip **van** **slow_query_log** . Alle wijzigingen die u aanbrengt in deze sessie, worden in paars gemarkeerd. 
 
-   Wanneer u de para meters hebt gewijzigd, kunt u op **Opslaan**klikken. Of u kunt uw wijzigingen **negeren** .
+   Nadat u de para meters hebt gewijzigd, selecteert u **Opslaan**. Of u kunt uw wijzigingen negeren.
 
-   ![Klik op opslaan of negeren](./media/howto-configure-server-logs-portal/3-save-discard.png)
+   ![Scherm opname van opties voor server parameters](./media/howto-configure-server-logs-portal/3-save-discard.png)
 
-6. Ga terug naar de lijst met Logboeken door te klikken op de **knop sluiten** (X pictogram) op de pagina **server parameters** .
+Op de pagina **server parameters** kunt u teruggaan naar de lijst met Logboeken door de pagina te sluiten.
 
 ## <a name="view-list-and-download-logs"></a>Lijst weer geven en logboeken downloaden
-Zodra de logboek registratie is gestart, kunt u een lijst met beschik bare langzame query logboeken bekijken en afzonderlijke logboek bestanden downloaden in het deel venster Server Logboeken. 
+Nadat de logboek registratie is gestart, kunt u een lijst met beschik bare langzame query logboeken bekijken en afzonderlijke logboek bestanden downloaden. 
 
 1. Open Azure Portal.
 
 2. Selecteer uw Azure Database for MariaDB-server.
 
-3. Selecteer in de sectie **bewaking** in de zijbalk **Server logboeken**. Op de pagina ziet u een lijst met uw logboek bestanden, zoals wordt weer gegeven:
+3. Selecteer in de sectie **bewaking** in de zijbalk **Server logboeken**. Op de pagina wordt een lijst met uw logboek bestanden weer gegeven.
 
-   ![Lijst met Logboeken](./media/howto-configure-server-logs-portal/4-server-logs-list.png)
+   ![Scherm opname van de pagina Server logboeken, met de lijst met gemarkeerde logboeken](./media/howto-configure-server-logs-portal/4-server-logs-list.png)
 
    > [!TIP]
-   > De naam Conventie van het logboek is **mysql-slow < uw server name >-yyyymmddhh. log**. De datum en tijd die in de bestands naam wordt gebruikt, is de tijd waarop het logboek is uitgegeven. Logboek bestanden worden elke 24 uur of 7,5 GB gedraaid, afhankelijk van wat het eerste komt.
+   > De naam Conventie van het logboek is **mysql-slow < uw server name >-yyyymmddhh. log**. De datum en tijd die in de bestands naam wordt gebruikt, is het tijdstip waarop het logboek is uitgegeven. Logboek bestanden worden elke 24 uur of 7,5 GB gedraaid, afhankelijk van wat het eerste komt.
 
-4. Gebruik, indien nodig, het **zoekvak** om snel te beperken tot een specifiek logboek op basis van datum/tijd. De zoek opdracht bevindt zich op de naam van het logboek.
+4. Gebruik, indien nodig, het zoekvak om snel naar een specifiek logboek te beperken, op basis van datum en tijd. De zoek opdracht bevindt zich op de naam van het logboek.
 
-5. Down load afzonderlijke logboek bestanden met behulp van de knop **downloaden** (pijl-omlaag) naast elk logboek bestand in de tabelrij, zoals wordt weer gegeven:
+5. Als u afzonderlijke logboek bestanden wilt downloaden, selecteert u het pictogram met de pijl-omlaag naast elk logboek bestand in de tabelrij.
 
-   ![Klik op pictogram downloaden](./media/howto-configure-server-logs-portal/5-download.png)
+   ![Scherm opname van de pagina Server logboeken, met pictogram met de pijl-omlaag gemarkeerd](./media/howto-configure-server-logs-portal/5-download.png)
 
 ## <a name="set-up-diagnostic-logs"></a>Diagnostische logboeken instellen
 
-1. Selecteer in de sectie **bewaking** van de zijbalk **Diagnostische instellingen**.
+1. Selecteer in de sectie **bewaking** van de zijbalk **diagnostische instellingen** > **Diagnostische instelling toevoegen**.
 
-1. Klik op "+ diagnostische instelling toevoegen" ![Add diagnostische instelling @ no__t-1
+   ![Scherm opname van opties voor Diagnostische instellingen](./media/howto-configure-server-logs-portal/add-diagnostic-setting.png)
 
 1. Geef een naam op voor de diagnostische instelling.
 
-1. Geef op welke gegevens worden gesinkt om de langzame query Logboeken (opslag account, Event Hub en/of Log Analytics-werk ruimte) te verzenden.
+1. Geef op welke gegevens worden gesinkt om de langzame query Logboeken (opslag account, Event Hub of Log Analytics-werk ruimte) te verzenden.
 
-1. Selecteer ' MySqlSlowLogs ' als het logboek type.
-diagnostische instelling van ![Configure @ no__t-1
+1. Selecteer **MySqlSlowLogs** als het logboek type.
+![Screenshot van configuratie opties voor Diagnostische instellingen @ no__t-1
 
-1. Zodra u de gegevens sinks hebt geconfigureerd om de langzame query logboeken te pipeen naar, kunt u op **Opslaan**klikken.
-diagnostische instelling van ![Save @ no__t-1
+1. Nadat u de gegevens sinks hebt geconfigureerd om de langzame query logboeken te pipeen, selecteert u **Opslaan**.
+![Screenshot van configuratie opties voor Diagnostische instellingen, met gemarkeerde opslaan @ no__t-1
 
 1. Open de logboeken voor trage query's door ze te verkennen in de gegevens-sinks die u hebt geconfigureerd. Het kan tot tien minuten duren voordat de logboeken worden weer gegeven.
 

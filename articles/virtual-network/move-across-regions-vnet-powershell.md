@@ -1,47 +1,46 @@
 ---
-title: Azure Virtual Network verplaatsen naar een andere Azure-regio met behulp van Azure PowerShell
-description: Gebruik Azure Resource Manager sjabloon om Azure Virtual Network van de ene Azure-regio naar de andere te verplaatsen met behulp van Azure PowerShell.
+title: Een virtueel Azure-netwerk verplaatsen naar een andere Azure-regio met behulp van Azure PowerShell
+description: Verplaats een virtueel Azure-netwerk van de ene Azure-regio naar een andere met behulp van een resource manager-sjabloon en Azure PowerShell.
 author: asudbring
 ms.service: virtual-network
 ms.topic: article
 ms.date: 08/26/2019
 ms.author: allensu
-ms.openlocfilehash: fe4c3fe131eb763ef8875cced91ab3ae22abca08
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: 753c239f4bf4d6a8f31d4dc5ca771f312cd34578
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71077657"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828985"
 ---
-# <a name="move-azure-virtual-network-to-another-region-using-azure-powershell"></a>Azure-Virtual Network verplaatsen naar een andere regio met behulp van Azure Power shell
+# <a name="move-an-azure-virtual-network-to-another-region-by-using-azure-powershell"></a>Een virtueel Azure-netwerk verplaatsen naar een andere regio met behulp van Azure PowerShell
 
-Er zijn verschillende scenario's waarin u uw bestaande Azure Virtual Networks (VNETs) wilt verplaatsen van de ene regio naar een andere. U kunt bijvoorbeeld een virtueel netwerk maken met dezelfde configuratie voor testen en beschik baarheid van uw bestaande virtuele netwerk. Het is ook mogelijk dat u een virtueel netwerk voor productie naar een andere regio wilt verplaatsen als onderdeel van de planning voor nood herstel.
+Er zijn verschillende scenario's voor het verplaatsen van een bestaand virtueel Azure-netwerk van de ene regio naar een andere. Stel dat u een virtueel netwerk met dezelfde configuratie wilt maken voor testen en beschik baarheid als uw bestaande virtuele netwerk. Het is ook mogelijk dat u een virtueel netwerk voor productie naar een andere regio wilt verplaatsen als onderdeel van de planning voor herstel na nood gevallen.
 
-U kunt een Azure Resource Manager sjabloon gebruiken om de verplaatsing van het virtuele netwerk naar een andere regio te volt ooien. Hiervoor exporteert u het virtuele netwerk naar een sjabloon, wijzigt u de para meters zodat deze overeenkomen met de doel regio en implementeert u de sjabloon vervolgens in de nieuwe regio.  Zie [resource groepen exporteren naar sjablonen](https://docs.microsoft.com/azure/azure-resource-manager/manage-resource-groups-powershell#export-resource-groups-to-templates) voor meer informatie over Resource Manager en sjablonen
+U kunt een Azure Resource Manager sjabloon gebruiken om de verplaatsing van het virtuele netwerk naar een andere regio te volt ooien. Hiervoor exporteert u het virtuele netwerk naar een sjabloon, wijzigt u de para meters zodat deze overeenkomen met de doel regio en implementeert u de sjabloon vervolgens in de nieuwe regio. Zie [resource groepen exporteren naar sjablonen](https://docs.microsoft.com/azure/azure-resource-manager/manage-resource-groups-powershell#export-resource-groups-to-templates)voor meer informatie over Resource Manager-sjablonen.
 
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Zorg ervoor dat de Azure-Virtual Network zich bevindt in de Azure-regio van waaruit u wilt verplaatsen.
+- Zorg ervoor dat het virtuele netwerk zich in de Azure-regio bevindt waaruit u wilt verplaatsen.
 
-- Als u een virtueel netwerk wilt exporteren en een sjabloon wilt implementeren om een virtueel netwerk in een andere regio te maken, hebt u de rol netwerk bijdrager of hoger nodig.
+- Als u een virtueel netwerk wilt exporteren en een sjabloon wilt implementeren om een virtueel netwerk te maken in een andere regio, moet u de rol netwerk bijdrager of hoger hebben.
 
-- Peering van virtuele netwerken wordt niet opnieuw gemaakt en mislukt als deze nog in de sjabloon aanwezig zijn.  U moet alle peers van het virtuele netwerk verwijderen voordat u de sjabloon exporteert en vervolgens de peers na het verplaatsen van het virtuele netwerk opnieuw tot stand brengt.
+- Peerings voor virtuele netwerken worden niet opnieuw gemaakt en mislukken als ze nog steeds in de sjabloon aanwezig zijn. Voordat u de sjabloon exporteert, moet u alle virtuele netwerk peers verwijderen. U kunt ze vervolgens opnieuw instellen nadat het virtuele netwerk is verplaatst.
     
 - Identificeer de bron netwerk indeling en alle resources die u momenteel gebruikt. Deze indeling bevat, maar is niet beperkt tot load balancers, netwerk beveiligings groepen (Nsg's) en open bare Ip's.
 
-- Controleer of u met uw Azure-abonnement virtuele netwerken kunt maken in de doel regio die wordt gebruikt. Neem contact op met ondersteuning voor het inschakelen van het vereiste quotum.
+- Controleer of u met uw Azure-abonnement virtuele netwerken in de doel regio kunt maken. Neem contact op met de ondersteuning om het vereiste quotum in te scha kelen.
 
-- Zorg ervoor dat uw abonnement voldoende bronnen heeft ter ondersteuning van het toevoegen van virtuele netwerken voor dit proces.  Zie [Azure-abonnement en service limieten, quota's en beperkingen](https://docs.microsoft.com/azure/azure-subscription-service-limits#networking-limits)
+- Zorg ervoor dat uw abonnement voldoende bronnen heeft ter ondersteuning van het toevoegen van virtuele netwerken voor dit proces. Zie [Azure-abonnement en servicelimieten, quota en beperkingen](https://docs.microsoft.com/azure/azure-subscription-service-limits#networking-limits) voor meer informatie.
 
 
-## <a name="prepare-and-move"></a>Voorbereiden en verplaatsen
-De volgende stappen laten zien hoe u het virtuele netwerk voorbereidt voor de verplaatsing met behulp van een resource manager-sjabloon en het virtuele netwerk naar de doel regio verplaatst met behulp van Azure PowerShell-opdrachten.
-
+## <a name="prepare-for-the-move"></a>Voorbereiden voor de verhuizing
+In deze sectie gaat u het virtuele netwerk voorbereiden voor de verplaatsing met behulp van een resource manager-sjabloon. Vervolgens verplaatst u het virtuele netwerk naar de doel regio met behulp van Azure PowerShell-opdrachten.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-### <a name="export-the-virtual-network-and-deploy-the-target-virtual-network-with-powershell"></a>Het virtuele netwerk exporteren en het virtuele doel netwerk implementeren met Power shell
+Ga als volgt te werk om het virtuele netwerk te exporteren en het virtuele doel netwerk te implementeren met behulp van Power shell:
 
 1. Meld u aan bij uw Azure-abonnement met de opdracht [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-2.5.0) en volg de instructies op het scherm:
     
@@ -49,25 +48,25 @@ De volgende stappen laten zien hoe u het virtuele netwerk voorbereidt voor de ve
     Connect-AzAccount
     ```
 
-2. Haal de bron-ID op van het virtuele netwerk dat u wilt verplaatsen naar de doel regio en plaats deze in een variabele met [Get-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/get-azvirtualnetwork?view=azps-2.6.0):
+1. Haal de bron-ID op van het virtuele netwerk dat u wilt verplaatsen naar de doel regio en plaats deze in een variabele met behulp van [Get-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/get-azvirtualnetwork?view=azps-2.6.0):
 
     ```azurepowershell-interactive
     $sourceVNETID = (Get-AzVirtualNetwork -Name <source-virtual-network-name> -ResourceGroupName <source-resource-group-name>).Id
-
     ```
-3. Exporteer het virtuele bron netwerk naar een. JSON-bestand naar de map waar u de opdracht [export-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/export-azresourcegroup?view=azps-2.6.0)uitvoert:
+
+1. Exporteer het virtuele bron netwerk naar een. JSON-bestand in de map waar u de opdracht [export-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/export-azresourcegroup?view=azps-2.6.0)uitvoert:
    
    ```azurepowershell-interactive
    Export-AzResourceGroup -ResourceGroupName <source-resource-group-name> -Resource $sourceVNETID -IncludeParameterDefaultValue
    ```
 
-4. Het bestand dat u hebt gedownload krijgt de naam van de resource groep waaruit de resource is geëxporteerd.  Zoek het bestand dat is geëxporteerd uit de opdracht  **\<met de naam resource-group-name >. json** en open het in een editor naar keuze:
+1. Het gedownloade bestand heeft dezelfde naam als de resource groep waaruit de resource is geëxporteerd. Zoek het *\<resource-group-name >. json* -bestand, dat u met de opdracht hebt geëxporteerd, en open het vervolgens in uw editor:
    
    ```azurepowershell
    notepad <source-resource-group-name>.json
    ```
 
-5. Als u de para meter van de naam van het virtuele netwerk wilt bewerken, wijzigt u de eigenschap **DefaultValue** van de virtuele bron netwerk naam in de naam van het virtuele netwerk van het doel. Controleer of de naam tussen aanhalings tekens is:
+1. Als u de para meter van de naam van het virtuele netwerk wilt bewerken, wijzigt u de eigenschap **DefaultValue** van de virtuele bron netwerk naam in de naam van het virtuele netwerk van het doel. Zorg ervoor dat u de naam tussen aanhalings tekens plaatst.
     
     ```json
         "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentmyResourceGroupVNET.json#",
@@ -79,7 +78,7 @@ De volgende stappen laten zien hoe u het virtuele netwerk voorbereidt voor de ve
         }
     ```
 
-6.  Als u de doel regio wilt bewerken waar het VNET wordt verplaatst, wijzigt u de eigenschap **Location** onder resources:
+1. Als u de doel regio wilt bewerken waar het virtuele netwerk wordt verplaatst, wijzigt u de eigenschap **Location** onder resources:
 
     ```json
     "resources": [
@@ -99,16 +98,16 @@ De volgende stappen laten zien hoe u het virtuele netwerk voorbereidt voor de ve
 
     ```
   
-7. Als u regio codes wilt ophalen, kunt u de Azure PowerShell cmdlet [Get-AzLocation](https://docs.microsoft.com/powershell/module/az.resources/get-azlocation?view=azps-1.8.0) gebruiken door de volgende opdracht uit te voeren:
+1. Als u regio codes wilt ophalen, kunt u de Azure PowerShell cmdlet [Get-AzLocation](https://docs.microsoft.com/powershell/module/az.resources/get-azlocation?view=azps-1.8.0) gebruiken door de volgende opdracht uit te voeren:
 
     ```azurepowershell-interactive
 
     Get-AzLocation | format-table
-    
     ```
-8.  U kunt ook andere para meters wijzigen in de  **\<resource-group-name >. json-** bestand als u ervoor kiest en zijn optioneel, afhankelijk van uw vereisten:
 
-    * **Adres ruimte** : de adres ruimte van het VNET kan worden gewijzigd voordat u opslaat door de sectie **resources** > **addressSpace** te wijzigen en de eigenschap **addressPrefixes** te wijzigen in de  **\< resource-group-name >. json-** bestand:
+1. Beschrijving U kunt ook andere para meters wijzigen in het *\<resource-group-name >. json* -bestand, afhankelijk van uw vereisten:
+
+    * **Adres ruimte**: Voordat u het bestand opslaat, kunt u de adres ruimte van het virtuele netwerk wijzigen door de sectie **resources** > **addressSpace** te wijzigen en de eigenschap **addressPrefixes** te wijzigen:
 
         ```json
                 "resources": [
@@ -125,10 +124,9 @@ De volgende stappen laten zien hoe u het virtuele netwerk voorbereidt voor de ve
                         "10.0.0.0/16"
                         ]
                     },
-
         ```
 
-    * **Subnet** : de naam van het subnet en de adres ruimte van het subnet kunnen worden gewijzigd of toegevoegd aan door de sectie **subnetten** van de  **\<resource-group-name >. json-** bestand te wijzigen. De naam van het subnet kan worden gewijzigd door de eigenschap **name** te wijzigen. De adres ruimte van het subnet kan worden gewijzigd door de eigenschap **addressPrefix** in de  **\<resource-group-name >. json-** bestand te wijzigen:
+    * **Subnet**: U kunt wijzigen of toevoegen aan de naam van het subnet en de adres ruimte van het subnet door de sectie **subnetten** van het bestand te wijzigen. U kunt de naam van het subnet wijzigen door de eigenschap **name** te wijzigen. En u kunt de adres ruimte van het subnet wijzigen door de eigenschap **addressPrefix** te wijzigen:
 
         ```json
                 "subnets": [
@@ -159,7 +157,7 @@ De volgende stappen laten zien hoe u het virtuele netwerk voorbereidt voor de ve
                 ]
         ```
 
-         In de  **\<resource-group-name >. json-** bestand, om het adres voorvoegsel te wijzigen, moet het worden bewerkt op twee plaatsen, de hierboven vermelde sectie en de sectie **type** die hieronder wordt weer gegeven.  Wijzig de eigenschap **addressPrefix** zodat deze overeenkomt met het bovenstaande:
+        Als u het adres voorvoegsel wilt wijzigen, bewerkt u het bestand op twee plaatsen: in de code in de voor gaande sectie en in het gedeelte **type** van de volgende code. Wijzig de eigenschap **addressPrefix** in de volgende code zodat deze overeenkomt met de eigenschap **addressPrefix** in de code in de voor gaande sectie.
 
         ```json
          "type": "Microsoft.Network/virtualNetworks/subnets",
@@ -195,66 +193,64 @@ De volgende stappen laten zien hoe u het virtuele netwerk voorbereidt voor de ve
          ]
         ```
 
-9.  Sla het bestand  **\<met de resource-group-name >. json** op.
+1. Sla het bestand  *\<met de resource-group-name >. json* op.
 
-10. Maak een resource groep in de doel regio voor het doel-VNET dat moet worden geïmplementeerd met [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup?view=azps-2.6.0)
+1. Maak een resource groep in de doel regio voor het virtuele doel netwerk dat moet worden geïmplementeerd met behulp van [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup?view=azps-2.6.0):
     
     ```azurepowershell-interactive
     New-AzResourceGroup -Name <target-resource-group-name> -location <target-region>
     ```
     
-11. Implementeer het bewerkte  **\<resource-group-name >. json-** bestand in de resource groep die u in de vorige stap hebt gemaakt met behulp van [New-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0):
+1. Implementeer het bewerkte *\<resource-group-name >. json* -bestand naar de resource groep die u in de vorige stap hebt gemaakt met behulp van [New-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0):
 
     ```azurepowershell-interactive
 
     New-AzResourceGroupDeployment -ResourceGroupName <target-resource-group-name> -TemplateFile <source-resource-group-name>.json
-    
     ```
 
-12. Als u wilt controleren of de resources zijn gemaakt in de doel regio, gebruikt u [Get-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/get-azresourcegroup?view=azps-2.6.0) en [Get-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/get-azvirtualnetwork?view=azps-2.6.0):
+1. Gebruik [Get-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/get-azresourcegroup?view=azps-2.6.0) en [Get-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/get-azvirtualnetwork?view=azps-2.6.0)om te controleren of de resources zijn gemaakt in de doel regio:
     
     ```azurepowershell-interactive
 
     Get-AzResourceGroup -Name <target-resource-group-name>
-
     ```
 
     ```azurepowershell-interactive
 
     Get-AzVirtualNetwork -Name <target-virtual-network-name> -ResourceGroupName <target-resource-group-name>
-
     ```
 
-## <a name="discard"></a>Verwijderen 
+## <a name="delete-the-virtual-network-or-resource-group"></a>Het virtuele netwerk of de resource groep verwijderen 
 
-Als u na de implementatie wilt beginnen of het virtuele netwerk in het doel wilt verwijderen, verwijdert u de resource groep die is gemaakt in het doel en wordt het verplaatste virtuele netwerk verwijderd.  Gebruik [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup?view=azps-2.6.0)om de resource groep te verwijderen:
+Nadat u het virtuele netwerk hebt geïmplementeerd, moet u de resource groep die u hebt gemaakt in de doel regio en het verplaatste virtuele netwerk verwijderen om te beginnen of het virtuele netwerk te negeren in de doel regio. 
+
+Gebruik [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup?view=azps-2.6.0)om de resource groep te verwijderen:
 
 ```azurepowershell-interactive
 
 Remove-AzResourceGroup -Name <target-resource-group-name>
-
 ```
 
 ## <a name="clean-up"></a>Opruimen
 
-Als u de wijzigingen wilt door voeren en de verplaatsing van het virtuele netwerk wilt volt ooien, verwijdert u het virtuele bron netwerk of de resource groep, gebruikt u [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup?view=azps-2.6.0) of [Remove-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/remove-azvirtualnetwork?view=azps-2.6.0):
+Ga op een van de volgende manieren te werk om uw wijzigingen door te voeren en de virtuele netwerk verplaatsing te volt ooien:
 
-```azurepowershell-interactive
+* Verwijder de resource groep met behulp van [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup?view=azps-2.6.0):
 
-Remove-AzResourceGroup -Name <source-resource-group-name>
+    ```azurepowershell-interactive
 
-```
+    Remove-AzResourceGroup -Name <source-resource-group-name>
+    ```
 
-``` azurepowershell-interactive
+* Verwijder het virtuele bron netwerk met behulp van [Remove-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/remove-azvirtualnetwork?view=azps-2.6.0):  
+    ``` azurepowershell-interactive
 
-Remove-AzVirtualNetwork -Name <source-virtual-network-name> -ResourceGroupName <source-resource-group-name>
-
-```
+    Remove-AzVirtualNetwork -Name <source-virtual-network-name> -ResourceGroupName <source-resource-group-name>
+    ```
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelf studie hebt u een Azure-Virtual Network verplaatst van de ene regio naar een andere en de bron resources opgeschoond.  Raadpleeg voor meer informatie over het verplaatsen van resources tussen regio's en herstel na nood gevallen in Azure:
-
+In deze zelf studie hebt u een virtueel netwerk verplaatst van de ene regio naar een andere met behulp van Power shell en vervolgens de overbodige bron bronnen verwijderd. Zie voor meer informatie over het verplaatsen van resources tussen regio's en herstel na nood gevallen in Azure:
 
 - [Resources verplaatsen naar een nieuwe resourcegroep of een nieuw abonnement](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources)
-- [Virtuele Azure-machines verplaatsen naar een andere regio](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-migrate)
+- [Virtuele Azure-machines naar een andere regio verplaatsen](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-migrate)

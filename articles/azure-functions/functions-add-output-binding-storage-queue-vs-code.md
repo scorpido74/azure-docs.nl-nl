@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: azure-functions
 ms.custom: mvc
 manager: jeconnoc
-ms.openlocfilehash: 63065c918a6f78510b4908c5e2ae80df67665b40
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: dfb4abaf3868b76e17fb35f952c4db6bcdf30634
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71672599"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71838942"
 ---
 # <a name="connect-functions-to-azure-storage-using-visual-studio-code"></a>Functies verbinden met Azure Storage met Visual Studio code
 
@@ -71,50 +71,7 @@ In functies moet voor elk type binding een `direction`, `type` en een unieke `na
 
 # <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
 
-Bindings kenmerken worden rechtstreeks in het bestand function. json gedefinieerd. Afhankelijk van het bindings type zijn er mogelijk aanvullende eigenschappen vereist. De [uitvoer configuratie](functions-bindings-storage-queue.md#output---configuration) van de wachtrij beschrijft de velden die vereist zijn voor een Azure Storage binding van de wachtrij. Met deze extensie kunt u eenvoudig bindingen toevoegen aan het bestand function. json. 
-
-Als u een binding wilt maken, klikt u met de rechter muisknop (CTRL + klik op macOS) het `function.json`-bestand in de map http trigger en kiest u **binding toevoegen...** . Volg de aanwijzingen om de volgende bindings eigenschappen te definiëren voor de nieuwe binding:
-
-| Vraag | Value | Description |
-| -------- | ----- | ----------- |
-| **Bindings richting selecteren** | `out` | De binding is een uitvoer binding. |
-| **Binding met richting selecteren...** | `Azure Queue Storage` | De binding is een Azure Storage wachtrij binding. |
-| **De naam die wordt gebruikt om deze binding in uw code aan te duiden** | `msg` | Naam die de bindings parameter identificeert waarnaar in uw code wordt verwezen. |
-| **De wachtrij waarnaar het bericht wordt verzonden** | `outqueue` | De naam van de wachtrij waarnaar de binding wordt geschreven. Wanneer de *wachtrij* naam niet bestaat, wordt deze door de binding gemaakt bij het eerste gebruik. |
-| **Selecteer de instelling in ' lokaal. instelling. json '** | `AzureWebJobsStorage` | De naam van een toepassings instelling die de connection string voor het opslag account bevat. De instelling @no__t 0 bevat de connection string voor het opslag account dat u hebt gemaakt met de functie-app. |
-
-Een binding wordt toegevoegd aan de matrix @no__t 0 in het bestand function. json, dat er nu uitziet als in het volgende voor beeld:
-
-```json
-{
-   ...
-
-  "bindings": [
-    {
-      "authLevel": "function",
-      "type": "httpTrigger",
-      "direction": "in",
-      "name": "req",
-      "methods": [
-        "get",
-        "post"
-      ]
-    },
-    {
-      "type": "http",
-      "direction": "out",
-      "name": "$return"
-    },
-    {
-      "type": "queue",
-      "direction": "out",
-      "name": "msg",
-      "queueName": "outqueue",
-      "connection": "AzureWebJobsStorage"
-    }
-  ]
-}
-```
+[!INCLUDE [functions-add-output-binding-json](../../includes/functions-add-output-binding-json.md)]
 
 # <a name="ctabcsharp"></a>[C\#](#tab/csharp)
 
@@ -128,37 +85,7 @@ Nadat de binding is gedefinieerd, kunt u de `name` van de binding gebruiken om d
 
 # <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
 
-Voeg code toe die gebruikmaakt van het `msg`-object voor uitvoer bindingen op `context.bindings` om een wachtrij bericht te maken. Voeg deze code toe vóór de instructie `context.res`.
-
-```javascript
-// Add a message to the Storage queue.
-context.bindings.msg = "Name passed to the function: " + 
-(req.query.name || req.body.name);
-```
-
-De functie moet op dit moment er als volgt uitzien:
-
-```javascript
-module.exports = async function (context, req) {
-    context.log('JavaScript HTTP trigger function processed a request.');
-
-    if (req.query.name || (req.body && req.body.name)) {
-        // Add a message to the Storage queue.
-        context.bindings.msg = "Name passed to the function: " + 
-        (req.query.name || req.body.name);
-        context.res = {
-            // status: 200, /* Defaults to 200 */
-            body: "Hello " + (req.query.name || req.body.name)
-        };
-    }
-    else {
-        context.res = {
-            status: 400,
-            body: "Please pass a name on the query string or in the request body"
-        };
-    }
-};
-```
+[!INCLUDE [functions-add-output-binding-js](../../includes/functions-add-output-binding-js.md)]
 
 # <a name="ctabcsharp"></a>[C\#](#tab/csharp)
 

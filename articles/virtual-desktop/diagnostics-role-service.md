@@ -7,14 +7,14 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: helohr
-ms.openlocfilehash: f041889f1594ef3852c8f2393be93bb7a6513b4c
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 5401260921aee5fc54b50c1222188a6b244a0c5a
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71676633"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71840135"
 ---
-# <a name="identify-issues-with-the-diagnostics-feature"></a>Problemen met de diagnostische functie identificeren
+# <a name="identify-and-diagnose-issues"></a>Problemen identificeren en vaststellen
 
 Virtueel bureau blad van Windows biedt een functie voor diagnostische gegevens waarmee de beheerder problemen kan identificeren via één interface. De Windows-functies voor virtuele Bureau bladen registreren een diagnostische activiteit wanneer een gebruiker met het systeem communiceert. Elk logboek bevat relevante informatie zoals de Windows-functies voor virtueel bureau blad die betrokken zijn bij de trans actie, fout berichten, Tenant gegevens en gebruikers informatie. Diagnostische activiteiten worden gemaakt door eind gebruikers en administratieve acties en kunnen worden gecategoriseerd in drie hoofd verzamelingen:
 

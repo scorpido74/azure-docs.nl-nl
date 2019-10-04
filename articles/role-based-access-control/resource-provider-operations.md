@@ -10,15 +10,15 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 08/27/2019
+ms.date: 09/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 2c0f763dcc03d0ed2e4fb335342f39c2708572c0
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 37d895d5631cf8487549fd9a9ebfb9dc37209c60
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71213543"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71839617"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Bewerkingen voor de resource provider Azure Resource Manager
 
@@ -339,6 +339,7 @@ De bewerkingen van de resource provider zijn altijd in ontwikkeling. Als u de me
 > | Action | Microsoft.ApiManagement/service/policy/delete | De beleids configuratie op Tenant niveau verwijderen |
 > | Action | Micro soft. ApiManagement/service/beleid/lezen | De beleids configuratie ophalen op Tenant niveau |
 > | Action | Micro soft. ApiManagement/service/beleid/schrijven | Beleids configuratie maken op Tenant niveau |
+> | Action | Micro soft. ApiManagement/service/policyDescriptions/lezen | Een lijst met alle beleids beschrijvingen. |
 > | Action | Microsoft.ApiManagement/service/policySnippets/read | Een lijst met alle beleids fragmenten. |
 > | Action | Microsoft.ApiManagement/service/portalsettings/read | Instellingen voor aanmelden ophalen voor de portal of instellingen voor het aanmelden ophalen voor de portal of voor het ophalen van delegerings instellingen voor de portal. |
 > | Action | Micro soft. ApiManagement/service/portalsettings/schrijven | Aanmeldings instellingen bijwerken. of om aanmeldings instellingen te maken of bij te werken. of update de instellingen voor aanmelden of het bijwerken van instellingen voor het aanmelden of het bijwerken van de instellingen voor delegering. of u instellingen voor delegering wilt maken of bijwerken. |
@@ -429,6 +430,10 @@ De bewerkingen van de resource provider zijn altijd in ontwikkeling. Als u de me
 > | Action | Microsoft.Authorization/locks/write | Vergren delingen aan het opgegeven bereik toevoegen. |
 > | Action | Micro soft. Authorization/Operations/Read | Hiermee haalt u de lijst met bewerkingen op |
 > | Action | Micro soft. Authorization/permissions/Read | Een lijst met alle machtigingen die de aanroeper heeft voor een bepaald bereik. |
+> | Action | Micro soft. Authorization/Policies/audit/Action | De actie die wordt ondernomen als gevolg van de evaluatie van Azure Policy met het effect ' controle ' |
+> | Action | Micro soft. Authorization/Policies/auditIfNotExists/Action | De actie die wordt ondernomen als gevolg van de evaluatie van Azure Policy met het effect ' auditIfNotExists ' |
+> | Action | Micro soft. Authorization/Policies/Deny/Action | De actie die wordt ondernomen als gevolg van de evaluatie van Azure Policy met het effect ' deny ' |
+> | Action | Micro soft. Authorization/Policies/deployIfNotExists/Action | De actie die wordt ondernomen als gevolg van de evaluatie van Azure Policy met het effect ' deployIfNotExists ' |
 > | Action | Microsoft.Authorization/policyAssignments/delete | Een beleids toewijzing verwijderen bij het opgegeven bereik. |
 > | Action | Microsoft.Authorization/policyAssignments/read | Informatie over een beleids toewijzing ophalen. |
 > | Action | Microsoft.Authorization/policyAssignments/write | Een beleids toewijzing maken voor het opgegeven bereik. |
@@ -536,8 +541,13 @@ De bewerkingen van de resource provider zijn altijd in ontwikkeling. Als u de me
 > | Action | Microsoft.Automation/automationAccounts/schedules/getCount/action | Hiermee wordt het aantal Azure Automation planningen opgehaald |
 > | Action | Microsoft.Automation/automationAccounts/schedules/read | Hiermee wordt een Azure Automation schema-element opgehaald |
 > | Action | Microsoft.Automation/automationAccounts/schedules/write | Hiermee wordt een Azure Automation Schedule-Asset gemaakt of bijgewerkt |
+> | Action | Micro soft. Automation/automationAccounts/softwareUpdateConfigurationMachineRuns/lezen | Hiermee wordt een Azure Automation uitvoeren van de configuratie van de software-update-computer opgehaald |
+> | Action | Micro soft. Automation/automationAccounts/softwareUpdateConfigurationRuns/lezen | Hiermee wordt een Azure Automation uitvoeren van de configuratie van software-updates opgehaald |
+> | Action | Microsoft.Automation/automationAccounts/softwareUpdateConfigurations/delete | Hiermee wordt een Azure Automation Software-update configuratie verwijderd |
 > | Action | Microsoft.Automation/automationAccounts/softwareUpdateConfigurations/delete | Hiermee wordt een Azure Automation Software-update configuratie verwijderd |
 > | Action | Microsoft.Automation/automationAccounts/softwareUpdateConfigurations/read | Hiermee wordt een Azure Automation configuratie van software-updates opgehaald |
+> | Action | Microsoft.Automation/automationAccounts/softwareUpdateConfigurations/read | Hiermee wordt een Azure Automation configuratie van software-updates opgehaald |
+> | Action | Microsoft.Automation/automationAccounts/softwareUpdateConfigurations/write | Hiermee wordt Azure Automation Software-update configuratie gemaakt of bijgewerkt |
 > | Action | Microsoft.Automation/automationAccounts/softwareUpdateConfigurations/write | Hiermee wordt Azure Automation Software-update configuratie gemaakt of bijgewerkt |
 > | Action | Microsoft.Automation/automationAccounts/statistics/read | Hiermee worden Azure Automation statistieken opgehaald |
 > | Action | Microsoft.Automation/automationAccounts/updateDeploymentMachineRuns/read | Een Azure Automation update-implementatie machine ophalen |
@@ -647,23 +657,32 @@ De bewerkingen van de resource provider zijn altijd in ontwikkeling. Als u de me
 > | Action | Micro soft. facturering/billingAccounts/billingProfiles/klanten/lezen |  |
 > | Action | Micro soft. facturering/billingAccounts/billingProfiles/facturen/prijzen overzicht/downloaden/actie |  |
 > | Action | Micro soft. facturering/billingAccounts/billingProfiles/invoiceSections/billingPermissions/lezen |  |
+> | Action | Micro soft. billing/billingAccounts/billingProfiles/invoiceSections/billingSubscriptions/Move/Action |  |
+> | Action | Micro soft. facturering/billingAccounts/billingProfiles/invoiceSections/billingSubscriptions/overdracht/actie |  |
+> | Action | Micro soft. facturering/billingAccounts/billingProfiles/invoiceSections/billingSubscriptions/validateMoveEligibility/actie |  |
+> | Action | Micro soft. billing/billingAccounts/billingProfiles/invoiceSections/Products/Move/Action |  |
+> | Action | Micro soft. billing/billingAccounts/billingProfiles/invoiceSections/Products/overboeking/actie |  |
+> | Action | Micro soft. billing/billingAccounts/billingProfiles/invoiceSections/Products/validateMoveEligibility/Action |  |
 > | Action | Micro soft. facturering/billingAccounts/billingProfiles/invoiceSections/lezen |  |
 > | Action | Micro soft. billing/billingAccounts/billingProfiles/invoiceSections/write |  |
 > | Action | Micro soft. facturering/billingAccounts/billingProfiles/prijzen overzicht/downloaden/actie |  |
 > | Action | Micro soft. facturering/billingAccounts/billingProfiles/lezen |  |
 > | Action | Micro soft. facturering/billingAccounts/billingProfiles/schrijven |  |
+> | Action | Micro soft. facturering/billingAccounts/billingProfiles/schrijven |  |
+> | Action | Micro soft. facturering/billingAccounts/billingSubscriptions/lezen |  |
 > | Action | Micro soft. billing/billingAccounts/klanten/billingPermissions/lezen |  |
 > | Action | Micro soft. facturering/billingAccounts/klanten/lezen |  |
 > | Action | Microsoft.Billing/billingAccounts/departments/read |  |
 > | Action | Micro soft. facturering/billingAccounts/enrollmentAccounts/billingPermissions/lezen |  |
 > | Action | Microsoft.Billing/billingAccounts/enrollmentAccounts/read |  |
 > | Action | Micro soft. facturering/billingAccounts/enrollmentDepartments/billingPermissions/lezen |  |
+> | Action | Micro soft. facturering/billingAccounts/listInvoiceSectionsWithCreateSubscriptionPermission/actie |  |
 > | Action | Micro soft. facturering/billingAccounts/producten/lezen |  |
 > | Action | Microsoft.Billing/billingAccounts/read |  |
 > | Action | Micro soft. facturering/billingAccounts/schrijven |  |
 > | Action | Microsoft.Billing/departments/read |  |
 > | Action | Microsoft.Billing/register/action |  |
-> | Action | Micro soft. facturering/validateAddress/schrijven |  |
+> | Action | Micro soft. facturering/validateAddress/actie |  |
 
 ## <a name="microsoftbingmaps"></a>Microsoft.BingMaps
 
@@ -790,6 +809,7 @@ De bewerkingen van de resource provider zijn altijd in ontwikkeling. Als u de me
 > | Action | Microsoft.Capacity/reservationorders/merge/action | Een reserve ring samen voegen |
 > | Action | Microsoft.Capacity/reservationorders/read | Alle reserve ringen lezen |
 > | Action | Microsoft.Capacity/reservationorders/reservations/action | Een reserve ring bijwerken |
+> | Action | Micro soft. capacity/reservationorders/reserve ringen/availablescopes/actie | Beschik bare bereik zoeken |
 > | Action | Microsoft.Capacity/reservationorders/reservations/delete | Een reserve ring verwijderen |
 > | Action | Microsoft.Capacity/reservationorders/reservations/read | Alle reserve ringen lezen |
 > | Action | Microsoft.Capacity/reservationorders/reservations/revisions/read | Alle reserve ringen lezen |
@@ -1099,12 +1119,18 @@ De bewerkingen van de resource provider zijn altijd in ontwikkeling. Als u de me
 > | Action | Micro soft. ClassicStorage/quota's/lezen | Het quotum voor het abonnement ophalen. |
 > | Action | Micro soft. ClassicStorage/REGI ster/actie | Registreren bij klassieke opslag |
 > | Action | Microsoft.ClassicStorage/storageAccounts/abortMigration/action | De migratie van een opslag account wordt afgebroken. |
+> | Action | Micro soft. ClassicStorage/Storage accounts/blobServices/providers/micro soft. Insights/diagnosticSettings/lezen | De diagnostische instellingen ophalen. |
+> | Action | Micro soft. ClassicStorage/Storage accounts/blobServices/providers/micro soft. Insights/diagnosticSettings/schrijven | Diagnostische instellingen toevoegen of wijzigen. |
+> | Action | Micro soft. ClassicStorage/Storage accounts/blobServices/providers/micro soft. Insights/metricDefinitions/lezen | Hiermee worden de metrische definities opgehaald. |
 > | Action | Microsoft.ClassicStorage/storageAccounts/commitMigration/action | Hiermee wordt de migratie van een opslag account doorgevoerd. |
 > | Action | Microsoft.ClassicStorage/storageAccounts/delete | Verwijder het opslag account. |
 > | Action | Microsoft.ClassicStorage/storageAccounts/disks/delete | Hiermee verwijdert u een opgegeven opslag account schijf. |
 > | Action | Microsoft.ClassicStorage/storageAccounts/disks/operationStatuses/read | Hiermee wordt de bewerkings status van de resource gelezen. |
 > | Action | Microsoft.ClassicStorage/storageAccounts/disks/read | Retourneert de schijf van het opslag account. |
 > | Action | Microsoft.ClassicStorage/storageAccounts/disks/write | Hiermee voegt u een opslag account schijf toe. |
+> | Action | Micro soft. ClassicStorage/Storage accounts/fileServices/providers/micro soft. Insights/diagnosticSettings/lezen | De diagnostische instellingen ophalen. |
+> | Action | Micro soft. ClassicStorage/Storage accounts/fileServices/providers/micro soft. Insights/diagnosticSettings/schrijven | Diagnostische instellingen toevoegen of wijzigen. |
+> | Action | Micro soft. ClassicStorage/Storage accounts/fileServices/providers/micro soft. Insights/metricDefinitions/lezen | Hiermee worden de metrische definities opgehaald. |
 > | Action | Microsoft.ClassicStorage/storageAccounts/images/delete | Hiermee verwijdert u een bepaalde installatie kopie van het opslag account. Keur. Micro soft. ClassicStorage/Storage accounts/vmImages gebruiken |
 > | Action | Microsoft.ClassicStorage/storageAccounts/images/operationstatuses/read | Retourneert de bewerkings status van de installatie kopie van het opslag account. |
 > | Action | Microsoft.ClassicStorage/storageAccounts/images/read | Hiermee wordt de installatie kopie van het opslag account geretourneerd. Keur. Micro soft. ClassicStorage/Storage accounts/vmImages gebruiken |
@@ -1117,6 +1143,9 @@ De bewerkingen van de resource provider zijn altijd in ontwikkeling. Als u de me
 > | Action | Micro soft. ClassicStorage/Storage accounts/providers/micro soft. Insights/diagnosticSettings/lezen | De diagnostische instellingen ophalen. |
 > | Action | Micro soft. ClassicStorage/Storage accounts/providers/micro soft. Insights/diagnosticSettings/schrijven | Diagnostische instellingen toevoegen of wijzigen. |
 > | Action | Micro soft. ClassicStorage/Storage accounts/providers/micro soft. Insights/metricDefinitions/lezen | Hiermee worden de metrische definities opgehaald. |
+> | Action | Micro soft. ClassicStorage/Storage accounts/queueServices/providers/micro soft. Insights/diagnosticSettings/lezen | De diagnostische instellingen ophalen. |
+> | Action | Micro soft. ClassicStorage/Storage accounts/queueServices/providers/micro soft. Insights/diagnosticSettings/schrijven | Diagnostische instellingen toevoegen of wijzigen. |
+> | Action | Micro soft. ClassicStorage/Storage accounts/queueServices/providers/micro soft. Insights/metricDefinitions/lezen | Hiermee worden de metrische definities opgehaald. |
 > | Action | Microsoft.ClassicStorage/storageAccounts/read | Retour neer het opslag account met het opgegeven account. |
 > | Action | Microsoft.ClassicStorage/storageAccounts/regenerateKey/action | Hiermee worden de bestaande toegangs sleutels voor het opslag account opnieuw gegenereerd. |
 > | Action | Microsoft.ClassicStorage/storageAccounts/services/diagnosticSettings/read | De diagnostische instellingen ophalen. |
@@ -1124,6 +1153,9 @@ De bewerkingen van de resource provider zijn altijd in ontwikkeling. Als u de me
 > | Action | Microsoft.ClassicStorage/storageAccounts/services/metricDefinitions/read | Hiermee worden de metrische definities opgehaald. |
 > | Action | Microsoft.ClassicStorage/storageAccounts/services/metrics/read | Hiermee worden de metrische gegevens opgehaald. |
 > | Action | Microsoft.ClassicStorage/storageAccounts/services/read | De beschik bare services ophalen. |
+> | Action | Micro soft. ClassicStorage/Storage accounts/tableServices/providers/micro soft. Insights/diagnosticSettings/lezen | De diagnostische instellingen ophalen. |
+> | Action | Micro soft. ClassicStorage/Storage accounts/tableServices/providers/micro soft. Insights/diagnosticSettings/schrijven | Diagnostische instellingen toevoegen of wijzigen. |
+> | Action | Micro soft. ClassicStorage/Storage accounts/tableServices/providers/micro soft. Insights/metricDefinitions/lezen | Hiermee worden de metrische definities opgehaald. |
 > | Action | Microsoft.ClassicStorage/storageAccounts/validateMigration/action | Hiermee wordt de migratie van een opslag account gevalideerd. |
 > | Action | Microsoft.ClassicStorage/storageAccounts/vmImages/delete | Hiermee verwijdert u een bepaalde installatie kopie van een virtuele machine. |
 > | Action | Microsoft.ClassicStorage/storageAccounts/vmImages/operationstatuses/read | Hiermee wordt een bepaalde bewerkings status van installatie kopie van virtuele machine opgehaald. |
@@ -1243,6 +1275,9 @@ De bewerkingen van de resource provider zijn altijd in ontwikkeling. Als u de me
 > | Action | Microsoft.Compute/availabilitySets/read | De eigenschappen van een beschikbaarheidsset ophalen |
 > | Action | Microsoft.Compute/availabilitySets/vmSizes/read | Beschik bare grootten voor het maken of bijwerken van een virtuele machine in de beschikbaarheidsset weer geven |
 > | Action | Microsoft.Compute/availabilitySets/write | Hiermee wordt een nieuwe beschikbaarheidsset gemaakt of een bestaande bijgewerkt |
+> | Action | Micro soft. Compute/diskEncryptionSets/verwijderen | Een schijf versleutelings verwijderen |
+> | Action | Micro soft. Compute/diskEncryptionSets/lezen | De eigenschappen van een set schijf versleuteling ophalen |
+> | Action | Micro soft. Compute/diskEncryptionSets/schrijven | Een nieuwe schijf versleutelings maken of een bestaande set bijwerken |
 > | Action | Microsoft.Compute/disks/beginGetAccess/action | De SAS-URI van de schijf ophalen voor BLOB-toegang |
 > | Action | Microsoft.Compute/disks/delete | Hiermee wordt de schijf verwijderd |
 > | Action | Microsoft.Compute/disks/endGetAccess/action | De SAS-URI van de schijf intrekken |
@@ -1258,11 +1293,11 @@ De bewerkingen van de resource provider zijn altijd in ontwikkeling. Als u de me
 > | Action | Microsoft.Compute/galleries/read | Hiermee worden de eigenschappen van de galerie opgehaald |
 > | Action | Microsoft.Compute/galleries/write | Hiermee maakt u een nieuwe galerie of werkt u een bestaande. |
 > | Action | Microsoft.Compute/hostGroups/delete | Hiermee wordt de hostgroep verwijderd |
+> | Action | Micro soft. Compute/hostGroups/hosts/Delete | Hiermee wordt de host verwijderd |
+> | Action | Micro soft. Compute/hostGroups/hosts/lezen | De eigenschappen van een host ophalen |
+> | Action | Micro soft. Compute/hostGroups/hosts/write | Hiermee wordt een nieuwe host gemaakt of een bestaande host bijgewerkt |
 > | Action | Micro soft. Compute/hostGroups/lezen | De eigenschappen van een hostgroep ophalen |
 > | Action | Micro soft. Compute/hostGroups/schrijven | Hiermee wordt een nieuwe hostgroep gemaakt of een bestaande hostgroep bijgewerkt |
-> | Action | Microsoft.Compute/hosts/delete | Hiermee wordt de host verwijderd |
-> | Action | Microsoft.Compute/hosts/read | De eigenschappen van een host ophalen |
-> | Action | Micro soft. Compute/hosts/write | Hiermee wordt een nieuwe host gemaakt of een bestaande host bijgewerkt |
 > | Action | Microsoft.Compute/images/delete | Hiermee wordt de installatiekopie verwijderd |
 > | Action | Microsoft.Compute/images/read | De eigenschappen van de installatie kopie ophalen |
 > | Action | Microsoft.Compute/images/write | Hiermee wordt een nieuwe installatie kopie gemaakt of een bestaande bijgewerkt |
@@ -1409,6 +1444,7 @@ De bewerkingen van de resource provider zijn altijd in ontwikkeling. Als u de me
 > | Action | Microsoft.ContainerInstance/containerGroups/containers/exec/action | In een specifieke container uitvoeren. |
 > | Action | Microsoft.ContainerInstance/containerGroups/containers/logs/read | Logboeken voor een specifieke container ophalen. |
 > | Action | Microsoft.ContainerInstance/containerGroups/delete | De specifieke container groep verwijderen. |
+> | Action | Micro soft. ContainerInstance/containerGroups/operationResults/lezen | Resultaat van asynchrone bewerking ophalen |
 > | Action | Microsoft.ContainerInstance/containerGroups/providers/Microsoft.Insights/diagnosticSettings/read | Hiermee wordt de diagnostische instelling voor de container groep opgehaald. |
 > | Action | Microsoft.ContainerInstance/containerGroups/providers/Microsoft.Insights/diagnosticSettings/write | Hiermee wordt de diagnostische instelling voor de container groep gemaakt of bijgewerkt. |
 > | Action | Microsoft.ContainerInstance/containerGroups/providers/Microsoft.Insights/metricDefinitions/read | Hiermee worden de beschik bare metrische gegevens opgehaald voor de container groep. |
@@ -1512,6 +1548,7 @@ De bewerkingen van de resource provider zijn altijd in ontwikkeling. Als u de me
 > | Action | Microsoft.ContainerService/managedClusters/agentPools/write | Hiermee wordt een nieuwe agent groep gemaakt of een bestaande bijgewerkt |
 > | Action | Microsoft.ContainerService/managedClusters/delete | Hiermee wordt een beheerd cluster verwijderd |
 > | Action | Micro soft. container service/managedClusters/detectors/lezen | Beheerde cluster detectie ophalen |
+> | Action | Micro soft. container service/managedClusters/diagnosticsState/lezen | Hiermee wordt de diagnostische status van het cluster opgehaald |
 > | Action | Microsoft.ContainerService/managedClusters/listClusterAdminCredential/action | De clusterAdmin-referentie van een beheerd cluster weer geven |
 > | Action | Microsoft.ContainerService/managedClusters/listClusterUserCredential/action | De clusterUser-referentie van een beheerd cluster weer geven |
 > | Action | Micro soft. container service/managedClusters/privateEndpointConnectionsApproval/Action | Hiermee wordt bepaald of de gebruiker een verbinding met een privé-eind punt mag goed keuren |
@@ -1589,8 +1626,8 @@ De bewerkingen van de resource provider zijn altijd in ontwikkeling. Als u de me
 > | Action | Micro soft. DataBox/locaties/validateInputs/actie | Met deze methode worden alle typen validaties ondersteund. |
 > | Action | Micro soft. DataBox/Operations/lezen | De bewerkingen weer geven of ophalen |
 > | Action | Microsoft.DataBox/register/action | Provider micro soft. Databox registreren |
-> | Action | Micro soft. DataBox/abonnementen/resourceGroups/moveResources/actie |  |
-> | Action | Micro soft. DataBox/abonnementen/resourceGroups/validateMoveResources/actie |  |
+> | Action | Micro soft. DataBox/abonnementen/resourceGroups/moveResources/actie | Met deze methode wordt de resource verplaatsing uitgevoerd. |
+> | Action | Micro soft. DataBox/abonnementen/resourceGroups/validateMoveResources/actie | Met deze methode wordt gecontroleerd of het verplaatsen van de resource is toegestaan. |
 > | Action | Micro soft. DataBox/registratie/actie | De registratie van de provider micro soft. Databox ongedaan maken |
 
 ## <a name="microsoftdataboxedge"></a>Microsoft.DataBoxEdge
@@ -1611,6 +1648,7 @@ De bewerkingen van de resource provider zijn altijd in ontwikkeling. Als u de me
 > | Action | Microsoft.DataBoxEdge/dataBoxEdgeDevices/installUpdates/action | Updates installeren op het apparaat |
 > | Action | Microsoft.DataBoxEdge/dataBoxEdgeDevices/jobs/read | De taken weer geven of ophalen |
 > | Action | Microsoft.DataBoxEdge/dataBoxEdgeDevices/networkSettings/read | De netwerk instellingen van het apparaat weer geven of ophalen |
+> | Action | Micro soft. DataBoxEdge/dataBoxEdgeDevices/nodes/Read | Hiermee worden de knoop punten weer gegeven of opgehaald |
 > | Action | Microsoft.DataBoxEdge/dataBoxEdgeDevices/operationResults/read | Het resultaat van de bewerking weer geven of ophalen |
 > | Action | Microsoft.DataBoxEdge/dataBoxEdgeDevices/operationsStatus/read | De bewerkings status weer geven of ophalen |
 > | Action | Microsoft.DataBoxEdge/dataBoxEdgeDevices/orders/delete | De orders worden verwijderd |
@@ -1785,6 +1823,7 @@ De bewerkingen van de resource provider zijn altijd in ontwikkeling. Als u de me
 > | Action | Microsoft.DataFactory/factories/read | Data Factory lezen. |
 > | Action | Micro soft. DataFactory/factories/sandboxpipelineruns/sandboxActivityRuns/lezen | Hiermee worden de uitvoerings gegevens van de fout opsporing voor de activiteit opgehaald. |
 > | Action | Microsoft.DataFactory/factories/startdataflowdebugsession/action | Start een sessie voor fout opsporing van gegevens stromen. |
+> | Action | Micro soft. DataFactory/factories/submitDataFlowForPreview/actie | Verzend gegevens stroom om het voor beeld van gegevens op te halen met behulp van een foutopsporingssessie. |
 > | Action | Microsoft.DataFactory/factories/triggerruns/read | Hiermee wordt de uitvoering van de trigger gelezen. |
 > | Action | Microsoft.DataFactory/factories/triggers/delete | Hiermee verwijdert u een trigger. |
 > | Action | Microsoft.DataFactory/factories/triggers/read | Hiermee wordt elke trigger gelezen. |
@@ -1850,6 +1889,9 @@ De bewerkingen van de resource provider zijn altijd in ontwikkeling. Als u de me
 > | Action | Microsoft.DataLakeStore/accounts/firewallRules/write | Een firewall regel maken of bijwerken. |
 > | Action | Microsoft.DataLakeStore/accounts/operationResults/read | Resultaat van een Data Lake Store-account bewerking ophalen. |
 > | Action | Microsoft.DataLakeStore/accounts/read | Informatie over een bestaand data Lake Store-account ophalen. |
+> | Action | Micro soft. data Lake Store/accounts/shares/verwijderen | Verwijder een share. |
+> | Action | Micro soft. data Lake Store/accounts/shares/lezen | Informatie over een share ophalen. |
+> | Action | Micro soft. data Lake Store/accounts/shares/schrijven | Een share maken of bijwerken. |
 > | Action | Microsoft.DataLakeStore/accounts/Superuser/action | Verleen de beheerder aan Data Lake Store wanneer deze is verleend met micro soft. Authorization/roleAssignments/write. |
 > | Action | Microsoft.DataLakeStore/accounts/trustedIdProviders/delete | Verwijder een vertrouwde id-provider. |
 > | Action | Microsoft.DataLakeStore/accounts/trustedIdProviders/read | Informatie over een vertrouwde id-provider ophalen. |
@@ -2189,7 +2231,6 @@ De bewerkingen van de resource provider zijn altijd in ontwikkeling. Als u de me
 > | Action | Microsoft.Devices/provisioningServices/skus/Read | Geldige IotDps-Sku's ophalen |
 > | Action | Microsoft.Devices/provisioningServices/Write | IotDps-resource maken |
 > | Action | Microsoft.Devices/register/action | Het abonnement voor de IotHub-resource provider registreren en het maken van IotHub-resources inschakelen |
-> | Action | Microsoft.Devices/register/action | Het abonnement voor de IotHub-resource provider registreren en het maken van IotHub-resources inschakelen |
 > | Action | Microsoft.Devices/usages/Read | Details van het abonnements gebruik voor deze provider ophalen. |
 
 ## <a name="microsoftdevspaces"></a>Microsoft.DevSpaces
@@ -2304,6 +2345,9 @@ De bewerkingen van de resource provider zijn altijd in ontwikkeling. Als u de me
 > | Action | Microsoft.DevTestLab/labs/virtualMachines/TransferDisks/action | Hiermee worden alle gegevens schijven die zijn gekoppeld aan de virtuele machine, overgedragen aan de huidige gebruiker. |
 > | Action | Microsoft.DevTestLab/labs/virtualMachines/UnClaim/action | Eigendom van een bestaande virtuele machine vrijgeven |
 > | Action | Microsoft.DevTestLab/labs/virtualMachines/write | Virtuele machines toevoegen of wijzigen. |
+> | Action | Micro soft. DevTestLab/Labs/virtualNetworks/bastionHosts/verwijderen | Verwijder bastionhosts. |
+> | Action | Micro soft. DevTestLab/Labs/virtualNetworks/bastionHosts/lezen | Lees bastionhosts. |
+> | Action | Micro soft. DevTestLab/Labs/virtualNetworks/bastionHosts/schrijven | Bastionhosts toevoegen of wijzigen. |
 > | Action | Microsoft.DevTestLab/labs/virtualNetworks/delete | Virtuele netwerken verwijderen. |
 > | Action | Microsoft.DevTestLab/labs/virtualNetworks/read | Virtuele netwerken lezen. |
 > | Action | Microsoft.DevTestLab/labs/virtualNetworks/write | Virtuele netwerken toevoegen of wijzigen. |
@@ -2587,6 +2631,7 @@ De bewerkingen van de resource provider zijn altijd in ontwikkeling. Als u de me
 > | Action | Microsoft.GuestConfiguration/guestConfigurationAssignments/read | Toewijzing van gast configuratie ophalen. |
 > | Action | Microsoft.GuestConfiguration/guestConfigurationAssignments/reports/read | Toewijzings rapport voor gast configuratie ophalen. |
 > | Action | Microsoft.GuestConfiguration/guestConfigurationAssignments/write | Nieuwe gast configuratie toewijzing maken. |
+> | Action | Micro soft. GuestConfiguration/Operations/lezen | Hiermee worden de bewerkingen voor de resource provider micro soft. GuestConfiguration opgehaald |
 > | Action | Microsoft.GuestConfiguration/register/action | Hiermee wordt het abonnement voor de resource provider micro soft. GuestConfiguration geregistreerd. |
 
 ## <a name="microsofthdinsight"></a>Microsoft.HDInsight
@@ -2628,6 +2673,7 @@ De bewerkingen van de resource provider zijn altijd in ontwikkeling. Als u de me
 > | Action | Microsoft.ImportExport/jobs/read | Hiermee worden de eigenschappen van de opgegeven taak opgehaald of wordt de lijst met taken geretourneerd. |
 > | Action | Microsoft.ImportExport/jobs/write | Hiermee maakt u een taak met de opgegeven para meters of werkt u de eigenschappen of labels voor de opgegeven taak bij. |
 > | Action | Micro soft. ImportExport/locaties/lezen | Hiermee worden de eigenschappen opgehaald voor de opgegeven locatie of wordt de lijst met locaties geretourneerd. |
+> | Action | Micro soft. ImportExport/Operations/lezen | Hiermee worden de bewerkingen opgehaald die door de resource provider worden ondersteund. |
 > | Action | Micro soft. ImportExport/REGI ster/actie | Hiermee wordt het abonnement voor de resource provider import/export geregistreerd en wordt het maken van import/export-taken ingeschakeld. |
 
 ## <a name="microsoftinsights"></a>Microsoft.Insights
@@ -2679,6 +2725,8 @@ De bewerkingen van de resource provider zijn altijd in ontwikkeling. Als u de me
 > | Action | Microsoft.Insights/Components/BillingPlanForComponent/Read | Een facturerings plan voor Application Insights onderdeel lezen |
 > | Action | Micro soft. Insights/onderdelen/CurrentBillingFeatures/lezen | De huidige facturerings functies voor Application Insights onderdeel lezen |
 > | Action | Micro soft. Insights/onderdelen/CurrentBillingFeatures/schrijven | Huidige facturerings functies voor Application Insights onderdeel schrijven |
+> | Action | Micro soft. Insights/onderdelen/DailyCapReached/actie | De dagelijkse limiet voor het Application Insights onderdeel is bereikt |
+> | Action | Micro soft. Insights/onderdelen/DailyCapWarningThresholdReached/actie | De waarschuwings drempel voor de dagelijkse limiet voor Application Insights onderdeel is bereikt |
 > | Action | Microsoft.Insights/Components/DefaultWorkItemConfig/Read | Een Application Insights standaard configuratie voor ALM-integratie lezen |
 > | Action | Microsoft.Insights/Components/Delete | De configuratie van een Application Insights-onderdeel verwijderen |
 > | Action | Microsoft.Insights/Components/Events/Read | Logboeken van Application Insights ophalen met de OData-query-indeling |
@@ -2980,38 +3028,40 @@ De bewerkingen van de resource provider zijn altijd in ontwikkeling. Als u de me
 > | Actietype | Bewerking | Description |
 > | --- | --- | --- |
 > | Action | Microsoft.Kusto/Clusters/Activate/action | Start het cluster. |
-> | Action | Microsoft.Kusto/Clusters/AttachedDatabaseConfigurations/delete | Hiermee verwijdert u een gekoppelde database configuratie resource. |
-> | Action | Microsoft.Kusto/Clusters/AttachedDatabaseConfigurations/read | Hiermee wordt een gekoppelde database configuratie bron gelezen. |
-> | Action | Microsoft.Kusto/Clusters/AttachedDatabaseConfigurations/write | Hiermee wordt een gekoppelde database configuratie bron geschreven. |
+> | Action | Microsoft.Kusto/Clusters/AttachedDatabaseConfigurations/delete | Hiermee verwijdert u een gekoppelde database configuratie resourceCopy. |
+> | Action | Microsoft.Kusto/Clusters/AttachedDatabaseConfigurations/read | Hiermee leest u een gekoppelde database configuratie resourceCopy. |
+> | Action | Microsoft.Kusto/Clusters/AttachedDatabaseConfigurations/write | Hiermee wordt een gekoppelde database configuratie resourceCopy geschreven. |
 > | Action | Microsoft.Kusto/Clusters/CheckNameAvailability/action | Controleert de beschik baarheid van de cluster naam. |
 > | Action | Microsoft.Kusto/Clusters/Databases/AddPrincipals/action | Voegt databaseprincipal toe. |
 > | Action | Microsoft.Kusto/Clusters/Databases/CheckNameAvailability/action | Controleert de beschik baarheid van namen voor een bepaald type. |
-> | Action | Microsoft.Kusto/Clusters/Databases/DataConnections/delete | Hiermee verwijdert u een bron voor gegevens verbindingen. |
-> | Action | Microsoft.Kusto/Clusters/Databases/DataConnections/read | Hiermee wordt een gegevens verbindings bron gelezen. |
-> | Action | Microsoft.Kusto/Clusters/Databases/DataConnections/write | Schrijft een gegevens verbindings bron. |
+> | Action | Microsoft.Kusto/Clusters/Databases/DataConnections/delete | Hiermee verwijdert u een gegevens verbindingen resourceCopy. |
+> | Action | Microsoft.Kusto/Clusters/Databases/DataConnections/read | Hiermee wordt een gegevens verbindingen-resourceCopy gelezen. |
+> | Action | Microsoft.Kusto/Clusters/Databases/DataConnections/write | Schrijft een gegevens verbindingen resourceCopy. |
 > | Action | Microsoft.Kusto/Clusters/Databases/DataConnectionValidation/action | Valideert de database gegevens verbinding. |
-> | Action | Microsoft.Kusto/Clusters/Databases/delete | Hiermee verwijdert u een database resource. |
-> | Action | Microsoft.Kusto/Clusters/Databases/EventHubConnections/delete | Hiermee verwijdert u een event hub-verbindings bron. |
-> | Action | Microsoft.Kusto/Clusters/Databases/EventHubConnections/read | Hiermee wordt een event hub-verbindings bron gelezen. |
-> | Action | Microsoft.Kusto/Clusters/Databases/EventHubConnections/write | Schrijft een event hub-verbindings bron. |
+> | Action | Microsoft.Kusto/Clusters/Databases/delete | Hiermee verwijdert u een Data Base-resourceCopy. |
+> | Action | Microsoft.Kusto/Clusters/Databases/EventHubConnections/delete | Hiermee verwijdert u een event hub-verbinding resourceCopy. |
+> | Action | Microsoft.Kusto/Clusters/Databases/EventHubConnections/read | Hiermee leest u een event hub-verbinding resourceCopy. |
+> | Action | Microsoft.Kusto/Clusters/Databases/EventHubConnections/write | Schrijft een event hub-verbinding resourceCopy. |
 > | Action | Microsoft.Kusto/Clusters/Databases/EventHubConnectionValidation/action | Hiermee valideert u de data base Event hub-verbinding. |
 > | Action | Microsoft.Kusto/Clusters/Databases/ListPrincipals/action | Een lijst met data base-principals. |
-> | Action | Microsoft.Kusto/Clusters/Databases/read | Hiermee wordt een database Resource gelezen. |
+> | Action | Microsoft.Kusto/Clusters/Databases/read | Hiermee leest u een Data Base-resourceCopy. |
 > | Action | Microsoft.Kusto/Clusters/Databases/RemovePrincipals/action | Hiermee verwijdert u databaseprincipal. |
-> | Action | Microsoft.Kusto/Clusters/Databases/write | Schrijft een database resource. |
+> | Action | Microsoft.Kusto/Clusters/Databases/write | Schrijft een Data Base-resourceCopy. |
 > | Action | Microsoft.Kusto/Clusters/Deactivate/action | Hiermee wordt het cluster gestopt. |
-> | Action | Microsoft.Kusto/Clusters/delete | Hiermee verwijdert u een cluster bron. |
-> | Action | Microsoft.Kusto/Clusters/read | Hiermee wordt een cluster bron gelezen. |
-> | Action | Microsoft.Kusto/Clusters/SKUs/read | Hiermee wordt een cluster-SKU-resource gelezen. |
+> | Action | Microsoft.Kusto/Clusters/delete | Hiermee verwijdert u een cluster-resourceCopy. |
+> | Action | Microsoft.Kusto/Clusters/read | Hiermee wordt een cluster-resourceCopy gelezen. |
+> | Action | Microsoft.Kusto/Clusters/SKUs/read | Hiermee leest u een cluster-SKU resourceCopy. |
 > | Action | Microsoft.Kusto/Clusters/Start/action | Start het cluster. |
 > | Action | Microsoft.Kusto/Clusters/Stop/action | Hiermee wordt het cluster gestopt. |
-> | Action | Microsoft.Kusto/Clusters/write | Schrijft een cluster bron. |
-> | Action | Microsoft.Kusto/Locations/CheckNameAvailability/action | Hiermee wordt de beschik baarheid van resource namen gecontroleerd. |
-> | Action | Microsoft.Kusto/locations/operationresults/read | Hiermee worden bronnen voor bedrijfs activiteiten gelezen |
-> | Action | Micro soft. Kusto/Operations/lezen | Hiermee worden bronnen voor bedrijfs activiteiten gelezen |
+> | Action | Microsoft.Kusto/Clusters/write | Schrijft een cluster-resourceCopy. |
+> | Action | Micro soft. Kusto/DetachFollowerDatabases/actie | Koppelt de data bases van de opvolger los. |
+> | Action | Micro soft. Kusto/ListFollowerDatabases/actie | Een lijst met de data bases van de follow-out. |
+> | Action | Microsoft.Kusto/Locations/CheckNameAvailability/action | Controleert de beschik baarheid van resourceCopy-namen. |
+> | Action | Microsoft.Kusto/locations/operationresults/read | Lees bewerkingen resourceCopys |
+> | Action | Micro soft. Kusto/Operations/lezen | Lees bewerkingen resourceCopys |
 > | Action | Micro soft. Kusto/REGI ster/actie | Registratie actie abonnement |
 > | Action | Microsoft.Kusto/Register/action | Hiermee wordt het abonnement geregistreerd bij de resource provider Kusto. |
-> | Action | Micro soft. Kusto/Sku's/lezen | Hiermee leest u een SKU-resource. |
+> | Action | Micro soft. Kusto/Sku's/lezen | Hiermee leest u een SKU-resourceCopy. |
 > | Action | Micro soft. Kusto/registratie/actie | Hiermee wordt de registratie van het abonnement bij de Kusto-resource provider ongedaan gemaakt. |
 
 ## <a name="microsoftlabservices"></a>Microsoft.LabServices
@@ -3209,6 +3259,7 @@ De bewerkingen van de resource provider zijn altijd in ontwikkeling. Als u de me
 > | Action | Microsoft.MachineLearningServices/workspaces/computes/read | Hiermee worden de reken resources in Machine Learning Services werk ruimte (n) opgehaald |
 > | Action | Microsoft.MachineLearningServices/workspaces/computes/write | Hiermee worden de reken resources in Machine Learning Services werk ruimte (n) gemaakt of bijgewerkt |
 > | Action | Microsoft.MachineLearningServices/workspaces/delete | Hiermee verwijdert u de Machine Learning Services werk ruimte (n) |
+> | DataAction | Micro soft. MachineLearningServices/werk ruimten/experimenten/verwijderen | Hiermee verwijdert u experimenten in Machine Learning Services werk ruimte (n) |
 > | DataAction | Micro soft. MachineLearningServices/werk ruimtes/experimenten/lezen | Hiermee worden experimenten in Machine Learning Services werk ruimte (n) opgehaald |
 > | DataAction | Microsoft.MachineLearningServices/workspaces/experiments/write | Hiermee worden experimenten in Machine Learning Services werk ruimte (n) gemaakt of bijgewerkt |
 > | Action | Microsoft.MachineLearningServices/workspaces/listKeys/action | Geheimen voor een Machine Learning Services-werk ruimte vermelden |
@@ -3233,6 +3284,7 @@ De bewerkingen van de resource provider zijn altijd in ontwikkeling. Als u de me
 > | Actietype | Bewerking | Description |
 > | --- | --- | --- |
 > | Action | Micro soft. ManagedServices/marketplaceRegistrationDefinitions/lezen | Hiermee haalt u een lijst met definities voor beheerde services registratie op. |
+> | Action | Micro soft. ManagedServices/Operations/lezen | Hiermee wordt een lijst met beheerde services-bewerkingen opgehaald. |
 > | Action | Micro soft. ManagedServices/operationStatuses/lezen | Hiermee wordt de bewerkings status van de resource gelezen. |
 > | Action | Micro soft. ManagedServices/REGI ster/actie | Meld u aan bij beheerde services. |
 > | Action | Micro soft. ManagedServices/registrationAssignments/verwijderen | Hiermee wordt de registratie toewijzing van beheerde services verwijderd. |
@@ -3667,6 +3719,7 @@ De bewerkingen van de resource provider zijn altijd in ontwikkeling. Als u de me
 > | Action | Microsoft.Network/locations/autoApprovedPrivateLinkServices/read | Hiermee worden automatisch goedgekeurde persoonlijke koppelings services opgehaald |
 > | Action | Microsoft.Network/locations/availableDelegations/read | Beschik bare delegaties ophalen |
 > | Action | Microsoft.Network/locations/availablePrivateEndpointTypes/read | Beschik bare persoonlijke eindpunt resources ophalen |
+> | Action | Micro soft. netwerk/locaties/availableServiceAliases/lezen | Beschik bare service aliassen ophalen |
 > | Action | Microsoft.Network/locations/bareMetalTenants/action | Hiermee wordt een bare metal-Tenant toegewezen of gevalideerd |
 > | Action | Microsoft.Network/locations/checkAcceleratedNetworkingSupport/action | Hiermee wordt de ondersteuning voor versnelde netwerken gecontroleerd |
 > | Action | Microsoft.Network/locations/checkDnsNameAvailability/read | Controleert of het DNS-label beschikbaar is op de opgegeven locatie |
@@ -3879,6 +3932,9 @@ De bewerkingen van de resource provider zijn altijd in ontwikkeling. Als u de me
 > | Action | Micro soft. Network/virtualNetworks/samen voegen/actie | Voegt een virtueel netwerk samen. Niet Alertable. |
 > | Action | Microsoft.Network/virtualNetworks/peer/action | Peering van een virtueel netwerk met een ander virtueel netwerk |
 > | Action | Microsoft.Network/virtualNetworks/read | De virtuele-netwerk definitie ophalen |
+> | Action | Micro soft. Network/virtualNetworks/subnetten/contextualServiceEndpointPolicies/verwijderen | Hiermee wordt een beleid voor contextuele service-eind punten verwijderd |
+> | Action | Micro soft. Network/virtualNetworks/subnetten/contextualServiceEndpointPolicies/lezen | Hiermee wordt beleid voor contextuele service-eind punten opgehaald |
+> | Action | Micro soft. Network/virtualNetworks/subnetten/contextualServiceEndpointPolicies/schrijven | Hiermee wordt een beleid voor contextuele service-eind punten gemaakt of een bestaand beleid voor contextuele service-eind punten bijgewerkt |
 > | Action | Microsoft.Network/virtualNetworks/subnets/delete | Hiermee verwijdert u een subnet van een virtueel netwerk |
 > | Action | Microsoft.Network/virtualNetworks/subnets/join/action | Voegt een virtueel netwerk samen. Niet Alertable. |
 > | Action | Microsoft.Network/virtualNetworks/subnets/joinViaServiceEndpoint/action | Voegt een resource, zoals een opslag account of SQL database, toe aan een subnet. Niet alertable. |
@@ -3984,6 +4040,15 @@ De bewerkingen van de resource provider zijn altijd in ontwikkeling. Als u de me
 > | Action | Microsoft.OffAzure/HyperVSites/write | Hiermee wordt de Hyper-V-site gemaakt of bijgewerkt |
 > | Action | Microsoft.OffAzure/Operations/read | Leest de beschikbare bewerkingen |
 > | Action | Microsoft.OffAzure/register/action | Hiermee wordt een abonnement geregistreerd bij de resource provider micro soft. OffAzure |
+> | Action | Micro soft. OffAzure/ServerSites/Jobs/lezen | Hiermee worden de eigenschappen van een server taak opgehaald |
+> | Action | Micro soft. OffAzure/ServerSites/machines/lezen | Hiermee worden de eigenschappen van een Server computer opgehaald |
+> | Action | Micro soft. OffAzure/ServerSites/machines/schrijven | De eigenschappen van een Server computer schrijven |
+> | Action | Micro soft. OffAzure/ServerSites/operationsstatus/lezen | Hiermee worden de eigenschappen van de bewerkings status van de server opgehaald |
+> | Action | Micro soft. OffAzure/ServerSites/lezen | Hiermee worden de eigenschappen van een server site opgehaald |
+> | Action | Micro soft. OffAzure/ServerSites/Refresh/actie | Hiermee worden de objecten in een server site vernieuwd |
+> | Action | Micro soft. OffAzure/ServerSites/runasaccounts/lezen | Hiermee worden de eigenschappen van een run as-account van een server opgehaald |
+> | Action | Micro soft. OffAzure/ServerSites/gebruik/lezen | Hiermee worden de gebruiks locaties van een server site opgehaald |
+> | Action | Micro soft. OffAzure/ServerSites/schrijven | Hiermee wordt de server site gemaakt of bijgewerkt |
 > | Action | Microsoft.OffAzure/VMwareSites/delete | Hiermee verwijdert u de VMware-site |
 > | Action | Micro soft. OffAzure/VMwareSites/healthsummary/lezen | Hiermee wordt het status overzicht voor VMware-resource opgehaald |
 > | Action | Microsoft.OffAzure/VMwareSites/jobs/read | Hiermee worden de eigenschappen van een VMware-taak opgehaald |
@@ -4064,6 +4129,7 @@ De bewerkingen van de resource provider zijn altijd in ontwikkeling. Als u de me
 > | Action | Microsoft.OperationalInsights/workspaces/query/AppCenterError/read | Gegevens uit de AppCenterError-tabel lezen |
 > | Action | Microsoft.OperationalInsights/workspaces/query/ApplicationInsights/read | Gegevens uit de ApplicationInsights-tabel lezen |
 > | Action | Micro soft. OperationalInsights/werk ruimten/query/AppPlatformLogsforSpring/lezen | Gegevens uit de AppPlatformLogsforSpring-tabel lezen |
+> | Action | Micro soft. OperationalInsights/werk ruimten/query/AppServiceEnvironmentPlatformLogs/lezen | Gegevens uit de AppServiceEnvironmentPlatformLogs-tabel lezen |
 > | Action | Microsoft.OperationalInsights/workspaces/query/AuditLogs/read | Gegevens uit de audit logs bevat-tabel lezen |
 > | Action | Microsoft.OperationalInsights/workspaces/query/AutoscaleEvaluationsLog/read | Gegevens uit de AutoscaleEvaluationsLog-tabel lezen |
 > | Action | Microsoft.OperationalInsights/workspaces/query/AutoscaleScaleActionsLog/read | Gegevens uit de AutoscaleScaleActionsLog-tabel lezen |
@@ -4126,6 +4192,7 @@ De bewerkingen van de resource provider zijn altijd in ontwikkeling. Als u de me
 > | Action | Microsoft.OperationalInsights/workspaces/query/Event/read | Gegevens uit de gebeurtenis tabel lezen |
 > | Action | Microsoft.OperationalInsights/workspaces/query/ExchangeAssessmentRecommendation/read | Gegevens uit de ExchangeAssessmentRecommendation-tabel lezen |
 > | Action | Microsoft.OperationalInsights/workspaces/query/ExchangeOnlineAssessmentRecommendation/read | Gegevens uit de ExchangeOnlineAssessmentRecommendation-tabel lezen |
+> | Action | Micro soft. OperationalInsights/werk ruimten/query/FailedIngestion/lezen | Gegevens uit de FailedIngestion-tabel lezen |
 > | Action | Microsoft.OperationalInsights/workspaces/query/Heartbeat/read | Gegevens uit de heartbeat-tabel lezen |
 > | Action | Microsoft.OperationalInsights/workspaces/query/HuntingBookmark/read | Gegevens uit de HuntingBookmark-tabel lezen |
 > | Action | Microsoft.OperationalInsights/workspaces/query/IISAssessmentRecommendation/read | Gegevens uit de IISAssessmentRecommendation-tabel lezen |
@@ -4134,6 +4201,7 @@ De bewerkingen van de resource provider zijn altijd in ontwikkeling. Als u de me
 > | Action | Microsoft.OperationalInsights/workspaces/query/IntuneAuditLogs/read | Gegevens uit de IntuneAuditLogs-tabel lezen |
 > | Action | Microsoft.OperationalInsights/workspaces/query/IntuneOperationalLogs/read | Gegevens uit de IntuneOperationalLogs-tabel lezen |
 > | Action | Microsoft.OperationalInsights/workspaces/query/KubeEvents/read | Gegevens uit de KubeEvents-tabel lezen |
+> | Action | Micro soft. OperationalInsights/werk ruimten/query/KubeHealth/lezen | Gegevens uit de KubeHealth-tabel lezen |
 > | Action | Microsoft.OperationalInsights/workspaces/query/KubeNodeInventory/read | Gegevens uit de KubeNodeInventory-tabel lezen |
 > | Action | Microsoft.OperationalInsights/workspaces/query/KubePodInventory/read | Gegevens uit de KubePodInventory-tabel lezen |
 > | Action | Microsoft.OperationalInsights/workspaces/query/KubeServices/read | Gegevens uit de KubeServices-tabel lezen |
@@ -4192,7 +4260,8 @@ De bewerkingen van de resource provider zijn altijd in ontwikkeling. Als u de me
 > | Action | Microsoft.OperationalInsights/workspaces/query/MAWindowsDeploymentStatusNRT/read | Gegevens uit de MAWindowsDeploymentStatusNRT-tabel lezen |
 > | Action | Microsoft.OperationalInsights/workspaces/query/MAWindowsSysReqInstanceReadiness/read | Gegevens uit de MAWindowsSysReqInstanceReadiness-tabel lezen |
 > | Action | Micro soft. OperationalInsights/werk ruimten/query/McasShadowItReporting/lezen | Gegevens uit de McasShadowItReporting-tabel lezen |
-> | Action | Micro soft. OperationalInsights/werk ruimten/query/Microservices4SpringApplicationLogs/lezen | Gegevens uit de Microservices4SpringApplicationLogs-tabel lezen |
+> | Action | Micro soft. OperationalInsights/werk ruimten/query/MicrosoftDataShareShareLog/lezen | Gegevens uit de MicrosoftDataShareShareLog-tabel lezen |
+> | Action | Micro soft. OperationalInsights/werk ruimten/query/MicrosoftHealthcareApisAuditLogs/lezen | Gegevens uit de MicrosoftHealthcareApisAuditLogs-tabel lezen |
 > | Action | Micro soft. OperationalInsights/werk ruimten/query/MicrosoftInsightsAzureActivityLog/lezen | Gegevens uit de MicrosoftInsightsAzureActivityLog-tabel lezen |
 > | Action | Microsoft.OperationalInsights/workspaces/query/MicrosoftWebApplicationLog/read | Gegevens uit de MicrosoftWebApplicationLog-tabel lezen |
 > | Action | Microsoft.OperationalInsights/workspaces/query/MicrosoftWebFunctionExecutionLogs/read | Gegevens uit de MicrosoftWebFunctionExecutionLogs-tabel lezen |
@@ -4228,6 +4297,7 @@ De bewerkingen van de resource provider zijn altijd in ontwikkeling. Als u de me
 > | Action | Microsoft.OperationalInsights/workspaces/query/SQLQueryPerformance/read | Gegevens uit de SQLQueryPerformance-tabel lezen |
 > | Action | Microsoft.OperationalInsights/workspaces/query/SqlThreatProtectionLoginAudits/read | Gegevens uit de SqlThreatProtectionLoginAudits-tabel lezen |
 > | Action | Microsoft.OperationalInsights/workspaces/query/SqlVulnerabilityAssessmentResult/read | Gegevens uit de SqlVulnerabilityAssessmentResult-tabel lezen |
+> | Action | Micro soft. OperationalInsights/werk ruimten/query/SucceededIngestion/lezen | Gegevens uit de SucceededIngestion-tabel lezen |
 > | Action | Microsoft.OperationalInsights/workspaces/query/Syslog/read | Gegevens uit de syslog-tabel lezen |
 > | Action | Microsoft.OperationalInsights/workspaces/query/SysmonEvent/read | Gegevens uit de SysmonEvent-tabel lezen |
 > | Action | Microsoft.OperationalInsights/workspaces/query/Tables.Custom/read | Gegevens uit een aangepast logboek lezen |
@@ -4311,7 +4381,9 @@ De bewerkingen van de resource provider zijn altijd in ontwikkeling. Als u de me
 > | Actietype | Bewerking | Description |
 > | --- | --- | --- |
 > | Action | Microsoft.PolicyInsights/asyncOperationResults/read | Hiermee wordt het resultaat van de asynchrone bewerking opgehaald. |
+> | DataAction | Micro soft. PolicyInsights/checkDataPolicyCompliance/actie | Controleer de nalevings status van een bepaald onderdeel met gegevens beleid. |
 > | Action | Microsoft.PolicyInsights/operations/read | Hiermee worden ondersteunde bewerkingen voor de micro soft. PolicyInsights-naam ruimte opgehaald |
+> | DataAction | Micro soft. PolicyInsights/policyEvents/logDataEvents/Action | De gebeurtenissen van het bron onderdeel beleid registreren. |
 > | Action | Microsoft.PolicyInsights/policyEvents/queryResults/action | Informatie over beleids gebeurtenissen opvragen. |
 > | Action | Microsoft.PolicyInsights/policyEvents/queryResults/read | Informatie over beleids gebeurtenissen opvragen. |
 > | Action | Microsoft.PolicyInsights/policyStates/queryResults/action | Informatie over beleids statussen opvragen. |
@@ -4726,6 +4798,10 @@ De bewerkingen van de resource provider zijn altijd in ontwikkeling. Als u de me
 > | Action | Microsoft.Security/alerts/read | Hiermee worden alle beschik bare beveiligings waarschuwingen opgehaald |
 > | Action | Microsoft.Security/applicationWhitelistings/read | Hiermee wordt de toepassing whitelistings |
 > | Action | Microsoft.Security/applicationWhitelistings/write | Hiermee maakt u een nieuwe white list of werkt u een bestaande toepassing bij. |
+> | Action | Micro soft. Security/assessmentMetadata/lezen | Beschik bare meta gegevens van beveiligings beoordeling voor uw abonnement ophalen |
+> | Action | Micro soft. Security/assessmentMetadata/schrijven | Meta gegevens van een beveiligings beoordeling maken of bijwerken |
+> | Action | Micro soft. Security/beoordelingen/lezen | Beveiligings beoordelingen ontvangen voor uw abonnement |
+> | Action | Micro soft. Security/beoordelingen/schrijven | Beveiligings beoordelingen maken of bijwerken voor uw abonnement |
 > | Action | Micro soft. Security/complianceResults/lezen | Hiermee worden de compliantie resultaten voor de resource opgehaald |
 > | Action | Microsoft.Security/informationProtectionPolicies/read | Hiermee wordt het Information Protection-beleid voor de resource opgehaald |
 > | Action | Microsoft.Security/informationProtectionPolicies/write | Hiermee wordt het Information Protection-beleid voor de resource bijgewerkt |
@@ -4908,6 +4984,7 @@ De bewerkingen van de resource provider zijn altijd in ontwikkeling. Als u de me
 > | Action | Microsoft.SignalRService/locations/operationStatuses/operationId/read | De status van een asynchrone bewerking opvragen |
 > | Action | Microsoft.SignalRService/locations/usages/read | Het quotum gebruik voor de Azure signalerings service ophalen |
 > | Action | Micro soft. SignalRService/operationresults/lezen | De status van een asynchrone bewerking opvragen |
+> | Action | Micro soft. SignalRService/Operations/lezen | De bewerkingen voor de Azure signalerings service weer geven. |
 > | Action | Micro soft. SignalRService/operationstatus/lezen | De status van een asynchrone bewerking opvragen |
 > | Action | Microsoft.SignalRService/register/action | Hiermee wordt de resource provider micro soft. SignalRService geregistreerd bij een abonnement |
 > | Action | Micro soft. SignalRService/signalering/verwijderen | De volledige signalerings service verwijderen |
@@ -5011,6 +5088,7 @@ De bewerkingen van de resource provider zijn altijd in ontwikkeling. Als u de me
 > | Action | Micro soft. SQL/managedInstances/beheerders/schrijven | Hiermee wordt een beheerde exemplaar beheerder met de opgegeven para meters gemaakt of bijgewerkt. |
 > | Action | Microsoft.Sql/managedInstances/databases/backupShortTermRetentionPolicies/read | Hiermee wordt een Bewaar beleid voor de korte termijn voor een beheerde data base opgehaald |
 > | Action | Microsoft.Sql/managedInstances/databases/backupShortTermRetentionPolicies/write | Hiermee wordt een Bewaar beleid voor de korte termijn voor een beheerde data base bijgewerkt |
+> | Action | Micro soft. SQL/managedInstances/data bases/kolommen/lezen | Een lijst met kolommen voor een beheerde data base retour neren |
 > | Action | Microsoft.Sql/managedInstances/databases/currentSensitivityLabels/read | Gevoeligheids labels van een bepaalde Data Base weer geven |
 > | Action | Microsoft.Sql/managedInstances/databases/currentSensitivityLabels/write | Gevoeligheids labels batch-update |
 > | Action | Microsoft.Sql/managedInstances/databases/delete | Hiermee verwijdert u een bestaande beheerde data base |
@@ -5019,6 +5097,8 @@ De bewerkingen van de resource provider zijn altijd in ontwikkeling. Als u de me
 > | Action | Microsoft.Sql/managedInstances/databases/providers/Microsoft.Insights/logDefinitions/read | Hiermee worden de beschik bare logboeken voor beheerde exemplaar databases opgehaald |
 > | Action | Microsoft.Sql/managedInstances/databases/read | Hiermee wordt een bestaande beheerde data base opgehaald |
 > | Action | Microsoft.Sql/managedInstances/databases/recommendedSensitivityLabels/read | Gevoeligheids labels van een bepaalde Data Base weer geven |
+> | Action | Micro soft. SQL/managedInstances/data bases/recommendedSensitivityLabels/schrijven | Aanbevolen gevoeligheids labels voor batch update |
+> | Action | Micro soft. SQL/managedInstances/data bases/restoreDetails/lezen | Retourneert Details over het herstellen van de beheerde data base terwijl het terugzetten wordt uitgevoerd. |
 > | Action | Microsoft.Sql/managedInstances/databases/schemas/read | Een beheerd database schema ophalen. |
 > | Action | Microsoft.Sql/managedInstances/databases/schemas/tables/columns/read | Een kolom met beheerde data base ophalen |
 > | Action | Microsoft.Sql/managedInstances/databases/schemas/tables/columns/sensitivityLabels/delete | Het gevoeligheids label van een bepaalde kolom verwijderen |
@@ -5071,10 +5151,9 @@ De bewerkingen van de resource provider zijn altijd in ontwikkeling. Als u de me
 > | Action | Micro soft. SQL/Operations/lezen | Beschik bare REST bewerkingen ophalen |
 > | Action | Micro soft. SQL/privateEndpointConnectionsApproval/actie | Hiermee wordt bepaald of de gebruiker een verbinding met een privé-eind punt mag goed keuren |
 > | Action | Micro soft. SQL/REGI ster/actie | Hiermee wordt het abonnement voor de resource provider van micro soft SQL Database geregistreerd en wordt het maken van micro soft SQL-data bases mogelijk. |
-> | Action | Micro soft. SQL/servers/administratorOperationResults/lezen | Hiermee worden bewerkingen uitgevoerd op de server beheerders |
-> | Action | Micro soft. SQL/servers/beheerders/verwijderen | Server beheerder verwijderen |
-> | Action | Micro soft. SQL/servers/beheerders/lezen | Details van de server beheerder ophalen |
-> | Action | Micro soft. SQL/servers/beheerders/schrijven | Server beheerder maken of bijwerken |
+> | Action | Micro soft. SQL/servers/beheerders/verwijderen | Hiermee verwijdert u een specifiek Azure Active Directory-beheerder object |
+> | Action | Micro soft. SQL/servers/beheerders/lezen | Hiermee wordt een specifiek Azure Active Directory-beheer object opgehaald |
+> | Action | Micro soft. SQL/servers/beheerders/schrijven | Hiermee wordt een specifiek Azure Active Directory-beheerder object toegevoegd of bijgewerkt |
 > | Action | Micro soft. SQL/servers/Advisor/lezen | Hiermee wordt een lijst met beschik bare Advisor voor de server geretourneerd |
 > | Action | Micro soft. SQL/servers/Advisors/recommendedActions/lezen | Hiermee wordt een lijst met aanbevolen acties van opgegeven Advisor voor de server geretourneerd |
 > | Action | Micro soft. SQL/servers/Advisors/recommendedActions/schrijven | De aanbevolen actie Toep assen op de server |
@@ -5110,6 +5189,7 @@ De bewerkingen van de resource provider zijn altijd in ontwikkeling. Als u de me
 > | Action | Micro soft. SQL/servers/data bases/backupLongTermRetentionPolicies/schrijven | Een archief beleid voor back-ups van de data base maken of bijwerken. |
 > | Action | Microsoft.Sql/servers/databases/backupShortTermRetentionPolicies/read | Hiermee wordt een Bewaar beleid voor de korte termijn voor een Data Base opgehaald |
 > | Action | Microsoft.Sql/servers/databases/backupShortTermRetentionPolicies/write | Hiermee wordt een Bewaar beleid voor de korte termijn voor een Data Base bijgewerkt |
+> | Action | Micro soft. SQL/servers/data bases/kolommen/lezen | Een lijst met kolommen voor een Data Base retour neren |
 > | Action | Microsoft.Sql/servers/databases/connectionPolicies/read | Details ophalen van het verbindings beleid dat is geconfigureerd voor een bepaalde data base |
 > | Action | Micro soft. SQL/servers/data bases/connectionPolicies/schrijven | Het verbindings beleid voor een bepaalde data base wijzigen |
 > | Action | Microsoft.Sql/servers/databases/currentSensitivityLabels/read | Gevoeligheids labels van een bepaalde Data Base weer geven |
@@ -5151,6 +5231,7 @@ De bewerkingen van de resource provider zijn altijd in ontwikkeling. Als u de me
 > | Action | Micro soft. SQL/servers/data bases/queryStore/schrijven | Query Store-instelling voor de data base bijwerken |
 > | Action | Micro soft. SQL/servers/data bases/lezen | De lijst met data bases retour neren of de eigenschappen voor de opgegeven Data Base ophalen. |
 > | Action | Microsoft.Sql/servers/databases/recommendedSensitivityLabels/read | Gevoeligheids labels van een bepaalde Data Base weer geven |
+> | Action | Micro soft. SQL/servers/data bases/recommendedSensitivityLabels/schrijven | Aanbevolen gevoeligheids labels voor batch update |
 > | Action | Microsoft.Sql/servers/databases/replicationLinks/delete | De replicatie relatie geforceerd en met mogelijk gegevens verlies beëindigen |
 > | Action | Micro soft. SQL/servers/data bases/replicationLinks/failover/actie | Failover na het synchroniseren van alle wijzigingen van de primaire, waardoor deze data base in de replicatie relationship\u0027s primair en de externe primaire in een secundaire |
 > | Action | Microsoft.Sql/servers/databases/replicationLinks/forceFailoverAllowDataLoss/action | Failover direct met mogelijk gegevens verlies, waardoor deze data base in de replicatie relationship\u0027s primair en de externe primaire in een secundaire |
@@ -5365,6 +5446,9 @@ De bewerkingen van de resource provider zijn altijd in ontwikkeling. Als u de me
 > | Action | Microsoft.Storage/storageAccounts/managementPolicies/delete | Beleid voor opslagaccountbeheer verwijderen |
 > | Action | Microsoft.Storage/storageAccounts/managementPolicies/read | Beleid voor opslagaccountbeheer ophalen |
 > | Action | Microsoft.Storage/storageAccounts/managementPolicies/write | Beleid voor opslagaccountbeheer plaatsen |
+> | Action | Micro soft. Storage/Storage accounts/objectReplicationPolicies/verwijderen |  |
+> | Action | Micro soft. Storage/Storage accounts/objectReplicationPolicies/lezen |  |
+> | Action | Micro soft. Storage/Storage accounts/objectReplicationPolicies/schrijven |  |
 > | Action | Microsoft.Storage/storageAccounts/privateEndpointConnectionProxies/delete | Proxy's voor verbinding met privé-eindpunt verwijderen |
 > | Action | Micro soft. Storage/Storage accounts/privateEndpointConnectionProxies/lezen | Proxy voor verbinding met privé-eindpunt ophalen |
 > | Action | Microsoft.Storage/storageAccounts/privateEndpointConnectionProxies/write | Put-bewerking voor proxy's voor verbinding met privé-eindpunt uitvoeren |
@@ -5816,6 +5900,9 @@ De bewerkingen van de resource provider zijn altijd in ontwikkeling. Als u de me
 > | Action | microsoft.web/resourcehealthmetadata/read | Resource Health meta gegevens ophalen. |
 > | Action | micro soft. web/server farms/capabilities/lezen | Profiteer van de mogelijkheden van App Service-abonnementen. |
 > | Action | Microsoft.Web/serverfarms/Delete | Een bestaand App Service plan verwijderen |
+> | Action | Micro soft. web/server farms/eventGridFilters/verwijderen | Verwijder Event Grid filter op de server farm. |
+> | Action | Micro soft. web/server farms/eventGridFilters/lezen | Event Grid filter op de server farm ophalen. |
+> | Action | Micro soft. web/server farms/eventGridFilters/schrijven | Plaats Event Grid filter op de server farm. |
 > | Action | micro soft. web/server farms/firstpartyapps/instellingen/verwijderen | De instellingen van de app voor de eerste partij verwijderen App Service plannen. |
 > | Action | micro soft. web/server farms/firstpartyapps/Settings/lezen | Ontvang App Service-abonnementen voor de eerste partij-apps. |
 > | Action | micro soft. web/server farms/firstpartyapps/Settings/write | De instellingen van de app voor de eerste partij bijwerken App Service plannen. |
@@ -5893,16 +5980,32 @@ De bewerkingen van de resource provider zijn altijd in ontwikkeling. Als u de me
 > | Action | micro soft. web/sites/diagnostiek/workerprocessrecycle/lezen | Web Apps diagnostische gegevens van werk processen ophalen. |
 > | Action | microsoft.web/sites/domainownershipidentifiers/read | Web Apps eigendoms-Id's van het domein ophalen. |
 > | Action | microsoft.web/sites/domainownershipidentifiers/write | De eigendoms-Id's van Web Apps domein bijwerken. |
+> | Action | Micro soft. web/sites/eventGridFilters/verwijderen | Event Grid filter verwijderen voor web-app. |
+> | Action | Micro soft. web/sites/eventGridFilters/lezen | Event Grid filter voor web-app ophalen. |
+> | Action | Micro soft. web/sites/eventGridFilters/schrijven | Event Grid filteren op Web-app. |
 > | Action | microsoft.web/sites/extensions/delete | Verwijder Web Apps site-extensies. |
 > | Action | microsoft.web/sites/extensions/read | Web Apps site-extensies ophalen. |
 > | Action | microsoft.web/sites/extensions/write | Web Apps site-extensies bijwerken. |
 > | Action | microsoft.web/sites/functions/action | Functions Web Apps. |
 > | Action | micro soft. web/sites/functies/verwijderen | Web Apps functies verwijderen. |
-> | Action | microsoft.web/sites/functions/listsecrets/action | Geef geheimen Web Apps functies weer. |
+> | Action | micro soft. web/sites/functies/sleutels/verwijderen | Functie sleutels verwijderen. |
+> | Action | micro soft. web/sites/functies/sleutels/schrijven | Functie sleutels bijwerken. |
+> | Action | micro soft. web/sites/functies/listkeys ophalen/actie | Functie sleutels weer geven. |
+> | Action | microsoft.web/sites/functions/listsecrets/action | Lijst met functie geheimen. |
 > | Action | microsoft.web/sites/functions/masterkey/read | Web Apps functies hoofd sleutel ophalen. |
+> | Action | micro soft. web/sites/functies/eigenschappen/lezen | Eigenschappen van Web Apps functies lezen. |
+> | Action | micro soft. web/sites/functies/eigenschappen/schrijven | Eigenschappen van Web Apps functies bijwerken. |
 > | Action | micro soft. web/sites/functies/lezen | Web Apps-functies ophalen. |
 > | Action | micro soft. web/sites/functies/-token/lezen | Web Apps functions-Token ophalen. |
 > | Action | microsoft.web/sites/functions/write | Web Apps-functies bijwerken. |
+> | Action | micro soft. web/sites/host/functionkeys/verwijderen | Functie sleutels host-functies verwijderen. |
+> | Action | micro soft. web/sites/host/functionkeys/schrijven | Functie sleutels van host-functies bijwerken. |
+> | Action | micro soft. web/sites/host/listkeys ophalen/actie | Host-sleutels van functies weer geven. |
+> | Action | micro soft. web/sites/host/listsyncstatus/actie | Status van triggers voor synchronisatie functie voor lijst. |
+> | Action | micro soft. web/sites/host/eigenschappen/lezen | Eigenschappen van de host van Web Apps functies lezen. |
+> | Action | micro soft. web/sites/host/synchroniseren/actie | Synchronisatie functie Triggers. |
+> | Action | micro soft. web/sites/host/systemkeys/verwijderen | Functies verwijderen host systeem sleutels. |
+> | Action | micro soft. web/sites/host/systemkeys/schrijven | Update functies host systeem sleutels. |
 > | Action | micro soft. web/sites/hostnamebindings/verwijderen | Web Apps hostnaam-bindingen verwijderen. |
 > | Action | micro soft. web/sites/hostnamebindings/lezen | Web Apps hostnaam-bindingen ophalen. |
 > | Action | micro soft. web/sites/hostnamebindings/schrijven | Web Apps hostnaam-bindingen bijwerken. |
@@ -5928,7 +6031,7 @@ De bewerkingen van de resource provider zijn altijd in ontwikkeling. Als u de me
 > | Action | microsoft.web/sites/instances/processes/read | Get Web Apps instances-processen. |
 > | Action | microsoft.web/sites/instances/processes/threads/read | Web Apps-exemplaren ophalen threads verwerken. |
 > | Action | microsoft.web/sites/instances/read | Web Apps-instanties ophalen. |
-> | Action | microsoft.web/sites/listsyncfunctiontriggerstatus/action | Status van trigger voor synchronisatie functie voor lijst Web Apps. |
+> | Action | microsoft.web/sites/listsyncfunctiontriggerstatus/action | Trigger status van synchronisatie functie voor lijst. |
 > | Action | microsoft.web/sites/metricdefinitions/read | Web Apps metrische definities ophalen. |
 > | Action | microsoft.web/sites/metrics/read | Web Apps metrische gegevens ophalen. |
 > | Action | microsoft.web/sites/metricsdefinitions/read | Web Apps metrische definities ophalen. |
@@ -6095,7 +6198,7 @@ De bewerkingen van de resource provider zijn altijd in ontwikkeling. Als u de me
 > | Action | Microsoft.Web/sites/start/Action | Een web-app starten |
 > | Action | Microsoft.Web/sites/stop/Action | Een web-app stoppen |
 > | Action | microsoft.web/sites/sync/action | Web Apps synchroniseren. |
-> | Action | microsoft.web/sites/syncfunctiontriggers/action | Synchronisatie functie Triggers voor Web Apps. |
+> | Action | microsoft.web/sites/syncfunctiontriggers/action | Synchronisatie functie Triggers. |
 > | Action | microsoft.web/sites/triggeredwebjobs/delete | Web Apps geactiveerde webjobs verwijderen. |
 > | Action | microsoft.web/sites/triggeredwebjobs/history/read | Web Apps geactiveerde webjobs-geschiedenis ophalen. |
 > | Action | microsoft.web/sites/triggeredwebjobs/read | Web Apps geactiveerde webjobs ophalen. |

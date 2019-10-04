@@ -11,16 +11,16 @@ ms.devlang: ''
 ms.topic: reference
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 08/27/2019
+ms.date: 09/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: c2066502a6a9d742c347e08d528a2490a390bb7e
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 65a049070806fd702497d50236e9d541de2e8b1a
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71672634"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71842298"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Ingebouwde rollen voor Azure-resources
 
@@ -60,6 +60,9 @@ De volgende tabel bevat een korte beschrijving van elke ingebouwde rol. Klik op 
 | [Rol van Cluster beheerder voor Azure Kubernetes-service](#azure-kubernetes-service-cluster-admin-role) | Lijst met actie voor cluster beheer referenties. |
 | [Gebruikersrol Azure Kubernetes service-cluster](#azure-kubernetes-service-cluster-user-role) | Geef een lijst actie voor de gebruikers referenties van het cluster op. |
 | [Azure Maps gegevens lezer (preview-versie)](#azure-maps-data-reader-preview) | Hiermee wordt toegang verleend om gerelateerde gegevens te lezen vanuit een Azure Maps-account. |
+| [Azure Sentinel-bijdrager](#azure-sentinel-contributor) | Azure Sentinel-bijdrager |
+| [Azure Sentinel Reader](#azure-sentinel-reader) | Azure Sentinel Reader |
+| [Azure Sentinel responder](#azure-sentinel-responder) | Azure Sentinel responder |
 | [Gegevens eigenaar Azure Service Bus](#azure-service-bus-data-owner) | Hiermee krijgt u volledige toegang tot Azure Service Bus-resources. |
 | [Gegevens ontvanger Azure Service Bus](#azure-service-bus-data-receiver) | Hiermee krijgt u toegang tot Azure Service Bus-resources. |
 | [Afzender van Azure Service Bus gegevens](#azure-service-bus-data-sender) | Hiermee kunt u toegang tot Azure Service Bus resources verzenden. |
@@ -178,7 +181,7 @@ De volgende tabel bevat een korte beschrijving van elke ingebouwde rol. Klik op 
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Beschrijving** | Hiermee beheert u alles behalve toegang tot resources. |
+> | **Beschrijving** | Hiermee beheert u alles behalve het verlenen van toegang tot resources. |
 > | **Id** | b24988ac-6180-42a0-ab88-20f7382dd24c |
 > | **Acties** |  |
 > | * | Resources van alle typen maken en beheren |
@@ -645,6 +648,89 @@ De volgende tabel bevat een korte beschrijving van elke ingebouwde rol. Klik op 
 > | *geen* |  |
 > | **DataActions** |  |
 > | Microsoft.Maps/accounts/data/read | Hiermee wordt het lezen van gegevens toegang verleend aan een Maps-account. |
+> | **NotDataActions** |  |
+> | *geen* |  |
+
+## <a name="azure-sentinel-contributor"></a>Azure Sentinel-bijdrager
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Beschrijving** | Azure Sentinel-bijdrager |
+> | **Id** | ab8e14d6-4a74-4a29-9ba8-549422addade |
+> | **Acties** |  |
+> | Micro soft. SecurityInsights/* |  |
+> | Microsoft.OperationalInsights/workspaces/analytics/query/action | Zoek met een nieuwe engine. |
+> | Microsoft.OperationalInsights/workspaces/read | Hiermee wordt een bestaande werk ruimte opgehaald |
+> | Microsoft.OperationalInsights/workspaces/savedSearches/* |  |
+> | Microsoft.OperationsManagement/solutions/read | De OMS-oplossing ophalen |
+> | Microsoft.OperationalInsights/workspaces/query/read | Query's uitvoeren voor de gegevens in de werk ruimte |
+> | Micro soft. OperationalInsights/werk ruimten/gegevens bronnen/lezen | Gegevens bronnen onder een werk ruimte ophalen. |
+> | Micro soft. Insights/werkmappen/* |  |
+> | Microsoft.Authorization/*/read | Rollen en roltoewijzingen lezen |
+> | Microsoft.Insights/alertRules/* | Insights-waarschuwings regels maken en beheren |
+> | Microsoft.Resources/deployments/* | Implementaties van resource groepen maken en beheren |
+> | Microsoft.Resources/subscriptions/resourceGroups/read | Hiermee worden resource groepen opgehaald of weer gegeven. |
+> | Microsoft.Support/* | Ondersteunings tickets maken en beheren |
+> | **Intact** |  |
+> | *geen* |  |
+> | **DataActions** |  |
+> | *geen* |  |
+> | **NotDataActions** |  |
+> | *geen* |  |
+
+## <a name="azure-sentinel-reader"></a>Azure Sentinel Reader
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Beschrijving** | Azure Sentinel Reader |
+> | **Id** | 8d289c81-5878-46d4-8554-54e1e3d8b5cb |
+> | **Acties** |  |
+> | Micro soft. SecurityInsights/*/Read |  |
+> | Microsoft.OperationalInsights/workspaces/analytics/query/action | Zoek met een nieuwe engine. |
+> | Microsoft.OperationalInsights/workspaces/read | Hiermee wordt een bestaande werk ruimte opgehaald |
+> | Microsoft.OperationalInsights/workspaces/savedSearches/read | Hiermee wordt een opgeslagen Zoek query opgehaald |
+> | Microsoft.OperationsManagement/solutions/read | De OMS-oplossing ophalen |
+> | Microsoft.OperationalInsights/workspaces/query/read | Query's uitvoeren voor de gegevens in de werk ruimte |
+> | Micro soft. OperationalInsights/werk ruimten/gegevens bronnen/lezen | Gegevens bronnen onder een werk ruimte ophalen. |
+> | Micro soft. Insights/werkmappen/lezen | Een werkmap lezen |
+> | Microsoft.Authorization/*/read | Rollen en roltoewijzingen lezen |
+> | Microsoft.Insights/alertRules/* | Insights-waarschuwings regels maken en beheren |
+> | Microsoft.Resources/deployments/* | Implementaties van resource groepen maken en beheren |
+> | Microsoft.Resources/subscriptions/resourceGroups/read | Hiermee worden resource groepen opgehaald of weer gegeven. |
+> | Microsoft.Support/* | Ondersteunings tickets maken en beheren |
+> | **Intact** |  |
+> | *geen* |  |
+> | **DataActions** |  |
+> | *geen* |  |
+> | **NotDataActions** |  |
+> | *geen* |  |
+
+## <a name="azure-sentinel-responder"></a>Azure Sentinel responder
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Beschrijving** | Azure Sentinel responder |
+> | **Id** | 3e150937-b8fe-4cfb-8069-0eaf05ecd056 |
+> | **Acties** |  |
+> | Micro soft. SecurityInsights/*/Read |  |
+> | Micro soft. SecurityInsights/cases/* |  |
+> | Microsoft.OperationalInsights/workspaces/analytics/query/action | Zoek met een nieuwe engine. |
+> | Microsoft.OperationalInsights/workspaces/read | Hiermee wordt een bestaande werk ruimte opgehaald |
+> | Micro soft. OperationalInsights/werk ruimten/gegevens bronnen/lezen | Gegevens bronnen onder een werk ruimte ophalen. |
+> | Microsoft.OperationalInsights/workspaces/savedSearches/read | Hiermee wordt een opgeslagen Zoek query opgehaald |
+> | Microsoft.OperationsManagement/solutions/read | De OMS-oplossing ophalen |
+> | Microsoft.OperationalInsights/workspaces/query/read | Query's uitvoeren voor de gegevens in de werk ruimte |
+> | Micro soft. OperationalInsights/werk ruimten/gegevens bronnen/lezen | Gegevens bronnen onder een werk ruimte ophalen. |
+> | Micro soft. Insights/werkmappen/lezen | Een werkmap lezen |
+> | Microsoft.Authorization/*/read | Rollen en roltoewijzingen lezen |
+> | Microsoft.Insights/alertRules/* | Insights-waarschuwings regels maken en beheren |
+> | Microsoft.Resources/deployments/* | Implementaties van resource groepen maken en beheren |
+> | Microsoft.Resources/subscriptions/resourceGroups/read | Hiermee worden resource groepen opgehaald of weer gegeven. |
+> | Microsoft.Support/* | Ondersteunings tickets maken en beheren |
+> | **Intact** |  |
+> | *geen* |  |
+> | **DataActions** |  |
+> | *geen* |  |
 > | **NotDataActions** |  |
 > | *geen* |  |
 
@@ -1767,7 +1853,7 @@ De volgende tabel bevat een korte beschrijving van elke ingebouwde rol. Klik op 
 > | Microsoft.Web/customApis/* | Maakt en beheert een aangepaste API. |
 > | Microsoft.Web/serverFarms/join/action |  |
 > | Microsoft.Web/serverFarms/read | De eigenschappen van een App Service plan ophalen |
-> | Microsoft.Web/sites/functions/listSecrets/action | Geef geheimen Web Apps functies weer. |
+> | Microsoft.Web/sites/functions/listSecrets/action | Lijst met functie geheimen. |
 > | **Intact** |  |
 > | *geen* |  |
 > | **DataActions** |  |
@@ -2278,6 +2364,7 @@ De volgende tabel bevat een korte beschrijving van elke ingebouwde rol. Klik op 
 > | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/recoveryPoints/read | Alle replicatie herstel punten lezen |
 > | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/repairReplication/action | Replicatie herstellen |
 > | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/reProtect/action | Beveiligd item opnieuw beveiligen |
+> | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/switchprotection/action | Overschakelen naar een andere beveiligingscontainer |
 > | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/testFailover/action | Failover testen |
 > | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/testFailoverCleanup/action | Failovertest opschonen |
 > | Micro soft. Recovery Services/kluizen/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/unplannedFailover/Action | Failover |

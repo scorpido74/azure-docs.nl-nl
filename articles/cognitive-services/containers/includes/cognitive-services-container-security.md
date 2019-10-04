@@ -7,14 +7,14 @@ author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 09/13/2019
+ms.date: 09/24/2019
 ms.author: dapine
-ms.openlocfilehash: 0e9fa9146292bf7dabbbf06d3bb436aa6cd2e6e2
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: 7322d356d972635b81bc1bdd4b329bd3d5ac02df
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71124069"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71842575"
 ---
 ## <a name="azure-cognitive-services-container-security"></a>Azure Cognitive Services-container beveiliging
 
@@ -23,7 +23,7 @@ De beveiliging moet een primaire focus hebben wanneer u toepassingen ontwikkelt.
 > [!IMPORTANT]
 > Standaard is er *geen beveiliging* op de Cognitive Services container-API. De reden hiervoor is dat de container meestal wordt uitgevoerd als onderdeel van een pod die wordt beveiligd door een netwerk brug. Het is echter mogelijk om verificatie in te scha kelen die identiek werkt met de authenticatie die wordt gebruikt bij het openen [van de cloud Cognitive Services][request-authentication].
 
-In het onderstaande diagram ziet u de standaard-en **beveiligings** methode:
+In het onderstaande diagram ziet u de standaard-en **niet-veilige** benadering:
 
 ![Beveiliging van de container](../media/container-security.svg)
 

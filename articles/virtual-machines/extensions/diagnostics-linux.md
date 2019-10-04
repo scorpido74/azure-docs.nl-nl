@@ -9,12 +9,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 12/13/2018
 ms.author: gwallace
-ms.openlocfilehash: 1da5d8aba92ac5cca5f7cdc281e169ce284b202d
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 63008de6d29790333764f4dcca27b8dc03cedbdb
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71169173"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71838178"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>De diagnostische Linux-extensie gebruiken om metrische gegevens en logboeken te bewaken
 
@@ -384,7 +384,7 @@ Deze optionele sectie bepaalt de uitvoering van wille keurige [Omi](https://gith
 
 Element | Value
 ------- | -----
-naamruimte | Beschrijving De OMI-naam ruimte waarbinnen de query moet worden uitgevoerd. Als u deze niet opgeeft, is de standaard waarde ' root/SCx ', geïmplementeerd door de [System Center-providers voor meerdere platforms](https://scx.codeplex.com/wikipage?title=xplatproviders&referringTitle=Documentation).
+naamruimte | Beschrijving De OMI-naam ruimte waarbinnen de query moet worden uitgevoerd. Als u deze niet opgeeft, is de standaard waarde ' root/SCx ', geïmplementeerd door de [System Center-providers voor meerdere platforms](https://github.com/Microsoft/SCXcore).
 query | De OMI-query die moet worden uitgevoerd.
 table | Beschrijving De Azure Storage-tabel, in het toegewezen opslag account (Zie [beveiligde instellingen](#protected-settings)).
 frequency | Beschrijving Het aantal seconden tussen de uitvoering van de query. De standaard waarde is 300 (5 minuten); de minimum waarde is 15 seconden.
@@ -695,7 +695,7 @@ Gegevens die worden verzonden naar JsonBlob-sinks, worden opgeslagen in blobs in
 Daarnaast kunt u deze hulpprogram ma's voor de gebruikers interface gebruiken om toegang te krijgen tot de gegevens in Azure Storage:
 
 * Visual Studio Server Explorer.
-* [Microsoft Azure Storage Explorer] (https://azurestorageexplorer.codeplex.com/ "Azure Storage Explorer").
+* [Microsoft Azure Storage Explorer](https://azurestorageexplorer.codeplex.com/ "Azure Opslagverkenner").
 
 Deze moment opname van een Microsoft Azure Storage Explorer-sessie toont de gegenereerde Azure Storage tabellen en containers van een correct geconfigureerde LAD 3,0-extensie op een test-VM. De installatie kopie komt niet exact overeen met de voor [beeld-LAD 3,0-configuratie](#an-example-lad-30-configuration).
 

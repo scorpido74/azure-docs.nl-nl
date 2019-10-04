@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: conceptual
-ms.date: 03/26/2019
+ms.date: 10/01/2019
 ms.author: aahi
-ms.openlocfilehash: c7b3d9b66d74f16dc0938c888456d673b9cd4b77
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: ca93de71f64efaf21c78b37b9c9aee193d13b28d
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68882890"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71840228"
 ---
 # <a name="how-to-use-the-anomaly-detector-api-on-your-time-series-data"></a>Procedure: De anomalie detectie-API gebruiken voor uw time series-gegevens  
 
@@ -26,7 +26,7 @@ De [anomalie](https://westus2.dev.cognitive.microsoft.com/docs/services/AnomalyD
 De anomalie detector-API biedt detectie modi: batch en streaming.
 
 > [!NOTE]
-> De volgende aanvraag-Url's moeten worden gecombineerd met het juiste eind punt voor uw abonnement. Bijvoorbeeld: `https://westus2.api.cognitive.microsoft.com/anomalydetector/v1.0/timeseries/entire/detect`
+> De volgende aanvraag-Url's moeten worden gecombineerd met het juiste eind punt voor uw abonnement. Bijvoorbeeld: `https://<your-custom-subdomain>.api.cognitive.microsoft.com/anomalydetector/v1.0/timeseries/entire/detect`
 
 
 ### <a name="batch-detection"></a>Batch detectie
@@ -47,7 +47,7 @@ Door nieuwe gegevens punten te verzenden terwijl u ze genereert, kunt u uw gegev
 
 ## <a name="adjusting-lower-and-upper-anomaly-detection-boundaries"></a>De grenzen voor de detectie van lagere en hoogste afwijkingen aanpassen
 
-Standaard worden de boven-en ondergrenzen voor anomalie detectie berekend met `expectedValue`, `upperMargin`en `lowerMargin`. Als u andere grenzen nodig hebt, kunt u het `marginScale` beste `upperMargin` een `lowerMargin`to-of Toep assen. De grenzen worden als volgt berekend:
+Standaard worden de boven-en ondergrenzen voor anomalie detectie berekend met behulp van `expectedValue`, `upperMargin` en `lowerMargin`. Als u andere grenzen nodig hebt, kunt u het beste een `marginScale` Toep assen op `upperMargin` of `lowerMargin`. De grenzen worden als volgt berekend:
 
 |Vormt  |Berekening  |
 |---------|---------|

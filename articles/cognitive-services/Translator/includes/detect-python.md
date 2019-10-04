@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 9207814c921f51b10939c6e9d1747e1e124f9890
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: 6591fd6eb232bf5fb242c9e08830324f864dac2f
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69907199"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71837507"
 ---
 [!INCLUDE [Prerequisites](prerequisites-python.md)]
 
@@ -31,7 +31,7 @@ Met de eerste opmerking laat u de Python-vertaler weten dat UTF-8-codering moet 
 
 ## <a name="set-the-subscription-key-endpoint-and-path"></a>De abonnements sleutel, het eind punt en het pad instellen
 
-In dit voor beeld wordt geprobeerd uw Translator text-abonnements sleutel en-eind punt te lezen `TRANSLATOR_TEXT_KEY` uit `TRANSLATOR_TEXT_ENDPOINT`de omgevings variabelen: en. Als u niet bekend bent met omgevings variabelen, kunt u `subscription_key` en `endpoint` als teken reeksen instellen en de voorwaardelijke instructies van commentaar voorzien.
+In dit voor beeld wordt geprobeerd uw Translator Text-abonnements sleutel en-eind punt te lezen uit de omgevings variabelen: `TRANSLATOR_TEXT_KEY` en `TRANSLATOR_TEXT_ENDPOINT`. Als u niet bekend bent met omgevings variabelen, kunt u `subscription_key` en `endpoint` als teken reeksen instellen en de voorwaardelijke instructies van commentaar voorzien.
 
 Kopieer deze code naar uw project:
 
@@ -112,7 +112,10 @@ Als u uw code graag wilt vergelijken met de onze, kunt u het volledige voorbeeld
 
 ## <a name="sample-response"></a>Voorbeeldantwoord
 
-Zoek de afkorting van het land/de regio in deze [lijst met talen](https://docs.microsoft.com/azure/cognitive-services/translator/language-support).
+Nadat u het voor beeld hebt uitgevoerd, ziet u het volgende afgedrukt op Terminal:
+
+> [!NOTE]
+> Zoek de afkorting van het land/de regio in deze [lijst met talen](https://docs.microsoft.com/azure/cognitive-services/translator/language-support).
 
 ```json
 [

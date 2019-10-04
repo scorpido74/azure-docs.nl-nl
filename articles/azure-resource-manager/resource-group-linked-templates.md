@@ -4,20 +4,20 @@ description: Beschrijft hoe u gekoppelde sjablonen gebruiken in een Azure Resour
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 07/17/2019
+ms.date: 10/02/2019
 ms.author: tomfitz
-ms.openlocfilehash: b48988c04f6b387a8124a812a836e2b92a9d3ada
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 59af553f4080ca86e964b75234e4d812297d8541
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70194379"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827331"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>Met behulp van gekoppelde en geneste sjablonen bij het implementeren van Azure-resources
 
-Voor het implementeren van uw oplossing, kunt u één enkele sjabloon of een belangrijkste sjabloon kunt gebruiken met veel gerelateerde sjablonen. De gerelateerde sjabloon is een afzonderlijk bestand dat is gekoppeld aan de basis van de belangrijkste sjabloon of een sjabloon die is ingesloten in de belangrijkste sjabloon.
+Voor het implementeren van uw oplossing, kunt u één enkele sjabloon of een belangrijkste sjabloon kunt gebruiken met veel gerelateerde sjablonen. De gerelateerde sjablonen kunnen afzonderlijke bestanden zijn die zijn gekoppeld aan uit de hoofd sjabloon of sjablonen die zijn genest in de hoofd sjabloon.
 
-Voor kleine tot middelgrote oplossingen is één enkele sjabloon gemakkelijker te begrijpen en onderhouden. U kunt alle resources en -waarden in een enkel bestand zien. Gekoppelde sjablonen kunnen u de oplossing in de betreffende onderdelen opdelen en sjablonen gebruiken voor geavanceerde scenario's.
+Voor kleine tot middelgrote oplossingen is één enkele sjabloon gemakkelijker te begrijpen en onderhouden. U kunt alle resources en -waarden in een enkel bestand zien. Voor geavanceerde scenario's kunt u met gekoppelde sjablonen de oplossing opsplitsen in doel onderdelen. U kunt deze sjablonen eenvoudig opnieuw gebruiken voor andere scenario's.
 
 Wanneer u gekoppelde sjablonen gebruikt, maakt u een belangrijkste sjabloon waarmee de parameterwaarden die zijn ontvangen tijdens de implementatie. De belangrijkste sjabloon bevat alle gekoppelde sjablonen en geeft waarden aan deze sjablonen indien nodig.
 
@@ -27,7 +27,7 @@ Zie voor een zelfstudie [zelfstudie: gekoppelde Azure Resource Manager-sjablonen
 > Voor gekoppelde of geneste sjablonen kunt u alleen [incrementele](deployment-modes.md) implementatie modus gebruiken.
 >
 
-## <a name="link-or-nest-a-template"></a>Een koppeling of nesten van een sjabloon
+## <a name="deployments-resource"></a>Implementaties bron
 
 Als u wilt koppelen aan een andere sjabloon, Voeg een **implementaties** resource die u wilt uw belangrijkste sjabloon.
 
@@ -47,7 +47,7 @@ Als u wilt koppelen aan een andere sjabloon, Voeg een **implementaties** resourc
 
 De eigenschappen die u voor de implementatie-resource opgeeft, afhankelijk van of u bent koppelen aan een externe-sjabloon of een inline-sjabloon in de belangrijkste sjabloon nesten.
 
-### <a name="nested-template"></a>Geneste sjabloon
+## <a name="nested-template"></a>Geneste sjabloon
 
 Als u wilt de sjabloon in de belangrijkste sjabloon nesten, gebruikt u de **sjabloon** eigenschap en geeft u de sjabloonsyntaxis van de.
 
@@ -94,9 +94,17 @@ Als u wilt de sjabloon in de belangrijkste sjabloon nesten, gebruikt u de **sjab
 
 De geneste sjabloon moet de [dezelfde eigenschappen](resource-group-authoring-templates.md) als een standaardsjabloon.
 
-### <a name="external-template-and-external-parameters"></a>Externe sjabloon en externe parameters
+## <a name="external-template"></a>Externe sjabloon
 
-Gebruiken om een koppeling naar een externe sjabloon en het parameterbestand, **templateLink** en **parametersLink**. Wanneer u een koppeling naar een sjabloon, is de Resource Manager-service moet toegang hebben tot deze. U kunt een lokaal bestand of een bestand dat is alleen beschikbaar op uw lokale netwerk opgeven. U kunt alleen opgeven met een URI-waarde met een **http** of **https**. Een optie is de gekoppelde sjabloon in een storage-account en gebruik van de URI voor dit item.
+Als u een koppeling wilt maken naar een externe sjabloon, gebruikt u de eigenschap **templateLink** . U kunt een lokaal bestand of een bestand dat is alleen beschikbaar op uw lokale netwerk opgeven. U kunt alleen opgeven met een URI-waarde met een **http** of **https**. Resource Manager moet toegang hebben tot de sjabloon.
+
+Een optie is de gekoppelde sjabloon in een storage-account en gebruik van de URI voor dit item.
+
+U kunt de para meters voor uw externe sjabloon opgeven in een extern bestand of in inline.
+
+### <a name="external-parameters"></a>Externe para meters
+
+Wanneer u een extern parameter bestand opgeeft, gebruikt u de eigenschap **parametersLink** :
 
 ```json
 "resources": [
@@ -105,15 +113,15 @@ Gebruiken om een koppeling naar een externe sjabloon en het parameterbestand, **
     "apiVersion": "2018-05-01",
     "name": "linkedTemplate",
     "properties": {
-    "mode": "Incremental",
-    "templateLink": {
+      "mode": "Incremental",
+      "templateLink": {
         "uri":"https://mystorageaccount.blob.core.windows.net/AzureTemplates/newStorageAccount.json",
         "contentVersion":"1.0.0.0"
-    },
-    "parametersLink": {
+      },
+      "parametersLink": {
         "uri":"https://mystorageaccount.blob.core.windows.net/AzureTemplates/newStorageAccount.parameters.json",
         "contentVersion":"1.0.0.0"
-    }
+      }
     }
   }
 ]
@@ -121,11 +129,11 @@ Gebruiken om een koppeling naar een externe sjabloon en het parameterbestand, **
 
 U hoeft te bieden de `contentVersion` eigenschap voor de sjabloon of de parameters. Als u een waarde voor de inhoud versie niet opgeeft, wordt de huidige versie van de sjabloon wordt geïmplementeerd. Als u een waarde voor de inhoudsversie opgeeft, moet deze overeenkomen met de versie in de gekoppelde sjabloon. anders mislukt de implementatie met een fout.
 
-### <a name="external-template-and-inline-parameters"></a>Externe sjabloon en inline-parameters
+### <a name="inline-parameters"></a>Inline-para meters
 
 Of u kunt de parameter-inline opgeeft tussen. U kunt zowel inline-parameters en een koppeling niet gebruiken voor een parameterbestand. De implementatie is mislukt met foutmelding wanneer beide `parametersLink` en `parameters` zijn opgegeven.
 
-Gebruik een waarde van de belangrijkste sjabloon doorgeven aan de gekoppelde sjabloon, **parameters**.
+Als u een waarde van de hoofd sjabloon wilt door geven aan de gekoppelde sjabloon, gebruikt u de eigenschap **para meters** .
 
 ```json
 "resources": [
@@ -269,7 +277,7 @@ De belangrijkste sjabloon implementeert de gekoppelde sjabloon en de geretournee
 }
 ```
 
-Net als andere resourcetypen, kunt u de afhankelijkheden tussen de gekoppelde sjabloon en andere resources instellen. Als voor andere resources een waarde voor de uitvoer van de gekoppelde sjabloon moet, zorg ervoor dat de gekoppelde sjabloon voordat deze is geïmplementeerd. Of, als de gekoppelde sjabloon, is afhankelijk van andere bronnen, zorg ervoor dat andere resources worden geïmplementeerd voordat u de gekoppelde sjabloon.
+Net als andere resourcetypen, kunt u de afhankelijkheden tussen de gekoppelde sjabloon en andere resources instellen. Als voor andere resources een uitvoer waarde van de gekoppelde sjabloon is vereist, moet u ervoor zorgen dat de gekoppelde sjabloon wordt geïmplementeerd. Of, als de gekoppelde sjabloon, is afhankelijk van andere bronnen, zorg ervoor dat andere resources worden geïmplementeerd voordat u de gekoppelde sjabloon.
 
 Het volgende voorbeeld ziet u een sjabloon die wordt geïmplementeerd een openbaar IP-adres en retourneert de resource-ID:
 

@@ -10,21 +10,21 @@ ms.subservice: development
 ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: 74a1a2218020718a05c9d01de96ddf4fccb35eb4
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
-ms.translationtype: MT
+ms.openlocfilehash: 7adf43110cffdc669b39632521c69ed5d3723257
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71802569"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71845708"
 ---
 # <a name="performance-tuning-with-ordered-clustered-columnstore-index"></a>Prestaties afstemmen met een geordende geclusterde column store-index  
 
 Wanneer gebruikers een query uitvoeren op een column Store-tabel in Azure SQL Data Warehouse, controleert de Optimizer de minimum-en maximum waarden die zijn opgeslagen in elk segment.  Segmenten die zich buiten de grenzen van het query-predikaat bevinden, worden niet van de schijf naar het geheugen gelezen.  Een query kan betere prestaties krijgen als het aantal segmenten dat moet worden gelezen en de totale grootte klein zijn.   
 
 ## <a name="ordered-vs-non-ordered-clustered-columnstore-index"></a>Besteld versus niet-bestelde geclusterde column store-index 
-Standaard maakt een intern onderdeel (Indexing Builder) voor elke Azure Data Warehouse-tabel die is gemaakt zonder een index optie, een niet-bestelde geclusterde column store-index (CCI).  De gegevens in elke kolom worden gecomprimeerd in een afzonderlijk CCI Rijg roep-segment.  Er zijn meta gegevens van de waarden van elk segment, waardoor segmenten die zich buiten de grenzen van het query predicaat bevinden, niet kunnen worden gelezen van de schijf tijdens de uitvoering van de query.  CCI biedt het hoogste niveau van gegevens compressie en vermindert de grootte van segmenten om te lezen zodat query's sneller kunnen worden uitgevoerd. Omdat de opbouw functie voor indexen echter geen gegevens sorteert voordat deze in segmenten worden gecomprimeerd, kunnen segmenten met overlappende cellenbereiken optreden, waardoor query's meer segmenten van de schijf worden gelezen en langer duren.  
+Standaard maakt een intern onderdeel (Indexing Builder) voor elke Azure Data Warehouse-tabel die is gemaakt zonder een index optie, een niet-bestelde geclusterde column store-index (CCI).  De gegevens in elke kolom worden gecomprimeerd in een afzonderlijk CCI Rijg roep-segment.  Er zijn meta gegevens van de waarden van elk segment, waardoor segmenten die zich buiten de grenzen van het query predicaat bevinden, niet kunnen worden gelezen van de schijf tijdens de uitvoering van de query.  CCI biedt het hoogste niveau van gegevens compressie en vermindert de grootte van segmenten om te lezen zodat query's sneller kunnen worden uitgevoerd. Omdat de opbouw functie voor indexen echter geen gegevens sorteert voordat ze naar segmenten worden gecomprimeerd, kunnen segmenten met overlappende cellenbereiken optreden, waardoor query's meer segmenten van de schijf worden gelezen en langer duren.  
 
-Wanneer u een besteld CCI maakt, worden de gegevens in het geheugen door de Azure SQL Data Warehouse Engine gesorteerd op basis van de volg orde van de sleutel (s) voordat de index Builder deze comprimeert in index segmenten.  Met gesorteerde gegevens is het segment overlappend, zodat query's een efficiëntere segment eliminatie kunnen hebben, waardoor de prestaties sneller worden, omdat het aantal segmenten dat moet worden gelezen van de schijf kleiner is.  Als alle gegevens in een keer in het geheugen kunnen worden gesorteerd, kan segment overlappend worden vermeden.  Gezien de grote omvang van gegevens in Data Warehouse-tabellen, gebeurt dit niet vaak.  
+Wanneer u een besteld CCI maakt, sorteert de Azure SQL Data Warehouse engine de bestaande gegevens in het geheugen op basis van de volg orde van de sleutel (s) voordat de index Builder ze comprimeert in index segmenten.  Met gesorteerde gegevens is het segment overlappend, zodat query's een efficiëntere segment eliminatie kunnen hebben, waardoor de prestaties sneller worden, omdat het aantal segmenten dat moet worden gelezen van de schijf kleiner is.  Als alle gegevens in een keer in het geheugen kunnen worden gesorteerd, kan segment overlappend worden vermeden.  Gezien de grote omvang van gegevens in Data Warehouse-tabellen, gebeurt dit niet vaak.  
 
 Als u de segment bereiken voor een kolom wilt controleren, voert u deze opdracht uit met de naam van de tabel en de naam van de kolom:
 
@@ -42,6 +42,9 @@ ORDER BY o.name, pnp.distribution_id, cls.min_data_id
 
 ```
 
+> [!NOTE] 
+> In een geordende CCI-tabel worden nieuwe gegevens die voortkomen uit DML of het laden van gegevens, niet automatisch gesorteerd.  Gebruikers kunnen het bestelde CCI opnieuw bouwen om alle gegevens in de tabel te sorteren.  
+
 ## <a name="data-loading-performance"></a>Prestaties van het laden van gegevens
 
 De prestaties van het laden van gegevens in een geordende CCI-tabel zijn vergelijkbaar met het laden van gegevens in een gepartitioneerde tabel.  
@@ -51,12 +54,24 @@ Hier volgt een voor beeld van de prestatie vergelijking van het laden van gegeve
 ![Performance_comparison_data_loading @ no__t-1
  
 ## <a name="reduce-segment-overlapping"></a>Segment overlappend verminderen
-Hieronder vindt u opties voor het verder verminderen van segment overlap ping bij het maken van besteld CCI voor een nieuwe tabel via CTAS of voor een bestaande tabel met gegevens:
 
-- Gebruik een grotere resource klasse om te voor komen dat er meer gegevens in het geheugen tegelijk worden gesorteerd voordat de opbouw functie voor indexen ze comprimeert in segmenten.  Eenmaal in een index segment kan de fysieke locatie van de gegevens niet worden gewijzigd.  Er wordt geen sortering van gegevens binnen een segment of tussen segmenten.  
+Het aantal overlappende segmenten is afhankelijk van de grootte van de gegevens die moeten worden gesorteerd, het beschik bare geheugen en de maximale mate van parallellisme (MAXDOP) tijdens het maken van de geordende CCI. Hieronder vindt u opties voor het verminderen van segment overlap ping bij het maken van besteld CCI.
 
-- Gebruik een lagere mate van parallelle uitvoering (bijvoorbeeld DOP = 1).  Elke thread die wordt gebruikt voor het bewerkte CCI maakt, werkt met een subset van gegevens en sorteert deze lokaal.  Er is geen algemene sorteer volgorde voor gegevens die door verschillende threads worden gesorteerd.  Het gebruik van parallelle threads kan de tijd verminderen voor het maken van een geordend CCI, maar er worden meer overlappende segmenten gegenereerd dan met behulp van één thread. 
+- Gebruik de resource klasse xlargerc op een hogere DWU om meer geheugen voor het sorteren van gegevens toe te staan voordat de index Builder de gegevens in segmenten comprimeert.  Eenmaal in een index segment kan de fysieke locatie van de gegevens niet worden gewijzigd.  Er wordt geen sortering van gegevens binnen een segment of tussen segmenten.  
+
+- Maak een geordend CCI met MAXDOP = 1.  Elke thread die wordt gebruikt voor het bewerkte CCI maakt, werkt met een subset van gegevens en sorteert deze lokaal.  Er is geen algemene sorteer volgorde voor gegevens die door verschillende threads worden gesorteerd.  Het gebruik van parallelle threads kan de tijd verminderen voor het maken van een geordend CCI, maar er worden meer overlappende segmenten gegenereerd dan met behulp van één thread.  Op dit moment wordt de optie MAXDOP alleen ondersteund voor het maken van een geordende CCI-tabel met behulp van CREATE TABLE als SELECT-opdracht.  Het maken van een geordend CCI via CREATE INDEX of CREATE TABLE opdrachten biedt geen ondersteuning voor de optie MAXDOP. Bijvoorbeeld:
+
+```sql
+CREATE TABLE Table1 WITH (DISTRIBUTION = HASH(c1), CLUSTERED COLUMNSTORE INDEX ORDER(c1) )
+AS SELECT * FROM ExampleTable
+OPTION (MAXDOP 1);
+```
 - Sorteer de gegevens vooraf op de sorteer sleutel (s) voordat u deze in Azure SQL Data Warehouse tabellen laadt.
+
+
+Hier volgt een voor beeld van een geordende CCI-tabel distributie met geen segment overlappende de bovenstaande aanbevelingen. De bestelde CCI-tabel wordt met behulp van MAXDOP 1 en xlargerc gemaakt in een DWU1000c-data base via CTAS uit een heap-tabel van 20 GB.  Het CCI bevindt zich op een kolom BIGINT zonder dubbele waarden.  
+
+![Segment_No_Overlapping](media/performance-tuning-ordered-cci/perfect-sorting-example.png)
 
 ## <a name="create-ordered-cci-on-large-tables"></a>Besteld CCI maken voor grote tabellen
 Het maken van een bestelde CCI is een offline bewerking.  Voor tabellen zonder partities zijn de gegevens niet toegankelijk voor gebruikers totdat het bestelde CCI-proces is voltooid.   Voor gepartitioneerde tabellen, omdat de engine de bestelde CCI-partitie per partitie maakt, hebben gebruikers nog steeds toegang tot de gegevens in partities waar het maken van een CCI niet in behandeling is.   U kunt deze optie gebruiken om de downtime te minimaliseren tijdens het maken van een geordende CCI op grote tabellen: 

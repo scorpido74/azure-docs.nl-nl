@@ -7,15 +7,15 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
 ms.topic: conceptual
-ms.date: 07/10/2019
+ms.date: 10/04/2019
 ms.author: kgremban
 ms.custom: seodec18
-ms.openlocfilehash: 6118c4ddf1386ff4cc816148938e1f5ddeaecc9e
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: 513cf477e8c2899da17ee8e9bdfdb9ad2bedd159
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71266080"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828096"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-windows"></a>Installeer de Azure IoT Edge runtime op Windows
 
@@ -121,52 +121,12 @@ Meer informatie over deze installatie opties kunt u overs Laan om meer te weten 
 
 ### <a name="option-2-install-and-automatically-provision"></a>Optie 2: Installeren en automatisch inrichten
 
-In deze tweede optie richt u het apparaat in met behulp van de IoT Hub Device Provisioning Service. Geef de **bereik-id** van een Device Provisioning service-exemplaar en de **registratie-id** van uw apparaat op. Er kunnen aanvullende waarden worden vereist volgens uw Attestation-mechanisme bij het inrichten met DPS, zoals bij het gebruik van [symmetrische sleutels](how-to-auto-provision-symmetric-keys.md).
+In deze tweede optie richt u het apparaat in met behulp van de IoT Hub Device Provisioning Service. Geef de **bereik-id** van een Device Provisioning service-exemplaar op, samen met alle andere informatie die specifiek is voor uw voorkeurs [Attestation-mechanisme](../iot-dps/concepts-security.md#attestation-mechanism):
 
-In het volgende voor beeld ziet u een automatische installatie met Windows-containers en TPM-Attestation:
+* [Een gesimuleerd TPM-apparaat in Windows maken en inrichten](how-to-auto-provision-simulated-device-windows.md)
+* [Een IoT Edge apparaat maken en inrichten met behulp van symmetrische sleutel attest](how-to-auto-provision-symmetric-keys.md)
 
-1. Volg de stappen in [een gesimuleerde TPM maken en inrichten IOT edge apparaat in Windows](how-to-auto-provision-simulated-device-windows.md) om de Device Provisioning Service in te stellen en de **scope-id**op te halen, een TPM-apparaat te simuleren en de **registratie-id**op te halen en vervolgens een individu te maken inschrijving. Zodra het apparaat is geregistreerd in uw IoT-hub, gaat u door met deze installatie stappen.  
-
-   >[!TIP]
-   >Houd het venster met de TPM-simulator openen tijdens het installeren en testen. 
-
-1. Voer Power shell uit als beheerder.
-
-   >[!NOTE]
-   >Gebruik een AMD64-sessie van Power shell om IoT Edge, niet Power shell (x86), te installeren. Als u niet zeker weet welk sessie type u gebruikt, voert u de volgende opdracht uit:
-   >
-   >```powershell
-   >(Get-Process -Id $PID).StartInfo.EnvironmentVariables["PROCESSOR_ARCHITECTURE"]
-   >```
-
-1. Met de opdracht **Deploy-IoTEdge** wordt gecontroleerd of de Windows-computer een ondersteunde versie heeft, wordt de functie containers ingeschakeld, waarna de Moby-runtime en de IOT Edge-runtime worden gedownload. De opdracht wordt standaard ingesteld op het gebruik van Windows-containers. 
-
-   ```powershell
-   . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `
-   Deploy-IoTEdge
-   ```
-
-1. Op dit moment kunnen IoT-kern apparaten automatisch opnieuw worden opgestart. Op andere Windows 10-of Windows Server-apparaten wordt u mogelijk gevraagd om opnieuw op te starten. Als dit het geval is, start u het apparaat nu opnieuw op. Zodra het apparaat klaar is, voert u Power shell als beheerder opnieuw uit.
-
-1. De **initialisatie-IoTEdge-** opdracht configureert de IOT Edge runtime op de computer. De opdracht wordt standaard ingesteld op hand matig inrichten met Windows-containers. Gebruik de `-Dps` markering om de Device Provisioning Service te gebruiken in plaats van hand matig inrichten. Vervang `{scope ID}` door de scope-id van uw Device Provisioning `{registration ID}` service en met de registratie-id van het apparaat, die u in stap 1 zou moeten ophalen.
-
-   Gebruik de opdracht **initialiseren-IoTEdge** om DPS te gebruiken met TPM-Attestation:
-
-   ```powershell
-   . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `
-   Initialize-IoTEdge -Dps -ScopeId {scope ID} -RegistrationId {registration ID}
-   ```
-
-   Gebruik de opdracht **initialiseren-IoTEdge** om DPS te gebruiken met symmetrische sleutel Attestation. Vervang `{symmetric key}` door een apparaatcode.
-
-   ```powershell
-   . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `
-   Initialize-IoTEdge -Dps -ScopeId {scope ID} -RegistrationId {registration ID} -SymmetricKey {symmetric key}
-   ```
-
-1. Volg de stappen in [verifiëren geslaagde installatie](#verify-successful-installation) om de status van IOT Edge op het apparaat te controleren. 
-
-Wanneer u een apparaat hand matig installeert en inricht, kunt u extra para meters gebruiken voor het wijzigen van de installatie, waaronder:
+Wanneer u een apparaat automatisch installeert en inricht, kunt u extra para meters gebruiken voor het wijzigen van de installatie, waaronder:
 
 * Direct verkeer om een proxy server te passeren
 * Het installatie programma naar een offline Directory laten verwijzen
@@ -302,13 +262,13 @@ De initialisatie-IoTEdge-opdracht configureert IoT Edge met uw apparaat connecti
 | **Dps** | Geen | **Switch-para meter**. Als er geen inrichtings type is opgegeven, is hand matig de standaard waarde.<br><br>Declareert dat u een DPS-scope-ID (Device Provisioning Service) opgeeft en de registratie-ID van uw apparaat moet worden ingericht via DPS.  |
 | **DeviceConnectionString** | Een connection string van een IoT Edge apparaat dat is geregistreerd in een IoT Hub, in enkele aanhalings tekens | **Vereist** voor hand matige installatie. Als u geen connection string in de script parameters opgeeft, wordt u tijdens de installatie gevraagd om er een te maken. |
 | **ScopeId** | Een bereik-ID van een instantie van Device Provisioning Service die is gekoppeld aan uw IoT Hub. | **Vereist** voor de installatie van DPS. Als u geen bereik-ID in de script parameters opgeeft, wordt u tijdens de installatie gevraagd om er een te maken. |
-| **RegistrationId** | Een registratie-ID die is gegenereerd door uw apparaat | **Vereist** voor de installatie van DPS. |
+| **RegistrationId** | Een registratie-ID die is gegenereerd door uw apparaat | **Vereist** voor de installatie van DPS als TPM of symmetrische sleutel attest wordt gebruikt. |
 | **SymmetricKey** | De symmetrische sleutel die wordt gebruikt om de IoT Edge apparaat-id in te richten wanneer DPS wordt gebruikt | **Vereist** voor de installatie van DPS als gebruikmaakt van symmetrische sleutel Attestation. |
 | **ContainerOs** | **Windows** of **Linux** | Als er geen container besturings systeem is opgegeven, is Windows de standaard waarde.<br><br>Voor Windows-containers maakt IoT Edge gebruik van de Moby-container engine die is opgenomen in de installatie. Voor Linux-containers moet u een container Engine installeren voordat u de installatie start. |
 | **InvokeWebRequestParameters** | Hashtabel van para meters en waarden | Tijdens de installatie worden er diverse webaanvragen gedaan. Gebruik dit veld om para meters in te stellen voor deze webaanvragen. Deze para meter is handig voor het configureren van referenties voor proxy servers. Zie voor meer informatie, [een IoT Edge-apparaat om te communiceren via een proxyserver configureren](how-to-configure-proxy-support.md). |
 | **AgentImage** | URI-installatie kopie van IoT Edge agent | Een nieuwe IoT Edge-installatie maakt standaard gebruik van de nieuwste roulerende tag voor de installatie kopie van de IoT Edge agent. Gebruik deze para meter om een specifieke tag voor de installatie kopie versie in te stellen of om uw eigen agent installatie kopie op te geven. Zie voor meer informatie [IOT Edge Tags begrijpen](how-to-update-iot-edge.md#understand-iot-edge-tags). |
 | **Gebruikersnaam** | Gebruikers naam container register | Gebruik deze para meter alleen als u de para meter-AgentImage instelt op een container in een persoonlijk REGI ster. Geef een gebruikers naam op die toegang heeft tot het REGI ster. |
-| **Wachtwoord** | Teken reeks met beveiligd wacht woord | Gebruik deze para meter alleen als u de para meter-AgentImage instelt op een container in een persoonlijk REGI ster. Geef het wacht woord op voor toegang tot het REGI ster. | 
+| **Wachtwoord** | Teken reeks met beveiligd wacht woord | Gebruik deze para meter alleen als u de para meter-AgentImage instelt op een container in een persoonlijk REGI ster. Geef het wacht woord op voor toegang tot het REGI ster. |
 
 ### <a name="update-iotedge"></a>Update-IoTEdge
 

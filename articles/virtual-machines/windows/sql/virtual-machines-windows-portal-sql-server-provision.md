@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 05/04/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 38fdbbf76806325e457f066e6b469a531c27b038
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 1e0bc4647476cd5c6aa0f38456ef8890b4ddcaa5
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102208"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828783"
 ---
 # <a name="how-to-provision-a-windows-sql-server-virtual-machine-in-the-azure-portal"></a>Een virtuele machine met Windows SQL Server inrichten in de Azure Portal
 
@@ -38,7 +38,7 @@ Wanneer u een SQL Server virtuele machine maakt, kunt u een van de verschillende
 
 1. Selecteer **Azure SQL** in het linkermenu van de Azure Portal. Als **Azure SQL** niet voor komt in de lijst, selecteert u **alle services**en typt u vervolgens Azure SQL in het zoekvak. Beschrijving Selecteer de ster naast **Azure SQL** om deze te favoriet en voeg deze toe als een item in de linkernavigatiebalk. 
 1. Selecteer **+ toevoegen** om de **optie pagina SQL-implementatie selecteren** te openen. U kunt aanvullende informatie weer geven door **Details weer geven**te selecteren. 
-1. Typ `2017` in het zoekvak voor de SQL Server-installatie kopie op de tegel **virtuele SQL** -machines **en selecteer vervolgens gratis SQL Server licentie: SQL Server 2017 Developer op Windows Server 2016** uit de vervolg keuzelijst. 
+1. Typ `2017` in het zoekvak van de SQL Server-installatie kopie op de tegel **virtuele SQL-machines** en selecteer vervolgens **Free SQL Server-licentie: SQL Server 2017 Developer op Windows Server 2016 @ no__t-0 in de vervolg keuzelijst. 
 
 
    ![SQL VM-installatie kopie selecteren](media/virtual-machines-windows-portal-sql-server-provision/select-sql-vm-image-portal.png)
@@ -54,17 +54,6 @@ Wanneer u een SQL Server virtuele machine maakt, kunt u een van de verschillende
 
 1. Selecteer **Maken**.
 
-
-## <a id="configure"></a>Configuratie opties
-
-Er zijn meerdere tabbladen voor het configureren van een SQL Server virtuele machine. In deze hand leiding richten we ons op het volgende: 
-
-| Stap | Description |
-| --- | --- |
-| **Basisinstellingen** |[Basisinstellingen configureren](#1-configure-basic-settings) |
-| **Optionele functies** |[Optionele kenmerken configureren](#2-configure-optional-features) |
-| **SQL Server-instellingen** |[SQL Server-instellingen configureren](#3-configure-sql-server-settings) |
-| **Controleren en maken** | [De samenvatting bekijken](#4-review--create) |
 
 ## <a name="1-configure-basic-settings"></a>1. Basisinstellingen configureren
 
@@ -142,8 +131,6 @@ Configureer bewaking en automatisch afsluiten op het tabblad **bewaking** .
 
 Configureer op het tabblad **SQL Server instellingen** specifieke instellingen en optimalisaties voor SQL Server. De instellingen die u kunt configureren voor SQL Server omvatten het volgende:
 
-
-
 | Instelling |
 | --- |
 | [Connectiviteit](#connectivity) |
@@ -208,24 +195,19 @@ Zie voor meer informatie [Integratie van Azure Sleutelkluis configureren voor SQ
 
 ### <a name="storage-configuration"></a>Opslagconfiguratie
 
-Selecteer op het tabblad **SQL Server instellingen** onder **opslag configuratie**de optie **configuratie wijzigen** om de opslag vereisten op te geven.
+Selecteer op het tabblad **SQL Server instellingen** onder **opslag configuratie**de optie **configuratie wijzigen** om de configuratie pagina prestaties geoptimaliseerd voor opslag te openen en de opslag vereisten op te geven.
 
-
-> [!NOTE]
-> Als u uw virtuele machine handmatig hebt geconfigureerd om standaardopslag te gebruiken, is deze optie niet beschikbaar. Automatische opslagoptimalisatie is alleen beschikbaar voor Premium Storage.
-
-> [!TIP]
-> Het aantal stops en de bovenste limieten van de schuifregelaars zijn afhankelijk van de grootte van de virtuele machine die u hebt geselecteerd. Een grotere en krachtigere virtuele machine kan verder opschalen.
-
-U kunt vereisten opgeven als i/o-bewerkingen per seconde (IOP's), als doorvoer in MB/s en als totale grootte van de opslagruimte. Configureer deze waarden met behulp van de schuifregelaar. U kunt deze opslaginstellingen wijzigen op basis van de workload. De portal berekent automatisch het aantal schijven dat moet worden gekoppeld en geconfigureerd op basis van deze vereisten.
+![Configuratie van SQL-VM-opslag](media/virtual-machines-windows-sql-storage-configuration/sql-vm-storage-configuration-provisioning.png)
 
 Selecteer onder **Opslag geoptimaliseerd voor** een van de volgende opties:
 
 * **Algemeen** is de standaardinstelling en ondersteunt de meeste workloads.
-* Met **Transactionele** verwerking wordt de opslag voor OLTP-workloads van traditionele databases geoptimaliseerd.
+* **Transactionele verwerking** optimaliseert de opslag voor traditionele OLTP-workloads van data bases.
 * **Gegevensopslag** optimaliseert de opslag voor analyse- en rapportageworkloads.
 
-![Configuratie van SQL-VM-opslag](media/virtual-machines-windows-portal-sql-server-provision/azure-sqlvm-storage-configuration.png)
+![Configuratie van SQL-VM-opslag](media/virtual-machines-windows-sql-storage-configuration/sql-vm-storage-configuration.png)
+
+U kunt ervoor kiezen de waarden standaard te laten staan of u kunt de opslag topologie hand matig aanpassen aan uw IOPS-behoeften. Zie [opslag configuratie](virtual-machines-windows-sql-server-storage-configuration.md)voor meer informatie. 
 
 ### <a name="sql-server-license"></a>SQL Server-licentie
 Als u een Software Assurance-klant bent, kunt u de [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/) gebruiken om uw eigen SQL Server licentie te nemen en op te slaan op resources. 

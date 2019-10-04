@@ -11,12 +11,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: carlrab, vanto
 ms.date: 07/02/2019
-ms.openlocfilehash: 7f7eff0a8231d994a792ad20b02607c33db1833a
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: f15fb46568f4ad062605b51600d3c61870b48645
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70306153"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828850"
 ---
 # <a name="azure-sql-connectivity-architecture"></a>Architectuur van Azure SQL-connectiviteit
 
@@ -26,7 +26,7 @@ In dit artikel worden de architectuur van Azure SQL Database en SQL Data Warehou
 
 In het volgende diagram vindt u een overzicht van de architectuur van de Azure SQL Database-connectiviteit.
 
-![architectuur overzicht](./media/sql-database-connectivity-architecture/connectivity-overview.png)
+![Architectuur overzicht](./media/sql-database-connectivity-architecture/connectivity-overview.png)
 
 In de volgende stappen wordt beschreven hoe een verbinding tot stand wordt gebracht met een Azure-SQL database:
 
@@ -46,13 +46,13 @@ Azure SQL Database ondersteunt de volgende drie opties voor de instelling van he
 
 Als u verbinding maakt vanuit Azure, hebben uw verbindingen standaard een verbindings beleid `Redirect` van. Een beleid `Redirect` waarbij wordt aangegeven dat nadat de TCP-sessie is ingesteld op de Azure-SQL database, de client sessie wordt omgeleid naar het juiste database cluster met een wijziging in de virtuele doel-IP van die van de Azure SQL database gateway naar die van de cluster. Daarna stroomt alle volgende pakketten rechtstreeks naar het cluster, waarbij de Azure SQL Database gateway wordt omzeild. In het volgende diagram ziet u deze verkeers stroom.
 
-![architectuur overzicht](./media/sql-database-connectivity-architecture/connectivity-azure.png)
+![Architectuur overzicht](./media/sql-database-connectivity-architecture/connectivity-azure.png)
 
 ## <a name="connectivity-from-outside-of-azure"></a>Connectiviteit van buiten Azure
 
 Als u verbinding maakt vanuit buiten Azure, hebben uw verbindingen standaard een verbindings beleid `Proxy` van. Een beleid voor `Proxy` betekent dat de TCP-sessie tot stand is gebracht via de Azure SQL database gateway en dat alle volgende pakketten via de gateway stromen. In het volgende diagram ziet u deze verkeers stroom.
 
-![architectuur overzicht](./media/sql-database-connectivity-architecture/connectivity-onprem.png)
+![Architectuur overzicht](./media/sql-database-connectivity-architecture/connectivity-onprem.png)
 
 ## <a name="azure-sql-database-gateway-ip-addresses"></a>IP-adressen van Azure SQL Database-gateway
 
@@ -70,7 +70,7 @@ Meer informatie over hoe verkeer moet worden gemigreerd naar nieuwe gateways in 
 | Brazilië - zuid         | 104.41.11.5, 191.233.200.14 |
 | Canada - midden       | 40.85.224.249      |
 | Canada - oost          | 40.86.226.166      |
-| US - centraal           | 13.67.215.62, 52.182.137.15, 23.99.160.139, 104.208.16.96 | 
+| US - centraal           | 13.67.215.62, 52.182.137.15, 23.99.160.139, 104.208.16.96, 104.208.21.1 | 
 | China - oost           | 139.219.130.35     |
 | China - oost 2         | 40.73.82.1         |
 | China - noord          | 139.219.15.17      |

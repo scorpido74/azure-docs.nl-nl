@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/12/2019
 ms.author: magoedte
-ms.openlocfilehash: a68e40b7b1caf184fabb5df62d8b461fa2fa11e2
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a9775ce071b6d64d535560a567dcae078900c692
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60539203"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71838732"
 ---
 # <a name="create-a-log-analytics-workspace-in-the-azure-portal"></a>Een Log Analytics-werkruimte maken in Azure portal
-Gebruik de **Log Analytics-werkruimten** menu voor het maken van een Log Analytics-werkruimte met behulp van de Azure portal. Een Log Analytics-werkruimte is een unieke omgeving voor Azure Monitor-logboekgegevens. Elke werkruimte heeft een eigen gegevensopslagplaats en de configuratie en gegevensbronnen en oplossingen zijn geconfigureerd voor het opslaan van hun gegevens in een bepaalde werkruimte. Hebt u nodig een Log Analytics-werkruimte als u van plan bent voor het verzamelen van gegevens uit de volgende bronnen:
+Gebruik het menu **log Analytics werk ruimten** om een log Analytics-werk ruimte te maken met behulp van de Azure Portal. Een Log Analytics-werk ruimte is een unieke omgeving voor Azure Monitor logboek gegevens. Elke werk ruimte heeft een eigen gegevens opslagplaats en-configuratie, en gegevens bronnen en-oplossingen zijn geconfigureerd om hun gegevens op te slaan in een bepaalde werk ruimte. U hebt een Log Analytics-werk ruimte nodig als u van plan bent om gegevens te verzamelen uit de volgende bronnen:
 
 * Azure-resources in uw abonnement
 * On-premises computers bewaakt door System Center Operations Manager
@@ -40,19 +40,19 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 Meld u aan bij de Azure Portal op [https://portal.azure.com](https://portal.azure.com). 
 
 ## <a name="create-a-workspace"></a>Een werkruimte maken
-1. Klik in Azure Portal op **Alle services**. Typ in de lijst met resources **Log Analytics**. Als u begint te typen, wordt de lijst gefilterd op basis van uw invoer. Selecteer **Log Analytics-werkruimten**.
+1. Klik in Azure Portal op **Alle services**. Typ in de lijst met resources **Log Analytics**. Als u begint te typen, wordt de lijst gefilterd op basis van uw invoer. Selecteer **log Analytics-werk ruimten**.
 
     ![Azure Portal](media/quick-create-workspace/azure-portal-01.png)
   
-2. Klik op **toevoegen**, en selecteer vervolgens de opties voor de volgende items:
+2. Klik op **toevoegen**en selecteer vervolgens opties voor de volgende items:
 
-   * Geef een naam op voor de nieuwe **Log Analytics-werkruimte**, bijvoorbeeld *StandaardLAWerkruimte*. 
+   * Geef een naam op voor de nieuwe **Log Analytics-werkruimte**, bijvoorbeeld *StandaardLAWerkruimte*. Deze naam moet globaal uniek zijn in alle Azure Monitor-abonnementen.
    * Selecteer een **abonnement** om te koppelen door een selectie in de vervolgkeuzelijst te maken als de geselecteerde standaardwaarde niet juist is.
    * Voor **resourcegroep**, kiest u een bestaande resource gebruiken groep al setup of maak een nieuwe.  
-   * Selecteer een beschikbare **locatie**.  Zie voor meer informatie, die [Log Analytics is beschikbaar in regio's](https://azure.microsoft.com/regions/services/) en zoek naar Azure Monitor uit de **zoeken voor een product** veld.  
+   * Selecteer een beschikbare **locatie**.  Zie voor meer informatie de [regio's log Analytics beschikbaar in](https://azure.microsoft.com/regions/services/) en zoek naar Azure monitor in het veld **zoeken naar een product** .  
    * Als u een werkruimte maakt in een nieuw abonnement dat na 2 april 2018 is gemaakt, gebruikt deze automatisch de prijscategorie *Per GB*. De optie voor het selecteren van een prijscategorie is dan niet beschikbaar.  Als u een werkruimte voor een bestaand abonnement gemaakt vóór 2 April, of voor een abonnement dat is gekoppeld aan een bestaande Enterprise Agreement (EA)-inschrijving maakt, selecteert u uw gewenste prijscategorie.  Zie voor meer informatie over de afzonderlijke lagen [prijsinformatie voor Log Analytics](https://azure.microsoft.com/pricing/details/log-analytics/).
 
-        ![Log Analytics-resource-blade maken](media/quick-create-workspace/create-loganalytics-workspace-02.png)  
+        ![Log Analytics resource-Blade maken](media/quick-create-workspace/create-loganalytics-workspace-02.png)  
 
 3. Nadat u de vereiste gegevens hebt opgegeven in het deelvenster **Log Analytics-werkruimte**, klikt u op **OK**.  
 
@@ -64,4 +64,4 @@ Nu dat u een werkruimte beschikbaar hebt, kunt u verzamelen van telemetrie bewak
 * Zie voor het inschakelen van verzamelen van gegevens uit Azure-resources met Azure Diagnostics of Azure storage [Azure verzamelen van Logboeken en metrische gegevens voor gebruik in Log Analytics](../platform/collect-azure-metrics-logs.md).  
 * [System Center Operations Manager als een gegevensbron toevoegen](../platform/om-agents.md) voor het verzamelen van gegevens van agents die rapporteren van uw Operations Manager-beheergroep en sla deze op in uw Log Analytics-werkruimte. 
 * Verbinding maken met [Configuration Manager](../platform/collect-sccm.md) voor het importeren van computers die lid van verzamelingen in de hiërarchie zijn.  
-* Controleer de [bewakingsoplossingen](../insights/solutions.md) beschikbaar en hoe u kunt toevoegen of verwijderen van een oplossing uit uw werkruimte.
+* Bekijk de beschik bare [bewakings oplossingen](../insights/solutions.md) en hoe u een oplossing kunt toevoegen aan of verwijderen uit uw werk ruimte.

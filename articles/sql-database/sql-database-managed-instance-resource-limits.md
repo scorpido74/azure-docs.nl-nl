@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
-ms.date: 09/16/2019
-ms.openlocfilehash: 5eaade975adac86b6842d1d8f9f9b8f522d15bca
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.date: 10/02/2019
+ms.openlocfilehash: a360d836f1ef09b0bb87e2af39aeab0460034cd4
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71816086"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71935622"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Overzicht Azure SQL Database limieten voor beheerde exemplaar bronnen
 
@@ -25,13 +25,9 @@ Dit artikel bevat een overzicht van de technische kenmerken en resource limieten
 > [!NOTE]
 > Zie voor verschillen in ondersteunde functies en T-SQL-instructies [functie verschillen](sql-database-features.md) en [ondersteuning voor t-SQL-instructie](sql-database-managed-instance-transact-sql-information.md). Zie de [vergelijking](sql-database-service-tiers-general-purpose-business-critical.md#service-tier-comparison)van de servicelaag voor algemene verschillen tussen service lagen in één data base en een beheerd exemplaar.
 
-## <a name="instance-level-resource-limits"></a>Resource limieten op exemplaar niveau
+## <a name="hardware-generation-characteristics"></a>Kenmerken voor het genereren van hardware
 
-Het beheerde exemplaar heeft kenmerken en resource limieten die afhankelijk zijn van de onderliggende infra structuur en architectuur. Limieten zijn afhankelijk van de hardware-generatie en de servicelaag.
-
-### <a name="hardware-generation-characteristics"></a>Kenmerken voor het genereren van hardware
-
-Azure SQL Database Managed instance kan worden geïmplementeerd op twee hardware gegenereerde items: Gen4 en GEN5. Hardware-generaties hebben verschillende kenmerken, zoals wordt beschreven in de volgende tabel:
+Het beheerde exemplaar heeft kenmerken en resource limieten die afhankelijk zijn van de onderliggende infra structuur en architectuur. Azure SQL Database Managed instance kan worden geïmplementeerd op twee hardware gegenereerde items: Gen4 en GEN5. Hardware-generaties hebben verschillende kenmerken, zoals wordt beschreven in de volgende tabel:
 
 |   | **Gen4** | **Gen5** |
 | --- | --- | --- |
@@ -39,28 +35,28 @@ Azure SQL Database Managed instance kan worden geïmplementeerd op twee hardware
 | Aantal vCores | 8, 16, 24 vCores | 4, 8, 16, 24, 32, 40, 64, 80 vCores |
 | Maxi maal geheugen (geheugen/kern percentage) | 7 GB per vCore<br/>Voeg meer vCores toe om meer geheugen te verkrijgen. | 5,1 GB per vCore<br/>Voeg meer vCores toe om meer geheugen te verkrijgen. |
 | Maxi maal in-Memory OLTP-geheugen | Limiet voor instanties: 1-1,5 GB per vCore| Limiet voor instanties: 0,8-1,65 GB per vCore |
-| Maximum aantal gereserveerde exemplaren |  Algemeen: 8 TB<br/>Bedrijfskritiek: CAPACITEIT | Algemeen: 8 TB<br/> Bedrijfskritiek 1 TB, 2 TB of 4 TB afhankelijk van het aantal kernen |
+| Maximum aantal gereserveerde exemplaren |  Algemeen: 8 TB<br/>Bedrijfskritiek: 1 TB | Algemeen: 8 TB<br/> Bedrijfskritiek 1 TB, 2 TB of 4 TB afhankelijk van het aantal kernen |
 
 > [!IMPORTANT]
 > - Gen4-hardware wordt gefaseerd uitgevoerd. Het is raadzaam om nieuwe beheerde exemplaren te implementeren op GEN5-hardware.
 > - Gen4-hardware is op dit moment nog steeds alleen beschikbaar in de volgende regio's: Europa-noord, Europa-west, VS-Oost, Zuid-Centraal VS, Noord-Centraal VS, VS-West 2, VS-midden, Canada-centraal, India-zuid, Zuidoost-Azië en Korea-centraal.
 
-#### <a name="in-memory-oltp-available-space"></a>Beschik bare ruimte in geheugen voor OLTP 
+### <a name="in-memory-oltp-available-space"></a>Beschik bare ruimte in geheugen voor OLTP 
 
-De hoeveelheid OLTP-ruimte in het geheugen is afhankelijk van het aantal vCores en de generatie van hardware. In de volgende tabel worden de limieten van het geheugen weer gegeven dat kan worden gebruikt voor OLTP-objecten in het geheugen.
+De hoeveelheid OLTP-ruimte in het geheugen in [bedrijfskritiek](sql-database-service-tier-business-critical.md) servicelaag is afhankelijk van het aantal vCores en de generatie van hardware. In de volgende tabel worden de limieten van het geheugen weer gegeven dat kan worden gebruikt voor OLTP-objecten in het geheugen.
 
-| In-Memory OLTP-ruimte per vCore    | **Gen5** | **Gen4** |
+| OLTP-ruimte in het geheugen  | **Gen5** | **Gen4** |
 | --- | --- | --- |
-| 4 | 3,14 GB | |   
-| 8 | 6,28 GB | 8 GB |
-| 16    | 15,77 GB | 20 GB |
-| 24    | 25,25 GB | 36 GB |
-| 32    | 37,94 GB | |
-| 40    | 52,23 GB | |
-| 64    | 99,9 GB   | |
-| 80    | 131,68 GB| |
+| 4 vCores  | 3,14 GB | |   
+| 8 vCores  | 6,28 GB | 8 GB |
+| 16 vCores | 15,77 GB | 20 GB |
+| 24 vCores | 25,25 GB | 36 GB |
+| 32 vCores | 37,94 GB | |
+| 40 vCores | 52,23 GB | |
+| 64 vCores | 99,9 GB    | |
+| 80 vCores | 131,68 GB| |
 
-### <a name="service-tier-characteristics"></a>Kenmerken van servicelaag
+## <a name="service-tier-characteristics"></a>Kenmerken van servicelaag
 
 Het beheerde exemplaar heeft twee service lagen: [Algemeen](sql-database-service-tier-general-purpose.md) en [bedrijfskritiek](sql-database-service-tier-business-critical.md). Deze lagen bieden [verschillende mogelijkheden](sql-database-service-tiers-general-purpose-business-critical.md), zoals wordt beschreven in de volgende tabel:
 
@@ -75,7 +71,7 @@ Het beheerde exemplaar heeft twee service lagen: [Algemeen](sql-database-service
 | Maximum aantal database bestanden per exemplaar | Maxi maal 280, tenzij de limiet voor de opslag ruimte van het exemplaar of het bereik voor de [toewijzing van Azure Premium-schijf opslag](sql-database-managed-instance-transact-sql-information.md#exceeding-storage-space-with-small-database-files) is bereikt. | 32.767 bestanden per data base, tenzij de maximale opslag grootte van het exemplaar is bereikt. |
 | Maximale grootte van het gegevens bestand | Beperkt tot de momenteel beschik bare opslag grootte van het exemplaar (Maxi maal 2 TB-8 TB) en de [opslag ruimte voor Azure Premium-schijven](sql-database-managed-instance-transact-sql-information.md#exceeding-storage-space-with-small-database-files). | Beperkt tot de momenteel beschik bare opslag grootte van het exemplaar (Maxi maal 1 TB-4 TB). |
 | Maximale grootte van logboek bestand | Beperkt tot 2 TB en momenteel beschik bare exemplaar opslag grootte. | Beperkt tot 2 TB en momenteel beschik bare exemplaar opslag grootte. |
-| Gegevens/logboek IOPS (benadering) | 500-7.500 per bestand<br/>\*[Bestands grootte verg Roten om meer IOPS te verkrijgen](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes)| 5,5 k-110 K (1375/vCore)<br/>Voeg meer vCores toe om betere IO-prestaties te krijgen. |
+| Gegevens/logboek IOPS (benadering) | Maxi maal 30-40 K IOPS per exemplaar *, 500-7500 per bestand<br/>\*[Bestands grootte verg Roten om meer IOPS te verkrijgen](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes)| 5,5 k-110 K (1375 IOPS/vCore)<br/>Voeg meer vCores toe om betere IO-prestaties te krijgen. |
 | Doorvoer limiet voor schrijf bewerkingen in logboek (per instantie) | 3 MB/s per vCore<br/>Maxi maal 22 MB/s | 4 MB/s per vCore<br/>Max 48 MB/s |
 | Gegevens doorvoer (bij benadering) | 100-250 MB/s per bestand<br/>\*[De bestands grootte verg Roten om betere IO-prestaties te krijgen](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes) | Niet beperkt. |
 | I/o-latentie van opslag (ongeveer) | 5-10 MS | 1-2 MS |
@@ -88,9 +84,23 @@ Het beheerde exemplaar heeft twee service lagen: [Algemeen](sql-database-service
 > - De grootte van de gegevens en het logboek bestand in de gebruikers-en systeem databases zijn opgenomen in de opslag grootte van het exemplaar, vergeleken met de maximale opslag grootte. Gebruik de <a href="https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-master-files-transact-sql">sys. master_files</a> -systeem weergave om de totale hoeveelheid gebruikte ruimte te bepalen op basis van data bases. Fouten logboeken worden niet persistent gemaakt en zijn niet opgenomen in de grootte. Back-ups worden niet opgenomen in de opslag grootte.
 > - De door Voer en IOPS zijn ook afhankelijk van het pagina formaat dat niet expliciet wordt beperkt door een beheerd exemplaar.
 > U kunt een andere Lees bare replica maken in een andere Azure-regio met behulp van groepen voor automatische failover.
+> - Het maximum aantal IOPS is afhankelijk van de bestands indeling en de distributie van de werk belasting. Als u bijvoorbeeld een versie van 7 x 1GB maakt met Maxi maal 5K IOPS per en 7 kleine bestanden (kleiner dan 128 GB) met 500 IOPS per exemplaar, kunt u 38500 IOPS per instantie (7x5000 + 7x500) verkrijgen als uw werk belasting alle bestanden kan gebruiken. Houd er rekening mee dat een bepaalde hoeveelheid IOPS ook wordt gebruikt voor automatische back-ups.
 
 > [!NOTE]
 > Meer informatie over de [resource limieten vindt u in dit artikel in beheerde exemplaar groepen](sql-database-instance-pools.md#instance-pools-resource-limitations).
+
+### <a name="file-io-characteristics-in-general-purpose-tier"></a>Bestands-IO-kenmerken in laag Algemeen
+
+In Algemeen servicelaag krijgt elk database bestand toegewezen IOPS en door Voer die afhankelijk zijn van de bestands grootte. Grotere bestanden krijgen meer IOPS en door voer. I/o-kenmerken van de database bestanden worden weer gegeven in de volgende tabel:
+
+| Bestandsgrootte           | 0-128 GiB | 128-256 GiB | 256-512 GiB | 0,5-1 TiB    | 1-2 TiB    | 2-4 TiB | 4-8 TiB |
+|---------------------|-------|-------|-------|-------|-------|-------|-------|
+| IOPS per bestand       | 500   | 1100 | 2300              | 5000              | 7500              | 7500              | 12.500   |
+| Door Voer per bestand | 100-MiB/s | 125 MiB/s | 150 MiB/s | 200-MiB/s | 250 MiB/s | 250 MiB/s | 480-MiB/s | 
+
+Als u een hoge IO-latentie krijgt bij een bepaald database bestand of als u ziet dat IOPS/door Voer de limiet bereikt, kunt u de prestaties verbeteren door [de bestands grootte te verg Roten](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Increase-data-file-size-to-improve-HammerDB-workload-performance/ba-p/823337).
+
+Er zijn ook limieten op exemplaar niveau, zoals de maximale schrijf doorvoer van het logboek 22 MB/s, zodat u mogelijk geen bestand kunt bereiken in het logboek bestand omdat u de doorvoer limiet voor instanties bereikt.
 
 ## <a name="supported-regions"></a>Ondersteunde regio’s
 

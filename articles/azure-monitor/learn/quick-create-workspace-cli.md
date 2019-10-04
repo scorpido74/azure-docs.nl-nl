@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/12/2019
 ms.author: magoedte
-ms.openlocfilehash: 4be33b809ee2e620a565c9907a5b77833a279567
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 7ee8302a026cf7584996bca481e79190586b77b3
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66130389"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71838838"
 ---
 # <a name="create-a-log-analytics-workspace-with-azure-cli-20"></a>Een Log Analytics-werkruimte maken met Azure CLI 2.0
 
-De Azure CLI 2.0 wordt gebruikt voor het maken en beheren van Azure-resources vanaf de opdrachtregel of in scripts. Deze quickstart laat zien hoe u Azure CLI 2.0 gebruiken voor het implementeren van een Log Analytics-werkruimte in Azure Monitor. Een Log Analytics-werkruimte is een unieke omgeving voor Azure Monitor-logboekgegevens. Elke werkruimte heeft een eigen gegevensopslagplaats en de configuratie en gegevensbronnen en oplossingen zijn geconfigureerd voor het opslaan van hun gegevens in een bepaalde werkruimte. Hebt u nodig een Log Analytics-werkruimte als u van plan bent voor het verzamelen van gegevens uit de volgende bronnen:
+De Azure CLI 2.0 wordt gebruikt voor het maken en beheren van Azure-resources vanaf de opdrachtregel of in scripts. In deze Quick start ziet u hoe u met Azure CLI 2,0 een Log Analytics-werk ruimte implementeert in Azure Monitor. Een Log Analytics-werk ruimte is een unieke omgeving voor Azure Monitor logboek gegevens. Elke werk ruimte heeft een eigen gegevens opslagplaats en-configuratie, en gegevens bronnen en-oplossingen zijn geconfigureerd om hun gegevens op te slaan in een bepaalde werk ruimte. U hebt een Log Analytics-werk ruimte nodig als u van plan bent om gegevens te verzamelen uit de volgende bronnen:
 
 * Azure-resources in uw abonnement  
 * On-premises computers bewaakt door System Center Operations Manager  
@@ -42,9 +42,9 @@ Als u geen Azure-abonnement hebt, maakt u [een gratis account](https://azure.mic
 Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor deze snelstart de Azure CLI versie 2.0.30 of hoger uitvoeren. Voer `az --version` uit om de versie te bekijken. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
 ## <a name="create-a-workspace"></a>Een werkruimte maken
-Maken van een werkruimte met [az group deployment maken](https://docs.microsoft.com/cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-create). Het volgende voorbeeld wordt een werkruimte met de naam *TestWorkspace* in de resourcegroep *Lab* in de *eastus* locatie met behulp van Resource Manager-sjabloon vanuit uw lokale opslag machine. De JSON-sjabloon is geconfigureerd om te vragen u alleen voor de naam van de werkruimte en een standaardwaarde opgegeven voor de andere parameters die waarschijnlijk moet worden gebruikt als een standaardconfiguratie in uw omgeving. Of u kunt de sjabloon opslaan in Azure storage-account voor gedeelde toegang in uw organisatie. Zie voor meer informatie over het werken met sjablonen [resources implementeren met Resource Manager-sjablonen en Azure CLI](../../azure-resource-manager/resource-group-template-deploy-cli.md)
+Maak een werk ruimte met [AZ Group Deployment Create](https://docs.microsoft.com/cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-create). In het volgende voor beeld wordt een werk ruimte op de locatie *ooster* gemaakt met behulp van een resource manager-sjabloon van uw lokale machine. De JSON-sjabloon is geconfigureerd om te vragen u alleen voor de naam van de werkruimte en een standaardwaarde opgegeven voor de andere parameters die waarschijnlijk moet worden gebruikt als een standaardconfiguratie in uw omgeving. Of u kunt de sjabloon opslaan in Azure storage-account voor gedeelde toegang in uw organisatie. Zie voor meer informatie over het werken met sjablonen [resources implementeren met Resource Manager-sjablonen en Azure CLI](../../azure-resource-manager/resource-group-template-deploy-cli.md)
 
-Zie voor meer informatie over regio's ondersteund [Log Analytics is beschikbaar in regio's](https://azure.microsoft.com/regions/services/) en zoek naar Azure Monitor uit de **zoeken voor een product** veld. 
+Zie [regio's log Analytics is beschikbaar in](https://azure.microsoft.com/regions/services/) en zoek naar Azure monitor in het veld **zoeken naar een product** voor meer informatie over regio's die worden ondersteund. 
 
 De volgende parameters instelt een standaardwaarde:
 
@@ -115,7 +115,7 @@ De volgende parameters instelt een standaardwaarde:
 
 2. De sjabloon bijwerken om aan uw eisen voldoen. Beoordeling [Microsoft.OperationalInsights/workspaces sjabloon](https://docs.microsoft.com/azure/templates/microsoft.operationalinsights/workspaces) verwijzing voor meer informatie over welke eigenschappen en waarden worden ondersteund. 
 3. Sla dit bestand als **deploylaworkspacetemplate.json** naar een lokale map.   
-4. U kunt deze sjabloon nu implementeren. Gebruik de volgende opdrachten uit de map met de sjabloon:
+4. U kunt deze sjabloon nu implementeren. Gebruik de volgende opdrachten in de map met de sjabloon. Wanneer u wordt gevraagd om de naam van een werk ruimte, geeft u een naam op die wereld wijd uniek is voor alle Azure-abonnementen.
 
     ```azurecli
     az group deployment create --resource-group <my-resource-group> --name <my-deployment-name> --template-file deploylaworkspacetemplate.json
@@ -131,4 +131,4 @@ Nu dat u een werkruimte beschikbaar hebt, kunt u verzamelen van telemetrie bewak
 * Zie voor het inschakelen van verzamelen van gegevens uit Azure-resources met Azure Diagnostics of Azure storage [Azure verzamelen van Logboeken en metrische gegevens voor gebruik in Log Analytics](../platform/collect-azure-metrics-logs.md).  
 * Voeg [System Center Operations Manager als een gegevensbron](../platform/om-agents.md) voor het verzamelen van gegevens van agents die rapporteren van uw Operations Manager-beheergroep en sla deze op in uw Log Analytics-werkruimte.  
 * Verbinding maken met [Configuration Manager](../platform/collect-sccm.md) voor het importeren van computers die lid van verzamelingen in de hiërarchie zijn.  
-* Controleer de [bewakingsoplossingen](../insights/solutions.md) beschikbaar en hoe u kunt toevoegen of verwijderen van een oplossing uit uw werkruimte.
+* Bekijk de beschik bare [bewakings oplossingen](../insights/solutions.md) en hoe u een oplossing kunt toevoegen aan of verwijderen uit uw werk ruimte.

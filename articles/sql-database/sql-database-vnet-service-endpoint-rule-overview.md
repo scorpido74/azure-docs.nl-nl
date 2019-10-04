@@ -11,12 +11,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto, genemi
 ms.date: 08/27/2019
-ms.openlocfilehash: 485c79bab90295cf9af9ef1dbbc209d46931a485
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: 5506f95d532f69286bf29ec8916485bd63ce94da
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70984940"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828812"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-database-servers"></a>Service-eind punten en-regels voor virtuele netwerken gebruiken voor database servers
 
@@ -138,7 +138,7 @@ Poly Base wordt vaak gebruikt voor het laden van gegevens in Azure SQL Data Ware
    > - Als u een v1-of Blob-opslag account voor algemeen gebruik hebt, moet u **eerst een upgrade uitvoeren naar v2** met behulp van deze [hand leiding](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade).
    > - Raadpleeg deze [hand leiding](https://docs.microsoft.com/azure/storage/data-lake-storage/known-issues)voor bekende problemen met Azure data Lake Storage Gen2.
     
-1. Navigeer naar **Access Control (IAM)** onder uw opslag account en klik op **roltoewijzing toevoegen**. Wijs de RBAC-rol **Storage BLOB data Inzender** toe aan uw Azure SQL Server die als host fungeert voor uw Azure SQL Data Warehouse die u hebt geregistreerd bij Azure Active DIRECOTORY (Aad), zoals in stap 1.
+1. Navigeer naar **Access Control (IAM)** onder uw opslag account en klik op **roltoewijzing toevoegen**. Wijs de RBAC-rol **Storage BLOB data Inzender** toe aan uw Azure-SQL Server die als host fungeert voor uw Azure SQL Data Warehouse die u met Azure Active Directory (Aad) hebt geregistreerd, zoals in stap 1.
 
    > [!NOTE] 
    > Alleen leden met de bevoegdheid eigenaar kunnen deze stap uitvoeren. Raadpleeg deze [hand leiding](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)voor verschillende ingebouwde rollen voor Azure-resources.

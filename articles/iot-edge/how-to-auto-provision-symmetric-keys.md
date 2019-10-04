@@ -1,25 +1,24 @@
 ---
-title: Apparaten autoinrichten met DPS met behulp van symmetrische sleutel Attestation-Azure IoT Edge | Microsoft Docs
+title: Apparaten automatisch inrichten met DPS met behulp van symmetrische sleutel Attestation-Azure IoT Edge | Microsoft Docs
 description: Symmetrische-sleutel attest gebruiken om het automatisch inrichten van apparaten te testen voor Azure IoT Edge met Device Provisioning Service
 author: kgremban
 manager: philmea
 ms.author: kgremban
 ms.reviewer: mrohera
-ms.date: 07/10/2019
+ms.date: 10/04/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.custom: seodec18
-ms.openlocfilehash: 5a7e7fa011c0287d5e97ad7a8cd2e3ba77f298dd
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 53b1abca25119f4168aaf12a66c4347c53ed0a62
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71299850"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828081"
 ---
 # <a name="create-and-provision-an-iot-edge-device-using-symmetric-key-attestation"></a>Een IoT Edge apparaat maken en inrichten met behulp van symmetrische sleutel attest
 
-Azure IoT Edge-apparaten kunnen autoprovisioned worden met behulp van de [Device Provisioning Service](../iot-dps/index.yml) net als bij apparaten die niet Microsoft edge-functionaliteit. Als u niet bekend met het proces van het autoprovisioning bent, raadpleegt u de [autoprovisioning concepten](../iot-dps/concepts-auto-provisioning.md) voordat u doorgaat.
+Azure IoT Edge-apparaten kunnen worden automatisch kan worden ingericht met behulp van de [Device Provisioning Service](../iot-dps/index.yml) net als bij apparaten die niet Microsoft edge-functionaliteit. Als u niet bekend met het proces van automatische inrichting bent, raadpleegt u de [concepten voor automatische inrichting](../iot-dps/concepts-auto-provisioning.md) voordat u doorgaat.
 
 In dit artikel wordt beschreven hoe u een individuele inschrijving voor een Device Provisioning Service kunt maken met behulp van symmetrische sleutel attest op een IoT Edge apparaat, met de volgende stappen:
 
@@ -27,7 +26,7 @@ In dit artikel wordt beschreven hoe u een individuele inschrijving voor een Devi
 * Maak een afzonderlijke inschrijving voor het apparaat.
 * Installeer de IoT Edge runtime en maak verbinding met de IoT Hub.
 
-Symmetrische-sleutel attest is een eenvoudige benadering voor het verifiëren van een apparaat met een Device Provisioning service-exemplaar. Deze Attestation-methode vertegenwoordigt een ' Hello World '-ervaring voor ontwikkel aars die nieuw zijn voor het inrichten van apparaten of waarvoor geen strikte beveiligings vereisten gelden. De Attestation van een apparaat met een [TPM](../iot-dps/concepts-tpm-attestation.md) is veiliger en moet worden gebruikt voor strengere beveiligings vereisten.
+Symmetrische-sleutel attest is een eenvoudige benadering voor het verifiëren van een apparaat met een Device Provisioning service-exemplaar. Deze Attestation-methode vertegenwoordigt een ' Hello World '-ervaring voor ontwikkel aars die nieuw zijn voor het inrichten van apparaten of waarvoor geen strikte beveiligings vereisten gelden. Attestation van apparaten met behulp van een [TPM](../iot-dps/concepts-tpm-attestation.md) of [X. 509-certificaten](../iot-dps/concepts-security.md#x509-certificates) is veiliger en moet worden gebruikt voor strengere beveiligings vereisten.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -191,9 +190,29 @@ Vervang de waarden van de `{scope_id}`tijdelijke `{registration_id}`aanduidingen
 
 ### <a name="windows-device"></a>Windows-apparaat
 
-Volg de instructies voor het installeren van de IoT Edge runtime op het apparaat waarvoor u een afgeleide-apparaatwachtwoord hebt gegenereerd. Zorg ervoor dat u de IoT Edge-runtime voor het inrichten van automatische, niet handmatig configureren.
+Installeer de IoT Edge runtime op het apparaat waarvoor u een afgeleide-apparaatwachtwoord hebt gegenereerd. U configureert de IoT Edge runtime voor automatisch, niet hand matig, provisioning.
 
-[IoT Edge installeren en automatisch inrichten in Windows](how-to-install-iot-edge-windows.md#option-2-install-and-automatically-provision)
+Zie [install the Azure IOT Edge runtime on Windows](how-to-install-iot-edge-windows.md)(Engelstalig) voor meer informatie over het installeren van IOT Edge op Windows, inclusief vereisten en instructies voor taken zoals het beheren van containers en het bijwerken van IOT Edge.
+
+1. Open een PowerShell-venster in de beheerdersmodus. Zorg ervoor dat u een AMD64-sessie van Power shell gebruikt bij het installeren van IoT Edge, niet in Power shell (x86).
+
+1. Met de opdracht **Deploy-IoTEdge** wordt gecontroleerd of de Windows-computer een ondersteunde versie heeft, wordt de functie containers ingeschakeld, waarna de Moby-runtime en de IOT Edge-runtime worden gedownload. De opdracht wordt standaard ingesteld op het gebruik van Windows-containers.
+
+   ```powershell
+   . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `
+   Deploy-IoTEdge
+   ```
+
+1. Op dit moment kunnen IoT-kern apparaten automatisch opnieuw worden opgestart. Op andere Windows 10-of Windows Server-apparaten wordt u mogelijk gevraagd om opnieuw op te starten. Als dit het geval is, start u het apparaat nu opnieuw op. Zodra het apparaat klaar is, voert u Power shell als beheerder opnieuw uit.
+
+1. De **initialisatie-IoTEdge-** opdracht configureert de IOT Edge runtime op de computer. De opdracht wordt standaard ingesteld op hand matig inrichten met Windows-containers, tenzij u de vlag `-Dps` gebruikt om automatische inrichting te gebruiken.
+
+   Vervang de waarden van de `{scope_id}`tijdelijke `{registration_id}`aanduidingen `{symmetric_key}` voor, en met de gegevens die u eerder hebt verzameld.
+
+   ```powershell
+   . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `
+   Initialize-IoTEdge -Dps -ScopeId {scope ID} -RegistrationId {registration ID} -SymmetricKey {symmetric key}
+   ```
 
 ## <a name="verify-successful-installation"></a>Controleer of geslaagde installatie
 

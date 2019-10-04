@@ -10,12 +10,12 @@ ms.devlang: java
 ms.topic: quickstart
 ms.custom: mvc, seo-java-august2019, seo-java-september2019
 ms.date: 06/21/2019
-ms.openlocfilehash: 9fb110eff1d498b2b20952048759c76a2dac39f2
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: f59a3409d508c63f232294d8d66ade5669815b3c
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70306491"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71843348"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-azure-iot-hub-with-java"></a>Quickstart: Een apparaat beheren dat is verbonden met een Azure IoT hub met Java
 
@@ -119,7 +119,7 @@ U gebruikt deze waarde verderop in de snelstartgids. De verbindingsreeks voor de
 
 ## <a name="listen-for-direct-method-calls"></a>Luisteren naar aanroepen van directe methoden
 
-De toepassing voor het gesimuleerde apparaat maakt verbinding met een apparaatspecifiek eindpunt op uw IoT-hub, verstuurt gesimuleerde telemetrie en luistert naar aanroepen van directe methoden vanuit de hub. In deze snelstartgids geeft de aanroep van de directe methode vanuit de hub het apparaat opdracht om het interval voor het verzenden van telemetrie te wijzigen. Het gesimuleerde apparaat stuurt een bevestiging terug naar de hub nadat de directe methode is uitgevoerd.
+De toepassing voor het gesimuleerde apparaat maakt verbinding met een apparaatspecifiek eindpunt op uw IoT-hub, verstuurt gesimuleerde telemetrie en luistert naar aanroepen van directe methoden vanuit de hub. In deze snelstartgids geeft de aanroep van de directe methode vanuit de hub het apparaat opdracht om het interval voor het verzenden van telemetrie te wijzigen. Het gesimuleerde apparaat verzendt een bevestiging terug naar uw hub nadat de directe methode is uitgevoerd.
 
 1. Navigeer in een lokaal terminalvenster naar de hoofdmap van het voorbeeldproject in Java. Navigeer vervolgens naar de map **iot-hub\Quickstarts\simulated-device-2**.
 
@@ -141,11 +141,11 @@ De toepassing voor het gesimuleerde apparaat maakt verbinding met een apparaatsp
 
     In de volgende schermafbeelding ziet u de uitvoer op het moment dat de toepassing voor het gesimuleerde apparaat telemetriegegevens naar uw IoT-hub verzendt:
 
-    ![Het gesimuleerde apparaat uitvoeren](./media/quickstart-control-device-java/SimulatedDevice-1.png)
+    ![Uitvoer van de telemetrie die door het apparaat wordt verzonden naar uw IoT-hub](./media/quickstart-control-device-java/iot-hub-application-send-telemetry-output.png)
 
 ## <a name="call-the-direct-method"></a>De directe methode aanroepen
 
-De back-endtoepassing maakt verbinding met een eindpunt aan de servicezijde van uw IoT-hub. De toepassing verstuurt via uw IoT-hub aanroepen naar directe methoden op een apparaat en luistert naar bevestigingen. Een back-endtoepassing van IoT Hub wordt meestal in de cloud uitgevoerd.
+De back-endtoepassing maakt verbinding met een eindpunt aan de servicezijde van uw IoT-hub. De toepassing maakt directe methode aanroepen naar een apparaat via uw IoT-hub en luistert naar bevestigingen. Een back-endtoepassing van IoT Hub wordt meestal in de cloud uitgevoerd.
 
 1. Navigeer in een ander lokaal terminalvenster naar de hoofdmap van het voorbeeldproject in Java. Navigeer vervolgens naar de map **iot-hub\Quickstarts\back-end-application**.
 
@@ -165,13 +165,13 @@ De back-endtoepassing maakt verbinding met een eindpunt aan de servicezijde van 
     java -jar target/back-end-application-1.0.0-with-deps.jar
     ```
 
-    In de volgende schermafbeelding ziet u de uitvoer op het moment dat de toepassing een directe methode op het apparaat aanroept en een bevestiging ontvangt:
+    In de volgende scherm afbeelding ziet u de uitvoer wanneer de toepassing een directe methode aanroept naar het apparaat en ontvangt u een bevestiging:
 
-    ![De back-endtoepassing uitvoeren](./media/quickstart-control-device-java/BackEndApplication.png)
+    ![Uitvoer als de toepassing een directe methode oproep via uw IoT-hub maakt](./media/quickstart-control-device-java/iot-hub-direct-method-call-output.png)
 
     Nadat u de back-endtoepassing hebt uitgevoerd, ziet u een bericht in het consolevenster dat het gesimuleerde apparaat wordt uitgevoerd, en dat het interval voor het verzenden van berichten is gewijzigd:
 
-    ![Wijziging in gesimuleerde client](./media/quickstart-control-device-java/SimulatedDevice-2.png)
+    ![Console bericht van apparaat toont de snelheid waarmee het wordt gewijzigd](./media/quickstart-control-device-java/iot-hub-sent-message-change-rate.png)
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 

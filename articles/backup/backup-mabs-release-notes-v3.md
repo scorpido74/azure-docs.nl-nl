@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 11/22/2018
 ms.author: dacurwin
 ms.asset: 0c4127f2-d936-48ef-b430-a9198e425d81
-ms.openlocfilehash: 5ca3305dd96ad9f14f028c88520368ae5a49016c
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: e9c7d5f79f2af77554122b607aeae470a1145954
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69019026"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827293"
 ---
 # <a name="release-notes-for-microsoft-azure-backup-server"></a>Release opmerkingen voor Microsoft Azure Backup Server
 In dit artikel vindt u de bekende problemen en tijdelijke oplossingen voor Microsoft Azure Backup Server v3 (MABS).
@@ -62,7 +62,7 @@ In dit artikel vindt u de bekende problemen en tijdelijke oplossingen voor Micro
 1.  Maak een [back-up](https://docs.microsoft.com/sql/relational-databases/backup-restore/create-a-full-database-backup-sql-server?view=sql-server-2017#SSMSProcedure) van uw SQL database en verwijder MABS v2 (de beveiligde gegevens behouden tijdens het verwijderen).
 2.  Voer een upgrade uit naar SQL 2017 (Enter prise) en verwijder rapportage als onderdeel van de upgrade.
 3. [Installeren](https://docs.microsoft.com/sql/reporting-services/install-windows/install-reporting-services?view=sql-server-2017#install-your-report-server) SQL Server Reporting Services (SSRS).
-4.  [Installeren](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms#download-ssms-182) SQL Server Management Studio (SSMS).
+4.  [Installeren](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) SQL Server Management Studio (SSMS).
 5.  Rapportage configureren met de para meters zoals beschreven in de [SSRS-configuratie met SQL 2017](https://docs.microsoft.com/azure/backup/backup-azure-microsoft-azure-backup#upgrade-mabs).
 6.  [Installeren](backup-azure-microsoft-azure-backup.md) MABS V3.
 7. [Herstellen](https://docs.microsoft.com/sql/relational-databases/backup-restore/restore-a-database-backup-using-ssms?view=sql-server-2017) SQL met behulp van SSMS en voer het hulp programma DPM-Sync uit, zoals [hier](https://docs.microsoft.com/previous-versions/system-center/data-protection-manager-2010/ff634215(v=technet.10))wordt beschreven.

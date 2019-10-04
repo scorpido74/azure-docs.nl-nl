@@ -11,20 +11,18 @@ ms.topic: quickstart
 ms.date: 09/05/2019
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-one
-ms.openlocfilehash: 28dac7fffc6bb08e02c9d1af80f4237a40ceed65
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: 0d86c7d627eeb15fb41b4371f0f1aab7a08e9655
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70393936"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827820"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-translate-text"></a>Quickstart: De Translator Text-API gebruiken om tekst te vertalen
 
 In deze Quick Start leert u hoe u een tekst teken reeks kunt vertalen van Engels naar Duits, Italiaans, Japans en Thais met behulp van de Translator Text REST API.
 
 Voor deze snelstart is een [Azure Cognitive Services-account](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) met een Translator Text-resource vereist. Als u geen account hebt, kunt u de [gratis proefversie](https://azure.microsoft.com/try/cognitive-services/) gebruiken om een abonnementssleutel op te halen.
-
-[!INCLUDE [Custom subdomains notice](../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 ::: zone pivot="programming-language-csharp"
 

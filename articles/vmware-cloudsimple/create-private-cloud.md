@@ -8,14 +8,14 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: aacdb57c312946a9ec2b17a8d41aa9150efc277d
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: a6e3d466321fcd8f32f46359c97f67400a8f86c6
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69640972"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828163"
 ---
-# <a name="create-a-cloudsimple-private-cloud"></a>Een CloudSimple-Privécloud maken
+# <a name="create-a-cloudsimple-private-cloud"></a>Een CloudSimple-privécloud maken
 
 Een Privécloud is een geïsoleerde VMware-stack die ondersteuning biedt voor ESXi-hosts, vCenter, vSAN en NSX. Persoonlijke Clouds worden beheerd via de CloudSimple-Portal. Ze hebben hun eigen vCenter-Server in een eigen beheer domein. De stack wordt uitgevoerd op toegewezen knoop punten en geïsoleerde bare metal hardware-knoop punten.
 
@@ -46,7 +46,7 @@ Toegang tot de [CloudSimple-Portal](access-cloudsimple-portal.md).
 
 5. Geef in de CloudSimple-Portal een naam op voor de Privécloud.
 6. Selecteer een **locatie** voor de privécloud.
-7. Selecteer het **knooppunt type**in overeenstemming met wat u hebt gekocht in Azure.  U kunt de [optie CS28 of CS36](cloudsimple-node.md#vmware-solution-by-cloudsimple-nodes-sku)kiezen. De laatste optie omvat de maximale reken-en geheugen capaciteit.
+7. Selecteer het **knooppunt type**in overeenstemming met wat u hebt gekocht in Azure.
 8. Geef het **aantal knoop punten**op.  Er zijn ten minste drie knoop punten vereist voor het maken van een Privécloud.
 
     ![Een persoonlijke Cloud maken-basis gegevens](media/create-private-cloud-basic-info.png)
@@ -65,4 +65,4 @@ Toegang tot de [CloudSimple-Portal](access-cloudsimple-portal.md).
 
 Het inrichtings proces voor de privécloud wordt gestart. Het kan tot twee uur duren voordat de Privécloud is ingericht.
 
-Zie [een privécloud](expand-private-cloud.md)uitvouwen voor instructies over het uitbreiden van een bestaande privécloud.
+Zie [een privécloud uitvouwen](expand-private-cloud.md)voor instructies over het uitbreiden van een bestaande privécloud.

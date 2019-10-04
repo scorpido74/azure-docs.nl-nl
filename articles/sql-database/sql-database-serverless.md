@@ -11,12 +11,12 @@ author: moslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
 ms.date: 09/06/2019
-ms.openlocfilehash: 04e3881b553f639bb2df948b6ad1154f86f1c9da
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: 86c03554f5faa1ebb40faa20b6a271f5310ccd4f
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71123091"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828221"
 ---
 # <a name="azure-sql-database-serverless-preview"></a>Azure SQL Database serverloze (preview-versie)
 
@@ -66,7 +66,7 @@ De volgende tabel bevat een overzicht van de verschillen tussen de serverloze Co
 | | **Serverloze compute** | **Ingerichte compute** |
 |:---|:---|:---|
 |**Database gebruiks patroon**| Onregelmatige, onvoorspelbaar gebruik met minder gemiddelde reken capaciteit gedurende een bepaalde periode. |  Meer reguliere gebruiks patronen met een hoger gemiddelde reken gebruik gedurende een bepaalde periode of meerdere data bases met elastische Pools.|
-| **Prestatie beheer-inspanning** |Onderliggende|Hoger|
+| **Prestatie beheer-inspanning** |Onderliggende|Omhoog|
 |**Berekening schalen**|Automatisch|Handmatig|
 |**Reactie tijd van berekeningen**|Lager dan inactieve Peri Oden|Onmiddellijk|
 |**Granulatie facturering**|Per seconde|Per uur|
@@ -171,7 +171,7 @@ Het maken van een nieuwe data base of het verplaatsen van een bestaande Data Bas
 
    |Parameter|Opties voor waarden|Standaardwaarde|
    |---|---|---|---|
-   |Min vCores|Een van de {0,5, 1, 2, 4} overschrijdt de maximale vCores|0,5 vCores|
+   |Minimum aantal vCores|Is afhankelijk van het maximum aantal geconfigureerde vCores-Zie [resource limieten](sql-database-vCore-resource-limits-single-databases.md#general-purpose-service-tier-for-serverless-compute).|0,5 vCores|
    |Vertraging van autopause|Maal 60 minuten (1 uur)<br>Gehalte 10080 minuten (7 dagen)<br>Stappen 60 minuten<br>Autopause uitschakelen:-1|60 minuten|
 
 > [!NOTE]

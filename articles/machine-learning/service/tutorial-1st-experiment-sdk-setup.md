@@ -9,13 +9,13 @@ ms.topic: tutorial
 author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
-ms.date: 08/28/2019
-ms.openlocfilehash: 9bc5b9688a8cd568b47fe2dad88d6d007ceca0c4
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.date: 09/25/2019
+ms.openlocfilehash: 3bbda22689bb330acc836173162a64b840f1bbd8
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71004059"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828040"
 ---
 # <a name="tutorial-get-started-creating-your-first-ml-experiment-with-the-python-sdk"></a>Zelfstudie: Aan de slag met het maken van uw eerste ML-experiment met de python-SDK
 
@@ -25,44 +25,65 @@ In deze zelfstudie hebt u:
 
 > [!div class="checklist"]
 > * Maak een [Azure machine learning-werkruimte](concept-workspace.md) voor gebruik in de volgende zelf studie.
+> * Kopieer de notebooks van de zelf studies naar uw map in de werk ruimte.
 > * Maak een cloud-gebaseerde Jupyter-notebook-VM met Azure Machine Learning python SDK geïnstalleerd en vooraf geconfigureerd.
 
 Als u nog geen Azure-abonnement hebt, maakt u een gratis account voordat u begint. Probeer vandaag nog de [gratis of betaalde versie van Azure machine learning](https://aka.ms/AMLFree) .
 
 ## <a name="create-a-workspace"></a>Een werkruimte maken
 
-Een Azure Machine Learning-werk ruimte is een Foundation-resource in de cloud die u gebruikt om machine learning modellen te experimenteren, te trainen en te implementeren. Uw Azure-abonnement en resource groep worden gebonden aan een eenvoudig verbruikte object in de SDK. Als u al een Azure Machine Learning-werk ruimte hebt, gaat u verder met de [volgende sectie](#azure). Anders maakt u er nu een.
+Een Azure Machine Learning-werk ruimte is een Foundation-resource in de cloud die u gebruikt om machine learning modellen te experimenteren, te trainen en te implementeren. Uw Azure-abonnement en resource groep worden gebonden aan een eenvoudig verbruikte object in de service. 
+
+U maakt een werk ruimte via de Azure Portal, een webconsole voor het beheren van uw Azure-resources. 
 
 [!INCLUDE [aml-create-portal](../../../includes/aml-create-in-portal.md)]
 
-## <a name="azure"></a>Een Cloud notebook server maken
+>[!IMPORTANT] 
+> Noteer uw **werk ruimte** en **abonnement**. U hebt deze nodig om ervoor te zorgen dat u op de juiste plaats uw experiment kunt maken. 
+
+
+## <a name="azure"></a>Een notitieblokmap-map klonen
 
 In dit voor beeld wordt de Cloud notebook server in uw werk ruimte gebruikt voor een installatie zonder een vooraf geconfigureerde ervaring. Gebruik [uw eigen omgeving](how-to-configure-environment.md#local) als u de controle wilt over uw omgeving, pakketten en afhankelijkheden.
 
-Vanuit uw werk ruimte maakt u een Cloud resource om aan de slag te gaan met Jupyter-notebooks. Deze resource is een virtuele machine in de cloud die vooraf is geconfigureerd met alles wat u nodig hebt om Azure Machine Learning uit te voeren.
+U voert de volgende proef versie uit en voert de stappen uit op de pagina voor het land van de werk ruimte (preview), een geconsolideerde interface met machine learning-hulpprogram ma's voor het uitvoeren van data Science-scenario's voor data technologie van alle vaardigheids niveaus.
 
-1. Open uw werk ruimte in de [Azure Portal](https://portal.azure.com/).  Als u niet zeker weet hoe u uw werk ruimte in de portal kunt vinden, raadpleegt u [uw werk ruimte zoeken](how-to-manage-workspace.md#view).
+1. Meld u aan bij de pagina voor het land van de [werk ruimte](https://ml.azure.com/).
 
-1. Selecteer op de pagina werk ruimte in de Azure Portal **laptop-vm's** aan de linkerkant.
+1. Selecteer uw abonnement en de werk ruimte die u hebt gemaakt.
 
-1. Selecteer **+ Nieuw** om een VM van een notebook te maken.
+1. Selecteer **notebooks en bestanden** aan de linkerkant.
 
-     ![Nieuwe VM selecteren](./media/tutorial-1st-experiment-sdk-setup/add-workstation.png)
+1. Open de map met voor **beelden** .
 
-1. Geef een naam op voor de virtuele machine. 
-   + De naam van de VM van uw notebook moet tussen 2 en 16 tekens lang zijn. Geldige tekens zijn letters, cijfers en het teken.  
-   + De naam moet ook uniek zijn binnen uw Azure-abonnement.
+1. Selecteer **'... '** aan de rechter kant van de map **zelf studies** en selecteer vervolgens **klonen**.
 
-1. Selecteer vervolgens **Maken**. Het kan even duren voordat u uw VM hebt ingesteld.
+    ![Map klonen](media/tutorial-1st-experiment-sdk-setup/clone-tutorials.png)
 
-1. Wacht totdat de status wordt gewijzigd in **wordt uitgevoerd**.
-   Nadat de virtuele machine is uitgevoerd, gebruikt u de sectie voor **laptop-vm's** om de Jupyter-webinterface te starten.
+1. Er wordt een map weer gegeven voor elke gebruiker die toegang heeft tot de werk ruimte.  Selecteer de map waarin u de map **zelf studie** wilt klonen.
 
-1. Selecteer **Jupyter** in de kolom **URI** voor uw VM.
+## <a name="a-nameopenselect-a-vm-to-run-the-notebook"></a><a name="open">Select een virtuele machine voor het uitvoeren van het notitie blok
 
-    ![De Jupyter-notebook server starten](./media/tutorial-1st-experiment-sdk-setup/start-server.png)
+1. Open de map onder **gebruikers bestanden** en open vervolgens de map gekloonde **zelf studies** .
 
-   Met de koppeling wordt uw notebook server gestart en wordt de Jupyter-notebook-webpagina geopend in een nieuw browser tabblad.  Deze koppeling werkt alleen voor de persoon die de virtuele machine heeft gemaakt. Elke gebruiker van de werk ruimte moet een eigen VM maken.
+    ![Map met zelf studies openen](media/tutorial-1st-experiment-sdk-setup/expand-user-folder.png)
+
+    > [!IMPORTANT]
+    > U kunt notitie blokken weer geven in de map **samples** , maar u kunt geen notitie blok van daar uitvoeren.  Als u een notitie blok wilt uitvoeren, moet u ervoor zorgen dat u de gekloonde versie van het notitie blok opent in de sectie **gebruikers bestanden** .
+    
+1. Selecteer de **zelf studie-1ste experiment-SDK-Train. ipynb-** bestand in de map **zelf studies** .
+
+1. Selecteer op de bovenste balk een werk blad-VM die u wilt gebruiken om het notitie blok uit te voeren. Deze Vm's zijn vooraf geconfigureerd met alles wat u nodig hebt om Azure Machine Learning uit te voeren. U kunt een virtuele machine selecteren die wordt gemaakt door een gebruiker van uw werk ruimte. 
+
+1. Als er geen Vm's worden gevonden, selecteert u **+ nieuwe virtuele machine** om de virtuele machine te maken.
+
+    ![Een virtuele machine maken](media/tutorial-1st-experiment-sdk-setup/no-vm.png)
+
+    1. Wanneer u een virtuele machine maakt, moet u een naam opgeven.  De naam moet tussen 2 en 16 tekens lang zijn. Geldige tekens zijn letters, cijfers en het-teken, en moeten ook uniek zijn binnen uw Azure-abonnement.
+
+    1. Selecteer vervolgens **Maken**. Het kan ongeveer 5 minuten duren om uw virtuele machine in te stellen.
+
+1. Zodra de virtuele machine beschikbaar is, wordt deze weer gegeven op de bovenste werk balk.  U kunt het notitie blok nu uitvoeren met de optie **alle uitvoeren** op de werk balk of door **SHIFT + ENTER** te gebruiken in de code cellen van het notitie blok.
 
 
 ## <a name="next-steps"></a>Volgende stappen

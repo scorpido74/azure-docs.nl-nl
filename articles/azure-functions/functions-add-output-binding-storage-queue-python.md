@@ -11,12 +11,12 @@ ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: python
 manager: jeconnoc
-ms.openlocfilehash: 9fdbf3466256c5e24de17541770fa2095fcf38a4
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 92ee9b0a8a0906bca31d7dcb1730c3464d0d6cbc
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70171091"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71839178"
 ---
 # <a name="add-an-azure-storage-queue-binding-to-your-python-function"></a>Een Azure Storage wachtrij binding toevoegen aan uw python-functie
 
@@ -24,26 +24,17 @@ Met Azure Functions kunt u Azure-Services en andere resources verbinden met func
 
 In dit artikel wordt beschreven hoe u de functie die u hebt gemaakt in het [vorige Quick](functions-create-first-function-python.md) start-artikel integreert met een Azure Storage wachtrij. De uitvoer binding die u aan deze functie toevoegt, schrijft gegevens van een HTTP-aanvraag naar een bericht in de wachtrij.
 
-Voor de meeste bindingen is een opgeslagen connection string vereist die functies gebruiken om toegang te krijgen tot de gebonden service. Als u deze verbinding eenvoudiger wilt maken, gebruikt u het opslag account dat u hebt gemaakt met uw functie-app. De verbinding met dit account is al opgeslagen in een app-instelling `AzureWebJobsStorage`met de naam.  
+Voor de meeste bindingen is een opgeslagen connection string vereist die functies gebruiken om toegang te krijgen tot de gebonden service. Als u deze verbinding eenvoudiger wilt maken, gebruikt u het opslag account dat u hebt gemaakt met uw functie-app. De verbinding met dit account is al opgeslagen in een app-instelling met de naam `AzureWebJobsStorage`.  
 
 ## <a name="prerequisites"></a>Vereisten
 
 Voordat u aan dit artikel begint, moet u de stappen in [deel 1 van de python-Snelstartgids](functions-create-first-function-python.md)volt ooien.
 
+[!INCLUDE [functions-cloud-shell-note](../../includes/functions-cloud-shell-note.md)]
+
 ## <a name="download-the-function-app-settings"></a>De instellingen van de functie-app downloaden
 
-In het vorige Quick Start-artikel hebt u een functie-app in azure gemaakt, samen met het vereiste opslag account. De connection string voor dit account wordt veilig opgeslagen in de app-instellingen in Azure. In dit artikel schrijft u berichten naar een opslag wachtrij in hetzelfde account. Als u verbinding wilt maken met uw opslag account wanneer u de functie lokaal uitvoert, moet u de app-instellingen downloaden naar het bestand local. settings. json. Voer de volgende Azure functions core tools opdracht uit om instellingen te downloaden naar local. settings. json `<APP_NAME>` , vervangen door de naam van uw functie-app uit het vorige artikel:
-
-```bash
-func azure functionapp fetch-app-settings <APP_NAME>
-```
-
-Mogelijk moet u zich aanmelden bij uw Azure-account.
-
-> [!IMPORTANT]  
-> Omdat deze geheimen bevat, wordt het bestand local. settings. json nooit gepubliceerd en moet het worden uitgesloten van broncode beheer.
-
-U hebt de waarde `AzureWebJobsStorage`nodig die het opslag account Connection String. U gebruikt deze verbinding om te controleren of de uitvoer binding werkt zoals verwacht.
+[!INCLUDE [functions-app-settings-download-local-cli](../../includes/functions-app-settings-download-local-cli.md)]
 
 ## <a name="enable-extension-bundles"></a>Uitbreidings bundels inschakelen
 
@@ -53,80 +44,13 @@ U kunt nu de opslag-uitvoer binding toevoegen aan uw project.
 
 ## <a name="add-an-output-binding"></a>Een uitvoerbinding toevoegen
 
-In functies moet voor elk type binding een `direction`, a `type`en uniek `name` worden gedefinieerd in het bestand function. json. Afhankelijk van het type binding zijn er mogelijk aanvullende eigenschappen vereist. De [uitvoer configuratie](functions-bindings-storage-queue.md#output---configuration) van de wachtrij beschrijft de velden die vereist zijn voor een Azure Storage binding van de wachtrij.
+In functies moet voor elk type binding een `direction`, `type` en een unieke `name` worden gedefinieerd in het bestand function. json. De manier waarop u deze kenmerken definieert, is afhankelijk van de taal van uw functie-app.
 
-Als u een binding wilt maken, voegt u een bindings configuratie object toe aan het bestand function. json. Bewerk het bestand function. json in de map http trigger om een object toe te voegen aan de matrix met de `bindings` volgende eigenschappen:
-
-| Eigenschap | Waarde | Description |
-| -------- | ----- | ----------- |
-| **`name`** | `msg` | De naam die de bindings parameter identificeert waarnaar in uw code wordt verwezen. |
-| **`type`** | `queue` | De binding is een Azure Storage wachtrij binding. |
-| **`direction`** | `out` | De binding is een uitvoer binding. |
-| **`queueName`** | `outqueue` | De naam van de wachtrij waarnaar de binding wordt geschreven. Wanneer het `queueName` niet bestaat, wordt deze door de binding gemaakt bij het eerste gebruik. |
-| **`connection`** | `AzureWebJobsStorage` | De naam van een app-instelling die de connection string voor het opslag account bevat. De `AzureWebJobsStorage` instelling bevat de Connection String voor het opslag account dat u hebt gemaakt met de functie-app. |
-
-Het bestand function. json moet er nu uitzien als in dit voor beeld:
-
-```json
-{
-  "scriptFile": "__init__.py",
-  "bindings": [
-    {
-      "authLevel": "function",
-      "type": "httpTrigger",
-      "direction": "in",
-      "name": "req",
-      "methods": [
-        "get",
-        "post"
-      ]
-    },
-    {
-      "type": "http",
-      "direction": "out",
-      "name": "$return"
-    },
-  {
-      "type": "queue",
-      "direction": "out",
-      "name": "msg",
-      "queueName": "outqueue",
-      "connection": "AzureWebJobsStorage"
-    }
-  ]
-}
-```
+[!INCLUDE [functions-add-output-binding-json](../../includes/functions-add-output-binding-json.md)]
 
 ## <a name="add-code-that-uses-the-output-binding"></a>Code toevoegen die gebruikmaakt van de uitvoerbinding
 
-Nadat de `name` is geconfigureerd, kunt u deze gebruiken om toegang te krijgen tot de binding als een methode kenmerk in de functie handtekening. In het volgende voor beeld `msg` is een instantie [`azure.functions.InputStream class`](/python/api/azure-functions/azure.functions.httprequest)van.
-
-```python
-import logging
-
-import azure.functions as func
-
-
-def main(req: func.HttpRequest, msg: func.Out[func.QueueMessage]) -> str:
-
-    name = req.params.get('name')
-    if not name:
-        try:
-            req_body = req.get_json()
-        except ValueError:
-            pass
-        else:
-            name = req_body.get('name')
-
-    if name:
-        msg.set(name)
-        return func.HttpResponse(f"Hello {name}!")
-    else:
-        return func.HttpResponse(
-            "Please pass a name on the query string or in the request body",
-            status_code=400
-        )
-```
+[!INCLUDE [functions-add-output-binding-python](../../includes/functions-add-output-binding-python.md)]
 
 Wanneer u een uitvoer binding gebruikt, hoeft u niet de Azure Storage SDK-code te gebruiken voor authenticatie, het ophalen van een wachtrij verwijzing of het schrijven van gegevens. De functies runtime en wachtrij-uitvoer binding voeren deze taken voor u uit.
 
@@ -149,40 +73,17 @@ Vervolgens gebruikt u de Azure CLI om de nieuwe wachtrij te bekijken en te contr
 
 ### <a name="set-the-storage-account-connection"></a>De verbinding voor het opslag account instellen
 
-Open het bestand local. settings. json en kopieer de waarde van `AzureWebJobsStorage`, het opslag account Connection String. Stel de `AZURE_STORAGE_CONNECTION_STRING` omgevings variabele in op de Connection String met behulp van deze bash-opdracht:
-
-```azurecli-interactive
-export AZURE_STORAGE_CONNECTION_STRING=<STORAGE_CONNECTION_STRING>
-```
-
-Wanneer u de Connection String instelt in de `AZURE_STORAGE_CONNECTION_STRING` omgevings variabele, hebt u toegang tot uw opslag account zonder elke keer verificatie te hoeven opgeven.
+[!INCLUDE [functions-storage-account-set-cli](../../includes/functions-storage-account-set-cli.md)]
 
 ### <a name="query-the-storage-queue"></a>Query uitvoeren op de opslag wachtrij
 
-U kunt de [`az storage queue list`](/cli/azure/storage/queue#az-storage-queue-list) opdracht gebruiken om de opslag wachtrijen in uw account weer te geven, zoals in het volgende voor beeld:
-
-```azurecli-interactive
-az storage queue list --output tsv
-```
-
-De uitvoer van deze opdracht bevat een wachtrij met `outqueue`de naam, die de wachtrij is die is gemaakt toen de functie werd uitgevoerd.
-
-Gebruik vervolgens de [`az storage message peek`](/cli/azure/storage/message#az-storage-message-peek) opdracht om de berichten in deze wachtrij weer te geven, zoals in dit voor beeld:
-
-```azurecli-interactive
-echo `echo $(az storage message peek --queue-name outqueue -o tsv --query '[].{Message:content}') | base64 --decode`
-```
-
-De geretourneerde teken reeks moet hetzelfde zijn als het bericht dat u hebt verzonden om de functie te testen.
-
-> [!NOTE]  
-> In het vorige voor beeld wordt de geretourneerde teken reeks van base64 gedecodeerd. De reden hiervoor is dat de bindingen van de wachtrij opslag worden geschreven naar en gelezen van Azure Storage als [Base64-teken reeksen](functions-bindings-storage-queue.md#encoding).
+[!INCLUDE [functions-query-storage-cli](../../includes/functions-query-storage-cli.md)]
 
 Nu is het tijd om de bijgewerkte functie-app opnieuw te publiceren naar Azure.
 
 [!INCLUDE [functions-publish-project](../../includes/functions-publish-project.md)]
 
-U kunt ook krul of een browser gebruiken om de geïmplementeerde functie te testen. Voeg, net als voorheen, de `&name=<yourname>` query reeks toe aan de URL, zoals in dit voor beeld:
+U kunt ook krul of een browser gebruiken om de geïmplementeerde functie te testen. Voeg de query reeks `&name=<yourname>` toe aan de URL, zoals in dit voor beeld:
 
 ```bash
 curl https://myfunctionapp.azurewebsites.net/api/httptrigger?code=cCr8sAxfBiow548FBDLS1....&name=<yourname>

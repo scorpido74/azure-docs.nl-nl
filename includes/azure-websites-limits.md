@@ -4,14 +4,14 @@ ms.service: billing
 ms.topic: include
 ms.date: 08/09/2019
 ms.author: jroth
-ms.openlocfilehash: 1080e3488483610af0f0c9afadaf000895021821
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 8cdfe82888cca471aa5aae6717a16f62000c4ad5
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "69657763"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71839195"
 ---
-| Resource | Free | Gedeeld | Basic | Standard | Premium (v2) | Isolated </th> |
+| Resource | Free | Gedeeld | Basic | Standard | Premium (v2) | Geïsoleerd </th> |
 | --- | --- | --- | --- | --- | --- | --- |
 | [Web-, mobiele of API-apps](https://azure.microsoft.com/services/app-service/) per [Azure app service abonnement](../articles/app-service/overview-hosting-plans.md)<sup>1</sup> |10 |100 |Onbeperkt<sup>2</sup> |Onbeperkt<sup>2</sup> |Onbeperkt<sup>2</sup> |Onbeperkt<sup>2</sup>|
 | [App Service-plan](../articles/app-service/overview-hosting-plans.md) |10 per regio |10 per resource groep |100 per resource groep |100 per resource groep |100 per resource groep |100 per resource groep|
@@ -42,7 +42,7 @@ ms.locfileid: "69657763"
 <sup>2</sup> Het werkelijke aantal apps dat u op deze computers kunt hosten, is afhankelijk van de activiteit van de apps, de grootte van de computer instanties en het bijbehorende resource gebruik.  
 <sup>3</sup> Toegewezen instanties kunnen een andere grootte hebben. Zie [app service prijzen](https://azure.microsoft.com/pricing/details/app-service/)voor meer informatie.  
 <sup>4</sup> Meer zijn toegestaan op aanvraag.  
-<sup>5</sup> De opslag limiet is de totale inhouds grootte voor alle apps in hetzelfde App Service-abonnement.  
+<sup>5</sup> De opslag limiet is de totale inhouds grootte voor alle apps in hetzelfde app service-plan. De totale inhouds grootte van alle apps in alle app service-abonnementen in één resource groep en regio mag niet groter zijn dan 500 GB.  
 <sup>6</sup> Deze resources worden beperkt door fysieke resources op de toegewezen instanties (de exemplaar grootte en het aantal exemplaren).  
 <sup>7</sup> Als u een app in de basis-laag schaalt naar twee exemplaren, hebt u 350 gelijktijdige verbindingen voor elk van de twee exemplaren. Voor de Standard-laag en hierboven zijn er geen theoretische limieten voor web sockets, maar andere factoren kunnen het aantal websockets beperken. Zo zijn Maxi maal toegestane gelijktijdige aanvragen (gedefinieerd door `maxConcurrentRequestsPerCpu`): 7.500 per kleine VM, 15.000 per gemiddelde VM (7.500 x 2 kern geheugens) en 75.000 per grote VM (18.750 x 4 kern geheugens).  
 <sup>8</sup> Aangepaste uitvoer bare bestanden en/of scripts op aanvraag, op basis van een schema of continu uitvoeren als een achtergrond taak binnen uw App Service-exemplaar. Altijd beschikbaar is vereist voor de continue uitvoering van WebJobs. Azure Scheduler Gratis of Standaard is vereist voor geplande WebJobs. Er is geen vooraf gedefinieerde limiet voor het aantal webtaken dat kan worden uitgevoerd in een App Service-exemplaar. Er zijn praktische limieten die afhankelijk zijn van wat de toepassings code probeert te doen.  

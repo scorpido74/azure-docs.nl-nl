@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/12/2019
 ms.author: magoedte
-ms.openlocfilehash: 6f27aeb65cb9077011e662c165ca26202546db26
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b81495f19ce596d689778e6ab75512d744ae4588
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66130429"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71836574"
 ---
 # <a name="create-a-log-analytics-workspace-with-azure-powershell"></a>Een Log Analytics-werkruimte maken met Azure PowerShell
 
-De Azure PowerShell-module wordt gebruikt voor het maken en beheren van Azure-resources vanaf de PowerShell-opdrachtregel of in scripts. Deze snelstartgids leest u hoe de Azure PowerShell-module gebruiken om te implementeren van een Log Analytics-werkruimte in Azure Monitor. Een Log Analytics-werkruimte is een unieke omgeving voor Azure Monitor-logboekgegevens. Elke werkruimte heeft een eigen gegevensopslagplaats en de configuratie en gegevensbronnen en oplossingen zijn geconfigureerd voor het opslaan van hun gegevens in een bepaalde werkruimte. Hebt u nodig een Log Analytics-werkruimte als u van plan bent voor het verzamelen van gegevens uit de volgende bronnen:
+De Azure PowerShell-module wordt gebruikt voor het maken en beheren van Azure-resources vanaf de PowerShell-opdrachtregel of in scripts. In deze Quick start ziet u hoe u de Azure PowerShell module kunt gebruiken om een Log Analytics-werk ruimte in Azure Monitor te implementeren. Een Log Analytics-werk ruimte is een unieke omgeving voor Azure Monitor logboek gegevens. Elke werk ruimte heeft een eigen gegevens opslagplaats en-configuratie, en gegevens bronnen en-oplossingen zijn geconfigureerd om hun gegevens op te slaan in een bepaalde werk ruimte. U hebt een Log Analytics-werk ruimte nodig als u van plan bent om gegevens te verzamelen uit de volgende bronnen:
 
 * Azure-resources in uw abonnement  
 * On-premises computers bewaakt door System Center Operations Manager  
@@ -41,12 +41,12 @@ Als u geen Azure-abonnement hebt, maakt u [een gratis account](https://azure.mic
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Als u ervoor kiest om te installeren en de PowerShell lokaal gebruikt, wordt in deze zelfstudie de Az van Azure PowerShell-module vereist. Voer `Get-Module -ListAvailable Az` uit om de versie te bekijken. Zie [De Azure PowerShell-module installeren](/powershell/azure/install-az-ps) als u een upgrade wilt uitvoeren. Als u PowerShell lokaal uitvoert, moet u ook `Connect-AzAccount` uitvoeren om verbinding te kunnen maken met Azure.
+Als u Power shell lokaal wilt installeren en gebruiken, is voor deze zelf studie de Azure PowerShell AZ-module vereist. Voer `Get-Module -ListAvailable Az` uit om de versie te bekijken. Zie [De Azure PowerShell-module installeren](/powershell/azure/install-az-ps) als u een upgrade wilt uitvoeren. Als u PowerShell lokaal uitvoert, moet u ook `Connect-AzAccount` uitvoeren om verbinding te kunnen maken met Azure.
 
 ## <a name="create-a-workspace"></a>Een werkruimte maken
-Maken van een werkruimte met [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment). Het volgende voorbeeld wordt een werkruimte met de naam *TestWorkspace* in de resourcegroep *Lab* in de *eastus* locatie met behulp van Resource Manager-sjabloon vanuit uw lokale opslag machine. De JSON-sjabloon is geconfigureerd om te vragen u alleen voor de naam van de werkruimte en een standaardwaarde opgegeven voor de andere parameters die waarschijnlijk moet worden gebruikt als een standaardconfiguratie in uw omgeving. 
+Een werk ruimte maken met [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment). In het volgende voor beeld wordt een werk ruimte op de locatie *ooster* gemaakt met behulp van een resource manager-sjabloon van uw lokale machine. De JSON-sjabloon is geconfigureerd om te vragen u alleen voor de naam van de werkruimte en een standaardwaarde opgegeven voor de andere parameters die waarschijnlijk moet worden gebruikt als een standaardconfiguratie in uw omgeving. 
 
-Zie voor meer informatie over regio's ondersteund [Log Analytics is beschikbaar in regio's](https://azure.microsoft.com/regions/services/) en zoek naar Azure Monitor uit de **zoeken voor een product** veld. 
+Zie [regio's log Analytics is beschikbaar in](https://azure.microsoft.com/regions/services/) en zoek naar Azure monitor in het veld **zoeken naar een product** voor meer informatie over regio's die worden ondersteund. 
 
 De volgende parameters instelt een standaardwaarde:
 
@@ -117,7 +117,7 @@ De volgende parameters instelt een standaardwaarde:
 
 2. De sjabloon bijwerken om aan uw eisen voldoen. Beoordeling [Microsoft.OperationalInsights/workspaces sjabloon](https://docs.microsoft.com/azure/templates/microsoft.operationalinsights/workspaces) verwijzing voor meer informatie over welke eigenschappen en waarden worden ondersteund. 
 3. Sla dit bestand als **deploylaworkspacetemplate.json** naar een lokale map.   
-4. U kunt deze sjabloon nu implementeren. Gebruik de volgende opdrachten uit de map met de sjabloon:
+4. U kunt deze sjabloon nu implementeren. Gebruik de volgende opdrachten in de map met de sjabloon. Wanneer u wordt gevraagd om de naam van een werk ruimte, geeft u een naam op die wereld wijd uniek is voor alle Azure-abonnementen.
 
     ```powershell
         New-AzResourceGroupDeployment -Name <deployment-name> -ResourceGroupName <resource-group-name> -TemplateFile deploylaworkspacetemplate.json
@@ -130,7 +130,7 @@ De implementatie kan enkele minuten duren. Als deze is voltooid, ziet u een beri
 ## <a name="next-steps"></a>Volgende stappen
 Nu dat u een werkruimte beschikbaar hebt, kunt u verzamelen van telemetrie bewaking configureren, uitvoeren van zoekopdrachten in Logboeken om die gegevens te analyseren en toevoegen van een oplossing om aanvullende gegevens en analytische informatie te bieden.  
 
-* Zie voor het inschakelen van verzamelen van gegevens uit Azure-resources met Azure Diagnostics of Azure storage [Azure verzamelen van Logboeken en metrische gegevens voor gebruik in Azure Monitor](../platform/collect-azure-metrics-logs.md).  
+* Zie [Azure service-logboeken en-metrische gegevens verzamelen voor gebruik in azure monitor](../platform/collect-azure-metrics-logs.md)voor informatie over het inschakelen van het verzamelen van data van Azure-resources met Azure Diagnostics of Azure Storage.  
 * Voeg [System Center Operations Manager als een gegevensbron](../platform/om-agents.md) voor het verzamelen van gegevens van agents die rapporteren van uw Operations Manager-beheergroep en sla deze op in uw Log Analytics-werkruimte.  
 * Verbinding maken met [Configuration Manager](../platform/collect-sccm.md) voor het importeren van computers die lid van verzamelingen in de hiërarchie zijn.  
-* Controleer de [bewakingsoplossingen](../insights/solutions.md) beschikbaar en hoe u kunt toevoegen of verwijderen van een oplossing uit uw werkruimte.
+* Bekijk de beschik bare [bewakings oplossingen](../insights/solutions.md) en hoe u een oplossing kunt toevoegen aan of verwijderen uit uw werk ruimte.

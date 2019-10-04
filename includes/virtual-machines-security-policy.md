@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 5c90d7b5eefdf8357c0f6f8efb619bd69af12b06
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 53c9dea83fc6d413d7e82194696ffedabcc8cf7b
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68843180"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71830072"
 ---
 Het is belang rijk om uw virtuele machine (VM) te beveiligen voor de toepassingen die u uitvoert. Het beveiligen van uw Vm's kan bestaan uit een of meer Azure-Services en-functies die beveiligde toegang bieden tot uw Vm's en beveiligde opslag van uw gegevens. In dit artikel vindt u informatie waarmee u uw virtuele machines en toepassingen kunt beveiligen.
 
@@ -25,7 +25,7 @@ De just-in-time-toegang van Security Center kan worden toegepast op uw VM-implem
 
 ## <a name="encryption"></a>Versleuteling
 
-Virtuele schijven in azure kunnen worden versleuteld voor verbeterde beveiliging en naleving van de [Windows-VM](../articles/virtual-machines/windows/encrypt-disks.md) en de [Linux-VM](../articles/virtual-machines/linux/encrypt-disks.md) . Virtuele schijven op Windows-Vm's worden op rest versleuteld met behulp van BitLocker. Virtuele schijven op Linux Vm's worden op rest versleuteld met behulp van DM-cryptografie. 
+Virtuele schijven in azure kunnen worden versleuteld voor verbeterde beveiliging en naleving van de [Windows-VM](../articles/virtual-machines/windows/encrypt-disks.md) en de [Linux-VM](../articles/virtual-machines/linux/disk-encryption-overview.md) . Virtuele schijven op Windows-Vm's worden op rest versleuteld met behulp van BitLocker. Virtuele schijven op Linux Vm's worden op rest versleuteld met behulp van DM-cryptografie. 
 
 Er worden geen kosten in rekening gebracht voor het versleutelen van virtuele schijven in Azure. Cryptografische sleutels worden opgeslagen in Azure Key Vault met behulp van software beveiliging, of u kunt uw sleutels in Hardware Security modules (Hsm's) die zijn gecertificeerd voor FIPS 140-2 level 2-standaarden importeren of genereren. Deze cryptografische sleutels worden gebruikt voor het versleutelen en ontsleutelen van virtuele schijven die zijn gekoppeld aan uw VM. U behoudt de controle over deze cryptografische sleutels en kunt hun gebruik controleren. Een Azure Active Directory Service-Principal biedt een beveiligd mechanisme voor het uitgeven van deze cryptografische sleutels als Vm's worden in-en uitgeschakeld.
 

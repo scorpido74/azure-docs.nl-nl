@@ -12,12 +12,12 @@ ms.workload: infrastructure
 ms.date: 07/31/2018
 ms.author: tarcher
 ms.custom: jenkins
-ms.openlocfilehash: a62a302748cb7e60b6a857c686d1833ad499cc7a
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 42e1ede7c762fef1f33436ea4c757b0c0531a8f2
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70081657"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828428"
 ---
 # <a name="tutorial-deploy-your-app-to-linux-virtual-machines-in-azure-with-using-jenkins-and-azure-devops-services"></a>Zelfstudie: Uw app implementeren voor Linux Virtual Machines in Azure met Jenkins en Azure DevOps Services
 
@@ -54,7 +54,7 @@ naar een [implementatiegroep](https://docs.microsoft.com/azure/devops/pipelines/
 ## <a name="get-the-sample-app"></a>De voorbeeld-app downloaden
 
 U hebt een app, die is opgeslagen in een Git-opslagplaats, nodig voor het implementeren.
-Voor deze zelfstudie raden we u aan gebruik te maken van [deze voorbeeld-app die beschikbaar is via GitHub](https://github.com/azooinmyluggage/fabrikam-node). Deze zelfstudie bevat een voorbeeldscript dat wordt gebruikt voor het installeren van Node.js en een toepassing. Als u met uw eigen opslagplaats wilt werken, moet u een vergelijkbaar voorbeeld configureren.
+Voor deze zelfstudie raden we u aan gebruik te maken van [deze voorbeeld-app die beschikbaar is via GitHub](https://github.com/azure-devops/fabrikam-node). Deze zelfstudie bevat een voorbeeldscript dat wordt gebruikt voor het installeren van Node.js en een toepassing. Als u met uw eigen opslagplaats wilt werken, moet u een vergelijkbaar voorbeeld configureren.
 
 Maak een fork van deze app en noteer de locatie (URL) voor gebruik in latere stappen van deze zelfstudie. Zie [Een fork van een opslagplaats maken](https://help.github.com/articles/fork-a-repo/) voor meer informatie.    
 

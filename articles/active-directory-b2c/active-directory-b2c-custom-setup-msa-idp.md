@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/08/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 854d45f8eb023436756d7a51c141f5eecab14db7
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.openlocfilehash: c04f578e73b81000fa605283a4afa4103655bcf4
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71315167"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71826985"
 ---
 # <a name="set-up-sign-in-with-a-microsoft-account-using-custom-policies-in-azure-active-directory-b2c"></a>Aanmelden instellen met een Microsoft-account aangepaste beleids regels gebruiken in Azure Active Directory B2C
 
@@ -164,6 +164,8 @@ Nu er een knop aanwezig is, moet u deze koppelen aan een actie. De actie in dit 
 1. Sla het bestand *TrustFrameworkExtensions. XML* op en upload het opnieuw voor verificatie.
 
 ## <a name="create-an-azure-ad-b2c-application"></a>Een Azure AD B2C-toepassing maken
+
+Communicatie met Azure AD B2C vindt plaats via een toepassing die u registreert in uw B2C-Tenant. In deze sectie vindt u optionele stappen die u kunt uitvoeren om een test toepassing te maken als u dit nog niet hebt gedaan.
 
 [!INCLUDE [active-directory-b2c-appreg-idp](../../includes/active-directory-b2c-appreg-idp.md)]
 

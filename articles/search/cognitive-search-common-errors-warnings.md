@@ -9,13 +9,12 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: abmotley
-ms.subservice: cognitive-search
-ms.openlocfilehash: 4e31f818e96ae9f13e3ce8892e575318831848f6
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: 18befbfb924129518ac32a7fdddaa9ee573840b0
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71329381"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71936492"
 ---
 # <a name="common-errors-and-warnings-of-the-ai-enrichment-pipeline-in-azure-search"></a>Veelvoorkomende fouten en waarschuwingen van de AI-verrijkings pijplijn in Azure Search
 
@@ -52,6 +51,64 @@ De Indexeer functie heeft het document uit de gegevens bron gelezen, maar er is 
 | De document sleutel is ongeldig | De document sleutel mag niet langer zijn dan 1024 tekens | Wijzig de document sleutel zodat deze voldoet aan de validatie vereisten. |
 | Kan de veld toewijzing niet Toep assen op een veld | Kan de toewijzings functie `'functionName'` niet Toep assen op het veld `'fieldName'`. Matrix kan niet null zijn. Parameter naam: bytes | Controleer of de [veld Toewijzingen](search-indexer-field-mappings.md) die zijn gedefinieerd op de Indexeer functie dubbel zijn en vergelijk met de gegevens van het opgegeven veld van het mislukte document. Het kan nodig zijn om de veld toewijzingen of de document gegevens te wijzigen. |
 | Kan de veld waarde niet lezen | Kan de waarde van kolom `'fieldName'` niet lezen bij index `'fieldIndex'`. Er is een fout op transport niveau opgetreden bij het ontvangen van resultaten van de server. providers TCP-provider, fout: 0: een bestaande verbinding is geforceerd gesloten door de externe host.) | Deze fouten worden meestal veroorzaakt door onverwachte verbindings problemen met de onderliggende service van de gegevens bron. Probeer het document later opnieuw uit te voeren via uw Indexeer functie. |
+
+### <a name="skill-input-languagecode-has-the-following-language-codes-xyz-at-least-one-of-which-is-invalid"></a>De vaardigheids invoer ' language code ' heeft de volgende taal codes X, Y, Z, ten minste één is ongeldig.
+Een of meer van de waarden die zijn door gegeven aan de optionele `languageCode` invoer van een stroomafwaartse vaardigheid, wordt niet ondersteund. Dit kan gebeuren als u de uitvoer van de [LanguageDetectionSkill](cognitive-search-skill-language-detection.md) doorgeeft aan de volgende vaardig heden en de uitvoer bestaat uit meer talen dan wordt ondersteund in deze downstream-vaardig heden.
+
+Als u weet dat uw gegevensset zich in één taal bevindt, moet u de [LanguageDetectionSkill](cognitive-search-skill-language-detection.md) en de kwalificatie-invoer van `languageCode` verwijderen en in plaats daarvan de para meter `defaultLanguageCode` gebruiken voor die vaardigheid, ervan uitgaande dat de taal voor die vaardigheid wordt ondersteund.
+
+Als u weet dat uw gegevensset meerdere talen bevat en u de [LanguageDetectionSkill](cognitive-search-skill-language-detection.md) en `languageCode`-invoer nodig hebt, kunt u overwegen een [ConditionalSkill](cognitive-search-skill-conditional.md) toe te voegen om de tekst te filteren op talen die niet worden ondersteund voordat de tekst naar de downstream-vaardigheid.  Hier volgt een voor beeld van wat er in het EntityRecognitionSkill eruit kan zien:
+
+```json
+{
+    "@odata.type": "#Microsoft.Skills.Util.ConditionalSkill",
+    "context": "/document",
+    "inputs": [
+        { "name": "condition", "source": "= $(/document/language) == 'de' || $(/document/language) == 'en' || $(/document/language) == 'es' || $(/document/language) == 'fr' || $(/document/language) == 'it'" },
+        { "name": "whenTrue", "source": "/document/content" },
+        { "name": "whenFalse", "source": "= null" }
+    ],
+    "outputs": [ { "name": "output", "targetName": "supportedByEntityRecognitionSkill" } ]
+}
+```
+
+Hier volgen enkele referenties voor de momenteel ondersteunde talen voor elk van de vaardig heden die dit fout bericht kunnen veroorzaken:
+* [Text Analytics ondersteunde talen](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages) (voor de [KeyPhraseExtractionSkill](cognitive-search-skill-keyphrases.md), [EntityRecognitionSkill](cognitive-search-skill-entity-recognition.md)en [SentimentSkill](cognitive-search-skill-sentiment.md))
+* Door [Translator ondersteunde talen](https://docs.microsoft.com/azure/cognitive-services/translator/language-support) (voor de [tekst TranslationSkill](cognitive-search-skill-text-translation.md))
+* [Tekst SplitSkill](cognitive-search-skill-textsplit.md) Ondersteunde talen: `da, de, en, es, fi, fr, it, ko, pt`
+
+### <a name="skill-did-not-execute-within-the-time-limit"></a>Vaardigheid is niet uitgevoerd binnen de tijds limiet
+Er zijn twee gevallen waarin u dit fout bericht kunt tegen komen, die elk anders moeten worden behandeld. Volg de onderstaande instructies, afhankelijk van de vaardigheid die deze fout heeft geretourneerd.
+
+#### <a name="built-in-cognitive-service-skills"></a>Ingebouwde cognitieve service vaardigheden
+Veel van de ingebouwde cognitieve vaardig heden, zoals taal detectie, entiteits herkenning of OCR, worden ondersteund door een API-eind punt van de cognitieve service. Soms zijn er tijdelijke problemen met deze eind punten en treedt er een time-out op voor de aanvraag. Voor tijdelijke problemen is er geen oplossing, behalve dat u wilt wachten en probeer het opnieuw. Als oplossing kunt u overwegen om de Indexeer functie in te stellen [op een schema](search-howto-schedule-indexers.md). De geplande indexering wordt opgehaald wanneer deze is gestopt. Als tijdelijke problemen zijn opgelost, moeten indexerings-en cognitieve vaardigheids verwerking de volgende geplande uitvoering kunnen voortzetten.
+
+#### <a name="custom-skills"></a>Aangepaste vaardigheden
+Als er een time-outfout optreedt bij een aangepaste vaardigheid die u hebt gemaakt, kunt u het volgende proberen. Controleer eerst uw aangepaste vaardigheid en zorg ervoor dat deze niet vastloopt in een oneindige lus en dat het resultaat consistent wordt geretourneerd. Nadat u hebt bevestigd dat het het geval is, bepaalt u wat de uitvoerings tijd van uw vaardigheid is. Als u de `timeout`-waarde niet expliciet hebt ingesteld voor uw aangepaste vaardigheids definitie, is de standaard `timeout` 30 seconden. Als 30 seconden niet lang genoeg is om uw vaardigheid uit te voeren, kunt u een hogere waarde voor @no__t 0 opgeven voor uw aangepaste vaardigheids definitie. Hier volgt een voor beeld van een aangepaste vaardigheids definitie waarbij de time-out is ingesteld op 90 seconden:
+
+```json
+  {
+        "@odata.type": "#Microsoft.Skills.Custom.WebApiSkill",
+        "uri": "<your custom skill uri>",
+        "batchSize": 1,
+        "timeout": "PT90S",
+        "context": "/document",
+        "inputs": [
+          {
+            "name": "input",
+            "source": "/document/content"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "output",
+            "targetName": "output"
+          }
+        ]
+      }
+```
+
+De maximum waarde die u voor de para meter `timeout` kunt instellen, is 230 seconden.  Als uw aangepaste vaardigheid niet consistent kan worden uitgevoerd binnen 230 seconden, kunt u overwegen om de `batchSize` van uw aangepaste vaardigheid te verminderen, zodat deze minder documenten heeft voor verwerking binnen één uitvoering.  Als u uw @no__t al hebt ingesteld op 1, moet u de vaardigheid opnieuw schrijven zodat deze binnen 230 seconden kan worden uitgevoerd of op andere wijze worden gesplitst in meerdere aangepaste vaardig heden, zodat de uitvoerings tijd voor een enkele aangepaste vaardigheid Maxi maal 230 seconden is. Raadpleeg de [documentatie voor aangepaste vaardig heden](cognitive-search-custom-skill-web-api.md) voor meer informatie.
 
 ##  <a name="warnings"></a>Waarschuwingen
 Waarschuwingen worden niet gestopt met indexeren, maar ze doen wel voor waarden die kunnen leiden tot onverwachte resultaten. Of u actie onderneemt of niet afhankelijk is van de gegevens en uw scenario.

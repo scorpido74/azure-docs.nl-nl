@@ -5,15 +5,15 @@ services: digital-twins
 author: kingdomofends
 ms.service: digital-twins
 ms.topic: include
-ms.date: 08/12/2019
+ms.date: 09/30/2019
 ms.author: v-adgera
 ms.custom: include file
-ms.openlocfilehash: 10161d6b1d944857aa45d5152c77e107a208d98d
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
-ms.translationtype: MT
+ms.openlocfilehash: f9b9341be32e5707ef646bd6d08d9d7ec92a8575
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "69012101"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827676"
 ---
 In de volgende tabel worden de functies beschreven die beschikbaar zijn in azure Digital Apparaatdubbels:
 
@@ -21,7 +21,7 @@ In de volgende tabel worden de functies beschreven die beschikbaar zijn in azure
 | --- | --- | --- |
 | Ruimte beheerder | *Maak*, *Lees*-, *bijwerk*-en *Verwijder* machtigingen voor de opgegeven ruimte en alle onderliggende knoop punten. Algemene machtiging. | 98e44ad7-28d4-4007-853b-b9968ad132d1 |
 | Gebruikerbeheerder| *Maak*, *Lees*-, *bijwerk*-en *Verwijder* machtigingen voor gebruikers en gebruikers objecten. *Lees* machtiging voor spaties. | dfaac54c-f583-4dd2-b45d-8d4bbc0aa1ac |
-| Apparaatbeheerder | *Maak*, *Lees*-, *bijwerk*-en *Verwijder* machtigingen voor apparaten en apparaat-gerelateerde objecten. *Lees* machtiging voor spaties. | 3cdfde07-bc16-40d9-bed3-66d49a8f52ae |
+| Apparaat-beheerder | *Maak*, *Lees*-, *bijwerk*-en *Verwijder* machtigingen voor apparaten en apparaat-gerelateerde objecten. *Lees* machtiging voor spaties. | 3cdfde07-bc16-40d9-bed3-66d49a8f52ae |
 | Sleutel beheerder | Machtigingen voor toegangs sleutels *maken*, *lezen*, *bijwerken*en *verwijderen* . *Lees* machtiging voor spaties. | 5a0b1afc-e118-4068-969f-b50efb8e5da6 |
 | Token beheerder |  *Lees* -en *Update* machtiging voor toegangs sleutels. *Lees* machtiging voor spaties. | 38a3bb21-5424-43b4-b0bf-78ee228840c3 |
 | Gebruiker |  *Lees* machtiging voor Spaces, Sens oren en gebruikers, die hun bijbehorende gerelateerde objecten bevatten. | b1ffdb77-c635-4e7e-ad25-948237d85b30 |

@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: e5cea36760746eaa63451c9e9955368c71ba4472
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.openlocfilehash: 1bd84a40236b54d799efcf04eae707aea9c6c945
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/02/2019
-ms.locfileid: "71816132"
+ms.locfileid: "71828931"
 ---
 # <a name="quickstart---configure-a-private-cloud-environment"></a>Snelstartgids-een Privécloud configureren
 
@@ -42,7 +42,7 @@ Persoonlijke Clouds worden beheerd via de CloudSimple-Portal. Ze hebben hun eige
 
 5. Geef in de CloudSimple-Portal een naam op voor de Privécloud.
 6. Selecteer de **locatie** van de privécloud.
-7. Selecteer het **knooppunt type**in overeenstemming met wat u hebt gekocht in Azure. U kunt de [optie CS28 of CS36](cloudsimple-node.md#vmware-solution-by-cloudsimple-nodes-sku)kiezen. De laatste optie omvat de maximale reken-en geheugen capaciteit.
+7. Selecteer het **knooppunt type**in overeenstemming met wat u hebt gekocht in Azure.
 8. Geef het **aantal knoop punten**op.  Er zijn ten minste drie knoop punten vereist voor het maken van een Privécloud.
 
     ![Een persoonlijke Cloud maken-basis gegevens](media/create-private-cloud-basic-info.png)

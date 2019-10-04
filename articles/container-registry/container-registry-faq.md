@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 07/02/2019
 ms.author: sajaya
-ms.openlocfilehash: 293f2a704fecb04bc6b65e49743ea80905f2394f
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: b365c914db0ce43da5dac4c5b889c854c0ea0639
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70142676"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827412"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>Veelgestelde vragen over Azure Container Registry
 
@@ -260,6 +260,7 @@ Afbeeldings quarantaine is momenteel een preview-functie van ACR. U kunt de quar
 - [Nieuwe gebruikers machtigingen worden mogelijk niet direct na het bijwerken van kracht](#new-user-permissions-may-not-be-effective-immediately-after-updating)
 - [Verificatie gegevens worden niet in de juiste indeling gegeven voor directe REST API-aanroepen](#authentication-information-is-not-given-in-the-correct-format-on-direct-rest-api-calls)
 - [Waarom worden niet al mijn opslag plaatsen of Tags Azure Portal vermeld?](#why-does-the-azure-portal-not-list-all-my-repositories-or-tags)
+- [Waarom kan de Azure Portal geen opslag plaatsen of Tags ophalen?](#why-does-the-azure-portal-fail-to-fetch-repositories-or-tags)
 - [Hoe kan ik u http-traceringen verzamelen in Windows?](#how-do-i-collect-http-traces-on-windows)
 
 ### <a name="check-health-with-az-acr-check-health"></a>Status controleren met`az acr check-health`
@@ -409,6 +410,17 @@ curl $redirect_url
 ### <a name="why-does-the-azure-portal-not-list-all-my-repositories-or-tags"></a>Waarom worden niet al mijn opslag plaatsen of Tags Azure Portal vermeld? 
 
 Als u de micro soft Edge/IE-browser gebruikt, kunt u Maxi maal 100 opslag plaatsen of tags bekijken. Als uw REGI ster meer dan 100 opslag plaatsen of tags bevat, raden we u aan de browser van Firefox of Chrome te gebruiken om deze allemaal weer te geven.
+
+### <a name="why-does-the-azure-portal-fail-to-fetch-repositories-or-tags"></a>Waarom kan de Azure Portal geen opslag plaatsen of Tags ophalen?
+
+De browser kan de aanvraag voor het ophalen van opslag plaatsen of tags mogelijk niet verzenden naar de server. Er kunnen verschillende redenen zijn:
+
+* Geen netwerk verbinding
+* Firewall
+* Ad-blok keringen
+* DNS-fouten
+
+Neem contact op met uw netwerk beheerder of Controleer de netwerk configuratie en-verbinding. Daarnaast kunt u ook een incognito of een persoonlijke sessie in uw browser proberen om eventuele verouderde browser cache of cookies te voor komen.
 
 ### <a name="how-do-i-collect-http-traces-on-windows"></a>Hoe kan ik u http-traceringen verzamelen in Windows?
 

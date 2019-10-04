@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 58af69b401400c7b2f663a91de8bf38bc9a296a3
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 729b832c068dcd401fa6e9d2f4af9193d3859a83
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69877705"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71845551"
 ---
 # <a name="cloudsimple-nodes-overview"></a>Overzicht van CloudSimple-knoop punten
 
@@ -36,13 +36,14 @@ Aangeschafte knoop punten bieden een betalen naar gebruik-capaciteit. Met het aa
 
 De volgende typen knoop punten zijn beschikbaar voor aankoop of reserve ring.
 
-| SKU | CS28-knoop punt | CS36-knoop punt |
-|-----|-------------|-------------|
-| CPU | 2x 2,2 GHz, 28 kernen (56 HT) | 2x 2,3 GHz, 36 kern geheugens (72 HT) |
-| RAM | 256 GB | 512 GB |
-| Cache schijf |  1,6-TB NVMe | 3,2-TB NVMe |
-| Capaciteits schijf | 5,625 TB onbewerkt | 11,25 TB onbewerkt |
-| Opslag type | Alle Flash | Alle Flash |
+| SKU           | CS28-knoop punt                 | CS36-knoop punt                 | CS36m-knoop punt                |
+|---------------|-----------------------------|-----------------------------|-----------------------------|
+| Regio        | US - oost, US - west            | US - oost, US - west            | Europa -west                 |
+| CPU           | 2x 2,2 GHz, 28 kernen (56 HT) | 2x 2,3 GHz, 36 kern geheugens (72 HT) | 2x 2,3 GHz, 36 kern geheugens (72 HT) |
+| RAM           | 256 GB                      | 512 GB                      | 576 GB                      |
+| Cacheschijf    | 1,6-TB NVMe                 | 3,2-TB NVMe                 | 3,2-TB NVMe                 |
+| Capaciteits schijf | 5,625 TB onbewerkt                | 11,25 TB onbewerkt                | 15,36 TB onbewerkt                |
+| Opslagtype  | Alle Flash                   | Alle Flash                   | Alle Flash                   |
 
 ## <a name="limits"></a>Limieten
 

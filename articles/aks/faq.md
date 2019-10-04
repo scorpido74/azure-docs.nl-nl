@@ -6,14 +6,14 @@ author: mlearned
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 07/08/2019
+ms.date: 10/02/2019
 ms.author: mlearned
-ms.openlocfilehash: 54a95186a297cf3604858341fb8f5aba3702bf5a
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 4d736556147797bcd007bdab1b5328deeadea712
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70241782"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827355"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Veelgestelde vragen over Azure Kubernetes service (AKS)
 
@@ -49,7 +49,7 @@ Azure past automatisch beveiligings patches toe op de Linux-knoop punten in uw c
 
 - Hand matig, via de Azure Portal of de Azure CLI.
 - Door uw AKS-cluster bij te werken. Met het cluster worden automatisch de [Cordon-en afvoer knooppunten][cordon-drain] bijgewerkt en vervolgens een nieuw knoop punt online met de meest recente Ubuntu-installatie kopie en een nieuwe patch versie of een secundaire Kubernetes-versie. Zie [een AKS-cluster upgraden][aks-upgrade]voor meer informatie.
-- Met behulp van [Kured](https://github.com/weaveworks/kured), een open source-daemon voor opnieuw opstarten voor Kubernetes. Kured wordt uitgevoerd als een [daemonset](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/) en bewaakt elk knoop punt voor de aanwezigheid van een bestand dat aangeeft dat de computer opnieuw moet worden opgestart. In het hele cluster worden het besturings systeem opnieuw opgestart en wordt het proces voor het uitvoeren van een cluster upgrade uitgevoerd door hetzelfde [Cordon en een afwaterproces][cordon-drain] .
+- Met behulp van [Kured](https://github.com/weaveworks/kured), een open source-daemon voor opnieuw opstarten voor Kubernetes. Kured wordt uitgevoerd als [](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/) een daemonset en bewaakt elk knoop punt voor de aanwezigheid van een bestand dat aangeeft dat de computer opnieuw moet worden opgestart. In het hele cluster worden het besturings systeem opnieuw opgestart en wordt het proces voor het uitvoeren van een cluster upgrade uitgevoerd door hetzelfde [Cordon en][cordon-drain] een afwaterproces.
 
 Zie [beveiliging en kernel-updates Toep assen op knoop punten in AKS][node-updates-kured]voor meer informatie over het gebruik van kured.
 
@@ -59,7 +59,9 @@ Voor Windows Server-knoop punten (momenteel in de preview-versie van AKS) wordt 
 
 ## <a name="why-are-two-resource-groups-created-with-aks"></a>Waarom zijn er twee resource groepen gemaakt met AKS?
 
-Elke AKS-implementatie omvat twee resource groepen:
+AKS bouwt voort op een aantal Azure-infrastructuur resources, zoals schaal sets voor virtuele machines, virtuele netwerken en beheerde schijven. Op die manier kunt u veel van de kern mogelijkheden van het Azure-platform gebruiken binnen de beheerde Kubernetes-omgeving van AKS. De meeste typen van virtuele machines van Azure kunnen bijvoorbeeld rechtstreeks worden gebruikt met AKS en Azure Reservations kunnen worden gebruikt voor het automatisch ontvangen van kortingen op deze resources.
+
+Om deze architectuur in te scha kelen, omvat elke AKS-implementatie twee resource groepen:
 
 1. U maakt de eerste resource groep. Deze groep bevat alleen de Kubernetes-service resource. De resource provider AKS maakt automatisch de tweede resource groep tijdens de implementatie. Een voor beeld van de tweede resource groep is *MC_myResourceGroup_myAKSCluster_eastus*. Zie de volgende sectie voor meer informatie over het opgeven van de naam van deze tweede resource groep.
 1. De tweede resource groep, ook wel de *resource groep knoop punt*genoemd, bevat alle infrastructuur resources die zijn gekoppeld aan het cluster. Deze resources omvatten de Kubernetes-knoop punt-Vm's, virtuele netwerken en opslag. De resource groep van het knoop punt heeft standaard een naam zoals *MC_myResourceGroup_myAKSCluster_eastus*. AKS verwijdert automatisch de knooppunt resource wanneer het cluster wordt verwijderd. dit moet daarom alleen worden gebruikt voor resources die de levens cyclus van het cluster delen.
@@ -159,7 +161,7 @@ Dit kan, maar AKS wordt dit niet aanbevolen. Upgrades moeten in het ideale geval
 
 Nee, verwijder alle knoop punten met de status mislukt of verwijder deze uit het cluster voordat u een upgrade uitvoert.
 
-## <a name="i-ran-a-cluster-delete-but-see-the-error-errno-11001-getaddrinfo-failed"></a>Ik heb een cluster verwijderd, maar zie de fout`[Errno 11001] getaddrinfo failed` 
+## <a name="i-ran-a-cluster-delete-but-see-the-error-errno-11001-getaddrinfo-failed"></a>Ik heb een cluster verwijderd, maar zie de fout `[Errno 11001] getaddrinfo failed` 
 
 Dit wordt meestal veroorzaakt door gebruikers die een of meer netwerk beveiligings groepen (Nsg's) nog in gebruik hebben en aan het cluster zijn gekoppeld.  Verwijder ze en probeer opnieuw te verwijderen.
 
@@ -173,7 +175,7 @@ Controleer of uw Service-Principal niet is verlopen.  Ga naar: [AKS-Service-Prin
 
 ## <a name="can-i-use-the-virtual-machine-scale-set-apis-to-scale-manually"></a>Kan ik de Api's voor de schaalset van de virtuele machine gebruiken om hand matig te schalen?
 
-Nee, schaal bewerkingen met behulp van de virtuele-machine Scale set-Api's worden niet ondersteund. Gebruik de AKS-Api's`az aks scale`().
+Nee, schaal bewerkingen met behulp van de virtuele-machine Scale set-Api's worden niet ondersteund. Gebruik de AKS-Api's (`az aks scale`).
 
 ## <a name="can-i-use-virtual-machine-scale-sets-to-manually-scale-to-0-nodes"></a>Kan ik de schaal sets van virtuele machines gebruiken om hand matig te schalen naar 0 knoop punten?
 

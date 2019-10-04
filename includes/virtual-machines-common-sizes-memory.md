@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/08/2019
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: 18a19f5f853206b06c617307c761a99033c9f92a
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: 4d0e7bc7f491e328f5e9fce291d415452c49c745
+ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71266922"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71830069"
 ---
 Voor geheugen geoptimaliseerde VM-grootten bieden een hoge geheugen-naar-CPU-verhouding die ideaal is voor relationele database servers, gemiddeld tot grote caches en analyse in het geheugen. In dit artikel vindt u informatie over het aantal Vcpu's, gegevens schijven en Nic's, evenals opslag doorvoer en netwerk bandbreedte voor elke grootte in deze groep.
 
@@ -200,6 +200,8 @@ Premium-opslag:  Ondersteund
 
 Premium Storage caching:  Ondersteund
 
+De grootte van de M-serie is gebaseerd op Intel (R) Xeon (R) CPU E7-8890 v3 @ 2,50 GHz   
+
 Write Accelerator:  [Ondersteund](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator)
 
 | Size            | vCPU | Geheugen: GiB | Tijdelijke opslag (SSD) GiB | Max. aantal gegevensschijven | Maximale doorvoer voor opslag in cache en tijdelijke opslag: IOPS/MBps (cache grootte in GiB) | Maximale doorvoer voor schijf zonder caching: IOPS/MBps | Maximum aantal Nic's/verwachte netwerk bandbreedte (Mbps) |
@@ -239,6 +241,8 @@ Premium-opslag:  Ondersteund
 
 Premium Storage caching:  Ondersteund
 
+Groottes van de DSv2-serie zijn gebaseerd op Intel (R) Xeon (R) CPU E5-2673 v3 @ 2.40 GHz
+
 | Size | vCPU | Geheugen: GiB | Tijdelijke opslag (SSD) GiB | Max. aantal gegevensschijven | Maximale doorvoer voor opslag in cache en tijdelijke opslag: IOPS/MBps (cache grootte in GiB) | Maximale doorvoer voor schijf zonder caching: IOPS/MBps | Maximum aantal Nic's/verwachte netwerk bandbreedte (Mbps) |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standard_DS11_v2&nbsp;<sup>3</sup> |2 |14 |28 |8 |8000/64 (72) |6400/96 |2 / 1500 |
@@ -261,6 +265,8 @@ ACU 210-250
 Premium-opslag:  Niet ondersteund
 
 Premium Storage caching:  Niet ondersteund
+
+Groottes van de DSv2-serie zijn gebaseerd op Intel (R) Xeon (R) CPU E5-2673 v3 @ 2.40 GHz
 
 | Size              | vCPU | Geheugen: GiB | Tijdelijke opslag (SSD) GiB | Maximale tijdelijke opslag doorvoer: IOPS/Lees MBps/MBps schrijven | Maximum aantal gegevens schijven/door Voer: IOPS | Maximum aantal Nic's/verwachte netwerk bandbreedte (Mbps) |
 |-------------------|-----------|-------------|----------------|----------------------------------------------------------|-----------------------------------|------------------------------|

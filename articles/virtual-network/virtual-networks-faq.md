@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/12/2019
 ms.author: kumud
-ms.openlocfilehash: a6ba401d9d10e900fef5e2d296e74a07f84162cd
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 1a3859e1831f64269e7684072ddf166f29566fd9
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71670752"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828979"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Veelgestelde vragen over Azure Virtual Network
 
@@ -395,7 +395,7 @@ Met de beleids regels voor het beheer van virtuele netwerken (VNet) kunt u virtu
 
 ### <a name="does-azure-active-directory-azure-ad-support-vnet-service-endpoints"></a>Ondersteunt Azure Active Directory (Azure AD) VNet-service-eind punten?
 
-Azure Active Directory (Azure AD) biedt geen ondersteuning voor service-eind punten systeem eigen. Volledige lijst met Azure-Services die de VNet-service-eind punten ondersteunen, is [hier](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)te zien. Houd er rekening mee dat de tag ' micro soft. AzureActiveDirectory ' onder Services die service-eind punten ondersteunen wordt gebruikt voor het ondersteunen van service-eind punten voor ADLS gen 1. Voor ADLS gen 1 maakt de integratie van virtuele netwerken voor Azure Data Lake Storage Gen1 gebruik van de eindpunt beveiliging van het virtuele netwerk tussen uw virtuele netwerk en Azure Active Directory (Azure AD) voor het genereren van extra beveiligings claims in het toegangs token. Deze claims worden vervolgens gebruikt om het virtuele netwerk te verifiëren bij het Data Lake Storage Gen1-account en toegang toe te staan. Meer informatie over [Azure Data Lake Store VNet-integratie van de gen 1] (.. /Data-Lake-store/data-Lake-Store-Network-Security.MD? TOC =% 2fazure% 2fvirtual-Network% 2ftoc. json
+Azure Active Directory (Azure AD) biedt geen ondersteuning voor service-eind punten systeem eigen. Volledige lijst met Azure-Services die de VNet-service-eind punten ondersteunen, is [hier](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)te zien. Houd er rekening mee dat de tag ' micro soft. AzureActiveDirectory ' onder Services die service-eind punten ondersteunen wordt gebruikt voor het ondersteunen van service-eind punten voor ADLS gen 1. Voor ADLS gen 1 maakt de integratie van virtuele netwerken voor Azure Data Lake Storage Gen1 gebruik van de eindpunt beveiliging van het virtuele netwerk tussen uw virtuele netwerk en Azure Active Directory (Azure AD) voor het genereren van extra beveiligings claims in het toegangs token. Deze claims worden vervolgens gebruikt om het virtuele netwerk te verifiëren bij het Data Lake Storage Gen1-account en toegang toe te staan. Meer informatie over de [integratie van Azure data Lake Store gen 1-VNet](../data-lake-store/data-lake-store-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 
 ### <a name="are-there-any-limits-on-how-many-vnet-service-endpoints-i-can-set-up-from-my-vnet"></a>Gelden er limieten voor het aantal VNet-service-eind punten dat ik kan instellen vanuit mijn VNet?
 Er is geen limiet voor het totale aantal VNet-service-eind punten in een virtueel netwerk. Voor een Azure-service resource (zoals een Azure Storage account) kunnen services beperkingen afdwingen voor het aantal subnetten dat wordt gebruikt voor het beveiligen van de bron. In de volgende tabel ziet u enkele voor beelden van limieten: 

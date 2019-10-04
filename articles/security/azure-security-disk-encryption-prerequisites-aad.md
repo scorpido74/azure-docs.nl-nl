@@ -5,14 +5,14 @@ author: msmbaldwin
 ms.service: security
 ms.topic: article
 ms.author: mbaldwin
-ms.date: 03/15/2019
+ms.date: 09/30/2019
 ms.custom: seodec18
-ms.openlocfilehash: da3cb81eaeaa3b1609ffe67b2aea92a69b6bb47a
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 07db6c5cecf2b8dec803e73d5775edef3f8906fa
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68726254"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828634"
 ---
 # <a name="azure-disk-encryption-prerequisites-previous-release"></a>Vereisten voor Azure Disk Encryption (vorige versie)
 
@@ -53,6 +53,7 @@ Linux-server distributies die niet zijn goedgekeurd door Azure, bieden geen onde
 | Ubuntu | 18,04| Besturingssysteem- en schijf |
 | Ubuntu | 16.04| Besturingssysteem- en schijf |
 | Ubuntu | 14.04.5</br>[met een afgestemde kernel van Azure bijgewerkt tot 4,15 of hoger](azure-security-disk-encryption-tsg.md#bkmk_Ubuntu14) | Besturingssysteem- en schijf |
+| RHEL | 7,7 | Besturings systeem en gegevens schijf (zie opmerking hieronder) |
 | RHEL | 7,6 | Besturings systeem en gegevens schijf (zie opmerking hieronder) |
 | RHEL | 7.5 | Besturings systeem en gegevens schijf (zie opmerking hieronder) |
 | RHEL | 7.4 | Besturings systeem en gegevens schijf (zie opmerking hieronder) |
@@ -60,6 +61,7 @@ Linux-server distributies die niet zijn goedgekeurd door Azure, bieden geen onde
 | RHEL | 7.2 | Besturings systeem en gegevens schijf (zie opmerking hieronder) |
 | RHEL | 6.8 | Gegevens schijf (zie opmerking hieronder) |
 | RHEL | 6.7 | Gegevens schijf (zie opmerking hieronder) |
+| CentOS | 7,7 | Besturingssysteem- en schijf |
 | CentOS | 7,6 | Besturingssysteem- en schijf |
 | CentOS | 7.5 | Besturingssysteem- en schijf |
 | CentOS | 7.4 | Besturingssysteem- en schijf |

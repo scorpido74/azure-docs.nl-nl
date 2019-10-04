@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: dacurwin
-ms.openlocfilehash: ac101c6079eee908a6499f5e6ed8cc3aadffb75a
-ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
+ms.openlocfilehash: 5968a675c3f0f9a2c6426ed73d06e2d116a8ff3b
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70210291"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827386"
 ---
 # <a name="back-up-and-restore-encrypted-azure-vm"></a>Back-up en herstel van versleutelde Azure VM
 
@@ -55,7 +55,7 @@ Azure Backup kunt back-ups maken van virtuele Azure-machines met en zonder de Az
 
 Ga als volgt te werk voordat u begint:
 
-1. Zorg ervoor dat u een of meer virtuele [Windows](../security/azure-security-disk-encryption-windows.md) -of [Linux](../security/azure-security-disk-encryption-linux.md) -vm's met ade ingeschakeld hebt.
+1. Zorg ervoor dat u een of meer virtuele [Windows](../security/azure-security-disk-encryption-windows.md) -of [Linux](../virtual-machines/linux/disk-encryption-overview.md) -vm's met ade ingeschakeld hebt.
 2. [De ondersteunings matrix](backup-support-matrix-iaas.md) voor Azure VM backup bekijken
 3. [Maak](backup-azure-arm-vms-prepare.md#create-a-vault) een Recovery Services back-upkluis als u er nog geen hebt.
 4. Als u versleuteling inschakelt voor virtuele machines die al zijn ingeschakeld voor back-up, hoeft u alleen maar een back-up te maken met machtigingen voor toegang tot de Key Vault zodat back-ups zonder onderbrekingen kunnen worden voortgezet. Meer [informatie](#provide-permissions) over het toewijzen van deze machtigingen.
@@ -74,12 +74,12 @@ Daarnaast zijn er een aantal dingen die u in bepaalde omstandigheden mogelijk mo
 
     ![Blade back-up](./media/backup-azure-vms-encryption/select-backup.png)
 
-3. Waar wordt**uw werk belasting uitgevoerd?** Selecteer Azure. > 
+3. In **back-updoel** > **waar wordt uw workload uitgevoerd?** Selecteer **Azure**.
 4. In **waarvan wilt u een back-up maken?** Selecteer **virtuele machine** > **OK**.
 
       ![Blade scenario](./media/backup-azure-vms-encryption/select-backup-goal-one.png)
 
-5. Kies in **back-upbeleid** > **back-upbeleid**, selecteer het beleid dat u aan de kluis wilt koppelen. Klik vervolgens op **OK**.
+5. In **back-upbeleid** > **Kies back-upbeleid**, selecteer het beleid dat u aan de kluis wilt koppelen. Klik vervolgens op **OK**.
     - Een back-upbeleid geeft aan wanneer er back-ups worden gemaakt en hoe lang ze worden opgeslagen.
     - De details van het standaardbeleid worden onder de vervolgkeuzelijst weergegeven.
 
@@ -109,12 +109,12 @@ Daarnaast zijn er een aantal dingen die u in bepaalde omstandigheden mogelijk mo
 
 De eerste back-up wordt uitgevoerd volgens de planning, maar u kunt deze als volgt direct uitvoeren:
 
-1. Klik in het menu kluis op **back-** upitems.
-2. Klik in **back-** upitems op **virtuele machine van Azure**.
-3. Klik in de lijst **back-** upitems op het weglatings teken (...).
+1. Klik in het menu kluis op **Back-upitems**.
+2. Klik in **Back-upitems** op **virtuele machine van Azure**.
+3. Klik in de lijst **Back-upitems** op het weglatings teken (...).
 4. Klik op **Nu back-up maken**.
 5. In **Nu back-up**kunt u het besturings element kalender gebruiken om de laatste dag te selecteren dat het herstel punt moet worden bewaard. Klik vervolgens op **OK**.
-6. De portal meldingen bewaken. U kunt de voortgang van de taak in het kluis dashboard controleren > **back-uptaken** > worden**uitgevoerd**. Afhankelijk van de grootte van de virtuele machine kan het maken van de eerste back-up even duren.
+6. De portal meldingen bewaken. U kunt de voortgang van de taak in het kluis dashboard controleren > **back-uptaken** >  worden**uitgevoerd**. Afhankelijk van de grootte van de virtuele machine kan het maken van de eerste back-up even duren.
 
 
 ## <a name="provide-permissions"></a>Machtigingen opgeven
@@ -130,11 +130,11 @@ Machtigingen instellen:
 2. Selecteer de sleutel kluis die is gekoppeld aan de versleutelde virtuele machine waarvan u een back-up maakt.
 3. Selecteer **toegangs beleid** > **nieuwe toevoegen**.
 4. Selecteer **Principal selecteren**en typ **back-upbeheer**.
-5. Selecteer **back-upbeheer service** > **selecteren**.
+5. Selecteer **back-upbeheer Service** > **selecteren**.
 
     ![Back-upservice selecteren](./media/backup-azure-vms-encryption/select-backup-service.png)
 
-6. Selecteer in **toegangs beleid** > **configureren via sjabloon (optioneel)** **Azure backup**.
+6. Selecteer **Azure backup**in **toegangs beleid toevoegen** > **configureren van sjabloon (optioneel)** .
     - De vereiste machtigingen zijn vooraf ingevuld voor **sleutel machtigingen** en **geheime machtigingen**.
     - Als uw virtuele machine is versleuteld met **alleen bek**, verwijdert u de selectie voor **sleutel machtigingen** , omdat u alleen machtigingen voor geheimen nodig hebt.
 

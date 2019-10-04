@@ -1,6 +1,6 @@
 ---
-title: Automatiseren met PowerShell Azure Application Insights | Microsoft Docs
-description: Automatiseer het maken van het tests voor de resource, waarschuwing en beschikbaarheid in PowerShell met een Azure Resource Manager-sjabloon.
+title: Azure-toepassing Insights automatiseren met Power shell | Microsoft Docs
+description: Het maken van resource-, waarschuwings-en beschikbaarheids tests in Power shell automatiseren met behulp van een Azure Resource Manager sjabloon.
 services: application-insights
 documentationcenter: ''
 author: mrbullwinkle
@@ -12,31 +12,31 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 06/04/2019
 ms.author: mbullwin
-ms.openlocfilehash: 07d52544b584adb02cc60790b7cb63c8aee1e366
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b4f3d2eba70be39b23e86ebde3c71dfc7c19a374
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66514481"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71936705"
 ---
 #  <a name="create-application-insights-resources-using-powershell"></a>Application Insights-resources maken met PowerShell
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Dit artikel leest u hoe u voor het automatiseren van het maken en bijwerken van de [Application Insights](../../azure-monitor/app/app-insights-overview.md) resources automatisch met behulp van Azure Resource Management. U kunt bijvoorbeeld doen als onderdeel van een buildproces. Samen met de basic Application Insights-resource, kunt u [webtests voor beschikbaarheid](../../azure-monitor/app/monitor-web-app-availability.md)Stel [waarschuwingen](../../azure-monitor/app/alerts.md), stel de [prijzen schema](pricing.md), en andere Azure-resources maken .
+Dit artikel laat u zien hoe u het maken en bijwerken van [Application Insights](../../azure-monitor/app/app-insights-overview.md) resources automatisch kunt automatiseren met behulp van Azure resource management. Als onderdeel van een bouw proces kunt u bijvoorbeeld het volgende doen. Naast de basis Application Insights resource kunt u [Beschik baarheid-webtesten](../../azure-monitor/app/monitor-web-app-availability.md)maken, [waarschuwingen](../../azure-monitor/app/alerts.md)instellen, het [prijs schema](pricing.md)instellen en andere Azure-resources maken.
 
-De sleutel voor het maken van deze resources is JSON-sjablonen voor [Azure Resource Manager](../../azure-resource-manager/manage-resources-powershell.md). Kortom, de procedure is: downloaden van de JSON-definities van bestaande resources. bepaalde waarden, zoals namen; parameteriseren en voer vervolgens de sjabloon wanneer u wilt maken van een nieuwe resource. Kunt u verschillende bronnen samen verpakken, om ze te maken in een Ga - bijvoorbeeld een app bewaken met betrekking tot beschikbaarheidstests, waarschuwingen en opslag voor continue export. Er zijn enkele finesses tot een aantal van de parameteriseringen, wordt hier uitgelegd.
+De sleutel voor het maken van deze resources is JSON-sjablonen voor [Azure Resource Manager](../../azure-resource-manager/manage-resources-powershell.md). In een kort gezegd is de procedure: de JSON-definities van bestaande resources downloaden; para meters bepaalde waarden, zoals namen, en voer vervolgens de sjabloon uit wanneer u een nieuwe resource wilt maken. U kunt meerdere resources samenbundelen om ze allemaal in één keer te maken, bijvoorbeeld een app-monitor met beschikbaarheids tests, waarschuwingen en opslag voor continue export. Er zijn enkele finesses naar een aantal van de parameterizations, die hier wordt uitgelegd.
 
 ## <a name="one-time-setup"></a>Eenmalige installatie
-Als u PowerShell met uw Azure-abonnement voordat u dit nog niet hebt gebruikt:
+Als u Power shell nog niet eerder hebt gebruikt met uw Azure-abonnement:
 
-De Azure Powershell-module installeren op de computer waar u de scripts uit te voeren:
+Installeer de Azure Power shell-module op de computer waarop u de scripts wilt uitvoeren:
 
-1. Installeer [Microsoft Web Platform Installer (versie 5 of hoger)](https://www.microsoft.com/web/downloads/platform.aspx).
-2. Gebruik het Microsoft Azure Powershell installeren.
+1. Installeer het [installatie programma voor het micro soft-webplatform (V5 of hoger)](https://www.microsoft.com/web/downloads/platform.aspx).
+2. Gebruik het om Microsoft Azure Power shell te installeren.
 
 ## <a name="create-an-azure-resource-manager-template"></a>Een Azure Resource Manager-sjabloon maken
-Maak een nieuw .json-bestand - noemen we deze `template1.json` in dit voorbeeld. Kopieer deze inhoud naar het:
+Maak een nieuw. JSON-bestand: Bel het `template1.json` in dit voor beeld. Kopieer deze inhoud hierin:
 
 ```JSON
     {
@@ -46,7 +46,7 @@ Maak een nieuw .json-bestand - noemen we deze `template1.json` in dit voorbeeld.
             "appName": {
                 "type": "string",
                 "metadata": {
-                    "description": "Enter the application name."
+                    "description": "Enter the name of your Application Insights resource."
                 }
             },
             "appType": {
@@ -58,20 +58,39 @@ Maak een nieuw .json-bestand - noemen we deze `template1.json` in dit voorbeeld.
                     "other"
                 ],
                 "metadata": {
-                    "description": "Enter the application type."
+                    "description": "Enter the type of the monitored application."
                 }
             },
             "appLocation": {
                 "type": "string",
-                "defaultValue": "East US",
+                "defaultValue": "eastus",
+                "metadata": {
+                    "description": "Enter the location of your Application Insights resource."
+                }
+            },
+            "retentionInDays": {
+                "type": "int",
+                "defaultValue": 90,
                 "allowedValues": [
-                    "South Central US",
-                    "West Europe",
-                    "East US",
-                    "North Europe"
+                    30,
+                    60,
+                    90,
+                    120,
+                    180,
+                    270,
+                    365,
+                    550,
+                    730
                 ],
                 "metadata": {
-                    "description": "Enter the application location."
+                    "description": "Data retention in days"
+                }
+            },
+            "ImmediatePurgeDataOn30Days": {
+                "type": "bool",
+                "defaultValue": false,
+                "metadata": {
+                    "description": "If set to true when changing retention to 30 days, older data will be immediately deleted. Use this with extreme caution. This only applies when retention is being set to 30 days."
                 }
             },
             "priceCode": {
@@ -82,7 +101,7 @@ Maak een nieuw .json-bestand - noemen we deze `template1.json` in dit voorbeeld.
                     2
                 ],
                 "metadata": {
-                    "description": "1 = Per GB (Basic), 2 = Per Node (Enterprise)"
+                    "description": "Pricing plan: 1 = Per GB (or legacy Basic plan), 2 = Per Node (legacy Enterprise plan)"
                 }
             },
             "dailyQuota": {
@@ -141,6 +160,7 @@ Maak een nieuw .json-bestand - noemen we deze `template1.json` in dit voorbeeld.
                 ],
                 "properties": {
                     "CurrentBillingFeatures": "[variables('pricePlan')]",
+                    "retentionInDays": "[variables('retentionInDays')]",
                     "DataVolumeCap": {
                         "Cap": "[parameters('dailyQuota')]",
                         "WarningThreshold": "[parameters('warningThreshold')]",
@@ -155,7 +175,7 @@ Maak een nieuw .json-bestand - noemen we deze `template1.json` in dit voorbeeld.
 
 
 ## <a name="create-application-insights-resources"></a>Application Insights-resources maken
-1. In PowerShell, moet u zich aanmelden bij Azure:
+1. Meld u in Power shell aan bij Azure:
    
     `Connect-AzAccount`
 2. Voer een opdracht als volgt uit:
@@ -168,14 +188,14 @@ Maak een nieuw .json-bestand - noemen we deze `template1.json` in dit voorbeeld.
 
     ``` 
    
-   * `-ResourceGroupName` is de groep waar u wilt maken van de nieuwe resources.
-   * `-TemplateFile` voordat u de aangepaste parameters moet plaatsvinden.
-   * `-appName` De naam van de resource te maken.
+   * `-ResourceGroupName` is de groep waar u de nieuwe resources wilt maken.
+   * `-TemplateFile` moet vóór de aangepaste para meters worden uitgevoerd.
+   * `-appName` de naam van de resource die u wilt maken.
 
-U kunt andere parameters toevoegen - bijbehorende beschrijvingen vindt u in de parametersectie van de sjabloon.
+U kunt andere para meters toevoegen: Hier vindt u de beschrijvingen in het gedeelte para meters van de sjabloon.
 
-## <a name="to-get-the-instrumentation-key"></a>De instrumentatiesleutel ophalen
-Na het maken van de bron van een toepassing, moet u de instrumentatiesleutel: 
+## <a name="to-get-the-instrumentation-key"></a>De instrumentatie sleutel ophalen
+Nadat u een toepassings resource hebt gemaakt, wilt u de instrumentatie sleutel: 
 
 ```PS
     $resource = Find-AzResource -ResourceNameEquals "<YOUR APP NAME>" -ResourceType "Microsoft.Insights/components"
@@ -185,11 +205,11 @@ Na het maken van de bron van een toepassing, moet u de instrumentatiesleutel:
 
 
 <a id="price"></a>
-## <a name="set-the-price-plan"></a>De prijs-planning instellen
+## <a name="set-the-price-plan"></a>Het prijs plan instellen
 
-U kunt instellen dat de [prijsplan](pricing.md).
+U kunt het [prijs plan](pricing.md)instellen.
 
-Een resource-app maken met het Enterprise prijs-plan met de bovenstaande sjabloon:
+Voor het maken van een app-resource met het ondernemings prijs schema, met behulp van de bovenstaande sjabloon:
 
 ```PS
         New-AzResourceGroupDeployment -ResourceGroupName Fabrikam `
@@ -203,16 +223,16 @@ Een resource-app maken met het Enterprise prijs-plan met de bovenstaande sjabloo
 |1|Basic|
 |2|Zakelijk|
 
-* Als u wilt dat alleen gebruik van de prijscategorie Basic standaard, kunt u de CurrentBillingFeatures-resource in de sjabloon weglaten.
-* Als u het prijsplan is gewijzigd wilt nadat de onderdeel-resource is gemaakt, kunt u een sjabloon die de resource 'microsoft.insights/components' wordt weggelaten. Laat ook de `dependsOn` knooppunt van de facturering-resource. 
+* Als u alleen het standaard prijs plan voor Basic wilt gebruiken, kunt u de CurrentBillingFeatures-resource uit de sjabloon weglaten.
+* Als u het prijs plan wilt wijzigen nadat de bron van het onderdeel is gemaakt, kunt u een sjabloon gebruiken die de resource ' micro soft. Insights/onderdelen ' weglaat. U kunt ook het knoop punt `dependsOn` van de facturerings resource weglaten. 
 
-Kijken om te controleren of de bijgewerkte prijs-abonnement, de **pagina gebruik en geschatte kosten** blade in de browser. **Vernieuw de browserweergave van de** om ervoor te zorgen dat u de meest recente status zien.
+Als u het bijgewerkte prijs plan wilt controleren, bekijkt u de Blade **gebruik en geschatte kosten** in de browser. **Vernieuw de browser weergave** om er zeker van te zijn dat u de meest recente status ziet.
 
 
 
-## <a name="add-a-metric-alert"></a>Een metrische waarschuwing toevoegen
+## <a name="add-a-metric-alert"></a>Een waarschuwing voor metrische gegevens toevoegen
 
-Als u een waarschuwing voor metrische gegevens instelt op hetzelfde moment als uw app-resource, het sjabloonbestand samenvoegen code zoals deze:
+Als u een metrische waarschuwing op hetzelfde moment als uw app-resource wilt instellen, voegt u code als volgt in het sjabloon bestand toe:
 
 ```JSON
 {
@@ -274,22 +294,22 @@ Als u een waarschuwing voor metrische gegevens instelt op hetzelfde moment als u
 }
 ```
 
-Als u de sjabloon aanroept, kunt u deze parameter optioneel toevoegen:
+Wanneer u de sjabloon aanroept, kunt u deze para meter eventueel toevoegen:
 
     `-responseTime 2`
 
-U kunt natuurlijk parameter van andere velden. 
+U kunt natuurlijk para meters andere velden. 
 
-Als u wilt weten de namen en configuratie-informatie van andere regels voor waarschuwingen, maakt u een regel handmatig uit en Controleer in [Azure Resource Manager](https://resources.azure.com/). 
+Als u de type namen en configuratie details van andere waarschuwings regels wilt weten, maakt u een regel hand matig en inspecteert u deze in [Azure Resource Manager](https://resources.azure.com/). 
 
 
-## <a name="add-an-availability-test"></a>Een beschikbaarheidstest toevoegen
+## <a name="add-an-availability-test"></a>Een beschikbaarheids test toevoegen
 
-In dit voorbeeld is voor een ping-test (op één pagina testen).  
+Dit voor beeld is voor een ping-test (om één pagina te testen).  
 
-**Er zijn twee onderdelen** in een beschikbaarheidstest: de test zelf, en de waarschuwing die op de hoogte gebracht van fouten.
+**Er zijn twee onderdelen** in een beschikbaarheids test: de test zelf en de waarschuwing die u op de hoogte stelt van fouten.
 
-Samenvoegen met de volgende code in de sjabloonbestand dat de app maakt.
+Voeg de volgende code samen in het sjabloon bestand waarmee de app wordt gemaakt.
 
 ```JSON
 {
@@ -386,17 +406,17 @@ Samenvoegen met de volgende code in de sjabloonbestand dat de app maakt.
 }
 ```
 
-Voor het detecteren van de codes voor andere testlocaties, of voor het automatiseren van het maken van meer complexe webtests, een voorbeeld van het handmatig maken en vervolgens voorzien van de code van de [Azure Resource Manager](https://resources.azure.com/).
+Als u de codes voor andere test locaties wilt detecteren, of als u het maken van complexere webtests wilt automatiseren, maakt u een voor beeld hand matig en vervolgens para meters u de code van [Azure Resource Manager](https://resources.azure.com/).
 
 ## <a name="add-more-resources"></a>Meer resources toevoegen
 
-Voor het automatiseren van het maken van een andere bron van welke aard dan ook, een voorbeeld van het handmatig maken en kopieert en voorzien van de code van [Azure Resource Manager](https://resources.azure.com/). 
+Voor het automatiseren van het maken van een andere bron, maakt u hand matig een voor beeld en kopieert en para meters de code vervolgens uit [Azure Resource Manager](https://resources.azure.com/). 
 
-1. Open [Azure Resource Manager](https://resources.azure.com/). Navigeren naar beneden `subscriptions/resourceGroups/<your resource group>/providers/Microsoft.Insights/components`, aan de bron van uw toepassing. 
+1. Open [Azure Resource Manager](https://resources.azure.com/). Ga omlaag door `subscriptions/resourceGroups/<your resource group>/providers/Microsoft.Insights/components`, naar de resource van uw toepassing. 
    
     ![Navigatie in Azure Resource Explorer](./media/powershell/01.png)
    
-    *Onderdelen* zijn de basic Application Insights-resources voor het weergeven van toepassingen. Er zijn afzonderlijke resources voor de gekoppelde regels voor waarschuwingen en webtests voor beschikbaarheid.
+    *Onderdelen* zijn de basis bronnen van Application Insights voor het weer geven van toepassingen. Er zijn afzonderlijke resources voor de bijbehorende waarschuwings regels en beschikbaarheids webtests.
 2. Kopieer de JSON van het onderdeel naar de juiste plaats in `template1.json`.
 3. Verwijder deze eigenschappen:
    
@@ -404,23 +424,23 @@ Voor het automatiseren van het maken van een andere bron van welke aard dan ook,
    * `InstrumentationKey`
    * `CreationDate`
    * `TenantId`
-4. Open de secties webtests en alertrules en kopieert u de JSON voor afzonderlijke items in de sjabloon. (Niet kopiëren van de knooppunten webtests of alertrules: Ga naar de items eronder.)
+4. Open de secties webtests en alertrules en kopieer de JSON voor afzonderlijke items naar uw sjabloon. (Kopieer geen kopieën van de webtests of alertrules-knoop punten: Ga naar de items onder hen.)
    
-    Elke WebTest heeft een bijbehorende waarschuwingsregel, dus u moet het kopiëren van beide.
+    Elke webtest heeft een bijbehorende waarschuwings regel, zodat u beide kunt kopiëren.
    
-    U kunt ook waarschuwingen over metrische gegevens opnemen. [Metrische namen](powershell-alerts.md#metric-names).
-5. Deze regel invoegen in elke resource:
+    U kunt ook waarschuwingen over metrische gegevens toevoegen. [Metrische namen](powershell-alerts.md#metric-names).
+5. Voeg deze regel in elke resource in:
    
     `"apiVersion": "2015-05-01",`
 
-### <a name="parameterize-the-template"></a>De sjabloon parameteriseren
-U hebt nu vervangen door de namen van de specifieke parameters. Naar [voorzien van een sjabloon](../../azure-resource-manager/resource-group-authoring-templates.md), schrijft u expressies met een [set hulpfuncties](../../azure-resource-manager/resource-group-template-functions.md). 
+### <a name="parameterize-the-template"></a>De sjabloon para meters
+Nu moet u de specifieke namen vervangen door para meters. Als u [een sjabloon wilt para meters](../../azure-resource-manager/resource-group-authoring-templates.md), schrijft u expressies met behulp [van een set hulp functies](../../azure-resource-manager/resource-group-template-functions.md). 
 
-U kunt geen parameteriseren slechts een deel van een tekenreeks, Gebruik daarom `concat()` tekenreeksen bouwen.
+U kunt niet slechts een deel van een teken reeks para meters. Gebruik daarom `concat()` om teken reeksen te bouwen.
 
-Hier vindt u voorbeelden van de vervangingen die moet u maken. Er zijn meerdere exemplaren van elke vervanging. Mogelijk moet u anderen in uw sjabloon. Deze voorbeelden gebruiken de parameters en variabelen die we hebben gedefinieerd aan de bovenkant van de sjabloon.
+Hier volgen enkele voor beelden van de vervangingen die u wilt maken. Er zijn verschillende exemplaren van elke vervanging. Mogelijk hebt u anderen nodig in uw sjabloon. In deze voor beelden worden de para meters en variabelen gebruikt die aan het begin van de sjabloon zijn gedefinieerd.
 
-| find | vervangen |
+| find | Vervangen door |
 | --- | --- |
 | `"hidden-link:/subscriptions/.../../components/MyAppName"` |`"[concat('hidden-link:',`<br/>`resourceId('microsoft.insights/components',` <br/> `parameters('appName')))]"` |
 | `"/subscriptions/.../../alertrules/myAlertName-myAppName-subsId",` |`"[resourceId('Microsoft.Insights/alertrules', variables('alertRuleName'))]",` |
@@ -428,27 +448,27 @@ Hier vindt u voorbeelden van de vervangingen die moet u maken. Er zijn meerdere 
 | `"myWebTest-myAppName"` |`"[variables(testName)]"'` |
 | `"myTestName-myAppName-subsId"` |`"[variables('alertRuleName')]"` |
 | `"myAppName"` |`"[parameters('appName')]"` |
-| `"myappname"` (kleine letters) |`"[toLower(parameters('appName'))]"` |
-| `"<WebTest Name=\"myWebTest\" ...`<br/>`Url=\"http://fabrikam.com/home\" ...>"` |`[concat('<WebTest Name=\"',` <br/> `parameters('webTestName'),` <br/> `'\" ... Url=\"', parameters('Url'),` <br/> `'\"...>')]"`<br/>Verwijderen van de Guid en -id. |
+| `"myappname"` (kleine letter) |`"[toLower(parameters('appName'))]"` |
+| `"<WebTest Name=\"myWebTest\" ...`<br/>`Url=\"http://fabrikam.com/home\" ...>"` |`[concat('<WebTest Name=\"',` <br/> `parameters('webTestName'),` <br/> `'\" ... Url=\"', parameters('Url'),` <br/> `'\"...>')]"`<br/>GUID en id verwijderen. |
 
-### <a name="set-dependencies-between-the-resources"></a>Set-afhankelijkheden tussen resources
-Azure, moet de resources in een strikte volgorde instellen. Als u wilt controleren of een installatie is voltooid voordat de volgende begint, moet u afhankelijkheid regels toevoegen:
+### <a name="set-dependencies-between-the-resources"></a>Afhankelijkheden instellen tussen de resources
+Azure moet de resources in strikte volg orde instellen. Als u er zeker van wilt zijn dat de installatie is voltooid voordat de volgende begint, voegt u afhankelijkheids lijnen toe:
 
-* In de beschikbaarheid van test-resource:
+* In de resource beschikbaarheids test:
   
     `"dependsOn": ["[resourceId('Microsoft.Insights/components', parameters('appName'))]"],`
-* In de resource van de waarschuwing voor een beschikbaarheidstest:
+* In de waarschuwings resource voor een beschikbaarheids test:
   
     `"dependsOn": ["[resourceId('Microsoft.Insights/webtests', variables('testName'))]"],`
 
 
 
 ## <a name="next-steps"></a>Volgende stappen
-Andere automation-artikelen:
+Andere automatiserings artikelen:
 
-* [Maak een Application Insights-resource](powershell-script-create-resource.md) -snelle methode zonder een sjabloon te gebruiken.
+* [Maak een Application Insights resource](powershell-script-create-resource.md) snelle methode zonder een sjabloon te gebruiken.
 * [Waarschuwingen instellen](powershell-alerts.md)
 * [Webtests maken](https://azure.microsoft.com/blog/creating-a-web-test-alert-programmatically-with-application-insights/)
 * [Diagnostische Azure-gegevens verzenden naar Application Insights](powershell-azure-diagnostics.md)
-* [In Azure implementeren vanuit GitHub](https://blogs.msdn.com/b/webdev/archive/2015/09/16/deploy-to-azure-from-github-with-application-insights.aspx)
-* [Release-aantekeningen maken](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1)
+* [Implementeren in azure vanuit GitHub](https://blogs.msdn.com/b/webdev/archive/2015/09/16/deploy-to-azure-from-github-with-application-insights.aspx)
+* [Release aantekeningen maken](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1)

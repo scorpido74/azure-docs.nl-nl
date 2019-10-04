@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 0c2408d8ea8fb6458761ef1d853d5dde52ac2311
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: d75c925ef55163ce06b2ceff585e230d95b38c77
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69907165"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71837531"
 ---
 [!INCLUDE [Prerequisites](prerequisites-go.md)]
 
@@ -35,7 +35,7 @@ import (
 
 ## <a name="create-the-main-function"></a>De hoofdfunctie toevoegen
 
-In dit voor beeld wordt geprobeerd uw Translator text-abonnements sleutel en-eind punt te lezen `TRANSLATOR_TEXT_SUBSCRIPTION_KEY` uit `TRANSLATOR_TEXT_ENDPOINT`deze omgevings variabelen: en. Als u niet bekend bent met omgevings variabelen, kunt u `subscriptionKey` en `endpoint` als teken reeksen instellen en de voorwaardelijke instructies van commentaar voorzien.
+In dit voor beeld wordt geprobeerd de Translator Text-abonnements sleutel en het eind punt van deze omgevings variabelen te lezen: `TRANSLATOR_TEXT_SUBSCRIPTION_KEY` en `TRANSLATOR_TEXT_ENDPOINT`. Als u niet bekend bent met omgevings variabelen, kunt u `subscriptionKey` en `endpoint` als teken reeksen instellen en de voorwaardelijke instructies van commentaar voorzien.
 
 Kopieer deze code naar uw project:
 
@@ -156,7 +156,11 @@ Als u uw code graag wilt vergelijken met de onze, kunt u het volledige voorbeeld
 
 ## <a name="sample-response"></a>Voorbeeldantwoord
 
-Zoek de afkorting van het land/de regio in deze [lijst met talen](https://docs.microsoft.com/azure/cognitive-services/translator/language-support).
+Nadat u het voor beeld hebt uitgevoerd, ziet u het volgende afgedrukt op Terminal:
+
+> [!NOTE]
+> Zoek de afkorting van het land/de regio in deze [lijst met talen](https://docs.microsoft.com/azure/cognitive-services/translator/language-support).
+
 
 ```json
 [

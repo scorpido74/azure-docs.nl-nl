@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/13/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 5dee0ef768180057452a232436fc295b36fd756c
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 4893025b7d54dad1f1da6c5967d3c1dec99b499b
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68963737"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71826896"
 ---
 # <a name="troubleshoot-azure-ad-b2c-custom-policies-and-identity-experience-framework"></a>Problemen met Azure AD B2C aangepaste beleids regels en het Framework voor identiteits ervaring oplossen
 
@@ -39,38 +39,36 @@ Validatie van het XML-beleids bestand wordt automatisch uitgevoerd bij het uploa
 
 Veelvoorkomende validatie fouten zijn onder andere:
 
-> Fout fragment:`...makes a reference to ClaimType with id "displayName" but neither the policy nor any of its base policies contain such an element`
+> Fout fragment: `...makes a reference to ClaimType with id "displayName" but neither the policy nor any of its base policies contain such an element`
 
 * De waarde voor claim type is mogelijk verkeerd gespeld of bestaat niet in het schema.
 * Claim type-waarden moeten worden gedefinieerd in ten minste een van de bestanden in het beleid.
     Bijvoorbeeld: `<ClaimType Id="issuerUserId">`
 * Als claim type is gedefinieerd in het extensie bestand, maar dit ook wordt gebruikt in een TechnicalProfile-waarde in het basis bestand, resulteert het uploaden van het basis bestand in een fout.
 
-> Fout fragment:`...makes a reference to a ClaimsTransformation with id...`
+> Fout fragment: `...makes a reference to a ClaimsTransformation with id...`
 
 * De oorzaak van deze fout kan hetzelfde zijn als voor de fout claim type.
 
-> Fout fragment:`Reason: User is currently logged as a user of 'yourtenant.onmicrosoft.com' tenant. In order to manage 'yourtenant.onmicrosoft.com', please login as a user of 'yourtenant.onmicrosoft.com' tenant`
+> Fout fragment: `Reason: User is currently logged as a user of 'yourtenant.onmicrosoft.com' tenant. In order to manage 'yourtenant.onmicrosoft.com', please login as a user of 'yourtenant.onmicrosoft.com' tenant`
 
-* Controleer of de TenantId-waarde in `<TrustFrameworkPolicy\>` de `<BasePolicy\>` elementen en overeenkomt met uw doel Azure AD B2C Tenant.
+* Controleer of de TenantId-waarde in de elementen `<TrustFrameworkPolicy\>` en `<BasePolicy\>` overeenkomt met uw doel Azure AD B2C Tenant.
 
 ## <a name="troubleshoot-the-runtime"></a>Problemen met de runtime oplossen
 
-* Gebruik **nu uitvoeren** en `https://jwt.ms` om uw beleids regels onafhankelijk van uw web-of mobiele toepassing te testen. Deze website fungeert als een Relying Party-toepassing. Hier wordt de inhoud weer gegeven van de JSON Web Token (JWT) die is gegenereerd door uw Azure AD B2C-beleid. Als u een test toepassing wilt maken, gaat u naar **Azure AD B2C** \> - **toepassingen** in de Azure Portal en voegt u een toepassing toe met de volgende waarden:
+* Gebruik **nu uitvoeren** en `https://jwt.ms` om uw beleid onafhankelijk van uw web-of mobiele toepassing te testen. Deze website fungeert als een Relying Party-toepassing. De inhoud van het JSON-webtoken (JWT) dat wordt gegenereerd door uw Azure AD B2C-beleid wordt weer gegeven.
 
-  * **Naam**: TestApp
-  * **Web-app/Web-API**: Nee
-  * **Systeem eigen client**: Nee
+    Een test toepassing maken die kan worden omgeleid naar `https://jwt.ms` voor token inspectie:
 
-  Voeg vervolgens toe `https://jwt.ms` als een **antwoord-URL**.
+    [!INCLUDE [active-directory-b2c-appreg-idp](../../includes/active-directory-b2c-appreg-idp.md)]
 
 * Gebruik [Fiddler](https://www.telerik.com/fiddler)om de uitwisseling van berichten tussen uw client browser en Azure AD B2C te traceren. Het kan u helpen een indicatie te krijgen van waar uw gebruikers zich niet meer in de Orchestration-stappen bevinden.
 
-* Gebruik in de **ontwikkelings modus** [Application Insights](active-directory-b2c-troubleshoot-custom.md) om de activiteit van uw gebruikers traject voor identiteits ervaring te traceren. In de **ontwikkelings modus**kunt u de uitwisseling van claims tussen het Framework voor identiteits ervaring en de verschillende claim providers bekijken die zijn gedefinieerd door technische profielen, zoals id-providers, API-gebaseerde services, de Azure AD B2C gebruiker Directory en andere services, zoals Azure multi-factor Authentication.
+* Gebruik in de **ontwikkelings modus** [Application Insights](active-directory-b2c-troubleshoot-custom.md) om de activiteit van uw gebruikers traject voor identiteits ervaring te traceren. In de **ontwikkelings modus**kunt u de uitwisseling van claims tussen het Framework voor identiteits ervaring en de verschillende claim providers bekijken die zijn gedefinieerd door technische profielen, zoals id-providers, API-gebaseerde services, de Azure AD B2C gebruiker Directory en andere services, zoals Azure Multi-Factor Authentication.
 
 ## <a name="recommended-practices"></a>Aanbevolen procedures
 
-**Bewaar meerdere versies van uw scenario's. Deze groeperen in een project met uw toepassing.** De basis-, uitbrei dingen-en Relying Party-bestanden zijn direct afhankelijk van elkaar. Sla ze op als groep. Wanneer er nieuwe functies aan uw beleid worden toegevoegd, kunt u afzonderlijke werk versies gebruiken. Werk versies in uw eigen bestands systeem faseren met de toepassings code waarmee ze communiceren. Uw toepassingen kunnen veel verschillende Relying Party-beleid aanroepen in een Tenant. Ze worden mogelijk afhankelijk van de claims die ze verwachten van uw Azure AD B2C-beleid.
+**Keep meerdere versies van uw scenario's. Deze groeperen in een project met uw toepassing.** De basis-, uitbrei dingen-en Relying Party-bestanden zijn direct afhankelijk van elkaar. Sla ze op als groep. Wanneer er nieuwe functies aan uw beleid worden toegevoegd, kunt u afzonderlijke werk versies gebruiken. Werk versies in uw eigen bestands systeem faseren met de toepassings code waarmee ze communiceren. Uw toepassingen kunnen veel verschillende Relying Party-beleid aanroepen in een Tenant. Ze worden mogelijk afhankelijk van de claims die ze verwachten van uw Azure AD B2C-beleid.
 
 **Technische profielen ontwikkelen en testen met bekende gebruikers reizen.** Geteste Starter Pack-beleids regels gebruiken om uw technische profielen in te stellen. U kunt ze afzonderlijk testen voordat u ze opneemt in uw eigen trajecten voor gebruikers.
 

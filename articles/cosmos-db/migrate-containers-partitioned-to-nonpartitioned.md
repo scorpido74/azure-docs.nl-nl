@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/25/2019
 ms.author: mjbrown
-ms.openlocfilehash: 77d70aaa9c1ae5a111a47e08f259c0ce95fd7c92
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 3a13f8928ba243195c30200dae0525e72c1c161b
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300118"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71844410"
 ---
 # <a name="migrate-non-partitioned-containers-to-partitioned-containers"></a>Niet-gepartitioneerde containers migreren naar gepartitioneerde containers
 
@@ -99,7 +99,7 @@ Hoewel de container definitie wordt uitgebreid met een partitie sleutel eigensch
 
 ## <a name="access-documents-that-dont-have-a-partition-key"></a>Toegang tot documenten die geen partitie sleutel hebben
 
-Toepassingen hebben toegang tot de bestaande documenten die geen partitie sleutel hebben met de speciale systeem eigenschap ' CosmosContainerSettings. NonePartitionKeyValue '. Dit is de waarde van de niet-gemigreerde documenten. U kunt deze eigenschap in alle ruwe en query bewerkingen gebruiken. In het volgende voor beeld ziet u een voor beeld van het lezen van één document uit de NonePartitionKey. 
+Toepassingen hebben toegang tot de bestaande documenten die geen partitie sleutel hebben met de speciale systeem eigenschap ' PartitionKey. none '. Dit is de waarde van de niet-gemigreerde documenten. U kunt deze eigenschap in alle ruwe en query bewerkingen gebruiken. In het volgende voor beeld ziet u een voor beeld van het lezen van één document uit de NonePartitionKey. 
 
 ```csharp
 CosmosItemResponse<DeviceInformationItem> readResponse = 

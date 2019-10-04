@@ -13,15 +13,15 @@ ms.topic: article
 ms.date: 08/21/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 3a014bab0252667c3c70e56399a72de4e5771a86
-ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
+ms.openlocfilehash: d4b7733ce3ac6db4c39f632401661eefce11d20c
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70210110"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827584"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>Uw app integreren met een Azure-Virtual Network
-In dit document wordt de Azure App Service functie voor de integratie van virtuele netwerken beschreven en wordt uitgelegd hoe u deze kunt instellen met apps in de [Azure app service](https://go.microsoft.com/fwlink/?LinkId=529714). [Virtuele netwerken van Azure][VNETOverview] (VNets) kunt u veel van uw Azure-resources in een niet-Internet routeerbaar netwerk plaatsen.  
+In dit document wordt de Azure App Service functie voor de integratie van virtuele netwerken beschreven en wordt uitgelegd hoe u deze kunt instellen met apps in de [Azure app service](https://go.microsoft.com/fwlink/?LinkId=529714). Met [Azure Virtual Networks][VNETOverview] (VNets) kunt u veel van uw Azure-resources in een niet-Internet routeerbaar netwerk plaatsen.  
 
 De Azure App Service heeft twee variaties. 
 
@@ -129,7 +129,7 @@ De functie ondersteunt slechts één virtuele interface per werk nemer.  Eén vi
 
 Vanwege de aard van de werking van deze technologie wordt het verkeer dat wordt gebruikt met VNet-integratie niet weer gegeven in Network Watcher-of NSG-stroom Logboeken.  
 
-## <a name="gateway-required-vnet-integration"></a>Vereiste VNet-integratie voor gateway 
+## <a name="gateway-required-vnet-integration"></a>vereiste VNet-integratie voor gateway 
 
 De gateway vereist VNet-integratie functie:
 
@@ -171,13 +171,13 @@ Als u de gateway alleen maakt voor gebruik met App Service VNet-integratie, hoef
 VNet-integratie voor uw app inschakelen: 
 
 1. Ga naar uw app in de Azure Portal en open de app-instellingen en selecteer Netwerk > VNet-integratie. Uw ASP moet zich in een standaard-SKU of beter kunnen gebruiken voor het gebruik van de VNet-integratie functie. 
- ![VNet-integratie GEBRUIKERSINTERFACE][1]
+ ![VNet-integratie GEBRUIKERSINTERFACE @ no__t-1
 
 1. Selecteer **VNet toevoegen**. 
- ![VNet-integratie toevoegen][2]
+ ![Add VNet-integratie @ no__t-1
 
 1. Selecteer uw VNet. 
-  ![Uw VNet selecteren][8]
+  @no__t uw VNet @ no__t-1 0Select
   
 De app wordt na deze laatste stap opnieuw opgestart.  
 
@@ -240,7 +240,7 @@ Als u de gateway vereist VNet-integratie met peering gebruikt, moet u enkele ext
 1. Ga naar het App Service plan > netwerken > VNet-integratie GEBRUIKERSINTERFACE in de portal.  Selecteer het VNet waarmee uw app verbinding maakt. Voeg onder de sectie route ring het adres bereik toe van het VNet dat is gekoppeld aan het VNet waarmee uw app is verbonden.  
 
 
-## <a name="pricing-details"></a>Prijsinformatie
+## <a name="pricing-details"></a>Prijsgegevens
 De regionale VNet-integratie functie heeft geen extra kosten voor gebruik buiten de ASP-prijs categorie kosten.
 
 Er zijn drie kosten verbonden aan het gebruik van de gateway vereiste VNet-integratie functie:
@@ -343,6 +343,6 @@ U kunt App Service integreren met een Azure Virtual Network met behulp van Power
 [V2VNETPortal]: ../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md
 [VPNERCoex]: ../expressroute/expressroute-howto-coexist-resource-manager.md
 [ASE]: environment/intro.md
-[creategatewaysubnet]: https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal#gatewaysubnet
+[creategatewaysubnet]: ../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md#creategw
 [creategateway]: https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal#creategw
 [setp2saddresses]: https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal#addresspool

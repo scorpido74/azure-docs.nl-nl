@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 7b33484084b4ada5aeaf89eb90167658ade15ad8
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 4aca2a4495d4b6c3669982b2e7757b7252d70f6a
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69899788"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828560"
 ---
 # <a name="azure-virtual-machines-security-overview"></a>Overzicht van Azure Virtual Machines-beveiliging
 Dit artikel bevat een overzicht van de belangrijkste Azure-beveiligings functies die kunnen worden gebruikt met virtuele machines.
@@ -51,12 +51,12 @@ Wanneer u micro soft antimalware voor Azure implementeert en inschakelt, zijn de
 * **Geplande scan**: Voert regel matig gerichte scans uit voor het detecteren van malware, waaronder actieve Program ma's.
 * **Herstel van malware**: Onderneemt automatisch actie over gedetecteerde malware, zoals het verwijderen of in quarantaine van schadelijke bestanden en het opschonen van schadelijke Register vermeldingen.
 * **Handtekening updates**: Installeert automatisch de nieuwste beveiligings handtekeningen (virus definities) om ervoor te zorgen dat de beveiliging up-to-date is op een vooraf bepaalde frequentie.
-* **Updates**voor antimalware-Engine: Werkt automatisch de micro soft antimalware voor Azure-engine bij.
-* **Updates**van het antimalware-platform: Hiermee wordt het micro soft antimalware voor Azure-platform automatisch bijgewerkt.
+* **Updates voor antimalware-engine**: Werkt automatisch de micro soft antimalware voor Azure-engine bij.
+* **Updates van het antimalware-platform**: Hiermee wordt het micro soft antimalware voor Azure-platform automatisch bijgewerkt.
 * **Actieve beveiliging**: Hiermee worden de telemetriegegevens van de telemetrie naar Azure gerapporteerd over gedetecteerde bedreigingen en verdachte bronnen om snel te kunnen reageren. Hiermee wordt de levering in realtime synchrone hand tekeningen via het micro soft Active Protection-systeem (MAPS) ingeschakeld.
-* Voor **beelden**van rapportages: Voorziet en rapporteert voor beelden aan de micro soft antimalware voor Azure-service om de service te verfijnen en probleem oplossing in te scha kelen.
-* Uitsluitingen: Hiermee kunnen toepassings-en service beheerders bepaalde bestanden, processen en stations zodanig configureren dat ze worden uitgesloten van beveiliging en worden gescand op prestaties en andere redenen.
-* **Verzameling**van antimalware-gebeurtenissen: Registreert de status van de antimalware-service, verdachte activiteiten en herstel bewerkingen die zijn uitgevoerd in het gebeurtenis logboek van het besturings systeem en verzamelt deze in uw Azure Storage-account.
+* Voor **beelden van rapportages**: Voorziet en rapporteert voor beelden aan de micro soft antimalware voor Azure-service om de service te verfijnen en probleem oplossing in te scha kelen.
+* **Uitsluitingen**: Hiermee kunnen toepassings-en service beheerders bepaalde bestanden, processen en stations zodanig configureren dat ze worden uitgesloten van beveiliging en worden gescand op prestaties en andere redenen.
+* **Verzameling van antimalware-gebeurtenissen**: Registreert de status van de antimalware-service, verdachte activiteiten en herstel bewerkingen die zijn uitgevoerd in het gebeurtenis logboek van het besturings systeem en verzamelt deze in uw Azure Storage-account.
 
 Meer informatie over antimalware-software om uw virtuele machines te beschermen:
 
@@ -102,7 +102,7 @@ De oplossing is geïntegreerd met Azure Key Vault om u te helpen de schijf versl
 Meer informatie:
 
 * [Azure Disk Encryption voor IaaS-Vm's](/azure/security/azure-security-disk-encryption-overview)
-* [Snelstart: Een Windows IaaS-VM versleutelen met Azure PowerShell](../azure-disk-encryption-linux-powershell-quickstart.md)
+* [Snelstart: Een Windows IaaS-VM versleutelen met Azure PowerShell @ no__t-0
 
 ## <a name="virtual-machine-backup"></a>Back-up van virtuele machine
 
@@ -164,14 +164,14 @@ Azure Virtual Machines is gecertificeerd voor FISMA, FedRAMP, HIPAA, PCI DSS Lev
 
 Meer informatie:
 
-* [Vertrouwens centrum van micro soft: Acht](https://www.microsoft.com/en-us/trustcenter/compliance)
-* [Vertrouwde Cloud: Beveiligings-, privacy-en nalevings Microsoft Azure](https://download.microsoft.com/download/1/6/0/160216AA-8445-480B-B60F-5C8EC8067FCA/WindowsAzure-SecurityPrivacyCompliance.pdf)
+* vertrouwens centrum van [Microsoft: Compatibiliteit @ no__t-0
+* [Trusted-Cloud: Microsoft Azure beveiliging, privacy en naleving @ no__t-0
 
 ## <a name="confidential-computing"></a>Vertrouwelijk computing
 
 Hoewel vertrouwelijke computing geen technisch onderdeel is van de beveiliging van de virtuele machine, behoort het onderwerp van de beveiliging van de virtuele machine tot het hogere niveau van "Compute"-beveiliging. Vertrouwelijk computing behoort tot de categorie "Compute"-beveiliging.
 
-Met vertrouwelijke computing zorgt u ervoor dat wanneer gegevens ' in de heldere ' zijn, die is vereist voor een efficiënte verwerking, de gegevens worden beschermd binnen https://en.wikipedia.org/wiki/Trusted_execution_environment een vertrouwde uitvoerings omgeving (Tee, ook wel een enclave genoemd), een voor beeld van dat wordt weer gegeven in de afbeelding hieronder .  
+Vertrouwelijk computing zorgt ervoor dat wanneer gegevens ' in de helder ' zijn, die is vereist voor een efficiënte verwerking, de gegevens worden beschermd binnen een vertrouwde uitvoerings omgeving https://en.wikipedia.org/wiki/Trusted_execution_environment (TEE, ook wel bekend als een enclave), een voor beeld van de afbeelding hieronder.  
 
 TEEs zorgt ervoor dat er geen manier is om gegevens of de bewerkingen in de buiten kant weer te geven, zelfs met een fout opsporingsprogramma. Ze kunnen er ook voor zorgen dat alleen geautoriseerde code toegang heeft tot gegevens. Als de code wordt gewijzigd of gewijzigd, worden de bewerkingen geweigerd en wordt de omgeving uitgeschakeld. De TEE dwingt deze beveiligingen af tijdens het uitvoeren van code in het bestand.
 

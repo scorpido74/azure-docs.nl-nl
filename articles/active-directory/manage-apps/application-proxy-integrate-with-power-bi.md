@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b3d758b63b56bb84b1cb4e5793731da5eb4f5209
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 6a81ecd855b098ec59c5b6f7761ceebfa7a03fa9
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71103878"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71936727"
 ---
 # <a name="enable-remote-access-to-power-bi-mobile-with-azure-ad-application-proxy"></a>Externe toegang tot Power BI-Mobiel met Azure AD-toepassingsproxy inschakelen
 
@@ -121,6 +121,8 @@ Voordat de Power BI mobiele app verbinding kan maken en toegang kan krijgen tot 
    Bij het configureren van de app voor Power BI-Mobiel **Android**, voegt u de volgende omleidings-uri's van het type public client (mobiel & bureau blad) toe:
    - `urn:ietf:wg:oauth:2.0:oob`
    - `mspbi-adal://com.microsoft.powerbimobile`
+   - `msauth://com.microsoft.powerbim/g79ekQEgXBL5foHfTlO2TPawrbI%3D` 
+   - `msauth://com.microsoft.powerbim/izba1HXNWrSmQ7ZvMXgqeZPtNEU%3D`
 
    > [!IMPORTANT]
    > De omleidings-Uri's moeten worden toegevoegd om de toepassing correct te laten werken. Als u de app configureert voor zowel Power BI-Mobiel iOS als Android, voegt u de volgende omleidings-URI van het type open bare-client (mobiele & bureau blad) toe aan de `urn:ietf:wg:oauth:2.0:oob`lijst met omleidings-uri's die zijn geconfigureerd voor IOS:.

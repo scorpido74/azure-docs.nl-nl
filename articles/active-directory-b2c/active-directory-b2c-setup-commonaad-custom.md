@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: fdad2f2dfec6f13fe4a40641db3417f29273349c
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.openlocfilehash: a0b9166d24bea28bb3271d719e8ffe0b24d71381
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71315057"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71826935"
 ---
 # <a name="set-up-sign-in-for-multi-tenant-azure-active-directory-using-custom-policies-in-azure-active-directory-b2c"></a>Aanmelden voor multi tenant-Azure Active Directory instellen met behulp van aangepast beleid in Azure Active Directory B2C
 
@@ -58,7 +58,7 @@ U moet de toepassings sleutel opslaan die u hebt gemaakt in uw Azure AD B2C-Tena
 1. Onder **beleids regels**selecteert u **identiteits ervaring-Framework**.
 1. Selecteer **beleids sleutels** en selecteer vervolgens **toevoegen**.
 1. Kies`Manual`voor **Opties**.
-1. Voer een **naam** in voor de beleids sleutel. Bijvoorbeeld `AADAppSecret`.  Het voor `B2C_1A_` voegsel wordt automatisch toegevoegd aan de naam van de sleutel wanneer deze wordt gemaakt, zodat de verwijzing in de XML in de volgende sectie wordt *B2C_1A_AADAppSecret*.
+1. Voer een **naam** in voor de beleids sleutel. Bijvoorbeeld `AADAppSecret`.  Het voor voegsel `B2C_1A_` wordt automatisch toegevoegd aan de naam van de sleutel wanneer deze wordt gemaakt, zodat de verwijzing in de XML in de volgende sectie wordt *B2C_1A_AADAppSecret*.
 1. Voer in het **geheim**uw client geheim in dat u eerder hebt vastgelegd.
 1. Selecteer`Signature`voor **sleutel gebruik**.
 1. Selecteer **Maken**.
@@ -187,6 +187,8 @@ Nu er een knop aanwezig is, moet u deze koppelen aan een actie. De actie in dit 
 3. Sla het bestand *TrustFrameworkExtensions. XML* op en upload het opnieuw voor verificatie.
 
 ## <a name="create-an-azure-ad-b2c-application"></a>Een Azure AD B2C-toepassing maken
+
+Communicatie met Azure AD B2C vindt plaats via een toepassing die u registreert in uw B2C-Tenant. In deze sectie vindt u optionele stappen die u kunt uitvoeren om een test toepassing te maken als u dit nog niet hebt gedaan.
 
 [!INCLUDE [active-directory-b2c-appreg-idp](../../includes/active-directory-b2c-appreg-idp.md)]
 

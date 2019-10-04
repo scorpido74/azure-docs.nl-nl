@@ -5,14 +5,14 @@ services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: qianw211
 ms.service: marketplace
 ms.topic: article
-ms.date: 9/26/2019
+ms.date: 10/2/2019
 ms.author: ellacroi
-ms.openlocfilehash: abc3b3a6be5f8c61c07fb29a6f168c8738733099
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 4096b9201afc98f6e5eb239cf9e6883ac69b6e79
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350381"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827990"
 ---
 # <a name="microsoft-commercial-marketplace-faqs"></a>Veelgestelde vragen over micro soft Commercial Marketplace
 
@@ -155,7 +155,7 @@ Dit zijn de meest voorkomende opties per aanbiedings type:
 
 **Welke soorten experimenten worden ondersteund?**
 
-Aanbiedingen met een gratis proef versie zijn aanbiedingen met een aanroep naar actie om een proef versie te initiëren. Deze leiden de klant naar een website die door de uitgever is gedefinieerd om de proef ervaring in te stellen. Experimenten kunnen ook worden toegevoegd aan betaalde aanbiedingen waarbij de eerste maand gratis is. 
+Uitgevers kunnen een gratis maand toevoegen voor betaalde SaaS-aanbiedingen en een of drie gratis maanden verbruik voor VM-installatie kopieën. Aanbiedingen met een gratis proef versie zijn aanbiedingen met een aanroep naar actie om een proef versie te initiëren. Deze leiden de klant naar een website die door de uitgever is gedefinieerd om de proef ervaring in te stellen. Experimenten kunnen ook worden toegevoegd aan betaalde aanbiedingen waarbij de eerste maand gratis is. 
 
 **Moet ik een betaal middel (bijvoorbeeld een credit card) in het bestand hebben om een gratis laag te implementeren of uw eigen licentie (BYOL) te bieden?**
 
@@ -169,6 +169,10 @@ Enterprise Agreement (EA) indirecte klanten moeten contact opnemen met hun Licen
 
 Ja, voor klanten met Enterprise Agreement (EA), kan de registratie beheerder de rechten voor het kopen uitschakelen voor alle accounts bij de inschrijving en deze vervolgens lang genoeg inschakelen om een aankoop te doen. Daarnaast kunnen alle klanten Azure Policy gebruiken om de implementatie opties voor hun Azure-abonnementen te beperken, met inbegrip van het beheer van Azure Marketplace-resources.
 
+**Welke betalings methoden worden ondersteund voor commerciële Marketplace-aankopen?**
+
+Klanten kunnen aanbiedingen kopen vanuit Azure Marketplace en Microsoft AppSource met credit cards. Als u een bestaand Azure-abonnement hebt, zullen aankopen via Azure Marketplace gebruikmaken van de betalings wijze die op het account is geconfigureerd en op dezelfde factuur als een afzonderlijk regel item worden weer gegeven. Sommige aanbiedingen gebruiken de monetaire toezeg ging van Azure, maar de meeste ommercial Marketplace-aankopen worden niet afgetrokken Enterprise Agreement verbintenissen, hoewel het gebruik van een Azure-infra structuur.
+
 **Kan ik tegoeden voor Azure-abonnementen of monetaire toezeggings fondsen in mijn account Toep assen op Azure Marketplace-aanbiedingen?**
 
 Voor specifieke Azure Marketplace-aanbiedingen kunnen tegoeden voor Azure-abonnementen of monetaire toezeggingen worden gebruikt. Zie de [monetaire toezeg ging van Azure](https://azure.microsoft.com/updates/azure-marketplace-third-party-reseller-services-now-use-azure-monetary-commitment/) voor een volledige lijst van producten die deel uitmaken van dit programma. Deze aanbiedingen bevatten geen opties voor BYOL of BYOS. Alle andere Azure Marketplace-aanbiedingen kunnen geen Azure-abonnements tegoeden of monetaire toezeg ging gebruiken: zoals de gratis proef versie van een maand, maandelijks MSDN-tegoed, tegoed van Azure promoties, monetaire toezeggings saldi en eventuele andere gratis tegoeden van Azure.
@@ -176,12 +180,6 @@ Voor specifieke Azure Marketplace-aanbiedingen kunnen tegoeden voor Azure-abonne
 **Zijn er volume licentie kortingen van toepassing op de aankopen van Azure Marketplace?**
 
 Nee. De uitgever die eigenaar is van oplossingen in azure Marketplace kan prijzen instellen.  Standaard micro soft-volume licentie kortingen zijn niet van toepassing op aankopen via Azure Marketplace.
-
-**Hoe kan ik betaalt u voor deze abonnementen? Worden mijn Azure Marketplace-aankopen weer gegeven op de Azure-factuur of is er een andere factuur?**
-
-MOSP- [micro soft online Subscription Program](https://azure.microsoft.com/support/legal/subscription-agreement/?country=us&language=en) (zoals web-direct)-klanten worden in rekening gebracht op dezelfde Credit Card als voor hun Azure-abonnements profiel. Als u geen credit card in het bestand hebt, kunt u niet kopen via Azure Marketplace. In dit geval hebt u een speciale ontheffing ontvangen, zodat uw Azure-kosten aan u worden gefactureerd.
-
-Enterprise Agreement (EA)-klanten worden in rekening gebracht op basis van hun EA. Specifieke Azure Marketplace-aanbiedingen die hier worden vermeld, worden eerst afgetrokken van de beschik bare monetaire toezeg ging en vervolgens gefactureerd als een overschrijding op één driemaandelijkse factuur. De klanten die indirect, onderwijs en overheid zijn, worden in rekening gebracht op basis van hun Licensing Solution Provider (LSP).
 
 **Waar kan ik de abonnements Details en facturerings gegevens van mijn Azure Marketplace bekijken?**
 
@@ -197,7 +195,7 @@ Omdat de invoeg toepassing is gekoppeld aan de virtuele machine van Azure, kunt 
 
 **Hoe vaak worden mijn Azure Marketplace-aankopen gefactureerd?**
 
-Enterprise Agreement klanten, voor de specifieke services die worden beschreven, hebben eerst de beschik bare monetaire toezeggings fondsen gereduceerd door de totale kosten voor deze services in de maand waarin ze zijn verbruikt. Alle Azure Marketplace-aanbiedingen die niet worden afgetrokken van de monetaire toezeg ging, worden maandelijks in rekening gebracht. Jaarlijkse SaaS-abonnementen worden eenmaal gefactureerd voor de services van een volledig jaar.
+Alle Azure Marketplace-aanbiedingen die niet worden afgetrokken van de monetaire toezeg ging, worden maandelijks in rekening gebracht. Jaarlijkse SaaS-abonnementen worden eenmaal gefactureerd voor de services van een volledig jaar.
 
 MOSP: [micro soft online Subscription Program](https://azure.microsoft.com/support/legal/subscription-agreement/) (Web direct) wordt maandelijks in rekening gebracht op basis van dezelfde Credit Card als voor hun Azure-abonnements profiel. Jaarlijkse SaaS-abonnementen worden eenmaal gefactureerd voor de services van een volledig jaar.
 
@@ -210,10 +208,6 @@ Als u andere services die zijn gekocht op Azure Marketplace wilt migreren naar e
 **Wat is het verschil tussen de *prijs*, de *Software prijs*en de *totale prijs* in de kosten structuur voor aanbiedingen van virtuele machines in de Azure Marketplace?**
 
 De *prijs* verwijst naar de kosten van de virtuele machine van Azure om de software uit te voeren. De *Software prijs* verwijst naar de kosten van de software van de Marketplace-uitgever die wordt uitgevoerd op een virtuele Azure-machine. De *totale prijs* verwijst naar de gecombineerde totale kosten van de virtuele Azure-machine en de software van de Marketplace-uitgever die wordt uitgevoerd op een virtuele Azure-machine.
-
-**Kan ik tegoeden voor Azure-abonnementen of monetaire fondsen op mijn account Toep assen op Azure-producten en-services die nodig zijn om Azure Marketplace-aanbiedingen uit te voeren?**
-
-Ja. Tegoeden voor Azure-abonnementen of monetaire toezeggings fondsen voor het account kunnen worden gebruikt voor Azure-producten en Azure Marketplace-aanbiedingen. De monetaire toezeg ging van Azure kan bijvoorbeeld worden toegepast op het *prijs* onderdeel van een aanbieding voor virtuele machines in de Azure Marketplace. Azure-abonnements tegoeden en monetaire toezeggings fondsen kunnen echter alleen worden toegepast op bepaalde software uitgevers van Marketplace (*Software prijs*) die wordt uitgevoerd op een virtuele machine van Azure.
 
 **Hoe kan ik kom ik erachter welk deel van mijn Azure Marketplace-aankoop Ik heb gebruikt?**
 

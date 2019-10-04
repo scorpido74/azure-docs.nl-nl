@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: tomfitz
-ms.openlocfilehash: 9e50a2705982a022284e1c54bd5ed7360a2d1663
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: 7e13e2bed4e881d12737d8e0df0ff0ba2bb2bca9
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70390694"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827482"
 ---
 # <a name="resource-functions-for-azure-resource-manager-templates"></a>Functies van de resource voor Azure Resource Manager-sjablonen
 
@@ -45,7 +45,7 @@ De syntaxis voor deze functie is afhankelijk van de naam van de lijst bewerkinge
 
 ### <a name="valid-uses"></a>Geldige toepassingen
 
-De functies List kunnen alleen worden gebruikt in de eigenschappen van een resource definitie en de sectie outputs van een sjabloon of implementatie. In combi natie met [eigenschaps herhaling](resource-group-create-multiple.md#property-iteration)kunt u de functies lijst gebruiken `input` voor omdat de expressie wordt toegewezen aan de eigenschap resource. U kunt deze `count` niet gebruiken omdat het aantal moet worden bepaald voordat de lijst functie wordt opgelost.
+De functies List kunnen alleen worden gebruikt in de eigenschappen van een resource definitie en de sectie outputs van een sjabloon of implementatie. In combi natie met [eigenschaps herhaling](resource-group-create-multiple.md#property-iteration)kunt u de functies list voor `input` gebruiken, omdat de expressie wordt toegewezen aan de resource-eigenschap. U kunt deze `count` niet gebruiken omdat het aantal moet worden bepaald voordat de lijst functie wordt opgelost.
 
 ### <a name="implementations"></a>Implementaties
 
@@ -400,9 +400,9 @@ Gebruik `'Full'` wanneer u waarden in de resource die geen deel uitmaken van het
 
 De referentie-functie kan alleen worden gebruikt in de eigenschappen van de resourcedefinitie van een en de uitvoersectie van een sjabloon of de implementatie. In combi natie met [eigenschaps herhaling](resource-group-create-multiple.md#property-iteration)kunt u de functie Reference gebruiken `input` voor omdat de expressie wordt toegewezen aan de resource-eigenschap. U kunt dit `count` niet gebruiken omdat het aantal moet worden bepaald voordat de verwijzings functie wordt opgelost.
 
-U kunt de functie Reference niet gebruiken in de uitvoer van een [geneste sjabloon](resource-group-linked-templates.md#nested-template) om een resource te retour neren die u in de geneste sjabloon hebt geïmplementeerd. Gebruik in plaats daarvan een [gekoppelde sjabloon](resource-group-linked-templates.md#external-template-and-external-parameters).
+U kunt de functie Reference niet gebruiken in de uitvoer van een [geneste sjabloon](resource-group-linked-templates.md#nested-template) om een resource te retour neren die u in de geneste sjabloon hebt geïmplementeerd. Gebruik in plaats daarvan een [gekoppelde sjabloon](resource-group-linked-templates.md#external-template).
 
-Als u de functie **Reference** gebruikt in een resource die voorwaardelijk wordt geïmplementeerd, wordt de functie geëvalueerd, zelfs als de resource niet is geïmplementeerd.  Er wordt een fout bericht weer geven als de **verwijzings** functie verwijst naar een resource die niet bestaat. Gebruik de functie **als** om te controleren of de functie alleen wordt geëvalueerd wanneer de resource wordt geïmplementeerd. Zie de [functie als](resource-group-template-functions-logical.md#if) voor een voorbeeld sjabloon die gebruikmaakt van if en verwijst naar een voorwaardelijk geïmplementeerde resource.
+Als u de functie **Reference** gebruikt in een resource die voorwaardelijk wordt geïmplementeerd, wordt de functie geëvalueerd, zelfs als de resource niet is geïmplementeerd.  Er **wordt** een fout bericht weer geven als de verwijzings functie verwijst naar een resource die niet bestaat. Gebruik de functie **als** om te controleren of de functie alleen wordt geëvalueerd wanneer de resource wordt geïmplementeerd. Zie de [functie als](resource-group-template-functions-logical.md#if) voor een voorbeeld sjabloon die gebruikmaakt van if en verwijst naar een voorwaardelijk geïmplementeerde resource.
 
 ### <a name="implicit-dependency"></a>Impliciete afhankelijkheid
 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/25/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 9da5b4c88bab964bfc3ad686377d3c3efd2d4e6a
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.openlocfilehash: 6d7beae75e13ef797c9e80a9a012e9f48b69d407
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71315180"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827178"
 ---
 # <a name="set-up-sign-in-with-a-linkedin-account-using-custom-policies-in-azure-active-directory-b2c"></a>Aanmelden met een LinkedIn-account instellen met behulp van aangepast beleid in Azure Active Directory B2C
 
@@ -216,6 +216,8 @@ Nu er een knop aanwezig is, moet u deze koppelen aan een actie. De actie in dit 
 3. Sla het bestand *TrustFrameworkExtensions. XML* op en upload het opnieuw voor verificatie.
 
 ## <a name="create-an-azure-ad-b2c-application"></a>Een Azure AD B2C-toepassing maken
+
+Communicatie met Azure AD B2C vindt plaats via een toepassing die u registreert in uw B2C-Tenant. In deze sectie vindt u optionele stappen die u kunt uitvoeren om een test toepassing te maken als u dit nog niet hebt gedaan.
 
 [!INCLUDE [active-directory-b2c-appreg-idp](../../includes/active-directory-b2c-appreg-idp.md)]
 

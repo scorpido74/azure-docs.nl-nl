@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 05/28/2019
 ms.author: lbosq
 ms.reviewer: sngun
-ms.openlocfilehash: 127c12b6a36f31f91fdce3700c43e2602a5c0194
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 51bd14c536e46291c8720e6c22e2e03a30243ddf
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624546"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827277"
 ---
 # <a name="using-the-graph-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db-gremlin-api"></a>De grafiek gebruiken om bulk bewerkingen uit te voeren in Azure Cosmos DB Gremlin API
 
@@ -23,7 +23,7 @@ In tegens telling tot het verzenden van Gremlin-query's naar een Data Base, waar
 
 ## <a name="bulk-operations-with-graph-data"></a>Bulkbewerkingen met graafgegevens
 
-De [bibliotheek bulk](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.graph?view=azure-dotnet) -uitvoerder bevat een `Microsoft.Azure.CosmosDB.BulkExecutor.Graph` naam ruimte om functionaliteit te bieden voor het maken en importeren van grafiek objecten. 
+De [bibliotheek bulk](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.graph?view=azure-dotnet) -uitvoerder bevat een `Microsoft.Azure.CosmosDB.BulkExecutor.Graph`-naam ruimte om functionaliteit te bieden voor het maken en importeren van grafiek objecten. 
 
 In het volgende proces wordt uiteengezet hoe gegevensmigratie voor een Gremlin API-container kan worden gebruikt:
 1. Haal records op uit de gegevensbron.
@@ -73,7 +73,7 @@ catch (Exception e)
 }
 ```
 
-Raadpleeg het [onderwerp BulkImportData to Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/bulk-executor-dot-net#bulk-import-data-to-azure-cosmos-db)voor meer informatie over de para meters van de bibliotheek voor bulk-uitvoerder.
+Raadpleeg het [onderwerp BulkImportData to Azure Cosmos DB](bulk-executor-dot-net.md#bulk-import-data-to-an-azure-cosmos-account)voor meer informatie over de para meters van de bibliotheek voor bulk-uitvoerder.
 
 De nettolading moet in `GremlinVertex`- en `GremlinEdge`-objecten worden gemaakt. Hier ziet u hoe deze objecten kunnen worden gemaakt:
 
@@ -131,7 +131,7 @@ Deze opslagplaats bevat het GraphBulkExecutor-voorbeeld met de volgende bestande
 File|Description
 ---|---
 `App.config`|Hier worden de voor de toepassing en database specifieke parameters gespecificeerd. Dit bestand moet eerst worden aangepast om verbinding te kunnen maken met de doeldatabase en de verzamelingen.
-`Program.cs`| Dit bestand bevat de logica achter het maken `DocumentClient` van de verzameling, het afhandelen van de opschoon bewerkingen en het verzenden van de aanvragen voor bulk levering.
+`Program.cs`| Dit bestand bevat de logica achter het maken van de verzameling @no__t 0, het afhandelen van de opschoon bewerkingen en het verzenden van de aanvragen voor bulk levering.
 `Util.cs`| Dit bestand bevat een helperklasse die de logica bevat voor het genereren van testgegevens en het controleren op de aanwezigheid van de database en verzamelingen.
 
 In het `App.config`-bestand zijn de configuratiewaarden die kunnen worden opgegeven, als volgt:

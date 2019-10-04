@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: f118f27d870f4c69a3bf568bacb3765fefee34c0
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: 9ce4b25d26c0294cf7618b5851c0956af7687ee7
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69907134"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71837538"
 ---
 [!INCLUDE [Prerequisites](prerequisites-java.md)]
 
@@ -170,7 +170,10 @@ gradle run
 
 ## <a name="sample-response"></a>Voorbeeldantwoord
 
-Zoek de afkorting van het land/de regio in deze [lijst met talen](https://docs.microsoft.com/azure/cognitive-services/translator/language-support).
+Nadat u het voor beeld hebt uitgevoerd, ziet u het volgende afgedrukt op Terminal:
+
+> [!NOTE]
+> Zoek de afkorting van het land/de regio in deze [lijst met talen](https://docs.microsoft.com/azure/cognitive-services/translator/language-support).
 
 ```json
 [

@@ -8,12 +8,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 09/30/2019
 ms.author: v-adgera
-ms.openlocfilehash: f33e5be2408d2ebacd215c5f0601d712197254a7
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
-ms.translationtype: MT
+ms.openlocfilehash: f04946dffd66dcd44743197a0ca8f0fe21624285
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71803425"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71844514"
 ---
 # <a name="how-to-configure-postman-for-azure-digital-twins"></a>Postman configureren voor Azure Digital Apparaatdubbels
 
@@ -122,7 +122,8 @@ Na het volt ooien van de vorige stappen, moet u na het uitvoeren van een geverif
    [![Content type multi part/Mixed](media/how-to-configure-postman/content-type.png)](media/how-to-configure-postman/content-type.png#lightbox)
 
 1. Serialisatie van niet-tekst gegevens in bestanden. JSON-gegevens worden opgeslagen als een JSON-bestand.
-1. Voeg op het tabblad **hoofd tekst** elk bestand toe door een **sleutel** naam toe te wijzen en `file` of `text` te selecteren.
+1. Selecteer op het tabblad **hoofd tekst** `form-data`. 
+1. Voeg elk bestand toe door een **sleutel** naam toe te wijzen en `file` te selecteren.
 1. Selecteer vervolgens elk bestand via de knop **bestand kiezen** .
 
    [voor beeld van ![Postman-client](media/how-to-configure-postman/form-body.png)](media/how-to-configure-postman/form-body.png#lightbox)

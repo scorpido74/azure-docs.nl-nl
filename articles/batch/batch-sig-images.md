@@ -8,12 +8,12 @@ ms.service: batch
 ms.topic: article
 ms.date: 08/28/2019
 ms.author: lahugh
-ms.openlocfilehash: c3f5155c7d1576657f36445562b5b425148a838a
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: fa232fb48e80e3ae3751920e4215c4b4d3ded19a
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71348952"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827917"
 ---
 # <a name="use-the-shared-image-gallery-to-create-a-custom-pool"></a>De galerie met gedeelde afbeeldingen gebruiken om een aangepaste groep te maken
 
@@ -58,7 +58,7 @@ Als u batch-Pools betrouwbaar wilt schalen met een aangepaste installatie kopie,
 
 ### <a name="prepare-a-vm"></a>Een virtuele machine voorbereiden
 
-Als u een nieuwe VM voor de installatie kopie maakt, gebruikt u een Azure Marketplace-installatie kopie van de eerste partij die door batch wordt ondersteund als basis installatie kopie voor uw beheerde installatie kopie. Alleen installatie kopieën van de eerste partij kunnen worden gebruikt als basis installatie kopie. Voor een volledige lijst met voor beelden van Azure Marketplace-installatie kopieën die door Azure Batch worden ondersteund, raadpleegt u de [List node agent sku's](/rest/api/batchservice/account/listnodeagentskus) -bewerking.
+Als u een nieuwe VM voor de installatie kopie maakt, gebruikt u een Azure Marketplace-installatie kopie van de eerste partij die door batch wordt ondersteund als basis installatie kopie voor uw beheerde installatie kopie. Alleen installatie kopieën van de eerste partij kunnen worden gebruikt als basis installatie kopie. Voor een volledige lijst met voor beelden van Azure Marketplace-installatie kopieën die door Azure Batch worden ondersteund, raadpleegt u de [List node agent sku's](/java/api/com.microsoft.azure.batch.protocol.accounts.listnodeagentskus) -bewerking.
 
 > [!NOTE]
 > U kunt geen afbeelding van derden gebruiken die aanvullende licentie-en aankoop voorwaarden als uw basis installatie kopie heeft. Zie de richt lijnen [voor Linux](../virtual-machines/linux/cli-ps-findimage.md#deploy-an-image-with-marketplace-terms

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 06/24/2019
 ms.author: mlearned
-ms.openlocfilehash: 4d76578de0c80570e67db03046c42985500ddcdb
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: e8ffb9051220cc80aa12adaa9dc9b1fcc6ddfc20
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70914713"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71839982"
 ---
 # <a name="preview---create-an-azure-kubernetes-service-aks-cluster-that-uses-availability-zones"></a>Voor beeld: een Azure Kubernetes service-cluster (AKS) maken dat gebruikmaakt van Beschikbaarheidszones
 
@@ -71,9 +71,14 @@ az provider register --namespace Microsoft.ContainerService
 
 AKS-clusters kunnen momenteel worden gemaakt met beschikbaarheids zones in de volgende regio's:
 
+* US - centraal
 * US - oost 2
+* East US
+* Frankrijk - centraal
+* Japan - oost
 * Europa - noord
 * Azië - zuidoost
+* Verenigd Koninkrijk Zuid
 * Europa -west
 * US - west 2
 

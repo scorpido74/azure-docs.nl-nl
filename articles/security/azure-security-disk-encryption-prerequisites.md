@@ -5,14 +5,14 @@ author: msmbaldwin
 ms.service: security
 ms.topic: article
 ms.author: mbaldwin
-ms.date: 03/25/2019
+ms.date: 09/30/2019
 ms.custom: seodec18
-ms.openlocfilehash: bd51e70122a5457c8dcf1bd8f2061fe25943e87f
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 551918373f8292d798980600d6e0d43add55bd18
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "71224510"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828271"
 ---
 # <a name="azure-disk-encryption-prerequisites"></a>Vereisten voor Azure Disk Encryption
 
@@ -70,6 +70,7 @@ Linux-server distributies die niet zijn goedgekeurd door Azure, bieden geen onde
 | Ubuntu | 18,04| Besturingssysteem- en schijf |
 | Ubuntu | 16.04| Besturingssysteem- en schijf |
 | Ubuntu | 14.04.5</br>[met een afgestemde kernel van Azure bijgewerkt tot 4,15 of hoger](azure-security-disk-encryption-tsg.md#bkmk_Ubuntu14) | Besturingssysteem- en schijf |
+| RHEL | 7,7 | Besturings systeem en gegevens schijf (zie opmerking hieronder) |
 | RHEL | 7,6 | Besturings systeem en gegevens schijf (zie opmerking hieronder) |
 | RHEL | 7.5 | Besturings systeem en gegevens schijf (zie opmerking hieronder) |
 | RHEL | 7.4 | Besturings systeem en gegevens schijf (zie opmerking hieronder) |
@@ -77,6 +78,7 @@ Linux-server distributies die niet zijn goedgekeurd door Azure, bieden geen onde
 | RHEL | 7.2 | Besturings systeem en gegevens schijf (zie opmerking hieronder) |
 | RHEL | 6.8 | Gegevens schijf (zie opmerking hieronder) |
 | RHEL | 6.7 | Gegevens schijf (zie opmerking hieronder) |
+| CentOS | 7,7 | Besturingssysteem- en schijf |
 | CentOS | 7,6 | Besturingssysteem- en schijf |
 | CentOS | 7.5 | Besturingssysteem- en schijf |
 | CentOS | 7.4 | Besturingssysteem- en schijf |
@@ -181,7 +183,7 @@ De [Azure CLI 2.0](/cli/azure) is een opdrachtregelprogramma voor het beheren va
 
 
 ## <a name="prerequisite-workflow-for-key-vault"></a>Vereiste werkstroom voor Key Vault
-Als u al bekend met de Key Vault en Azure AD-vereisten voor Azure Disk Encryption bent, kunt u de [PowerShell script met vereisten voor Azure Disk Encryption](https://raw.githubusercontent.com/Azure/azure-powershell/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts/AzureDiskEncryptionPreRequisiteSetup.ps1 ). Zie voor meer informatie over het gebruik van het script met vereisten voor de [een snelstartgids van Virtual machines versleutelen](azure-disk-encryption-linux-powershell-quickstart.md) en de [Azure Disk Encryption bijlage](azure-security-disk-encryption-appendix.md#bkmk_prereq-script). 
+Als u al bekend met de Key Vault en Azure AD-vereisten voor Azure Disk Encryption bent, kunt u de [PowerShell script met vereisten voor Azure Disk Encryption](https://raw.githubusercontent.com/Azure/azure-powershell/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts/AzureDiskEncryptionPreRequisiteSetup.ps1 ). Zie voor meer informatie over het gebruik van het script met vereisten voor de [een snelstartgids van Virtual machines versleutelen](../virtual-machines/linux/disk-encryption-powershell-quickstart.md) en de [Azure Disk Encryption bijlage](azure-security-disk-encryption-appendix.md#bkmk_prereq-script). 
 
 1. Indien nodig, kunt u een resourcegroep maken.
 2. Een sleutelkluis maken. 

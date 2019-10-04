@@ -10,12 +10,12 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: cotresne
-ms.openlocfilehash: a0c34fcc70d92f98a6d72e4cd2fc78d34d863d55
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: f468b2afce1609de126859546a72544ba403424e
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69650463"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71838875"
 ---
 # <a name="deployment-technologies-in-azure-functions"></a>Implementatie technologieën in Azure Functions
 
@@ -55,8 +55,8 @@ Enkele belang rijke concepten zijn essentieel om te weten hoe implementaties wer
 Wanneer u een van de triggers wijzigt, moeten de functies de infra structuur op de hoogte zijn van de wijzigingen. Synchronisatie gebeurt automatisch voor veel implementatie technologieën. In sommige gevallen moet u de triggers echter hand matig synchroniseren. Wanneer u uw updates implementeert door te verwijzen naar een URL voor een extern pakket, lokale Git, Cloud synchronisatie of FTP, moet u de triggers hand matig synchroniseren. U kunt triggers op een van de volgende drie manieren synchroniseren:
 
 * Start uw functie-app in de Azure Portal
-* Verzend een HTTP POST-aanvraag `https://{functionappname}.azurewebsites.net/admin/host/synctriggers?code=<API_KEY>` naar het gebruik van de [hoofd sleutel](functions-bindings-http-webhook.md#authorization-keys).
-* Verzend een HTTP POST-aanvraag `https://management.azure.com/subscriptions/<SUBSCRIPTION_ID>/resourceGroups/<RESOURCE_GROUP_NAME>/providers/Microsoft.Web/sites/<FUNCTION_APP_NAME>/syncfunctiontriggers?api-version=2016-08-01`naar. Vervang de tijdelijke aanduidingen door uw abonnements-ID, naam van de resource groep en de naam van uw functie-app.
+* Verzend een HTTP POST-aanvraag naar `https://{functionappname}.azurewebsites.net/admin/host/synctriggers?code=<API_KEY>` met behulp van de [hoofd sleutel](functions-bindings-http-webhook.md#authorization-keys).
+* Verzend een HTTP POST-aanvraag naar `https://management.azure.com/subscriptions/<SUBSCRIPTION_ID>/resourceGroups/<RESOURCE_GROUP_NAME>/providers/Microsoft.Web/sites/<FUNCTION_APP_NAME>/syncfunctiontriggers?api-version=2016-08-01`. Vervang de tijdelijke aanduidingen door uw abonnements-ID, naam van de resource groep en de naam van uw functie-app.
 
 ### <a name="remote-build"></a>Externe build
 
@@ -99,7 +99,7 @@ De volgende implementatie methoden zijn beschikbaar in Azure Functions.
 
 U kunt een externe pakket-URL gebruiken om te verwijzen naar een extern pakket bestand (. zip) dat uw functie-app bevat. Het bestand wordt gedownload van de beschik bare URL en de app wordt uitgevoerd in de pakket modus in [uitvoering](run-functions-from-deployment-package.md) .
 
->__Hoe gebruikt u dit:__ Toevoegen `WEBSITE_RUN_FROM_PACKAGE` aan de toepassings instellingen. De waarde van deze instelling moet een URL zijn (de locatie van het specifieke pakket bestand dat u wilt uitvoeren). U kunt instellingen toevoegen [in de portal](functions-how-to-use-azure-function-app-settings.md#settings) of met [behulp van de Azure cli](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set). 
+>__Hoe gebruikt u dit:__ Voeg `WEBSITE_RUN_FROM_PACKAGE` toe aan de instellingen van uw toepassing. De waarde van deze instelling moet een URL zijn (de locatie van het specifieke pakket bestand dat u wilt uitvoeren). U kunt instellingen toevoegen [in de portal](functions-how-to-use-azure-function-app-settings.md#settings) of met [behulp van de Azure cli](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set). 
 >
 >Als u Azure Blob Storage gebruikt, gebruikt u een persoonlijke container met een [Shared Access Signature (SAS)](../vs-azure-tools-storage-manage-with-storage-explorer.md#generate-a-sas-in-storage-explorer) om functies toegang te geven tot het pakket. Telkens wanneer de toepassing opnieuw wordt gestart, wordt een kopie van de inhoud opgehaald. Uw verwijzing moet geldig zijn voor de levens duur van de toepassing.
 
@@ -119,7 +119,7 @@ func azure functionapp publish <app name> --build remote
 
 U kunt ook tegenover code een instructie uitvoeren om een externe build uit te voeren tijdens de implementatie door de vlag ' ' azureFunctions. scmDoBuildDuringDeployment ' toe te voegen. Lees de instructies in de [wiki van Azure functions extension](https://github.com/microsoft/vscode-azurefunctions/wiki)voor meer informatie over het toevoegen van een markering aan VS code.
 
->Wanneer u implementeert met behulp van zip-implementatie, kunt u instellen dat uw app [vanuit het pakket wordt uitgevoerd](run-functions-from-deployment-package.md). Als u uit het pakket wilt uitvoeren `WEBSITE_RUN_FROM_PACKAGE` , stelt u de `1`waarde voor de toepassings instelling in op. U kunt het beste een zip-implementatie uitvoeren. Het levert snellere laad tijden voor uw toepassingen en is de standaard waarde voor VS code, Visual Studio en de Azure CLI. 
+>Wanneer u implementeert met behulp van zip-implementatie, kunt u instellen dat uw app [vanuit het pakket wordt uitgevoerd](run-functions-from-deployment-package.md). Als u uit het pakket wilt uitvoeren, stelt u de waarde van de toepassings instelling @no__t 0 in op `1`. U kunt het beste een zip-implementatie uitvoeren. Het levert snellere laad tijden voor uw toepassingen en is de standaard waarde voor VS code, Visual Studio en de Azure CLI. 
 
 >__Wanneer u deze gebruikt:__ Zip-implementatie is de aanbevolen implementatie technologie voor Azure Functions.
 
@@ -130,9 +130,9 @@ U kunt een Linux-container installatie kopie implementeren die uw functie-app be
 >__Hoe gebruikt u dit:__ Maak een Linux-functie-app in het Premium-of dedicated-abonnement en geef op van welke container installatie kopie moet worden uitgevoerd. U kunt dit op twee manieren doen:
 >
 >* Maak een Linux-functie-app in een Azure App Service plan in het Azure Portal. Voor **publiceren**selecteert u **docker-installatie kopie**en configureert u vervolgens de container. Geef de locatie op waar de installatie kopie wordt gehost.
->* Een Linux-functie-app maken in een App Service-abonnement met behulp van de Azure CLI. Zie [een functie maken in Linux met behulp van een aangepaste installatie kopie](functions-create-function-linux-custom-image.md#create-and-deploy-the-custom-image)voor meer informatie.
+>* Een Linux-functie-app maken in een App Service-abonnement met behulp van de Azure CLI. Zie [een functie maken in Linux met behulp van een aangepaste installatie kopie](functions-create-function-linux-custom-image.md#create-a-premium-plan)voor meer informatie.
 >
->Als u wilt implementeren in een bestaande app met behulp van een [](functions-run-local.md)aangepaste container, gebruikt [`func deploy`](functions-run-local.md#publish) u de opdracht in azure functions core tools.
+>Als u wilt implementeren in een bestaande app met behulp van een aangepaste container, gebruikt u in [Azure functions core tools](functions-run-local.md)de [`func deploy`](functions-run-local.md#publish) opdracht.
 
 >__Wanneer u deze gebruikt:__ Gebruik de optie docker-container wanneer u meer controle nodig hebt over de Linux-omgeving waarin uw functie-app wordt uitgevoerd. Dit implementatie mechanisme is alleen beschikbaar voor functies die worden uitgevoerd op Linux.
 
@@ -142,7 +142,7 @@ Web Deploy-pakketten en implementeert uw Windows-toepassingen op elke IIS-server
 
 >__Hoe gebruikt u dit:__ Gebruik [Visual Studio-hulpprogram ma's voor Azure functions](functions-create-your-first-function-visual-studio.md). Schakel het selectie vakje **uitvoeren vanaf pakket bestand (aanbevolen)** uit.
 >
->U kunt ook [Web Deploy 3,6](https://www.iis.net/downloads/microsoft/web-deploy) downloaden en direct `MSDeploy.exe` bellen.
+>U kunt ook [Web Deploy 3,6](https://www.iis.net/downloads/microsoft/web-deploy) downloaden en `MSDeploy.exe` rechtstreeks aanroepen.
 
 >__Wanneer u deze gebruikt:__ Web Deploy wordt ondersteund en heeft geen problemen, maar het voorkeurs mechanisme is [zip implementeren met uitvoeren vanuit pakket ingeschakeld](#zip-deploy). Raadpleeg voor meer informatie de [Visual Studio Development Guide](functions-develop-vs.md#publish-to-azure).
 
@@ -182,7 +182,7 @@ U kunt FTP gebruiken om bestanden rechtstreeks naar Azure Functions te verzenden
 
 In de portal-editor kunt u de bestanden in uw functie-app rechtstreeks bewerken (in principe elke keer dat u uw wijzigingen opslaat).
 
->__Hoe gebruikt u dit:__ Als u uw functies in het Azure Portal wilt kunnen bewerken, moet u [uw functies in de portal hebben gemaakt](functions-create-first-azure-function.md). Als u één bron van waarheid wilt behouden, is het gebruik van een andere implementatie methode de functie alleen-lezen en voor komt u dat de portal verder kan worden bewerkt. Als u wilt terugkeren naar een status waarin u uw bestanden kunt bewerken in de Azure Portal, kunt u de bewerkings modus hand `Read/Write` matig weer inschakelen en alle implementatie-gerelateerde toepassings instellingen `WEBSITE_RUN_FROM_PACKAGE`verwijderen (zoals). 
+>__Hoe gebruikt u dit:__ Als u uw functies in het Azure Portal wilt kunnen bewerken, moet u [uw functies in de portal hebben gemaakt](functions-create-first-azure-function.md). Als u één bron van waarheid wilt behouden, is het gebruik van een andere implementatie methode de functie alleen-lezen en voor komt u dat de portal verder kan worden bewerkt. Als u wilt terugkeren naar een status waarin u uw bestanden kunt bewerken in de Azure Portal, kunt u de bewerkings modus hand matig weer inschakelen op `Read/Write` en alle implementatie-gerelateerde toepassings instellingen verwijderen (zoals `WEBSITE_RUN_FROM_PACKAGE`). 
 
 >__Wanneer u deze gebruikt:__ De portal is een goede manier om aan de slag te gaan met Azure Functions. Voor een intensere ontwikkel werkzaamheden wordt u aangeraden een van de volgende client hulpprogramma's te gebruiken:
 >
@@ -203,7 +203,7 @@ In de volgende tabel ziet u de besturings systemen en talen die ondersteuning bi
 | Power shell (preview-versie) |✔|✔|✔| | | |
 | TypeScript (Node.js) | | | | | | |
 
-<sup>*</sup>Het bewerken van de portal is alleen ingeschakeld voor HTTP-en timer triggers voor functies op Linux met behulp van Premium-en speciale abonnementen.
+<sup>*</sup> Het bewerken van de portal is alleen ingeschakeld voor HTTP-en timer triggers voor functies op Linux met behulp van Premium-en speciale abonnementen.
 
 ## <a name="deployment-slots"></a>Implementatiesites
 

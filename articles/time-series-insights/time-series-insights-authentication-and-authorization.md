@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 09/23/2019
 ms.custom: seodec18
-ms.openlocfilehash: 88734b0ee05f5193da89f33e1639e4e7a187f225
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: 9cee148b6cb17f18c06e98158ac21638cedf519c
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71264651"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828744"
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Verificatie en autorisatie voor Azure Time Series Insights-API
 
@@ -107,7 +107,7 @@ In deze sectie worden algemene HTTP-aanvraag headers en-para meters beschreven d
 
 ### <a name="authentication"></a>Authentication
 
-Als u geverifieerde query's wilt uitvoeren op de [Time Series INSIGHTS rest api's](https://docs.microsoft.com/rest/api/time-series-insights/), moet er een geldig OAuth 2,0 Bearer-token worden door gegeven in de [autorisatie-header](/rest/api/apimanagement/authorizationserver/createorupdate) met behulp van een rest C#-client naar keuze (Postman, java script,). 
+Als u geverifieerde query's wilt uitvoeren op de [Time Series INSIGHTS rest api's](https://docs.microsoft.com/rest/api/time-series-insights/), moet er een geldig OAuth 2,0 Bearer-token worden door gegeven in de [autorisatie-header](/rest/api/apimanagement/2019-01-01/authorizationserver/createorupdate) met behulp van een rest C#-client naar keuze (Postman, java script,). 
 
 > [!IMPORTANT]
 > Het token moet exact worden uitgegeven aan de `https://api.timeseries.azure.com/` resource (ook wel bekend als het ' publiek ' van het token).

@@ -1,51 +1,55 @@
 ---
-title: Preview van Azure Data bestandsshare controleren
-description: Preview van Azure Data bestandsshare controleren
+title: Preview van Azure data share bewaken
+description: Preview van Azure data share bewaken
 author: joannapea
 ms.service: data-share
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: joanpo
-ms.openlocfilehash: 869c1ed41d7f78df184461bc1d8cab6c6eb8d426
-ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
+ms.openlocfilehash: fbc6847dd86b7687d477b2bae0deab1389dc8491
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67789096"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827064"
 ---
-# <a name="monitor-azure-data-share-preview"></a>Voorbeeld van monitor Azure gegevens delen 
+# <a name="monitor-azure-data-share-preview"></a>Preview van Azure data share bewaken 
 
-In dit artikel wordt uitgelegd hoe u uw gegevens bestandsshares met behulp van Azure Data Share Preview kunt bewaken. Als een gegevensprovider bent u kunt voor het bewaken van verschillende aspecten van uw gegevens delen van relaties. Meer informatie, zoals of de gebruikers van uw gegevens hebt heeft uw uitnodiging geaccepteerd voor het delen van gegevens, ook als ze hebben of een share-abonnement hebt gemaakt en aan de slag om uw gegevens te gebruiken zijn allemaal beschikbaar om te controleren. 
+In dit artikel wordt uitgelegd hoe u uw gegevens shares kunt bewaken met behulp van de preview-versie van Azure data share. Als gegevens provider kunt u verschillende aspecten van uw relaties voor het delen van gegevens bewaken. Details over de vraag of uw gegevens gebruikers uw uitnodiging voor de gegevens share hebben geaccepteerd en of ze een share abonnement hebben gemaakt en dat ze uw gegevens kunnen gebruiken, zijn allemaal beschikbaar voor bewaking. 
 
-U kunt de momentopnamen die zijn geactiveerd als een consument gegevens controleren in uw Azure-abonnement. 
+Als gegevens verbruiker kunt u de moment opnamen bewaken die zijn geactiveerd in uw Azure-abonnement. 
 
-## <a name="monitor-invitation-status"></a>Monitor status van de uitnodiging
+## <a name="monitor-invitation-status"></a>Status van uitnodiging bewaken
 
-De status van uw uitnodigingen voor het delen van gegevens door te navigeren naar verzonden shares weergeven -> uitnodigingen. 
+Bekijk de status van uw uitnodigingen voor gegevens delen door te navigeren naar verzonden shares->-uitnodigingen. 
 
-![Status van de uitnodiging](./media/invitation-status.png "status van de uitnodiging") 
+(./media/invitation-status.png "Status uitnodiging") voor ![uitnodigingen] 
 
-Er zijn drie statussen die uw uitnodiging kan zich in:
+Er zijn drie statussen die uw uitnodiging kan bevinden:
 
-* In behandeling - heeft gegevens delen ontvanger nog niet geaccepteerd de uitnodiging.
-* Geaccepteerd - heeft gegevens delen ontvanger de uitnodiging geaccepteerd.
-* Afgekeurd - heeft gegevens delen ontvanger de uitnodiging geweigerd.
+* In behandeling: de ontvanger van het gegevens gedeelte heeft de uitnodiging nog niet geaccepteerd.
+* Geaccepteerd: ontvanger van gegevens delen heeft de uitnodiging geaccepteerd.
+* Afgewezen-ontvanger van gegevens delen heeft de uitnodiging afgewezen.
 
 > [!IMPORTANT]
-> Als u een uitnodiging verwijdert nadat deze is al geaccepteerd, is het niet gelijk aan het intrekken van toegang. Als u wilt stoppen toekomstige momentopnamen wordt gekopieerd naar uw gegevens consumenten storage-account, moet u de toegang tot en met intrekken de *abonnementen delen* tabblad. 
+> Als u een uitnodiging verwijdert nadat deze al is geaccepteerd, is deze niet gelijk aan het intrekken van de toegang. Als u wilt voor komen dat toekomstige moment opnamen naar het opslag account van uw data-consumers worden gekopieerd, moet u de toegang intrekken via het tabblad *abonnementen delen* . 
 
-## <a name="monitor-share-subscriptions"></a>Monitor bestandsshare abonnementen
+## <a name="monitor-share-subscriptions"></a>Share abonnementen bewaken
 
-De status van uw abonnementen delen door te navigeren naar verzonden Shares weergeven -> abonnementen delen. Hiermee geeft u meer informatie over actieve abonnementen die zijn gemaakt door de gebruikers van uw gegevens nadat u hebt uw uitnodiging geaccepteerd. U kunt toekomstige updates aan uw gegevensverbruiker stoppen door de share-abonnement te selecteren en te selecteren *intrekken*. 
+Bekijk de status van uw abonnementen voor delen door te navigeren naar verzonden shares->-abonnementen. Dit geeft u details over actieve abonnementen die door uw gegevens gebruikers zijn gemaakt nadat u uw uitnodiging hebt geaccepteerd. U kunt toekomstige updates voor uw gegevens verbruiker stoppen door het abonnement delen te selecteren en *intrekken*te selecteren. 
 
-## <a name="snapshot-history"></a>Geschiedenis van de momentopname 
+## <a name="snapshot-history"></a>Momentopname geschiedenis 
 
-Op het tabblad Geschiedenis bent u de momentopnamen die zijn gekopieerd voor de tenant van de consumenten van uw gegevens te bekijken. U bent kunnen controleren of de frequentie en duur van elke momentopname-interval. 
+Op het tabblad geschiedenis kunt u de moment opnamen weer geven die zijn gekopieerd naar de Tenant van uw gegevens verbruiker. U kunt de frequentie en duur van elk moment opname-interval bewaken. 
 
-![Geschiedenis van de momentopname](./media/sent-shares.png "Snapshot-geschiedenis") 
+![](./media/sent-shares.png "Geschiedenis") van momentopname geschiedenis 
 
-Hier vindt u meer informatie over elke uitvoeren door te klikken op de begindatum van de uitvoering van de momentopname. 
+U kunt meer informatie over de uitvoering van elke moment opname bekijken door te klikken op de begin datum van de uitvoering. 
+
+Er worden standaard Maxi maal 30 dagen van de momentopname geschiedenis weer gegeven. Als u meer dan 30 dagen voor de geschiedenis wilt zien, gaat u naar bewaking-> Diagnostische instellingen en selecteert u **Diagnostische instelling toevoegen**. U moet een opslag account selecteren om deze logboeken op te slaan in. 
+
+(./media/diagnostic-settings.png "Diagnostische instellingen") voor ![momentopname geschiedenis] 
 
 ## <a name="next-steps"></a>Volgende stappen 
 
-Meer informatie over [delen van gegevens van Azure-terminologie](terminology.md)
+Meer informatie over de [terminologie van Azure data share](terminology.md)

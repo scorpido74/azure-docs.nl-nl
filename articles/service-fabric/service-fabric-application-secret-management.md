@@ -1,6 +1,6 @@
 ---
-title: Azure Service Fabric-toepassingsgeheimen beheren | Microsoft Docs
-description: Meer informatie over het beveiligen van geheime waarden in een Service Fabric-toepassing (platform-agnostische).
+title: Azure Service Fabric-toepassings geheimen beheren | Microsoft Docs
+description: Meer informatie over het beveiligen van geheime waarden in een Service Fabric-toepassing (platform-neutraal).
 services: service-fabric
 documentationcenter: .net
 author: vturecek
@@ -14,30 +14,30 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/04/2019
 ms.author: vturecek
-ms.openlocfilehash: d151dbf20e68a2152e9d886a74e51786bb8fbfa6
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9854ad7118684e1a5e57b0809d733d812ad64176
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60614488"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828836"
 ---
 # <a name="manage-encrypted-secrets-in-service-fabric-applications"></a>Versleutelde geheimen in Service Fabric-toepassingen beheren
-Deze handleiding doorloopt u de stappen voor het beheren van geheimen in een Service Fabric-toepassing. Geheimen kunnen gevoelige informatie, zoals storage-verbindingsreeksen, wachtwoorden, of andere waarden die niet moeten worden verwerkt als tekst zonder opmaak zijn.
+In deze hand leiding worden de stappen beschreven voor het beheren van geheimen in een Service Fabric-toepassing. Geheimen kunnen gevoelige informatie zijn, zoals verbindings reeksen voor opslag, wacht woorden of andere waarden die niet in tekst zonder opmaak moeten worden verwerkt.
 
-Met behulp van versleutelde geheimen in een Service Fabric-toepassing bestaat uit drie stappen:
-* Stel een versleutelingscertificaat en geheimen versleutelen.
+Het gebruik van versleutelde geheimen in een Service Fabric toepassing bestaat uit drie stappen:
+* Stel een versleutelings certificaat in en versleutel geheimen.
 * Versleutelde geheimen in een toepassing opgeven.
-* Versleutelde geheimen van de servicecode ontsleutelen.
+* Versleutelde geheimen van service code ontsleutelen.
 
-## <a name="set-up-an-encryption-certificate-and-encrypt-secrets"></a>Instellen van een versleutelingscertificaat en geheimen versleutelen
-Een versleutelingscertificaat instellen en gebruiken voor het versleutelen van geheimen varieert tussen Windows en Linux.
-* [Stel een versleutelingscertificaat en geheimen op Windows-clusters te versleutelen.][secret-management-windows-specific-link]
-* [Stel een versleutelingscertificaat en geheimen op Linux-clusters te versleutelen.][secret-management-linux-specific-link]
+## <a name="set-up-an-encryption-certificate-and-encrypt-secrets"></a>Een versleutelings certificaat instellen en geheimen versleutelen
+Het instellen van een versleutelings certificaat voor het versleutelen van geheimen is afhankelijk van Windows en Linux.
+* [Stel een versleutelings certificaat in en versleutel geheimen op Windows-clusters.][secret-management-windows-specific-link]
+* [Een versleutelings certificaat instellen en geheimen op Linux-clusters versleutelen.][secret-management-linux-specific-link]
 
 ## <a name="specify-encrypted-secrets-in-an-application"></a>Versleutelde geheimen in een toepassing opgeven
-De vorige stap wordt beschreven hoe u een geheim met een certificaat voor versleutelen en produceren van een tekenreeks met base 64-codering voor gebruik in een toepassing. Deze base-64 gecodeerde tekenreeks kan worden opgegeven als een versleutelde [parameter] [ parameters-link] in Settings.xml van een service of als een versleutelde [omgevingsvariabele] [ environment-variables-link] in ServiceManifest.xml van een service.
+In de vorige stap wordt beschreven hoe u een geheim versleutelt met een certificaat en een met base 64 gecodeerde teken reeks produceert voor gebruik in een toepassing. Deze met base 64 gecodeerde teken reeks kan worden opgegeven als een versleutelde [para meter][parameters-link] in de instellingen. XML van een service of als een versleutelde [omgevings variabele][environment-variables-link] in de ServiceManifest. XML van een service.
 
-Geef een versleutelde [parameter] [ parameters-link] in van uw service Settings.xml-configuratiebestand met de `IsEncrypted` kenmerk ingesteld op `true`:
+Geef een versleutelde [para meter][parameters-link] op in het configuratie bestand instellingen. XML van uw service waarvoor het kenmerk `IsEncrypted` is ingesteld op `true`:
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -47,7 +47,7 @@ Geef een versleutelde [parameter] [ parameters-link] in van uw service Settings.
   </Section>
 </Settings>
 ```
-Geef een versleutelde [omgevingsvariabele] [ environment-variables-link] in ServiceManifest.xml-bestand van uw service met de `Type` kenmerk ingesteld op `Encrypted`:
+Geef een versleutelde [omgevings variabele][environment-variables-link] in het ServiceManifest. XML-bestand van uw service op waarvan het kenmerk `Type` is ingesteld op `Encrypted`:
 ```xml
 <CodePackage Name="Code" Version="1.0.0">
   <EnvironmentVariables>
@@ -56,11 +56,22 @@ Geef een versleutelde [omgevingsvariabele] [ environment-variables-link] in Serv
 </CodePackage>
 ```
 
-### <a name="inject-application-secrets-into-application-instances"></a>Toepassingsgeheimen injecteren in instanties van een toepassing
-Implementatie naar verschillende omgevingen moet in het ideale geval zijn als geautomatiseerde mogelijk. Dit kan worden bereikt door het uitvoeren van geheime codering in een build-omgeving en het geven van de versleutelde geheimen als parameters bij het maken van exemplaren van de toepassing.
+De geheimen kunnen ook worden opgenomen in uw Service Fabric-toepassing door een certificaat op te geven in het manifest van de toepassing. Voeg een **SecretsCertificate** -element toe aan **ApplicationManifest. XML** en voeg de vinger afdruk van het gewenste certificaat toe.
 
-#### <a name="use-overridable-parameters-in-settingsxml"></a>Onderdrukbare parameters gebruiken in Settings.xml
-Het configuratiebestand Settings.xml kunt onderdrukbare parameters die tijdens de aanmaak van de toepassing kunnen worden opgegeven. Gebruik de `MustOverride` kenmerk in plaats van een waarde voor een parameter op te geven:
+```xml
+<ApplicationManifest … >
+  ...
+  <Certificates>
+    <SecretsCertificate Name="MyCert" X509FindType="FindByThumbprint" X509FindValue="[YourCertThumbrint]"/>
+  </Certificates>
+</ApplicationManifest>
+```
+
+### <a name="inject-application-secrets-into-application-instances"></a>Toepassings geheimen in toepassings exemplaren invoeren
+In het ideale geval moet de implementatie naar verschillende omgevingen zo automatisch mogelijk worden uitgevoerd. Dit kan worden bereikt door geheime versleuteling uit te voeren in een bouw omgeving en de versleutelde geheimen op te geven als para meters bij het maken van toepassings exemplaren.
+
+#### <a name="use-overridable-parameters-in-settingsxml"></a>Overschrijf bare-para meters gebruiken in Settings. XML
+Met het configuratie bestand settings. XML kunt u Overschrijf bare-para meters opgeven die tijdens het maken van de toepassing kunnen worden opgegeven. Gebruik het kenmerk `MustOverride` in plaats van een waarde voor een para meter op te geven:
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -71,7 +82,7 @@ Het configuratiebestand Settings.xml kunt onderdrukbare parameters die tijdens d
 </Settings>
 ```
 
-Als u wilt overschrijven van waarden in Settings.xml, declareert u een onderdrukkingsparameter voor de service in ApplicationManifest.xml:
+Als u waarden in Settings. XML wilt overschrijven, declareert u een override-para meter voor de service in ApplicationManifest. XML:
 
 ```xml
 <ApplicationManifest ... >
@@ -92,15 +103,15 @@ Als u wilt overschrijven van waarden in Settings.xml, declareert u een onderdruk
   </ServiceManifestImport>
  ```
 
-Nu de waarde kan worden opgegeven als een *parametr aplikace* bij het maken van een exemplaar van de toepassing. Het maken van exemplaar van een toepassing kan scripts worden gebruikt met behulp van PowerShell, of zijn geschreven in C#, zo eenvoudig worden geïntegreerd in een buildproces.
+De waarde kan nu worden opgegeven als een *toepassings parameter* bij het maken van een exemplaar van de toepassing. Het maken van een toepassings exemplaar kan worden gescripteerd met Power shell C#of is geschreven in, voor een eenvoudige integratie in een bouw proces.
 
-Met behulp van PowerShell, de parameter wordt doorgegeven aan de `New-ServiceFabricApplication` opdracht als een [hash-tabel](https://technet.microsoft.com/library/ee692803.aspx):
+Met behulp van Power shell wordt de para meter door gegeven aan de `New-ServiceFabricApplication` opdracht als een [hash-tabel](https://technet.microsoft.com/library/ee692803.aspx):
 
 ```powershell
 New-ServiceFabricApplication -ApplicationName fabric:/MyApp -ApplicationTypeName MyAppType -ApplicationTypeVersion 1.0.0 -ApplicationParameter @{"MySecret" = "I6jCCAeYCAxgFhBXABFxzAt ... gNBRyeWFXl2VydmjZNwJIM="}
 ```
 
-Met behulp van C#, parameters voor de toepassing zijn opgegeven in een `ApplicationDescription` als een `NameValueCollection`:
+Met C#worden toepassings parameters in een `ApplicationDescription` opgegeven als een `NameValueCollection`:
 
 ```csharp
 FabricClient fabricClient = new FabricClient();
@@ -118,8 +129,8 @@ ApplicationDescription applicationDescription = new ApplicationDescription(
 await fabricClient.ApplicationManager.CreateApplicationAsync(applicationDescription);
 ```
 
-## <a name="decrypt-encrypted-secrets-from-service-code"></a>Versleutelde geheimen van de servicecode decoderen
-De API's voor toegang tot [parameters] [ parameters-link] en [omgevingsvariabelen] [ environment-variables-link] toestaan voor eenvoudig ontsleuteling van versleutelde waarden. Omdat de gecodeerde tekenreeks informatie over het certificaat wordt gebruikt voor versleuteling bevat, hoeft u niet handmatig opgeven van het certificaat. Het certificaat moet alleen worden geïnstalleerd op het knooppunt dat de service wordt uitgevoerd op.
+## <a name="decrypt-encrypted-secrets-from-service-code"></a>Versleutelde geheimen ontsleutelen van service code
+Met de Api's voor toegang tot [para meters][parameters-link] en [omgevings variabelen][environment-variables-link] kunt u versleutelde waarden eenvoudig ontsleutelen. Omdat de versleutelde teken reeks informatie bevat over het certificaat dat voor versleuteling wordt gebruikt, hoeft u het certificaat niet hand matig op te geven. Het certificaat hoeft alleen te worden geïnstalleerd op het knoop punt waarop de service wordt uitgevoerd.
 
 ```csharp
 // Access decrypted parameters from Settings.xml
@@ -136,7 +147,7 @@ string MyEnvVariable = Environment.GetEnvironmentVariable("MyEnvVariable");
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-Meer informatie over [toepassing en Servicebeveiliging](service-fabric-application-and-service-security.md)
+Meer informatie over de [beveiliging van toepassingen en services](service-fabric-application-and-service-security.md)
 
 <!-- Links -->
 [parameters-link]:service-fabric-how-to-parameterize-configuration-files.md

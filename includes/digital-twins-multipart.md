@@ -5,15 +5,15 @@ services: digital-twins
 author: kingdomofends
 ms.service: digital-twins
 ms.topic: include
-ms.date: 08/12/2019
+ms.date: 10/02/2019
 ms.author: v-adgera
 ms.custom: include file
-ms.openlocfilehash: f9b1b32775393196a77bef3aa2257f6fb66afdcb
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
-ms.translationtype: MT
+ms.openlocfilehash: 76a05817ae91bb49240e5d72988c776ce67ec1c0
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "69012102"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71845481"
 ---
 > [!NOTE]
 > Voor meerdelige aanvragen zijn doorgaans drie onderdelen vereist:
@@ -24,9 +24,9 @@ ms.locfileid: "69012102"
 >   * `form-data; name="metadata"`
 > * De bestands inhoud die moet worden geüpload
 >
-> **Het inhouds type** en de verplaatsingen van **inhoud** variëren afhankelijk van het gebruiks scenario.
+> **Het inhouds type** en de **verplaatsingen van inhoud** variëren afhankelijk van het gebruiks scenario.
 
-Meerdelige aanvragen kunnen via een programma worden gemaakt ( C#via), via een rest-client of hulp programma [](https://docs.microsoft.com/azure/digital-twins/how-to-configure-postman#multi)zoals postman. REST-client hulpprogramma's kunnen verschillende ondersteunings niveaus voor complexe meerdelige aanvragen hebben. Configuratie-instellingen kunnen ook enigszins afwijken van het hulp programma. Controleer welk hulp programma het meest geschikt is voor uw behoeften.
+Meerdelige aanvragen kunnen via een programma worden gemaakt ( C#via), via een rest-client of hulp programma zoals [postman](https://docs.microsoft.com/azure/digital-twins/how-to-configure-postman#make-a-multipart-post-request). REST-client hulpprogramma's kunnen verschillende ondersteunings niveaus voor complexe meerdelige aanvragen hebben. Configuratie-instellingen kunnen ook enigszins afwijken van het hulp programma. Controleer welk hulp programma het meest geschikt is voor uw behoeften.
 
 > [!IMPORTANT]
 > Meerdelige aanvragen voor de Azure Digital Apparaatdubbels Management-Api's hebben doorgaans twee delen:

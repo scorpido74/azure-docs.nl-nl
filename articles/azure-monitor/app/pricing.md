@@ -11,26 +11,25 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.reviewer: mbullwin
-ms.date: 09/30/2019
+ms.date: 10/03/2019
 ms.author: dalek
-ms.openlocfilehash: 448469d4c1ff15ed2ba814dfaa653c4d3c7e3452
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 3e0bdd42ea19b7029d3f3df4ff9a5a275aec0271
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71677821"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71936683"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Het gebruik en de kosten voor Application Insights beheren
 
 > [!NOTE]
-> In dit artikel wordt beschreven hoe u Application Insights voor gegevens gebruik kunt analyseren.  Raadpleeg de volgende artikelen voor meer informatie.
-> - [Gebruik en geschatte kosten bewaken](../../monitoring-and-diagnostics/monitoring-usage-and-estimated-costs.md) wordt beschreven hoe u gebruik en geschatte kosten voor meerdere Azure-bewakingsfuncties voor verschillende prijsmodellen. Ook wordt beschreven hoe u kunt wijzigen van het prijsmodel.
+> In dit artikel wordt beschreven hoe u de kosten voor Application Insights begrijpt en beheert.  Een verwant artikel, het [bewaken van het gebruik en de geschatte kosten](https://docs.microsoft.com/azure/azure-monitor/platform/usage-estimated-costs) , beschrijft het weer geven van het gebruik en de geschatte kosten in meerdere Azure-bewakings functies voor verschillende prijs modellen.
 
 Als u vragen hebt over de werking van prijzen voor Application Insights, kunt u een vraag stellen op ons [forum](https://social.msdn.microsoft.com/Forums/home?forum=ApplicationInsights).
 
 ## <a name="pricing-model"></a>Prijsmodel
 
-Prijzen voor [Azure-toepassing Insights][start] is gebaseerd op gegevens volume opgenomen en optioneel voor langere gegevens retentie. Elke Application Insights resource wordt in rekening gebracht als een afzonderlijke service en draagt bij aan de factuur voor uw Azure-abonnement.
+De prijzen voor [Azure-toepassing Insights][start] is een model voor betalen naar gebruik, op basis van het gegevens volume dat is opgenomen en optioneel voor langere gegevens retentie. Elke Application Insights resource wordt in rekening gebracht als een afzonderlijke service en draagt bij aan de factuur voor uw Azure-abonnement. 
 
 ### <a name="data-volume-details"></a>Details van gegevens volume
 
@@ -46,6 +45,22 @@ Prijzen voor [Azure-toepassing Insights][start] is gebaseerd op gegevens volume 
 Voor [webtests met meerdere stappen](../../azure-monitor/app/availability-multistep.md) worden extra kosten in rekening gebracht. Webtests met meerdere stappen zijn webtests die een reeks acties uitvoeren.
 
 Er worden geen afzonderlijke kosten in rekening gebracht voor *ping-tests* van één pagina. Telemetrie van ping-tests en tests met meerdere stappen wordt in rekening gebracht op hetzelfde als andere telemetrie van uw app.
+
+## <a name="estimating-the-costs-to-manage-your-application"></a>De kosten voor het beheren van uw toepassing schatten 
+
+Als u Application Insights nog niet gebruikt, kunt u de [Azure monitor prijs calculator](https://azure.microsoft.com/pricing/calculator/?service=monitor) gebruiken om de kosten van het gebruik van Application Insights te schatten. Begin met het invoeren van ' Azure Monitor ' in het zoekvak en klik op de resulterende Azure Monitor tegel. Schuif omlaag in de pagina naar Azure Monitor en selecteer Application Insights in de vervolg keuzelijst Type.  Hier kunt u het aantal GB aan gegevens invoeren dat u per maand verwacht te verzamelen, zodat de vraag is hoeveel gegevens Application Insights het verzamelen van uw toepassing. 
+
+Er zijn twee manieren om dit op te lossen: gebruik van standaard bewaking en adaptieve steek proeven die beschikbaar zijn in de ASP.NET-SDK, of estimtate u gegevens opname likley op basis van wat andere vergelijk bare klanten hebben gezien. 
+
+### <a name="data-collection-when-using-sampling"></a>Gegevens verzameling bij gebruik van steek proeven
+
+Met de [adaptieve steek proef](https://docs.microsoft.com/azure/azure-monitor/app/sampling#adaptive-sampling-in-your-aspnetaspnet-core-web-applications)van de ASP.NET SDK wordt het gegevens volume automatisch aangepast om binnen een opgegeven maximum frequentie aan verkeer te blijven voor standaard Application Insights bewaking. Als de toepassing een geringe hoeveelheid telemetrie produceert, zoals bij het opsporen van fouten of wegens een laag gebruik, worden de items niet verwijderd door de sampling processor zolang het volume minder is dan het geconfigureerde aantal gebeurtenissen per seconde niveau. Voor een toepassing met hoge volumes, met de standaard drempel waarde van 5 gebeurtenissen per seconde, wordt het aantal dagelijkse gebeurtenissen in een adaptieve steek proef beperkt tot 432.000. Met een typische gemiddelde gebeurtenis grootte van 1 KB komt dit overeen met 13,4 GB telemetrie per 31-daagse maand per knoop punt dat als host fungeert voor uw toepassing (aangezien de steek proef op elk knoop punt wordt uitgevoerd). 
+
+Voor Sdk's die geen adaptieve bemonstering ondersteunen, kunt u gebruikmaken van [opname sampling] [https://docs.microsoft.com/azure/azure-monitor/app/sampling#ingestion-sampling ], waarbij de voor beelden worden gerecevedd door Application Insights op basis van een percentage van de gegevens die moeten worden bewaard, of een [vast aantal steek proeven voor ASP.net, ASP.net core en Java websites](https://docs.microsoft.com/azure/azure-monitor/app/sampling#fixed-rate-sampling-for-aspnet-aspnet-core-and-java-websites) voor het verminderen van het verkeer dat wordt verzonden vanaf uw webserver en webbrowsers
+
+### <a name="learn-from-what-similar-customers-collect"></a>Meer informatie over wat vergelijk bare klanten verzamelen
+
+Als u in de Azure monitoring-prijs calculator voor Application Insights de functie ' schatting van gegevens volume gebaseerd op toepassings activiteit ' inschakelt, kunt u invoeren over uw toepassing (aanvragen per maand en pagina weergaven per maand), voor het geval u telemetrie aan de client zijde verzamelen) en vervolgens krijgt u de gemiddelde en negen tigste percentiel hoeveelheid gegevens die worden verzameld door vergelijk bare toepassingen. Deze dienen omvatten uiteraard het bereik van Application Insights configuratie (zoals sommige standaard [steekproef](../../azure-monitor/app/sampling.md)waarden, sommige geen steek proeven enz.), zodat u nog steeds over het besturings element beschikt om de hoeveelheid gegevens die u onder het mediaan niveau hebt opgenomen, te verminderen met behulp van steek proeven. Maar dit is een uitgangs punt om te begrijpen wat andere, vergelijk bare klanten te zien krijgen. 
 
 ## <a name="understand-your-usage-and-estimate-costs"></a>Inzicht in uw gebruik en geschatte kosten
 
@@ -64,6 +79,12 @@ Als u uw Application Insights-gebruik dieper wilt onderzoeken, opent u de pagina
 Application Insights kosten worden toegevoegd aan uw Azure-factuur. U kunt de details van uw Azure-factuur bekijken in het gedeelte **facturering** van de Azure portal of in de [Azure-facturerings Portal](https://account.windowsazure.com/Subscriptions). 
 
 ![Selecteer in het menu links facturering](./media/pricing/02-billing.png)
+
+## <a name="viewing-application-insights-usage-on-your-azure-bill"></a>Application Insights gebruik op uw Azure-factuur weer geven 
+
+Azure biedt een groot aantal handige functies in de hub [Azure Cost Management en facturering](https://docs.microsoft.com/azure/cost-management/quick-acm-cost-analysis?toc=/azure/billing/TOC.json) . Zo kunt u met de functionaliteit ' cost analysis ' uw uitgaven voor Azure-resources weer geven. Door een filter toe te voegen op resource type (aan micro soft. Insights/onderdelen voor Application Insights), kunt u uw uitgaven volgen.
+
+Meer informatie over uw gebruik kan worden verkregen door [uw gebruik te downloaden van Azure Portal](https://docs.microsoft.com/azure/billing/billing-download-azure-invoice-daily-usage-date#download-usage-in-azure-portal). In het gedownloade werk blad kunt u het gebruik per Azure-resource per dag bekijken. In dit Excel-werk blad kunt u het gebruik van uw Application Insights-resources vinden door eerst te filteren op de kolom meter categorie om "Application Insights" en "Log Analytics" weer te geven en vervolgens een filter toe te voegen aan de kolom ' instance ID ' die "bevat micro soft. Insights/onderdelen.  Het meeste Application Insights gebruik wordt gerapporteerd op meters van de meter categorie Log Analytics, omdat er één logboek back-end is voor alle Azure Monitor-onderdelen.  Alleen Application Insights bronnen in verouderde prijs categorieën en webtests met meerdere stappen worden gerapporteerd met een meter categorie van Application Insights.  Het gebruik wordt weer gegeven in de kolom verbruikte hoeveelheid en de eenheid voor elk item wordt weer gegeven in de kolom eenheid.  Meer informatie is beschikbaar om u te helpen [uw Microsoft Azure factuur te begrijpen](https://docs.microsoft.com/azure/billing/billing-understand-your-bill). 
 
 ## <a name="managing-your-data-volume"></a>Uw gegevens volume beheren 
 
@@ -156,16 +177,15 @@ In elk bewaard record `itemCount` geeft het aantal oorspronkelijke records aan d
 
 ## <a name="change-the-data-retention-period"></a>Wijzigen van de bewaartermijn voor gegevens
 
-> [!NOTE]
-> Deze functie is tijdelijk verwijderd tijdens het oplossen van een mogelijk probleem.  De eerste week wordt deze weer gegeven in oktober 2019.
-
 De standaard Bewaar periode voor Application Insights resources is 90 dagen. Voor elke Application Insights resource kunnen verschillende Bewaar perioden worden geselecteerd. De volledige set beschik bare Bewaar perioden is 30, 60, 90, 120, 180, 270, 365, 550 of 730 dagen. 
 
 Als u de retentie wilt wijzigen Application Insights, gaat u naar de pagina **gebruik en geschatte kosten** en selecteert u de optie **gegevens retentie** :
 
 ![Het dagelijkse volume limiet voor telemetrie aanpassen](./media/pricing/pricing-005.png)
 
-Wanneer facturering is ingeschakeld voor een langere retentie, worden gegevens die langer zijn dan 90 dagen in rekening gebracht als het tarief dat momenteel wordt gefactureerd voor Azure Log Analytics gegevens retentie. Meer informatie vindt u op de [pagina met Azure monitor prijzen](https://azure.microsoft.com/pricing/details/monitor/). Blijf op de hoogte van de voortgang van de herbewaaring van variabelen door te [stemmen op deze suggestie](https://feedback.azure.com/forums/357324-azure-monitor-application-insights/suggestions/17454031). 
+De retentie kan ook [via arm worden ingesteld](https://docs.microsoft.com/azure/azure-monitor/app/powershell) met behulp van de para meter `retentionInDays`. Als u de gegevens retentie instelt op 30 dagen, kunt u ook een onmiddellijke opschoning van oudere gegevens activeren met behulp van de para meter `immediatePurgeDataOn30Days`, wat nuttig kan zijn voor nalevings scenario's. Deze functionaliteit is alleen beschikbaar via ARM. 
+
+Wanneer het factureren voor een langere Bewaar 2019 periode begint, worden de gegevens die langer zijn dan 90 dagen, gefactureerd als het tarief dat momenteel wordt gefactureerd voor Azure Log Analytics gegevens retentie. Meer informatie vindt u op de [pagina met Azure monitor prijzen](https://azure.microsoft.com/pricing/details/monitor/). Blijf op de hoogte van de voortgang van de herbewaaring van variabelen door te [stemmen op deze suggestie](https://feedback.azure.com/forums/357324-azure-monitor-application-insights/suggestions/17454031). 
 
 ## <a name="data-transfer-charges-using-application-insights"></a>Kosten voor gegevens overdracht met behulp van Application Insights
 

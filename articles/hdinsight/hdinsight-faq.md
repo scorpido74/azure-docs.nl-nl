@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/20/2019
-ms.openlocfilehash: 0a718786cc7c72ef4ee9573c3c3e40401c53a315
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.openlocfilehash: 6bff2210e77f7af98c1289b08159a89f42f2a3bd
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71308067"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827608"
 ---
 # <a name="azure-hdinsight-frequently-asked-questions"></a>Azure HDInsight: Veelgestelde vragen
 
@@ -310,14 +310,14 @@ U gebruikt persistente scripts om nieuwe worker-knoop punten die aan het cluster
 
 U kunt de volgende REST-eind punten gebruiken om de benodigde gegevens in JSON-indeling te halen. Basis verificatie headers gebruiken om de aanvragen uit te voeren.
 
-- TEZ-query weergave: *https\/:/\<cluster naam >. azurehdinsight. net/WS/v1/Timeline/HIVE_QUERY_ID/*
-- TEZ dag weer gave: *https\/:/\<cluster naam >. azurehdinsight. net/WS/v1/Timeline/TEZ_DAG_ID/*
+- TEZ-query weergave: *https: \/ @ no__t-2 @ no__t-3cluster name >. azurehdinsight. net/WS/v1/Timeline/HIVE_QUERY_ID/*
+- TEZ dag weer gave: *https: \/ @ no__t-2 @ no__t-3cluster name >. azurehdinsight. net/WS/v1/Timeline/TEZ_DAG_ID/*
 
 ### <a name="how-do-i-retrieve-the-configuration-details-from-hdi-cluster-by-using-an-azure-active-directory-user"></a>Hoe kan ik de configuratie gegevens uit het HDI-cluster op te halen met behulp van een Azure Active Directory gebruiker?
 
 Als u de juiste verificatie tokens met uw AAD-gebruiker wilt onderhandelen, gaat u door de gateway via de volgende indeling:
 
-* https://`<cluster dnsname>`. azurehdinsight.net/API/v1/clusters/testclusterdem/stack_versions/1/repository_versions/1 
+* https://`<cluster dnsname>`.azurehdinsight.net/api/v1/clusters/testclusterdem/stack_versions/1/repository_versions/1 
 
 ### <a name="how-do-i-use-ambari-restful-api-to-monitor-yarn-performance"></a>Hoe kan ik Ambari rest API gebruiken om de prestaties van een garen te controleren?
 
@@ -352,6 +352,10 @@ Als u de opdracht van buiten het virtuele netwerk of vanuit een niet-gekoppeld v
 ### <a name="how-much-does-it-cost-to-deploy-an-hdinsight-cluster"></a>Hoeveel kost het om een HDInsight-cluster te implementeren?
 
 Zie de pagina met [prijzen voor Azure HDInsight](https://azure.microsoft.com/pricing/details/hdinsight/) voor meer informatie over de prijzen en veelgestelde vragen met betrekking tot facturering.
+
+### <a name="when-does-hdinsight-billing-start--stop"></a>Wanneer wordt de facturering van HDInsight gestart & stoppen?
+
+De facturering voor het gebruik van HDInsight-clusters begint zodra er een cluster is gemaakt en stopt als een cluster wordt verwijderd. De facturering is Pro-beoordeeld per minuut.
 
 ### <a name="how-do-i-cancel-my-subscription"></a>Hoe kan ik mijn abonnement annuleren?
 

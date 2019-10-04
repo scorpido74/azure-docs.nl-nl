@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: d1cbca20b9f1ee1d5f7eefb760ed60fa4d019050
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 95d8c2974ea372dd59d15a9f2cc31ed171acd932
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972860"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828923"
 ---
 # <a name="frequently-asked-questions-about-vmware-solution-by-cloudsimple"></a>Veelgestelde vragen over VMware-oplossing per CloudSimple
 
@@ -29,11 +29,11 @@ Een CloudSimple-privécloud is een persoonlijke, specifieke Cloud die bestaat ui
 
 **Waar is de CloudSimple-service beschikbaar?**
 
-CloudSimple is beschikbaar in de regio's VS-Oost en VS-West met extra regio's binnenkort.
+CloudSimple is beschikbaar in de regio's VS-Oost, VS-West en Europa-west met extra regio's binnenkort.
 
 **Hoe kan ik mijn abonnement voor CloudSimple inschakelen?**
 
-U kunt contact opnemen met uw Microsoft-account [azurevmwaresales@microsoft.com](mailto:azurevmwaresales@microsoft.com) -vertegenwoordiger om uw abonnement voor de CloudSimple-service in te scha kelen. Geef uw abonnements-ID op in het e-mail adres waarvoor u de CloudSimple-service wilt inschakelen.  
+U kunt contact opnemen met uw Microsoft-account [-vertegenwoordiger op azurevmwaresales@microsoft.com](mailto:azurevmwaresales@microsoft.com) om uw abonnement voor de CloudSimple-service in te scha kelen. Geef uw abonnements-ID op in het e-mail adres waarvoor u de CloudSimple-service wilt inschakelen.  
 
 **Hoe kan ik toegang tot de CloudSimple-Portal?**
 
@@ -68,7 +68,7 @@ U kunt de details van uw Privécloud weer geven in de CloudSimple-Portal. Als u 
 
 Een Azure ExpressRoute-circuit is een beveiligde verbinding met hoge snelheid en lage latentie.  CloudSimple biedt een speciaal ExpressRoute circuit per regio per klant.  Met dit circuit kunt u een beveiligde verbinding tot stand brengen vanuit een on-premises of uw Azure-abonnement.
 
-**Wat zijn de netwerk kosten om verbinding te maken met CloudSimple?  Gelden er uitgangs kosten tussen CloudSimple en Azure, of in verschillende regio's?**
+**What zijn de netwerk kosten om verbinding te maken met CloudSimple?  Gelden er uitstaande kosten tussen CloudSimple en Azure, of in verschillende regio's?**
 
 Er worden geen CloudSimple-kosten in rekening gebracht voor netwerk uitgaand verkeer.  De standaard tarieven van Azure gelden voor elk uitgaand verkeer van uw virtuele netwerk of van uw on-premises ExpressRoute-circuit.
 
@@ -106,8 +106,9 @@ CloudSimple biedt de volgende beveiligings functies voor het beveiligen van uw P
 
 CloudSimple biedt deze typen host:
 
-* **CS28-knoop punt:** CPU: 2x 2,2 GHz, totaal 28 kern geheugens, 48 HT.  RAM: 256 GB.  Storage: 1600 GB NVMe-cache, 5760 GB gegevens (alle Flash). Netwerk 2x25Gbe NIC
-* **CS36-knoop punt:** CPU 2x 2,3 GHz, totale 36 kern geheugens 72 HT.  RAM: 512 GB.  Storage: 3200 GB NVMe cache 11520 GB gegevens (alle-Flash).  Netwerk 2x25Gbe NIC
+* **CS28-knoop punt:** CPU: 2x 2,2 GHz, totaal 28 kern geheugens, 48 HT.  RAM: 256 GB.  Storage: 1600 GB NVMe-cache, 5760 GB gegevens (alle Flash). Netwerk 4x25Gbe NIC
+* **CS36-knoop punt:** CPU 2x 2,3 GHz, totale 36 kern geheugens 72 HT.  RAM: 512 GB.  Storage: 3200 GB NVMe cache 11520 GB gegevens (alle-Flash).  Netwerk 4x25Gbe NIC
+* **CS36m-knoop punt:** CPU 2x 2,3 GHz, totale 36 kern geheugens 72 HT.  RAM: 576 GB.  Storage: 3200 GB NVMe cache 13360 GB gegevens (alle-Flash).  Netwerk 4x25Gbe NIC
 
 **Hoe worden hardwarestoringen verwerkt?**
 

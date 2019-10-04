@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/20/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: f2b32d240958fa6bec44b94961ad2acc2191e727
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.openlocfilehash: 9a1366b24e4e46a93af777753debb1cce7c0f0ce
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71315200"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71826955"
 ---
 # <a name="set-up-sign-in-with-a-google-account-using-custom-policies-in-azure-active-directory-b2c"></a>Aanmelden met een Google-account instellen met behulp van aangepast beleid in Azure Active Directory B2C
 
@@ -158,6 +158,8 @@ Nu er een knop aanwezig is, moet u deze koppelen aan een actie. De actie in dit 
 3. Sla het bestand *TrustFrameworkExtensions. XML* op en upload het opnieuw voor verificatie.
 
 ## <a name="create-an-azure-ad-b2c-application"></a>Een Azure AD B2C-toepassing maken
+
+Communicatie met Azure AD B2C vindt plaats via een toepassing die u registreert in uw B2C-Tenant. In deze sectie vindt u optionele stappen die u kunt uitvoeren om een test toepassing te maken als u dit nog niet hebt gedaan.
 
 [!INCLUDE [active-directory-b2c-appreg-idp](../../includes/active-directory-b2c-appreg-idp.md)]
 
