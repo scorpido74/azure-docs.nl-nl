@@ -4,16 +4,16 @@ description: In dit artikel worden de algemene taken beschreven die een beheerde
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/18/2019
+ms.date: 09/25/2019
 ms.topic: conceptual
 ms.service: billing
 manager: boalcsva
-ms.openlocfilehash: 236a8d6d280e75102df84fec5ab3df51f7ba355b
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 87947fb29d8fa7dd86818caef139e776c04c7650
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71105490"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71308093"
 ---
 # <a name="azure-ea-portal-administration"></a>Beheer van Azure EA Portal
 
@@ -31,7 +31,7 @@ Wanneer nieuwe accounteigenaren (AO) voor de eerste keer worden toegevoegd aan e
 
 Nadat een Azure EA-beheerder een afdeling heeft gemaakt, kan de Azure Enterprise-beheerder afdelingsbeheerders toevoegen en deze koppelen aan een afdeling. Een afdelingsbeheerder kan nieuwe accounts maken. Nieuwe accounts zijn nodig om nieuwe Azure EA-abonnementen te maken.
 
-Zie Een Azure EA-afdeling maken voor meer informatie over het toevoegen van een afdeling.
+Raadpleeg [Een Azure EA-afdelingsbeheerder](billing-ea-portal-get-started.md#add-a-department-admin) maken voor meer informatie over het toevoegen van een afdelingsbeheerder.
 
 ## <a name="enterprise-user-roles"></a>Enterprise-gebruikersrollen
 
@@ -124,14 +124,14 @@ Er is geen downtime tijdens de accountoverdracht. Indien alle vereiste gegevens 
 
 Wanneer u een inschrijvingsoverdracht aanvraagt, verstrekt u de volgende gegevens:
 
-- Voor de broninschrijving het inschrijvingsnummer en het account dat moet worden overgedragen
-- Voor de doelinschrijving het inschrijvingsnummer waarnaar moet worden overgedragen
+- Voor de broninschrijving het inschrijvingsnummer en het account dat moet worden overgedragen.
+- Voor de doelinschrijving het inschrijvingsnummer waarnaar moet worden overgedragen.
 - De werkelijke datum van de inschrijvingsoverdracht kan een datum op of na de begindatum van de doelinschrijving zijn. De gekozen datum is niet van invloed op het gebruik voor een overschrijdingsfactuur die al is uitgegeven.
 
 Andere punten waarmee u rekening moet houden voordat u een inschrijving overdraagt:
 
-- Goedkeuring van een EA-beheerder is vereist voor de doel- en broninschrijving
-  - In sommige gevallen kan Microsoft vragen om aanvullende goedkeuring van een EA-beheerder van de broninschrijving
+- Goedkeuring van een EA-beheerder is vereist voor de doel- en broninschrijving.
+  - In sommige gevallen kan Microsoft vragen om aanvullende goedkeuring van een EA-beheerder van de broninschrijving.
 - Als een inschrijvingsoverdracht niet aan uw vereisten voldoet, kunt u een accountoverdracht overwegen.
 - Alleen de accounts die u opgeeft, worden overgebracht. U kunt aanvragen om al uw accounts over te dragen.
 - De status van de broninschrijving blijft actief/uitgebreid. U kunt de inschrijving blijven gebruiken totdat deze verloopt.
@@ -208,7 +208,7 @@ Als er geen melding door een gebruiker wordt ontvangen, controleert u aan de han
 6. Voeg indien nodig een contactpersoon toe en klik op **Toevoegen**.
 7. Klik op **Opslaan**.
 
-![Voorbeeld met Contactpersoon toevoegen voor het toevoegen van een ](./media/billing-ea-portal-administration/create-ea-manage-partner-notification.png)
+![Voorbeeld met het venster Contactpersoon toevoegen ](./media/billing-ea-portal-administration/create-ea-manage-partner-notification.png)
 
 ## <a name="azure-sponsorship-offer"></a>Azure Sponsorship-aanbieding
 De Azure Sponsorship-aanbieding is een beperkt gesponsord Microsoft Azure-account. De aanbieding is beschikbaar via een e-mailuitnodiging en alleen voor een beperkt aantal, door Microsoft geselecteerde klanten. Als u recht hebt op de aanbieding voor Microsoft Azure Sponsorship, ontvangt u een e-mailuitnodiging voor uw account-id.

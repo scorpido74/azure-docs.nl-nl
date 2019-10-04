@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/01/2019
 ms.author: banders
-ms.openlocfilehash: ee250589133abb1944ff17e39dc650cbae4279c6
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 8ab6cf061531a1ef3c72b2f36d25932c7498d291
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "67490682"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71345280"
 ---
 # <a name="understand-charges-on-your-microsoft-customer-agreement-invoice"></a>Inzicht in de kosten op de factuur van uw Microsoft-klantovereenkomst
 
@@ -115,7 +115,7 @@ Wanneer u de openstaande kosten identificeert, krijgt u inzicht in de kosten doo
 
 3. Selecteer een factureringsprofiel. Afhankelijk van uw toegang moet u mogelijk een factureringsaccount selecteren. Vanuit het factureringsaccount selecteert u **Factureringsprofielen** en vervolgens een factureringsprofiel.
 
-4. Selecteer **Alle abonnementen** aan de linkerkant van de pagina.
+4. Selecteer **Alle abonnementen** aan de linkerzijde van de pagina.
 
 5. De pagina Azure-abonnementen geeft de kosten voor elk abonnement voor de huidige en vorige maand weer in het factureringsprofiel. De maandkosten tot heden zijn de openstaande kosten voor de huidige maand en worden gefactureerd wanneer de factuur voor deze maand wordt gegenereerd. Als de factuur van de vorige maand nog steeds niet is gegenereerd, dan zijn de kosten van vorige maand ook openstaand.
 
@@ -169,9 +169,9 @@ Als u uw factuur al hebt betaald, kunt u de status van de betaling controleren o
 ## <a name="check-access-to-a-microsoft-customer-agreement"></a>Toegang tot een Microsoft-klantovereenkomst controleren
 [!INCLUDE [billing-check-mca](../../includes/billing-check-mca.md)]
 
-## <a name="need-help-contact-us"></a>Hulp nodig? Neem contact met ons op.
+## <a name="need-help-contact-us"></a>Hebt u hulp nodig? Neem contact met ons op.
 
-Als u vragen hebt of hulp nodig hebt, kunt u [een ondersteuningsaanvraag maken](https://go.microsoft.com/fwlink/?linkid=2083458).
+Als u vragen hebt of hulp nodig hebt, [kunt u een ondersteuningsaanvraag maken](https://go.microsoft.com/fwlink/?linkid=2083458).
 
 ## <a name="next-steps"></a>Volgende stappen
 

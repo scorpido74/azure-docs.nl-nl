@@ -12,48 +12,42 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/12/2019
 ms.author: jaserano
-ms.openlocfilehash: 45f6f181ddbf7e76662f76c433d8ff68c18f0de1
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 7795007b5bb27b9da540c6c3bcb0df45d1e17d80
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "69657084"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71718703"
 ---
 # <a name="troubleshoot-azure-payment-issues"></a>Problemen met Azure-betalingen oplossen
 
-Er kan een probleem optreden wanneer u in de Microsoft Azure-portal of het Azure-accountcentrum het betalingsgegevensaccount bijwerkt. Volg de volgende richtlijnen voordat u aan de slag gaat met het probleem:
+Er treedt mogelijk een fout of probleem op wanneer u het betalingsgegevensaccount probeert te bewerken in de Microsoft Azure-portal of in het Azure-accountcentrum.
 
-- Controleer of de gegevens die u hebt opgegeven voor uw Azure-accountprofiel (zoals het e-mailadres, adres en telefoonnummer van de contactpersoon) juist zijn.
-- Controleer of de creditcardgegevens juist zijn.
-- Controleer of u niet al een Microsoft-account hebt met dezelfde gegevens.
+Als u het probleem wilt oplossen, selecteert u hieronder het onderwerp dat het meest op uw probleem lijkt.
 
-## <a name="issues"></a>Problemen
-
-Selecteer het probleem dat optreedt bij aanmelding voor Azure om fouten te corrigeren.
-
-### <a name="unable-to-remove-a-credit-card-from-a-saved-billing-payment-method"></a>Kan creditcard niet verwijderen uit een opgeslagen betalingswijze
+## <a name="unable-to-remove-a-credit-card-from-a-saved-billing-payment-method"></a>Kan creditcard niet verwijderen uit een opgeslagen betalingswijze
 
 U kunt de creditcard standaard niet verwijderen uit het actieve abonnement.
 
 Als u een bestaande kaart wilt verwijderen, moet er een nieuwe kaart aan het abonnement worden toegevoegd, zodat het oude betaalmiddel kan worden verwijderd. U kunt ook het abonnement annuleren. Hiermee verwijdert u het abonnement permanent en verwijdert u ook de kaart.
 
-### <a name="unable-to-delete-an-old-payment-method-after-adding-a-new-payment-method"></a>Kan een oude betalingswijze niet verwijderen nadat een nieuwe betalingswijze is toegevoegd
+## <a name="unable-to-delete-an-old-payment-method-after-adding-a-new-payment-method"></a>Kan een oude betalingswijze niet verwijderen nadat een nieuwe betalingswijze is toegevoegd
 
 Het nieuwe betaalmiddel is mogelijk niet gekoppeld aan het abonnement. Zie [Een creditcard of debitcard voor Azure toevoegen, bijwerken of verwijderen](billing-how-to-change-credit-card.md) voor meer informatie over het koppelen van het betaalmiddel aan het abonnement.
 
 Zie [Problemen met een geweigerde kaart bij Azure-aanmelding oplossen](billing-troubleshoot-declined-card.md) voor meer informatie over het oplossen van problemen met een geweigerde kaart.
 
-### <a name="unable-to-delete-a-payment-method-because-of-cannot-delete-payment-method-error"></a>Kan betalingswijze niet verwijderen door het foutbericht *Kan betalingswijze niet verwijderen*
+## <a name="unable-to-delete-a-payment-method-because-of-cannot-delete-payment-method-error"></a>Kan betalingswijze niet verwijderen door het foutbericht *Kan betalingswijze niet verwijderen*
 
 Dit komt door een openstaand saldo. Betaal openstaande saldo's voordat u de betalingswijze verwijdert.
 
-### <a name="unable-to-see-subscriptions-under-my-account-to-update-the-payment-method"></a>Ik zie geen abonnementen in mijn account om de betalingswijze bij te werken
+## <a name="unable-to-see-subscriptions-under-my-account-to-update-the-payment-method"></a>Ik zie geen abonnementen in mijn account om de betalingswijze bij te werken
 
 U gebruikt mogelijk een e-mail-id die afwijkt van de naam die wordt gebruikt voor de abonnementen.
 
 Als u dit probleem wilt oplossen, raadpleegt u [Aanmeldingsfout dat er geen abonnementen zijn gevonden voor Azure Portal of het Azure-accountcentrum](billing-no-subscriptions-found.md).
 
-### <a name="unable-to-make-payment-for-a-subscription"></a>Kan geen betaling doen voor een abonnement
+## <a name="unable-to-make-payment-for-a-subscription"></a>Kan geen betaling doen voor een abonnement
 
 Als u het volgende foutbericht krijgt: *De betaling is te laat. Er is een probleem met uw betalingswijze* of *De informatie kan niet worden opgeslagen. Sluit de browser en probeer het opnieuw*, is er een betaling die op de kaart in behandeling is, omdat de kaart is geweigerd door uw financiële instelling.
 
@@ -65,7 +59,7 @@ Neem contact op met uw bank voor de volgende problemen:
 - De kaart heeft een kredietlimiet en het saldo moet worden vereffend.
 - Er is een terugkerende betaling ingeschakeld op de kaart.
 
-### <a name="unable-to-change-payment-method-because-of-browser-issues-browser-does-not-respond-does-not-load-and-so-on"></a>De betalingswijze kan niet worden gewijzigd vanwege browserproblemen (de browser reageert niet, wordt niet geladen enzovoort)
+## <a name="unable-to-change-payment-method-because-of-browser-issues-browser-does-not-respond-does-not-load-and-so-on"></a>De betalingswijze kan niet worden gewijzigd vanwege browserproblemen (de browser reageert niet, wordt niet geladen enzovoort)
 
 Meld u af bij alle actieve Azure-sessies en volg de stappen in het artikel [InPrivate-browsing in Microsoft Edge](https://support.microsoft.com/help/4026200/microsoft-edge-browse-inprivate) om een InPrivate-sessie in Microsoft Edge of Internet Explorer te starten.
 
@@ -77,11 +71,11 @@ U kunt ook de volgende handelingen uitvoeren:
 - Een andere browser gebruiken
 - Cookies in de cache verwijderen
 
-### <a name="my-subscription-is-still-disabled-after-updating-the-payment-method"></a>Mijn abonnement is nog steeds uitgeschakeld nadat de betalingswijze is bijgewerkt.
+## <a name="my-subscription-is-still-disabled-after-updating-the-payment-method"></a>Mijn abonnement is nog steeds uitgeschakeld nadat de betalingswijze is bijgewerkt.
 
 Dit probleem treedt op vanwege een openstaand saldo. Betaal openstaande saldo's voordat u de betalingswijze verwijdert.
 
-### <a name="unable-to-change-payment-method-because-of-an-xml-error-response-page"></a>Kan de betalingswijze niet wijzigen vanwege een responspagina met een XML-fout
+## <a name="unable-to-change-payment-method-because-of-an-xml-error-response-page"></a>Kan de betalingswijze niet wijzigen vanwege een responspagina met een XML-fout
 
 U ontvangt dit bericht als u [Azure Portal](https://portal.azure.com/) gebruikt om een nieuwe creditcard toe te voegen.
 

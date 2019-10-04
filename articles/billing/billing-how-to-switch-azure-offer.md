@@ -9,20 +9,20 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/01/2019
+ms.date: 09/30/2019
 ms.author: banders
-ms.openlocfilehash: 8e87bcb9f7d05fd5041623693c96f8c737758c32
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: e382b4bf12b53573f3506474837093456f9b84c6
+ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "67490982"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71709639"
 ---
 # <a name="change-your-azure-subscription-to-a-different-offer"></a>Uw Azure-abonnement wijzigen in een andere aanbieding
 
 Als klant met een [individueel abonnement met Betalen per gebruik-tarieven](https://azure.microsoft.com/offers/ms-azr-0003p/), kunt u uw Azure-abonnement in het [accountcentrum](https://account.windowsazure.com/Subscriptions) overschakelen naar een andere aanbieding. U kunt deze functie bijvoorbeeld gebruiken om te profiteren van de [maandelijkse tegoeden voor Visual Studio-abonnees](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/).
 
-**Wilt u slechts upgraden vanaf een gratis proefversie?** Zie [Uw abonnement upgraden](billing-upgrade-azure-subscription.md).
+**Wilt u slechts upgraden vanaf een gratis proefversie?** Raadpleeg [Uw abonnement bijwerken](billing-upgrade-azure-subscription.md).
 
 ## <a name="whats-supported"></a>Wat er wordt ondersteund:
 
@@ -101,7 +101,7 @@ Als u overschakelt naar een andere aanbieding, worden alle eventuele [limiet- of
 
 Op de dag dat u overschakelt, wordt een factuur gegenereerd voor alle openstaande kosten. Uw abonnement wordt vervolgens gefactureerd volgens de prijsvoorwaarden van de nieuwe aanbieding. De factureringsdatum van uw abonnement wordt gewijzigd in de datum waarop u de aanbieding hebt gewijzigd. Gebruiks- en factureringsgegevens van vóór de wijziging, worden niet bewaard, daarom raden we u aan een kopie te maken voordat u overschakelt.
 
-### <a name="can-i-migrate-from-a-subscription-with-pay-as-you-go-rates-to-cloud-solution-providerhttpspartnermicrosoftcomsolutionscloud-reseller-overview-csp-or-enterprise-agreementhttpsazuremicrosoftcompricingenterprise-agreement-ea"></a>Kan ik migreren van een abonnement met Betalen per gebruik-tarieven naar [CSP (Cloud Solution Provider)](https://partner.microsoft.com/Solutions/cloud-reseller-overview) of [EA (Enterprise Agreement)](https://azure.microsoft.com/pricing/enterprise-agreement/)?
+### <a name="can-i-migrate-from-a-subscription-with-pay-as-you-go-rates-to-cloud-solution-provider-csp-or-enterprise-agreement-ea"></a>Kan ik migreren van een abonnement met Betalen per gebruik-tarieven naar CSP (Cloud Solution Provider) of EA (Enterprise Agreement)?
 
 * Zie [Migratie van een Azure-abonnement met Betalen per gebruik naar CSP](https://docs.microsoft.com/azure/cloud-solution-provider/migration/migration-from-payg-to-csp).
 * Als u wilt migreren naar EA, vraagt u de inschrijvingsbeheerder om uw account toe te voegen aan EA. Volg de instructies in de uitnodigings-e-mail om uw abonnementen te laten verplaatsen onder EA-inschrijving. Zie [Een bestaand account koppelen](https://ea.azure.com/helpdocs/associateExistingAccount) in de EA-portal voor meer informatie.

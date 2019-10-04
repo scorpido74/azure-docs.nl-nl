@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/01/2019
 ms.author: banders
-ms.openlocfilehash: 02ddaf4878367524291ce54a4e12fc9b4fee4cd2
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: f89d7935af10ebb477125c598a01278a4ceef0bd
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "67490286"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71326932"
 ---
 # <a name="understand-your-azure-enterprise-agreement-bill"></a>Meer informatie over uw Azure Enterprise Agreement-factuur
 
@@ -28,7 +28,7 @@ Het tegoed van uw organisatie omvat uw financiële toezegging. De financiële to
 
 Deze sectie is niet van toepassing op Azure-klanten in Australië, Japan of Singapore. Zie [Facturen voor andere klanten](#invoices-for-other-customers) als u zich in een van deze landen/regio's bevindt.
 
-U ontvangt een Azure-factuur tijdens de factureringscyclus in de volgende gevallen:
+U ontvangt een Azure-factuur wanneer een van de volgende gebeurtenissen plaatsvindt tijdens uw factureringsperiode:
 
 - **Serviceoverschrijding**: De gebruikskosten van uw organisatie overschrijden het tegoed.
 - **Afzonderlijk gefactureerde kosten**: De services die door uw organisatie worden gebruikt, vallen niet onder het tegoed. U wordt gefactureerd voor de volgende services, ongeacht het saldo van uw tegoed:
@@ -54,7 +54,7 @@ Op uw factuur staan al uw Azure-gebruikskosten, gevolgd door eventuele kosten vo
 
 Vergelijk het gecombineerde totaalbedrag dat wordt weergegeven in **Rapporten** > **Gebruiksoverzicht** met uw Azure-factuur. De bedragen in het **gebruiksoverzicht** zijn exclusief belasting.
 
-1. Meld u aan bij de [Enterprise-portal](https://ea.azure.com).
+1. Meld u aan bij het [Enterprise Portal](https://ea.azure.com).
 1. Selecteer **Rapporten**.
 1. Wijzig in de rechterbovenhoek van het tabblad de weergave van**M** in **C** en selecteer de periode die op de factuur wordt vermeld.  
     ![Schermopname van de optie M + C in het gebruiksoverzicht.](./media/billing-understand-your-bill-ea/ea-portal-usage-sumary-cm-option.png)
@@ -66,10 +66,10 @@ Vergelijk het gecombineerde totaalbedrag dat wordt weergegeven in **Rapporten** 
 
 Deze sectie is alleen van toepassing op Azure-klanten in Australië, Japan of Singapore.
 
-U ontvangt een of meer Azure-facturen in de volgende gevallen:
+U ontvangt een of meer Azure-facturen in een van de volgende gevallen:
 
 - **Serviceoverschrijding**: De gebruikskosten van uw organisatie overschrijden het tegoed.
-- **Afzonderlijk gefactureerde kosten**: De services die door uw organisatie worden gebruikt, vallen niet onder het tegoed. U wordt gefactureerd voor de volgende services, ongeacht het saldo van uw tegoed:
+- **Afzonderlijk gefactureerde kosten**: De services die door uw organisatie worden gebruikt, vallen niet onder het tegoed. U ontvangt een factuur voor de volgende services:
     - Canonical
     - Citrix XenApp Essentials
     - Citrix XenDesktop
@@ -129,7 +129,7 @@ Vergelijk uw Azure Marketplace-totaal in **Rapporten** > **Gebruiksoverzicht** i
 
 ## <a name="need-help-contact-us"></a>Hulp nodig? Neem contact met ons op.
 
-Als u een vraag wilt stellen of hulp nodig hebt, maakt u een [ondersteuningsaanvraag](https://go.microsoft.com/fwlink/?linkid=2083458).
+Als u vragen hebt of hulp nodig hebt, [kunt u een ondersteuningsaanvraag maken](https://go.microsoft.com/fwlink/?linkid=2083458).
 
 ## <a name="next-steps"></a>Volgende stappen
 - [Uw Azure-gebruik en -kosten weergeven en downloaden](billing-download-azure-daily-usage.md)
