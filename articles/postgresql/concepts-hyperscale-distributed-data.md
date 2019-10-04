@@ -1,18 +1,18 @@
 ---
 title: Gedistribueerde gegevens in Azure Database for PostgreSQL – grootschalige (Citus)
-description: Tabellen en Shards gedistribueerd in de Server groep.
+description: Meer informatie over gedistribueerde tabellen, referentie tabellen, lokale tabellen en Shards in Azure Database for PostgreSQL.
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: acc07086f4eaac523cb27e1361cb9cc6d380c695
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: 8a0fe871685f2a140cd8272d93f49f594cd2c910
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69998028"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71947488"
 ---
 # <a name="distributed-data-in-azure-database-for-postgresql--hyperscale-citus"></a>Gedistribueerde gegevens in Azure Database for PostgreSQL – grootschalige (Citus)
 
@@ -51,7 +51,7 @@ Een goede kandidaat voor lokale tabellen is kleine beheer tabellen die geen deel
 
 In de vorige sectie wordt beschreven hoe gedistribueerde tabellen worden opgeslagen als Shards op worker-knoop punten. In deze sectie worden meer technische details besproken.
 
-De `pg_dist_shard` meta gegevens tabel in de coördinator bevat een rij voor elk Shard van elke gedistribueerde tabel in het systeem. De rij komt overeen met een Shard-ID met een bereik van gehele getallen in een hash-ruimte (shardminvalue, shardmaxvalue).
+De meta gegevens tabel van @no__t 0 in de coördinator bevat een rij voor elk Shard van elke gedistribueerde tabel in het systeem. De rij komt overeen met een Shard-ID met een bereik van gehele getallen in een hash-ruimte (shardminvalue, shardmaxvalue).
 
 ```sql
 SELECT * from pg_dist_shard;
@@ -64,13 +64,13 @@ SELECT * from pg_dist_shard;
  (4 rows)
 ```
 
-Als het coördinator knooppunt wil bepalen welke Shard een rij `github_events`bevat, wordt de waarde van de kolom Distribution in de rij hashes. Vervolgens controleert het knoop punt welk\'Shard s-bereik de gehashte waarde bevat. De bereiken worden gedefinieerd zodat de afbeelding van de hash-functie de niet-aaneengesloten samen voeging is.
+Als het coördinator knooppunt wil bepalen welke Shard een rij `github_events` bevat, wordt de waarde van de kolom Distribution in de rij hashes. Vervolgens controleert het knoop punt welk Shard @ no__t-0s-bereik de gehashte waarde bevat. De bereiken worden gedefinieerd zodat de afbeelding van de hash-functie de niet-aaneengesloten samen voeging is.
 
 ### <a name="shard-placements"></a>Shard plaatsen
 
 Stel dat Shard 102027 is gekoppeld aan de betreffende rij. De rij wordt in een tabel met de naam `github_events_102027` in een van de werk rollen gelezen of geschreven. Welke werk nemer? Dat wordt volledig bepaald door de meta gegevens tabellen. De toewijzing van Shard aan worker wordt de Shard-plaatsing genoemd.
 
-Het coördinator knooppunt schrijft query's opnieuw in fragmenten die verwijzen naar de specifieke tabellen zoals `github_events_102027` en voert deze fragmenten uit op de juiste werk rollen. Hier volgt een voor beeld van een query die wordt uitgevoerd achter de schermen om het knoop punt te vinden dat Shard ID 102027.
+Het coördinator knooppunt schrijft query's opnieuw in fragmenten die verwijzen naar de specifieke tabellen, zoals `github_events_102027`, en voert deze fragmenten uit op de juiste werk rollen. Hier volgt een voor beeld van een query die wordt uitgevoerd achter de schermen om het knoop punt te vinden dat Shard ID 102027.
 
 ```sql
 SELECT

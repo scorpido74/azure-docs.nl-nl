@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/07/2019
 ms.author: cbasoglu
-ms.openlocfilehash: 94fd415909e86a43916ee2f510732a6a6d9c5ed3
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: af5bb7126af65a755cb1d58788d39cb8bdcbbb3b
+ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68552955"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71959029"
 ---
 # <a name="scenario-availability"></a>Beschik baarheid scenario
 
@@ -26,6 +26,10 @@ De Speech Service SDK bevat verschillende scenario's voor een groot aantal progr
 - **Tekst-naar-spraak (TTS)**
   - C++/Windows & Linux
   - C#/Windows & UWP & eenheid
+  - Java (jre en Android)
+  - Python
+  - SWIFT
+  - Objective-C
   - TTS-REST API kunnen worden gebruikt in elke andere situatie.
 - **Wake woord (Keyword Spotter/KWS)**
   - C++/Windows & Linux
@@ -46,4 +50,4 @@ De Speech Service SDK bevat verschillende scenario's voor een groot aantal progr
 - **Door codec gecomprimeerde audio-invoer**
   - C++/Linux
   - C#/Linux
-  - Java/Linux & Android
+  - Java/Linux, Android en iOS

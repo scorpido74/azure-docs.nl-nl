@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 10/30/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 47c5f9a364f4968784cea96a09e938906f39ef4f
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: a5b8f299826c5688eb80eaea11ffc3b2b5176297
+ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71064119"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71959666"
 ---
 # <a name="define-a-technical-profile-for-a-jwt-token-issuer-in-an-azure-active-directory-b2c-custom-policy"></a>Een technisch profiel voor een JWT-token Uitgever definiëren in een Azure Active Directory B2C aangepast beleid
 
@@ -25,9 +25,9 @@ Azure Active Directory B2C (Azure AD B2C) worden verschillende typen beveiliging
 
 ## <a name="protocol"></a>Protocol
 
-Het **naam** kenmerk van het **protocol** element moet worden ingesteld op `None`. Stel het element **OutputTokenFormat** in `JWT`op.
+Het **naam** kenmerk van het **protocol** element moet worden ingesteld op `None`. Stel het element **OutputTokenFormat** in op `JWT`.
 
-In het volgende voor beeld ziet u een `JwtIssuer`technisch profiel voor:
+In het volgende voor beeld ziet u een technisch profiel voor `JwtIssuer`:
 
 ```XML
 <TechnicalProfile Id="JwtIssuer">
@@ -47,14 +47,14 @@ De **InputClaims**-, **OutputClaims**-en **PersistClaims** -elementen zijn leeg 
 | Kenmerk | Vereist | Description |
 | --------- | -------- | ----------- |
 | issuer_refresh_token_user_identity_claim_type | Ja | De claim die moet worden gebruikt als de claim van de identiteit van de gebruiker in de OAuth2-autorisatie codes en vernieuwings tokens. Standaard moet u deze instellen op `objectId`, tenzij u een ander claim type SubjectNamingInfo opgeeft. |
-| SendTokenResponseBodyWithJsonNumbers | Nee | Altijd ingesteld op `true`. Stel in `false`voor oudere indeling waarbij numerieke waarden worden gegeven als teken reeksen in plaats van JSON-nummers. Dit kenmerk is vereist voor clients die een afhankelijkheid hebben genomen van een eerdere implementatie waarbij dergelijke eigenschappen als teken reeksen zijn geretourneerd. |
+| SendTokenResponseBodyWithJsonNumbers | Nee | Altijd ingesteld op `true`. Voor oudere indeling waarbij numerieke waarden worden gegeven als teken reeksen in plaats van JSON-nummers, stelt u in op `false`. Dit kenmerk is vereist voor clients die een afhankelijkheid hebben genomen van een eerdere implementatie waarbij dergelijke eigenschappen als teken reeksen zijn geretourneerd. |
 | token_lifetime_secs | Nee | Levens duur van toegangs token. De levens duur van het OAuth 2,0 Bearer-token dat wordt gebruikt om toegang te krijgen tot een beveiligde bron. De standaard waarde is 3.600 seconden (1 uur). Het minimale (inclusief) is 300 seconden (5 minuten). Het maximum (inclusief) is 86.400 seconden (24 uur). |
 | id_token_lifetime_secs | Nee | Levens duur van ID-token. De standaard waarde is 3.600 seconden (1 uur). Het minimale (inclusief) is 300 seconden (5 minuten). Het maximum (inclusief) is seconden 86.400 (24 uur). |
 | refresh_token_lifetime_secs | Nee | De levens duur van het token vernieuwen. De maximale tijds duur waarna een vernieuwings token kan worden gebruikt om een nieuw toegangs token te verkrijgen, als uw toepassing het offline_access-bereik heeft gekregen. De standaard waarde is 120, 9600 seconden (14 dagen). Het minimale (inclusief) is 86.400 seconden (24 uur). Het maximum (inclusief) is 7.776.000 seconden (90 dagen). |
-| rolling_refresh_token_lifetime_secs | Nee | De levens duur van het token sliding window vernieuwen. Nadat deze periode is verstreken, wordt de gebruiker gedwongen opnieuw te verifiëren, ongeacht de geldigheids periode van het meest recente vernieuwings token dat is verkregen door de toepassing. Als u geen sliding window levensduur wilt afdwingen, stelt u de waarde van allow_infinite_rolling_refresh_token in `true`op. De standaard waarde is 7.776.000 seconden (90 dagen). Het minimale (inclusief) is 86.400 seconden (24 uur). Het maximum (inclusief) is 31.536.000 seconden (365 dagen). |
-| allow_infinite_rolling_refresh_token | Nee | Als deze is `true`ingesteld op, verloopt het vernieuwings token sliding window levens duur nooit. |
-| IssuanceClaimPattern | Ja | Hiermee bepaalt u de claim van de verlener (ISS). Een van de volgende waarden:<ul><li>AuthorityAndTenantGuid-de ISS-claim bevat uw domein naam, zoals `login.microsoftonline` of `tenant-name.b2clogin.com`, en uw Tenant-id https://login.microsoftonline.com/00000000-0000-0000-0000-000000000000/v2.0/</li><li>AuthorityWithTfp: de ISS-claim bevat uw domein naam, zoals `login.microsoftonline` of `tenant-name.b2clogin.com`, uw Tenant-id en de naam van uw Relying Party-beleid. https://login.microsoftonline.com/tfp/00000000-0000-0000-0000-000000000000/b2c_1a_tp_sign-up-or-sign-in/v2.0/</li></ul> |
-| AuthenticationContextReferenceClaimPattern | Nee | Hiermee bepaalt `acr` u de claim waarde.<ul><li>Geen-Azure AD B2C geeft de claim ACR niet uit</li><li>PolicyId-de `acr` claim bevat de naam van het beleid</li></ul>De opties voor het instellen van deze waarde zijn TFP (Trust Framework Policy) en ACR (Naslag informatie over de verificatie context). U kunt deze waarde het beste instellen op TFP, om de waarde in te stellen `<Item>` , ervoor `Key="AuthenticationContextReferenceClaimPattern"` te zorgen dat de with `None`exists en de waarde is. Voeg in uw Relying Party-beleid `<OutputClaims>` item toe, voeg dit `<OutputClaim ClaimTypeReferenceId="trustFrameworkPolicy" Required="true" DefaultValue="{policy}" />`element toe. Zorg er ook voor dat uw beleid het claim type bevat`<ClaimType Id="trustFrameworkPolicy">   <DisplayName>trustFrameworkPolicy</DisplayName>     <DataType>string</DataType> </ClaimType>` |
+| rolling_refresh_token_lifetime_secs | Nee | De levens duur van het token sliding window vernieuwen. Nadat deze periode is verstreken, wordt de gebruiker gedwongen opnieuw te verifiëren, ongeacht de geldigheids periode van het meest recente vernieuwings token dat is verkregen door de toepassing. Als u geen sliding window levensduur wilt afdwingen, stelt u de waarde van allow_infinite_rolling_refresh_token in op `true`. De standaard waarde is 7.776.000 seconden (90 dagen). Het minimale (inclusief) is 86.400 seconden (24 uur). Het maximum (inclusief) is 31.536.000 seconden (365 dagen). |
+| allow_infinite_rolling_refresh_token | Nee | Als de waarde is ingesteld op `true`, verloopt het vernieuwings token sliding window de levens duur nooit. |
+| IssuanceClaimPattern | Ja | Hiermee bepaalt u de claim van de verlener (ISS). Een van de volgende waarden:<ul><li>AuthorityAndTenantGuid: de ISS-claim bevat uw domein naam, zoals `login.microsoftonline` of `tenant-name.b2clogin.com`, en uw Tenant-id https: \//login. microsoftonline. com/00000000-0000-0000-0000-000000000000/v 2.0/</li><li>AuthorityWithTfp: de ISS-claim bevat uw domein naam, zoals `login.microsoftonline` of `tenant-name.b2clogin.com`, uw Tenant-id en de naam van uw Relying Party-beleid. https: \//login. microsoftonline. com/TFP/00000000-0000-0000-0000-000000000000/b2c_1a_tp_sign-up-of-sign-in/v 2.0/</li></ul> |
+| AuthenticationContextReferenceClaimPattern | Nee | Hiermee wordt de claim waarde @no__t 0 beheerd.<ul><li>Geen-Azure AD B2C geeft de claim ACR niet uit</li><li>PolicyId-de claim `acr` bevat de naam van het beleid</li></ul>De opties voor het instellen van deze waarde zijn TFP (Trust Framework Policy) en ACR (Naslag informatie over de verificatie context). U kunt deze waarde het beste instellen op TFP, om de waarde in te stellen, ervoor zorgen dat de `<Item>` met de `Key="AuthenticationContextReferenceClaimPattern"` bestaat en dat de waarde `None` is. Voeg in uw Relying Party beleid `<OutputClaims>` item toe, voeg dit element toe `<OutputClaim ClaimTypeReferenceId="trustFrameworkPolicy" Required="true" DefaultValue="{policy}" />`. Zorg er ook voor dat uw beleid het claim type `<ClaimType Id="trustFrameworkPolicy">   <DisplayName>trustFrameworkPolicy</DisplayName>     <DataType>string</DataType> </ClaimType>` bevat |
 
 ## <a name="cryptographic-keys"></a>Cryptografische sleutels
 
@@ -63,7 +63,7 @@ Het CryptographicKeys-element bevat de volgende kenmerken:
 | Kenmerk | Vereist | Description |
 | --------- | -------- | ----------- |
 | issuer_secret | Ja | Het x509-certificaat (RSA-sleutelset) dat moet worden gebruikt voor het ondertekenen van het JWT-token. Dit is de `B2C_1A_TokenSigningKeyContainer` sleutel die u in aan de [slag met aangepaste beleids regels hebt aangepast](active-directory-b2c-get-started-custom.md). |
-| issuer_refresh_token_key | Ja | Het x509-certificaat (RSA key set) dat moet worden gebruikt voor het versleutelen van het vernieuwings token. U hebt de `B2C_1A_TokenEncryptionKeyContainer` sleutel geconfigureerd in aan de [slag met aangepaste beleids regels](active-directory-b2c-get-started-custom.md) |
+| issuer_refresh_token_key | Ja | Het x509-certificaat (RSA key set) dat moet worden gebruikt voor het versleutelen van het vernieuwings token. U hebt de `B2C_1A_TokenEncryptionKeyContainer`-sleutel geconfigureerd in aan de [slag met aangepaste beleids regels](active-directory-b2c-get-started-custom.md) |
 
 
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/06/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: be82ab1597021d7198d7936ecd24e4bec64fdf25
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: fc5a974273cbc0398e9fee7b60b424a46ef5dd30
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71266905"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71949713"
 ---
 ## <a name="benefits-of-managed-disks"></a>Voor delen van beheerde schijven
 
@@ -73,13 +73,13 @@ Een gegevens schijf is een beheerde schijf die is gekoppeld aan een virtuele mac
 
 ### <a name="os-disk"></a>Besturingssysteemschijf
 
-Elke virtuele machine heeft een gekoppelde besturingssysteem schijf. De besturingssysteem schijf heeft een vooraf geïnstalleerd besturings systeem dat is geselecteerd toen de virtuele machine werd gemaakt.
+Elke virtuele machine heeft een gekoppelde besturingssysteem schijf. De besturingssysteem schijf heeft een vooraf geïnstalleerd besturings systeem dat is geselecteerd toen de virtuele machine werd gemaakt. Deze schijf bevat het opstart volume.
 
 Deze schijf heeft een maximale capaciteit van 2.048 GiB.
 
 ### <a name="temporary-disk"></a>Tijdelijke schijf
 
-Elke VM bevat een tijdelijke schijf, die geen beheerde schijf is. De tijdelijke schijf biedt langdurige opslag voor toepassingen en processen en is bedoeld om alleen gegevens op te slaan, zoals pagina-of Wissel bestanden. Gegevens op de tijdelijke schijf kunnen verloren gaan tijdens een [onderhouds gebeurtenis](../articles/virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#understand-vm-reboots---maintenance-vs-downtime) of wanneer u [een virtuele machine](../articles/virtual-machines/troubleshooting/redeploy-to-new-node-windows.md?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json)opnieuw implementeert. Op virtuele machines van Azure Linux wordt de tijdelijke schijf standaard/dev/sdb en op Windows-Vm's de tijdelijke schijf is D: standaard. Tijdens een geslaagde standaard herstart van de virtuele machine blijven de gegevens op de tijdelijke schijf behouden.
+Elke VM bevat een tijdelijke schijf, die geen beheerde schijf is. De tijdelijke schijf biedt langdurige opslag voor toepassingen en processen en is bedoeld om alleen gegevens op te slaan, zoals pagina-of Wissel bestanden. Gegevens op de tijdelijke schijf kunnen verloren gaan tijdens een [onderhouds gebeurtenis](../articles/virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#understand-vm-reboots---maintenance-vs-downtime) of wanneer u [een virtuele machine opnieuw implementeert](../articles/virtual-machines/troubleshooting/redeploy-to-new-node-windows.md?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json). Op virtuele machines van Azure Linux wordt de tijdelijke schijf standaard/dev/sdb en op Windows-Vm's de tijdelijke schijf is D: standaard. Tijdens een geslaagde standaard herstart van de virtuele machine blijven de gegevens op de tijdelijke schijf behouden.
 
 ## <a name="managed-disk-snapshots"></a>Moment opnamen van beheerde schijven
 

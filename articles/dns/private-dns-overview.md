@@ -7,19 +7,14 @@ ms.service: dns
 ms.topic: overview
 ms.date: 6/12/2019
 ms.author: victorh
-ms.openlocfilehash: 0921a1ac7aa1192fae78f168c2eb51ee3e74e24a
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: 152087ab3dc20dfc95cfeaa0353d961917d362d6
+ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68774611"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71959357"
 ---
 # <a name="what-is-azure-private-dns"></a>Wat is privé-DNS in Azure?
-
-> [!IMPORTANT]
-> Azure Privé-DNS is momenteel beschikbaar als open bare preview.
-> Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt.
-> Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
 
 De Domain Name System, of DNS, is verantwoordelijk voor het vertalen van een service naam naar het IP-adres.  Azure DNS is een hosting service voor DNS-domeinen die naam omzetting biedt met behulp van de Microsoft Azure-infra structuur. Naast de ondersteuning van Internet gerichte DNS-domeinen, ondersteunt Azure DNS ook persoonlijke DNS-zones.
 
@@ -60,22 +55,14 @@ Azure DNS biedt de volgende mogelijkheden:
 
 * **Achterwaartse DNS-Zoek opdrachten worden ondersteund binnen het bereik van het virtuele netwerk**. Omgekeerde DNS-zoek opdracht voor een persoonlijk IP-adres in het virtuele netwerk dat is toegewezen aan een privé zone, wordt de FQDN-naam van de host/recordnaam en de zone naam als achtervoegsel geretourneerd.
 
-## <a name="known-issues"></a>Bekende problemen
-De volgende items zijn bekende bugs en problemen in de preview-versie:
-* Als u een virtueel netwerk verwijdert dat is gekoppeld aan een privé-DNS-zone, worden de koppelingen naar de privé-DNS-zone niet verwijderd. De koppeling mislukt als u het virtuele netwerk met dezelfde naam en resource groep opnieuw maakt en het opnieuw probeert te koppelen aan een privé-DNS-zone. U kunt dit probleem omzeilen door het virtuele netwerk te maken in een andere resource groep of met een andere naam in dezelfde resource groep.
-* Als u een virtueel netwerk naar een andere resource groep of een ander abonnement verplaatst, worden de koppelingen naar de privé-DNS-zone niet bijgewerkt. De naam omzetting voor het verplaatste virtuele netwerk blijft werken. er worden echter oude ARM-Id's van het virtuele netwerk weer gegeven wanneer u de koppelingen van het virtuele netwerk van de privé-DNS-zone bekijkt.
-* Momenteel kunnen gekoppelde virtuele netwerken die worden gehost in UAE-noord, UAE-centraal, Zuid-Afrika-west, Zuid-Afrika-noord, Canada-oost, Frankrijk-zuid mislukken en kunnen er onregelmatige problemen met de DNS-omzetting optreden. 
-
-
 ## <a name="other-considerations"></a>Andere overwegingen
 
 Azure DNS heeft de volgende beperkingen:
 
 * Een specifiek virtueel netwerk kan aan slechts één privé zone worden gekoppeld als automatische registratie van VM-DNS-records is ingeschakeld. U kunt echter meerdere virtuele netwerken koppelen aan één DNS-zone.
 * Omgekeerde DNS werkt alleen voor particuliere IP-ruimte in het gekoppelde virtuele netwerk
-* Omgekeerde DNS voor een persoonlijk IP-adres voor een gekoppeld virtueel netwerk retourneert "internal.cloudapp.net" als het standaard achtervoegsel voor de virtuele machine. Voor virtuele netwerken die zijn gekoppeld aan een privé zone waarvoor registratie is ingeschakeld, retourneert reverse DNS voor een privé-IP 2 FQDN-namen, een met het standaard achtervoegsel *Internal.cloudapp.net* en een andere met het achtervoegsel van de privé zone.
-* Voorwaardelijk door sturen wordt op het moment niet standaard ondersteund. Zie [naam omzetting voor vm's en rolinstanties](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)om omzetting tussen Azure-en on-premises netwerken mogelijk te maken.
-
+* Omgekeerde DNS voor een persoonlijk IP-adres voor een gekoppeld virtueel netwerk retourneert *Internal.cloudapp.net* als het standaard achtervoegsel voor de virtuele machine. Voor virtuele netwerken die zijn gekoppeld aan een privé zone waarvoor registratie is ingeschakeld, retourneert reverse DNS voor een persoonlijk IP-adres twee FQDN-namen: een met standaard het achtervoegsel *Internal.cloudapp.net* en een andere met het achtervoegsel van de privé zone.
+* Voorwaardelijk door sturen wordt momenteel niet ondersteund. Om omzetting tussen Azure-en on-premises netwerken mogelijk te maken. Zie [naam omzetting voor vm's en rolinstanties](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)
  
 ## <a name="pricing"></a>Prijzen
 

@@ -13,16 +13,18 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/12/2018
 ms.author: robreed
-ms.openlocfilehash: c37b81e08e5d9f150081a9dc12af51175e3f590c
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 6df6bb5c0be4bf1779541a815bd933965024809f
+ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70084722"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71960410"
 ---
 # <a name="dsc-extension-for-linux-microsoftostcextensionsdscforlinux"></a>DSC-extensie voor Linux (micro soft. OSTCExtensions. DSCForLinux)
 
 Desired state Configuration (DSC) is een beheer platform waarmee u uw IT-en ontwikkelings infrastructuur met configuratie als code kunt beheren.
+
+> ! Let op de DSC-extensie voor Linux en de [Azure monitor extensie van de virtuele machine voor Linux](/virtual-machines/extensions/oms-linux) dat momenteel een conflict oplevert en niet wordt ondersteund in een side-by-side configuratie.  Dit betekent dat u de twee oplossingen niet samen moet gebruiken op dezelfde VM.
 
 De extensie DSCForLinux wordt gepubliceerd en ondersteund door micro soft. Met de uitbrei ding wordt de OMI-en DSC-agent geïnstalleerd op virtuele machines van Azure. De DSC-extensie kan ook de volgende acties uitvoeren
 
@@ -39,7 +41,7 @@ De extensie DSCForLinux wordt gepubliceerd en ondersteund door micro soft. Met d
 
 ### <a name="operating-system"></a>Besturingssysteem
 
-De DSC Linux-extensie ondersteunt alle Linux-distributies die zijn [goedgekeurd op Azure](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) , met uitzonde ring van:
+De DSC Linux-extensie ondersteunt alle [Linux-distributies die zijn goedgekeurd op Azure](/virtual-machines/linux/endorsed-distros) , met uitzonde ring van:
 
 | Distributie | Version |
 |---|---|
@@ -60,10 +62,10 @@ Hier vindt u alle ondersteunde para meters voor de open bare configuratie:
 * `ResourceName`: (optioneel, String) de naam van de aangepaste resource module
 * `ExtensionAction`: (optioneel, String) geeft aan wat een extensie doet. geldige waarden: Registreren, pushen, pull, installeren, verwijderen. Als u niets opgeeft, wordt dit beschouwd als een push actie.
 * `NodeConfigurationName`: (optioneel, String) de naam van een knooppunt configuratie die moet worden toegepast.
-* `RefreshFrequencyMins`: (optioneel, int) Hiermee geeft u op hoe vaak (in minuten) DSC probeert de configuratie van de pull-server op te halen. 
+* `RefreshFrequencyMins`: (optioneel, int) geeft aan hoe vaak (in minuten) DSC probeert de configuratie van de pull-server op te halen. 
        Als de configuratie op de pull-server verschilt van het huidige op het doel knooppunt, wordt deze gekopieerd naar de in behandeling zijnde Store en toegepast.
-* `ConfigurationMode`: (optioneel, teken reeks) Hiermee geeft u op hoe DSC de configuratie moet Toep assen. Geldige waarden zijn: ApplyOnly, ApplyAndMonitor, ApplyAndAutoCorrect.
-* `ConfigurationModeFrequencyMins`: (optioneel, int) Hiermee geeft u op hoe vaak (in minuten) DSC ervoor zorgt dat de configuratie de gewenste status heeft.
+* `ConfigurationMode`: (optioneel, String) geeft aan hoe DSC de configuratie moet Toep assen. Geldige waarden zijn: ApplyOnly, ApplyAndMonitor, ApplyAndAutoCorrect.
+* `ConfigurationModeFrequencyMins`: (optioneel, int) geeft aan hoe vaak (in minuten) DSC ervoor zorgt dat de configuratie de gewenste status heeft.
 
 > [!NOTE]
 > Als u een versie < 2,3 gebruikt, is de modus parameter hetzelfde als ExtensionAction. De modus lijkt een overbelaste term te zijn. Om Verwar ring te voor komen, wordt ExtensionAction gebruikt vanaf 2,3-versie. Voor achterwaartse compatibiliteit ondersteunt de uitbrei ding zowel de modus als de ExtensionAction. 
@@ -75,7 +77,7 @@ Hier vindt u alle ondersteunde beveiligings configuratie parameters:
 
 * `StorageAccountName`: (optioneel, String) de naam van het opslag account dat het bestand bevat
 * `StorageAccountKey`: (optioneel, String) de sleutel van het opslag account dat het bestand bevat
-* `RegistrationUrl`: (optioneel, String) de URL van het Azure Automation-account
+* `RegistrationUrl`: (optioneel, String) de URL van het Azure Automation account
 * `RegistrationKey`: (optioneel, String) de toegangs sleutel van het Azure Automation-account
 
 
@@ -284,7 +286,7 @@ Voor meer informatie over Azure Resource Manager-sjabloon gaat u naar [ontwerp A
 ## <a name="azure-cli-deployment"></a>Azure CLI-implementatie
 
 ### <a name="21-using-azure-cliazure-cli"></a>2.1. [**Azure cli**] [Azure-cli] gebruiken
-Voordat u de DSCForLinux-extensie implementeert, `public.json` moet `protected.json`u uw en configureren volgens de verschillende scenario's in sectie 3.
+Voordat u de DSCForLinux-extensie implementeert, moet u uw `public.json` en `protected.json` configureren volgens de verschillende scenario's in sectie 3.
 
 #### <a name="211-classic"></a>2.1.1. Klassiek
 De klassieke modus wordt ook Azure Service Management-modus genoemd. U kunt overschakelen naar het bestand door het volgende uit te voeren:
@@ -316,7 +318,7 @@ DSCForLinux Microsoft.OSTCExtensions <version> \
 --private-config-path protected.json --public-config-path public.json
 ```
 > [!NOTE]
-> In azure Resource Manager modus `azure vm extension list` is nu niet beschikbaar.
+> In Azure Resource Manager modus is `azure vm extension list` nu niet beschikbaar.
 >
 
 ### <a name="22-using-azure-powershellazure-powershell"></a>2.2. [**Azure PowerShell**] [Azure-Power Shell] gebruiken

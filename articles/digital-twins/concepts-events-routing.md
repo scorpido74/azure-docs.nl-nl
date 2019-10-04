@@ -1,19 +1,19 @@
 ---
-title: Gebeurtenissen en berichten routeren met Azure Digital Apparaatdubbels | Microsoft Docs
+title: Routerings gebeurtenissen en berichten-Azure Digital Apparaatdubbels | Microsoft Docs
 description: Overzicht van de route ring van gebeurtenissen en berichten naar service-eind punten met Azure Digital Apparaatdubbels
+ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.author: alinast
-ms.openlocfilehash: 81f2cc32ee10e891ffab127d6ecd7909eb75abd6
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: 217a1d94a4a5235fc5886f34986ffcb3aef60873
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71177078"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71949252"
 ---
 # <a name="routing-events-and-messages"></a>Routering van gebeurtenissen en berichten
 
@@ -29,7 +29,7 @@ Azure Digital Apparaatdubbels biedt twee manieren om IoT-gebeurtenissen te verbi
 
 Gebruikers kunnen een of meer uitstaande eind punten opgeven voor het verzenden van gebeurtenissen of het door sturen van berichten. Gebeurtenissen en berichten worden verzonden naar de eind punten volgens deze vooraf gedefinieerde routerings voorkeuren. Met andere woorden, gebruikers kunnen een bepaald eind punt opgeven om grafiek bewerkings gebeurtenissen te ontvangen, een andere voor het ontvangen van telemetrie-gebeurtenissen van apparaten, enzovoort.
 
-[![Route ring van Azure Digital Apparaatdubbels-gebeurtenissen](media/concepts/digital-twins-events-routing.png)](media/concepts/digital-twins-events-routing.png#lightbox)
+[route ring voor 1Azure digitale Apparaatdubbels-gebeurtenissen @no__t](media/concepts/digital-twins-events-routing.png)](media/concepts/digital-twins-events-routing.png#lightbox)
 
 Route ring naar Event Hubs houdt de volg orde bij waarin telemetrie-berichten worden verzonden. Ze arriveren op het eind punt in dezelfde volg orde als waarin ze oorspronkelijk werden ontvangen. Event Grid en Service Bus niet garanderen dat eind punten gebeurtenissen ontvangen in dezelfde volg orde als waarin ze zijn opgetreden. Het gebeurtenis schema bevat echter een tijds tempel dat kan worden gebruikt om de volg orde te identificeren nadat de gebeurtenissen op het eind punt arriveren.
 

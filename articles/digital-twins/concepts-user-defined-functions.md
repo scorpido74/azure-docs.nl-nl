@@ -1,19 +1,19 @@
 ---
-title: Gegevens verwerking en door de gebruiker gedefinieerde functies met Azure Digital Apparaatdubbels | Microsoft Docs
+title: Gegevens verwerking en door de gebruiker gedefinieerde functies-Azure Digital Apparaatdubbels | Microsoft Docs
 description: Overzicht van gegevens verwerking,-overeenkomsten en door de gebruiker gedefinieerde functies met Azure Digital Apparaatdubbels.
+ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.author: alinast
-ms.openlocfilehash: 07facf06702a63df8ea93d43b9896b72322b209f
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: b8ea5c54afd4b1e2c212422417688e528367d44f
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71178265"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71949977"
 ---
 # <a name="data-processing-and-user-defined-functions"></a>Gegevensverwerking en door gebruikers gedefinieerde functies
 
@@ -23,7 +23,7 @@ Azure Digital Apparaatdubbels biedt geavanceerde reken mogelijkheden. Ontwikkel 
 
 Nadat apparaten telemetriegegevens naar Azure Digital Apparaatdubbels hebben verzonden, kunnen ontwikkel aars gegevens in vier fasen verwerken: *Validate*, *match*, *Compute*en *Dispatch*.
 
-[![Gegevens verwerkings stroom Azure Digital Apparaatdubbels](media/concepts/digital-twins-data-processing-flow.png)](media/concepts/digital-twins-data-processing-flow.png#lightbox)
+[![Azure Digital Apparaatdubbels-gegevens verwerkings stroom](media/concepts/digital-twins-data-processing-flow.png)](media/concepts/digital-twins-data-processing-flow.png#lightbox)
 
 1. Met de validate-fase wordt het inkomende telemetriegegevens getransformeerd naar een veelgebruikte indeling voor [gegevens overdracht](https://docs.microsoft.com/aspnet/web-api/overview/data/using-web-api-with-entity-framework/part-5) . Deze fase voert ook de validatie van het apparaat en de sensor uit.
 1. De match-fase vindt de juiste door de gebruiker gedefinieerde functies die moeten worden uitgevoerd. Vooraf gedefinieerde overeenkomsten zoeken de door de gebruiker gedefinieerde functies op basis van het apparaat, de sensor en de ruimte-informatie uit het binnenkomende telemetrie-bericht.
@@ -34,17 +34,17 @@ Nadat apparaten telemetriegegevens naar Azure Digital Apparaatdubbels hebben ver
 
 Gegevens verwerking in azure Digital Apparaatdubbels bestaat uit het definiëren van drie objecten: *matchers*, door de *gebruiker gedefinieerde functies*en *roltoewijzingen*.
 
-[![Azure Digital Apparaatdubbels data processing Objects](media/concepts/digital-twins-user-defined-functions.png)](media/concepts/digital-twins-user-defined-functions.png#lightbox)
+[![Azure Digital Apparaatdubbels-gegevens verwerkings objecten](media/concepts/digital-twins-user-defined-functions.png)](media/concepts/digital-twins-user-defined-functions.png#lightbox)
 
 ### <a name="matchers"></a>Overeenkomst
 
 Met matchers definieert u een set voor waarden die evalueren welke acties worden uitgevoerd op basis van de inkomende sensor-telemetrie. Voor waarden om de overeenkomst te bepalen kan eigenschappen van de sensor, het bovenliggende apparaat van de sensor en de bovenliggende ruimte van de sensor bevatten. De voor waarden worden uitgedrukt als vergelijkingen voor een [JSON-pad](https://jsonpath.com/) zoals beschreven in dit voor beeld:
 
-- Alle Sens oren van gegevens type **temperatuur** vertegenwoordigd door de teken reeks waarde escaped`\"Temperature\"`
-- Hun `01` poort hebben
-- Die deel uitmaken van apparaten met de uitgebreide eigenschap sleutel **fabrikant** ingesteld op de teken reeks waarde escaped`\"GoodCorp\"`
-- Die horen bij spaties van het type dat is opgegeven door de escape teken reeks`\"Venue\"`
-- Wat zijn descendanten van bovenliggende **SpaceId**`DE8F06CA-1138-4AD7-89F4-F782CC6F69FD`
+- Alle Sens oren van de gegevens type **temperatuur** vertegenwoordigd door de waarde voor escaped string `\"Temperature\"`
+- @No__t-0 in hun poort
+- Welk deel uitmaakt van apparaten met de uitgebreide eigenschaps sleutel **fabrikant** ingesteld op de escaped String waarde `\"GoodCorp\"`
+- Die horen bij spaties van het type dat is opgegeven door de escaped string `\"Venue\"`
+- Wat zijn descendanten van de bovenliggende **SpaceId** -`DE8F06CA-1138-4AD7-89F4-F782CC6F69FD`
 
 ```JSON
 {
@@ -83,9 +83,9 @@ Met matchers definieert u een set voor waarden die evalueren welke acties worden
 > [!IMPORTANT]
 > - JSON-paden zijn hoofdletter gevoelig.
 > - De JSON-nettolading is hetzelfde als de nettolading die wordt geretourneerd door:
->   - `/sensors/{id}?includes=properties,types`voor de sensor.
->   - `/devices/{id}?includes=properties,types,sensors,sensorsproperties,sensorstypes`voor het bovenliggende apparaat van de sensor.
->   - `/spaces/{id}?includes=properties,types,location,timezone`voor de bovenliggende ruimte van de sensor.
+>   - `/sensors/{id}?includes=properties,types` voor de sensor.
+>   - `/devices/{id}?includes=properties,types,sensors,sensorsproperties,sensorstypes` voor het bovenliggende apparaat van de sensor.
+>   - `/spaces/{id}?includes=properties,types,location,timezone` voor de bovenliggende ruimte van de sensor.
 > - De vergelijkingen zijn niet hoofdletter gevoelig.
 
 ### <a name="user-defined-functions"></a>Door de gebruiker gedefinieerde functies

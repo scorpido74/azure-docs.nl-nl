@@ -4,14 +4,14 @@ description: Een lijst met de Azure-resource typen die kunnen worden verplaatst 
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: reference
-ms.date: 09/30/2019
+ms.date: 10/03/2019
 ms.author: tomfitz
-ms.openlocfilehash: b34c244708c52ec7324c766286aff8ee9340db0b
-ms.sourcegitcommit: 6013bacd83a4ac8a464de34ab3d1c976077425c7
+ms.openlocfilehash: 81096a4299ec190cb4299f1b8ea4f9c2533d37ad
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71687124"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71948026"
 ---
 # <a name="move-operation-support-for-resources"></a>Ondersteuning voor het verplaatsen van resources voor bronnen
 Dit artikel geeft een overzicht van de vraag of een Azure-resource type de verplaatsings bewerking ondersteunt. Het bevat ook informatie over speciale voor waarden die u moet overwegen bij het verplaatsen van een resource.
@@ -595,7 +595,7 @@ Ga naar de naam ruimte van een resource provider:
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | Fungeren | Ja | Ja |
+> | fungeren | Ja | Ja |
 
 ## <a name="microsoftdevtestlab"></a>Microsoft.DevTestLab
 
@@ -711,7 +711,7 @@ Ga naar de naam ruimte van een resource provider:
 > | activitylogalerts | Nee | Nee |
 > | alertrules | Ja | Ja |
 > | autoscalesettings | Ja | Ja |
-> | Materialen | Ja | Ja |
+> | materialen | Ja | Ja |
 > | guestdiagnosticsettings | Nee | Nee |
 > | metricalerts | Nee | Nee |
 > | notificationgroups | Nee | Nee |

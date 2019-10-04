@@ -1,19 +1,19 @@
 ---
 title: Uitgangen en eind punten in azure Digital Apparaatdubbels | Microsoft Docs
 description: Richt lijnen voor het maken van eind punten met Azure Digital Apparaatdubbels.
+ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 08/12/2019
-ms.author: alinast
-ms.openlocfilehash: 3c33992ce3c130d6c06e0709a9c4ddcab4fff159
-ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
+ms.date: 10/02/2019
+ms.openlocfilehash: e7516fffb4aa8806062655e39c591e4691e779b1
+ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69013941"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71959116"
 ---
 # <a name="egress-and-endpoints"></a>Uitgangen en eind punten
 
@@ -21,7 +21,7 @@ Azure Digital Apparaatdubbels- *eind punten* vertegenwoordigen een bericht of ge
 
 Gebeurtenissen worden doorgestuurd naar eind punten volgens de vooraf gedefinieerde voor keuren voor route ring. Gebruikers opgeven welke *gebeurtenis typen* elk eind punt kunnen ontvangen.
 
-Raadpleeg voor meer informatie over gebeurtenissen, route ring en gebeurtenis typen routerings [gebeurtenissen en berichten in azure Digital apparaatdubbels](./concepts-events-routing.md).
+Raadpleeg voor meer informatie over gebeurtenissen, route ring en gebeurtenis typen [routerings gebeurtenissen en berichten in azure Digital apparaatdubbels](./concepts-events-routing.md).
 
 ## <a name="events"></a>Events
 
@@ -54,8 +54,8 @@ Gebeurtenissen worden verzonden door IoT-objecten (zoals apparaten en Sens oren)
 | data | object | Gebeurtenis gegevens die specifiek zijn voor de resource provider. |
 | eventType | string | Een van de geregistreerde gebeurtenis typen voor deze gebeurtenis bron. |
 | eventTime | string | Het tijdstip waarop de gebeurtenis is gegenereerd op basis van de UTC-tijd van de provider. |
-| dataVersion | string | De schemaversie van het gegevensobject. De uitgever definieert de schema versie. |
-| metadataVersion | string | De schemaversie van de metagegevens van de gebeurtenis. Event Grid definieert het schema van de eigenschappen op het hoogste niveau. Event Grid levert deze waarde. |
+| dataVersion | string | De schema versie van het gegevens object. De uitgever definieert de schema versie. |
+| metadataVersion | string | De schema versie van de meta gegevens van de gebeurtenis. Event Grid definieert het schema van de eigenschappen op het hoogste niveau. Event Grid levert deze waarde. |
 | topic | string | Volledige bronpad naar de bron van de gebeurtenis. Dit veld is niet beschrijfbaar. Event Grid levert deze waarde. |
 
 Voor meer informatie over het Event Grid-gebeurtenis schema:
@@ -63,9 +63,9 @@ Voor meer informatie over het Event Grid-gebeurtenis schema:
 - Raadpleeg de [Naslag informatie over het Azure Event grid-gebeurtenis schema](../event-grid/event-schema.md).
 - Lees de [Naslag informatie voor Azure EventGrid node. js SDK EventGridEvent](https://docs.microsoft.com/javascript/api/azure-eventgrid/eventgridevent?view=azure-node-latest).
 
-## <a name="event-types"></a>Gebeurtenis typen
+## <a name="event-types"></a>Gebeurtenistypen
 
-De typen gebeurtenissen classificeren de aard van de gebeurtenis en worden ingesteld in het veld type. Beschik bare gebeurtenis typen vindt u in de volgende lijst:
+De typen gebeurtenissen classificeren de aard van de gebeurtenis en worden ingesteld **in het veld** type. Beschik bare gebeurtenis typen vindt u in de volgende lijst:
 
 - TopologyOperation
 - UdfCustom

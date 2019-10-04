@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 8e2e9d30fa24e56711a0d6800a8ca9a34e53c12e
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: 6327f0c14b46ceaadbf7adaa58a70c32b39b7c2a
+ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70967242"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71960491"
 ---
 # <a name="add-artifacts-to-your-integration-service-environment-ise-in-azure-logic-apps"></a>Artefacten toevoegen aan uw integratie service omgeving (ISE) in Azure Logic Apps
 
@@ -38,7 +38,7 @@ Voer de volgende stappen uit om Logic apps te bouwen die worden uitgevoerd in uw
 
    -of-
 
-   Selecteer in het hoofd menu van Azure **een resource** > **Integration** > **Logic-app**maken.
+   Selecteer in het hoofd menu van Azure **een resource maken** > -**integratie** > **Logic-app**.
 
 1. Geef de naam, het Azure-abonnement en de Azure-resource groep (nieuw of bestaand) op die u wilt gebruiken voor uw logische app.
 
@@ -59,8 +59,7 @@ Voer de volgende stappen uit om Logic apps te bouwen die worden uitgevoerd in uw
 
 ## <a name="create-integration-accounts"></a>Integratie accounts maken
 
-Op basis van de [ISE-SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) die u hebt geselecteerd bij het maken, bevat uw ISE geen extra kosten voor het gebruik van een bepaald integratie account. Logic apps die zich in een Integration service Environment (ISE) bevinden, kunnen verwijzen naar alleen integratie accounts die zich in dezelfde ISE bevinden. Voor een integratie account om te werken met Logic apps in een ISE, moeten zowel het integratie account als de logische apps *dezelfde omgeving* gebruiken als hun locatie. Zie [integratie accounts met ISE](connect-virtual-network-vnet-isolated-environment-overview.md#create-integration-account-environment
-)voor meer informatie over integratie accounts en ISEs.
+Op basis van de [ISE-SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) die u hebt geselecteerd bij het maken, bevat uw ISE geen extra kosten voor het gebruik van een bepaald integratie account. Logic apps die zich in een Integration service Environment (ISE) bevinden, kunnen verwijzen naar alleen integratie accounts die zich in dezelfde ISE bevinden. Voor een integratie account om te werken met Logic apps in een ISE, moeten zowel het integratie account als de logische apps *dezelfde omgeving* gebruiken als hun locatie. Zie [integratie accounts met ISE](connect-virtual-network-vnet-isolated-environment-overview.md#create-integration-account-environment)voor meer informatie over integratie accounts en ISEs.
 
 Voer de volgende stappen uit om een integratie account te maken dat gebruikmaakt van een ISE:
 
@@ -70,7 +69,7 @@ Voer de volgende stappen uit om een integratie account te maken dat gebruikmaakt
 
    -of-
 
-   Selecteer in het hoofd menu van Azure **een resource** > **Integration** > -**integratie account**maken.
+   Selecteer in het hoofd menu van Azure **een resource maken** > **integratie** > **integratie account**.
 
 1. Geef de naam, het Azure-abonnement, de Azure-resource groep (nieuw of bestaand) en de prijs categorie op die u voor uw integratie account wilt gebruiken.
 

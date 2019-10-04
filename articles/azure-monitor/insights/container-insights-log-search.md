@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/12/2019
 ms.author: magoedte
-ms.openlocfilehash: d6e65331db53be5ba13a75e6b03b271f1071716d
-ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
+ms.openlocfilehash: ae8dd4cccb6795faa02e6705404644f6ccc24864
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67989818"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71948048"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-containers"></a>Logboeken van Azure Monitor voor containers opvragen
 
@@ -42,7 +42,7 @@ Voorbeelden van records die door Azure Monitor worden verzameld voor containers 
 | Metrische gegevens voor prestaties voor containers die deel uitmaken van het Kubernetes-cluster | Perf &#124; waarbij ObjectName == "K8SContainer" | Counternaam &#40; CpuRequestNanoCores, MemoryRequestBytes, CpuLimitNanoCores, MemoryWorkingSetBytes, RestartTimeEpoch, CpuUsageNanoCores, memoryRssBytes&#41;, CounterValue, TimeGenerated, CounterPath, hebben | 
 | Aangepaste metrische gegevens |`InsightsMetrics` | Computer, naam, naam ruimte, oorsprong, hebben, tags<sup>1</sup>, TimeGenerated, type, VA, _ResourceId | 
 
-<sup>1</sup> de eigenschap *Tags* vertegenwoordigt [meerdere dimensies](../platform/data-platform-metrics.md#multi-dimensional-metrics) voor de bijbehorende metriek. Zie [overzicht van InsightsMetrics](https://github.com/microsoft/OMS-docker/blob/vishwa/june19agentrel/docs/InsightsMetrics.md)voor meer informatie over de metrische gegevens die `InsightsMetrics` worden verzameld en opgeslagen in de tabel en een beschrijving van de record eigenschappen.
+<sup>1</sup> de eigenschap *Tags* vertegenwoordigt [meerdere dimensies](../platform/data-platform-metrics.md#multi-dimensional-metrics) voor de bijbehorende metriek. Zie [overzicht van InsightsMetrics](https://github.com/microsoft/OMS-docker/blob/vishwa/june19agentrel/docs/InsightsMetrics.md)voor meer informatie over de metrische gegevens die worden verzameld en opgeslagen in de tabel `InsightsMetrics` en een beschrijving van de record eigenschappen.
 
 >[!NOTE]
 >De ondersteuning voor Prometheus is op dit moment een functie in open bare preview.
@@ -69,6 +69,7 @@ Vaak is het handig om te maken van query's die beginnen met een voorbeeld of twe
 | ContainerImageInventory<br> &#124;summarize AggregatedValue = count() by afbeelding, ImageTag, actief | Voorraad | 
 | **Selecteer de optie lijndiagram weergeven**:<br> Prestaties<br> &#124;waarbij ObjectName == "K8SContainer" en CounterName == "cpuUsageNanoCores" &#124; AvgCPUUsageNanoCores samenvatten avg(CounterValue) door bin (TimeGenerated, 30 min.), InstanceName = | Container CPU | 
 | **Selecteer de optie lijndiagram weergeven**:<br> Prestaties<br> &#124;waarbij ObjectName == "K8SContainer" en CounterName == "memoryRssBytes" &#124; AvgUsedRssMemoryBytes samenvatten avg(CounterValue) door bin (TimeGenerated, 30 min.), InstanceName = | Container-geheugen |
+| InsightsMetrics<br> &#124;WHERE name = = "requests_count"<br> &#124;noeme val = any (val) by TimeGenerated = bin (TimeGenerated, 1M)<br> &#124;sorteren op TimeGenerated ASC<br> &#124;project RequestsPerMinute = val-vorig (val), TimeGenerated <br> &#124;Barchart weer geven  | Aanvragen per minuut met aangepaste metrische gegevens |
 
 Het volgende voor beeld is een query voor Prometheus-metrische gegevens. De verzamelde metrische gegevens zijn aantallen en om te bepalen hoeveel fouten binnen een bepaalde periode zijn opgetreden, moeten we van de telling aftrekken. De gegevensset wordt gepartitioneerd door *partitionKey*, wat betekent dat voor elke unieke set met de *naam*, de *hostnaam*en de *OperationType*een subquery wordt uitgevoerd op die set die de logboeken bestelt op *TimeGenerated*, een proces dat het mogelijk maakt om Zoek het vorige *TimeGenerated* en het aantal dat voor die tijd is vastgelegd om een bepaald aantal te bepalen.
 

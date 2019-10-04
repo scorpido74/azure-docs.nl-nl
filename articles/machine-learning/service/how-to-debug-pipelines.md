@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.reviewer: trbye
 ms.author: trbye
 author: trevorbye
-ms.date: 10/01/2019
-ms.openlocfilehash: 50593741e185a146c5a376c34da959063198e7d0
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.date: 10/03/2019
+ms.openlocfilehash: 3df95f88c057fa564078dbf05d5dfa4b26150f6a
+ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71813806"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71959658"
 ---
 # <a name="debug-and-troubleshoot-machine-learning-pipelines"></a>Fouten opsporen en problemen oplossen machine learning pijp lijnen
 
@@ -27,7 +27,7 @@ In de volgende secties vindt u een overzicht van algemene Valk uilen bij het bou
 
 Een van de meest voorkomende fouten in een pijp lijn is dat een bijgevoegd script (script voor het opschonen van gegevens, het Score script, enzovoort) niet wordt uitgevoerd zoals bedoeld, of dat er runtime-fouten in de externe Compute-context staan die moeilijk te vinden zijn in uw werk ruimte in de Azure Portal. 
 
-Pijp lijnen kunnen niet lokaal worden uitgevoerd, maar het testen van uw onderliggende scripts is een eenvoudige manier om ervoor te zorgen dat uw scripts doen wat u verwacht in isolatie, zonder te hoeven wachten op de volledige duur van de pijplijn uitvoering. Er is een aantal ontwikkel werkzaamheden vereist om dit te doen:
+Pijp lijnen zelf kunnen niet lokaal worden uitgevoerd, maar als u de scripts in isolatie uitvoert op uw lokale computer, kunt u sneller fouten opsporen omdat u niet hoeft te wachten op het proces voor het bouwen van de berekening en de omgeving. Er is een aantal ontwikkel werkzaamheden vereist om dit te doen:
 
 * Als uw gegevens zich in een Cloud-Data Store bevinden, moet u gegevens downloaden en deze beschikbaar maken voor uw script. Het gebruik van een klein voor beeld van uw gegevens is een goede manier om in runtime te verminderen en snel feedback te krijgen over het gedrag van scripts
 * Als u probeert een tussenliggende pijplijn stap te simuleren, moet u mogelijk hand matig de object typen bouwen waarvan het specifieke script in de vorige stap verwacht.
@@ -38,6 +38,9 @@ Zodra u een script hebt ingesteld om uit te voeren op uw lokale omgeving, is het
 * Een aangepaste configuratie voor fout opsporing koppelen
 * Uitvoering onderbreken en object status controleren
 * Het opvangen van type of logische fouten die pas worden weer gegeven na runtime
+
+> [!TIP] 
+> Zodra u kunt controleren of uw script wordt uitgevoerd zoals verwacht, voert u een goede volgende stap uit om het script uit te voeren in een pijp lijn met één stap voordat u deze in een pijp lijn met meerdere stappen probeert uit te voeren.
 
 ## <a name="debugging-scripts-from-remote-context"></a>Fouten opsporen in scripts in externe context
 

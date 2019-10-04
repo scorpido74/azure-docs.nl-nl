@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 06/26/2019
 ms.author: apimpm
-ms.openlocfilehash: c566dc28338a47c1bf24066436c21544eb7c5c7d
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 9c97723687484e8af82d63b6fb4999401a69fb2c
+ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70072452"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71958535"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>Herstel na nood geval implementeren met behulp van back-up en herstel van de service in azure API Management
 
@@ -35,7 +35,7 @@ In deze hand leiding wordt beschreven hoe u back-up-en herstel bewerkingen autom
 > Met de back-upbewerking worden geen vooraf geaggregeerde logboek gegevens vastgelegd die worden gebruikt in rapporten die worden weer gegeven op de Blade Analytics in de Azure Portal.
 
 > [!WARNING]
-> Elke back-up verloopt na 30 dagen. Als u een back-up probeert te herstellen nadat de verval periode van 30 dagen is verstreken, mislukt de herstel bewerking `Cannot restore: backup expired` met een bericht.
+> Elke back-up verloopt na 30 dagen. Als u een back-up probeert te herstellen nadat de verval periode van 30 dagen is verstreken, mislukt de herstel bewerking met een `Cannot restore: backup expired`-bericht.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -66,7 +66,7 @@ Alle taken die u op resources uitvoert met behulp van de Azure Resource Manager 
 
 4. Voer een naam in voor de toepassing.
 5. Selecteer **systeem eigen**voor het toepassings type.
-6. Voer een URL `http://resources` voor de tijdelijke aanduiding in, zoals voor de omleidings- **URI**, omdat het een vereist veld is, maar de waarde niet later wordt gebruikt. Klik op het selectie vakje om de toepassing op te slaan.
+6. Voer een URL voor de tijdelijke aanduiding in, zoals `http://resources` voor de **omleidings-URI**, omdat het een vereist veld is, maar de waarde niet later wordt gebruikt. Klik op het selectie vakje om de toepassing op te slaan.
 7. Klik op **Create**.
 
 ### <a name="add-an-application"></a>Een toepassing toevoegen
@@ -113,14 +113,14 @@ namespace GetTokenResourceManagerRequests
 }
 ```
 
-Vervang `{tenant id}`, `{application id}` en`{redirect uri}` gebruik de volgende instructies:
+Vervang `{tenant id}`, `{application id}` en `{redirect uri}` door de volgende instructies te volgen:
 
-1. Vervang `{tenant id}` door de Tenant-id van de Azure Active Directory toepassing die u hebt gemaakt. U kunt de id openen door te klikken op **app-registraties** -> -**eind punten**.
+1. Vervang `{tenant id}` door de Tenant-ID van de Azure Active Directory toepassing die u hebt gemaakt. U kunt de ID openen door te klikken op **App-registraties** -> -**eind punten**.
 
     ![Eindpunten][api-management-endpoint]
 
 2. Vervang `{application id}` door de waarde die u krijgt door te navigeren naar de pagina **instellingen** .
-3. Vervang de `{redirect uri}` door de waarde van het tabblad omleidings- **uri's** van uw Azure Active Directory-toepassing.
+3. Vervang de `{redirect uri}` door de waarde van het tabblad **omleidings-uri's** van uw Azure Active Directory toepassing.
 
     Zodra de waarden zijn opgegeven, moet in het code voorbeeld een token worden geretourneerd dat lijkt op het volgende voor beeld:
 
@@ -150,9 +150,9 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 positie
 
 -   `subscriptionId`-ID van het abonnement dat de API Management-service bevat waarvan u een back-up wilt maken
--   `resourceGroupName`-de naam van de resource groep van uw Azure API Management-service
--   `serviceName`-de naam van de API Management-service waarvan u een back-up wilt maken die is opgegeven op het moment dat deze wordt gemaakt
--   `api-version`-vervangen door`2018-06-01-preview`
+-   `resourceGroupName`: de naam van de resource groep van uw Azure API Management-service
+-   `serviceName`: de naam van de API Management service waarvan u een back-up wilt maken die is opgegeven op het moment dat deze wordt gemaakt
+-   `api-version`-vervangen door `2018-06-01-preview`
 
 Geef in de hoofd tekst van de aanvraag de doel-Azure Storage-account naam, de toegangs sleutel, de naam van de BLOB-container en de naam van de back-up op:
 
@@ -165,9 +165,9 @@ Geef in de hoofd tekst van de aanvraag de doel-Azure Storage-account naam, de to
 }
 ```
 
-Stel de waarde van de `Content-Type` aanvraag header in `application/json`op.
+Stel de waarde van de aanvraag-header `Content-Type` in op `application/json`.
 
-Het maken van een back-up is een langlopende bewerking die langer dan een minuut kan duren. Als de aanvraag is voltooid en het back-upproces is gestart `202 Accepted` , ontvangt u een antwoord `Location` status code met een header. Stel Get-aanvragen naar de URL in de `Location` header in om de status van de bewerking te bepalen. Terwijl de back-up wordt uitgevoerd, blijft de status code ' 202 geaccepteerd ' ontvangen. Met een antwoord code `200 OK` wordt aangegeven dat de back-upbewerking is voltooid.
+Het maken van een back-up is een langlopende bewerking die langer dan een minuut kan duren. Als de aanvraag is voltooid en het back-upproces is gestart, ontvangt u een `202 Accepted`-antwoord status code met een `Location`-header. GET-aanvragen naar de URL in de koptekst van de `Location` maken om de status van de bewerking te bepalen. Terwijl de back-up wordt uitgevoerd, blijft de status code ' 202 geaccepteerd ' ontvangen. Een antwoord code van `200 OK` geeft aan dat de back-upbewerking is voltooid.
 
 Houd rekening met de volgende beperkingen bij het maken van een back-upaanvraag:
 
@@ -190,10 +190,10 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 
 positie
 
--   `subscriptionId`-ID van het abonnement dat de API Management-service bevat waarvan u een back-up wilt herstellen
--   `resourceGroupName`-de naam van de resource groep die de Azure API Management-service bevat waarvan u een back-up wilt herstellen
--   `serviceName`-de naam van de API Management-service die wordt hersteld op de aanmaak tijd die wordt gemaakt
--   `api-version`-vervangen door`2018-06-01-preview`
+-   `subscriptionId`-ID van het abonnement dat de API Management-service bevat waarnaar u een back-up wilt herstellen
+-   `resourceGroupName`: de naam van de resource groep met de Azure API Management-service waarnaar u een back-up wilt herstellen
+-   `serviceName`: de naam van de API Management-service die wordt hersteld op de aanmaak tijd die is opgegeven
+-   `api-version`-vervangen door `2018-06-01-preview`
 
 In de hoofd tekst van de aanvraag geeft u de locatie van het back-upbestand op. Dat wil zeggen, de Azure Storage-account naam, de toegangs sleutel, de naam van de BLOB-container en de naam van de back-up toevoegen:
 
@@ -206,9 +206,9 @@ In de hoofd tekst van de aanvraag geeft u de locatie van het back-upbestand op. 
 }
 ```
 
-Stel de waarde van de `Content-Type` aanvraag header in `application/json`op.
+Stel de waarde van de aanvraag-header `Content-Type` in op `application/json`.
 
-Herstellen is een langlopende bewerking die Maxi maal 30 minuten kan duren. Als de aanvraag is voltooid en het herstel proces is gestart, ontvangt `202 Accepted` u een antwoord status code `Location` met een header. Stel Get-aanvragen naar de URL in de `Location` header in om de status van de bewerking te bepalen. Terwijl het herstel wordt uitgevoerd, blijft de status code ' 202 accepted ' ontvangen. Met een antwoord code `200 OK` wordt aangegeven dat de herstel bewerking is voltooid.
+Herstellen is een langlopende bewerking die Maxi maal 30 minuten kan duren. Als de aanvraag is voltooid en het herstel proces is gestart, ontvangt u een `202 Accepted`-antwoord status code met een `Location`-header. GET-aanvragen naar de URL in de koptekst van de `Location` maken om de status van de bewerking te bepalen. Terwijl het herstel wordt uitgevoerd, blijft de status code ' 202 accepted ' ontvangen. Een antwoord code van `200 OK` geeft aan dat de herstel bewerking is voltooid.
 
 > [!IMPORTANT]
 > **De SKU** van de service die wordt hersteld in **moet overeenkomen met** de SKU van de back-upservice die wordt hersteld.
@@ -218,7 +218,7 @@ Herstellen is een langlopende bewerking die Maxi maal 30 minuten kan duren. Als 
 <!-- Dummy comment added to suppress markdown lint warning -->
 
 > [!NOTE]
-> Back-up-en herstel bewerkingen kunnen ook worden uitgevoerd met respectievelijk Power shell _Backup-AzApiManagement_ en Restore _-AzApiManagement-_ opdrachten.
+> Back-up-en herstel bewerkingen kunnen ook worden uitgevoerd met respectievelijk Power shell [_Backup-AzApiManagement_](/powershell/module/az.apimanagement/backup-azapimanagement) en [_Restore-AzApiManagement-_ ](/powershell/module/az.apimanagement/restore-azapimanagement) opdrachten.
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -226,8 +226,7 @@ Bekijk de volgende bronnen voor verschillende scenario's van het back-up-en hers
 
 -   [Azure API Management-accounts repliceren](https://www.returngis.net/en/2015/06/replicate-azure-api-management-accounts/)
 -   [Back-up maken en terugzetten in API Management automatiseren met Logic Apps](https://github.com/Azure/api-management-samples/tree/master/tutorials/automating-apim-backup-restore-with-logic-apps)
--   [Azure API Management: Het maken van een back-](https://blogs.msdn.com/b/stuartleeks/archive/2015/04/29/azure-api-management-backing-up-and-restoring-configuration.aspx)up en het herstellen van_de configuratie de aanpak die wordt gedetailleerd door Stuart komt niet overeen met de officiële richt lijnen, maar is wel interessant._ 
-    
+-   [Azure API Management: Back-up en herstel van configuratie @ no__t-0 @ no__t-1_de aanpak die wordt gedetailleerd door Stuart komt niet overeen met de officiële richt lijnen, maar is wel interessant._
 
 [backup an api management service]: #step1
 [restore an api management service]: #step2

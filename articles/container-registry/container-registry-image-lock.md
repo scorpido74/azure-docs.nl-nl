@@ -6,14 +6,14 @@ author: dlepow
 manager: gwallace
 ms.service: container-registry
 ms.topic: article
-ms.date: 02/19/2019
+ms.date: 09/30/2019
 ms.author: danlep
-ms.openlocfilehash: 7a313353ee1c7afae10fd7af84570565037e40ab
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: 1ef6d5366e5db07a7f03bac251c24b1ff76a13e9
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68310649"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71949522"
 ---
 # <a name="lock-a-container-image-in-an-azure-container-registry"></a>Een container installatie kopie in een Azure container Registry vergren delen
 
@@ -21,11 +21,14 @@ In een Azure container Registry kunt u een installatie kopie versie of een opsla
 
 Voor dit artikel moet u de Azure CLI in Azure Cloud Shell of lokaal uitvoeren (versie 2.0.55 of hoger aanbevolen). Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren][azure-cli] als u de CLI wilt installeren of een upgrade wilt uitvoeren.
 
+> [!IMPORTANT]
+> Dit artikel is niet van toepassing op het vergren delen van een volledig REGI ster, bijvoorbeeld met behulp van **instellingen >-vergren delingen** in de Azure portal-of `az lock`-opdrachten in de Azure cli. Het vergren delen van een register bron voor komt niet dat u gegevens in opslag plaatsen kunt maken, bijwerken of verwijderen. Het vergren delen van een REGI ster is alleen van invloed op beheer bewerkingen, zoals het toevoegen of verwijderen van replicaties of het verwijderen van het REGI ster zelf. Meer informatie over [het vergren delen van resources om onverwachte wijzigingen te voor komen](../azure-resource-manager/resource-group-lock-resources.md).
+
 ## <a name="scenarios"></a>Scenario's
 
-Een gecodeerde afbeelding in Azure Container Registry is standaard onveranderbaar, dus met de juiste machtigingen kunt u herhaaldelijk een installatie kopie met dezelfde tag naar een REGI ster bijwerken en pushen. Container installatie kopieën kunnen ook naar behoefte worden [verwijderd](container-registry-delete.md) . Dit gedrag is handig wanneer u installatie kopieën ontwikkelt en een grootte voor het REGI ster moet behouden.
+Een gecodeerde afbeelding in Azure Container Registry is standaard *onveranderbaar*, dus met de juiste machtigingen kunt u herhaaldelijk een installatie kopie met dezelfde tag naar een REGI ster bijwerken en pushen. Container installatie kopieën kunnen ook naar behoefte worden [verwijderd](container-registry-delete.md) . Dit gedrag is handig wanneer u installatie kopieën ontwikkelt en een grootte voor het REGI ster moet behouden.
 
-Wanneer u echter een container installatie kopie implementeert voor productie, hebt u mogelijk  een onveranderlijke container installatie kopie nodig. Een onveranderlijke installatie kopie is een afbeelding die u niet per ongeluk kunt verwijderen of overschrijven. Gebruik de opdracht [AZ ACR repository update][az-acr-repository-update] om opslagplaats kenmerken in te stellen, zodat u het volgende kunt doen:
+Wanneer u echter een container installatie kopie implementeert voor productie, hebt u mogelijk een *onveranderlijke* container installatie kopie nodig. Een onveranderlijke installatie kopie is een afbeelding die u niet per ongeluk kunt verwijderen of overschrijven. Gebruik de opdracht [AZ ACR repository update][az-acr-repository-update] om opslagplaats kenmerken in te stellen, zodat u het volgende kunt doen:
 
 * Een installatie kopie versie of een volledige opslag plaats vergren delen
 
@@ -67,7 +70,7 @@ az acr repository update \
 
 ### <a name="lock-an-image-by-manifest-digest"></a>Een installatie kopie vergren delen op Manifest Digest
 
-Als u een *myrepo/myimage-* installatie kopie wilt vergren delen die wordt geïdentificeerd door de manifest `sha256:...`Digest (SHA-256-Hash, weer gegeven als), voert u de volgende opdracht uit. (Als u de manifest Digest wilt vinden die is gekoppeld aan een of meer afbeeldings codes, voert u de opdracht [AZ ACR repository show-manifests][az-acr-repository-show-manifests] uit.)
+Voer de volgende opdracht uit om een *myrepo/myimage* -installatie kopie te vergren delen die wordt geïdentificeerd door de manifest Digest (SHA-256-Hash, die wordt weer gegeven als `sha256:...`). (Als u de manifest Digest wilt vinden die is gekoppeld aan een of meer afbeeldings codes, voert u de opdracht [AZ ACR repository show-manifests][az-acr-repository-show-manifests] uit.)
 
 ```azurecli
 az acr repository update \

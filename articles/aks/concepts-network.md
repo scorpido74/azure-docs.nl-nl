@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: mlearned
-ms.openlocfilehash: 967ca233169e2a2a213534d5b60bef2e3f44b6a9
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 26ba3ff600ddca6158579941ab5d32b60ff13101
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69969653"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71950370"
 ---
 # <a name="network-concepts-for-applications-in-azure-kubernetes-service-aks"></a>Netwerk concepten voor toepassingen in azure Kubernetes service (AKS)
 
@@ -29,7 +29,7 @@ In dit artikel worden de belangrijkste concepten geïntroduceerd voor het bieden
 
 Om toegang tot uw toepassingen toe te staan, of om toepassings onderdelen met elkaar te laten communiceren, biedt Kubernetes een abstractie laag voor virtuele netwerken. Kubernetes-knoop punten zijn verbonden met een virtueel netwerk en kunnen een inkomende en uitgaande connectiviteit bieden voor een Peul. Het *uitvoeren-proxy* onderdeel wordt op elk knoop punt uitgevoerd om deze netwerk functies te leveren.
 
-In Kubernetes is het logisch groeperen van *Services* , waarmee directe toegang mogelijk is via een IP-adres of een DNS-naam en op een specifieke poort. U kunt ook verkeer distribueren met behulp van een *Load Balancer*. Meer complexe route ring van toepassings verkeer kan ook worden bereikt met *ingangs controllers*. Het netwerk verkeer voor peulen kan worden beveiligd en gefilterd met Kubernetes- *netwerk beleid* (in de preview-versie van AKS).
+In Kubernetes is het logisch groeperen van *Services* , waarmee directe toegang mogelijk is via een IP-adres of een DNS-naam en op een specifieke poort. U kunt ook verkeer distribueren met behulp van een *Load Balancer*. Meer complexe route ring van toepassings verkeer kan ook worden bereikt met *ingangs controllers*. Het netwerk verkeer voor peulen kan worden beveiligd en gefilterd met Kubernetes- *netwerk beleid*.
 
 Het Azure-platform helpt u ook om virtuele netwerken te vereenvoudigen voor AKS-clusters. Wanneer u een Kubernetes-load balancer maakt, wordt de onderliggende Azure load balancer-resource gemaakt en geconfigureerd. Wanneer u netwerk poorten opent op een Peul, worden de bijbehorende regels van de Azure-netwerk beveiligings groep geconfigureerd. Voor HTTP-toepassings routering kan Azure ook *externe DNS* configureren als nieuwe ingangs routes worden geconfigureerd.
 
@@ -115,7 +115,7 @@ Ongeacht het netwerk model dat u gebruikt, kunnen zowel kubenet als Azure CNI op
 * Het Azure-platform kan automatisch de virtuele netwerk bronnen maken en configureren wanneer u een AKS-cluster maakt.
 * U kunt hand matig de virtuele netwerk resources maken en configureren en aan deze resources koppelen wanneer u uw AKS-cluster maakt.
 
-Hoewel functies, zoals service-eind punten of Udr's worden ondersteund met zowel kubenet als Azure CNI, definiëren het ondersteunings [beleid voor AKS][support-policies] welke wijzigingen u kunt aanbrengen. Bijvoorbeeld:
+Hoewel functies, zoals service-eind punten of Udr's worden ondersteund met zowel kubenet als Azure CNI, definiëren het [ondersteunings beleid voor AKS][support-policies] welke wijzigingen u kunt aanbrengen. Bijvoorbeeld:
 
 * Als u de virtuele netwerk resources voor een AKS-cluster hand matig maakt, wordt u ondersteund bij het configureren van uw eigen Udr's of service-eind punten.
 * Als het Azure-platform automatisch de virtuele netwerk resources voor uw AKS-cluster maakt, wordt het niet ondersteund om deze AKS-beheerde resources hand matig te wijzigen om uw eigen Udr's of service-eind punten te configureren.

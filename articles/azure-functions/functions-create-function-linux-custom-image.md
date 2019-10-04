@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: azure-functions
 ms.custom: mvc
 manager: gwallace
-ms.openlocfilehash: b4fd931142f8a3daf11b0540241323453e25ea4f
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
-ms.translationtype: HT
+ms.openlocfilehash: 54d7dc4e57991f6b773169f539a86fdc8451cbba
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71839071"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71950376"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-image"></a>Een functie in Linux maken met behulp van een aangepaste installatie kopie
 
@@ -67,7 +67,7 @@ Wanneer u de optie `--docker` opneemt, wordt een dockerfile voor het project geg
 
 Wanneer u hierom wordt gevraagd, kiest u een runtime voor de werkrol uit de volgende talen:
 
-* `dotnet`: Hiermee maakt u een .NET core Class Library-project (. csproj).
+* `dotnet`: maakt een .NET core Class Library-project (. csproj).
 * `node`: hiermee maakt u een JavaScript-project.
 * `python`: hiermee maakt u een Python-project.  
 
@@ -295,11 +295,12 @@ In deze sectie wordt beschreven hoe u uw functie integreert met een Azure Storag
 
 Omdat u een uitvoer binding voor de wachtrij opslag gebruikt, moet u de extensie opslag bindingen hebben geïnstalleerd voordat u het project uitvoert. 
 
-#### <a name="javascriptpython"></a>Java script/python
+
+# <a name="javascript--pythontabnodejspython"></a>[Java script/python](#tab/nodejs+python)
 
 [!INCLUDE [functions-extension-bundles](../../includes/functions-extension-bundles.md)]
 
-#### <a name="c-class-library"></a>C#klassen bibliotheek
+# <a name="ctabcsharp"></a>[C\#](#tab/csharp)
 
 Met uitzonde ring van HTTP-en timer triggers worden bindingen geïmplementeerd als uitbreidings pakketten. Voer de volgende [DotNet-opdracht add package](/dotnet/core/tools/dotnet-add-package) uit in het Terminal venster om het opslag extensie pakket toe te voegen aan uw project.
 
@@ -310,35 +311,41 @@ dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage --version 3.0.4
 > [!TIP]
 > Wanneer u Visual Studio gebruikt, kunt u ook NuGet Package Manager gebruiken om dit pakket toe te voegen.
 
+---
+
 U kunt nu een opslag-uitvoer binding toevoegen aan uw project.
 
 ### <a name="add-an-output-binding"></a>Een uitvoerbinding toevoegen
 
 In functies moet voor elk type binding een `direction`, `type` en een unieke `name` worden gedefinieerd in het bestand function. json. De manier waarop u deze kenmerken definieert, is afhankelijk van de taal van uw functie-app.
 
-####  <a name="javascriptpython"></a>Java script/python
+# <a name="javascript--pythontabnodejspython"></a>[Java script/python](#tab/nodejs+python)
 
 [!INCLUDE [functions-add-output-binding-json](../../includes/functions-add-output-binding-json.md)]
 
-#### <a name="c-class-library"></a>C#klassen bibliotheek
+# <a name="ctabcsharp"></a>[C\#](#tab/csharp)
 
 [!INCLUDE [functions-add-storage-binding-csharp-library](../../includes/functions-add-storage-binding-csharp-library.md)]
+
+---
 
 ### <a name="add-code-that-uses-the-output-binding"></a>Code toevoegen die gebruikmaakt van de uitvoerbinding
 
 Nadat de binding is gedefinieerd, kunt u de `name` van de binding gebruiken om deze te openen als een kenmerk in de functie handtekening. Als u een uitvoer binding gebruikt, hoeft u niet de Azure Storage SDK-code te gebruiken voor authenticatie, het ophalen van een wachtrij verwijzing of het schrijven van gegevens. De functies runtime en wachtrij-uitvoer binding voeren deze taken voor u uit.
 
-#### <a name="javascript"></a>JavaScript
+# <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
 
 [!INCLUDE [functions-add-output-binding-js](../../includes/functions-add-output-binding-js.md)]
 
-#### <a name="python"></a>Python
+# <a name="pythontabpython"></a>[Python](#tab/python)
 
 [!INCLUDE [functions-add-output-binding-python](../../includes/functions-add-output-binding-python.md)]
 
-#### <a name="c-class-library"></a>C#klassen bibliotheek
+# <a name="ctabcsharp"></a>[C\#](#tab/csharp)
 
 [!INCLUDE [functions-add-storage-binding-csharp-library-code](../../includes/functions-add-storage-binding-csharp-library-code.md)]
+
+---
 
 ### <a name="update-the-hosted-container"></a>De gehoste container bijwerken
 

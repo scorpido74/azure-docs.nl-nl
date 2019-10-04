@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 10/02/2019
 ms.author: helohr
-ms.openlocfilehash: c9ae01b3a8f49b210c363fea20bc3c221d9e837a
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
-ms.translationtype: HT
+ms.openlocfilehash: 83f10eb9dadfda5b87f1da287718f59da17c5110
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71839621"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71947602"
 ---
 # <a name="deploy-the-diagnostics-tool"></a>Het diagnosehulpprogramma implementeren
 
@@ -51,14 +51,22 @@ In deze sectie wordt uitgelegd hoe u Power shell kunt gebruiken om de Azure Acti
 >De API-machtigingen zijn Windows virtueel bureau blad, Log Analytics-en Microsoft Graph API-machtigingen worden toegevoegd aan de Azure Active Directory-toepassing.
 
 1. Open Power shell als Administrator.
-2. Ga naar de [github-opslag plaats van RDS-sjablonen](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/diagnostics-sample/deploy/scripts) en voer het script **AD-App-registratie voor diagnostische gegevens maken** in Power shell uit.
-3.  Wanneer u wordt gevraagd uw app een naam te geven, voert u een unieke app-naam in.
-4.  U wordt dan gevraagd u aan te melden met een Administrator-account. Voer de referenties in van een gebruiker met [gedelegeerde beheerders toegang](delegated-access-virtual-desktop.md). De beheerder moet RDS-eigenaar of Inzender rechten hebben.
+2. Meld u aan bij Azure met een account met eigenaar-of Inzender machtigingen voor het Azure-abonnement dat u wilt gebruiken voor het diagnostische hulp programma:
+   ```powershell
+   Login-AzAccount
+   ```
+3. Meld u aan bij Azure AD met hetzelfde account:
+   ```powershell
+   Connect-AzureAD
+   ```
+4. Ga naar de [github-opslag plaats van RDS-sjablonen](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/diagnostics-sample/deploy/scripts) en voer het script **CreateADAppRegistrationforDiagnostics. Ps1** uit in Power shell.
+5.  Wanneer u wordt gevraagd uw app een naam te geven, voert u een unieke app-naam in.
+
 
 Nadat het script is uitgevoerd, moeten de volgende dingen worden weer gegeven in de uitvoer:
 
 -  Een bericht waarin wordt bevestigd dat uw app nu een functie toewijzing van een service-principal heeft.
--  De client-ID voor afdrukken en de geheime sleutel van de client die u nodig hebt voor het implementeren van het diagnostische hulp programma.
+-  De client-ID en de geheime sleutel van de client die u nodig hebt voor het implementeren van het diagnostische hulp programma.
 
 Nu u uw app hebt geregistreerd, is het tijd om uw Log Analytics-werk ruimte te configureren.
 
@@ -76,7 +84,7 @@ U kunt een Power shell-script uitvoeren om een Log Analytics-werk ruimte te make
 Het Power shell-script uitvoeren:
 
 1.  Open Power shell als beheerder.
-2.  Ga naar de [github-opslag plaats van RDS-sjablonen](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/diagnostics-sample/deploy/scripts) en voer het script **Create LogAnalyticsWorkspace voor Diagnostics. Ps1** in Power shell uit.
+2.  Ga naar de [github-opslag plaats van RDS-sjablonen](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/diagnostics-sample/deploy/scripts) en voer het script **CreateLogAnalyticsWorkspaceforDiagnostics. Ps1** uit in Power shell.
 3. Voer de volgende waarden in voor de para meters:
 
     - Voer voor **ResourceGroupName**de naam in voor de resource groep.

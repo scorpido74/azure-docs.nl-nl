@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 08/27/2019
+ms.date: 10/01/2019
 ms.author: diberry
-ms.openlocfilehash: dc4548e0c07adc485d1bb5785179aeb7ea2f3fe1
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: ed50e6adbcca7cbb4935400c7850c37dc2ed389f
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70195692"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71803535"
 ---
 # <a name="quickstart-add-questions-and-answer-with-qna-maker-portal"></a>Quickstart: Vragen toevoegen en een antwoord geven met QnA Maker Portal
 
@@ -61,7 +61,7 @@ Wanneer deze URL is geïmporteerd, is er slechts één vraag gemaakt met één a
 
 In deze procedure voegt u aanvullende vragen toe.
 
-1. Gebruik op de pagina **bewerken** het tekstvak Zoeken boven de vraag-en-antwoord sets om de vraag te vinden`How large a knowledge base can I create?`
+1. Gebruik op de pagina **bewerken** het tekstvak Zoeken boven de vraag-en-antwoord sets om de vraag `How large a knowledge base can I create?` te vinden
 
 1. Selecteer in de kolom **vraag** **+ alternatieve formule ring** toevoegen en voeg vervolgens elke nieuwe formule ring toe, zoals in de volgende tabel.
 
@@ -76,7 +76,7 @@ In deze procedure voegt u aanvullende vragen toe.
 
     `What GB size can a knowledge base be?`
 
-    Het juiste antwoord wordt geretourneerd in de indeling voor verkoop prijs:`The size of the knowledge base depends on the SKU of Azure search you choose when creating the QnA Maker service. Read [here](https://docs.microsoft.com/azure/cognitive-services/qnamaker/tutorials/choosing-capacity-qnamaker-deployment) for more details.`
+    Het juiste antwoord wordt geretourneerd in de indeling voor verkoop prijs: `The size of the knowledge base depends on the SKU of Azure search you choose when creating the QnA Maker service. Read [here](https://docs.microsoft.com/azure/cognitive-services/qnamaker/tutorials/choosing-capacity-qnamaker-deployment) for more details.`
 
     Als u **controleren** selecteert onder het geretourneerde antwoord, ziet u dat er meer antwoorden aan de vraag zijn voldaan, maar niet met hetzelfde hoge vertrouwens niveau. 
 
@@ -92,14 +92,14 @@ Door meta gegevens toe te voegen aan een vraag-en-antwoordset kan uw client toep
 
 1. Selecteer **weergave opties**en selecteer vervolgens **meta gegevens weer geven**. 
 
-1. Voor de vraag en de antwoordset die u zojuist hebt toegevoegd, selecteert u **labels voor meta gegevens toevoegen**en vervolgens `search`de `service:search`naam `service` en de waarde van toevoegen.
+1. Voor de vraag en de antwoordset die u zojuist hebt toegevoegd, selecteert u **labels voor meta gegevens toevoegen**en voegt u de naam `service` en de waarde `search`, `service:search` toe.
 
-1. Voeg nog andere meta gegevenslabels `link_in_answer` toe met de `false`naam `link_in_answer:false`en de waarde van,.
+1. Voeg nog andere meta gegevenslabels toe met de naam `link_in_answer` en de waarde `false`, `link_in_answer:false`.
 
 1. Zoek het eerste antwoord in de tabel, `How large a knowledge base can I create?`. 
 1. Voeg Meta gegevensparen toe voor dezelfde twee meta gegevenslabels:
 
-    `link_in_answer`:`true`<br>
+    `link_in_answer`: `true`<br>
     `server`: `qna_maker`
 
     U hebt nu twee vragen met dezelfde meta gegevenslabels met verschillende waarden. 
@@ -121,7 +121,7 @@ Door meta gegevens toe te voegen aan een vraag-en-antwoordset kan uw client toep
     curl -X POST https://your-resource-name.azurewebsites.net/qnamaker/knowledgebases/your-knowledge-base-id/generateAnswer -H "Authorization: EndpointKey your-endpoint-key" -H "Content-type: application/json" -d "{'top':30, 'question':'size','strictFilters': [{'name':'service','value':'qna_maker'}]}"
     ```
 
-    U ziet dat de vraag slechts één woord is `size`, waarmee de vraag en de antwoordset kunnen worden geretourneerd. De `strictFilters` matrix vertelt het antwoord om te beperken tot alleen `qna_maker` de antwoorden. 
+    U ziet dat de vraag slechts één woord is, `size`, waarmee een vraag en een antwoordset kunnen worden geretourneerd. De matrix `strictFilters` vertelt het antwoord om alleen de `qna_maker`-antwoorden te verminderen. 
 
     [!INCLUDE [Tip for debug property to JSON request](../includes/tip-debug-json.md)]
 
@@ -162,7 +162,7 @@ Door meta gegevens toe te voegen aan een vraag-en-antwoordset kan uw client toep
     }
     ```
 
-    Als er een vraag-en-antwoordset is die niet voldoet aan de zoek term maar wel aan het filter voldoet, wordt de set niet geretourneerd. In plaats daarvan wordt het `No good match found in KB.` algemene antwoord geretourneerd.
+    Als er een vraag-en-antwoordset is die niet voldoet aan de zoek term maar wel aan het filter voldoet, wordt de set niet geretourneerd. In plaats daarvan wordt het algemene antwoord `No good match found in KB.` geretourneerd.
 
     Zorg ervoor dat u de naam en waarde-paren van uw meta gegevens binnen de vereiste limieten houdt. 
 

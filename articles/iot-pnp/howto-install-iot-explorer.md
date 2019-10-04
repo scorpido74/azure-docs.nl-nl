@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 4e23a440f46b52633a88d0212e08c7b584f61a38
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: f59e449589c7f3027dc8a9daf9d8d12f04831dd7
+ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70932481"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71960579"
 ---
 # <a name="install-and-use-azure-iot-explorer"></a>Azure IoT Explorer installeren en gebruiken
 
@@ -29,7 +29,7 @@ In dit artikel wordt beschreven hoe u:
 Als u het hulp programma Azure IoT Explorer wilt gebruiken, hebt u het volgende nodig:
 
 - Een Azure IoT hub. Er zijn veel manieren om een IoT-hub toe te voegen aan uw Azure-abonnement, zoals [het maken van een IOT-hub met behulp van de Azure cli](../iot-hub/iot-hub-create-using-cli.md). U hebt de IoT hub-connection string nodig om het hulp programma Azure IoT Explorer uit te voeren. Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
-- Een apparaat dat is geregistreerd in uw IoT-hub. U kunt de volgende Azure CLI-opdracht gebruiken om een apparaat te registreren. Zorg ervoor dat u de `{YourIoTHubName}` `{YourDeviceID}` tijdelijke aanduidingen vervangt door de waarden:
+- Een apparaat dat is geregistreerd in uw IoT-hub. U kunt de volgende Azure CLI-opdracht gebruiken om een apparaat te registreren. Zorg ervoor dat u de tijdelijke aanduidingen `{YourIoTHubName}` en `{YourDeviceID}` vervangt door de waarden:
 
     ```azurecli-interactive
     az iot hub device-identity create --hub-name {YourIoTHubName} --device-id {YourDeviceID}
@@ -65,29 +65,27 @@ Wijzig de bron prioriteiten:
 
 U kunt een van de model definitie bronnen slepen en neerzetten naar een andere classificatie in de lijst. Als er een conflict optreedt, overschrijven de definitie bronnen met hogere classificaties bronnen met lagere classificaties.
 
-### <a name="overview-page"></a>Overzichts pagina
+### <a name="view-devices"></a>Apparaten weergeven
 
-#### <a name="device-overview"></a>Overzicht van apparaten
+Wanneer het hulp programma verbinding maakt met uw IoT-hub, wordt de lijst pagina met **apparaten** weer gegeven met een lijst met de apparaat-id's die zijn geregistreerd bij uw IOT-hub. U kunt alle vermeldingen in de lijst uitvouwen om meer informatie weer te geven.
 
-Wanneer het hulp programma verbinding maakt met uw IoT-hub, wordt een overzichts pagina weer gegeven met een lijst van alle apparaat-id's die zijn geregistreerd bij uw Azure IoT hub. Selecteer een apparaat om meer details weer te geven.
+Op de pagina met **apparaten** lijst kunt u het volgende doen:
 
-#### <a name="device-management"></a>Apparaatbeheer
-
-- Als u een nieuw apparaat bij uw hub wilt registreren, selecteert u **toevoegen**. Voer een apparaat-ID in. Gebruik de standaard instellingen om automatisch verificatie sleutels te genereren en de verbinding met uw hub in te scha kelen.
-- Selecteer **verwijderen**als u de identiteit van een apparaat wilt verwijderen. Controleer de details van het apparaat voordat u deze actie voltooit, zodat u zeker weet dat u de juiste apparaat-id wilt verwijderen.
-- Het hulp programma ondersteunt query's door `capabilityID` en `interfaceID`. Voeg uw `capabilityID` of `interfaceID` als een para meter toe om een query op uw apparaten uit te kunnen zetten.
+- Selecteer **toevoegen** om een nieuw apparaat bij uw hub te registreren. Voer vervolgens een apparaat-ID in. Gebruik de standaard instellingen om automatisch verificatie sleutels te genereren en de verbinding met uw hub in te scha kelen.
+- Selecteer een apparaat en selecteer vervolgens **verwijderen** om een apparaat-id te verwijderen. Controleer de details van het apparaat voordat u deze actie voltooit, zodat u zeker weet dat u de juiste apparaat-id wilt verwijderen.
+- Query door `capabilityID` en `interfaceID`. Voeg uw `capabilityID` of `interfaceID` toe als para meter voor het opvragen van uw apparaten.
 
 ## <a name="interact-with-a-device"></a>Interactie met een apparaat
 
-Dubbel klik op een apparaat op de pagina overzicht om het volgende detail niveau weer te geven. Er zijn twee secties: **Apparaat** en **digitale dubbele**.
+Selecteer op de pagina **apparaten** lijst een waarde in de kolom **apparaat-id** om de detail pagina voor het geregistreerde apparaat weer te geven. Voor het apparaat zijn er twee secties: **Apparaat** en **digitale dubbele**.
 
 ### <a name="device"></a>Apparaat
 
-Deze sectie bevat de tabbladen **apparaat-id**, **telemetrie**en **device dubbele** .
+Deze sectie bevat de tabbladen **apparaat-id**, **dubbele apparaten**en **telemetrie** .
 
-- U kunt de gegevens van de apparaat-id weer geven en bijwerken op het tabblad **apparaat-id** .
-- Als een apparaat is verbonden en actief gegevens verzendt, kunt u de telemetrie weer geven op het tabblad **telemetrie** .
-- U kunt de dubbele gegevens van het apparaat openen op het tabblad **apparaat dubbele** .
+- U kunt de gegevens van de [apparaat-id](../iot-hub/iot-hub-devguide-identity-registry.md) weer geven en bijwerken op het tabblad **apparaat-id** .
+- U kunt de dubbele gegevens van het [apparaat](../iot-hub/iot-hub-devguide-device-twins.md) openen op het tabblad **apparaat dubbele** .
+- Als een apparaat is verbonden en actief gegevens verzendt, kunt u de [telemetrie](../iot-hub/iot-hub-devguide-messages-read-builtin.md) weer geven op het tabblad **telemetrie** .
 
 ### <a name="digital-twin"></a>Digitale dubbele
 

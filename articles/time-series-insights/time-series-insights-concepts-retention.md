@@ -9,14 +9,14 @@ manager: cshankar
 ms.reviewer: jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 08/06/2019
+ms.date: 10/03/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5388b157ebea78a69355eb745492910f260be3ad
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 5799974581ba74d3265f0a5a66f9b081ded9f800
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68823644"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71948209"
 ---
 # <a name="understand-data-retention-in-azure-time-series-insights"></a>Gegevens retentie in Azure Time Series Insights begrijpen
 
@@ -32,13 +32,13 @@ Elke Azure time series-omgeving heeft een instelling die de **Bewaar tijd van ge
 
 Daarnaast heeft de Azure time series-omgeving een instelling voor het gedrag van de **opslag limiet overschreden** . Het bepaalt de ingang en het opschonen van gedrag wanneer de maximale capaciteit van een omgeving wordt bereikt. Er zijn twee manieren om te kiezen bij de configuratie:
 
-- **Oude gegevens** opschonen prijs  
+- **Oude gegevens opschonen** (standaard)  
 - **Ingangs onderbrekingen**
 
 > [!NOTE]
 > Wanneer u een nieuwe omgeving maakt, wordt standaard de Bewaar periode geconfigureerd om **oude gegevens te verwijderen**. Deze instelling kan worden in-of uitgeschakeld nadat deze is gemaakt met behulp van de Azure Portal op de pagina **configureren** van de time series Insights omgeving.
 
-Voor informatie over het scha kelen van het gedrag van retentie, raadpleegt u retentie [configureren in time series Insights](time-series-insights-how-to-configure-retention.md).
+Voor informatie over het scha kelen van het gedrag van retentie, raadpleegt u [retentie configureren in time series Insights](time-series-insights-how-to-configure-retention.md).
 
 Het gedrag van gegevens retentie vergelijken:
 
@@ -75,9 +75,9 @@ Wanneer het dagelijkse ingangs gemiddelde van deze omgeving meer dan 0,166 GB pe
 
 ### <a name="example-three"></a>Voor beeld drie
 
-Denk na over een omgeving met Bewaar gedrag dat is geconfigureerd om ingangen te **onderbreken**. In dit voor beeld wordt de **Bewaar periode voor gegevens** ingesteld op 60 dagen. De **capaciteit** is ingesteld op drie (3) eenheden van S1. We gaan ervan uit dat deze omgeving elke dag 2 GB gegevens bevat. In deze omgeving wordt binnenkomend gepauzeerd zodra de maximum capaciteit is bereikt.
+Denk na over een omgeving met Bewaar gedrag dat is geconfigureerd om **ingangen te onderbreken**. In dit voor beeld wordt de **Bewaar periode voor gegevens** ingesteld op 60 dagen. De **capaciteit** is ingesteld op drie (3) eenheden van S1. We gaan ervan uit dat deze omgeving elke dag 2 GB gegevens bevat. In deze omgeving wordt binnenkomend gepauzeerd zodra de maximum capaciteit is bereikt.
 
-Op dat moment wordt in de omgeving dezelfde gegevensset weer gegeven totdat ingangen wordt hervat of totdat de inschakeling is ingeschakeld (waardoor oudere gegevens worden opgeschoond om ruimte te maken voor nieuwe gegevens).
+Op dat moment wordt in de omgeving dezelfde gegevensset weer gegeven totdat ingangen wordt hervat of **totdat de** inschakeling is ingeschakeld (waardoor oudere gegevens worden opgeschoond om ruimte te maken voor nieuwe gegevens).
 
 Wanneer ingangs werkzaamheden worden hervat:
 
@@ -89,12 +89,12 @@ Wanneer ingangs werkzaamheden worden hervat:
 
 In de betrokken Event Hubs kunt u overwegen om de eigenschap voor het **bewaren van berichten** aan te passen om gegevens verlies te minimaliseren wanneer inkomend onderbreken plaatsvindt in time series Insights.
 
-[![Bewaren van Event hub-berichten.](media/time-series-insights-contepts-retention/event-hub-retention.png)](media/time-series-insights-contepts-retention/event-hub-retention.png#lightbox)
+[![Event hub-bericht bewaaring.](media/time-series-insights-contepts-retention/event-hub-retention.png)](media/time-series-insights-contepts-retention/event-hub-retention.png#lightbox)
 
-Als er geen eigenschappen zijn geconfigureerd voor de gebeurtenis`timeStampPropertyName`bron (), time series Insights standaard ingesteld op de tijds tempel van de aankomst bij Event hub als de X-as. Als `timeStampPropertyName` is geconfigureerd om iets anders te zijn, zoekt de omgeving naar de `timeStampPropertyName` geconfigureerde waarde in het gegevens pakket wanneer gebeurtenissen worden geparseerd.
+Als er geen eigenschappen zijn geconfigureerd voor de gebeurtenis bron (`timeStampPropertyName`), Time Series Insights standaard ingesteld op de tijds tempel van de aankomst bij Event Hub als de X-as. Als `timeStampPropertyName` is geconfigureerd om iets anders te zijn, zoekt de omgeving naar de geconfigureerde `timeStampPropertyName` in het gegevens pakket wanneer gebeurtenissen worden geparseerd.
 
 Als u de schaal van uw omgeving wilt aanpassen aan extra capaciteit of als u de Bewaar periode wilt verg Roten, raadpleegt u [uw time series Insights omgeving schalen](time-series-insights-how-to-scale-your-environment.md) voor meer informatie.  
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Voor informatie over het configureren of wijzigen van de instellingen voor het bewaren van gegevens, raadpleegt u retentie [configureren in time series Insights](time-series-insights-how-to-configure-retention.md).
+- Voor informatie over het configureren of wijzigen van de instellingen voor het bewaren van gegevens, raadpleegt u [retentie configureren in time series Insights](time-series-insights-how-to-configure-retention.md).

@@ -5,18 +5,16 @@ services: dns
 author: vhorne
 ms.service: dns
 ms.topic: quickstart
-ms.date: 09/20/2019
+ms.date: 10/05/2019
 ms.author: victorh
-ms.openlocfilehash: cf9ca1070461effc69d67614a11b1abd05363310
-ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
+ms.openlocfilehash: fb39042e53795057a3404ba1e8cb5903188966f7
+ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71162111"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71960448"
 ---
 # <a name="quickstart-create-an-azure-private-dns-zone-using-azure-powershell"></a>Quickstart: Een privé-DNS-zone met Azure maken met behulp van Azure PowerShell
-
-[!INCLUDE [private-dns-public-preview-notice](../../includes/private-dns-public-preview-notice.md)]
 
 Dit artikel leidt u stapsgewijs door de procedure voor het maken van uw eerste privé-DNS-zone en -record met behulp van Azure PowerShell.
 
@@ -70,7 +68,7 @@ $link = New-AzPrivateDnsVirtualNetworkLink -ZoneName private.contoso.com `
   -VirtualNetworkId $vnet.id -EnableRegistration
 ```
 
-Als u alleen een zone voor naam omzetting wilt maken (geen automatische registratie van hostnamen), kunt u de `-EnableRegistration` para meter weglaten.
+Als u alleen een zone voor naam omzetting wilt maken (geen automatische registratie van hostnamen), kunt u de para meter `-EnableRegistration` weglaten.
 
 ### <a name="list-dns-private-zones"></a>Lijst met privé-DNS-zones weergeven
 

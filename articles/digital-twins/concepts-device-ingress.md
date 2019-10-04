@@ -1,19 +1,19 @@
 ---
-title: Connectiviteit en telemetrie van apparaten met Azure Digital Apparaatdubbels | Microsoft Docs
+title: Connectiviteit van apparaten en inkomend telemetrie-Azure Digital Apparaatdubbels | Microsoft Docs
 description: Overzicht van het gebruik van een apparaat onboarding met Azure Digital Apparaatdubbels
+ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.author: alinast
-ms.openlocfilehash: 22ae7aeeff4542bee764e131f58eb115026a4fb3
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: 6c61bc6075b3f0713dd790f1b3aa1a47af9d8e6c
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71177105"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71950024"
 ---
 # <a name="device-connectivity-and-telemetry-ingress"></a>Apparaatconnectiviteit en inkomende telemetriegegevens
 
@@ -39,7 +39,7 @@ In de volgende secties vindt u informatie over het ophalen van de IoT Hub appara
 
 [!INCLUDE [Digital Twins Management API](../../includes/digital-twins-management-api.md)]
 
-Haal een Get-aanroep op de apparaat-API `includes=ConnectionString` met een para meter om de IOT hub apparaat Connection String op te halen. Filter op de GUID van het apparaat of de hardware-ID om het opgegeven apparaat te zoeken.
+Haal een GET-aanroep op de apparaat-API met een para meter `includes=ConnectionString` op om de IoT Hub apparaat connection string op te halen. Filter op de GUID van het apparaat of de hardware-ID om het opgegeven apparaat te zoeken.
 
 ```plaintext
 YOUR_MANAGEMENT_API_URL/devices/YOUR_DEVICE_GUID?includes=ConnectionString
@@ -65,7 +65,7 @@ U kunt de bericht indeling en payload van uw apparaat aanpassen aan de behoeften
 
 ### <a name="telemetry-properties"></a>Telemetrie-eigenschappen
 
- De inhoud van de nettolading van een **bericht** kan wille keurige gegevens tot 256 KB groot zijn. Er zijn enkele vereisten voor eigenschappen van het [`Message.Properties`](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.message.properties?view=azure-dotnet) type verwacht. De tabel bevat de vereiste en optionele eigenschappen die door het systeem worden ondersteund.
+ De inhoud van de nettolading van een **bericht** kan wille keurige gegevens tot 256 KB groot zijn. Er worden enkele vereisten verwacht voor eigenschappen van het type [`Message.Properties`](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.message.properties?view=azure-dotnet) . De tabel bevat de vereiste en optionele eigenschappen die door het systeem worden ondersteund.
 
 | Naam van eigenschap | Value | Vereist | Description |
 |---|---|---|---|

@@ -87,9 +87,9 @@ In dit artikel wordt uitgelegd hoe u een hoge Beschik baarheid van een ExpressRo
 Zie [ontwerpen voor herstel na nood gevallen met persoonlijke ExpressRoute][DR]-peering voor het ontwerp van overwegingen bij het bouwen van geo-redundante netwerk connectiviteit met micro soft backbone. Dit kan van invloed zijn op een hele regio.
 
 <!--Image References-->
-[1]: ./media/designing-for-high-availability-with-expressroute/exr-reco.png  "Aanbevolen manier om verbinding te maken met ExpressRoute"
-[2]: ./media/designing-for-high-availability-with-expressroute/suboptimal-lastmile-connectivity.png De  "meest optimale connectiviteit voor de laatste mijl"
-[3]: ./media/designing-for-high-availability-with-expressroute/nat-options.png  "NAT-opties"
+[1]: ./media/designing-for-high-availability-with-expressroute/exr-reco.png "Aanbevolen manier om verbinding te maken met ExpressRoute"
+[2]: ./media/designing-for-high-availability-with-expressroute/suboptimal-lastmile-connectivity.png "De meest optimale connectiviteit voor de laatste mijl"
+[3]: ./media/designing-for-high-availability-with-expressroute/nat-options.png "NAT-opties"
 
 
 <!--Link References-->

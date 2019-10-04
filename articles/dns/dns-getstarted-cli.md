@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: quickstart
 ms.date: 3/11/2019
 ms.author: victorh
-ms.openlocfilehash: 7a2c300e30050e7e46a2b2c724258539df85e410
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b5d842c2d6ff84a0f17c4e8be0bfade018edc48b
+ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66111339"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71959978"
 ---
 # <a name="quickstart-create-an-azure-dns-zone-and-record-using-azure-cli"></a>Snelstartgids: Een Azure DNS-zone en -record maken met behulp van Azure CLI
 
@@ -20,7 +20,7 @@ Dit artikel begeleidt u stapsgewijs door de procedure voor het maken van uw eers
 
 Een DNS-zone wordt gebruikt om de DNS-records voor een bepaald domein te hosten. Als u uw domein wilt hosten in Azure DNS, moet u een DNS-zone maken voor die domeinnaam. Alle DNS-records voor uw domein worden vervolgens gemaakt binnen deze DNS-zone. Tot slot moet u de naamservers voor het domein configureren om de DNS-zone te publiceren naar internet. Deze stappen worden hieronder allemaal beschreven.
 
-Azure DNS ondersteunt nu ook privé-DNS-zones (momenteel in openbare preview). Voor meer informatie over privé-DNS-zones raadpleegt u [Using Azure DNS for private domains](private-dns-overview.md) (Azure DNS gebruiken voor privédomeinen). Zie voor een voorbeeld van het maken van een privé-DNS-zone [Aan de slag met Azure DNS-privézones met CLI](./private-dns-getstarted-cli.md).
+Azure DNS biedt ook ondersteuning voor privé-DNS-zones. Voor meer informatie over privé-DNS-zones raadpleegt u [Using Azure DNS for private domains](private-dns-overview.md) (Azure DNS gebruiken voor privédomeinen). Zie voor een voorbeeld van het maken van een privé-DNS-zone [Aan de slag met Azure DNS-privézones met CLI](./private-dns-getstarted-cli.md).
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -38,7 +38,7 @@ az group create --name MyResourceGroup --location "East US"
 
 Een DNS-zone wordt gemaakt met de opdracht `az network dns zone create`. Typ `az network dns zone create -h` om Help weer te geven voor deze opdracht.
 
-Het volgende voorbeeld wordt een DNS-zone met de naam *contoso.xyz* in de resourcegroep *MyResourceGroup*. Gebruik het voorbeeld om een DNS-zone te maken door de waarden te vervangen door uw eigen waarden.
+In het volgende voor beeld wordt een DNS-zone met de naam *contoso. xyz* gemaakt in de resource groep *MyResourceGroup*. Gebruik het voorbeeld om een DNS-zone te maken door de waarden te vervangen door uw eigen waarden.
 
 ```azurecli
 az network dns zone create -g MyResourceGroup -n contoso.xyz
@@ -48,7 +48,7 @@ az network dns zone create -g MyResourceGroup -n contoso.xyz
 
 Gebruik de opdracht `az network dns record-set [record type] add-record` om een DNS-record te maken. Zie `azure network dns record-set A add-record -h` voor meer informatie over de A-records.
 
-Het volgende voorbeeld wordt een record met de relatieve naam 'www' in de DNS-Zone 'contoso.xyz' in de resourcegroep 'MyResourceGroup'. De volledig gekwalificeerde naam van de recordset is 'www.contoso.xyz'. Het recordtype is 'A', met IP-adres '10.10.10.10' en een standaard-TTL van 3600 seconden (1 uur).
+In het volgende voor beeld wordt een record gemaakt met de relatieve naam ' www ' in de DNS-zone ' contoso. XYZ ' in de resource groep ' MyResourceGroup '. De volledig gekwalificeerde naam van de recordset is ' www. contoso. XYZ '. Het record type is ' A ', met IP-adres ' 10.10.10.10 ' en een standaard-TTL van 3600 seconden (1 uur).
 
 ```azurecli
 az network dns record-set a add-record -g MyResourceGroup -z contoso.xyz -n www -a 10.10.10.10
@@ -68,13 +68,13 @@ Nu u een testzone hebt met daarin een DNS-record, kunt u de naamomzetting testen
 
 **DNS-naamomzetting testen:**
 
-1. Voer de volgende cmdlet om op te halen van de lijst met naamservers voor uw zone:
+1. Voer de volgende cmdlet uit om de lijst met naam servers voor uw zone op te halen:
 
    ```azurecli
    az network dns record-set ns show --resource-group MyResourceGroup --zone-name contoso.xyz --name @
    ```
 
-1. Kopieer een van de namen van de naam van de uitvoer van de vorige stap.
+1. Kopieer een van de naam server namen uit de uitvoer van de vorige stap.
 
 1. Open een opdrachtprompt en voer de volgende opdracht uit:
 
@@ -92,7 +92,7 @@ Nu u een testzone hebt met daarin een DNS-record, kunt u de naamomzetting testen
 
    ![nslookup](media/dns-getstarted-portal/nslookup.PNG)
 
-De hostnaam **www\.contoso.xyz** wordt omgezet naar **10.10.10.10**, net zoals u deze hebt geconfigureerd. Met dit resultaat wordt gecontroleerd of de naamomzetting juist werkt.
+De hostnaam **www\.contoso.xyz** wordt omgezet in **10.10.10.10**, net zoals u deze hebt geconfigureerd. Met dit resultaat wordt gecontroleerd of de naamomzetting juist werkt.
 
 ## <a name="delete-all-resources"></a>Alle resources verwijderen
 

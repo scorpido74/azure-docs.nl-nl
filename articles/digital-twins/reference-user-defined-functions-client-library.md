@@ -1,20 +1,20 @@
 ---
 title: Naslag informatie voor de door de gebruiker gedefinieerde Azure Digital Apparaatdubbels-client bibliotheek | Microsoft Docs
 description: Naslag informatie over de client bibliotheek voor door de gebruiker gedefinieerde Azure Digital Apparaatdubbels-functies.
+ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: article
 ms.date: 08/12/2019
-ms.author: alinast
 ms.custom: seodec18
-ms.openlocfilehash: 14c153a6e5837da28060122a629c8cc5df8262cf
-ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
+ms.openlocfilehash: 36fb8a5588321426ccae7d6c6577fb4b48f3a4db
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69013763"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71948910"
 ---
 # <a name="user-defined-functions-client-library-reference"></a>Naslag informatie voor de door de gebruiker gedefinieerde functies client bibliotheken
 
@@ -24,7 +24,7 @@ Dit document bevat referentie-informatie voor de client bibliotheek van de door 
 
 De client bibliotheek definieert hulp methoden voor veelgebruikte bewerkingen.
 
-### <a name="getspacemetadataid--space"></a>getSpaceMetadata (id) ⇒`space`
+### <a name="getspacemetadataid--space"></a>getSpaceMetadata (id) ⇒ `space`
 
 Met een spatie-id haalt deze functie de ruimte op uit de grafiek.
 
@@ -34,7 +34,7 @@ Met een spatie-id haalt deze functie de ruimte op uit de grafiek.
 | ---------- | ------------------- | ------------ |
 | *id*  | `guid` | Ruimte-id |
 
-### <a name="getsensormetadataid--sensor"></a>getSensorMetadata (id) ⇒`sensor`
+### <a name="getsensormetadataid--sensor"></a>getSensorMetadata (id) ⇒ `sensor`
 
 Op basis van een sensor-ID haalt deze functie de sensor op uit de grafiek.
 
@@ -44,7 +44,7 @@ Op basis van een sensor-ID haalt deze functie de sensor op uit de grafiek.
 | ---------- | ------------------- | ------------ |
 | *id*  | `guid` | Sensor-ID |
 
-### <a name="getdevicemetadataid--device"></a>getDeviceMetadata (id) ⇒`device`
+### <a name="getdevicemetadataid--device"></a>getDeviceMetadata (id) ⇒ `device`
 
 Met deze functie wordt het apparaat uit de grafiek opgehaald met een apparaat-id.
 
@@ -54,7 +54,7 @@ Met deze functie wordt het apparaat uit de grafiek opgehaald met een apparaat-id
 | ------ | ------------------- | ------------ |
 | *id* | `guid` | Apparaat-id |
 
-### <a name="getsensorvaluesensorid-datatype--value"></a>getSensorValue (sensorId, data type) ⇒`value`
+### <a name="getsensorvaluesensorid-datatype--value"></a>getSensorValue (sensorId, data type) ⇒ `value`
 
 Op basis van een sensor-ID en het bijbehorende gegevens type haalt deze functie de huidige waarde voor die sensor op.
 
@@ -65,7 +65,7 @@ Op basis van een sensor-ID en het bijbehorende gegevens type haalt deze functie 
 | *sensorId*  | `guid` | Sensor-ID |
 | *dataType*  | `string` | Gegevens type sensor |
 
-### <a name="getspacevaluespaceid-valuename--value"></a>getSpaceValue (spaceId, waardenaam) ⇒`value`
+### <a name="getspacevaluespaceid-valuename--value"></a>getSpaceValue (spaceId, waardenaam) @no__t ⇒-0
 
 Op basis van een spatie-id en de waardenaam wordt met deze functie de huidige waarde voor die eigenschap Space opgehaald.
 
@@ -76,7 +76,7 @@ Op basis van een spatie-id en de waardenaam wordt met deze functie de huidige wa
 | *spaceId*  | `guid` | Ruimte-id |
 | *valueName* | `string` | Naam van de eigenschap Space |
 
-### <a name="getsensorhistoryvaluessensorid-datatype--value"></a>getSensorHistoryValues (sensorId, data type) ⇒`value[]`
+### <a name="getsensorhistoryvaluessensorid-datatype--value"></a>getSensorHistoryValues (sensorId, data type) ⇒ `value[]`
 
 Op basis van een sensor-ID en het bijbehorende gegevens type haalt deze functie de historische waarden voor die sensor op.
 
@@ -87,7 +87,7 @@ Op basis van een sensor-ID en het bijbehorende gegevens type haalt deze functie 
 | *sensorId* | `guid` | Sensor-ID |
 | *dataType* | `string` | Gegevens type sensor |
 
-### <a name="getspacehistoryvaluesspaceid-datatype--value"></a>getSpaceHistoryValues (spaceId, data type) ⇒`value[]`
+### <a name="getspacehistoryvaluesspaceid-datatype--value"></a>getSpaceHistoryValues (spaceId, data type) ⇒ `value[]`
 
 Op basis van een spatie-id en de waardenaam, haalt deze functie de historische waarden voor die eigenschap op in de ruimte.
 
@@ -98,7 +98,7 @@ Op basis van een spatie-id en de waardenaam, haalt deze functie de historische w
 | *spaceId* | `guid` | Ruimte-id |
 | *valueName* | `string` | Naam van de eigenschap Space |
 
-### <a name="getspacechildspacesspaceid--space"></a>getSpaceChildSpaces(spaceId) ⇒`space[]`
+### <a name="getspacechildspacesspaceid--space"></a>getSpaceChildSpaces (spaceId) ⇒ `space[]`
 
 Met deze functie worden de onderliggende ruimten voor die bovenliggende ruimte opgehaald met een spatie-id.
 
@@ -108,7 +108,7 @@ Met deze functie worden de onderliggende ruimten voor die bovenliggende ruimte o
 | ------ | ------------------- | ------------ |
 | *spaceId* | `guid` | Ruimte-id |
 
-### <a name="getspacechildsensorsspaceid--sensor"></a>getSpaceChildSensors(spaceId) ⇒`sensor[]`
+### <a name="getspacechildsensorsspaceid--sensor"></a>getSpaceChildSensors (spaceId) ⇒ `sensor[]`
 
 Met een spatie-id haalt u de onderliggende Sens oren op voor die bovenliggende ruimte.
 
@@ -118,7 +118,7 @@ Met een spatie-id haalt u de onderliggende Sens oren op voor die bovenliggende r
 | ------ | ------------------- | ------------ |
 | *spaceId* | `guid` | Ruimte-id |
 
-### <a name="getspacechilddevicesspaceid--device"></a>getSpaceChildDevices(spaceId) ⇒`device[]`
+### <a name="getspacechilddevicesspaceid--device"></a>getSpaceChildDevices (spaceId) ⇒ `device[]`
 
 Met een spatie-id haalt u de onderliggende apparaten voor die bovenliggende ruimte op.
 
@@ -128,7 +128,7 @@ Met een spatie-id haalt u de onderliggende apparaten voor die bovenliggende ruim
 | ------ | ------------------- | ------------ |
 | *spaceId* | `guid` | Ruimte-id |
 
-### <a name="getdevicechildsensorsdeviceid--sensor"></a>getDeviceChildSensors (deviceId) ⇒`sensor[]`
+### <a name="getdevicechildsensorsdeviceid--sensor"></a>getDeviceChildSensors (deviceId) ⇒ `sensor[]`
 
 Met behulp van een apparaat-id haalt deze functie de onderliggende Sens oren voor dat bovenliggende apparaat op.
 
@@ -138,7 +138,7 @@ Met behulp van een apparaat-id haalt deze functie de onderliggende Sens oren voo
 | ------ | ------------------- | ------------ |
 | *deviceId* | `guid` | Apparaat-id |
 
-### <a name="getspaceparentspacechildspaceid--space"></a>getSpaceParentSpace(childSpaceId) ⇒`space`
+### <a name="getspaceparentspacechildspaceid--space"></a>getSpaceParentSpace (childSpaceId) ⇒ `space`
 
 Met deze functie wordt de bovenliggende ruimte van een spatie-id opgehaald.
 
@@ -148,7 +148,7 @@ Met deze functie wordt de bovenliggende ruimte van een spatie-id opgehaald.
 | ------ | ------------------- | ------------ |
 | *childSpaceId* | `guid` | Ruimte-id |
 
-### <a name="getsensorparentspacechildsensorid--space"></a>getSensorParentSpace(childSensorId) ⇒`space`
+### <a name="getsensorparentspacechildsensorid--space"></a>getSensorParentSpace (childSensorId) ⇒ `space`
 
 Met deze functie wordt de bovenliggende ruimte van de sensor-ID opgehaald.
 
@@ -158,7 +158,7 @@ Met deze functie wordt de bovenliggende ruimte van de sensor-ID opgehaald.
 | ------ | ------------------- | ------------ |
 | *childSensorId* | `guid` | Sensor-ID |
 
-### <a name="getdeviceparentspacechilddeviceid--space"></a>getDeviceParentSpace(childDeviceId) ⇒`space`
+### <a name="getdeviceparentspacechilddeviceid--space"></a>getDeviceParentSpace (childDeviceId) ⇒ `space`
 
 Als er een apparaat-id is opgegeven, haalt deze functie de bovenliggende ruimte op.
 
@@ -168,7 +168,7 @@ Als er een apparaat-id is opgegeven, haalt deze functie de bovenliggende ruimte 
 | ------ | ------------------- | ------------ |
 | *childDeviceId* | `guid` | Apparaat-id |
 
-### <a name="getsensorparentdevicechildsensorid--space"></a>getSensorParentDevice(childSensorId) ⇒`space`
+### <a name="getsensorparentdevicechildsensorid--space"></a>getSensorParentDevice (childSensorId) ⇒ `space`
 
 Met behulp van een sensor-ID haalt deze functie het bovenliggende apparaat op.
 
@@ -178,7 +178,7 @@ Met behulp van een sensor-ID haalt deze functie het bovenliggende apparaat op.
 | ------ | ------------------- | ------------ |
 | *childSensorId* | `guid` | Sensor-ID |
 
-### <a name="getspaceextendedpropertyspaceid-propertyname--extendedproperty"></a>getSpaceExtendedProperty (spaceId, PropertyName) ⇒`extendedProperty`
+### <a name="getspaceextendedpropertyspaceid-propertyname--extendedproperty"></a>getSpaceExtendedProperty (spaceId, PropertyName) @no__t ⇒-0
 
 Met een spatie-id haalt deze functie de eigenschap en de waarde ervan op uit de ruimte.
 
@@ -189,7 +189,7 @@ Met een spatie-id haalt deze functie de eigenschap en de waarde ervan op uit de 
 | *spaceId* | `guid` | Ruimte-id |
 | *propertyName* | `string` | Naam van de eigenschap Space |
 
-### <a name="getsensorextendedpropertysensorid-propertyname--extendedproperty"></a>getSensorExtendedProperty (sensorId, PropertyName) ⇒`extendedProperty`
+### <a name="getsensorextendedpropertysensorid-propertyname--extendedproperty"></a>getSensorExtendedProperty (sensorId, PropertyName) @no__t ⇒-0
 
 Op basis van een sensor-ID haalt deze functie de eigenschap en de waarde ervan op uit de sensor.
 
@@ -200,7 +200,7 @@ Op basis van een sensor-ID haalt deze functie de eigenschap en de waarde ervan o
 | *sensorId* | `guid` | Sensor-ID |
 | *propertyName* | `string` | Naam sensor eigenschap |
 
-### <a name="getdeviceextendedpropertydeviceid-propertyname--extendedproperty"></a>getDeviceExtendedProperty (deviceId, PropertyName) ⇒`extendedProperty`
+### <a name="getdeviceextendedpropertydeviceid-propertyname--extendedproperty"></a>getDeviceExtendedProperty (deviceId, PropertyName) ⇒ `extendedProperty`
 
 Met een apparaat-id haalt deze functie de eigenschap en de waarde van het apparaat op.
 
@@ -276,19 +276,19 @@ De antwoord modellen die worden geretourneerd door de hulp methoden voor client 
 
 ### <a name="space-methods"></a>Ruimte methoden
 
-#### <a name="parent--space"></a>Bovenliggende () ⇒`space`
+#### <a name="parent--space"></a>Parent () ⇒ `space`
 
 Deze functie retourneert de bovenliggende ruimte van de huidige ruimte.
 
-#### <a name="childsensors--sensor"></a>ChildSensors() ⇒`sensor[]`
+#### <a name="childsensors--sensor"></a>ChildSensors () ⇒ `sensor[]`
 
 Deze functie retourneert de onderliggende Sens oren van de huidige ruimte.
 
-#### <a name="childdevices--device"></a>ChildDevices() ⇒`device[]`
+#### <a name="childdevices--device"></a>ChildDevices () ⇒ `device[]`
 
 Deze functie retourneert de onderliggende apparaten van de huidige ruimte.
 
-#### <a name="extendedpropertypropertyname--extendedproperty"></a>ExtendedProperty (PropertyName) ⇒`extendedProperty`
+#### <a name="extendedpropertypropertyname--extendedproperty"></a>ExtendedProperty (PropertyName) ⇒ `extendedProperty`
 
 Deze functie retourneert de uitgebreide eigenschap en de waarde voor de huidige ruimte.
 
@@ -296,7 +296,7 @@ Deze functie retourneert de uitgebreide eigenschap en de waarde voor de huidige 
 | ------ | ------------------- | ------------ |
 | *propertyName* | `string` | Naam van de uitgebreide eigenschap |
 
-#### <a name="valuevaluename--value"></a>Waarde (waardenaam) ⇒`value`
+#### <a name="valuevaluename--value"></a>Waarde (waardenaam) ⇒ `value`
 
 Deze functie retourneert de waarde van de huidige ruimte.
 
@@ -304,7 +304,7 @@ Deze functie retourneert de waarde van de huidige ruimte.
 | ------ | ------------------- | ------------ |
 | *valueName* | `string` | Naam van de waarde |
 
-#### <a name="historyvaluename--value"></a>Geschiedenis (waardenaam) ⇒`value[]`
+#### <a name="historyvaluename--value"></a>Geschiedenis (waardenaam) ⇒ `value[]`
 
 Deze functie retourneert de historische waarden van de huidige ruimte.
 
@@ -340,15 +340,15 @@ Met deze functie wordt een melding met de opgegeven Payload verzonden.
 
 ### <a name="device-methods"></a>Apparaatmethoden
 
-#### <a name="parent--space"></a>Bovenliggende () ⇒`space`
+#### <a name="parent--space"></a>Parent () ⇒ `space`
 
 Deze functie retourneert de bovenliggende ruimte van het huidige apparaat.
 
-#### <a name="childsensors--sensor"></a>ChildSensors() ⇒`sensor[]`
+#### <a name="childsensors--sensor"></a>ChildSensors () ⇒ `sensor[]`
 
 Deze functie retourneert de onderliggende Sens oren van het huidige apparaat.
 
-#### <a name="extendedpropertypropertyname--extendedproperty"></a>ExtendedProperty (PropertyName) ⇒`extendedProperty`
+#### <a name="extendedpropertypropertyname--extendedproperty"></a>ExtendedProperty (PropertyName) ⇒ `extendedProperty`
 
 Deze functie retourneert de uitgebreide eigenschap en de waarde voor het huidige apparaat.
 
@@ -388,15 +388,15 @@ Met deze functie wordt een melding met de opgegeven Payload verzonden.
 
 ### <a name="sensor-methods"></a>Sensor methoden
 
-#### <a name="space--space"></a>Ruimte () ⇒`space`
+#### <a name="space--space"></a>Space () ⇒ `space`
 
 Deze functie retourneert de bovenliggende ruimte van de huidige sensor.
 
-#### <a name="device--device"></a>Apparaat () ⇒`device`
+#### <a name="device--device"></a>Apparaat () ⇒ `device`
 
 Deze functie retourneert het bovenliggende apparaat van de huidige sensor.
 
-#### <a name="extendedpropertypropertyname--extendedproperty"></a>ExtendedProperty (PropertyName) ⇒`extendedProperty`
+#### <a name="extendedpropertypropertyname--extendedproperty"></a>ExtendedProperty (PropertyName) ⇒ `extendedProperty`
 
 Deze functie retourneert de uitgebreide eigenschap en de waarde ervan voor de huidige sensor.
 
@@ -404,11 +404,11 @@ Deze functie retourneert de uitgebreide eigenschap en de waarde ervan voor de hu
 | ------ | ------------------- | ------------ |
 | *propertyName* | `string` | Naam van de uitgebreide eigenschap |
 
-#### <a name="value--value"></a>Waarde () ⇒`value`
+#### <a name="value--value"></a>Waarde () ⇒ `value`
 
 Deze functie retourneert de waarde van de huidige sensor.
 
-#### <a name="history--value"></a>Geschiedenis () ⇒`value[]`
+#### <a name="history--value"></a>Geschiedenis () ⇒ `value[]`
 
 Deze functie retourneert de historische waarden van de huidige sensor.
 

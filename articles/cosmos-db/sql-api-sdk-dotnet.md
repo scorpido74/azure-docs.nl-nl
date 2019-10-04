@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/09/2018
 ms.author: sngun
-ms.openlocfilehash: 8017f02e694f5c9e2cd677c7b1f28c5de973d077
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: f8c38c46bd60834c166721f62088d8edb2c722a9
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70932571"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71949581"
 ---
 # <a name="azure-cosmos-db-net-sdk-for-sql-api-download-and-release-notes"></a>Azure Cosmos DB .NET SDK voor SQL-API: Down load en release-opmerkingen
 > [!div class="op_single_selector"]
@@ -44,6 +44,14 @@ ms.locfileid: "70932571"
 
 > [!NOTE]
 > Als u .NET Framework gebruikt, raadpleegt u de meest recente versie 3. x van de [.NET SDK](sql-api-sdk-dotnet-standard.md), die de .net-standaard richt. 
+
+### <a name="a-name270270"></a><a name="2.7.0"/>2.7.0
+
+* Er is ondersteuning toegevoegd voor matrices en objecten in volg orde van query's
+* Efficiënte partitie sleutel conflicten verwerken
+* LINQ-ondersteuning toegevoegd voor meerdere OrderBy-Opera tors met de operator ThenBy
+* Aangepaste serialisatie-instellingen worden nu toegepast op alle upsert-en vervang bewerkingen
+* Probleem met opgeloste AysncCache-deadlock zodat deze werkt met een taak planner met één thread
 
 ### <a name="a-name260260"></a><a name="2.6.0"/>2.6.0
 
@@ -348,7 +356,7 @@ ms.locfileid: "70932571"
 ### <a name="a-name130130"></a><a name="1.3.0"/>1.3.0
 * Er is ondersteuning toegevoegd voor het wijzigen van het indexerings beleid.
   * Nieuwe methode ReplaceDocumentCollectionAsync in DocumentClient
-  * De nieuwe eigenschap IndexTransformationProgress in\<ResourceResponse T > voor het bijhouden van het procentuele verloop van de wijzigingen in het index beleid
+  * Nieuwe eigenschap IndexTransformationProgress in ResourceResponse @ no__t-0T > voor het bijhouden van het percentage voortgang van index beleids wijzigingen
   * DocumentCollection. IndexingPolicy is nu onveranderbaar
 * Er is ondersteuning toegevoegd voor ruimtelijke indexering en query.
   * Nieuwe micro soft. Azure. Documents. ruimtelijke naam ruimte voor het serialiseren/deserialiseren van ruimtelijke typen zoals Point en veelhoek
@@ -390,6 +398,7 @@ Aanvragen voor het Azure Cosmos DB met behulp van een buiten gebruik gestelde SD
 
 | Version | Releasedatum | Vervaldatum |
 | --- | --- | --- |
+| [2.7.0](#2.7.0) |23 september 2019 |--- |
 | [2.6.0](#2.6.0) |30 augustus 2019 |--- |
 | [2.5.1](#2.5.1) |02, 2019 |--- |
 | [2.4.1](#2.4.1) |20 juni 2019 |--- |

@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 09/11/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d69d5ffcae77e7144f97cb423d5bee93cb88fb27
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: 713b43f720e3bccae3b9c6457a3317427fb3fc1a
+ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71121603"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71960029"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-jira-saml-sso-by-microsoft"></a>Zelfstudie: Azure Active Directory SSO-integratie (single sign-on) met JIRA SAML SSO door micro soft
 
@@ -60,8 +60,8 @@ U hebt de volgende items nodig om aan de slag te gaan:
 
 ## <a name="supported-versions-of-jira"></a>Ondersteunde versies van JIRA
 
-* JIRA Core en Software: 6,4 tot 8,0
-* JIRA Service Desk 3.0.0 – 3.5.0
+* JIRA Core en Software: 6,4 naar 8.2.4
+* JIRA Service Desk 3.0.0 tot en met 4.2.1
 * JIRA ondersteunt ook 5.2. Klik voor meer informatie op [Microsoft Azure Active Directory-eenmalige aanmelding voor JIRA 5.2](jira52microsoft-tutorial.md)
 
 > [!NOTE]
@@ -130,7 +130,7 @@ In deze sectie maakt u een test gebruiker in de Azure Portal met de naam B. Simo
 1. Selecteer **nieuwe gebruiker** aan de bovenkant van het scherm.
 1. Voer de volgende stappen uit in de eigenschappen van de **gebruiker** :
    1. Voer in het veld **Naam** `B.Simon` in.  
-   1. Voer in het veld **gebruikers naam** het username@companydomain.extensionin. Bijvoorbeeld `B.Simon@contoso.com`.
+   1. Voer in het veld **gebruikers naam** de username@companydomain.extension in. Bijvoorbeeld `B.Simon@contoso.com`.
    1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
    1. Klik op **Create**.
 
@@ -181,11 +181,11 @@ In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebru
 
 5. Zodra de invoegtoepassing is geïnstalleerd, wordt deze weergegeven bij **User Installed** in de sectie **Manage add-ons**. Klik op **Configure** om de nieuwe invoegtoepassing te configureren.
 
-    ![Eenmalige aanmelding configureren](./media/jiramicrosoft-tutorial/addon13.png)
+    ![Eenmalige aanmelding configureren](./media/jiramicrosoft-tutorial/addon14.png)
 
 6. Voer de volgende stappen uit op de configuratiepagina:
 
-    ![Eenmalige aanmelding configureren](./media/jiramicrosoft-tutorial/addon53.png)
+    ![Eenmalige aanmelding configureren](./media/jiramicrosoft-tutorial/addon54.png)
 
     > [!TIP]
     > Zorg ervoor dat er maar één certificaat is toegewezen aan de app, zodat er geen fout optreedt bij het omzetten van de metagegevens. Als er meerdere certificaten zijn, krijgt de beheerder een foutmelding bij het omzetten van de metagegevens.
@@ -195,6 +195,8 @@ In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebru
     1. Kopieer de waarden voor **Identifier, Reply URL, Sign on URL** en plak deze in respectievelijk de vakken **Id, Antwoord-URL en Aanmeldings-URL** in de sectie **Domein- en URL-gegevens voor JIRA SAML SSO** in de Azure-portal.
 
     1. Typ bij **Login Button Name** de naam van de knop die gebruikers van uw organisatie moeten zien op het aanmeldingsscherm.
+    
+    1. Typ in de **knop Aanmelden** de beschrijving van de knop die de gebruiker wil zien op het aanmeldings scherm.
 
     1. Selecteer bij **SAML User ID Locations** het keuzerondje **User ID is in the NameIdentifier element of the Subject statement** of **User ID is in an Attribute element**.  Deze ID moet de JIRA-gebruikers-ID zijn. Als de gebruikers-ID niet overeenkomt, kunnen gebruikers zich niet aanmelden met het systeem.
 
@@ -212,7 +214,7 @@ In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebru
     1. Schakel het selectie vakje inschakelen van **Azure-aanmelding** in als u zich alleen wilt aanmelden via Azure AD-referenties.
     
        > [!Note]
-       > Als u het standaard aanmeldings formulier voor beheerders aanmelding op de aanmeldings pagina wilt inschakelen wanneer Azure-aanmelding afdwingen is ingeschakeld, voegt u de query parameter toe aan de browser-URL.
+       >Als u het standaard aanmeldings formulier voor beheerders aanmelding op de aanmeldings pagina wilt inschakelen wanneer Azure-aanmelding afdwingen is ingeschakeld, voegt u de query parameter toe aan de browser-URL.
        > `https://<domain:port>/login.action?force_azure_login=false`
 
     1. Klik op **Save** om de instellingen op te slaan.

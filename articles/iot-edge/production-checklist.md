@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 29a771b93e1d686f7972e7dc4d9e78e5858644d6
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 36465f016eeb066c0e12f6434deb98fd7b10966a
+ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70899410"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71958760"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>Voorbereidingen voor het implementeren van uw IoT Edge-oplossing in productie
 
@@ -83,7 +83,7 @@ Zodra uw IoT Edge-apparaat verbinding maakt, moet u gaan met het configureren va
 
 ### <a name="be-consistent-with-upstream-protocol"></a>Consistent zijn met upstream-protocol
 
-Als u de IoT Edge-agent op uw IoT Edge apparaat zodanig hebt geconfigureerd dat er een ander protocol dan de standaard AMQP wordt gebruikt, moet u hetzelfde protocol in alle toekomstige implementaties declareren. Bijvoorbeeld, als uw IoT Edge-apparaat zich achter een proxyserver die blokkeert AMQP-poorten, u waarschijnlijk geconfigureerd het apparaat verbinding maakt via AMQP via WebSocket (AMQPWS). Wanneer u modules op het apparaat implementeert, configureert u hetzelfde APQPWS-protocol voor de IoT Edge agent en IoT Edge hub, anders worden de instellingen door de standaard-AMQP overschreven en wordt voor komen dat u weer verbinding maakt. 
+Als u de IoT Edge-agent op uw IoT Edge apparaat zodanig hebt geconfigureerd dat er een ander protocol dan de standaard AMQP wordt gebruikt, moet u hetzelfde protocol in alle toekomstige implementaties declareren. Bijvoorbeeld, als uw IoT Edge-apparaat zich achter een proxyserver die blokkeert AMQP-poorten, u waarschijnlijk geconfigureerd het apparaat verbinding maakt via AMQP via WebSocket (AMQPWS). Wanneer u modules op het apparaat implementeert, configureert u hetzelfde AMQPWS-protocol voor de IoT Edge agent en IoT Edge hub, anders worden de instellingen door de standaard-AMQP overschreven en wordt voor komen dat u weer verbinding maakt. 
 
 U hoeft alleen de omgevings variabele UpstreamProtocol te configureren voor de IoT Edge agent en IoT Edge hub-modules. Alle aanvullende modules vast welke protocol is ingesteld in de runtimemodules. 
 
@@ -174,7 +174,7 @@ Deze controle lijst is een start punt voor firewall regels:
 
    | URL (\* = Joker teken) | Uitgaande TCP-poorten | Gebruik |
    | ----- | ----- | ----- |
-   | mcr.microsoft.com  | 443 | Micro soft container Registry |
+   | mcr.microsoft.com  | 443 | Microsoft-containerregister |
    | global.azure-devices-provisioning.net  | 443 | DPS-toegang (optioneel) |
    | \*.azurecr.io | 443 | Persoonlijke en container registers van derden |
    | \*.blob.core.windows.net | 443 | Afbeeldings verschillen downloaden | 
@@ -205,9 +205,9 @@ Wanneer u een IoT Edge-implementatie test, kunt u uw apparaten op te halen van L
 
 De Moby-container engine stelt standaard de limieten voor de container logboek grootte niet in. Na verloop van tijd kan dit ertoe leiden dat het apparaat wordt opgevuld met Logboeken en er onvoldoende schijf ruimte beschikbaar is. Houd rekening met de volgende opties om dit te voor komen:
 
-**Selecteert Algemene limieten instellen die van toepassing zijn op alle container modules**
+**Option: Algemene limieten instellen die van toepassing zijn op alle container modules @ no__t-0
 
-U kunt de grootte van alle container logboeken beperken in de logboek opties van de container-engine. In het volgende voor beeld wordt het logboek `json-file` stuur programma ingesteld op (aanbevolen) met limieten voor grootte en aantal bestanden:
+U kunt de grootte van alle container logboeken beperken in de logboek opties van de container-engine. In het volgende voor beeld wordt het stuur programma van het logboek ingesteld op `json-file` (aanbevolen) met limieten voor grootte en aantal bestanden:
 
 ```JSON
 {
@@ -219,7 +219,7 @@ U kunt de grootte van alle container logboeken beperken in de logboek opties van
 }
 ```
 
-Voeg deze gegevens toe aan een bestand met de naam `daemon.json` en plaats het op de juiste locatie voor het platform van uw apparaat.
+Voeg deze gegevens toe (of toe) aan een bestand met de naam `daemon.json` en plaats het op de juiste locatie voor uw platform.
 
 | Platform | Location |
 | -------- | -------- |
@@ -228,7 +228,7 @@ Voeg deze gegevens toe aan een bestand met de naam `daemon.json` en plaats het o
 
 De container engine moet opnieuw worden gestart om de wijzigingen van kracht te laten worden.
 
-**Selecteert Logboek instellingen voor elke container module aanpassen**
+**Option: Logboek instellingen voor elke container module aanpassen @ no__t-0
 
 U kunt dit doen in de **createOptions** van elke module. Bijvoorbeeld:
 
@@ -248,7 +248,7 @@ U kunt dit doen in de **createOptions** van elke module. Bijvoorbeeld:
 
 **Aanvullende opties op Linux-systemen**
 
-* Configureer de container-engine voor het verzenden `systemd` van Logboeken `journald` naar het [logboek](https://docs.docker.com/config/containers/logging/journald/) door in te stellen als het standaard stuur programma voor logboek registratie. 
+* De container-Engine configureren voor het verzenden van logboeken naar het `systemd` [-logboek door](https://docs.docker.com/config/containers/logging/journald/) `journald` als standaard stuur programma voor logboek registratie in te stellen. 
 
 * Verwijder regel matig oude logboeken van uw apparaat door een logrotate-hulp programma te installeren. Gebruik de specificatie van het volgende bestand: 
 

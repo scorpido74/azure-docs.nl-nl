@@ -1,20 +1,20 @@
 ---
 title: Roltoewijzingen maken en beheren-Azure Digital Apparaatdubbels | Microsoft Docs
 description: Meer informatie over het maken en beheren van roltoewijzingen in azure Digital Apparaatdubbels.
-author: lyrana
-manager: alinast
+ms.author: alinast
+author: alinamstanciu
+manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 10/02/2019
-ms.author: lyhughes
 ms.custom: seodec18
-ms.openlocfilehash: 9a9f3398df099eca7d83b38595364956e6b3b76b
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
-ms.translationtype: HT
+ms.openlocfilehash: 68714a06f72a522df0245d9c044bb6ff6557d52f
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827699"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71949827"
 ---
 # <a name="create-and-manage-role-assignments-in-azure-digital-twins"></a>Roltoewijzingen in azure Digital Apparaatdubbels maken en beheren
 
@@ -39,10 +39,10 @@ In de volgende tabel wordt elk kenmerk beschreven:
 | Kenmerk | Name | Vereist | Type | Description |
 | --- | --- | --- | --- | --- |
 | roleId | Roldefinitie-id | Ja | Tekenreeks | De unieke ID van de gewenste roltoewijzing. Zoek roldefinities en hun id door een query uit te zoeken naar de onderstaande systeem-API of-tabel. |
-| object-id | Object-id | Ja | Tekenreeks | Een Azure Active Directory-ID, Service-Principal object-ID of domein naam. Waaraan de roltoewijzing is toegewezen. De roltoewijzing moet worden ingedeeld volgens het bijbehorende type. Voor de `DomainName` objectIdType moet objectId met het `“@”` teken beginnen. |
+| object-id | Object-id | Ja | Tekenreeks | Een Azure Active Directory-ID, Service-Principal object-ID of domein naam. Waaraan de roltoewijzing is toegewezen. De roltoewijzing moet worden ingedeeld volgens het bijbehorende type. Voor de `DomainName` objectIdType moet objectId beginnen met het `“@”`-teken. |
 | objectIdType | Type object-id | Ja | Tekenreeks | Het soort object-id dat wordt gebruikt. Zie de **ondersteunde ObjectIdTypes** hieronder. |
-| path | Pad naar Space | Ja | Tekenreeks | Het volledige toegangspad naar het `Space` object. Een voorbeeld is `/{Guid}/{Guid}`. Als een id de roltoewijzing voor de hele grafiek vereist, geeft `"/"`u op. Met dit teken wordt de hoofdmap aangeduid, maar het gebruik ervan wordt afgeraden. Volg altijd het principe van minimale bevoegdheden. |
-| TenantId | Tenant-id | Varieert | Tekenreeks | In de meeste gevallen wordt de Tenant-ID van Azure Active Directory. Niet toegestaan voor `DeviceId` en `TenantId` ObjectIdTypes. Vereist voor `UserId` en `ServicePrincipalId` ObjectIdTypes. Optioneel voor de DomainName-ObjectIdType. |
+| path | Pad naar Space | Ja | Tekenreeks | Het volledige pad naar het `Space`-object. Een voorbeeld is `/{Guid}/{Guid}`. Als een id de roltoewijzing voor de hele grafiek vereist, geeft u `"/"` op. Met dit teken wordt de hoofdmap aangeduid, maar het gebruik ervan wordt afgeraden. Volg altijd het principe van minimale bevoegdheden. |
+| tenantId | Tenant-id | Varieert | Tekenreeks | In de meeste gevallen wordt de Tenant-ID van Azure Active Directory. Niet toegestaan voor `DeviceId` en `TenantId` ObjectIdTypes. Vereist voor `UserId` en `ServicePrincipalId` ObjectIdTypes. Optioneel voor de DomainName-ObjectIdType. |
 
 ### <a name="supported-role-definition-identifiers"></a>Definitie-id's van ondersteunde rollen
 
@@ -168,7 +168,7 @@ YOUR_MANAGEMENT_API_URL/roleassignments/check?userId=YOUR_USER_ID&path=YOUR_PATH
 | YOUR_ACCESS_TYPE |  Waar | Tekenreeks |   *Lezen*, *maken*, *bijwerken*of *verwijderen* |
 | YOUR_RESOURCE_TYPE | Waar | Tekenreeks |  *Apparaat*, *DeviceBlobMetadata*, *DeviceExtendedProperty*, *ExtendedPropertyKey*, *Extended type*, *eind punt*, *opslag*, *overeenkomst*, *Ontology*, *rapport*,  *RoleDefinition*, *sensor*, *SensorExtendedProperty*, *Space*, *SpaceBlobMetadata*, *SpaceExtendedProperty*, *SpaceResource*, *SpaceRoleAssignment*, *systeem* , *UerDefinedFunction*, *User*, *UserBlobMetadata*of *UserExtendedProperty* |
 
-Een geslaagde aanvraag retourneert een Booleaanse `true` waarde `false` of geeft aan of het toegangs type is toegewezen aan de gebruiker voor het gegeven pad en de opgegeven bron.
+Een geslaagde aanvraag retourneert een Booleaanse waarde `true` of `false` om aan te geven of het toegangs type is toegewezen aan de gebruiker voor het gegeven pad en de opgegeven bron.
 
 ### <a name="get-role-assignments-by-path"></a>Roltoewijzingen ophalen op basis van pad
 

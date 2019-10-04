@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 09/10/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 10ddb7272de164e6f92022a6f512df31753f7e31
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: 58aa310316a31eb63ca8dd614b60fb4bad73d997
+ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265134"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71959996"
 ---
 # <a name="compiling-dsc-configurations-in-azure-automation-state-configuration"></a>DSC-configuraties compileren in Azure Automation status configuratie
 
@@ -43,20 +43,20 @@ U kunt configuraties voor desired state Configuration (DSC) op twee manieren com
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-U kunt gebruiken [`Start-AzureRmAutomationDscCompilationJob`](/powershell/module/azurerm.automation/start-azurermautomationdsccompilationjob) om te beginnen met het compileren met Windows Power shell. Met de volgende voorbeeld code wordt de compilatie van een DSC-configuratie met de naam **SampleConfig**gestart.
+U kunt [`Start-AzureRmAutomationDscCompilationJob`](/powershell/module/azurerm.automation/start-azurermautomationdsccompilationjob) gebruiken om te beginnen met het compileren met Windows Power shell. Met de volgende voorbeeld code wordt de compilatie van een DSC-configuratie met de naam **SampleConfig**gestart.
 
 ```powershell
 Start-AzureRmAutomationDscCompilationJob -ResourceGroupName 'MyResourceGroup' -AutomationAccountName 'MyAutomationAccount' -ConfigurationName 'SampleConfig'
 ```
 
-`Start-AzureRmAutomationDscCompilationJob`retourneert een compilatie taak object dat u kunt gebruiken om de status ervan bij te houden. U kunt dit compilatie taak object vervolgens gebruiken met[`Get-AzureRmAutomationDscCompilationJob`](/powershell/module/azurerm.automation/get-azurermautomationdsccompilationjob)
-om de status van de compilatie taak te bepalen en[`Get-AzureRmAutomationDscCompilationJobOutput`](/powershell/module/azurerm.automation/get-azurermautomationdsccompilationjoboutput)
+`Start-AzureRmAutomationDscCompilationJob` retourneert een compilatie taak object dat u kunt gebruiken om de status ervan bij te houden. U kunt dit compilatie taak object vervolgens gebruiken met [`Get-AzureRmAutomationDscCompilationJob`](/powershell/module/azurerm.automation/get-azurermautomationdsccompilationjob)
+om de status van de compilatie taak te bepalen en [`Get-AzureRmAutomationDscCompilationJobOutput`](/powershell/module/azurerm.automation/get-azurermautomationdsccompilationjoboutput)
 om de streams weer te geven (uitvoer). Met de volgende voorbeeld code wordt de compilatie van de **SampleConfig** -configuratie gestart, wordt gewacht tot deze is voltooid en worden vervolgens de streams weer gegeven.
 
 ```powershell
 $CompilationJob = Start-AzureRmAutomationDscCompilationJob -ResourceGroupName 'MyResourceGroup' -AutomationAccountName 'MyAutomationAccount' -ConfigurationName 'SampleConfig'
 
-while($CompilationJob.EndTime –eq $null -and $CompilationJob.Exception –eq $null)
+while($null -eq $CompilationJob.EndTime -and $null -eq $CompilationJob.Exception)
 {
     $CompilationJob = $CompilationJob | Get-AzureRmAutomationDscCompilationJob
     Start-Sleep -Seconds 3
@@ -124,7 +124,7 @@ Zie [referentie-assets](#credential-assets) hieronder voor informatie over het d
 
 ### <a name="compiling-configurations-in-azure-automation-that-contain-composite-resources"></a>Configuraties in Azure Automation compileren die samengestelde resources bevatten
 
-Met **samengestelde resources** kunt u DSC-configuraties gebruiken als geneste resources binnen een configuratie. Hierdoor kunt u meerdere configuraties Toep assen op één resource. Zie [samengestelde resources: Het gebruik van een DSC-configuratie](/powershell/dsc/authoringresourcecomposite) als een resource voor meer informatie over **samengestelde resources**.
+Met **samengestelde resources** kunt u DSC-configuraties gebruiken als geneste resources binnen een configuratie. Hierdoor kunt u meerdere configuraties Toep assen op één resource. Zie [Composite resources: Het gebruik van een DSC-configuratie als resource @ no__t-0 voor meer informatie over **samengestelde resources**.
 
 > [!NOTE]
 > Als u configuraties met **samengestelde resources** goed wilt laten compileren, moet u er eerst voor zorgen dat alle DSC-resources waarvan de samen stelling afhankelijk is, eerst worden geïmporteerd in naar Azure Automation.
@@ -198,11 +198,11 @@ Asset-verwijzingen zijn hetzelfde in Azure Automation status configuratie en run
 
 #### <a name="credential-assets"></a>Referentie-assets
 
-DSC-configuraties in azure Automation kunnen verwijzen naar Automation- `Get-AutomationPSCredential` referentie assets met behulp van de-cmdlet. Als een configuratie een para meter heeft die een **PSCredential** -type heeft, kunt u de `Get-AutomationPSCredential` cmdlet gebruiken door de naam van de teken reeks van een Azure Automation referentie-Asset door te geven aan de cmdlet om de referentie op te halen. U kunt dit object vervolgens gebruiken voor de para meter die het **PSCredential** -object vereist. Achter de schermen wordt het Azure Automation referentie-element met die naam opgehaald en door gegeven aan de configuratie. In het onderstaande voor beeld ziet u dit in actie.
+DSC-configuraties in Azure Automation kunnen verwijzen naar Automation-referentie assets met behulp van de `Get-AutomationPSCredential`-cmdlet. Als een configuratie een para meter heeft die een **PSCredential** -type heeft, kunt u de cmdlet `Get-AutomationPSCredential` gebruiken door de naam van de teken reeks van een Azure Automation referentie-element door te geven aan de cmdlet om de referentie op te halen. U kunt dit object vervolgens gebruiken voor de para meter die het **PSCredential** -object vereist. Achter de schermen wordt het Azure Automation referentie-element met die naam opgehaald en door gegeven aan de configuratie. In het onderstaande voor beeld ziet u dit in actie.
 
 Het beveiligen van referenties in knooppunt configuraties (MOF-configuratie documenten) vereist het versleutelen van de referenties in het MOF-bestand van de knooppunt configuratie. U moet Power shell DSC echter wel vertellen dat referenties in tekst zonder opmaak moeten worden versleuteld tijdens het genereren van de configuratie van het knoop punt, omdat Power shell DSC niet weet dat Azure Automation het hele MOF-bestand zal coderen nadat het is gegenereerd via een compilatie taak.
 
-U kunt Power shell DSC zodanig informeren dat de referenties in onbewerkte tekst in het gegenereerde knoop punt configuratie-Mof's met behulp van configuratie gegevens. U moet via `PSDscAllowPlainTextPassword = $true` **ConfigurationData** door geven aan de naam van elk knooppunt blok dat wordt weer gegeven in de DSC-configuratie en referenties gebruiken.
+U kunt Power shell DSC zodanig informeren dat de referenties in onbewerkte tekst in het gegenereerde knoop punt configuratie-Mof's met behulp van configuratie gegevens. U moet `PSDscAllowPlainTextPassword = $true` door geven via **ConfigurationData** voor de naam van elk knooppunt blok dat wordt weer gegeven in de DSC-configuratie en referenties gebruikt.
 
 In het volgende voor beeld ziet u een DSC-configuratie die gebruikmaakt van een Automation-referentie-Asset.
 
@@ -291,6 +291,6 @@ Import-AzureRmAutomationDscNodeConfiguration -AutomationAccountName 'MyAutomatio
 
 - Zie aan de slag [met de configuratie van de Azure Automation-status](automation-dsc-getting-started.md) om aan de slag te gaan.
 - Zie [configuraties compileren in azure Automation status configuratie](automation-dsc-compile.md) voor meer informatie over het compileren van DSC-configuraties zodat u ze aan doel knooppunten kunt toewijzen.
-- Zie [Azure Automation status configuratie](/powershell/module/azurerm.automation/#automation) -cmdlets voor informatie over de Power shell-cmdlet.
+- Zie [Azure Automation status configuratie-cmdlets](/powershell/module/azurerm.automation/#automation) voor informatie over de Power shell-cmdlet.
 - Zie [prijzen voor Azure Automation status configuratie](https://azure.microsoft.com/pricing/details/automation/) voor prijs informatie.
 - Voor een voor beeld van het gebruik van Azure Automation status configuratie in een pijp lijn voor continue implementatie gaat u naar [continue implementatie met behulp van Azure Automation-status configuratie en chocolade](automation-dsc-cd-chocolatey.md)

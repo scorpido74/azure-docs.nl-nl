@@ -2,18 +2,19 @@
 title: 'Zelfstudie: Een ruimte controleren met Azure Digital Twins | Microsoft Docs'
 description: Leer hoe u uw ruimtelijke resources kunt inrichten en de werkomstandigheden kunt bewaken met Azure Digital Twins door de stappen in deze zelfstudie te volgen.
 services: digital-twins
+ms.author: alinast
 author: alinamstanciu
+manager: bertvanhoof
 ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
 ms.date: 09/20/2019
-ms.author: alinast
-ms.openlocfilehash: bdf37225e815d3848a87b88737daf4b5a5d2560c
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 74e3c46b2b1427c27923ed91846755797b8da690
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300053"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71949073"
 ---
 # <a name="tutorial-provision-your-building-and-monitor-working-conditions-with-azure-digital-twins-preview"></a>Zelfstudie: Uw bedrijfs voorwaarden inrichten en bewaken met Azure Digital Apparaatdubbels preview
 
@@ -53,7 +54,7 @@ Voeg de volgende matcher toe onder de bestaande matchers. Zorg ervoor dat de sle
         dataTypeValue: Temperature
 ```
 
-Met deze overeenkomst wordt de `SAMPLE_SENSOR_TEMPERATURE` sensor gevolgd die u in [de eerste zelf studie](tutorial-facilities-setup.md)hebt toegevoegd. 
+Met deze overeenkomst wordt de `SAMPLE_SENSOR_TEMPERATURE`-sensor gevolgd die u in [de eerste zelf studie](tutorial-facilities-setup.md)hebt toegevoegd. 
 
 ## <a name="create-a-user-defined-function"></a>Een door de gebruiker gedefinieerde functie maken
 
@@ -184,7 +185,7 @@ Let ook op de sectie met de naam **roleassignments**. Hiermee wordt de rol van S
 
 1. Kopieer de waarde van de `ConnectionString` uit de uitvoer in het opdrachtvenster onder de sectie `Devices` naar het Klembord. U hebt deze waarde nodig om de apparaatverbinding in de volgende sectie te simuleren.
 
-    [![Voor beeld van inrichting](./media/tutorial-facilities-udf/run-provision-sample.png)](./media/tutorial-facilities-udf/run-provision-sample.png#lightbox)
+    [![Provision-voor beeld](./media/tutorial-facilities-udf/run-provision-sample.png)](./media/tutorial-facilities-udf/run-provision-sample.png#lightbox)
 
 > [!TIP]
 > Als er tijdens het inrichtingsproces een foutbericht wordt weergegeven dat lijkt op 'De I/O-bewerking is afgebroken vanwege een afgesloten thread of een toepassingsaanvraag', moet u de opdracht opnieuw uitvoeren. Dit kan gebeuren als er een time-out van de HTTP-client heeft plaatsgevonden vanwege een netwerkprobleem.
@@ -205,7 +206,7 @@ In deze sectie gebruikt u het project met de naam *device-connectivity* in het v
 
    a. **DeviceConnectionString**: wijs de waarde van `ConnectionString` toe in het uitvoervenster uit het vorige gedeelte. Kopieer de volledige tekenreeks (tussen de aanhalingstekens), zodat de simulator correct verbinding maakt met de IoT-hub.
 
-   b. **HardwareId** binnen de matrix **Sensors**: Omdat u gebeurtenissen simuleert van Sens oren die zijn ingericht voor uw Azure Digital apparaatdubbels-exemplaar, moeten de hardware-id en de namen van de Sens oren in `sensors` dit bestand overeenkomen met het knoop punt van het bestand *provisionSample. yaml* .
+   b. **HardwareId** binnen de matrix **Sensors**: Omdat u gebeurtenissen simuleert van Sens oren die zijn ingericht voor uw Azure Digital Apparaatdubbels-exemplaar, moeten de hardware-ID en de namen van de Sens oren in dit bestand overeenkomen met het `sensors`-knoop punt van het *provisionSample. yaml* -bestand.
 
       Voeg een nieuwe vermelding voor de temperatuursensor toe. Het knoop punt **Sens oren** in *appSettings. json* moet er als volgt uitzien:
 
@@ -245,7 +246,7 @@ De door de gebruiker gedefinieerde functie wordt telkens uitgevoerd als uw insta
 
 In het uitvoervenster ziet u hoe de door de gebruiker gedefinieerde functie wordt uitgevoerd en gebeurtenissen van de apparaatsimulatie onderschept. 
 
-   [![Uitvoer voor de UDF](./media/tutorial-facilities-udf/udf-running.png)](./media/tutorial-facilities-udf/udf-running.png#lightbox)
+   [![Output voor de UDF](./media/tutorial-facilities-udf/udf-running.png)](./media/tutorial-facilities-udf/udf-running.png#lightbox)
 
 Als er aan de gecontroleerd voorwaarde wordt voldaan, stelt de door de gebruiker gedefinieerde functie de waarde van de ruimte in met het betreffende bericht, zoals we [eerder](#create-a-user-defined-function) hebben gezien. De functie `GetAvailableAndFreshSpaces` drukt het bericht op de console af.
 

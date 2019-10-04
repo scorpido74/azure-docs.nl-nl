@@ -60,8 +60,9 @@
     - name: Markering van treffers afhandelen
       href: ../Bing-Web-Search/hit-highlighting.md
       maintainContext: true
-    - name: Bladeren door webpagina's
-      href: page-webpages.md
+    - name: Door de zoekresultaten bladeren
+      href: ../Bing-Web-Search/paging-search-results.md
+      maintainContext: true
 - name: Naslaginformatie
   items:
     - name: Bing Automatische suggesties-API-verwijzing

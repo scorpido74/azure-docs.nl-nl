@@ -4,14 +4,14 @@ description: Hierin wordt beschreven hoe u de fout van het gebruik van meer dan 
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: troubleshooting
-ms.date: 10/02/2019
+ms.date: 10/04/2019
 ms.author: tomfitz
-ms.openlocfilehash: 755383c9d40c104d50ad9bb7a31b3a00f8348313
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 5bbb686597850aaceff3d3b5c142b0cb1fb0eefd
+ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827019"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71959643"
 ---
 # <a name="resolve-error-when-deployment-count-exceeds-800"></a>Fout oplossen wanneer het aantal implementaties groter is dan 800
 
@@ -31,6 +31,18 @@ Gebruik de opdracht [AZ Group Deployment delete](/cli/azure/group/deployment#az-
 az group deployment delete --resource-group exampleGroup --name deploymentName
 ```
 
+Als u alle implementaties die ouder zijn dan vijf dagen wilt verwijderen, gebruikt u:
+
+```azurecli-interactive
+startdate=$(date +%F -d "-5days")
+deployments=$(az group deployment list --resource-group exampleGroup --query "[?properties.timestamp>'$startdate'].name" --output tsv)
+
+for deployment in $deployments
+do
+  az group deployment delete --resource-group exampleGroup --name $deployment
+done
+```
+
 U kunt het huidige aantal in de implementatie geschiedenis ophalen met de volgende opdracht:
 
 ```azurecli-interactive
@@ -43,6 +55,16 @@ Gebruik de opdracht [Remove-AzResourceGroupDeployment](/powershell/module/az.res
 
 ```azurepowershell-interactive
 Remove-AzResourceGroupDeployment -ResourceGroupName exampleGroup -Name deploymentName
+```
+
+Als u alle implementaties die ouder zijn dan vijf dagen wilt verwijderen, gebruikt u:
+
+```azurepowershell-interactive
+$deployments = Get-AzResourceGroupDeployment -ResourceGroupName exampleGroup | Where-Object Timestamp -gt ((Get-Date).AddDays(-5))
+
+foreach ($deployment in $deployments) {
+  Remove-AzResourceGroupDeployment -ResourceGroupName exampleGroup -Name $deployment.DeploymentName
+}
 ```
 
 U kunt het huidige aantal in de implementatie geschiedenis ophalen met de volgende opdracht:

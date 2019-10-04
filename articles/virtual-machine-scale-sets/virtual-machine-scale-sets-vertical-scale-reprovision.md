@@ -15,18 +15,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/18/2019
 ms.author: manayar
-ms.openlocfilehash: d12fde33ec9d55c891c801f1b89143b4db6f8ae7
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 87d2b19f6143f567782778e35c8511f233d8b0e8
+ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70035755"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71958149"
 ---
 # <a name="vertical-autoscale-with-virtual-machine-scale-sets"></a>Verticaal automatisch schalen met schaal sets voor virtuele machines
 
-In dit artikel wordt beschreven hoe u Azure [Virtual Machine Scale sets](https://azure.microsoft.com/services/virtual-machine-scale-sets/) verticaal kunt schalen met of zonder opnieuw in te richten. Voor het verticaal schalen van virtuele machines die zich niet in schaal sets bevinden, raadpleegt u de [virtuele machine van Azure verticaal schalen met Azure Automation](../virtual-machines/windows/vertical-scaling-automation.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+In dit artikel wordt beschreven hoe u Azure [Virtual Machine Scale sets](https://azure.microsoft.com/services/virtual-machine-scale-sets/) verticaal kunt schalen met of zonder opnieuw in te richten. 
 
-Verticaal schalen, ook wel bekend als *Omhoog schalen* en *omlaag schalen*, betekent dat de grootte van virtuele machines (VM) wordt verg root of verkleind als reactie op een werk belasting. Vergelijk dit gedrag met [horizon taal schalen](virtual-machine-scale-sets-autoscale-overview.md), ook wel uitschalen en schalen genoemd *in*, waarbij het aantal vm's wordt gewijzigd, afhankelijk van de werk belasting.
+Verticaal schalen, ook wel bekend als *Omhoog schalen* en omlaag schalen, betekent dat de grootte van virtuele machines (VM) wordt verg root of *verkleind*als reactie op een werk belasting. Vergelijk dit gedrag met [horizon taal schalen](virtual-machine-scale-sets-autoscale-overview.md), ook wel *uitschalen* en schalen genoemd *in*, waarbij het aantal vm's wordt gewijzigd, afhankelijk van de werk belasting.
 
 Opnieuw inrichten betekent dat een bestaande virtuele machine wordt verwijderd en vervangen door een nieuwe. Wanneer u de grootte van Vm's in een schaalset voor virtuele machines verhoogt of verlaagt, kunt u in sommige gevallen het formaat van bestaande Vm's wijzigen en uw gegevens behouden, terwijl u in andere gevallen nieuwe Vm's van de nieuwe grootte moet implementeren. Dit document behandelt beide gevallen.
 

@@ -9,23 +9,26 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 192374971e92bae282c5092dd8c5e7261fce0c5f
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 96b8090bd0e178be53cb49f42438951645def5d9
+ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71066376"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71960498"
 ---
 # <a name="tutorial-add-a-real-device-to-your-azure-iot-central-application"></a>Zelfstudie: Een nieuw apparaat toevoegen aan uw Azure IoT Central-toepassing
 
 [!INCLUDE [iot-central-original-pnp](../../includes/iot-central-original-pnp-note.md)]
 
-In deze zelfstudie wordt getoond hoe u en echt apparaat aan uw Microsoft Azure IoT Central-toepassing kunt toevoegen en het kunt configureren.
+In deze zelfstudie wordt getoond hoe u en echt apparaat aan uw Microsoft Azure IoT Central-toepassing kunt toevoegen en het kunt configureren. 
+_* u hebt niet uw eigen externe apparaat nodig om deze zelf studie te volt ooien. Het echte apparaat wordt gebouwd als een gecodeerde toepassing die wordt uitgevoerd in de opdracht regel omgeving._ 
 
 Deze zelfstudie bestaat uit twee delen:
 
 * Als operator leert u eerst hoe u een echt apparaat aan uw Azure IoT Central-toepassing kunt toevoegen en het kunt configureren. Aan het eind van dit deel haalt u een verbindingsreeks op die u in het tweede deel kunt gebruiken.
 * Vervolgens krijgt u als apparaatontwikkelaar informatie over de code in het echte apparaat. U voegt de verbindingsreeks uit het eerste deel toe aan de voorbeeldcode.
+
+
 
 In deze zelfstudie leert u het volgende:
 
@@ -40,7 +43,7 @@ In deze zelfstudie leert u het volgende:
 
 Voordat u begint, moet degene die het apparaat maakt ten minste de eerste zelfstudie voor opbouwfuncties voltooien voor het maken van de Azure IoT Central-toepassing: [Een nieuw apparaattype definiëren](tutorial-define-device-type.md) (verplicht)
 
-Installeer [node. js](https://nodejs.org/) versie 8.0.0 of hoger op uw ontwikkel computer. U kunt uitvoeren `node --version` op de opdracht regel om uw versie te controleren. Node.js is beschikbaar voor een groot aantal verschillende besturingssystemen.
+Installeer [node. js](https://nodejs.org/) versie 8.0.0 of hoger op uw ontwikkel computer. U kunt `node --version` uitvoeren op de opdracht regel om uw versie te controleren. Node.js is beschikbaar voor een groot aantal verschillende besturingssystemen.
 
 ## <a name="add-a-real-device"></a>Echt apparaat toevoegen
 
@@ -52,11 +55,11 @@ Als u een echt apparaat aan uw toepassing wilt toevoegen, gebruikt u de apparaat
 
    De **device Explorer** toont de **aangesloten airconditioning** , en een gesimuleerd apparaat. Wanneer u een sjabloon voor een apparaat maakt, maakt IoT Central automatisch een gesimuleerd apparaat.
 
-2. Als u wilt beginnen met het verbinden van een echt aangesloten Air **+** -voorwaarde apparaat, selecteert u en vervolgens **werkelijk**:
+2. U ziet dat de sjabloon **voor aangesloten airconditioning** apparaat is geselecteerd in de **device Explorer**. Als u wilt beginnen met het verbinden van een apparaat met een echte lucht voorwaarde dat gebruikmaakt van deze sjabloon, selecteert u **+** en vervolgens **real**:
 
    ![Nieuwe, verbonden airco toevoegen](media/tutorial-add-device/newreal.png)
 
-3. Voer de apparaat-ID in (moet kleine letters zijn) of gebruik de voorgestelde apparaat-ID. U kunt ook de naam voor uw nieuwe apparaat invoeren en **Maken** selecteren.
+3. Voer uw eigen **apparaat-id** in (moet kleine letters zijn) of gebruik de voorgestelde waarde. U kunt ook een **apparaatnaam** invoeren voor het nieuwe apparaat en vervolgens **maken**kiezen.
 
    ![Naam van apparaat wijzigen](media/tutorial-add-device/rename.png)
 
@@ -76,9 +79,9 @@ Het echte apparaat wordt gemaakt van de apparaatsjabloon **Connected Air Conditi
 
 ## <a name="prepare-the-client-code"></a>Clientcode voorbereiden
 
-De voorbeeld code in dit artikel is geschreven in [node. js](https://nodejs.org/) en toont voldoende code voor het volgende:
+De voorbeeld code in dit artikel is geschreven in [node. js](https://nodejs.org/) en toont voldoende code voor een apparaat voor het volgende:
 
-* Verbinding te maken als een apparaat met uw Azure IoT Central-toepassing.
+* Verbinding te maken met uw Azure IoT Central-toepassing.
 * Temperatuurtelemetrie te verzenden als verbonden airco.
 * Apparaateigenschappen naar uw Azure IoT Central-toepassing te verzenden.
 * Te reageren op een operator die de instelling **Set Temperature** gebruikt.
@@ -96,13 +99,13 @@ In de volgende stappen ziet u hoe u het [Node.js](https://nodejs.org/)-voorbeeld
 
    ![Apparaatpagina met koppeling voor het weergeven van verbindingsgegevens](media/tutorial-add-device/connectionlink.png)
 
-1. Noteer de **bereik-id**, de **apparaat-id** en de waarden voor de **primaire sleutel** op de pagina apparaat-verbinding. U gebruikt deze waarden later in deze zelf studie.
+1. Noteer de **bereik-id**, de **apparaat-id** en de waarden voor de **primaire sleutel** op de pagina **apparaat-verbinding** . U gebruikt deze waarden later in deze zelf studie.
 
    ![Verbindingsdetails](media/tutorial-add-device/device-connect.png)
 
 ### <a name="prepare-the-nodejs-project"></a>Het node. js-project voorbereiden
 
-1. Maak een map met `connectedairconditioner` de naam op uw ontwikkel computer.
+1. Maak een map met de naam `connectedairconditioner` op uw ontwikkel machine.
 
 1. Ga in uw opdrachtregelprogramma naar de map `connectedairconditioner` die u hebt gemaakt.
 
@@ -133,13 +136,13 @@ In de volgende stappen ziet u hoe u het [Node.js](https://nodejs.org/)-voorbeeld
     var ProvisioningDeviceClient = require('azure-iot-provisioning-device').ProvisioningDeviceClient;
     ```
 
-1. Voeg de volgende variabelen declaraties toe aan het bestand. Vervang de tijdelijke `{your Scope ID}`aanduidingen `{your Device ID}`, en `{your Primary Key}` met de verbindings gegevens van het apparaat die u eerder hebt genoteerd:
+1. Voeg de volgende variabelen declaraties toe aan het bestand. Vervang de tijdelijke aanduidingen `{your Scope ID}`, `{your Device ID}` en `{your Primary Key}` door de verbindings gegevens van het apparaat die u eerder hebt genoteerd:
 
     ```javascript
     var provisioningHost = 'global.azure-devices-provisioning.net';
     var idScope = '{your Scope ID}';
     var registrationId = '{your Device ID}';
-    var symmetricKey = '{your Primary Key};
+    var symmetricKey = '{your Primary Key}';
     var provisioningSecurityClient = new SymmetricKeySecurityClient(registrationId, symmetricKey);
     var provisioningClient = ProvisioningDeviceClient.create(provisioningHost, idScope, new ProvisioningTransport(), provisioningSecurityClient);
     var hubClient;
@@ -150,7 +153,7 @@ In de volgende stappen ziet u hoe u het [Node.js](https://nodejs.org/)-voorbeeld
 
 ## <a name="review-client-code"></a>Client code controleren
 
-In de vorige sectie hebt u een opzet gemaakt van een Node.js-project voor een toepassing waarmee u verbinding kunt maken met uw Azure IoT Central-toepassing. De volgende stap is het toevoegen van code aan:
+In de vorige sectie hebt u een skelet knooppunt. js-project gemaakt voor een apparaat-app die verbinding maakt met uw Azure IoT Central-toepassing. De volgende stap is het toevoegen van code aan:
 
 * Verbinding te maken met uw Azure IoT Central-toepassing.
 * Telemetrie te verzenden naar uw Azure IoT Central-toepassing.

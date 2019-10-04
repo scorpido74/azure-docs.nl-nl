@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/03/2019
+ms.date: 10/01/2019
 ms.author: ryanwi
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8e7681afe3f5361b17670312c8391349c650a89d
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
-ms.translationtype: HT
+ms.openlocfilehash: fd752540d078ef57c8b6150edbf9b124bc445fe0
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71936772"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71949355"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>Procedure: Claims aanpassen die zijn uitgegeven in het SAML-token voor zakelijke toepassingen
 
@@ -83,6 +83,20 @@ Selecteer de gewenste bron voor de claim `NameIdentifier` (of NameID). U kunt ki
 | Extensie kenmerken 1-15 | Kenmerken van on-premises extensies die worden gebruikt om het Azure AD-schema uit te breiden |
 
 Zie voor meer informatie [Table 3: Geldige ID-waarden per bron @ no__t-0.
+
+U kunt ook een constante (statische) waarde toewijzen aan claims die u in azure AD definieert. Volg de onderstaande stappen om een constante waarde toe te wijzen:
+
+1. Klik in het [Azure Portal](https://portal.azure.com/), in het gedeelte **gebruikers kenmerken & claims** , op het pictogram **bewerken** om de claims te bewerken.
+
+1. Klik op de vereiste claim die u wilt wijzigen.
+
+1. Voer de constante waarde in het **bron kenmerk** in volgens uw organisatie en klik op **Opslaan**.
+
+    ![Open de sectie gebruikers kenmerken & claims in de Azure Portal](./media/active-directory-saml-claims-customization/organization-attribute.png)
+
+1. De constante waarde wordt hieronder weer gegeven.
+
+    ![Open de sectie gebruikers kenmerken & claims in de Azure Portal](./media/active-directory-saml-claims-customization/edit-attributes-claims.png)
 
 ### <a name="special-claims---transformations"></a>Speciale claim transformaties
 

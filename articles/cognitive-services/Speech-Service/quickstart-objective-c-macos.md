@@ -10,14 +10,16 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: chlandsi
-ms.openlocfilehash: 45cd1210ee6af3c456171a427729f6e16caf2d58
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: f843636b0c4f604af4984c6d75bb6c3cae75d275
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559364"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71803300"
 ---
 # <a name="quickstart-recognize-speech-in-objective-c-on-macos-using-the-speech-sdk"></a>Quickstart: Spraak herkennen in doel-C op macOS met behulp van de Speech SDK
+
+Quick starts zijn ook beschikbaar voor [spraak synthese](quickstart-text-to-speech-objectivec-macos.md).
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
@@ -34,10 +36,8 @@ Voordat u begint, bekijkt u de lijst vereisten:
 
 [!INCLUDE [License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
 
-De huidige versie van de Speech SDK van Cognitive Services is `1.6.0`.
-
 De Cognitive Services Speech SDK voor Mac wordt gedistribueerd als een framework-bundel.
-Het kan worden gebruikt in Xcode-projecten als een [CocoaPod](https://cocoapods.org/), of worden https://aka.ms/csspeech/macosbinary gedownload en hand matig worden gekoppeld. Deze hand leiding maakt gebruik van een CocoaPod.
+Het kan worden gebruikt in Xcode-projecten als een [CocoaPod](https://cocoapods.org/), of worden gedownload van https://aka.ms/csspeech/macosbinary en hand matig gekoppeld. Deze hand leiding maakt gebruik van een CocoaPod.
 
 ## <a name="create-an-xcode-project"></a>Een Xcode-project maken
 
@@ -59,21 +59,21 @@ Maak in de dialoogvensters die volgen de volgende selecties:
 1. Stel de rechten in voor toegang tot het netwerk en de microfoon. Klik op de naam van de app in de eerste regel van het overzicht aan de linkerkant om naar de app-configuratie te gaan en kies vervolgens het tabblad mogelijkheden.
     1. Schakel de instelling app sandbox in voor de app.
     1. Schakel de selectie vakjes voor uitgaande verbindingen en microfoon toegang in.
-    ![Sandbox-instellingen](media/sdk/qs-objectivec-macos-sandbox.png)
-1. De app moet ook het gebruik van de microfoon in het `Info.plist` bestand declareren. Klik op het bestand in het overzicht en voeg de sleutel ' beschrijving privacy-microfoon gebruik ' toe, met een waarde als ' microfoon is vereist voor spraak herkenning '.
-    ![Instellingen in info. plist](media/sdk/qs-objectivec-macos-info-plist.png)
+    ![Sandbox-instellingen @ no__t-1
+1. De app moet ook het gebruik van de microfoon in het `Info.plist`-bestand declareren. Klik op het bestand in het overzicht en voeg de sleutel ' beschrijving privacy-microfoon gebruik ' toe, met een waarde als ' microfoon is vereist voor spraak herkenning '.
+    ![Settings in info. plist @ no__t-1
 1. Sluit het project Xcode. Later gebruikt u een ander exemplaar na het instellen van de CocoaPods.
 
 ## <a name="install-the-sdk-as-a-cocoapod"></a>De SDK installeren als een CocoaPod
 
 1. Installeer de CocoaPod dependency manager zoals beschreven in de [installatie-instructies](https://guides.cocoapods.org/using/getting-started.html).
-1. Navigeer naar de map van uw voor beeld-`helloworld`app (). Plaats een tekst bestand met de naam `Podfile` en de volgende inhoud in die map:  
-   [!code-objectivec[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/objectivec-macos/helloworld/Podfile)]
-1. Ga naar de `helloworld` map in een Terminal en voer de opdracht `pod install`uit. Hiermee wordt een `helloworld.xcworkspace` Xcode-werk ruimte gegenereerd met zowel de voor beeld-app als de spraak-SDK als een afhankelijkheid. Deze werk ruimte wordt gebruikt in het volgende.
+1. Ga naar de map van uw voor beeld-app (`helloworld`). Plaats een tekst bestand met de naam `Podfile` en de volgende inhoud in die map:  
+   [!code-ruby[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/objectivec-macos/helloworld/Podfile)]
+1. Ga naar de map `helloworld` in een Terminal en voer de opdracht uit `pod install`. Hiermee wordt een Xcode-werk ruimte van @no__t 0 gegenereerd met zowel de voor beeld-app als de spraak-SDK als een afhankelijkheid. Deze werk ruimte wordt gebruikt in het volgende.
 
 ## <a name="add-the-sample-code"></a>De voorbeeldcode toevoegen
 
-1. Open de `helloworld.xcworkspace` werk ruimte in Xcode.
+1. Open de werk ruimte `helloworld.xcworkspace` in Xcode.
 1. Vervang de inhoud van het automatisch gegenereerde bestand `AppDelegate.m` door:  
    [!code-objectivec[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/objectivec-macos/helloworld/helloworld/AppDelegate.m#code)]
 1. Vervang de tekenreeks `YourSubscriptionKey` door uw abonnementssleutel.
@@ -82,7 +82,7 @@ Maak in de dialoogvensters die volgen de volgende selecties:
 ## <a name="build-and-run-the-sample"></a>Het voorbeeldproject compileren en uitvoeren
 
 1. Maak de foutopsporingsuitvoer zichtbaar (**View** > **Debug Area** > **Activate Console**).
-1. Bouw de voorbeeld code en voer deze uit door in het menu **product** > **uitvoeren** te selecteren of te klikken op de knop **afspelen** .
+1. Bouw de voorbeeld code en voer**deze uit door** in het menu **product** >  uit te selecteren of door op de knop **afspelen** te klikken.
 1. Nadat u op de knop hebt geklikt en enkele woorden hebt gedicteerd, ziet u de tekst die u in het onderste gedeelte van het scherm hebt gesp roken. Wanneer u de app voor de eerste keer uitvoert, wordt u gevraagd om de app toegang te geven tot de microfoon van uw computer.
 
 ## <a name="next-steps"></a>Volgende stappen

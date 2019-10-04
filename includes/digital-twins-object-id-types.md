@@ -2,18 +2,19 @@
 title: bestand opnemen
 description: bestand opnemen
 services: digital-twins
-author: kingdomofends
+ms.author: alinast
+author: alinamstanciu
+manager: bertvanhoof
 ms.service: digital-twins
 ms.topic: include
 ms.date: 09/30/2019
-ms.author: v-adgera
 ms.custom: include file
-ms.openlocfilehash: 1f4cdf45fb643499f7d6ab717c6f36395ad292c8
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
-ms.translationtype: HT
+ms.openlocfilehash: 12d4278171d43fdaf8613a1c91bdbffc269adc56
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827700"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71949048"
 ---
 Het `objectIdType` (of **object-ID-type**) verwijst naar het type identiteit dat wordt gegeven aan een rol. Naast het `DeviceId`-en `UserDefinedFunctionId`-type komen object-id-typen overeen met eigenschappen van Azure Active Directory-objecten.
 

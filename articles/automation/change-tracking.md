@@ -10,12 +10,12 @@ ms.date: 04/29/2019
 ms.topic: conceptual
 manager: carmonm
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2d6976e872223cbb66682b9a02ce343487bec35d
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: 8a1395c89b047bb120c7f7e2d2d9bb9b4d2b0c50
+ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240263"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71959961"
 ---
 # <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>Wijzigingen in uw omgeving bijhouden met de Wijzigingen bijhouden oplossing
 
@@ -134,7 +134,7 @@ Met recursie kunt u Joker tekens opgeven om het bijhouden van alle directory's e
 * Joker tekens zijn vereist voor het bijhouden van meerdere bestanden
 * Als u Joker tekens gebruikt, kunnen ze alleen worden gebruikt in het laatste segment van een pad. (zoals `c:\folder\*file*` of `/etc/*.conf`)
 * Als een omgevings variabele een ongeldig pad heeft, wordt de validatie uitgevoerd, maar wordt het pad mislukt wanneer de inventarisatie wordt uitgevoerd.
-* Vermijd algemene paden `c:\*.*` , zoals bij het instellen van het pad, omdat dit ertoe leidt dat er te veel mappen worden gepasseerd.
+* Vermijd algemene paden zoals `c:\*.*` bij het instellen van het pad, omdat dit ertoe leidt dat er te veel mappen worden gepasseerd.
 
 ## <a name="configure-file-content-tracking"></a>Tracering van bestands inhoud configureren
 
@@ -176,7 +176,7 @@ Andere beperkingen:
 De Wijzigingen bijhouden oplossing ondervindt momenteel de volgende problemen:
 
 * Hotfix-updates worden niet verzameld op computers met Windows Server 2016 core RS3.
-* Linux-daemons kunnen een gewijzigde status tonen, zelfs als er geen wijzigingen zijn. Dit komt door de manier waarop `SvcRunLevels` het veld is vastgelegd.
+* Linux-daemons kunnen een gewijzigde status tonen, zelfs als er geen wijzigingen zijn. Dit komt door de manier waarop het veld `SvcRunLevels` wordt vastgelegd.
 
 ## <a name="change-tracking-data-collection-details"></a>Details van het verzamelen van Wijzigingen bijhouden gegevens
 
@@ -221,42 +221,25 @@ De agent traceert alleen wijzigingen, Hiermee optimaliseert u de prestaties van 
 Het doel van het bewaken van wijzigingen in register sleutels is het lokaliseren van uitbreidings punten waarbij code en malware van derden kunnen worden geactiveerd. De volgende lijst bevat de lijst met vooraf geconfigureerde register sleutels. Deze sleutels zijn geconfigureerd, maar niet ingeschakeld. Als u deze register sleutels wilt bijhouden, moet u deze inschakelen.
 
 > [!div class="mx-tdBreakAll"]
-> |  |
-> |---------|
-> |**HKEY\_LOCAL\_MACHINE\Software\Classes\Directory\ShellEx\ContextMenuHandlers**     |
-|&nbsp;&nbsp;&nbsp;&nbsp;Bewaakt veelvoorkomende auto start-vermeldingen die rechtstreeks in Windows Verkenner zijn aangesloten en die meestal in-process worden uitgevoerd met Explorer. exe.    |
-> |**HKEY\_lokale\_MACHINE\Software\Microsoft\Windows\CurrentVersion\Group-Policy\Scripts\Startup**     |
-|&nbsp;&nbsp;&nbsp;&nbsp;Bewaakt de scripts die worden uitgevoerd bij het opstarten.     |
-> |**HKEY\_LOCAL\_MACHINE\Software\Microsoft\Windows\CurrentVersion\Group Policy\Scripts\Shutdown**    |
-|&nbsp;&nbsp;&nbsp;&nbsp;Bewaakt de scripts die worden uitgevoerd bij het afsluiten.     |
-> |**HKEY\_LOCAL\_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Run**     |
-|&nbsp;&nbsp;&nbsp;&nbsp;Bewaakt sleutels die worden geladen voordat de gebruiker zich aanmeldt bij het Windows-account. De sleutel wordt gebruikt voor 32-bits Program ma's die worden uitgevoerd op 64-bits computers.    |
-> |**HKEY\_lokale\_MACHINE\SOFTWARE\Microsoft\Active Setup\Installed-onderdelen**     |
-|&nbsp;&nbsp;&nbsp;&nbsp;Hiermee worden wijzigingen in toepassings instellingen gecontroleerd.     |
-> |**HKEY\_LOCAL\_MACHINE\Software\Classes\Directory\ShellEx\ContextMenuHandlers**|
-|&nbsp;&nbsp;&nbsp;&nbsp;Bewaakt veelvoorkomende auto start-vermeldingen die rechtstreeks in Windows Verkenner zijn aangesloten en die meestal in-process worden uitgevoerd met Explorer. exe.|
-> |**HKEY\_LOCAL\_MACHINE\Software\Classes\Directory\Shellex\CopyHookHandlers**|
-|&nbsp;&nbsp;&nbsp;&nbsp;Bewaakt veelvoorkomende auto start-vermeldingen die rechtstreeks in Windows Verkenner zijn aangesloten en die meestal in-process worden uitgevoerd met Explorer. exe.|
-> |**HKEY\_LOCAL\_MACHINE\Software\Microsoft\Windows\CurrentVersion\Explorer\ShellIconOverlayIdentifiers**|
-|&nbsp;&nbsp;&nbsp;&nbsp;Monitor voor de registratie van het pictogram-overlay-handler.|
-|**HKEY\_LOCAL\_MACHINE\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\ShellIconOverlayIdentifiers**|
-|&nbsp;&nbsp;&nbsp;&nbsp;Monitor voor de registratie van pictogram-overlaysoftware-handler voor 32-bits Program ma's die worden uitgevoerd op 64-bits computers.|
-> |**HKEY\_lokale\_MACHINE\Software\Microsoft\Windows\CurrentVersion\Explorer\Browser Helper-objecten**|
-|&nbsp;&nbsp;&nbsp;&nbsp;Monitors voor nieuwe browserhelperobjecten voor Internet Explorer. Wordt gebruikt om toegang te krijgen tot de Document Object Model (DOM) van de huidige pagina en om de navigatie te beheren.|
-> |**HKEY\_lokale\_MACHINE\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\Browser Helper-objecten**|
-|&nbsp;&nbsp;&nbsp;&nbsp;Monitors voor nieuwe browserhelperobjecten voor Internet Explorer. Wordt gebruikt voor toegang tot de Document Object Model (DOM) van de huidige pagina en voor het beheren van de navigatie voor 32-bits Program ma's die worden uitgevoerd op 64-bits computers.|
-> |**HKEY\_lokale\_MACHINE\Software\Microsoft\Internet-Explorer\Extensions**|
-|&nbsp;&nbsp;&nbsp;&nbsp;Controleert op nieuwe Internet Explorer-uitbrei dingen, zoals menu's voor aangepaste gereedschappen en aangepaste werkbalk knoppen.|
-> |**HKEY\_LOCAL\_MACHINE\Software\Wow6432Node\Microsoft\Internet Explorer\Extensions**|
-|&nbsp;&nbsp;&nbsp;&nbsp;Controleert op nieuwe Internet Explorer-uitbrei dingen, zoals aangepaste hulpprogramma menu's en aangepaste werkbalk knoppen voor 32-bits Program ma's die worden uitgevoerd op 64-bits computers.|
-> |**HKEY\_lokale\_MACHINE\Software\Microsoft\Windows-NT\CurrentVersion\Drivers32**|
-|&nbsp;&nbsp;&nbsp;&nbsp;Bewaakt de 32-bits Stuur Programma's die zijn gekoppeld aan wavemapper, wave1 en wave2, Msacm. imaadpcm,. msadpcm,. msgsm610 en vidc. Vergelijkbaar met de sectie [drivers] in het systeem. INI-bestand.|
-> |**HKEY\_lokale\_MACHINE\Software\Wow6432Node\Microsoft\Windows-NT\CurrentVersion\Drivers32**|
-|&nbsp;&nbsp;&nbsp;&nbsp;Bewaakt de 32-bits Stuur Programma's die zijn gekoppeld aan wavemapper, wave1 en wave2, Msacm. imaadpcm,. msadpcm,. msgsm610 en vidc voor 32-bits-Program ma's die worden uitgevoerd op 64-bits computers. Vergelijkbaar met de sectie [drivers] in het systeem. INI-bestand.|
-> |**HKEY\_LOCAL\_MACHINE\System\CurrentControlSet\Control\Session Manager\KnownDlls**|
-|&nbsp;&nbsp;&nbsp;&nbsp;Hiermee wordt de lijst met bekende of veelgebruikte systeem-Dll's gecontroleerd. Dit systeem voor komt dat gebruikers zwakke machtigingen voor de toepassingsmap kunnen exploiteren door de Trojaanse paarden-versies van systeem-Dll's te verwijderen.|
-> |**HKEY\_lokale\_MACHINE\SOFTWARE\Microsoft\Windows-NT\CurrentVersion\Winlogon\Notify**|
-|&nbsp;&nbsp;&nbsp;&nbsp;Bewaakt de lijst met pakketten die gebeurtenis meldingen van Winlogon kunnen ontvangen, het interactieve aanmeldings model voor ondersteuning voor het Windows-besturings systeem.|
+> |Registersleutel | Doel |
+> |---------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+> |`HKEY\LOCAL\MACHINE\Software\Classes\Directory\ShellEx\ContextMenuHandlers` | Bewaakt veelvoorkomende auto start-vermeldingen die rechtstreeks in Windows Verkenner zijn aangesloten en die meestal in-process worden uitgevoerd met Explorer. exe.
+> |`HKEY\LOCAL\MACHINE\Software\Microsoft\Windows\CurrentVersion\Group Policy\Scripts\Startup` | Bewaakt de scripts die worden uitgevoerd bij het opstarten.
+> |`HKEY\LOCAL\MACHINE\Software\Microsoft\Windows\CurrentVersion\Group Policy\Scripts\Shutdown` | Bewaakt de scripts die worden uitgevoerd bij het afsluiten.
+> |`HKEY\LOCAL\MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Run` | Bewaakt sleutels die worden geladen voordat de gebruiker zich aanmeldt bij het Windows-account. De sleutel wordt gebruikt voor 32-bits Program ma's die worden uitgevoerd op 64-bits computers.
+> |`HKEY\LOCAL\MACHINE\SOFTWARE\Microsoft\Active Setup\Installed Components` | Hiermee worden wijzigingen in toepassings instellingen gecontroleerd.
+> |`HKEY\LOCAL\MACHINE\Software\Classes\Directory\ShellEx\ContextMenuHandlers` | Bewaakt veelvoorkomende auto start-vermeldingen die rechtstreeks in Windows Verkenner zijn aangesloten en die meestal in-process worden uitgevoerd met Explorer. exe.
+> |`HKEY\LOCAL\MACHINE\Software\Classes\Directory\Shellex\CopyHookHandlers` | Bewaakt veelvoorkomende auto start-vermeldingen die rechtstreeks in Windows Verkenner zijn aangesloten en die meestal in-process worden uitgevoerd met Explorer. exe.
+> |`HKEY\LOCAL\MACHINE\Software\Microsoft\Windows\CurrentVersion\Explorer\ShellIconOverlayIdentifiers` | Monitor voor de registratie van het pictogram-overlay-handler.
+> |`HKEY\LOCAL\MACHINE\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\ShellIconOverlayIdentifiers` | Monitor voor de registratie van pictogram-overlaysoftware-handler voor 32-bits Program ma's die worden uitgevoerd op 64-bits computers.
+> |`HKEY\LOCAL\MACHINE\Software\Microsoft\Windows\CurrentVersion\Explorer\Browser Helper Objects` | Monitors voor nieuwe browserhelperobjecten voor Internet Explorer. Wordt gebruikt om toegang te krijgen tot de Document Object Model (DOM) van de huidige pagina en om de navigatie te beheren.
+> |`HKEY\LOCAL\MACHINE\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\Browser Helper Objects` | Monitors voor nieuwe browserhelperobjecten voor Internet Explorer. Wordt gebruikt voor toegang tot de Document Object Model (DOM) van de huidige pagina en voor het beheren van de navigatie voor 32-bits Program ma's die worden uitgevoerd op 64-bits computers.
+> |`HKEY\LOCAL\MACHINE\Software\Microsoft\Internet Explorer\Extensions` | Controleert op nieuwe Internet Explorer-uitbrei dingen, zoals menu's voor aangepaste gereedschappen en aangepaste werkbalk knoppen.
+> |`HKEY\LOCAL\MACHINE\Software\Wow6432Node\Microsoft\Internet Explorer\Extensions` | Controleert op nieuwe Internet Explorer-uitbrei dingen, zoals aangepaste hulpprogramma menu's en aangepaste werkbalk knoppen voor 32-bits Program ma's die worden uitgevoerd op 64-bits computers.
+> |`HKEY\LOCAL\MACHINE\Software\Microsoft\Windows NT\CurrentVersion\Drivers32` | Bewaakt de 32-bits Stuur Programma's die zijn gekoppeld aan wavemapper, wave1 en wave2, Msacm. imaadpcm,. msadpcm,. msgsm610 en vidc. Vergelijkbaar met de sectie [drivers] in het systeem. INI-bestand.
+> |`HKEY\LOCAL\MACHINE\Software\Wow6432Node\Microsoft\Windows NT\CurrentVersion\Drivers32` | Bewaakt de 32-bits Stuur Programma's die zijn gekoppeld aan wavemapper, wave1 en wave2, Msacm. imaadpcm,. msadpcm,. msgsm610 en vidc voor 32-bits-Program ma's die worden uitgevoerd op 64-bits computers. Vergelijkbaar met de sectie [drivers] in het systeem. INI-bestand.
+> |`HKEY\LOCAL\MACHINE\System\CurrentControlSet\Control\Session Manager\KnownDlls` | Hiermee wordt de lijst met bekende of veelgebruikte systeem-Dll's gecontroleerd. Dit systeem voor komt dat gebruikers zwakke machtigingen voor de toepassingsmap kunnen exploiteren door de Trojaanse paarden-versies van systeem-Dll's te verwijderen.
+> |`HKEY\LOCAL\MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\Notify` | Bewaakt de lijst met pakketten die gebeurtenis meldingen van Winlogon kunnen ontvangen, het interactieve aanmeldings model voor ondersteuning voor het Windows-besturings systeem.
 
 ## <a name="network-requirements"></a>Netwerkvereisten
 
@@ -298,11 +281,11 @@ De volgende tabel bevat voor beelden van zoek opdrachten in Logboeken voor wijzi
 
 Een belang rijke mogelijkheid van Wijzigingen bijhouden en inventaris is de mogelijkheid om een waarschuwing te sturen over de configuratie status en eventuele wijzigingen in de configuratie status van uw hybride omgeving.
 
-In het volgende voor beeld ziet u in de scherm afbeelding `C:\windows\system32\drivers\etc\hosts` dat het bestand op een machine is gewijzigd. Dit bestand is belang rijk omdat het hosts-bestand door Windows wordt gebruikt voor het omzetten van hostnamen naar IP-adressen en voor rang heeft boven zelfs DNS, wat kan leiden tot verbindings problemen of het omleiden van verkeer naar kwaad aardige of anderszins gevaarlijke websites.
+In het volgende voor beeld ziet u in de scherm afbeelding dat het bestand `C:\windows\system32\drivers\etc\hosts` op een machine is gewijzigd. Dit bestand is belang rijk omdat het hosts-bestand door Windows wordt gebruikt voor het omzetten van hostnamen naar IP-adressen en voor rang heeft boven zelfs DNS, wat kan leiden tot verbindings problemen of het omleiden van verkeer naar kwaad aardige of anderszins gevaarlijke websites.
 
 ![Een grafiek met de wijziging van het bestand hosts](./media/change-tracking/changes.png)
 
-Ga naar zoeken in Logboeken om deze wijziging verder te analyseren en klik op **log Analytics**. Zoek in logboek zoeken naar inhouds wijzigingen in het bestand hosts met de query `ConfigurationChange | where FieldsChanged contains "FileContentChecksum" and FileSystemPath contains "hosts"`. Deze query zoekt naar wijzigingen die een wijziging van de bestands inhoud bevatten voor bestanden waarvan het volledige pad het woord hosts bevat. U kunt ook een specifiek bestand vragen door het pad naar de volledig gekwalificeerde vorm te wijzigen (zoals `FileSystemPath == "c:\windows\system32\drivers\etc\hosts"`).
+Ga naar zoeken in Logboeken om deze wijziging verder te analyseren en klik op **log Analytics**. Zoek in logboek zoeken naar inhoud wijzigingen in het bestand hosts met de query `ConfigurationChange | where FieldsChanged contains "FileContentChecksum" and FileSystemPath contains "hosts"`. Deze query zoekt naar wijzigingen die een wijziging van de bestands inhoud bevatten voor bestanden waarvan het volledige pad het woord hosts bevat. U kunt ook om een specifiek bestand vragen door het pad naar de volledig gekwalificeerde vorm te wijzigen (bijvoorbeeld `FileSystemPath == "c:\windows\system32\drivers\etc\hosts"`).
 
 Nadat de query de gewenste resultaten heeft geretourneerd, klikt u op de knop **nieuwe waarschuwings regel** in de zoek functie voor Logboeken om de pagina voor het maken van een waarschuwing te openen. U kunt ook naar deze ervaring navigeren via **Azure monitor** in de Azure Portal. Controleer bij het maken van de waarschuwing de query opnieuw en wijzig de logica van de waarschuwing. In dit geval moet de waarschuwing worden geactiveerd als er zelfs één wijziging wordt gedetecteerd op alle computers in de omgeving.
 
@@ -320,14 +303,14 @@ Het is een goede toepassing van waarschuwingen voor Wijzigingen bijhouden-of inv
 
 |Query’s uitvoeren  |Description  |
 |---------|---------|
-|ConfigurationChange <br>&#124;waarbij ConfigChangeType = = "files" en FileSystemPath bevat "c:\\Windows\\System32\\drivers\\"|Handig voor het bijhouden van wijzigingen in essentiële bestanden van het systeem|
-|ConfigurationChange <br>&#124;waarbij FieldsChanged ' FileContentChecksum ' en FileSystemPath = = ' c:\\Windows\\System32\\drivers\\etc\\-hosts ' bevat '|Handig voor het bijhouden van wijzigingen in sleutel configuratie bestanden|
+|ConfigurationChange <br>&#124;waarbij ConfigChangeType = = "files" en FileSystemPath bevat "c: \\windows @ no__t-2system32 @ no__t-3drivers @ no__t-4"|Handig voor het bijhouden van wijzigingen in essentiële bestanden van het systeem|
+|ConfigurationChange <br>&#124;waarbij FieldsChanged ' FileContentChecksum ' en FileSystemPath = = ' c: \\windows @ no__t-2system32 @ no__t-3drivers @ no__t-4etc @ no__t-5hosts ' bevat.|Handig voor het bijhouden van wijzigingen in sleutel configuratie bestanden|
 |ConfigurationChange <br>&#124;Where ConfigChangeType = = "WindowsServices" en SvcName bevat "W3SVC" en SvcState = "gestopt"|Handig voor het bijhouden van wijzigingen in essentiële systeem services|
 |ConfigurationChange <br>&#124;Where ConfigChangeType = = "daemons" en SvcName bevat "SSH" en SvcState! = "running"|Handig voor het bijhouden van wijzigingen in essentiële systeem services|
 |ConfigurationChange <br>&#124;Where ConfigChangeType = = "software" and ChangeCategory = = "Added"|Handig voor omgevingen waarvoor software configuraties moeten worden vergrendeld|
 |ConfigurationData <br>&#124;waarbij softwarenaam "Monitoring Agent" en CurrentVersion! = "8.0.11081.0" bevat|Nuttig als u wilt zien op welke computers een verouderde of niet-compatibele software versie is geïnstalleerd. Het rapporteert de laatst gerapporteerde configuratie status, niet de wijzigingen.|
-|ConfigurationChange <br>&#124;Where RegistryKey = = "HKEY_LOCAL_MACHINE\\software\\micro\\Soft\\Windows\\CurrentVersion QualityCompat"| Handig voor het bijhouden van wijzigingen in essentiële anti-virus sleutels|
-|ConfigurationChange <br>&#124;waarbij RegistryKey ' HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Services\\\\SharedAccess\\para meters FirewallPolicy ' bevat| Handig voor het bijhouden van wijzigingen in Firewall-instellingen|
+|ConfigurationChange <br>&#124;Where RegistryKey = = @ "HKEY_LOCAL_MACHINE @ no__t-1SOFTWARE @ no__t-2Microsoft @ no__t-3Windows @ no__t-4CurrentVersion @ no__t-5QualityCompat"| Handig voor het bijhouden van wijzigingen in essentiële anti-virus sleutels|
+|ConfigurationChange <br>&#124;waar RegistryKey bevat @ "HKEY_LOCAL_MACHINE @ no__t-1SYSTEM @ no__t-2CurrentControlSet @ no__t-3Services @ no__t-4SharedAccess @ no__t-5Parameters @ no__t-6FirewallPolicy"| Handig voor het bijhouden van wijzigingen in Firewall-instellingen|
 
 ## <a name="next-steps"></a>Volgende stappen
 

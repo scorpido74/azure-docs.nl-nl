@@ -1,20 +1,20 @@
 ---
 title: Fout opsporing voor Udf's in azure Digital Apparaatdubbels | Microsoft Docs
 description: Richt lijnen over het opsporen van fouten in Udf's in azure Digital Apparaatdubbels.
-author: kingdomofends
-manager: alinast
+ms.author: alinast
+author: alinamstanciu
+manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 10/01/2019
-ms.author: v-adgera
 ms.custom: seodec18
-ms.openlocfilehash: df12d6866f5e9e6bf492e228e32b0b10f7266eb4
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
-ms.translationtype: HT
+ms.openlocfilehash: 7b122df279ecde8ed9ed49b5a89251073f3feda7
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71843837"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71949891"
 ---
 # <a name="how-to-debug-user-defined-functions-in-azure-digital-twins"></a>Fout opsporing door door de gebruiker gedefinieerde functies in azure Digital Apparaatdubbels
 
@@ -43,7 +43,7 @@ Na de configuratie kunt u alle logboek categorieën, metrische gegevens en krach
 
 Als u de telemetrie van de sensor wilt traceren, controleert u of de diagnostische instellingen zijn ingeschakeld voor uw Azure Digital Apparaatdubbels-exemplaar. Zorg er vervolgens voor dat alle gewenste logboek categorieën zijn geselecteerd. Controleer ten slotte of de gewenste logboeken naar Azure Monitor logboeken worden verzonden.
 
-Als u een telemetrie-bericht sensor wilt vergelijken met de respectieve logboeken, kunt u een correlatie-ID opgeven voor de gebeurtenis gegevens die worden verzonden. Als u dit wilt doen, `x-ms-client-request-id` stelt u de eigenschap in op een GUID.
+Als u een telemetrie-bericht sensor wilt vergelijken met de respectieve logboeken, kunt u een correlatie-ID opgeven voor de gebeurtenis gegevens die worden verzonden. Als u dit wilt doen, stelt u de eigenschap `x-ms-client-request-id` in op een GUID.
 
 Open Azure Monitor Log Analytics na het verzenden van telemetrie om logboeken te zoeken met de set correlatie-ID:
 
@@ -63,7 +63,7 @@ AzureDiagnostics
 | order by CorrelationId desc
 ```
 
-Als u logboek registratie inschakelt voor uw door de gebruiker gedefinieerde functie, worden deze logboeken weer gegeven in `UserDefinedFunction`uw log Analytics-exemplaar met de categorie. Als u deze wilt ophalen, voert u de volgende query voorwaarde in log Analytics in:
+Als u logboek registratie inschakelt voor uw door de gebruiker gedefinieerde functie, worden deze logboeken weer gegeven in uw log Analytics-exemplaar met de categorie `UserDefinedFunction`. Als u deze wilt ophalen, voert u de volgende query voorwaarde in log Analytics in:
 
 ```Kusto
 AzureDiagnostics
@@ -173,7 +173,7 @@ var customNotification = {
 sendNotification(telemetry.SensorId, "Space", JSON.stringify(customNotification));
 ```
 
-Dit scenario doet zich voor omdat de gebruikte id naar een sensor verwijst terwijl het opgegeven topologie object type `Space`is.
+Dit scenario doet zich voor omdat de gebruikte id naar een sensor verwijst terwijl het opgegeven topologie object type `Space` is.
 
 **Juiste** Hierbij
 
@@ -185,7 +185,7 @@ var customNotification = {
 sendNotification(telemetry.SensorId, "Sensor", JSON.stringify(customNotification));
 ```
 
-De eenvoudigste manier om dit probleem niet op te lossen is het `Notify` gebruik van de-methode voor het meta gegevens object.
+De eenvoudigste manier om dit probleem niet op te lossen, is door de `Notify`-methode voor het object meta gegevens te gebruiken.
 
 Voorbeeld:
 

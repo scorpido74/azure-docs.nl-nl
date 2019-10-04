@@ -1,19 +1,19 @@
 ---
 title: Postman configureren voor Azure Digital Apparaatdubbels | Microsoft Docs
 description: Postman configureren voor Azure Digital Apparaatdubbels.
-author: kingdomofends
-manager: alinast
+ms.author: alinast
+author: alinamstanciu
+manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 09/30/2019
-ms.author: v-adgera
-ms.openlocfilehash: f04946dffd66dcd44743197a0ca8f0fe21624285
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
-ms.translationtype: HT
+ms.openlocfilehash: 14e6a52f86586eaae019d9658c2f813a15fc3474
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71844514"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71949211"
 ---
 # <a name="how-to-configure-postman-for-azure-digital-twins"></a>Postman configureren voor Azure Digital Apparaatdubbels
 
@@ -39,11 +39,11 @@ Configureer uw Azure Active Directory-app om de OAuth 2,0 impliciet-toekennings 
     
     1. `Azure Digital Twins`. Selecteer de **Azure Digital apparaatdubbels** -API.
 
-        [![Zoek-API of Azure Digital Apparaatdubbels](../../includes/media/digital-twins-permissions/aad-aap-search-api-dt.png)](../../includes/media/digital-twins-permissions/aad-aap-search-api-dt.png#lightbox)
+        [![Search-API of Azure Digital Apparaatdubbels](../../includes/media/digital-twins-permissions/aad-aap-search-api-dt.png)](../../includes/media/digital-twins-permissions/aad-aap-search-api-dt.png#lightbox)
 
     1. U kunt ook zoeken naar `Azure Smart Spaces Service`. Selecteer de **Azure Smart Spaces-service** -API.
 
-        [![Zoek-API voor Azure Smart Spaces](../../includes/media/digital-twins-permissions/aad-app-search-api.png)](../../includes/media/digital-twins-permissions/aad-app-search-api.png#lightbox)
+        [![Search-API voor Azure Smart Spaces](../../includes/media/digital-twins-permissions/aad-app-search-api.png)](../../includes/media/digital-twins-permissions/aad-app-search-api.png#lightbox)
 
     > [!IMPORTANT]
     > De naam en ID van de Azure AD-API die wordt weer gegeven, is afhankelijk van uw Tenant:
@@ -69,7 +69,7 @@ Configureer uw Azure Active Directory-app om de OAuth 2,0 impliciet-toekennings 
 
 1. Kopieer de **toepassings-id** van uw Azure Active Directory-app en bewaar deze. Dit wordt gebruikt in de volgende stappen.
 
-   [![Azure Active Directory toepassings-ID](../../includes/media/digital-twins-permissions/aad-app-reg-app-id.png)](../../includes/media//digital-twins-permissions/aad-app-reg-app-id.png#lightbox)
+   [![Azure Active Directory-toepassings-ID](../../includes/media/digital-twins-permissions/aad-app-reg-app-id.png)](../../includes/media//digital-twins-permissions/aad-app-reg-app-id.png#lightbox)
 
 
 ## <a name="obtain-an-oauth-20-token"></a>Een OAuth 2,0-token verkrijgen

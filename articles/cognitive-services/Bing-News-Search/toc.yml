@@ -49,8 +49,8 @@
     - name: Markering van treffers afhandelen
       href: ../Bing-Web-Search/hit-highlighting.md
       maintainContext: true
-    - name: Bladeren door nieuws
-      href: paging-news.md
+    - name: Door de zoekresultaten bladeren
+      href: ../Bing-Web-Search/paging-search-results.md
     - name: Het formaat van miniaturen wijzigen en miniaturen bijsnijden
       maintainContext: true
       href: ../bing-web-search/resize-and-crop-thumbnails.md

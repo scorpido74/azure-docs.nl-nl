@@ -1,6 +1,6 @@
 ---
-title: Beheren van DNS-zones in Azure DNS - PowerShell | Microsoft Docs
-description: U kunt DNS-zones met behulp van Azure Powershell beheren. In dit artikel wordt beschreven hoe u bijwerken, verwijderen en het maken van DNS-zones in Azure DNS
+title: DNS-zones beheren in Azure DNS-Power shell | Microsoft Docs
+description: U kunt DNS-zones beheren met Azure Power shell. In dit artikel wordt beschreven hoe u DNS-zones bijwerkt, verwijdert en maakt op Azure DNS
 services: dns
 documentationcenter: na
 author: vhorne
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/19/2018
 ms.author: victorh
-ms.openlocfilehash: 1ef44c16a8ae3b6254a6cea252501b72ddb24a5c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: dd238be6dbfcd14480b2c0cf03236902ef39e722
+ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61293624"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71959411"
 ---
-# <a name="how-to-manage-dns-zones-using-powershell"></a>Over het beheren van DNS-Zones met behulp van PowerShell
+# <a name="how-to-manage-dns-zones-using-powershell"></a>DNS-zones beheren met Power shell
 
 > [!div class="op_single_selector"]
 > * [Portal](dns-operations-dnszones-portal.md)
@@ -28,9 +28,9 @@ ms.locfileid: "61293624"
 > * [Klassieke versie van Azure CLI](dns-operations-dnszones-cli-nodejs.md)
 > * [Azure-CLI](dns-operations-dnszones-cli.md)
 
-Dit artikel ziet u hoe u uw DNS-zones beheren met behulp van Azure PowerShell. U kunt ook beheren met uw DNS-zones met behulp van de platformoverschrijdende [Azure CLI](dns-operations-dnszones-cli.md) of de Azure-portal.
+In dit artikel leest u hoe u uw DNS-zones beheert met behulp van Azure PowerShell. U kunt ook uw DNS-zones beheren met behulp van de platformoverschrijdende [Azure cli](dns-operations-dnszones-cli.md) of de Azure Portal.
 
-Deze handleiding behandelt specifiek de openbare DNS-zones. Zie voor meer informatie over het gebruik van Azure PowerShell voor het beheren van Privézones in Azure DNS [aan de slag met Azure DNS Private Zones met behulp van Azure PowerShell](private-dns-getstarted-powershell.md).
+Deze hand leiding behandelt specifiek voor open bare DNS-zones. Zie [aan de slag met Azure DNS private zones met Azure PowerShell](private-dns-getstarted-powershell.md)voor meer informatie over het gebruik van Azure PowerShell voor het beheren van persoonlijke Zones in azure DNS.
 
 [!INCLUDE [dns-create-zone-about](../../includes/dns-create-zone-about-include.md)]
 
@@ -41,23 +41,23 @@ Deze handleiding behandelt specifiek de openbare DNS-zones. Zie voor meer inform
 
 Een DNS-zone wordt gemaakt met de cmdlet `New-AzureRmDnsZone`.
 
-Het volgende voorbeeld wordt een DNS-zone met de naam *contoso.com* in de resourcegroep met de naam *MyResourceGroup*:
+In het volgende voor beeld wordt een DNS-zone met de naam *contoso.com* gemaakt in de resource groep met de naam *MyResourceGroup*:
 
 ```powershell
 New-AzureRmDnsZone -Name contoso.com -ResourceGroupName MyAzureResourceGroup
 ```
 
-Het volgende voorbeeld laat zien hoe een DNS-zone maken met twee [tags van Azure Resource Manager](dns-zones-records.md#tags), *project = demo* en *env = test*:
+In het volgende voor beeld ziet u hoe u een DNS-zone met twee [Azure Resource Manager Tags](dns-zones-records.md#tags)maakt, *project = demo* en *env = test*:
 
 ```powershell
 New-AzureRmDnsZone -Name contoso.com -ResourceGroupName MyAzureResourceGroup -Tag @{ project="demo"; env="test" }
 ```
 
-Azure DNS ondersteunt nu ook privé-DNS-zones (momenteel in openbare preview).  Voor meer informatie over privé-DNS-zones raadpleegt u [Using Azure DNS for private domains](private-dns-overview.md) (Azure DNS gebruiken voor privédomeinen). Zie voor een voorbeeld van het maken van een privé-DNS-zone [Aan de slag met privézones in Azure DNS met behulp van PowerShell](./private-dns-getstarted-powershell.md).
+Azure DNS biedt ook ondersteuning voor privé-DNS-zones.  Voor meer informatie over privé-DNS-zones raadpleegt u [Using Azure DNS for private domains](private-dns-overview.md) (Azure DNS gebruiken voor privédomeinen). Zie voor een voorbeeld van het maken van een privé-DNS-zone [Aan de slag met privézones in Azure DNS met behulp van PowerShell](./private-dns-getstarted-powershell.md).
 
 ## <a name="get-a-dns-zone"></a>Een DNS-zone ophalen
 
-Als u wilt ophalen van een DNS-zone, gebruikt u de `Get-AzureRmDnsZone` cmdlet. Met deze bewerking retourneert een DNS-zone-object hoort bij een bestaande zone in Azure DNS. Het object bevat gegevens over de zone (zoals het aantal recordsets), maar bevat niet de recordsets zelf (Zie `Get-AzureRmDnsRecordSet`).
+Als u een DNS-zone wilt ophalen, gebruikt u de `Get-AzureRmDnsZone`-cmdlet. Met deze bewerking wordt een DNS-zone object geretourneerd dat overeenkomt met een bestaande zone in Azure DNS. Het object bevat gegevens over de zone (zoals het aantal record sets), maar bevat niet de record sets zelf (Zie `Get-AzureRmDnsRecordSet`).
 
 ```powershell
 Get-AzureRmDnsZone -Name contoso.com –ResourceGroupName MyAzureResourceGroup
@@ -88,13 +88,13 @@ $zoneList = Get-AzureRmDnsZone
 
 ## <a name="update-a-dns-zone"></a>Een DNS-zone bijwerken
 
-Wijzigingen aan een DNS-zoneresource kunnen worden aangebracht met behulp van `Set-AzureRmDnsZone`. Met deze cmdlet worden geen DNS-recordsets in de zone bijgewerkt (zie [DNS-records beheren](dns-operations-recordsets.md)). De cmdlet wordt alleen gebruikt voor het bijwerken van eigenschappen van de zoneresource zelf. De schrijfbaar zone-eigenschappen zijn momenteel beperkt tot de [Azure Resource Manager-tags' voor de zoneresource](dns-zones-records.md#tags).
+Wijzigingen aan een DNS-zoneresource kunnen worden aangebracht met behulp van `Set-AzureRmDnsZone`. Met deze cmdlet worden geen DNS-recordsets in de zone bijgewerkt (zie [DNS-records beheren](dns-operations-recordsets.md)). De cmdlet wordt alleen gebruikt voor het bijwerken van eigenschappen van de zoneresource zelf. De eigenschappen van de Beschrijf bare zone zijn momenteel beperkt tot de [Azure Resource Manager labels voor de zone resource](dns-zones-records.md#tags).
 
-Gebruik een van de volgende twee manieren om bij te werken van een DNS-zone:
+Gebruik een van de volgende twee manieren om een DNS-zone bij te werken:
 
-### <a name="specify-the-zone-using-the-zone-name-and-resource-group"></a>Geef de zone met behulp van de zone-naam en resourcegroep-groep
+### <a name="specify-the-zone-using-the-zone-name-and-resource-group"></a>Geef de zone op met behulp van de zone naam en de resource groep
 
-Deze methode vervangt de bestaande tags voor de zone met de opgegeven waarden.
+Deze benadering vervangt de bestaande zone Tags door de opgegeven waarden.
 
 ```powershell
 Set-AzureRmDnsZone -Name contoso.com -ResourceGroupName MyAzureResourceGroup -Tag @{ project="demo"; env="test" }
@@ -102,7 +102,7 @@ Set-AzureRmDnsZone -Name contoso.com -ResourceGroupName MyAzureResourceGroup -Ta
 
 ### <a name="specify-the-zone-using-a-zone-object"></a>Geef de zone op met behulp van een $zone-object
 
-Deze methode wordt het bestaande zone-object opgehaald, Hiermee wijzigt u de tags en vervolgens de wijzigingen worden doorgevoerd. Op deze manier kunnen de bestaande tags worden bewaard.
+Met deze benadering wordt het bestaande-zone object opgehaald, worden de Tags gewijzigd en worden de wijzigingen doorgevoerd. Op deze manier kunnen bestaande tags behouden blijven.
 
 ```powershell
 # Get the zone object
@@ -118,11 +118,11 @@ $zone.Tags.Add("status","approved")
 Set-AzureRmDnsZone -Zone $zone
 ```
 
-Bij het gebruik van `Set-AzureRmDnsZone` met een object $zone [Etag controleert](dns-zones-records.md#etags) worden gebruikt om ervoor te zorgen gelijktijdige wijzigingen worden niet overschreven. U kunt de optionele `-Overwrite` overschakelen naar deze controles onderdrukken.
+Wanneer u `Set-AzureRmDnsZone` met een $zone-object gebruikt, worden [ETAG-controles](dns-zones-records.md#etags) gebruikt om ervoor te zorgen dat gelijktijdige wijzigingen niet worden overschreven. U kunt de optionele optie `-Overwrite` gebruiken om deze controles te onderdrukken.
 
-## <a name="delete-a-dns-zone"></a>Een DNS-Zone verwijderen
+## <a name="delete-a-dns-zone"></a>Een DNS-zone verwijderen
 
-DNS-zones kunnen worden verwijderd met de `Remove-AzureRmDnsZone` cmdlet.
+U kunt DNS-zones verwijderen met de cmdlet `Remove-AzureRmDnsZone`.
 
 > [!NOTE]
 > Als u een DNS-zone verwijdert, worden ook alle DNS-records binnen de zone verwijderd. Deze bewerking kan niet ongedaan worden gemaakt. Als de DNS-zone in gebruik is en de zone wordt verwijderd, werken services die van de zone gebruik maken niet langer.
@@ -154,7 +154,7 @@ Get-AzureRmDnsZone -Name contoso.com -ResourceGroupName MyAzureResourceGroup | R
 
 ```
 
-Net als bij `Set-AzureRmDnsZone`, op te geven de zone met behulp van een `$zone` object kunt Etag controles om ervoor te zorgen gelijktijdige wijzigingen zijn niet verwijderd. Gebruik de `-Overwrite` overschakelen naar deze controles onderdrukken.
+Net als bij `Set-AzureRmDnsZone` geeft de zone die gebruikmaakt van een `$zone`-object ETAG-controles aan om ervoor te zorgen dat gelijktijdige wijzigingen niet worden verwijderd. Gebruik de schakel optie `-Overwrite` om deze controles te onderdrukken.
 
 ## <a name="confirmation-prompts"></a>Bevestigingsprompts
 
@@ -170,9 +170,9 @@ Zie [over voorkeursvariabelen](/powershell/module/microsoft.powershell.core/abou
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over het [beheren recordsets en records](dns-operations-recordsets.md) in uw DNS-zone.
+Meer informatie over het [beheren van record sets en records](dns-operations-recordsets.md) in uw DNS-zone.
 <br>
-Meer informatie over het [uw domein delegeren naar Azure DNS](dns-domain-delegation.md).
+Meer informatie over hoe u [uw domein kunt delegeren naar Azure DNS](dns-domain-delegation.md).
 <br>
-Controleer de [referentiedocumentatie voor PowerShell voor Azure DNS](/powershell/module/azurerm.dns).
+Raadpleeg de [Azure DNS Power shell-referentie documentatie](/powershell/module/azurerm.dns).
 

@@ -1,19 +1,19 @@
 ---
 title: Multi tenant-toepassingen met Azure Digital Apparaatdubbels inschakelen | Microsoft Docs
 description: Multi tenant-Azure Active Directory toepassingen configureren voor Azure Digital Apparaatdubbels.
-author: mavoge
+ms.author: alinast
+author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 08/12/2019
-ms.author: mavoge
-ms.openlocfilehash: 2ee3681640f68839c32e2963b34d5547abb6943b
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.date: 10/02/2019
+ms.openlocfilehash: 070b04b27982b84f101ee4d6f85f4e5b82760092
+ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976883"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71958791"
 ---
 # <a name="enable-multitenant-applications-with-azure-digital-twins"></a>Multi tenant-toepassingen met Azure Digital Apparaatdubbels inschakelen
 
@@ -23,7 +23,7 @@ In dit document wordt beschreven hoe u een Azure Digital Apparaatdubbels-app kun
 
 ## <a name="multitenancy"></a>Multitenancy
 
-Een resource voor meerdere tenants is één ingerichte instantie die ondersteuning biedt voor meer klanten. Elke klant heeft hun eigen onafhankelijke gegevens en bevoegdheden. De ervaring van elke klant is van elkaar geïsoleerd, zodat de ' weer gave ' van de toepassing DISTINCT is.
+Een resource voor meerdere *tenants* is één ingerichte instantie die ondersteuning biedt voor meer klanten. Elke klant heeft hun eigen onafhankelijke gegevens en bevoegdheden. De ervaring van elke klant is van elkaar geïsoleerd, zodat de ' weer gave ' van de toepassing DISTINCT is.
 
 Lees voor meer informatie over multitenancy [multi tenant-toepassingen in azure](https://docs.microsoft.com/azure/dotnet-develop-multitenant-applications).
 
@@ -57,20 +57,16 @@ Om het scenario van het vorige probleem op te lossen, zijn de volgende acties no
   1. Open **abonnementen**.
   1. Selecteer het abonnement met de Azure Active Directory-Tenant die moet worden gebruikt in de toepassing van de **ontwikkelaar**.
 
-     ![Azure Active Directory-abonnementen][1]
+     [![Azure Active Directory-abonnementen](media/multitenant/ad-subscriptions.png)](media/multitenant/ad-subscriptions.png#lightbox)
 
   1. **Resource providers**selecteren.
   1. Zoek naar **micro soft. IoTSpaces**.
   1. Selecteer **Registreren**.
 
-     ![Azure Active Directory resource providers][2]
+     [![Azure Active Directory resource providers](media/multitenant/ad-resource-providers.png)](media/multitenant/ad-resource-providers.png#lightbox)
   
 ## <a name="next-steps"></a>Volgende stappen
 
 - Meer informatie over het gebruik van door de gebruiker gedefinieerde functies met Azure Digital Apparaatdubbels vindt u in het maken van door de [gebruiker gedefinieerde Azure Digital apparaatdubbels-functies](./how-to-user-defined-functions.md).
 
 - Lees voor meer informatie over het gebruik van op rollen gebaseerd toegangs beheer om de toepassing verder te beveiligen met roltoewijzingen door [Azure Digital apparaatdubbels Access Control te maken en te beheren](./security-create-manage-role-assignments.md).
-
-<!-- Images -->
-[1]: media/multitenant/ad-subscriptions.png
-[2]: media/multitenant/ad-resource-providers.png

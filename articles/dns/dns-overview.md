@@ -6,12 +6,12 @@ ms.service: dns
 ms.topic: overview
 ms.date: 3/21/2019
 ms.author: victorh
-ms.openlocfilehash: 06e53f07969ab5dfdebec88d36d0cb3d06cc87e1
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 5055734ae3529d7fca87688c5f9410f38368a634
+ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67078436"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71959372"
 ---
 # <a name="what-is-azure-dns"></a>Wat is Azure DNS?
 
@@ -39,7 +39,7 @@ Zie voor meer informatie [DNS-zones en -records beschermen](dns-protect-zones-re
 
 ## <a name="dnssec"></a>DNSSEC
 
-Azure DNS biedt momenteel geen ondersteuning voor DNSSEC. U kunt in de meeste gevallen de noodzaak van DNSSEC verminderen door middel van HTTPS/TLS consistent in uw toepassingen. Als DNSSEC een essentiële vereiste is voor uw DNS-zones is, kunt u deze zones hosten met host DNS-providers van derden.
+Azure DNS ondersteunt momenteel geen DNSSEC. In de meeste gevallen kunt u de behoefte aan DNSSEC verminderen door consistentie van HTTPS/TLS in uw toepassingen te gebruiken. Als DNSSEC een essentiële vereiste is voor uw DNS-zones, kunt u deze zones hosten met DNS-hosting providers van derden.
 
 ## <a name="ease-of-use"></a>Gebruiksgemak
 
@@ -51,15 +51,15 @@ Uw domeinen en records kunnen worden beheerd met behulp van de Azure-portal, Azu
 
 ## <a name="customizable-virtual-networks-with-private-domains"></a>Aanpasbare virtuele netwerken met privédomeinen
 
-Azure DNS ondersteunt ook privé-DNS-domeinen, door middel van een functie die nu in openbare preview is. Met deze functie kunt u uw eigen aangepaste domeinnamen gebruiken in uw virtuele privénetwerken in plaats van de door Azure geleverde namen die momenteel beschikbaar zijn.
+Azure DNS biedt ook ondersteuning voor privé-DNS-domeinen. Met deze functie kunt u uw eigen aangepaste domeinnamen gebruiken in uw virtuele privénetwerken in plaats van de door Azure geleverde namen die momenteel beschikbaar zijn.
 
 Zie [Azure DNS gebruiken voor privédomeinen](private-dns-overview.md) voor meer informatie.
 
 ## <a name="alias-records"></a>Aliasrecords
 
-Azure DNS ondersteunt alias-recordsets. U kunt een recordset alias gebruiken om te verwijzen naar een Azure-resource, zoals een openbaar IP-adres van Azure, een Azure Traffic Manager-profiel of een eindpunt Azure Content Delivery Network (CDN). Als het IP-adres van de onderliggende resource verandert, wordt de alias-recordset automatisch bijgewerkt tijdens DNS-omzetting. De alias-record set verwijst naar het service-exemplaar en het service-exemplaar is gekoppeld aan een IP-adres.
+Azure DNS ondersteunt alias-recordsets. U kunt een alias recordset gebruiken om te verwijzen naar een Azure-resource, zoals een openbaar IP-adres van Azure, een Azure Traffic Manager-profiel of een Azure Content Delivery Network (CDN)-eind punt. Als het IP-adres van de onderliggende resource verandert, wordt de alias-recordset automatisch bijgewerkt tijdens DNS-omzetting. De alias-record set verwijst naar het service-exemplaar en het service-exemplaar is gekoppeld aan een IP-adres.
 
-Bovendien kunt u nu uw apex of een domein zonder voorvoegsel zijn verwijzen naar een Traffic Manager-profiel of een CDN-eindpunt met behulp van een alias-record. Bijvoorbeeld: contoso.com.
+U kunt nu ook uw Apex-of Blot-domein naar een Traffic Manager profiel of CDN-eind punt wijzen met behulp van een alias record. Bijvoorbeeld: contoso.com.
 
 Zie [Overzicht van Azure DNS-aliasrecords](dns-alias.md) voor meer informatie.
 

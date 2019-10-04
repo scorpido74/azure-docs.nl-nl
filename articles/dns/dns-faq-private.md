@@ -5,28 +5,28 @@ services: dns
 author: vhorne
 ms.service: dns
 ms.topic: article
-ms.date: 09/20/2019
+ms.date: 10/05/2019
 ms.author: victorh
-ms.openlocfilehash: fca7359f9fa54899bb72be3b939e1a1839dbfbd1
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: cb0cc5e99cc07728d475a9f9e54c7eb6a8c7554e
+ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71155708"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71959911"
 ---
 # <a name="azure-private-dns-faq"></a>Veelgestelde vragen over privé-DNS in Azure
 
-[!INCLUDE [private-dns-public-preview-notice](../../includes/private-dns-public-preview-notice.md)]
+Hieronder vindt u veelgestelde vragen over Azure private DNS.
 
 ## <a name="does-azure-dns-support-private-domains"></a>Ondersteunt Azure DNS persoonlijke domeinen?
 
-Ondersteuning voor privé domeinen wordt ondersteund met behulp van de functie Azure Privé-DNS-zones. Privé-DNS zones worden beheerd met dezelfde hulpprogram ma's als zones met Internet gerichte Azure DNS. Ze kunnen alleen worden omgezet in de opgegeven virtuele netwerken. Zie het [overzicht](private-dns-overview.md)voor meer informatie.
+Privé domeinen worden ondersteund met behulp van de functie Azure Privé-DNS-zones. Privé-DNS zones kunnen alleen worden omgezet vanuit opgegeven virtuele netwerken. Zie het [overzicht](private-dns-overview.md)voor meer informatie.
 
 Zie [naam omzetting voor vm's en rolinstanties](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)voor informatie over andere interne DNS-opties in Azure.
 
-## <a name="will-azure-dns-private-zones-work-across-azure-regions"></a>Werkt Azure DNS Private Zones over Azure-regio's?
+## <a name="will-azure-private-dns-zones-work-across-azure-regions"></a>Werken Azure Privé-DNS zones over Azure-regio's?
 
-Ja. Persoonlijke zones worden ondersteund voor DNS-omzetting tussen virtuele netwerken in azure-regio's. Persoonlijke zones werken zelfs zonder expliciet peering van de virtuele netwerken. Alle virtuele netwerken moeten worden opgegeven als omzetting virtuele netwerken voor de privé zone. Mogelijk moet u de virtuele netwerken moeten worden gekoppeld voor TCP/HTTP-verkeer om van de ene regio naar de andere te stromen.
+Ja. Persoonlijke zones worden ondersteund voor DNS-omzetting tussen virtuele netwerken in azure-regio's. Persoonlijke zones werken zelfs zonder expliciet peering van de virtuele netwerken. Alle virtuele netwerken moeten zijn gekoppeld aan de privé-DNS-zone.
 
 ## <a name="is-connectivity-to-the-internet-from-virtual-networks-required-for-private-zones"></a>Is er verbinding met Internet via virtuele netwerken die vereist zijn voor persoonlijke zones?
 
@@ -34,11 +34,11 @@ Nee. Persoonlijke zones werken samen met virtuele netwerken. U kunt ze gebruiken
 
 ## <a name="can-the-same-private-zone-be-used-for-several-virtual-networks-for-resolution"></a>Kan dezelfde privé zone worden gebruikt voor verschillende virtuele netwerken voor oplossing?
 
-Ja. U kunt Maxi maal 1000 virtuele netwerken koppelen aan één privé zone.
+Ja. U kunt een privé-DNS-zone koppelen aan duizenden virtuele netwerken. Zie [Azure DNS limieten](https://docs.microsoft.com/azure/azure-subscription-service-limits#azure-dns-limits) voor meer informatie
 
-## <a name="can-a-virtual-network-that-belongs-to-a-different-subscription-be-added-as-a-linked-virtual-network-to-a-private-zone"></a>Kan een virtueel netwerk dat tot een ander abonnement behoort, worden toegevoegd als een gekoppeld virtueel netwerk aan een privé zone?
+## <a name="can-a-virtual-network-that-belongs-to-a-different-subscription-be-linked-to-a-private-zone"></a>Kan een virtueel netwerk dat tot een ander abonnement behoort, worden gekoppeld aan een privé zone?
 
-Ja. U moet beschikken over de machtiging schrijf bewerking voor de virtuele netwerken en de particuliere DNS-zone. De schrijf machtiging kan worden toegekend aan verschillende RBAC-rollen. De rol klassieke netwerkinzender RBAC heeft bijvoorbeeld schrijf machtigingen voor virtuele netwerken. Zie op [rollen gebaseerd toegangs beheer](../role-based-access-control/overview.md)voor meer informatie over RBAC-rollen.
+Ja. U moet beschikken over de machtiging schrijf bewerking voor de virtuele netwerken en de particuliere DNS-zone. De schrijf machtiging kan worden toegekend aan verschillende RBAC-rollen. De rol klassieke netwerkinzender RBAC heeft bijvoorbeeld schrijf machtigingen voor virtuele netwerken en de rol Inzender voor Privé-DNS-zones heeft schrijf machtigingen voor de privé-DNS-zones. Zie op [rollen gebaseerd toegangs beheer](../role-based-access-control/overview.md)voor meer informatie over RBAC-rollen.
 
 ## <a name="will-the-automatically-registered-virtual-machine-dns-records-in-a-private-zone-be-automatically-deleted-when-you-delete-the-virtual-machine"></a>Worden de automatisch geregistreerde DNS-records van virtuele machines in een privé zone automatisch verwijderd wanneer u de virtuele machine verwijdert?
 
@@ -58,40 +58,28 @@ Ja. Als u een gekoppeld virtueel netwerk wilt ontkoppelen van een privé zone, w
 
 ## <a name="what-happens-when-we-delete-a-linked-virtual-network-thats-linked-to-a-private-zone-do-we-have-to-manually-update-the-private-zone-to-unlink-the-virtual-network-as-a-linked-virtual-network-from-the-zone"></a>Wat gebeurt er wanneer we een gekoppeld virtueel netwerk verwijderen dat is gekoppeld aan een privé zone? Moeten we de privé zone hand matig bijwerken om het virtuele netwerk als een gekoppeld virtueel netwerk van de zone te ontkoppelen?
 
-Ja. Wanneer u een gekoppeld virtueel netwerk verwijdert zonder het eerst te ontkoppelen van een particuliere zone, wordt uw verwijderings bewerking voltooid. Het virtuele netwerk wordt echter niet automatisch ontkoppeld van uw privé zone, indien van toepassing. U moet het virtuele netwerk hand matig ontkoppelen van de privé zone. Koppel het virtuele netwerk daarom losgekoppeld van uw privé zone voordat u het verwijdert.
+Nee. Wanneer u een gekoppeld virtueel netwerk verwijdert zonder het eerst van een privé zone te ontkoppelen, wordt uw verwijderings bewerking voltooid en worden de koppelingen naar de DNS-zone automatisch gewist.
 
 ## <a name="will-dns-resolution-by-using-the-default-fqdn-internalcloudappnet-still-work-even-when-a-private-zone-for-example-privatecontosocom-is-linked-to-a-virtual-network"></a>Werkt de DNS-omzetting met behulp van de standaard-FQDN (internal.cloudapp.net) nog steeds, zelfs wanneer een privé zone (bijvoorbeeld private.contoso.com) is gekoppeld aan een virtueel netwerk?
 
-Ja. Particuliere zones vervangen de standaard DNS-resoluties niet met behulp van de door Azure meegeleverde internal.cloudapp.net-zone. Het wordt aangeboden als een extra functie of uitbrei ding. Of u nu afhankelijk bent van de door Azure verschafte internal.cloudapp.net of uw eigen privé zone, gebruikt u de FQDN van de zone die u wilt oplossen.
+Ja. Persoonlijke zones vervangen de standaard internal.cloudapp.net-zone van Azure niet. Of u nu afhankelijk bent van de door Azure verschafte internal.cloudapp.net of uw eigen privé zone, gebruikt u de FQDN van de zone die u wilt oplossen.
 
 ## <a name="will-the-dns-suffix-on-virtual-machines-within-a-linked-virtual-network-be-changed-to-that-of-the-private-zone"></a>Wordt het DNS-achtervoegsel op virtuele machines in een gekoppeld virtueel netwerk gewijzigd in dat van de privé zone?
 
 Nee. Het DNS-achtervoegsel op de virtuele machines in het gekoppelde virtuele netwerk blijft als standaard achtervoegsel van Azure (' *. internal.cloudapp.net '). U kunt dit DNS-achtervoegsel hand matig wijzigen op uw virtuele machines naar dat van de privé zone.
+Zie voor meer informatie over het wijzigen van dit achtervoegsel [dynamische DNS gebruiken om hostnamen te registreren in uw eigen DNS-server](https://docs.microsoft.com/azure/virtual-network/virtual-networks-name-resolution-ddns#windows-clients)
 
-## <a name="what-are-the-usage-limits-for-azure-private-dns"></a>Wat zijn de gebruiks limieten voor Azure Privé-DNS?
+## <a name="what-are-the-usage-limits-for-azure-dns-private-zones"></a>Wat zijn de gebruiks limieten voor Azure DNS privé zones?
 
-De volgende standaard limieten zijn van toepassing wanneer u Azure Privé-DNS gebruikt.
-
-| Resource | Standaardlimiet |
-| --- | --- |
-|Privé-DNS zones per abonnement|1000|
-|Record sets per Privé-DNS zone|25,000|
-|Records per Recordset|20|
-|Virtual Network koppelingen per privé-DNS-zone|1000|
-|Virtuele netwerken koppelingen per privé-DNS-zone met automatische registratie ingeschakeld|100|
-|Aantal privé-DNS-zones waaraan een virtueel netwerk kan worden gekoppeld met automatische registratie ingeschakeld|1|
-|Aantal privé-DNS-zones waaraan een virtueel netwerk kan worden gekoppeld|1000|
-
-## <a name="is-there-portal-support-for-private-zones"></a>Zijn er Portal-ondersteuning voor privé zones?
-
-Ja, en privé zones die al zijn gemaakt via Api's, Power shell, de CLI en Sdk's, worden weer gegeven op de Azure Portal.
+Raadpleeg [Azure DNS limieten](https://docs.microsoft.com/azure/azure-subscription-service-limits#azure-dns-limits) voor meer informatie over de gebruiks limieten voor Azure DNS persoonlijke zones.
 
 ## <a name="why-dont-my-existing-private-dns-zones-show-up-in-new-portal-experience"></a>Waarom worden mijn bestaande privé-DNS-zones niet weer gegeven in de nieuwe portal?
 
-Als onderdeel van de preview-versie voor vernieuwing hebben we een nieuw resource model voor privé-DNS-zones verzonden. Uw bestaande privé-DNS-zones moeten worden gemigreerd naar een nieuw resource model voordat deze in de nieuwe portal-ervaring kunnen worden weer gegeven. Hieronder vindt u instructies voor het migreren naar een nieuw resource model.
+Als uw bestaande privé-DNS-zone is gemaakt met behulp van preview-API, moet u deze zones migreren naar een nieuw resource model. Privé-DNS zones die zijn gemaakt met de preview-API, worden niet weer gegeven in de nieuwe portal-ervaring. Hieronder vindt u instructies voor het migreren naar een nieuw resource model.
 
 ## <a name="how-do-i-migrate-my-existing-private-dns-zones-to-the-new-model"></a>Hoe kan ik mijn bestaande privé-DNS-zones naar het nieuwe model migreren?
-We raden u ten zeerste aan om zo snel mogelijk naar het nieuwe resource model te migreren. Verouderd resource model wordt ondersteund, maar er worden echter geen verdere functies op dit model ontwikkeld. In de toekomst nemen we de bedoeling af om het nieuwe resource model te vervangen. Zie[migratie handleiding voor Azure DNS particuliere zones](private-dns-migration-guide.md)voor meer informatie over het migreren van uw bestaande privé-DNS-zones naar een nieuw resource model.
+
+We raden u ten zeerste aan om zo snel mogelijk naar het nieuwe resource model te migreren. Verouderd resource model wordt ondersteund, maar er worden echter geen verdere functies op dit model ontwikkeld. In de toekomst nemen we de bedoeling af om het nieuwe resource model voor te nemen. Zie[migratie handleiding voor Azure DNS particuliere zones](private-dns-migration-guide.md)voor meer informatie over het migreren van uw bestaande privé-DNS-zones naar een nieuw resource model.
 
 ## <a name="next-steps"></a>Volgende stappen
 

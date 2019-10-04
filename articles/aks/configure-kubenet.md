@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/26/2019
 ms.author: mlearned
 ms.reviewer: nieberts, jomore
-ms.openlocfilehash: e1279261de8e26b9e11f55100ce01277650e251b
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: b233c5dd639bb6652f201727748a081f6a8a4c64
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "67615764"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71950338"
 ---
 # <a name="use-kubenet-networking-with-your-own-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Gebruik kubenet-netwerken met uw eigen IP-adresbereiken in azure Kubernetes service (AKS)
 
@@ -38,9 +38,9 @@ Met *kubenet*ontvangen alleen de knoop punten een IP-adres in het subnet van het
 
 ![Kubenet-netwerk model met een AKS-cluster](media/use-kubenet/kubenet-overview.png)
 
-Azure ondersteunt Maxi maal 400 routes in een UDR, zodat u geen AKS-cluster hebt dat groter is dan 400 knoop punten. AKS-functies, zoals [virtuele knoop punten][virtual-nodes] of netwerk beleid, worden niet ondersteund met *kubenet*.
+Azure ondersteunt Maxi maal 400 routes in een UDR, zodat u geen AKS-cluster hebt dat groter is dan 400 knoop punten. Virtuele AKS- [knoop punten][virtual-nodes] en Azure-netwerk beleid worden niet ondersteund met *kubenet*.  U kunt [Calico-netwerk beleid][calico-network-policies]gebruiken, aangezien deze worden ondersteund met kubenet.
 
-Met *Azure cni*ontvangt elke pod een IP-adres in het IP-subnet en kan het rechtstreeks communiceren met andere peulen en services. Uw clusters kunnen zo groot zijn als het IP-adres bereik dat u opgeeft. Het IP-adres bereik moet echter vooraf worden gepland en alle IP-adressen worden gebruikt door de AKS-knoop punten op basis van het maximum aantal peul dat ze kunnen ondersteunen. Geavanceerde netwerk functies en-scenario's, zoals [virtuele knoop punten][virtual-nodes] of netwerk beleid, worden ondersteund met *Azure cni*.
+Met *Azure cni*ontvangt elke pod een IP-adres in het IP-subnet en kan het rechtstreeks communiceren met andere peulen en services. Uw clusters kunnen zo groot zijn als het IP-adres bereik dat u opgeeft. Het IP-adres bereik moet echter vooraf worden gepland en alle IP-adressen worden gebruikt door de AKS-knoop punten op basis van het maximum aantal peul dat ze kunnen ondersteunen. Geavanceerde netwerk functies en-scenario's, zoals [virtuele knoop punten][virtual-nodes] of netwerk beleid (Azure of Calico), worden ondersteund met *Azure cni*.
 
 ### <a name="ip-address-availability-and-exhaustion"></a>Beschik baarheid en uitputting van IP-adressen
 
@@ -62,7 +62,7 @@ In de volgende basis berekeningen wordt het verschil in netwerk modellen vergele
 
 ### <a name="virtual-network-peering-and-expressroute-connections"></a>Peering en ExpressRoute-verbindingen voor virtuele netwerken
 
-Voor on-premises connectiviteit kunnen netwerk benaderingen van zowel *kubenet* *-als Azure-cni* gebruikmaken van [Azure Virtual Network][vnet-peering] -peering of [ExpressRoute-verbindingen][express-route]. Plan uw IP-adresbereiken zorgvuldig om overlap pingen en onjuiste verkeers routering te voor komen. Veel on-premises netwerken gebruiken bijvoorbeeld een adres bereik van *10.0.0.0/8* dat wordt geadverteerd via de ExpressRoute-verbinding. Het is raadzaam om uw AKS-clusters te maken in subnetten van het virtuele Azure-netwerk buiten dit adres bereik, zoals *172.16.0.0/16*.
+Voor on-premises connectiviteit kunnen netwerk benaderingen van zowel *kubenet* *-als Azure-cni* gebruikmaken van [Azure Virtual Network-peering][vnet-peering] of [ExpressRoute-verbindingen][express-route]. Plan uw IP-adresbereiken zorgvuldig om overlap pingen en onjuiste verkeers routering te voor komen. Veel on-premises netwerken gebruiken bijvoorbeeld een adres bereik van *10.0.0.0/8* dat wordt geadverteerd via de ExpressRoute-verbinding. Het is raadzaam om uw AKS-clusters te maken in subnetten van het virtuele Azure-netwerk buiten dit adres bereik, zoals *172.16.0.0/16*.
 
 ### <a name="choose-a-network-model-to-use"></a>Kies een netwerk model dat u wilt gebruiken
 
@@ -72,19 +72,16 @@ Gebruik *kubenet* wanneer:
 
 - U hebt beperkte IP-adres ruimte.
 - De meeste pod-communicatie bevindt zich in het cluster.
-- U hebt geen geavanceerde functies nodig, zoals virtuele knoop punten of netwerk beleid.
+- U hebt geen geavanceerde AKS-functies nodig, zoals virtuele knoop punten of Azure-netwerk beleid.  Gebruik [Calico-netwerk beleidsregels][calico-network-policies].
 
 Gebruik *Azure cni* wanneer:
 
 - U hebt beschik bare IP-adres ruimte.
 - De meeste pod-communicatie is tot resources buiten het cluster.
 - U wilt de Udr's niet beheren.
-- U hebt geavanceerde functies nodig, zoals virtuele knoop punten of netwerk beleid.
+- U hebt geavanceerde functies van AKS nodig, zoals virtuele knoop punten of Azure-netwerk beleid.  Gebruik [Calico-netwerk beleidsregels][calico-network-policies].
 
 Zie [netwerk modellen vergelijken en hun ondersteunings bereik][network-comparisons]voor meer informatie over het bepalen van het netwerk model dat moet worden gebruikt.
-
-> [!NOTE]
-> Kuberouter maakt het mogelijk om netwerk beleid in te scha kelen wanneer kubenet wordt gebruikt en kan worden geïnstalleerd als een daemonset in een AKS-cluster. Let op dat uitvoeren-router nog steeds in de bèta versie is en dat micro soft geen ondersteuning voor het project biedt.
 
 ## <a name="create-a-virtual-network-and-subnet"></a>Een virtueel netwerk en een subnet maken
 
@@ -134,7 +131,7 @@ VNET_ID=$(az network vnet show --resource-group myResourceGroup --name myAKSVnet
 SUBNET_ID=$(az network vnet subnet show --resource-group myResourceGroup --vnet-name myAKSVnet --name myAKSSubnet --query id -o tsv)
 ```
 
-Wijs nu de service-principal voor uw AKS-cluster *Inzender* machtigingen toe aan het virtuele netwerk met behulp van de opdracht [AZ Role Assignment Create][az-role-assignment-create] . Geef uw eigen  *\<AppID >* op, zoals wordt weer gegeven in de uitvoer van de vorige opdracht om de service-principal te maken:
+Wijs nu de service-principal voor uw AKS-cluster *Inzender* machtigingen toe aan het virtuele netwerk met behulp van de opdracht [AZ Role Assignment Create][az-role-assignment-create] . Geef uw eigen *\<appId >* op zoals wordt weer gegeven in de uitvoer van de vorige opdracht om de service-principal te maken:
 
 ```azurecli-interactive
 az role assignment create --assignee <appId> --scope $VNET_ID --role Contributor
@@ -142,7 +139,7 @@ az role assignment create --assignee <appId> --scope $VNET_ID --role Contributor
 
 ## <a name="create-an-aks-cluster-in-the-virtual-network"></a>Een AKS-cluster maken in het virtuele netwerk
 
-U hebt nu een virtueel netwerk en subnet gemaakt en machtigingen voor een service-principal gemaakt en toegewezen voor het gebruik van deze netwerk resources. Maak nu een AKS-cluster in uw virtuele netwerk en subnet met behulp van de opdracht [AZ AKS Create][az-aks-create] . Definieer uw eigen Service-Principal  *\<AppID >* en  *\<wacht woord >* , zoals wordt weer gegeven in de uitvoer van de vorige opdracht om de service-principal te maken.
+U hebt nu een virtueel netwerk en subnet gemaakt en machtigingen voor een service-principal gemaakt en toegewezen voor het gebruik van deze netwerk resources. Maak nu een AKS-cluster in uw virtuele netwerk en subnet met behulp van de opdracht [AZ AKS Create][az-aks-create] . Definieer uw eigen service *-principal \<appId >* en *\<password >* , zoals wordt weer gegeven in de uitvoer van de vorige opdracht om de service-principal te maken.
 
 De volgende IP-adresbereiken worden ook gedefinieerd als onderdeel van het proces voor het maken van een cluster:
 
@@ -172,6 +169,24 @@ az aks create \
     --client-secret <password>
 ```
 
+> [!Note]
+> Als u een AKS-cluster wilt inschakelen voor het opnemen van een [Calico-netwerk beleid][calico-network-policies] , kunt u de volgende opdracht gebruiken.
+
+```azurecli-interactive
+az aks create \
+    --resource-group myResourceGroup \
+    --name myAKSCluster \
+    --node-count 3 \
+    --network-plugin kubenet --network-policy calico \
+    --service-cidr 10.0.0.0/16 \
+    --dns-service-ip 10.0.0.10 \
+    --pod-cidr 10.244.0.0/16 \
+    --docker-bridge-address 172.17.0.1/16 \
+    --vnet-subnet-id $SUBNET_ID \
+    --service-principal <appId> \
+    --client-secret <password>
+```
+
 Wanneer u een AKS-cluster maakt, worden er een netwerk beveiligings groep en route tabel gemaakt. Deze netwerk bronnen worden beheerd door het AKS-besturings vlak. De netwerk beveiligings groep wordt automatisch gekoppeld aan de virtuele Nic's op uw knoop punten. De route tabel wordt automatisch gekoppeld aan het subnet van het virtuele netwerk. Regels voor netwerk beveiligings groepen en route tabellen en worden automatisch bijgewerkt wanneer u Services maakt en weergeeft.
 
 ## <a name="next-steps"></a>Volgende stappen
@@ -182,6 +197,7 @@ Als er een AKS-cluster in uw bestaande subnet van het virtuele netwerk is geïmp
 [dev-spaces]: https://docs.microsoft.com/azure/dev-spaces/
 [cni-networking]: https://github.com/Azure/azure-container-networking/blob/master/docs/cni.md
 [kubenet]: https://kubernetes.io/docs/concepts/cluster-administration/network-plugins/#kubenet
+[Calico-network-policies]: https://docs.projectcalico.org/v3.9/security/calico-network-policy
 
 <!-- LINKS - Internal -->
 [install-azure-cli]: /cli/azure/install-azure-cli

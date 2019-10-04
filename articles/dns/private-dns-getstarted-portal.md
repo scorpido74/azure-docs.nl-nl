@@ -5,20 +5,18 @@ services: dns
 author: vhorne
 ms.service: dns
 ms.topic: quickstart
-ms.date: 09/20/2019
+ms.date: 10/05/2019
 ms.author: victorh
-ms.openlocfilehash: 1f13a56941a137397fbb849093feaeb19b897131
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: 79b626ef6beaad3a8f15da08b882fc7d596540b0
+ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71156252"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71960387"
 ---
 # <a name="quickstart-create-an-azure-private-dns-zone-using-the-azure-portal"></a>Quickstart: Een privé-DNS-zone met Azure maken met behulp van de Azure Portal
 
 In deze Snelstartgids wordt u begeleid bij de stappen voor het maken van uw eerste privé-DNS-zone en-record met behulp van de Azure Portal.
-
-[!INCLUDE [private-dns-public-preview-notice](../../includes/private-dns-public-preview-notice.md)]
 
 Een DNS-zone wordt gebruikt om de DNS-records voor een bepaald domein te hosten. Als u uw domein wilt hosten in Azure DNS, moet u een DNS-zone maken voor die domeinnaam. Alle DNS-records voor uw domein worden vervolgens gemaakt binnen deze DNS-zone. Als u een privé-DNS-zone wilt publiceren naar uw virtuele netwerk, geeft u de lijst op met virtuele netwerken die zijn toegestaan om records in de zone om te zetten.  Deze worden *gekoppelde* virtuele netwerken genoemd. Als automatische registratie is ingeschakeld, werkt Azure DNS ook de zone records bij wanneer een virtuele machine wordt gemaakt, wordt het IP-adres gewijzigd of wordt dit verwijderd.
 
@@ -94,10 +92,10 @@ Maak nu twee virtuele machines, zodat u uw DNS-privézone kunt testen:
 2. Typ **Azure12345678** voor het wacht woord en bevestig het wacht woord.
 
 5. Voor **open bare binnenkomende poorten**selecteert u **geselecteerde poorten toestaan**en vervolgens **RDP (3389)** selecteren voor **binnenkomende poorten selecteren**.
-10. Accepteer de andere standaard waarden voor de pagina en klik **vervolgens op volgende: Schijven >** .
-11. Accepteer de standaard instellingen op de pagina **schijven** en klik **vervolgens op volgende: Netwerk >** .
+10. Accepteer de andere standaard waarden voor de pagina en klik vervolgens op **Next: Schijven >** .
+11. Accepteer de standaard instellingen op de pagina **schijven** en klik vervolgens op **Next: Netwerk >** .
 1. Zorg ervoor dat **myAzureVNet** is geselecteerd voor het virtuele netwerk.
-1. Accepteer de andere standaard waarden voor de pagina en klik vervolgens **op volgende: Beheer >** .
+1. Accepteer de andere standaard waarden voor de pagina en klik vervolgens op **Next: Beheer >** .
 2. Voor **Diagnostische gegevens over opstarten**selecteert u **uit**, accepteert u de andere standaard waarden en selecteert u vervolgens **bekijken + maken**.
 1. Controleer de instellingen en klik vervolgens op **maken**.
 

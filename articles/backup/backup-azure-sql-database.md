@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: tutorial
 ms.date: 06/18/2019
 ms.author: dacurwin
-ms.openlocfilehash: 2c1473083c4fdb025588a7c4b410860a5f18dd5a
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: 1482ac4b885507e37ba5972065810682c19bebed
+ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71937064"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71958468"
 ---
 # <a name="about-sql-server-backup-in-azure-vms"></a>Over SQL Server-back-ups in virtuele Azure-machines
 
@@ -22,9 +22,9 @@ SQL Server-databases zijn essentiële workloads waarvoor een laag Recovery Point
 
 Deze oplossing maakt gebruik van de SQL Native Api's om back-ups te maken van uw SQL-data bases.
 
-* Wanneer u de SQL Server virtuele machine hebt opgegeven die u wilt beveiligen en query's wilt uitvoeren voor de data bases erin, Azure backup service een back-upextensie voor werk belasting `AzureBackupWindowsWorkload` op de VM installeren door de extensie.
+* Wanneer u de SQL Server virtuele machine hebt opgegeven die u wilt beveiligen en query's wilt uitvoeren voor de data bases erin, Azure Backup service een back-upextensie voor werk belasting op de virtuele machine installeert met de extensie `AzureBackupWindowsWorkload`.
 * Deze uitbrei ding bestaat uit een coördinator en een SQL-invoeg toepassing. Hoewel de coördinator verantwoordelijk is voor het activeren van werk stromen voor verschillende bewerkingen, zoals het configureren van back-ups, back-ups maken en herstellen, is de invoeg toepassing verantwoordelijk voor de werkelijke gegevens stroom.
-* Om data bases op deze VM te kunnen detecteren, maakt Azure Backup het `NT SERVICE\AzureWLBackupPluginSvc`account. Dit account wordt gebruikt voor back-up en herstel en vereist SQL sysadmin-machtigingen. Azure backup maakt gebruik van `NT AUTHORITY\SYSTEM` het account voor database detectie/-informatie, zodat dit account een open bare aanmelding voor SQL moet zijn. Als u de SQL Server-VM niet hebt gemaakt vanuit de Azure Marketplace, ontvangt u mogelijk het foutbericht **UserErrorSQLNoSysadminMembership**. Volg in dit geval [deze instructies](#set-vm-permissions).
+* Om data bases op deze VM te kunnen detecteren, maakt Azure Backup het account `NT SERVICE\AzureWLBackupPluginSvc`. Dit account wordt gebruikt voor back-up en herstel en vereist SQL sysadmin-machtigingen. Azure Backup maakt gebruik van het `NT AUTHORITY\SYSTEM`-account voor database detectie/-informatie, zodat dit account een open bare aanmelding voor SQL moet zijn. Als u de SQL Server-VM niet hebt gemaakt vanuit de Azure Marketplace, ontvangt u mogelijk het foutbericht **UserErrorSQLNoSysadminMembership**. Volg in dit geval [deze instructies](#set-vm-permissions).
 * Zodra u de beveiliging configureren voor de geselecteerde data bases hebt geactiveerd, stelt de back-upservice de coördinator in met de back-upschemaën en andere beleids Details, die de uitbrei ding lokaal op de virtuele machine opslaat.
 * Op het geplande tijdstip communiceert de coördinator met de invoeg toepassing en begint deze met het streamen van de back-upgegevens van de SQL Server met VDI.  
 * De invoeg toepassing verzendt de gegevens rechtstreeks naar de Recovery Services-kluis, waardoor er geen staging-locatie nodig is. De gegevens worden versleuteld en opgeslagen door de Azure Backup-service in opslag accounts.
@@ -45,9 +45,9 @@ Voordat u begint, controleert u het onderstaande:
 **Ondersteuning** | **Details**
 --- | ---
 **Ondersteunde implementaties** | SQL Marketplace Azure-VM's en niet-Marketplace-VM's (SQL Server handmatig geïnstalleerd) worden ondersteund.
-**Ondersteunde geografische gebieden** | Australië-Zuid-Oost (ASE), Oost-Australië (AE), Australië-centraal (AC), Australië-centraal 2 (AC) <br> Brazilië - zuid (BRS)<br> Canada-centraal (CNC), Canada-oost (CE)<br> Zuid-Azië-oost (zee), Azië-oost (EA) <br> VS-Oost (EUS), VS-Oost 2 (EUS2), VS-West-Centraal (WCUS), VS-West (WUS); VS-West 2 (WUS 2) Noord-Centraal VS (NCUS) centraal VS (CUS) Zuid-Centraal (SCUS) <br> India-centraal (INC), India-Zuid (INS), India-West <br> Japan-Oost (JPE), Japan-West (JPW) <br> Korea-centraal (KRC), Korea-zuid (KRS) <br> Europa-noord (NE), Europa-west <br> UK-zuid (UKS), UK-west (UKW) <br> US Gov-Arizona, US Gov-Virginia, US Gov-Texas, US DoD-centraal, US DoD-oost <br> Duitsland-noord, Duitsland-west-centraal <br>
-Zwitserland-noord, Zwitserland-west **ondersteunde besturings systemen** | Windows Server 2016, Windows Server 2012 R2, Windows Server 2012<br/><br/> Linux wordt momenteel niet ondersteund.
-**Ondersteunde versies van SQL Server** | SQL Server 2017, zoals [hier](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202017)wordt beschreven, SQL Server 2016 en SPS, zoals [hier](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202016%20service%20pack)wordt beschreven, SQL Server 2014, SQL Server 2012.<br/><br/> Enterprise, Standard, Web, Developer, Express.
+**Ondersteunde geografische gebieden** | Australië-Zuid-Oost (ASE), Oost-Australië (AE), Australië-centraal (AC), Australië-centraal 2 (AC) <br> Brazilië - zuid (BRS)<br> Canada-centraal (CNC), Canada-oost (CE)<br> Zuid-Azië-oost (zee), Azië-oost (EA) <br> VS-Oost (EUS), VS-Oost 2 (EUS2), VS-West-Centraal (WCUS), VS-West (WUS); VS-West 2 (WUS 2) Noord-Centraal VS (NCUS) centraal VS (CUS) Zuid-Centraal (SCUS) <br> India-centraal (INC), India-Zuid (INS), India-West <br> Japan-Oost (JPE), Japan-West (JPW) <br> Korea-centraal (KRC), Korea-zuid (KRS) <br> Europa-noord (NE), Europa-west <br> UK-zuid (UKS), UK-west (UKW) <br> US Gov-Arizona, US Gov-Virginia, US Gov-Texas, US DoD-centraal, US DoD-oost <br> Duitsland-noord, Duitsland-west-centraal <br> Zwitserland-noord, Zwitserland-west
+**Ondersteunde besturingssystemen** | Windows Server 2016, Windows Server 2012 R2, Windows Server 2012<br/><br/> Linux wordt momenteel niet ondersteund.
+**Ondersteunde SQL Server-versies** | SQL Server 2017, zoals [hier](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202017)wordt beschreven, SQL Server 2016 en SPS, zoals [hier](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202016%20service%20pack)wordt beschreven, SQL Server 2014, SQL Server 2012.<br/><br/> Enterprise, Standard, Web, Developer, Express.
 **Ondersteunde .NET-versies** | .NET Framework 4.5.2 en hoger geïnstalleerd op de VM
 
 ### <a name="support-for-sql-server-2008-and-sql-server-2008-r2"></a>Ondersteuning voor SQL Server 2008 en SQL Server 2008 R2
@@ -87,7 +87,7 @@ Het is raadzaam om de back-up op slechts één knoop punt van een AG te configur
 
 Afhankelijk van de voor keuren voor back-ups en back-ups (volledig/differentieel/niet volledig), worden back-ups gemaakt van een bepaald knoop punt (primair/secundair).
 
-- **Voor keur voor back-up: Primary**
+- **Backup-voor keur: Primary**
 
 **Back-uptype** | **Node**
     --- | ---
@@ -96,7 +96,7 @@ Afhankelijk van de voor keuren voor back-ups en back-ups (volledig/differentieel
     logboek |  Primair
     Alleen-kopiëren is volledig |  Primair
 
-- **Voor keur voor back-up: Secondary Only**
+- **Backup-voor keur: Secondary Only**
 
 **Back-uptype** | **Node**
 --- | ---
@@ -105,7 +105,7 @@ Differentieel | Primair
 logboek |  Secundair
 Alleen-kopiëren is volledig |  Secundair
 
-- **Voor keur voor back-up: Secondary**
+- **Backup-voor keur: Secondary**
 
 **Back-uptype** | **Node**
 --- | ---
@@ -189,7 +189,7 @@ Voor alle andere versies herstelt u de machtigingen met de volgende stappen:
 
 7. Klik op OK.
 8. Herhaal dezelfde reeks stappen (1-7 hierboven) om NT Service\AzureWLBackupPluginSvc-aanmelding toe te voegen aan het SQL Server-exemplaar. Als de aanmelding al bestaat, moet u ervoor zorgen dat deze de serverrol sysadmin heeft en onder status heeft de machtiging verlenen om verbinding te maken met de data base-engine en de aanmelding als ingeschakeld.
-9. Nadat u een machtiging hebt verleend, **detecteert u db's** in de portal: Workload **->** back- **->** upinfrastructuur van kluis in azure VM:
+9. Nadat u een machtiging hebt verleend, **detecteert u db's** in de portal: Kluis **->** back-upinfrastructuur **->** werk belasting in azure VM:
 
     ![Db's in Azure Portal opnieuw detecteren](media/backup-azure-sql-database/sql-rediscover-dbs.png)
 

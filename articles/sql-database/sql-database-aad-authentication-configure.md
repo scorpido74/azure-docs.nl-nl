@@ -11,12 +11,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: a14926dea576e0331cb8c0f8010f060f47faa3e7
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: 11e3a9931d424433f2e3fd1f64e2e95a5835b65c
+ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69991167"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71960469"
 ---
 # <a name="configure-and-manage-azure-active-directory-authentication-with-sql"></a>Azure Active Directory verificatie met SQL configureren en beheren
 
@@ -160,7 +160,7 @@ De volgende twee procedures laten zien hoe u een Azure Active Directory beheerde
 
 ### <a name="azure-portal"></a>Azure Portal
 
-1. Ga naar de [Azure-portal](https://portal.azure.com/) en selecteer in de rechterbovenhoek uw verbinding om een lijst met mogelijke Active Directories weer te geven. Kies de juiste Active Directory als de standaard-Azure AD. In deze stap wordt de aan het abonnement gekoppelde Active Directory gekoppeld aan de Azure SQL-server, zodat u zeker weet dat hetzelfde abonnement wordt gebruikt voor zowel Azure AD als SQL Server. (De Azure SQL-Server kan worden gehost op Azure SQL Database of Azure SQL Data Warehouse.) ![Kies-AD][8]
+1. Ga naar de [Azure-portal](https://portal.azure.com/) en selecteer in de rechterbovenhoek uw verbinding om een lijst met mogelijke Active Directories weer te geven. Kies de juiste Active Directory als de standaard-Azure AD. In deze stap wordt de aan het abonnement gekoppelde Active Directory gekoppeld aan de Azure SQL-server, zodat u zeker weet dat hetzelfde abonnement wordt gebruikt voor zowel Azure AD als SQL Server. (De Azure SQL-Server kan worden gehost op Azure SQL Database of Azure SQL Data Warehouse.) ![choose-AD @ no__t-1
 
 2. Selecteer in het linkerdeel ster **alle services**en in het filter type in **SQL Server**. Selecteer **SQL-servers**.
 
@@ -170,7 +170,7 @@ De volgende twee procedures laten zien hoe u een Azure Active Directory beheerde
     > Op deze pagina kunt u, voordat u **SQL-servers**selecteert, de **ster** naast de naam selecteren om de categorie te *favoriet* en **SQL-servers** aan de linkernavigatiebalk toe te voegen.
 
 3. Selecteer op **SQL Server** pagina **Active Directory beheerder**.
-4. Selecteer op de pagina **Active Directory-beheerder** de optie **beheerder instellen**.  ![Selecteer Active Directory](./media/sql-database-aad-authentication/select-active-directory.png)  
+4. Selecteer op de pagina **Active Directory-beheerder** de optie **beheerder instellen**.  ![Select Active Directory @ no__t-3  
 
 5. Zoek op de pagina **Beheerder toevoegen** een gebruiker. Selecteer de gebruiker of groep die beheerder moet zijn en selecteer **Selecteren**. (Op de pagina Active Directory-beheerder ziet u alle leden en groepen van uw Active Directory.) Gebruikers of groepen die grijs zijn gekleurd, kunnen niet worden geselecteerd omdat ze niet worden ondersteund als beheerders voor Azure AD. (Zie de lijst met ondersteunde beheerders in de sectie **Azure AD-functies en -beperkingen** van [Azure Active Directory-verificatie gebruiken voor verificatie met behulp van SQL Database of SQL Data Warehouse](sql-database-aad-authentication.md).) Op rollen gebaseerd toegangsbeheer (RBAC) is alleen van toepassing op de portal en wordt niet doorgegeven aan SQL Server.
     ![beheerder selecteren](./media/sql-database-aad-authentication/select-admin.png)  
@@ -200,16 +200,16 @@ Cmdlets die worden gebruikt voor het inrichten en beheren van Azure AD-beheerder
 | [Remove-AzSqlServerActiveDirectoryAdministrator](/powershell/module/az.sql/remove-azsqlserveractivedirectoryadministrator) |Hiermee verwijdert u een Azure Active Directory beheerder voor Azure SQL Server of Azure SQL Data Warehouse. |
 | [Get-AzSqlServerActiveDirectoryAdministrator](/powershell/module/az.sql/get-azsqlserveractivedirectoryadministrator) |Retourneert informatie over een Azure Active Directory-beheerder die momenteel is geconfigureerd voor de Azure SQL-Server of Azure SQL Data Warehouse. |
 
-Gebruik de Power shell-opdracht Get-Help om voor elk van deze opdrachten ``get-help Set-AzSqlServerActiveDirectoryAdministrator``meer informatie te bekijken.
+Gebruik de Power shell-opdracht Get-Help voor meer informatie over elk van deze opdrachten, bijvoorbeeld ``get-help Set-AzSqlServerActiveDirectoryAdministrator``.
 
-Met het volgende script wordt een Azure AD-beheerders groep met de naam `40b79501-b343-44ed-9ce7-da4c8cc7353f`DBA_Group (object-id) ingericht voor de **demo_server** -server in een resource groep met de naam **groep-23**:
+Met het volgende script wordt een Azure AD-Beheerders groep met de naam **DBA_Group** (object-id `40b79501-b343-44ed-9ce7-da4c8cc7353f`) ingericht voor de **demo_server** -server in een resource groep met de naam **groep-23**:
 
 ```powershell
 Set-AzSqlServerActiveDirectoryAdministrator -ResourceGroupName "Group-23"
 -ServerName "demo_server" -DisplayName "DBA_Group"
 ```
 
-De para meter **DisplayName** invoer accepteert de Azure AD-weergave naam of de principal-naam van de gebruiker. Bijvoorbeeld, ``DisplayName="John Smith"`` en ``DisplayName="johns@contoso.com"``. Voor Azure AD-groepen wordt alleen de Azure AD-weergave naam ondersteund.
+De para meter **DisplayName** invoer accepteert de Azure AD-weergave naam of de principal-naam van de gebruiker. Bijvoorbeeld ``DisplayName="John Smith"`` en ``DisplayName="johns@contoso.com"``. Voor Azure AD-groepen wordt alleen de Azure AD-weergave naam ondersteund.
 
 > [!NOTE]
 > De Azure PowerShell opdracht ```Set-AzSqlServerActiveDirectoryAdministrator``` voor komt niet dat u Azure AD-beheerders kunt inrichten voor niet-ondersteunde gebruikers. Een niet-ondersteunde gebruiker kan worden ingericht, maar kan geen verbinding maken met een Data Base.
@@ -304,6 +304,9 @@ Een Inge sloten database gebruiker maken die een toepassing vertegenwoordigt die
 CREATE USER [appName] FROM EXTERNAL PROVIDER;
 ```
 
+> [!NOTE]
+> Voor deze opdracht is vereist dat SQL-toegang tot Azure AD (de externe provider) namens de aangemelde gebruiker is. Soms ontstaan er omstandigheden die ertoe leiden dat Azure AD een uitzonde ring terugstuurt naar SQL. In deze gevallen ziet de gebruiker SQL-fout 33134, die het AAD-specifieke fout bericht moet bevatten. In de meeste gevallen geeft de fout aan dat de toegang wordt geweigerd of dat de gebruiker zich moet inschrijven in MFA om toegang te krijgen tot de resource, of dat toegang tussen toepassingen van de eerste partij moet worden afgehandeld via pre-autorisatie. In de eerste twee gevallen wordt het probleem meestal veroorzaakt door het beleid voor voorwaardelijke toegang dat is ingesteld in de AAD-Tenant van de gebruiker: Hiermee wordt voor komen dat de gebruiker toegang heeft tot de externe provider. Het bijwerken van het CA-beleid om toegang tot de toepassing ' 00000002-0000-0000-C000-000000000000 te gebruiken ' toe te staan (de toepassings-ID van de AAD-Graph API) moet het probleem oplossen. In het geval dat de fout toegang geeft tussen toepassingen van de eerste partij, moet worden verwerkt via pre-autorisatie. het probleem is dat de gebruiker is aangemeld als service-principal. De opdracht moet slagen als deze door een gebruiker wordt uitgevoerd.
+
 > [!TIP]
 > U kunt een gebruiker niet rechtstreeks maken op basis van een andere Azure Active Directory dan de Azure Active Directory die aan uw Azure-abonnement is gekoppeld. Leden van andere Active Directory-gebruikers die zijn geïmporteerd in de gekoppelde Active Directory (ook wel externe gebruikers genoemd) kunnen wel worden toegevoegd aan een Active Directory groep in de Tenant Active Directory. Door een Inge sloten database gebruiker te maken voor die AD-groep, kunnen de gebruikers van de externe Active Directory toegang krijgen tot SQL Database.
 
@@ -312,7 +315,7 @@ Zie [Create User (Transact-SQL) (Engelstalig)](https://msdn.microsoft.com/librar
 > [!NOTE]
 > Als u de Azure Active Directory beheerder voor Azure SQL Server verwijdert, kunnen gebruikers van Azure AD-verificatie geen verbinding maken met de server. Zo nodig kunnen niet-herbruikbare Azure AD-gebruikers hand matig worden verwijderd door een SQL Database beheerder.
 > [!NOTE]
-> Als u een **time-out**voor de verbinding hebt ontvangen, moet u `TransparentNetworkIPResolution` mogelijk de para meter van de Connection String instellen op ONWAAR. Zie voor meer informatie [verbindingstime-out probleem met .NET Framework 4.6.1-TransparentNetworkIPResolution](https://blogs.msdn.microsoft.com/dataaccesstechnologies/20../../connection-timeout-issue-with-net-framework-4-6-1-transparentnetworkipresolution/).
+> Als er een **time-out**voor de verbinding is verlopen, moet u mogelijk de para meter `TransparentNetworkIPResolution` van de Connection String instellen op ONWAAR. Zie voor meer informatie [verbindingstime-out probleem met .NET Framework 4.6.1-TransparentNetworkIPResolution](https://blogs.msdn.microsoft.com/dataaccesstechnologies/20../../connection-timeout-issue-with-net-framework-4-6-1-transparentnetworkipresolution/).
 
 Wanneer u een database gebruiker maakt, ontvangt die gebruiker de machtiging **verbinden** en kan deze verbinding maken met die data base als lid van de **open bare** rol. In eerste instantie zijn er machtigingen verleend aan de **open bare** rol of machtigingen die zijn verleend aan een Azure AD-groep waarvan ze lid zijn. Wanneer u een Inge sloten database gebruiker op basis van Azure AD hebt ingericht, kunt u de gebruiker extra machtigingen verlenen, op dezelfde manier als u de machtiging voor elk ander type gebruiker toewijst. Verleen doorgaans machtigingen aan database rollen en voeg gebruikers toe aan rollen. Zie [basis beginselen van machtigingen voor data base-engine](https://social.technet.microsoft.com/wiki/contents/articles/4433.database-engine-permission-basics.aspx)voor meer informatie. Zie [data bases en aanmeldingen beheren in Azure SQL database](sql-database-manage-logins.md)voor meer informatie over speciale SQL database rollen.
 Een federatieve domein gebruikers account dat in een beheerd domein als een externe gebruiker wordt geïmporteerd, moet de identiteit van het beheerde domein gebruiken.
@@ -351,7 +354,7 @@ Gebruik deze methode wanneer u verbinding maakt met een principal-naam van Azure
 Gebruik deze methode om te verifiëren bij SQL data base/DW met Azure AD voor native of federatieve Azure AD-gebruikers. Een systeem eigen gebruiker wordt afzonderlijk gemaakt in azure AD en wordt geverifieerd met behulp van de gebruikers naam en het wacht woord, terwijl een federatieve gebruiker een Windows-gebruiker is met Azure AD. De laatste methode (met behulp van gebruikers & wacht woord) kan worden gebruikt wanneer een gebruiker hun Windows-referentie wil gebruiken, maar de lokale machine is niet gekoppeld aan het domein (bijvoorbeeld door middel van een externe toegang). In dit geval kan een Windows-gebruiker zijn of haar domein account en wacht woord aanduiden en kan worden geverifieerd bij SQL data base/DW met federatieve referenties.
 
 1. Start Management Studio of Hulpprogram Ma's voor gegevens en selecteer in het dialoog venster **verbinding maken met server** (of **verbinding maken met data base-engine**) in het vak **verificatie** de optie **Active Directory-wacht woord**.
-2. Typ in het vak **gebruikers naam** uw Azure Active Directory gebruikers naam in de notatie **username\@Domain.com**. Gebruikers namen moeten een account zijn uit het Azure Active Directory of een account van een domein met de Azure Active Directory.
+2. Typ in het vak **gebruikers naam** uw Azure Active Directory gebruikers naam in de notatie **username\@domain.com**. Gebruikers namen moeten een account zijn uit het Azure Active Directory of een account van een domein met de Azure Active Directory.
 3. Typ in het vak **wacht woord** het wacht woord van uw gebruiker voor de account van de Azure Active Directory of het federatieve domein.
 
     ![AD-wachtwoord verificatie selecteren][12]
@@ -374,7 +377,7 @@ SqlConnection conn = new SqlConnection(ConnectionString);
 conn.Open();
 ```
 
-Het sleutel woord ``Integrated Security=True`` Connection String wordt niet ondersteund om verbinding te maken met Azure SQL database. Wanneer u een ODBC-verbinding maakt, moet u spaties verwijderen en de verificatie instellen op ' ActiveDirectoryIntegrated '.
+Het connection string sleutel woord ``Integrated Security=True`` wordt niet ondersteund om verbinding te maken met Azure SQL Database. Wanneer u een ODBC-verbinding maakt, moet u spaties verwijderen en de verificatie instellen op ' ActiveDirectoryIntegrated '.
 
 ### <a name="active-directory-password-authentication"></a>Wachtwoordverificatie voor Active Directory
 
@@ -414,7 +417,7 @@ Zie [SQL Server Security Blog](https://blogs.msdn.microsoft.com/sqlsecurity/20..
 De volgende instructies zijn een verbinding met versie 13,1 van Sqlcmd, die beschikbaar is via het [Download centrum](https://go.microsoft.com/fwlink/?LinkID=825643).
 
 > [!NOTE]
-> `sqlcmd`met de `-G` opdracht werkt niet met systeem identiteiten en is een gebruikers-principal-aanmelding vereist.
+> `sqlcmd` met de `-G` opdracht werkt niet met systeem identiteiten en vereist een gebruiker-Principal-aanmelding.
 
 ```cmd
 sqlcmd -S Target_DB_or_DW.testsrv.database.windows.net  -G  

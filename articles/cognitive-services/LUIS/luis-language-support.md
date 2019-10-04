@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: diberry
-ms.openlocfilehash: 94f019205959d63a05ed3d90ede59fece3c05901
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.openlocfilehash: bd1e665114fff4d5b7b0b2dca267207bdeebab56
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71316356"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71949552"
 ---
 # <a name="language-and-region-support-for-luis"></a>Ondersteuning voor LUIS taal en regio
 
@@ -54,7 +54,7 @@ Taalondersteuning varieert voor [vooraf gemaakte entiteiten](luis-reference-preb
 
  - In de `zh-cn` cultuur, LUIS wordt verwacht dat de vereenvoudigd Chinees tekenset in plaats van de traditionele tekenset.
  - De namen van de intenties, entiteiten, functies en reguliere expressies mogelijk Chinese of Romeins tekens.
- - Zie de [Naslag Gids met vooraf gedefinieerde domeinen](luis-reference-prebuilt-domains.md) voor informatie over welke vooraf ontwikkelde domeinen worden ondersteund `zh-cn` in de cultuur.
+ - Zie de [Naslag Gids met vooraf gedefinieerde domeinen](luis-reference-prebuilt-domains.md) voor informatie over welke vooraf ontwikkelde domeinen worden ondersteund in de `zh-cn`-cultuur.
 <!--- When writing regular expressions in Chinese, do not insert whitespace between Chinese characters.-->
 
 ### <a name="japanese-support-notes"></a>\* Opmerkingen bij de Japanse ondersteuning
@@ -73,7 +73,9 @@ Zie spraak [ondersteunde talen](https://docs.microsoft.com/azure/cognitive-servi
 Zie Bing spellingcontrole [ondersteunde talen](https://docs.microsoft.com/azure/cognitive-services/bing-spell-check/bing-spell-check-supported-languages) voor een lijst van ondersteunde talen en status.
 
 ## <a name="rare-or-foreign-words-in-an-application"></a>Zeldzame of refererende woorden in een toepassing
-In de `en-us` cultuur, LUIS te onderscheiden van de meest Nederlandse woorden, met inbegrip van slang leren. In de `zh-cn` cultuur, LUIS leert te onderscheiden van de meeste Chinese tekens. Als u een zeldzame woord in `en-us` of teken in `zh-cn`, en u ziet dat LUIS lijkt te onderscheiden van dit woord of teken, kunt u dit woord toevoegen of teken naar een [functie woordgroep lijst](luis-how-to-add-features.md). Bijvoorbeeld, moeten woorden buiten de cultuur van de toepassing, dat wil zeggen, woorden in vreemde talen--worden toegevoegd aan een functie woordgroep-lijst. Deze woordgroepenlijst moet worden gemarkeerd, niet-verwisselbaar, om aan te geven dat de set zeldzaam woorden vormt een klasse die LUIS moet leren herkennen, maar ze niet synoniemen zijn of uitwisselbaar met elkaar.
+In de `en-us` cultuur, LUIS te onderscheiden van de meest Nederlandse woorden, met inbegrip van slang leren. In de `zh-cn` cultuur, LUIS leert te onderscheiden van de meeste Chinese tekens. Als u een zeldzame woord in `en-us` of teken in `zh-cn`, en u ziet dat LUIS lijkt te onderscheiden van dit woord of teken, kunt u dit woord toevoegen of teken naar een [functie woordgroep lijst](luis-how-to-add-features.md). Bijvoorbeeld, moeten woorden buiten de cultuur van de toepassing, dat wil zeggen, woorden in vreemde talen--worden toegevoegd aan een functie woordgroep-lijst. 
+
+<!--This phrase list should be marked non-interchangeable, to indicate that the set of rare words forms a class that LUIS should learn to recognize, but they are not synonyms or interchangeable with each other.-->
 
 ### <a name="hybrid-languages"></a>Hybride-talen
 Hybride talen combineren woorden uit twee culturen zoals Engels en Chinees. Deze talen worden niet ondersteund in LUIS omdat een app is gebaseerd op een enkele cultuur.
@@ -103,8 +105,8 @@ De volgende cult uren hebben aangepaste tokenizer-versies:
 
 |Culture|Version|Doel|
 |--|--|--|
-|Duits<br>`de-de`|1.0.0|Tokenizes woorden door ze te splitsen met behulp van een tokenizer op basis van machine learning dat probeert samengestelde woorden op te splitsen in hun afzonderlijke onderdelen.<br>Als een gebruiker als `Ich fahre einen krankenwagen` een utterance wordt ingevoerd, wordt deze `Ich fahre einen kranken wagen`ingeschakeld. Het markeren van en `kranken` `wagen` onafhankelijk van verschillende entiteiten toestaan.|
-|Duits<br>`de-de`|1.0.2|Tokenizes woorden door ze te splitsen op spaties.<br> Als een gebruiker als `Ich fahre einen krankenwagen` een utterance wordt ingevoerd, blijft het één token. Is `krankenwagen` daarom gemarkeerd als één entiteit. |
+|Duits<br>`de-de`|1.0.0|Tokenizes woorden door ze te splitsen met behulp van een tokenizer op basis van machine learning dat probeert samengestelde woorden op te splitsen in hun afzonderlijke onderdelen.<br>Als een gebruiker `Ich fahre einen krankenwagen` opgeeft als een utterance, wordt deze ingesteld op `Ich fahre einen kranken wagen`. Het markeren van `kranken` en `wagen` onafhankelijk als verschillende entiteiten toestaan.|
+|Duits<br>`de-de`|1.0.2|Tokenizes woorden door ze te splitsen op spaties.<br> Als een gebruiker `Ich fahre einen krankenwagen` opgeeft als een utterance, blijft het één token. @No__t-0 is dus als één entiteit gemarkeerd. |
 
 ### <a name="migrating-between-tokenizer-versions"></a>Migreren tussen tokenizer-versies
 <!--

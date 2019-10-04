@@ -1,19 +1,19 @@
 ---
 title: Navigeren door Azure Digital Apparaatdubbels-Api's | Microsoft Docs
 description: Meer informatie over algemene patronen voor het uitvoeren van query's in de Azure Digital Apparaatdubbels Management-Api's.
-author: kingdomofends
-manager: philmea
+ms.author: alinast
+author: alinamstanciu
+manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 08/29/2019
-ms.author: v-adgera
-ms.openlocfilehash: 8472a86800d13cedd228ca881a7c095ff748350a
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: b01b83ab0e673254da19888210d9678e313acca2
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70172819"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71949859"
 ---
 # <a name="how-to-use-azure-digital-twins-management-apis"></a>Azure Digital Apparaatdubbels Management-Api's gebruiken
 
@@ -35,11 +35,11 @@ De volgende lijst bevat de onderdelen van de Digital Apparaatdubbels-Api's.
 
 * [/Ontologies](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#/Ontologies): Deze Api's helpen u bij het beheren van Ontologies, die verzamelingen van uitgebreide typen zijn. Ontologies geven namen voor object typen aan volgens de fysieke ruimte die ze vertegenwoordigen. De *BACnet* -Ontology biedt bijvoorbeeld specifieke namen voor *sensor types*, *data types*, *datasubtypes*en *dataunittypes*. Ontologies worden beheerd en gemaakt door de service. Gebruikers kunnen Ontologies laden en verwijderen. Wanneer een Ontology wordt geladen, zijn alle bijbehorende type namen ingeschakeld en klaar om te worden ingericht in uw ruimtelijke grafiek. 
 
-* [/propertyKeys](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#/PropertyKeys): U kunt deze Api's gebruiken om aangepaste eigenschappen te maken vooruw Spaces, *apparaten*, *gebruikers*en *Sens oren*. Deze eigenschappen worden gemaakt als sleutel/waarde-paren. U kunt het gegevens type voor deze eigenschappen definiëren door hun *PrimitiveDataType*in te stellen. U kunt bijvoorbeeld een eigenschap met de naam *BasicTemperatureDeltaProcessingRefreshTime* van het type *uint* definiëren voor uw Sens oren en vervolgens voor elk van uw Sens oren een waarde voor deze eigenschap toewijzen. U kunt ook beperkingen voor deze waarden toevoegen tijdens het maken van de eigenschap, zoals *min* -en *maximum aantal* bereiken, en toegestane waarden als *ValidationData*.
+* [/propertyKeys](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#/PropertyKeys): U kunt deze Api's gebruiken om aangepaste eigenschappen te maken voor uw *Spaces*, *apparaten*, *gebruikers*en *Sens oren*. Deze eigenschappen worden gemaakt als sleutel/waarde-paren. U kunt het gegevens type voor deze eigenschappen definiëren door hun *PrimitiveDataType*in te stellen. U kunt bijvoorbeeld een eigenschap met de naam *BasicTemperatureDeltaProcessingRefreshTime* van het type *uint* definiëren voor uw Sens oren en vervolgens voor elk van uw Sens oren een waarde voor deze eigenschap toewijzen. U kunt ook beperkingen voor deze waarden toevoegen tijdens het maken van de eigenschap, zoals *min* -en *maximum aantal* bereiken, en toegestane waarden als *ValidationData*.
 
 * [/matchers](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#/Matchers): Met deze Api's kunt u de voor waarden opgeven die u wilt evalueren op basis van de gegevens van uw binnenkomende apparaten. Raadpleeg [dit artikel](concepts-user-defined-functions.md#matchers) voor meer informatie. 
 
-* [/userDefinedFunctions](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#/UserDefinedFunctions): Met deze Api's kunt u een aangepaste functie maken, verwijderen of bijwerken die wordt uitgevoerd wanneer de voor waarden die worden gedefinieerd door de matchers optreden, om gegevens te verwerken die afkomstig zijn van uw installatie. Raadpleeg [dit artikel](concepts-user-defined-functions.md#user-defined-functions) voor meer informatie over deze aangepaste functies, ook wel de door de *gebruiker gedefinieerde functies*genoemd. 
+* [/userDefinedFunctions](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#/UserDefinedFunctions): Met deze Api's kunt u een aangepaste functie maken, verwijderen of bijwerken die wordt uitgevoerd wanneer de voor waarden die worden gedefinieerd door de *matchers* optreden, om gegevens te verwerken die afkomstig zijn van uw installatie. Raadpleeg [dit artikel](concepts-user-defined-functions.md#user-defined-functions) voor meer informatie over deze aangepaste functies, ook wel de door de *gebruiker gedefinieerde functies*genoemd. 
 
 * [/endpoints](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#/Endpoints): Met deze Api's kunt u eind punten maken zodat uw digitale Apparaatdubbels-oplossing kan communiceren met andere Azure-Services voor gegevens opslag en-analyse. Lees [dit artikel](concepts-events-routing.md) voor meer informatie. 
 
@@ -74,17 +74,17 @@ De Digital Apparaatdubbels-Api's bieden ondersteuning voor filteren en navigatie
 
 ### <a name="examples"></a>Voorbeelden
 
-De volgende lijst bevat enkele voor beelden van navigatie via de [/devices](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#!/Devices) -api's. Houd er rekening mee `YOUR_MANAGEMENT_API_URL` dat de tijdelijke aanduiding verwijst naar de URI van de Digital apparaatdubbels `https://YOUR_INSTANCE_NAME.YOUR_LOCATION.azuresmartspaces.net/management/api/v1.0/`-api's `YOUR_INSTANCE_NAME` in de indeling, waarbij de naam is van uw Azure `YOUR_LOCATION` Digital apparaatdubbels-instantie en de regio is waar uw exemplaar wordt gehost.
+De volgende lijst bevat enkele voor beelden van navigatie via de [/devices](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#!/Devices) -api's. Houd er rekening mee dat de tijdelijke aanduiding `YOUR_MANAGEMENT_API_URL` verwijst naar de URI van de Digital Apparaatdubbels-Api's in de notatie `https://YOUR_INSTANCE_NAME.YOUR_LOCATION.azuresmartspaces.net/management/api/v1.0/`, waarbij `YOUR_INSTANCE_NAME` de naam is van uw Azure Digital Apparaatdubbels-instantie en `YOUR_LOCATION` de regio is waarin uw exemplaar wordt gehost.
 
-- `YOUR_MANAGEMENT_API_URL/devices?maxLevel=1`Hiermee worden alle apparaten weer gegeven die zijn gekoppeld aan hoofd ruimten.
-- `YOUR_MANAGEMENT_API_URL/devices?minLevel=2&maxLevel=4`Hiermee worden alle apparaten weer gegeven die zijn gekoppeld aan ruimten van niveau 2, 3 of 4.
-- `YOUR_MANAGEMENT_API_URL/devices?spaceId=mySpaceId`retourneert alle apparaten die rechtstreeks zijn gekoppeld aan mySpaceId.
-- `YOUR_MANAGEMENT_API_URL/devices?spaceId=mySpaceId&traverse=Down`retourneert alle apparaten die zijn gekoppeld aan mySpaceId of een van de onderliggende objecten.
-- `YOUR_MANAGEMENT_API_URL/devices?spaceId=mySpaceId&traverse=Down&minLevel=1&minRelative=true`retourneert alle apparaten die zijn gekoppeld aan descendanten van mySpaceId, met uitzonde ring van mySpaceId.
-- `YOUR_MANAGEMENT_API_URL/devices?spaceId=mySpaceId&traverse=Down&minLevel=1&minRelative=true&maxLevel=1&maxRelative=true`Hiermee worden alle apparaten weer gegeven die zijn gekoppeld aan directe onderliggende items van mySpaceId.
-- `YOUR_MANAGEMENT_API_URL/devices?spaceId=mySpaceId&traverse=Up&maxLevel=-1&maxRelative=true`Hiermee worden alle apparaten geretourneerd die zijn gekoppeld aan een van de bovenliggende items van mySpaceId.
-- `YOUR_MANAGEMENT_API_URL/devices?spaceId=mySpaceId&traverse=Down&maxLevel=5`Hiermee worden alle apparaten geretourneerd die zijn gekoppeld aan descendanten van mySpaceId die kleiner zijn dan of gelijk zijn aan 5.
-- `YOUR_MANAGEMENT_API_URL/devices?spaceId=mySpaceId&traverse=Span&minLevel=0&minRelative=true&maxLevel=0&maxRelative=true`retourneert alle apparaten die zijn gekoppeld aan ruimten die zich op hetzelfde niveau bevinden als mySpaceId.
+- `YOUR_MANAGEMENT_API_URL/devices?maxLevel=1` retourneert alle apparaten die zijn gekoppeld aan hoofd ruimten.
+- `YOUR_MANAGEMENT_API_URL/devices?minLevel=2&maxLevel=4` retourneert alle apparaten die zijn gekoppeld aan ruimten van niveau 2, 3 of 4.
+- `YOUR_MANAGEMENT_API_URL/devices?spaceId=mySpaceId` retourneert alle apparaten die rechtstreeks zijn gekoppeld aan mySpaceId.
+- `YOUR_MANAGEMENT_API_URL/devices?spaceId=mySpaceId&traverse=Down` retourneert alle apparaten die zijn gekoppeld aan mySpaceId of een van de onderliggende objecten.
+- `YOUR_MANAGEMENT_API_URL/devices?spaceId=mySpaceId&traverse=Down&minLevel=1&minRelative=true` retourneert alle apparaten die zijn gekoppeld aan descendanten van mySpaceId, met uitzonde ring van mySpaceId.
+- `YOUR_MANAGEMENT_API_URL/devices?spaceId=mySpaceId&traverse=Down&minLevel=1&minRelative=true&maxLevel=1&maxRelative=true` retourneert alle apparaten die zijn gekoppeld aan directe onderliggende items van mySpaceId.
+- `YOUR_MANAGEMENT_API_URL/devices?spaceId=mySpaceId&traverse=Up&maxLevel=-1&maxRelative=true` retourneert alle apparaten die zijn gekoppeld aan een van de bovenliggende items van mySpaceId.
+- `YOUR_MANAGEMENT_API_URL/devices?spaceId=mySpaceId&traverse=Down&maxLevel=5` retourneert alle apparaten die zijn gekoppeld aan descendanten van mySpaceId die kleiner zijn dan of gelijk zijn aan 5.
+- `YOUR_MANAGEMENT_API_URL/devices?spaceId=mySpaceId&traverse=Span&minLevel=0&minRelative=true&maxLevel=0&maxRelative=true` retourneert alle apparaten die zijn gekoppeld aan ruimten die zich op hetzelfde niveau bevinden als mySpaceId.
 
 
 ## <a name="odata-support"></a>OData-ondersteuning
@@ -116,4 +116,4 @@ Meer informatie over enkele veelvoorkomende API-query patronen vindt u in [het o
 
 Lees [hoe u Digital Apparaatdubbels Swagger kunt gebruiken](./how-to-use-swagger.md)voor meer informatie over uw API-eind punten.
 
-Als u de OData-syntaxis en beschik bare vergelijkings operatoren wilt bekijken, leest u Odata-vergelijkings [operatoren in azure Search](../search/search-query-odata-comparison-operators.md)
+Als u de OData-syntaxis en beschik bare vergelijkings operatoren wilt bekijken, leest u [odata-vergelijkings operatoren in azure Search](../search/search-query-odata-comparison-operators.md)

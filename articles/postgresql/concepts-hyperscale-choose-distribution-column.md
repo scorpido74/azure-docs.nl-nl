@@ -1,18 +1,18 @@
 ---
 title: Kies distributie kolommen in Azure Database for PostgreSQL – grootschalige (Citus)
-description: Goede keuzes voor distributie kolommen in algemene grootschalige-scenario's
+description: Meer informatie over het kiezen van distributie kolommen in algemene grootschalige-scenario's in Azure Database for PostgreSQL.
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: b0d1f343aa9b125ab0a5a9ab559d0788253037aa
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: 0b29567dcd22c79c30e70594066f7ff87c18fdb0
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69998196"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71947599"
 ---
 # <a name="choose-distribution-columns-in-azure-database-for-postgresql--hyperscale-citus"></a>Kies distributie kolommen in Azure Database for PostgreSQL – grootschalige (Citus)
 
@@ -28,7 +28,7 @@ De architectuur met meerdere tenants maakt gebruik van een hiërarchische indeli
 
 Grootschalige (Citus) inspecteert query's om te zien welke Tenant-ID ze hebben en vindt de overeenkomende tabel Shard. De query wordt doorgestuurd naar één worker-knoop punt dat de Shard bevat. Het uitvoeren van een query waarbij alle relevante gegevens op hetzelfde knoop punt worden geplaatst, wordt de locatie ' uplocation ' genoemd.
 
-In het volgende diagram ziet u de co-locatie in het gegevens model met meerdere tenants. Het bevat twee tabellen, accounts en campagnes, die elk worden `account_id`gedistribueerd door. De gearceerde vakken vertegenwoordigen Shards. Groene Shards worden samen op één werk knooppunt opgeslagen en blauwe Shards worden opgeslagen op een ander worker-knoop punt. U ziet hoe een koppelings query tussen accounts en campagnes alle benodigde gegevens op één knoop punt heeft wanneer beide tabellen zijn beperkt tot dezelfde account\_-id.
+In het volgende diagram ziet u de co-locatie in het gegevens model met meerdere tenants. Het bevat twee tabellen, accounts en campagnes, die elk worden gedistribueerd door `account_id`. De gearceerde vakken vertegenwoordigen Shards. Groene Shards worden samen op één werk knooppunt opgeslagen en blauwe Shards worden opgeslagen op een ander worker-knoop punt. U ziet hoe een koppelings query tussen accounts en campagnes alle benodigde gegevens op één knoop punt heeft wanneer beide tabellen zijn beperkt tot hetzelfde account @ no__t-0id.
 
 ![Multi tenant-co-locatie](media/concepts-hyperscale-choosing-distribution-column/multi-tenant-colocation.png)
 
@@ -37,9 +37,9 @@ Query's in het model met meerdere tenants zijn scoped voor een Tenant. Query's o
 
 #### <a name="best-practices"></a>Aanbevolen procedures
 
--   **Gedistribueerde tabellen partitioneren op\_basis van een gemeen schappelijke Tenant-id kolom.** In een SaaS-toepassing waarbij tenants bijvoorbeeld bedrijven zijn, is de Tenant\_-id waarschijnlijk de bedrijfs\_-id.
+-   **Gedistribueerde tabellen partitioneren op basis van een gemeen schappelijke Tenant @ no__t-1id kolom.** In een SaaS-toepassing waarbij tenants bijvoorbeeld bedrijven zijn, is de Tenant @ no__t-0id waarschijnlijk het bedrijf @ no__t-1id.
 -   **Converteer kleine tabellen met meerdere tenants naar verwijzings tabellen.** Wanneer meerdere tenants een kleine tabel met gegevens delen, distribueer deze dan als een verwijzings tabel.
--   **Filter voor alle toepassings query's beperken op\_Tenant-id.** Elke query moet informatie voor één Tenant tegelijk aanvragen.
+-   **Filter voor alle toepassings query's beperken op Tenant @ no__t-1id.** Elke query moet informatie voor één Tenant tegelijk aanvragen.
 
 Lees de [multi tenant-zelf studie](./tutorial-design-database-hyperscale-multi-tenant.md) voor een voor beeld van hoe u dit type toepassing kunt bouwen.
 

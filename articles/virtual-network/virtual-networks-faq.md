@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/12/2019
 ms.author: kumud
-ms.openlocfilehash: 1a3859e1831f64269e7684072ddf166f29566fd9
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 642b99e3eaaf73844d30d1cd464ae0b777b0b3fa
+ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828979"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71957810"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Veelgestelde vragen over Azure Virtual Network
 
@@ -66,7 +66,7 @@ Elk IP-adres bereik dat is gedefinieerd in [RFC 1918](https://tools.ietf.org/htm
 Ja. Zie [een virtueel netwerk maken](manage-virtual-network.md#create-a-virtual-network)voor meer informatie over open bare IP-adresbereiken. Openbare IP-adressen zijn niet rechtstreeks toegankelijk via internet.
 
 ### <a name="is-there-a-limit-to-the-number-of-subnets-in-my-vnet"></a>Geldt er een limiet voor het aantal subnetten in mijn VNet?
-Ja. Zie [Azure](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits) -limieten voor meer informatie. De adres ruimten van het subnet mogen elkaar niet overlappen.
+Ja. Zie [Azure-limieten](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits) voor meer informatie. De adres ruimten van het subnet mogen elkaar niet overlappen.
 
 ### <a name="are-there-any-restrictions-on-using-ip-addresses-within-these-subnets"></a>Zijn er beperkingen voor het gebruik van IP-adressen in deze subnetten?
 Ja. In Azure worden vijf IP-adressen gereserveerd in elk subnet. Dit zijn x. x. x. 0-x. x. x. 3 en het laatste adres van het subnet. x. x. x. 1-x. x. x. 3 is gereserveerd in elk subnet voor Azure-Services.   
@@ -254,7 +254,6 @@ De volgende resources maken gebruik van elementaire load balancers. Dit betekent
 - Logic Apps
 - HDInsight
 -   Azure Batch
-- AKS
 - App Service Environment
 
 U kunt via VNet-gateways verbinding maken met deze resources via ExpressRoute of VNet-naar-VNet.

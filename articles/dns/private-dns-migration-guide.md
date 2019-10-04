@@ -1,119 +1,119 @@
 ---
-title: Verouderde Azure DNS Private Zones migreren naar nieuwe Resource-Model
-description: Deze handleiding bevat stapsgewijze instructies voor het migreren van oudere privé-DNS-zones naar het laatste resourcemodel
+title: Verouderde Azure DNS Private Zones migreren naar een nieuw resource model
+description: Deze hand leiding bevat stapsgewijze instructies voor het migreren van verouderde privé-DNS-zones naar het meest recente bron model
 services: dns
 author: rohinkoul
 ms.service: dns
 ms.topic: tutorial
 ms.date: 06/18/2019
 ms.author: rohink
-ms.openlocfilehash: e7ebbf35cd572601f02a69930b58811686a92c86
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 870f8f43fb37f3f58fc19f2fd544e77b1a3a3967
+ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67276095"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71960558"
 ---
-# <a name="migrating-legacy-azure-dns-private-zones-to-new-resource-model"></a>Verouderde Azure DNS private zones migreren naar nieuwe resourcemodel
+# <a name="migrating-legacy-azure-dns-private-zones-to-new-resource-model"></a>Verouderde Azure DNS particuliere zones migreren naar een nieuw resource model
 
-We een nieuw model van de API-resource voor Azure DNS private zones als onderdeel van de preview-versie voor vernieuwen hebt verzonden. Vernieuwen van de Preview-versie biedt nieuwe functionaliteit en verwijdert u verschillende voorwaarden en beperkingen van de eerste openbare preview. Maar deze voordelen zijn niet beschikbaar op de persoonlijke DNS-zones die zijn gemaakt met behulp van verouderde API. Als u de voordelen van de nieuwe versie, moet u uw oude persoonlijke DNS-zone resources migreren naar nieuwe resourcemodel. Het migratieproces is eenvoudig en een PowerShell-script voor het automatiseren van dit proces is gesteld. Deze handleiding bevat stapsgewijze instructies voor het migreren van uw Azure DNS private zones met nieuwe resourcemodel.
+De huidige versie van Azure DNS private zones biedt nieuwe functionaliteit en verwijdert enkele beperkingen en beperkingen van de eerste open bare preview. Deze voor delen zijn echter niet beschikbaar voor de privé-DNS-zones die zijn gemaakt met behulp van de preview-API. Als u de voor delen van de nieuwe release wilt krijgen, moet u uw verouderde privé-DNS-zone bronnen migreren naar het nieuwe resource model. Het migratie proces is eenvoudig en er is een Power shell-script gegeven om dit proces te automatiseren. Deze hand leiding bevat stapsgewijze instructies voor het migreren van uw Azure DNS persoonlijke zones naar het nieuwe resource model.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Zorg ervoor dat u de meest recente versie van Azure PowerShell hebt geïnstalleerd. Voor meer informatie over Azure PowerShell (Az) en hoe ze deze willen installeren gaat u naar https://docs.microsoft.com/powershell/azure/new-azureps-module-az
+Zorg ervoor dat u de nieuwste versie van Azure PowerShell hebt geïnstalleerd. Ga voor meer informatie over Azure PowerShell (AZ) en hoe u deze kunt installeren https://docs.microsoft.com/powershell/azure/new-azureps-module-az
 
-Zorg ervoor dat u Az.PrivateDns-module voor de Azure PowerShell is geïnstalleerd hebt. Open een verhoogde PowerShell-venster (met beheerdersrechten modus) voor het installeren van deze module en voert u de volgende opdracht
+Zorg ervoor dat u de module AZ. PrivateDns hebt voor de Azure PowerShell geïnstalleerd. Als u deze module wilt installeren, opent u een Power shell-venster met verhoogde bevoegdheden (beheer modus) en voert u de volgende opdracht in
 
 ```powershell
 Install-Module -Name Az.PrivateDns -AllowPrerelease
 ```
 
 >[!IMPORTANT]
->Het migratieproces is volledig geautomatiseerd en om te leiden tot uitvaltijd wordt niet verwacht. Echter, als u Azure DNS private zones (preview) in een productieomgeving u moet worden uitgevoerd onder het migratieproces tijdens een periode van gepland onderhoud. Zorg ervoor dat u de configuratie of recordsets van een privé-DNS-zones niet wijzigen terwijl u het migratiescript uitvoert.
+>Het migratie proces is volledig geautomatiseerd en verwacht geen uitval tijd. Als u echter Azure DNS particuliere zones (preview) in een kritieke productie omgeving gebruikt, moet u het volgende migratie proces uitvoeren tijdens het geplande onderhouds tijd venster. Zorg ervoor dat u de configuratie of record sets van een privé-DNS-zone niet wijzigt tijdens het uitvoeren van het migratie script.
 
 ## <a name="installing-the-script"></a>Het script installeren
 
-Open een verhoogde PowerShell-venster (met beheerdersrechten modus) en voer de volgende opdracht
+Open een Power shell-venster met verhoogde bevoegdheden (beheer modus) en voer de volgende opdracht uit
 
 ```powershell
 install-script PrivateDnsMigrationScript
 ```
 
-Voer 'A' wanneer u wordt gevraagd voor het installeren van het script
+Voer ' A ' in wanneer u wordt gevraagd het script te installeren
 
 ![Het script installeren](./media/private-dns-migration-guide/install-migration-script.png)
 
-U kunt ook handmatig de meest recente versie van PowerShell-script aan https://www.powershellgallery.com/packages/PrivateDnsMigrationScript
+U kunt de meest recente versie van Power shell-script ook hand matig verkrijgen bij https://www.powershellgallery.com/packages/PrivateDnsMigrationScript
 
-## <a name="running-the-script"></a>Het script is uitgevoerd
+## <a name="running-the-script"></a>Het script uitvoeren
 
-De volgende opdracht uit te voeren van het script uitvoeren
+Voer de volgende opdracht uit om het script uit te voeren
 
 ```powershell
 PrivateDnsMigrationScript.ps1
 ```
 
-![Het script is uitgevoerd](./media/private-dns-migration-guide/running-migration-script.png)
+![Het script uitvoeren](./media/private-dns-migration-guide/running-migration-script.png)
 
-### <a name="enter-the-subscription-id-and-sign-in-to-azure"></a>Voer de abonnements-ID en aanmelden bij Azure
+### <a name="enter-the-subscription-id-and-sign-in-to-azure"></a>Voer de abonnements-ID in en meld u aan bij Azure
 
-U wordt gevraagd om in te voeren abonnements-ID met de persoonlijke DNS-zones die u wilt migreren. U wordt gevraagd om aan te melden bij uw Azure-account. Voltooi de aanmelding zodat script toegang heeft tot de persoonlijke DNS-zone-resources in het abonnement.
+U wordt gevraagd om een abonnements-ID op te geven met de privé-DNS-zones die u wilt migreren. U wordt gevraagd om u aan te melden bij uw Azure-account. Voltooi de aanmelding zodat het script toegang kan krijgen tot de privé-DNS-zone bronnen in het abonnement.
 
 ![Aanmelden bij Azure](./media/private-dns-migration-guide/login-migration-script.png)
 
 ### <a name="select-the-dns-zones-you-want-to-migrate"></a>Selecteer de DNS-zones die u wilt migreren
 
-Het script met de lijst met alle persoonlijke DNS-zones in het abonnement en u wordt gevraagd te bevestigen welke u wilt migreren. Voer 'A' voor het migreren van alle privé-DNS-zones. Wanneer u deze stap hebt uitgevoerd, wordt het script maken van nieuwe persoonlijke DNS-zones met behulp van nieuwe resourcemodel en de gegevens kopiëren naar de nieuwe DSN-zone. Deze stap wordt de bestaande persoonlijke DNS-zones in niet toch wijzigen.
+Het script met de lijst met alle privé-DNS-zones in het abonnement ophalen en u vragen om te bevestigen welke u wilt migreren. Voer ' A ' in om alle privé-DNS-zones te migreren. Wanneer u deze stap hebt uitgevoerd, worden met het script nieuwe privé-DNS-zones gemaakt met behulp van nieuw resource model en worden de gegevens gekopieerd naar de nieuwe DSN-zone. Met deze stap worden uw bestaande privé-DNS-zones toch niet gewijzigd.
 
 ![DNS-zones selecteren](./media/private-dns-migration-guide/migratezone-migration-script.png)
 
 ### <a name="switching-dns-resolution-to-the-new-dns-zones"></a>DNS-omzetting overschakelen naar de nieuwe DNS-zones
 
-Zodra de zones en -records zijn gekopieerd naar de nieuwe resourcemodel, vraagt het script u de DNS-omzetting overschakelen naar de nieuwe DNS-zones. Deze stap verwijdert u de koppeling tussen verouderde privé-DNS-zones en uw virtuele netwerken. Als de bestaande zone losgekoppeld van de virtuele netwerken is, zou de DNS-omzetting voor deze virtuele netwerken automatisch de nieuwe DNS-zones in de bovenstaande stap gemaakt overnemen.
+Zodra de zones en records naar het nieuwe bron model zijn gekopieerd, wordt u door het script gevraagd de DNS-omzetting over te scha kelen naar nieuwe DNS-zones. Met deze stap wordt de koppeling tussen verouderde privé-DNS-zones en uw virtuele netwerken verwijderd. Wanneer de verouderde zone wordt ontkoppeld van de virtuele netwerken, nemen de nieuwe DNS-zones die in de bovenstaande stap worden gemaakt, automatisch de DNS-omzetting over die virtuele netwerken.
 
-Selecteer 'A' om over te schakelen van de DNS-omzetting voor alle virtuele netwerken.
+Selecteer ' A ' om de DNS-omzetting voor alle virtuele netwerken te wijzigen.
 
-![Switch-naamomzetting](./media/private-dns-migration-guide/switchresolution-migration-script.png)
+![Naam omzetting overschakelen](./media/private-dns-migration-guide/switchresolution-migration-script.png)
 
-### <a name="verify-the-dns-resolution"></a>Controleer of de DNS-omzetting
+### <a name="verify-the-dns-resolution"></a>De DNS-omzetting verifiëren
 
-Voordat u doorgaat, moet u controleren of DNS-omzetting op de DNS-zones werkt zoals verwacht. U kunt aanmelden bij uw azure-VM's en probleem nslookup query op de gemigreerde zones om te controleren of deze DNS-omzetting werkt.
+Controleer voordat u doorgaat of de DNS-omzetting op uw DNS-zones werkt zoals verwacht. U kunt zich aanmelden bij uw Azure-Vm's en nslookup-query's voor de gemigreerde zones geven om te controleren of de DNS-omzetting werkt.
 
-![Controleren of de naamomzetting](./media/private-dns-migration-guide/verifyresolution-migration-script.png)
+![Naam omzetting controleren](./media/private-dns-migration-guide/verifyresolution-migration-script.png)
 
-Als u merkt dat de DNS-query's worden niet oplossen, wacht een paar minuten en probeer de query's. Als de DNS-query's werkt zoals verwacht, voert u 'Y' wanneer het script vraagt u het virtuele netwerk verwijderen uit de privé-DNS-zone.
+Als u vindt dat DNS-query's niet worden opgelost, wacht u enkele minuten en voert u de query's opnieuw uit. Als DNS-query's werken zoals verwacht, voert u ' Y ' in wanneer u wordt gevraagd om het virtuele netwerk te verwijderen uit de privé-DNS-zone.
 
-![Controleer of de naamomzetting](./media/private-dns-migration-guide/confirmresolution-migration-script.png)
+![Naam omzetting bevestigen](./media/private-dns-migration-guide/confirmresolution-migration-script.png)
 
 >[!IMPORTANT]
->Als de oplossing op basis van de gemigreerde zones niet vanwege een bepaalde reden DNS werkt zoals verwacht, voert u n in hierboven genoemde stap en het script wordt de DNS-omzetting gaat u terug naar de oude zones. Maak een ondersteuningsticket en we u kunnen helpen bij de migratie van uw DNS-zones.
+>Als de DNS-omzetting voor de gemigreerde zones niet werkt zoals verwacht, voert u ' N ' in de bovenstaande stap en het script in, wordt de DNS-omzetting terug naar verouderde zones. Maak een ondersteunings ticket en wij kunnen u helpen bij de migratie van uw DNS-zones.
 
 ## <a name="cleanup"></a>Opschonen
 
-Deze stap verwijdert u de oude DNS-zones en moet worden uitgevoerd nadat u hebt gecontroleerd of DNS-omzetting werkt zoals verwacht. U wordt gevraagd elke privé-DNS-zone verwijderen. Voer 'Y' om een opdrachtprompt nadat u hebt gecontroleerd of DNS-omzetting voor deze zones correct werkt.
+Met deze stap worden de verouderde DNS-zones verwijderd en moeten deze pas worden uitgevoerd nadat u hebt gecontroleerd of de DNS-omzetting naar verwachting werkt. U wordt gevraagd elke privé-DNS-zone te verwijderen. Voer bij elke prompt ' Y ' in nadat u hebt gecontroleerd of de DNS-omzetting voor die zones goed werkt.
 
 ![Opruimen](./media/private-dns-migration-guide/cleanup-migration-script.png)
 
-## <a name="update-your-automation"></a>Bijwerken van uw automation
+## <a name="update-your-automation"></a>Uw automatisering bijwerken
 
-Als u van automatisering gebruikmaakt, zoals sjablonen, PowerShell-scripts of aangepaste code die is ontwikkeld met behulp van SDK, moet u uw automation voor het gebruik van de nieuwe resourcemodel voor het privé-DNS-zones bijwerken. Hieronder vindt u de koppeling naar nieuwe persoonlijke DNS CLI/PS/SDK-documentatie.
-* [Azure DNS private zones REST-API](https://docs.microsoft.com/rest/api/dns/privatedns/privatezones)
-* [Azure DNS private zones CLI](https://docs.microsoft.com/cli/azure/ext/privatedns/network/private-dns?view=azure-cli-latest)
-* [Azure DNS private zones PowerShell](https://docs.microsoft.com/powershell/module/az.privatedns/?view=azps-2.3.2)
-* [Azure DNS private zones SDK](https://docs.microsoft.com/dotnet/api/overview/azure/privatedns/management?view=azure-dotnet-preview)
+Als u Automation gebruikt, inclusief sjablonen, Power shell-scripts of aangepaste code die is ontwikkeld met behulp van SDK, moet u uw automatisering bijwerken om het nieuwe resource model voor de privé-DNS-zones te gebruiken. Hieronder vindt u de koppelingen naar nieuwe persoonlijke DNS CLI/PS/SDK-documentatie.
+* [Azure DNS particuliere zones REST API](https://docs.microsoft.com/rest/api/dns/privatedns/privatezones)
+* [Azure DNS CLI voor persoonlijke zones](https://docs.microsoft.com/cli/azure/ext/privatedns/network/private-dns?view=azure-cli-latest)
+* [Azure DNS persoonlijke zones Power shell](https://docs.microsoft.com/powershell/module/az.privatedns/?view=azps-2.3.2)
+* [Azure DNS-SDK voor particuliere zones](https://docs.microsoft.com/dotnet/api/overview/azure/privatedns/management?view=azure-dotnet-preview)
 
-## <a name="need-further-help"></a>Meer hulp nodig hebt
+## <a name="need-further-help"></a>Meer hulp nodig
 
-Maak een ondersteuningsticket als u meer hulp nodig met het migratieproces of vanwege een of andere reden de hierboven vermelde stappen niet voor u werken. Neem het transcript-bestand gegenereerd door de PowerShell-script met uw ondersteuningsticket.
+Maak een ondersteunings ticket als u meer hulp nodig hebt bij het migratie proces of om welke reden dan ook de hierboven vermelde stappen niet voor u werken. Neem het transcript bestand op dat door het Power shell-script wordt gegenereerd met uw ondersteunings ticket.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over het maken van een privé-zone in Azure DNS met behulp [Azure PowerShell](./private-dns-getstarted-powershell.md) of [Azure CLI](./private-dns-getstarted-cli.md).
+* Meer informatie over het maken van een privé zone in Azure DNS met behulp van [Azure PowerShell](./private-dns-getstarted-powershell.md) of [Azure cli](./private-dns-getstarted-cli.md).
 
-* Meer informatie over sommige algemene [privézone-scenario's](./private-dns-scenarios.md) die u kunt realiseren met privézones in Azure DNS.
+* Meer informatie over enkele veelvoorkomende [scenario's voor particuliere zones](./private-dns-scenarios.md) die kunnen worden gerealiseerd met persoonlijke zones in azure DNS.
 
-* Voor algemene vragen en antwoorden over privézones in Azure DNS, met inbegrip van specifiek gedrag kunt u verwachten voor bepaalde soorten bewerkingen, Zie [Veelgestelde vragen over privé-DNS](./dns-faq-private.md).
+* Voor veelgestelde vragen en antwoorden over persoonlijke zones in Azure DNS, met inbegrip van specifieke gedrag dat u kunt verwachten voor bepaalde soorten bewerkingen, raadpleegt u [privé-DNS Veelgestelde vragen](./dns-faq-private.md).
 
-* Meer informatie over DNS-zones en records, recentst [DNS-zones en records overzicht](dns-zones-records.md).
+* Ga voor meer informatie over DNS-zones en-records naar [overzicht van DNS-zones en-records](dns-zones-records.md).
 
 * Informatie over enkele van de andere belangrijke [netwerkmogelijkheden](../networking/networking-overview.md) van Azure.

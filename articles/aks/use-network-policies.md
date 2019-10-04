@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/06/2019
 ms.author: mlearned
-ms.openlocfilehash: 1339fe66a4925104d459c0491caccdd7db5998a7
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: 63678ad7260210d86daf035bfec9bb467a526042
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70114464"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71950308"
 ---
 # <a name="secure-traffic-between-pods-using-network-policies-in-azure-kubernetes-service-aks"></a>Verkeer beveiligen tussen een Peul netwerk beleid dat wordt gebruikt in azure Kubernetes service (AKS)
 
@@ -46,24 +46,19 @@ Deze regels voor netwerk beleid worden gedefinieerd als YAML-manifesten. Netwerk
 Azure biedt twee manieren om netwerk beleid te implementeren. U kiest een optie voor netwerk beleid wanneer u een AKS-cluster maakt. De beleids optie kan niet worden gewijzigd nadat het cluster is gemaakt:
 
 * De eigen implementatie van Azure, het *Azure-netwerk beleid*genoemd.
-* *Calico network policies*, een open-source netwerk-en netwerk beveiligings oplossing [][tigera]die is gegrondvest door tigera.
+* *Calico network policies*, een open-source netwerk-en netwerk beveiligings oplossing die is gegrondvest door [tigera][tigera].
 
 Beide implementaties gebruiken Linux *iptables* om het opgegeven beleid af te dwingen. Beleids regels worden omgezet in sets toegestane en niet-toegestane IP-paren. Deze paren worden vervolgens geprogrammeerd als IPTable-filter regels.
-
-Netwerk beleid werkt alleen met de optie Azure CNI (Geavanceerd). Implementatie wijkt af van de twee opties:
-
-* *Azure-netwerk beleid* : de Azure-cni stelt een brug in op de VM-host voor intra-node netwerken. De filter regels worden toegepast wanneer de pakketten de Bridge passeren.
-* *Calico-netwerk beleid* : de Azure-cni stelt lokale kernel-routes in voor het verkeer binnen het knoop punt. Het beleid wordt toegepast op de netwerk interface van de pod.
 
 ### <a name="differences-between-azure-and-calico-policies-and-their-capabilities"></a>Verschillen tussen Azure-en Calico-beleid en hun mogelijkheden
 
 | Mogelijkheid                               | Azure                      | Calico                      |
 |------------------------------------------|----------------------------|-----------------------------|
 | Ondersteunde platforms                      | Linux                      | Linux                       |
-| Ondersteunde netwerk opties             | Azure-CNI                  | Azure-CNI                   |
+| Ondersteunde netwerk opties             | Azure-CNI                  | Azure CNI en kubenet       |
 | Compatibiliteit met Kubernetes-specificatie | Alle beleids typen die worden ondersteund |  Alle beleids typen die worden ondersteund |
-| Aanvullende functies                      | Geen                       | Uitgebreide beleids model dat bestaat uit globaal netwerk beleid, een globaal netwerk en een host-eind punt. Zie [calicoctl User Reference][calicoctl](Engelstalig `calicoctl` ) voor meer informatie over het gebruik van de CLI voor het beheren van deze uitgebreide functies. |
-| Ondersteuning                                  | Ondersteund door ondersteunings-en technisch team van Azure | Ondersteuning voor Calico-community. Zie voor meer informatie over aanvullende betaalde ondersteuning [project Calico][calico-support]-ondersteunings opties. |
+| Aanvullende functies                      | Geen                       | Uitgebreide beleids model dat bestaat uit globaal netwerk beleid, een globaal netwerk en een host-eind punt. Zie [calicoctl User Reference][calicoctl](Engelstalig) voor meer informatie over het gebruik van de `calicoctl` CLI voor het beheren van deze uitgebreide functies. |
+| Ondersteuning                                  | Ondersteund door ondersteunings-en technisch team van Azure | Ondersteuning voor Calico-community. Zie voor meer informatie over aanvullende betaalde ondersteuning [project Calico-ondersteunings opties][calico-support]. |
 | Logboekregistratie                                  | Regels die zijn toegevoegd aan of verwijderd uit IPTables worden geregistreerd op elke host onder */var/log/Azure-NPM.log* | Zie [Calico-onderdeel Logboeken][calico-logs] voor meer informatie. |
 
 ## <a name="create-an-aks-cluster-and-enable-network-policy"></a>Een AKS-cluster maken en netwerk beleid inschakelen
@@ -76,7 +71,7 @@ Voor een overzicht van het netwerk beleid in actie, gaan we maken en vervolgens 
 
 Eerst gaan we een AKS-cluster maken dat netwerk beleid ondersteunt. De functie netwerk beleid kan alleen worden ingeschakeld wanneer het cluster is gemaakt. U kunt netwerk beleid niet inschakelen op een bestaand AKS-cluster.
 
-Als u netwerk beleid wilt gebruiken met een AKS-cluster, moet u de [Azure cni-invoeg toepassing][azure-cni] gebruiken en uw eigen virtuele netwerk en subnetten definiëren. Zie [geavanceerde netwerken configureren][use-advanced-networking]voor meer gedetailleerde informatie over het plannen van de vereiste subnet bereiken.
+Als u Azure-netwerk beleid wilt gebruiken, moet u de [Azure cni-invoeg toepassing][azure-cni] gebruiken en uw eigen virtuele netwerken en subnetten definiëren. Zie [geavanceerde netwerken configureren][use-advanced-networking]voor meer gedetailleerde informatie over het plannen van de vereiste subnet bereiken. Calico-netwerk beleid kan worden gebruikt met dezelfde Azure CNI-invoeg toepassing of met de Kubenet CNI-invoeg toepassing.
 
 Het volgende voorbeeld script:
 
@@ -84,7 +79,7 @@ Het volgende voorbeeld script:
 * Hiermee maakt u een service-principal voor Azure Active Directory (Azure AD) voor gebruik met het AKS-cluster.
 * Hiermee wijst u *Inzender* machtigingen toe voor de AKS-Cluster service-principal in het virtuele netwerk.
 * Hiermee maakt u een AKS-cluster in het gedefinieerde virtuele netwerk en schakelt u netwerk beleid in.
-    * De optie *Azure* -netwerk beleid wordt gebruikt. Als u in plaats daarvan Calico wilt gebruiken als de optie netwerk `--network-policy calico` beleid, gebruikt u de para meter.
+    * De optie *Azure* -netwerk beleid wordt gebruikt. Als u in plaats daarvan Calico wilt gebruiken als de optie voor netwerk beleid, gebruikt u de para meter `--network-policy calico`. Opmerking: Calico kan worden gebruikt met een `--network-plugin azure` of `--network-plugin kubenet`.
 
 Geef uw eigen beveiligde *SP_PASSWORD*op. U kunt de variabelen *RESOURCE_GROUP_NAME* en *CLUSTER_NAME* vervangen:
 
@@ -139,7 +134,7 @@ az aks create \
     --network-policy azure
 ```
 
-Het duurt een paar minuten om het cluster te maken. Wanneer het cluster gereed is, configureert `kubectl` u om verbinding te maken met uw Kubernetes-cluster met behulp van de opdracht [AZ AKS Get-credentials][az-aks-get-credentials] . Met deze opdracht worden referenties gedownload en wordt de Kubernetes CLI geconfigureerd voor het gebruik ervan:
+Het duurt een paar minuten om het cluster te maken. Wanneer het cluster gereed is, configureert u `kubectl` om verbinding te maken met uw Kubernetes-cluster met behulp van de opdracht [AZ AKS Get-credentials][az-aks-get-credentials] . Met deze opdracht worden referenties gedownload en wordt de Kubernetes CLI geconfigureerd voor het gebruik ervan:
 
 ```azurecli-interactive
 az aks get-credentials --resource-group $RESOURCE_GROUP_NAME --name $CLUSTER_NAME
@@ -168,7 +163,7 @@ Maak een andere pod en koppel een terminal sessie om te testen of u de standaard
 kubectl run --rm -it --image=alpine network-policy --namespace development --generator=run-pod/v1
 ```
 
-Gebruik `wget` bij de shell-prompt om te bevestigen dat u toegang hebt tot de standaard NGINX-webpagina:
+Gebruik in de shell-prompt `wget` om te bevestigen dat u toegang hebt tot de standaard NGINX-webpagina:
 
 ```console
 wget -qO- http://backend
@@ -192,7 +187,7 @@ exit
 
 ### <a name="create-and-apply-a-network-policy"></a>Een netwerk beleid maken en Toep assen
 
-Nu u hebt bevestigd, kunt u de NGINX-webpagina van het voor beeld van de back-end pod gebruiken, een netwerk beleid maken om al het verkeer te weigeren. Maak een bestand met `backend-policy.yaml` de naam en plak het volgende YAML-manifest. Dit manifest maakt gebruik van een *podSelector* om het beleid te koppelen aan een Peul met de *app: webapp, Role: back-end* label, zoals uw voor beeld-NGINX pod. Er worden geen regels gedefinieerdbij inkomend verkeer, waardoor al het binnenkomende pod wordt geweigerd:
+Nu u hebt bevestigd, kunt u de NGINX-webpagina van het voor beeld van de back-end pod gebruiken, een netwerk beleid maken om al het verkeer te weigeren. Maak een bestand met de naam `backend-policy.yaml` en plak het volgende YAML-manifest. Dit manifest maakt gebruik van een *podSelector* om het beleid te koppelen aan een Peul met de *app: webapp, Role: back-end* label, zoals uw voor beeld-NGINX pod. Er worden geen regels gedefinieerd bij inkomend *verkeer, waardoor*al het binnenkomende pod wordt geweigerd:
 
 ```yaml
 kind: NetworkPolicy
@@ -223,7 +218,7 @@ Laten we eens kijken of u de NGINX-webpagina op de back-end-pod opnieuw kunt geb
 kubectl run --rm -it --image=alpine network-policy --namespace development --generator=run-pod/v1
 ```
 
-In de shell-prompt kunt `wget` u gebruiken om te zien of u toegang hebt tot de standaard NGINX-webpagina. Stel deze keer een time-outwaarde in op *2* seconden. Het netwerk beleid blokkeert nu al het inkomende verkeer, zodat de pagina niet kan worden geladen, zoals wordt weer gegeven in het volgende voor beeld:
+Gebruik in de shell-prompt `wget` om te controleren of u toegang hebt tot de standaard NGINX-webpagina. Stel deze keer een time-outwaarde in op *2* seconden. Het netwerk beleid blokkeert nu al het inkomende verkeer, zodat de pagina niet kan worden geladen, zoals wordt weer gegeven in het volgende voor beeld:
 
 ```console
 $ wget -qO- --timeout=2 http://backend
@@ -278,7 +273,7 @@ Een pod plannen die als *app = webapp, Role = frontend* wordt aangeduid en een t
 kubectl run --rm -it frontend --image=alpine --labels app=webapp,role=frontend --namespace development --generator=run-pod/v1
 ```
 
-In de shell-prompt kunt `wget` u gebruiken om te controleren of u toegang hebt tot de standaard NGINX-webpagina:
+Gebruik in de shell-prompt `wget` om te controleren of u toegang hebt tot de standaard NGINX-webpagina:
 
 ```console
 wget -qO- http://backend
@@ -308,7 +303,7 @@ Het netwerk beleid staat verkeer toe van een Peul gelabelde *app: webapp, Role:*
 kubectl run --rm -it --image=alpine network-policy --namespace development --generator=run-pod/v1
 ```
 
-In de shell-prompt kunt `wget` u gebruiken om te zien of u toegang hebt tot de standaard NGINX-webpagina. Het netwerk beleid blokkeert het inkomende verkeer, zodat de pagina niet kan worden geladen, zoals wordt weer gegeven in het volgende voor beeld:
+Gebruik in de shell-prompt `wget` om te controleren of u toegang hebt tot de standaard NGINX-webpagina. Het netwerk beleid blokkeert het inkomende verkeer, zodat de pagina niet kan worden geladen, zoals wordt weer gegeven in het volgende voor beeld:
 
 ```console
 $ wget -qO- --timeout=2 http://backend
@@ -324,7 +319,7 @@ exit
 
 ## <a name="allow-traffic-only-from-within-a-defined-namespace"></a>Alleen verkeer van binnen een gedefinieerde naam ruimte toestaan
 
-In de vorige voor beelden hebt u een netwerk beleid gemaakt dat al het verkeer heeft geweigerd en vervolgens het beleid bijgewerkt zodat verkeer van Peul met een specifiek label wordt toegestaan. Een andere gang bare behoefte is om alleen verkeer binnen een bepaalde naam ruimte te beperken. Als de voor gaande voor beelden zijn voor verkeer in een ontwikkelings naam ruimte, moet u een netwerk beleid maken waarmee wordt voor komen dat verkeer van een andere naam ruimte, zoals *productie*, het gehele verschil bereikt.
+In de vorige voor beelden hebt u een netwerk beleid gemaakt dat al het verkeer heeft geweigerd en vervolgens het beleid bijgewerkt zodat verkeer van Peul met een specifiek label wordt toegestaan. Een andere gang bare behoefte is om alleen verkeer binnen een bepaalde naam ruimte te beperken. Als de voor gaande voor beelden zijn voor verkeer in een *ontwikkelings* naam ruimte, moet u een netwerk beleid maken waarmee wordt voor komen dat verkeer van een andere naam ruimte, zoals *productie*, het gehele verschil bereikt.
 
 Maak eerst een nieuwe naam ruimte voor het simuleren van een productie naam ruimte:
 
@@ -339,7 +334,7 @@ Een test pod plannen in de *productie* naam ruimte die is gelabeld als *app = we
 kubectl run --rm -it frontend --image=alpine --labels app=webapp,role=frontend --namespace production --generator=run-pod/v1
 ```
 
-Gebruik `wget` bij de shell-prompt om te bevestigen dat u toegang hebt tot de standaard NGINX-webpagina:
+Gebruik in de shell-prompt `wget` om te bevestigen dat u toegang hebt tot de standaard NGINX-webpagina:
 
 ```console
 wget -qO- http://backend.development
@@ -403,7 +398,7 @@ Een andere pod plannen in de *productie* naam ruimte en een terminal sessie kopp
 kubectl run --rm -it frontend --image=alpine --labels app=webapp,role=frontend --namespace production --generator=run-pod/v1
 ```
 
-Gebruik `wget` bij de shell-prompt om te zien dat het netwerk beleid nu verkeer weigert:
+Gebruik in de shell-prompt `wget` om te zien dat het netwerk beleid nu verkeer weigert:
 
 ```console
 $ wget -qO- --timeout=2 http://backend.development
@@ -423,7 +418,7 @@ Wanneer het verkeer is geweigerd vanuit de *productie* naam ruimte, moet u een t
 kubectl run --rm -it frontend --image=alpine --labels app=webapp,role=frontend --namespace development --generator=run-pod/v1
 ```
 
-Gebruik `wget` bij de shell-prompt om te zien dat het netwerk beleid het verkeer toestaat:
+Gebruik in de shell-prompt `wget` om te zien dat het netwerk beleid het verkeer toestaat:
 
 ```console
 wget -qO- http://backend
@@ -468,9 +463,9 @@ Zie [Kubernetes network policies][kubernetes-network-policies](Engelstalig) voor
 [policy-rules]: https://kubernetes.io/docs/concepts/services-networking/network-policies/#behavior-of-to-and-from-selectors
 [aks-github]: https://github.com/azure/aks/issues
 [tigera]: https://www.tigera.io/
-[calicoctl]: https://docs.projectcalico.org/v3.6/reference/calicoctl/
+[calicoctl]: https://docs.projectcalico.org/v3.9/reference/calicoctl/
 [calico-support]: https://www.projectcalico.org/support
-[calico-logs]: https://docs.projectcalico.org/v3.6/maintenance/component-logs
+[calico-logs]: https://docs.projectcalico.org/v3.9/maintenance/component-logs
 [calico-aks-cleanup]: https://github.com/Azure/aks-engine/blob/master/docs/topics/calico-3.3.1-cleanup-after-upgrade.yaml
 
 <!-- LINKS - internal -->

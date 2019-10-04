@@ -10,12 +10,12 @@ ms.subservice: development
 ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: 7adf43110cffdc669b39632521c69ed5d3723257
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
-ms.translationtype: HT
+ms.openlocfilehash: ca0ac228bfe10992b658796d123c8dfbed74947f
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71845708"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71948167"
 ---
 # <a name="performance-tuning-with-ordered-clustered-columnstore-index"></a>Prestaties afstemmen met een geordende geclusterde column store-index  
 
@@ -44,6 +44,43 @@ ORDER BY o.name, pnp.distribution_id, cls.min_data_id
 
 > [!NOTE] 
 > In een geordende CCI-tabel worden nieuwe gegevens die voortkomen uit DML of het laden van gegevens, niet automatisch gesorteerd.  Gebruikers kunnen het bestelde CCI opnieuw bouwen om alle gegevens in de tabel te sorteren.  
+
+## <a name="query-performance"></a>Queryprestaties
+
+De prestaties van een query van een bewerkte CCI zijn afhankelijk van de query patronen, de grootte van de gegevens, hoe goed de gegevens worden gesorteerd, de fysieke structuur van segmenten en de DWU en de resource klasse die zijn gekozen voor de uitvoering van de query.  Gebruikers moeten al deze factoren bekijken voordat ze de volg orde van de kolommen kiezen bij het ontwerpen van een bewerkte CCI-tabel.
+
+Query's met al deze patronen worden doorgaans sneller uitgevoerd met het bewerkte CCI.  
+1. De query's hebben gelijkheid, ongelijkheid of bereik predikaten
+1. De kolommen voor het predicaat en de bestelde CCI-kolommen zijn hetzelfde.  
+1. De predikaten worden gebruikt in dezelfde volg orde als het kolom rangtelwoord van de geordende CCI-kolommen.  
+ 
+In dit voor beeld heeft Table T1 een geclusterde column store-index die is geordend in de volg orde van Col_C, Col_B en Col_A.
+
+```sql
+
+CREATE CLUSTERED COLUMNSTORE INDEX MyOrderedCCI ON  T1
+ORDER (Col_C, Col_B, Col_A)
+
+```
+
+De prestaties van query 1 kunnen meer profiteren van besteld CCI dan de andere drie query's. 
+
+```sql
+-- Query #1: 
+
+SELECT * FROM T1 WHERE Col_C = 'c' AND Col_B = 'b' AND Col_A = 'a';
+
+-- Query #2
+
+SELECT * FROM T1 WHERE Col_B = 'b' AND Col_C = 'c' AND Col_A = 'a';
+
+-- Query #3
+SELECT * FROM T1 WHERE Col_B = 'b' AND Col_A = 'a';
+
+-- Query #4
+SELECT * FROM T1 WHERE Col_A = 'a' AND Col_C = 'c';
+
+```
 
 ## <a name="data-loading-performance"></a>Prestaties van het laden van gegevens
 
@@ -85,7 +122,7 @@ Het maken van een bestelde CCI is een offline bewerking.  Voor tabellen zonder p
 
 ## <a name="examples"></a>Voorbeelden
 
-**ÉÉN. Controleren op geordende kolommen en rang telwoord voor bestellingen:**
+**A. Controleren op geordende kolommen en rang telwoord voor bestellingen:**
 ```sql
 SELECT object_name(c.object_id) table_name, c.name column_name, i.column_store_order_ordinal 
 FROM sys.index_columns i 

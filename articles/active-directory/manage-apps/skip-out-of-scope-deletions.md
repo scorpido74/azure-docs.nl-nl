@@ -1,6 +1,6 @@
 ---
 title: Verwijdering van gebruikers buiten het bereik overs Laan | Microsoft Docs
-description: Meer informatie over het negeren van het standaard gedrag van het verwijderen van gebruikers buiten het bereik.
+description: Meer informatie over het negeren van het standaard gedrag van het ongedaan maken van de inrichting van de gebruikers van het bereik.
 services: active-directory
 author: cmmdesai
 documentationcenter: na
@@ -12,19 +12,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/09/2019
+ms.date: 10/03/2019
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a753d8cce3f3b610abab2f78d54d76a05d8bc5cb
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 3b4a8005cf308d5cfce02976e3b2eff39d5fe8c0
+ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70815977"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71958633"
 ---
 # <a name="skip-deletion-of-user-accounts-that-go-out-of-scope"></a>Verwijdering van gebruikers accounts die buiten het bereik vallen, overs Laan
 
-De Azure AD-inrichtings engine verwijdert standaard gebruikers die buiten het bereik vallen. Voor bepaalde scenario's zoals workday naar inkomend gebruik van AD-gebruikers is dit gedrag echter mogelijk niet de verwachte en wilt u dit standaard gedrag overschrijven.  
+De Azure AD Provisioning-engine laadt standaard gebruikers die buiten het bereik vallen, of schakelt deze uit. Voor bepaalde scenario's zoals workday naar inkomend gebruik van AD-gebruikers is dit gedrag echter mogelijk niet de verwachte en wilt u dit standaard gedrag overschrijven.  
 
 In deze hand leiding wordt beschreven hoe u de Microsoft Graph-API en de Microsoft Graph API Explorer kunt gebruiken om de vlag ***SkipOutOfScopeDeletions*** in te stellen waarmee de verwerking van accounts die buiten het bereik vallen worden beheerd. 
 * Als ***SkipOutOfScopeDeletions*** is ingesteld op 0 (false), worden de accounts die zich buiten het bereik bevinden, uitgeschakeld in het doel
@@ -53,7 +53,7 @@ Omdat deze configuratie veel wordt gebruikt met de *werkdag om de app voor het i
 Voer in de Microsoft Graph Explorer de volgende GET-query Vervang [servicePrincipalId] uit met de **servicePrincipalId** geëxtraheerd uit [stap 1](#step-1-retrieve-your-provisioning-app-service-principal-id-object-id).
 
 ```http
-   GET https://graph.microsoft.com/beta/servicePrincipals/[servicePrincipalId]/synchronization/jobs
+   GET https://graph.microsoft.com/beta/servicePrincipals/[servicePrincipalId]/synchronization/secrets
 ```
 
    ![Taak query ophalen](./media/skip-out-of-scope-deletions/skip-03.png)

@@ -6,14 +6,14 @@ manager: nitinme
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 07/01/2019
+ms.date: 10/03/2019
 ms.author: heidist
-ms.openlocfilehash: fd65bb134d9057246a1b8c5cc2986e979713d20b
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: 2d3b74476def5bdf46a6292996f0af9162b20b43
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71327168"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71947783"
 ---
 # <a name="service-limits-in-azure-search"></a>Service limieten in Azure Search
 De maximum limieten voor opslag, werk belastingen en hoeveel heden indexen, documenten en andere objecten zijn afhankelijk van het feit of uAzure Search hebt [ingericht](search-create-service-portal.md) , **basis**, **standaard**of voor **opslag geoptimaliseerde** prijs categorieën.
@@ -84,7 +84,7 @@ Voor services die aan de document limieten voldoen, gelden de volgende maximum l
 
 |  Free | Basic | S1 | S2 | S3 | S3&nbsp;HD |
 |-------|-------|----|----|----|-------|
-|  10.000 |1&nbsp;miljoen |15 miljoen per partitie of 180 miljoen per service |60 miljoen per partitie of 720 miljoen per service |120 miljoen per partitie of 1,4 miljard per service |1 miljoen per index of 200 miljoen per partitie |
+|  10.000 |1 @ no__t-0million |15 miljoen per partitie of 180 miljoen per service |60 miljoen per partitie of 720 miljoen per service |120 miljoen per partitie of 1,4 miljard per service |1 miljoen per index of 200 miljoen per partitie |
 
 Als uw service limieten heeft die u blokkeert, maakt u een nieuwe service en publiceert u vervolgens alle inhoud opnieuw naar die service. Er is geen mechanisme voor het naadloos opnieuw inrichten van uw service op nieuwe hardware achter de schermen.
 
@@ -105,7 +105,7 @@ Als u de document grootte wilt behouden, moet u niet-bevraagde gegevens uit de a
 Er zijn maximale uitvoerings tijden beschikbaar om het saldo en de stabiliteit van de service als geheel te bieden, maar grotere gegevens sets hebben mogelijk meer indexerings tijd nodig dan het maximum aantal toestaat. Als een indexerings taak niet kan worden voltooid binnen de toegestane maximum tijd, voert u deze uit volgens een schema. De scheduler houdt de indexerings status bij. Als een geplande indexerings taak om welke reden dan ook wordt onderbroken, kan de Indexeer functie ophalen waar deze voor het laatst bij de volgende geplande uitvoering was gebleven.
 
 
-| Resource | Gratis&nbsp;<sup>1</sup> | Basic&nbsp;<sup>2</sup>| S1 | S2 | S3 | S3&nbsp;HD&nbsp;<sup>3</sup>|L1 |L2 |
+| Resource | Gratis @ no__t-0<sup>1</sup> | Basic&nbsp;<sup>2</sup>| S1 | S2 | S3 | S3&nbsp;HD&nbsp;<sup>3</sup>|L1 |L2 |
 | -------- | ----------------- | ----------------- | --- | --- | --- | --- | --- | --- |
 | Maximale aantal indexeerfuncties |3 |5 of 15|50 |200 |200 |N/A |10 |10 |
 | Maximale aantal gegevensbronnen |3 |5 of 15 |50 |200 |200 |N/A |10 |10 |
@@ -115,7 +115,7 @@ Er zijn maximale uitvoerings tijden beschikbaar om het saldo en de stabiliteit v
 | Maximale uitvoerings tijd <sup>5</sup> | 1-3 minuten |24 uur |24 uur |24 uur |24 uur |N/A  |24 uur |24 uur |
 | Maximale uitvoerings tijd voor cognitieve Zoek vaardig heden of BLOB-indexering met afbeeldings analyse <sup>5</sup> | 3-10 minuten |2 uur |2 uur |2 uur |2 uur |N/A  |2 uur |2 uur |
 | BLOB-Indexer: maximale grootte van BLOB, MB |16 |16 |128 |256 |256 |N/A  |256 |256 |
-| BLOB-Indexeer functie: maximum aantal tekens inhoud geëxtraheerd uit een BLOB |32,000 |64,000 |4&nbsp;miljoen |4&nbsp;miljoen |4&nbsp;miljoen |N/A |4&nbsp;miljoen |4&nbsp;miljoen |
+| BLOB-Indexeer functie: maximum aantal tekens inhoud geëxtraheerd uit een BLOB |32,000 |64,000 |4 @ no__t-0million |4 @ no__t-0million |4 @ no__t-0million |N/A |4 @ no__t-0million |4 @ no__t-0million |
 
 <sup>1</sup> gratis services hebben de maximale uitvoerings tijd van de Indexeer functie van 3 minuten voor BLOB-bronnen en 1 minuut voor alle andere gegevens bronnen. Voor AI-indexering die in Cognitive Services aanroept, zijn gratis services beperkt tot 20 gratis trans acties per dag, waarbij een trans actie wordt gedefinieerd als een document dat door de verrijkings pijplijn is door gegeven.
 
@@ -146,7 +146,19 @@ Voor de lagen geoptimaliseerd voor opslag moet u een lagere query door Voer en e
 
 ## <a name="data-limits-cognitive-search"></a>Gegevens limieten (cognitieve zoek opdracht)
 
-Een [cognitieve Zoek pijplijn](cognitive-search-concept-intro.md) die aanroepen naar een Text Analytics resource voor [entiteit herkenning](cognitive-search-skill-entity-recognition.md), [extractie van sleutel zinnen](cognitive-search-skill-keyphrases.md), [sentiment analyse](cognitive-search-skill-sentiment.md)en [taal detectie](cognitive-search-skill-language-detection.md) onderhevig is aan gegevens limieten. De maximale grootte van een record moet 50.000 tekens zijn, zoals gemeten [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length)door. Als u uw gegevens wilt opsplitsen voordat u deze naar de sentiment Analyzer verzendt, gebruikt u de functie [tekst splitsen](cognitive-search-skill-textsplit.md).
+Een [cognitieve Zoek pijplijn](cognitive-search-concept-intro.md) die aanroepen naar een Text Analytics resource voor [entiteit herkenning](cognitive-search-skill-entity-recognition.md), [extractie van sleutel zinnen](cognitive-search-skill-keyphrases.md), [sentiment analyse](cognitive-search-skill-sentiment.md)en [taal detectie](cognitive-search-skill-language-detection.md) onderhevig is aan gegevens limieten. De maximale grootte van een record moet 50.000 tekens zijn, gemeten door [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length). Als u uw gegevens wilt opsplitsen voordat u deze naar de sentiment Analyzer verzendt, gebruikt u de functie [tekst splitsen](cognitive-search-skill-textsplit.md).
+
+## <a name="throttling-limits"></a>Beperkings limieten
+
+Zoek query's en indexerings aanvragen worden beperkt naarmate het systeem de piek capaciteit benadert. Bandbreedte beperking werkt anders voor verschillende Api's. Query-Api's (zoeken/suggesties/automatisch volt ooien) en het indexeren van Api's worden dynamisch beperkt op basis van de belasting van de service. Index-Api's hebben limieten voor statisch aantal aanvragen. 
+
+Limieten voor statische frequentie aanvragen voor bewerkingen met betrekking tot een index:
+
++ Lijst indexen (GET/Indexes): 5 per seconde per Zoek eenheid
++ Index ophalen (GET/Indexes/MyIndex): 10 per seconde per Zoek eenheid
++ Index maken (POST/Indexes): 12 per minuut per Zoek eenheid
++ Index maken of bijwerken (PUT/Indexes/MyIndex): 6 per seconde per Zoek eenheid
++ Index verwijderen (/Indexes/MyIndex verwijderen): 12 per minuut per Zoek eenheid 
 
 ## <a name="api-request-limits"></a>API-aanvraag limieten
 * Maxi maal 16 MB per aanvraag <sup>1</sup>

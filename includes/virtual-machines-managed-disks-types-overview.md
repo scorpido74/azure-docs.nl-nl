@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/15/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 87e130d3a4569971bffb9b1ac2e189babb900225
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 3dfc3c309fe3583ddd4307cbfe4e55bf6522ffc3
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70997598"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71955858"
 ---
 # <a name="what-disk-types-are-available-in-azure"></a>Welke schijf typen zijn beschikbaar in azure?
 
@@ -27,7 +27,7 @@ De volgende tabel bevat een vergelijking van ultra schijven, Premium-schijven (S
 |---------|---------|---------|---------|---------|
 |Schijftype   |SSD   |SSD   |SSD   |HDD   |
 |Scenario   |I/o-intensieve workloads, zoals SAP HANA, data bases in de bovenste laag (bijvoorbeeld SQL, Oracle) en andere trans acties met een zware werk belasting.   |Productie- en prestatiegevoelige workloads   |Webservers, lichte gebruikte zakelijke toepassingen en dev/test   |Back-ups, niet-kritiek, niet-regel matige toegang   |
-|Schijfgrootte   |65.536 gibibyte (GiB)    |32,767 GiB    |32,767 GiB   |32,767 GiB   |
+|Maximale schijf grootte   |65.536 gibibyte (GiB)    |32,767 GiB    |32,767 GiB   |32,767 GiB   |
 |Maximale door Voer   |2\.000-MiB/s    |900-MiB/s   |750 MiB/s   |500-MiB/s   |
 |Max. IOP's   |160.000    |20,000   |6,000   |2,000   |
 

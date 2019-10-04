@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 09/22/2018
 ms.author: pabutler
-ms.openlocfilehash: 3010b63c7c4c575d915789c19b60710194c79196
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 54369e0f2c943c146d186605833198253b960022
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67874671"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71949525"
 ---
 # <a name="iot-edge-modules"></a>IoT Edge-modules
 
@@ -82,9 +82,7 @@ De belangrijkste technische vereisten voor een IoT Edge module, zodat IT kan wor
 
 Als u dit nog niet hebt gedaan,
 
-- Registreer u in de [Microsoft Partner Network](https://partner.microsoft.com/membership).
-- Maak een [micro soft-account](https://account.microsoft.com/account/) (vereist voor aanbiedingen voor Azure Marketplace-trans acties, aanbevolen voor anderen).
-- Verzend het [inschrijvings formulier voor Marketplace](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/azureisv). Zie [een partner centrum-account maken](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) voor meer informatie.
+- [Registreer](https://azuremarketplace.microsoft.com/sell) u in de Marketplace.
 
 Als u bent geregistreerd en een nieuwe aanbieding maakt of aan een bestaand item werkt,
 

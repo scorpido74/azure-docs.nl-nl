@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 10/1/2019
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: b6ac528d0d2916f513be4e2a72bff061bdad8e58
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: 5506e4e4bb41725fd8791d3c6e47bb0b94584923
+ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71718652"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71959439"
 ---
 # <a name="tutorial-configure-https-on-an-azure-cdn-custom-domain"></a>Zelfstudie: HTTPS op een aangepast domein van Azure CDN configureren
 
@@ -190,7 +190,7 @@ Automatische validatie neemt doorgaans enkele uren in beslag. Als uw domein niet
 ### <a name="custom-domain-is-not-mapped-to-your-cdn-endpoint"></a>Er is geen aangepast domein toegewezen aan uw CDN-eindpunt
 
 >[!NOTE]
->Als u **Azure CDN van Akamai**gebruikt, moet de volgende CNAME worden ingesteld om geautomatiseerde domein validatie in te scha kelen. "_acme-Challenge. <custom domain hostname> -> CNAME-> <custom domain hostname>.ak-acme-challenge.azureedge.net '
+>Als u **Azure CDN van Akamai**gebruikt, moet de volgende CNAME worden ingesteld om geautomatiseerde domein validatie in te scha kelen. "_acme-Challenge. &lt;custom domein hostnaam @ no__t-1-> CNAME-> &lt;custom Domain hostname&gt;.ak-acme-challenge.azureedge.net"
 
 Als de CNAME-record vermelding het subdomein cdnverify bevat, volgt u de overige instructies in deze stap.
 

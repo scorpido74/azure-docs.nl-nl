@@ -50,7 +50,8 @@
     - name: Trending video's ophalen
       href: trending-videos.md
     - name: Bladeren door video 's
-      href: paging-videos.md
+      maintainContext: true
+      href: ../Bing-Web-Search/paging-search-results.md
     - name: Het formaat van miniaturen wijzigen en miniaturen bijsnijden
       maintainContext: true
       href: ../bing-web-search/resize-and-crop-thumbnails.md

@@ -1,17 +1,17 @@
 ---
 title: Overzicht van bedrijfs continuïteit met Azure Database for PostgreSQL-één server
-description: Overzicht van bedrijfs continuïteit met Azure Database for PostgreSQL.
+description: In dit artikel wordt een beschrijving gegeven van de bedrijfs continuïteit (herstel naar een bepaald tijdstip, de storing in het Data Center, geo-Restore) bij het gebruik van Azure Database for PostgreSQL.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: c346360c125d9316aed81ceeedbe265fd09465c1
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: 3623611bcd22486d90651c6e8b6880c6de1de0c5
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69907507"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71950102"
 ---
 # <a name="overview-of-business-continuity-with-azure-database-for-postgresql---single-server"></a>Overzicht van bedrijfs continuïteit met Azure Database for PostgreSQL-één server
 
@@ -45,7 +45,7 @@ Een optie is om te wachten tot de server weer online is wanneer de storing van h
 
 ## <a name="geo-restore"></a>Geo-herstel
 
-De functie voor geo-Restore herstelt de server met behulp van geo-redundante back-ups. De back-ups worden gehost in de gekoppelde [regio](../best-practices-availability-paired-regions.md)van uw server. U kunt terugzetten van deze back-ups naar een andere regio. Met geo-Restore wordt een nieuwe server gemaakt met de gegevens van de back-ups. Meer informatie over geo-Restore vindt u in het [artikel back-ups maken en herstellen](concepts-backup.md).
+De functie voor geo-Restore herstelt de server met behulp van geo-redundante back-ups. De back-ups worden gehost in de [gekoppelde regio](../best-practices-availability-paired-regions.md)van uw server. U kunt terugzetten van deze back-ups naar een andere regio. Met geo-Restore wordt een nieuwe server gemaakt met de gegevens van de back-ups. Meer informatie over geo-Restore vindt u in het [artikel back-ups maken en herstellen](concepts-backup.md).
 
 > [!IMPORTANT]
 > Geo-herstel is alleen mogelijk als u de server hebt ingericht met geografisch redundante back-upopslag. Als u wilt overschakelen van lokaal redundant naar geo-redundante back-ups voor een bestaande server, moet u een dump maken met behulp van pg_dump van uw bestaande server en deze herstellen op een nieuwe server die is geconfigureerd met geografisch redundante back-ups.

@@ -15,12 +15,12 @@ ms.custom: vs-azure
 ms.workload: azure-vs
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: b9ab36343dd11bdb5bd7cc1adcf2c8b1b971dab3
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: ee5354845efba0cce92ccf4f11eb3480684e7509
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300686"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71947902"
 ---
 # <a name="debug-your-service-fabric-application-by-using-visual-studio"></a>Fouten opsporen in uw Service Fabric-toepassing met behulp van Visual Studio
 > [!div class="op_single_selector"]
@@ -33,7 +33,7 @@ ms.locfileid: "71300686"
 U kunt tijd en geld besparen door uw Azure Service Fabric-toepassing te implementeren en op te sporen in een cluster voor lokale computer ontwikkeling. Visual Studio 2019 of 2015 kan de toepassing implementeren in het lokale cluster en de Debugger automatisch verbinden met alle exemplaren van uw toepassing. Visual Studio moet als beheerder worden uitgevoerd om verbinding te maken met het fout opsporingsprogramma.
 
 1. Start een lokaal ontwikkel cluster door de stappen in [uw service Fabric-ontwikkel omgeving](service-fabric-get-started.md)in te stellen.
-2. Druk op **F5** of klik op **fout** > **opsporing starten**.
+2. Druk op **F5** of klik op **fouten opsporen** > **fout opsporing starten**.
    
     ![Fout opsporing in een toepassing starten][startdebugging]
 3. Stel onderbrekings punten in uw code in en door loop de toepassing door te klikken op opdrachten in het menu **fout opsporing** .
@@ -76,14 +76,10 @@ Als uw Service Fabric toepassingen worden uitgevoerd op een Service Fabric clust
 
 > [!NOTE]
 > Voor de functie is [service Fabric SDK 2,0](https://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-VS2015) en [Azure sdk voor .net 2,9](https://azure.microsoft.com/downloads/)vereist.    
-> 
-> 
 
 <!-- -->
 > [!WARNING]
 > Externe fout opsporing is bedoeld voor ontwikkel-en test scenario's en niet voor gebruik in productie omgevingen, vanwege de invloed op de actieve toepassingen.
-> 
-> 
 
 1. Navigeer naar uw cluster in **Cloud Explorer**. Klik met de rechter muisknop en kies **fout opsporing inschakelen**
    
@@ -128,8 +124,6 @@ U kunt ook traceringen rechtstreeks vanuit een extern cluster knooppunt streamen
 > [!WARNING]
 > Streaming-traceringen zijn bedoeld voor ontwikkel-en test scenario's en kunnen niet worden gebruikt in productie omgevingen, vanwege de invloed op de actieve toepassingen.
 > In een productie scenario moet u vertrouwen op het door sturen van gebeurtenissen met behulp van Azure Diagnostics.
-> 
-> 
 
 1. Navigeer naar uw cluster in **Cloud Explorer**. Klik met de rechter muisknop en kies **streaming-traceringen inschakelen**
    

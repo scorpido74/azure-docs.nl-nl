@@ -15,24 +15,18 @@ ms.date: 05/21/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d4b48e035476e5381104b442f87dcac03ac11778
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: df8b03d513e2d78083031fbc9a3f6dbc1b7d15d9
+ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68499680"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71958569"
 ---
 # <a name="review-access-for-yourself-to-groups-or-applications-in-azure-ad-access-reviews"></a>Toegang tot groepen of toepassingen in azure AD-toegangs beoordelingen bekijken
 
 Azure Active Directory (Azure AD) vereenvoudigt de manier waarop bedrijven toegang beheren tot groepen of toepassingen in azure AD en andere online services van micro soft met een functie die Azure AD-toegangs beoordelingen heet.
 
 In dit artikel wordt beschreven hoe u uw eigen toegang tot een groep of een toepassing kunt controleren.
-
-## <a name="prerequisites"></a>Vereisten
-
-- Azure AD Premium P2
-
-Zie [welke gebruikers licenties moeten hebben?](access-reviews-overview.md#which-users-must-have-licenses)voor meer informatie.
 
 ## <a name="open-the-access-review"></a>Open de toegangs beoordeling
 
@@ -46,7 +40,7 @@ De eerste stap voor het uitvoeren van een toegangs beoordeling is het zoeken en 
 
 Als u de e-mail niet hebt, kunt u uw openstaande toegangs beoordelingen vinden door de volgende stappen uit te voeren.
 
-1. Meld u aan bij de MyApps- [https://myapps.microsoft.com](https://myapps.microsoft.com)Portal op.
+1. Meld u aan bij de MyApps-Portal op [https://myapps.microsoft.com](https://myapps.microsoft.com).
 
     ![MyApps-Portal met een lijst met machtigingen voor](./media/review-your-access/myapps-access-panel.png)
 

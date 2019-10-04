@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 5/1/2019
 ms.author: alsin
-ms.openlocfilehash: ebf7b712dda19b396b044235bf194a5dd402ffac
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 9fbe6768014550a3746085406e9039e83185c20f
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70996423"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71949684"
 ---
 # <a name="azure-serial-console-for-windows"></a>Azure Serial console voor Windows
 
@@ -104,7 +104,7 @@ Als u nodig hebt om in te schakelen Windows boot loader aanwijzingen om weer te 
 
 1.  Voer `cmd` om een kanaal waaraan een CMD-exemplaar te maken.
 
-1.  Voer `ch -si 1` sneltoetsen in `<esc>+<tab>` of druk op ENTER om over te scha kelen naar het kanaal waarop het cmd-exemplaar wordt uitgevoerd.
+1.  Voer `ch -si 1` in of druk op `<esc>+<tab>` sneltoetsen om over te scha kelen naar het kanaal waarop het CMD-exemplaar wordt uitgevoerd.
 
 1.  Druk op **Enter**, en geef vervolgens referenties aanmelden met beheerdersmachtigingen.
 
@@ -124,7 +124,7 @@ De seriële console kan worden gebruikt voor het verzenden van een NMI met een A
 Zie voor meer informatie over het configureren van Windows voor het maken van een crashdumpbestand wanneer deze een NMI ontvangt [het genereren van een crashdump-bestand met behulp van een NMI](https://support.microsoft.com/help/927069/how-to-generate-a-complete-crash-dump-file-or-a-kernel-crash-dump-file).
 
 ### <a name="use-function-keys-in-serial-console"></a>De functietoetsen gebruiken in de seriële console
-Functietoetsen zijn ingeschakeld voor gebruik voor de seriële console in de Windows-VM's. De F8 in de vervolgkeuzelijst de seriële console biedt het gemak van het invoeren van de geavanceerde instellingen voor opstarten menu eenvoudig, maar de seriële console compatibel is met alle andere functietoetsen. Mogelijk moet u op **FN** + **F1** drukken (of F2, F3, etc.) op het toetsen bord, afhankelijk van de computer waarvan u de seriële console gebruikt.
+Functietoetsen zijn ingeschakeld voor gebruik voor de seriële console in de Windows-VM's. De F8 in de vervolgkeuzelijst de seriële console biedt het gemak van het invoeren van de geavanceerde instellingen voor opstarten menu eenvoudig, maar de seriële console compatibel is met alle andere functietoetsen. Mogelijk moet u op **Fn** + **F1** drukken (of F2, F3, etc.) op het toetsen bord, afhankelijk van de computer waarvan u de seriële console gebruikt.
 
 ### <a name="use-wsl-in-serial-console"></a>Gebruik WSL in seriële console
 Het Windows-subsysteem voor Linux (WSL) is ingeschakeld voor Windows Server 2019 of hoger, dus het is ook mogelijk om in te schakelen WSL voor gebruik binnen de seriële console als u werkt met Windows Server 2019 of hoger. Dit kan nuttig zijn voor gebruikers die ook een vertrouwd bent met Linux-opdrachten hebben zijn. Zie voor instructies voor het inschakelen van WSL voor Windows Server, de [installatiehandleiding](https://docs.microsoft.com/windows/wsl/install-on-server).
@@ -175,11 +175,11 @@ Scenario          | Acties in de seriële console
 Onjuiste firewall-regels | Toegang tot de seriële console en de oplossing Windows firewall-regels.
 Bestandssysteem beschadigd/selectievakje | Toegang tot de seriële console en het bestandssysteem herstellen.
 Problemen met RDP-configuratie | Toegang tot de seriële console en de instellingen wijzigen. Zie voor meer informatie de [RDP documentatie](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/remote-desktop-allow-access).
-Systeem voor het vergrendelen van netwerk | Toegang tot de seriële console van de Azure-portal voor het beheren van het systeem. Sommige netwerk opdrachten worden weer gegeven [in Windows-opdrachten: CMD en Power](serial-console-cmd-ps-commands.md)shell.
+Systeem voor het vergrendelen van netwerk | Toegang tot de seriële console van de Azure-portal voor het beheren van het systeem. Sommige netwerk opdrachten worden weer gegeven in [Windows-opdrachten: CMD en Power shell @ no__t-0.
 Interactie met de bootloader | Toegang tot het BCD via de seriële console. Zie voor meer informatie, [inschakelen het opstartmenu Windows in de seriële console](#enable-the-windows-boot-menu-in-the-serial-console).
 
 ## <a name="known-issues"></a>Bekende problemen
-We zijn op de hoogte van problemen met de seriële console. Hier volgt een lijst van deze problemen beschreven en stappen voor risicobeperking. Deze problemen en oplossingen zijn van toepassing voor zowel Vm's als virtuele-machine schaal sets.
+Er zijn enkele problemen met de seriële console en het besturings systeem van de virtuele machine. Hier volgt een lijst met deze problemen en stappen voor het beperken van de oplossing voor Windows-Vm's. Deze problemen en oplossingen zijn van toepassing voor zowel Vm's als virtuele-machine schaal sets. Als deze niet overeenkomen met de fout die u ziet, raadpleegt u de common Serial console-service fouten bij [veelvoorkomende seriële console fouten](./serial-console-errors.md).
 
 Probleem                             |   Oplossing
 :---------------------------------|:--------------------------------------------|
@@ -189,8 +189,6 @@ Kan niet naar het type op SAC vragen als kernelfoutopsporing is ingeschakeld. | 
 Plakken in PowerShell in SAC resulteert in een derde teken als de oorspronkelijke inhoud beschikt over een herhalende teken. | Voor een tijdelijke oplossing Voer `Remove-Module PSReadLine` te verwijderen van de module PSReadLine uit de huidige sessie. Deze actie wordt niet verwijderen of de module verwijderen.
 Sommige invoer toetsenbord vreemd SAC uitvoer produceren (bijvoorbeeld **[A**, **[3 ~** ). | [VT100](https://aka.ms/vtsequences) escapereeksen worden niet ondersteund door de SAC-prompt.
 Lange tekenreeksen plakken werkt niet. | De seriële console beperkt de lengte van tekenreeksen in de terminal naar 2048 tekens om te voorkomen dat de seriële poort-bandbreedte overbelasten geplakt.
-Seriële console werkt niet met een opslag account met behulp van Azure Data Lake Storage Gen2 met hiërarchische naam ruimten. | Dit is een bekend probleem met hiërarchische naam ruimten. Als u wilt beperken, moet u ervoor zorgen dat het opslag account voor diagnostische gegevens over opstarten van de virtuele machine niet is gemaakt met behulp van Azure Data Lake Storage Gen2. Deze optie kan alleen worden ingesteld bij het maken van een opslag account. Mogelijk moet u een afzonderlijk opslag account voor diagnostische gegevens over opstarten maken zonder dat Azure Data Lake Storage Gen2 ingeschakeld om dit probleem te verhelpen.
-
 
 ## <a name="frequently-asked-questions"></a>Veelgestelde vragen
 
@@ -219,6 +217,6 @@ A. Uw installatiekopie is waarschijnlijk niet goed is geconfigureerd voor toegan
 A. Ja dat is zo! Zie de [seriële console voor Virtual Machine Scale sets](./serial-console-overview.md#serial-console-for-virtual-machine-scale-sets)
 
 ## <a name="next-steps"></a>Volgende stappen
-* Zie [Windows-opdrachten voor een diep gaande hand leiding voor cmd-en Power shell-opdrachten die u kunt gebruiken in Windows SAC: CMD en Power](serial-console-cmd-ps-commands.md)shell.
+* Zie [Windows-opdrachten voor een diep gaande hand leiding voor CMD-en Power shell-opdrachten die u kunt gebruiken in Windows SAC: CMD en Power shell @ no__t-0.
 * Seriële console van het is ook beschikbaar voor [Linux](serial-console-linux.md) VM's.
 * Meer informatie over [diagnostische gegevens over opstarten](boot-diagnostics.md).

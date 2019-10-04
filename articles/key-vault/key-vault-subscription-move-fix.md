@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: ambapat
-ms.openlocfilehash: 2159b5b515e22458edf3ba0eb5b6f23f3f37ce95
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 87025767725142cc2f861ff8b390d6ea916f8e38
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68990110"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71947735"
 ---
 # <a name="change-a-key-vault-tenant-id-after-a-subscription-move"></a>De tenant-ID van de Key Vault wijzigen na een verplaatsing van een abonnement
 
@@ -44,6 +44,8 @@ Set-AzResource -ResourceId $vaultResourceId -Properties $vault.Properties  # Mod
 Omdat deze kluis zich in Tenant A bevond vóór de verplaatsing, is de oorspronkelijke waarde van **$Vault. Properties. TenantId** is Tenant A, terwijl **(Get-AzContext). Tenant. TenantId** is Tenant B.
 
 Nu de kluis is gekoppeld aan de juiste Tenant-ID en de oude vermeldingen van het toegangs beleid worden verwijderd, stelt u nieuwe vermeldingen voor het toegangs beleid in met [set-AzKeyVaultAccessPolicy](https://docs.microsoft.com/powershell/module/az.keyvault/Set-azKeyVaultAccessPolicy).
+
+Als u MSI gebruikt, moet u ook de MSI-identiteit bijwerken omdat de oude identiteit niet meer in de juiste AAD-Tenant voor komt.
 
 ## <a name="next-steps"></a>Volgende stappen
 

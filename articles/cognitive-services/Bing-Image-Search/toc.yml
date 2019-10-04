@@ -52,8 +52,9 @@
       href: gif-images.md
     - name: Trending afbeeldingen ophalen
       href: trending-images.md
-    - name: Bladeren door afbeeldingen
-      href: paging-images.md
+    - name: Door de zoekresultaten bladeren
+      maintainContext: true
+      href: ../bing-web-search/paging-search-results.md
     - name: Het formaat van miniaturen wijzigen en miniaturen bijsnijden
       maintainContext: true
       href: ../bing-web-search/resize-and-crop-thumbnails.md

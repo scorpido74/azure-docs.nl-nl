@@ -1,9 +1,9 @@
 ---
-title: Ondersteunde functies van Azure Application Insights - Azure Functions | Microsoft Docs
-description: Application Insights ondersteunde functies voor Azure Functions
+title: Azure-toepassing inzichten-Azure Functions ondersteunde functies | Microsoft Docs
+description: Ondersteunde functies Application Insights voor Azure Functions
 services: application-insights
 documentationcenter: .net
-author: MS-TimothyMothra
+author: TimothyMothra
 manager: ''
 ms.service: application-insights
 ms.workload: TBD
@@ -12,28 +12,28 @@ ms.topic: reference
 ms.date: 4/23/2019
 ms.reviewer: mbullwin
 ms.author: tilee
-ms.openlocfilehash: 0199d8f0c4a76a10fffcab7cf2819643d0ac2d68
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: cf39c8b5e204493380c095519e0ff25c3ce19f68
+ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67075346"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71959909"
 ---
 # <a name="application-insights-for-azure-functions-supported-features"></a>Application Insights voor Azure Functions ondersteunde functies
 
-Azure Functions biedt [ingebouwde integratie](https://docs.microsoft.com/azure/azure-functions/functions-monitoring) met Application Insights, die beschikbaar zijn via de ILogger Interface is. Hieronder vindt u de lijst met ondersteunde functies. Handleiding voor Azure-functies voor [aan de slag](https://github.com/Azure/Azure-Functions/wiki/App-Insights).
+Azure Functions biedt [ingebouwde integratie](https://docs.microsoft.com/azure/azure-functions/functions-monitoring) met Application Insights, die beschikbaar is via de ILogger-interface. Hieronder ziet u de lijst met momenteel ondersteunde functies. Raadpleeg de hand leiding van Azure Functions om [aan](https://github.com/Azure/Azure-Functions/wiki/App-Insights)de slag te gaan.
 
 ## <a name="supported-features"></a>Ondersteunde functies
 
 | Azure Functions                       | V1                | V2 (Ignite 2018)  | 
 |-----------------------------------    |---------------    |------------------ |
-| **Application Insights SDK voor .NET**   | **2.5.0**       | **2.9.1**         |
+| **Application Insights .NET SDK**   | **2.5.0**       | **2.9.1**         |
 | | | | 
-| **Automatische verzameling**        |                 |                   |               
-| &bull; Aanvragen                     | Ja             | Ja               | 
-| &bull; Uitzonderingen                   | Ja             | Ja               | 
-| &bull; Prestatiemeteritems         | Ja             | Ja               |
-| &bull; Afhankelijkheden                   |                   |                   |               
+| **Automatische verzameling van**        |                 |                   |               
+| &bull;-aanvragen                     | Ja             | Ja               | 
+| &bull; uitzonde ringen                   | Ja             | Ja               | 
+| &bull; prestatie meter items         | Ja             | Ja               |
+| &bull; afhankelijkheden                   |                   |                   |               
 | &nbsp;&nbsp;&nbsp;&mdash; HTTP      |                 | Ja               | 
 | &nbsp;&nbsp;&nbsp;&mdash; ServiceBus|                 | Ja               | 
 | &nbsp;&nbsp;&nbsp;&mdash; EventHub  |                 | Ja               | 
@@ -41,34 +41,34 @@ Azure Functions biedt [ingebouwde integratie](https://docs.microsoft.com/azure/a
 | | | | 
 | **Ondersteunde functies**                |                   |                   |               
 | &bull; QuickPulse/LiveMetrics       | Ja             | Ja               | 
-| &nbsp;&nbsp;&nbsp;&mdash; Beveiligde besturingskanaal|                 | Ja               | 
-| &bull; Steekproeven                     | Ja             | Ja               | 
-| &bull; Heartbeats                   |                 | Ja               | 
+| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 Secure Control-kanaal|                 | Ja               | 
+| &bull;-steek proef                     | Ja             | Ja               | 
+| &bull; heartbeats                   |                 | Ja               | 
 | | | | 
-| **Correlatie**                       |                   |                   |               
+| **Verband**                       |                   |                   |               
 | &bull; ServiceBus                     |                   | Ja               | 
 | &bull; EventHub                       |                   | Ja               | 
 | | | | 
-| **Configureerbare**                      |                   |                   |           
-| &bull;Volledig kunnen worden geconfigureerd.<br/>Zie [Azure Functions](https://github.com/Microsoft/ApplicationInsights-aspnetcore/issues/759#issuecomment-426687852) voor instructies.<br/>Zie [Asp.NET Core](https://github.com/Microsoft/ApplicationInsights-aspnetcore/wiki/Custom-Configuration) voor alle opties.               |                   | Ja                   | 
+| **Configureer bare**                      |                   |                   |           
+| &bull;Fully-configureerbaar.<br/>Zie [Azure functions](https://github.com/Microsoft/ApplicationInsights-aspnetcore/issues/759#issuecomment-426687852) voor instructies.<br/>Zie [ASP.net core](https://github.com/Microsoft/ApplicationInsights-aspnetcore/wiki/Custom-Configuration) voor alle opties.               |                   | Ja                   | 
 
 
 ## <a name="performance-counters"></a>Prestatiemeteritems
 
-Automatisch verzamelen van prestatiemeteritems werken alleen Windows-machines.
+Het automatisch verzamelen van prestatie meter items werkt alleen op Windows-computers.
 
 
-## <a name="live-metrics--secure-control-channel"></a>Live metrische gegevens en veilige besturingskanaal
+## <a name="live-metrics--secure-control-channel"></a>Live Metrics & kanaal voor beveiligd beheer
 
-De aangepaste filters criteria die u opgeeft worden verzonden naar het onderdeel Live Metrics in Application Insights-SDK. De filters kunnen mogelijk vertrouwelijke gegevens zoals customerIDs bevatten. U kunt het kanaal beveiligde maken met een geheime sleutel van de API. Zie [beveiligen van het besturingskanaal](https://docs.microsoft.com/azure/azure-monitor/app/live-stream#secure-the-control-channel) voor instructies.
+De criteria voor aangepaste filters die u opgeeft, worden teruggestuurd naar het onderdeel Live Metrics in de SDK van Application Insights. De filters kunnen mogelijk gevoelige informatie bevatten, zoals customerIDs. U kunt het kanaal veilig maken met een geheime API-sleutel. Zie [het besturings kanaal beveiligen](https://docs.microsoft.com/azure/azure-monitor/app/live-stream#secure-the-control-channel) voor instructies.
 
-## <a name="sampling"></a>Steekproeven
+## <a name="sampling"></a>Steekproef nemen
 
-Azure Functions kunt steekproeven standaard in de configuratie. Zie voor meer informatie, [configureren steekproeven](https://docs.microsoft.com/azure/azure-functions/functions-monitoring#configure-sampling).
+Met Azure Functions worden steek proeven standaard in hun configuratie ingeschakeld. Zie [sampling configureren](https://docs.microsoft.com/azure/azure-functions/functions-monitoring#configure-sampling)voor meer informatie.
 
-Als uw project wordt afhankelijk van de Application Insights SDK handmatig telemetrie bijhouden doen, kan vreemd gedrag optreden als de configuratie van uw steekproeven anders dan de functies steekproeven configuratie is. 
+Als uw project afhankelijk is van de Application Insights SDK om hand matige telemetrie-tracering uit te voeren, kunnen er vreemde problemen optreden als uw sampling configuratie verschilt van de sampling configuratie van de functies. 
 
-We raden u aan met dezelfde configuratie als functies. Met **functies v2**, krijgt u afhankelijkheidsinjectie in de constructor met dezelfde configuratie:
+We raden u aan dezelfde configuratie als-functies te gebruiken. Met **functions v2**kunt u dezelfde configuratie ophalen met behulp van afhankelijkheids injectie in uw constructor:
 
 ```csharp
 using Microsoft.ApplicationInsights;

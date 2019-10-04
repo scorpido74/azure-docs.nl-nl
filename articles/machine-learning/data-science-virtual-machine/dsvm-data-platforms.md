@@ -6,16 +6,16 @@ keywords: hulpprogramma's voor datatechnologie, virtuele machine voor datatechno
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: data-science-vm
-author: vijetajo
-ms.author: vijetaj
+author: gvashishtha
+ms.author: gopalv
 ms.topic: conceptual
-ms.date: 03/16/2018
-ms.openlocfilehash: 5dbaf969420f066698a07b8d137d2ba44fc99080
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.date: 10/3/2019
+ms.openlocfilehash: df112889fd7cd8ad1574147072b6e13137945462
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70208132"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71947542"
 ---
 # <a name="data-platforms-supported-on-the-data-science-virtual-machine"></a>Gegevensplatforms die worden ondersteund op de Data Science Virtual Machine
 
@@ -23,7 +23,7 @@ Met een Data Science Virtual Machine (DSVM) kunt u uw analyses maken op basis va
 
 De volgende hulpprogram ma's voor gegevens platforms worden ondersteund op de DSVM.
 
-## <a name="sql-server-2016-developer-edition"></a>SQL Server 2016 Developer Edition
+## <a name="sql-server-2017-developer-edition"></a>SQL Server 2017 Developer Edition
 
 | | |
 | ------------- | ------------- |
@@ -39,13 +39,13 @@ De volgende hulpprogram ma's voor gegevens platforms worden ondersteund op de DS
 
 ### <a name="setup"></a>Instellen
 
-De database server is al vooraf geconfigureerd en de Windows-services die betrekking hebben op SQL Server `SQL Server (MSSQLSERVER)`(zoals) zijn ingesteld om automatisch te worden uitgevoerd. Voor de enige hand matige stap moet u in-data base Analytics inschakelen met behulp van Microsoft Machine Learning Server. U kunt dit doen door de volgende opdracht uit te voeren als eenmalige actie in SQL Server Management Studio (SSMS). Voer deze opdracht uit nadat u zich hebt aangemeld als machine beheerder, open een nieuwe query in SSMS en zorg ervoor dat de geselecteerde data `master`Base:
+De database server is al vooraf geconfigureerd en de Windows-services die betrekking hebben op SQL Server (zoals `SQL Server (MSSQLSERVER)`) zijn ingesteld om automatisch te worden uitgevoerd. Voor de enige hand matige stap moet u in-data base Analytics inschakelen met behulp van Microsoft Machine Learning Server. U kunt dit doen door de volgende opdracht uit te voeren als eenmalige actie in SQL Server Management Studio (SSMS). Voer deze opdracht uit nadat u zich hebt aangemeld als machine beheerder, open een nieuwe query in SSMS en zorg ervoor dat de geselecteerde data base `master` is:
 
         CREATE LOGIN [%COMPUTERNAME%\SQLRUserGroup] FROM WINDOWS 
 
         (Replace %COMPUTERNAME% with your VM name.)
        
-Als u SQL Server Management Studio wilt uitvoeren, kunt u zoeken op ' SQL Server Management Studio ' in de lijst met Program ma's, of Windows Search gebruiken om het bestand te zoeken en uit te voeren. Wanneer u om referenties wordt gevraagd, selecteert u **Windows-verificatie** en gebruikt ```localhost``` u de computer naam of in het veld **SQL Server naam** .
+Als u SQL Server Management Studio wilt uitvoeren, kunt u zoeken op ' SQL Server Management Studio ' in de lijst met Program ma's, of Windows Search gebruiken om het bestand te zoeken en uit te voeren. Wanneer u om referenties wordt gevraagd, selecteert u **Windows-verificatie** en gebruikt u de computer naam of het ```localhost``` in het veld **SQL Server naam** .
 
 ### <a name="how-to-use-and-run-it"></a>Hoe gebruiken en uitvoeren
 
@@ -55,7 +55,7 @@ Daarnaast wordt de DSVM geleverd met ODBC-en JDBC-Stuur Programma's om te praten
 
 ### <a name="how-is-it-configured-and-installed-on-the-dsvm"></a>Hoe wordt het geconfigureerd en geïnstalleerd op de DSVM? 
 
- SQL Server wordt op de normale manier geïnstalleerd. Kan worden gevonden op `C:\Program Files\Microsoft SQL Server`. De Machine Learning Server-instantie in de data base is `C:\Program Files\Microsoft SQL Server\MSSQL13.MSSQLSERVER\R_SERVICES`gevonden op. De DSVM heeft ook een afzonderlijke zelfstandige Machine Learning Server instantie, die wordt geïnstalleerd op `C:\Program Files\Microsoft\R Server\R_SERVER`. Deze twee Machine Learning Server exemplaren delen geen bibliotheken.
+ SQL Server wordt op de normale manier geïnstalleerd. Kan worden gevonden op `C:\Program Files\Microsoft SQL Server`. De Machine Learning Server-instantie in de data base is gevonden op `C:\Program Files\Microsoft SQL Server\MSSQL13.MSSQLSERVER\R_SERVICES`. De DSVM heeft ook een afzonderlijke zelfstandige Machine Learning Server instantie, die wordt geïnstalleerd op `C:\Program Files\Microsoft\R Server\R_SERVER`. Deze twee Machine Learning Server exemplaren delen geen bibliotheken.
 
 
 ## <a name="apache-spark-2x-standalone"></a>Apache Spark-2.x (zelfstandig)
@@ -69,7 +69,7 @@ Daarnaast wordt de DSVM geleverd met ODBC-en JDBC-Stuur Programma's om te praten
 | Gerelateerde hulpprogram ma's op de DSVM       | PySpark, Scala<br/>Jupyter (Spark/PySpark-Kernels)<br/>Microsoft Machine Learning Server, Spark, Sparklyr <br />Apache Drill      |
 
 ### <a name="how-to-use-it"></a>Het gebruik ervan
-U kunt Spark-taken verzenden op de opdracht regel door de `spark-submit` of `pyspark` -opdracht uit te voeren. U kunt ook een Jupyter-notebook maken door een nieuwe notebook maken met de Spark-kernel.
+U kunt Spark-taken verzenden op de opdracht regel door de opdracht `spark-submit` of `pyspark` uit te voeren. U kunt ook een Jupyter-notebook maken door een nieuwe notebook maken met de Spark-kernel.
 
 U kunt Spark van R gebruiken met behulp van bibliotheken als Spark, Sparklyr en Microsoft Machine Learning Server, die beschikbaar zijn in de DSVM. Zie de verwijzingen naar de voorbeelden in de voorgaande tabel.
 
@@ -89,9 +89,9 @@ Voordat u in een Spark-context in Microsoft Machine Learning Server op Ubuntu Li
     chown hadoop:hadoop ~hadoop/.ssh/authorized_keys
     systemctl start hadoop-namenode hadoop-datanode hadoop-yarn
 
-U kunt de Hadoop-gerelateerde services stoppen wanneer u deze niet meer nodig hebt door ```systemctl stop hadoop-namenode hadoop-datanode hadoop-yarn```uit te voeren.
+U kunt de Hadoop-gerelateerde services stoppen wanneer u deze niet meer nodig hebt door ```systemctl stop hadoop-namenode hadoop-datanode hadoop-yarn``` uit te voeren.
 
-Een voor beeld dat laat zien hoe u Mevr kunt ontwikkelen en testen in een externe Spark-context (dit is de zelfstandige Spark-instantie op de DSVM), wordt `/dsvm/samples/MRS` beschikbaar gesteld in de Directory.
+Een voor beeld van het ontwikkelen en testen van MEVR in een externe Spark-context (dat is de zelfstandige Spark-instantie op de DSVM) is beschikbaar in de map `/dsvm/samples/MRS`.
 
 
 ### <a name="how-is-it-configured-and-installed-on-the-dsvm"></a>Hoe wordt het geconfigureerd en geïnstalleerd op de DSVM? 
@@ -103,7 +103,7 @@ Een voor beeld dat laat zien hoe u Mevr kunt ontwikkelen en testen in een extern
 
 Bibliotheken om toegang te krijgen tot gegevens van Azure Blob-opslag of Azure Data Lake Storage, met behulp van de micro soft MMLSpark machine learning-bibliotheken, zijn vooraf geïnstalleerd in $SPARK _HOME/potten. Deze JAR-bestanden worden automatisch geladen wanneer Spark wordt gestart. Standaard gebruikt Spark gegevens op de lokale schijf. 
 
-Voor de Spark-instantie in de DSVM om toegang te krijgen tot gegevens die zijn opgeslagen in Blob Storage of Azure data Lake Storage, `core-site.xml` moet u het bestand maken en configureren op basis van de sjabloon die is gevonden in $Spark _HOME/conf/bestand core-site. XML. Temp late. U moet ook de juiste referenties hebben voor toegang tot de Blob-opslag en de Azure Data Lake Storage. (Houd er rekening mee dat de sjabloon bestanden tijdelijke aanduidingen gebruiken voor Blob Storage en Azure Data Lake Storage configuraties.)
+Voor de Spark-instantie in de DSVM om toegang te krijgen tot gegevens die zijn opgeslagen in Blob Storage of Azure Data Lake Storage, moet u het bestand `core-site.xml` maken en configureren op basis van de sjabloon die is gevonden in $SPARK _HOME/conf/bestand core-site. XML. Temp late. U moet ook de juiste referenties hebben voor toegang tot de Blob-opslag en de Azure Data Lake Storage. (Houd er rekening mee dat de sjabloon bestanden tijdelijke aanduidingen gebruiken voor Blob Storage en Azure Data Lake Storage configuraties.)
 
 Zie [verificatie met Azure data Lake Storage gen1](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-authenticate-using-active-directory)voor meer gedetailleerde informatie over het maken van Azure data Lake Storage-service referenties. Nadat de referenties voor Blob Storage of Azure Data Lake Storage zijn ingevoerd in het bestand bestand core-site. XML, kunt u verwijzen naar de gegevens die in deze bronnen zijn opgeslagen via het URI-voor voegsel wasb://of adl://.
 

@@ -2,18 +2,19 @@
 title: bestand opnemen
 description: bestand opnemen
 services: digital-twins
-author: kingdomofends
+ms.author: alinast
+author: alinamstanciu
+manager: bertvanhoof
 ms.service: digital-twins
 ms.topic: include
 ms.date: 09/30/2019
-ms.author: v-adgera
 ms.custom: include file
-ms.openlocfilehash: 1c8237ce4e8b758395567e939c1ed4bda1f297ff
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
-ms.translationtype: HT
+ms.openlocfilehash: d25f6f0d787b7343b93025ff2dd2bd5bf4f0f6d8
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827646"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71948918"
 ---
 Op rollen gebaseerd toegangs beheer is een overname strategie voor het beheren van de toegang, machtigingen en rollen. Onderliggende rollen nemen machtigingen over van bovenliggende rollen. Machtigingen kunnen ook worden toegewezen zonder dat ze worden overgenomen van een bovenliggende rol. Ze kunnen ook worden toegewezen om een rol zo nodig aan te passen.
 

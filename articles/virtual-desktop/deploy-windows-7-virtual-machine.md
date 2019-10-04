@@ -5,16 +5,16 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 09/23/2019
+ms.date: 10/03/2019
 ms.author: helohr
-ms.openlocfilehash: e7f565a995e4c2a5338f08437b0dd336846ba154
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 3a6fb67ce531ed8cc028d2d0a8dfc3022544efe0
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71679917"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71947573"
 ---
-# <a name="deploy-a-windows-7-virtual-machine-on-windows-virtual-desktop"></a>Een virtuele machine met Windows 7 implementeren op virtueel bureau blad van Windows
+# <a name="deploy-a-windows-7-virtual-machine-on-windows-virtual-desktop"></a>Een virtuele Windows 7-machine implementeren in Windows Virtual Desktop
 
 Het proces voor het implementeren van een virtuele machine met Windows 7 op Windows virtueel bureau blad wijkt enigszins af van de virtuele machines waarop latere versies van Windows worden uitgevoerd. In deze hand leiding wordt uitgelegd hoe u Windows 7 implementeert.
 
@@ -43,9 +43,15 @@ Een Windows 7-VM instellen op het virtuele bureau blad van Windows:
      shutdown /r /t 0
      ```
     
+11. Volg de instructies [hier](https://docs.microsoft.com/powershell/module/windowsvirtualdesktop/export-rdsregistrationinfo) om een registratie token op te halen.
+12. [Down load de Windows-agent voor virtueel bureau blad voor Windows 7](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3JZCm).
+13. [Down load de Windows Virtual Desktop Agent Manager voor Windows 7](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3K2e3).
+14. Open het installatie programma voor de virtueel-bureaublad agent van Windows en volg de instructies. Wanneer u hierom wordt gevraagd, geeft u de registratie sleutel op die u in stap 11 hebt gemaakt.
+15. Open het Windows-installatie programma voor virtueel bureau blad en volg de instructies.
+16. U kunt desgewenst de TCP/3389-poort blok keren om direct Remote Desktop Protocol toegang tot de virtuele machine te verwijderen.
+
 ## <a name="next-steps"></a>Volgende stappen
 
-Uw Windows 7-VM is nu gereed om te worden geïmplementeerd op het virtuele bureau blad van Windows. Volg de instructies in [voor het voorbereiden van de installatie van virtuele machines voor Windows Virtual Desktop agent om de](create-host-pools-powershell.md#prepare-the-virtual-machines-for-windows-virtual-desktop-agent-installations) implementatie te volt ooien.
+Uw Windows-implementatie voor virtueel bureau blad is nu klaar voor gebruik. [Down load de nieuwste versie van de Windows Virtual Desktop-Client](https://aka.ms/wvd/clients/windows) om aan de slag te gaan.
 
 Voor een lijst met bekende problemen en instructies voor het oplossen van problemen met Windows 7 op virtueel bureau blad van Windows, raadpleegt u ons artikel over probleem oplossing bij het [oplossen van problemen met Windows 7 virtual machines in Windows virtueel bureau blad](troubleshoot-windows-7-vm.md).
-

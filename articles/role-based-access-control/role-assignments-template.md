@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 09/20/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: b7f701cd3ce07099d80bca40e506108bcc9a9da9
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: b4eebf7dac4d388411f570b1546c96e3b82b2a98
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71178108"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71950064"
 ---
 # <a name="manage-access-to-azure-resources-using-rbac-and-azure-resource-manager-templates"></a>Toegang tot Azure-resources beheren met RBAC en Azure Resource Manager sjablonen
 
@@ -33,7 +33,7 @@ In RBAC verleent u toegang door een roltoewijzing te maken. In de volgende sjabl
 Als u de sjabloon wilt gebruiken, moet u het volgende doen:
 
 - Een nieuw JSON-bestand maken en de sjabloon kopiëren
-- Vervang `<your-principal-id>` door de unieke id van een gebruiker, groep of toepassing om de rol aan toe te wijzen. De id heeft de volgende indeling:`11111111-1111-1111-1111-111111111111`
+- Vervang `<your-principal-id>` door de unieke id van een gebruiker, groep of toepassing om de rol aan toe te wijzen. De id heeft de volgende indeling: `11111111-1111-1111-1111-111111111111`
 
 ```json
 {
@@ -159,6 +159,9 @@ New-AzDeployment -Location centralus -TemplateFile rbac-test.json -principalId $
 az deployment create --location centralus --template-file rbac-test.json --parameters principalId=$userid builtInRoleType=Reader
 ```
 
+> [!NOTE]
+> Deze sjabloon is niet idempotent tenzij dezelfde waarde voor @no__t 0 wordt gegeven als para meter voor elke implementatie van de sjabloon. Als er geen `roleNameGuid` wordt gegeven, wordt er standaard een nieuwe GUID gegenereerd voor elke implementatie en mislukken volgende implementaties met een `Conflict: RoleAssignmentExists`-fout.
+
 ## <a name="create-a-role-assignment-at-a-resource-scope"></a>Een roltoewijzing maken in een resource bereik
 
 Als u een roltoewijzing op het niveau van een resource wilt maken, is de indeling van de roltoewijzing afwijkend. U geeft de naam ruimte van de resource provider en het resource type van de resource waaraan u de rol wilt toewijzen. U neemt ook de naam van de resource op in de naam van de roltoewijzing.
@@ -180,8 +183,6 @@ Als u de sjabloon wilt gebruiken, moet u de volgende invoer opgeven:
 
 - De unieke id van een gebruiker, groep of toepassing waaraan de rol moet worden toegewezen
 - De rol die moet worden toegewezen
-- Een unieke id die wordt gebruikt voor de roltoewijzing, of u kunt de standaard-id gebruiken
-
 
 ```json
 {
@@ -203,13 +204,6 @@ Als u de sjabloon wilt gebruiken, moet u de volgende invoer opgeven:
             ],
             "metadata": {
                 "description": "Built-in role to assign"
-            }
-        },
-        "roleNameGuid": {
-            "type": "string",
-            "defaultValue": "[newGuid()]",
-            "metadata": {
-                "description": "A new GUID used to identify the role assignment"
             }
         },
         "location": {
@@ -238,7 +232,7 @@ Als u de sjabloon wilt gebruiken, moet u de volgende invoer opgeven:
         {
             "type": "Microsoft.Storage/storageAccounts/providers/roleAssignments",
             "apiVersion": "2018-09-01-preview",
-            "name": "[concat(variables('storageName'), '/Microsoft.Authorization/', parameters('roleNameGuid'))]",
+            "name": "[concat(variables('storageName'), '/Microsoft.Authorization/', guid(uniqueString(parameters('storageName'))))]",
             "dependsOn": [
                 "[variables('storageName')]"
             ],
@@ -267,12 +261,12 @@ Hieronder ziet u een voor beeld van de toewijzing van de rol Inzender aan een ge
 
 ## <a name="create-a-role-assignment-for-a-new-service-principal"></a>Een roltoewijzing maken voor een nieuwe Service-Principal
 
-Als u een nieuwe Service-Principal maakt en een rol onmiddellijk probeert toe te wijzen aan die Service-Principal, kan die roltoewijzing in sommige gevallen mislukken. Als u bijvoorbeeld een nieuwe beheerde identiteit maakt en vervolgens probeert een rol toe te wijzen aan die Service-Principal in hetzelfde Azure Resource Manager sjabloon, kan de roltoewijzing mislukken. De oorzaak van deze fout is waarschijnlijk een replicatie vertraging. De service-principal wordt gemaakt in één regio. de roltoewijzing kan echter plaatsvinden in een andere regio waarvoor de Service-Principal nog niet is gerepliceerd. Als u dit scenario wilt aanpakken, moet u `principalType` de eigenschap `ServicePrincipal` instellen op bij het maken van de roltoewijzing.
+Als u een nieuwe Service-Principal maakt en een rol onmiddellijk probeert toe te wijzen aan die Service-Principal, kan die roltoewijzing in sommige gevallen mislukken. Als u bijvoorbeeld een nieuwe beheerde identiteit maakt en vervolgens probeert een rol toe te wijzen aan die Service-Principal in hetzelfde Azure Resource Manager sjabloon, kan de roltoewijzing mislukken. De oorzaak van deze fout is waarschijnlijk een replicatie vertraging. De service-principal wordt gemaakt in één regio. de roltoewijzing kan echter plaatsvinden in een andere regio waarvoor de Service-Principal nog niet is gerepliceerd. Als u dit scenario wilt aanpakken, moet u de eigenschap `principalType` instellen op `ServicePrincipal` bij het maken van de roltoewijzing.
 
 In de volgende sjabloon ziet u:
 
 - Een nieuwe beheerde ID voor de service-principal maken
-- Het opgeven van de`principalType`
+- De `principalType` opgeven
 - De rol van Inzender toewijzen aan de Service-Principal in een bereik van een resource groep
 
 Als u de sjabloon wilt gebruiken, moet u de volgende invoer opgeven:

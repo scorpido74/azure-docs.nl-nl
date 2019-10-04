@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 412bfee12e50b66a780f33b2bca8c4ecc61d83f7
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: 8fee8692b2e09f9e4f5580d60d2f7a5a5cea2858
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71219349"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71950350"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Machtigingen voor beheerdersrol in Azure Active Directory
 
@@ -169,7 +169,10 @@ Deze rol is alleen beschikbaar voor toewijzing als extra lokale beheerder in [Ap
 
 ### <a name="directory-readersdirectory-readers-permissions"></a>[Adreslijst lezers](#directory-readers-permissions)
 
-Dit is een rol die alleen moet worden toegewezen aan verouderde toepassingen die het [toestemmings raamwerk](../develop/quickstart-v1-integrate-apps-with-azure-ad.md)niet ondersteunen. Wijs het niet toe aan gebruikers.
+Gebruikers met deze rol kunnen basis informatie over de Directory lezen. Deze rol moet worden gebruikt voor:
+* Het verlenen van een specifieke set gast gebruikers lees toegang in plaats van deze aan alle gast gebruikers toe te kennen.
+* Het verlenen van een specifieke set gebruikers die geen beheerder zijn, toegang tot Azure portal als ' alleen toegang tot de Azure AD-Portal beperken tot beheerders ' is ingesteld op Ja.
+* Verlenen van service-principals toegang tot Directory waarbij Directory. Read. all geen optie is.
 
 ### <a name="directory-synchronization-accountsdirectory-synchronization-accounts-permissions"></a>[Directory-synchronisatie accounts](#directory-synchronization-accounts-permissions)
 

@@ -1,6 +1,6 @@
 ---
-title: Overzicht van automatisch schalen in virtuele Machines, Cloud Services en Web-Apps
-description: Als u automatisch schalen in een Microsoft Azure. Van toepassing op virtuele Machines, Virtual machine Scale sets, Cloud Services en Web-Apps.
+title: Overzicht van automatisch schalen in Virtual Machines, Cloud Services en Web Apps
+description: Automatisch schalen in Microsoft Azure. Is van toepassing op Virtual Machines, virtuele-machine schaal sets, Cloud Services en Web Apps.
 author: rboucher
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,116 +8,115 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: robb
 ms.subservice: autoscale
-ms.openlocfilehash: 05f20aec536ebdb702caea37051a65af9bbc659f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3c70d11b83a116a9ce29ce202edeac6fe9464674
+ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60787575"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71959051"
 ---
-# <a name="overview-of-autoscale-in-microsoft-azure-virtual-machines-cloud-services-and-web-apps"></a>Overzicht van automatisch schalen in een Microsoft Azure Virtual Machines, Cloud Services en Web-Apps
-Dit artikel wordt beschreven welke Microsoft Azure voor automatisch schalen is, de voordelen ervan, en hoe u aan de slag met behulp van deze.  
+# <a name="overview-of-autoscale-in-microsoft-azure-virtual-machines-cloud-services-and-web-apps"></a>Overzicht van automatisch schalen in Microsoft Azure Virtual Machines, Cloud Services en Web Apps
+In dit artikel wordt beschreven wat Microsoft Azure automatisch schalen is, wat de voor delen zijn en hoe u het kunt gaan gebruiken.  
 
-Automatisch schalen van Azure Monitor is alleen bedoeld voor [Virtual Machine Scale Sets](https://azure.microsoft.com/services/virtual-machine-scale-sets/), [Cloudservices](https://azure.microsoft.com/services/cloud-services/), [App Service - Web-Apps](https://azure.microsoft.com/services/app-service/web/), en [API Management-services](https://docs.microsoft.com/azure/api-management/api-management-key-concepts).
+Azure Monitor automatisch schalen is alleen van toepassing op [Virtual Machine Scale sets](https://azure.microsoft.com/services/virtual-machine-scale-sets/), [Cloud Services](https://azure.microsoft.com/services/cloud-services/), [app service-Web apps](https://azure.microsoft.com/services/app-service/web/)en [API Management Services](https://docs.microsoft.com/azure/api-management/api-management-key-concepts).
 
 > [!NOTE]
-> Azure heeft twee methoden voor het automatisch schalen. Een oudere versie van automatisch schalen is van toepassing op virtuele Machines (beschikbaarheidssets). Deze functie heeft beperkte ondersteuning en het is raadzaam migreren naar virtuele-machineschaalsets voor ondersteuning sneller en betrouwbaarder voor automatisch schalen. Een koppeling voor het gebruik van de oudere technologie is opgenomen in dit artikel.  
+> Azure heeft twee methoden voor automatisch schalen. Een oudere versie van automatisch schalen is van toepassing op Virtual Machines (beschikbaarheids sets). Deze functie biedt beperkte ondersteuning en wij raden u aan om te migreren naar schaal sets voor virtuele machines voor snellere en betrouwbaardere ondersteuning voor automatisch schalen. In dit artikel vindt u een koppeling naar het gebruik van de oudere technologie.  
 >
 >
 
-## <a name="what-is-autoscale"></a>Wat is er voor automatisch schalen?
-Automatisch schalen kunt u de juiste hoeveelheid resources die worden uitgevoerd voor het afhandelen van de belasting van uw toepassing. Hiermee kunt u resources voor het verwerken van de belasting toeneemt en bespaart ook geld door het verwijderen van resources die zijn zit toevoegen niet actief. U een minimum en maximum aantal exemplaren worden uitgevoerd en toevoegen of verwijderen van virtuele machines automatisch op basis van een set regels. Met een minimale maakt ervoor dat uw toepassing altijd wordt uitgevoerd zelfs zonder enige belasting. Met een beperkt mogelijk van uw totale kosten per uur. Automatisch schalen tussen deze twee extreme met behulp van regels die u maakt.
+## <a name="what-is-autoscale"></a>Wat is automatisch schalen?
+Met automatisch schalen kunt u de juiste hoeveelheid resources uitvoeren om de belasting van uw toepassing af te handelen. U kunt hiermee resources toevoegen voor het afhandelen van toename van de belasting en bespaart u geld door resources te verwijderen die niet actief zijn. U geeft een minimum en maximum aantal exemplaren op dat moet worden uitgevoerd en die automatisch moeten worden toegevoegd of verwijderd op basis van een set regels. Als u Mini maal hebt, moet uw toepassing altijd worden uitgevoerd, zelfs onder geen belasting. Als u een maximum hebt, beperkt u het totale aantal kosten per uur. U kunt automatisch schalen tussen deze twee extremees met behulp van de regels die u maakt.
 
- ![Automatisch schalen is beschreven. VM's toevoegen en verwijderen](./media/autoscale-overview/AutoscaleConcept.png)
+ ![Automatisch schalen uitgelegd. VM's toevoegen en verwijderen](./media/autoscale-overview/AutoscaleConcept.png)
 
-Wanneer de regelvoorwaarden wordt voldaan, kan een of meer acties voor automatisch schalen worden geactiveerd. U kunt toevoegen en verwijderen van virtuele machines of andere acties worden uitgevoerd. De volgende conceptuele diagram ziet u dit proces.  
+Wanneer aan de voor waarden van de regel wordt voldaan, worden een of meer acties voor automatisch schalen geactiveerd. U kunt Vm's toevoegen en verwijderen of andere acties uitvoeren. In het volgende conceptuele diagram ziet u dit proces.  
 
- ![Stroomdiagram voor automatisch schalen](./media/autoscale-overview/Autoscale_Overview_v4.png)
+ ![Stroom diagram voor automatisch schalen](./media/autoscale-overview/Autoscale_Overview_v4.png)
 
-De volgende uitleg geldt voor de onderdelen van het vorige diagram.   
+De volgende uitleg is van toepassing op de onderdelen van het vorige diagram.   
 
 ## <a name="resource-metrics"></a>Metrische gegevens voor resource
-Resources metrische gegevens verzenden, deze metrische gegevens later door regels worden verwerkt. Metrische gegevens worden geleverd via verschillende methoden.
-Virtuele-machineschaalsets gebruik telemetriegegevens van Azure diagnostics-agents dat telemetrie voor Web-apps en cloudservices afkomstig rechtstreeks van de Azure-infrastructuur is. Enkele veelgebruikte statistische gegevens omvatten CPU-gebruik, geheugengebruik, aantallen threads, lengte van de wachtrij en schijfgebruik. Zie voor een lijst van welke telemetrische gegevens die u kunt gebruiken, [algemene metrische gegevens voor automatisch schalen](../../azure-monitor/platform/autoscale-common-metrics.md).
+Resources die metrische gegevens verzenden, worden deze metrische gegevens later verwerkt door regels. Metrische gegevens zijn beschikbaar via verschillende methoden.
+Virtuele-machine schaal sets gebruiken telemetriegegevens van Azure Diagnostics-agents, terwijl telemetrie voor web-apps en Cloud Services rechtstreeks afkomstig is van de Azure-infra structuur. Enkele veelgebruikte statistieken zijn CPU-gebruik, geheugen gebruik, aantal threads, wachtrij lengte en schijf gebruik. Zie [algemene metrische gegevens automatisch schalen](../../azure-monitor/platform/autoscale-common-metrics.md)voor een lijst met de telemetriegegevens die u kunt gebruiken.
 
 ## <a name="custom-metrics"></a>Aangepaste metrische gegevens
-U kunt ook gebruikmaken van uw eigen aangepaste metrische gegevens die uw toepassingen kunnen genereren. Als u uw toepassingen metrische gegevens verzenden naar Application Insights kunt u gebruikmaken van deze metrische gegevens om beslissingen te maken op al dan niet schalen of niet hebt geconfigureerd.
+U kunt ook uw eigen aangepaste metrische gegevens gebruiken die door uw toepassing (en) kunnen worden verzonden. Als u uw toepassing (en) hebt geconfigureerd voor het verzenden van metrische gegevens naar Application Insights, kunt u gebruikmaken van deze metrische gegevens om beslissingen te nemen over het al dan niet schalen.
 
 ## <a name="time"></a>Time
-Regels op basis van een schema zijn gebaseerd op UTC. U moet uw tijdzone correct ingesteld bij het instellen van uw regels.  
+Regels op basis van een schema zijn gebaseerd op UTC. U moet uw tijd zone op de juiste wijze instellen bij het instellen van uw regels.  
 
 ## <a name="rules"></a>Regels
-Het diagram ziet u slechts één regel voor automatisch schalen, maar u kunt veel van deze hebben. U kunt complexe overlappende regels maken die nodig zijn voor uw situatie.  Regeltypen opnemen  
+In het diagram wordt slechts één regel voor automatisch schalen weer gegeven, maar u kunt er veel van hebben. U kunt complexe overlappende regels maken die nodig zijn voor uw situatie.  Regel typen zijn  
 
-* **Op basis van metrische gegevens** -bijvoorbeeld doen met deze actie wanneer CPU-gebruik hoger dan 50 is %.
-* **Op basis van tijd** - bijvoorbeeld: elke 8 uur op zaterdag in een bepaalde tijdzone van een webhook-trigger.
+* **Op basis van metrische gegevens** : u kunt bijvoorbeeld deze actie uitvoeren wanneer het CPU-gebruik hoger is dan 50%.
+* **Op basis van tijd** , bijvoorbeeld een webhook activeren elke 8 A.m. op zaterdag in een bepaalde tijd zone.
 
-Regels op basis van metrische gegevens laden meten en toevoegen of verwijderen van virtuele machines op basis van die belasting. Regels op basis van een planning kunnen u om te schalen wanneer u tijd patronen in uw load en wilt aanpassen voordat u een verhoging van het mogelijke load of afname optreedt.  
+Regels op basis van metrische gegevens meten het laden van toepassingen en het toevoegen of verwijderen van Vm's op basis van die belasting. Met regels op basis van een schema kunt u schalen wanneer er tijd patronen in de belasting worden weer gegeven en wilt schalen voordat een mogelijke belasting toename of afname optreedt.  
 
 ## <a name="actions-and-automation"></a>Acties en automatisering
-Regels kunnen een of meer soorten acties activeren.
+Regels kunnen een of meer typen acties activeren.
 
-* **Schaal** -schaal VM's in- of uitschalen
-* **E-mailbericht** -e-mailbericht verzenden naar abonnementsbeheerders, co-beheerders en/of aanvullende e-mailadres die u opgeeft
-* **Automatiseren via webhooks** -aanroepen van webhooks, die meerdere complexe acties binnen of buiten Azure kan activeren. In Azure, kunt u een Azure Automation-runbook, Azure-functie of logische App van Azure starten. Voorbeeld-URL van derden buiten Azure omvatten, zoals Slack en Twilio.
+* Vm's **in-of uitschalen**
+* **E** -mail bericht verzenden naar abonnements beheerders, mede beheerders en/of aanvullend e-mail adres dat u opgeeft
+* **Automatiseren via webhooks** -webhooks aanroepen, waarmee u meerdere complexe acties binnen of buiten Azure kunt activeren. In azure kunt u een Azure Automation runbook, Azure function of een Azure Logic-app starten. Voor beeld van een URL van een derde partij buiten Azure bevat services zoals toegestane vertraging en Twilio.
 
-## <a name="autoscale-settings"></a>Instellingen voor automatisch schalen
-Automatisch schalen gebruik de volgende terminologie en de structuur.
+## <a name="autoscale-settings"></a>Instellingen voor automatische schaalaanpassing
+Voor automatisch schalen worden de volgende terminologie en structuur gebruikt.
 
-- Een **instelling voor automatisch schalen** wordt gelezen door de engine voor automatisch schalen om te bepalen of omhoog of omlaag schalen. Het bevat een of meer profielen, informatie over de doelresource en instellingen voor meldingen.
+- Een **instelling voor automatisch schalen** wordt gelezen door de engine voor automatisch schalen om te bepalen of u omhoog of omlaag wilt schalen. Het bevat een of meer profielen, informatie over de doel bron en meldings instellingen.
 
-  - Een **profiel voor automatisch schalen** is een combinatie van a:
+  - Een **profiel voor automatisch schalen** is een combi natie van een:
 
-    - **capaciteit**, wat aangeeft dat het minimum, maximum en standaardwaarden voor het aantal exemplaren.
-    - **verzameling van regels**, die elk een trigger (tijd of metrische gegevens) en een schaalactie (omhoog of omlaag) bevat.
-    - **terugkeerpatroon**, waarmee wordt aangegeven wanneer automatisch schalen moet dit profiel tot stand is gebracht.
+    - de **capaciteits instelling**, waarmee de minimum-, maximum-en standaard waarden voor het aantal exemplaren worden aangegeven.
+    - **set met regels**, elk met een trigger (tijd of metrische waarde) en een schaal actie (omhoog of omlaag).
+    - **terugkeer patroon**, waarmee wordt aangegeven wanneer dit profiel door automatisch schalen moet worden geplaatst.
 
-      U kunt meerdere profielen, waarmee u regelt verschillende overlappende vereisten hebben. U kunt profielen voor verschillende automatisch schalen voor verschillende tijdstippen van de dag of dagen van de week, bijvoorbeeld hebben.
+      U kunt meerdere profielen hebben, zodat u rekening moet houden met verschillende overlappende vereisten. U kunt bijvoorbeeld verschillende profielen voor automatisch schalen hebben voor verschillende tijdstippen van de dag of dagen van de week.
 
-  - Een **meldingsinstelling** wordt gedefinieerd welke meldingen moeten worden uitgevoerd als een gebeurtenis voor automatisch schalen op basis van die voldoet aan de criteria van een van de instelling voor automatisch schalen van profielen. Automatisch schalen kan een of meer e-mailadressen in kennis of aanroepen naar een of meer webhooks.
+  - Een **instelling voor meldingen** definieert welke meldingen moeten worden uitgevoerd wanneer een gebeurtenis voor automatisch schalen plaatsvindt op basis van het voldoen aan de criteria van een van de profiel instellingen voor automatisch schalen. Met automatisch schalen kunt u een of meer e-mail adressen melden of aanroepen naar een of meer webhooks.
 
 
-![Instelling voor automatisch schalen van Azure, het profiel en regelstructuur](./media/autoscale-overview/AzureResourceManagerRuleStructure3.png)
+![Instelling, profiel en regel structuur voor Azure automatisch schalen](./media/autoscale-overview/AzureResourceManagerRuleStructure3.png)
 
-De volledige lijst met velden kunnen worden geconfigureerd en beschrijvingen is beschikbaar in de [REST-API voor automatisch schalen](https://msdn.microsoft.com/library/dn931928.aspx).
+De volledige lijst met Configureer bare velden en beschrijvingen is beschikbaar in het [rest API automatisch schalen](https://msdn.microsoft.com/library/dn931928.aspx).
 
-Zie voor codevoorbeelden van
+Zie voor code voorbeelden.
 
-* [Geavanceerde configuratie van de voor automatisch schalen met behulp van Resource Manager-sjablonen voor VM-Schaalsets](../../azure-monitor/platform/autoscale-virtual-machine-scale-sets.md)  
-* [REST-API voor automatisch schalen](https://msdn.microsoft.com/library/dn931953.aspx)
+* [Geavanceerde configuratie voor automatisch schalen met Resource Manager-sjablonen voor VM Scale Sets](../../azure-monitor/platform/autoscale-virtual-machine-scale-sets.md)  
+* [REST API automatisch schalen](https://msdn.microsoft.com/library/dn931953.aspx)
 
-## <a name="horizontal-vs-vertical-scaling"></a>Horizontaal en verticaal schalen
-Automatisch schalen alleen kan worden geschaald horizontaal, dit is een toename ('uit') of te verlagen ('in') in het aantal VM-exemplaren.  Horizontale biedt meer flexibiliteit in het geval van een cloud omdat hiermee om uit te voeren mogelijk duizenden VM's om belasting te verwerken.
+## <a name="horizontal-vs-vertical-scaling"></a>Horizon taal versus verticaal schalen
+Automatisch schalen schaalt alleen horizon taal, wat een toename (' out ') of afneemt (in) in het aantal VM-exemplaren.  Horizon taal is flexibel in een Cloud situatie, omdat u mogelijk duizenden virtuele machines kunt uitvoeren om de belasting te verwerken.
 
-Daarentegen, verschilt verticaal schalen. Het houdt het aantal virtuele machines die dezelfde, maar zorgt ervoor dat de virtuele machines ("u") meer of minder ('down') krachtige. Power wordt gemeten in het geheugen, CPU-snelheid, schijfruimte, enz.  Verticaal schalen heeft meer beperkingen. Dit is afhankelijk van de beschikbaarheid van grotere hardware die snel komt binnen via een bovenlimiet en per regio kan verschillen. Verticaal schalen, moet ook meestal een virtuele machine te stoppen en opnieuw starten.
+Verticaal schalen daarentegen wijkt af van elkaar af. Het houdt hetzelfde aantal Vm's in, maar maakt de Vm's meer (' up ') of minder (' down ') krachtig. De kracht wordt gemeten in het geheugen, de CPU-snelheid, de schijf ruimte, enzovoort.  Verticaal schalen heeft meer beperkingen. Het is afhankelijk van de beschik baarheid van grotere hardware, waarmee snel een bovenlimiet kan worden bereikt en per regio kan variëren. Verticaal schalen vereist ook dat een virtuele machine wordt gestopt en opnieuw wordt opgestart.
 
-Zie voor meer informatie, [verticaal schalen met Azure Automation virtuele Azure-machine](../../virtual-machines/linux/vertical-scaling-automation.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
-## <a name="methods-of-access"></a>Methoden voor toegang
-U kunt automatisch schalen via instellen
+## <a name="methods-of-access"></a>Toegangs methoden
+U kunt automatisch schalen instellen via
 
-* [Azure Portal](../../azure-monitor/platform/autoscale-get-started.md)
+* [Azure-portal](../../azure-monitor/platform/autoscale-get-started.md)
 * [PowerShell](../../azure-monitor/platform/powershell-quickstart-samples.md#create-and-manage-autoscale-settings)
 * [Platformonafhankelijke opdrachtregelinterface (CLI)](../../azure-monitor/platform/cli-samples.md#autoscale)
 * [Azure Monitor REST API](https://msdn.microsoft.com/library/azure/dn931953.aspx)
 
 ## <a name="supported-services-for-autoscale"></a>Ondersteunde services voor automatisch schalen
-| Service | Schema en documenten |
+| Service | & Documenten voor schema |
 | --- | --- |
-| Web Apps |[Schalen van Web-Apps](../../azure-monitor/platform/autoscale-get-started.md) |
-| Cloud Services |[Automatisch schalen van een Service in de Cloud](../../cloud-services/cloud-services-how-to-scale-portal.md) |
-| Virtual Machines: Klassiek |[Beschikbaarheidssets voor klassieke virtuele machines schalen](https://blogs.msdn.microsoft.com/kaevans/2015/02/20/autoscaling-azurevirtual-machines/) |
-| Virtual Machines: Windows-Schaalsets |[Schalen van virtuele-machineschaalset Hiermee stelt u in Windows](../../virtual-machine-scale-sets/tutorial-autoscale-powershell.md) |
-| Virtual Machines: Linux-Schaalsets |[Schalen van virtuele-machineschaalset Hiermee stelt u in Linux](../../virtual-machine-scale-sets/tutorial-autoscale-cli.md) |
-| Virtual Machines: Windows-voorbeeld |[Geavanceerde configuratie van de voor automatisch schalen met behulp van Resource Manager-sjablonen voor VM-Schaalsets](../../azure-monitor/platform/autoscale-virtual-machine-scale-sets.md) |
+| Web Apps |[Web Apps schalen](../../azure-monitor/platform/autoscale-get-started.md) |
+| Cloud Services |[Een Cloud service automatisch schalen](../../cloud-services/cloud-services-how-to-scale-portal.md) |
+| Virtual Machines: Klassiek |[De beschik baarheid van klassieke virtuele machines schalen](https://blogs.msdn.microsoft.com/kaevans/2015/02/20/autoscaling-azurevirtual-machines/) |
+| Virtual Machines: Windows-schaal sets |[Schaal sets voor virtuele machines in Windows schalen](../../virtual-machine-scale-sets/tutorial-autoscale-powershell.md) |
+| Virtual Machines: Linux-schaal sets |[Schaal sets voor virtuele machines in Linux schalen](../../virtual-machine-scale-sets/tutorial-autoscale-cli.md) |
+| Virtual Machines: Windows-voor beeld |[Geavanceerde configuratie voor automatisch schalen met Resource Manager-sjablonen voor VM Scale Sets](../../azure-monitor/platform/autoscale-virtual-machine-scale-sets.md) |
 | API Management-service|[Exemplaar van Azure API Management automatisch schalen](https://docs.microsoft.com/azure/api-management/api-management-howto-autoscale)
 
 ## <a name="next-steps"></a>Volgende stappen
-Voor meer informatie over automatisch schalen, gebruik de Autoscale Walkthroughs eerder is vermeld, of raadpleegt u de volgende bronnen:
+Voor meer informatie over automatisch schalen gebruikt u de instructies voor automatisch schalen die eerder zijn vermeld of raadpleegt u de volgende bronnen:
 
-* [Azure Monitor voor automatisch schalen de algemene metrische gegevens](../../azure-monitor/platform/autoscale-common-metrics.md)
-* [Aanbevolen procedures voor automatisch schalen van Azure Monitor](../../azure-monitor/platform/autoscale-best-practices.md)
-* [Acties voor automatisch schalen gebruiken voor het verzenden van e-mail en webhook waarschuwingsmeldingen](../../azure-monitor/platform/autoscale-webhook-email.md)
-* [REST-API voor automatisch schalen](https://msdn.microsoft.com/library/dn931953.aspx)
-* [Oplossen van problemen met Virtual Machine Scale Sets automatisch schalen](../../virtual-machine-scale-sets/virtual-machine-scale-sets-troubleshoot.md)
+* [Azure Monitor automatisch schalen van algemene metrische gegevens](../../azure-monitor/platform/autoscale-common-metrics.md)
+* [Aanbevolen procedures voor Azure Monitor automatisch schalen](../../azure-monitor/platform/autoscale-best-practices.md)
+* [Acties voor automatisch schalen gebruiken om e-mail berichten en webhook-waarschuwings meldingen te verzenden](../../azure-monitor/platform/autoscale-webhook-email.md)
+* [REST API automatisch schalen](https://msdn.microsoft.com/library/dn931953.aspx)
+* [Problemen oplossen Virtual Machine Scale Sets automatisch schalen](../../virtual-machine-scale-sets/virtual-machine-scale-sets-troubleshoot.md)
 

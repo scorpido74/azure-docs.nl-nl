@@ -1,19 +1,19 @@
 ---
-title: Meer informatie over Digital Apparaatdubbels-object modellen en ruimtelijke Intelligence-grafiek | Microsoft Docs
+title: Meer informatie over Azure Digital Apparaatdubbels-object modellen en ruimtelijke Intelligence-grafiek | Microsoft Docs
 description: Gebruik Azure Digital Twins om relaties tussen mensen, plaatsen en apparaten te modelleren
+ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.author: alinast
-ms.openlocfilehash: 37f2afbd9bae4ca6bccc5062515f166687d8913c
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: 67a4aceb157ee3fe1b1d1553efd587a0f2838d88
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71177069"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71950010"
 ---
 # <a name="understand-digital-twins-object-models-and-spatial-intelligence-graph"></a>Meer informatie over Digital Apparaatdubbels-object modellen en ruimtelijke Intelligence-grafiek
 
@@ -23,7 +23,7 @@ Digital Apparaatdubbels-object modellen beschrijven domein-specifieke concepten,
 
 Met Digital Apparaatdubbels-object modellen en een Ontology op locatie kunt u een _ruimtelijke grafiek_vullen. Ruimtelijke grafieken zijn virtuele voors tellingen van de vele relaties tussen ruimten, apparaten en personen die relevant zijn voor een IoT-oplossing. Dit diagram toont een voor beeld van een ruimtelijke grafiek die gebruikmaakt van de Ontology van een slimme build.
 
-[![Digital Apparaatdubbels Spatial Graph built](media/concepts/digital-twins-spatial-graph-building.png)](media/concepts/digital-twins-spatial-graph-building.png#lightbox)
+[![Digital Apparaatdubbels ruimtelijk Graph-gebouw](media/concepts/digital-twins-spatial-graph-building.png)](media/concepts/digital-twins-spatial-graph-building.png#lightbox)
 
 Het ruimtelijke diagram brengt spaties, apparaten, Sens oren en gebruikers samen. Elk wordt aan elkaar gekoppeld op een manier die de echte wereld modelt. In dit voor beeld heeft de locatie 43 vier etages, elk met veel verschillende gebieden. Gebruikers zijn gekoppeld aan hun werk station en hebben toegang tot delen van de grafiek. Een beheerder heeft de rechten om wijzigingen aan te brengen in de ruimtelijke grafiek, terwijl een bezoeker rechten heeft om bepaalde bouw gegevens te bekijken.
 
@@ -31,28 +31,28 @@ Het ruimtelijke diagram brengt spaties, apparaten, Sens oren en gebruikers samen
 
 Digital Apparaatdubbels-object modellen ondersteunen deze hoofd categorieën van objecten:
 
-- **Ruimten** `Tenant`zijn virtuele of fysieke locaties, zoals `Customer` `Region` `Venue`,, en.
-- **Apparaten** zijn virtuele machines of fysieke onderdelen, bijvoorbeeld `AwesomeCompany Device` en. `Raspberry Pi 3`
-- **Sens oren** zijn objecten die gebeurtenissen detecteren, bijvoorbeeld `AwesomeCompany Temperature Sensor` en. `AwesomeCompany Presence Sensor`
+- **Ruimten** zijn virtuele of fysieke locaties, bijvoorbeeld `Tenant`, `Customer`, `Region` en `Venue`.
+- **Apparaten** zijn virtuele machines of fysieke onderdelen, bijvoorbeeld `AwesomeCompany Device` en `Raspberry Pi 3`.
+- **Sens oren** zijn objecten die gebeurtenissen detecteren, bijvoorbeeld `AwesomeCompany Temperature Sensor` en `AwesomeCompany Presence Sensor`.
 - **Gebruikers** identificeren inzittenden en hun kenmerken.
 
 Andere categorieën objecten zijn:
 
 - **Resources** zijn gekoppeld aan een ruimte en vertegenwoordigen doorgaans Azure-resources die worden gebruikt door objecten in de ruimtelijke grafiek, bijvoorbeeld `IoTHub`.
-- **Blobs** zijn gekoppeld aan objecten (zoals spaties, apparaten, Sens oren en gebruikers). Ze worden gebruikt als bestanden met MIME-type en meta gegevens, bijvoorbeeld `maps` `pictures`,, en `manuals`.
-- **Uitgebreide typen** zijn uitbreid bare opsommingen waarmee entiteiten met specifieke kenmerken, bijvoorbeeld `SpaceType` en `SpaceSubtype`, worden uitgebreid.
-- **Ontologies** `Default`vertegenwoordigen een set uitgebreide typen, bijvoorbeeld `Building` `BACnet` `EnergyGrid`,, en.
+- **Blobs** zijn gekoppeld aan objecten (zoals spaties, apparaten, Sens oren en gebruikers). Ze worden gebruikt als bestanden met MIME-type en meta gegevens, bijvoorbeeld `maps`, `pictures` en `manuals`.
+- **Uitgebreide typen** zijn uitbreid bare opsommingen die entiteiten uitbreiden met specifieke kenmerken, bijvoorbeeld `SpaceType` en `SpaceSubtype`.
+- **Ontologies** vertegenwoordigen een set uitgebreide typen, bijvoorbeeld `Default`, `Building`, `BACnet` en `EnergyGrid`.
 - **Eigenschaps sleutels en-waarden** zijn aangepaste kenmerken van ruimten, apparaten, Sens oren en gebruikers. Ze kunnen worden gebruikt in combi natie met ingebouwde kenmerken, bijvoorbeeld `DeltaProcessingRefreshTime` als sleutel en `10` als waarde.
-- **Rollen** zijn sets machtigingen die zijn toegewezen aan gebruikers en apparaten in de ruimtelijke grafiek, bijvoorbeeld `Space Administrator` `User Administrator`,, en `Device Administrator`.
+- **Rollen** zijn sets machtigingen die zijn toegewezen aan gebruikers en apparaten in de ruimtelijke grafiek, bijvoorbeeld `Space Administrator`, `User Administrator` en `Device Administrator`.
 - **Roltoewijzingen** zijn de koppeling tussen een rol en een object in de ruimtelijke grafiek. U kunt bijvoorbeeld een gebruiker of een Service-Principal machtigen voor het beheren van een ruimte in het ruimtelijke diagram.
 - **Beveiligings sleutel archieven** bieden de beveiligings sleutels voor alle apparaten in de hiërarchie onder een bepaald ruimte-object, zodat het apparaat veilig kan communiceren met Digital apparaatdubbels.
-- Door de **gebruiker gedefinieerde functies** (UDFs) Hiermee kunt u de verwerking van de telemetrie-sensor aanpassen binnen het ruimtelijke diagram. Een UDF kan bijvoorbeeld:
+- Met door de **gebruiker gedefinieerde functies** (udf's) kunnen aanpas bare Sens-metrie-verwerking binnen de ruimtelijke grafiek worden toegestaan. Een UDF kan bijvoorbeeld:
   - Stel een sensor waarde in.
   - Voer aangepaste logica uit op basis van sensor-Lees bewerkingen en stel de uitvoer in op een spatie.
   - Meta gegevens koppelen aan een ruimte.
   - Meldingen verzenden wanneer wordt voldaan aan vooraf gedefinieerde voor waarden. Op dit moment kunnen Udf's worden geschreven in Java script.
 - **Matchers** zijn objecten die bepalen welke udf's worden uitgevoerd voor een gegeven telemetrie-bericht.
-- **Eind punten** zijn de locaties waar telemetrie-berichten en digitale apparaatdubbels-gebeurtenissen kunnen worden gerouteerd, bijvoorbeeld `Event Hub` `Service Bus`,, en `Event Grid`.
+- **Eind punten** zijn de locaties waar telemetrie-berichten en digitale apparaatdubbels-gebeurtenissen kunnen worden gerouteerd, bijvoorbeeld `Event Hub`, `Service Bus` en `Event Grid`.
 
 ## <a name="spatial-intelligence-graph"></a>Grafiek voor ruimtelijke intelligentie
 

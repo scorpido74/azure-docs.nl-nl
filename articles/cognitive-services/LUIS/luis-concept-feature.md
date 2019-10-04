@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: 829054064a21b2fb8da2bd975501bfcd0840e7eb
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: dab4b4c6f41a95623a40e5d3fd859f9613afac27
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624571"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71949601"
 ---
 # <a name="phrase-list-features-in-your-luis-app"></a>Woordgroepen lijst functies in uw LUIS-app
 
@@ -46,14 +46,7 @@ Woordgroepen lijsten zijn niet gekoppeld aan een specifieke intentie of entiteit
 
 Wanneer u enkele woorden of zinsdelen hebt ingevoerd, gebruikt u de functie **Aanbevolen** om verwante waarden te vinden. Controleer de gerelateerde waarden voordat u deze toevoegt aan de lijst waarden van de woordgroepen.
 
-|Lijsttype|Doel|
-|--|--|
-|Uitwisselbaar|Synoniemen of woorden die, wanneer ze worden gewijzigd in een ander woord in de lijst, dezelfde intentie en entiteits extractie hebben.|
-|Niet-verwisselbaar|App-vocabulaire, specifiek voor uw app, meer dan over de meeste andere woorden in die taal.|
-
-### <a name="interchangeable-lists"></a>Verwissel bare lijsten
-
-Een lijst met verwisselbaar woordgroepen is voor waarden die synoniemen zijn. Bijvoorbeeld, als u wilt dat alle water lichamen worden gevonden en u bijvoorbeeld uitingen hebt zoals: 
+Een woordgroepen lijst is voor waarden die synoniemen zijn. Bijvoorbeeld, als u wilt dat alle water lichamen worden gevonden en u bijvoorbeeld uitingen hebt zoals: 
 
 * Welke steden bevinden zich dicht bij de fantastische meren? 
 * Wat is de weg van meer dan Lake Havasu?
@@ -65,17 +58,7 @@ Elk utterance moet worden vastgesteld voor zowel de intentie als de entiteiten o
 * Wat loopt de weg langs [bodyOfWater]?
 * Waar wordt de [bodyOfWater] gestart en eindigen? 
 
-Omdat de woorden of zinsdelen voor het water lichaam synoniemen zijn en kunnen worden gebruikt door elkaar in de uitingen, gebruikt u de instelling die kan worden **gewijzigd** in de lijst met zinsdelen. 
-
-### <a name="non-interchangeable-lists"></a>Niet-Verwissel bare lijsten
-
-Een niet-verwisselbaar woordgroepen lijst is een signaal dat detectie naar LUIS verhoogt. De lijst met zinsdelen geeft woorden of zinsdelen aan die belang rijker zijn dan andere woorden. Dit helpt bij het bepalen van de intentie en de entiteits detectie. Stel dat u een onderwerps domein hebt, zoals een globaal traject (dat wil zeggen over cult uren, maar nog steeds in één taal). Er zijn woorden en zinsdelen die belang rijk zijn voor de app, maar die niet synoniem zijn. 
-
-Voor een ander voor beeld gebruikt u een niet-verwisselbaar woordgroepen lijst voor zeldzame, bedrijfs eigen en vreemde woorden. LUIS is mogelijk niet worden herkend zeldzame en eigen woorden, evenals de woorden in vreemde talen (buiten de cultuur van de app). De niet-verwisselbaar instelling geeft aan dat de set zeldzaam woorden vormt een klasse die LUIS moet leren herkennen, maar ze niet synoniemen zijn of uitwisselbaar met elkaar.
-
-Voeg niet alle mogelijke woorden of woord groepen toe aan een woordgroepen lijst, voeg enkele woorden of zinsdelen per keer toe en voer ze vervolgens opnieuw uit. 
-
-Wanneer de lijst met zinsdelen langer duurt, zijn er mogelijk enkele formulieren (synoniemen). Verbreek deze naar een andere woordgroepen lijst die kan worden gewijzigd. 
+Omdat de woorden of zinsdelen voor het water lichaam synoniemen zijn en kunnen worden gebruikt in de uitingen. 
 
 <a name="phrase-lists-help-identify-simple-exchangeable-entities"></a>
 

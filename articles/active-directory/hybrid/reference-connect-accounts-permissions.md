@@ -13,16 +13,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 09/25/2019
+ms.date: 10/03/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8e7bd33d74d9ecf6ebc35981df7255ecc19253c7
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.openlocfilehash: 72ae1301be4a3a3c086961aae72fb9eeb12aeda2
+ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71812602"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71960234"
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect: Accounts en machtigingen
 
@@ -48,10 +48,10 @@ Naast deze drie accounts die worden gebruikt om Azure AD Connect uit te voeren, 
 
 - **SQL-SA-account (optioneel)** : wordt gebruikt voor het maken van de ADSync-data base wanneer de volledige versie van SQL Server wordt gebruikt.  Deze SQL Server kan lokaal of extern zijn voor de Azure AD Connect installatie.  Dit account kan hetzelfde account zijn als de ondernemings beheerder.  Het inrichten van de data base kan nu buiten de band worden uitgevoerd door de SQL-beheerder en vervolgens worden geïnstalleerd door de beheerder van de Azure AD Connect met de rechten van de data base-eigenaar.  Zie voor meer informatie [installeren Azure AD Connect met behulp van SQL delegated Administrator Permissions](how-to-connect-install-sql-delegation.md)
 
-<<<<<<< HEAD
+
 >[!IMPORTANT]
 > Vanaf build 1.4. # # #. # het is niet meer mogelijk om een ondernemings Administrator of een domein beheerders account te gebruiken als AD DS Connector-account.  Als u probeert een account in te voeren dat een ondernemings beheerder of domein beheerder is wanneer u **bestaand account gebruiken**opgeeft, wordt er een fout bericht weer gegeven.
-=======
+
 > [!NOTE]
 > Het wordt ondersteund voor het beheren van de beheer accounts die worden gebruikt in Azure AD Connect vanuit een ESAE-beheer forest (ook wel bekend als ' rode forest ').
 > Met specifieke administratieve forests kunnen organisaties beheerders accounts, werk stations en groepen hosten in een omgeving met betere beveiligings controles dan de productie omgeving.
@@ -134,7 +134,7 @@ Hier volgt een samen vatting van de pagina's van de wizard Aangepaste installati
 >[!IMPORTANT]
 >Er is een nieuwe Power shell-module met de naam ADSyncConfig. psm1 geïntroduceerd met build **1.1.880.0** (uitgebracht in augustus 2018) die een verzameling cmdlets bevat waarmee u de juiste Active Directory machtigingen voor het account van de Azure AD DS-connector kunt configureren.
 >
->Zie [Azure AD Connect voor meer informatie: Machtigingen voor AD DS Connector-account configureren](how-to-connect-configure-ad-ds-connector-account.md)
+>Zie voor meer informatie [Azure AD Connect: Machtigingen voor het AD DS-Connector account configureren @ no__t-0
 
 Het account dat u opgeeft op de pagina **verbinding maken met uw adres lijsten** moet aanwezig zijn in Active Directory vóór de installatie.  Azure AD Connect versie 1.1.524.0 en hoger beschikt over de mogelijkheid om de Azure AD Connect wizard te laten maken van het **AD DS Connector-account** dat wordt gebruikt om verbinding met Active Directory te maken.  
 
@@ -249,9 +249,9 @@ De naam van de server waarop het account wordt gebruikt, kan worden geïdentific
 
 Het account wordt gemaakt met een lang complex wacht woord dat niet verloopt. Er wordt een speciale **Directory synchronisatie-accounts** met rollen verleend die alleen machtigingen hebben voor het uitvoeren van Directory synchronisatie taken. Deze speciale ingebouwde rol kan niet worden verleend buiten de Azure AD Connect wizard. De Azure Portal geeft dit account weer met de rol **gebruiker**.
 
-Er is een limiet van 20 synchronisatie service-accounts in azure AD. Als u de lijst met bestaande Azure AD-service accounts in uw Azure AD wilt ophalen, voert u de volgende Azure AD Power shell-cmdlet uit:`Get-AzureADDirectoryRole | where {$_.DisplayName -eq "Directory Synchronization Accounts"} | Get-AzureADDirectoryRoleMember`
+Er is een limiet van 20 synchronisatie service-accounts in azure AD. Als u de lijst met bestaande Azure AD-service accounts in uw Azure AD wilt ophalen, voert u de volgende Azure AD Power shell-cmdlet uit: `Get-AzureADDirectoryRole | where {$_.DisplayName -eq "Directory Synchronization Accounts"} | Get-AzureADDirectoryRoleMember`
 
-Als u ongebruikte Azure AD-service accounts wilt verwijderen, voert u de volgende Azure AD Power shell-cmdlet uit:`Remove-AzureADUser -ObjectId <ObjectId-of-the-account-you-wish-to-remove>`
+Als u ongebruikte Azure AD-service accounts wilt verwijderen, voert u de volgende Azure AD Power shell-cmdlet uit: `Remove-AzureADUser -ObjectId <ObjectId-of-the-account-you-wish-to-remove>`
 
 >[!NOTE]
 >Voordat u de bovenstaande Power shell-opdrachten kunt gebruiken, moet u de [Azure Active Directory Power shell for Graph-module](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0#installing-the-azure-ad-module) installeren en verbinding maken met uw exemplaar van Azure AD via [Connect-AzureAD](https://docs.microsoft.com/powershell/module/azuread/connect-azuread?view=azureadps-2.0)

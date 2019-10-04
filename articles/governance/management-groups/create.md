@@ -10,12 +10,12 @@ ms.workload: na
 ms.date: 04/05/2019
 ms.author: rithorn
 ms.topic: conceptual
-ms.openlocfilehash: 7b5ee5bfe4b7498bc13ff0c8582b49fed8478e0a
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: 1b53d8a15e6ca1d4fc5a8ed6d58e526fadd12466
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71337788"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71949006"
 ---
 # <a name="create-management-groups-for-resource-organization-and-management"></a>Beheer groepen maken voor resource organisatie en-beheer
 
@@ -31,9 +31,13 @@ U kunt de beheer groep maken met behulp van de portal, Power shell of Azure CLI.
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
-1. Selecteer **alle services** > -**beheer groepen**.
+1. Selecteer **alle services** > **Management + governance**.
 
-1. Selecteer **nieuwe beheer groep**op de hoofd pagina.
+1. **Cost Management en facturering** selecteren
+
+1. Selecteer op de pagina Cost Management + facturering-beheer groepen **beheergroepen**
+
+1. Selecteer **+ beheer groep toevoegen**.
 
    ![Pagina voor het werken met beheer groepen](./media/main.png)
 

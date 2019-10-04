@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 08/12/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 9796a4efdacef04390705607defb7b5cdd462886
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 704c1cdf95424bffa19e0946d13fa45d1b520753
+ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828730"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71959938"
 ---
 # <a name="managed-instance-t-sql-differences-limitations-and-known-issues"></a>T-SQL-verschillen, beperkingen en bekende problemen met beheerde exemplaren
 
@@ -27,8 +27,8 @@ In dit artikel vindt u een overzicht van de verschillen in de syntaxis en het ge
 Er zijn enkele PaaS-beperkingen die worden geïntroduceerd in een beheerde instantie en sommige gedrags wijzigingen vergeleken met SQL Server. De verschillen zijn onderverdeeld in de volgende categorieën:<a name="Differences"></a>
 
 - [Beschik baarheid](#availability) omvat de verschillen in [altijd](#always-on-availability) en [back-ups](#backup).
-- [Beveiliging](#security) omvat de verschillen in [controle](#auditing), [certificaten](#certificates), [referenties](#credential), [cryptografische providers](#cryptographic-providers), aanmeldingen [en gebruikers](#logins-and-users), en de [Service sleutel en service hoofd sleutel](#service-key-and-service-master-key).
-- De [configuratie](#configuration) bevat de verschillen [in de](#buffer-pool-extension)buffergroepuitbreiding, [sortering](#collation), [compatibiliteits niveaus](#compatibility-levels), [database spiegeling](#database-mirroring), [database opties](#database-options), [SQL Server Agent](#sql-server-agent)en [tabel opties](#tables).
+- [Beveiliging](#security) omvat de verschillen in [controle](#auditing), [certificaten](#certificates), [referenties](#credential), [cryptografische providers](#cryptographic-providers), [aanmeldingen en gebruikers](#logins-and-users), en de [Service sleutel en service hoofd sleutel](#service-key-and-service-master-key).
+- De [configuratie](#configuration) bevat de verschillen [in de buffergroepuitbreiding](#buffer-pool-extension), [sortering](#collation), [compatibiliteits niveaus](#compatibility-levels), [database spiegeling](#database-mirroring), [database opties](#database-options), [SQL Server Agent](#sql-server-agent)en [tabel opties](#tables).
 - De [functies](#functionalities) omvatten [Bulk Insert/OPENROWSET](#bulk-insert--openrowset), [CLR](#clr), [DBCC](#dbcc), [Distributed trans actions](#distributed-transactions), [Extended Events](#extended-events), [externe bibliotheken](#external-libraries), [FileStream en bestands tabel](#filestream-and-filetable), [volledige tekst Semantisch zoeken](#full-text-semantic-search), [gekoppelde servers](#linked-servers), [poly base](#polybase), [replicatie](#replication), [herstel](#restore-statement), [Service Broker](#service-broker), [opgeslagen procedures, functies en triggers](#stored-procedures-functions-and-triggers).
 - [Omgevings instellingen](#Environment) , zoals VNets en subnet-configuraties.
 
@@ -50,31 +50,31 @@ Op deze pagina worden ook [tijdelijke bekende problemen](#Issues) beschreven die
 
 ### <a name="backup"></a>Back-up
 
-Beheerde exemplaren hebben automatische back-ups, zodat gebruikers volledige database `COPY_ONLY` back-ups kunnen maken. Differentiële back-ups, logboek bestanden en moment opnamen van bestands momentopnamen worden niet ondersteund.
+Beheerde exemplaren hebben automatische back-ups, zodat gebruikers volledige data base-`COPY_ONLY`-back-ups kunnen maken. Differentiële back-ups, logboek bestanden en moment opnamen van bestands momentopnamen worden niet ondersteund.
 
 - Met een beheerd exemplaar kunt u een back-up maken van een exemplaar database alleen naar een Azure Blob Storage-account:
   - Alleen `BACKUP TO URL` wordt ondersteund.
-  - `FILE`, `TAPE`en back-upapparaten worden niet ondersteund.
-- De meeste algemene `WITH` opties worden ondersteund.
-  - `COPY_ONLY`is verplicht.
-  - `FILE_SNAPSHOT`wordt niet ondersteund.
-  - Tape opties: `REWIND` `NOREWIND` ,`UNLOAD`, en`NOUNLOAD` worden niet ondersteund.
-  - Opties die specifiek zijn voor `NORECOVERY`het `STANDBY`logboek: `NO_TRUNCATE` , en worden niet ondersteund.
+  - `FILE`, `TAPE` en back-upapparaten worden niet ondersteund.
+- De meeste opties voor algemeen `WITH` worden ondersteund.
+  - `COPY_ONLY` is verplicht.
+  - `FILE_SNAPSHOT` wordt niet ondersteund.
+  - Tape opties: `REWIND`, `NOREWIND`, `UNLOAD` en `NOUNLOAD` worden niet ondersteund.
+  - Opties voor het logboek: `NORECOVERY`, `STANDBY` en `NO_TRUNCATE` worden niet ondersteund.
 
 Beperkingen: 
 
 - Met een beheerd exemplaar kunt u een back-up maken van een exemplaar database met Maxi maal 32 stroken, die voldoende is voor data bases tot 4 TB als back-upcompressie wordt gebruikt.
-- U kunt niet `BACKUP DATABASE ... WITH COPY_ONLY` uitvoeren op een Data Base die is versleuteld met door service beheerde transparent Data Encryption (TDE). Door service beheerde TDE zorgt ervoor dat back-ups worden versleuteld met een interne TDE-sleutel. De sleutel kan niet worden geëxporteerd, dus u kunt de back-up niet herstellen. Gebruik automatische back-ups en herstel naar een bepaald tijdstip, of gebruik in plaats daarvan door de [klant beheerde (BYOK) TDe](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-azure-sql#customer-managed-transparent-data-encryption---bring-your-own-key) . U kunt versleuteling ook uitschakelen voor de data base.
-- De maximale grootte van de back-upstripe `BACKUP` met behulp van de opdracht in een beheerd exemplaar is 195 GB. Dit is de maximale grootte van de blob. Verhoog het aantal Stripes in de back-upopdracht om de afzonderlijke Stripe-grootte te verminderen en binnen deze limiet te blijven.
+- U kunt `BACKUP DATABASE ... WITH COPY_ONLY` niet uitvoeren op een Data Base die is versleuteld met een door de service beheerde Transparent Data Encryption (TDE). Door service beheerde TDE zorgt ervoor dat back-ups worden versleuteld met een interne TDE-sleutel. De sleutel kan niet worden geëxporteerd, dus u kunt de back-up niet herstellen. Gebruik automatische back-ups en herstel naar een bepaald tijdstip, of gebruik in plaats daarvan door de [klant beheerde (BYOK) TDe](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-azure-sql#customer-managed-transparent-data-encryption---bring-your-own-key) . U kunt versleuteling ook uitschakelen voor de data base.
+- De maximale grootte van de back-upstripe met de `BACKUP`-opdracht in een beheerd exemplaar is 195 GB. Dit is de maximale grootte van de blob. Verhoog het aantal Stripes in de back-upopdracht om de afzonderlijke Stripe-grootte te verminderen en binnen deze limiet te blijven.
 
     > [!TIP]
     > Als u een back-up van een Data Base maakt vanuit een van SQL Server in een on-premises omgeving of op een virtuele machine, kunt u het volgende doen om deze beperking te omzeilen:
     >
-    > - Maak een back `DISK` -up in plaats van een `URL`back-up te maken naar.
+    > - Maak een back-up naar `DISK` in plaats van een back-up te maken naar `URL`.
     > - Upload de back-upbestanden naar de Blob-opslag.
     > - Herstel naar het beheerde exemplaar.
     >
-    > De `Restore` opdracht in een beheerd exemplaar ondersteunt grotere BLOB-grootten in de back-upbestanden omdat een ander type BLOB wordt gebruikt voor het opslaan van de geüploade back-upbestanden.
+    > De `Restore`-opdracht in een beheerd exemplaar ondersteunt grotere BLOB-grootten in de back-upbestanden omdat een ander type BLOB wordt gebruikt voor het opslaan van de geüploade back-upbestanden.
 
 Zie [back-up](https://docs.microsoft.com/sql/t-sql/statements/backup-transact-sql)voor informatie over back-ups met behulp van T-SQL.
 
@@ -90,10 +90,10 @@ De belangrijkste verschillen tussen controles in data bases in Azure SQL Databas
  
 XEvent-controle in een beheerd exemplaar ondersteunt Azure Blob-opslag doelen. Bestands-en Windows-logboeken worden niet ondersteund.
 
-De belangrijkste verschillen in de `CREATE AUDIT` syntaxis voor de controle van Azure Blob-opslag zijn:
+De belangrijkste verschillen in de syntaxis van de `CREATE AUDIT` voor de controle van Azure Blob-opslag zijn:
 
-- Er wordt een `TO URL` nieuwe syntaxis opgegeven die u kunt gebruiken om de URL op te geven van de Azure Blob Storage `.xel` -container waar de bestanden worden geplaatst.
-- De syntaxis `TO FILE` wordt niet ondersteund omdat een beheerd exemplaar geen toegang krijgt tot Windows-bestands shares.
+- Er wordt een nieuwe syntaxis `TO URL` opgegeven die u kunt gebruiken om de URL op te geven van de Azure Blob Storage-container waarin de `.xel`-bestanden worden geplaatst.
+- De syntaxis `TO FILE` wordt niet ondersteund omdat een beheerd exemplaar geen toegang kan krijgen tot Windows-bestands shares.
 
 Zie voor meer informatie: 
 
@@ -105,8 +105,8 @@ Zie voor meer informatie:
 
 Een beheerd exemplaar heeft geen toegang tot bestands shares en Windows-mappen, dus de volgende beperkingen zijn van toepassing:
 
-- Het `CREATE FROM` bestandwordtniet`BACKUP TO` ondersteund voor certificaten. /
-- Het `CREATE` certificaat/van wordtniet`FILE` ondersteund. / `BACKUP` `ASSEMBLY` Persoonlijke sleutel bestanden kunnen niet worden gebruikt. 
+- Het `CREATE FROM` @ no__t-1 @ no__t-2-bestand wordt niet ondersteund voor certificaten.
+- Het `CREATE` @ no__t-1 @ no__t-2-certificaat van `FILE` @ no__t-4 @ no__t-5 wordt niet ondersteund. Persoonlijke sleutel bestanden kunnen niet worden gebruikt. 
 
 Zie [certificaat](https://docs.microsoft.com/sql/t-sql/statements/create-certificate-transact-sql) en [back-upcertificaat](https://docs.microsoft.com/sql/t-sql/statements/backup-certificate-transact-sql)maken. 
  
@@ -120,7 +120,7 @@ WITH PRIVATE KEY (<private_key_options>)
 
 ### <a name="credential"></a>Referentie
 
-Alleen Azure Key Vault en `SHARED ACCESS SIGNATURE` identiteiten worden ondersteund. Windows-gebruikers worden niet ondersteund.
+Alleen Azure Key Vault en `SHARED ACCESS SIGNATURE`-identiteiten worden ondersteund. Windows-gebruikers worden niet ondersteund.
 
 Zie [referentie maken](https://docs.microsoft.com/sql/t-sql/statements/create-credential-transact-sql) en [referenties wijzigen](https://docs.microsoft.com/sql/t-sql/statements/alter-credential-transact-sql).
 
@@ -128,19 +128,19 @@ Zie [referentie maken](https://docs.microsoft.com/sql/t-sql/statements/create-cr
 
 Een beheerd exemplaar heeft geen toegang tot bestanden, zodat er geen cryptografische providers kunnen worden gemaakt:
 
-- `CREATE CRYPTOGRAPHIC PROVIDER`wordt niet ondersteund. Zie [Cryptografische provider maken](https://docs.microsoft.com/sql/t-sql/statements/create-cryptographic-provider-transact-sql).
-- `ALTER CRYPTOGRAPHIC PROVIDER`wordt niet ondersteund. Zie [ALTER CRYPTOGRAPHIC provider](https://docs.microsoft.com/sql/t-sql/statements/alter-cryptographic-provider-transact-sql).
+- `CREATE CRYPTOGRAPHIC PROVIDER` wordt niet ondersteund. Zie [Cryptografische provider maken](https://docs.microsoft.com/sql/t-sql/statements/create-cryptographic-provider-transact-sql).
+- `ALTER CRYPTOGRAPHIC PROVIDER` wordt niet ondersteund. Zie [ALTER CRYPTOGRAPHIC provider](https://docs.microsoft.com/sql/t-sql/statements/alter-cryptographic-provider-transact-sql).
 
 ### <a name="logins-and-users"></a>Aanmeldingen en gebruikers
 
-- SQL-aanmeldingen die `FROM CERTIFICATE`zijn `FROM ASYMMETRIC KEY`gemaakt met `FROM SID` behulp van, en worden ondersteund. Zie [login maken](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql).
+- SQL-aanmeldingen die zijn gemaakt met behulp van `FROM CERTIFICATE`, `FROM ASYMMETRIC KEY` en `FROM SID` worden ondersteund. Zie [login maken](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql).
 - Azure Active Directory (Azure AD) server-principals (aanmeldingen) die zijn gemaakt met de syntaxis voor het maken van een [aanmelding](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current) of de syntaxis voor het [maken van een gebruiker op basis van aanmelding [Azure AD login]](https://docs.microsoft.com/sql/t-sql/statements/create-user-transact-sql?view=azuresqldb-mi-current) worden ondersteund (open bare preview). Deze aanmeldingen worden gemaakt op server niveau.
 
-    Het beheerde exemplaar ondersteunt Azure AD-data base-principals met de syntaxis `CREATE USER [AADUser/AAD group] FROM EXTERNAL PROVIDER`. Deze functie is ook bekend als Azure AD, Inge sloten database gebruikers.
+    Het beheerde exemplaar ondersteunt Azure AD-databaseprincipal met de syntaxis `CREATE USER [AADUser/AAD group] FROM EXTERNAL PROVIDER`. Deze functie is ook bekend als Azure AD, Inge sloten database gebruikers.
 
-- Windows-aanmeldingen die `CREATE LOGIN ... FROM WINDOWS` met de syntaxis worden gemaakt, worden niet ondersteund. Gebruik Azure Active Directory aanmeldingen en gebruikers.
+- Windows-aanmeldingen die zijn gemaakt met de syntaxis van @no__t 0, worden niet ondersteund. Gebruik Azure Active Directory aanmeldingen en gebruikers.
 - De Azure AD-gebruiker die het exemplaar heeft gemaakt, heeft [onbeperkte beheerders bevoegdheden](sql-database-manage-logins.md#unrestricted-administrative-accounts).
-- Gebruikers van Azure AD-data bases die geen beheerder zijn, kunnen worden `CREATE USER ... FROM EXTERNAL PROVIDER` gemaakt met behulp van de syntaxis. Zie [gebruiker maken... VAN EXTERNE PROVIDER](sql-database-manage-logins.md#non-administrator-users).
+- Gebruikers van Azure AD-data bases die geen beheerder zijn, kunnen worden gemaakt met behulp van de `CREATE USER ... FROM EXTERNAL PROVIDER`-syntaxis. Zie [CREATE gebruiker... VAN EXTERNE PROVIDER @ NO__T-0.
 - Azure AD server-principals (aanmeldingen) bieden alleen ondersteuning voor SQL-functies binnen één Managed instance. Functies waarvoor cross-instance interacties zijn vereist, ongeacht of deze zich binnen dezelfde Azure AD-Tenant of andere tenants bevinden, worden niet ondersteund voor Azure AD-gebruikers. Voor beelden van deze functies zijn:
 
   - SQL transactionele replicatie.
@@ -150,7 +150,7 @@ Een beheerd exemplaar heeft geen toegang tot bestanden, zodat er geen cryptograf
 - Imitatie van Azure AD-principals op server niveau met behulp van andere Azure AD-principals wordt ondersteund, zoals de component [Execute as](/sql/t-sql/statements/execute-as-transact-sql) . UITVOEREN als beperkingen zijn:
 
   - UITVOEREN als gebruiker wordt niet ondersteund voor Azure AD-gebruikers wanneer de naam verschilt van de aanmeldings naam. Een voor beeld hiervan is wanneer de gebruiker wordt gemaakt via de syntaxis CREATE USER [myAadUser] FROM LOGIN [john@contoso.com] en imitatie wordt geprobeerd via de opdracht USER = _myAadUser_. Wanneer u een **gebruiker** maakt op basis van een Azure ad-server-principal (aanmelden), geeft u de gebruikers naam als dezelfde Login_name van **aanmelding**.
-  - Alleen de principals op het SQL server niveau (aanmeldingen) die deel uitmaken van de `sysadmin` rol kunnen de volgende bewerkingen uitvoeren die zijn gericht op Azure AD-principals:
+  - Alleen de principals op het SQL Server niveau (aanmeldingen) die deel uitmaken van de `sysadmin`-rol kunnen de volgende bewerkingen uitvoeren die zijn gericht op Azure AD-principals:
 
     - EXECUTE AS USER
     - EXECUTE AS LOGIN
@@ -159,16 +159,16 @@ Een beheerd exemplaar heeft geen toegang tot bestanden, zodat er geen cryptograf
 
   - Beperkingen voor Active Directory beheerder voor het beheerde exemplaar:
 
-    - De Azure AD-beheerder die wordt gebruikt voor het instellen van het beheerde exemplaar kan niet worden gebruikt voor het maken van een Azure AD-server-principal (aanmelden) binnen het beheerde exemplaar. U moet de eerste Azure ad server-principal (login) maken met behulp van een SQL Server account `sysadmin` dat een rol is. Deze tijdelijke beperking wordt verwijderd nadat de Azure AD-server-principals (aanmeldingen) algemeen beschikbaar zijn. Als u probeert een Azure AD-beheerders account te gebruiken om de aanmelding te maken, ziet u de volgende fout:`Msg 15247, Level 16, State 1, Line 1 User does not have permission to perform this action.`
-      - Op dit moment moet de eerste Azure AD-aanmelding die in de hoofd database wordt gemaakt, worden gemaakt door de standaard SQL Server account (niet-Azure `sysadmin` AD) dat een rol is met behulp van aanmelding bij externe provider [maken](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current) . Na algemene Beschik baarheid wordt deze beperking verwijderd. Vervolgens kunt u een eerste Azure AD-aanmelding maken met behulp van de Active Directory beheerder voor een beheerd exemplaar.
+    - De Azure AD-beheerder die wordt gebruikt voor het instellen van het beheerde exemplaar kan niet worden gebruikt voor het maken van een Azure AD-server-principal (aanmelden) binnen het beheerde exemplaar. U moet de eerste Azure AD server-principal (login) maken met behulp van een SQL Server-account dat een `sysadmin`-rol is. Deze tijdelijke beperking wordt verwijderd nadat de Azure AD-server-principals (aanmeldingen) algemeen beschikbaar zijn. Als u probeert een Azure AD-beheerders account te gebruiken om de aanmelding te maken, ziet u de volgende fout: `Msg 15247, Level 16, State 1, Line 1 User does not have permission to perform this action.`
+      - Op dit moment moet de eerste Azure AD-aanmelding die in de hoofd database wordt gemaakt, worden gemaakt door de standaard SQL Server account (niet-Azure AD) dat een `sysadmin`-rol is met behulp van [aanmeldings gegevens](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current) van externe provider maken. Na algemene Beschik baarheid wordt deze beperking verwijderd. Vervolgens kunt u een eerste Azure AD-aanmelding maken met behulp van de Active Directory beheerder voor een beheerd exemplaar.
     - DacFx (exporteren/importeren) met SQL Server Management Studio of SqlPackage wordt niet ondersteund voor Azure AD-aanmeldingen. Deze beperking wordt verwijderd nadat de Azure AD-server-principals (aanmeldingen) algemeen beschikbaar zijn.
     - Met behulp van Azure AD server-principals (aanmeldingen) met SQL Server Management Studio:
 
       - Het uitvoeren van scripts voor Azure AD-aanmeldingen die gebruikmaken van een geverifieerde aanmelding, wordt niet ondersteund.
       - IntelliSense herkent de instructie aanmelden van externe PROVIDER maken niet en toont een rode onderstreping.
 
-- Alleen de principal-aanmelding op server niveau, die wordt gemaakt door het proces van het inrichten van het beheerde exemplaar, leden van de server `securityadmin` functies `sysadmin`, zoals of, of andere aanmeldingen met wijziging van de machtiging Aanmelden op server niveau, kunnen Azure AD maken Server-principals (aanmeldingen) in de hoofd database voor een beheerd exemplaar.
-- Als de aanmelding een SQL-principal is, kunnen alleen aanmeldingen die deel `sysadmin` uitmaken van de rol de opdracht Create gebruiken om aanmeldingen voor een Azure ad-account te maken.
+- Alleen de principal-aanmelding op server niveau, die door het inrichtings proces van het beheerde exemplaar wordt gemaakt, leden van de server functies, zoals `securityadmin` of `sysadmin`, of andere aanmeldingen waarbij elke AANMELDINGS machtiging op server niveau is gewijzigd, kunnen Azure AD-server-principals maken (aanmeldingen) in de hoofd database voor een beheerd exemplaar.
+- Als de aanmelding een SQL-principal is, kunnen alleen aanmeldingen die deel uitmaken van de functie `sysadmin`, de opdracht maken gebruiken om aanmeldingen voor een Azure AD-account in te stellen.
 - De Azure AD-aanmelding moet lid zijn van een Azure AD in dezelfde map die wordt gebruikt voor Azure SQL Database Managed instance.
 - Azure AD server-principals (aanmeldingen) zijn zichtbaar in Objectverkenner vanaf SQL Server Management Studio 18,0 Preview 5.
 - Het is niet toegestaan Azure AD-server-principals (aanmeldingen) te overlappen met een Azure AD-beheerders account. Azure AD server-principals (aanmeldingen) hebben voor rang op de Azure AD-beheerder wanneer u de principal oplost en machtigingen toepast op het beheerde exemplaar.
@@ -193,11 +193,11 @@ Een beheerd exemplaar heeft geen toegang tot bestanden, zodat er geen cryptograf
 ### <a name="buffer-pool-extension"></a>Extensie van buffer groep
 
 - De [buffergroepuitbreiding](https://docs.microsoft.com/sql/database-engine/configure-windows/buffer-pool-extension) wordt niet ondersteund.
-- `ALTER SERVER CONFIGURATION SET BUFFER POOL EXTENSION`wordt niet ondersteund. Zie [ALTER Server Configuration](https://docs.microsoft.com/sql/t-sql/statements/alter-server-configuration-transact-sql).
+- `ALTER SERVER CONFIGURATION SET BUFFER POOL EXTENSION` wordt niet ondersteund. Zie [ALTER Server Configuration](https://docs.microsoft.com/sql/t-sql/statements/alter-server-configuration-transact-sql).
 
 ### <a name="collation"></a>Serverconfiguratie
 
-De standaard sortering van exemplaren `SQL_Latin1_General_CP1_CI_AS` is en kan worden opgegeven als een aanmaak parameter. Zie [sorteringen](https://docs.microsoft.com/sql/t-sql/statements/collations).
+De standaard sortering van exemplaren is `SQL_Latin1_General_CP1_CI_AS` en kan worden opgegeven als een aanmaak parameter. Zie [sorteringen](https://docs.microsoft.com/sql/t-sql/statements/collations).
 
 ### <a name="compatibility-levels"></a>Compatibiliteitsniveaus
 
@@ -211,8 +211,8 @@ Zie [ALTER data base Compatibility Level](https://docs.microsoft.com/sql/t-sql/s
 
 Het spie gelen van data bases wordt niet ondersteund.
 
-- `ALTER DATABASE SET PARTNER`en `SET WITNESS` opties worden niet ondersteund.
-- `CREATE ENDPOINT … FOR DATABASE_MIRRORING`wordt niet ondersteund.
+- de opties `ALTER DATABASE SET PARTNER` en `SET WITNESS` worden niet ondersteund.
+- `CREATE ENDPOINT … FOR DATABASE_MIRRORING` wordt niet ondersteund.
 
 Zie [ALTER data base set partner en Witness instellen](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-database-mirroring) en ENDPOINT maken voor meer informatie [. VOOR DATABASE_MIRRORING](https://docs.microsoft.com/sql/t-sql/statements/create-endpoint-transact-sql).
 
@@ -221,21 +221,21 @@ Zie [ALTER data base set partner en Witness instellen](https://docs.microsoft.co
 - Meerdere logboek bestanden worden niet ondersteund.
 - In-Memory-objecten worden niet ondersteund in de servicelaag Algemeen. 
 - Er is een limiet van 280 bestanden per Algemeen-exemplaar, wat een maximum van 280 bestanden per data base impliceert. De gegevens en logboek bestanden in de laag Algemeen worden meegeteld bij deze limiet. [De laag bedrijfskritiek ondersteunt 32.767 bestanden per data base](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-resource-limits#service-tier-characteristics).
-- De data base mag geen bestands groepen bevatten die FileStream-gegevens bevatten. Herstellen mislukt als. bak gegevens `FILESTREAM` bevat. 
+- De data base mag geen bestands groepen bevatten die FileStream-gegevens bevatten. Herstellen mislukt als. bak `FILESTREAM`-gegevens bevat. 
 - Elk bestand wordt in Azure Blob-opslag geplaatst. I/o en door Voer per bestand zijn afhankelijk van de grootte van elk afzonderlijk bestand.
 
 #### <a name="create-database-statement"></a>Instructie CREATE data base
 
-De volgende beperkingen zijn van `CREATE DATABASE`toepassing op:
+De volgende beperkingen zijn van toepassing op `CREATE DATABASE`:
 
 - Bestanden en bestands groepen kunnen niet worden gedefinieerd. 
-- De `CONTAINMENT` optie wordt niet ondersteund. 
-- `WITH`opties worden niet ondersteund. 
+- De optie `CONTAINMENT` wordt niet ondersteund. 
+- opties `WITH` worden niet ondersteund. 
    > [!TIP]
-   > Als tijdelijke oplossing gebruikt `ALTER DATABASE` u na `CREATE DATABASE` om database opties in te stellen voor het toevoegen van bestanden of het instellen van containment. 
+   > Als tijdelijke oplossing gebruikt u `ALTER DATABASE` na `CREATE DATABASE` om database opties in te stellen om bestanden toe te voegen of containment in te stellen. 
 
-- De `FOR ATTACH` optie wordt niet ondersteund.
-- De `AS SNAPSHOT OF` optie wordt niet ondersteund.
+- De optie `FOR ATTACH` wordt niet ondersteund.
+- De optie `AS SNAPSHOT OF` wordt niet ondersteund.
 
 Zie [Create Data Base](https://docs.microsoft.com/sql/t-sql/statements/create-database-sql-server-transact-sql)(Engelstalig) voor meer informatie.
 
@@ -243,8 +243,8 @@ Zie [Create Data Base](https://docs.microsoft.com/sql/t-sql/statements/create-da
 
 Sommige bestands eigenschappen kunnen niet worden ingesteld of gewijzigd:
 
-- Er kan geen bestandspad worden opgegeven in de `ALTER DATABASE ADD FILE (FILENAME='path')` t-SQL-instructie. Verwijderen `FILENAME` uit het script omdat een beheerd exemplaar automatisch de bestanden plaatst. 
-- Een bestands naam kan niet worden gewijzigd met behulp van de `ALTER DATABASE` -instructie.
+- Een bestandspad kan niet worden opgegeven in de `ALTER DATABASE ADD FILE (FILENAME='path')` T-SQL-instructie. Verwijder `FILENAME` uit het script omdat een beheerd exemplaar automatisch de bestanden plaatst. 
+- Een bestands naam kan niet worden gewijzigd met behulp van de instructie `ALTER DATABASE`.
 
 De volgende opties zijn standaard ingesteld en kunnen niet worden gewijzigd:
 
@@ -294,7 +294,7 @@ Zie [ALTER data base](https://docs.microsoft.com/sql/t-sql/statements/alter-data
   - Beheerde exemplaren hebben geen toegang tot externe bronnen, bijvoorbeeld netwerk shares via Robocopy. 
   - SQL Server Analysis Services worden niet ondersteund.
 - Meldingen worden gedeeltelijk ondersteund.
-- E-mail meldingen worden ondersteund, maar hiervoor moet u een Database Mail profiel configureren. SQL Server Agent kunt slechts één Database Mail profiel gebruiken en het moet worden aangeroepen `AzureManagedInstance_dbmail_profile`. 
+- E-mail meldingen worden ondersteund, maar hiervoor moet u een Database Mail profiel configureren. SQL Server Agent kunt slechts één Database Mail profiel gebruiken en dit moet `AzureManagedInstance_dbmail_profile` zijn. 
   - Paginering wordt niet ondersteund.
   - Netsend wordt niet ondersteund.
   - Waarschuwingen worden nog niet ondersteund.
@@ -316,7 +316,7 @@ De volgende tabel typen worden niet ondersteund:
 
 - [-](https://docs.microsoft.com/sql/relational-databases/blob/filestream-sql-server)
 - [BESTANDS TABEL](https://docs.microsoft.com/sql/relational-databases/blob/filetables-sql-server)
-- [externe tabel](https://docs.microsoft.com/sql/t-sql/statements/create-external-table-transact-sql) Poly base
+- [Externe tabel](https://docs.microsoft.com/sql/t-sql/statements/create-external-table-transact-sql) (poly base)
 - [MEMORY_OPTIMIZED](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/introduction-to-memory-optimized-tables) (niet ondersteund in algemeen-laag)
 
 Zie [Create Table](https://docs.microsoft.com/sql/t-sql/statements/create-table-transact-sql) en [ALTER TABLE](https://docs.microsoft.com/sql/t-sql/statements/alter-table-transact-sql)voor meer informatie over het maken en wijzigen van tabellen.
@@ -327,26 +327,27 @@ Zie [Create Table](https://docs.microsoft.com/sql/t-sql/statements/create-table-
 
 Een beheerd exemplaar heeft geen toegang tot bestands shares en Windows-mappen. Daarom moeten de bestanden vanuit Azure Blob Storage worden geïmporteerd:
 
-- `DATASOURCE`is vereist in de `BULK INSERT` opdracht tijdens het importeren van bestanden vanuit Azure Blob-opslag. Zie [Bulk Insert](https://docs.microsoft.com/sql/t-sql/statements/bulk-insert-transact-sql).
-- `DATASOURCE`is vereist in de `OPENROWSET` functie wanneer u de inhoud van een bestand leest uit Azure Blob-opslag. Zie [](https://docs.microsoft.com/sql/t-sql/functions/openrowset-transact-sql)OPENROWSET.
+- `DATASOURCE` is vereist in de `BULK INSERT` opdracht tijdens het importeren van bestanden vanuit Azure Blob Storage. Zie [Bulk Insert](https://docs.microsoft.com/sql/t-sql/statements/bulk-insert-transact-sql).
+- `DATASOURCE` is vereist in de functie `OPENROWSET` wanneer u de inhoud van een bestand leest uit Azure Blob-opslag. Zie [OPENrowset](https://docs.microsoft.com/sql/t-sql/functions/openrowset-transact-sql).
+- `OPENROWSET` kan worden gebruikt om gegevens te lezen van andere Azure SQL-data bases, beheerde exemplaren of SQL Server exemplaren. Andere bronnen, zoals Oracle-data bases of Excel-bestanden, worden niet ondersteund.
 
 ### <a name="clr"></a>-
 
 Een beheerd exemplaar heeft geen toegang tot bestands shares en Windows-mappen, dus de volgende beperkingen zijn van toepassing:
 
 - Alleen `CREATE ASSEMBLY FROM BINARY` wordt ondersteund. Zie [ASSEM BLY maken op basis van een binair bestand](https://docs.microsoft.com/sql/t-sql/statements/create-assembly-transact-sql). 
-- `CREATE ASSEMBLY FROM FILE`wordt niet ondersteund. Zie [Assembly maken op basis van een bestand](https://docs.microsoft.com/sql/t-sql/statements/create-assembly-transact-sql).
-- `ALTER ASSEMBLY`kan niet verwijzen naar bestanden. Zie [ALTER assembly](https://docs.microsoft.com/sql/t-sql/statements/alter-assembly-transact-sql).
+- `CREATE ASSEMBLY FROM FILE` wordt niet ondersteund. Zie [Assembly maken op basis van een bestand](https://docs.microsoft.com/sql/t-sql/statements/create-assembly-transact-sql).
+- `ALTER ASSEMBLY` kan niet verwijzen naar bestanden. Zie [ALTER assembly](https://docs.microsoft.com/sql/t-sql/statements/alter-assembly-transact-sql).
 
 ### <a name="database-mail-db_mail"></a>Database Mail (db_mail)
- - `sp_send_dbmail`kan geen bijlagen verzenden @file_attachments met behulp van een para meter. Lokaal bestands systeem en externe shares of Azure Blob Storage zijn niet toegankelijk vanuit deze procedure.
- - Zie de bekende problemen met betrekking `@query` tot para meter en authenticatie.
+ - `sp_send_dbmail` kan geen bijlagen verzenden met de para meter @file_attachments. Lokaal bestands systeem en externe shares of Azure Blob Storage zijn niet toegankelijk vanuit deze procedure.
+ - Zie bekende problemen met betrekking tot de para meter en verificatie van `@query`.
  
 ### <a name="dbcc"></a>DBCC
 
 Niet-gedocumenteerde DBCC-instructies die zijn ingeschakeld in SQL Server, worden niet ondersteund in beheerde exemplaren.
 
-- Slechts een beperkt aantal globale tracerings vlaggen wordt ondersteund. Sessie niveau `Trace flags` wordt niet ondersteund. Zie [tracerings vlaggen](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceon-trace-flags-transact-sql).
+- Slechts een beperkt aantal globale tracerings vlaggen wordt ondersteund. @No__t op sessie niveau-0 worden niet ondersteund. Zie [tracerings vlaggen](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceon-trace-flags-transact-sql).
 - [DBCC TRACEOFF](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceoff-transact-sql) en [DBCC TRACEON](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceon-transact-sql) werken met het beperkte aantal globale traceer vlaggen.
 - [DBCC CHECKDB](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-checkdb-transact-sql) met de opties REPAIR_ALLOW_DATA_LOSS, REPAIR_FAST en REPAIR_REBUILD kan niet worden gebruikt, omdat de data base niet kan worden ingesteld in de `SINGLE_USER`-modus. Zie [ALTER data base verschillen](#alter-database-statement). Mogelijke beschadigingen van de Data Base worden verwerkt door het ondersteunings team van Azure. Neem contact op met de ondersteuning van Azure als u een merkt-database beschadiging hebt die moet worden opgelost.
 
@@ -358,8 +359,8 @@ MSDTC-en [elastische trans acties](sql-database-elastic-transactions-overview.md
 
 Sommige Windows-specifieke doelen voor Extended Events (XEvents) worden niet ondersteund:
 
-- Het `etw_classic_sync` doel wordt niet ondersteund. Bestanden `.xel` opslaan in Azure Blob-opslag. Zie [etw_classic_sync-doel](https://docs.microsoft.com/sql/relational-databases/extended-events/targets-for-extended-events-in-sql-server#etw_classic_sync_target-target).
-- Het `event_file` doel wordt niet ondersteund. Bestanden `.xel` opslaan in Azure Blob-opslag. Zie [event_file-doel](https://docs.microsoft.com/sql/relational-databases/extended-events/targets-for-extended-events-in-sql-server#event_file-target).
+- Het doel `etw_classic_sync` wordt niet ondersteund. Sla `.xel`-bestanden op in Azure Blob-opslag. Zie [etw_classic_sync-doel](https://docs.microsoft.com/sql/relational-databases/extended-events/targets-for-extended-events-in-sql-server#etw_classic_sync_target-target).
+- Het doel `event_file` wordt niet ondersteund. Sla `.xel`-bestanden op in Azure Blob-opslag. Zie [event_file-doel](https://docs.microsoft.com/sql/relational-databases/extended-events/targets-for-extended-events-in-sql-server#event_file-target).
 
 ### <a name="external-libraries"></a>Externe bibliotheken
 
@@ -368,9 +369,9 @@ In-data base R en python worden externe bibliotheken nog niet ondersteund. Zie [
 ### <a name="filestream-and-filetable"></a>FileStream en bestands tabel
 
 - FileStream-gegevens worden niet ondersteund.
-- De data base mag geen bestands `FILESTREAM` groepen met gegevens bevatten.
-- `FILETABLE`wordt niet ondersteund.
-- Tabellen kunnen geen `FILESTREAM` typen hebben.
+- De data base mag geen bestands groepen bevatten met `FILESTREAM`-gegevens.
+- `FILETABLE` wordt niet ondersteund.
+- Tabellen kunnen geen `FILESTREAM`-typen hebben.
 - De volgende functies worden niet ondersteund:
   - `GetPathLocator()`
   - `GET_FILESTREAM_TRANSACTION_CONTEXT()`
@@ -390,14 +391,14 @@ Gekoppelde servers in beheerde instanties ondersteunen een beperkt aantal doelen
 
 - Ondersteunde doelen zijn beheerde instanties, afzonderlijke data bases en SQL Server exemplaren. 
 - Gekoppelde servers ondersteunen geen gedistribueerde Beschrijf bare trans acties (MS DTC).
-- Doelen die niet worden ondersteund zijn bestanden, Analysis Services en andere RDBMS. Gebruik of `BULK INSERT` `OPENROWSET` als alternatief voor het importeren van bestanden met behulp van een systeem eigen csv-import bewerking vanuit Azure Blob Storage.
+- Doelen die niet worden ondersteund zijn bestanden, Analysis Services en andere RDBMS. Probeer systeem eigen CSV-Import van Azure Blob Storage te gebruiken met behulp van `BULK INSERT` of `OPENROWSET` als alternatief voor het importeren van bestanden.
 
 Bewerkingen
 
 - Trans acties voor cross-instances worden niet ondersteund.
-- `sp_dropserver`wordt ondersteund voor het verwijderen van een gekoppelde server. Zie [sp_dropserver](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-dropserver-transact-sql).
-- De `OPENROWSET` functie kan worden gebruikt om alleen query's uit te voeren op SQL Server exemplaren. Ze kunnen worden beheerd, on-premises of in virtuele machines. Zie [](https://docs.microsoft.com/sql/t-sql/functions/openrowset-transact-sql)OPENROWSET.
-- De `OPENDATASOURCE` functie kan worden gebruikt om alleen query's uit te voeren op SQL Server exemplaren. Ze kunnen worden beheerd, on-premises of in virtuele machines. Alleen de `SQLNCLI`waarden `SQLNCLI11`, en `SQLOLEDB` worden ondersteund als een provider. Een voorbeeld is `SELECT * FROM OPENDATASOURCE('SQLNCLI', '...').AdventureWorks2012.HumanResources.Employee`. Zie [OPENDATA source](https://docs.microsoft.com/sql/t-sql/functions/opendatasource-transact-sql).
+- `sp_dropserver` wordt ondersteund voor het weghalen van een gekoppelde server. Zie [sp_dropserver](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-dropserver-transact-sql).
+- De functie `OPENROWSET` kan worden gebruikt om alleen query's op SQL Server-exemplaren uit te voeren. Ze kunnen worden beheerd, on-premises of in virtuele machines. Zie [OPENrowset](https://docs.microsoft.com/sql/t-sql/functions/openrowset-transact-sql).
+- De functie `OPENDATASOURCE` kan worden gebruikt om alleen query's op SQL Server-exemplaren uit te voeren. Ze kunnen worden beheerd, on-premises of in virtuele machines. Alleen de waarden `SQLNCLI`, `SQLNCLI11` en `SQLOLEDB` worden ondersteund als provider. Een voorbeeld is `SELECT * FROM OPENDATASOURCE('SQLNCLI', '...').AdventureWorks2012.HumanResources.Employee`. Zie [OPENDATA source](https://docs.microsoft.com/sql/t-sql/functions/opendatasource-transact-sql).
 - Gekoppelde servers kunnen niet worden gebruikt voor het lezen van bestanden (Excel, CSV) van de netwerk shares. Probeer [Bulk Insert](https://docs.microsoft.com/sql/t-sql/statements/bulk-insert-transact-sql#e-importing-data-from-a-csv-file) of [OpenRowSet](https://docs.microsoft.com/sql/t-sql/functions/openrowset-transact-sql#g-accessing-data-from-a-csv-file-with-a-format-file) te gebruiken waarmee CSV-bestanden van Azure Blob Storage worden gelezen. Deze aanvragen bijhouden voor het feedback-item van het [beheerde exemplaar](https://feedback.azure.com/forums/915676-sql-managed-instance/suggestions/35657887-linked-server-to-non-sql-sources)|
 
 ### <a name="polybase"></a>PolyBase
@@ -457,31 +458,31 @@ Als replicatie is ingeschakeld voor een data base in een [failovergroep](sql-dat
   - `RESTORE LOG ONLY`
   - `RESTORE REWINDONLY ONLY`
 - Bron: 
-  - `FROM URL`(Azure Blob-opslag) is de enige optie die wordt ondersteund.
-  - `FROM DISK`/`TAPE`/Backup-apparaat wordt niet ondersteund.
+  - `FROM URL` (Azure Blob-opslag) is de enige optie die wordt ondersteund.
+  - `FROM DISK` @ no__t-1 @ no__t-2/backup-apparaat wordt niet ondersteund.
   - Back-upsets worden niet ondersteund.
-- `WITH`opties worden niet ondersteund, zoals Nee `DIFFERENTIAL` of `STATS`.
-- `ASYNC RESTORE`: Herstellen gaat verder, zelfs als de client verbinding is verbroken. Als de verbinding wordt verbroken, kunt u de `sys.dm_operation_status` weer gave voor de status van een herstel bewerking controleren en voor een Data Base maken en verwijderen. Zie [sys. DM _operation_status](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database). 
+- opties voor `WITH` worden niet ondersteund, zoals geen `DIFFERENTIAL` of `STATS`.
+- `ASYNC RESTORE`: Herstellen gaat verder, zelfs als de client verbinding is verbroken. Als de verbinding wordt verbroken, kunt u de weer gave `sys.dm_operation_status` controleren op de status van een herstel bewerking en voor een Data Base maken en verwijderen. Zie [sys. DM _operation_status](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database). 
 
 De volgende database opties zijn ingesteld of worden overschreven en kunnen later niet meer worden gewijzigd: 
 
-- `NEW_BROKER`Als de Broker niet is ingeschakeld in het bak-bestand. 
-- `ENABLE_BROKER`Als de Broker niet is ingeschakeld in het bak-bestand. 
-- `AUTO_CLOSE=OFF`Als een data base in het. bak- `AUTO_CLOSE=ON`bestand is. 
-- `RECOVERY FULL`Als een data base in het. bak- `SIMPLE` bestand `BULK_LOGGED` of de herstel modus.
+- `NEW_BROKER` als de Broker niet is ingeschakeld in het bak-bestand. 
+- `ENABLE_BROKER` als de Broker niet is ingeschakeld in het bak-bestand. 
+- `AUTO_CLOSE=OFF` als een data base in het. bak-bestand `AUTO_CLOSE=ON` heeft. 
+- `RECOVERY FULL` als een data base in het. bak-bestand de `SIMPLE`-of `BULK_LOGGED`-herstel modus heeft.
 - Een bestands groep die is geoptimaliseerd voor geheugen wordt toegevoegd met de naam XTP als deze niet voor komt in het bron. bak-bestand. 
 - De naam van een bestaande bestands groep met geoptimaliseerd geheugen is gewijzigd in XTP. 
-- `SINGLE_USER`en `RESTRICTED_USER` opties worden geconverteerd naar `MULTI_USER`.
+- de opties `SINGLE_USER` en `RESTRICTED_USER` worden geconverteerd naar `MULTI_USER`.
 
 Beperkingen: 
 
-- Back-ups van de beschadigde data bases kunnen worden hersteld, afhankelijk van het type beschadiging, maar automatische back-ups worden pas uitgevoerd als de beschadiging is opgelost. Zorg ervoor dat u uitvoert `DBCC CHECKDB` op het bron exemplaar en gebruik back `WITH CHECKSUM` -up om dit probleem te voor komen.
-- Herstellen van `.BAK` een bestand met een beperking die in dit document is `FILESTREAM` beschreven (bijvoorbeeld of `FILETABLE` objecten) kan niet worden hersteld op een beheerd exemplaar.
-- `.BAK`bestanden die meerdere back-upsets bevatten, kunnen niet worden hersteld. 
-- `.BAK`bestanden die meerdere logboek bestanden bevatten, kunnen niet worden hersteld.
+- Back-ups van de beschadigde data bases kunnen worden hersteld, afhankelijk van het type beschadiging, maar automatische back-ups worden pas uitgevoerd als de beschadiging is opgelost. Zorg ervoor dat u `DBCC CHECKDB` uitvoert op het bron exemplaar en gebruik back-up`WITH CHECKSUM` om dit probleem te voor komen.
+- Herstellen van `.BAK`-bestand van een Data Base die een beperking bevat die in dit document wordt beschreven (bijvoorbeeld `FILESTREAM`-of `FILETABLE`-objecten) kunnen niet worden hersteld op een beheerd exemplaar.
+- `.BAK` bestanden die meerdere back-upsets bevatten, kunnen niet worden hersteld. 
+- `.BAK` bestanden die meerdere logboek bestanden bevatten, kunnen niet worden hersteld.
 - Back-ups die data bases bevatten die groter zijn dan 8 TB, actieve in-memory OLTP objecten of het aantal bestanden dat groter zou zijn dan 280 bestanden per exemplaar, kunnen niet worden hersteld op een Algemeen-exemplaar. 
 - Back-ups met data bases die groter zijn dan 4 TB of in-memory OLTP objecten met de totale grootte die groter is dan de grootte die is beschreven in [resource limieten](sql-database-managed-instance-resource-limits.md) , kunnen niet worden hersteld op bedrijfskritiek exemplaar.
-Zie Restore statements ( [instructies herstellen](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-transact-sql)) voor meer informatie over Restore-instructies.
+Zie [Restore statements (instructies herstellen](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-transact-sql)) voor meer informatie over Restore-instructies.
 
  > [!IMPORTANT]
  > Dezelfde beperkingen zijn van toepassing op de ingebouwde herstel bewerking naar een bepaald tijdstip. Zo kan Algemeen data base van meer dan 4 TB niet worden hersteld op Bedrijfskritiek exemplaar. Bedrijfskritiek data base met OLTP-bestanden in het geheugen of meer dan 280 bestanden kunnen niet worden hersteld op Algemeen exemplaar.
@@ -491,34 +492,34 @@ Zie Restore statements ( [instructies herstellen](https://docs.microsoft.com/sql
 Service Broker met meerdere exemplaren wordt niet ondersteund:
 
 - `sys.routes`: Als vereiste moet u het adres selecteren uit sys. routes. Het adres moet lokaal op elke route zijn. Zie [sys. routes](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-routes-transact-sql).
-- `CREATE ROUTE`: U kunt niet `CREATE ROUTE` gebruiken `ADDRESS` met andere `LOCAL`dan. Zie [route maken](https://docs.microsoft.com/sql/t-sql/statements/create-route-transact-sql).
-- `ALTER ROUTE`: U kunt niet `ALTER ROUTE` gebruiken `ADDRESS` met andere `LOCAL`dan. Zie [ALTER route](https://docs.microsoft.com/sql/t-sql/statements/alter-route-transact-sql). 
+- `CREATE ROUTE`: U kunt `CREATE ROUTE` niet gebruiken met `ADDRESS` behalve `LOCAL`. Zie [route maken](https://docs.microsoft.com/sql/t-sql/statements/create-route-transact-sql).
+- `ALTER ROUTE`: U kunt `ALTER ROUTE` niet gebruiken met `ADDRESS` behalve `LOCAL`. Zie [ALTER route](https://docs.microsoft.com/sql/t-sql/statements/alter-route-transact-sql). 
 
 ### <a name="stored-procedures-functions-and-triggers"></a>Opgeslagen procedures, functies en triggers
 
-- `NATIVE_COMPILATION`wordt niet ondersteund in de laag Algemeen.
+- `NATIVE_COMPILATION` wordt niet ondersteund in de Algemeen-laag.
 - De volgende [sp_configure](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-configure-transact-sql) -opties worden niet ondersteund: 
   - `allow polybase export`
   - `allow updates`
   - `filestream_access_level`
   - `remote data archive`
   - `remote proc trans`
-- `sp_execute_external_scripts`wordt niet ondersteund. See [sp_execute_external_scripts](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql#examples).
-- `xp_cmdshell`wordt niet ondersteund. Zie [xp_cmdshell](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/xp-cmdshell-transact-sql).
-- `Extended stored procedures`worden niet ondersteund, inclusief `sp_addextendedproc`  en `sp_dropextendedproc`. Zie [uitgebreide opgeslagen procedures](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/general-extended-stored-procedures-transact-sql).
-- `sp_attach_db`, `sp_attach_single_file_db` en`sp_detach_db` worden niet ondersteund. Zie [sp_attach_db](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-attach-db-transact-sql), [sp_attach_single_file_db](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-attach-single-file-db-transact-sql)en [sp_detach_db](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-detach-db-transact-sql).
+- `sp_execute_external_scripts` wordt niet ondersteund. See [sp_execute_external_scripts](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql#examples).
+- `xp_cmdshell` wordt niet ondersteund. Zie [xp_cmdshell](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/xp-cmdshell-transact-sql).
+- `Extended stored procedures` worden niet ondersteund, inclusief `sp_addextendedproc` @ no__t-2and `sp_dropextendedproc`. Zie [uitgebreide opgeslagen procedures](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/general-extended-stored-procedures-transact-sql).
+- `sp_attach_db`, `sp_attach_single_file_db` en `sp_detach_db` worden niet ondersteund. Zie [sp_attach_db](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-attach-db-transact-sql), [sp_attach_single_file_db](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-attach-single-file-db-transact-sql)en [sp_detach_db](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-detach-db-transact-sql).
 
 ### <a name="system-functions-and-variables"></a>Systeem functies en-variabelen
 
 De volgende variabelen, functies en weer gaven retour neren verschillende resultaten:
 
-- `SERVERPROPERTY('EngineEdition')`retourneert de waarde 8. Deze eigenschap is een unieke aanduiding voor een beheerd exemplaar. Zie [Server Property](https://docs.microsoft.com/sql/t-sql/functions/serverproperty-transact-sql).
-- `SERVERPROPERTY('InstanceName')`retourneert NULL omdat het concept van instance voor SQL Server niet van toepassing is op een beheerd exemplaar. Zie [Server Property (' instanceName ')](https://docs.microsoft.com/sql/t-sql/functions/serverproperty-transact-sql).
-- `@@SERVERNAME`retourneert een volledige DNS-naam (' connectable '), bijvoorbeeld my-managed-instance.wcus17662feb9ce98.database.windows.net. Zie [@@SERVERNAME](https://docs.microsoft.com/sql/t-sql/functions/servername-transact-sql). 
+- `SERVERPROPERTY('EngineEdition')` retourneert de waarde 8. Deze eigenschap is een unieke aanduiding voor een beheerd exemplaar. Zie [Server Property](https://docs.microsoft.com/sql/t-sql/functions/serverproperty-transact-sql).
+- `SERVERPROPERTY('InstanceName')` retourneert NULL, omdat het concept van instance zoals het bestaat voor SQL Server niet van toepassing is op een beheerd exemplaar. Zie [Server Property (' instanceName ')](https://docs.microsoft.com/sql/t-sql/functions/serverproperty-transact-sql).
+- `@@SERVERNAME` retourneert een volledige DNS-naam (' connectable '), bijvoorbeeld my-managed-instance.wcus17662feb9ce98.database.windows.net. Zie [@ @SERVERNAME](https://docs.microsoft.com/sql/t-sql/functions/servername-transact-sql). 
 - `SYS.SERVERS` retourneert een volledige DNS-naam (' connectable '), zoals `myinstance.domain.database.windows.net` voor de eigenschappen ' name ' en ' data_source '. Zie [sys. SERVERS](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-servers-transact-sql).
-- `@@SERVICENAME`retourneert NULL omdat het concept van de service bestaat voor SQL Server niet van toepassing is op een beheerd exemplaar. Zie [@@SERVICENAME](https://docs.microsoft.com/sql/t-sql/functions/servicename-transact-sql).
-- `SUSER_ID`wordt ondersteund. Retourneert NULL als de Azure AD-aanmelding zich niet in sys. syslogins bevindt. Zie [SUSER_ID](https://docs.microsoft.com/sql/t-sql/functions/suser-id-transact-sql). 
-- `SUSER_SID`wordt niet ondersteund. De verkeerde gegevens worden geretourneerd. Dit is een tijdelijk bekend probleem. Zie [SUSER_SID](https://docs.microsoft.com/sql/t-sql/functions/suser-sid-transact-sql). 
+- `@@SERVICENAME` retourneert NULL omdat het concept van de service voor SQL Server niet van toepassing is op een beheerd exemplaar. Zie [@ @SERVICENAME](https://docs.microsoft.com/sql/t-sql/functions/servicename-transact-sql).
+- `SUSER_ID` wordt ondersteund. Retourneert NULL als de Azure AD-aanmelding zich niet in sys. syslogins bevindt. Zie [SUSER_ID](https://docs.microsoft.com/sql/t-sql/functions/suser-id-transact-sql). 
+- `SUSER_SID` wordt niet ondersteund. De verkeerde gegevens worden geretourneerd. Dit is een tijdelijk bekend probleem. Zie [SUSER_SID](https://docs.microsoft.com/sql/t-sql/functions/suser-sid-transact-sql). 
 
 ## <a name="Environment"></a>Omgevings beperkingen
 
@@ -536,7 +537,7 @@ De volgende variabelen, functies en weer gaven retour neren verschillende result
 
 ### <a name="tempdb"></a>TEMPDB
 
-De maximale bestands grootte van `tempdb` mag niet groter zijn dan 24 GB per kern op een algemeen laag. De maximale `tempdb` grootte van een bedrijfskritiek laag wordt beperkt door de opslag grootte van het exemplaar. `Tempdb`de grootte van het logboek bestand is beperkt tot 120 GB op Algemeen en Bedrijfskritiek lagen. Sommige query's retour neren mogelijk een fout als deze meer dan 24 GB per kern `tempdb` nodig heeft of als er meer dan 120 GB aan logboek gegevens worden geproduceerd.
+De maximale bestands grootte van `tempdb` mag niet groter zijn dan 24 GB per kern op een Algemeen laag. De maximale grootte van @no__t 0 op een Bedrijfskritiek laag wordt beperkt door de opslag grootte van het exemplaar. de grootte van het logboek bestand van @no__t 0 is beperkt tot 120 GB op Algemeen en Bedrijfskritiek lagen. Sommige query's retour neren mogelijk een fout als deze meer dan 24 GB per kern nodig heeft in `tempdb` of als er meer dan 120 GB aan logboek gegevens worden geproduceerd.
 
 ### <a name="error-logs"></a>Foutenlogboeken
 
@@ -556,7 +557,7 @@ Een beheerd exemplaar plaatst uitgebreide informatie in fouten Logboeken. Er zij
 
 **Vallen** Sep 2019
 
-Door `RESTORE` de doorlopende instructie, het migratie proces van de gegevens migratie service en de ingebouwde tijd bij het herstellen wordt de service tier of de grootte van het bestaande exemplaar bijgewerkt en er worden nieuwe instanties gemaakt totdat het herstel proces is voltooid. Met het herstel proces worden deze bewerkingen geblokkeerd voor de beheerde instanties en exemplaar groepen in hetzelfde subnet waar het herstel proces wordt uitgevoerd. De exemplaren in exemplaar groepen worden niet beïnvloed. Het maken of wijzigen van service tier-bewerkingen mislukken of time-out: ze worden voortgezet zodra het herstel proces is voltooid of geannuleerd.
+De voortdurende `RESTORE`-instructie, het migratie proces van de gegevens migratie service en de ingebouwde tijd voor het herstellen van de service laag of het wijzigen van de grootte van het bestaande exemplaar worden geblokkeerd en er worden nieuwe instanties gemaakt totdat het herstel proces is voltooid. Met het herstel proces worden deze bewerkingen geblokkeerd voor de beheerde instanties en exemplaar groepen in hetzelfde subnet waar het herstel proces wordt uitgevoerd. De exemplaren in exemplaar groepen worden niet beïnvloed. Het maken of wijzigen van service tier-bewerkingen mislukken of time-out: ze worden voortgezet zodra het herstel proces is voltooid of geannuleerd.
 
 **Tijdelijke oplossing**: Wacht tot het herstel proces is voltooid of Annuleer het herstel proces als de bewerking voor het maken of bijwerken van de service tier een hogere prioriteit heeft.
 
@@ -564,11 +565,11 @@ Door `RESTORE` de doorlopende instructie, het migratie proces van de gegevens mi
 
 **Vallen** Sep 2019
 
-`RESTORE`instructies en ingebouwde tijdstippen voor het herstellen van een aantal nessecary-controles worden niet uitgevoerd op de herstelde data base:
-- **DBCC CHECKDB**  -  `DBCC CHECKDB` -instructie kan niet worden uitgevoerd op de herstelde data base.`RESTORE` Als een originele data base beschadigd is of als het back-upbestand is beschadigd terwijl het wordt gekopieerd naar Azure Blob-opslag, worden er geen automatische back-ups gemaakt en neemt Azure-ondersteuning contact op met de klant. 
+de instructie `RESTORE` en de ingebouwde tijd herstellen voeren geen nessecary controles uit op de herstelde data base:
+- **DBCC CHECKDB** -  instructie no__t-2 worden niet `DBCC CHECKDB` op de herstelde data base uitgevoerd. Als een originele data base beschadigd is of als het back-upbestand is beschadigd terwijl het wordt gekopieerd naar Azure Blob-opslag, worden er geen automatische back-ups gemaakt en neemt Azure-ondersteuning contact op met de klant. 
 - Het ingebouwde herstel proces van het tijdstip wordt niet gecontroleerd. de automatische back-up van Bedrijfskritiek-exemplaar bevat de [in-Memory OLTP-objecten](sql-database-in-memory.md#in-memory-oltp). 
 
-**Tijdelijke oplossing**: Zorg ervoor dat u uitvoert `DBCC CHECKDB` op de bron database voordat u een back-up maakt en gebruik `WITH CHECKSUM` de optie in back-up om te voor komen dat er mogelijke beschadigingen kunnen worden hersteld op een beheerd exemplaar. Zorg ervoor dat de bron database niet in het geheugen aanwezige [OLTP-objecten](sql-database-in-memory.md#in-memory-oltp) bevat als u deze op algemeen niveau herstelt.
+**Tijdelijke oplossing**: Zorg ervoor dat u `DBCC CHECKDB` uitvoert op de bron database voordat u een back-up maakt, en gebruik `WITH CHECKSUM` optie in back-up om te voor komen dat er mogelijke beschadigingen kunnen worden hersteld op een beheerd exemplaar. Zorg ervoor dat de bron database niet in het geheugen aanwezige [OLTP-objecten](sql-database-in-memory.md#in-memory-oltp) bevat als u deze op algemeen niveau herstelt.
 
 ### <a name="resource-governor-on-business-critical-service-tier-might-need-to-be-reconfigured-after-failover"></a>Resource Governor op Bedrijfskritiek servicelaag moet mogelijk opnieuw worden geconfigureerd na een failover
 
@@ -590,7 +591,7 @@ Data base mail die is [geconfigureerd met behulp van beveiligde verbinding (SSL)
 
 **Vallen** Aug 2019
 
-Service Broker dialoog vensters voor meerdere data bases worden gestopt met het leveren van berichten aan de services in andere data bases nadat de bewerking van de service tier is gewijzigd. De berichten zijn **niet verloren gegaan** en kunnen worden gevonden in de wachtrij van de afzender. Elke wijziging van de vCores of de opslag grootte van een exemplaar in het `service_broke_guid` beheerde exemplaar leidt ertoe dat de waarde van de weer gave [sys. data bases](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-databases-transact-sql) voor alle data bases wordt gewijzigd. Elke `DIALOG` gemaakt met de instructie [begin dialog](https://docs.microsoft.com/en-us/sql/t-sql/statements/begin-dialog-conversation-transact-sql) , die verwijst naar service-Brokers in een andere data base, stopt met het leveren van berichten aan de doel service.
+Service Broker dialoog vensters voor meerdere data bases worden gestopt met het leveren van berichten aan de services in andere data bases nadat de bewerking van de service tier is gewijzigd. De berichten zijn **niet verloren gegaan** en kunnen worden gevonden in de wachtrij van de afzender. Elke wijziging van de vCores of de opslag grootte van een exemplaar in het beheerde exemplaar leidt ertoe dat de `service_broke_guid`-waarde in de [sys. data bases](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-databases-transact-sql) -weer gave moet worden gewijzigd voor alle data bases. Elke `DIALOG` die is gemaakt met de instructie [begin dialog](https://docs.microsoft.com/en-us/sql/t-sql/statements/begin-dialog-conversation-transact-sql) , die verwijst naar service-Brokers in een andere data base, stopt met het leveren van berichten aan de doel service.
 
 **Enkele** Stop alle activiteiten die gebruikmaken van cross-data base Service Broker dialoog venster gesprekken voordat u de servicelaag bijwerkt en opnieuw initialiseert. Als er nog andere berichten zijn die niet worden bezorgd na wijziging van de servicelaag, leest u de berichten van de bron wachtrij en verzendt u deze opnieuw naar de doel wachtrij.
 
@@ -598,9 +599,9 @@ Service Broker dialoog vensters voor meerdere data bases worden gestopt met het 
 
 **Vallen** 2019 juli
 
-Imitatie met `EXECUTE AS USER` of `EXECUTE AS LOGIN` van volgende Aad-principals wordt niet ondersteund:
--   Aliased AAD-gebruikers. In dit geval `15517`wordt de volgende fout geretourneerd.
-- AAD-aanmeldingen en-gebruikers op basis van AAD-toepassingen of service-principals. De volgende fouten worden in dit geval `15517` en `15406`worden geretourneerd.
+Imitatie met `EXECUTE AS USER` of `EXECUTE AS LOGIN` van de volgende AAD-principals wordt niet ondersteund:
+-   Aliased AAD-gebruikers. De volgende fout wordt geretourneerd in dit geval `15517`.
+- AAD-aanmeldingen en-gebruikers op basis van AAD-toepassingen of service-principals. De volgende fouten worden geretourneerd in dit geval `15517` en `15406`.
 
 ### <a name="query-parameter-not-supported-in-sp_send_db_mail"></a>de para meter @query wordt niet ondersteund in sp_send_db_mail
 
@@ -624,17 +625,17 @@ SQL Server Management Studio en SQL Server Data Tools bieden geen volledige onde
 
 ### <a name="temporary-database-is-used-during-restore-operation"></a>Er wordt een tijdelijke data base gebruikt tijdens de herstel bewerking
 
-Wanneer een Data Base wordt hersteld op een beheerd exemplaar, wordt door de Restore-service eerst een lege data base met de gewenste naam gemaakt om de naam van het exemplaar toe te wijzen. Na enige tijd wordt deze data base verwijderd en wordt het herstellen van de werkelijke data base gestart. De data base die zich in de *herstel* status bevindt, heeft tijdelijk een wille KEURige GUID-waarde in plaats van een naam. De tijdelijke naam wordt gewijzigd in de gewenste naam die in `RESTORE` de instructie is opgegeven nadat het herstel proces is voltooid. In de eerste fase heeft de gebruiker toegang tot de lege data base en kan zelfs tabellen worden gemaakt of gegevens worden geladen in deze data base. Deze tijdelijke data base wordt verwijderd wanneer de Restore-service de tweede fase start.
+Wanneer een Data Base wordt hersteld op een beheerd exemplaar, wordt door de Restore-service eerst een lege data base met de gewenste naam gemaakt om de naam van het exemplaar toe te wijzen. Na enige tijd wordt deze data base verwijderd en wordt het herstellen van de werkelijke data base gestart. De data base die zich in de *herstel* status bevindt, heeft tijdelijk een wille KEURige GUID-waarde in plaats van een naam. De tijdelijke naam wordt gewijzigd in de gewenste naam die is opgegeven in de instructie `RESTORE` nadat het herstel proces is voltooid. In de eerste fase heeft de gebruiker toegang tot de lege data base en kan zelfs tabellen worden gemaakt of gegevens worden geladen in deze data base. Deze tijdelijke data base wordt verwijderd wanneer de Restore-service de tweede fase start.
 
 **Tijdelijke oplossing**: Geen toegang tot de data base die u wilt herstellen, totdat u ziet dat de herstel bewerking is voltooid.
 
 ### <a name="tempdb-structure-and-content-is-re-created"></a>TEMPDB-structuur en-inhoud worden opnieuw gemaakt
 
-De `tempdb` data base is altijd gesplitst in 12 gegevens bestanden en de bestands structuur kan niet worden gewijzigd. De maximale grootte per bestand kan niet worden gewijzigd en er kunnen geen nieuwe bestanden aan `tempdb`worden toegevoegd. `Tempdb`wordt altijd opnieuw gemaakt als een lege data base wanneer het exemplaar wordt gestart of een failover wordt uitgevoerd `tempdb` , en eventuele wijzigingen worden niet bewaard.
+De `tempdb`-data base is altijd gesplitst in 12 gegevens bestanden en de bestands structuur kan niet worden gewijzigd. De maximale grootte per bestand kan niet worden gewijzigd en nieuwe bestanden kunnen niet worden toegevoegd aan `tempdb`. `Tempdb` wordt altijd opnieuw gemaakt als een lege data base wanneer het exemplaar wordt gestart of een failover wordt uitgevoerd, en wijzigingen die zijn aangebracht in `tempdb` blijven niet behouden.
 
 ### <a name="exceeding-storage-space-with-small-database-files"></a>Opslag ruimte overschrijden met kleine database bestanden
 
-`CREATE DATABASE`, `ALTER DATABASE ADD FILE` en`RESTORE DATABASE` -instructies kunnen mislukken omdat het exemplaar de Azure Storage limiet kan bereiken.
+`CREATE DATABASE`, `ALTER DATABASE ADD FILE` en `RESTORE DATABASE`-instructies kunnen mislukken omdat het exemplaar de Azure Storage limiet kan bereiken.
 
 Elk Algemeen Managed instance heeft tot 35 TB aan opslag ruimte gereserveerd voor Azure Premium. Elk database bestand wordt geplaatst op een afzonderlijke fysieke schijf. Schijf grootten kunnen 128 GB, 256 GB, 512 GB, 1 TB of 4 TB zijn. Voor ongebruikte ruimte op de schijf worden geen kosten in rekening gebracht, maar de totale som van Azure Premium-schijf grootten mag niet groter zijn dan 35 TB. In sommige gevallen kan een beheerd exemplaar dat niet 8 TB in totaal nodig heeft, de Azure-limiet van 35 TB overschrijden bij de opslag grootte vanwege interne fragmentatie.
 
@@ -659,7 +660,7 @@ Fouten logboeken die beschikbaar zijn in het beheerde exemplaar, worden niet per
 
 ### <a name="transaction-scope-on-two-databases-within-the-same-instance-isnt-supported"></a>Het transactie bereik van twee data bases binnen hetzelfde exemplaar wordt niet ondersteund
 
-De `TransactionScope` klasse in .net werkt niet als twee query's worden verzonden naar twee data bases binnen hetzelfde exemplaar onder hetzelfde transactie bereik:
+De `TransactionScope`-klasse in .NET werkt niet als er twee query's worden verzonden naar twee data bases binnen hetzelfde exemplaar onder hetzelfde transactie bereik:
 
 ```csharp
 using (var scope = new TransactionScope())

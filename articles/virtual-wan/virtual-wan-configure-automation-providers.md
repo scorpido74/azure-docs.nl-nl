@@ -5,14 +5,14 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 09/30/2019
+ms.date: 10/03/2019
 ms.author: cherylmc
-ms.openlocfilehash: 72493f084b89d41c1e0d6ff60c35afa3491b0eda
-ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
+ms.openlocfilehash: 430d90b2b372602072527c49796244c503778a3b
+ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71703447"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71959010"
 ---
 # <a name="virtual-wan-partners"></a>Virtuele WAN-partners
 
@@ -23,7 +23,7 @@ Een vertakkings apparaat (een on-premises VPN-apparaat of SDWAN CPE) van een kla
 ## <a name ="before"></a>Voordat u begint met het automatiseren van
 
 * Controleer of het apparaat IPsec-IKEv1/IKEv2 ondersteunt. Zie [standaard beleidsregels](#default).
-* Bekijk de [rest-api's](https://docs.microsoft.com/rest/api/azure/) die u gaat gebruiken om de verbinding met Azure Virtual WAN te automatiseren.
+* Bekijk de [rest-api's](#additional) die u gebruikt om de verbinding met Azure Virtual WAN te automatiseren.
 * De portal-ervaring van Azure Virtual WAN testen.
 * Bepaal vervolgens welk deel van de verbindings stappen u wilt automatiseren. We raden u aan ten minste het automatiseren van:
 
@@ -31,7 +31,16 @@ Een vertakkings apparaat (een on-premises VPN-apparaat of SDWAN CPE) van een kla
   * Gegevens van Branch-apparaten uploaden naar virtuele WAN van Azure
   * Azure-configuratie downloaden en connectiviteit van het vertakkings apparaat instellen in azure Virtual WAN
 
-* Inzicht in de verwachte ervaring van de klant in combi natie met Azure Virtual WAN.
+### <a name ="additional"></a>Aanvullende informatie
+
+* [Rest API](https://docs.microsoft.com/rest/api/virtualwan/virtualhubs) om het maken van virtuele hub te automatiseren
+* [Rest API](https://docs.microsoft.com/rest/api/virtualwan/vpngateways) voor het automatiseren van Azure VPN-gateway voor virtueel WAN
+* [Rest API](https://docs.microsoft.com/rest/api/virtualwan/vpnconnections) om een VPNSite te verbinden met een Azure VPN-hub
+* [Standaard IPsec-beleid](#default)
+
+## <a name ="ae"></a>Gebruikers ervaring
+
+Inzicht in de verwachte ervaring van de klant in combi natie met Azure Virtual WAN.
 
   1. Normaal gesp roken start een virtuele WAN-gebruiker het proces door een virtuele WAN-resource te maken.
   2. De gebruiker stelt een service op basis van de toegang tot de resource groep in voor het on-premises systeem (uw vertakkings controller of het inrichten van het VPN-apparaat) om vertakkings gegevens te schrijven naar een virtueel WAN van Azure.
@@ -41,8 +50,7 @@ Een vertakkings apparaat (een on-premises VPN-apparaat of SDWAN CPE) van een kla
   6. Aan het eind van deze stap in uw oplossing heeft de gebruiker een naadloze site-naar-site-verbinding tussen het vertakkings apparaat en de virtuele hub. U kunt ook extra verbindingen instellen tussen andere hubs. Elke verbinding is een actief/actief-tunnel. Uw klant kan ervoor kiezen om een andere ISP te gebruiken voor elk van de koppelingen voor de tunnel.
   7. Overweeg probleemoplossings-en bewakings mogelijkheden te bieden in de CPE-beheer interface. Typische scenario's zijn onder andere ' klant kan geen toegang krijgen tot Azure-resources vanwege een CPE-probleem ', ' IPsec-para meters weer geven aan de CPE-zijde ' etc.
 
-## <a name ="understand"></a>Details van automatisering begrijpen
-
+## <a name ="understand"></a>Details van automatisering
 
 ###  <a name="access"></a>Toegangs beheer
 
@@ -55,19 +63,18 @@ Klanten moeten het juiste toegangs beheer voor virtuele WAN-verbindingen kunnen 
 
 ###  <a name="branch"></a>Gegevens van vertakkings apparaten uploaden
 
-Ontwerp de gebruikers ervaring om vertakkingen (on-premises site) naar Azure te uploaden. [Rest-api's](https://docs.microsoft.com/rest/api/virtualwan/vpnsites) voor VPNSite kunnen worden gebruikt om de site-informatie in virtuele WAN te maken. U kunt alle Branch SDWAN/VPN-apparaten opgeven of zo nodig aanpassingen van het apparaat selecteren.
-
+U moet de gebruikers ervaring ontwerpen om vertakkings gegevens (on-premises site) naar Azure te uploaden. U kunt [rest-api's](https://docs.microsoft.com/rest/api/virtualwan/vpnsites) voor VPNSite gebruiken om de site-informatie in virtuele WAN te maken. U kunt alle Branch SDWAN/VPN-apparaten opgeven of zo nodig aanpassingen van het apparaat selecteren.
 
 ### <a name="device"></a>Apparaatconfiguratie downloaden en connectiviteit
 
-Deze stap omvat het downloaden van de Azure-configuratie en het instellen van connectiviteit vanuit het vertakkings apparaat in azure Virtual WAN. In deze stap zal een klant die geen provider gebruikt, de Azure-configuratie hand matig downloaden en Toep assen op hun on-premises SDWAN/VPN-apparaat. Als provider kunt u deze stap automatiseren. De apparaat-controller kan ' GetVpnConfiguration ' aanroepen REST API de Azure-configuratie te downloaden. dit ziet er meestal uit als in het volgende bestand.
+Deze stap omvat het downloaden van de Azure-configuratie en het instellen van connectiviteit vanuit het vertakkings apparaat in azure Virtual WAN. In deze stap zal een klant die geen provider gebruikt, de Azure-configuratie hand matig downloaden en Toep assen op hun on-premises SDWAN/VPN-apparaat. Als provider kunt u deze stap automatiseren. Bekijk de [rest-api's](https://docs.microsoft.com/rest/api/virtualwan/vpnsitesconfiguration/download) voor downloaden voor meer informatie. De apparaat-controller kan ' GetVpnConfiguration ' aanroepen REST API de Azure-configuratie te downloaden.
 
 **Configuratie notities**
 
   * Als Azure VNets zijn gekoppeld aan de virtuele hub, worden ze weer gegeven als ConnectedSubnets.
   * VPN-connectiviteit maakt gebruik van op route gebaseerde configuratie en ondersteunt zowel IKEv1-als IKEv2-protocollen.
 
-#### <a name="understanding-the-device-configuration-file"></a>Informatie over het configuratie bestand van het apparaat
+## <a name="devicefile"></a>Configuratie bestand voor het apparaat
 
 Het apparaatconfiguratiebestand bevat de instellingen die u dient te gebruiken om uw on-premises VPN-apparaat te configureren. Wanneer u dit bestand bekijkt, ziet u de volgende informatie:
 
@@ -92,7 +99,7 @@ Het apparaatconfiguratiebestand bevat de instellingen die u dient te gebruiken o
         ```
     * **Informatie over verbindingsconfiguratie van VPN-gateway**, zoals BGP, vooraf-gedeelde sleutels, enzovoort. De PSK is de vooraf gedeelde sleutel die automatisch voor u wordt gegenereerd. U kunt altijd de verbinding bewerken op de pagina Overzicht om een aangepaste PSK in te stellen.
   
-#### <a name="example-device-configuration-file"></a>Voorbeeld van een apparaatconfiguratiebestand
+**Voor beeld van een configuratie bestand voor een apparaat**
 
   ```
   { 
@@ -197,11 +204,7 @@ Het apparaatconfiguratiebestand bevat de instellingen die u dient te gebruiken o
    }
   ```
 
-## <a name="default"></a>Standaard beleid voor IPsec-connectiviteit
-
-[!INCLUDE [IPsec](../../includes/virtual-wan-ipsec-include.md)]
-
-### <a name="does-everything-need-to-match-between-the-virtual-hub-vpngateway-policy-and-my-on-premises-sdwanvpn-device-or-sd-wan-configuration"></a>Moet alles overeenkomen tussen het vpngateway-beleid van de virtuele hub en mijn on-premises SDWAN/VPN-apparaat of de configuratie van de SD-WAN?
+## <a name="default"></a>Connectiviteits gegevens
 
 Uw on-premises SDWAN/VPN-apparaat of de configuratie van de SD-WAN moeten overeenkomen met de volgende algoritmen en para meters, die u opgeeft in het Azure IPsec/IKE-beleid.
 
@@ -211,6 +214,12 @@ Uw on-premises SDWAN/VPN-apparaat of de configuratie van de SD-WAN moeten overee
 * IPsec-versleutelingsalgoritme
 * IPsec-integriteitsalgoritme
 * PFS-groep
+
+### <a name="default"></a>Standaard beleid voor IPsec-connectiviteit 
+
+Bij het werken met standaard beleid kan Azure optreden als initiator en responder tijdens het instellen van een IPsec-tunnel. Er is alleen ondersteuning voor Azure als een responder.
+
+[!INCLUDE [IPsec](../../includes/virtual-wan-ipsec-include.md)]
 
 ## <a name="next-steps"></a>Volgende stappen
 
