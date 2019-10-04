@@ -448,8 +448,6 @@
           href: sql-database-geo-replication-portal.md
         - name: Beveiliging voor geo-replica's configureren
           href: sql-database-geo-replication-security-config.md
-        - name: Failovergroep configureren
-          href: sql-database-configure-failover-group.md
         - name: Functies in het geheugen proberen
           href: sql-database-in-memory-sample.md
         - name: Automatisch instellen inschakelen
@@ -588,6 +586,8 @@
               href: sql-database-xevent-code-ring-buffer.md
     - name: Functies configureren
       items:
+        - name: Failovergroep configureren
+          href: sql-database-configure-failover-group.md
         - name: Azure AD-verificatie configureren
           href: sql-database-aad-authentication-configure.md
         - name: Voorwaardelijke toegang

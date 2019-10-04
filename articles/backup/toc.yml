@@ -174,8 +174,6 @@
           href: backup-azure-reports-data-model.md
         - name: Log Analytics-gegevensmodel voor Azure Backup
           href: backup-azure-log-analytics-data-model.md
-        - name: Inhoudspakket voor centrale rapportage van Azure Backup bijwerken
-          href: backup-azure-central-reporting-updates.md
     - name: Data Protection Manager
       items:
         - name: DPM-workloads voorbereiden in de Azure-portal
