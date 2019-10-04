@@ -9,12 +9,12 @@ ms.service: search
 ms.topic: quickstart
 ms.date: 09/10/2019
 ms.author: laobri
-ms.openlocfilehash: 44f370829b972840ac4266a760fefb4aa317be30
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: a4a25b8504d873b624e1f6822807c9c08ebd2e4f
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70884560"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71936982"
 ---
 # <a name="quickstart-create-an-azure-search-index-using-the-azure-portal"></a>Quickstart: Een Azure Search-index maken met behulp van de Azure Portal
 > [!div class="op_single_selector"]
@@ -24,7 +24,7 @@ ms.locfileid: "70884560"
 > * [Python](search-get-started-python.md)
 > * [C#](search-get-started-dotnet.md)
 
-Probeer de ingebouwde hulpprogramma's in Azure Portal als u snel vertrouwd wilt raken met de concepten van Azure Search. Wizards en editors bieden geen volledige pariteit met de .NET- en REST API's maar u kunt snel aan de slag met een inleiding die u laat zien hoe u zonder code binnen een paar minuten interessante query's kunt schrijven met behulp van voorbeeldgegevens.
+Probeer de ingebouwde hulpprogramma's in Azure Portal als u snel vertrouwd wilt raken met de concepten van Azure Search. Wizards en editors bieden geen volledige pariteit met de .NET-en REST-Api's, maar u kunt snel aan de slag gaan met een code-Free inleiding, waarbij interessante query's worden geschreven tegen een index binnen enkele minuten.
 
 > [!div class="checklist"]
 > * Begin met een gratis openbare op Azure gehoste set voorbeeldgegevens
@@ -53,7 +53,7 @@ Op secties in het servicedashboard wordt weergegeven hoeveel indexen, indexeerfu
 
 Zoekopdrachten worden herhaald over een [*index*](search-what-is-an-index.md) die doorzoekbare gegevens, metagegevens en aanvullende constructies bevat, die worden gebruikt om bepaald zoekgedrag te optimaliseren.
 
-Voor deze zelfstudie gebruiken we een ingebouwde gegevensset die met behulp van een [*indexeerfunctie*](search-indexer-overview.md) kan worden verkend via de wizard **Gegevens importeren**. Een indexeerfunctie is een bronspecifieke verkenner die metagegevens en inhoud uit ondersteunde Azure-gegevensbronnen kan lezen. Normaal gesproken worden indexeerfuncties via een programma gebruikt, maar in de portal zijn ze toegankelijk via de wizard **Gegevens importeren**. 
+Voor deze zelf studie gebruiken we een ingebouwde voor beeld-gegevensset die met behulp van een [*Indexeer functie*](search-indexer-overview.md) kan worden verkend via de [wizard **gegevens importeren** ](search-import-data-portal.md). Een indexeerfunctie is een bronspecifieke verkenner die metagegevens en inhoud uit ondersteunde Azure-gegevensbronnen kan lezen. Normaal gesproken worden indexeerfuncties via een programma gebruikt, maar in de portal zijn ze toegankelijk via de wizard **Gegevens importeren**. 
 
 ### <a name="step-1---start-the-import-data-wizard-and-create-a-data-source"></a>Stap 1: de wizard Gegevens importeren starten en een gegevensbron maken
 

@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 04/23/2019
-ms.openlocfilehash: e9ecc34566e6e534b7489c934c0d5fa3b34e219b
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.date: 10/01/2019
+ms.openlocfilehash: d934568f09e62ad8c1b472583cbfee79d2c837f6
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71104483"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71936862"
 ---
 # <a name="use-azure-storage-with-azure-hdinsight-clusters"></a>Azure-opslag gebruiken met Azure HDInsight-clusters
 
@@ -24,25 +24,26 @@ In dit artikel wordt uitgelegd hoe Azure Storage werkt met HDInsight-clusters. Z
 
 Azure Storage is een robuuste, algemene opslagoplossing die naadloos kan worden geïntegreerd met HDInsight. HDInsight kan een blobcontainer in Azure Storage gebruiken als het standaardbestandssysteem voor het cluster. Via een HDFS-interface (Hadoop Distributed File System) kan de volledige set onderdelen in HDInsight rechtstreeks als blobs op gestructureerde of ongestructureerde gegevens worden uitgevoerd.
 
-> [!WARNING]  
+> [!IMPORTANT]  
 > Type opslag account **BlobStorage** kan alleen worden gebruikt als secundaire opslag voor HDInsight-clusters.
 
-| Type opslag account | Ondersteunde services | Ondersteunde prestatie lagen | Ondersteunde toegangs lagen |
+| Opslagaccounttype | Ondersteunde services | Ondersteunde prestatie lagen | Ondersteunde toegangs lagen |
 |----------------------|--------------------|-----------------------------|------------------------|
 | StorageV2 (general-purpose v2)  | Blob     | Standard                    | Hot, cool, Archive\*   |
 | Opslag (algemeen gebruik v1)   | Blob     | Standard                    | N/A                    |
 | BlobStorage                    | Blob     | Standard                    | Hot, cool, Archive\*   |
 
-Het wordt afgeraden om de standaard- blobcontainer te gebruiken voor het opslaan van bedrijfsgegevens. Het is een goede gewoonte om de standaard-blobcontainer na ieder gebruik te verwijderen om de opslagkosten te verlagen. De standaard container bevat toepassings-en systeem Logboeken. Breng de logboeken over naar een andere locatie voordat u de container verwijdert.
+Het is niet raadzaam om de standaard BLOB-container te gebruiken voor het opslaan van Bedrijfs gegevens. Het is een goede gewoonte om de standaard-blobcontainer na ieder gebruik te verwijderen om de opslagkosten te verlagen. De standaard container bevat toepassings-en systeem Logboeken. Breng de logboeken over naar een andere locatie voordat u de container verwijdert.
 
-Het delen van een blobcontainer als het standaardbestandssysteem voor meerdere clusters wordt niet ondersteund.
+Het delen van één BLOB-container als het standaard bestandssysteem voor meerdere clusters wordt niet ondersteund.
 
 > [!NOTE]  
-> De Access-laag voor het archief is een offline laag met een aantal latentie voor het ophalen van uur en wordt niet aanbevolen voor gebruik met HDInsight. Zie [Access-laag archiveren](../storage/blobs/storage-blob-storage-tiers.md#archive-access-tier)voor meer informatie.
+> De Access-laag voor archivering is een offline laag met een aantal latentie voor het ophalen van uur en wordt niet aanbevolen voor gebruik met HDInsight. Zie [Access-laag archiveren](../storage/blobs/storage-blob-storage-tiers.md#archive-access-tier)voor meer informatie.
 
 Als u ervoor kiest om uw opslag account te beveiligen met de **firewalls en beperkingen voor virtuele netwerken** op **geselecteerde netwerken**, moet u de uitzonde ring inschakelen **vertrouwde micro soft-Services toestaan...** zodat HDInsight toegang kan krijgen tot uw opslag account.
 
 ## <a name="hdinsight-storage-architecture"></a>HDInsight-opslagarchitectuur
+
 Het volgende diagram biedt een abstracte weergave van de HDInsight-opslagarchitectuur bij gebruik van Azure Storage:
 
 ![Hadoop-clusters gebruiken HDFS-API voor toegang tot en opslag van gegevens in Blob Storage](./media/hdinsight-hadoop-use-blob-storage/storage-architecture.png "HDInsight Storage architectuur")
@@ -53,7 +54,7 @@ HDInsight biedt toegang tot het Distributed File System dat lokaal wordt gekoppe
 
 Daarnaast biedt HDInsight toegang tot gegevens die zijn opgeslagen in Azure Storage. De syntaxis is:
 
-    wasb://<containername>@<accountname>.blob.core.windows.net/<path>
+    wasbs://<containername>@<accountname>.blob.core.windows.net/<path>
 
 Hier volgen enkele overwegingen bij het gebruik van een Azure Storage-account met HDInsight-clusters.
 
@@ -70,7 +71,7 @@ De opslag accounts die zijn gedefinieerd in het proces van maken en hun sleutels
 
 Meerdere WebHCat-taken, waaronder Apache Hive, MapReduce, Apache Hadoop streaming en Apache varken, kunnen een beschrijving van opslag accounts en meta gegevens bevatten. (Dit werkt momenteel voor Pig met opslagaccounts, maar niet voor metagegevens.) Zie [Using an HDInsight Cluster with Alternate Storage Accounts and Metastores](https://social.technet.microsoft.com/wiki/contents/articles/23256.using-an-hdinsight-cluster-with-alternate-storage-accounts-and-metastores.aspx) (Een HDInsight-cluster gebruiken met alternatieve opslagaccounts en metastores) voor meer informatie.
 
-Blobs kunnen worden gebruikt voor gestructureerde en ongestructureerde gegevens. De gegevens in blobcontainers worden opgeslagen als sleutel-waardeparen en er is geen maphiërarchie. Maar het slash-teken (/) kan echter worden gebruikt binnen de sleutelnaam deze weergegeven, zodat het lijkt alsof een bestand is opgeslagen in een mapstructuur. De sleutel van de blob kan bijvoorbeeld *input/log1.txt* zijn. Er is niet echt een *invoermap* aanwezig, maar als gevolg van de aanwezigheid van het slash-teken in de naam van de sleutel ziet dit eruit als een bestandspad.
+Blobs kunnen worden gebruikt voor gestructureerde en ongestructureerde gegevens. BLOB-containers slaan gegevens op als sleutel-waardeparen en er is geen Directory-hiërarchie. Maar het slash-teken (/) kan echter worden gebruikt binnen de sleutelnaam deze weergegeven, zodat het lijkt alsof een bestand is opgeslagen in een mapstructuur. De sleutel van de blob kan bijvoorbeeld *input/log1.txt* zijn. Er is niet echt een *invoermap* aanwezig, maar als gevolg van de aanwezigheid van het slash-teken in de naam van de sleutel ziet dit eruit als een bestandspad.
 
 ## <a id="benefits"></a>Voordelen van Azure Storage
 
@@ -82,7 +83,7 @@ Het opslaan van gegevens in Azure Storage in plaats van HDFS heeft enkele voorde
 
 * **Gegevens archivering:** Door gegevens op te slaan in azure Storage, kunnen de HDInsight-clusters die worden gebruikt voor de berekening veilig worden verwijderd zonder dat er gebruikers gegevens verloren gaan.
 
-* **Kosten voor gegevens opslag:** Het opslaan van gegevens in DFS voor de lange termijn is kostbaarer dan de opslag van de gegevens in azure Storage, omdat de kosten van een reken cluster hoger zijn dan de kosten van Azure Storage. Daarnaast bespaart u op de kosten voor het laden van gegevens omdat de gegevens niet opnieuw hoeven te worden geladen voor elk rekencluster dat wordt gegenereerd.
+* **Kosten voor gegevens opslag:** Het opslaan van gegevens in DFS voor de lange termijn is kostbaarer dan de opslag van de gegevens in azure Storage, omdat de kosten van een reken cluster hoger zijn dan de kosten van Azure Storage. Omdat de gegevens niet opnieuw hoeven te worden geladen voor elke generatie van berekenings clusters, bespaart u ook de kosten voor het laden van gegevens.
 
 * **Elastisch uitschalen:** Hoewel HDFS u een scale-out bestands systeem biedt, wordt de schaal bepaald door het aantal knoop punten dat u voor uw cluster maakt. Het wijzigen van de schaal is mogelijk een complexer proces dan. Vertrouw hiervoor niet zonder meer op de elastische schalingsmogelijkheden waarover u automatisch beschikt in Azure Storage.
 
@@ -98,7 +99,7 @@ Bepaalde MapReduce-taken en -pakketten kunnen tussenliggende resultaten generere
 Het URI-schema om bestanden in Azure Storage vanuit HDInsight te openen:
 
 ```config
-wasb://<BlobStorageContainerName>@<StorageAccountName>.blob.core.windows.net/<path>
+wasbs://<BlobStorageContainerName>@<StorageAccountName>.blob.core.windows.net/<path>
 ```
 
 Het URI-schema biedt niet-versleutelde toegang (met het voorvoegsel *wasb:* ) en SSL-versleutelde toegang (met *wasbs*). Waar mogelijk kunt u het beste *wasbs* gebruiken, zelfs voor de toegang tot gegevens die zich in dezelfde regio in Azure bevinden.
@@ -109,8 +110,8 @@ Het URI-schema biedt niet-versleutelde toegang (met het voorvoegsel *wasb:* ) en
 Als geen `<BlobStorageContainerName>` van `<StorageAccountName>` beide of is opgegeven, wordt het standaard bestandssysteem gebruikt. Voor de bestand op het standaardbestandssysteem kunt u een relatief of een absoluut pad gebruiken. U kunt bijvoorbeeld als volgt verwijzen naar het bestand *hadoop-mapreduce-examples.jar* dat bij HDInsight-clusters wordt geleverd:
 
 ```config
-wasb://mycontainer@myaccount.blob.core.windows.net/example/jars/hadoop-mapreduce-examples.jar
-wasb:///example/jars/hadoop-mapreduce-examples.jar
+wasbs://mycontainer@myaccount.blob.core.windows.net/example/jars/hadoop-mapreduce-examples.jar
+wasbs:///example/jars/hadoop-mapreduce-examples.jar
 /example/jars/hadoop-mapreduce-examples.jar
 ```
 
@@ -126,13 +127,13 @@ example/jars/hadoop-mapreduce-examples.jar
 > [!NOTE]  
 > Als u buiten HDInsight met blobs werkt, zullen de meeste hulpprogramma's de indeling WASB niet herkennen en wordt er in plaats daarvan een standaardpadindeling verwacht, zoals `example/jars/hadoop-mapreduce-examples.jar`.
 
-##  <a name="blob-containers"></a>Blobcontainers
+## <a name="blob-containers"></a>Blobcontainers
 
 Als u blobs wilt gebruiken, maakt u eerst een [Azure Storage-account](../storage/common/storage-create-storage-account.md). Als onderdeel hiervan geeft u een Azure-regio op waar het opslagaccount wordt gemaakt. Het cluster en het opslagaccount moeten worden gehost in dezelfde regio. De Hive-metastore SQL Server-Data Base en Apache Oozie-meta Store SQL Server-Data Base moeten zich ook in dezelfde regio bevinden.
 
 Elke blob die u maakt, behoort tot een container in uw Azure Storage-account, ongeacht de locatie van de blob. Deze container kan een bestaande blob zijn die buiten HDInsight is gemaakt. Het kan echter ook een container zijn die is gemaakt voor een HDInsight-cluster.
 
-In de standaard blobcontainer worden clusterspecifieke gegevens opgeslagen, zoals taakgeschiedenis en logboeken. Deel een standaard blob-container niet met meerdere HDInsight-clusters. Hierdoor kan de taakgeschiedenis beschadigd raken. U kunt voor elk cluster het beste een andere container gebruiken en de gedeelde gegevens in een gekoppeld opslagaccount plaatsen dat is opgegeven in de implementatie van alle relevante cluster, in plaats van het standaardopslagaccount. Zie [HDInsight-clusters maken](hdinsight-hadoop-provision-linux-clusters.md)voor meer informatie over het configureren van gekoppelde opslag accounts. U kunt een standaardopslagcontainer echter opnieuw gebruiken nadat het oorspronkelijke HDInsight-cluster is verwijderd. Voor HBase-clusters kunt u het HBase-tabelschema en de bijbehorende gegevens behouden door een nieuw HBase-cluster te maken met de standaard-blobcontainer die wordt gebruikt door een verwijderd HBase-cluster.
+In de standaard blobcontainer worden clusterspecifieke gegevens opgeslagen, zoals taakgeschiedenis en logboeken. Deel een standaard blob-container niet met meerdere HDInsight-clusters. Hierdoor kan de taakgeschiedenis beschadigd raken. Het is raadzaam om voor elk cluster een andere container te gebruiken en gedeelde gegevens te plaatsen op een gekoppeld opslag account dat is opgegeven in de implementatie van alle relevante clusters in plaats van het standaard opslag account. Zie [HDInsight-clusters maken](hdinsight-hadoop-provision-linux-clusters.md)voor meer informatie over het configureren van gekoppelde opslag accounts. U kunt een standaardopslagcontainer echter opnieuw gebruiken nadat het oorspronkelijke HDInsight-cluster is verwijderd. Voor HBase-clusters kunt u het HBase-tabel schema en de gegevens in werkelijkheid blijven door een nieuw HBase-cluster te maken met behulp van de standaard-BLOB-container die wordt gebruikt door een HBase-cluster dat is verwijderd.
 
 [!INCLUDE [secure-transfer-enabled-storage-account](../../includes/hdinsight-secure-transfer.md)]
 

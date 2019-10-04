@@ -1,25 +1,25 @@
 ---
 title: Een Azure Search-index maken in Azure Portal-Azure Search
-description: Meer informatie over het maken van een index voor Azure Search met behulp van ingebouwde portal-index ontwerpen.
+description: Meer informatie over het maken van een index voor Azure Search met behulp van een ingebouwde portal-index ontwerper.
 manager: nitinme
 author: heidisteen
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 02/16/2019
+ms.date: 10/02/2019
 ms.author: heidist
-ms.openlocfilehash: fec81cd9660348d492b1dabd24ac689f2b06e880
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 4abef5a3030643d4c7b91d2911f350190972f1eb
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69638814"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71937266"
 ---
 # <a name="create-an-azure-search-index-in-the-portal"></a>Een Azure Search-index maken in de portal
 
-Azure Search bevat een ingebouwde index ontwerper in de portal die nuttig is voor prototypen of het maken van een [zoek index](search-what-is-an-index.md) die wordt gehost op uw Azure Search-service. Het hulp programma wordt gebruikt voor het bouwen van een schema. Wanneer u de definitie opslaat, wordt een lege index volledig weer gegeven in Azure Search. Hoe u het laadt met Doorzoek bare gegevens, is voor u.
+Azure Search bevat een ingebouwde index ontwerper in de portal die nuttig is voor prototypen of het maken van een [zoek index](search-what-is-an-index.md) die wordt gehost op uw Azure Search-service. Het hulp programma wordt gebruikt voor het bouwen van een schema. Wanneer u de definitie opslaat, wordt een lege index volledig weer gegeven in Azure Search. Hoe u het laadt met Doorzoek bare inhoud, is voor u.
 
-De index ontwerper is slechts één benadering voor het maken van een index. Via een programma kunt u een index maken met behulp van de [.net](search-create-index-dotnet.md) -of [rest](search-create-index-rest-api.md) -api's.
+De index ontwerper is slechts één benadering voor het maken van een index. U kunt ook een index maken en laden met behulp van de [wizard gegevens importeren](search-get-started-portal.md). De wizard werkt alleen met indexen die deze zelf maakt. Via een programma kunt u een index maken met behulp van de [.net](search-create-index-dotnet.md) -of [rest](search-create-index-rest-api.md) -api's.
 
 ## <a name="start-index-designer"></a>Index Designer starten
 
@@ -27,7 +27,7 @@ De index ontwerper is slechts één benadering voor het maken van een index. Via
 
 2. Klik op de koppeling **index toevoegen** in de opdracht balk boven aan de pagina.
 
-   ![Index koppeling toevoegen in de opdracht balk](media/search-create-index-portal/add-index.png "Index koppeling toevoegen in de opdracht balk")
+   ![Index koppeling toevoegen op de opdracht balk](media/search-create-index-portal/add-index.png "index koppeling toevoegen op de opdracht balk")
 
 3. Geef uw Azure Search-index een naam. Er wordt naar index namen verwezen in indexerings-en query bewerkingen. De naam van de index wordt een onderdeel van de eindpunt-URL die wordt gebruikt om verbinding te maken met de index en om HTTP-aanvragen in de REST API voor Azure Search te verzenden.
 
@@ -41,15 +41,17 @@ De index bevat onder andere een *Veldenverzameling* die de doorzoekbare gegevens
 
 1. Voeg velden toe om de documenten die u uploadt volledig op te geven en een [gegevens type](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) voor elke document in te stellen. Als bijvoorbeeld documenten bestaan uit een *Hotel-id*, *Hotel naam*, *adres*, *plaats*en *regio*, maakt u een overeenkomend veld voor elke groep in de index. Raadpleeg de [ontwerp richtlijnen in de sectie hieronder](#design) voor hulp bij het instellen van kenmerken.
 
-2. Geef een *sleutel* veld op van het type EDM. String. De waarden voor dit veld moeten elk document uniek identificeren. De standaardnaam van het veld is *id*, maar u kunt de naam wijzigen, zolang de tekenreeks maar voldoet aan de [naamgevingsregels](https://docs.microsoft.com/rest/api/searchservice/Naming-rules). Als uw collectie Fields bijvoorbeeld *Hotel-id*bevat, kiest u dat voor uw sleutel. Voor elke Azure Search-index is een sleutelveld verplicht en het moet een tekenreeks zijn.
+1. Als inkomende gegevens hiërarchisch zijn, moet uw schema [complexe typen](search-howto-complex-data-types.md) bevatten die de geneste structuren vertegenwoordigen. De ingebouwde voor beeld-gegevensset, hotels, illustreert complexe typen met behulp van een adres (bevat meerdere subvelden) die een een-op-een-relatie hebben met elk Hotel, en een verzameling van ruimten die complexe verzamelingen bevatten, waarbij meerdere kamers aan elk hotel zijn gekoppeld. 
 
-3. Stel kenmerken in voor elk veld. De index Designer sluit alle kenmerken uit die ongeldig zijn voor het gegevens type, maar worden niet voorgesteld wat moet worden opgenomen. Lees de instructies in de volgende sectie voor meer informatie over de kenmerken van.
+1. Geef een *sleutel* veld op van het type EDM. String. Voor elke Azure Search-index is een sleutelveld verplicht en het moet een tekenreeks zijn. De waarden voor dit veld moeten elk document uniek identificeren. De standaardnaam van het veld is *id*, maar u kunt de naam wijzigen, zolang de tekenreeks maar voldoet aan de [naamgevingsregels](https://docs.microsoft.com/rest/api/searchservice/Naming-rules). Als uw collectie Fields bijvoorbeeld *Hotel-id*bevat, kiest u dat voor uw sleutel. 
+
+1. Stel kenmerken in voor elk veld. De index Designer sluit alle kenmerken uit die ongeldig zijn voor het gegevens type, maar worden niet voorgesteld wat moet worden opgenomen. Lees de instructies in de volgende sectie voor meer informatie over de kenmerken van.
 
     API-documentatie voor Azure Search bevat voorbeelden van code met een eenvoudige index *hotels*. In de onderstaande scherm afbeelding ziet u de index definitie, inclusief de Franse taal analyse die tijdens de index definitie is opgegeven, die u als een Oefen oefening in de portal kunt maken.
 
-    ![Demo-index van hotels](media/search-create-index-portal/field-definitions.png "Demo-index van hotels")
+    (media/search-create-index-portal/field-definitions.png "Demo") -index voor hotels- ![demo index]
 
-4. Wanneer u klaar bent, klikt u op **maken** om de index op te slaan en te maken.
+1. Wanneer u klaar bent, klikt u op **maken** om de index op te slaan en te maken.
 
 <a name="design"></a>
 

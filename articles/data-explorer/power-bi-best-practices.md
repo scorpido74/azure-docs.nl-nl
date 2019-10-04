@@ -7,12 +7,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/26/2019
-ms.openlocfilehash: 53bed3fe50afef260ac44f73a9f82e6894015c90
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: e6767c1e03b074f43993e449ca81af951c579090
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349006"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71937325"
 ---
 # <a name="best-practices-for-using-power-bi-to-query-and-visualize-azure-data-explorer-data"></a>Aanbevolen procedures voor het gebruik van Power BI om gegevens van Azure Data Explorer te doorzoeken en te visualiseren
 
@@ -34,7 +34,7 @@ Wanneer u werkt met terabytes aan verse onbewerkte gegevens, volgt u deze richt 
 
    * Gebruik [zwakke consistentie om de parallelle afzwakking te verbeteren](/azure/kusto/concepts/queryconsistency). Dit kan invloed hebben op de versheid van de gegevens.
 
-* **Efficiënte Slicers** : u kunt [synchronisatie Slicers](https://docs.microsoft.com/power-bi/visuals/power-bi-visualization-slicers#sync-and-use-slicers-on-other-pages) gebruiken om te voor komen dat rapporten gegevens laden voordat u klaar bent. Nadat u de gegevensset hebt gestructureerd, alle visuals hebt geplaatst en alle Slicers markeert, kunt u de slicer synchroniseren selecteren om alleen de benodigde gegevens te laden.
+* **Efficiënte Slicers** : gebruik [synchronisatie Slicers](https://docs.microsoft.com/power-bi/visuals/power-bi-visualization-slicers#sync-and-use-slicers-on-other-pages) om te voor komen dat rapporten gegevens laden voordat u klaar bent. Nadat u de gegevensset hebt gestructureerd, alle visuals hebt geplaatst en alle Slicers markeert, kunt u de slicer synchroniseren selecteren om alleen de benodigde gegevens te laden.
 
 * **Filters gebruiken** : zoveel mogelijke Power bi filters gebruiken om de Azure Data Explorer zoeken naar de relevante gegevens Shards te richten.
 
@@ -46,7 +46,7 @@ De volgende sectie bevat tips en trucs voor het gebruik van Kusto-query taal met
 
 ### <a name="complex-queries-in-power-bi"></a>Complexe query's in Power BI
 
-Complexe query's zijn eenvoudiger te zien in Kusto dan in Power Query. Ze moeten worden geïmplementeerd als [Kusto-functies](/azure/kusto/query/functions)en worden aangeroepen in Power bi. Deze methode is vereist voor het gebruik van **DirectQuery** met `let`-instructies in uw Kusto-query. Omdat Power BI twee query's samenvoegt en de instructie `let` niet kan worden gebruikt met de operator `join`, kunnen er syntaxis fouten optreden. Sla daarom elk deel van de samen voeging op als een Kusto-functie en sta Power BI toe deze twee functies samen te voegen.
+Complexe query's zijn eenvoudiger te zien in Kusto dan in Power Query. Ze moeten worden geïmplementeerd als [Kusto-functies](/azure/kusto/query/functions)en worden aangeroepen in Power bi. Deze methode is vereist voor het gebruik van **DirectQuery** met `let`-instructies in uw Kusto-query. Omdat Power BI twee query's samenvoegt en `let`-instructies niet kunnen worden gebruikt met de operator `join`, kunnen er syntaxis fouten optreden. Sla daarom elk deel van de samen voeging op als een Kusto-functie en sta Power BI toe deze twee functies samen te voegen.
 
 ### <a name="how-to-simulate-a-relative-data-time-operator"></a>Een relatieve gegevens tijd operator simuleren
 
@@ -104,7 +104,7 @@ In het venster **Query's bewerken** , **Start** > **Geavanceerde editor**
     Source = Kusto.Contents("Help", "Samples", "StormEvents | where State == 'ALABAMA' | take 100", [])
     ```
 
-1. Vervang het relevante deel van de query door de para meter. U kunt de query in meerdere delen splitsen en deze weer samen voegen met het &-teken, samen met de para meter.
+1. Vervang het relevante deel van de query door de para meter. Splits de query in meerdere delen en voeg deze opnieuw toe met behulp van een en-teken (&), samen met de para meter.
 
    In de bovenstaande query nemen we bijvoorbeeld het `State == 'ALABAMA'`-gedeelte op en splitsen we het naar: `State == '` en `'`. we zetten de para meter `State` tussen deze opties:
    

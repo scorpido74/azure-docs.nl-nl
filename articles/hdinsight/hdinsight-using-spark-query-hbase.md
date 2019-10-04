@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 06/06/2019
-ms.openlocfilehash: e6b3fc4f9badeedbed55f89702933b41a952977b
-ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
+ms.date: 10/02/2019
+ms.openlocfilehash: fdfd026be1a10410cd7c875dbdf0de9660c8412c
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71180796"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71937618"
 ---
 # <a name="use-apache-spark-to-read-and-write-apache-hbase-data"></a>Apache Spark gebruiken om Apache HBase-gegevens te lezen en schrijven
 
@@ -144,7 +144,7 @@ In deze stap definieert u een catalogus object dat het schema toewijst van Apach
     |}""".stripMargin
     ```
 
-    De code voert het volgende uit:  
+    De code doet het volgende:  
 
      a. Definieer een catalogus schema voor de HBase-tabel `Contacts`met de naam.  
      b. Identificeer de rowkey als `key`en wijs de kolom namen die worden gebruikt in Spark toe aan het kolom familie, de kolom naam en het kolom Type zoals gebruikt in HBase.  
@@ -192,8 +192,7 @@ In deze stap definieert u een catalogus object dat het schema toewijst van Apach
 8. Een SQL-query voor de `contacts` tabel uitgeven:
 
     ```scala
-    val query = spark.sqlContext.sql("select personalName, officeAddress from contacts")
-    query.show()
+    spark.sqlContext.sql("select personalName, officeAddress from contacts").show
     ```
 
 9. De resultaten moeten er als volgt uitzien:

@@ -7,12 +7,12 @@ author: vhorne
 ms.service: application-gateway
 ms.date: 6/18/2019
 ms.author: victorh
-ms.openlocfilehash: 9c04f805cf410d2306eda76c84a201a67b022b84
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: 154317e558c2c9a22f569f569684cced467900d5
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68716629"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71937469"
 ---
 # <a name="custom-rules-for-web-application-firewall-v2"></a>Aangepaste regels voor Web Application Firewall versie 2
 
@@ -37,7 +37,7 @@ Reguliere expressies worden ook ondersteund in aangepaste regels, net als in de 
 
 Het toestaan en blok keren van verkeer is eenvoudig met aangepaste regels. U kunt bijvoorbeeld al het verkeer dat afkomstig is van een bereik van IP-adressen blok keren. U kunt een andere regel maken om verkeer toe te staan als de aanvraag afkomstig is van een specifieke browser.
 
-Als u iets wilt toestaan, moet `-Action` u ervoor zorgen dat de para meter is ingesteld op **toestaan**. Als u iets wilt blok keren, `-Action` controleert u of de para meter is ingesteld op **blok keren**.
+Als u iets wilt toestaan, moet u ervoor zorgen dat de para meter `-Action` is ingesteld op **toestaan**. Als u iets wilt blok keren, moet u ervoor zorgen dat de para meter `-Action` is ingesteld op **blok keren**.
 
 ```azurepowershell
 $AllowRule = New-AzApplicationGatewayFirewallCustomRule `
@@ -55,7 +55,7 @@ $BlockRule = New-AzApplicationGatewayFirewallCustomRule `
    -Action Block
 ```
 
-In het `$BlockRule` vorige voor gaande wordt de volgende aangepaste regel in azure Resource Manager:
+De vorige `$BlockRule` verwijst naar de volgende aangepaste regel in Azure Resource Manager:
 
 ```json
 "customRules": [
@@ -96,8 +96,8 @@ Dit is de naam van de regel. Deze naam wordt weer gegeven in de logboeken.
 
 ### <a name="priority-required"></a>Prioriteit [vereist]
 
-- Bepaalt de volg orde waarin regels worden geëvalueerd. Hoe lager de waarde, hoe eerder de evaluatie van de regel.
--Moet uniek zijn voor alle aangepaste regels. Een regel met prioriteit 100 wordt geëvalueerd vóór een regel met de prioriteit 200.
+- Bepaalt de volg orde waarin regels worden geëvalueerd. Hoe lager de waarde, hoe eerder de evaluatie van de regel. Het toegestane bereik is 1-100. 
+- Moet uniek zijn voor alle aangepaste regels. Een regel met prioriteit 40 wordt geëvalueerd vóór een regel met de prioriteit 80.
 
 ### <a name="rule-type-required"></a>Regel type [vereist]
 
@@ -144,7 +144,7 @@ De huidige voor waarde wordt genegeerd.
 Een lijst met teken reeksen met namen van trans formaties voordat de overeenkomst wordt geprobeerd. Dit kunnen de volgende trans formaties zijn:
 
 - Kleine letters
-- Omloopspaties wissen
+- Knippen
 - UrlDecode
 - UrlEncode 
 - RemoveNulls

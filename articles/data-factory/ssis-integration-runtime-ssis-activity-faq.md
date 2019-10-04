@@ -12,12 +12,12 @@ author: wenjiefu
 ms.author: wenjiefu
 ms.reviewer: sawinark
 manager: craigg
-ms.openlocfilehash: 8e800ec8a7a2dd52e052547efa51deaad8c9bb45
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: ec5a3ab0a2498e7d9bb24bed1bc0a37194e38e9e
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71104923"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71936955"
 ---
 # <a name="troubleshoot-package-execution-in-the-ssis-integration-runtime"></a>Problemen met de uitvoering van pakketten oplossen in SSIS Integration runtime
 
@@ -121,12 +121,17 @@ Deze fout treedt op wanneer de SSIS Integration runtime geen toegang kan krijgen
 ### <a name="error-message-microsoft-ole-db-provider-for-analysis-services-hresult-0x80004005-description-com-error-com-error-mscorlib-exception-has-been-thrown-by-the-target-of-an-invocation"></a>Foutbericht: "Micro soft OLE DB-provider voor Analysis Services. HRESULT Beschrijving van 0x80004005: COM-fout: COM-fout: mscorlib; Er is een uitzonde ring opgetreden bij het doel van een aanroep.
 
 Een mogelijke oorzaak is dat de gebruikers naam of het wacht woord waarvoor Azure Multi-Factor Authentication is ingeschakeld, is geconfigureerd voor Azure Analysis Services-verificatie. Deze authenticatie wordt niet ondersteund in de SSIS Integration runtime. Probeer een service-principal te gebruiken voor Azure Analysis Services authenticatie:
+
 1. Bereid een service-principal voor zoals beschreven in [Automation met Service-principals](https://docs.microsoft.com/azure/analysis-services/analysis-services-service-principal).
 2. Configureer in verbindings beheer **een specifieke gebruikers naam en wacht woord gebruiken**: Stel **AppID** in als de gebruikers naam en **clientSecret** als wacht woord.
 
 ### <a name="error-message-adonet-source-has-failed-to-acquire-the-connection-guid-with-the-following-error-message-login-failed-for-user-nt-authorityanonymous-logon-when-using-a-managed-identity"></a>Foutbericht: 'ADONET Source has failed to acquire the connection {GUID} with the following error message: De aanmelding is mislukt voor de gebruiker ' NT AUTHORITY\ANONYMOUS-aanmelding ' bij het gebruik van een beheerde identiteit
 
 Zorg ervoor dat u de verificatie methode van verbindings beheer niet configureert als **Active Directory wachtwoord verificatie** wanneer de para meter *ConnectUsingManagedIdentity* is ingesteld op **True**. U kunt het configureren als **SQL-verificatie** in plaats daarvan, wat wordt genegeerd als *ConnectUsingManagedIdentity* is ingesteld.
+
+### <a name="error-message-0xc020801f-at--odata-source--cannot-acquire-a-managed-connection-from-the-run-time-connection-manager"></a>Foutbericht: "0xC020801F at..., OData-bron [...]: Kan geen beheerde verbinding verkrijgen vanuit het run-time verbindings beheer '
+
+Een mogelijke oorzaak is dat de Transport Layer Security (TLS) niet is ingeschakeld in SSIS Integration runtime, wat vereist is voor uw OData-bron. U kunt TLS inschakelen in SSIS Integration runtime met behulp van Setup aanpassen. Meer informatie vindt u in [kan geen verbinding maken met project online Odata vanuit SSIS](https://docs.microsoft.com/office365/troubleshoot/cant-connect-project-online-odata-from-ssis) en [Setup aanpassen voor de Azure-SSIS Integration runtime](how-to-configure-azure-ssis-ir-custom-setup.md).
 
 ### <a name="error-message-request-staging-task-with-operation-guid--fail-since-error-failed-to-dispatch-staging-operation-with-error-message-microsoftsqlserverintegrationservicesaisagentcoreaisagentexception-failed-to-load-data-proxy"></a>Foutbericht: "Test taak aanvragen met bewerking-GUID... mislukt omdat fout: Kan de faserings bewerking niet verzenden met het fout bericht: Micro soft. SqlServer. IntegrationServices. AisAgentCore. AisAgentException: Kan de gegevens proxy niet laden. "
 

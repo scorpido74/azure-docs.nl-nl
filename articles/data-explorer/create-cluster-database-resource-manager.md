@@ -7,12 +7,12 @@ ms.reviewer: oflipman
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/26/2019
-ms.openlocfilehash: dfc0cd6686ac4ea1af2beb34edeadd17e4c952e1
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: b8aa87b871b86a8dab3b1984b638366a42708483
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71329433"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71936896"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-an-azure-resource-manager-template"></a>Een Azure Data Explorer-cluster en-data base maken met behulp van een Azure Resource Manager sjabloon
 
@@ -110,7 +110,7 @@ U kunt de Azure Resource Manager-sjabloon implementeren met [behulp van de Azure
 
     ![Implementeren naar Azure](media/create-cluster-database-resource-manager/deploy-2-azure.png)
 
-U kunt [de sjabloon in de Azure Portal bewerken en implementeren](/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal#edit-and-deploy-the-template) met behulp van het formulier.
+    U kunt [de sjabloon in de Azure Portal bewerken en implementeren](/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal#edit-and-deploy-the-template) met behulp van het formulier.
 
 1. De secties **basis beginselen** en **instellingen** volt ooien. Selecteer unieke namen voor clusters en data bases.
 Het duurt enkele minuten om een Azure Data Explorer-cluster en-Data Base te maken.
@@ -142,7 +142,7 @@ Het duurt enkele minuten om een Azure Data Explorer-cluster en-Data Base te make
 
 #### <a name="verify-the-deployment-using-powershell"></a>De implementatie controleren met Power shell
 
-Gebruik het volgende Azure PowerShell script om de implementatie te controleren.  Als de Cloud shell nog steeds geopend is, hoeft u de eerste regel niet te kopiëren/uit te voeren (Read-host). Lees [AZ. Kusto](/powershell/module/az.kusto/?view=azps-2.7.0)voor meer informatie over het beheren van Azure Data Explorer-resources in Power shell. Relevante wijzigingen aanbrengen
+Gebruik het volgende Azure PowerShell script om de implementatie te controleren.  Als de Cloud Shell nog steeds is geopend, hoeft u de eerste regel niet te kopiëren/uit te voeren (Read-host). Lees [AZ. Kusto](/powershell/module/az.kusto/?view=azps-2.7.0)voor meer informatie over het beheren van Azure Data Explorer-resources in Power shell. 
 
 ```azurepowershell-interactive
 $projectName = Read-Host -Prompt "Enter the same project name that you used in the last procedure"
@@ -163,9 +163,9 @@ Schoon de geïmplementeerd Azure-resources, wanneer u deze niet meer nodig hebt,
 
 Verwijder de resources in de Azure Portal door de stappen te volgen in [opschonen van resources](create-cluster-database-portal.md#clean-up-resources).
 
-### <a name="clean-up-resources-using-powershell"></a>Resources opschonen met Power shell
+### <a name="clean-up-resources-using-powershell"></a>Resources opschonen met PowerShell
 
-Als de Cloud shell nog steeds geopend is, hoeft u de eerste regel niet te kopiëren/uit te voeren (Read-host).
+Als de Cloud Shell nog steeds is geopend, hoeft u de eerste regel niet te kopiëren/uit te voeren (Read-host).
 
 ```azurepowershell-interactive
 $projectName = Read-Host -Prompt "Enter the same project name that you used in the last procedure"

@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: tutorial
 ms.date: 06/18/2019
 ms.author: dacurwin
-ms.openlocfilehash: 875db0d34932dca1c7eae7e3650acf01856c6413
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 2c1473083c4fdb025588a7c4b410860a5f18dd5a
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70934434"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71937064"
 ---
 # <a name="about-sql-server-backup-in-azure-vms"></a>Over SQL Server-back-ups in virtuele Azure-machines
 
@@ -45,9 +45,9 @@ Voordat u begint, controleert u het onderstaande:
 **Ondersteuning** | **Details**
 --- | ---
 **Ondersteunde implementaties** | SQL Marketplace Azure-VM's en niet-Marketplace-VM's (SQL Server handmatig geïnstalleerd) worden ondersteund.
-**Ondersteunde geografische gebieden** | Australië-Zuid-Oost (ASE), Oost-Australië (AE) <br> Brazilië - zuid (BRS)<br> Canada-centraal (CNC), Canada-oost (CE)<br> Zuid-Azië-oost (zee), Azië-oost (EA) <br> VS-Oost (EUS), VS-Oost 2 (EUS2), VS-West-Centraal (WCUS), VS-West (WUS); VS-West 2 (WUS 2) Noord-Centraal VS (NCUS) centraal VS (CUS) Zuid-Centraal (SCUS) <br> India-centraal (INC), India-Zuid (invoeg toepassingen) <br> Japan-Oost (JPE), Japan-West (JPW) <br> Korea-centraal (KRC), Korea-zuid (KRS) <br> Europa-noord (NE), Europa-west <br> UK-zuid (UKS), UK-west (UKW) <br> US Gov-Arizona, US Gov-Virginia, US Gov-Texas, US DoD-centraal, US DoD-oost
-**Ondersteunde besturingssystemen** | Windows Server 2016, Windows Server 2012 R2, Windows Server 2012<br/><br/> Linux wordt momenteel niet ondersteund.
-**Ondersteunde SQL Server-versies** | SQL Server 2017, zoals [hier](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202017)wordt beschreven, SQL Server 2016 en SPS, zoals [hier](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202016%20service%20pack)wordt beschreven, SQL Server 2014, SQL Server 2012.<br/><br/> Enterprise, Standard, Web, Developer, Express.
+**Ondersteunde geografische gebieden** | Australië-Zuid-Oost (ASE), Oost-Australië (AE), Australië-centraal (AC), Australië-centraal 2 (AC) <br> Brazilië - zuid (BRS)<br> Canada-centraal (CNC), Canada-oost (CE)<br> Zuid-Azië-oost (zee), Azië-oost (EA) <br> VS-Oost (EUS), VS-Oost 2 (EUS2), VS-West-Centraal (WCUS), VS-West (WUS); VS-West 2 (WUS 2) Noord-Centraal VS (NCUS) centraal VS (CUS) Zuid-Centraal (SCUS) <br> India-centraal (INC), India-Zuid (INS), India-West <br> Japan-Oost (JPE), Japan-West (JPW) <br> Korea-centraal (KRC), Korea-zuid (KRS) <br> Europa-noord (NE), Europa-west <br> UK-zuid (UKS), UK-west (UKW) <br> US Gov-Arizona, US Gov-Virginia, US Gov-Texas, US DoD-centraal, US DoD-oost <br> Duitsland-noord, Duitsland-west-centraal <br>
+Zwitserland-noord, Zwitserland-west **ondersteunde besturings systemen** | Windows Server 2016, Windows Server 2012 R2, Windows Server 2012<br/><br/> Linux wordt momenteel niet ondersteund.
+**Ondersteunde versies van SQL Server** | SQL Server 2017, zoals [hier](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202017)wordt beschreven, SQL Server 2016 en SPS, zoals [hier](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202016%20service%20pack)wordt beschreven, SQL Server 2014, SQL Server 2012.<br/><br/> Enterprise, Standard, Web, Developer, Express.
 **Ondersteunde .NET-versies** | .NET Framework 4.5.2 en hoger geïnstalleerd op de VM
 
 ### <a name="support-for-sql-server-2008-and-sql-server-2008-r2"></a>Ondersteuning voor SQL Server 2008 en SQL Server 2008 R2
@@ -92,7 +92,7 @@ Afhankelijk van de voor keuren voor back-ups en back-ups (volledig/differentieel
 **Back-uptype** | **Node**
     --- | ---
     Volledig | Primair
-    Differentiële | Primair
+    Differentieel | Primair
     logboek |  Primair
     Alleen-kopiëren is volledig |  Primair
 
@@ -101,7 +101,7 @@ Afhankelijk van de voor keuren voor back-ups en back-ups (volledig/differentieel
 **Back-uptype** | **Node**
 --- | ---
 Volledig | Primair
-Differentiële | Primair
+Differentieel | Primair
 logboek |  Secundair
 Alleen-kopiëren is volledig |  Secundair
 
@@ -110,7 +110,7 @@ Alleen-kopiëren is volledig |  Secundair
 **Back-uptype** | **Node**
 --- | ---
 Volledig | Primair
-Differentiële | Primair
+Differentieel | Primair
 logboek |  Secundair
 Alleen-kopiëren is volledig |  Secundair
 
@@ -119,7 +119,7 @@ Alleen-kopiëren is volledig |  Secundair
 **Back-uptype** | **Node**
 --- | ---
 Volledig | Primair
-Differentiële | Primair
+Differentieel | Primair
 logboek |  Secundair
 Alleen-kopiëren is volledig |  Secundair
 

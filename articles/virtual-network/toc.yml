@@ -230,6 +230,8 @@
           items:
             - name: Subnetten
               href: virtual-network-manage-subnet.md
+            - name: Delegatie van subnet
+              href: manage-subnet-delegation.md
             - name: Peerings
               href: virtual-network-manage-peering.md
             - name: DDoS-bescherming

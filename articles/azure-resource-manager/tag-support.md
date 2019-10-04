@@ -4,14 +4,14 @@ description: Hier wordt weer gegeven welke Azure-resource typen tags ondersteune
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 10/03/2019
 ms.author: tomfitz
-ms.openlocfilehash: 7b8d3de3eaa9cdbb945879f2acc283d74c8b4e82
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 06028224379bd42e1e0ea21b684ce443abd5992a
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70996831"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71937020"
 ---
 # <a name="tag-support-for-azure-resources"></a>Ondersteuning voor labels voor Azure-resources
 In dit artikel wordt beschreven of een resource type [labels](resource-group-using-tags.md)ondersteunt. De kolom met de naam **ondersteunt labels** geeft aan of het resource type een eigenschap voor de tag heeft. De kolom label **in het kosten rapport** geeft aan of dit resource type de tag doorgeeft aan het kosten rapport.
@@ -40,7 +40,6 @@ Ga naar de naam ruimte van een resource provider:
 > - [Microsoft.Batch](#microsoftbatch)
 > - [Micro soft. billing](#microsoftbilling)
 > - [Microsoft.BingMaps](#microsoftbingmaps)
-> - [Microsoft.BizTalkServices](#microsoftbiztalkservices)
 > - [Microsoft.Blockchain](#microsoftblockchain)
 > - [Microsoft.Blueprint](#microsoftblueprint)
 > - [Microsoft.BotService](#microsoftbotservice)
@@ -123,6 +122,7 @@ Ga naar de naam ruimte van een resource provider:
 > - [Microsoft.NetApp](#microsoftnetapp)
 > - [Microsoft.Network](#microsoftnetwork)
 > - [Microsoft.NotificationHubs](#microsoftnotificationhubs)
+> - [Micro soft. ObjectStore](#microsoftobjectstore)
 > - [Micro soft. OffAzure](#microsoftoffazure)
 > - [Microsoft.OperationalInsights](#microsoftoperationalinsights)
 > - [Microsoft.OperationsManagement](#microsoftoperationsmanagement)
@@ -393,6 +393,7 @@ Ga naar de naam ruimte van een resource provider:
 > | billingAccounts/klanten | Nee |Nee |
 > | billingAccounts/klanten/billingSubscriptions | Nee |Nee |
 > | billingAccounts/klanten/initiateTransfer | Nee |Nee |
+> | billingAccounts/klanten/beleids regels | Nee |Nee |
 > | billingAccounts/klanten/producten | Nee |Nee |
 > | billingAccounts/klanten/trans acties | Nee |Nee |
 > | billingAccounts/klanten/overdrachten | Nee |Nee |
@@ -440,13 +441,6 @@ Ga naar de naam ruimte van een resource provider:
 > | ------------- | ----------- | ----------- |
 > | mapApis | Ja |Ja |
 > | updateCommunicationPreference | Nee |Nee |
-
-## <a name="microsoftbiztalkservices"></a>Microsoft.BizTalkServices
-
-> [!div class="mx-tableFixed"]
-> | Resourcetype | Ondersteunt labels | Label in kosten rapport |
-> | ------------- | ----------- | ----------- |
-> | BizTalk | Ja |Ja |
 
 ## <a name="microsoftblockchain"></a>Microsoft.Blockchain
 
@@ -542,7 +536,7 @@ Ga naar de naam ruimte van een resource provider:
 > | Resourcetype | Ondersteunt labels | Label in kosten rapport |
 > | ------------- | ----------- | ----------- |
 > | Bieden | Nee |Nee |
-> | Domein naam | Ja |Ja |
+> | Domein naam | Nee |Nee |
 > | Domein naam/mogelijkheden | Nee |Nee |
 > | Domein naam/internalLoadBalancers | Nee |Nee |
 > | Domein naam/serviceCertificates | Nee |Nee |
@@ -556,7 +550,7 @@ Ga naar de naam ruimte van een resource provider:
 > | quotas | Nee |Nee |
 > | resourceTypes | Nee |Nee |
 > | validateSubscriptionMoveAvailability | Nee |Nee |
-> | Informatie | Ja |Ja |
+> | Informatie | Nee |Nee |
 > | Informatie/diagnosticSettings | Nee |Nee |
 > | Informatie/metricDefinitions | Nee |Nee |
 > | Informatie/meet waarden | Nee |Nee |
@@ -577,10 +571,10 @@ Ga naar de naam ruimte van een resource provider:
 > | expressRouteCrossConnections | Nee |Nee |
 > | expressRouteCrossConnections/peerings | Nee |Nee |
 > | gatewaySupportedDevices | Nee |Nee |
-> | networkSecurityGroups | Ja |Ja |
+> | networkSecurityGroups | Nee |Nee |
 > | quotas | Nee |Nee |
-> | reservedIps | Ja |Ja |
-> | virtualNetworks | Ja |Ja |
+> | reservedIps | Nee |Nee |
+> | virtualNetworks | Nee |Nee |
 > | virtualNetworks/remoteVirtualNetworkPeeringProxies | Nee |Nee |
 > | virtualNetworks/virtualNetworkPeerings | Nee |Nee |
 
@@ -596,7 +590,7 @@ Ga naar de naam ruimte van een resource provider:
 > | osPlatformImages | Nee |Nee |
 > | publicImages | Nee |Nee |
 > | quotas | Nee |Nee |
-> | storageAccounts | Ja |Ja |
+> | storageAccounts | Nee |Nee |
 > | storageAccounts/blobServices | Nee |Nee |
 > | storageAccounts/fileServices | Nee |Nee |
 > | Storage accounts/metricDefinitions | Nee |Nee |
@@ -634,10 +628,10 @@ Ga naar de naam ruimte van een resource provider:
 > | diskEncryptionSets | Ja |Ja |
 > | schijven | Ja |Ja |
 > | Galerij | Ja |Ja |
-> | galerieën/toepassingen | Ja |Ja |
-> | galerieën/toepassingen/versies | Ja |Ja |
-> | galerieën/afbeeldingen | Ja |Ja |
-> | galerieën/afbeeldingen/versies | Ja |Ja |
+> | galerieën/toepassingen | Nee |Nee |
+> | galerieën/toepassingen/versies | Nee |Nee |
+> | galerieën/afbeeldingen | Nee |Nee |
+> | galerieën/afbeeldingen/versies | Nee |Nee |
 > | hostGroups | Ja |Ja |
 > | hostGroups/hosts | Ja |Ja |
 > | afbeeldingen | Ja |Ja |
@@ -645,13 +639,11 @@ Ga naar de naam ruimte van een resource provider:
 > | restorePointCollections | Ja |Ja |
 > | restorePointCollections/restorePoints | Nee |Nee |
 > | sharedVMImages | Ja |Ja |
-> | sharedVMImages/versies | Ja |Ja |
+> | sharedVMImages/versies | Nee |Nee |
 > | momentopnamen | Ja |Ja |
 > | Informatie | Ja |Ja |
 > | Informatie/extensies | Ja |Ja |
 > | Informatie/metricDefinitions | Nee |Nee |
-> | Informatie/scriptJobs | Nee |Nee |
-> | Informatie/softwareUpdateDeployments | Nee |Nee |
 > | virtualMachineScaleSets | Ja |Ja |
 > | virtualMachineScaleSets/extensions | Nee |Nee |
 > | virtualMachineScaleSets/networkInterfaces | Nee |Nee |
@@ -680,7 +672,7 @@ Ga naar de naam ruimte van een resource provider:
 > | ReservationRecommendations | Nee |Nee |
 > | ReservationSummaries | Nee |Nee |
 > | ReservationTransactions | Nee |Nee |
-> | Labels | Nee |Nee |
+> | Tags | Nee |Nee |
 > | tenants | Nee |Nee |
 > | Gebruiksrechtovereenkomst | Nee |Nee |
 > | UsageDetails | Nee |Nee |
@@ -919,6 +911,9 @@ Ga naar de naam ruimte van een resource provider:
 > | serverGroups | Ja |Ja |
 > | servers | Ja |Ja |
 > | servers/adviseurs | Nee |Nee |
+> | servers/privateEndpointConnectionProxies | Nee |Nee |
+> | servers/privateEndpointConnections | Nee |Nee |
+> | servers/privateLinkResources | Nee |Nee |
 > | servers/queryTexts | Nee |Nee |
 > | servers/recoverableServers | Nee |Nee |
 > | servers/topQueryStatistics | Nee |Nee |
@@ -1199,6 +1194,7 @@ Ga naar de naam ruimte van een resource provider:
 > | clusters/data bases | Nee |Nee |
 > | clusters/data bases/dataConnections | Nee |Nee |
 > | clusters/data bases/eventhubconnections | Nee |Nee |
+> | clusters/sharedidentities | Nee |Nee |
 
 ## <a name="microsoftlabservices"></a>Microsoft.LabServices
 
@@ -1242,7 +1238,7 @@ Ga naar de naam ruimte van een resource provider:
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Ondersteunt labels | Label in kosten rapport |
 > | ------------- | ----------- | ----------- |
-> | Identiteiten | Nee |Nee |
+> | Identiteit | Nee |Nee |
 > | userAssignedIdentities | Ja |Ja |
 
 ## <a name="microsoftmanagedservices"></a>Micro soft. ManagedServices
@@ -1278,7 +1274,7 @@ Ga naar de naam ruimte van een resource provider:
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Ondersteunt labels | Label in kosten rapport |
 > | ------------- | ----------- | ----------- |
-> | over | Nee |Nee |
+> | aanbiedingen | Nee |Nee |
 > | offerTypes | Nee |Nee |
 > | offerTypes/publishers | Nee |Nee |
 > | offerTypes/publishers/offers | Nee |Nee |
@@ -1363,11 +1359,13 @@ Ga naar de naam ruimte van een resource provider:
 > | Resourcetype | Ondersteunt labels | Label in kosten rapport |
 > | ------------- | ----------- | ----------- |
 > | netAppAccounts | Ja |Ja |
+> | netAppAccounts/backupPolicies | Ja |Ja |
 > | netAppAccounts/capacityPools | Ja |Ja |
 > | netAppAccounts/capacityPools/volumes | Ja |Ja |
+> | netAppAccounts/capacityPools/volumes/back-ups | Nee |Nee |
 > | netAppAccounts/capacityPools/volumes/mountTargets | Ja |Ja |
 > | netAppAccounts/capacityPools/volumes/moment opnamen | Ja |Ja |
-
+> | netAppAccounts/kluizen | Nee |Nee |
 ## <a name="microsoftnetwork"></a>Microsoft.Network
 
 > [!div class="mx-tableFixed"]
@@ -1458,6 +1456,7 @@ Ga naar de naam ruimte van een resource provider:
 > [!NOTE]
 > Voor de Azure front-deur service kunt u Tags Toep assen bij het maken van de resource, maar het bijwerken of toevoegen van labels wordt momenteel niet ondersteund.
 
+
 ## <a name="microsoftnotificationhubs"></a>Microsoft.NotificationHubs
 
 > [!div class="mx-tableFixed"]
@@ -1465,6 +1464,13 @@ Ga naar de naam ruimte van een resource provider:
 > | ------------- | ----------- | ----------- |
 > | naamruimten | Ja |Nee |
 > | namespaces/notificationHubs | Ja |Nee |
+
+## <a name="microsoftobjectstore"></a>Micro soft. ObjectStore
+
+> [!div class="mx-tableFixed"]
+> | Resourcetype | Ondersteunt labels | Label in kosten rapport |
+> | ------------- | ----------- | ----------- |
+> | osNamespaces | Ja |Ja |
 
 ## <a name="microsoftoffazure"></a>Microsoft.OffAzure
 
@@ -1607,13 +1613,15 @@ Ga naar de naam ruimte van een resource provider:
 > | ------------- | ----------- | ----------- |
 > | implementaties | Ja |Nee |
 > | implementaties/bewerkingen | Nee |Nee |
-> | koppelen | Nee |Nee |
+> | koppelingen | Nee |Nee |
 > | notifyResourceJobs | Nee |Nee |
 > | Providers | Nee |Nee |
 > | resourceGroups | Ja |Nee |
 > | bronnen | Nee |Nee |
 > | abonnementen | Nee |Nee |
 > | abonnementen/providers | Nee |Nee |
+> | abonnementen/resourceGroups | Nee |Nee |
+> | abonnementen/ResourceGroups/resources | Nee |Nee |
 > | abonnementen/resources | Nee |Nee |
 > | abonnementen/TagName | Nee |Nee |
 > | subscriptions/tagNames/tagValues | Nee |Nee |
@@ -1668,7 +1676,7 @@ Ga naar de naam ruimte van een resource provider:
 > | jitNetworkAccessPolicies | Nee |Nee |
 > | networkData | Nee |Nee |
 > | playbookConfigurations | Ja |Ja |
-> | beleidsregels | Nee |Nee |
+> | beleid | Nee |Nee |
 > | prijzen | Nee |Nee |
 > | regulatoryComplianceStandards | Nee |Nee |
 > | regulatoryComplianceStandards/regulatoryComplianceControls | Nee |Nee |
@@ -1680,6 +1688,7 @@ Ga naar de naam ruimte van een resource provider:
 > | securityStatusesSummaries | Nee |Nee |
 > | serverVulnerabilityAssessments | Nee |Nee |
 > | instellingen | Nee |Nee |
+> | subevaluaties | Nee |Nee |
 > | taken | Nee |Nee |
 > | topologieën | Nee |Nee |
 > | workspaceSettings | Nee |Nee |
@@ -1703,7 +1712,7 @@ Ga naar de naam ruimte van een resource provider:
 > | Wijzer | Nee |Nee |
 > | meldingen | Nee |Nee |
 > | dataConnectors | Nee |Nee |
-> | entiteiten | Nee |Nee |
+> | Rijg | Nee |Nee |
 > | entityQueries | Nee |Nee |
 > | officeConsents | Nee |Nee |
 > | instellingen | Nee |Nee |
@@ -1972,7 +1981,7 @@ Ga naar de naam ruimte van een resource provider:
 > | verbindingen | Ja |Ja |
 > | customApis | Ja |Ja |
 > | deletedSites | Nee |Nee |
-> | functies | Nee |Nee |
+> | functions | Nee |Nee |
 > | hostingEnvironments | Ja |Ja |
 > | hostingEnvironments/multiRolePools | Nee |Nee |
 > | hostingEnvironments/workerPools | Nee |Nee |

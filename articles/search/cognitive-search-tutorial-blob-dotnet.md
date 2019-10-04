@@ -5,16 +5,15 @@ manager: nitinme
 author: MarkHeff
 services: search
 ms.service: search
-ms.subservice: cognitive-search
 ms.topic: tutorial
 ms.date: 05/02/2019
 ms.author: maheff
-ms.openlocfilehash: 260f6a6141903ea1fd7edcfe2e031091bba322be
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.openlocfilehash: b40cd63062e961848eb1ab6b956e63a83a634817
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70744758"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71936937"
 ---
 # <a name="c-tutorial-call-cognitive-services-apis-in-an-azure-search-indexing-pipeline"></a>C#Vind Cognitive Services-API's aanroepen in een Azure Search Indexing-pijp lijn
 
@@ -68,7 +67,7 @@ Met een geldige sleutel stelt u per aanvraag een vertrouwensrelatie in tussen de
 
 De verrijkingspijplijn haalt gegevens uit Azure-gegevensbronnen. Brongegevens moeten afkomstig zijn van een ondersteund type gegevensbron van een [Azure Search-indexeerfunctie](search-indexer-overview.md). In dit voorbeeld gebruiken we blobopslag om meerdere inhoudstypen te laten zien.
 
-1. [Meld u aan bij de Azure Portal](https://portal.azure.com), navigeer naar uw Azure Storage-account, klik op **blobs**en klik vervolgens op **+ container**.
+1. [Meld u aan bij de Azure Portal](https://portal.azure.com), navigeer naar uw Azure Storage-account, klik op blobs en klik vervolgens op **+ container**.
 
 1. [Maak een BLOB-container](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal) om voorbeeld gegevens te bevatten. U kunt het niveau van open bare toegang instellen op een van de geldige waarden. In deze zelf studie wordt ervan uitgegaan dat de container naam ' Basic-demo-data-PR ' is.
 
@@ -96,15 +95,15 @@ De [Azure Search .NET SDK](https://aka.ms/search-sdk) bestaat uit een aantal cli
 
 Voor dit project moet u versie 9 van het `Microsoft.Azure.Search` NuGet-pakket en het meest recente `Microsoft.Extensions.Configuration.Json` NuGet-pakket installeren.
 
-Installeer het `Microsoft.Azure.Search` NuGet-pakket met behulp van de Package Manager-console in Visual Studio. Als u de Package Manager-console wilt openen, selecteert u **tools** > **NuGet package manager** > **Package Manager console**. Als u de opdracht wilt uitvoeren, gaat u naar de [pagina micro soft. Azure. Search NuGet package](https://www.nuget.org/packages/Microsoft.Azure.Search), selecteert u versie 9 en kopieert u de opdracht Package Manager. Voer deze opdracht uit in de Package Manager-console.
+Installeer het `Microsoft.Azure.Search` NuGet-pakket met behulp van de Package Manager-console in Visual Studio. Als u de Package Manager-console wilt openen, selecteert u **Hulpprogram ma's** > **NuGet package manager** > **Package Manager-console**. Als u de opdracht wilt uitvoeren, gaat u naar de [pagina micro soft. Azure. Search NuGet package](https://www.nuget.org/packages/Microsoft.Azure.Search), selecteert u versie 9 en kopieert u de opdracht Package Manager. Voer deze opdracht uit in de Package Manager-console.
 
-Als u het `Microsoft.Extensions.Configuration.Json` NuGet-pakket in Visual Studio wilt installeren, selecteert u **extra** > **NuGet package manager** > **NuGet-pakketten beheren voor oplossing...** . Selecteer Bladeren en zoek naar het `Microsoft.Extensions.Configuration.Json` NuGet-pakket. Zodra u de app hebt gevonden, selecteert u het pakket, selecteert u het project, bevestigt u dat de versie de laatste stabiele versie is en selecteert u installeren.
+Als u het NuGet-pakket van @no__t 0 in Visual Studio wilt installeren, selecteert u **Hulpprogram ma's** > **NuGet package manager** > **NuGet-pakketten beheren voor oplossing...** . Selecteer Bladeren en zoek naar het NuGet-pakket van @no__t 0. Zodra u de app hebt gevonden, selecteert u het pakket, selecteert u het project, bevestigt u dat de versie de laatste stabiele versie is en selecteert u installeren.
 
 ## <a name="add-azure-search-service-information"></a>Informatie over Azure Search-service toevoegen
 
-Als u verbinding wilt maken met uw Azure Search-service, moet u de gegevens van de zoek service toevoegen aan uw project. Klik met de rechter muisknop op het project in de > Solution Explorer en selecteer**Nieuw item toevoegen...** . Geef het bestand `appsettings.json` een naam en selecteer **toevoegen**. 
+Als u verbinding wilt maken met uw Azure Search-service, moet u de gegevens van de zoek service toevoegen aan uw project. Klik met de rechter muisknop op het project in deSolution Explorer en selecteer  > **Nieuw item toevoegen...** . Geef het bestand de naam `appsettings.json` en selecteer **toevoegen**. 
 
-Dit bestand moet worden opgenomen in de uitvoermap. Hiertoe klikt u met de rechter `appsettings.json` muisknop op en selecteert u **Eigenschappen**. Wijzig de waarde van **kopiëren naar uitvoermap** naar een **nieuwere versie**.
+Dit bestand moet worden opgenomen in de uitvoermap. Hiertoe klikt u met de rechter muisknop op `appsettings.json` en selecteert u **Eigenschappen**. Wijzig de waarde van **kopiëren naar uitvoermap** naar een **nieuwere versie**.
 
 Kopieer de onderstaande JSON naar het nieuwe JSON-bestand.
 
@@ -299,7 +298,7 @@ LanguageDetectionSkill languageDetectionSkill = new LanguageDetectionSkill(
 
 ### <a name="text-split-skill"></a>Vaardigheid tekst splitsen
 
-Met de **onderstaande vaardigheid splitsen worden** tekst op pagina's gesplitst en wordt de pagina lengte beperkt tot 4.000 tekens zoals `String.Length`gemeten door. Het algoritme probeert de tekst te splitsen in segmenten die de meeste `maximumPageLength` grootte hebben. In dit geval is het algoritme het beste om de zin op een zin te kraken, zodat de grootte van het segment enigszins kleiner is dan `maximumPageLength`.
+Met de **onderstaande vaardigheid splitsen worden** tekst op pagina's gesplitst en wordt de pagina lengte beperkt tot 4.000 tekens, zoals gemeten door `String.Length`. Het algoritme probeert de tekst te splitsen in segmenten die de meeste `maximumPageLength` grootte hebben. In dit geval is het algoritme het beste om de zin op een zin te kraken, zodat de grootte van het segment enigszins kleiner is dan `maximumPageLength`.
 
 ```csharp
 List<InputFieldMappingEntry> inputMappings = new List<InputFieldMappingEntry>();
@@ -326,9 +325,9 @@ SplitSkill splitSkill = new SplitSkill(
 
 ### <a name="entity-recognition-skill"></a>Vaardigheid van entiteits herkenning
 
-Dit `EntityRecognitionSkill` exemplaar is ingesteld op het categorie type `organization`wordt herkend. De kwalificatie voor **entiteits herkenning** kan ook categorie `person` typen `location`herkennen en.
+Dit `EntityRecognitionSkill` exemplaar is ingesteld op het categorie type `organization`wordt herkend. De kwalificatie voor **entiteits herkenning** kan ook categorie typen herkennen `person` en `location`.
 
-U ziet dat het veld context is ingesteld op ```"/document/pages/*"``` met een asterisk, wat betekent dat de verrijkings stap voor elke ```"/document/pages"```pagina wordt aangeroepen.
+U ziet dat het veld context is ingesteld op ```"/document/pages/*"``` met een asterisk, wat betekent dat de verrijkings stap wordt aangeroepen voor elke pagina onder ```"/document/pages"```.
 
 ```csharp
 List<InputFieldMappingEntry> inputMappings = new List<InputFieldMappingEntry>();
@@ -355,7 +354,7 @@ EntityRecognitionSkill entityRecognitionSkill = new EntityRecognitionSkill(
 
 ### <a name="key-phrase-extraction-skill"></a>Vaardigheid van sleutel frase extractie
 
-Net als `EntityRecognitionSkill` het exemplaar dat zojuist is gemaakt, wordt de **Sleuteltermextractie** vaardigheid voor elke pagina van het document aangeroepen.
+Net als het `EntityRecognitionSkill`-exemplaar dat zojuist is gemaakt, wordt de **Sleuteltermextractie** vaardigheid voor elke pagina van het document aangeroepen.
 
 ```csharp
 List<InputFieldMappingEntry> inputMappings = new List<InputFieldMappingEntry>();
@@ -425,7 +424,7 @@ In deze oefening worden de volgende velden en veldtypen gebruikt:
 
 De velden voor deze index worden gedefinieerd met behulp van een model klasse. Elke eigenschap van de modelklasse heeft kenmerken die het zoekgerelateerde gedrag van het bijbehorende indexveld bepalen. 
 
-We voegen de model klasse toe aan een C# nieuw bestand. Klik met de rechter muisknop op uw > project en selecteer**Nieuw item toevoegen...** , selecteer "klasse" en `DemoIndex.cs`Geef het bestand een naam en selecteer vervolgens **toevoegen**.
+We voegen de model klasse toe aan een C# nieuw bestand. Klik met de rechter muisknop op het project en selecteer **toevoegen** > **Nieuw item...** , selecteer "klasse" en geef het bestand de naam `DemoIndex.cs` en selecteer vervolgens **toevoegen**.
 
 Zorg ervoor dat u opgeeft dat u typen van de `Microsoft.Azure.Search` naam ruimten en `Microsoft.Azure.Search.Models` wilt gebruiken.
 
@@ -574,7 +573,7 @@ De code wordt ```"maxFailedItems"``` ingesteld op-1, waarmee wordt aangegeven da
 
 U ziet ook ```"dataToExtract"``` dat de is ```"contentAndMetadata"```ingesteld op. Deze instructie geeft de indexeerfunctie de opdracht om automatisch de inhoud van verschillende bestandsindelingen te extraheren, evenals metagegevens voor elk bestand.
 
-Wanneer inhoud wordt uitgepakt, kunt u instellen dat `imageAction` tekst ophaalt uit afbeeldingen die in de gegevensbron worden gevonden. De ```"imageAction"``` set to ```"generateNormalizedImages"``` Configuration, gecombineerd met de OCR-vaardigheid voor vaardig heden en tekst samenvoeging, vertelt de Indexeer functie om tekst uit de afbeeldingen te halen (bijvoorbeeld het woord ' Stop ' van een stop teken voor verkeer) en dit in te sluiten als onderdeel van het veld inhoud. Dit gedrag is van toepassing op zowel de afbeeldingen die zijn ingesloten in de documenten (zoals een afbeelding in een pdf-bestand) als afbeeldingen die zijn gevonden in de gegevensbron, zoals een JPG-bestand.
+Wanneer inhoud wordt uitgepakt, kunt u instellen dat `imageAction` tekst ophaalt uit afbeeldingen die in de gegevensbron worden gevonden. De ```"imageAction"``` ingesteld op ```"generateNormalizedImages"```-configuratie, in combi natie met de OCR-vaardigheid voor vaardig heden en tekst samen voegen, vertelt de Indexeer functie de tekst uit de afbeeldingen (bijvoorbeeld het woord ' Stop ' van een stop teken voor verkeer) en sluit het in als onderdeel van het inhouds veld. Dit gedrag is van toepassing op zowel de afbeeldingen die zijn ingesloten in de documenten (zoals een afbeelding in een pdf-bestand) als afbeeldingen die zijn gevonden in de gegevensbron, zoals een JPG-bestand.
 
 ## <a name="check-indexer-status"></a>De status van de indexeerfunctie controleren
 

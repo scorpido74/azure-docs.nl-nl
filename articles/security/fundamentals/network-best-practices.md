@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/05/2019
+ms.date: 10/02/2019
 ms.author: TomSh
-ms.openlocfilehash: 4bc4e8e02c5b44c63ee531a295f2b59e91c056bd
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 85e1ebc05ad4ebe1d58716981c0688df0126efb0
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69900469"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71937230"
 ---
 # <a name="azure-best-practices-for-network-security"></a>Aanbevolen procedures voor Azure voor netwerk beveiliging
 In dit artikel wordt een verzameling van aanbevolen procedures voor Azure beschreven om uw netwerk beveiliging te verbeteren. Deze aanbevolen procedures zijn afgeleid van onze ervaring met Azure-netwerken en de ervaringen van klanten, zoals uzelf.
@@ -63,7 +63,7 @@ Wanneer u netwerk beveiligings groepen gebruikt voor netwerk toegangs beheer tus
 **Aanbevolen procedure**: Vermijd kleine virtuele netwerken en subnetten om eenvoud en flexibiliteit te garanderen.   
 **Details**: De meeste organisaties voegen meer resources toe dan oorspronkelijk gepland, en het opnieuw toewijzen van adressen is arbeids intensief. Het gebruik van kleine subnetten beperkt een beperkte beveiligings waarde en het toewijzen van een netwerk beveiligings groep aan elk subnet voegt overhead toe. Geef subnetten breed op om ervoor te zorgen dat u flexibiliteit hebt voor de groei.
 
-**Aanbevolen procedure**: Vereenvoudig regel beheer voor de netwerk beveiligings groep door [toepassings beveiligings groepen](https://docs.microsoft.com/rest/api/virtualnetwork/applicationsecuritygroups)te definiëren.  
+**Aanbevolen procedure**: Vereenvoudig regel beheer voor de netwerk beveiligings groep door [toepassings beveiligings groepen](https://azure.microsoft.com/blog/applicationsecuritygroups/)te definiëren.  
 **Details**: Definieer een toepassings beveiligings groep voor lijsten met IP-adressen waarvan u denkt dat deze in de toekomst kunnen worden gewijzigd of worden gebruikt in veel netwerk beveiligings groepen. Zorg ervoor dat u de toepassings beveiligings groepen duidelijk beveiligt, zodat anderen hun inhoud en doel kunnen begrijpen.
 
 ## <a name="adopt-a-zero-trust-approach"></a>Een vertrouwens benadering van nul aannemen
@@ -177,7 +177,7 @@ Als de gebruiker bijvoorbeeld een aanvraag voor uw service van de EU doet, wordt
 ## <a name="disable-rdpssh-access-to-virtual-machines"></a>RDP/SSH-toegang tot virtuele machines uitschakelen
 Het is mogelijk om Azure virtual machines te bereiken met behulp van [Remote Desktop Protocol](https://en.wikipedia.org/wiki/Remote_Desktop_Protocol) (RDP) en het SSH-protocol ( [Secure Shell](https://en.wikipedia.org/wiki/Secure_Shell) ). Deze protocollen maken de beheer-Vm's vanaf externe locaties mogelijk en zijn standaard in Data Center computing.
 
-Het potentiële beveiligings probleem met het gebruik van deze protocollen via internet is dat aanvallers schadelijke [](https://en.wikipedia.org/wiki/Brute-force_attack) technieken kunnen gebruiken om toegang te krijgen tot virtuele machines van Azure. Nadat de aanvallers toegang hebben gekregen, kunnen ze uw VM gebruiken als een start punt voor het inbreuk op andere computers in uw virtuele netwerk of zelfs voor aanvallen via een netwerk apparaat buiten Azure.
+Het potentiële beveiligings probleem met het gebruik van deze protocollen via internet is dat aanvallers schadelijke [technieken kunnen](https://en.wikipedia.org/wiki/Brute-force_attack) gebruiken om toegang te krijgen tot virtuele machines van Azure. Nadat de aanvallers toegang hebben gekregen, kunnen ze uw VM gebruiken als een start punt voor het inbreuk op andere computers in uw virtuele netwerk of zelfs voor aanvallen via een netwerk apparaat buiten Azure.
 
 U wordt aangeraden directe RDP-en SSH-toegang tot uw Azure virtual machines via internet uit te scha kelen. Nadat directe RDP-en SSH-toegang via internet is uitgeschakeld, hebt u andere opties die u kunt gebruiken om toegang te krijgen tot deze Vm's voor extern beheer.
 

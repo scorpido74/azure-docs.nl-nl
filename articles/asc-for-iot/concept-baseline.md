@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/26/2019
+ms.date: 10/03/2019
 ms.author: mlottner
-ms.openlocfilehash: a9de9924b851024dd36c848203cc3ada2cde208c
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: b0f5696b36082375a29e99298395cf16734d5bb4
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71329407"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71937142"
 ---
 # <a name="azure-security-center-for-iot-baseline-and-custom-checks"></a>Azure Security Center voor IoT-basis lijn en aangepaste controles
 
@@ -32,7 +32,7 @@ Met een basis lijn wordt het standaard gedrag voor elk apparaat bepaald en is he
 
 ## <a name="baseline-custom-checks"></a>Aangepaste controles basis lijn
 
-Met aangepaste basis controles wordt een aangepaste lijst met controles voor elke apparaat-baseline tot stand gebracht met behulp van de module-identiteit van het apparaat. 
+Met aangepaste basis controles wordt een aangepaste lijst met controles voor elke apparaat-baseline tot stand gebracht met behulp van de **module-identiteit** van het apparaat. 
 
 ## <a name="setting-baseline-properties"></a>Eigenschappen van basis lijn instellen
 
@@ -67,8 +67,8 @@ Aangepaste controles voor basis lijn configureren:
 | Name| State | Geldige waarden| Standaardwaarden| Description |
 |----------|------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|---------------|
 |baselineCustomChecksEnabled|Vereist: True |Geldige waarden: **Boolean** |Standaard waarde: **False** |Het maximale tijds interval voor berichten met een hoge prioriteit wordt verzonden.|
-|baselineCustomChecksFilePath |Vereist: True|Geldige waarden: **Teken reeks**, **Null** |Standaard waarde: **PT5H** |Volledig pad van de XML-configuratie voor basis lijn|
-|baselineCustomChecksFileHash |Vereist: True|Geldige waarden: **Teken reeks**, **Null** |Standaard waarde: **PT5H** |`sha256sum` van het XML-configuratie bestand. Gebruik de [sha256sum-verwijzing](https://linux.die.net/man/1/sha256sum) voor aanvullende informatie. |
+|baselineCustomChecksFilePath |Vereist: True|Geldige waarden: **Teken reeks**, **Null** |Standaard waarde: **Null** |Volledig pad van de XML-configuratie voor basis lijn|
+|baselineCustomChecksFileHash |Vereist: True|Geldige waarden: **Teken reeks**, **Null** |Standaard waarde: **Null** |`sha256sum` van het XML-configuratie bestand. Gebruik de [sha256sum-verwijzing](https://linux.die.net/man/1/sha256sum) voor aanvullende informatie. |
 
 Zie [aangepaste basis lijn voor beeld-1](https://ascforiot.blob.core.windows.net/public/custom_baseline_example_hyperv_ubuntu1804.xml) en [aangepaste basis lijn voor beeld: 2](https://ascforiot.blob.core.windows.net/public/oms_audits.xml)als u aanvullende voor beelden van basis lijnen wilt bekijken.
 

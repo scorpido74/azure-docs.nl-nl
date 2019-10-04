@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 08/27/2019
-ms.openlocfilehash: cbe9aa2ea664d97df6008de05d6cb84da9771bcc
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
-ms.translationtype: MT
+ms.openlocfilehash: 83f5339dbc4f093ba0b7287b53c053e319f928c9
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70166548"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71937389"
 ---
 # <a name="ingest-data-from-iot-hub-into-azure-data-explorer-preview"></a>Gegevens opnemen van IoT Hub in azure Data Explorer (preview-versie)
 
@@ -76,11 +76,11 @@ U kunt nu verbinding maken met de IoT Hub vanuit Azure Data Explorer. Wanneer de
 
     **Instelling** | **Beschrijving van veld**
     |---|---|
-    | Naam van gegevensverbinding | De naam van de verbinding die u wilt maken in azure Data Explorer
-    | IoT Hub | Naam van IoT-hub |
-    | Beleid voor gedeelde toegang | De naam van het beleid voor gedeelde toegang. Moet Lees machtigingen hebben |
-    | Consumentengroep |  De consumenten groep die is gedefinieerd in het IoT Hub ingebouwde eind punt |
-    | Eigenschappen van gebeurtenis systeem | De IoT Hub gebeurtenis systeem eigenschappen |
+    | Naam van gegevensverbinding | De naam van de verbinding die u wilt maken in Azure Data Explorer.
+    | IoT Hub | IoT Hub naam. |
+    | Beleid voor gedeelde toegang | De naam van het beleid voor gedeelde toegang. Moet Lees machtigingen hebben. |
+    | Consumentengroep |  De consumenten groep die is gedefinieerd in het IoT Hub ingebouwde eind punt. |
+    | Systeemeigenschappen van gebeurtenis | De eigenschappen van het IoT Hub-gebeurtenis systeem. Als er meerdere records per gebeurtenis bericht zijn, worden de systeem eigenschappen aan de eerste toegevoegd. |
     | | 
 
     > [!NOTE]
@@ -95,11 +95,12 @@ U kunt nu verbinding maken met de IoT Hub vanuit Azure Data Explorer. Wanneer de
     |---|---|---|
     | Tabel | *TestTable* | De tabel die u hebt gemaakt in **testdb**. |
     | Gegevensindeling | *JSON* | Ondersteunde indelingen zijn Avro, CSV, JSON, MULTILINE JSON, PSV, SOH, SCSV, TSV en TXT. |
-    | Toewijzen van kolommen | *TestMapping* | De toewijzing die u hebt gemaakt in **testdb**, waarmee inkomende JSON-gegevens worden toegewezen aan de kolom namen en gegevens typen van **testdb**. Vereist voor JSON, meerdere regels JSON en AVRO, en optioneel voor andere indelingen.|
+    | Kolomtoewijzing | *TestMapping* | De toewijzing die u hebt gemaakt in **testdb**, waarmee inkomende JSON-gegevens worden toegewezen aan de kolom namen en gegevens typen van **testdb**. Vereist voor JSON, meerdere regels JSON en AVRO, en optioneel voor andere indelingen.|
     | | |
 
-    > [!TIP]
-    > Selecteer **mijn gegevens bevat routerings informatie** voor het gebruik van dynamische route ring, waarbij uw gegevens de benodigde routerings informatie bevatten, zoals wordt weer gegeven in de opmerkingen van de voor [beeld-app](https://github.com/Azure-Samples/event-hubs-dotnet-ingest) . Als zowel statische als dynamische eigenschappen zijn ingesteld, worden de dynamische eigenschappen overschreven. 
+    > [!NOTE]
+    > * Selecteer **mijn gegevens bevat routerings informatie** voor het gebruik van dynamische route ring, waarbij uw gegevens de benodigde routerings informatie bevatten, zoals wordt weer gegeven in de opmerkingen van de voor [beeld-app](https://github.com/Azure-Samples/event-hubs-dotnet-ingest) . Als zowel statische als dynamische eigenschappen zijn ingesteld, worden de dynamische eigenschappen overschreven. 
+    > * Alleen gebeurtenissen in de wachtrij na het maken van de gegevens verbinding worden opgenomen.
 
 ## <a name="generate-sample-data-for-testing"></a>Voorbeeld gegevens voor testen genereren
 
@@ -111,7 +112,7 @@ De toepassing voor het gesimuleerde apparaat maakt verbinding met een apparaatsp
 
 1. Open het bestand **SimulatedDevice.cs** in een teksteditor van uw keuze.
 
-    Vervang de waarde van de `s_connectionString` variabele door het apparaat Connection String [een apparaat te registreren bij de IOT hub](#register-a-device-to-the-iot-hub). Sla ten slotte de wijzigingen in **SimulatedDevice.cs** op.
+    Vervang de waarde van de variabele `s_connectionString` door het apparaat connection string [een apparaat te registreren bij de IOT hub](#register-a-device-to-the-iot-hub). Sla ten slotte de wijzigingen in **SimulatedDevice.cs** op.
 
 1. Voer in het lokale terminalvenster de volgende opdrachten uit om de vereiste pakketten te installeren voor de toepassing voor het gesimuleerde apparaat:
 

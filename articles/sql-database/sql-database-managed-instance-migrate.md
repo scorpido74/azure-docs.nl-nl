@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: douglas, carlrab
 ms.date: 07/11/2019
-ms.openlocfilehash: 9508ce927ef03c83f1c4ef7bf28d2fc02b831a99
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: f877306170b45d65a52a4c76afd7f064e83f240a
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68879929"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71937295"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-database-managed-instance"></a>Migratie van SQL Server naar Azure SQL Database beheerde instantie
 
@@ -169,7 +169,7 @@ Als gevolg hiervan moet u prestatie parameters vergelijken met de basis lijn en 
 De resultaten van de prestatie vergelijking kunnen er als volgt uitzien:
 - De prestaties van de werk belasting op het beheerde exemplaar zijn uitgelijnd of beter dat de prestaties van de werk belasting op SQL Server. In dit geval hebt u bevestigd dat de migratie is gelukt.
 - Het meren deel van de prestatie parameters en de query's in de werk belasting gaat prima, met enkele uitzonde ringen met verminderde prestaties. In dit geval moet u de verschillen en hun belang identificeren. Als er sprake is van een aantal belang rijke query's met verminderde prestaties, moet u onderzoeken of de onderliggende SQL-plannen zijn gewijzigd of dat de query's enkele resource limieten hebben bereikt. Dit probleem kan worden veroorzaakt door een aantal hints toe te passen op de essentiële query's (bijvoorbeeld gewijzigde compatibiliteits niveau, verouderde cardinality Estimator) ofwel rechtstreeks hetzij met plan richtlijnen, opnieuw te opbouwen of door statistieken en indexen te maken die van invloed kunnen zijn op de plannen. 
-- De meeste query's zijn langzamer in het beheerde exemplaar vergeleken met de bron SQL Server. In dit geval probeert de hoofd oorzaken van het verschil te identificeren, zoals het [bereiken van een bepaalde resource limiet]( sql-database-managed-instance-resource-limits.md#instance-level-resource-limits) , zoals i/o-limieten, geheugen limieten, limieten voor het aantal exemplaren, enzovoort. Als er geen resource limieten zijn die het verschil kunnen veroorzaken, probeert u het compatibiliteits niveau van de data base te wijzigen of data base-instellingen te wijzigen, zoals de schatting van verouderde kardinaliteit en de test opnieuw te starten. Bekijk de aanbevelingen van het beheerde exemplaar of query Store-weer gaven om de query's te identificeren die de prestaties van teruggedraaide.
+- De meeste query's zijn langzamer in het beheerde exemplaar vergeleken met de bron SQL Server. In dit geval probeert de hoofd oorzaken van het verschil te identificeren, zoals het [bereiken van een bepaalde resource limiet]( sql-database-managed-instance-resource-limits.md#service-tier-characteristics) , zoals i/o-limieten, geheugen limieten, limieten voor het aantal exemplaren, enzovoort. Als er geen resource limieten zijn die het verschil kunnen veroorzaken, probeert u het compatibiliteits niveau van de data base te wijzigen of data base-instellingen te wijzigen, zoals de schatting van verouderde kardinaliteit en de test opnieuw te starten. Bekijk de aanbevelingen van het beheerde exemplaar of query Store-weer gaven om de query's te identificeren die de prestaties van teruggedraaide.
 
 > [!IMPORTANT]
 > Het beheerde exemplaar heeft een ingebouwde functie voor het automatisch corrigeren van plannen die standaard is ingeschakeld. Deze functie zorgt ervoor dat query's die goed werken in het plakken, in de toekomst niet worden gedegradeerd. Zorg ervoor dat deze functie is ingeschakeld en dat u de werk belasting lang genoeg hebt uitgevoerd met de oude instellingen voordat u nieuwe instellingen wijzigt om beheerde exemplaren in te scha kelen voor meer informatie over de basislijn prestaties en-plannen.

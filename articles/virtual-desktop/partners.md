@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: helohr
-ms.openlocfilehash: 90007a82acce0010504bc06e96801869aea4a87a
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 485aad245df7feae4ca4ee2c68a29ff20afb3ece
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71673007"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71937506"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Integratie van virtuele bureau blad-partners van Windows
 
@@ -33,9 +33,9 @@ Citrix breidt de waarde van Windows virtueel bureau blad uit met robuuste zakeli
 
 ![VMware-logo](./media/partners/vmware.png)
 
-VMware horizon Cloud op Microsoft Azure biedt organisaties de mogelijkheid om hun eigen exemplaar van Microsoft Azure te koppelen aan het eenvoudige, intuïtieve Horizony-besturings vlak voor de Cloud, waarbij u een veilige, allesomvattende, in de Cloud gehoste oplossing maakt voor het leveren van gevirtualiseerde Windows-toepassingen en-Bureau bladen. Met de release van Windows virtueel bureau blad heeft VMware samen met micro soft de functionaliteit van Windows virtueel bureau blad uitgebreid naar klanten met behulp van een horizon-Cloud op Microsoft Azure.
-
-Als goedgekeurde provider biedt VMware horizon Cloud op Microsoft Azure klanten alle voor delen van virtueel bureau blad van Windows, zoals Windows 10 Enter prise voor meerdere sessies, Windows 7 met gratis uitgebreide beveiligings updates voor Maxi maal drie jaar en FSLogix mogelijkheden, naast alle moderne functies van de Enter prise-klasse van een horizon-Cloud, zoals een brede ondersteuning voor eind punten; wereld wijde, in de Cloud geoptimaliseerde Broker, flexibele bureaublad opties en configuraties, beheer van gebruikers omgevingen en ondersteuning voor hybride omgevingen. 
+VMware horizon Cloud op Microsoft Azure biedt organisaties de mogelijkheid om hun eigen exemplaar van Microsoft Azure te koppelen aan het eenvoudige, intuïtieve Horizony-besturings vlak voor de Cloud, waarbij u een veilige, allesomvattende, in de Cloud gehoste oplossing maakt voor het leveren van gevirtualiseerde Windows-toepassingen en-Bureau bladen. Met de release van Windows virtueel bureau blad heeft VMware samen met micro soft de functionaliteit van Windows virtueel bureau blad uitgebreid naar klanten met behulp van een horizon-Cloud op Microsoft Azure. Deze functionaliteit is aan het einde van 2019 beschikbaar in de technische preview-versie.
+ 
+Als goedgekeurde provider worden de voor delen van Windows virtueel bureau blad uitgebreid naar VMware horizon Cloud op Microsoft Azure klanten, waaronder Windows 10 Enter prise voor meerdere sessies, Windows 7 met gratis uitgebreide beveiligings updates voor Maxi maal drie jaar, en FSLogix. Daarnaast ontvangen klanten de functies van de Enter prise-klasse van de Cloud, zoals de brede ondersteuning voor eind punten; wereld wijde, in de Cloud geoptimaliseerde Broker; flexibele bureaublad opties en configuraties; beheer van de gebruikers omgeving; en ondersteuning voor hybride omgevingen.
 
 - [Meld u aan voor de Tech Preview van Horizon-Cloud op Microsoft Azure](https://www.vmware.com/learn/323526_TECH_PREVIEW_REG.html).
 - [Ga naar de website van de partner](https://www.vmware.com/products/horizon-cloud-virtual-desktops.html).
@@ -93,7 +93,7 @@ Nerdio is een Azure IT Automation-platform waarmee u gemakkelijk virtuele Window
 Nerdio breidt de waarde van het virtuele bureau blad van Windows uit door eenvoudig Azure-resources in te richten en de implementatie te stroom lijnen. Met Nerdio voor Azure kunt u binnen twee uur automatisch een volledige Azure-omgeving implementeren en beheren, met inbegrip van het virtuele bureau blad van Windows.
 
 - [Bekijk de kortere oplossing](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3p0Mh).
-- [Ga naar de website van de partner](https://getnerdio.com/academy/windows-virtual-desktop-explained-for-msps/).
+- [Ga naar de website van de partner](https://getnerdio.com/windows-virtual-desktop/).
 
 ## <a name="thinprint"></a>ThinPrint
 

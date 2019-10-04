@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 09/20/2019
 ms.author: mbullwin
-ms.openlocfilehash: 21a68c1daa3c7a2ab6689a72e23100be7582de1e
-ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
+ms.openlocfilehash: 9b2cb9b16a91220db6fcc193fe64ea674b7103ab
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71162191"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71937075"
 ---
 # <a name="application-insights-for-web-pages"></a>Application Insights voor webpagina’s
 
@@ -50,7 +50,7 @@ appInsights.loadAppInsights();
 
 ### <a name="snippet-based-setup"></a>Installatie op basis van een fragment
 
-Als uw app geen gebruik maakt van NPM, kunt u uw webpagina's rechtstreeks met Application Insights door middel van het plakken van dit fragment boven aan de pagina's. Bij voor keur moet dit het eerste script in uw `<head>` sectie zijn, zodat alle mogelijke problemen met al uw afhankelijkheden kunnen worden gecontroleerd.
+Als uw app geen gebruik maakt van NPM, kunt u uw webpagina's rechtstreeks met Application Insights door middel van het plakken van dit fragment boven aan de pagina's. Bij voor keur moet dit het eerste script in uw `<head>` sectie zijn, zodat alle mogelijke problemen met al uw afhankelijkheden kunnen worden gecontroleerd. Als u een razendsnelle server-app gebruikt, voegt u het fragment boven aan het bestand `_Host.cshtml` toe in de sectie `<head>`.
 
 ```html
 <script type="text/javascript">

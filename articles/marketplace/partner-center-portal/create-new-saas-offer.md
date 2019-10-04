@@ -7,12 +7,12 @@ ms.author: v-qiwe
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 08/14/2019
-ms.openlocfilehash: 7dd57e41144ec33aec6eb716716d0794d92071f5
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: e846db86ce95bd32d21727a4a5ec3195458cb9eb
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70013094"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71936882"
 ---
 # <a name="create-a-new-saas-offer"></a>Een nieuwe SaaS-aanbieding maken
 
@@ -93,7 +93,7 @@ De volgende tabel toont een voor beeld van de kosten en uitbetalingen om het mod
 
 |**Micro soft-facturen**|**$100 per maand**|
 |:---|:---|
-|Micro soft betaalt u 80% van uw licentie kosten <br>**Voor gekwalificeerde SaaS-apps betaalt micro soft 90% van uw licentie kosten*|$80,00 per maand <br>*$* 90,00 per maand *|
+|Micro soft betaalt u 80% van uw licentie kosten <br>**voor gekwalificeerde SaaS-apps betaalt micro soft 90% van uw licentie kosten*|$80,00 per maand <br>*$* 90,00 per maand *|
 
 - In dit voor beeld wordt micro soft billt $100,00 aan de klant voor uw software licentie en betaalt $80,00 de uitgever.
 - Partners die in aanmerking komen voor de **lagere kosten voor Marketplace-service** , zien een gereduceerde transactie kosten voor de SaaS-aanbiedingen van mei 2019 tot juni 2020. In dit scenario betaalt micro soft de $100,00 voor uw software licentie en wordt $90,00 op de Publisher uitgewisseld.
@@ -182,7 +182,7 @@ Op het tabblad **Eigenschappen** wordt u gevraagd om de categorieën en industri
 
 Selecteer **Opslaan** na het volt ooien van deze velden. 
 
-### <a name="category"></a>Categorie
+### <a name="category"></a>Category
 Selecteer mini maal één (1) en een maximum van drie (3) categorieën die worden gebruikt voor het groeperen van uw aanbieding in de juiste Zoek gebieden voor Marketplace. Neem contact op met de manier waarop uw aanbod deze categorieën ondersteunt in de beschrijving van de aanbieding. 
 
 ### <a name="industry"></a>Werkzaam in
@@ -244,19 +244,19 @@ De belangrijkste onderdelen van de toegevoegde waarde moeten de volgende informa
 
 Als u de beschrijving van uw aanbieding aantrekkelijker wilt maken, kunt u HTML-tags gebruiken om de beschrijving op te maken. 
 
-1. Als u alinea's wilt maken, voegt u `<p>` aan het Begging van de tekst toe en `</p>` voegt u aan het einde toe.
+1. Als u alinea's wilt maken, moet u `<p>` toevoegen aan de Begging van de tekst en `</p>` aan het einde toevoegen.
 
     **Voor beeld**: 
 
-    `<p>`Dit is mijn eerste alinea. `</p>` <br>
-    `<p>`Dit is mijn tweede alinea. `</p>` <br>
+    `<p>` dit is mijn eerste alinea. `</p>` <br>
+    `<p>` is dit de tweede alinea. `</p>` <br>
 
     Het bovenstaande ziet er als volgt uit:
 
     <p> Dit is mijn eerste alinea. </p>
     <p> Dit is mijn tweede alinea. </p>
 
-1. Als u een **lijst met opsommings tekens**wilt toevoegen aan items, plaatst u de tekst `<li>` in de onderstaande Tags. U kunt meer items `<li>` met opsommings tekens (items tussen de tags en `</li>` ) binnen de `<ul>` Tags en `</ul>` plakken. Zorg ervoor dat u de `<ul></ul>`hebt toegevoegd. 
+1. Als u een **lijst met opsommings tekens**wilt toevoegen aan items, plaatst u de tekst in de onderstaande `<li>`-Tags. U kunt meer items met opsommings tekens kopiëren en plakken (items tussen de Tags `<li>` en `</li>`) binnen de Tags `<ul>` en `</ul>`. Zorg ervoor dat u de `<ul></ul>` toevoegt. 
 
     **Voor beeld**:
 
@@ -275,34 +275,34 @@ Als u de beschrijving van uw aanbieding aantrekkelijker wilt maken, kunt u HTML-
         <li> Voeg hier tekst toe </li> 
     </ul> 
 
-1. `</b>` Voeg`<b>` aan het begin van de tekst die u wilt vet toe en voeg toe aan het einde van de tekst die u wilt vet weer gegeven aan de inhoud. 
+1. Als u de inhoud vet wilt weer **gegeven** , voegt u `<b>` toe aan het begin van de tekst die u wilt vet en voegt u `</b>` toe aan het einde van de tekst die u wilt vet weer gegeven. 
 
-    **Voor beeld**: `<b>`GRATIS PROEF VERSIE`</b>`
+    **Voor beeld**: `<b>` GRATIS PROEF VERSIE `</b>`
     
     De bovenstaande term zou ertoe leiden dat de woorden gratis proef versie vet worden weer gegeven in de beschrijving van de aanbieding op de winkel. 
 
     **GRATIS PROEF VERSIE**
 
-1. Als u **regel einden** wilt toevoegen tussen uw `<br>` inhoud, voegt u toe vóór de inhoud die u op een nieuwe regel wilt starten. Als u een Space wilt verlaten en er zeker van wilt zijn dat inhoud begint op een nieuwe `<br><br>` regel, voegt u deze toe vóór de inhoud. 
+1. Als u **regel einden** wilt toevoegen tussen uw inhoud, voegt u `<br>` toe vóór de inhoud die u op een nieuwe regel wilt starten. Als u een ruimte wilt houden en wilt controleren of inhoud op een nieuwe regel begint, voegt u `<br><br>` toe vóór de inhoud. 
 
     **Voor beeld**:
 
-    Dit is een tekst regel. `<br>`Dit is een tekst regel die wordt gestart op een nieuwe regel. `<br><br>`Dit is een regel waarmee twee regels worden gestart. 
+    Dit is een tekst regel. `<br>` dit is een tekst regel die wordt gestart op een nieuwe regel. `<br><br>` is dit een regel waarmee twee regels worden gestart. 
 
     Het bovenstaande ziet er als volgt uit:
 
     Dit is een tekst regel. <br> Dit is een tekst regel die wordt gestart op een nieuwe regel. <br><br> Dit is een regel waarmee twee regels worden gestart. 
 
-1. Als u de **tekst**groter wilt maken, kiest u eerst hoe groot de tekst moet zijn. Gebruik de onderstaande voor beelden. Wanneer u de grootte van de tekst hebt geselecteerd, voegt u de `<H*></H*>` bijbehorende tags toe aan het begin en het einde van de tekst. 
+1. Als u de **tekst**groter wilt maken, kiest u eerst hoe groot de tekst moet zijn. Gebruik de onderstaande voor beelden. Nadat u de grootte van de tekst hebt geselecteerd, voegt u de bijbehorende tags @no__t 0 toe aan het begin en het einde van de tekst. 
 
     **Voor beeld**:
 
-    `<h1>`Dit is Kop 1`</h1>` <br>
-    `<h2>`Dit is Kop 2`</h2>` <br>
-    `<h3>`Dit is kop 3`</h3>` <br>
-    `<h4>`Dit is kop 4`</h4>` <br>
-    `<h5>`Dit is koptekst 5`</h5>` <br>
-    `<h6>`Dit is kop 6`</h6>` 
+    `<h1>`This is Kop 1 @ no__t-1 <br>
+    `<h2>`This is Kop 2 @ no__t-1 <br>
+    `<h3>`This is kop 3 @ no__t-1 <br>
+    `<h4>`This is kop 4 @ no__t-1 <br>
+    `<h5>`This is kop 5 @ no__t-1 <br>
+    `<h6>`This is kop 6 @ no__t-1 
 
     Het bovenstaande ziet er als volgt uit:
 
@@ -316,7 +316,7 @@ Als u de beschrijving van uw aanbieding aantrekkelijker wilt maken, kunt u HTML-
 
 #### <a name="contact-information"></a>Contactgegevens
 
-- **Contact personen**: Geef voor elke contact persoon van de klant de **naam** , het **telefoon nummer**en het **e-mail** adres van de werk nemer op.  (Deze worden *niet* openbaar weer gegeven). Er is ook een ondersteunings- **URL** vereist voor de contact groep van de **ondersteuning** .  (Deze gegevens worden openbaar weer gegeven).
+- **Contact personen**: Geef voor elke contact persoon van de klant de **naam** , het **telefoon nummer**en het **e-mail** adres van de werk nemer op.  (Deze worden *niet* openbaar weer gegeven). Er is ook een ondersteunings- **URL** vereist voor de contact groep van de **ondersteuning** .  ( *Deze gegevens worden* openbaar weer gegeven).
 
 **Contact opnemen met ondersteuning** (vereist): Voor algemene ondersteunings vragen.
 
@@ -409,6 +409,9 @@ Met SaaS-aanbiedingen via de commerciële Marketplace kunt u een gratis proef ve
 De mogelijkheid om een gratis proef versie te configureren, is beschikbaar voor elk abonnement in uw aanbieding. Ga naar de prijs en beschik baarheid voor elke aanbieding en schakel het selectie vakje in om een proef versie van één maand toe te staan.
 
 ![Selectie vakje voor een gratis proef versie van één maand](./media/free-trial-enable.png)
+
+>[!Note]
+>Zodra uw aanbieding is gepubliceerd met een gratis proef versie, kan deze niet worden uitgeschakeld voor dat abonnement. Zorg ervoor dat deze instelling juist is voor de eerste publicatie om te voor komen dat u het abonnement opnieuw moet maken.
 
 Als u informatie wilt verkrijgen over klant abonnementen die momenteel deel nemen aan een gratis proef versie, `isFreeTrial`gebruikt u de nieuwe API-eigenschap, die wordt gemarkeerd als waar of onwaar. Zie de [API voor SaaS Get-abonnementen](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2#get-subscription) voor meer informatie.
 

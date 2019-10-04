@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlr
 ms.date: 07/11/2019
-ms.openlocfilehash: a8dfe0db5277a995b6e6675381ebeb5aeb243c9b
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 65b6b503d107b36813d1716348ce5f11fa840cc0
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69647220"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71937217"
 ---
 # <a name="getting-started-with-azure-sql-database-managed-instance"></a>Aan de slag met beheerd exemplaar voor Azure SQL Database
 
@@ -66,13 +66,13 @@ Met de artikelen in deze quickstarts kunt u snel een beheerd exemplaar instellen
 
 Als u uw productie database of zelfs data bases voor ontwikkelen en testen die u wilt gebruiken voor een bepaalde prestatie test, echter wilt migreren, moet u overwegen om een aantal extra technieken te gebruiken, zoals:
 - Prestaties testen: u moet de basislijn prestaties van uw bron SQL Server-exemplaar meten en deze vergelijken met de prestaties van het beheerde exemplaar van de bestemming waar u de Data Base hebt gemigreerd. Meer informatie over de [Aanbevolen procedures voor het vergelijken van prestaties](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/The-best-practices-for-performance-comparison-between-Azure-SQL/ba-p/683210).
-- Online migratie: met de native `RESTORE` die in dit artikel wordt beschreven, moet u wachten tot de data bases zijn hersteld (en naar Azure Blob-opslag worden gekopieerd als deze nog niet is opgeslagen). Dit heeft downtime voor uw toepassing ten gevolge, met name voor grote databases. Als u de productiedatabase wilt verplaatsen, gebruikt u de [Database Migration Service (DMS)](https://docs.microsoft.com/azure/dms/tutorial-sql-server-to-managed-instance?toc=/azure/sql-database/toc.json) om uw database met minimale downtime te migreren. Dit wordt bereikt doordat DMS de aan de brondatabase aangebrachte wijzigingen stapsgewijs pusht naar de database met de beheerde exemplaardatabase die wordt teruggezet. Op deze manier kunt u snel uw toepassing van de bron- naar de doeldatabase overzetten met minimale downtime.
+- Online migratie: met de systeem eigen `RESTORE`, dat wordt beschreven in dit artikel, moet u wachten tot de data bases zijn hersteld (en naar Azure Blob-opslag worden gekopieerd als deze nog niet is opgeslagen). Dit heeft downtime voor uw toepassing ten gevolge, met name voor grote databases. Als u de productiedatabase wilt verplaatsen, gebruikt u de [Database Migration Service (DMS)](https://docs.microsoft.com/azure/dms/tutorial-sql-server-to-managed-instance?toc=/azure/sql-database/toc.json) om uw database met minimale downtime te migreren. Dit wordt bereikt doordat DMS de aan de brondatabase aangebrachte wijzigingen stapsgewijs pusht naar de database met de beheerde exemplaardatabase die wordt teruggezet. Op deze manier kunt u snel uw toepassing van de bron- naar de doeldatabase overzetten met minimale downtime.
 
 Meer informatie over het [Aanbevolen migratie proces](sql-database-managed-instance-migrate.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 
 - Vind [hier een lijst met ondersteunde functies in het beheerde exemplaar](sql-database-features.md) en [hier details en bekende problemen](sql-database-managed-instance-transact-sql-information.md).
-- Meer informatie over de [technische kenmerken van het beheerde exemplaar](sql-database-managed-instance-resource-limits.md#instance-level-resource-limits).
+- Meer informatie over de [technische kenmerken van het beheerde exemplaar](sql-database-managed-instance-resource-limits.md#service-tier-characteristics).
 - U vindt meer uitgebreide informatie in [Beheerd exemplaar gebruiken in Azure SQL Database](sql-database-howto-managed-instance.md).
 - [Bepaal het juiste Azure SQL database/Managed instance SKU voor uw on-premises data base](/sql/dma/dma-sku-recommend-sql-db/).

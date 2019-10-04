@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: 80f2e8a8fd41fbafbaf6d30bc1001b86c5dcdd50
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: 1fff9c076349d98d7a72c4bf69edb0a2795ac88f
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71266372"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71937365"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Wat is een persoonlijk Azure-eind punt?
 
@@ -66,7 +66,7 @@ U kunt uw workloads volledig vergren delen voor het openen van open bare eind pu
  
 ## <a name="access-to-a-private-link-resource-using-approval-workflow"></a>Toegang tot een persoonlijke koppelings bron via een goedkeurings werk stroom 
 U kunt verbinding maken met een persoonlijke koppelings bron met behulp van de volgende verbindings goedkeurings methoden:
-- **Automatisch** goedgekeurd wanneer u beschikt over een machtiging voor de specifieke persoonlijke koppelings bron. De vereiste machtiging is gebaseerd op het resource type persoonlijke koppeling in de volgende indeling: Micro soft. \<Provider >/< resource_type >/privateEndpointConnectionApproval/Action
+- **Automatisch** goedgekeurd wanneer u beschikt over een machtiging voor de specifieke persoonlijke koppelings bron. De vereiste machtiging is gebaseerd op het resource type persoonlijke koppeling in de volgende indeling: Micro soft. \<Provider >/< resource_type >/privateEndpointConnectionApproval/action
 - **Hand matige** aanvraag wanneer u niet over de vereiste machtigingen beschikt en u toegang wilt aanvragen. Er wordt een goedkeurings werk stroom gestart. Het persoonlijke eind punt en de volgende particuliere eindpunt verbinding worden gemaakt met de status in behandeling. De resource-eigenaar van de persoonlijke koppeling is verantwoordelijk voor het goed keuren van de verbinding. Nadat het is goedgekeurd, is het persoonlijke eind punt ingeschakeld voor het normaal verzenden van verkeer, zoals wordt weer gegeven in het volgende goedkeurings werk stroom diagram.  
 
 ![workflowgoedkeuring](media/private-endpoint-overview/private-link-paas-workflow.png)
@@ -124,8 +124,9 @@ De volgende tabel bevat een lijst met bekende beperkingen bij het gebruik van pr
 |De regels voor de netwerk beveiligings groep (NSG) zijn niet van toepassing op een privé-eind punt    |NSG wordt niet ondersteund op privé-eind punten. Hoewel aan subnetten met het persoonlijke eind punt NSG zijn gekoppeld, zijn de regels niet effectief op het verkeer dat door het persoonlijke eind punt wordt verwerkt. U moet [netwerk beleid afdwingen uitgeschakeld](disable-private-endpoint-network-policy.md) om persoonlijke eind punten te implementeren in een subnet. NSG wordt nog steeds afgedwongen op andere workloads die worden gehost op hetzelfde subnet.   | Beheer het verkeer met behulp van NSG-regels voor uitgaand verkeer op de bron-clients.        |
 |Privé-eind punten kunnen niet worden gemaakt in subnetten die zijn ingeschakeld voor service-eind punten of gespecialiseerde werk belastingen    |Privé-eind punten kunnen niet worden geïmplementeerd op subnetten die zijn ingeschakeld voor service-eind punten of subnetten die zijn gedelegeerd aan gespecialiseerde werk belastingen|  Maak een apart subnet om de persoonlijke eind punten te implementeren.        |
 |een persoonlijk eind punt kan alleen worden toegewezen aan de service voor persoonlijke koppelingen (eigenaar van de klant) in dezelfde regio    |   Het is niet mogelijk om verbinding te maken met een persoonlijke koppelings service (uw eigen) vanuit een andere regio       |  Tijdens de preview moet u uw persoonlijke koppelings service in dezelfde regio implementeren.        |
+|  Peered Virtual Network met alleen persoonlijke eind punten worden niet ondersteund   |   Wanneer u verbinding maakt met persoonlijke eind punten op een peered Virtual Network zonder andere werk belasting, wordt niet ondersteund       | Implementeer één virtuele machine op de peered-Virtual Network om de connectiviteit in te scha kelen |
 |Speciale workloads hebben geen toegang tot persoonlijke eind punten    |   De volgende services die in uw virtuele netwerk zijn geïmplementeerd, hebben geen toegang tot een persoonlijke koppelings bron met behulp van privé-eind punten:<br>App Service-abonnement</br>Azure Container Instance</br>Azure NetApp Files</br>Azure toegewezen HSM<br>       |   Geen beperking tijdens de preview.       |
-|  Portal biedt geen ondersteuning voor het maken van privé-eind punten met behulp van een alias  |   Met de portal kunt u alleen privé-eind punten maken met behulp van resource-URI      | Resource-URI gebruiken voor aanvragen van privé-eind punten        |
+
 
 ## <a name="next-steps"></a>Volgende stappen
 - [Een persoonlijk eind punt voor SQL Database Server maken met behulp van portal](create-private-endpoint-portal.md)

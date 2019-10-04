@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: tomfitz
-ms.openlocfilehash: c30bb47f3f35663a6ffcfc0126758eb82c9dec4e
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: b558e046f3402fdfa127192788d7d3ee1307ddeb
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70194771"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71937022"
 ---
 # <a name="string-functions-for-azure-resource-manager-templates"></a>Teken reeks functies voor Azure Resource Manager sjablonen
 
@@ -21,12 +21,12 @@ Resource Manager biedt de volgende functies voor het werken met teken reeksen:
 * [base64ToJson](#base64tojson)
 * [base64ToString](#base64tostring)
 * [concat](#concat)
-* [daarin](#contains)
+* [contains](#contains)
 * [dataUri](#datauri)
 * [dataUriToString](#datauritostring)
-* [gelaten](#empty)
+* [empty](#empty)
 * [endsWith](#endswith)
-* [instantie](#first)
+* [first](#first)
 * [format](#format)
 * [guid](#guid)
 * [indexOf](#indexof)
@@ -41,7 +41,7 @@ Resource Manager biedt de volgende functies voor het werken met teken reeksen:
 * [startsWith](#startswith)
 * [string](#string)
 * [substring](#substring)
-* [Houd](#take)
+* [take](#take)
 * [toLower](#tolower)
 * [toUpper](#toupper)
 * [trim](#trim)
@@ -331,7 +331,7 @@ De uitvoer uit het vorige voorbeeld met de standaardwaarden is:
 
 | Name | Type | Value |
 | ---- | ---- | ----- |
-| opvragen | Array | ["1-1", "1-2", "1-3", "2-1", "2-2", "2-3"] |
+| Opvragen | Array | ["1-1", "1-2", "1-3", "2-1", "2-2", "2-3"] |
 
 ## <a name="contains"></a>bevat
 
@@ -589,7 +589,7 @@ De uitvoer uit het vorige voorbeeld met de standaardwaarden is:
 | objectEmpty | Bool | Waar |
 | stringEmpty | Bool | Waar |
 
-## <a name="endswith"></a>endsWith
+## <a name="endswith"></a>EndsWith
 
 `endsWith(stringToSearch, stringToFind)`
 
@@ -655,7 +655,7 @@ De uitvoer uit het vorige voorbeeld met de standaardwaarden is:
 | endsCapTrue | Bool | Waar |
 | endsFalse | Bool | False |
 
-## <a name="first"></a>instantie
+## <a name="first"></a>first
 
 `first(arg1)`
 
@@ -1364,7 +1364,7 @@ Retourneert een matrix met teken reeksen die de subtekenreeksen bevat van de inv
 | Parameter | Vereist | Type | Description |
 |:--- |:--- |:--- |:--- |
 | inputString |Ja |string |De teken reeks die moet worden gesplitst. |
-| vorm |Ja |teken reeks of matrix met teken reeksen |Het scheidings teken dat moet worden gebruikt voor het splitsen van de teken reeks. |
+| Vorm |Ja |teken reeks of matrix met teken reeksen |Het scheidings teken dat moet worden gebruikt voor het splitsen van de teken reeks. |
 
 ### <a name="return-value"></a>Retourwaarde
 
@@ -1610,7 +1610,7 @@ De uitvoer uit het vorige voorbeeld met de standaardwaarden is:
 | ---- | ---- | ----- |
 | substringOutput | Tekenreeks | twee |
 
-## <a name="take"></a>Houd
+## <a name="take"></a>take
 
 `take(originalValue, numberToTake)`
 
@@ -1824,7 +1824,7 @@ De uitvoer uit het vorige voorbeeld met de standaardwaarden is:
 
 | Name | Type | Value |
 | ---- | ---- | ----- |
-| opvragen | Tekenreeks | Een twee drie |
+| Opvragen | Tekenreeks | Een twee drie |
 
 ## <a name="uniquestring"></a>uniqueString
 
@@ -1914,10 +1914,26 @@ Hiermee maakt u een absolute URI door het combi neren van de baseUri en de relat
 
 | Parameter | Vereist | Type | Description |
 |:--- |:--- |:--- |:--- |
-| baseUri |Ja |string |De basis-URI-teken reeks. |
+| baseUri |Ja |string |De basis-URI-teken reeks. Let op het gedrag van het afhandelen van de afsluitende slash ('/'), zoals wordt beschreven in de volgende tabel.  |
 | relativeUri |Ja |string |De relatieve Uri-teken reeks die moet worden toegevoegd aan de basis-URI-teken reeks. |
 
-De waarde voor de para meter **baseUri** kan een specifiek bestand bevatten, maar alleen het basispad wordt gebruikt bij het maken van de URI. Als de baseUri- `http://contoso.com/resources/azuredeploy.json` para meter wordt door gegeven, resulteert dit in een `http://contoso.com/resources/`basis-URI van.
+* Als **baseUri** eindigt op een afsluitende slash, wordt het resultaat gewoon **BaseUri** gevolgd door **relativeUri**.
+
+* Als **baseUri** niet in een afsluitende schuine streep eindigt, gebeurt er een van de twee dingen.  
+
+   * Als **baseUri** helemaal geen schuine strepen heeft (afgezien van de '//'), is het **resultaat eenvoudigweg,** gevolgd door **relativeUri**.
+
+   * Als **baseUri** een paar schuine strepen heeft, maar niet eindigt met een slash, wordt alles vanaf de laatste schuine streep verwijderd uit **baseUri** en wordt het resultaat **baseuri** gevolgd door **relativeUri**.
+     
+Hier volgen enkele voorbeelden:
+
+```
+uri('http://contoso.org/firstpath', 'myscript.sh') -> http://contoso.org/myscript.sh
+uri('http://contoso.org/firstpath/', 'myscript.sh') -> http://contoso.org/firstpath/myscript.sh
+uri('http://contoso.org/firstpath/azuredeploy.json', 'myscript.sh') -> http://contoso.org/firstpath/myscript.sh
+uri('http://contoso.org/firstpath/azuredeploy.json/', 'myscript.sh') -> http://contoso.org/firstpath/azuredeploy.json/myscript.sh
+```
+Voor volledige details worden de para meters **baseUri** en **relativeUri** omgezet zoals beschreven in [RFC 3986, sectie 5](https://tools.ietf.org/html/rfc3986#section-5).
 
 ### <a name="return-value"></a>Retourwaarde
 
@@ -1976,7 +1992,7 @@ Codeert een URI.
 
 ### <a name="parameters"></a>Parameters
 
-| Parameter | Vereist | Type | Description |
+| Parameter | Vereist | type | Description |
 |:--- |:--- |:--- |:--- |
 | stringToEncode |Ja |string |De waarde die moet worden gecodeerd. |
 

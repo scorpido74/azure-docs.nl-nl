@@ -4,14 +4,14 @@ description: Toont hoe bron typen het verwijderen van de modus volt ooien in Azu
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 10/03/2019
 ms.author: tomfitz
-ms.openlocfilehash: d8238dddee041573d9b122e62cec66118c681ef6
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: cdc00ccc61e20865e993a18c72b930d9570896f2
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70995265"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71937050"
 ---
 # <a name="deletion-of-azure-resources-for-complete-mode-deployments"></a>Verwijdering van Azure-resources voor implementaties in de volledige modus
 
@@ -43,7 +43,6 @@ Ga naar de naam ruimte van een resource provider:
 > - [Microsoft.Batch](#microsoftbatch)
 > - [Micro soft. billing](#microsoftbilling)
 > - [Microsoft.BingMaps](#microsoftbingmaps)
-> - [Microsoft.BizTalkServices](#microsoftbiztalkservices)
 > - [Microsoft.Blockchain](#microsoftblockchain)
 > - [Microsoft.Blueprint](#microsoftblueprint)
 > - [Microsoft.BotService](#microsoftbotservice)
@@ -126,6 +125,7 @@ Ga naar de naam ruimte van een resource provider:
 > - [Microsoft.NetApp](#microsoftnetapp)
 > - [Microsoft.Network](#microsoftnetwork)
 > - [Microsoft.NotificationHubs](#microsoftnotificationhubs)
+> - [Micro soft. ObjectStore](#microsoftobjectstore)
 > - [Micro soft. OffAzure](#microsoftoffazure)
 > - [Microsoft.OperationalInsights](#microsoftoperationalinsights)
 > - [Microsoft.OperationsManagement](#microsoftoperationsmanagement)
@@ -396,6 +396,7 @@ Ga naar de naam ruimte van een resource provider:
 > | billingAccounts/klanten | Nee |
 > | billingAccounts/klanten/billingSubscriptions | Nee |
 > | billingAccounts/klanten/initiateTransfer | Nee |
+> | billingAccounts/klanten/beleids regels | Nee |
 > | billingAccounts/klanten/producten | Nee |
 > | billingAccounts/klanten/trans acties | Nee |
 > | billingAccounts/klanten/overdrachten | Nee |
@@ -443,13 +444,6 @@ Ga naar de naam ruimte van een resource provider:
 > | ------------- | ----------- |
 > | mapApis | Ja |
 > | updateCommunicationPreference | Nee |
-
-## <a name="microsoftbiztalkservices"></a>Microsoft.BizTalkServices
-
-> [!div class="mx-tableFixed"]
-> | Resourcetype | Modus voor volledige verwijdering |
-> | ------------- | ----------- |
-> | BizTalk | Ja |
 
 ## <a name="microsoftblockchain"></a>Microsoft.Blockchain
 
@@ -637,10 +631,10 @@ Ga naar de naam ruimte van een resource provider:
 > | diskEncryptionSets | Ja |
 > | schijven | Ja |
 > | Galerij | Ja |
-> | galerieën/toepassingen | Ja |
-> | galerieën/toepassingen/versies | Ja |
-> | galerieën/afbeeldingen | Ja |
-> | galerieën/afbeeldingen/versies | Ja |
+> | galerieën/toepassingen | Nee |
+> | galerieën/toepassingen/versies | Nee |
+> | galerieën/afbeeldingen | Nee |
+> | galerieën/afbeeldingen/versies | Nee |
 > | hostGroups | Ja |
 > | hostGroups/hosts | Ja |
 > | afbeeldingen | Ja |
@@ -648,13 +642,11 @@ Ga naar de naam ruimte van een resource provider:
 > | restorePointCollections | Ja |
 > | restorePointCollections/restorePoints | Nee |
 > | sharedVMImages | Ja |
-> | sharedVMImages/versies | Ja |
+> | sharedVMImages/versies | Nee |
 > | momentopnamen | Ja |
 > | Informatie | Ja |
 > | Informatie/extensies | Ja |
 > | Informatie/metricDefinitions | Nee |
-> | Informatie/scriptJobs | Nee |
-> | Informatie/softwareUpdateDeployments | Nee |
 > | virtualMachineScaleSets | Ja |
 > | virtualMachineScaleSets/extensions | Nee |
 > | virtualMachineScaleSets/networkInterfaces | Nee |
@@ -683,7 +675,7 @@ Ga naar de naam ruimte van een resource provider:
 > | ReservationRecommendations | Nee |
 > | ReservationSummaries | Nee |
 > | ReservationTransactions | Nee |
-> | Labels | Nee |
+> | Tags | Nee |
 > | tenants | Nee |
 > | Gebruiksrechtovereenkomst | Nee |
 > | UsageDetails | Nee |
@@ -871,7 +863,6 @@ Ga naar de naam ruimte van een resource provider:
 > | ------------- | ----------- |
 > | services | Ja |
 > | Services/projecten | Ja |
-> | sleuf | Ja |
 
 ## <a name="microsoftdatashare"></a>Micro soft. DataShare
 
@@ -923,6 +914,9 @@ Ga naar de naam ruimte van een resource provider:
 > | serverGroups | Ja |
 > | servers | Ja |
 > | servers/adviseurs | Nee |
+> | servers/privateEndpointConnectionProxies | Nee |
+> | servers/privateEndpointConnections | Nee |
+> | servers/privateLinkResources | Nee |
 > | servers/queryTexts | Nee |
 > | servers/recoverableServers | Nee |
 > | servers/topQueryStatistics | Nee |
@@ -1203,6 +1197,7 @@ Ga naar de naam ruimte van een resource provider:
 > | clusters/data bases | Nee |
 > | clusters/data bases/dataConnections | Nee |
 > | clusters/data bases/eventhubconnections | Nee |
+> | clusters/sharedidentities | Nee |
 
 ## <a name="microsoftlabservices"></a>Microsoft.LabServices
 
@@ -1246,7 +1241,7 @@ Ga naar de naam ruimte van een resource provider:
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Modus voor volledige verwijdering |
 > | ------------- | ----------- |
-> | Identiteiten | Nee |
+> | Identiteit | Nee |
 > | userAssignedIdentities | Ja |
 
 ## <a name="microsoftmanagedservices"></a>Micro soft. ManagedServices
@@ -1282,7 +1277,7 @@ Ga naar de naam ruimte van een resource provider:
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Modus voor volledige verwijdering |
 > | ------------- | ----------- |
-> | over | Nee |
+> | aanbiedingen | Nee |
 > | offerTypes | Nee |
 > | offerTypes/publishers | Nee |
 > | offerTypes/publishers/offers | Nee |
@@ -1367,11 +1362,13 @@ Ga naar de naam ruimte van een resource provider:
 > | Resourcetype | Modus voor volledige verwijdering |
 > | ------------- | ----------- |
 > | netAppAccounts | Ja |
+> | netAppAccounts/backupPolicies | Ja |
 > | netAppAccounts/capacityPools | Ja |
 > | netAppAccounts/capacityPools/volumes | Ja |
+> | netAppAccounts/capacityPools/volumes/back-ups | Nee |
 > | netAppAccounts/capacityPools/volumes/mountTargets | Ja |
 > | netAppAccounts/capacityPools/volumes/moment opnamen | Ja |
-
+> | netAppAccounts/kluizen | Nee |
 ## <a name="microsoftnetwork"></a>Microsoft.Network
 
 > [!div class="mx-tableFixed"]
@@ -1464,6 +1461,13 @@ Ga naar de naam ruimte van een resource provider:
 > | ------------- | ----------- |
 > | naamruimten | Ja |
 > | namespaces/notificationHubs | Ja |
+
+## <a name="microsoftobjectstore"></a>Micro soft. ObjectStore
+
+> [!div class="mx-tableFixed"]
+> | Resourcetype | Modus voor volledige verwijdering |
+> | ------------- | ----------- |
+> | osNamespaces | Ja |
 
 ## <a name="microsoftoffazure"></a>Microsoft.OffAzure
 
@@ -1606,7 +1610,7 @@ Ga naar de naam ruimte van een resource provider:
 > | ------------- | ----------- |
 > | implementaties | Nee |
 > | implementaties/bewerkingen | Nee |
-> | koppelen | Nee |
+> | koppelingen | Nee |
 > | notifyResourceJobs | Nee |
 > | Providers | Nee |
 > | resourceGroups | Nee |
@@ -1618,7 +1622,6 @@ Ga naar de naam ruimte van een resource provider:
 > | abonnementen/resources | Nee |
 > | abonnementen/TagName | Nee |
 > | subscriptions/tagNames/tagValues | Nee |
-> | codes | Nee |
 > | tenants | Nee |
 
 ## <a name="microsoftsaas"></a>Microsoft.SaaS
@@ -1670,7 +1673,7 @@ Ga naar de naam ruimte van een resource provider:
 > | jitNetworkAccessPolicies | Nee |
 > | networkData | Nee |
 > | playbookConfigurations | Ja |
-> | beleidsregels | Nee |
+> | beleid | Nee |
 > | prijzen | Nee |
 > | regulatoryComplianceStandards | Nee |
 > | regulatoryComplianceStandards/regulatoryComplianceControls | Nee |
@@ -1682,6 +1685,7 @@ Ga naar de naam ruimte van een resource provider:
 > | securityStatusesSummaries | Nee |
 > | serverVulnerabilityAssessments | Nee |
 > | instellingen | Nee |
+> | subevaluaties | Nee |
 > | taken | Nee |
 > | topologieën | Nee |
 > | workspaceSettings | Nee |
@@ -1705,7 +1709,7 @@ Ga naar de naam ruimte van een resource provider:
 > | Wijzer | Nee |
 > | meldingen | Nee |
 > | dataConnectors | Nee |
-> | entiteiten | Nee |
+> | Rijg | Nee |
 > | entityQueries | Nee |
 > | officeConsents | Nee |
 > | instellingen | Nee |
@@ -1966,7 +1970,7 @@ Ga naar de naam ruimte van een resource provider:
 > | verbindingen | Ja |
 > | customApis | Ja |
 > | deletedSites | Nee |
-> | functies | Nee |
+> | functions | Nee |
 > | hostingEnvironments | Ja |
 > | hostingEnvironments/multiRolePools | Nee |
 > | hostingEnvironments/workerPools | Nee |

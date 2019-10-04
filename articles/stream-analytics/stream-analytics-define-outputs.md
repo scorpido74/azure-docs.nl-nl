@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/31/2019
-ms.openlocfilehash: 386dc737bb45eec031aaa1a0c55f4478b8302c54
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 05bb8b75fb09f3b8df0a6775874e72bdb04fc65e
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71173579"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71937543"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Inzicht in de uitvoer van Azure Stream Analytics
 
@@ -52,21 +52,20 @@ De volgende tabel geeft een lijst van eigenschaps namen en de bijbehorende besch
 
 U kunt [Azure SQL database](https://azure.microsoft.com/services/sql-database/) gebruiken als uitvoer voor gegevens die relationeel zijn of voor toepassingen die afhankelijk zijn van inhoud die wordt gehost in een relationele data base. Stream Analytics-taken worden geschreven naar een bestaande tabel in SQL Database. Het tabel schema moet exact overeenkomen met de velden en de bijbehorende typen in de uitvoer van uw taak. U kunt ook [Azure SQL Data Warehouse](https://azure.microsoft.com/documentation/services/sql-data-warehouse/) als uitvoer opgeven via de optie SQL database uitvoer. Zie het artikel [Stream Analytics met Azure SQL database als uitvoer als](stream-analytics-sql-output-perf.md) u meer wilt weten over manieren om de schrijf doorvoer te verbeteren.
 
+U kunt ook [Azure SQL database beheerde instantie](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance) gebruiken als uitvoer. U moet een [openbaar eind punt configureren in Azure SQL database Managed instance](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure) en vervolgens hand matig de volgende instellingen configureren in azure stream Analytics. Een virtuele Azure-machine met SQL Server met een gekoppelde data base wordt ook ondersteund door de onderstaande instellingen hand matig te configureren.
+
 De volgende tabel bevat de namen van de eigenschappen en de bijbehorende beschrijvingen voor het maken van een SQL Database uitvoer.
 
 | Naam van eigenschap | Description |
 | --- | --- |
 | Uitvoeralias |Een beschrijvende naam die wordt gebruikt in query's om de query-uitvoer met deze database te regelen. |
 | Database | De naam van de Data Base waarin u uw uitvoer wilt verzenden. |
-| Servernaam | De naam van de SQL-Database-server. |
+| Servernaam | De naam van de SQL-Database-server. Voor Azure SQL Database beheerde instantie moet het poort 3342 worden opgegeven. Bijvoorbeeld *sampleserver. public. data base. Windows. net, 3342* |
 | Gebruikersnaam | De gebruikers naam die schrijf toegang tot de data base heeft. Stream Analytics ondersteunt alleen SQL-verificatie. |
 | Wachtwoord | Het wachtwoord voor verbinding met de database. |
 | Tabel | De naam van de tabel waar de uitvoer wordt geschreven. De tabel naam is hoofdletter gevoelig. Het schema van deze tabel moet exact overeenkomen met het aantal velden en de bijbehorende typen die uw taak uitvoer genereert. |
 |Partitie schema overnemen| Een optie voor het overnemen van het partitie schema van uw vorige query stap, om een volledig parallelle topologie met meerdere schrijvers voor de tabel in te scha kelen. Zie [Azure stream Analytics uitvoer naar Azure SQL database](stream-analytics-sql-output-perf.md)voor meer informatie.|
 |Maximum aantal batches| De aanbevolen bovengrens voor het aantal records dat wordt verzonden met elke bulksgewijze insert-trans actie.|
-
-> [!NOTE]
-> De Azure SQL Database aanbieding wordt ondersteund voor een taak uitvoer in Stream Analytics, maar een virtuele machine van Azure met SQL Server met een gekoppelde data base of een SQL Azure beheerd exemplaar wordt nog niet ondersteund. Dit is mogelijk gewijzigd in toekomstige releases.
 
 ## <a name="blob-storage-and-azure-data-lake-gen2"></a>Blob-opslag en Azure Data Lake Gen2
 

@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: bf2e289ad12f459c37a93ad3936c30339ecf663d
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: a4d8cd9f8198002b0b9ade8fe5058de1fcacc68f
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69907542"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71937355"
 ---
 # <a name="backup-and-restore-in-azure-database-for-postgresql---single-server"></a>Back-ups maken en herstellen in Azure Database for PostgreSQL-één server
 
@@ -25,7 +25,7 @@ Azure Database for PostgreSQL volledige, differentiële en back-ups van transact
 
 Over het algemeen worden volledige back-ups wekelijks uitgevoerd, differentiële back-ups twee keer per dag uitgevoerd en worden back-ups van transactie Logboeken om de vijf minuten uitgevoerd. De eerste volledige back-up wordt onmiddellijk gepland nadat een server is gemaakt. De eerste back-up kan langer duren op een grote herstelde server. Het vroegste tijdstip waarop een nieuwe server kan worden hersteld, is het tijdstip waarop de eerste volledige back-up is voltooid.
 
-### <a name="backup-redundancy-options"></a>Opties voor back-upredundantie
+### <a name="backup-redundancy-options"></a>Redundantieopties voor back-up
 
 Azure Database for PostgreSQL biedt de flexibiliteit om te kiezen tussen lokaal redundante of geografisch redundante back-upopslag in de lagen Algemeen en geoptimaliseerd voor geheugen. Wanneer de back-ups worden opgeslagen in geografisch redundante back-upopslag, worden ze niet alleen opgeslagen in de regio waarin uw server wordt gehost, maar worden ook gerepliceerd naar een [gekoppeld Data Center](https://docs.microsoft.com/azure/best-practices-availability-paired-regions). Dit biedt betere beveiliging en de mogelijkheid om uw server in een andere regio te herstellen in het geval van een ramp. De laag basis biedt alleen lokaal redundante back-upopslag.
 

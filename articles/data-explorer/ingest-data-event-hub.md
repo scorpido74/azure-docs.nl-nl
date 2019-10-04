@@ -7,12 +7,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/17/2019
-ms.openlocfilehash: e52ce4411a2fa1969db196ba2e32bb485f71f8b6
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
-ms.translationtype: MT
+ms.openlocfilehash: 2dbb900d297f1acf05e77dca3e1753745e9b2b38
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70931229"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71937406"
 ---
 # <a name="ingest-data-from-event-hub-into-azure-data-explorer"></a>gegevens uit Event Hub opnemen in Azure Data Explorer
 
@@ -42,7 +42,7 @@ In dit artikel genereert u voorbeeld gegevens en stuurt u deze naar een Event Hu
 
     Als u op de knop **Implementeren in Azure** klikt, wordt u naar de Azure-portal geleid om een implementatieformulier in te vullen.
 
-    ![Implementeren in Azure](media/ingest-data-event-hub/deploy-to-azure.png)
+    ![Implementeren naar Azure](media/ingest-data-event-hub/deploy-to-azure.png)
 
 1. Selecteer het abonnement waarvoor u de Event Hub wilt maken, en maak een resourcegroep met de naam *test-hub-rg*.
 
@@ -125,11 +125,12 @@ Nu kunt u vanuit Azure Data Explorer verbinding maken met de event hub. Wanneer 
     |---|---|---|
     | Tabel | *TestTable* | De tabel die u hebt gemaakt in **TestDatabase**. |
     | Gegevensindeling | *JSON* | Ondersteunde indelingen zijn Avro, CSV, JSON, MULTILINE JSON, PSV, SOH, SCSV, TSV en TXT. Ondersteunde compressie opties: GZip |
-    | Toewijzen van kolommen | *TestMapping* | De toewijzing die u hebt gemaakt in **TestDatabase** en waarmee die binnenkomende JSON-gegevens worden toegewezen aan de kolomnamen en gegevenstypen van **TestTable**. Vereist voor JSON, meerdere regels JSON of AVRO, en optioneel voor andere indelingen.|
+    | Kolomtoewijzing | *TestMapping* | De toewijzing die u hebt gemaakt in **TestDatabase** en waarmee die binnenkomende JSON-gegevens worden toegewezen aan de kolomnamen en gegevenstypen van **TestTable**. Vereist voor JSON, meerdere regels JSON of AVRO, en optioneel voor andere indelingen.|
     | | |
 
     > [!NOTE]
-    > Selecteer **mijn gegevens bevat routerings informatie** voor het gebruik van dynamische route ring, waarbij uw gegevens de benodigde routerings informatie bevatten, zoals wordt weer gegeven in de opmerkingen van de voor [beeld-app](https://github.com/Azure-Samples/event-hubs-dotnet-ingest) . Als zowel statische als dynamische eigenschappen zijn ingesteld, worden de dynamische eigenschappen overschreven. 
+    > * Selecteer **mijn gegevens bevat routerings informatie** voor het gebruik van dynamische route ring, waarbij uw gegevens de benodigde routerings informatie bevatten, zoals wordt weer gegeven in de opmerkingen van de voor [beeld-app](https://github.com/Azure-Samples/event-hubs-dotnet-ingest) . Als zowel statische als dynamische eigenschappen zijn ingesteld, worden de dynamische eigenschappen overschreven. 
+    > * Alleen gebeurtenissen in de wachtrij na het maken van de gegevens verbinding worden opgenomen.
 
 ## <a name="copy-the-connection-string"></a>De verbindingsreeks kopiëren
 

@@ -12,12 +12,12 @@ ms.topic: reference
 ms.date: 09/08/2018
 ms.author: cshoe
 ms.custom: ''
-ms.openlocfilehash: 77fa97cd339b6498263e12eae9cea50187493a89
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 57b4f018cd044b4f516266dcf9776e82252f7f22
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70097116"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71937117"
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Timer trigger voor Azure Functions 
 
@@ -50,7 +50,7 @@ Zie het voorbeeld taalspecifieke:
 
 ### <a name="c-example"></a>C#Hierbij
 
-In het volgende voor beeld ziet u een [ C# functie](functions-dotnet-class-library.md) die wordt uitgevoerd elke keer dat de minuten een waarde hebben die deelbaar is door vijf (bijvoorbeeld als de functie wordt gestart om 18:57:00, de volgende prestaties op 19:00:00). Het [`TimerInfo`](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/TimerInfo.cs) object wordt door gegeven aan de functie.
+In het volgende voor beeld ziet u een [ C# functie](functions-dotnet-class-library.md) die wordt uitgevoerd elke keer dat de minuten een waarde hebben die deelbaar is door vijf (bijvoorbeeld als de functie wordt gestart om 18:57:00, de volgende prestaties op 19:00:00). Het [`TimerInfo`-](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/TimerInfo.cs) object wordt door gegeven aan de functie.
 
 ```cs
 [FunctionName("TimerTriggerCSharp")]
@@ -66,7 +66,7 @@ public static void Run([TimerTrigger("0 */5 * * * *")]TimerInfo myTimer, ILogger
 
 ### <a name="c-script-example"></a>C#script voorbeeld
 
-In het volgende voor beeld ziet u een binding van een timer trigger in een *Function. json* -bestand en een [ C# script functie](functions-reference-csharp.md) die gebruikmaakt van de binding. Met de functie wordt een logboek geschreven dat aangeeft of deze functie wordt aangeroepen vanwege een gemiste schema gebeurtenis. Het [`TimerInfo`](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/TimerInfo.cs) object wordt door gegeven aan de functie.
+In het volgende voor beeld ziet u een binding van een timer trigger in een *Function. json* -bestand en een [ C# script functie](functions-reference-csharp.md) die gebruikmaakt van de binding. Met de functie wordt een logboek geschreven dat aangeeft of deze functie wordt aangeroepen vanwege een gemiste schema gebeurtenis. Het [`TimerInfo`-](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/TimerInfo.cs) object wordt door gegeven aan de functie.
 
 Hier volgt de binding-gegevens de *function.json* bestand:
 
@@ -94,7 +94,7 @@ public static void Run(TimerInfo myTimer, ILogger log)
 
 ### <a name="f-example"></a>F#Hierbij
 
-In het volgende voor beeld ziet u een binding van een timer trigger in een *Function. json* -bestand en een [ F# script functie](functions-reference-fsharp.md) die gebruikmaakt van de binding. Met de functie wordt een logboek geschreven dat aangeeft of deze functie wordt aangeroepen vanwege een gemiste schema gebeurtenis. Het [`TimerInfo`](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/TimerInfo.cs) object wordt door gegeven aan de functie.
+In het volgende voor beeld ziet u een binding van een timer trigger in een *Function. json* -bestand en een [ F# script functie](functions-reference-fsharp.md) die gebruikmaakt van de binding. Met de functie wordt een logboek geschreven dat aangeeft of deze functie wordt aangeroepen vanwege een gemiste schema gebeurtenis. Het [`TimerInfo`-](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/TimerInfo.cs) object wordt door gegeven aan de functie.
 
 Hier volgt de binding-gegevens de *function.json* bestand:
 
@@ -119,7 +119,7 @@ let Run(myTimer: TimerInfo, log: ILogger ) =
 
 ### <a name="java-example"></a>Java-voor beeld
 
-In het volgende voor beeld wordt de functie geactiveerd en wordt elke vijf minuten uitgevoerd. De `@TimerTrigger` aantekening voor de functie definieert het schema met dezelfde teken reeks notatie als [cron-expressies](https://en.wikipedia.org/wiki/Cron#CRON_expression).
+In het volgende voor beeld wordt de functie geactiveerd en wordt elke vijf minuten uitgevoerd. De `@TimerTrigger`-annotatie voor de functie definieert het schema met dezelfde teken reeks indeling als [cron-expressies](https://en.wikipedia.org/wiki/Cron#CRON_expression).
 
 ```java
 @FunctionName("keepAlive")
@@ -201,7 +201,7 @@ def main(mytimer: func.TimerRequest) -> None:
 
 Gebruik in [ C# class libraries](functions-dotnet-class-library.md)het [TimerTriggerAttribute](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/TimerTriggerAttribute.cs).
 
-De constructor van het kenmerk heeft een CRON-expressie of `TimeSpan`een. U kunt alleen `TimeSpan` gebruiken als de functie-app wordt uitgevoerd op een app service-abonnement. In het volgende voor beeld ziet u een CRON-expressie:
+De constructor van het kenmerk heeft een CRON-expressie of een `TimeSpan`. U kunt `TimeSpan` alleen gebruiken als de functie-app wordt uitgevoerd op een App Service plan. In het volgende voor beeld ziet u een CRON-expressie:
 
 ```csharp
 [FunctionName("TimerTriggerCSharp")]
@@ -224,14 +224,14 @@ De volgende tabel beschrijft de binding configuratie-eigenschappen die u instelt
 |**type** | N.v.t. | Moet worden ingesteld op ' Timer trigger '. Deze eigenschap wordt automatisch ingesteld wanneer u de trigger in Azure portal maakt.|
 |**direction** | N.v.t. | Moet worden ingesteld op 'in'. Deze eigenschap wordt automatisch ingesteld wanneer u de trigger in Azure portal maakt. |
 |**De naam** | N.v.t. | De naam van de variabele die het Timer object in functie code vertegenwoordigt. | 
-|**schedule**|**ScheduleExpression**|Een [cron-expressie](#ncrontab-expressions) of een [time span](#timespan) -waarde. A `TimeSpan` kan alleen worden gebruikt voor een functie-app die wordt uitgevoerd op een app service plan. U kunt de schema-expressie in een app-instelling plaatsen en deze eigenschap instellen op de naam van de **%** app-instelling die wordt verpakt in tekens, zoals in dit voor beeld:% ScheduleAppSetting%. |
-|**runOnStartup**|**RunOnStartup**|Als `true`de functie wordt aangeroepen wanneer de runtime wordt gestart. De runtime wordt bijvoorbeeld gestart wanneer de functie-app wordt geactiveerd nadat de inactiviteit is voltooid. Wanneer de functie-app opnieuw wordt gestart vanwege functie wijzigingen en wanneer de functie-app wordt geschaald. Daarom moet **runOnStartup** zelden worden ingesteld op `true`, met name bij de productie. |
-|**useMonitor**|**UseMonitor**|Ingesteld op `true` of `false` om aan te geven of het schema moet worden bewaakt. Het plannen van de controle houdt in dat het schema wordt gebruikt om ervoor te zorgen dat het schema goed wordt onderhouden, zelfs wanneer de functie-app-exemplaren opnieuw worden gestart. Als niet expliciet is ingesteld, is `true` de standaard waarde voor schema's met een terugkeer patroon dat groter is dan 1 minuut. Voor schema's die meer dan één keer per minuut activeren, is `false`de standaard waarde.
+|**schedule**|**ScheduleExpression**|Een [cron-expressie](#ncrontab-expressions) of een [time span](#timespan) -waarde. Een `TimeSpan` kan alleen worden gebruikt voor een functie-app die wordt uitgevoerd op een App Service plan. U kunt de schema-expressie in een app-instelling plaatsen en deze eigenschap instellen op de naam van de app-instelling in **%-** tekens, zoals in dit voor beeld:% ScheduleAppSetting%. |
+|**runOnStartup**|**RunOnStartup**|Als `true`, de functie wordt aangeroepen wanneer de runtime wordt gestart. De runtime wordt bijvoorbeeld gestart wanneer de functie-app wordt geactiveerd nadat de inactiviteit is voltooid. Wanneer de functie-app opnieuw wordt gestart vanwege functie wijzigingen en wanneer de functie-app wordt geschaald. Daarom moet **runOnStartup** zelden worden ingesteld op `true`, met name bij de productie. |
+|**useMonitor**|**UseMonitor**|Ingesteld op `true` of `false` om aan te geven of het schema moet worden bewaakt. Het plannen van de controle houdt in dat het schema wordt gebruikt om ervoor te zorgen dat het schema goed wordt onderhouden, zelfs wanneer de functie-app-exemplaren opnieuw worden gestart. Als niet expliciet is ingesteld, is de standaard waarde `true` voor schema's met een terugkeer patroon dat groter is dan of gelijk is aan 1 minuut. Voor schema's die meer dan één keer per minuut activeren, wordt de standaard waarde `false`.
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
 > [!CAUTION]
-> We raden u aan om runOnStartup `true` in te stellen op in productie. Met deze instelling wordt de code op zeer onvoorspelbare tijden uitgevoerd. In bepaalde productie-instellingen kan deze extra uitvoeringen leiden tot aanzienlijk hogere kosten voor apps die worden gehost in verbruiks abonnementen. Als **runOnStartup** is ingeschakeld, wordt de trigger bijvoorbeeld aangeroepen wanneer uw functie-app wordt geschaald. Zorg ervoor dat u het productie gedrag van uw functies volledig begrijpt voordat u **runOnStartup** in productie inschakelt.   
+> We raden u aan om **runOnStartup** in te stellen op `true` in productie. Met deze instelling wordt de code op zeer onvoorspelbare tijden uitgevoerd. In bepaalde productie-instellingen kan deze extra uitvoeringen leiden tot aanzienlijk hogere kosten voor apps die worden gehost in verbruiks abonnementen. Als **runOnStartup** is ingeschakeld, wordt de trigger bijvoorbeeld aangeroepen wanneer uw functie-app wordt geschaald. Zorg ervoor dat u het productie gedrag van uw functies volledig begrijpt voordat u **runOnStartup** in productie inschakelt.   
 
 ## <a name="usage"></a>Gebruik
 
@@ -250,7 +250,7 @@ Wanneer een timer functie wordt geactiveerd, wordt er een timer object door gege
 }
 ```
 
-De `IsPastDue` eigenschap is `true` op het moment dat de huidige functie aanroep later is dan gepland. Het opnieuw starten van een functie-app kan ertoe leiden dat een aanroep wordt gemist.
+De eigenschap `IsPastDue` is `true` wanneer de huidige functie aanroep later is dan gepland. Het opnieuw starten van een functie-app kan ertoe leiden dat een aanroep wordt gemist.
 
 ## <a name="ncrontab-expressions"></a>NCRONTAB-expressies 
 
@@ -287,9 +287,9 @@ Hier volgen enkele voor beelden van NCRONTAB-expressies die u kunt gebruiken voo
 
 ### <a name="ncrontab-time-zones"></a>NCRONTAB tijd zones
 
-De getallen in een CRON-expressie verwijzen naar een datum en tijd, niet een tijds Panne. Bijvoorbeeld, een 5 in het `hour` veld verwijst naar 5:00 uur, niet om de vijf uur.
+De getallen in een CRON-expressie verwijzen naar een datum en tijd, niet een tijds Panne. Bijvoorbeeld, een 5 in het veld `hour` verwijst naar 5:00 uur, niet om de vijf uur.
 
-De standaardtijd zone die wordt gebruikt in de CRON-expressies is Coordinated Universal Time (UTC). Als u de CRON-expressie op basis van een andere tijd zone wilt gebruiken, maakt u een app `WEBSITE_TIME_ZONE`-instelling voor de functie-app met de naam. Stel de waarde in op de naam van de gewenste tijd zone, zoals weer gegeven in de [micro soft-tijd zone-index](https://technet.microsoft.com/library/cc749073). 
+De standaardtijd zone die wordt gebruikt in de CRON-expressies is Coordinated Universal Time (UTC). Als u wilt dat uw CRON-expressie op basis van een andere tijd zone wordt gebruikt, maakt u een app-instelling voor de functie-app met de naam `WEBSITE_TIME_ZONE`. Stel de waarde in op de naam van de gewenste tijd zone, zoals weer gegeven in de [micro soft-tijd zone-index](https://technet.microsoft.com/library/cc749073). 
 
 Bijvoorbeeld, *Eastern Standard Time* is UTC-05:00. Als u wilt dat uw timer trigger wordt geactiveerd om 10:00 uur EST elke dag, gebruikt u de volgende NCRONTAB-expressie die accounts voor UTC-tijd zone:
 
@@ -297,21 +297,21 @@ Bijvoorbeeld, *Eastern Standard Time* is UTC-05:00. Als u wilt dat uw timer trig
 "0 0 15 * * *"
 ``` 
 
-Of maak een app-instelling voor de naam `WEBSITE_TIME_ZONE` van de functie-app en stel de waarde in op **Eastern Standard Time**.  Gebruikt vervolgens de volgende NCRONTAB-expressie: 
+Of maak een app-instelling voor de functie-app met de naam `WEBSITE_TIME_ZONE` en stel de waarde in op **Eastern Standard Time**.  Gebruikt vervolgens de volgende NCRONTAB-expressie: 
 
 ```
 "0 0 10 * * *"
 ``` 
 
-Wanneer u gebruikt `WEBSITE_TIME_ZONE`, wordt de tijd aangepast voor tijd wijzigingen in de specifieke tijd zone, zoals zomer tijd. 
+Wanneer u `WEBSITE_TIME_ZONE` gebruikt, wordt de tijd aangepast voor tijd wijzigingen in de specifieke tijd zone, zoals zomer tijd. 
 
 ## <a name="timespan"></a>TimeSpan
 
- A `TimeSpan` kan alleen worden gebruikt voor een functie-app die wordt uitgevoerd op een app service plan.
+ Een `TimeSpan` kan alleen worden gebruikt voor een functie-app die wordt uitgevoerd op een App Service plan.
 
-In tegens telling tot een cron `TimeSpan` -expressie specificeert een waarde het tijds interval tussen elke functie aanroep. Wanneer een functie wordt voltooid nadat deze langer dan het opgegeven interval is uitgevoerd, roept de timer de functie opnieuw aan.
+In tegens telling tot een CRON-expressie geeft een `TimeSpan`-waarde het tijds interval tussen elke functie aanroep. Wanneer een functie wordt voltooid nadat deze langer dan het opgegeven interval is uitgevoerd, roept de timer de functie opnieuw aan.
 
-Wordt weer gegeven als een teken `TimeSpan` reeks, `hh:mm:ss` de notatie is kleinerdan24.`hh` Als de eerste twee cijfers 24 of hoger zijn, is `dd:hh:mm`de notatie. Hier volgen enkele voorbeelden:
+Uitgedrukt als een teken reeks, wordt de `TimeSpan`-indeling `hh:mm:ss` wanneer `hh` kleiner is dan 24. Als de eerste twee cijfers 24 of groter zijn, is de notatie `dd:hh:mm`. Hier volgen enkele voorbeelden:
 
 |Voorbeeld |Wanneer geactiveerd  |
 |---------|---------|
@@ -326,7 +326,7 @@ Als een functie-app wordt geschaald naar meerdere instanties, wordt slechts éé
 
 ## <a name="function-apps-sharing-storage"></a>Functie-apps die opslag ruimte delen
 
-Als u een opslag account deelt in meerdere functie-apps, moet u ervoor zorgen dat elke functie- `id` app een andere *host. json*heeft. U kunt de eigenschap `id` weglaten of de functie- `id` app hand matig instellen op een andere waarde. De timer trigger gebruikt een opslag vergrendeling om ervoor te zorgen dat er slechts één timer exemplaar is wanneer een functie-app wordt geschaald naar meerdere exemplaren. Als twee functie-apps hetzelfde `id` hebben en elk een timer trigger gebruikt, wordt er slechts één timer uitgevoerd.
+Als u een opslag account deelt in meerdere functie-apps, moet u ervoor zorgen dat elke functie-app een andere `id` heeft in *host. json*. U kunt de eigenschap `id` weglaten of de functie- `id` app hand matig instellen op een andere waarde. De timer trigger gebruikt een opslag vergrendeling om ervoor te zorgen dat er slechts één timer exemplaar is wanneer een functie-app wordt geschaald naar meerdere exemplaren. Als twee functie-apps hetzelfde `id` hebben en elk een timer trigger gebruikt, wordt er slechts één timer uitgevoerd.
 
 ## <a name="retry-behavior"></a>Gedrag voor opnieuw proberen
 
