@@ -1,6 +1,6 @@
 ---
-title: Azure Data Science Virtual Machines gebruiken
-description: Verbinding maken naar een Azure Data Science Virtual Machine (DSVM) de beschikbare compute-kracht uitbreiden naar Azure-notitieblokken.
+title: Azure data Science Virtual Machines gebruiken
+description: Maak verbinding met een Azure-Data Science Virtual Machine (DSVM) om de reken kracht die beschikbaar is voor Azure Notebooks uit te breiden.
 services: app-service
 documentationcenter: ''
 author: getroyer
@@ -9,65 +9,64 @@ ms.assetid: 0ccc2529-e17f-4221-b7c7-9496d6a731cc
 ms.service: azure-notebooks
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2019
 ms.author: getroyer
-ms.openlocfilehash: fe9886429a5e894f40c04b1f65094e412c1dc9e2
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 0f06475708adaf1324eedbd8e315fe4d731339be
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67441210"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71970103"
 ---
-# <a name="use-azure-data-science-virtual-machines"></a>Azure Data Science Virtual Machines gebruiken
+# <a name="use-azure-data-science-virtual-machines"></a>Azure data Science Virtual Machines gebruiken
 
-Standaard projecten uitvoeren op de **gratis Compute** laag, wat beperkt is tot 4 GB geheugen en 1 GB aan gegevens om misbruik te voorkomen. Met behulp van een andere virtuele machine die u in een Azure-abonnement hebt ingericht, kunt u deze beperkingen negeren. De beste keuze is voor dit doel een Azure Data Science Virtual Machine (DSVM) met behulp van de **Data Science Virtual Machine voor Linux (Ubuntu)** installatiekopie. Een dergelijke DSVM wordt geleverd vooraf geconfigureerd met alles wat u nodig hebt voor Azure-notitieblokken en wordt automatisch op de **uitvoeren** vervolgkeuzelijst in notitieblokken van Azure.
+Standaard worden projecten uitgevoerd op de **gratis Compute** -laag. Dit is beperkt tot 4 GB aan geheugen en 1 GB aan gegevens om misbruik te voor komen. U kunt deze beperkingen overs Laan door een andere virtuele machine te gebruiken die u in een Azure-abonnement hebt ingericht. Voor dit doel is de beste keuze een Azure Data Science Virtual Machine (DSVM) met behulp **van de data Science virtual machine voor Linux-installatie kopie (Ubuntu)** . Een dergelijke DSVM is vooraf geconfigureerd met alles wat u nodig hebt voor Azure Notebooks en wordt automatisch weer gegeven in de vervolg keuzelijst voor het **uitvoeren** van Azure notebooks.
 
 > [!Note]
-> Azure-notitieblokken wordt alleen ondersteund op Dsvm die zijn gemaakt met de op Linux Ubuntu-installatiekopie. Notitieblokken worden niet ondersteund in Windows 2012, Windows 2016 of CentOS Linux-installatiekopieën.
+> Azure Notebooks wordt alleen ondersteund op Dsvm die zijn gemaakt met de Ubuntu-installatie kopie op Linux. Notebooks worden niet ondersteund in Windows 2012-, Windows 2016-of Linux CentOS-installatie kopieën.
 
 ## <a name="create-a-dsvm-instance"></a>Een DSVM-exemplaar maken
 
-Voor het maken van een nieuw exemplaar van de DSVM, volgt u de instructies op [maken van een Ubuntu Data Science VM](/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro). Zie voor meer informatie, met inbegrip van details over de prijzen, [virtuele Machines voor Datatechnologie](https://azure.microsoft.com/services/virtual-machines/data-science-virtual-machines/).
+Als u een nieuw DSVM-exemplaar wilt maken, volgt u de instructies in [een Ubuntu maken data Science VM](/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro). Zie [Data Science virtual machines](https://azure.microsoft.com/services/virtual-machines/data-science-virtual-machines/)voor meer informatie, inclusief prijs informatie.
 
 ## <a name="connect-to-the-dsvm"></a>Verbinding maken met de DSVM
 
-Als u de DSVM worden gemaakt, selecteert u de **uitvoeren** vervolgkeuzelijst op de Azure-Notebooks dashboard-project en selecteer het juiste exemplaar van de DSVM. De vervolgkeuzelijst bevat de DSVM-exemplaren als de volgende voorwaarden voldaan wordt:
+Zodra u de DSVM hebt gemaakt, selecteert u de vervolg keuzelijst **uitvoeren** in het dash board van Azure notebooks project en selecteert u het juiste DSVM-exemplaar. In de vervolg keuzelijst worden DSVM-exemplaren weer gegeven als aan de volgende voor waarden wordt voldaan:
 
-- U bent aangemeld bij Azure-laptops met een account dat gebruikmaakt van Azure Active Directory (AAD), zoals een bedrijfsaccount.
+- U bent aangemeld bij Azure Notebooks met een account dat gebruikmaakt van Azure Active Directory (AAD), zoals een bedrijfs account.
 - Uw account is verbonden met een Azure-abonnement.
-- Hebt u een of meer virtuele machines in dat aan het abonnement, met ten minste leestoegang hebben, die gebruikmaakt van de virtuele Machine voor Datatechnologie voor Linux (Ubuntu)-installatiekopie.)
+- U hebt een of meer virtuele machines in dat abonnement, met mini maal lezers toegang, die gebruikmaken van de Data Science Virtual Machine-installatie kopie voor Linux (Ubuntu).)
 
-![Data Science Virtual Machine-exemplaren in de vervolgkeuzelijst in het projectdashboard](media/project-compute-tier-dsvm.png)
+![Instanties in de vervolg keuzelijst van het project dashboard Data Science Virtual Machine](media/project-compute-tier-dsvm.png)
 
-Wanneer u een exemplaar van de DSVM selecteert, Azure-notitieblokken wordt u mogelijk gevraagd om de specifieke machine-referenties gebruikt bij het maken van de virtuele machine.
+Wanneer u een DSVM-exemplaar selecteert Azure Notebooks, wordt u mogelijk gevraagd om de specifieke computer referenties die worden gebruikt bij het maken van de virtuele machine.
 
-Als een van de voorwaarden worden niet voldaan, kunt u nog steeds verbinding met de DSVM. Selecteer op de vervolgkeuzelijst de **Direct Compute** optie, die wordt u gevraagd een naam (om weer te geven in de lijst), IP-adres van de VM en poort (meestal 8000, de standaardpoort voor welke luistert JupyterHub) en de referenties van de virtuele machine:
+Als aan een van de voor waarden niet wordt voldaan, kunt u nog steeds verbinding maken met de DSVM. Selecteer in de vervolg keuzelijst de optie **Directe Compute** , waarin u wordt gevraagd een naam (om weer te geven in de lijst), het IP-adres en de poort van de virtuele machine (meestal 8000, de standaard poort waarnaar JupyterHub luistert) en de VM-referenties:
 
-![Prompt voor het verzamelen van informatie over server voor de directe Compute option](media/project-compute-tier-direct.png)
+![Vragen om Server gegevens te verzamelen voor de optie directe compute](media/project-compute-tier-direct.png)
 
-U kunt deze waarden verkrijgt in de DSVM-pagina in Azure portal.
+U kunt deze waarden verkrijgen op de pagina DSVM in de Azure Portal.
 
-## <a name="accessing-azure-notebooks-files-from-the-dsvm"></a>Azure-notitieblokken bestanden vanuit de DSVM te openen
+## <a name="accessing-azure-notebooks-files-from-the-dsvm"></a>Azure Notebooks-bestanden openen vanuit de DSVM
 
-Toegang tot bestandssysteem wordt ondersteund voor DSVM-versies 19.06.15 of hoger. Om te controleren of de versie, eerst verbinding maken met uw DSVM via SSH en voer vervolgens de volgende opdracht uit: `curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2018-10-01"` (moet u de exacte IP-adres dat hier wordt weergegeven). Het versienummer wordt weergegeven in de uitvoer voor 'versie'.
+Toegang tot bestands systeem wordt ondersteund voor DSVM-versies 19.06.15 of hoger. Als u de versie wilt controleren, maakt u eerst verbinding met uw DSVM via SSH en voert u vervolgens de volgende opdracht uit: `curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2018-10-01"` (u moet het exacte IP-adres dat hier wordt weer gegeven) gebruiken. Het versie nummer wordt weer gegeven in de uitvoer voor ' versie '.
 
-Pariteit van paden met behouden de **gratis Compute** -laag, kunt u alleen een project openen op een tijdstip op een DSVM. Als u wilt een nieuw project openen, sluit u het project hebt geopend eerst.
+Als u de pariteit van bestands paden met de **gratis Compute** -laag wilt behouden, kunt u slechts één project tegelijk op een DSVM openen. Als u een nieuw project wilt openen, moet u eerst het openstaande project afsluiten.
 
-Wanneer een project wordt uitgevoerd op een virtuele machine, de bestanden zijn gekoppeld aan de hoofdmap van de Jupyter-server (de map die wordt weergegeven in JupyterHub), de standaard Azure-notitieblokken bestanden worden vervangen. Wanneer u het afsluiten van de virtuele machine met behulp de **afsluiten** knop in de notebook-gebruikersinterface,-laptops Azure worden de standaard-bestanden hersteld.
+Wanneer een project wordt uitgevoerd op een virtuele machine, worden de bestanden gekoppeld aan de hoofdmap van de Jupyter-server (de map die wordt weer gegeven in JupyterHub), waarbij de standaard bestanden voor Azure Notebooks worden vervangen. Wanneer u de virtuele machine afsluit met behulp van de knop **Afsluiten** in de gebruikers interface van het notitie blok, worden de standaard bestanden door Azure notebooks hersteld.
 
-![Knop Afsluiten in Azure-notitieblokken](media/shutdown.png)
+![De knop Afsluiten in Azure Notebooks](media/shutdown.png)
 
-## <a name="create-new-dsvm-users"></a>Maken van nieuwe DSVM-gebruikers
+## <a name="create-new-dsvm-users"></a>Nieuwe DSVM-gebruikers maken
 
-Als meerdere gebruikers een DSVM delen, kunt u voorkomen elkaar door het maken en gebruiken van een gebruiker DSVM voor elke gebruiker notebook blokkeren:
+Als meerdere gebruikers een DSVM delen, kunt u voor komen dat elkaar worden geblokkeerd door een DSVM-gebruiker te maken en te gebruiken voor elke notebook-gebruiker:
 
-1. Op de [Azure Portal](https://portal.azure.com), gaat u naar uw virtuele machine.
-1. Onder **ondersteuning en probleemoplossing** selecteren in de linkermarge **wachtwoord opnieuw instellen**.
-1. Voer een nieuwe gebruikersnaam en wachtwoord in en selecteer **Update**. (Bestaande gebruikersnamen worden niet beïnvloed.)
-1. Herhaal de vorige stap voor elke extra gebruikers.
+1. Ga in [Azure Portal](https://portal.azure.com)naar de virtuele machine.
+1. Onder **ondersteuning en probleem oplossing** in de linkermarge selecteert u **wacht woord opnieuw instellen**.
+1. Voer een nieuwe gebruikers naam en wacht woord in en selecteer **bijwerken**. (Bestaande gebruikers namen worden niet beïnvloed.)
+1. Herhaal de vorige stap voor extra gebruikers.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over de Dsvm op [Inleiding tot Azure Data Science Virtual Machines](/azure/machine-learning/data-science-virtual-machine/overview).
+Meer informatie over Dsvm vindt [u in de inleiding tot Azure data Science virtual machines](/azure/machine-learning/data-science-virtual-machine/overview).

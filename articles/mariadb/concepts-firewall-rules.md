@@ -1,17 +1,17 @@
 ---
 title: Firewall regels van Azure Database for MariaDB server
-description: Hierin worden de firewall regels voor uw Azure Database for MariaDB-server beschreven.
+description: Meer informatie over het gebruik van firewall regels om verbindingen met uw Azure Database for MariaDB server in te scha kelen.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/22/2019
-ms.openlocfilehash: 94efc87cdea8e1d9b63361d4652b63909c6ce3e7
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 89c4bce33b80e988a9da363a89854e921bee30b0
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71203609"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71973661"
 ---
 # <a name="azure-database-for-mariadb-server-firewall-rules"></a>Firewall regels van Azure Database for MariaDB server
 Firewalls verhinderen alle toegang tot uw database server totdat u opgeeft welke computers zijn gemachtigd. De firewall verleent toegang tot de server op basis van het oorspronkelijke IP-adres van elke aanvraag.
@@ -61,7 +61,7 @@ Houd rekening met de volgende punten wanneer toegang tot de Microsoft Azure data
 
    * Vraag in plaats daarvan statische IP-adressen voor uw clientcomputers en voeg de IP-adressen als firewallregels toe.
 
-* **Het IP-adres van de server lijkt openbaar te zijn:** Verbindingen met de Azure Database for MariaDB-server worden doorgestuurd via een openbaar toegankelijke Azure-gateway. Het daad werkelijke IP-adres van de server wordt echter beschermd door de firewall. Ga naar het artikel over de [connectiviteits architectuur](concepts-connectivity-architecture.md)voor meer informatie. 
+* **Het IP-adres van de server lijkt openbaar te zijn:** Verbindingen met de Azure Database for MariaDB-server worden doorgestuurd via een openbaar toegankelijke Azure-gateway. Het daadwerkelijke IP-adres van de server wordt echter beschermd door de firewall. Raadpleeg het artikel [over de connectiviteitsarchitectuur](concepts-connectivity-architecture.md) voor meer informatie. 
 
 ## <a name="next-steps"></a>Volgende stappen
 - [Azure Database for MariaDB firewall regels maken en beheren met behulp van de Azure Portal](./howto-manage-firewall-portal.md)

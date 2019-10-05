@@ -1,22 +1,22 @@
 ---
-title: 'Zelfstudie: Uw ASP.NET Core-app implementeren in Azure Service Fabric met behulp van Azure DevOps Projects'
+title: 'Zelfstudie: Uw ASP.NET Core-app implementeren in azure Service Fabric met behulp van Azure DevOps Projects'
 description: Azure DevOps Projects zorgt ervoor dat u eenvoudig aan de slag kunt met Azure. Met Azure DevOps Projects kunt u in slechts enkele stappen een ASP.NET Core-app implementeren naar Azure Service Fabric.
 ms.author: mlearned
-ms.manager: douge
+ms.manager: gwallace
 ms.prod: devops
 ms.technology: devops-cicd
 ms.topic: tutorial
 ms.date: 07/09/2018
 author: mlearned
 monikerRange: vsts
-ms.openlocfilehash: 8ba217cb9ce849e57b15d3e6cc73529c78bf340e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5f14164da5cd89cc7d0578e6b64c39d227734d75
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60554904"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71969481"
 ---
-# <a name="tutorial-deploy-your-aspnet-core-app-to-azure-service-fabric-by-using-azure-devops-projects"></a>Zelfstudie: Uw ASP.NET Core-app implementeren in Azure Service Fabric met behulp van Azure DevOps Projects
+# <a name="tutorial-deploy-your-aspnet-core-app-to-azure-service-fabric-by-using-azure-devops-projects"></a>Zelfstudie: Uw ASP.NET Core-app implementeren in azure Service Fabric met behulp van Azure DevOps Projects
 
 Azure DevOps Projects biedt een vereenvoudigde ervaring waar u uw bestaande code en Git-opslagplaats gebruikt of een voorbeeldtoepassing kiest voor het maken van een CI- (Continue integratie) en CD-pijplijn (Continue levering) naar Azure. 
 
@@ -79,7 +79,7 @@ In DevOps Projects wordt een CI/CD-pijplijn gemaakt in Azure Pipelines. U kunt e
 
 In DevOps Projects wordt automatisch een CI/CD-pijplijn geconfigureerd in Azure Pipelines. U kunt de pijplijn verkennen en aanpassen. Ga als volgt te werk om vertrouwd te raken met de pijplijn:
 
-1. Ga naar het dashboard DevOps-Project.
+1. Ga naar het DevOps project-dash board.
 
 1. Selecteer boven in het DevOps Projects-dashboard de optie **Build-pijplijnen**.  
     Op een tabblad in de browser wordt de build-pijplijn voor het nieuwe project weergegeven.

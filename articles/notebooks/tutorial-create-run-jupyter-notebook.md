@@ -4,21 +4,20 @@ description: Hoe u een run van een Jupyter-notebook in Azure-notitieblokken waar
 services: app-service
 documentationcenter: ''
 author: kraigb
-manager: douge
+manager: barbkess
 ms.assetid: 65bbb5fe-9939-4e8e-8f5b-c197d4be142a
 ms.service: azure-notebooks
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/11/2019
 ms.author: kraigb
-ms.openlocfilehash: 09d4038e705fb3bc4ff2c82daf5dc4c07f346f94
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.openlocfilehash: 827338c299b19d04245d7114a99d946d0332c82f
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "66751753"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71973045"
 ---
 # <a name="tutorial-create-and-run-a-jupyter-notebook-with-python"></a>Zelfstudie: maken en uitvoeren van een Jupyter-notebook met Python
 
@@ -40,7 +39,7 @@ De voltooide notebook kunt u vinden op [GitHub - voorbeelden voor Azure-notitieb
 
 1. In de **nieuw Project maken** pop-upvenster dat wordt weergegeven, invoeren of stel de volgende details en selecteer vervolgens **maken**:
 
-    - **Naam van het project**: Voorbeeld van de lineaire regressie - Cricket lijken
+    - **Project naam**: Voor beeld van een lineaire regressie-cricket Chirps
     - **Project-ID**: lineaire regressie-voorbeeld
     - **Openbare project**: (uitgeschakeld)
     - **Maken van een README.md**: (uitgeschakeld)
@@ -49,7 +48,7 @@ De voltooide notebook kunt u vinden op [GitHub - voorbeelden voor Azure-notitieb
 
 ## <a name="create-the-data-file"></a>Het gegevensbestand maken
 
-Het lineaire regressiemodel dat u in het notitieblok maakt tekent u gegevens uit een bestand in uw project met de naam *cricket_chirps.csv*. U kunt dit bestand maken door te kopiëren vanuit [GitHub - voorbeelden voor Azure-notitieblokken](https://github.com/Microsoft/AzureNotebooks/tree/master/Samples/Linear%20Regression%20-%20Cricket%20Chirps), of door de gegevens rechtstreeks uit te voeren. De volgende secties worden beide methoden.
+Het lineaire regressiemodel dat u in het notitieblok maakt tekent u gegevens uit een bestand in uw project met de naam *cricket_chirps.csv*. U kunt dit bestand maken door het te kopiëren van [github-Azure notebooks-voor beelden](https://github.com/Microsoft/AzureNotebooks/tree/master/Samples/Linear%20Regression%20-%20Cricket%20Chirps)of door de gegevens rechtstreeks in te voeren. De volgende secties worden beide methoden.
 
 ### <a name="upload-the-data-file"></a>Het bestand uploaden
 
@@ -128,7 +127,7 @@ Met het gereed gegevensbestand en de project-omgeving is ingesteld, kunt u nu ma
 1. Omdat u hebt een *requirements.txt* bestand in de omgevingsinstellingen voor ziet u het bericht, 'wachten op de container om te voltooien wordt voorbereid." U kunt selecteren **OK** om te sluiten van het bericht en doorgaan met werken in het notitieblok; u cellen met een code echter niet uitvoeren totdat de omgeving volledig is ingesteld.
 1. De notebook wordt geopend in de Jupyter-interface met een één lege codecel als standaardwaarde.
 
-    [![Weergave van een nieuwe notebook in Azure-notitieblokken](media/tutorial/tutorial-new-notebook.png)](media/tutorial/tutorial-new-notebook.png#lightbox)
+    [![Initial weer geven van een nieuw notitie blok in Azure Notebooks](media/tutorial/tutorial-new-notebook.png)](media/tutorial/tutorial-new-notebook.png#lightbox)
 
 ## <a name="tour-the-notebook-interface"></a>Maakt een rondleiding door de notebook-interface
 
@@ -144,7 +143,7 @@ Aan de bovenkant van het venster ziet u de volgende items:
 (F) geeft aan of de notebook vertrouwd wordt (de standaardwaarde is **niet-vertrouwd**).
 (G) de kernel gebruikt voor het uitvoeren van het notitieblok, samen met een indicator voor netwerkactiviteit.
 
-[![Primaire gebruikersinterface gebieden van de Jupyter-interface](media/tutorial/tutorial-notebook-ui.png)](media/tutorial/tutorial-notebook-ui.png#lightbox)
+[![Primary UI-gebieden van de Jupyter-interface](media/tutorial/tutorial-notebook-ui.png)](media/tutorial/tutorial-notebook-ui.png#lightbox)
 
 Jupyter biedt een ingebouwde rondleiding door de primaire UI-elementen. Selecteer eerst de rondleiding door de **Help** > **rondleiding door de Interface van de gebruiker** opdracht en te klikken in het pop-upvensters.
 
@@ -411,13 +410,13 @@ Wanneer u klaar bent met een laptop, gebruikt u de **bestand** > **sluiten en st
 
 ## <a name="debug-notebooks-using-visual-studio-code"></a>Fouten opsporen in notitieblokken met behulp van Visual Studio Code
 
-Als de cellen met code in uw laptop niet gedragen zich zoals verwacht, kunt u code bugs of andere defecten mogelijk. Echter, anders dan met behulp van `print` instructies toe aan de waarden van variabelen, weer een typische Jupyter-omgeving niet alle foutopsporing opslagruimten bieden.
+Als de cellen met code in uw laptop niet gedragen zich zoals verwacht, kunt u code bugs of andere defecten mogelijk. Met andere dan `print`-instructies om de waarde van variabelen weer te geven, biedt een typische Jupyter-omgeving echter geen voorzieningen voor fout opsporing.
 
-Gelukkig kunt u downloaden van het notitieblok *.ipynb* en het bestand vervolgens opent u het in Visual Studio Code met de Python-extensie. De extensie een laptop wordt als één codebestand, behoud van uw Markdown-cellen in opmerkingen rechtstreeks worden geïmporteerd. Nadat u de notebook hebt geïmporteerd, kunt u het foutopsporingsprogramma van Visual Studio Code aan uw code kunt doorlopen, onderbrekingspunten instellen, Controleer de status, enzovoort. Na het aanbrengen van correcties in uw code, die u vervolgens exporteren de *.ipynb* vanuit Visual Studio Code-bestand en upload het opnieuw bij de Azure-notitieblokken.
+Gelukkig kunt u het *. ipynb* -bestand van de notebook downloaden en vervolgens openen in Visual Studio code met behulp van de python-extensie. Met de extensie wordt een notitie blok rechtstreeks geïmporteerd als één code bestand, zodat de geprijsde cellen in opmerkingen worden bewaard. Zodra u het notitie blok hebt geïmporteerd, kunt u het Visual Studio code-fout opsporingsprogramma gebruiken om uw code te door lopen, onderbrekings punten in te stellen, de status te controleren, enzovoort. Nadat u de code hebt gecorrigeerd, exporteert u het *. ipynb* -bestand vanuit Visual Studio code en uploadt u het terug naar Azure notebooks.
 
-Zie voor meer informatie, [fouten opsporen in een Jupyter-notebook](https://code.visualstudio.com/docs/python/jupyter-support#debug-a-jupyter-notebook) in de documentatie van Visual Studio Code.
+Zie [debug a Jupyter notebook](https://code.visualstudio.com/docs/python/jupyter-support#debug-a-jupyter-notebook) (Engelstalig) in de documentatie van Visual Studio code voor meer informatie.
 
-Zie ook [Visual Studio Code - ondersteuning voor Jupyter](https://code.visualstudio.com/docs/python/jupyter-support) voor aanvullende functies van Visual Studio Code voor de Jupyter-notebooks.
+Zie ook [Visual Studio code-Jupyter-ondersteuning](https://code.visualstudio.com/docs/python/jupyter-support) voor aanvullende functies van Visual Studio code for Jupyter-notebooks.
 
 ## <a name="next-steps"></a>Volgende stappen
 

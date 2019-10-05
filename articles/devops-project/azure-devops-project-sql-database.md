@@ -1,22 +1,22 @@
 ---
-title: 'Zelfstudie: Uw ASP.NET-app en Azure SQL Database-code implementeren met behulp van Azure DevOps Projects'
+title: 'Zelfstudie: Implementeer uw ASP.NET-app en Azure SQL Database code met behulp van Azure DevOps Projects'
 description: Met DevOps Projects kunt u eenvoudig aan de slag met Azure. Met DevOps Projects kunt u in slechts enkele stappen een ASP.NET-app en Azure SQL Database-code implementeren.
 ms.author: mlearned
-ms.manager: douge
+ms.manager: gwallace
 ms.prod: devops
 ms.technology: devops-cicd
 ms.topic: tutorial
 ms.date: 07/09/2018
 author: mlearned
 monikerRange: vsts
-ms.openlocfilehash: 0d05a2f3de92791572f0a5e6313777b5388af3df
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 560b16a40d73d07df6c9f446c7196cd930e2274e
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60554905"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71971490"
 ---
-# <a name="tutorial-deploy-your-aspnet-app-and-azure-sql-database-code-by-using-azure-devops-projects"></a>Zelfstudie: Uw ASP.NET-app en Azure SQL Database-code implementeren met behulp van Azure DevOps Projects
+# <a name="tutorial-deploy-your-aspnet-app-and-azure-sql-database-code-by-using-azure-devops-projects"></a>Zelfstudie: Implementeer uw ASP.NET-app en Azure SQL Database code met behulp van Azure DevOps Projects
 
 Azure DevOps Projects biedt een vereenvoudigde ervaring waar u uw bestaande code en Git-opslagplaats gebruikt of een voorbeeldtoepassing kiest voor het maken van een CI- (Continue integratie) en CD-pijplijn (Continue levering) naar Azure. 
 
@@ -60,7 +60,7 @@ In DevOps Projects wordt een CI/CD-pijplijn gemaakt in Azure Pipelines. U kunt e
 1. Selecteer **Een database toevoegen** en selecteer **Volgende**.  
     Het toepassingsframework dat u in een vorige stap hebt gekozen, bepaalt welk type implementatiedoel hier beschikbaar is voor de Azure-service. 
     
-1. Selecteer **Next**.
+1. Selecteer **Volgende**.
 
 ## <a name="configure-azure-devops-and-an-azure-subscription"></a>Azure DevOps en een Azure-abonnement configureren
 
@@ -182,7 +182,7 @@ U hebt de juiste machtigingen nodig om verbinding te kunnen maken met de Azure S
 
     U kunt nu desgewenst gebruikmaken van clienthulpprogramma's zoals SQL Server Management Studio of Visual Studio om verbinding te maken met SQL Server en de Azure SQL-database. Gebruik de eigenschap **Servernaam** om verbinding te maken.
 
-    Als u de gebruikersnaam van de database niet hebt gewijzigd tijdens de eerste configuratie van het project in DevOps Projects, is uw gebruikersnaam het lokale gedeelte van uw e-mailadres. Als uw e-mailadres is bijvoorbeeld *JANJANSEN\@microsoft.com*, de gebruikersnaam is *JANJANSEN*.
+    Als u de gebruikersnaam van de database niet hebt gewijzigd tijdens de eerste configuratie van het project in DevOps Projects, is uw gebruikersnaam het lokale gedeelte van uw e-mailadres. Als uw e-mail adres bijvoorbeeld *johndoe\@microsoft.com*is, is de gebruikers naam *JANJANSEN*.
 
    > [!NOTE]
    > Als u uw wachtwoord voor de SQL-aanmelding wijzigt, moet u het wachtwoord in de variabele van de release-pijplijn wijzigen zoals staat beschreven in de sectie De CD-pijplijn onderzoeken.

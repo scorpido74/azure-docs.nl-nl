@@ -4,21 +4,20 @@ description: Snel Meld u aan bij Azure-notitieblokken en stel een gebruikers-ID,
 services: app-service
 documentationcenter: ''
 author: kraigb
-manager: douge
+manager: barbkess
 ms.assetid: fb8c94b1-6d0a-4b77-8d14-ae6efcdd99f4
 ms.service: azure-notebooks
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
 ms.date: 04/15/2019
 ms.author: kraigb
-ms.openlocfilehash: a9ba6fcc0c8b74664f5c4b32e54530fb4aaa2881
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.openlocfilehash: 0c12c8673ff61dcca62c72addcbf0d9b33c2c252
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "66751720"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71973066"
 ---
 # <a name="quickstart-sign-in-and-set-a-user-id"></a>Quickstart: Aanmelden en een gebruikers-id instellen
 
@@ -35,7 +34,7 @@ Hoewel u altijd Azure-notitieblokken weergeven kunt zonder dat u aangemeld, moet
     ![Nieuwe opdracht voor Microsoft-account maken in een overbodige aanmeldingsprompt](media/accounts/create-new-microsoft-account.png)
 
     > [!Tip]
-    > Als u probeert een nieuw account maken met een e-mailadres dat al een account dat is gekoppeld, ziet u mogelijk het bericht 'kan hier aanmelden met een werk of school-e-mailadres. Gebruik een persoonlijke e-mailadres, zoals Gmail of Yahoo!, of een nieuwe Outlook-e-mail ontvangt." In dat geval probeert zich aanmeldt met het e-mailadres voor werk zonder dat er een nieuw account gemaakt.
+    > Als u probeert een nieuw account te maken met een e-mail adres waaraan al een account is gekoppeld, wordt het volgende bericht weer gegeven: ' u kunt u niet aanmelden met een werk-of school-e-mail adres. Gebruik een persoonlijk e-mail adres, zoals Gmail of Yahoo!, of ontvang een nieuwe Outlook-e-mail. Probeer in dat geval u aan te melden met het werk-e-mail adres zonder een nieuw account te maken.
 
 1. Voer uw wachtwoord wanneer hierom wordt gevraagd.
 
@@ -56,7 +55,7 @@ Hoewel u altijd Azure-notitieblokken weergeven kunt zonder dat u aangemeld, moet
     ![Weergave van de profielpagina van een Azure-laptops](media/accounts/profile-page-new.png)
 
 > [!NOTE]
-> Als u het bericht, "Gebruikers-ID is al in gebruik is," Probeer een andere id op. Gebruikers-id's uniek zijn voor alle Azure-notitieblokken-accounts en Azure-notitieblokken reserveert ook bepaalde gebruikers-id's, zoals Microsoft merknamen.
+> Als het bericht ' gebruikers-ID is al in gebruik ' wordt weer gegeven, kunt u een andere ID gebruiken. Gebruikers-Id's zijn uniek voor alle Azure Notebooks accounts, en Azure Notebooks reserveert ook bepaalde gebruikers-Id's, zoals micro soft-merk namen.
 
 ## <a name="sign-out"></a>Afmelden
 
@@ -67,4 +66,4 @@ Op Afmelden, selecteert u uw gebruikersnaam in de rechterbovenhoek van de pagina
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Snelstart: Maken en delen van een laptop](quickstart-create-share-jupyter-notebook.md)
+> [Snelstart: Een notitie blok maken en delen @ no__t-0

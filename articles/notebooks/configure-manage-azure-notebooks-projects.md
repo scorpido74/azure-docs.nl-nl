@@ -4,40 +4,39 @@ description: Over het beheren van de metagegevens van het project, project-besta
 services: app-service
 documentationcenter: ''
 author: kraigb
-manager: douge
+manager: barbkess
 ms.assetid: 35dd6ff1-a14a-4a2e-b173-6d8467de3e89
 ms.service: azure-notebooks
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 05/13/2019
 ms.author: kraigb
-ms.openlocfilehash: 0440e498451ee141fa03851b78418caf911d0e32
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fca98594be08f04b2f266f3aa574837ac024ecf4
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65596735"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71973132"
 ---
 # <a name="manage-and-configure-projects"></a>Projecten beheren en configureren
 
 Een project in notitieblokken van Azure is in feite een configuratie van de onderliggende virtuele Linux-machine waarin Jupyter-notebooks uitgevoerd, samen met een map en de beschrijvende metagegevens. Het projectdashboard in notitieblokken van Azure kunt u bestanden beheren en configureren van het project kenmerken:
 
-- De rekenlaag waarop het project wordt uitgevoerd, dit kan de gratis laag of een virtuele machine van Azure.
-- Project-metagegevens, waaronder een naam, beschrijving, een id die wordt gebruikt bij het delen van het project, en of het project is openbaar of privé.
-- De notebook van het project, gegevens en andere bestanden, die u, zoals een ander bestandssysteem beheert.
-- De omgeving van een project, die u via opstartscripts of rechtstreeks via de terminal beheert.
-- Logboeken, die u via de terminal openen.
+- De compute-laag waarop het project wordt uitgevoerd. Dit kan de gratis laag of een virtuele machine van Azure zijn.
+- Meta gegevens van het project, met een naam, beschrijving, een id die wordt gebruikt bij het delen van het project en of het project openbaar of privé is.
+- De notebook-, gegevens-en andere bestanden van het project, die u als elk ander bestands systeem beheert.
+- De omgeving van een project, die u via opstart scripts of rechtstreeks via de Terminal beheert.
+- Logboeken, die u via de Terminal kunt openen.
 
 > [!Note]
-> De beheer- en configuratie van functies die hier worden beschreven zijn alleen beschikbaar voor de eigenaar van het project die het project in eerste instantie worden gemaakt. U kunt echter het project klonen in uw eigen account, in welk geval u de eigenaar en het project naar wens kunt configureren.
+> De functies voor beheer en configuratie die hier worden beschreven, zijn alleen beschikbaar voor de project eigenaar die in eerste instantie het project heeft gemaakt. U kunt het project echter klonen in uw eigen account, in welk geval u de eigenaar wordt en het project naar wens kunt configureren.
 
 Azure-notitieblokken wordt de onderliggende virtuele machine gestart wanneer u een laptop of een ander bestand uitvoeren. De server automatisch bestanden worden opgeslagen en worden afgesloten na 60 minuten van inactiviteit. U kunt ook de server stoppen op elk gewenst moment met de **afsluiten** opdracht (sneltoets: h).
 
-## <a name="compute-tier"></a>Rekenlaag
+## <a name="compute-tier"></a>Compute-laag
 
-Standaard projecten uitvoeren op de **gratis Compute** laag, wat beperkt is tot 4 GB geheugen en 1 GB aan gegevens om misbruik te voorkomen. U kunt deze beperkingen te omzeilen en compute-kracht verhogen met behulp van een andere virtuele machine die u in een Azure-abonnement hebt ingericht. Zie voor meer informatie, [over het gebruik van virtuele Machines voor Datatechnologie](use-data-science-virtual-machine.md).
+Standaard worden projecten uitgevoerd op de **gratis Compute** -laag. Dit is beperkt tot 4 GB geheugen en 1 GB aan gegevens om misbruik te voor komen. U kunt deze beperkingen overs Laan en de reken kracht verhogen met behulp van een andere virtuele machine die u in een Azure-abonnement hebt ingericht. Zie [How to use data Science virtual machines](use-data-science-virtual-machine.md)voor meer informatie.
 
 ## <a name="edit-project-metadata"></a>Project metagegevens bewerken
 
@@ -46,7 +45,7 @@ Selecteer in het projectdashboard **projectinstellingen**en selecteer vervolgens
 | Instelling | Description |
 | --- | --- |
 | Projectnaam | Een beschrijvende naam voor uw project die gebruikmaakt van Azure-notitieblokken weer te geven. Bijvoorbeeld: 'Hello World in Python'. |
-| Project-id | Een aangepaste id die deel van de URL die u gebruikt uitmaken voor het delen van een project. Deze ID kunt alleen letters, cijfers en afbreekstreepjes bevatten, is beperkt tot 30 tekens bevatten en mag niet een [gereserveerd project-ID](create-clone-jupyter-notebooks.md#reserved-project-ids). Als u niet zeker weet wat u wilt gebruiken, wordt een algemene conventie is het gebruik van een kleine versie van de projectnaam van uw waar spaties in afbreekstreepjes bevatten, zoals 'Mijn-notebook-project' (afgekapt indien nodig aanpassen aan de maximale lengte) zijn ingeschakeld. |
+| Project-id | Een aangepaste id die deel van de URL die u gebruikt uitmaken voor het delen van een project. Deze ID mag alleen letters, cijfers en afbreek streepjes bevatten, is beperkt tot 30 tekens en kan geen [gereserveerde project-id](create-clone-jupyter-notebooks.md#reserved-project-ids)zijn. Als u niet zeker weet wat u wilt gebruiken, wordt een algemene conventie is het gebruik van een kleine versie van de projectnaam van uw waar spaties in afbreekstreepjes bevatten, zoals 'Mijn-notebook-project' (afgekapt indien nodig aanpassen aan de maximale lengte) zijn ingeschakeld. |
 | Openbare project | Als is ingesteld, kan iedereen met de koppeling voor toegang tot het project. Wanneer u een privé-project maakt, moet u deze optie uitschakelen. |
 | Klonen verbergen | Als is ingesteld, andere gebruikers kunnen een lijst met klonen die zijn gemaakt voor dit project niet zien. Klonen verbergen is handig voor projecten die worden gedeeld met veel mensen die geen deel uitmaken van dezelfde organisatie, zoals bij het gebruik van een notitieblok voor het geven van een klasse. |
 
@@ -71,7 +70,7 @@ De **+ nieuw** opdracht (sneltoets: n) maakt u nieuwe bestanden of mappen. Wanne
 
 ### <a name="upload-files"></a>Bestanden uploaden
 
-De **uploaden** opdracht biedt twee opties voor het importeren van gegevens vanuit andere locaties: **Via URL** en **van Computer**. Zie voor meer informatie, [werken met gegevensbestanden in Azure Notebook projecten](work-with-project-data-files.md).
+De **Upload** opdracht biedt twee opties voor het importeren van gegevens van andere locaties: **Van URL** en **van computer**. Zie voor meer informatie, [werken met gegevensbestanden in Azure Notebook projecten](work-with-project-data-files.md).
 
 ### <a name="select-file-specific-commands"></a>Selecteer bestand-specifieke opdrachten
 
@@ -132,11 +131,11 @@ Als u wilt een stap toevoegen, selecteert u eerst **+ toevoegen**, selecteert u 
 
 De informatie die u vervolgens projecteren, is afhankelijk van het type bewerking dat u hebt gekozen:
 
-- **Requirements.txt**: Selecteer in de tweede vervolgkeuzelijst met een *requirements.txt* bestand dat zich al in het project. Selecteer vervolgens een Python-versie van de derde vervolgkeuzelijst die wordt weergegeven. Met behulp van een *requirements.txt* -bestand, Azure-notitieblokken uitvoeringen `pip install -r` met de *requirements.txt* bestand bij het starten van een notebook-server. U hoeft niet te pakketten uit binnen de notebook zelf expliciet te installeren.
+- **Requirements. txt**: Selecteer in de tweede vervolg keuzelijst het bestand *Requirements. txt* dat zich al in het project bevermeldt. Selecteer vervolgens een Python-versie van de derde vervolgkeuzelijst die wordt weergegeven. Met behulp van een *requirements.txt* -bestand, Azure-notitieblokken uitvoeringen `pip install -r` met de *requirements.txt* bestand bij het starten van een notebook-server. U hoeft niet te pakketten uit binnen de notebook zelf expliciet te installeren.
 
-- **Shell-script**: Selecteer in de tweede vervolgkeuzelijst met een bash-shell-script in het project (meestal een bestand met de *.sh* extensie) die alle opdrachten die u uitvoeren wilt voor het initialiseren van de omgeving bevat.
+- **Shell script**: Selecteer in de tweede vervolg keuzelijst een bash-shell script in het project (meestal een bestand met de extensie *. sh* ) dat opdrachten bevat die u wilt uitvoeren om de omgeving te initialiseren.
 
-- **Environment.yml**: Selecteer in de tweede vervolgkeuzelijst met een *environments.yml* -bestand voor Python-projecten met behulp van een conda-omgeving.
+- **Environment. yml**: Selecteer in de tweede vervolg keuzelijst een *omgeving. yml* -bestand voor python-projecten met een Conda-omgeving.
 
 Wanneer u de stappen toegevoegd hebt, selecteert u **opslaan**.
 
@@ -191,5 +190,5 @@ U kunt ook de opdracht gebruiken vanaf een lege codecel in een Python-notebook:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Procedure: Werken met gegevens projectbestanden](work-with-project-data-files.md)
+- [Procedure: Werken met Project-gegevens bestanden @ no__t-0
 - [Toegang tot cloud-gegevens in een notitieblok](access-data-resources-jupyter-notebooks.md)

@@ -4,14 +4,14 @@ description: Geeft een lijst van de Azure-resource typen die meer dan 800 exempl
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 7/30/2019
+ms.date: 10/4/2019
 ms.author: tomfitz
-ms.openlocfilehash: eec448dcbf1c550b6b0a0ee0f17505fd6ddd3c74
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 6677290999049dead40f39e9a840735810c7c763
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70194737"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71973308"
 ---
 # <a name="resources-not-limited-to-800-instances-per-resource-group"></a>Resources die niet beperkt zijn tot 800 exemplaren per resource groep
 
@@ -40,6 +40,10 @@ Voor sommige resource typen moet u contact opnemen met ondersteuning om de limie
 * afbeeldingen
 * momentopnamen
 * Informatie
+
+## <a name="microsoftcontainerinstance"></a>Microsoft.ContainerInstance
+
+* containerGroups
 
 ## <a name="microsoftcontainerregistry"></a>Microsoft.ContainerRegistry
 
@@ -81,6 +85,14 @@ Voor sommige resource typen moet u contact opnemen met ondersteuning om de limie
 
 * integrationAccounts
 * stroom
+
+## <a name="microsoftnetapp"></a>Microsoft.NetApp
+
+* netAppAccounts
+* netAppAccounts/capacityPools
+* netAppAccounts/capacityPools/volumes
+* netAppAccounts/capacityPools/volumes/mountTargets
+* netAppAccounts/capacityPools/volumes/moment opnamen
 
 ## <a name="microsoftnetwork"></a>Microsoft.Network
 
@@ -132,6 +144,15 @@ Voor sommige resource typen moet u contact opnemen met ondersteuning om de limie
 ## <a name="microsoftscheduler"></a>Microsoft.Scheduler
 
 * jobcollections
+
+## <a name="microsoftservicefabricmesh"></a>Microsoft.ServiceFabricMesh
+
+* toepassingen
+* containerGroups
+* gateways
+* netwerken
+* geheimen
+* volumes
 
 ## <a name="microsoftstorage"></a>Microsoft.Storage
 

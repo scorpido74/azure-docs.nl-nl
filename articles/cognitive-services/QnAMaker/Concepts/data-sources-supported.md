@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 09/25/2019
 ms.author: diberry
-ms.openlocfilehash: 1a9f3eb0ea79a0cd79850e721d081b00dc582a31
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: 4bd1386c68f3173c19b282c1e01ecff545c4bcd7
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71695280"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71972050"
 ---
 # <a name="data-sources-for-qna-maker-content"></a>Gegevensbronnen voor QnA Maker-inhoud
 
@@ -34,9 +34,9 @@ De onderstaande tabel bevat een overzicht van de typen inhoud en bestandsindelin
 |\* Excel|Gestructureerd QnA-bestand<br> (inclusief RTF-, HTML-ondersteuning)|[Voorbeeld QnA FAQ.xls](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/QnA%20Maker%20Sample%20FAQ.xlsx)|
 |\* TXT/TSV|Gestructureerd QnA-bestand|[Voorbeeld chit-chat.tsv](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/Scenario_Responses_Friendly.tsv)|
 
-**TSV-en xls-bestanden**, van geëxporteerde kennis grondslagen, kunnen alleen worden gebruikt door het importeren van de bestanden van de pagina **instellingen** in de QnA Maker Portal. Ze kunnen niet worden gebruikt als gegevens bronnen tijdens het maken van een Knowledge Base of van de functie bestand of URL toevoegen op de pagina **instellingen** . 
+### <a name="import-and-export-knowledge-base"></a>De Knowledge Base importeren en exporteren
 
-Meer informatie over het gebruik van [documenten met meerdere schakelingen](). 
+**TSV-en xls-bestanden**, van geëxporteerde kennis grondslagen, kunnen alleen worden gebruikt door het importeren van de bestanden van de pagina **instellingen** in de QnA Maker Portal. Ze kunnen niet worden gebruikt als gegevens bronnen tijdens het maken van een Knowledge Base of vanuit het onderdeel **bestand toevoegen** of **+ URL** toevoegen op de pagina **instellingen** . 
 
 ## <a name="data-source-locations"></a>Gegevensbronnen
 
@@ -184,7 +184,7 @@ Als u geen bestaande inhoud voor het vullen van de knowledge base, kunt u vragen
 
 ## <a name="formatting-considerations"></a>Overwegingen voor opmaak
 
-Nadat u een bestand of URL hebt geïmporteerd, worden QnA Maker geconverteerd en wordt de inhoud opgeslagen in de [indeling voor prijs verlaging](https://en.wikipedia.org/wiki/Markdown). Het conversie proces voegt nieuwe regels toe aan de tekst, zoals `\n\n`. Een kennis van de prijs verlaging helpt u bij het begrijpen van de geconverteerde inhoud en het beheren van uw Knowledge Base-inhoud. 
+Nadat u een bestand of URL hebt geïmporteerd, worden QnA Maker geconverteerd en wordt de inhoud opgeslagen in de [indeling voor prijs verlaging](https://en.wikipedia.org/wiki/Markdown). Het conversie proces voegt nieuwe regels in de tekst toe, zoals `\n\n`. Een kennis van de prijs verlaging helpt u bij het begrijpen van de geconverteerde inhoud en het beheren van uw Knowledge Base-inhoud. 
 
 Als u inhoud rechtstreeks in uw Knowledge Base toevoegt of bewerkt, gebruikt u de indeling voor **prijs verlaging** om inhoud met opmaak te maken of de inhoud van de prijs verlaging te wijzigen die al in het antwoord voor komt. QnA Maker ondersteunt een groot deel van de prijs verlaging voor uw inhoud. De client toepassing, zoals een chat-bot, ondersteunt echter mogelijk niet dezelfde set prijs notaties. Het is belang rijk om de weer gave van antwoorden van de client toepassing te testen. 
 
@@ -193,12 +193,12 @@ Hieronder ziet u de lijst met indelingen voor prijs opgaven die u in QnA Maker k
 |Doel|Indeling|Voor beeld van prijs verlaging|Rendering<br>zoals weer gegeven in de chat-bot|
 |--|--|--|--|
 Een nieuwe regel tussen twee zinnen.|`\n\n`|`How can I create a bot with \n\n QnA Maker?`|![nieuwe lijn tussen twee zinnen opmaken](../media/qnamaker-concepts-datasources/format-newline.png)|
-|Headers van H1 tot H6, het aantal `#` geeft aan welke koptekst u wilt. 1 `#` is de H1.|`\n# text \n## text \n### text \n####text \n#####text` |`## Creating a bot \n ...text.... \n### Important news\n ...text... \n### Related Information\n ....text...`<br><br>`\n# my h1 \n## my h2\n### my h3 \n#### my h4 \n##### my h5`|![indeling met kopteksten voor korting](../media/qnamaker-concepts-datasources/format-headers.png)<br>![notatie met de koppen H1 tot en met H5](../media/qnamaker-concepts-datasources/format-h1-h5.png)|
+|Headers van H1 tot H6, het aantal @no__t 0 geeft aan welke header er moet zijn. 1 `#` is de H1.|`\n# text \n## text \n### text \n####text \n#####text` |`## Creating a bot \n ...text.... \n### Important news\n ...text... \n### Related Information\n ....text...`<br><br>`\n# my h1 \n## my h2\n### my h3 \n#### my h4 \n##### my h5`|![indeling met kopteksten voor korting](../media/qnamaker-concepts-datasources/format-headers.png)<br>![notatie met de koppen H1 tot en met H5](../media/qnamaker-concepts-datasources/format-h1-h5.png)|
 |Cursief |`*text*`|`How do I create a bot with *QnA Maker*?`|![opmaken met cursief](../media/qnamaker-concepts-datasources/format-italics.png)|
 |Teken reeks (vet)|`**text**`|`How do I create a bot with **QnA Maker**?`|![indeling met sterke markering voor vet](../media/qnamaker-concepts-datasources/format-strong.png)|
 |URL voor koppeling|`[text](https://www.my.com)`|`How do I create a bot with [QnA Maker](https://www.qnamaker.ai)?`|![indeling voor URL (Hyper Link)](../media/qnamaker-concepts-datasources/format-url.png)|
 |\* URL voor de open bare afbeelding|`![text](https://www.my.com/image.png)`|`How can I create a bot with ![QnAMaker](https://review.docs.microsoft.com/en-us/azure/cognitive-services/qnamaker/media/qnamaker-how-to-key-management/qnamaker-resource-list.png)`|![indeling voor URL van open bare afbeelding ](../media/qnamaker-concepts-datasources/format-image-url.png)|
-|Doorhalen|`~~text~~`|`some ~~questoins~~ questions need to be asked`|![opmaak voor door halen](../media/qnamaker-concepts-datasources/format-strikethrough.png)|
+|Door|`~~text~~`|`some ~~questoins~~ questions need to be asked`|![opmaak voor door halen](../media/qnamaker-concepts-datasources/format-strikethrough.png)|
 |Vet en cursief|`***text***`|`How can I create a ***QnA Maker*** bot?`|![opmaak voor vet en cursief](../media/qnamaker-concepts-datasources/format-bold-italics.png)|
 |Vetgedrukte URL voor koppeling|`[**text**](https://www.my.com)`|`How do I create a bot with [**QnA Maker**](https://www.qnamaker.ai)?`|![notatie voor vetgedrukte URL](../media/qnamaker-concepts-datasources/format-bold-url.png)|
 |Cursieve URL voor koppeling|`[*text*](https://www.my.com)`|`How do I create a bot with [*QnA Maker*](https://www.qnamaker.ai)?`|![notatie voor cursieve URL](../media/qnamaker-concepts-datasources/format-url-italics.png)|
@@ -213,10 +213,10 @@ Als u inhoud wilt toevoegen met behulp van de Knowledge Base-Api's update/vervan
 
 | HTML behouden  | Vertegenwoordiging in de API-aanvraag  | Representatie in KB |
 |-----------|---------|-------------------------|
-| Ja | \&lt; br\&gt; | &lt;uitproberen&gt; |
-| Ja | \&lt; h3\&gt; koptekst\&lt;/h3\&gt; | &lt;H3&gt;header&lt;/H3&gt; |
+| Ja | \&LT; BR @ no__t-1gt; | &lt;BR @ no__t-1 |
+| Ja | \&LT; H3 @ no__t-1gt; header @ no__t-2LT;/H3 @ no__t-3gt; | &lt;h3 @ no__t-1header @ no__t-2/H3 @ no__t-3 |
 
-CR LF (\r\n) wordt ook geconverteerd naar \n in de KB. LF (\n) wordt bewaard. Als u een escape reeks als een \t of \n wilt escapepen, kunt u back slash gebruiken, bijvoorbeeld:\\'\\\\r\\n ' en\\'\\t '
+CR LF (\r\n) wordt ook geconverteerd naar \n in de KB. LF (\n) wordt bewaard. Als u een escape reeks als een \t of \n wilt opwaarderen, kunt u back slash gebruiken, bijvoorbeeld: ' \\ @ no__t-1R @ no__t-2 @ no__t-3n ' en ' \\ @ no__t-5T '
 
 ## <a name="editing-your-knowledge-base-locally"></a>Uw kennis database lokaal bewerken
 

@@ -1,6 +1,6 @@
 ---
-title: Azure Resource Manager-groepen beheren met behulp van Azure CLI | Microsoft Docs
-description: Azure CLI gebruiken om uw Azure Resource Manager-groepen te beheren.
+title: Azure Resource Manager groepen beheren met behulp van Azure CLI | Microsoft Docs
+description: Gebruik Azure CLI voor het beheren van uw Azure Resource Manager groepen.
 services: azure-resource-manager
 documentationcenter: ''
 author: mumian
@@ -8,33 +8,33 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: jgao
-ms.openlocfilehash: c50a96b2598b89d5072a9441162d198163156c8d
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: e55755e3edcc54d0d75c937c4d18b845b0282833
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67296275"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71972735"
 ---
-# <a name="manage-azure-resource-manager-resource-groups-by-using-azure-cli"></a>Azure Resource Manager-resourcegroepen beheren met behulp van Azure CLI
+# <a name="manage-azure-resource-manager-resource-groups-by-using-azure-cli"></a>Azure Resource Manager-resource groepen beheren met behulp van Azure CLI
 
-Informatie over het gebruik van Azure CLI met [Azure Resource Manager](resource-group-overview.md) voor het beheren van uw Azure-resourcegroepen. Zie voor het beheren van Azure-resources, [Azure-resources beheren met behulp van Azure CLI](./manage-resources-cli.md).
+Meer informatie over het gebruik van Azure CLI met [Azure Resource Manager](resource-group-overview.md) voor het beheren van uw Azure-resource groepen. Zie [Azure-resources beheren met Azure cli](./manage-resources-cli.md)voor meer informatie over het beheren van Azure-resources.
 
-Andere artikelen over het beheren van resourcegroepen:
+Andere artikelen over het beheren van resource groepen:
 
-- [Azure-resourcegroepen beheren met behulp van de Azure-portal](./manage-resources-portal.md)
-- [Azure-resourcegroepen beheren met behulp van Azure PowerShell](./manage-resources-powershell.md)
+- [Azure-resource groepen beheren met behulp van de Azure Portal](./manage-resources-portal.md)
+- [Azure-resource groepen beheren met behulp van Azure PowerShell](./manage-resources-powershell.md)
 
-## <a name="what-is-a-resource-group"></a>Wat is er een resourcegroep
+## <a name="what-is-a-resource-group"></a>Wat is een resource groep?
 
-Een resourcegroep is een container met gerelateerde resources voor een Azure-oplossing. De resourcegroep kan alle resources voor de oplossing bevatten of enkel de resources die u als groep wilt beheren. U bepaalt hoe resources worden toegewezen aan resourcegroepen op basis van wat voor uw organisatie het meest zinvol is. Over het algemeen resources die aan dezelfde resourcegroep dezelfde levenscyclus delen, zodat u kunt eenvoudig implementeren, bijwerken en als een groep verwijderen toevoegen.
+Een resourcegroep is een container met gerelateerde resources voor een Azure-oplossing. De resourcegroep kan alle resources voor de oplossing bevatten of enkel de resources die u als groep wilt beheren. U bepaalt hoe resources worden toegewezen aan resourcegroepen op basis van wat voor uw organisatie het meest zinvol is. Over het algemeen voegt u resources die dezelfde levens cyclus delen, toe aan dezelfde resource groep, zodat u deze eenvoudig kunt implementeren, bijwerken en verwijderen als groep.
 
 De resourcegroep slaat metagegevens op over de resources. Dat is de reden waarom u moet aangeven waar die metagegevens moeten worden opgeslagen als u een locatie voor de resourcegroep opgeeft. In verband met nalevingsvereisten moet u er mogelijk voor zorgen dat uw gegevens worden opgeslagen in een bepaalde regio.
 
-De resourcegroep slaat metagegevens op over de resources. Wanneer u een locatie voor de resourcegroep opgeeft, bent u op te geven waar die metagegevens worden opgeslagen.
+De resourcegroep slaat metagegevens op over de resources. Wanneer u een locatie voor de resource groep opgeeft, geeft u op waar de meta gegevens worden opgeslagen.
 
-## <a name="create-resource-groups"></a>Maken van resourcegroepen
+## <a name="create-resource-groups"></a>Resource groepen maken
 
-De volgende CLI-script wordt een resourcegroep, en geeft vervolgens de resourcegroep.
+Met het volgende CLI-script maakt u een resource groep en wordt vervolgens de resource groep weer gegeven.
 
 ```azurecli-interactive
 echo "Enter the Resource Group name:" &&
@@ -44,15 +44,15 @@ read location &&
 az group create --name $resourceGroupName --location $location
 ```
 
-## <a name="list-resource-groups"></a>Lijst met resourcegroepen
+## <a name="list-resource-groups"></a>Resource groepen weer geven
 
-De volgende CLI-script geeft een lijst van de resourcegroepen onder uw abonnement.
+Het volgende CLI-script bevat de resource groepen onder uw abonnement.
 
 ```azurecli-interactive
 az group list
 ```
 
-Een resourcegroep ophalen:
+Een resource groep ophalen:
 
 ```azurecli-interactive
 echo "Enter the Resource Group name:" &&
@@ -60,9 +60,9 @@ read resourceGroupName &&
 az group show --name $resourceGroupName
 ```
 
-## <a name="delete-resource-groups"></a>Resourcegroepen verwijderen
+## <a name="delete-resource-groups"></a>Resource groepen verwijderen
 
-De volgende CLI-script wordt een resourcegroep verwijderd:
+Met het volgende CLI-script wordt een resource groep verwijderd:
 
 ```azurecli-interactive
 echo "Enter the Resource Group name:" &&
@@ -70,29 +70,29 @@ read resourceGroupName &&
 az group delete --name $resourceGroupName
 ```
 
-Zie voor meer informatie over hoe Azure Resource Manager orders voor het verwijderen van resources, [verwijderen voor groep van Azure Resource Manager-resource](./resource-group-delete.md).
+Zie [Azure Resource Manager resource groep verwijderen](./resource-group-delete.md)voor meer informatie over de manier waarop Azure Resource Manager het verwijderen van resources ordent.
 
-## <a name="deploy-resources-to-an-existing-resource-group"></a>Resources implementeren op een bestaande resourcegroep
+## <a name="deploy-resources-to-an-existing-resource-group"></a>Resources implementeren voor een bestaande resource groep
 
-Zie [resources implementeren op een bestaande resourcegroep](./manage-resources-cli.md#deploy-resources-to-an-existing-resource-group).
+Zie [resources implementeren voor een bestaande resource groep](./manage-resources-cli.md#deploy-resources-to-an-existing-resource-group).
 
-## <a name="deploy-a-resource-group-and-resources"></a>Een resourcegroep en resources implementeren
+## <a name="deploy-a-resource-group-and-resources"></a>Een resource groep en-resources implementeren
 
-U kunt een resourcegroep maken en implementeren van resources aan de groep met behulp van Resource Manager-sjabloon. Zie voor meer informatie, [resourcegroep maken en implementeren van resources](./deploy-to-subscription.md#create-resource-group-and-deploy-resources).
+U kunt een resource groep maken en resources voor de groep implementeren met behulp van een resource manager-sjabloon. Zie [resource groep maken en resources implementeren](./deploy-to-subscription.md#create-resource-group-and-deploy-resources)voor meer informatie.
 
 ## <a name="redeploy-when-deployment-fails"></a>Opnieuw implementeren wanneer de implementatie mislukt
 
-Deze functie wordt ook wel bekend als *Rollback bij fout*. Zie voor meer informatie, [opnieuw implementeren wanneer de implementatie mislukt](./resource-group-template-deploy-cli.md#redeploy-when-deployment-fails).
+Deze functie wordt ook wel bekend als *Rollback bij fout*. Zie opnieuw [implementeren wanneer de implementatie mislukt](./rollback-on-error.md)voor meer informatie.
 
-## <a name="move-to-another-resource-group-or-subscription"></a>Verplaatsen naar een andere resourcegroep of abonnement
+## <a name="move-to-another-resource-group-or-subscription"></a>Verplaatsen naar een andere resource groep of een ander abonnement
 
-U kunt de resources in de groep verplaatsen naar een andere resourcegroep. Zie voor meer informatie, [resources verplaatsen](./manage-resources-cli.md#move-resources).
+U kunt de resources in de groep verplaatsen naar een andere resource groep. Zie [resources verplaatsen](./manage-resources-cli.md#move-resources)voor meer informatie.
 
-## <a name="lock-resource-groups"></a>LOCK-resourcegroepen
+## <a name="lock-resource-groups"></a>Resource groepen vergren delen
 
-Vergrendeling wordt voorkomen dat andere gebruikers in uw organisatie per ongeluk verwijderen of aanpassen van kritieke resources, zoals Azure-abonnement, resourcegroep of resource. 
+Vergren delen voor komt dat andere gebruikers in uw organisatie per ongeluk essentiële resources verwijderen of wijzigen, zoals een Azure-abonnement, resource groep of resource. 
 
-Het volgende script Hiermee vergrendelt u een resourcegroep, zodat de resourcegroep kan niet worden verwijderd.
+Met het volgende script wordt een resource groep vergrendeld zodat de resource groep niet kan worden verwijderd.
 
 ```azurecli-interactive
 echo "Enter the Resource Group name:" &&
@@ -100,7 +100,7 @@ read resourceGroupName &&
 az lock create --name LockGroup --lock-type CanNotDelete --resource-group $resourceGroupName  
 ```
 
-Het volgende script haalt alle vergrendelingen voor een resourcegroep:
+Met het volgende script worden alle vergren delingen voor een resource groep opgehaald:
 
 ```azurecli-interactive
 echo "Enter the Resource Group name:" &&
@@ -108,7 +108,7 @@ read resourceGroupName &&
 az lock list --resource-group $resourceGroupName  
 ```
 
-Het volgende script wordt een vergrendeling verwijderd:
+Met het volgende script wordt een vergren deling verwijderd:
 
 ```azurecli-interactive
 echo "Enter the Resource Group name:" &&
@@ -120,16 +120,16 @@ az lock delete --name $lockName --resource-group $resourceGroupName
 
 Zie voor meer informatie [Resources vergrendelen met Azure Resource Manager](resource-group-lock-resources.md).
 
-## <a name="tag-resource-groups"></a>Tag-resourcegroepen
+## <a name="tag-resource-groups"></a>Label resource groepen
 
-U kunt tags toepassen op resourcegroepen en resources voor uw activa logische manier te organiseren. Zie voor meer informatie, [met tags voor het ordenen van uw Azure-resources](./resource-group-using-tags.md#azure-cli).
+U kunt Tags Toep assen op resource groepen en resources om uw assets logisch te organiseren. Zie [Tags gebruiken om uw Azure-resources te organiseren](./resource-group-using-tags.md#azure-cli)voor meer informatie.
 
-## <a name="export-resource-groups-to-templates"></a>Resourcegroepen naar sjablonen exporteren
+## <a name="export-resource-groups-to-templates"></a>Resource groepen exporteren naar sjablonen
 
-Na het instellen van uw resourcegroep is, is het raadzaam om de Resource Manager-sjabloon voor de resourcegroep weer te geven. De sjabloon exporteren biedt twee voordelen:
+Nadat u de resource groep hebt ingesteld, kunt u de Resource Manager-sjabloon voor de resource groep weer geven. Het exporteren van de sjabloon biedt twee voor delen:
 
-- Automatiseer toekomstige implementaties van de oplossing omdat de sjabloon de volledige infrastructuur bevat.
-- Meer informatie over de sjabloonsyntaxis van de door te kijken op JavaScript Object Notation (JSON) die uw oplossing aangeeft.
+- Automatiseer toekomstige implementaties van de oplossing omdat de sjabloon alle volledige infra structuur bevat.
+- De syntaxis van de sjabloon leren door te kijken naar de JavaScript Object Notation (JSON) die uw oplossing vertegenwoordigt.
 
 ```azurecli-interactive
 echo "Enter the Resource Group name:" &&
@@ -137,17 +137,17 @@ read resourceGroupName &&
 az group export --name $resourceGroupName  
 ```
 
-Het script wordt de sjabloon op de console weergegeven.  De JSON kopiëren en opslaan als een bestand.
+Met het script wordt de sjabloon op de-console weer gegeven.  Kopieer de JSON en sla deze op als een bestand.
 
-Zie voor meer informatie, [één of meerdere resources exporteren naar de sjabloon in Azure portal](./export-template-portal.md).
+Zie voor meer informatie [het exporteren van één en meerdere resources naar sjabloon in azure Portal](./export-template-portal.md).
 
-## <a name="manage-access-to-resource-groups"></a>Toegang tot resourcegroepen beheren
+## <a name="manage-access-to-resource-groups"></a>Toegang tot resource groepen beheren
 
-[Op rollen gebaseerde toegangsbeheer (RBAC)](../role-based-access-control/overview.md) is de manier waarop u de toegang tot resources in Azure beheert. Zie voor meer informatie, [beheren van toegang via RBAC en Azure CLI](../role-based-access-control/role-assignments-cli.md).
+[Op rollen gebaseerde toegangsbeheer (RBAC)](../role-based-access-control/overview.md) is de manier waarop u de toegang tot resources in Azure beheert. Zie [toegang beheren met RBAC en Azure cli](../role-based-access-control/role-assignments-cli.md)voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie voor meer Azure Resource Manager [overzicht van Azure Resource Manager](./resource-group-overview.md).
-- Zie voor meer informatie de syntaxis van de Resource Manager-sjabloon, [inzicht in de structuur en de syntaxis van Azure Resource Manager-sjablonen](./resource-group-authoring-templates.md).
-- Zie voor meer informatie over het ontwikkelen van sjablonen, de [zelfstudies met stapsgewijze instructies](/azure/azure-resource-manager/).
-- Als u de Azure Resource Manager-sjabloon schema's, Zie [sjabloonverwijzing](/azure/templates/).
+- Zie [overzicht van Azure Resource Manager](./resource-group-overview.md)voor meer informatie Azure Resource Manager.
+- Zie [inzicht krijgen in de structuur en de syntaxis van Azure Resource Manager sjablonen](./resource-group-authoring-templates.md)voor meer informatie over de syntaxis van de Resource Manager-sjabloon.
+- Zie [Stapsgewijze zelf studies](/azure/azure-resource-manager/)voor meer informatie over het ontwikkelen van sjablonen.
+- Zie [sjabloon verwijzing](/azure/templates/)voor het weer geven van de Azure Resource Manager sjabloon schema's.

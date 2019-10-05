@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: tomfitz
-ms.openlocfilehash: b558e046f3402fdfa127192788d7d3ee1307ddeb
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: 93f17ea9d2ffa33d1dca9da3eb60f75165e8ed61
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71937022"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71973336"
 ---
 # <a name="string-functions-for-azure-resource-manager-templates"></a>Teken reeks functies voor Azure Resource Manager sjablonen
 
@@ -331,7 +331,7 @@ De uitvoer uit het vorige voorbeeld met de standaardwaarden is:
 
 | Name | Type | Value |
 | ---- | ---- | ----- |
-| Opvragen | Array | ["1-1", "1-2", "1-3", "2-1", "2-2", "2-3"] |
+| opvragen | Array | ["1-1", "1-2", "1-3", "2-1", "2-2", "2-3"] |
 
 ## <a name="contains"></a>bevat
 
@@ -589,7 +589,7 @@ De uitvoer uit het vorige voorbeeld met de standaardwaarden is:
 | objectEmpty | Bool | Waar |
 | stringEmpty | Bool | Waar |
 
-## <a name="endswith"></a>EndsWith
+## <a name="endswith"></a>endsWith
 
 `endsWith(stringToSearch, stringToFind)`
 
@@ -1097,7 +1097,7 @@ U kunt deze functie alleen gebruiken in een expressie voor de standaard waarde v
 
 De functie newGuid verschilt van de functie [GUID](#guid) omdat deze geen para meters heeft. Wanneer u een GUID met dezelfde para meter aanroept, wordt elke keer dezelfde id geretourneerd. Gebruik GUID wanneer u op een betrouw bare manier dezelfde GUID wilt genereren voor een specifieke omgeving. Gebruik newGuid wanneer u elke keer een andere id nodig hebt, zoals het implementeren van resources in een test omgeving.
 
-Als u de optie gebruikt voor het opnieuw [implementeren van een eerdere geslaagde implementatie](resource-group-template-deploy-rest.md#redeploy-when-deployment-fails), en de eerdere implementatie bevat een para meter die gebruikmaakt van newGuid, wordt de para meter niet opnieuw geëvalueerd. In plaats daarvan wordt de parameter waarde van de eerdere implementatie automatisch opnieuw gebruikt in de rollback-implementatie.
+Als u de optie gebruikt voor het opnieuw [implementeren van een eerdere geslaagde implementatie](rollback-on-error.md), en de eerdere implementatie bevat een para meter die gebruikmaakt van newGuid, wordt de para meter niet opnieuw geëvalueerd. In plaats daarvan wordt de parameter waarde van de eerdere implementatie automatisch opnieuw gebruikt in de rollback-implementatie.
 
 In een test omgeving moet u mogelijk herhaaldelijk resources implementeren die alleen gedurende een korte periode actief zijn. In plaats van unieke namen te maken, kunt u newGuid gebruiken met [Unique string](#uniquestring) om unieke namen te creëren.
 
@@ -1364,7 +1364,7 @@ Retourneert een matrix met teken reeksen die de subtekenreeksen bevat van de inv
 | Parameter | Vereist | Type | Description |
 |:--- |:--- |:--- |:--- |
 | inputString |Ja |string |De teken reeks die moet worden gesplitst. |
-| Vorm |Ja |teken reeks of matrix met teken reeksen |Het scheidings teken dat moet worden gebruikt voor het splitsen van de teken reeks. |
+| vorm |Ja |teken reeks of matrix met teken reeksen |Het scheidings teken dat moet worden gebruikt voor het splitsen van de teken reeks. |
 
 ### <a name="return-value"></a>Retourwaarde
 
@@ -1824,7 +1824,7 @@ De uitvoer uit het vorige voorbeeld met de standaardwaarden is:
 
 | Name | Type | Value |
 | ---- | ---- | ----- |
-| Opvragen | Tekenreeks | Een twee drie |
+| opvragen | Tekenreeks | Een twee drie |
 
 ## <a name="uniquestring"></a>uniqueString
 
@@ -2110,7 +2110,7 @@ Retourneert de huidige (UTC) datum/tijd-waarde in de opgegeven notatie. Als er g
 
 U kunt deze functie alleen gebruiken in een expressie voor de standaard waarde van een para meter. Als u deze functie ergens anders in een sjabloon gebruikt, wordt er een fout geretourneerd. De functie is niet toegestaan in andere onderdelen van de sjabloon omdat deze een andere waarde retourneert telkens wanneer deze wordt aangeroepen. Het implementeren van dezelfde sjabloon met dezelfde para meters zou geen betrouw bare resultaten opleveren.
 
-Als u de optie gebruikt voor het opnieuw [implementeren van een eerdere geslaagde implementatie](resource-group-template-deploy-rest.md#redeploy-when-deployment-fails), en de eerdere implementatie bevat een para meter die gebruikmaakt van utcNow, wordt de para meter niet opnieuw geëvalueerd. In plaats daarvan wordt de parameter waarde van de eerdere implementatie automatisch opnieuw gebruikt in de rollback-implementatie.
+Als u de optie gebruikt voor het opnieuw [implementeren van een eerdere geslaagde implementatie](rollback-on-error.md), en de eerdere implementatie bevat een para meter die gebruikmaakt van utcNow, wordt de para meter niet opnieuw geëvalueerd. In plaats daarvan wordt de parameter waarde van de eerdere implementatie automatisch opnieuw gebruikt in de rollback-implementatie.
 
 Wees voorzichtig met het opnieuw implementeren van een sjabloon die afhankelijk is van de functie utcNow voor een standaard waarde. Wanneer u opnieuw implementeert en geen waarde opgeeft voor de para meter, wordt de functie opnieuw geëvalueerd. Als u een bestaande resource wilt bijwerken in plaats van een nieuwe te maken, geeft u de parameter waarde van de eerdere implementatie door.
 

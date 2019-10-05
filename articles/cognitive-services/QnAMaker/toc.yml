@@ -4,10 +4,12 @@
   items:
     - name: Wat is QnA Maker?
       href: Overview/overview.md
+    - name: Nieuwe functies
+      href: whats-new.md
 - name: Snelstartgidsen
   items:
     - name: Een knowledge base maken
-      href: How-To/create-knowledge-base.md
+      href: quickstarts/create-publish-knowledge-base.md
     - name: Vragen toevoegen met metagegevens
       href: quickstarts/add-question-metadata-portal.md
     - name: Antwoord ophalen

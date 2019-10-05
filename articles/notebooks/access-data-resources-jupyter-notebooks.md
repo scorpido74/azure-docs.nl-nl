@@ -4,21 +4,20 @@ description: Klik hier voor meer informatie over het openen van bestanden, REST-
 services: app-service
 documentationcenter: ''
 author: kraigb
-manager: douge
+manager: barbkess
 ms.assetid: ee867303-a5e5-4686-b2da-8a0108247d18
 ms.service: azure-notebooks
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: 3dd1dde067a2ec745d7d60a78a50ab34ea30d0dd
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: e1284072db8ca8aa7a49bd3c4d52f54e5d09420a
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359801"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71970263"
 ---
 # <a name="access-cloud-data-in-a-notebook"></a>Toegang tot cloud-gegevens in een notitieblok
 
@@ -80,12 +79,12 @@ Als u werkt met Cosmos DB, kunt u de [azure-cosmos DB-tabel](https://pypi.org/pr
 
 Azure biedt een aantal andere gegevenstypen van de database die u kunt gebruiken. De onderstaande artikelen bieden hulp voor toegang tot deze databases met Python:
 
-- [Azure Database for PostgreSQL: Python gebruiken om verbinding te maken en gegevens op te vragen](https://docs.microsoft.com/azure/postgresql/connect-python)
-- [Snelstart: Azure Redis Cache gebruiken met python](https://docs.microsoft.com/azure/redis-cache/cache-python-get-started)
-- [Azure Database for MySQL: Python gebruiken om verbinding te maken en gegevens op te vragen](https://docs.microsoft.com/azure/mysql/connect-python)
+- [Azure-Data Base voor PostgreSQL: Python gebruiken om verbinding te maken en gegevens op te vragen @ no__t-0
+- [Snelstart: Azure Redis Cache gebruiken met python @ no__t-0
+- [Azure-Data Base voor MySQL: Python gebruiken om verbinding te maken en gegevens op te vragen @ no__t-0
 - [Azure Data Factory](https://azure.microsoft.com/services/data-factory/)
   - [De Wizard voor Azure Data Factory kopiëren](https://azure.microsoft.com/updates/code-free-copy-wizard-for-azure-data-factory/)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Procedure: Werken met Project-gegevens bestanden](work-with-project-data-files.md)
+- [Procedure: Werken met Project-gegevens bestanden @ no__t-0

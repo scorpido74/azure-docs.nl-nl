@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: overview
 ms.date: 08/01/2019
 ms.author: diberry
-ms.openlocfilehash: f56798359cdc8739a363bed3bfddadd584617adf
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: d647875895e33254b51fb8c3d11aa40c6c1ed71f
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68815482"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71973791"
 ---
 # <a name="what-is-the-qna-maker-service"></a>Wat is de QnA Maker-service?
 
@@ -85,21 +85,8 @@ QnA Maker biedt ontwerp, training en publicatie samen met samenwerkings machtigi
 
 **Stap 4**: Vanuit uw client toepassing roept u het eind punt van het kennis basis programma aan en leest u het JSON-antwoord om het beste antwoord op de gebruiker weer te geven.  
 
-## <a name="news-and-updates"></a>Nieuws en updates
-
-Meer informatie over de nieuwe functies van QnA Maker.
-
-* Juni 2019
-    * Verbeterd rangord model voor Frans, Italiaans, Duits, Spaans, Portugees
-* April 2019
-    * Inhouds extractie voor websites ondersteunen
-    * Ondersteuning voor share point-documenten
-* 2019 maart
-    * Actief leren 
-    * Verbeterd NLP Rank model voor het Engels, 
-
 ## <a name="next-steps"></a>Volgende stappen
 QnA Maker biedt alles wat u nodig hebt om uw aangepaste Knowledge Base te maken, beheren en implementeren. 
 
 > [!div class="nextstepaction"]
-> [Een QnA Maker-service maken](../how-to/set-up-qnamaker-service-azure.md)
+> [Bekijk de meest recente wijzigingen](../whats-new.md)

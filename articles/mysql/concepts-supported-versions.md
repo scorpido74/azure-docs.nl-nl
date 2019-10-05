@@ -1,17 +1,17 @@
 ---
-title: Ondersteunde versies in Azure Database for MySQL
-description: Beschrijft de ondersteunde versies in Azure Database for MySQL.
+title: Ondersteunde versies-Azure Database for MySQL
+description: Meer informatie over de versies van de MySQL-server die worden ondersteund in de Azure Database for MySQL-service.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/12/2019
-ms.openlocfilehash: 25251b617522840412a4868331e155285f64a18c
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: f9c7278e60c8342aa7d5b68ab8da7143abaf4c89
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70962588"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71970536"
 ---
 # <a name="supported-azure-database-for-mysql-server-versions"></a>Ondersteunde Azure Database for MySQL server versies
 
@@ -48,7 +48,7 @@ Raadpleeg de opmerkingen bij de [versie](https://dev.mysql.com/doc/relnotes/mysq
 ## <a name="managing-updates-and-upgrades"></a>Updates en upgrades beheren
 De service beheert automatisch patches voor het oplossen van problemen met versie-updates. Bijvoorbeeld 5.7.20 installeren naar 5.7.21.  
 
-Upgrades van de secundaire en primaire versie worden momenteel niet ondersteund. Een upgrade van MySQL 5,6 naar MySQL 5,7 wordt bijvoorbeeld niet ondersteund. Als u een upgrade wilt uitvoeren van 5,6 naar 5,7, neemt u een [dump op en herstelt](./concepts-migrate-dump-restore.md) u deze op een server die is gemaakt met de nieuwe engine versie.
+Upgrades van de secundaire en primaire versie worden momenteel niet ondersteund. Een upgrade van MySQL 5.6 naar MySQL 5.7 wordt bijvoorbeeld niet ondersteund. Als u een upgrade wilt uitvoeren van 5.6 naar 5.7, gebruikt u [dump en herstel](./concepts-migrate-dump-restore.md) op een server die is gemaakt met de nieuwe versie van de engine.
 
 ## <a name="next-steps"></a>Volgende stappen
 

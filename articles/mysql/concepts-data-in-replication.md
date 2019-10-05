@@ -1,17 +1,17 @@
 ---
-title: Gegevens repliceren naar Azure Database for MySQL.
-description: In dit artikel wordt replicatie van gegevens voor Azure Database for MySQL beschreven.
+title: Gegevens repliceren naar Azure Database for MySQL
+description: Meer informatie over het gebruik van replicatie van gegevens in een externe server naar de Azure Database for MySQL-service.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: 5ef11e86b85a537a809352325d56ac3ff983c2c1
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: b501a1f1ea54aff5617932dc5085d6d19f86976c
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70993052"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71970356"
 ---
 # <a name="replicate-data-into-azure-database-for-mysql"></a>Gegevens repliceren naar Azure Database for MySQL
 
@@ -36,7 +36,7 @@ De [*MySQL-systeem database*](https://dev.mysql.com/doc/refman/5.7/en/system-dat
 - Elke tabel moet een primaire sleutel hebben.
 - De MySQL InnoDB-engine moet worden gebruikt voor de hoofd server.
 - De gebruiker moet machtigingen hebben voor het configureren van binaire logboek registratie en het maken van nieuwe gebruikers op de hoofd server.
-- Als SSL is ingeschakeld op de master server, controleert u of het SSL-CA-certificaat dat is opgegeven voor `mysql.az_replication_change_master` het domein, is opgenomen in de opgeslagen procedure. Raadpleeg de volgende [voor beelden](https://docs.microsoft.com/azure/mysql/howto-data-in-replication#link-master-and-replica-servers-to-start-data-in-replication) en de `master_ssl_ca` para meter.
+- Als SSL is ingeschakeld op de master server, moet u ervoor zorgen dat het SSL-CA-certificaat dat is opgegeven voor het domein, is opgenomen in de opgeslagen procedure `mysql.az_replication_change_master`. Raadpleeg de volgende [voor beelden](https://docs.microsoft.com/azure/mysql/howto-data-in-replication#link-master-and-replica-servers-to-start-data-in-replication) en de para meter `master_ssl_ca`.
 - Zorg ervoor dat het IP-adres van de hoofdserver is toegevoegd aan de firewallregels van de Azure Database for MySQL-replicaserver. Firewallregels bijwerken met de [Azure-portal](https://docs.microsoft.com/azure/mysql/howto-manage-firewall-using-portal) of [Azure CLI](https://docs.microsoft.com/azure/mysql/howto-manage-firewall-using-cli).
 - Zorg ervoor dat de computer waarop de hoofdserver wordt gehost zowel binnenkomend als uitgaand verkeer op poort 3306 toestaat.
 - Zorg ervoor dat de hoofd server een **openbaar IP-adres**heeft, dat de DNS openbaar toegankelijk is of een Fully QUALIFIED domain name (FQDN) heeft.

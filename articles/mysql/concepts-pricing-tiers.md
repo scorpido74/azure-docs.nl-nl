@@ -1,17 +1,17 @@
 ---
 title: Prijs categorieën voor Azure Database for MySQL
-description: In dit artikel worden de prijs categorieën voor Azure Database for MySQL beschreven.
+description: Meer informatie over de verschillende prijs categorieën voor Azure Database for MySQL, waaronder reken generaties, opslag typen, opslag grootte, vCores, geheugen en bewaar perioden voor back-ups.
 author: jan-eng
 ms.author: janeng
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 07/31/2019
-ms.openlocfilehash: 087a88322175b1908ab591a5b9afb5ae45227bb1
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: f53f260ebe80ce2e3d6d6349e3fa892fa3c021a3
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71177952"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71972830"
 ---
 # <a name="azure-database-for-mysql-pricing-tiers"></a>Azure Database for MySQL prijs Categorieën
 
@@ -22,7 +22,7 @@ U kunt een Azure Database for MySQL-server maken in een van drie verschillende p
 | Compute-generatie | Gen 4, Gen 5 | Gen 4, Gen 5 | Gen 5 |
 | vCores | 1, 2 | 2, 4, 8, 16, 32, 64 |2, 4, 8, 16, 32 |
 | Geheugen per vCore | 2 GB | 5 GB | 10 GB |
-| Opslaggrootte | 5 GB tot 1 TB | 5 GB tot 4 TB | 5 GB tot 4 TB |
+| Opslag grootte | 5 GB tot 1 TB | 5 GB tot 4 TB | 5 GB tot 4 TB |
 | Opslagtype | Azure Standard Storage | Azure Premium Storage | Azure Premium Storage |
 | Bewaar periode voor database back-ups | 7 tot 35 dagen | 7 tot 35 dagen | 7 tot 35 dagen |
 
@@ -47,7 +47,7 @@ De opslag ruimte die u inricht, is de hoeveelheid opslag capaciteit die beschikb
 |    | **Basic** | **Algemeen** | **Geoptimaliseerd voor geheugen** |
 |:---|:----------|:--------------------|:---------------------|
 | Opslagtype | Azure Standard Storage | Azure Premium Storage | Azure Premium Storage |
-| Opslaggrootte | 5 GB tot 1 TB | 5 GB tot 4 TB | 5 GB tot 4 TB |
+| Opslag grootte | 5 GB tot 1 TB | 5 GB tot 4 TB | 5 GB tot 4 TB |
 | Grootte van toename van opslag | 1 GB | 1 GB | 1 GB |
 | IOPS | Variabele |3 IOPS/GB<br/>Min. 100 IOPS<br/>Maxi maal 6000 IOPS | 3 IOPS/GB<br/>Min. 100 IOPS<br/>Maxi maal 6000 IOPS |
 
@@ -67,7 +67,7 @@ We verg Roten de opslag limieten in onze lagen van Algemeen en geoptimaliseerd v
 |              | **Algemeen** | **Geoptimaliseerd voor geheugen** |
 |:-------------|:--------------------|:---------------------|
 | Opslagtype | Azure Premium Storage | Azure Premium Storage |
-| Opslaggrootte | 32 GB tot 16 TB| 32 GB tot 16 TB |
+| Opslag grootte | 32 GB tot 16 TB| 32 GB tot 16 TB |
 | Grootte van toename van opslag | 1 GB | 1 GB |
 | IOPS | 3 IOPS/GB<br/>Min. 100 IOPS<br/>Maxi maal 20.000 IOPS| 3 IOPS/GB<br/>Min. 100 IOPS<br/>Maxi maal 20.000 IOPS |
 
@@ -81,7 +81,7 @@ We verg Roten de opslag limieten in onze lagen van Algemeen en geoptimaliseerd v
 
 ### <a name="reaching-the-storage-limit"></a>De opslag limiet wordt bereikt
 
-Servers met minder dan 100 GB ingerichte opslag zijn gemarkeerd als alleen-lezen als de vrije opslag minder is dan 512 MB of 5% van de ingerichte opslag grootte. Servers met een ingerichte opslag van 100 GB worden alleen als gelezen gemarkeerd wanneer de vrije opslag minder is dan 5 GB.
+Servers met minder dan 100 GB ingerichte opslag worden gemarkeerd als alleen-lezen als de vrije opslag minder is dan 512 MB of 5% van de ingerichte opslaggrootte. Servers met meer dan 100 GB ingerichte opslag worden als alleen-lezen gemarkeerd als de vrije opslag minder is dan 5 GB.
 
 Als u bijvoorbeeld 110 GB aan opslag hebt ingericht en het werkelijke gebruik meer dan 105 GB overschrijdt, is de server gemarkeerd als alleen-lezen. Als u 5 GB aan opslag hebt ingericht, is de server gemarkeerd als alleen-lezen wanneer de vrije opslag minder dan 256 MB bedraagt.
 

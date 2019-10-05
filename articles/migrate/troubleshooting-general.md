@@ -1,17 +1,18 @@
 ---
 title: Problemen met Azure Migrate oplossen | Microsoft Docs
 description: Hierin wordt een overzicht gegeven van bekende problemen in de Azure Migrate-service en tips voor het oplossen van veelvoorkomende fouten.
-author: rayne-wiselman
+author: musa-57
+ms.manager: abhemraj
 ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.author: raynew
-ms.openlocfilehash: 49c43d393ef0722424088e0073942b56787f1bc7
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.author: hamusa
+ms.openlocfilehash: 468c87e176cc61c48ba4caabd1c5a26f94d5fb5b
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71067812"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71970642"
 ---
 # <a name="troubleshoot-azure-migrate"></a>Problemen met Azure Migrate oplossen
 
@@ -87,8 +88,8 @@ Een project verwijderen uit de oudere versie van Azure Migrate:
 ### <a name="delete-a-workspace"></a>Een werkruimte verwijderen
 
 Blader naar de Log Analytics werkruimte die aan het project is gekoppeld.
-* Als u het Azure migrate project nog niet hebt verwijderd, kunt u de koppeling naar de werk ruimte in **Essentials** > **Server-evaluatie**vinden.
-       ![De werk ruimte LA](./media/troubleshooting-general/loganalytics-workspace.png)
+* Als u het Azure Migrate project nog niet hebt verwijderd, kunt u de koppeling naar de werk ruimte vinden in **essentials** > -**Server evaluatie**.
+       ![LA-werk ruimte @ no__t-1
 
      * If you've already deleted the Azure Migrate project, select **Resource Groups** in the left pane of the Azure portal. Locate the workspace in the relevant resources group, and [follow the instructions](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace) to delete it.
 
@@ -111,7 +112,7 @@ Als u de fout melding ' het gegeven manifest bestand is ongeldig: Ongeldige OVF-
 2. Als de implementatie nog steeds mislukt, en u de VMware vSphere-client gebruikt om het OVF-bestand te implementeren, probeert u het te implementeren via de vSphere-webclient. Als de implementatie nog steeds mislukt, kunt u proberen een andere webbrowser te gebruiken.
 3. Als u de vSphere-webclient gebruikt en deze probeert te implementeren op vCenter Server 6,5 of 6,7, probeert u de eicellen rechtstreeks op de ESXi-host te implementeren:
    - Maak rechtstreeks verbinding met de ESXi-host (in plaats van vCenter Server) met de webclient (https://<*IP-adres*van de host >/UI).
-   - Selecteer in **huisraad** > **inventaris** **bestand** > **implementeren OVF sjabloon**. Blader naar de eicellen en voltooi de implementatie.
+   - Selecteer in **Home**@no__t-1-inventaris **bestand** > **OVF-sjabloon implementeren**. Blader naar de eicellen en voltooi de implementatie.
 4. Als de implementatie nog steeds mislukt, neemt u contact op met Azure Migrate ondersteuning.
 
 ## <a name="appliance-cant-connect-to-the-internet"></a>Het apparaat kan geen verbinding maken met Internet
@@ -200,7 +201,7 @@ Als u een apparaat hebt geïmplementeerd dat uw on-premises omgeving continu det
 - Het duurt Maxi maal 30 minuten voordat de detectie gegevens die door het apparaat zijn verzameld, worden weer gegeven in de portal.
 - Als u na 30 minuten geen actuele informatie ziet, vernieuwt u de gegevens met de volgende stappen:
 
-    1. Selecteer in **servers** > **Azure migrate server-evaluatie**de optie **overzicht**.
+    1. Selecteer in **Servers** > **Azure migrate server-evaluatie**de optie **overzicht**.
     2. Selecteer onder **beheren**de optie **status van agent**
     3. Selecteer **agent vernieuwen**.
     1. Wacht tot de vernieuwings bewerking is voltooid. Nu worden actuele gegevens weer geven.
@@ -210,7 +211,7 @@ Als u een apparaat hebt geïmplementeerd dat uw on-premises omgeving continu det
 - Het duurt Maxi maal 30 minuten voordat de detectie gegevens die door het apparaat zijn verzameld, worden weer gegeven in de portal.
 - Als u na 30 minuten geen actuele informatie ziet, vernieuwt u de gegevens met de volgende stappen:
 
-    1. Selecteer in **servers** > **Azure migrate server-evaluatie**de optie **overzicht**.
+    1. Selecteer in **Servers** > **Azure migrate server-evaluatie**de optie **overzicht**.
     2. Selecteer onder **beheren**de optie **status van agent**
     3. Selecteer **agent vernieuwen**.
     1. Wacht tot de vernieuwings bewerking is voltooid. Nu worden actuele gegevens weer geven.
@@ -332,7 +333,7 @@ Nadat u de afhankelijkheids visualisatie agenten hebt geïnstalleerd op on-premi
 
 Voor Windows-Vm's:
 1. Start MMA in het configuratie scherm.
-2. Controleer in de >  **Eigenschappen van micro soft Monitoring Agent** **Azure log Analytics (OMS)** of de **status** van de werk ruimte groen is.
+2. Controleer in de eigenschappen van de **micro soft Monitoring Agent** > **Azure log Analytics (OMS)** of de **status** van de werk ruimte groen is.
 3. Als de status niet groen is, probeert u de werk ruimte te verwijderen en toe te voegen aan MMA.
 
       ![Het dialoog venster Eigenschappen van MMA](./media/troubleshooting-general/mma-status.png)

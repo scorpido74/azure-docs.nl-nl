@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/12/2019
+ms.date: 10/04/2019
 ms.author: diberry
-ms.openlocfilehash: 8e732496c4523646f02ef461b7d3c52314c28dae
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 19852fe3a6925ada3dea141a1472683ee264f6d5
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70932830"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71973301"
 ---
 # <a name="migrate-to-an-azure-resource-authoring-key"></a>Migreren naar een Azure-resource bewerkings sleutel
 
@@ -63,9 +63,9 @@ U kunt het migratie proces vertragen door het venster te annuleren. U wordt rege
 
 * U **kunt ook**een back-up maken van de apps uit de lijst met apps van de Luis-portal door elke app te exporteren of de export- [API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c40)te gebruiken.
 * U **kunt desgewenst**de collaborator's-lijst van elke app opslaan. Deze e-mail lijst wordt aangeboden als onderdeel van het migratie proces.
-* **Vereist**, u moet een Azure- [abonnement](https://azure.microsoft.com/free/)hebben. Voor een deel van het abonnements proces zijn facturerings gegevens vereist. U kunt echter de prijs categorie gratis (`F0`) gebruiken wanneer u Luis gebruikt. 
+* **Vereist**, u moet een Azure- [abonnement](https://azure.microsoft.com/free/)hebben. Voor een deel van het abonnements proces zijn facturerings gegevens vereist. U kunt echter de prijs categorie gratis (@no__t 0) gebruiken wanneer u LUIS gebruikt. 
 
-Het **ontwerpen van uw Luis-app is gratis**, wat `F0` wordt aangegeven door de laag. Meer informatie [over prijs categorieën](luis-boundaries.md#key-limits).
+Het **ontwerpen van uw Luis-app is gratis**, aangegeven door de `F0`-laag. Meer informatie [over prijs categorieën](luis-boundaries.md#key-limits).
 
 Als u geen Azure-abonnement hebt, [meldt u zich](https://azure.microsoft.com/free/)aan. 
 
@@ -99,6 +99,10 @@ U kunt ervoor kiezen om een app waarvoor u een samen werker bent te exporteren, 
 De eigenaar van de app moet [uw e-mail adres toevoegen aan de Azure-ontwerp bron als samen werker](luis-how-to-collaborate.md#add-contributor-to-azure-authoring-resource). 
 
 Na het migratie proces zijn de apps die u hebt aangeschaft, beschikbaar op de pagina **mijn apps** van de Luis-Portal.  
+
+## <a name="troubleshooting"></a>Problemen oplossen
+
+LUIS-ontwerp sleutels zijn alleen zichtbaar in de LUIS-Portal nadat het migratie proces is voltooid. Als u de ontwerp sleutels maakt, zoals met de LUIS CLI, moet de gebruiker nog steeds het migratie proces volt ooien. 
 
 ## <a name="next-steps"></a>Volgende stappen
 

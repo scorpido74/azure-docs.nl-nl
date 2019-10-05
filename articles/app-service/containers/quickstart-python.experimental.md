@@ -3,8 +3,8 @@ title: Een Python-app maken in Linux - Azure App Service | Microsoft Docs
 description: Leer hoe u in een paar minuten uw eerste Python-app (Hello World) implementeert in Azure App Service on Linux.
 services: app-service\web
 documentationcenter: ''
-author: cephalin
-manager: jeconnoc
+author: msangapu-msft
+manager: gwallace
 editor: ''
 ms.assetid: ''
 ms.service: app-service-web
@@ -14,18 +14,16 @@ ms.topic: quickstart
 ms.date: 08/23/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 08b1b85b980f992e799fc5198891290ec0d55c5d
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 4ffa202a717c75462cd2d715a7883756d49f5a9f
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70071007"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71972093"
 ---
-# <a name="create-a-python-app-in-azure-app-service-on-linux-preview"></a>Een Python-app maken in Azure App Service op Linux (preview)
+# <a name="create-a-python-app-in-azure-app-service-on-linux"></a>Een python-app maken in Azure App Service in Linux
 
-[App Service onder Linux](app-service-linux-intro.md) biedt een uiterst schaalbare webhostingservice met self-patchfunctie onder het Linux-besturingssysteem. Deze quickstart laat zien hoe een Python-app bovenop de ingebouwde Python-installatiekopie (preview) in de App-service op Linux kan worden geïmplementeerd met behulp van [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview).
-
-U kunt de stappen in dit artikel volgen met behulp van een Mac-, Windows- of Linux-computer.
+[App Service onder Linux](app-service-linux-intro.md) biedt een uiterst schaalbare webhostingservice met self-patchfunctie onder het Linux-besturingssysteem. Deze Quick Start laat zien hoe u een python-app kunt implementeren boven op de ingebouwde python-installatie kopie in App Service op Linux met behulp van de [Cloud shell](https://docs.microsoft.com/azure/cloud-shell/overview).
 
 ![Voorbeeld-app die wordt uitgevoerd in Azure](media/quickstart-python/hello-world-in-browser.png)
 
@@ -59,7 +57,7 @@ Unpacking objects: 100% (43/43), done.
 Checking connectivity... done.
 ```
 
-## <a name="create-a-web-app"></a>Een web-app maken
+## <a name="create-a-web-app"></a>Een webtoepassing maken
 
 Ga naar de map die de voorbeeldcode bevat en voer de opdracht `az webapp up` uit.
 
@@ -164,13 +162,11 @@ Het linkermenu bevat een aantal pagina's voor het configureren van uw app.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-De ingebouwde python-installatie kopie in App Service op Linux is momenteel beschikbaar als preview-versie en u kunt de opdracht aanpassen die wordt gebruikt om uw app te starten. U kunt ook in plaats daarvan productie-Python-apps maken met behulp van een aangepaste container.
-
 > [!div class="nextstepaction"]
-> [Zelfstudie: Python-app met PostgreSQL](tutorial-python-postgresql-app.md)
+> [Zelfstudie: Python-app met PostgreSQL @ no__t-0
 
 > [!div class="nextstepaction"]
 > [Python-app configureren](how-to-configure-python.md)
 
 > [!div class="nextstepaction"]
-> [Zelfstudie: Implementeren vanuit een persoonlijke container opslagplaats](tutorial-custom-docker-image.md)
+> [Zelfstudie: Implementeren vanuit een persoonlijke container opslagplaats @ no__t-0

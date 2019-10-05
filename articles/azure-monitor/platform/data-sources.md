@@ -6,18 +6,17 @@ author: bwren
 manager: carmonm
 editor: tysonn
 ms.service: azure-monitor
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/23/2019
 ms.author: bwren
-ms.openlocfilehash: dabc336a1f92169ab573e7cf29e1a7a069ae20b1
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 164d1db1a80ef577792740f67a27a856a4ba4c3b
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262048"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71972917"
 ---
 # <a name="sources-of-monitoring-data-for-azure-monitor"></a>Bronnen van bewakings gegevens voor Azure Monitor
 Azure Monitor is gebaseerd op een [Algemeen bewakings gegevensplatform](data-platform.md) dat [Logboeken](data-platform-logs.md) en [metrische](data-platform-metrics.md)gegevens bevat. Door gegevens te verzamelen in dit platform kunnen gegevens uit meerdere bronnen worden geanalyseerd met behulp van een gemeen schappelijke set hulpprogram ma's in Azure Monitor. Bewakings gegevens kunnen ook worden verzonden naar andere locaties ter ondersteuning van bepaalde scenario's en sommige resources kunnen naar andere locaties schrijven voordat ze kunnen worden verzameld in Logboeken of metrische gegevens.
@@ -61,8 +60,8 @@ Telemetrie die betrekking heeft op uw Azure-Tenant wordt verzameld van services 
 | Destination | Description | Referentie |
 |:---|:---|:---|
 | Azure Monitor-logboeken | Configureer de Azure AD-logboeken die moeten worden verzameld in Azure Monitor om ze te analyseren met andere bewakings gegevens. | [Azure AD-logboeken integreren met Azure Monitor-Logboeken (preview-versie)](../../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md) |
-| Azure Storage | Exporteer Azure AD-logboeken naar Azure Storage voor archivering. | [Zelfstudie: Azure AD-logboeken archiveren in een Azure-opslag account (preview-versie)](../../active-directory/reports-monitoring/quickstart-azure-monitor-route-logs-to-storage-account.md) |
-| Event Hub | Stream Azure AD-logboeken naar andere locaties met Event Hubs. | [Zelfstudie: Stream Azure Active Directory logboeken naar een Azure Event Hub (preview](../../active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md)). |
+| Azure Storage | Exporteer Azure AD-logboeken naar Azure Storage voor archivering. | [Zelfstudie: Azure AD-logboeken archiveren in een Azure-opslag account (preview-versie) ](../../active-directory/reports-monitoring/quickstart-azure-monitor-route-logs-to-storage-account.md) |
+| Event Hub | Stream Azure AD-logboeken naar andere locaties met Event Hubs. | [Zelfstudie: Stream Azure Active Directory logboeken naar een Azure Event Hub (preview-versie) ](../../active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md). |
 
 
 
@@ -104,7 +103,7 @@ De meeste Azure-Services verzenden [platform metrieken](data-platform-metrics.md
 | Azure Monitor-logboeken | Platform metrieken kopiëren naar Logboeken voor trending en andere analyse met behulp van Log Analytics. | [Diagnostische gegevens van Azure rechtstreeks naar Log Analytics](resource-logs-collect-workspace.md) |
 | Event Hubs | Meet gegevens streamen naar andere locaties met behulp van Event Hubs. |[Azure-bewakings gegevens streamen naar een Event Hub voor gebruik door een extern hulp programma](stream-monitoring-data-event-hubs.md) |
 
-### <a name="resource-logs"></a>Resource logboeken
+### <a name="resource-logs"></a>Resourcelogboeken
 [Bron logboeken](resource-logs-overview.md) bieden inzicht in de _interne_ werking van een Azure-resource.  Bron logboeken worden automatisch gemaakt, maar u moet een diagnostische instelling maken om een bestemming op te geven die voor elke resource moet worden verzameld.
 
 De configuratie vereisten en de inhoud van bron logboeken variëren per bron type en niet alle services maken ze nog. Zie [ondersteunde services, schema's en categorieën voor Azure-resource logboeken](diagnostic-logs-schema.md) voor meer informatie over elke service en koppelingen naar gedetailleerde configuratie procedures. Als de service niet wordt vermeld in dit artikel, maakt deze service momenteel geen resource Logboeken.

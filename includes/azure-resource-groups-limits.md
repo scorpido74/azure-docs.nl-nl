@@ -4,12 +4,12 @@ ms.service: azure-resource-manager
 ms.topic: include
 ms.date: 08/19/2019
 ms.author: tomfitz
-ms.openlocfilehash: 25928ef35da1ce4b3824303a5d46749c32aa701f
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 1190798b234f9c73e02fda41c03ffa296246be63
+ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "69626320"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71975292"
 ---
 | Resource | Standaardlimiet | Maximumaantal |
 | --- | --- | --- |
@@ -21,7 +21,7 @@ ms.locfileid: "69626320"
 | Sleutel lengte van tag |512 |512 |
 | Lengte van label waarde |256 |256 |
 
-<sup>1</sup> Als u de limiet van 800 implementaties per resource groep bereikt, verwijdert u implementaties uit de geschiedenis die niet meer nodig zijn. Het verwijderen van een item uit de implementatie geschiedenis heeft geen invloed op de geïmplementeerde resources. U kunt vermeldingen uit de geschiedenis verwijderen met [AZ Group Deployment delete](/cli/azure/group/deployment) voor Azure CLI of [Remove-AzResourceGroupDeployment](/powershell/module/az.resources/remove-azresourcegroupdeployment) in Power shell.  Zie [Remove-Deployments. ps1](https://gist.github.com/bmoore-msft/ed33fb940dafb09380174b7fca57651f)voor een Power shell-script dat het verwijderen van implementaties automatiseert in een scenario voor continue integratie en continue levering (CI/cd).
+<sup>1</sup> Als u de limiet van 800 implementaties per resource groep bereikt, verwijdert u implementaties uit de geschiedenis die niet meer nodig zijn. Het verwijderen van een item uit de implementatie geschiedenis heeft geen invloed op de geïmplementeerde resources. Zie voor meer informatie [oplossen fout bij aantal implementaties is groter dan 800](../articles/azure-resource-manager/deployment-quota-exceeded.md).
 
 #### <a name="template-limits"></a>Sjabloon limieten
 

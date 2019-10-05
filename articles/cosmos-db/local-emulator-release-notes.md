@@ -6,14 +6,14 @@ ms.topic: tutorial
 author: markjbrown
 ms.author: mjbrown
 ms.date: 06/20/2019
-ms.openlocfilehash: 587c730dfa436760d42e614c2dabee117f3b61d3
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: 03163d75681bee7434e2b7576a678b1094d47b94
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71018808"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71973700"
 ---
-# <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>De Azure Cosmos-emulator gebruiken voor lokale ontwikkeling en tests
+# <a name="azure-cosmos-emulator---release-notes-and-download-information"></a>Azure Cosmos-emulator-opmerkingen bij de release en informatie over downloaden
 
 Dit artikel bevat de release opmerkingen voor de Azure Cosmos-emulator met een lijst met onderdeel updates die zijn gemaakt in elke release. Ook wordt de meest recente versie van de emulator weer gegeven die u kunt downloaden en gebruiken.
 

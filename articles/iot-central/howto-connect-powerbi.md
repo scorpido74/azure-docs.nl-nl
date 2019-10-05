@@ -5,14 +5,14 @@ ms.service: iot-central
 services: iot-central
 author: viv-liu
 ms.author: viviali
-ms.date: 06/09/2019
+ms.date: 10/4/2019
 ms.topic: conceptual
-ms.openlocfilehash: 897b72dd7b292492e45cdc7401fe1acc5c86ca20
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 3ce2f4304787107d0d6875333e4630dae8d7d1dd
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69877458"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71973776"
 ---
 # <a name="visualize-and-analyze-your-azure-iot-central-data-in-a-power-bi-dashboard"></a>Uw Azure IoT Central-gegevens visualiseren en analyseren in een Power BI dash board
 
@@ -31,12 +31,19 @@ Gebruik de Power BI-oplossing voor Azure IoT Central om een krachtig Power BI da
 
 Met deze oplossing wordt de pijp lijn zo ingesteld dat de gegevens in uw Azure Blob-opslag account worden gebruikt voor [continue gegevens export](howto-export-data.md). Deze gegevens worden door gegeven aan Azure Functions, Azure Data Factory en Azure SQL Database om de gegevens te verwerken en te transformeren. De uitvoer kan worden gevisualiseerd en geanalyseerd in een Power BI rapport dat u als een PBIX-bestand kunt downloaden. Al deze resources worden gemaakt in uw Azure-abonnement, zodat u elk onderdeel kunt aanpassen aan uw behoeften.
 
+> [!Note] 
+> De Power BI-oplossing voor Azure IoT Central werkt met IoT Central-apps die geen ondersteuning bieden voor IoT Plug en Play (preview apps vandaag nog)
+
 ## <a name="get-the-power-bi-solution-for-azure-iot-centralhttpsakamsiotcentralpowerbisolutiontemplate-from-microsoft-appsource"></a>Down load de [Power BI-oplossing voor Azure IOT Central](https://aka.ms/iotcentralpowerbisolutiontemplate) van Microsoft AppSource.
 
 ## <a name="prerequisites"></a>Vereisten
 Voor het instellen van de oplossing is het volgende vereist:
 - Toegang tot een Azure-abonnement
-- Geëxporteerde gegevens met [continue gegevens export](howto-export-data.md) vanuit uw IOT Central-app. U wordt aangeraden metingen, apparaten en Device-sjabloon stromen in te scha kelen om optimaal gebruik te maken van het Power BI dash board.
+- IoT Central toepassing die geen ondersteuning biedt voor IoT Plug en Play (preview-apps vandaag nog)
+- Continue gegevens export ingesteld op Azure Blob Storage vanuit uw IoT Central-app
+    - Zorg ervoor dat de gegevens indeling Avro is
+    - U wordt aangeraden metingen, apparaten en Device-sjabloon stromen in te scha kelen om optimaal gebruik te maken van het Power BI dash board.
+    - Meer informatie [over het instellen van continue gegevens export](howto-export-data-blob-storage.md)
 - Power BI Desktop (meest recente versie)
 - Power BI Pro (als u het dash board met anderen wilt delen)
 

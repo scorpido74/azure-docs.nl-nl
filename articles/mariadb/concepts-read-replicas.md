@@ -1,17 +1,17 @@
 ---
 title: Replica's in Azure Database for MariaDB lezen
-description: In dit artikel wordt het lezen van replica's voor Azure Database for MariaDB beschreven.
+description: "Meer informatie over het lezen van replica's in Azure Database for MariaDB: het kiezen van regio's, het maken van replica's, het verbinden van replica's, het bewaken van replicatie en het stoppen van de replicatie."
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/06/2019
-ms.openlocfilehash: 5018cab1213fb99f4c3b07944d0cb3172d1cd2c7
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: 29725c302887448689f4aafd86f1f834d81c23ed
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71123227"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71973581"
 ---
 # <a name="read-replicas-in-azure-database-for-mariadb"></a>Replica's in Azure Database for MariaDB lezen
 
@@ -19,7 +19,7 @@ Met de functie replica lezen kunt u gegevens van een Azure Database for MariaDB 
 
 Replica's zijn nieuwe servers die u op dezelfde manier beheert als gewone Azure Database for MariaDB servers. Voor elke Lees replica wordt u gefactureerd voor de ingerichte Compute in vCores en Storage in GB/maand.
 
-Raadpleeg de [documentatie voor MariaDB-replicatie](https://mariadb.com/kb/en/library/gtid/)voor meer informatie over GTID-replicatie.
+Zie de [documentatie voor MariaDB-replicatie](https://mariadb.com/kb/en/library/gtid/)voor meer informatie over GTID-replicatie.
 
 ## <a name="when-to-use-a-read-replica"></a>Wanneer moet u een lees replica gebruiken?
 
@@ -40,10 +40,10 @@ U kunt een lees replica maken in een andere regio dan de hoofd server. Replicati
 
 U kunt een hoofd server in een [Azure database for MariaDB regio](https://azure.microsoft.com/global-infrastructure/services/?products=mariadb)hebben.  Een hoofd server kan een replica hebben in het gekoppelde gebied of in de universele replica regio's. In de onderstaande afbeelding ziet u welke replica regio's er beschikbaar zijn, afhankelijk van de hoofd regio.
 
-[![Replica regio's lezen](media/concepts-read-replica/read-replica-regions.png)](media/concepts-read-replica/read-replica-regions.png#lightbox)
+[![Read-replica regio's](media/concepts-read-replica/read-replica-regions.png)](media/concepts-read-replica/read-replica-regions.png#lightbox)
 
 ### <a name="universal-replica-regions"></a>Universele replica regio's
-U kunt altijd een lees replica maken in een van de volgende regio's, ongeacht waar uw master server zich bevindt. Dit zijn de universele replica regio's:
+U kunt in een van de volgende regio's een lees replica maken, ongeacht waar uw master server zich bevindt. De ondersteunde regio's voor universele replica's zijn:
 
 Australië-oost, Australië-zuidoost, centraal VS, Azië-oost, VS-Oost, VS-Oost 2, Japan-Oost, Japan-West, Korea-centraal, Korea-zuid, Noord-Centraal VS, Europa-noord, Zuid-Centraal VS, Zuidoost-Azië, UK-zuid, UK-west, Europa-west, VS-West, VS-West 2.
 
@@ -90,7 +90,7 @@ Voer bij de prompt het wacht woord voor het gebruikers account in.
 
 Azure Database for MariaDB levert de **replicatie vertraging in seconden** metric in azure monitor. Deze metriek is alleen beschikbaar voor replica's.
 
-Deze metrische gegevens worden berekend met `seconds_behind_master` behulp van de beschik bare metrische gegevens in de opdracht van `SHOW SLAVE STATUS` MariaDB.
+Deze metrische gegevens worden berekend met behulp van de beschik bare `seconds_behind_master` in de `SHOW SLAVE STATUS` opdracht van MariaDB.
 
 Stel een waarschuwing in om u te informeren wanneer de replicatie vertraging een waarde bereikt die niet geschikt is voor uw werk belasting.
 
@@ -114,7 +114,7 @@ Het lezen van replica's is momenteel alleen beschikbaar in de prijs Categorieën
 
 ### <a name="master-server-restart"></a>Hoofd server opnieuw opstarten
 
-Wanneer u een replica maakt voor een model zonder bestaande replica's, wordt de Master eerst opnieuw opgestart om zichzelf voor te bereiden voor replicatie. Houd er rekening mee dat u deze bewerkingen uitvoert tijdens een rustige periode.
+Wanneer u een replica maakt voor een model zonder bestaande replica's, wordt de Master eerst opnieuw opgestart om zichzelf voor te bereiden voor replicatie. Houd dit in overweging en voer deze bewerkingen uit tijdens een rustige periode.
 
 ### <a name="new-replicas"></a>Nieuwe replica's
 
@@ -141,13 +141,13 @@ Gebruikers op de hoofd server worden gerepliceerd naar de Lees replica's. U kunt
 
 ### <a name="server-parameters"></a>Serverparameters
 
-Om te voor komen dat gegevens kunnen worden gesynchroniseerd en om mogelijke gegevens verlies of-beschadiging te voor komen, worden bepaalde server parameters vergrendeld bij het gebruik van replica's voor lezen.
+Om problemen met de synchronisatie van gegevens en mogelijk verlies of beschadiging van gegevens te voorkomen, worden bepaalde serverparameters vergrendeld zodat ze niet kunnen worden bijgewerkt bij gebruik van replica's voor lezen.
 
 De volgende server parameters zijn vergrendeld op de Master-en replica servers:
 - [`innodb_file_per_table`](https://mariadb.com/kb/en/library/innodb-system-variables/#innodb_file_per_table) 
 - [`log_bin_trust_function_creators`](https://mariadb.com/kb/en/library/replication-and-binary-log-system-variables/#log_bin_trust_function_creators)
 
-De [`event_scheduler`](https://mariadb.com/kb/en/library/server-system-variables/#event_scheduler) para meter is vergrendeld op de replica servers.
+De para meter [`event_scheduler`](https://mariadb.com/kb/en/library/server-system-variables/#event_scheduler) wordt op de replica servers vergrendeld.
 
 ### <a name="other"></a>Overige
 

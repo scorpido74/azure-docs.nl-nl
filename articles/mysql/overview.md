@@ -1,18 +1,18 @@
 ---
 title: Overzicht van Azure Database for MySQL relationele database service
-description: Overzicht van de relationele database service Azure Database for MySQL.
-ms.service: mysql
+description: Meer informatie over de Azure Database for MySQL-service, een relationele database service in de micro soft Cloud op basis van de MySQL Community Edition.
 author: ajlam
+ms.service: mysql
 ms.author: andrela
 ms.custom: mvc
-ms.topic: conceptual
+ms.topic: overview
 ms.date: 08/13/2019
-ms.openlocfilehash: 1299f82c28181d1c24f68a0d36ba13c6b40d21ee
-ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
+ms.openlocfilehash: 03fe0b091939b3281d0cc0cb5e35bf055fb307e1
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69013409"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71970375"
 ---
 # <a name="what-is-azure-database-for-mysql"></a>Wat is Azure Database for MySQL?
 
@@ -55,7 +55,7 @@ De Azure Database for MySQL-service maakt gebruik van opslag versleuteling voor 
 De Azure Database for MySQL-service is standaard zo geconfigureerd dat [SSL-verbindings beveiliging](./concepts-ssl-connection-security.md) is vereist voor gegevens in-Motion over het netwerk. Het afdwingen van SSL-verbindingen tussen uw databaseserver en clienttoepassingen zorgt dat u bent beschermt tegen 'man in the middle'-aanvallen omdat de gegevensstroom tussen de server en uw toepassing wordt versleuteld. Desgewenst kunt u uitschakelen dat SSL is vereist voor het maken van verbinding met uw databaseservice als uw clienttoepassing geen ondersteuning biedt voor SSL-connectiviteit.
 
 ## <a name="contacts"></a>Contactpersonen
-Voor vragen of suggesties die u mogelijk hebt over het werken met Azure database for MySQL, stuurt u een e-mail bericht naar het Azure database for MySQL team ([ @Ask Azure DB voor mysql](mailto:AskAzureDBforMySQL@service.microsoft.com)). Let op: dit is geen alias voor technische ondersteuning.
+Voor vragen of suggesties die u mogelijk hebt over het werken met Azure Database for MySQL, stuurt u een e-mail bericht naar het Azure Database for MySQL team ([@Ask Azure DB voor mysql](mailto:AskAzureDBforMySQL@service.microsoft.com)). Dit e-mail adres is geen alias voor technische ondersteuning.
 
 Overweeg ook de volgende aanspreekpunten, indien van toepassing:
 
@@ -64,7 +64,7 @@ Overweeg ook de volgende aanspreekpunten, indien van toepassing:
 - Als u feedback wilt geven of een nieuwe functie wilt aanvragen, maakt u een vermelding via [UserVoice](https://feedback.azure.com/forums/597982-azure-database-for-mysql).
 
 ## <a name="next-steps"></a>Volgende stappen
-Nu u een inleiding op Azure Database for MySQL hebt gelezen en de vraag ' wat is Azure Database for MySQL? ' hebt beantwoord, kunt u het volgende doen:
+Nu u een inleiding op Azure Database for MySQL hebt gelezen en de vraag ' wat is Azure Database for MySQL? ' hebt beantwoord? u bent klaar voor het volgende:
 
 - Zie de pagina met prijzen voor kostenvergelijkingen en calculators. [Prijzen](https://azure.microsoft.com/pricing/details/mysql/)
 - Ga aan de slag met het maken van uw eerste server. [Een Azure-database voor een MySQL-server maken met behulp van Azure Portal](quickstart-create-mysql-server-database-using-azure-portal.md)

@@ -1,17 +1,17 @@
 ---
-title: Lees replica's maken en beheren in Azure Database for MySQL-Azure CLI, REST API
-description: In dit artikel wordt beschreven hoe u in Azure Database for MySQL Lees replica's instelt en beheert met behulp van de Azure CLI REST API
+title: "& Voor het beheren van Lees replica's maken-Azure Database for MySQL"
+description: Meer informatie over het instellen en beheren van Lees replica's in Azure Database for MySQL met behulp van de Azure CLI of REST API.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/14/2019
-ms.openlocfilehash: 5bec4e7284e78506372d395bf022055fa31998e3
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 741b50bdb2ec9c8d29a9f759e46209856de3a49c
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70993539"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71970312"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-using-the-azure-cli-and-rest-api"></a>Lees replica's maken en beheren in Azure Database for MySQL met behulp van de Azure CLI en REST API
 
@@ -44,7 +44,7 @@ De `az mysql server replica create` opdracht moet de volgende parameters:
 | naam | mydemoreplicaserver | De naam van de nieuwe replicaserver die is gemaakt. |
 | source-server | mydemoserver | De naam of ID van de bestaande hoofd-server om te repliceren van. |
 
-Gebruik de `--location` para meter om een lees replica te maken. In het CLI-voor beeld hieronder wordt de replica in VS West gemaakt.
+Als u een lees replica wilt maken, gebruikt u de para meter `--location`. In het CLI-voor beeld hieronder wordt de replica in VS West gemaakt.
 
 ```azurecli-interactive
 az mysql server replica create --name mydemoreplicaserver --source-server mydemoserver --resource-group myresourcegroup --location westus
@@ -133,7 +133,7 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 > [!NOTE]
 > Ga naar het [artikel concepten van replica's lezen](concepts-read-replicas.md)voor meer informatie over de regio's die u kunt maken in de replica. 
 
-Als u de `azure.replication_support` para meter niet op **replica** hebt ingesteld op een master server met algemeen of geoptimaliseerd voor geheugen en de server opnieuw hebt opgestart, wordt een fout bericht weer gegeven. Voer de volgende twee stappen uit voordat u een replica maakt.
+Als u de para meter `azure.replication_support` niet hebt ingesteld op **replica** op een master server met algemeen of geoptimaliseerd voor geheugen en u de server opnieuw hebt opgestart, wordt een fout bericht weer gegeven. Voer de volgende twee stappen uit voordat u een replica maakt.
 
 Een replica wordt gemaakt met behulp van dezelfde berekenings-en opslag instellingen als de hoofd server. Nadat een replica is gemaakt, kunnen verschillende instellingen onafhankelijk van de hoofd server worden gewijzigd: generatie van compute, vCores, opslag en back-up van Bewaar periode. De prijs categorie kan ook onafhankelijk worden gewijzigd, met uitzonde ring van of van de Basic-laag.
 

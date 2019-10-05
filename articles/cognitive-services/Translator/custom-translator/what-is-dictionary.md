@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: a4aac8afb7974be402ee98bb65c920133d4c118f
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 36b449c4c4ca30eb658c9519ce8e870a4f1fab32
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71947688"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71970724"
 ---
 # <a name="what-is-a-dictionary"></a>Wat is een woorden lijst?
 
@@ -39,7 +39,7 @@ U kunt een model trainen met alleen woordenlijst gegevens. Als u dit wilt doen, 
 - Woorden boeken zijn geen vervanging voor het trainen van een model met behulp van trainings gegevens. Het wordt aanbevolen om deze te vermijden en het systeem te laten leren van uw trainings gegevens. Als er echter zinnen of samengestelde samen stellingen moeten worden weer gegeven als-is, gebruikt u een woorden lijst.
 - De woorden lijst woordgroepen moet spaarzaam worden gebruikt. Houd er dus rekening mee dat wanneer een zin binnen een zin wordt vervangen, de context binnen die zin verloren gaat of beperkt is voor het vertalen van de rest van de zin. Het resultaat is dat als de woord groep of het woord in de zin wordt vertaald volgens de meegeleverde woorden lijst, de algehele Vertaal kwaliteit van de zin vaak in orde is.
 - De woorden lijst woordgroepen werkt goed voor samengestelde naam woorden, zoals product namen ("Microsoft SQL Server"), juiste namen ("City of Hamburg") of functies van het product ("Pivot Table"). Deze werkt niet gelijk aan woorden of bijvoegingen, omdat deze doorgaans zeer verbuigd zijn in de bron of in de doel taal. De aanbevolen procedures zijn om te voor komen dat vermeldingen voor de woorden lijst in combi natie met samen woorden worden samengesteld.
-- Wanneer u een woorden boek gebruikt, is het hoofdletter gebruik en interpunctie belang rijk. Woordenboek vermeldingen komen alleen overeen met woorden en zinsdelen die hetzelfde hoofdletter gebruik en lees tekens hebben als de vermelding die in de woorden lijst voor komt. In uw vertalingen worden het hoofdletter gebruik en interpunctie weer gegeven die zijn opgenomen in de doel zijde van het woordenlijst bestand. Als voor beeld hebt u een Engels-Spaans-model getraind met een woorden lijst waarin ' Hello ' is opgegeven in het bron bestand dat moet worden vertaald naar ' Buenos Dias ' in het doel bestand. Wanneer u een vertaling aanvraagt van een zin die "Hallo" bevat, zoekt het systeem eerst naar uw woorden lijst en wordt er een overeenkomst ("Hallo") gevonden en wordt ' Buenos Dias ' geretourneerd in de laatste vertaling.
+- Wanneer u een woordgroepen woordenlijst gebruikt, zijn hoofdletter gebruik en interpunctie belang rijk. Woordenboek vermeldingen komen alleen overeen met woorden en zinsdelen in de invoer zin die exact hetzelfde hoofdletter gebruik en lees tekens bevatten zoals opgegeven in het bestand van de bron woordenlijst. De vertalingen hebben ook betrekking op het hoofdletter gebruik en interpunctie die zijn opgenomen in het woordenlijst bestand van de doel groep. Als u bijvoorbeeld een Engels hebt getraind voor het Spaanse systeem dat gebruikmaakt van een woordgroepen woordenlijst waarin ' US ' is opgegeven in het bron bestand en ' EE '. UU. " in het doel bestand. Wanneer u een vertaling aanvraagt van een zin die het woord ' US ' bevat (niet gekapitaliseerd), komt dit niet overeen met de woorden lijst. Als u echter een vertaling aanvraagt van een zin die het woord ' US ' bevat (gekapitaliseerd), zou dit overeenkomen met de woorden lijst en de vertaling zou ' EE ' bevatten. UU. " Houd er rekening mee dat het hoofdletter gebruik en interpunctie in de vertaling kan afwijken van het doel bestand van de woorden lijst en kan afwijken van het hoofdletter gebruik en interpunctie in de bron. De regels van de doel taal worden gevolgd.
 - Als een woord meermaals wordt weer gegeven in een woordenlijst bestand, gebruikt het systeem altijd de laatste vermelding die is opgegeven. De woorden lijst moet daarom niet meerdere vertalingen van hetzelfde woord bevatten.
 
 ## <a name="next-steps"></a>Volgende stappen

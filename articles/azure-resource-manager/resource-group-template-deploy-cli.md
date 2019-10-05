@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 08/21/2019
 ms.author: tomfitz
-ms.openlocfilehash: bd43e919cc0b2bcf1d130c7e616b7da064abcc65
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: bef9d0490ce9109a960b69febf2970a289c25e40
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69971018"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71973397"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-cli"></a>Resources implementeren met Resource Manager-sjablonen en Azure CLI
 
@@ -96,48 +96,13 @@ az group deployment create --resource-group examplegroup \
   --parameters storageAccountType=Standard_GRS
 ```
 
-## <a name="redeploy-when-deployment-fails"></a>Opnieuw implementeren wanneer de implementatie mislukt
-
-Deze functie wordt ook wel bekend als *Rollback bij fout*. Wanneer een implementatie mislukt, kunt u automatisch een eerdere, geslaagde implementatie uit de implementatie geschiedenis opnieuw implementeren. Als u een herimplementatie wilt opgeven `--rollback-on-error` , gebruikt u de para meter in de implementatie opdracht. Deze functie is handig als u een bekende goede status hebt voor de implementatie van uw infra structuur en u wilt terugkeren naar deze status. Er zijn een aantal voor behoud en beperkingen:
-
-- De implementatie wordt precies zo uitgevoerd als deze eerder met dezelfde para meters is uitgevoerd. U kunt de para meters niet wijzigen.
-- De vorige implementatie wordt uitgevoerd met de [volledige modus](./deployment-modes.md#complete-mode). Alle resources die geen deel uitmaken van de vorige implementatie worden verwijderd en alle resource configuraties worden ingesteld op de vorige status. Zorg ervoor dat u de [implementatie modi](./deployment-modes.md)volledig begrijpt.
-- De herimplementatie heeft alleen invloed op de resources, maar wijzigingen in de gegevens worden niet beïnvloed.
-- Deze functie wordt alleen ondersteund voor implementaties van resource groepen, geen implementaties op abonnements niveau. Zie [resource groepen en-resources op abonnements niveau maken](./deploy-to-subscription.md)voor meer informatie over de implementatie op abonnements niveau.
-
-Als u deze optie wilt gebruiken, moeten uw implementaties unieke namen hebben zodat deze in de geschiedenis kunnen worden geïdentificeerd. Als u geen unieke namen hebt, kan de huidige mislukte implementatie de eerder geslaagde implementatie in de geschiedenis overschrijven. U kunt deze optie alleen gebruiken bij implementaties op hoofd niveau. Implementaties van een geneste sjabloon zijn niet beschikbaar voor opnieuw implementeren.
-
-Als u de laatste geslaagde implementatie opnieuw wilt implementeren `--rollback-on-error` , voegt u de para meter toe als een vlag.
-
-```azurecli-interactive
-az group deployment create \
-  --name ExampleDeployment \
-  --resource-group ExampleGroup \
-  --template-file storage.json \
-  --parameters storageAccountType=Standard_GRS \
-  --rollback-on-error
-```
-
-Als u een specifieke implementatie opnieuw wilt implementeren, `--rollback-on-error` gebruikt u de para meter en geeft u de naam van de implementatie op.
-
-```azurecli-interactive
-az group deployment create \
-  --name ExampleDeployment02 \
-  --resource-group ExampleGroup \
-  --template-file storage.json \
-  --parameters storageAccountType=Standard_GRS \
-  --rollback-on-error ExampleDeployment01
-```
-
-De opgegeven implementatie moet zijn geslaagd.
-
 ## <a name="parameters"></a>Parameters
 
 Als u parameter waarden wilt door geven, kunt u inline-para meters of een parameter bestand gebruiken.
 
 ### <a name="inline-parameters"></a>Inline-para meters
 
-Geef de waarden op in `parameters`om inline-para meters door te geven. Als u bijvoorbeeld een teken reeks en een matrix wilt door geven aan een sjabloon, gebruikt u:
+Als u inline-para meters wilt door geven, geeft u de waarden op in `parameters`. Als u bijvoorbeeld een teken reeks en een matrix wilt door geven aan een sjabloon, gebruikt u:
 
 ```azurecli
 az group deployment create \
@@ -146,7 +111,7 @@ az group deployment create \
   --parameters exampleString='inline string' exampleArray='("value1", "value2")'
 ```
 
-Als u Azure CLI gebruikt met Windows-opdracht prompt (CMD) of Power shell, geeft u de matrix de volgende `exampleArray="['value1','value2']"`notatie:.
+Als u Azure CLI gebruikt met Windows-opdracht prompt (CMD) of Power shell, geeft u de matrix de volgende notatie: `exampleArray="['value1','value2']"`.
 
 U kunt ook de inhoud van het bestand ophalen en deze inhoud als een inline-para meter opgeven.
 
@@ -174,7 +139,7 @@ In plaats van para meters als inline waarden door te geven in uw script, is het 
 
 Zie voor meer informatie over het parameter bestand [Resource Manager-parameter bestand maken](resource-manager-parameter-files.md).
 
-Als u een lokaal parameter bestand wilt door `@` geven, gebruikt u om een lokaal bestand met de naam Storage. para meters. json op te geven.
+Als u een lokaal parameter bestand wilt door geven, gebruikt u `@` om een lokaal bestand met de naam Storage. para meters. json op te geven.
 
 ```azurecli-interactive
 az group deployment create \
@@ -237,7 +202,7 @@ Als uw sjabloon een syntaxis fout bevat, retourneert de opdracht een fout meldin
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- In de voor beelden in dit artikel worden resources geïmplementeerd voor een resource groep in uw standaard abonnement. Zie [meerdere Azure-abonnementen beheren](/cli/azure/manage-azure-subscriptions-azure-cli)als u een ander abonnement wilt gebruiken.
+- Als u wilt terugkeren naar een geslaagde implementatie wanneer u een fout krijgt, raadpleegt u [herstellen bij fout naar geslaagde implementatie](rollback-on-error.md).
 - Zie [Azure Resource Manager implementatie modi](deployment-modes.md)om op te geven hoe u resources wilt afhandelen die in de resource groep aanwezig zijn, maar die niet zijn gedefinieerd in de sjabloon.
 - Zie [inzicht in de structuur en syntaxis van Azure Resource Manager sjablonen](resource-group-authoring-templates.md)voor meer informatie over het definiëren van para meters in uw sjabloon.
 - Zie [problemen met algemene Azure-implementatie fouten oplossen met Azure Resource Manager](resource-manager-common-deployment-errors.md)voor tips over het oplossen van veelvoorkomende implementatie fouten.

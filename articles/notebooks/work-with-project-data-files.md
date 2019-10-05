@@ -4,21 +4,20 @@ description: Hoe u gegevens overzetten naar een Azure-notitieblokken-project uit
 services: app-service
 documentationcenter: ''
 author: kraigb
-manager: douge
+manager: barbkess
 ms.assetid: 586b423b-6668-4bdd-9592-4c237d7458fb
 ms.service: azure-notebooks
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: b522b0bd641d0147518843b11be4cd3a1430ae20
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b33d5dbfa354061b9b25069b3b300010b7cd49bf
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60240458"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71970198"
 ---
 # <a name="work-with-data-files-in-azure-notebook-projects"></a>Werken met gegevensbestanden in Azure Notebook-projecten
 
@@ -42,17 +41,17 @@ U kunt bestanden overbrengen naar een project van het projectdashboard of binnen
 
 1. Selecteer de **uploaden** opdracht en vervolgens een **van URL** of **van computer** en de benodigde informatie voor de gegevens die u wilt importeren:
 
-   - **Via URL**: Voer de bron-adres in de **bestands-URL** veld en de bestandsnaam om toe te wijzen aan de notebook in uw project in de **bestandsnaam** veld. Selecteer vervolgens **+ toevoegen bestand** om toe te voegen van de URL aan de uploadlijst met. Het proces herhalen voor elke extra URL's, en selecteer vervolgens **gedaan**.
+   - **Van URL**: Voer in het veld **Bestands naam** het bron adres in het veld **bestands-URL** in en typ de bestands naam die u wilt toewijzen aan het notitie blok in uw project. Selecteer vervolgens **+ toevoegen bestand** om toe te voegen van de URL aan de uploadlijst met. Het proces herhalen voor elke extra URL's, en selecteer vervolgens **gedaan**.
 
      ![Uploaden vanaf URL pop-upvenster](media/quickstarts/upload-from-url-popup.png)
 
-   - **Vanaf computer**: Sleep en zet deze neer bestanden in het pop-upvenster of selecteer **bestanden kiezen**, en blader vervolgens naar en selecteer de gegevensbestanden die u wilt importeren. U kunt verwijderen of een willekeurig aantal bestanden van elk type en de indeling kiezen omdat het is aan de code in het notitieblok opent u het bestand en parseren van de gegevens.
+   - **Van computer**: Sleep bestanden naar het pop-upvenster of selecteer **bestanden kiezen**, blader naar en selecteer de gegevens bestanden die u wilt importeren. U kunt verwijderen of een willekeurig aantal bestanden van elk type en de indeling kiezen omdat het is aan de code in het notitieblok opent u het bestand en parseren van de gegevens.
 
      ![Uploaden vanaf computer pop-upvenster](media/quickstarts/upload-from-computer-popup.png)
 
 1. Zodra geïmporteerd, bestanden worden weergegeven op het projectdashboard en is toegankelijk vanuit notebook code met behulp van relatieve padnamen naar de map met.
 
-### <a name="import-files-from-the-file-menu-in-a-notebook"></a>Bestanden importeren in het menu bestand in een notitieblok
+### <a name="import-files-from-the-file-menu-in-a-notebook"></a>Bestanden importeren vanuit het menu bestand in een notitie blok
 
 1. Binnen een actieve laptop, selecteer de **bestand** > **uploaden** opdracht:
 
@@ -62,7 +61,7 @@ U kunt bestanden overbrengen naar een project van het projectdashboard of binnen
 
 1. In de **Uploadstatus** pop-upbericht verschijnt, selecteer een **doelmap** uit de vervolgkeuzelijst:
 
-    - Sessie-map ( *~/* ): Uploads van bestanden in de huidige sessie van de notebook maar bestanden in het project niet maken. De map van de sessie is een peer in de projectmap, maar niet bewaard is gebleven na de sessie wordt beëindigd. Voorvoegsel voor toegang tot sessiebestanden in code, de bestandsnamen met het relatieve pad *... /* .
+    - Sessiemap ( *~/* ): Uploadt bestanden naar de huidige notebook sessie, maar maakt geen bestanden in het project. De map van de sessie is een peer in de projectmap, maar niet bewaard is gebleven na de sessie wordt beëindigd. Voorvoegsel voor toegang tot sessiebestanden in code, de bestandsnamen met het relatieve pad *... /* .
 
         Met behulp van de sessie-map, is het handig om te experimenten en voorkomt u dat het project met bestanden die u kan of mogelijk niet op lange termijn. U kunt bestanden ook uploaden naar de sessie-map die dezelfde naam hebben tot bestanden in het project zonder conflicten veroorzaken, en zonder dat om de bestandsnamen te wijzigen. Bijvoorbeeld: Stel dat u één versie van hebt *data.csv* in het project al, maar wilt om te experimenteren met een andere versie van *data.csv*. Door het bestand te uploaden naar de map van de sessie, kunt u de notebook met behulp van gegevens in het geüploade bestand uitvoeren (naar wordt verwezen in met behulp van code *... /Data.csv*) in plaats van de gegevens in het bestand van het project.
 

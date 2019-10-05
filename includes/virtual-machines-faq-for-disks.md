@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/13/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: ffc77d2a175d300be306b1566324b2551e38aeab
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: 155ca71ae30559cc79e090a8a7bbc12c896b637f
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71266871"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71973005"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Veelgestelde vragen over Azure IaaS-VM-schijven en beheerde en onbeheerde Premium-schijven
 
@@ -218,8 +218,8 @@ Ja, Azure Backup is nu beschikbaar.
 **Standard-SSD schijven Hoe kan ik maken?**
 U kunt Standard-SSD schijven maken met behulp van Azure Resource Manager sjablonen, SDK, Power shell of CLI. Hieronder vindt u de para meters die nodig zijn in het Resource Manager-sjabloon om Standard-SSD schijven te maken:
 
-* *apiVersion* voor micro soft. Compute moet worden `2018-04-01` ingesteld als (of hoger)
-* Geef *managedDisk. storageAccountType* op als`StandardSSD_LRS`
+* *apiVersion* voor micro soft. Compute moet worden ingesteld als `2018-04-01` (of hoger)
+* Geef *managedDisk. storageAccountType* op als `StandardSSD_LRS`
 
 In het volgende voor beeld ziet u de sectie *Properties. storageProfile. osDisk* voor een virtuele machine die gebruikmaakt van Standard-SSD schijven:
 
@@ -293,6 +293,10 @@ Ja
 **Is Azure Storage service versleuteling standaard ingeschakeld bij het maken van een beheerde schijf?**
 
 Ja.
+
+**Is het opstart volume standaard versleuteld op een beheerde schijf?**
+
+Ja. Standaard worden alle beheerde schijven versleuteld, met inbegrip van de besturingssysteem schijf.
 
 **Wie beheert de versleutelings sleutels?**
 

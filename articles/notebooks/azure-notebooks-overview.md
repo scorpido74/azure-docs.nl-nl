@@ -4,21 +4,20 @@ description: Jupyter Notebooks in de cloud uitvoeren met behulp van de gratis Az
 services: app-service
 documentationcenter: ''
 author: kraigb
-manager: douge
+manager: barbkess
 ms.assetid: 9cea5a8e-c52d-4bdc-9e4a-cecdc1ad02c1
 ms.service: azure-notebooks
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: overview
 ms.date: 04/05/2019
 ms.author: kraigb
-ms.openlocfilehash: 4840a9839fe1f2a31470d4a67b3755b82077fd90
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 12d9a1a92c0b008244c7db4ec23d5a28888b042a
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60634317"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71973169"
 ---
 # <a name="overview-of-azure-notebooks"></a>Overzicht van Azure Notebooks
 
@@ -59,7 +58,7 @@ Azure Notebooks is een gratis service, maar om misbruik te voorkomen is elk proj
 
 Als u alle beperkingen wilt opheffen, meld u zich met behulp van Azure Active Directory aan bij Azure Notebooks met een account (bijvoorbeeld een zakelijk account). Als dit account is gekoppeld aan een Azure-abonnement, kunt u elk Azure Data Science Virtual Machine-exemplaar binnen dat abonnement verbinden. Zie [Manage and configure projects - Compute tier](configure-manage-azure-notebooks-projects.md#compute-tier) (Projecten beheren en configureren - Compute-laag) voor meer informatie.
 
-Laptop-servers worden gegarandeerd aanwezig voor maximaal 8 uur. In de meeste gevallen de container is niet afhankelijk van deze limiet en blijft ook na die tijd worden uitgevoerd, maar lange levensduur hebben sessies kunnen van tijd tot tijd worden afgesloten voor de stabiliteit van het systeem.
+Notebook servers zijn gegarandeerd Maxi maal 8 uur beschikbaar. In de meeste gevallen is de container niet onderhevig aan deze limiet en blijft deze later worden uitgevoerd, maar er kunnen soms langdurige sessies worden afgesloten voor een systeem stabiliteit.
 
 ## <a name="available-kernels-and-environments"></a>Beschikbare kernels en omgevingen
 
@@ -113,10 +112,10 @@ Voor vragen over Azure Notebooks kunt u een vraag stellen op de [GitHub-opslagpl
 
 - Artikelen met procedures:
   
-  - [Projecten maken en klonen](create-clone-jupyter-notebooks.md)
-  - [Projecten configureren en beheren](configure-manage-azure-notebooks-projects.md)
-  - [Pakketten vanuit een notebook installeren](install-packages-jupyter-notebook.md)
-  - [Een diavoorstelling presenteren](present-jupyter-notebooks-slideshow.md)
-  - [Werken met gegevensbestanden](work-with-project-data-files.md)
-  - [Toegang tot gegevensbronnen](access-data-resources-jupyter-notebooks.md)
-  - [Azure Machine Learning Services gebruiken](use-machine-learning-services-jupyter-notebooks.md)
+  - [Maken en projecten klonen](create-clone-jupyter-notebooks.md)
+  - [Configureren en beheren van projecten](configure-manage-azure-notebooks-projects.md)
+  - [Installeren van pakketten van binnen een laptop](install-packages-jupyter-notebook.md)
+  - [Een diavoorstelling](present-jupyter-notebooks-slideshow.md)
+  - [Werken met bestanden](work-with-project-data-files.md)
+  - [Toegang tot gegevensresources](access-data-resources-jupyter-notebooks.md)
+  - [Azure Machine Learning-Services gebruiken](use-machine-learning-services-jupyter-notebooks.md)

@@ -1,19 +1,19 @@
 ---
-title: Opgeslagen procedures Azure Database for MySQL
-description: In dit artikel worden opgeslagen procedures beschreven die specifiek zijn voor Azure Database for MySQL.
+title: Opgeslagen procedures voor Azure Database for MySQL beheer
+description: Informatie over welke opgeslagen procedures in Azure Database for MySQL nuttig zijn om u te helpen bij het configureren van replicatie van gegevens in, het instellen van de tijd zone en het beëindigen van query's.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/19/2019
-ms.openlocfilehash: f01a0bf68e510133058dc0075f27cfcf6241c7a8
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: 34598278ac7f432c5976de86eaf5dcf477c7e81a
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71156174"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71970340"
 ---
-# <a name="azure-database-for-mysql-stored-procedures"></a>Opgeslagen procedures Azure Database for MySQL
+# <a name="azure-database-for-mysql-management-stored-procedures"></a>Opgeslagen procedures voor Azure Database for MySQL beheer
 
 Opgeslagen procedures zijn beschikbaar op Azure Database for MySQL servers om uw MySQL-server te beheren. Dit omvat het beheren van de verbindingen van uw server, het uitvoeren van query's en het instellen van Replicatie van inkomende gegevens.  
 
@@ -39,9 +39,9 @@ De volgende opgeslagen procedures zijn beschikbaar in Azure Database for MySQL v
 
 |**Naam van opgeslagen procedure**|**Invoerparameters**|**Uitvoer parameters**|**Opmerking over gebruik**|
 |-----|-----|-----|-----|
-|*MySQL. AZ _kill*|processlist_id|N/A|Gelijk aan [`KILL CONNECTION`](https://dev.mysql.com/doc/refman/8.0/en/kill.html) -opdracht. De verbinding die is gekoppeld aan de geleverde processlist_id wordt beëindigd na het beëindigen van een instructie die de verbinding uitvoert.|
-|*MySQL. AZ _kill_query*|processlist_id|N/A|Gelijk aan [`KILL QUERY`](https://dev.mysql.com/doc/refman/8.0/en/kill.html) -opdracht. Hiermee wordt de instructie beëindigd die momenteel wordt uitgevoerd door de verbinding. De verbinding zelf blijft actief.|
-|*MySQL. AZ _load_timezone*|N/A|N/A|Laadt tijd zone tabellen zodat de `time_zone` para meter kan worden ingesteld op benoemde waarden (bijvoorbeeld "VS/Pacific").|
+|*MySQL. AZ _kill*|processlist_id|N/A|Gelijk aan de opdracht [`KILL CONNECTION`](https://dev.mysql.com/doc/refman/8.0/en/kill.html) . De verbinding die is gekoppeld aan de geleverde processlist_id wordt beëindigd na het beëindigen van een instructie die de verbinding uitvoert.|
+|*MySQL. AZ _kill_query*|processlist_id|N/A|Gelijk aan de opdracht [`KILL QUERY`](https://dev.mysql.com/doc/refman/8.0/en/kill.html) . Hiermee wordt de instructie beëindigd die momenteel wordt uitgevoerd door de verbinding. De verbinding zelf blijft actief.|
+|*MySQL. AZ _load_timezone*|N/A|N/A|Laadt tijd zone tabellen zodat de para meter `time_zone` kan worden ingesteld op benoemde waarden (bijvoorbeeld "VS/Pacific").|
 
 ## <a name="next-steps"></a>Volgende stappen
 - Meer informatie over het instellen van [replicatie van inkomende gegevens](howto-data-in-replication.md)

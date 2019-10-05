@@ -1,20 +1,20 @@
 ---
-title: Problemen oplossen met de prestaties van query's in Azure Database for MySQL
-description: In dit artikel wordt beschreven hoe u uitleg gebruiken voor het oplossen van prestaties van query's in Azure Database voor MySQL.
+title: Problemen met query prestaties in Azure Database for MySQL oplossen
+description: Meer informatie over het gebruik van uitleg om de prestaties van query's in Azure Database for MySQL op te lossen.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 02/28/2018
-ms.openlocfilehash: 819e2393619766d46385cdd6fe550fff1e1a7631
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d58721f1fedd234b3c400a82035048d8e70f8c32
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60720209"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71972857"
 ---
-# <a name="how-to-use-explain-to-profile-query-performance-in-azure-database-for-mysql"></a>Hoe u met uitleg profiel prestaties van query's in Azure Database for MySQL
-**Leg uit** is een handig hulpmiddel voor query's optimaliseren. Leg uit de instructie kan worden gebruikt voor informatie over hoe SQL-instructies worden uitgevoerd. De volgende uitvoer ziet u een voorbeeld van de uitvoering van een instructie uitleg.
+# <a name="how-to-use-explain-to-profile-query-performance-in-azure-database-for-mysql"></a>UITLEGGEN hoe u de prestaties van query's in Azure Database for MySQL kunt bepalen
+**Uitleg** is een handig hulp programma voor het optimaliseren van query's. De instructie uitleg kan worden gebruikt om informatie op te halen over hoe SQL-instructies worden uitgevoerd. In de volgende uitvoer ziet u een voor beeld van de uitvoering van een uitleg-instructie.
 
 ```sql
 mysql> EXPLAIN SELECT * FROM tb1 WHERE id=100\G
@@ -33,7 +33,7 @@ possible_keys: NULL
         Extra: Using where
 ```
 
-Zoals te zien is in dit voorbeeld is de waarde van *sleutel* is NULL. Deze uitvoer betekent MySQL kan geen indexen die is geoptimaliseerd voor de query niet vinden en een volledige tabelcontrole uitgevoerd worden uitgevoerd. Laten we deze query te optimaliseren door het toevoegen van een index op de **ID** kolom.
+Zoals in dit voor beeld kan worden gezien, is de waarde van *Key* null. Deze uitvoer betekent dat MySQL geen indexen kan vinden die zijn geoptimaliseerd voor de query en een volledige tabel scan uitvoert. We gaan deze query optimaliseren door een index toe te voegen aan de **id-** kolom.
 
 ```sql
 mysql> ALTER TABLE tb1 ADD KEY (id);
@@ -53,10 +53,10 @@ possible_keys: id
         Extra: NULL
 ```
 
-De nieuwe uitleg laat zien dat MySQL nu een index gebruikt op het aantal rijen 1, wat op zijn beurt aanzienlijk de zoektijd verkort beperken.
+In de nieuwe uitleg ziet u dat MySQL nu gebruikmaakt van een index om het aantal rijen te beperken tot 1, die op zijn beurt de zoek tijd aanzienlijk verkort.
  
-## <a name="covering-index"></a>Die betrekking hebben op index
-Een index die bestaat uit alle kolommen van een query in de index te verminderen van de waarde voor het ophalen van gegevenstabellen. Hier volgt een voorbeeld in de volgende **GROUP BY** instructie.
+## <a name="covering-index"></a>Bedekte index
+Een bedekte index bestaat uit alle kolommen van een query in de index om het ophalen van waarden uit gegevens tabellen te verminderen. Hier volgt een voor beeld in de volgende **Group by** -instructie.
  
 ```sql
 mysql> EXPLAIN SELECT MAX(c1), c2 FROM tb1 WHERE c2 LIKE '%100' GROUP BY c1\G
@@ -75,9 +75,9 @@ possible_keys: NULL
         Extra: Using where; Using temporary; Using filesort
 ```
 
-Zoals u kunt zien in de uitvoer, MySQL gebruikt geen geen indexen omdat er geen juiste indexen beschikbaar zijn. U ziet ook *met behulp van tijdelijke; Met behulp van bestand sorteren*, wat betekent dat MySQL maakt een tijdelijke tabel om te voldoen aan de **GROUP BY** component.
+Zoals in de uitvoer kan worden weer gegeven, gebruikt MySQL geen indexen omdat er geen geschikte indexen beschikbaar zijn. Er wordt ook *gebruikgemaakt van tijdelijke; Het gebruik van bestanden sorteren*, wat betekent dat MySQL een tijdelijke tabel maakt om te voldoen aan de component **Group by** .
  
-Het maken van een index voor kolom **c2** alleen is geen verschil en MySQL nog steeds nodig heeft om een tijdelijke tabel te maken:
+Het maken van een index op kolom **C2** is alleen geen verschil en MySQL moet nog steeds een tijdelijke tabel maken:
 
 ```sql 
 mysql> ALTER TABLE tb1 ADD KEY (c2);
@@ -97,7 +97,7 @@ possible_keys: NULL
         Extra: Using where; Using temporary; Using filesort
 ```
 
-In dit geval een **gedekte index** op zowel **c1** en **c2** kan worden gemaakt, waarbij de waarde van **c2**'rechtstreeks in de index van Elimineer verder opzoeken van gegevens.
+In dit geval kan een **gedekte index** op zowel **C1** als **C2** worden gemaakt, waarbij de waarde **C2**direct in de index wordt toegevoegd om verdere gegevens zoekactie te elimineren.
 
 ```sql 
 mysql> ALTER TABLE tb1 ADD KEY covered(c1,c2);
@@ -117,10 +117,10 @@ possible_keys: covered
         Extra: Using where; Using index
 ```
 
-Zoals in de bovenstaande uitleg wordt weergegeven, MySQL nu maakt gebruik van de gedekte index- en Vermijd het maken van een tijdelijke tabel. 
+Zoals hierboven wordt weer gegeven, maakt MySQL nu gebruik van de gedekte index en vermijdt u het maken van een tijdelijke tabel. 
 
 ## <a name="combined-index"></a>Gecombineerde index
-Een gecombineerde index waarden uit meerdere kolommen bestaat, en kan worden beschouwd als een matrix van rijen die door het samenvoegen van waarden van de geïndexeerde kolommen worden gesorteerd. Deze methode kan nuttig zijn bij een **GROUP BY** instructie.
+Een gecombineerde index bevat waarden uit meerdere kolommen en kan worden beschouwd als een matrix van rijen die zijn gesorteerd door het samen voegen van de waarden van de geïndexeerde kolommen. Deze methode kan nuttig zijn in een **Group by** -instructie.
 
 ```sql
 mysql> EXPLAIN SELECT c1, c2 from tb1 WHERE c2 LIKE '%100' ORDER BY c1 DESC LIMIT 10\G
@@ -139,7 +139,7 @@ possible_keys: NULL
         Extra: Using where; Using filesort
 ```
 
-MySQL wordt uitgevoerd een *bestand sorteren* bewerking die is redelijk langzaam, met name wanneer er te veel rijen sorteren. Voor het optimaliseren van deze query kan een gecombineerde index worden gemaakt op beide kolommen die zijn gesorteerd.
+MySQL voert een *Bestands Sorteer* bewerking uit die tamelijk langzaam is, vooral wanneer het een groot aantal rijen moet sorteren. Als u deze query wilt optimaliseren, kunt u een gecombineerde index maken op beide kolommen die worden gesorteerd.
 
 ```sql 
 mysql> ALTER TABLE tb1 ADD KEY my_sort2 (c1, c2);
@@ -159,12 +159,12 @@ possible_keys: NULL
         Extra: Using where; Using index
 ```
 
-De uitleg nu zien dat MySQL gecombineerde index gebruiken om te voorkomen dat aanvullende sorteren omdat de index is al gesorteerd.
+In de uitleg is nu aangegeven dat MySQL een gecombineerde index kan gebruiken om extra Sorteer bewerkingen te voor komen omdat de index al is gesorteerd.
  
 ## <a name="conclusion"></a>Conclusie
  
-Met behulp van uitleg en een ander type indexen kan aanzienlijk prestaties. Omdat er een index op betekent de tabel niet noodzakelijkerwijs dat MySQL zou kunnen gebruiken voor uw query's. Altijd uw veronderstellingen met uitleg te valideren en optimaliseren van uw query's met behulp van indexen.
+Door gebruik te maken van uitleg en verschillende typen indexen kunnen de prestaties aanzienlijk toenemen. Het hebben van een index voor de tabel is niet noodzakelijkerwijs dat MySQL het zou kunnen gebruiken voor uw query's. Valideer uw hypo theses altijd met uitleg en Optimaliseer uw query's met behulp van indexen.
 
 
 ## <a name="next-steps"></a>Volgende stappen
-- Peer-antwoorden op uw meest betrokken vragen of een nieuwe vraag/antwoord plaatsen, gaat u naar [MSDN-forum](https://social.msdn.microsoft.com/forums/security/en-US/home?forum=AzureDatabaseforMySQL) of [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-database-mysql).
+- Ga naar [MSDN-forum](https://social.msdn.microsoft.com/forums/security/en-US/home?forum=AzureDatabaseforMySQL) of [stack overflow](https://stackoverflow.com/questions/tagged/azure-database-mysql)om peer antwoorden te vinden op uw vragen of een nieuwe vraag/antwoord te plaatsen.

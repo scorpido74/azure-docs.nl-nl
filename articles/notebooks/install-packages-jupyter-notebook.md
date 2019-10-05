@@ -4,21 +4,20 @@ description: Het installeren van Python, R, en F# pakketten uit binnen een Jupyt
 services: app-service
 documentationcenter: ''
 author: kraigb
-manager: douge
+manager: barbkess
 ms.assetid: 6f089c12-128b-4dbd-96e3-1320d37eeba4
 ms.service: azure-notebooks
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: b0881cb6dac9ec83d2126942c758508e760f9c83
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: e6582bb21cb6d383e298bdf68bdb2f565147c20a
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70274427"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71969940"
 ---
 # <a name="install-packages-from-within-a-notebook"></a>Installeren van pakketten van binnen een laptop
 
@@ -40,7 +39,7 @@ Als uitvoer van de opdracht geeft aan dat al door de voorwaarde is voldaan, word
 
 ## <a name="r"></a>R
 
-Pakketten in R kunnen worden geïnstalleerd vanuit kranen of github met `install.packages` behulp van de functie in een code-cel:
+Pakketten in R kunnen worden geïnstalleerd vanuit KRANen of GitHub met behulp van de functie `install.packages` in een code-cel:
 
 ```r
 install.packages("package_name")
@@ -83,5 +82,5 @@ open MathNet.Numerics
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Procedure: Projecten configureren en beheren](configure-manage-azure-notebooks-projects.md)
-- [Procedure: Een diavoorstelling weer geven](present-jupyter-notebooks-slideshow.md)
+- [Procedure: Projecten configureren en beheren @ no__t-0
+- [Procedure: Een diavoorstelling weer geven @ no__t-0

@@ -4,16 +4,16 @@ description: Gegevens exporteren uit uw Azure IoT Central-toepassing naar Azure 
 services: iot-central
 author: viv-liu
 ms.author: viviali
-ms.date: 07/08/2019
+ms.date: 09/26/2019
 ms.topic: conceptual
 ms.service: iot-central
-manager: peterpr
-ms.openlocfilehash: bc1d2e50bca2ca6a4ef525ca2b9c13dc4021363b
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+manager: corywink
+ms.openlocfilehash: 9ac650273a53da715b89e3233b30cf50710cfcfd
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69880811"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71973230"
 ---
 # <a name="export-your-data-to-azure-blob-storage-preview-features"></a>Uw gegevens exporteren naar Azure Blob Storage (preview-functies)
 
@@ -21,31 +21,28 @@ ms.locfileid: "69880811"
 
 *Dit onderwerp is van toepassing op beheerders.*
 
-In dit artikel wordt beschreven hoe u de functie continue gegevens export in azure IoT Central gebruikt om periodiek gegevens naar uw **Azure Blob-opslag account**te exporteren. U kunt **metingen**, **apparaten**en **Apparaatinstellingen** exporteren naar bestanden in Apache Avro-indeling. De geëxporteerde gegevens kunnen worden gebruikt voor koude-pad analyses, zoals trainings modellen in de analyse van Azure Machine Learning of lange termijn in micro soft Power BI.
+In dit artikel wordt beschreven hoe u de functie continue gegevens export in azure IoT Central gebruikt om regel matig gegevens te exporteren naar uw **Azure Blob-opslag account** of **Azure data Lake Storage Gen2-opslag account**. U kunt **telemetrie**, **apparaten**en **APPARAATINSTELLINGEN** exporteren naar bestanden in JSON-indeling. De geëxporteerde gegevens kunnen worden gebruikt voor koude-pad analyses, zoals trainings modellen in de analyse van Azure Machine Learning of lange termijn in micro soft Power BI.
 
 > [!Note]
-> Wanneer u de continue gegevens export inschakelt, ontvangt u de gegevens vanaf dat moment. Op dit moment kunnen geen gegevens worden opgehaald voor een tijd dat de continue gegevens export is uitgeschakeld. Als u meer historische gegevens wilt behouden, moet u de continue gegevens export voor tijdig inschakelen.
+> Wanneer u continue gegevens export inschakelt, worden er vanaf dat moment alleen gegevens opgehaald. Op dit moment kunnen geen gegevens worden opgehaald voor een tijd dat de continue gegevens export is uitgeschakeld. Als u meer historische gegevens wilt behouden, moet u de continue gegevens export voor tijdig inschakelen.
 
 
 ## <a name="prerequisites"></a>Vereisten
 
 - U moet een beheerder zijn in uw IoT Central-toepassing
 
-
-## <a name="set-up-export-destination"></a>Export bestemming instellen
-
+## <a name="create-storage-account"></a>Een opslagaccount maken
 Als u geen bestaande opslag hebt om naar te exporteren, voert u de volgende stappen uit:
 
-## <a name="create-storage-account"></a>Opslag account maken
-
-1. Maak een [Nieuw opslag account in de Azure Portal](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM). Meer informatie vindt u in [Azure Storage docs](https://aka.ms/blobdocscreatestorageaccount).
-2. Kies voor het account type **Algemeen doel** of **Blob-opslag**.
-3. Kies een abonnement. 
+1. Maak een [Nieuw opslag account in de Azure Portal](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM). Meer informatie over het maken van nieuwe [Azure Blob Storage-accounts](https://aka.ms/blobdocscreatestorageaccount) of [Azure data Lake Storage v2-opslag accounts](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-quickstart-create-account).
 
     > [!Note] 
-    > U kunt nu gegevens exporteren naar andere abonnementen die **niet gelijk** zijn aan die voor uw betalen naar gebruik-IOT Central toepassing. In dit geval kunt u verbinding maken met behulp van een connection string.
+    > Als u ervoor kiest om gegevens te exporteren naar een ADLS v2-opslag account, moet u **account type** kiezen als **BlobStorage**. 
 
-4. Maak een container in uw opslag account. Ga naar uw opslagaccount. Selecteer onder **BLOB**-service **Bladeren door blobs**. Selecteer **+ container** aan de bovenkant om een nieuwe container te maken
+    > [!Note] 
+    > U kunt gegevens exporteren naar opslag accounts in andere abonnementen dan die voor uw betalen per gebruik-IoT Central-toepassing. In dit geval kunt u verbinding maken met behulp van een connection string.
+
+2. Maak een container in uw opslag account. Ga naar uw opslagaccount. Selecteer onder **BLOB**-service **Bladeren door blobs**. Selecteer **+ container** aan de bovenkant om een nieuwe container te maken.
 
 
 ## <a name="set-up-continuous-data-export"></a>Continue gegevens export instellen
@@ -57,16 +54,14 @@ Nu u een opslag bestemming hebt waarnaar u gegevens kunt exporteren, voert u de 
 2. Selecteer in het menu links de optie **gegevens exporteren**.
 
     > [!Note]
-    > Als er geen doorlopende gegevens export wordt weer gegeven in het linkermenu, bent u geen beheerder in uw app. Neem contact op met een beheerder om het exporteren van gegevens in te stellen.
-
-    ![Nieuwe CDE Event hub maken](media/howto-export-data-pnp/export-menu1.png)
+    > Als het exporteren van gegevens niet in het linkermenu wordt weer gegeven, bent u geen beheerder in uw app. Neem contact op met een beheerder om het exporteren van gegevens in te stellen.
 
 3. Selecteer de knop **+ Nieuw** in de rechter bovenhoek. Kies **Azure Blob Storage** als doel van uw export. 
 
     > [!NOTE] 
     > Het maximum aantal exports per app is vijf. 
 
-    ![Nieuwe continue gegevens export maken](media/howto-export-data-pnp/export-new1.png)
+    ![Nieuwe continue gegevens export maken](media/howto-export-data-pnp/export-new2.png)
 
 4. Selecteer in de vervolg keuzelijst de naam ruimte van uw **opslag account**. U kunt ook de laatste optie in de lijst kiezen die **een connection string invoert**. 
 
@@ -76,569 +71,285 @@ Nu u een opslag bestemming hebt waarnaar u gegevens kunt exporteren, voert u de 
     > [!NOTE] 
     > Voor apps met een proef versie van 7 dagen is de enige manier om continue gegevens export te configureren via een connection string. De reden hiervoor is dat apps met een proef versie van zeven dagen geen bijbehorend Azure-abonnement hebben.
 
-    ![Nieuwe CDE Event hub maken](media/howto-export-data-pnp/export-create-blob.png)
+    ![Nieuwe export naar Blob maken](media/howto-export-data-pnp/export-create-blob2.png)
 
-5. Beschrijving Als u **een connection string invoert**, wordt er een nieuw vak weer gegeven waarin u uw Connection String kunt plakken. Ga als volgt te connection string:
-    - Opslag account, gaat u naar het opslag account in de Azure Portal.
-        - Selecteer onder **instellingen** **toegangs sleutels**
-        - Kopieer de waarde van de Key1-verbindings reeks of de Key2-verbindings reeks
+5. Beschrijving Als u **een connection string invoert**, wordt er een nieuw vak weer gegeven waarin u uw Connection String kunt plakken. Als u de connection string voor uw opslag account wilt ophalen, gaat u naar het opslag account in de Azure Portal:
+    - Selecteer onder **instellingen** **toegangs sleutels**
+    - Kopieer de waarde van de Key1-verbindings reeks of de Key2-verbindings reeks
  
-6. Kies een container in de vervolg keuzelijst.
+6. Kies een container in de vervolg keuzelijst. Als u geen container hebt, gaat u naar uw opslag account in de Azure Portal:
+    - Onder **BLOB service**selecteert u **blobs**. Klik op **+ container** en geef de container een naam. Kies een openbaar toegangs niveau voor uw gegevens (wille keurige gegevens worden geëxporteerd). Meer informatie over [Azure Storage docs](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal#create-a-container).
 
-7. Geef bij te **exporteren gegevens**elk type gegevens op dat moet worden geëxporteerd door het type in te stellen **op on**.
+7.  Geef bij te **exporteren gegevens**elk type gegevens op dat moet worden geëxporteerd door het type in te stellen **op on**.
+   
+    > [!NOTE] 
+    > De gegevens worden geëxporteerd in JSON-indeling.
 
-6. Als u continue gegevens export wilt inschakelen, moet u ervoor zorgen dat de **gegevens export** is **ingeschakeld**. Selecteer **Opslaan**.
+8. Als u continue gegevens export wilt inschakelen, moet u ervoor zorgen dat de wissel knop voor het **exporteren van gegevens** is ingeschakeld. Selecteer **Opslaan**.
 
-   ![Continue gegevens export configureren](media/howto-export-data-pnp/export-list-blob.png)
+   ![Continue gegevens export configureren](media/howto-export-data-pnp/export-list-blob2.png)
 
-7. Na enkele minuten worden uw gegevens weer gegeven in de bestemming die u hebt gekozen.
+9. Na een paar minuten worden uw gegevens weer gegeven in uw opslag account.
 
 
-## <a name="export-to-azure-blob-storage"></a>Exporteren naar Azure Blob Storage
+## <a name="path-structure"></a>Structuur van pad
 
-Gegevens over metingen, apparaten en apparaatinstellingen worden één keer per minuut geëxporteerd naar uw opslag account, waarbij elk bestand met de batch wijzigingen sinds het laatste geëxporteerde bestand. De geëxporteerde gegevens hebben de indeling [Apache Avro](https://avro.apache.org/docs/current/index.html) en worden geëxporteerd in drie mappen. De standaard paden in uw opslag account zijn:
-- Berichten: {container}/measurements/{hubname}/{YYYY}/{MM}/{dd}/{hh}/{mm}/{filename}.avro
-- Apparaten: {container}/devices/{YYYY}/{MM}/{dd}/{hh}/{mm}/{filename}.avro
-- Apparaatinstellingen: {container}/deviceTemplates/{YYYY}/{MM}/{dd}/{hh}/{mm}/{filename}.avro
+De gegevens van telemetrie, apparaten en apparaatinstellingen worden eenmaal per minuut geëxporteerd naar uw opslag account, waarbij elk bestand met de batch wijzigingen sinds het laatste geëxporteerde bestand. Geëxporteerde gegevens worden in drie mappen in JSON-indeling geplaatst. De standaard paden in uw opslag account zijn:
+- Telemetrie: {container}/{app-id}/telemetry/{YYYY}/{MM}/{dd}/{hh}/{mm}/{filename}
+- Apparaten: {container}/{app-id}/devices/{YYYY}/{MM}/{dd}/{hh}/{mm}/{filename}
+- Apparaatinstellingen: {container}/{app-id}/deviceTemplates/{YYYY}/{MM}/{dd}/{hh}/{mm}/{filename}
 
-### <a name="measurements"></a>Metingen
+U kunt door de geëxporteerde bestanden in de Azure Portal bladeren door naar het bestand te navigeren en op het tabblad **BLOB bewerken** te klikken.
 
-De geëxporteerde meet gegevens hebben alle nieuwe berichten die door IoT Central worden ontvangen van alle apparaten tijdens die tijd. De geëxporteerde bestanden gebruiken dezelfde indeling als de bericht bestanden die worden geëxporteerd door [IOT hub bericht routering](https://docs.microsoft.com/azure/iot-hub/iot-hub-csharp-csharp-process-d2c) naar Blob Storage.
+## <a name="data-format"></a>Gegevensindeling
+### <a name="telemetry"></a>Telemetrie
+
+De geëxporteerde telemetriegegevens hebben alle nieuwe berichten die zijn ontvangen door IoT Central van alle apparaten tijdens die tijd. De geëxporteerde bestanden gebruiken dezelfde indeling als de bericht bestanden die worden geëxporteerd door [IOT hub bericht routering](https://docs.microsoft.com/azure/iot-hub/iot-hub-csharp-csharp-process-d2c) naar Blob Storage.
 
 > [!NOTE]
-> De apparaten die de metingen verzenden, worden weer gegeven met apparaat-Id's (Zie de volgende secties). Als u de namen van de apparaten wilt ophalen, exporteert u de moment opnamen van het apparaat. Correleer elke berichten record met behulp van de **connectionDeviceId** die overeenkomt met de **deviceId** van de apparaatgegevens.
+> Zorg ervoor dat uw apparaten berichten verzenden met `contentType: application/JSON` en `contentEncoding:utf-8` (of `utf-16`, `utf-32`). Raadpleeg de [documentatie van IOT hub](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-routing-query-syntax#message-routing-query-based-on-message-body) voor een voor beeld.
 
-In het volgende voor beeld ziet u een record in een gedecodeerd Avro-bestand:
+> [!NOTE]
+> De apparaten die de telemetrie verzenden, worden vertegenwoordigd door apparaat-Id's (Zie de volgende secties). Als u de namen van de apparaten wilt ophalen, exporteert u de moment opnamen van het apparaat. Correleer elke berichten record met behulp van de **connectionDeviceId** die overeenkomt met de **deviceId** van de apparaatgegevens.
+
+In het volgende voor beeld ziet u een record in de JSON-indeling.
 
 ```json
-{
-    "EnqueuedTimeUtc": "2018-06-11T00:00:08.2250000Z",
-    "Properties": {},
-    "SystemProperties": {
-        "connectionDeviceId": "<connectionDeviceId>",
-        "connectionAuthMethod": "{\"scope\":\"hub\",\"type\":\"sas\",\"issuer\":\"iothub\",\"acceptingIpFilterRule\":null}",
-        "connectionDeviceGenerationId": "<generationId>",
-        "enqueuedTime": "2018-06-11T00:00:08.2250000Z"
-    },
-    "Body": "{\"humidity\":80.59100954598546,\"magnetometerX\":0.29451796907056726,\"magnetometerY\":0.5550332126050068,\"magnetometerZ\":-0.04116681874733441,\"connectivity\":\"connected\",\"opened\":\"triggered\"}"
+{ 
+  "EnqueuedTimeUtc":"2019-09-26T17:46:09.8870000Z",
+  "Properties":{ 
+
+  },
+  "SystemProperties":{ 
+    "connectionDeviceId":"<deviceid>",
+    "connectionAuthMethod":"{\"scope\":\"device\",\"type\":\"sas\",\"issuer\":\"iothub\",\"acceptingIpFilterRule\":null}",
+    "connectionDeviceGenerationId":"637051167384630591",
+    "contentType":"application/json",
+    "contentEncoding":"utf-8",
+    "enqueuedTime":"2019-09-26T17:46:09.8870000Z"
+  },
+  "Body":{ 
+    "temp":49.91322758395974,
+    "humid":49.61214852573155,
+    "pm25":25.87332214661367
+  }
 }
 ```
 
 ### <a name="devices"></a>Apparaten
 
 Wanneer voortdurende gegevens export is ingeschakeld, wordt één moment opname met alle apparaten geëxporteerd. Elk apparaat omvat:
-- `id`van het apparaat in IoT Central
-- `name`van het apparaat
-- `deviceId`van [Device Provisioning Service](https://aka.ms/iotcentraldocsdps)
+- `@id` van het apparaat in IoT Central
+- `name` van het apparaat
+- `deviceId` van [Device Provisioning Service](https://aka.ms/iotcentraldocsdps)
 - Informatie over de apparaatprofiel
 - Waarden van eigenschappen
-- Waarden instellen
 
 Een nieuwe moment opname wordt eenmaal per minuut geschreven. De moment opname bevat:
 
 - Nieuwe apparaten die zijn toegevoegd sinds de laatste moment opname.
-- Apparaten met gewijzigde eigenschaps-en instellings waarden sinds de laatste moment opname.
+- Apparaten met gewijzigde eigenschaps waarden sinds de laatste moment opname.
 
 > [!NOTE]
 > Apparaten die zijn verwijderd sinds de laatste moment opname zijn niet geëxporteerd. Op dit moment hebben de moment opnamen geen indica toren voor verwijderde apparaten.
 >
-> De sjabloon van het apparaat waartoe elk apparaat behoort, wordt vertegenwoordigd door een ID van een apparaat sjabloon. Als u de naam van de apparaatprofiel wilt ophalen, exporteert u de moment opnamen van de apparaatnaam.
+> De sjabloon van het apparaat waartoe elk apparaat behoort, wordt vertegenwoordigd door het `instanceOf`-veld. Als u de naam van de apparaatprofiel wilt ophalen, exporteert u de moment opnamen van de apparaatnaam.
 
-Een record in het gedecodeerde Avro-bestand kan er als volgt uitzien:
+Geëxporteerde bestanden bevatten één regel per record. In het volgende voor beeld ziet u een record in de JSON-indeling.
 
 ```json
-{
-    "id": "<id>",
-    "name": "Refrigerator 2",
-    "simulated": true,
-    "deviceId": "<deviceId>",
-    "deviceTemplate": {
-        "id": "<template id>",
-        "version": "1.0.0"
+{ 
+  "@id":"<id-value>",
+  "@type":"Device",
+  "displayName":"Airbox",
+  "data":{ 
+    "$cloudProperties":{ 
+        "Color":"blue"
     },
-    "properties": {
-        "cloud": {
-            "location": "New York",
-            "maintCon": true,
-            "tempThresh": 20
-        },
-        "device": {
-            "lastReboot": "2018-02-09T22:22:47.156Z"
+    "EnvironmentalSensor":{ 
+      "thsensormodel":{ 
+        "reported":{ 
+          "value":"Neque quia et voluptatem veritatis assumenda consequuntur quod.",
+          "$lastUpdatedTimestamp":"2019-09-30T20:35:43.8478978Z"
         }
+      },
+      "pm25sensormodel":{ 
+        "reported":{ 
+          "value":"Aut alias odio.",
+          "$lastUpdatedTimestamp":"2019-09-30T20:35:43.8478978Z"
+        }
+      }
     },
-    "settings": {
-        "device": {
-            "fanSpeed": 0
+    "urn_azureiot_DeviceManagement_DeviceInformation":{ 
+      "totalStorage":{ 
+        "reported":{ 
+          "value":27900.9730905171,
+          "$lastUpdatedTimestamp":"2019-09-30T20:35:43.8478978Z"
         }
+      },
+      "totalMemory":{ 
+        "reported":{ 
+          "value":4667.82916715811,
+          "$lastUpdatedTimestamp":"2019-09-30T20:35:43.8478978Z"
+        }
+      }
     }
+  },
+  "instanceOf":"<template-id>",
+  "deviceId":"<device-id>",
+  "simulated":true
 }
 ```
 
-### <a name="device-templates"></a>Apparaatinstellingen
+### <a name="device-templates"></a>Apparaatsjablonen
 
 Wanneer continue gegevens export is ingeschakeld, wordt één moment opname met alle Apparaatinstellingen geëxporteerd. Elke apparaatprofiel bevat:
-- `id`van de sjabloon voor het apparaat
-- `name`van de sjabloon voor het apparaat
-- `version`van de sjabloon voor het apparaat
-- Meet gegevens typen en minimale/maximale waarden.
-- Eigenschaps gegevens typen en standaard waarden.
-- Gegevens typen en standaard waarden instellen.
+- `@id` van de sjabloon voor het apparaat
+- `name` van de sjabloon voor het apparaat
+- `version` van de sjabloon voor het apparaat
+- Het apparaat `capabilityModel` met inbegrip van de `interfaces` en de definities van telemetrie, eigenschappen en opdrachten
+- definities van `cloudProperties`
+- Onderdrukkingen en initiële waarden, inline met de `capabilityModel`
 
 Een nieuwe moment opname wordt eenmaal per minuut geschreven. De moment opname bevat:
 
-- Nieuwe apparaatinstellingen zijn toegevoegd sinds de laatste moment opname.
-- Apparaatinstellingen met gewijzigde metingen, eigenschappen en instellings definities sinds de laatste moment opname.
+- Nieuwe apparaatinstellingen zijn toegevoegd sinds de laatste moment opname. Dit omvat nieuwe versies van Apparaatinstellingen.
+- Device-sjablonen met gewijzigde onderdrukkingen, initiële waarden en Cloud eigenschappen definities sinds de laatste moment opname.
 
 > [!NOTE]
 > De apparaatinstellingen zijn verwijderd sinds de laatste moment opname is niet geëxporteerd. Op dit moment hebben de moment opnamen geen indica toren voor verwijderde Apparaatinstellingen.
 
-Een record in het gedecodeerde Avro-bestand kan er als volgt uitzien:
+Geëxporteerde bestanden bevatten één regel per record. In het volgende voor beeld ziet u een record in de JSON-indeling.
 
 ```json
-{
-    "id": "<id>",
-    "name": "Refrigerated Vending Machine",
-    "version": "1.0.0",
-    "measurements": {
-        "telemetry": {
-            "humidity": {
-                "dataType": "double",
-                "name": "Humidity"
-            },
-            "magnetometerX": {
-                "dataType": "double",
-                "name": "Magnetometer X"
-            },
-            "magnetometerY": {
-                "dataType": "double",
-                "name": "Magnetometer Y"
-            },
-            "magnetometerZ": {
-                "dataType": "double",
-                "name": "Magnetometer Z"
-            }
-        },
-        "states": {
-            "connectivity": {
-                "dataType": "enum",
-                "name": "Connectivity"
-            }
-        },
-        "events": {
-            "opened": {
-                "name": "Door Opened",
-                "category": "informational"
-            }
-        }
-    },
-    "settings": {
-        "device": {
-            "fanSpeed": {
-                "dataType": "double",
-                "name": "Fan Speed",
-                "initialValue": 0
-            }
-        }
-    },
-    "properties": {
-        "cloud": {
-            "location": {
-                "dataType": "string",
-                "name": "Location",
-                "initialValue": "Seattle"
-            },
-            "maintCon": {
-                "dataType": "boolean",
-                "name": "Maintenance Contract",
-                "initialValue": true
-            },
-            "tempThresh": {
-                "dataType": "double",
-                "name": "Temperature Alert Threshold",
-                "initialValue": 30
-            }
-        },
-        "device": {
-            "lastReboot": {
-                "dataType": "dateTime",
-                "name": "Last Reboot"
-            }
-        }
-    }
-}
-```
-
-## <a name="read-exported-avro-files"></a>Geëxporteerde Avro-bestanden lezen
-
-Avro is een binaire indeling, zodat de bestanden niet in de onbewerkte staat kunnen worden gelezen. De bestanden kunnen worden gedecodeerd naar de JSON-indeling. In de volgende voor beelden ziet u hoe u de metingen, apparaten en Avro-bestanden kunt parseren. De voor beelden komen overeen met de voor beelden die in de vorige sectie zijn beschreven.
-
-### <a name="read-avro-files-by-using-python"></a>Avro-bestanden lezen met behulp van python
-
-#### <a name="install-pandas-and-the-pandavro-package"></a>Pandas en het pandavro-pakket installeren
-
-```python
-pip install pandas
-pip install pandavro
-```
-
-#### <a name="parse-a-measurements-avro-file"></a>Een AVRO-bestand voor metingen parseren
-
-```python
-import json
-import pandavro as pdx
-import pandas as pd
-
-
-def parse(filePath):
-    # Pandavro loads the Avro file into a pandas DataFrame
-    # where each record is a single row.
-    measurements = pdx.from_avro(filePath)
-
-    # This example creates a new DataFrame and loads a series
-    # for each column that's mapped into a column in our new DataFrame.
-    transformed = pd.DataFrame()
-
-    # The SystemProperties column contains a dictionary
-    # with the device ID located under the connectionDeviceId key.
-    transformed["device_id"] = measurements["SystemProperties"].apply(
-        lambda x: x["connectionDeviceId"])
-
-    # The Body column is a series of UTF-8 bytes that is stringified
-    # and parsed as JSON. This example pulls the humidity property
-    # from each column to get the humidity field.
-    transformed["humidity"] = measurements["Body"].apply(
-        lambda x: json.loads(bytes(x).decode('utf-8'))["humidity"])
-
-    # Finally, print the new DataFrame with our device IDs and humidities.
-    print(transformed)
-```
-
-#### <a name="parse-a-devices-avro-file"></a>Een AVRO-bestand van een apparaat parseren
-
-```python
-import json
-import pandavro as pdx
-import pandas as pd
-
-
-def parse(filePath):
-    # Pandavro loads the Avro file into a pandas DataFrame
-    # where each record is a single row.
-    devices = pdx.from_avro(filePath)
-
-    # This example creates a new DataFrame and loads a series
-    # for each column that's mapped into a column in our new DataFrame.
-    transformed = pd.DataFrame()
-
-    # The device ID is available in the id column.
-    transformed["device_id"] = devices["deviceId"]
-
-    # The template ID and version are present in a dictionary under
-    # the deviceTemplate column.
-    transformed["template_id"] = devices["deviceTemplate"].apply(
-        lambda x: x["id"])
-    transformed["template_version"] = devices["deviceTemplate"].apply(
-        lambda x: x["version"])
-
-    # The fanSpeed setting value is located in a nested dictionary
-    # under the settings column.
-    transformed["fan_speed"] = devices["settings"].apply(
-        lambda x: x["device"]["fanSpeed"])
-
-    # Finally, print the new DataFrame with our device and template
-    # information, along with the value of the fan speed.
-    print(transformed)
-```
-
-#### <a name="parse-a-device-templates-avro-file"></a>Een AVRO-bestand van een apparaat-sjabloon parseren
-
-```python
-import json
-import pandavro as pdx
-import pandas as pd
-
-
-def parse(filePath):
-    # Pandavro loads the Avro file into a pandas DataFrame
-    # where each record is a single row.
-    templates = pdx.from_avro(filePath)
-
-    # This example creates a new DataFrame and loads a series
-    # for each column that's mapped into a column in our new DataFrame.
-    transformed = pd.DataFrame()
-
-    # The template and version are available in the id and version columns.
-    transformed["template_id"] = templates["id"]
-    transformed["template_version"] = templates["version"]
-
-    # The fanSpeed setting value is located in a nested dictionary
-    # under the settings column.
-    transformed["fan_speed"] = templates["settings"].apply(
-        lambda x: x["device"]["fanSpeed"])
-
-    # Finally, print the new DataFrame with our device and template
-    # information, along with the value of the fan speed.
-    print(transformed)
-```
-
-### <a name="read-avro-files-by-using-c"></a>Avro-bestanden lezen met behulp vanC#
-
-#### <a name="install-the-microsofthadoopavro-package"></a>Het pakket micro soft. Hadoop. Avro installeren
-
-```csharp
-Install-Package Microsoft.Hadoop.Avro -Version 1.5.6
-```
-
-#### <a name="parse-a-measurements-avro-file"></a>Een AVRO-bestand voor metingen parseren
-
-```csharp
-using Microsoft.Hadoop.Avro;
-using Microsoft.Hadoop.Avro.Container;
-using Newtonsoft.Json;
-
-public static async Task Run(string filePath)
-{
-    using (var fileStream = File.OpenRead(filePath))
-    {
-        using (var reader = AvroContainer.CreateGenericReader(fileStream))
-        {
-            // For one Avro container, where a container can contain multiple blocks,
-            // loop through each block in the container.
-            while (reader.MoveNext())
-            {
-                // Loop through the Avro records in the block and extract the fields.
-                foreach (AvroRecord record in reader.Current.Objects)
-                {
-                    var systemProperties = record.GetField<IDictionary<string, object>>("SystemProperties");
-                    var deviceId = systemProperties["connectionDeviceId"] as string;
-                    Console.WriteLine("Device ID: {0}", deviceId);
-
-                    using (var stream = new MemoryStream(record.GetField<byte[]>("Body")))
-                    {
-                        using (var streamReader = new StreamReader(stream, Encoding.UTF8))
-                        {
-                            var body = JsonSerializer.Create().Deserialize(streamReader, typeof(IDictionary<string, dynamic>)) as IDictionary<string, dynamic>;
-                            var humidity = body["humidity"];
-                            Console.WriteLine("Humidity: {0}", humidity);
-                        }
-                    }
+{ 
+  "@id":"<template-id>",
+  "@type":"DeviceModelDefinition",
+  "displayName":"Airbox",
+  "capabilityModel":{ 
+    "@id":"<id>",
+    "@type":"CapabilityModel",
+    "implements":[ 
+      { 
+        "@id":"<id>",
+        "@type":"InterfaceInstance",
+        "name":"EnvironmentalSensor",
+        "schema":{ 
+          "@id":"<id>",
+          "@type":"Interface",
+          "comment":"Requires temperature and humidity sensors.",
+          "description":"Provides functionality to report temperature, humidity. Provides telemetry, commands and read-write properties",
+          "displayName":"Environmental Sensor",
+          "contents":[ 
+            { 
+              "@id":"<id>",
+              "@type":"Telemetry",
+              "description":"Current temperature on the device",
+              "displayName":"Temperature",
+              "name":"temp",
+              "schema":"double",
+              "unit":"Units/Temperature/celsius",
+              "valueDetail":{ 
+                "@id":"<id>",
+                "@type":"ValueDetail/NumberValueDetail",
+                "minValue":{ 
+                  "@value":"50"
                 }
+              },
+              "visualizationDetail":{ 
+                "@id":"<id>",
+                "@type":"VisualizationDetail"
+              }
+            },
+            { 
+              "@id":"<id>",
+              "@type":"Telemetry",
+              "description":"Current humidity on the device",
+              "displayName":"Humidity",
+              "name":"humid",
+              "schema":"integer"
+            },
+            { 
+              "@id":"<id>",
+              "@type":"Telemetry",
+              "description":"Current PM2.5 on the device",
+              "displayName":"PM2.5",
+              "name":"pm25",
+              "schema":"integer"
+            },
+            { 
+              "@id":"<id>",
+              "@type":"Property",
+              "description":"T&H Sensor Model Name",
+              "displayName":"T&H Sensor Model",
+              "name":"thsensormodel",
+              "schema":"string"
+            },
+            { 
+              "@id":"<id>",
+              "@type":"Property",
+              "description":"PM2.5 Sensor Model Name",
+              "displayName":"PM2.5 Sensor Model",
+              "name":"pm25sensormodel",
+              "schema":"string"
             }
+          ]
         }
-    }
-}
-```
-
-#### <a name="parse-a-devices-avro-file"></a>Een AVRO-bestand van een apparaat parseren
-
-```csharp
-using Microsoft.Hadoop.Avro;
-using Microsoft.Hadoop.Avro.Container;
-
-public static async Task Run(string filePath)
-{
-    using (var fileStream = File.OpenRead(filePath))
-    {
-        using (var reader = AvroContainer.CreateGenericReader(fileStream))
-        {
-            // For one Avro container, where a container can contain multiple blocks,
-            // loop through each block in the container.
-            while (reader.MoveNext())
-            {
-                // Loop through the Avro records in the block and extract the fields.
-                foreach (AvroRecord record in reader.Current.Objects)
-                {
-                    // Get the field value directly. You can also yield return
-                    // records and make the function IEnumerable<AvroRecord>.
-                    var deviceId = record.GetField<string>("deviceId");
-
-                    // The device template information is stored in a sub-record
-                    // under the deviceTemplate field.
-                    var deviceTemplateRecord = record.GetField<AvroRecord>("deviceTemplate");
-                    var templateId = deviceTemplateRecord.GetField<string>("id");
-                    var templateVersion = deviceTemplateRecord.GetField<string>("version");
-
-                    // The settings and properties are nested two levels deep.
-                    // The first level indicates settings or properties.
-                    // The second level indicates the type of setting or property.
-                    var settingsRecord = record.GetField<AvroRecord>("settings");
-                    var deviceSettingsRecord = settingsRecord.GetField<IDictionary<string, dynamic>>("device");
-                    var fanSpeed = deviceSettingsRecord["fanSpeed"];
-                    
-                    Console.WriteLine(
-                        "Device ID: {0}, Template ID: {1}, Template Version: {2}, Fan Speed: {3}",
-                        deviceId,
-                        templateId,
-                        templateVersion,
-                        fanSpeed
-                    );
-                }
+      },
+      { 
+        "@id":"<id>",
+        "@type":"InterfaceInstance",
+        "name":"urn_azureiot_DeviceManagement_DeviceInformation",
+        "schema":{ 
+          "@id":"<id>",
+          "@type":"Interface",
+          "displayName":"Device information",
+          "contents":[ 
+            { 
+              "@id":"<id>",
+              "@type":"Property",
+              "comment":"Total available storage on the device in kilobytes. Ex. 20480000 kilobytes.",
+              "displayName":"Total storage",
+              "name":"totalStorage",
+              "displayUnit":"kilobytes",
+              "schema":"long"
+            },
+            { 
+              "@id":"<id>",
+              "@type":"Property",
+              "comment":"Total available memory on the device in kilobytes. Ex. 256000 kilobytes.",
+              "displayName":"Total memory",
+              "name":"totalMemory",
+              "displayUnit":"kilobytes",
+              "schema":"long"
             }
+          ]
         }
-    }
-}
-
-```
-
-#### <a name="parse-a-device-templates-avro-file"></a>Een AVRO-bestand van een apparaat-sjabloon parseren
-
-```csharp
-using Microsoft.Hadoop.Avro;
-using Microsoft.Hadoop.Avro.Container;
-
-public static async Task Run(string filePath)
-{
-    using (var fileStream = File.OpenRead(filePath))
-    {
-        using (var reader = AvroContainer.CreateGenericReader(fileStream))
-        {
-            // For one Avro container, where a container can contain multiple blocks,
-            // loop through each block in the container.
-            while (reader.MoveNext())
-            {
-                // Loop through the Avro records in the block and extract the fields.
-                foreach (AvroRecord record in reader.Current.Objects)
-                {
-                    // Get the field value directly. You can also yield return
-                    // records and make the function IEnumerable<AvroRecord>.
-                    var id = record.GetField<string>("id");
-                    var version = record.GetField<string>("version");
-
-                    // The settings and properties are nested two levels deep.
-                    // The first level indicates settings or properties.
-                    // The second level indicates the type of setting or property.
-                    var settingsRecord = record.GetField<AvroRecord>("settings");
-                    var deviceSettingsRecord = settingsRecord.GetField<IDictionary<string, dynamic>>("device");
-                    var fanSpeed = deviceSettingsRecord["fanSpeed"];
-                    
-                    Console.WriteLine(
-                        "ID: {1}, Version: {2}, Fan Speed: {3}",
-                        id,
-                        version,
-                        fanSpeed
-                    );
-                }
-            }
+      }
+    ],
+    "displayName":"AAEONAirbox52"
+  },
+  "solutionModel":{ 
+    "@id":"<id>",
+    "@type":"SolutionModel",
+    "cloudProperties":[ 
+      { 
+        "@id":"<id>",
+        "@type":"CloudProperty",
+        "displayName":"Color",
+        "name":"Color",
+        "schema":"string",
+        "valueDetail":{ 
+          "@id":"<id>",
+          "@type":"ValueDetail/StringValueDetail"
+        },
+        "visualizationDetail":{ 
+          "@id":"<id>",
+          "@type":"VisualizationDetail"
         }
-    }
-}
-```
-
-### <a name="read-avro-files-by-using-javascript"></a>Avro-bestanden lezen met behulp van Java script
-
-#### <a name="install-the-avsc-package"></a>Het avsc-pakket installeren
-
-```javascript
-npm install avsc
-```
-
-#### <a name="parse-a-measurements-avro-file"></a>Een AVRO-bestand voor metingen parseren
-
-```javascript
-const avro = require('avsc');
-
-// Read the Avro file. Parse the device ID and humidity from each record.
-async function parse(filePath) {
-    const records = await load(filePath);
-    for (const record of records) {
-        // Fetch the device ID from the system properties.
-        const deviceId = record.SystemProperties.connectionDeviceId;
-
-        // Convert the body from a buffer to a string and parse it.
-        const body = JSON.parse(record.Body.toString());
-
-        // Get the humidty property from the body.
-        const humidity = body.humidity;
-
-        // Log the retrieved device ID and humidity.
-        console.log(`Device ID: ${deviceId}`);
-        console.log(`Humidity: ${humidity}`);
-    }
-}
-
-function load(filePath) {
-    return new Promise((resolve, reject) => {
-        // The file decoder emits each record as a data event on a stream.
-        // Collect the records into an array and return them at the end.
-        const records = [];
-        avro.createFileDecoder(filePath)
-            .on('data', record => { records.push(record); })
-            .on('end', () => resolve(records))
-            .on('error', reject);
-    });
-}
-```
-
-#### <a name="parse-a-devices-avro-file"></a>Een AVRO-bestand van een apparaat parseren
-
-```javascript
-const avro = require('avsc');
-
-// Read the Avro file. Parse the device and template identification
-// information and the fanSpeed setting for each device record.
-async function parse(filePath) {
-    const records = await load(filePath);
-    for (const record of records) {
-        // Fetch the device ID from the deviceId property.
-        const deviceId = record.deviceId;
-
-        // Fetch the template ID and version from the deviceTemplate property.
-        const deviceTemplateId = record.deviceTemplate.id;
-        const deviceTemplateVersion = record.deviceTemplate.version;
-
-        // Get the fanSpeed from the nested device settings property.
-        const fanSpeed = record.settings.device.fanSpeed;
-
-        // Log the retrieved device ID and humidity.
-        console.log(`deviceID: ${deviceId}, Template ID: ${deviceTemplateId}, Template Version: ${deviceTemplateVersion}, Fan Speed: ${fanSpeed}`);
-    }
-}
-
-function load(filePath) {
-    return new Promise((resolve, reject) => {
-        // The file decoder emits each record as a data event on a stream.
-        // Collect the records into an array and return them at the end.
-        const records = [];
-        avro.createFileDecoder(filePath)
-            .on('data', record => { records.push(record); })
-            .on('end', () => resolve(records))
-            .on('error', reject);
-    });
-}
-```
-
-#### <a name="parse-a-device-templates-avro-file"></a>Een AVRO-bestand van een apparaat-sjabloon parseren
-
-```javascript
-const avro = require('avsc');
-
-// Read the Avro file. Parse the device and template identification
-// information and the fanSpeed setting for each device record.
-async function parse(filePath) {
-    const records = await load(filePath);
-    for (const record of records) {
-        // Fetch the template ID and version from the id and verison properties.
-        const templateId = record.id;
-        const templateVersion = record.version;
-
-        // Get the fanSpeed from the nested device settings property.
-        const fanSpeed = record.settings.device.fanSpeed;
-
-        // Log the retrieved device id and humidity.
-        console.log(`Template ID: ${templateId}, Template Version: ${templateVersion}, Fan Speed: ${fanSpeed}`);
-    }
-}
-
-function load(filePath) {
-    return new Promise((resolve, reject) => {
-        // The file decoder emits each record as a data event on a stream.
-        // Collect the records into an array and return them at the end.
-        const records = [];
-        avro.createFileDecoder(filePath)
-            .on('data', record => { records.push(record); })
-            .on('end', () => resolve(records))
-            .on('error', reject);
-    });
+      }
+    ]
+  }
 }
 ```
 
@@ -647,4 +358,4 @@ function load(filePath) {
 Nu u weet hoe u uw gegevens kunt exporteren, gaat u verder met de volgende stap:
 
 > [!div class="nextstepaction"]
-> [Uw gegevens visualiseren in Power BI](howto-connect-powerbi-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json)
+> [De IoT Central Device Bridge gebruiken om andere IoT-Clouds te verbinden](howto-build-iotc-device-bridge.md)

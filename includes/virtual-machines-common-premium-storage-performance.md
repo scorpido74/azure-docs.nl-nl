@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/08/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: abee645f8929c10856f662b1504b163b58d953a5
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: ca7136f6e1c24d32ff5d6e3e53878c11fb5f1edb
+ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70036028"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71975291"
 ---
 ## <a name="application-performance-indicators"></a>Prestatie-indica toren voor toepassingen
 
@@ -76,7 +76,7 @@ Meet vervolgens de maximale prestatie vereisten van uw toepassing gedurende de l
 | Haal. Latentie | | | |
 | Gemiddelde latentie | | | |
 | Met maximaal CPU | | | |
-| Gemiddeld CPU-gebruik | | | |
+| Gemiddelde CPU | | | |
 | Met maximaal Geheugen | | | |
 | Gemiddeld geheugen | | | |
 | Wachtrij diepte | | | |
@@ -100,7 +100,7 @@ De prestatie meter items zijn beschikbaar voor processor, geheugen en, elke logi
 | **Latentie** |Totale tijd voor het volt ooien van een schijf-i/o-aanvraag. |Gemiddeld aantal seconden/Lees bewerkingen schijf <br> Gemiddeld aantal seconden per schrijf bewerking schijf |koper <br> svctm |
 | **I/o-grootte** |De grootte van I/O-aanvragen van problemen met de opslag schijven. |Gemiddeld aantal gelezen bytes per schijf <br> Gemiddeld aantal geschreven bytes per schijf |avgrq-sz |
 | **Wachtrij diepte** |Aantal openstaande I/O-aanvragen dat wacht op het lezen van of schrijven naar de opslag schijf. |Huidige wachtrij lengte voor de schijf |avgqu-sz |
-| **Max. Geheugenmetabase** |Hoeveelheid geheugen die nodig is om de toepassing probleemloos uit te voeren |% Toegewezen bytes in gebruik |Vmstat gebruiken |
+| **Max. Geheugen @ no__t-0 |Hoeveelheid geheugen die nodig is om de toepassing probleemloos uit te voeren |% Toegewezen bytes in gebruik |Vmstat gebruiken |
 | **Max. CPU** |Hoeveelheid CPU vereist om toepassing probleemloos uit te voeren |Percentage processor tijd |% util |
 
 Meer informatie over [iostat gebruiken](https://linux.die.net/man/1/iostat) en [perfmon](https://msdn.microsoft.com/library/aa645516.aspx).
@@ -117,7 +117,7 @@ In deze sectie raadpleegt u de controle lijst voor toepassings vereisten die u h
 
 De volgende tabel bevat een overzicht van de prestatie factoren en de stappen die nodig zijn om IOPS, door Voer en latentie te optimaliseren. De secties die volgen op deze samen vatting geven een beschrijving van elke factor is veel meer.
 
-Zie [Linux VM](../articles/virtual-machines/linux/sizes.md) -grootten of [Windows VM](../articles/virtual-machines/windows/sizes.md)-grootten voor meer informatie over VM-grootten en over de IOPS, door Voer en latentie die beschikbaar zijn voor elk type virtuele machine.
+Zie [Linux VM-grootten](../articles/virtual-machines/linux/sizes.md) of [Windows VM](../articles/virtual-machines/windows/sizes.md)-grootten voor meer informatie over VM-grootten en over de IOPS, door Voer en latentie die beschikbaar zijn voor elk type virtuele machine.
 
 | &nbsp; | **IOPS** | **Doorvoer** | **Latentie** |
 | --- | --- | --- | --- |
@@ -135,12 +135,12 @@ Zie [Linux VM](../articles/virtual-machines/linux/sizes.md) -grootten of [Window
 
 ## <a name="nature-of-io-requests"></a>Aard van i/o-aanvragen
 
-Een i/o-aanvraag is een eenheid voor invoer/uitvoer die door uw toepassing wordt uitgevoerd. Het identificeren van de aard van de i/o-aanvragen, wille keurige of sequentiële, lees-of schrijf bewerkingen, kleine of grote, helpt u bij het bepalen van de prestatie vereisten van uw toepassing. Het is belang rijk om inzicht te krijgen in de aard van IO-aanvragen om de juiste beslissingen te nemen bij het ontwerpen van de infra structuur van uw toepassing.
+Een i/o-aanvraag is een eenheid voor invoer/uitvoer die door uw toepassing wordt uitgevoerd. Het identificeren van de aard van de i/o-aanvragen, wille keurige of sequentiële, lees-of schrijf bewerkingen, kleine of grote, helpt u bij het bepalen van de prestatie vereisten van uw toepassing. Het is belang rijk om inzicht te krijgen in de aard van IO-aanvragen om de juiste beslissingen te nemen bij het ontwerpen van de infra structuur van uw toepassing. IOs moet gelijkmatig worden gedistribueerd om de beste prestaties mogelijk te maken.
 
 I/o-grootte is een van de belang rijke factoren. De i/o-grootte is de grootte van de invoer-en uitvoer bewerkings aanvraag die wordt gegenereerd door uw toepassing. De i/o-grootte heeft een grote invloed op de prestaties, met name op de IOPS en band breedte die de toepassing kan krijgen. In de volgende formule ziet u de relatie tussen IOPS, i/o-grootte en band breedte/door voer.  
     ![](media/premium-storage-performance/image1.png)
 
-Sommige toepassingen bieden u de mogelijkheid om hun IO-grootte te wijzigen, terwijl sommige toepassingen dat niet doen. SQL Server bepaalt bijvoorbeeld de optimale IO-grootte zelf, en biedt gebruikers geen knoppen om deze te wijzigen. Anderzijds biedt Oracle een para meter met de naam [\_DB-blok\_grootte](https://docs.oracle.com/cd/B19306_01/server.102/b14211/iodesign.htm#i28815) , waarmee u de I/O-aanvraag grootte van de Data Base kunt configureren.
+Sommige toepassingen bieden u de mogelijkheid om hun IO-grootte te wijzigen, terwijl sommige toepassingen dat niet doen. SQL Server bepaalt bijvoorbeeld de optimale IO-grootte zelf, en biedt gebruikers geen knoppen om deze te wijzigen. Anderzijds biedt Oracle een para meter met de naam [db @ no__t-1BLOCK @ no__t-2SIZE,](https://docs.oracle.com/cd/B19306_01/server.102/b14211/iodesign.htm#i28815) waarmee u de I/O-aanvraag grootte van de Data Base kunt configureren.
 
 Als u een toepassing gebruikt die u niet toestaat de i/o-grootte te wijzigen, gebruikt u de richt lijnen in dit artikel om de prestatie-KPI te optimaliseren die het meest relevant is voor uw toepassing. Bijvoorbeeld:
 
@@ -152,7 +152,7 @@ Als u een toepassing gebruikt, waarmee u de i/o-grootte kunt wijzigen, gebruikt 
 * Kleinere IO-grootte om meer IOPS te verkrijgen. Bijvoorbeeld 8 KB voor een OLTP-toepassing.  
 * Grotere IO-grootte voor een hogere band breedte/door voer. Bijvoorbeeld 1024 KB voor een Data Warehouse-toepassing.
 
-Hier volgt een voor beeld van hoe u de IOPS en de door Voer/band breedte kunt berekenen voor uw toepassing. Overweeg een toepassing met behulp van een P30-schijf. Het maximale aantal IOPS en de door Voer/band breedte van een P30-schijf kan worden gerealiseerd op respectievelijk 5000 IOPS en 200 MB per seconde. Als uw toepassing nu het maximale aantal IOPS van de P30-schijf vereist en u een kleinere IO-grootte gebruikt, zoals 8 KB, kan de resulterende band breedte Maxi maal 40 MB per seconde zijn. Als voor uw toepassing echter de maximale door Voer/band breedte van P30 schijf is vereist en u een grotere IO-grootte gebruikt, zoals 1024 KB, is de resulterende IOPS minder, 200 IOPS. Stel daarom de i/o-grootte zodanig in dat deze voldoet aan de limiet voor IOPS en door Voer/band breedte van uw toepassing. Onderstaande tabel bevat een overzicht van de verschillende i/o-grootten en de bijbehorende IOPS en door Voer voor een P30-schijf.
+Hier volgt een voor beeld van hoe u de IOPS en de door Voer/band breedte kunt berekenen voor uw toepassing. Overweeg een toepassing met behulp van een P30-schijf. Het maximale aantal IOPS en de door Voer/band breedte van een P30-schijf kan worden gerealiseerd op respectievelijk 5000 IOPS en 200 MB per seconde. Als uw toepassing nu het maximale aantal IOPS van de P30-schijf vereist en u een kleinere IO-grootte gebruikt, zoals 8 KB, kan de resulterende band breedte Maxi maal 40 MB per seconde zijn. Als voor uw toepassing echter de maximale door Voer/band breedte van P30 schijf is vereist en u een grotere IO-grootte gebruikt, zoals 1024 KB, is de resulterende IOPS minder, 200 IOPS. Stel daarom de i/o-grootte zodanig in dat deze voldoet aan de limiet voor IOPS en door Voer/band breedte van uw toepassing. De volgende tabel bevat een overzicht van de verschillende i/o-grootten en de bijbehorende IOPS en door Voer voor een P30-schijf.
 
 | Toepassings vereiste | I/O-grootte | IOPS | Door Voer/band breedte |
 | --- | --- | --- | --- |
@@ -179,7 +179,7 @@ Virtuele machines met een hoge schaal zijn beschikbaar in verschillende groottes
 | Standard_DS14 |16 |112 GB |OS = 1023 GB <br> Lokale SSD = 224 GB |32 |576 GB |50.000 IOPS <br> 512 MB per seconde |4\.000 IOPS en 33 MB per seconde |
 | Standard_GS5 |32 |448 GB |OS = 1023 GB <br> Lokale SSD = 896 GB |64 |4224 GB |80.000 IOPS <br> 2\.000 MB per seconde |5\.000 IOPS en 50 MB per seconde |
 
-Als u een volledige lijst met alle beschik bare Azure VM-grootten wilt weer geven, raadpleegt u [Windows VM](../articles/virtual-machines/windows/sizes.md) -grootten of grootten voor [Linux VM](../articles/virtual-machines/linux/sizes.md). Kies een VM-grootte die kan voldoen aan de gewenste prestatie vereisten voor de toepassing en deze kan worden geschaald. Daarnaast moet u rekening houden met de volgende belang rijke overwegingen bij het kiezen van VM-grootten.
+Als u een volledige lijst met alle beschik bare Azure VM-grootten wilt weer geven, raadpleegt u [Windows VM-grootten](../articles/virtual-machines/windows/sizes.md) of [grootten voor Linux VM](../articles/virtual-machines/linux/sizes.md). Kies een VM-grootte die kan voldoen aan de gewenste prestatie vereisten voor de toepassing en deze kan worden geschaald. Daarnaast moet u rekening houden met de volgende belang rijke overwegingen bij het kiezen van VM-grootten.
 
 *Schaal limieten*  
 De maximale IOPS-limieten per VM en per schijf zijn verschillend en zijn onafhankelijk van elkaar. Zorg ervoor dat de toepassing IOPS behaalt binnen de limieten van de virtuele machine en de Premium-schijven die eraan zijn gekoppeld. Anders werkt de prestaties van de toepassing met vertraging.
@@ -189,15 +189,15 @@ Stel dat een toepassings vereiste een maximum van 4.000 IOPS is. U kunt dit doen
 *Kosten van bewerking*  
 In veel gevallen is het mogelijk dat uw totale kosten voor bewerking met behulp van Premium Storage lager zijn dan het gebruik van standaard opslag.
 
-Denk bijvoorbeeld aan een toepassing die 16.000 IOPS vereist. Als u deze prestaties wilt verzorgen, hebt u\_een Standard D14 Azure IaaS VM nodig, die een maximale IOPS van 16.000 kan bieden met behulp van 32 Standard Storage 1 TB-schijven. Elke standaard opslag schijf van 1 TB kan Maxi maal 500 IOPS beslaan. De geschatte kosten van deze virtuele machine per maand zijn $1.570. De maandelijkse kosten van 32 standaard opslag schijven zijn $1.638. De geschatte totale maandelijkse kosten worden $3.208.
+Denk bijvoorbeeld aan een toepassing die 16.000 IOPS vereist. Voor deze prestaties hebt u een standaard @ no__t-0D14 Azure IaaS-VM nodig. Dit kan een maximale IOPS van 16.000 geven met behulp van 32 Standard Storage 1 TB schijven. Elke standaard opslag schijf van 1 TB kan Maxi maal 500 IOPS beslaan. De geschatte kosten van deze virtuele machine per maand zijn $1.570. De maandelijkse kosten van 32 standaard opslag schijven zijn $1.638. De geschatte totale maandelijkse kosten worden $3.208.
 
-Als u echter dezelfde toepassing op Premium Storage hebt gehost, hebt u een kleinere VM-grootte en minder Premium-opslag schijven nodig, waardoor de totale kosten worden verminderd. Een standaard\_DS13-VM kan voldoen aan de 16.000-IOPS-vereiste met behulp van vier P30-schijven. De DS13-VM heeft een maximale IOPS van 25.600 en elke P30-schijf heeft een maximale IOPS van 5.000. Over het algemeen kan deze configuratie 5.000 x 4 = 20.000 IOPS behaalt. De geschatte kosten van deze virtuele machine per maand zijn $1.003. De maandelijkse kosten van vier P30 Premium-opslag schijven worden $544,34. De geschatte totale maandelijkse kosten worden $1.544.
+Als u echter dezelfde toepassing op Premium Storage hebt gehost, hebt u een kleinere VM-grootte en minder Premium-opslag schijven nodig, waardoor de totale kosten worden verminderd. Een standaard-VM van @ no__t-0DS13 kan voldoen aan de 16.000 IOPS-vereiste met behulp van vier P30-schijven. De DS13-VM heeft een maximale IOPS van 25.600 en elke P30-schijf heeft een maximale IOPS van 5.000. Over het algemeen kan deze configuratie 5.000 x 4 = 20.000 IOPS behaalt. De geschatte kosten van deze virtuele machine per maand zijn $1.003. De maandelijkse kosten van vier P30 Premium-opslag schijven worden $544,34. De geschatte totale maandelijkse kosten worden $1.544.
 
 Onderstaande tabel bevat een overzicht van de kosten analyse van dit scenario voor Standard en Premium Storage.
 
 | &nbsp; | **Standard** | **Premium** |
 | --- | --- | --- |
-| **Kosten van VM per maand** |$1.570,58 (standaard\_D14) |$1.003,66 (standaard\_DS13) |
+| **Kosten van VM per maand** |$1.570,58 (standaard @ no__t-0D14) |$1.003,66 (standaard @ no__t-0DS13) |
 | **Kosten van schijven per maand** |$1.638,40 (32 x 1 TB schijven) |$544,34 (4 x P30 schijven) |
 | **Totale kosten per maand** |$3,208.98 |$1,544.34 |
 
@@ -209,13 +209,9 @@ Wanneer u Linux met Premium Storage uitvoert, controleert u de meest recente upd
 
 ## <a name="premium-storage-disk-sizes"></a>Grootte van Premium-opslag schijven
 
-Azure Premium Storage biedt acht GA naar schijf groottes en drie schijf grootten die in Preview zijn, op dit moment. Elke schijf grootte heeft een andere schaal limiet voor IOPS, band breedte en opslag. Kies de juiste Premium Storage schijf grootte, afhankelijk van de toepassings vereisten en de grootte van de VM met hoge schaal. In de volgende tabel ziet u de 11 grootte van de schijven en de mogelijkheden ervan. P4-, P6-, P15-, P60-, P70-en P80-grootten worden momenteel alleen ondersteund voor Managed Disks.
+Azure Premium Storage biedt tal van grootten, zodat u er een kunt kiezen die het beste bij uw behoeften past. Elke schijf grootte heeft een andere schaal limiet voor IOPS, band breedte en opslag. Kies de juiste Premium Storage schijf grootte, afhankelijk van de toepassings vereisten en de grootte van de VM met hoge schaal. In de volgende tabel ziet u de grootte van de schijven en de mogelijkheden ervan. P4-, P6-, P15-, P60-, P70-en P80-grootten worden momenteel alleen ondersteund voor Managed Disks.
 
-| Type Premium-schijven  | P4    | P6    | P10   | P15 | P20   | P30   | P40   | P50   | P60   | P70   | P80   |
-|---------------------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|
-| Schijfgrootte           | 32 GiB | 64 GiB | 128 GiB| 256 GiB| 512 GB            | 1\.024 GiB (1 TiB)    | 2\.048 GiB (2 TiB)    | 4\.095 GiB (4 TiB)    | 8\.192 GiB (8 TiB)    | 16.384 GiB (16 TiB)    | 32.767 GiB (32 TiB)    |
-| IOP's per schijf       | 120   | 240   | 500   | 1100 | 2300              | 5000              | 7500              | 7500              | 12.500              | 15,000              | 20,000              |
-| Doorvoer per schijf | 25 MiB per seconde  | 50-MiB per seconde  | 100-MiB per seconde |125-MiB per seconde | 150-MiB per seconde | 200-MiB per seconde | 250-MiB per seconde | 250-MiB per seconde | 480-MiB per seconde | 750-MiB per seconde | 750-MiB per seconde |
+[!INCLUDE [disk-storage-premium-ssd-sizes](disk-storage-premium-ssd-sizes.md)]
 
 Hoeveel schijven u kiest, is afhankelijk van de gekozen schijf grootte. U kunt één P50-schijf of meerdere P10-schijven gebruiken om te voldoen aan de vereisten van uw toepassing. Houd rekening met onderstaande aandachtspunten wanneer u de keuze maakt.
 
@@ -284,9 +280,9 @@ Als voor beeld kunt u deze richt lijnen Toep assen op SQL Server die worden uitg
 
 Voor alle Premium-Ssd's of Ultra disks met cache is ingesteld op **ReadOnly** of **geen**, moet u ' obstakels ' uitschakelen wanneer u het bestands systeem koppelt. U hebt geen obstakels nodig in dit scenario omdat de schrijf bewerkingen naar Premium Storage-schijven duurzaam zijn voor deze cache-instellingen. Wanneer de schrijf aanvraag is voltooid, zijn de gegevens naar het permanente archief geschreven. Gebruik een van de volgende methoden om belemmeringen uit te scha kelen. Kies de naam van het bestands systeem:
   
-* Voor **reiserFS**kunt u de `barrier=none` optie koppelen gebruiken om belemmeringen uit te scha kelen. (Als u belemmeringen wilt inschakelen `barrier=flush`, gebruikt u.)
-* Gebruik de optie voor het `barrier=0` koppelen van **ext3/ext4**om belemmeringen uit te scha kelen. (Als u belemmeringen wilt inschakelen `barrier=1`, gebruikt u.)
-* Voor **xfs**kunt u de `nobarrier` optie koppelen gebruiken om belemmeringen uit te scha kelen. (Als u belemmeringen wilt inschakelen `barrier`, gebruikt u.)
+* Voor **reiserFS**kunt u belemmeringen uitschakelen met de optie voor het koppelen van `barrier=none`. (Gebruik `barrier=flush` om belemmeringen in te scha kelen.)
+* Voor **ext3/ext4**gebruikt u de optie voor het koppelen van `barrier=0` om belemmeringen uit te scha kelen. (Gebruik `barrier=1` om belemmeringen in te scha kelen.)
+* Voor **xfs**kunt u belemmeringen uitschakelen met de optie voor het koppelen van `nobarrier`. (Gebruik `barrier` om belemmeringen in te scha kelen.)
 * Voor Premium Storage-schijven waarbij cache is ingesteld op **readwrite**, schakelt u belemmeringen voor schrijf duurzaamheid in.
 * Als u wilt dat volume namen behouden blijven nadat u de virtuele machine opnieuw hebt opgestart, moet u bestand/etc/fstab bijwerken met de UUID-verwijzingen (Universally Unique Identifier) naar de schijven. Zie [een beheerde schijf toevoegen aan een virtuele Linux-machine](../articles/virtual-machines/linux/add-disk.md)voor meer informatie.
 

@@ -1,17 +1,17 @@
 ---
 title: Replica's in Azure Database for MySQL lezen.
-description: In dit artikel wordt het lezen van replica's voor Azure Database for MySQL beschreven.
+description: "Meer informatie over het lezen van replica's in Azure Database for MySQL: het kiezen van regio's, het maken van replica's, het verbinden van replica's, het bewaken van replicatie en het stoppen van de replicatie."
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/06/2019
-ms.openlocfilehash: cdcb4832408b9e26e692a055e06bfb55e2fdfe96
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 6ad71cecfd088a92bdd41ae13cb530c286ebea4c
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70993102"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71970385"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>Leesreplica's in Azure Database for MySQL
 
@@ -19,7 +19,7 @@ Met de functie leesreplica kunt u gegevens van een Azure Database for MySQL-serv
 
 Replica's zijn nieuwe servers die u op dezelfde manier beheert als gewone Azure Database for MySQL servers. Voor elke Lees replica wordt u gefactureerd voor de ingerichte Compute in vCores en Storage in GB/maand.
 
-Raadpleeg de [MySQL-replicatie documentatie](https://dev.mysql.com/doc/refman/5.7/en/replication-features.html)voor meer informatie over MySQL-replicatie functies en-problemen.
+Zie de [MySQL-replicatie documentatie](https://dev.mysql.com/doc/refman/5.7/en/replication-features.html)voor meer informatie over MySQL-replicatie functies en-problemen.
 
 ## <a name="when-to-use-a-read-replica"></a>Wanneer moet u een lees replica gebruiken?
 
@@ -36,10 +36,10 @@ U kunt een lees replica maken in een andere regio dan de hoofd server. Replicati
 
 U kunt een hoofd server in een [Azure database for MySQL regio](https://azure.microsoft.com/global-infrastructure/services/?products=mysql)hebben.  Een hoofd server kan een replica hebben in het gekoppelde gebied of in de universele replica regio's. In de onderstaande afbeelding ziet u welke replica regio's er beschikbaar zijn, afhankelijk van de hoofd regio.
 
-[![Replica regio's lezen](media/concepts-read-replica/read-replica-regions.png)](media/concepts-read-replica/read-replica-regions.png#lightbox)
+[![Read-replica regio's](media/concepts-read-replica/read-replica-regions.png)](media/concepts-read-replica/read-replica-regions.png#lightbox)
 
 ### <a name="universal-replica-regions"></a>Universele replica regio's
-U kunt altijd een lees replica maken in een van de volgende regio's, ongeacht waar uw master server zich bevindt. Dit zijn de universele replica regio's:
+U kunt in een van de volgende regio's een lees replica maken, ongeacht waar uw master server zich bevindt. De ondersteunde regio's voor universele replica's zijn:
 
 Australië-oost, Australië-zuidoost, centraal VS, Azië-oost, VS-Oost, VS-Oost 2, Japan-Oost, Japan-West, Korea-centraal, Korea-zuid, Noord-Centraal VS, Europa-noord, Zuid-Centraal VS, Zuidoost-Azië, UK-zuid, UK-west, Europa-west, VS-West, VS-West 2.
 
@@ -63,7 +63,7 @@ Als een master server geen bestaande replica servers heeft, wordt de Master eers
 
 Wanneer u de werk stroom voor het maken van de replica start, wordt er een lege Azure Database for MySQL-server gemaakt. De nieuwe server wordt gevuld met de gegevens die zich op de hoofd server bevonden. De aanmaak tijd is afhankelijk van de hoeveelheid gegevens op de Master en de tijd sinds de laatste wekelijkse volledige back-up. De tijd kan variëren van een paar minuten tot enkele uren.
 
-Elke replica is ingeschakeld voor [automatische groei](concepts-pricing-tiers.md#storage-auto-grow)van opslag. Met de functie voor automatisch uitbreiden kan de replica de gegevens repliceren, en wordt voor komen dat de replicatie wordt onderbroken vanwege onvoldoende opslag fouten.
+Elke replica is ingeschakeld voor [automatische groei](concepts-pricing-tiers.md#storage-auto-grow)van opslag. Met de functie voor automatisch uitbreiden kan de replica de gegevens repliceren, en wordt voor komen dat er een onderbreking in de replicatie wordt veroorzaakt door problemen met de opslag.
 
 Meer informatie over [het maken van een lees replica in de Azure Portal](howto-read-replicas-portal.md).
 
@@ -85,7 +85,7 @@ Voer bij de prompt het wacht woord voor het gebruikers account in.
 
 Azure Database for MySQL levert de **replicatie vertraging in seconden** metric in azure monitor. Deze metriek is alleen beschikbaar voor replica's.
 
-Deze metrische gegevens worden berekend met `seconds_behind_master` behulp van de beschik bare metrische gegevens in de opdracht van `SHOW SLAVE STATUS` mysql.
+Deze metrische gegevens worden berekend met behulp van de `seconds_behind_master` beschik bare metrische gegevens in de `SHOW SLAVE STATUS` opdracht van MySQL.
 
 Stel een waarschuwing in om u te informeren wanneer de replicatie vertraging een waarde bereikt die niet geschikt is voor uw werk belasting.
 
@@ -109,7 +109,7 @@ Het lezen van replica's is momenteel alleen beschikbaar in de prijs Categorieën
 
 ### <a name="master-server-restart"></a>Hoofd server opnieuw opstarten
 
-Wanneer u een replica maakt voor een model zonder bestaande replica's, wordt de Master eerst opnieuw opgestart om zichzelf voor te bereiden voor replicatie. Houd er rekening mee dat u deze bewerkingen uitvoert tijdens een rustige periode.
+Wanneer u een replica maakt voor een model zonder bestaande replica's, wordt de Master eerst opnieuw opgestart om zichzelf voor te bereiden voor replicatie. Houd dit in overweging en voer deze bewerkingen uit tijdens een rustige periode.
 
 ### <a name="new-replicas"></a>Nieuwe replica's
 
@@ -136,13 +136,13 @@ Gebruikers op de hoofd server worden gerepliceerd naar de Lees replica's. U kunt
 
 ### <a name="server-parameters"></a>Serverparameters
 
-Om te voor komen dat gegevens kunnen worden gesynchroniseerd en om mogelijke gegevens verlies of-beschadiging te voor komen, worden bepaalde server parameters vergrendeld bij het gebruik van replica's voor lezen.
+Om problemen met de synchronisatie van gegevens en mogelijk verlies of beschadiging van gegevens te voorkomen, worden bepaalde serverparameters vergrendeld zodat ze niet kunnen worden bijgewerkt bij gebruik van replica's voor lezen.
 
 De volgende server parameters zijn vergrendeld op de Master-en replica servers:
 - [`innodb_file_per_table`](https://dev.mysql.com/doc/refman/5.7/en/innodb-multiple-tablespaces.html) 
 - [`log_bin_trust_function_creators`](https://dev.mysql.com/doc/refman/5.7/en/replication-options-binary-log.html#sysvar_log_bin_trust_function_creators)
 
-De [`event_scheduler`](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_event_scheduler) para meter is vergrendeld op de replica servers. 
+De para meter [`event_scheduler`](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_event_scheduler) wordt op de replica servers vergrendeld. 
 
 ### <a name="other"></a>Overige
 

@@ -6,18 +6,16 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 08/21/2019
 ms.author: tomfitz
-ms.openlocfilehash: 1f9fb786933d03b27be47c9f778a5f1575ca17c2
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 88aabb676d3a15dd2efff3acd751818301519ae1
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69970908"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71972709"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-powershell"></a>Resources implementeren met Resource Manager-sjablonen en Azure PowerShell
 
 Meer informatie over het gebruik van Azure PowerShell met Resource Manager-sjablonen voor het implementeren van uw resources in Azure. Zie [Azure Resource Manager Overview](resource-group-overview.md)voor meer informatie over de concepten van het implementeren en beheren van uw Azure-oplossingen.
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="deployment-scope"></a>Implementatie bereik
 
@@ -78,13 +76,13 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName `
   -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json
 ```
 
-In het voor gaande voor beeld is een openbaar toegankelijke URI vereist voor de sjabloon, die voor de meeste scenario's werkt, omdat uw sjabloon geen gevoelige gegevens mag bevatten. Als u gevoelige gegevens (zoals een beheerders wachtwoord) moet opgeven, geeft u die waarde als een beveiligde para meter door. Als u niet wilt dat uw sjabloon openbaar toegankelijk is, kunt u deze beveiligen door deze op te slaan in een persoonlijke opslag container. Zie voor meer informatie over het implementeren van een sjabloon waarvoor een SAS-token (Shared Access Signature) is vereist een [persoonlijke sjabloon implementeren met SAS-token](resource-manager-powershell-sas-token.md). Zie [zelf studie als u een zelf studie wilt door lopen: Azure Key Vault integreren in de Resource Manager-sjabloonimplementatie](./resource-manager-tutorial-use-key-vault.md) voor meer informatie.
+In het voor gaande voor beeld is een openbaar toegankelijke URI vereist voor de sjabloon, die voor de meeste scenario's werkt, omdat uw sjabloon geen gevoelige gegevens mag bevatten. Als u gevoelige gegevens (zoals een beheerders wachtwoord) moet opgeven, geeft u die waarde als een beveiligde para meter door. Als u niet wilt dat uw sjabloon openbaar toegankelijk is, kunt u deze beveiligen door deze op te slaan in een persoonlijke opslag container. Zie voor meer informatie over het implementeren van een sjabloon waarvoor een SAS-token (Shared Access Signature) is vereist een [persoonlijke sjabloon implementeren met SAS-token](resource-manager-powershell-sas-token.md). Als u een zelf studie wilt door lopen, raadpleegt u [Tutorial: Azure Key Vault integreren in de Resource Manager-sjabloonimplementatie](./resource-manager-tutorial-use-key-vault.md) voor meer informatie.
 
 ## <a name="deploy-from-azure-cloud-shell"></a>Implementeren vanuit Azure Cloud shell
 
 U kunt de [Azure Cloud shell](https://shell.azure.com) gebruiken om uw sjabloon te implementeren. Als u een externe sjabloon wilt implementeren, geeft u de URI van de sjabloon op. Als u een lokale sjabloon wilt implementeren, moet u uw sjabloon eerst laden in het opslag account voor uw Cloud Shell. Als u bestanden naar de shell wilt uploaden, selecteert u het menu pictogram **bestanden uploaden/downloaden** in het shell-venster.
 
-Als u de Cloud shell wilt openen, [https://shell.azure.com](https://shell.azure.com)bladert u naar of selecteert u **try-it** in de volgende code sectie:
+Als u de Cloud shell wilt openen, bladert u naar [https://shell.azure.com](https://shell.azure.com)of selecteert u **try-it** in de volgende code sectie:
 
 ```azurepowershell-interactive
 $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
@@ -97,44 +95,13 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName `
 
 Als u de code in de shell wilt plakken, klikt u met de rechter muisknop in de shell en selecteert u **Plakken**.
 
-## <a name="redeploy-when-deployment-fails"></a>Opnieuw implementeren wanneer de implementatie mislukt
-
-Deze functie wordt ook wel bekend als *Rollback bij fout*. Wanneer een implementatie mislukt, kunt u automatisch een eerdere, geslaagde implementatie uit de implementatie geschiedenis opnieuw implementeren. Als u een herimplementatie wilt opgeven, `-RollbackToLastDeployment` gebruikt `-RollBackDeploymentName` u de para meter of in de implementatie opdracht. Deze functie is handig als u een bekende goede status hebt voor de implementatie van uw infra structuur en u wilt terugkeren naar deze status. Er zijn een aantal voor behoud en beperkingen:
-
-- De implementatie wordt precies zo uitgevoerd als deze eerder met dezelfde para meters is uitgevoerd. U kunt de para meters niet wijzigen.
-- De vorige implementatie wordt uitgevoerd met de [volledige modus](./deployment-modes.md#complete-mode). Alle resources die geen deel uitmaken van de vorige implementatie worden verwijderd en alle resource configuraties worden ingesteld op de vorige status. Zorg ervoor dat u de [implementatie modi](./deployment-modes.md)volledig begrijpt.
-- De herimplementatie heeft alleen invloed op de resources, maar wijzigingen in de gegevens worden niet beïnvloed.
-- Deze functie wordt alleen ondersteund voor implementaties van resource groepen, geen implementaties op abonnements niveau. Zie [resource groepen en-resources op abonnements niveau maken](./deploy-to-subscription.md)voor meer informatie over de implementatie op abonnements niveau.
-
-Als u deze optie wilt gebruiken, moeten uw implementaties unieke namen hebben zodat deze in de geschiedenis kunnen worden geïdentificeerd. Als u geen unieke namen hebt, kan de huidige mislukte implementatie de eerder geslaagde implementatie in de geschiedenis overschrijven. U kunt deze optie alleen gebruiken bij implementaties op hoofd niveau. Implementaties van een geneste sjabloon zijn niet beschikbaar voor opnieuw implementeren.
-
-Als u de laatste geslaagde implementatie opnieuw wilt implementeren `-RollbackToLastDeployment` , voegt u de para meter toe als een vlag.
-
-```azurepowershell-interactive
-New-AzResourceGroupDeployment -Name ExampleDeployment02 `
-  -ResourceGroupName $resourceGroupName `
-  -TemplateFile c:\MyTemplates\azuredeploy.json `
-  -RollbackToLastDeployment
-```
-
-Als u een specifieke implementatie opnieuw wilt implementeren, `-RollBackDeploymentName` gebruikt u de para meter en geeft u de naam van de implementatie op.
-
-```azurepowershell-interactive
-New-AzResourceGroupDeployment -Name ExampleDeployment02 `
-  -ResourceGroupName $resourceGroupName `
-  -TemplateFile c:\MyTemplates\azuredeploy.json `
-  -RollBackDeploymentName ExampleDeployment01
-```
-
-De opgegeven implementatie moet zijn geslaagd.
-
 ## <a name="pass-parameter-values"></a>Parameter waarden door geven
 
 Als u parameter waarden wilt door geven, kunt u inline-para meters of een parameter bestand gebruiken.
 
 ### <a name="inline-parameters"></a>Inline-para meters
 
-Als u inline-para meters wilt door geven, geeft u `New-AzResourceGroupDeployment` de namen van de para meter op met de opdracht. Als u bijvoorbeeld een teken reeks en een matrix wilt door geven aan een sjabloon, gebruikt u:
+Als u inline-para meters wilt door geven, geeft u de namen van de para meter op met de opdracht `New-AzResourceGroupDeployment`. Als u bijvoorbeeld een teken reeks en een matrix wilt door geven aan een sjabloon, gebruikt u:
 
 ```powershell
 $arrayParam = "value1", "value2"
@@ -220,7 +187,7 @@ Test-AzResourceGroupDeployment : After parsing a value an unexpected character w
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie [Azure Deployment Manager](deployment-manager-overview.md)als u uw service veilig wilt implementeren in meer dan één regio.
+- Als u wilt terugkeren naar een geslaagde implementatie wanneer u een fout krijgt, raadpleegt u [herstellen bij fout naar geslaagde implementatie](rollback-on-error.md).
 - Zie [Azure Resource Manager implementatie modi](deployment-modes.md)om op te geven hoe u resources wilt afhandelen die in de resource groep aanwezig zijn, maar die niet zijn gedefinieerd in de sjabloon.
 - Zie [inzicht in de structuur en syntaxis van Azure Resource Manager sjablonen](resource-group-authoring-templates.md)voor meer informatie over het definiëren van para meters in uw sjabloon.
 - Zie voor meer informatie over het implementeren van een sjabloon waarvoor een SAS-token is vereist een [persoonlijke sjabloon implementeren met SAS-token](resource-manager-powershell-sas-token.md).

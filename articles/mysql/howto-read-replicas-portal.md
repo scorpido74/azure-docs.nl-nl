@@ -1,17 +1,17 @@
 ---
-title: Maken en beheren van lezen-replica's in Azure Database for MySQL
-description: In dit artikel wordt beschreven hoe u in Azure Database for MySQL Lees replica's instelt en beheert met behulp van de portal.
+title: "& Beheren Lees replica's maken (Azure Portal)-Azure Database for MySQL"
+description: Meer informatie over het instellen en beheren van Lees replica's in Azure Database for MySQL met behulp van de Azure Portal.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/04/2019
-ms.openlocfilehash: 275c7bc8127855712c191141ef681526da7c377b
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: a90e9cccf8b59dabbee8415818c0e819ba1b26c3
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70309489"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71972875"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-using-the-azure-portal"></a>Lees replica's maken en beheren in Azure Database for MySQL met behulp van de Azure Portal
 
@@ -130,11 +130,11 @@ Als u een master-server wilt verwijderen uit de Azure Portal, gebruikt u de volg
 
 4. Selecteer het tijds bereik dat u wilt weer geven. In de onderstaande afbeelding wordt een tijds bereik van 30 minuten geselecteerd.
 
-   ![Tijds bereik selecteren](./media/howto-read-replica-portal/monitor-replication-lag-time-range.png)
+   ![Tijdsbereik selecteren](./media/howto-read-replica-portal/monitor-replication-lag-time-range.png)
 
 5. De replicatie vertraging voor het geselecteerde tijds bereik weer geven. In de onderstaande afbeelding wordt de laatste 30 minuten weer gegeven.
 
-   ![Tijds bereik selecteren](./media/howto-read-replica-portal/monitor-replication-lag-time-range-thirty-mins.png)
+   ![Tijdsbereik selecteren](./media/howto-read-replica-portal/monitor-replication-lag-time-range-thirty-mins.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 

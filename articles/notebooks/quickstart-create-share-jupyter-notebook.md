@@ -4,21 +4,20 @@ description: Snel maken en uitvoeren van een Jupyter-notebook op Azure-Notebooks
 services: app-service
 documentationcenter: ''
 author: kraigb
-manager: douge
+manager: barbkess
 ms.assetid: 5add60ad-0b4b-4fd5-adf5-eb50ce072d00
 ms.service: azure-notebooks
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: 42f5d3abda715d83d58b0d341aed784de639e460
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.openlocfilehash: 19e8217bf88427c353fdd4c90c9f421445b7c81a
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "66751796"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71970179"
 ---
 # <a name="quickstart-create-and-share-a-notebook"></a>Quickstart: Een notebook maken en delen
 
@@ -34,7 +33,7 @@ ms.locfileid: "66751796"
 
 1. In de **nieuw Project maken** pop-upvenster dat wordt weergegeven, invoeren of stel de volgende details en selecteer vervolgens **maken**:
 
-   - **Naam van het project**: Hello World in Python
+   - **Project naam**: Hallo wereld in python
    - **Project-ID**: hello-world-python
    - **Openbare project**: (uitgeschakeld)
    - **Maken van een README.md**: (uitgeschakeld)
@@ -83,7 +82,7 @@ ms.locfileid: "66751796"
     print(msg)
     ```
 
-1. Selecteer **uitvoeren** (sneltoets: Shift + Enter) de code uit te voeren. U ziet onder de cel geslaagde uitvoer is vergelijkbaar met de volgende tekst:
+1. Selecteer **uitvoeren** (sneltoets: SHIFT + ENTER) om de code uit te voeren. U ziet onder de cel geslaagde uitvoer is vergelijkbaar met de volgende tekst:
 
     ```output
     Hello, Azure Notebooks! Today is Thursday, 15 November, 2018
@@ -93,7 +92,7 @@ ms.locfileid: "66751796"
 
     ![Pictogram opslaan op de werkbalk Jupyter-notebook](media/quickstarts/hello-results-save-icon.png)
 
-1. Selecteer de **bestand** > **sluiten en stoppen** menuopdracht voor het stoppen van de server en sluit het browservenster.
+1. Selecteer de menu opdracht **bestand** > **sluiten en** stoppen om de server te stoppen en het browser venster te sluiten.
 
 ## <a name="share-the-notebook"></a>Delen van de notebook
 

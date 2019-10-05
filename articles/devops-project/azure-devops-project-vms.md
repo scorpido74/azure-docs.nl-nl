@@ -1,22 +1,22 @@
 ---
-title: 'Zelfstudie: Uw ASP.NET-app implementeren op virtuele machines van Azure met behulp van Azure DevOps Projects'
+title: 'Zelfstudie: Implementeer uw ASP.NET-app op Azure virtual machines met behulp van Azure DevOps Projects'
 description: Met DevOps Projects kunt u eenvoudig aan de slag gaan in Azure en in slechts enkele stappen een ASP.NET-app implementeren op virtuele Azure-machines.
 ms.author: mlearned
-ms.manager: douge
+manager: gwallace
 ms.prod: devops
 ms.technology: devops-cicd
 ms.topic: tutorial
 ms.date: 07/09/2018
 author: mlearned
 monikerRange: vsts
-ms.openlocfilehash: 05643f342d51d99645d3c9204d6e63adcf2a0a73
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b03fb27c46d4fd925b91b8927fdd50ff4912aaec
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60546475"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71969563"
 ---
-# <a name="tutorial-deploy-your-aspnet-app-to-azure-virtual-machines-by-using-azure-devops-projects"></a>Zelfstudie: Uw ASP.NET-app implementeren op virtuele machines van Azure met behulp van Azure DevOps Projects
+# <a name="tutorial-deploy-your-aspnet-app-to-azure-virtual-machines-by-using-azure-devops-projects"></a>Zelfstudie: Implementeer uw ASP.NET-app op Azure virtual machines met behulp van Azure DevOps Projects
 
 Azure DevOps Projects biedt een vereenvoudigde ervaring waar u uw bestaande code en Git-opslagplaats gebruikt of een voorbeeldtoepassing kiest voor het maken van een CI- (Continue integratie) en CD-pijplijn (Continue levering) naar Azure. 
 

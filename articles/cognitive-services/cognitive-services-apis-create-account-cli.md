@@ -7,14 +7,14 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 07/17/2019
+ms.date: 10/04/2019
 ms.author: aahi
-ms.openlocfilehash: cd00f49aea08e5c94a9206b64f66f4424ef3ca04
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: d50b0858ac7c4c0e5e0263bd157e044d0fec4489
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71057640"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71972668"
 ---
 # <a name="create-a-cognitive-services-resource-using-the-azure-command-line-interfacecli"></a>Een Cognitive Services resource maken met behulp van de Azure-opdracht regel interface (CLI)
 
@@ -60,7 +60,7 @@ az account list-locations \
 
 Nadat u uw Azure-locatie hebt, maakt u een nieuwe resource groep in de Azure CLI met behulp van de opdracht [AZ Group Create](/cli/azure/group#az-group-create) .
 
-Vervang in het onderstaande voor beeld de Azure- `westus2` locatie door een van de Azure-locaties die beschikbaar zijn voor uw abonnement.
+Vervang in het onderstaande voor beeld de Azure-locatie `westus2` door een van de Azure-locaties die beschikbaar zijn voor uw abonnement.
 
 ```azurecli-interactive
 az group create \
@@ -75,7 +75,7 @@ az group create \
 Wanneer u een nieuwe resource maakt, moet u weten wat de soort service is die u wilt gebruiken, samen met de gewenste [prijs categorie](https://azure.microsoft.com/pricing/details/cognitive-services/) (of SKU). U gebruikt deze en andere informatie als para meters bij het maken van de resource.
 
 > [!NOTE]
-> Veel cognitieve Services hebben een gratis laag die u kunt gebruiken om de service te proberen. Als u de gratis laag wilt gebruiken `F0` , gebruikt u als de SKU voor uw resource.
+> Veel cognitieve Services hebben een gratis laag die u kunt gebruiken om de service te proberen. Als u de laag gratis wilt gebruiken, gebruikt u `F0` als SKU voor uw resource.
 
 ### <a name="vision"></a>Vision
 
@@ -94,7 +94,7 @@ Wanneer u een nieuwe resource maakt, moet u weten wat de soort service is die u 
 |--------------------|-----------------------|
 | Bing Automatische suggesties   | `Bing.Autosuggest.v7` |
 | Bing Aangepaste zoekopdrachten | `Bing.CustomSearch`   |
-| Bing Entity Search | `Bing.EntitySearch`   |
+| Bing Entiteiten zoeken | `Bing.EntitySearch`   |
 | Bing Zoeken        | `Bing.Search.v7`      |
 | Bing Spellingcontrole   | `Bing.SpellCheck.v7`  |
 
@@ -113,7 +113,7 @@ Wanneer u een nieuwe resource maakt, moet u weten wat de soort service is die u 
 | LUIS               | `LUIS`              |
 | QnA Maker          | `QnAMaker`          |
 | Tekstanalyse     | `TextAnalytics`     |
-| Text Translation   | `TextTranslation`   |
+| Tekstomzetting   | `TextTranslation`   |
 
 ### <a name="decision"></a>Besluit
 
@@ -133,7 +133,7 @@ az cognitiveservices account list-kinds
 
 Als u een nieuwe Cognitive Services resource wilt maken en hierop wilt abonneren, gebruikt u de opdracht [AZ cognitiveservices account create](https://docs.microsoft.com/cli/azure/cognitiveservices/account?view=azure-cli-latest#az-cognitiveservices-account-create) . Met deze opdracht wordt een nieuwe factureer bare resource toegevoegd aan de resource groep die u eerder hebt gemaakt. Wanneer u een nieuwe resource maakt, moet u weten wat de soort service is die u wilt gebruiken, samen met de prijs categorie (of SKU) en een Azure-locatie:
 
-U kunt een F0 (gratis) resource maken voor anomalie detectie, met de `anomaly-detector-resource` naam met de onderstaande opdracht.
+U kunt een F0 (vrije) resource maken voor anomalie detectie, met de naam `anomaly-detector-resource` met de onderstaande opdracht.
 
 ```azurecli-interactive
 az cognitiveservices account create \
@@ -170,6 +170,16 @@ De prijs categorieën (en de hoeveelheid die u ontvangt) zijn gebaseerd op het a
 * Service functies zijn ingeschakeld in de prijs categorie.
 * De kosten voor een vooraf gedefinieerd bedrag aan trans acties. Boven deze hoeveelheid worden er extra kosten in rekening gebracht, zoals is opgegeven in de [prijs informatie](https://azure.microsoft.com/pricing/details/cognitive-services/custom-vision-service/) voor uw service.
 
+## <a name="get-current-quota-usage-for-your-resource"></a>Huidig quotum gebruik voor uw resource ophalen
+
+Gebruik de opdracht [AZ cognitiveservices account list-Usage](https://docs.microsoft.com/en-us/cli/azure/cognitiveservices/account?view=azure-cli-latest#az-cognitiveservices-account-list-usage) om het gebruik van uw cognitieve service resource op te halen.
+
+```azurecli-interactive
+az cognitiveservices account list-usage \
+    --name anomaly-detector-resource \
+    --resource-group cognitive-services-resource-group \
+    --subscription subscription-name
+```
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 

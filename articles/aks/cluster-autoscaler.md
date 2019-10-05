@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 07/18/2019
 ms.author: mlearned
-ms.openlocfilehash: e96d501196a629c7e37de7e5ad66b68863bf556f
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: b2973a8e826ab8cc8da29f1ec9678d6a6e4fa975
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71097899"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71971856"
 ---
 # <a name="preview---automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>Voor beeld: een cluster automatisch schalen om te voldoen aan de toepassings vereisten van de Azure Kubernetes-service (AKS)
 
@@ -90,21 +90,21 @@ az aks create \
   --resource-group myResourceGroup \
   --name myAKSCluster \
   --node-count 1 \
-  --vm-set-type VirtualMachineScaleSets \
+  ---enable-vmss \
   --enable-cluster-autoscaler \
   --min-count 1 \
   --max-count 3
 ```
 
 > [!NOTE]
-> Als u een *--kubernetes-version* opgeeft wanneer deze `az aks create`wordt uitgevoerd, moet die versie voldoen aan of groter dan het minimum versie nummer dat is vereist, zoals beschreven in de vorige sectie [voordat u begint](#before-you-begin) .
+> Als u een *--kubernetes* opgeeft bij het uitvoeren van `az aks create`, moet die versie voldoen aan of groter dan het minimum versie nummer dat is vereist, zoals beschreven in de vorige sectie [voordat u begint](#before-you-begin) .
 
 Het duurt enkele minuten om het cluster te maken en de instellingen voor het automatisch schalen van clusters te configureren.
 
 ## <a name="change-the-cluster-autoscaler-settings"></a>De instellingen voor het automatisch schalen van clusters wijzigen
 
 > [!IMPORTANT]
-> Als u de functie *meerdere agent groepen* hebt ingeschakeld voor uw abonnement, gaat u naar de [sectie automatisch schalen met meerdere groepen van agents](#use-the-cluster-autoscaler-with-multiple-node-pools-enabled). Voor clusters waarvoor meerdere agent Pools zijn ingeschakeld, moet de `az aks nodepool` opdracht set worden gebruikt om specifieke eigenschappen van de knooppunten `az aks`groep te wijzigen in plaats van. In de onderstaande instructies wordt ervan uitgegaan dat u meerdere knooppunt groepen niet hebt ingeschakeld. Als u wilt controleren of u deze hebt ingeschakeld `az feature  list -o table` , voert u `Microsoft.ContainerService/multiagentpoolpreview`uit en zoekt u naar.
+> Als u de functie *meerdere agent groepen* hebt ingeschakeld voor uw abonnement, gaat u naar de [sectie automatisch schalen met meerdere groepen van agents](#use-the-cluster-autoscaler-with-multiple-node-pools-enabled). Voor clusters waarvoor meerdere agent groepen zijn ingeschakeld, moet de `az aks nodepool`-opdracht worden gebruikt om de eigenschappen van de knooppunt groep te wijzigen in plaats van `az aks`. In de onderstaande instructies wordt ervan uitgegaan dat u meerdere knooppunt groepen niet hebt ingeschakeld. Als u wilt controleren of u deze hebt ingeschakeld, voert u `az feature  list -o table` uit en zoekt u naar `Microsoft.ContainerService/multiagentpoolpreview`.
 
 In de vorige stap om een AKS-cluster te maken of een bestaande knooppunt groep bij te werken, is het minimum aantal knoop punten van het cluster automatisch ingesteld op *1*en is het maximum aantal knoop punten ingesteld op *3*. Als uw toepassing wordt gewijzigd, moet u mogelijk het aantal knoop punten van de cluster automatisch schalen aanpassen.
 
@@ -159,7 +159,7 @@ az aks nodepool update \
   --max-count 5
 ```
 
-De cluster automatisch schalen kan worden uitgeschakeld met [AZ AKS nodepool update][az-aks-nodepool-update] en de `--disable-cluster-autoscaler` para meter door gegeven.
+De cluster automatisch schalen kan worden uitgeschakeld met [AZ AKS nodepool update][az-aks-nodepool-update] en door geven van de para meter `--disable-cluster-autoscaler`.
 
 ```azurecli-interactive
 az aks nodepool update \

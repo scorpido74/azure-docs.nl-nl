@@ -4,21 +4,20 @@ description: Azure notitieblokken projecten beheren van een verzameling van noti
 services: app-service
 documentationcenter: ''
 author: kraigb
-manager: douge
+manager: barbkess
 ms.assetid: 9b6a49e2-1d71-4c0b-9e5d-16e059427e38
 ms.service: azure-notebooks
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 02/25/2019
 ms.author: kraigb
-ms.openlocfilehash: 0ee0c7162e26b875c74796b6d5379b414981e2d5
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 13615d319af600234dcc23e04f82ce46b8f97780
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60237539"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71970091"
 ---
 # <a name="create-and-clone-projects"></a>Projecten maken en klonen
 
@@ -30,7 +29,7 @@ Een project onderhoudt ook metagegevens en andere configuratie-instellingen die 
 
 Uw **Mijn projecten** dashboard op `https://notebooks.azure.com/<userID>/projects` is waar u weergeven, beheren en projecten maken:
 
-[![Mijn dashboard projecten in Azure-notitieblokken](media/my-projects-dashboard.png)](media/my-projects-dashboard.png#lightbox)
+[@no__t-dash board projecten van 1My in Azure Notebooks](media/my-projects-dashboard.png)](media/my-projects-dashboard.png#lightbox)
 
 Wat u op het dashboard kunt doen, is afhankelijk van of u bent aangemeld met het account dat eigenaar is van de gebruikers-ID:
 
@@ -42,7 +41,7 @@ Wat u op het dashboard kunt doen, is afhankelijk van of u bent aangemeld met het
 | **Verwijderen** | Eigenaar | Hiermee verwijdert u het geselecteerde project. Deze bewerking kan niet ongedaan worden gemaakt. |
 | **Terminal** | Eigenaar | Start de projectserver en vervolgens een nieuw browservenster geopend met de bash, terminal voor die server. |
 | **+ Nieuw Project** | Eigenaar | Hiermee maakt u een nieuw project. Zie [een nieuw project maken](#create-a-new-project). |
-| **GitHub-opslagplaats uploaden** | Eigenaar | Een project importeert vanuit GitHub. [Een project importeren vanuit GitHub](#import-a-project-from-github). |
+| **GitHub opslag plaats uploaden** | Eigenaar | Een project importeert vanuit GitHub. [Een project importeren vanuit GitHub](#import-a-project-from-github). |
 | **Kloon** | Iedereen | Een geselecteerde project worden gekopieerd naar uw eigen account. Vraagt u zich kunt aanmelden in als dit nog niet. Zie [klonen van een project](#clone-a-project). |
 
 ### <a name="obtain-a-launch-badge"></a>Verkrijgen van een badge starten
@@ -67,26 +66,26 @@ Wanneer u gebruikt de **+ nieuw Project** opdracht, Azure-notitieblokken wordt w
 
 | Veld | Description |
 | --- | --- |
-| Projectnaam | Een beschrijvende naam voor uw project die gebruikmaakt van Azure-notitieblokken weer te geven. Bijvoorbeeld 'mijn laptop Project'. |
-| Project-id | Een aangepaste id die deel van de URL uitmaken die u gebruiken voor het delen van een project (het formulier is `https://notebooks.azure.com/<user_id>/projects/<project_id>`). Deze ID kunt alleen letters, cijfers en afbreekstreepjes bevatten, is beperkt tot 30 tekens bevatten en mag niet een [gereserveerd project-ID](#reserved-project-ids). Als u niet zeker weet wat u wilt gebruiken, wordt een algemene conventie is het gebruik van een kleine versie van de projectnaam van uw waar spaties in afbreekstreepjes bevatten, zoals 'Mijn-notebook-project' (afgekapt indien nodig aanpassen aan de maximale lengte) zijn ingeschakeld. |
+| Projectnaam | Een beschrijvende naam voor uw project die gebruikmaakt van Azure-notitieblokken weer te geven. Bijvoorbeeld ' mijn notitie blok-project '. |
+| Project-id | Een aangepaste id die deel van de URL uitmaken die u gebruiken voor het delen van een project (het formulier is `https://notebooks.azure.com/<user_id>/projects/<project_id>`). Deze ID mag alleen letters, cijfers en afbreek streepjes bevatten, is beperkt tot 30 tekens en kan geen [gereserveerde project-id](#reserved-project-ids)zijn. Als u niet zeker weet wat u wilt gebruiken, wordt een algemene conventie is het gebruik van een kleine versie van de projectnaam van uw waar spaties in afbreekstreepjes bevatten, zoals 'Mijn-notebook-project' (afgekapt indien nodig aanpassen aan de maximale lengte) zijn ingeschakeld. |
 | Public | Als is ingesteld, kan iedereen met de koppeling voor toegang tot het project. Wanneer u een privé-project maakt, moet u deze optie uitschakelen. |
 | Initialiseren van dit project met een Leesmij-bestand | Als instelt, maakt u een standaard *README.md* bestand in het project. Een *README.md* bestand is waar het bieden van documentatie voor uw project, indien gewenst. |
 
-### <a name="reserved-project-ids"></a>Gereserveerde project-id 's
+### <a name="reserved-project-ids"></a>Gereserveerde project-Id's
 
-De volgende gereserveerde woorden worden niet op zichzelf als project-id's gebruikt. Deze gereserveerde woorden kunnen echter worden gebruikt als onderdeel van langer project-id's.
+De volgende gereserveerde woorden kunnen niet worden gebruikt door zichzelf als project-Id's. Deze gereserveerde woorden kunnen echter worden gebruikt als onderdeel van langere project-Id's.
 
 | | | | | | |
 | --- | --- | --- | --- | --- | --- |
-| over | account | Beheer | api | blog | leslokaal |
-| content | dashboard | Verkennen | faq | Help | html |
-| startpagina | Importeren | bibliotheek | management | nieuw | Notebook |
-| Notitieblokken | pdf | preview | Prijzen | Profiel | Zoeken |
-| status | Ondersteuning | test | | | |
+| wilt | account | dienen | api | blog | school |
+| inhoud | dashboard | Ontdek | faq | Help | html |
+| mijn | wederinvoer | tagbibliotheek | beheer | nieuw | notitieblok |
+| - | pdf | preview | prijzen | profile | zoeken |
+| status | ondersteuning | test | | | |
 
-Als u probeert een van deze woorden gebruiken als een project-ID, de **nieuw Project maken** en **projectinstellingen** pop-ups aan de orde, "bibliotheek-id is een gereserveerde-id."
+Als u een van deze woorden als project-ID probeert te gebruiken, worden de pop-up **nieuwe project** -en **project instellingen** maken popups, ' bibliotheek-id is een gereserveerde id '.
 
-Omdat een project-ID ook deel uit van de URL van een project maakt, blokkeert ad-upblokkering software het gebruik van bepaalde trefwoorden, zoals "advertisements." In dergelijke gevallen gebruikt u een ander woord in de project-ID.
+Omdat een project-ID ook deel uitmaakt van de URL van een project, kan het gebruik van bepaalde tref woorden, zoals ' advertisements ', worden geblokkeerd door de software van ad blocker. In dergelijke gevallen gebruikt u een ander woord in de project-ID.
 
 ## <a name="import-a-project-from-github"></a>Een project importeren vanuit GitHub
 
@@ -97,7 +96,7 @@ U kunt eenvoudig een volledige openbare GitHub-opslagplaats importeren als een p
 | GitHub-opslagplaats | De naam van de opslagplaats op github.com. Bijvoorbeeld, om te klonen van de Jupyter-notebooks voor Azure Cognitive Services op [ https://github.com/Microsoft/cognitive-services-notebooks ](https://github.com/Microsoft/cognitive-services-notebooks), voer ' Microsoft/cognitieve-services-notitieblokken'.  |
 | Kloon-recursief | GitHub-opslagplaatsen kunnen meerdere onderliggende opslagplaatsen bevatten. Stel deze optie als u wilt klonen van de bovenliggende of hoofdopslagplaats en alle onderliggende items. Omdat het is mogelijk dat een opslagplaats te veel onderliggende elementen hebben, laat u deze optie wissen tenzij u zeker weet dat u ze nodig hebt. |
 | Projectnaam | Een beschrijvende naam voor uw project die gebruikmaakt van Azure-notitieblokken weer te geven. |
-| Project-id | Een aangepaste id die deel van de URL uitmaken die u gebruiken voor het delen van een project (het formulier is `https://notebooks.azure.com/<user_id>/projects/<project_id>`). Deze ID kunt alleen letters, cijfers en afbreekstreepjes bevatten, is beperkt tot 30 tekens bevatten en mag niet een [gereserveerd project-ID](#reserved-project-ids). Als u niet zeker weet wat u wilt gebruiken, wordt een algemene conventie is het gebruik van een kleine versie van de projectnaam van uw waar spaties in afbreekstreepjes bevatten, zoals 'Mijn-notebook-project' (afgekapt indien nodig aanpassen aan de maximale lengte) zijn ingeschakeld. |
+| Project-id | Een aangepaste id die deel van de URL uitmaken die u gebruiken voor het delen van een project (het formulier is `https://notebooks.azure.com/<user_id>/projects/<project_id>`). Deze ID mag alleen letters, cijfers en afbreek streepjes bevatten, is beperkt tot 30 tekens en kan geen [gereserveerde project-id](#reserved-project-ids)zijn. Als u niet zeker weet wat u wilt gebruiken, wordt een algemene conventie is het gebruik van een kleine versie van de projectnaam van uw waar spaties in afbreekstreepjes bevatten, zoals 'Mijn-notebook-project' (afgekapt indien nodig aanpassen aan de maximale lengte) zijn ingeschakeld. |
 | Public | Als is ingesteld, kan iedereen met de koppeling voor toegang tot het project. Wanneer u een privé-project maakt, moet u deze optie uitschakelen. |
 
 Importeren van een opslagplaats van GitHub importeert bijbehorende geschiedenis ook. U kunt standard Git-opdrachten uit vanaf de terminal naar de nieuwe wijzigingen doorvoeren, pull-wijzigingen vanuit GitHub, enzovoort.
@@ -121,9 +120,9 @@ Voor het klonen van een project:
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Voorbeeldnotitieblokken verkennen](azure-notebooks-samples.md)
-- [Procedure: Configureren en beheren van projecten](configure-manage-azure-notebooks-projects.md)
-- [Procedure: Installeren van pakketten van binnen een laptop](install-packages-jupyter-notebook.md)
-- [Procedure: Een diavoorstelling](present-jupyter-notebooks-slideshow.md)
-- [Procedure: Werken met bestanden](work-with-project-data-files.md)
-- [Procedure: Toegang tot gegevensresources](access-data-resources-jupyter-notebooks.md)
-- [Procedure: Use Azure Machine Learning Services](use-machine-learning-services-jupyter-notebooks.md)
+- [Procedure: Projecten configureren en beheren @ no__t-0
+- [Procedure: Pakketten installeren vanuit een notitie blok @ no__t-0
+- [Procedure: Een diavoorstelling weer geven @ no__t-0
+- [Procedure: Werken met gegevens bestanden @ no__t-0
+- [Procedure: Toegang tot gegevens bronnen @ no__t-0
+- [Procedure: Azure Machine Learning Services gebruiken @ no__t-0

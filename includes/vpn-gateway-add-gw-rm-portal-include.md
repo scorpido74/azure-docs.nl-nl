@@ -5,15 +5,15 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 09/24/2019
+ms.date: 10/04/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 12d3f06ca349413231d69fc9de7b9d2f36645b23
-ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
+ms.openlocfilehash: ed828a09843648b129b701c9afd22aac9e2fa9b0
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71273741"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71970794"
 ---
 1. Klik in de portal aan de linkerkant op **Een resource maken** en typ in het zoekvak: 'virtuele netwerkgateway'. Klik op het zoekresultaat **Gateway van het virtuele netwerk**. Klik op de pagina **virtuele netwerk gateway** op **maken**. Hiermee opent u de pagina **Gateway van het virtuele netwerk maken**.
 
@@ -37,7 +37,7 @@ ms.locfileid: "71273741"
 
       **Virtueel netwerk**: Kies het virtuele netwerk waaraan u deze gateway wilt toevoegen.
 
-      **Adres bereik gateway-subnet**: Dit veld wordt alleen weer gegeven als het virtuele netwerk dat u hebt geselecteerd, geen gateway-subnet heeft. Vul het bereik in als u nog geen gateway-subnet hebt. Maak indien mogelijk het bereik/27 of groter (/26,/25 enz.)
+      **Adres bereik gateway-subnet**: Dit veld wordt alleen weer gegeven als uw VNet geen gateway-subnet heeft. Maak, indien mogelijk, het bereik/27 of groter (/26,/25 enz.). Het maken van een bereik dat kleiner is dan/28 wordt niet aanbevolen. Als u al een gateway-subnet hebt, kunt u GatewaySubnet-details weer geven door te navigeren naar uw virtuele netwerk. Klik op **subnetten** om het bereik weer te geven. Als u het bereik wilt wijzigen, kunt u de GatewaySubnet verwijderen en opnieuw maken.
 
    **Openbaar IP-adres**: Met deze instelling geeft u het open bare IP-adres object op dat is gekoppeld aan de VPN-gateway. Het openbare IP-adres wordt dynamisch toegewezen aan dit object wanneer de VPN-gateway wordt gemaakt. Het openbare IP-adres verandert alleen wanneer de gateway wordt verwijderd en opnieuw wordt gemaakt. Het verandert niet wanneer de grootte van uw VPN Gateway verandert, wanneer deze gateway opnieuw wordt ingesteld of wanneer andere interne onderhoudswerkzaamheden of upgrades worden uitgevoerd.
 

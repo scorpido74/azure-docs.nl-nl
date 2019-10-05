@@ -15,28 +15,31 @@ ms.tgt_pltfrm: vm-windows
 ms.date: 09/24/2019
 ms.author: phillee
 keywords: visualstudio
-ms.openlocfilehash: 4664007bf892b2ae445d6b5174e4f346944e620b
-ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
+ms.openlocfilehash: 3cdec1bb9d4cb44c4cead6d2d208d661bf5da6ae
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71272299"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71971865"
 ---
 # <a name="visual-studio-images-on-azure"></a>Visual Studio-installatie kopieën op Azure
 Het gebruik van Visual Studio in een vooraf geconfigureerde Azure virtual machine (VM) is een snelle en eenvoudige manier om van niets naar een ontwikkel omgeving te gaan. Systeem kopieën met verschillende Visual Studio-configuraties zijn beschikbaar op de [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/compute?filters=virtual-machine-images%3Bmicrosoft%3Bwindows&page=1&subcategories=application-infrastructure).
 
 Bent u nog niet bekend met Azure? [Maak een gratis Azure-account](https://azure.microsoft.com/free).
 
+> [!NOTE]
+> Niet alle abonnementen zijn eligble om Windows 10-installatie kopieën te implementeren. Zie [Windows-client in azure gebruiken voor ontwikkel-en test scenario's](https://docs.microsoft.com/azure/virtual-machines/windows/client-images) voor meer informatie.
+
 ## <a name="what-configurations-and-versions-are-available"></a>Welke configuraties en versies zijn er beschikbaar?
 Installatie kopieën voor de meest recente primaire versies, Visual Studio 2019, Visual Studio 2017 en Visual Studio 2015, vindt u op de Azure Marketplace.  Voor elke uitgebrachte primaire versie ziet u de oorspronkelijke versie van ' release to Web ' (RTW) en de meest recente bijgewerkte versies.  Elk van deze versies biedt Visual Studio Enter prise en de edities van de Visual Studio-community.  Deze installatie kopieën worden minstens elke maand bijgewerkt met de nieuwste Visual Studio-en Windows-updates.  Hoewel de namen van de afbeeldingen hetzelfde blijven, bevat de beschrijving van de installatie kopie de geïnstalleerde product versie en de datum van de installatie kopie.
 
 | Release versie                                                                                                                                                | Edities              | Product versie   |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------:|:-----------------:|
-| [Visual Studio 2019: Nieuwste (versie 16,2)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftvisualstudio.visualstudio2019latest?tab=Overview) | Enter prise, Community | Versie 16.3.0    |
+| [Visual Studio 2019: Nieuwste (versie 16,2) ](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftvisualstudio.visualstudio2019latest?tab=Overview) | Enter prise, Community | Versie 16.3.0    |
 | [Visual Studio 2019: RTW](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftvisualstudio.visualstudio2019?tab=Overview)                         | Enter prise, Community | Versie 16.0.8    |
-| [Visual Studio 2017: Nieuwste (versie 15,9)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftvisualstudio.visualstudio?tab=Overview)           | Enter prise, Community | Versie 15.9.16   |
+| [Visual Studio 2017: Nieuwste (versie 15,9) ](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftvisualstudio.visualstudio?tab=Overview)           | Enter prise, Community | Versie 15.9.16   |
 | [Visual Studio 2017: RTW](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftvisualstudio.visualstudio?tab=Overview)                             | Enter prise, Community | Versie 15.0.25   |
-| [Visual Studio 2015: Nieuwste (update 3)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftvisualstudio.visualstudio?tab=Overview)               | Enter prise, Community | Versie 14.0.25431.01 |
+| [Visual Studio 2015: Nieuwste (update 3) ](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftvisualstudio.visualstudio?tab=Overview)               | Enter prise, Community | Versie 14.0.25431.01 |
 
 > [!NOTE]
 > In overeenstemming met het micro soft-onderhouds beleid is de oorspronkelijk vrijgegeven (RTW) versie van Visual Studio 2015 verlopen voor onderhoud. Visual Studio 2015 update 3 is de enige resterende versie die wordt aangeboden voor de product lijn van Visual Studio 2015.
@@ -94,7 +97,7 @@ Zie voor meer informatie [Aanmelden bij Visual Studio](/visualstudio/ide/signing
 
 Het spectrum van ontwikkel omgevingen is enorm en er zijn echte kosten verbonden aan het bouwen van de complexere omgevingen. Ongeacht de configuratie van uw omgeving kunt u uw geconfigureerde virtuele machine opslaan of vastleggen als basis installatie kopie voor toekomstig gebruik of voor andere leden van uw team. Wanneer u vervolgens een nieuwe virtuele machine opstart, moet u deze van de basis installatie kopie inrichten in plaats van de Azure Marketplace-installatie kopie.
 
-Een snelle samen vatting: Gebruik het hulp programma voor systeem voorbereiding (Sysprep) en sluit de actieve VM af en leg vervolgens *(afbeelding 1)* de virtuele machine vast als een installatie kopie via de gebruikers interface in de Azure Portal. In azure wordt `.vhd` het bestand met de installatie kopie opgeslagen in het opslag account van uw keuze. De nieuwe installatie kopie wordt vervolgens weer gegeven als een afbeeldings resource in de lijst met resources van uw abonnement.
+Een snelle samen vatting: Gebruik het hulp programma voor systeem voorbereiding (Sysprep) en sluit de actieve VM af en leg vervolgens *(afbeelding 1)* de virtuele machine vast als een installatie kopie via de gebruikers interface in de Azure Portal. Azure slaat het `.vhd`-bestand op dat de installatie kopie bevat in het opslag account van uw keuze. De nieuwe installatie kopie wordt vervolgens weer gegeven als een afbeeldings resource in de lijst met resources van uw abonnement.
 
 <img src="media/using-visual-studio-vm/capture-vm.png" alt="Capture an image through the Azure portal UI" style="border:3px solid Silver; display: block; margin: auto;"><center> *(Afbeelding 1) Leg een installatie kopie vast via de Azure Portal-gebruikers interface.* </center>
 

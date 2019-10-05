@@ -6,20 +6,20 @@ author: tfitzmac
 keywords: implementatie fout, Azure-implementatie, implementeren naar Azure
 ms.service: azure-resource-manager
 ms.topic: troubleshooting
-ms.date: 08/30/2019
+ms.date: 10/04/2019
 ms.author: tomfitz
-ms.openlocfilehash: 0e03cd3747fe6770be7dddaf36d634547ed75b39
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: ac700592a63e88936593c24f8f7ce06a08e289ce
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71718940"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71972692"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>Veelvoorkomende fouten bij Azure-implementatie met Azure Resource Manager oplossen
 
 In dit artikel worden enkele veelvoorkomende problemen met Azure-implementatie beschreven en vindt u informatie over het oplossen van de fouten. Zie [fout code zoeken](#find-error-code)als u de fout code voor uw implementatie fout niet kunt vinden.
 
-Als u op zoek bent naar informatie over een fout code en deze informatie niet in dit artikel wordt verstrekt, laat het ons dan weten. Onder aan deze pagina kunt u feedback geven. De feedback wordt bijgehouden met GitHub-problemen. 
+Als u op zoek bent naar informatie over een fout code en deze informatie niet in dit artikel wordt verstrekt, laat het ons dan weten. Onder aan deze pagina kunt u feedback geven. De feedback wordt bijgehouden met GitHub-problemen.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -34,7 +34,9 @@ Als u op zoek bent naar informatie over een fout code en deze informatie niet in
 | AuthorizationFailed | Uw account of Service-Principal heeft onvoldoende toegangs rechten om de implementatie te volt ooien. Controleer de rol waartoe uw account behoort en de toegang tot het implementatie bereik.<br><br>Deze fout kan optreden wanneer een vereiste resource provider niet is geregistreerd. | [Access Control op basis van rollen in azure](../role-based-access-control/role-assignments-portal.md)<br><br>[Registratie oplossen](resource-manager-register-provider-errors.md) |
 | BadRequest | U hebt implementatie waarden verzonden die niet overeenkomen met wat er wordt verwacht door Resource Manager. Controleer het binnenste status bericht voor hulp bij het oplossen van problemen. | [Sjabloon verwijzing](/azure/templates/) en [ondersteunde locaties](resource-location.md) |
 | Conflict | U vraagt een bewerking aan die niet is toegestaan in de huidige status van de resource. Het wijzigen van de grootte van een schijf is bijvoorbeeld alleen toegestaan bij het maken van een virtuele machine of wanneer de toewijzing van de virtuele machine ongedaan wordt gemaakt. | |
-| DeploymentActive | Wacht tot de gelijktijdige implementatie naar deze resource groep is voltooid. | |
+| DeploymentActiveAndUneditable | Wacht tot de gelijktijdige implementatie naar deze resource groep is voltooid. | |
+| DeploymentNameInvalidCharacters | De implementatie naam mag alleen letter, cijfer, '-', '. ' of ' _ ' bevatten. | |
+| DeploymentNameLengthLimitExceeded | De namen van de implementaties zijn beperkt tot 64 tekens.  | |
 | Heeft | De heeft-fout is een algemene fout die niet de details biedt die u nodig hebt om de fout op te lossen. Bekijk de fout Details voor een fout code die meer informatie bevat. | [Fout code zoeken](#find-error-code) |
 | DeploymentQuotaExceeded | Als u de limiet van 800 implementaties per resource groep bereikt, verwijdert u implementaties uit de geschiedenis die niet meer nodig zijn. | [Fout oplossen wanneer het aantal implementaties groter is dan 800](deployment-quota-exceeded.md) |
 | DnsRecordInUse | De naam van de DNS-record moet uniek zijn. Voer een andere naam in. | |
@@ -124,13 +126,13 @@ U ziet meer informatie over de implementatie. Selecteer de optie voor meer infor
 
 ![implementatie is mislukt](./media/resource-manager-common-deployment-errors/deployment-failed.png)
 
-Het foutbericht en de foutcodes worden dan weergegeven. U ziet twee foutcodes. De eerste foutcode (**DeploymentFailed**) is een algemene fout die geen informatie biedt die u nodig hebt om het probleem op te lossen. De tweede foutcode (**StorageAccountNotFound**) bevat de details die u nodig hebt. 
+Het foutbericht en de foutcodes worden dan weergegeven. U ziet twee foutcodes. De eerste foutcode (**DeploymentFailed**) is een algemene fout die geen informatie biedt die u nodig hebt om het probleem op te lossen. De tweede foutcode (**StorageAccountNotFound**) bevat de details die u nodig hebt.
 
-![foutgegevens](./media/resource-manager-common-deployment-errors/error-details.png)
+![Fout Details](./media/resource-manager-common-deployment-errors/error-details.png)
 
 ## <a name="enable-debug-logging"></a>Inschakelen van logboekregistratie voor foutopsporing
 
-Soms hebt u meer informatie nodig over de aanvraag en het antwoord om te ontdekken wat er mis ging. Tijdens de implementatie kunt u aanvragen dat er aanvullende informatie wordt geregistreerd tijdens een implementatie. 
+Soms hebt u meer informatie nodig over de aanvraag en het antwoord om te ontdekken wat er mis ging. Tijdens de implementatie kunt u aanvragen dat er aanvullende informatie wordt geregistreerd tijdens een implementatie.
 
 ### <a name="powershell"></a>PowerShell
 

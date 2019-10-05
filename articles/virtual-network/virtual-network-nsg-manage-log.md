@@ -13,19 +13,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/04/2018
 ms.author: kumud
-ms.openlocfilehash: 07b196b8e7081a6cce1ae87297528c1711b3b8bb
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 047c92f1c50409e6a1716f0ef2f774464bd12a0a
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71259443"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71972764"
 ---
 # <a name="diagnostic-logging-for-a-network-security-group"></a>Diagnostische logboek registratie voor een netwerk beveiligings groep
 
 Een netwerk beveiligings groep (NSG) bevat regels voor het toestaan of weigeren van verkeer naar een subnet van een virtueel netwerk, een netwerk interface of beide. Wanneer u diagnostische logboek registratie voor een NSG inschakelt, kunt u de volgende categorieën met gegevens vastleggen:
 
-* **Gebeurtenislog** Vermeldingen worden vastgelegd waarvoor NSG-regels worden toegepast op Vm's, op basis van een MAC-adres. De status voor deze regels wordt elke 60 seconden verzameld.
-* **Regel teller:** Bevat vermeldingen voor het aantal keren dat elke NSG regel wordt toegepast om verkeer te weigeren of toe te staan.
+* **Gebeurtenislog** Vermeldingen worden vastgelegd waarvoor NSG-regels worden toegepast op Vm's, op basis van een MAC-adres.
+* **Regel teller:** Bevat vermeldingen voor het aantal keren dat elke NSG regel wordt toegepast om verkeer te weigeren of toe te staan. De status voor deze regels wordt elke 60 seconden verzameld.
 
 Diagnostische logboeken zijn alleen beschikbaar voor Nsg's die zijn geïmplementeerd via het Azure Resource Manager-implementatie model. U kunt geen diagnostische logboek registratie inschakelen voor Nsg's die zijn geïmplementeerd via het klassieke implementatie model. Zie [Wat is Azure-implementatie modellen](../resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json)? voor een beter inzicht in de twee modellen.
 
@@ -50,14 +50,14 @@ U kunt de [Azure-Portal](#azure-portal), [Power shell](#powershell)of de [Azure 
     | ---------                                                                                   |---------                                                       |
     | Name                                                                                        | Een naam van uw keuze.  Bijvoorbeeld: *myNsgDiagnostics*      |
     | **Archiveren naar een opslag account**, **streamen naar een event hub**en **verzenden naar log Analytics** | U kunt zoveel bestemmingen selecteren als u kiest. Zie [logboek doelen](#log-destinations)voor meer informatie over elk van deze.                                                                                                                                           |
-    | LOGBESTAND                                                                                         | Selecteer een van beide of beide logboek categorieën. Zie [logboek categorieën](#log-categories)voor meer informatie over de gegevens die voor elke categorie worden vastgelegd.                                                                                                                                             |
+    | LOG                                                                                         | Selecteer een van beide of beide logboek categorieën. Zie [logboek categorieën](#log-categories)voor meer informatie over de gegevens die voor elke categorie worden vastgelegd.                                                                                                                                             |
 6. Logboeken weer geven en analyseren. Zie [Logboeken weer geven en analyseren](#view-and-analyze-logs)voor meer informatie.
 
 ### <a name="powershell"></a>PowerShell
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-U kunt de opdrachten uitvoeren die volgen in de [Azure Cloud shell](https://shell.azure.com/powershell), of door Power shell uit te voeren vanaf uw computer. De Azure Cloud Shell is een gratis interactieve shell. In deze shell zijn algemene Azure-hulpprogramma's vooraf geïnstalleerd en geconfigureerd voor gebruik met uw account. Als u Power shell vanaf uw computer uitvoert, hebt u de Azure PowerShell module versie 1.0.0 of hoger nodig. Voer `Get-Module -ListAvailable Az` uit op uw computer om de geïnstalleerde versie te vinden. Als u PowerShell wilt upgraden, raadpleegt u [De Azure PowerShell-module installeren](/powershell/azure/install-az-ps). Als u Power shell lokaal uitvoert, moet u ook uitvoeren `Connect-AzAccount` om u aan te melden bij Azure met een account dat over de [benodigde machtigingen](virtual-network-network-interface.md#permissions)beschikt.
+U kunt de opdrachten uitvoeren die volgen in de [Azure Cloud shell](https://shell.azure.com/powershell), of door Power shell uit te voeren vanaf uw computer. De Azure Cloud Shell is een gratis interactieve shell. In deze shell zijn algemene Azure-hulpprogramma's vooraf geïnstalleerd en geconfigureerd voor gebruik met uw account. Als u Power shell vanaf uw computer uitvoert, hebt u de Azure PowerShell module versie 1.0.0 of hoger nodig. Voer `Get-Module -ListAvailable Az` op uw computer uit om de geïnstalleerde versie te vinden. Als u PowerShell wilt upgraden, raadpleegt u [De Azure PowerShell-module installeren](/powershell/azure/install-az-ps). Als u Power shell lokaal uitvoert, moet u ook `Connect-AzAccount` uitvoeren om u aan te melden bij Azure met een account dat over de [benodigde machtigingen](virtual-network-network-interface.md#permissions)beschikt.
 
 Als u diagnostische logboek registratie wilt inschakelen, hebt u de id van een bestaande NSG nodig. Als u geen bestaande NSG hebt, kunt u er een maken met [New-AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup).
 
@@ -88,13 +88,13 @@ Set-AzDiagnosticSetting `
   -Enabled $true
 ```
 
-Als u alleen gegevens wilt vastleggen voor de ene categorie of de andere, in plaats van beide, voegt `-Categories` u de optie toe aan de vorige opdracht, gevolgd door *NetworkSecurityGroupEvent* of *NetworkSecurityGroupRuleCounter*. Als u zich wilt aanmelden op een andere [bestemming](#log-destinations) dan een log Analytics-werk ruimte, gebruikt u de juiste para meters voor een Azure- [opslag account](../azure-monitor/platform/archive-diagnostic-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json) of [Event hub](../azure-monitor/platform/resource-logs-stream-event-hubs.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+Als u alleen gegevens wilt vastleggen voor de ene categorie of de andere, in plaats van beide, voegt u de optie `-Categories` toe aan de vorige opdracht, gevolgd door *NetworkSecurityGroupEvent* of *NetworkSecurityGroupRuleCounter*. Als u zich wilt aanmelden op een andere [bestemming](#log-destinations) dan een log Analytics-werk ruimte, gebruikt u de juiste para meters voor een Azure- [opslag account](../azure-monitor/platform/archive-diagnostic-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json) of [Event hub](../azure-monitor/platform/resource-logs-stream-event-hubs.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 Logboeken weer geven en analyseren. Zie [Logboeken weer geven en analyseren](#view-and-analyze-logs)voor meer informatie.
 
 ### <a name="azure-cli"></a>Azure-CLI
 
-U kunt de opdrachten uitvoeren die volgen in de [Azure Cloud shell](https://shell.azure.com/bash), of door de Azure cli vanaf uw computer uit te voeren. De Azure Cloud Shell is een gratis interactieve shell. In deze shell zijn algemene Azure-hulpprogramma's vooraf geïnstalleerd en geconfigureerd voor gebruik met uw account. Als u de CLI vanaf uw computer uitvoert, hebt u versie 2.0.38 of hoger nodig. Voer `az --version` uit op uw computer om de geïnstalleerde versie te vinden. Als u een upgrade wilt uitvoeren, raadpleegt u [Azure cli installeren](/cli/azure/install-azure-cli?view=azure-cli-latest). Als u de CLI lokaal uitvoert, moet u ook uitvoeren `az login` om u aan te melden bij Azure met een account dat over de [benodigde machtigingen](virtual-network-network-interface.md#permissions)beschikt.
+U kunt de opdrachten uitvoeren die volgen in de [Azure Cloud shell](https://shell.azure.com/bash), of door de Azure cli vanaf uw computer uit te voeren. De Azure Cloud Shell is een gratis interactieve shell. In deze shell zijn algemene Azure-hulpprogramma's vooraf geïnstalleerd en geconfigureerd voor gebruik met uw account. Als u de CLI vanaf uw computer uitvoert, hebt u versie 2.0.38 of hoger nodig. Voer `az --version` op uw computer uit om de geïnstalleerde versie te vinden. Als u een upgrade wilt uitvoeren, raadpleegt u [Azure cli installeren](/cli/azure/install-azure-cli?view=azure-cli-latest). Als u de CLI lokaal uitvoert, moet u ook `az login` uitvoeren om u aan te melden bij Azure met een account dat over de [benodigde machtigingen](virtual-network-network-interface.md#permissions)beschikt.
 
 Als u diagnostische logboek registratie wilt inschakelen, hebt u de id van een bestaande NSG nodig. Als u geen bestaande NSG hebt, kunt u er een maken met [AZ Network NSG Create](/cli/azure/network/nsg#az-network-nsg-create).
 
@@ -199,11 +199,10 @@ Het logboek regel item bevat informatie over elke regel die wordt toegepast op r
 ## <a name="view-and-analyze-logs"></a>Logboeken weer geven en analyseren
 
 Zie [overzicht van Azure Diagnostische logboeken](../azure-monitor/platform/resource-logs-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)voor meer informatie over het weer geven van diagnostische logboek gegevens. Als u Diagnostische gegevens verzendt naar:
-- **Azure monitor logboeken**: U kunt de [analyse](../azure-monitor/insights/azure-networking-analytics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-network-security-group-analytics-solution-in-azure-monitor
-) oplossing voor netwerk beveiligings groepen gebruiken voor uitgebreid inzicht. De oplossing biedt visualisaties voor NSG-regels waarmee verkeer, per MAC-adres, van de netwerk interface in een virtuele machine wordt toegestaan of geweigerd.
+- **Azure monitor logboeken**: U kunt de [network-oplossing voor beveiligings groepen van no__t-1 gebruiken voor uitgebreidere inzichten. De oplossing biedt visualisaties voor NSG-regels waarmee verkeer, per MAC-adres, van de netwerk interface in een virtuele machine wordt toegestaan of geweigerd.
 - **Azure Storage account**: Gegevens worden naar een PT1H. JSON-bestand geschreven. U kunt het volgende vinden:
-  - Gebeurtenis logboek in het volgende pad:`insights-logs-networksecuritygroupevent/resourceId=/SUBSCRIPTIONS/[ID]/RESOURCEGROUPS/[RESOURCE-GROUP-NAME-FOR-NSG]/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/[NSG NAME]/y=[YEAR]/m=[MONTH/d=[DAY]/h=[HOUR]/m=[MINUTE]`
-  - Logboek regel items in het volgende pad:`insights-logs-networksecuritygrouprulecounter/resourceId=/SUBSCRIPTIONS/[ID]/RESOURCEGROUPS/[RESOURCE-GROUP-NAME-FOR-NSG]/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/[NSG NAME]/y=[YEAR]/m=[MONTH/d=[DAY]/h=[HOUR]/m=[MINUTE]`
+  - Gebeurtenis logboek in het volgende pad: `insights-logs-networksecuritygroupevent/resourceId=/SUBSCRIPTIONS/[ID]/RESOURCEGROUPS/[RESOURCE-GROUP-NAME-FOR-NSG]/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/[NSG NAME]/y=[YEAR]/m=[MONTH/d=[DAY]/h=[HOUR]/m=[MINUTE]`
+  - Logboek regel items in het volgende pad: `insights-logs-networksecuritygrouprulecounter/resourceId=/SUBSCRIPTIONS/[ID]/RESOURCEGROUPS/[RESOURCE-GROUP-NAME-FOR-NSG]/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/[NSG NAME]/y=[YEAR]/m=[MONTH/d=[DAY]/h=[HOUR]/m=[MINUTE]`
 
 ## <a name="next-steps"></a>Volgende stappen
 

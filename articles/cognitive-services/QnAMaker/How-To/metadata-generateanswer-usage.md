@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 06/27/2019
+ms.date: 10/02/2019
 ms.author: diberry
-ms.openlocfilehash: 2f9b624ffcc04963046ad817bb2bc9c025161506
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 03e04853e93bb78391476a365b20550d471e1dbb
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300254"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71971814"
 ---
 # <a name="get-an-answer-with-the-generateanswer-api-and-metadata"></a>Een antwoord krijgen met de GenerateAnswer-API en meta gegevens
 
@@ -48,7 +48,7 @@ Nadat u uw Knowledge Base hebt gepubliceerd vanuit de [QnA Maker Portal](https:/
 U kunt als volgt uw eindpunt Details ophalen:
 1. Meld u aan bij [https://www.qnamaker.ai](https://www.qnamaker.ai).
 1. Selecteer in **mijn Knowledge**bases de optie **code weer geven** voor uw Knowledge Base.
-    ![Scherm opname van mijn Knowledge bases](../media/qnamaker-how-to-metadata-usage/my-knowledge-bases.png)
+    @no__t 0Screenshot van mijn Knowledge bases @ no__t-1
 1. Haal de details van uw GenerateAnswer-eind punt op.
 
     ![Scherm opname van eindpunt Details](../media/qnamaker-how-to-metadata-usage/view-code.png)
@@ -64,7 +64,7 @@ U roept GenerateAnswer aan met een HTTP POST-aanvraag. Raadpleeg de [Quick](../q
 De POST-aanvraag gebruikt:
 
 * Vereiste [URI-para meters](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/train#uri-parameters)
-* Vereiste [header](https://docs.microsoft.com/azure/cognitive-services/qnamaker/quickstarts/get-answer-from-knowledge-base-nodejs#add-a-post-request-to-send-question-and-get-an-answer)-eigenschap `Authorization`,,,, voor beveiliging
+* Vereiste [header-eigenschap](https://docs.microsoft.com/azure/cognitive-services/qnamaker/quickstarts/get-answer-from-knowledge-base-nodejs#add-a-post-request-to-send-question-and-get-an-answer), `Authorization`, voor beveiliging
 * Vereiste [Eigenschappen van de hoofd tekst](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/train#feedbackrecorddto). 
 
 De GenerateAnswer-URL heeft de volgende indeling: 
@@ -73,7 +73,7 @@ De GenerateAnswer-URL heeft de volgende indeling:
 https://{QnA-Maker-endpoint}/knowledgebases/{knowledge-base-ID}/generateAnswer
 ```
 
-Vergeet niet om de eigenschap http-header `Authorization` van met een waarde van de `EndpointKey` teken reeks in te stellen met een spatie en vervolgens de eindpunt sleutel op de pagina **instellingen** .
+U moet de eigenschap HTTP-header van `Authorization` instellen met een waarde van de teken reeks `EndpointKey` met een spatie en vervolgens de eindpunt sleutel op de pagina **instellingen** .
 
 Een voor beeld van een JSON-bericht ziet er als volgt uit:
 
@@ -161,7 +161,7 @@ De ondersteunings bot bevat [een voor beeld](https://github.com/microsoft/BotBui
 
 ## <a name="use-metadata-to-filter-answers-by-custom-metadata-tags"></a>Meta gegevens gebruiken voor het filteren van antwoorden op aangepaste labels voor meta gegevens
 
-Door meta gegevens toe te voegen, kunt u de antwoorden filteren op deze meta gegevenslabels. Voeg de kolom meta gegevens toe vanuit het menu **weergave opties** . Voeg Meta gegevens aan uw Knowledge Base toe door het **+** pictogram meta gegevens te selecteren om een meta gegevens paar toe te voegen. Dit paar bestaat uit één sleutel en één waarde.
+Door meta gegevens toe te voegen, kunt u de antwoorden filteren op deze meta gegevenslabels. Voeg de kolom meta gegevens toe vanuit het menu **weergave opties** . Voeg Meta gegevens aan uw Knowledge Base toe door het pictogram meta gegevens **+** te selecteren om een meta gegevens paar toe te voegen. Dit paar bestaat uit één sleutel en één waarde.
 
 ![Scherm afbeelding van het toevoegen van meta gegevens](../media/qnamaker-how-to-metadata-usage/add-metadata.png)
 
@@ -219,9 +219,9 @@ De reactie op de GenerateAnswer bevat de bijbehorende meta gegevens van de overe
 
 ## <a name="match-questions-only-by-text"></a>Alleen vragen vergelijken, op tekst
 
-QnA Maker zoekt standaard naar vragen en antwoorden. Als u alleen vragen wilt doorzoeken, gebruikt u de `RankerType=QuestionOnly` in de hoofd tekst van de GenerateAnswer-aanvraag om een antwoord te genereren.
+QnA Maker zoekt standaard naar vragen en antwoorden. Als u alleen vragen wilt doorzoeken, kunt u een antwoord genereren door de `RankerType=QuestionOnly` te gebruiken in de hoofd tekst van de GenerateAnswer-aanvraag.
 
-U kunt zoeken in de gepubliceerde KB met `isTest=false`of in de test KB met. `isTest=true`
+U kunt in de gepubliceerde KB zoeken met behulp van `isTest=false`, of in de test KB met behulp van `isTest=true`.
 
 ```json
 {
@@ -249,4 +249,4 @@ U kunt zoeken in de gepubliceerde KB met `isTest=false`of in de test KB met. `is
 De pagina **publiceren** bevat ook informatie over het genereren van een antwoord met [postman](../Quickstarts/get-answer-from-kb-using-postman.md) en [krul](../Quickstarts/get-answer-from-kb-using-curl.md). 
 
 > [!div class="nextstepaction"]
-> [Een kennisdatabase maken](./create-knowledge-base.md)
+> [Een Knowledge Base-bot maken](../tutorials/integrate-qnamaker-luis.md)

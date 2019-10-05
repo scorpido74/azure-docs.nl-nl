@@ -9,14 +9,14 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/03/2019
+ms.date: 10/04/2019
 ms.author: diberry
-ms.openlocfilehash: 3907a244bc2d85e7225f94b15150298fd80a032f
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: 8adc052e732fdc54bd3b51873fdcf13a55f1f490
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70382345"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71971972"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Veelgestelde vragen over Language Understanding
 
@@ -220,6 +220,10 @@ Zie HTTP-status code [403](#i-received-an-http-403-error-status-code-how-do-i-fi
 
 Zie HTTP-status code [403](#i-received-an-http-403-error-status-code-how-do-i-fix-it) en [429](#i-received-an-http-429-error-status-code-how-do-i-fix-it) voor meer informatie.
 
+### <a name="i-created-an-authoring-key-but-it-isnt-showing-in-the-luis-portal-what-happened"></a>Ik heb een ontwerp sleutel gemaakt, maar deze wordt niet weer gegeven in de LUIS-Portal. Wat is er gebeurd?
+
+Bewerkings sleutels zijn beschikbaar in de LUIS-Portal na [de migratie naar de ervaring voor de ontwerp sleutel](luis-migration-authoring.md).  
+
 ## <a name="app-management"></a>App-beheer
 
 ### <a name="how-do-i-download-a-log-of-user-utterances"></a>Hoe kan ik een logboek van de gebruiker uitingen downloaden?
@@ -267,11 +271,11 @@ De eerste fout is het isoleren als het probleem betrekking heeft op LUIS of zich
 #### <a name="resolve-issue-in-luis"></a>Probleem oplossen in LUIS
 Geef dezelfde utterance door aan LUIS van het [Luis-eind punt](luis-get-started-create-app.md#query-the-v2-api-prediction-endpoint). Als u een fout bericht ontvangt, lost u het probleem op in LUIS totdat de fout niet meer wordt geretourneerd. Veelvoorkomende fouten zijn onder andere:
 
-* `Out of call volume quota. Quota will be replenished in <time>.`: Dit probleem geeft aan dat u moet overschakelen van een ontwerp sleutel naar een [eindpunt sleutel](luis-how-to-azure-subscription.md) of dat u de [service lagen](luis-how-to-azure-subscription.md#change-pricing-tier)moet wijzigen. 
+* `Out of call volume quota. Quota will be replenished in <time>.`: dit probleem geeft aan dat u moet overschakelen van een ontwerp sleutel naar een [eindpunt sleutel](luis-how-to-azure-subscription.md) of dat u de [service lagen](luis-how-to-azure-subscription.md#change-pricing-tier)moet wijzigen. 
 
 #### <a name="resolve-issue-in-azure-bot-service"></a>Probleem in Azure Bot Service oplossen
 
-Als u de Azure bot service gebruikt en het probleem is dat de **test in Web Chat** als resultaat `Sorry, my bot code is having an issue`wordt gegeven, controleert u de logboeken:
+Als u de Azure Bot Service gebruikt en het probleem is dat de **test in Web Chat** `Sorry, my bot code is having an issue` retourneert, controleert u de logboeken:
 
 1. In de Azure Portal, voor uw bot, in de sectie **bot Management** , selecteert u **Build**.
 1. Open de online code-editor. 

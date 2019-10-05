@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/18/2019
 ms.author: mbullwin
-ms.openlocfilehash: d0b3c6124af30cb9ad870ad5f2600495ab872698
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: 4eda37fab14a45a0bb5159beaabb9522046d1580
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70983657"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71969643"
 ---
 # <a name="ip-addresses-used-by-application-insights-and-log-analytics"></a>IP-adressen die worden gebruikt door Application Insights en Log Analytics
 De [Azure-toepassing Insights](../../azure-monitor/app/app-insights-overview.md) -service gebruikt een aantal IP-adressen. Mogelijk moet u deze adressen weten als de app die u bewaakt, wordt gehost achter een firewall.
@@ -28,7 +28,7 @@ De [Azure-toepassing Insights](../../azure-monitor/app/app-insights-overview.md)
 > 
 
 > [!TIP]
-> Abonneer u op deze pagina als een RSS-feed https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/azure-monitor/app/ip-addresses.md.atom door toe te voegen aan uw favoriete RSS/Atom-lezer om op de hoogte te worden gesteld van de laatste wijzigingen.
+> Abonneer u op deze pagina als een RSS-feed door https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/azure-monitor/app/ip-addresses.md.atom toe te voegen aan uw favoriete RSS/ATOM-lezer om op de hoogte te worden gesteld van de laatste wijzigingen.
 > 
 > 
 
@@ -52,10 +52,10 @@ Status Monitor configuratie: alleen nodig als u wijzigingen aanbrengt.
 | Configuratie |`secure.aadcdn.microsoftonline-p.com` | |`443` |
 | Configuratie |`auth.gfx.ms` | |`443` |
 | Configuratie |`login.live.com` | |`443` |
-| Installatie | `globalcdn.nuget.org`, `packages.nuget.org` ,`api.nuget.org/v3/index.json` `nuget.org`, `api.nuget.org`,`dc.services.vsallin.net` | |`443` |
+| Installatie | `globalcdn.nuget.org`, `packages.nuget.org`, `api.nuget.org/v3/index.json` `nuget.org`, `api.nuget.org`, `dc.services.vsallin.net` | |`443` |
 
-## <a name="availability-tests"></a>Beschikbaarheidstesten
-Dit is de lijst met adressen waarvan de webtesten voor [Beschik baarheid](../../azure-monitor/app/monitor-web-app-availability.md) worden uitgevoerd. Als u webtests wilt uitvoeren voor uw app, maar uw webserver is beperkt tot het leveren van specifieke clients, moet u inkomend verkeer via onze beschikbaarheids test servers toestaan.
+## <a name="availability-tests"></a>Beschikbaarheidstests
+Dit is de lijst met adressen waarvan de [webtesten voor Beschik baarheid](../../azure-monitor/app/monitor-web-app-availability.md) worden uitgevoerd. Als u webtests wilt uitvoeren voor uw app, maar uw webserver is beperkt tot het leveren van specifieke clients, moet u inkomend verkeer via onze beschikbaarheids test servers toestaan.
 
 Open poorten 80 (http) en 443 (https) voor binnenkomend verkeer van deze adressen (IP-adressen zijn gegroepeerd op locatie):
 
@@ -224,7 +224,7 @@ Opmerking: het loganalytics.io-domein is eigendom van het Log Analytics-team.
 
 | Doel | URI | IP | Poorten |
 | --- | --- | --- | --- |
-| Agent | agent.azureserviceprofiler.net<br/>*.agent.azureserviceprofiler.net | 20.190.60.38<br/>20.190.60.32<br/>52.173.196.230<br/>52.173.196.209<br/>23.102.44.211<br/>23.102.45.216<br/>13.69.51.218<br/>13.69.51.175<br/>138.91.32.98<br/>138.91.37.93<br/>40.121.61.208<br/>40.121.57.2<br/>51.140.60.235<br/>51.140.180.52<br/>52.138.31.112<br/>52.138.31.127<br/>104.211.90.234<br/>104.211.91.254<br/>13.70.124.27<br/>13.75.195.15<br/>52.185.132.101<br/>52.185.132.170<br/>20.188.36.28<br/>40.89.153.171<br/>52.141.22.239<br/>52.141.22.149<br/>102.133.162.233<br/>102.133.161.73 | 443
+| Agent | agent.azureserviceprofiler.net<br/>*.agent.azureserviceprofiler.net | 20.190.60.38<br/>20.190.60.32<br/>52.173.196.230<br/>52.173.196.209<br/>23.102.44.211<br/>23.102.45.216<br/>13.69.51.218<br/>13.69.51.175<br/>138.91.32.98<br/>138.91.37.93<br/>40.121.61.208<br/>40.121.57.2<br/>51.140.60.235<br/>51.140.180.52<br/>52.138.31.112<br/>52.138.31.127<br/>104.211.90.234<br/>104.211.91.254<br/>13.70.124.27<br/>13.75.195.15<br/>52.185.132.101<br/>52.185.132.170<br/>20.188.36.28<br/>40.89.153.171<br/>52.141.22.239<br/>52.141.22.149<br/>102.133.162.233<br/>102.133.161.73<br/>191.232.214.6<br/>191.232.213.239 | 443
 | Portal | gateway.azureserviceprofiler.net | dynamisch | 443
 | Storage | *.core.windows.net | dynamisch | 443
 
@@ -235,6 +235,6 @@ Opmerking: het loganalytics.io-domein is eigendom van het Log Analytics-team.
 
 | Doel | URI | IP | Poorten |
 | --- | --- | --- | --- |
-| Agent | ppe.azureserviceprofiler.net<br/>*.ppe.azureserviceprofiler.net | 20.190.60.38<br/>20.190.60.32<br/>52.173.196.230<br/>52.173.196.209<br/>23.102.44.211<br/>23.102.45.216<br/>13.69.51.218<br/>13.69.51.175<br/>138.91.32.98<br/>138.91.37.93<br/>40.121.61.208<br/>40.121.57.2<br/>51.140.60.235<br/>51.140.180.52<br/>52.138.31.112<br/>52.138.31.127<br/>104.211.90.234<br/>104.211.91.254<br/>13.70.124.27<br/>13.75.195.15<br/>52.185.132.101<br/>52.185.132.170<br/>20.188.36.28<br/>40.89.153.171<br/>52.141.22.239<br/>52.141.22.149<br/>102.133.162.233<br/>102.133.161.73 | 443
+| Agent | ppe.azureserviceprofiler.net<br/>*.ppe.azureserviceprofiler.net | 20.190.60.38<br/>20.190.60.32<br/>52.173.196.230<br/>52.173.196.209<br/>23.102.44.211<br/>23.102.45.216<br/>13.69.51.218<br/>13.69.51.175<br/>138.91.32.98<br/>138.91.37.93<br/>40.121.61.208<br/>40.121.57.2<br/>51.140.60.235<br/>51.140.180.52<br/>52.138.31.112<br/>52.138.31.127<br/>104.211.90.234<br/>104.211.91.254<br/>13.70.124.27<br/>13.75.195.15<br/>52.185.132.101<br/>52.185.132.170<br/>20.188.36.28<br/>40.89.153.171<br/>52.141.22.239<br/>52.141.22.149<br/>102.133.162.233<br/>102.133.161.73<br/>191.232.214.6<br/>191.232.213.239 | 443
 | Portal | ppe.gateway.azureserviceprofiler.net | dynamisch | 443
 | Storage | *.core.windows.net | dynamisch | 443

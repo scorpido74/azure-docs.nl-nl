@@ -1,33 +1,37 @@
 ---
-title: Een BLOB maken in Azure Storage met behulp van de client bibliotheek voor Java-V7 | Microsoft Docs
-description: Maak een opslagaccount en een container in object(Blob)-opslag. Gebruik vervolgens de Azure Storage-client bibliotheek voor Java V7 om een BLOB te uploaden naar Azure Storage, een BLOB te downloaden en de blobs in een container weer te geven.
+title: 'Quickstart: Azure Blob Storage-client bibliotheek voor Java SDK V8'
+description: Maak een opslagaccount en een container in object(Blob)-opslag. Gebruik vervolgens de Azure Storage-client bibliotheek voor Java SDK V8 om een BLOB te uploaden naar Azure Storage, een BLOB te downloaden en de blobs in een container weer te geven.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 02/04/2019
+ms.date: 10/05/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
-ms.openlocfilehash: 0aa3af754082d91c4a5994e42146d1f1f475f64d
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: 87bae74265c4d3abe7301af35888561fcd256717
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70390322"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71971992"
 ---
-# <a name="how-to-upload-download-and-list-blobs-using-the-client-library-for-java-v7"></a>Blobs uploaden, downloaden en vermelden met behulp van de client bibliotheek voor Java V7
+# <a name="quickstart-azure-blob-storage-client-library-for-java-sdk-v8"></a>Quickstart: Azure Blob Storage-client bibliotheek voor Java SDK V8
 
-In deze hand leiding vindt u informatie over het gebruik van de client bibliotheek voor Java V7 voor het uploaden, downloaden en weer geven van blok-blobs in een container in Azure Blob Storage.
+Ga aan de slag met de Azure Blob Storage-client bibliotheek voor Java. Azure Blob Storage is de object opslag oplossing van micro soft voor de Cloud. Volg de stappen om het pakket te installeren en voorbeeld code voor basis taken uit te proberen. Blob Storage is geoptimaliseerd voor het opslaan van grote hoeveelheden ongestructureerde gegevens.
+
+Gebruik de Azure Blob Storage-client bibliotheek voor Java voor het volgende:
+
+* Een container maken
+* Machtigingen voor een container instellen
+* Een BLOB maken in Azure Storage
+* De BLOB downloaden naar uw lokale computer
+* Alle blobs in een container weer geven
+* Een container verwijderen
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
-
-Maak ook een Azure-opslag account in de [Azure Portal](https://portal.azure.com/#create/Microsoft.StorageAccount-ARM). Zie voor meer informatie over het maken van het account [Een opslagaccount maken](../common/storage-quickstart-create-account.md).
-
-Zorg ervoor dat u beschikt over de volgende vereisten:
-
-* Een IDE met Maven-integratie installeren.
-
+* Azure-abonnement: [Maak er gratis een](https://azure.microsoft.com/free/)
+* Azure Storage account: [een opslag account maken](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
+* Een IDE met maven-integratie.
 * U kunt Maven ook installeren en configureren voor gebruik vanaf de opdrachtregel.
 
 In deze hand leiding wordt gebruikgemaakt van [eclips](https://www.eclipse.org/downloads/) met de configuratie ' eclips IDE for Java Developers '.
@@ -205,6 +209,5 @@ sourceFile.deleteOnExit();
 In dit artikel hebt u geleerd hoe u bestanden overbrengt tussen een lokale schijf en Azure Blob-opslag met behulp van Java. Voor meer informatie over het werken met Java gaat u verder naar onze opslagplaats van GitHub-broncode.
 
 > [!div class="nextstepaction"]
-> [V10 toevoegen SDK-voor](https://github.com/azure/azure-storage-java) 
-> beelden voor Java[Java API-referentie](https://docs.microsoft.com/java/azure/)
-> [code voor Java](../common/storage-samples-java.md) Microsoft Azure Storage
+> [Java API Reference](https://docs.microsoft.com/java/azure/)
+> [code samples for Java](../common/storage-samples-java.md)

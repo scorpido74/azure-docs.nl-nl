@@ -2,19 +2,18 @@
 title: Implementatie centrum voor Azure Kubernetes
 description: Implementatie centrum in azure DevOps vereenvoudigt het instellen van een robuuste Azure DevOps-pijp lijn voor uw toepassing
 ms.author: puagarw
-ms.manager: douge
 ms.prod: devops
 ms.technology: devops-cicd
 ms.topic: tutorial
 ms.date: 07/12/2019
 author: pulkitaggarwl
 monikerRange: vsts
-ms.openlocfilehash: 35484566890f3bfd964e3fda337bfb3666d1da6c
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: 5384180720d391c6b4ae830f9316a70e80003063
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68618724"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71972975"
 ---
 # <a name="deployment-center-for-azure-kubernetes"></a>Implementatie centrum voor Azure Kubernetes
 
@@ -66,7 +65,7 @@ In deze zelfstudie leert u het volgende:
 
     - **Azure-opslag plaatsen**: Kies een opslag plaats in uw bestaande project en organisatie.
 
-        ![Azure Repos](media/deployment-center-launcher/azure-repos.gif)
+        ![Azure-opslagplaatsen](media/deployment-center-launcher/azure-repos.gif)
 
     - **GitHub**: Autoriseer en selecteer de opslag plaats voor uw GitHub-account.
 
@@ -85,7 +84,7 @@ In deze zelfstudie leert u het volgende:
 
     Azure-pijp lijnen is een Cloud service die u kunt gebruiken om automatisch uw code project te bouwen en te testen en deze beschikbaar te maken voor andere gebruikers. Azure-pijp lijnen combi neren doorlopende integratie en doorlopende levering om voortdurend en consistent te testen en uw code te bouwen en te verzenden naar een doel.
 
-    ![Container Registry](media/deployment-center-launcher/container-registry.png)
+    ![Containerregister](media/deployment-center-launcher/container-registry.png)
 
 1. Selecteer de koppeling om de actieve pijp lijn weer te geven.
 
@@ -123,11 +122,11 @@ Het implementatie centrum maakt en configureert automatisch de relatie tussen uw
 
 1. Als u de release pijplijn wilt bewerken, selecteert u **bewerken**.
 
-1. Selecteer **neerzetten** in  de lijst artefacten. In de vorige stappen produceert de bouw pijp lijn die u hebt onderzocht de uitvoer die wordt gebruikt voor het artefact. 
+1. Selecteer **neerzetten** in de lijst **artefacten** . In de vorige stappen produceert de bouw pijp lijn die u hebt onderzocht de uitvoer die wordt gebruikt voor het artefact. 
 
-1. Selecteer de trigger voor **continue implementatie** aan de rechter kant  van de optie voor neerzetten. Deze release pijplijn heeft een ingeschakelde CD-trigger die een implementatie uitvoert wanneer er een nieuw build-artefact beschikbaar is. U kunt de trigger ook uitschakelen om hand matige uitvoering van uw implementaties te vereisen.
+1. Selecteer de trigger voor **continue implementatie** aan de rechter kant van de optie voor **neerzetten** . Deze release pijplijn heeft een ingeschakelde CD-trigger die een implementatie uitvoert wanneer er een nieuw build-artefact beschikbaar is. U kunt de trigger ook uitschakelen om hand matige uitvoering van uw implementaties te vereisen.
 
-1. Selecteer **taken**om alle taken voor de pijp lijn te controleren. De release stelt de Tiller omgeving in, configureert de `imagePullSecrets` para meter, installeert helm-hulpprogram ma's en implementeert de helm-grafieken naar het Kubernetes-cluster.
+1. Selecteer **taken**om alle taken voor de pijp lijn te controleren. De release stelt de Tiller omgeving in, configureert de para meter `imagePullSecrets`, installeert helm-hulpprogram ma's en implementeert de helm-grafieken naar het Kubernetes-cluster.
 
 1. Selecteer **releases weer geven**om de release geschiedenis weer te geven.
 

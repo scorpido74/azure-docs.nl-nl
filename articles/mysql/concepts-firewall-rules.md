@@ -1,17 +1,17 @@
 ---
 title: Firewall regels van Azure Database for MySQL server
-description: Hierin worden de firewall regels voor uw Azure Database for MySQL-server beschreven.
+description: Meer informatie over het gebruik van firewall regels om verbindingen met uw Azure Database for MySQL server in te scha kelen.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/22/2019
-ms.openlocfilehash: e84dfb35a435e32cd14b244b29044d700c79d14d
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 1d75b9e7d997b0c62c7e235187907f0556318efe
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71203579"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71970406"
 ---
 # <a name="azure-database-for-mysql-server-firewall-rules"></a>Firewall regels van Azure Database for MySQL server
 Firewalls verhinderen alle toegang tot uw database server totdat u opgeeft welke computers zijn gemachtigd. De firewall verleent toegang tot de server op basis van het oorspronkelijke IP-adres van elke aanvraag.
@@ -59,7 +59,7 @@ Houd rekening met de volgende punten wanneer de toegang tot de Microsoft Azure-D
 
    * Vraag in plaats daarvan statische IP-adressen voor uw clientcomputers en voeg de IP-adressen als firewallregels toe.
 
-* **Het IP-adres van de server lijkt openbaar te zijn:** Verbindingen met de Azure Database for MySQL-server worden doorgestuurd via een openbaar toegankelijke Azure-gateway. Het daad werkelijke IP-adres van de server wordt echter beschermd door de firewall. Ga naar het artikel over de [connectiviteits architectuur](concepts-connectivity-architecture.md)voor meer informatie. 
+* **Het IP-adres van de server lijkt openbaar te zijn:** Verbindingen met de Azure Database for MySQL-server worden doorgestuurd via een openbaar toegankelijke Azure-gateway. Het daadwerkelijke IP-adres van de server wordt echter beschermd door de firewall. Raadpleeg het artikel [over de connectiviteitsarchitectuur](concepts-connectivity-architecture.md) voor meer informatie. 
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -4,21 +4,20 @@ description: Snel een Jupyter-notebook overbrengen naar Azure-laptops van uw lok
 services: app-service
 documentationcenter: ''
 author: kraigb
-manager: douge
+manager: barbkess
 ms.assetid: 2e935425-3923-4a33-89b2-0f2100b0c0c4
 ms.service: azure-notebooks
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: 7df64c3fb70bdf3e7689787ec558bfe0e4942352
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.openlocfilehash: 2151d5b04b0fe5d47e8e2ddfb750ac279b6f74fa
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "66754006"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71970189"
 ---
 # <a name="quickstart-migrate-a-local-jupyter-notebook"></a>Quickstart: Een lokaal Jupyter-notebook migreren
 
@@ -26,7 +25,7 @@ Jupyter-notitieblokken die u lokaal op uw eigen computer maakt, zijn alleen toeg
 
 Door uw lokale of op basis van een opslagplaats notitieblokken migreert naar Azure-laptops, opslaan u deze in de cloud van waaruit u direct met uw deelnemers delen kunt. De deelnemers moeten alleen een browser om te bekijken en uw laptop, uitvoeren en als ze [aanmelden](quickstart-sign-in-azure-notebooks.md) tot Azure-notitieblokken kunnen ze ook wijzigingen aanbrengen.
 
-Deze snelstartgids ziet u het proces van de migratie van een laptop van uw lokale computer of een andere toegankelijk bestands-URL. Zie voor het migreren van notitieblokken vanuit een GitHub-opslagplaats, [Quick Start: Klonen van een laptop](quickstart-clone-jupyter-notebook.md).
+Deze snelstartgids ziet u het proces van de migratie van een laptop van uw lokale computer of een andere toegankelijk bestands-URL. Voor het migreren van notitie blokken vanuit een GitHub-opslag plaats raadpleegt u [Quickstart: Een notitie blok klonen @ no__t-0.
 
 ## <a name="create-a-project-on-azure-notebooks"></a>Een project maken op Azure-Notebooks
 
@@ -48,7 +47,7 @@ Deze snelstartgids ziet u het proces van de migratie van een laptop van uw lokal
 
     ![Opdracht voor het uploaden van een laptop van een URL of de lokale computer](media/quickstarts/upload-from-computer-url-command.png)
 
-   (Nogmaals, als uw laptop zich in een GitHub-opslagplaats, volg de stappen op [Quick Start: Klonen van een laptop](quickstart-clone-jupyter-notebook.md) in plaats daarvan.)
+   (Als uw notitie blok zich in een GitHub-opslag plaats bevindt, volgt u de stappen in [Quickstart: In plaats daarvan een notebook @ no__t-0 klonen.)
 
    - Als u **van Computer**, slepen en neerzetten uw *.ipynb* bestanden in het pop-upvenster of selecteer **bestanden kiezen**, en blader vervolgens naar en selecteer de bestanden die u wilt importeren. Selecteer vervolgens **uploaden**. De geüploade bestanden krijgt dezelfde naam als de lokale bestanden. (U hoeft niet te uploaden van de inhoud van een *.ipynb_checkpoints* mappen.)
 

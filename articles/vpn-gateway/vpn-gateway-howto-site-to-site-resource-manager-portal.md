@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 09/24/2019
+ms.date: 10/04/2019
 ms.author: cherylmc
-ms.openlocfilehash: 9fb62d74025869c3442308f9e4ac9fb8fc02669b
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: 96a8b8d33f713faf96e7a96b32e9e41ca669e6cb
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71266557"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71970813"
 ---
 # <a name="create-a-site-to-site-connection-in-the-azure-portal"></a>Een site-naar-site-verbinding maken in Azure Portal
 
@@ -42,16 +42,15 @@ Controleer voordat u met de configuratie begint of u aan de volgende criteria he
 
 In de voorbeelden in dit artikel worden de volgende waarden gebruikt. U kunt deze waarden gebruiken om een testomgeving te maken of ze raadplegen om meer inzicht te krijgen in de voorbeelden in dit artikel. Zie [Over instellingen voor VPN Gateway](vpn-gateway-about-vpn-gateway-settings.md) voor meer informatie over instellingen voor VPN-gateways in het algemeen.
 
-* **VNet-naam:** VNet1
+* **Naam van virtueel netwerk:** VNet1
 * **Adresruimte:** 10.1.0.0/16
 * **Abonnement:** Het abonnement dat u wilt gebruiken
 * **Resourcegroep:** TestRG1
-* **Locatie:** East US
+* **Deel** East US
 * **Subnetrouter** FrontEnd: 10.1.0.0/24, BackEnd: 10.1.1.0/24 (optioneel voor deze oefening)
-* **Naam van Gateway-subnet:** GatewaySubnet (Hiermee wordt de portal automatisch ingevuld)
 * **Adres bereik gateway-subnet:** 10.1.255.0/27
-* **Virtual Network gateway naam:** VNet1GW
-* **Openbaar IP-adres:** VNet1GWIP
+* **Naam van de virtuele netwerk gateway:** VNet1GW
+* **Naam van openbaar IP-adres:** VNet1GWIP
 * **VPN-type:** Op route gebaseerd
 * **Verbindings type:** Site-naar-site (IPsec)
 * **Gateway type:** VPN
@@ -69,6 +68,16 @@ In deze stap maakt u de virtuele netwerkgateway VNet. Het maken van een gateway 
 
 [!INCLUDE [About gateway subnets](../../includes/vpn-gateway-about-gwsubnet-portal-include.md)]
 
+### <a name="example-settings"></a>Voorbeeldinstellingen
+
+* **Instantie Details > regio:** East US
+* **Virtual Network > virtuele netwerk:** VNet1
+* **Exemplaar Details > naam:** VNet1GW
+* **Exemplaar Details > Gateway type:** VPN
+* **Exemplaar Details > VPN-type:** Op route gebaseerd
+* **Adres bereik van > Gateway-subnet Virtual Network:** 10.1.255.0/27
+* **Openbaar IP-adres > open bare IP-adres naam:** VNet1GWIP
+
 [!INCLUDE [Create a vpn gateway](../../includes/vpn-gateway-add-gw-rm-portal-include.md)]
 
 [!INCLUDE [NSG warning](../../includes/vpn-gateway-no-nsg-include.md)]
@@ -77,6 +86,13 @@ In deze stap maakt u de virtuele netwerkgateway VNet. Het maken van een gateway 
 ## <a name="LocalNetworkGateway"></a>3. De lokale netwerkgateway maken
 
 De lokale netwerkgateway verwijst doorgaans naar uw on-premises locatie. U geeft de site een naam waarmee Azure hiernaar kan verwijzen en geeft vervolgens het IP-adres op van het on-premises VPN-apparaat waarmee u verbinding maakt. U geeft ook de IP-adresvoorvoegsels op die via de VPN-gateway worden doorgestuurd naar het VPN-apparaat. De adresvoorvoegsels die u opgeeft, zijn de voorvoegsels die zich in uw on-premises netwerk bevinden. Als uw on-premises netwerk verandert of als u het openbare IP-adres voor het VPN-apparaat moet wijzigen, kunt u de waarden later eenvoudig bijwerken.
+
+**Voorbeeld waarden**
+
+* **Naam:** Site1
+* **Resourcegroep:** TestRG1
+* **Locatie:** East US
+
 
 [!INCLUDE [Add a local network gateway](../../includes/vpn-gateway-add-local-network-gateway-portal-include.md)]
 

@@ -1,9 +1,9 @@
 ---
-title: Configureren en gebruiken van de Opslagemulator met Visual Studio | Microsoft Docs
-description: Configureren en gebruiken van de Opslagemulator met Visual Studio
+title: De opslag emulator configureren en gebruiken met Visual Studio | Microsoft Docs
+description: De opslag emulator configureren en gebruiken met Visual Studio
 services: visual-studio-online
 author: ghogen
-manager: douge
+manager: jillfra
 assetId: c8e7996f-6027-4762-806e-614b93131867
 ms.prod: visual-studio-dev15
 ms.technology: vs-azure
@@ -12,46 +12,46 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 8/17/2017
 ms.author: ghogen
-ms.openlocfilehash: 39e2071a62d6a1f6ee050f862856815048e50430
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 08e3f5d5bb32d15b9d8d164c898d2b8d7a90108c
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62128293"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71969719"
 ---
-# <a name="configuring-and-using-the-storage-emulator-with-visual-studio"></a>Configureren en gebruiken van de Opslagemulator met Visual Studio
+# <a name="configuring-and-using-the-storage-emulator-with-visual-studio"></a>De opslag emulator configureren en gebruiken met Visual Studio
 [!INCLUDE [storage-try-azure-tools](../includes/storage-try-azure-tools.md)]
 
 ## <a name="overview"></a>Overzicht
-De ontwikkelomgeving van de Azure SDK bevat de opslagemulator, een hulpprogramma dat overeenkomt met de Blob, Queue en Table storage-services beschikbaar zijn in Azure op uw lokale ontwikkelcomputer. Als u het met het bouwen van een cloudservice die maakt gebruik van de Azure storage-services of schrijven van een externe toepassing waarmee de storage-services wordt aangeroepen, kunt u uw code lokaal tegen de opslagemulator testen. De Azure Tools voor Microsoft Visual Studio integreren beheer van de opslagemulator met Visual Studio. De Azure-hulpprogramma's initialiseren van de database van de opslagemulator bij het eerste gebruik, de service storage-emulator wordt gestart wanneer u uitvoert of fouten opsporen in uw code vanuit Visual Studio en biedt alleen-lezen toegang tot de gegevens van de opslagemulator via de Azure Storage Explorer.
+De Azure SDK-ontwikkel omgeving bevat de opslag emulator, een hulp programma waarmee de blob-, wachtrij-en Table Storage-services die beschikbaar zijn in Azure worden gesimuleerd op uw lokale ontwikkel machine. Als u een Cloud service bouwt die gebruikmaakt van de Azure Storage-services of een externe toepassing schrijft waarmee de opslag services worden aangeroepen, kunt u uw code lokaal testen op de opslag emulator. Met de Azure-Hulpprogram Ma's voor micro soft Visual Studio wordt het beheer van de opslag emulator geïntegreerd in Visual Studio. De Azure-Hulpprogram Ma's initialiseren de data base van de opslag-emulator bij het eerste gebruik, start de Storage emulator-service wanneer u uw code uitvoert of fouten oplost vanuit Visual Studio en biedt alleen-lezen toegang tot de gegevens van de opslag emulator via de Azure Storage Explorer.
 
-Zie voor gedetailleerde informatie over de opslagemulator, met inbegrip van de systeemvereisten en aangepaste configuratie-instructies, [de Azure-Opslagemulator gebruiken voor ontwikkeling en testen](storage/common/storage-use-emulator.md).
-
-> [!NOTE]
-> Er zijn enkele verschillen in functionaliteit tussen de simulatie van storage emulator en de Azure storage-services. Zie [verschillen tussen de Opslagemulator en Azure Storage-Services](storage/common/storage-use-emulator.md) in de Azure SDK-documentatie voor meer informatie over de specifieke verschillen.
-> 
-> 
-
-## <a name="configuring-a-connection-string-for-the-storage-emulator"></a>Configureren van een verbindingsreeks voor de opslagemulator
-Voor toegang tot de opslagemulator vanuit code binnen een rol, wilt u een verbindingsreeks die verwijst naar de opslagemulator en die kan later worden gewijzigd om te verwijzen naar een Azure storage-account configureren. Een verbindingsreeks is een configuratie-instelling die uw rol kunt lezen tijdens runtime verbinding maken met een storage-account. Zie voor meer informatie over het maken van tekenreeksen voor databaseverbindingen [configureren van Azure Storage-verbindingsreeksen](/azure/storage/common/storage-configure-connection-string).
+Zie [de Azure Storage-emulator gebruiken voor ontwikkeling en testen](storage/common/storage-use-emulator.md)voor meer informatie over de opslag emulator, inclusief systeem vereisten en aangepaste configuratie-instructies.
 
 > [!NOTE]
-> U kunt een verwijzing naar het opslagaccount van de emulator vanuit uw code retourneert met behulp van de **DevelopmentStorageAccount** eigenschap. Deze methode werkt goed als u wilt de opslagemulator openen vanuit uw code, maar als u van plan bent voor het publiceren van uw toepassing in Azure, u een verbindingsreeks moet voor toegang tot uw Azure storage-account en wijzig de code voor het gebruik van die verbinding maken tekenreeks voordat u deze publiceert. Als u vaak tussen het opslagaccount van de emulator en een Azure storage-account schakelen zijn, wordt een verbindingsreeks vereenvoudigen van dit proces.
+> Er zijn enkele verschillen in functionaliteit tussen de simulatie van de opslag emulator en de Azure Storage-services. Bekijk de [verschillen tussen de opslag emulator en de Azure Storage services](storage/common/storage-use-emulator.md) in de Azure SDK-documentatie voor informatie over de specifieke verschillen.
 > 
 > 
 
-## <a name="initializing-and-running-the-storage-emulator"></a>Het initialiseren en uitvoeren van de opslagemulator
-U kunt opgeven dat Visual Studio automatisch de opslagemulator wordt gestart wanneer u uitvoert of fouten opsporen in uw service in Visual Studio. Open in Solution Explorer het snelmenu voor uw **Azure** toepassingsproject en kies **eigenschappen**. Op de **ontwikkeling** tabblad, in de **Start Azure-Opslagemulator** Kies **waar** (als deze nog niet is ingesteld op die waarde).
-
-De eerste keer dat u uitvoert of fouten opsporen in uw service in Visual Studio naar een initialisatieproces wordt gestart door de opslagemulator. Dit proces lokale poorten reserveert voor de opslagemulator en de storage emulator database wordt gemaakt. Als u klaar bent, hoeft dit proces niet opnieuw uit te voeren, tenzij de database van de opslag-emulator wordt verwijderd.
+## <a name="configuring-a-connection-string-for-the-storage-emulator"></a>Een connection string configureren voor de opslag emulator
+Als u toegang wilt krijgen tot de opslag emulator vanuit code binnen een rol, moet u een connection string configureren die naar de opslag emulator verwijst en die later kan worden gewijzigd in een Azure Storage-account. Een connection string is een configuratie-instelling die uw rol tijdens runtime kan lezen om verbinding te maken met een opslag account. Zie [Azure Storage-verbindings reeksen configureren](/azure/storage/common/storage-configure-connection-string)voor meer informatie over het maken van verbindings reeksen.
 
 > [!NOTE]
-> Vanaf de release van juni 2012 van de Azure-hulpprogramma's, de opslagemulator wordt uitgevoerd, wordt standaard in SQL Express LocalDB. In eerdere versies van de Azure-hulpprogramma's, de opslagemulator wordt uitgevoerd op een standaardexemplaar van SQL Express 2005 of 2008, die u moet installeren voordat u de Azure SDK kunnen installeren. U kunt ook de opslagemulator op basis van een benoemd exemplaar van SQL Express of een benoemd exemplaar of een standaardexemplaar van Microsoft SQL Server uitvoeren. Als u configureren van de opslagemulator wilt wilt uitvoeren op basis van een exemplaar dan het standaardexemplaar, Zie [de Azure-Opslagemulator gebruiken voor ontwikkeling en testen](storage/common/storage-use-emulator.md).
+> U kunt met behulp van de eigenschap **DevelopmentStorageAccount** een verwijzing naar het Storage emulator-account retour neren vanuit uw code. Deze aanpak werkt goed als u vanuit uw code toegang wilt krijgen tot de opslag emulator, maar als u van plan bent om uw toepassing te publiceren naar Azure, moet u een connection string maken voor toegang tot uw Azure-opslag account en uw code wijzigen om deze verbinding te gebruiken teken reeks voordat u deze publiceert. Als u de opslag emulator-account en een Azure-opslag account regel matig omschakelt, wordt dit proces door een connection string vereenvoudigd.
 > 
 > 
 
-De opslagemulator biedt een gebruikersinterface voor het weergeven van de status van de lokale opslag-services en om te starten, stoppen en opnieuw ingesteld. Zodra de service storage-emulator is gestart, kunt u de gebruikersinterface weergeven of starten of stoppen van de service met de rechtermuisknop op het pictogram voor de Microsoft Azure-Emulator in de taakbalk van Windows.
+## <a name="initializing-and-running-the-storage-emulator"></a>De opslag emulator initialiseren en uitvoeren
+U kunt opgeven dat wanneer u uw service in Visual Studio uitvoert of fouten oplost, Visual Studio de opslag emulator automatisch start. Open in Solution Explorer het snelmenu voor uw **Azure** -project en kies **Eigenschappen**. Kies op het tabblad **ontwikkeling** in de lijst **Start Azure Storage-emulator** de optie **waar** (als deze nog niet is ingesteld op die waarde).
 
-## <a name="viewing-storage-emulator-data-in-server-explorer"></a>Storage-emulator gegevens weergeven in Server Explorer
-Het Azure Storage-knooppunt in Server Explorer kunt u gegevens bekijken en wijzigen van instellingen voor de blob en tabel gegevens in uw storage-accounts, met inbegrip van de opslagemulator. Zie [beheren Azure Blob Storage-resources met Storage Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-blobs) voor meer informatie.
+De eerste keer dat u uw service vanuit Visual Studio uitvoert of fouten oplost, wordt door de opslag-emulator een initialisatie proces gestart. Met dit proces worden lokale poorten voor de opslag emulator gereserveerd en wordt de data base van de opslag-emulator gemaakt. Zodra de data base van de opslag-emulator is verwijderd, hoeft dit proces niet opnieuw te worden uitgevoerd.
+
+> [!NOTE]
+> Vanaf de release van juni 2012 van de Azure-Hulpprogram Ma's, wordt de opslag-emulator standaard uitgevoerd in SQL Express LocalDB. In eerdere versies van de Azure-Hulpprogram Ma's wordt de opslag-emulator uitgevoerd op basis van een standaard exemplaar van SQL Express 2005 of 2008, dat u moet installeren voordat u de Azure SDK kunt installeren. U kunt ook de opslag emulator uitvoeren op een benoemd exemplaar van SQL Express of een benoemd of standaard exemplaar van Microsoft SQL Server. Als u de opslag emulator moet configureren om te worden uitgevoerd op basis van een ander exemplaar dan het standaard exemplaar, raadpleegt u [de Azure Storage-emulator gebruiken voor ontwikkelen en testen](storage/common/storage-use-emulator.md).
+> 
+> 
+
+De opslag emulator biedt een gebruikers interface voor het weer geven van de status van de lokale opslag Services en om ze te starten, te stoppen en opnieuw in te stellen. Zodra de Storage emulator-service is gestart, kunt u de gebruikers interface weer geven of de service starten of stoppen door met de rechter muisknop op het pictogram systeemvak te klikken voor de Microsoft Azure emulator in de Windows-taak balk.
+
+## <a name="viewing-storage-emulator-data-in-server-explorer"></a>Opslag-emulator gegevens weer geven in Server Explorer
+Met het knoop punt Azure Storage in Server Explorer kunt u gegevens weer geven en instellingen wijzigen voor Blob-en tabel gegevens in uw opslag accounts, inclusief de opslag emulator. Zie [Azure Blob Storage-resources beheren met Storage Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-blobs) voor meer informatie.
 

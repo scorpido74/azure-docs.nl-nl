@@ -6,13 +6,13 @@ manager: evansma
 ms.author: v-chjen
 ms.service: marketplace
 ms.topic: conceptual
-ms.date: 09/26/2019
-ms.openlocfilehash: 8c57fd2a2c9c5c059480f3d6ad48454724e5cc61
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.date: 10/04/2019
+ms.openlocfilehash: 78702b52b1a5c490bfd6273c3f4e575c6e3c20fb
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71327628"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71969616"
 ---
 # <a name="create-a-new-dynamics-365-business-central-offer"></a>Een nieuwe Dynamics 365 Business Central-aanbieding maken
 
@@ -21,6 +21,9 @@ In dit onderwerp wordt uitgelegd hoe u een nieuwe aanbieding voor Dynamics 365 B
 Als u Dynamics 365 Business Central-aanbiedingen wilt maken, moet u eerst [een partner centrum-account maken](./create-account.md) en het [dash board commerciële Marketplace](https://partner.microsoft.com/dashboard/commercial-marketplace/offers)openen, waarbij de pagina **overzicht** is geselecteerd.
 
 ![Dash board voor commerciële Marketplace in het partner centrum](./media/new-offer-overview.png)
+
+>[!Note]
+> Zodra een aanbieding is gepubliceerd, worden wijzigingen die zijn aangebracht in het partner centrum, alleen in het systeem bijgewerkt en opgeslagen vóór het opnieuw publiceren. Zorg ervoor dat u de aanbieding voor publicatie verzendt nadat u wijzigingen hebt aangebracht.
 
 ## <a name="create-a-new-offer"></a>Een nieuwe aanbieding maken
 
@@ -269,7 +272,7 @@ De volgende typen test stations zijn beschikbaar, elk met hun eigen technische c
 - [Azure Resource Manager](#technical-configuration-for-azure-resource-manager-test-drive)
 - [Dynamics 365](#technical-configuration-for-dynamics-365-test-drive)
 - [Logische app](#technical-configuration-for-logic-app-test-drive)
-- [Power bi](#technical-configuration-not-required-for-power-bi-test-drives) (Technische configuratie niet vereist)
+- [Power bi](#technical-configuration-not-required-for-power-bi-test-drives) (technische configuratie niet vereist)
 
 ### <a name="technical-configuration-for-azure-resource-manager-test-drive"></a>Technische configuratie voor Azure Resource Manager test drive
 
@@ -291,13 +294,13 @@ Een implementatie sjabloon die alle Azure-resources bevat waaruit uw oplossing b
 
 Micro soft kan de complexiteit van het instellen van een test drive verwijderen door de service-inrichting en-implementatie te hosten en te onderhouden met dit type test drive. De configuratie voor dit type gehoste test drive is hetzelfde, ongeacht of de test drive is gericht op een zakelijke centrale, klant afspraak of bewerkings publiek.
 
-- **Maximum aantal gelijktijdige test stations** (vereist): Stel het maximum aantal klanten in dat in één keer kan worden gebruikt voor uw test drive. Elke gelijktijdige gebruiker gebruikt een Dynamics 365-licentie terwijl de test drive actief is. u moet er dus voor zorgen dat er voldoende licenties beschikbaar zijn voor de ondersteuning van de maximum limiet. Aanbevolen waarde van 3-5.
+- **Maximum aantal gelijktijdige test schijven** (vereist): Stel het maximum aantal klanten in dat in één keer kan worden gebruikt voor uw test drive. Elke gelijktijdige gebruiker gebruikt een Dynamics 365-licentie terwijl de test drive actief is. u moet er dus voor zorgen dat er voldoende licenties beschikbaar zijn voor de ondersteuning van de maximum limiet. Aanbevolen waarde van 3-5.
 
 - **Duur van test drive** (vereist): Geef aan hoe lang het test station actief blijft door het aantal uren te definiëren. Na dit aantal uur wordt de sessie beëindigd en wordt een van uw licenties niet meer verbruikt. We raden een waarde van 2-24 uur aan, afhankelijk van de complexiteit van uw aanbieding. Bij deze duur mag alleen een treffer worden ingesteld met een geheel aantal uur (bijvoorbeeld ' 2 ' uur, ' 1,5 ' is niet geldig).  De gebruiker kan een nieuwe sessie aanvragen als deze niet langer actief zijn en de test drive opnieuw willen gebruiken.
 
-- **URL van instantie** (vereist): De URL waar de klant de test drive moet beginnen. Doorgaans de URL van uw Dynamics 365-exemplaar waarop uw app wordt uitgevoerd, waarbij voorbeeld gegevens zijn geïnstalleerd (bijvoorbeeld https://testdrive.crm.dynamics.com).
+- **URL van exemplaar** (vereist): De URL waar de klant de test drive moet beginnen. Doorgaans de URL van uw Dynamics 365-exemplaar waarop uw app wordt uitgevoerd, waarbij voorbeeld gegevens zijn geïnstalleerd (bijvoorbeeld https://testdrive.crm.dynamics.com).
 
-- **URL van Web-API voor exemplaar** (vereist): Haal de Web-API-URL voor uw Dynamics 365-exemplaar op door u aan te melden bij uw Microsoft 365-account en te navigeren naar **instellingen** \&gt; **Aanpassing** \&gt; **Bronnen voor ontwikkel aars** \&gt; **Web-API van het exemplaar (Service root URL)** , kopieer de URL die u hier kunt vinden (bijvoorbeeld https://testdrive.crm.dynamics.com/api/data/v9.0).
+- **URL** van de Web-API voor het exemplaar (vereist): Haal de Web-API-URL voor uw Dynamics 365-exemplaar op door u aan te melden bij uw Microsoft 365-account en te navigeren naar **instellingen** \&gt; **Aanpassing** \&gt; **Bronnen voor ontwikkel aars** \&gt; **Web-API van het exemplaar (Service root URL)** , kopieer de URL die u hier kunt vinden (bijvoorbeeld https://testdrive.crm.dynamics.com/api/data/v9.0).
 
 - **Rolnaam** (vereist): Geef de naam van de beveiligingsrol op die u hebt gedefinieerd in uw aangepaste Dynamics 365 test drive, die wordt toegewezen aan de gebruiker tijdens hun test drive (bijvoorbeeld test station-Role).
 
@@ -307,7 +310,7 @@ Aangepaste producten moeten gebruikmaken van dit type test drive-implementatie s
 
 - **Regio** (vereist, vervolg keuzelijst met één selectie): Er zijn momenteel 26 door Azure ondersteunde regio's waar uw test drive beschikbaar kan worden gemaakt. De resources voor uw logische app worden geïmplementeerd in de regio die u selecteert. Als uw logische app aangepaste resources heeft die zijn opgeslagen in een bepaalde regio, moet u ervoor zorgen dat de regio hier wordt geselecteerd. De beste manier is om uw logische app lokaal te implementeren in uw Azure-abonnement in de portal en te controleren of deze correct werkt voordat u deze selectie maakt.
 
-- **Maximum aantal gelijktijdige test stations** (vereist): Stel het maximum aantal klanten in dat in één keer kan worden gebruikt voor uw test drive. Deze test stations zijn al geïmplementeerd, zodat klanten deze direct kunnen openen zonder te hoeven wachten op een implementatie.
+- **Maximum aantal gelijktijdige test schijven** (vereist): Stel het maximum aantal klanten in dat in één keer kan worden gebruikt voor uw test drive. Deze test stations zijn al geïmplementeerd, zodat klanten deze direct kunnen openen zonder te hoeven wachten op een implementatie.
 
 - **Duur van test drive** (vereist): Geef aan hoe lang het test station actief blijft, in aantal uren. De test drive wordt automatisch beëindigd nadat deze periode is verstreken.
 
@@ -315,7 +318,7 @@ Aangepaste producten moeten gebruikmaken van dit type test drive-implementatie s
 
 - **Naam van de Azure Logic-app** (vereist): Voer de naam in van de logische app die de test drive aan de gebruiker toewijst. Deze logische app moet worden opgeslagen in de bovenstaande Azure-resource groep.
 
-- **Naam van de logische app** voor ongedaan maken (vereist): Voer de naam in van de logische app die de test drive indien de klant is voltooid. Deze logische app moet worden opgeslagen in de bovenstaande Azure-resource groep.
+- **Naam van de logische app** voor het ongedaan maken van de inrichting (vereist): Voer de naam in van de logische app die de test drive indien de klant is voltooid. Deze logische app moet worden opgeslagen in de bovenstaande Azure-resource groep.
 
 ### <a name="technical-configuration-not-required-for-power-bi-test-drives"></a>Technische configuratie niet vereist voor Power BI test stations
 
@@ -327,13 +330,13 @@ Als u het test station namens u wilt implementeren, moet u een apart en uniek Az
 
 - **Azure-abonnements-id** (vereist voor Azure Resource Manager en Logic apps): Voer de abonnements-ID in om toegang te verlenen tot uw Azure-account services voor rapportage en facturering van resource gebruik. Het is raadzaam om [een afzonderlijk Azure-abonnement te maken](https://docs.microsoft.com/azure/billing/billing-create-subscription) dat u voor test stations kunt gebruiken als u er nog geen hebt. U kunt uw Azure-abonnements-ID vinden door u aan te melden bij de [Azure Portal](https://portal.azure.com/) en te navigeren naar het tabblad **abonnementen** van het menu aan de linkerkant. Als u het tabblad selecteert, wordt uw abonnements-ID weer gegeven (bijvoorbeeld "a83645ac-1234-5ab6-6789-1h234g764ghty").
 
-- **Azure AD-Tenant-id** (vereist): Voer de [Tenant-id](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)van uw Azure Active Directory (AD) in. Als u deze ID wilt vinden, meldt u zich aan bij de [Azure Portal](https://portal.azure.com/), selecteert u het tabblad Active Directory in het menu aan de linkerkant, selecteert u * * eigenschappen en zoekt u naar de weer gegeven **Directory-id** (bijvoorbeeld 50c464d3-4930-494c-963c-1e951d15360e). U kunt ook de Tenant-ID van uw organisatie opzoeken met uw domein naam-URL [https://www.whatismytenantid.com](https://www.whatismytenantid.com)op:.
+- **Tenant-id voor Azure AD** (vereist): Voer de [Tenant-id](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)van uw Azure Active Directory (AD) in. Als u deze ID wilt vinden, meldt u zich aan bij de [Azure Portal](https://portal.azure.com/), selecteert u het tabblad Active Directory in het menu aan de linkerkant, selecteert u * * eigenschappen en zoekt u naar de weer gegeven **Directory-id** (bijvoorbeeld 50c464d3-4930-494c-963c-1e951d15360e). U kunt ook de Tenant-ID van uw organisatie opzoeken met behulp van de domein naam-URL op: [https://www.whatismytenantid.com](https://www.whatismytenantid.com).
 
 - **Naam van Azure AD-Tenant** (vereist voor dynamische 365): Voer de naam van uw Azure Active Directory (AD) in. Als u deze naam wilt vinden, meldt u zich aan bij de [Azure Portal](https://portal.azure.com/). in de rechter bovenhoek wordt de naam van de Tenant vermeld onder uw account naam.
 
 - **Azure AD-App-ID** (vereist): Voer uw Azure Active Directory (AD) [-toepassings-id](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)in. Als u deze ID wilt vinden, meldt u zich aan bij de [Azure Portal](https://portal.azure.com/), selecteert u het tabblad Active Directory in het menu links, selecteert u **app-registraties**en zoekt u naar het **toepassings-id-** nummer dat wordt weer gegeven (bijvoorbeeld 50c464d3-4930-494c-963c-1e951d15360e).
 
-- **Azure AD-App-client geheim** (vereist): Voer uw Azure AD-toepassings [client geheim](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#certificates-and-secrets)in. Als u deze waarde wilt vinden, meldt u zich aan bij de [Azure Portal](https://portal.azure.com/). Selecteer in het linkermenu het tabblad **Azure Active Directory** , selecteer **app-registraties**en selecteer vervolgens uw test drive-app. Selecteer vervolgens **certificaten en geheimen**, selecteer **Nieuw client geheim**, voer een beschrijving in, selecteer **nooit** onderverlooptd en kies vervolgens **toevoegen**. Zorg ervoor dat u de waarde kopieert. (Verlaat de pagina niet voordat u dit doet, anders hebt u geen toegang tot de waarde.)
+- **Azure AD-App-client geheim** (vereist): Voer uw Azure AD-toepassings [client geheim](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#certificates-and-secrets)in. Als u deze waarde wilt vinden, meldt u zich aan bij de [Azure Portal](https://portal.azure.com/). Selecteer in het linkermenu het tabblad **Azure Active Directory** , selecteer **app-registraties**en selecteer vervolgens uw test drive-app. Selecteer vervolgens **certificaten en geheimen**, selecteer **Nieuw client geheim**, voer een beschrijving in, selecteer **nooit** onder **verlooptd**en kies vervolgens **toevoegen**. Zorg ervoor dat u de waarde kopieert. (Verlaat de pagina niet voordat u dit doet, anders hebt u geen toegang tot de waarde.)
 
 Vergeet niet om te **slaan** voordat u verdergaat met de volgende sectie.
 
@@ -343,13 +346,13 @@ Met de optie **Marketplace-vermelding** die is gevonden op het tabblad **test st
 
 - **Beschrijving** (vereist): Beschrijf uw test drive, wat wordt aangetoond, welke doel stellingen de gebruiker kan gebruiken om te experimenteren met, functies om te verkennen en alle relevante informatie om de gebruiker te helpen bepalen of u uw aanbieding kunt verkrijgen. In dit veld kunnen Maxi maal 3.000 tekens tekst worden ingevoerd. 
 
-- **Toegang tot gegevens** (vereist voor Azure Resource Manager en logische test stations): Leg uit wat een klant moet weten om deze test drive te kunnen openen en gebruiken. Door loop een scenario voor het gebruik van uw aanbieding en precies wat de klant moet weten voor toegang tot de functies in de test drive. In dit veld kunnen Maxi maal 10.000 tekens tekst worden ingevoerd.
+- **Toegangs gegevens** (vereist voor Azure Resource Manager en logische test stations): Leg uit wat een klant moet weten om deze test drive te kunnen openen en gebruiken. Door loop een scenario voor het gebruik van uw aanbieding en precies wat de klant moet weten voor toegang tot de functies in de test drive. In dit veld kunnen Maxi maal 10.000 tekens tekst worden ingevoerd.
 
 - **Gebruikers handleiding** (vereist): Een uitgebreid overzicht van uw test drive-ervaring. De gebruikers handleiding moet betrekking hebben op precies wat u wilt dat de klant het test drive verkrijgt en zich als referentie voor eventuele vragen bevindt. Het bestand moet een PDF-indeling hebben en een naam hebben (255 tekens Max) na het uploaden.
 
-- **Video's Video's** toevoegen (optioneel): Video's kunnen worden geüpload naar YouTube of Vimeo en hiernaar wordt verwezen met een koppeling en een miniatuur afbeelding (533 x 324 pixels), zodat een klant een overzicht van de informatie kan bekijken om hen meer inzicht te geven in de test drive, inclusief het gebruik van de functies van uw aanbieding en inzicht in scenario's die hun voor delen accentueren.
-  - **Naam** lang
-  - **URL (alleen YouTube of Vimeo)** lang
+- **Videos: Video's toevoegen @ no__t-0 (optioneel): Video's kunnen worden geüpload naar YouTube of Vimeo en hiernaar wordt verwezen met een koppeling en een miniatuur afbeelding (533 x 324 pixels), zodat een klant een overzicht van de informatie kan bekijken om hen meer inzicht te geven in de test drive, inclusief het gebruik van de functies van uw aanbieding en inzicht in scenario's die hun voor delen accentueren.
+  - **Naam** (vereist)
+  - **URL (alleen YouTube of Vimeo)** (vereist)
   - **Miniatuur (533 x 324 px)** : Het afbeeldings bestand moet de PNG-indeling hebben.
 
 ## <a name="supplemental-content"></a>Aanvullende inhoud

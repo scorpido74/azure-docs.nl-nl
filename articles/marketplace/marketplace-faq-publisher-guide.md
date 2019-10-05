@@ -5,14 +5,14 @@ services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: qianw211
 ms.service: marketplace
 ms.topic: article
-ms.date: 10/2/2019
+ms.date: 10/4/2019
 ms.author: ellacroi
-ms.openlocfilehash: 4096b9201afc98f6e5eb239cf9e6883ac69b6e79
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 1c6e381f5f05bc285b50521c9a57e8b5189a7478
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827990"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71969569"
 ---
 # <a name="microsoft-commercial-marketplace-faqs"></a>Veelgestelde vragen over micro soft Commercial Marketplace
 
@@ -60,7 +60,7 @@ Met Azure Marketplace kunnen klanten technische toepassingen detecteren die zijn
 Azure Marketplace-aanbiedingen kunnen worden aangeschaft via:
 
 * [De webgebaseerde webwinkel](https://azuremarketplace.microsoft.com/marketplace/apps)
-* [De Azure Portal] [Azure Portal]
+* [Het Azure Portal][azure-portal]
 * [De Azure-opdracht regel interface (CLI)](/cli/azure/?view=azure-cli-latest)
 
 >[!Note]
@@ -96,11 +96,11 @@ Trans acties kunnen worden uitgevoerd in de volgende 17 valuta's: AUD, BRL, CAD,
 
 ### <a name="deploying-a-solution-from-azure-marketplace"></a>Een oplossing implementeren vanuit Azure Marketplace
 
-**Ik heb een Azure Marketplace virtual machine (VM) geïmplementeerd op een abonnement en ik wil het abonnement nu migreren van het ene Azure-account naar het andere. Wordt dit momenteel ondersteund?**
+**I hebben een Azure Marketplace-virtuele machine (VM) geïmplementeerd op een abonnement en nu wil ik het abonnement migreren van het ene Azure-account naar het andere. Wordt dit momenteel ondersteund?**
 
 Als u een Azure-abonnement wilt migreren, inclusief Azure Marketplace-Vm's en-services, verwijdert of annuleert u een eerder Azure-abonnement voordat u het nieuwe Azure-account koppelt. Zodra de migratie is voltooid, worden de resulterende gebruiks kosten in rekening gebracht met de nieuwe Betalings wijze van de geregistreerde account.
 
-**Ik wil een Azure Marketplace virtual machine (VM)-abonnement migreren naar mijn Enterprise Agreement. Wordt dit momenteel ondersteund?**
+**I een Azure Marketplace virtual machine (VM)-abonnement naar mijn Enterprise Agreement wilt migreren. Wordt dit momenteel ondersteund?**
 
 Als u een Azure Marketplace virtual machine (VM)-abonnement wilt migreren naar een Enterprise Agreement, moet u voorafgaand aan de migratie een eerder abonnement stoppen of annuleren. Zodra de migratie van uw Azure-account en de bijbehorende abonnementen is voltooid, kunt u de Azure Marketplace-VM of-service opnieuw aanschaffen.  De resulterende gebruiks kosten worden per kwar taal in rekening gebracht onder uw Enterprise Agreement.
 
@@ -130,7 +130,7 @@ Het Azure-abonnement is opgenomen in de prijzen van de ISV-oplossing (Independen
 
 + *Per gebruiker:* SaaS-abonnementen kunnen worden geprijsd op basis van per gebruiker, die maandelijks of jaarlijks wordt gefactureerd. 
 
-Prijs informatie voor aanbiedingen is te vinden op de pagina met details van de [https://azure.microsoft.com/pricing/](https://azure.microsoft.com/pricing/) oplossing op of binnen het [Azure-portal].
+Specifieke prijs informatie voor aanbiedingen is te vinden op de pagina met details van de oplossing op [https://azure.microsoft.com/pricing/](https://azure.microsoft.com/pricing/) of binnen de [Azure-portal].
 
 > [!Note]
 > Met uitzonde ring van de maandelijkse kosten zijn Azure-gebruiks kosten van toepassing op alle prijs modellen, tenzij anders vermeld.
@@ -171,7 +171,7 @@ Ja, voor klanten met Enterprise Agreement (EA), kan de registratie beheerder de 
 
 **Welke betalings methoden worden ondersteund voor commerciële Marketplace-aankopen?**
 
-Klanten kunnen aanbiedingen kopen vanuit Azure Marketplace en Microsoft AppSource met credit cards. Als u een bestaand Azure-abonnement hebt, zullen aankopen via Azure Marketplace gebruikmaken van de betalings wijze die op het account is geconfigureerd en op dezelfde factuur als een afzonderlijk regel item worden weer gegeven. Sommige aanbiedingen gebruiken de monetaire toezeg ging van Azure, maar de meeste ommercial Marketplace-aankopen worden niet afgetrokken Enterprise Agreement verbintenissen, hoewel het gebruik van een Azure-infra structuur.
+Klanten kunnen aanbiedingen kopen vanuit Azure Marketplace en Microsoft AppSource met credit cards. Als u een bestaand Azure-abonnement hebt, zullen aankopen via Azure Marketplace gebruikmaken van de betalings wijze die op het account is geconfigureerd en op dezelfde factuur als een afzonderlijk regel item worden weer gegeven. Sommige aanbiedingen gebruiken de monetaire toezeg ging van Azure, maar de meeste aankopen in commerciële Marketplace worden niet afgetrokken Enterprise Agreement toezeg gingen, hoewel het gebruik van een Azure-infra structuur.
 
 **Kan ik tegoeden voor Azure-abonnementen of monetaire toezeggings fondsen in mijn account Toep assen op Azure Marketplace-aanbiedingen?**
 
@@ -203,7 +203,7 @@ MOSP: [micro soft online Subscription Program](https://azure.microsoft.com/suppo
 
 Hoewel de meeste micro soft-abonnementen eenvoudig kunnen worden omgezet naar een Enterprise Agreement, kunnen Azure Marketplace-aankopen binnen die abonnementen niet.
 
-Als u andere services die zijn gekocht op Azure Marketplace wilt migreren naar een EA-abonnement, annuleert u eerst de toepassingen vanuit het bestaande MOSP-abonnement en schaft u deze toepassingen opnieuw aan binnen het EA-abonnement. Als u dit doet, kunt u een krediet aanvraag indienen voor een teruggave tijdens de mogelijke maand van overlappende dekking tussen de Marketplace-service abonnementen. Maak een ondersteunings [ticket](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview).
+Als u andere services die zijn gekocht op Azure Marketplace wilt migreren naar een EA-abonnement, annuleert u eerst de toepassingen vanuit het bestaande MOSP-abonnement en schaft u deze toepassingen opnieuw aan binnen het EA-abonnement. Als u dit doet, kunt u een krediet aanvraag indienen voor een teruggave tijdens de mogelijke maand van overlappende dekking tussen de Marketplace-service abonnementen. Maak een [ondersteunings ticket](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview).
 
 **Wat is het verschil tussen de *prijs*, de *Software prijs*en de *totale prijs* in de kosten structuur voor aanbiedingen van virtuele machines in de Azure Marketplace?**
 
@@ -338,7 +338,7 @@ Leads zijn klanten die uw producten implementeren via Marketplace. Of uw product
 
 **Waar kan ik hulp krijgen bij het instellen van mijn lead bestemming?**
 
-Meer informatie vindt u in [Cloud Partner-Portal-](./cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads.md) documentatie over klanten leads of een ondersteunings ticket verzenden via [https://aka.ms/marketplacepublishersupport](https://aka.ms/marketplacepublishersupport) door uw aanbiedings type en Lead beheer te selecteren.
+Meer informatie vindt u in [Cloud Partner-Portal: klant leads-documentatie ophalen](./cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads.md) of een ondersteunings ticket verzenden via [https://aka.ms/marketplacepublishersupport](https://aka.ms/marketplacepublishersupport) door uw aanbiedings type en Lead beheer te selecteren.
 
 **Ben ik verplicht een lead bestemming te configureren voor het publiceren van een aanbieding op Marketplace?**
 
@@ -375,15 +375,15 @@ Zie [een aanbieding verwijderen](./cloud-partner-portal/manage-offers/cpp-delete
 
 *O365-apps:*
 
-1.  Meld u aan <https://sellerdashboard.microsoft.com> met uw dev-account.
+1.  Meld u aan bij <https://sellerdashboard.microsoft.com> met uw dev-account.
 1.  De invoeg toepassing intrekken.
 
     > [!NOTE]
     > Apps verdwijnen na 90 dagen van een bestaande vermelding.
 
-*Power BI apps:*
+**Waarom worden mijn wijzigingen niet doorgevoerd in de aanbieding?**
 
-Overzicht [Anjana Sompur (slalom Consulting LLC)](mailto:v-ansomp@microsoft.com).
+Wijzigingen die in het partner centrum zijn aangebracht, worden alleen in het systeem bijgewerkt en opgeslagen voor raden zodra u de aanbieding opnieuw hebt gepubliceerd. Zorg ervoor dat u na elke wijziging de aanbieding voor de publicatie hebt verzonden.
 
 ### <a name="benefits-and-go-to-market-gtm-resources"></a>Voor delen en go-to-Market (GTM)-resources
 
@@ -395,7 +395,7 @@ Ga naar [micro soft gtm Services](https://partner.microsoft.com/reach-customers/
 
 **Waar worden Azure Marketplace-oplossingen bevorderd in micro soft-webeigenschappen?**
 
-Azure Marketplace-oplossingen zijn beschikbaar op de website micro soft [Azure-portal]en [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/). Cloud ontwikkelaars en IT-professionals die Azure gebruiken, hebben een risico op partner oplossingen wanneer ze zich aanmelden. Een subset van partner oplossingen wordt ook getoond en gedraaid op de [Azure Marketplace-start](https://azuremarketplace.microsoft.com/marketplace) pagina en de [Azure](https://azure.microsoft.com/solutions/)-oplossingenpagina.
+Azure Marketplace-oplossingen zijn beschikbaar op de website micro soft [Azure-portal]en [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/). Cloud ontwikkelaars en IT-professionals die Azure gebruiken, hebben een risico op partner oplossingen wanneer ze zich aanmelden. Een subset van partner oplossingen wordt ook getoond en gedraaid op de [Azure Marketplace-start](https://azuremarketplace.microsoft.com/marketplace) pagina en de [Azure-oplossingenpagina](https://azure.microsoft.com/solutions/).
 
 ### <a name="billing-and-payments"></a>Facturering en betalingen
 
@@ -463,6 +463,16 @@ Trans acties kunnen worden uitgevoerd in de volgende 17 valuta's: AUD, BRL, CAD,
 **Wat is het verschil tussen de gratis laag en de gratis proef versie van de software?**
 
 Een aanbieding met een gratis laag abonnement is permanent gratis.  Een gratis proef versie van een software test (nu uitproberen) is een betaald abonnement dat slechts voor een beperkte periode gratis is.
+
+**Wat is het proces voor het valideren van de end-to-end-aankoop-en inrichtings stroom?**
+
+Tijdens het publicatie proces krijgt u toegang tot een preview van uw aanbieding. De toegang is beperkt tot gebruikers die u hebt opgegeven op het tabblad voor beeld en dit is een live-aanbieding die niet zichtbaar is voor iemand anders. U kunt dit doen en het proces testen. Er wordt echter wel het volledige bedrag in rekening gebracht volgens de configuratie van uw aanbieding.
+
+Voor het volt ooien van een aankoop tegen een zeer lage prijs, raadt micro soft aan een persoonlijk abonnement te publiceren dat is ingesteld op een prijs die u kunt accepteren als de kosten voor testen. Nul wordt ondersteund, maar weerspiegelt niet de volledige ervaring zoals een betaald abonnement.
+
+**Biedt micro soft een restitutie buiten het standaard beleid?**
+
+Ja, bij uw aanvraag via de ondersteunings ticket verwerkt micro soft de tegoeden bij uw klant als dat nodig is.
 
 ## <a name="next-steps"></a>Volgende stappen
 
