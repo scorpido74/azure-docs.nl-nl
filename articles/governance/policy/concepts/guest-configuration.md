@@ -6,13 +6,12 @@ ms.author: dacoulte
 ms.date: 09/20/2019
 ms.topic: conceptual
 ms.service: azure-policy
-manager: carmonm
-ms.openlocfilehash: 51129f89f45d65007f8a7f37df0353121ebdbdd8
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: ac8d4d2519ce918a943cfe1e93ed2c5c7afd9a47
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71338386"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71978062"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Informatie over Azure Policy Gast-configuratie
 
@@ -122,7 +121,7 @@ Azure Policy maakt gebruik van de configuratie van de Gast-resourceproviders **c
 > [!NOTE]
 > Het **DeployIfNotExists** -beleid is vereist voor het **AuditIfNotExists** -beleid om resultaten te retour neren. Zonder de **DeployIfNotExists**wordt met het **AuditIfNotExists** -beleid ' 0 van 0 ' resources weer gegeven als status.
 
-Alle ingebouwde beleidsregels voor de configuratie van de Gast zijn opgenomen in een initiatief aan groep de definities voor gebruik in toewijzingen. Het ingebouwde initiatief met de naam  *[Preview]: Instellingen voor wachtwoord beveiliging controleren binnen Linux-en* Windows-machines bevat 18 beleids regels. Er zijn zes **DeployIfNotExists** en **AuditIfNotExists** paren voor Windows en drie sets voor Linux. De [beleids definitie](definition-structure.md#policy-rule) logica valideert dat alleen het doel besturingssysteem wordt geëvalueerd.
+Alle ingebouwde beleidsregels voor de configuratie van de Gast zijn opgenomen in een initiatief aan groep de definities voor gebruik in toewijzingen. Het ingebouwde initiatief met de naam * [Preview]: Wachtwoord beveiligings instellingen controleren binnen Linux-en Windows-computers @ no__t-0 bevat 18 beleids regels. Er zijn zes **DeployIfNotExists** en **AuditIfNotExists** paren voor Windows en drie sets voor Linux. De [beleids definitie](definition-structure.md#policy-rule) logica valideert dat alleen het doel besturingssysteem wordt geëvalueerd.
 
 ### <a name="multiple-assignments"></a>Meerdere toewijzingen
 
@@ -141,11 +140,11 @@ Windows: `C:\Packages\Plugins\Microsoft.GuestConfiguration.ConfigurationforWindo
 
 Linux: `/var/lib/waagent/Microsoft.GuestConfiguration.ConfigurationforLinux-<version>/GCAgent/logs/dsc.log`
 
-Waar `<version>` verwijst naar het huidige versie nummer.
+Waarbij `<version>` verwijst naar het huidige versie nummer.
 
 ### <a name="collecting-logs-remotely"></a>Logboeken extern verzamelen
 
-De eerste stap bij het oplossen van problemen met configuratie van gast configuraties of modules `Test-GuestConfigurationPackage` moet de cmdlet gebruiken volgens de stappen in [een gast configuratie pakket testen](../how-to/guest-configuration-create.md#test-a-guest-configuration-package).
+De eerste stap bij het oplossen van problemen met configuratie van gast configuraties of modules moet de `Test-GuestConfigurationPackage`-cmdlet gebruiken volgens de stappen in [een gast configuratie pakket testen](../how-to/guest-configuration-create.md#test-a-guest-configuration-package).
 Als dat niet lukt, kan het verzamelen van client logboeken helpen bij het vaststellen van problemen.
 
 #### <a name="windows"></a>Windows

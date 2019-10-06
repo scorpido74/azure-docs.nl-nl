@@ -1,36 +1,35 @@
 ---
-title: De auteur van beleid voor de Matrixeigenschappen van de op Azure-resources
-description: Informatie over matrixparameters maken, maken van regels voor de matrix taal expressies, evalueren de alias [*], en elementen toevoegen aan een bestaande matrix met Azure Policy definitieregels.
+title: Beleid voor het schrijven van matrix eigenschappen op Azure-resources
+description: Meer informatie over het maken van matrix parameters, het maken van regels voor matrix taal expressies, het evalueren van de [*]-alias en het toevoegen van elementen aan een bestaande matrix met Azure Policy definitie regels.
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 03/06/2019
 ms.topic: conceptual
 ms.service: azure-policy
-manager: carmonm
-ms.openlocfilehash: 479f77791a0b035f2d1de6085dfb12f5196288ee
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e5b90eb975d0d495723a70095b447d37e051fc0b
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65979329"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71978039"
 ---
-# <a name="author-policies-for-array-properties-on-azure-resources"></a>De auteur van beleid voor de Matrixeigenschappen van de op Azure-resources
+# <a name="author-policies-for-array-properties-on-azure-resources"></a>Beleid voor het schrijven van matrix eigenschappen op Azure-resources
 
-Azure Resource Manager-eigenschappen worden gewoonlijk gedefinieerd als tekenreeksen en Booleaanse waarden. Wanneer een een-op-veel-relatie bestaat, worden in plaats daarvan complexe eigenschappen gedefinieerd als matrices. Matrices worden in Azure Policy, op verschillende manieren gebruikt:
+Azure Resource Manager eigenschappen worden meestal gedefinieerd als teken reeksen en Booleaanse waarden. Als er sprake is van een een-op-veel-relatie, worden complexe eigenschappen in plaats daarvan gedefinieerd als matrices. In Azure Policy worden matrices op verschillende manieren gebruikt:
 
-- Het type van een [definitie parameter](../concepts/definition-structure.md#parameters), meerdere opties
-- Onderdeel van een [beleidsregel](../concepts/definition-structure.md#policy-rule) met behulp van de voorwaarden **in** of **notIn**
-- Onderdeel van een beleidsregel die wordt geëvalueerd als de [ \[ \* \] alias](../concepts/definition-structure.md#understanding-the--alias) specifieke scenario's zoals evalueren **geen**, **eventuele**, of  **Alle**
-- In de [effect append](../concepts/effects.md#append) wilt vervangen of toevoegen aan een bestaande matrix
+- Het type [definitie parameter](../concepts/definition-structure.md#parameters), om meerdere opties te bieden
+- Onderdeel van een [beleids regel](../concepts/definition-structure.md#policy-rule) met de voor waarden **in** of **notIn**
+- Onderdeel van een beleids regel die de [\[ @ no__t-2 @ no__t-3-alias](../concepts/definition-structure.md#understanding-the--alias) evalueert om specifieke scenario's te evalueren, zoals **geen**, **any**of **all**
+- In het [effect toevoegen](../concepts/effects.md#append) om te vervangen of toe te voegen aan een bestaande matrix
 
-Dit artikel wordt ingegaan op elk gebruik door Azure Policy en enkele voorbeeld-definities.
+In dit artikel wordt elk gebruik door Azure Policy beschreven en worden verschillende voorbeeld definities geboden.
 
-## <a name="parameter-arrays"></a>Parametermatrices
+## <a name="parameter-arrays"></a>Parameter matrices
 
-### <a name="define-a-parameter-array"></a>Een parametermatrix definiëren
+### <a name="define-a-parameter-array"></a>Een parameter matrix definiëren
 
-Een parameter definiëren als een matrix, biedt de flexibiliteit van het beleid als er meer dan één waarde nodig is.
-Deze beleidsdefinitie kan een enkele locatie voor de parameter **allowedLocations** en wordt standaard ingesteld op _eastus2_:
+Als u een para meter als een matrix definieert, kan het beleid flexibel zijn wanneer er meer dan één waarde nodig is.
+Met deze beleids definitie kunt u één locatie voor de para meter **allowedLocations** en de standaard waarden voor _eastus2_:
 
 ```json
 "parameters": {
@@ -46,9 +45,9 @@ Deze beleidsdefinitie kan een enkele locatie voor de parameter **allowedLocation
 }
 ```
 
-Als **type** is _tekenreeks_, alleen een waarde kan worden ingesteld wanneer het toewijzen van beleid. Als dit beleid is toegewezen, worden resources binnen het bereik zijn alleen toegestaan binnen één Azure-regio. De meeste beleid-definities wilt toestaan voor een lijst van goedgekeurde opties, zoals het toestaan van _eastus2_, _eastus_, en _westus2_.
+Als **type** is _teken reeks_, kan slechts één waarde worden ingesteld wanneer het beleid wordt toegewezen. Als dit beleid is toegewezen, zijn resources in het bereik alleen toegestaan binnen één Azure-regio. De meeste beleids definities moeten een lijst met goedgekeurde opties toestaan, zoals het toestaan van _eastus2_, _oostus_en _westus2_.
 
-Gebruik voor het maken van de beleidsdefinitie zodat meerdere opties voor de _matrix_ **type**. Hetzelfde beleid kunt als volgt worden herschreven:
+Als u de beleids definitie wilt maken om meerdere opties toe te staan, gebruikt u het _matrix_ **type**. Hetzelfde beleid kan als volgt worden herschreven:
 
 ```json
 "parameters": {
@@ -71,17 +70,17 @@ Gebruik voor het maken van de beleidsdefinitie zodat meerdere opties voor de _ma
 ```
 
 > [!NOTE]
-> Wanneer de beleidsdefinitie van een is opgeslagen, de **type** eigenschap voor een parameter kan niet worden gewijzigd.
+> Zodra een beleids definitie is opgeslagen, kan de eigenschap **type** van een para meter niet worden gewijzigd.
 
-Deze nieuwe parameterdefinitie vindt meer dan één waarde tijdens de toewijzing van configuratiebeleid. Met de matrixeigenschap **allowedValues** gedefinieerd, de waarden die beschikbaar zijn tijdens de toewijzing worden verder beperkt tot de vooraf gedefinieerde lijst met opties. Het gebruik van **allowedValues** is optioneel.
+Deze nieuwe parameter definitie heeft meer dan één waarde tijdens de beleids toewijzing. Met de matrix eigenschap **allowedValues** gedefinieerd, worden de waarden die beschikbaar zijn tijdens de toewijzing, verder beperkt tot de vooraf gedefinieerde lijst met opties. Het gebruik van **allowedValues** is optioneel.
 
-### <a name="pass-values-to-a-parameter-array-during-assignment"></a>Waarden doorgeven aan een parametermatrix tijdens de toewijzing
+### <a name="pass-values-to-a-parameter-array-during-assignment"></a>Waarden door geven aan een parameter matrix tijdens toewijzing
 
-Bij het toewijzen van het beleid via Azure portal, een parameter van het **type** _matrix_ als één tekstvak wordt weergegeven. De hint zegt 'gebruiken. om waarden te scheiden. (bijvoorbeeld Londen; New York) '. De locatie van de toegestane waarden van _eastus2_, _eastus_, en _westus2_ naar de parameter, gebruikt u de volgende tekenreeks:
+Wanneer u het beleid toewijst via de Azure Portal, wordt een para meter van het **type** _matrix_ weer gegeven als één tekstvak. De hint zegt ' use; om waarden te scheiden. (bijvoorbeeld Londen; New York) ". Gebruik de volgende teken reeks om de toegestane locatie waarden van _eastus2_, _oostus_en _westus2_ aan de para meter door te geven:
 
 `eastus2;eastus;westus2`
 
-De indeling voor de parameterwaarde is anders bij het gebruik van Azure CLI, Azure PowerShell of de REST-API. De waarden worden doorgegeven via een JSON-tekenreeks die ook de naam van de parameter.
+De notatie voor de parameter waarde is anders wanneer u Azure CLI, Azure PowerShell of de REST API gebruikt. De waarden worden door gegeven via een JSON-teken reeks die ook de naam van de para meter bevat.
 
 ```json
 {
@@ -95,18 +94,18 @@ De indeling voor de parameterwaarde is anders bij het gebruik van Azure CLI, Azu
 }
 ```
 
-Voor het gebruik van deze tekenreeks met de SDK, gebruik de volgende opdrachten:
+Gebruik de volgende opdrachten om deze teken reeks te gebruiken voor elke SDK:
 
-- Azure CLI: Opdracht [az beleidstoewijzing te maken](/cli/azure/policy/assignment?view=azure-cli-latest#az-policy-assignment-create) met parameter **parameters**
-- Azure PowerShell: Cmdlet [New-AzPolicyAssignment](/powershell/module/az.resources/New-Azpolicyassignment) met parameter **PolicyParameter**
-- REST-API: In de _plaatsen_ [maken](/rest/api/resources/policyassignments/create) bewerking als onderdeel van de aanvraagtekst als de waarde van de **properties.parameters** eigenschap
+- Azure CLI: Opdracht [AZ Policy Assignment Create](/cli/azure/policy/assignment?view=azure-cli-latest#az-policy-assignment-create) with para meter **params**
+- Azure PowerShell: Cmdlet [New-AzPolicyAssignment](/powershell/module/az.resources/New-Azpolicyassignment) met para meter **PolicyParameter**
+- REST API: In de _put_ -bewerking [maken](/rest/api/resources/policyassignments/create) als onderdeel van de aanvraag tekst als de waarde van de **Eigenschappen. para meters** -eigenschap
 
-## <a name="policy-rules-and-arrays"></a>Beleidsregels en -matrices
+## <a name="policy-rules-and-arrays"></a>Beleids regels en-matrices
 
-### <a name="array-conditions"></a>Matrix-voorwaarden
+### <a name="array-conditions"></a>Matrix voorwaarden
 
-De beleidsregel [voorwaarden](../concepts/definition-structure.md#conditions) die een _matrix_
-**type** van de parameter kan worden gebruikt met is beperkt tot `in` en `notIn`. Uitvoeren van de volgende beleidsdefinitie met voorwaarde `equals` als een voorbeeld:
+De beleids regel [voorwaarden](../concepts/definition-structure.md#conditions) die een _matrix_
+-**type** para meter kan worden gebruikt met is beperkt tot `in` en `notIn`. Neem de volgende beleids definitie met voor waarde `equals` als voor beeld:
 
 ```json
 {
@@ -134,20 +133,20 @@ De beleidsregel [voorwaarden](../concepts/definition-structure.md#conditions) di
 }
 ```
 
-Bij het maken van deze beleidsdefinitie via de Azure portal leidt tot een fout betreft, zoals dit foutbericht wordt weergegeven:
+Het maken van deze beleids definitie via de Azure Portal leidt tot een fout, zoals dit fout bericht:
 
-- "Het beleid {GUID} kan niet worden geparametriseerd vanwege validatiefouten. Controleer als beleidsparameters juist zijn gedefinieerd. De binnenste uitzondering 'evaluatie resultaat van de taalexpressie [parameters('allowedLocations')] is type 'Array' verwachte type is 'String','.'
+- "Het beleid {GUID} kan niet worden geparametriseerde vanwege validatie fouten. Controleer of de beleids parameters juist zijn gedefinieerd. Het evaluatie resultaat van de interne uitzonde ring van de taal expressie [para meters (' allowedLocations ')] ' is van het type ' matrix ', het verwachte type is ' String '. '
 
-De verwachte **type** van voorwaarde `equals` is _tekenreeks_. Aangezien **allowedLocations** wordt gedefinieerd als **type** _matrix_, de beleidsengine evalueert de taalexpressie en de fout genereert. Met de `in` en `notIn` voorwaarde, de groepsbeleid-engine wordt verwacht dat de **type** _matrix_ in de taalexpressie. Om op te lossen dit foutbericht, wijzigt u `equals` aan `in` of `notIn`.
+Het verwachte **type** voor waarde `equals` is _teken reeks_. Omdat **allowedLocations** is gedefinieerd als **type** _matrix_, evalueert de beleids engine de expressie van de taal en genereert de fout. Met de `in` en de `notIn`-voor waarde verwacht de beleids engine de **type** _matrix_ in de taal expressie. U kunt dit fout bericht oplossen door `equals` te wijzigen in `in` of `notIn`.
 
-### <a name="evaluating-the--alias"></a>Evaluatie van de alias [*]
+### <a name="evaluating-the--alias"></a>De alias [*] evalueren
 
-Aliassen waarvoor **[\*]** die is gekoppeld aan hun naam geven de **type** is een _matrix_. In plaats van het evalueren van de waarde van de volledige matrix **[\*]** maakt het mogelijk om te evalueren van elk element van de matrix. Er zijn drie scenario's die dit per rapportitem wordt geëvalueerd is handig in: Geen, een, en alle.
+Aliassen met **[\*]** die zijn gekoppeld aan hun naam, geven aan dat het **type** een _matrix_is. In plaats van de waarde van de volledige matrix te evalueren, kunt u met **[\*]** elk element van de matrix evalueren. Er zijn drie scenario's waarin de evaluatie per item kan worden gebruikt in: Geen, alle en alle.
 
-De groepsbeleid-engine triggers de **effect** in **vervolgens** alleen wanneer de **als** regel wordt geëvalueerd als waar.
-Dit is belangrijk te begrijpen in de context van de manier waarop **[\*]** evalueert elk afzonderlijk element van de matrix.
+De beleids engine activeert alleen het **effect** in **then** wanneer de **if** -regel als waar evalueert.
+Dit is belang rijk om inzicht te krijgen in de context van de manier waarop **[\*]** elk afzonderlijk element van de matrix evalueert.
 
-De voorbeeld-beleidsregel voor de onderstaande scenario-tabel:
+De voorbeeld beleidsregel voor de scenario tabel hieronder:
 
 ```json
 "policyRule": {
@@ -166,7 +165,7 @@ De voorbeeld-beleidsregel voor de onderstaande scenario-tabel:
 }
 ```
 
-De **ipRules** matrix is als volgt voor het scenario van onderstaande tabel:
+De **ipRules** -matrix is als volgt voor de scenario tabel hieronder:
 
 ```json
 "ipRules": [
@@ -181,35 +180,35 @@ De **ipRules** matrix is als volgt voor het scenario van onderstaande tabel:
 ]
 ```
 
-Vervang bijvoorbeeld elke voorwaarde onderstaande `<field>` met `"field": "Microsoft.Storage/storageAccounts/networkAcls.ipRules[*].value"`.
+Voor elk voor beeld hieronder, vervang `<field>` door `"field": "Microsoft.Storage/storageAccounts/networkAcls.ipRules[*].value"`.
 
-De volgende resultaten zijn het resultaat van de combinatie van de voorwaarde en de voorbeeld-beleidsregel en matrix met bovenstaande van bestaande waarden:
+De volgende resultaten zijn het resultaat van de combi natie van de voor waarde en de beleids regel voor het voor beeld en de matrix van bestaande waarden hierboven:
 
 |Voorwaarde |Resultaat |Uitleg |
 |-|-|-|
-|`{<field>,"notEquals":"127.0.0.1"}` |Niets |Een element van de matrix wordt geëvalueerd als onwaar (127.0.0.1! = 127.0.0.1) en één als waar (127.0.0.1! = 192.168.1.1), waardoor de **notEquals** voorwaarde is _false_ en het effect is niet geactiveerd. |
-|`{<field>,"notEquals":"10.0.4.1"}` |Effect van het beleid |Beide matrixelementen evalueren als waar (10.0.4.1! = 127.0.0.1 en 10.0.4.1! = 192.168.1.1), waardoor de **notEquals** voorwaarde is _waar_ en het effect is geactiveerd. |
-|`"not":{<field>,"Equals":"127.0.0.1"}` |Effect van het beleid |Een element van de matrix wordt geëvalueerd als waar (127.0.0.1 == 127.0.0.1) en één als onwaar (127.0.0.1 == 192.168.1.1), waardoor de **gelijk is aan** voorwaarde is _false_. De logische operator wordt geëvalueerd als waar (**niet** _false_), zodat het effect is geactiveerd. |
-|`"not":{<field>,"Equals":"10.0.4.1"}` |Effect van het beleid |Beide matrixelementen geëvalueerd als onwaar (10.0.4.1 == 127.0.0.1 en 10.0.4.1 == 192.168.1.1), waardoor de **gelijk is aan** voorwaarde is _false_. De logische operator wordt geëvalueerd als waar (**niet** _false_), zodat het effect is geactiveerd. |
-|`"not":{<field>,"notEquals":"127.0.0.1" }` |Effect van het beleid |Een element van de matrix wordt geëvalueerd als onwaar (127.0.0.1! = 127.0.0.1) en één als waar (127.0.0.1! = 192.168.1.1), waardoor de **notEquals** voorwaarde is _false_. De logische operator wordt geëvalueerd als waar (**niet** _false_), zodat het effect is geactiveerd. |
-|`"not":{<field>,"notEquals":"10.0.4.1"}` |Niets |Beide matrixelementen evalueren als waar (10.0.4.1! = 127.0.0.1 en 10.0.4.1! = 192.168.1.1), waardoor de **notEquals** voorwaarde is _waar_. De logische operator wordt geëvalueerd als onwaar (**niet** _waar_), zodat het effect is niet geactiveerd. |
-|`{<field>,"Equals":"127.0.0.1"}` |Niets |Een element van de matrix wordt geëvalueerd als waar (127.0.0.1 == 127.0.0.1) en één als onwaar (127.0.0.1 == 192.168.1.1), waardoor de **gelijk is aan** voorwaarde is _false_ en het effect is niet geactiveerd. |
-|`{<field>,"Equals":"10.0.4.1"}` |Niets |Beide matrixelementen geëvalueerd als onwaar (10.0.4.1 == 127.0.0.1 en 10.0.4.1 == 192.168.1.1), waardoor de **gelijk is aan** voorwaarde is _false_ en het effect is niet geactiveerd. |
+|`{<field>,"notEquals":"127.0.0.1"}` |Nul |Eén matrix element evalueert als onwaar (127.0.0.1! = 127.0.0.1) en een als waar (127.0.0.1! = 192.168.1.1), zodat de **notEquals** -voor waarde _False_ is en het effect niet wordt geactiveerd. |
+|`{<field>,"notEquals":"10.0.4.1"}` |Beleids effect |Beide matrix elementen evalueren als True (10.0.4.1! = 127.0.0.1 en 10.0.4.1! = 192.168.1.1), dus de **notEquals** -voor waarde is _True_ en het effect wordt geactiveerd. |
+|`"not":{<field>,"Equals":"127.0.0.1"}` |Beleids effect |Eén matrix element evalueert als True (127.0.0.1 = = 127.0.0.1) en een als onwaar (127.0.0.1 = = 192.168.1.1), dus is de waarde **equals** _False_. De logische operator evalueert als True (**niet** _waar_), zodat het effect wordt geactiveerd. |
+|`"not":{<field>,"Equals":"10.0.4.1"}` |Beleids effect |Beide matrix elementen evalueren als onwaar (10.0.4.1 = = 127.0.0.1 en 10.0.4.1 =/192.168.1.1), zodat de waarde **equals is ingesteld** op _False_. De logische operator evalueert als True (**niet** _waar_), zodat het effect wordt geactiveerd. |
+|`"not":{<field>,"notEquals":"127.0.0.1" }` |Beleids effect |Eén matrix element evalueert als onwaar (127.0.0.1! = 127.0.0.1) en een als waar (127.0.0.1! = 192.168.1.1), zodat de **notEquals** -voor waarde _False_is. De logische operator evalueert als True (**niet** _waar_), zodat het effect wordt geactiveerd. |
+|`"not":{<field>,"notEquals":"10.0.4.1"}` |Nul |Beide matrix elementen evalueren als True (10.0.4.1! = 127.0.0.1 en 10.0.4.1! = 192.168.1.1), dus de **notEquals** -voor waarde is _True_. De logische operator evalueert als onwaar (**niet** _waar_), dus het effect wordt niet geactiveerd. |
+|`{<field>,"Equals":"127.0.0.1"}` |Nul |Eén matrix element evalueert als True (127.0.0.1 = = 127.0.0.1) en een als onwaar (127.0.0.1 = = 192.168.1.1), dus is de waarde **equals** _False_ en wordt het effect niet geactiveerd. |
+|`{<field>,"Equals":"10.0.4.1"}` |Nul |Beide matrix elementen evalueren als False (10.0.4.1 = = 127.0.0.1 en 10.0.4.1 = 192.168.1.1), dus de voor waarde **equals** is _False_ en het effect wordt niet geactiveerd. |
 
-## <a name="the-append-effect-and-arrays"></a>Het effect toevoegen en matrices
+## <a name="the-append-effect-and-arrays"></a>Het toevoeg effect en de arrays
 
-De [effect append](../concepts/effects.md#append) werkt anders afhankelijk van of de **details.field** is een **[\*]** alias of niet.
+Het [effect toevoegen](../concepts/effects.md#append) werkt anders, afhankelijk van of het **veld details** een **[\*]** alias is of niet.
 
-- Wanneer er geen een **[\*]** toevoegen alias, vervangt u de volledige matrix met de **waarde** eigenschap
-- Wanneer een **[\*]** toevoegen alias, voegt de **waarde** eigenschap aan de bestaande matrix of maakt u de nieuwe matrix
+- Wanneer geen **[\*]-** alias is, wordt de volledige matrix vervangen door de eigenschap **Value**
+- Wanneer een **[\*]-** alias is toegevoegd, wordt de eigenschap **Value** aan de bestaande matrix toegevoegd of wordt de nieuwe matrix gemaakt
 
-Zie voor meer informatie de [append-voorbeelden](../concepts/effects.md#append-examples).
+Zie voor meer informatie de [Append-voor beelden](../concepts/effects.md#append-examples).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Bekijk voorbeelden op [voorbeelden voor Azure Policy](../samples/index.md).
+- Bekijk voor beelden op [Azure Policy voor beelden](../samples/index.md).
 - Lees over de [structuur van Azure Policy-definities](../concepts/definition-structure.md).
 - Lees [Informatie over de effecten van het beleid](../concepts/effects.md).
-- Begrijpen hoe u [programmatisch beleid maken](programmatically-create.md).
-- Meer informatie over het [herstellen van niet-compatibele resources](remediate-resources.md).
-- Lees wat een beheergroep met is [organiseren van uw resources met Azure-beheergroepen](../../management-groups/overview.md).
+- Meer informatie over het [programmatisch maken van beleids regels](programmatically-create.md).
+- Meer informatie over het [oplossen van niet-compatibele resources](remediate-resources.md).
+- Bekijk wat een beheer groep is met [het organiseren van uw resources met Azure-beheer groepen](../../management-groups/overview.md).

@@ -6,13 +6,12 @@ ms.author: dacoulte
 ms.date: 12/11/2018
 ms.topic: troubleshooting
 ms.service: blueprints
-manager: carmonm
-ms.openlocfilehash: 14e957986df7a114b8c865ee82e2ac447683dc2c
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: b99e94bfdcbf12e82a094f14995b6b93aa3354ed
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70257174"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71978226"
 ---
 # <a name="troubleshoot-errors-using-azure-blueprints"></a>Problemen met Azure-blauw drukken oplossen
 
@@ -59,11 +58,11 @@ Blauw drukken-para meters die zijn functies worden verwerkt voordat ze worden do
 
 #### <a name="cause"></a>Oorzaak
 
-Het door geven van een blauw druk-para meter die `[resourceGroup().tags.myTag]`gebruikmaakt van een functie, zoals, naar een artefact resulteert in het verwerkte resultaat van de functie die wordt ingesteld op het artefact in plaats van de dynamische functie.
+Het door geven van een blauw druk-para meter die gebruikmaakt van een functie, zoals `[resourceGroup().tags.myTag]`, op een artefact resulteert in het verwerkte resultaat van de functie die wordt ingesteld op het artefact in plaats van de dynamische functie.
 
 #### <a name="resolution"></a>Oplossing
 
-Als u een functie wilt door geven door middel van `[` een para meter, moet u de volledige teken reeks escapen, zodat de blauw druk-para meter `[[resourceGroup().tags.myTag]`eruit ziet. Het escape teken resulteert in blauw drukken om de waarde te behandelen als een teken reeks bij het verwerken van de blauw druk. Blauw drukken plaatst vervolgens de functie op het artefact, zodat deze dynamisch kan worden uitgevoerd. Zie [syntaxis en expressies in azure Resource Manager-sjablonen](../../../azure-resource-manager/template-expressions.md)voor meer informatie.
+Als u een functie wilt door geven door middel van een para meter, moet u de hele teken reeks met `[` als escape opgeven, zodat de para meter blauw druk lijkt op `[[resourceGroup().tags.myTag]`. Het escape teken resulteert in blauw drukken om de waarde te behandelen als een teken reeks bij het verwerken van de blauw druk. Blauw drukken plaatst vervolgens de functie op het artefact, zodat deze dynamisch kan worden uitgevoerd. Zie [syntaxis en expressies in azure Resource Manager-sjablonen](../../../azure-resource-manager/template-expressions.md)voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 

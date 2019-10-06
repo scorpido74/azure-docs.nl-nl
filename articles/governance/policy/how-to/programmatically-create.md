@@ -6,13 +6,12 @@ ms.author: dacoulte
 ms.date: 01/31/2019
 ms.topic: conceptual
 ms.service: azure-policy
-manager: carmonm
-ms.openlocfilehash: 695e04dcbc7762c85dd0dd9aaff6e5fd9fe99348
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: 047e9cab8d7776fc3b5353aebc571e28ad780ae8
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71155566"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71977958"
 ---
 # <a name="programmatically-create-policies"></a>Programmatisch beleid maken
 
@@ -91,8 +90,8 @@ De eerste stap voor beter inzicht in uw resources is het maken en toewijzen van 
 
    Vervang _ContosoRG_ met de naam van de beoogde resourcegroep.
 
-   De **bereik** parameter voor `New-AzPolicyAssignment` werkt met de beheer groep, het abonnement, de resource groep of een enkele resource. De parameter maakt gebruik van een pad van de volledige resource, die de **ResourceId** eigenschap op `Get-AzResourceGroup` retourneert. Het patroon voor **bereik** voor elke container als volgt is. Vervang `{rName}` ,`{rgName}`, ,en`{mgName}` met de naam van de resource, de naam van de resource groep, de abonnements-id en de beheer groep, respectievelijk. `{subId}`
-   `{rType}`wordt vervangen door het **resource type** van de resource, bijvoorbeeld `Microsoft.Compute/virtualMachines` voor een virtuele machine.
+   De **bereik** parameter van `New-AzPolicyAssignment` werkt met de beheer groep, het abonnement, de resource groep of een enkele resource. De parameter maakt gebruik van een pad van de volledige resource, die de **ResourceId** eigenschap op `Get-AzResourceGroup` retourneert. Het patroon voor **bereik** voor elke container als volgt is. Vervang `{rName}`, `{rgName}`, `{subId}` en `{mgName}` door de resource naam, de naam van de resource groep, de abonnements-ID en de naam van de beheer groep.
+   `{rType}` wordt vervangen door het **resource type** van de resource, zoals `Microsoft.Compute/virtualMachines` voor een virtuele machine.
 
    - Resource - `/subscriptions/{subID}/resourceGroups/{rgName}/providers/{rType}/{rName}`
    - Resourcegroep: `/subscriptions/{subId}/resourceGroups/{rgName}`
@@ -220,7 +219,7 @@ Gebruik de volgende procedure voor het maken van een beleidsdefinitie:
    az policy assignment create --name '<name>' --scope '<scope>' --policy '<policy definition ID>'
    ```
 
-   De para meter **--Scope** voor `az policy assignment create` werkt met de beheer groep, het abonnement, de resource groep of een enkele resource. De para meter gebruikt een volledig bronpad. Het patroon voor de **Scope** voor elke container is als volgt. Vervang `{rName}` ,`{rgName}`, ,en`{mgName}` met de naam van de resource, de naam van de resource groep, de abonnements-id en de beheer groep, respectievelijk. `{subId}` `{rType}`wordt vervangen door het **resource type** van de resource, bijvoorbeeld `Microsoft.Compute/virtualMachines` voor een virtuele machine.
+   De para meter **--Scope** op `az policy assignment create` werkt met de beheer groep, het abonnement, de resource groep of een enkele resource. De para meter gebruikt een volledig bronpad. Het patroon voor de **Scope** voor elke container is als volgt. Vervang `{rName}`, `{rgName}`, `{subId}` en `{mgName}` door de resource naam, de naam van de resource groep, de abonnements-ID en de naam van de beheer groep. `{rType}` wordt vervangen door het **resource type** van de resource, zoals `Microsoft.Compute/virtualMachines` voor een virtuele machine.
 
    - Resource - `/subscriptions/{subID}/resourceGroups/{rgName}/providers/{rType}/{rName}`
    - Resourcegroep: `/subscriptions/{subID}/resourceGroups/{rgName}`

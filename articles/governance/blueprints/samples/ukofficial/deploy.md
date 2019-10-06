@@ -7,13 +7,12 @@ ms.author: dacoulte
 ms.date: 06/26/2019
 ms.topic: conceptual
 ms.service: blueprints
-manager: carmonm
-ms.openlocfilehash: 21c5ad69a5e2b09e973b7b348690f554fca5dbe2
-ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
+ms.openlocfilehash: e2109c5b524c0b38886327bf4c1ea7087380b40f
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70802326"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71978248"
 ---
 # <a name="deploy-the-uk-official-and-uk-nhs-blueprint-samples"></a>De NHS blauw drukken-voor beelden van het Verenigd Konink rijk en UK gebruiken
 
@@ -41,7 +40,7 @@ Implementeer eerst het voor beeld van de blauw druk door een nieuwe blauw druk i
    - **Naam blauw druk**: Geef een naam op voor uw kopie van het voor beeld van de blauw druk.
    - **Locatie van definitie**: Gebruik het weglatings teken en selecteer de beheer groep om uw kopie van het voor beeld op te slaan.
 
-1. Selecteer het tabblad _artefacten_ boven aan de pagina of **volgende:**  Artefacten aan de onderkant van de pagina.
+1. Selecteer het tabblad _artefacten_ boven aan de pagina of **Next: Artefacten @ no__t-0 aan de onderkant van de pagina.
 
 1. Bekijk de lijst met artefacten die deel uitmaken van het voor beeld van de blauw druk. Veel van de artefacten hebben para meters die later worden gedefinieerd. Selecteer **concept opslaan** wanneer u klaar bent met het bekijken van het voor beeld van de blauw druk.
 
@@ -99,16 +98,16 @@ De volgende tabel geeft een lijst van de para meters van de blauw druk-artefact:
 Naam van het artefact|Type artefact|Parameternaam|Description|
 |-|-|-|-|
 |De blauw druk-initiatief voor de officiële of UK NHS|Beleidstoewijzing |Bron typen voor het controleren van Diagnostische logboeken (beleid: Blauw druk-initiatief voor UK-officiële of UK NHS) |Lijst met resource typen om te controleren of de instelling voor Diagnostische logboeken is ingeschakeld.  Zie [ondersteunde services, schema's en categorieën voor Azure Diagnostic-logboeken](../../../../azure-monitor/platform/diagnostic-logs-schema.md)voor acceptabele waarden. |
-|\[Voor\]beeld: Log Analytics-agent voor Linux-Vm's implementeren |Beleidstoewijzing |Optioneel: Lijst met VM-installatie kopieën die een ondersteund Linux-besturings systeem hebben om toe te voegen aan het bereik (beleid: \[Voor\]beeld: Log Analytics-agent voor Linux Vm's implementeren) |Beschrijving De standaard waarde is _geen_. Zie [een log Analytics-werk ruimte maken in de Azure Portal](../../../../azure-monitor/learn/quick-create-workspace.md)voor meer informatie. |
-|\[Voor\]beeld: Log Analytics-agent voor Windows-Vm's implementeren |Beleidstoewijzing |Optioneel: Lijst met VM-installatie kopieën die een ondersteund Windows-besturings systeem hebben om toe te voegen aan het bereik (beleid: \[Voor\]beeld: Log Analytics-agent voor Windows-Vm's implementeren) |Beschrijving De standaard waarde is _geen_. Zie [een log Analytics-werk ruimte maken in de Azure Portal](../../../../azure-monitor/learn/quick-create-workspace.md)voor meer informatie. |
+|\[Preview @ no__t-1: Log Analytics-agent voor Linux-Vm's implementeren |Beleidstoewijzing |Optioneel: Lijst met VM-installatie kopieën die een ondersteund Linux-besturings systeem hebben om toe te voegen aan het bereik (beleid: \[Preview @ no__t-1: Log Analytics-agent voor Linux Vm's implementeren) |Beschrijving De standaard waarde is _geen_. Zie [een log Analytics-werk ruimte maken in de Azure Portal](../../../../azure-monitor/learn/quick-create-workspace.md)voor meer informatie. |
+|\[Preview @ no__t-1: Log Analytics-agent voor Windows-Vm's implementeren |Beleidstoewijzing |Optioneel: Lijst met VM-installatie kopieën die een ondersteund Windows-besturings systeem hebben om toe te voegen aan het bereik (beleid: \[Preview @ no__t-1: Log Analytics-agent voor Windows-Vm's implementeren) |Beschrijving De standaard waarde is _geen_. Zie [een log Analytics-werk ruimte maken in de Azure Portal](../../../../azure-monitor/learn/quick-create-workspace.md)voor meer informatie. |
 
 ## <a name="next-steps"></a>Volgende stappen
 
 Nu u de stappen voor het implementeren van de voor beelden van de UK-officiële en UK NHS-blauw drukken hebt bekeken, gaat u naar de volgende artikelen voor meer informatie over het overzicht en de beheer toewijzing:
 
 > [!div class="nextstepaction"]
-> [Britse officiële en UK NHS blauw drukken-overzicht](./index.md)
-> van de[officiële en UK NHS blauw drukken](./control-mapping.md)
+> [UK-officiële en UK NHS blauw drukken-overzicht](./index.md)
+> [UK-officiële en UK NHS blauw drukken-controle toewijzing](./control-mapping.md)
 
 Aanvullende artikelen over blauwdrukken en het gebruik hiervan:
 

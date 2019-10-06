@@ -6,13 +6,12 @@ ms.author: dacoulte
 ms.date: 04/26/2019
 ms.topic: conceptual
 ms.service: azure-policy
-manager: carmonm
-ms.openlocfilehash: a0faaeee369a2227f6018141e5aa5d18c9037e9d
-ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
+ms.openlocfilehash: 556a8029b9b5f831ac3ace7ed0fcc474fb2e262e
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71161984"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71978099"
 ---
 # <a name="determine-causes-of-non-compliance"></a>Oorzaken van niet-naleving bepalen
 
@@ -94,7 +93,7 @@ De volgende matrix wijst elke mogelijke _reden_ toe aan de verantwoordelijke [vo
 |De huidige waarde moet groter zijn dan of gelijk zijn aan de doel waarde. |greaterOrEquals of **niet** minder |
 |De huidige waarde moet groter zijn dan de doel waarde. |groter of **niet** lessOrEquals |
 |De huidige waarde moet kleiner zijn dan of gelijk zijn aan de doel waarde. |lessOrEquals of **niet** groter |
-|De huidige waarde moet bestaan. |Reeds |
+|De huidige waarde moet bestaan. |reeds |
 |De huidige waarde moet de doel waarde hebben. |in of **niet** notIn |
 |De huidige waarde moet vergelijkbaar zijn met de doel waarde. |zoals of **niet** notLike |
 |De huidige waarde moet hoofdletter gevoelig overeenkomen met de doel waarde. |komt overeen met of **niet** notMatch |
@@ -192,7 +191,7 @@ Audit that an application is installed inside Windows VMs.                Compli
 Audit that an application is installed inside Windows VMs                 NonCompliant                       02/09/2019 09:00:20 AM 02/09/2019 09:00:23 AM VM01  ../15ze1...
 ```
 
-## <a name="a-namechange-historychange-history-preview"></a><a name="change-history"/>Wijzigings overzicht (preview-versie)
+## <a name="a-namechange-historychange-history-preview"></a><a name="change-history"/>Change-geschiedenis (preview-versie)
 
 Als onderdeel van een nieuwe **open bare preview**zijn de laatste 14 dagen aan wijzigings geschiedenis beschikbaar voor alle Azure-resources die de verwijdering van de [volledige modus](../../../azure-resource-manager/complete-mode-deletion.md)ondersteunen. Wijzigings overzicht bevat details over wanneer een wijziging is gedetecteerd en een _visueel verschil_ voor elke wijziging. Een wijzigings detectie wordt geactiveerd wanneer de eigenschappen van de Resource Manager worden toegevoegd, verwijderd of gewijzigd.
 

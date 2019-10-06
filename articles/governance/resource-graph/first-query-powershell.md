@@ -6,13 +6,12 @@ ms.author: dacoulte
 ms.date: 01/23/2019
 ms.topic: quickstart
 ms.service: resource-graph
-manager: carmonm
-ms.openlocfilehash: 7c47b233e508c22ef7b380acfb7720ad763d8de3
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 95cf19d4a782f9e4c866d31fac0da74aebff5d2d
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70241107"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71976773"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-powershell"></a>Quickstart: Uw eerste Resource Graph-query uitvoeren met Azure PowerShell
 
@@ -88,7 +87,7 @@ Nu de Azure PowerShell-module is toegevoegd aan uw gewenste omgeving, kunt u een
 Wanneer de laatste query meerdere keren wordt uitgevoerd, ervan uitgaande dat niets in uw omgeving verandert, zijn de geretourneerde resultaten consistent en zoals verwacht. Ze zijn gesorteerd op de eigenschap **naam**, maar nog steeds beperkt tot de top 5-resultaten.
 
 > [!NOTE]
-> Als de query geen resultaten oplevert van een abonnement waartoe u al toegang hebt, `Search-AzGraph` wordt de cmdlet standaard ingesteld op abonnementen in de standaard context. `(Get-AzContext).Account.ExtendedProperties.Subscriptions` Als u de lijst met abonnements-id's wilt zien die deel uitmaken van de standaard context uitvoeren als u wilt zoeken in alle abonnementen waartoe u toegang hebt, kunt u de PSDefaultParameterValues voor `Search-AzGraph` de cmdlet instellen door uit te voeren`$PSDefaultParameterValues=@{"Search-AzGraph:Subscription"= $(Get-AzSubscription).ID}`
+> Als de query geen resultaten oplevert van een abonnement waartoe u al toegang hebt, moet u er rekening mee houden dat `Search-AzGraph`-cmdlet standaard wordt ingesteld op abonnementen in de standaard context. Als u de lijst met abonnements-Id's wilt zien die deel uitmaken van de standaard context Voer deze `(Get-AzContext).Account.ExtendedProperties.Subscriptions` uit als u wilt zoeken naar alle abonnementen waartoe u toegang hebt, kunt u de PSDefaultParameterValues instellen voor `Search-AzGraph`-cmdlet door `$PSDefaultParameterValues=@{"Search-AzGraph:Subscription"= $(Get-AzSubscription).ID}` uit te voeren
    
 ## <a name="clean-up-resources"></a>Resources opschonen
 

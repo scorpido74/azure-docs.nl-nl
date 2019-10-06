@@ -6,13 +6,12 @@ ms.author: dacoulte
 ms.date: 05/06/2019
 ms.topic: overview
 ms.service: resource-graph
-manager: carmonm
-ms.openlocfilehash: 6721769b0ab6df4165281d9b5b75c0e1332ed1dc
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: bf54f1a96c6be7bbfb19770472752b3f958695c4
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71001653"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71976821"
 ---
 # <a name="overview-of-the-azure-resource-graph-service"></a>Overzicht van de service Azure resource Graph
 
@@ -26,8 +25,8 @@ Azure resource Graph is een service in azure die is ontworpen om Azure Resource 
 In deze documentatie komt elke mogelijkheid gedetailleerd aan bod.
 
 > [!NOTE]
-> Met de Azure Portal zoek balk van Azure-resource grafiek, de nieuwe Blader functie ' alle resources ' en het_visuele verschil_in de [wijzigings geschiedenis](../policy/how-to/determine-non-compliance.md#change-history-preview)
-> van Azure Policy. Het is ontworpen om klanten te helpen grootschalige omgevingen te beheren.
+> Met de Azure Portal zoek balk van Azure-resource grafiek, de nieuwe Blader functie ' alle resources ' en de [wijzigings geschiedenis](../policy/how-to/determine-non-compliance.md#change-history-preview)van Azure Policy 
+> _Visual diff_. Het is ontworpen om klanten te helpen grootschalige omgevingen te beheren.
 
 [!INCLUDE [service-provider-management-toolkit](../../../includes/azure-lighthouse-supported-service.md)]
 
@@ -63,7 +62,7 @@ Om Resource Graph te kunnen gebruiken, moet u over de juiste machtigingen beschi
 > [!NOTE]
 > Resource grafiek maakt gebruik van de abonnementen die beschikbaar zijn voor een principal tijdens het aanmelden. Als u resources wilt zien van een nieuw abonnement dat tijdens een actieve sessie wordt toegevoegd, moet de principal de context vernieuwen. Deze actie wordt automatisch uitgevoerd wanneer u zich afmeldt en weer inschakelt.
 
-Azure CLI en Azure PowerShell gebruiken abonnementen waartoe de gebruiker toegang heeft. Wanneer u REST API rechtstreeks gebruikt, wordt de lijst met abonnementen aangeboden door de gebruiker. Als de gebruiker toegang heeft tot een van de abonnementen in de lijst, worden de query resultaten geretourneerd voor de abonnementen waartoe de gebruiker toegang heeft. Dit gedrag is hetzelfde als bij het aanroepen van [resource groepen: een lijst](/rest/api/resources/resourcegroups/list) \- met resource groepen waar u toegang tot hebt, zonder enige indicatie dat het resultaat gedeeltelijk kan zijn.
+Azure CLI en Azure PowerShell gebruiken abonnementen waartoe de gebruiker toegang heeft. Wanneer u REST API rechtstreeks gebruikt, wordt de lijst met abonnementen aangeboden door de gebruiker. Als de gebruiker toegang heeft tot een van de abonnementen in de lijst, worden de query resultaten geretourneerd voor de abonnementen waartoe de gebruiker toegang heeft. Dit gedrag is hetzelfde als bij het aanroepen van [resource groepen-lijst](/rest/api/resources/resourcegroups/list) \- u resource groepen krijgt waartoe u toegang hebt, zonder enige indicatie dat het resultaat gedeeltelijk kan zijn.
 Als er geen abonnementen zijn in de lijst abonnementen waarvoor de gebruiker de juiste rechten heeft, is het antwoord een _403_ (verboden).
 
 ## <a name="throttling"></a>Beperken
@@ -74,7 +73,7 @@ Geef uw zakelijke case op en schakel het selectie vakje ' micro soft kan uw feed
 Resource grafiek beperkt query's op het niveau van de gebruiker. Het service-antwoord bevat de volgende HTTP-headers:
 
 - `x-ms-user-quota-remaining` (int): Het resterende resource quotum voor de gebruiker. Deze waarde wordt toegewezen aan het aantal query's.
-- `x-ms-user-quota-resets-after`(UU: mm: SS): De tijds duur totdat het quotum verbruik van een gebruiker opnieuw wordt ingesteld
+- `x-ms-user-quota-resets-after` (UU: mm: SS): De tijds duur totdat het quotum verbruik van een gebruiker opnieuw wordt ingesteld
 
 Zie de [richt lijnen voor beperkte aanvragen](./concepts/guidance-for-throttled-requests.md)voor meer informatie.
 
