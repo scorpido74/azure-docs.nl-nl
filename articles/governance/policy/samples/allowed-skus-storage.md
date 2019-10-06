@@ -2,17 +2,16 @@
 title: "Voorbeeld: toegestane SKU's voor opslagaccounts en virtuele machines"
 description: Voor deze voorbeeldbeleidsdefinitie moeten opslagaccounts en virtuele machines gebruikmaken van goedgekeurde SKU's.
 author: DCtheGeek
-manager: carmonm
 ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 088dd8414c93b609326e7cd72828426dcb00fc28
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e84462a930ffad202def1da1e2c923371dde9d58
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61333221"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71980610"
 ---
 # <a name="sample---allowed-skus-for-storage-accounts-and-virtual-machines"></a>Voorbeeld: toegestane SKU's voor opslagaccounts en virtuele machines
 
@@ -28,7 +27,7 @@ U kunt deze sjabloon implementeren via [Azure Portal](#deploy-with-the-portal) o
 
 ## <a name="deploy-with-the-portal"></a>Implementeren met portal
 
-[![De voorbeeld-beleid implementeren naar Azure](https://azuredeploy.net/deploybutton.png)](https://aka.ms/getpolicy)
+[![Deploy het voor beeld van het beleid naar Azure](https://azuredeploy.net/deploybutton.png)](https://aka.ms/getpolicy)
 
 ## <a name="deploy-with-powershell"></a>Implementeren met PowerShell
 

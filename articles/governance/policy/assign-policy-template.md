@@ -1,20 +1,19 @@
 ---
-title: Een beleidstoewijzing maken met een Resource Manager-sjabloon
-description: In dit artikel begeleidt u bij de stappen voor het Resource Manager-sjabloon gebruiken om een beleidstoewijzing voor het identificeren van niet-compatibele resources te maken.
+title: Een beleids toewijzing maken met een resource manager-sjabloon
+description: In dit artikel wordt stapsgewijs beschreven hoe u een resource manager-sjabloon gebruikt om een beleids toewijzing te maken om niet-compatibele resources te identificeren.
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 03/13/2019
 ms.topic: quickstart
 ms.service: azure-policy
-manager: carmonm
-ms.openlocfilehash: f31d6197c22be4d66e0610ad7914f541a45ed995
-ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
+ms.openlocfilehash: 72d8fab39e8dd11cf46eb2977a9b9fe288ca2de1
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65979558"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71980802"
 ---
-# <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-by-using-a-resource-manager-template"></a>Quickstart: Een beleidstoewijzing maken om te identificeren van niet-compatibele resources met behulp van Resource Manager-sjabloon
+# <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-by-using-a-resource-manager-template"></a>Quickstart: Een beleids toewijzing maken om niet-compatibele resources te identificeren met behulp van een resource manager-sjabloon
 
 De eerste stap in het begrijpen van naleving in Azure is het identificeren van de status van uw resources.
 In deze quickstart gaat u een beleidstoewijzing maken voor het identificeren van virtuele machines die geen beheerde schijven gebruiken.
@@ -25,50 +24,50 @@ Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure
 
 ## <a name="create-a-policy-assignment"></a>Een beleidstoewijzing maken
 
-In deze quickstart maakt u een beleidstoewijzing maken en toewijzen van een ingebouwde beleidsdefinitie met de naam *virtuele machines die geen beheerde schijven gebruiken controleren*. Zie voor een gedeeltelijke lijst van beschikbare ingebouwde beleidsregels, [voorbeelden voor Azure Policy](./samples/index.md).
+In deze Quick Start maakt u een beleids toewijzing en wijst u een ingebouwde beleids definitie toe met de naam *audit vm's die geen beheerde schijven gebruiken*. Zie Azure Policy-voor [beelden](./samples/index.md)voor een gedeeltelijke lijst met beschik bare ingebouwde beleids regels.
 
-Er zijn verschillende methoden voor het maken van de toewijzingen van beleid. In deze quickstart maakt u een [quickstart-sjabloon](https://azure.microsoft.com/resources/templates/101-azurepolicy-assign-builtinpolicy-resourcegroup/).
+Er zijn verschillende methoden voor het maken van beleids toewijzingen. In deze Snelstartgids gebruikt u een Quick Start- [sjabloon](https://azure.microsoft.com/resources/templates/101-azurepolicy-assign-builtinpolicy-resourcegroup/).
 Hier volgt een kopie van de sjabloon:
 
 [!code-json[policy-assignment](~/quickstart-templates/101-azurepolicy-assign-builtinpolicy-resourcegroup/azuredeploy.json)]
 
 > [!NOTE]
-> Azure Policy-service is gratis.  Zie voor meer informatie, [overzicht van Azure Policy](./overview.md).
+> Azure Policy-service is gratis.  Zie [overzicht van Azure Policy](./overview.md)voor meer informatie.
 
-1. Selecteer de volgende afbeelding om te melden bij Azure portal en opent u de sjabloon:
+1. Selecteer de volgende afbeelding om u aan te melden bij de Azure Portal en open de sjabloon:
 
-   [![De beleidssjabloon implementeren in Azure](./media/assign-policy-template/deploy-to-azure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-azurepolicy-assign-builtinpolicy-resourcegroup%2Fazuredeploy.json)
+   [de beleids sjabloon @no__t 1Deploy naar Azure](./media/assign-policy-template/deploy-to-azure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-azurepolicy-assign-builtinpolicy-resourcegroup%2Fazuredeploy.json)
 
-1. Selecteer of Voer de volgende waarden:
+1. Selecteer of voer de volgende waarden in:
 
    | Name | Value |
    |------|-------|
-   | Abonnement | Selecteer uw Azure-abonnement. |
-   | Resourcegroep | Selecteer **nieuw**, Geef een naam en selecteer vervolgens **OK**. In de schermopname is de naam van de resourcegroep is *mypolicyquickstart\<datum in MMDD > rg*. |
-   | Locatie | Selecteer een regio. Bijvoorbeeld **US - centraal**. |
-   | Naam van de toewijzing van beleid | Geef een naam van de toewijzing van beleid. U kunt de weergave van de definitie van beleid kunt gebruiken als u wilt. Bijvoorbeeld, **virtuele machines die geen beheerde schijven gebruiken controleren**. |
-   | De naam van de RG | Geef de naam van een resource-groep waar u het beleid aan toewijzen. In deze snelstart gebruikt u de standaardwaarde **[resourceGroup () .name]**. **[resourceGroup()](../../azure-resource-manager/resource-group-template-functions-resource.md#resourcegroup)**  is een sjabloonfunctie die wordt opgehaald van de resourcegroep. |
-   | Beleidsdefinitie-ID | Geef **/providers/Microsoft.Authorization/policyDefinitions/0a914e76-4921-4c19-b460-a2d36003525a**. |
-   | Ik ga akkoord met de bovenstaande voorwaarden | (Selecteren) |
+   | Subscription | Selecteer uw Azure-abonnement. |
+   | Resource group | Selecteer **nieuwe maken**, geef een naam op en selecteer **OK**. In de scherm opname is de naam van de resource groep *mypolicyquickstart @ no__t-1Date in MMDD > RG*. |
+   | Location | Selecteer een regio. Bijvoorbeeld **US - centraal**. |
+   | Naam van beleids toewijzing | Geef een naam op voor het toewijzings beleid. U kunt de beleids definitie weer geven als u wilt. U kunt bijvoorbeeld **Vm's controleren die geen beheerde schijven gebruiken**. |
+   | RG naam | Geef een naam op voor de resource groep waaraan u het beleid wilt toewijzen. In deze Quick Start gebruikt u de standaard waarde **[resourceGroup (). naam]** . **[resourceGroup ()](../../azure-resource-manager/resource-group-template-functions-resource.md#resourcegroup)** is een sjabloon functie die de resource groep ophaalt. |
+   | Beleids definitie-ID | Geef **/providers/Microsoft.Authorization/policyDefinitions/0a914e76-4921-4c19-b460-a2d36003525a**op. |
+   | Ik ga akkoord met de bovenstaande voor waarden | Uitgeschakeld |
 
 1. Selecteer **Aankoop**.
 
 Enkele aanvullende bronnen:
 
-- Meer voorbeelden van sjablonen, Zie [Azure Quickstart-sjabloon](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Authorization&pageNumber=1&sort=Popular).
-- De sjabloonverwijzing, Ga naar [Azure sjabloonverwijzing](/azure/templates/microsoft.authorization/allversions).
-- Zie voor meer informatie over het ontwikkelen van Resource Manager-sjablonen, [Azure Resource Manager-documentatie](/azure/azure-resource-manager/).
-- Zie voor meer abonnementsniveau implementatie [maken van resourcegroepen en resources op het abonnementsniveau](../../azure-resource-manager/deploy-to-subscription.md).
+- Zie [Azure Quick](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Authorization&pageNumber=1&sort=Popular)start-sjabloon voor meer voor beelden van sjablonen.
+- Voor een overzicht van de sjabloon verwijzing gaat u naar de [Naslag informatie voor Azure-sjablonen](/azure/templates/microsoft.authorization/allversions).
+- Zie [Azure Resource Manager-documentatie](/azure/azure-resource-manager/)voor meer informatie over het ontwikkelen van Resource Manager-sjablonen.
+- Zie [resource groepen en-resources op abonnements niveau maken](../../azure-resource-manager/deploy-to-subscription.md)voor meer informatie over implementatie op abonnements niveau.
 
 ## <a name="identify-non-compliant-resources"></a>Niet-compatibele resources identificeren
 
 Selecteer **Naleving** links op de pagina. Zoek dan de beleidstoewijzing **Virtuele machines zonder beheerde schijven controleren** die u hebt gemaakt.
 
-![Beleid voor naleving-overzichtspagina](./media/assign-policy-template/policy-compliance.png)
+![Overzichts pagina beleids naleving](./media/assign-policy-template/policy-compliance.png)
 
 Als er bestaande resources zijn die niet conform deze nieuwe toewijzing zijn, worden deze weergegeven bij **Niet-conforme resources**.
 
-Zie voor meer informatie, [de werking van naleving](./how-to/get-compliance-data.md#how-compliance-works).
+Zie [hoe naleving werkt](./how-to/get-compliance-data.md#how-compliance-works)voor meer informatie.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
@@ -76,13 +75,13 @@ Als u de gemaakte toewijzing wilt verwijderen, volgt u deze stappen:
 
 1. Selecteer **Naleving** (of **Toewijzingen**) aan de linkerkant van de pagina Azure Policy en zoek de beleidstoewijzing **Controleren van virtuele machines die geen beheerde schijven gebruiken** die u hebt gemaakt.
 
-1. Met de rechtermuisknop op de **virtuele machines die geen beheerde schijven gebruiken controleren** beleidstoewijzing en selecteer **toewijzing verwijderen**.
+1. Klik met de rechter muisknop op de **virtuele machines controleren die geen gebruikmaken** van beleids toewijzing voor beheerde schijven en selecteer **toewijzing verwijderen**.
 
-   ![Een toewijzing verwijderen uit de overzichtspagina van naleving](./media/assign-policy-template/delete-assignment.png)
+   ![Een toewijzing verwijderen op de pagina nalevings overzicht](./media/assign-policy-template/delete-assignment.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze snelstartgids hebt u een ingebouwde beleidsdefinitie toegewezen aan een bereik en het nalevingsrapport geëvalueerd. De beleidsdefinitie controleert of alle resources in het bereik conform zijn en identificeert welke dit niet zijn.
+In deze Quick Start hebt u een ingebouwde beleids definitie toegewezen aan een bereik en het nalevings rapport geëvalueerd. De beleidsdefinitie controleert of alle resources in het bereik conform zijn en identificeert welke dit niet zijn.
 
 Ga voor meer informatie over het toewijzen van beleid om te controleren of nieuwe resources conform zijn verder met de zelfstudie voor:
 

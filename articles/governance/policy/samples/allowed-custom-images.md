@@ -2,19 +2,18 @@
 title: Voorbeeld - Goedgekeurde VM-installatiekopieën
 description: Deze voorbeeldbeleidsdefinitie vereist dat alleen goedgekeurde aangepaste installatiekopieën in uw omgeving zijn geïmplementeerd.
 author: DCtheGeek
-manager: carmonm
 ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/26/2019
 ms.author: dacoulte
-ms.openlocfilehash: 8def11c2d92af618054d0353fa2687d2e88e1134
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 34a3cf54879dcf6fc25fab50bcbabde28fff653a
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60547270"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71980848"
 ---
-# <a name="sample---approved-virtual-machine-images"></a>Voorbeeld - installatiekopieën voor goedgekeurde virtuele machines
+# <a name="sample---approved-virtual-machine-images"></a>Voor beeld: goedgekeurde installatie kopieën van virtuele machines
 
 Dit beleid vereist dat alleen goedgekeurde aangepaste installatiekopieën in uw omgeving zijn geïmplementeerd. U geeft een matrix van goedgekeurde installatiekopie-id’s op.
 
@@ -52,9 +51,9 @@ De JSON definieert de beleidsparameters, zoals gebruikt door Azure CLI en Azure 
 
 ## <a name="parameters"></a>Parameters
 
-|Name |Type |Veld |Description |
+|Name |type |Veld |Description |
 |---|---|---|---|
-|imageIds |Matrix |Microsoft.Compute/imageIds |De lijst met goedgekeurde VM-installatiekopieën|
+|imageIds |Array |Microsoft.Compute/imageIds |De lijst met goedgekeurde VM-installatiekopieën|
 
 Bij het maken van een toewijzing via PowerShell of Azure CLI kunnen de parameterwaarden worden doorgegeven als JSON in een tekenreeks of via een bestand met `-PolicyParameter` (PowerShell) of `--params` (Azure CLI).
 PowerShell ondersteunt ook `-PolicyParameterObject`, waarvoor de cmdlet een hashtabel met naam/waardeparen moet ontvangen waarin **Name** de parameternaam is en **Value** is de enkelvoudige waarde of matrix met waarden die tijdens toewijzing wordt doorgegeven.
@@ -74,8 +73,8 @@ In deze voorbeeldparameter wordt alleen de _ContosoStdImage_ in de resourcegroep
 
 ## <a name="azure-portal"></a>Azure Portal
 
-[![De voorbeeld-beleid implementeren naar Azure](../media/deploy/deploybutton.png)](https://portal.azure.com/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FCompute%2Fallowed-custom-images%2Fazurepolicy.json)
-[![de voorbeeld-beleid implementeren naar Azure (overheid)](../media/deploy/deployGovbutton.png)](https://portal.azure.us/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FCompute%2Fallowed-custom-images%2Fazurepolicy.json)
+[![Deploy het voor beeld van het beleid naar azure](../media/deploy/deploybutton.png)](https://portal.azure.com/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FCompute%2Fallowed-custom-images%2Fazurepolicy.json)
+[![Deploy het voor beeld van het beleid naar Azure gov](../media/deploy/deployGovbutton.png)](https://portal.azure.us/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FCompute%2Fallowed-custom-images%2Fazurepolicy.json)
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 

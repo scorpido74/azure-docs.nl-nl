@@ -6,13 +6,12 @@ ms.author: dacoulte
 ms.date: 03/12/2019
 ms.topic: conceptual
 ms.service: blueprints
-manager: carmonm
-ms.openlocfilehash: ee44d744c580dd9fbf20e7186b6e76fdc74cc5d0
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 2bb38e0698d7504ba1bb139ca1bd5e3b14e5cdd4
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71004073"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71981056"
 ---
 # <a name="creating-dynamic-blueprints-through-parameters"></a>Dynamische blauw drukken via para meters maken
 
@@ -62,7 +61,7 @@ Een parameter waarde die in de definitie van een blauw druk is gedefinieerd, wor
 
 1. Klik op een bestaande blauw druk en klik vervolgens op **blauw drukken bewerken** of klik op **+ blauw druk maken** en vul de informatie in op het tabblad **basis beginselen** .
 
-1. Klik op **Next: Artefacten of klik op het tabblad **artefacten.****
+1. Klik op **Next: Artefacten @ no__t-0 of klik op het tabblad **artefacten** .
 
 1. Artefacten die zijn toegevoegd aan de blauw druk met parameter opties, worden **X van Y-para meters** weer gegeven in de kolom **para meters** . Klik op de rij artefacten om de artefact parameters te bewerken.
 
@@ -89,7 +88,7 @@ Wanneer u een blauw druk via REST API maakt, is het mogelijk om blauw drukken- [
   PUT https://management.azure.com/providers/Microsoft.Management/managementGroups/{YourMG}/providers/Microsoft.Blueprint/blueprints/MyBlueprint?api-version=2018-11-01-preview
   ```
 
-- Hoofdtekst van de aanvraag
+- Aanvraagtekst
 
   ```json
   {
@@ -122,7 +121,7 @@ In het volgende REST API voor beeld wordt een functie toewijzings artefact gemaa
   PUT https://management.azure.com/providers/Microsoft.Management/managementGroups/{YourMG}/providers/Microsoft.Blueprint/blueprints/MyBlueprint/artifacts/roleOwner?api-version=2018-11-01-preview
   ```
 
-- Hoofdtekst van de aanvraag
+- Aanvraagtekst
 
   ```json
   {
@@ -135,11 +134,11 @@ In het volgende REST API voor beeld wordt een functie toewijzings artefact gemaa
   }
   ```
 
-In dit voor beeld maakt de eigenschap **principalIds** gebruik van de para meter **eigen aren** blauw niveau met `[parameters('owners')]`behulp van een waarde van. Het instellen van een para meter voor een artefact met behulp van een para meter op blauw niveau is nog steeds een voor beeld van een **statische para meter**. De para meter op het niveau van de blauw druk kan niet worden ingesteld tijdens de toewijzing van blauw drukken en is dezelfde waarde als elke toewijzing.
+In dit voor beeld maakt de eigenschap **principalIds** gebruik van de para meter **eigen aren** blauw niveau met behulp van de waarde `[parameters('owners')]`. Het instellen van een para meter voor een artefact met behulp van een para meter op blauw niveau is nog steeds een voor beeld van een **statische para meter**. De para meter op het niveau van de blauw druk kan niet worden ingesteld tijdens de toewijzing van blauw drukken en is dezelfde waarde als elke toewijzing.
 
 ##### <a name="artifact-level-parameter"></a>Para meter voor artefact niveau
 
-Het maken van **statische para meters** voor een artefact is vergelijkbaar, maar heeft een rechte waarde `parameters()` in plaats van de functie te gebruiken. In het volgende voor beeld worden twee statische para meters, **tagName** en **tagValue**gemaakt. De waarde op elk wordt rechtstreeks gegeven en gebruikt geen functie aanroep.
+Het maken van **statische para meters** voor een artefact is vergelijkbaar, maar heeft een rechte waarde in plaats van de functie `parameters()` te gebruiken. In het volgende voor beeld worden twee statische para meters, **tagName** en **tagValue**gemaakt. De waarde op elk wordt rechtstreeks gegeven en gebruikt geen functie aanroep.
 
 - REST API-URI
 
@@ -147,7 +146,7 @@ Het maken van **statische para meters** voor een artefact is vergelijkbaar, maar
   PUT https://management.azure.com/providers/Microsoft.Management/managementGroups/{YourMG}/providers/Microsoft.Blueprint/blueprints/MyBlueprint/artifacts/policyStorageTags?api-version=2018-11-01-preview
   ```
 
-- Hoofdtekst van de aanvraag
+- Aanvraagtekst
 
   ```json
   {
@@ -185,7 +184,7 @@ Het tegenovergestelde van een statische para meter is een **dynamische para mete
 
 #### <a name="setting-dynamic-parameters-from-rest-api"></a>Dynamische para meters instellen van REST API
 
-Het instellen van **dynamische para meters** tijdens de toewijzing wordt uitgevoerd door de waarde rechtstreeks in te voeren. In plaats van een functie te gebruiken, zoals [para meters ()](../reference/blueprint-functions.md#parameters), is de opgegeven waarde een juiste teken reeks. Artefacten voor een resource groep worden gedefinieerd met een sjabloon naam, **naam**en **locatie** -eigenschappen. Alle andere para meters voor opgenomen artefacten worden gedefinieerd onder **\<\>** **para meters** met een sleutel paar met naam en **waarde** . Als de blauw druk is geconfigureerd voor een dynamische para meter die niet wordt opgegeven tijdens de toewijzing, mislukt de toewijzing.
+Het instellen van **dynamische para meters** tijdens de toewijzing wordt uitgevoerd door de waarde rechtstreeks in te voeren. In plaats van een functie te gebruiken, zoals [para meters ()](../reference/blueprint-functions.md#parameters), is de opgegeven waarde een juiste teken reeks. Artefacten voor een resource groep worden gedefinieerd met een sjabloon naam, **naam**en **locatie** -eigenschappen. Alle andere para meters voor opgenomen artefacten worden gedefinieerd onder **para meters** met een **\<name @ no__t-3-en-** **sleutel paar** . Als de blauw druk is geconfigureerd voor een dynamische para meter die niet wordt opgegeven tijdens de toewijzing, mislukt de toewijzing.
 
 - REST API-URI
 
@@ -193,7 +192,7 @@ Het instellen van **dynamische para meters** tijdens de toewijzing wordt uitgevo
   PUT https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Blueprint/blueprintAssignments/assignMyBlueprint?api-version=2018-11-01-preview
   ```
 
-- Hoofdtekst van de aanvraag
+- Aanvraagtekst
 
   ```json
   {

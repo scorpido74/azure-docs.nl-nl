@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: overview
 ms.date: 09/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: 706960f18080b4883735195b21ed05c3763e8617
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: 0c832e272029dc110e156ef89deb908fec02f1b2
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71264504"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71981201"
 ---
 # <a name="what-is-azure-time-series-insights"></a>Wat is Azure Time Series Insights?
 
@@ -31,7 +31,7 @@ Time Series Insights heeft vier belangrijke taken:
 - Time Series Insights biedt een out-of-the-box visualisatie via de Time Series Insights Explorer. 
 - Time Series Insights biedt een query service, zowel in de Time Series Insights Verkenner als door gebruik te maken van Api's die eenvoudig zijn te integreren om uw tijdreeks gegevens in te sluiten in aangepaste toepassingen.
 
-Als u een toepassing bouwt voor intern verbruik of voor gebruik door externe klanten, kunt u Time Series Insights als een back-end gebruiken. U kunt deze gebruiken om time series-gegevens te indexeren, op te slaan en samen te voegen. Als u een aangepaste visualisatie en gebruikers ervaring bovenaan wilt maken, gebruikt u de [client-SDK](tutorial-explore-js-client-lib.md). Time Series Insights is ook voorzien van verschillende [query-api's](how-to-shape-query-json.md) om deze aangepaste scenario's mogelijk te maken.
+Als u een toepassing bouwt voor intern verbruik of voor gebruik door externe klanten, kunt u Time Series Insights als een back-end gebruiken. U kunt deze gebruiken om time series-gegevens te indexeren, op te slaan en samen te voegen. Als u een aangepaste visualisatie en gebruikers ervaring bovenaan wilt maken, gebruikt u de [client-SDK](https://github.com/microsoft/tsiclient/blob/master/docs/API.md). Time Series Insights is ook voorzien van verschillende [query-api's](how-to-shape-query-json.md) om deze aangepaste scenario's mogelijk te maken.
 
 Tijdreeksgegevens tonen aan hoe een asset of proces verandert in de loop der tijd. Tijdreeks gegevens worden geïndexeerd door tijds tempels en tijd is de meest relevante as waarmee dergelijke gegevens zijn ingedeeld. Tijdreeks gegevens arriveren doorgaans in sequentiële volg orde, zodat deze worden behandeld als een invoeg toepassing in plaats van een update voor uw data base.
 

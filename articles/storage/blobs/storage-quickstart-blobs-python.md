@@ -7,12 +7,12 @@ ms.date: 09/11/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 4d371026b932a0870798a32b3102102836962b78
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: a6c0ae8c63739d37ad8417d1dff2d0f7181e6ae9
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71203960"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71981213"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-with-python"></a>Quickstart: Blobs downloaden, uploaden en vermelden met behulp van Python
 
@@ -50,7 +50,7 @@ Geef in de toepassing de naam en accountsleutel van uw opslagaccount op om een `
 
 1. Open het bestand *example.py* vanuit de Solution Explorer in uw IDE.
 
-1. Vervang de `accountname` waarden `accountkey` en door de naam en sleutel van uw opslag account:
+1. Vervang de waarden voor `accountname` en `accountkey` door de naam en sleutel van uw opslag account:
 
     ```python
     block_blob_service = BlockBlobService(
@@ -96,8 +96,8 @@ In het voorbeeld programma wordt een test bestand gemaakt in de map *documenten*
 
 1. Voordat u doorgaat, gaat u naar de map *documenten* en controleert u op de twee bestanden.
 
-    * *QuickStart_\<Universele unieke id\>*
-    * *QuickStart_\<Universally-Unique-ID\>_DOWNLOADED*
+    * *QuickStart_ @ no__t-1universally-Unique-ID @ no__t-2*
+    * *QuickStart_ @ no__t-1universally-Unique-ID @ no__t-2_DOWNLOADED*
 
 1. Als u ze opent, ziet u dat ze hetzelfde zijn.
 
@@ -111,7 +111,7 @@ Nu u weet wat het voorbeeldprogramma doet, opent u het bestand *example.py* om d
 
 ### <a name="get-references-to-the-storage-objects"></a>Verwijzingen naar de opslagobjecten ophalen
 
-In deze sectie gaat u exemplaren maken van de objecten, een nieuwe container maken en vervolgens machtigingen instellen voor de container, zodat de blobs openbaar zijn. U belt de container `quickstartblobs`. 
+In deze sectie gaat u exemplaren maken van de objecten, een nieuwe container maken en vervolgens machtigingen instellen voor de container, zodat de blobs openbaar zijn. U roept de container `quickstartblobs` aan. 
 
 ```python
 # Create the BlockBlockService that the system uses to call the Blob service for the storage account.
@@ -144,7 +144,7 @@ Blob-opslag ondersteunt blok-blobs, toevoeg-blobs en pagina-blobs. Blok-blobs ku
 
 Als u een bestand naar een blob wilt uploaden, hebt u het volledige bestandspad nodig. U verkrijgt dit door de naam van de map en de bestandsnaam op uw lokale schijf samen te voegen. Daarna kunt u het bestand met de methode `create_blob_from_path` uploaden naar het opgegeven pad. 
 
-Met de voorbeeld code wordt een lokaal bestand gemaakt dat door het systeem wordt gebruikt voor het uploaden en downloaden. Sla het bestand op dat door het systeem wordt geüpload als *full_path_to_file* en de naam van de BLOB als *local_file_name*. In dit voor beeld wordt het bestand geüpload naar de container `quickstartblobs`met de naam:
+Met de voorbeeld code wordt een lokaal bestand gemaakt dat door het systeem wordt gebruikt voor het uploaden en downloaden. Sla het bestand op dat door het systeem wordt geüpload als *full_path_to_file* en de naam van de BLOB als *local_file_name*. In dit voor beeld wordt het bestand geüpload naar de container met de naam `quickstartblobs`:
 
 ```python
 # Create a file in Documents to test the upload and download.
@@ -169,7 +169,7 @@ Er zijn meerdere uploadmethoden die u kunt gebruiken met Blob-opslag. Als u bijv
 
 ### <a name="list-the-blobs-in-a-container"></a>De blobs in een container in een lijst weergeven
 
-Met de volgende code maakt `generator` u een `list_blobs` voor de-methode. De code loopt door in de lijst met blobs in de container en drukt hun namen af op de-console.
+Met de volgende code wordt een `generator` gemaakt voor de methode `list_blobs`. De code loopt door in de lijst met blobs in de container en drukt hun namen af op de-console.
 
 ```python
 # List the blobs in the container.
@@ -182,8 +182,8 @@ for blob in generator:
 ### <a name="download-the-blobs"></a>De blobs downloaden
 
 
-Down load blobs naar uw lokale schijf met `get_blob_to_path` behulp van de methode.
-Met de volgende code wordt de BLOB gedownload die u eerder hebt geüpload. Het systeem voegt *_DOWNLOADED* toe aan de naam van de blob, zodat u beide bestanden op de lokale schijf kunt zien. "
+Down load blobs naar uw lokale schijf met behulp van de `get_blob_to_path`-methode.
+Met de volgende code wordt de BLOB gedownload die u eerder hebt geüpload. Het systeem voegt *_DOWNLOADED* toe aan de naam van de blob, zodat u beide bestanden op de lokale schijf kunt zien.
 
 ```python
 # Download the blob(s).

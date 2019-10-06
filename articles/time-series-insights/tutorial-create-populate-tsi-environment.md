@@ -9,12 +9,12 @@ ms.date: 10/02/2019
 ms.author: dpalled
 manager: cshankar
 ms.custom: seodec18
-ms.openlocfilehash: 6144fd58a98376f9091fc7045d0e60e99feda709
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: a6f2b2875ea58ff89d59f577f7cb27d97e07b28e
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71841855"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71981241"
 ---
 # <a name="tutorial-create-an-azure-time-series-insights-environment"></a>Zelfstudie: Een Azure Time Series Insights-omgeving maken
 
@@ -196,4 +196,4 @@ In deze zelfstudie heeft u het volgende geleerd:
 Nu u weet hoe u uw eigen Time Series Insights-omgeving kunt maken, leert u hoe u een webtoepassing bouwt die gegevens uit een Time Series Insights omgeving gebruikt:
 
 > [!div class="nextstepaction"]
-> [Een web-app van Azure Time Series Insights met één pagina maken](tutorial-create-tsi-sample-spa.md)
+> [Zie voor beelden van gehoste client-SDK-visualisaties](https://tsiclientsample.azurewebsites.net/)

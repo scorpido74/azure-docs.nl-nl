@@ -6,20 +6,19 @@ ms.author: dacoulte
 ms.date: 09/09/2019
 ms.topic: conceptual
 ms.service: azure-policy
-manager: carmonm
-ms.openlocfilehash: b2b38fe2d9a2bf4c645e5b1cda4b8fba356353d3
-ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
+ms.openlocfilehash: 27cf1539fc98b2ad7f1b82e194989c1619ab99fb
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71181199"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71980716"
 ---
 # <a name="azure-policy-definition-structure"></a>Structuur van Azure-beleidsdefinities
 
 Resource-beleidsdefinities worden gebruikt door Azure Policy tot stand brengen van conventies voor resources. Elke definitie beschrijft resourcenaleving en wat moet worden uitgevoerd wanneer een resource niet compatibel is zijn doorgevoerd.
 Door te definiëren verdragen, kunt u kosten beheren en meer resources eenvoudig beheren. U kunt bijvoorbeeld opgeven dat alleen bepaalde typen virtuele machines zijn toegestaan. Of u kunt vereisen dat alle resources een bepaald label hebben. Beleidsregels worden overgenomen door alle onderliggende resources. Als een beleid wordt toegepast op een resourcegroep, is het van toepassing op alle resources in die resourcegroep.
 
-Het schema dat wordt gebruikt door Azure Policy kunt dit hier vinden: [https://docs.microsoft.com/azure/templates/microsoft.authorization/2019-01-01/policydefinitions](/azure/templates/microsoft.authorization/2019-01-01/policydefinitions)
+Het schema voor het definitie beleid vindt u hier: [https://schema.management.azure.com/schemas/2019-06-01/policyDefinition.json](https://schema.management.azure.com/schemas/2019-06-01/policyDefinition.json)
 
 JSON kunt u een beleidsdefinitie maken. De beleidsdefinitie bevat elementen voor:
 
@@ -84,7 +83,7 @@ We raden u aan **modus** naar `all` in de meeste gevallen. Alle beleidsdefinitie
 
 ### <a name="resource-provider-modes"></a>Resource provider modi
 
-De enige resource provider modus die momenteel wordt `Microsoft.ContainerService.Data` ondersteund, is voor het beheren van regels voor toegangs beheer in de [Azure Kubernetes-service](../../../aks/intro-kubernetes.md).
+De enige resource provider modus die momenteel wordt ondersteund, is `Microsoft.ContainerService.Data` voor het beheer van Admission controller-regels in de [Azure Kubernetes-service](../../../aks/intro-kubernetes.md).
 
 > [!NOTE]
 > [Azure Policy voor Kubernetes](rego-for-aks.md) is in open bare preview en ondersteunt alleen ingebouwde beleids definities.
@@ -101,7 +100,7 @@ Parameters werken op dezelfde manier als het samenstellen van beleid. Door param
 
 Een para meter heeft de volgende eigenschappen die worden gebruikt in de beleids definitie:
 
-- **name**: De naam van de para meter. Wordt gebruikt door `parameters` de implementatie functie binnen de beleids regel. Zie [een parameter waarde gebruiken](#using-a-parameter-value)voor meer informatie.
+- **name**: De naam van de para meter. Wordt gebruikt door de implementatie functie `parameters` binnen de beleids regel. Zie [een parameter waarde gebruiken](#using-a-parameter-value)voor meer informatie.
 - `type`: Bepaalt of de para meter een **teken reeks**, een **matrix**, een **object**, een **Booleaanse waarde**, een **geheel getal**, een **float**of een **datum/tijd**is.
 - `metadata`: Hiermee worden subeigenschappen gedefinieerd die voornamelijk worden gebruikt door de Azure Portal om gebruikers vriendelijke informatie weer te geven:
   - `description`: De uitleg van het gebruik van de para meter voor. Kan worden gebruikt om voor beelden te bieden van acceptabele waarden.
@@ -148,7 +147,7 @@ Dit voor beeld verwijst naar de **allowedLocations** -para meter die is gedemons
 
 ### <a name="strongtype"></a>strongType
 
-Binnen de `metadata` eigenschap kunt u **strongType** gebruiken om een multi-select lijst met opties in de Azure Portal op te geven. Toegestane waarden voor **strongType** momenteel opnemen:
+Binnen de eigenschap `metadata` kunt u **strongType** gebruiken om een multi-select lijst met opties te bieden in de Azure Portal. Toegestane waarden voor **strongType** momenteel opnemen:
 
 - `location`
 - `resourceTypes`
@@ -247,7 +246,7 @@ In een voor waarde wordt geëvalueerd of een **veld** of de **waarde** -accessor
 Wanneer u de **zoals** en **notlike zijn** voorwaarden bieden u een jokerteken `*` in de waarde.
 De waarde mag niet meer dan één jokerteken hebben `*`.
 
-Wanneer u de `#` voor waarden **match** en **notMatch** gebruikt, moet u een `.` cijfer `?` , voor een letter, overeenkomen met een wille keurig teken en elk ander teken dat overeenkomt met het werkelijke teken.
+Wanneer u de voor waarden **match** en **notMatch** gebruikt, geeft u `#` op om een cijfer, `?` voor een letter, `.`, te vergelijken met een wille keurig teken en elk ander teken dat overeenkomt met het werkelijke teken.
 **match** en **notMatch** zijn hoofdletter gevoelig. Hoofdletter gevoelige alternatieven zijn beschikbaar in **matchInsensitively** en **notMatchInsensitively**. Zie voor voorbeelden van [toestaan verschillende bestandsnaampatronen](../samples/allow-multiple-name-patterns.md).
 
 ### <a name="fields"></a>Velden
@@ -269,21 +268,21 @@ De volgende velden worden ondersteund:
 - `tags['<tagName>']`
   - De syntaxis van het haakje ondersteunt label namen met lees tekens zoals een afbreek streepje, een punt of een spatie.
   - Waar **\<tagName\>** is de naam van de code voor het valideren van de voorwaarde voor.
-  - Voor beelden `tags['Acct.CostCenter']` : waarbij **acct. CostCenter** de naam van de tag is.
+  - Voor beelden: `tags['Acct.CostCenter']` waarbij **acct. CostCenter** de naam van de tag is.
 - `tags['''<tagName>''']`
   - De syntaxis van het haakje ondersteunt label namen met apostrofs in het teken met dubbele apostrofs.
-  - Waarbij **tagNamede\>naam is van het label voor het valideren van de voor waarde voor.\<**
-  - Voor beeld `tags['''My.Apostrophe.Tag''']` : **'\<tagName\>'** is de naam van de tag.
+  - Waarbij **' \<tagName @ no__t-2 '** de naam van de tag is voor het valideren van de voor waarde voor.
+  - Voor beeld: `tags['''My.Apostrophe.Tag''']` waarbij **' \<tagName @ no__t-3 '** de naam van de tag is.
 - de eigenschap aliassen - Zie voor een lijst [aliassen](#aliases).
 
 > [!NOTE]
-> `tags.<tagName>`, `tags[tagName]` en`tags[tag.with.dots]` zijn nog steeds acceptabele manieren om een label veld te declareren. De voorkeurs expressies zijn echter die in de bovenstaande lijst.
+> `tags.<tagName>`, `tags[tagName]` en `tags[tag.with.dots]` zijn nog steeds acceptabele manieren voor het declareren van een label veld. De voorkeurs expressies zijn echter die in de bovenstaande lijst.
 
 #### <a name="use-tags-with-parameters"></a>Tags gebruiken met para meters
 
 Een parameter waarde kan worden door gegeven aan een label veld. Door een para meter door te geven aan een label veld, verhoogt u de flexibiliteit van de beleids definitie tijdens beleids toewijzing.
 
-In het volgende voor beeld `concat` wordt gebruikt om een label veld te maken voor de tag met de naam de waarde van de para meter **tagName** . Als deze tag niet bestaat, wordt het **toevoeg** effect gebruikt om de tag toe te voegen met de waarde van dezelfde benoemde tag die is ingesteld voor de bovenliggende resource groep van de `resourcegroup()` gecontroleerde resources met behulp van de functie lookup.
+In het volgende voor beeld wordt `concat` gebruikt voor het maken van een label veld met de naam de waarde van de para meter **tagName** . Als deze tag niet bestaat, wordt het **toevoeg** effect gebruikt om de tag toe te voegen met behulp van de waarde van dezelfde benoemde tag die is ingesteld voor de bovenliggende resource groep van de gecontroleerde resources met behulp van de functie voor het opzoeken van `resourcegroup()`.
 
 ```json
 {
@@ -311,7 +310,7 @@ Voor waarden kunnen ook worden gevormd met behulp van een **waarde**. **waarde**
 
 #### <a name="value-examples"></a>Voor beelden van waarden
 
-In dit voor beeld van een beleids regel wordt de **waarde** gebruikt `resourceGroup()` om het resultaat van de functie en de eigenschap geretourneerde `*netrg` **naam** te vergelijken met een like-voor waarde van. De regel weigert resources die niet van het `Microsoft.Network/*` **type** zijn in een resource groep waarvan de naam `*netrg`eindigt op.
+In dit voor beeld van een beleids regel wordt een **waarde** gebruikt om het resultaat van de functie `resourceGroup()` en de eigenschap geretourneerde **naam** te vergelijken met een **like** -voor waarde van `*netrg`. De regel weigert een resource die niet van het **type** @no__t 0 is in een resource groep waarvan de naam eindigt op `*netrg`.
 
 ```json
 {
@@ -332,7 +331,7 @@ In dit voor beeld van een beleids regel wordt de **waarde** gebruikt `resourceGr
 }
 ```
 
-Dit voor beeld van een beleids regel gebruikt een **waarde** om te controleren of het resultaat van meerdere geneste functies `true` **gelijk is aan** . De regel weigert een resource die niet ten minste drie tags heeft.
+Dit voor beeld van een beleids regel gebruikt een **waarde** om te controleren of het resultaat van meerdere geneste functies **gelijk is aan** `true`. De regel weigert een resource die niet ten minste drie tags heeft.
 
 ```json
 {
@@ -367,7 +366,7 @@ Het gebruik van _sjabloon functies_ in **waarde** biedt veel complexe geneste fu
 }
 ```
 
-De voorbeeld beleidsregel hierboven maakt gebruik van [subtekenreeks ()](../../../azure-resource-manager/resource-group-template-functions-string.md#substring) om de eerste drie tekens van de **naam** te vergelijken met **ABC**. Als de **naam** korter is dan drie tekens `substring()` , resulteert de functie in een fout. Als gevolg van deze fout wordt het beleid **geweigerd** .
+De voorbeeld beleidsregel hierboven maakt gebruik van [subtekenreeks ()](../../../azure-resource-manager/resource-group-template-functions-string.md#substring) om de eerste drie tekens van de **naam** te vergelijken met **ABC**. Als de **naam** korter is dan drie tekens, resulteert de functie `substring()` in een fout. Als gevolg van deze fout wordt het beleid **geweigerd** .
 
 Gebruik in plaats daarvan de functie [als ()](../../../azure-resource-manager/resource-group-template-functions-logical.md#if) om te controleren of de eerste drie tekens van de **naam** gelijk zijn aan **ABC** zonder dat een **naam** die korter is dan drie tekens, een fout veroorzaakt:
 
@@ -385,7 +384,7 @@ Gebruik in plaats daarvan de functie [als ()](../../../azure-resource-manager/re
 }
 ```
 
-Met de gereviseerde beleids regel `if()` controleert u de lengte van de **naam** voordat u probeert `substring()` een waarde op te halen die korter is dan drie tekens. Als de **naam** te kort is, wordt de waarde ' niet beginnend met ABC ' geretourneerd in plaats van **ABC**. Een resource met een korte naam die niet met **ABC** begint, mislukt nog steeds de beleids regel, maar veroorzaakt geen fout meer tijdens de evaluatie.
+Met de gereviseerde beleids regel, `if()` controleert de lengte van de **naam** voordat er wordt geprobeerd een `substring()` te krijgen met een waarde van minder dan drie tekens. Als de **naam** te kort is, wordt de waarde ' niet beginnend met ABC ' geretourneerd in plaats van **ABC**. Een resource met een korte naam die niet met **ABC** begint, mislukt nog steeds de beleids regel, maar veroorzaakt geen fout meer tijdens de evaluatie.
 
 ### <a name="effect"></a>Effect
 
@@ -517,7 +516,7 @@ Aantal van de aliassen die beschikbaar zijn hebben een versie die wordt weergege
 
 De ' normale ' alias vertegenwoordigt het veld als een enkele waarde. Dit veld is bedoeld voor vergelijkings scenario's die exact overeenkomen wanneer de volledige set waarden exact zo moet worden gedefinieerd, niet meer en niet minder.
 
-De **alias\*[]** maakt het mogelijk om te vergelijken met de waarde van elk element in de matrix en specifieke eigenschappen van elk element. Deze aanpak maakt het mogelijk om element eigenschappen te vergelijken voor ' If geen ', ' als een van ', ' of ' als alle scenario's. Als u **ipRules\*[]** gebruikt, wordt er een voor beeld van gevalideerd dat elke _actie_ wordt _geweigerd_, maar is er geen zorgen meer over hoeveel regels bestaan of wat de IP- _waarde_ is. Deze voorbeeld regel controleert op alle overeenkomsten van **ipRules [\*]. Value** to **10.0.4.1** en past de **effectType** alleen toe als er ten minste één overeenkomst wordt gevonden:
+De alias **[\*]** maakt het mogelijk om te vergelijken met de waarde van elk element in de matrix en specifieke eigenschappen van elk element. Deze aanpak maakt het mogelijk om element eigenschappen te vergelijken voor ' If geen ', ' als een van ', ' of ' als alle scenario's. Als u **ipRules [\*]** gebruikt, wordt er een voor beeld van gevalideerd dat elke _actie_ wordt _geweigerd_, maar is er geen zorgen meer over hoeveel regels bestaan of wat de IP- _waarde_ is. Met deze voorbeeld regel wordt gecontroleerd op eventuele overeenkomsten met **ipRules [\*]. Value** to **10.0.4.1** en wordt de **effectType** alleen toegepast als er ten minste één overeenkomst wordt gevonden:
 
 ```json
 "policyRule": {
@@ -539,7 +538,7 @@ De **alias\*[]** maakt het mogelijk om te vergelijken met de waarde van elk elem
 }
 ```
 
-Zie [de alias [\*] evalueren](../how-to/author-policies-for-arrays.md#evaluating-the--alias)voor meer informatie.
+Zie [de [\*]-alias evalueren](../how-to/author-policies-for-arrays.md#evaluating-the--alias)voor meer informatie.
 
 ## <a name="initiatives"></a>Initiatieven
 

@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 09/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: f4eb1b69a1464cacaf666e49f4aff7422d63611d
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: 906cff017c3f80cb1bdd369453b18564d19eb492
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71264520"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71981158"
 ---
 # <a name="azure-time-series-insights-preview-use-cases"></a>Azure Time Series Insights preview-cases gebruiken
 
@@ -56,11 +56,11 @@ Er zijn drie manieren om te communiceren met gegevens die zijn opgeslagen in Tim
 
 - De tweede manier om te beginnen is met behulp van de Java script SDK om snel krachtige grafieken en grafieken in uw webtoepassing in te sluiten. Met slechts een paar regels code kunt u krachtige query's ontwerpen. Gebruik deze voor het vullen van lijn diagrammen, cirkel diagrammen, staaf diagrammen, Heatmaps, gegevens rasters en meer. Al deze elementen zijn out-of-the-box met behulp van de SDK. De SDK is ook abstracten Time Series Insights query-Api's. U kunt ze gebruiken om SQL-achtige predikaten te schrijven om de gegevens op te vragen die u op een dash board wilt weer geven. Time Series Insights biedt voor hybride oplossingen voor presentaties met para meters een URL. Ze bieden naadloze verbindings punten met de Time Series Insights preview Explorer voor diepe Dives in gegevens.
 
-    * Lees de [Time Series INSIGHTS js-client bibliotheek](tutorial-explore-js-client-lib.md) en de [Time Series Insights-client](https://github.com/Microsoft/tsiclient) documentatie voor meer informatie over de Java script SDK.
+    * Lees meer informatie over de [Time Series INSIGHTS js-client bibliotheek](https://github.com/microsoft/tsiclient/blob/master/docs/API.md) en de [Time Series Insights-client](https://github.com/Microsoft/tsiclient) documentatie voor meer informatie over de Java script SDK.
 
     * Meer informatie over het delen van Url's en de nieuwe gebruikers interface vindt u [in visualiseren van gegevens in de Azure time series Insights preview Explorer](time-series-insights-update-explorer.md).
 
-- De derde manier om te beginnen is het gebruik van de krachtige Api's om query's uit te voeren op gegevens die zijn opgeslagen in Time Series Insights. Time Series Insights heeft tijdelijke Opera tors zoals `from` `first`, `to`, en `last`. `average`Het bevat aggregaties en trans formaties zoals `max`, `order by` `min` `split by`,,, en `DateHistogram`. Er zijn ook filter operatoren `has` `and`, zoals, `in` `or` `greater than`,,, en `REGEX`. Al deze opera tors bieden downstream-toepassingen de mogelijkheid om snel interessante trends en patronen in uw gegevens te vinden. U kunt ze gebruiken voor het vullen van in huis geteelde visualisaties om afwijkingen op te sporen.
+- De derde manier om te beginnen is het gebruik van de krachtige Api's om query's uit te voeren op gegevens die zijn opgeslagen in Time Series Insights. Time Series Insights heeft tijdelijke Opera tors zoals `from`, `to`, `first` en `last`. Het bevat aggregaties en trans formaties zoals `average`, `min`, `max`, `split by`, `order by` en `DateHistogram`. Er zijn ook filter operatoren, zoals `has`, `in`, `and`, `or`, `greater than` en `REGEX`. Al deze opera tors bieden downstream-toepassingen de mogelijkheid om snel interessante trends en patronen in uw gegevens te vinden. U kunt ze gebruiken voor het vullen van in huis geteelde visualisaties om afwijkingen op te sporen.
 
 ## <a name="operational-analysis-and-driving-process-efficiency"></a>Operationele analyse en efficiëntere processen
 
@@ -86,7 +86,7 @@ Time Series Insights biedt een bijna realtime gegevens onderzoek en inzichten op
 
 Integreer met geavanceerde analyse services zoals Machine Learning en Azure Databricks. Time Series Insights ingresses onbewerkte gegevens van miljoenen apparaten. Het voegt contextuele gegevens toe die naadloos kunnen worden gebruikt door een suite van Azure Analytics Services.
 
-[![Analyse](media/v2-update-use-cases/advanced-analytics.svg)](media/v2-update-use-cases/advanced-analytics.svg#lightbox)
+[![Analytics](media/v2-update-use-cases/advanced-analytics.svg)](media/v2-update-use-cases/advanced-analytics.svg#lightbox)
 
 Geavanceerde analyses en machine learning grote hoeveel heden gegevens gebruiken en verwerken. Deze gegevens worden gebruikt om op gegevens gebaseerde beslissingen te nemen en voorspellende analyses uit te voeren. In IoT use cases leren geavanceerde analyse algoritmen van de gegevens die zijn verzameld van miljoenen apparaten. Met deze apparaten worden gegevens meerdere keren per seconde verzonden. De gegevens die zijn verzameld uit IoT-apparaten zijn onbewerkt. Er zijn geen contextuele informatie, zoals de locatie van het apparaat en de eenheid van het lezen van de sensor. Als gevolg hiervan zijn onbewerkte gegevens moeilijk te gebruiken voor geavanceerde analyses.
 

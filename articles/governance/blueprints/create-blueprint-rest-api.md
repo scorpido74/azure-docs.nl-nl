@@ -6,13 +6,12 @@ ms.author: dacoulte
 ms.date: 02/04/2019
 ms.topic: quickstart
 ms.service: blueprints
-manager: carmonm
-ms.openlocfilehash: f5c2b58fc6877bc196eb98faab88712f474523cb
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 16540441aa8bc5d115606e1c5b3bdc2302ae2c20
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70241326"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71978500"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-rest-api"></a>Quickstart: Een Azure Blueprint definiëren en toewijzen met REST API
 
@@ -80,7 +79,7 @@ In elke REST API-URI zijn er verschillende variabelen die worden gebruikt en die
      PUT https://management.azure.com/providers/Microsoft.Management/managementGroups/{YourMG}/providers/Microsoft.Blueprint/blueprints/MyBlueprint?api-version=2018-11-01-preview
      ```
 
-   - Hoofdtekst van de aanvraag
+   - Aanvraagtekst
 
      ```json
      {
@@ -139,7 +138,7 @@ In elke REST API-URI zijn er verschillende variabelen die worden gebruikt en die
      PUT https://management.azure.com/providers/Microsoft.Management/managementGroups/{YourMG}/providers/Microsoft.Blueprint/blueprints/MyBlueprint/artifacts/roleContributor?api-version=2018-11-01-preview
      ```
 
-   - Hoofdtekst van de aanvraag
+   - Aanvraagtekst
 
      ```json
      {
@@ -159,7 +158,7 @@ In elke REST API-URI zijn er verschillende variabelen die worden gebruikt en die
      PUT https://management.azure.com/providers/Microsoft.Management/managementGroups/{YourMG}/providers/Microsoft.Blueprint/blueprints/MyBlueprint/artifacts/policyTags?api-version=2018-11-01-preview
      ```
 
-   - Hoofdtekst van de aanvraag
+   - Aanvraagtekst
 
      ```json
      {
@@ -187,7 +186,7 @@ In elke REST API-URI zijn er verschillende variabelen die worden gebruikt en die
      PUT https://management.azure.com/providers/Microsoft.Management/managementGroups/{YourMG}/providers/Microsoft.Blueprint/blueprints/MyBlueprint/artifacts/policyStorageTags?api-version=2018-11-01-preview
      ```
 
-   - Hoofdtekst van de aanvraag
+   - Aanvraagtekst
 
      ```json
      {
@@ -215,7 +214,7 @@ In elke REST API-URI zijn er verschillende variabelen die worden gebruikt en die
      PUT https://management.azure.com/providers/Microsoft.Management/managementGroups/{YourMG}/providers/Microsoft.Blueprint/blueprints/MyBlueprint/artifacts/templateStorage?api-version=2018-11-01-preview
      ```
 
-   - Hoofdtekst van de aanvraag
+   - Aanvraagtekst
 
      ```json
      {
@@ -301,7 +300,7 @@ In elke REST API-URI zijn er verschillende variabelen die worden gebruikt en die
      PUT https://management.azure.com/providers/Microsoft.Management/managementGroups/{YourMG}/providers/Microsoft.Blueprint/blueprints/MyBlueprint/artifacts/roleOwner?api-version=2018-11-01-preview
      ```
 
-   - Hoofdtekst van de aanvraag
+   - Aanvraagtekst
 
      ```json
      {
@@ -336,7 +335,7 @@ In elke REST API-URI zijn er verschillende variabelen die worden gebruikt en die
 - Vervang `{YourMG}` door de ID van uw beheergroep
 - Vervang `{subscriptionId}` door uw abonnements-ID
 
-1. Geef in de Azure Blueprint-service-principal de rol **Eigenaar** op in het doelabonnement. De AppId is static (`f71766dc-90d9-4b7d-bd9d-4499c4331c3f`), maar de id van de Service-Principal is afhankelijk van de Tenant. U kunt voor uw tenant details aanvragen met de volgende REST API. Deze gebruikt [Azure Active Directory Graph API](../../active-directory/develop/active-directory-graph-api.md), die een andere autorisatie heeft.
+1. Geef in de Azure Blueprint-service-principal de rol **Eigenaar** op in het doelabonnement. De AppId is statisch (`f71766dc-90d9-4b7d-bd9d-4499c4331c3f`), maar de ID van de Service-Principal is afhankelijk van de Tenant. U kunt voor uw tenant details aanvragen met de volgende REST API. Deze gebruikt [Azure Active Directory Graph API](../../active-directory/develop/active-directory-graph-api.md), die een andere autorisatie heeft.
 
    - REST API-URI
 
@@ -352,7 +351,7 @@ In elke REST API-URI zijn er verschillende variabelen die worden gebruikt en die
      PUT https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Blueprint/blueprintAssignments/assignMyBlueprint?api-version=2018-11-01-preview
      ```
 
-   - Hoofdtekst van de aanvraag
+   - Aanvraagtekst
 
      ```json
      {

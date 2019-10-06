@@ -6,14 +6,13 @@ ms.author: dacoulte
 ms.date: 08/20/2019
 ms.topic: sample
 ms.service: blueprints
-manager: carmonm
 ms.custom: fasttrack-new
-ms.openlocfilehash: 98ade4e5c8a14c2d4f5c2a22c2c973fac844861f
-ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
+ms.openlocfilehash: 544e5e5eb9884a91fde3898464aa7ce839658a80
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70802546"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71981697"
 ---
 # <a name="deploy-the-microsoft-cloud-adoption-framework-for-azure-foundation-blueprint-sample"></a>Het Microsoft Cloud-acceptatie raamwerk implementeren voor het voor beeld van Azure Foundation blauw drukken
 
@@ -41,7 +40,7 @@ Implementeer eerst het voor beeld van de blauw druk door een nieuwe blauw druk i
    - **Naam blauw druk**: Geef een naam op voor uw kopie van het CAF Foundation-blauw druk-voor beeld.
    - **Locatie van definitie**: Gebruik het weglatings teken en selecteer de beheer groep om uw kopie van het voor beeld op te slaan.
 
-1. Selecteer het tabblad _artefacten_ boven aan de pagina of **volgende:**  Artefacten aan de onderkant van de pagina.
+1. Selecteer het tabblad _artefacten_ boven aan de pagina of **Next: Artefacten @ no__t-0 aan de onderkant van de pagina.
 
 1. Bekijk de lijst met artefacten die deel uitmaken van het voor beeld van de blauw druk. Veel van de artefacten hebben para meters die later worden gedefinieerd. Selecteer **concept opslaan** wanneer u klaar bent met het bekijken van het voor beeld van de blauw druk.
 
@@ -111,7 +110,7 @@ De volgende tabel geeft een lijst van de para meters van de blauw druk-artefact:
 |Toegestane SKU's van virtuele machines|Beleidstoewijzing|Policy_Allowed-VM-Sku's|Toegestane SKU's van virtuele machines|
 |CostCenter-TAG toevoegen aan resource groepen|Beleidstoewijzing|Policy_CostCenter_Tag|CostCenter-label en de bijbehorende waarde uit de resource groep toevoegen|
 |Bron typen die u niet wilt toestaan in uw omgeving|Beleidstoewijzing|Beleid _Allowed-bron typen|Welke Azure-resources u in uw omgeving wilt toestaan|
-|Key Vault implementeren|Resource Manager-sjabloon|KV-AccessPolicy|**Vergrendeld** : Azure AD-groep of <Object ID> -gebruiker waaraan machtigingen moeten worden verleend in Key Vault|
+|Key Vault implementeren|Resource Manager-sjabloon|KV-AccessPolicy|**Vergrendeld** : Azure AD-groep of-gebruiker <Object ID> om machtigingen te verlenen aan Key Vault|
 |Log Analytics implementeren|Resource Manager-sjabloon|LogAnalytics_DataRetention|**Vergrendeld** : aantal dagen dat gegevens worden bewaard in log Analytics|
 |Log Analytics implementeren|Resource Manager-sjabloon|LogAnalytics_Location|**Vergrendelde** regio die wordt gebruikt bij het maken van de werk ruimte|
 

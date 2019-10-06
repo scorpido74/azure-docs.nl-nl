@@ -1,5 +1,5 @@
 ---
-title: Gegevens bronnen verbinden met Azure Sentinel? | Microsoft Docs
+title: Gegevens bronnen verbinden met Azure Sentinel | Microsoft Docs
 description: Meer informatie over hoe u gegevens bronnen verbindt met Azure Sentinel.
 services: sentinel
 documentationcenter: na
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: d8d3e52882a5cde9b00bf07ded933ae4d45b454b
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: d4605ad448916d788fd0a7089835a9ad3828697e
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240167"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71980412"
 ---
 # <a name="connect-data-sources"></a>Verbinding maken met gegevensbronnen
 
@@ -99,7 +99,7 @@ U kunt de agent ook hand matig implementeren op een bestaande Azure-VM, op een v
 | SigninLogs | [Verbinding maken met Azure AD](connect-azure-active-directory.md)  | V | |
 | AzureFirewall |[Azure Diagnostics](../firewall/tutorial-diagnostics.md) | V | |
 | InformationProtectionLogs_CL  | [Azure Information Protection rapporten](https://docs.microsoft.com/azure/information-protection/reports-aip)<br>[Azure Information Protection verbinden](connect-azure-information-protection.md)  | V | Dit maakt gewoonlijk gebruik van de functie **InformationProtectionEvents** naast het gegevens type. Zie [de rapporten wijzigen en aangepaste query's maken](https://docs.microsoft.com/azure/information-protection/reports-aip#how-to-modify-the-reports-and-create-custom-queries) voor meer informatie|
-| AzureNetworkAnalytics_CL  | [Analytisch schema voor verkeer](../network-watcher/traffic-analytics.md) [Traffic Analytics](../network-watcher/traffic-analytics.md)  | | |
+| AzureNetworkAnalytics_CL  | Verkeers [analyse](../network-watcher/traffic-analytics.md) van [Traffic analytic-schema](../network-watcher/traffic-analytics.md)  | | |
 | CommonSecurityLog  | [Verbinding maken met CEF](connect-common-event-format.md)  | V | |
 | OfficeActivity | [Verbinding maken met Office 365](connect-office-365.md) | V | |
 | SecurityEvents | [Windows-beveiligings gebeurtenissen verbinden](connect-windows-security-events.md)  | V | Zie voor de werkmappen met Inveilige protocollen [onveilige protocollen werkmap instellen](https://blogs.technet.microsoft.com/jonsh/azure-sentinel-insecure-protocols-dashboard-setup/)  |

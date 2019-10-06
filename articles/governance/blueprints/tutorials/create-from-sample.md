@@ -6,13 +6,12 @@ ms.author: dacoulte
 ms.date: 03/05/2019
 ms.topic: tutorial
 ms.service: blueprints
-manager: carmonm
-ms.openlocfilehash: 137764cba91ab94adef4719a0d34b6fb9e6efe29
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: f3250052a7e26b5d8ef7cb1d411f9d9252089875
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232625"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71980727"
 ---
 # <a name="tutorial-create-an-environment-from-a-blueprint-sample"></a>Zelfstudie: Een omgeving maken op basis van een blauw druk-voor beeld
 
@@ -46,7 +45,7 @@ Implementeer eerst het voor beeld van de blauw druk. Bij het importeren wordt ee
    - **Naam blauw druk**: Geef een naam op voor uw kopie van het voor beeld van de blauw druk. Voor deze zelf studie gebruiken we de naam _twee-RGS-with-Role-Assignments_.
    - **Locatie van definitie**: Gebruik het weglatings teken en selecteer de beheer groep of het abonnement om uw kopie van het voor beeld op te slaan.
 
-1. Selecteer het tabblad artefacten boven aan de pagina of **volgende:**  Artefacten aan de onderkant van de pagina.
+1. Selecteer het tabblad _artefacten_ boven aan de pagina of **Next: Artefacten @ no__t-0 aan de onderkant van de pagina.
 
 1. Bekijk de lijst met artefacten die deel uitmaken van het voor beeld van de blauw druk. In dit voor beeld worden twee resource groepen gedefinieerd, met weergave namen van _ProdRG_ en _PreProdRG_. De uiteindelijke naam en locatie van elke resource groep worden ingesteld tijdens de toewijzing van blauw drukken. De resource groep _ProdRG_ is toegewezen aan de rol _Inzender_ en de resource groep _PreProdRG_ is toegewezen aan de rollen _eigenaar_ en _lezers_ . De rollen die zijn toegewezen in de definitie zijn statisch, maar de gebruiker, de app of de groep waaraan de rol is toegewezen, wordt ingesteld tijdens de toewijzing van de blauw druk.
 
@@ -100,7 +99,7 @@ Zodra de kopie van het voor beeld van de blauw druk is **gepubliceerd**, kan dez
 
    - Artefactparameters
 
-     De in deze sectie gedefinieerde para meters zijn van toepassing op het artefact waaronder het is gedefinieerd. Deze para meters zijn [dynamische para meters](../concepts/parameters.md#dynamic-parameters) , omdat ze zijn gedefinieerd tijdens de toewijzing van de blauw druk. Stel voor elk artefact de parameter waarde in op wat in de kolom **waarde** is gedefinieerd. Selecteer `{Your ID}`uw Azure-gebruikers account voor.
+     De in deze sectie gedefinieerde para meters zijn van toepassing op het artefact waaronder het is gedefinieerd. Deze para meters zijn [dynamische para meters](../concepts/parameters.md#dynamic-parameters) , omdat ze zijn gedefinieerd tijdens de toewijzing van de blauw druk. Stel voor elk artefact de parameter waarde in op wat in de kolom **waarde** is gedefinieerd. Selecteer uw Azure-gebruikers account voor `{Your ID}`.
 
      |Naam van het artefact|Type artefact|Parameternaam|Value|Description|
      |-|-|-|-|-|
@@ -124,7 +123,7 @@ De toewijzing blauw drukken maakt en traceert de artefacten die in de definitie 
 
 1. Selecteer **Alle services** in het linkerdeelvenster. Zoek en selecteer **Blauwdrukken**.
 
-1. Selecteer de pagina **toegewezen blauw drukken** aan de linkerkant. Gebruik de filters om de toewijzing van de blauw druk _RGS-with-Role_ -Assignments te vinden en selecteer deze.
+1. Selecteer de pagina **toegewezen blauw drukken** aan de linkerkant. Gebruik de filters om de toewijzing van de blauw druk _RGS-with-Role-Assignments_ te vinden en selecteer deze.
 
    Op deze pagina ziet u dat de toewijzing is geslaagd en de lijst met gemaakte resources samen met de vergrendelings status blauw drukken. Als de toewijzing is bijgewerkt, bevat de vervolg keuzelijst **toewijzings bewerking** Details over de implementatie van elke definitie versie. U kunt op elke genoteerde resource klikken en de eigenschappen pagina van de resources openen.
 
@@ -148,7 +147,7 @@ De toewijzing blauw drukken maakt en traceert de artefacten die in de definitie 
 
 1. Selecteer de toewijzing weigeren en selecteer vervolgens de pagina **geweigerde machtigingen** aan de linkerkant.
 
-   De weiger toewijzing verhindert alle bewerkingen met de **\*** -en- **actie** configuratie, maar staat Lees toegang toe doorhet uitsluiten  **\*van/Read** via de vervollediging.
+   De weiger toewijzing verhindert alle bewerkingen met de configuratie van de **\*** en de **actie** , maar staat Lees toegang toe door de **\*/Lees** bewerking uit te **sluiten.**
 
 1. Selecteer in de Azure Portal brood kruimel **PreProductionRG-Access Control (IAM)** . Selecteer vervolgens de pagina **overzicht** aan de linkerkant en klik vervolgens op de knop **resource groep verwijderen** . Voer de naam _PreProductionRG_ in om de verwijdering te bevestigen en selecteer **verwijderen** onder aan het deel venster.
 
@@ -163,7 +162,7 @@ Als u de toewijzing verwijdert, worden de geïmplementeerde artefacten niet verw
 
 1. Selecteer **Alle services** in het linkerdeelvenster. Zoek en selecteer **Blauwdrukken**.
 
-1. Selecteer de pagina **toegewezen blauw drukken** aan de linkerkant. Gebruik de filters om de toewijzing van de blauw druk _RGS-with-Role_ -Assignments te vinden en selecteer deze.
+1. Selecteer de pagina **toegewezen blauw drukken** aan de linkerkant. Gebruik de filters om de toewijzing van de blauw druk _RGS-with-Role-Assignments_ te vinden en selecteer deze.
 
 1. Selecteer de knop **blauw** drukken opheffen boven aan de pagina. Lees de waarschuwing in het bevestigings venster en selecteer vervolgens **OK**.
 

@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: overview
 ms.date: 09/23/2019
 ms.custom: seodec18
-ms.openlocfilehash: ffa4424dd3173cf6493ec219fe92925c970ad08c
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: e4a57c6d4a9034d9145058e9137759c2cea19aa6
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71258315"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71978659"
 ---
 # <a name="what-is-azure-time-series-insights-preview"></a>Wat is Azure Time Series Insights preview?
 
@@ -81,7 +81,7 @@ Met de introductie van deze belangrijke IoT-functionaliteiten biedt Time Series 
 | Soepele en doorlopende integratie met andere gegevens oplossingen | Gegevens in Time Series Insights worden [opgeslagen](./time-series-insights-update-storage-ingress.md) in open source Apache Parquet-bestanden. Deze integratie met andere gegevensoplossingen, of deze nu van uzelf of van een externe partij zijn, leent zich goed voor end-to-endscenario's. Dit zijn bijvoorbeeld scenario's met business intelligence, geavanceerde machine learning en predictive analytics. |
 | Gegevens worden bijna in realtime verkend | De [verkenner van Azure Time Series Insights (preview)](./time-series-insights-update-explorer.md) biedt gebruikers visualisatie voor alle gegevens die door de opnamepijplijn worden geleid. Kort nadat u verbinding hebt gemaakt met een gebeurtenisbron, kunt u gebeurtenisgegevens bekijken, verkennen en opvragen. Op deze manier kunt u nagaan of een apparaat gegevens naar verwachting verzendt. U kunt IoT-apparaten ook controleren op status, productiviteit en algehele effectiviteit. |
 | Hoofdoorzaakanalyse en anomaliedetectie | De [verkenner van Azure Time Series Insights (preview)](./time-series-insights-update-explorer.md) ondersteunt zowel patronen als perspectiefweergaven voor het uitvoeren en opslaan van een hoofdoorzaakanalyse die uit meerdere stappen bestaat. In combinatie met Azure Stream Analytics kunt u Time Series Insights gebruiken om waarschuwingen en afwijkingen vrijwel in realtime te detecteren. |
-| Aangepaste toepassingen die zijn gebouwd op Time Series Insights platform | Time Series Insights biedt ondersteuning voor de [JavaScript SDK](./tutorial-explore-js-client-lib.md). De SDK biedt uitgebreide besturingselementen en vereenvoudigde toegang tot query's. Gebruik de SDK voor het bouwen van aangepaste IoT-toepassingen op basis van Time Series Insights, die aansluiten op uw specifieke zakelijke behoeften. U kunt de [query-API's](./time-series-insights-update-tsq.md) van Time Series Insights ook rechtstreeks gebruiken om gegevens naar aangepaste IoT-toepassingen te sturen. |
+| Aangepaste toepassingen die zijn gebouwd op Time Series Insights platform | Time Series Insights biedt ondersteuning voor de [JavaScript SDK](https://github.com/microsoft/tsiclient/blob/master/docs/API.md). De SDK biedt uitgebreide besturingselementen en vereenvoudigde toegang tot query's. Gebruik de SDK voor het bouwen van aangepaste IoT-toepassingen op basis van Time Series Insights, die aansluiten op uw specifieke zakelijke behoeften. U kunt de [query-API's](./time-series-insights-update-tsq.md) van Time Series Insights ook rechtstreeks gebruiken om gegevens naar aangepaste IoT-toepassingen te sturen. |
 
 ## <a name="next-steps"></a>Volgende stappen
 

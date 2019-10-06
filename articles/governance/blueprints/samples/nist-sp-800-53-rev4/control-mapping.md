@@ -6,19 +6,18 @@ ms.author: dacoulte
 ms.date: 06/24/2019
 ms.topic: sample
 ms.service: blueprints
-manager: carmonm
-ms.openlocfilehash: 1b72ea0558a2cf36efec6b25a31b30c1379d8cc8
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: c4d8cd7996e45aafca37e68974d6250578ba9502
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350735"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71980964"
 ---
 # <a name="control-mapping-of-the-nist-sp-800-53-r4-blueprint-sample"></a>De toewijzing van het NIST SP 800-53 R4 blauw druk-voor beeld
 
 In het volgende artikel wordt uitgelegd hoe het voor beeld van Azure blauw drukken NIST SP 800-53 R4 wordt toegewezen aan de Controls van het NIST SP 800-53 R4. Zie voor meer informatie over de besturings elementen [NIST SP 800-53](https://nvd.nist.gov/800-53).
 
-De volgende toewijzingen zijn de besturings elementen van het **NIST SP 800-53 (Rev. 4)** . Gebruik de navigatie aan de rechter kant om rechtstreeks naar een specifieke besturings element koppeling te gaan. Veel van de toegewezen besturings elementen worden geïmplementeerd met een [Azure Policy](../../../policy/overview.md) -initiatief. Als u het complete initiatief wilt bekijken, opent u **beleid** in het Azure Portal en selecteert u de pagina **definities** . Zoek en selecteer vervolgens het  **\[voor beeld\]: Controleer NIST SP 800-53 R4 Controls en implementeer specifieke VM-extensies ter ondersteuning** van de ingebouwde beleids initiatieven voor controle vereisten.
+De volgende toewijzingen zijn de besturings elementen van het **NIST SP 800-53 (Rev. 4)** . Gebruik de navigatie aan de rechter kant om rechtstreeks naar een specifieke besturings element koppeling te gaan. Veel van de toegewezen besturings elementen worden geïmplementeerd met een [Azure Policy](../../../policy/overview.md) -initiatief. Als u het complete initiatief wilt bekijken, opent u **beleid** in het Azure Portal en selecteert u de pagina **definities** . Zoek en selecteer vervolgens de ** @ no__t-1Preview @ no__t-2: Controleer NIST SP 800-53 R4 Controls en implementeer specifieke VM-extensies ter ondersteuning van controle vereisten @ no__t-0 ingebouwd beleids initiatief.
 
 > [!IMPORTANT]
 > Elk besturings element hieronder is gekoppeld aan een of meer [Azure Policy](../../../policy/overview.md) definities. Met deze beleids regels kunt u de naleving van het besturings element [beoordelen](../../../policy/how-to/get-compliance-data.md) . Er is echter vaak geen 1:1-of volledige overeenkomst tussen een besturings element en een of meer beleids regels. Als zodanig is de **naleving** in azure Policy alleen bedoeld voor het beleid zelf. Dit garandeert niet dat u volledig compatibel bent met alle vereisten van een besturings element. Daarnaast bevat de nalevings standaard besturings elementen die niet worden behandeld door Azure Policy definities op dit moment. Daarom is naleving in Azure Policy slechts een gedeeltelijke weer gave van uw algemene nalevings status. De koppelingen tussen de besturings elementen en Azure Policy definities voor dit voor beeld van deze naleving blauw druk kunnen na verloop van tijd veranderen. Als u de wijzigings geschiedenis wilt weer geven, raadpleegt u de [github commit-geschiedenis](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/nist-sp-800-53-rev4/control-mapping.md).
@@ -88,8 +87,8 @@ De mogelijkheden voor gegevens detectie en-classificatie van geavanceerde gegeve
 
 Deze blauw druk helpt u bij het bewaken en beheren van externe toegang door [Azure Policy](../../../policy/overview.md) definities toe te wijzen om te controleren of externe fout opsporing voor Azure app service toepassing is uitgeschakeld. De blauw druk wijst ook beleids definities toe waarmee virtuele Linux-machines worden gecontroleerd die externe verbindingen van accounts zonder wacht woorden toestaan. Daarnaast wijst de blauw druk een Azure Policy definitie toe waarmee u onbeperkte toegang tot opslag accounts kunt controleren. Door deze indica toren te bewaken, kunt u ervoor zorgen dat externe toegangs methoden voldoen aan uw beveiligings beleid.
 
-- \[Voor\]beeld: Virtuele Linux-machines controleren die externe verbindingen van accounts zonder wacht woorden toestaan
-- \[Voor\]beeld: Vereisten implementeren voor het controleren van virtuele Linux-machines die externe verbindingen toestaan van accounts zonder wacht woorden
+- \[Preview @ no__t-1: Virtuele Linux-machines controleren die externe verbindingen van accounts zonder wacht woorden toestaan
+- \[Preview @ no__t-1: Vereisten implementeren voor het controleren van virtuele Linux-machines die externe verbindingen toestaan van accounts zonder wacht woorden
 - Onbeperkte netwerk toegang tot opslag accounts controleren
 - Fout opsporing op afstand moet worden uitgeschakeld voor de API-app
 - Fout opsporing op afstand moet worden uitgeschakeld voor functie-app
@@ -99,13 +98,13 @@ Deze blauw druk helpt u bij het bewaken en beheren van externe toegang door [Azu
 
 Logboek gegevens die door Azure Monitor worden verzameld, worden opgeslagen in een Log Analytics-werk ruimte, waardoor gecentraliseerde configuratie en beheer mogelijk wordt. Deze blauw druk helpt u ervoor te zorgen dat gebeurtenissen worden geregistreerd door [Azure Policy](../../../policy/overview.md) definities toe te wijzen die de implementatie van de log Analytics agent op virtuele machines van Azure controleren en afdwingen.
 
-- \[Voor\]beeld: Implementatie van Log Analytics agent controleren-VM-installatie kopie (OS) niet vermeld
-- \[Voor\]beeld: Log Analytics agent implementatie controleren in VMSS-VM-installatie kopie (OS) niet vermeld
-- \[Voor\]beeld: Controleren Log Analytics werk ruimte voor VM-niet-overeenkomend rapport
-- \[Voor\]beeld: Log Analytics agent voor Linux-VM Scale Sets implementeren (VMSS)
-- \[Voor\]beeld: Log Analytics-agent voor Linux-Vm's implementeren
-- \[Voor\]beeld: Log Analytics agent voor Windows-VM Scale Sets (VMSS) implementeren
-- \[Voor\]beeld: Log Analytics-agent voor Windows-Vm's implementeren
+- \[Preview @ no__t-1: Implementatie van Log Analytics agent controleren-VM-installatie kopie (OS) niet vermeld
+- \[Preview @ no__t-1: Log Analytics agent implementatie controleren in VMSS-VM-installatie kopie (OS) niet vermeld
+- \[Preview @ no__t-1: Controleren Log Analytics werk ruimte voor VM-niet-overeenkomend rapport
+- \[Preview @ no__t-1: Log Analytics agent voor Linux-VM Scale Sets implementeren (VMSS)
+- \[Preview @ no__t-1: Log Analytics-agent voor Linux-Vm's implementeren
+- \[Preview @ no__t-1: Log Analytics agent voor Windows-VM Scale Sets (VMSS) implementeren
+- \[Preview @ no__t-1: Log Analytics-agent voor Windows-Vm's implementeren
 
 ## <a name="au-5-response-to-audit-processing-failures"></a>AU-5-antwoord op mislukte controle verwerking
 
@@ -120,25 +119,25 @@ Deze blauw druk wijst [Azure Policy](../../../policy/overview.md) definities toe
 
 Logboek gegevens die door Azure Monitor worden verzameld, worden opgeslagen in een Log Analytics-werk ruimte, waardoor gecentraliseerde rapportage en analyse mogelijk wordt. Deze blauw druk helpt u ervoor te zorgen dat gebeurtenissen worden geregistreerd door [Azure Policy](../../../policy/overview.md) definities toe te wijzen die de implementatie van de log Analytics agent op virtuele machines van Azure controleren en afdwingen.
 
-- \[Voor\]beeld: Implementatie van Log Analytics agent controleren-VM-installatie kopie (OS) niet vermeld
-- \[Voor\]beeld: Log Analytics agent implementatie controleren in VMSS-VM-installatie kopie (OS) niet vermeld
-- \[Voor\]beeld: Controleren Log Analytics werk ruimte voor VM-niet-overeenkomend rapport
-- \[Voor\]beeld: Log Analytics agent voor Linux-VM Scale Sets implementeren (VMSS)
-- \[Voor\]beeld: Log Analytics-agent voor Linux-Vm's implementeren
-- \[Voor\]beeld: Log Analytics agent voor Windows-VM Scale Sets (VMSS) implementeren
-- \[Voor\]beeld: Log Analytics-agent voor Windows-Vm's implementeren
+- \[Preview @ no__t-1: Implementatie van Log Analytics agent controleren-VM-installatie kopie (OS) niet vermeld
+- \[Preview @ no__t-1: Log Analytics agent implementatie controleren in VMSS-VM-installatie kopie (OS) niet vermeld
+- \[Preview @ no__t-1: Controleren Log Analytics werk ruimte voor VM-niet-overeenkomend rapport
+- \[Preview @ no__t-1: Log Analytics agent voor Linux-VM Scale Sets implementeren (VMSS)
+- \[Preview @ no__t-1: Log Analytics-agent voor Linux-Vm's implementeren
+- \[Preview @ no__t-1: Log Analytics agent voor Windows-VM Scale Sets (VMSS) implementeren
+- \[Preview @ no__t-1: Log Analytics-agent voor Windows-Vm's implementeren
 
 ## <a name="au-12-audit-generation"></a>Generatie van AU-12-audit
 
 Deze blauw druk helpt u om ervoor te zorgen dat systeem gebeurtenissen worden vastgelegd door [Azure Policy](../../../policy/overview.md) definities toe te wijzen die logboek instellingen op Azure-resources controleren. Deze beleids definities controleren en afdwingen de implementatie van de Log Analytics-agent op virtuele machines van Azure en het configureren van controle-instellingen voor andere Azure-resource typen. Deze beleids definities controleren ook de configuratie van diagnostische Logboeken om inzicht te krijgen in bewerkingen die worden uitgevoerd binnen Azure-resources. Daarnaast zijn auditing en geavanceerde gegevens beveiliging geconfigureerd op SQL-servers.
 
-- \[Voor\]beeld: Implementatie van Log Analytics agent controleren-VM-installatie kopie (OS) niet vermeld
-- \[Voor\]beeld: Log Analytics agent implementatie controleren in VMSS-VM-installatie kopie (OS) niet vermeld
-- \[Voor\]beeld: Controleren Log Analytics werk ruimte voor VM-niet-overeenkomend rapport
-- \[Voor\]beeld: Log Analytics agent voor Linux-VM Scale Sets implementeren (VMSS)
-- \[Voor\]beeld: Log Analytics-agent voor Linux-Vm's implementeren
-- \[Voor\]beeld: Log Analytics agent voor Windows-VM Scale Sets (VMSS) implementeren
-- \[Voor\]beeld: Log Analytics-agent voor Windows-Vm's implementeren
+- \[Preview @ no__t-1: Implementatie van Log Analytics agent controleren-VM-installatie kopie (OS) niet vermeld
+- \[Preview @ no__t-1: Log Analytics agent implementatie controleren in VMSS-VM-installatie kopie (OS) niet vermeld
+- \[Preview @ no__t-1: Controleren Log Analytics werk ruimte voor VM-niet-overeenkomend rapport
+- \[Preview @ no__t-1: Log Analytics agent voor Linux-VM Scale Sets implementeren (VMSS)
+- \[Preview @ no__t-1: Log Analytics-agent voor Linux-Vm's implementeren
+- \[Preview @ no__t-1: Log Analytics agent voor Windows-VM Scale Sets (VMSS) implementeren
+- \[Preview @ no__t-1: Log Analytics-agent voor Windows-Vm's implementeren
 - Diagnostische instelling voor controleren
 - Controle-instellingen op SQL server-niveau controleren
 - Geavanceerde gegevens beveiliging moet zijn ingeschakeld voor uw beheerde instanties
@@ -188,29 +187,29 @@ Met deze blauw druk kunt u de toegang beperken en beheren door een [Azure Policy
 
 Deze blauw druk wijst [Azure Policy](../../../policy/overview.md) definities toe waarmee virtuele Linux-machines worden gecontroleerd die externe verbindingen toestaan van accounts zonder wacht woorden en/of onjuiste machtigingen hebben ingesteld voor het passwd-bestand. Deze blauw druk wijst ook beleids definities toe waarmee de configuratie van het type wachtwoord versleuteling voor virtuele Windows-machines wordt gecontroleerd. Door deze indica toren te controleren, zorgt u ervoor dat systeem verificaties voldoen aan het identificatie-en verificatie beleid van uw organisatie.
 
-- \[Voor\]beeld: Virtuele Linux-machines waarvoor de machtigingen voor het passwd-bestand niet zijn ingesteld op 0644 controleren
-- \[Voor\]beeld: Virtuele Linux-machines met accounts zonder wacht woorden controleren
-- \[Voor\]beeld: Windows-Vm's controleren die geen wacht woorden opslaan met omkeer bare versleuteling
-- \[Voor\]beeld: Implementeer vereisten voor het controleren van virtuele Linux-machines waarop de machtigingen voor het passwd-bestand niet zijn ingesteld op 0644
-- \[Voor\]beeld: Vereisten implementeren voor het controleren van virtuele Linux-machines met accounts zonder wacht woorden
-- \[Voor\]beeld: Vereisten implementeren voor het controleren van Windows-Vm's die geen wacht woorden opslaan met omkeer bare versleuteling
+- \[Preview @ no__t-1: Virtuele Linux-machines waarvoor de machtigingen voor het passwd-bestand niet zijn ingesteld op 0644 controleren
+- \[Preview @ no__t-1: Virtuele Linux-machines met accounts zonder wacht woorden controleren
+- \[Preview @ no__t-1: Windows-Vm's controleren die geen wacht woorden opslaan met omkeer bare versleuteling
+- \[Preview @ no__t-1: Implementeer vereisten voor het controleren van virtuele Linux-machines waarop de machtigingen voor het passwd-bestand niet zijn ingesteld op 0644
+- \[Preview @ no__t-1: Vereisten implementeren voor het controleren van virtuele Linux-machines met accounts zonder wacht woorden
+- \[Preview @ no__t-1: Vereisten implementeren voor het controleren van Windows-Vm's die geen wacht woorden opslaan met omkeer bare versleuteling
 
 ## <a name="ia-5-1-authenticator-management--password-based-authentication"></a>IA-5 (1) verificatie beheer | Verificatie op basis van wacht woorden
 
 Deze blauw druk helpt u bij het afdwingen van sterke wacht woorden door [Azure Policy](../../../policy/overview.md) definities toe te wijzen die virtuele Windows-machines controleren die geen minimale sterkte en andere wachtwoord vereisten afdwingen. Het bewustzijn van virtuele machines met een schending van het beleid voor wachtwoord sterkte helpt u bij het uitvoeren van corrigerende maat regelen om ervoor te zorgen dat wacht woorden voor alle gebruikers accounts van de virtuele machine voldoen aan het wachtwoord beleid van uw organisatie.
 
-- \[Voor\]beeld: Virtuele Windows-machines controleren die het opnieuw gebruiken van de voor gaande 24 wacht woorden toestaan
-- \[Voor\]beeld: Windows-Vm's met een maximale wachtwoord duur van 70 dagen controleren
-- \[Voor\]beeld: Windows-Vm's met een minimale wachtwoord leeftijd van 1 dag controleren
-- \[Voor\]beeld: Windows-Vm's controleren waarvoor de instelling voor wachtwoord complexiteit niet is ingeschakeld
-- \[Voor\]beeld: Windows-Vm's controleren die de minimale wachtwoord lengte niet beperken tot 14 tekens
-- \[Voor\]beeld: Windows-Vm's controleren die geen wacht woorden opslaan met omkeer bare versleuteling
-- \[Voor\]beeld: Vereisten implementeren voor het controleren van virtuele Windows-machines die het opnieuw gebruiken van de voor gaande 24 wacht woorden toestaan
-- \[Voor\]beeld: Vereisten implementeren voor het controleren van Windows-Vm's die geen maximale wachtwoord duur van 70 dagen hebben
-- \[Voor\]beeld: Vereisten implementeren voor het controleren van Windows-Vm's die geen minimale wachtwoord duur van 1 dag hebben
-- \[Voor\]beeld: Vereisten implementeren voor het controleren van Windows-Vm's waarvoor de instelling voor wachtwoord complexiteit niet is ingeschakeld
-- \[Voor\]beeld: Vereisten implementeren om Windows-Vm's te controleren die de minimale wachtwoord lengte niet beperken tot 14 tekens
-- \[Voor\]beeld: Vereisten implementeren voor het controleren van Windows-Vm's die geen wacht woorden opslaan met omkeer bare versleuteling
+- \[Preview @ no__t-1: Virtuele Windows-machines controleren die het opnieuw gebruiken van de voor gaande 24 wacht woorden toestaan
+- \[Preview @ no__t-1: Windows-Vm's met een maximale wachtwoord duur van 70 dagen controleren
+- \[Preview @ no__t-1: Windows-Vm's met een minimale wachtwoord leeftijd van 1 dag controleren
+- \[Preview @ no__t-1: Windows-Vm's controleren waarvoor de instelling voor wachtwoord complexiteit niet is ingeschakeld
+- \[Preview @ no__t-1: Windows-Vm's controleren die de minimale wachtwoord lengte niet beperken tot 14 tekens
+- \[Preview @ no__t-1: Windows-Vm's controleren die geen wacht woorden opslaan met omkeer bare versleuteling
+- \[Preview @ no__t-1: Vereisten implementeren voor het controleren van virtuele Windows-machines die het opnieuw gebruiken van de voor gaande 24 wacht woorden toestaan
+- \[Preview @ no__t-1: Vereisten implementeren voor het controleren van Windows-Vm's die geen maximale wachtwoord duur van 70 dagen hebben
+- \[Preview @ no__t-1: Vereisten implementeren voor het controleren van Windows-Vm's die geen minimale wachtwoord duur van 1 dag hebben
+- \[Preview @ no__t-1: Vereisten implementeren voor het controleren van Windows-Vm's waarvoor de instelling voor wachtwoord complexiteit niet is ingeschakeld
+- \[Preview @ no__t-1: Vereisten implementeren om Windows-Vm's te controleren die de minimale wachtwoord lengte niet beperken tot 14 tekens
+- \[Preview @ no__t-1: Vereisten implementeren voor het controleren van Windows-Vm's die geen wacht woorden opslaan met omkeer bare versleuteling
 
 ## <a name="ra-5-vulnerability-scanning"></a>Scannen op beveiligings problemen met RA-5
 
@@ -307,13 +306,13 @@ Deze blauw druk helpt u bij het beheren van Endpoint Protection, met inbegrip va
 
 Deze blauw druk helpt u bij het controleren van uw systeem door logboek registratie en gegevens beveiliging in azure-resources te controleren en af te dwingen. Met name aan de beleids regels is het controleren en afdwingen van de implementatie van de Log Analytics agent en verbeterde beveiligings instellingen voor SQL-data bases, opslag accounts en netwerk bronnen toegewezen. Deze mogelijkheden kunnen u helpen bij het detecteren van afwijkend gedrag en indica toren van aanvallen, zodat u de juiste actie kunt ondernemen.
 
-- \[Voor\]beeld: Implementatie van Log Analytics agent controleren-VM-installatie kopie (OS) niet vermeld
-- \[Voor\]beeld: Log Analytics agent implementatie controleren in VMSS-VM-installatie kopie (OS) niet vermeld
-- \[Voor\]beeld: Controleren Log Analytics werk ruimte voor VM-niet-overeenkomend rapport
-- \[Voor\]beeld: Log Analytics agent voor Linux-VM Scale Sets implementeren (VMSS)
-- \[Voor\]beeld: Log Analytics-agent voor Linux-Vm's implementeren
-- \[Voor\]beeld: Log Analytics agent voor Windows-VM Scale Sets (VMSS) implementeren
-- \[Voor\]beeld: Log Analytics-agent voor Windows-Vm's implementeren
+- \[Preview @ no__t-1: Implementatie van Log Analytics agent controleren-VM-installatie kopie (OS) niet vermeld
+- \[Preview @ no__t-1: Log Analytics agent implementatie controleren in VMSS-VM-installatie kopie (OS) niet vermeld
+- \[Preview @ no__t-1: Controleren Log Analytics werk ruimte voor VM-niet-overeenkomend rapport
+- \[Preview @ no__t-1: Log Analytics agent voor Linux-VM Scale Sets implementeren (VMSS)
+- \[Preview @ no__t-1: Log Analytics-agent voor Linux-Vm's implementeren
+- \[Preview @ no__t-1: Log Analytics agent voor Windows-VM Scale Sets (VMSS) implementeren
+- \[Preview @ no__t-1: Log Analytics-agent voor Windows-Vm's implementeren
 - Geavanceerde gegevens beveiliging moet zijn ingeschakeld voor uw beheerde instanties
 - Geavanceerde gegevensbeveiliging moet zijn ingeschakeld op uw SQL-servers
 - Geavanceerde gegevens beveiliging implementeren op SQL-servers
@@ -336,7 +335,7 @@ Advanced Threat Protection voor Azure Storage detecteert ongebruikelijke en moge
 Nu u de beheer koppeling van de blauw druk van het NIST SP 800-53 R4 hebt gecontroleerd, gaat u naar de volgende artikelen voor meer informatie over de blauw druk en hoe u dit voor beeld implementeert:
 
 > [!div class="nextstepaction"]
-> [NIST SP 800-53 R4 blauw druk-overzicht](./index.md)
+> [NIST sp 800-53 R4 blauw druk-overzicht](./index.md)
 > [NIST SP 800-53 R4 blauw druk-stappen implementeren](./deploy.md)
 
 Aanvullende artikelen over blauwdrukken en het gebruik hiervan:

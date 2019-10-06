@@ -1,6 +1,6 @@
 ---
-title: Stroomactiviteit gegevens uitvoeren in Azure Data Factory | Microsoft Docs
-description: Het uitvoeren van de gegevens stromen van binnen een data factory-pijplijn.
+title: Gegevens stroom activiteit in Azure Data Factory | Microsoft Docs
+description: Gegevens stromen uitvoeren vanuit een data factory pijp lijn.
 services: data-factory
 documentationcenter: ''
 author: kromerm
@@ -8,17 +8,18 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 02/22/2019
+ms.date: 10/07/2019
 ms.author: makromer
-ms.openlocfilehash: 24b27c16573a35b1d8749d7ff381fbef970f4bd0
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 7db410e97046b6d251eb73e754e40eab09a2ee64
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67471659"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71981817"
 ---
-# <a name="execute-data-flow-activity-in-azure-data-factory"></a>Stroomactiviteit gegevens uitvoeren in Azure Data Factory
-De activiteit execute gegevens flow voor uw gegevensstroom ADF in Foutopsporing (sandbox) pijplijnuitvoeringen en geactiveerde pijplijnuitvoeringen gebruiken.
+# <a name="data-flow-activity-in-azure-data-factory"></a>Gegevens stroom activiteit in Azure Data Factory
+
+Gebruik de activiteit gegevens stroom om gegevens te transformeren en te verplaatsen via toewijzing van gegevens stromen. Zie [overzicht van gegevens stroom toewijzen](concepts-data-flow-overview.md) als u geen ervaring hebt met gegevens stromen
 
 [!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
@@ -30,12 +31,19 @@ De activiteit execute gegevens flow voor uw gegevensstroom ADF in Foutopsporing 
     "type": "ExecuteDataFlow",
     "typeProperties": {
       "dataflow": {
-         "referenceName": "dataflow1",
+         "referenceName": "MyDataFlow",
          "type": "DataFlowReference"
       },
-        "compute": {
-          "computeType": "General",
-          "coreCount": 8,
+      "staging": {
+          "linkedService": {
+              "referenceName": "MyStagingLinkedService",
+              "type": "LinkedServiceReference"
+          },
+          "folderPath": "my-container/my-folder"
+      },
+      "integrationRuntime": {
+          "referenceName": "MyDataFlowIntegrationRuntime",
+          "type": "IntegrationRuntimeReference"
       }
 }
 
@@ -43,57 +51,59 @@ De activiteit execute gegevens flow voor uw gegevensstroom ADF in Foutopsporing 
 
 ## <a name="type-properties"></a>Type-eigenschappen
 
-* ```dataflow``` de naam van de flow-entiteit voor gegevens die u wilt uitvoeren
-* ```compute``` Beschrijving van de uitvoeringsomgeving Spark
-* ```coreCount``` is het aantal cores om toe te wijzen voor de uitvoering van deze activiteit van de gegevensstroom
+Eigenschap | Description | Toegestane waarden | Vereist
+-------- | ----------- | -------------- | --------
+stroom | De verwijzing naar de gegevens stroom die wordt uitgevoerd | DataFlowReference | Ja
+integrationRuntime | De compute-omgeving waarop de gegevens stroom wordt uitgevoerd | IntegrationRuntimeReference | Ja
+staging. linkedService | Als u een SQL DW-bron of-sink gebruikt, wordt het opslag account dat wordt gebruikt voor poly base staging | Linkedservicereference is | Alleen als de gegevens stroom leest of schrijft naar een SQL DW
+staging. folderPath | Als u een SQL DW-bron of-sink gebruikt, wordt het mappad in het Blob Storage-account dat wordt gebruikt voor poly base staging | Tekenreeks | Alleen als de gegevens stroom leest of schrijft naar een SQL DW
 
-![Uitvoeren van de gegevensstroom](media/data-flow/activity-data-flow.png "gegevensstroom uitvoeren")
+Gegevens(media/data-flow/activity-data-flow.png "stroom uitvoeren") ![gegevensstroom uitvoeren]
 
-### <a name="debugging-pipelines-with-data-flows"></a>Opsporen van fouten in pijplijnen met gegevensstromen
+### <a name="data-flow-integration-runtime"></a>Data flow Integration runtime
 
-![Fouten opsporen in knop](media/data-flow/debugbutton.png "knop foutopsporing")
+Kies welke Integration Runtime moet worden gebruikt voor de uitvoering van de activiteit van de gegevens stroom. Data Factory maakt standaard gebruik van de automatisch oplossen van Azure Integration runtime met vier worker-kernen en geen TTL (time to Live). Deze IR heeft een reken type voor algemeen gebruik en wordt uitgevoerd in dezelfde regio als uw fabriek. U kunt uw eigen Azure Integration Runtimes maken voor het definiëren van specifieke regio's, reken type, kern aantallen en TTL voor de uitvoering van de gegevens stroom activiteit.
 
-Gebruik de gegevens stromen foutopsporing gebruikmaken van een verwarmde cluster voor het testen van uw gegevensstromen interactief in een pijplijn foutopsporing uitvoeren. Gebruik de optie pijplijn fouten opsporen in uw gegevensstromen binnen een pijplijn testen.
+Voor de uitvoering van pijp lijnen is het cluster een taak cluster, dat enkele minuten in beslag neemt voordat de uitvoering wordt gestart. Als er geen TTL is opgegeven, is deze opstart tijd vereist op elke pijplijn uitvoering. Als u een TTL opgeeft, blijft een warme cluster groep actief gedurende de tijd die na de laatste uitvoering is opgegeven, wat resulteert in kortere opstart tijden. Als u bijvoorbeeld een TTL van 60 minuten hebt en een gegevens stroom eenmaal per uur uitvoert, blijft de cluster groep actief. Zie [Azure Integration runtime](concepts-integration-runtime.md)voor meer informatie.
 
-### <a name="run-on"></a>Uitgevoerd op
-
-Dit is een verplicht veld waarmee wordt gedefinieerd welke Integration Runtime moet worden gebruikt voor de uitvoering van de activiteit gegevens stromen. Data Factory gebruikt standaard de standaard automatisch oplossen Azure Integration runtime. U kunt echter uw eigen Azure-Integratieruntimes die specifieke regio's definiëren, compute-type, kerngeheugens en TTL-waarde voor de uitvoering van de activiteit van de gegevensstroom maken.
-
-De standaardinstelling voor uitvoeringen gegevensstroom is 8 kernen reken-en algemene met een TTL-waarde van 60 minuten.
-
-Kies de compute-omgeving voor deze uitvoering van de gegevensstroom. De standaardwaarde is de standaard Integratieruntime voor Azure automatisch oplossen. Met deze optie wordt de gegevensstroom op de Spark-omgeving in dezelfde regio als uw data factory uitgevoerd. Het rekentype wordt een cluster taak, wat betekent dat de compute-omgeving duurt enkele minuten om lid te worden.
-
-U hebt controle over de Spark-uitvoeringsomgeving voor uw activiteiten gegevensstroom. In de [Azure integratieruntime](concepts-integration-runtime.md) zijn instellingen voor het instellen van het type compute (algemeen gebruik, geoptimaliseerd voor geheugen en geoptimaliseerde rekenkracht), aantal worker-kernen en time-to-live zodat deze overeenkomen met de engine voor het uitvoeren met uw compute gegevensstroom vereisten. Bovendien kunt TTL instelling u een warm-cluster dat is onmiddellijk beschikbaar voor taakuitvoeringen onderhouden.
-
-![Azure Integratieruntime](media/data-flow/ir-new.png "Azure Integratieruntime")
+![Azure Integration Runtime](media/data-flow/ir-new.png "Azure Integration runtime")
 
 > [!NOTE]
-> De Integration Runtime-selectie in de activiteit gegevensstroom is alleen van toepassing op *geactiveerde uitvoeringen* van uw pijplijn. Foutopsporing van uw pijplijn met de gegevens stromen met foutopsporing wordt uitgevoerd op de standaardwaarde van 8-core Spark-cluster.
+> De Integration Runtime selectie in de activiteit gegevens stroom is alleen van toepassing op *geactiveerde uitvoeringen* van de pijp lijn. Fout opsporing voor de pijp lijn met gegevens stromen worden uitgevoerd op het cluster dat is opgegeven in de foutopsporingssessie.
 
-### <a name="staging-area"></a>Faseringsgebied
+### <a name="polybase"></a>PolyBase
 
-Als u zijn uw gegevens zich in Azure Data Warehouse, moet u een tijdelijke locatie kiezen voor het laden van de batch Polybase. De instellingen voor fasering zijn alleen van toepassing op Azure Data Warehouse-workloads.
+Als u een Azure SQL Data Warehouse als sink of bron gebruikt, moet u een faserings locatie voor het laden van poly base-batches kiezen. Met poly Base kan batch in bulk worden geladen in plaats van de gegevensrij per rij te laden. Poly base verlaagt drastisch de laad tijd in de SQL DW.
 
-## <a name="parameterized-datasets"></a>Gegevenssets met parameters
+## <a name="parameterizing-data-flows"></a>Parameterizing-gegevens stromen
 
-Als u geparameteriseerde gegevenssets gebruikt, zorg er dan voor dat de parameterwaarden instellen.
+### <a name="parameterized-datasets"></a>Gegevens sets met para meters
 
-![Parameters voor stroom uitvoeren](media/data-flow/params.png "Parameters")
+Als uw gegevens stroom gebruikmaakt van parameter gegevens sets, stelt u de parameter waarden in op het tabblad **instellingen** .
 
-## <a name="parameterized-data-flows"></a>Met parameters gegevensstromen
+Para(media/data-flow/params.png "meters") voor de ![gegevens stroom parameter uitvoeren]
 
-Als u parameters in de gegevensstroom hebt, stelt u de dynamische waarden van uw stroom gegevensparameters hier in de sectie Parameters van de activiteit gegevensstroom uitvoeren. U kunt de ADF-pijplijn expressietaal (alleen voor de parameter tekenreekstypen) of de expressietaal gegevens Flow gebruiken de parameterwaarden met dynamische expressies of letterlijke statische waarden in te stellen.
+### <a name="parameterized-data-flows"></a>Gegevens stromen met para meters
 
-![Voorbeeld van de gegevensstroom Parameter Execute](media/data-flow/parameter-example.png "Parameter voorbeeld")
+Als uw gegevens stroom is para meters, stelt u de dynamische waarden van de para meters voor de gegevens stroom in op het tabblad **para meters** . U kunt de taal van de ADF-pijplijn expressie (alleen voor teken reeks typen) of de taal van de gegevens stroom expressie gebruiken om dynamische of letterlijke parameter waarden toe te wijzen. Zie [Data flow-para meters](parameters-data-flow.md)voor meer informatie.
 
-### <a name="debugging-data-flows-with-parameters"></a>Gegevens voor foutopsporing stromen met parameters
+Voor beeld van para(media/data-flow/parameter-example.png "meter") ![Data flow para meter voor uitvoeren van gegevens stroom]
 
-Op dit moment kunt u gegevensstromen met parameters van de pijplijn foutopsporing uitvoeren met behulp van de activiteit execute gegevensstroom alleen fouten opsporen. Interactieve debug-sessies in ADF gegevensstroom is binnenkort beschikbaar. Uitvoeringen van pijplijn en foutopsporing wordt uitgevoerd, maar werkt met parameters.
+## <a name="pipeline-debug-of-data-flow-activity"></a>Pijp lijn fout opsporing van gegevens stroom activiteit
 
-Er is een goede gewoonte om te maken van de gegevensstroom met statische inhoud zodat u beschikt over de metagegevens van de volledige kolom doorgifte beschikbaar tijdens de ontwerpfase voor probleemoplossing. Vervolgens de statische gegevensset vervangen door een gegevensset voor dynamische parameters, wanneer u uw stroom gegevenspijplijn operationeel maken.
+Als u een pijp lijn voor fout opsporing wilt uitvoeren met een activiteit voor gegevens stromen, moet u overschakelen op de modus voor het opsporen van gegevens stromen via de schuif regelaar voor **fout opsporing van gegevens stromen** op de bovenste balk. Met de foutopsporingsmodus kunt u de gegevens stroom uitvoeren op een actief Spark-cluster. Zie [debug mode (foutopsporingsmodus](concepts-data-flow-debug-mode.md)) voor meer informatie.
+
+Knop Debug- ![knop](media/data-flow/debugbutton.png "fout") opsporing
+
+De pijp lijn voor fout opsporing wordt uitgevoerd op het actieve debug-cluster, niet de Integration runtime-omgeving die is opgegeven in de instellingen voor de activiteit van de gegevens stroom. U kunt de compute-omgeving voor fout opsporing kiezen wanneer u de foutopsporingsmodus opstart.
+
+## <a name="monitoring-the-data-flow-activity"></a>De activiteit gegevens stroom bewaken
+
+De activiteit gegevens stroom heeft een speciale bewakings ervaring waarbij u gegevens over partitionering, fase tijd en gegevens afkomst kunt weer geven. Open het deel venster bewaking via het pictogram bril onder **acties**. Zie [gegevens stromen bewaken](concepts-data-flow-monitoring.md)voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie andere controlestroomactiviteiten die door Data Factory worden ondersteund: 
+
+Zie controle stroom activiteiten die worden ondersteund door Data Factory: 
 
 - [If Condition Activity](control-flow-if-condition-activity.md)
 - [Execute Pipeline Activity](control-flow-execute-pipeline-activity.md)
