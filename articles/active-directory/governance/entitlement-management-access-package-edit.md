@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 07/23/2019
+ms.date: 09/26/2019
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 17c85d53d05193313f9e166b88beb2a0f82eb197
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
-ms.translationtype: HT
+ms.openlocfilehash: 4a79cf166025ced6cb08d2f9e24801ea498fdc1c
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68618368"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71326382"
 ---
 # <a name="edit-and-manage-an-existing-access-package-in-azure-ad-entitlement-management-preview"></a>Een bestaand toegangs pakket bewerken en beheren in azure AD-rechts beheer (preview-versie)
 
@@ -34,9 +34,9 @@ Met een toegangs pakket kunt u een eenmalige configuratie uitvoeren van resource
 
 In dit artikel wordt beschreven hoe u bestaande toegangs pakketten bewerkt en beheert.
 
-## <a name="add-resource-roles"></a>Resource rollen toevoegen
+## <a name="add-resource-roles"></a>Resourcerollen toevoegen
 
-Een resource-rol is een verzameling machtigingen die zijn gekoppeld aan een resource. De manier waarop u resources beschikbaar maakt voor gebruikers, is door resource rollen toe te voegen aan uw toegangs pakket. U kunt resource rollen toevoegen voor groepen, toepassingen en share point-sites.
+Een resource-rol is een verzameling machtigingen die zijn gekoppeld aan een resource. De manier waarop u resources beschikbaar maakt voor gebruikers, is door resource rollen toe te voegen aan uw toegangs pakket. U kunt resource rollen toevoegen voor groepen, teams, toepassingen en share point-sites.
 
 **Vereiste rol:** Globale beheerder, gebruikers beheerder, catalogus eigenaar of toegangs pakket beheer
 
@@ -50,38 +50,49 @@ Een resource-rol is een verzameling machtigingen die zijn gekoppeld aan een reso
 
     ![Toegangs pakket-resource rollen toevoegen](./media/entitlement-management-access-package-edit/resource-roles-add.png)
 
-1. Afhankelijk van of u een groep, een toepassing of een share point-site wilt toevoegen, voert u de stappen uit in een van de volgende secties van de resource-rol.
+1. Afhankelijk van of u een groep, team, toepassing of share point-site wilt toevoegen, voert u de stappen uit in een van de volgende secties van de resource-rol.
 
-### <a name="add-a-group-resource-role"></a>Een groeps resource functie toevoegen
+### <a name="add-a-group-or-team-resource-role"></a>Een resource functie voor een groep of team toevoegen
 
-U kunt met het rechten beheer automatisch gebruikers toevoegen aan een groep wanneer ze een toegangs pakket toewijzen. 
+U kunt met het rechten beheer automatisch gebruikers toevoegen aan een groep of een micro soft-team wanneer ze een toegangs pakket toewijzen. 
 
-- Wanneer een groep deel uitmaakt van een toegangs pakket en een gebruiker aan dat toegangs pakket is toegewezen, wordt de gebruiker aan die groep toegevoegd, indien deze nog niet aanwezig is.
-- Wanneer de toewijzing van een toegangs pakket voor een gebruiker verloopt, worden deze verwijderd uit de groep, tenzij ze momenteel een toewijzing hebben aan een ander toegangs pakket dat dezelfde groep bevat.
+- Wanneer een groep of team deel uitmaakt van een toegangs pakket en een gebruiker aan dat toegangs pakket is toegewezen, wordt de gebruiker toegevoegd aan die groep of dit team, als deze nog niet aanwezig is.
+- Wanneer de toewijzing van een toegangs pakket voor een gebruiker verloopt, worden deze verwijderd uit de groep of het team, tenzij ze momenteel een toewijzing hebben aan een ander toegangs pakket dat dezelfde groep of hetzelfde team bevat.
 
-U kunt een wille keurige Office 365-groep of Azure AD-beveiligings groep selecteren.  Beheerders kunnen een groep toevoegen aan een catalogus. Catalog-eigen aren kunnen een wille keurige groep toevoegen aan de catalogus als ze eigenaar van de groep zijn. Houd bij het selecteren van een groep de volgende Azure AD-beperkingen in acht:
+U kunt elke [Azure AD-beveiligings groep of Office 365-groep](../fundamentals/active-directory-groups-create-azure-portal.md)selecteren.  Beheerders kunnen een groep toevoegen aan een catalogus. Catalog-eigen aren kunnen een wille keurige groep toevoegen aan de catalogus als ze eigenaar van de groep zijn. Houd bij het selecteren van een groep de volgende Azure AD-beperkingen in acht:
 
-- Wanneer een gebruiker, inclusief een gast, wordt toegevoegd als een lid aan een groep, kunnen ze alle andere leden van de groep zien.
+- Wanneer een gebruiker, inclusief een gast, wordt toegevoegd als een lid aan een groep of team, kunnen ze alle andere leden van die groep of dit team zien.
 - Azure AD kan het lidmaatschap van een groep die is gesynchroniseerd vanuit Windows Server Active Directory met Azure AD Connect of die in Exchange Online is gemaakt als distributie groep niet wijzigen.  
 - Het lidmaatschap van dynamische groepen kan niet worden bijgewerkt door een lid toe te voegen of te verwijderen, zodat dynamische groepslid maatschappen niet geschikt zijn voor gebruik met rechten beheer.
 
-1. Klik op de pagina **resource rollen toevoegen aan toegangs pakket** op **groepen** om het deel venster groepen selecteren te openen.
+Zie groepen en [Office 365-groepen en micro soft teams](/microsoftteams/office-365-groups) [vergelijken](/office365/admin/create-groups/compare-groups) voor meer informatie.
 
-1. Selecteer de groepen die u wilt toevoegen in het toegangs pakket.
+1. Klik op de pagina **resource rollen toevoegen aan toegangs pakket** op **groepen en teams** om het deel venster groepen selecteren te openen.
+
+1. Selecteer de groepen en teams die u wilt toevoegen in het toegangs pakket.
 
     ![Toegangs pakket-resource rollen toevoegen-groepen selecteren](./media/entitlement-management-access-package-edit/group-select.png)
 
 1. Klik op **Selecteren**.
 
+    Wanneer u de groep of het team selecteert, wordt in de kolom **subtype** een van de volgende subtypen weer geven:
+
+    |  |  |
+    | --- | --- |
+    | Beveiliging | Wordt gebruikt voor het verlenen van toegang tot resources. |
+    | Distributie | Wordt gebruikt voor het verzenden van meldingen naar een groep personen. |
+    | O365 | Office 365-groep waarvoor geen teams zijn ingeschakeld. Wordt gebruikt voor samen werking tussen gebruikers, zowel binnen als buiten uw bedrijf. |
+    | Team | Office 365-groep waarvoor teams zijn ingeschakeld. Wordt gebruikt voor samen werking tussen gebruikers, zowel binnen als buiten uw bedrijf. |
+
 1. Selecteer in de lijst **rol** de optie **eigenaar** of **lid**.
 
     Doorgaans selecteert u de leden rol. Als u de rol eigenaar selecteert, kunnen gebruikers andere leden of eigen aren toevoegen of verwijderen.
 
-    ![Toegangs pakket-resource functie voor een groep toevoegen](./media/entitlement-management-access-package-edit/group-role.png)
+    ![Toegangs pakket-resource functie toevoegen voor een groep of team](./media/entitlement-management-access-package-edit/group-role.png)
 
 1. Klik op **Toevoegen**.
 
-    Gebruikers met een bestaande toewijzing aan het toegangs pakket worden automatisch lid van deze groep wanneer ze worden toegevoegd.
+    Gebruikers met een bestaande toewijzing aan het toegangs pakket worden automatisch lid van deze groep of dit team wanneer ze worden toegevoegd.
 
 ### <a name="add-an-application-resource-role"></a>Een toepassings resource functie toevoegen
 
@@ -294,7 +305,15 @@ U kunt een aanvraag die in behandeling is, alleen annuleren als deze nog niet is
 
 ## <a name="copy-my-access-portal-link"></a>De koppeling naar mijn Access-Portal kopiëren
 
-De meeste gebruikers in uw Directory kunnen zich aanmelden bij de portal van mijn toegang en er wordt automatisch een lijst met toegangs pakketten weer geven die ze kunnen aanvragen. Voor gebruikers van externe zakelijke partners die nog niet in uw Directory zijn, moet u deze een koppeling sturen die ze kunnen gebruiken om een toegangs pakket aan te vragen. Zolang het toegangs pakket is ingeschakeld voor externe gebruikers en u een beleid hebt voor de map van de externe gebruiker, kan de externe gebruiker de koppeling naar mijn Access-Portal gebruiken om het toegangs pakket aan te vragen.
+De meeste gebruikers in uw Directory kunnen zich aanmelden bij de portal van mijn toegang en er wordt automatisch een lijst met toegangs pakketten weer geven die ze kunnen aanvragen. Voor gebruikers van externe zakelijke partners die nog niet in uw Directory zijn, moet u deze een koppeling sturen die ze kunnen gebruiken om een toegangs pakket aan te vragen. 
+
+Het is belang rijk dat u de volledige koppeling naar de portal van mijn Access kopieert wanneer u deze naar een interne zakelijke partner verzendt. Dit zorgt ervoor dat de partner toegang krijgt tot de portal van uw Directory om de aanvraag te doen. 
+
+De koppeling wordt gestart met ' myaccess ', bevat een directory-hint en eindigt met een toegangs pakket-id. Zorg ervoor dat de koppeling alle volgende bevat:
+
+ `https://myaccess.microsoft.com/@<directory_hint>#/access-packages/<access_package_id>`
+
+Zolang het toegangs pakket is ingeschakeld voor externe gebruikers en u een beleid hebt voor de map van de externe gebruiker, kan de externe gebruiker de koppeling naar mijn Access-Portal gebruiken om het toegangs pakket aan te vragen.
 
 **Vereiste rol:** Globale beheerder, gebruikers beheerder, catalogus eigenaar of toegangs pakket beheer
 

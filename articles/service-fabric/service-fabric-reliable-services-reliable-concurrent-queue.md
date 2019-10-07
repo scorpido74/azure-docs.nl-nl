@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 5/1/2017
 ms.author: atsenthi
-ms.openlocfilehash: 8cb35d6265bafe2b259774a55119d33f8ae94fe9
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
-ms.translationtype: HT
+ms.openlocfilehash: 776d330e36e6bcafe610bbab54e13ff6c41e2edf
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599254"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350288"
 ---
 # <a name="introduction-to-reliableconcurrentqueue-in-azure-service-fabric"></a>Inleiding tot ReliableConcurrentQueue in azure Service Fabric
 Betrouw bare, gelijktijdige wachtrij is een asynchrone, transactionele en gerepliceerde wachtrij, die een hoge gelijktijdigheid voor bewerkingen in de wachtrij plaatsen en verwijderen. Het is ontworpen om hoge door Voer en lage latentie te bieden door de strikte FIFO-volg orde die wordt geleverd door een [betrouw bare wachtrij](https://msdn.microsoft.com/library/azure/dn971527.aspx) te verminderen en in plaats daarvan een best mogelijke volg orde te bieden.
@@ -45,17 +45,24 @@ Een voor beeld van een use-case voor ReliableConcurrentQueue is het scenario voo
 * De wachtrij garandeert geen strikte FIFO-bestelling.
 * De wachtrij leest geen eigen schrijf bewerkingen. Als een item binnen een trans actie in de wachtrij wordt geplaatst, wordt het niet weer gegeven in een dewachtrij binnen dezelfde trans actie.
 * Dewachtrijen zijn niet van elkaar geïsoleerd. Als item *a* wordt verwijderd uit de *txnA*van de trans actie, zelfs als *txnA* niet is doorgevoerd, zou item *a* niet zichtbaar zijn voor een gelijktijdige trans actie *txnB*.  Als *txnA* afbreekt, wordt *A* onmiddellijk zichtbaar voor *txnB* .
-* *TryPeekAsync* -gedrag kan worden geïmplementeerd met behulp van een *TryDequeueAsync* en de trans actie af te breken. Een voor beeld hiervan is te vinden in de sectie programmeer patronen.
+* *TryPeekAsync* -gedrag kan worden geïmplementeerd met behulp van een *TryDequeueAsync* en de trans actie af te breken. Een voor beeld van dit gedrag vindt u in de sectie programmeer patronen.
 * Aantal is niet-transactioneel. Het kan worden gebruikt om een idee te krijgen van het aantal elementen in de wachtrij, maar dit is een tijdgebonden punt en kan niet worden vertrouwd op.
 * De dure verwerking van items in de wachtrij mag niet worden uitgevoerd terwijl de trans actie actief is, om langlopende trans acties te voor komen die invloed kunnen hebben op de prestaties van het systeem.
 
 ## <a name="code-snippets"></a>Code fragmenten
 Laat ons enkele code fragmenten zien en de verwachte uitvoer. Afhandeling van uitzonde ringen wordt in deze sectie genegeerd.
 
+### <a name="instantiation"></a>Instantiëring
+Het maken van een exemplaar van een betrouw bare, gelijktijdige wachtrij is vergelijkbaar met een andere betrouw bare verzameling.
+
+```csharp
+IReliableConcurrentQueue<int> queue = await this.StateManager.GetOrAddAsync<IReliableConcurrentQueue<int>>("myQueue");
+```
+
 ### <a name="enqueueasync"></a>EnqueueAsync
 Hier volgen enkele code fragmenten voor het gebruik van EnqueueAsync, gevolgd door de verwachte uitvoer.
 
-- *Voor beeld 1: Eén taak in wachtrij plaatsen*
+- *Case 1: Eén taak voor in wachtrij plaatsen @ no__t-0
 
 ```
 using (var txn = this.StateManager.CreateTransaction())
@@ -74,7 +81,7 @@ Stel dat de taak is voltooid en dat er geen gelijktijdige trans acties zijn die 
 > 20, 10
 
 
-- *Voor beeld 2: Parallelle taak in wachtrij*
+- *Case 2: Parallelle taak in wachtrij @ no__t-0
 
 ```
 // Parallel Task 1
@@ -103,7 +110,7 @@ Stel dat de taken zijn voltooid, dat de taken parallel werden uitgevoerd en dat 
 Hier volgen enkele code fragmenten voor het gebruik van TryDequeueAsync, gevolgd door de verwachte uitvoer. Stel dat de wachtrij al is gevuld met de volgende items in de wachtrij:
 > 10, 20, 30, 40, 50, 60
 
-- *Voor beeld 1: Taak met één dewachtrij*
+- *Case 1: Enkele dewachtrij-taak @ no__t-0
 
 ```
 using (var txn = this.StateManager.CreateTransaction())
@@ -118,7 +125,7 @@ using (var txn = this.StateManager.CreateTransaction())
 
 Stel dat de taak is voltooid en dat er geen gelijktijdige trans acties zijn die de wachtrij wijzigen. Omdat er geen interferentie kan worden gemaakt over de volg orde van de items in de wachtrij, kunnen drie van de items in een wille keurige volg orde worden verwijderd. Er wordt geprobeerd de items in de oorspronkelijke volg orde (in de wachtrij) te houden, maar dit kan worden afgesteld als gevolg van gelijktijdige bewerkingen of fouten.  
 
-- *Voor beeld 2: Taak parallel dewachtrij*
+- *Case 2: Taak voor parallelle dewachtrij @ no__t-0
 
 ```
 // Parallel Task 1
@@ -146,7 +153,7 @@ Stel dat de taken zijn voltooid, dat de taken parallel werden uitgevoerd en dat 
 
 Hetzelfde item wordt *niet* weer gegeven in beide lijsten. Als dequeue1 *10*, *30*heeft, is dequeue2 dus *20*, *40*.
 
-- *Voor beeld 3: Ordening van de wachtrij met trans actie afbreken*
+- *Case 3: Ordening van de wachtrij met trans actie afbreken @ no__t-0
 
 Als een trans actie wordt afgebroken met een in-Flight wachtrij, worden de items weer gegeven in de kop van de wachtrij. De volg orde waarin de items worden geplaatst op het hoofd van de wachtrij is niet gegarandeerd. We kijken naar de volgende code:
 
@@ -174,7 +181,7 @@ Dit geldt ook voor alle gevallen waarin de trans actie niet is *doorgevoerd*.
 In deze sectie kijken we naar een paar programmeer patronen die handig kunnen zijn bij het gebruik van ReliableConcurrentQueue.
 
 ### <a name="batch-dequeues"></a>Batch-dewachtrijen
-Een aanbevolen programmerings patroon is dat de Consumer-taak de dewachtrij van de klant uit een batch heeft verwijderd in plaats van één wachtrij tegelijk uit te voeren. De gebruiker kan ervoor kiezen om vertragingen tussen elke batch of de Batch grootte te beperken. Het volgende code fragment toont dit programmeer model.  In dit voor beeld wordt de verwerking uitgevoerd nadat de trans actie is doorgevoerd, dus als er een fout optreedt tijdens de verwerking, gaan de niet-verwerkte items verloren zonder dat ze zijn verwerkt.  De verwerking kan ook worden uitgevoerd binnen het bereik van de trans actie, maar dit kan een negatieve invloed op de prestaties hebben en vereist het verwerken van de items die al zijn verwerkt.
+Een aanbevolen programmerings patroon is dat de Consumer-taak de dewachtrij van de klant uit een batch heeft verwijderd in plaats van één wachtrij tegelijk uit te voeren. De gebruiker kan ervoor kiezen om vertragingen tussen elke batch of de Batch grootte te beperken. Het volgende code fragment toont dit programmeer model. Houd er rekening mee dat in dit voor beeld de verwerking wordt uitgevoerd nadat de trans actie is doorgevoerd, dus als er een fout optreedt tijdens de verwerking, gaan de niet-verwerkte items verloren zonder dat ze zijn verwerkt.  De verwerking kan ook worden uitgevoerd binnen het bereik van de trans actie, maar dit kan een negatieve invloed hebben op de prestaties en vereist het verwerken van de items die al zijn verwerkt.
 
 ```
 int batchSize = 5;
@@ -337,7 +344,7 @@ using (var txn = this.StateManager.CreateTransaction())
 ```
 
 ## <a name="must-read"></a>Moet worden gelezen
-* [Reliable Services Quick Start](service-fabric-reliable-services-quick-start.md)
+* [Snelstartgids Reliable Services](service-fabric-reliable-services-quick-start.md)
 * [Werken met betrouwbare verzamelingen](service-fabric-work-with-reliable-collections.md)
 * [Reliable Services meldingen](service-fabric-reliable-services-notifications.md)
 * [Back-up en herstel (nood herstel) Reliable Services](service-fabric-reliable-services-backup-restore.md)
