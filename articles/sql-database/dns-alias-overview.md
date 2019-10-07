@@ -7,16 +7,16 @@ ms.subservice: operations
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: oslake
-ms.author: moslake
-ms.reviewer: genemi, ayolubek, jrasnick
+author: rohitnayakmsft
+ms.author: rohitna
+ms.reviewer: genemi, jrasnick, vanto
 ms.date: 06/26/2019
-ms.openlocfilehash: 3d0a4b5890ed5758f4045459815fb4ebbffe75c6
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
-ms.translationtype: HT
+ms.openlocfilehash: 5d37b41fa7b51871f9ce1b21c62de1f9ab7f3b82
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68550659"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058563"
 ---
 # <a name="dns-alias-for-azure-sql-database"></a>DNS-alias voor Azure SQL Database
 
@@ -60,7 +60,7 @@ De volgende eigenschappen zijn van toepassing op elke DNS-alias voor uw SQL Data
   - Wanneer u een SQL Database-Server neerzet, worden ook alle DNS-aliassen die naar de server verwijzen, door het Azure-systeem verwijderd.
 - *Niet gebonden aan een regio:* DNS-aliassen zijn niet gebonden aan een regio. DNS-aliassen kunnen worden bijgewerkt om te verwijzen naar een Azure SQL Database-Server die zich in een geografische regio bevindt.
   - Wanneer u echter een alias bijwerkt om te verwijzen naar een andere server, moeten beide servers aanwezig zijn in hetzelfde Azure- *abonnement*.
-- *Bevoegdheden* Voor het beheren van een DNS-alias moet de gebruiker machtigingen voor *Server Inzender* of hoger hebben. Zie [aan de slag met Access Control op basis van rollen in de Azure Portal](../role-based-access-control/overview.md)voor meer informatie.
+- *Machtigingen:* Voor het beheren van een DNS-alias moet de gebruiker machtigingen voor *Server Inzender* of hoger hebben. Zie [aan de slag met Access Control op basis van rollen in de Azure Portal](../role-based-access-control/overview.md)voor meer informatie.
 
 ## <a name="manage-your-dns-aliases"></a>Uw DNS-aliassen beheren
 
@@ -106,7 +106,7 @@ Momenteel heeft een DNS-alias de volgende beperkingen:
 - *DNS-zoek opdracht:* De enige gezaghebbende manier om te controleren naar welke server een gegeven DNS-alias verwijst, is door een [DNS-zoek opdracht](https://docs.microsoft.com/windows-server/administration/windows-commands/nslookup)uit te voeren.
 - _Het controleren van tabellen wordt niet ondersteund:_ U kunt geen DNS-alias gebruiken op een Azure SQL Database Server waarvoor *tabel controle* is ingeschakeld voor een Data Base.
   - De tabel controle is afgeschaft.
-  - We raden u aan om over te stappen op de [controle](sql-database-auditing.md)van blobs.
+  - We raden u aan om over te stappen op de [controle van blobs](sql-database-auditing.md).
 
 ## <a name="related-resources"></a>Gerelateerde resources
 

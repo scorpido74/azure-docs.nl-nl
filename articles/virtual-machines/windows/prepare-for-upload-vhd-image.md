@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 05/11/2019
 ms.author: genli
-ms.openlocfilehash: 3922388aaa7dd244b74404e50001e9c87870728d
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
-ms.translationtype: HT
+ms.openlocfilehash: 86ce2ada9ebd19c88414fab33a62dda5ba41ecb0
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71937494"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71949653"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Een VHD of VHDX van Windows voorbereiden om te uploaden naar Azure
 
@@ -52,11 +52,11 @@ Als u de virtuele schijf moet converteren naar de vereiste indeling voor Azure, 
 Nadat u de schijf hebt geconverteerd, maakt u een virtuele machine die gebruikmaakt van de schijf. Start en meld u aan bij de virtuele machine om deze voor te bereiden voor het uploaden.
 
 ### <a name="use-hyper-v-manager-to-convert-the-disk"></a>Hyper-V-beheer gebruiken om de schijf te converteren 
-1. Open Hyper-V-beheer en selecteer uw lokale computer aan de linkerkant. Selecteer in het menu boven de computer lijst **actie** > **bewerken schijf**.
+1. Open Hyper-V-beheer en selecteer uw lokale computer aan de linkerkant. Selecteer in het menu boven de computer lijst **actie** > -**schijf bewerken**.
 2. Selecteer uw virtuele schijf op de pagina **virtuele harde schijf zoeken** .
-3. Selecteer op de pagina **actie kiezen** de optie**volgende** **omzetten** > .
+3. Selecteer op de pagina **actie kiezen** de optie  >  **converteren** **volgende**.
 4. Als u wilt converteren van VHDX, selecteert u **VHD** > **volgende**.
-5. Als u wilt converteren van een dynamisch uitbreid bare schijf, selecteert u de optie **vaste grootte** > **volgende**.
+5. Als u wilt converteren van een dynamisch uitbreid bare schijf, selecteert u **vaste grootte** > **volgende**.
 6. Zoek en selecteer een pad om het nieuwe VHD-bestand op te slaan.
 7. Selecteer **Finish**.
 
@@ -83,16 +83,15 @@ Voer de volgende opdrachten uit vanaf een [opdracht prompt venster met verhoogde
 
 1. Alle statische permanente routes in de routerings tabel verwijderen:
    
-   * Als u de route tabel wilt weer `route print` geven, voert u uit vanaf de opdracht prompt.
-   * Controleer de `Persistence Routes` secties. Als er een permanente route is, gebruikt u `route delete` de opdracht om deze te verwijderen.
+   * Als u de route tabel wilt weer geven, voert u `route print` uit vanaf de opdracht regel.
+   * Controleer de `Persistence Routes`-secties. Als er een permanente route is, gebruikt u de `route delete`-opdracht om deze te verwijderen.
 2. De WinHTTP-proxy verwijderen:
    
     ```PowerShell
     netsh winhttp reset proxy
     ```
 
-    Als de virtuele machine moet werken met een specifieke proxy, voegt u een proxy uitzondering toe aan het Azure IP[-](https://blogs.msdn.microsoft.com/mast/2015/05/18/what-is-the-ip-address-168-63-129-16/
-)adres (168.63.129.16) zodat de virtuele machine verbinding kan maken met Azure:
+    Als de virtuele machine met een specifieke proxy moet werken, voegt u een proxy uitzondering toe aan het Azure IP-adres ([168.63.129.16 @ no__t-1) zodat de virtuele machine verbinding kan maken met Azure:
     ```
     $proxyAddress="<your proxy server>"
     $proxyBypassList="<your list of bypasses>;168.63.129.16"
@@ -100,7 +99,7 @@ Voer de volgende opdrachten uit vanaf een [opdracht prompt venster met verhoogde
     netsh winhttp set proxy $proxyAddress $proxyBypassList
     ```
 
-3. Stel het SAN-beleid van [`Onlineall`](https://technet.microsoft.com/library/gg252636.aspx)de schijf in op:
+3. Stel het SAN-beleid van de schijf in op [`Onlineall`](https://technet.microsoft.com/library/gg252636.aspx):
    
     ```PowerShell
     diskpart 
@@ -112,10 +111,10 @@ Voer de volgende opdrachten uit vanaf een [opdracht prompt venster met verhoogde
     exit   
     ```
 
-4. UTC-tijd (Coordinated Universal Time) instellen voor Windows. Stel ook het opstart type van de Windows Time-service`w32time`() `Automatic`in op:
+4. UTC-tijd (Coordinated Universal Time) instellen voor Windows. Stel ook het opstart type van de Windows Time-service (`w32time`) in op `Automatic`:
    
     ```PowerShell
-    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\TimeZoneInformation' -name "RealTimeIsUniversal" -Value 1 -Type DWord -force
+    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\TimeZoneInformation' -Name "RealTimeIsUniversal" -Value 1 -Type DWord -Force
 
     Set-Service -Name w32time -StartupType Automatic
     ```
@@ -124,12 +123,12 @@ Voer de volgende opdrachten uit vanaf een [opdracht prompt venster met verhoogde
     ```PowerShell
     powercfg /setactive SCHEME_MIN
     ```
-6. Zorg ervoor dat de omgevings `TMP` variabelen `TEMP` en zijn ingesteld op de standaard waarden:
+6. Zorg ervoor dat de omgevings variabelen `TEMP` en `TMP` zijn ingesteld op hun standaard waarden:
 
     ```PowerShell
-    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Environment' -name "TEMP" -Value "%SystemRoot%\TEMP" -Type ExpandString -force
+    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Environment' -Name "TEMP" -Value "%SystemRoot%\TEMP" -Type ExpandString -Force
 
-    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Environment' -name "TMP" -Value "%SystemRoot%\TEMP" -Type ExpandString -force
+    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Environment' -Name "TMP" -Value "%SystemRoot%\TEMP" -Type ExpandString -Force
     ```
 
 ## <a name="check-the-windows-services"></a>Controleer de Windows-Services
@@ -153,56 +152,56 @@ Set-Service -Name RemoteRegistry -StartupType Automatic
 Controleer of de volgende instellingen juist zijn geconfigureerd voor externe toegang:
 
 >[!NOTE] 
->Er wordt mogelijk een fout bericht weer gegeven wanneer `Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services -name <object name> -value <value>`u uitvoert. U kunt dit bericht veilig negeren. Dit betekent alleen dat het domein de configuratie niet pusht via een groepsbeleid-object.
+>Er wordt mogelijk een fout bericht weer gegeven wanneer u `Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services -Name <object name> -Value <value>` uitvoert. U kunt dit bericht veilig negeren. Dit betekent alleen dat het domein de configuratie niet pusht via een groepsbeleid-object.
 
 1. Remote Desktop Protocol (RDP) is ingeschakeld:
    
     ```PowerShell
-    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server' -name "fDenyTSConnections" -Value 0 -Type DWord -force
+    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server' -Name "fDenyTSConnections" -Value 0 -Type DWord -Force
 
-    Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services' -name "fDenyTSConnections" -Value 0 -Type DWord -force
+    Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services' -Name "fDenyTSConnections" -Value 0 -Type DWord -Force
     ```
    
 2. De RDP-poort is correct ingesteld. De standaard poort is 3389:
    
     ```PowerShell
-   Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\Winstations\RDP-Tcp' -name "PortNumber" -Value 3389 -Type DWord -force
+   Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\Winstations\RDP-Tcp' -Name "PortNumber" -Value 3389 -Type DWord -Force
     ```
     Wanneer u een virtuele machine implementeert, worden de standaard regels gemaakt op basis van poort 3389. Als u het poort nummer wilt wijzigen, doet u dat nadat de virtuele machine in Azure is geïmplementeerd.
 
 3. De listener luistert in elke netwerk interface:
    
     ```PowerShell
-    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\Winstations\RDP-Tcp' -name "LanAdapter" -Value 0 -Type DWord -force
+    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\Winstations\RDP-Tcp' -Name "LanAdapter" -Value 0 -Type DWord -Force
    ```
 4. Configureer de modus voor verificatie op netwerk niveau (NLA) voor de RDP-verbindingen:
    
     ```PowerShell
-   Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp' -name "UserAuthentication" -Value 1 -Type DWord -force
+   Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp' -Name "UserAuthentication" -Value 1 -Type DWord -Force
 
-    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp' -name "SecurityLayer" -Value 1 -Type DWord -force
+    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp' -Name "SecurityLayer" -Value 1 -Type DWord -Force
 
-    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp' -name "fAllowSecProtocolNegotiation" -Value 1 -Type DWord -force
+    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp' -Name "fAllowSecProtocolNegotiation" -Value 1 -Type DWord -Force
      ```
 
 5. Keep-Alive-waarde instellen:
     
     ```PowerShell
-    Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services' -name "KeepAliveEnable" -Value 1  -Type DWord -force
-    Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services' -name "KeepAliveInterval" -Value 1  -Type DWord -force
-    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\Winstations\RDP-Tcp' -name "KeepAliveTimeout" -Value 1 -Type DWord -force
+    Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services' -Name "KeepAliveEnable" -Value 1  -Type DWord -Force
+    Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services' -Name "KeepAliveInterval" -Value 1  -Type DWord -Force
+    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\Winstations\RDP-Tcp' -Name "KeepAliveTimeout" -Value 1 -Type DWord -Force
     ```
 6. Opnieuw verbinding
     
     ```PowerShell
-    Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services' -name "fDisableAutoReconnect" -Value 0 -Type DWord -force
-    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\Winstations\RDP-Tcp' -name "fInheritReconnectSame" -Value 1 -Type DWord -force
-    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\Winstations\RDP-Tcp' -name "fReconnectSame" -Value 0 -Type DWord -force
+    Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services' -Name "fDisableAutoReconnect" -Value 0 -Type DWord -Force
+    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\Winstations\RDP-Tcp' -Name "fInheritReconnectSame" -Value 1 -Type DWord -Force
+    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\Winstations\RDP-Tcp' -Name "fReconnectSame" -Value 0 -Type DWord -Force
     ```
 7. Het aantal gelijktijdige verbindingen beperken:
     
     ```PowerShell
-    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\Winstations\RDP-Tcp' -name "MaxInstanceCount" -Value 4294967295 -Type DWord -force
+    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\Winstations\RDP-Tcp' -Name "MaxInstanceCount" -Value 4294967295 -Type DWord -Force
     ```
 8. Alle zelfondertekende certificaten die zijn gekoppeld aan de RDP-listener verwijderen:
     
@@ -234,7 +233,7 @@ Controleer of de volgende instellingen juist zijn geconfigureerd voor externe to
 2. Voer de volgende opdracht uit in Power shell om WinRM toe te staan via de drie Firewall profielen (domein, privé en openbaar) en de externe Power shell-service in te scha kelen:
    
    ```PowerShell
-    Enable-PSRemoting -force
+    Enable-PSRemoting -Force
 
     Set-NetFirewallRule -DisplayName "Windows Remote Management (HTTP-In)" -Enabled True
    ```
@@ -293,16 +292,16 @@ Zorg ervoor dat de VM in orde, veilig en RDP toegankelijk is:
 
     ```powershell
     # Set up the guest OS to collect a kernel dump on an OS crash event
-    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\CrashControl' -name CrashDumpEnabled -Type DWord -force -Value 2
-    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\CrashControl' -name DumpFile -Type ExpandString -force -Value "%SystemRoot%\MEMORY.DMP"
-    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\CrashControl' -name NMICrashDump -Type DWord -force -Value 1
+    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\CrashControl' -Name CrashDumpEnabled -Type DWord -Force -Value 2
+    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\CrashControl' -Name DumpFile -Type ExpandString -Force -Value "%SystemRoot%\MEMORY.DMP"
+    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\CrashControl' -Name NMICrashDump -Type DWord -Force -Value 1
 
     # Set up the guest OS to collect user mode dumps on a service crash event
     $key = 'HKLM:\SOFTWARE\Microsoft\Windows\Windows Error Reporting\LocalDumps'
     if ((Test-Path -Path $key) -eq $false) {(New-Item -Path 'HKLM:\SOFTWARE\Microsoft\Windows\Windows Error Reporting' -Name LocalDumps)}
-    New-ItemProperty -Path $key -name DumpFolder -Type ExpandString -force -Value "c:\CrashDumps"
-    New-ItemProperty -Path $key -name CrashCount -Type DWord -force -Value 10
-    New-ItemProperty -Path $key -name DumpType -Type DWord -force -Value 2
+    New-ItemProperty -Path $key -Name DumpFolder -Type ExpandString -Force -Value "c:\CrashDumps"
+    New-ItemProperty -Path $key -Name CrashCount -Type DWord -Force -Value 10
+    New-ItemProperty -Path $key -Name DumpType -Type DWord -Force -Value 2
     Set-Service -Name WerSvc -StartupType Manual
     ```
 4. Controleer of de opslag plaats van de Windows Management Instrumentation (WMI) consistent is:
@@ -310,9 +309,9 @@ Zorg ervoor dat de VM in orde, veilig en RDP toegankelijk is:
     ```PowerShell
     winmgmt /verifyrepository
     ```
-    Als de opslag plaats is beschadigd, [raadpleegt u WMI: De opslag plaats is](https://blogs.technet.microsoft.com/askperf/2014/08/08/wmi-repository-corruption-or-not)beschadigd of niet.
+    Als de opslag plaats is beschadigd, raadpleegt u [WMI: Beschadiging van de opslag plaats of niet @ no__t-0.
 
-5. Zorg ervoor dat er geen andere toepassing gebruikmaakt van poort 3389. Deze poort wordt gebruikt voor de RDP-service in Azure. Voer het volgende uit `netstat -anob`om te zien welke poorten op de VM worden gebruikt:
+5. Zorg ervoor dat er geen andere toepassing gebruikmaakt van poort 3389. Deze poort wordt gebruikt voor de RDP-service in Azure. Als u wilt zien welke poorten worden gebruikt op de virtuele machine, voert u `netstat -anob`:
 
     ```PowerShell
     netstat -anob
@@ -400,21 +399,21 @@ In het ideale geval moet u de computer bijwerken op het niveau van de *patch*. A
 
 Het hulp programma voor systeem voorbereiding (Sysprep) is een proces dat u kunt uitvoeren om een Windows-installatie opnieuw in te stellen. Sysprep biedt een "out-of-Box"-ervaring door alle persoonlijke gegevens te verwijderen en verschillende onderdelen opnieuw in te stellen. 
 
-Normaal gesp roken voert u Sysprep uit om een sjabloon te maken van waaruit u verschillende virtuele machines kunt implementeren die een specifieke configuratie hebben. De sjabloon wordt een gegeneraliseerde *installatie kopie*genoemd.
+Normaal gesp roken voert u Sysprep uit om een sjabloon te maken van waaruit u verschillende virtuele machines kunt implementeren die een specifieke configuratie hebben. De sjabloon wordt een *gegeneraliseerde installatie kopie*genoemd.
 
 Als u slechts één VM van één schijf wilt maken, hoeft u geen Sysprep te gebruiken. In plaats daarvan kunt u de virtuele machine maken op basis van een *gespecialiseerde installatie kopie*. Zie voor informatie over het maken van een virtuele machine op basis van een gespecialiseerde schijf:
 
 - [Een virtuele machine maken op basis van een gespecialiseerde schijf](create-vm-specialized.md)
 - [Een virtuele machine maken op basis van een speciale VHD-schijf](https://docs.microsoft.com/azure/virtual-machines/windows/create-vm-specialized-portal?branch=master)
 
-Als u een gegeneraliseerde installatie kopie wilt maken, moet u Sysprep uitvoeren. Zie [voor meer informatie Sysprep gebruiken: Een inleiding](https://technet.microsoft.com/library/bb457073.aspx). 
+Als u een gegeneraliseerde installatie kopie wilt maken, moet u Sysprep uitvoeren. Zie voor meer informatie [How voor het gebruik van Sysprep: Een inleiding @ no__t-0. 
 
 Niet elke rol of toepassing die is geïnstalleerd op een Windows-computer, ondersteunt gegeneraliseerde installatie kopieën. Voordat u deze procedure uitvoert, moet u ervoor zorgen dat Sysprep de rol van de computer ondersteunt. Zie [Sysprep-ondersteuning voor Server functies](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles)voor meer informatie.
 
 ### <a name="generalize-a-vhd"></a>Een VHD generaliseren
 
 >[!NOTE]
-> Nadat u in `sysprep.exe` de volgende stappen hebt uitgevoerd, schakelt u de virtuele machine uit. Schakel deze optie niet weer in totdat u een installatie kopie maakt in Azure.
+> Nadat u `sysprep.exe` in de volgende stappen hebt uitgevoerd, schakelt u de virtuele machine uit. Schakel deze optie niet weer in totdat u een installatie kopie maakt in Azure.
 
 1. Meld u aan bij de Windows-VM.
 1. Voer een **opdracht prompt** uit als Administrator. 
@@ -430,7 +429,7 @@ De VHD is nu klaar om te worden geüpload. Zie [een gegeneraliseerde VHD uploade
 
 
 >[!NOTE]
-> Een aangepast bestand *Unattend. XML* wordt niet ondersteund. Hoewel we de `additionalUnattendContent` eigenschap ondersteunen, biedt dit alleen beperkte ondersteuning voor het toevoegen van opties voor [micro soft-Windows-Shell-Setup](https://docs.microsoft.com/windows-hardware/customize/desktop/unattend/microsoft-windows-shell-setup) in het bestand Unattend *. XML* dat door de inrichtings agent van Azure wordt gebruikt. U kunt bijvoorbeeld [additionalUnattendContent](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.compute.models.additionalunattendcontent?view=azure-dotnet) gebruiken om FirstLogonCommands en LogonCommands toe te voegen. Zie [voor beeld van AdditionalUnattendContent FirstLogonCommands](https://github.com/Azure/azure-quickstart-templates/issues/1407)voor meer informatie.
+> Een aangepast bestand *Unattend. XML* wordt niet ondersteund. Hoewel we de eigenschap `additionalUnattendContent` ondersteunen, biedt dit alleen beperkte ondersteuning voor het toevoegen van opties voor [micro soft-Windows-Shell-Setup](https://docs.microsoft.com/windows-hardware/customize/desktop/unattend/microsoft-windows-shell-setup) in het bestand *Unattend. XML* dat door de inrichtings agent van Azure wordt gebruikt. U kunt bijvoorbeeld [additionalUnattendContent](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.compute.models.additionalunattendcontent?view=azure-dotnet) gebruiken om FirstLogonCommands en LogonCommands toe te voegen. Zie [voor beeld van AdditionalUnattendContent FirstLogonCommands](https://github.com/Azure/azure-quickstart-templates/issues/1407)voor meer informatie.
 
 
 ## <a name="complete-the-recommended-configurations"></a>De aanbevolen configuraties volt ooien
@@ -440,7 +439,7 @@ De volgende instellingen zijn niet van invloed op het uploaden van de VHD. We ra
 * Nadat u de virtuele machine in azure hebt gemaakt, raden we u aan het wissel bestand op het *tijdelijke schijf volume* te plaatsen om de prestaties te verbeteren. U kunt de bestands plaatsing als volgt instellen:
 
    ```PowerShell
-   Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management' -name "PagingFiles" -Value "D:\pagefile.sys" -Type MultiString -force
+   Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management' -Name "PagingFiles" -Value "D:\pagefile.sys" -Type MultiString -Force
    ```
   Als een gegevens schijf aan de virtuele machine is gekoppeld, is de stationsletter van het tijdelijke station meestal *D*. Deze aanwijzing kan verschillen, afhankelijk van de instellingen en het aantal beschik bare stations.
   * Het is raadzaam om script blokken uit te scha kelen die mogelijk worden verschaft door antivirus software. Ze kunnen de Windows-inrichtings Agent-scripts die worden uitgevoerd wanneer u een nieuwe virtuele machine vanuit uw installatie kopie implementeert, belemmeren en blok keren.

@@ -6,16 +6,16 @@ keywords: hulpprogramma's voor datatechnologie, virtuele machine voor datatechno
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: data-science-vm
-author: vijetajo
-ms.author: vijetaj
+author: gvashishtha
+ms.author: gopalv
 ms.topic: conceptual
-ms.date: 09/11/2017
-ms.openlocfilehash: 2d3d37bcb6ee4bae82d82cf676211e9e1546cfad
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.date: 10/3/2019
+ms.openlocfilehash: 47a701cce348e86359947376b3d6a9915dfb2264
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70191982"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71950155"
 ---
 # <a name="data-science-virtual-machine-data-ingestion-tools"></a>Data Science Virtual Machine gegevensopnamehulpprogramma 's
 
@@ -65,7 +65,7 @@ Hier volgen enkele hulp middelen voor het verplaatsen van gegevens die beschikba
 | Wat is het?   | Hulp programma voor het importeren van gegevens uit verschillende bronnen in Azure Cosmos DB. Deze bronnen zijn onder andere JSON-bestanden, CSV-bestanden, SQL, MongoDB, Azure-tabel opslag, Amazon DynamoDB en Azure Cosmos DB SQL API-verzamelingen.      |
 | Ondersteunde DSVM-versies      | Windows      |
 | Wordt doorgaans gebruikt      | Importeren van bestanden van een virtuele machine naar CosmosDB, importeren van gegevens uit Azure-tabel opslag naar CosmosDB en het importeren van gegevens uit een Microsoft SQL Server-Data Base naar CosmosDB.     |
-|  Hoe kan ik gebruik / uitvoeren?    |   Als u de opdracht regel versie wilt gebruiken, opent u een opdracht prompt `dt`en typt u. Als u het hulp programma GUI wilt gebruiken, opent u een `dtui`opdracht prompt en typt u.    |
+|  Hoe kan ik gebruik / uitvoeren?    |   Als u de opdracht regel versie wilt gebruiken, opent u een opdracht prompt en typt u `dt`. Als u het hulp programma GUI wilt gebruiken, opent u een opdracht prompt en typt u `dtui`.    |
 | Koppelingen naar voorbeelden      | [Gegevens CosmosDB importeren](https://docs.microsoft.com/azure/cosmos-db/import-data)      |
 | Gerelateerde hulpprogram ma's op de DSVM      | AzCopy, AdlCopy      |
 
@@ -91,15 +91,3 @@ Hier volgen enkele hulp middelen voor het verplaatsen van gegevens die beschikba
 |  Hoe gebruikt en voert u deze uit?    |   Voer _blobfuse_ op een terminal.    |
 | Koppelingen naar voorbeelden      | [blobfuse op GitHub](https://github.com/Azure/azure-storage-fuse)      |
 | Gerelateerde hulpprogram ma's op de DSVM      | Azure-CLI      |
-
-
-## <a name="microsoft-data-management-gateway"></a>Microsoft Data Management Gateway
-
-|    |           |
-| ------------- | ------------- |
-| Wat is het?   | Een hulpprogramma voor het verbinding maken met on-premises gegevensbronnen cloud services voor gebruik.      |
-| Ondersteunde DSVM-versies      | Windows      |
-| Wordt doorgaans gebruikt      | Een VM wordt verbonden met een on-premises gegevensbron.      |
-|  Hoe kan ik gebruik / uitvoeren?    |   Open micro soft Data Management Gateway vanuit het menu Start.    |
-| Koppelingen naar voorbeelden      | [Gegevensbeheergateway](https://msdn.microsoft.com/library/dn879362.aspx)      |
-| Gerelateerde hulpprogram ma's op de DSVM      | AzCopy, AdlCopy, bcp    |

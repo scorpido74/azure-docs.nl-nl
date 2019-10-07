@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: db9f7e75af01ed83c39ef3a37ab2612426ef6ea4
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: a3faa76c1506664a075648edc7d57fbba542b011
+ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70099613"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71960535"
 ---
 # <a name="tutorial-define-a-new-device-type-in-your-azure-iot-central-application"></a>Zelfstudie: Een nieuw apparaattype definiëren in uw Azure IoT Central-toepassing
 
@@ -75,7 +75,7 @@ U hebt een Azure IoT Central-toepassing nodig om deze zelfstudie te voltooien. A
 
      Zie voor meer informatie de [snelstart over het maken van een toepassing](quick-deploy-iot-central.md).
 
-## <a name="create-a-device-template"></a>Een sjabloon voor een apparaat maken
+## <a name="create-a-device-template"></a>Een apparaatsjabloon maken
 
 Als bouwer kunt u de apparaatsjablonen in uw toepassing maken en bewerken. Wanneer u een apparaatsjabloon maakt, genereert Azure IoT Central een gesimuleerd apparaat op basis van de sjabloon. Het gesimuleerde apparaat genereert telemetrie waarmee u het gedrag van uw toepassing kunt testen voordat u een echt apparaat aansluit.
 
@@ -365,7 +365,7 @@ U kunt _opdrachten_ gebruiken om een operator in te schakelen om opdrachten rech
     | Weergavenaam         | Opdracht Echo    |
     | Veldnaam           | echo            |
     | Standaardtime-out      | 30              |
-    | Weergavetype         | text            |
+    | Gegevenstype         | text            |
     | Description          | Apparaatopdracht  |  
 
     U kunt extra invoer waarden toevoegen aan de opdracht door **+** te selecteren voor **invoer velden**.

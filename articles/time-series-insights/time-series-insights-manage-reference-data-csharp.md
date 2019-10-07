@@ -10,14 +10,14 @@ ms.reviewer: jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 08/08/2019
+ms.date: 10/03/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2b9bd4b3516ee03ce78fcf255eba011f86f9c29c
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: d4f206b63be38c902f93a084889e60184ce03e07
+ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68883938"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71958045"
 ---
 # <a name="manage-ga-reference-data-for-an-azure-time-series-insights-environment-by-using-c"></a>GA referentie gegevens beheren voor een Azure Time Series Insights omgeving met behulp vanC#
 
@@ -29,7 +29,7 @@ Voer de volgende stappen uit voordat u de voorbeeld code compileert en uitvoert:
 
 1. [Een set met referentie gegevens maken](time-series-insights-add-reference-data-set.md).
 
-1. Configureer het toegangs token voor verificatie voor de toepassing. Zorg ervoor dat het token wordt verkregen via de Azure Active Directory-API. U moet dit token door geven in `Authorization` de koptekst van elke query-API-aanvraag.
+1. Configureer het toegangs token voor verificatie voor de toepassing. Zorg ervoor dat het token wordt verkregen via de Azure Active Directory-API. U moet dit token door geven in de header `Authorization` van elke query-API-aanvraag.
 
    Zie [verificatie en autorisatie](time-series-insights-authentication-and-authorization.md)voor meer informatie over het instellen van niet-interactieve toepassingen.
 
@@ -40,7 +40,7 @@ Voer de volgende stappen uit voordat u de voorbeeld code compileert en uitvoert:
 
 ## <a name="project-dependencies"></a>Project afhankelijkheden
 
-Voeg NuGet- `Microsoft.IdentityModel.Clients.ActiveDirectory` pakketten `Newtonsoft.Json` en voor dit voor beeld toe.
+Voeg NuGet-pakketten toe `Microsoft.IdentityModel.Clients.ActiveDirectory` en `Newtonsoft.Json` voor dit voor beeld.
 
 ## <a name="c-sample-code"></a>C#voorbeeld code
 

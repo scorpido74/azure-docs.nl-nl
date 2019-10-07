@@ -8,15 +8,16 @@ ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
 author: dalechen
+manager: dcscontentpm
 ms.author: daleche
 ms.reviewer: jrasnik
 ms.date: 01/25/2019
-ms.openlocfilehash: 6dccfca256239f922c2243e2ebfab5c26835ee98
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
-ms.translationtype: HT
+ms.openlocfilehash: cd0ab6d89d88c594d283dc0718c0f58ebb98bf43
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566320"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71090804"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-sql-database"></a>Verbindings problemen met Azure SQL Database oplossen
 
@@ -65,7 +66,7 @@ Deze fout treedt op wanneer de data base wordt verplaatst (of opnieuw is geconfi
 1. Controleer het [Microsoft Azure-service dashboard](https://azure.microsoft.com/status) voor eventuele bekende storingen die zijn opgetreden tijdens de periode waarin de fouten zijn gerapporteerd door de toepassing.
 2. Toepassingen die verbinding maken met een Cloud service, zoals Azure SQL Database, moeten periodieke herconfiguratie gebeurtenissen verwachten en proberen logica te implementeren om deze fouten af te handelen in plaats van deze te halen als toepassings fouten aan gebruikers. Raadpleeg de sectie [tijdelijke fouten](sql-database-connectivity-issues.md) en de aanbevolen procedures en ontwerp richtlijnen op [SQL database ontwikkelings overzicht](sql-database-develop-overview.md) voor meer informatie en algemene strategieën voor nieuwe pogingen. Bekijk vervolgens code voorbeelden in [verbindings bibliotheken voor SQL database en SQL Server](sql-database-libraries.md) voor specifieke informatie.
 3. Wanneer een Data Base de resource limieten nadert, kan dit een probleem met de tijdelijke verbinding zijn. Zie [resource limieten](sql-database-resource-limits-database-server.md#what-happens-when-database-resource-limits-are-reached).
-4. Als er verbindings problemen blijven bestaan of als de duur waarvoor uw toepassing zich voordoet de fout groter is dan 60 seconden of als er meerdere exemplaren van de fout in een bepaalde dag worden weer gegeven, moet u een Azure-ondersteunings aanvraag indienen door **ondersteuning** voor Azure in te scha kelen [ ](https://azure.microsoft.com/support/options)Ondersteunings site.
+4. Als er verbindings problemen blijven bestaan of als de duur waarvoor uw toepassing zich voordoet de fout groter is dan 60 seconden of als er meerdere exemplaren van de fout in een bepaalde dag worden weer gegeven, moet u een Azure-ondersteunings aanvraag indienen door **ondersteuning** voor Azure in te scha kelen [ Ondersteunings](https://azure.microsoft.com/support/options) site.
 
 ## <a name="troubleshoot-persistent-errors"></a>Problemen met persistente fouten oplossen
 Als de toepassing permanent geen verbinding kan maken met Azure SQL Database, duidt dit meestal op een probleem met een van de volgende:
