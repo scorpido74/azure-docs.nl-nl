@@ -54,7 +54,7 @@
       href: install-office-on-wvd-master-image.md
     - name: Een GPU configureren voor Windows Virtual Desktop
       href: configure-vm-gpu.md
-    - name: Sessiehosts automatisch schalen
+    - name: Schaalsessie host dynamisch
       href: set-up-scaling-script.md
     - name: Feed aanpassen voor Windows Virtual Desktop-gebruikers
       href: customize-feed-for-virtual-desktop-users.md
@@ -84,7 +84,7 @@
   items:
     - name: 'Probleemoplossingsoverzicht, feedback en ondersteuning'
       href: troubleshoot-set-up-overview.md
-    - name: Problemen met de diagnostische functie identificeren
+    - name: Problemen identificeren en diagnosticeren
       href: diagnostics-role-service.md
     - name: Tenants en hostpools maken
       href: troubleshoot-set-up-issues.md

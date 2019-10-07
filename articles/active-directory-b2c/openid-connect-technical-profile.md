@@ -1,6 +1,6 @@
 ---
-title: Een technisch OpenId Connect-profiel te definiëren in een aangepast beleid in Azure Active Directory B2C | Microsoft Docs
-description: Definieer een technische OpenId Connect-profiel in een aangepast beleid in Azure Active Directory B2C.
+title: Definieer een OpenID Connect Connect Technical-profiel in een aangepast beleid in Azure Active Directory B2C | Microsoft Docs
+description: Definieer een OpenID Connect Connect Technical-profiel in een aangepast beleid in Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,33 +10,33 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 6d16415aa5111388ec2d2a1009ff477574ae42c5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: MT
+ms.openlocfilehash: 1e8f03b17c5e8ea68affa9fe83875382fd5d8512
+ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66512921"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68716702"
 ---
-# <a name="define-an-openid-connect-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Een technisch OpenId Connect-profiel te definiëren in een aangepast beleid voor Azure Active Directory B2C
+# <a name="define-an-openid-connect-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Een OpenID Connect Connect Technical-profiel definiëren in een Azure Active Directory B2C aangepast beleid
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Azure Active Directory (Azure AD) B2C biedt ondersteuning voor de [OpenId Connect](https://openid.net/2015/04/17/openid-connect-certification-program/) protocol-id-provider. OpenID Connect 1.0 definieert een identiteitslaag bovenop OAuth 2.0 en vertegenwoordigt de status van de techniek in moderne-verificatieprotocollen. Een technisch profiel is OpenId Connect, kunt u met een OpenId verbinding maken op basis van id-provider, zoals Azure AD federeren. Federatie met een id-provider, kunnen gebruikers melden zich aan met hun bestaande sociale of ondernemings-id's.
+Azure Active Directory-B2C (Azure AD) biedt ondersteuning voor de [OpenID Connect Connect](https://openid.net/2015/04/17/openid-connect-certification-program/) protocol-ID-provider. OpenID Connect Connect 1,0 definieert een Identity Layer boven op OAuth 2,0 en vertegenwoordigt de status van de kunst in moderne verificatie protocollen. Met een OpenID Connect Connect Technical-profiel kunt u communiceren met een OpenID connect-verbinding op basis van een id-provider, zoals Azure AD. Met federeren met een id-provider kunnen gebruikers zich aanmelden met hun bestaande sociale of bedrijfs identiteiten.
 
 ## <a name="protocol"></a>Protocol
 
-De **naam** kenmerk van de **Protocol** element moet worden ingesteld op `OpenIdConnect`. Bijvoorbeeld, het protocol voor de **MSA-OIDC** technische profiel is `OpenIdConnect`:
+Het **naam** kenmerk van het **protocol** element moet worden ingesteld op `OpenIdConnect`. Het protocol voor het technische profiel **MSA-OIDC** is `OpenIdConnect`bijvoorbeeld:
 
 ```XML
 <TechnicalProfile Id="MSA-OIDC">
   <DisplayName>Microsoft Account</DisplayName>
   <Protocol Name="OpenIdConnect" />
-  ...    
+  ...
 ```
 
-## <a name="input-claims"></a>Invoerclaims
+## <a name="input-claims"></a>Invoer claims
 
-De **InputClaims** en **InputClaimsTransformations** elementen zijn niet vereist. Maar mogelijk wilt u extra parameters verzenden naar uw id-provider. Het volgende voorbeeld wordt de **domain_hint** query-tekenreeksparameter met de waarde van `contoso.com` de autorisatie-aanvraag.
+De **InputClaims** -en **InputClaimsTransformations** -elementen zijn niet vereist. Maar u wilt mogelijk extra para meters naar uw ID-provider verzenden. In het volgende voor beeld wordt de **domain_hint** -query teken reeks parameter `contoso.com` met de waarde van aan de autorisatie aanvraag toegevoegd.
 
 ```XML
 <InputClaims>
@@ -44,22 +44,22 @@ De **InputClaims** en **InputClaimsTransformations** elementen zijn niet vereist
 </InputClaims>
 ```
 
-## <a name="output-claims"></a>Gebruikersclaims
+## <a name="output-claims"></a>Uitvoer claims
 
-De **OutputClaims** element bevat een lijst met claims die zijn geretourneerd door de identiteitsprovider OpenId Connect. Mogelijk moet u de naam van de claim die is gedefinieerd in uw beleid aan de naam die is gedefinieerd in de id-provider toewijzen. U kunt ook claims die niet zijn geretourneerd door de id-provider opnemen, zolang u de `DefaultValue` kenmerk.
+Het **OutputClaims** -element bevat een lijst met claims die zijn geretourneerd door de OpenID Connect Connect-ID-provider. Mogelijk moet u de naam van de claim die in uw beleid is gedefinieerd, toewijzen aan de naam die is gedefinieerd in de ID-provider. U kunt ook claims toevoegen die niet worden geretourneerd door de ID-provider, zolang u het `DefaultValue` kenmerk hebt ingesteld.
 
-De **OutputClaimsTransformations** element kan bevatten een verzameling van **OutputClaimsTransformation** elementen die worden gebruikt voor het wijzigen van de uitvoerclaims of nieuwe labels te genereren.
+Het **OutputClaimsTransformations** -element kan een verzameling **OutputClaimsTransformation** -elementen bevatten die worden gebruikt voor het wijzigen van de uitvoer claims of voor het genereren van nieuwe.
 
-Het volgende voorbeeld ziet u de claims die wordt geretourneerd door de Microsoft-Account-id-provider:
+In het volgende voor beeld worden de claims weer gegeven die zijn geretourneerd door de micro soft-account-ID-provider:
 
-- De **sub** claim die is toegewezen aan de **issuerUserId** claim.
-- De **naam** claim die is toegewezen aan de **displayName** claim.
-- De **e** zonder naam toewijzingen.
+- De **subclaim die** is toegewezen aan de **issuerUserId** -claim.
+- De **naam** claim die is toegewezen aan de **DisplayName** -claim.
+- Het **e-mail adres** zonder naam toewijzing.
 
-Het technische profiel retourneert ook claims die niet zijn geretourneerd door de id-provider:
+Het technische profiel retourneert ook claims die niet worden geretourneerd door de ID-provider:
 
-- De **identityProvider** claim met de naam van de id-provider.
-- De **authenticationSource** claim met een standaardwaarde van **socialIdpAuthentication**.
+- De claim **Identity provider** die de naam van de ID-provider bevat.
+- De **authenticationSource** claim met de standaard waarde **socialIdpAuthentication**.
 
 ```xml
 <OutputClaims>
@@ -75,38 +75,38 @@ Het technische profiel retourneert ook claims die niet zijn geretourneerd door d
 
 | Kenmerk | Vereist | Description |
 | --------- | -------- | ----------- |
-| client_id | Ja | De toepassings-id van de id-provider. |
-| IdTokenAudience | Nee | De doelgroep van het id_token. Als u opgeeft, wordt Azure AD B2C controleert of het token in een claim die wordt geretourneerd door de id-provider is en gelijk aan de versie die is opgegeven is. |
-| METAGEGEVENS | Ja | Een URL die verwijst naar een JSON-document-configuratie die is ingedeeld volgens de specificatie OpenID Connect Discovery, wat ook wel bekend als een bekende openid-configuratie-eindpunt. |
-| ProviderName | Nee | De naam van de id-provider. |
-| response_types | Nee | Het reactietype op basis van de OpenID Connect Core 1.0-specificatie. Mogelijke waarden: `id_token`, `code`, of `token`. |
-| response_mode | Nee | De methode die de id-provider gebruikt voor het verzenden van het resultaat terug naar Azure AD B2C. Mogelijke waarden: `query`, `form_post` (standaard), of `fragment`. |
-| scope | Nee | Het bereik van de aanvraag die is gedefinieerd op basis van de OpenID Connect Core 1.0-specificatie. Zoals `openid`, `profile`, en `email`. |
-| HttpBinding | Nee | De verwachte HTTP-binding met de toegang tot tokens en claims token-eindpunten. Mogelijke waarden: `GET` of `POST`.  |
-| ValidTokenIssuerPrefixes | Nee | Een sleutel die kan worden gebruikt voor het aanmelden bij elk van de tenants bij het gebruik van een multitenant-id-provider zoals Azure Active Directory. |
-| UsePolicyInRedirectUri | Nee | Hiermee wordt aangegeven of een beleidsregel gebruiken bij het maken van de omleidings-URI. Wanneer u uw toepassing in de id-provider configureert, moet u de omleidings-URI opgeven. De omleidings-URI verwijst naar Azure AD B2C, `https://login.microsoftonline.com/te/{tenant}/oauth2/authresp` (login.microsoftonline.com kan worden gewijzigd met de tenant-name.b2clogin.com).  Als u opgeeft `false`, moet u een omleidings-URI voor elk beleid dat u toevoegen. Bijvoorbeeld: `https://login.microsoftonline.com/te/{tenant}/{policy}/oauth2/authresp`. |
-| MarkAsFailureOnStatusCode5xx | Nee | Geeft aan of een aanvraag naar een externe service moet worden gemarkeerd als mislukt als de Http-statuscode in het bereik 5xx is. De standaardwaarde is `false`. |
-| DiscoverMetadataByTokenIssuer | Nee | Geeft aan of de OIDC-metagegevens moet worden gedetecteerd met behulp van de verlener in de JWT-token. |
+| client_id | Ja | De toepassings-id van de ID-provider. |
+| IdTokenAudience | Nee | De doel groep van de id_token. Indien opgegeven, Azure AD B2C controleert of het token zich in een claim bevindt die wordt geretourneerd door de ID-provider en is deze gelijk aan de waarde die is opgegeven. |
+| METAGEGEVENSARCHIEFMETHODE | Ja | Een URL die verwijst naar een JSON-configuratie document dat is opgemaakt volgens de OpenID Connect Connect-detectie specificatie, ook wel bekend als een bekende OpenID Connect-configuratie-eind punt. |
+| ProviderName | Nee | De naam van de ID-provider. |
+| response_types | Nee | Het antwoord type volgens de OpenID Connect Connect Core 1,0-specificatie. Mogelijke waarden: `id_token`, `code`of `token`. |
+| response_mode | Nee | De methode die de ID-provider gebruikt om het resultaat terug te sturen naar Azure AD B2C. Mogelijke waarden: `query`, `form_post` (standaard) of `fragment`. |
+| bereik | Nee | Het bereik van de aanvraag die is gedefinieerd volgens de OpenID Connect Connect Core 1,0-specificatie. `openid`Zoals, `profile`, en `email`. |
+| HttpBinding | Nee | De verwachte HTTP-binding met het toegangs token en claims token-eind punten. Mogelijke waarden: `GET` of `POST`.  |
+| ValidTokenIssuerPrefixes | Nee | Een sleutel die kan worden gebruikt om u aan te melden bij elk van de tenants wanneer u een multi tenant-ID-provider gebruikt, zoals Azure Active Directory. |
+| UsePolicyInRedirectUri | Nee | Hiermee wordt aangegeven of een beleid moet worden gebruikt bij het samen stellen van de omleidings-URI. Wanneer u uw toepassing in de ID-provider configureert, moet u de omleidings-URI opgeven. De omleidings-URI verwijst `https://login.microsoftonline.com/te/{tenant}/oauth2/authresp` naar Azure AD B2C, (login.microsoftonline.com kan veranderen met your-Tenant-name.b2clogin.com).  Als u opgeeft `false`, moet u een omleidings-URI toevoegen voor elk beleid dat u gebruikt. Bijvoorbeeld: `https://login.microsoftonline.com/te/{tenant}/{policy}/oauth2/authresp`. |
+| MarkAsFailureOnStatusCode5xx | Nee | Hiermee wordt aangegeven of een aanvraag naar een externe service als een fout moet worden gemarkeerd als de HTTP-status code zich in het 5xx bereik bevindt. De standaardwaarde is `false`. |
+| DiscoverMetadataByTokenIssuer | Nee | Geeft aan of de OIDC-meta gegevens moeten worden gedetecteerd met behulp van de verlener in het JWT-token. |
 
 ## <a name="cryptographic-keys"></a>Cryptografische sleutels
 
-De **CryptographicKeys** element bevat het volgende kenmerk:
+Het element **CryptographicKeys** bevat het volgende kenmerk:
 
 | Kenmerk | Vereist | Description |
 | --------- | -------- | ----------- |
-| client_secret | Ja | Het clientgeheim van de toepassing van id-provider. De cryptografische sleutel is alleen vereist als de **response_types** metagegevens is ingesteld op `code`. In dit geval wordt Azure AD B2C een aanroep voor het uitwisselen van de autorisatiecode voor een toegangstoken. Als de metagegevens is ingesteld op `id_token` kunt u de cryptografische sleutel weglaten.  |  
+| client_secret | Ja | Het client geheim van de identiteits provider toepassing. De cryptografische sleutel is alleen vereist als de **response_types** -meta gegevens `code`zijn ingesteld op. In dit geval maakt Azure AD B2C een andere aanroep voor het uitwisselen van de autorisatie code voor een toegangs token. Als de meta gegevens zijn ingesteld `id_token` op, kunt u de cryptografische sleutel weglaten.  |
 
-## <a name="redirect-uri"></a>Redirect Uri
- 
-Wanneer u de omleidings-URI van uw id-provider configureren, voert u `https://login.microsoftonline.com/te/tenant/oauth2/authresp`. Vervang **tenant** met de naam van uw tenant (bijvoorbeeld: contosob2c.onmicrosoft.com) of van de tenant-ID. De omleidings-URI moet zich in alleen kleine letters.
+## <a name="redirect-uri"></a>Omleidings-URI
 
-Als u de **b2clogin.com** domein in plaats van **login.microsoftonline.com** Zorg ervoor dat u b2clogin.com in plaats van login.microsoftonline.com.
+Wanneer u de omleidings-URI van uw ID- `https://login.microsoftonline.com/te/tenant/oauth2/authresp`provider configureert, voert u in. Zorg ervoor dat u de **Tenant** vervangt door de naam van de Tenant (bijvoorbeeld contosob2c.onmicrosoft.com) of de Tenant-id. De omleidings-URI moet in alle kleine letters zijn.
+
+Als u het **b2clogin.com** -domein gebruikt in plaats van **login.microsoftonline.com** , moet u ervoor zorgen dat u b2clogin.com gebruikt in plaats van login.microsoftonline.com.
 
 Voorbeelden:
 
-- [Microsoft-Account (MSA) toevoegen als een id-provider met behulp van aangepaste beleidsregels](active-directory-b2c-custom-setup-msa-idp.md)
-- [Meld u aan met behulp van Azure AD-accounts](active-directory-b2c-setup-aad-custom.md)
-- [Toestaan dat gebruikers zich aanmelden met een id-provider van het Azure AD met meerdere tenants met behulp van aangepaste beleidsregels](active-directory-b2c-setup-commonaad-custom.md)
+- [Micro soft-account (MSA) toevoegen als een id-provider met behulp van aangepast beleid](active-directory-b2c-custom-setup-msa-idp.md)
+- [Aanmelden met Azure AD-accounts](active-directory-b2c-setup-aad-custom.md)
+- [Gebruikers toestaan zich aan te melden bij een multi tenant Azure AD-ID-provider met behulp van aangepast beleid](active-directory-b2c-setup-commonaad-custom.md)
 
  
 

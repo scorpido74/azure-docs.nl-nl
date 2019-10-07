@@ -1,9 +1,9 @@
 ---
-title: ReliableConcurrentQueue in Azure Service Fabric
-description: ReliableConcurrentQueue is een hoge doorvoer wachtrij zodat parallelle enqueues en dequeues.
+title: ReliableConcurrentQueue in azure Service Fabric
+description: ReliableConcurrentQueue is een wachtrij met hoge door Voer waarmee parallelle in en dequeues zijn toegestaan.
 services: service-fabric
 documentationcenter: .net
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: raja,tyadam,masnider,vturecek
 ms.assetid: 62857523-604b-434e-bd1c-2141ea4b00d1
@@ -13,49 +13,49 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 5/1/2017
-ms.author: aljo
-ms.openlocfilehash: dbdfa4686c047fa7cf5d74cd9aca768447f9db93
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: MT
+ms.author: atsenthi
+ms.openlocfilehash: 8cb35d6265bafe2b259774a55119d33f8ae94fe9
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60774009"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68599254"
 ---
-# <a name="introduction-to-reliableconcurrentqueue-in-azure-service-fabric"></a>Inleiding tot ReliableConcurrentQueue in Azure Service Fabric
-Betrouwbare gelijktijdige wachtrij is een asynchrone, transactionele en gerepliceerde wachtrij welke functies hoog gelijktijdigheid voor in de wachtrij plaatsen en uit de wachtrij verwijderen bewerkingen. Het is ontworpen voor het leveren van hoge doorvoer en lage latentie door versoepeling van de strikte FIFO volgorde geleverd door [betrouwbare wachtrij](https://msdn.microsoft.com/library/azure/dn971527.aspx) en in plaats daarvan biedt een best-effort bestellen.
+# <a name="introduction-to-reliableconcurrentqueue-in-azure-service-fabric"></a>Inleiding tot ReliableConcurrentQueue in azure Service Fabric
+Betrouw bare, gelijktijdige wachtrij is een asynchrone, transactionele en gerepliceerde wachtrij, die een hoge gelijktijdigheid voor bewerkingen in de wachtrij plaatsen en verwijderen. Het is ontworpen om hoge door Voer en lage latentie te bieden door de strikte FIFO-volg orde die wordt geleverd door een [betrouw bare wachtrij](https://msdn.microsoft.com/library/azure/dn971527.aspx) te verminderen en in plaats daarvan een best mogelijke volg orde te bieden.
 
 ## <a name="apis"></a>API's
 
 |Gelijktijdige wachtrij                |Betrouwbare gelijktijdige wachtrij                                         |
 |--------------------------------|------------------------------------------------------------------|
-| void Enqueue(T item)           | Task EnqueueAsync(ITransaction tx, T item)                       |
-| BOOL TryDequeue (uit T resultaat)  | Taak < ConditionalValue < T >> TryDequeueAsync (tx ITransaction)  |
-| int Count()                    | long Count()                                                     |
+| in wachtrij plaatsen (T item)           | Taak EnqueueAsync (ITransaction TX, T item)                       |
+| BOOL TryDequeue (uitgaand resultaat)  | Taak < ConditionalValue < T > > TryDequeueAsync (ITransaction TX)  |
+| Aantal int ()                    | Lange telling ()                                                     |
 
-## <a name="comparison-with-reliable-queuehttpsmsdnmicrosoftcomlibraryazuredn971527aspx"></a>Vergelijking met [betrouwbare wachtrij](https://msdn.microsoft.com/library/azure/dn971527.aspx)
+## <a name="comparison-with-reliable-queuehttpsmsdnmicrosoftcomlibraryazuredn971527aspx"></a>Vergelijking met [betrouw bare wachtrij](https://msdn.microsoft.com/library/azure/dn971527.aspx)
 
-Betrouwbare gelijktijdige wachtrij wordt aangeboden als een alternatief voor [betrouwbare wachtrij](https://msdn.microsoft.com/library/azure/dn971527.aspx). Het moet worden gebruikt in gevallen waar strikte FIFO-volgorde niet vereist is, als FIFO vereist een negatieve gevolgen voor de met gelijktijdigheid te garanderen.  [Betrouwbare wachtrij](https://msdn.microsoft.com/library/azure/dn971527.aspx) vergrendelingen gebruikt om af te dwingen FIFO-volgorde, met maximaal één transactie toegestaan in de wachtrij plaatsen en maximaal één transactie uit de wachtrij verwijderen tegelijk toegestaan. Ter vergelijking: betrouwbare gelijktijdige wachtrij worden de bestellen beperking en kunt een aantal gelijktijdige transacties interleave hun in de wachtrij plaatsen en uit de wachtrij verwijderen bewerkingen. Best-effort bestellen is opgegeven, wordt echter nooit de relatieve positie van twee waarden in een betrouwbare gelijktijdige wachtrij kan worden gegarandeerd.
+Betrouw bare gelijktijdige wachtrij wordt aangeboden als alternatief voor een [betrouw bare wachtrij](https://msdn.microsoft.com/library/azure/dn971527.aspx). Het moet worden gebruikt in gevallen waarin strikte FIFO-ordening niet is vereist, omdat voor het garanderen van FIFO een afweging met gelijktijdigheid is vereist.  Een [betrouw bare wachtrij](https://msdn.microsoft.com/library/azure/dn971527.aspx) maakt gebruik van vergren delingen voor het afdwingen van FIFO-bestelling, met Maxi maal één trans actie die in de wachtrij mag worden geplaatst en Maxi maal één trans actie tegelijk mag worden verwijderd. In vergelijking zorgt een betrouw bare, gelijktijdige wachtrij voor een versoepeling van de ordenings beperking en kan elk aantal gelijktijdige trans acties interacties uitvoeren om de bewerkingen in de wachtrij te plaatsen en Best mogelijke ordening is beschikbaar, maar de relatieve volg orde van twee waarden in een betrouw bare, gelijktijdige wachtrij kan nooit worden gegarandeerd.
 
-Betrouwbare gelijktijdige wachtrij biedt een hogere doorvoer en lagere latentie dan [betrouwbare wachtrij](https://msdn.microsoft.com/library/azure/dn971527.aspx) wanneer er zijn meerdere gelijktijdige transacties enqueues uitvoeren en/of dequeues.
+Betrouw bare gelijktijdige wachtrij biedt hogere door Voer en een lagere latentie dan [betrouw bare wachtrij](https://msdn.microsoft.com/library/azure/dn971527.aspx) wanneer er meerdere gelijktijdige trans acties zijn die in en/of dewachtrijen uitvoeren.
 
-Een voorbeeld van een use-case voor de ReliableConcurrentQueue is de [berichtenwachtrij](https://en.wikipedia.org/wiki/Message_queue) scenario. In dit scenario, een of meer producenten maken en voeg items toe aan de wachtrij, en gebruikers van een of meer berichten ophalen van berichten uit de wachtrij en ze verwerken. Meerdere producenten en consumenten kunnen werken onafhankelijk van elkaar, met behulp van gelijktijdige transacties om te kunnen verwerken van de wachtrij.
+Een voor beeld van een use-case voor ReliableConcurrentQueue is het scenario voor de [berichten wachtrij](https://en.wikipedia.org/wiki/Message_queue) . In dit scenario maken en toevoegen een of meer bericht producenten items aan de wachtrij en kunnen een of meer gebruikers berichten uit de wachtrij halen en verwerken. Meerdere producenten en consumenten kunnen onafhankelijk werken, met behulp van gelijktijdige trans acties om de wachtrij te verwerken.
 
-## <a name="usage-guidelines"></a>Richtlijnen voor het gebruik
-* De wachtrij wordt verwacht dat de items in de wachtrij voor een lage bewaarperiode hebben. Dat wil zeggen, wilt de items blijven niet in de wachtrij gedurende een lange periode.
-* De wachtrij is geen garantie strikte FIFO bestellen.
-* De wachtrij heeft een eigen schrijfbewerkingen niet lezen. Als een item in de wachtrij geplaatste binnen een transactie is zijn deze niet zichtbaar voor een dequeuer binnen dezelfde transactie.
-* Dequeues zijn niet van elkaar geïsoleerd. Als item *A* uit wachtrij wordt geplaatst in transactie *txnA*, ook al *txnA* is item niet doorgevoerd, *A* zou niet zichtbaar zijn voor een gelijktijdige transactie *txnB*.  Als *txnA* wordt afgebroken, *A* wordt zichtbaar voor *txnB* onmiddellijk.
-* *TryPeekAsync* gedrag kan worden geïmplementeerd met behulp van een *TryDequeueAsync* en vervolgens de transactie afgebroken. Een voorbeeld hiervan vindt u in de sectie patronen programmeren.
-* Aantal is niet-transactionele. Het kan worden gebruikt voor een beter beeld van het aantal elementen in de wachtrij, maar vertegenwoordigt een point-in-time en kan niet worden gebruikt.
-* Duur verwerking op de dequeued items moet niet worden uitgevoerd tijdens de transactie actief is, om te voorkomen dat langlopende transacties waarvoor een prestatie-impact op het systeem.
+## <a name="usage-guidelines"></a>Gebruiks richtlijnen
+* De wachtrij verwacht dat de items in de wachtrij een lage Bewaar periode hebben. Dat wil zeggen dat de items gedurende een lange periode niet in de wachtrij blijven.
+* De wachtrij garandeert geen strikte FIFO-bestelling.
+* De wachtrij leest geen eigen schrijf bewerkingen. Als een item binnen een trans actie in de wachtrij wordt geplaatst, wordt het niet weer gegeven in een dewachtrij binnen dezelfde trans actie.
+* Dewachtrijen zijn niet van elkaar geïsoleerd. Als item *a* wordt verwijderd uit de *txnA*van de trans actie, zelfs als *txnA* niet is doorgevoerd, zou item *a* niet zichtbaar zijn voor een gelijktijdige trans actie *txnB*.  Als *txnA* afbreekt, wordt *A* onmiddellijk zichtbaar voor *txnB* .
+* *TryPeekAsync* -gedrag kan worden geïmplementeerd met behulp van een *TryDequeueAsync* en de trans actie af te breken. Een voor beeld hiervan is te vinden in de sectie programmeer patronen.
+* Aantal is niet-transactioneel. Het kan worden gebruikt om een idee te krijgen van het aantal elementen in de wachtrij, maar dit is een tijdgebonden punt en kan niet worden vertrouwd op.
+* De dure verwerking van items in de wachtrij mag niet worden uitgevoerd terwijl de trans actie actief is, om langlopende trans acties te voor komen die invloed kunnen hebben op de prestaties van het systeem.
 
-## <a name="code-snippets"></a>Codefragmenten
-We bekijken enkele codefragmenten en de verwachte uitvoer. Afhandeling van uitzonderingen wordt in deze sectie genegeerd.
+## <a name="code-snippets"></a>Code fragmenten
+Laat ons enkele code fragmenten zien en de verwachte uitvoer. Afhandeling van uitzonde ringen wordt in deze sectie genegeerd.
 
 ### <a name="enqueueasync"></a>EnqueueAsync
-Hier volgen enkele codefragmenten voor het gebruik van EnqueueAsync gevolgd door de verwachte uitvoer.
+Hier volgen enkele code fragmenten voor het gebruik van EnqueueAsync, gevolgd door de verwachte uitvoer.
 
-- *Geval 1: Taak in de wachtrij plaatsen*
+- *Voor beeld 1: Eén taak in wachtrij plaatsen*
 
 ```
 using (var txn = this.StateManager.CreateTransaction())
@@ -67,14 +67,14 @@ using (var txn = this.StateManager.CreateTransaction())
 }
 ```
 
-Wordt ervan uitgegaan dat de taak is voltooid en dat er geen gelijktijdige transacties wijzigen van de wachtrij is. De gebruiker kan de wachtrij bevat de items in een van de volgende orders verwachten:
+Stel dat de taak is voltooid en dat er geen gelijktijdige trans acties zijn die de wachtrij wijzigen. De gebruiker kan de wachtrij de items in een van de volgende orders laten bevatten:
 
 > 10, 20
 > 
 > 20, 10
 
 
-- *Geval 2: Parallelle taak in de wachtrij plaatsen*
+- *Voor beeld 2: Parallelle taak in wachtrij*
 
 ```
 // Parallel Task 1
@@ -96,14 +96,14 @@ using (var txn = this.StateManager.CreateTransaction())
 }
 ```
 
-Wordt ervan uitgegaan dat de taken is voltooid, of de taken parallel wordt uitgevoerd en dat er geen andere gelijktijdige transacties wijzigen van de wachtrij. Er is geen Deductie kan worden gemaakt over de volgorde van items in de wachtrij. Voor dit codefragment kunnen de items worden weergegeven in een van de 4. mogelijke volgorden.  De wachtrij probeert te houden van de items in de volgorde van de oorspronkelijke (in de wachtrij), maar kan worden gedwongen om deze te rangschikken vanwege gelijktijdige bewerkingen of fouten.
+Stel dat de taken zijn voltooid, dat de taken parallel werden uitgevoerd en dat er geen andere gelijktijdige trans acties zijn die de wachtrij wijzigen. Er kan geen interferentie worden gemaakt over de volg orde van items in de wachtrij. Voor dit code fragment kunnen de items worden weer gegeven in een van de vier! mogelijke ordeningen.  Er wordt geprobeerd de items in de oorspronkelijke volg orde (in de wachtrij) te houden, maar dit kan worden afgesteld als gevolg van gelijktijdige bewerkingen of fouten.
 
 
 ### <a name="dequeueasync"></a>DequeueAsync
-Hier volgen enkele codefragmenten voor het gebruik van TryDequeueAsync gevolgd door de verwachte uitvoer. Wordt ervan uitgegaan dat de wachtrij al is gevuld met de volgende items in de wachtrij:
+Hier volgen enkele code fragmenten voor het gebruik van TryDequeueAsync, gevolgd door de verwachte uitvoer. Stel dat de wachtrij al is gevuld met de volgende items in de wachtrij:
 > 10, 20, 30, 40, 50, 60
 
-- *Geval 1: Één taak uit de wachtrij verwijderen*
+- *Voor beeld 1: Taak met één dewachtrij*
 
 ```
 using (var txn = this.StateManager.CreateTransaction())
@@ -116,9 +116,9 @@ using (var txn = this.StateManager.CreateTransaction())
 }
 ```
 
-Wordt ervan uitgegaan dat de taak is voltooid en dat er geen gelijktijdige transacties wijzigen van de wachtrij is. Omdat er geen Deductie kan worden gemaakt over de volgorde van de items in de wachtrij, alle drie van de items kunnen worden uit de wachtrij genomen, in een willekeurige volgorde. De wachtrij probeert te houden van de items in de volgorde van de oorspronkelijke (in de wachtrij), maar kan worden gedwongen om deze te rangschikken vanwege gelijktijdige bewerkingen of fouten.  
+Stel dat de taak is voltooid en dat er geen gelijktijdige trans acties zijn die de wachtrij wijzigen. Omdat er geen interferentie kan worden gemaakt over de volg orde van de items in de wachtrij, kunnen drie van de items in een wille keurige volg orde worden verwijderd. Er wordt geprobeerd de items in de oorspronkelijke volg orde (in de wachtrij) te houden, maar dit kan worden afgesteld als gevolg van gelijktijdige bewerkingen of fouten.  
 
-- *Geval 2: Taken parallel uit de wachtrij verwijderen*
+- *Voor beeld 2: Taak parallel dewachtrij*
 
 ```
 // Parallel Task 1
@@ -142,13 +142,13 @@ using (var txn = this.StateManager.CreateTransaction())
 }
 ```
 
-Wordt ervan uitgegaan dat de taken is voltooid, of de taken parallel wordt uitgevoerd en dat er geen andere gelijktijdige transacties wijzigen van de wachtrij. Omdat er geen Deductie kan worden gemaakt over de volgorde van de items in de wachtrij en de lijsten *dequeue1* en *dequeue2* wordt elke twee items, in een willekeurige volgorde bevat.
+Stel dat de taken zijn voltooid, dat de taken parallel werden uitgevoerd en dat er geen andere gelijktijdige trans acties zijn die de wachtrij wijzigen. Omdat er geen interferentie kan worden gemaakt over de volg orde van de items in de wachtrij, bevatten de lijsten *dequeue1* en *dequeue2* elk twee items, in een wille keurige volg orde.
 
-Hetzelfde item wordt *niet* in beide lijsten worden weergegeven. Dus als dequeue1 *10*, *30*, en vervolgens dequeue2 zou hebben *20*, *40*.
+Hetzelfde item wordt *niet* weer gegeven in beide lijsten. Als dequeue1 *10*, *30*heeft, is dequeue2 dus *20*, *40*.
 
-- *Voorbeeld 3: Uit de wachtrij verwijderen bestellen met transactie is afgebroken*
+- *Voor beeld 3: Ordening van de wachtrij met trans actie afbreken*
 
-Een transactie met die onderweg zijn afgebroken dequeues plaatst die de items back-ups op de kop van de wachtrij maken. De volgorde waarin de items worden teruggeplaatst op de kop van de wachtrij kan niet worden gegarandeerd. We bekijken de volgende code:
+Als een trans actie wordt afgebroken met een in-Flight wachtrij, worden de items weer gegeven in de kop van de wachtrij. De volg orde waarin de items worden geplaatst op het hoofd van de wachtrij is niet gegarandeerd. We kijken naar de volgende code:
 
 ```
 using (var txn = this.StateManager.CreateTransaction())
@@ -160,21 +160,21 @@ using (var txn = this.StateManager.CreateTransaction())
     await txn.AbortAsync();
 }
 ```
-Wordt ervan uitgegaan dat de items uit wachtrij zijn geplaatst in de volgende volgorde:
+Stel dat de items in de wachtrij zijn geplaatst in de volgende volg orde:
 > 10, 20
 
-Wanneer we de transactie afgebroken, zou de items terug naar de kop van de wachtrij in een van de volgende orders worden toegevoegd:
+Wanneer de trans actie wordt afgebroken, worden de items in een van de volgende orders weer toegevoegd aan de kop van de wachtrij:
 > 10, 20
 > 
 > 20, 10
 
-Hetzelfde geldt voor alle gevallen waar de transactie niet met succes is *vastgelegd*.
+Dit geldt ook voor alle gevallen waarin de trans actie niet is *doorgevoerd*.
 
-## <a name="programming-patterns"></a>Patronen voor programmeren
-In deze sectie we bekijken enkele programmeertalen patronen die mogelijk nuttig zijn bij het gebruik van ReliableConcurrentQueue.
+## <a name="programming-patterns"></a>Programmeer patronen
+In deze sectie kijken we naar een paar programmeer patronen die handig kunnen zijn bij het gebruik van ReliableConcurrentQueue.
 
-### <a name="batch-dequeues"></a>Batch Dequeues
-Een aanbevolen programming patroon is voor de taak consument batch de dequeues in plaats van een wachtrij op een tijdstip. De gebruiker kan kiezen om te beperken van vertragingen tussen elke batch of de batchgrootte. Het volgende codefragment toont deze programmeermodel.  Houd er rekening mee dat in dit voorbeeld wordt het verwerken is voltooid nadat de transactie doorgevoerd wordt, dus als een storing optreden tijdens het verwerken, zonder dat is verwerkt de niet-verwerkte items gaan verloren.  De verwerking kan ook worden uitgevoerd binnen het bereik van de transactie, maar dit een negatieve invloed op prestaties hebben kan en vereist dat de verwerking van de items die al verwerkt.
+### <a name="batch-dequeues"></a>Batch-dewachtrijen
+Een aanbevolen programmerings patroon is dat de Consumer-taak de dewachtrij van de klant uit een batch heeft verwijderd in plaats van één wachtrij tegelijk uit te voeren. De gebruiker kan ervoor kiezen om vertragingen tussen elke batch of de Batch grootte te beperken. Het volgende code fragment toont dit programmeer model.  In dit voor beeld wordt de verwerking uitgevoerd nadat de trans actie is doorgevoerd, dus als er een fout optreedt tijdens de verwerking, gaan de niet-verwerkte items verloren zonder dat ze zijn verwerkt.  De verwerking kan ook worden uitgevoerd binnen het bereik van de trans actie, maar dit kan een negatieve invloed op de prestaties hebben en vereist het verwerken van de items die al zijn verwerkt.
 
 ```
 int batchSize = 5;
@@ -219,8 +219,8 @@ while(!cancellationToken.IsCancellationRequested)
 }
 ```
 
-### <a name="best-effort-notification-based-processing"></a>Best-Effort melding gebaseerde verwerking
-Een andere interessante programming patroon maakt gebruik van de Count-API. Hier kunnen we best-effort verwerking voor de wachtrij op basis van meldingen implementeren. De wachtrij aantal kan worden gebruikt om te beperken van een in de wachtrij plaatsen of een taak uit de wachtrij verwijderen.  Houd er rekening mee dat het vorige voorbeeld, omdat de verwerking vindt plaats buiten de transactie niet-verwerkte items mogelijk verloren als er een fout optreedt tijdens de verwerking.
+### <a name="best-effort-notification-based-processing"></a>Op meldingen gebaseerde verwerking op basis van het hoogste inspanning
+Een ander interessant programmeer patroon maakt gebruik van de API Count. Hier kunnen we de op berichten gebaseerde verwerking op basis van meldingen voor de wachtrij implementeren. Het aantal wacht rijen kan worden gebruikt om een taak in de wachtrij te plaatsen of uit te zetten.  Zoals in het vorige voor beeld, omdat de verwerking buiten de trans actie plaatsvindt, kunnen niet-verwerkte items verloren gaan als er een fout optreedt tijdens de verwerking.
 
 ```
 int threshold = 5;
@@ -267,10 +267,10 @@ while(!cancellationToken.IsCancellationRequested)
 }
 ```
 
-### <a name="best-effort-drain"></a>Best-Effort Clusterbesturingssysteem
-Veel van de wachtrij kan niet worden gegarandeerd door de gelijktijdige aard van de gegevensstructuur.  Het is mogelijk dat, zelfs als er geen gebruikersbewerkingen voor de in de wachtrij die onderweg zijn zijn, een aanroep van bepaalde TryDequeueAsync mogelijk niet retourneren een item was voorheen opgenomen in de wachtrij en doorgevoerd.  Het item in de wachtrij kan worden gegarandeerd *uiteindelijk* zichtbaar te maken uit de wachtrij verwijderen, maar zonder een mechanisme voor out-of-band-communicatie, een onafhankelijke consumer niet weten dat de wachtrij heeft bereikt een stabiele status, zelfs als alle producenten zijn gestopt en nieuwe in de wachtrij plaatsen bewerkingen zijn toegestaan. De bewerking van het clusterbesturingssysteem is dus best-effort zoals hieronder wordt geïmplementeerd.
+### <a name="best-effort-drain"></a>Afvoer met Best effort
+Een afvoer van de wachtrij kan niet worden gegarandeerd vanwege de gelijktijdige aard van de gegevens structuur.  Het is mogelijk dat, zelfs als er geen gebruikers bewerkingen zijn in de vlucht, een bepaalde aanroep naar TryDequeueAsync mogelijk geen item retourneert dat eerder in de wachtrij is geplaatst en doorgevoerd.  Het in de wachtrij geplaatste item moet *uiteindelijk* zichtbaar worden gemaakt voor het dequeueren, maar zonder een out-of-band-communicatie mechanisme kan een onafhankelijke consument niet weten dat de wachtrij een stationaire status heeft bereikt, zelfs als alle producenten zijn gestopt en Nee nieuwe bewerkingen voor plaatsen zijn toegestaan. De afvoer bewerking is dus de beste werk wijze, zoals hieronder is geïmplementeerd.
 
-De gebruiker moet alle verdere producent en consument taken stoppen en wachten op actieve transacties doorvoeren of afbreken, voordat u probeert te corrigeren van de wachtrij.  Als de gebruiker het verwachte aantal items in de wachtrij kent, kunnen ze een melding dat bepaalt dat alle items hebt zijn uit wachtrij verwijderd welke instellen.
+De gebruiker moet alle verdere producer-en Consumer taken stoppen en wachten tot trans acties die in de vlucht zijn doorgevoerd of afgebroken, voordat wordt geprobeerd om de wachtrij leeg te laten.  Als de gebruiker het verwachte aantal items in de wachtrij kent, kunnen ze een melding instellen die aangeeft dat alle items zijn verwijderd uit de wachtrij.
 
 ```
 int numItemsDequeued;
@@ -306,8 +306,8 @@ do
 } while (ret.HasValue);
 ```
 
-### <a name="peek"></a>Piek
-ReliableConcurrentQueue beschikt niet over de *TryPeekAsync* api. Gebruikers kunnen krijgen de peek semantische met behulp van een *TryDequeueAsync* en vervolgens de transactie afgebroken. In dit voorbeeld dequeues worden verwerkt alleen als de waarde van het item groter dan is *10*.
+### <a name="peek"></a>Bekijken
+ReliableConcurrentQueue biedt geen *TryPeekAsync* -API. Gebruikers kunnen de semantische semantiek weer geven met behulp van een *TryDequeueAsync* en de trans actie vervolgens afbreken. In dit voor beeld worden de wachtrij alleen verwerkt als de waarde van het item groter is dan *10*.
 
 ```
 using (var txn = this.StateManager.CreateTransaction())
@@ -336,12 +336,12 @@ using (var txn = this.StateManager.CreateTransaction())
 }
 ```
 
-## <a name="must-read"></a>Moet lezen
-* [Snel starten van Reliable Services](service-fabric-reliable-services-quick-start.md)
+## <a name="must-read"></a>Moet worden gelezen
+* [Reliable Services Quick Start](service-fabric-reliable-services-quick-start.md)
 * [Werken met betrouwbare verzamelingen](service-fabric-work-with-reliable-collections.md)
-* [Meldingen van betrouwbare Services](service-fabric-reliable-services-notifications.md)
-* [Reliable Services back-up en herstellen (herstel na noodgevallen)](service-fabric-reliable-services-backup-restore.md)
-* [Configuratie van betrouwbare status Manager](service-fabric-reliable-services-configuration.md)
-* [Aan de slag met Service Fabric-webservices-API](service-fabric-reliable-services-communication-webapi.md)
-* [Geavanceerd gebruik van het programmeermodel voor Reliable Services](service-fabric-reliable-services-advanced-usage.md)
-* [Referentie voor ontwikkelaars voor betrouwbare verzamelingen](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)
+* [Reliable Services meldingen](service-fabric-reliable-services-notifications.md)
+* [Back-up en herstel (nood herstel) Reliable Services](service-fabric-reliable-services-backup-restore.md)
+* [Configuratie van betrouw bare status Manager](service-fabric-reliable-services-configuration.md)
+* [Aan de slag met Service Fabric Web API-services](service-fabric-reliable-services-communication-webapi.md)
+* [Geavanceerd gebruik van het Reliable Services-programmeer model](service-fabric-reliable-services-advanced-usage.md)
+* [Naslag informatie voor ontwikkel aars voor betrouw bare verzamelingen](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)

@@ -82,6 +82,8 @@
       href: functions-deployment-technologies.md
     - name: Gebeurtenissen en berichten
       items:
+        - name: Betrouwbare gebeurtenissenverwerking
+          href: functions-reliable-event-processing.md
         - name: Ontwerpen voor identieke invoer
           href: functions-idempotent.md
     - name: Triggers en bindingen

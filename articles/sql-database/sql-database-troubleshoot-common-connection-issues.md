@@ -1,6 +1,6 @@
 ---
 title: Algemene verbindingsfouten oplossen Azure SQL-database
-description: Stappen voor het identificeren en oplossen van veelvoorkomende verbindingsfouten voor Azure SQL Database.
+description: Stappen voor het identificeren en oplossen van algemene verbindings fouten voor Azure SQL Database.
 services: sql-database
 ms.service: sql-database
 ms.subservice: monitor
@@ -10,83 +10,82 @@ ms.topic: conceptual
 author: dalechen
 ms.author: daleche
 ms.reviewer: jrasnik
-manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: d278fd6ed06b58db052154e632e565de36853e77
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
-ms.translationtype: MT
+ms.openlocfilehash: 6dccfca256239f922c2243e2ebfab5c26835ee98
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60331431"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68566320"
 ---
-# <a name="troubleshoot-connection-issues-to-azure-sql-database"></a>Verbindingsproblemen met Azure SQL Database oplossen
+# <a name="troubleshoot-connection-issues-to-azure-sql-database"></a>Verbindings problemen met Azure SQL Database oplossen
 
-Wanneer de verbinding met Azure SQL Database is mislukt, ontvangt u [foutberichten](sql-database-develop-error-messages.md). In dit artikel is een gecentraliseerde onderwerp waarmee u problemen met Azure SQL Database. Dit introduceert [de algemene oorzaken](#cause) van verbindingsproblemen, raadt [een hulpprogramma voor probleemoplossing](#try-the-troubleshooter-for-azure-sql-database-connectivity-issues) die identiteit het probleem, en bevat de stappen voor probleemoplossing om op te lossen [tijdelijke fouten](#troubleshoot-transient-errors) en [permanente of niet-tijdelijke fouten](#troubleshoot-persistent-errors). 
+Wanneer de verbinding met Azure SQL Database mislukt, ontvangt u [fout berichten](sql-database-develop-error-messages.md). Dit artikel is een gecentraliseerd onderwerp waarmee u Azure SQL Database verbindings problemen kunt oplossen. Hierin worden [de veelvoorkomende oorzaken](#cause) van verbindings problemen beschreven, wordt [een hulp programma voor probleem oplossing](#try-the-troubleshooter-for-azure-sql-database-connectivity-issues) aanbevolen waarmee u het probleem kunt verhelpen en stappen voor het oplossen van problemen met [tijdelijke fouten](#troubleshoot-transient-errors) en [permanente of niet-tijdelijke fouten. ](#troubleshoot-persistent-errors). 
 
-Als u de verbindingsproblemen ondervindt, kunt u de stappen voor problemen oplossen die worden beschreven in dit artikel.
+Als u de verbindings problemen ondervindt, probeert u de stappen voor probleem oplossing die in dit artikel worden beschreven.
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
 ## <a name="cause"></a>Oorzaak
 
-Problemen met de verbinding kunnen worden veroorzaakt door een van de volgende:
+Verbindings problemen kunnen een van de volgende oorzaken hebben:
 
-* Aanbevolen procedures en richtlijnen voor het ontwerpen van toepassing tijdens het ontwerpproces voor de toepassing is mislukt.  Zie [overzicht van de ontwikkeling van de SQL Database](sql-database-develop-overview.md) aan de slag.
-* Herconfiguratie van Azure SQL-Database
+* Fout bij het Toep assen van best practices en ontwerp richtlijnen tijdens het ontwerp proces van de toepassing.  Zie [SQL database Development Overview](sql-database-develop-overview.md) om aan de slag te gaan.
+* Azure SQL Database opnieuw configureren
 * Firewallinstellingen
-* Verbindingstime-out
-* Onjuiste aanmeldingsgegevens
-* Maximumlimiet bereikt in een Azure SQL Database-resources
+* Time-out van verbinding
+* Onjuiste aanmeldings gegevens
+* De maximum limiet is bereikt op enkele Azure SQL Database bronnen
 
-Verbindingsproblemen met Azure SQL Database kunnen over het algemeen als volgt worden ingedeeld:
+Over het algemeen kunnen verbindings problemen met Azure SQL Database als volgt worden geclassificeerd:
 
-* [Tijdelijke fouten (tijdelijke of onregelmatige)](#troubleshoot-transient-errors)
-* [Permanente of niet-tijdelijke fouten (fouten regelmatig terugkerende)](#troubleshoot-persistent-errors)
+* [Tijdelijke fouten (kort geduurd of tijdelijk)](#troubleshoot-transient-errors)
+* [Permanente of niet-tijdelijke fouten (fouten die regel matig worden herhaald)](#troubleshoot-persistent-errors)
 
-## <a name="try-the-troubleshooter-for-azure-sql-database-connectivity-issues"></a>Probeer de probleemoplosser voor problemen met de netwerkverbinding van de Azure SQL Database
+## <a name="try-the-troubleshooter-for-azure-sql-database-connectivity-issues"></a>Probeer de probleem oplosser voor Azure SQL Database verbindings problemen
 
-Als u een specifieke verbinding-fout optreedt, probeert u [dit hulpprogramma](https://support.microsoft.com/help/10085/troubleshooting-connectivity-issues-with-microsoft-azure-sql-database), die wordt kunt u snel identiteit en het probleem kunt oplossen.
+Als er een specifieke verbindings fout optreedt, kunt u [Dit hulp programma](https://support.microsoft.com/help/10085/troubleshooting-connectivity-issues-with-microsoft-azure-sql-database)proberen om uw probleem snel te identificeren en op te lossen.
 
 ## <a name="troubleshoot-transient-errors"></a>Tijdelijke fouten oplossen
 
-Wanneer een toepassing verbinding met een Azure SQL-database maakt, ontvangt u de volgende strekking weergegeven:
+Wanneer een toepassing verbinding maakt met een Azure-SQL database, wordt het volgende fout bericht weer gegeven:
 
 ```
 Error code 40613: "Database <x> on server <y> is not currently available. Please retry the connection later. If the problem persists, contact customer support, and provide them the session tracing ID of <z>"
 ```
 
 > [!NOTE]
-> Dit foutbericht wordt gewoonlijk tijdelijk (tijdelijke).
+> Dit fout bericht is doorgaans tijdelijk (korte duur).
 > 
 > 
 
-Deze fout treedt op wanneer de database wordt verplaatst (of opnieuw geconfigureerd) en uw toepassing verliest de verbinding met de database. Database herconfiguratie gebeurtenissen optreden vanwege een geplande gebeurtenis is (bijvoorbeeld een software-upgrade) of een niet-geplande gebeurtenis (bijvoorbeeld een proces loopt vast of load balancing). De meeste herconfiguratie van gebeurtenissen zijn algemeen analyserapporten en maximaal in minder dan 60 seconden moeten worden uitgevoerd. Echter kunnen deze gebeurtenissen van tijd tot tijd langer duren om te voltooien, zoals wanneer een grote transactie zorgt ervoor het herstel van een langlopende dat.
+Deze fout treedt op wanneer de data base wordt verplaatst (of opnieuw is geconfigureerd) en de verbinding met de data base verloren is gegaan met de toepassing. Gebeurtenissen voor het opnieuw configureren van de data base vinden plaats vanwege een geplande gebeurtenis (bijvoorbeeld een software-upgrade) of een niet-geplande gebeurtenis (bijvoorbeeld een proces storing of taak verdeling). De meeste opnieuw geconfigureerde gebeurtenissen zijn meestal korte tijd en moeten binnen Maxi maal 60 seconden worden voltooid. Het volt ooien van deze gebeurtenissen kan echter af en toe langer duren, bijvoorbeeld wanneer een grote trans actie een langlopend herstel veroorzaakt.
 
-### <a name="steps-to-resolve-transient-connectivity-issues"></a>Stappen voor het oplossen van problemen met de tijdelijke netwerkverbinding
+### <a name="steps-to-resolve-transient-connectivity-issues"></a>Stappen voor het oplossen van problemen met de tijdelijke verbinding
 
-1. Controleer de [servicedashboard van Microsoft Azure](https://azure.microsoft.com/status) bekende storingen die zijn opgetreden tijdens de periode gedurende welke de fouten zijn gemeld door de toepassing.
-2. Toepassingen die verbinding met een cloudservice maken zoals Azure SQL Database moet periodieke herconfiguratie gebeurtenissen verwachten en implementeren van logica voor het afhandelen van deze fouten in plaats van deze als toepassingsfouten aan gebruikers zichtbaar te maken voor opnieuw proberen. Controleer de [tijdelijke fouten](sql-database-connectivity-issues.md) sectie en de aanbevolen procedures en richtlijnen voor het ontwerpen op [overzicht van de ontwikkeling van de SQL Database](sql-database-develop-overview.md) voor meer informatie en algemene strategieën voor opnieuw proberen. Ga vervolgens naar codevoorbeelden [Verbindingsbibliotheken voor SQL-Database en SQL Server](sql-database-libraries.md) voor meer informatie.
-3. Als een database de resourcelimieten nadert, kan het lijken te zijn van een tijdelijk verbindingsprobleem. Zie [resourcelimieten](sql-database-resource-limits-database-server.md#what-happens-when-database-resource-limits-are-reached).
-4. Als u problemen met de netwerkverbinding gaan, of als de duur die uw toepassing de fout optreedt groter is dan 60 seconden, of als er meerdere exemplaren van de fout in een bepaalde dag een ondersteuningsaanvraag indienen voor Azure-bestand door te selecteren **ondersteuning krijgen voor**op de [ondersteuning voor Azure](https://azure.microsoft.com/support/options) site.
+1. Controleer het [Microsoft Azure-service dashboard](https://azure.microsoft.com/status) voor eventuele bekende storingen die zijn opgetreden tijdens de periode waarin de fouten zijn gerapporteerd door de toepassing.
+2. Toepassingen die verbinding maken met een Cloud service, zoals Azure SQL Database, moeten periodieke herconfiguratie gebeurtenissen verwachten en proberen logica te implementeren om deze fouten af te handelen in plaats van deze te halen als toepassings fouten aan gebruikers. Raadpleeg de sectie [tijdelijke fouten](sql-database-connectivity-issues.md) en de aanbevolen procedures en ontwerp richtlijnen op [SQL database ontwikkelings overzicht](sql-database-develop-overview.md) voor meer informatie en algemene strategieën voor nieuwe pogingen. Bekijk vervolgens code voorbeelden in [verbindings bibliotheken voor SQL database en SQL Server](sql-database-libraries.md) voor specifieke informatie.
+3. Wanneer een Data Base de resource limieten nadert, kan dit een probleem met de tijdelijke verbinding zijn. Zie [resource limieten](sql-database-resource-limits-database-server.md#what-happens-when-database-resource-limits-are-reached).
+4. Als er verbindings problemen blijven bestaan of als de duur waarvoor uw toepassing zich voordoet de fout groter is dan 60 seconden of als er meerdere exemplaren van de fout in een bepaalde dag worden weer gegeven, moet u een Azure-ondersteunings aanvraag indienen door **ondersteuning** voor Azure in te scha kelen [ ](https://azure.microsoft.com/support/options)Ondersteunings site.
 
-## <a name="troubleshoot-persistent-errors"></a>Permanente fouten oplossen
-Als de toepassing niet permanent verbinding maken met Azure SQL Database, duidt dit meestal op een probleem met een van de volgende:
+## <a name="troubleshoot-persistent-errors"></a>Problemen met persistente fouten oplossen
+Als de toepassing permanent geen verbinding kan maken met Azure SQL Database, duidt dit meestal op een probleem met een van de volgende:
 
-* Firewall-configuratie. De Azure SQL database of client-side-firewall wordt geblokkeerd door verbindingen met Azure SQL Database.
-* Herconfiguratie van netwerken op de client: bijvoorbeeld een nieuw IP-adres of een proxyserver.
-* Gebruikersfout: bijvoorbeeld een typefout gemaakt verbindingsparameters, zoals de naam van de server in de verbindingsreeks.
+* Firewall configuratie. De Azure SQL database-of firewall aan de client zijde blokkeert verbindingen met Azure SQL Database.
+* Herconfiguratie van het netwerk aan de client zijde: bijvoorbeeld een nieuw IP-adres of een proxy server.
+* Gebruikers fout: er zijn bijvoorbeeld niet-getypte verbindings parameters, zoals de server naam in de connection string.
 
-### <a name="steps-to-resolve-persistent-connectivity-issues"></a>Stappen voor het oplossen van problemen met de permanente netwerkverbinding
-1. Instellen van [firewall-regels](sql-database-configure-firewall-settings.md) waarmee de client-IP-adres. Voor tijdelijke voor testdoeleinden, stelt u een firewallregel 0.0.0.0 gebruikt als het eerste IP-adresbereik en 255.255.255.255 als het laatste IP-adresbereik. Hiermee opent u de server aan alle IP-adressen. Als dit het probleem met de netwerkverbinding is opgelost, verwijdert u deze regel en een firewallregel voor een op de juiste wijze beperkt IP-adres of adresbereik maken. 
-2. Zorg ervoor dat poort 1433 geopend voor uitgaande verbindingen is op alle firewalls tussen de client en het Internet. Beoordeling [configureren van de Windows Firewall op SQL Server-toegang toestaan](https://msdn.microsoft.com/library/cc646023.aspx) en [hybride identiteit vereiste poorten en protocollen](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-ports) voor aanvullende verwijzingen met betrekking tot extra poorten die u nodig hebt om te openen voor Azure Active Directory-verificatie.
-3. Controleer of de verbindingsreeks en andere instellingen. Zie de sectie Connection String in het [connectiviteit problemen onderwerp](sql-database-connectivity-issues.md#connections-to-sql-database).
-4. Controleer de servicestatus in het dashboard. Als u denkt er is een regionale onderbreking dat, Zie [herstellen na een storing](sql-database-disaster-recovery.md) voor stappen om te herstellen naar een nieuwe regio.
+### <a name="steps-to-resolve-persistent-connectivity-issues"></a>Stappen voor het oplossen van problemen met de permanente verbinding
+1. Stel [firewall regels](sql-database-configure-firewall-settings.md) in om het client-IP-adres toe te staan. Stel voor tijdelijke test doeleinden een firewall regel in met behulp van 0.0.0.0 als het begin-IP-adres bereik en gebruik 255.255.255.255 als het laatste IP-adres bereik. Hiermee wordt de server op alle IP-adressen geopend. Als uw connectiviteits probleem hiermee wordt opgelost, verwijdert u deze regel en maakt u een firewall regel voor een adequaat beperkt IP-adres of adres bereik. 
+2. Controleer op alle firewalls tussen de client en Internet of poort 1433 is geopend voor uitgaande verbindingen. Bekijk [de Windows Firewall configureren om SQL Server toegang](https://msdn.microsoft.com/library/cc646023.aspx) en [hybride identiteit vereiste poorten en protocollen](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-ports) toe te staan voor aanvullende verwijzingen die betrekking hebben op extra poorten die u moet openen voor Azure Active Directory verificatie.
+3. Controleer uw connection string en andere Verbindings instellingen. Zie de sectie verbindings reeks in het [onderwerp connectiviteits problemen](sql-database-connectivity-issues.md#connections-to-sql-database).
+4. Controleer de service status in het dash board. Als u denkt dat er een regionale storing is, raadpleegt u [herstellen van een storing](sql-database-disaster-recovery.md) voor stappen om te herstellen naar een nieuwe regio.
 
 ## <a name="next-steps"></a>Volgende stappen
-* [Zoeken in de documentatie op Microsoft Azure](https://azure.microsoft.com/search/documentation/)
-* [De meest recente updates voor de service Azure SQL Database bekijken](https://azure.microsoft.com/updates/?service=sql-database)
+* [Zoek in de documentatie op Microsoft Azure](https://azure.microsoft.com/search/documentation/)
+* [De meest recente updates voor de Azure SQL Database-service weer geven](https://azure.microsoft.com/updates/?service=sql-database)
 
 ## <a name="additional-resources"></a>Aanvullende resources
-* [Overzicht van de ontwikkeling van de SQL Database](sql-database-develop-overview.md)
-* [Algemene richtlijnen voor tijdelijke afhandeling van fouten](../best-practices-retry-general.md)
-* [Verbindingsbibliotheken voor SQL-Database en SQL Server](sql-database-libraries.md)
+* [Overzicht van SQL Database ontwikkeling](sql-database-develop-overview.md)
+* [Algemene richt lijnen voor het afhandelen van tijdelijke fouten](../best-practices-retry-general.md)
+* [Verbindings bibliotheken voor SQL Database en SQL Server](sql-database-libraries.md)
 

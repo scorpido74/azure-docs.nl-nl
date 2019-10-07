@@ -85,7 +85,7 @@
           href: join-rhel-linux-vm.md
         - name: Ubuntu Server
           href: join-ubuntu-linux-vm.md
-    - name: Toepassingen implementeren naar Azure AD DS
+    - name: Toepassingen implementeren
       items:
         - name: Azure AD-toepassingsproxy implementeren
           href: deploy-azure-app-proxy.md
@@ -95,11 +95,17 @@
       items:
         - name: Algemene fouten
           href: troubleshoot.md
-        - name: Fouten met niet-overeenkomende tenants
+        - name: Problemen met het deelnemen aan domeinen
+          href: troubleshoot-domain-join.md
+        - name: Accountvergrendelingen
+          href: troubleshoot-account-lockout.md
+        - name: Aanmeldproblemen
+          href: troubleshoot-sign-in.md
+        - name: Fouten met niet-overeenkomende tenants oplossen
           href: mismatched-tenant-error.md
         - name: Onderbroken domeinen
           href: suspension.md
-        - name: Secure LDAP
+        - name: Secure LDAP-problemen
           href: tshoot-ldaps.md
         - name: Bekende problemen
           items:

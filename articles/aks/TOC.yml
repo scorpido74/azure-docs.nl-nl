@@ -191,6 +191,8 @@
       items:
         - name: Een service-principal maken
           href: kubernetes-service-principal.md
+        - name: Beheerde identiteiten gebruiken (preview)
+          href: use-managed-identity.md
         - name: Toegang tot clusterconfiguratiebestand beperken
           href: control-kubeconfig-access.md
         - name: Pod-verkeer beveiligen met netwerkbeleid

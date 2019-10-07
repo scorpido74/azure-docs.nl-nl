@@ -16,12 +16,12 @@ ms.date: 07/23/2019
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c07f9dbcc21840bec4b4487225dfb8108586865e
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
-ms.translationtype: MT
+ms.openlocfilehash: 17c85d53d05193313f9e166b88beb2a0f82eb197
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68489204"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68618368"
 ---
 # <a name="edit-and-manage-an-existing-access-package-in-azure-ad-entitlement-management-preview"></a>Een bestaand toegangs pakket bewerken en beheren in azure AD-rechts beheer (preview-versie)
 
@@ -38,7 +38,7 @@ In dit artikel wordt beschreven hoe u bestaande toegangs pakketten bewerkt en be
 
 Een resource-rol is een verzameling machtigingen die zijn gekoppeld aan een resource. De manier waarop u resources beschikbaar maakt voor gebruikers, is door resource rollen toe te voegen aan uw toegangs pakket. U kunt resource rollen toevoegen voor groepen, toepassingen en share point-sites.
 
-**Vereiste rol:** Gebruikers beheerder, catalogus eigenaar of toegangs pakket beheer
+**Vereiste rol:** Globale beheerder, gebruikers beheerder, catalogus eigenaar of toegangs pakket beheer
 
 1. Klik in de Azure Portal op **Azure Active Directory** en klik vervolgens op **Identity governance**.
 
@@ -62,7 +62,7 @@ U kunt met het rechten beheer automatisch gebruikers toevoegen aan een groep wan
 U kunt een wille keurige Office 365-groep of Azure AD-beveiligings groep selecteren.  Beheerders kunnen een groep toevoegen aan een catalogus. Catalog-eigen aren kunnen een wille keurige groep toevoegen aan de catalogus als ze eigenaar van de groep zijn. Houd bij het selecteren van een groep de volgende Azure AD-beperkingen in acht:
 
 - Wanneer een gebruiker, inclusief een gast, wordt toegevoegd als een lid aan een groep, kunnen ze alle andere leden van de groep zien.
-- Azure AD kan het lidmaatschap van een groep die is gesynchroniseerd vanuit Windows Server Active Directory met behulp van Azure AD Connect niet wijzigen.  
+- Azure AD kan het lidmaatschap van een groep die is gesynchroniseerd vanuit Windows Server Active Directory met Azure AD Connect of die in Exchange Online is gemaakt als distributie groep niet wijzigen.  
 - Het lidmaatschap van dynamische groepen kan niet worden bijgewerkt door een lid toe te voegen of te verwijderen, zodat dynamische groepslid maatschappen niet geschikt zijn voor gebruik met rechten beheer.
 
 1. Klik op de pagina **resource rollen toevoegen aan toegangs pakket** op **groepen** om het deel venster groepen selecteren te openen.
@@ -136,7 +136,7 @@ Azure AD kan gebruikers automatisch toegang geven tot een share point online-sit
 
 ## <a name="remove-resource-roles"></a>Resource rollen verwijderen
 
-**Vereiste rol:** Gebruikers beheerder, catalogus eigenaar of toegangs pakket beheer
+**Vereiste rol:** Globale beheerder, gebruikers beheerder, catalogus eigenaar of toegangs pakket beheer
 
 1. Klik in de Azure Portal op **Azure Active Directory** en klik vervolgens op **Identity governance**.
 
@@ -158,7 +158,7 @@ In het volgende diagram ziet u het proces op hoog niveau voor het maken van een 
 
 ![Een beleids proces maken](./media/entitlement-management-access-package-edit/policy-process.png)
 
-**Vereiste rol:** Gebruikers beheerder, catalogus eigenaar of toegangs pakket beheer
+**Vereiste rol:** Globale beheerder, gebruikers beheerder, catalogus eigenaar of toegangs pakket beheer
 
 1. Klik in de Azure Portal op **Azure Active Directory** en klik vervolgens op **Identity governance**.
 
@@ -178,7 +178,7 @@ In het volgende diagram ziet u het proces op hoog niveau voor het maken van een 
 
 U kunt een beleid op elk gewenst moment bewerken. Als u de verval datum voor een beleid wijzigt, wordt de verval datum voor aanvragen waarvoor al een goed keuring in behandeling of goedgekeurd staat, niet gewijzigd.
 
-**Vereiste rol:** Gebruikers beheerder, catalogus eigenaar of toegangs pakket beheer
+**Vereiste rol:** Globale beheerder, gebruikers beheerder, catalogus eigenaar of toegangs pakket beheer
 
 1. Klik in de Azure Portal op **Azure Active Directory** en klik vervolgens op **Identity governance**.
 
@@ -200,7 +200,7 @@ U kunt een beleid op elk gewenst moment bewerken. Als u de verval datum voor een
 
 In sommige gevallen wilt u mogelijk rechtstreeks specifieke gebruikers toewijzen aan een toegangs pakket, zodat gebruikers niet hoeven door te gaan met het proces van het aanvragen van het toegangs pakket. Om gebruikers rechtstreeks toe te wijzen, moet het toegangs pakket beschikken over een beleid waarmee beheerders direct toewijzingen kunnen toestaan.
 
-**Vereiste rol:** Gebruikers beheerder, catalogus eigenaar of toegangs pakket beheer
+**Vereiste rol:** Globale beheerder, gebruikers beheerder, catalogus eigenaar of toegangs pakket beheer
 
 1. Klik in de Azure Portal op **Azure Active Directory** en klik vervolgens op **Identity governance**.
 
@@ -228,7 +228,7 @@ In sommige gevallen wilt u mogelijk rechtstreeks specifieke gebruikers toewijzen
 
 ## <a name="view-who-has-an-assignment"></a>Weer geven wie een toewijzing heeft
 
-**Vereiste rol:** Gebruikers beheerder, catalogus eigenaar of toegangs pakket beheer
+**Vereiste rol:** Globale beheerder, gebruikers beheerder, catalogus eigenaar of toegangs pakket beheer
 
 1. Klik in de Azure Portal op **Azure Active Directory** en klik vervolgens op **Identity governance**.
 
@@ -248,7 +248,7 @@ In sommige gevallen wilt u mogelijk rechtstreeks specifieke gebruikers toewijzen
 
 ## <a name="view-requests"></a>Aanvragen weer geven
 
-**Vereiste rol:** Gebruikers beheerder, catalogus eigenaar of toegangs pakket beheer
+**Vereiste rol:** Globale beheerder, gebruikers beheerder, catalogus eigenaar of toegangs pakket beheer
 
 1. Klik in de Azure Portal op **Azure Active Directory** en klik vervolgens op **Identity governance**.
 
@@ -260,7 +260,7 @@ In sommige gevallen wilt u mogelijk rechtstreeks specifieke gebruikers toewijzen
 
 ## <a name="view-a-requests-delivery-errors"></a>De leverings fouten van een aanvraag weer geven
 
-**Vereiste rol:** Gebruikers beheerder, catalogus eigenaar of toegangs pakket beheer
+**Vereiste rol:** Globale beheerder, gebruikers beheerder, catalogus eigenaar of toegangs pakket beheer
 
 1. Klik in de Azure Portal op **Azure Active Directory** en klik vervolgens op **Identity governance**.
 
@@ -280,7 +280,7 @@ In sommige gevallen wilt u mogelijk rechtstreeks specifieke gebruikers toewijzen
 
 U kunt een aanvraag die in behandeling is, alleen annuleren als deze nog niet is bezorgd.
 
-**Vereiste rol:** Gebruikers beheerder, catalogus eigenaar of toegangs pakket beheer
+**Vereiste rol:** Globale beheerder, gebruikers beheerder, catalogus eigenaar of toegangs pakket beheer
 
 1. Klik in de Azure Portal op **Azure Active Directory** en klik vervolgens op **Identity governance**.
 
@@ -296,7 +296,7 @@ U kunt een aanvraag die in behandeling is, alleen annuleren als deze nog niet is
 
 De meeste gebruikers in uw Directory kunnen zich aanmelden bij de portal van mijn toegang en er wordt automatisch een lijst met toegangs pakketten weer geven die ze kunnen aanvragen. Voor gebruikers van externe zakelijke partners die nog niet in uw Directory zijn, moet u deze een koppeling sturen die ze kunnen gebruiken om een toegangs pakket aan te vragen. Zolang het toegangs pakket is ingeschakeld voor externe gebruikers en u een beleid hebt voor de map van de externe gebruiker, kan de externe gebruiker de koppeling naar mijn Access-Portal gebruiken om het toegangs pakket aan te vragen.
 
-**Vereiste rol:** Gebruikers beheerder, catalogus eigenaar of toegangs pakket beheer
+**Vereiste rol:** Globale beheerder, gebruikers beheerder, catalogus eigenaar of toegangs pakket beheer
 
 1. Klik in de Azure Portal op **Azure Active Directory** en klik vervolgens op **Identity governance**.
 
@@ -312,7 +312,7 @@ De meeste gebruikers in uw Directory kunnen zich aanmelden bij de portal van mij
 
 Toegangs pakketten worden standaard gedetecteerd. Dit betekent dat als een beleid toestaat dat een gebruiker het toegangs pakket kan aanvragen, het toegangs pakket in hun mijn Access-Portal automatisch wordt weer gegeven.
 
-**Vereiste rol:** Gebruikers beheerder, catalogus eigenaar of toegangs pakket beheer
+**Vereiste rol:** Globale beheerder, gebruikers beheerder, catalogus eigenaar of toegangs pakket beheer
 
 1. Klik in de Azure Portal op **Azure Active Directory** en klik vervolgens op **Identity governance**.
 
@@ -330,7 +330,7 @@ Toegangs pakketten worden standaard gedetecteerd. Dit betekent dat als een belei
 
 Een toegangs pakket kan alleen worden verwijderd als er geen actieve gebruikers toewijzingen zijn.
 
-**Vereiste rol:** Gebruikers beheerder, catalogus eigenaar of toegangs pakket beheer
+**Vereiste rol:** Globale beheerder, gebruikers beheerder, catalogus eigenaar of toegangs pakket beheer
 
 1. Klik in de Azure Portal op **Azure Active Directory** en klik vervolgens op **Identity governance**.
 

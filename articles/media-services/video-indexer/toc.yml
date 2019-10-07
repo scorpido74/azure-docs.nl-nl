@@ -9,6 +9,8 @@
   items:
     - name: Aan de slag
       href: video-indexer-get-started.md
+    - name: Gebruikers uitnodigen
+      href: invite-users.md
 - name: Zelfstudies
   items:
     - name: Video Indexer-API gebruiken
