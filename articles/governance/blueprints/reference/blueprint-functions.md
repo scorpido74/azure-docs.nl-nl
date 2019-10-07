@@ -6,13 +6,12 @@ ms.author: dacoulte
 ms.date: 04/15/2019
 ms.topic: reference
 ms.service: blueprints
-manager: carmonm
-ms.openlocfilehash: dcf073c58a723b8dbd835ac331c0ce9d16187445
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: a3021e79ddfb808db64896d79bb163d42236b295
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232851"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71978387"
 ---
 # <a name="functions-for-use-with-azure-blueprints"></a>Functies voor gebruik met Azure-blauw drukken
 
@@ -109,7 +108,7 @@ Enkele voor beelden van het ophalen van gegevens uit het _myTemplateArtifact_ -v
 
 | Expressie | type | Value |
 |:---|:---|:---|
-|`[artifacts("myTemplateArtifact").outputs.myArray]` | Array | \[' First ', ' Second '\] |
+|`[artifacts("myTemplateArtifact").outputs.myArray]` | Array | \[ "eerste", "tweede" \] |
 |`[artifacts("myTemplateArtifact").outputs.myArray[0]]` | Tekenreeks | instantie |
 |`[artifacts("myTemplateArtifact").outputs.myString]` | Tekenreeks | ' mijn teken reeks waarde ' |
 |`[artifacts("myTemplateArtifact").outputs.myObject]` | Object | {"myProperty": "mijn waarde", "anotherProperty": True} |
@@ -185,7 +184,7 @@ Definieer de para meter _principalIds_ in de definitie van de blauw druk:
 }
 ```
 
-Gebruik vervolgens _principalIds_ als argument voor `parameters()` in een blauw druk-artefact:
+Gebruik vervolgens _principalIds_ als het argument voor `parameters()` in een blauw druk-artefact:
 
 ```json
 {
@@ -219,9 +218,9 @@ Het geretourneerde object is in de volgende indeling:
 
 ### <a name="remarks"></a>Opmerkingen
 
-De functie Azure Blueprint verschilt van de functie Azure Resource Manager-sjabloon. De `resourceGroup()` functie kan niet worden gebruikt in een artefact op abonnements niveau of de definitie van de blauw druk. Deze kan alleen worden gebruikt in de artefacten blauw drukken die deel uitmaken van een resource groeps artefact.
+De functie Azure Blueprint verschilt van de functie Azure Resource Manager-sjabloon. De functie `resourceGroup()` kan niet worden gebruikt in een artefact op abonnements niveau of de definitie van de blauw druk. Deze kan alleen worden gebruikt in de artefacten blauw drukken die deel uitmaken van een resource groeps artefact.
 
-Een veelvoorkomend gebruik van de `resourceGroup()` functie is het maken van resources op dezelfde locatie als het artefact van de resource groep.
+Het gebruik van de functie `resourceGroup()` is gebruikelijk om resources te maken op dezelfde locatie als het artefact van de resource groep.
 
 ### <a name="example"></a>Voorbeeld
 
@@ -241,7 +240,7 @@ Als u de locatie van de resource groep wilt gebruiken, stelt u in de blauw druk 
 }
 ```
 
-Gebruik vervolgens de `resourceGroup()` functie in de context van een blauw druk artefact dat is gericht op een object met een tijdelijke aanduiding voor een resource groep. In dit voor beeld wordt het sjabloon artefact geïmplementeerd in de resource groep _NetworkingPlaceholder_ en worden para meter _resourceLocation_ dynamisch gevuld met de locatie van de resource groep _NetworkingPlaceholder_ naar de sjabloon. De locatie van de _NetworkingPlaceholder_ -resource groep is mogelijk statisch gedefinieerd voor de definitie van de blauw druk of dynamisch gedefinieerd tijdens de toewijzing. In beide gevallen wordt het sjabloon artefact gegeven met informatie als een para meter en gebruikt om de resources te implementeren op de juiste locatie.
+Gebruik vervolgens de functie `resourceGroup()` in de context van een blauw druk-artefact dat is gericht op een object voor de tijdelijke aanduiding van een resource groep. In dit voor beeld wordt het sjabloon artefact geïmplementeerd in de resource groep _NetworkingPlaceholder_ en worden para meter _resourceLocation_ dynamisch gevuld met de locatie van de resource groep _NetworkingPlaceholder_ naar de sjabloon. De locatie van de _NetworkingPlaceholder_ -resource groep is mogelijk statisch gedefinieerd voor de definitie van de blauw druk of dynamisch gedefinieerd tijdens de toewijzing. In beide gevallen wordt het sjabloon artefact gegeven met informatie als een para meter en gebruikt om de resources te implementeren op de juiste locatie.
 
 ```json
 {
@@ -266,7 +265,7 @@ Gebruik vervolgens de `resourceGroup()` functie in de context van een blauw druk
 
 `resourceGroups(placeholderName)`
 
-Retourneert een object dat het opgegeven bron groeps artefact vertegenwoordigt. In tegens telling `resourceGroup()`tot, waarvoor context van het artefact is vereist, wordt deze functie gebruikt om de eigenschappen van een specifieke tijdelijke aanduiding van een resource groep op te halen wanneer deze niet in de context van die resource groep is.
+Retourneert een object dat het opgegeven bron groeps artefact vertegenwoordigt. In tegens telling tot `resourceGroup()`, waarvoor context van het artefact vereist is, wordt deze functie gebruikt om de eigenschappen van een specifieke tijdelijke aanduiding van een resource groep op te halen wanneer deze niet in de context van die resource groep is.
 
 ### <a name="parameters"></a>Parameters
 
@@ -303,7 +302,7 @@ Als u de locatie van de resource groep wilt gebruiken, stelt u in de blauw druk 
 }
 ```
 
-Gebruik vervolgens de `resourceGroups()` functie uit de context van een blauw druk artefact om een verwijzing naar het object van de tijdelijke aanduiding voor de resource groep op te halen. In dit voor beeld wordt het sjabloon artefact geïmplementeerd buiten de resource groep _NetworkingPlaceholder_ en worden para meter _artifactLocation_ dynamisch gevuld met de locatie van de resource groep _NetworkingPlaceholder_ naar de sjabloon. De locatie van de _NetworkingPlaceholder_ -resource groep is mogelijk statisch gedefinieerd voor de definitie van de blauw druk of dynamisch gedefinieerd tijdens de toewijzing. In beide gevallen wordt het sjabloon artefact gegeven met informatie als een para meter en gebruikt om de resources te implementeren op de juiste locatie.
+Gebruik vervolgens de functie `resourceGroups()` in de context van een blauw druk artefact om een verwijzing naar het object van de tijdelijke aanduiding voor de resource groep op te halen. In dit voor beeld wordt het sjabloon artefact geïmplementeerd buiten de resource groep _NetworkingPlaceholder_ en worden para meter _artifactLocation_ dynamisch gevuld met de locatie van de resource groep _NetworkingPlaceholder_ naar de sjabloon. De locatie van de _NetworkingPlaceholder_ -resource groep is mogelijk statisch gedefinieerd voor de definitie van de blauw druk of dynamisch gedefinieerd tijdens de toewijzing. In beide gevallen wordt het sjabloon artefact gegeven met informatie als een para meter en gebruikt om de resources te implementeren op de juiste locatie.
 
 ```json
 {
@@ -345,7 +344,7 @@ Het geretourneerde object is in de volgende indeling:
 
 ### <a name="example"></a>Voorbeeld
 
-Gebruik de weergave naam van het abonnement en `concat()` de functie om een naamgevings Conventie te maken die is door gegeven als parameter _bron_ voor het sjabloon artefact.
+Gebruik de weergave naam van het abonnement en de functie `concat()` om een naamgevings Conventie te maken die is door gegeven als parameter _bron_ voor het sjabloon artefact.
 
 ```json
 {
@@ -368,7 +367,7 @@ Gebruik de weergave naam van het abonnement en `concat()` de functie om een naam
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over de [levens duur van de blauw druk](../concepts/lifecycle.md).
+- Meer informatie over de [levenscyclus van een blauwdruk](../concepts/lifecycle.md).
 - Meer informatie over hoe u [statische en dynamische parameters](../concepts/parameters.md) gebruikt.
 - Meer informatie over hoe u de [blauwdrukvolgorde](../concepts/sequencing-order.md) aanpast.
 - Meer informatie over hoe u gebruikmaakt van [resourcevergrendeling in blauwdrukken](../concepts/resource-locking.md).

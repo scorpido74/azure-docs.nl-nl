@@ -6,13 +6,12 @@ ms.author: dacoulte
 ms.date: 06/24/2019
 ms.topic: sample
 ms.service: blueprints
-manager: carmonm
-ms.openlocfilehash: c1a928076b3900739886b93d1105c6294821bf66
-ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
+ms.openlocfilehash: 204b689dd7da91cc1dacce0bba6d15b4acb0c0e5
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70802353"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71981531"
 ---
 # <a name="deploy-the-nist-sp-800-53-r4-blueprint-sample"></a>Het NIST SP 800-53 R4 blauw druk-voor beeld implementeren
 
@@ -40,7 +39,7 @@ Implementeer eerst het voor beeld van de blauw druk door een nieuwe blauw druk i
    - **Naam blauw druk**: Geef een naam op voor uw kopie van het voor beeld van het NIST SP 800-53 R4-blauw druk.
    - **Locatie van definitie**: Gebruik het weglatings teken en selecteer de beheer groep om uw kopie van het voor beeld op te slaan.
 
-1. Selecteer het tabblad _artefacten_ boven aan de pagina of **volgende:**  Artefacten aan de onderkant van de pagina.
+1. Selecteer het tabblad _artefacten_ boven aan de pagina of **Next: Artefacten @ no__t-0 aan de onderkant van de pagina.
 
 1. Bekijk de lijst met artefacten die deel uitmaken van het voor beeld van de blauw druk. Veel van de artefacten hebben para meters die later worden gedefinieerd. Selecteer **concept opslaan** wanneer u klaar bent met het bekijken van het voor beeld van de blauw druk.
 
@@ -97,18 +96,18 @@ De volgende tabel geeft een lijst van de para meters van de blauw druk-artefact:
 
 |Naam van het artefact|Type artefact|Parameternaam|Description|
 |-|-|-|-|
-|\[Voor\]beeld: Auditing NIST SP 800-53 R4 Controls en implementeer specifieke VM-extensies ter ondersteuning van de controle vereisten|Beleidstoewijzing|Werk ruimte-ID Log Analytics waarvoor Vm's moeten worden geconfigureerd|Dit is de ID (GUID) van de Log Analytics-werk ruimte waarvoor de Vm's moeten worden geconfigureerd.|
-|\[Voor\]beeld: Auditing NIST SP 800-53 R4 Controls en implementeer specifieke VM-extensies ter ondersteuning van de controle vereisten|Beleidstoewijzing|Lijst met resource typen waarvoor Diagnostische logboeken moeten zijn ingeschakeld|Lijst met resource typen om te controleren of de instelling voor diagnostische logboek registratie niet is ingeschakeld. Acceptabele waarden zijn te vinden in [Azure monitor Diagnostische logboeken schema's](../../../../azure-monitor/platform/diagnostic-logs-schema.md#supported-log-categories-per-resource-type).|
-|\[Voor\]beeld: Auditing NIST SP 800-53 R4 Controls en implementeer specifieke VM-extensies ter ondersteuning van de controle vereisten|Beleidstoewijzing|Lijst met gebruikers die moeten worden uitgesloten van de Windows VM-Beheerders groep|Een door punt komma's gescheiden lijst met leden die moeten worden uitgesloten van de lokale groep Administrators. Bijvoorbeeld: Beheerder myUser1; myUser2|
-|\[Voor\]beeld: Auditing NIST SP 800-53 R4 Controls en implementeer specifieke VM-extensies ter ondersteuning van de controle vereisten|Beleidstoewijzing|Lijst met gebruikers die moeten worden opgenomen in de Windows VM-Beheerders groep|Een door punt komma's gescheiden lijst met leden die moeten worden opgenomen in de lokale groep Administrators. Bijvoorbeeld: Beheerder myUser1; myUser2|
-|\[Voor\]beeld: Log Analytics agent voor Linux-VM Scale Sets implementeren (VMSS)|Beleidstoewijzing|Log Analytics-werk ruimte voor Linux VM Scale Sets (VMSS)|Als deze werk ruimte zich buiten het bereik van de toewijzing bevindt, moet u de machtigingen voor Log Analytics Inzender (of vergelijkbaar) hand matig toekennen aan de principal-ID van de beleids toewijzing.|
-|\[Voor\]beeld: Log Analytics agent voor Linux-VM Scale Sets implementeren (VMSS)|Beleidstoewijzing|Optioneel: Lijst met VM-installatie kopieën die een ondersteund Linux-besturings systeem hebben om toe te voegen aan het bereik|Een lege matrix kan worden gebruikt om geen optionele para meters aan te duiden:\[\]|
-|\[Voor\]beeld: Log Analytics-agent voor Linux-Vm's implementeren|Beleidstoewijzing|Log Analytics-werk ruimte voor Linux Vm's|Als deze werk ruimte zich buiten het bereik van de toewijzing bevindt, moet u de machtigingen voor Log Analytics Inzender (of vergelijkbaar) hand matig toekennen aan de principal-ID van de beleids toewijzing.|
-|\[Voor\]beeld: Log Analytics-agent voor Linux-Vm's implementeren|Beleidstoewijzing|Optioneel: Lijst met VM-installatie kopieën die een ondersteund Linux-besturings systeem hebben om toe te voegen aan het bereik|Een lege matrix kan worden gebruikt om geen optionele para meters aan te duiden:\[\]|
-|\[Voor\]beeld: Log Analytics agent voor Windows-VM Scale Sets (VMSS) implementeren|Beleidstoewijzing|Log Analytics werk ruimte voor Windows VM Scale Sets (VMSS)|Als deze werk ruimte zich buiten het bereik van de toewijzing bevindt, moet u de machtigingen voor Log Analytics Inzender (of vergelijkbaar) hand matig toekennen aan de principal-ID van de beleids toewijzing.|
-|\[Voor\]beeld: Log Analytics agent voor Windows-VM Scale Sets (VMSS) implementeren|Beleidstoewijzing|Optioneel: Lijst met VM-installatie kopieën die een ondersteund Windows-besturings systeem hebben om toe te voegen aan het bereik|Een lege matrix kan worden gebruikt om geen optionele para meters aan te duiden:\[\]|
-|\[Voor\]beeld: Log Analytics-agent voor Windows-Vm's implementeren|Beleidstoewijzing|Log Analytics-werk ruimte voor Windows-Vm's|Als deze werk ruimte zich buiten het bereik van de toewijzing bevindt, moet u de machtigingen voor Log Analytics Inzender (of vergelijkbaar) hand matig toekennen aan de principal-ID van de beleids toewijzing.|
-|\[Voor\]beeld: Log Analytics-agent voor Windows-Vm's implementeren|Beleidstoewijzing|Optioneel: Lijst met VM-installatie kopieën die een ondersteund Windows-besturings systeem hebben om toe te voegen aan het bereik|Een lege matrix kan worden gebruikt om geen optionele para meters aan te duiden:\[\]|
+|\[Preview @ no__t-1: Auditing NIST SP 800-53 R4 Controls en implementeer specifieke VM-extensies ter ondersteuning van de controle vereisten|Beleidstoewijzing|Werk ruimte-ID Log Analytics waarvoor Vm's moeten worden geconfigureerd|Dit is de ID (GUID) van de Log Analytics-werk ruimte waarvoor de Vm's moeten worden geconfigureerd.|
+|\[Preview @ no__t-1: Auditing NIST SP 800-53 R4 Controls en implementeer specifieke VM-extensies ter ondersteuning van de controle vereisten|Beleidstoewijzing|Lijst met resource typen waarvoor Diagnostische logboeken moeten zijn ingeschakeld|Lijst met resource typen om te controleren of de instelling voor diagnostische logboek registratie niet is ingeschakeld. Acceptabele waarden zijn te vinden in [Azure monitor Diagnostische logboeken schema's](../../../../azure-monitor/platform/diagnostic-logs-schema.md#supported-log-categories-per-resource-type).|
+|\[Preview @ no__t-1: Auditing NIST SP 800-53 R4 Controls en implementeer specifieke VM-extensies ter ondersteuning van de controle vereisten|Beleidstoewijzing|Lijst met gebruikers die moeten worden uitgesloten van de Windows VM-Beheerders groep|Een door punt komma's gescheiden lijst met leden die moeten worden uitgesloten van de lokale groep Administrators. Bijvoorbeeld: Beheerder myUser1; myUser2|
+|\[Preview @ no__t-1: Auditing NIST SP 800-53 R4 Controls en implementeer specifieke VM-extensies ter ondersteuning van de controle vereisten|Beleidstoewijzing|Lijst met gebruikers die moeten worden opgenomen in de Windows VM-Beheerders groep|Een door punt komma's gescheiden lijst met leden die moeten worden opgenomen in de lokale groep Administrators. Bijvoorbeeld: Beheerder myUser1; myUser2|
+|\[Preview @ no__t-1: Log Analytics agent voor Linux-VM Scale Sets implementeren (VMSS)|Beleidstoewijzing|Log Analytics-werk ruimte voor Linux VM Scale Sets (VMSS)|Als deze werk ruimte zich buiten het bereik van de toewijzing bevindt, moet u de machtigingen voor Log Analytics Inzender (of vergelijkbaar) hand matig toekennen aan de principal-ID van de beleids toewijzing.|
+|\[Preview @ no__t-1: Log Analytics agent voor Linux-VM Scale Sets implementeren (VMSS)|Beleidstoewijzing|Optioneel: Lijst met VM-installatie kopieën die een ondersteund Linux-besturings systeem hebben om toe te voegen aan het bereik|Een lege matrix kan worden gebruikt om geen optionele para meters aan te duiden: \[ @ no__t-1|
+|\[Preview @ no__t-1: Log Analytics-agent voor Linux-Vm's implementeren|Beleidstoewijzing|Log Analytics-werk ruimte voor Linux Vm's|Als deze werk ruimte zich buiten het bereik van de toewijzing bevindt, moet u de machtigingen voor Log Analytics Inzender (of vergelijkbaar) hand matig toekennen aan de principal-ID van de beleids toewijzing.|
+|\[Preview @ no__t-1: Log Analytics-agent voor Linux-Vm's implementeren|Beleidstoewijzing|Optioneel: Lijst met VM-installatie kopieën die een ondersteund Linux-besturings systeem hebben om toe te voegen aan het bereik|Een lege matrix kan worden gebruikt om geen optionele para meters aan te duiden: \[ @ no__t-1|
+|\[Preview @ no__t-1: Log Analytics agent voor Windows-VM Scale Sets (VMSS) implementeren|Beleidstoewijzing|Log Analytics werk ruimte voor Windows VM Scale Sets (VMSS)|Als deze werk ruimte zich buiten het bereik van de toewijzing bevindt, moet u de machtigingen voor Log Analytics Inzender (of vergelijkbaar) hand matig toekennen aan de principal-ID van de beleids toewijzing.|
+|\[Preview @ no__t-1: Log Analytics agent voor Windows-VM Scale Sets (VMSS) implementeren|Beleidstoewijzing|Optioneel: Lijst met VM-installatie kopieën die een ondersteund Windows-besturings systeem hebben om toe te voegen aan het bereik|Een lege matrix kan worden gebruikt om geen optionele para meters aan te duiden: \[ @ no__t-1|
+|\[Preview @ no__t-1: Log Analytics-agent voor Windows-Vm's implementeren|Beleidstoewijzing|Log Analytics-werk ruimte voor Windows-Vm's|Als deze werk ruimte zich buiten het bereik van de toewijzing bevindt, moet u de machtigingen voor Log Analytics Inzender (of vergelijkbaar) hand matig toekennen aan de principal-ID van de beleids toewijzing.|
+|\[Preview @ no__t-1: Log Analytics-agent voor Windows-Vm's implementeren|Beleidstoewijzing|Optioneel: Lijst met VM-installatie kopieën die een ondersteund Windows-besturings systeem hebben om toe te voegen aan het bereik|Een lege matrix kan worden gebruikt om geen optionele para meters aan te duiden: \[ @ no__t-1|
 |Geavanceerde beveiliging tegen bedreigingen implementeren voor opslag accounts|Beleidstoewijzing|Effect|Informatie over beleids effecten vindt u in [inzicht Azure Policy effecten](../../../policy/concepts/effects.md)|
 |Controle op SQL-servers implementeren|Beleidstoewijzing|De waarde in dagen van de Bewaar periode (0 geeft een onbeperkte retentie aan)|Bewaar dagen (optioneel, 180 dagen als niet opgegeven)|
 |Controle op SQL-servers implementeren|Beleidstoewijzing|Naam van de resource groep voor het opslag account voor SQL Server-controle|Met controle worden database gebeurtenissen geschreven naar een audit logboek in uw Azure Storage-account (er wordt een opslag account gemaakt in elke regio waarin een SQL Server wordt gemaakt dat wordt gedeeld door alle servers in die regio). Belang rijk: voor een juiste werking van de controle bewerking worden de resource groep of de opslag accounts niet verwijderd of de naam ervan gewijzigd.|
@@ -120,8 +119,8 @@ De volgende tabel geeft een lijst van de para meters van de blauw druk-artefact:
 Nu u de stappen voor het implementeren van het voor beeld van het NIST SP 800-53 R4-blauw drukken hebt gecontroleerd, gaat u naar de volgende artikelen voor meer informatie over de blauw druk en de beheer toewijzing:
 
 > [!div class="nextstepaction"]
-> [NIST SP 800-53 R4 blauw druk-overzicht](./index.md)
-> [NIST SP 800-53 R4 blauw druk-besturings element toewijzen](./control-mapping.md)
+> [NIST sp 800-53 R4 blauw druk-overzicht](./index.md)
+> [NIST SP 800-53 R4 blauw druk-besturings element toewijzing](./control-mapping.md)
 
 Aanvullende artikelen over blauwdrukken en het gebruik hiervan:
 

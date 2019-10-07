@@ -1,50 +1,49 @@
 ---
 title: Resourcewijzigingen ophalen
-description: Meer informatie over het zoeken wanneer een resource is gewijzigd en een overzicht van de eigenschappen die gewijzigd.
+description: Meer informatie over hoe u kunt zoeken wanneer een resource is gewijzigd en een lijst krijgt met de eigenschappen die zijn gewijzigd.
 services: resource-graph
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 05/10/2019
 ms.topic: conceptual
 ms.service: resource-graph
-manager: carmonm
-ms.openlocfilehash: b6ef57a3f39c82be30d92aef72c1bbe03b653768
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2027f56d44be14895a40550d78a79d9e9dda9d97
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66236511"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71980287"
 ---
 # <a name="get-resource-changes"></a>Resourcewijzigingen ophalen
 
-Resources gewijzigd in de loop van dagelijks gebruik herconfiguratie en zelfs opnieuw implementeren.
-Wijziging kan afkomstig zijn van een persoon of door een geautomatiseerd proces. De meeste wijzigen is standaard, maar soms is het niet. Met de afgelopen 14 dagen van de wijzigingsgeschiedenis kunt u Azure Resource Graph:
+Resources worden gewijzigd in de loop van dagelijks gebruik, herconfiguratie en zelfs opnieuw implementeren.
+Wijzigingen kunnen afkomstig zijn van een individu of een geautomatiseerd proces. De meeste wijziging is standaard, maar soms niet. Met de laatste 14 dagen van de wijzigings geschiedenis kunt u met Azure resource Graph het volgende doen:
 
 - Zien wanneer wijzigingen in een Azure Resource Manager-eigenschap zijn gedetecteerd.
 - Zien welke eigenschappen tijdens die gebeurtenis zijn gewijzigd.
 
-Wijziging detectie en gegevens zijn waardevol zijn bij de volgende voorbeeldscenario:
+Wijzigings detectie en Details zijn waardevol voor de volgende voorbeeld scenario's:
 
-- Tijdens de incidentbeheer om te begrijpen _mogelijk_ gerelateerde wijzigingen. Zoeken naar gebeurtenissen gedurende een bepaalde periode en de details van de wijziging evalueren.
-- Houdt een Configuratiebeheer-Database, bekend als een CMDB is up-to-date. In plaats van de vernieuwing van alle resources en hun volledige eigenschap ingesteld op een geplande frequentie, moet u alleen krijgen wat is gewijzigd.
-- Inzicht in welke andere eigenschappen mogelijk zijn gewijzigd wanneer een resource nalevingsstatus gewijzigd. Evaluatie van de aanvullende eigenschappen kan inzicht geven in andere eigenschappen die mogelijk moeten worden beheerd via de definitie van een Azure Policy.
+- Tijdens incident beheer om inzicht te krijgen in _mogelijk_ gerelateerde wijzigingen. Query's voor wijzigings gebeurtenissen tijdens een bepaald tijd venster en de wijzigings Details evalueren.
+- Een configuratie beheer database, ook wel een CMDB, up-to-date houden. In plaats van alle resources en de volledige eigenschappen sets op een geplande frequentie te vernieuwen, krijgt u alleen de gewijzigde gegevens te zien.
+- Meer informatie over welke andere eigenschappen mogelijk zijn gewijzigd wanneer de nalevings status van een resource is gewijzigd. Evaluatie van deze aanvullende eigenschappen kan inzicht bieden in andere eigenschappen die mogelijk moeten worden beheerd via een Azure Policy definitie.
 
-In dit artikel laat zien hoe deze informatie via de SDK van de grafiek van de resources te verzamelen. Deze gegevens in Azure portal wilt bekijken, zien van Azure Policy [wijzigingsoverzicht](../../policy/how-to/determine-non-compliance.md#change-history-preview) of Azure-activiteitenlogboek [wijzigingsoverzicht](../../../azure-monitor/platform/activity-log-view.md#azure-portal).
+In dit artikel wordt uitgelegd hoe u deze informatie kunt verzamelen via de SDK van resource Graph. Zie de wijzigings [geschiedenis](../../policy/how-to/determine-non-compliance.md#change-history-preview) van Azure Policy of de [wijzigings geschiedenis](../../../azure-monitor/platform/activity-log-view.md#azure-portal)van het Azure-activiteiten logboek om deze informatie te bekijken in de Azure Portal.
 
 > [!NOTE]
-> Details van de wijziging in de grafiek Resource zijn voor Resource Manager-eigenschappen. Zie voor het bijhouden van wijzigingen in een virtuele machine van Azure Automation [wijzigingen bijhouden](../../../automation/automation-change-tracking.md) of Azure-beleid [Gast-configuratie voor virtuele machines](../../policy/concepts/guest-configuration.md).
+> Details wijzigen in resource grafiek zijn voor eigenschappen van Resource Manager. Zie voor het bijhouden van wijzigingen in een virtuele machine de Azure Automation [Wijzigingen bijhouden](../../../automation/automation-change-tracking.md) of de [gast configuratie](../../policy/concepts/guest-configuration.md)van de Azure Policy voor vm's.
 
 > [!IMPORTANT]
-> Wijzigingsoverzicht in Azure Resource Graph is in openbare Preview.
+> De wijzigings geschiedenis in azure resource Graph bevindt zich in de open bare preview.
 
-## <a name="find-when-changes-were-detected"></a>Zoeken wanneer wijzigingen gedetecteerd
+## <a name="find-when-changes-were-detected"></a>Zoeken wanneer er wijzigingen zijn gedetecteerd
 
-De eerste stap bij het zien wat er gewijzigd voor een bron is te vinden van de gebeurtenissen met betrekking tot die resource binnen een periode. Deze stap vindt plaats via de **resourceChanges** REST-eindpunt.
+De eerste stap in het weer geven van wat er is gewijzigd in een resource is het vinden van de wijzigings gebeurtenissen die betrekking hebben op die resource binnen een tijd venster. Deze stap wordt uitgevoerd via het **resourceChanges** rest-eind punt.
 
-De **resourceChanges** eindpunt vereist twee parameters in de aanvraagtekst:
+Het **resourceChanges** -eind punt vereist twee para meters in de aanvraag tekst:
 
-- **resourceId**: De Azure-resource om te zoeken om wijzigingen op.
-- **interval**: Een eigenschap met de _start_ en _end_ datums voor het controleren op een wijziging gebeurtenis met de **Zulu tijdzone (Z)** .
+- **resourceId**: De Azure-resource waarin wordt gezocht naar wijzigingen.
+- **interval**: Een eigenschap met _begin_ -en _eind_ datums voor wanneer moet worden gecontroleerd op een wijzigings gebeurtenis met behulp van de **Zulu-tijd zone (Z)** .
 
 Voorbeeld van de aanvraag hoofdtekst:
 
@@ -58,13 +57,13 @@ Voorbeeld van de aanvraag hoofdtekst:
 }
 ```
 
-Met de bovenstaande aanvraagtekst, de REST-API-URI voor **resourceChanges** is:
+Met de bovenstaande aanvraag tekst is de REST API URI voor **resourceChanges** :
 
 ```http
 POST https://management.azure.com/providers/Microsoft.ResourceGraph/resourceChanges?api-version=2018-09-01-preview
 ```
 
-Het antwoord lijkt op het volgende voorbeeld:
+Het antwoord ziet er ongeveer uit als in dit voor beeld:
 
 ```json
 {
@@ -90,17 +89,17 @@ Het antwoord lijkt op het volgende voorbeeld:
 }
 ```
 
-Elke gedetecteerde wijzigingsgebeurtenis voor de **resourceId** heeft een **changeId** die uniek is voor die bron. Terwijl de **changeId** tekenreeks kan soms ook andere eigenschappen bevatten, is er alleen gegarandeerd uniek te zijn. De tijden bevatten die de wijzigingsrecord die de vóór en na-momentopnamen zijn gemaakt.
-De wijzigingsgebeurtenis heeft plaatsgevonden op een bepaald moment in dit venster van de tijd.
+Elke gedetecteerde wijzigings gebeurtenis voor de **resourceId** heeft een **changeId** die uniek is voor die bron. Hoewel de **changeId** -teken reeks soms andere eigenschappen kan bevatten, is het alleen gegarandeerd uniek. De wijzigings record bevat de tijden waarop de moment opnamen vóór en na zijn gemaakt.
+De wijzigings gebeurtenis is op een bepaald moment in dit venster van tijd opgetreden.
 
-## <a name="see-what-properties-changed"></a>Zie wat er eigenschappen gewijzigd
+## <a name="see-what-properties-changed"></a>Bekijk welke eigenschappen zijn gewijzigd
 
-Met de **changeId** uit de **resourceChanges** eindpunt, de **resourceChangeDetails** REST-eindpunt wordt vervolgens gebruikt om de details van de wijzigingsgebeurtenis ophalen.
+Met de **changeId** van het **resourceChanges** -eind punt wordt vervolgens het **resourceChangeDetails** rest-eind punt gebruikt om details van de wijzigings gebeurtenis op te halen.
 
-De **resourceChangeDetails** eindpunt vereist twee parameters in de aanvraagtekst:
+Het **resourceChangeDetails** -eind punt vereist twee para meters in de aanvraag tekst:
 
-- **resourceId**: De Azure-resource om te zoeken om wijzigingen op.
-- **changeId**: De unieke wijzigingsgebeurtenis voor de **resourceId** die zijn verzameld uit **resourceChanges**.
+- **resourceId**: De Azure-resource waarin wordt gezocht naar wijzigingen.
+- **changeId**: De unieke wijzigings gebeurtenis voor de **resourceId** die is verzameld van **resourceChanges**.
 
 Voorbeeld van de aanvraag hoofdtekst:
 
@@ -111,13 +110,13 @@ Voorbeeld van de aanvraag hoofdtekst:
 }
 ```
 
-Met de bovenstaande aanvraagtekst, de REST-API-URI voor **resourceChangeDetails** is:
+Met de bovenstaande aanvraag tekst is de REST API URI voor **resourceChangeDetails** :
 
 ```http
 POST https://management.azure.com/providers/Microsoft.ResourceGraph/resourceChangeDetails?api-version=2018-09-01-preview
 ```
 
-Het antwoord lijkt op het volgende voorbeeld:
+Het antwoord ziet er ongeveer uit als in dit voor beeld:
 
 ```json
 {
@@ -219,12 +218,12 @@ Het antwoord lijkt op het volgende voorbeeld:
 }
 ```
 
-**beforeSnapshot** en **afterSnapshot** elk geeft de tijd die de momentopname is gemaakt en de eigenschappen op dat moment. De wijziging is doorgevoerd op een bepaald moment tussen deze momentopnamen. Het bovenstaande voorbeeld bekijkt, ziet u dat de eigenschap die gewijzigd is **supportsHttpsTrafficOnly**.
+**beforeSnapshot** en **afterSnapshot** geven elk het tijdstip waarop de moment opname is gemaakt en de eigenschappen op dat moment. De wijziging is op een bepaald moment tussen deze moment opnamen. In het bovenstaande voor beeld zien we dat de gewijzigde eigenschap is **supportsHttpsTrafficOnly**.
 
-Als u wilt de resultaten een programmatische manier vergelijken, vergelijkt de **inhoud** gedeelte van elke momentopname om het verschil te bepalen. Als u de volledige momentopname, vergelijkt de **timestamp** altijd wordt weergegeven als een verschil ondanks wordt verwacht.
+Als u de resultaten wilt vergelijken met een programma, vergelijkt u het **inhouds** gedeelte van elke moment opname om het verschil te bepalen. Als u de volledige moment opname vergelijkt, wordt de **tijds tempel** altijd als een verschil weer gegeven ondanks de verwachte tijd.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie de taal die wordt gebruikt in [Starter query's](../samples/starter.md).
-- Maakt gebruik van geavanceerde Zie in [geavanceerde query's](../samples/advanced.md).
-- Meer informatie over het [resources verkennen](../concepts/explore-resources.md).
+- Zie de taal die wordt gebruikt in [Start query's](../samples/starter.md).
+- Zie Geavanceerd gebruik in [Geavanceerde query's](../samples/advanced.md).
+- Meer informatie over [bronnen verkennen](../concepts/explore-resources.md).

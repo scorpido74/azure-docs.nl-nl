@@ -6,13 +6,12 @@ ms.author: dacoulte
 ms.date: 03/14/2019
 ms.topic: sample
 ms.service: blueprints
-manager: carmonm
-ms.openlocfilehash: 882228c7cb49a6a419b2b5e0bb200da3391d4584
-ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
+ms.openlocfilehash: a55fccd8942e9bbdee4611120ffcab48fe4a8c62
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70802572"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71978296"
 ---
 # <a name="deploy-the-iso-27001-shared-services-blueprint-sample"></a>Het voor beeld van de ISO 27001-gedeelde services gebruiken
 
@@ -33,14 +32,14 @@ Implementeer eerst het voor beeld van de blauw druk door een nieuwe blauw druk i
 
 1. Op de pagina **aan** de slag aan de linkerkant selecteert u de knop **maken** onder _een blauw druk maken_.
 
-1. De **ISO 27001 zoeken: Voor beeld** van een blauw druk voor de gedeelde services onder _andere voor beelden_ en selecteert **u dit voor beeld gebruiken**.
+1. Zoek de **ISO 27001: Gedeelde services @ no__t-0 blauw druk onder _andere voor beelden_ en selecteer **dit voor beeld gebruiken**.
 
 1. Voer de _basis beginselen_ van het voor beeld van de blauw druk in:
 
    - **Naam blauw druk**: Geef een naam op voor uw exemplaar van het voor beeld van de ISO 27001-gedeelde services.
    - **Locatie van definitie**: Gebruik het weglatings teken en selecteer de beheer groep om uw kopie van het voor beeld op te slaan.
 
-1. Selecteer het tabblad _artefacten_ boven aan de pagina of **volgende:**  Artefacten aan de onderkant van de pagina.
+1. Selecteer het tabblad _artefacten_ boven aan de pagina of **Next: Artefacten @ no__t-0 aan de onderkant van de pagina.
 
 1. Bekijk de lijst met artefacten die deel uitmaken van het voor beeld van de blauw druk. Veel van de artefacten hebben para meters die later worden gedefinieerd. Selecteer **concept opslaan** wanneer u klaar bent met het bekijken van het voor beeld van de blauw druk.
 
@@ -89,8 +88,8 @@ Zodra de kopie van het voor beeld van de blauw druk is **gepubliceerd**, kan dez
      - **Organisatie naam**: Geef een korte naam op voor uw organisatie. Deze eigenschap wordt voornamelijk gebruikt voor het benoemen van resources.
      - **Adres voorvoegsel voor het subnet van gedeelde services**: Geef de CIDR-notatie waarde op voor de netwerk implementatie van de geïmplementeerde resources tegelijk.
      - **Locatie van gedeelde services**: Bepaalt op welke locatie de artefacten worden geïmplementeerd. Niet alle services zijn beschikbaar op alle locaties. Artefacten die dergelijke services implementeren, bieden een parameter optie voor de locatie waarop die artefact moet worden geïmplementeerd.
-     - **Toegestane locatie (beleid: Blauw druk-initiatief voor ISO**27001): Waarde die de toegestane locaties voor resource groepen en bronnen aangeeft.
-     - **Log Analytics werk ruimte voor VM-agents (beleid: Blauw druk-initiatief voor ISO**27001): Hiermee geeft u de resource-ID van een werk ruimte op. Deze para meter gebruikt `concat` een functie om de resource-id te maken.
+     - @no__t locatie van 0Allowed (beleid: Blauw druk-initiatief voor ISO 27001) **: Waarde die de toegestane locaties voor resource groepen en bronnen aangeeft.
+     - **Log Analytics-werk ruimte voor VM-agents (beleid: Blauw druk-initiatief voor ISO 27001)** : Hiermee geeft u de resource-ID van een werk ruimte op. Deze para meter maakt gebruik van een `concat`-functie om de resource-ID te maken.
 
    - Artefactparameters
 
@@ -107,20 +106,20 @@ De volgende tabel geeft een lijst van de para meters van de blauw druk-artefact:
 
 |Naam van het artefact|Type artefact|Parameternaam|Description|
 |-|-|-|-|
-|\[Voor\]beeld: Log Analytics agent voor Linux-VM Scale Sets implementeren (VMSS)|Beleidstoewijzing|Optioneel: Lijst met VM-installatie kopieën die een ondersteund Linux-besturings systeem hebben om toe te voegen aan het bereik|Beschrijving De standaard waarde is _[' none ']_ .|
-|\[Voor\]beeld: Log Analytics-agent voor Linux-Vm's implementeren|Beleidstoewijzing|Optioneel: Lijst met VM-installatie kopieën die een ondersteund Linux-besturings systeem hebben om toe te voegen aan het bereik|Beschrijving De standaard waarde is _[' none ']_ .|
-|\[Voor\]beeld: Log Analytics agent voor Windows-VM Scale Sets (VMSS) implementeren|Beleidstoewijzing|Optioneel: Lijst met VM-installatie kopieën die een ondersteund Windows-besturings systeem hebben om toe te voegen aan het bereik|Beschrijving De standaard waarde is _[' none ']_ .|
-|\[Voor\]beeld: Log Analytics-agent voor Windows-Vm's implementeren|Beleidstoewijzing|Optioneel: Lijst met VM-installatie kopieën die een ondersteund Windows-besturings systeem hebben om toe te voegen aan het bereik|Beschrijving De standaard waarde is _[' none ']_ .|
+|\[Preview @ no__t-1: Log Analytics agent voor Linux-VM Scale Sets implementeren (VMSS)|Beleidstoewijzing|Optioneel: Lijst met VM-installatie kopieën die een ondersteund Linux-besturings systeem hebben om toe te voegen aan het bereik|Beschrijving De standaard waarde is _[' none ']_ .|
+|\[Preview @ no__t-1: Log Analytics-agent voor Linux-Vm's implementeren|Beleidstoewijzing|Optioneel: Lijst met VM-installatie kopieën die een ondersteund Linux-besturings systeem hebben om toe te voegen aan het bereik|Beschrijving De standaard waarde is _[' none ']_ .|
+|\[Preview @ no__t-1: Log Analytics agent voor Windows-VM Scale Sets (VMSS) implementeren|Beleidstoewijzing|Optioneel: Lijst met VM-installatie kopieën die een ondersteund Windows-besturings systeem hebben om toe te voegen aan het bereik|Beschrijving De standaard waarde is _[' none ']_ .|
+|\[Preview @ no__t-1: Log Analytics-agent voor Windows-Vm's implementeren|Beleidstoewijzing|Optioneel: Lijst met VM-installatie kopieën die een ondersteund Windows-besturings systeem hebben om toe te voegen aan het bereik|Beschrijving De standaard waarde is _[' none ']_ .|
 |Toegestane resourcetypen|Beleidstoewijzing|Toegestane resourcetypen|Lijst met resource typen die mogen worden geïmplementeerd. Deze lijst bestaat uit alle resource typen die zijn geïmplementeerd in gedeelde services.|
 |Toegestane opslagaccount-SKU's|Beleidstoewijzing|Toegestane opslag-Sku's|Lijst met Diagnostische logboeken opslag account-Sku's toegestaan. De standaard waarde is _["Standard_LRS"]_ .|
 |Toegestane SKU's van virtuele machines|Beleidstoewijzing|Lijst met Sku's voor virtuele machines die mogen worden geïmplementeerd. De standaard waarde is _["Standard_DS1_v2", "Standard_DS2_v2"]_ .|
 |Blauwdrukinitiatief voor ISO 27001|Beleidstoewijzing|Bron typen voor het controleren van Diagnostische logboeken|Lijst met resource typen om te controleren of de instelling voor diagnostische logboek registratie niet is ingeschakeld. Acceptabele waarden zijn te vinden in [Azure monitor Diagnostische logboeken schema's](../../../../azure-monitor/platform/diagnostic-logs-schema.md#supported-log-categories-per-resource-type).|
-|Log Analytics resource groep|Resource group|Name|**Vergrendeld** : voegt de **naam** van `-sharedsvsc-log-rg` de organisatie samen om de resource groep uniek te maken.|
+|Log Analytics resource groep|Resource group|Name|**Vergrendeld** : voegt de naam van de **organisatie** samen met `-sharedsvsc-log-rg` om de resource groep uniek te maken.|
 |Log Analytics resource groep|Resource group|Location|**Vergrendeld** : maakt gebruik van de blauw druk-para meter.|
 |Log Analytics-sjabloon|Resource Manager-sjabloon|Servicelaag|Hiermee stelt u de laag van de Log Analytics-werk ruimte. De standaard waarde is _PerNode_.|
 |Log Analytics-sjabloon|Resource Manager-sjabloon|Behoud van logboeken in dagen|Bewaren van gegevens in dagen. De standaard waarde is _365_.|
 |Log Analytics-sjabloon|Resource Manager-sjabloon|Location|De regio die wordt gebruikt voor het maken van de Log Analytics-werk ruimte. De standaard waarde is _VS-West 2_.|
-|Netwerk resource groep|Resource group|Name|**Vergrendeld** : voegt de **naam** van `-sharedsvcs-net-rg` de organisatie samen om de resource groep uniek te maken.|
+|Netwerk resource groep|Resource group|Name|**Vergrendeld** : voegt de naam van de **organisatie** samen met `-sharedsvcs-net-rg` om de resource groep uniek te maken.|
 |Netwerk resource groep|Resource group|Location|**Vergrendeld** : maakt gebruik van de blauw druk-para meter.|
 |Sjabloon voor Azure Firewall|Resource Manager-sjabloon|Privé-IP-adres voor Azure-firewall|Hiermee configureert u het privé IP-adres van de [Azure-firewall](../../../../firewall/overview.md). Deze waarde wordt ook gebruikt als standaard route tabel op het subnet met gedeelde services. Moet deel uitmaken van de CIDR-notatie die is gedefinieerd in **Azure firewall subnet adres voorvoegsel**. De standaard waarde is _10.0.4.4_.|
 |Sjabloon voor Azure Firewall|Resource Manager-sjabloon|Behoud van logboeken in dagen|Bewaren van gegevens in dagen. De standaard waarde is _365_.|
@@ -132,7 +131,7 @@ De volgende tabel geeft een lijst van de para meters van de blauw druk-artefact:
 |Sjabloon voor Virtual Network en route tabel|Resource Manager-sjabloon|Voorvoegsel van subnetadres van Application Gateway|De CIDR-notatie voor het toepassings gateway-subnet. De standaard waarde is _10.0.2.0/24_.|
 |Sjabloon voor Virtual Network en route tabel|Resource Manager-sjabloon|Adres voorvoegsel Virtual Network gateway-subnet|De CIDR-notatie voor het subnet van de gateway van het virtuele netwerk. De standaard waarde is _10.0.3.0/24_.|
 |Sjabloon voor Virtual Network en route tabel|Resource Manager-sjabloon|Voorvoegsel van subnetadres van Azure Firewall|De CIDR-notatie voor het subnet van de [Azure-firewall](../../../../firewall/overview.md) . Moet de para meter **Private IP van Azure firewall** bevatten.|
-|Key Vault resource groep|Resource group|Name|**Vergrendeld** : voegt de **naam** van `-sharedsvcs-kv-rg` de organisatie samen om de resource groep uniek te maken.|
+|Key Vault resource groep|Resource group|Name|**Vergrendeld** : voegt de naam van de **organisatie** samen met `-sharedsvcs-kv-rg` om de resource groep uniek te maken.|
 |Key Vault resource groep|Resource group|Location|**Vergrendeld** : maakt gebruik van de blauw druk-para meter.|
 |Key Vault-sjabloon|Resource Manager-sjabloon|Gebruikersnaam van Jumpbox-beheerder|Gebruikers naam voor de JumpBox. Moet overeenkomen met dezelfde eigenschaps waarde in de **JumpBox-sjabloon**. De standaard waarde is _JB-admin-user_.|
 |Key Vault-sjabloon|Resource Manager-sjabloon|SSH-sleutel of-wacht woord voor JumpBox-beheerder|De sleutel of het wacht woord voor het account op het JumpBox. Moet overeenkomen met dezelfde eigenschaps waarde in de **JumpBox-sjabloon**. Geen standaard waarde en mag niet leeg zijn.|
@@ -141,16 +140,16 @@ De volgende tabel geeft een lijst van de para meters van de blauw druk-artefact:
 |Key Vault-sjabloon|Resource Manager-sjabloon|AAD-object-id|De AAD-object-id van het account dat toegang moet hebben tot het Key Vault exemplaar. Geen standaard waarde en mag niet leeg zijn. Als u deze waarde wilt vinden in de Azure Portal, zoekt en selecteert u ' gebruikers ' onder _Services_. Gebruik het vak _naam_ om te filteren op de account naam en selecteer dat account. Selecteer op de pagina _gebruikers profiel_ het pictogram ' Klik om te kopiëren ' naast de _object-id_.  |
 |Key Vault-sjabloon|Resource Manager-sjabloon|Behoud van logboeken in dagen|Bewaren van gegevens in dagen. De standaard waarde is _365_.|
 |Key Vault-sjabloon|Resource Manager-sjabloon|Key Vault-SKU|Hiermee geeft u de SKU op van de Key Vault die is gemaakt. De standaard waarde is _Premium_.|
-|Resource groep JumpBox|Resource group|Name|**Vergrendeld** : voegt de **naam** van `-sharedsvcs-jb-rg` de organisatie samen om de resource groep uniek te maken.|
+|Resource groep JumpBox|Resource group|Name|**Vergrendeld** : voegt de naam van de **organisatie** samen met `-sharedsvcs-jb-rg` om de resource groep uniek te maken.|
 |Resource groep JumpBox|Resource group|Location|**Vergrendeld** : maakt gebruik van de blauw druk-para meter.|
 |Jumpbox-sjabloon|Resource Manager-sjabloon|Gebruikersnaam van Jumpbox-beheerder|De gebruikers naam die wordt gebruikt voor toegang tot JumpBox Vm's. Moet overeenkomen met dezelfde eigenschaps waarde in **Key Vault sjabloon**. De standaard waarde is _JB-admin-user_.|
-|Jumpbox-sjabloon|Resource Manager-sjabloon|JumpBox-beheerders wachtwoord (Key Vault Resource-ID)|De resource-ID van de Key Vault. Gebruik '/Subscriptions/{subscriptionId}/resourceGroups/{orgName}-sharedsvcs-KV-RG/providers/Microsoft.KeyVault/vaults/{orgName}-sharedsvcs-KV ' en vervang `{subscriptionId}` door uw abonnements-id `{orgName}` en de **organisatie** para meter naam blauw druk.|
+|Jumpbox-sjabloon|Resource Manager-sjabloon|JumpBox-beheerders wachtwoord (Key Vault Resource-ID)|De resource-ID van de Key Vault. Gebruik '/subscriptions/{subscriptionId}/resourceGroups/{orgName}-sharedsvcs-kv-rg/providers/Microsoft.KeyVault/vaults/{orgName}-sharedsvcs-kv ' en vervang `{subscriptionId}` door uw abonnements-ID en `{orgName}` met de naam van de **organisatie** blauw druk-para meter.|
 |Jumpbox-sjabloon|Resource Manager-sjabloon|JumpBox-beheerders wachtwoord (Key Vault geheime naam)|De gebruikers naam van de JumpBox-beheerder. Moet overeenkomen met de waarde in **Key Vault sjabloon** eigenschap **JumpBox beheerder**.|
 |Jumpbox-sjabloon|Resource Manager-sjabloon|Jumpbox-besturingssysteem|Bepaalt het besturings systeem van de JumpBox-VM. De standaard waarde is _Windows_.|
-|Active Directory Domain Services resource groep|Resource group|Name|**Vergrendeld** : voegt de **naam** van `-sharedsvcs-adds-rg` de organisatie samen om de resource groep uniek te maken.|
+|Active Directory Domain Services resource groep|Resource group|Name|**Vergrendeld** : voegt de naam van de **organisatie** samen met `-sharedsvcs-adds-rg` om de resource groep uniek te maken.|
 |Active Directory Domain Services resource groep|Resource group|Location|**Vergrendeld** : maakt gebruik van de blauw druk-para meter.|
 |Sjabloon voor Active Directory Domain Services|Resource Manager-sjabloon|Gebruikersnaam van domeinbeheerder|Gebruikers naam voor de voegt JumpBox toe. Moet overeenkomen met dezelfde eigenschaps waarde in **Key Vault sjabloon**. De standaard waarde is _toevoegen-admin-gebruiker_.|
-|Sjabloon voor Active Directory Domain Services|Resource Manager-sjabloon|Domein beheerders wachtwoord (Key Vault Resource-ID)|De resource-ID van de Key Vault. Gebruik '/Subscriptions/{subscriptionId}/resourceGroups/{orgName}-sharedsvcs-KV-RG/providers/Microsoft.KeyVault/vaults/{orgName}-sharedsvcs-KV ' en vervang `{subscriptionId}` door uw abonnements-id `{orgName}` en de **organisatie** para meter naam blauw druk.|
+|Sjabloon voor Active Directory Domain Services|Resource Manager-sjabloon|Domein beheerders wachtwoord (Key Vault Resource-ID)|De resource-ID van de Key Vault. Gebruik '/subscriptions/{subscriptionId}/resourceGroups/{orgName}-sharedsvcs-kv-rg/providers/Microsoft.KeyVault/vaults/{orgName}-sharedsvcs-kv ' en vervang `{subscriptionId}` door uw abonnements-ID en `{orgName}` met de naam van de **organisatie** blauw druk-para meter.|
 |Sjabloon voor Active Directory Domain Services|Resource Manager-sjabloon|Domein beheerders wachtwoord (Key Vault geheime naam)|De gebruikers naam van de domein beheerder. Moet overeenkomen met de waarde in Key Vault eigenschap van de **domein beheerder**van de **sjabloon** .|
 |Sjabloon voor Active Directory Domain Services|Resource Manager-sjabloon|Domeinnaam|De naam van de Active Directory gemaakt door het voor beeld. De standaard waarde is _contoso.com_.|
 |Sjabloon voor Active Directory Domain Services|Resource Manager-sjabloon|Gebruiker van domein beheerder|Gebruikers naam voor het AD-beheer account en voor het toevoegen van apparaten aan het AD-domein. De waarde van de eigenschap van de **ad-beheerders naam** moet overeenkomen met de **Key Vault sjabloon**. De standaard waarde is _domein beheerder-gebruiker_.|
@@ -161,8 +160,8 @@ De volgende tabel geeft een lijst van de para meters van de blauw druk-artefact:
 Nu u de stappen voor het implementeren van het voor beeld van de ISO 27001 Shared Services-blauw drukken hebt gecontroleerd, gaat u naar de volgende artikelen voor meer informatie over de architectuur en de beheer toewijzing:
 
 > [!div class="nextstepaction"]
-> [ISO 27001-blauw druk: overzicht](./index.md)
-> van[ISO 27001 gedeelde services blauw druk-besturings element toewijzing](./control-mapping.md)
+> [ISO 27001-blauw druk voor gedeeld Services-overzicht](./index.md)
+> [ISO 27001 gedeelde services blauw druk-besturings element toewijzing](./control-mapping.md)
 
 Aanvullende artikelen over blauwdrukken en het gebruik hiervan:
 

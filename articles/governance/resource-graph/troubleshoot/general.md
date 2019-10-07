@@ -6,13 +6,12 @@ ms.author: dacoulte
 ms.date: 08/21/2019
 ms.topic: troubleshooting
 ms.service: resource-graph
-manager: carmonm
-ms.openlocfilehash: 4cd4d89f276770cba401d7941a975fad8e49c8cd
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: abf6d22f2010db9bff97c7a93354c1cf8e1e1644
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71000528"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71976611"
 ---
 # <a name="troubleshoot-errors-using-azure-resource-graph"></a>Problemen oplossen met Azure resource Graph
 
@@ -69,11 +68,11 @@ Klanten die een query uitvoeren op de Azure-resource grafiek REST API een _500_ 
 
 #### <a name="cause"></a>Oorzaak
 
-De Azure resource Graph-rest API ondersteunt alleen `Content-Type` een van de **toepassingen/JSON**. Sommige REST-hulpprogram ma's of-agents worden standaard ingesteld op **tekst/normaal**, wat niet wordt ondersteund door de rest API.
+De Azure resource Graph-REST API ondersteunt alleen een `Content-Type` van **Application/JSON**. Sommige REST-hulpprogram ma's of-agents worden standaard ingesteld op **tekst/normaal**, wat niet wordt ondersteund door de rest API.
 
 #### <a name="resolution"></a>Oplossing
 
-Controleer of het hulp programma of de agent die u gebruikt om een query uit te zoeken op `Content-Type` Azure resource Graph, de rest API-header is geconfigureerd voor **Application/JSON**.
+Controleer of het hulp programma of de agent die u gebruikt om een query uit te zoeken in azure resource Graph de REST API header `Content-Type` is geconfigureerd voor **toepassing/JSON**.
 ### <a name="rest-403"></a>Omstandigheden Geen lees machtiging voor alle abonnementen in de lijst
 
 #### <a name="issue"></a>Probleem

@@ -7,19 +7,18 @@ ms.author: dacoulte
 ms.date: 06/26/2019
 ms.topic: conceptual
 ms.service: blueprints
-manager: carmonm
-ms.openlocfilehash: 654ae2da9bcdb6d73de47730aff6870c2e3dfaeb
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 823b890f1898de5006b965ffa19520016aceb121
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71001526"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71980882"
 ---
 # <a name="control-mapping-of-the-uk-official-and-uk-nhs-blueprint-samples"></a>Controle van de toewijzing van de voor beelden van het Verenigd Konink rijk en UK NHS blauw drukken
 
 In het volgende artikel wordt uitgelegd hoe de voor beelden van het Verenigd Konink rijk en UK NHS blauw worden toegewezen aan de UK-officiële en UK NHS-controles. Zie [UK ambtenaar](https://www.gov.uk/government/publications/government-security-classifications)(Engelstalig) voor meer informatie over de besturings elementen.
 
-De volgende toewijzingen zijn de besturings elementen voor de officiële en **UK-NHS** van **UK** . Gebruik de navigatie aan de rechter kant om rechtstreeks naar een specifieke besturings element koppeling te gaan. Veel van de toegewezen besturings elementen worden geïmplementeerd met een [Azure Policy](../../../policy/overview.md) -initiatief. Als u het complete initiatief wilt bekijken, opent u **beleid** in het Azure Portal en selecteert u de pagina **definities** . Zoek en selecteer vervolgens de  **\[preview\] -controle van het Verenigd Konink rijk-en UK-NHS-besturings element en implementeer specifieke VM-extensies ter ondersteuning** van de ingebouwde beleids initiatieven voor controle vereisten.
+De volgende toewijzingen zijn de besturings elementen voor de officiële en **UK-NHS** van **UK** . Gebruik de navigatie aan de rechter kant om rechtstreeks naar een specifieke besturings element koppeling te gaan. Veel van de toegewezen besturings elementen worden geïmplementeerd met een [Azure Policy](../../../policy/overview.md) -initiatief. Als u het complete initiatief wilt bekijken, opent u **beleid** in het Azure Portal en selecteert u de pagina **definities** . Zoek en selecteer vervolgens de **\[Preview @ no__t-2 audit UK Official en UK NHS Controls en implementeer specifieke VM-extensies ter ondersteuning** van de ingebouwde beleids initiatieven voor controle vereisten.
 
 > [!IMPORTANT]
 > Elk besturings element hieronder is gekoppeld aan een of meer [Azure Policy](../../../policy/overview.md) definities. Met deze beleids regels kunt u de naleving van het besturings element [beoordelen](../../../policy/how-to/get-compliance-data.md) . Er is echter vaak geen 1:1-of volledige overeenkomst tussen een besturings element en een of meer beleids regels. Als zodanig is de **naleving** in azure Policy alleen bedoeld voor het beleid zelf. Dit garandeert niet dat u volledig compatibel bent met alle vereisten van een besturings element. Daarnaast bevat de nalevings standaard besturings elementen die niet worden behandeld door Azure Policy definities op dit moment. Daarom is naleving in Azure Policy slechts een gedeeltelijke weer gave van uw algemene nalevings status. De koppelingen tussen de besturings elementen en Azure Policy definities voor dit voor beeld van deze naleving blauw druk kunnen na verloop van tijd veranderen. Als u de wijzigings geschiedenis wilt weer geven, raadpleegt u de [github commit-geschiedenis](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/ukofficial/control-mapping.md).
@@ -91,27 +90,27 @@ Deze blauw druk wijst ook Azure Policy definities toe aan controle-accounts waar
 
 Deze blauw druk wijst ook een Azure Policy definitie toe waarmee de machtigingen van het Linux-VM-wacht woord worden gecontroleerd op waarschuwing als ze onjuist zijn ingesteld. Met dit ontwerp kunt u corrigerende maat regelen treffen om te voor komen dat verificators worden aangetast.
 
-- \[Voor\]beeld: Controleer of de/etc/passwd-bestands machtigingen van de Linux-VM zijn ingesteld op 0644
+- \[Preview @ no__t-1: Controleer of de/etc/passwd-bestands machtigingen van de Linux-VM zijn ingesteld op 0644
 
 Deze blauw druk helpt u sterke wacht woorden af te dwingen door Azure Policy definities toe te wijzen waarmee Windows-Vm's worden gecontroleerd die geen minimale sterkte en andere wachtwoord vereisten afdwingen. Het bewustzijn van Vm's in strijd met het beleid voor wachtwoord sterkte helpt u bij het uitvoeren van corrigerende maat regelen om ervoor te zorgen dat wacht woorden voor alle VM-gebruikers accounts voldoen aan het beleid.
 
-- \[Voor\]beeld: Vereisten implementeren voor het controleren van Windows-Vm's waarvoor de instelling voor wachtwoord complexiteit niet is ingeschakeld
-- \[Voor\]beeld: Vereisten implementeren voor het controleren van Windows-Vm's die geen maximale wachtwoord duur van 70 dagen hebben
-- \[Voor\]beeld: Vereisten implementeren voor het controleren van Windows-Vm's die geen minimale wachtwoord duur van 1 dag hebben
-- \[Voor\]beeld: Vereisten implementeren om Windows-Vm's te controleren die de minimale wachtwoord lengte niet beperken tot 14 tekens
-- \[Voor\]beeld: Vereisten implementeren voor het controleren van virtuele Windows-machines die het opnieuw gebruiken van de voor gaande 24 wacht woorden toestaan
-- \[Voor\]beeld: Windows-Vm's controleren waarvoor de instelling voor wachtwoord complexiteit niet is ingeschakeld
-- \[Voor\]beeld: Windows-Vm's met een maximale wachtwoord duur van 70 dagen controleren
-- \[Voor\]beeld: Windows-Vm's met een minimale wachtwoord leeftijd van 1 dag controleren
-- \[Voor\]beeld: Windows-Vm's controleren die de minimale wachtwoord lengte niet beperken tot 14 tekens
-- \[Voor\]beeld: Virtuele Windows-machines controleren die het opnieuw gebruiken van de voor gaande 24 wacht woorden toestaan
+- \[Preview @ no__t-1: Vereisten implementeren voor het controleren van Windows-Vm's waarvoor de instelling voor wachtwoord complexiteit niet is ingeschakeld
+- \[Preview @ no__t-1: Vereisten implementeren voor het controleren van Windows-Vm's die geen maximale wachtwoord duur van 70 dagen hebben
+- \[Preview @ no__t-1: Vereisten implementeren voor het controleren van Windows-Vm's die geen minimale wachtwoord duur van 1 dag hebben
+- \[Preview @ no__t-1: Vereisten implementeren om Windows-Vm's te controleren die de minimale wachtwoord lengte niet beperken tot 14 tekens
+- \[Preview @ no__t-1: Vereisten implementeren voor het controleren van virtuele Windows-machines die het opnieuw gebruiken van de voor gaande 24 wacht woorden toestaan
+- \[Preview @ no__t-1: Windows-Vm's controleren waarvoor de instelling voor wachtwoord complexiteit niet is ingeschakeld
+- \[Preview @ no__t-1: Windows-Vm's met een maximale wachtwoord duur van 70 dagen controleren
+- \[Preview @ no__t-1: Windows-Vm's met een minimale wachtwoord leeftijd van 1 dag controleren
+- \[Preview @ no__t-1: Windows-Vm's controleren die de minimale wachtwoord lengte niet beperken tot 14 tekens
+- \[Preview @ no__t-1: Virtuele Windows-machines controleren die het opnieuw gebruiken van de voor gaande 24 wacht woorden toestaan
 
 Met deze blauw druk kunt u ook de toegang tot Azure-resources beheren door Azure Policy definities toe te wijzen. Met deze beleids regels wordt het gebruik van resource typen en configuraties gecontroleerd, waardoor de toegang tot bronnen kan worden uitgebreid. Informatie over resources die in strijd zijn met deze beleids regels, kan u helpen corrigerende maat regelen te nemen om ervoor te zorgen dat toegang tot Azure-resources wordt beperkt tot gemachtigde gebruikers.
 
-- \[Voor\]beeld: Vereisten implementeren voor het controleren van virtuele Linux-machines met accounts zonder wacht woorden
-- \[Voor\]beeld: Vereisten implementeren voor het controleren van virtuele Linux-machines die externe verbindingen toestaan van accounts zonder wacht woorden
-- \[Voor\]beeld: Virtuele Linux-machines met accounts zonder wacht woorden controleren
-- \[Voor\]beeld: Virtuele Linux-machines controleren die externe verbindingen van accounts zonder wacht woorden toestaan
+- \[Preview @ no__t-1: Vereisten implementeren voor het controleren van virtuele Linux-machines met accounts zonder wacht woorden
+- \[Preview @ no__t-1: Vereisten implementeren voor het controleren van virtuele Linux-machines die externe verbindingen toestaan van accounts zonder wacht woorden
+- \[Preview @ no__t-1: Virtuele Linux-machines met accounts zonder wacht woorden controleren
+- \[Preview @ no__t-1: Virtuele Linux-machines controleren die externe verbindingen van accounts zonder wacht woorden toestaan
 - Opslag accounts moeten worden gemigreerd naar nieuwe Azure Resource Manager-resources
 - Virtuele machines moeten worden gemigreerd naar nieuwe Azure Resource Manager-resources
 - Virtuele machines controleren die geen beheerde schijven gebruiken
@@ -148,7 +147,7 @@ Deze blauw druk wijst ook Azure Policy definities toe aan controle-accounts waar
 
 Deze blauw druk wijst ook een Azure Policy definitie toe waarmee de machtigingen van het Linux-VM-wacht woord worden gecontroleerd op waarschuwing als ze onjuist zijn ingesteld. Met dit ontwerp kunt u corrigerende maat regelen treffen om te voor komen dat verificators worden aangetast.
 
-- \[Voor\]beeld: Controleer of de/etc/passwd-bestands machtigingen van de Linux-VM zijn ingesteld op 0644
+- \[Preview @ no__t-1: Controleer of de/etc/passwd-bestands machtigingen van de Linux-VM zijn ingesteld op 0644
 
 ## <a name="13-audit-information-for-users"></a>13 controle-informatie voor gebruikers
 
@@ -157,8 +156,8 @@ Deze blauw druk helpt u om ervoor te zorgen dat systeem gebeurtenissen worden va
 - Controle moet worden ingeschakeld voor geavanceerde instellingen voor gegevens beveiliging op SQL Server
 - Diagnostische instelling voor controleren
 - Controle-instellingen op SQL server-niveau controleren
-- \[Voor\]beeld: Log Analytics-agent voor Linux-Vm's implementeren
-- \[Voor\]beeld: Log Analytics-agent voor Windows-Vm's implementeren
+- \[Preview @ no__t-1: Log Analytics-agent voor Linux-Vm's implementeren
+- \[Preview @ no__t-1: Log Analytics-agent voor Windows-Vm's implementeren
 - Network Watcher implementeren bij het maken van virtuele netwerken
 
 ## <a name="next-steps"></a>Volgende stappen
@@ -166,8 +165,8 @@ Deze blauw druk helpt u om ervoor te zorgen dat systeem gebeurtenissen worden va
 Nu u de controle toewijzing van het Verenigd Konink rijk-en UK-NHS blauw drukken hebt bekeken, gaat u naar de volgende artikelen voor meer informatie over het overzicht en hoe u dit voor beeld implementeert:
 
 > [!div class="nextstepaction"]
-> [UK-officiële en UK NHS-blauw drukken-overzicht](./index.md)
-> van de[officiële en UK NHS blauw drukken voor UK-implementatie stappen](./deploy.md)
+> [UK-officiële en UK NHS blauw drukken-overzicht](./index.md)
+> [UK-officiële en UK NHS blauw drukken-stappen implementeren](./deploy.md)
 
 Aanvullende artikelen over blauwdrukken en het gebruik hiervan:
 

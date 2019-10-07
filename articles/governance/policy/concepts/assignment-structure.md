@@ -6,27 +6,24 @@ ms.author: dacoulte
 ms.date: 09/23/2019
 ms.topic: conceptual
 ms.service: azure-policy
-manager: carmonm
-ms.openlocfilehash: a01cee2ba803a048e426507b57b96d0833743636
-ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
+ms.openlocfilehash: 5326e765701a42323ea62df8d35128c4117b2ed9
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71181377"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71981420"
 ---
-# <a name="azure-policy-assignment-structure"></a>Toewijzings structuur Azure Policy
+# <a name="azure-policy-assignment-structure"></a>Azure Policy-toewijzingsstructuur
 
 Beleids toewijzingen worden gebruikt door Azure Policy om te definiëren welke resources worden toegewezen tijdens beleid of initiatieven. De beleids toewijzing kan de waarden van para meters voor die groep resources tijdens de toewijzing bepalen, waardoor beleids definities die overeenkomen met dezelfde resource-eigenschappen, opnieuw kunnen worden gebruikt met verschillende vereisten voor naleving.
 
-Het schema dat wordt gebruikt door Azure Policy kunt dit hier vinden: [https://docs.microsoft.com/azure/templates/microsoft.authorization/2019-01-01/policyassignments](/azure/templates/microsoft.authorization/2019-01-01/policyassignments)
-
-U gebruikt JSON om een beleids toewijzing te maken. De beleidsdefinitie bevat elementen voor:
+U gebruikt JSON om een beleids toewijzing te maken. De beleids toewijzing bevat elementen voor:
 
 - Weergavenaam
 - description
 - metagegevens
 - Afdwingings modus
-- Beleids definitie
+- beleids definitie
 - parameters
 
 Zo toont de volgende JSON een beleids toewijzing in de modus _DoNotEnforce_ met dynamische para meters:
@@ -76,7 +73,7 @@ Als **enforcementMode** niet is opgegeven in een beleids-of initiatief definitie
 ## <a name="policy-definition-id"></a>Beleids definitie-ID
 
 Dit veld moet de volledige padnaam zijn van ofwel een beleids definitie of een initiatief definitie.
-`policyDefinitionId`is een teken reeks en geen matrix. Het is raadzaam om in plaats daarvan een [initiatief](./definition-structure.md#initiatives) te gebruiken als er vaak meerdere beleids regels aan elkaar worden toegewezen.
+`policyDefinitionId` is een teken reeks en geen matrix. Het is raadzaam om in plaats daarvan een [initiatief](./definition-structure.md#initiatives) te gebruiken als er vaak meerdere beleids regels aan elkaar worden toegewezen.
 
 ## <a name="parameters"></a>Parameters
 
@@ -94,7 +91,7 @@ Dit ontwerp maakt het mogelijk om een beleid of initiatief definitie met verschi
 }
 ```
 
-In dit voor beeld zijn de para meters die eerder zijn `prefix` gedefinieerd in de beleids definitie, en. `suffix` Deze specifieke beleids toewijzing is `prefix` ingesteld op **afda** en `suffix` naar **-LC**. Dezelfde beleids definitie kan opnieuw worden gebruikt met een andere set para meters voor een andere afdeling, waardoor het dupliceren en de complexiteit van beleids definities wordt verkort tijdens het bieden van flexibiliteit.
+In dit voor beeld zijn de eerder gedefinieerde para meters in de beleids definitie `prefix` en `suffix`. Deze specifieke beleids toewijzing stelt `prefix` in op **depta** en `suffix` naar **-LC**. Dezelfde beleids definitie kan opnieuw worden gebruikt met een andere set para meters voor een andere afdeling, waardoor het dupliceren en de complexiteit van beleids definities wordt verkort tijdens het bieden van flexibiliteit.
 
 ## <a name="next-steps"></a>Volgende stappen
 

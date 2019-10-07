@@ -6,13 +6,12 @@ ms.author: dacoulte
 ms.date: 10/25/2018
 ms.topic: conceptual
 ms.service: blueprints
-manager: carmonm
-ms.openlocfilehash: e5697d00c2b0a869667d74e93c3ccae593bf200b
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: bf1fdca5476f66249eb5b73bbcbf5913142eb0d3
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231933"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71978484"
 ---
 # <a name="how-to-update-an-existing-blueprint-assignment"></a>Een bestaande blauw druk-toewijzing bijwerken
 
@@ -67,7 +66,7 @@ Er is geen limiet voor het aantal keren dat een toewijzing kan worden bijgewerkt
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over de [levens duur van de blauw druk](../concepts/lifecycle.md).
+- Meer informatie over de [levenscyclus van een blauwdruk](../concepts/lifecycle.md).
 - Meer informatie over hoe u [statische en dynamische parameters](../concepts/parameters.md) gebruikt.
 - Meer informatie over hoe u de [blauwdrukvolgorde](../concepts/sequencing-order.md) aanpast.
 - Meer informatie over hoe u gebruikmaakt van [resourcevergrendeling in blauwdrukken](../concepts/resource-locking.md).

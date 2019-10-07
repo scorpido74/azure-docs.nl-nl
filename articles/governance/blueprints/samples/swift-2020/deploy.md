@@ -6,13 +6,12 @@ ms.author: meladie
 ms.date: 09/24/2019
 ms.topic: sample
 ms.service: blueprints
-manager: carmonm
-ms.openlocfilehash: cb17cfb343c8adbe9ca145bd4eba9b8fc332f440
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: 1c328612b72ec267095e946fae89f298f51b8090
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71220124"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71981451"
 ---
 # <a name="deploy-the-swift-csp-cscf-v2020-blueprint-sample"></a>De SWIFT CSP-CSCF v2020 blauw druk-voor beeld implementeren
 
@@ -40,7 +39,7 @@ Implementeer eerst het voor beeld van de blauw druk door een nieuwe blauw druk i
    - **Naam blauw druk**: Geef een naam op voor uw exemplaar van het SWIFT-voor beeld van het CSCF v2020-blauw druk.
    - **Locatie van definitie**: Gebruik het weglatings teken en selecteer de beheer groep om uw kopie van het voor beeld op te slaan.
 
-1. Selecteer het tabblad artefacten boven aan de pagina of **volgende:**  Artefacten aan de onderkant van de pagina.
+1. Selecteer het tabblad _artefacten_ boven aan de pagina of **Next: Artefacten @ no__t-0 aan de onderkant van de pagina.
 
 1. Bekijk de lijst met artefacten die deel uitmaken van het voor beeld van de blauw druk. Veel van de artefacten hebben para meters die later worden gedefinieerd. Selecteer **concept opslaan** wanneer u klaar bent met het bekijken van het voor beeld van de blauw druk.
 
@@ -97,18 +96,18 @@ De volgende tabel geeft een lijst van de para meters van de blauw druk-artefact:
 
 |Naam van het artefact|Type artefact|Parameternaam|Description|
 |-|-|-|-|
-|\[Voor\]beeld: SWIFT CSP-CSCF v2020-besturings elementen controleren en specifieke VM-extensies implementeren ter ondersteuning van de controle vereisten|Beleidstoewijzing|Lijst met resource typen waarvoor Diagnostische logboeken moeten zijn ingeschakeld|Lijst met resource typen om te controleren of de instelling voor diagnostische logboek registratie niet is ingeschakeld. Acceptabele waarden zijn te vinden in [Azure monitor Diagnostische logboeken schema's](../../../../azure-monitor/platform/diagnostic-logs-schema.md#supported-log-categories-per-resource-type).|
-|\[Voor\]beeld: SWIFT CSP-CSCF v2020-besturings elementen controleren en specifieke VM-extensies implementeren ter ondersteuning van de controle vereisten|Beleidstoewijzing|Verbonden werkruimte-id's|Een door punt komma's gescheiden lijst met de werk ruimte-Id's waarmee de Log Analytics-agent moet worden verbonden|
-|\[Voor\]beeld: SWIFT CSP-CSCF v2020-besturings elementen controleren en specifieke VM-extensies implementeren ter ondersteuning van de controle vereisten|Beleidstoewijzing|Lijst met gebruikers die moeten worden opgenomen in de Windows VM-Beheerders groep|Een door punt komma's gescheiden lijst met leden die moeten worden opgenomen in de lokale groep Administrators. Bijvoorbeeld: Beheerder myUser1; myUser2|
-|\[Voor\]beeld: SWIFT CSP-CSCF v2020-besturings elementen controleren en specifieke VM-extensies implementeren ter ondersteuning van de controle vereisten|Beleidstoewijzing|Domein naam (FQDN)|De Fully Qualified Domain Name (FQDN) waaraan de Windows-Vm's moeten worden gekoppeld|
-|\[Voor\]beeld: Log Analytics agent voor Linux-VM Scale Sets implementeren (VMSS)|Beleidstoewijzing|Log Analytics-werk ruimte voor Linux VM Scale Sets (VMSS)|Als deze werk ruimte zich buiten het bereik van de toewijzing bevindt, moet u de machtigingen voor Log Analytics Inzender (of vergelijkbaar) hand matig toekennen aan de principal-ID van de beleids toewijzing.|
-|\[Voor\]beeld: Log Analytics agent voor Linux-VM Scale Sets implementeren (VMSS)|Beleidstoewijzing|Optioneel: Lijst met VM-installatie kopieën die een ondersteund Linux-besturings systeem hebben om toe te voegen aan het bereik|Een lege matrix kan worden gebruikt om geen optionele para meters aan te duiden:\[\]|
-|\[Voor\]beeld: Log Analytics-agent voor Linux-Vm's implementeren|Beleidstoewijzing|Log Analytics-werk ruimte voor Linux Vm's|Als deze werk ruimte zich buiten het bereik van de toewijzing bevindt, moet u de machtigingen voor Log Analytics Inzender (of vergelijkbaar) hand matig toekennen aan de principal-ID van de beleids toewijzing.|
-|\[Voor\]beeld: Log Analytics-agent voor Linux-Vm's implementeren|Beleidstoewijzing|Optioneel: Lijst met VM-installatie kopieën die een ondersteund Linux-besturings systeem hebben om toe te voegen aan het bereik|Een lege matrix kan worden gebruikt om geen optionele para meters aan te duiden:\[\]|
-|\[Voor\]beeld: Log Analytics agent voor Windows-VM Scale Sets (VMSS) implementeren|Beleidstoewijzing|Log Analytics werk ruimte voor Windows VM Scale Sets (VMSS)|Als deze werk ruimte zich buiten het bereik van de toewijzing bevindt, moet u de machtigingen voor Log Analytics Inzender (of vergelijkbaar) hand matig toekennen aan de principal-ID van de beleids toewijzing.|
-|\[Voor\]beeld: Log Analytics agent voor Windows-VM Scale Sets (VMSS) implementeren|Beleidstoewijzing|Optioneel: Lijst met VM-installatie kopieën die een ondersteund Windows-besturings systeem hebben om toe te voegen aan het bereik|Een lege matrix kan worden gebruikt om geen optionele para meters aan te duiden:\[\]|
-|\[Voor\]beeld: Log Analytics-agent voor Windows-Vm's implementeren|Beleidstoewijzing|Log Analytics-werk ruimte voor Windows-Vm's|Als deze werk ruimte zich buiten het bereik van de toewijzing bevindt, moet u de machtigingen voor Log Analytics Inzender (of vergelijkbaar) hand matig toekennen aan de principal-ID van de beleids toewijzing.|
-|\[Voor\]beeld: Log Analytics-agent voor Windows-Vm's implementeren|Beleidstoewijzing|Optioneel: Lijst met VM-installatie kopieën die een ondersteund Windows-besturings systeem hebben om toe te voegen aan het bereik|Een lege matrix kan worden gebruikt om geen optionele para meters aan te duiden:\[\]|
+|\[Preview @ no__t-1: SWIFT CSP-CSCF v2020-besturings elementen controleren en specifieke VM-extensies implementeren ter ondersteuning van de controle vereisten|Beleidstoewijzing|Lijst met resource typen waarvoor Diagnostische logboeken moeten zijn ingeschakeld|Lijst met resource typen om te controleren of de instelling voor diagnostische logboek registratie niet is ingeschakeld. Acceptabele waarden zijn te vinden in [Azure monitor Diagnostische logboeken schema's](../../../../azure-monitor/platform/diagnostic-logs-schema.md#supported-log-categories-per-resource-type).|
+|\[Preview @ no__t-1: SWIFT CSP-CSCF v2020-besturings elementen controleren en specifieke VM-extensies implementeren ter ondersteuning van de controle vereisten|Beleidstoewijzing|Verbonden werkruimte-id's|Een door punt komma's gescheiden lijst met de werk ruimte-Id's waarmee de Log Analytics-agent moet worden verbonden|
+|\[Preview @ no__t-1: SWIFT CSP-CSCF v2020-besturings elementen controleren en specifieke VM-extensies implementeren ter ondersteuning van de controle vereisten|Beleidstoewijzing|Lijst met gebruikers die moeten worden opgenomen in de Windows VM-Beheerders groep|Een door punt komma's gescheiden lijst met leden die moeten worden opgenomen in de lokale groep Administrators. Bijvoorbeeld: Beheerder myUser1; myUser2|
+|\[Preview @ no__t-1: SWIFT CSP-CSCF v2020-besturings elementen controleren en specifieke VM-extensies implementeren ter ondersteuning van de controle vereisten|Beleidstoewijzing|Domein naam (FQDN)|De Fully Qualified Domain Name (FQDN) waaraan de Windows-Vm's moeten worden gekoppeld|
+|\[Preview @ no__t-1: Log Analytics agent voor Linux-VM Scale Sets implementeren (VMSS)|Beleidstoewijzing|Log Analytics-werk ruimte voor Linux VM Scale Sets (VMSS)|Als deze werk ruimte zich buiten het bereik van de toewijzing bevindt, moet u de machtigingen voor Log Analytics Inzender (of vergelijkbaar) hand matig toekennen aan de principal-ID van de beleids toewijzing.|
+|\[Preview @ no__t-1: Log Analytics agent voor Linux-VM Scale Sets implementeren (VMSS)|Beleidstoewijzing|Optioneel: Lijst met VM-installatie kopieën die een ondersteund Linux-besturings systeem hebben om toe te voegen aan het bereik|Een lege matrix kan worden gebruikt om geen optionele para meters aan te duiden: \[ @ no__t-1|
+|\[Preview @ no__t-1: Log Analytics-agent voor Linux-Vm's implementeren|Beleidstoewijzing|Log Analytics-werk ruimte voor Linux Vm's|Als deze werk ruimte zich buiten het bereik van de toewijzing bevindt, moet u de machtigingen voor Log Analytics Inzender (of vergelijkbaar) hand matig toekennen aan de principal-ID van de beleids toewijzing.|
+|\[Preview @ no__t-1: Log Analytics-agent voor Linux-Vm's implementeren|Beleidstoewijzing|Optioneel: Lijst met VM-installatie kopieën die een ondersteund Linux-besturings systeem hebben om toe te voegen aan het bereik|Een lege matrix kan worden gebruikt om geen optionele para meters aan te duiden: \[ @ no__t-1|
+|\[Preview @ no__t-1: Log Analytics agent voor Windows-VM Scale Sets (VMSS) implementeren|Beleidstoewijzing|Log Analytics werk ruimte voor Windows VM Scale Sets (VMSS)|Als deze werk ruimte zich buiten het bereik van de toewijzing bevindt, moet u de machtigingen voor Log Analytics Inzender (of vergelijkbaar) hand matig toekennen aan de principal-ID van de beleids toewijzing.|
+|\[Preview @ no__t-1: Log Analytics agent voor Windows-VM Scale Sets (VMSS) implementeren|Beleidstoewijzing|Optioneel: Lijst met VM-installatie kopieën die een ondersteund Windows-besturings systeem hebben om toe te voegen aan het bereik|Een lege matrix kan worden gebruikt om geen optionele para meters aan te duiden: \[ @ no__t-1|
+|\[Preview @ no__t-1: Log Analytics-agent voor Windows-Vm's implementeren|Beleidstoewijzing|Log Analytics-werk ruimte voor Windows-Vm's|Als deze werk ruimte zich buiten het bereik van de toewijzing bevindt, moet u de machtigingen voor Log Analytics Inzender (of vergelijkbaar) hand matig toekennen aan de principal-ID van de beleids toewijzing.|
+|\[Preview @ no__t-1: Log Analytics-agent voor Windows-Vm's implementeren|Beleidstoewijzing|Optioneel: Lijst met VM-installatie kopieën die een ondersteund Windows-besturings systeem hebben om toe te voegen aan het bereik|Een lege matrix kan worden gebruikt om geen optionele para meters aan te duiden: \[ @ no__t-1|
 |Geavanceerde beveiliging tegen bedreigingen implementeren voor opslag accounts|Beleidstoewijzing|Effect|Informatie over beleids effecten vindt u in [inzicht Azure Policy effecten](../../../policy/concepts/effects.md)|
 |Controle op SQL-servers implementeren|Beleidstoewijzing|De waarde in dagen van de Bewaar periode (0 geeft een onbeperkte retentie aan)|Bewaar dagen (optioneel, 180 dagen als niet opgegeven)|
 |Controle op SQL-servers implementeren|Beleidstoewijzing|Naam van de resource groep voor het opslag account voor SQL Server-controle|Met controle worden database gebeurtenissen geschreven naar een audit logboek in uw Azure Storage-account (er wordt een opslag account gemaakt in elke regio waarin een SQL Server wordt gemaakt dat wordt gedeeld door alle servers in die regio). Belang rijk: voor een juiste werking van de controle bewerking worden de resource groep of de opslag accounts niet verwijderd of de naam ervan gewijzigd.|
@@ -120,7 +119,7 @@ De volgende tabel geeft een lijst van de para meters van de blauw druk-artefact:
 Nu u de stappen voor het implementeren van het voor beeld van de SWIFT CSP-CSCF v2020-blauw beoordeling hebt bekeken, gaat u naar de volgende artikelen voor meer informatie over de blauw druk en de beheer toewijzing:
 
 > [!div class="nextstepaction"]
-> [SWIFT CSP-CSCF v2020 blauw druk-overzicht](./index.md)
+> [Swift CSP-CSCF v2020 blauw druk-overzicht](./index.md)
 > [Swift CSP-CSCF v2020 blauw druk-besturings element toewijzing](./control-mapping.md)
 
 Aanvullende artikelen over blauwdrukken en het gebruik hiervan:

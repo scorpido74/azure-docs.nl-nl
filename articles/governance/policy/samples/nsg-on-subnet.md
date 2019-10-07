@@ -2,17 +2,16 @@
 title: Voorbeeld - NSG x op elk subnet
 description: Dit voorbeeld van een beleidsdefinitie vereist dat een specifieke netwerkbeveiligingsgroep wordt gebruikt met elk virtueel subnet.
 author: DCtheGeek
-manager: carmonm
 ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: b42ae790005560b403033ea5b98010792c9a3ca4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 977deba4ee083fae5cbf24905cee84a3a0d020c4
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60533298"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71981334"
 ---
 # <a name="sample---network-security-group-x-on-every-subnet"></a>Voorbeeld - Netwerkbeveiligingsgroep X op elk subnet
 
@@ -28,7 +27,7 @@ U kunt deze sjabloon implementeren met behulp van [Azure Portal](#deploy-with-th
 
 ## <a name="deploy-with-the-portal"></a>Implementeren met portal
 
-[![De voorbeeld-beleid implementeren naar Azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FNetwork%2Fenforce-nsg-on-subnet%2Fazurepolicy.json)
+[![Deploy het voor beeld van het beleid naar Azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FNetwork%2Fenforce-nsg-on-subnet%2Fazurepolicy.json)
 
 ## <a name="deploy-with-powershell"></a>Implementeren met PowerShell
 

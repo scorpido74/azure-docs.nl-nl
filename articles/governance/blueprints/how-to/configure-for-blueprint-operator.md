@@ -6,13 +6,12 @@ ms.author: dacoulte
 ms.date: 08/26/2019
 ms.topic: conceptual
 ms.service: blueprints
-manager: carmonm
-ms.openlocfilehash: 27f7c747dfd39fed7a67924da71b9293979e0f94
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 8c6d3a4d30d8b0b5ec361584846f31a7714b43ec
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231890"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71978466"
 ---
 # <a name="configure-your-environment-for-a-blueprint-operator"></a>Uw omgeving configureren voor een Blueprint Operator
 
@@ -40,7 +39,7 @@ Een definitie van een blauw druk kan door het systeem toegewezen of door de gebr
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over de [levens duur van de blauw druk](../concepts/lifecycle.md).
+- Meer informatie over de [levenscyclus van een blauwdruk](../concepts/lifecycle.md).
 - Meer informatie over hoe u [statische en dynamische parameters](../concepts/parameters.md) gebruikt.
 - Meer informatie over hoe u de [blauwdrukvolgorde](../concepts/sequencing-order.md) aanpast.
 - Meer informatie over hoe u gebruikmaakt van [resourcevergrendeling in blauwdrukken](../concepts/resource-locking.md).

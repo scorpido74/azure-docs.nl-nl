@@ -1,33 +1,32 @@
 ---
 title: Werken met grote gegevenssets
-description: Informatie over het ophalen en beheren van grote gegevenssets tijdens het werken met Azure Resource Graph.
+description: Meer informatie over het ophalen en beheren van grote gegevens sets tijdens het werken met Azure resource Graph.
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 04/01/2019
 ms.topic: conceptual
 ms.service: resource-graph
-manager: carmonm
-ms.openlocfilehash: d04f46dbc60a7242e44d76915e15281cc6248d20
-ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
+ms.openlocfilehash: 4da890a5ef7acb44d0e8628dc4ec3904f6a065e4
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67786537"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71980335"
 ---
-# <a name="working-with-large-azure-resource-data-sets"></a>Werken met grote Azure-resource-gegevenssets
+# <a name="working-with-large-azure-resource-data-sets"></a>Werken met grote Azure-resource gegevens sets
 
-Azure Resource Graph is ontworpen voor het werken met en het ophalen van gegevens over resources in uw Azure-omgeving. Resourcegrafiek kunt ophalen van deze gegevens snel, zelfs bij het opvragen van duizenden records. Grafiek van resources beschikt over verschillende opties voor het werken met deze grote gegevenssets.
+Azure resource Graph is ontworpen voor het werken met en het verkrijgen van informatie over resources in uw Azure-omgeving. Met resource grafiek worden deze gegevens snel opgehaald, zelfs wanneer er een query wordt uitgevoerd op duizenden records. Resource grafiek biedt verschillende opties voor het werken met deze grote gegevens sets.
 
-Zie voor instructies over het werken met query's met een hoge frequentie [richtlijnen voor beperkte aanvragen](./guidance-for-throttled-requests.md).
+Zie [richt lijnen voor beperkte aanvragen](./guidance-for-throttled-requests.md)voor meer informatie over het werken met query's met een hoge frequentie.
 
-## <a name="data-set-result-size"></a>Grootte van de gegevensset
+## <a name="data-set-result-size"></a>Grootte van resultaat van gegevensset
 
-Standaard beperkt Resourcegrafiek een query voor het retourneren van alleen **100** records. Dit besturingselement voorkomt onbedoelde query's die in grote gegevenssets resulteren zouden dat de gebruiker en de service. Dit gebeurt meestal wanneer een klant experimenteren met query's om te zoeken en filteren van bronnen in de manier die bij hun specifieke behoeften past. Dit besturingselement is anders dan met behulp van de [boven](/azure/kusto/query/topoperator) of [limiet](/azure/kusto/query/limitoperator) Azure Data Explorer taal operators om de resultaten te beperken.
+Resource grafiek beperkt standaard elke query om alleen **100** records te retour neren. Met dit besturings element worden de gebruiker en de service beschermd tegen onbedoelde query's die zouden leiden tot grote gegevens sets. Deze gebeurtenis treedt meestal op als een klant experimenteert met query's om resources te zoeken en te filteren op de manier die aan hun specifieke behoeften voldoet. Dit besturings element verschilt van het gebruik van de [Top](/azure/kusto/query/topoperator) of het [beperken](/azure/kusto/query/limitoperator) van Azure Data Explorer taal operators om de resultaten te beperken.
 
 > [!NOTE]
-> Bij het gebruik van **eerste**, het is raadzaam om de resultaten op ten minste één kolom met `asc` of `desc`. Zonder te sorteren zijn de geretourneerde resultaten willekeurige en niet opnieuw kunt.
+> Wanneer u de **eerste keer**gebruikt, is het raadzaam om de resultaten te rangschikken op ten minste één kolom met `asc` of `desc`. Zonder te sorteren, worden de geretourneerde resultaten wille keurig en niet herhaald.
 
-De standaardlimiet kan worden genegeerd door alle methoden van interactie met Graph-Resource. De volgende voorbeelden laten zien hoe u de maximale grootte van de gegevensset te wijzigen _200_:
+De standaard limiet kan worden overschreven door alle methoden van interactie met de resource grafiek. In de volgende voor beelden ziet u hoe u de maximale grootte van de gegevensset wijzigt in _200_:
 
 ```azurecli-interactive
 az graph query -q "project name | order by name asc" --first 200 --output table
@@ -37,20 +36,20 @@ az graph query -q "project name | order by name asc" --first 200 --output table
 Search-AzGraph -Query "project name | order by name asc" -First 200
 ```
 
-In de [REST-API](/rest/api/azureresourcegraph/resources/resources), is het besturingselement **$top** en maakt deel uit van **QueryRequestOptions**.
+In de [rest API](/rest/api/azureresourcegraph/resources/resources)is het besturings element **$Top** en maakt het deel uit van **QueryRequestOptions**.
 
-Het besturingselement dat _meest beperkende_ wint. Bijvoorbeeld, als uw query gebruikt de **boven** of **limiet** operators en zou leiden tot meer records zijn dan **eerste**, het maximum aantal records geretourneerd zijn gelijk aan **Eerste**. Op dezelfde manier als **boven** of **limiet** kleiner is dan **eerste**, de recordset geretourneerde zou de kleinste waarde die is geconfigureerd door **boven** of **limiet**.
+Het besturings element dat het _meest beperkend_ is, wint. Als uw query bijvoorbeeld gebruikmaakt van de Opera tors **Top** of **Limit** en vervolgens meer records zou opleveren dan **eerst**, zijn de geretourneerde maximum records dus gelijk aan het **eerst**. Als **Top** of **Limit** kleiner is dan **eerst**, zou de opgehaalde recordset de kleinere waarde zijn die wordt geconfigureerd met **boven** of **limiet**.
 
-**Eerste** heeft momenteel een van de toegestane maximumwaarde _5000_.
+De **eerste** heeft momenteel een Maxi maal toegestane waarde van _5000_.
 
-## <a name="skipping-records"></a>Records overslaan
+## <a name="skipping-records"></a>Records overs Laan
 
-De volgende optie voor het werken met grote gegevenssets is de **overslaan** besturingselement. Met dit beheer kunt uw query te gaan of het opgegeven aantal records overslaan voordat het resultaat wordt geretourneerd. **Overslaan** is handig voor query's die resultaten sorteren op een begrijpelijke manier waar de bedoeling is om op te halen records ergens in het midden van de resultatenset. Als de resultaten die nodig aan het einde van de geretourneerde gegevens zijn, is het efficiënter en de configuratie van een andere sortering gebruiken in plaats daarvan de resultaten ophalen vanaf de bovenkant van de gegevensset.
+De volgende optie voor het werken met grote gegevens sets is het besturings element **overs Laan** . Met dit besturings element kan uw query overstappen of het gedefinieerde aantal records overs Laan voordat de resultaten worden geretourneerd. **Overs Laan** is handig voor query's waarbij het sorteren resulteert in een zinvolle manier, waarbij de bedoeling is om records ergens in het midden van de resultatenset op te halen. Als de resultaten aan het einde van de geretourneerde gegevensset worden weer gegeven, is het efficiënter om een andere Sorteer configuratie te gebruiken en de resultaten op te halen uit de bovenkant van de gegevensset in plaats daarvan.
 
 > [!NOTE]
-> Bij het gebruik van **overslaan**, het is raadzaam om de resultaten op ten minste één kolom met `asc` of `desc`. Zonder te sorteren zijn de geretourneerde resultaten willekeurige en niet opnieuw kunt.
+> Wanneer u **overs Laan**gebruikt, is het raadzaam om de resultaten te rangschikken op ten minste één kolom met `asc` of `desc`. Zonder te sorteren, worden de geretourneerde resultaten wille keurig en niet herhaald.
 
-De volgende voorbeelden laten zien hoe de eerste overslaan _10_ records een query zou leiden, in plaats daarvan vanaf het geretourneerde resultaat ingesteld met de 11e record:
+In de volgende voor beelden ziet u hoe u de eerste _tien_ records kunt overs Laan waarmee een query zou leiden, in plaats daarvan de geretourneerde resultatenset met de elfde record te starten:
 
 ```azurecli-interactive
 az graph query -q "project name | order by name asc" --skip 10 --output table
@@ -60,16 +59,16 @@ az graph query -q "project name | order by name asc" --skip 10 --output table
 Search-AzGraph -Query "project name | order by name asc" -Skip 10
 ```
 
-In de [REST-API](/rest/api/azureresourcegraph/resources/resources), is het besturingselement **$skip** en maakt deel uit van **QueryRequestOptions**.
+In de [rest API](/rest/api/azureresourcegraph/resources/resources)is het besturings element **$Skip** en maakt het deel uit van **QueryRequestOptions**.
 
 ## <a name="paging-results"></a>Resultaten pagineren
 
-Wanneer het nodig zijn aan het einde van een resultatenset in kleinere groepen van de records voor de verwerking is of omdat een resultatenset de maximaal toegestane aantal van overschrijdt _1000_ wisselbestand records geretourneerd, gebruiken. De [REST-API](/rest/api/azureresourcegraph/resources/resources) **QueryResponse** waarden om aan te geven van een set opgedeeld resultaten: **resultTruncated** en **$skipToken** .
-**resultTruncated** is een Booleaanse waarde die u de consument informeert als er extra records niet in het antwoord geretourneerd. Dit probleem kan ook worden geïdentificeerd wanneer de **aantal** eigenschap is kleiner dan de **totalRecords** eigenschap. **totalRecords** definieert hoeveel records die overeenkomen met de query.
+Wanneer een resultaatset moet worden opgesplitst in kleinere sets records voor verwerking of omdat een resultaatset de Maxi maal toegestane waarde van _1000_ geretourneerde records zou overschrijden, gebruikt u paginering. De [rest API](/rest/api/azureresourcegraph/resources/resources) **QueryResponse** biedt waarden om aan te geven dat een resultatenset is opgesplitst: **resultTruncated** en **$skipToken**.
+**resultTruncated** is een Booleaanse waarde die de Consumer informeert als er geen aanvullende records worden geretourneerd in het antwoord. Deze voor waarde kan ook worden geïdentificeerd wanneer de eigenschap **Count** kleiner is dan de eigenschap **totalRecords** . **totalRecords** definieert het aantal records dat overeenkomt met de query.
 
-Wanneer **resultTruncated** is **waar**, wordt de **$skipToken** eigenschap is ingesteld in het antwoord. Deze waarde wordt gebruikt door de dezelfde waarden voor query's en -abonnement om op te halen van de volgende set met records die overeenkomen met de query.
+Als **resultTruncated** is ingesteld op **True**, wordt de eigenschap **$skipToken** in de reactie. Deze waarde wordt gebruikt met dezelfde query-en abonnements waarden om de volgende set records op te halen die overeenkomen met de query.
 
-De volgende voorbeelden ziet u hoe u **overslaan** het eerste 3000 records en geretourneerd de **eerste** 1000 records na die zijn overgeslagen met Azure CLI en Azure PowerShell:
+In de volgende voor beelden ziet u hoe u de eerste 3000 records **overs laat** en de **eerste** 1000 records retourneert nadat deze zijn overgeslagen met Azure CLI en Azure PowerShell:
 
 ```azurecli-interactive
 az graph query -q "project id, name | order by id asc" --first 1000 --skip 3000
@@ -80,12 +79,12 @@ Search-AzGraph -Query "project id, name | order by id asc" -First 1000 -Skip 300
 ```
 
 > [!IMPORTANT]
-> De query moet **project** de **id** veld in de volgorde voor paginering om te werken. Als deze ontbreekt uit de query, wordt het antwoord niet opgenomen de **$skipToken**.
+> De query moet het veld **id** **projecteren** om de paginering te kunnen uitvoeren. Als deze ontbreekt in de query, bevat het antwoord niet de **$skipToken**.
 
-Zie voor een voorbeeld [volgende pagina query](/rest/api/azureresourcegraph/resources/resources#next-page-query) in de REST-API-documenten.
+Zie de [query volgende pagina](/rest/api/azureresourcegraph/resources/resources#next-page-query) in de documenten van de rest API voor een voor beeld.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie de taal die wordt gebruikt in [Starter query's](../samples/starter.md).
-- Maakt gebruik van geavanceerde Zie in [geavanceerde query's](../samples/advanced.md).
-- Meer informatie over het [resources verkennen](explore-resources.md).
+- Zie de taal die wordt gebruikt in [Start query's](../samples/starter.md).
+- Zie Geavanceerd gebruik in [Geavanceerde query's](../samples/advanced.md).
+- Meer informatie over [bronnen verkennen](explore-resources.md).

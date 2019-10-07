@@ -6,13 +6,12 @@ ms.author: dacoulte
 ms.date: 04/23/2019
 ms.topic: tutorial
 ms.service: azure-policy
-manager: carmonm
-ms.openlocfilehash: e38eb1315cde3400b70925059d4dd50475a47835
-ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
+ms.openlocfilehash: 240d0fa388fbdfdd3d29d735aed708a096440740
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65979671"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71980355"
 ---
 # <a name="tutorial-create-a-custom-policy-definition"></a>Zelfstudie: Een aangepaste beleidsdefinitie maken
 
@@ -50,7 +49,7 @@ Hoewel we de verwachte status van de resource hebben gedefinieerd, hebben we nog
 
 ## <a name="determine-resource-properties"></a>Resource-eigenschappen bepalen
 
-Op basis van de vereiste van het bedrijf, is de Azure-resource om te controleren met Azure Policy een opslagaccount. Maar we weten nog niet welke eigenschappen in de beleidsdefinitie moeten worden gebruikt. Azure Policy wordt geëvalueerd op basis van de JSON-weergave van de resource, zodat we moeten begrijpen welke eigenschappen beschikbaar zijn voor die bron.
+Op basis van de zakelijke vereiste is de Azure-resource die u wilt controleren met Azure Policy een opslag account. Maar we weten nog niet welke eigenschappen in de beleidsdefinitie moeten worden gebruikt. Azure Policy evalueert op basis van de JSON-weer gave van de resource. Daarom moeten we de eigenschappen begrijpen die beschikbaar zijn voor die bron.
 
 Er zijn veel manieren om de eigenschappen van een Azure-resource te bepalen. In deze zelfstudie bekijken we elk daarvan:
 
@@ -68,9 +67,9 @@ Er zijn verschillende manieren om te kijken naar een [Resource Manager-sjabloon]
 #### <a name="existing-resource-in-the-portal"></a>Bestaande resource in de portal
 
 De eenvoudigste manier om eigenschappen te vinden is een bestaande resource van hetzelfde type te bekijken. Resources die al zijn geconfigureerd met de instelling die u wilt afdwingen, bevatten ook de waarde waarmee moet worden vergeleken.
-Bekijk de **sjabloon exporteren** pagina (onder **instellingen**) in de Azure-portal voor die specifieke resource.
+Bekijk de pagina **sjabloon exporteren** (onder **instellingen**) in de Azure portal voor die specifieke resource.
 
-![Sjabloonpagina op bestaande resources exporteren](../media/create-custom-policy-definition/export-template.png)
+![Sjabloon pagina voor een bestaande resource exporteren](../media/create-custom-policy-definition/export-template.png)
 
 Wanneer u dit doet voor een opslagaccount, ziet u een sjabloon die lijkt op het volgende voorbeeld:
 
@@ -207,7 +206,7 @@ az graph query -q "where type=~'microsoft.storage/storageaccounts' | limit 1"
 Search-AzGraph -Query "where type=~'microsoft.storage/storageaccounts' | limit 1"
 ```
 
-De resultaten lijken op wat we zien in de Resource Manager-sjablonen en via de Azure Resource Explorer. Resultaten van de grafiek van de Azure-resources kunnen echter ook opnemen [alias](../concepts/definition-structure.md#aliases) details door _projecteren_ de _aliassen_ matrix:
+De resultaten lijken op wat we zien in de Resource Manager-sjablonen en via de Azure Resource Explorer. De resultaten van een Azure-resource grafiek kunnen echter ook [alias](../concepts/definition-structure.md#aliases) details bevatten door de _aliassen_ -matrix te _projecteren_ :
 
 ```kusto
 where type=~'microsoft.storage/storageaccounts'
@@ -444,7 +443,7 @@ Nu alle drie delen van het beleid zijn gedefinieerd, volgt hier de voltooide def
 
 De voltooide definitie kan worden gebruikt om een nieuw beleid te maken. Portal en elke SDK (Azure CLI, Azure PowerShell en REST API) accepteren de definitie op verschillende manieren; bekijk de opdrachten voor elk ervan om het juiste gebruik te valideren. Wijs het beleid vervolgens met behulp van het geparameteriseerde effect toe aan de juiste resources om de veiligheid van uw opslagaccounts te beheren.
 
-## <a name="review"></a>Beoordelen
+## <a name="review"></a>Controleren
 
 In deze zelfstudie hebt u de volgende taken uitgevoerd:
 

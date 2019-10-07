@@ -6,13 +6,12 @@ ms.author: dacoulte
 ms.date: 08/22/2019
 ms.topic: conceptual
 ms.service: blueprints
-manager: carmonm
-ms.openlocfilehash: 05cc12f5416cbbbff470b40c870f41647ef37cd5
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: bda7a6caea931a993a6ddd6731688792bf0b3948
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231923"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71981019"
 ---
 # <a name="understand-the-deployment-sequence-in-azure-blueprints"></a>Meer informatie over de implementatie volgorde in azure-blauw drukken
 
@@ -48,7 +47,7 @@ Binnen elk **bron groeps** artefact wordt de volgende volg orde gebruikt voor ar
 
 Bij het opstellen van grote blauw drukken-definities kan het nodig zijn om resources in een specifieke volg orde te maken. Het meest voorkomende patroon van dit scenario is wanneer een blauw druk definitie verschillende Azure Resource Manager sjablonen bevat. Blauw drukken behandelt dit patroon door de volg orde van sequentiëren te definiëren.
 
-De volg orde wordt bereikt door een `dependsOn` eigenschap in de JSON te definiëren. De definitie van de blauw druk, voor resource groepen en artefact objecten ondersteunen deze eigenschap. `dependsOn`is een teken reeks matrix van artefact namen waarvan het specifieke artefact moet worden gemaakt voordat deze wordt gemaakt.
+De volg orde wordt bereikt door een `dependsOn`-eigenschap in de JSON te definiëren. De definitie van de blauw druk, voor resource groepen en artefact objecten ondersteunen deze eigenschap. `dependsOn` is een teken reeks matrix van artefact namen waarvan het specifieke artefact moet worden gemaakt voordat deze wordt gemaakt.
 
 > [!NOTE]
 > Wanneer u blauw drukken-objecten maakt, haalt elke artefact bron de naam van de bestands naam, indien [Power shell](/powershell/module/az.blueprint/new-azblueprintartifact)of het URL-eind punt wordt gebruikt als [rest API](/rest/api/blueprints/artifacts/createorupdate).
@@ -56,7 +55,7 @@ De volg orde wordt bereikt door een `dependsOn` eigenschap in de JSON te defini�
 
 ### <a name="example---ordered-resource-group"></a>Voor beeld-bestelde resource groep
 
-Deze voor beeld-blauw druk definitie bevat een resource groep waarvoor een aangepaste volgorde voor volgorde bepaling is gedefinieerd door een `dependsOn`waarde voor te declareren, samen met een standaard resource groep. In dit geval wordt het artefact met de naam **assignPolicyTags** verwerkt vóór de **bestelde-RG-** resource groep.
+Deze voor beeld-blauw druk definitie bevat een resource groep waarvoor een aangepaste volgorde voor volgorde bepaling is gedefinieerd door een waarde voor `dependsOn`, samen met een standaard resource groep, te declareren. In dit geval wordt het artefact met de naam **assignPolicyTags** verwerkt vóór de **bestelde-RG-** resource groep.
 **Standard-RG** wordt verwerkt volgens de standaard volgorde voor sequentiëren.
 
 ```json
@@ -141,11 +140,11 @@ Het sjabloon artefact op abonnements niveau, afhankelijk van de resource groep *
 
 Tijdens het maken wordt een topologische sortering gebruikt voor het maken van de afhankelijkheids grafiek van de blauw drukken-artefacten. De controle zorgt ervoor dat elk niveau van afhankelijkheid tussen resource groepen en artefacten wordt ondersteund.
 
-Als een artefact afhankelijkheid is gedeclareerd en de standaard volgorde niet zou wijzigen, wordt er geen wijziging aangebracht. Een voor beeld is een resource groep die afhankelijk is van een beleid op abonnements niveau. Een ander voor beeld is een onderliggende beleids toewijzing van een resource groep, die afhankelijk is van de resource groep Standard-RG, de toewijzing van onderliggende rollen. In beide gevallen `dependsOn` is de standaard volgorde voor sequentiëren niet gewijzigd en worden er geen wijzigingen aangebracht.
+Als een artefact afhankelijkheid is gedeclareerd en de standaard volgorde niet zou wijzigen, wordt er geen wijziging aangebracht. Een voor beeld is een resource groep die afhankelijk is van een beleid op abonnements niveau. Een ander voor beeld is een onderliggende beleids toewijzing van een resource groep, die afhankelijk is van de resource groep Standard-RG, de toewijzing van onderliggende rollen. In beide gevallen heeft het `dependsOn` niet de standaard volgorde voor sequentiëren gewijzigd en worden er geen wijzigingen aangebracht.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over de [levens duur van de blauw druk](lifecycle.md).
+- Meer informatie over de [levenscyclus van een blauwdruk](lifecycle.md).
 - Meer informatie over hoe u [statische en dynamische parameters](parameters.md) gebruikt.
 - Meer informatie over hoe u gebruikmaakt van [resourcevergrendeling in blauwdrukken](resource-locking.md).
 - Meer informatie over hoe u [bestaande toewijzingen bijwerkt](../how-to/update-existing-assignments.md).

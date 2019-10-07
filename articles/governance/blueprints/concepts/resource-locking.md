@@ -6,13 +6,12 @@ ms.author: dacoulte
 ms.date: 04/24/2019
 ms.topic: conceptual
 ms.service: blueprints
-manager: carmonm
-ms.openlocfilehash: 8d3cee73d8614c4aea2d2883cdcf2f049b1b8f67
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 5c62fdb698dddf293d339904fd0c854052d636eb
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232947"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71981047"
 ---
 # <a name="understand-resource-locking-in-azure-blueprints"></a>Meer informatie over het vergren delen van resources in azure-blauw drukken
 
@@ -28,9 +27,9 @@ Resources die zijn gemaakt door artefacten in een blauw druk-toewijzing, hebben 
 |Modus|Bron type voor artefacten|State|Description|
 |-|-|-|-|
 |Niet vergren delen|*|Niet vergrendeld|Bronnen worden niet beveiligd door blauw drukken. Deze status wordt ook gebruikt voor resources die worden toegevoegd aan een **alleen-lezen** -of **verwijderings** artefact van een resource buiten een blauw druk-toewijzing.|
-|Alleen-lezen|Resource group|Kan niet bewerken/verwijderen|De resource groep is alleen-lezen en tags op de resource groep kunnen niet worden gewijzigd. **Niet** -vergrendelde resources kunnen worden toegevoegd, verplaatst, gewijzigd of verwijderd uit deze resource groep.|
+|Alleen-lezen|Resource group|Kan niet bewerken/verwijderen|De resource groep is alleen-lezen en tags op de resource groep kunnen niet worden gewijzigd. **Niet-vergrendelde** resources kunnen worden toegevoegd, verplaatst, gewijzigd of verwijderd uit deze resource groep.|
 |Alleen-lezen|Niet-resource groep|Alleen-lezen|De resource kan op geen enkele manier worden gewijzigd: geen wijzigingen en kan niet worden verwijderd.|
-|Niet verwijderen|*|Kan niet verwijderen|De resources kunnen worden gewijzigd, maar kunnen niet worden verwijderd. **Niet** -vergrendelde resources kunnen worden toegevoegd, verplaatst, gewijzigd of verwijderd uit deze resource groep.|
+|Niet verwijderen|*|Kan niet verwijderen|De resources kunnen worden gewijzigd, maar kunnen niet worden verwijderd. **Niet-vergrendelde** resources kunnen worden toegevoegd, verplaatst, gewijzigd of verwijderd uit deze resource groep.|
 
 ## <a name="overriding-locking-states"></a>Vergrendelings status negeren
 
@@ -57,8 +56,8 @@ De [Eigenschappen](../../../role-based-access-control/deny-assignments.md#deny-a
 
 |Modus |Machtigingen. acties |Machtigingen. intact |Principals [i]. Voert |ExcludePrincipals [i]. Id | DoNotApplyToChildScopes |
 |-|-|-|-|-|-|
-|Alleen-lezen |**\*** |**\*/read** |SystemDefined (iedereen) |blauw druk toewijzen en door de gebruiker gedefinieerd in **excludedPrincipals** |Resource groep- _True_; Resource- _False_ |
-|Niet verwijderen |**\*/Delete** | |SystemDefined (iedereen) |blauw druk toewijzen en door de gebruiker gedefinieerd in **excludedPrincipals** |Resource groep- _True_; Resource- _False_ |
+|Alleen-lezen |**\*** |**\*/lezen** |SystemDefined (iedereen) |blauw druk toewijzen en door de gebruiker gedefinieerd in **excludedPrincipals** |Resource groep- _True_; Resource- _False_ |
+|Niet verwijderen |**\*/verwijderen** | |SystemDefined (iedereen) |blauw druk toewijzen en door de gebruiker gedefinieerd in **excludedPrincipals** |Resource groep- _True_; Resource- _False_ |
 
 > [!IMPORTANT]
 > Met Azure Resource Manager worden de gegevens van de roltoewijzing Maxi maal 30 minuten in de cache opgeslagen. Als gevolg hiervan is het weigeren van de toewijzingen voor het weigeren van een actie op blauw drukken-resources mogelijk niet onmiddellijk volledig van kracht. Tijdens deze periode is het mogelijk om een resource te verwijderen die is bedoeld om te worden beveiligd door de vergren delingen van blauw drukken.
@@ -111,7 +110,7 @@ Dit is een voor beeld van een aanvraag tekst die **excludedPrincipals**bevat:
 ## <a name="next-steps"></a>Volgende stappen
 
 - Volg de zelf studie [nieuwe resources beveiligen](../tutorials/protect-new-resources.md) .
-- Meer informatie over de [levens duur van de blauw druk](lifecycle.md).
+- Meer informatie over de [levenscyclus van een blauwdruk](lifecycle.md).
 - Meer informatie over hoe u [statische en dynamische parameters](parameters.md) gebruikt.
 - Meer informatie over hoe u de [blauwdrukvolgorde](sequencing-order.md) aanpast.
 - Meer informatie over hoe u [bestaande toewijzingen bijwerkt](../how-to/update-existing-assignments.md).

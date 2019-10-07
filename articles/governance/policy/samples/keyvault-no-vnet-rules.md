@@ -2,17 +2,16 @@
 title: 'Voorbeeld: Key Vault-kluizen controleren op het ontbreken van eindpunten voor een virtueel netwerk'
 description: Met deze voorbeeldbeleidsdefinitie wordt een controle uitgevoerd op Key Vault-kluizen om exemplaren te detecteren die geen service-eindpunten voor een virtueel netwerk hebben.
 author: DCtheGeek
-manager: carmonm
 ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/26/2019
 ms.author: dacoulte
-ms.openlocfilehash: bc5ce4a6a2e52ed8d21de8db8da1f815293b61f7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ccfba0eae8d3c51cf153f58d554dc09b574d3873
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60506991"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71976966"
 ---
 # <a name="sample---key-vault-vaults-with-no-virtual-network-endpoints"></a>Voorbeeld: Key Vault-kluizen zonder eindpunten voor een virtueel netwerk
 
@@ -50,8 +49,8 @@ In dit voorbeeld van beleidsdefinitie zijn geen parameters gedefinieerd.
 
 ## <a name="azure-portal"></a>Azure Portal
 
-[![De voorbeeld-beleid implementeren naar Azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FKeyVault%2Faudit-keyvault-vnet-rules%2Fazurepolicy.json)
-[![de voorbeeld-beleid implementeren naar Azure (overheid)](https://docs.microsoft.com/azure/governance/policy/media/deploy/deployGovbutton.png)](https://portal.azure.us/#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FKeyVault%2Faudit-keyvault-vnet-rules%2Fazurepolicy.json)
+[![Deploy het voor beeld van het beleid naar azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FKeyVault%2Faudit-keyvault-vnet-rules%2Fazurepolicy.json)
+[![Deploy het voor beeld van het beleid naar Azure gov](https://docs.microsoft.com/azure/governance/policy/media/deploy/deployGovbutton.png)](https://portal.azure.us/#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FKeyVault%2Faudit-keyvault-vnet-rules%2Fazurepolicy.json)
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 

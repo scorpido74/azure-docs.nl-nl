@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 05/29/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 6820daf34e63fd48e83c645e7509a3256bc8435b
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 0c8c270681794621b2a12671d4bcf350cd6cc4d8
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70066996"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71981118"
 ---
 # <a name="use-an-ssl-certificate-in-your-application-code-in-azure-app-service"></a>Gebruik een SSL-certificaat in de code van uw toepassing in Azure App Service
 
@@ -62,16 +62,16 @@ Nadat het certificaat is geïmporteerd, kopieert u de vinger afdruk van het cert
 
 ## <a name="make-the-certificate-accessible"></a>Het certificaat toegankelijk maken
 
-Als u een geüpload of geïmporteerd certificaat in uw app-code wilt gebruiken, maakt u de `WEBSITE_LOAD_CERTIFICATES` vinger afdruk toegankelijk met de app-instelling door de volgende opdracht uit te voeren in de <a target="_blank" href="https://shell.azure.com" >Cloud shell</a>:
+Als u een geüpload of geïmporteerd certificaat in uw app-code wilt gebruiken, maakt u de vinger afdruk toegankelijk met de app-instelling voor @no__t 0 door de volgende opdracht uit te voeren in de <a target="_blank" href="https://shell.azure.com" >Cloud shell</a>:
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings WEBSITE_LOAD_CERTIFICATES=<comma-separated-certificate-thumbprints>
 ```
 
-Als u al uw certificaten toegankelijk wilt maken, stelt u `*`de waarde in op.
+Als u al uw certificaten toegankelijk wilt maken, stelt u de waarde in op `*`.
 
 > [!NOTE]
-> Met deze instelling worden de opgegeven certificaten in de [huidige User\My](/windows-hardware/drivers/install/local-machine-and-current-user-certificate-stores) -Store voor de meeste prijs categorieën geplaatst, maar in de geïsoleerde laag (dat wil zeggen dat de app wordt uitgevoerd in een [app service Environment](environment/intro.md)), worden de certificaten in de [lokale Machine\My](/windows-hardware/drivers/install/local-machine-and-current-user-certificate-stores) geplaatst Store.
+> Met deze instelling worden de opgegeven certificaten in de [huidige User\My](/windows-hardware/drivers/install/local-machine-and-current-user-certificate-stores) -Store voor de meeste prijs categorieën geplaatst, maar als uw app wordt uitgevoerd op de **geïsoleerde** laag (dat wil zeggen dat de app wordt uitgevoerd in een [app service Environment](environment/intro.md)), moet u mogelijk de [lokale controleren Machine\My](/windows-hardware/drivers/install/local-machine-and-current-user-certificate-stores) Store in plaats daarvan.
 >
 
 ![App-instelling configureren](./media/app-service-web-ssl-cert-load/configure-app-setting.png)
@@ -112,13 +112,13 @@ certStore.Close();
 
 Als u een certificaat bestand uit de toepassingsmap wilt laden, is het beter om het te uploaden met behulp van [FTPS](deploy-ftp.md) in plaats van [Git](deploy-local-git.md). Houd er rekening mee dat gevoelige gegevens, zoals een persoonlijk certificaat, niet in broncode beheer worden bewaard.
 
-Hoewel u het bestand rechtstreeks in uw .NET-code laadt, controleert de bibliotheek nog steeds of het huidige gebruikers profiel is geladen. Als u het huidige gebruikers profiel wilt laden, `WEBSITE_LOAD_USER_PROFILE` stelt u de app-instelling in met de volgende opdracht in het <a target="_blank" href="https://shell.azure.com" >Cloud shell</a>.
+Hoewel u het bestand rechtstreeks in uw .NET-code laadt, controleert de bibliotheek nog steeds of het huidige gebruikers profiel is geladen. Als u het huidige gebruikers profiel wilt laden, stelt u de `WEBSITE_LOAD_USER_PROFILE`-app-instelling in met de volgende opdracht in de <a target="_blank" href="https://shell.azure.com" >Cloud shell</a>.
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings WEBSITE_LOAD_USER_PROFILE=1
 ```
 
-Zodra deze instelling is ingesteld, wordt in C# het volgende voor beeld een `mycert.pfx` certificaat geladen `certs` dat wordt aangeroepen vanuit de map van de opslag plaats van uw app.
+Zodra deze instelling is ingesteld, wordt in C# het volgende voor beeld een certificaat met de naam `mycert.pfx` geladen vanuit de `certs`-map van de opslag plaats van uw app.
 
 ```csharp
 using System;

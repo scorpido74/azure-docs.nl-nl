@@ -2,17 +2,16 @@
 title: 'Voorbeeld: controleren of Network Watcher is ingeschakeld voor de regio'
 description: Deze voorbeeldbeleidsdefinitie controleert of Network Watcher is ingeschakeld voor een bepaalde regio
 author: DCtheGeek
-manager: carmonm
 ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 7614b000f69eb74c83084aec0849a2741c82cd5a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 94d4bbd70c21713fa366907b3fe8cec8543350eb
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60511350"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71981373"
 ---
 # <a name="sample---audit-if-network-watcher-is-not-enabled-for-region"></a>Voorbeeld: controleren of Network Watcher is ingeschakeld voor de regio
 
@@ -28,7 +27,7 @@ U kunt deze sjabloon implementeren met behulp van [Azure Portal](#deploy-with-th
 
 ## <a name="deploy-with-the-portal"></a>Implementeren met portal
 
-[![De voorbeeld-beleid implementeren naar Azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FNetwork%2Faudit-network-watcher-existence%2Fazurepolicy.json)
+[![Deploy het voor beeld van het beleid naar Azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FNetwork%2Faudit-network-watcher-existence%2Fazurepolicy.json)
 
 ## <a name="deploy-with-powershell"></a>Implementeren met PowerShell
 

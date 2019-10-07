@@ -6,13 +6,12 @@ ms.author: dacoulte
 ms.date: 04/22/2019
 ms.topic: conceptual
 ms.service: resource-graph
-manager: carmonm
-ms.openlocfilehash: c6e35d688581d0839e12806117e63c7d71fbc459
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 54bb0b4f21752b91ceb9d4004c153ff4d95006aa
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231507"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71976763"
 ---
 # <a name="understanding-the-azure-resource-graph-query-language"></a>Informatie over de query taal van Azure resource Graph
 
@@ -35,7 +34,7 @@ Hier volgt een lijst met ondersteunde tabellaire Opera tors in de resource grafi
 - [voor beeld-DISTINCT](/azure/kusto/query/sampledistinctoperator)
 - [sorteren op](/azure/kusto/query/sortoperator)
 - [samenvatten](/azure/kusto/query/summarizeoperator)
-- [Houd](/azure/kusto/query/takeoperator)
+- [take](/azure/kusto/query/takeoperator)
 - [Boven](/azure/kusto/query/topoperator)
 - [top-nested](/azure/kusto/query/topnestedoperator)
 - [Top-hitters](/azure/kusto/query/tophittersoperator)
@@ -54,9 +53,9 @@ Hier volgt een lijst met ondersteunde functies in resource grafiek:
 
 ## <a name="escape-characters"></a>Escape tekens
 
-Sommige eigenschapnamen van eigenschappen, zoals die van een `.` or `$`, moeten in de query worden verpakt of worden geescaped of de naam van de eigenschap wordt onjuist geïnterpreteerd en levert niet de verwachte resultaten op.
+Sommige eigenschapnamen, zoals de namen die een `.` of `$` bevatten, moeten in de query worden verpakt of worden geescaped of de naam van de eigenschap wordt onjuist geïnterpreteerd en levert niet de verwachte resultaten op.
 
-- `.`-Laat de naam van de eigenschap als volgt teruglopen:`['propertyname.withaperiod']`
+- `.`: verpakken de naam van de eigenschap als volgt: `['propertyname.withaperiod']`
   
   Voorbeeld query waarmee de eigenschap _odata. type_wordt geterugloopd:
 
@@ -64,21 +63,21 @@ Sommige eigenschapnamen van eigenschappen, zoals die van een `.` or `$`, moeten 
   where type=~'Microsoft.Insights/alertRules' | project name, properties.condition.['odata.type']
   ```
 
-- `$`-Escape het teken in de naam van de eigenschap. Welk escape teken wordt gebruikt, is afhankelijk van de resource grafiek van de shell wordt uitgevoerd vanaf.
+- `$`: het teken in de naam van de eigenschap Escape. Welk escape teken wordt gebruikt, is afhankelijk van de resource grafiek van de shell wordt uitgevoerd vanaf.
 
-  - **bash** - `\`
+  - **bash** -  @ no__t-2
 
-    Voorbeeld query waarmee het eigenschaps  _\$type_ wordt verescapet in bash:
+    Voorbeeld query waarmee de eigenschap _\$Type_ in bash wordt geescapet:
 
     ```kusto
     where type=~'Microsoft.Insights/alertRules' | project name, properties.condition.\$type
     ```
 
-  - **cmd** : laat het `$` teken onescape.
+  - **cmd** : laat het `$`-teken onescape.
 
   - **PowerShell** - ``` ` ```
 
-    Voorbeeld query waarmee het eigenschaps  _\$type_ in Power shell wordt geescapet:
+    Voorbeeld query waarmee de eigenschap _\$Type_ in Power shell wordt overgeslagen:
 
     ```kusto
     where type=~'Microsoft.Insights/alertRules' | project name, properties.condition.`$type

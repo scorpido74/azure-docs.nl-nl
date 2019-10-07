@@ -1,27 +1,26 @@
 ---
-title: Voorbeeld - Audit als toepassingen niet zijn geïnstalleerd in virtuele Linux-machines
-description: In dit voorbeeld Gast beleidsconfiguratie initiatief en definities controleren als de opgegeven toepassingen niet binnen de virtuele Linux-machines zijn geïnstalleerd.
+title: "Voor beeld: controleren of toepassingen niet in Linux-Vm's zijn geïnstalleerd"
+description: In dit voor beeld van een gast configuratie-initiatief en definities wordt gecontroleerd of de opgegeven toepassingen niet in virtuele Linux-machines zijn geïnstalleerd.
 author: DCtheGeek
-manager: carmonm
 ms.service: azure-policy
 ms.topic: sample
 ms.date: 05/02/2019
 ms.author: dacoulte
-ms.openlocfilehash: eda5a2a6d2dae58f8da72deccbb89a34c7f21dae
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: ef2ab4bebf2247b08cdc80ed74bbe17a67c5baae
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65204019"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71977041"
 ---
-# <a name="sample---audit-if-specified-applications-arent-installed-inside-linux-vms"></a>Voorbeeld - Audit als opgegeven toepassingen niet zijn geïnstalleerd in virtuele Linux-machines
+# <a name="sample---audit-if-specified-applications-arent-installed-inside-linux-vms"></a>Voor beeld: controleren of opgegeven toepassingen niet zijn geïnstalleerd in Linux Vm's
 
-Dit initiatief Gast beleidsconfiguratie maakt een controlegebeurtenis wanneer de opgegeven toepassingen in virtuele Linux-machines zijn niet geïnstalleerd. De ID van deze ingebouwde initiatief is `/providers/Microsoft.Authorization/policySetDefinitions/c937dcb4-4398-4b39-8d63-4a6be432252e`.
+Deze beleids gast configuratie-initiatief maakt een controle gebeurtenis wanneer de opgegeven toepassingen niet in virtuele Linux-machines zijn geïnstalleerd. De ID van dit ingebouwde initiatief is `/providers/Microsoft.Authorization/policySetDefinitions/c937dcb4-4398-4b39-8d63-4a6be432252e`.
 
 > [!IMPORTANT]
-> Alle configuratie van de Gast-initiatieven worden samengesteld uit **controleren** en **deployIfNotExists** beleidsdefinities. Het toekennen van alleen een van de beleidsdefinities ertoe leiden dat de configuratie van de Gast niet correct te laten werken.
+> Alle gast configuratie initiatieven bestaan uit **controle** -en **deployIfNotExists** -beleids definities. Het toewijzen van slechts een van de beleids definities leidt ertoe dat gast configuratie niet goed werkt.
 
-In dit voorbeeld met, kunt u toewijzen:
+U kunt dit voor beeld toewijzen met behulp van:
 
 - [Azure Portal](#azure-portal)
 - [Azure PowerShell](#azure-powershell)
@@ -30,16 +29,16 @@ In dit voorbeeld met, kunt u toewijzen:
 
 ## <a name="components-of-the-initiative"></a>Onderdelen van het initiatief
 
-Dit [Gast configuratie](../concepts/guest-configuration.md) initiatief is afhankelijk van het volgende beleid:
+Dit initiatief voor [gast configuratie](../concepts/guest-configuration.md) bestaat uit het volgende beleid:
 
-- [audit](#audit-definition) -controleren wanneer toepassingen zijn niet geïnstalleerd in virtuele Linux-machines
+- [controleren](#audit-definition) : controleren of toepassingen niet in Linux-vm's zijn geïnstalleerd
   - ID: `/providers/Microsoft.Authorization/policyDefinitions/fee5cb2b-9d9b-410e-afe3-2902d90d0004`
-- [deployIfNotExists](#deployIfNotExists-definition) -implementatie van VM-extensie om te controleren wanneer toepassingen zijn niet geïnstalleerd in virtuele Linux-machines
+- [deployIfNotExists](#deployIfNotExists-definition) -VM-extensie implementeren om te controleren wanneer toepassingen niet in Linux-vm's zijn geïnstalleerd
   - ID: `/providers/Microsoft.Authorization/policyDefinitions/4d1c04de-2172-403f-901b-90608c35c721`
 
 ### <a name="initiative-definition"></a>Initiatiefdefinitie
 
-Het initiatief is gemaakt door de **controleren** en **deployIfNotExists** definities samen en de [initiatief Parameters](#initiative-parameters). Dit is de JSON van de definitie.
+Het initiatief wordt gemaakt door de **audit** -en **deployIfNotExists** definities samen en de [para meters](#initiative-parameters)van het initiatief toe te voegen. Dit is de JSON van de definitie.
 
 [!code-json[initiative-definition](../../../../policy-templates/samples/GuestConfiguration/installed-application-linux/azurepolicyset.json "Initiative definition (JSON)")]
 
@@ -47,12 +46,12 @@ Het initiatief is gemaakt door de **controleren** en **deployIfNotExists** defin
 
 |Name |Type |Description |
 |---|---|---|
-|applicationName |String |De toepassingsnamen van de. Voorbeeld: 'python', 'powershell' of een door komma's gescheiden lijst, zoals 'python, powershell'. Gebruik \* voor jokertekens, zoals ' power\*'. |
+|applicationName |Tekenreeks |Toepassings namen. Voor beeld: python, Power shell of een door komma's gescheiden lijst zoals python, Power shell. Gebruik \* voor joker tekens, zoals ' Power @ no__t-1 '. |
 
 Bij het maken van een toewijzing via PowerShell of Azure CLI kunnen de parameterwaarden worden doorgegeven als JSON in een tekenreeks of via een bestand met `-PolicyParameter` (PowerShell) of `--params` (Azure CLI).
 PowerShell ondersteunt ook `-PolicyParameterObject`, waarvoor de cmdlet een hashtabel met naam/waardeparen moet ontvangen waarin **Name** de parameternaam is en **Value** is de enkelvoudige waarde of matrix met waarden die tijdens toewijzing wordt doorgegeven.
 
-In dit voorbeeld van de parameter, de installatie van toepassingen _python_ en _powershell_ wordt gecontroleerd.
+In deze voorbeeld parameter wordt de installatie van de toepassingen _python_ en _Power shell_ gecontroleerd.
 
 ```json
 {
@@ -62,64 +61,64 @@ In dit voorbeeld van de parameter, de installatie van toepassingen _python_ en _
 }
 ```
 
-Alleen de **deployIfNotExists** beleidsdefinitie maakt gebruik van de initiatiefparameters.
+Alleen de **deployIfNotExists** -beleids definitie maakt gebruik van de para meters van het initiatief.
 
-### <a name="audit-definition"></a>audit-definitie
+### <a name="audit-definition"></a>audit definitie
 
-De JSON voor het definiëren van de regels van de **controleren** beleidsdefinitie.
+De JSON waarin de regels van de definitie van het **controle** beleid worden gedefinieerd.
 
 [!code-json[audit-definition](../../../../policy-templates/samples/GuestConfiguration/installed-application-linux/audit/azurepolicy.rules.json "audit policy rules (JSON)")]
 
-### <a name="deployifnotexists-definition"></a>deployIfNotExists-definitie
+### <a name="deployifnotexists-definition"></a>deployIfNotExists definitie
 
-De JSON voor het definiëren van de regels van de **deployIfNotExists** beleidsdefinitie.
+De JSON waarin de regels van de **deployIfNotExists** -beleids definitie worden gedefinieerd.
 
 [!code-json[deployIfNotExists-definition](../../../../policy-templates/samples/GuestConfiguration/installed-application-linux/deployIfNotExists/azurepolicy.rules.json "deployIfNotExists policy rules (JSON)")]
 
-De **deployIfNotExists** beleidsdefinitie definieert de installatiekopieën van Azure die het beleid is gevalideerd op:
+De **deployIfNotExists** -beleids definitie definieert de Azure-installatie kopieën waarvoor het beleid is gevalideerd:
 
 |Uitgever |Aanbieding |SKU |
 |-|-|-|
-|OpenLogic |CentOS\* |Overal behalve in 6\* |
-|RedHat |RHEL |Overal behalve in 6\* |
-|RedHat |osa | Alle |
-|credativ |Debian | Overal behalve 7\* |
-|SUSE |SLES\* |Overal behalve 11\* |
-|Canonical| UbuntuServer |Overal behalve 12\* |
+|OpenLogic |CentOS @ no__t-0 |Alles behalve 6 @ no__t-0 |
+|RedHat |RHEL |Alles behalve 6 @ no__t-0 |
+|RedHat |Osa | Alle |
+|credativ |Debian | Alle behalve 7 @ no__t-0 |
+|SUSE |SLES @ NO__T-0 |Alle behalve 11 @ no__t-0 |
+|Canonical| UbuntuServer |Alle behalve 12 @ no__t-0 |
 |microsoft-dsvm |linux-data-science-vm-ubuntu |Alle |
 |microsoft-dsvm |azureml |Alle |
-|cloudera |cloudera-centos-os |Overal behalve in 6\* |
-|cloudera |cloudera-altus-centos-os |Alle |
+|cloudera |cloudera-centos-os |Alles behalve 6 @ no__t-0 |
+|cloudera |cloudera-altus-CentOS-OS |Alle |
 |microsoft-ads |linux\* |Alle |
 |microsoft-aks |Alle |Alle |
 |AzureDatabricks |Alle |Alle |
 |qubole-inc |Alle |Alle |
 |datastax |Alle |Alle |
-|Couchbase |Alle |Alle |
+|Couch base |Alle |Alle |
 |scalegrid |Alle |Alle |
-|Controlepunt |Alle |Alle |
+|Points |Alle |Alle |
 |paloaltonetworks |Alle |Alle |
 
-De **implementatie** gedeelte van de regel geeft de _installedApplication_ parameter met de configuratie van de Gast-agent op de virtuele machine. Deze configuratie kan de agent uit te voeren van de validaties en het rapport naleving back-ups maken via de **controleren** beleidsdefinitie.
+In het gedeelte **implementatie** van de regel wordt de para meter _installedApplication_ door gegeven aan de gast configuratie agent op de virtuele machine. Met deze configuratie kan de agent de validaties uitvoeren en de naleving van het **controle** beleid weer rapporteren.
 
 ## <a name="azure-portal"></a>Azure Portal
 
-Na de **controleren** en **deployIfNotExists** definities in de portal zijn gemaakt, het is raadzaam om te groeperen in een [initiatief](../concepts/definition-structure.md#initiatives) voor toewijzing.
+Nadat de **controle** -en **deployIfNotExists** definities zijn gemaakt in de portal, is het raadzaam ze te groeperen in een [initiatief](../concepts/definition-structure.md#initiatives) voor toewijzing.
 
-### <a name="create-copy-of-audit-definition"></a>Kopie van de audit-definitie maken
+### <a name="create-copy-of-audit-definition"></a>Kopie maken van audit definitie
 
-[![De voorbeeld-beleid implementeren naar Azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FGuestConfiguration%2Finstalled-application-linux%2Faudit%2Fazurepolicy.json)
-[![de voorbeeld-beleid implementeren naar Azure (overheid)](https://docs.microsoft.com/azure/governance/policy/media/deploy/deployGovbutton.png)](https://portal.azure.us/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FGuestConfiguration%2Finstalled-application-linux%2Faudit%2Fazurepolicy.json)
+[![Deploy het voor beeld van het beleid naar azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FGuestConfiguration%2Finstalled-application-linux%2Faudit%2Fazurepolicy.json)
+[![Deploy het voor beeld van het beleid naar Azure gov](https://docs.microsoft.com/azure/governance/policy/media/deploy/deployGovbutton.png)](https://portal.azure.us/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FGuestConfiguration%2Finstalled-application-linux%2Faudit%2Fazurepolicy.json)
 
-Gebruik deze knoppen voor het implementeren via de portal maakt een kopie van de **controleren** beleidsdefinitie.
-Zonder de gekoppelde **deployIfNotExists** beleidsdefinitie, de configuratie van de Gast werkt niet correct.
+Als u met deze knoppen via de portal implementeert, wordt er een kopie van de definitie van het **controle** beleid gemaakt.
+Zonder de gekoppelde **deployIfNotExists** -beleids definitie werkt de gast configuratie niet goed.
 
-### <a name="create-copy-of-deployifnotexists-definition"></a>Kopie van deployIfNotExists-definitie maken
+### <a name="create-copy-of-deployifnotexists-definition"></a>Een kopie maken van de deployIfNotExists-definitie
 
-[![De voorbeeld-beleid implementeren naar Azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FGuestConfiguration%2Finstalled-application-linux%2FdeployIfNotExists%2Fazurepolicy.json)
-[![de voorbeeld-beleid implementeren naar Azure (overheid)](https://docs.microsoft.com/azure/governance/policy/media/deploy/deployGovbutton.png)](https://portal.azure.us/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FGuestConfiguration%2Finstalled-application-linux%2FdeployIfNotExists%2Fazurepolicy.json)
+[![Deploy het voor beeld van het beleid naar azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FGuestConfiguration%2Finstalled-application-linux%2FdeployIfNotExists%2Fazurepolicy.json)
+[![Deploy het voor beeld van het beleid naar Azure gov](https://docs.microsoft.com/azure/governance/policy/media/deploy/deployGovbutton.png)](https://portal.azure.us/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FGuestConfiguration%2Finstalled-application-linux%2FdeployIfNotExists%2Fazurepolicy.json)
 
-Gebruik deze knoppen voor het implementeren via de portal maakt een kopie van de **deployIfNotExists** beleidsdefinitie. Zonder de gekoppelde **controleren** beleidsdefinitie, de configuratie van de Gast werkt niet correct.
+Als u met deze knoppen via de portal implementeert, wordt er een kopie gemaakt van de **deployIfNotExists** -beleids definitie. Zonder de definitie van het gekoppelde **controle** beleid werkt de gast configuratie niet goed.
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
@@ -127,9 +126,9 @@ Gebruik deze knoppen voor het implementeren via de portal maakt een kopie van de
 
 ### <a name="deploy-with-azure-powershell"></a>Implementeren met Azure PowerShell
 
-#### <a name="copy-and-assign-the-initiative"></a>Kopiëren en het initiatief toewijzen
+#### <a name="copy-and-assign-the-initiative"></a>Het initiatief kopiëren en toewijzen
 
-Deze stappen maakt u een kopie van het initiatief met inbegrip van de ingebouwde beleidsregels voor beide **controleren** en **deployIfNotExists** en het initiatief toewijst aan een resourcegroep.
+Met deze stappen maakt u een kopie van het initiatief dat het ingebouwde beleid voor zowel **audit** als **deployIfNotExists** bevat, en wijst u het initiatief toe aan een resource groep.
 
 ```azurepowershell-interactive
 # Create the policy initiative (Subscription scope)
@@ -164,9 +163,9 @@ Remove-AzRoleAssignment -ObjectId $saIdentity -Scope $scope.ResourceId -RoleDefi
 Remove-AzPolicySetDefinition -Id $initDef
 ```
 
-#### <a name="copy-and-assign-the-audit-definition"></a>Kopiëren en de definitie van de audit toewijzen
+#### <a name="copy-and-assign-the-audit-definition"></a>De audit definitie kopiëren en toewijzen
 
-Deze stappen maakt u een kopie van de **controleren** definitie en deze toewijzen aan een resourcegroep. Deze definitie werkt niet goed zonder de gekoppelde **deployIfNotExists** definitie ook wordt toegewezen.
+Met deze stappen maakt u een kopie van de **audit** definitie en wijst u deze toe aan een resource groep. Deze definitie werkt niet correct zonder dat de gekoppelde **deployIfNotExists** -definitie ook wordt toegewezen.
 
 ```azurepowershell-interactive
 # Create the policy definition (Subscription scope)
@@ -189,10 +188,10 @@ Remove-AzPolicyAssignment -Id $assignment.ResourceId
 Remove-AzPolicyDefinition -Id $definition
 ```
 
-#### <a name="copy-and-assign-the-deployifnotexists-definition"></a>Kopiëren en de definitie van de deployIfNotExists toewijzen
+#### <a name="copy-and-assign-the-deployifnotexists-definition"></a>De deployIfNotExists-definitie kopiëren en toewijzen
 
-Deze stappen maakt u een kopie van de **deployIfNotExists** definitie en deze toewijzen aan een resourcegroep.
-Deze definitie werkt niet goed zonder de gekoppelde **controleren** definitie ook wordt toegewezen.
+Met deze stappen maakt u een kopie van de **deployIfNotExists** -definitie en wijst u deze toe aan een resource groep.
+Deze definitie werkt niet correct zonder dat de definitie van de gekoppelde **controle** ook wordt toegewezen.
 
 ```azurepowershell-interactive
 # Create the policy definition (Subscription scope)
@@ -233,10 +232,10 @@ De scripts voor implementeren en verwijderen gebruiken de volgende opdrachten. E
 
 | Opdracht | Opmerkingen |
 |---|---|
-| [New-AzPolicySetDefinition](/powershell/module/az.resources/New-AzPolicySetDefinition) | Hiermee maakt u een Azure Policy-initiatief. |
-| [New-AzPolicyDefinition](/powershell/module/az.resources/New-AzPolicyDefinition) | Hiermee maakt u een definitie van een Azure Policy. |
+| [New-AzPolicySetDefinition](/powershell/module/az.resources/New-AzPolicySetDefinition) | Hiermee maakt u een Azure Policy initiatief. |
+| [New-AzPolicyDefinition](/powershell/module/az.resources/New-AzPolicyDefinition) | Hiermee maakt u een Azure Policy definitie. |
 | [Get-AzResourceGroup](/powershell/module/az.resources/Get-AzResourceGroup) | Hiermee vraagt u één resourcegroep op. |
-| [New-AzPolicyAssignment](/powershell/module/az.resources/New-AzPolicyAssignment) | Hiermee maakt u een nieuwe Azure Policy-toewijzing voor een initiatief- of -definitie. |
+| [New-AzPolicyAssignment](/powershell/module/az.resources/New-AzPolicyAssignment) | Hiermee maakt u een nieuwe Azure Policy toewijzing voor een initiatief of definitie. |
 | [New-AzRoleAssignment](/powershell/module/az.resources/New-AzRoleAssignment) | Geeft een bestaande roltoewijzing aan de specifieke principal. |
 | [Remove-AzPolicyAssignment](/powershell/module/az.resources/Remove-AzPolicyAssignment) | Hiermee verwijdert u een bestaande Azure Policy-toewijzing. |
 | [Remove-AzPolicySetDefinition](/powershell/module/az.resources/Remove-AzPolicySetDefinition) | Hiermee verwijdert u een initiatief. |
@@ -244,6 +243,6 @@ De scripts voor implementeren en verwijderen gebruiken de volgende opdrachten. E
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Raadpleeg aanvullende [voorbeelden voor Azure Policy](index.md).
-- Meer informatie over [Azure Gast beleidsconfiguratie](../concepts/guest-configuration.md).
-- Beoordeling [Azure structuur van beleidsdefinities](../concepts/definition-structure.md).
+- Bekijk aanvullende [Azure Policy](index.md)-voor beelden.
+- Meer informatie over [Azure Policy-gast configuratie](../concepts/guest-configuration.md).
+- [Azure Policy definitie structuur](../concepts/definition-structure.md)bekijken.

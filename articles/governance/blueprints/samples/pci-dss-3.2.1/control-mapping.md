@@ -7,19 +7,18 @@ ms.author: dacoulte
 ms.date: 06/24/2019
 ms.topic: conceptual
 ms.service: blueprints
-manager: carmonm
-ms.openlocfilehash: 2ec299a79f852c553763439290b014a91d3a9414
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: fca86163cdfc8790da007a1f0f9264534b512cdd
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70918603"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71981487"
 ---
 # <a name="control-mapping-of-the-pci-dss-v321-blueprint-sample"></a>De toewijzing van het voor beeld van het PCI-DSS v 3.2.1-blauw druk
 
 Het volgende artikel bevat informatie over de manier waarop het Azure-blauw drukken van het PCI-DSS v 3.2.1-voor beeld wordt toegewezen aan de besturings elementen voor PCI-DSS v 3.2.1. Zie [PCI-DSS v 3.2.1](https://www.pcisecuritystandards.org/documents/PCI_DSS_v3-2-1.pdf)voor meer informatie over de besturings elementen.
 
-De volgende toewijzingen zijn de **PCI-DSS v 3.2.1:2018** -besturings elementen. Gebruik de navigatie aan de rechter kant om rechtstreeks naar een specifieke besturings element koppeling te gaan. Veel van de toegewezen besturings elementen worden geïmplementeerd met een [Azure Policy](../../../policy/overview.md) -initiatief. Als u het complete initiatief wilt bekijken, opent u **beleid** in het Azure Portal en selecteert u de pagina **definities** . Zoek en selecteer vervolgens de  **\[preview\] -controle PCI v 3.2.1:2018-besturings elementen en implementeer specifieke VM-extensies ter ondersteuning** van de ingebouwde beleids initiatieven voor controle vereisten.
+De volgende toewijzingen zijn de **PCI-DSS v 3.2.1:2018** -besturings elementen. Gebruik de navigatie aan de rechter kant om rechtstreeks naar een specifieke besturings element koppeling te gaan. Veel van de toegewezen besturings elementen worden geïmplementeerd met een [Azure Policy](../../../policy/overview.md) -initiatief. Als u het complete initiatief wilt bekijken, opent u **beleid** in het Azure Portal en selecteert u de pagina **definities** . Zoek en selecteer vervolgens de **\[Preview @ no__t-2 audit PCI v 3.2.1:2018 Controls en implementeer specifieke VM-extensies ter ondersteuning** van de ingebouwde beleids initiatieven voor controle vereisten.
 
 > [!IMPORTANT]
 > Elk besturings element hieronder is gekoppeld aan een of meer [Azure Policy](../../../policy/overview.md) definities. Met deze beleids regels kunt u de naleving van het besturings element [beoordelen](../../../policy/how-to/get-compliance-data.md) . Er is echter vaak geen 1:1-of volledige overeenkomst tussen een besturings element en een of meer beleids regels. Als zodanig is de **naleving** in azure Policy alleen bedoeld voor het beleid zelf. Dit garandeert niet dat u volledig compatibel bent met alle vereisten van een besturings element. Daarnaast bevat de nalevings standaard besturings elementen die niet worden behandeld door Azure Policy definities op dit moment. Daarom is naleving in Azure Policy slechts een gedeeltelijke weer gave van uw algemene nalevings status. De koppelingen tussen de besturings elementen en Azure Policy definities voor dit voor beeld van deze naleving blauw druk kunnen na verloop van tijd veranderen. Als u de wijzigings geschiedenis wilt weer geven, raadpleegt u de [github commit-geschiedenis](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/pci-dss-3.2.1/control-mapping.md).
@@ -101,12 +100,12 @@ Azure implementeert op rollen gebaseerd toegangs beheer (RBAC) om u te helpen bi
 
 Deze blauw druk helpt u sterke wacht woorden af te dwingen door [Azure Policy](../../../policy/overview.md) definities toe te wijzen waarmee Windows-vm's worden gecontroleerd die geen minimale sterkte en andere wachtwoord vereisten afdwingen. Het bewustzijn van Vm's in strijd met het beleid voor wachtwoord sterkte helpt u bij het uitvoeren van corrigerende maat regelen om ervoor te zorgen dat wacht woorden voor alle VM-gebruikers accounts voldoen aan het beleid.
 
-- \[Voor\]beeld: Windows-Vm's met een maximale wachtwoord duur van 70 dagen controleren
-- \[Voor\]beeld: Vereisten implementeren voor het controleren van Windows-Vm's die geen maximale wachtwoord duur van 70 dagen hebben
-- \[Voor\]beeld: Windows-Vm's controleren die de minimale wachtwoord lengte niet beperken tot 14 tekens
-- \[Voor\]beeld: Vereisten implementeren om Windows-Vm's te controleren die de minimale wachtwoord lengte niet beperken tot 14 tekens
-- \[Voor\]beeld: Virtuele Windows-machines controleren die het opnieuw gebruiken van de voor gaande 24 wacht woorden toestaan
-- \[Voor\]beeld: Vereisten implementeren voor het controleren van virtuele Windows-machines die het opnieuw gebruiken van de voor gaande 24 wacht woorden toestaan
+- \[Preview @ no__t-1: Windows-Vm's met een maximale wachtwoord duur van 70 dagen controleren
+- \[Preview @ no__t-1: Vereisten implementeren voor het controleren van Windows-Vm's die geen maximale wachtwoord duur van 70 dagen hebben
+- \[Preview @ no__t-1: Windows-Vm's controleren die de minimale wachtwoord lengte niet beperken tot 14 tekens
+- \[Preview @ no__t-1: Vereisten implementeren om Windows-Vm's te controleren die de minimale wachtwoord lengte niet beperken tot 14 tekens
+- \[Preview @ no__t-1: Virtuele Windows-machines controleren die het opnieuw gebruiken van de voor gaande 24 wacht woorden toestaan
+- \[Preview @ no__t-1: Vereisten implementeren voor het controleren van virtuele Windows-machines die het opnieuw gebruiken van de voor gaande 24 wacht woorden toestaan
 
 ## <a name="103-and-1054-audit-generation"></a>10,3 en 10.5.4-controle genereren
 
