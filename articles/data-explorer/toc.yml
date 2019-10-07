@@ -114,22 +114,34 @@
           href: sisense.md
     - name: Beheren
       items:
-        - name: Clusterstatus controleren
-          href: check-cluster-health.md
-        - name: SKU van cluster-VM selecteren
-          href: manage-cluster-choose-sku.md
-        - name: Horizontaal schalen van cluster beheren
-          href: manage-cluster-horizontal-scaling.md
-        - name: Verticaal schalen van cluster beheren
-          href: manage-cluster-vertical-scaling.md
-        - name: Clusterbeveiliging beheren
-          href: manage-cluster-security.md
-        - name: Databasemachtigingen beheren
-          href: manage-database-permissions.md
-        - name: Gegevens verwijderen
-          href: delete-data.md
-        - name: Dubbele gegevens aanpakken
-          href: dealing-with-duplicates.md
+        - name: Cluster
+          items:
+            - name: SKU van cluster-VM selecteren
+              href: manage-cluster-choose-sku.md
+            - name: Horizontaal schalen van cluster beheren
+              href: manage-cluster-horizontal-scaling.md
+            - name: Verticaal schalen van cluster beheren
+              href: manage-cluster-vertical-scaling.md
+            - name: Clusterbeveiliging beheren
+              href: manage-cluster-security.md
+            - name: Clusterstatus controleren
+              href: check-cluster-health.md
+        - name: Database
+          items:
+            - name: Databasemachtigingen beheren
+              href: manage-database-permissions.md
+            - name: Beleidsregels
+              items:
+                - name: 'C#'
+                  href: database-table-policies-csharp.md
+                - name: Python
+                  href: database-table-policies-python.md
+        - name: Gegevens
+          items:
+            - name: Gegevens verwijderen
+              href: delete-data.md
+            - name: Dubbele gegevens aanpakken
+              href: dealing-with-duplicates.md
     - name: Controleren
       items:
         - name: Diagnostische logboeken gebruiken om opname te bewaken

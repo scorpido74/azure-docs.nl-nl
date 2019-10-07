@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 72d02cecf37c631e6f8097b220848425c5e1fe9c
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: 3d5dfe824d95506fa3f83f1fbbdca1e29e02d566
+ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71719122"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72001297"
 ---
 # <a name="create-an-azure-iot-central-application-preview-features"></a>Een Azure IoT Central-toepassing maken (preview-functies)
 
@@ -37,9 +37,9 @@ Voor het maken van een nieuwe Azure IoT Central-toepassing die preview-functies 
 
 1. Kies een betalingsplan:
    - **Proef** toepassingen zijn zeven dagen beschikbaar voordat ze verlopen. Ze kunnen op elk gewenst moment worden geconverteerd naar **betalen per gebruik** voordat ze verlopen. Als u een **proef** toepassing maakt, moet u uw contact gegevens invoeren en kiezen of u informatie en tips van micro soft wilt ontvangen.
-   - Voor **betalen naar gebruik** -toepassingen worden per apparaat in rekening gebracht, met de eerste vijf apparaten gratis. Als u een **betalen per gebruik** -toepassing maakt, moet u uw *adres lijst*, het *Azure-abonnement*en de *regio*selecteren:
+   - Voor **betalen naar gebruik** -toepassingen worden per apparaat in rekening gebracht, met de eerste vijf apparaten gratis. Als u een **betalen per gebruik** -toepassing maakt, moet u uw *Directory*, *Azure-abonnement*en *regio*selecteren:
         - *Directory* is de Azure Active Directory (AD) voor het maken van uw toepassing. Deze bevat gebruikers-id's, referenties en andere organisatiegegevens. Als u geen Azure AD hebt, wordt er een voor u gemaakt wanneer u een Azure-abonnement maakt.
-        - Als u een *Azure-abonnement* hebt, kunt u instanties van Azure-services maken. IoT Central zorgt ervoor dat resources in uw abonnement worden ingericht. Als u geen Azure-abonnement hebt, kunt u er een maken via de [Azure-aanmeldingspagina](https://aka.ms/createazuresubscription). Nadat u het Azure-abonnement hebt gemaakt, gaat u terug naar de pagina **een toepassing maken** . Uw nieuwe abonnement wordt weergegeven in de vervolgkeuzelijst.**Azure-abonnement**.
+        - Als u een *Azure-abonnement* hebt, kunt u instanties van Azure-services maken. IoT Central resources in uw abonnement. Als u geen Azure-abonnement hebt, kunt u er een maken via de [Azure-aanmeldingspagina](https://aka.ms/createazuresubscription). Nadat u het Azure-abonnement hebt gemaakt, gaat u terug naar de pagina **een toepassing maken** . Uw nieuwe abonnement wordt weergegeven in de vervolgkeuzelijst.**Azure-abonnement**.
         - *Regio* is de fysieke locatie waar u de toepassing wilt maken. Normaal gesp roken moet u de regio kiezen die zich het dichtst bij uw apparaten bevindt voor optimale prestaties. Tijdens de open bare preview zijn de enige beschik bare regio's voor een **Preview-toepassing** **Europa-Noord** en **centrale VS**. Wanneer u een regio hebt gekozen, kunt u uw toepassing niet meer naar een andere regio verplaatsen.
 
         Lees meer over prijzen op de [prijzenpagina van IoT Central](https://azure.microsoft.com/pricing/details/iot-central/).

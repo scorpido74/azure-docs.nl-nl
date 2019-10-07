@@ -147,6 +147,8 @@
   items:
     - name: REST-API’s
       href: 'https://docs.microsoft.com/rest/api/securitycenter/'
+    - name: Releaseopmerkingen
+      href: 'https://azure.microsoft.com/updates/?product=security-center'
     - name: Buitengebruikstelling van functies en API (juli 2019)
       href: security-center-features-retirement-july2019.md
     - name: Evaluatie van eindpuntbeveiliging en aanbevelingen
