@@ -137,7 +137,7 @@ De volgende stappen laten zien hoe u de logische router-ID van de Tier0 DR-route
 ## <a name="fetch-the-logical-switch-id-needed-for-l2vpn"></a>De ID van de logische switch ophalen die nodig is voor L2VPN
 
 1. Meld u aan bij [NSX-T-beheer](https://nsx-t-manager-ip-address).
-2. Selecteer switches van **Network** > **switching** >  **> *** * < switch \Logical > \ * * > **Overview**.
+2. Selecteer switches van **Network** > **switching** >  **>** **<\switch Logical >\ ** > **Overview**.
 3. Noteer de UUID van de logische switch Stretch, die vereist is voor het configureren van de L2VPN.
 
     ![logische-router uitvoer ophalen](media/l2vpn-fetch-switch01.png)

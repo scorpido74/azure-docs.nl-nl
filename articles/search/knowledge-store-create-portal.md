@@ -88,7 +88,7 @@ In deze wizardstap maakt u een vaardig heden met cognitieve vaardigheids verrijk
 1. Vouw **Cognitive Services toevoegen**uit. **Gratis (beperkte verrijkingen)** is standaard geselecteerd. U kunt deze resource gebruiken omdat het aantal records in HotelReviews-Free. CSV 19 is en deze gratis resource Maxi maal 20 trans acties per dag toestaat.
 1. Vouw **verrijkingen toevoegen**uit.
 1. Voer`hotel-reviews-ss`in bij naam van de **kwalificatieset**.
-1. Selecteer voor **Bron gegevens veld****reviews_text*.
+1. Selecteer voor **Bron gegevens veld** * *reviews_text*.
 1. Selecteer voor uitgebreid **granulatie niveau**de optie **pagina's (segmenten van 5000 tekens)**
 1. Selecteer deze cognitieve vaardig heden:
     + **Sleuteltermen extraheren**

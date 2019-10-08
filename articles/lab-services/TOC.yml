@@ -92,8 +92,6 @@
               href: classroom-labs/how-to-connect-peer-virtual-network.md
             - name: Een gedeelde installatiekopiegalerie toevoegen of loskoppelen
               href: classroom-labs/how-to-attach-detach-shared-image-gallery.md
-            - name: Geneste virtualisatie inschakelen in een sjabloon-VM
-              href: classroom-labs/how-to-enable-nested-virtualization-template-vm.md
         - name: Leslokaallabs maken en configureren (docent)
           items:
             - name: Leslokaallabs maken en beheren
@@ -112,6 +110,8 @@
               href: classroom-labs/how-to-enable-remote-desktop-linux.md
             - name: Wachtwoorden voor virtuele machines instellen of opnieuw instellen
               href: classroom-labs/how-to-set-virtual-machine-passwords.md
+            - name: Geneste virtualisatie inschakelen in een sjabloon-VM
+              href: classroom-labs/how-to-enable-nested-virtualization-template-vm.md
         - name: Verbinding maken met VM's in leslokaallabs (student)
           items:
             - name: Leslokaallabs openen

@@ -1,19 +1,19 @@
 - name: Documentatie voor Virtual Machines
   href: index.yml
 - name: Virtuele Linux-machines in Azure
-  href: linux/overview.md
+  href: 'https://docs.microsoft.com/azure/virtual-machines/linux/'
 - name: Virtuele Windows-machines in Azure
-  href: windows/overview.md
+  href: 'https://docs.microsoft.com/azure/virtual-machines/windows/'
 - name: Documentatie over VM-extensies
-  href: extensions/overview.md
+  href: ./extensions/overview.md
 - name: Workloads
   href: ./workloads/workloads.md
 - name: Klassieke implementaties
   items:
     - name: Linux-VM's met klassieke implementatie
-      href: linux/overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json
+      href: 'https://docs.microsoft.com/previous-versions/azure/virtual-machines/linux/classic/'
     - name: Windows-VM's met klassieke implementatie
-      href: windows/overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json
+      href: 'https://docs.microsoft.com/previous-versions/azure/virtual-machines/windows/classic/'
 - name: Resources
   items:
     - name: Uw vaardigheden ontwikkelen met Microsoft Learn
