@@ -198,6 +198,14 @@
           href: compute-benchmark-scores.md
         - name: vCPU-quota
           href: quotas.md
+        - name: Gereserveerde instanties
+          items:
+            - name: Vooruitbetalen voor VM's
+              href: prepay-reserved-vm-instances.md
+            - name: Wat zijn Azure-reserveringen?
+              href: ../../billing/billing-save-compute-costs-reservations.md
+            - name: Flexibiliteit van de VM-instantiegrootte
+              href: reserved-vm-instance-size-flexibility.md
     - name: Toegewezen hosts
       href: dedicated-hosts.md
     - name: Onderhoud en updates
@@ -359,14 +367,6 @@
           href: ../../azure-monitor/platform/alerts-metric.md
         - name: Logboekwaarschuwingen maken
           href: ../../azure-monitor/platform/alerts-log.md
-    - name: Kosten beheren
-      items:
-        - name: Vooruitbetalen voor VM's - Azure-reserveringen
-          href: prepay-reserved-vm-instances.md
-        - name: Wat zijn Azure-reserveringen?
-          href: ../../billing/billing-save-compute-costs-reservations.md
-        - name: Flexibiliteit van de VM-instantiegrootte
-          href: reserved-vm-instance-size-flexibility.md
     - name: Installatiekopieën gebruiken
       items:
         - name: Gedeelde installatiekopieën
@@ -422,8 +422,6 @@
         - name: Een nabijheidsplaatsingsgroep maken
           href: proximity-placement-groups.md
         - name: Verticaal schalen
-          href: vertical-scaling-automation.md
-        - name: Een virtuele machine maken in de beschikbaarheidszone
           items:
             - name: PowerShell
               href: create-powershell-availability-zone.md

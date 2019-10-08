@@ -111,6 +111,14 @@
           href: acu.md
         - name: vCPU-quota
           href: quotas.md
+        - name: Gereserveerde instanties
+          items:
+            - name: Vooruitbetalen voor VM's
+              href: prepay-reserved-vm-instances.md
+            - name: Wat zijn Azure-reserveringen?
+              href: ../../billing/billing-save-compute-costs-reservations.md
+            - name: Flexibiliteit van de VM-instantiegrootte
+              href: reserved-vm-instance-size-flexibility.md
         - name: Benchmarkscores
           href: compute-benchmark-scores.md
     - name: Goedgekeurde distributies
@@ -302,16 +310,6 @@
           href: ../../azure-monitor/platform/alerts-metric.md
         - name: Logboekwaarschuwingen maken
           href: ../../azure-monitor/platform/alerts-log.md
-    - name: Kosten beheren
-      items:
-        - name: Vooruitbetalen voor VM's - Azure-reserveringen
-          href: prepay-reserved-vm-instances.md
-        - name: Vooruitbetalen voor Azure-softwareabonnementen
-          href: prepay-suse-software-charges.md
-        - name: Wat zijn Azure-reserveringen?
-          href: ../../billing/billing-save-compute-costs-reservations.md
-        - name: Flexibiliteit van de VM-instantiegrootte
-          href: reserved-vm-instance-size-flexibility.md
     - name: Installatiekopieën gebruiken
       items:
         - name: Gedeelde installatiekopiegalerieën
@@ -378,8 +376,6 @@
           href: manage-availability.md
         - name: Een nabijheidsplaatsingsgroep maken
           href: proximity-placement-groups.md
-        - name: Verticaal schalen
-          href: vertical-scaling-automation.md
         - name: Een virtuele machine maken in de beschikbaarheidszone
           href: create-cli-availability-zone.md
     - name: Automation-hulpprogramma's gebruiken
