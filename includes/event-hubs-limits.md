@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/22/2019
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: a20481ea42a0772ab42322e912cfce67877734d6
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 8c836582798f40cf6e9ffff264c1612cb4037f74
+ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71830070"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "71996885"
 ---
 De volgende tabellen bevatten quota's en limieten die specifiek zijn voor [Azure Event hubs](https://azure.microsoft.com/services/event-hubs/). Zie [Event hubs prijzen](https://azure.microsoft.com/pricing/details/event-hubs/)voor meer informatie over Event hubs prijzen.
 
@@ -55,5 +55,5 @@ De Event Hubs Dedicated aanbieding wordt gefactureerd tegen een vaste maandelijk
 | Partities | 2000 per CU |
 | Consumergroepen | Geen limiet per CU, 1000 per Event Hub |
 | Brokered Connections | 100 K inbegrepen |
-| Bewaartermijn voor berichten | Maxi maal 7 dagen, 10 TB inbegrepen per CU |
+| Bewaartermijn voor berichten | 90 dagen, 10 TB inbegrepen per CU |
 | Capture | Inbegrepen |

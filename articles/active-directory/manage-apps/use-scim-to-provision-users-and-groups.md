@@ -16,16 +16,16 @@ ms.author: mimart
 ms.reviewer: arvinh
 ms.custom: aaddev;it-pro;seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9344feeadc5f4146c3b3f853082cd9255100af5c
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: b5c24a2340775712f1105448b2aacfdc9a75f1a6
+ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71949636"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72001720"
 ---
 # <a name="scim-user-provisioning-with-azure-active-directory"></a>SCIM-gebruikers inrichten met Azure Active Directory
 
-Het systeem voor Identity Management (SCIM) tussen domeinen is een gestandaardiseerd protocol en schema waarmee meer consistentie wordt gestimuleerd in de manier waarop identiteiten op verschillende systemen worden beheerd. Wanneer een toepassing een SCIM-eind punt voor gebruikers beheer ondersteunt, kan de Azure AD User Provisioning-Service aanvragen verzenden om toegewezen gebruikers en groepen te maken, wijzigen of verwijderen aan dit eind punt.
+Het systeem voor Identity Management ([scim](https://techcommunity.microsoft.com/t5/Identity-Standards-Blog/bg-p/IdentityStandards)) tussen domeinen is een gestandaardiseerd protocol en schema waarmee meer consistentie wordt gestimuleerd in de manier waarop identiteiten op verschillende systemen worden beheerd. Wanneer een toepassing een SCIM-eind punt voor gebruikers beheer ondersteunt, kan de Azure AD User Provisioning-Service aanvragen verzenden om toegewezen gebruikers en groepen te maken, wijzigen of verwijderen aan dit eind punt.
 
 Veel van de toepassingen waarvoor Azure AD [vooraf geïntegreerde automatische gebruikers inrichting](../saas-apps/tutorial-list.md) ondersteunt, implementeren scim als de manier om meldingen over gebruikers wijzigingen te ontvangen.  Daarnaast kunnen klanten toepassingen verbinden die een specifiek profiel van de [SCIM 2,0-protocol specificatie](https://tools.ietf.org/html/rfc7644) ondersteunen met behulp van de algemene integratie optie ' niet-galerie ' in de Azure Portal.
 

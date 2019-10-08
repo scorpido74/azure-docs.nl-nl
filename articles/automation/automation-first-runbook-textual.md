@@ -10,12 +10,12 @@ ms.author: robreed
 ms.date: 09/24/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 010c6b00161c7a0a004932528fa4f608aa7c5e23
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: ab6d213e83c2d7eba95c6c9a6dca5edc1f0f2215
+ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68850688"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "71996519"
 ---
 # <a name="my-first-powershell-workflow-runbook"></a>Mijn eerste PowerShell Workflow-runbook
 
@@ -123,7 +123,7 @@ Het runbook dat u hebt gemaakt, bevindt zich nog steeds in de modus Concept. U m
 
 ## <a name="step-5---add-authentication-to-manage-azure-resources"></a>Stap 5: verificatie toevoegen voor het beheren van Azure-resources
 
-U hebt het runbook getest en gepubliceerd, maar tot nu toe doet het nog niets nuttigs. U wilt dat er Azure-resources mee worden beheerd. Dit kan echter niet, tenzij u hebt geverifieerd met de referenties die in de [vereisten](#prerequisites)worden genoemd. Dit doet u met de cmdlet **Connect-AzureRmAccount** .
+U hebt het runbook getest en gepubliceerd, maar tot nu toe doet het nog niets nuttigs. U wilt dat er Azure-resources mee worden beheerd. Dit kan echter niet, tenzij u hebt geverifieerd met de referenties die in de [vereisten](#prerequisites)worden genoemd. Dit doet u met de cmdlet **Connect-AzAccount** .
 
 1. Open de teksteditor door te klikken op **Bewerken** in het deelvenster MyFirstRunbook-Workflow.
 2. u hebt de regel voor **Write-output** niet meer nodig, dus kunt u deze verwijderen.
@@ -132,17 +132,17 @@ U hebt het runbook getest en gepubliceerd, maar tot nu toe doet het nog niets nu
 
    ```powershell-interactive
    # Ensures you do not inherit an AzureRMContext in your runbook
-   Disable-AzureRmContextAutosave –Scope Process
+   Disable-AzContextAutosave –Scope Process
 
    $Conn = Get-AutomationConnection -Name AzureRunAsConnection
-   Connect-AzureRmAccount -ServicePrincipal -Tenant $Conn.TenantID `
+   Connect-AzAccount -ServicePrincipal -Tenant $Conn.TenantID `
    -ApplicationId $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint
 
-   $AzureContext = Select-AzureRmSubscription -SubscriptionId $Conn.SubscriptionID
+   $AzureContext = Select-AzSubscription -SubscriptionId $Conn.SubscriptionID
    ```
 
    > [!IMPORTANT]
-   > **Add-AzureRmAccount** en **login-AzureRmAccount** zijn nu aliassen voor **Connect-AzureRmAccount**. Als de cmdlet **Connect-AzureRMAccount** niet bestaat, kunt u **add-AzureRMAccount** of **login-AzureRMAccount**gebruiken, of u kunt [uw modules](automation-update-azure-modules.md) in uw Automation-account bijwerken naar de nieuwste versies.
+   > **Add-AzAccount** en **login-AzAccount** zijn nu aliassen voor **Connect-AzAccount**. Als de cmdlet **Connect-AzAccount** niet bestaat, kunt u **add-AzAccount** of **login-AzAccount**gebruiken, of u kunt [uw modules](automation-update-azure-modules.md) in uw Automation-account bijwerken naar de nieuwste versies.
 
 > [!NOTE]
 > Mogelijk moet u [uw modules bijwerken](automation-update-azure-modules.md) , zelfs als u zojuist een nieuw Automation-account hebt gemaakt.
@@ -154,22 +154,22 @@ U hebt het runbook getest en gepubliceerd, maar tot nu toe doet het nog niets nu
 
 ## <a name="step-6---add-code-to-start-a-virtual-machine"></a>Stap 6: code toevoegen om een virtuele machine te starten
 
-Nu uw runbook is geverifieerd voor uw Azure-abonnement, kunt u resources beheren. u voegt een opdracht toe om een virtuele machine te starten. U kunt een wille keurige virtuele machine in uw Azure-abonnement kiezen en u hebt nu die naam hardcoding in het runbook. Als u resources beheert over meerdere abonnementen, moet u de para meter **-AzureRmContext** gebruiken in combi natie met [Get-AzureRmContext](/powershell/module/azurerm.profile/get-azurermcontext).
+Nu uw runbook is geverifieerd voor uw Azure-abonnement, kunt u resources beheren. u voegt een opdracht toe om een virtuele machine te starten. U kunt een wille keurige virtuele machine in uw Azure-abonnement kiezen en u hebt nu die naam hardcoding in het runbook. Als u resources beheert over meerdere abonnementen, moet u de para meter **-AzContext** gebruiken in combi natie met [Get-AzContext](/powershell/module/az.accounts/get-azcontext).
 
-1. Na *Connect-AzureRmAccount*typt u *Start-AzureRmVM-name ' VMName '-ResourceGroupName ' NameofResourceGroup '* om de naam en de naam van de resource groep op te geven van de virtuele machine die moet worden gestart.
+1. Na *Connect-AzAccount*typt u *Start-AzVM-name ' VMName '-ResourceGroupName ' NameofResourceGroup '* om de naam en de naam van de resource groep op te geven van de virtuele machine die moet worden gestart.
 
    ```powershell-interactive
    workflow MyFirstRunbook-Workflow
    {
-   # Ensures you do not inherit an AzureRMContext in your runbook
-   Disable-AzureRmContextAutosave –Scope Process
+   # Ensures you do not inherit an AzContext in your runbook
+   Disable-AzContextAutosave –Scope Process
 
    $Conn = Get-AutomationConnection -Name AzureRunAsConnection
-   Connect-AzureRmAccount -ServicePrincipal -Tenant $Conn.TenantID -ApplicationId $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint
+   Connect-AzAccount -ServicePrincipal -Tenant $Conn.TenantID -ApplicationId $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint
 
-   $AzureContext = Select-AzureRmSubscription -SubscriptionId $Conn.SubscriptionID
+   $AzureContext = Select-AzSubscription -SubscriptionId $Conn.SubscriptionID
 
-   Start-AzureRmVM -Name 'VMName' -ResourceGroupName 'ResourceGroupName' -AzureRmContext $AzureContext
+   Start-AzVM -Name 'VMName' -ResourceGroupName 'ResourceGroupName' -AzContext $AzureContext
    }
    ```
 
@@ -180,7 +180,7 @@ Nu uw runbook is geverifieerd voor uw Azure-abonnement, kunt u resources beheren
 
 met uw runbook wordt momenteel de virtuele machine gestart die u in het runbook hebt hardcoded, maar dit is handiger als u de virtuele machine zou kunnen opgeven wanneer het runbook wordt gestart. U voegt invoer parameters aan het runbook toe om deze functionaliteit te bieden.
 
-1. Voeg parameters voor *VMName* en *ResourceGroupName* toe aan het runbook en gebruik deze variabelen met de cmdlet **Start-AzureRmVM**, zoals in het voorbeeld hieronder.
+1. Voeg para meters voor *VMName* en *ResourceGroupName* toe aan het runbook en gebruik deze variabelen met de cmdlet **Start-AzVM** , zoals in het onderstaande voor beeld.
 
    ```powershell-interactive
    workflow MyFirstRunbook-Workflow
@@ -189,12 +189,12 @@ met uw runbook wordt momenteel de virtuele machine gestart die u in het runbook 
      [string]$VMName,
      [string]$ResourceGroupName
     )
-   # Ensures you do not inherit an AzureRMContext in your runbook
-   Disable-AzureRmContextAutosave –Scope Process
+   # Ensures you do not inherit an AzContext in your runbook
+   Disable-AzContextAutosave –Scope Process
 
    $Conn = Get-AutomationConnection -Name AzureRunAsConnection
-   Connect-AzureRmAccount -ServicePrincipal -Tenant $Conn.TenantID -ApplicationId $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint
-   Start-AzureRmVM -Name $VMName -ResourceGroupName $ResourceGroupName
+   Connect-AzAccount -ServicePrincipal -Tenant $Conn.TenantID -ApplicationId $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint
+   Start-AzVM -Name $VMName -ResourceGroupName $ResourceGroupName
    }
    ```
 

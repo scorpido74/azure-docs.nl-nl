@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: quickstart
 ms.date: 07/03/2019
 ms.author: sajagtap
-ms.openlocfilehash: 45ac641948531aa27334762704eba3333aebba4d
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 69c190b9ce9e5a99d39a46c147f7159ace47e4f7
+ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564325"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72001438"
 ---
 # <a name="quickstart-analyze-text-content-for-objectionable-material-in-c"></a>Quickstart: Tekstinhoud op ongewenst materiaal analyseren in C#
 
@@ -34,10 +34,11 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 1. Maak in Visual Studio een nieuw **Console-app (.NET Framework)** -project en noem het **TextModeration**. 
 1. Als uw oplossing nog meer projecten bevat, selecteert u deze als het enkele opstartproject.
-1. Download de vereiste NuGet-pakketten. Klik met de rechtermuisknop op uw project in Solution Explorer en selecteer **NuGet-pakketten beheren**. Zoek en installeer vervolgens de volgende pakketten:
-    - `Microsoft.Azure.CognitiveServices.ContentModerator`
-    - `Microsoft.Rest.ClientRuntime`
-    - `Newtonsoft.Json`
+1. Haal het vereiste NuGet-pakket op. Klik met de rechter muisknop op uw project in Solution Explorer en selecteer **NuGet-pakketten beheren**. Zoek en installeer vervolgens het **`Microsoft.Azure.CognitiveServices.ContentModerator`-pakket**. U kunt ook de volgende opdracht uitvoeren vanuit de map Solution:
+
+```console
+dotnet add package Microsoft.Azure.CognitiveServices.ContentModerator
+```
 
 ## <a name="add-text-moderation-code"></a>Teksttoezichtcode toevoegen
 

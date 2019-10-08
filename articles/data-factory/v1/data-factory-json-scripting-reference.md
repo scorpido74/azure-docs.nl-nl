@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: 69218cedcd5d775fe6e499086663aa124f6bfe25
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/04/2019
+ms.lasthandoff: 10/07/2019
 ms.locfileid: "70736010"
 ---
 # <a name="azure-data-factory---json-scripting-reference"></a>Naslag informatie voor JSON-script Azure Data Factory
@@ -1341,7 +1341,7 @@ Als u gegevens naar een Azure Search index kopieert, stelt u het **sink-type** v
 | Eigenschap | Description | Toegestane waarden | Vereist |
 | -------- | ----------- | -------------- | -------- |
 | WriteBehavior | Hiermee geeft u op of u wilt samen voegen of vervangen wanneer een document al aanwezig is in de index. | Samen voegen (standaard)<br/>Uploaden| Nee |
-| WriteBatchSize | Hiermee worden gegevens geüpload naar de Azure Search-index wanneer de buffer grootte writeBatchSize bereikt. | 1 tot en met 1.000. De standaard waarde is 1000. | Nee |
+| writeBatchSize | Hiermee worden gegevens geüpload naar de Azure Search-index wanneer de buffer grootte writeBatchSize bereikt. | 1 tot en met 1.000. De standaard waarde is 1000. | Nee |
 
 #### <a name="example"></a>Voorbeeld
 
@@ -1388,7 +1388,7 @@ Als u gegevens naar een Azure Search index kopieert, stelt u het **sink-type** v
 
 Zie [Azure Search connector](data-factory-azure-search-connector.md#copy-activity-properties) -artikel voor meer informatie.
 
-## <a name="azure-table-storage"></a>Azure Table Storage
+## <a name="azure-table-storage"></a>Azure-tabelopslag
 
 ### <a name="linked-service"></a>Gekoppelde service
 Er zijn twee soorten gekoppelde services: Azure Storage gekoppelde service en Azure Storage SAS-gekoppelde service.
@@ -1536,7 +1536,7 @@ Als u gegevens naar Azure Table Storage kopieert, stelt u het **sink-type** van 
 | azureTableDefaultPartitionKeyValue |Standaard waarde voor de partitie sleutel die door de Sink kan worden gebruikt. |Een teken reeks waarde. |Nee |
 | azureTablePartitionKeyName |Geef de naam op van de kolom waarvan de waarden worden gebruikt als partitie sleutels. Als u niets opgeeft, wordt AzureTableDefaultPartitionKeyValue gebruikt als partitie sleutel. |Een kolom naam. |Nee |
 | azureTableRowKeyName |Geef de naam van de kolom op waarvan de kolom waarden worden gebruikt als rijdefinitie. Als u deze niet opgeeft, gebruikt u een GUID voor elke rij. |Een kolom naam. |Nee |
-| azureTableInsertType |De modus om gegevens in de Azure-tabel in te voegen.<br/><br/>Met deze eigenschap bepaalt u of bestaande rijen in de uitvoer tabel met overeenkomende partitie-en rijlabels hun waarden vervangen of samengevoegd hebben. <br/><br/>Zie entiteit [invoegen of samen voegen](https://msdn.microsoft.com/library/azure/hh452241.aspx) en onderwerpen over [entiteiten invoegen of vervangen](https://msdn.microsoft.com/library/azure/hh452242.aspx) voor meer informatie over hoe deze instellingen (samen voegen en vervangen) werken. <br/><br> Deze instelling is van toepassing op het niveau van de rij, niet op het tabel niveau, en geen van beide opties verwijdert rijen in de uitvoer tabel die niet voor komen in de invoer. |samen voegen (standaard)<br/>replace |Nee |
+| azureTableInsertType |De modus om gegevens in de Azure-tabel in te voegen.<br/><br/>Met deze eigenschap bepaalt u of bestaande rijen in de uitvoer tabel met overeenkomende partitie-en rijlabels hun waarden vervangen of samengevoegd hebben. <br/><br/>Zie entiteit [invoegen of samen voegen](https://msdn.microsoft.com/library/azure/hh452241.aspx) en onderwerpen over [entiteiten invoegen of vervangen](https://msdn.microsoft.com/library/azure/hh452242.aspx) voor meer informatie over hoe deze instellingen (samen voegen en vervangen) werken. <br/><br> Deze instelling is van toepassing op het niveau van de rij, niet op het tabel niveau, en geen van beide opties verwijdert rijen in de uitvoer tabel die niet voor komen in de invoer. |Samen voegen (standaard)<br/>replace |Nee |
 | writeBatchSize |Hiermee worden gegevens in de Azure-tabel ingevoegd wanneer de writeBatchSize of writeBatchTimeout wordt bereikt. |Geheel getal (aantal rijen) |Nee (standaard: 10000) |
 | writeBatchTimeout |Hiermee worden gegevens in de Azure-tabel ingevoegd wanneer de writeBatchSize of writeBatchTimeout wordt bereikt |duur<br/><br/>Voorbeeld: "00:20:00" (20 minuten) |Nee (standaard waarde voor standaard time-outwaarde voor Storage-client 90 sec) |
 
@@ -1706,7 +1706,7 @@ Als u een gekoppelde IBM DB2-service wilt definiëren, stelt u het **type** van 
 | --- | --- | --- |
 | server |Naam van de DB2-Server. |Ja |
 | database |Naam van de DB2-Data Base. |Ja |
-| schema |De naam van het schema in de data base. De schema naam is hoofdletter gevoelig. |Nee |
+| Schema |De naam van het schema in de data base. De schema naam is hoofdletter gevoelig. |Nee |
 | authenticationType |Type verificatie dat wordt gebruikt om verbinding te maken met de DB2-Data Base. Mogelijke waarden zijn: Anoniem, basis en Windows. |Ja |
 | username |Geef de gebruikers naam op als u basis-of Windows-verificatie gebruikt. |Nee |
 | password |Geef het wacht woord op voor het gebruikers account dat u hebt opgegeven voor de gebruikers naam. |Nee |
@@ -1822,7 +1822,7 @@ Als u een gekoppelde MySQL-service wilt definiëren, stelt u het **type** van de
 | --- | --- | --- |
 | server |De naam van de MySQL-server. |Ja |
 | database |De naam van de MySQL-data base. |Ja |
-| schema |De naam van het schema in de data base. |Nee |
+| Schema |De naam van het schema in de data base. |Nee |
 | authenticationType |Type verificatie dat wordt gebruikt om verbinding te maken met de MySQL-data base. Mogelijke waarden zijn: `Basic`. |Ja |
 | userName |Geef de gebruikers naam op om verbinding te maken met de MySQL-data base. |Ja |
 | password |Geef het wacht woord op voor het gebruikers account dat u hebt opgegeven. |Ja |
@@ -2113,7 +2113,7 @@ Als u een gekoppelde PostgreSQL-service wilt definiëren, stelt u het **type** v
 | --- | --- | --- |
 | server |De naam van de PostgreSQL-server. |Ja |
 | database |De naam van de PostgreSQL-data base. |Ja |
-| schema |De naam van het schema in de data base. De schema naam is hoofdletter gevoelig. |Nee |
+| Schema |De naam van het schema in de data base. De schema naam is hoofdletter gevoelig. |Nee |
 | authenticationType |Type verificatie dat wordt gebruikt om verbinding te maken met de PostgreSQL-data base. Mogelijke waarden zijn: Anoniem, basis en Windows. |Ja |
 | username |Geef de gebruikers naam op als u basis-of Windows-verificatie gebruikt. |Nee |
 | password |Geef het wacht woord op voor het gebruikers account dat u hebt opgegeven voor de gebruikers naam. |Nee |
@@ -2671,7 +2671,7 @@ Als u een gekoppelde Sybase-service wilt definiëren, stelt u het **type** van d
 | --- | --- | --- |
 | server |De naam van de Sybase-server. |Ja |
 | database |De naam van de Sybase-data base. |Ja |
-| schema |De naam van het schema in de data base. |Nee |
+| Schema |De naam van het schema in de data base. |Nee |
 | authenticationType |Type verificatie dat wordt gebruikt om verbinding te maken met de Sybase-data base. Mogelijke waarden zijn: Anoniem, basis en Windows. |Ja |
 | username |Geef de gebruikers naam op als u basis-of Windows-verificatie gebruikt. |Nee |
 | password |Geef het wacht woord op voor het gebruikers account dat u hebt opgegeven voor de gebruikers naam. |Nee |
@@ -4743,7 +4743,7 @@ Als u een web-gegevensset wilt definiëren, stelt u het **type** gegevensset in 
 
 | Eigenschap | Description | Vereist |
 |:--- |:--- |:--- |
-| type |het type van de gegevensset. moet worden ingesteld op **Webtable** |Ja |
+| type |Het type van de gegevensset. moet worden ingesteld op **Webtable** |Ja |
 | path |Een relatieve URL naar de resource die de tabel bevat. |Nee. Wanneer pad niet is opgegeven, wordt alleen de URL gebruikt die is opgegeven in de definitie van de gekoppelde service. |
 | index |De index van de tabel in de resource. Zie index ophalen van een tabel in een sectie met een HTML-pagina voor de stappen voor het ophalen van index van een tabel in een HTML-pagina. |Ja |
 
@@ -4972,7 +4972,7 @@ De volgende tabel bevat beschrijvingen voor de eigenschappen die worden gebruikt
 | dataLakeAnalyticsUri |Azure Data Lake Analytics-URI. |Nee |
 | authorization |De autorisatie code wordt automatisch opgehaald nadat u op de knop **machtigen** in de Data Factory editor hebt geklikt en de OAuth-aanmelding hebt voltooid. |Ja |
 | subscriptionId |Azure-abonnements-id |Nee (als dit niet wordt opgegeven, wordt het abonnement van de data factory gebruikt). |
-| resourceGroupName |Naam van de Azure-resourcegroep |Nee (als dit niet is opgegeven, wordt de resource groep van de data factory gebruikt). |
+| resourceGroupName |Naam van Azure-resourcegroep |Nee (als dit niet is opgegeven, wordt de resource groep van de data factory gebruikt). |
 | sessionId |sessie-id van de OAuth-autorisatie sessie. Elke sessie-id is uniek en kan slechts één keer worden gebruikt. Wanneer u de Data Factory editor gebruikt, wordt deze ID automatisch gegenereerd. |Ja |
 
 
@@ -5233,8 +5233,8 @@ U kunt de volgende eigenschappen opgeven in een Hadoop streaming-activiteit JSON
 | --- | --- |
 | toewijzing | De naam van het uitvoer bare toewijzings programma. In het voor beeld is Cat. exe het uitvoer bare toewijzings programma.|
 | reductier | De naam van het uitvoer bare bestand voor de verkleinings groep. In het voor beeld is wc. exe het uitvoer bare bestand van de reducer. |
-| invoer | Invoer bestand (inclusief locatie) voor de toewijzing. In het voor beeld: `"wasb://adfsample@<account name>.blob.core.windows.net/example/data/gutenberg/davinci.txt"`: adfsample is de BLOB-container, example/data/Gutenberg is de map en DaVinci. txt de blob. |
-| uitvoer | Uitvoer bestand (inclusief locatie) voor de verkorter. De uitvoer van de Hadoop streaming-taak wordt geschreven naar de locatie die is opgegeven voor deze eigenschap. |
+| input | Invoer bestand (inclusief locatie) voor de toewijzing. In het voor beeld: `"wasb://adfsample@<account name>.blob.core.windows.net/example/data/gutenberg/davinci.txt"`: adfsample is de BLOB-container, example/data/Gutenberg is de map en DaVinci. txt de blob. |
+| output | Uitvoer bestand (inclusief locatie) voor de verkorter. De uitvoer van de Hadoop streaming-taak wordt geschreven naar de locatie die is opgegeven voor deze eigenschap. |
 | filePaths | Paden voor de uitvoer bare bestanden Mapper en reducer. In het voor beeld: ' adfsample/example/apps/WC. exe ', adfsample is de BLOB-container, voor beeld/apps is de map en WC. exe is het uitvoer bare bestand. |
 | fileLinkedService | Azure Storage gekoppelde service die de Azure-opslag vertegenwoordigt die de bestanden bevat die zijn opgegeven in de sectie filePath. |
 | arguments | Een lijst met door komma's gescheiden argumenten voor het MapReduce-programma. Tijdens runtime ziet u enkele extra argumenten (bijvoorbeeld: MapReduce. job. Tags) van het MapReduce-Framework. Als u de argumenten wilt onderscheiden met de MapReduce argumenten, kunt u de optie en waarde als argumenten gebruiken, zoals wordt weer gegeven in het volgende voor beeld (-s,--input,--output etc., zijn opties direct gevolgd door hun waarden) |

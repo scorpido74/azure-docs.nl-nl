@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/24/2019
 ms.author: memildin
-ms.openlocfilehash: ad662cdeb0a87e57eb9e3e7480d120be1c6c729e
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: d756f9dfbd0012f884bb0c4a1e27efc76d613234
+ms.sourcegitcommit: 387da88b8262368c1b67fffea58fe881308db1c2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71218257"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "71982829"
 ---
 # <a name="supported-features-available-in-azure-security-center"></a>Ondersteunde functies die beschikbaar zijn in Azure Security Center
 
@@ -39,20 +39,21 @@ De volgende secties tonen Security Center functies die beschikbaar zijn voor hun
 |----|----|----|----|----|----|----|----|
 |**Omgeving**|**Azure**||**Non-Azure**|**Azure**||**Non-Azure**||
 ||**Virtuele machine**|**Schaalset voor virtuele machines**||**Virtuele machine**|**Schaalset voor virtuele machines**|
-|Waarschuwingen voor detectie van VMBA-bedreigingen|✔|✔|✔|✔ (op ondersteunde versies)|✔ (op ondersteunde versies)|✔|Detectie van bedreigingen (gratis) (standaard)|
+|Waarschuwingen voor het detecteren van bedreigingen voor virtuele machines|✔|✔|✔|✔ (op ondersteunde versies)|✔ (op ondersteunde versies)|✔|Detectie van bedreigingen (gratis) (standaard)|
 |Waarschuwingen voor detectie van bedreigingen op basis van het netwerk|✔|✔|X|✔|✔|X|Standard|
 |Micro soft Defender ATP-integratie|✔ (op ondersteunde versies)|✔ (op ondersteunde versies)|✔|X|X|X|Standard|
 |Ontbrekende patches|✔|✔|✔|✔|✔|✔|Free|
 |Beveiligingsconfiguraties|✔|✔|✔|✔|✔|✔|Free|
 |Endpoint Protection-evaluatie|✔|✔|✔|X|X|X|Free|
-|JIT-VM-toegang|✔|X|X|✔|X|X|Standard|
+|Just-in-time-VM-toegang|✔|X|X|✔|X|X|Standard|
 |Besturingselementen voor adaptieve toepassingen|✔|X|✔|✔|X|✔|Standard|
-|FIM|✔|✔|✔|✔|✔|✔|Standard|
+|Bestandsintegriteit controleren|✔|✔|✔|✔|✔|✔|Standard|
 |Analyse van schijf versleuteling|✔|✔|X|✔|✔|X|Free|
 |Implementatie van derden|✔|X|X|✔|X|X|Free|
 |NSG-evaluatie|✔|✔|X|✔|✔|X|Free|
 |Detectie van bedreigingen met een bestand|✔|✔|✔|X|X|X|Standard|
 |Netwerktoewijzing|✔|✔|X|✔|✔|X|Standard|
+|Adaptieve netwerkbeveiliging|✔|X|X|✔|X|X|Standard|
 |Adaptieve netwerk besturings elementen|✔|✔|X|✔|✔|X|Standard|
 |Dash board naleving van regelgeving & rapporten|✔|✔|✔|✔|✔|✔|Standard|
 |Aanbevelingen en detectie van bedreigingen op docker-gehoste IaaS-containers|X|X|X|✔|✔|✔|Standard|
@@ -73,8 +74,8 @@ Zie [Endpoint Protection-evaluatie en aanbevelingen](security-center-endpoint-pr
 | Trend Micro: alle versies * | Windows Server-familie  | Nee | Ja |
 | Symantec v12.1.1100+| Windows Server-familie  | Nee | Ja |
 | McAfee v10+ | Windows Server-familie  | Nee | Ja |
-| McAfee v10+ | Linux-Server familie  | Nee | Klikt **\*** |
-| Sophos v9 +| Linux-Server familie  | Nee | Klikt **\***  |
+| McAfee v10+ | Linux-Server familie  | Nee | Ja **\*** |
+| Sophos v9 +| Linux-Server familie  | Nee | Ja **\***  |
 
  **\*** De status van de dekking en de ondersteunende gegevens zijn momenteel alleen beschikbaar in de werk ruimte Log Analytics die aan uw beveiligde abonnementen is gekoppeld, en wordt niet weer gegeven in Azure Security Center Portal.
 
@@ -118,9 +119,9 @@ De volgende PaaS-bronnen worden ondersteund door Azure Security Center:
 |Data Lake Store|✔| X|
 |Sleutelkluis|✔| X|
 
-\*Deze functies worden momenteel ondersteund in de open bare preview-versie.
+\* deze functies worden momenteel ondersteund in de open bare preview-versie.
 
-\*\*Aanbevelingen voor Azure Active Directory (Azure AD) zijn alleen beschikbaar voor standaard abonnementen.
+de aanbevelingen voor \* @ no__t-1-Azure Active Directory (Azure AD) zijn alleen beschikbaar voor standaard abonnementen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

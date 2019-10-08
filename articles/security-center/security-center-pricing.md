@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/17/2019
 ms.author: memildin
-ms.openlocfilehash: 0663e97dabe8b5f50ee9605f0bc9319c7a2aa13c
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 356bfc28984ecc1bc6990c10378a3df155593e94
+ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71201243"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "71996704"
 ---
 # <a name="upgrade-to-security-centers-standard-tier-for-enhanced-security"></a>Voer een upgrade uit naar de Standard-laag van Security Center voor verbeterde beveiliging
 Azure Security Center biedt geïntegreerd beveiligingsbeheer en geavanceerde bedreigingsbeveiliging voor werkbelastingen die worden uitgevoerd in Azure, on-premises en in andere clouds. Het biedt zicht baarheid en controle over hybride Cloud werkbelastingen, actieve beveiligingen die uw bloot stelling aan bedreigingen verminderen en intelligente detectie om u te helpen bij het snel zich ontwikkelen van Cyber aanvallen.
@@ -45,10 +45,10 @@ De laag standaard ophalen:
 4. Selecteer **standaard** om bij te werken.
 5. Klik op **Opslaan**.
 
-(Prijzen in de afbeelding zijn alleen bedoeld als voor beeld.) ![Security Center prijzen](./media/security-center-pricing/get-standard.png)
+(Prijzen in de afbeelding zijn alleen bedoeld als voor beeld.) ![Security Center-prijzen @ no__t-1
 
 > [!NOTE]
-> Als u alle Security Center-functies wilt inschakelen, moet u de prijscategorie Standaard toepassen op het abonnement met de toepasselijke virtuele machines. Het configureren van prijzen voor een werkruimte betekent niet dat just-in-time toegang tot VM's wordt ingeschakeld, evenmin als adaptieve toepassingscontroles en netwerkdetecties voor Azure-resources.
+> Als u alle Security Center-functies wilt inschakelen, moet u de prijscategorie Standaard toepassen op het abonnement met de toepasselijke virtuele machines. Als u de prijzen voor een werk ruimte configureert, kunt u niet just-in-time-VM-toegang, adaptieve toepassings besturings elementen en netwerk detecties voor Azure-resources.
 >
 >
 

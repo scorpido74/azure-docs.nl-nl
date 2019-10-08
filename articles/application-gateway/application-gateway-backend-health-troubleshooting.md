@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 08/30/2019
 ms.author: surmb
-ms.openlocfilehash: 8f90cc3b41eab1847b0d4483b92a282d46af765b
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.openlocfilehash: 71e1f8be2af5556d86996175e8a1ddbccc9c7de1
+ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71309306"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72001665"
 ---
 <a name="troubleshoot-backend-health-issues-in-application-gateway"></a>Problemen met back-endservers oplossen in Application Gateway
 ==================================================
@@ -81,13 +81,13 @@ Nadat u een status van een onjuiste back-endserver hebt ontvangen voor alle serv
 In het bericht dat wordt weer gegeven in de kolom **Details** vindt u meer informatie over het probleem en op basis van die, kunt u beginnen met het oplossen van het probleem.
 
 > [!NOTE]
-> De standaard test aanvraag wordt verzonden in de indeling van \<protocol\>://127.0.0.1:\<poort\>/. Bijvoorbeeld http://127.0.0.1:80 voor een http-test op poort 80. Alleen HTTP-status codes van 200 tot en met 399 worden als gezond beschouwd. Het protocol en de doel poort worden overgenomen van de HTTP-instellingen. Als u Application Gateway wilt testen op een ander protocol, hostnaam of pad en een andere status code als in orde herkent, configureert u een aangepaste test en koppelt u deze aan de HTTP-instellingen.
+> De standaard test aanvraag wordt verzonden in de indeling van \<protocol @ no__t-1://127.0.0.1: \<PORT @ no__t-3/. Bijvoorbeeld http://127.0.0.1:80 voor een http-test op poort 80. Alleen HTTP-status codes van 200 tot en met 399 worden als gezond beschouwd. Het protocol en de doel poort worden overgenomen van de HTTP-instellingen. Als u Application Gateway wilt testen op een ander protocol, hostnaam of pad en een andere status code als in orde herkent, configureert u een aangepaste test en koppelt u deze aan de HTTP-instellingen.
 
 <a name="error-messages"></a>Foutberichten
 ------------------------
 #### <a name="backend-server-timeout"></a>Time-out van back-endserver
 
-**Bericht:** De tijd die de back-end heeft genomen om\'te reageren op de status test van de toepassings gateway, is hoger dan de drempel waarde voor time-out in de test instelling.
+**Bericht:** De tijd die de back-end heeft genomen om te reageren op Application Gateway @ no__t-0s Health probe is hoger dan de drempel waarde voor time-out in de test instelling.
 
 **Wordt** Nadat Application Gateway een HTTP (S)-test aanvraag naar de back-endserver verzendt, wordt gewacht op een reactie van de back-endserver voor een geconfigureerde periode. Als de back-endserver niet reageert binnen de geconfigureerde periode (de time-outwaarde), wordt deze als beschadigd gemarkeerd totdat de server opnieuw reageert binnen de geconfigureerde time-outperiode.
 
@@ -131,7 +131,7 @@ Controleer ook of NSG/UDR/firewall de toegang tot het IP-adres en de poort van d
 
 **Oplossing:** Als deze fout wordt weer gegeven, voert u de volgende stappen uit:
 
-1.  Controleer of u verbinding kunt maken met de back-endserver op de poort die wordt vermeld in de HTTP-instellingen met behulp van een browser of Power shell. Voer bijvoorbeeld de volgende opdracht uit:`Test-NetConnection -ComputerName
+1.  Controleer of u verbinding kunt maken met de back-endserver op de poort die wordt vermeld in de HTTP-instellingen met behulp van een browser of Power shell. Voer bijvoorbeeld de volgende opdracht uit: `Test-NetConnection -ComputerName
     www.bing.com -Port 443`
 
 1.  Als de vermelde poort niet de gewenste poort is, voert u het juiste poort nummer in voor Application Gateway verbinding maken met de back-end-server
@@ -155,7 +155,7 @@ Controleer ook of NSG/UDR/firewall de toegang tot het IP-adres en de poort van d
     ```
 1.  Als u geen problemen met NSG of UDR kunt vinden, controleert u uw back-endserver op toepassings problemen waardoor clients geen TCP-sessie kunnen maken op de geconfigureerde poorten. Een aantal dingen om te controleren:
 
-    a.  Open een opdracht prompt (Win + R-\> cmd), Voer `netstat`in en selecteer ENTER.
+    a.  Open een opdracht prompt (Win + R-\> cmd), voer `netstat` in en selecteer ENTER.
 
     b.  Controleer of de server luistert op de poort die is geconfigureerd. Bijvoorbeeld:
     ```
@@ -168,15 +168,15 @@ Controleer ook of NSG/UDR/firewall de toegang tot het IP-adres en de poort van d
 
 #### <a name="http-status-code-mismatch"></a>HTTP-status code komt niet overeen
 
-**Bericht:** De status code van het\'http-antwoord van de back-end komt niet overeen met de test instelling. Verwacht: {HTTPStatusCode0} ontvangen: {HTTPStatusCode1}.
+**Bericht:** De status code van het HTTP-antwoord van de back-end @ no__t-0s komt niet overeen met de test instelling. Verwacht: {HTTPStatusCode0} ontvangen: {HTTPStatusCode1}.
 
-**Wordt** Nadat de TCP-verbinding tot stand is gebracht en een SSL-handshake is uitgevoerd (als SSL is ingeschakeld), stuurt Application Gateway de test als een HTTP GET-aanvraag naar de back-endserver. Zoals eerder beschreven, is de standaard test \<een protocol\>://127.0.0.1:\<poort\>/, en worden de antwoord status codes in de rage 200 tot 399 als gezond beschouwd. Als de server een andere status code retourneert, wordt deze als beschadigd gemarkeerd met dit bericht.
+**Wordt** Nadat de TCP-verbinding tot stand is gebracht en een SSL-handshake is uitgevoerd (als SSL is ingeschakeld), stuurt Application Gateway de test als een HTTP GET-aanvraag naar de back-endserver. Zoals eerder beschreven, is de standaard test het \<protocol @ no__t-1://127.0.0.1: \<PORT @ no__t-3/, en worden de antwoord status codes in de rage 200 tot 399 als in orde beschouwd. Als de server een andere status code retourneert, wordt deze als beschadigd gemarkeerd met dit bericht.
 
 **Oplossing:** Afhankelijk van de reactie code van de back-endserver kunt u de volgende stappen uitvoeren. Enkele van de algemene status codes worden hier weer gegeven:
 
 | **Optreedt** | **Acties** |
 | --- | --- |
-| Status code van test komt niet overeen: Ontvangen 401 | Controleer of verificatie is vereist voor de back-endserver. Application Gateway tests kunnen op dit moment geen referenties door geven voor verificatie. Sta toe \"dat http\" 401 in een test status code overeenkomt of test naar een pad waarvoor geen verificatie is vereist voor de server. | |
+| Status code van test komt niet overeen: Ontvangen 401 | Controleer of verificatie is vereist voor de back-endserver. Application Gateway tests kunnen op dit moment geen referenties door geven voor verificatie. Sta \"HTTP 401 @ no__t-1 toe in een test status code Match of test naar een pad waarvoor geen verificatie is vereist voor de server. | |
 | Status code van test komt niet overeen: Ontvangen 403 | Toegang verboden. Controleer of toegang tot het pad is toegestaan op de back-endserver. | |
 | Status code van test komt niet overeen: Ontvangen 404 | Pagina is niet gevonden. Controleer of het pad naar de hostnaam toegankelijk is op de back-endserver. Wijzig de hostnaam of het pad para meter in een toegankelijke waarde. | |
 | Status code van test komt niet overeen: Ontvangen 405 | De test aanvragen voor Application Gateway gebruiken de HTTP GET-methode. Controleer of deze methode is toegestaan op uw server. | |
@@ -189,7 +189,7 @@ Volg [deze stappen](https://docs.microsoft.com/azure/application-gateway/applica
 
 #### <a name="http-response-body-mismatch"></a>Onjuiste hoofd tekst van HTTP-antwoord
 
-**Bericht:** De hoofd tekst van\'het HTTP-antwoord van de back-end-s komt niet overeen met de test instelling. De ontvangen antwoord tekst bevat geen {string}.
+**Bericht:** De hoofd tekst van de back-end @ no__t-0s HTTP-antwoord komt niet overeen met de test instelling. De ontvangen antwoord tekst bevat geen {string}.
 
 **Wordt** Wanneer u een aangepaste test maakt, hebt u de mogelijkheid om een back-endserver als in orde te markeren door te voldoen aan een teken reeks uit de hoofd tekst van het antwoord. U kunt bijvoorbeeld Application Gateway zodanig configureren dat "niet-geautoriseerd" als teken reeks wordt geaccepteerd. Als het antwoord van de back-endserver voor de test aanvraag de teken reeks zonder **toestemming**bevat, wordt deze als in orde gemarkeerd. Als dat niet het geval is, wordt het bericht gemarkeerd als beschadigd.
 
@@ -259,20 +259,22 @@ OpenSSL> s_client -connect 10.0.0.4:443 -servername www.example.com -showcerts
 ```
 Als in de uitvoer niet de volledige keten van het certificaat wordt weer gegeven, exporteert u het certificaat opnieuw met de volledige keten, inclusief het basis certificaat. Configureer dat certificaat op uw back-endserver. 
 
-VERBONDEN (00000188) \
-diepte = 0 OE = domein controle gevalideerd, CN = \*. example.com \
-Controleer de volgende fout: NUM = 20: kan het lokale certificaat van de verlener niet ophalen \
-Controleer de retour waarde: 1 \
-diepte = 0 OE = domein controle gevalideerd, CN = \*. example.com \
-Controleer de volgende fout: NUM = 21: kan het eerste certificaat niet verifiëren \
-Controleer de retour waarde: 1 \
-\-\-\-\
-Certificaat keten \
- 0 s:/OE = Domain Control Validated/CN = *. example. com \
-   i:/C = vs/St = Arizona/L = Scottsdale/O = GoDaddy. com, Inc./ou =http://certs.godaddy.com/repository//CN=Go Daddy Secure Certificate Authority-G2 \
-\-----BEGIN CERTIFICAAT-----\
-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\
-\-----EIND CERTIFICAAT-----
+```
+  CONNECTED(00000188)\
+  depth=0 OU = Domain Control Validated, CN = \*.example.com\
+  verify error:num=20:unable to get local issuer certificate\
+  verify return:1\
+  depth=0 OU = Domain Control Validated, CN = \*.example.com\
+  verify error:num=21:unable to verify the first certificate\
+  verify return:1\
+  \-\-\-\
+  Certificate chain\
+   0 s:/OU=Domain Control Validated/CN=*.example.com\
+     i:/C=US/ST=Arizona/L=Scottsdale/O=GoDaddy.com, Inc./OU=http://certs.godaddy.com/repository//CN=Go Daddy Secure Certificate Authority - G2\
+  \-----BEGIN CERTIFICATE-----\
+  xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\
+  \-----END CERTIFICATE-----
+```
 
 #### <a name="backend-certificate-invalid-common-name-cn"></a>Back-end-certificaat ongeldige common name (CN)
 
@@ -317,7 +319,7 @@ Voor Linux met behulp van OpenSSL:
 
 #### <a name="backend-certificate-is-invalid"></a>Back-end certificaat is ongeldig
 
-**Bericht:** Back-end certificaat is ongeldig. De huidige datum valt niet binnen \"het geldig\" van \"-en\" geldig tot-datum bereik op het certificaat.
+**Bericht:** Back-end certificaat is ongeldig. De huidige datum valt niet binnen het \"Valid van @ no__t-1 en \"Valid tot @ no__t-3-datum bereik op het certificaat.
 
 **Wordt** Elk certificaat wordt geleverd met een geldig geldigheids bereik en de HTTPS-verbinding is niet beveiligd tenzij het SSL-certificaat van de server geldig is. De huidige gegevens moeten binnen de **geldige waarde van** en **geldig tot** het bereik liggen. Als dat niet het geval is, wordt het certificaat beschouwd als ongeldig en wordt er een beveiligings probleem gemaakt waarbij Application Gateway de back-endserver als beschadigd markeert.
 

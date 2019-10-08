@@ -8,12 +8,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: jgao
-ms.openlocfilehash: e55755e3edcc54d0d75c937c4d18b845b0282833
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 4fdd99b3e9efc108960217cddfc8a397eadf99b6
+ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71972735"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72001580"
 ---
 # <a name="manage-azure-resource-manager-resource-groups-by-using-azure-cli"></a>Azure Resource Manager-resource groepen beheren met behulp van Azure CLI
 
@@ -78,7 +78,7 @@ Zie [resources implementeren voor een bestaande resource groep](./manage-resourc
 
 ## <a name="deploy-a-resource-group-and-resources"></a>Een resource groep en-resources implementeren
 
-U kunt een resource groep maken en resources voor de groep implementeren met behulp van een resource manager-sjabloon. Zie [resource groep maken en resources implementeren](./deploy-to-subscription.md#create-resource-group-and-deploy-resources)voor meer informatie.
+U kunt een resource groep maken en resources voor de groep implementeren met behulp van een resource manager-sjabloon. Zie [resource groep maken en resources implementeren](./deploy-to-subscription.md#resource-group-and-resources)voor meer informatie.
 
 ## <a name="redeploy-when-deployment-fails"></a>Opnieuw implementeren wanneer de implementatie mislukt
 

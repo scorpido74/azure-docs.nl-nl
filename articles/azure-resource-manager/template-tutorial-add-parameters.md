@@ -8,12 +8,12 @@ ms.service: azure-resource-manager
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 407148dadb774c72ef252ba0044655c2e219985f
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: f5e631994223d6362512ed0ddc89d1d3c884fbd4
+ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71963749"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72001494"
 ---
 # <a name="tutorial-add-parameters-to-your-resource-manager-template"></a>Zelfstudie: Para meters toevoegen aan uw Resource Manager-sjabloon
 
@@ -33,7 +33,7 @@ Aan het einde van de vorige zelf studie had uw sjabloon de volgende JSON:
 
 Mogelijk hebt u gemerkt dat er een probleem is met deze sjabloon. De naam van het opslag account is vastgelegd in een vaste code. U kunt deze sjabloon alleen gebruiken om elk keer hetzelfde opslag account te implementeren. Als u een opslag account met een andere naam wilt implementeren, moet u een nieuwe sjabloon maken. Dit is uiteraard geen praktische manier om uw implementaties te automatiseren.
 
-## <a name="make-template-reusable"></a>Sjabloon herbruikbaar maken
+## <a name="make-your-template-reusable"></a>Uw sjabloon opnieuw instellen
 
 Als u uw sjabloon opnieuw wilt gebruiken, gaan we een para meter toevoegen waarmee u de naam van een opslag account kunt door geven. De gemarkeerde JSON in het volgende voor beeld laat zien wat er in uw sjabloon is gewijzigd. De para meter voor de **opslag** -id wordt geïdentificeerd als een teken reeks. De maximale lengte is ingesteld op 24 tekens om te voor komen dat namen te lang zijn.
 
@@ -41,7 +41,7 @@ Kopieer het hele bestand en vervang de sjabloon door de inhoud ervan.
 
 [!code-json[](~/resourcemanager-templates/get-started-with-templates/add-name/azuredeploy.json?range=1-26&highlight=4-10,15)]
 
-## <a name="deploy-template"></a>Sjabloon implementeren
+## <a name="deploy-the-template"></a>De sjabloon implementeren
 
 We gaan de sjabloon implementeren. In het volgende voor beeld wordt de sjabloon geïmplementeerd met Azure CLI of Power shell. U ziet dat u de naam van het opslag account opgeeft als een van de waarden in de implementatie opdracht. Geef voor de naam van het opslag account dezelfde naam op die u in de vorige zelf studie hebt gebruikt.
 
@@ -87,7 +87,7 @@ In de vorige sjabloon is altijd een Standard_LRS-opslag account geïmplementeerd
 
 De **storageSKU** -para meter heeft een standaard waarde. Deze waarde wordt gebruikt wanneer tijdens de implementatie geen waarde is opgegeven. Het bevat ook een lijst met toegestane waarden. Deze waarden komen overeen met de waarden die nodig zijn voor het maken van een opslag account. U wilt niet dat gebruikers van uw sjabloon door geven in Sku's die niet werken.
 
-## <a name="redeploy-template"></a>Sjabloon opnieuw implementeren
+## <a name="redeploy-the-template"></a>De sjabloon opnieuw implementeren
 
 U bent klaar om te implementeren. Omdat de standaard-SKU is ingesteld op **Standard_LRS**, hoeft u geen waarde voor die para meter op te geven.
 

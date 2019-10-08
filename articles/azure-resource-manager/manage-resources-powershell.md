@@ -1,6 +1,6 @@
 ---
 title: Azure-resources beheren met behulp van Azure PowerShell | Microsoft Docs
-description: Gebruik Azure PowerShell en Azure Resource Manager om uw resources te beheren.
+description: Gebruik Azure PowerShell en Azure resource Manage om uw resources te beheren.
 services: azure-resource-manager
 documentationcenter: ''
 author: mumian
@@ -8,29 +8,29 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: jgao
-ms.openlocfilehash: 22224fba6a001fa424029caa60beb726a2775e26
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: f61fcf7833021f23485992c7445f91d9a7b9ee45
+ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67206452"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72001517"
 ---
 # <a name="manage-azure-resources-by-using-azure-powershell"></a>Azure-resources beheren met behulp van Azure PowerShell
 
-Informatie over het gebruik van Azure PowerShell gebruiken met [Azure Resource Manager](resource-group-overview.md) voor het beheren van uw Azure-resources. Zie voor het beheren van resourcegroepen, [beheren Azure-resourcegroepen met behulp van Azure PowerShell](./manage-resource-groups-powershell.md).
+Meer informatie over het gebruik van Azure PowerShell met [Azure Resource Manager](resource-group-overview.md) voor het beheren van uw Azure-resources. Zie [Azure-resource groepen beheren met behulp van Azure PowerShell](./manage-resource-groups-powershell.md)voor het beheren van resource groepen.
 
 Andere artikelen over het beheren van resources:
 
-- [Azure-resources beheren met behulp van Azure portal](./manage-resources-portal.md)
-- [Azure-resources beheren met behulp van Azure CLI](./manage-resources-cli.md)
+- [Azure-resources beheren met behulp van de Azure Portal](./manage-resources-portal.md)
+- [Azure-resources beheren met Azure CLI](./manage-resources-cli.md)
 
-## <a name="deploy-resources-to-an-existing-resource-group"></a>Resources implementeren op een bestaande resourcegroep
+## <a name="deploy-resources-to-an-existing-resource-group"></a>Resources implementeren voor een bestaande resource groep
 
-U kunt Azure-resources implementeren via Azure PowerShell of een Resource Manager-sjabloon voor het maken van Azure-resources implementeren.
+U kunt Azure-resources rechtstreeks implementeren met behulp van Azure PowerShell of een resource manager-sjabloon implementeren om Azure-resources te maken.
 
-### <a name="deploy-a-resource"></a>Implementeren van een resource
+### <a name="deploy-a-resource"></a>Een resource implementeren
 
-Het volgende script maakt een storage-account.
+Met het volgende script maakt u een opslag account.
 
 ```azurepowershell-interactive
 $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
@@ -49,7 +49,7 @@ $ctx = $storageAccount.Context
 
 ### <a name="deploy-a-template"></a>Een sjabloon implementeren
 
-Het volgende script maakt een Quickstart-sjabloon voor het maken van een opslagaccount te implementeren. Zie voor meer informatie [Snelstart: Azure Resource Manager-sjablonen maken met behulp van Visual Studio Code](./resource-manager-quickstart-create-templates-use-visual-studio-code.md?tabs=PowerShell).
+Met het volgende script maakt u een Quick Start-sjabloon voor het maken van een opslag account. Zie voor meer informatie [Snelstart: Azure Resource Manager sjablonen maken met behulp van Visual Studio code @ no__t-0.
 
 ```azurepowershell-interactive
 $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
@@ -58,19 +58,19 @@ $templateUri = "https://raw.githubusercontent.com/Azure/azure-quickstart-templat
 New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri $templateUri -Location $location
 ```
 
-Zie voor meer informatie, [resources implementeren met Resource Manager-sjablonen en Azure PowerShell](./resource-group-template-deploy.md).
+Zie [resources implementeren met Resource Manager-sjablonen en Azure PowerShell](./resource-group-template-deploy.md)voor meer informatie.
 
-## <a name="deploy-a-resource-group-and-resources"></a>Een resourcegroep en resources implementeren
+## <a name="deploy-a-resource-group-and-resources"></a>Een resource groep en-resources implementeren
 
-U kunt een resourcegroep maken en implementeren van resources aan de groep. Zie voor meer informatie, [resourcegroep maken en implementeren van resources](./deploy-to-subscription.md#create-resource-group-and-deploy-resources).
+U kunt een resource groep maken en resources implementeren voor de groep. Zie [resource groep maken en resources implementeren](./deploy-to-subscription.md#resource-group-and-resources)voor meer informatie.
 
-## <a name="deploy-resources-to-multiple-subscriptions-or-resource-groups"></a>Resources implementeren op meerdere abonnementen of resourcegroepen
+## <a name="deploy-resources-to-multiple-subscriptions-or-resource-groups"></a>Resources implementeren voor meerdere abonnementen of resource groepen
 
-Normaal gesproken implementeren u alle resources in uw sjabloon één resourcegroep bestaan. Er zijn echter scenario's waarin u wilt een set met resources samen te implementeren, maar plaats deze in verschillende resourcegroepen of abonnementen. Zie voor meer informatie, [implementeren-Azure-resources voor meerdere abonnementen of resourcegroepen](./resource-manager-cross-resource-group-deployment.md).
+Doorgaans implementeert u alle resources in uw sjabloon tot één resource groep. Er zijn echter scenario's waarin u een set resources samen wilt implementeren, maar deze wilt plaatsen in verschillende resource groepen of-abonnementen. Zie [Azure-resources implementeren voor meerdere abonnementen of resource groepen](./resource-manager-cross-resource-group-deployment.md)voor meer informatie.
 
 ## <a name="delete-resources"></a>Resources verwijderen
 
-Het volgende script toont hoe u een opslagaccount verwijdert.
+Het volgende script toont hoe u een opslag account verwijdert.
 
 ```azurepowershell-interactive
 $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
@@ -79,11 +79,11 @@ $storageAccountName = Read-Host -Prompt "Enter the storage account name"
 Remove-AzStorageAccount -ResourceGroupName $resourceGroupName -AccountName $storageAccountName
 ```
 
-Zie voor meer informatie over hoe Azure Resource Manager orders voor het verwijderen van resources, [verwijderen voor groep van Azure Resource Manager-resource](./resource-group-delete.md).
+Zie [Azure Resource Manager resource groep verwijderen](./resource-group-delete.md)voor meer informatie over de manier waarop Azure Resource Manager het verwijderen van resources ordent.
 
 ## <a name="move-resources"></a>Resources verplaatsen
 
-Het volgende script laat zien hoe een storage-account verwijderen uit een resourcegroep naar een andere resourcegroep.
+Het volgende script toont hoe u een opslag account van een resource groep kunt verwijderen naar een andere resource groep.
 
 ```azurepowershell-interactive
 $srcResourceGroupName = Read-Host -Prompt "Enter the source Resource Group name"
@@ -98,9 +98,9 @@ Zie voor meer informatie [Resources verplaatsen naar een nieuwe resourcegroep of
 
 ## <a name="lock-resources"></a>Resources vergrendelen
 
-Vergrendeling wordt voorkomen dat andere gebruikers in uw organisatie per ongeluk verwijderen of aanpassen van kritieke resources, zoals Azure-abonnement, resourcegroep of resource. 
+Vergren delen voor komt dat andere gebruikers in uw organisatie per ongeluk essentiële resources verwijderen of wijzigen, zoals een Azure-abonnement, resource groep of resource. 
 
-Het volgende script wordt een storage-account vergrendeld, zodat het account kan niet worden verwijderd.
+Met het volgende script wordt een opslag account vergrendeld zodat het account niet kan worden verwijderd.
 
 ```azurepowershell-interactive
 $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
@@ -109,7 +109,7 @@ $storageAccountName = Read-Host -Prompt "Enter the storage account name"
 New-AzResourceLock -LockName LockStorage -LockLevel CanNotDelete -ResourceGroupName $resourceGroupName -ResourceName $storageAccountName -ResourceType Microsoft.Storage/storageAccounts 
 ```
 
-Het volgende script haalt alle vergrendelingen voor een opslagaccount:
+Met het volgende script worden alle vergren delingen voor een opslag account opgehaald:
 
 ```azurepowershell-interactive
 $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
@@ -118,7 +118,7 @@ $storageAccountName = Read-Host -Prompt "Enter the storage account name"
 Get-AzResourceLock -ResourceGroupName $resourceGroupName -ResourceName $storageAccountName -ResourceType Microsoft.Storage/storageAccounts
 ```
 
-Het volgende script wordt een vergrendeling van een storage-account verwijderd:
+Met het volgende script wordt een vergren deling van een opslag account verwijderd:
 
 ```azurepowershell-interactive
 $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
@@ -132,15 +132,15 @@ Zie voor meer informatie [Resources vergrendelen met Azure Resource Manager](res
 
 ## <a name="tag-resources"></a>Resources taggen
 
-Helpt bij het organiseren van uw resourcegroep en resources logisch-tagging. Zie voor meer informatie, [met tags voor het ordenen van uw Azure-resources](./resource-group-using-tags.md#powershell).
+Door labels kunt u de resource groep en resources logisch ordenen. Zie [Tags gebruiken om uw Azure-resources te organiseren](./resource-group-using-tags.md#powershell)voor meer informatie.
 
 ## <a name="manage-access-to-resources"></a>Toegang tot resources beheren
 
-[Op rollen gebaseerde toegangsbeheer (RBAC)](../role-based-access-control/overview.md) is de manier waarop u de toegang tot resources in Azure beheert. Zie voor meer informatie, [toegang met RBAC en Azure PowerShell beheren](../role-based-access-control/role-assignments-powershell.md).
+[Op rollen gebaseerde toegangsbeheer (RBAC)](../role-based-access-control/overview.md) is de manier waarop u de toegang tot resources in Azure beheert. Zie [toegang beheren met RBAC en Azure PowerShell](../role-based-access-control/role-assignments-powershell.md)voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie voor meer Azure Resource Manager [overzicht van Azure Resource Manager](./resource-group-overview.md).
-- Zie voor meer informatie de syntaxis van de Resource Manager-sjabloon, [inzicht in de structuur en de syntaxis van Azure Resource Manager-sjablonen](./resource-group-authoring-templates.md).
-- Zie voor meer informatie over het ontwikkelen van sjablonen, de [zelfstudies met stapsgewijze instructies](/azure/azure-resource-manager/).
-- Als u de Azure Resource Manager-sjabloon schema's, Zie [sjabloonverwijzing](/azure/templates/).
+- Zie [overzicht van Azure Resource Manager](./resource-group-overview.md)voor meer informatie Azure Resource Manager.
+- Zie [inzicht krijgen in de structuur en de syntaxis van Azure Resource Manager sjablonen](./resource-group-authoring-templates.md)voor meer informatie over de syntaxis van de Resource Manager-sjabloon.
+- Zie [Stapsgewijze zelf studies](/azure/azure-resource-manager/)voor meer informatie over het ontwikkelen van sjablonen.
+- Zie [sjabloon verwijzing](/azure/templates/)voor het weer geven van de Azure Resource Manager sjabloon schema's.

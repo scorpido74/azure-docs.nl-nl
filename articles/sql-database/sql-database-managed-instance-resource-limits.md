@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
 ms.date: 10/02/2019
-ms.openlocfilehash: a360d836f1ef09b0bb87e2af39aeab0460034cd4
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: 74fd8abbe78395a75d9c0a49eb717fb8ceecd11e
+ms.sourcegitcommit: 387da88b8262368c1b67fffea58fe881308db1c2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71935622"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "71982775"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Overzicht Azure SQL Database limieten voor beheerde exemplaar bronnen
 
@@ -58,12 +58,15 @@ De hoeveelheid OLTP-ruimte in het geheugen in [bedrijfskritiek](sql-database-ser
 
 ## <a name="service-tier-characteristics"></a>Kenmerken van servicelaag
 
-Het beheerde exemplaar heeft twee service lagen: [Algemeen](sql-database-service-tier-general-purpose.md) en [bedrijfskritiek](sql-database-service-tier-business-critical.md). Deze lagen bieden [verschillende mogelijkheden](sql-database-service-tiers-general-purpose-business-critical.md), zoals wordt beschreven in de volgende tabel:
+Het beheerde exemplaar heeft twee service lagen: [Algemeen](sql-database-service-tier-general-purpose.md) en [bedrijfskritiek](sql-database-service-tier-business-critical.md). Deze lagen bieden [verschillende mogelijkheden](sql-database-service-tiers-general-purpose-business-critical.md), zoals wordt beschreven in de volgende tabel.
+
+> [!Important]
+> Bedrijfskritiek service-laag biedt een extra ingebouwde kopie van de instantie (secundaire replica) die kan worden gebruikt voor alleen-lezen werk belasting. Als u lees-en schrijf query's en query's met het kenmerk alleen-lezen/analyse kunt onderscheiden, krijgt u twee maal vCores en geheugen voor dezelfde prijs. De secundaire replica kan vertraging hebben op een paar seconden achter het primaire exemplaar, zodat het is ontworpen om rapportage/analytische werk belasting te offloaden die niet de exacte huidige status van gegevens nodig heeft. In de onderstaande tabel zijn **alleen-lezen query's** de query's die worden uitgevoerd op de secundaire replica.
 
 | **Functie** | **Algemeen** | **Bedrijfskritiek** |
 | --- | --- | --- |
-| Aantal vCores\* | Gen4 8, 16, 24<br/>GEN5 4, 8, 16, 24, 32, 40, 64, 80 | Gen4 8, 16, 24 <br/> GEN5 4, 8, 16, 24, 32, 40, 64, 80 |
-| Maxi maal geheugen | Gen4 56 GB-168 GB (7GB/vCore)<br/>GEN5 20,4 GB-408 GB (5,1 GB/vCore)<br/>Voeg meer vCores toe om meer geheugen te verkrijgen. | Gen4 56 GB-168 GB (7GB/vCore)<br/>GEN5 20,4 GB-408 GB (5,1 GB/vCore)<br/>Voeg meer vCores toe om meer geheugen te verkrijgen. |
+| Aantal vCores @ no__t-0 | Gen4 8, 16, 24<br/>GEN5 4, 8, 16, 24, 32, 40, 64, 80 | Gen4 8, 16, 24 <br/> GEN5 4, 8, 16, 24, 32, 40, 64, 80 <br/>\*Same aantal vCores is toegewezen voor alleen-lezen query's. |
+| Maxi maal geheugen | Gen4 56 GB-168 GB (7GB/vCore)<br/>GEN5 20,4 GB-408 GB (5,1 GB/vCore)<br/>Voeg meer vCores toe om meer geheugen te verkrijgen. | Gen4 56 GB-168 GB (7GB/vCore)<br/>GEN5 20,4 GB-408 GB (5,1 GB/vCore) voor lees-en schrijf query's<br/>+ extra 20,4 GB-408 GB (5,1 GB/vCore) voor alleen-lezen query's.<br/>Voeg meer vCores toe om meer geheugen te verkrijgen. |
 | Maximale opslag grootte van exemplaar (gereserveerd) | -2 TB voor 4 vCores (alleen GEN5)<br/>-8 TB voor andere grootten | Gen4 1 TB <br/> GEN5 <br/>-1 TB voor 4, 8, 16 vCores<br/>-2 TB voor 24 vCores<br/>-4 TB voor 32, 40, 64, 80 vCores |
 | Maximale databasegrootte | Tot momenteel beschik bare instantie grootte (Maxi maal 2 TB-8 TB afhankelijk van het aantal vCores). | Maxi maal beschik bare instantie grootte (Maxi maal 1 TB-4 TB, afhankelijk van het aantal vCores). |
 | Maximale grootte van tempDB | Beperkt tot 24 GB/vCore (96-1.920 GB) en momenteel beschik bare instantie opslag grootte.<br/>Voeg meer vCores toe om meer TempDB-ruimte te krijgen. | Maxi maal beschik bare opslag grootte van exemplaar. De grootte van het TempDB-logboek bestand is momenteel beperkt tot 24 GB/vCore. |
@@ -73,9 +76,9 @@ Het beheerde exemplaar heeft twee service lagen: [Algemeen](sql-database-service
 | Maximale grootte van logboek bestand | Beperkt tot 2 TB en momenteel beschik bare exemplaar opslag grootte. | Beperkt tot 2 TB en momenteel beschik bare exemplaar opslag grootte. |
 | Gegevens/logboek IOPS (benadering) | Maxi maal 30-40 K IOPS per exemplaar *, 500-7500 per bestand<br/>\*[Bestands grootte verg Roten om meer IOPS te verkrijgen](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes)| 5,5 k-110 K (1375 IOPS/vCore)<br/>Voeg meer vCores toe om betere IO-prestaties te krijgen. |
 | Doorvoer limiet voor schrijf bewerkingen in logboek (per instantie) | 3 MB/s per vCore<br/>Maxi maal 22 MB/s | 4 MB/s per vCore<br/>Max 48 MB/s |
-| Gegevens doorvoer (bij benadering) | 100-250 MB/s per bestand<br/>\*[De bestands grootte verg Roten om betere IO-prestaties te krijgen](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes) | Niet beperkt. |
+| Gegevens doorvoer (bij benadering) | 100-250 MB/s per bestand<br/>\*[de bestands grootte verg Roten om betere IO-prestaties te krijgen](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes) | Niet beperkt. |
 | I/o-latentie van opslag (ongeveer) | 5-10 MS | 1-2 MS |
-| In-memory OLTP | Niet ondersteund | Beschikbaar |
+| In-memory OLTP | Niet ondersteund | Beschikbaar, [grootte is afhankelijk van het aantal vCore](#in-memory-oltp-available-space) |
 | Maximum aantal sessies | 30000 | 30000 |
 | [Alleen-lezen replica's](sql-database-read-scale-out.md) | 0 | 1 (inclusief prijs) |
 
@@ -139,9 +142,9 @@ De volgende tabel bevat de **standaard regionale limieten** voor ondersteunde ab
 |Visual Studio Enterprise|2 |64|
 |Visual Studio Professional en MSDN Platforms|2|32|
 
-\*In het plannen van implementaties moet u rekening houden dat de service tier van Bedrijfskritiek (BC) vier (4) keer zoveel vCore capaciteit nodig heeft dan de servicelaag van Algemeen (GP). Bijvoorbeeld: 1 GP vCore = 1 vCore-eenheid en 1 BC vCore = 4 vCore-eenheden. Als u de verbruiks analyse wilt vereenvoudigen met de standaard limieten, bekijkt u de vCore-eenheden in alle subnetten in de regio waarin beheerde exemplaren worden geïmplementeerd en vergelijkt u de resultaten met de limieten van de exemplaar eenheid voor uw abonnements type. De limiet voor het **maximum aantal vCore-eenheden** is van toepassing op elk abonnement in een regio. Er is geen limiet per afzonderlijke subnetten, behalve dat de som van alle vCores die in meerdere subnetten zijn geïmplementeerd, kleiner of gelijk moet zijn aan het **maximum aantal vCore-eenheden**.
+\* in het plannen van implementaties moet u rekening houden met het feit dat de service tier van Bedrijfskritiek (BC) vier (4) keer zoveel vCore capaciteit nodig heeft dan de servicelaag van Algemeen (GP). Bijvoorbeeld: 1 GP vCore = 1 vCore-eenheid en 1 BC vCore = 4 vCore-eenheden. Als u de verbruiks analyse wilt vereenvoudigen met de standaard limieten, bekijkt u de vCore-eenheden in alle subnetten in de regio waarin beheerde exemplaren worden geïmplementeerd en vergelijkt u de resultaten met de limieten van de exemplaar eenheid voor uw abonnements type. De limiet voor het **maximum aantal vCore-eenheden** is van toepassing op elk abonnement in een regio. Er is geen limiet per afzonderlijke subnetten, behalve dat de som van alle vCores die in meerdere subnetten zijn geïmplementeerd, kleiner of gelijk moet zijn aan het **maximum aantal vCore-eenheden**.
 
-\*\*Grotere subnet-en vCore-limieten zijn beschikbaar in de volgende regio's: Australië-oost, VS-Oost, VS-Oost 2, Europa-noord, Zuid-Centraal VS, Zuidoost-Azië, UK-zuid, Europa-west, VS-West 2.
+\* @ no__t-1 grotere subnet-en vCore-limieten zijn beschikbaar in de volgende regio's: Australië-oost, VS-Oost, VS-Oost 2, Europa-noord, Zuid-Centraal VS, Zuidoost-Azië, UK-zuid, Europa-west, VS-West 2.
 
 ## <a name="obtaining-a-larger-quota-for-sql-managed-instance"></a>Een groter quotum verkrijgen voor het beheerde exemplaar van SQL
 

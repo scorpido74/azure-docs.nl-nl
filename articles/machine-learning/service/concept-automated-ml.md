@@ -11,12 +11,12 @@ author: nacharya1
 ms.author: nilesha
 ms.date: 06/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8b38b359821d3d4926085fee8e412fbe06155739
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: e9bc0cf3ab0d168a55ab04913bdc71eed5c5fced
+ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350626"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72001228"
 ---
 # <a name="what-is-automated-machine-learning"></a>Wat is geautomatiseerde machine learning?
 
@@ -37,6 +37,14 @@ Gegevens wetenschappers, analisten en ontwikkel aars in verschillende branches k
 + Best practices voor data wetenschappen gebruiken
 + Flexibel probleem oplossing bieden-oplossen
 
+Veelvoorkomende cases voor automatische MILLILITERs zijn:
++ [Fraude detectie](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-credit-card-fraud/auto-ml-classification-credit-card-fraud.ipynb)
++ [Marketing voorspelling](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing/auto-ml-classification-bank-marketing.ipynb)
++ [Vraag prognose](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand/auto-ml-forecasting-energy-demand.ipynb)
++ [Verkoop prognose](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-orange-juice-sales/auto-ml-forecasting-orange-juice-sales.ipynb)
++ [Prestaties voors pellen](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/regression-hardware-performance/auto-ml-regression-hardware-performance.ipynb)
++ [Materiaal duurzaamheid voor spelling](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/regression-concrete-strength/auto-ml-regression-concrete-strength.ipynb)
+
 ## <a name="how-automated-ml-works"></a>Hoe geautomatiseerd ML werkt
 
 Met **Azure machine learning**kunt u uw automatische ml-experimenten ontwerpen en uitvoeren met de volgende stappen:
@@ -55,7 +63,7 @@ Met **Azure machine learning**kunt u uw automatische ml-experimenten ontwerpen e
 
 Tijdens de training maakt Azure Machine Learning een aantal parallelle pijp lijnen die verschillende algoritmen en para meters proberen. Het wordt gestopt zodra de afsluit criteria die in het experiment zijn gedefinieerd, zijn gevonden.
 
-U kunt ook de informatie over geregistreerde uitvoeringen controleren, die de [metrische gegevens bevat](how-to-understand-automated-ml.md) die tijdens de uitvoering zijn verzameld. De trainings uitvoering produceert een met python geserialiseerd object (`.pkl` bestand) dat het model en de voor verwerking van gegevens bevat.
+U kunt ook de informatie over geregistreerde uitvoeringen controleren, die de [metrische gegevens bevat](how-to-understand-automated-ml.md) die tijdens de uitvoering zijn verzameld. De training-uitvoering produceert een met python geserialiseerd object (`.pkl`-bestand) dat het model en de voor verwerking van gegevens bevat.
 
 Hoewel het bouwen van modellen geautomatiseerd is, kunt u ook [zien hoe belang rijke of relevante functies](how-to-configure-auto-train.md#explain) voor de gegenereerde modellen zijn.
 
@@ -74,7 +82,7 @@ In elk automatisch machine learning experiment worden uw gegevens voorverwerkt m
 
 In elk automatisch machine learning experiment worden uw gegevens automatisch geschaald of genormaliseerd om de Help-algoritmen goed uit te voeren.  Tijdens de model training wordt een van de volgende schalen of normalisatie technieken toegepast op elk model.
 
-|&nbsp;Normalisatieaanpassen&&nbsp;| Description |
+|Schalen met @ no__t-0 @ no__t-1 @ no__t-2normalization| Description |
 | ------------- | ------------- |
 | [StandardScaleWrapper](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html)  | Functies standaardiseren door het gemiddelde en de schaal aanpassing te verwijderen voor eenheids variantie  |
 | [MinMaxScalar](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.MinMaxScaler.html)  | Transformeert functies door elke functie te schalen op basis van het minimum en maximum van die kolom  |
@@ -90,7 +98,7 @@ Er zijn ook aanvullende geavanceerde preverwerkings-en parametrisatie beschikbaa
 
 + Azure Portal: Selecteer het selectie vakje **preprocess** in de **Geavanceerde instellingen** [met de volgende stappen](how-to-create-portal-experiments.md).
 
-+ Python-SDK: Opgeven `"preprocess": True` voor [ de`AutoMLConfig` klasse](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig?view=azure-ml-py).
++ Python-SDK: @No__t-0 opgeven voor de [`AutoMLConfig`-klasse](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig?view=azure-ml-py).
 
 
 ## <a name="time-series-forecasting"></a>Prognoses met tijdreeksen
@@ -165,7 +173,7 @@ Automatische ML is ook beschikbaar in andere micro soft-oplossingen, zoals:
 
 Bekijk voor beelden en leer hoe u modellen bouwt met geautomatiseerde machine learning:
 
-+ Volg de [zelf studie: Een regressie model automatisch trainen met geautomatiseerde Machine Learning van Azure](tutorial-auto-train-models.md)
++ Volg de [Tutorial: Een regressie model automatisch trainen met automatische Machine Learning van Azure @ no__t-0
 
 + De instellingen voor automatische training-experiment configureren:
   + [Gebruik de volgende stappen](how-to-create-portal-experiments.md)in azure Portal interface of de lands pagina voor de werk ruimte (preview).

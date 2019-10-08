@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/24/2019
 ms.author: memildin
-ms.openlocfilehash: 7de0d7bacdf2194b3e1a303842c56a6a017d8d62
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 28761b78b49ad0774594b45db4587c710fc7d810
+ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202764"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "71996717"
 ---
 # <a name="adaptive-network-hardening-in-azure-security-center"></a>Adaptieve netwerk beveiliging in Azure Security Center
 Meer informatie over het configureren van adaptieve netwerk beveiliging in Azure Security Center.
@@ -37,10 +37,10 @@ Stel bijvoorbeeld dat de bestaande NSG-regel verkeer van 140.20.30.10/24 op poor
 
 ## <a name="view-adaptive-network-hardening-alerts-and-rules"></a>Waarschuwingen en regels voor adaptieve netwerk beveiliging weer geven
 
-1. Selecteer in Security Center **netwerk** -> **adaptief netwerk beveiliging**. De netwerk-Vm's worden weer gegeven onder drie afzonderlijke tabbladen:
+1. Selecteer in Security Center **netwerk** -> **adaptieve netwerk beveiliging**. De netwerk-Vm's worden weer gegeven onder drie afzonderlijke tabbladen:
    * **Beschadigde resources**: Vm's die momenteel aanbevelingen en waarschuwingen hebben geactiveerd door het uitvoeren van het adaptieve netwerk beveiligings algoritme. 
    * **Goede resources**: Vm's zonder waarschuwingen en aanbevelingen.
-   * Niet-gescande **resources**: Vm's waarvoor het adaptieve netwerk beveiligings algoritme niet kan worden uitgevoerd om een van de volgende redenen:
+   * Niet- **gescande resources**: Vm's waarvoor het adaptieve netwerk beveiligings algoritme niet kan worden uitgevoerd om een van de volgende redenen:
       * **Virtuele machines zijn klassieke vm's**: Alleen Azure Resource Manager Vm's worden ondersteund.
       * **Er zijn onvoldoende gegevens beschikbaar**: Om nauw keurige aanbevelingen voor het beveiligen van verkeer te kunnen genereren, is Security Center ten minste 30 dagen aan verkeers gegevens nodig.
       * **VM wordt niet beveiligd door ASC-standaard**: Alleen Vm's die zijn ingesteld op de prijs categorie Standard van Security Center, komen in aanmerking voor deze functie.
@@ -98,11 +98,11 @@ Enkele belang rijke richt lijnen voor het wijzigen van een adaptieve netwerk bep
 1. In het venster **regel bewerken** werkt u de details bij die u wilt wijzigen en klikt u op **Opslaan**.
 
    > [!NOTE]
-   > Nadat u op **Opslaan**hebt geklikt, is de regel gewijzigd. *U hebt deze echter niet toegepast op de NSG.* Als u deze wilt Toep assen, moet u de regel in de lijst selecteren en op afdwingen klikken (zoals in de volgende stap wordt uitgelegd).
+   > Nadat u op **Opslaan**hebt geklikt, is de regel gewijzigd. *U hebt deze echter niet toegepast op de NSG.* Als u deze wilt Toep assen, moet u de regel in de lijst selecteren en op **afdwingen** klikken (zoals in de volgende stap wordt uitgelegd).
 
    ![regel bewerken](./media/security-center-adaptive-network-hardening/edit-hard-rule3.png)
 
-3. Als u de bijgewerkte regel wilt Toep assen, selecteert u in de lijst de bijgewerkteregel en klikt u op afdwingen.
+3. Als u de bijgewerkte regel wilt Toep assen, selecteert u in de lijst de bijgewerkte regel en klikt u op **afdwingen**.
 
     ![regel afdwingen](./media/security-center-adaptive-network-hardening/enforce-hard-rule.png)
 
@@ -122,18 +122,18 @@ U kunt een regel ' toestaan ' toevoegen die niet wordt aanbevolen door Security 
 1. Voer in het venster **nieuwe regel** de details in en klik op **toevoegen**.
 
    > [!NOTE]
-   > Nadat u op **toevoegen**hebt geklikt, is de regel toegevoegd en wordt deze weer gegeven met de andere aanbevolen regels. U hebt deze echter niet toegepast op de NSG. Als u deze wilt activeren, moet u de regel in de lijst selecteren en op afdwingen klikken (zoals in de volgende stap wordt uitgelegd).
+   > Nadat u op **toevoegen**hebt geklikt, is de regel toegevoegd en wordt deze weer gegeven met de andere aanbevolen regels. U hebt deze echter niet toegepast op de NSG. Als u deze wilt activeren, moet u de regel in de lijst selecteren en op **afdwingen** klikken (zoals in de volgende stap wordt uitgelegd).
 
-3. Als u de nieuwe regel wilt Toep assen, selecteert u de nieuwe regel in delijst en klikt u op afdwingen.
+3. Als u de nieuwe regel wilt Toep assen, selecteert u de nieuwe regel in de lijst en klikt u op **afdwingen**.
 
     ![regel afdwingen](./media/security-center-adaptive-network-hardening/enforce-hard-rule.png)
 
 
 ### Een regel <a name ="delete-rule"></a> verwijderen
 
-Als dat nodig is, kunt u een aanbevolen regel verwijderen. U kunt bijvoorbeeld bepalen dat het Toep assen van een voorgestelde regel legitiem verkeer kan blok keren.
+Als dat nodig is, kunt u een aanbevolen regel voor de huidige sessie verwijderen. U kunt bijvoorbeeld bepalen dat het Toep assen van een voorgestelde regel legitiem verkeer kan blok keren.
 
-*Een regel voor adaptieve netwerk beveiliging verwijderen:*
+*Een regel voor het beveiligen van een adaptieve netwerk beveiliging voor uw huidige sessie verwijderen:*
 
 1. Klik op het tabblad **regels** op de drie puntjes (...) aan het einde van de rij van de regel en klik op **verwijderen**.  
 

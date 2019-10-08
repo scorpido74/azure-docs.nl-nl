@@ -9,26 +9,23 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 96b8090bd0e178be53cb49f42438951645def5d9
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: 2673d0d2c1cb174316e99a79a10a67347e2bc031
+ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71960498"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72001346"
 ---
 # <a name="tutorial-add-a-real-device-to-your-azure-iot-central-application"></a>Zelfstudie: Een nieuw apparaat toevoegen aan uw Azure IoT Central-toepassing
 
 [!INCLUDE [iot-central-original-pnp](../../includes/iot-central-original-pnp-note.md)]
 
-In deze zelfstudie wordt getoond hoe u en echt apparaat aan uw Microsoft Azure IoT Central-toepassing kunt toevoegen en het kunt configureren. 
-_* u hebt niet uw eigen externe apparaat nodig om deze zelf studie te volt ooien. Het echte apparaat wordt gebouwd als een gecodeerde toepassing die wordt uitgevoerd in de opdracht regel omgeving._ 
+In deze zelf studie leert u hoe u een *echt apparaat* kunt toevoegen en configureren voor uw Microsoft Azure IOT Central-toepassing. In deze zelf studie codeert u het echte apparaat met behulp van node. js en voert u de code op een desktop computer uit. U hebt geen afzonderlijk IoT-apparaat nodig, zoals een Raspberry Pi-of MXChip IoT DevKit-apparaat om deze zelf studie te volt ooien.
 
 Deze zelfstudie bestaat uit twee delen:
 
 * Als operator leert u eerst hoe u een echt apparaat aan uw Azure IoT Central-toepassing kunt toevoegen en het kunt configureren. Aan het eind van dit deel haalt u een verbindingsreeks op die u in het tweede deel kunt gebruiken.
 * Vervolgens krijgt u als apparaatontwikkelaar informatie over de code in het echte apparaat. U voegt de verbindingsreeks uit het eerste deel toe aan de voorbeeldcode.
-
-
 
 In deze zelfstudie leert u het volgende:
 
@@ -99,7 +96,7 @@ In de volgende stappen ziet u hoe u het [Node.js](https://nodejs.org/)-voorbeeld
 
    ![Apparaatpagina met koppeling voor het weergeven van verbindingsgegevens](media/tutorial-add-device/connectionlink.png)
 
-1. Noteer de **bereik-id**, de **apparaat-id** en de waarden voor de **primaire sleutel** op de pagina **apparaat-verbinding** . U gebruikt deze waarden later in deze zelf studie.
+1. Noteer op de pagina **apparaat-verbinding** de **bereik-ID**, **apparaat-id**en waarden voor de **primaire sleutel** . U gebruikt deze waarden later in deze zelf studie.
 
    ![Verbindingsdetails](media/tutorial-add-device/device-connect.png)
 

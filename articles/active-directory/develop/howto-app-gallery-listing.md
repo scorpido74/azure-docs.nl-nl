@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: elisol, bryanla
 ms.custom: aaddev, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a97c10303a1ce74e53f46c21176c876faed307e7
-ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
+ms.openlocfilehash: bd20928816a30ad2843ce6c876bd77152dcd69e1
+ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71958658"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72001735"
 ---
 # <a name="list-your-application-in-the-azure-active-directory-application-gallery"></a>Uw toepassing weergeven in de Azure Active Directory-toepassingsgalerie
 
@@ -36,7 +36,7 @@ In dit artikel wordt beschreven hoe u een toepassing kunt weer geven in de toepa
 - Met een snelle zoek opdracht vindt u uw toepassing in de galerie.
 - Gratis, Basic en Premium Azure AD-klanten kunnen deze integratie gebruiken.
 - Wederzijdse klanten krijgen een stapsgewijze zelf studie voor configuratie.
-- Klanten die het systeem voor Cross-Domain Identity Management (SCIM) gebruiken, kunnen inrichten voor dezelfde app gebruiken.
+- Klanten die het systeem voor Cross-Domain Identity Management ([scim](https://techcommunity.microsoft.com/t5/Identity-Standards-Blog/Provisioning-with-SCIM-getting-started/ba-p/880010)) gebruiken, kunnen inrichten voor dezelfde app gebruiken.
 
 ## <a name="prerequisites"></a>Vereisten
 

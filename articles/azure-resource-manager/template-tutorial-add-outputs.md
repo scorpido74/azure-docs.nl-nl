@@ -8,12 +8,12 @@ ms.service: azure-resource-manager
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: beb2e6a16a303f633b36709fee2a60cca160d1b6
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: 458833372d5bd03a04e4df7d6e915cddb4bb05c7
+ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71963805"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72001532"
 ---
 # <a name="tutorial-add-outputs-to-your-resource-manager-template"></a>Zelfstudie: Uitvoer toevoegen aan uw Resource Manager-sjabloon
 
@@ -49,7 +49,7 @@ De functie [Reference](resource-group-template-functions-resource.md#reference) 
 
 Ten slotte wordt de eigenschap **primaire** van het opslag account geretourneerd
 
-## <a name="deploy-template"></a>Sjabloon implementeren
+## <a name="deploy-the-template"></a>De sjabloon implementeren
 
 U bent klaar om de sjabloon te implementeren en de geretourneerde waarde te bekijken.
 
@@ -93,7 +93,7 @@ In de uitvoer voor de implementatie opdracht ziet u een object dat lijkt op het 
 
 ## <a name="review-your-work"></a>Uw werk controleren
 
-U hebt in de laatste zes zelf studies een hoop gemaakt. Laten we even eens kijken wat u hebt gedaan. U hebt een sjabloon gemaakt met para meters die u gemakkelijk kunt opgeven. De sjabloon kan in verschillende omgevingen worden gebruikt, omdat deze kan worden aangepast en de benodigde waarden dynamisch kunnen worden gemaakt. Het retourneert informatie over het opslag account dat u in uw script kunt gebruiken.
+U hebt in de laatste zes zelf studies een hoop gemaakt. Laten we even eens kijken wat u hebt gedaan. U hebt een sjabloon gemaakt met para meters die u gemakkelijk kunt opgeven. De sjabloon kan in verschillende omgevingen worden gebruikt, omdat deze kan worden aangepast en de benodigde waarden dynamisch kunnen worden gemaakt. Het retourneert ook informatie over het opslag account dat u in uw script kunt gebruiken.
 
 Nu gaan we kijken naar de resource groep en de implementatie geschiedenis.
 

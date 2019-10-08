@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fc633780d8b816d8fc2e313bb1955a5719979efe
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: ab48579c6eda085d77e2a6ab080b0a4a1ce806bd
+ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70240873"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72000328"
 ---
 # <a name="what-is-passwordless"></a>Wat betekent zonder wachtwoord?
 
@@ -28,7 +28,7 @@ Multi-factor Authentication (MFA) is een uitstekende manier om uw organisatie te
 
 Elke organisatie heeft verschillende behoeften wanneer dit van toepassing is op verificatie. Micro soft biedt momenteel Windows hello voor onze Windows-Pc's. De Microsoft Authenticator app-en FIDO2-beveiligings sleutels worden toegevoegd aan de groep met wacht woorden.
 
-## <a name="microsoft-authenticator-app"></a>App Microsoft Authenticator
+## <a name="microsoft-authenticator-app"></a>Microsoft Authenticator-app
 
 Laat de telefoon van uw werk nemer een verificatie methode met een wacht woord maken. U kunt ook de Microsoft Authenticator-app gebruiken als een handige multi-factor Authentication-optie naast een wacht woord. Maar nu is het beschikbaar als optie met een wacht woord.
 
@@ -62,10 +62,10 @@ De volgende providers bieden FIDO2-beveiligings sleutels van verschillende vorm 
 | Yubico | [https://www.yubico.com/support/contact/](https://www.yubico.com/support/contact/) |
 | Feitian | [https://www.ftsafe.com/about/Contact_Us](https://www.ftsafe.com/about/Contact_Us) |
 | SPECIALE | [https://www.hidglobal.com/contact-us](https://www.hidglobal.com/contact-us) |
-| Ensurity | [https://ensurity.com/contact-us.html](https://ensurity.com/contact-us.html) |
+| Ensurity | [https://www.ensurity.com/contact](https://www.ensurity.com/contact) |
 | eWBM | [https://www.ewbm.com/page/sub1_5](https://www.ewbm.com/page/sub1_5) |
 
-Als u een leverancier bent en uw apparaat in deze lijst wilt ontvangen, neemt u [Fido2Request@Microsoft.com](mailto:Fido2Request@Microsoft.com)contact op met.
+Als u een leverancier bent en uw apparaat in deze lijst wilt ontvangen, neemt u contact op met [Fido2Request@Microsoft.com](mailto:Fido2Request@Microsoft.com).
 
 FIDO2-beveiligings sleutels zijn een uitstekende optie voor ondernemingen die zeer gevoelig zijn voor bedrijven of die scenario's of werk nemers hebben die hun telefoon niet kunnen gebruiken als een tweede factor.
 

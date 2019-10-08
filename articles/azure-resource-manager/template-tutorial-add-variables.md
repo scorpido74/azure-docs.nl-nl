@@ -8,12 +8,12 @@ ms.service: azure-resource-manager
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 9fc6e57a7e002cd4ffcf62c7779fb2626ce9c839
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: fb577c0c0f00da3735da98fc2e94f3610c9bd80d
+ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71963798"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72001461"
 ---
 # <a name="tutorial-add-variables-to-your-resource-manager-template"></a>Zelfstudie: Variabelen toevoegen aan uw Resource Manager-sjabloon
 
@@ -47,13 +47,13 @@ U bent ook bekend met de functie [resourceGroup](resource-group-template-functio
 
 Met de functie [Unique string](resource-group-template-functions-string.md#uniquestring) maakt u een hash-waarde van 13 tekens. De geretourneerde waarde wordt bepaald door de para meters die u doorgeeft. Voor deze zelf studie gebruikt u de ID van de resource groep als invoer voor de hash-waarde. Dit betekent dat u deze sjabloon kunt implementeren in verschillende resource groepen en een andere unieke teken reeks waarde kunt krijgen. U krijgt echter dezelfde waarde als u implementeert in dezelfde resource groep.
 
-De functie [concat](resource-group-template-functions-string.md#concat) heeft waarden en combineert deze. Voor deze variabele neemt het een teken reeks van een para meter en de teken reeks uit de functie Unique string en combineert deze in één teken reeks.
+De functie [concat](resource-group-template-functions-string.md#concat) heeft waarden en combineert deze. Voor deze variabele wordt de teken reeks uit de para meter en de teken reeks uit de Unique string-functie gebruikt en gecombineerd tot één teken reeks.
 
-Met de para meter **storagePrefix** kunt u een voor voegsel door geven waarmee u opslag accounts kunt identificeren. U kunt uw eigen naamgevings Conventie maken die het eenvoudiger maakt om opslag accounts te identificeren na de implementatie vanuit een lange lijst met resources.
+Met de para meter **storagePrefix** kunt u een voor voegsel door geven dat u helpt bij het identificeren van opslag accounts. U kunt uw eigen naamgevings Conventie maken die het eenvoudiger maakt om opslag accounts te identificeren na de implementatie vanuit een lange lijst met resources.
 
 Ten slotte ziet u dat de opslag naam nu is ingesteld op de variabele in plaats van een para meter.
 
-## <a name="deploy-template"></a>Sjabloon implementeren
+## <a name="deploy-the-template"></a>De sjabloon implementeren
 
 We gaan de sjabloon implementeren. Het implementeren van deze sjabloon is eenvoudiger dan de vorige sjablonen omdat u alleen het voor voegsel voor de opslag naam opgeeft.
 

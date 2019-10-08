@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/19/2019
 ms.author: memildin
-ms.openlocfilehash: 7448516e464a379e27abd45834b31760fca3fedd
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 01cc625767cbf437031f503cf4b0d4dc59b62e08
+ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71201845"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "71996293"
 ---
 # <a name="onboarding-to-azure-security-center-standard-for-enhanced-security"></a>Onboarding van Azure Security Center Standard voor verbeterde beveiliging
 Voer een upgrade uit naar Security Center Standard om te profiteren van verbeterde beveiligings beheer en bedreigings beveiliging voor uw hybride Cloud werkbelastingen.  U kunt standaard gratis proberen. Zie de [pagina met prijzen](https://azure.microsoft.com/pricing/details/security-center/) voor Security Center voor meer informatie.
@@ -48,7 +48,7 @@ Een abonnement of werk ruimte bijwerken naar Standard:
    -    U kunt abonnementen en werkruimten upgraden die niet in aanmerking komen voor een proefversie.
    -    U kunt in aanmerking komende werkruimten en abonnementen selecteren om uw proefversie te beginnen.
 3.  Klik op **Proefversie beginnen** om uw proefversie van de geselecteerde abonnementen te beginnen.
-  ![Abonnement selecteren](./media/security-center-onboarding/select-subscription.png)
+  ![Select-abonnement @ no__t-1
 
 
    > [!NOTE]
@@ -111,7 +111,7 @@ In dit artikel hebt u geleerd hoe u Azure-en niet-Azure-resources kunt vrijgeven
 
 - [Gegevensverzameling inschakelen](security-center-enable-data-collection.md)
 - [Bedreigingsinformatierapport](security-center-threat-report.md)
-- [Just-in-time-VM-toegang](security-center-just-in-time.md)
+- [Just-in-time-toegang voor virtuele machines](security-center-just-in-time.md)
 
 <!--Image references-->
 [1]: ./media/security-center-onboarding/onboard.png

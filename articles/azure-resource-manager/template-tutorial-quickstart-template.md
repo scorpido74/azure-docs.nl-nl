@@ -8,12 +8,12 @@ ms.service: azure-resource-manager
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: e1ef6dd913958f963cb62b4014c09a47903831aa
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: a29d86d105579dda7c12b885e2977406f7b598a4
+ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71963847"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72001476"
 ---
 # <a name="tutorial-use-azure-quickstart-templates"></a>Zelfstudie: Sjablonen voor Azure Quick Start gebruiken
 
@@ -31,7 +31,7 @@ Aan het einde van de vorige zelf studie had uw sjabloon de volgende JSON:
 
 [!code-json[](~/resourcemanager-templates/get-started-with-templates/export-template/azuredeploy.json)]
 
-Deze sjabloon kan worden gebruikt voor het implementeren van opslag accounts en app service-plannen, maar u wilt mogelijk een website toevoegen aan het abonnement. U kunt vooraf gemaakte sjablonen gebruiken om snel de JSON te detecteren die vereist is voor het implementeren van een resource.
+Deze sjabloon kan worden gebruikt voor het implementeren van opslag accounts en app service-plannen, maar u wilt mogelijk een website toevoegen. U kunt vooraf gemaakte sjablonen gebruiken om snel de JSON te detecteren die vereist is voor het implementeren van een resource.
 
 ## <a name="find-a-template"></a>Een sjabloon zoeken
 
@@ -50,7 +50,7 @@ De Quick Start-sjabloon samen voegen met de bestaande sjabloon:
 
 [!code-json[](~/resourcemanager-templates/get-started-with-templates/quickstart-template/azuredeploy.json?range=1-108&highlight=32-45,49,85-100)]
 
-De webapp-naam moet uniek zijn binnen Azure. Om te voor komen dat dubbele namen worden opgegeven, is de variabele **webAppPortalName** bijgewerkt van **' webAppPortalName ': ' [concat (para meters (' webapp naam '), '-webapp ')] '** naar **' webAppPortalName ': ' [concat (para meters (' webapp naam '), Unique string (resourceGroup (). id))] "** .
+De naam van de WebApp moet uniek zijn binnen Azure. Om te voor komen dat dubbele namen worden opgegeven, is de variabele **webAppPortalName** bijgewerkt van **' webAppPortalName ': ' [concat (para meters (' webapp naam '), '-webapp ')] '** naar **' webAppPortalName ': ' [concat (para meters (' webapp naam '), Unique string (resourceGroup (). id))] "** .
 
 Voeg aan het einde van de definitie van de `Microsoft.Web/serverfarms` een komma toe om de resource definitie te scheiden van de definitie van de `Microsoft.Web/sites`.
 

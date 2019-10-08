@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 2abe917d1713bbc5f5844aced5e688baacc7d397
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: a6326b2ea9b4c2247df4f93eba904b7527666131
+ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202009"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "71996392"
 ---
 # <a name="manage-virtual-machine-access-using-just-in-time"></a>Toegang tot virtuele machines beheren met Just-in-time
 
@@ -149,7 +149,7 @@ Een bestaande just-in-time-beleid van een virtuele machine bewerken:
 
 1. Selecteer **Bewerken**.
 1. Onder **JIT VM-toegangs configuratie**kunt u de bestaande instellingen van een reeds beveiligde poort bewerken of een nieuwe aangepaste poort toevoegen. 
-  ![JIT-VM-toegang](./media/security-center-just-in-time/edit-policy.png)
+  ![jit-VM-toegang @ no__t-1
 
 ## <a name="audit-jit-access-activity-in-asc"></a>JIT-toegangs activiteit in ASC controleren
 
@@ -227,7 +227,7 @@ De just-in-time VM-toegangs functie kan worden gebruikt via de Azure Security Ce
 
 ## <a name="jit-vm-access-via-powershell"></a>JIT-VM-toegang via Power shell
 
-Als u de just-in-time-toegang tot een VM wilt gebruiken via Power shell, gebruikt u de officiële Azure Security Center `Set-AzJitNetworkAccessPolicy`Power shell-cmdlets en specifiek.
+Als u de just-in-time-toegang tot een VM wilt gebruiken via Power shell, gebruikt u de officiële Azure Security Center Power shell-cmdlets en specifiek `Set-AzJitNetworkAccessPolicy`.
 
 In het volgende voor beeld wordt een just-in-time-VM-toegangs beleid ingesteld op een specifieke virtuele machine en worden de volgende opties ingesteld:
 

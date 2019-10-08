@@ -11,10 +11,10 @@ ms.topic: quickstart
 ms.date: 08/19/2019
 ms.author: travisw
 ms.openlocfilehash: c676e98eb812a31d6fb8d7cc0f58929f803c868e
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/05/2019
+ms.lasthandoff: 10/07/2019
 ms.locfileid: "70382038"
 ---
 # <a name="quickstart-create-a-voice-first-virtual-assistant-with-the-speech-sdk-uwp"></a>Quickstart: Maak een virtuele assistent met spraak-eerste met de spraak-SDK, UWP
@@ -39,7 +39,7 @@ Voor deze snelstart zijn de volgende zaken vereist:
 
 ## <a name="optional-get-started-fast"></a>Optioneel: Snel aan de slag
 
-In deze Snelstartgids wordt stapsgewijs beschreven hoe u een client toepassing kunt maken om verbinding te maken met uw op spraak ingeschakelde bot. Als u voor het eerst wilt beginnen, is de volledige, kant-en-assembly-bron code die wordt gebruikt in deze Quick Start, beschikbaar in `quickstart` de voor [beelden van Speech SDK](https://aka.ms/csspeech/samples) onder de-map.
+In deze Snelstartgids wordt stapsgewijs beschreven hoe u een client toepassing kunt maken om verbinding te maken met uw op spraak ingeschakelde bot. Als u de voor keur geeft aan de volledige, kant-en-klare bron code die in deze Quick Start wordt gebruikt, is beschikbaar in de [Speech SDK](https://aka.ms/csspeech/samples) -voor beelden in de map `quickstart`.
 
 ## <a name="create-a-visual-studio-project"></a>Een Visual Studio-project maken
 
@@ -53,7 +53,7 @@ Voeg nu de XAML-code toe die de gebruikers interface van de toepassing definieer
 
 Eerst maakt u de gebruikers interface van de toepassing door de XAML-code toe te voegen:
 
-1. Open`MainPage.xaml`in **Solution Explorer**.
+1. Open `MainPage.xaml` in **Solution Explorer**.
 
 1. Vervang in de XAML-weer gave van de ontwerp functie de volledige inhoud door het volgende code fragment:
 
@@ -108,7 +108,7 @@ De Ontwerpweergave is bijgewerkt om de gebruikers interface van de toepassing we
 
 Vervolgens voegt u de bron code achter toe, zodat de toepassing werkt zoals verwacht. De bron code achter bevat:
 
-- `using`instructies voor de `Speech` en `Speech.Dialog` -naam ruimten
+- `using`-instructies voor de `Speech`-en `Speech.Dialog`-naam ruimten
 - Een eenvoudige implementatie om toegang tot de microfoon te garanderen, bekabeld tot een knop-handler
 - Helpers van de Basic-gebruikers interface om berichten en fouten in de toepassing weer te geven
 - Een overloop punt voor het pad van de initialisatie code dat later wordt ingevuld
@@ -117,7 +117,7 @@ Vervolgens voegt u de bron code achter toe, zodat de toepassing werkt zoals verw
 
 Voer de volgende stappen uit om de code-behind-bron toe te voegen:
 
-1. Open in **Solution Explorer**het bron bestand `MainPage.xaml.cs`voor de code achter. (Deze wordt gegroepeerd onder `MainPage.xaml`.)
+1. Open in **Solution Explorer**het bron bestand code-behind `MainPage.xaml.cs`. (Deze wordt gegroepeerd onder `MainPage.xaml`.)
 
 1. Vervang de inhoud van het bestand door het volgende code fragment:
 
@@ -289,7 +289,7 @@ Voer de volgende stappen uit om de code-behind-bron toe te voegen:
     }
     ```
 
-1. Voeg het volgende code fragment toe aan de methode hoofd `InitializeDialogServiceConnector`tekst van. Met deze code maakt `DialogServiceConnector` u de met uw abonnements gegevens.
+1. Voeg het volgende code fragment toe aan de methode hoofdtekst van `InitializeDialogServiceConnector`. Met deze code wordt de `DialogServiceConnector` gemaakt met uw abonnements gegevens.
 
     ```csharp
     // create a DialogServiceConfig by providing a bot secret key 
@@ -315,9 +315,9 @@ Voer de volgende stappen uit om de code-behind-bron toe te voegen:
    > [!NOTE]
    > Voor informatie over het configureren van uw bot en het ophalen van een kanaal geheim raadpleegt u de bot Framework-documentatie voor [het directe lijn spraak kanaal](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech).
 
-1. Vervang de teken `YourChannelSecret`reeksen `YourSpeechSubscriptionKey`, en `YourServiceRegion` met uw eigen waarden voor uw bot, spraak abonnement en [regio](regions.md).
+1. Vervang de teken reeksen `YourChannelSecret`, `YourSpeechSubscriptionKey` en `YourServiceRegion` door uw eigen waarden voor uw bot, spraak abonnement en [regio](regions.md).
 
-1. Voeg het volgende code fragment toe aan het einde van de methode hoofd `InitializeDialogServiceConnector`tekst van. Met deze code worden handlers ingesteld voor gebeurtenissen die zijn vertrouwd `DialogServiceConnector` door om de bot-activiteiten, de resultaten van spraak herkenning en andere informatie te communiceren.
+1. Voeg het volgende code fragment toe aan het einde van de methode hoofdtekst van `InitializeDialogServiceConnector`. Met deze code worden handlers ingesteld voor gebeurtenissen die zijn vertrouwd door `DialogServiceConnector` om de bot-activiteiten, de resultaten van spraak herkenning en andere informatie te communiceren.
 
     ```csharp
     // ActivityReceived is the main way your bot will communicate with the client 
@@ -372,7 +372,7 @@ Voer de volgende stappen uit om de code-behind-bron toe te voegen:
     };
     ```
 
-1. Voeg het volgende code fragment toe aan de hoofd tekst `ListenButton_ButtonClicked` van de methode `MainPage` in de klasse. `DialogServiceConnector` Met deze code wordt geluisterd, omdat u de configuratie al hebt ingesteld en de gebeurtenis-handlers hebt geregistreerd.
+1. Voeg het volgende code fragment toe aan de hoofd tekst van de methode `ListenButton_ButtonClicked` in de klasse `MainPage`. Met deze code wordt `DialogServiceConnector` ingesteld om te Luis teren, omdat u de configuratie al hebt ingesteld en de gebeurtenis-handlers hebt geregistreerd.
 
     ```csharp
     if (connector == null)
@@ -407,9 +407,9 @@ Voer de volgende stappen uit om de code-behind-bron toe te voegen:
 
 U bent nu klaar om uw toepassing te bouwen en te testen.
 
-1. Kies > build**Build Solution** in de menu balk om de toepassing **te bouwen.** De code moet nu zonder fouten worden gecompileerd.
+1. Kies in de menu balk **build** > **Build-oplossing** om de toepassing te bouwen. De code moet nu zonder fouten worden gecompileerd.
 
-1. Kies **fout** > **opsporing starten** (of druk op **F5**) om de toepassing te starten. Het venster **HelloWorld** wordt weer gegeven.
+1. Kies **fouten opsporen** > **fout opsporing starten** (of druk op **F5**) om de toepassing te starten. Het venster **HelloWorld** wordt weer gegeven.
 
    ![Voor beeld van UWP Virtual assistent C# -toepassing in-Quick Start](media/sdk/qs-virtual-assistant-uwp-helloworld-window.png)
 

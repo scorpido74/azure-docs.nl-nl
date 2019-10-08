@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/03/2018
 ms.author: yurid
-ms.openlocfilehash: a5d11be7d4fbe7f23b5584775c5d9a57c2214155
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: b2b4dc1aa9486e432fb2fae48343c21fba620221
+ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71200978"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "71996688"
 ---
 # <a name="azure-security-center-readiness-roadmap"></a>Roadmap naar Azure Security Center-gereedheid
 Dit document bevat een roadmap naar gereedheid die u helpt aan de slag te gaan met Azure Security Center.
@@ -89,23 +89,23 @@ Artikelen
 
 ## <a name="advanced-cloud-defense"></a>Geavanceerde cloudbeveiliging
 
-Virtuele machines in Azure kunnen gebruikmaken van geavanceerde cloudverdedigingsmogelijkheden in Security Center. Deze mogelijkheden bevatten JIT-toegang (Just in time) tot virtuele machines, en adaptieve toepassingsbesturingselementen.
+Virtuele machines in Azure kunnen gebruikmaken van geavanceerde cloudverdedigingsmogelijkheden in Security Center. Deze mogelijkheden omvatten just-in-time-toegang voor virtuele machines (VM'S) en adaptieve toepassings besturings elementen.
 
 Gebruik de volgende bronnen voor meer informatie over het gebruik van deze mogelijkheden in Security Center.
 
 Video's  
-* [Azure Security Center – Just-in-Time VM Access](https://youtu.be/UOQb2FcdQnU) (Azure Security Center – Just-in-Time-toegang tot VM's)
+* [Azure Security Center: Just-in-time-VM-toegang](https://youtu.be/UOQb2FcdQnU)
 * [Azure Security Center - Adaptieve besturingselementen voor toepassingen](https://youtu.be/wWWekI1Y9ck)
 
 Artikelen    
-* [Manage virtual machine access using just in time](https://docs.microsoft.com/azure/security-center/security-center-just-in-time) (VM-toegang beheren met behulp van JIT)
+* [Toegang tot virtuele machines beheren met Just-in-time](https://docs.microsoft.com/azure/security-center/security-center-just-in-time)
 * [Adaptieve toepassingsbesturingselementen in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-adaptive-application)
 
 ## <a name="hands-on-activities"></a>Praktijksessies
 
 * [Security Center-praktijksessies](https://www.microsoft.com/handsonlabs/SelfPacedLabs/?storyGuid=78871abf-6f35-4aa0-840f-d801f5cdbd72)
 * [Web Application Firewall (WAF) recommendation playbook in Security Center](https://gallery.technet.microsoft.com/ASC-Playbook-Protect-38bd47ff) (ASC-playbook: Servers beschermen met Web Application Firewall)
-* [Playbook voor Azure Security Center: Beveiligings waarschuwingen](https://gallery.technet.microsoft.com/Azure-Security-Center-f621a046)
+* [Playbook voor Azure Security Center: Beveiligings waarschuwingen @ no__t-0
 
 ## <a name="additional-resources"></a>Aanvullende resources
 * [Documentatiepagina van Security Center](https://docs.microsoft.com/azure/security-center/)

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 5/31/2019
 ms.author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: f78f7c37fafd7f0b29f76220206b9adfb62f52c9
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: d0314e94e627a42ab55f9e91017acac0cdc8b541
+ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71677754"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72001618"
 ---
 # <a name="log-alerts-in-azure-monitor"></a>Waarschuwingen registreren in Azure Monitor
 
@@ -127,16 +127,25 @@ Omdat de waarschuwing is geconfigureerd om te activeren op basis van het totale 
 
 ## <a name="log-search-alert-rule---firing-and-state"></a>Waarschuwings regel voor zoeken in Logboeken-activeren en status
 
-De waarschuwings regel voor logboek registratie werkt met de logica die wordt gebruikt door de gebruiker, zoals per configuratie en de gebruikte aangepaste analyse query. Omdat de bewakings logica, inclusief de exacte voor waarde of de reden waarom de waarschuwings regel moet worden geactiveerd, wordt ingekapseld in een analyse query, die kan verschillen in elke waarschuwings regel voor Logboeken. Azure-waarschuwingen hebben schaarse informatie over de specifieke onderliggende hoofd oorzaak (of) die wordt geëvalueerd wanneer aan de drempel waarde voor de waarschuwings regel voor logboek registratie wordt voldaan of wordt overschreden. Logboek waarschuwingen worden dus status-less genoemd. En de waarschuwings regels voor logboeken blijven geactiveerd, zolang er wordt voldaan aan de waarschuwings voorwaarde door het resultaat van de opgegeven aangepaste analyse query. Zonder dat de waarschuwing elke keer wordt opgelost, omdat de logica van de exacte hoofd oorzaak van de bewakings fout wordt gemaskeerd in de analyse query die door de gebruiker is gegeven. Er is momenteel geen mechanisme voor Azure Monitor waarschuwingen om de hoofd oorzaak te verhelpen.
+Waarschuwings regels voor zoeken in Logboeken werken alleen voor de logica die u in de query hebt gemaakt. Het waarschuwings systeem heeft geen andere context van de status van het systeem, uw intentie of de hoofd oorzaak geïmpliceerd door de query. Daarom worden logboek waarschuwingen aangeduid als status-less. De voor waarden worden geëvalueerd als ' waar ' of ' onwaar ' telkens wanneer ze worden uitgevoerd.  Telkens wanneer de evaluatie van de waarschuwings voorwaarde is ingesteld op ' TRUE ', wordt een waarschuwing geactiveerd, ongeacht of deze eerder is geactiveerd.    
 
-We zien hetzelfde met een praktisch voor beeld. Stel dat er een waarschuwings regel voor logboeken met de naam *Contoso-log-alert*is, volgens de configuratie in het voor [beeld van het type logboek waarschuwing voor het aantal resultaten](#example-of-number-of-records-type-log-alert) , waarbij de aangepaste waarschuwings query is ontworpen om 500-resultaat code in Logboeken te zoeken.
+Laten we dit gedrag zien in actie met een praktisch voor beeld. Stel dat er een waarschuwings regel voor logboeken met de naam *Contoso-log-alert*is geconfigureerd, zoals wordt weer gegeven in het [voor beeld dat is opgegeven voor het aantal logboek waarschuwingen van het type resultaten](#example-of-number-of-records-type-log-alert). De voor waarde is een aangepaste waarschuwings query die is ontworpen om te zoeken naar 500 resultaat code in Logboeken. Als er nog meer 500 resultaten worden gevonden in Logboeken, is de voor waarde van de waarschuwing waar. 
 
-- Om 1:05 uur wanneer contoso-log-alert is uitgevoerd door Azure-waarschuwingen, resulteert het resultaat van zoeken in Logboeken in nul records met resultaat code van 500. Omdat nul lager is dan de drempel waarde, wordt de waarschuwing niet geactiveerd.
-- Bij de volgende iteratie om 1:10 uur wanneer contoso-log-alert is uitgevoerd door Azure-waarschuwingen, wordt in het Zoek resultaat van de logboeken vijf records met resultaat code gegenereerd als 500. Omdat vijf de drempel waarde overschrijdt en de waarschuwing wordt geactiveerd, worden de gekoppelde acties geactiveerd.
-- Om 1:15 uur wanneer contoso-log-alert is uitgevoerd door Azure-waarschuwingen, wordt in het resultaat van de logboek zoekopdracht twee records met 500 resultaat code gegeven. Omdat twee de drempel waarde overschrijdt en de waarschuwing wordt geactiveerd, worden de gekoppelde acties geactiveerd.
-- Nu bij de volgende iteratie op 1:20 uur wanneer contoso-log-alert is uitgevoerd door Azure-waarschuwing, wordt het resultaat van een zoek opdracht voor zoeken in Logboeken opnieuw nul records met 500 resultaat code weer gegeven. Omdat nul lager is dan de drempel waarde, wordt de waarschuwing niet geactiveerd.
+Op elk interval hieronder evalueert het Azure Alerts-systeem de voor waarde voor de *aanmelding contoso-log-alert*.
 
-Maar in het bovenstaande voor beeld kan bij 1:15 PM-Azure-waarschuwingen niet worden vastgesteld dat de onderliggende problemen die op 1:10 aanwezig zijn, behouden blijven en als er net nieuwe fouten optreden. Als query die door de gebruiker wordt verschaft, kan rekening worden gehouden met eerdere records. Azure-waarschuwingen kunnen er als volgt uitzien. Omdat de logica voor de waarschuwing in de waarschuwings query wordt ingekapseld, worden de twee records met de resultaat code van 500 weer gegeven om 1:15 uur, al dan niet op 1:10 uur. Als contoso-log-alert wordt uitgevoerd om 1:15 uur, treedt er daarom een fout op, wordt de geconfigureerde actie opnieuw geactiveerd. Nu om 1:20 uur wanneer nul records worden gezien met 500-resultaat code, kan het zijn dat de oorzaak van de resultaat code van 500 op 1:10 uur en 1:15 PM nu is opgelost en dat Azure Monitor waarschuwingen de fout problemen met de 500 kunnen verhelpen, om dezelfde reden niet worden uitgevoerd s opnieuw. Contoso-log-alert wordt niet gewijzigd in opgelost in het Azure-waarschuwings dashboard en/of meldingen waarin de omleiding van de waarschuwing wordt verzonden. In plaats daarvan kan de gebruiker die de exacte voor waarde of reden begrijpt voor de logica die is inge sloten in de analyse query, [de waarschuwing als gesloten markeren](alerts-managing-alert-states.md) als dat nodig is.
+
+| Time    | Aantal records dat wordt geretourneerd door de zoek query van het logboek | Logboek voorwaarde evalution | Resultaat 
+| ------- | ----------| ----------| ------- 
+| 1:05 UUR | 0 records | 0 is niet > 0 dus onwaar |  De waarschuwing wordt niet geactiveerd. Er zijn geen acties aangeroepen.
+| 1:10 UUR | 2 records | 2 > 0 waar  | Waarschuwingen worden geactiveerd en actie groepen worden aangeroepen. Waarschuwings status actief.
+| 1:15 UUR | 5 records | 5 > 0 zo ja  | Waarschuwingen worden geactiveerd en actie groepen worden aangeroepen. Waarschuwings status actief.
+| 1:20 UUR | 0 records | 0 is niet > 0 dus onwaar |  De waarschuwing wordt niet geactiveerd. Er zijn geen acties aangeroepen. Waarschuwings status is links actief.
+
+Als voor beeld gebruikt u het vorige geval:
+
+Om 1:15 uur kan Azure-waarschuwingen niet bepalen of de onderliggende problemen die op 1:10 aanwezig zijn, behouden blijven en als de records net nieuwe fouten of herhaalde storingen op 1:10PM zijn. De query van de gebruiker kan al dan niet rekening houden met eerdere records en het systeem is niet bekend. Het systeem van Azure Alerts is aan de kant van de waarschuwing gebouwd en de waarschuwing en de bijbehorende acties worden opnieuw gestart om 1:15 uur. 
+
+Om 1:20 uur als er geen nul records worden weer gegeven met de 500-resultaat code, kan Azure-waarschuwingen niet zeker zijn dat de oorzaak van 500 resultaat code op 1:10 uur en 1:15 PM nu is opgelost. Het is niet bekend als de 500-fout problemen zich opnieuw voordoen. *Contoso-log-alert* wordt niet gewijzigd in **opgelost** in het Azure-waarschuwings dashboard en/of meldingen worden niet verzonden met de mede deling dat de waarschuwing is opgelost. Alleen u, die de exacte voor waarde of reden voor de logica die is inge sloten in de analyse query begrijpt, kan [de waarschuwing als gesloten markeren](alerts-managing-alert-states.md) .
 
 ## <a name="pricing-and-billing-of-log-alerts"></a>Prijzen en facturering van logboek waarschuwingen
 

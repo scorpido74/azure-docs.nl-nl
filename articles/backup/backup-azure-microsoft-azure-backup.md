@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: dacurwin
-ms.openlocfilehash: 3f427726a128eed426a64bc533075ba0cdde9544
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: 7a0f1f7dd79be250370fa97096a0cbf6dfc7f637
+ms.sourcegitcommit: 387da88b8262368c1b67fffea58fe881308db1c2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71241096"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "71982857"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Azure Backup Server installeren en upgraden
 
@@ -61,7 +61,7 @@ Als u de basis server niet wilt uitvoeren in azure, kunt u de-server uitvoeren o
 | Windows Server 2016 en de nieuwste SPs |64-bits |Standard, Datacenter, Essentials  |
 
 
-U kunt de DPM-opslag ontdubbelen met behulp van Windows Server ontdubbeling. Meer informatie over hoe [DPM en](https://technet.microsoft.com/library/dn891438.aspx) ontdubbeling samen werken wanneer ze worden geïmplementeerd in virtuele Hyper-V-machines.
+U kunt de DPM-opslag ontdubbelen met behulp van Windows Server ontdubbeling. Meer informatie over hoe [DPM en ontdubbeling](https://technet.microsoft.com/library/dn891438.aspx) samen werken wanneer ze worden geïmplementeerd in virtuele Hyper-V-machines.
 
 > [!NOTE]
 > Azure Backup Server is ontworpen om te worden uitgevoerd op een toegewezen server met één doel. U kunt Azure Backup Server niet installeren op:
@@ -115,7 +115,7 @@ De instelling voor opslagreplicatie bewerken:
 
     ![Back-up aan de slag](./media/backup-azure-microsoft-azure-backup/getting-started-backup.png)
 
-    Op de Blade aan de slag **met back-up** die wordt geopend, worden de **back** -updoelen automatisch geselecteerd.
+    Op de Blade aan de slag **met back-up** die wordt geopend, worden de **Back-updoelen** automatisch geselecteerd.
 
     ![Back-up-doel stellingen-standaard-geopend](./media/backup-azure-microsoft-azure-backup/getting-started.png)
 
@@ -184,11 +184,14 @@ Zodra het uitpakken is voltooid, schakelt u het selectie vakje in om de vers ge�
 
     Gebruik de volgende waarden voor de SSRS-configuratie: 
     - Service account: ' Ingebouwd account gebruiken ' moet netwerk service zijn
-    - URL van webservice: ' Virtuele map ' moet ReportServer_ zijn<SQLInstanceName>
-    - Database: DATABASENAME moet Report Server $<SQLInstanceName>
-    - URL van webportal: ' Virtuele map ' moet Reports_ zijn<SQLInstanceName>
+    - URL van webservice: ' Virtuele map ' moet ReportServer_ @ no__t-0 zijn
+    - Database: DATABASENAME moet Report Server $ <SQLInstanceName> zijn
+    - URL van webportal: ' Virtuele map ' moet Reports_ @ no__t-0 zijn
 
     Meer [informatie](https://docs.microsoft.com/sql/reporting-services/report-server/configure-and-administer-a-report-server-ssrs-native-mode?view=sql-server-2017) over de configuratie van SSRS.
+
+    > [!NOTE]
+    > Licentie verlening voor SQL Server die als de Data Base voor MABS wordt gebruikt, is onderhevig aan [micro soft Online Services-voor waarden](https://www.microsoft.com/en-us/licensing/product-licensing/products) (OST). Volgens OST kunnen SQL Server gebundeld met MABS alleen worden gebruikt als de Data Base voor MABS.
 
 4. Geef een locatie op voor de installatie van Microsoft Azure Backup Server-bestanden en klik op **volgende**.
 
@@ -235,7 +238,7 @@ MABS maakt gebruik van de System Center Data Protection Manager-beveiligings age
 
 In de volgende secties wordt beschreven hoe u beveiligingsagents voor client computers bijwerkt.
 
-1. Selecteer **beheer** > **agenten**in de Administrator-console van de back-upserver.
+1. Selecteer in de Administrator-console van de back-upserver **beheer** > -**agents**.
 
 2. Selecteer in het weergave paneel de client computers waarvoor u de beveiligings agent wilt bijwerken.
 
@@ -270,15 +273,15 @@ Hier volgen de stappen als u MABS moet verplaatsen naar een nieuwe server, terwi
 9. De DPMDB van SQL herstellen
 10. Vanaf de opdracht regel van de beheerder op de nieuwe server-cd naar Microsoft Azure Backup installatie locatie en bin-map
 
-    Voor beeld van pad: C:\Windows\system32 > CD "c:\Program Files\Microsoft Azure Backup\DPM\DPM\bin\"
+    Voor beeld van pad: C:\Windows\system32 > CD "c:\Program Files\Microsoft Azure Backup\DPM\DPM\bin @ no__t-0
 
 11. Als u Azure backup wilt uitvoeren, voert u DPMSYNC-SYNC uit
 
     Als u nieuwe schijven aan de DPM-opslag groep hebt toegevoegd in plaats van de oude te verplaatsen, voert u DPMSYNC-Reallocatereplica uit uit.
 
-## <a name="network-connectivity"></a>Netwerkverbinding
+## <a name="network-connectivity"></a>Netwerk verbinding
 
-Azure Backup Server moet verbinding hebben met de Azure Backup-service om het product goed te laten werken. Als u wilt controleren of de computer de verbinding met Azure heeft, ```Get-DPMCloudConnection``` gebruikt u de cmdlet in de Azure Backup Server Power shell-console. Als de uitvoer van de cmdlet TRUE is, is er verbinding, maar is er geen verbinding.
+Azure Backup Server moet verbinding hebben met de Azure Backup-service om het product goed te laten werken. Als u wilt controleren of de computer de verbinding met Azure heeft, gebruikt u de cmdlet ```Get-DPMCloudConnection``` in de Azure Backup Server Power shell-console. Als de uitvoer van de cmdlet TRUE is, is er verbinding, maar is er geen verbinding.
 
 Op hetzelfde moment moet het Azure-abonnement de status in orde hebben. Als u de status van uw abonnement wilt weten en wilt beheren, meldt u zich aan bij de [Portal voor abonnementen](https://account.windowsazure.com/Subscriptions).
 
@@ -307,9 +310,9 @@ Zodra de verbinding met Azure is hersteld op de Azure Backup Server machine, wor
 
 ### <a name="handling-subscription-states"></a>Abonnements statussen verwerken
 
-Het is mogelijk om een Azure-abonnement te maken van een *verlopen* of oningerichte status naar de *actieve* status. Dit heeft echter enkele gevolgen voor het product gedrag terwijl de status niet *actief*is:
+Het is mogelijk om een Azure-abonnement te maken van een *verlopen* of *oningerichte* status naar de *actieve* status. Dit heeft echter enkele gevolgen voor het product gedrag terwijl de status niet *actief*is:
 
-* Een ongedaan gemaakt abonnement verliest de functionaliteit voor de periode dat de inrichting ongedaan is gemaakt. Bij het inschakelen van actief wordt de product functionaliteit van Backup/Restore opnieuw *geactiveerd*. De back-upgegevens op de lokale schijf kunnen ook worden opgehaald als deze zijn opgeslagen met een voldoende lange Bewaar periode. De back-upgegevens in azure zijn echter IRRETRIEVABLY kwijt wanneer het abonnement de status unprovision heeft ingevoerd.
+* Een ongedaan gemaakt abonnement verliest de functionaliteit voor de periode dat *de inrichting* ongedaan is gemaakt. Bij het inschakelen van actief wordt de product functionaliteit van Backup/Restore opnieuw *geactiveerd*. De back-upgegevens op de lokale schijf kunnen ook worden opgehaald als deze zijn opgeslagen met een voldoende lange Bewaar periode. De back-upgegevens in azure zijn echter IRRETRIEVABLY kwijt wanneer het abonnement de status *unprovision* heeft ingevoerd.
 * Een *verlopen* abonnement verliest alleen de functionaliteit als deze weer *actief* is geweest. Back-ups die zijn gepland voor de periode dat het abonnement is *verlopen* , worden niet uitgevoerd.
 
 ## <a name="upgrade-mabs"></a>MABS bijwerken
@@ -351,7 +354,7 @@ U kunt ook verwijzen naar [Azure backup gerelateerde Veelgestelde vragen](backup
 
 ## <a name="next-steps"></a>Volgende stappen
 
-U kunt gedetailleerde informatie krijgen over het [voorbereiden van uw omgeving voor dpm](https://technet.microsoft.com/library/hh758176.aspx) op de micro soft TechNet-site. Het bevat ook informatie over de ondersteunde configuraties waarvoor Azure Backup Server kunnen worden geïmplementeerd en gebruikt. U kunt een reeks [Power shell](https://docs.microsoft.com/powershell/module/dataprotectionmanager/?view=systemcenter-ps-2016) -cmdlets gebruiken voor het uitvoeren van verschillende bewerkingen.
+U kunt gedetailleerde informatie krijgen over het [voorbereiden van uw omgeving voor dpm](https://technet.microsoft.com/library/hh758176.aspx) op de micro soft TechNet-site. Het bevat ook informatie over de ondersteunde configuraties waarvoor Azure Backup Server kunnen worden geïmplementeerd en gebruikt. U kunt een reeks [Power shell-cmdlets](https://docs.microsoft.com/powershell/module/dataprotectionmanager/?view=systemcenter-ps-2016) gebruiken voor het uitvoeren van verschillende bewerkingen.
 
 U kunt deze artikelen gebruiken om een beter inzicht te krijgen in de beveiliging van werk belasting met behulp van Microsoft Azure Backup-Server.
 

@@ -8,12 +8,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
-ms.openlocfilehash: 8d094113107d8c49e34779cf8be62ecd71cb8cce
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: 3bf90812abcef30b6bf300ba00ebd9f4186229cb
+ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71937208"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72000399"
 ---
 # <a name="using-reference-data-for-lookups-in-stream-analytics"></a>Referentie gegevens gebruiken voor Zoek opdrachten in Stream Analytics
 
@@ -60,7 +60,7 @@ Azure Stream Analytics automatisch wordt gescand op vernieuwde referentie gegeve
 > 
 > Een uitzonde ring hierop is wanneer de taak gegevens in een keer opnieuw moet verwerken of wanneer de taak voor het eerst wordt gestart. Op het moment dat de taak wordt gezocht naar de meest recente blob die is geproduceerd voordat de begin tijd van de taak is opgegeven. Dit wordt gedaan om ervoor te zorgen dat er een **niet-lege** referentie gegevensverzameling is wanneer de taak wordt gestart. Als er geen kan worden gevonden, wordt in de taak de volgende diagnose weer gegeven: `Initializing input without a valid reference data blob for UTC time <start time>`.
 
-[Azure Data Factory](https://azure.microsoft.com/documentation/services/data-factory/) kan worden gebruikt om de taak te organiseren van het maken van de bijgewerkte blobs die vereist zijn door stream Analytics om definities van referentie gegevens bij te werken. Een Data Factory is een cloudgebaseerde gegevensintegratieservice waarmee de verplaatsing en transformatie van gegevens wordt beheerd en geautomatiseerd. Data Factory ondersteunt het [maken van verbinding met een groot aantal Cloud-en on-premises gegevens opslag](../data-factory/copy-activity-overview.md) en het verplaatsen van gegevens eenvoudig volgens een regel matig schema dat u opgeeft. Bekijk dit github-voor [beeld](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/ReferenceDataRefreshForASAJobs)voor meer informatie en stapsgewijze instructies voor het instellen van een Data Factory pijp lijn voor het genereren van referentie gegevens voor stream Analytics die worden vernieuwd op basis van een vooraf gedefinieerd schema.
+[Azure Data Factory](https://azure.microsoft.com/documentation/services/data-factory/) kan worden gebruikt om de taak te organiseren van het maken van de bijgewerkte blobs die vereist zijn door stream Analytics om definities van referentie gegevens bij te werken. Een Data Factory is een cloudgebaseerde gegevensintegratieservice waarmee de verplaatsing en transformatie van gegevens wordt beheerd en geautomatiseerd. Data Factory ondersteunt het [maken van verbinding met een groot aantal Cloud-en on-premises gegevens opslag](../data-factory/copy-activity-overview.md) en het verplaatsen van gegevens eenvoudig volgens een regel matig schema dat u opgeeft. Bekijk dit github-voor [beeld](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/ReferenceDataRefreshForASAJobs)voor meer informatie en stapsgewijze instructies voor het instellen van een Data Factory pijp lijn voor het genereren van referentie gegevens voor stream Analytics die worden vernieuwd op basis van een vooraf gedefinieerd schema.
 
 ### <a name="tips-on-refreshing-blob-reference-data"></a>Tips voor het vernieuwen van BLOB-referentie gegevens
 
@@ -96,8 +96,8 @@ U kunt [Azure SQL database beheerde instantie](https://docs.microsoft.com/azure/
 |Gebruikersnaam|De gebruikers naam die aan uw Azure SQL Database is gekoppeld.|
 |Wachtwoord|Het wacht woord dat is gekoppeld aan uw Azure SQL Database.|
 |Periodiek vernieuwen|Met deze optie kunt u een vernieuwings frequentie kiezen. Als u aan kiest, kunt u de vernieuwings frequentie opgeven in DD: uu: MM.|
-|Momentopnamequery|Dit is de standaard optie voor query's waarmee de referentie gegevens uit uw SQL Database worden opgehaald.|
-|Verschilquery|Kies voor geavanceerde scenario's met grote gegevens sets en een korte vernieuwings frequentie om een Delta query toe te voegen.|
+|Momentopname query|Dit is de standaard optie voor query's waarmee de referentie gegevens uit uw SQL Database worden opgehaald.|
+|Delta query|Kies voor geavanceerde scenario's met grote gegevens sets en een korte vernieuwings frequentie om een Delta query toe te voegen.|
 
 ## <a name="size-limitation"></a>Grootte beperken
 
@@ -115,7 +115,7 @@ Ondersteuning voor compressie is niet beschikbaar voor referentiegegevens.
 
 ## <a name="next-steps"></a>Volgende stappen
 > [!div class="nextstepaction"]
-> [Snelstart: Een Stream Analytics taak maken met behulp van de Azure Portal](stream-analytics-quick-create-portal.md)
+> [Snelstart: Een Stream Analytics taak maken met behulp van de Azure Portal @ no__t-0
 
 <!--Link references-->
 [stream.analytics.developer.guide]: ../stream-analytics-developer-guide.md

@@ -10,12 +10,12 @@ ms.subservice: ink-recognizer
 ms.topic: quickstart
 ms.date: 09/23/2019
 ms.author: aahi
-ms.openlocfilehash: 36ff0fe4550b140a722ed25f4e372f7c88581211
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: e8cd6a4acbd1492bba1c9e88b523a7c44a44f009
+ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71212681"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "71996835"
 ---
 # <a name="quickstart-recognize-digital-ink-with-the-ink-recognizer-rest-api-and-java"></a>Quickstart: Digitale inkt herkennen met de inkt Recognizer REST API en Java
 
@@ -31,7 +31,7 @@ De bron code voor deze snelstartgids vindt u op [github](https://go.microsoft.co
 
 ## <a name="prerequisites"></a>Vereisten
 
-- De [Java&trade; Development Kit (JDK) 7](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) of hoger.
+- De [Java @ no__t-1 Development Kit (JDK) 7](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) of hoger.
 
 - Deze bibliotheken importeren vanuit de Maven-opslag plaats
     - [Json in Java](https://mvnrepository.com/artifact/org.json/json) -pakket
@@ -39,86 +39,41 @@ De bron code voor deze snelstartgids vindt u op [github](https://go.microsoft.co
 
 - De voorbeeld gegevens voor de inkt lijn voor deze snelstartgids vindt u op [github](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/InkRecognition/quickstart/example-ink-strokes.json).
 
-[!INCLUDE [cognitive-services-ink-recognizer-signup-requirements](../../../../includes/cognitive-services-ink-recognizer-signup-requirements.md)]
+### <a name="create-an-ink-recognizer-resource"></a>Een bron voor een inkt herkenning maken
+
+[!INCLUDE [creating an ink recognizer resource](../includes/setup-instructions.md)]
 
 ## <a name="create-a-new-application"></a>Een nieuwe toepassing maken
 
 1. Maak een nieuw Java-project in uw favoriete IDE of editor en importeer de volgende bibliotheken.
-
-    ```java
-    import org.apache.http.HttpEntity;
-    import org.apache.http.client.methods.CloseableHttpResponse;
-    import org.apache.http.client.methods.HttpPost;
-    import org.apache.http.entity.StringEntity;
-    import org.apache.http.impl.client.CloseableHttpClient;
-    import org.apache.http.impl.client.HttpClients;
-    import org.apache.http.util.EntityUtils;
-    import java.io.IOException;
-    import java.nio.file.Files;
-    import java.nio.file.Paths;
-    ```
-
-2. Maak variabelen voor uw abonnements sleutel en uw eind punt. Vervang het onderstaande eind punt door de naam die voor uw inkt Recognizer-resource is gegenereerd. Voeg deze toe aan de URI van de inkt herkenning om verbinding te maken met de API.
-
-    ```java
-    // Replace the subscriptionKey string value with your valid subscription key.
-    static final String subscriptionKey = "YOUR_SUBSCRIPTION_KEY";
-    // Replace the dataPath string with a path to the JSON formatted ink stroke data file.
-    static final String dataPath = "PATH_TO_INK_STROKE_DATA";
     
-    static final String endpoint = "https://<your-custom-subdomain>.cognitiveservices.azure.com";
-    static final String inkRecognitionUrl = "/inkrecognizer/v1.0-preview/recognize";
-    ```
+    [!code-java[import statements](~/cognitive-services-rest-samples/java/InkRecognition/quickstart/RecognizeInk.java?name=imports)]
+
+2. Maak variabelen voor uw abonnements sleutel, eind punt en JSON-bestand. Het eind punt wordt later toegevoegd aan de URI van de inkt herkenning.
+
+    [!code-java[initial vars](~/cognitive-services-rest-samples/java/InkRecognition/quickstart/RecognizeInk.java?name=vars)]
 
 ## <a name="create-a-function-to-send-requests"></a>Een functie maken om aanvragen te verzenden
 
-1. Maak een nieuwe functie met `sendRequest()` de naam die de hierboven gemaakte variabelen accepteert. Voer vervolgens de volgende stappen uit.
+1. Maak een nieuwe functie met de naam `sendRequest()` waarmee de hierboven gemaakte variabelen worden gebruikt. Voer vervolgens de volgende stappen uit.
 
-2. Maak een `CloseableHttpClient` object waarmee aanvragen kunnen worden verzonden naar de API. De aanvraag verzenden naar een `HttpPut` aanvraag object door uw eind punt te combi neren en de URL voor de Handschrift herkenning.
+2. Maak een `CloseableHttpClient`-object waarmee aanvragen kunnen worden verzonden naar de API. De aanvraag verzenden naar een `HttpPut`-aanvraag object door uw eind punt en de URL voor de Handschrift herkenning te combi neren.
 
-3. Gebruik de functie van `setHeader()` de aanvraag om de `Content-Type` header in `application/json`te stellen op en voeg uw abonnements sleutel `Ocp-Apim-Subscription-Key` toe aan de koptekst.
+3. Gebruik de functie `setHeader()` van de aanvraag om de `Content-Type`-header in te stellen op `application/json` en voeg uw abonnements sleutel toe aan de koptekst van de `Ocp-Apim-Subscription-Key`.
 
-4. Gebruik de functie van `setEntity()` de aanvraag voor de gegevens die moeten worden verzonden.   
+4. Gebruik de functie `setEntity()` van de aanvraag voor de gegevens die moeten worden verzonden.   
 
-5. Gebruik de functie van `execute()` de client om de aanvraag te verzenden en op te slaan `CloseableHttpResponse` in een-object. 
+5. Gebruik de `execute()`-functie van de client om de aanvraag te verzenden en op te slaan in een `CloseableHttpResponse`-object. 
 
-6. Maak een `HttpEntity` object om de antwoord inhoud op te slaan. De inhoud ophalen met `getEntity()`. Als het antwoord niet leeg is, retourneert u het.
+6. Maak een `HttpEntity`-object om de antwoord inhoud op te slaan. Haal de inhoud op met `getEntity()`. Als het antwoord niet leeg is, retourneert u het.
     
-    ```java
-    static String sendRequest(String apiAddress, String endpoint, String subscriptionKey, String requestData) {
-        try (CloseableHttpClient client = HttpClients.createDefault()) {
-            HttpPut request = new HttpPut(endpoint + apiAddress);
-            // Request headers.
-            request.setHeader("Content-Type", "application/json");
-            request.setHeader("Ocp-Apim-Subscription-Key", subscriptionKey);
-            request.setEntity(new StringEntity(requestData));
-            try (CloseableHttpResponse response = client.execute(request)) {
-                HttpEntity respEntity = response.getEntity();
-                if (respEntity != null) {
-                    return EntityUtils.toString(respEntity, "utf-8");
-                }
-            } catch (Exception respEx) {
-                respEx.printStackTrace();
-            }
-        } catch (IOException ex) {
-            System.err.println("Exception recognizing ink: " + ex.getMessage());
-            ex.printStackTrace();
-        }
-        return null;
-    }
-    ```
+    [!code-java[send a request](~/cognitive-services-rest-samples/java/InkRecognition/quickstart/RecognizeInk.java?name=sendRequest)]
 
 ## <a name="send-an-ink-recognition-request"></a>Een aanvraag voor inkt herkenning verzenden
 
-Maak een methode die `recognizeInk()` wordt aangeroepen om uw inkt lijn gegevens te herkennen. Roep de `sendRequest()` hierboven gemaakte methode aan met uw eind punt, URL, abonnements sleutel en JSON-gegevens. Bekijk het resultaat en druk het af op de-console.
+Maak een methode met de naam `recognizeInk()` om uw inkt lijn gegevens te herkennen. Roep de `sendRequest()`-methode die hierboven is gemaakt aan met uw eind punt, URL, abonnements sleutel en JSON-gegevens. Bekijk het resultaat en druk het af op de-console.
 
-```java
-static void recognizeInk(String requestData) {
-    System.out.println("Sending an ink recognition request");
-    String result = sendRequest(inkRecognitionUrl, endpoint, subscriptionKey, requestData);
-    System.out.println(result);
-}
-```
+[!code-java[recognizeInk](~/cognitive-services-rest-samples/java/InkRecognition/quickstart/RecognizeInk.java?name=recognizeInk)]
 
 ## <a name="load-your-digital-ink-data-and-send-the-request"></a>Laad de gegevens van uw digitale inkt en verzend de aanvraag
 
@@ -126,12 +81,8 @@ static void recognizeInk(String requestData) {
 
 2. Roep de functie voor inkt herkenning aan die hierboven is gemaakt.
     
-    ```java
-    public static void main(String[] args) throws Exception {
-        String requestData = new String(Files.readAllBytes(Paths.get(dataPath)), "UTF-8");
-        recognizeInk(requestData);
-    }
-    ```
+    [!code-java[main method](~/cognitive-services-rest-samples/java/InkRecognition/quickstart/RecognizeInk.java?name=main)]
+
 
 ## <a name="run-the-application-and-view-the-response"></a>De toepassing uitvoeren en het antwoord weer geven
 

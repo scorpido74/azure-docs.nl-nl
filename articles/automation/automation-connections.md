@@ -1,6 +1,6 @@
 ---
-title: Verbindingsassets in Azure Automation
-description: Verbindingsassets in Azure Automation bevat de vereiste informatie op verbinding maken met een externe service of toepassing vanuit een runbook of DSC-configuratie. In dit artikel wordt uitgelegd dat de details van verbindingen en hoe u werkt met hen in tekstuele en grafische ontwerpen.
+title: Verbindings assets in Azure Automation
+description: Verbindings assets in Azure Automation bevatten de vereiste informatie om verbinding te maken met een externe service of toepassing vanuit een runbook of DSC-configuratie. In dit artikel worden de details van verbindingen beschreven en wordt uitgelegd hoe u deze kunt gebruiken in tekstuele en grafische ontwerpen.
 services: automation
 ms.service: automation
 ms.subservice: shared-capabilities
@@ -9,39 +9,39 @@ ms.author: robreed
 ms.date: 01/16/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 6b1f9cbececcf02962cdde9741764999a920abf8
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 90b2234607ad120c43e241fe4ae5222fe285803e
+ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67478667"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72001657"
 ---
-# <a name="connection-assets-in-azure-automation"></a>Verbindingsassets in Azure Automation
+# <a name="connection-assets-in-azure-automation"></a>Verbindings assets in Azure Automation
 
-Een Automation-verbindingsasset bevat de vereiste informatie op verbinding maken met een externe service of toepassing vanuit een runbook of DSC-configuratie. Dit kan ook gegevens die vereist zijn voor verificatie, zoals een gebruikersnaam en wachtwoord, naast verbindingsinformatie, zoals een URL of een poort. De waarde van een verbinding is het houden van alle eigenschappen voor het verbinden met een bepaalde toepassing in een activum in plaats van het maken van meerdere variabelen. De gebruiker de waarden voor een verbinding op één plek kunt bewerken en u kunt de naam van een verbinding doorgeven aan een runbook of DSC-configuratie in één parameter. De eigenschappen van een verbinding kunnen worden geopend in het runbook of DSC-configuratie met de **Get-AutomationConnection** activiteit. 
+Een Automation-verbindings element bevat de informatie die nodig is om verbinding te maken met een externe service of toepassing vanuit een runbook of DSC-configuratie. Dit kan informatie bevatten die vereist is voor verificatie, zoals een gebruikers naam en wacht woord, naast de verbindings gegevens zoals een URL of poort. De waarde van een verbinding houdt in dat alle eigenschappen voor het verbinden met een bepaalde toepassing in één activum worden bewaard, in plaats van meerdere variabelen te maken. De gebruiker kan de waarden voor een verbinding op één plek bewerken en u kunt de naam van een verbinding met een runbook of DSC-configuratie door geven in één para meter. De eigenschappen voor een verbinding zijn toegankelijk in het runbook of de DSC-configuratie met de activiteit **Get-AutomationConnection** .
 
-Wanneer u een verbinding maakt, moet u een *verbindingstype*. Het verbindingstype is een sjabloon die een set eigenschappen definieert. De verbinding definieert de waarden voor elke eigenschap die is gedefinieerd in het verbindingstype. Verbindingstypen worden toegevoegd aan Azure Automation in integratiemodules of die zijn gemaakt met de [API van Azure Automation](/previous-versions/azure/reference/mt163818(v=azure.100)) als de integratiemodule een verbindingstype bevat en wordt geïmporteerd in uw Automation-account. Anders moet u een bestand met metagegevens om op te geven van een Automation-verbindingstype te maken.  Zie voor meer informatie over dit [integratiemodules](automation-integration-modules.md).  
+Wanneer u een verbinding maakt, moet u een *verbindings type*opgeven. Het verbindings type is een sjabloon die een set eigenschappen definieert. De verbinding definieert waarden voor elke eigenschap die in het verbindings type is gedefinieerd. Verbindings typen worden toegevoegd aan Azure Automation in integratie modules of worden gemaakt met de [Azure Automation-API](/previous-versions/azure/reference/mt163818(v=azure.100)) als de integratie module een verbindings type bevat en wordt geïmporteerd in uw Automation-account. Anders moet u een meta gegevensbestand maken om een type Automation-verbinding op te geven.  Zie [integratie modules](automation-integration-modules.md)voor meer informatie hierover.
 
 >[!NOTE]
->Beveiligde activa in Azure Automation zijn referenties, certificaten, verbindingen en gecodeerde variabelen. Deze apparaten worden versleuteld en opgeslagen in Azure Automation met behulp van een unieke sleutel die wordt gegenereerd voor elk automation-account. Deze sleutel wordt opgeslagen in een systeem beheerd Key Vault. Voordat u een beveiligd bedrijfsmiddel opslaat, is de sleutel geladen uit Key Vault en vervolgens worden gebruikt voor het versleutelen van de asset. Dit proces wordt beheerd door Azure Automation.
+>Beveilig assets in Azure Automation referenties, certificaten, verbindingen en versleutelde variabelen bevatten. Deze assets worden versleuteld en opgeslagen in Azure Automation met behulp van een unieke sleutel die wordt gegenereerd voor elk Automation-account. Deze sleutel wordt opgeslagen in een door het systeem beheerde Key Vault. Voordat u een beveiligde Asset opslaat, wordt de sleutel geladen uit Key Vault en vervolgens gebruikt om de Asset te versleutelen. Dit proces wordt beheerd door Azure Automation.
 
 ## <a name="connection-types"></a>Verbindingstypen
 
-Er zijn drie typen van ingebouwde verbindingen beschikbaar in Azure Automation:
+Er zijn drie typen ingebouwde verbindingen beschikbaar in Azure Automation:
 
-* **Azure** -deze verbinding kan worden gebruikt om klassieke resources te beheren.
-* **AzureClassicCertificate** -deze verbinding wordt gebruikt door de **AzureClassicRunAs** account.
-* **AzureServicePrincipal** -deze verbinding wordt gebruikt door de **AzureRunAs** account.
+* **Azure** : deze verbinding kan worden gebruikt om klassieke resources te beheren.
+* **AzureClassicCertificate** : deze verbinding wordt gebruikt door het **AzureClassicRunAs** -account.
+* **AzureServicePrincipal** : deze verbinding wordt gebruikt door het **AzureRunAs** -account.
 
-In de meeste gevallen niet hoeft te maken van een verbindingsresource wanneer deze is gemaakt bij het maken van een [RunAs-account](manage-runas-account.md).
+In de meeste gevallen hoeft u geen verbindings bron te maken omdat deze wordt gemaakt wanneer u een runas- [account](manage-runas-account.md)maakt.
 
 ## <a name="windows-powershell-cmdlets"></a>Windows PowerShell-Cmdlets
 
-De cmdlets in de volgende tabel worden gebruikt voor het maken en beheren van Automation-verbindingen met Windows PowerShell. Ze geleverd als onderdeel van de [Azure PowerShell-module](/powershell/azure/overview) die beschikbaar is voor gebruik in Automation-runbooks en DSC-configuraties.
+De cmdlets in de volgende tabel worden gebruikt voor het maken en beheren van Automation-verbindingen met Windows Power shell. Ze worden geleverd als onderdeel van de [Azure PowerShell-module](/powershell/azure/overview) die beschikbaar is voor gebruik in Automation-RUNBOOKS en DSC-configuraties.
 
 |Cmdlet|Description|
 |:---|:---|
-|[Get-AzureRmAutomationConnection](/powershell/module/azurerm.automation/get-azurermautomationconnection)|Hiermee haalt u een verbinding. Bevat een hash-tabel met de waarden van de velden van de verbinding.|
+|[Get-AzureRmAutomationConnection](/powershell/module/azurerm.automation/get-azurermautomationconnection)|Hiermee haalt u een verbinding op. Bevat een hash-tabel met de waarden van de velden van de verbinding.|
 |[New-AzureRmAutomationConnection](/powershell/module/azurerm.automation/new-azurermautomationconnection)|Hiermee maakt u een nieuwe verbinding.|
 |[Remove-AzureRmAutomationConnection](/powershell/module/azurerm.automation/remove-azurermautomationconnection)|Verwijder een bestaande verbinding.|
 |[Set-AzureRmAutomationConnectionFieldValue](/powershell/module/azurerm.automation/set-azurermautomationconnectionfieldvalue)|Hiermee stelt u de waarde van een bepaald veld voor een bestaande verbinding.|
@@ -52,37 +52,37 @@ De activiteiten in de volgende tabel worden gebruikt voor toegang tot verbinding
 
 |Activiteiten|Description|
 |---|---|
-|[Get-AutomationConnection](/powershell/module/servicemanagement/azure/get-azureautomationconnection?view=azuresmps-3.7.0)|Hiermee haalt u een verbinding moet worden gebruikt. Retourneert een hashtabel met de eigenschappen van de verbinding.|
+|[Get-AutomationConnection](/powershell/module/servicemanagement/azure/get-azureautomationconnection?view=azuresmps-3.7.0)|Hiermee haalt u een verbinding op die moet worden gebruikt. Retourneert een hash-tabel met de eigenschappen van de verbinding.|
 
->[!NOTE] 
->Vermijd het gebruik van variabelen met de parameter-Name van **Get-AutomationConnection** omdat dit detecteren van afhankelijkheden tussen runbooks of DSC-configuraties en verbindingsassets tijdens de ontwerpfase bemoeilijken kan.
+>[!NOTE]
+>Vermijd het gebruik van variabelen met de para meter – name van **Get-AutomationConnection** , omdat dit het detecteren van afhankelijkheden tussen RUNBOOKS of DSC-configuraties en verbindings assets tijdens de ontwerp fase kan bemoeilijken.
 
- 
-## <a name="python2-functions"></a>Python2-functies 
-De functie in de volgende tabel wordt gebruikt voor toegang tot verbindingen in een Python2-runbook. 
 
-| Function | Description | 
-|:---|:---| 
-| automationassets.get_automation_connection | Hiermee haalt u een verbinding. Retourneert een woordenlijst met de eigenschappen van de verbinding. | 
+## <a name="python2-functions"></a>Python2-functies
+De functie in de volgende tabel wordt gebruikt voor toegang tot verbindingen in een Python2-runbook.
 
-> [!NOTE] 
-> U moet de module 'automationassets' aan de bovenkant van uw Python-runbook importeren om toegang tot de functies van de asset.
+| Function | Description |
+|:---|:---|
+| automationassets.get_automation_connection | Hiermee haalt u een verbinding op. Retourneert een woorden lijst met de eigenschappen van de verbinding. |
 
-## <a name="creating-a-new-connection"></a>Het maken van een nieuwe verbinding
+> [!NOTE]
+> U moet de module ' automationassets ' boven aan uw python-runbook importeren om toegang te krijgen tot de Asset-functies.
 
-### <a name="to-create-a-new-connection-with-the-azure-portal"></a>Een nieuwe verbinding maken met de Azure-portal
+## <a name="creating-a-new-connection"></a>Een nieuwe verbinding maken
 
-1. Via uw automation-account, klikt u op de **activa** onderdeel om te openen de **activa** blade.
-2. Klik op de **verbindingen** onderdeel om te openen de **verbindingen** blade.
-3. Klik op **een verbinding toevoegen** aan de bovenkant van de blade.
-4. In de **Type** vervolgkeuzelijst, selecteer het type verbinding die u wilt maken. Het formulier worden de eigenschappen voor dat type aanwezig.
-5. Vul het formulier in en klikt u op **maken** om op te slaan van de nieuwe verbinding.
+### <a name="to-create-a-new-connection-with-the-azure-portal"></a>Een nieuwe verbinding maken met de Azure Portal
 
-### <a name="to-create-a-new-connection-with-windows-powershell"></a>Een nieuwe verbinding maken met Windows PowerShell
+1. Klik in uw Automation-account op het onderdeel **assets** om de Blade **assets** te openen.
+2. Klik op het onderdeel **verbindingen** om de Blade **verbindingen** te openen.
+3. Klik boven aan de Blade op **een verbinding toevoegen** .
+4. Selecteer in de vervolg keuzelijst **type** het type verbinding dat u wilt maken. In het formulier worden de eigenschappen voor dat specifieke type weer gegeven.
+5. Vul het formulier in en klik op **maken** om de nieuwe verbinding op te slaan.
 
-Een nieuwe verbinding maken met Windows PowerShell met behulp van de [New-AzureRmAutomationConnection](/powershell/module/azurerm.automation/new-azurermautomationconnection) cmdlet. Deze cmdlet heeft een parameter met de naam **ConnectionFieldValues** die wordt verwacht dat een [hash-tabel](https://technet.microsoft.com/library/hh847780.aspx) waarden voor elk van de eigenschappen die zijn gedefinieerd door het verbindingstype definiëren.
+### <a name="to-create-a-new-connection-with-windows-powershell"></a>Een nieuwe verbinding maken met Windows Power shell
 
-Als u bekend met de automatisering bent [uitvoeren als-account](automation-sec-configure-azure-runas-account.md) om te verifiëren met behulp van de service-principal runbooks, de PowerShell-script, opgegeven als een alternatief voor het uitvoeren als-account maken vanuit de portal, maakt u een nieuwe verbinding de Asset met behulp van de volgende voorbeeldopdrachten.  
+Maak een nieuwe verbinding met Windows Power shell met de cmdlet [New-AzureRmAutomationConnection](/powershell/module/azurerm.automation/new-azurermautomationconnection) . Deze cmdlet heeft een para meter met de naam **ConnectionFieldValues** die een [hash-tabel](https://technet.microsoft.com/library/hh847780.aspx) verwacht die waarden definieert voor elk van de eigenschappen die worden gedefinieerd door het verbindings type.
+
+Als u bekend bent met het [uitvoeren als-account](automation-sec-configure-azure-runas-account.md) van Automation om runbooks te verifiëren met behulp van de Service-Principal, het Power shell-script, dat als alternatief voor het maken van het uitvoeren als-account uit de portal is gemaakt, maakt u een nieuw verbindings element met behulp van de volgende voorbeeld opdrachten.
 
 ```powershell
 $ConnectionAssetName = "AzureRunAsConnection"
@@ -90,42 +90,41 @@ $ConnectionFieldValues = @{"ApplicationId" = $Application.ApplicationId; "Tenant
 New-AzureRmAutomationConnection -ResourceGroupName $ResourceGroup -AutomationAccountName $AutomationAccountName -Name $ConnectionAssetName -ConnectionTypeName AzureServicePrincipal -ConnectionFieldValues $ConnectionFieldValues
 ```
 
-U kunt het script gebruiken om de verbindingsasset niet maken omdat wanneer u uw Automation-account maakt, deze automatisch verschillende algemene modules standaard samen met het verbindingstype omvat zijn **AzureServicePrincipal** aan Maak de **AzureRunAsConnection** verbindingstype-asset.  Dit is belangrijk rekening moet houden, omdat het als u probeert te maken van een nieuwe verbindingsasset verbinding maken met een service of toepassing met een andere verificatiemethode, dit mislukt omdat het verbindingstype is niet gedefinieerd in uw Automation-account.  Voor meer informatie over het maken van uw eigen verbindingstype voor uw aangepaste of de module op basis van de [PowerShell Gallery](https://www.powershellgallery.com), Zie [integratiemodules](automation-integration-modules.md)
-  
-## <a name="using-a-connection-in-a-runbook-or-dsc-configuration"></a>Met behulp van een verbinding in een runbook of DSC-configuratie
+U kunt het script gebruiken om het verbindings element te maken. Wanneer u uw Automation-account maakt, bevat het automatisch diverse algemene modules, samen met het verbindings type **AzureServicePrincipal** voor het maken van de  **AzureRunAsConnection** -verbindings Asset.  Het is belang rijk dat u rekening houdt met het volgende: als u een nieuw verbindings element maakt om verbinding te maken met een service of toepassing met een andere verificatie methode, mislukt dit omdat het verbindings type niet al is gedefinieerd in uw Automation-account.  Zie [integratie modules](automation-integration-modules.md) voor meer informatie over het maken van uw eigen verbindings type voor uw aangepaste of module van de [PowerShell Gallery](https://www.powershellgallery.com).
 
-Ophalen van een verbinding in een runbook of DSC-configuratie met de **Get-AutomationConnection** cmdlet.  U kunt geen gebruiken de [Get-AzureRmAutomationConnection](/powershell/module/azurerm.automation/get-azurermautomationconnection) activiteit.  Deze activiteit haalt de waarden van de andere velden in de verbinding en retourneert ze als een [hash-tabel](https://go.microsoft.com/fwlink/?LinkID=324844) die vervolgens kan worden gebruikt met de juiste opdrachten in het runbook of DSC-configuratie.
+## <a name="using-a-connection-in-a-runbook-or-dsc-configuration"></a>Een verbinding gebruiken in een runbook of DSC-configuratie
 
-### <a name="textual-runbook-sample"></a>Tekstuele runbook-voorbeeld
+U haalt een verbinding op in een runbook of DSC-configuratie met de cmdlet **Get-AutomationConnection** .  U kunt de activiteit [Get-AzureRmAutomationConnection](/powershell/module/azurerm.automation/get-azurermautomationconnection) niet gebruiken.  Met deze activiteit worden de waarden van de verschillende velden in de verbinding opgehaald en geretourneerd als een [hash-tabel](https://go.microsoft.com/fwlink/?LinkID=324844) die vervolgens kan worden gebruikt met de juiste opdrachten in het runbook of de DSC-configuratie.
 
-De volgende voorbeeldopdrachten laten zien hoe de uitvoeren als-account eerder aangegeven, om te verifiëren met Azure Resource Manager-resources in uw runbook gebruiken.  Het verbindingsasset dat het Run As-account, die verwijst naar het certificaat op basis van service-principal, niet de referenties die wordt gebruikt.  
+### <a name="textual-runbook-sample"></a>Voor beeld van tekst-runbook
+
+De volgende voorbeeld opdrachten laten zien hoe u het eerder genoemde run as-account gebruikt om te verifiëren met Azure Resource Manager-resources in uw runbook.  Hierbij wordt gebruikgemaakt van het verbindings element van het run as-account, dat verwijst naar de Service-Principal op basis van certificaten en niet de referenties.
 
 ```powershell
-$Conn = Get-AutomationConnection -Name AzureRunAsConnection 
+$Conn = Get-AutomationConnection -Name AzureRunAsConnection
 Connect-AzureRmAccount -ServicePrincipal -Tenant $Conn.TenantID -ApplicationId $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint
 ```
 
 > [!IMPORTANT]
-> **Add-AzureRmAccount** is nu een alias voor **Connect-AzureRMAccount**. Wanneer uw bibliotheek zoeken items, als u niet ziet **Connect-AzureRMAccount**, kunt u **Add-AzureRmAccount**, of u kunt uw modules bijwerken in uw Automation-Account.
+> **Add-AzureRmAccount** is nu een alias voor **Connect-AzureRmAccount**. Als u de bibliotheek items zoekt en u geen **Connect-AzureRMAccount**ziet, kunt u **add-AzureRMAccount**gebruiken, maar u kunt ook uw modules bijwerken in uw Automation-account.
 
-### <a name="graphical-runbook-samples"></a>Voorbeelden van een grafisch runbook
+### <a name="graphical-runbook-samples"></a>Voor beelden van grafische runbook
 
-U wilt toevoegen een **Get-AutomationConnection** activiteit aan een grafisch runbook door te selecteren met de rechtermuisknop op de verbinding in het deelvenster bibliotheek van de grafische editor **toevoegen aan papier**.
+U voegt een **Get-AutomationConnection-** activiteit toe aan een grafisch runbook door met de rechter muisknop op de verbinding in het deel venster Bibliotheek van de grafische editor te klikken en **toevoegen aan canvas**te selecteren.
 
-![Toevoegen aan papier](media/automation-connections/connection-add-canvas.png)
+![toevoegen aan canvas](media/automation-connections/connection-add-canvas.png)
 
-De volgende afbeelding toont een voorbeeld van het gebruik van een verbinding in een grafisch runbook.  Dit is hetzelfde voorbeeld hierboven voor de verificatie met behulp van de uitvoeren als-account met een tekstuele runbook.  In dit voorbeeld wordt de **constante waarde** -gegevensset naar de **uitvoeren als-verbinding ophalen** activiteit die een verbindingsobject voor verificatie gebruikt.  Een [pijplijn koppeling](automation-graphical-authoring-intro.md#links-and-workflow) wordt gebruikt, omdat de parameterset ServicePrincipalCertificate één object verwacht.
+In de volgende afbeelding ziet u een voor beeld van het gebruik van een verbinding in een grafisch runbook.  Dit is hetzelfde voor beeld dat hierboven wordt weer gegeven voor verificatie met behulp van het uitvoeren als-account met een tekst runbook.  In dit voor beeld wordt de gegevensset voor **constante waarden** gebruikt voor de activiteit **runas-verbinding ophalen** die gebruikmaakt van een verbindings object voor verificatie.  Er wordt hier een [pijplijn koppeling](automation-graphical-authoring-intro.md#links-and-workflow) gebruikt omdat de parameterset serviceprincipalcertificate-parameterset één object verwacht.
 
 ![verbindingen ophalen](media/automation-connections/automation-get-connection-object.png)
 
-### <a name="python2-runbook-sample"></a>Voorbeeld van Python2-runbook
-Het volgende voorbeeld toont hoe u verifieert met behulp van de uitvoeren als-verbinding in een Python2-runbook.
+### <a name="python2-runbook-sample"></a>Python2 runbook-voor beeld
+In het volgende voor beeld ziet u hoe u kunt verifiëren met behulp van de run as-verbinding in een Python2-runbook.
 
 ```python
 """ Tutorial to show how to authenticate against Azure resource manager resources """
 import azure.mgmt.resource
 import automationassets
-
 
 def get_automation_runas_credential(runas_connection):
     """ Returns credentials to authenticate against Azure resoruce manager """
@@ -165,7 +164,7 @@ azure_credential = get_automation_runas_credential(runas_connection)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Beoordeling [koppelingen in het grafisch ontwerpen](automation-graphical-authoring-intro.md#links-and-workflow) om te begrijpen hoe u directe en de Controlestroom van logica in uw runbooks.  
+- Bekijk [koppelingen in grafische ontwerpen](automation-graphical-authoring-intro.md#links-and-workflow) om te begrijpen hoe u de stroom van logica in uw runbooks kunt door sturen en beheren.
 
-- Zie voor meer informatie over het gebruik van Azure Automation van PowerShell-modules en aanbevolen procedures voor het maken van uw eigen PowerShell-modules om te werken als integratiemodules binnen Azure Automation, [integratiemodules](automation-integration-modules.md).  
+- Zie [integratie modules](automation-integration-modules.md)voor meer informatie Azure Automation over het gebruik van Power shell-modules en aanbevolen procedures voor het maken van uw eigen Power shell-modules voor het werken met integratie modules in azure Automation.
 

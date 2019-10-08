@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/18/2019
 ms.author: memildin
-ms.openlocfilehash: 488210e4f2c5d3a8a978079d0c7293ce091d998b
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: fce8c75dadbb255a357b85bf85049423f50d18ec
+ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71338778"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "71996348"
 ---
 # <a name="working-with-security-policies"></a>Werken met beveiligingsbeleid
 
 In dit artikel wordt uitgelegd hoe beveiligings beleid wordt geconfigureerd en hoe u deze in Security Center kunt weer geven. Azure Security Center wijst automatisch het [ingebouwde beveiligings beleid](security-center-policy-definitions.md) toe voor elk abonnement dat onboarded is. U kunt ze configureren in [Azure Policy](../governance/policy/overview.md), waarmee u ook beleid kunt instellen voor verschillende beheer groepen en meerdere abonnementen.
 
-Voor instructies over het instellen van beleids regels met behulp [van Power shell raadpleegt u Quick Start: Een beleids toewijzing maken om niet-compatibele resources te identificeren met behulp](../governance/policy/assign-policy-powershell.md)van de module Azure PowerShell.
+Zie [Quickstart voor instructies over het instellen van beleids regels met behulp van Power shell: Een beleids toewijzing maken om niet-compatibele resources te identificeren met behulp van de Azure PowerShell module @ no__t-0.
 
 >[!NOTE]
 > Security Center is de integratie met Azure Policy gestart. Bestaande klanten worden automatisch gemigreerd naar het nieuwe ingebouwde initiatief in Azure Policy, in plaats van het vorige beveiligings beleid in Security Center. Deze wijziging heeft geen invloed op uw resources of omgeving, behalve de aanwezigheid van het nieuwe initiatief in Azure Policy.
@@ -226,7 +226,7 @@ In dit voor beeld ziet u hoe u een toewijzing verwijdert:
 |Controleren voor SQL |Ongecontroleerde SQL database in Azure Security Center bewaken |sqlAuditingMonitoringEffect|
 |Systeemupdates |Ontbrekende systeem updates bewaken in Azure Security Center |systemUpdatesMonitoringEffect|
 |Storage-versleuteling |Ontbrekende BLOB-versleuteling voor opslag accounts controleren |storageEncryptionMonitoringEffect|
-|JIT-netwerk toegang |Bewaak mogelijke netwerk JIT-toegang (just-in-time) in Azure Security Center |jitNetworkAccessMonitoringEffect |
+|JIT-netwerk toegang |Mogelijke JIT-toegang (just-in-time) in een netwerk controleren in Azure Security Center |jitNetworkAccessMonitoringEffect |
 |Besturingselementen voor adaptieve toepassingen |Mogelijke app-white list in Azure Security Center bewaken |adaptiveApplicationControlsMonitoringEffect|
 |Netwerkbeveiligingsgroepen |Bewaak strikte netwerk toegang in Azure Security Center |networkSecurityGroupsMonitoringEffect| 
 |Beveiligingsconfiguraties |Beveiligings problemen met het besturings systeem in Azure Security Center bewaken |systemConfigurationsMonitoringEffect| 

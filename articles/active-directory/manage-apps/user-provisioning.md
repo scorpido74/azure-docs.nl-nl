@@ -15,12 +15,12 @@ ms.date: 06/12/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ac78029ba2d1f45ef67ef0d858fdd2917bd4a97a
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 3ef652b05f62218ee1d0e72543bfa546f0c14abe
+ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71033329"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72001712"
 ---
 # <a name="automate-user-provisioning-and-deprovisioning-to-saas-applications-with-azure-active-directory"></a>Gebruikers inrichten en het ongedaan maken van de inrichting van SaaS-toepassingen met Azure Active Directory automatiseren
 
@@ -56,18 +56,15 @@ Enkele veelvoorkomende motivaties voor het gebruik van deze functie zijn:
 
 De **Azure AD-inrichtings service** voorziet gebruikers van SaaS-apps en andere systemen door verbinding te maken met gebruikers beheer-API-eind punten die door elke leverancier van de toepassing worden geleverd. Met deze gebruikers beheer-API-eind punten kan Azure AD programmatisch gebruikers maken, bijwerken en verwijderen. Voor geselecteerde toepassingen kan de inrichtings service ook extra identiteits-gerelateerde objecten, zoals groepen en rollen, maken, bijwerken en verwijderen.
 
-![Azure AD Provisioning](./media/user-provisioning/provisioning0.PNG)
-service *-afbeelding 1: De Azure AD-inrichtings service*
+![Azure AD Provisioning Service @ no__t-1 @ no__t-2Figure 1: De Azure AD-inrichtings service @ no__t-0
 
-![Werk stroom](./media/user-provisioning/provisioning1.PNG)
-*afbeelding van uitgaand gebruikers inrichten 2: ' Uitgaande ' werk stroom voor gebruikers inrichting van Azure AD naar populaire SaaS-toepassingen*
+![Outbound werk stroom voor gebruikers inrichten @ no__t-1 @ no__t-2Figure 2: ' Uitgaande ' werk stroom voor gebruikers inrichting van Azure AD naar populaire SaaS-toepassingen @ no__t-0
 
-![Werk stroom](./media/user-provisioning/provisioning2.PNG)
-*afbeelding van binnenkomende gebruikers inrichting 3: ' Binnenkomende ' werk stroom voor gebruikers inrichting van populaire HCM-toepassingen (Human Capital Management) tot Azure Active Directory en Windows Server Active Directory*
+![Inbound werk stroom voor gebruikers inrichten @ no__t-1 @ no__t-2Figure 3: ' Binnenkomende ' werk stroom voor gebruikers inrichting van populaire HCM-toepassingen (Human Capital Management) Azure Active Directory en Windows Server Active Directory @ no__t-0
 
 ## <a name="what-applications-and-systems-can-i-use-with-azure-ad-automatic-user-provisioning"></a>Welke toepassingen en systemen kan ik gebruiken met automatische gebruikers inrichting van Azure AD?
 
-Azure AD bevat vooraf geïntegreerde ondersteuning voor veel populaire SaaS-apps en Human Resources-systemen en algemene ondersteuning voor apps die specifieke onderdelen van de SCIM 2,0-standaard implementeren.
+Azure AD bevat vooraf geïntegreerde ondersteuning voor veel populaire SaaS-apps en Human Resources-systemen en algemene ondersteuning voor apps die specifieke onderdelen van de [SCIM 2,0-standaard](https://techcommunity.microsoft.com/t5/Identity-Standards-Blog/Provisioning-with-SCIM-getting-started/ba-p/880010)implementeren.
 
 ### <a name="pre-integrated-applications"></a>Vooraf geïntegreerde toepassingen
 
@@ -93,7 +90,7 @@ Gebruik de Azure Active Directory Portal om de Azure AD-inrichtings service voor
 1. Kies **+ nieuwe toepassing** om een toepassing toe te voegen. Voeg een van de volgende opties toe, afhankelijk van uw scenario:
 
    - De optie **uw eigen app toevoegen** ondersteunt aangepaste, ontwikkelde scim-integraties.
-   - Alle toepassingen in de sectie **toevoegen vanuit de galerie** > **Aanbevolen toepassingen** ondersteunen automatische inrichting. Zie de [lijst met zelf studies voor toepassingen voor het inrichten van gebruikers](../saas-apps/tutorial-list.md) voor extra.
+   - Alle toepassingen in het gedeelte **toevoegen van de galerie** > **Aanbevolen toepassingen** ondersteunen automatische inrichting. Zie de [lijst met zelf studies voor toepassingen voor het inrichten van gebruikers](../saas-apps/tutorial-list.md) voor extra.
 
 1. Geef de details op en selecteer **toevoegen**. De nieuwe app wordt toegevoegd aan de lijst met bedrijfs toepassingen en wordt geopend op het scherm toepassings beheer.
 1. Selecteer **inrichting** om de instellingen voor het inrichten van gebruikers accounts voor de app te beheren.
@@ -170,7 +167,7 @@ Als een afzonderlijke gebruiker niet kan worden toegevoegd, bijgewerkt of verwij
 
 Deze fouten kunnen worden opgelost door de kenmerk waarden voor de betrokken gebruiker in het bron systeem aan te passen of door de kenmerk toewijzingen aan te passen om conflicten niet te veroorzaken.
 
-### <a name="quarantine"></a>Quarantaine
+### <a name="quarantine"></a>Voorschriften
 
 Als de meeste of alle aanroepen voor het doel systeem consistent zijn als gevolg van een fout (zoals voor ongeldige beheerders referenties), wordt de inrichtings taak de status ' quarantaine '. Deze status wordt aangegeven in het [overzichts rapport](check-status-user-account-provisioning.md) van de inrichting en via e-mail als e-mail meldingen zijn geconfigureerd in de Azure Portal.
 

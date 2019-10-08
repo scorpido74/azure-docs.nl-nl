@@ -1,6 +1,6 @@
 ---
 title: 'Zelfstudie voor Azure Security Center: uw resources beveiligen met Azure Security Center | Microsoft Docs'
-description: In deze zelfstudie leert u hoe u een Just-In-Time-VM-toegangsbeleid en een toepassingsbeheerbeleid configureert.
+description: Deze zelf studie laat zien hoe u een just-in-time-VM-toegangs beleid en een toepassings beheer beleid configureert.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -14,20 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/03/2018
 ms.author: memildin
-ms.openlocfilehash: 28da3933cf1f1970758fcaec1358c9c16558af03
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 8cb07f3447e50528a94811f33a2142086f698586
+ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71200656"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "71996341"
 ---
 # <a name="tutorial-protect-your-resources-with-azure-security-center"></a>Zelfstudie: Uw resources beveiligen met Azure Security Center
-Security Center beperkt de blootstelling aan bedreigingen met behulp van toegangs- en toepassingsbesturingselementen om schadelijke activiteiten te blokkeren. Just-In-Time-toegang (JIT) tot virtuele machines (VM's) vermindert de blootstelling aan aanvallen doordat u permanente toegang tot VM's kunt weigeren. U biedt in plaats daarvan beheerde en gecontroleerde toegang tot VM's, alleen wanneer dat nodig is. Besturingselementen voor adaptieve toepassingen helpen u om VM's beter te beschermen tegen malware door te beheren welke toepassingen op uw VM's kunnen worden uitgevoerd. Security Center maakt gebruik van machine learning om de processen te analyseren die op de virtuele machine worden uitgevoerd. Ook helpt het u op basis van deze informatie regels voor opname in de whitelist toe te passen.
+Security Center beperkt de blootstelling aan bedreigingen met behulp van toegangs- en toepassingsbesturingselementen om schadelijke activiteiten te blokkeren. Met Just-in-time (JIT) virtuele machine (VM) wordt de bloot stelling aan aanvallen beperkt doordat u permanente toegang tot virtuele machines kunt weigeren. U biedt in plaats daarvan beheerde en gecontroleerde toegang tot VM's, alleen wanneer dat nodig is. Besturingselementen voor adaptieve toepassingen helpen u om VM's beter te beschermen tegen malware door te beheren welke toepassingen op uw VM's kunnen worden uitgevoerd. Security Center maakt gebruik van machine learning om de processen te analyseren die op de virtuele machine worden uitgevoerd. Ook helpt het u op basis van deze informatie regels voor opname in de whitelist toe te passen.
 
 In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
-> * Een Just-In-Time-VM-toegangsbeleid configureren
+> * Een just-in-time-VM-toegangs beleid configureren
 > * Een toepassingsbeheerbeleid configureren
 
 Als u nog geen Azure-abonnement hebt, maak dan een [gratis account](https://azure.microsoft.com/pricing/free-trial/) aan voordat u begint.
@@ -38,25 +38,25 @@ Om de functies in deze zelfstudie te doorlopen, moet u zich in de Standard-prijs
 ## <a name="manage-vm-access"></a>VM-toegang beheren
 JIT-VM-toegang kan worden gebruikt om binnenkomend verkeer naar uw Azure-VM's te blokkeren, zodat u minder kwetsbaar bent voor aanvallen maar tegelijkertijd eenvoudig toegang wordt geboden om verbinding met VM's te kunnen maken wanneer dat nodig is.
 
-Beheerpoorten hoeven niet te allen tijde geopend te zijn. Ze hoeven alleen geopend te zijn wanneer u bent verbonden met de VM, bijvoorbeeld om beheer- of onderhoudstaken uit te voeren. Wanneer Just-In-Time is ingeschakeld, maakt Security Center gebruik van NSG-regels (netwerkbeveiligingsgroep) die toegang tot beheerpoorten beperken, zodat ze niet het doelwit van aanvallers worden.
+Beheerpoorten hoeven niet te allen tijde geopend te zijn. Ze hoeven alleen geopend te zijn wanneer u bent verbonden met de VM, bijvoorbeeld om beheer- of onderhoudstaken uit te voeren. Wanneer just-in-time is ingeschakeld, gebruikt Security Center NSG-regels (netwerk beveiligings groep) waarmee de toegang tot beheer poorten wordt beperkt zodat deze niet kunnen worden benaderd door aanvallers.
 
-1. Selecteer in het hoofdmenu van Security Center **Just-In-Time-VM-toegang** onder **GEAVANCEERDE CLOUDBEVEILIGING**.
+1. Selecteer in het hoofd menu van Security Center **just-in-time-VM-toegang** onder **geavanceerde Cloud beveiliging**.
 
-   ![Just-In-Time-VM-toegang][1]
+   ![Just-in-time-toegang voor virtuele machines][1]
 
-   **Just-In-Time-VM-toegang** biedt informatie over de status van uw VM's:
+   **Just-in-time-VM-toegang** biedt informatie over de status van uw vm's:
 
-   - **Geconfigureerd**: VM's die zijn geconfigureerd om Just-In-Time-VM-toegang te ondersteunen.
-   - **Aanbevolen**: VM's die Just-In-Time-VM-toegang kunnen ondersteunen maar er niet voor zijn geconfigureerd.
+   - **Geconfigureerd** : vm's die zijn geconfigureerd voor ondersteuning van just-in-time-VM-toegang.
+   - **Aanbevolen** : vm's die just-in-time-VM-toegang kunnen ondersteunen, maar die niet zijn geconfigureerd voor.
    - **Geen aanbeveling**: redenen waarom een VM mogelijk niet wordt aanbevolen zijn:
 
-     - NSG ontbreekt: de Just-In-Time-oplossing vereist dat er een NSG aanwezig is.
-     - Klassieke VM: Just-In-Time-VM-toegang van Security Center ondersteunt momenteel alleen VM's die zijn geïmplementeerd via Azure Resource Manager.
-     - Overig: een VM valt in deze categorie als de Just-In-Time-oplossing is uitgeschakeld in het beveiligingsbeleid van het abonnement of de resourcegroep, of als de VM geen openbaar IP-adres heeft en geen NSG heeft.
+     - Ontbrekende NSG: voor de just-in-time-oplossing moet een NSG aanwezig zijn.
+     - Klassieke VM-Security Center just-in-time-VM-toegang ondersteunt momenteel alleen Vm's die via Azure Resource Manager zijn geïmplementeerd.
+     - Andere-een VM bevindt zich in deze categorie als de just-in-time-oplossing is uitgeschakeld in het beveiligings beleid van het abonnement of de resource groep, of als er geen openbaar IP-adres voor de VM is en er geen NSG aanwezig is.
 
-2. Selecteer een aanbevolen VM en klik op **JIT inschakelen op 1 VM** om een Just-In-Time-beleid voor die VM te configureren:
+2. Selecteer een aanbevolen VM en klik op **JIT inschakelen op 1 VM** om een just-in-time-beleid voor die VM te configureren:
 
-   U kunt de standaardpoorten opslaan die door Security Center worden aanbevolen of u kunt een nieuwe poort toevoegen en configureren waarop u de Just-In-Time-oplossing wilt inschakelen. In deze zelfstudie gaan we een poort toevoegen door **Toevoegen** te selecteren.
+   U kunt de standaard poorten opslaan die worden Security Center aanbevolen of u kunt een nieuwe poort toevoegen en configureren waarop u de just-in-time-oplossing wilt inschakelen. In deze zelfstudie gaan we een poort toevoegen door **Toevoegen** te selecteren.
 
    ![Poortconfiguratie toevoegen][2]
 
@@ -119,7 +119,7 @@ Als u automatisch inrichten wilt uitschakelen:
 In deze zelfstudie hebt u geleerd hoe u blootstelling aan bedreigingen kunt beperken met de volgende handelingen:
 
 > [!div class="checklist"]
-> * Een Just-In-Time-VM-toegangsbeleid configureren om beheerde en gecontroleerde toegang tot VM's te bieden, alleen wanneer dat nodig is
+> * Een just-in-time-VM-toegangs beleid configureren om alleen beheerde en gecontroleerde toegang tot Vm's te bieden als dat nodig is
 > * Een beleid voor besturingselementen voor adaptieve toepassingen configureren om te bepalen welke toepassingen op uw VM's kunnen worden uitgevoerd
 
 Ga naar de volgende zelfstudie voor meer informatie over het reageren op beveiligingsincidenten.
