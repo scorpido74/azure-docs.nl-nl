@@ -1,77 +1,109 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Documentatie over Site Recovery
+### YamlMime:Landing
+title: Documentatie voor Azure Site Recovery
+summary: Gebruik Azure Site Recovery voor herstel na noodgevallen van on-premises computers en workloads in Azure, en Azure-VM’s in een secundaire Azure-regio. Als replicatie naar Azure is ingesteld, kunt u failovers organiseren wanneer er storingen optreden, en hebt u nog steeds toegang tot workloads en apps in Azure. Als de primaire locatie weer beschikbaar is, kunt u een failback uitvoeren, indien nodig.
 metadata:
-  title: 'Documentatie voor Azure Site Recovery - zelfstudies, API-verwijzing | Microsoft Docs'
-  meta.description: Learn how to set up cloud disaster recovery and business continuity for physical servers and virtual machines by deploying and managing replication.
-  services: site-recovery
-  author: carmonmills
-  manager: carmonm
+  title: Documentatie voor Azure Site Recovery
+  description: Gebruik Azure Site Recovery voor herstel na noodgevallen van on-premises computers en workloads in Azure, en Azure-VM’s in een secundaire Azure-regio. Als replicatie naar Azure is ingesteld, kunt u failovers organiseren wanneer er storingen optreden, en hebt u nog steeds toegang tot workloads en apps in Azure. Als de primaire locatie weer beschikbaar is, kunt u een failback uitvoeren, indien nodig.
   ms.service: site-recovery
   ms.topic: landing-page
-  ms.date: 11/27/2018
-  ms.author: carmonm
-abstract:
-  description: 'Met Azure Site Recovery kunt u herstel na noodgeval indelen en beheren voor virtuele Azure-machines, en on-premises VM''s en fysieke servers. Ontdek met onze snelstartgidsen en zelfstudies hoe u repliceert, en failovers en failbacks uitvoert.'
-sections:
-  - title: QuickStarts van vijf minuten
-    items:
-      - type: paragraph
-        text: Snel herstel na noodgeval instellen voor een virtuele Azure-machine
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: /azure/site-recovery/media/index/portal.svg
-            text: Azure Portal
-            href: /azure/site-recovery/azure-to-azure-quickstart
-  - title: Stapsgewijze zelfstudies
-    items:
-      - type: paragraph
-        text: Meer informatie over het instellen van herstel na noodgeval voor VM's en fysieke servers.
-      - type: text
-        html: <h3>Azure naar Azure</h3>
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="azure-to-azure-tutorial-enable-replication">Herstel na noodgeval instellen</a>
-          - html: <a href="azure-to-azure-tutorial-dr-drill">Noodherstelanalyse uitvoeren</a>
-          - html: <a href="azure-to-azure-tutorial-failover-failback">Failover en failback uitvoeren</a>
-      - type: text
-        html: <h3>VMware</h3>
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="tutorial-prepare-azure">Azure voorbereiden</a>
-          - html: <a href="tutorial-prepare-on-premises-vmware">On-premises VMware voorbereiden</a>
-          - html: <a href="tutorial-vmware-to-azure">Herstel na noodgeval instellen</a>
-          - html: <a href="tutorial-dr-drill-azure">Noodherstelanalyse uitvoeren</a>
-          - html: <a href="vmware-azure-tutorial-failover-failback">Failover en failback uitvoeren</a>
-      - type: text
-        html: <h3>Hyper-V</h3>
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="tutorial-prepare-azure">Azure voorbereiden</a>
-          - html: <a href="tutorial-prepare-on-premises-hyper-v">On-premises Hyper-V voorbereiden</a>
-          - html: <a href="tutorial-hyper-v-to-azure">Herstel na noodgeval instellen voor virtuele Hyper-V-machines</a>
-          - html: <a href="tutorial-hyper-v-vmm-to-azure">Herstel na noodgeval instellen voor virtuele Hyper-V-machines die worden beheerd door System Center VMM</a>
-          - html: <a href="tutorial-dr-drill-azure">Noodherstelanalyse uitvoeren</a>
-          - html: <a href="tutorial-hyper-v-to-azure-failover-failback">Failover en failback uitvoeren</a>
-      - type: text
-        html: <h3>Migreren naar Azure</h3>
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="tutorial-prepare-azure">Azure voorbereiden</a>
-          - html: <a href="tutorial-migrate-on-premises-to-azure">On-premises machines</a> of <a href="tutorial-migrate-aws-to-azure">AWS-exemplaren naar Azure</a> migreren
-  - title: Naslaginformatie
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Opdrachtregel
-            html: <p><a href="/powershell/module/az.recoveryservices/">Azure PowerShell</a></p>
-          - title: REST
-            html: <p><a href="/rest/api/site-recovery/">Naslaginformatie over REST-API</a></p>
+  ms.collection: collection
+  author: rayne-wiselman
+  ms.author: raynew
+  ms.date: 10/07/2019
+  ms.openlocfilehash: 0d4405e447c7624e4d6cc714209ffc86451a74bd
+  ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+  ms.translationtype: HT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 10/07/2019
+  ms.locfileid: "72001087"
+landingContent:
+- title: Site Recovery
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Wat is Site Recovery?
+      url: ./site-recovery-overview.md
+    - text: Nieuw in Site Recovery
+      url: ./site-recovery-whats-new.md
+- title: Herstel na noodgevallen voor Azure-VM's
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Herstel na noodgevallen voor een Azure-VM's uitproberen
+      url: ./azure-to-azure-quickstart.md
+  - linkListType: tutorial
+    links:
+    - text: Herstel na noodgevallen voor Azure-VM's
+      url: ./azure-to-azure-tutorial-enable-replication.md
+    - text: Virtuele Azure-machines verplaatsen naar een andere regio
+      url: ./azure-to-azure-tutorial-migrate.md
+  - linkListType: learn
+    links:
+    - text: Architectuur voor herstel na noodgevallen voor een Azure-VM
+      url: ./azure-to-azure-architecture.md
+    - text: Ondersteuningsmatrix voor Azure naar Azure
+      url: ./azure-to-azure-support-matrix.md
+    - text: Veelgestelde vragen
+      url: ./azure-to-azure-common-questions.md
+    - text: Over het verplaatsen van Azure-VM's
+      url: ./azure-to-azure-move-overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: Netwerken voor herstel na noodgevallen voor een Azure-VM
+      url: ./azure-to-azure-about-networking.md
+    - text: Herstel na noodgevallen na een migratie naar Azure
+      url: ./azure-to-azure-replicate-after-migration.md
+- title: Herstel na noodgevallen voor on-premises computers
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Herstel na noodgevallen voor VMware-VM's
+      url: ./tutorial-prepare-azure.md
+    - text: Herstel na noodgevallen voor Hyper-V-VM’s
+      url: ./tutorial-prepare-azure-for-hyperv.md
+    - text: Herstel na noodgevallen voor fysieke servers
+      url: ./physical-azure-disaster-recovery.md
+  - linkListType: deploy
+    links:
+    - text: Ondersteuningsmatrix voor VMware
+      url: ./vmware-physical-azure-support-matrix.md
+    - text: Ondersteuningsmatrix voor Hyper-V
+      url: ./hyper-v-azure-support-matrix.md
+  - linkListType: learn
+    links:
+    - text: Architectuur voor herstel na noodgevallen voor VMware
+      url: ./vmware-azure-architecture.md
+    - text: Overzicht van herstel na noodgevallen voor VMware
+      url: ./vmware-azure-about-disaster-recovery.md
+    - text: Veelgestelde vragen voor herstel na noodgevallen voor VMware
+      url: ./vmware-azure-common-questions.md
+    - text: Architectuur voor herstel na noodgevallen voor Hyper-V
+      url: ./hyper-v-azure-architecture.md
+  - linkListType: how-to-guide
+    links:
+    - text: Herstel na noodgevallen op schaal voor VMware
+      url: ./vmware-physical-large-deployment.md
+    - text: VMware-capaciteit plannen
+      url: ./site-recovery-plan-capacity-vmware.md
+    - text: Hyper-V-capaciteit plannen
+      url: ./hyper-v-deployment-planner-overview.md
+- title: Beheren
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Site Recovery-updates beheren
+      url: service-updates-how-to.md
+    - text: Site Recovery bewaken
+      url: site-recovery-monitor-and-troubleshoot.md
+    - text: Site Recovery bewaken met Azure Monitor-logboeken
+      url: monitor-log-analytics.md
+- title: Doe mee
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: Een servicefunctie aanvragen
+      url: https://feedback.azure.com/forums/256299-site-recovery
+    - text: Een forumvraag stellen
+      url: https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr
+    - text: Azure Tech Community
+      url: https://techcommunity.microsoft.com/t5/Azure/ct-p/Azure

@@ -34,6 +34,8 @@
           href: sql-database-server-level-firewall-rule.md
         - name: Openbaar eindpunt configureren in een beheerd exemplaar
           href: sql-database-managed-instance-public-endpoint-configure.md
+        - name: Verbindingstypen configureren in een beheerd exemplaar
+          href: sql-database-managed-instance-connection-type.md
         - name: Client-VM-verbinding naar een beheerd exemplaar
           href: sql-database-managed-instance-configure-vm.md
         - name: Punt-naar-site-verbinding naar een beheerd exemplaar

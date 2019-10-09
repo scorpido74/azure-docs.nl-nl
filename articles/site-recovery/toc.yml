@@ -371,7 +371,7 @@
               href: delete-vault.md
     - name: Herstel na noodgeval voor apps
       items:
-        - name: Herstel na noodgevallen instellen van on-premises apps naar Azure
+        - name: Over herstel na noodgevallen voor on-premises apps
           href: site-recovery-workload.md
         - name: Active Directory en DNS
           href: site-recovery-active-directory.md

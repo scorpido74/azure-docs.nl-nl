@@ -134,8 +134,7 @@
           href: resource-group-linked-templates.md
         - name: Meerdere exemplaren maken
           href: resource-group-create-multiple.md
-        - name: Resourcegroepen en resources in het abonnement maken
-          displayName: subscription level deployment
+        - name: Resources op abonnementsniveau
           href: deploy-to-subscription.md
     - name: Sjablonen implementeren
       items:
