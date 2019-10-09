@@ -13,12 +13,14 @@ ms.tgt_pltfrm: na
 ms.topic: quickstart
 ms.date: 08/23/2019
 ms.author: cephalin
-ms.openlocfilehash: d4f1cd5193f29e929c822966ca427c6e6ebf67de
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+experimental: true
+experiment_id: 1e304dc9-5add-4b
+ms.openlocfilehash: ed7e0df77abb39c07bea8946381247539afb3134
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70070963"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177019"
 ---
 # <a name="create-a-python-app-in-azure-app-service-on-linux"></a>Een python-app maken in Azure App Service in Linux
 
@@ -56,12 +58,6 @@ source venv/bin/activate
 pip install -r requirements.txt
 FLASK_APP=application.py flask run
 
-# In PowerShell
-py -3 -m venv env
-env\scripts\activate
-pip install -r requirements.txt
-Set-Item Env:FLASK_APP ".\application.py"
-flask run
 ```
 
 Open een webbrowser en ga naar de voor beeld-app op `http://localhost:5000/`.
@@ -100,11 +96,11 @@ Unpacking objects: 100% (43/43), done.
 Checking connectivity... done.
 ```
 
-## <a name="create-a-web-app"></a>Een web-app maken
+## <a name="create-a-web-app"></a>Een webtoepassing maken
 
 Ga naar de map die de voorbeeldcode bevat en voer de opdracht `az webapp up` uit.
 
-Vervang `<app-name>` in het volgende voor beeld door een globaal unieke app-naam (*geldige tekens `a-z`zijn `0-9`, en `-`* ).
+Vervang in het volgende voor beeld `<app-name>` door de naam van een wereld wijd unieke app (*geldige tekens zijn `a-z`, `0-9` en `-`* ).
 
 ```bash
 cd python-docs-hello-world
@@ -157,7 +153,7 @@ De Python-voorbeeldcode wordt uitgevoerd in een App Service op Linux met een ing
 
 ## <a name="update-locally-and-redeploy-the-code"></a>De code lokaal bijwerken en opnieuw implementeren
 
-Voer `code application.py` in de Cloud shell de Cloud shell editor te openen.
+Voer in het Cloud Shell `code application.py` in om de Cloud Shell editor te openen.
 
 ![Code application.py](media/quickstart-python/code-applicationpy.png)
 
@@ -169,7 +165,7 @@ return "Hello Azure!"
 
 Sla uw wijzigingen op en sluit de editor af. Sla op met de opdracht `^S` en sluit af met `^Q`.
 
-Implementeer de app opnieuw met behulp van de [`az webapp up`](/cli/azure/webapp#az-webapp-up) opdracht. Vervang de naam van uw app `<app-name>`door en geef een locatie op voor `<location-name>` (met behulp van een van de waarden die worden weer gegeven via de [`az account list-locations`](/cli/azure/appservice?view=azure-cli-latest.md#az-appservice-list-locations) opdracht).
+Implementeer de app opnieuw met behulp van de opdracht [`az webapp up`](/cli/azure/webapp#az-webapp-up) . Vervang de naam van uw app door `<app-name>` en geef een locatie op voor `<location-name>` (met behulp van een van de waarden die worden weer gegeven in de [`az account list-locations`-](/cli/azure/appservice?view=azure-cli-latest.md#az-appservice-list-locations) opdracht).
 
 ```bash
 az webapp up -n <app-name> -l <location-name>
@@ -198,10 +194,10 @@ Het linkermenu bevat een aantal pagina's voor het configureren van uw app.
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Zelfstudie: Python-web-app (Django) met PostgreSQL](tutorial-python-postgresql-app.md)
+> [Zelfstudie: Python-web-app (Django) met PostgreSQL @ no__t-0
 
 > [!div class="nextstepaction"]
 > [Python-app configureren](how-to-configure-python.md)
 
 > [!div class="nextstepaction"]
-> [Zelfstudie: Python-app uitvoeren in de aangepaste container](tutorial-custom-docker-image.md)
+> [Zelfstudie: De python-app uitvoeren in de aangepaste container @ no__t-0

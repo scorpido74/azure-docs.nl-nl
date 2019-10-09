@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/26/2019
 ms.author: bwren
-ms.openlocfilehash: 39691c0efbac7b7a48dd844641d63e0ca178e95f
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: 957df2d03352756c74a5450de240afde2615e50b
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71327467"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177621"
 ---
 # <a name="custom-logs-in-azure-monitor"></a>Aangepaste Logboeken in Azure Monitor
 
@@ -74,7 +74,7 @@ Als er een tijds tempel scheidings teken wordt gebruikt, wordt de eigenschap Tim
 4. Wijzig het scheidings teken dat wordt gebruikt om een nieuwe record te identificeren en selecteer het scheidings teken dat het beste de records in het logboek bestand identificeert.
 5. Klik op **Volgende**.
 
-### <a name="step-3-add-log-collection-paths"></a>Stap 3. Paden van logboekverzamelingen toevoegen
+### <a name="step-3-add-log-collection-paths"></a>Stap 3. Paden voor logboek verzameling toevoegen
 U moet een of meer paden definiëren op de agent waar het aangepaste logboek kan worden gevonden.  U kunt een specifiek pad en naam opgeven voor het logboek bestand, of u kunt een pad met een Joker teken voor de naam. Dit biedt ondersteuning voor toepassingen die elke dag een nieuw bestand maken of wanneer een bestand een bepaalde grootte heeft bereikt. U kunt ook meerdere paden opgeven voor één logboek bestand.
 
 Een toepassing kan bijvoorbeeld elke dag een logboek bestand maken met de datum die is opgenomen in de naam in log20100316. txt. Een patroon voor een dergelijk logboek kan *log\*.txt* zijn die van toepassing zou zijn op elk logboek bestand volgens het naamgevings schema van de toepassing.
@@ -146,7 +146,7 @@ We bieden een van de logboek bestanden en kunnen de gebeurtenissen zien die word
 
 ![Een voorbeeld logboek uploaden en parseren](media/data-sources-custom-logs/delimiter.png)
 
-### <a name="add-log-collection-paths"></a>Paden van logboekverzamelingen toevoegen
+### <a name="add-log-collection-paths"></a>Paden voor logboek verzameling toevoegen
 De logboek bestanden worden opgeslagen in *C:\MyApp\Logs*.  Er wordt elke dag een nieuw bestand gemaakt met een naam die de datum bevat in het patroon *appYYYYMMDD. log*.  Een voldoende patroon voor dit logboek is *C:\MyApp\Logs @ no__t-1\*.log*.
 
 ![Pad naar logboek verzameling](media/data-sources-custom-logs/collection-path.png)
@@ -172,7 +172,7 @@ Aangepaste logboeken zijn nuttig als uw gegevens voldoen aan de criteria die wor
 In de gevallen waarin uw gegevens niet kunnen worden verzameld met aangepaste logboeken, moet u rekening houden met de volgende alternatieve strategieën:
 
 - Gebruik een aangepast script of een andere methode om gegevens te schrijven naar [Windows-gebeurtenissen](data-sources-windows-events.md) of [syslog](data-sources-syslog.md) die worden verzameld door Azure monitor. 
-- De gegevens rechtstreeks naar Azure Monitor verzenden met behulp van [http data collector API](data-collector-api.md). Een voor beeld van het gebruik van runbooks in Azure Automation vindt u in [het verzamelen van logboek gegevens in azure monitor met een Azure Automation runbook](runbook-datacollect.md).
+- De gegevens rechtstreeks naar Azure Monitor verzenden met behulp van [http data collector API](data-collector-api.md). 
 
 ## <a name="next-steps"></a>Volgende stappen
 * Zie [tekst gegevens parseren in azure monitor](../log-query/parse-text.md) voor methoden om elke geïmporteerde logboek vermelding te parseren in meerdere eigenschappen.

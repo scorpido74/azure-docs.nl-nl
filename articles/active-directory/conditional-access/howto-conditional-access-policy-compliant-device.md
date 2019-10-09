@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: da1a5f54e5e989f661770d518a6753b831b59bd4
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: 1963d0ad741099fcb6602beb58f62b0eabf01aa0
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69990520"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72170051"
 ---
 # <a name="conditional-access-require-compliant-devices"></a>Voorwaardelijke toegang: Compatibele apparaten vereisen
 
@@ -33,7 +33,7 @@ Deze informatie over beleids naleving wordt doorgestuurd naar Azure AD, waarbij 
 
 De volgende stappen helpen u bij het maken van een beleid voor voorwaardelijke toegang om te vereisen dat apparaten die toegang hebben tot resources, worden gemarkeerd als compatibel met het intune-nalevings beleid van uw organisatie.
 
-1. Meld u aan bij de **Azure Portal** als globale beheerder, beveiligings beheerder of beheerder van de voorwaardelijke toegang.
+1. Meld u aan bij de **Azure Portal** als globale beheerder, beveiligings beheerder of beheerder van de voorwaardelijke toegang.
 1. Blader naar **Azure Active Directory** > **voorwaardelijke toegang**.
 1. Selecteer **Nieuw beleid**.
 1. Geef uw beleid een naam. Het is raadzaam dat organisaties een zinvolle norm maken voor de namen van hun beleid.
@@ -41,10 +41,10 @@ De volgende stappen helpen u bij het maken van een beleid voor voorwaardelijke t
    1. Onder **insluiten**selecteert u **alle gebruikers**.
    1. Onder **uitsluiten**selecteert u **gebruikers en groepen** en kiest u de accounts voor nood toegang of het afbreek glas van uw organisatie. 
    1. Selecteer **Done**.
-1. Onder **Cloud-apps of acties** > , selecteert u **alle Cloud-apps**.
+1. Selecteer onder **Cloud-apps of acties** > **include** **alle Cloud-apps**.
    1. Als u specifieke toepassingen van uw beleid moet uitsluiten, kunt u ze kiezen op het tabblad **uitsluiten** onder **Selecteer uitgesloten Cloud-apps** en kiest u **selecteren**.
    1. Selecteer **Done**.
-1. Onder **toegangs beheer** > **toekennen**selecteert **u apparaat vereisen dat moet worden gemarkeerd als compatibel**.
+1. Onder **toegangs beheer** > **toekennen**, selecteert **u vereisen dat het apparaat moet worden gemarkeerd als compatibel**.
    1. Kies **Selecteren**.
 1. Bevestig de instellingen en stel **beleid inschakelen** in **op aan**.
 1. Selecteer **maken** om uw beleid in te stellen.

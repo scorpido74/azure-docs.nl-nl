@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bc7710619b8975064ec4ec60ed44ccede970ac34
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 3ef8ab4b24d223f372ae3704b00ba6ff090fb039
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71200958"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72169988"
 ---
 # <a name="conditional-access-block-legacy-authentication"></a>Voorwaardelijke toegang: Verouderde verificatie blokkeren
 
@@ -26,7 +26,7 @@ Vanwege het verhoogde risico dat is gekoppeld aan verouderde verificatie protoco
 
 De volgende stappen helpen u bij het maken van een beleid voor voorwaardelijke toegang om verouderde verificatie aanvragen te blok keren.
 
-1. Meld u aan bij de **Azure Portal** als globale beheerder, beveiligings beheerder of beheerder van de voorwaardelijke toegang.
+1. Meld u aan bij de **Azure Portal** als globale beheerder, beveiligings beheerder of beheerder van de voorwaardelijke toegang.
 1. Blader naar **Azure Active Directory** > **voorwaardelijke toegang**.
 1. Selecteer **Nieuw beleid**.
 1. Geef uw beleid een naam. Het is raadzaam dat organisaties een zinvolle norm maken voor de namen van hun beleid.
@@ -34,13 +34,13 @@ De volgende stappen helpen u bij het maken van een beleid voor voorwaardelijke t
    1. Onder **insluiten**selecteert u **alle gebruikers**.
    1. Onder **uitsluiten**selecteert u **gebruikers en groepen** en kiest u alle accounts die de mogelijkheid moeten hebben om verouderde verificatie te gebruiken. 
    1. Selecteer **Done**.
-1. Onder **Cloud-apps of acties** >  **, selecteert**u **alle Cloud-apps**.
+1. Selecteer onder **Cloud-apps of acties** > **include** **alle Cloud-apps**.
    1. Als u specifieke toepassingen van uw beleid moet uitsluiten, kunt u ze kiezen op het tabblad **uitsluiten** onder **Selecteer uitgesloten Cloud-apps** en kiest u **selecteren**.
    1. Selecteer **Done**.
-1. Stel onder **voor waarden** > **client-apps (preview)** **configureren** in op **Ja**.
+1. Stel onder **voor waarden** > -**client-apps (preview-versie)** **configureren** in op **Ja**.
    1. Controleer alleen de vakken **Mobile apps en desktop-clients** > **andere clients**.
    2. Selecteer **Done**.
-1. Onder **toegangs beheer** > **toekennen**selecteert u **toegang blok keren**.
+1. Onder **toegangs beheer** > **toekenning**selecteert u **toegang blok keren**.
    1. Kies **Selecteren**.
 1. Bevestig de instellingen en stel **beleid inschakelen** in **op aan**.
 1. Selecteer **maken** om uw beleid in te stellen.

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: v-jysur
-ms.openlocfilehash: 31d9307d23d308192b362d9570911c86a7dd8372
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: eb9d803bcc9667c26acecbfd098a3022b7421478
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70051829"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177654"
 ---
 # <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>Verbinding maken tussen Azure en ITSM-hulpprogram ma's met behulp van IT Service Management-connector
 
@@ -94,7 +94,7 @@ Nadat u uw ITSM-hulp middelen hebt bereid, volgt u de onderstaande stappen om ee
 
 1. Ga naar **alle resources**, zoek naar **Service Desk (YourWorkspaceName)** .
 2. Klik onder **gegevens bronnen voor werk ruimte** in het linkerdeel venster op **ITSM-verbindingen**.
-   ![ITSM-verbindingen](media/itsmc-overview/itsm-connections.png)
+   ![ITSM-verbindingen @ no__t-1
 
    Op deze pagina wordt de lijst met verbindingen weer gegeven.
 3. Klik op **verbinding toevoegen**.
@@ -184,7 +184,7 @@ ServiceDeskWorkItemType_s="Incident"
 **Velden**
 
 - ServiceDeskConnectionName
-- Servicedesk-id
+- Service Desk-ID
 - State
 - Urgentie
 - Impact
@@ -195,7 +195,7 @@ ServiceDeskWorkItemType_s="Incident"
 - Gesloten door
 - Source
 - Toegewezen aan
-- Categorie
+- Category
 - Titel
 - Description
 - Datum gemaakt
@@ -211,14 +211,14 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 
 **Velden**
 - ServiceDeskConnectionName
-- Servicedesk-id
+- Service Desk-ID
 - Gemaakt door
 - Gesloten door
 - Source
 - Toegewezen aan
 - Titel
 - type
-- Categorie
+- Category
 - State
 - Escalatie
 - Conflict status
@@ -252,12 +252,12 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 | ClosedBy_s  | Gesloten door |
 | Source_s| Type contact |
 | AssignedTo_s | Toegewezen aan  |
-| Category_s | Categorie |
+| Category_s | Category |
 | Title_s|  Korte beschrijving |
 | Description_s|  Opmerkingen |
-| CreatedDate_t|  Geopend |
+| CreatedDate_t|  Had |
 | ClosedDate_t| Gesloten|
-| ResolvedDate_t|Opgelost|
+| ResolvedDate_t|Gecontroleerd|
 | Computer  | Configuratie-item |
 
 ## <a name="output-data-for-a-servicenow-change-request"></a>Uitvoer gegevens voor een wijzigings aanvraag voor een ServiceNow
@@ -270,7 +270,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 | AssignedTo_s | Toegewezen aan  |
 | Title_s|  Korte beschrijving |
 | Type_s|  type |
-| Category_s|  Categorie |
+| Category_s|  Category |
 | CRState_s|  State|
 | Urgency_s|  Urgentie |
 | Priority_s| Priority|
@@ -297,7 +297,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 2. Als gegevens van ServiceNow niet worden gesynchroniseerd met Log Analytics, moet u ervoor zorgen dat het ServiceNow-exemplaar niet in de slaap stand staat. ServiceNow dev-instanties gaan soms naar de slaap stand als deze gedurende een lange periode niet actief zijn. Anders meldt u het probleem.
 3. Als Log Analytics waarschuwingen wordt geactiveerd, maar er geen werk items worden gemaakt in ITSM product of configuratie-items niet zijn gemaakt/gekoppeld aan werk items of voor andere algemene informatie, kijkt u op de volgende locaties:
    -  ITSMC: De oplossing toont een samen vatting van verbindingen/werk items/computers, enzovoort. Klik op de tegel met de status van de **connector**, waarmee u de **Zoek opdracht kunt vastleggen** in een logboek met de relevante query. Bekijk de logboek records met LogType_S als fout voor meer informatie.
-   - **Zoek** pagina voor logboeken: Bekijk de fouten/gerelateerde informatie rechtstreeks met `*`behulp van de query ServiceDeskLog_CL.`*`
+   - **Zoek pagina voor logboeken** : Bekijk de fout/gerelateerde informatie direct met behulp van de query `*`ServiceDeskLog_CL @ no__t-2.
 
 ## <a name="troubleshoot-service-manager-web-app-deployment"></a>Problemen met de implementatie van Service Manager web-app oplossen
 1.  In het geval van problemen met de implementatie van web-apps, moet u ervoor zorgen dat u voldoende machtigingen hebt in het abonnement dat wordt vermeld voor het maken/implementeren van resources.
@@ -307,7 +307,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 
 ## <a name="contact-us"></a>Contact opnemen
 
-Neem voor eventuele query's of feedback over de IT Service Management-connector contact met ons [omsitsmfeedback@microsoft.com](mailto:omsitsmfeedback@microsoft.com)op.
+Neem contact met ons op [omsitsmfeedback@microsoft.com](mailto:omsitsmfeedback@microsoft.com)voor alle query's of feedback op de IT Service Management-connector.
 
 ## <a name="next-steps"></a>Volgende stappen
 [Voeg ITSM-producten/-services toe aan IT Service Management-connector](../../azure-monitor/platform/itsmc-connections.md).

@@ -8,16 +8,16 @@ ms.service: azure-resource-manager
 ms.date: 05/23/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: a42ccb1c0e60f5bf1568ccea13392186577f2875
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 97d9aa1ed9440011fdaab3aa8eb9d3942b5a8acf
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67205709"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72170366"
 ---
-# <a name="tutorial-use-azure-deployment-manager-with-resource-manager-templates-public-preview"></a>Zelfstudie: Azure Deployment Manager gebruiken met Resource Manager-sjablonen (openbare preview)
+# <a name="tutorial-use-azure-deployment-manager-with-resource-manager-templates-public-preview"></a>Zelfstudie: Azure Deployment Manager gebruiken met Resource Manager-sjablonen (open bare preview)
 
-Meer informatie over het gebruik van [Azure Deployment Manager](./deployment-manager-overview.md) om uw toepassingen in meerdere regio's te implementeren. Als u liever een snellere benadering [Azure Deployment Manager quickstart](https://github.com/Azure-Samples/adm-quickstart) wordt gemaakt van de vereiste configuraties in uw abonnement en de artefacten voor het implementeren van een toepassing in meerdere regio's worden aangepast. De Quick Start voert dezelfde taken uit als in deze zelfstudie.
+Meer informatie over het gebruik van [Azure Deployment Manager](./deployment-manager-overview.md) om uw toepassingen in meerdere regio's te implementeren. Als u liever een snellere benadering hebt, worden in [Azure Deployment Manager Quick](https://github.com/Azure-Samples/adm-quickstart) start de vereiste configuraties in uw abonnement gemaakt en worden de artefacten aangepast om een toepassing in meerdere regio's te implementeren. De Snelstartgids voert dezelfde taken uit als in deze zelf studie.
 
 Als u Deployment Manager wilt gebruiken, moet u twee sjablonen maken:
 
@@ -25,7 +25,7 @@ Als u Deployment Manager wilt gebruiken, moet u twee sjablonen maken:
 * **Een implementatiesjabloon**: beschrijft de stappen die moeten worden genomen bij het implementeren van uw toepassingen.
 
 > [!IMPORTANT]
-> Als uw abonnement is gemarkeerd voor Canarische voor het testen van nieuwe functies van Azure, kunt u alleen Azure Deployment Manager gebruiken om te implementeren naar de Canary regio's. 
+> Als uw abonnement is gemarkeerd voor de Canarische om nieuwe functies van Azure te testen, kunt u Azure Deployment Manager alleen gebruiken om te implementeren in de Canarische regio's. 
 
 Deze zelfstudie bestaat uit de volgende taken:
 
@@ -43,8 +43,8 @@ Deze zelfstudie bestaat uit de volgende taken:
 
 Aanvullende bronnen:
 
-* De [Azure Deployment Manager REST API-verwijzingen](https://docs.microsoft.com/rest/api/deploymentmanager/).
-* [Zelfstudie: Controle van gatewayservicestatus gebruiken in Azure Deployment Manager](./deployment-manager-tutorial-health-check.md).
+* De [Naslag informatie voor Azure Deployment Manager rest API](https://docs.microsoft.com/rest/api/deploymentmanager/).
+* [Zelfstudie: Gebruik status controle in azure Deployment Manager @ no__t-0.
 
 Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
@@ -80,7 +80,7 @@ Er zijn twee services toegewezen aan de locaties in VS-west en VS-oost.  Elke se
 
 ## <a name="download-the-tutorial-files"></a>De zelfstudiebestanden downloaden
 
-1. Download [de sjablonen en de artefacten](https://armtutorials.blob.core.windows.net/admtutorial/ADMTutorial.zip) die in deze zelfstudie worden gebruikt.
+1. Download [de sjablonen en de artefacten](https://github.com/Azure/azure-docs-json-samples/raw/master/tutorial-adm/ADMTutorial.zip) die in deze zelfstudie worden gebruikt.
 2. Pak de bestanden uit op uw computer.
 
 Onder de hoofdmap bevinden zich twee mappen:
@@ -110,7 +110,7 @@ De twee versies (1.0.0.0 en 1.0.0.1) zijn voor de [implementatie van de revisie]
 
     ![Sjabloon voor webtoepassing maken in zelfstudie over Azure Deployment Manager](./media/deployment-manager-tutorial/azure-deployment-manager-tutorial-create-web-application-packageuri.png)
 
-    De sjabloon roept een implementatiepakket aan dat de bestanden van de webtoepassing bevat. In deze zelfstudie bevat het gecomprimeerde pakket alleen een index.html-bestand.
+    De sjabloon roept een implementatiepakket aan dat de bestanden van de webtoepassing bevat. In deze zelf studie bevat het gecomprimeerde pakket alleen een bestand index. html.
 3. Open **\ArtifactStore\templates\1.0.0.0\ServiceWUS\CreateWebApplicationParameters.json**.
 
     ![ContainerRoot sjabloonparameters webtoepassing maken in zelfstudie over Azure Deployment Manager](./media/deployment-manager-tutorial/azure-deployment-manager-tutorial-create-web-application-parameters-deploypackageuri.png)
@@ -311,7 +311,7 @@ Azure PowerShell kan worden gebruikt om de sjablonen te implementeren.
     ```
 
     > [!NOTE]
-    > `New-AzResourceGroupDeployment` is een asynchrone aanroep. Het succes bericht betekent dat de implementatie met succes is gestart. Zie stap 2 en stap 4 van deze procedure om te controleren of de implementatie.
+    > `New-AzResourceGroupDeployment` is een asynchrone aanroep. Het bericht alleen geslaagd betekent dat de implementatie is gestart. Zie stap 2 en stap 4 van deze procedure om de implementatie te controleren.
 
 2. Controleer of de servicetopologie en de onderstreepte resources zijn gemaakt met behulp van Azure Portal:
 
@@ -340,7 +340,7 @@ Azure PowerShell kan worden gebruikt om de sjablonen te implementeren.
         -Verbose
     ```
 
-    De Deployment Manager PowerShell-cmdlets moeten worden geïnstalleerd voordat u deze cmdlet kunt uitvoeren. Zie Vereisten. De - uitgebreide switch kan worden gebruikt om te zien van de hele uitvoer.
+    De Deployment Manager PowerShell-cmdlets moeten worden geïnstalleerd voordat u deze cmdlet kunt uitvoeren. Zie Vereisten. De schakel optie-verbose kan worden gebruikt om de hele uitvoer te bekijken.
 
     Het volgende voorbeeld toont de actieve status:
 
@@ -434,4 +434,4 @@ Schoon de geïmplementeerd Azure-resources, wanneer u deze niet meer nodig hebt,
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u geleerd hoe u Azure Deployment Manager gebruikt. Als u wilt integreren in Azure Deployment Manager statuscontrole, Zie [zelfstudie: Controle van gatewayservicestatus gebruiken in Azure Deployment Manager](./deployment-manager-tutorial-health-check.md).
+In deze zelfstudie hebt u geleerd hoe u Azure Deployment Manager gebruikt. Als u de status controle in azure Deployment Manager wilt integreren, raadpleegt u [Tutorial: Gebruik status controle in azure Deployment Manager @ no__t-0.

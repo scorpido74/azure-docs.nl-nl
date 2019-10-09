@@ -1,6 +1,6 @@
 ---
-title: Uw eerste Azure Service Fabric-app in Linux maken met C# | Microsoft Docs
-description: Informatie over het maken en implementeren van een Service Fabric-toepassing met behulp van C# en .NET Core 2.0.
+title: Uw eerste Azure Service Fabric-app maken in Linux C#met behulp van | Microsoft Docs
+description: Meer informatie over het maken en implementeren van een Service Fabric C# -toepassing met behulp van en .net Core 2,0.
 services: service-fabric
 documentationcenter: csharp
 author: mani-ramaswamy
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/11/2018
-ms.author: subramar
-ms.openlocfilehash: 7bb9b1c545d30f66a09817ba977f12666a9f41c9
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: atsenthi
+ms.openlocfilehash: 8c34f50e8eb9d9793c146c38aca47691b04049c0
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60394292"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72167305"
 ---
 # <a name="create-your-first-azure-service-fabric-application"></a>Uw eerste Azure Service Fabric-toepassing maken
 > [!div class="op_single_selector"]
@@ -100,7 +100,7 @@ Parameters voor deze opdrachten vindt u in de gegenereerde manifesten binnen het
 Nadat de toepassing is geïmplementeerd, opent u een browser en gaat u naar [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) op [http://localhost:19080/Explorer](http://localhost:19080/Explorer). Vouw vervolgens het knooppunt **Toepassingen** uit. U ziet dat er nu een vermelding is voor uw toepassingstype en nog een voor het eerste exemplaar van dat type.
 
 > [!IMPORTANT]
-> Voor het implementeren van de toepassing met een beveiligd Linux-cluster in Azure, moet u een certificaat voor het valideren van uw toepassing met de Service Fabric-runtime configureren. In dat geval kunt uw Reliable Services-services om te communiceren met de onderliggende Service Fabric-runtime-API's. Zie voor meer informatie, [een Reliable Services-app uit te voeren op Linux-clusters configureren](./service-fabric-configure-certificates-linux.md#configure-a-reliable-services-app-to-run-on-linux-clusters).  
+> Als u de toepassing wilt implementeren in een beveiligd Linux-cluster in azure, moet u een certificaat configureren om uw toepassing te valideren met de Service Fabric runtime. Hierdoor kunnen uw Reliable Services-services communiceren met de onderliggende Service Fabric runtime-Api's. Zie [een reliable Services-app configureren voor het uitvoeren van Linux-clusters](./service-fabric-configure-certificates-linux.md#configure-a-reliable-services-app-to-run-on-linux-clusters)voor meer informatie.  
 >
 
 ## <a name="start-the-test-client-and-perform-a-failover"></a>De testclient starten en een failover uitvoeren
@@ -108,7 +108,7 @@ Actorprojecten doen niets uit zichzelf. Ze hebben een andere service of client n
 
 1. Voer het script uit met behulp van het controleprogramma om de uitvoer van de actorservice te bekijken.
 
-   In het geval van MAC OS X moet u de map myactorsvcTestClient kopiëren naar dezelfde locatie in de container door het uitvoeren van de volgende aanvullende opdrachten.
+   In het geval van MAC OS X moet u de myactorsvcTestClient-map naar dezelfde locatie in de container kopiëren door de volgende extra opdrachten uit te voeren.
     
     ```bash
     docker cp  [first-four-digits-of-container-ID]:/home

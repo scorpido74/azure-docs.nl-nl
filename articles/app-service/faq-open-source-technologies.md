@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: 941a218dbda2c27a598e5a53f2b947184ee78085
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: b92fe0a8073437d2cf0e908b4e734a0c01c342eb
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71121224"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72169690"
 ---
 # <a name="open-source-technologies-faqs-for-web-apps-in-azure"></a>Open-source technologieën Veelgestelde vragen over Web Apps in azure
 
@@ -33,13 +33,13 @@ In dit artikel vindt u antwoorden op veelgestelde vragen over problemen met open
 PHP-logboek registratie inschakelen:
 
 1. Meld u aan bij uw [kudu-website](https://*yourwebsitename*.scm.azurewebsites.net).
-2. Selecteer in het bovenste menu de optie **debug console** > **cmd**.
+2. Selecteer in het bovenste menu de optie **debug Console** > **cmd**.
 3. Selecteer de map van de **site** .
 4. Selecteer de map **wwwroot** .
-5. Selecteer het **+** pictogram en selecteer vervolgens **nieuw bestand**.
+5. Selecteer het pictogram **+** en selecteer vervolgens **nieuw bestand**.
 6. Stel de bestands naam in op **. User. ini**.
 7. Selecteer het potlood pictogram naast **. User. ini**.
-8. Voeg in het bestand de volgende code toe:`log_errors=on`
+8. Voeg in het bestand de volgende code toe: `log_errors=on`
 9. Selecteer **Opslaan**.
 10. Selecteer het potlood pictogram naast **wp-config. php**.
 11. Wijzig de tekst in de volgende code:
@@ -78,7 +78,7 @@ Als u de versie van de node. js-toepassing wilt wijzigen, kunt u een van de volg
   Het implementatie proces van het Azure-bron beheer omvat de volgende stappen:
   1. Hiermee verplaatst u inhoud naar de Azure-web-app.
   2. Hiermee maakt u een standaard implementatie script als er zich geen (Deploy. cmd,. Deployment-bestanden) in de hoofdmap van de web-app bevindt.
-  3. Voert een implementatie script uit waarbij het een iisnode. yml-bestand maakt als u de node. js-versie in de package. JSON-bestand > engine vermeldt`"engines": {"node": "5.9.1","npm": "3.7.3"}`
+  3. Voert een implementatie script uit waarin het een iisnode. yml-bestand maakt als u de node. js-versie in het bestand Package. json van de > engine `"engines": {"node": "5.9.1","npm": "3.7.3"}` vermeldt.
   4. Het bestand iisnode. yml heeft de volgende regel code:
       ```yml
       nodeProcessCommandLine: "D:\Program Files (x86)\nodejs\5.9.1\node.exe"
@@ -144,7 +144,7 @@ Om de fout op te lossen:
 
 1. Verwijder het bestand sqljdbc*. jar uit de map app/lib.
 2. Als u de aangepaste Tomcat of de Tomcat-webserver van Azure Marketplace gebruikt, kopieert u dit jar-bestand naar de map tomcat lib.
-3. Als u Java inschakelt vanuit de Azure Portal (Selecteer **Java 1,8** > **Tomcat-server**), kopieert u het bestand sqljdbc. * in de map die parallel is met uw app. Voeg vervolgens de volgende Classpath-instelling toe aan het bestand Web. config:
+3. Als u Java inschakelt vanuit de Azure Portal (Selecteer **java 1,8** > **Tomcat-server**), kopieert u het sqljdbc. * jar-bestand in de map die parallel is met uw app. Voeg vervolgens de volgende Classpath-instelling toe aan het bestand Web. config:
 
     ```xml
     <httpPlatform>
@@ -187,24 +187,24 @@ App Service heeft geen ingebouwde e-mail functie. Zie deze [stack overflow discu
 
 Als u onlangs naar Azure hebt gemigreerd, kan WordPress omleiden naar de oude domein-URL. Dit wordt veroorzaakt door een instelling in de MySQL-data base.
 
-WordPress Buddy + is een Azure-site-uitbrei ding die u kunt gebruiken om de omleidings-URL rechtstreeks in de-data base bij te werken. Zie [WordPress-hulpprogram ma's en MySQL-migratie met WordPress Buddy +](https://blogs.msdn.microsoft.com/azureossds/2016/12/21/wordpress-tools-and-mysql-migration-with-wordpress-buddy/)voor meer informatie over het gebruik van WordPress buddy +.
+WordPress Buddy + is een Azure-site-uitbrei ding die u kunt gebruiken om de omleidings-URL rechtstreeks in de-data base bij te werken. Zie [WordPress-hulpprogram ma's en MySQL-migratie met WordPress Buddy +](https://sharepointforum.org/threads/wordpress-tools-and-mysql-migration-with-wordpress-buddy.82929/)voor meer informatie over het gebruik van WordPress buddy +.
 
-Als u de omleidings-URL liever hand matig bijwerkt met behulp van SQL-query's of [phpMyAdmin, raadpleegt u WordPress: Omleiden naar de verkeerde URL](https://blogs.msdn.microsoft.com/azureossds/2016/07/12/wordpress-redirecting-to-wrong-url/).
+Als u de omleidings-URL liever hand matig bijwerkt met behulp van SQL-query's of PHPMyAdmin, raadpleegt u [WordPress: Omleiden naar de verkeerde URL @ no__t-0.
 
 ## <a name="how-do-i-change-my-wordpress-sign-in-password"></a>Hoe kan ik mijn WordPress-aanmeldings wachtwoord wijzigen?
 
-Als u het aanmeldings wachtwoord van WordPress hebt verg eten, kunt u WordPress Buddy + gebruiken om het wacht woord bij te werken. Als u uw wacht woord opnieuw wilt instellen, installeert u de WordPress Buddy + Azure-site-extensie en voert u de stappen uit die worden beschreven in [WordPress-hulpprogram ma's en MySQL-migratie met WordPress Buddy +](https://blogs.msdn.microsoft.com/azureossds/2016/12/21/wordpress-tools-and-mysql-migration-with-wordpress-buddy/).
+Als u het aanmeldings wachtwoord van WordPress hebt verg eten, kunt u WordPress Buddy + gebruiken om het wacht woord bij te werken. Als u uw wacht woord opnieuw wilt instellen, installeert u de WordPress Buddy + Azure-site-extensie en voert u de stappen uit die worden beschreven in [WordPress-hulpprogram ma's en MySQL-migratie met WordPress Buddy +](https://sharepointforum.org/threads/wordpress-tools-and-mysql-migration-with-wordpress-buddy.82929/).
 
 ## <a name="i-cant-sign-in-to-wordpress-how-do-i-resolve-this"></a>Ik kan me niet aanmelden bij WordPress. Hoe kan ik dit oplossen?
 
-Als u zichzelf hebt geblokkeerd na de laatste keer dat u een invoeg toepassing hebt geïnstalleerd, hebt u een defecte invoeg toepassing. WordPress Buddy + is een Azure-site-uitbrei ding die u kan helpen om invoeg toepassingen uit te scha kelen in WordPress. Zie voor meer informatie [WordPress-hulpprogram ma's en MySQL-migratie met WordPress Buddy +](https://blogs.msdn.microsoft.com/azureossds/2016/12/21/wordpress-tools-and-mysql-migration-with-wordpress-buddy/).
+Als u zichzelf hebt geblokkeerd na de laatste keer dat u een invoeg toepassing hebt geïnstalleerd, hebt u een defecte invoeg toepassing. WordPress Buddy + is een Azure-site-uitbrei ding die u kan helpen om invoeg toepassingen uit te scha kelen in WordPress. Zie voor meer informatie [WordPress-hulpprogram ma's en MySQL-migratie met WordPress Buddy +](https://sharepointforum.org/threads/wordpress-tools-and-mysql-migration-with-wordpress-buddy.82929/).
 
 ## <a name="how-do-i-migrate-my-wordpress-database"></a>Hoe kan ik de WordPress-data base te migreren?
 
 U hebt meerdere opties voor het migreren van de MySQL-data base die is verbonden met uw WordPress-website:
 
 * Ontwikkelaars: Gebruik de [opdracht prompt of phpMyAdmin](https://blogs.msdn.microsoft.com/azureossds/2016/03/02/migrating-data-between-mysql-databases-using-kudu-console-azure-app-service/)
-* Niet-ontwikkel aars: [WordPress Buddy +](https://blogs.msdn.microsoft.com/azureossds/2016/12/21/wordpress-tools-and-mysql-migration-with-wordpress-buddy/) gebruiken
+* Niet-ontwikkel aars: [WordPress Buddy +](https://sharepointforum.org/threads/wordpress-tools-and-mysql-migration-with-wordpress-buddy.82929/) gebruiken
 
 ## <a name="how-do-i-help-make-wordpress-more-secure"></a>Hoe kan ik kunt u WordPress veiliger maken?
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/07/2019
 ms.author: anavin
-ms.openlocfilehash: c488b96940cac03b9c392f0ac4bd1d32a15ba111
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: a53d5810b20aa8389c152889fed5d7f4e8cfc5b7
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72035282"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177661"
 ---
 # <a name="virtual-network-peering"></a>Peering op virtueel netwerk
 
@@ -90,7 +90,7 @@ Zie [Machtigingen voor peering op een virtueel netwerk](virtual-network-manage-p
 
 Er wordt een nominaal bedrag in rekening gebracht voor inkomend en uitgaand verkeer dat gebruikmaakt van een verbinding voor virtueel netwerk-peering. Zie de [pagina met prijzen](https://azure.microsoft.com/pricing/details/virtual-network) voor meer informatie over prijzen voor VNet-peering en wereldwijde VNet-peering.
 
-Gateway-door Voer is een peering-eigenschap waarmee een virtueel netwerk een VPN-ExpressRoute kan gebruiken in een gekoppeld virtueel netwerk voor cross-premises of VNet-naar-VNet-connectiviteit. Raadpleeg kosten voor [VPN-gateway](https://azure.microsoft.com/pricing/details/vpn-gateway/) of ExpressRoute-gateway kosten en [VNet-peering-kosten](https://azure.microsoft.com/pricing/details/virtual-network) voor meer informatie.
+Gateway-door Voer is een peering-eigenschap waarmee een virtueel netwerk een VPN-ExpressRoute kan gebruiken in een gekoppeld virtueel netwerk voor cross-premises of VNet-naar-VNet-connectiviteit. Verkeer naar de gateway (binnenkomend of uitgaand) in het gekoppelde VNet brengt VNet-peering-kosten met zich mee. Raadpleeg kosten voor [VPN-gateway](https://azure.microsoft.com/pricing/details/vpn-gateway/) of ExpressRoute-gateway kosten en [VNet-peering-kosten](https://azure.microsoft.com/pricing/details/virtual-network) voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -10,17 +10,17 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: v-masebo
 ms.date: 03/25/2019
-ms.custom: seo-javascript-september2019
-ms.openlocfilehash: b865bca5db11c4a34a1be4deb2e3145d73599e81
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.custom: seo-javascript-september2019, seo-javascript-october2019
+ms.openlocfilehash: 4d9c3954aea5fe64439190a2a0886fd8300c4cf9
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71059276"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72178049"
 ---
 # <a name="quickstart-use-nodejs-to-query-an-azure-sql-database"></a>Quickstart: Node.js gebruiken om een query uit te voeren voor een Azure SQL-database
 
-In dit artikel ziet u hoe u [Node.js](https://nodejs.org) gebruikt om verbinding te maken met een Azure SQL-database. Vervolgens kunt u T-SQL-instructies gebruiken om een query uit te voeren voor de gegevens.
+In deze Quick start ziet u hoe u [node. js](https://nodejs.org) kunt gebruiken om verbinding te maken met een Azure-SQL database. Vervolgens kunt u T-SQL-instructies gebruiken om een query uit te voeren voor de gegevens.
 
 ## <a name="prerequisites"></a>Vereisten
 

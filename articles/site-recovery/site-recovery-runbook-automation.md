@@ -7,18 +7,18 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: rajanaki
-ms.openlocfilehash: f6e2fedf3f2f8384d4a6062852888c312e8285a1
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: ecfe993a137ca63c84438870ec54ac1e6d6707da
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71212862"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72173484"
 ---
 # <a name="add-azure-automation-runbooks-to-recovery-plans"></a>Azure Automation runbooks toevoegen aan herstel plannen
 
 In dit artikel wordt beschreven hoe u Azure Automation runbooks integreert om [Azure site Recovery](site-recovery-overview.md) herstel plannen uit te breiden. We laten u zien hoe u basis taken automatiseert die anders hand matig moeten worden uitgevoerd en hoe u een herstel met meerdere stappen kunt omzetten in een actie met één klik.
 
-## <a name="recovery-plans"></a>Herstelplannen 
+## <a name="recovery-plans"></a>Herstel plannen 
 
 U kunt herstel plannen gebruiken bij het uitvoeren van een failover van on-premises machines of Azure-Vm's. Met herstel plannen kunt u een systematisch herstel proces definiëren dat definieert hoe machines failover uitvoeren en hoe ze worden gestart en hersteld na een failover. 
 
@@ -112,14 +112,14 @@ De Aman-blog van Sharma in de [oogst van Clouds](http://harvestingclouds.com) is
 ## <a name="customize-the-recovery-plan"></a>Het herstel plan aanpassen
 
 1. Selecteer in de kluis **herstel plannen (site Recovery)**
-2. Klik op **+ herstel plan**om een herstel plan te maken. [Meer informatie](/site-recovery-create-recovery-plans.md). Als u al een herstel plan hebt, selecteert u om het te openen.
+2. Klik op **+ herstel plan**om een herstel plan te maken. [Meer informatie](site-recovery-create-recovery-plans.md). Als u al een herstel plan hebt, selecteert u om het te openen.
 3. Klik op de pagina herstel plan op **aanpassen**.
 
     ![Klik op de knop aanpassen](media/site-recovery-runbook-automation-new/custom-rp.png)
 
-2. Klik op het weglatings teken (... **) naast groep 1: Start**de > **actie post toevoegen**.
+2. Klik op de weglatings tekens (...) naast **Group 1: Start @ no__t-0 @ no__t-1**post-actie toevoegen**.
 3. Controleer in **actie invoegen**of **script** is geselecteerd en geef een naam op voor het script (**Hallo wereld**).
-4. Geef een Automation-account op en selecteer een runbook. Klik op **OK**om het script op te slaan. Het script wordt toegevoegd aan **groep 1: Post-stappen**.
+4. Geef een Automation-account op en selecteer een runbook. Klik op **OK**om het script op te slaan. Het script wordt toegevoegd aan **Group 1: Post-stap @ no__t-0.
 
 
 ## <a name="reuse-a-runbook-script"></a>Een runbook-script opnieuw gebruiken

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/23/2018
 ms.author: genli
-ms.openlocfilehash: 9f7957fb0e6e888367c1f8ded1abfb3828697cbb
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 7949bedec2d304cd87fb512b44cd61d6f0894638
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71087097"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72168955"
 ---
 # <a name="remote-desktop-services-isnt-starting-on-an-azure-vm"></a>Extern bureaublad-services wordt niet gestart op een virtuele Azure-machine
 
@@ -65,7 +65,7 @@ Gebruik de seriële console om dit probleem op te lossen. Of [herstel de virtuel
 
 ### <a name="use-serial-console"></a>Seriële console gebruiken
 
-1. Open de [seriële console](serial-console-windows.md) door ondersteuning te selecteren **& probleem oplossing** > **seriële console**. Als de functie is ingeschakeld op de virtuele machine, kunt u verbinding maken met de virtuele machine.
+1. Open de [seriële console](serial-console-windows.md) door ondersteuning te selecteren & problemen  > **seriële console**op te **lossen**. Als de functie is ingeschakeld op de virtuele machine, kunt u verbinding maken met de virtuele machine.
 
 2. Een nieuw kanaal maken voor een CMD-exemplaar. Voer **cmd** in om het kanaal te starten en de kanaal naam op te halen.
 
@@ -113,7 +113,7 @@ Gebruik de seriële console om dit probleem op te lossen. Of [herstel de virtuel
 #### <a name="termservice-service-is-stopped-because-of-an-access-denied-problem"></a>De service wordt gestopt vanwege een probleem met de toegang is geweigerd
 
 1. Verbinding maken met [seriële Console](serial-console-windows.md) en open een PowerShell-exemplaar.
-2. Download het hulpprogramma procesmonitor het volgende script uit te voeren:
+2. Down load het hulp programma Process Monitor door het volgende script uit te voeren:
 
    ```
    remove-module psreadline  
@@ -141,16 +141,16 @@ Gebruik de seriële console om dit probleem op te lossen. Of [herstel de virtuel
    procmon /Terminate 
    ```
 
-5. Het bestand **c:\temp\ProcMonTrace.PML**verzamelen:
+5. Het bestand **c:\temp\ProcMonTrace.PML**verzamelen:
 
     1. [Een gegevensschijf koppelen aan de virtuele machine](../windows/attach-managed-disk-portal.md
 ).
     2. Seriële Console kunt u het bestand kopiëren naar het nieuwe station gebruiken. Bijvoorbeeld `copy C:\temp\ProcMonTrace.PML F:\`. In deze opdracht is F de stationsletter van de gekoppelde gegevensschijf.
     3. Ontkoppel het gegevens station en koppel dit aan een werkende VM waarop Process Monitor-ubstakke is geïnstalleerd.
 
-6. Open **ProcMonTrace. PML** met behulp van process monitoring the working VM. Vervolgens filteren op **resultaat is toegang geweigerd**, zoals weergegeven in de volgende schermafbeelding:
+6. Open **ProcMonTrace. PML** met behulp van process monitoring the working VM. Vervolgens filteren op **resultaat is toegang geweigerd**, zoals wordt weer gegeven in de volgende scherm afbeelding:
 
-    ![Filteren op resultaat in proces bewaken](./media/troubleshoot-remote-desktop-services-issues/process-monitor-access-denined.png)
+    ![Filteren op resultaat in proces monitor](./media/troubleshoot-remote-desktop-services-issues/process-monitor-access-denined.png)
 
  
 6. Corrigeer de registersleutels, mappen of bestanden die zich op de uitvoer. Dit probleem wordt meestal veroorzaakt wanneer de aanmeldingsaccount die wordt gebruikt op de service beschikt niet over ACL-machtiging voor toegang tot deze objecten. Als u de juiste ACL-machtiging voor het aanmeldings account wilt weten, kunt u controleren op een goede VM. 

@@ -8,12 +8,12 @@ ms.service: azure-resource-manager
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 0d06006e72405a53361d0551cf773488ec809762
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: fa29ea3d2f6edbbb016ce5c0c74415a5e765e85a
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71963819"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177556"
 ---
 # <a name="tutorial-use-parameter-files-to-deploy-your-resource-manager-template"></a>Zelfstudie: Parameter bestanden gebruiken voor het implementeren van uw Resource Manager-sjabloon
 
@@ -51,9 +51,9 @@ Dit bestand is het parameter bestand voor de productie omgeving. U ziet dat de S
 
 ## <a name="deploy-the-template"></a>De sjabloon implementeren
 
-Gebruik Azure CLI of Azure PowerShell voor het implementeren van een sjabloon.
+Gebruik Azure CLI of Azure PowerShell om de sjabloon te implementeren.
 
-Als definitieve test van uw sjabloon, gaan we twee nieuwe resource groepen maken. Een voor de ontwikkel omgeving en voor de productie omgeving.
+Als laatste test van uw sjabloon gaan we twee nieuwe resource groepen maken. Een voor de ontwikkel omgeving en één voor de productie omgeving.
 
 Eerst gaan we implementeren in de ontwikkel omgeving.
 
@@ -83,7 +83,7 @@ az group deployment create \
   --name devenvironment \
   --resource-group myResourceGroupDev \
   --template-file $templateFile \
-  --parameters @azuredeploy.parameters.dev.json
+  --parameters azuredeploy.parameters.dev.json
 ```
 
 ---
@@ -114,14 +114,14 @@ az group deployment create \
   --name prodenvironment \
   --resource-group myResourceGroupProd \
   --template-file $templateFile \
-  --parameters @azuredeploy.parameters.prod.json
+  --parameters azuredeploy.parameters.prod.json
 ```
 
 ---
 
-## <a name="verify-deployment"></a>Implementatie verifiëren
+## <a name="verify-the-deployment"></a>De implementatie controleren
 
-U kunt de implementatie controleren door de resource groep te verkennen van de Azure Portal.
+U kunt de implementatie controleren door de resource groepen van de Azure Portal te verkennen.
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 1. Selecteer **resource groepen**in het menu links.

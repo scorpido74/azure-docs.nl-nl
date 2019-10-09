@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 05/02/2018
 ms.author: robreed
-ms.openlocfilehash: 38a302545f2dd46a8123816a41c97ae26ee4c260
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: b0625e3ac14e28cb4d43313bf1d9bc8b7afa08b1
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70092511"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72176697"
 ---
 # <a name="pass-credentials-to-the-azure-dscextension-handler"></a>Referenties door geven aan de Azure DSCExtension-handler
 
@@ -83,11 +83,11 @@ $vm | Update-AzVM
 
 Het uitvoeren van deze code vraagt om een referentie. Nadat de referentie is ingesteld, wordt deze kort opgeslagen in het geheugen. Wanneer de referentie wordt gepubliceerd met behulp van de cmdlet **set-AzVMDscExtension** , wordt de referentie verzonden via https naar de virtuele machine. In de virtuele machine slaat Azure de referentie die is versleuteld op schijf op met behulp van het lokale VM-certificaat. De referentie wordt kort in het geheugen gedecodeerd en vervolgens opnieuw versleuteld om deze door te geven aan DSC.
 
-Dit proces wijkt af [van het gebruik van beveiligde configuraties zonder de extensie-handler](/powershell/dsc/securemof). De Azure-omgeving biedt een manier om configuratie gegevens veilig via certificaten te verzenden. Wanneer u de DSC-extensie-handler gebruikt, hoeft u geen **$CertificatePath** -of **$CertificateID**/  **$thumbprint** -vermelding op te geven in **ConfigurationData**.
+Dit proces wijkt af [van het gebruik van beveiligde configuraties zonder de extensie-handler](/powershell/scripting/dsc/pull-server/securemof). De Azure-omgeving biedt een manier om configuratie gegevens veilig via certificaten te verzenden. Wanneer u de DSC-extensie-handler gebruikt, hoeft u niet **$CertificatePath** of een **$CertificateID**/  **$thumbprint** -vermelding op te geven in **ConfigurationData**.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 - Krijg een [Inleiding tot de Azure DSC-extensie-handler](dsc-overview.md).
 - Bekijk de [Azure Resource Manager-sjabloon voor de DSC-extensie](dsc-template.md).
-- Voor meer informatie over Power shell DSC gaat u naar het [Power shell-documentatie centrum](/powershell/dsc/overview).
+- Voor meer informatie over Power shell DSC gaat u naar het [Power shell-documentatie centrum](/powershell/scripting/dsc/overview/overview).
 - Voor meer functionaliteit die u kunt beheren met Power shell DSC, en voor meer DSC-resources, gaat u naar de [Power shell Gallery](https://www.powershellgallery.com/packages?q=DscResource&x=0&y=0).

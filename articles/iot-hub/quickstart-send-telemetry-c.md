@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 04/10/2019
 ms.author: wesmc
-ms.openlocfilehash: 842efca1b40827f63ab23581aeac7e5226d04349
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 4ccfa45c56a7e59024ce0639f218861054e32395
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69900285"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72166947"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-c"></a>Quickstart: Telemetrie vanaf een apparaat verzenden naar een IoT-hub en lezen met een back-endtoepassing (C)
 
@@ -25,7 +25,7 @@ IoT Hub is een Azure-service waarmee grote hoeveelheden telemetrie van uw IoT-ap
 
 De snelstartgids maakt gebruik van een voorbeeldtoepassing C van de [Azure IoT device-SDK voor C](iot-hub-device-sdk-c-intro.md) om telemetrie te verzenden naar een IoT-hub. De Azure IoT device SDK's zijn geschreven in [ANSI C (C99)](https://wikipedia.org/wiki/C99) voor portabiliteit en brede platformcompatibiliteit. Voordat u de voorbeeldcode uitvoert, maakt u een IoT-hub en registreert het gesimuleerde apparaat bij die hub.
 
-Dit artikel is geschreven voor Windows, maar u kunt deze snelstartgids ook op Linux uitvoeren.
+Dit artikel is geschreven voor Windows, maar u kunt deze Snelstartgids ook volt ooien in Linux.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -45,7 +45,7 @@ Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://az
 
 Voor deze Quick Start gebruikt u de [Azure IOT Device SDK voor C](iot-hub-device-sdk-c-intro.md). 
 
-U kunt de SDK door het installeren van de pakketten en bibliotheken voor de volgende omgevingen gebruiken:
+Voor de volgende omgevingen kunt u de SDK gebruiken door deze pakketten en bibliotheken te installeren:
 
 * **Linux**: apt-get-pakketten zijn beschikbaar voor Ubuntu 16,04 en 18,04 met behulp van de volgende CPU-architecturen: amd64, arm64, armhf en i386. Zie [Gebruik van apt-get om een project C apparaat-client op Ubuntu te maken](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/ubuntu_apt-get_sample_setup.md) voor meer informatie.
 
@@ -59,7 +59,7 @@ In deze Quick start gaat u echter een ontwikkel omgeving voorbereiden die wordt 
 
 1. Down load het [cmake build-systeem](https://cmake.org/download/).
 
-    Het is belang rijk dat de Visual Studio-vereisten (Visual Studio en de ' Desktop Development with C++'-werk belasting) op uw computer zijn geïnstalleerd **voordat** u `CMake` de installatie start. Zodra aan de vereisten is voldaan en de download is geverifieerd, installeert u het CMake-bouwsysteem.
+    Het is belang rijk dat de Visual Studio-vereisten (Visual Studio en de ' Desktop Development with C++'-werk belasting) op uw computer zijn geïnstalleerd **voordat** u de `CMake`-installatie start. Zodra aan de vereisten is voldaan en de download is geverifieerd, installeert u het CMake-bouwsysteem.
 
 2. Open een opdracht prompt of git bash shell en navigeer naar een werkmap waarnaar u de Azure IoT C SDK wilt klonen. Voer de volgende opdracht uit voor het klonen van de [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) GitHub-opslagplaats:
 
@@ -83,7 +83,7 @@ In deze Quick start gaat u echter een ontwikkel omgeving voorbereiden die wordt 
     cmake ..
     ```
 
-    Als `cmake` uw C++ compiler niet wordt gevonden, kunt u tijdens het uitvoeren van de bovenstaande opdracht build-fouten krijgen. Als dit gebeurt, voert u deze opdracht uit bij de [Visual Studio-opdrachtprompt](https://docs.microsoft.com/dotnet/framework/tools/developer-command-prompt-for-vs). 
+    Als `cmake` uw C++ compiler niet vindt, kunt u tijdens het uitvoeren van de bovenstaande opdracht build-fouten krijgen. Als dit gebeurt, voert u deze opdracht uit bij de [Visual Studio-opdrachtprompt](https://docs.microsoft.com/dotnet/framework/tools/developer-command-prompt-for-vs). 
 
     Zodra het bouwen is voltooid, zijn de laatste paar uitvoerregels vergelijkbaar met de volgende uitvoer:
 
@@ -113,25 +113,25 @@ Een apparaat moet zijn geregistreerd bij uw IoT-hub voordat het verbinding kan m
 
    **YourIoTHubName**: vervang deze tijdelijke aanduiding door een door u gekozen naam voor de IoT-hub.
 
-   **MyCDevice**: dit is de naam van het geregistreerde apparaat. Gebruik MyCDevice, zoals wordt weergegeven. Als u een andere naam kiest voor uw apparaat, moet u deze naam ook in dit artikel gebruiken en de apparaatnaam bijwerken in de voorbeeld toepassingen voordat u ze uitvoert.
+   **MyCDevice**: Dit is de naam van het apparaat dat u wilt registreren. Het is raadzaam om **MyCDevice** te gebruiken zoals wordt weer gegeven. Als u een andere naam kiest voor uw apparaat, moet u deze naam ook in dit artikel gebruiken en de apparaatnaam bijwerken in de voorbeeld toepassingen voordat u ze uitvoert.
 
     ```azurecli-interactive
-    az iot hub device-identity create --hub-name YourIoTHubName --device-id MyCDevice
+    az iot hub device-identity create --hub-name {YourIoTHubName} --device-id MyCDevice
     ```
 
-2. Voer de volgende opdrachten uit in Azure Cloud Shell om de _apparaat Connection String_ te verkrijgen voor het apparaat dat u hebt geregistreerd:
+2. Voer de volgende opdracht uit in Azure Cloud Shell om het _apparaat Connection String_ op te halen voor het apparaat dat u zojuist hebt geregistreerd:
 
    **YourIoTHubName**: vervang deze tijdelijke aanduiding door een door u gekozen naam voor de IoT-hub.
 
     ```azurecli-interactive
-    az iot hub device-identity show-connection-string --hub-name YourIoTHubName --device-id MyCDevice --output table
+    az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id MyCDevice --output table
     ```
 
     Noteer de apparaatverbindingsreeks. Deze ziet er ongeveer als volgt uit:
 
-   `HostName={YourIoTHubName}.azure-devices.net;DeviceId=MyNodeDevice;SharedAccessKey={YourSharedAccessKey}`
+   `HostName={YourIoTHubName}.azure-devices.net;DeviceId=MyCDevice;SharedAccessKey={YourSharedAccessKey}`
 
-    U gebruikt deze waarde verderop in de snelstartgids.
+    U gebruikt deze waarde later in de Quick Start.
 
 ## <a name="send-simulated-telemetry"></a>Gesimuleerde telemetrie verzenden
 
@@ -150,7 +150,7 @@ De toepassing voor het gesimuleerde apparaat maakt verbinding met een apparaatsp
     static const char* connectionString = "[device connection string]";
     ```
 
-    Vervang de waarde van de `connectionString` constante door de apparaatverbindingsreeks die u eerder hebt genoteerd. Sla uw wijzigingen vervolgens op naar **iothub_convenience_sample.c**.
+    Vervang de waarde van de `connectionString`-constante door het apparaat connection string u eerder een notitie hebt gemaakt. Sla uw wijzigingen vervolgens op naar **iothub_convenience_sample.c**.
 
 3. Navigeer in een lokaal terminalvenster naar de *iothub_convenience_sample*-projectmap in de CMake-map die u hebt gemaakt in de Azure IoT C SDK. Voer de volgende opdracht uit vanuit de werkmap:
 
@@ -183,7 +183,7 @@ In deze sectie gebruikt u de Azure Cloud Shell met de IOT- [extensie](https://do
    **YourIoTHubName**: vervang deze tijdelijke aanduiding door een door u gekozen naam voor de IoT-hub.
 
     ```azurecli-interactive
-    az iot hub monitor-events --hub-name YourIoTHubName --output table
+    az iot hub monitor-events --hub-name {YourIoTHubName} --output table
     ```
 
     ![Lees de apparaatberichten met de Azure CLI](media/quickstart-send-telemetry-c/read-device-to-cloud-messages-app.png)
@@ -194,7 +194,7 @@ In deze sectie gebruikt u de Azure Cloud Shell met de IOT- [extensie](https://do
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze snelstartgids hebt u een IoT-hub geconfigureerd, een apparaat geregistreerd, gesimuleerde telemetrie verzonden naar de hub met behulp van een C-toepassing en de telemetrie gelezen van de hub met behulp van de Azure CLI.
+In deze Quick Start kunt u een IoT-hub instellen, een apparaat registreren, gesimuleerde telemetrie naar de hub verzenden met behulp van een C-toepassing en de telemetrie van de hub lezen met behulp van de Azure Cloud Shell.
 
 Voor meer informatie over het ontwikkelen met de Azure loT Hub C SDK gaat u verder naar de volgende instructiegids:
 

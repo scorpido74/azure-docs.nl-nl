@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 8/04/2019
-ms.openlocfilehash: c56e6e004fe7f63725b5f6f4b9c71f60cc7b91ed
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 5f98cb29bd61c674ef7d7e6af781760fe81a5085
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68829110"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177897"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-amazon-s3-to-azure-storage"></a>Azure Data Factory gebruiken om gegevens te migreren van Amazon S3 naar Azure Storage 
 
@@ -136,7 +136,6 @@ Dit is de geschatte prijs op basis van de bovenstaande hypo Thesen:
 
 ![prijs informatie: tabel](media/data-migration-guidance-s3-to-azure-storage/pricing-table.png)
 
-
 ### <a name="additional-references"></a>Aanvullende naslaginformatie 
 - [Amazon Simple Storage-service connector](https://docs.microsoft.com/azure/data-factory/connector-amazon-simple-storage-service)
 - [Azure Blob Storage-connector](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage)
@@ -149,6 +148,10 @@ Dit is de geschatte prijs op basis van de bovenstaande hypo Thesen:
 - [Bestand incrementeel kopiëren op basis van een gepartitioneerde bestands naam](https://docs.microsoft.com/azure/data-factory/tutorial-incremental-copy-partitioned-file-name-copy-data-tool)
 - [Nieuwe en gewijzigde bestanden kopiëren op basis van LastModifiedDate](https://docs.microsoft.com/azure/data-factory/tutorial-incremental-copy-lastmodified-copy-data-tool)
 - [Pagina met prijzen voor ADF](https://azure.microsoft.com/pricing/details/data-factory/data-pipeline/)
+
+## <a name="template"></a>Template
+
+Dit is de [sjabloon](solution-template-migration-s3-azure.md) waarmee u begint met het migreren van PETA bytes aan gegevens van honderden miljoenen bestanden van Amazon S3 naar Azure data Lake Storage Gen2.
 
 ## <a name="next-steps"></a>Volgende stappen
 

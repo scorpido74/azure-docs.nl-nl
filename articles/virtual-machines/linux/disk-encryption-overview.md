@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 61c85d17e88016e5e9067d4be86e1cd290b4b12a
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 053c52d7d1a0282d72ad76408b77c96aa3b0e3e4
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71948194"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72174709"
 ---
 # <a name="azure-disk-encryption-for-linux-vms"></a>Azure Disk Encryption voor Linux-Vm's 
 
@@ -32,7 +32,7 @@ Meer informatie over de basis principes van Azure Disk Encryption voor Linux in 
 
 ### <a name="supported-vm-sizes"></a>Ondersteunde VM-grootten
 
-Virtuele Linux-machines zijn beschikbaar in [verschillende grootten](sizes.md). Azure Disk Encryption is niet beschikbaar op [de Basic-, a-Series vm's](/pricing/details/virtual-machines/series/)of op virtuele machines die niet voldoen aan deze minimale geheugen vereisten:
+Virtuele Linux-machines zijn beschikbaar in [verschillende grootten](sizes.md). Azure Disk Encryption is niet beschikbaar op [de Basic-, a-Series vm's](https://azure.microsoft.com/pricing/details/virtual-machines/series/)of op virtuele machines die niet voldoen aan deze minimale geheugen vereisten:
 
 | Virtuele machine | Minimale geheugen vereiste |
 |--|--|

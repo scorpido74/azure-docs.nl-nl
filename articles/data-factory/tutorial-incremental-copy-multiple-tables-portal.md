@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/20/2018
 ms.author: yexu
-ms.openlocfilehash: d46c460f7158635e520b47517fb3aab005af94a2
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 44ae433040c2c9cab47567cb663d4e588311a4a1
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70140758"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177417"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-an-azure-sql-database"></a>Incrementeel gegevens uit meerdere tabellen in SQL Server naar een Azure SQL-database kopiëren
 In deze zelfstudie maakt u een Azure Data Factory met een pijplijn waarmee wijzigingsgegevens uit meerdere tabellen van een lokale SQL-server naar een Azure SWL-database worden gekopieerd.    
@@ -227,7 +227,7 @@ END
 
 ```
 
-## <a name="create-a-data-factory"></a>Data factory maken
+## <a name="create-a-data-factory"></a>Een gegevensfactory maken
 
 1. Start de webbrowser **Microsoft Edge** of **Google Chrome**. Op dit moment wordt de Data Factory-gebruikersinterface alleen ondersteund in de webbrowsers Microsoft Edge en Google Chrome.
 1. Klik op **Nieuw** in het linkermenu en klik vervolgens op **Gegevens en analyses** en **Data Factory**. 
@@ -386,7 +386,7 @@ In deze stap maakt u gegevenssets die de gegevensbron, het gegevensdoel en de pl
    ![Sink-gegevensset - verbinding](./media/tutorial-incremental-copy-multiple-tables-portal/sink-dataset-connection-dynamicContent.png)
 
    
- 1. Nadat u op **Voltooien** hebt geklikt, ziet u **@dataset().SinkTableName** als de tabelnaam.
+ 1. Nadat u op **volt ooien**hebt geklikt, ziet u **\@dataset (). SinkTableName** als de tabel naam.
    
    ![Sink-gegevensset - verbinding](./media/tutorial-incremental-copy-multiple-tables-portal/sink-dataset-connection-completion.png)
 
@@ -425,7 +425,7 @@ In deze pijplijn wordt een lijst met tabelnamen gebruikt als parameter. De ForEa
     ![Nieuwe pijplijn - menu](./media/tutorial-incremental-copy-multiple-tables-portal/new-pipeline-menu.png)
 1. Voer in het tabblad **Algemeen** in het venster **Eigenschappen** **IncrementalCopyPipeline** in als **Naam**. 
 
-    ![Naam van de pijplijn](./media/tutorial-incremental-copy-multiple-tables-portal/pipeline-name.png)
+    ![Naam pijplijn](./media/tutorial-incremental-copy-multiple-tables-portal/pipeline-name.png)
 1. Voer bij in het venster **Eigenschappen** de volgende stappen uit: 
 
     1. Klik op **+ New**. 
@@ -492,9 +492,9 @@ In deze pijplijn wordt een lijst met tabelnamen gebruikt als parameter. De ForEa
     ![Kopieeractiviteit - sinkinstellingen](./media/tutorial-incremental-copy-multiple-tables-portal/copy-sink-settings.png)
 1. Voer de volgende stappen uit:
 
-    1. Voer in`@{item().TABLE_NAME}`de eigenschap **DataSet** de para meter SinkTableName in.
-    1. Voer`@{item().StoredProcedureNameForMergeOperation}`voor de eigenschap **opgeslagen procedure naam** in.
-    1. Voer`@{item().TableType}`bij eigenschap van het **type tabel** in.
+    1. Voer in de eigenschap **DataSet** voor de para meter **SinkTableName** de `@{item().TABLE_NAME}` in.
+    1. Voer voor de eigenschap **opgeslagen procedure naam** `@{item().StoredProcedureNameForMergeOperation}` in.
+    1. Voer `@{item().TableType}` in bij eigenschap **type van tabel** .
 
 
         ![Kopieeractiviteit - parameters](./media/tutorial-incremental-copy-multiple-tables-portal/copy-activity-parameters.png)
@@ -560,7 +560,7 @@ In deze pijplijn wordt een lijst met tabelnamen gebruikt als parameter. De ForEa
     ![Pijplijnuitvoeringen](./media/tutorial-incremental-copy-multiple-tables-portal/pipeline-runs.png)
 1. Klik op de koppeling **Uitvoeringen van activiteiten weergeven** in de kolom **Acties**. U ziet de uitvoering van alle activiteiten die zijn gekoppeld aan de pijplijnuitvoering. 
 
-    ![Uitvoeringen van activiteit](./media/tutorial-incremental-copy-multiple-tables-portal/activity-runs.png)
+    ![Uitvoering van activiteiten](./media/tutorial-incremental-copy-multiple-tables-portal/activity-runs.png)
 
 ## <a name="review-the-results"></a>De resultaten bekijken
 Voer in SQL Server Management Studio de volgende query's uit op de SQL-doeldatabase om te controleren of de gegevens van de brontabellen naar de doeltabellen zijn gekopieerd: 
@@ -662,7 +662,7 @@ VALUES
     ![Pijplijnuitvoeringen](./media/tutorial-incremental-copy-multiple-tables-portal/pipeline-runs.png)
 1. Klik op de koppeling **Uitvoeringen van activiteiten weergeven** in de kolom **Acties**. U ziet de uitvoering van alle activiteiten die zijn gekoppeld aan de pijplijnuitvoering. 
 
-    ![Uitvoeringen van activiteit](./media/tutorial-incremental-copy-multiple-tables-portal/activity-runs.png) 
+    ![Uitvoering van activiteiten](./media/tutorial-incremental-copy-multiple-tables-portal/activity-runs.png) 
 
 ## <a name="review-the-final-results"></a>De eindresultaten bekijken
 Voer in SQL Server Management Studio de volgende query's uit op de doeldatabase om te controleren dat de bijgewerkte/nieuwe gegevens van de brontabellen naar de doeltabellen zijn gekopieerd. 

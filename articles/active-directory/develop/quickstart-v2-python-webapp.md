@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 09/25/2019
 ms.author: abpati
 ms.custom: aaddev
-ms.openlocfilehash: 587e7a82e2a9cde8ff6d08274928ab22aa969061
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.openlocfilehash: 85a1de992be7b5bbdcec8fd415f60ae10190c11a
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71309612"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72170046"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-python-web-app"></a>Quickstart: Aanmelden met micro soft toevoegen aan een Python-web-app
 
@@ -37,7 +37,7 @@ Wanneer u de hand leiding hebt voltooid, accepteert uw toepassing aanmeldingen v
 Als u dit voor beeld wilt uitvoeren, hebt u het volgende nodig:
 
 - [Python 2.7 +](https://www.python.org/downloads/release/python-2713) of [python 3 +](https://www.python.org/downloads/release/python-364/)
-- [Kolf](http://flask.pocoo.org/), [kolf-sessie](https://pythonhosted.org/Flask-Session/), [aanvragen](https://2.python-requests.org/en/master/)
+- [Kolf](http://flask.pocoo.org/), [kolf-sessie](https://pythonhosted.org/Flask-Session/), [aanvragen](https://requests.kennethreitz.org//en/master/)
 - [MSAL python](https://github.com/AzureAD/microsoft-authentication-library-for-python) 
 - Een Azure Active Directory-Tenant (Azure AD). Zie [een Azure AD-Tenant verkrijgen](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) voor meer informatie over het verkrijgen van een Azure AD-Tenant.
 
@@ -67,7 +67,7 @@ Als u dit voor beeld wilt uitvoeren, hebt u het volgende nodig:
 > 1. Wanneer de pagina **Een toepassing registreren** verschijnt, voert u de registratiegegevens van de toepassing in:
 >      - Voer in de sectie **Naam** een beschrijvende toepassingsnaam. Deze wordt zichtbaar voor gebruikers van de app. Bijvoorbeeld: `python-webapp`.
 >      - Selecteer onder **Ondersteunde accounttypen** de optie **Accounts in een organisatieadreslijst en persoonlijke Microsoft-account**.
->      - Selecteer onder de sectie omleidings- **URI** in de vervolg keuzelijst het **webplatform en** stel vervolgens de waarde in op `http://localhost:5000/getAToken`.
+>      - Selecteer onder de sectie **omleidings-URI** in de vervolg keuzelijst het **webplatform en** stel vervolgens de waarde in op `http://localhost:5000/getAToken`.
 >      - Selecteer **Registreren**. Noteer de waarde van de **toepassing (client)** op de pagina app- **overzicht** voor later gebruik.
 > 1. Kies in het menu links de optie **certificaten & geheimen** en klik in de sectie **client geheimen** op **Nieuw client geheim** :
 >
@@ -82,7 +82,7 @@ Als u dit voor beeld wilt uitvoeren, hebt u het volgende nodig:
 >
 > Het code voorbeeld voor deze Quick Start werkt alleen als u:
 >
-> 1. Voeg een antwoord-URL `http://localhost:5000/getAToken`toe als.
+> 1. Voeg een antwoord-URL toe als `http://localhost:5000/getAToken`.
 > 1. Maak een client geheim.
 >
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
@@ -109,7 +109,7 @@ CLIENT_ID = "Enter_the_Application_Id_here"
 > Waar:
 >
 > - `Enter_the_Application_Id_here`: de toepassings-id voor de toepassing die u hebt geregistreerd.
-> - `Enter_the_Client_Secret_Here`-is het **client geheim** dat u in **Certificaten & geheimen** hebt gemaakt voor de toepassing die u hebt geregistreerd.
+> - `Enter_the_Client_Secret_Here`-is het **client geheim** dat u hebt gemaakt in **Certificaten & geheimen** voor de toepassing die u hebt geregistreerd.
 
 #### <a name="step-4-run-the-code-sample"></a>Stap 4: Het code voorbeeld uitvoeren
 
@@ -130,6 +130,6 @@ CLIENT_ID = "Enter_the_Application_Id_here"
 Meer informatie over web-apps waarmee gebruikers zich kunnen aanmelden en die web-Api's aanroept:
 
 > [!div class="nextstepaction"]
-> [Scenario: Web-apps waarmee gebruikers zich aanmelden](scenario-web-app-sign-user-overview.md)
+> [Scenario: Web-apps die zich aanmelden bij gebruikers @ no__t-0
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]

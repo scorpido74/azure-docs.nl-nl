@@ -1,51 +1,51 @@
 ---
-title: Maken en implementeren van Azure van Visual Studio-resourcegroepprojecten
+title: Visual Studio Azure-resource groep-projecten maken & implementeren
 description: Gebruik Visual Studio om een Azure-resourcegroepproject te maken en de resources in Azure te implementeren.
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: quickstart
 ms.date: 06/20/2019
 ms.author: tomfitz
-ms.openlocfilehash: 8677d906375853bdde5c192c86dacc7479f2e31e
-ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
+ms.openlocfilehash: c7f71dbadf24244756cf65f68ceea24547190737
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/21/2019
-ms.locfileid: "67311329"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72170244"
 ---
 # <a name="creating-and-deploying-azure-resource-groups-through-visual-studio"></a>Azure-resourcegroepen maken en implementeren met Visual Studio
 
-Met Visual Studio kunt u een project maken waarmee uw infrastructuur en code in Azure worden geïmplementeerd. U kunt bijvoorbeeld de webhost, website en code voor de website implementeren. Visual Studio biedt veel verschillende startsjablonen om te implementeren in algemene scenario's. In dit artikel implementeert u een web-app.  
+Met Visual Studio kunt u een project maken waarmee uw infrastructuur en code in Azure worden geïmplementeerd. U kunt bijvoorbeeld de web-host, de website en de code voor de website implementeren. Visual Studio biedt veel verschillende startsjablonen om te implementeren in algemene scenario's. In dit artikel implementeert u een web-app.
 
-In dit artikel ziet u hoe u [Visual Studio 2019 of hoger met de Azure-ontwikkeling en de ASP.NET-workloads geïnstalleerd](/visualstudio/install/install-visual-studio?view=vs-2019). Als u Visual Studio 2017 gebruikt, uw ervaring is grotendeels hetzelfde.
+In dit artikel wordt beschreven hoe u [Visual Studio 2019 of hoger gebruikt met de Azure Development-en ASP.net-workloads die zijn geïnstalleerd](/visualstudio/install/install-visual-studio?view=vs-2019). Als u Visual Studio 2017 gebruikt, is uw ervaring grotendeels hetzelfde.
 
 ## <a name="create-azure-resource-group-project"></a>Een Azure-resourcegroepproject maken
 
-In deze sectie maakt u een Azure-resourcegroep-project met een **Web-app** sjabloon.
+In deze sectie maakt u een Azure-resource groep-project met een **Web-app** -sjabloon.
 
-1. Kies in Visual Studio **bestand**, **nieuw**, en **Project**. Selecteer de **Azure-resourcegroep** projectsjabloon, maken en **volgende**.
+1. Kies in Visual Studio **bestand**, **Nieuw**en **project**. Selecteer de project sjabloon **Azure-resource groep** en **volgende**.
 
     ![Project maken](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/create-project.png)
 
-1. Geef uw project een naam. De andere standaard instellingen waarschijnlijk in orde zijn, maar ze kunnen bekijken die ze werken voor uw omgeving. Wanneer u klaar bent, selecteert u **Maken**.
+1. Geef uw project een naam. De andere standaard instellingen zijn waarschijnlijk verfijnd, maar bekijken ze voor uw omgeving. Wanneer u klaar bent, selecteert u **Maken**.
 
     ![Project maken](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/name-project.png)
 
-1. Kies het sjabloon dat u wilt implementeren in Azure Resource Manager. Er zijn diverse opties beschikbaar op basis van het type project dat u wilt implementeren. Kies voor dit artikel, de **Web-app** sjabloon en **OK**.
+1. Kies het sjabloon dat u wilt implementeren in Azure Resource Manager. Er zijn diverse opties beschikbaar op basis van het type project dat u wilt implementeren. Kies voor dit artikel de sjabloon **Web-app** en klik vervolgens op **OK**.
 
     ![Een sjabloon selecteren](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/select-project.png)
 
     Het sjabloon dat u kiest is slechts een beginpunt; u kunt resources toevoegen en verwijderen op basis van uw scenario.
 
-1. Visual Studio maakt een project voor resourcegroepimplementatie voor de web-app. Als u wilt zien van de bestanden voor uw project, kijken naar het knooppunt in het implementatieproject.
+1. Visual Studio maakt een implementatie project voor de resource groep voor de web-app. Als u de bestanden voor uw project wilt zien, bekijkt u het knoop punt in het implementatie project.
 
-    ![knooppunten weergeven](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/show-items.png)
+    ![Knoop punten weer geven](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/show-items.png)
 
-    Omdat u de Web-appsjabloon is gekozen, ziet u de volgende bestanden:
+    Omdat u de sjabloon web-app hebt gekozen, ziet u de volgende bestanden:
 
    | Bestandsnaam | Description |
    | --- | --- |
-   | Deploy-AzureResourceGroup.ps1 |Een PowerShell-script waarmee PowerShell-opdrachten worden uitgevoerd om te worden geïmplementeerd in Azure Resource Manager. Visual Studio gebruikt dit PowerShell-script om uw sjabloon te implementeren. |
+   | Deploy-AzureResourceGroup.ps1 |Een PowerShell-script waarmee PowerShell-opdrachten worden uitgevoerd om te worden geïmplementeerd in Azure Resource Manager. Visual Studio gebruikt dit Power shell-script voor het implementeren van uw sjabloon. |
    | WebSite.json |Het Resource Manager-sjabloon dat de infrastructuur definieert die u in Azure wilt implementeren en de parameters die u kunt opgeven tijdens de implementatie. Hiermee worden ook de afhankelijkheden tussen resources gedefinieerd zodat deze in de juiste volgorde worden geïmplementeerd. |
    | WebSite.parameters.json |Een parameterbestand dat de waarden bevat die nodig zijn voor de sjabloon. U geeft parameterwaarden door om elke implementatie aan te passen. |
 
@@ -53,31 +53,31 @@ In deze sectie maakt u een Azure-resourcegroep-project met een **Web-app** sjabl
 
 ## <a name="customize-resource-manager-template"></a>Resource Manager-sjabloon aanpassen
 
-U kunt een implementatieproject aanpassen door het wijzigen van de Resource Manager-sjabloon die worden beschreven van de resources die u wilt implementeren. Zie [Azure Resource Manager-sjablonen samenstellen](resource-group-authoring-templates.md) voor meer informatie over de onderdelen van een Resource Manager-sjabloon.
+U kunt een implementatie project aanpassen door de Resource Manager-sjabloon te wijzigen waarin de resources worden beschreven die u wilt implementeren. Zie [Azure Resource Manager-sjablonen samenstellen](resource-group-authoring-templates.md) voor meer informatie over de onderdelen van een Resource Manager-sjabloon.
 
-1. Als u wilt werken met de sjabloon, open **WebSite.json**.
+1. Als u wilt werken met uw sjabloon, opent u **website. json**.
 
 1. De Visual Studio-editor biedt hulpprogramma's voor het bewerken van het Resource Manager-sjabloon. In het scherm **JSON-overzicht** ziet u eenvoudig welke elementen zijn gedefinieerd in het sjabloon.
 
-   ![JSON-overzicht weergeven](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/show-json-outline.png)
+   ![JSON-overzicht weer geven](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/show-json-outline.png)
 
-1. Selecteer een element in het overzicht te gaan naar dat deel van de sjabloon.
+1. Selecteer een element in het overzicht om naar dat deel van de sjabloon te gaan.
 
-   ![door JSON navigeren](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/navigate-json.png)
+   ![Naar JSON navigeren](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/navigate-json.png)
 
 1. U kunt een nieuwe resource toevoegen aan een sjabloon door op de knop **Resource toevoegen** te klikken boven aan het venster JSON Outline of door met de rechtermuisknop op **Resources** te klikken en **Nieuwe resource toevoegen** te selecteren.
 
    ![Resource toevoegen](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/add-resource.png)
 
-1. Selecteer **Opslagaccount** en wijs hieraan een naam. Geef een naam op die niet meer dan elf tekens (alleen cijfers en kleine letters) omvat.
+1. Selecteer een **opslag account** en geef deze een naam. Geef een naam op die niet meer dan elf tekens (alleen cijfers en kleine letters) omvat.
 
    ![Opslag toevoegen](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/add-storage.png)
 
 1. U ziet dat niet alleen de resource is toegevoegd, maar ook een parameter voor het type opslagaccount en een variabele voor de naam van het opslagaccount.
 
-   ![overzicht weergeven](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/show-new-items.png)
+   ![Overzicht weer geven](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/show-new-items.png)
 
-1. De parameter voor het type opslagaccount is vooraf gedefinieerd met de toegestane typen en een standaardtype. U kunt deze waarden laten staan of ze bewerken voor uw scenario. Als u niemand toestemming wilt geven om een **Premium_LRS**-opslagaccount te implementeren via deze sjabloon, verwijdert u de sjabloon uit de toegestane typen.
+1. De para meter voor het type opslag account is vooraf gedefinieerd met toegestane typen en een standaard type. U kunt deze waarden laten staan of ze bewerken voor uw scenario. Als u niemand toestemming wilt geven om een **Premium_LRS**-opslagaccount te implementeren via deze sjabloon, verwijdert u de sjabloon uit de toegestane typen.
 
    ```json
    "demoaccountType": {
@@ -94,9 +94,9 @@ U kunt een implementatieproject aanpassen door het wijzigen van de Resource Mana
 
 1. Visual Studio biedt ook IntelliSense om u inzicht te geven in welke eigenschappen beschikbaar zijn bij het bewerken van de sjabloon. Als u bijvoorbeeld de eigenschappen bewerkt van uw App Service-plan, navigeert u naar de resource **HostingPlan** en voegt u een nieuwe waarde toe voor de **eigenschappen**. IntelliSense geeft de beschikbare waarden weer en biedt een beschrijving van die waarden.
 
-   ![intellisense weergeven](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/show-intellisense.png)
+   ![IntelliSense weer geven](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/show-intellisense.png)
 
-   U kunt instellen **numberOfWorkers** op 1, en sla het bestand.
+   U kunt **numberOfWorkers** instellen op 1 en het bestand opslaan.
 
    ```json
    "properties": {
@@ -105,7 +105,7 @@ U kunt een implementatieproject aanpassen door het wijzigen van de Resource Mana
    }
    ```
 
-1. Open de **WebSite.parameters.json** bestand. De parameterbestand wordt gebruikt om door te geven tijdens de implementatie waarden aanpassen van de resource wordt geïmplementeerd. Geef een naam op voor het hostingabonnement en sla het bestand.
+1. Open het bestand **website. para meters. json** . U gebruikt het parameter bestand voor het door geven van waarden tijdens de implementatie waarmee de resource wordt aangepast die wordt geïmplementeerd. Geef een naam op voor het hosting plan en sla het bestand op.
 
    ```json
    {
@@ -119,35 +119,35 @@ U kunt een implementatieproject aanpassen door het wijzigen van de Resource Mana
    }
    ```
 
-## <a name="deploy-project-to-azure"></a>Project implementeren in Azure
+## <a name="deploy-project-to-azure"></a>Project implementeren in azure
 
-U kunt nu uw project implementeren in een resourcegroep.
+U bent nu klaar om uw project te implementeren in een resource groep.
 
-Het PowerShell-script (implementeren-AzureResourceGroup.ps1) in het project maakt standaard gebruik van de AzureRM-module. Als u nog steeds de AzureRM-module geïnstalleerd hebt en wilt blijven gebruiken, kunt u dit Standaardscript gebruiken. Met dit script, kunt u de Visual Studio-interface gebruiken om uw oplossing te implementeren.
+Het Power shell-script (Deploy-AzureResourceGroup. ps1) in het project maakt standaard gebruik van de module AzureRM. Als u de AzureRM-module nog hebt geïnstalleerd en u deze wilt blijven gebruiken, kunt u dit standaard script gebruiken. Met dit script kunt u de Visual Studio-interface gebruiken om uw oplossing te implementeren.
 
-Echter, als u hebt gemigreerd naar de nieuwe [Az module](/powershell/azure/new-azureps-module-az), moet u een nieuw script toevoegen aan uw project. U voegt een script dat gebruikmaakt van de Az-module, Kopieer de [implementeren AzTemplate.ps1](https://github.com/Azure/azure-quickstart-templates/blob/master/Deploy-AzTemplate.ps1) script en voeg deze toe aan uw project. Als u wilt gebruiken met dit script voor implementatie, moet u het uitvoeren van een PowerShell-console, in plaats van met behulp van Visual Studio-implementatie-interface.
+Als u echter hebt gemigreerd naar de nieuwe [AZ-module](/powershell/azure/new-azureps-module-az), moet u een nieuw script toevoegen aan uw project. Als u een script wilt toevoegen dat gebruikmaakt van de AZ-module, kopieert u het script [Deploy-AzTemplate. ps1](https://github.com/Azure/azure-quickstart-templates/blob/master/Deploy-AzTemplate.ps1) en voegt u dit toe aan uw project. Als u dit script voor implementatie wilt gebruiken, moet u het uitvoeren vanuit een Power shell-console, in plaats van de implementatie-interface van Visual Studio te gebruiken.
 
-Beide methoden worden weergegeven in dit artikel. In dit artikel verwijst naar de Standaardscript als de AzureRM-module-script en het nieuwe script op als het script Az-module.
+Beide benaderingen worden weer gegeven in dit artikel. Dit artikel verwijst naar het standaard script als het AzureRM-module script en het nieuwe script als het AZ-module script.
 
-### <a name="az-module-script"></a>AZ module-script
+### <a name="az-module-script"></a>AZ-module script
 
-Open een PowerShell-console voor het script van de module Az en uitvoeren:
+Open een Power shell-console in het AZ-module script en voer het volgende uit:
 
 ```powershell
 .\Deploy-AzTemplate.ps1 -ArtifactStagingDirectory . -Location centralus -TemplateFile WebSite.json -TemplateParametersFile WebSite.parameters.json
 ```
 
-### <a name="azurerm-module-script"></a>Script voor AzureRM-module
+### <a name="azurerm-module-script"></a>AzureRM-module script
 
-Gebruik Visual Studio voor het script AzureRM-module:
+Voor het AzureRM-module script gebruikt u Visual Studio:
 
 1. Kies **Implementeren** > **Nieuw** in het snelmenu van het knooppunt van het implementatieproject.
 
-    ![Nieuwe implementatie menu-item](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/deploy.png)
+    ![Menu-item nieuwe implementatie](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/deploy.png)
 
 1. Het dialoogvenster **Implementeren in resourcegroep** wordt weergegeven. In de vervolgkeuzelijst **Resourcegroep** kiest u een bestaande resourcegroep of maakt u een nieuwe. Selecteer **Implementeren**.
 
-    ![Implementeren in het dialoogvenster van de resource-groep](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/show-deployment.png)
+    ![Het dialoog venster implementeren in resource groep](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/show-deployment.png)
 
 1. U kunt de voortgang van de implementatie bekijken in het venster **Uitvoer**. Wanneer de implementatie is voltooid, ziet u een laatste bericht dat de implementatie is geslaagd en dat er ongeveer als volgt uitziet:
 
@@ -155,41 +155,41 @@ Gebruik Visual Studio voor het script AzureRM-module:
    18:00:58 - Successfully deployed template 'website.json' to resource group 'ExampleAppDeploy'.
    ```
 
-## <a name="view-deployed-resources"></a>Geïmplementeerde resources weergeven
+## <a name="view-deployed-resources"></a>Geïmplementeerde resources weer geven
 
-Laten we de resultaten controleren.
+Laten we de resultaten bekijken.
 
 1. Open in een browser de [Azure Portal](https://portal.azure.com/) en meld u aan bij uw account. Als u de resourcegroep wilt bekijken, selecteert u **Resourcegroepen** en vervolgens de resourcegroep waarin u hebt geïmplementeerd.
 
-1. U ziet alle geïmplementeerde resources. De naam van het opslagaccount komt niet precies overeen met wat u hebt opgegeven bij het toevoegen van die resource. Het opslagaccount moet uniek zijn. De sjabloon voegt automatisch een reeks tekens aan de naam die u hebt opgegeven voor het maken van een unieke naam.
+1. U ziet alle geïmplementeerde resources. De naam van het opslagaccount komt niet precies overeen met wat u hebt opgegeven bij het toevoegen van die resource. Het opslagaccount moet uniek zijn. De sjabloon voegt automatisch een teken reeks toe aan de naam die u hebt gegeven om een unieke naam te maken.
 
-    ![resources weergeven](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/show-deployed-resources.png)
+    ![Resources weer geven](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/show-deployed-resources.png)
 
-## <a name="add-code-to-project"></a>Voeg code toe aan het project
+## <a name="add-code-to-project"></a>Code toevoegen aan project
 
 U hebt nu de infrastructuur geïmplementeerd voor uw app, maar er is nog geen code geïmplementeerd in uw project.
 
 1. Voeg een project toe aan uw Visual Studio-oplossing. Klik met de rechtermuisknop op de oplossing en selecteer **Toevoegen** > **Nieuw Project**.
 
-    ![project toevoegen](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/add-project.png)
+    ![Project toevoegen](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/add-project.png)
 
-1. Voeg een **ASP.NET Core-webtoepassing**.
+1. Een **ASP.net core-webtoepassing**toevoegen.
 
-    ![web-app toevoegen](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/add-app.png)
+    ![Web-app toevoegen](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/add-app.png)
 
-1. Geef een naam op voor uw web-app en selecteer **maken**.
+1. Geef uw web-app een naam en selecteer **maken**.
 
-    ![De naam van web-app](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/name-web-app.png)
+    ![Naam Web-app](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/name-web-app.png)
 
-1. Selecteer **webtoepassing** en **maken**.
+1. Selecteer **Webtoepassing** en **maken**.
 
-    ![Selecteer de Web-App](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/select-project-type.png)
+    ![Webtoepassing selecteren](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/select-project-type.png)
 
 1. Nadat Visual Studio uw web-app heeft gemaakt, ziet u beide projecten in de oplossing.
 
-    ![projecten weergeven](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/show-projects.png)
+    ![Projecten weer geven](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/show-projects.png)
 
-1. Nu moet u nagaan of het nieuwe project gekoppeld is aan uw resourcegroepproject. Ga terug naar uw resourcegroepproject (ExampleAppDeploy). Klik met de rechtermuisknop op **Verwijzingen** en selecteer **Verwijzing toevoegen**.
+1. Nu moet u nagaan of het nieuwe project gekoppeld is aan uw resourcegroepproject. Ga terug naar het project van de resource groep (ExampleAppDeploy). Klik met de rechtermuisknop op **Verwijzingen** en selecteer **Verwijzing toevoegen**.
 
     ![Verwijzing toevoegen](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/add-new-reference.png)
 
@@ -197,23 +197,23 @@ U hebt nu de infrastructuur geïmplementeerd voor uw app, maar er is nog geen co
 
    ![Verwijzing toevoegen](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/add-reference.png)
 
-   Door een verwijzing toe te voegen kunt u de web-app-project koppelen aan het resourcegroepproject en sommige eigenschappen automatisch ingesteld. U ziet deze eigenschappen in het venster **Eigenschappen** voor de verwijzing. **Bestandspad toevoegen** bevat het pad waar het pakket wordt gemaakt. Noteer de map (ExampleApp) en het bestand (package.zip). U moet weten wat deze waarden zijn, omdat u ze als parameters moet opgeven tijdens het implementeren van de app.
+   Door een verwijzing toe te voegen, koppelt u het web-app-project aan het project van de resource groep en stelt u een aantal eigenschappen automatisch in. U ziet deze eigenschappen in het venster **Eigenschappen** voor de verwijzing. **Bestandspad toevoegen** bevat het pad waar het pakket wordt gemaakt. Noteer de map (ExampleApp) en het bestand (package.zip). U moet weten wat deze waarden zijn, omdat u ze als parameters moet opgeven tijdens het implementeren van de app.
 
-   ![Zie de naslaginformatie](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/see-reference.png)
+   ![Zie Naslag informatie](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/see-reference.png)
 
-1. Ga terug naar uw sjabloon (WebSite.json) en een resource toevoegen aan de sjabloon.
+1. Ga terug naar uw sjabloon (WebSite. json) en voeg een resource toe aan de sjabloon.
 
     ![Resource toevoegen](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/add-resource-2.png)
 
-1. Selecteer deze keer **Webimplementatie voor Web Apps**. 
+1. Selecteer deze keer **Webimplementatie voor Web Apps**.
 
-    ![toevoegen van web implementeren](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/add-web-deploy.png)
+    ![Web Deploy toevoegen](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/add-web-deploy.png)
 
-   Sla uw sjabloon.
+   Sla uw sjabloon op.
 
-1. Er zijn enkele nieuwe parameters in uw sjabloon. Ze zijn toegevoegd in de vorige stap. U hoeft niet te waarden opgeven voor **_artifactsLocation** of **_artifactsLocationSasToken** omdat deze waarden worden automatisch gegenereerd. U moet echter de map en bestandsnaam ingesteld op het pad dat het implementatiepakket bevat. De namen van deze parameters eindigen met **PackageFolder** en **PackageFileName**. Het eerste deel van de naam is de naam van de Web Deploy resource die u hebt toegevoegd. In dit artikel, ze heten **ExampleAppPackageFolder** en **ExampleAppPackageFileName**. 
+1. Uw sjabloon bevat enkele nieuwe para meters. Deze zijn toegevoegd in de vorige stap. U hoeft geen waarden op te geven voor **_artifactsLocation** of **_artifactsLocationSasToken** , omdat deze waarden automatisch worden gegenereerd. U moet echter de map en de bestands naam instellen op het pad dat het implementatie pakket bevat. De namen van deze para meters eindigen op **PackageFolder** en **PackageFileName**. Het eerste deel van de naam is de naam van de Web Deploy-resource die u hebt toegevoegd. In dit artikel heten ze **ExampleAppPackageFolder** en **ExampleAppPackageFileName**.
 
-   Open **Website.parameters.json** en stelt u deze parameters op de waarden die u in de verwijzingseigenschappen hebt gezien. Stel **ExampleAppPackageFolder** op de naam van de map. Stel **ExampleAppPackageFileName** op de naam van het zip-bestand.
+   Open **website. para meters. json** en stel deze para meters in op de waarden die u in de verwijzings eigenschappen hebt gezien. Stel **ExampleAppPackageFolder** in op de naam van de map. Stel **ExampleAppPackageFileName** in op de naam van het zip-bestand.
 
    ```json
    {
@@ -233,57 +233,57 @@ U hebt nu de infrastructuur geïmplementeerd voor uw app, maar er is nog geen co
    }
    ```
 
-## <a name="deploy-code-with-infrastructure"></a>Code implementeren via de infrastructuur
+## <a name="deploy-code-with-infrastructure"></a>Code implementeren met de infra structuur
 
-Omdat u code toegevoegd aan het project, is uw implementatie enigszins anders deze tijd. Tijdens de implementatie, kunt u artefacten voorbereiden voor uw project op een plaats die toegang hebben tot Resource Manager. De artefacten, gefaseerd binnengebracht naar een opslagaccount.
+Omdat u code aan het project hebt toegevoegd, is uw implementatie iets anders. Tijdens de implementatie faseert u artefacten voor uw project naar een locatie waartoe Resource Manager toegang heeft. De artefacten worden klaargezet voor een opslag account.
 
-### <a name="az-module-script"></a>AZ module-script
+### <a name="az-module-script"></a>AZ-module script
 
-Er is een kleine wijziging die u aanbrengen in uw sjabloon moet als u het script Az-module. Met dit script voegt een schuine streep naar de locatie van de artefacten, maar de sjabloon wordt niet verwacht dat schuine streep. Open WebSite.json en de eigenschappen vinden voor de MSDeploy-extensie. Er is een eigenschap met de naam **packageUri**. Verwijder de slash tussen de locatie van de artefacten en de pakketmap.
+Er is een kleine wijziging die u moet aanbrengen in uw sjabloon als u het AZ-module script gebruikt. Met dit script wordt een slash toegevoegd aan de artefact locatie, maar uw sjabloon verwacht dat er geen slash wordt. Open WebSite. json en zoek de eigenschappen voor de MSDeploy-extensie. Het heeft een eigenschap met de naam **packageUri**. Verwijder de slash tussen de artefacten en de pakketmap.
 
-Er moet uitzien:
+Het moet er als volgt uitzien:
 
 ```json
 "packageUri": "[concat(parameters('_artifactsLocation'), parameters('ExampleAppPackageFolder'), '/', parameters('ExampleAppPackageFileName'), parameters('_artifactsLocationSasToken'))]",
 ```
 
-U ziet in het voorgaande voorbeeld er is geen `'/',` tussen **parameters('_artifactsLocation')** en **parameters('ExampleAppPackageFolder')** .
+In het vorige voor beeld is er geen `'/',` tussen de **para meters (' _artifactsLocation ')** en de **para meters (' ExampleAppPackageFolder ')** .
 
-Bouw het project opnieuw. Het bouwen van het project kunt u ervoor dat de bestanden die u wilt implementeren naar de map met tijdelijke bestanden worden toegevoegd.
+Bouw het project opnieuw op. Als u het project bouwt, worden de bestanden die u moet implementeren, toegevoegd aan de map voor gefaseerde installatie.
 
-Nu, open een PowerShell-console en voer:
+Open nu een Power shell-console en voer de volgende handelingen uit:
 
 ```powershell
 .\Deploy-AzTemplate.ps1 -ArtifactStagingDirectory .\bin\Debug\staging\ExampleAppDeploy -Location centralus -TemplateFile WebSite.json -TemplateParametersFile WebSite.parameters.json -UploadArtifacts -StorageAccountName <storage-account-name>
 ```
 
-### <a name="azurerm-module-script"></a>Script voor AzureRM-module
+### <a name="azurerm-module-script"></a>AzureRM-module script
 
-Gebruik Visual Studio voor het script AzureRM-module:
+Voor het AzureRM-module script gebruikt u Visual Studio:
 
-1. Als u wilt implementeren, kies **implementeren**, en de resourcegroep die u eerder hebt geïmplementeerd.
+1. Als u opnieuw wilt implementeren, kiest u **implementeren**en de resource groep die u eerder hebt geïmplementeerd.
 
     ![Project opnieuw implementeren](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/redeploy.png)
 
-1. Selecteer het opslagaccount dat u hebt geïmplementeerd met deze resourcegroep voor de **opslagaccount voor artefact**.
+1. Selecteer het opslag account dat u met deze resource groep hebt geïmplementeerd voor het **artefact opslag-account**.
 
-   ![Opnieuw implementeren van web implementeren](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/redeploy-web-app.png)
+   ![Opnieuw implementeren van Web Deploy](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/redeploy-web-app.png)
 
-## <a name="view-web-app"></a>Web-app weergeven
+## <a name="view-web-app"></a>Web-app weer geven
 
 1. Nadat de implementatie is voltooid, selecteert u uw web-app in de portal. Selecteer de URL om naar de site te bladeren.
 
-   ![site bladeren](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/browse-site.png)
+   ![Door site bladeren](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/browse-site.png)
 
 1. De implementatie van de standaard ASP.NET-app is voltooid.
 
-   ![geïmplementeerde app weergeven](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/show-deployed-app.png)
+   ![Geïmplementeerde app weer geven](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/show-deployed-app.png)
 
-## <a name="add-operations-dashboard"></a>Bewerkingsdashboard toevoegen
+## <a name="add-operations-dashboard"></a>Bewerkings dashboard toevoegen
 
 U bent niet beperkt tot alleen de resources die beschikbaar zijn via de Visual Studio-interface. U kunt uw implementatie aanpassen door een aangepaste resource toe te voegen aan uw sjabloon. Als u wilt zien hoe het toevoegen van een resource in zijn werk gaat, voegt u een operationeel dashboard toe voor het beheren van de resource die u hebt geïmplementeerd.
 
-1. Open het bestand WebSite.json en voeg de volgende JSON toe na de opslagaccountresource maar voor de afsluitende `]` van de sectie met resources.
+1. Open het bestand WebSite. json en voeg de volgende JSON toe na de bron van het opslag account, maar vóór het sluiten van `]` van de sectie resources.
 
    ```json
     ,{
@@ -362,13 +362,13 @@ U bent niet beperkt tot alleen de resources die beschikbaar zijn via de Visual S
     }
    ```
 
-1. Opnieuw implementeren uw project.
+1. Implementeer het project opnieuw.
 
-1. Nadat de implementatie is voltooid, kunt u uw dashboard bekijken in de portal. Selecteer **Dashboard** en kies de versie die u hebt geïmplementeerd.
+1. Nadat de implementatie is voltooid, bekijkt u het dash board in de portal. Selecteer **dash board** en kies het abonnement dat u hebt geïmplementeerd.
 
    ![Aangepast dashboard](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/view-custom-dashboards.png)
 
-1. U ziet het aangepaste dashboard.
+1. U ziet het aangepaste dash board.
 
    ![Aangepast dashboard](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/Ops-DemoSiteGroup-dashboard.png)
 
@@ -378,7 +378,7 @@ U kunt de toegang tot het dashboard beheren met behulp van RBAC-groepen. U kunt 
 
 Schoon de geïmplementeerd Azure-resources, wanneer u deze niet meer nodig hebt, op door de resourcegroep te verwijderen.
 
-1. Selecteer in de Azure-portal **resourcegroepen** in het menu links.
+1. Selecteer in het Azure Portal **resource groepen** in het menu links.
 
 1. Selecteer de naam van de resourcegroep.
 
@@ -386,7 +386,7 @@ Schoon de geïmplementeerd Azure-resources, wanneer u deze niet meer nodig hebt,
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze snelstartgids hebt u geleerd hoe u sjablonen kunt maken en implementeren met Visual Studio. In de volgende zelfstudie leert u hoe u de informatie van de sjabloonverwijzing kunt vinden, zodat u een versleuteld Azure-opslagaccount kunt maken.
+In deze snelstartgids hebt u geleerd hoe u sjablonen kunt maken en implementeren met Visual Studio. Zie voor meer informatie over het ontwikkelen van sjablonen onze nieuwe zelf studie reeks voor beginners:
 
 > [!div class="nextstepaction"]
-> [Een versleuteld opslagaccount maken](./resource-manager-tutorial-create-encrypted-storage-accounts.md)
+> [Zelf studies voor beginners](./template-tutorial-create-first-template.md)

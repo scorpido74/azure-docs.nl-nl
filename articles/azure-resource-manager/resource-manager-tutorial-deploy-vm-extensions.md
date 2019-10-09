@@ -11,12 +11,12 @@ ms.devlang: na
 ms.date: 11/13/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: a6d0c3e9daba6f4f37778fabde161751944e174a
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: 338054aadbf04c6c6e2b496677476c2c5634b6ba
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68774866"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72169287"
 ---
 # <a name="tutorial-deploy-virtual-machine-extensions-with-azure-resource-manager-templates"></a>Zelfstudie: Extensies voor virtuele machines implementeren met Azure Resource Manager-sjablonen
 
@@ -48,7 +48,7 @@ Als u dit artikel wilt voltooien, hebt u het volgende nodig:
 
 ## <a name="prepare-a-powershell-script"></a>Een PowerShell-script voorbereiden
 
-Een PowerShell-script met de volgende inhoud wordt gedeeld via een [Azure-opslagaccount met openbare toegang](https://armtutorials.blob.core.windows.net/usescriptextensions/installWebServer.ps1):
+Een Power shell-script met de volgende inhoud wordt gedeeld vanuit [github](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-vm-extension/installWebServer.ps1):
 
 ```azurepowershell
 Install-WindowsFeature -name Web-Server -IncludeManagementTools
@@ -63,7 +63,7 @@ Azure-snelstartsjablonen is een opslagplaats voor Resource Manager-sjablonen. In
 1. Selecteer in Visual Studio Code **File** > **Open File**.
 1. Plak de volgende URL in het vak **File name**: https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-windows/azuredeploy.json
 
-1. Selecteer **Open** om het bestand te openen.  
+1. Selecteer **Open** om het bestand te openen.
     In de sjabloon zijn vijf resources gedefinieerd:
 
    * **Microsoft.Storage/storageAccounts**. Zie de [sjabloonverwijzing](https://docs.microsoft.com/azure/templates/Microsoft.Storage/storageAccounts).
@@ -96,7 +96,7 @@ Voeg een VM-extensieresource toe aan de bestaande sjabloon met de volgende inhou
         "autoUpgradeMinorVersion":true,
         "settings": {
             "fileUris": [
-                "https://armtutorials.blob.core.windows.net/usescriptextensions/installWebServer.ps1"
+                "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-vm-extension/installWebServer.ps1"
             ],
             "commandToExecute": "powershell.exe -ExecutionPolicy Unrestricted -File installWebServer.ps1"
         }
@@ -109,7 +109,7 @@ Zie de [extensieverwijzing](https://docs.microsoft.com/azure/templates/microsoft
 * **name**: omdat de extensiebron een onderliggende resource van het virtuele-machineobject is, moet de naam het voorvoegsel van de naam van de virtuele machine hebben. Zie [naam en type voor onderliggende resources instellen](child-resource-name-type.md).
 * **dependsOn**: de extensiebron maken nadat u de virtuele machine hebt gemaakt.
 * **fileUris**: dit zijn de locaties waar de scriptbestanden worden opgeslagen. Als u ervoor kiest om de meegeleverde locaties niet te gebruiken, moet u de waarden bijwerken.
-* **commandToExecute**: met deze opdracht wordt het script aangeroepen.  
+* **commandToExecute**: met deze opdracht wordt het script aangeroepen.
 
 ## <a name="deploy-the-template"></a>De sjabloon implementeren
 
@@ -118,8 +118,7 @@ Informatie over de implementatieprocedure vindt u in de sectie De sjabloon imple
 ## <a name="verify-the-deployment"></a>De implementatie controleren
 
 1. Selecteer de VM in de Azure-portal.
-1. Kopieer het IP-adres in het overzicht van de VM door **Klik om te kopiëren** te selecteren en plak het adres in een tabblad van de browser.  
-   De gebruikelijke welkomstpagina van Internet Information Services (IIS) wordt geopend:
+1. Kopieer het IP-adres in het overzicht van de VM door **Klik om te kopiëren** te selecteren en plak het adres in een tabblad van de browser. De gebruikelijke welkomstpagina van Internet Information Services (IIS) wordt geopend:
 
 ![De welkomstpagina van Internet Information Services](./media/resource-manager-tutorial-deploy-vm-extensions/resource-manager-template-deploy-extensions-customer-script-web-server.png)
 
@@ -129,7 +128,7 @@ Wanneer u de geïmplementeerd Azure-resources niet meer nodig hebt, kunt u deze 
 
 1. Selecteer **Resourcegroepen** in het linkerdeelvenster van de Azure-portal.
 2. Typ de naam van de resourcegroep in het vak **Filteren op naam**.
-3. Selecteer de naam van de resourcegroep.  
+3. Selecteer de naam van de resourcegroep.
     De resourcegroep bevat zes resources.
 4. Selecteer **Resourcegroep verwijderen** in het bovenste menu.
 

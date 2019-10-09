@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 05/08/2019
 ms.author: cynthn
-ms.openlocfilehash: 0b1af2052e8aa916bf5fd6a40bea3502ff81a02d
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 068ae6fd581a55892c115f3a7e38d10304f057d8
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70079484"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72170206"
 ---
 # <a name="frequently-asked-question-about-windows-virtual-machines"></a>Veelgestelde vragen over Windows Virtual Machines
 In dit artikel worden enkele veelgestelde vragen over virtuele Windows-machines die zijn gemaakt in azure, behandeld met het Resource Manager-implementatie model. Voor de Linux-versie van dit onderwerp raadpleegt u [Veelgestelde vragen over Linux virtual machines](../linux/faq.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
@@ -75,10 +75,10 @@ Ja. Zie [een virtuele Linux-machine in azure maken met behulp van de portal](../
 Ja, dit is nu mogelijk. De virtuele machine moet eerst worden gestopt met het ongedaan maken van de toewijzing. Vervolgens kunt u een NIC toevoegen of verwijderen (tenzij dit de laatste NIC op de VM is). 
 
 ## <a name="are-there-any-computer-name-requirements"></a>Zijn er computer naam vereisten?
-Ja. De computer naam mag Maxi maal 15 tekens lang zijn. Zie [regels en beperkingen voor naam conventies](/azure/architecture/best-practices/naming-conventions#compute) voor meer informatie over het benoemen van uw resources.
+Ja. De computer naam mag Maxi maal 15 tekens lang zijn. Zie [regels en beperkingen voor naam conventies](/azure/cloud-adoption-framework/ready/considerations/naming-and-tagging#sample-naming-convention) voor meer informatie over het benoemen van uw resources.
 
 ## <a name="are-there-any-resource-group-name-requirements"></a>Zijn er vereisten voor de naam van de resource groep?
-Ja. De naam van de resource groep mag Maxi maal 90 tekens lang zijn. Zie [regels en beperkingen voor naam conventies](/azure/architecture/best-practices/naming-conventions#naming-rules-and-restrictions) voor meer informatie over resource groepen.
+Ja. De naam van de resource groep mag Maxi maal 90 tekens lang zijn. Zie [regels en beperkingen voor naam conventies](/azure/cloud-adoption-framework/ready/considerations/naming-and-tagging#resource-naming) voor meer informatie over resource groepen.
 
 ## <a name="what-are-the-username-requirements-when-creating-a-vm"></a>Wat zijn de vereisten van de gebruikers naam bij het maken van een VM?
 

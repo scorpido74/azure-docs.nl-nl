@@ -16,12 +16,12 @@ ms.date: 09/26/2019
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4a79cf166025ced6cb08d2f9e24801ea498fdc1c
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: 864a6476ad894952a2ef877d534ffe8a86e07819
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71326382"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72170030"
 ---
 # <a name="edit-and-manage-an-existing-access-package-in-azure-ad-entitlement-management-preview"></a>Een bestaand toegangs pakket bewerken en beheren in azure AD-rechts beheer (preview-versie)
 
@@ -34,7 +34,7 @@ Met een toegangs pakket kunt u een eenmalige configuratie uitvoeren van resource
 
 In dit artikel wordt beschreven hoe u bestaande toegangs pakketten bewerkt en beheert.
 
-## <a name="add-resource-roles"></a>Resourcerollen toevoegen
+## <a name="add-resource-roles"></a>Resource rollen toevoegen
 
 Een resource-rol is een verzameling machtigingen die zijn gekoppeld aan een resource. De manier waarop u resources beschikbaar maakt voor gebruikers, is door resource rollen toe te voegen aan uw toegangs pakket. U kunt resource rollen toevoegen voor groepen, teams, toepassingen en share point-sites.
 
@@ -82,7 +82,7 @@ Zie groepen en [Office 365-groepen en micro soft teams](/microsoftteams/office-3
     | Beveiliging | Wordt gebruikt voor het verlenen van toegang tot resources. |
     | Distributie | Wordt gebruikt voor het verzenden van meldingen naar een groep personen. |
     | O365 | Office 365-groep waarvoor geen teams zijn ingeschakeld. Wordt gebruikt voor samen werking tussen gebruikers, zowel binnen als buiten uw bedrijf. |
-    | Team | Office 365-groep waarvoor teams zijn ingeschakeld. Wordt gebruikt voor samen werking tussen gebruikers, zowel binnen als buiten uw bedrijf. |
+    | Stellen | Office 365-groep waarvoor teams zijn ingeschakeld. Wordt gebruikt voor samen werking tussen gebruikers, zowel binnen als buiten uw bedrijf. |
 
 1. Selecteer in de lijst **rol** de optie **eigenaar** of **lid**.
 
@@ -309,7 +309,7 @@ De meeste gebruikers in uw Directory kunnen zich aanmelden bij de portal van mij
 
 Het is belang rijk dat u de volledige koppeling naar de portal van mijn Access kopieert wanneer u deze naar een interne zakelijke partner verzendt. Dit zorgt ervoor dat de partner toegang krijgt tot de portal van uw Directory om de aanvraag te doen. 
 
-De koppeling wordt gestart met ' myaccess ', bevat een directory-hint en eindigt met een toegangs pakket-id. Zorg ervoor dat de koppeling alle volgende bevat:
+De koppeling wordt gestart met ' myaccess ', bevat een directory-hint en eindigt met een toegangs pakket-ID. Zorg ervoor dat de koppeling alle volgende bevat:
 
  `https://myaccess.microsoft.com/@<directory_hint>#/access-packages/<access_package_id>`
 
@@ -367,5 +367,4 @@ In het recht op beheer worden bulksgewijs wijzigingen in de toewijzing en resour
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Een catalogus eigenaar of een Access Package Manager toevoegen](entitlement-management-delegate.md#add-a-catalog-owner-or-an-access-package-manager)
 - [Aanvraag proces en e-mail meldingen](entitlement-management-process.md)

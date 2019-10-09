@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/9/2017
-ms.author: subramar
-ms.openlocfilehash: ed9ea8f9c340331fd9b8fcc014ab1af88e7b3bae
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.author: atsenthi
+ms.openlocfilehash: aa388a688e76b0ba69231d8a11aa1bfa686f7f51
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599231"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72166552"
 ---
 # <a name="resource-governance"></a>Resourcebeheer
 
@@ -32,14 +32,14 @@ Wanneer u meerdere services op hetzelfde knoop punt of cluster uitvoert, is het 
 
 Resource governance wordt ondersteund in Service Fabric conform het [service pakket](service-fabric-application-model.md). De resources die zijn toegewezen aan het service pakket kunnen verder worden verdeeld tussen code pakketten. De resource limieten die zijn opgegeven, betekenen ook de reserve ring van de resources. Service Fabric ondersteunt het opgeven van CPU en geheugen per service pakket, met twee ingebouwde [metrische gegevens](service-fabric-cluster-resource-manager-metrics.md):
 
-* *CPU* (naam `servicefabric:/_CpuCores`metrische waarde): Een logische kern die beschikbaar is op de hostmachine. Alle kernen op alle knoop punten worden hetzelfde gewogen.
+* *CPU* (metrische naam `servicefabric:/_CpuCores`): Een logische kern die beschikbaar is op de hostmachine. Alle kernen op alle knoop punten worden hetzelfde gewogen.
 
-* *Geheugen* (naam `servicefabric:/_MemoryInMB`metrische waarde): Het geheugen wordt uitgedrukt in mega bytes en wordt toegewezen aan het fysieke geheugen dat beschikbaar is op de computer.
+* *Geheugen* (metrische naam `servicefabric:/_MemoryInMB`): Het geheugen wordt uitgedrukt in mega bytes en wordt toegewezen aan het fysieke geheugen dat beschikbaar is op de computer.
 
 Voor deze twee metrische gegevens houdt [cluster resource manager](service-fabric-cluster-resource-manager-cluster-description.md) de totale cluster capaciteit bij, de belasting van elk knoop punt in het cluster en de resterende bronnen in het cluster. Deze twee meet waarden zijn gelijk aan die van andere gebruikers of aangepaste metrische gegevens. Alle bestaande functies kunnen met ze worden gebruikt:
 
 * Het cluster kan worden [gesaldeerd](service-fabric-cluster-resource-manager-balancing.md) op basis van deze twee metrische gegevens (standaard gedrag).
-* Het cluster kan worden [](service-fabric-cluster-resource-manager-defragmentation-metrics.md) gedefragmenteerd op basis van deze twee metrische gegevens.
+* Het cluster kan worden [gedefragmenteerd](service-fabric-cluster-resource-manager-defragmentation-metrics.md) op basis van deze twee metrische gegevens.
 * Bij [het beschrijven van een cluster](service-fabric-cluster-resource-manager-cluster-description.md)kan de gebufferde capaciteit worden ingesteld voor deze twee metrische gegevens.
 
 [Dynamische belasting rapportage](service-fabric-cluster-resource-manager-metrics.md) wordt niet ondersteund voor deze metrische gegevens en de belasting voor deze metrische gegevens wordt gedefinieerd tijdens de aanmaak tijd.
@@ -133,7 +133,7 @@ De limieten voor resource beheer worden opgegeven in het manifest van de toepass
   </ServiceManifestImport>
 ```
 
-In dit voor beeld haalt het service pakket met de naam **ServicePackageA** één kern op de knoop punten waar deze zich bevindt. Dit service pakket bevat twee code pakketten (**CodeA1** en **CodeA2**), en beide opgeven de `CpuShares` para meter. Het aandeel van kunnen 512:256 deelt de kern over de twee code pakketten.
+In dit voor beeld haalt het service pakket met de naam **ServicePackageA** één kern op de knoop punten waar deze zich bevindt. Dit service pakket bevat twee code pakketten (**CodeA1** en **CodeA2**) en de para meter `CpuShares` opgeven. Het aandeel van kunnen 512:256 deelt de kern over de twee code pakketten.
 
 In dit voor beeld wordt CodeA1 bijvoorbeeld twee derde van een kern opgehaald en CodeA2 wordt een-derde van een kern (en een tijdelijke reserve ring van hetzelfde) opgehaald. Als kunnen niet zijn opgegeven voor code pakketten, Service Fabric de kernen onderling gelijkmatig verdeeld.
 

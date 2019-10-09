@@ -16,12 +16,12 @@ ms.date: 09/24/2019
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1283549ce78535757b7ba42eaf7054538f0c9784
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: a99aa766ed4e6cacbe22933db226b2037d3e736d
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71326346"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72169998"
 ---
 # <a name="create-a-new-access-package-in-azure-ad-entitlement-management-preview"></a>Een nieuw toegangs pakket maken in azure AD-rechts beheer (preview-versie)
 
@@ -126,5 +126,3 @@ Op het tabblad **controleren en maken** kunt u uw instellingen controleren en co
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Een bestaand toegangspakket bewerken en beheren](entitlement-management-access-package-edit.md)
-- [Een catalogus eigenaar of een Access Package Manager toevoegen](entitlement-management-delegate.md#add-a-catalog-owner-or-an-access-package-manager)
-- [Een catalogus maken en beheren](entitlement-management-catalog-create.md)

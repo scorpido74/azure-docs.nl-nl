@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/20/2019
 ms.author: magoedte
-ms.openlocfilehash: fa3c8b8cee0b8621a6a2800655f62a3d339f67c3
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 24eb8440ed4746b51b92ce371b5d58b8d55de9a3
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71211997"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177597"
 ---
 # <a name="designing-your-azure-monitor-logs-deployment"></a>De implementatie van uw Azure Monitor-logboeken ontwerpen
 
@@ -32,7 +32,7 @@ Een Log Analytics-werk ruimte biedt:
 
 * Een geografische locatie voor de opslag van gegevens.
 * Gegevens isolatie door verschillende gebruikers toegangs rechten te verlenen volgens een van onze aanbevolen ontwerp strategieën.
-* Bereik voor configuratie van instellingen, zoals de [prijs categorie](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#changing-pricing-tier), [retentie](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)en het beperken van [gegevens](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#daily-cap).
+* Bereik voor configuratie van instellingen, zoals de [prijs categorie](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#changing-pricing-tier), [retentie](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)en het beperken van [gegevens](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#manage-your-maximum-daily-data-volume).
 
 Dit artikel bevat een gedetailleerd overzicht van de overwegingen voor het ontwerpen en migreren, het overzicht van toegangs beheer en een uitleg van de ontwerp implementaties die wij voor uw IT-organisatie raden.
 
@@ -82,7 +82,7 @@ De *toegangs modus* verwijst naar hoe een gebruiker toegang heeft tot een log An
 
 Gebruikers hebben twee opties om toegang tot de gegevens te krijgen:
 
-* **Werk ruimte-context**: U kunt alle logboeken weer geven in de werk ruimte waarvoor u machtigingen hebt. Query's in deze modus zijn gericht op alle gegevens in alle tabellen in de werk ruimte. Dit is de toegangs modus die wordt gebruikt wanneer logboeken worden geopend met de werk ruimte als het bereik, bijvoorbeeld wanneer u Logboeken selecteert in het **Azure monitor** menu in de Azure Portal.
+* **Werk ruimte-context**: U kunt alle logboeken weer geven in de werk ruimte waarvoor u machtigingen hebt. Query's in deze modus zijn gericht op alle gegevens in alle tabellen in de werk ruimte. Dit is de toegangs modus die wordt gebruikt wanneer logboeken worden geopend met de werk ruimte als het bereik, bijvoorbeeld wanneer u **Logboeken** selecteert in het **Azure monitor** menu in de Azure Portal.
 
     ![Context van Log Analytics in werk ruimte](./media/design-logs-deployment/query-from-workspace.png)
 
@@ -111,7 +111,7 @@ De volgende tabel bevat een overzicht van de toegangs modi:
 | Wat is het bereik van machtigingen? | Werk ruimte. Gebruikers met toegang tot de werk ruimte kunnen alle logboeken in de werk ruimte opvragen van tabellen waarvoor ze machtigingen hebben. Zie [Table Access Control](manage-access.md#table-level-rbac) | Azure-resource. De gebruiker kan Logboeken zoeken voor specifieke resources, resource groepen of abonnementen waartoe ze toegang hebben vanuit een wille keurige werk ruimte, maar geen logboeken kunnen doorzoeken voor andere resources. |
 | Hoe kan de gebruiker toegang krijgen tot logboeken? | <ul><li>Start **Logboeken** vanuit **Azure monitor** menu.</li></ul> <ul><li>Start **Logboeken** vanuit **log Analytics werk ruimten**.</li></ul> <ul><li>Vanuit Azure Monitor [werkmappen](../visualizations.md#workbooks).</li></ul> | <ul><li>**Logboeken** starten vanuit het menu voor de Azure-resource</li></ul> <ul><li>Start **Logboeken** vanuit **Azure monitor** menu.</li></ul> <ul><li>Start **Logboeken** vanuit **log Analytics werk ruimten**.</li></ul> <ul><li>Vanuit Azure Monitor [werkmappen](../visualizations.md#workbooks).</li></ul> |
 
-## <a name="access-control-mode"></a>Modus toegangsbeheer
+## <a name="access-control-mode"></a>Toegangs beheer modus
 
 De *Access Control-modus* is een instelling voor elke werk ruimte die definieert hoe machtigingen voor de werk ruimte worden bepaald.
 
@@ -121,7 +121,7 @@ De *Access Control-modus* is een instelling voor elke werk ruimte die definieert
 
     Dit is de standaard instelling voor alle werk ruimten die zijn gemaakt vóór 2019 maart.
 
-* **Resource-of werkruimte machtigingen gebruiken**: In deze besturings modus is granulaire RBAC toegestaan. Gebruikers kunnen toegang krijgen tot gegevens die zijn gekoppeld aan resources die ze kunnen weer geven door `read` de Azure-machtiging toe te wijzen. 
+* **Resource-of werkruimte machtigingen gebruiken**: In deze besturings modus is granulaire RBAC toegestaan. Gebruikers kunnen toegang krijgen tot gegevens die zijn gekoppeld aan resources die ze kunnen weer geven door de machtiging Azure `read` toe te wijzen. 
 
     Wanneer een gebruiker toegang heeft tot de werk ruimte in de werk ruimte-context modus, zijn werkruimte machtigingen van toepassing. Wanneer een gebruiker de werk ruimte in de resource context modus opent, worden alleen resource machtigingen gecontroleerd en worden de machtigingen voor de werk ruimte genegeerd. Schakel RBAC voor een gebruiker in door deze uit de werkruimte machtigingen te verwijderen en de machtigingen van de resource te herkennen.
 

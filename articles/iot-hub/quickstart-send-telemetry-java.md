@@ -10,12 +10,12 @@ ms.devlang: java
 ms.topic: quickstart
 ms.custom: mvc, seo-java-august2019, seo-java-september2019
 ms.date: 06/21/2019
-ms.openlocfilehash: a808216b62459869e9adfd88afc60ee53259221d
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: cb115b8658850fc85f93fc7a9508a82ecee920d8
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71838664"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72166449"
 ---
 # <a name="quickstart-send-telemetry-to-an-azure-iot-hub-and-read-it-with-a-java-application"></a>Quickstart: Telemetrie verzenden naar een Azure IoT hub en deze lezen met een Java-toepassing
 
@@ -69,37 +69,39 @@ Een apparaat moet zijn geregistreerd bij uw IoT-hub voordat het verbinding kan m
 
    **YourIoTHubName**: vervang deze tijdelijke aanduiding door een door u gekozen naam voor de IoT-hub.
 
-   **MyJavaDevice**: De naam van het apparaat dat u gaat registreren. Gebruik **MyJavaDevice** zoals wordt weergegeven. Als u een andere naam voor het apparaat kiest, moet u deze naam in de rest van dit artikel gebruiken, en moet u de apparaatnaam bijwerken in de voorbeeldtoepassingen voordat u ze uitvoert.
+   **MyJavaDevice** : Dit is de naam van het apparaat dat u wilt registreren. Het is raadzaam om **MyJavaDevice** te gebruiken zoals wordt weer gegeven. Als u een andere naam kiest voor uw apparaat, moet u deze naam ook in dit artikel gebruiken en de apparaatnaam bijwerken in de voorbeeld toepassingen voordat u ze uitvoert.
 
     ```azurecli-interactive
-    az iot hub device-identity create --hub-name YourIoTHubName --device-id MyJavaDevice
+    az iot hub device-identity create --hub-name {YourIoTHubName} --device-id MyJavaDevice
     ```
 
-2. Voer de volgende opdrachten uit in Azure Cloud Shell om de _apparaatverbindingsreeks_ op te halen voor het apparaat dat u zojuist hebt geregistreerd:  **YourIoTHubName: vervang deze tijdelijke aanduiding door een door u gekozen naam voor de IoT-hub.
+2. Voer de volgende opdracht uit in Azure Cloud Shell om het _apparaat Connection String_ op te halen voor het apparaat dat u zojuist hebt geregistreerd:
+
+    **YourIoTHubName**: vervang deze tijdelijke aanduiding door een door u gekozen naam voor de IoT-hub.
 
     ```azurecli-interactive
-    az iot hub device-identity show-connection-string --hub-name YourIoTHubName --device-id MyJavaDevice --output table
+    az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id MyJavaDevice --output table
     ```
 
     Noteer de apparaatverbindingsreeks. Deze ziet er ongeveer als volgt uit:
 
-   `HostName={YourIoTHubName}.azure-devices.net;DeviceId=MyNodeDevice;SharedAccessKey={YourSharedAccessKey}`
+   `HostName={YourIoTHubName}.azure-devices.net;DeviceId=MyJavaDevice;SharedAccessKey={YourSharedAccessKey}`
 
-    U gebruikt deze waarde verderop in de snelstartgids.
+    U gebruikt deze waarde later in de Quick Start.
 
 3. U hebt ook het _Event hubs-compatibele eind punt_, _Event hubs compatibel pad_en de _primaire sleutel_ van de service van uw IOT-hub nodig om de back-endtoepassing in staat te stellen verbinding te maken met uw IOT-hub en de berichten op te halen. Met de volgende opdrachten worden deze waarden opgehaald voor uw IoT-hub:
 
-     **YourIoTHubName: vervang deze tijdelijke aanduiding door een door u gekozen naam voor de IoT-hub.
+     **YourIoTHubName**: vervang deze tijdelijke aanduiding door een door u gekozen naam voor de IoT-hub.
 
     ```azurecli-interactive
-    az iot hub show --query properties.eventHubEndpoints.events.endpoint --name YourIoTHubName
+    az iot hub show --query properties.eventHubEndpoints.events.endpoint --name {YourIoTHubName}
 
-    az iot hub show --query properties.eventHubEndpoints.events.path --name YourIoTHubName
+    az iot hub show --query properties.eventHubEndpoints.events.path --name {YourIoTHubName}
 
-    az iot hub policy show --name service --query primaryKey --hub-name YourIoTHubName
+    az iot hub policy show --name service --query primaryKey --hub-name {YourIoTHubName}
     ```
 
-    Noteer deze drie waarden want deze hebt u later in de snelstartgids nodig.
+    Noteer deze drie waarden, die u later in de Quick Start gebruikt.
 
 ## <a name="send-simulated-telemetry"></a>Gesimuleerde telemetrie verzenden
 
@@ -109,7 +111,7 @@ De toepassing voor het gesimuleerde apparaat maakt verbinding met een apparaatsp
 
 2. Open het bestand **src/main/java/com/microsoft/docs/iothub/samples/SimulatedDevice.java** in een teksteditor van uw keuze.
 
-    Vervang de waarde van de variabele `connString` door de apparaatverbindingsreeks die u eerder hebt genoteerd. Sla daarna de wijzigingen in het bestand **SimulatedDevice.java** op.
+    Vervang de waarde van de variabele `connString` door het apparaat connection string u eerder een notitie hebt gemaakt. Sla de wijzigingen vervolgens op in **SimulatedDevice. java**.
 
 3. Voer in het lokale terminalvenster de volgende opdrachten uit om de vereiste bibliotheken te installeren en de toepassing voor het gesimuleerde apparaat te compileren:
 
@@ -137,8 +139,8 @@ De back-endtoepassing maakt verbinding met het eindpunt **Events** aan de servic
 
     | Variabele | Value |
     | -------- | ----------- |
-    | `eventHubsCompatibleEndpoint` | Vervang de waarde van de variabele door het met Event Hubs compatibele eindpunt dat u eerder hebt genoteerd. |
-    | `eventHubsCompatiblePath`     | Vervang de waarde van de variabele door het met Event Hubs compatibele pad dat u eerder hebt genoteerd. |
+    | `eventHubsCompatibleEndpoint` | Vervang de waarde van de variabele door het Event Hubs-compatibele eind punt dat u eerder een notitie hebt gemaakt. |
+    | `eventHubsCompatiblePath`     | Vervang de waarde van de variabele door het Event Hubs compatibele pad dat u eerder hebt genoteerd. |
     | `iotHubSasKey`                | Vervang de waarde van de variabele door de primaire sleutel van de service die u eerder hebt genoteerd. |
 
 3. Voer in het lokale terminalvenster de volgende opdrachten uit om de vereiste bibliotheken te installeren en de back-endtoepassing te compileren:
@@ -163,7 +165,7 @@ De back-endtoepassing maakt verbinding met het eindpunt **Events** aan de servic
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze snelstartgids hebt u een IoT-hub geconfigureerd, een apparaat geregistreerd, gesimuleerde telemetrie verzonden naar de hub met behulp van een Java-toepassing en de telemetrie weer gelezen van de hub met behulp van een eenvoudige back-endtoepassing.
+In deze Quick Start kunt u een IoT-hub instellen, een apparaat registreren, gesimuleerde telemetrie naar de hub verzenden met behulp van een Java-toepassing en de telemetrie van de hub lezen met behulp van een eenvoudige back-end-toepassing.
 
 Ga verder met de volgende snelstartgids als u wilt weten hoe u een gesimuleerd apparaat beheert vanuit een back-endtoepassing.
 

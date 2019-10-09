@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 09/30/2019
 ms.author: hrasheed
-ms.openlocfilehash: 07714575bb4adfccf5d72a093874852c1bfebcc8
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: b9bcaf4b7497e8beba377eb7e47a44a6eb061299
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71843788"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72178014"
 ---
 # <a name="tutorial-create-an-end-to-end-data-pipeline-to-derive-sales-insights"></a>Zelfstudie: Een end-to-end gegevens pijplijn maken om verkoop inzichten af te leiden
 
@@ -122,7 +122,7 @@ Het standaard wachtwoord voor SSH-toegang tot de clusters is `Thisisapassword1`.
 >    --output table
 > ```
 
-### <a name="create-a-data-factory"></a>Data factory maken
+### <a name="create-a-data-factory"></a>Een gegevensfactory maken
 
 Azure Data Factory is een hulp programma waarmee Azure-pijp lijnen kunnen worden geautomatiseerd. Het is niet de enige manier om deze taken uit te voeren, maar het is een uitstekende manier om de processen te automatiseren. Raadpleeg de [Azure Data Factory documentatie](https://azure.microsoft.com/en-us/services/data-factory/)voor meer informatie over Azure Data Factory. 
 
@@ -175,7 +175,7 @@ Om te controleren of de pijp lijnen zijn uitgevoerd, kunt u een van de volgende 
 - Ga naar de sectie **monitor** in uw Data Factory via de portal.
 - Ga in Azure Storage Explorer naar uw Data Lake Storage gen 2-opslag account. Ga naar het bestands systeem van @no__t 0, ga naar de map `transformed` en controleer de inhoud ervan om te zien of de pijp lijn is geslaagd.
 
-Zie [dit artikel over het gebruik van Jupyter notebook](/spark/apache-spark-load-data-run-query.md)voor andere manieren om gegevens te transformeren met behulp van HDInsight.
+Zie [dit artikel over het gebruik van Jupyter notebook](/azure/hdinsight/spark/apache-spark-load-data-run-query)voor andere manieren om gegevens te transformeren met behulp van HDInsight.
 
 ### <a name="create-a-table-on-the-interactive-query-cluster-to-view-data-on-power-bi"></a>Een tabel op het interactieve query cluster maken om gegevens op Power BI weer te geven
 

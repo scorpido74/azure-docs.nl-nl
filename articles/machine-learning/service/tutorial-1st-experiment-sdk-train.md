@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Uw eerste ML model trainen'
+title: 'Zelfstudie: Uw eerste Azure ML-model trainen in python'
 titleSuffix: Azure Machine Learning
 description: In deze zelf studie leert u de Foundational ontwerp patronen in Azure Machine Learning en traint u een eenvoudig scikit model op basis van de diabetes-gegevensset.
 services: machine-learning
@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 09/03/2019
-ms.openlocfilehash: c775b16eaa15ccd7115f4770bf197545a9de2500
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: c78a45cedbeb5cfa0f0cc7c5c976fceb36f1da2a
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828022"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72173296"
 ---
 # <a name="tutorial-train-your-first-ml-model"></a>Zelfstudie: Uw eerste ML model trainen
 
@@ -33,7 +33,7 @@ In deze zelfstudie leert u het volgende:
 
 De enige vereiste is om deel één van deze zelf studie, [installatie omgeving en werk ruimte](tutorial-1st-experiment-sdk-setup.md)uit te voeren.
 
-In dit deel van de zelf studie voert u de code uit in het voor beeld `tutorials/tutorial-1st-experiment-sdk-train.ipynb` -Jupyter-notitie blok dat is geopend aan het einde van deel 1. In dit artikel wordt uitgelegd hoe dezelfde code in het notitie blok zich bevindt.
+In dit gedeelte van de zelf studie voert u de code in het voor beeld-Jupyter-notebook uit `tutorials/tutorial-1st-experiment-sdk-train.ipynb` aan het einde van deel 1. In dit artikel wordt uitgelegd hoe dezelfde code in het notitie blok zich bevindt.
 
 ## <a name="open-the-notebook"></a>Open het notitie blok
 
@@ -53,7 +53,7 @@ In dit deel van de zelf studie voert u de code uit in het voor beeld `tutorials/
 > Schakel nu over naar het Jupyter-notebook als u wilt lezen tijdens het uitvoeren van de code. 
 > Als u één code-cel in een notitie blok wilt uitvoeren, klikt u op de cel code en drukt u op **SHIFT + ENTER**. U kunt ook het hele notitie blok uitvoeren door **alles uitvoeren** op de bovenste werk balk te kiezen.
 
-Importeer de `Workspace` klasse en laad uw abonnements gegevens uit het bestand `config.json` met behulp van `from_config().` de functie deze zoekt standaard naar het JSON-bestand in de huidige map, maar u kunt ook een pad-para meter opgeven om naar het bestand te verwijzen gebruiken `from_config(path="your/file/path")`. In een Cloud notebook server bevindt het bestand zich automatisch in de hoofdmap.
+Importeer de `Workspace`-klasse en laad uw abonnements gegevens uit het bestand `config.json` met behulp van de functie `from_config().` deze zoekt standaard naar het JSON-bestand in de huidige map, maar u kunt ook een pad-para meter opgeven om naar het bestand te verwijzen met behulp van `from_config(path="your/file/path")`. In een Cloud notebook server bevindt het bestand zich automatisch in de hoofdmap.
 
 Als met de volgende code wordt gevraagd om extra verificatie, plakt u de koppeling eenvoudigweg in een browser en voert u het verificatie token in.
 
@@ -72,7 +72,7 @@ experiment = Experiment(workspace=ws, name="diabetes-experiment")
 
 ## <a name="load-data-and-prepare-for-training"></a>Gegevens laden en trainingen voorbereiden
 
-Voor deze zelf studie gebruikt u de diabetes-gegevensset, een vooraf gestandaardiseerde gegevensset die is opgenomen in scikit-meer informatie. Deze gegevensset maakt gebruik van functies zoals Age, gender en BMI om de voortgang van diabetes ziekten te voors pellen. Laad de gegevens van de `load_diabetes()` statische functie en splits deze in de trainings-en test `train_test_split()`sets met. Met deze functie worden de gegevens gescheiden, zodat het model ongebruikte gegevens heeft om de volgende training te testen.
+Voor deze zelf studie gebruikt u de diabetes-gegevensset, een vooraf gestandaardiseerde gegevensset die is opgenomen in scikit-meer informatie. Deze gegevensset maakt gebruik van functies zoals Age, gender en BMI om de voortgang van diabetes ziekten te voors pellen. Laad de gegevens van de statische functie `load_diabetes()` en splits deze in de trainings-en test sets met behulp van `train_test_split()`. Met deze functie worden de gegevens gescheiden, zodat het model ongebruikte gegevens heeft om de volgende training te testen.
 
 
 ```python
@@ -118,12 +118,12 @@ for alpha in alphas:
 
 Met de bovenstaande code worden de volgende handelingen uitgevoerd:
 
-1. Voor elke alpha afstemming-waarde in `alphas` de matrix wordt een nieuwe uitvoering binnen het experiment gemaakt. De waarde alpha wordt vastgelegd om onderscheid te maken tussen elke uitvoering.
+1. Voor elke alpha afstemming-waarde in de matrix `alphas` wordt een nieuwe uitvoering binnen het experiment gemaakt. De waarde alpha wordt vastgelegd om onderscheid te maken tussen elke uitvoering.
 1. Bij elke uitvoering wordt een Ploois model geïnstantieerd, getraind en gebruikt voor het uitvoeren van voor spellingen. Het basis-gemiddelde-kwadraat-fout wordt berekend voor de werkelijke versus voorspelde waarden en vervolgens geregistreerd bij de uitvoering. Op dit moment bevat de uitvoering meta gegevens die zijn gekoppeld aan de alpha-waarde en de rmse nauw keurigheid.
 1. Vervolgens wordt het model voor elke uitvoering geserialiseerd en geüpload naar de uitvoering. Hierdoor kunt u het model bestand downloaden uit de uitvoering in de portal.
-1. Aan het einde van elke iteratie wordt de uitvoering voltooid door aan `run.complete()`te roepen.
+1. Aan het einde van elke iteratie wordt de uitvoering voltooid door het aanroepen van `run.complete()`.
 
-Nadat de training is voltooid, roept u `experiment` de variabele aan om een koppeling naar het experiment in de portal op te halen.
+Nadat de training is voltooid, roept u de variabele `experiment` aan om een koppeling naar het experiment in de portal op te halen.
 
 ```python
 experiment
@@ -133,13 +133,13 @@ experiment
 
 ## <a name="view-training-results-in-portal"></a>Trainings resultaten weer geven in Portal
 
-Als u de **koppeling naar Azure Portal** volgt, gaat u naar de hoofd pagina van het experiment. Hier ziet u alle afzonderlijke uitvoeringen in het experiment. Eventuele aangepaste waarden (`alpha_value` en `rmse`in dit geval) worden velden voor elke uitvoering, en worden ook beschikbaar voor de grafieken en tegels boven aan de pagina experimenteren. Als u een vastgelegde metriek wilt toevoegen aan een grafiek of tegel, houdt u de muis aanwijzer over, klikt u op de knop bewerken en zoekt u de metrische gegevens van de aangepaste Logboeken.
+Als u de **koppeling naar Azure Portal** volgt, gaat u naar de hoofd pagina van het experiment. Hier ziet u alle afzonderlijke uitvoeringen in het experiment. Eventuele aangepaste waarden (`alpha_value` en `rmse`, in dit geval) worden voor elke uitvoering velden en worden ook beschikbaar voor de grafieken en tegels boven aan de pagina experiment. Als u een vastgelegde metriek wilt toevoegen aan een grafiek of tegel, houdt u de muis aanwijzer over, klikt u op de knop bewerken en zoekt u de metrische gegevens van de aangepaste Logboeken.
 
 Wanneer trainings modellen worden geschaald op honderden en duizenden afzonderlijke uitvoeringen, kunt u op deze pagina eenvoudig elk model zien dat u hebt getraind, in het bijzonder hoe ze zijn getraind en hoe uw unieke metrische gegevens in de loop van de tijd zijn veranderd.
 
 ![Hoofd proef pagina in de portal](./media/tutorial-quickstart/experiment-main.png)
 
-Als u op een koppeling met een uitvoerings `RUN NUMBER` nummer klikt in de kolom, gaat u naar de pagina voor elke afzonderlijke uitvoering. Op de standaard tabblad **Details** ziet u meer gedetailleerde informatie over elke uitvoering. Ga naar het tabblad **uitvoer** en u ziet het `.pkl` bestand voor het model dat tijdens elke trainings herhaling is geüpload naar de uitvoering. Hier kunt u het model bestand downloaden in plaats van het hand matig opnieuw te hoeven trainen.
+Als u op een koppeling met een uitvoerings nummer klikt in de kolom `RUN NUMBER`, gaat u naar de pagina voor elke afzonderlijke uitvoering. Op de standaard tabblad **Details** ziet u meer gedetailleerde informatie over elke uitvoering. Navigeer naar het tabblad **uitvoer** en u ziet het `.pkl`-bestand voor het model dat tijdens elke trainings herhaling naar de uitvoering is geüpload. Hier kunt u het model bestand downloaden in plaats van het hand matig opnieuw te hoeven trainen.
 
 ![Pagina Details uitvoeren in Portal](./media/tutorial-quickstart/model-download.png)
 
@@ -173,7 +173,7 @@ print("Best run_id rmse: " + str(minimum_rmse))
     Best run_id: 864f5ce7-6729-405d-b457-83250da99c80
     Best run_id rmse: 57.234760283951765
 
-Gebruik de beste run-ID om de afzonderlijke uitvoering op te halen met behulp van de constructor `Run` samen met het object experiment. Roep `get_file_names()` vervolgens alle bestanden weer die beschikbaar zijn voor downloaden vanuit deze run. In dit geval hebt u slechts één bestand geüpload voor elke run tijdens de training.
+Gebruik de beste run-ID om de afzonderlijke uitvoering op te halen met behulp van de constructor `Run` samen met het object experiment. Roep vervolgens `get_file_names()` aan om alle bestanden te zien die via deze uitvoering kunnen worden gedownload. In dit geval hebt u slechts één bestand geüpload voor elke run tijdens de training.
 
 ```python
 from azureml.core import Run
@@ -183,7 +183,7 @@ print(best_run.get_file_names())
 
     ['model_alpha_0.1.pkl']
 
-Roep `download()` het run-object op en geef de naam op van het model bestand dat moet worden gedownload. Deze functie wordt standaard gedownload naar de huidige map.
+Roep `download()` aan voor het object run, waarbij u de naam van het model bestand opgeeft dat u wilt downloaden. Deze functie wordt standaard gedownload naar de huidige map.
 
 ```python
 best_run.download_file(name="model_alpha_0.1.pkl")

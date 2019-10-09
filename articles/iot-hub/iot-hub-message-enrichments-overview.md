@@ -8,16 +8,16 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: robinsh
-ms.openlocfilehash: 9e3df59af33d6e5fdd1024d42c34dc2b4ed3184e
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 40ce5c4f73daac2b88d3a59e46d43dba10db0954
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69873199"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177993"
 ---
 # <a name="message-enrichments-for-device-to-cloud-iot-hub-messages-preview"></a>Verrijkingen van berichten voor IoT Hub berichten van apparaat-naar-Cloud (preview-versie)
 
-Verrijkingen van berichten is de mogelijkheid van de IOT hub om berichten met aanvullende informatie af te *stem pelen* voordat de berichten naar het aangewezen eind punt worden verzonden. Een reden voor het gebruik van verrijkingen van berichten is het insluiten van gegevens die kunnen worden gebruikt voor het vereenvoudigen van de downstream-verwerking. Het verrijken van telemetriegegevens van een apparaat met een dubbele tag van een apparaat kan bijvoorbeeld de belasting van klanten verminderen om deze informatie te laten opleveren voor Device-dubbele API-aanroepen.
+*Verrijkingen* van berichten is de mogelijkheid van de IOT hub om berichten met aanvullende informatie af te *stem pelen* voordat de berichten naar het aangewezen eind punt worden verzonden. Een reden voor het gebruik van verrijkingen van berichten is het insluiten van gegevens die kunnen worden gebruikt voor het vereenvoudigen van de downstream-verwerking. Het verrijken van telemetriegegevens van een apparaat met een dubbele tag van een apparaat kan bijvoorbeeld de belasting van klanten verminderen om deze informatie te laten opleveren voor Device-dubbele API-aanroepen.
 
 ![Stroom voor het verrijkings bericht van berichten](./media/iot-hub-message-enrichments-overview/message-enrichments-flow.png)
 
@@ -29,7 +29,7 @@ Een bericht verrijking heeft drie belang rijke elementen:
 
 * Een of meer [eind punten](iot-hub-devguide-endpoints.md) waarvoor de verrijking moet worden toegepast.
 
-De **sleutel** is een teken reeks. Een sleutel mag alleen alfanumerieke tekens bevatten of deze speciale tekens: hyphen`-`(), onderstrepings teken (`_`) en`.`punt ().
+De **sleutel** is een teken reeks. Een sleutel mag alleen alfanumerieke tekens bevatten of deze speciale tekens: afbreek streepjes (@no__t 0), onderstrepings teken (`_`) en punt (`.`).
 
 De **waarde** kan een van de volgende voor beelden zijn:
 
@@ -90,8 +90,8 @@ Deze functie is beschikbaar als preview-versie en is beschikbaar in alle regio's
 
 Bekijk deze artikelen voor meer informatie over het routeren van berichten naar een IoT Hub:
 
-* [Zelf studie over bericht uitbreidingen](tutorial-message-enrichments.md)
+* [Zelf studie voor het verrijken van berichten](tutorial-message-enrichments.md)
 
 * [IoT Hub bericht routering gebruiken om apparaat-naar-Cloud-berichten te verzenden naar verschillende eind punten](iot-hub-devguide-messages-d2c.md)
 
-* [Zelfstudie: IoT Hub route ring](tutorial-routing.md)
+* [Zelfstudie: IoT Hub route ring @ no__t-0

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 4/9/2019
 ms.author: mayg
-ms.openlocfilehash: 8c24352fdbc6b81e7d263ac8c511b7c61792e6ae
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: 6249a3c1c8ea3be02ca802d6be7e720bd900f675
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69907875"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72178098"
 ---
 # <a name="set-up-network-mapping-and-ip-addressing-for-vnets"></a>Netwerk toewijzing en IP-adres Sering instellen voor VNets
 
@@ -33,14 +33,14 @@ Wijs netwerken als volgt toe:
 3. Selecteer in **netwerk toewijzing toevoegen**de bron-en doel locatie. In ons voor beeld wordt de bron-VM uitgevoerd in de regio Azië-oost en repliceert deze naar de regio Zuidoost-Azië.
 
     ![Bron en doel selecteren](./media/site-recovery-network-mapping-azure-to-azure/network-mapping2.png)
-3. Maak nu een netwerk toewijzing in de tegenoverliggende Directory. In ons voor beeld is de bron nu Zuidoost-Azië en wordt het doel Azië-oost.
+3. Maak nu een netwerk toewijzing in tegenovergestelde richting. In ons voor beeld is de bron nu Zuidoost-Azië en wordt het doel Azië-oost.
 
     ![Deel venster netwerk toewijzing toevoegen: Selecteer bron-en doel locaties voor het doelnet-netwerk](./media/site-recovery-network-mapping-azure-to-azure/network-mapping3.png)
 
 
 ## <a name="map-networks-when-you-enable-replication"></a>Netwerken toewijzen wanneer u replicatie inschakelt
 
-Als u geen netwerk toewijzing hebt voor bereid voordat u herstel na nood gevallen voor Azure-Vm's configureert, kunt u een doelnet netwerk opgeven wanneer u [replicatie instelt en](azure-to-azure-how-to-enable-replication.md)inschakelt. Wanneer u dit doet, gebeurt het volgende:
+Als u geen netwerk toewijzing hebt voor bereid voordat u herstel na nood gevallen voor Azure-Vm's configureert, kunt u een doelnet netwerk opgeven wanneer u [replicatie instelt en inschakelt](azure-to-azure-how-to-enable-replication.md). Wanneer u dit doet, gebeurt het volgende:
 
 - Op basis van het doel dat u selecteert, maakt Site Recovery automatisch netwerk toewijzingen van de bron-naar-doel regio en van de doel-naar-bron regio.
 - Site Recovery maakt standaard een netwerk in de doel regio die identiek is aan het bron netwerk. Site Recovery voegt **ASR** toe als achtervoegsel aan de naam van het bron netwerk. U kunt het doelnet-netwerk aanpassen.

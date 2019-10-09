@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/01/2019
 ms.author: kumud
-ms.openlocfilehash: 9bf44aa5ab18f94ec91650548dc13360ce1b1f3d
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: 5fa340fc3c839d74f292f551b73184ea4df1c0f1
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71938497"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72175948"
 ---
 # <a name="add-or-remove-a-subnet-delegation"></a>Een subnet delegering toevoegen of verwijderen
 
@@ -45,6 +45,12 @@ In deze sectie maakt u een virtueel netwerk en het subnet dat u later wilt deleg
     | Subnet - adresbereik | Voer *10.0.0.0/24* in. |
     |||
 1. Laat de rest als standaard staan en selecteer vervolgens **maken**.
+
+## <a name="permissons"></a>Machtigingen
+
+Als u het subnet dat u wilt delegeren aan een Azure-service niet hebt gemaakt, hebt u de volgende machtiging nodig: `Microsoft.Network/virtualNetworks/subnets/write`.
+
+De ingebouwde rol [Network Inzender](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) bevat ook de benodigde machtigingen.
 
 ## <a name="delegate-a-subnet-to-an-azure-service"></a>Een subnet overdragen aan een Azure-service
 

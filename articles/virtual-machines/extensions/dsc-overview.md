@@ -15,19 +15,19 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 05/02/2018
 ms.author: robreed
-ms.openlocfilehash: c759567e4d8c183452eccbbdca8459c8993d1361
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 7e309237589dfaf037114401172fc8f928a30077
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70092425"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72176652"
 ---
 # <a name="introduction-to-the-azure-desired-state-configuration-extension-handler"></a>Inleiding tot de uitbrei ding van de desired state Configuration-handler van Azure
 
 De Azure VM-agent en de bijbehorende uitbrei dingen maken deel uit van Microsoft Azure infrastructuur services. VM-extensies zijn software onderdelen waarmee de VM-functionaliteit wordt uitgebreid en verschillende bewerkingen voor VM-beheer worden vereenvoudigd.
 
 De primaire use-case voor de Azure desired state Configuration (DSC)-extensie is het Boots trappen van een virtuele machine naar de service voor de [Azure Automation State Configuration (DSC)](../../automation/automation-dsc-overview.md).
-De service biedt [voor delen](/powershell/dsc/metaconfig#pull-service) die voortdurend beheer bieden over de configuratie van de virtuele machine en de integratie met andere operationele hulpprogram ma's, zoals Azure-bewaking.
+De service biedt [voor delen](/powershell/scripting/dsc/managing-nodes/metaConfig#pull-service) die voortdurend beheer bieden over de configuratie van de virtuele machine en de integratie met andere operationele hulpprogram ma's, zoals Azure-bewaking.
 Het gebruik van de uitbrei ding voor het registreren van virtuele machines bij de service biedt een flexibele oplossing die zelfs kan worden gebruikt in azure-abonnementen.
 
 U kunt de DSC-extensie onafhankelijk van de Automation DSC-service gebruiken.
@@ -39,7 +39,7 @@ In dit artikel vindt u informatie over beide scenario's: het gebruik van de DSC-
 ## <a name="prerequisites"></a>Vereisten
 
 - **Lokale computer**: Als u wilt communiceren met de Azure VM-extensie, moet u de Azure Portal of de Azure PowerShell SDK gebruiken.
-- **Gast agent**: De virtuele Azure-machine die door de DSC-configuratie is geconfigureerd, moet een besturings systeem zijn dat Windows Management Framework (WMF) 4,0 of hoger ondersteunt. Zie de [versie geschiedenis](/powershell/dsc/azuredscexthistory)van de DSC-extensie voor een volledige lijst met ondersteunde versies van het besturings systeem.
+- **Gast agent**: De virtuele Azure-machine die door de DSC-configuratie is geconfigureerd, moet een besturings systeem zijn dat Windows Management Framework (WMF) 4,0 of hoger ondersteunt. Zie de [versie geschiedenis](/powershell/scripting/dsc/getting-started/azuredscexthistory)van de DSC-extensie voor een volledige lijst met ondersteunde versies van het besturings systeem.
 
 ## <a name="terms-and-concepts"></a>Voor waarden en concepten
 
@@ -51,7 +51,7 @@ In deze hand leiding wordt ervan uitgegaan dat u bekend bent met de volgende con
 
 ## <a name="architecture"></a>Architectuur
 
-De Azure DSC-uitbrei ding maakt gebruik van het Azure VM-agent Framework voor het leveren, door voeren en rapporteren van DSC-configuraties die worden uitgevoerd op virtuele Azure-machines. De DSC-extensie accepteert een configuratie document en een set para meters. Als er geen bestand wordt gegeven, wordt een [standaard configuratie script](#default-configuration-script) Inge sloten met de extensie. Het standaard configuratie script wordt alleen gebruikt voor het instellen van meta gegevens in [lokale Configuration Manager](/powershell/dsc/metaconfig).
+De Azure DSC-uitbrei ding maakt gebruik van het Azure VM-agent Framework voor het leveren, door voeren en rapporteren van DSC-configuraties die worden uitgevoerd op virtuele Azure-machines. De DSC-extensie accepteert een configuratie document en een set para meters. Als er geen bestand wordt gegeven, wordt een [standaard configuratie script](#default-configuration-script) Inge sloten met de extensie. Het standaard configuratie script wordt alleen gebruikt voor het instellen van meta gegevens in [lokale Configuration Manager](/powershell/scripting/dsc/managing-nodes/metaConfig).
 
 Wanneer de uitbrei ding voor de eerste keer wordt aangeroepen, wordt een versie van WMF geïnstalleerd met behulp van de volgende logica:
 
@@ -59,11 +59,11 @@ Wanneer de uitbrei ding voor de eerste keer wordt aangeroepen, wordt een versie 
 - Als de eigenschap **wmfVersion** is opgegeven, wordt die versie van WMF geïnstalleerd, tenzij die versie niet compatibel is met het besturings systeem van de virtuele machine.
 - Als er geen eigenschap **wmfVersion** is opgegeven, wordt de meest recente versie van WMF geïnstalleerd.
 
-Voor het installeren van WMF moet de computer opnieuw worden opgestart. Nadat het opnieuw is opgestart, wordt het zip-bestand gedownload dat is opgegeven in de eigenschap **modulesUrl** , indien opgegeven. Als deze locatie zich in Azure Blob-opslag bevindt, kunt u een SAS-token opgeven in de eigenschap **sasToken** om het bestand te openen. Nadat de zip is gedownload en uitgepakt, wordt de configuratie functie die is gedefinieerd in **configurationFunction** uitgevoerd om een. MOF-bestand te genereren. De uitbrei ding `Start-DscConfiguration -Force` wordt vervolgens uitgevoerd met behulp van het gegenereerde. MOF-bestand. De uitbrei ding legt uitvoer vast en schrijft deze naar het status kanaal van Azure.
+Voor het installeren van WMF moet de computer opnieuw worden opgestart. Nadat het opnieuw is opgestart, wordt het zip-bestand gedownload dat is opgegeven in de eigenschap **modulesUrl** , indien opgegeven. Als deze locatie zich in Azure Blob-opslag bevindt, kunt u een SAS-token opgeven in de eigenschap **sasToken** om het bestand te openen. Nadat de zip is gedownload en uitgepakt, wordt de configuratie functie die is gedefinieerd in **configurationFunction** uitgevoerd om een. MOF-bestand te genereren. De uitbrei ding voert vervolgens `Start-DscConfiguration -Force` uit met behulp van het gegenereerde. MOF-bestand. De uitbrei ding legt uitvoer vast en schrijft deze naar het status kanaal van Azure.
 
 ### <a name="default-configuration-script"></a>Standaard configuratie script
 
-De Azure DSC-extensie bevat een standaard configuratie script dat is bedoeld om te worden gebruikt wanneer u een virtuele machine onboardt naar de Azure Automation DSC-service. De script parameters zijn afgestemd op de Configureer bare eigenschappen van [lokale Configuration Manager](/powershell/dsc/metaconfig). Zie voor script parameters [standaard configuratie script](dsc-template.md#default-configuration-script) in [desired state configuration extension met Azure Resource Manager sjablonen](dsc-template.md). Voor het volledige script raadpleegt u de [Azure Quick Start-sjabloon in github](https://github.com/Azure/azure-quickstart-templates/blob/master/dsc-extension-azure-automation-pullserver/UpdateLCMforAAPull.zip?raw=true).
+De Azure DSC-extensie bevat een standaard configuratie script dat is bedoeld om te worden gebruikt wanneer u een virtuele machine onboardt naar de Azure Automation DSC-service. De script parameters zijn afgestemd op de Configureer bare eigenschappen van [lokale Configuration Manager](/powershell/scripting/dsc/managing-nodes/metaConfig). Zie voor script parameters [standaard configuratie script](dsc-template.md#default-configuration-script) in [desired state configuration extension met Azure Resource Manager sjablonen](dsc-template.md). Voor het volledige script raadpleegt u de [Azure Quick Start-sjabloon in github](https://github.com/Azure/azure-quickstart-templates/blob/master/dsc-extension-azure-automation-pullserver/UpdateLCMforAAPull.zip?raw=true).
 
 ## <a name="information-for-registering-with-azure-automation-state-configuration-dsc-service"></a>Informatie voor registratie met de service voor Azure Automation status configuratie (DSC)
 
@@ -82,7 +82,7 @@ Deze informatie kan worden weer gegeven in de [Azure Portal](../../automation/au
 
 Zorg ervoor dat de knooppunt configuratie bestaat in de Azure-status configuratie voor de naam van de knooppunt configuratie.  Als dat niet het geval is, wordt een fout geretourneerd door de implementatie van de extensie.  Zorg er ook voor dat u de naam van de *knooppunt configuratie* gebruikt en niet de configuratie.
 Een configuratie wordt gedefinieerd in een script dat wordt gebruikt [voor het compileren van de knooppunt configuratie (MOF-bestand)](https://docs.microsoft.com/azure/automation/automation-dsc-compile).
-De naam is altijd de configuratie, gevolgd door een punt `.` `localhost` en een of een specifieke computer naam.
+De naam is altijd de configuratie, gevolgd door een punt `.` en een `localhost` of een specifieke computer naam.
 
 ## <a name="dsc-extension-in-resource-manager-templates"></a>DSC-extensie in Resource Manager-sjablonen
 
@@ -184,7 +184,7 @@ De portal verzamelt de volgende invoer:
 
 - **Configuratie modules of script**: Dit veld is verplicht (het formulier is niet bijgewerkt voor het [standaard configuratie script](#default-configuration-script)). Configuratie modules en-scripts vereisen een. ps1-bestand met een configuratie script of een zip-bestand met een. ps1-configuratie script in de hoofdmap. Als u een zip-bestand gebruikt, moeten alle afhankelijke resources zijn opgenomen in module mappen in de. zip. U kunt het zip-bestand maken met behulp van de cmdlet **Publish-AzureVMDscConfiguration-OutputArchivePath** die is opgenomen in de Azure PowerShell SDK. Het zip-bestand wordt geüpload naar de Blob-opslag van uw gebruiker en beveiligd met een SAS-token.
 
-- **Module-gekwalificeerde naam van de configuratie**: U kunt meerdere configuratie functies in een. ps1-bestand toevoegen. Voer de naam in van de configuratie. ps1-script \\ gevolgd door en de naam van de configuratie functie. Als uw. ps1-script bijvoorbeeld de naam configuratie. ps1 heeft en de configuratie **IisInstall**is, voert u **configuratie. ps1\IisInstall**in.
+- **Module-gekwalificeerde naam van de configuratie**: U kunt meerdere configuratie functies in een. ps1-bestand toevoegen. Voer de naam in van de configuratie. ps1-script gevolgd door \\ en de naam van de configuratie functie. Als uw. ps1-script bijvoorbeeld de naam configuratie. ps1 heeft en de configuratie **IisInstall**is, voert u **configuratie. ps1\IisInstall**in.
 
 - **Configuratie argumenten**: Als de configuratie functie argumenten accepteert, voert u deze hier in de notatie **argumentName1 = waarde1, argumentName2 = waarde2**. Deze indeling is een andere indeling waarin configuratie argumenten worden geaccepteerd in Power shell-cmdlets of Resource Manager-sjablonen.
 
@@ -194,17 +194,17 @@ De portal verzamelt de volgende invoer:
 
 - **Gegevens verzameling**: Hiermee wordt bepaald of de extensie telemetrie verzamelt. Zie [Azure DSC extension-gegevens verzameling](https://blogs.msdn.microsoft.com/powershell/2016/02/02/azure-dsc-extension-data-collection-2/)voor meer informatie.
 
-- **Version**: Hiermee geeft u de versie op van de DSC-extensie die moet worden geïnstalleerd. Zie de versie geschiedenis van de [DSC-extensie](/powershell/dsc/azuredscexthistory)voor meer informatie over versies.
+- **Version**: Hiermee geeft u de versie op van de DSC-extensie die moet worden geïnstalleerd. Zie de versie geschiedenis van de [DSC-extensie](/powershell/scripting/dsc/getting-started/azuredscexthistory)voor meer informatie over versies.
 
 - **Secundaire versie van automatische upgrade**: Dit veld is gekoppeld aan de schakel optie voor automatisch **bijwerken** in de cmdlets en zorgt ervoor dat de uitbrei ding tijdens de installatie naar de meest recente versie wordt bijgewerkt. Met Ja wordt de extensie-handler geïnstrueerd de meest recente beschik bare versie te gebruiken. Als u **Nee** **klikt** , wordt de **versie** die is opgegeven, geforceerd geïnstalleerd. Het selecteren van **Ja** of **Nee** is gelijk aan het selecteren van **Nee**.
 
 ## <a name="logs"></a>Logboeken
 
-De logboeken voor de uitbrei ding worden opgeslagen op de volgende locatie:`C:\WindowsAzure\Logs\Plugins\Microsoft.Powershell.DSC\<version number>`
+De logboeken voor de uitbrei ding worden opgeslagen op de volgende locatie: `C:\WindowsAzure\Logs\Plugins\Microsoft.Powershell.DSC\<version number>`
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Voor meer informatie over Power shell DSC gaat u naar het [Power shell-documentatie centrum](/powershell/dsc/overview).
+- Voor meer informatie over Power shell DSC gaat u naar het [Power shell-documentatie centrum](/powershell/scripting/dsc/overview/overview).
 - Bekijk de [Resource Manager-sjabloon voor de DSC-extensie](dsc-template.md).
 - Voor meer functionaliteit die u kunt beheren met Power shell DSC, en voor meer DSC-resources, gaat u naar de [Power shell Gallery](https://www.powershellgallery.com/packages?q=DscResource&x=0&y=0).
 - Zie voor meer informatie over het door geven van gevoelige para meters in configuraties [veilig beheer referenties met de DSC-extensie-handler](dsc-credentials.md).

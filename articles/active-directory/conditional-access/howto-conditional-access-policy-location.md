@@ -11,20 +11,20 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b31fc3aed0d412646d9924e87170dffcd5145409
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: c782c8bb2807017053375b45560685acf78161e7
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69576600"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72169974"
 ---
-# <a name="conditional-access-block-access-by-location"></a>Voorwaardelijke toegang: Toegang op locatie blok keren
+# <a name="conditional-access-block-access-by-location"></a>Voorwaardelijke toegang: Toegang per locatie blokkeren
 
 Met de voor waarde voor de locatie in voorwaardelijke toegang kunt u de toegang tot uw Cloud-apps beheren op basis van de netwerk locatie van een gebruiker. De locatie voorwaarde wordt doorgaans gebruikt om toegang te blok keren van landen waar uw organisatie geen verkeer mag zijn.
 
 ## <a name="define-locations"></a>Locaties definiëren
 
-1. Meld u aan bij de **Azure Portal** als globale beheerder, beveiligings beheerder of beheerder van de voorwaardelijke toegang.
+1. Meld u aan bij de **Azure Portal** als globale beheerder, beveiligings beheerder of beheerder van de voorwaardelijke toegang.
 1. Blader naar **Azure Active Directory** > **voorwaardelijke toegang**.
 1. Kies **nieuwe locatie**.
 1. Geef een naam op voor uw locatie.
@@ -37,20 +37,20 @@ Meer informatie over de locatie voorwaarde in voorwaardelijke toegang vindt u in
 
 ## <a name="create-a-conditional-access-policy"></a>Beleid voor voorwaardelijke toegang maken
 
-1. Meld u aan bij de **Azure Portal** als globale beheerder, beveiligings beheerder of beheerder van de voorwaardelijke toegang.
+1. Meld u aan bij de **Azure Portal** als globale beheerder, beveiligings beheerder of beheerder van de voorwaardelijke toegang.
 1. Blader naar **Azure Active Directory** > **voorwaardelijke toegang**.
 1. Selecteer **Nieuw beleid**.
 1. Geef uw beleid een naam. Het is raadzaam dat organisaties een zinvolle norm maken voor de namen van hun beleid.
 1. Onder **toewijzingen**selecteert u **gebruikers en groepen**
    1. Onder **insluiten**selecteert u **alle gebruikers**.
    1. Selecteer **Done**.
-1. Onder **Cloud-apps of acties** > , selecteert u **alle Cloud-apps**en selecteert u **gereed**.
+1. Onder **Cloud-apps of acties**@no__t-**1,** selecteert u **alle Cloud-apps**en selecteert u **gereed**.
 1. Onder **voor waarden** > **locatie**.
    1. Stel **configureren** op **Ja** in
    1. Selecteer **geselecteerde locaties** **toevoegen**
    1. Selecteer de geblokkeerde locatie die u hebt gemaakt voor uw organisatie.
-   1. Klikopgereed. >  > 
-1. Onder **toegangscontrole** > **blok**en selecteer **selecteren**.
+   1. Klik op @no__t **selecteren**-**1 @no__t-** 3**gereed**.
+1. Onder **Access controls** > **blok**en selecteert u **selecteren**.
 1. Bevestig de instellingen en stel **beleid inschakelen** in **op aan**.
 1. Selecteer **maken** om uw beleid in te stellen.
 

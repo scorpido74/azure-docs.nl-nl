@@ -10,15 +10,15 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 02/25/2019
+ms.date: 10/08/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: bf004f07558ae1f252a6bd26b4fd59ea9e4eea6e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: bcf64d98f53d85937ee7960ec3938280814267d8
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67069258"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72170198"
 ---
 # <a name="tutorial-secure-artifacts-in-azure-resource-manager-template-deployments"></a>Zelfstudie: Artefacten in Azure Resource Manager-sjabloonimplementaties beveiligen
 
@@ -64,7 +64,7 @@ Als u deze stappen wilt automatiseren met behulp van een PowerShell-script, raad
 
 ### <a name="download-the-bacpac-file"></a>Het BACPAC-bestand downloaden
 
-Download het [BACPAC-bestand](https://armtutorials.blob.core.windows.net/sqlextensionbacpac/SQLDatabaseExtension.bacpac) en sla het bestand op uw lokale computer op onder dezelfde naam, **SQLDatabaseExtension.bacpac**.
+Download het [BACPAC-bestand](https://github.com/Azure/azure-docs-json-samples/raw/master/tutorial-sql-extension/SQLDatabaseExtension.bacpac) en sla het bestand op uw lokale computer op onder dezelfde naam, **SQLDatabaseExtension.bacpac**.
 
 ### <a name="create-a-storage-account"></a>Create a storage account
 
@@ -134,13 +134,13 @@ Een blobcontainer is vereist voordat u bestanden kunt uploaden.
 
 ## <a name="open-an-existing-template"></a>Een bestaande sjabloon openen
 
-In deze sessie wijzigt u de sjabloon die u hebt gemaakt in [Zelfstudie: SQL BACPAC-bestanden importeren met Azure Resource Manager-sjablonen](./resource-manager-tutorial-deploy-sql-extensions-bacpac.md) om het BACPAC-bestand met een SAS-token aan te roepen.  De sjabloon die is ontwikkeld in de zelfstudie voor de SQL-extensie wordt gedeeld op [https://armtutorials.blob.core.windows.net/sqlextensionbacpac/azuredeploy.json](https://armtutorials.blob.core.windows.net/sqlextensionbacpac/azuredeploy.json).
+In deze sessie wijzigt u de sjabloon die u hebt gemaakt in [Zelfstudie: SQL BACPAC-bestanden importeren met Azure Resource Manager-sjablonen](./resource-manager-tutorial-deploy-sql-extensions-bacpac.md) om het BACPAC-bestand met een SAS-token aan te roepen.  De sjabloon die is ontwikkeld in de zelf studie over de SQL-uitbrei ding wordt gedeeld in [github](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-sql-extension/azuredeploy.json).
 
 1. Selecteer in Visual Studio Code **Bestand**>**Bestand openen**.
 2. Plak de volgende URL in **Bestandsnaam**:
 
     ```url
-    https://armtutorials.blob.core.windows.net/sqlextensionbacpac/azuredeploy.json
+    https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-sql-extension/azuredeploy.json
     ```
 3. Selecteer **Openen** om het bestand te openen.
 
@@ -237,7 +237,7 @@ Schoon de geïmplementeerd Azure-resources, wanneer u deze niet meer nodig hebt,
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u een SQL Server en een SQL Database geïmplementeerd en een BACPAC-bestand geïmporteerd met behulp van een SAS-token. Zie voor meer informatie over het maken van een Azure-pijplijn voor het continu ontwikkelen en implementeren van Resource Manager-sjablonen,
+In deze zelfstudie hebt u een SQL Server en een SQL Database geïmplementeerd en een BACPAC-bestand geïmporteerd met behulp van een SAS-token. Zie voor meer informatie over het maken van een Azure-pijp lijn om voortdurend Resource Manager-sjablonen te ontwikkelen en te implementeren.
 
 > [!div class="nextstepaction"]
-> [Continue integratie met Azure-pijplijn](./resource-manager-tutorial-use-azure-pipelines.md)
+> [Continue integratie met Azure-pijp lijn](./resource-manager-tutorial-use-azure-pipelines.md)

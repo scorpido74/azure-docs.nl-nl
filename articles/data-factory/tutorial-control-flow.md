@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.date: 9/27/2019
-ms.openlocfilehash: 5b9be86b0a3d17c9c325b565979fccbec92f5733
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.openlocfilehash: d8ea5a507cc110c92bb74491c3376f7b671638d9
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71815885"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72176007"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>Activiteiten vertakken en koppelen in een Data Factory-pijplijn
 
@@ -29,7 +29,7 @@ Deze afbeelding biedt een overzicht van het scenario:
 Deze zelf studie laat zien hoe u de volgende taken kunt uitvoeren:
 
 > [!div class="checklist"]
-> * Data factory maken
+> * Een gegevensfactory maken
 > * Een gekoppelde Azure Storage-service maken
 > * Een Azure Blob-gegevensset maken
 > * Een pijplijn met een kopieeractiviteit en een webactiviteit maken
@@ -38,7 +38,7 @@ Deze zelf studie laat zien hoe u de volgende taken kunt uitvoeren:
 > * Een pijplijnuitvoering starten
 > * De uitvoering van de pijplijn en van de activiteit controleren
 
-In deze zelfstudie wordt .NET SDK gebruikt. U kunt andere mechanismen gebruiken om met Azure Data Factory te communiceren. Zie Quick starts voor [5 minuten](https://docs.microsoft.com/azure/data-factory/#5-minute-quickstarts)voor Data Factory Quick starts.
+In deze zelfstudie wordt .NET SDK gebruikt. U kunt andere mechanismen gebruiken om met Azure Data Factory te communiceren. Zie Quick starts voor [5 minuten](/azure/data-factory/quickstart-create-data-factory-portal)voor Data Factory Quick starts.
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
 
@@ -77,7 +77,7 @@ Een C# .net-console toepassing maken:
 
 ### <a name="install-nuget-packages"></a>NuGet-pakketten installeren
 
-1. Selecteer **extra** > **NuGet package manager** > Package Manager-**console**.
+1. Selecteer **extra** > **NuGet package manager** > **Package Manager-console**.
 1. Voer in **Package Manager Console** de volgende opdrachten uit om pakketten te installeren. Raadpleeg het [pakket micro soft. Azure. Management. DataFactory nuget](https://www.nuget.org/packages/Microsoft.Azure.Management.DataFactory/) voor meer informatie.
 
    ```powershell
@@ -144,7 +144,7 @@ Een C# .net-console toepassing maken:
    var client = new DataFactoryManagementClient(cred) { SubscriptionId = subscriptionId };
    ```
 
-### <a name="create-a-data-factory"></a>Data factory maken
+### <a name="create-a-data-factory"></a>Een gegevensfactory maken
 
 1. Voeg een `CreateOrUpdateDataFactory`-methode toe aan uw *Program.cs* -bestand:
 
@@ -754,7 +754,7 @@ Press any key to exit...
 In deze zelf studie hebt u de volgende taken doorstaan:
 
 > [!div class="checklist"]
-> * Data factory maken
+> * Een gegevensfactory maken
 > * Een gekoppelde Azure Storage-service maken
 > * Een Azure Blob-gegevensset maken
 > * Een pijplijn met een kopieeractiviteit en een webactiviteit maken

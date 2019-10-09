@@ -11,12 +11,12 @@ author: moslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
 ms.date: 09/06/2019
-ms.openlocfilehash: 86c03554f5faa1ebb40faa20b6a271f5310ccd4f
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 3b2cc5c0b5deab084c6fdae9435ea3a90b2dd8a6
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828221"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72173400"
 ---
 # <a name="azure-sql-database-serverless-preview"></a>Azure SQL Database serverloze (preview-versie)
 
@@ -28,7 +28,7 @@ De compute-laag zonder server voor één data base is vastgelegd door een bereik
 
 ![facturering zonder server](./media/sql-database-serverless/serverless-billing.png)
 
-### <a name="performance-configuration"></a>Prestaties configureren
+### <a name="performance-configuration"></a>Configuratie van prestaties
 
 - De **minimale vCores** -en **maximum vCores** zijn Configureer bare para meters die het bereik van berekenings capaciteit bepalen dat voor de data base beschikbaar is. Geheugen-en i/o-limieten zijn evenredig met het opgegeven vCore-bereik.  
 - De **vertraging voor automatische onderbrekingen** is een Configureer bare para meter waarmee de periode wordt gedefinieerd die de data base inactief moet zijn voordat deze automatisch wordt onderbroken. De data base wordt automatisch hervat wanneer de volgende aanmelding of andere activiteit plaatsvindt.  Het is ook mogelijk om autopauzes uit te scha kelen.
@@ -171,7 +171,7 @@ Het maken van een nieuwe data base of het verplaatsen van een bestaande Data Bas
 
    |Parameter|Opties voor waarden|Standaardwaarde|
    |---|---|---|---|
-   |Minimum aantal vCores|Is afhankelijk van het maximum aantal geconfigureerde vCores-Zie [resource limieten](sql-database-vCore-resource-limits-single-databases.md#general-purpose-service-tier-for-serverless-compute).|0,5 vCores|
+   |Min vCores|Is afhankelijk van het maximum aantal geconfigureerde vCores-Zie [resource limieten](sql-database-vCore-resource-limits-single-databases.md#general-purpose-service-tier-for-serverless-compute).|0,5 vCores|
    |Vertraging van autopause|Maal 60 minuten (1 uur)<br>Gehalte 10080 minuten (7 dagen)<br>Stappen 60 minuten<br>Autopause uitschakelen:-1|60 minuten|
 
 > [!NOTE]
@@ -181,7 +181,7 @@ Het maken van een nieuwe data base of het verplaatsen van een bestaande Data Bas
 
 #### <a name="use-azure-portal"></a>Azure Portal gebruiken
 
-Zie [Quickstart: Maak met behulp van de Azure Portal](sql-database-single-database-get-started.md)een enkele data base in Azure SQL database.
+Zie [Quickstart: Maak met behulp van de Azure Portal @ no__t-0 een enkele data base in Azure SQL Database.
 
 #### <a name="use-powershell"></a>PowerShell gebruiken
 
@@ -229,19 +229,19 @@ Een serverloze data base kan op dezelfde manier worden verplaatst naar een inger
 
 #### <a name="use-powershell"></a>PowerShell gebruiken
 
-Het wijzigen van de maximale vCores wordt uitgevoerd met behulp van de [set-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabase) opdracht `MaxVcore` in Power shell met behulp van het argument.
+Het wijzigen van de maximale vCores wordt uitgevoerd met behulp van de [set-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabase) opdracht in Power shell met behulp van het argument `MaxVcore`.
 
 ### <a name="minimum-vcores"></a>Minimum vCores
 
 #### <a name="use-powershell"></a>PowerShell gebruiken
 
-Het wijzigen van de min-vCores wordt uitgevoerd met behulp van de [set-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabase) opdracht in Power shell met behulp van het `MinVcore` argument.
+Het wijzigen van de min-vCores wordt uitgevoerd met behulp van de [set-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabase) opdracht in Power shell met behulp van het argument `MinVcore`.
 
 ### <a name="autopause-delay"></a>Vertraging van autopause
 
 #### <a name="use-powershell"></a>PowerShell gebruiken
 
-Het wijzigen van de vertraging voor autopause wordt uitgevoerd met behulp van de opdracht [set-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabase) in Power shell met behulp van het `AutoPauseDelayInMinutes` argument.
+Het wijzigen van de vertraging voor autopause wordt uitgevoerd met behulp van de opdracht [set-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabase) in Power shell met behulp van het argument `AutoPauseDelayInMinutes`.
 
 ## <a name="monitoring"></a>Bewaking
 
@@ -314,7 +314,7 @@ In dit geval wordt de data base in de eerste acht uur gefactureerd voor Compute 
 
 Nauw keuriger wordt de reken factuur in dit voor beeld als volgt berekend:
 
-|Tijdsinterval|vCores elke seconde gebruikt|GB gebruikt elke seconde|Gefactureerde reken dimensie|vCore seconden gefactureerd over het tijds interval|
+|Tijds interval|vCores elke seconde gebruikt|GB gebruikt elke seconde|Gefactureerde reken dimensie|vCore seconden gefactureerd over het tijds interval|
 |---|---|---|---|---|
 |0:00-1:00|4|9|vCores gebruikt|4 vCores seconden * 3600 seconde = 14400 vCore seconden|
 |1:00-2:00|1|12|Gebruikt geheugen|12 GB * 1/3 * 3600 seconden = 14400 vCore seconden|
@@ -326,9 +326,9 @@ Stel dat de reken eenheids prijs $0.000073/vCore/seconde is.  De reken tijd die 
 
 ## <a name="available-regions"></a>Beschikbare regio's
 
-De compute-laag zonder server is wereld wijd beschikbaar, met uitzonde ring van de volgende regio's: Australië-centraal, China-oost, China-noord, Frankrijk-zuid, Duitsland-centraal, Duitsland-noordoost, India West, Korea-zuid, Zuid-Afrika-west, UK-noord, UK-zuid, UK-west en West-Centraal vs.
+De compute-laag zonder server is wereld wijd beschikbaar, met uitzonde ring van de volgende regio's: China-oost, China-noord, Duitsland-centraal, Duitsland-noordoost, UK-noord, UK-zuid 2, West-Centraal VS en US Gov Central (Iowa).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Als u aan de slag [wilt gaan, raadpleegt u Quick Start: Maak met behulp van de Azure Portal](sql-database-single-database-get-started.md)een enkele data base in Azure SQL database.
+- Zie [Quickstart om aan de slag te gaan: Maak met behulp van de Azure Portal @ no__t-0 een enkele data base in Azure SQL Database.
 - Zie [resource limieten voor serverloze Compute-lagen](sql-database-vCore-resource-limits-single-databases.md#general-purpose-service-tier-for-serverless-compute)voor resource limieten.

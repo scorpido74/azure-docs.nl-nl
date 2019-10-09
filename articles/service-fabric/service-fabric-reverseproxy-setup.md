@@ -12,16 +12,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 11/13/2018
-ms.author: chackdan
-ms.openlocfilehash: 826e7e953bd713bb623ec469b45c56012601490b
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.author: pepogors
+ms.openlocfilehash: 3fd1716fa7b9c32bb5b5e49598139b6a5e728692
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69030806"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72166584"
 ---
 # <a name="set-up-and-configure-reverse-proxy-in-azure-service-fabric"></a>Een omgekeerde proxy instellen en configureren in azure Service Fabric
-Omgekeerde proxy is een optionele Azure Service Fabric-service die micro services die worden uitgevoerd in een Service Fabric cluster kan detecteren en communiceren met andere services met http-eind punten. Zie reverse [proxy in Azure service Fabric](service-fabric-reverseproxy.md)voor meer informatie. In dit artikel wordt beschreven hoe u een omgekeerde proxy in uw cluster instelt en configureert. 
+Omgekeerde proxy is een optionele Azure Service Fabric-service die micro services die worden uitgevoerd in een Service Fabric cluster kan detecteren en communiceren met andere services met http-eind punten. Zie [reverse proxy in Azure service Fabric](service-fabric-reverseproxy.md)voor meer informatie. In dit artikel wordt beschreven hoe u een omgekeerde proxy in uw cluster instelt en configureert. 
 
 ## <a name="enable-reverse-proxy-using-azure-portal"></a>Omgekeerde proxy inschakelen met behulp van Azure Portal
 
@@ -29,14 +29,14 @@ Azure Portal biedt een optie om omgekeerde proxy in te scha kelen wanneer u een 
 
 Voor het configureren van een omgekeerde proxy wanneer u [een cluster met Azure Portal maakt](./service-fabric-cluster-creation-via-portal.md), moet u het volgende doen:
 
-1. In **stap 2: Cluster configuratie**, onder **configuratie van knooppunt type**, selecteert u **omgekeerde proxy inschakelen**.
+1. In **Step 2: Cluster configuratie @ no__t-0, onder **configuratie van knooppunt type**selecteert u **omgekeerde proxy inschakelen**.
 
    ![Omgekeerde proxy inschakelen op de portal](./media/service-fabric-reverseproxy-setup/enable-rp-portal.png)
-2. Beschrijving Als u een beveiligde omgekeerde proxy wilt configureren, moet u een SSL-certificaat configureren. In **stap 3: Beveiliging**, Selecteer in de **beveiligings instellingen van het cluster configureren**onder **configuratie type**de optie **aangepast**. Selecteer vervolgens onder **omgekeerde proxy SSL-certificaat**de optie **een SSL-certificaat voor reverse proxy toevoegen** en voer uw certificaat details in.
+2. Beschrijving Als u een beveiligde omgekeerde proxy wilt configureren, moet u een SSL-certificaat configureren. In **Step 3: Security @ no__t-0, in **cluster beveiligings instellingen configureren**onder **configuratie type**, selecteert u **aangepast**. Selecteer vervolgens onder **omgekeerde proxy SSL-certificaat**de optie **een SSL-certificaat voor reverse proxy toevoegen** en voer uw certificaat details in.
 
    ![Beveiligde omgekeerde proxy configureren op de portal](./media/service-fabric-reverseproxy-setup/configure-rp-certificate-portal.png)
 
-   Als u ervoor kiest om de omgekeerde proxy niet te configureren met een certificaat wanneer u het cluster maakt, kunt u dit later doen via de Resource Manager-sjabloon voor de resource groep van het cluster. Zie voor meer informatie reverse [proxy inschakelen via Azure Resource Manager sjablonen](#enable-reverse-proxy-via-azure-resource-manager-templates).
+   Als u ervoor kiest om de omgekeerde proxy niet te configureren met een certificaat wanneer u het cluster maakt, kunt u dit later doen via de Resource Manager-sjabloon voor de resource groep van het cluster. Zie voor meer informatie [reverse proxy inschakelen via Azure Resource Manager sjablonen](#enable-reverse-proxy-via-azure-resource-manager-templates).
 
 ## <a name="enable-reverse-proxy-via-azure-resource-manager-templates"></a>Omgekeerde proxy inschakelen via Azure Resource Manager sjablonen
 

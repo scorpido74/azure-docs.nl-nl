@@ -1,5 +1,5 @@
 ---
-title: Uploaden en koppelen van SSL-certificaat - Azure App Service | Microsoft Docs
+title: SSL-certificaat uploaden en binden-Azure App Service | Microsoft Docs
 description: Meer informatie over het verbinden van een aangepast SSL-certificaat met een web-app, de back-end voor een mobiele app of een API-app in Azure App Service.
 services: app-service\web
 documentationcenter: nodejs
@@ -15,16 +15,16 @@ ms.topic: tutorial
 ms.date: 06/06/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 32e6311a8796e708119f3e1df813b6ebb2ed0673
-ms.sourcegitcommit: 7042ec27b18f69db9331b3bf3b9296a9cd0c0402
+ms.openlocfilehash: c5095bc8c274ef0985b00459b0d088371ab24d88
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66743008"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177032"
 ---
-# <a name="tutorial-upload-and-bind-ssl-certificates-to-azure-app-service"></a>Zelfstudie: Uploaden en koppelen van SSL-certificaten in Azure App Service
+# <a name="tutorial-upload-and-bind-ssl-certificates-to-azure-app-service"></a>Zelfstudie: SSL-certificaten uploaden en binden aan Azure App Service
 
-[Azure App Service](overview.md) biedt een uiterst schaalbare webhostingservice met self-patchfunctie. Deze zelfstudie leert u over het beveiligen van een aangepast domein in App Service met een certificaat dat u hebt aangeschaft via een vertrouwde certificeringsinstantie. Ook worden weergegeven over het uploaden van een persoonlijke en openbare certificaten behoeften voor uw app. Wanneer u klaar bent, kunt u uw app openen op het HTTPS-eindpunt van uw aangepaste DNS-domein.
+[Azure App Service](overview.md) biedt een uiterst schaalbare webhostingservice met self-patchfunctie. In deze zelf studie wordt uitgelegd hoe u een aangepast domein in App Service kunt beveiligen met een certificaat dat u hebt aangeschaft bij een vertrouwde certificerings instantie. U ziet ook hoe u alle persoonlijke en open bare certificaten uploadt die uw app nodig heeft. Wanneer u klaar bent, kunt u uw app openen op het HTTPS-eindpunt van uw aangepaste DNS-domein.
 
 ![Web-app met aangepast SSL-certificaat](./media/app-service-web-tutorial-custom-ssl/app-with-custom-ssl.png)
 
@@ -32,7 +32,7 @@ In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
 > * De prijscategorie van uw app upgraden
-> * Beveiligen van een aangepast domein met een certificaat
+> * Een aangepast domein beveiligen met een certificaat
 > * Een persoonlijk certificaat uploaden
 > * Een openbaar certificaat uploaden
 > * Certificaten vernieuwen
@@ -45,29 +45,29 @@ In deze zelfstudie leert u het volgende:
 Vereisten voor het voltooien van deze zelfstudie:
 
 - [Een App Service-app maken](/azure/app-service/)
-- [Een aangepaste DNS-naam toewijzen aan uw app in App Service](app-service-web-tutorial-custom-domain.md) (als het beveiligen van een aangepast domein)
-- Een certificaat aanschaffen bij een vertrouwde certificeringsinstantie
-- De persoonlijke sleutel die u gebruikt voor het ondertekenen van de certificaataanvraag (voor persoonlijke certificaten)
+- [Een aangepaste DNS-naam toewijzen aan uw app service-app](app-service-web-tutorial-custom-domain.md) (bij het beveiligen van een aangepast domein)
+- Een certificaat van een vertrouwde certificerings instantie verkrijgen
+- De persoonlijke sleutel gebruiken voor het ondertekenen van de certificaat aanvraag (voor persoonlijke certificaten)
 
 <a name="requirements"></a>
 
 ## <a name="prepare-a-private-certificate"></a>Een persoonlijk certificaat voorbereiden
 
-Als u wilt beveiligen in een domein, kan het certificaat moet voldoen aan de volgende vereisten:
+Als u een domein wilt beveiligen, moet het certificaat voldoen aan de volgende vereisten:
 
-* Geconfigureerd voor Server-verificatie
+* Geconfigureerd voor Server verificatie
 * Ondertekend door een vertrouwde certificeringsinstantie
 * Geëxporteerd als een PFX-bestand met wachtwoordbeveiliging
 * Bevat een persoonlijke sleutel van minstens 2048 bits
 * Bevat alle tussenliggende certificaten in de certificaatketen
 
 > [!TIP]
-> Als u nodig hebt om op te halen van een aangepast SSL-certificaat, kunt u een in Azure portal rechtstreeks ophalen en importeren in uw app. Volg de [zelfstudie voor App Service Certificates](web-sites-purchase-ssl-web-site.md).
+> Als u een aangepast SSL-certificaat nodig hebt, kunt u het rechtstreeks in de Azure Portal ophalen en dit importeren in uw app. Volg de [zelfstudie voor App Service Certificates](web-sites-purchase-ssl-web-site.md).
 
 > [!NOTE]
 > **ECC-certificaten (cryptografie met behulp van elliptische krommen)** kunnen met App Service worden gebruikt, maar worden niet in dit artikel beschreven. Werk samen met uw certificeringsinstantie aan de exacte stappen voor het maken van ECC-certificaten.
 
-Wanneer u een certificaat van de certificaatprovider van uw verkrijgen, volgt u de stappen in deze sectie zodat deze gereed voor App Service.
+Zodra u een certificaat van uw certificaat provider hebt ontvangen, volgt u de stappen in deze sectie om de app gereed te maken voor App Service.
 
 ### <a name="merge-intermediate-certificates"></a>Tussenliggende certificaten samenvoegen
 
@@ -109,20 +109,20 @@ Wanneer u daarom wordt gevraagd, geeft u een wachtwoord voor export op. U gebrui
 
 Als u IIS of _Certreq.exe_ hebt gebruikt voor het genereren van uw certificaataanvraag, installeert u het certificaat op uw lokale computer en [exporteert u het certificaat naar PFX](https://technet.microsoft.com/library/cc754329(v=ws.11).aspx).
 
-U bent nu klaar voor het certificaat uploaden naar App Service.
+U bent nu klaar om het certificaat te uploaden naar App Service.
 
 [!INCLUDE [Prepare your web app](../../includes/app-service-ssl-prepare-app.md)]
 
 <a name="upload"></a>
 
-## <a name="secure-a-custom-domain"></a>Beveiligen van een aangepast domein
+## <a name="secure-a-custom-domain"></a>Een aangepast domein beveiligen
 
 > [!TIP]
 > Als u een aangepast SSL-certificaat nodig hebt, kunt u er een rechtstreeks in Azure Portal ophalen en met uw app verbinden. Volg de [zelfstudie voor App Service Certificates](web-sites-purchase-ssl-web-site.md).
 
-Voor het beveiligen van een [aangepast domein](app-service-web-tutorial-custom-domain.md) met een certificaat van derden die u uploadt de [voorbereid persoonlijk certificaat](#prepare-a-private-certificate) en vervolgens te binden aan het aangepaste domein, maar de App Service vereenvoudigt het proces voor u. Voer de volgende stappen uit:
+Als u een [aangepast domein](app-service-web-tutorial-custom-domain.md) met een certificaat van een derde partij wilt beveiligen, uploadt u het [voor bereide persoonlijke certificaat](#prepare-a-private-certificate) en koppelt u dit aan het aangepaste domein, maar app Service vereenvoudigt het proces voor u. Voer de volgende stappen uit:
 
-Klik op **aangepaste domeinen** in het linkernavigatievenster van uw app, en klik op **binding toevoegen** voor het domein dat u wilt beveiligen. Als er geen **binding toevoegen** voor een domein, vervolgens is al beveiligd en moet een **Secure** SSL-status.
+Klik op **aangepaste domeinen** in het linkernavigatievenster van uw app en klik vervolgens op **binding toevoegen** voor het domein dat u wilt beveiligen. Als u **binding toevoegen** niet ziet voor een domein, is deze al beveiligd en moet er een **beveiligde** SSL-status zijn.
 
 ![Binding aan domein toevoegen](./media/app-service-web-tutorial-custom-ssl/secure-domain-launch.png)
 
@@ -132,26 +132,26 @@ In **PFX-certificaatbestand** selecteert u uw PFX-bestand. Typ in **Certificaatw
 
 Klik op **Uploaden**.
 
-![Voor domein-certificaat uploaden](./media/app-service-web-tutorial-custom-ssl/secure-domain-upload.png)
+![Certificaat voor domein uploaden](./media/app-service-web-tutorial-custom-ssl/secure-domain-upload.png)
 
-Wachten op Azure voor het uploaden van uw certificaat en het SSL-bindingen dialoogvenster starten.
+Wacht tot Azure uw certificaat heeft geüpload en start het dialoog venster SSL-bindingen.
 
-Selecteer het certificaat dat u hebt geüpload en de SSL-type in het dialoogvenster SSL-bindingen en klik vervolgens op **toevoegen Binding**.
+Selecteer in het dialoog venster SSL-bindingen het certificaat dat u hebt geüpload en het SSL-type en klik vervolgens op **binding toevoegen**.
 
 > [!NOTE]
 > De volgende SSL-typen worden ondersteund:
 >
-> - **[Op basis van SNI SSL](https://en.wikipedia.org/wiki/Server_Name_Indication)**  -op basis van meerdere SNI SSL-bindingen kunnen worden toegevoegd. Met deze optie kunnen meerdere SSL-certificaten verschillende domeinen beveiligen op hetzelfde IP-adres. De meeste moderne browsers (waaronder Internet Explorer, Chrome, Firefox en Opera) ondersteunen SNI. Ga voor uitgebreidere informatie over browserondersteuning naar [Servernaamindicatie](https://wikipedia.org/wiki/Server_Name_Indication).
+> - **[Op SNI gebaseerde SSL](https://en.wikipedia.org/wiki/Server_Name_Indication)** : meerdere SSL-bindingen op basis van SNI kunnen worden toegevoegd. Met deze optie kunnen meerdere SSL-certificaten verschillende domeinen beveiligen op hetzelfde IP-adres. De meeste moderne browsers (waaronder Internet Explorer, Chrome, Firefox en Opera) ondersteunen SNI. Ga voor uitgebreidere informatie over browserondersteuning naar [Servernaamindicatie](https://wikipedia.org/wiki/Server_Name_Indication).
 > - **Op IP gebaseerde SSL**: er kan slechts één op IP gebaseerde SSL-binding worden toegevoegd. Met deze optie kan slechts één SSL-certificaat een specifiek openbaar IP-adres beveiligen. Als u meerdere domeinen wilt beveiligen, moet u ze allemaal met hetzelfde SSL-certificaat beveiligen. Dit is de traditionele optie voor SSL-binding.
 
-![SSL verbinding te maken met domein](./media/app-service-web-tutorial-custom-ssl/secure-domain-bind.png)
+![SSL binden aan het domein](./media/app-service-web-tutorial-custom-ssl/secure-domain-bind.png)
 
-SSL-status van het domein moet nu worden gewijzigd in **Secure**.
+De SSL-status van het domein moet nu worden gewijzigd in **beveiligd**.
 
 ![Beveiligd domein](./media/app-service-web-tutorial-custom-ssl/secure-domain-finished.png)
 
 > [!NOTE]
-> Een **Secure** staat in de **aangepaste domeinen** betekent dat deze is beveiligd met een certificaat, maar de App Service geen controle uitvoert of als het certificaat is zelfondertekend of verlopen, bijvoorbeeld, die ook kunnen ertoe leiden dat browsers een fout of waarschuwing weergeven.
+> Een **veilige** status in de **aangepaste domeinen** houdt in dat deze is beveiligd met een certificaat, maar app service controleert niet of het certificaat zelf is ondertekend of is verlopen, bijvoorbeeld, waardoor browsers ook een fout of waarschuwing kunnen weer geven.
 
 ## <a name="remap-a-record-for-ip-ssl"></a>Een record voor IP SSL opnieuw toewijzen
 
@@ -233,9 +233,18 @@ Met de volgende opdracht wordt een op SNI gebaseerde SSL-binding toegevoegd met 
 ```azurecli-interactive
 az webapp config ssl bind \
     --name <app-name> \
-    --resource-group <resource-group-name>
+    --resource-group <resource-group-name> \
     --certificate-thumbprint $thumbprint \
     --ssl-type SNI \
+```
+
+Met de volgende opdracht wordt de app gedwongen HTTPS te gebruiken.
+
+```azurecli-interactive
+az webapp update \
+    --name <app-name> \
+    --resource-group <resource-group-name> \
+    --https-only true
 ```
 
 Met de volgende opdracht wordt een minimale TLS-versie van TLS 1.2 afgedwongen.
@@ -243,7 +252,7 @@ Met de volgende opdracht wordt een minimale TLS-versie van TLS 1.2 afgedwongen.
 ```azurecli-interactive
 az webapp config set \
     --name <app-name> \
-    --resource-group <resource-group-name>
+    --resource-group <resource-group-name> \
     --min-tls-version 1.2
 ```
 
@@ -263,9 +272,9 @@ New-AzWebAppSSLBinding `
     -SslState SniEnabled
 ```
 
-## <a name="use-certificates-in-your-code"></a>Gebruik van certificaten in uw code
+## <a name="use-certificates-in-your-code"></a>Certificaten gebruiken in uw code
 
-Als uw app moet verbinding maken met externe bronnen en de externe resource verificatie via certificaat vereist, kunt u openbare of persoonlijke certificaten uploaden naar uw app. U hoeft niet te deze certificaten te binden aan een aangepaste domein in uw app. Zie [Use an SSL certificate in your application code in Azure App Service](app-service-web-ssl-cert-load.md) (Een SSL-certificaat gebruiken in uw toepassingscode in Azure App Service) voor meer informatie.
+Als uw app verbinding moet maken met externe bronnen en de externe bron verificatie van certificaten vereist, kunt u open bare of persoonlijke certificaten uploaden naar uw app. U hoeft deze certificaten niet te binden aan een aangepast domein in uw app. Zie [Use an SSL certificate in your application code in Azure App Service](app-service-web-ssl-cert-load.md) (Een SSL-certificaat gebruiken in uw toepassingscode in Azure App Service) voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 
