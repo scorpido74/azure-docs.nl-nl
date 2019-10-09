@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/31/2019
-ms.openlocfilehash: 05bb8b75fb09f3b8df0a6775874e72bdb04fc65e
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: 5e05acf515aacaada96bd6e493c1a2bf24d7c5ab
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71937543"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72030761"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Inzicht in de uitvoer van Azure Stream Analytics
 
@@ -80,8 +80,8 @@ De volgende tabel bevat de namen van de eigenschappen en de bijbehorende beschri
 | Uitvoeralias        | Een beschrijvende naam die wordt gebruikt in query's om de query-uitvoer naar deze blobopslag te regelen. |
 | Storage-account     | De naam van het opslag account waarin u uw uitvoer wilt verzenden.               |
 | Opslagaccountsleutel | De geheime sleutel die is gekoppeld aan de storage-account.                              |
-| Opslagcontainer   | Een logische groepering voor blobs die zijn opgeslagen in de Azure-Blob service. Wanneer u een blob geüpload naar de Blob-service, moet u een container voor die blob opgeven. |
-| Padpatroon | Optioneel. Het patroon van het bestandspad dat wordt gebruikt voor het schrijven van uw blobs binnen de opgegeven container. <br /><br /> In het pad patroon kunt u kiezen voor het gebruik van een of meer exemplaren van de variabelen datum en tijd om de frequentie op te geven waarmee blobs worden geschreven: <br /> {date}, {time} <br /><br />U kunt aangepaste BLOB-partitionering gebruiken om één aangepaste {Field}-naam van uw gebeurtenis gegevens op te geven voor het partitioneren van blobs. Naam van het veld is alfanumerieke en kan spaties, afbreekstreepjes en onderstrepingstekens bevatten. De volgende beperkingen met betrekking tot aangepaste velden zijn beschikbaar: <ul><li>Veld namen zijn niet hoofdletter gevoelig. De service kan bijvoorbeeld geen onderscheid maken tussen de kolom-ID en de kolom-id.</li><li>Geneste velden zijn niet toegestaan. Gebruik in plaats daarvan een alias in de taak query om het veld af te vlakken.</li><li>Expressies kunnen niet worden gebruikt als veld naam.</li></ul> <br />Met deze functie kunt u het gebruik van aangepaste configuraties voor datum/tijd-indeling in het pad. Aangepaste datum en tijd indelingen moeten worden opgegeven op een tijdstip, ingesloten door de {datum/tijd:\<aanduiding >} trefwoord. Toegestane invoer voor \<de specificatie > zijn jjjj, mm, M, dd, d, hh, H, mm, M, SS of s. Het sleutel woord {\<DateTime: aanduiding >} kan meermaals worden gebruikt in het pad naar aangepaste datum/tijd-configuraties. <br /><br />Voorbeelden: <ul><li>Voorbeeld 1: cluster1/logboeken / {date} / {time}</li><li>Voorbeeld 2: cluster1/logboeken / {date}</li><li>Voor beeld 3: cluster1/{client_id}/{date}/{time}</li><li>Voor beeld 4: cluster1/{DateTime: SS}/{myField} waarbij de query is: Selecteer Data. myField als myField van invoer.</li><li>Voor beeld 5: cluster1/Year = {DateTime: jjjj}/month = {DateTime: MM}/Day = {DateTime: dd}</ul><br />De tijds tempel van de gemaakte mappen structuur volgt UTC en niet lokale tijd.<br /><br />Bestands namen gebruiken de volgende Conventie: <br /><br />{Pad voorvoegsel Pattern}/schemaHashcode_Guid_Number.extension<br /><br />Voorbeeld van de uitvoerbestanden:<ul><li>Myoutput/20170901/00/45434_gguid_1.csv</li>  <li>Myoutput/20170901/01/45434_gguid_1.csv</li></ul> <br />Zie [Azure stream Analytics aangepaste BLOB-uitvoer partitionering](stream-analytics-custom-path-patterns-blob-storage-output.md)voor meer informatie over deze functie. |
+| Opslag container   | Een logische groepering voor blobs die zijn opgeslagen in de Azure-Blob service. Wanneer u een blob geüpload naar de Blob-service, moet u een container voor die blob opgeven. |
+| Padpatroon | Optioneel. Het patroon van het bestandspad dat wordt gebruikt voor het schrijven van uw blobs binnen de opgegeven container. <br /><br /> In het pad patroon kunt u kiezen voor het gebruik van een of meer exemplaren van de variabelen datum en tijd om de frequentie op te geven waarmee blobs worden geschreven: <br /> {date}, {time} <br /><br />U kunt aangepaste BLOB-partitionering gebruiken om één aangepaste {Field}-naam van uw gebeurtenis gegevens op te geven voor het partitioneren van blobs. Naam van het veld is alfanumerieke en kan spaties, afbreekstreepjes en onderstrepingstekens bevatten. De volgende beperkingen met betrekking tot aangepaste velden zijn beschikbaar: <ul><li>Veld namen zijn niet hoofdletter gevoelig. De service kan bijvoorbeeld geen onderscheid maken tussen de kolom-ID en de kolom-id.</li><li>Geneste velden zijn niet toegestaan. Gebruik in plaats daarvan een alias in de taak query om het veld af te vlakken.</li><li>Expressies kunnen niet worden gebruikt als veld naam.</li></ul> <br />Met deze functie kunt u het gebruik van aangepaste configuraties voor datum/tijd-indeling in het pad. Aangepaste datum en tijd indelingen moeten worden opgegeven op een tijdstip, ingesloten door de {datum/tijd:\<aanduiding >} trefwoord. Toegestane invoer voor \<specifier > zijn jjjj, MM, M, dd, d, HH, H, mm, M, SS of s. Het sleutel woord {DateTime: \<specifier >} kan meermaals worden gebruikt in het pad naar aangepaste datum/tijd-configuraties. <br /><br />Voorbeelden: <ul><li>Voorbeeld 1: cluster1/logboeken / {date} / {time}</li><li>Voorbeeld 2: cluster1/logboeken / {date}</li><li>Voor beeld 3: cluster1/{client_id}/{date}/{time}</li><li>Voor beeld 4: cluster1/{DateTime: SS}/{myField} waarbij de query is: Selecteer Data. myField als myField van invoer.</li><li>Voor beeld 5: cluster1/Year = {DateTime: jjjj}/month = {DateTime: MM}/Day = {DateTime: dd}</ul><br />De tijds tempel van de gemaakte mappen structuur volgt UTC en niet lokale tijd.<br /><br />Bestands namen gebruiken de volgende Conventie: <br /><br />{Pad voorvoegsel Pattern}/schemaHashcode_Guid_Number.extension<br /><br />Voorbeeld van de uitvoerbestanden:<ul><li>Myoutput/20170901/00/45434_gguid_1.csv</li>  <li>Myoutput/20170901/01/45434_gguid_1.csv</li></ul> <br />Zie [Azure stream Analytics aangepaste BLOB-uitvoer partitionering](stream-analytics-custom-path-patterns-blob-storage-output.md)voor meer informatie over deze functie. |
 | Datumnotatie | Optioneel. Als de datumtoken van de in het pad van het voorvoegsel wordt gebruikt, kunt u de datumnotatie waarin de bestanden zijn ingedeeld. Voorbeeld: JJJJ/MM/DD |
 | Tijdnotatie | Optioneel. Als de token van de tijd in het pad van het voorvoegsel wordt gebruikt, geeft u de indeling waarin de bestanden zijn ingedeeld. De enige ondersteunde waarde is momenteel HH. |
 | Serialisatie-indeling voor gebeurtenissen | Serialisatie-indeling voor de uitvoergegevens. JSON, CSV, AVRO en Parquet worden ondersteund. |
@@ -111,16 +111,16 @@ U hebt een aantal para meters nodig voor het configureren van gegevens stromen v
 | Naam van eigenschap | Description |
 | --- | --- |
 | Uitvoeralias | Een beschrijvende naam die wordt gebruikt in query's om de uitvoer van de query naar deze Event Hub te sturen. |
-| Event Hub-naamruimte | Een container voor een set met bericht entiteiten. Wanneer u een nieuwe Event Hub hebt gemaakt, hebt u ook een Event Hub naam ruimte gemaakt. |
+| Event hub-naamruimte | Een container voor een set met bericht entiteiten. Wanneer u een nieuwe Event Hub hebt gemaakt, hebt u ook een Event Hub naam ruimte gemaakt. |
 | Naam van Event Hub | De naam van de Event Hub uitvoer. |
 | De naam van een Event hub-beleid | Het beleid voor gedeelde toegang, dat u kunt maken op het tabblad **configureren** van de Event hub. Elk gedeeld toegangsbeleid heeft een naam, machtigingen die u instelt en toegangssleutels. |
 | Beleidssleutel voor Event hub | De gedeelde toegangs sleutel die wordt gebruikt voor het verifiëren van toegang tot de naam ruimte Event Hub. |
-| Partitiesleutelkolom | Optioneel. Een kolom die de partitie sleutel voor Event Hub uitvoer bevat. |
+| Partitie sleutel kolom | Optioneel. Een kolom die de partitie sleutel voor Event Hub uitvoer bevat. |
 | Serialisatie-indeling voor gebeurtenissen | De serialisatie-indeling voor uitvoer gegevens. JSON-, CSV- en Avro worden ondersteund. |
 | Encoding | Voor CSV en JSON is UTF-8 de enige ondersteunde coderingsindeling op dit moment. |
 | Scheidingsteken | Alleen van toepassing op CSV-serialisatie. Stream Analytics ondersteunt een aantal algemene scheidingstekens om gegevens te serialiseren in csv-indeling. Ondersteunde waarden zijn met door komma's, door puntkomma's, spatie, tab en verticale balk. |
-| Indeling | Alleen van toepassing op JSON-serialisatie. Met **regel scheiding** wordt opgegeven dat de uitvoer wordt opgemaakt door elk JSON-object gescheiden door een nieuwe regel. **Matrix** geeft aan dat de uitvoer is ingedeeld als een matrix van JSON-objecten. Deze matrix wordt gesloten wanneer de taak stopt of Stream Analytics is verplaatst op naar de volgende periode. Over het algemeen is het raadzaam om met regel-gescheiden JSON te gebruiken, omdat hiervoor geen speciale verwerking is vereist terwijl het uitvoer bestand nog wordt geschreven. |
-| Eigenschappenkolommen | Optioneel. Door komma's gescheiden kolommen die moeten worden toegevoegd als gebruikers eigenschappen van het uitgaande bericht in plaats van de payload. Meer informatie over deze functie vindt u in de sectie [aangepaste meta gegevens eigenschappen voor uitvoer](#custom-metadata-properties-for-output). |
+| Indeling | Alleen van toepassing op JSON-serialisatie. Met **regel scheiding** wordt opgegeven dat de uitvoer wordt opgemaakt door elk JSON-object gescheiden door een nieuwe regel. **Matrix** geeft aan dat de uitvoer is ingedeeld als een matrix van JSON-objecten. Deze matrix wordt gesloten wanneer de taak stopt of Stream Analytics is verplaatst op naar de volgende periode. Over het algemeen is het raadzaam om met regel-gescheiden JSON te gebruiken, omdat hiervoor geen speciale verwerking is vereist terwijl het uitvoer bestand nog wordt geschreven. Zie de sectie [output Batch Size](#output-batch-size) voor meer informatie. |
+| Eigenschappen kolommen | Optioneel. Door komma's gescheiden kolommen die moeten worden toegevoegd als gebruikers eigenschappen van het uitgaande bericht in plaats van de payload. Meer informatie over deze functie vindt u in de sectie [aangepaste meta gegevens eigenschappen voor uitvoer](#custom-metadata-properties-for-output). |
 
 ## <a name="power-bi"></a>Power BI
 
@@ -165,7 +165,7 @@ Matrix van de record | Teken reeks type, constante waarde "IRecord" of "IArray"
 ### <a name="update-the-schema"></a>Het schema bijwerken
 Stream Analytics bepaalt welk data model-schema op basis van de eerste set met gebeurtenissen in de uitvoer. Later, indien nodig, wordt het schema van het gegevens model bijgewerkt om binnenkomende gebeurtenissen te kunnen verwerken die mogelijk niet in het oorspronkelijke schema passen.
 
-Vermijd de `SELECT *` query om dynamische schema-updates voor rijen te voor komen. Naast mogelijke prestatie implicaties kan dit leiden tot een onzekerheid van de tijd die nodig is voor de resultaten. Selecteer de exacte velden die moeten worden weer gegeven op het Power BI dash board. Bovendien moeten de gegevenswaarden compatibel zijn met het gekozen type zijn.
+Vermijd de `SELECT *`-query om te voor komen dat dynamische schema-updates in rijen worden doorzocht. Naast mogelijke prestatie implicaties kan dit leiden tot een onzekerheid van de tijd die nodig is voor de resultaten. Selecteer de exacte velden die moeten worden weer gegeven op het Power BI dash board. Bovendien moeten de gegevenswaarden compatibel zijn met het gekozen type zijn.
 
 
 Vorige/huidige | Int64 | Reeks | Datum en tijd | Double-waarde
@@ -175,7 +175,7 @@ Double-waarde | Double-waarde | Reeks | Reeks | Double-waarde
 Reeks | String | String | String | Reeks 
 Datum en tijd | Reeks | Reeks |  Datum en tijd | Tekenreeks
 
-## <a name="table-storage"></a>Tabelopslag
+## <a name="table-storage"></a>Table Storage
 
 [Azure Table Storage](../storage/common/storage-introduction.md) biedt een Maxi maal beschik bare, zeer schaal bare opslag, zodat een toepassing automatisch kan worden geschaald om te voldoen aan de vraag van de gebruiker. Table Storage is de NoSQL sleutel/kenmerk opslag van micro soft, die u kunt gebruiken voor gestructureerde gegevens met minder beperkingen voor het schema. Azure Table storage kan worden gebruikt voor het opslaan van gegevens voor de persistentie en efficiënte ophalen.
 
@@ -208,8 +208,8 @@ De volgende tabel bevat de namen van de eigenschappen en de bijbehorende beschri
 | Encoding |Voor CSV en JSON is UTF-8 de enige ondersteunde coderingsindeling op dit moment. |
 | Scheidingsteken |Alleen van toepassing op CSV-serialisatie. Stream Analytics ondersteunt een aantal algemene scheidingstekens om gegevens te serialiseren in csv-indeling. Ondersteunde waarden zijn met door komma's, door puntkomma's, spatie, tab en verticale balk. |
 | Indeling |Alleen van toepassing op JSON-type. Met **regel scheiding** wordt opgegeven dat de uitvoer wordt opgemaakt door elk JSON-object gescheiden door een nieuwe regel. **Matrix** geeft aan dat de uitvoer is ingedeeld als een matrix van JSON-objecten. |
-| Eigenschappenkolommen | Optioneel. Door komma's gescheiden kolommen die moeten worden toegevoegd als gebruikers eigenschappen van het uitgaande bericht in plaats van de payload. Meer informatie over deze functie vindt u in de sectie [aangepaste meta gegevens eigenschappen voor uitvoer](#custom-metadata-properties-for-output). |
-| Systeemeigenschaps-kolommen | Optioneel. Sleutel waarde-paren van systeem eigenschappen en bijbehorende kolom namen die aan het uitgaande bericht moeten worden toegevoegd in plaats van de payload. Meer informatie over deze functie vindt u in de sectie [systeem eigenschappen voor service bus wachtrij en onderwerp-uitvoer](#system-properties-for-service-bus-queue-and-topic-outputs)  |
+| Eigenschappen kolommen | Optioneel. Door komma's gescheiden kolommen die moeten worden toegevoegd als gebruikers eigenschappen van het uitgaande bericht in plaats van de payload. Meer informatie over deze functie vindt u in de sectie [aangepaste meta gegevens eigenschappen voor uitvoer](#custom-metadata-properties-for-output). |
+| Kolom systeem eigenschappen | Optioneel. Sleutel waarde-paren van systeem eigenschappen en bijbehorende kolom namen die aan het uitgaande bericht moeten worden toegevoegd in plaats van de payload. Meer informatie over deze functie vindt u in de sectie [systeem eigenschappen voor service bus wachtrij en onderwerp-uitvoer](#system-properties-for-service-bus-queue-and-topic-outputs)  |
 
 Het aantal partities is [op basis van de Service Bus-SKU en grootte](../service-bus-messaging/service-bus-partitioning.md). Partitiesleutel is een unieke integer-waarde voor elke partitie.
 
@@ -228,8 +228,8 @@ De volgende tabel bevat de namen van de eigenschappen en de bijbehorende beschri
 | Serialisatie-indeling voor gebeurtenissen |De serialisatie-indeling voor uitvoer gegevens. JSON-, CSV- en Avro worden ondersteund. |
 | Encoding |Als u de CSV-of JSON-indeling gebruikt, moet u een code ring opgeven. Alleen de coderingsindeling UTF-8 wordt momenteel ondersteund. |
 | Scheidingsteken |Alleen van toepassing op CSV-serialisatie. Stream Analytics ondersteunt een aantal algemene scheidingstekens om gegevens te serialiseren in csv-indeling. Ondersteunde waarden zijn met door komma's, door puntkomma's, spatie, tab en verticale balk. |
-| Eigenschappenkolommen | Optioneel. Door komma's gescheiden kolommen die moeten worden toegevoegd als gebruikers eigenschappen van het uitgaande bericht in plaats van de payload. Meer informatie over deze functie vindt u in de sectie [aangepaste meta gegevens eigenschappen voor uitvoer](#custom-metadata-properties-for-output). |
-| Systeemeigenschaps-kolommen | Optioneel. Sleutel waarde-paren van systeem eigenschappen en bijbehorende kolom namen die aan het uitgaande bericht moeten worden toegevoegd in plaats van de payload. Meer informatie over deze functie vindt u in de sectie [systeem eigenschappen voor service bus wachtrij en onderwerp-uitvoer](#system-properties-for-service-bus-queue-and-topic-outputs) |
+| Eigenschappen kolommen | Optioneel. Door komma's gescheiden kolommen die moeten worden toegevoegd als gebruikers eigenschappen van het uitgaande bericht in plaats van de payload. Meer informatie over deze functie vindt u in de sectie [aangepaste meta gegevens eigenschappen voor uitvoer](#custom-metadata-properties-for-output). |
+| Kolom systeem eigenschappen | Optioneel. Sleutel waarde-paren van systeem eigenschappen en bijbehorende kolom namen die aan het uitgaande bericht moeten worden toegevoegd in plaats van de payload. Meer informatie over deze functie vindt u in de sectie [systeem eigenschappen voor service bus wachtrij en onderwerp-uitvoer](#system-properties-for-service-bus-queue-and-topic-outputs) |
 
 Het aantal partities is [op basis van de Service Bus-SKU en grootte](../service-bus-messaging/service-bus-partitioning.md). De partitie sleutel is een unieke gehele waarde voor elke partitie.
 
@@ -282,15 +282,15 @@ In een situatie waarin er geen gebeurtenis overloop plaatsvindt in een tijd vens
 U kunt query kolommen als gebruikers eigenschappen aan uw uitgaande berichten toevoegen. Deze kolommen gaan niet naar de payload. De eigenschappen zijn aanwezig in de vorm van een woorden lijst in het uitvoer bericht. *Sleutel* is de kolom naam en- *waarde* is de kolom waarde in de woorden lijst eigenschappen. Alle Stream Analytics gegevens typen worden ondersteund, behalve record en matrix.  
 
 Ondersteunde uitvoer: 
-* Service Bus-wachtrij 
-* Service Bus-onderwerp 
+* Service Bus wachtrij 
+* Service Bus onderwerp 
 * Event Hub 
 
-In het volgende voor beeld voegen we de twee `DeviceId` velden `DeviceStatus` en toe aan de meta gegevens. 
-* Ophalen`select *, DeviceId, DeviceStatus from iotHubInput`
-* Uitvoer configuratie:`DeviceId,DeviceStatus`
+In het volgende voor beeld voegen we de twee velden `DeviceId` en `DeviceStatus` toe aan de meta gegevens. 
+* Query: `select *, DeviceId, DeviceStatus from iotHubInput`
+* Uitvoer configuratie: `DeviceId,DeviceStatus`
 
-![Eigenschappenkolommen](./media/stream-analytics-define-outputs/10-stream-analytics-property-columns.png)
+![Eigenschappen kolommen](./media/stream-analytics-define-outputs/10-stream-analytics-property-columns.png)
 
 De volgende scherm afbeelding ziet u de eigenschappen van uitvoer berichten die zijn geïnspecteerd in EventHub via [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer).
 
@@ -298,10 +298,10 @@ De volgende scherm afbeelding ziet u de eigenschappen van uitvoer berichten die 
 
 ## <a name="system-properties-for-service-bus-queue-and-topic-outputs"></a>Systeem eigenschappen voor de Service Bus wachtrij en onderwerp-uitvoer 
 U kunt query kolommen als [systeem eigenschappen](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage?view=azure-dotnet#properties) koppelen aan uw uitgaande service bus-wachtrij of onderwerp-berichten. Deze kolommen worden niet in de payload gezet, maar de bijbehorende [systeem eigenschap](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage?view=azure-dotnet#properties) BrokeredMessage wordt gevuld met de query kolom waarden.
-Deze systeem eigenschappen worden ondersteund `MessageId, ContentType, Label, PartitionKey, ReplyTo, SessionId, CorrelationId, To, ForcePersistence, TimeToLive, ScheduledEnqueueTimeUtc`.
+Deze systeem eigenschappen worden ondersteund-`MessageId, ContentType, Label, PartitionKey, ReplyTo, SessionId, CorrelationId, To, ForcePersistence, TimeToLive, ScheduledEnqueueTimeUtc`.
 Teken reeks waarden van deze kolommen worden geparseerd als overeenkomend type eigenschaps waarde van het systeem en eventuele fouten bij het parseren worden behandeld als gegevens fouten.
 Dit veld wordt als een JSON-object indeling gegeven. Meer informatie over deze indeling is als volgt:
-* Omgeven door {}accolades.
+* Omgeven door accolades {}.
 * Geschreven in sleutel/waarde-paren.
 * Sleutels en waarden moeten teken reeksen zijn.
 * Sleutel is de naam en waarde van de systeem eigenschap is de kolom naam van de query.
@@ -310,10 +310,10 @@ Dit veld wordt als een JSON-object indeling gegeven. Meer informatie over deze i
 
 Hier ziet u hoe u deze eigenschap gebruikt –
 
-* Ophalen`select *, column1, column2 INTO queueOutput FROM iotHubInput`
-* Kolom systeem eigenschappen:`{ "MessageId": "column1", "PartitionKey": "column2"}`
+* Query: `select *, column1, column2 INTO queueOutput FROM iotHubInput`
+* Eigenschappen van systeem eigenschap: `{ "MessageId": "column1", "PartitionKey": "column2"}`
 
-Hiermee stelt u `MessageId` de service bus-wachtrij berichten `column1`in met de waarden en PartitionKey wordt `column2`ingesteld met de waarden.
+Hiermee stelt u de `MessageId` in service bus-wachtrij berichten met `column1`-waarden en PartitionKey wordt ingesteld met de waarden van `column2`.
 
 ## <a name="partitioning"></a>Partitionering
 
@@ -323,7 +323,7 @@ De volgende tabel geeft een overzicht van de partitie ondersteuning en het aanta
 | --- | --- | --- | --- |
 | Azure Data Lake Store | Ja | Gebruik {date} en {time} tokens in het pad voor voegsel patroon. Kies de datum notatie, zoals JJJJ/MM/DD, DD/MM/JJJJ of MM-DD-JJJJ. HH wordt gebruikt voor de tijd notatie. | De invoer voor het partitioneren van volgt [volledig worden opgestart query's](stream-analytics-scale-jobs.md). |
 | Azure SQL Database | Ja, moet zijn ingeschakeld. | Op basis van de component PARTITION BY in de query. | Wanneer de optie partitioneren overnemen is ingeschakeld, volgt de invoer partitionering voor [volledige kan worden opgestart-query's](stream-analytics-scale-jobs.md). Zie [Azure stream Analytics output to Azure SQL database](stream-analytics-sql-output-perf.md)voor meer informatie over het verbeteren van de prestaties van schrijf doorvoer tijdens het laden van gegevens in Azure SQL database. |
-| Azure Blob Storage | Ja | Gebruik {date} en {time} tokens uit uw gebeurtenis velden in het pad patroon. Kies de datum notatie, zoals JJJJ/MM/DD, DD/MM/JJJJ of MM-DD-JJJJ. HH wordt gebruikt voor de tijd notatie. BLOB-uitvoer kan worden gepartitioneerd met één aangepast gebeurtenis kenmerk {FieldName} of {datetime\<: specificatie >}. | De invoer voor het partitioneren van volgt [volledig worden opgestart query's](stream-analytics-scale-jobs.md). |
+| Azure Blob Storage | Ja | Gebruik {date} en {time} tokens uit uw gebeurtenis velden in het pad patroon. Kies de datum notatie, zoals JJJJ/MM/DD, DD/MM/JJJJ of MM-DD-JJJJ. HH wordt gebruikt voor de tijd notatie. BLOB-uitvoer kan worden gepartitioneerd met één aangepast gebeurtenis kenmerk {FieldName} of {datetime: \<specifier >}. | De invoer voor het partitioneren van volgt [volledig worden opgestart query's](stream-analytics-scale-jobs.md). |
 | Azure Event Hubs | Ja | Ja | Is afhankelijk van de uitlijning van de partitie.<br /> Wanneer de partitie sleutel voor Event Hub uitvoer gelijk wordt uitgelijnd met de stap upstream (vorige), is het aantal schrijvers hetzelfde als het aantal partities in Event Hub uitvoer. Elke schrijver maakt gebruik van de [EventHubSender-klasse](/dotnet/api/microsoft.servicebus.messaging.eventhubsender?view=azure-dotnet) voor het verzenden van gebeurtenissen naar de specifieke partitie. <br /> Wanneer de partitie sleutel voor Event Hub uitvoer niet is afgestemd op de stap van de upstream (vorige), is het aantal schrijvers hetzelfde als het aantal partities in die vorige stap. Elke schrijver maakt gebruik van de [SendBatchAsync-klasse](/dotnet/api/microsoft.servicebus.messaging.eventhubclient.sendasync?view=azure-dotnet) in **EventHubClient** om gebeurtenissen te verzenden naar alle uitvoer partities. |
 | Power BI | Nee | Geen | Niet van toepassing. |
 | Azure Table Storage | Ja | Elke uitvoerkolom.  | De invoer voor het partitioneren van volgt [volledig geparallelliseerd query's](stream-analytics-scale-jobs.md). |
@@ -332,7 +332,7 @@ De volgende tabel geeft een overzicht van de partitie ondersteuning en het aanta
 | Azure Cosmos DB | Ja | Op basis van de component PARTITION BY in de query. | De invoer voor het partitioneren van volgt [volledig geparallelliseerd query's](stream-analytics-scale-jobs.md). |
 | Azure Functions | Ja | Op basis van de component PARTITION BY in de query. | De invoer voor het partitioneren van volgt [volledig geparallelliseerd query's](stream-analytics-scale-jobs.md). |
 
-Het aantal schrijvers van uitvoer kan ook worden beheerd met `INTO <partition count>` behulp van de component (Zie [into](https://docs.microsoft.com/stream-analytics-query/into-azure-stream-analytics#into-shard-count)) in uw query. Dit kan handig zijn bij het bereiken van een gewenste taak topologie. Als de uitvoeradapter niet is gepartitioneerd, gebrek aan gegevens in één invoer partitie, zorgt ervoor dat een vertraging van maximaal het latere aankomst van tijd. In dergelijke gevallen wordt de uitvoer samengevoegd met één schrijver, wat kan leiden tot knel punten in de pijp lijn. Zie [Azure stream Analytics overwegingen voor gebeurtenis orders](stream-analytics-out-of-order-and-late-events.md)voor meer informatie over het beleid voor late ontvangst.
+Het aantal schrijvers van uitvoer kan ook worden beheerd met behulp van de component `INTO <partition count>` (Zie [into](https://docs.microsoft.com/stream-analytics-query/into-azure-stream-analytics#into-shard-count)) in uw query. Dit kan handig zijn bij het bereiken van een gewenste taak topologie. Als de uitvoeradapter niet is gepartitioneerd, gebrek aan gegevens in één invoer partitie, zorgt ervoor dat een vertraging van maximaal het latere aankomst van tijd. In dergelijke gevallen wordt de uitvoer samengevoegd met één schrijver, wat kan leiden tot knel punten in de pijp lijn. Zie [Azure stream Analytics overwegingen voor gebeurtenis orders](stream-analytics-out-of-order-and-late-events.md)voor meer informatie over het beleid voor late ontvangst.
 
 ## <a name="output-batch-size"></a>Batchgrootte voor uitvoer
 Azure Stream Analytics gebruikt batches van het formaat variable om gebeurtenissen te verwerken en te schrijven naar uitvoer. Normaal gesp roken schrijft de Stream Analytics engine niet één bericht tegelijk en worden batches gebruikt voor efficiëntie. Wanneer het aantal binnenkomende en uitgaande gebeurtenissen hoog is, gebruikt Stream Analytics grotere batches. Wanneer de snelheid van uitgangsgebeurtenissen laag is, gebruikt het kleinere batches latentie laag te houden.
@@ -342,10 +342,10 @@ In de volgende tabel worden enkele van de overwegingen voor het uitvoeren van ba
 | Uitvoertype | Maximale berichtlengte | Optimalisatie van de grootte van batch |
 | :--- | :--- | :--- |
 | Azure Data Lake Store | Zie [Data Lake Storage limieten](../azure-subscription-service-limits.md#data-lake-store-limits). | Gebruik Maxi maal 4 MB per schrijf bewerking. |
-| Azure SQL Database | Configureerbaar met behulp van maximum aantal batches. Maxi maal 10.000 minimale en 100 minimum rijen per bulk invoer standaard.<br />Zie [Azure SQL](../sql-database/sql-database-resource-limits.md)-limieten. |  Elke batch wordt in eerste instantie bulksgewijs ingevoegd met een maximum aantal batches. Batch is gesplitst in tweeën (totdat het minimale aantal batches is) op basis van Herhaal bare fouten van SQL. |
+| Azure SQL Database | Configureerbaar met behulp van maximum aantal batches. Maxi maal 10.000 minimale en 100 minimum rijen per bulk invoer standaard.<br />Zie [Azure SQL-limieten](../sql-database/sql-database-resource-limits.md). |  Elke batch wordt in eerste instantie bulksgewijs ingevoegd met een maximum aantal batches. Batch is gesplitst in tweeën (totdat het minimale aantal batches is) op basis van Herhaal bare fouten van SQL. |
 | Azure Blob Storage | Zie [Azure Storage limieten](../azure-subscription-service-limits.md#storage-limits). | De maximale grootte van het BLOB-blok is 4 MB.<br />Het maximum aantal BLOB-Bock is 50.000. |
-| Azure Event Hubs  | 256 KB of 1 MB per bericht. <br />Zie [Event hubs limieten](../event-hubs/event-hubs-quotas.md). |  Wanneer invoer/uitvoer-partitionering niet is uitgelijnd, wordt elke gebeurtenis afzonderlijk `EventData` verpakt in en verzonden in een batch van Maxi maal de maximale bericht grootte. Dit gebeurt ook als [Eigenschappen van aangepaste meta gegevens](#custom-metadata-properties-for-output) worden gebruikt. <br /><br />  Wanneer de invoer/uitvoer-partitionering is uitgelijnd, worden meerdere gebeurtenissen in één `EventData` exemplaar verpakt, tot de maximale bericht grootte en verzonden. |
-| Power BI | Zie [Power bi-rest API](https://msdn.microsoft.com/library/dn950053.aspx)-limieten. |
+| Azure Event Hubs  | 256 KB of 1 MB per bericht. <br />Zie [Event hubs limieten](../event-hubs/event-hubs-quotas.md). |  Wanneer invoer/uitvoer-partitionering niet is uitgelijnd, wordt elke gebeurtenis afzonderlijk in `EventData` verpakt en verzonden in een batch van Maxi maal de maximale bericht grootte. Dit gebeurt ook als [Eigenschappen van aangepaste meta gegevens](#custom-metadata-properties-for-output) worden gebruikt. <br /><br />  Wanneer de invoer/uitvoer-partitionering is uitgelijnd, worden meerdere gebeurtenissen in één exemplaar van de `EventData` geplaatst, tot de maximale bericht grootte en verzonden. |
+| Power BI | Zie [Power bi-rest API-limieten](https://msdn.microsoft.com/library/dn950053.aspx). |
 | Azure Table Storage | Zie [Azure Storage limieten](../azure-subscription-service-limits.md#storage-limits). | De standaard waarde is 100 entiteiten per afzonderlijke trans actie. U kunt deze naar behoefte zo nodig naar een kleinere waarde configureren. |
 | Azure Service Bus-wachtrij   | 256 KB per bericht voor de Standard-laag, 1 MB voor de Premium-laag.<br /> Zie [Service Bus limieten](../service-bus-messaging/service-bus-quotas.md). | Eén gebeurtenis per bericht gebruiken. |
 | Azure Service Bus-onderwerp | 256 KB per bericht voor de Standard-laag, 1 MB voor de Premium-laag.<br /> Zie [Service Bus limieten](../service-bus-messaging/service-bus-quotas.md). | Eén gebeurtenis per bericht gebruiken. |
@@ -355,7 +355,7 @@ In de volgende tabel worden enkele van de overwegingen voor het uitvoeren van ba
 ## <a name="next-steps"></a>Volgende stappen
 > [!div class="nextstepaction"]
 > 
-> [Snelstart: Een Stream Analytics taak maken met behulp van de Azure Portal](stream-analytics-quick-create-portal.md)
+> [Snelstart: Een Stream Analytics taak maken met behulp van de Azure Portal @ no__t-0
 
 <!--Link references-->
 [stream.analytics.developer.guide]: ../stream-analytics-developer-guide.md

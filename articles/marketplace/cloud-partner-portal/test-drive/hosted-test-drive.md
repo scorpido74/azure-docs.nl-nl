@@ -1,6 +1,6 @@
 ---
-title: Test Drive gehost | Azure Marketplace
-description: Het instellen van een onderhouden een proefrit Marketplace die worden gehost
+title: Gehoste test drive | Azure Marketplace
+description: Een gehoste test drive voor een Marketplace instellen
 services: Azure, Marketplace, Cloud Partner Portal,
 author: pbutlerm
 manager: Ricardo.Villalobos
@@ -8,48 +8,48 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
-ms.openlocfilehash: b8f9ca96ac9386037460ad5c1c9f56fe7b9c2e18
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 67d8421b2e545c951dcbc3280a306514e4b14897
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64939987"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72030050"
 ---
 # <a name="hosted-test-drive"></a>Gehoste Test Drive
 
-Een gehost Test Drive wordt de complexiteit van de installatie door Microsoft hosting en onderhouden van de service die de gebruiker Test Drive-inrichting en ongedaan maken van inrichting uitvoert. Dit artikel is voor uitgevers die hebben hun aanbieding op AppSource of een nieuwe bouwen en willen aanbieden van een schijf Test die wordt gehost, waarvoor een verbinding maakt met een Dynamics 365 voor Customer Engagement, Dynamics 365 voor Financiën en bewerkingen of Dynamics 365 Business Central het exemplaar.
+Een gehoste test drive verwijdert de complexiteit van Setup door micro soft die als host fungeert en onderhoud van de service die de gebruikers inrichting en het ongedaan maken van de inrichting van het test station uitvoert. Dit artikel is voor uitgevers die hun aanbieding op AppSource hebben of een nieuw abonnement bouwen en een gehoste test drive willen aanbieden, die verbinding maakt met een Dynamics 365 voor klant betrokkenheid, Dynamics 365 voor Financiën en bewerkingen, of Dynamics 365 Business Central exemplaar.
 
 ## <a name="how-to-publish-a-test-drive"></a>Het publiceren van een Test Drive
 
-Navigeer naar de bestaande aanbieding of maak een nieuwe aanbieding.
+Ga naar de bestaande aanbieding of maak een nieuwe aanbieding.
 
-Selecteer de Test Drive-optie in het menu aan clientzijde.
+Selecteer de optie test drive in het menu aan de zijkant.
 
-Selecteer \'Ja\' voor \'inschakelen van een Test Drive\' optie.
+Selecteer \'Yes @ no__t-1 voor \'Enable een test station @ no__t-3 optie.
 
-Geef de volgende velden in de \'Details\' sectie.
+Geef de volgende velden op in de sectie \'Details @ no__t-1.
 
-- **Beschrijving**: Biedt een overzicht van uw Test Drive. Deze tekst wordt weergegeven aan de gebruiker tijdens de Test Drive wordt ingericht. Dit veld biedt ondersteuning voor HTML-code als u wilt bieden opgemaakte inhoud.
-- **Gebruikershandleiding**: Upload een gebruikershandleiding met gedetailleerde (-bestand van type PDF-bestand) waarmee Test Drive-gebruikers te begrijpen hoe u uw App.
-- **Test Drive demovideo**: (Optioneel) upload een video die uw App worden gepresenteerd.
+- **Beschrijving**: Geef een overzicht van uw test station op. Deze tekst wordt weer gegeven aan de gebruiker terwijl het test station wordt ingericht. Dit veld ondersteunt HTML als u opgemaakte inhoud wilt leveren.
+- **Gebruikers handleiding**: Upload een gedetailleerde gebruikers handleiding (bestand van het type. PDF) waarmee u kunt testen of gebruikers uw app kunnen gebruiken.
+- **Demo video testen**: Upload eventueel een video met een demonstratie van uw app.
 
-De machtiging GRANT AppSource te richten en de inrichting van Test Drive-gebruikers in uw tenant met behulp van de instructies die zich [hier](https://github.com/Microsoft/AppSource/blob/patch-1/Microsoft%20Hosted%20Test%20Drive/Setup-your-Azure-subscription-for-Dynamics365-Microsoft-Hosted-Test-Drives.md).
+Verleen AppSource toestemming voor het inrichten en verwijderen van test drive-gebruikers in uw Tenant met behulp van de [hier](https://github.com/Microsoft/AppSource/blob/patch-1/Microsoft%20Hosted%20Test%20Drive/Setup-your-Azure-subscription-for-Dynamics365-Microsoft-Hosted-Test-Drives.md)bevindene instructies.
 
-In deze stap, genereert u de \'Azure AD-App-Id\' en \'Azure AD App-sleutel\' waarden die hieronder worden vermeld.
+In deze stap genereert u de \'Azure AD-App-ID @ no__t-1 en \'Azure AD-App-sleutel @ no__t-3-waarden die hieronder worden genoemd.
 
-Geef de volgende velden in de \'technische configuratie\' sectie:
+Geef de volgende velden op in de sectie \'Technical-configuratie @ no__t-1:
 
-- **Type Test Drive**: Kies \'Microsoft Hosted (voorbeeld van de Dynamics 365 voor Customer Engagement)' optie. Dit geeft aan dat Microsoft hosten en beheren van de service die de gebruiker Test Drive-inrichting en ongedaan maken van inrichting uitvoert.
-- **Maximale aantal gelijktijdige Test Drives**: Dit veld instellen op het aantal gelijktijdige gebruikers die een actieve Test Drive op een willekeurig moment tijd wordt opgelost hebben kunnen. Elke gebruiker wordt een Dynamics-licentie gebruiken tijdens de Test Drive actief, is daarom u moet om ervoor te zorgen dat u ten minste dit aantal Dynamics licenties beschikbaar voor gebruikers van Test Drive. Aanbevolen waarde van 3 tot 5.
-- **Test Drive duur (uren)** : Dit veld instellen op het aantal uren de Test Drive is actief voor gebruikers. Na dit aantal uur, wordt de gebruiker uit uw tenant worden beëindigd. Aanbevolen waarde van 2 tot 24 uur, afhankelijk van de complexiteit van uw App. De gebruiker kan een andere Test Drive altijd aanvragen als ze weinig tijd en toegang kunt krijgen tot de Test Drive opnieuw.
-- **Instantie-URL**: Geef een URL waar de gebruiker Test Drive wordt in eerste instantie wordt genavigeerd wanneer ze de Test Drive starten. Dit is meestal de URL van uw Dynamics 365-exemplaar waarop uw App en voorbeeldgegevens op geïnstalleerd. Voorbeeldwaarde: https:\//testdrive.crm.dynamics.com
-- **Azure AD-Tenant-ID**: Geef de ID van de Azure-Tenant voor uw exemplaar van Dynamics 365. Voor het ophalen van deze waarde, meld u aan bij Azure portal en gaat u naar \'Azure Active Directory\'  - \> eigenschappen selecteren uit het menu-blade -\> Kopieer de map-ID. Voorbeeldwaarde: 72f988bf-86f1-41af-91ab-2d7cd0111234
-- **Azure AD-App-ID**: ID van de Azure AD-App die u hebt gemaakt in stap 7. \ Voorbeeldwaarde: 53852862-a2ae-4e43-9461-faa49650a096
-- **Azure AD-App-sleutel**: Geheim voor de Azure AD-App gemaakt in stap 7. \ Voorbeeldwaarde: IJUgaIOfq9b9LbUjeQmzNBW4VGn6grr1l/n3aMrnfdk=
-- **De naam van de Azure AD-Tenant**: Geef de naam van de Azure-Tenant voor uw exemplaar van Dynamics 365. Gebruik de indeling van \<tenantname.\> onmicrosoft.com. Voorbeeldwaarde: testdrive.onmicrosoft.com
-- **Web-API URL-exemplaar**: Geef de URL van de Web-API voor uw exemplaar van Dynamics 365. U kunt deze waarde wordt opgehaald door te melden bij uw Microsoft Dynamics 365-exemplaar en te navigeren naar instelling -\> aanpassing -\> bronnen voor ontwikkelaars -\> exemplaar Web-API (deze URL kopiëren). Voorbeeldwaarde: https:\//testdrive.crm.dynamics.com/api/data/v9.0 
-- **De naam van rol**: Geef de naam van de aangepaste Dynamics 365 beveiligingsrol die u hebt gemaakt voor Test Drive. Dit is de rol die wordt toegewezen aan gebruikers tijdens de Test Drive. Voorbeeldwaarde: testdriverole
+- **Type van het test station**: Kies \'Microsoft die wordt gehost (voor beeld Dynamics 365 voor Customer engagement). Dit geeft aan dat micro soft de service zal hosten en onderhouden die de inrichting van de gebruiker van het test station en het ongedaan maken van de inrichting uitvoert.
+- **Maximum aantal gelijktijdige test stations**: Stel dit veld in op het aantal gelijktijdige gebruikers dat op een bepaald moment een actief test station kan hebben. Elke gebruiker gebruikt een Dynamics-licentie terwijl hun test station actief is. u moet er dus voor zorgen dat u ten minste beschikt over de vele Dynamics-licenties die beschikbaar zijn voor gebruikers van het test station. Aanbevolen waarde van 3-5.
+- **Duur van test station (uren)** : Stel dit veld in op het aantal uren dat de gebruikers testen station actief moeten zijn. Na dit aantal uur wordt de inrichting van de gebruiker ongedaan gemaakt van uw Tenant. Aanbevolen waarde van 2-24 uur, afhankelijk van de complexiteit van uw app. De gebruiker kan altijd een andere test schijf aanvragen als deze niet meer actief zijn en het test station opnieuw willen openen.
+- **URL van instantie**: Geef een URL op waarmee de gebruiker van het test station voor het eerst wordt genavigeerd wanneer het test station wordt gestart. Dit is doorgaans de URL van uw Dynamics 365-exemplaar waarop uw app en voorbeeld gegevens zijn geïnstalleerd. Voorbeeld waarde: https: \//Testdrive. CRM. Dynamics. com
+- **Tenant-id voor Azure AD**: Geef de ID op van de Azure-Tenant voor uw Dynamics 365-exemplaar. Als u deze waarde wilt ophalen, meldt u zich aan bij Azure Portal en navigeert u naar \'Azure Active Directory @ no__t-1 @ no__t-2 @ no__t-3. Selecteer Eigenschappen in menu Blade-\> de map-ID kopiëren. Voorbeeld waarde: 72f988bf-86f1-41af-91ab-2d7cd0111234
+- **Azure AD-App-ID**: ID van de Azure AD-app die u hebt gemaakt in stap 7. \ voorbeeld waarde: 53852862-a2ae-4e43-9461-faa49650a096
+- **Azure AD-App sleutel**: Geheim voor de Azure AD-app die u hebt gemaakt in stap 7. \ voorbeeld waarde: IJUgaIOfq9b9LbUjeQmzNBW4VGn6grr1l/n3aMrnfdk=
+- **Azure AD-Tenant naam**: Geef de naam op van de Azure-Tenant voor uw Dynamics 365-exemplaar. Gebruik de indeling van \<tenantname. \>onmicrosoft.com. Voorbeeld waarde: testdrive.onmicrosoft.com
+- **URL**van de Web-API voor het exemplaar: Geef de URL van de Web-API voor uw Dynamics 365-exemplaar op. U kunt deze waarde ophalen door u aan te melden bij uw micro soft Dynamics 365-exemplaar en te navigeren naar setting-\> Customization-\> Developer Resources-\>-exemplaar Web-API (kopieer deze URL). Voorbeeld waarde: https: \//Testdrive. CRM. Dynamics. com/API/data/v 9.0 
+- **Rolnaam**: Geef de naam op van de aangepaste Dynamics 365-beveiligingsrol die u hebt gemaakt voor het test station. Dit is de rol die wordt toegewezen aan gebruikers tijdens hun test station. Voorbeeld waarde: testdriverole
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als u klaar bent **publiceren** uw aanbieding, nadat uw app is verstreken-certificering, hebt u een **preview** van uw aanbieding. Start een Test uit in de gebruikersinterface en controleer of uw Test Drives correct worden uitgevoerd. Als u vertrouwd met de preview-aanbieding, het is nu tijd om **live gaan!**
+Wanneer u klaar bent met het **publiceren** van uw aanbieding, hebt u een **voor beeld** van uw aanbieding als uw app de certificering heeft door gegeven. Start een test station in de gebruikers interface en controleer of de test stations correct worden uitgevoerd. Zodra u vertrouwd bent met uw preview-aanbieding, is het tijd om **Live te gaan!**

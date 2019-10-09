@@ -8,12 +8,12 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 07/11/2019
 ms.author: danlep
-ms.openlocfilehash: ad7f93bb3934ca01b7f45c0bd4b5cc8be81ea54b
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 05f1bcd5e80d7c06fbaca1abe89c84f6743a5979
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325526"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72034984"
 ---
 # <a name="deploy-container-instances-into-an-azure-virtual-network"></a>Container instanties implementeren in een virtueel Azure-netwerk
 
@@ -29,6 +29,7 @@ Met container groepen die zijn geïmplementeerd in een virtueel Azure-netwerk, k
 
 > [!IMPORTANT]
 > Deze functie is momenteel beschikbaar als preview-versie en er [zijn enkele beperkingen van toepassing](#preview-limitations). Previews worden voor u beschikbaar gesteld op voorwaarde dat u akkoord gaat met de [aanvullende gebruiksvoorwaarden][terms-of-use]. Sommige aspecten van deze functie worden mogelijk nog gewijzigd voordat de functie algemeen beschikbaar wordt.
+
 
 ## <a name="virtual-network-deployment-limitations"></a>Beperkingen voor de implementatie van virtuele netwerken
 
@@ -94,7 +95,7 @@ Als u wilt implementeren in een nieuw virtueel netwerk en Azure de netwerk resou
 * Subnetnaam
 * Adres voorvoegsel van het subnet in CIDR-indeling
 
-Met de voor voegsels voor het virtuele netwerk en het subnet adres worden de adres ruimten voor het virtuele netwerk en het subnet opgegeven. Deze waarden worden weer gegeven in een CIDR-notatie (Classless Inter-Domain Routing), `10.0.0.0/16`bijvoorbeeld. Zie [een subnet van een virtueel netwerk toevoegen, wijzigen of verwijderen](../virtual-network/virtual-network-manage-subnet.md)voor meer informatie over het werken met subnetten.
+Met de voor voegsels voor het virtuele netwerk en het subnet adres worden de adres ruimten voor het virtuele netwerk en het subnet opgegeven. Deze waarden worden weer gegeven in een CIDR-notatie (Classless Inter-Domain Routing), bijvoorbeeld `10.0.0.0/16`. Zie [een subnet van een virtueel netwerk toevoegen, wijzigen of verwijderen](../virtual-network/virtual-network-manage-subnet.md)voor meer informatie over het werken met subnetten.
 
 Wanneer u uw eerste container groep met deze methode hebt geïmplementeerd, kunt u in hetzelfde subnet implementeren door het virtuele netwerk en de subnetnaam op te geven, of het netwerk profiel dat door Azure automatisch voor u wordt gemaakt. Omdat Azure het subnet delegeert naar Azure Container Instances, kunt u *alleen* container groepen implementeren naar het subnet.
 
@@ -150,7 +151,7 @@ $ az container show --resource-group myResourceGroup --name appcontainer --query
 10.0.0.4
 ```
 
-Stel `CONTAINER_GROUP_IP` nu in op het IP-adres dat u hebt `az container show` opgehaald met de opdracht en voer `az container create` de volgende opdracht uit. Deze tweede container, *commchecker*, voert een alpine Linux-installatie kopie uit en `wget` voert een uitvoer uit op basis van het IP-adres van het particuliere subnet van de container groep.
+Stel nu `CONTAINER_GROUP_IP` in op het IP-adres dat u hebt opgehaald met de opdracht `az container show` en voer de volgende `az container create`-opdracht uit. Deze tweede container, *commchecker*, voert een alpine Linux-installatie kopie uit en voert `wget` uit op basis van het privé subnet IP-adres van de container groep.
 
 ```azurecli
 CONTAINER_GROUP_IP=<container-group-IP-here>
@@ -165,7 +166,7 @@ az container create \
     --subnet aci-subnet
 ```
 
-Nadat deze tweede container implementatie is voltooid, haalt u de logboeken op zodat u de uitvoer van `wget` de opdracht die deze heeft uitgevoerd, kunt zien:
+Nadat deze tweede container implementatie is voltooid, haalt u de logboeken op zodat u de uitvoer van de `wget`-opdracht die het programma hebt uitgevoerd, kunt zien:
 
 ```azurecli
 az container logs --resource-group myResourceGroup --name commchecker
@@ -179,7 +180,7 @@ Connecting to 10.0.0.4 (10.0.0.4:80)
 index.html           100% |*******************************|  1663   0:00:00 ETA
 ```
 
-De logboek uitvoer geeft aan dat `wget` er verbinding kan worden gemaakt met het index bestand van de eerste container met behulp van het bijbehorende privé-IP-adres op het lokale subnet. Het netwerk verkeer tussen de twee container groepen bleef binnen het virtuele netwerk.
+In de logboek uitvoer moet worden aangegeven dat `wget` verbinding kan maken met het index bestand van de eerste container met behulp van het bijbehorende privé-IP-adres op het lokale subnet. Het netwerk verkeer tussen de twee container groepen bleef binnen het virtuele netwerk.
 
 ### <a name="deploy-to-existing-virtual-network---yaml"></a>Implementeren in een bestaand virtueel netwerk-YAML
 
@@ -189,7 +190,7 @@ U kunt ook een container groep implementeren in een bestaand virtueel netwerk me
   * `ports`: De poorten die moeten worden geopend, indien van toepassing.
   * `protocol`: Het Protocol (TCP of UDP) voor de geopende poort.
 * `networkProfile`: Hiermee geeft u netwerk instellingen op, zoals het virtuele netwerk en het subnet voor een Azure-resource.
-  * `id`: De volledige Resource Manager-Resource-ID `networkProfile`van de.
+  * `id`: De volledige Resource Manager-Resource-ID van de `networkProfile`.
 
 Als u een container groep wilt implementeren in een virtueel netwerk met een YAML-bestand, moet u eerst de ID van het netwerk profiel ophalen. Voer de opdracht [AZ Network profile list][az-network-profile-list] uit en geef de naam op van de resource groep die het virtuele netwerk en het overgedragen subnet bevat.
 
@@ -204,7 +205,7 @@ $ az network profile list --resource-group myResourceGroup --query [0].id --outp
 /subscriptions/<Subscription ID>/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkProfiles/aci-network-profile-aci-vnet-aci-subnet
 ```
 
-Wanneer u de netwerk profiel-ID hebt, kopieert u de volgende YAML naar een nieuw bestand met de naam *vnet-Deploy-ACI. yaml*. Vervang `networkProfile`onder de waarde `id` door de id die u zojuist hebt opgehaald en sla het bestand op. Met deze YAML maakt u een container groep met de naam *appcontaineryaml* in uw virtuele netwerk.
+Wanneer u de netwerk profiel-ID hebt, kopieert u de volgende YAML naar een nieuw bestand met de naam *vnet-Deploy-ACI. yaml*. Vervang onder `networkProfile` de waarde voor de `id` door de ID die u zojuist hebt opgehaald en sla het bestand op. Met deze YAML maakt u een container groep met de naam *appcontaineryaml* in uw virtuele netwerk.
 
 ```YAML
 apiVersion: '2018-09-01'
@@ -235,7 +236,7 @@ tags: null
 type: Microsoft.ContainerInstance/containerGroups
 ```
 
-Implementeer de container groep met de opdracht [AZ container Create][az-container-create] en geef de naam van het yaml- `--file` bestand op voor de para meter:
+Implementeer de container groep met de opdracht [AZ container Create][az-container-create] en geef de naam van het yaml-bestand op voor de para meter `--file`:
 
 ```azurecli
 az container create --resource-group myResourceGroup --file vnet-deploy-aci.yaml
@@ -264,9 +265,13 @@ az container delete --resource-group myResourceGroup --name appcontaineryaml -y
 
 ### <a name="delete-network-resources"></a>Netwerk bronnen verwijderen
 
+
+> [!NOTE]
+> Als er een fout optreedt tijdens het verwijderen van het netwerk profiel, zijn 2-3 dagen toegestaan voor het platform om het probleem automatisch te verhelpen en de verwijdering opnieuw uit te voeren. Als u nog steeds problemen ondervindt met het verwijderen van het netwerk profiel, [opent u een ondersteunings reqest.](https://azure.microsoft.com/support/create-ticket/)
+
 Voor de eerste preview van deze functie zijn verschillende extra opdrachten nodig om de netwerk resources te verwijderen die u eerder hebt gemaakt. Als u de voorbeeld opdrachten in vorige secties van dit artikel hebt gebruikt om uw virtuele netwerk en subnet te maken, kunt u het volgende script gebruiken om die netwerk resources te verwijderen.
 
-Voordat u het script uitvoert, stelt u `RES_GROUP` de variabele in op de naam van de resource groep met het virtuele netwerk en het subnet dat moet worden verwijderd. Werk de naam van het virtuele netwerk bij als u de `aci-vnet` naam die u eerder hebt voorgesteld niet hebt gebruikt. Het script is geformatteerd voor de bash-shell. Als u de voor keur geeft aan een andere shell, zoals Power shell of opdracht prompt, moet u de toewijzings-en toegangs rechten van de variabele dienovereenkomstig aanpassen.
+Voordat u het script uitvoert, stelt u de variabele `RES_GROUP` in op de naam van de resource groep met het virtuele netwerk en het subnet dat moet worden verwijderd. Werk de naam van het virtuele netwerk bij als u de naam van de `aci-vnet` niet eerder hebt gebruikt. Het script is geformatteerd voor de bash-shell. Als u de voor keur geeft aan een andere shell, zoals Power shell of opdracht prompt, moet u de toewijzings-en toegangs rechten van de variabele dienovereenkomstig aanpassen.
 
 > [!WARNING]
 > Met dit script worden resources verwijderd! Hiermee verwijdert u het virtuele netwerk en alle subnetten die het bevat. Zorg ervoor dat u *een* van de resources in het virtuele netwerk niet meer nodig hebt, met inbegrip van de subnetten die het bevat, voordat u dit script uitvoert. Nadat **deze bronnen zijn verwijderd, kunnen ze onherstelbaar zijn**.
@@ -287,8 +292,7 @@ az network vnet delete --resource-group $RES_GROUP --name aci-vnet
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [een Azure-container groep met VNet](https://github.com/Azure/azure-quickstart-templates/tree/master/101-aci-vnet
-)maken voor het implementeren van een nieuw virtueel netwerk, subnet, netwerk profiel en container groep met behulp van een resource manager-sjabloon.
+Als u een nieuw virtueel netwerk, subnet, netwerk profiel en container groep wilt implementeren met behulp van een resource manager-sjabloon, raadpleegt u [Create een Azure-container groep met VNet @ no__t-1.
 
 In dit artikel worden kortere bronnen en functies voor het virtuele netwerk beschreven. De Azure Virtual Network-documentatie behandelt deze onderwerpen uitgebreid:
 

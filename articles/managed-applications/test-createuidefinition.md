@@ -6,12 +6,12 @@ ms.service: managed-applications
 ms.topic: conceptual
 ms.date: 08/06/2019
 ms.author: tomfitz
-ms.openlocfilehash: 54eb2df06df56c33e1a3cd74e7a4a93c07aab682
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: 5a28acfeeda12ab999b16f71cbe789fefcea736f
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69575666"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72028357"
 ---
 # <a name="test-your-portal-interface-for-azure-managed-applications"></a>Uw portal-interface voor Azure Managed Applications testen
 
@@ -45,7 +45,7 @@ Als uw formulier niet wordt weer gegeven nadat u de **Preview**hebt geselecteerd
 
 Als uw formulier niet wordt weer gegeven, en u in plaats daarvan een pictogram van een Cloud met afscheuren ziet, bevat uw formulier een fout, zoals een ontbrekende eigenschap. Open de Web-Ontwikkelhulpprogramma's in uw browser. In de- **console** worden belang rijke berichten over uw interface weer gegeven.
 
-![Fout weergeven](./media/test-createuidefinition/show-error.png)
+![Fout weer geven](./media/test-createuidefinition/show-error.png)
 
 ## <a name="use-test-script"></a>Test script gebruiken
 
@@ -93,7 +93,7 @@ Het script opent een nieuw tabblad in uw browser. De portal wordt weer gegeven m
 
 Geef waarden op voor de velden. Wanneer u klaar bent, ziet u de waarden die worden door gegeven aan de sjabloon die u kunt vinden in de console ontwikkel hulpprogramma's van uw browser.
 
-![Waarden weergeven](./media/test-createuidefinition/show-json.png)
+![Waarden weer geven](./media/test-createuidefinition/show-json.png)
 
 U kunt deze waarden gebruiken als het parameter bestand voor het testen van uw implementatie sjabloon.
 
@@ -101,7 +101,7 @@ Als de portal vastloopt op het scherm samen vatting, is er mogelijk een fout in 
 
 ## <a name="test-your-solution-files"></a>Uw oplossings bestanden testen
 
-Nu u hebt gecontroleerd of uw portal-interface werkt zoals verwacht, is het tijd om te controleren of uw createUiDefinition-bestand correct is geïntegreerd met uw mainTemplate. JSON-bestand. U kunt een validatie script test uitvoeren om de inhoud van uw oplossings bestanden te testen, met inbegrip van het createUiDefinition-bestand. Het script valideert de JSON-syntaxis, controleert op regex-expressies in tekst velden en zorgt ervoor dat de uitvoer waarden van de portal-interface overeenkomen met de para meters van uw sjabloon. Zie voor meer informatie over het uitvoeren van dit script [statische validatie controles uitvoeren voor sjablonen](https://github.com/Azure/azure-quickstart-templates/tree/master/test/template-validation-tests).
+Nu u hebt gecontroleerd of uw portal-interface werkt zoals verwacht, is het tijd om te controleren of uw createUiDefinition-bestand correct is geïntegreerd met uw mainTemplate. JSON-bestand. U kunt een validatie script test uitvoeren om de inhoud van uw oplossings bestanden te testen, met inbegrip van het createUiDefinition-bestand. Het script valideert de JSON-syntaxis, controleert op regex-expressies in tekst velden en zorgt ervoor dat de uitvoer waarden van de portal-interface overeenkomen met de para meters van uw sjabloon. Zie voor meer informatie over het uitvoeren van dit script [statische validatie controles uitvoeren voor sjablonen](https://github.com/Azure/azure-quickstart-templates/tree/master/test).
 
 ## <a name="next-steps"></a>Volgende stappen
 

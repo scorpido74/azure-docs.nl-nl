@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 06/14/2019
+ms.date: 10/07/2019
 ms.author: magoedte
-ms.openlocfilehash: 5e1fe6252f396a4585b5d7d7190728b79229d5c7
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 6c8d25a9df49323866e99487ef6c648dede40ec4
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073974"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72033948"
 ---
 # <a name="connect-windows-computers-to-azure-monitor"></a>Windows-computers verbinden met Azure Monitor
 
@@ -51,15 +51,19 @@ Voordat u de Log Analytics-agent voor Windows installeert, hebt u de werk ruimte
 5. Kopieer en plak in uw favoriete editor, de **werk ruimte-id** en de **primaire sleutel**.    
    
 ## <a name="configure-agent-to-use-tls-12"></a>Agent configureren voor het gebruik van TLS 1,2
-Als u het [TLS 1,2](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings#tls-12) -protocol wilt configureren voor communicatie tussen de Windows-agent en de log Analytics-service, kunt u de onderstaande stappen volgen om in te scha kelen voordat de agent op de virtuele machine is geïnstalleerd of daarna.   
+Als u het [TLS 1,2](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings#tls-12) -protocol wilt configureren voor communicatie tussen de Windows-agent en de log Analytics-service, kunt u de onderstaande stappen volgen om in te scha kelen voordat de agent op de virtuele machine is geïnstalleerd of daarna.
+
+>[!NOTE]
+>Als u een virtuele machine met Windows Server 2008 SP2 x64 wilt configureren voor het gebruik van TLS 1,2, moet u eerst de volgende [SHA-2-ondersteunings update voor ondertekening van code](https://support.microsoft.com/help/4474419/sha-2-code-signing-support-update) installeren voordat u de onderstaande stappen uitvoert. 
+>
 
 1. Zoek de volgende registersubsleutel: **HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols**
 2. Een subsleutel maken onder **protocollen** voor TLS 1,2 **HKLM\System\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1,2**
 3. Maak een subsleutel van de **client** onder de subsleutel TLS 1,2-Protocol versie die u eerder hebt gemaakt. Bijvoorbeeld **HKLM\System\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2 \ client**.
 4. Maak de volgende DWORD-waarden onder **HKLM\System\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2 \ client**:
 
-    * **Ingeschakeld** [Waarde = 1]
-    * **DisabledByDefault** [Waarde = 0]  
+    * **Ingeschakeld** [waarde = 1]
+    * **DisabledByDefault** [waarde = 0]  
 
 Configureer .NET Framework 4,6 of hoger voor de ondersteuning van beveiligde crypto grafie, omdat deze standaard is uitgeschakeld. De [sterke crypto grafie](https://docs.microsoft.com/dotnet/framework/network-programming/tls#schusestrongcrypto) maakt gebruik van veiliger netwerk protocollen zoals TLS 1,2 en blokkeert protocollen die niet beveiligd zijn. 
 
@@ -106,7 +110,7 @@ De volgende tabel bevat de specifieke para meters die worden ondersteund door de
 |OPINSIGHTS_PROXY_USERNAME               | Gebruikers naam voor toegang tot een geverifieerde proxy |
 |OPINSIGHTS_PROXY_PASSWORD               | Wacht woord voor toegang tot een geverifieerde proxy |
 
-1. Als u de installatie bestanden van de agent wilt extra heren, vanaf een `MMASetup-<platform>.exe /c` opdracht prompt met verhoogde bevoegdheid, wordt u gevraagd om het pad naar de bestanden uit te pakken.  U kunt ook het pad opgeven door de argumenten `MMASetup-<platform>.exe /c /t:<Full Path>`door te geven.  
+1. Als u de installatie bestanden van de agent wilt extra heren, voert u een opdracht prompt met verhoogde bevoegdheid uit `MMASetup-<platform>.exe /c` en wordt u gevraagd om het pad naar het bestand te extra heren.  U kunt ook het pad opgeven door de argumenten `MMASetup-<platform>.exe /c /t:<Full Path>` door te geven.  
 2. Als u de agent op de achtergrond wilt installeren en configureren om te rapporteren aan een werk ruimte in de commerciële cloud van Azure, vanuit de map die u de installatie bestanden hebt uitgepakt, typt u: 
    
      ```dos
@@ -125,7 +129,7 @@ De volgende tabel bevat de specifieke para meters die worden ondersteund door de
 
 U kunt het volgende script voorbeeld gebruiken om de agent te installeren met behulp van Azure Automation DSC.   Als u geen Automation-account hebt, raadpleegt u aan de [slag met Azure Automation](/azure/automation/) om inzicht te krijgen in de vereisten en stappen voor het maken van een Automation-account dat is vereist voor het gebruik van Automation DSC.  Als u niet bekend bent met Automation DSC, raadpleegt u [aan de slag met Automation DSC](../../automation/automation-dsc-getting-started.md).
 
-In het volgende voor beeld wordt de 64-bits agent geïnstalleerd, `URI` geïdentificeerd door de waarde. U kunt ook de 32-bits versie gebruiken door de URI-waarde te vervangen. De Uri's voor beide versies zijn:
+In het volgende voor beeld wordt de 64-bits agent geïnstalleerd, geïdentificeerd door de waarde `URI`. U kunt ook de 32-bits versie gebruiken door de URI-waarde te vervangen. De Uri's voor beide versies zijn:
 
 - Windows 64-bits agent- https://go.microsoft.com/fwlink/?LinkId=828603
 - Windows 32-bits agent- https://go.microsoft.com/fwlink/?LinkId=828604
@@ -134,11 +138,11 @@ In het volgende voor beeld wordt de 64-bits agent geïnstalleerd, `URI` geïdent
 >[!NOTE]
 >Deze procedure en het script voorbeeld bieden geen ondersteuning voor de upgrade van de agent die al is geïmplementeerd op een Windows-computer.
 
-De 32-bits en 64-bits versies van het agent pakket hebben verschillende product codes en nieuwe versies die zijn uitgebracht, hebben ook een unieke waarde.  De product code is een GUID die de principal-identificatie vormt van een toepassing of product en wordt vertegenwoordigd door de eigenschap van de Windows Installer.  De `ProductId` waarde in het script **MMAgent. ps1** moet overeenkomen met de product code van het 32-bits-of 64-bits agent-installatie pakket.
+De 32-bits en 64-bits versies van het agent pakket hebben verschillende product codes en nieuwe versies die zijn uitgebracht, hebben ook een unieke waarde.  De product code is een GUID die de principal-identificatie vormt van een toepassing of product en wordt vertegenwoordigd door de **eigenschap van** de Windows Installer.  De `ProductId`-waarde in het script **MMAgent. ps1** moet overeenkomen met de product code van het 32-bits-of 64-bits agent-installatie pakket.
 
 Als u de product code rechtstreeks van het agent-installatie pakket wilt ophalen, kunt u Orca. exe gebruiken uit de [Windows SDK-onderdelen voor Windows Installer ontwikkel aars](https://msdn.microsoft.com/library/windows/desktop/aa370834%28v=vs.85%29.aspx) die een onderdeel zijn van de Windows Software Development Kit of met behulp van Power shell na een [ voorbeeld script](https://www.scconfigmgr.com/2014/08/22/how-to-get-msi-file-information-with-powershell/) geschreven door een micro soft Valuable Professional (MVP).  Voor beide benaderingen moet u eerst het **MOMagent. msi** -bestand extra heren uit het MMASetup-installatie pakket.  Dit wordt eerder weer gegeven in de eerste stap onder de sectie de [agent installeren met de opdracht regel](#install-the-agent-using-the-command-line).  
 
-1. Importeer de xPSDesiredStateConfiguration DSC-module [https://www.powershellgallery.com/packages/xPSDesiredStateConfiguration](https://www.powershellgallery.com/packages/xPSDesiredStateConfiguration) vanuit naar Azure Automation.  
+1. Importeer de xPSDesiredStateConfiguration DSC-module van [https://www.powershellgallery.com/packages/xPSDesiredStateConfiguration](https://www.powershellgallery.com/packages/xPSDesiredStateConfiguration) in azure Automation.  
 2.  Maak Azure Automation variabele assets voor *OPSINSIGHTS_WS_ID* en *OPSINSIGHTS_WS_KEY*. Stel *OPSINSIGHTS_WS_ID* in op uw log Analytics werk ruimte-id en stel *OPSINSIGHTS_WS_KEY* in op de primaire sleutel van uw werk ruimte.
 3.  Kopieer het script en sla het op als MMAgent. ps1.
 
@@ -178,7 +182,7 @@ Als u de product code rechtstreeks van het agent-installatie pakket wilt ophalen
 
     ```
 
-4. Werk de `ProductId` waarde in het script bij met de product code die is geëxtraheerd uit de nieuwste versie van het installatie pakket van de agent met behulp van de hierboven aanbevolen methoden. 
+4. Werk de `ProductId`-waarde in het script bij met de product code die is geëxtraheerd uit de nieuwste versie van het installatie pakket van de agent met behulp van de hierboven aanbevolen methoden. 
 5. [Importeer het configuratie script MMAgent. ps1](../../automation/automation-dsc-getting-started.md#importing-a-configuration-into-azure-automation) in uw Automation-account. 
 5. [Wijs een Windows-computer of-knoop punt](../../automation/automation-dsc-getting-started.md#onboarding-an-azure-vm-for-management-with-azure-automation-state-configuration) toe aan de configuratie. Binnen 15 minuten controleert het knoop punt de configuratie en wordt de agent naar het knoop punt gepusht.
 

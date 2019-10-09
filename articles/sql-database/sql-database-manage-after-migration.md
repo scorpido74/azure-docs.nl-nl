@@ -11,12 +11,12 @@ author: joesackmsft
 ms.author: josack
 ms.reviewer: sstein
 ms.date: 02/13/2019
-ms.openlocfilehash: dead041845c123672d881a8538644b56c34a58a2
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 36e48e86ed3cf7138f7ff5efe89d08c07df87f25
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70845604"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72028251"
 ---
 # <a name="new-dba-in-the-cloud--managing-your-single-and-pooled-databases-in-azure-sql-database"></a>Nieuwe DBA in de Cloud: het beheren van uw afzonderlijke en gegroepeerde Data bases in Azure SQL Database
 
@@ -274,15 +274,15 @@ Vanuit deze grafiek kunt u ook waarschuwingen per resource configureren. Met dez
 
 U kunt een query uitvoeren op de dynamische beheer weergave [sys. DM _db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) voor het retour neren van de geschiedenis van de statistieken van het Resource verbruik van het afgelopen uur en de [sys. resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) -catalogus weergave om de afgelopen 14 dagen geschiedenis te retour neren.
 
-#### <a name="query-performance-insight"></a>Query Performance Insight
+#### <a name="query-performance-insight"></a>Inzicht in queryprestaties
 
 Met [query Performance Insight](sql-database-query-performance.md) kunt u een geschiedenis bekijken van de belangrijkste query's en langlopende query's voor een specifieke data base. U kunt snel de meest voorkomende query's identificeren door middel van resource gebruik, duur en uitvoerings frequentie. U kunt query's volgen en regressies detecteren. Deze functie vereist dat het [query archief](/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store) is ingeschakeld en actief is voor de data base.
 
-![Query Performance Insight](./media/sql-database-manage-after-migration/query-performance-insight.png)
+![Inzicht in queryprestaties](./media/sql-database-manage-after-migration/query-performance-insight.png)
 
 #### <a name="azure-sql-analytics-preview-in-azure-monitor-logs"></a>Azure SQL-analyse (preview) in Azure Monitor-logboeken
 
-Met [Azure monitor-logboeken](../azure-monitor/insights/azure-sql.md) kunt u belang rijke Azure-SQL Azure prestatie gegevens verzamelen en visualiseren, met ondersteuning voor maxi maal 150.000 SQL-data bases en ELASTISCHe SQL-pools van 5.000 per werk ruimte. U kunt deze gebruiken om meldingen te bewaken en te ontvangen. U kunt de metrische gegevens van SQL Database en elastische groepen bewaken in meerdere Azure-abonnementen en elastische Pools en kunnen worden gebruikt om problemen te identificeren in elke laag van een toepassings stack.
+Met [Azure monitor-logboeken](../azure-monitor/insights/azure-sql.md) kunt u belang rijke Azure-SQL database prestatie gegevens verzamelen en visualiseren, met ondersteuning voor maxi maal 150.000 SQL-data bases en ELASTISCHe SQL-pools van 5.000 per werk ruimte. U kunt deze gebruiken om meldingen te bewaken en te ontvangen. U kunt de metrische gegevens van SQL Database en elastische groepen bewaken in meerdere Azure-abonnementen en elastische Pools en kunnen worden gebruikt om problemen te identificeren in elke laag van een toepassings stack.
 
 ### <a name="i-am-noticing-performance-issues-how-does-my-sql-database-troubleshooting-methodology-differ-from-sql-server"></a>Ik merkt prestatie problemen: Hoe verschilt mijn SQL Database-probleemoplossings methodologie van SQL Server
 
@@ -321,7 +321,7 @@ SQL Database maakt gebruik van een aantal slimme technieken waarmee de IT-server
 
 - **Exporteren**: U kunt uw Azure-SQL database exporteren als een BACPAC-bestand van de Azure Portal
 
-   ![Data base exporteren](./media/sql-database-export/database-export1.png)
+   ![data base exporteren](./media/sql-database-export/database-export1.png)
 
 - **Importeren**: U kunt ook gegevens importeren als een BACPAC-bestand in de-data base met behulp van de Azure Portal.
 

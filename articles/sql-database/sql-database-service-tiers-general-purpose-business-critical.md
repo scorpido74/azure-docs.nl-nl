@@ -10,21 +10,21 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
-ms.date: 02/23/2019
-ms.openlocfilehash: 41acef4ebe13ac6152d795db4adfae5a6ae1ad91
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.date: 10/01/2019
+ms.openlocfilehash: 7b5fd9800fdd2ee3b46087308f81f506e3e09e03
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70995436"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72034952"
 ---
 # <a name="azure-sql-database-service-tiers"></a>Service lagen Azure SQL Database
 
 Azure SQL Database is gebaseerd op SQL Server data base engine-architectuur die is aangepast voor de cloud omgeving om 99,99 procent Beschik baarheid te garanderen, zelfs als er een infrastructuur fout is opgetreden. Er worden drie service lagen gebruikt in Azure SQL Database, elk met een ander architectuur model. Deze service lagen zijn:
 
-- [Algemeen gebruik](sql-database-service-tier-general-purpose.md), dat is ontworpen voor de meeste algemene werk belastingen.
-- [Bedrijfs kritiek](sql-database-service-tier-business-critical.md), die is ontworpen voor workloads met lage latentie met één Lees bare replica.
-- [Grootschalige](sql-database-service-tier-hyperscale.md), dat is ontworpen voor zeer grote data bases (tot 100 TB) met meerdere Lees bare replica's.
+- [Algemeen gebruik](sql-database-service-tier-general-purpose.md), dat is ontworpen voor budget gerichte workloads.
+- [Grootschalige](sql-database-service-tier-hyperscale.md), dat is ontworpen voor de meeste bedrijfs werkbelastingen, met uiterst schaal bare opslag, lees mogelijkheden voor uitschalen en snelle database herstel.
+- [Bedrijfs kritiek](sql-database-service-tier-business-critical.md), die is ontworpen voor workloads met lage latentie met hoge tolerantie voor fouten en snelle failovers.
 
 In dit artikel worden de verschillen tussen de service lagen en de opslag-en back-upfuncties voor de algemene doel stellingen en bedrijfskritische service lagen in het op vCore gebaseerde inkoop model beschreven.
 
@@ -32,9 +32,9 @@ In dit artikel worden de verschillen tussen de service lagen en de opslag-en bac
 
 In de volgende tabel worden de belangrijkste verschillen tussen service lagen voor de nieuwste generatie (GEN5) beschreven. Houd er rekening mee dat de kenmerken van de servicelaag kunnen verschillen in Individuele database en een beheerd exemplaar.
 
-| | Resourcetype | Algemeen doel |  Grootschalig | Bedrijfskritiek |
+| | Resourcetype | Algemeen doel |  Hyperscale | Bedrijfskritiek |
 |:---:|:---:|:---:|:---:|:---:|
-| **Geschikt voor** | |  De meeste zakelijke workloads. Biedt berekenings-en opslag opties voor budget gericht evenwicht. | Gegevens toepassingen met grote vereisten voor gegevens capaciteit, de mogelijkheid om opslag te schalen tot Maxi maal 100 TB, en de reken kracht vloeistof te schalen. | OLTP-toepassingen met een hoge transactie frequentie en een laagste latentie-IO. Biedt de hoogste flexibiliteit tot storingen met behulp van verschillende, geïsoleerde replica's.|
+| **Geschikt voor** | |  Biedt berekenings-en opslag opties voor budget gericht evenwicht. | De meeste zakelijke workloads. Opslag grootte automatisch schalen tot 100 TB, vloeiend verticaal en horizon taal berekenen, snel terugzetten van de data base. | OLTP-toepassingen met hoge transactie snelheden en lage IO-latentie. Biedt de hoogste flexibiliteit voor fouten en snelle failovers met behulp van meerdere synchroon bijgewerkte replica's.|
 |  **Beschikbaar in resource type:** ||Eén data base/elastische pool/beheerd exemplaar | Individuele database | Eén data base/elastische pool/beheerd exemplaar |
 | **Reken grootte**|Eén data base/elastische pool | 1 tot 80 vCores | 1 tot 80 vCores | 1 tot 80 vCores |
 | | Beheerd exemplaar | 4, 8, 16, 24, 32, 40, 64, 80 vCores | N/A | 4, 8, 16, 24, 32, 40, 64, 80 vCores |
@@ -52,7 +52,7 @@ In de volgende tabel worden de belangrijkste verschillen tussen service lagen vo
 |**Back-ups**|Alle|RA-GRS, 7-35 dagen (standaard 7 dagen)| RA-GRS, 7 dagen, constant tijdstip herstel (PITR) | RA-GRS, 7-35 dagen (standaard 7 dagen) |
 |**OLTP in het geheugen** | | N/A | N/A | Beschikbaar |
 |**Alleen-lezen replica's**| | 0  | 0 - 4 | 1 (ingebouwd, inbegrepen in de prijs) |
-|**Prijzen/facturering** | Individuele database | [vCore, gereserveerde opslag en back-upopslag](https://azure.microsoft.com/pricing/details/sql-database/single/) worden in rekening gebracht. <br/>Voor IOPS worden geen kosten in rekening gebracht. | [vCore voor elke replica en gebruikte opslag](https://azure.microsoft.com/pricing/details/sql-database/single/) worden in rekening gebracht. <br/>Voor IOPS worden geen kosten in rekening gebracht.<br/>Er wordt nog geen back-upopslag in rekening gebracht. | [vCore, gereserveerde opslag en back-upopslag](https://azure.microsoft.com/pricing/details/sql-database/single/) worden in rekening gebracht. <br/>Voor IOPS worden geen kosten in rekening gebracht. |
+|**Prijzen/facturering** | Individuele database | [vCore, gereserveerde opslag en back-upopslag](https://azure.microsoft.com/pricing/details/sql-database/single/) worden in rekening gebracht. <br/>Voor IOPS worden geen kosten in rekening gebracht. | [vCore voor elke replica en gebruikte opslag](https://azure.microsoft.com/pricing/details/sql-database/single/) worden in rekening gebracht. <br/>IOPS nog niet gefactureerd. | [vCore, gereserveerde opslag en back-upopslag](https://azure.microsoft.com/pricing/details/sql-database/single/) worden in rekening gebracht. <br/>Voor IOPS worden geen kosten in rekening gebracht. |
 || Beheerd exemplaar | [vCore en gereserveerde opslag](https://azure.microsoft.com/pricing/details/sql-database/managed/) worden in rekening gebracht. <br/>Voor IOPS worden geen kosten in rekening gebracht.<br/>Er wordt nog geen back-upopslag in rekening gebracht. | N/A | [vCore en gereserveerde opslag](https://azure.microsoft.com/pricing/details/sql-database/managed/) worden in rekening gebracht. <br/>Voor IOPS worden geen kosten in rekening gebracht.<br/>Er wordt nog geen back-upopslag in rekening gebracht. | 
 |**Kortings modellen**| | [Gereserveerde instanties](sql-database-reserved-capacity.md)<br/>[Azure Hybrid Benefit](sql-database-service-tiers-vcore.md#azure-hybrid-benefit) (niet beschikbaar in dev/test-abonnementen)<br/>Ontwikkel-en test abonnementen voor [ondernemingen](https://azure.microsoft.com/offers/ms-azr-0148p/) en [betalen naar gebruik](https://azure.microsoft.com/offers/ms-azr-0023p/)| [Azure Hybrid Benefit](sql-database-service-tiers-vcore.md#azure-hybrid-benefit) (niet beschikbaar in dev/test-abonnementen)<br/>Ontwikkel-en test abonnementen voor [ondernemingen](https://azure.microsoft.com/offers/ms-azr-0148p/) en [betalen naar gebruik](https://azure.microsoft.com/offers/ms-azr-0023p/)| [Gereserveerde instanties](sql-database-reserved-capacity.md)<br/>[Azure Hybrid Benefit](sql-database-service-tiers-vcore.md#azure-hybrid-benefit) (niet beschikbaar in dev/test-abonnementen)<br/>Ontwikkel-en test abonnementen voor [ondernemingen](https://azure.microsoft.com/offers/ms-azr-0148p/) en [betalen naar gebruik](https://azure.microsoft.com/offers/ms-azr-0023p/)|
 
@@ -63,7 +63,7 @@ Zie voor meer informatie de gedetailleerde verschillen tussen de service lagen i
 
 ## <a name="data-and-log-storage"></a>Gegevens-en logboek opslag
 
-De volgende factoren zijn van invloed op de hoeveelheid opslag die wordt gebruikt voor gegevens-en logboek bestanden:
+De volgende factoren zijn van invloed op de hoeveelheid opslag die wordt gebruikt voor gegevens-en logboek bestanden en geldt voor Algemeen en Bedrijfskritiek. Zie [grootschalige-servicelaag](sql-database-service-tier-hyperscale.md)voor meer informatie over gegevens en logboek opslag in grootschalige.
 
 - De toegewezen opslag wordt gebruikt door gegevens bestanden (MDF) en logboek bestanden (LDF).
 - Elke reken grootte van één data base ondersteunt een maximale database grootte, met een standaard maximale grootte van 32 GB.
@@ -72,8 +72,8 @@ De volgende factoren zijn van invloed op de hoeveelheid opslag die wordt gebruik
 - U kunt de grootte van één data base tussen 10 GB en het ondersteunde maximum selecteren.
   - Verg root of verklein de grootte in stappen van 10 GB voor opslag in de service lagen standaard of algemeen.
   - Verg root of verklein de grootte in stappen van 250 GB voor opslag in de essentiële of bedrijfs kritieke service lagen.
-- In de servicelaag `tempdb` voor algemeen gebruik wordt een bijgevoegde SSD gebruikt. deze opslag kosten worden opgenomen in de vCore prijs.
-- In de laag `tempdb` bedrijfskritische service deelt u de gekoppelde SSD met de MDF-en LDF-bestanden en `tempdb` worden de opslag kosten opgenomen in de vCore-prijs.
+- In de servicelaag voor algemeen gebruik `tempdb` een bijgevoegde SSD gebruikt, en deze opslag kosten worden opgenomen in de vCore prijs.
+- In de laag bedrijfskritische service-`tempdb` deelt de gekoppelde SSD met de MDF-en LDF-bestanden en de `tempdb` opslag kosten worden opgenomen in de vCore-prijs.
 
 > [!IMPORTANT]
 > Er worden kosten in rekening gebracht voor de totale opslag ruimte die is toegewezen voor MDF-en LDF-bestanden.

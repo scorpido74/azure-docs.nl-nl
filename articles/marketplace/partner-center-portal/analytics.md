@@ -7,12 +7,12 @@ ms.author: shthota
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 09/09/2019
-ms.openlocfilehash: 87ecf534fa7d4f3609882f5f18b314c246e388bd
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: b48e0cddfe4880382147e7bfb634335f10d6f5f9
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71036651"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72028842"
 ---
 # <a name="analytics-for-the-commercial-marketplace-in-partner-center"></a>Analytics voor de commerciële Marketplace in het partner centrum
 
@@ -26,6 +26,7 @@ Open het dash board **[analyseren](https://partner.microsoft.com/dashboard/comme
 |[Orders](#orders-dashboard)|Informatie over uw orders in een grafische en download bare indeling|
 |[Hun](#customer-dashboard)|Informatie over uw klanten, met inbegrip van groei trends, gepresenteerd in een grafische en download bare indeling|
 |[Downloads](#downloads-dashboard)|Een lijst met uw download aanvragen in de afgelopen 30 dagen|
+|[Beoordelingen en beoordelingen](#ratings-and-reviews)| Informatie over beoordelingen en beoordelingen die uw klanten laten staan voor de aanbiedingen die ze hebben verkregen.
 
 ## <a name="summary-dashboard"></a>Samenvattings dashboard
 
@@ -44,7 +45,7 @@ U kunt in de rechter bovenhoek van elke pagina een selectie voor het datum berei
 
 ![Dash board analyseren in Partner Center](./media/analyze-dashboard.png)
 
-### <a name="totals"></a>Totalen
+### <a name="totals"></a>Elkaar
 
 In de sectie **Totalen** wordt een telling weer gegeven van alle orders die zijn gemaakt, of klanten die zijn verkregen tijdens het geselecteerde datum bereik. 
 
@@ -238,17 +239,17 @@ U ontvangt een pop-upmelding en een e-mail bericht met een koppeling naar het da
 | Azure-licentie type: Cloud Solution Provider | Klant, order | De eind klant schaft Azure en uw Marketplace-aanbieding aan via hun Cloud solution provider, die fungeert als uw wederverkoper.|
 | Azure-licentie type: Zakelijk | Klant, order | De eind klant schaft Azure en uw Marketplace-aanbieding aan via een Enterprise Agreement, die rechtstreeks is ondertekend met micro soft.|
 | Azure-licentie type: Enter prise via wederverkoper  | Klant, order | De eind klant schaft Azure en uw Marketplace-aanbieding aan via een wederverkoper die hun Enterprise Agreement met micro soft vereenvoudigt.|  |
-| Azure-licentie type: Betalen per gebruik| Klant, order | De eind klant aanschaft Azure en uw Marketplace-aanbieding via een overeenkomst voor betalen naar gebruik, die rechtstreeks is ondertekend met micro soft.||
+| Azure-licentie type: Betalen naar gebruik| Klant, order | De eind klant aanschaft Azure en uw Marketplace-aanbieding via een overeenkomst voor betalen naar gebruik, die rechtstreeks is ondertekend met micro soft.||
 | Naam van Cloud exemplaar| Bestellen| De Microsoft Cloud waarin een VM-implementatie is opgetreden.||
 | Naam van Cloud exemplaar: Azure Global| Bestellen| De open bare wereld wijde micro soft-Cloud.|| |
 | Naam van Cloud exemplaar: Azure Government | Bestellen| Government-specifieke micro soft-Clouds voor een van de volgende regeringen: China, Duitsland of de Verenigde Staten van Amerika.| |
 | Klant plaats| De klant| De naam van de plaats van de klant. De stad kan afwijken van de plaats in het Azure-abonnement van een klant.||
 | Taal van klant communicatie  | De klant| De taal die door de klant wordt aanbevolen voor communicatie.||
-| Bedrijfs naam van klant | Klant, order | De bedrijfs naam die door de klant is verschaft. De naam kan afwijken van de naam in het Azure-abonnement van een klant.|  |
+| Bedrijfs naam van klant | Klant, order | De bedrijfs naam die door de klant is verschaft. De naam kan afwijken van de plaats in het Azure-abonnement van een klant.|  |
 | Land/regio van de klant | Klant, order | De land naam van de klant. Het land kan afwijken van het land van het Azure-abonnement van de klant.|  |
 | E-mail van klant| De klant| Het e-mail adres van de eind gebruiker. E-mail kan afwijken van het e-mail adres in het Azure-abonnement van een klant.||
 | Voor naam van klant| De klant| De naam van de klant. De naam kan afwijken van de naam die is opgenomen in het Azure-abonnement van de klant.| |
-| Klant-id | Klant, order | De unieke id die aan een klant is toegewezen. Een klant heeft mogelijk geen of meer Azure Marketplace-abonnementen.|  |
+| Klant-ID | Klant, order | De unieke id die aan een klant is toegewezen. Een klant heeft mogelijk geen of meer Azure Marketplace-abonnementen.|  |
 | Post code van de klant  | De klant| De post code die de klant heeft ontvangen. De code kan afwijken van de post code die is opgenomen in het Azure-abonnement van een klant.| |
 | Klant status| De klant| De status (adres) van de klant. De status kan afwijken van de status die is opgenomen in het Azure-abonnement van de klant.| |
 | Aanschaf datum| De klant| De eerste datum waarop de klant een door u gepubliceerde aanbieding heeft gekocht.| |
@@ -270,7 +271,7 @@ U ontvangt een pop-upmelding en een e-mail bericht met een koppeling naar het da
 | Aanbiedings type: Container | Bestellen| Gebruik het type container aanbod wanneer uw oplossing een docker-container installatie kopie is ingericht als een op Kubernetes gebaseerde Azure-container service.||
 | Aanbiedings type: Dynamics 365 Business Central| Bestellen| Gebruik dit aanbiedings type wanneer uw oplossing is geïntegreerd met Dynamics 365 voor financiering en bewerkingen| |
 | Aanbiedings type: Dynamics 365 for Customer Engagement | Bestellen| Gebruik dit aanbiedings type wanneer uw oplossing is geïntegreerd met Dynamics 365 voor klant betrokkenheid.||
-| Aanbiedings type: IoT Edge-module | Bestellen| Azure IoT Edge modules zijn de kleinste reken eenheden die worden beheerd door IoT Edge en die micro soft-Services (zoals Azure Stream Analytics), services van derden of uw eigen oplossing-specifieke code kunnen bevatten. |
+| Aanbiedings type: Module IoT Edge | Bestellen| Azure IoT Edge modules zijn de kleinste reken eenheden die worden beheerd door IoT Edge en die micro soft-Services (zoals Azure Stream Analytics), services van derden of uw eigen oplossing-specifieke code kunnen bevatten. |
 | Aanbiedings type: Power BI toepassing | Bestellen| Gebruik het Power BI type toepassings aanbieding wanneer u een toepassing implementeert die is geïntegreerd met Power BI.|  |
 | Aanbiedings type: SaaS-toepassing| Bestellen| Gebruik het type SaaS-app-aanbieding om uw klant in staat te stellen uw SaaS-gebaseerde technische oplossing als een abonnement te kopen.||
 | Aanbiedings type: Virtuele Machine | Bestellen| Gebruik het type virtuele machine-aanbieding wanneer u een virtueel apparaat implementeert op het abonnement dat is gekoppeld aan uw klant.||
@@ -282,6 +283,41 @@ U ontvangt een pop-upmelding en een e-mail bericht met een koppeling naar het da
 | Status van bestelling: Actief  | Bestellen| De klant heeft een bestelling gekocht en heeft zijn order niet geannuleerd.|         |
 | Status van bestelling: geannuleerd | Bestellen| De klant heeft eerder een order aangeschaft en vervolgens de bestelling geannuleerd.||
 | E-mail van provider| De klant| Het e-mail adres van de provider die deel uitmaakt van de relatie tussen micro soft en de eind klant. Als de klant een onderneming is via wederverkoper, is dit de wederverkoper. Als er een Cloud Solution Provider (CSP) betrokken is, wordt dit de CSP.|
-| Naam van provider| De klant| De naam van de provider die deel uitmaakt van de relatie tussen micro soft en de eind klant. Als de klant een onderneming is via wederverkoper, is dit de wederverkoper. Als er een Cloud Solution Provider (CSP) betrokken is, wordt dit de CSP.|
+| Provider naam| De klant| De naam van de provider die deel uitmaakt van de relatie tussen micro soft en de eind klant. Als de klant een onderneming is via wederverkoper, is dit de wederverkoper. Als er een Cloud Solution Provider (CSP) betrokken is, wordt dit de CSP.|
 | SKU| Bestellen| SKU-naam zoals gedefinieerd tijdens het publiceren. Een aanbieding kan veel Sku's hebben, maar een SKU kan slechts worden gekoppeld aan één aanbieding.||
 | Eind datum van proef versie| Bestellen| De datum waarop de proef periode voor deze order wordt beëindigd of beëindigd.||
+
+## <a name="ratings-and-reviews"></a>Beoordelingen en beoordelingen
+
+Als klanten bladeren, zoek acties en aanbiedingen kopen in beide marketplaces, kunnen ze beoordelingen en beoordelingen geven voor de aanbiedingen die ze hebben verkregen. Ze kunnen nieuwe beoordelingen of beoordelingen verzenden en beoordelingen of beoordelingen die ze al hebben verzonden, bijwerken of verwijderen. Beoordelingen worden gepubliceerd in azure Marketplace of AppSource op het tabblad Recensies van de pagina product weergave van de aanbieding. Klanten kunnen hun namen voor beoordelingen of recensies toevoegen, of ze kunnen anoniem berichten verzenden.  
+
+> [!NOTE]
+> Klanten kunnen alleen wijzigingen aanbrengen in de beoordelingen en beoordelingen waarvan ze eigenaar zijn.
+
+In het **dash board beoordelingen & beoordeling** worden de trends en inzichten van klant activiteiten weer gegeven. Het biedt grafische voors tellingen van:
+
+- Beoordelingen & beoordelingen  
+- Opmerkingen controleren
+
+### <a name="marketplace-storefront-tabs"></a>Tabbladen Marketplace-winkel
+
+Uitgevers kunnen hun metrische aanbod gegevens afzonderlijk weer geven op de AppSource & Azure Marketplace-tabbladen. Selecteer **aanbieding** in de vervolg keuzelijst om de metrische gegevens van een specifieke aanbieding weer te geven:
+
+![Vervolg keuzelijst voor aanbod analyse van partner centrum](./media/analyze-offer-dropdown.png)
+
+### <a name="ratings-and-reviews-summary"></a>Overzicht van beoordelingen en beoordelingen
+
+De overzichts sectie beoordelings & beoordelingen bevat de metrische gegevens hieronder voor een geselecteerd datum bereik:
+
+- **Gemiddelde beoordeling:** De gewogen gemiddelde ster waardering van alle beoordelingen die door klanten zijn verzonden voor de geselecteerde aanbieding.
+- **Uitsplitsing van classificatie:** Uitsplitsing van de ster waardering door het aantal klanten dat de classificatie heeft ingediend. Het staaf diagram is gestapeld met de werkelijke en herziene classificaties (bijgewerkt aantal beoordelingen).
+- **Totaal aantal beoordelingen:** Het totale aantal verzonden Beoordelingen. Dit aantal omvat ook beoordelingen met en zonder Beoordelingen.
+- **Beoordelingen met beoordelingen:** Aantal verzonden Beoordelingen.
+
+![Samen vatting van de beoordelingen en beoordelingen door het partner centrum analyseren](./media/analyze-ratings-summary.png)
+
+### <a name="review-comments"></a>Opmerkingen controleren
+
+Beoordelingen worden in chronologische volg orde weer gegeven wanneer ze zijn gepost. In de standaard weergave worden alle beoordelingen weer gegeven. U kunt de beoordelingen per ster waardering filteren met behulp van het **filter** in de vervolg keuzelijst. U kunt ook zoeken naar tref woorden die in de beoordeling worden weer gegeven.  
+
+![Partner centrum analyse opmerkingen analyseren](./media/analyze-reviews.png)

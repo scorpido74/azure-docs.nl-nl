@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 1acef92ed5de86d4526d8b5c4bcf338b341c50f7
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: 722feb29a08cd5e1113eae197fbcae9769ed5550
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71241268"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72029763"
 ---
 # <a name="automatically-create-incidents-from-microsoft-security-alerts"></a>Automatisch incidenten maken op basis van beveiligings waarschuwingen van micro soft
 
@@ -35,7 +35,7 @@ U moet [micro soft-beveiligings oplossingen verbinden](connect-data-sources.md#d
 
 Gebruik de ingebouwde regels die beschikbaar zijn in azure Sentinel om te kiezen welke verbonden beveiligings oplossingen van micro soft Azure-Sentinel-incidenten automatisch in realtime moeten maken. U kunt ook de regels bewerken om meer specifieke opties te definiëren voor het filteren van de waarschuwingen die worden gegenereerd door de micro soft-beveiligings oplossing om incidenten te maken in azure Sentinel. U kunt bijvoorbeeld alleen Azure-Sentinel-incidenten automatisch maken op basis van waarschuwingen voor hoge urgentie Azure Security Center.
 
-1. Selecteer in de Azure Portal onder Azure Sentinel **Analytics**.
+1. Selecteer in de Azure Portal onder Azure Sentinel **Analytics**.
 
 1. Selecteer het tabblad **regel sjablonen** om alle ingebouwde analytische regels weer te geven.
 

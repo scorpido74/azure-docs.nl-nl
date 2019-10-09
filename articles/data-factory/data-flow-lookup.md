@@ -1,49 +1,49 @@
 ---
-title: Azure Data Factory gegevenstransformatie stroom Lookup toewijzen
-description: Azure Data Factory gegevenstransformatie stroom Lookup toewijzen
+title: Zoek transformatie voor het toewijzen van gegevens stromen Azure Data Factory
+description: Zoek transformatie voor het toewijzen van gegevens stromen Azure Data Factory
 author: kromerm
 ms.author: makromer
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/03/2019
-ms.openlocfilehash: 197f5ba9d6921f4a9921b7074b9e05162d3e37b8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ef72b7aed12afd1cee47b11bc7584d1e53bf2af5
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64868128"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72029343"
 ---
-# <a name="azure-data-factory-mapping-data-flow-lookup-transformation"></a>Azure Data Factory gegevenstransformatie stroom Lookup toewijzen
+# <a name="azure-data-factory-mapping-data-flow-lookup-transformation"></a>Zoek transformatie voor het toewijzen van gegevens stromen Azure Data Factory
 
-[!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
-Gebruik Lookup om toe te voegen referentiegegevens vanaf een andere bron voor uw gegevensstroom. De Lookup-transformatie is een gedefinieerde bron die verwijst naar de verwijzingstabel en komt overeen met op velden voor sleutels vereist.
 
-![Lookup Transformation](media/data-flow/lookup1.png "Lookup")
+Gebruik lookup om referentie gegevens van een andere bron toe te voegen aan uw gegevens stroom. Voor de opzoek transformatie is een gedefinieerde bron vereist die naar de referentie tabel verwijst en die overeenkomt met de sleutel velden.
 
-Selecteer de velden voor sleutels die u wilt tussen de velden van de referentie-bron en de binnenkomende stream velden overeenkomen. U moet eerst hebt gemaakt een nieuwe bron op het canvas ontwerp gegevensstroom gebruiken als de rechterkant voor de zoekopdracht.
+Opzoek ![transformatie](media/data-flow/lookup1.png "zoeken")
 
-Wanneer overeenkomsten worden gevonden, wordt de resulterende rijen en kolommen uit de Verwijzingsbron worden toegevoegd aan de gegevensstroom. U kunt kiezen welke velden van belang dat u wilt opnemen in uw Sink aan het einde van de gegevensstroom.
+Selecteer de belangrijkste velden die u wilt vergelijken tussen de binnenkomende stroom velden en de velden uit de referentie bron. U moet eerst een nieuwe bron op het ontwerp canvas voor gegevens stromen hebben gemaakt om te gebruiken als de rechter zijde voor de zoek actie.
 
-## <a name="match--no-match"></a>Overeenkomen met / geen overeenkomst
+Als er overeenkomsten worden gevonden, worden de resulterende rijen en kolommen van de referentie bron toegevoegd aan uw gegevens stroom. U kunt kiezen welke velden van belang u wilt opnemen in uw Sink aan het einde van de gegevens stroom.
 
-Na uw transformatie opzoeken, kunt u volgende transformaties gebruiken om te controleren van de resultaten van elke rij van de overeenkomst met de functie expressie `isMatch()` meer keuzes in de logica op basis van het al dan niet de zoekopdracht heeft geresulteerd in een rij-overeenkomst of niet maken.
+## <a name="match--no-match"></a>Overeenkomst/geen overeenkomst
+
+Na uw opzoek transformatie kunt u volgende trans formaties gebruiken om de resultaten van elke overeenkomende rij te controleren met behulp van de expressie functie `isMatch()` om verdere keuzes te maken in uw logica, op basis van het feit of de zoek actie heeft geleid tot een overeenkomende rij of niet.
 
 ## <a name="optimizations"></a>Optimalisaties
 
-In Data Factory uitvoeren in omgevingen met uitgebreide Spark gegevens stromen. Als uw gegevensset in de geheugenruimte voor worker-knooppunt passen kan, kunnen we uw Lookup-prestaties optimaliseren.
+In Data Factory worden gegevens stromen uitgevoerd in een uitgebreide Spark-omgeving. Als uw gegevensset kan worden aangepast in de geheugen ruimte van het worker-knoop punt, kunnen we de prestaties van de zoek opdracht optimaliseren.
 
-![Lid worden uitgezonden](media/data-flow/broadcast.png "Join Broadcast")
+Broadcast ![toevoegen aan](media/data-flow/broadcast.png "uitzending")
 
-### <a name="broadcast-join"></a>Lid worden van broadcast
+### <a name="broadcast-join"></a>Broadcast-koppeling
 
-Selecteer links en/of rechterkant broadcast join om aan te vragen van ADF kunt u de volledige gegevensset pushen aan beide zijden van de opzoekrelatie in het geheugen.
+Selecteer links en/of de broadcast toevoegen aan de rechter kant om de ADF aan te vragen om de volledige gegevensset te pushen van beide zijden van de opzoek relatie naar het geheugen.
 
 ### <a name="data-partitioning"></a>Gegevenspartitionering
 
-U kunt ook opgeven partitioneren van uw gegevens door te selecteren 'Ingesteld partitioneren' op het tabblad optimaliseren van de Lookup-transformatie te maken van gegevenssets die beter in het geheugen per worker past.
+U kunt ook het partitioneren van uw gegevens opgeven door ' set partitioning ' te selecteren op het tabblad Optimize van de zoek transformatie om sets gegevens te maken die beter in het geheugen kunnen passen per werk nemer.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Deelnemen aan](data-flow-join.md) en [Exists](data-flow-exists.md) transformaties soortgelijke taken uitvoeren in ADF toewijzing gegevens stromen. Kijk eens transformaties volgende.
+Met trans formaties koppelen [en maken](data-flow-exists.md) [worden](data-flow-join.md) soort gelijke taken uitgevoerd in gegevens stromen voor ADF-toewijzing. Bekijk de volgende trans formaties.

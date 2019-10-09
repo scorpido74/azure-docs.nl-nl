@@ -12,12 +12,12 @@ ms.date: 04/11/2019
 ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4002c14ed6340a0e1a89ee295d47c98436515775
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 0c416d7279dd558b8a793064e295b7654925b1c8
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561774"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72034890"
 ---
 # <a name="add-or-update-a-users-profile-information-using-azure-active-directory"></a>Toevoegen of bijwerken van de profielgegevens van een gebruiker met behulp van Azure Active Directory
 Profielgegevens, zoals een profielfoto, taak-specifieke informatie en enkele instellingen die met Azure Active Directory (Azure AD) toevoegen. Zie voor meer informatie over het toevoegen van nieuwe gebruikers [toevoegen of verwijderen van gebruikers in Azure Active Directory](add-users-azure-active-directory.md).
@@ -46,7 +46,7 @@ Zoals u ziet, is er meer informatie beschikbaar in het profiel van een gebruiker
 
     - **Instellingen.** Bepaal of de gebruiker zich bij Azure Active Directory-tenant aanmelden kan. U kunt ook de globale locatie van de gebruiker opgeven.
 
-    - **Contactgegevens.** Relevante contactgegevens voor de gebruiker toevoegen. Bijvoorbeeld, een adres of een mobiel telefoonnummer.
+    - **Contactgegevens.** Voeg relevante contact gegevens voor de gebruiker toe, met uitzonde ring van de telefoon-of mobiele contact gegevens van een bepaalde gebruiker (alleen een globale beheerder kan worden bijgewerkt voor gebruikers in beheerders rollen).
 
     - **Contactgegevens voor verificatie.** Controleer of deze informatie om te controleren of dat er is een actieve telefoonnummer en e-mailadres voor de gebruiker. Deze informatie wordt gebruikt door Azure Active Directory om te controleren of dat de gebruiker is echt de gebruiker tijdens het aanmelden. Contactgegevens voor verificatie kan alleen door een globale beheerder worden bijgewerkt.
 

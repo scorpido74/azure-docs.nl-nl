@@ -1,11 +1,11 @@
 ---
-title: 'Licenties toewijzen aan een groep: Azure Active Directory | Microsoft Docs'
-description: Over het toewijzen van licenties aan gebruikers met behulp van Azure Active Directory-groep licentieverlening
+title: Licenties toewijzen aan een groep-Azure Active Directory | Microsoft Docs
+description: Licenties toewijzen aan gebruikers met behulp van Azure Active Directory groeps licenties
 services: active-directory
 keywords: Azure AD-licenties
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.topic: article
 ms.workload: identity
@@ -15,93 +15,91 @@ ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8a54d1ad3ab809f2a2f8df6ae0e30b1b061c2be1
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 497efda857dcd7de3079d702be00a094d221b779
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60471270"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72034800"
 ---
-# <a name="assign-licenses-to-users-by-group-membership-in-azure-active-directory"></a>Licenties toewijzen aan gebruikers door groepslidmaatschappen in Azure Active Directory
+# <a name="assign-licenses-to-users-by-group-membership-in-azure-active-directory"></a>Licenties toewijzen aan gebruikers per groepslid maatschap in Azure Active Directory
 
-Dit artikel helpt u bij het toewijzen van productlicenties aan een groep gebruikers in Azure Active Directory (Azure AD) en vervolgens verifiëren dat ze correct zijn gelicentieerd.
+In dit artikel vindt u instructies voor het toewijzen van product licenties aan een groep gebruikers en het controleren of ze correct zijn gelicentieerd in Azure Active Directory (Azure AD).
 
-In dit voorbeeld bevat de tenant een beveiligingsgroep met de naam **HR-afdeling**. Deze groep bevat alle leden van de afdeling human resources (ongeveer 1000 gebruikers). U Office 365 Enterprise E3-licenties toewijzen aan de gehele afdeling. De Enterprise Yammer-service die opgenomen in het product moet tijdelijk worden uitgeschakeld totdat de afdeling gereed is om deze te gebruiken. U ook wilt implementeren van Enterprise Mobility + Security-licenties in dezelfde groep gebruikers.
+In dit voor beeld bevat de Tenant een beveiligings groep met de naam **HR-afdeling**. Deze groep bevat alle leden van de afdeling Human Resources (rond 1.000 gebruikers). U wilt Office 365 Enter prise E3-licenties toewijzen aan de hele afdeling. De Yammer Enter prise-service die is opgenomen in het product moet tijdelijk worden uitgeschakeld totdat de afdeling klaar is om deze te gebruiken. U wilt ook Enterprise Mobility + Security-licenties implementeren voor dezelfde groep gebruikers.
 
 > [!NOTE]
-> Sommige services van Microsoft zijn niet op alle locaties beschikbaar. Voordat een licentie kan worden toegewezen aan een gebruiker, wordt de beheerder heeft om op te geven van de locatie-eigenschap van het gebruik van de gebruiker.
-> 
-> Alle gebruikers geen gebruikslocatie opgegeven overnemen voor licentietoewijzing groep, de locatie van de map. Als u gebruikers op meerdere locaties hebt, raden wij aan dat u altijd gebruikslocatie als onderdeel van de gebruikersstroom maken in Azure AD (bijvoorbeeld via AAD Connect-configuratie) - die ervoor zorgt het resultaat van licentietoewijzing dat altijd juist is en gebruikers geen ontvangen Services op locaties die niet zijn toegestaan.
+> Sommige services van Microsoft zijn niet op alle locaties beschikbaar. Voordat een licentie aan een gebruiker kan worden toegewezen, moet de beheerder de eigenschap gebruiks locatie opgeven voor de gebruiker.
+>
+> Voor het toewijzen van een groeps licentie neemt de locatie van de map over van alle gebruikers waarvoor een gebruiks locatie is opgegeven. Als u gebruikers op meerdere locaties hebt, raden we u aan om de gebruiks locatie altijd in te stellen als onderdeel van de stroom voor het maken van een gebruiker in azure AD (bijvoorbeeld via AAD Connect-configuratie). Dit zorgt ervoor dat het resultaat van licentie toewijzing altijd juist is en dat gebruikers niet worden ontvangen Services op locaties die niet zijn toegestaan.
 
 ## <a name="step-1-assign-the-required-licenses"></a>Stap 1: De vereiste licenties toewijzen
 
-1. Aanmelden bij de [ **Azure AD-beheercentrum** ](https://aad.portal.azure.com) met een licentie voor administrator-account. Voor het beheren van licenties, moet het account een licentiebeheerder, beheerder of globale beheerder.
+1. Meld u aan bij het [**Azure AD-beheer centrum**](https://aad.portal.azure.com) met een licentie beheerders account. Voor het beheren van licenties moet het account een licentie beheerder, gebruikers beheerder of globale beheerder zijn.
 
-2. Selecteer **licenties** om een deelvenster waar u kunt zien en beheren van alle licentieproducten in de tenant te openen.
+1. Selecteer **licenties** om een pagina te openen waar u alle licentie-producten in de Tenant kunt zien en beheren.
 
-4. Onder **alle producten**, Office 365 Enterprise E5 en Enterprise Mobility + Security E3 selecteren door de productnamen te selecteren. Selecteer eerst de toewijzing **toewijzen** aan de bovenkant van het deelvenster.
+1. Onder **alle producten**selecteert u zowel Office 365 Enter prise E5 als Enterprise Mobility + Security E3 door de product namen te selecteren. Als u de toewijzing wilt starten, selecteert u boven aan de pagina **toewijzen** .
 
-   ![Producten selecteren voor het toewijzen van licenties](./media/licensing-groups-assign/all-products-assign.png)
+   ![Producten selecteren om licenties toe te wijzen](./media/licensing-groups-assign/all-products-assign.png)
   
-5. Op de **licentie toewijzen** venster **gebruikers en groepen** om een lijst van gebruikers en groepen te openen.
+1. Selecteer op de pagina **licentie toewijzen** de optie **gebruikers en groepen** om een lijst met gebruikers en groepen te openen.
 
-6. Selecteer een gebruiker of groep, en gebruik vervolgens de **Selecteer** knop aan de onderkant van het deelvenster uw selectie te bevestigen.
+1. Selecteer een gebruiker of groep en gebruik vervolgens de knop **selecteren** onder aan de pagina om uw selectie te bevestigen.
 
-7. Op de **licentie toewijzen** deelvenster, klikt u op **toewijzingsopties**, weergeven met alle service-abonnementen opgenomen in de twee producten die we eerder hebt geselecteerd. Zoek **Yammer Enterprise** en schakel het **uit** om uit te schakelen die service van de productlicentie. Controleer of door te klikken op **OK** aan de onderkant van **licentieopties**.
+1. Klik op de pagina **licentie toewijzen** op **toewijzings opties**, waarin alle service plannen worden weer gegeven die zijn opgenomen in de twee producten die u eerder hebt geselecteerd. Zoek **Yammer Enter prise** **en schakel deze uit om de** service uit te scha kelen via de product licentie. Bevestig door te klikken op **OK** onder aan de **licentie opties**.
 
-   ![serviceplannen voor licenties selecteren](./media/licensing-groups-assign/assignment-options.png)
+   ![Selecteer service plannen voor licenties](./media/licensing-groups-assign/assignment-options.png)
   
-8. Voltooi de toewijzing door onder aan het deelvenster **Licentie toewijzen** op **Toewijzen** te klikken.
+1. Als u de toewijzing wilt volt ooien, klikt u op de pagina **licentie toewijzen** op **toewijzen** onder aan de pagina.
 
-9. Een melding wordt weergegeven in de rechterbovenhoek waarin de status en het resultaat van het proces. Als de toewijzing aan de groep kan niet worden voltooid (bijvoorbeeld vanwege bestaande licenties in de groep), klikt u op de melding om details van de fout te bekijken.
+1. Er wordt een melding weer gegeven in de rechter bovenhoek met daarin de status en het resultaat van het proces. Als de toewijzing aan de groep niet kan worden voltooid (bijvoorbeeld omdat er al bestaande licenties in de groep zijn), klikt u op de melding om de details van de fout weer te geven.
 
-Wanneer de licenties toewijzen aan een groep, Azure AD verwerkt alle bestaande leden van die groep. Dit proces kan even, variëren met de grootte van de groep. De volgende stap wordt beschreven hoe om te verifiëren dat het proces is voltooid en bepalen als meer aandacht is vereist voor het oplossen van problemen.
+Wanneer u licenties aan een groep toewijst, worden alle bestaande leden van die groep door Azure AD verwerkt. Dit proces kan enige tijd duren, variërend van de grootte van de groep. In de volgende stap wordt beschreven hoe u kunt controleren of het proces is voltooid en bepalen of er verdere aandacht is vereist om problemen op te lossen.
 
-## <a name="step-2-verify-that-the-initial-assignment-has-finished"></a>Stap 2: Controleer of de eerste toewijzing is voltooid
+## <a name="step-2-verify-that-the-initial-assignment-has-finished"></a>Stap 2: Controleren of de eerste toewijzing is voltooid
 
-1. Ga naar **Azure Active Directory** > **groepen**. Selecteer de groep die licenties zijn toegewezen aan.
+1. Ga naar **Azure Active Directory** > **groepen**. Selecteer de groep waaraan de licenties zijn toegewezen.
 
-2. Selecteer in de groep **licenties**. Hiermee kunt u snel bevestigen als licenties volledig zijn toegewezen aan gebruikers en als er fouten optreden die u nodig hebt om uit te zoeken. De volgende informatie is beschikbaar:
+1. Selecteer op de pagina groep de optie **licenties**. Zo kunt u snel controleren of licenties volledig zijn toegewezen aan gebruikers en of er fouten zijn die u moet zoeken. De volgende informatie is beschikbaar:
 
-   - Lijst van productlicenties die momenteel zijn toegewezen aan de groep. Selecteer een item om weer te geven van de specifieke services die zijn ingeschakeld en wijzigingen aanbrengen.
+   - Service licenties die momenteel aan de groep zijn toegewezen. Selecteer een vermelding om de specifieke services weer te geven die zijn ingeschakeld en om wijzigingen aan te brengen.
 
-   - De status van de meest recente licentiewijzigingen die zijn aangebracht aan de groep (als de wijzigingen worden verwerkt of als de verwerking is voltooid voor alle gebruikersleden van de).
+   - Status updates van de nieuwste licentie wijzigingen, die beschikbaar zijn als de wijzigingen worden verwerkt of als de verwerking voor alle gebruikers leden is voltooid.
 
-   - Informatie over gebruikers die zich in een foutstatus omdat licenties kunnen niet worden toegewezen aan.
+   - Informatie over gebruikers licentie toewijzingen met een fout status.
 
-   ![licentieverlening fouten en licentiestatus](./media/licensing-groups-assign/assignment-errors.png)
+   ![licentie fouten en licentie status](./media/licensing-groups-assign/assignment-errors.png)
 
-3. Meer gedetailleerde informatie over het verwerken van onder licentie **Azure Active Directory** > **gebruikers en groepen** > *groepsnaam*  >  **Auditlogboeken**. Houd rekening met de volgende activiteiten:
+1. Zie meer gedetailleerde informatie over licentie verwerking onder **Azure Active Directory** > **gebruikers en groepen** > *groeps naam* > **audit logboeken**. Controleer de volgende activiteiten:
 
-   - Activiteit: **Start de toepassing zijn op basis van groepslicentie op gebruikers**. Dit wordt geregistreerd wanneer het systeem het wijzigen van het toewijzen van licenties op de groep wordt opgehaald en wordt gestart toe te passen op alle gebruikersleden van de. Bevat informatie over de wijziging die is gemaakt.
+   - Activiteit: `Start applying group based license to users`. Dit wordt geregistreerd wanneer het systeem de wijziging van de licentie toewijzing ophaalt voor de groep en op alle gebruikers leden wordt toegepast. Het bevat informatie over de wijziging die is aangebracht.
 
-   - Activiteit: **Toepassen op basis van groepslicentie op gebruikers voltooien**. Dit wordt geregistreerd wanneer het systeem is verwerkt alle gebruikers in de groep. Het bevat een overzicht van hoeveel gebruikers zijn verwerkt en hoeveel gebruikers Groepslicenties kunnen niet worden toegewezen.
+   - Activiteit: `Finish applying group based license to users`. Dit wordt geregistreerd wanneer het systeem klaar is met de verwerking van alle gebruikers in de groep. Het bevat een samen vatting van het aantal gebruikers dat is verwerkt en aan hoeveel gebruikers geen groeps licenties kunnen worden toegewezen.
 
-   [Lees deze sectie](licensing-group-advanced.md#use-audit-logs-to-monitor-group-based-licensing-activity) voor meer informatie over hoe de logboeken voor controle kunnen worden gebruikt voor het analyseren van wijzigingen van Groepslicenties.
+   [Lees deze sectie](licensing-group-advanced.md#use-audit-logs-to-monitor-group-based-licensing-activity) voor meer informatie over hoe audit logboeken kunnen worden gebruikt voor het analyseren van wijzigingen die zijn aangebracht door op groep gebaseerde licentie verlening.
 
-## <a name="step-3-check-for-license-problems-and-resolve-them"></a>Stap 3: Controleren op problemen en op te lossen
+## <a name="step-3-check-for-license-problems-and-resolve-them"></a>Stap 3: Controleren op licentie problemen en deze oplossen
 
-1. Ga naar **Azure Active Directory** > **groepen**, en de groep die licenties zijn toegewezen aan niet vinden.
-2. Selecteer in de groep **licenties**. De melding boven op het deelvenster ziet u dat er 10 gebruikers die licenties kunnen niet worden toegewezen aan zijn. Open om te zien of een lijst met alle gebruikers in een licentie foutstatus van deze groep.
-3. De **mislukte toewijzingen** kolom kan worden achterhaald dat beide productlicenties kunnen niet worden toegewezen aan de gebruikers. De **belangrijkste reden voor mislukken** kolom bevat de oorzaak van het probleem. In dit geval heeft **conflicterende serviceabonnementen**.
+1. Ga naar **Azure Active Directory** > **groepen**en zoek de groep waaraan de licenties zijn toegewezen.
+1. Selecteer op de pagina groep de optie **licenties**. In de melding boven op de pagina ziet u dat er 10 gebruikers zijn waaraan geen licenties kunnen worden toegewezen. Open het om een lijst met alle gebruikers met een licentie fout status voor deze groep weer te geven.
+1. In de kolom **Mislukte toewijzingen** wordt aangegeven dat beide product licenties niet aan de gebruikers kunnen worden toegewezen. De **eerste reden voor de fout** kolom bevat de oorzaak van de fout. In dit geval zijn er **conflicterende service plannen**.
 
-   ![kunnen niet worden toegewezen licenties](./media/licensing-groups-assign/failed-assignments.png)
+   ![licenties die niet kunnen worden toegewezen](./media/licensing-groups-assign/failed-assignments.png)
 
-4. Selecteer een gebruiker te openen de **licenties** deelvenster. Dit deelvenster toont alle licenties die momenteel zijn toegewezen aan de gebruiker. In dit voorbeeld wordt de gebruiker heeft de Office 365 Enterprise E1-licentie die is overgenomen van de **Kiosk gebruikers** groep. Dit veroorzaakt een conflict met de E3-licentie die het systeem heeft geprobeerd om toe te passen van de **HR-afdeling** groep. Als gevolg hiervan is geen van de licenties van die groep toegewezen aan de gebruiker.
+1. Selecteer een gebruiker om de pagina **licenties** van de gebruiker te openen. Op deze pagina worden alle licenties weer gegeven die momenteel aan de gebruiker zijn toegewezen. In dit voor beeld heeft de gebruiker de Office 365 Enter prise E1-licentie die is overgenomen van de **kiosk gebruikers** groep. Dit is in conflict met de E3-licentie die het systeem heeft geprobeerd toe te passen vanuit de **HR-afdelings** groep. Als gevolg hiervan zijn geen van de licenties van die groep toegewezen aan de gebruiker.
 
-   ![Alle licentie conflicten voor een gebruiker weergeven](./media/licensing-groups-assign/user-license-view.png)
+   ![Alle licentie conflicten voor een gebruiker weer geven](./media/licensing-groups-assign/user-license-view.png)
 
-5. Als u wilt dit conflict is opgelost, verwijdert u de gebruiker van de **Kiosk gebruikers** groep. Nadat Azure AD de wijziging, verwerkt de **HR-afdeling** licenties correct worden toegewezen.
-
-   ![Correct zijn hier licenties toegewezen](./media/licensing-groups-assign/license-correctly-assigned.png)
+1. Als u dit conflict wilt oplossen, verwijdert u de gebruiker uit de groep **kiosk gebruikers** . Nadat de wijziging door Azure AD is verwerkt, worden de **HR-afdelings** licenties correct toegewezen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie voor meer informatie over de functieset voor Licentiebeheer via groepen, de volgende artikelen:
+Zie de volgende artikelen voor meer informatie over de functieset voor licentie toewijzing met behulp van groepen:
 
-* [Wat is licentieverlening in Azure Active Directory op basis van groep?](../fundamentals/active-directory-licensing-whatis-azure-portal.md)
-* [Licentieproblemen voor een groep vaststellen en oplossen in Azure Active Directory](licensing-groups-resolve-problems.md)
-* [Gebruikers met een afzonderlijke licentie migreren naar licenties op basis van groepen in Azure Active Directory](licensing-groups-migrate-users.md)
-* [Het migreren van gebruikers tussen productlicenties groepsgebaseerde licentieverlening in Azure Active Directory gebruiken](licensing-groups-change-licenses.md)
-* [Aanvullende scenario’s voor Azure Active Directory-licenties op basis van groepen](../active-directory-licensing-group-advanced.md)
-* [PowerShell-voorbeelden voor Groepslicenties in Azure Active Directory](licensing-ps-examples.md)
+- [Wat is op een groep gebaseerde licentie verlening in Azure Active Directory?](/azure/active-directory/fundamentals/active-directory-licensing-whatis-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context)
+- [Licentieproblemen voor een groep vaststellen en oplossen in Azure Active Directory](licensing-groups-resolve-problems.md)
+- [Gebruikers met een afzonderlijke licentie migreren naar licenties op basis van groepen in Azure Active Directory](licensing-groups-migrate-users.md)
+- [Het migreren van gebruikers tussen productlicenties groepsgebaseerde licentieverlening in Azure Active Directory gebruiken](licensing-groups-change-licenses.md)
+- [Aanvullende scenario’s voor Azure Active Directory-licenties op basis van groepen](../active-directory-licensing-group-advanced.md)
+- [PowerShell-voorbeelden voor Groepslicenties in Azure Active Directory](licensing-ps-examples.md)

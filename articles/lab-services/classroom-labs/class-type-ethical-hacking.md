@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/04/2019
 ms.author: spelluru
-ms.openlocfilehash: c92dd48e81512b79fb72cbb751303504d1036594
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: df24f846f1600685803fdd485f1810d66e32ae37
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71982032"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72028671"
 ---
 # <a name="set-up-a-lab-to-teach-ethical-hacking-class"></a>Een Lab instellen om ethische hacking-klasse te leren 
 In dit artikel wordt beschreven hoe u een klasse instelt die zich richt op forensischee-hacking. Indringings tests, een praktijk die wordt gebruikt door de ethische hacking-Community, treedt op wanneer iemand probeert toegang te krijgen tot het systeem of netwerk om beveiligings problemen te demonstreren die een kwaadwillende aanvaller kan misbruiken. 
@@ -128,7 +128,11 @@ De sjabloon is nu bijgewerkt en bevat installatie kopieën die nodig zijn voor e
 ## <a name="cost"></a>Kosten  
 Als u de kosten van dit Lab wilt schatten, kunt u het volgende voor beeld gebruiken: 
  
-Voor een klasse van 25 studenten met 20 uur geplande en tien uur aan quota voor huis werk of-toewijzingen is de prijs voor het Lab: 25 studenten * (20 + 10) uur * 55 Lab-eenheden * 0,01 USD per uur = 412,50. Zie [Azure Lab Services prijzen](https://azure.microsoft.com/pricing/details/lab-services/)voor meer informatie over prijzen.
+Voor een klasse van 25 studenten met 20 uur geplande en tien uur aan quota voor huis werk of-toewijzingen is de prijs voor het Lab: 
+
+25 studenten * (20 + 10) uur * 55 Lab-eenheden * 0,01 USD per uur = 412,50 USD. 
+
+Zie [Azure Lab Services prijzen](https://azure.microsoft.com/pricing/details/lab-services/)voor meer informatie over prijzen.
 
 ## <a name="conclusion"></a>Conclusie
 In dit artikel werd uitgelegd hoe u stapsgewijs door de stappen voor het maken van een Lab voor ethische hacking-klasse. Hierin worden de stappen beschreven voor het instellen van geneste virtualisatie voor het maken van twee virtuele machines in de virtuele host-machine voor het doordringen van testen.

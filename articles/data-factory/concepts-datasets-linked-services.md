@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/25/2019
-ms.openlocfilehash: 788fee724f381ab317b97a682aa21d17ec1ffa9d
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: c4daa5989013ba8d5c5a7136fe0878fae64f0357
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70137305"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72030570"
 ---
 # <a name="datasets-in-azure-data-factory"></a>Gegevens sets in Azure Data Factory
 > [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
@@ -69,13 +69,13 @@ In de volgende tabel worden de eigenschappen in de bovenstaande JSON beschreven:
 Eigenschap | Description | Vereist |
 -------- | ----------- | -------- |
 name | De naam van de gegevensset. Zie [Azure Data Factory naamgevings regels](naming-rules.md). |  Ja |
-Type | Het type van de gegevensset. Geef een van de typen op die worden ondersteund door Data Factory (bijvoorbeeld: AzureBlob, AzureSqlTable). <br/><br/>Zie [type gegevensset](#dataset-type)voor meer informatie. | Ja |
+type | Het type van de gegevensset. Geef een van de typen op die worden ondersteund door Data Factory (bijvoorbeeld: AzureBlob, AzureSqlTable). <br/><br/>Zie [type gegevensset](#dataset-type)voor meer informatie. | Ja |
 structure | Schema van de gegevensset. Zie [DataSet schema](#dataset-structure-or-schema)voor meer informatie. | Nee |
 typeProperties | De type-eigenschappen verschillen voor elk type (bijvoorbeeld: Azure Blob, Azure SQL-tabel). Zie [type gegevensset](#dataset-type)voor meer informatie over de ondersteunde typen en hun eigenschappen. | Ja |
 
 ### <a name="data-flow-compatible-dataset"></a>Met gegevens stroom compatibele gegevensset
 
-[!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
+
 
 Zie [ondersteunde typen gegevensset](#dataset-type) voor een lijst met typen gegevensset die compatibel zijn met de [gegevens stroom](concepts-data-flow-overview.md) . Gegevens sets die compatibel zijn met de data transport, hebben gedetailleerde gegevensset definities voor trans formaties nodig. De JSON-definitie is dus iets anders. In plaats van een _structure_ -eigenschap hebben gegevens sets die compatibel zijn met de gegevensstroom, een _schema_ -eigenschap.
 
@@ -114,8 +114,8 @@ In de volgende tabel worden de eigenschappen in de bovenstaande JSON beschreven:
 Eigenschap | Description | Vereist |
 -------- | ----------- | -------- |
 name | De naam van de gegevensset. Zie [Azure Data Factory naamgevings regels](naming-rules.md). |  Ja |
-Type | Het type van de gegevensset. Geef een van de typen op die worden ondersteund door Data Factory (bijvoorbeeld: AzureBlob, AzureSqlTable). <br/><br/>Zie [type gegevensset](#dataset-type)voor meer informatie. | Ja |
-schema | Schema van de gegevensset. Zie [Data flow compatibele gegevens sets](#dataset-type)voor meer informatie. | Nee |
+type | Het type van de gegevensset. Geef een van de typen op die worden ondersteund door Data Factory (bijvoorbeeld: AzureBlob, AzureSqlTable). <br/><br/>Zie [type gegevensset](#dataset-type)voor meer informatie. | Ja |
+Schema | Schema van de gegevensset. Zie [Data flow compatibele gegevens sets](#dataset-type)voor meer informatie. | Nee |
 typeProperties | De type-eigenschappen verschillen voor elk type (bijvoorbeeld: Azure Blob, Azure SQL-tabel). Zie [type gegevensset](#dataset-type)voor meer informatie over de ondersteunde typen en hun eigenschappen. | Ja |
 
 
@@ -146,7 +146,7 @@ Houd rekening met de volgende punten:
 - linkedServiceName verwijst naar een gekoppelde service van het type AzureSqlDatabase, die wordt gedefinieerd in het volgende JSON-code fragment.
 
 ## <a name="dataset-type"></a>Type gegevensset
-Er zijn veel verschillende typen gegevens sets, afhankelijk van de gegevensopslag die u gebruikt. U kunt de lijst met opgeslagen gegevens die worden ondersteund door Data Factory, vinden in het overzichts artikel van de [connector](connector-overview.md) . Klik op een gegevens Archief voor informatie over het maken van een gekoppelde service en een gegevensset voor het gegevens archief.
+Er zijn veel verschillende typen gegevens sets, afhankelijk van de gegevensopslag die u gebruikt. U kunt de lijst met opgeslagen gegevens die worden ondersteund door Data Factory, vinden in het [overzichts](connector-overview.md) artikel van de connector. Klik op een gegevens Archief voor informatie over het maken van een gekoppelde service en een gegevensset voor het gegevens archief.
 
 In het voor beeld in de vorige sectie is het type gegevensset ingesteld op **AzureSqlTable**. Op dezelfde manier wordt voor een Azure Blob-gegevensset het type gegevensset ingesteld op **AzureBlob**, zoals wordt weer gegeven in de volgende JSON:
 
@@ -173,16 +173,16 @@ In het voor beeld in de vorige sectie is het type gegevensset ingesteld op **Azu
 ```
 
 ## <a name="dataset-structure-or-schema"></a>Structuur of schema van gegevensset
-De sectie gegevens sets of het **schema** (compatibel met data flow) is optioneel. Hiermee wordt het schema van de gegevensset gedefinieerd door een verzameling namen en gegevens typen van kolommen te bevatten. U kunt de sectie structure gebruiken om type gegevens op te geven die worden gebruikt voor het converteren van typen en het toewijzen van kolommen van de bron naar het doel.
+De **sectie** gegevens sets of het **schema** (compatibel met data flow) is optioneel. Hiermee wordt het schema van de gegevensset gedefinieerd door een verzameling namen en gegevens typen van kolommen te bevatten. U kunt de sectie structure gebruiken om type gegevens op te geven die worden gebruikt voor het converteren van typen en het toewijzen van kolommen van de bron naar het doel.
 
 Elke kolom in de structuur bevat de volgende eigenschappen:
 
 Eigenschap | Description | Vereist
 -------- | ----------- | --------
 name | De naam van de kolom. | Ja
-Type | Het gegevens type van de kolom. Data Factory ondersteunt de volgende tussenliggende gegevens typen als toegestane waarden: **Int16, Int32, Int64, single, double, Decimal, byte [], Boolean, String, GUID, datetime, date time offset en time span** | Nee
-culture | . Op netgebaseerde cultuur die moet worden gebruikt wanneer het type een .net- `Datetime` type `Datetimeoffset`is: of. De standaardwaarde is `en-us`. | Nee
-format | Indelings teken reeks die moet worden gebruikt wanneer het type een .net `Datetime` - `Datetimeoffset`type is: of. Raadpleeg de [aangepaste datum-en tijd notatie teken reeksen](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings) voor het opmaken van DateTime. | Nee
+type | Het gegevens type van de kolom. Data Factory ondersteunt de volgende tussenliggende gegevens typen als toegestane waarden: **Int16, Int32, Int64, single, double, Decimal, byte [], Boolean, String, GUID, datetime, date time offset en time span** | Nee
+culture | . Op netgebaseerde cultuur die moet worden gebruikt wanneer het type een .NET-type is: `Datetime` of `Datetimeoffset`. De standaardwaarde is `en-us`. | Nee
+format | Indelings teken reeks die moet worden gebruikt wanneer het type een .NET-type is: `Datetime` of `Datetimeoffset`. Raadpleeg de [aangepaste datum-en tijd notatie teken reeksen](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings) voor het opmaken van DateTime. | Nee
 
 ### <a name="example"></a>Voorbeeld
 In het volgende voor beeld zijn de gegevens van de bron-Blob in CSV-indeling en bevatten ze drie kolommen: GebruikersID, name en lastlogindate. Ze zijn van het type Int64, teken reeks en datum/tijd met een aangepaste datum/tijd-indeling die de dag van de week afgekort Franse namen gebruikt.

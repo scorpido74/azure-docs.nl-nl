@@ -7,14 +7,19 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 08/27/2019
-ms.openlocfilehash: ef66e6a69b6d33b16a558293fe29b8adf51cd137
-ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
-ms.translationtype: HT
+ms.openlocfilehash: 9f1bd795af2802af642d48b4a16a55425c5f4c7f
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "71996753"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72028466"
 ---
 # <a name="ingest-data-from-iot-hub-into-azure-data-explorer-preview"></a>Gegevens opnemen van IoT Hub in azure Data Explorer (preview-versie)
+
+> [!div class="op_single_selector"]
+> * [Portal](ingest-data-iot-hub.md)
+> * [C#](data-connection-iot-hub-csharp.md)
+> * [Python](data-connection-iot-hub-python.md)
 
 Azure Data Explorer is een snelle en zeer schaalbare service om gegevens in logboeken en telemetrie te verkennen. Azure Data Explorer biedt opname (gegevens laden) van IoT Hub, een big data streaming platform en IoT-opname service.
 
@@ -80,7 +85,7 @@ U kunt nu verbinding maken met de IoT Hub vanuit Azure Data Explorer. Wanneer de
     | IoT Hub | IoT Hub naam |
     | Beleid voor gedeelde toegang | De naam van het beleid voor gedeelde toegang. Moet Lees machtigingen hebben |
     | Consumentengroep |  De consumenten groep die is gedefinieerd in het IoT Hub ingebouwde eind punt |
-    | Systeemeigenschappen van gebeurtenis | De [Eigenschappen van het IOT hub-gebeurtenis systeem](/azure/iot-hub/iot-hub-devguide-messages-construct#system-properties-of-d2c-iot-hub-messages). Bij het toevoegen van systeem eigenschappen, het [maken](/azure/kusto/management/tables#create-table) of [bijwerken](/azure/kusto/management/tables#alter-table-and-alter-merge-table) van het tabel schema en de [toewijzing](/azure/kusto/management/mappings) om de geselecteerde eigenschappen op te laten bevatten. | | | 
+    | Eigenschappen van gebeurtenis systeem | De [Eigenschappen van het IOT hub-gebeurtenis systeem](/azure/iot-hub/iot-hub-devguide-messages-construct#system-properties-of-d2c-iot-hub-messages). Bij het toevoegen van systeem eigenschappen, het [maken](/azure/kusto/management/tables#create-table) of [bijwerken](/azure/kusto/management/tables#alter-table-and-alter-merge-table) van het tabel schema en de [toewijzing](/azure/kusto/management/mappings) om de geselecteerde eigenschappen op te laten bevatten. | | | 
 
     > [!NOTE]
     > In het geval van een [hand matige failover](/azure/iot-hub/iot-hub-ha-dr#manual-failover)moet u de gegevens verbinding opnieuw maken.
@@ -94,7 +99,7 @@ U kunt nu verbinding maken met de IoT Hub vanuit Azure Data Explorer. Wanneer de
     |---|---|---|
     | Tabel | *TestTable* | De tabel die u hebt gemaakt in **testdb**. |
     | Gegevensindeling | *JSON* | Ondersteunde indelingen zijn AVRO, CSV, JSON, MEERREGELIGE JSON, PSV, SOHSV, SCSV, TSV, TSVE en TXT. |
-    | Kolomtoewijzing | *TestMapping* | De [toewijzing](/azure/kusto/management/mappings) die u hebt gemaakt in **testdb**, waarmee inkomende JSON-gegevens worden toegewezen aan de kolom namen en gegevens typen van **testdb**. Vereist voor JSON, meerdere regels JSON en AVRO, en optioneel voor andere indelingen.|
+    | Toewijzen van kolommen | *TestMapping* | De [toewijzing](/azure/kusto/management/mappings) die u hebt gemaakt in **testdb**, waarmee inkomende JSON-gegevens worden toegewezen aan de kolom namen en gegevens typen van **testdb**. Vereist voor JSON, meerdere regels JSON en AVRO, en optioneel voor andere indelingen.|
     | | |
 
     > [!NOTE]

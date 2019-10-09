@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 8cb5c82e551ed6299f754f518ebeebca0be4964d
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: ca17d049d988b2bc8b60249d99c03f70c555d3fb
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71679302"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72023734"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-ad-b2c"></a>De gegevens stroom van het wacht woord voor de resource-eigenaar configureren in Azure AD B2C
 
@@ -25,7 +25,7 @@ De ROPC-stroom (resource owner password credentials) is een OAuth-standaard veri
 
 In Azure Active Directory B2C (Azure AD B2C) worden de volgende opties ondersteund:
 
-- **Systeem eigen client**: Gebruikers interactie tijdens verificatie gebeurt wanneer code wordt uitgevoerd op een apparaat aan de gebruiker. Het apparaat kan een mobiele toepassing zijn die wordt uitgevoerd in een systeem eigen besturings systeem, zoals Android, of wordt uitgevoerd in een browser, zoals Java script.
+- **Systeem eigen client**: Gebruikers interactie tijdens verificatie gebeurt wanneer code wordt uitgevoerd op een apparaat aan de gebruiker. Het apparaat kan een mobiele toepassing zijn die wordt uitgevoerd in een systeem eigen besturings systeem, zoals Android en iOS.
 - **Open bare client stroom**: Alleen gebruikers referenties, verzameld door een toepassing, worden in de API-aanroep verzonden. De referenties van de toepassing worden niet verzonden.
 - **Nieuwe claims toevoegen**: De inhoud van het ID-token kan worden gewijzigd om nieuwe claims toe te voegen.
 
@@ -58,9 +58,9 @@ De volgende stromen worden niet ondersteund:
 ## <a name="test-the-user-flow"></a>De gebruikers stroom testen
 
 Gebruik uw favoriete API-ontwikkelings toepassing om een API-aanroep te genereren en Bekijk het antwoord op fout opsporing van uw gebruikers stroom. Maak een aanroep als dit met de informatie in de volgende tabel als hoofd tekst van de POST-aanvraag:
-- *Vervang\<yourtenant. onmicrosoft. com >* door de naam van uw B2C-Tenant.
+- Vervang *@no__t -1yourtenant. onmicrosoft. com >* door de naam van uw B2C-Tenant.
 - Vervang *\<B2C_1A_ROPC_Auth >* door de volledige naam van het beleid voor wachtwoord referenties van uw resource-eigenaar.
-- *Vervang\<bef2222d56-552f-4a5b-b90a-1988a7d634c3 >* door de toepassings-id van uw registratie.
+- Vervang *\<bef2222d56-552f-4a5b-b90a-1988a7d634c3 >* met de toepassings-id van uw registratie.
 
 `https://yourtenant.b2clogin.com/<yourtenant.onmicrosoft.com>/oauth2/v2.0/token?p=B2C_1_ROPC_Auth`
 
@@ -69,7 +69,7 @@ Gebruik uw favoriete API-ontwikkelings toepassing om een API-aanroep te generere
 | username | leadiocl@outlook.com |
 | password | Passxword1 |
 | grant_type | password |
-| bereik | OpenID Connect \<bef2222d56-552f-4a5b-b90a-1988a7d634c3 > offline_access |
+| scope | OpenID Connect \<bef2222d56-552f-4a5b-b90a-1988a7d634c3 > offline_access |
 | client_id | \<bef2222d56-552f-4a5b-b90a-1988a7d634c3> |
 | response_type | token id_token |
 

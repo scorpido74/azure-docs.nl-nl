@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/30/2019
 ms.author: spelluru
-ms.openlocfilehash: 083a7e7ad4ac40a7782936e664a9136d0452e93d
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: 69fe370029cef391b8ee483ffdee5c588df41d58
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71694678"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72030670"
 ---
 # <a name="set-up-a-lab-to-teach-shell-scripting-on-linux"></a>Een Lab instellen om shell scripting op Linux te leren
 Dit artikel laat u zien hoe u een lab kunt instellen om shell scripting op Linux te leren. Scripting is een nuttig onderdeel van systeem beheer waarmee beheerders terugkerende taken kunnen voor komen. In dit voorbeeld scenario bestrijkt de klasse traditionele bash-scripts en uitgebreide scripts. Uitgebreide scripts zijn scripts die bash-opdrachten en Ruby combi neren. Met deze benadering kan ruby gegevens rond en bash opdrachten door geven om met de shell te communiceren. 
@@ -83,7 +83,9 @@ In deze sectie wordt beschreven hoe u een aantal tekst editors installeert. Gedi
 ## <a name="cost"></a>Kosten 
 Als u de kosten van dit Lab wilt schatten, kunt u het volgende voor beeld gebruiken:
  
-Voor een klasse van 25 studenten met 20 uur geplande en tien uur aan quota voor huis werk of-toewijzingen is de prijs voor het Lab: 25 studenten * (20 + 10) uur * 20 Lab-eenheden * 0,01 USD per uur = 150 USD
+Voor een klasse van 25 studenten met 20 uur geplande en tien uur aan quota voor huis werk of-toewijzingen is de prijs voor het Lab: 
+
+25 studenten * (20 + 10) uur * 20 Lab-eenheden * 0,01 USD per uur = 150 USD
 
 Meer informatie over de prijzen vindt u in het volgende document: [Azure Lab Services prijzen](https://azure.microsoft.com/pricing/details/lab-services/).
 

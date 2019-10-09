@@ -1,40 +1,22 @@
 ---
 title: LCS-abonnement
-description: Inleiding tot een zelfstudie voor het maken van een abonnement.
+description: Dit CPP-artikel is afgeschaft, gekoppeld aan PC-artikel; was "Inleiding op een zelf studie voor het maken van een abonnement."
 services: Azure, Marketplace, Cloud Partner Portal,
-author: pbutlerm
+author: ChJenk
 manager: Ricardo.Villalobos
 ms.service: marketplace
 ms.topic: conceptual
-ms.date: 09/13/2018
-ms.author: pabutler
-ms.openlocfilehash: 43d27f832d5eb456de60e86257e2be8575f94bf9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 09/30/2019
+ms.author: v-chjen
+ms.openlocfilehash: 58733bec13c99f2c871c1782d56db8304386dc44
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64935199"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72034384"
 ---
 # <a name="lcs-subscription"></a>LCS-abonnement
 
-In deze zelfstudie leert u hoe een abonnement maken. Dit abonnement geeft u een testtenant Microsoft Online en Microsoft Dynamics Lifecycle Services-project waarin u een omgeving kunt implementeren. U wordt ook extra gebruikers instellen in uw Microsoft Online-tenant en ervaring met de volgende mogelijkheden van de service-beheer. Dit zijn de vaardigheden die u leert:
+De [Cloud Partner-Portal](https://cloudpartner.azure.com/) biedt geen ondersteuning meer voor het maken en beheren van Dynamics 365 voor financiering en operationele aanbiedingen. Deze functionaliteit is in plaats daarvan verplaatst naar de portal van micro soft [Partner Center](https://partner.microsoft.com/). Zie voor meer informatie [een nieuwe Dynamics 365 maken voor de bewerkings aanbieding](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-operations-offer).
 
-- Abonnement en het maken van een nieuwe Microsoft Online testen tenant.
-- Navigeren naar Lifecyle Services-projecten.
-- Met behulp van functies op Lifecycle Services.
-- Extra gebruikers toevoegen aan Microsoft Azure Active Directory en de client.
-- Resources weergeven in de e-mail van uw abonnement.
-
-## <a name="key-terms"></a>Belangrijkste termen
-
-**Microsoft Online Services-tenant** -een tenant is de groep van alle abonnementen en -gebruikers voor uw organisatie. De tenant is gemaakt op hetzelfde moment als uw eerste abonnement in de Microsoft Online Services.
-
-**Abonnement** -een abonnement beschikt u over een online-omgeving. Deze omgeving kunt u Dynamics 365 voor bewerkingen in de cloud-ervaring en ook kunt u zien hoe de aanpassingen die u hebt ontwikkeld kunnen worden geïmplementeerd naar de cloud.
-
-**Microsoft Azure Active Directory** -de cloudomgeving bevat Azure Active Directory (AD), die u bij het beheren van gebruikers, groepen, beveiligingsrollen en licenties voor online-toepassingen, op soortgelijke wijze aan de manier waarop helpt dat u ze voor on-premises beheren omgevingen.
-
-**Gebruikers** -gebruikers van de services die uw organisatie is geabonneerd op worden beheerd in Azure AD. Alle gebruikers in uw tenant kunnen worden toegevoegd en toegewezen aan beveiligingsrollen.
-
-**Ontwikkelaars en beheerders** -ontwikkelaars en beheerders zijn gebruikers die u hebt ook toegang tot Lifecycle Services waarmee ze projecten en omgevingen beheren. Deze gebruikers zijn ook eindgebruikers.
-
-Zie [LCS abonnement](https://docs.microsoft.com/dynamics365/operations/dev-itpro/dev-tools/sign-up-preview-subscription) voor meer informatie.
+Voordat u een nieuw Dynamics 365-aanbod maakt, moet u [een partner centrum-account maken](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) lezen en vervolgens het [dash board commerciële Marketplace](https://partner.microsoft.com/dashboard/directory) openen met de geselecteerde **overzichts** pagina. Volg de instructies in [een nieuwe Dynamics 365 voor de bewerkings aanbieding maken](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-operations-offer) om uw aanbieding te maken.

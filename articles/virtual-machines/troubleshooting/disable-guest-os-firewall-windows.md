@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
-ms.openlocfilehash: 9ae8620b803fa9a911f44840a5fff5d190a316a1
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 6883d046078b5dccd2f1e83e87b41ca83edc92e3
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71086534"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72030596"
 ---
 # <a name="disable-the-guest-os-firewall-in-azure-vm"></a>De firewall van het gastbesturingssysteem uitschakelen in Azure VM
 
@@ -90,9 +90,9 @@ Als u een werkende Azure-agent hebt, kunt u [aangepaste script extensie](../exte
 
 Volg deze stappen om [extern REGI ster](https://support.microsoft.com/help/314837/how-to-manage-remote-access-to-the-registry)te gebruiken.
 
-1.  Start de REGI ster-editor op de virtuele machine voor probleem oplossing en ga naar het **bestand** > **Connect netwerk Registry**.
+1.  Start de REGI ster-editor op de virtuele machine voor probleem oplossing en ga naar **bestand** > **Connect netwerk register**.
 
-2.  Open de *doel machine*\System-vertakking en geef de volgende waarden op:
+2.  Open de *doel machine*\System-vertakking en geef de volgende waarden op:
 
     ```
     <TARGET MACHINE>\SYSTEM\CurrentControlSet\services\SharedAccess\Parameters\FirewallPolicy\DomainProfile\EnableFirewall           -->        0 
@@ -102,13 +102,13 @@ Volg deze stappen om [extern REGI ster](https://support.microsoft.com/help/31483
 
 3.  Start de service opnieuw. Omdat u dit niet kunt doen met behulp van het externe REGI ster, moet u de service console verwijderen gebruiken.
 
-4.  Open een instantie van **Services. msc**.
+4.  Open een instantie van **Services. msc**.
 
 5.  Klik op **Services (lokaal)** .
 
 6.  Selecteer **verbinding maken met een andere computer**.
 
-7.  Voer het **privé IP-adres (DIP)**  van de probleem-vm in.
+7.  Voer het **privé IP-adres (DIP)** van de probleem-vm in.
 
 8.  Start het lokale firewall beleid opnieuw.
 

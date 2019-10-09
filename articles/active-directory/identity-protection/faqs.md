@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e30f8264870272fc12dcb7e15b37e5fd30688bcb
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 8d36b513b6835088b5120072906667cd30af505d
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70126530"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72025736"
 ---
 # <a name="azure-active-directory-identity-protection-faq"></a>Veelgestelde vragen over Azure Active Directory Identity Protection
 
@@ -41,6 +41,6 @@ In dit artikel vindt u antwoorden op veelgestelde vragen over de identiteits bev
 
 ## <a name="how-can-i-sort-users-in-users-flagged-for-risk"></a>Hoe kan ik gebruikers sorteren in ' gebruikers die zijn gemarkeerd voor risico '?
 
-**A:** Down load de gebruikers die zijn gemarkeerd voor een risico rapport door te klikken op **downloaden** boven aan de pagina **gebruikers gemarkeerd voor risico** . U kunt vervolgens de gedownloade gegevens sorteren op basis van de beschik bare velden, inclusief laatst bijgewerkt (UTC).
+**A:** Down load de gebruikers die zijn gemarkeerd voor een risico rapport door te klikken op **downloaden** boven aan de pagina **gebruikers gemarkeerd voor risico** . U kunt vervolgens de gedownloade gegevens sorteren op basis van de beschik bare velden, inclusief laatst bijgewerkt (UTC).
 
 ---

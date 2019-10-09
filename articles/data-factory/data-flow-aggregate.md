@@ -6,23 +6,23 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/01/2019
-ms.openlocfilehash: 778aefc05a9b12648e60d752a3c281cb18323125
-ms.sourcegitcommit: da0a8676b3c5283fddcd94cdd9044c3b99815046
+ms.openlocfilehash: 0201cbdd05cd8aae4afb92b459bf58fb5ff6a142
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68314234"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72026973"
 ---
 # <a name="aggregate-transformation-in-mapping-data-flow"></a>Statistische trans formatie in toewijzing van gegevens stroom 
 
-[!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
+
 
 De cumulatieve trans formatie is de locatie waar u aggregaties van kolommen in uw gegevens stromen definieert. Met de opbouw functie voor expressies kunt u verschillende typen aggregaties definiëren, zoals som, MIN, maximum en aantal dat kan worden gegroepeerd op bestaande of berekende kolommen.
 
 ## <a name="group-by"></a>Groeperen op
 Selecteer een bestaande kolom of maak een nieuwe berekende kolom die u wilt gebruiken als een component Group by voor uw aggregatie. Als u een bestaande kolom wilt gebruiken, selecteert u de gewenste kolom in de vervolg keuzelijst. Als u een nieuwe berekende kolom wilt maken, houdt u de muis aanwijzer over de component en klikt u op berekende kolom. Hiermee wordt de [opbouw functie voor de data flow-expressie](concepts-data-flow-expression-builder.md)geopend. Wanneer u de berekende kolom maakt, voert u de naam van de uitvoer kolom onder het veld naam als in. Als u een extra component Group by wilt toevoegen, houdt u de muis aanwijzer over een bestaande component en klikt u op +.
 
-![Statistische transformatie groep op instellingen](media/data-flow/agg.png "Statistische transformatie groep op instellingen")
+Aggregatie ![van de transformatie groep op instellingen](media/data-flow/agg.png "geaggregeerde transformatie groep op instellingen")
 
 > [!NOTE]
 > Een component Group by is optioneel in een geaggregeerde trans formatie.

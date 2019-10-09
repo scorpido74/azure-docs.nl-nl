@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/2/2019
+ms.date: 10/7/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e6776d7ff21599a1cfab47fd0e4ab0fbef5d3d8c
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 5132581c3d79db88dabc3c20ac3b962226d8a12d
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827101"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72025845"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Releasegeschiedenis van versie
 Het Azure Active Directory (Azure AD)-team werkt Azure AD Connect regel matig bij met nieuwe functies en functionaliteit. Niet alle toevoegingen zijn van toepassing op alle doel groepen.
@@ -45,6 +45,8 @@ Niet alle versies van Azure AD Connect worden beschikbaar gesteld voor automatis
 
 ## <a name="14250"></a>1.4.25.0
 
+
+
 ### <a name="release-status"></a>Release status
 9/28/2019: Vrijgegeven voor automatische upgrade om tenants te selecteren. Niet beschikbaar voor downloaden.
 
@@ -56,12 +58,15 @@ Onder bepaalde omstandigheden werden servers die automatisch zijn bijgewerkt naa
 
 ## <a name="14180"></a>1.4.18.0
 
+>[!WARNING]
+>Er wordt een incident onderzocht waarbij sommige klanten een probleem ondervinden met bestaande Hybrid Azure AD-apparaten die zijn toegevoegd na de upgrade naar deze versie van Azure AD Connect. Wij adviseren klanten die hybride Azure AD-deelname hebben geïmplementeerd om de upgrade naar deze versie uit te stellen totdat de hoofd oorzaak van deze problemen volledig is begrepen en wordt verholpen. Meer informatie wordt zo snel mogelijk verstrekt.
+
 >[!IMPORTANT]
 >Met deze versie van Azure AD Connect kunnen sommige klanten sommige of alle Windows-apparaten zien, verdwijnen van Azure AD. Dit is geen oorzaak van bezorgdheid, omdat deze apparaat-id's niet worden gebruikt door Azure AD tijdens de autorisatie van voorwaardelijke toegang. Zie [Wat is Azure AD Connect 1.4. xx. x-apparaat disappearnce](reference-connect-device-disappearance.md) voor meer informatie.
 
 
 ### <a name="release-status"></a>Release status
-9/25/2019: Uitgebracht voor automatische upgrade en downloaden
+9/25/2019: Verwijderd uit hand matig downloaden totdat het incident onderzoek is voltooid.
 
 ### <a name="new-features-and-improvements"></a>Nieuwe functies en verbeteringen
 - Nieuw hulp programma voor probleem oplossing helpt bij het oplossen van problemen ' gebruiker niet synchroniseren ', ' groep niet synchroniseren ' of ' geen synchronisatie van groeps leden '.
@@ -103,7 +108,7 @@ Onder bepaalde omstandigheden werden servers die automatisch zijn bijgewerkt naa
 >[!IMPORTANT]
 >Er is een bekend probleem met het upgraden van Azure AD Connect van een eerdere versie naar 1.3.21.0, waarbij de O365-Portal niet overeenkomt met de bijgewerkte versie, zelfs als Azure AD Connect is bijgewerkt.
 >
-> Als u dit probleem wilt oplossen, moet u de **AdSync** -module importeren`Set-ADSyncDirSyncConfiguration` en vervolgens de Power shell-cmdlet op de Azure AD Connect-server uitvoeren.  U kunt de volgende stappen uitvoeren:
+> Als u dit probleem wilt oplossen, moet u de **AdSync** -module importeren en vervolgens de @ no__t-1 Power shell-cmdlet uitvoeren op de Azure AD Connect-server.  U kunt de volgende stappen uitvoeren:
 >
 >1. Power shell in de modus beheerder openen
 >2. Voer `Import-Module "ADSync"` uit.
@@ -352,7 +357,7 @@ Status 4/12/2018: Alleen uitgebracht voor downloaden
 >[!NOTE]
 >Deze versie is een hotfix voor Azure AD Connect
 
-### <a name="azure-ad-connect-sync"></a>Azure AD Connect synchroniseren
+### <a name="azure-ad-connect-sync"></a>Azure AD Connect-synchronisatie
 #### <a name="fixed-issues"></a>Problemen opgelost
 Correctie van een probleem was automatische Azure-exemplaar detectie voor China-tenants af en toe mislukt.  
 
@@ -460,7 +465,7 @@ Vergrendel de toegang tot het AD DS-account door de volgende machtigings wijzigi
 *   Verwijder alle Ace's van het specifieke object, met uitzonde ring van Ace's die specifiek voor zichzelf zijn. We willen de standaard machtigingen intact houden wanneer het gaat om zelf.
 *   Wijs deze specifieke machtigingen toe:
 
-type     | Name                          | Toegang               | Van toepassing op
+type     | Name                          | Access               | Van toepassing op
 ---------|-------------------------------|----------------------|--------------|
 Allow    | OPGEHAALD                        | Volledig beheer         | Dit object  |
 Allow    | Ondernemings Administrators             | Volledig beheer         | Dit object  |
@@ -468,10 +473,10 @@ Allow    | Domein Administrators                 | Volledig beheer         | Dit
 Allow    | Beheerders                | Volledig beheer         | Dit object  |
 Allow    | Ondernemings domein controllers | Inhoud weer geven        | Dit object  |
 Allow    | Ondernemings domein controllers | Alle eigenschappen lezen  | Dit object  |
-Allow    | Ondernemings domein controllers | Machtigingen lezen     | Dit object  |
+Allow    | Ondernemings domein controllers | Lees machtigingen     | Dit object  |
 Allow    | Geverifieerde gebruikers           | Inhoud weer geven        | Dit object  |
 Allow    | Geverifieerde gebruikers           | Alle eigenschappen lezen  | Dit object  |
-Allow    | Geverifieerde gebruikers           | Machtigingen lezen     | Dit object  |
+Allow    | Geverifieerde gebruikers           | Lees machtigingen     | Dit object  |
 
 Als u de instellingen voor het AD DS-account wilt verhogen, kunt u [Dit Power shell-script](https://gallery.technet.microsoft.com/Prepare-Active-Directory-ef20d978)uitvoeren. Het Power shell-script wijst de machtigingen die hierboven worden genoemd toe aan het AD DS-account.
 
@@ -651,7 +656,7 @@ Status: 23 2017 juli
 
 * Er is een probleem opgelost waarbij het [filter scherm voor domein en organisatie-eenheid](how-to-connect-install-custom.md#domain-and-ou-filtering) in de wizard Azure AD Connect de optie *alle domeinen en organisatie-eenheden synchroniseren* wordt weer gegeven, zelfs als het filteren op basis van een organisatie is ingeschakeld.
 
-*   Er is een probleem opgelost dat ertoe heeft geleid dat het [scherm mappartities configureren](how-to-connect-sync-configure-filtering.md#organizational-unitbased-filtering) in de Synchronization Service Manager een fout retourneert als op de knop *vernieuwen* wordt geklikt. Het fout bericht is *' er is een fout opgetreden bij het vernieuwen van domeinen: Kan een object van het type System. Collections. array List niet casten naar het type micro soft. Directory Services. MetadirectoryServices. UI. PropertySheetBase. MaPropertyPages. PartitionObject.* De fout treedt op wanneer er een nieuw AD-domein is toegevoegd aan een bestaand AD-forest en u probeert Azure AD Connect bij te werken met behulp van de knop Vernieuwen.
+*   Er is een probleem opgelost dat ertoe heeft geleid dat het [scherm mappartities configureren](how-to-connect-sync-configure-filtering.md#organizational-unitbased-filtering) in de Synchronization Service Manager een fout retourneert als op de knop *vernieuwen* wordt geklikt. Het fout bericht is *' er is een fout opgetreden tijdens het vernieuwen van domeinen: Kan een object van het type System. Collections. array List niet casten naar het type micro soft. Directory Services. MetadirectoryServices. UI. PropertySheetBase. MaPropertyPages. PartitionObject.* De fout treedt op wanneer er een nieuw AD-domein is toegevoegd aan een bestaand AD-forest en u probeert Azure AD Connect bij te werken met behulp van de knop Vernieuwen.
 
 #### <a name="new-features-and-improvements"></a>Nieuwe functies en verbeteringen
 
@@ -666,7 +671,7 @@ Status: 23 2017 juli
   * De functie voor het terugschrijven van gebruikers is ingeschakeld.
   
   >[!NOTE]
-  >De bereik uitbreiding van de functie voor automatische upgrades is van invloed op klanten met Azure AD Connect build 1.1.105.0 en after. Als u niet wilt dat uw Azure AD Connect-server automatisch wordt bijgewerkt, moet u de volgende cmdlet uitvoeren op uw Azure AD Connect- `Set-ADSyncAutoUpgrade -AutoUpgradeState disabled`server:. Raadpleeg voor meer informatie over het in-en uitschakelen van automatische upgrade [naar artikel Azure AD Connect: Automatische upgrade](how-to-connect-install-automatic-upgrade.md).
+  >De bereik uitbreiding van de functie voor automatische upgrades is van invloed op klanten met Azure AD Connect build 1.1.105.0 en after. Als u niet wilt dat uw Azure AD Connect-server automatisch wordt bijgewerkt, moet u de volgende cmdlet uitvoeren op uw Azure AD Connect-server: `Set-ADSyncAutoUpgrade -AutoUpgradeState disabled`. Raadpleeg voor meer informatie over het in-en uitschakelen van automatische upgrade verwijzen we naar artikel [Azure AD Connect: Automatische upgrade](how-to-connect-install-automatic-upgrade.md).
 
 ## <a name="115580"></a>1.1.558.0
 Status: Wordt niet vrijgegeven. Wijzigingen in deze build zijn opgenomen in versie 1.1.561.0.
@@ -679,7 +684,7 @@ Status: Wordt niet vrijgegeven. Wijzigingen in deze build zijn opgenomen in vers
 
 * Er is een probleem opgelost waarbij het [filter scherm voor domein en organisatie-eenheid](how-to-connect-install-custom.md#domain-and-ou-filtering) in de wizard Azure AD Connect de optie *alle domeinen en organisatie-eenheden synchroniseren* wordt weer gegeven, zelfs als het filteren op basis van een organisatie is ingeschakeld.
 
-*   Er is een probleem opgelost dat ertoe heeft geleid dat het [scherm mappartities configureren](how-to-connect-sync-configure-filtering.md#organizational-unitbased-filtering) in de Synchronization Service Manager een fout retourneert als op de knop *vernieuwen* wordt geklikt. Het fout bericht is *' er is een fout opgetreden bij het vernieuwen van domeinen: Kan een object van het type System. Collections. array List niet casten naar het type micro soft. Directory Services. MetadirectoryServices. UI. PropertySheetBase. MaPropertyPages. PartitionObject.* De fout treedt op wanneer er een nieuw AD-domein is toegevoegd aan een bestaand AD-forest en u probeert Azure AD Connect bij te werken met behulp van de knop Vernieuwen.
+*   Er is een probleem opgelost dat ertoe heeft geleid dat het [scherm mappartities configureren](how-to-connect-sync-configure-filtering.md#organizational-unitbased-filtering) in de Synchronization Service Manager een fout retourneert als op de knop *vernieuwen* wordt geklikt. Het fout bericht is *' er is een fout opgetreden tijdens het vernieuwen van domeinen: Kan een object van het type System. Collections. array List niet casten naar het type micro soft. Directory Services. MetadirectoryServices. UI. PropertySheetBase. MaPropertyPages. PartitionObject.* De fout treedt op wanneer er een nieuw AD-domein is toegevoegd aan een bestaand AD-forest en u probeert Azure AD Connect bij te werken met behulp van de knop Vernieuwen.
 
 #### <a name="new-features-and-improvements"></a>Nieuwe functies en verbeteringen
 
@@ -694,7 +699,7 @@ Status: Wordt niet vrijgegeven. Wijzigingen in deze build zijn opgenomen in vers
   * De functie voor het terugschrijven van gebruikers is ingeschakeld.
   
   >[!NOTE]
-  >De bereik uitbreiding van de functie voor automatische upgrades is van invloed op klanten met Azure AD Connect build 1.1.105.0 en after. Als u niet wilt dat uw Azure AD Connect-server automatisch wordt bijgewerkt, moet u de volgende cmdlet uitvoeren op uw Azure AD Connect- `Set-ADSyncAutoUpgrade -AutoUpgradeState disabled`server:. Raadpleeg voor meer informatie over het in-en uitschakelen van automatische upgrade [naar artikel Azure AD Connect: Automatische upgrade](how-to-connect-install-automatic-upgrade.md).
+  >De bereik uitbreiding van de functie voor automatische upgrades is van invloed op klanten met Azure AD Connect build 1.1.105.0 en after. Als u niet wilt dat uw Azure AD Connect-server automatisch wordt bijgewerkt, moet u de volgende cmdlet uitvoeren op uw Azure AD Connect-server: `Set-ADSyncAutoUpgrade -AutoUpgradeState disabled`. Raadpleeg voor meer informatie over het in-en uitschakelen van automatische upgrade verwijzen we naar artikel [Azure AD Connect: Automatische upgrade](how-to-connect-install-automatic-upgrade.md).
 
 ## <a name="115570"></a>1.1.557.0
 Status: 2017 juli
@@ -708,7 +713,7 @@ Status: 2017 juli
 * Er is een probleem opgelost met de cmdlet Initialize-ADSyncDomainJoinedComputerSync die het geverifieerde domein heeft veroorzaakt dat is geconfigureerd op het bestaande Service Connection Point-object dat moet worden gewijzigd, zelfs als het nog een geldig domein is. Dit probleem treedt op wanneer uw Azure AD-Tenant meer dan één geverifieerde domeinen heeft die kan worden gebruikt voor het configureren van het service verbindings punt.
 
 #### <a name="new-features-and-improvements"></a>Nieuwe functies en verbeteringen
-* Wacht woord terugschrijven is nu beschikbaar voor Preview met Microsoft Azure Government Cloud en Microsoft Cloud Duitsland. Raadpleeg voor meer informatie over de ondersteuning van Azure AD Connect voor de verschillende service-exemplaren [artikel Azure AD Connect: Speciale overwegingen voor exemplaren](reference-connect-instances.md).
+* Wacht woord terugschrijven is nu beschikbaar voor Preview met Microsoft Azure Government Cloud en Microsoft Cloud Duitsland. Raadpleeg voor meer informatie over Azure AD Connect ondersteuning voor de verschillende service-exemplaren artikel [Azure AD Connect: Speciale overwegingen voor instanties @ no__t-0.
 
 * De cmdlet Initialize-ADSyncDomainJoinedComputerSync heeft nu een nieuwe optionele para meter met de naam AzureADDomain. Met deze para meter kunt u opgeven welk geverifieerd domein moet worden gebruikt voor het configureren van het service verbindings punt.
 
@@ -803,7 +808,7 @@ CBool(
     |CertFriendlyName|certThumbprint|CertExtensionOids|
     |CertFormat|CertNotAfter|CertPublicKeyOid|
     |CertSerialNumber|CertNotBefore|CertPublicKeyParametersOid|
-    |CertVersion|CertSignatureAlgorithmOid|Selecteren|
+    |CertVersion|CertSignatureAlgorithmOid|Selecteer|
     |CertKeyAlgorithmParams|CertHashString|Waar|
     |||Met|
 
@@ -839,7 +844,7 @@ CBool(
   * https://ccs.login.microsoftonline.com/login.srf
   * https://ccs-sdf.login.microsoftonline.com/login.srf
   
-* Er is een probleem opgelost waardoor AD FS onjuiste claim waarde voor IssuerID genereren. Het probleem treedt op als er meerdere geverifieerde domeinen in de Azure AD-Tenant zijn en het domein achtervoegsel van het kenmerk userPrincipalName dat wordt gebruikt voor het genereren van de IssuerID-claim ten minste 3 johndoe@us.contoso.comniveaus diep is (bijvoorbeeld). Het probleem wordt opgelost door de regex bij te werken die wordt gebruikt door de claim regels.
+* Er is een probleem opgelost waardoor AD FS onjuiste claim waarde voor IssuerID genereren. Het probleem treedt op als er meerdere geverifieerde domeinen in de Azure AD-Tenant zijn en het domein achtervoegsel van het kenmerk userPrincipalName dat wordt gebruikt voor het genereren van de IssuerID-claim ten minste 3 niveaus diep is (bijvoorbeeld johndoe@us.contoso.com). Het probleem wordt opgelost door de regex bij te werken die wordt gebruikt door de claim regels.
 
 #### <a name="new-features-and-improvements"></a>Nieuwe functies en verbeteringen
 * Voorheen kan de AD FS-functie voor certificaat beheer van Azure AD Connect alleen worden gebruikt met ADFS-Farms die worden beheerd via Azure AD Connect. Nu kunt u de functie gebruiken met ADFS-Farms die niet worden beheerd met Azure AD Connect.
@@ -854,10 +859,10 @@ Uitgebracht Mei 2017
 
 **Opgeloste problemen:**
 
-Azure AD Connect synchroniseren
+Azure AD Connect-synchronisatie
 
 * Er is een probleem opgelost dat ervoor zorgt dat automatische upgrades op de Azure AD Connect-server worden uitgevoerd, zelfs als de klant de functie heeft uitgeschakeld met de cmdlet Set-ADSyncAutoUpgrade. Met deze oplossing controleert het automatische upgrade proces op de server regel matig op upgrade, maar het gedownloade installatie programma voldoet aan de automatische upgrade configuratie.
-* Tijdens het DirSync-in-place upgrade maakt Azure AD Connect een Azure AD-service account dat door de Azure AD-connector moet worden gebruikt om te synchroniseren met Azure AD. Nadat het account is gemaakt, wordt Azure AD Connect met behulp van het account geverifieerd bij Azure AD. Soms mislukt de verificatie vanwege tijdelijke problemen, waardoor DirSync in-place upgrade mislukt met fout *' er is een fout opgetreden tijdens het uitvoeren van de taak voor het configureren van Aad Sync: AADSTS50034: Als u zich wilt aanmelden bij deze toepassing, moet het account worden toegevoegd aan de xxx.onmicrosoft.com-map.* Azure AD Connect probeert nu de verificatie stap opnieuw uit te proberen om de tolerantie van de upgrade van DirSync te verbeteren.
+* Tijdens het DirSync-in-place upgrade maakt Azure AD Connect een Azure AD-service account dat door de Azure AD-connector moet worden gebruikt om te synchroniseren met Azure AD. Nadat het account is gemaakt, wordt Azure AD Connect met behulp van het account geverifieerd bij Azure AD. Soms mislukt de verificatie vanwege tijdelijke problemen, waardoor DirSync in-place upgrade mislukt met fout *' er is een fout opgetreden tijdens het uitvoeren van de taak voor het configureren van AAD Sync: AADSTS50034: Als u zich wilt aanmelden bij deze toepassing, moet het account worden toegevoegd aan de xxx.onmicrosoft.com-map.* Azure AD Connect probeert nu de verificatie stap opnieuw uit te proberen om de tolerantie van de upgrade van DirSync te verbeteren.
 * Er is een probleem opgetreden met Build 443 waardoor DirSync in-place upgrade slagen, maar het uitvoeren van profielen die vereist zijn voor Directory synchronisatie, worden niet gemaakt. Retouch Logic is opgenomen in deze build van Azure AD Connect. Wanneer de klant upgrades naar deze build uitvoert, detecteert Azure AD Connect ontbrekende run-profielen en maakt ze deze.
 * Er is een probleem opgelost waardoor het wachtwoord synchronisatie proces niet kan worden gestart met gebeurtenis-ID 6900 en fout *' een item met dezelfde sleutel is al toegevoegd '* . Dit probleem treedt op als u de OE-filter configuratie bijwerkt met AD-configuratie partitie. Om dit probleem op te lossen, synchroniseert het wachtwoord synchronisatie proces nu alleen wachtwoord wijzigingen van AD-domein partities. Niet-domein partities, zoals configuratie partitie, worden overgeslagen.
 * Tijdens de snelle installatie maakt Azure AD Connect een on-premises AD DS-account dat door de AD-connector moet worden gebruikt om te communiceren met on-premises AD. Voorheen werd het account gemaakt met de vlag PASSWD_NOTREQD ingesteld op het kenmerk User-Account-Control en wordt een wille keurig wacht woord ingesteld voor het account. Nu verwijdert Azure AD Connect expliciet de vlag PASSWD_NOTREQD nadat het wacht woord is ingesteld voor het account.
@@ -866,12 +871,12 @@ Azure AD Connect synchroniseren
 * Als u het filteren van OE wilt configureren, kunt u de Azure AD Connect wizard of de Synchronization Service Manager gebruiken. Als u eerder de wizard Azure AD Connect gebruikt voor het configureren van de OE-filtering, worden nieuwe organisatie-eenheden die daarna zijn gemaakt, opgenomen voor Directory synchronisatie. Als u niet wilt dat er nieuwe organisatie-eenheden worden opgenomen, moet u de OE-filtering configureren met behulp van de Synchronization Service Manager. Nu kunt u hetzelfde gedrag doen met behulp van Azure AD Connect wizard.
 * Er is een probleem opgelost dat ervoor zorgt dat opgeslagen procedures die door Azure AD Connect worden vereist, worden gemaakt onder het schema van de installatie beheerder in plaats van onder het dbo-schema.
 * Er is een probleem opgelost waardoor het TrackingId-kenmerk dat door Azure AD wordt geretourneerd, wordt wegge laten in de gebeurtenis logboeken van de AAD Connect-server. Het probleem treedt op als Azure AD Connect een omleidings bericht ontvangt van Azure AD en Azure AD Connect geen verbinding kan maken met het gegeven eind punt. De TrackingId wordt gebruikt door ondersteunings technici tijdens het oplossen van problemen met logboeken aan de service zijde.
-* Wanneer Azure AD Connect een LargeObject-fout ontvangt van Azure AD, Azure AD Connect een gebeurtenis gegenereerd met de gebeurtenis *-Event-code 6941 en het bericht ' het ingerichte object is te groot. Het aantal kenmerk waarden voor dit object bijsnijden. "* Terzelfder tijd genereert Azure AD Connect ook een misleidende gebeurtenis met 6900 gebeurtenis-ProvisionRetryException en *bericht ' micro soft. online. samen werking.: Kan niet communiceren met de Windows Azure Active Directory-service. "* Om Verwar ring te minimaliseren, wordt Azure AD Connect niet langer de laatste gebeurtenis gegenereerd wanneer er een LargeObject-fout wordt ontvangen.
+* Wanneer Azure AD Connect een LargeObject-fout ontvangt van Azure AD, Azure AD Connect een gebeurtenis gegenereerd 6941 met gebeurtenis-en bericht *, het ingerichte object te groot is. Het aantal kenmerk waarden voor dit object bijsnijden. "* Terzelfder tijd genereert Azure AD Connect ook een misleidende gebeurtenis met 6900 gebeurtenis-ProvisionRetryException en bericht *' micro soft. online. samen werking.: Kan niet communiceren met de Windows Azure Active Directory-service. "* Om Verwar ring te minimaliseren, wordt Azure AD Connect niet langer de laatste gebeurtenis gegenereerd wanneer er een LargeObject-fout wordt ontvangen.
 * Er is een probleem opgelost waardoor het Synchronization Service Manager niet meer reageert wanneer u de configuratie voor de algemene LDAP-connector probeert bij te werken.
 
 **Nieuwe functies/verbeteringen:**
 
-Azure AD Connect synchroniseren
+Azure AD Connect-synchronisatie
 * Wijzigingen in regels synchroniseren: de volgende wijzigingen in de synchronisatie regel zijn geïmplementeerd:
   * De standaard instelling voor de synchronisatie regel is bijgewerkt, zodat de kenmerken **userCertificate** en **userSMIMECertificate** niet worden geëxporteerd als de kenmerken meer dan 15 waarden bevatten.
   * AD-kenmerk- **employeeID** en **msExchBypassModerationLink** zijn nu opgenomen in de standaard set met synchronisatie regels.
@@ -879,7 +884,7 @@ Azure AD Connect synchroniseren
   * **PreferredDataLocation** toegevoegd aan het omgekeerde schema en Aad connector-schema. Klanten die beide kenmerken in azure AD willen bijwerken, kunnen hiervoor aangepaste synchronisatie regels implementeren. 
   * **User type** toegevoegd aan het omgekeerde schema en Aad connector-schema. Klanten die beide kenmerken in azure AD willen bijwerken, kunnen hiervoor aangepaste synchronisatie regels implementeren.
 
-* Azure AD Connect wordt nu automatisch het kenmerk ConsistencyGuid voor het kenmerk bron anker ingeschakeld voor on-premises AD-objecten. Verder vult Azure AD Connect het kenmerk ConsistencyGuid in met de kenmerk waarde objectGuid als dit leeg is. Deze functie is alleen van toepassing op nieuwe implementatie. Raadpleeg voor meer informatie over deze functie de sectie [artikel Azure AD Connect: Ontwerp concepten: gebruik MS-DS-ConsistencyGuid als source Anchor](plan-connect-design-concepts.md#using-ms-ds-consistencyguid-as-sourceanchor).
+* Azure AD Connect wordt nu automatisch het kenmerk ConsistencyGuid voor het kenmerk bron anker ingeschakeld voor on-premises AD-objecten. Verder vult Azure AD Connect het kenmerk ConsistencyGuid in met de kenmerk waarde objectGuid als dit leeg is. Deze functie is alleen van toepassing op nieuwe implementatie. Raadpleeg voor meer informatie over deze functie de sectie artikel [Azure AD Connect: Ontwerp concepten-gebruik MS-DS-ConsistencyGuid als source Anchor @ no__t-0.
 * Er is een nieuwe probleemoplossings cmdlet invoke-ADSyncDiagnostics toegevoegd om te helpen bij het vaststellen van problemen met de wachtwoord-hash-synchronisatie. Raadpleeg voor meer informatie over het gebruik van de cmdlet het artikel [problemen met wachtwoord-hash-synchronisatie met Azure AD Connect synchronisatie oplossen](tshoot-connect-password-hash-synchronization.md).
 * Azure AD Connect ondersteunt nu het synchroniseren van open bare mapitems-objecten van on-premises AD naar Azure AD. U kunt de functie inschakelen met behulp van Azure AD Connect wizard onder optionele functies. Raadpleeg voor meer informatie over deze functie, artikel [Office 365 op basis van een rand ondersteuning voor open bare mappen die zijn ingeschakeld voor on-premises e-mail](https://blogs.technet.microsoft.com/exchange/2017/05/19/office-365-directory-based-edge-blocking-support-for-on-premises-mail-enabled-public-folders).
 * Azure AD Connect moet een AD DS-account zijn om te synchroniseren vanuit on-premises AD. Als u eerder Azure AD Connect hebt geïnstalleerd met behulp van de Express-modus, kunt u de referenties van een ondernemings Administrator-account opgeven en Azure AD Connect het vereiste AD DS account maken. Voor een aangepaste installatie en het toevoegen van forests aan een bestaande implementatie, moet u echter het AD DS-account opgeven. U hebt nu ook de mogelijkheid om de referenties van een ondernemings Administrator-account op te geven tijdens een aangepaste installatie. u kunt Azure AD Connect het AD DS account maken dat vereist is.
@@ -911,7 +916,7 @@ Uitgebracht April 2017
 
 **Opgeloste problemen:**
 
-Azure AD Connect synchroniseren
+Azure AD Connect-synchronisatie
 * Er is een probleem opgelost waarbij de synchronisatie planner de volledige synchronisatie stap overs laat als een of meer connectors het uitvoerings profiel voor die synchronisatie stap ontbreken. U hebt bijvoorbeeld hand matig een connector toegevoegd met behulp van de Synchronization Service Manager zonder dat er een Delta-import profiel wordt gemaakt. Met deze oplossing wordt ervoor gezorgd dat de synchronisatie planner de Delta-import voor andere connectors blijft uitvoeren.
 * Er is een probleem opgelost waarbij de synchronisatie service onmiddellijk stopt met het verwerken van een uitvoerings profiel wanneer er een probleem optreedt bij een van de uitvoerings stappen. Deze oplossing zorgt ervoor dat de synchronisatie service deze stap overs laat en de rest blijft verwerken. U hebt bijvoorbeeld een Delta-import profiel voor de AD-connector met meerdere uitvoerings stappen (één voor elk on-premises AD-domein). De synchronisatie service voert Delta-import uit met de andere AD-domeinen, zelfs als een van deze problemen heeft met de netwerk verbinding.
 * Er is een probleem opgelost dat ervoor zorgt dat de update van de Azure AD-connector wordt overgeslagen tijdens de automatische upgrade.
@@ -927,7 +932,7 @@ Desktop-SSO
 
 **Nieuwe functies/verbeteringen:**
 
-Azure AD Connect synchroniseren
+Azure AD Connect-synchronisatie
 * Azure AD Connect Sync ondersteunt nu het gebruik van het virtuele-service account, het beheerde service account en het door de groep beheerde service account als service account. Dit geldt alleen voor nieuwe installatie van Azure AD Connect. Bij de installatie van Azure AD Connect:
     * Azure AD Connect wizard maakt standaard een virtueel service-account en gebruikt dit als service account.
     * Als u op een domein controller installeert, wordt Azure AD Connect terugvallen op het vorige gedrag waarbij een domein gebruikers account wordt gemaakt en in plaats daarvan als service account wordt gebruikt.
@@ -953,7 +958,7 @@ Uitgebracht Maart 2017
 
 **Opgeloste problemen:**
 
-Azure AD Connect synchroniseren
+Azure AD Connect-synchronisatie
 * Er is een probleem opgelost waardoor Azure AD Connect wizard mislukt als de weergave naam van de Azure AD-connector niet het eerste onmicrosoft.com-domein bevat dat is toegewezen aan de Azure AD-Tenant.
 * Er is een probleem opgelost waardoor Azure AD Connect wizard mislukt tijdens het maken van verbinding met SQL database wanneer het wacht woord van het synchronisatie service account speciale tekens bevat zoals apostrof, dubbele punt en spatie.
 * Er is een probleem opgelost waardoor de fout wordt veroorzaakt door de installatie kopie die afwijkt van de installatie kopie op een Azure AD Connect server in de faserings modus, nadat u een on-premises AD-object tijdelijk hebt uitgesloten van synchronisatie en vervolgens opnieuw hebt opgenomen voor synchronisatie.
@@ -972,7 +977,7 @@ Wachtwoord opnieuw instellen
 
 **Nieuwe functies/verbeteringen:**
 
-Azure AD Connect synchroniseren
+Azure AD Connect-synchronisatie
 * De cmdlet Get-ADSyncScheduler retourneert nu een nieuwe Boole-eigenschap met de naam SyncCycleInProgress. Als de geretourneerde waarde True is, betekent dit dat er een geplande synchronisatie cyclus wordt uitgevoerd.
 * De doelmap voor het opslaan van Azure AD Connect installatie-en Setup-logboeken is verplaatst van%localappdata%\AADConnect naar%programdata%\AADConnect om de toegankelijkheid van de logboek bestanden te verbeteren.
 
@@ -1114,7 +1119,7 @@ Uitgebracht Februari 2016
 
 * Upgrade van eerdere versies werkt niet als de installatie zich niet in de standaardmap C:\Program Files bevindt.
 * Als u het **synchronisatie proces** aan het einde van de installatie wizard installeert en wist, wordt de scheduler niet ingeschakeld door de installatie wizard opnieuw uit te voeren.
-* De scheduler werkt niet zoals verwacht op servers waarop de US-en datum/tijd-indeling niet wordt gebruikt. Er wordt ook geblokkeerd `Get-ADSyncScheduler` om de juiste tijden te retour neren.
+* De scheduler werkt niet zoals verwacht op servers waarop de US-en datum/tijd-indeling niet wordt gebruikt. Ook wordt `Get-ADSyncScheduler` geblokkeerd voor het retour neren van de juiste tijden.
 * Als u een eerdere versie van Azure AD Connect hebt geïnstalleerd met AD FS als de aanmeldings optie en upgrade, kunt u de installatie wizard niet opnieuw uitvoeren.
 
 ## <a name="111050"></a>1.1.105.0
@@ -1124,8 +1129,8 @@ Uitgebracht Februari 2016
 
 * [Automatische upgrade](how-to-connect-install-automatic-upgrade.md) functie voor klanten van snelle instellingen.
 * Ondersteuning voor de globale beheerder met behulp van Azure Multi-Factor Authentication en Privileged Identity Management in de installatie wizard.
-  * U moet ervoor zorgen dat uw proxy ook verkeer https://secure.aadcdn.microsoftonline-p.com toestaat als u multi-factor Authentication gebruikt.
-  * U moet toevoegen https://secure.aadcdn.microsoftonline-p.com aan de lijst met vertrouwde websites om multi-factor Authentication goed te kunnen werken.
+  * U moet ervoor zorgen dat uw proxy ook verkeer naar https://secure.aadcdn.microsoftonline-p.com toestaat als u Multi-Factor Authentication gebruikt.
+  * U moet https://secure.aadcdn.microsoftonline-p.com toevoegen aan de lijst met vertrouwde sites, zodat Multi-Factor Authentication goed werkt.
 * Het wijzigen van de aanmeldings methode van de gebruiker na de initiële installatie toestaan.
 * [Domein-en OE-filtering](how-to-connect-install-custom.md#domain-and-ou-filtering) toestaan in de installatie wizard. Hierdoor kunt u ook verbinding maken met forests waar niet alle domeinen beschikbaar zijn.
 * [Scheduler](how-to-connect-sync-feature-scheduler.md) is ingebouwd in de synchronisatie-engine.

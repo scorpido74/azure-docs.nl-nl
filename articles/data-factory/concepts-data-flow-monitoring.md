@@ -1,57 +1,57 @@
 ---
-title: Azure Data Factory toewijzing gegevensstroom visueel bewaken
-description: Visueel bewaken Azure Data Factory gegevens stromen
+title: Visuele bewaking van gegevens stroom Azure Data Factory toewijzing
+description: Azure Data Factory gegevens stromen visueel bewaken
 author: kromerm
 ms.author: makromer
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 02/01/2019
-ms.openlocfilehash: 90aa6261aebb9d1f7da89c101854bad8061dd6ff
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 10/07/2019
+ms.openlocfilehash: 41b4b7cd911bad40055fcf527c186f8de9466cdc
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61268994"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72030225"
 ---
-# <a name="monitor-data-flows"></a>Gegevensoverdrachten van monitor
+# <a name="monitor-data-flows"></a>Gegevens stromen bewaken
 
-[!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
-Nadat u ontwikkeling en foutopsporing van uw gegevensstroom hebt voltooid, wilt u de gegevensstroom uit te voeren volgens een schema in de context van een pijplijn plannen. U kunt de pijplijn van Azure Data Factory met behulp van Triggers plannen. Of u de optie nu activeren in de opbouwfunctie voor Azure Data Factory-pijplijn kunt gebruiken voor het uitvoeren van een uitvoering van één uitvoeren als u wilt testen van de gegevensstroom binnen de context van de pijplijn.
 
-Als u uw pijplijn uitvoert, kunt u zich voor het bewaken van de pijplijn en alle activiteiten die zijn opgenomen in de pijplijn met inbegrip van de activiteit gegevens stromen. Klik op het pictogram van de monitor in het linkerdeelvenster van Azure Data Factory-gebruikersinterface. U ziet een scherm zoals hieronder wordt weergegeven. De gemarkeerde pictogrammen kunt u inzoomen op de activiteiten in de pijplijn, met inbegrip van de activiteit gegevens stromen.
+Nadat u klaar bent met het maken en opsporen van fouten in uw gegevens stroom, moet u de gegevens stroom plannen om uit te voeren volgens een schema in de context van een pijp lijn. U kunt de pijp lijn plannen vanuit Azure Data Factory met behulp van triggers. U kunt ook de optie nu activeren van de opbouw functie voor het Azure Data Factory pijp lijn gebruiken om een uitvoering met één uitvoering uit te voeren om uw gegevens stroom in de pijplijn context te testen.
 
-<img src="media/data-flow/mon001.png" width="800">
+Wanneer u de pijp lijn uitvoert, kunt u de pijp lijn en alle activiteiten in de pijp lijn bewaken, met inbegrip van de activiteit gegevens stroom. Klik op het pictogram monitor in het deel venster aan de linkerkant Azure Data Factory gebruikers interface. Er wordt een scherm weer gegeven dat er ongeveer als volgt uitziet. Met de gemarkeerde pictogrammen kunt u inzoomen op de activiteiten in de pijp lijn, met inbegrip van de activiteit gegevens stroom.
 
-U ziet statistieken op dit niveau als goed inculding de uitvoeringstijden en -status. De ID worden uitgevoerd op het activiteitenniveau van de verschilt dat de Run-ID op het pijplijnniveau van de. De ID worden uitgevoerd op het niveau van de vorige is voor de pijplijn. Te klikken op de bril krijgt u uitgebreide informatie op de uitvoering van de stroom van uw gegevens.
+Bewaking van gegevens(media/data-flow/mon001.png "stroom") ![bewaking van gegevens stroom]
 
-<img src="media/data-flow/mon002.png" width="800">
+Er worden statistieken op dit niveau weer geven, inclusief de uitvoerings tijden en de status. De run-ID op het activiteit niveau wijkt af van de run-ID op het pijplijn niveau. De uitvoerings-ID op het vorige niveau is voor de pijp lijn. Als u op de bril klikt, krijgt u gedetailleerde informatie over de uitvoering van de gegevens stroom.
 
-Wanneer u zich in het grafische knooppunt controle weergeven, ziet u een vereenvoudigde weergave alleen-lezen versie van uw gegevensstroom-grafiek.
+Bewaking van gegevens(media/data-flow/mon002.png "stroom") ![bewaking van gegevens stroom]
 
-<img src="media/data-flow/mon003.png" width="800">
+Wanneer u zich in de weer gave van het grafische knoop punt bevindt, ziet u een vereenvoudigde versie van uw gegevens stroom diagram.
 
-## <a name="view-data-flow-execution-plans"></a>Weergave Data-abonnementen voor uitvoering van Flow
+Bewaking van gegevens(media/data-flow/mon003.png "stroom") ![bewaking van gegevens stroom]
 
-Wanneer de stroom van gegevens wordt uitgevoerd in Databricks, bepaalt de Azure Data Factory optimale codepaden op basis van de entirity van de gegevensstroom. De uitvoering van paden kunnen ook optreden op verschillende knooppunten van de scale-out en gegevenspartities. De controle grafiek vertegenwoordigt daarom het ontwerp van uw stroom, rekening houdend met het uitvoeringspad van transformaties. Wanneer u op de afzonderlijke knooppunten klikt, ziet u 'groeperingen", waarbij de code die samen op het cluster is uitgevoerd. De tijdsinstellingen en aantallen die u ziet staan voor deze groepen in plaats van de afzonderlijke stappen in uw ontwerp.
+## <a name="view-data-flow-execution-plans"></a>Uitvoerings plannen voor gegevens stromen weer geven
 
-<img src="media/data-flow/mon004.png" width="800"> 
+Wanneer uw gegevens stroom in Spark wordt uitgevoerd, bepaalt Azure Data Factory optimale code paden op basis van het geheel van uw gegevens stroom. Daarnaast kunnen de uitvoerings paden optreden op verschillende scale-out knoop punten en gegevens partities. Daarom vertegenwoordigt de bewakings grafiek het ontwerp van uw stroom, waarbij rekening wordt gehouden met het pad van de uitvoering van de trans formaties. Wanneer u op afzonderlijke knoop punten klikt, worden ' groeperingen ' weer gegeven die de code vertegenwoordigen die samen in het cluster is uitgevoerd. De tijds instellingen en aantallen die u ziet, worden weer gegeven in plaats van de afzonderlijke stappen in uw ontwerp.
 
-* Wanneer u op de open ruimte in het venster bewaking klikt, de statistieken in het onderste deelvenster timing wordt weergegeven en rij voor elke Sink- en de transformaties die hebben geleid tot de sink-gegevens voor transformatie afkomst telt.
+Bewaking van gegevens(media/data-flow/mon004.png "stroom") ![bewaking van gegevens stroom]
 
-* Wanneer u afzonderlijke transformaties selecteert, ontvangt u aanvullende feedback in het rechter deelvenster waarin statistieken voor partitie, telt het aantal kolommen, asymmetrie (hoe gelijkmatig is de gegevens verdeeld over meerdere partities), en kurtosis (hoe spikey zijn de gegevens).
+* Wanneer u klikt op de open ruimte in het venster bewaking, worden in de statistieken in het onderste deel venster de timing en het aantal rijen weer gegeven voor elke Sink en de trans formaties die leiden tot de Sink-gegevens voor transformatie afkomst.
 
-* Wanneer u op de Sink in de weergave van het knooppunt klikt, ziet u afkomst van de kolom. Er zijn drie verschillende methoden die kolommen in de gegevensstroom naar komt u in de Sink wordt geteld. Dit zijn:
+* Wanneer u afzonderlijke trans formaties selecteert, ontvangt u extra feedback over het rechterdeel venster waarin de partitie statistieken, kolom aantallen, scheefheid (hoe gelijkmatig de gegevens worden verdeeld over verschillende partities) en kurtosis (hoe piekige de gegevens zijn) worden weer gegeven.
 
-  * Berekend: Gebruik de kolom voor voorwaardelijke verwerking of in een expressie in de gegevensstroom, maar niet terechtkomen in de Sink
-  * Afgeleid: De kolom is een nieuwe kolom die u hebt gegenereerd in de stroom, dat wil zeggen het is niet aanwezig in de bron
-  * Toegewezen: De kolom afkomstig is van de bron- en u deze toewijzen aan een sink-veld
+* Wanneer u in de weer gave knoop punt op de Sink klikt, wordt kolom afkomst weer gegeven. Er zijn drie verschillende methoden die kolommen tijdens de gegevens stroom in de Sink worden verzameld. Dit zijn:
+
+  * Berekende U gebruikt de kolom voor voorwaardelijke verwerking of binnen een expressie in uw gegevens stroom, maar niet in de Sink
+  * Vlees De kolom is een nieuwe kolom die u hebt gegenereerd in uw stroom, dat wil zeggen dat deze niet aanwezig is in de bron
+  * Verwezen De kolom is afkomstig uit de bron en wordt toegewezen aan een Sink-veld
   
-## <a name="monitor-icons"></a>Monitorpictogrammen
+## <a name="monitor-icons"></a>Bewaak pictogrammen
 
-Dit pictogram geeft aan dat de van Transformatiegegevens al in de cache op het cluster, opgeslagen is zodat de tijdsinstellingen en het uitvoeringspad die in aanmerking hebben genomen:
+Dit pictogram geeft aan dat de transformatie gegevens al in de cache zijn opgeslagen op het cluster, waardoor de timing en het uitvoerings traject hebben geduurd in het account:
 
-<img src="media/data-flow/mon005.png" width="800"> 
+Bewaking van gegevens(media/data-flow/mon004.png "stroom") ![bewaking van gegevens stroom]
 
-U ziet ook de groene cirkel pictogrammen in de transformatie. Ze vertegenwoordigen een telling van het aantal sinks die gegevens worden doorgestuurd naar.
+U ziet ook groene cirkel pictogrammen in de trans formatie. Ze vertegenwoordigen een telling van het aantal sinks dat de gegevens stromen.

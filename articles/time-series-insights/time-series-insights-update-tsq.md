@@ -8,14 +8,14 @@ manager: cshankar
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 08/08/2019
+ms.date: 10/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: 29418345aaa8042e50b1297541cac3af0a3c1504
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 7b7d041b678ccf2a476afc6d0744f6971349677e
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68935196"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72034877"
 ---
 # <a name="data-querying"></a>Query's uitvoeren op gegevens
 
@@ -35,14 +35,14 @@ De [tijd reeks expressie (TSX)](https://docs.microsoft.com/rest/api/time-series-
 
 De volgende kern-Api's worden ondersteund.
 
-[![Overzicht van de time series-query](media/v2-update-tsq/tsq.png)](media/v2-update-tsq/tsq.png#lightbox)
+[overzicht van de query ![Time reeks](media/v2-update-tsq/tsq.png)](media/v2-update-tsq/tsq.png#lightbox)
 
 ## <a name="environment-apis"></a>Omgevings-Api's
 
 De volgende omgevings-Api's zijn beschikbaar:
 
 * [Omgevings-API ophalen](https://docs.microsoft.com/rest/api/time-series-insights/preview-env#get-environments-api): Retourneert de lijst met omgevingen waarvoor de aanroeper gemachtigd is om toegang te krijgen.
-* [API voor omgevings beschikbaarheid ophalen](https://docs.microsoft.com/rest/api/time-series-insights/preview-env#get-environment-availability-api): Retourneert de verdeling van het aantal gebeurtenissen over het tijds `$ts`tempel van de gebeurtenis. Met deze API kunt u bepalen of er gebeurtenissen in de tijds tempel zijn door het aantal gebeurtenissen te retour neren, indien aanwezig.
+* [API voor omgevings beschikbaarheid ophalen](https://docs.microsoft.com/rest/api/time-series-insights/preview-env#get-environment-availability-api): Retourneert de verdeling van het aantal gebeurtenissen over het tijds tempel van de gebeurtenis `$ts`. Met deze API kunt u bepalen of er gebeurtenissen in de tijds tempel zijn door het aantal gebeurtenissen te retour neren, indien aanwezig.
 * [API voor gebeurtenis schema ophalen](https://docs.microsoft.com/rest/api/time-series-insights/preview-env#get-event-schema-api): Retourneert de meta gegevens van het gebeurtenis schema voor een opgegeven zoek reeks. Deze API helpt bij het ophalen van alle meta gegevens en eigenschappen die beschikbaar zijn in het schema voor de opgegeven zoek reeks.
 
 ## <a name="time-series-model-query-tsm-q-apis"></a>Time Series model-query (TSM-Q)-Api's
@@ -51,7 +51,7 @@ De volgende time series-model-query-Api's zijn beschikbaar:
 
 * [API voor model instellingen](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#model-settings-api): Hiermee wordt Get en patch voor het standaard type en de model naam van de omgeving ingeschakeld.
 * [Typen-API](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#types-api): Hiermee schakelt u ruw in voor tijdreeks typen en de bijbehorende variabelen.
-* [API](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#hierarchies-api)voor hiërarchieën: Maakt ruwe op de tijdreeks hiërarchieën en de bijbehorende veld paden.
+* [API voor hiërarchieën](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#hierarchies-api): Maakt ruwe op de tijdreeks hiërarchieën en de bijbehorende veld paden.
 * [API voor instanties](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#instances-api): Hiermee schakelt u ruw in voor de time series-instanties en de bijbehorende exemplaar velden.
 
 ## <a name="time-series-query-tsq-apis"></a>TSQ-Api's (Time Series query)
@@ -67,11 +67,11 @@ De volgende time series query-Api's zijn beschikbaar:
 
   De Get-reeks-API retourneert een time series-waarde voor elke variabele voor elk interval. Een time series-waarde is een indeling die Time Series Insights gebruikt voor het uitvoeren van JSON van een query. De geretourneerde waarden zijn gebaseerd op de tijd reeks-ID en de set variabelen die zijn opgegeven.
 
-* Aggregatie van de [Series-API](https://docs.microsoft.com/rest/api/time-series-insights/preview-query#aggregate-series-api): Maakt het mogelijk om gegevens op te vragen en op te Time Series Insights halen uit vastgelegde gebeurtenissen door de opgenomen gegevens te combi sampling en samen te voegen.
+* [Aggregatie](https://docs.microsoft.com/rest/api/time-series-insights/preview-query#aggregate-series-api)van de Series-API: Maakt het mogelijk om gegevens op te vragen en op te Time Series Insights halen uit vastgelegde gebeurtenissen door de opgenomen gegevens te combi sampling en samen te voegen.
 
   De verzamelings-API voor samen voegen retourneert een time series-waarde voor elke variabele voor elk interval. De waarden zijn gebaseerd op de tijd reeks-ID en de set variabelen die zijn opgegeven. De verzamelings-API voor samen voegen behaalt de reductie met behulp van variabelen die zijn opgeslagen in het time series-model of die inline zijn voor aggregatie of voorbeeld gegevens.
 
-  Ondersteunde aggregatie typen `Min`: `Max`, `Sum`, `Count`,,`Average`
+  Ondersteunde aggregatie typen: `Min`, `Max`, `Sum`, `Count`, `Average`
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/14/2018
+ms.date: 10/07/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b12acf083e83d42ff3e8d6967d747f4bb2d93543
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: 7241c8dfbedb24f95c29ea9e1c3f763218a5668d
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71960203"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72025673"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-frequently-asked-questions"></a>Azure Active Directory naadloze eenmalige aanmelding: Veelgestelde vragen
 
@@ -43,7 +43,7 @@ Nee. Naadloze SSO is alleen beschikbaar in het wereld wijde exemplaar van Azure 
 
 Hieronder vindt u een niet-limitatieve lijst met toepassingen die deze para meters naar Azure AD kunnen verzenden, en waarmee gebruikers zich op de achtergrond aanmelden met naadloze SSO (dat wil zeggen dat uw gebruikers geen gebruikers namen of wacht woorden hoeven in te voeren):
 
-| Toepassingsnaam | URL van de toepassing die moet worden gebruikt |
+| De naam van de toepassing | URL van de toepassing die moet worden gebruikt |
 | -- | -- |
 | Toegangsvenster | https: \//MyApps. Microsoft. com/contoso. com |
 | Outlook op Internet | https:\//outlook.office365.com/contoso.com |
@@ -51,7 +51,7 @@ Hieronder vindt u een niet-limitatieve lijst met toepassingen die deze para mete
 
 Daarnaast krijgen gebruikers een stille aanmeldings ervaring als een toepassing aanmeldings aanvragen verzendt naar de eind punten van Azure AD die als tenants zijn ingesteld, dat wil zeggen https: \//login. microsoftonline. com/contoso. com/<.. > of https: \//login. microsoftonline. com/< tenant_ID >/<.. >-in plaats van het algemene eind punt van Azure AD, dat wil zeggen, https: \//login. microsoftonline. com/common/<... >. Hieronder vindt u een niet-limitatieve lijst van toepassingen die deze typen aanmeldings aanvragen maken.
 
-| Toepassingsnaam | URL van de toepassing die moet worden gebruikt |
+| De naam van de toepassing | URL van de toepassing die moet worden gebruikt |
 | -- | -- |
 | SharePoint Online | https: \//contoso. share point. com |
 | Azure Portal | https: \//Portal. Azure. com/contoso. com |
@@ -96,7 +96,10 @@ Volg deze stappen op de on-premises server waarop u Azure AD Connect:
    1. Roep `$creds = Get-Credential` aan. Wanneer u hierom wordt gevraagd, voert u de referenties voor de domein beheerder in voor het beoogde AD-forest.
 
    > [!NOTE]
-   > We gebruiken de gebruikers naam van de domein beheerder, opgegeven in de indeling User Principal Names (UPN) (johndoe@contoso.com) of de indeling van het domein gekwalificeerde SAM-account naam (contoso\johndoe of contoso. com\johndoe) om het beoogde AD-forest te vinden. Als u domein gekwalificeerde SAM-account naam gebruikt, gebruiken we het domein gedeelte van de gebruikers naam voor [het zoeken van de domein controller van de domein beheerder met behulp van DNS](https://social.technet.microsoft.com/wiki/contents/articles/24457.how-domain-controllers-are-located-in-windows.aspx). Als u in plaats daarvan UPN gebruikt, [vertalen we het naar een domein gekwalificeerde SAM-account naam voordat u](https://docs.microsoft.com/windows/desktop/api/ntdsapi/nf-ntdsapi-dscracknamesa) de juiste domein controller zoekt.
+   >De gebruikers naam van de domein beheerder referenties moet worden opgegeven in de indeling SAM-account naam (contoso\johndoe of contoso. com\johndoe). We gebruiken het domein gedeelte van de gebruikers naam voor het zoeken van de domein controller van de domein beheerder met behulp van DNS.
+
+   >[!NOTE]
+   >Het domein beheerders account dat wordt gebruikt, mag geen lid zijn van de groep met beveiligde gebruikers. Als dit het geval is, mislukt de bewerking.
 
    2. Roep `Update-AzureADSSOForest -OnPremCredentials $creds` aan. Met deze opdracht wordt de Kerberos-ontsleutelings sleutel voor het `AZUREADSSOACC`-computer account in dit specifieke AD-forest bijgewerkt en bijgewerkt in azure AD.
    3. Herhaal de voor gaande stappen voor elk AD-forest waarop u de functie hebt ingesteld.

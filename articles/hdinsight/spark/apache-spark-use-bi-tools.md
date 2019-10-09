@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
-ms.date: 05/16/2019
-ms.openlocfilehash: bb803861fa64beb0b4afe2202230209493f42a1d
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.date: 10/03/2019
+ms.openlocfilehash: fe7560f68690233d7a333724274a259d693123d0
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71003681"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72035686"
 ---
 # <a name="tutorial-analyze-apache-spark-data-using-power-bi-in-hdinsight"></a>Zelfstudie: Gegevens van Apache Spark analyseren met Power BI in HDInsight
 
@@ -27,7 +27,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Voltooi de zelf [studie over het artikel: Gegevens laden en query's uitvoeren op een Apache Spark cluster in azure HDInsight](./apache-spark-load-data-run-query.md).
+* Voltooi het artikel [Tutorial: Gegevens laden en query's uitvoeren op een Apache Spark cluster in azure HDInsight @ no__t-0.
 
 * [Power bi Desktop](https://powerbi.microsoft.com/en-us/desktop/).
 
@@ -35,7 +35,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 ## <a name="verify-the-data"></a>De gegevens controleren
 
-Het [Jupyter Notebook](https://jupyter.org/) dat u hebt gemaakt in de [vorige zelfstudie](apache-spark-load-data-run-query.md) bevat code voor het maken van een `hvac`-tabel. Deze tabel is gebaseerd op het CSV-bestand dat beschikbaar is op alle HDInsight `\HdiSamples\HdiSamples\SensorSampleData\hvac\hvac.csv`Spark-clusters op. Gebruik de volgende procedure om de gegevens te controleren.
+Het [Jupyter Notebook](https://jupyter.org/) dat u hebt gemaakt in de [vorige zelfstudie](apache-spark-load-data-run-query.md) bevat code voor het maken van een `hvac`-tabel. Deze tabel is gebaseerd op het CSV-bestand dat beschikbaar is op alle HDInsight Spark-clusters op `\HdiSamples\HdiSamples\SensorSampleData\hvac\hvac.csv`. Gebruik de volgende procedure om de gegevens te controleren.
 
 1. Plak de volgende code uit het Jupyter-notebook en druk vervolgens op **Shift+Enter**. Deze code controleert of de tabellen bestaan.
 
@@ -74,17 +74,17 @@ De eerste stappen om te werken met Spark zijn verbinding maken met het cluster i
 > [!NOTE]  
 > De connector die in dit artikel wordt gedemonstreerd is momenteel in preview. Eventuele feedback kunt u doorgeven via de site [Power BI-Community](https://community.powerbi.com/) of via [Power BI Ideas](https://ideas.powerbi.com/forums/265200-power-bi-ideas).
 
-1. Open Power BI Desktop. Sluit het opstart scherm van de start als dit wordt geopend.
+1. Open Power BI Desktop. Sluit het opstart scherm als dit wordt geopend.
 
-2. Ga op het tabblad **Start** naar **gegevens** > ophalen **..** .
+2. Ga op het tabblad **Start** naar **gegevens ophalen** > **meer..** .
 
     ![Gegevens van HDInsight Apache Spark overbrengen naar Power BI Desktop](./media/apache-spark-use-bi-tools/hdinsight-spark-power-bi-desktop-get-data.png "Gegevens van HDInsight Apache Spark overbrengen naar Power BI Desktop")
 
-3. Voer `Spark` in het zoekvak het selectie vakje **Azure HDInsight Spark**in en selecteer vervolgens **verbinding maken**.
+3. Geef `Spark` op in het zoekvak, selecteer **Azure HDInsight Spark**en selecteer vervolgens **verbinding maken**.
 
     ![Gegevens van Apache Spark BI overbrengen naar Power BI](./media/apache-spark-use-bi-tools/apache-spark-bi-import-data-power-bi.png "Gegevens van Apache Spark BI overbrengen naar Power BI")
 
-4. Voer de cluster-URL (in het `mysparkcluster.azurehdinsight.net`formulier) in het tekstvak **Server** in.
+4. Voer de cluster-URL in (in de vorm `mysparkcluster.azurehdinsight.net`) in het tekstvak **Server** .
 
 5. Onder **modus voor gegevens connectiviteit**selecteert u **DirectQuery**. Selecteer vervolgens **OK**.
 
@@ -92,7 +92,7 @@ De eerste stappen om te werken met Spark zijn verbinding maken met het cluster i
 
 6. Voer de gegevens van het HDInsight-aanmeldings account in en selecteer vervolgens **verbinding maken**. De standaardaccountnaam is *admin*.
 
-7. Selecteer de `hvac` tabel, wacht tot er een voor beeld van de gegevens wordt weer gegeven en selecteer vervolgens **laden**.
+7. Selecteer de tabel `hvac`, wacht tot er een voor beeld van de gegevens wordt weer gegeven en selecteer vervolgens **laden**.
 
     ![Gebruikersnaam en wachtwoord voor Spark-cluster](./media/apache-spark-use-bi-tools/apache-spark-bi-select-table.png "Gebruikersnaam en wachtwoord voor Spark-cluster")
 
@@ -104,11 +104,11 @@ De eerste stappen om te werken met Spark zijn verbinding maken met het cluster i
 
     2. Sleep het veld **BuildingID** naar **As**, en sleep de velden **ActualTemp** en **TargetTemp** naar **Waarde**.
 
-        ![kolom met waarden toevoegen](./media/apache-spark-use-bi-tools/apache-spark-bi-add-value-columns.png "kolom met waarden toevoegen")
+        kolom met ![waarden toevoegen](./media/apache-spark-use-bi-tools/apache-spark-bi-add-value-columns.png "kolommen met waarden") toevoegen
 
         Het diagram ziet er zo uit:
 
-        ![som van gebieds grafiek](./media/apache-spark-use-bi-tools/apache-spark-bi-area-graph-sum.png "som van gebieds grafiek")
+        (./media/apache-spark-use-bi-tools/apache-spark-bi-area-graph-sum.png "som van grafiek totaal gebied") van ![gebieds grafiek]
 
         De visualisatie bevat standaard de som van **ActualTemp** en **TargetTemp**. Selecteer de pijl-omlaag naast **ActualTemp** en **TragetTemp** in het deel venster visualisaties, u kunt **Sum** selecteren.
 
@@ -118,13 +118,13 @@ De eerste stappen om te werken met Spark zijn verbinding maken met het cluster i
 
         De gegevensvisualisatie moet er ongeveer uitzien zoals in de schermafbeelding. Beweeg de cursor over de visualisatie om knopinfo met relevante gegevens weer te geven.
 
-        ![vlak diagram](./media/apache-spark-use-bi-tools/apache-spark-bi-area-graph.png "vlak diagram")
+        grafiek vlak ![grafiek](./media/apache-spark-use-bi-tools/apache-spark-bi-area-graph.png "gebied")
 
-9. Navigeer naar **bestand** > **Opslaan**, voer de naam `BuildingTemperature` in voor het bestand en selecteer vervolgens **Opslaan**.
+9. Navigeer naar **File** > **Save**, voer de naam `BuildingTemperature` in voor het bestand en selecteer vervolgens **Opslaan**.
 
 ### <a name="publish-the-report-to-the-power-bi-service-optional"></a>Het rapport publiceren naar de Power BI-service (optioneel)
 
-Met behulp van de Power BI-service kunt u rapporten en dashboards delen binnen uw organisatie. In dit gedeelte gaat u eerst de gegevensset en het rapport publiceren. Vervolgens maakt u het rapport vast aan een dashboard. Dashboards worden meestal gebruikt om te focussen op een subset van gegevens in een rapport. U hebt maar één visualisatie in uw rapport, maar het is toch handig om even de stappen te doorlopen.
+Met behulp van de Power BI-service kunt u rapporten en dashboards delen binnen uw organisatie. In dit gedeelte gaat u eerst de gegevensset en het rapport publiceren. Vervolgens maakt u het rapport vast aan een dashboard. Dash boards worden doorgaans gebruikt om zich te richten op een subset van gegevens in een rapport. U hebt slechts één visualisatie in het rapport, maar het is wel handig om de stappen door te lopen.
 
 1. Open Power BI Desktop.
 
@@ -174,7 +174,7 @@ De visualisatie wordt vastgemaakt aan het dashboard. U kunt andere visualisaties
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Nadat u de zelfstudie hebt voltooid, kunt u het cluster verwijderen. Met HDInsight worden uw gegevens opgeslagen in Azure Storage zodat u een cluster veilig kunt verwijderen wanneer deze niet wordt gebruikt. Voor een HDInsight-cluster worden ook kosten in rekening gebracht, zelfs wanneer het niet wordt gebruikt. Aangezien de kosten voor het cluster vaak zoveel hoger zijn dan de kosten voor opslag, is het financieel gezien logischer clusters te verwijderen wanneer ze niet worden gebruikt.
+Nadat u de zelfstudie hebt voltooid, kunt u het cluster verwijderen. Met HDInsight worden uw gegevens opgeslagen in Azure Storage, zodat u een cluster veilig kunt verwijderen wanneer deze niet in gebruik is. U betaalt ook voor een HDInsight-cluster, zelfs wanneer het niet in gebruik is. Omdat de kosten voor het cluster veel keren meer zijn dan de kosten voor opslag, is het economisch zinvol om clusters te verwijderen wanneer ze niet worden gebruikt.
 
 Als u een cluster wilt verwijderen, raadpleegt u [een HDInsight-cluster verwijderen met behulp van uw browser, Power shell of de Azure cli](../hdinsight-delete-cluster.md).
 

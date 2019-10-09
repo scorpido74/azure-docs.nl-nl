@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 9d85b5a72c2e37719348d61250d167eb9a5688a1
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: e7dc1e6c1bb1ca81ada59cb3dae8fecbc6452b7f
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240027"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72029781"
 ---
 # <a name="connect-data-from-microsoft-web-application-firewall"></a>Verbinding maken met gegevens van micro soft Web Application Firewall
 
@@ -40,10 +40,10 @@ Zodra uw micro soft-Web Application Firewall is geïmplementeerd en gegevens hee
     
 1. Selecteer in de Azure-Sentinel-Portal de optie **Data connectors**.
 1. Selecteer op de pagina Data connectors de tegel **WAF** .
-1. Ga naar [Application Gateway resource](https://ms.portal.azure.com/#blade/HubsExtension/BrowseAllResourcesBlade/resourceType/Microsoft.Network%2FapplicationGateways) en kies uw WAF.
-    1. Selecteer **Diagnostische instellingen**.
-    1. Selecteer **+ Diagnostische instelling toevoegen** onder de tabel.
-    1. Typ op de pagina **Diagnostische instellingen** een **naam** en selecteer **verzenden naar log Analytics**.
+1. Ga naar [Application Gateway resource](https://ms.portal.azure.com/#blade/HubsExtension/BrowseAllResourcesBlade/resourceType/Microsoft.Network%2FapplicationGateways) and Kies uw WAF.
+    1. Selecteer **Diagnostische instellingen**.
+    1. Selecteer **+ Diagnostische instelling toevoegen** onder de tabel.
+    1. Typ op de pagina **Diagnostische instellingen** een **naam** en selecteer **verzenden naar log Analytics**.
     1. Selecteer onder **log Analytics werk ruimte** de Azure Sentinel-werk ruimte.
     1. Selecteer de logboek typen die u wilt analyseren. We raden het volgende aan: ApplicationGatewayAccessLog en ApplicationGatewayFirewallLog.
 1. Als u het relevante schema in Log Analytics voor de micro soft Web Application Firewall-waarschuwingen wilt gebruiken, zoekt u naar **AzureDiagnostics**.

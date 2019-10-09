@@ -12,19 +12,22 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/18/2019
 ms.author: mbullwin
-ms.openlocfilehash: ac9bd6021b5fcec36e3aadfdf4c30020971f3be5
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 99a18125fa5ce07a46fcc1af554fd03746ebf110
+ms.sourcegitcommit: d773b5743cb54b8cbcfa5c5e4d21d5b45a58b081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71299252"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72038150"
 ---
 # <a name="explore-java-trace-logs-in-application-insights"></a>Java-traceer logboeken verkennen in Application Insights
 Als u logback of Log4J (v 1.2 of v 2.0) gebruikt voor tracering, kunt u uw traceer logboeken automatisch laten verzenden naar Application Insights waar u ze kunt verkennen en doorzoeken.
 
+> [!TIP]
+> U hoeft uw Application Insights instrumentatie sleutel slechts eenmaal in te stellen voor uw toepassing. Als u een framework zoals Java lente gebruikt, hebt u de sleutel mogelijk al elders in de configuratie van uw app geregistreerd.
+
 ## <a name="using-the-application-insights-java-agent"></a>De Application Insights Java-Agent gebruiken
 
-U kunt de Application Insights Java-agent zo configureren dat uw logboeken automatisch worden vastgelegd door de functie `AI-Agent.xml` in het bestand in te scha kelen:
+U kunt de Application Insights Java-agent zo configureren dat uw logboeken automatisch worden vastgelegd door de functie in het bestand `AI-Agent.xml` in te scha kelen:
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -92,7 +95,7 @@ Vernieuw vervolgens de Project afhankelijkheden om de binaire bestanden te downl
 ```
 
 #### <a name="if-youre-using-gradle"></a>Als u Gradle gebruikt...
-Als uw project al is ingesteld voor het gebruik van Gradle voor Build, voegt u een van de volgende regels `dependencies` toe aan de groep in uw build. Gradle-bestand:
+Als uw project al is ingesteld voor het gebruik van Gradle voor Build, voegt u een van de volgende regels toe aan de groep `dependencies` in uw build. Gradle-bestand:
 
 Vernieuw vervolgens de Project afhankelijkheden om de binaire bestanden te downloaden.
 

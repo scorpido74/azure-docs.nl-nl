@@ -1,36 +1,36 @@
 ---
-title: Azure Data Factory-stroom verplaatsen gegevensknooppunten
-description: Het verplaatsen van knooppunten in een Azure Data Factory toewijzing gegevensstroom-Diagram
+title: Knoop punten Azure Data Factory gegevens stroom verplaatsen
+description: Knoop punten verplaatsen in een diagram met Azure Data Factory toewijzings gegevens stroom
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/04/2018
-ms.openlocfilehash: 951a5d4fcbd561b085b0377bde48e820dc8972a2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 853fff955a953052b94ad4e7e1dd55371069c30b
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65519959"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72030184"
 ---
-# <a name="mapping-data-flow-move-nodes"></a>Toewijzing van gegevensknooppunten stroom verplaatsen
+# <a name="mapping-data-flow-move-nodes"></a>Gegevens stroom koppelen knoop punten verplaatsen
 
-[!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
-![Opties voor transformatie aggregeren](media/data-flow/agghead.png "aggregator koptekst")
 
-Het ontwerpoppervlak gegevensstroom van Azure Data Factory is een oppervlak "bouwen" waar u gegevensstromen van boven naar beneden, links-naar-rechts maken. Er is een werkset die is gekoppeld aan elke transformatie met een plusteken (+) symbool. Zich concentreren op uw bedrijfslogica in plaats van de knooppunten via randen in de omgeving van een vrije DAG verbinding te maken.
+![Cumulatieve transformatie opties](media/data-flow/agghead.png "aggregator-koptekst")
 
-Dus zonder een paradigma slepen en neerzetten, de manier om een knooppunt transformatie 'verplaatsen' is te wijzigen van de stroom inkomende. In plaats daarvan, verplaatst u transformaties om door te wijzigen van de 'binnenkomende stream'.
+Het ontwerp oppervlak voor Azure Data Factory gegevens stroom is een constructie-Opper vlak waar u gegevens stromen van boven naar beneden bouwt, van links naar rechts. Er is een werkset aan elke trans formatie gekoppeld met een plus teken (+). Richt u op uw bedrijfs logica in plaats van knoop punten te verbinden via randen in een vrije-vorm DAG-omgeving.
 
-## <a name="streams-of-data-inside-of-data-flow"></a>Gegevensstromen in de gegevensstroom
+Als u dus zonder een model voor slepen en neerzetten een trans formatie-knoop punt wilt verplaatsen, wijzigt u de inkomende stroom. In plaats daarvan gaat u trans formaties verplaatsen door de "binnenkomende stroom" te wijzigen.
 
-In Azure Data Factory-gegevensstroom vertegenwoordigen stromen de stroom van gegevens. De instellingen voor transformatie in het deelvenster ziet u een veld 'Binnenkomende stoom'. Hiermee wordt aangegeven welke binnenkomende gegevensstroom is deze transformatie. U kunt de fysieke locatie van de transformatie-knooppunt in de grafiek wijzigen door te klikken op de naam van de binnenkomende Stream en selecteren van een andere stroom van gegevens. De huidige transformatie samen met alle volgende transformaties voor deze stroom wordt vervolgens naar de nieuwe locatie verplaatsen.
+## <a name="streams-of-data-inside-of-data-flow"></a>Gegevens stromen in gegevens stroom
 
-Als u een transformatie met een of meer transformaties nadat deze zijn verplaatst, wordt de nieuwe locatie in de gegevensstroom worden gekoppeld via een nieuwe vertakking.
+In Azure Data Factory gegevens stroom vertegenwoordigen streams de stroom van gegevens. In het deel venster trans formatie-instellingen wordt het veld "binnenkomende stoom" weer geven. Zo weet u welke binnenkomende gegevens stroom de trans formatie verfeedt. U kunt de fysieke locatie van uw transformatie knooppunt in de grafiek wijzigen door te klikken op de naam van de inkomende stroom en een andere gegevens stroom te selecteren. De huidige trans formatie en alle daaropvolgende transformaties voor die stroom worden vervolgens verplaatst naar de nieuwe locatie.
 
-Hebt u geen verdere transformaties na het knooppunt dat u hebt geselecteerd, wordt alleen deze transformatie verplaatsen naar de nieuwe locatie.
+Als u een trans formatie met een of meer transformaties verplaatst, wordt de nieuwe locatie in de gegevens stroom gekoppeld via een nieuwe vertakking.
+
+Als u geen daaropvolgende trans formaties hebt nadat het knoop punt dat u hebt geselecteerd, wordt alleen dat transformatie verplaatst naar de nieuwe locatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Na het voltooien van het ontwerp van de gegevensstroom, schakelt u de knop foutopsporing op en test deze uit in de foutopsporingsmodus ofwel rechtstreeks in de [gegevens stroomontwerpfunctie](concepts-data-flow-debug-mode.md) of [pijplijn foutopsporing](control-flow-execute-data-flow-activity.md).
+Nadat u het ontwerp van de gegevens stroom hebt voltooid, schakelt u de knop fout opsporing in en test u deze in de foutopsporingsmodus rechtstreeks in de [Data flow Designer](concepts-data-flow-debug-mode.md) of de [fout opsporing voor de pijp lijn](control-flow-execute-data-flow-activity.md).

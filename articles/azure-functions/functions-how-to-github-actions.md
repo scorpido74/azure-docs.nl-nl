@@ -7,12 +7,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: aelnably
-ms.openlocfilehash: 8e9e1189c3eb9de273926645ad0d4cfde5ba1c49
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 483ac9380fa8d58f294112cb6c80e0393fa01589
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71260047"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72028958"
 ---
 # <a name="continuous-delivery-by-using-github-action"></a>Continue levering met behulp van GitHub-actie
 
@@ -23,15 +23,15 @@ Met [github acties](https://github.com/features/actions) kunt u een werk stroom 
 
 In GitHub acties is een [werk stroom](https://help.github.com/articles/about-github-actions#workflow) een geautomatiseerd proces dat u in uw github-opslag plaats definieert. Dit proces vertelt u GitHub hoe u uw functions-app-project bouwt en implementeert op GitHub. 
 
-Een werk stroom wordt gedefinieerd door een yaml-bestand (. yml) `/.github/workflows/` in het pad in uw opslag plaats. Deze definitie bevat de verschillende stappen en para meters die deel uitmaken van de werk stroom. 
+Een werk stroom wordt gedefinieerd door een YAML-bestand (. yml) in het pad `/.github/workflows/` in uw opslag plaats. Deze definitie bevat de verschillende stappen en para meters die deel uitmaken van de werk stroom. 
 
 Voor een Azure Functions werk stroom heeft het bestand drie secties: 
 
 | Section | Taken |
 | ------- | ----- |
-| **Verificatie** | <ol><li>Definieer een service-principal.</li><li>Maak een GitHub-geheim.</li></ol>|  
+| **Verificatie** | <ol><li>Definieer een service-principal.</li><li>Publicatie profiel downloaden.</li><li>Maak een GitHub-geheim.</li></ol>|
 | **PE** | <ol><li>Stel de omgeving in.</li><li>De functie-app bouwen.</li></ol> |
-| **Implementeren** | <ol><li>Implementeer de functie-app.</li></ol>| 
+| **Implementeren** | <ol><li>Implementeer de functie-app.</li></ol>|
 
 ## <a name="create-a-service-principal"></a>Een service-principal maken
 
@@ -43,16 +43,27 @@ az ad sp create-for-rbac --name "myApp" --role contributor --scopes /subscriptio
 
 In dit voor beeld vervangt u de tijdelijke aanduidingen in de resource door uw abonnements-ID, resource groep en naam van de functie-app. De uitvoer is de roltoewijzings referenties die toegang bieden tot uw functie-app. Kopieer dit JSON-object, dat u kunt gebruiken om te verifiëren vanuit GitHub.
 
+> [!NOTE]
+> U hoeft geen service-principal te maken als u het publicatie profiel voor verificatie wilt gebruiken.
+
 > [!IMPORTANT]
 > Het is altijd een goed idee om minimale toegang te verlenen. Daarom is de scope in het vorige voor beeld beperkt tot de specifieke functie-app en niet de hele resource groep.
 
+## <a name="download-the-publishing-profile"></a>Het publicatie profiel downloaden
+
+U kunt het publicatie Profiel van uw functionapp downloaden door naar de pagina **overzicht** van uw app te gaan en te klikken op **publicatie profiel ophalen**.
+
+   ![Publicatie profiel downloaden](media/functions-how-to-github-actions/get-publish-profile.png)
+
+Kopieer de inhoud van het bestand.
+
 ## <a name="configure-the-github-secret"></a>Het GitHub-geheim configureren
 
-1. In [github](https://github.com)gaat u naar uw opslag plaats en selecteert u **instellingen** > **geheimen** > **een nieuw geheim toevoegen**.
+1. In [github](https://github.com)gaat u naar uw opslag plaats, selecteert u **instellingen** > **geheimen** > **een nieuw geheim toevoegen**.
 
-    ![Geheim toevoegen](media/functions-how-to-github-actions/add-secret.png)
+   ![Geheim toevoegen](media/functions-how-to-github-actions/add-secret.png)
 
-1. Gebruik `AZURE_CREDENTIALS` voor de **naam** en de gekopieerde uitvoer van de opdracht voor **waarde**en selecteer vervolgens **geheim toevoegen**. 
+1. Gebruik `AZURE_CREDENTIALS` voor de **naam** en de gekopieerde uitvoer van de opdracht voor **waarde**. Als u vervolgens **geheim toevoegen**selecteert. Als u een publicatie profiel gebruikt, gebruikt u `SCM_CREDENTIALS` voor de **naam** en de bestands inhoud voor **waarde**.
 
 GitHub kan nu worden geverifieerd bij uw functie-app in Azure.
 
@@ -187,7 +198,7 @@ In de volgende voor beelden ziet u het deel van de werk stroom waarmee de functi
 
 ## <a name="deploy-the-function-app"></a>De functie-app implementeren
 
-Als u uw code wilt implementeren in een functie-app, moet u de `Azure/functions-action` actie gebruiken. Deze actie heeft twee para meters:
+Als u uw code wilt implementeren in een functie-app, moet u de actie `Azure/functions-action` gebruiken. Deze actie heeft twee para meters:
 
 |Parameter |Uitleg  |
 |---------|---------|
@@ -195,7 +206,7 @@ Als u uw code wilt implementeren in een functie-app, moet u de `Azure/functions-
 |_**sleuf naam**_ | Beschrijving De naam van de [implementatie sleuf](functions-deployment-slots.md) waarnaar u wilt implementeren. De sleuf moet al zijn gedefinieerd in uw functie-app. |
 
 
-In het volgende voor beeld wordt versie 1 `functions-action`van gebruikt:
+In het volgende voor beeld wordt versie 1 van de `functions-action` gebruikt:
 
 ```yaml
     - name: 'Run Azure Functions Action'
@@ -207,7 +218,7 @@ In het volgende voor beeld wordt versie 1 `functions-action`van gebruikt:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als u een volledige werk stroom. yaml wilt weer geven, raadpleegt u een van de bestanden in de [werk stroom voor beelden van Azure github actions opslag plaats](https://github.com/Azure/actions-workflow-samples) die in de naam staan `functionapp` . U kunt deze voor beelden gebruiken als uitgangs punt voor uw werk stroom.
+Als u een volledige werk stroom. yaml wilt weer geven, raadpleegt u een van de bestanden in de [werk stroom voor beelden van Azure github actions opslag plaats](https://github.com/Azure/actions-workflow-samples) met `functionapp` in de naam. U kunt deze voor beelden gebruiken als uitgangs punt voor uw werk stroom.
 
 > [!div class="nextstepaction"]
 > [Meer informatie over GitHub-acties](https://help.github.com/en/articles/about-github-actions)

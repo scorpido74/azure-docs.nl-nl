@@ -12,12 +12,12 @@ ms.manager: carmonm
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 04/25/2019
-ms.openlocfilehash: c9248e5bcc9ebd819518b6ee609f529ea9b8f8bc
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 194004362449f2f59a53d45e18e8dd72a29cc79a
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70051693"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72029579"
 ---
 # <a name="quickstart-create-automated-tasks-processes-and-workflows-with-azure-logic-apps---visual-studio"></a>Quickstart: Geautomatiseerde taken, processen en werk stromen maken met Azure Logic Apps-Visual Studio
 
@@ -27,7 +27,7 @@ Als u niet bekend bent met Azure Logic Apps en alleen de basis concepten wilt, p
 
 In deze Quick Start maakt u dezelfde logische app met Visual Studio als Azure Portal Quick Start. Deze logische app bewaakt de RSS-feed van een website en verzendt e-mail voor elk nieuw item in die feed. Uw voltooide logische app ziet eruit als deze werk stroom op hoog niveau:
 
-![Voltooide logische app](./media/quickstart-create-logic-apps-with-visual-studio/overview.png)
+![Overzicht van de werk stroom voor logische apps op hoog niveau](./media/quickstart-create-logic-apps-with-visual-studio/high-level-workflow-overview.png)
 
 <a name="prerequisites"></a>
 
@@ -76,14 +76,14 @@ Om te beginnen, maakt u een [Azure-resourcegroepproject](../azure-resource-manag
 
 1. In het menu **File** selecteert u **New** > **Project**. Toetsen Ctrl+Shift+N)
 
-   ![In het menu File selecteert u New > Project](./media/quickstart-create-logic-apps-with-visual-studio/create-new-visual-studio-project.png)
+   ![Nieuw Visual Studio-project maken](./media/quickstart-create-logic-apps-with-visual-studio/create-new-visual-studio-project.png)
 
 1. Onder **Installed**, selecteert u **Visual C#** of **Visual Basic**. Selecteer **Cloud** > **Azure Resource Group**. Geef uw project een naam, bijvoorbeeld:
 
    ![Een Azure-resourcegroepproject maken](./media/quickstart-create-logic-apps-with-visual-studio/create-azure-cloud-service-project.png)
 
    > [!NOTE]
-   > Namen van resource groepen mogen alleen letters, cijfers, punten (`.`), onderstrepings tekens (`_`), afbreek streepjes`-`() en haakjes (`(`, `)`) bevatten, maar mogen niet *eindigen* op`.`een punt ().
+   > Namen van resource groepen mogen alleen letters, cijfers, punten (`.`), onderstrepings tekens (`_`), afbreek streepjes (`-`) en haakjes (`(`, `)`) bevatten, maar mogen niet *eindigen* op een punt (`.`).
    >
    > Als de **Cloud** of **Azure-resource groep** niet wordt weer gegeven, moet u de Azure SDK voor Visual Studio installeren.
 
@@ -95,7 +95,7 @@ Om te beginnen, maakt u een [Azure-resourcegroepproject](../azure-resource-manag
 
 1. Selecteer in de lijst sjabloon de sjabloon **Logic app** . Kies **OK**.
 
-   ![Sjabloon voor Logic App kiezen](./media/quickstart-create-logic-apps-with-visual-studio/select-logic-app-template.png)
+   ![Selecteer de sjabloon logische app voor het maken van het project](./media/quickstart-create-logic-apps-with-visual-studio/select-logic-app-template.png)
 
    Nadat Visual Studio het project maakt, wordt Solution Explorer geopend en ziet u uw oplossing. 
    In uw oplossing slaat het bestand **LogicApp. json** niet alleen de definitie van de logische app op, maar is ook een Azure Resource Manager sjabloon die u voor implementatie kunt gebruiken.
@@ -142,7 +142,7 @@ Typ ' RSS ' in het zoekvak. Selecteer in de lijst triggers deze trigger: **Wanne
 
 1. Nadat de trigger wordt weer gegeven in de ontwerp functie, voltooit u de logische app met de werk stroom stappen in de [Snelstartgids van Azure Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md#add-rss-trigger)en gaat u terug naar dit artikel. Wanneer u klaar bent, ziet uw logische app eruit zoals in dit voorbeeld:
 
-   ![Voltooide logische app](./media/quickstart-create-logic-apps-with-visual-studio/finished-logic-app.png)
+   ![Voltooide voorbeeld werk stroom voor logische apps](./media/quickstart-create-logic-apps-with-visual-studio/finished-logic-app-workflow.png)
 
 1. Sla uw Visual Studio-oplossing op. Toetsen Ctrl + S)
 
@@ -154,7 +154,7 @@ Voordat u uw logische app kunt uitvoeren en testen, implementeert u de app in az
 
 1. Selecteer in Solution Explorer in het snelmenu van uw project **Implementeren** > **Nieuw**. Meld u aan met uw Azure-account als u daarom wordt gevraagd.
 
-   ![Een logische app-implementatie maken](./media/quickstart-create-logic-apps-with-visual-studio/create-logic-app-deployment.png)
+   ![Nieuwe implementatie van een logische app maken](./media/quickstart-create-logic-apps-with-visual-studio/create-logic-app-deployment.png)
 
 1. Voor deze implementatie moet u het standaard Azure-abonnement, de resource groep en andere instellingen blijven gebruiken. Kies **implementeren**.
 
@@ -166,18 +166,18 @@ Voordat u uw logische app kunt uitvoeren en testen, implementeert u de app in az
 
    Wanneer de implementatie wordt gestart, wordt de status van de implementatie van uw app weergegeven in het **Uitvoer**-venster van Visual Studio. Als de status niet wordt weergegeven, opent u de lijst **Uitvoer tonen van** en selecteert u uw Azure-resourcegroep.
 
-   ![Uitvoer implementatiestatus](./media/quickstart-create-logic-apps-with-visual-studio/logic-app-output-window.png)
+   ![De implementatie status in het Visual Studio-uitvoer venster](./media/quickstart-create-logic-apps-with-visual-studio/logic-app-output-window.png)
 
    Als uw geselecteerde connectors invoer nodig hebben, wordt er een Power shell-venster geopend op de achtergrond en wordt u gevraagd om de benodigde wacht woorden of geheime sleutels. Nadat u deze gegevens hebt ingevoerd, wordt de implementatie voortgezet.
 
-   ![Power shell-venster](./media/quickstart-create-logic-apps-with-visual-studio/logic-apps-powershell-window.png)
+   ![Power shell-prompt voor wacht woorden of geheime sleutels](./media/quickstart-create-logic-apps-with-visual-studio/logic-apps-powershell-window.png)
 
    Nadat de implementatie is voltooid, is de logische app in de Azure Portal live en wordt deze uitgevoerd op uw opgegeven planning (elke minuut). Als de trigger nieuwe feed-items vindt, wordt de trigger geactiveerd, waarmee een werk stroom exemplaar wordt gemaakt waarmee de acties van uw logische app worden uitgevoerd. Uw logische app verzendt e-mail voor elk nieuw item. Als de trigger geen nieuwe items kan vinden, wordt de trigger niet geactiveerd en wordt de werk stroom niet meer door "overs Laan" verzonden. Uw logische app wacht tot het volgende interval voor de controle.
 
    Hier vindt u voor beelden van e-mail berichten die deze logische app verzendt. 
    Als u geen een e-mailberichten ontvangt, controleert u de map Ongewenste e-mail.
 
-   ![Outlook verzendt een e-mail voor elk nieuw RSS-item](./media/quickstart-create-logic-apps-with-visual-studio/outlook-email.png)
+   ![Outlook verzendt een e-mail voor elk nieuw RSS-item](./media/quickstart-create-logic-apps-with-visual-studio/example-outlook-email.png)
 
 Gefeliciteerd, u hebt uw logische app gemaakt en geïmplementeerd met Visual Studio. Zie [Logische apps beheren met Visual Studio](../logic-apps/manage-logic-apps-with-visual-studio.md) om uw logische app te beheren en de uitvoeringsgeschiedenis te inspecteren.
 
@@ -185,17 +185,17 @@ Gefeliciteerd, u hebt uw logische app gemaakt en geïmplementeerd met Visual Stu
 
 Wanneer u een bestaand project van een Azure-resource groep hebt, kunt u een nieuwe, lege logische app toevoegen aan dat project met behulp van het JSON-overzichts venster.
 
-1. Open het `<logic-app-name>.json` bestand in Solution Explorer.
+1. Open het bestand `<logic-app-name>.json` in Solution Explorer.
 
-1. Selecteer in het menu **weer gave** andere**JSON-overzicht**van **Windows** > .
+1. Selecteer in het menu **weer gave** de optie andere JSON-**overzicht**van **Windows** > .
 
 1. Als u een resource wilt toevoegen aan het sjabloon bestand, kiest u **resource toevoegen** boven aan het venster JSON-overzicht. Of met de rechtermuisknop in het venster JSON Outline **resources**, en selecteer **nieuwe Resource toevoegen**.
 
-   ![Venster JSON-overzicht](./media/quickstart-create-logic-apps-with-visual-studio/jsonoutline.png)
+   ![Voeg in het venster JSON-overzicht een nieuwe resource toe](./media/quickstart-create-logic-apps-with-visual-studio/json-outline-window-add-resource.png)
 
 1. In de **Resource toevoegen** in het dialoogvenster, zoeken en selecteer **logische App**. De naam van uw logische app, en kies **toevoegen**.
 
-   ![Resource toevoegen](./media/quickstart-create-logic-apps-with-visual-studio/addresource.png)
+   ![Nieuwe logische app-resource toevoegen aan project](./media/quickstart-create-logic-apps-with-visual-studio/add-logic-app-resource.png)
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
@@ -208,7 +208,7 @@ Selecteer de resource groep van uw logische app en selecteer **overzicht**.
 
 1. Kies op de pagina **Overzicht** de optie **Resourcegroep verwijderen**. Voer ter bevestiging de naam van de resourcegroep in en kies **Verwijderen**.
 
-   !['Resourcegroepen' > 'Overzicht' > 'Resourcegroep verwijderen'](./media/quickstart-create-logic-apps-with-visual-studio/delete-resource-group.png)
+   ![Resourcegroep van logische app verwijderen](./media/quickstart-create-logic-apps-with-visual-studio/delete-resource-group.png)
 
 1. Verwijder de Visual Studio-oplossing van uw lokale computer.
 

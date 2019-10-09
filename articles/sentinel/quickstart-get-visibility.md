@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: c81f4cacd4c93d681122f3c8cd692ca8645288af
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: 676a41b64b79be6b11c3ef22b34d3de0e37e2a92
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240090"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72023805"
 ---
 # <a name="quickstart-get-started-with-azure-sentinel"></a>Quickstart: Aan de slag met Azure Sentinel
 
@@ -72,14 +72,14 @@ Ingebouwde werkmappen bieden geïntegreerde gegevens van uw verbonden gegevens b
       ![PAL Alto-dash board](./media/qs-get-visibility/palo-alto-week-query.png)
 
 
-U kunt de werkmappen aanpassen door de knop ![](./media/qs-get-visibility/edit-query-button.png)hoofd query te bewerken. U kunt klikken op de ![knop](./media/qs-get-visibility/go-to-la-button.png) om naar [log Analytics te gaan om de query daar te bewerken](../azure-monitor/log-query/get-started-portal.md), en u kunt het weglatings teken (...) selecteren en **tegel gegevens aanpassen**selecteren, zodat u het filter voor de hoofdtijden kan bewerken of verwijderen. specifieke tegels uit de werkmap.
+U kunt de werkmappen aanpassen door de hoofd query te bewerken ![button @ no__t-1. U kunt klikken op de knop ![button @ no__t-1 om naar [log Analytics te gaan om de query daar te bewerken](../azure-monitor/log-query/get-started-portal.md), en u kunt het weglatings teken (...) selecteren en **tegel gegevens aanpassen**selecteren, zodat u het filter voor de hoofdtijden kan bewerken, of de specifieke tegels uit kunt verwijderen de werkmap.
 
-Zie [zelf studie voor meer informatie over het werken met query's: Visuele gegevens in Log Analytics](../azure-monitor/learn/tutorial-logs-dashboards.md)
+Zie [Tutorial voor meer informatie over het werken met query's: Visuele gegevens in Log Analytics @ no__t-0
 
 ### <a name="add-a-new-tile"></a>Een nieuwe tegel toevoegen
 
 Als u een nieuwe tegel wilt toevoegen, kunt u deze toevoegen aan een bestaande werkmap, een van de elementen die u maakt of een ingebouwde Azure-Sentinel-werkmap. 
-1. Maak in log Analytics een tegel met behulp van de instructies [in de zelf studie: Visuele gegevens in Log Analytics](../azure-monitor/learn/tutorial-logs-dashboards.md). 
+1. Maak in Log Analytics een tegel met behulp van de instructies in [Tutorial: Visuele gegevens in Log Analytics @ no__t-0. 
 2. Nadat de tegel is gemaakt, selecteert u onder **pincode**de werkmap waarin u de tegel wilt weer geven.
 
 ## <a name="create-new-workbooks"></a>Nieuwe werkmappen maken
@@ -122,11 +122,11 @@ Genereer detecties op de [gegevens bronnen die u hebt verbonden met Azure Sentin
 
 Wanneer u een nieuwe detectie maakt, moet u gebruikmaken van de ingebouwde detecties die zijn gemaakt door micro soft-beveiligings onderzoekers die zijn afgestemd op de gegevens bronnen die u hebt verbonden.
 
-Als u alle opstaande detecties wilt weer geven, gaat u naar **Analytics** en vervolgens op **regel sjablonen**. Dit tabblad bevat alle ingebouwde Azure Sentinel-regels.
+Als u alle opstaande detecties wilt weer geven, gaat u naar **Analytics** en vervolgens op **regel sjablonen**. Dit tabblad bevat alle ingebouwde Azure Sentinel-regels.
 
    ![Ingebouwde detecties gebruiken om bedreigingen te vinden met Azure Sentinel](media/tutorial-detect-built-in/view-oob-detections.png)
 
-Zie [zelf studie voor meer informatie over het ophalen van out-of-Box-detecties: Ingebouwde analyses](tutorial-detect-threats-built-in.md)ophalen.
+Zie [Tutorial voor meer informatie over het ophalen van out-of-Box-detecties: Maak een ingebouwde versie van no__t-0.
  
 ## <a name="next-steps"></a>Volgende stappen
 In deze Snelstartgids hebt u geleerd hoe u aan de slag kunt met Azure Sentinel. Ga door naar de zelf studie voor [het detecteren van bedreigingen](tutorial-detect-threats-built-in.md).

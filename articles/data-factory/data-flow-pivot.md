@@ -6,35 +6,35 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: 0b68007f8c3383997f0d31888198af866d38b590
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: 1412f7d822d83a8712d27dd4e86311567d6ac714
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71178659"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72029309"
 ---
 # <a name="azure-data-factory-pivot-transformation"></a>Trans formatie van Azure data factory Pivot
-[!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
+
 
 Gebruik Pivot in ADF-gegevens stroom als aggregatie waarbij een of meer groeperings kolommen de afzonderlijke rijwaarden in afzonderlijke kolommen hebben getransformeerd. In wezen kunt u rij-waarden in nieuwe kolommen draaien (gegevens omzetten in meta gegevens).
 
-![Opties voor draai diagram](media/data-flow/pivot1.png "draai tabel 1")
+![Draai opties](media/data-flow/pivot1.png "draai tabel 1")
 
 ## <a name="group-by"></a>Groeperen op
 
-![Opties voor draai diagram](media/data-flow/pivot2.png "draai tabel 2")
+![Draai opties](media/data-flow/pivot2.png "draai tabel 2")
 
 Stel eerst de kolommen in waarop u wilt groeperen voor de aggregatie van de draai tabel. U kunt hier meer dan 1 kolom instellen met het plus teken naast de kolom lijst.
 
 ## <a name="pivot-key"></a>Draai sleutel
 
-![Opties voor draai diagram](media/data-flow/pivot3.png "draai tabel 3")
+![Draai opties](media/data-flow/pivot3.png "draai tabel 3")
 
 De Pivot-toets is de kolom die ADF van rij naar kolom draait. Standaard wordt elke unieke waarde in de gegevensset voor dit veld naar een kolom gedraaid. U kunt eventueel ook de waarden opgeven uit de gegevensset die u wilt draaien naar kolom waarden. Dit is de kolom die bepaalt welke nieuwe kolommen er worden gemaakt.
 
 ## <a name="pivoted-columns"></a>Gedraaide kolommen
 
-![Opties voor draai diagram](media/data-flow/pivot4.png "draai tabel 4")
+![Draai opties](media/data-flow/pivot4.png "draai tabel 4")
 
 Ten slotte kiest u de aggregatie die u wilt gebruiken voor de gedraaide waarden en hoe u wilt dat de kolommen worden weer gegeven in de nieuwe uitvoer projectie van de trans formatie.
 
@@ -42,7 +42,7 @@ Beschrijving U kunt een naamgevings patroon met een voor voegsel, Midden en acht
 
 Bijvoorbeeld: het draaien van ' verkoop ' op ' regio ' zou resulteren in nieuwe kolom waarden van elke verkoop waarde, dat wil zeggen. "25", "50", "1000" enz. Als u echter de waarde ' verkopen-' instelt voor het voor voegsel, zou elke kolom waarde ' verkoop-' aan het begin van de waarde toevoegen.
 
-![Opties voor draai diagram](media/data-flow/pivot5.png "draai tabel 5")
+![Draai opties](media/data-flow/pivot5.png "draai tabel 5")
 
 Als u de rang schikking van de kolom instelt op normaal, worden alle gedraaide kolommen gegroepeerd met de geaggregeerde waarden. Als u de rang schikking van de kolommen instelt op ' zijdelings ', wordt er een alternatief voor de kolom en waarde.
 
@@ -50,7 +50,7 @@ Als u de rang schikking van de kolom instelt op normaal, worden alle gedraaide k
 
 Als u de aggregatie wilt instellen die u wilt gebruiken voor de draai waarden, klikt u op het veld onder aan het deel venster gedraaide kolommen. U gaat de opbouw functie voor de ADF-gegevensstroom expressie invoeren, waar u een aggregatie-expressie kunt maken en een beschrijvende alias naam voor de nieuwe geaggregeerde waarden opgeeft.
 
-Gebruik de taal van de ADF-gegevens stroom om de gedraaide kolom transformaties in de opbouw https://aka.ms/dataflowexpressions functie voor expressies te beschrijven:.
+Gebruik de taal van de ADF-gegevens stroom om de gedraaide kolom transformaties in de opbouw functie voor expressies te beschrijven: https://aka.ms/dataflowexpressions.
 
 ## <a name="pivot-metadata"></a>Meta gegevens van draai tabel
 
@@ -60,7 +60,7 @@ Met de draai transformatie worden nieuwe kolom namen geproduceerd die dynamisch 
 
 Met Pivot worden nieuwe kolom namen dynamisch gegenereerd op basis van rijwaarden. U kunt deze nieuwe kolommen omzetten in meta gegevens waarnaar later in uw gegevens stroom kan worden verwezen. Hiertoe klikt u op het tabblad voor beeld van gegevens. Alle nieuwe kolommen die door de draai tabel transformatie worden gegenereerd, worden weer gegeven met een pictogram met een ' gedrijfte ' in de tabelkop. Klik op de knop voor het toewijzen van een kaart om deze nieuwe kolommen in meta gegevens in te scha kelen, zodat ze deel uitmaken van het model van de gegevens stroom.
 
-![Draai kolommen] Geplaatste (media/data-flow/newpivot1.png "draai kolommen toewijzen")
+![Draai tabel kolommen]toegewezen geplaatste(media/data-flow/newpivot1.png "draai kolommen")
 
 ### <a name="landing-new-columns-in-sink"></a>Nieuwe kolommen in Sink-overloop
 

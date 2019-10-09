@@ -6,18 +6,18 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/03/2019
-ms.openlocfilehash: dd51cc2d5f95598154b76b5da8e3fc9e4801100d
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: fec2b09b9dc471135d9cdd00ac2465728a47bdbf
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71104951"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72026934"
 ---
 # <a name="mapping-data-flow-conditional-split-transformation"></a>Gegevens stroom toewijzen Conditional Split trans formatie
 
-[!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
-![werkset Conditional Split](media/data-flow/conditionalsplit2.png "werkset Conditional Split")
+
+werkset voor ![Conditional Split](media/data-flow/conditionalsplit2.png "Conditional Split")
 
 De voorwaardelijke Splits transformatie kan gegevens rijen naar verschillende stromen routeren, afhankelijk van de inhoud van de gegevens. De implementatie van de voorwaardelijke Splits transformatie is vergelijkbaar met een beslissings structuur voor de situatie in een programmeer taal. De trans formatie evalueert expressies en op basis van de resultaten, stuurt de gegevensrij door naar de opgegeven stroom. Deze trans formatie biedt ook een standaard uitvoer, zodat als een rij overeenkomt met geen expressie, deze wordt omgeleid naar de standaard uitvoer.
 

@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 10/01/2019
 ms.author: rohogue
-ms.openlocfilehash: 302d727ede9604d11972eaa8f46a3e27f204858f
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: dbcc68bacf8a11a7a85d5fad7fb4435fd03c7f93
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71710029"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72024557"
 ---
 # <a name="add-storage-targets"></a>Opslagdoelen toevoegen
 
@@ -37,13 +37,16 @@ Als u een Azure Blob-container wilt definiëren, voert u deze informatie in.
 
 ![scherm afbeelding van de pagina opslag doel toevoegen, gevuld met informatie voor een nieuw Azure Blob-opslag doel](media/hpc-cache-add-blob.png)
 
-<!-- need to replace screenshot after note text is updated with both required RBAC roles -->
+<!-- need to replace screenshot after note text is updated with both required RBAC roles and also with correct search term -->
 
 * **Naam van opslag doel** : Stel een naam in die dit opslag doel identificeert in de Azure HPC-cache.
 * **Doel type** : Kies **BLOB**.
 * **Opslag account** : Selecteer het account met de container waarnaar moet worden verwezen.
 
   U moet het cache-exemplaar toestemming geven om toegang te krijgen tot het opslag account zoals beschreven in [de toegangs functies toevoegen](#add-the-access-control-roles-to-your-account).
+
+  Lees [vereisten voor Blob Storage](hpc-cache-prereqs.md#blob-storage-requirements)voor meer informatie over het type opslag account dat u kunt gebruiken.
+
 * **Opslag container** : Selecteer de BLOB-container voor dit doel.
 
 * **Pad naar virtuele naam ruimte** : Stel het client gerichte bestandspad in voor dit opslag doel. Lees de [geaggregeerde naam ruimte configureren](hpc-cache-namespace.md) voor meer informatie over de functie virtuele naam ruimte.
@@ -54,7 +57,7 @@ Wanneer u klaar bent, klikt u op **OK** om het opslag doel toe te voegen.
 
 Azure HPC cache maakt gebruik [van op rollen gebaseerd toegangs beheer (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/index) voor het machtigen van de cache toepassing voor toegang tot uw opslag account voor Azure Blob Storage-doelen.
 
-De eigenaar van het opslag account moet expliciet de Inzender rollen voor het [opslag account](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-account-contributor) en de [blobgegevens](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor) voor de gebruiker StorageCache resource provider toevoegen.
+De eigenaar van het opslag account moet expliciet de Inzender rollen voor het [opslag account](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-account-contributor) en de [blobgegevens](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor) voor de gebruiker ' HPC-cache resource provider ' toevoegen.
 
 U kunt dit vooraf doen, of door te klikken op een koppeling op de pagina waar u een Blob-opslag doel toevoegt.
 
@@ -62,13 +65,16 @@ Stappen voor het toevoegen van de RBAC-rollen:
 
 1. Open de pagina **toegangs beheer (IAM)** voor het opslag account. (De koppeling op de pagina **opslag doel toevoegen** opent deze pagina automatisch voor het geselecteerde account.)
 
-1. Klik boven aan de pagina en kies **een roltoewijzing toevoegen.** **+**
+1. Klik boven aan de pagina op de **+** en kies **een roltoewijzing toevoegen**.
 
 1. Selecteer de rol ' Inzender voor opslag accounts ' in de lijst.
 
 1. In het veld **toegang toewijzen aan kunt u** de geselecteerde standaard waarde (' Azure AD-gebruiker,-groep of Service-Principal ') laten staan.  
 
-1. Zoek in het veld **selecteren** naar ' storagecache '.  Deze teken reeks moet overeenkomen met een beveiligingsprincipal met de naam ' HPC-cache resource provider '. Klik op die principal om deze te selecteren.
+1. In het veld **selecteren zoekt u** naar ' HPC '.  Deze teken reeks moet overeenkomen met een service-principal met de naam ' HPC-cache resource provider '. Klik op die principal om deze te selecteren.
+
+   > [!NOTE]
+   > Als een zoek opdracht voor "HPC" niet werkt, kunt u de teken reeks "storagecache" gebruiken. Gebruikers die vroegtijdig lid zijn van de preview, moeten mogelijk de oudere naam voor de Service-Principal gebruiken.
 
 1. Klik op de knop **Opslaan** om de roltoewijzing toe te voegen aan het opslag account.
 

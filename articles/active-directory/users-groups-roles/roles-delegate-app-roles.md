@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8b5479bc7f4e65f23a2e2dcf7deb91742fe50610
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: 1d5a29ca7ed4eb23c2e0edd4d39cc2920e779acb
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70382492"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72025508"
 ---
 # <a name="delegate-app-registration-permissions-in-azure-active-directory"></a>Machtigingen voor app-registratie in Azure Active Directory delegeren
 
@@ -61,10 +61,10 @@ In sommige gevallen bevatten bedrijfs toepassingen die zijn gemaakt in de toepas
 
 ### <a name="to-assign-an-owner-to-an-enterprise-application"></a>Een eigenaar toewijzen aan een bedrijfs toepassing
 
-1. Meld u aan bij [uw Azure AD-organisatie](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) met een account dat in aanmerking komt voor de toepassings beheerder of de beheerder van de Cloud toepassing voor de organisatie.
-1. Selecteer op de [pagina](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/) app-registraties voor de organisatie een app om de overzichts pagina voor de app te openen.
-1. Selecteer **eigen aars** om de lijst met eigen aars voor de app weer te geven.
-1. Selecteer **toevoegen** om een of meer eigen aars te selecteren die u aan de app wilt toevoegen.
+1. Meld u aan bij [uw Azure AD-organisatie](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) with een account die in aanmerking komt voor de toepassings beheerder of de beheerder van de Cloud toepassing voor de organisatie.
+1. Selecteer op de [pagina App-registraties](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/)@no__t 1for de organisatie een app om de overzichts pagina voor de app te openen.
+1. Selecteer **eigen aars** om de lijst met eigen aars voor de app weer te geven.
+1. Selecteer **toevoegen** om een of meer eigen aars te selecteren die u aan de app wilt toevoegen.
 
 > [!IMPORTANT]
 > Gebruikers en service-principals kunnen eigen aren van toepassings registraties zijn. Alleen gebruikers kunnen eigenaar zijn van bedrijfs toepassingen. Groepen kunnen niet worden toegewezen als eigen aren van ofwel.

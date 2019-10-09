@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 05/06/2019
-ms.openlocfilehash: 8c35877c7de2fa89a8fe7a94c11787814183df9e
-ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
+ms.date: 10/02/2019
+ms.openlocfilehash: 6f2ef181e7f61696245a4413d7a28d84801f2838
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71162258"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72032885"
 ---
 # <a name="faq-about-azure-sql-hyperscale-databases"></a>Veelgestelde vragen over Azure SQL grootschalige-data bases
 
@@ -37,31 +37,31 @@ De grootschalige is alleen beschikbaar voor afzonderlijke data bases met behulp 
 
 ### <a name="how-does-the-hyperscale-service-tier-differ-from-the-general-purpose-and-business-critical-service-tiers"></a>Hoe verschilt de grootschalige-servicelaag van de Algemeen-en Bedrijfskritiek-service lagen
 
-De vCore-gebaseerde service lagen worden voornamelijk onderscheiden op basis van de beschik baarheid, het opslag type en IOPs.
+De vCore-gebaseerde service lagen worden voornamelijk onderscheiden op basis van de beschik baarheid, het opslag type en IOPS.
 
 - De laag Algemeen is geschikt voor de meeste bedrijfs werkbelastingen, met een evenwichtige set reken-en opslag opties waarbij IO-latentie of failover tijden niet de prioriteit zijn.
 - De grootschalige is geoptimaliseerd voor zeer grote database werkbelastingen.
 - De servicelaag Bedrijfskritiek is geschikt voor zakelijke workloads waarbij IO-latentie een prioriteit is.
 
-| | Resourcetype | Algemeen doel |  Grootschalig | Bedrijfskritiek |
+| | Resourcetype | Algemeen doel |  Hyperscale | Bedrijfskritiek |
 |:---:|:---:|:---:|:---:|:---:|
-| **Geschikt voor** |Alle|  De meeste zakelijke workloads. Biedt berekenings-en opslag opties voor budget gericht evenwicht. | Gegevens toepassingen met vereisten voor grote gegevens capaciteit en de mogelijkheid om opslag te schalen en de reken capaciteit vloeiender te schalen. | OLTP-toepassingen met een hoge transactie frequentie en een laagste latentie-IO. Biedt de hoogste flexibiliteit tot storingen met behulp van verschillende, geïsoleerde replica's.|
+| **Geschikt voor** |Alle|Biedt berekenings-en opslag opties voor budget gericht evenwicht.|De meeste zakelijke workloads. Opslag grootte automatisch schalen tot 100 TB, vloeiend verticaal en horizon taal berekenen, snel terugzetten van de data base.|OLTP-toepassingen met hoge transactie snelheden en lage IO-latentie. Biedt de hoogste flexibiliteit voor fouten en snelle failovers met behulp van meerdere synchroon bijgewerkte replica's.|
 |  **Resourcetype** ||Eén data base/elastische pool/beheerd exemplaar | Individuele database | Eén data base/elastische pool/beheerd exemplaar |
 | **Reken grootte**|Eén data base/elastische pool * | 1 tot 80 vCores | 1 tot 80 vCores * | 1 tot 80 vCores |
 | |Beheerd exemplaar | 8, 16, 24, 32, 40, 64, 80 vCores | N/A | 8, 16, 24, 32, 40, 64, 80 vCores |
 | **Opslagtype** | Alle |Premium externe opslag (per instantie) | Niet-gekoppelde opslag met lokale SSD-cache (per instantie) | Super snelle lokale SSD-opslag (per instantie) |
 | **Opslag grootte** | Eén data base/elastische pool | 5 GB – 4 TB | Tot 100 TB | 5 GB – 4 TB |
 | | Beheerd exemplaar  | 32 GB – 8 TB | N/A | 32 GB – 4 TB |
-| **IO-door Voer** | Eén data base * * | 500 IOPS per vCore met 7000 maximum aantal IOPS | Grootschalige is een architectuur met meerdere lagen met caching op meerdere niveaus. Effectief IOPs is afhankelijk van de werk belasting. | 5000 IOPS met 200.000 maximum aantal IOPS|
+| **IOPS** | Eén data base * * | 500 IOPS per vCore met 7000 maximum aantal IOPS | Grootschalige is een architectuur met meerdere lagen met caching op meerdere niveaus. Effectief IOPS is afhankelijk van de werk belasting. | 5000 IOPS met 200.000 maximum aantal IOPS|
 | | Beheerd exemplaar | Is afhankelijk van de grootte van het bestand | N/A | Beheerd exemplaar: Is afhankelijk van de grootte van het bestand|
 |**Beschikbaarheid**|Alle|1 replica, geen lees schaal, geen lokale cache | Meerdere replica's, Maxi maal 4 Lees bare, gedeeltelijke lokale cache | 3 replica's, 1 Lees bare, zone-redundante HA, volledige lokale cache |
 |**Back-ups**|Alle|RA-GRS, 7-35 dagen (standaard 7 dagen)| RA-GRS, 7 dagen, constant tijdstip herstel (PITR) | RA-GRS, 7-35 dagen (standaard 7 dagen) |
 
-\*Elastische Pools worden niet ondersteund in de grootschalige-servicelaag
+\* elastische Pools worden niet ondersteund in de servicelaag grootschalige
 
 ### <a name="who-should-use-the-hyperscale-service-tier"></a>Wie moet de grootschalige-servicelaag gebruiken?
 
-De grootschalige is voornamelijk bedoeld voor klanten die grote on-premises SQL Server data bases hebben en hun toepassingen willen moderniseren door over te stappen op de Cloud of voor klanten die al Azure SQL Database gebruiken en u aanzienlijk wilt uitbreiden de kans op database groei. Grootschalige is ook bedoeld voor klanten die zowel hoge prestaties als hoge schaal baarheid verzamelen. Met grootschalige krijgt u het volgende:
+De grootschalige is bedoeld voor klanten die grote on-premises SQL Server data bases hebben en hun toepassingen willen moderniseren door over te stappen op de Cloud of voor klanten die al Azure SQL Database gebruiken en de potentieel voor database groei. Grootschalige is ook bedoeld voor klanten die zowel hoge prestaties als hoge schaal baarheid verzamelen. Met grootschalige krijgt u het volgende:
 
 - Ondersteuning voor Maxi maal 100 TB aan database grootte
 - Snelle database back-ups, ongeacht de grootte van de data base (back-ups zijn gebaseerd op moment opnamen van bestanden)
@@ -93,7 +93,7 @@ SQL Database grootschalige biedt een snelle schaal baarheid op basis van de vraa
 
   Met grootschalige krijgt u ook de mogelijkheid om een of meer extra reken knooppunten in te richten die u kunt gebruiken om uw Lees aanvragen te verwerken. Dit betekent dat u deze extra reken knooppunten als alleen-lezen knoop punten kunt gebruiken om uw Lees werk belasting van de primaire Compute te offloaden. Naast alleen-lezen, fungeren deze knoop punten ook als hot stand-by in het geval van een failover van de primaire.
 
-  Het inrichten van elk van deze extra reken knooppunten kan worden uitgevoerd in een constante tijd en is een online bewerking. U kunt verbinding maken met deze extra Compute-knoop punten met het `ApplicationIntent` kenmerk alleen-lezen door `readonly`het argument op uw Connection String in te stellen op. Alle verbindingen die zijn `readonly` gemarkeerd met, worden automatisch doorgestuurd naar een van de extra Compute-knoop punten met het kenmerk alleen-lezen.
+  Het inrichten van elk van deze extra reken knooppunten kan worden uitgevoerd in een constante tijd en is een online bewerking. U kunt verbinding maken met deze extra reken knooppunten met het kenmerk alleen-lezen door het argument `ApplicationIntent` op uw connection string in te stellen op `readonly`. Verbindingen die zijn gemarkeerd met `readonly` worden automatisch doorgestuurd naar een van de extra Compute-knoop punten met het kenmerk alleen-lezen.
 
 ## <a name="deep-dive-questions"></a>Diep gaande vragen
 
@@ -161,7 +161,7 @@ Het transactie logboek met grootschalige is nagenoeg oneindig. U hoeft zich geen
 
 ### <a name="does-my-temp-db-scale-as-my-database-grows"></a>Wordt mijn data base geschaald naarmate mijn database groeit
 
-Uw `tempdb` Data Base bevindt zich op lokale SSD-opslag en wordt geconfigureerd op basis van de reken grootte die u inricht. Uw `tempdb` is geoptimaliseerd en ingedeeld om maximale prestaties te bieden. De `tempdb` grootte kan niet worden geconfigureerd en wordt voor u beheerd door een opslag subsysteem.
+Uw `tempdb`-data base bevindt zich op de lokale SSD-opslag en wordt geconfigureerd op basis van de reken grootte die u inricht. Uw `tempdb` is geoptimaliseerd en is afgestemd op maximale prestatie voordelen. De grootte van de `tempdb` kan niet worden geconfigureerd en wordt voor u beheerd door een opslag subsysteem.
 
 ### <a name="does-my-database-size-automatically-grow-or-do-i-have-to-manage-the-size-of-the-data-files"></a>Neemt de grootte van de data base automatisch toe of moet ik de grootte van de gegevens bestanden beheren
 
@@ -173,7 +173,7 @@ De grootte van de data base neemt automatisch toe tijdens het invoegen/opnemen v
 
 ### <a name="in-what-increments-does-my-database-size-grow"></a>In welke stappen groeit de grootte van mijn data base
 
-1 GB
+Elk gegevens bestand neemt toe met 10 GB. Meerdere gegevens bestanden kunnen tegelijkertijd groeien.
 
 ### <a name="is-the-storage-in-sql-database-hyperscale-local-or-remote"></a>Is de opslag in SQL Database grootschalige lokaal of extern
 
@@ -217,22 +217,23 @@ Nee. Op dit moment kunt u een grootschalige-data base niet naar een andere servi
 
 Ja. Sommige Azure SQL Database-functies worden nog niet ondersteund in grootschalige, met inbegrip van maar niet beperktere back-ups van de lange termijn retentie. Nadat u uw data bases naar grootschalige hebt gemigreerd, werken deze functies niet meer.  We verwachten dat deze beperkingen tijdelijk zijn.
 
-### <a name="can-i-move-my--on-premises-sql-server-database-or-my-sql-server-virtual-machine-database-to-hyperscale"></a>Kan ik mijn on-premises SQL Server Data Base of mijn SQL Server Virtual Machine-data base verplaatsen naar grootschalige
+### <a name="can-i-move-my-on-premises-sql-server-database-or-my-sql-server-virtual-machine-database-to-hyperscale"></a>Kan ik mijn on-premises SQL Server Data Base of mijn SQL Server Virtual Machine-data base verplaatsen naar grootschalige
 
-Ja. U kunt alle bestaande migratie technologieën gebruiken om te migreren naar grootschalige, met inbegrip van BACPAC, transactionele replicatie, het laden van logische gegevens. Zie ook de [Azure database Migration service](../dms/dms-overview.md).
+Ja. U kunt alle bestaande migratie technologieën gebruiken om te migreren naar grootschalige, met inbegrip van transactionele replicatie en eventuele andere technologieën voor het verplaatsen van gegevens (Bulk Copy, Azure Data Factory, Azure Databricks, SSIS). Zie ook de [Azure database Migration service](../dms/dms-overview.md).
 
 ### <a name="what-is-my-downtime-during-migration-from-an-on-premises-or-virtual-machine-environment-to-hyperscale-and-how-can-i-minimize-it"></a>Wat is mijn downtime tijdens de migratie van een on-premises of virtuele-machine omgeving naar grootschalige en hoe kan ik deze minimaliseren
 
-Uitval tijd is hetzelfde als de uitval tijd wanneer u uw data bases naar een enkele data base in Azure SQL Database migreert. U kunt transactionele replicatie [](replication-to-sql-database.md#data-migration-scenario
-) gebruiken om de downtime te migreren voor data bases met een grootte van Maxi maal enkele TB. Voor zeer grote data bases (10 + TB) kunt u overwegen om gegevens te migreren met behulp van ADF, Spark of andere technologieën voor het verplaatsen van gegevens.
+Uitval tijd is hetzelfde als de uitval tijd wanneer u uw data bases naar een enkele data base in Azure SQL Database migreert. U kunt [transactional-replicatie @ no__t-1 gebruiken om de downtime te minimaliseren voor data bases tot een grootte van Maxi maal 1 TB. Voor zeer grote data bases (10 + TB) kunt u overwegen om gegevens te migreren met behulp van ADF, Spark of andere technologieën voor het verplaatsen van gegevens.
 
 ### <a name="how-much-time-would-it-take-to-bring-in-x-amount-of-data-to-sql-database-hyperscale"></a>Hoe lang het duurt om de X-hoeveelheid gegevens te SQL Database grootschalige
 
-Grootschalige kan 100 MB/sec van nieuwe/gewijzigde gegevens gebruiken.
+Grootschalige is geschikt voor het gebruik van 100 MB/sec. nieuwe/gewijzigde gegevens, maar de tijd die nodig is om gegevens te verplaatsen naar Azure SQL-data bases wordt ook beïnvloed door de beschik bare netwerk doorvoer, Lees snelheid van de bron en de doel-grootschalige database serviceniveau doelstelling.
 
 ### <a name="can-i-read-data-from-blob-storage-and-do-fast-load-like-polybase-and-sql-data-warehouse"></a>Kan ik gegevens lezen uit Blob Storage en snel laden (zoals poly base en SQL Data Warehouse)
 
 U kunt gegevens lezen van Azure Storage en laden van gegevens in een grootschalige-data base (net zoals u kunt doen met een reguliere afzonderlijke data base). Poly Base wordt momenteel niet ondersteund op Azure SQL Database. U kunt poly Base uitvoeren met behulp van [Azure Data Factory](https://docs.microsoft.com/azure/data-factory/) of een Spark-taak in [Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/) met de [Spark-connector voor SQL](sql-database-spark-connector.md). De Spark-connector naar SQL ondersteunt bulksgewijze invoeging.
+
+Het is ook mogelijk om gegevens te lezen uit een Azure Blob Store met behulp van BULK INSERT of OPENROWSET: [Voor beelden van bulk toegang tot gegevens in Azure Blob Storage](https://docs.microsoft.com/sql/relational-databases/import-export/examples-of-bulk-access-to-data-in-azure-blob-storage?view=sql-server-2017#accessing-data-in-a-csv-file-referencing-an-azure-blob-storage-location).
 
 Het eenvoudige herstel-of bulk logboek model wordt niet ondersteund in grootschalige. Een volledig herstel model is vereist voor een hoge Beschik baarheid. Grootschalige biedt echter een betere gegevens opname frequentie vergeleken met één Azure SQL database vanwege de nieuwe logboek architectuur.
 
@@ -344,7 +345,7 @@ Als u omhoog of omlaag schaalt, worden de bestaande verbindingen verwijderd wann
 
 Eind gebruiker. Niet automatisch.  
 
-### <a name="does-my-tempb-also-grow-as-the-compute-is-scaled-up"></a>Kan mijn `tempb` werk ook groeien terwijl de reken kracht omhoog wordt geschaald
+### <a name="does-my-tempb-also-grow-as-the-compute-is-scaled-up"></a>Neemt mijn `tempb` ook toe naarmate de reken kracht omhoog wordt geschaald
 
 Ja. Temp DB wordt automatisch geschaald als de berekening groeit.  
 
@@ -360,16 +361,16 @@ We maken standaard 2 replica's voor grootschalige-data bases. Als u het aantal r
 
 ### <a name="how-do-i-connect-to-these-secondary-compute-nodes"></a>Hoe kan ik verbinding maken met deze secundaire reken knooppunten
 
-U kunt verbinding maken met deze extra Compute-knoop punten met het `ApplicationIntent` kenmerk alleen-lezen door `readonly`het argument op uw Connection String in te stellen op. Alle verbindingen die zijn `readonly` gemarkeerd met, worden automatisch doorgestuurd naar een van de extra Compute-knoop punten met het kenmerk alleen-lezen.  
+U kunt verbinding maken met deze extra reken knooppunten met het kenmerk alleen-lezen door het argument `ApplicationIntent` op uw connection string in te stellen op `readonly`. Verbindingen die zijn gemarkeerd met `readonly` worden automatisch doorgestuurd naar een van de extra Compute-knoop punten met het kenmerk alleen-lezen.  
 
 ### <a name="how-do-i-validate-if-i-have-successfully-connected-to-secondary-compute-node-using-ssms--other-client-tools"></a>Hoe kan ik valideren of ik verbinding heb gemaakt met een secundair reken knooppunt met behulp van SSMS/andere client hulpprogramma's?
 
-U kunt de volgende T-SQL-query uitvoeren met SSMS/andere client hulpprogramma's `SELECT DATABASEPROPERTYEX ( '<database_name>' , 'updateability' )`:.
-Het resultaat is `READ_ONLY` dat als u de verbinding naar het secundaire knoop punt met het kenmerk alleen `READ_WRITE` -lezen wijst of als uw verbinding naar het primaire knoop punt verwijst.
+U kunt de volgende T-SQL-query uitvoeren met SSMS/andere client hulpprogramma's: `SELECT DATABASEPROPERTYEX ( '<database_name>' , 'updateability' )`.
+Het resultaat is `READ_ONLY` als u de verbinding naar het secundaire knoop punt met het kenmerk alleen-lezen of `READ_WRITE` wijst als uw verbinding naar het primaire knoop punt verwijst.
 
 ### <a name="can-i-create-a-dedicated-endpoint-for-the-read-scale-replica"></a>Kan ik een toegewezen eind punt voor de Lees bare replica maken
 
-Nee. U kunt alleen verbinding maken met een replica met een Lees `ApplicationIntent=ReadOnly`grootte door op te geven.
+Nee. U kunt alleen verbinding maken met een replica met een lees schaal door `ApplicationIntent=ReadOnly` op te geven.
 
 ### <a name="does-the-system-do-intelligent-load-balancing-of-the-read-workload"></a>Voert het systeem intelligente taak verdeling van de werk belasting lezen uit
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
-ms.openlocfilehash: 6e90b164fac4ea1123f5f9a43eea1169d93d9a04
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: 0cbd1a24f5c460e248d55777735da6809befba63
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71154027"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72028789"
 ---
 # <a name="azure-vm-guest-os-firewall-is-blocking-inbound-traffic"></a>Binnenkomend verkeer wordt geblokkeerd door firewall van Azure VM-Gastbesturingssysteem
 
@@ -102,7 +102,7 @@ Verbinding maken met de [seriële Console en open vervolgens een PowerShell-sess
 
 #### <a name="mitigation-2"></a>Risicobeperking 2
 
-1.  Query uitvoeren op de firewallprofielen om te bepalen of het inkomende firewall-beleid is ingesteld op *BlockInboundAlways*:
+1.  Query's uitvoeren op de Firewall profielen om te bepalen of het beleid voor binnenkomende firewall is ingesteld op *BlockInboundAlways*:
 
     ```cmd
     netsh advfirewall show allprofiles | more
@@ -115,7 +115,7 @@ Verbinding maken met de [seriële Console en open vervolgens een PowerShell-sess
     >    * *BlockInbound*: Alle binnenkomend verkeer wordt geblokkeerd, tenzij u een regel van kracht hebt om dat verkeer toe te staan.
     >    * *BlockInboundAlways*: Alle firewall regels worden genegeerd en alle verkeer wordt geblokkeerd.
 
-2.  Bewerk de *DefaultInboundAction* in te stellen van deze profielen op **toestaan** verkeer. U doet dit door de volgende opdracht uitvoeren:
+2.  Bewerk de *DefaultInboundAction* om deze profielen in te stellen voor het **toestaan** van verkeer. U doet dit door de volgende opdracht uitvoeren:
 
     ```cmd
     netsh advfirewall set allprofiles firewallpolicy allowinbound,allowoutbound
@@ -138,7 +138,7 @@ Verbinding maken met de [seriële Console en open vervolgens een PowerShell-sess
 
 2.  Start een externe bureaubladverbinding met de virtuele machine voor herstel.
 
-3.  Zorg ervoor dat de schijf is gemarkeerd als **Online** in de Schijfbeheer-console. Houd er rekening mee de stationsletter die is toegewezen aan de gekoppelde schijf.
+3.  Zorg ervoor dat de schijf is gemarkeerd als **Online** in de Schijfbeheer-console. Houd er rekening mee de stationsletter die is toegewezen aan de gekoppelde schijf.
 
 #### <a name="mitigation-1"></a>Risicobeperking 1
 
@@ -150,7 +150,7 @@ Lees [hoe u een firewall regel in een gast besturingssysteem inschakelt](enable
 
 2.  Start een externe bureaubladverbinding met de virtuele machine voor herstel.
 
-3.  Nadat de schijf is gekoppeld aan de virtuele machine voor herstel, zorg ervoor dat de schijf is gemarkeerd als **Online** in de Schijfbeheer-console. Houd er rekening mee de stationsletter die is toegewezen aan de gekoppelde besturingssysteemschijf.
+3.  Nadat de systeem schijf is gekoppeld aan de herstel-VM, controleert u of de schijf is gemarkeerd als **online** in de schijf beheer-console. Houd er rekening mee de stationsletter die is toegewezen aan de gekoppelde besturingssysteemschijf.
 
 4.  Open een verhoogde CMD-exemplaar en voer het volgende script:
 

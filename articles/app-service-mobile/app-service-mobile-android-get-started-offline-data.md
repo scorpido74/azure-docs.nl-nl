@@ -1,6 +1,6 @@
 ---
-title: Offlinesynchronisatie inschakelen voor uw Azure Mobile App (Android)
-description: Informatie over het gebruik van App Service Mobile Apps aan de cache en synchroniseren offlinesynchronisatie van gegevens in uw Android-toepassing
+title: Offline synchronisatie inschakelen voor uw mobiele Azure-app (Android)
+description: Meer informatie over het gebruik van App Service Mobile Apps om offline gegevens in uw Android-toepassing in de cache op te slaan en te synchroniseren
 documentationcenter: android
 author: elamalani
 manager: crdun
@@ -13,44 +13,44 @@ ms.devlang: java
 ms.topic: article
 ms.date: 06/25/2019
 ms.author: emalani
-ms.openlocfilehash: 3fe5b176d864fd4cdd1ff49d8c064495663aa3b0
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 0180e100432ac34b876af04ad99c9a5d189455c3
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67443566"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72025456"
 ---
-# <a name="enable-offline-sync-for-your-android-mobile-app"></a>Offlinesynchronisatie inschakelen voor uw mobiele Android-app
+# <a name="enable-offline-sync-for-your-android-mobile-app"></a>Offline synchronisatie inschakelen voor uw mobiele Android-app
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
 
 > [!NOTE]
-> Visual Studio App Center investeert in nieuwe en geïntegreerde services centraal staat in de ontwikkeling van mobiele Apps. Ontwikkelaars kunnen gebruikmaken van **bouwen**, **Test** en **verdelen** services voor het instellen van de pijplijn voor continue integratie en levering. Zodra de app is geïmplementeerd, ontwikkelaars controleren de status en het gebruik van het gebruik van de app de **Analytics** en **Diagnostics** -services en Communiceer met gebruikers met behulp van de **Push** de service. Ontwikkelaars kunnen ook gebruikmaken van **Auth** om hun gebruikers te verifiëren en **gegevens** service behouden en synchroniseren van app-gegevens in de cloud. Bekijk [App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-android-get-started-offline-data) vandaag nog.
->
+> Visual Studio App Center ondersteunt end-to-end en geïntegreerde services in de ontwikkeling van mobiele apps. Ontwikkel aars kunnen services **bouwen**, **testen** en **distribueren** om een continue integratie-en leverings pijplijn in te stellen. Zodra de app is geïmplementeerd, kunnen ontwikkel aars de status en het gebruik van hun app bewaken met behulp van de **analyse** -en **diagnose** Services en gebruikers benaderen met behulp van de **Push** service. Ontwikkel aars kunnen ook gebruikmaken van **auth** voor het verifiëren van hun gebruikers en **gegevens** service om app-gegevens in de Cloud op te slaan en te synchroniseren.
+> Als u Cloud Services wilt integreren in uw mobiele toepassing, meldt u zich aan met App Center [app Center](https://appcenter.ms/signup?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) vandaag.
 
 ## <a name="overview"></a>Overzicht
-In deze zelfstudie bevat informatie over de functie voor offlinesynchronisatie van Azure Mobile Apps voor Android. Offlinesynchronisatie kunnen eindgebruikers om te communiceren met een mobiele app&mdash;weergeven, toevoegen of wijzigen van gegevens&mdash;, zelfs wanneer er geen netwerkverbinding. Wijzigingen worden opgeslagen in een lokale database. Zodra het apparaat weer online is, worden deze wijzigingen gesynchroniseerd met de externe back-end.
+In deze zelf studie wordt de functie voor offline synchronisatie van Azure Mobile Apps voor Android beschreven. Met offline synchronisatie kunnen eind gebruikers communiceren met een mobiele app @ no__t-0viewing, het toevoegen of wijzigen van gegevens @ no__t-1even wanneer er geen netwerk verbinding is. Wijzigingen worden opgeslagen in een lokale data base. Zodra het apparaat weer online is, worden deze wijzigingen gesynchroniseerd met de externe back-end.
 
-Als dit de eerste ervaring met Azure Mobile Apps, moet u eerst de zelfstudie voltooien [Een Android-App maken]. Als u het gedownloade quick start-serverproject niet gebruikt, moet u de data access-extensiepakketten toevoegen aan uw project. Zie voor meer informatie over het server-extensiepakketten [werken met de .NET back-endserver SDK voor Azure Mobile Apps](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md).
+Als dit de eerste ervaring met Azure Mobile Apps is, moet u eerst de zelf studie [een Android-app maken]. Als u het gedownloade Quick Start Server-project niet gebruikt, moet u de pakketten voor gegevens toegangs uitbreidingen toevoegen aan uw project. Zie [werken met de .net back-end server SDK voor Azure Mobile apps](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md)voor meer informatie over server extensie pakketten.
 
-Zie het onderwerp voor meer informatie over de functie voor offlinesynchronisatie, [Offlinesynchronisatie van gegevens in Azure Mobile Apps].
+Zie het onderwerp [Offlinesynchronisatie van gegevens in Azure Mobile Apps]voor meer informatie over de functie voor offline synchronisatie.
 
-## <a name="update-the-app-to-support-offline-sync"></a>De app ondersteuning voor offlinesynchronisatie bijwerken
-Offline synchroniseren zorgt u om te lezen en schrijven van een *synchronisatietabel* (met behulp van de *IMobileServiceSyncTable* interface), die deel uitmaakt van een **SQLite** database op uw apparaat.
+## <a name="update-the-app-to-support-offline-sync"></a>De app bijwerken voor de ondersteuning van offline synchronisatie
+Met offline synchronisatie leest u naar en schrijft u vanuit een *synchronisatie tabel* (met behulp van de *IMobileServiceSyncTable* -Interface), die deel uitmaakt van een **sqlite** -Data Base op uw apparaat.
 
-Als u wilt pushen en ophalen van wijzigingen tussen het apparaat en Azure Mobile Services, gebruikt u een *synchronisatiecontext* (*MobileServiceClient.SyncContext*), die u met de lokale database voor het opslaan van initialiseren gegevens lokaal.
+Als u wijzigingen wilt pushen en pullen tussen het apparaat en Azure Mobile Services, gebruikt u een *synchronisatie context* (*mobileserviceclient te maken. SyncContext*), die u initialiseert met de lokale Data Base om gegevens lokaal op te slaan.
 
-1. In `TodoActivity.java`, een opmerking bij de bestaande definitie van `mToDoTable` en verwijder opmerkingen bij de versie van de tabel synchroniseren:
+1. In `TodoActivity.java` moet u een opmerking toevoegen aan de bestaande definitie van `mToDoTable` en de opmerking de versie van de synchronisatie tabel opheffen:
    
         private MobileServiceSyncTable<ToDoItem> mToDoTable;
-2. In de `onCreate` methode, een opmerking bij de initialisatie van de bestaande van `mToDoTable` en verwijder de opmerkingen in deze definitie:
+2. In de `onCreate`-methode kunt u de bestaande initialisatie van `mToDoTable` inchecken en de opmerking over deze definitie opheffen:
    
         mToDoTable = mClient.getSyncTable("ToDoItem", ToDoItem.class);
-3. In `refreshItemsFromTable` opmerking uit de definitie van `results` en verwijder de opmerkingen in deze definitie:
+3. In `refreshItemsFromTable` wordt de definitie van `results` door commentaar en wordt deze definitie onvermeld:
    
         // Offline Sync
         final List<ToDoItem> results = refreshItemsFromMobileServiceTableSyncTable();
-4. Een opmerking bij de definitie van `refreshItemsFromMobileServiceTable`.
-5. Verwijder de opmerkingen in de definitie van `refreshItemsFromMobileServiceTableSyncTable`:
+4. Commentaar uit de definitie van `refreshItemsFromMobileServiceTable`.
+5. Verwijder de opmerking over de definitie van `refreshItemsFromMobileServiceTableSyncTable`:
    
         private List<ToDoItem> refreshItemsFromMobileServiceTableSyncTable() throws ExecutionException, InterruptedException {
             //sync the data
@@ -59,7 +59,7 @@ Als u wilt pushen en ophalen van wijzigingen tussen het apparaat en Azure Mobile
                     eq(val(false));
             return mToDoTable.read(query).get();
         }
-6. Verwijder de opmerkingen in de definitie van `sync`:
+6. Verwijder de opmerking over de definitie van `sync`:
    
         private AsyncTask<Void, Void, Void> sync() {
             AsyncTask<Void, Void, Void> task = new AsyncTask<Void, Void, Void>(){
@@ -79,32 +79,32 @@ Als u wilt pushen en ophalen van wijzigingen tussen het apparaat en Azure Mobile
         }
 
 ## <a name="test-the-app"></a>De app testen
-In deze sectie kunt u testen het gedrag met Wi-Fi op, en schakelt u vervolgens Wi-Fi te maken van een offline-scenario.
+In deze sectie kunt u het gedrag testen met WiFi aan en vervolgens Wi-Fi uitschakelen om een offline scenario te maken.
 
-Wanneer u gegevensitems toevoegt, worden ze die zijn ondergebracht in het lokale archief van de SQLite, maar niet gesynchroniseerd met de mobiele service, drukt u op de **vernieuwen** knop. Andere apps mogelijk verschillende vereisten met betrekking tot wanneer gegevens moeten worden gesynchroniseerd, maar voor deze demo in deze zelfstudie heeft de gebruiker deze aanvragen.
+Wanneer u gegevens items toevoegt, worden deze opgeslagen in de lokale SQLite-opslag, maar pas gesynchroniseerd met de mobiele service als u op de knop **vernieuwen** klikt. Andere apps hebben mogelijk andere vereisten met betrekking tot de gegevens die moeten worden gesynchroniseerd, maar voor demo doeleinden heeft deze zelf studie de gebruiker expliciet een aanvraag indienen.
 
-Wanneer u op die knop drukt, wordt er een nieuwe achtergrondtaak gestart. Deze eerst pushes alle wijzigingen in het lokale archief met behulp van synchronisatiecontext en vervolgens de gegevens worden gewijzigd van Azure naar de lokale tabel.
+Wanneer u op deze knop klikt, wordt een nieuwe achtergrond taak gestart. Eerst worden alle wijzigingen die in het lokale archief zijn aangebracht, gepusht met synchronisatie context en worden vervolgens alle gewijzigde gegevens van Azure naar de lokale tabel opgehaald.
 
 ### <a name="offline-testing"></a>Offline testen
-1. Plaats het apparaat of de simulator in *vliegtuigmodus*. Hiermee maakt u een offline-scenario.
-2. Voegt u enkele *ToDo* items of bepaalde items als voltooid markeren. Sluit het apparaat of de simulator (of de app wordt geforceerd sluiten) en start opnieuw op. Controleer of dat uw wijzigingen zijn opgeslagen op het apparaat omdat ze zijn ondergebracht in het lokale archief van de SQLite.
-3. De inhoud van de Azure *TodoItem* tabel met een SQL-hulpprogramma, zoals *SQL Server Management Studio*, of een REST-client, zoals *Fiddler* of  *Postman*. Controleer of de nieuwe items hebt *niet* is gesynchroniseerd met de server
+1. Plaats het apparaat of de Simulator in de *vliegtuig*stand. Hiermee maakt u een offline scenario.
+2. Voeg enkele *TODO* -items toe of markeer sommige items als voltooid. Sluit het apparaat of de Simulator (of sluit de app af) en start de computer opnieuw op. Controleer of uw wijzigingen zijn doorgevoerd op het apparaat omdat ze zijn opgeslagen in de lokale SQLite-opslag.
+3. Bekijk de inhoud van de Azure *TodoItem* -tabel met een SQL-hulp programma zoals *SQL Server Management Studio*, of een rest-client, zoals *Fiddler* of *postman*. Controleren of de nieuwe items *niet* zijn gesynchroniseerd met de server
    
-       + Voor een Node.js-back-end, gaat u naar de [Azure-portal](https://portal.azure.com/), en in uw mobiele App back-end op **eenvoudige tabellen** > **TodoItem** om weer te geven van de inhoud van de `TodoItem`tabel.
-       + Bekijk voor een .NET back-end, de inhoud van de tabel met een SQL-hulpprogramma, zoals *SQL Server Management Studio*, of een REST-client, zoals *Fiddler* of *Postman*.
-4. Wi-Fi inschakelen in het apparaat of de simulator. Vervolgens drukt u op de **vernieuwen** knop.
-5. De TodoItem-gegevens weer in de Azure-portal. De nieuwe en gewijzigde TodoItems wordt nu weergegeven.
+       + Voor een node. js-back-end gaat u naar de [Azure Portal](https://portal.azure.com/)en klikt u in de back-end van uw mobiele app op **eenvoudige tabellen** > **TodoItem** om de inhoud van de tabel `TodoItem` weer te geven.
+       + Voor een .NET-back-end bekijkt u de inhoud van de tabel met een SQL-hulp programma zoals *SQL Server Management Studio*, of een rest-client, zoals *Fiddler* of *postman*.
+4. Schakel WiFi in op het apparaat of in de Simulator. Klik vervolgens op de knop **vernieuwen** .
+5. Bekijk de TodoItem-gegevens opnieuw in de Azure Portal. De nieuwe en gewijzigde TodoItems moeten nu worden weer gegeven.
 
 ## <a name="additional-resources"></a>Aanvullende resources
 * [Offlinesynchronisatie van gegevens in Azure Mobile Apps]
-* [Cloud Cover: Offline synchronisatie in Azure Mobile Services] \(Opmerking: de video zich in Mobile Services, maar offline synchronisatie werkt op dezelfde manier in Azure Mobile Apps\)
+* [Cloud-dekking: Offline synchronisatie in azure Mobile Services @ no__t-0 \(note: de video bevindt zich op Mobile Services, maar offline synchronisatie werkt op dezelfde manier als in azure Mobile Apps @ no__t-2
 
 <!-- URLs. -->
 
 [Offlinesynchronisatie van gegevens in Azure Mobile Apps]: app-service-mobile-offline-data-sync.md
 
-[Een Android-App maken]: app-service-mobile-android-get-started.md
+[Een Android-app maken]: app-service-mobile-android-get-started.md
 
-[Cloud Cover: Offline synchronisatie in Azure Mobile Services]: https://channel9.msdn.com/Shows/Cloud+Cover/Episode-155-Offline-Storage-with-Donna-Malayeri
+[Cloud-dekking: Offline synchronisatie in azure Mobile Services @ no__t-0
 [Azure Friday: Offline-enabled apps in Azure Mobile Services]: https://azure.microsoft.com/documentation/videos/azure-mobile-services-offline-enabled-apps-with-donna-malayeri/
 

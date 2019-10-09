@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 09/02/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 709bf2e413ddb40ae1ed84672cea0c0b71be2ce6
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 21409eb056743d92db42e0787af24f8cec07db1b
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70305941"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72026956"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-harness"></a>Zelfstudie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met harnas
 
@@ -107,7 +107,7 @@ In deze sectie maakt u een test gebruiker in de Azure Portal met de naam B. Simo
 1. Selecteer **nieuwe gebruiker** aan de bovenkant van het scherm.
 1. Voer de volgende stappen uit in de eigenschappen van de **gebruiker** :
    1. Voer in het veld **Naam** `B.Simon` in.  
-   1. Voer in het veld **gebruikers naam** het username@companydomain.extensionin. Bijvoorbeeld `B.Simon@contoso.com`.
+   1. Voer in het veld **gebruikers naam** de username@companydomain.extension in. Bijvoorbeeld `B.Simon@contoso.com`.
    1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
    1. Klik op **Create**.
 
@@ -141,11 +141,11 @@ In deze sectie schakelt u B. Simon in om de eenmalige aanmelding van Azure te ge
 
 3. Als u een harnas hand matig wilt instellen, opent u een nieuw webbrowser venster en meldt u zich aan bij uw harnas bedrijfs site als beheerder en voert u de volgende stappen uit:
 
-4. Klik in de rechter bovenhoek van de pagina op **continue beveiliging** > **toegangs beheer** > **verificatie-instellingen**.
+4. Klik rechtsboven op de pagina op **continue beveiliging** > **toegangs beheer** > **verificatie-instellingen**.
 
     ![Harnas configuratie](./media/harness-tutorial/configure01.png)
 
-5. Klik in de sectie **SSO-providers** op **+ SSO-providers** >toevoegen **SAML**.
+5. Klik in de sectie **SSO-providers** op **+ SSO-providers toevoegen** > **SAML**.
 
     ![Harnas configuratie](./media/harness-tutorial/configure03.png)
 
@@ -169,11 +169,11 @@ Om ervoor te zorgen dat Azure AD-gebruikers zich kunnen aanmelden bij een harnas
 
 1. Meld u aan om te profiteren van een beheerder.
 
-1. Klik rechtsboven op de pagina op **continue beveiliging** > **Access Management** > -**gebruikers**.
+1. Klik rechtsboven op de pagina op **continue beveiliging** > **toegangs beheer** > **gebruikers**.
 
     ![Harnas configuratie](./media/harness-tutorial/configure04.png)
 
-1. Klik aan de rechter kant van de pagina op **+ gebruiker toevoegen**.
+1. Klik aan de rechter kant van de pagina op **+ gebruiker toevoegen**.
 
     ![Harnas configuratie](./media/harness-tutorial/configure05.png)
 
@@ -181,7 +181,7 @@ Om ervoor te zorgen dat Azure AD-gebruikers zich kunnen aanmelden bij een harnas
 
     ![Harnas configuratie](./media/harness-tutorial/configure06.png)
 
-    a. Voer in het tekstvak **e-mail adres (sen)** het e-mail `B.simon@contoso.com`bericht van de gebruiker in.
+    a. Voer in het tekstvak **e-mail adres (sen)** het e-mail bericht van de gebruiker in, bijvoorbeeld `B.simon@contoso.com`.
 
     b. Selecteer uw **gebruikers groepen**.
 

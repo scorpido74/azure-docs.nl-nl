@@ -5,23 +5,23 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/09/2019
+ms.date: 10/07/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 0cae5166fbbba650b270829b9c8e3711b12a574e
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: 8d8f796fa7db9cab5bcac88a293dd1b98707a571
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71073940"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72025768"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>Zelfstudie: Azure-budgetten maken en beheren
 
 Met budgetten in Cost Management kunt u de verantwoordelijkheid in de organisatie beter plannen en stimuleren. Met budgetten kunt u de Azure-services die u gebruikt of waarop u zich abonneert voor een specifieke periode bijhouden. Ze helpen u anderen te informeren over hun uitgaven aan proactief kosten kunt beheren en controleren hoe uitgaven verloopt na verloop van tijd. Wanneer de budgetdrempels die u hebt gemaakt, worden overschreden, worden alleen meldingen worden geactiveerd. Geen van uw resources worden beïnvloed en uw verbruik is niet gestopt. U kunt budgetten gebruiken om te vergelijken en als u kosten analyseren uitgave bij te houden.
 
-Kosten-en gebruiks gegevens zijn doorgaans binnen 8-12 uur beschikbaar en budgetten worden elke vier uur geëvalueerd op basis van deze kosten. E-mail meldingen worden normaal gesp roken binnen 12-16 uur ontvangen.
+Kosten-en gebruiks gegevens zijn doorgaans binnen 12-16 uur beschikbaar en budgetten worden elke vier uur geëvalueerd op basis van deze kosten. E-mail meldingen worden normaal gesp roken binnen 12-16 uur ontvangen.
 
 Budgetten automatisch opnieuw instellen aan het einde van een punt (maandelijks, per kwartaal of per jaar) voor hetzelfde budgetbedrag wanneer u een vervaldatum in de toekomst selecteert. Omdat ze opnieuw met hetzelfde budgetbedrag instelt, moet u afzonderlijke budgetten wanneer gebudgetteerde maken bedragen verschillen voor toekomstige perioden.
 
@@ -78,7 +78,7 @@ Op basis van de velden die u in het budget hebt gekozen, wordt een grafiek weer 
 
 ![Voor beeld van het maken van een budget met maandelijkse kosten gegevens ](./media/tutorial-acm-create-budgets/monthly-budget01.png)
 
-Nadat u het budget bedrag hebt geconfigureerd, klikt u op **volgende** om budget waarschuwingen te configureren. Budgetten moeten ten minste één kosten drempel (% van budget) en een bijbehorende e-mailadres. Eventueel kunt u maximaal vijf drempelwaarden en vijf e-mailadressen in één budget opnemen. Wanneer een budgetdrempelwaarde is bereikt, worden normaal gesproken e-mailmeldingen ontvangen in minder dan acht uur. Zie [cost Alerts gebruiken](cost-mgt-alerts-monitor-usage-spending.md)voor meer informatie over meldingen. In het onderstaande voor beeld wordt er een e-mail waarschuwing gegenereerd wanneer 90% van het budget wordt bereikt.
+Nadat u het budget bedrag hebt geconfigureerd, klikt u op **volgende** om budget waarschuwingen te configureren. Budgetten moeten ten minste één kosten drempel (% van budget) en een bijbehorende e-mailadres. Eventueel kunt u maximaal vijf drempelwaarden en vijf e-mailadressen in één budget opnemen. Wanneer aan een budget drempel wordt voldaan, worden e-mail meldingen doorgaans in minder dan 20 uur ontvangen. Zie [cost Alerts gebruiken](cost-mgt-alerts-monitor-usage-spending.md)voor meer informatie over meldingen. In het onderstaande voor beeld wordt er een e-mail waarschuwing gegenereerd wanneer 90% van het budget wordt bereikt.
 
 ![Voor beeld van waarschuwings voorwaarden weer geven](./media/tutorial-acm-create-budgets/monthly-budget-alert.png)
 

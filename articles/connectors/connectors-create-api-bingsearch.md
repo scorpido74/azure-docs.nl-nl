@@ -11,12 +11,12 @@ ms.reviewer: klam, LADocs
 ms.topic: conceptual
 ms.date: 05/21/2018
 tags: connectors
-ms.openlocfilehash: 61004ed75a1935ada21b5c620a909fb5289aebb8
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: f7558a5836d8f087e719346fb38bbf24ece2c8fb
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70050998"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72026766"
 ---
 # <a name="find-news-with-bing-search-and-azure-logic-apps"></a>Zoek nieuws met Bing Search en Azure Logic Apps
 
@@ -24,7 +24,7 @@ In dit artikel wordt beschreven hoe u nieuws, Video's en andere items kunt vinde
 
 U kunt bijvoorbeeld nieuws items vinden op basis van zoek criteria, en Twitter deze items als tweets in uw Twitter-feed plaatsen.
 
-Als u nog geen abonnement op Azure hebt, [registreer u dan nu voor een gratis Azure-account](https://azure.microsoft.com/free/). Als u geen ervaring hebt met Logic apps, raadpleegt u [Wat is Azure Logic apps](../logic-apps/logic-apps-overview.md) en [Quick Start: Maak uw eerste logische app](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+Als u nog geen abonnement op Azure hebt, [registreer u dan nu voor een gratis Azure-account](https://azure.microsoft.com/free/). Als u geen ervaring hebt met Logic apps, raadpleegt u [Wat is Azure Logic apps](../logic-apps/logic-apps-overview.md) en [Quickstart: Maak uw eerste logische app @ no__t-0.
 Zie de naslag informatie over de [Bing Search-connector](https://docs.microsoft.com/connectors/bingsearch/)voor connector-specifieke technische gegevens.
 
 ## <a name="prerequisites"></a>Vereisten
@@ -54,7 +54,7 @@ Als uw verbinding al bestaat, geeft u de benodigde informatie op voor de trigger
 
    Voor dit voor beeld geeft u criteria op voor het retour neren van overeenkomende nieuws artikelen van Bing Search.
 
-   | Eigenschap | Vereist | Value | Description |
+   | Eigenschap | Verplicht | Value | Description |
    |----------|----------|-------|-------------|
    | Search Query | Ja | <*search-words*> | Voer de zoek woorden in die u wilt gebruiken. |
    | Market | Ja | <*locale*> | De land instellingen voor zoeken. De standaard instelling is "en-US", maar u kunt een andere waarde selecteren. |
@@ -81,7 +81,7 @@ In Azure Logic Apps is een [actie](../logic-apps/logic-apps-overview.md#logic-ap
 
 1. Open in de Azure Portal of Visual Studio uw logische app in de ontwerp functie voor logische apps. In dit voor beeld wordt de Azure Portal gebruikt.
 
-2. Onder de trigger of actie selecteert u **nieuwe stap** > **een actie toevoegen**.
+2. Onder de trigger of actie selecteert u **nieuwe stap** > **een actie toevoegen**.
 
    In dit voor beeld wordt deze trigger gebruikt:
 
@@ -105,7 +105,7 @@ Selecteer in de lijst acties de gewenste actie.
 
    Voor dit voor beeld geeft u de criteria op voor het retour neren van een subset van de resultaten van de trigger.
 
-   | Eigenschap | Vereist | Value | Description |
+   | Eigenschap | Verplicht | Value | Description |
    |----------|----------|-------|-------------|
    | Search Query | Ja | <*search-expression*> | Voer een expressie in voor het uitvoeren van query's op de trigger resultaten. U kunt kiezen uit de velden in de lijst met dynamische inhoud of een expressie maken met de opbouw functie voor expressies. |
    | Market | Ja | <*locale*> | De land instellingen voor zoeken. De standaard instelling is "en-US", maar u kunt een andere waarde selecteren. |
@@ -128,7 +128,7 @@ Selecteer in de lijst acties de gewenste actie.
       ![Selecteer een functie](./media/connectors-create-api-bing-search/expression-select-function.png)
 
    3. Selecteer in de lijst met velden de **categorie**die wordt omgezet in een para meter. 
-   Voeg een komma toe na de eerste para meter en Voeg na de komma het volgende woord toe:`'tech'` 
+   Voeg een komma toe na de eerste para meter en Voeg na de komma dit woord toe: `'tech'` 
 
       ![Selecteer een veld](./media/connectors-create-api-bing-search/expression-select-field.png)
 
@@ -152,9 +152,9 @@ Selecteer in de lijst acties de gewenste actie.
 
 1. Wanneer u wordt gevraagd om de verbindings gegevens, geeft u de volgende gegevens op:
 
-   | Eigenschap | Vereist | Value | Description |
+   | Eigenschap | Verplicht | Value | Description |
    |----------|----------|-------|-------------|
-   | Verbindingsnaam | Ja | <*verbindings naam*> | De naam die voor uw verbinding moet worden gemaakt |
+   | Verbindingsnaam | Ja | <-*verbinding-naam*> | De naam die voor uw verbinding moet worden gemaakt |
    | API-versie | Ja | <*API-versie*> | De Bing Search API-versie is standaard ingesteld op de huidige versie. U kunt indien nodig een eerdere versie selecteren. |
    | API-sleutel | Ja | <*API-key*> | De Bing Search-API-sleutel die u eerder hebt verkregen. Als u geen sleutel hebt, kunt u [nu uw API-sleutel](https://azure.microsoft.com/try/cognitive-services/?api=bing-news-search-api)ophalen. |  
    |||||  
@@ -171,4 +171,4 @@ Zie de [referentie pagina van de connector](/connectors/bingsearch/)voor technis
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over andere [Logic apps](../connectors/apis-list.md) -connectors
+* Meer informatie over andere [Logic apps-connectors](../connectors/apis-list.md)

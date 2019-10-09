@@ -15,15 +15,19 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
-ms.openlocfilehash: d277786fd08e1448b3d5ccf4fd45055fe069e4c0
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 6481d95db27df9e0b957d61bef24a1cc40b243e7
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71097763"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72025330"
 ---
 # <a name="work-with-the-net-backend-server-sdk-for-azure-mobile-apps"></a>Werken met de .NET-back-endserver-SDK voor Azure Mobile Apps
 [!INCLUDE [app-service-mobile-selector-server-sdk](../../includes/app-service-mobile-selector-server-sdk.md)]
+
+> [!NOTE]
+> Visual Studio App Center ondersteunt end-to-end en geïntegreerde services in de ontwikkeling van mobiele apps. Ontwikkel aars kunnen services **bouwen**, **testen** en **distribueren** om een continue integratie-en leverings pijplijn in te stellen. Zodra de app is geïmplementeerd, kunnen ontwikkel aars de status en het gebruik van hun app bewaken met behulp van de **analyse** -en **diagnose** Services en gebruikers benaderen met behulp van de **Push** service. Ontwikkel aars kunnen ook gebruikmaken van **auth** voor het verifiëren van hun gebruikers en **gegevens** service om app-gegevens in de Cloud op te slaan en te synchroniseren.
+> Als u Cloud Services wilt integreren in uw mobiele toepassing, meldt u zich aan met App Center [app Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) vandaag.
 
 In dit onderwerp wordt beschreven hoe u de .NET back-end server-SDK kunt gebruiken in Key Azure App Service Mobile Apps-scenario's. De Azure Mobile Apps SDK helpt u bij het werken met mobiele clients vanuit uw ASP.NET-toepassing.
 
@@ -51,7 +55,7 @@ Ga terug naar de Blade *aan* de slag en kies **C#** als **back-uptaal**onder **e
 
 Installeer de Azure-workload via het Visual Studio-installatie programma om te publiceren naar Azure Mobile Apps project vanuit Visual Studio. Nadat u de SDK hebt geïnstalleerd, maakt u een ASP.NET-toepassing met behulp van de volgende stappen:
 
-1. Open het dialoog venster **Nieuw project** (uit **bestand** > **Nieuw** > **project...** ).
+1. Open het dialoog venster **Nieuw project** (uit **bestand** > **New** > **project...** ).
 2. Vouw **Visual C#**  uit en selecteer **Web**.
 3. Selecteer **ASP.NET-webtoepassing (.NET Framework)** .
 4. Vul de project naam in. Klik vervolgens op **OK**.
@@ -64,8 +68,8 @@ Installeer de Azure-workload via het Visual Studio-installatie programma om te p
 
 Installeer de [Azure SDK voor .net][4] (versie 2.9.0 of hoger) om een Azure Mobile apps-project in Visual Studio te maken. Nadat u de SDK hebt geïnstalleerd, maakt u een ASP.NET-toepassing met behulp van de volgende stappen:
 
-1. Open het dialoog venster **Nieuw project** (uit **bestand** > **Nieuw** > **project...** ).
-2. Vouw **sjablonen** > **Visual C#** uit en selecteer **Web**.
+1. Open het dialoog venster **Nieuw project** (uit **bestand** > **New** > **project...** ).
+2. Vouw **sjablonen** >  **- C#Visual** uit en selecteer **Web**.
 3. Selecteer **ASP.NET-webtoepassing**.
 4. Vul de project naam in. Klik vervolgens op **OK**.
 5. Onder *ASP.net 4.5.2-sjablonen*selecteert u **Azure Mobile App**. Controleer **de host in de Cloud** om een mobiele back-end te maken in de Cloud waarnaar u dit project kunt publiceren.
@@ -78,12 +82,12 @@ De SDK is beschikbaar op [NuGet.org]. Dit pakket bevat de basis functionaliteit 
 Als u de SDK wilt installeren, klikt u met de rechter muisknop op het server project in Visual Studio, selecteert u **NuGet-pakketten beheren**, zoekt u naar het [Microsoft.Azure.Mobile.Server] -pakket en klikt u op **installeren**.
 
 ### <a name="server-project-setup"></a>Het server project initialiseren
-Een .NET-back-endserver wordt geïnitialiseerd, net als bij andere ASP.NET-projecten, door een OWIN-opstart klasse op te nemen. Controleer of u het NuGet-pakket `Microsoft.Owin.Host.SystemWeb`hebt gerefereerd. Deze klasse toevoegen in Visual Studio, met de rechtermuisknop op uw serverproject en selecteer **toevoegen** >
+Een .NET-back-endserver wordt geïnitialiseerd, net als bij andere ASP.NET-projecten, door een OWIN-opstart klasse op te nemen. Zorg ervoor dat u het NuGet-pakket `Microsoft.Owin.Host.SystemWeb` hebt gerefereerd. Deze klasse toevoegen in Visual Studio, met de rechtermuisknop op uw serverproject en selecteer **toevoegen** >
 **Nieuw Item**, klikt u vervolgens **Web** > **Algemene** > **OWIN-Opstartklasse**.  Een klasse wordt gegenereerd met het volgende kenmerk:
 
     [assembly: OwinStartup(typeof(YourServiceName.YourStartupClassName))]
 
-Gebruik in `Configuration()` de methode van uw OWIN-opstart klasse een **HttpConfiguration** -object om de Azure Mobile apps-omgeving te configureren.
+Gebruik in de methode `Configuration()` van uw OWIN-opstart klasse een **HttpConfiguration** -object om de Azure Mobile apps-omgeving te configureren.
 In het volgende voor beeld wordt het server project geïnitialiseerd zonder toegevoegde functies:
 
     // in OWIN startup class
@@ -98,7 +102,7 @@ In het volgende voor beeld wordt het server project geïnitialiseerd zonder toeg
         app.UseWebApi(config);
     }
 
-Als u afzonderlijke functies wilt inschakelen, moet u uitbreidings methoden aanroepen voor het object **MobileAppConfiguration** voordat u **ApplyTo**aanroept. De volgende code voegt bijvoorbeeld de standaard routes toe aan alle API-controllers die het kenmerk `[MobileAppController]` hebben tijdens de initialisatie:
+Als u afzonderlijke functies wilt inschakelen, moet u uitbreidings methoden aanroepen voor het object **MobileAppConfiguration** voordat u **ApplyTo**aanroept. De volgende code voegt bijvoorbeeld de standaard routes toe aan alle API-controllers met het kenmerk `[MobileAppController]` tijdens de initialisatie:
 
     new MobileAppConfiguration()
         .MapApiControllers()
@@ -120,12 +124,12 @@ De Quick Start van de server van de Azure Portal roept **UseDefaultConfiguration
 
 De gebruikte extensie methoden zijn:
 
-* `AddMobileAppHomeController()`biedt de standaard introductie pagina van Azure Mobile Apps.
-* `MapApiControllers()`biedt aangepaste API-mogelijkheden voor WebAPI-controllers die `[MobileAppController]` zijn voorzien van het-kenmerk.
-* `AddTables()`biedt een toewijzing van de `/tables` eind punten aan tabel controllers.
-* `AddTablesWithEntityFramework()`is een korte hand voor het toewijzen van `/tables` de eind punten met behulp van Entity Framework-controllers.
-* `AddPushNotifications()`biedt een eenvoudige methode voor het registreren van apparaten voor Notification Hubs.
-* `MapLegacyCrossDomainController()`voorziet in standaard CORS-headers voor lokale ontwikkeling.
+* `AddMobileAppHomeController()` biedt de standaard introductie pagina van Azure Mobile Apps.
+* `MapApiControllers()` biedt aangepaste API-mogelijkheden voor WebAPI-controllers die zijn voorzien van het kenmerk `[MobileAppController]`.
+* `AddTables()` biedt een toewijzing van de `/tables`-eind punten aan tabel controllers.
+* `AddTablesWithEntityFramework()` is een korte hand voor het toewijzen van de `/tables`-eind punten met behulp van Entity Framework-controllers.
+* `AddPushNotifications()` biedt een eenvoudige methode voor het registreren van apparaten voor Notification Hubs.
+* `MapLegacyCrossDomainController()` biedt standaard CORS-headers voor lokale ontwikkeling.
 
 ### <a name="sdk-extensions"></a>SDK-extensies
 De volgende uitbreidings pakketten op basis van NuGet bieden diverse mobiele functies die door uw toepassing kunnen worden gebruikt. U schakelt uitbrei dingen in tijdens de initialisatie met behulp van het **MobileAppConfiguration** -object.
@@ -144,7 +148,7 @@ In deze sectie wordt beschreven hoe u uw .NET-back-upproject publiceert vanuit V
 
 1. Bouw in Visual Studio het project opnieuw op om NuGet-pakketten te herstellen.
 2. Klik in Solution Explorer met de rechter muisknop op het project en vervolgens op **publiceren**. De eerste keer dat u publiceert, moet u een publicatie profiel definiëren. Wanneer u al een profiel hebt gedefinieerd, kunt u dit selecteren en klikt u op **publiceren**.
-3. Als u wordt gevraagd om een publicatie doel te selecteren, klikt u op **Microsoft Azure app service** > **volgende**en vervolgens (indien nodig) Meld u aan met uw Azure-referenties.
+3. Als u wordt gevraagd om een publicatie doel te selecteren, klikt u op **App Service Microsoft Azure** > **volgende**en vervolgens (indien nodig) Meld u aan met uw Azure-referenties.
    Met Visual Studio kunt u uw publicatie-instellingen rechtstreeks vanuit Azure downloaden en veilig opslaan.
 
     ![](./media/app-service-mobile-dotnet-backend-how-to-use-server-sdk/publish-wizard-1.png)
@@ -166,7 +170,7 @@ Definieer een tabel controller om een SQL-tabel beschikbaar te maken voor mobiel
 2. Configureer een tabel verwijzing in de mobiele DbContext-klasse.
 3. Een tabel controller maken.
 
-Een Gegevensoverdracht-object (DTO) is een C# plat object waarvan de eigenschappen `EntityData`van worden overgenomen.  Bijvoorbeeld:
+Een Gegevensoverdracht-object (DTO) is een C# plat object dat overneemt van `EntityData`.  Bijvoorbeeld:
 
     public class TodoItem : EntityData
     {
@@ -174,7 +178,7 @@ Een Gegevensoverdracht-object (DTO) is een C# plat object waarvan de eigenschapp
         public bool Complete {get; set;}
     }
 
-De DTO wordt gebruikt voor het definiëren van de tabel in de SQL database.  Als u de database vermelding wilt maken, `DbSet<>` voegt u een eigenschap toe aan de DbContext die u gebruikt.  In de standaard project sjabloon voor Azure Mobile Apps wordt de DbContext aangeroepen `Models\MobileServiceContext.cs`:
+De DTO wordt gebruikt voor het definiëren van de tabel in de SQL database.  Als u de database vermelding wilt maken, voegt u een `DbSet<>`-eigenschap toe aan de DbContext die u gebruikt.  In de standaard project sjabloon voor Azure Mobile Apps heet de DbContext `Models\MobileServiceContext.cs`:
 
     public class MobileServiceContext : DbContext
     {
@@ -197,7 +201,7 @@ De DTO wordt gebruikt voor het definiëren van de tabel in de SQL database.  Als
 
 Als u de Azure SDK hebt geïnstalleerd, kunt u nu als volgt een controller voor de sjabloon tabel maken:
 
-1. Klik met de rechter muisknop op de map controllers en selecteer controller **toevoegen** >  **...** .
+1. Klik met de rechter muisknop op de map controllers en selecteer  > -controller **toevoegen** **...** .
 2. Selecteer de optie **Azure Mobile apps Table controller** en klik vervolgens op **toevoegen**.
 3. In het dialoog venster **controller toevoegen** :
    * Selecteer in de vervolg keuzelijst **model klasse** uw nieuwe DTO.
@@ -208,17 +212,17 @@ Als u de Azure SDK hebt geïnstalleerd, kunt u nu als volgt een controller voor 
 Het Quick Start-Server Project bevat een voor beeld van een eenvoudige **TodoItemController**.
 
 ### <a name="adjust-pagesize"></a>Procedures: De grootte van de tabel paginering aanpassen
-Standaard worden in azure Mobile Apps 50 records per aanvraag geretourneerd.  Paginering zorgt ervoor dat de client niet in staat is om de UI-thread of de server te lang te koppelen, waardoor een goede gebruikers ervaring wordt gegarandeerd. Als u de grootte van de tabel wilt wijzigen, verhoogt u de toegestane query grootte van de server en de grootte van de pagina voor de aan de client zijde toegestane query grootte die `EnableQuery` is aangepast met het kenmerk:
+Standaard worden in azure Mobile Apps 50 records per aanvraag geretourneerd.  Paginering zorgt ervoor dat de client niet in staat is om de UI-thread of de server te lang te koppelen, waardoor een goede gebruikers ervaring wordt gegarandeerd. Als u de grootte van de tabel wilt wijzigen, verhoogt u de toegestane query grootte van de server en de grootte van de pagina voor de aan de client zijde toegestane query grootte die is aangepast met het kenmerk `EnableQuery`:
 
     [EnableQuery(PageSize = 500)]
 
 Zorg ervoor dat de PageSize gelijk is aan of groter is dan de grootte die door de client is aangevraagd.  Raadpleeg de specifieke client documentatie voor meer informatie over het wijzigen van de grootte van de client pagina.
 
 ## <a name="how-to-define-a-custom-api-controller"></a>Procedure: Een aangepaste API-controller definiëren
-De aangepaste API-controller biedt de meest eenvoudige functionaliteit voor de back-end van uw mobiele app door een eind punt weer te geven. U kunt een Mobile-specifieke API-controller registreren met het kenmerk [MobileAppController]. Met `MobileAppController` het kenmerk wordt de route geregistreerd, wordt de Mobile apps JSON-serialisatiefunctie ingesteld en wordt [controle van de client versie](app-service-mobile-client-and-server-versioning.md)ingeschakeld.
+De aangepaste API-controller biedt de meest eenvoudige functionaliteit voor de back-end van uw mobiele app door een eind punt weer te geven. U kunt een Mobile-specifieke API-controller registreren met het kenmerk [MobileAppController]. Het kenmerk `MobileAppController` registreert de route, stelt de Mobile Apps JSON serializer in en schakelt de [controle van de client versie](app-service-mobile-client-and-server-versioning.md)in.
 
-1. Klik in Visual Studio met de rechter muisknop op de map controllers en klik vervolgens op**controller** **toevoegen** > , selecteer **web&mdash;API 2 controller empty** en klik op **toevoegen**.
-2. Geef een **naam**op voor de controller `CustomController`, zoals en klik op **toevoegen**.
+1. Klik in Visual Studio met de rechter muisknop op de map controllers en klik vervolgens op **toevoegen** > **controller**, selecteer **Web API 2-controller @ no__t-4Empty** en klik op **toevoegen**.
+2. Geef een **naam**op voor de controller, bijvoorbeeld `CustomController`, en klik op **toevoegen**.
 3. Voeg in het nieuwe controller-klassebestand de volgende instructie toe:
 
         using Microsoft.Azure.Mobile.Server.Config;
@@ -235,15 +239,15 @@ De aangepaste API-controller biedt de meest eenvoudige functionaliteit voor de b
             .MapApiControllers()
             .ApplyTo(config);
 
-U kunt ook de `UseDefaultConfiguration()` uitbreidings methode gebruiken in plaats van. `MapApiControllers()` Een controller waarop geen **MobileAppControllerAttribute** is toegepast, kan nog steeds worden gebruikt door clients, maar is mogelijk niet correct geconsumeerd door clients die gebruikmaken van een mobiele app-client-SDK.
+U kunt ook de extensie methode `UseDefaultConfiguration()` gebruiken in plaats van `MapApiControllers()`. Een controller waarop geen **MobileAppControllerAttribute** is toegepast, kan nog steeds worden gebruikt door clients, maar is mogelijk niet correct geconsumeerd door clients die gebruikmaken van een mobiele app-client-SDK.
 
 ## <a name="how-to-work-with-authentication"></a>Procedure: Werken met verificatie
 Azure Mobile Apps gebruikt App Service verificatie/autorisatie om uw mobiele back-end te beveiligen.  In deze sectie wordt beschreven hoe u de volgende taken met betrekking tot authenticatie uitvoert in uw .NET back-endserver:
 
-* [Procedure: Verificatie toevoegen aan een server project](#add-auth)
-* [Procedure: Aangepaste verificatie gebruiken voor uw toepassing](#custom-auth)
-* [Procedure: Geauthenticeerde gebruikers gegevens ophalen](#user-info)
-* [Procedure: Toegang tot gegevens beperken voor gemachtigde gebruikers](#authorize)
+* [Procedure: Verificatie toevoegen aan een server project @ no__t-0
+* [Procedure: Aangepaste verificatie gebruiken voor uw toepassing @ no__t-0
+* [Procedure: Geauthenticeerde gebruikers gegevens ophalen @ no__t-0
+* [Procedure: Toegang tot gegevens beperken voor geautoriseerde gebruikers @ no__t-0
 
 ### <a name="add-auth"></a>Procedures: Verificatie toevoegen aan een server project
 U kunt verificatie toevoegen aan uw server project door het **MobileAppConfiguration** -object uit te breiden en OWIN middleware te configureren. Wanneer u het pakket [Microsoft.Azure.Mobile.Server.Quickstart] start installeert en de **UseDefaultConfiguration** -extensie methode aanroept, kunt u door gaan naar stap 3.
@@ -254,7 +258,7 @@ U kunt verificatie toevoegen aan uw server project door het **MobileAppConfigura
         app.UseAppServiceAuthentication(config);
 
     Dit OWIN-middleware-onderdeel valideert tokens die zijn uitgegeven door de gekoppelde App Service gateway.
-3. Voeg het `[Authorize]` kenmerk toe aan een controller of methode waarvoor verificatie is vereist.
+3. Voeg het kenmerk `[Authorize]` toe aan een controller of methode waarvoor verificatie is vereist.
 
 Zie [verificatie toevoegen aan uw app](app-service-mobile-ios-get-started-users.md)voor meer informatie over het verifiëren van clients met de back-end van uw Mobile apps.
 
@@ -263,11 +267,11 @@ Zie [verificatie toevoegen aan uw app](app-service-mobile-ios-get-started-users.
 > Als u aangepaste verificatie wilt inschakelen, moet u eerst App Service-verificatie inschakelen zonder een provider voor uw App Service te selecteren in de Azure Portal. Hiermee schakelt u de omgevings variabele WEBSITE_AUTH_SIGNING_KEY in als deze wordt gehost.
 > 
 > 
-> Als u een van de App Service verificatie/autorisatie providers niet wilt gebruiken, kunt u uw eigen aanmeldings systeem implementeren. Installeer het pakket [Microsoft.Azure.Mobile.Server.Login] om te helpen bij het genereren van het verificatie token.  Geef uw eigen code op voor het valideren van gebruikers referenties. U kunt bijvoorbeeld controleren op gezouten en gehashte wacht woorden in een Data Base. In het onderstaande voor beeld is `isValidAssertion()` de methode (gedefinieerd elders) verantwoordelijk voor deze controles.
+> Als u een van de App Service verificatie/autorisatie providers niet wilt gebruiken, kunt u uw eigen aanmeldings systeem implementeren. Installeer het pakket [Microsoft.Azure.Mobile.Server.Login] om te helpen bij het genereren van het verificatie token.  Geef uw eigen code op voor het valideren van gebruikers referenties. U kunt bijvoorbeeld controleren op gezouten en gehashte wacht woorden in een Data Base. In het onderstaande voor beeld is de methode `isValidAssertion()` (gedefinieerd elders) verantwoordelijk voor deze controles.
 
-De aangepaste verificatie wordt beschikbaar gemaakt door het maken van een ApiController `register` en `login` weer geven en acties. De client moet een aangepaste gebruikers interface gebruiken om de gegevens van de gebruiker te verzamelen.  De gegevens worden vervolgens naar de API verzonden met een standaard HTTP POST-oproep. Zodra de server de bevestiging valideert, wordt er een token uitgegeven met behulp van de `AppServiceLoginHandler.CreateToken()` methode.  De ApiController **mag** het `[MobileAppController]` kenmerk niet gebruiken.
+De aangepaste verificatie wordt weer gegeven door een ApiController te maken en `register`-en `login`-acties beschikbaar te stellen. De client moet een aangepaste gebruikers interface gebruiken om de gegevens van de gebruiker te verzamelen.  De gegevens worden vervolgens naar de API verzonden met een standaard HTTP POST-oproep. Zodra de server de bewering valideert, wordt er een token uitgegeven met de methode `AppServiceLoginHandler.CreateToken()`.  De ApiController **mag** het kenmerk `[MobileAppController]` niet gebruiken.
 
-Een voorbeeld `login` actie:
+Een voor beeld van een actie @no__t 0:
 
         public IHttpActionResult Post([FromBody] JObject assertion)
         {
@@ -299,16 +303,16 @@ In het vorige voor beeld zijn LoginResult en LoginResultUser serialiseerbare obj
             }
         }
 
-De `AppServiceLoginHandler.CreateToken()` methode bevat een *doel groep* en een *verlener* -para meter. Beide para meters worden ingesteld op de URL van de hoofdmap van uw toepassing, met behulp van het HTTPS-schema. Op dezelfde manier moet u *secretKey* instellen als de waarde van de handtekening sleutel van uw toepassing. Distribueer de handtekening sleutel niet in een client omdat deze kan worden gebruikt om sleutels te licht en gebruikers te imiteren. U kunt de handtekening sleutel verkrijgen tijdens het gehost in app service door te verwijzen naar de omgevings variabele voor de *verificatie\_\_\_sleutel* van de website. Als dat nodig is in de context van een lokale fout opsporing, volgt u de instructies in de sectie [lokale fout opsporing met verificatie](#local-debug) om de sleutel op te halen en op te slaan als een toepassings instelling.
+De methode `AppServiceLoginHandler.CreateToken()` bevat een *doel groep* en een *Issuer* -para meter. Beide para meters worden ingesteld op de URL van de hoofdmap van uw toepassing, met behulp van het HTTPS-schema. Op dezelfde manier moet u *secretKey* instellen als de waarde van de handtekening sleutel van uw toepassing. Distribueer de handtekening sleutel niet in een client omdat deze kan worden gebruikt om sleutels te licht en gebruikers te imiteren. U kunt de handtekening sleutel verkrijgen tijdens het gehost in App Service door te verwijzen naar de *website @ no__t-1AUTH @ no__t-2SIGNING @ no__t-3KEY-* omgevings variabele. Als dat nodig is in de context van een lokale fout opsporing, volgt u de instructies in de sectie [lokale fout opsporing met verificatie](#local-debug) om de sleutel op te halen en op te slaan als een toepassings instelling.
 
 Het gepubliceerde token kan ook andere claims en een verval datum omvatten.  Het gepubliceerde token moet mini maal een subject (**Sub**)-claim bevatten.
 
-U kunt de standaard client `loginAsync()` methode ondersteunen door de verificatie route te overbelasten.  Als de client `client.loginAsync('custom');` zich aanmeldt om zich aan te melden `/.auth/login/custom`, moet uw route zijn.  U kunt de route voor de aangepaste verificatie controller instellen met `MapHttpRoute()`behulp van:
+U kunt de standaard methode voor client `loginAsync()` ondersteunen door de verificatie route te overbelasten.  Als de client `client.loginAsync('custom');` aanroept om zich aan te melden, moet uw route `/.auth/login/custom` zijn.  U kunt de route voor de aangepaste verificatie controller instellen met behulp van `MapHttpRoute()`:
 
     config.Routes.MapHttpRoute("custom", ".auth/login/custom", new { controller = "CustomAuth" });
 
 > [!TIP]
-> Met behulp van de `loginAsync()` aanpak zorgt u ervoor dat het verificatie token is gekoppeld aan elke volgende aanroep van de service.
+> Met de methode `loginAsync()` zorgt u ervoor dat het verificatie token is gekoppeld aan elke volgende aanroep van de service.
 >
 >
 
@@ -347,7 +351,7 @@ Met de volgende code wordt de **GetAppServiceIdentityAsync** -extensie methode a
         var fbInfo = await resp.Content.ReadAsStringAsync();
     }
 
-Voeg een using-instructie `System.Security.Principal` toe voor om de **GetAppServiceIdentityAsync** -extensie methode op te geven.
+Voeg een using-instructie voor `System.Security.Principal` toe om de **GetAppServiceIdentityAsync** -extensie methode op te geven.
 
 ### <a name="authorize"></a>Procedures: Toegang tot gegevens beperken voor gemachtigde gebruikers
 In de vorige sectie hebt u geleerd hoe u de gebruikers-ID van een geverifieerde gebruiker kunt ophalen. U kunt de toegang tot gegevens en andere bronnen beperken op basis van deze waarde. U kunt bijvoorbeeld een kolom GebruikersID toevoegen aan tabellen en de query resultaten filteren op basis van de gebruikers-ID. Dit is een eenvoudige manier om geretourneerde gegevens alleen te beperken tot gemachtigde gebruikers. De volgende code retourneert alleen gegevens rijen wanneer de SID overeenkomt met de waarde in de kolom UserId in de tabel TodoItem:
@@ -359,13 +363,13 @@ In de vorige sectie hebt u geleerd hoe u de gebruikers-ID van een geverifieerde 
     // Only return data rows that belong to the current user.
     return Query().Where(t => t.UserId == sid);
 
-De `Query()` methode retourneert een `IQueryable` die kan worden gemanipuleerd door LINQ voor het afhandelen van filters.
+De methode `Query()` retourneert een `IQueryable` die door LINQ kan worden gemanipuleerd voor het afhandelen van filters.
 
 ## <a name="how-to-add-push-notifications-to-a-server-project"></a>Procedure: Push meldingen toevoegen aan een server project
 Voeg push meldingen toe aan uw server project door het **MobileAppConfiguration** -object uit te breiden en een notification hubs-client te maken.
 
-1. Klik in Visual Studio met de rechter muisknop op het server project en klik op **NuGet-pakketten beheren**, zoek naar `Microsoft.Azure.Mobile.Server.Notifications`en klik vervolgens op **installeren**.
-2. Herhaal deze stap om het `Microsoft.Azure.NotificationHubs` pakket te installeren, met inbegrip van de notification hubs-client bibliotheek.
+1. Klik in Visual Studio met de rechter muisknop op het server project en klik op **NuGet-pakketten beheren**, zoek naar `Microsoft.Azure.Mobile.Server.Notifications` en klik vervolgens op **installeren**.
+2. Herhaal deze stap om het pakket `Microsoft.Azure.NotificationHubs` te installeren, inclusief de Notification Hubs-client bibliotheek.
 3. In App_Start/startup. MobileApp. cs en voegt u tijdens de initialisatie een aanroep toe aan de extensie methode **AddPushNotifications ()** :
 
         new MobileAppConfiguration()
@@ -456,7 +460,7 @@ U kunt uw toepassing lokaal uitvoeren om wijzigingen te testen voordat u ze naar
 
 U moet een mobiele app op de Cloud hebben met App Service verificatie/autorisatie is geconfigureerd en uw client moet het Cloud eindpunt opgeven dat is opgegeven als de alternatieve aanmeldings-host. Raadpleeg de documentatie voor uw client platform voor de specifieke stappen die vereist zijn.
 
-Zorg ervoor dat op uw mobiele back-end [Microsoft.Azure.Mobile.Server.Authentication] is geïnstalleerd. Voeg vervolgens in de opstart klasse van uw toepassing de volgende toe, nadat `MobileAppConfiguration` deze zijn toegepast op uw: `HttpConfiguration`
+Zorg ervoor dat op uw mobiele back-end [Microsoft.Azure.Mobile.Server.Authentication] is geïnstalleerd. Voeg vervolgens in de opstart klasse van uw toepassing de volgende toe, nadat `MobileAppConfiguration` is toegepast op uw `HttpConfiguration`:
 
         app.UseAppServiceAuthentication(new AppServiceAuthenticationOptions()
         {
@@ -472,7 +476,7 @@ De handtekening sleutel verkrijgen:
 1. Navigeer naar uw app binnen het [Azure-portal]
 2. Klik op **extra**, **kudu**en **Ga naar**.
 3. Klik in de kudu-beheer site op **omgeving**.
-4. Zoek de waarde voor *website\_auth\_Sign\_Key*.
+4. Zoek de waarde voor *website @ no__t-1AUTH @ no__t-2SIGNING @ no__t-3KEY*.
 
 Gebruik de handtekening sleutel voor de para meter *authSigningKey* in de configuratie van uw lokale toepassing.  Uw mobiele back-end is nu uitgerust met het valideren van tokens bij het lokaal uitvoeren, waarbij de client het token van het eind punt op de Cloud verkrijgt.
 

@@ -8,12 +8,12 @@ ms.date: 08/13/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 4523d7bf8f6c0ffc0ebfbc57d20a19baec08c91b
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: 99def93a20a365dd0ff5fc27e9c52909ee30bd83
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71720361"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72028132"
 ---
 # <a name="build-highly-available-azure-storage-applications-with-geo-zone-redundant-storage-gzrs-preview"></a>Bouw Maxi maal beschik bare Azure Storage toepassingen met geo-zone-redundante opslag (GZRS) (preview)
 
@@ -35,7 +35,7 @@ GZRS en RA-GZRS zijn momenteel beschikbaar als preview-versie in de volgende reg
 - US - oost 2
 - US - centraal
 
-Micro soft blijft GZRS en RA-GZRS inschakelen in extra Azure-regio's. Controleer regel matig de pagina met [updates](https://azure.microsoft.com/updates/) voor Azure-Services voor informatie over ondersteunde regio's.
+Micro soft blijft GZRS en RA-GZRS inschakelen in extra Azure-regio's. Controleer de [updates](https://azure.microsoft.com/updates/)van de Azure-service  page regel matig op voor informatie over ondersteunde regio's.
 
 Raadpleeg voor meer informatie over de preview-prijzen GZRS preview-prijzen voor [blobs](https://azure.microsoft.com/pricing/details/storage/blobs), [bestanden](https://azure.microsoft.com/pricing/details/storage/files/), [wacht rijen](https://azure.microsoft.com/pricing/details/storage/queues/)en [tabellen](https://azure.microsoft.com/pricing/details/storage/tables/).
 
@@ -49,11 +49,11 @@ Wanneer gegevens worden geschreven naar een opslag account waarvoor GZRS of RA-G
 > [!IMPORTANT]
 > Asynchrone replicatie vergt een vertraging tussen de tijd dat gegevens naar de primaire regio worden geschreven en wanneer deze naar de secundaire regio worden gerepliceerd. In het geval van een regionale ramp kunnen wijzigingen die nog niet zijn gerepliceerd naar de secundaire regio, verloren gaan als de gegevens niet kunnen worden hersteld vanuit de primaire regio.
 
-Wanneer u een opslag account maakt, geeft u op hoe gegevens in dat account moeten worden gerepliceerd en geeft u ook de primaire regio voor dat account op. De gekoppelde secundaire regio voor een geo-gerepliceerd account wordt bepaald op basis van de primaire regio en kan niet worden gewijzigd. Zie [bedrijfs continuïteit en herstel na nood gevallen (BCDR) voor actuele informatie over regio's die door Azure worden ondersteund. Gekoppelde Azure-regio's](https://docs.microsoft.com/azure/best-practices-availability-paired-regions). Zie [een opslag account maken](storage-quickstart-create-account.md)voor meer informatie over het maken van een opslag account met behulp van GZRS of Ra-GZRS.
+Wanneer u een opslag account maakt, geeft u op hoe gegevens in dat account moeten worden gerepliceerd en geeft u ook de primaire regio voor dat account op. De gekoppelde secundaire regio voor een geo-gerepliceerd account wordt bepaald op basis van de primaire regio en kan niet worden gewijzigd. Zie @ no__t-0Business-continuïteit en herstel na nood gevallen (BCDR) voor actuele informatie over de regio's die worden ondersteund door Azure: Gekoppelde Azure-regio's @ no__t-0. Zie [een opslag account maken](storage-quickstart-create-account.md)voor meer informatie over het maken van een opslag account met behulp van GZRS of Ra-GZRS.
 
 ### <a name="use-ra-gzrs-for-high-availability"></a>RA-GZRS gebruiken voor hoge Beschik baarheid
 
-Wanneer u RA-GZRS inschakelt voor uw opslag account, kunnen uw gegevens worden gelezen van het secundaire eind punt en van het primaire eind punt voor uw opslag account. Het secundaire eind punt voegt het achtervoegsel *(secundair* ) toe aan de account naam. Als uw primaire eind punt voor de BLOB service bijvoorbeeld is `myaccount.blob.core.windows.net`, is `myaccount-secondary.blob.core.windows.net`het secundaire eind punt. De toegangs sleutels voor uw opslag account zijn hetzelfde voor zowel de primaire als de secundaire eind punten.
+Wanneer u RA-GZRS inschakelt voor uw opslag account, kunnen uw gegevens worden gelezen van het secundaire eind punt en van het primaire eind punt voor uw opslag account. Het secundaire eind punt voegt het achtervoegsel *(secundair* ) toe aan de account naam. Als uw primaire eind punt voor de Blob service bijvoorbeeld @ no__t-0 is, is het secundaire eind punt @ no__t-1. De toegangs sleutels voor uw opslag account zijn hetzelfde voor zowel de primaire als de secundaire eind punten.
 
 Als u gebruik wilt maken van RA-GZRS in het geval van een regionale storing, moet u uw toepassing vooraf ontwerpen om dit scenario af te handelen. Uw toepassing moet lezen van en schrijven naar het primaire eind punt, maar overschakelen naar het gebruik van het secundaire eind punt in het geval dat de primaire regio niet beschikbaar is. Zie voor hulp bij het ontwerpen voor hoge Beschik baarheid met RA-GZRS [ontwerpen van Maxi maal beschik bare toepassingen met Ra-GZRS of Ra-GRS](https://docs.microsoft.com/azure/storage/common/storage-designing-ha-apps-with-ragrs).
 
@@ -115,7 +115,7 @@ Een hand matige migratie kan leiden tot uitval tijd van toepassingen. Als voor u
 
 Tijdens een Livemigratie kunt u uw opslag account gebruiken terwijl uw gegevens worden gemigreerd tussen de bron-en doel opslag accounts. Tijdens het Live migratie proces blijft uw account voldoen aan de SLA voor duurzaamheid en beschik baarheid. Er wordt geen downtime of gegevens verlies veroorzaakt door de Livemigratie.
 
-Alleen voor algemeen gebruik v2-accounts ondersteunen GZRS/RA-GZRS, dus voordat u een aanvraag voor een Livemigratie naar GZRS/RA-GZRS indient, moet u uw account upgraden naar de versie van het algemene doel v2. Zie [overzicht](https://docs.microsoft.com/azure/storage/common/storage-account-overview) van Azure Storage-accounts en [een upgrade uitvoeren naar een v2-opslag account voor algemeen gebruik](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade)voor meer informatie.
+Alleen voor algemeen gebruik v2-accounts ondersteunen GZRS/RA-GZRS, dus voordat u een aanvraag voor een Livemigratie naar GZRS/RA-GZRS indient, moet u uw account upgraden naar de versie van het algemene doel v2. Zie voor meer informatie [overzicht van Azure Storage-account](https://docs.microsoft.com/azure/storage/common/storage-account-overview) and [upgrade naar een voor algemeen gebruik v2-opslag account](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade).
 
 Zodra de migratie is voltooid, wordt de replicatie-instelling van het opslag account bijgewerkt naar **geo-zone-redundante opslag (GZRS)** of **geo-zone-redundante opslag met lees toegang (RA-GZRS)** . Service-eind punten, toegangs sleutels, SA'S (Shared Access signatures) en andere account configuratie opties blijven ongewijzigd en intact.
 
@@ -125,7 +125,7 @@ Houd u aan de volgende beperkingen voor Livemigratie:
 - Uw account moet gegevens bevatten.
 - U kunt alleen gegevens binnen dezelfde regio migreren.
 - Alleen de standaard opslag typen bieden ondersteuning voor Livemigratie. Premium Storage-accounts moeten hand matig worden gemigreerd.
-- Livemigratie van een GZRS-of RA-GZRS-account naar een LRS-, GRS-of RA-GRS-account wordt niet ondersteund. U moet de gegevens hand matig verplaatsen naar een nieuw of een bestaand opslag account.
+- Livemigratie van een GZRS-of RA-GZRS-account naar een LRS-, GRS-of RA-GRS-account wordt niet ondersteund. U moet de gegevens handmatig verplaatsen naar een nieuw opslagaccount of een bestaand opslagaccount.
 - U kunt een Live migratie van RA-GRS aanvragen bij RA-GZRS. Migratie van RA-GRS naar GZRS wordt echter niet ondersteund. In dit geval moet u een Livemigratie aanvragen bij RA-GZRS en het opslag account vervolgens hand matig converteren om GZRS te gebruiken.
 - Beheerde schijven bieden alleen ondersteuning voor LRS en kunnen niet worden gemigreerd naar GZRS of RA-GZRS. Zie [Introduction to Azure Managed disks](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview#integration-with-availability-sets)(Engelstalig) voor integratie met beschikbaarheids sets.
 - U kunt moment opnamen en installatie kopieën voor Standard-SSD-Managed Disks op Standard-HDD opslag opslaan en [kiezen tussen LRS, ZRS, GZRS en RA-GZRS opties](https://azure.microsoft.com/pricing/details/managed-disks/).
@@ -133,23 +133,23 @@ Houd u aan de volgende beperkingen voor Livemigratie:
 
 Als u een Live migratie wilt aanvragen, gebruikt u de [Azure Portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview). Selecteer in de portal het opslag account dat u wilt migreren naar GZRS of RA-GZRS en volg deze instructies:
 
-1. Selecteer een **nieuwe ondersteunings aanvraag**.
-2. Voltooi de basis **beginselen** op basis van uw account gegevens. Selecteer in de sectie **service**  **opslag account beheer** en geef het account op dat moet worden gemigreerd.
-3. Selecteer  **Volgende**.
-4. Geef de volgende waarden op voor het **probleem** gedeelte:
+1. Selecteer een **nieuwe ondersteunings aanvraag**.
+2. Voltooi de basis **beginselen** op basis van uw account gegevens. Selecteer in de sectie **service** **opslag account beheer** en geef het account op dat moet worden gemigreerd.
+3. Selecteer **Volgende**.
+4. Geef de volgende waarden op voor het **probleem** gedeelte:
     - **Ernst**: De standaard waarde ongewijzigd laten.
-    - **Probleem type**: Selecteer **gegevens migratie**.
-    - **Categorie**: Selecteer **migreren naar (RA) GZRS binnen een regio**.
-    - **Title**: Typ een beschrijvende titel, bijvoorbeeld **(RA-) GZRS-account migratie**.
-    - **Details**: Typ meer details in de **details** box, bijvoorbeeld ' Ik wil migreren naar GZRS van [LRS, GRS] in de regio \_ @ no__t-3 '. of "Ik wil graag migreren naar RA-GZRS van [LRS, RA-GRS] in de regio \_ @ no__t-1."
-5. Selecteer  **Volgende**.
-6. Controleer of de contact gegevens juist zijn op de Blade **contact gegevens** .
-7. Selecteer  **Maken**.
+    - **Probleem type**: Selecteer **gegevens migratie**.
+    - **Categorie**: Selecteer **migreren naar (RA) GZRS binnen een regio**.
+    - **Title**: Typ een beschrijvende titel, bijvoorbeeld **(RA-) GZRS-account migratie**.
+    - **Details**: Typ meer details in het vak **Details** , bijvoorbeeld ' Ik wil migreren naar GZRS van [LRS, GRS] in de regio \_ @ no__t-2 '. of "Ik wil graag migreren naar RA-GZRS van [LRS, RA-GRS] in de regio \_ @ no__t-1."
+5. Selecteer **Volgende**.
+6. Controleer of de contact gegevens juist zijn op de Blade **contact gegevens** .
+7. Selecteer **Maken**.
 
 Een ondersteunings medewerker neemt contact met u op om hulp te bieden.
 
 ## <a name="see-also"></a>Zie ook
 
 - [Azure Storage-replicatie](https://docs.microsoft.com/azure/storage/common/storage-redundancy)
-- [Lokaal redundante opslag (LRS): Lage kosten voor gegevens redundantie voor Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs)
-- [Zone-redundante opslag (ZRS): Maxi maal beschik bare Azure Storage toepassingen](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs) 
+- [Locally redundante opslag (LRS): Lage kosten voor gegevens redundantie voor Azure Storage @ no__t-0
+- [Zone-redundante opslag (ZRS): Maxi maal beschik bare Azure Storage toepassingen @ no__t-0 

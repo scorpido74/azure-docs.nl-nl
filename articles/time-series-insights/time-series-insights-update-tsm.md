@@ -8,14 +8,14 @@ manager: cshankar
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 08/08/2019
+ms.date: 10/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2a740d8ee0eb50cfa01f36bd8f5590a58e1e6627
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 8f4ed6de5ff47efa441c371b80670c500f57c9bb
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68931916"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72034058"
 ---
 # <a name="time-series-model"></a>Time Series-model
 
@@ -25,7 +25,7 @@ De gegevens die op IoT-apparaten worden verzameld, hebben doorgaans geen context
 
 Time Series-modellen spelen een belang rijke rol in query's en navigatie omdat ze waarmee apparaat-en niet-apparaat-entiteiten hebben. Gegevens die persistent zijn in het tijdreeks model, worden in de loop van de tijd Series-query berekeningen door gebruik te maken van de formules die erin zijn opgeslagen.
 
-[![Overzicht van Time Series-model](media/v2-update-tsm/tsm.png)](media/v2-update-tsm/tsm.png#lightbox)
+[overzicht van ![Time-serie model](media/v2-update-tsm/tsm.png)](media/v2-update-tsm/tsm.png#lightbox)
 
 ## <a name="key-capabilities"></a>Belangrijkste mogelijkheden
 
@@ -82,7 +82,7 @@ Time Series Insights typen bevatten variabelen, die de naam berekeningen hebben 
 
 De volgende matrix werkt als een legenda voor variabele definities:
 
-[![Definitie tabel van type variabele](media/v2-update-tsm/table.png)](media/v2-update-tsm/table.png#lightbox)
+[definitie tabel ![Type](media/v2-update-tsm/table.png)](media/v2-update-tsm/table.png#lightbox)
 
 | Definitie | Description |
 | --- | ---|
@@ -126,7 +126,7 @@ Houd rekening met het volgende voor beeld waarbij hiërarchie H1 *gebouw*, *vloe
 
 Afhankelijk van de *instantie velden*, worden de hiërarchie kenmerken en-waarden weer gegeven, zoals wordt weer gegeven in de volgende tabel:
 
-| Tijdreeks-id | Exemplaar velden |
+| Time Series-ID | Exemplaar velden |
 | --- | --- |
 | ID1 | ' buil ding ' = ' 1000 ', ' Floor ' = ' 10 ', ' room ' = ' 55 '  |
 | ID2 | "buil ding" = "1000", "room" = "55" |

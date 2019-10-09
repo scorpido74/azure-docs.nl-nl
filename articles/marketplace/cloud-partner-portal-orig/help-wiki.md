@@ -1,24 +1,24 @@
 ---
-title: Dynamics 365 voor bewerkingen Help Wiki
-description: Dynamics 365 voor informatiepagina Operations Help Wiki
+title: Dynamics 365 for Operations Help wiki
+description: Dit artikel is afgeschaft en is gekoppeld aan het artikel van de PC. was de pagina Dynamics 365 for Operations Help wiki Information
 services: Azure, Marketplace, Cloud Partner Portal,
-author: pbutlerm
+author: ChJenk
 manager: Ricardo.Villalobos
 ms.service: marketplace
 ms.topic: conceptual
-ms.date: 09/13/2018
-ms.author: pabutler
-ms.openlocfilehash: d957055a3545d790b9419ed1523352155ecc3add
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 09/30/2019
+ms.author: v-chjen
+ms.openlocfilehash: cf21f0aa42eef089d02632ba9323574768459054
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64935180"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72034412"
 ---
-# <a name="dynamics-365-for-operations-help-wiki"></a>Dynamics 365 voor bewerkingen Help Wiki
+# <a name="dynamics-365-for-operations-help-wiki"></a>Dynamics 365 for Operations Help wiki
 
-Microsoft Dynamics 365 voor bewerkingen wordt door Microsoft\'s business-toepassing voor ondernemingen. Deze kan mensen snel via een intelligente gebruikersinterface waarmee toegang tot realtime inzichten en neem slimmere beslissingen. Hiermee kunnen bedrijven transformeren en door het leveren van bewezen zakelijke logica waarmee ze hun bedrijfsprocessen sneller te innoveren. Deze biedt bedrijven de flexibiliteit om te groeien met hun eigen tempo en zakendoen vrijwel overal, altijd en overal, zodat ze hun activiteiten om te voldoen aan de behoeften van uw bedrijf wereldwijd te schalen.
+Micro soft Dynamics 365 for Operations is de zakelijke toepassing van micro soft voor ondernemingen. Zo kunnen mensen snel slimmere beslissingen nemen via een intelligente gebruikers interface die toegang biedt tot real-time inzichten en gegevens. Hierdoor kunnen bedrijven trans formatie en innovatie uitvoeren door bewezen bedrijfs logica te leveren waarmee ze hun bedrijfs processen sneller kunnen ontwerpen. De IT-afdeling biedt bedrijven de flexibiliteit om in hun eigen tempo mee te groeien en op elk moment, overal en altijd te doen, zodat ze hun bedrijfs activiteiten globaal kunnen schalen om te voldoen aan de behoeften van uw bedrijf.
 
-Deze handleiding kunt u meer informatie over het maken van de Dynamics 365 voor bewerkingen voor uw bedrijf werkt.
+Deze gebruikers handleiding kan u helpen om te leren hoe u Dynamics 365 voor bewerkingen kunt maken voor uw bedrijf.
 
-Zie [Dynamics 365 voor bewerkingen Help Wiki](https://docs.microsoft.com/dynamics365/operations/) voor meer informatie.
+Zie [Dynamics 365 for Operations Help wiki](https://docs.microsoft.com/dynamics365/operations/) voor meer informatie.

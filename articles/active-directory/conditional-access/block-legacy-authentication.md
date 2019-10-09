@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d227b4cf7090cdc3177c7045d6137f30a13f71b
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: f4e4dc33d670c5f6c5ebefa21ccf1a1ff941e913
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68931956"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72024576"
 ---
 # <a name="how-to-block-legacy-authentication-to-azure-ad-with-conditional-access"></a>Procedure: Verouderde verificatie naar Azure AD blok keren met voorwaardelijke toegang   
 
@@ -52,9 +52,9 @@ In deze sectie wordt uitgelegd hoe u een beleid voor voorwaardelijke toegang con
 
 Voordat u verouderde verificatie in uw Directory kunt blok keren, moet u eerst begrijpen of uw gebruikers apps hebben die gebruikmaken van verouderde verificatie en hoe dit van invloed is op uw algemene Directory. Aanmeld logboeken van Azure AD kunnen worden gebruikt om te begrijpen of u gebruikmaakt van verouderde verificatie.
 
-1. Navigeer naar het **Azure Portal** >  **-** **Azure Active Directory** > aanmeldingen.
-1. Voeg de kolom client toepassing toe als deze niet wordt weer gegeven door > te klikken op de**client-app**columns.
-1. Filters > toevoegen**client-app** > Selecteer alle opties voor **andere clients** en klik op **Toep assen**.
+1. Navigeer naar het **Azure Portal** > -**Azure Active Directory** > -**aanmeldingen**.
+1. Voeg de kolom client-app toe als deze niet wordt weer gegeven door te klikken op de **kolommen** > **client-app**.
+1. **Filters toevoegen** > **Client-App** > Selecteer alle opties voor **andere clients** en klik op **Toep assen**.
 
 Bij filteren worden alleen de aanmeldings pogingen weer gegeven die zijn gemaakt door verouderde verificatie protocollen. Als u op elke afzonderlijke aanmeldings poging klikt, wordt er meer informatie weer gegeven. In het veld **client-app** onder het tabblad **basis informatie** wordt aangegeven welk verouderde verificatie protocol is gebruikt.
 
@@ -68,15 +68,15 @@ In een beleid voor voorwaardelijke toegang kunt u een voor waarde instellen die 
 
 Als u de toegang tot deze apps wilt blok keren, moet u **toegang blok keren**selecteren.
 
-![Toegang blokkeren](./media/block-legacy-authentication/02.png)
+![Toegang blok keren](./media/block-legacy-authentication/02.png)
 
 ### <a name="select-users-and-cloud-apps"></a>Gebruikers en Cloud-apps selecteren
 
 Als u verouderde verificatie voor uw organisatie wilt blok keren, denkt u waarschijnlijk dat u dit kunt doen door het volgende te selecteren:
 
 - Alle gebruikers
-- Alle cloud-apps
-- Toegang blokkeren
+- Alle Cloud-apps
+- Toegang blok keren
 
 ![Toewijzingen](./media/block-legacy-authentication/03.png)
 
@@ -101,7 +101,7 @@ Zie [Hoe moet u een nieuw beleid implementeren?](best-practices.md#how-should-yo
 
 ## <a name="what-you-should-know"></a>Wat u moet weten
 
-Het blok keren van toegang met **andere clients** blokkeert ook Exchange Online Power shell met basis verificatie.
+Het blok keren van toegang met **andere clients** blokkeert ook Exchange Online Power shell en Dynamics 365 met behulp van basis verificatie.
 
 Het configureren van een beleid voor **andere clients** blokkeert de hele organisatie van bepaalde clients, zoals SPConnect. Dit blok treedt op omdat oudere clients op onverwachte wijze worden geverifieerd. Het probleem is niet van toepassing op grote Office-toepassingen zoals de oudere Office-clients.
 

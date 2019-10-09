@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: tyleonha
 ms.reviewer: glenga
-ms.openlocfilehash: 6cf03d1269cac5dcfa67c2d4778be3fce9ee63aa
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 9163f2b7943a8022b88b2ed514f4a466e61a8d98
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71973366"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72029016"
 ---
 # <a name="azure-functions-powershell-developer-guide"></a>Azure Functions Power shell-ontwikkelaars handleiding
 
@@ -245,7 +245,7 @@ Logboek registratie in Power shell-functies werkt zoals bij normale Power shell-
 | Waarschuwing | **`Write-Warning`**  | 
 | Information | **`Write-Information`** <br/> **`Write-Host`** <br /> **`Write-Output`**      | Information | Schrijft naar logboek registratie op _informatie_ niveau. |
 | fouten opsporen | **`Write-Debug`** |
-| Trace | **`Write-Progress`** <br /> **`Write-Verbose`** |
+| Tracering | **`Write-Progress`** <br /> **`Write-Verbose`** |
 
 Naast deze cmdlets wordt alles wat naar de pijp lijn is geschreven, omgeleid naar het logboek niveau `Information` en weer gegeven met de standaard Power shell-opmaak.
 
@@ -434,6 +434,9 @@ De volgende instellingen zijn beschikbaar om te wijzigen hoe de beheerde afhanke
 | MDMaxBackgroundUpgradePeriod      | "7,00:00:00" (7 dagen)     | Elke PS-werk nemer start met het controleren op module-upgrades in de PS-galerie op het begin van het werk proces en elke MDMaxBackgroundUpgradePeriod. Als er nieuwe module versies beschikbaar zijn in de PS-galerie, worden deze geïnstalleerd in het bestands systeem dat beschikbaar is voor PS-werk nemers. Als u deze waarde verlaagt, kunt u met uw functie-app sneller nieuwe module versies ophalen, maar ook het resource gebruik van de app (netwerk-I/O, CPU, opslag) verhogen. Als u deze waarde verhoogt, wordt het gebruik van de app verminderd, maar kan er ook geen nieuwe module versies aan uw app worden geleverd.      | 
 | MDNewSnapshotCheckPeriod          | "01:00:00" (1 uur)       | Nadat de nieuwe module versies in het bestands systeem zijn geïnstalleerd, moet elke PS-worker opnieuw worden gestart. Het opnieuw starten van PS-werk nemers kan invloed hebben op de beschik baarheid van uw app, omdat hierdoor de huidige functie aanroepen kunnen worden onderbroken. Totdat alle PS-werk rollen opnieuw zijn opgestart, kunnen de aanroepen van de functie de oude of de nieuwe module versie gebruiken. Het opnieuw starten van alle PS-werk rollen wordt voltooid in MDNewSnapshotCheckPeriod. Als u deze waarde verhoogt, wordt de frequentie van onderbrekingen verlaagd, maar kan ook de periode worden verlengd wanneer de functie aanroepen de oude of de nieuwe module versies niet-deterministisch gebruiken. |
 | MDMinBackgroundUpgradePeriod      | "1,00:00:00" (1 dag)     | Om te voor komen dat er buitensporige module-upgrades worden uitgevoerd bij het opnieuw opstarten van een werk nemer, wordt er niet gecontroleerd op module-upgrades als een werk nemer die al in de laatste MDMinBackgroundUpgradePeriod heeft gestart. |
+
+> [!NOTE]
+> Beheerde afhankelijkheden zijn afhankelijk van de toegang tot www.powershellgallery.com om modules te downloaden. U moet ervoor zorgen dat de functie runtime toegang heeft tot deze URL door de vereiste firewall regels toe te voegen.
 
 Het gebruik van uw eigen aangepaste modules wijkt af van de manier waarop u het normaal zou doen.
 

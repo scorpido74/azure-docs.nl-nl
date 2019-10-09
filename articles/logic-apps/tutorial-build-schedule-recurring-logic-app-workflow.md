@@ -11,12 +11,12 @@ ms.reviewer: klam, LADocs
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 09/12/2019
-ms.openlocfilehash: 809d76791522fa135932baaf6e237570ab0af35a
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: eae2319e8d1c162969a04f8dafa18eec671ee1d0
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71172179"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72034646"
 ---
 # <a name="tutorial-create-automated-schedule-based-recurring-workflows-by-using-azure-logic-apps"></a>Zelfstudie: Geautomatiseerde, op planning gebaseerde, terugkerende werk stromen maken met behulp van Azure Logic Apps
 
@@ -34,7 +34,7 @@ In deze zelfstudie leert u het volgende:
 
 Wanneer u bent klaar, ziet uw logische app eruit als deze werkstroom op hoog niveau:
 
-![Logische app op hoog niveau](./media/tutorial-build-scheduled-recurring-logic-app-workflow/check-travel-time-overview.png)
+![Overzicht van de werk stroom voor logische apps op hoog niveau](./media/tutorial-build-scheduled-recurring-logic-app-workflow/check-travel-time-overview.png)
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -50,26 +50,26 @@ Gebruik de referenties van uw Azure-account om u aan melden bij het [Azure Porta
 
 ## <a name="create-your-logic-app"></a>Uw logische app maken
 
-1. Selecteer in het hoofd menu van Azure **een resource** > **Integration** > **Logic-app**maken.
+1. Selecteer in het hoofd menu van Azure **een resource maken** > -**integratie** > **Logic-app**.
 
-   ![Logische app maken](./media/tutorial-build-scheduled-recurring-logic-app-workflow/create-logic-app.png)
+   ![Uw logische app-resource maken](./media/tutorial-build-scheduled-recurring-logic-app-workflow/create-new-logic-app-resource.png)
 
 1. In het menu **Logische app maken** geeft u de informatie over uw logische app op zoals hier wordt weergegeven en beschreven. Als u gereed bent, selecteert u **Maken**.
 
-   ![Informatie over logische app opgeven](./media/tutorial-build-scheduled-recurring-logic-app-workflow/create-logic-app-settings.png)
+   ![Informatie over uw logische app opgeven](./media/tutorial-build-scheduled-recurring-logic-app-workflow/create-logic-app-settings.png)
 
    | Eigenschap | Waarde | Beschrijving |
    |----------|-------|-------------|
-   | **Name** | LA-TravelTime | De naam van uw logische app, die alleen letters, cijfers, afbreek streepjes (`-`), onderstrepings tekens (`_`), haakjes (`(`, `)`) en punten (`.`) kan bevatten. In dit voor beeld wordt gebruikgemaakt van ' LA-TravelTime '. |
+   | **Name** | LA-TravelTime | De naam van uw logische app, die alleen letters, cijfers, afbreek streepjes (`-`), onderstrepings tekens (`_`), haakjes (`(`, `)`) en punten (`.`) mag bevatten. In dit voor beeld wordt gebruikgemaakt van ' LA-TravelTime '. |
    | **Abonnement** | <*your-Azure-subscription-name*> | De naam van uw Azure-abonnement |
    | **Resourcegroep** | LA-TravelTime-RG | De naam voor de [Azure-resource groep](../azure-resource-manager/resource-group-overview.md), die wordt gebruikt om verwante resources te organiseren. In dit voor beeld wordt ' LA-TravelTime-RG ' gebruikt. |
    | **Location** | US - west | De tKan-regio waar de logische app-gegevens moeten worden opgeslagen. In dit voor beeld wordt ' West US ' gebruikt. |
    | **Log Analytics** | Uit | Behoud de instelling **Uit** voor het vastleggen van diagnostische gegevens. |
    ||||
 
-1. Nadat Azure uw app heeft geïmplementeerd, selecteert u in de Azure-werk balk de optie **meldingen** > **gaat u** naar de resource voor uw geïmplementeerde logische app.
+1. Nadat Azure uw app heeft geïmplementeerd, selecteert u op de Azure-werk balk **meldingen** > **gaat u naar de resource** voor uw geïmplementeerde logische app.
 
-   ![Naar de resource gaan](./media/tutorial-build-scheduled-recurring-logic-app-workflow/go-to-logic-app.png)
+   ![Ga naar de nieuwe logische app-resource](./media/tutorial-build-scheduled-recurring-logic-app-workflow/go-to-new-logic-app-resource.png)
 
    U kunt ook uw logische app zoeken en selecteren door de naam in het zoekvak te typen.
 
@@ -87,16 +87,16 @@ Voeg vervolgens de terugkeer patroon [trigger](../logic-apps/logic-apps-overview
 
 1. Selecteer op de vorm van het **terugkeer patroon** de knop met **weglatings** tekens ( **...** ) en selecteer vervolgens **naam wijzigen**. Wijzig de naam van de trigger met deze beschrijving: `Check travel time every weekday morning`
 
-   ![Naam trigger wijzigen](./media/tutorial-build-scheduled-recurring-logic-app-workflow/rename-recurrence-schedule-trigger.png)
+   ![De beschrijving van de terugkeer patroon naam wijzigen](./media/tutorial-build-scheduled-recurring-logic-app-workflow/rename-recurrence-schedule-trigger.png)
 
 1. Wijzig de eigenschappen in de trigger.
 
-   ![Interval en frequentie wijzigen](./media/tutorial-build-scheduled-recurring-logic-app-workflow/change-interval-frequency.png)
+   ![Het interval en de frequentie van de terugkeer trigger wijzigen](./media/tutorial-build-scheduled-recurring-logic-app-workflow/change-interval-frequency.png)
 
-   | Eigenschap | Vereist | Value | Description |
+   | Eigenschap | Verplicht | Value | Description |
    |----------|----------|-------|-------------|
    | **Interval** | Ja | 1 | Het aantal intervallen dat tussen controles moet worden gewacht |
-   | **Frequentie** | Ja | Week | Tijdseenheid die voor het terugkeerpatroon wordt gebruikt |
+   | **Frequentie** | Ja | Wekelijks | Tijdseenheid die voor het terugkeerpatroon wordt gebruikt |
    |||||
 
 1. Open onder **interval** en **frequentie**de lijst **nieuwe para meter toevoegen** en selecteer deze eigenschappen om aan de trigger toe te voegen.
@@ -105,7 +105,7 @@ Voeg vervolgens de terugkeer patroon [trigger](../logic-apps/logic-apps-overview
    * **Deze uren**
    * **Deze minuten**
 
-   ![Trigger eigenschappen toevoegen](./media/tutorial-build-scheduled-recurring-logic-app-workflow/add-trigger-properties.png)
+   ![Eigenschappen voor de trigger voor terugkeer patroon toevoegen](./media/tutorial-build-scheduled-recurring-logic-app-workflow/add-trigger-properties.png)
 
 1. Stel nu de waarden voor de extra eigenschappen in zoals hier wordt weer gegeven en beschreven.
 
@@ -140,9 +140,9 @@ Nu u een trigger hebt, voegt u een [actie](../logic-apps/logic-apps-overview.md#
 
 1. Als u geen verbinding met Bing Kaarten hebt, wordt u gevraagd om een verbinding te maken. Geef deze verbindings gegevens op en selecteer **maken**.
 
-   ![Een Bing Maps-verbinding maken](./media/tutorial-build-scheduled-recurring-logic-app-workflow/create-maps-connection.png)
+   ![Verbinding maken met de Bing Maps-API](./media/tutorial-build-scheduled-recurring-logic-app-workflow/create-maps-connection.png)
 
-   | Eigenschap | Vereist | Value | Description |
+   | Eigenschap | Verplicht | Value | Description |
    |----------|----------|-------|-------------|
    | **Verbindingsnaam** | Ja | BingMapsConnection | Geef een naam op voor uw verbinding. In dit voor beeld wordt ' BingMapsConnection ' gebruikt. |
    | **API-sleutel** | Ja | <*your-Bing-Maps-key*> | Voer de sleutel voor Bing Kaarten in die u eerder hebt ontvangen. Leer [hoe u een sleutel kunt verkrijgen](https://msdn.microsoft.com/library/ff428642.aspx) als u geen sleutel voor Bing Kaarten hebt. |
@@ -162,7 +162,7 @@ Nu u een trigger hebt, voegt u een [actie](../logic-apps/logic-apps-overview.md#
 
    ![Geef details op voor de actie route ophalen](./media/tutorial-build-scheduled-recurring-logic-app-workflow/get-route-action-settings.png) 
 
-   | Eigenschap | Vereist | Value | Description |
+   | Eigenschap | Verplicht | Value | Description |
    |----------|----------|-------|-------------|
    | **Routepunt 1** | Ja | <*start-location*> | Het beginpunt van uw route |
    | **Routepunt 2** | Ja | <*end-location*> | De bestemming van uw route |
@@ -193,7 +193,7 @@ De vorige actie **route ophalen** retourneert standaard de huidige reis tijd met
 
 1. Geef details op voor uw variabele zoals hier wordt beschreven:
 
-   | Eigenschap | Vereist | Value | Beschrijving |
+   | Eigenschap | Verplicht | Value | Beschrijving |
    |----------|----------|-------|-------------|
    | **Name** | Ja | travelTime | De naam van de variabele. In dit voor beeld wordt ' travelTime ' gebruikt. |
    | **Type** | Ja | Integer | Het gegevenstype van uw variabele |
@@ -221,11 +221,11 @@ De vorige actie **route ophalen** retourneert standaard de huidige reis tijd met
 
    1. Nadat de eigenschaps waarde in de expressie is omgezet, selecteert u **OK**.
 
-      ![Selecteer OK](./media/tutorial-build-scheduled-recurring-logic-app-workflow/initialize-variable-action-settings-5.png)
+      ![Selecteer OK om de expressie te maken.](./media/tutorial-build-scheduled-recurring-logic-app-workflow/initialize-variable-action-settings-5.png)
 
       De eigenschap **Value** verschijnt nu zoals hier wordt weer gegeven:
 
-      ![De eigenschap value met de omgezette expressie](./media/tutorial-build-scheduled-recurring-logic-app-workflow/initialize-variable-action-settings-6.png)
+      ![De eigenschap Value wordt weer gegeven met de omgezette expressie](./media/tutorial-build-scheduled-recurring-logic-app-workflow/initialize-variable-action-settings-6.png)
 
 1. Sla uw logische app op.
 
@@ -247,15 +247,15 @@ Vervolgens voegt u een voorwaarde toe waarmee wordt gecontroleerd of de actuele 
 
    1. Selecteer in de lijst met dynamische inhoud die wordt weer gegeven onder **variabelen**de eigenschap **travelTime** .
 
-      ![Voor waarde samen stellen aan de linkerkant](./media/tutorial-build-scheduled-recurring-logic-app-workflow/build-condition-left-side.png)
+      ![De linkerkant van de voor waarde maken](./media/tutorial-build-scheduled-recurring-logic-app-workflow/build-condition-left-side.png)
 
    1. Selecteer in het vak middelste vergelijking de operator **is groter dan** .
 
-   1. Geef in het vak **een waarde kiezen** op de rechter zijde de volgende limiet op:`15`
+   1. Voer in het vak **een waarde kiezen** op de rechter kant deze limiet in: `15`
 
       Wanneer u klaar bent, ziet de voor waarde eruit als in dit voor beeld:
 
-      ![Voor waarde voltooid](./media/tutorial-build-scheduled-recurring-logic-app-workflow/build-condition-check-travel-time.png)
+      ![Voor waarde voor het controleren van de reis tijd is voltooid](./media/tutorial-build-scheduled-recurring-logic-app-workflow/build-condition-check-travel-time.png)
 
 1. Sla uw logische app op.
 
@@ -269,7 +269,7 @@ Voeg nu de actie toe die ervoor zorgt dat u een e-mailbericht ontvangt als de re
 
 1. Selecteer onder **Kies een actie de**optie **standaard**. Voer in het zoekvak e-mail verzenden in. De lijst retourneert veel resultaten. Selecteer daarom eerst de gewenste e-mail Connector, bijvoorbeeld:
 
-   ![E-mail connector selecteren](./media/tutorial-build-scheduled-recurring-logic-app-workflow/add-action-send-email.png)
+   ![Selecteer de gewenste e-mail Connector](./media/tutorial-build-scheduled-recurring-logic-app-workflow/add-action-send-email.png)
 
    * Selecteer **Office 365 Outlook** voor werk- of schoolaccounts van Azure.
    * Selecteer **Outlook.com** voor persoonlijke Microsoft-accounts.
@@ -320,17 +320,17 @@ Voeg nu de actie toe die ervoor zorgt dat u een e-mailbericht ontvangt als de re
 
    1. Nadat de eigenschap in de expressie is opgelost, selecteert u **OK**.
 
-      ![De eigenschap Body met de omgezette expressie](./media/tutorial-build-scheduled-recurring-logic-app-workflow/send-email-body-settings-5.png)
+      ![Nadat de eigenschap Body is opgelost, selecteert u OK](./media/tutorial-build-scheduled-recurring-logic-app-workflow/send-email-body-settings-5.png)
 
       De eigenschap **Body** wordt nu weer gegeven zoals hier wordt weer gegeven:
 
-      ![De eigenschap Body met de omgezette expressie](./media/tutorial-build-scheduled-recurring-logic-app-workflow/send-email-body-settings-6.png)
+      ![Opgeloste eigenschap Body in expressie](./media/tutorial-build-scheduled-recurring-logic-app-workflow/send-email-body-settings-6.png)
 
 1. Sla uw logische app op.
 
 Test vervolgens uw logische app, die er nu bijna net zo uitziet als dit voorbeeld:
 
-![Voltooide logische app](./media/tutorial-build-scheduled-recurring-logic-app-workflow/check-travel-time-finished.png)
+![Voltooide voorbeeld werk stroom voor logische apps](./media/tutorial-build-scheduled-recurring-logic-app-workflow/check-travel-time-finished.png)
 
 ## <a name="run-your-logic-app"></a>Uw logische app uitvoeren
 
@@ -340,7 +340,7 @@ Als u de logische app hand matig wilt starten, selecteert u **uitvoeren**op de w
 
 * Als de huidige reis tijd de limiet overschrijdt, ontvangt u een e-mail bericht met de huidige reis tijd en het aantal minuten boven uw limiet. Hier ziet u een voorbeeld van een e-mail die uw logische app verstuurt:
 
-![E-mailbericht verzonden met reistijd](./media/tutorial-build-scheduled-recurring-logic-app-workflow/email-notification.png)
+![Voor beeld van een e-mail bericht waarin de reis tijd wordt weer gegeven](./media/tutorial-build-scheduled-recurring-logic-app-workflow/received-example-email-notification.png)
 
 Als u geen een e-mailberichten ontvangt, controleert u de map met ongewenste e-mail. Het is mogelijk dat uw filter voor ongewenste e-mail dit soort e-mails in deze map zet. Als u niet zeker weet of uw logische app correct wordt uitgevoerd, kunt u [Problemen met uw logische app oplossen](../logic-apps/logic-apps-diagnosing-failures.md) raadplegen.
 

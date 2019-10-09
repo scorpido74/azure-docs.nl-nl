@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: troubleshooting
 ms.date: 08/13/2018
 ms.author: saudas
-ms.openlocfilehash: 6ff273236f9f8465de9ec0cda89ed3ff8996ecec
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: d2561b1882ea612f29c0ff0eeb4bd6614403c9ff
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70932664"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72025477"
 ---
 # <a name="aks-troubleshooting"></a>AKS problemen oplossen
 
@@ -30,7 +30,7 @@ U moet [kernen aanvragen](https://docs.microsoft.com/azure/azure-supportability/
 ## <a name="what-is-the-maximum-pods-per-node-setting-for-aks"></a>Wat is het maximum aantal instellingen per knoop punt voor AKS?
 
 De maximale instelling per knoop punt is 30 standaard als u een AKS-cluster implementeert in de Azure Portal.
-De maximale instelling per knoop punt is standaard 110 als u een AKS-cluster implementeert in de Azure CLI. (Zorg ervoor dat u de nieuwste versie van de Azure CLI gebruikt). Deze standaard instelling kan worden gewijzigd met behulp `–-max-pods` van de vlag `az aks create` in de opdracht.
+De maximale instelling per knoop punt is standaard 110 als u een AKS-cluster implementeert in de Azure CLI. (Zorg ervoor dat u de nieuwste versie van de Azure CLI gebruikt). Deze standaard instelling kan worden gewijzigd met behulp van de vlag `–-max-pods` in de `az aks create` opdracht.
 
 ## <a name="im-getting-an-insufficientsubnetsize-error-while-deploying-an-aks-cluster-with-advanced-networking-what-should-i-do"></a>Er wordt een insufficientSubnetSize-fout opgetreden tijdens het implementeren van een AKS-cluster met een geavanceerd netwerk. Wat moet ik doen?
 
@@ -44,8 +44,8 @@ Zie [IP-adres sering voor uw cluster plannen](configure-azure-cni.md#plan-ip-add
 
 Er kunnen verschillende redenen zijn waarom de pod in die modus vastloopt. U kunt het volgende bekijken:
 
-* De pod zelf, met behulp `kubectl describe pod <pod-name>`van.
-* De logboeken, met `kubectl log <pod-name>`behulp van.
+* De pod zelf, met behulp van `kubectl describe pod <pod-name>`.
+* De logboeken, door gebruik te maken van `kubectl log <pod-name>`.
 
 Zie [fouten opsporen in toepassingen](https://kubernetes.io/docs/tasks/debug-application-cluster/debug-application/#debugging-pods)voor meer informatie over het oplossen van problemen met Pod.
 
@@ -59,13 +59,13 @@ De reden voor de waarschuwingen op het dash board is dat het cluster nu is inges
 
 ## <a name="i-cant-connect-to-the-dashboard-what-should-i-do"></a>Ik kan geen verbinding maken met het dash board. Wat moet ik doen?
 
-De eenvoudigste manier om toegang te krijgen tot uw service buiten het cluster `kubectl proxy`, is om uit te voeren, welke proxy's aanvragen verzonden naar de lokale poort 8001 van de Kubernetes-API-server. Vanaf daar kan de API-server proxy voor uw service hebben `http://localhost:8001/api/v1/namespaces/kube-system/services/kubernetes-dashboard/proxy/#!/node?namespace=default`:.
+De eenvoudigste manier om toegang te krijgen tot uw service buiten het cluster, is om `kubectl proxy` uit te voeren, welke proxy's aanvragen verzonden naar de lokale poort 8001 van de Kubernetes-API-server. Vanaf daar kan de API-server worden geproxyeerd voor uw service: `http://localhost:8001/api/v1/namespaces/kube-system/services/kubernetes-dashboard/proxy/#!/node?namespace=default`.
 
-Als u het Kubernetes-dash board niet ziet, controleert `kube-proxy` u of de Pod wordt `kube-system` uitgevoerd in de naam ruimte. Als de status niet wordt uitgevoerd, verwijdert u de Pod en wordt de computer opnieuw opgestart.
+Als u het Kubernetes-dash board niet ziet, controleert u of de `kube-proxy` pod wordt uitgevoerd in de naam ruimte `kube-system`. Als de status niet wordt uitgevoerd, verwijdert u de Pod en wordt de computer opnieuw opgestart.
 
 ## <a name="i-cant-get-logs-by-using-kubectl-logs-or-i-cant-connect-to-the-api-server-im-getting-error-from-server-error-dialing-backend-dial-tcp-what-should-i-do"></a>Ik kan geen logboeken ophalen met behulp van kubectl-Logboeken of ik kan geen verbinding maken met de API-server. Ik krijg de fout melding van server: fout bij het kiezen van de back-end: Dial TCP.... Wat moet ik doen?
 
-Zorg ervoor dat de standaard netwerk beveiligings groep niet is gewijzigd en dat poort 22 en 9000 zijn geopend voor verbinding met de API-server. Controleer of de `tunnelfront` pod wordt uitgevoerd in de *uitvoeren-systeem* naam ruimte met `kubectl get pods --namespace kube-system` behulp van de opdracht. Als dat niet het geval is, dwingt u het verwijderen van de pod af en wordt de computer opnieuw opgestart.
+Zorg ervoor dat de standaard netwerk beveiligings groep niet is gewijzigd en dat poort 22 en 9000 zijn geopend voor verbinding met de API-server. Controleer of de `tunnelfront`-pod wordt uitgevoerd in de *uitvoeren-systeem* naam ruimte met behulp van de `kubectl get pods --namespace kube-system` opdracht. Als dat niet het geval is, dwingt u het verwijderen van de pod af en wordt de computer opnieuw opgestart.
 
 ## <a name="im-trying-to-upgrade-or-scale-and-am-getting-a-message-changing-property-imagereference-is-not-allowed-error-how-do-i-fix-this-problem"></a>Ik probeer een upgrade uit te voeren of te schalen en ontvang een bericht: Het wijzigen van de eigenschap imageReference is niet toegestaan. Dit probleem Hoe kan ik oplossen?
 
@@ -77,7 +77,7 @@ Mogelijk krijgt u deze fout omdat u de tags in de agent knooppunten in het AKS-c
 
 Deze fout treedt op wanneer clusters een mislukte status om meerdere redenen invoeren. Volg de onderstaande stappen om de status van het cluster fout op te lossen voordat u de eerder mislukte bewerking opnieuw probeert uit te voeren:
 
-1. De status van `failed` het cluster kan niet worden hersteld `scale` en de bewerkingen kunnen `upgrade` niet worden uitgevoerd. Veelvoorkomende basis problemen en oplossingen zijn:
+1. De `upgrade`-en `scale`-bewerkingen mislukken totdat het cluster de status `failed` heeft. Veelvoorkomende basis problemen en oplossingen zijn:
     * Schalen met **onvoldoende Compute-quota (CRP)** . U kunt dit oplossen door uw cluster eerst terug te schalen naar een stabiele doel status binnen het quotum. Voer vervolgens de volgende [stappen uit om een toename van het reken quotum aan te vragen](../azure-supportability/resource-manager-core-quotas-request.md) voordat u opnieuw opschaalt na de initiële quotum limieten.
     * Het schalen van een cluster met geavanceerde netwerken en **onvoldoende subnet-bronnen (netwerken)** . U kunt dit oplossen door uw cluster eerst terug te schalen naar een stabiele doel status binnen het quotum. Voer vervolgens [de volgende stappen uit om een verhoging van het resource quotum aan te vragen](../azure-resource-manager/resource-manager-quota-errors.md#solution) voordat u opnieuw opschaalt na de initiële quotum limieten.
 2. Zodra de onderliggende oorzaak van de upgrade fout is opgelost, moet uw cluster de status voltooid hebben. Als de status is gecontroleerd, voert u de oorspronkelijke bewerking opnieuw uit.
@@ -88,7 +88,7 @@ Deze fout treedt op wanneer clusters een mislukte status om meerdere redenen inv
 
 Het bijwerken en schalen van bewerkingen op een cluster met een groep met één knoop punt of een cluster met [meerdere knooppunt Pools](use-multiple-node-pools.md) sluiten elkaar wederzijds uit. U kunt geen cluster-of knooppunt groep tegelijkertijd bijwerken en schalen. In plaats daarvan moet elk bewerkings type worden voltooid voor de doel resource vóór de volgende aanvraag op dezelfde resource. Als gevolg hiervan zijn bewerkingen beperkt wanneer actieve upgrade of schaal bewerkingen worden uitgevoerd of geprobeerd en vervolgens worden mislukt. 
 
-Om het probleem `az aks show -g myResourceGroup -n myAKSCluster -o table` op te lossen en de gedetailleerde status van het cluster op te halen. Op basis van het resultaat:
+Om het probleem op te lossen `az aks show -g myResourceGroup -n myAKSCluster -o table` om de gedetailleerde status van het cluster op te halen. Op basis van het resultaat:
 
 * Als het cluster actief wordt bijgewerkt, wacht u totdat de bewerking wordt beëindigd. Als deze is geslaagd, voert u de bewerking opnieuw uit.
 * Als het upgraden van het cluster is mislukt, volgt u de stappen in de vorige sectie.
@@ -105,9 +105,9 @@ Er kunnen fouten optreden die aangeven dat uw AKS-cluster zich niet op een schaa
 
 **Agent pool ' agent pool ' heeft automatische schaling ingesteld op ingeschakeld, maar niet op Virtual Machine Scale Sets**
 
-Als u functies zoals de cluster-automatische schaal of meerdere knooppunt groepen wilt gebruiken, moeten er AKS-clusters worden gemaakt die gebruikmaken van virtuele-machine schaal sets. Er worden fouten geretourneerd als u probeert functies te gebruiken die afhankelijk zijn van virtuele-machine schaal sets en u een normaal, niet-virtuele machine Scale set AKS-cluster hebt gericht. Ondersteuning voor virtuele-machine schaal sets is momenteel beschikbaar als preview-versie in AKS.
+Als u functies zoals de cluster-automatische schaal of meerdere knooppunt groepen wilt gebruiken, moeten er AKS-clusters worden gemaakt die gebruikmaken van virtuele-machine schaal sets. Er worden fouten geretourneerd als u probeert functies te gebruiken die afhankelijk zijn van virtuele-machine schaal sets en u een normaal, niet-virtuele machine Scale set AKS-cluster hebt gericht.
 
-Volg de *voordat u begint* met de stappen in het juiste document om het onderdeel voor beeld van de virtuele-machine Scale set te registreren en een AKS-cluster te maken:
+Volg de *voordat u begint* met de stappen in het juiste document om een AKS-cluster op de juiste manier te maken:
 
 * [De automatische schaal functie van het cluster gebruiken](cluster-autoscaler.md)
 * [Meerdere knooppunt groepen maken en gebruiken](use-multiple-node-pools.md)
@@ -144,6 +144,6 @@ Gebruik de volgende tijdelijke oplossingen:
 
 ## <a name="im-receiving-errors-after-restricting-my-egress-traffic"></a>Ik ontvang fouten na het beperken van mijn uitgaand verkeer
 
-Bij het beperken van uitgaand verkeer van een AKS-cluster zijn er [vereiste en optionele aanbevolen](limit-egress-traffic.md) uitgaande poorten/netwerk regels en FQDN/toepassings regels voor AKS. Als uw instellingen conflicteren met een van deze regels, is het mogelijk dat u bepaalde `kubectl` opdrachten niet kunt uitvoeren. Er worden ook fouten weer geven bij het maken van een AKS-cluster.
+Bij het beperken van uitgaand verkeer van een AKS-cluster zijn er [vereiste en optionele aanbevolen](limit-egress-traffic.md) uitgaande poorten/netwerk regels en FQDN/toepassings regels voor AKS. Als uw instellingen conflicteren met een van deze regels, kunt u bepaalde `kubectl`-opdrachten mogelijk niet uitvoeren. Er worden ook fouten weer geven bij het maken van een AKS-cluster.
 
 Controleer of de instellingen niet conflicteren met een van de vereiste of optionele aanbevolen uitgaande poorten/netwerk regels en FQDN/toepassings regels.

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 026689b68244052c3ad7cb50cd90d7319b6760ef
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: fbab3eff3d7f742c2542e4264ef1b2124c5f15e5
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71229408"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72024621"
 ---
 # <a name="tutorial-investigate-incidents-with-azure-sentinel"></a>Zelfstudie: Incidenten onderzoeken met Azure Sentinel
 
@@ -35,7 +35,7 @@ In dit artikel komen de volgende onderwerpen aan bod:
 > [!div class="checklist"]
 > * Incidenten onderzoeken
 > * De onderzoek grafiek gebruiken
-> * Reageren op bedreigingen
+> * Op bedreigingen reageren
 
 Een incident kan meerdere waarschuwingen bevatten. Het is een aggregatie van alle relevante bewijzen voor een specifiek onderzoek. Er wordt een incident gemaakt op basis van analytische regels die u hebt gemaakt op de **Analytics** -pagina. De eigenschappen die betrekking hebben op de waarschuwingen, zoals ernst en status, worden ingesteld op incident niveau. Nadat u Azure-Sentinel weet wat voor soort bedreigingen u zoekt en hoe u deze kunt vinden, kun u gedetecteerde bedreigingen bewaken door incidenten te onderzoeken.
 
@@ -44,7 +44,7 @@ U kunt het incident alleen onderzoeken als u de velden voor entiteits toewijzing
 
 ## <a name="how-to-investigate-incidents"></a>Incidenten onderzoeken
 
-1. Selecteer **incidenten**. Op de pagina **incidenten** kunt u zien hoeveel incidenten u hebt, hoeveel er zijn geopend, hoeveel er openstaan en hoeveel u hebt ingesteld op **in uitvoering**en hoeveel er zijn gesloten. Voor elk incident ziet u de tijd waarop het probleem is opgetreden en de status van het incident. Bekijk de ernst om te bepalen welke incidenten het eerst moeten worden verwerkt.
+1. Selecteer **incidenten**. Op de pagina **incidenten** kunt u zien hoeveel incidenten u hebt, hoeveel er zijn geopend, hoeveel er openstaan en hoeveel u hebt ingesteld op **in uitvoering**en hoeveel er zijn gesloten. Voor elk incident ziet u de tijd waarop het probleem is opgetreden en de status van het incident. Bekijk de ernst om te bepalen welke incidenten het eerst moeten worden verwerkt.
 
     ![Ernst van incident weer geven](media/tutorial-investigate-cases/incident-severity.png)
 
@@ -54,7 +54,7 @@ U kunt het incident alleen onderzoeken als u de velden voor entiteits toewijzing
 
 1. Als u meer informatie over de waarschuwingen en entiteiten in het incident wilt weer geven, selecteert u **volledige details weer geven** op de pagina incident en bekijkt u de relevante tabbladen met een overzicht van de informatie over het incident. Bekijk op het tabblad **waarschuwingen** de waarschuwing zelf. U kunt alle relevante informatie over de waarschuwing zien: de query die de waarschuwing heeft geactiveerd, het aantal resultaten dat per query wordt geretourneerd en de mogelijkheid om playbooks uit te voeren op de waarschuwingen. Als u nog meer wilt inzoomen op het incident, selecteert u het aantal **gebeurtenissen**. Hiermee opent u de query die de resultaten heeft gegenereerd en de gebeurtenissen die de waarschuwing hebben geactiveerd in Log Analytics. Op het tabblad **entiteiten** ziet u alle entiteiten die u hebt toegewezen als onderdeel van de definitie van de waarschuwings regel.
 
-    ![Waarschuwingsdetails weergeven](media/tutorial-investigate-cases/alert-details.png)
+    ![Waarschuwings details weer geven](media/tutorial-investigate-cases/alert-details.png)
 
 1. Als u een incident actief onderzoekt, is het een goed idee om de status van het incident in te stellen op **in behandeling** tot u het hebt gesloten.
 
@@ -78,14 +78,14 @@ In het onderzoek diagram vindt u het volgende:
 
 De onderzoek grafiek gebruiken:
 
-1. Selecteer een incident en selecteer vervolgens **onderzoeken**. Hiermee gaat u naar het onderzoek diagram. De grafiek bevat een illustrerende kaart van de entiteiten die rechtstreeks zijn verbonden met de waarschuwing en elke resource die u hebt verbonden.
+1. Selecteer een incident en selecteer vervolgens **onderzoeken**. Hiermee gaat u naar het onderzoek diagram. De grafiek bevat een illustrerende kaart van de entiteiten die rechtstreeks zijn verbonden met de waarschuwing en elke resource die u hebt verbonden.
 
    > [!IMPORTANT] 
    > U kunt het incident alleen onderzoeken als u de velden voor entiteits toewijzing hebt gebruikt bij het instellen van de analytische regel. Het onderzoek diagram vereist dat uw oorspronkelijke incident entiteiten bevat.
 
    ![Kaart weergeven](media/tutorial-investigate-cases/map1.png)
 
-1. Selecteer een entiteit om het deel venster **entiteiten** te openen, zodat u informatie over die entiteit kunt controleren.
+1. Selecteer een entiteit om het deel venster **entiteiten** te openen, zodat u informatie over die entiteit kunt controleren.
 
     ![Entiteiten in kaart weer geven](media/tutorial-investigate-cases/map-entities.png)
   
@@ -95,9 +95,9 @@ De onderzoek grafiek gebruiken:
 
    Op een computer kunt u bijvoorbeeld gerelateerde waarschuwingen aanvragen. Als u een onderzoek query selecteert, worden de resulterende vergunningen toegevoegd aan de grafiek. In dit voor beeld wordt het selecteren van **gerelateerde waarschuwingen** met de volgende waarschuwingen in de grafiek weer gegeven:
 
-    ![Verwante waarschuwingen bekijken](media/tutorial-investigate-cases/related-alerts.png)
+    ![Gerelateerde waarschuwingen weer geven](media/tutorial-investigate-cases/related-alerts.png)
 
-1. Voor elke onderzoek query kunt u de optie selecteren voor het openen van de onbewerkte gebeurtenis resultaten en de query die in Log Analytics wordt gebruikt door **gebeurtenissen\>** te selecteren.
+1. Voor elke onderzoek query kunt u de optie selecteren voor het openen van de onbewerkte gebeurtenis resultaten en de query die wordt gebruikt in Log Analytics door **gebeurtenissen @ no__t-1**te selecteren.
 
 1. Om het incident te begrijpen, biedt de grafiek een parallelle tijd lijn.
 

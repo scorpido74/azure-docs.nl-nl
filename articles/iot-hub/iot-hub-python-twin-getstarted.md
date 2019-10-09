@@ -8,12 +8,12 @@ ms.devlang: python
 ms.topic: conceptual
 ms.date: 08/26/2019
 ms.author: robinsh
-ms.openlocfilehash: 565330528638bb6c8e0458a9761e2cf9fa4e3d2a
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 729371ede8df3dc21f70bc5742de52f2be874507
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71001488"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72029997"
 ---
 # <a name="get-started-with-device-twins-python"></a>Aan de slag met Device apparaatdubbels (python)
 
@@ -70,7 +70,7 @@ In deze sectie maakt u een python-console-app waarmee de meta gegevens van de lo
    from iothub_service_client import IoTHubDeviceTwin, IoTHubError
    ```
 
-4. Voeg de volgende code toe. Vervang `[IoTHub Connection String]` door de IOT hub-Connection String die u hebt gekopieerd in [de IOT hub-Connection String ophalen](#get-the-iot-hub-connection-string). Vervang `[Device Id]` door de apparaat-id die u hebt geregistreerd in [een nieuw apparaat registreren in de IOT-hub](#register-a-new-device-in-the-iot-hub).
+4. Voeg de volgende code toe. Vervang `[IoTHub Connection String]` door de IoT hub-connection string die u hebt gekopieerd in [de IOT hub-Connection String ophalen](#get-the-iot-hub-connection-string). Vervang `[Device Id]` door de apparaat-ID die u hebt geregistreerd in [een nieuw apparaat registreren in de IOT-hub](#register-a-new-device-in-the-iot-hub).
   
     ```python
     CONNECTION_STRING = "[IoTHub Connection String]"
@@ -171,7 +171,7 @@ In deze sectie maakt u een python-console-app die verbinding maakt met uw hub al
     from azure.iot.device import IoTHubModuleClient
     ```
 
-4. Voeg de volgende code toe. Vervang de `[IoTHub Device Connection String]` waarde van de tijdelijke aanduiding door het apparaat Connection String dat u hebt gekopieerd in [een nieuw apparaat registreren in de IOT-hub](#register-a-new-device-in-the-iot-hub).
+4. Voeg de volgende code toe. Vervang de tijdelijke aanduiding voor @no__t 0 door het apparaat dat connection string u hebt gekopieerd in [een nieuw apparaat registreren in de IOT-hub](#register-a-new-device-in-the-iot-hub).
 
     ```python
     CONNECTION_STRING = "[IoTHub Device Connection String]"
@@ -187,7 +187,7 @@ In deze sectie maakt u een python-console-app die verbinding maakt met uw hub al
             print(patch)
 
     def iothub_client_init():
-        client = IoTHubDeviceClient.create_from_connection_string(CONNECTION_STRING)
+        client = IoTHubModuleClient.create_from_connection_string(CONNECTION_STRING)
         return client
 
     def iothub_client_sample_run():

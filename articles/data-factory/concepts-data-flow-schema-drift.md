@@ -7,16 +7,16 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 09/12/2019
-ms.openlocfilehash: 68c0da5a7fe2b02c6115a8c1bbc24feb95e12adb
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 5eff92352251febca1d4e7033618372dc929d987
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71003682"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72029403"
 ---
 # <a name="schema-drift-in-mapping-data-flow"></a>Schema-drift in toewijzing van gegevens stroom
 
-[!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
+
 
 Schema-drift is het geval waarin uw bronnen vaak meta gegevens wijzigen. Velden, kolommen en, typen kunnen worden toegevoegd, verwijderd of gewijzigd. Zonder de verwerking van schema drift wordt uw gegevens stroom kwetsbaar voor wijzigingen in de gegevens bron stroomopwaarts. Gebruikelijke ETL-patronen mislukken wanneer binnenkomende kolommen en velden worden gewijzigd omdat ze vaak aan deze bron namen worden gekoppeld.
 
@@ -34,7 +34,7 @@ U moet in uw gegevens stroom een architectuur besluit nemen om schema drift in u
 
 In een bron transformatie wordt schema-drift gedefinieerd als het lezen van kolommen die uw gegevensset-schema niet definiëren. Als u schema-drift wilt inschakelen, schakelt u **schema-drift toestaan** in uw bron transformatie in.
 
-![Bron van schema-drift](media/data-flow/schemadrift001.png "Bron van schema-drift")
+Bron(media/data-flow/schemadrift001.png "schema drift") bron van ![schema drift]
 
 Wanneer schema-drift is ingeschakeld, worden alle binnenkomende velden tijdens de uitvoering van de bron gelezen en door de hele stroom aan de Sink door gegeven. Standaard worden alle nieuw gedetecteerde kolommen, ook wel *gedrijfte kolommen*, binnenkomen als teken reeks gegevens type. Als u wilt dat uw gegevens stroom automatisch gegevens typen van geplaatste kolommen afleiden, controleert u overlopende **kolom typen** in de bron instellingen.
 
@@ -42,17 +42,17 @@ Wanneer schema-drift is ingeschakeld, worden alle binnenkomende velden tijdens d
 
 In een Sink-trans formatie is schema drift wanneer u extra kolommen schrijft boven op wat is gedefinieerd in het sink-gegevens schema. Als u schema-drift wilt inschakelen, controleert u **schema-drift toestaan** in uw Sink-trans formatie.
 
-![Sink voor schema-drift](media/data-flow/schemadrift002.png "Sink voor schema-drift")
+Sink-(media/data-flow/schemadrift002.png "schema") voor ![schema-drift]
 
 Als schema-drift is ingeschakeld, zorgt u ervoor dat de schuif regelaar **automatische toewijzing** op het tabblad toewijzing is ingeschakeld. Met deze schuif regelaar aan worden alle binnenkomende kolommen naar uw bestemming geschreven. Anders moet u op regels gebaseerde toewijzing gebruiken om gedrijfde kolommen te schrijven.
 
-![Automatische toewijzing van sinks](media/data-flow/automap.png "Automatische toewijzing van sinks")
+Automatische(media/data-flow/automap.png "toewijzing") van Sink Sink-automatische ![toewijzing]
 
 ## <a name="transforming-drifted-columns"></a>Gedrijfte kolommen transformeren
 
 Wanneer de gegevens stroom een geplaatste kolom heeft, kunt u deze in uw trans formaties gebruiken met de volgende methoden:
 
-* Gebruik de `byPosition` and `byName` -expressies om expliciet te verwijzen naar een kolom met de naam of het positie nummer.
+* Gebruik de expressies `byPosition` en `byName` om expliciet te verwijzen naar een kolom met de naam of het positie nummer.
 * Een kolom patroon toevoegen aan een afgeleide kolom of aggregatie transformatie die overeenkomt met een combi natie van naam, stroom, positie of type
 * Op een regel gebaseerde toewijzing in een SELECT-of sink-trans formatie toevoegen om gedrijfte kolommen te vergelijken met kolommen aliassen via een patroon
 
@@ -62,11 +62,11 @@ Zie voor meer informatie over het implementeren van kolom patronen [kolom patron
 
 Als u expliciete verwijzingen naar gerefereerde kolommen wilt maken, kunt u snel toewijzingen voor deze kolommen genereren via een snelle actie voor het voor beeld van gegevens. Zodra de [foutopsporingsmodus](concepts-data-flow-debug-mode.md) is ingeschakeld, gaat u naar het tabblad voor beeld van gegevens en klikt u op **vernieuwen** om een voor beeld van de gegevens op te halen. Als data factory detecteert dat er geplaatste kolommen bestaan, kunt u op geplaatste **kaart** klikken en een afgeleide kolom genereren waarmee u kunt verwijzen naar alle geplaatste kolommen in schema weergaven downstream.
 
-![Toegewezen kaart](media/data-flow/mapdrifted1.png "Toegewezen kaart")
+![Toegewezen](media/data-flow/mapdrifted1.png "kaart") naar plaats van kaart
 
-In de gegenereerde afgeleide kolom transformatie wordt elke geplaatste kolom toegewezen aan de gedetecteerde naam en het gegevens type. In het bovenstaande voor beeld van de gegevens wordt de kolom ' movieId ' gedetecteerd als een geheel getal. Nadat u hebt geklikt **, wordt movieId** gedefinieerd in de afgeleide `toInteger(byName('movieId'))` kolom als en opgenomen in schema weergaven in downstream-trans formaties.
+In de gegenereerde afgeleide kolom transformatie wordt elke geplaatste kolom toegewezen aan de gedetecteerde naam en het gegevens type. In het bovenstaande voor beeld van de gegevens wordt de kolom ' movieId ' gedetecteerd als een geheel getal. Wanneer u hebt geklikt op **toegewezen kaart** , wordt movieId gedefinieerd in de afgeleide kolom als `toInteger(byName('movieId'))` en opgenomen in schema weergaven in downstream-trans formaties.
 
-![Toegewezen kaart](media/data-flow/mapdrifted2.png "Toegewezen kaart")
+![Toegewezen](media/data-flow/mapdrifted2.png "kaart") naar plaats van kaart
 
 ## <a name="next-steps"></a>Volgende stappen
 In de [taal van de data flow-expressie](data-flow-expression-functions.md)vindt u aanvullende voorzieningen voor kolom patronen en schema-drift, waaronder "byName" en "byPosition".

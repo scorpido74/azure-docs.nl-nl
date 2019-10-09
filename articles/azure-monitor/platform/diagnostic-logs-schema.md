@@ -8,29 +8,29 @@ ms.topic: reference
 ms.date: 10/11/2018
 ms.author: robb
 ms.subservice: logs
-ms.openlocfilehash: fdcfcbaf99d48a345d2be4da297be1c9139da15c
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.openlocfilehash: 70dd4af16746ecf54310dffcb854c3c0857283ba
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71308117"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72033865"
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-diagnostic-logs"></a>Ondersteunde services, schema's en categorieën voor Azure Diagnostische logboeken
 
 [Azure monitor Diagnostische logboeken](../../azure-monitor/platform/resource-logs-overview.md) worden logboeken gegenereerd door Azure-Services waarmee de werking van deze services of bronnen wordt beschreven. Alle Diagnostische logboeken die beschikbaar zijn via Azure Monitor, delen een gemeen schappelijk schema op het hoogste niveau, met flexibiliteit voor elke service om unieke eigenschappen voor hun eigen gebeurtenissen te verzenden.
 
-Een combi natie van het resource type (beschikbaar in `resourceId` de eigenschap) en `category` de unieke identificatie van een schema. In dit artikel wordt het schema op het hoogste niveau voor Diagnostische logboeken en koppelingen naar de schema's voor elke service beschreven.
+Een combi natie van het resource type (beschikbaar in de eigenschap `resourceId`) en de `category` is een unieke identificatie van een schema. In dit artikel wordt het schema op het hoogste niveau voor Diagnostische logboeken en koppelingen naar de schema's voor elke service beschreven.
 
 ## <a name="top-level-diagnostic-logs-schema"></a>Schema voor Diagnostische logboeken op het hoogste niveau
 
 | Name | Vereist/optioneel | Description |
 |---|---|---|
-| time | Vereist | De tijds tempel (UTC) van de gebeurtenis. |
-| resourceId | Vereist | De resource-ID van de resource die de gebeurtenis heeft verzonden. Voor Tenant Services is dit de vorm/tenants/Tenant-id/providers/provider-name. |
-| TenantId | Vereist voor Tenant logboeken | De Tenant-ID van de Active Directory-Tenant waaraan deze gebeurtenis is gekoppeld. Deze eigenschap wordt alleen gebruikt voor logboeken op Tenant niveau, maar wordt niet weer gegeven in Logboeken op resource niveau. |
-| operationName | Vereist | De naam van de bewerking die door deze gebeurtenis wordt vertegenwoordigd. Als de gebeurtenis een RBAC-bewerking vertegenwoordigt, is dit de naam van de RBAC-bewerking (bijvoorbeeld Microsoft.Storage/storageAccounts/blobServices/blobs/Read). Normaal gesp roken gemodelleerd in de vorm van een resource manager-bewerking, zelfs als ze niet de werkelijke gedocumenteerde Resource Manager-bewerkingen (`Microsoft.<providerName>/<resourceType>/<subtype>/<Write/Read/Delete/Action>`) |
+| time | Verplicht | De tijds tempel (UTC) van de gebeurtenis. |
+| resourceId | Verplicht | De resource-ID van de resource die de gebeurtenis heeft verzonden. Voor Tenant Services is dit de vorm/tenants/Tenant-id/providers/provider-name. |
+| tenantId | Vereist voor Tenant logboeken | De Tenant-ID van de Active Directory-Tenant waaraan deze gebeurtenis is gekoppeld. Deze eigenschap wordt alleen gebruikt voor logboeken op Tenant niveau, maar wordt niet weer gegeven in Logboeken op resource niveau. |
+| operationName | Verplicht | De naam van de bewerking die door deze gebeurtenis wordt vertegenwoordigd. Als de gebeurtenis een RBAC-bewerking vertegenwoordigt, is dit de naam van de RBAC-bewerking (bijvoorbeeld Microsoft.Storage/storageAccounts/blobServices/blobs/Read). Normaal gesp roken gemodelleerd in de vorm van een resource manager-bewerking, zelfs als ze niet de werkelijke gedocumenteerde Resource Manager-bewerkingen (`Microsoft.<providerName>/<resourceType>/<subtype>/<Write/Read/Delete/Action>`) |
 | operationVersion | Optioneel | De API-versie die aan de bewerking is gekoppeld als de bewerking is uitgevoerd met een API (bijvoorbeeld `http://myservice.windowsazure.net/object?api-version=2016-06-01`). Als er geen API is die overeenkomt met deze bewerking, vertegenwoordigt de versie de versie van die bewerking in het geval dat de eigenschappen die aan de bewerking zijn gekoppeld in de toekomst worden gewijzigd. |
-| category | Vereist | De logboek categorie van de gebeurtenis. Categorie is de granulariteit waarmee u Logboeken voor een bepaalde resource kunt in-of uitschakelen. De eigenschappen die worden weer gegeven in de BLOB eigenschappen van een gebeurtenis zijn hetzelfde binnen een bepaalde logboek categorie en hetzelfde resource type. Veelvoorkomende logboek categorieën zijn ' Auditing ' ' Execution ' en ' request '. |
+| category | Verplicht | De logboek categorie van de gebeurtenis. Categorie is de granulariteit waarmee u Logboeken voor een bepaalde resource kunt in-of uitschakelen. De eigenschappen die worden weer gegeven in de BLOB eigenschappen van een gebeurtenis zijn hetzelfde binnen een bepaalde logboek categorie en hetzelfde resource type. Veelvoorkomende logboek categorieën zijn ' Auditing ' ' Execution ' en ' request '. |
 | resultType | Optioneel | De status van de gebeurtenis. Typische waarden zijn gestart, in uitvoering, geslaagd, mislukt, actief en opgelost. |
 | resultSignature | Optioneel | De substatus van de gebeurtenis. Als deze bewerking overeenkomt met een REST API-aanroep, is dit de HTTP-status code van de bijbehorende REST-aanroep. |
 | resultDescription | Optioneel | De statische tekst beschrijving van deze bewerking, bijvoorbeeld. Opslag bestand ophalen. |
@@ -55,6 +55,7 @@ Het schema voor de diagnostische logboeken voor bronnen varieert afhankelijk van
 | Azure Batch |[Diagnostische logboek registratie Azure Batch](../../batch/batch-diagnostics.md) |
 | Azure Database for MySQL | [Diagnostische logboeken Azure Database for MySQL](../../mysql/concepts-server-logs.md#diagnostic-logs) |
 | Azure Database for PostgreSQL | [Diagnostische logboeken Azure Database for PostgreSQL](../../postgresql/concepts-server-logs.md#diagnostic-logs) |
+| Azure Data Explorer | [Diagnostische logboeken van Azure Data Explorer](../../data-explorer/using-diagnostic-logs.md) |
 | Cognitive Services | [Diagnostische logboek registratie voor Azure Cognitive Services](../../cognitive-services/diagnostic-logging.md) |
 | CDN (Content Delivery Network) | [Diagnostische logboeken van Azure voor CDN](../../cdn/cdn-azure-diagnostic-logs.md) |
 | CosmosDB | [Azure Cosmos DB logboek registratie](../../cosmos-db/logging.md) |
@@ -67,7 +68,7 @@ Het schema voor de diagnostische logboeken voor bronnen varieert afhankelijk van
 | IoT Hub | [IoT Hub bewerkingen](../../iot-hub/iot-hub-monitor-resource-health.md#use-azure-monitor) |
 | Key Vault |[Logboekregistratie van Azure Key Vault](../../key-vault/key-vault-logging.md) |
 | Kubernetes Service |[Logboek registratie voor Azure Kubernetes](../../aks/view-master-logs.md#log-event-schema) |
-| Netwerktaakverdeler |[Logboekanalyse voor Azure Load Balancer](../../load-balancer/load-balancer-monitor-log.md) |
+| Load Balancer |[Logboekanalyse voor Azure Load Balancer](../../load-balancer/load-balancer-monitor-log.md) |
 | Logic Apps |[Aangepast Logic Apps B2B-volgschema](../../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md) |
 | Netwerkbeveiligingsgroepen |[Logboekanalyses voor netwerkbeveiligingsgroepen (NSG's)](../../virtual-network/virtual-network-nsg-manage-log.md) |
 | DDoS Protection | [Azure DDoS Protection Standard beheren](../../virtual-network/manage-ddos-protection.md) |
@@ -92,14 +93,14 @@ Het schema voor de diagnostische logboeken voor bronnen varieert afhankelijk van
 |Microsoft.Automation/automationAccounts|DscNodeStatus|DSC-knooppunt status|
 |Microsoft.Batch/batchAccounts|ServiceLog|Service logboeken|
 |Microsoft.Cdn/profiles/endpoints|CoreAnalytics|Hiermee worden de metrische gegevens van het eind punt opgehaald, bijvoorbeeld band breedte, uitgaand verkeer enzovoort.|
-|Microsoft.ClassicNetwork/networksecuritygroups|Stroom gebeurtenis van regel voor netwerk beveiligings groep|Stroom gebeurtenis van regel voor netwerk beveiligings groep|
+|Microsoft.ClassicNetwork/networksecuritygroups|Gebeurtenis voor stroomregel van netwerkbeveiligingsgroep|Gebeurtenis voor stroomregel van netwerkbeveiligingsgroep|
 |Microsoft.CognitiveServices/accounts|Controleren|Auditlogboeken|
 |Microsoft.CognitiveServices/accounts|RequestResponse|Aanvraag-en antwoord logboeken|
-|Microsoft.ContainerService/managedClusters|uitvoeren-apiserver|Kubernetes API-server|
-|Microsoft.ContainerService/managedClusters|uitvoeren-Controller-Manager|Kubernetes Controller Manager|
-|Microsoft.ContainerService/managedClusters|cluster-automatisch schalen|Automatische schaalaanpassing van Kubernetes-cluster|
-|Microsoft.ContainerService/managedClusters|uitvoeren-scheduler|Kubernetes Scheduler|
-|Microsoft.ContainerService/managedClusters|komen|Verificatiewebhook|
+|Microsoft.ContainerService/managedClusters|uitvoeren-apiserver|Kubernetes-API-server|
+|Microsoft.ContainerService/managedClusters|uitvoeren-Controller-Manager|Kubernetes-controller beheer|
+|Microsoft.ContainerService/managedClusters|cluster-automatisch schalen|Kubernetes-cluster automatisch schalen|
+|Microsoft.ContainerService/managedClusters|uitvoeren-scheduler|Kubernetes scheduler|
+|Microsoft.ContainerService/managedClusters|komen|Verificatie-webhook|
 |Microsoft.CustomerInsights/hubs|AuditEvents|AuditEvents|
 |Microsoft.DataFactory/factories|ActivityRuns|Logboek voor uitvoering van pijplijn activiteit|
 |Microsoft.DataFactory/factories|PipelineRuns|Logboek voor uitvoering van pijp lijn|
@@ -123,7 +124,7 @@ Het schema voor de diagnostische logboeken voor bronnen varieert afhankelijk van
 |Microsoft.Devices/IotHubs|DirectMethods|Directe methoden|
 |Microsoft.Devices/IotHubs|E2EDiagnostics|E2E diagnostische gegevens (preview-versie)|
 |Microsoft.Devices/IotHubs|Configuraties|Configuraties|
-|Microsoft.Devices/provisioningServices|DeviceOperations|Apparaatbewerkingen|
+|Microsoft.Devices/provisioningServices|DeviceOperations|Bewerkingen voor apparaten|
 |Microsoft.Devices/provisioningServices|ServiceOperations|Service bewerkingen|
 |Microsoft.DocumentDB/databaseAccounts|DataPlaneRequests|DataPlaneRequests|
 |Microsoft.DocumentDB/databaseAccounts|MongoRequests|MongoRequests|
@@ -131,10 +132,10 @@ Het schema voor de diagnostische logboeken voor bronnen varieert afhankelijk van
 |Microsoft.EventHub/namespaces|ArchiveLogs|Archief logboeken|
 |Microsoft.EventHub/namespaces|OperationalLogs|Operationele logboeken|
 |Microsoft.EventHub/namespaces|AutoScaleLogs|Logboeken automatisch schalen|
-|Microsoft.Insights/AutoscaleSettings|AutoscaleEvaluations|Automatische schaalaanpassing gebruiken voor evaluaties|
-|Microsoft.Insights/AutoscaleSettings|AutoscaleScaleActions|Automatische schaalaanpassing gebruiken voor schaalacties|
-|Microsoft.IoTSpaces/Graph|Trace|Trace|
-|Microsoft.IoTSpaces/Graph|Operationeel|Operationeel|
+|Microsoft.Insights/AutoscaleSettings|AutoscaleEvaluations|Evaluaties automatisch schalen|
+|Microsoft.Insights/AutoscaleSettings|AutoscaleScaleActions|Schaal acties automatisch schalen|
+|Microsoft.IoTSpaces/Graph|Tracering|Tracering|
+|Microsoft.IoTSpaces/Graph|Functioneren|Functioneren|
 |Microsoft.IoTSpaces/Graph|Controleren|Controleren|
 |Microsoft.IoTSpaces/Graph|UserDefinedFunction|UserDefinedFunction|
 |Microsoft.IoTSpaces/Graph|Inkomend verkeer|Inkomend verkeer|
@@ -167,18 +168,18 @@ Het schema voor de diagnostische logboeken voor bronnen varieert afhankelijk van
 |Microsoft.Network/frontdoors|FrontdoorAccessLog|-Ingang-toegangs logboek|
 |Microsoft.Network/frontdoors|FrontdoorWebApplicationFirewallLog|-Ingang Web Application firewall-logboek|
 |Micro soft. PowerBIDedicated/capaciteiten|Engine|Engine|
-|Microsoft.RecoveryServices/Vaults|AzureBackupReport|Rapportagegegevens voor Azure Backup|
-|Microsoft.RecoveryServices/Vaults|AzureSiteRecoveryJobs|Azure Site Recovery-taken|
-|Microsoft.RecoveryServices/Vaults|AzureSiteRecoveryEvents|Azure Site Recovery-gebeurtenissen|
+|Microsoft.RecoveryServices/Vaults|AzureBackupReport|Azure Backup rapportage gegevens|
+|Microsoft.RecoveryServices/Vaults|AzureSiteRecoveryJobs|Azure Site Recovery taken|
+|Microsoft.RecoveryServices/Vaults|AzureSiteRecoveryEvents|Azure Site Recovery gebeurtenissen|
 |Microsoft.RecoveryServices/Vaults|AzureSiteRecoveryReplicatedItems|Gerepliceerde Azure Site Recovery-items|
 |Microsoft.RecoveryServices/Vaults|AzureSiteRecoveryReplicationStats|Gerepliceerde Azure Site Recovery-statistieken|
 |Microsoft.RecoveryServices/Vaults|AzureSiteRecoveryRecoveryPoints|Azure Site Recovery-herstelpunten|
-|Microsoft.RecoveryServices/Vaults|AzureSiteRecoveryReplicationDataUploadRate|Upload frequentie van Azure Site Recovery replicatie gegevens|
-|Microsoft.RecoveryServices/Vaults|AzureSiteRecoveryProtectedDiskDataChurn|Gegevens verloop van beveiligde schijf Azure Site Recovery|
+|Microsoft.RecoveryServices/Vaults|AzureSiteRecoveryReplicationDataUploadRate|Uploadsnelheid van replicatiegegevens voor Azure Site Recovery|
+|Microsoft.RecoveryServices/Vaults|AzureSiteRecoveryProtectedDiskDataChurn|Gegevensverloop van beveiligde schijf voor Azure Site Recovery|
 |Microsoft.Search/searchServices|OperationLogs|Bewerkings logboeken|
 |Microsoft.ServiceBus/namespaces|OperationalLogs|Operationele logboeken|
-|Microsoft.Sql/servers/databases|SQLInsights|SQL-inzichten|
-|Microsoft.Sql/servers/databases|AutomaticTuning|Automatisch afstemmen|
+|Microsoft.Sql/servers/databases|SQLInsights|SQL Insights|
+|Microsoft.Sql/servers/databases|AutomaticTuning|Automatisch instellen|
 |Microsoft.Sql/servers/databases|QueryStoreRuntimeStatistics|Runtime statistieken voor query Store|
 |Microsoft.Sql/servers/databases|QueryStoreWaitStatistics|Wacht statistieken voor query Store|
 |Microsoft.Sql/servers/databases|Fouten|Fouten|
@@ -195,7 +196,7 @@ Het schema voor de diagnostische logboeken voor bronnen varieert afhankelijk van
 |Microsoft.Sql/servers/databases|Wacht|Wacht|
 |Micro soft. SQL/managedInstances|ResourceUsageStats|Resource gebruiks statistieken|
 |Micro soft. SQL/managedInstances|SQLSecurityAuditEvents|SQL-beveiligings controle gebeurtenis|
-|Microsoft.Sql/managedInstances/databases|SQLInsights|SQL-inzichten|
+|Microsoft.Sql/managedInstances/databases|SQLInsights|SQL Insights|
 |Microsoft.Sql/managedInstances/databases|QueryStoreRuntimeStatistics|Runtime statistieken voor query Store|
 |Microsoft.Sql/managedInstances/databases|QueryStoreWaitStatistics|Wacht statistieken voor query Store|
 |Microsoft.Sql/managedInstances/databases|Fouten|Fouten|

@@ -11,14 +11,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/19/2018
-ms.openlocfilehash: 99ae0139d7b12c0bfb87030d2b749b12834a4f96
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: f7c27bde3806684045bc43f8ff99eefb14c8d04a
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70141102"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72029141"
 ---
-# <a name="visually-monitor-azure-data-factories"></a>Azure-gegevens fabrieken visueel bewaken
+# <a name="visually-monitor-azure-data-factories"></a>Azure-gegevensfabrieken visueel bewaken
 Azure Data Factory is een service voor gegevens integratie in de Cloud. U kunt het gebruiken om gegevensgestuurde werk stromen te maken in de Cloud voor het organiseren en automatiseren van gegevens verplaatsing en gegevens transformatie. Met behulp van Azure Data Factory kunt u het volgende doen:
 
 - Gegevensgestuurde werkstromen (pijplijnen genoemd) maken en plannen die gegevens uit verschillende gegevensarchieven kunnen opnemen.
@@ -47,10 +47,10 @@ In de lijst weergave wordt elke pijplijn uitvoering voor uw Data Factory pijp li
 | Start uitvoeren | Begin datum en-tijd voor de pijplijn uitvoering (MM/DD/JJJJ, uu: MM: SS AM/PM) |
 | Duration | Uitvoerings duur (UU: MM: SS) |
 | Geactiveerd door | Hand matige trigger of geplande trigger |
-| Status | **Mislukt**, **geslaagd**of **in behandeling** |
+| State | **Mislukt**, **geslaagd**of **in behandeling** |
 | Parameters | Para meters voor de pijp lijn run (naam/waarde-paren) |
 | Fout | Fout bij uitvoering van pijp lijn (indien van toepassing) |
-| Run-id | ID van de pijplijn uitvoering |
+| Run-ID | ID van de pijplijn uitvoering |
 
 ![Lijst weergave voor het bewaken van pijplijn uitvoeringen](media/monitor-visually/pipeline-runs.png)
 
@@ -59,11 +59,11 @@ In de lijst weergave worden de uitvoeringen van activiteiten weer gegeven die ov
 
 | **De naam van kolom** | **Beschrijving** |
 | --- | --- |
-| Naam activiteit | De naam van de activiteit in de pijp lijn |
+| Naam van activiteit | De naam van de activiteit in de pijp lijn |
 | Type activiteit | Type activiteit, zoals **copy**, **HDInsightSpark**of **HDInsightHive** |
 | Start uitvoeren | Begin datum en-tijd voor de uitvoering van de activiteit (MM/DD/JJJJ, uu: MM: SS AM/PM) |
 | Duration | Uitvoerings duur (UU: MM: SS) |
-| Status | **Mislukt**, **geslaagd**of **in behandeling** |
+| State | **Mislukt**, **geslaagd**of **in behandeling** |
 | Invoer | JSON-matrix waarmee de activiteiten invoer wordt beschreven |
 | Output | JSON-matrix waarmee de uitvoer van de activiteit wordt beschreven |
 | Fout | Fout bij uitvoeren van activiteit (indien van toepassing) |
@@ -150,7 +150,7 @@ De lengte van de balk informeert de duur van de pijp lijn. U kunt ook de balk se
 ![Duur Gantt-diagram](media/monitor-visually/gantt3.png)
 
 ## <a name="guided-tours"></a>Rond leidingen
-Selecteer het **informatie** pictogram linksonder. Selecteer vervolgens rond leidingen voor stapsgewijze instructies voor het bewaken van de uitvoering van uw pijp lijn en activiteit.
+Selecteer het **informatie** pictogram linksonder. Selecteer vervolgens rond **leidingen** voor stapsgewijze instructies voor het bewaken van de uitvoering van uw pijp lijn en activiteit.
 
 ![Rond leidingen](media/monitor-visually/guided-tours.png)
 
@@ -161,7 +161,7 @@ Selecteer het pictogram **feedback** om ons feedback te geven over de verschille
 
 ## <a name="alerts"></a>Waarschuwingen
 
-U kunt waarschuwingen activeren over ondersteunde metrische gegevens in Data Factory. Selecteer bewakings**Waarschuwingen & metrische gegevens** op de pagina Data Factory controle om aan de slag te gaan. > 
+U kunt waarschuwingen activeren over ondersteunde metrische gegevens in Data Factory. Selecteer  > -waarschuwingen **bewaken** **& metrische gegevens** op de pagina Data Factory bewaking om aan de slag te gaan.
 
 ![Pagina Data Factory-monitor](media/monitor-visually/alerts01.png)
 
@@ -171,7 +171,7 @@ Bekijk de volgende video voor een inleiding en demonstratie van zeven minuten vo
 
 ### <a name="create-alerts"></a>Waarschuwingen maken
 
-1.  Selecteer **nieuwe waarschuwings regel** om een nieuwe waarschuwing te maken.
+1.  Selecteer **nieuwe waarschuwings regel** om een nieuwe waarschuwing te maken.
 
     ![Knop nieuwe waarschuwings regel](media/monitor-visually/alerts02.png)
 
@@ -201,4 +201,4 @@ Bekijk de volgende video voor een inleiding en demonstratie van zeven minuten vo
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie voor meer informatie over het bewaken en beheren van pijp lijnen het programmatische artikel [pijp lijnen bewaken en beheren](https://docs.microsoft.com/azure/data-factory/monitor-programmatically) .
+Zie voor meer informatie over het bewaken en beheren van pijp lijnen het [programmatische artikel pijp lijnen bewaken en beheren](https://docs.microsoft.com/azure/data-factory/monitor-programmatically) .

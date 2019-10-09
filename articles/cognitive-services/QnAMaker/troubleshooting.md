@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 09/26/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 00d3d63ff1a5b4d5dab0534e039145b97091af87
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: 51d21dca1d8a5223e67cb7ea8489800989cff55c
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71802155"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72026029"
 ---
 # <a name="troubleshooting-for-qna-maker"></a>Problemen oplossen voor QnA Maker
 
@@ -99,7 +99,7 @@ Zie [gegevensbron locaties](./Concepts/data-sources-supported.md#data-source-loc
 
 ### <a name="the-updates-that-i-made-to-my-knowledge-base-are-not-reflected-on-publish-why-not"></a>De updates die ik heb in mijn knowledge base aangebracht worden niet weergegeven bij publicatie. Waarom niet?
 
-Elke bewerking moet in tabelupdate, test, of instellen, worden opgeslagen voordat deze kan worden gepubliceerd. Klik op de **opslaan en trainen** knop na elke bewerking.
+Elke bewerking moet in tabelupdate, test, of instellen, worden opgeslagen voordat deze kan worden gepubliceerd. Zorg ervoor dat u na elke bewerking op de knop **opslaan en trainen** klikt.
 
 ### <a name="does-the-knowledge-base-support-rich-data-or-multimedia"></a>Is de opgemaakte ondersteuningsgegevens in knowledge base of multimedia?
 
@@ -123,7 +123,7 @@ Uw appservice vernieuwen wanneer het waarschuwingspictogram naast de versiewaard
 
 Als u een Azure Search index verwijdert, is de bewerking definitief en kan de index niet worden hersteld. 
 
-### <a name="i-deleted-my-testkb-index-in-my-search-service-how-can-i-fix-this"></a>Ik heb mijn `testkb` index in mijn zoek service verwijderd. Hoe kan ik dit oplossen? 
+### <a name="i-deleted-my-testkb-index-in-my-search-service-how-can-i-fix-this"></a>Ik heb mijn `testkb`-index verwijderd uit mijn zoek service. Hoe kan ik dit oplossen? 
 
 De oude gegevens kunnen niet worden hersteld. Maak een nieuwe QnA Maker resource en maak uw Knowledge Base opnieuw.
 
@@ -139,7 +139,7 @@ Als u meerdere talen en meerdere knowledge bases, wordt de gebruiker heeft om ee
 
 De naam van de Azure Search-resource is de naam van de QnA Maker-resource met een willekeurige letters toegevoegd aan het einde. Dit maakt het moeilijk te onderscheiden van meerdere resources zoeken voor QnA Maker. Een afzonderlijke Azure Search-service (vermeld de manier waarop u wilt) maken en verbinden met uw QnA-Service. De stappen zijn vergelijkbaar met de stappen die u moet uitvoeren om [een upgrade van Azure Search](How-To/set-up-qnamaker-service-azure.md#upgrade-the-azure-search-service)uit te voeren.
 
-### <a name="when-qna-maker-returns-runtime-core-is-not-initialized-how-do-i-fix-it"></a>Als QnA Maker retourneert `Runtime core is not initialized,` hoe kan ik het probleem oplossen?
+### <a name="when-qna-maker-returns-runtime-core-is-not-initialized-how-do-i-fix-it"></a>Als QnA Maker `Runtime core is not initialized,` retourneert hoe kan ik het herstellen?
 
 De schijf ruimte voor uw app-service is mogelijk vol. Stappen om uw schijf ruimte te herstellen:
 
@@ -179,7 +179,7 @@ U moet over de volgende informatie beschikken over uw Knowledge Base:
 
 Met deze informatie gaat u naar de app-service van uw bot in de Azure Portal. Wijzig de waarden onder **instellingen-> configuratie-> toepassings instellingen**.  
 
-De eindpunt sleutel van de Knowledge Base bevindt zich `QnAAuthkey` in de ABS-service. 
+De eindpunt sleutel van de kennis basis heeft de naam `QnAAuthkey` in de ABS-service. 
 
 ### <a name="can-two-or-more-client-applications-share-a-knowledge-base"></a>Kunnen twee of meer client toepassingen een Knowledge Base delen? 
 

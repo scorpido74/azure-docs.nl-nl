@@ -1,50 +1,50 @@
 ---
-title: Aanbevolen procedures operator - geavanceerde functies van scheduler in Azure Kubernetes Services (AKS)
-description: Meer over de best practices uit de cluster-operator voor het gebruik van scheduler geavanceerde functies zoals taints en tolerations, knooppunt selectoren en affiniteit, of tussen pod-affiniteit en anti-affiniteit in Azure Kubernetes Service (AKS)
+title: Best practices voor Opera tors-geavanceerde functies van scheduler in azure Kubernetes Services (AKS)
+description: Meer informatie over de aanbevolen procedures voor cluster operators voor het gebruik van geavanceerde scheduler-functies, zoals taints en verdragen, knooppunt selecties en affiniteit, of inter-pod-affiniteit en anti-affiniteit in azure Kubernetes service (AKS)
 services: container-service
 author: mlearned
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.author: mlearned
-ms.openlocfilehash: 4caa4219d2bf7558dbdf71e92e4993722c6e8f6a
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: a31f839b4bad79a52f5cab386d17e3084314784b
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67614879"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72026105"
 ---
-# <a name="best-practices-for-advanced-scheduler-features-in-azure-kubernetes-service-aks"></a>Aanbevolen procedures voor geavanceerde scheduler-functies in Azure Kubernetes Service (AKS)
+# <a name="best-practices-for-advanced-scheduler-features-in-azure-kubernetes-service-aks"></a>Aanbevolen procedures voor geavanceerde functies van scheduler in azure Kubernetes service (AKS)
 
-Wanneer u clusters in Azure Kubernetes Service (AKS) beheert, moet u vaak teams en workloads te isoleren. De Kubernetes-scheduler biedt geavanceerde functies waarmee kunt die u bepalen welke schillen kunnen worden gepland op bepaalde knooppunten of hoe meerdere pod toepassingen op de juiste wijze kunnen worden verdeeld over het cluster. 
+Wanneer u clusters beheert in azure Kubernetes service (AKS), moet u vaak teams en workloads isoleren. De Kubernetes Scheduler biedt geavanceerde functies waarmee u kunt bepalen welke peulen op bepaalde knoop punten kunnen worden gepland of hoe multi-pod-toepassingen op de juiste manier kunnen worden gedistribueerd over het cluster. 
 
-Deze aanbevolen procedures voor richt zich op geavanceerde Kubernetes planningsfuncties voor clusteroperators. In dit artikel leert u het volgende:
+Dit artikel Best practices is gericht op geavanceerde Kubernetes plannings functies voor cluster operators. In dit artikel leert u het volgende:
 
 > [!div class="checklist"]
-> * Gebruik taints en tolerations om te beperken welke schillen kunnen worden gepland op knooppunten
-> * De voorkeur geeft aan schillen uitvoeren op bepaalde knooppunten met het selectoren knooppunt- of -knooppuntsaffiniteit
-> * Split elkaar of gezamenlijk schillen van de groep met affiniteit tussen pod of anti-affiniteit
+> * Gebruik taints en verdragen om te beperken welke peulen kunnen worden gepland op knoop punten
+> * Geef een voor keur aan van een van de knoop punten met behulp van knooppunt selecties of knooppunt affiniteit
+> * Splitsen of groeperen van peulen met inter-pod-affiniteit of anti-affiniteit
 
-## <a name="provide-dedicated-nodes-using-taints-and-tolerations"></a>Toegewezen knooppunten met behulp van taints en tolerations bieden
+## <a name="provide-dedicated-nodes-using-taints-and-tolerations"></a>Geef toegewezen knoop punten op met behulp van taints en verdragen
 
-**Aanbevolen procedurerichtlijn** -toegang voor resource-intensieve toepassingen, zoals controllers voor inkomend verkeer, om specifieke knooppunten te beperken. Houd knooppunt bronnen beschikbaar zijn voor workloads die ze nodig hebben en planning van andere werkbelastingen op de knooppunten niet toestaan.
+**Best Practice-richt lijnen** : Beperk de toegang voor resource-intensieve toepassingen, zoals ingangs controllers, tot specifieke knoop punten. Houd knooppunt resources beschikbaar voor werk belastingen die ze nodig hebben, en sta geen planning van andere werk belastingen op de knoop punten toe.
 
-Wanneer u uw AKS-cluster maakt, kunt u knooppunten met GPU-ondersteuning of een groot aantal krachtige CPU's kunt implementeren. Deze knooppunten worden vaak gebruikt voor workloads met grote gegevensverwerking zoals machine learning-(ML) of kunstmatige intelligentie (AI). Als dit type hardware doorgaans een dure knooppunt bron om te implementeren is, beperken van de werklasten die kunnen worden gepland op deze knooppunten. U kunt in plaats daarvan desgewenst besteden aan het aantal knooppunten in het cluster uit te voeren van ingress-services en te voorkomen dat andere werkbelastingen.
+Wanneer u uw AKS-cluster maakt, kunt u knoop punten met GPU-ondersteuning of een groot aantal krachtige Cpu's implementeren. Deze knoop punten worden vaak gebruikt voor werk belastingen voor grote gegevens verwerking, zoals machine learning (ML) of een kunst matige intelligentie (AI). Aangezien dit type hardware meestal een dure knooppunt resource is om te implementeren, beperkt u de werk belastingen die op deze knoop punten kunnen worden gepland. U kunt in plaats daarvan enkele knoop punten in het cluster reserveren om ingangs services uit te voeren en andere workloads te voor komen.
 
-Dit biedt ondersteuning voor verschillende knooppunten wordt opgegeven met behulp van meerdere groepen. Een AKS-cluster bevat een of meer groepen. Ondersteuning voor meerdere knooppuntgroepen in AKS is momenteel in preview.
+Deze ondersteuning voor verschillende knoop punten wordt geboden door gebruik te maken van meerdere knooppunt groepen. Een AKS-cluster biedt een of meer knooppunt groepen. Ondersteuning voor meerdere knooppunt groepen in AKS is momenteel beschikbaar als preview-versie.
 
-De scheduler Kubernetes kunt taints en tolerations gebruiken om te beperken welke workloads kunnen uitvoeren op de knooppunten.
+De Kubernetes scheduler kan taints en verdragen gebruiken om te beperken welke workloads op knoop punten kunnen worden uitgevoerd.
 
-* Een **taint** wordt toegepast op een knooppunt dat geeft aan dat alleen bepaalde schillen op deze kunnen worden gepland.
-* Een **toleration** wordt vervolgens toegepast op een schil waarmee ze *tolereren* beïnvloeding van een knooppunt.
+* Een **Taint** wordt toegepast op een knoop punt dat aangeeft dat alleen een specifiek peul kan worden gepland.
+* Vervolgens wordt er een **verdragen** toegepast op een pod waarmee de Taint van een knoop punt kunnen worden *toegestaan* .
 
-Wanneer u een schil op een AKS-cluster implementeert, plant Kubernetes alleen schillen op knooppunten waar een toleration wordt uitgelijnd met de beïnvloeding. Als voorbeeld wordt ervan uitgegaan dat u hebt een knooppunt van toepassingen in uw AKS-cluster voor knooppunten met GPU ondersteunt. Definieert u de naam, zoals *gpu*, klikt u vervolgens een waarde voor de planning. Als u deze waarde instelt op *NoSchedule*, de Kubernetes-scheduler schillen op het knooppunt kan niet worden gepland als de schil bevat geen definitie van de juiste toleration.
+Wanneer u een pod implementeert in een AKS-cluster, plant Kubernetes alleen een Peul schema op knoop punten waar een rechts punt wordt afgestemd op de Taint. Stel dat u een knooppunt groep hebt in uw AKS-cluster voor knoop punten met GPU-ondersteuning. U definieert de naam, zoals *GPU*, vervolgens een waarde voor het plannen. Als u deze waarde instelt op geen *schema*, kan de Kubernetes scheduler geen peul plannen op het knoop punt als de pod niet de juiste verdragen definieert.
 
 ```console
 kubectl taint node aks-nodepool1 sku=gpu:NoSchedule
 ```
 
-Met een beïnvloeding toegepast op de knooppunten, definieert u een toleration vervolgens in de schil-specificatie waarmee plannen op de knooppunten. Het volgende voorbeeld definieert de `sku: gpu` en `effect: NoSchedule` te tolereren de beïnvloeding toegepast op het knooppunt in de vorige stap:
+Als er een Taint wordt toegepast op knoop punten, definieert u een tolerantie in de pod-specificatie waarmee u de knoop punten kunt plannen. In het volgende voor beeld worden de `sku: gpu` en `effect: NoSchedule` gedefinieerd om de Taint die in de vorige stap zijn toegepast op het knoop punt te verdragen:
 
 ```yaml
 kind: Pod
@@ -69,44 +69,44 @@ spec:
     effect: "NoSchedule"
 ```
 
-Wanneer deze pod wordt geïmplementeerd, zoals het gebruik van `kubectl apply -f gpu-toleration.yaml`, Kubernetes is de schil op de knooppunten kunt plannen met de beïnvloeding toegepast. Deze logische isolatie kunt u toegang tot bronnen binnen een cluster beheren.
+Wanneer deze pod wordt geïmplementeerd, zoals het gebruik van `kubectl apply -f gpu-toleration.yaml`, kan Kubernetes de pod plannen op de knoop punten waarop de Taint is toegepast. Met deze logische isolatie kunt u de toegang tot resources in een cluster beheren.
 
-Wanneer u taints toepast, kunt u werken met uw ontwikkelaars van toepassingen en eigenaren zodat ze voor het definiëren van de vereiste tolerations in hun implementaties.
+Wanneer u taints toepast, moet u samen werken met de ontwikkel aars en eigen aren van uw toepassing, zodat ze de vereiste verdragen in hun implementaties kunnen definiëren.
 
-Zie voor meer informatie over taints en tolerations [toe te passen taints en tolerations][k8s-taints-tolerations].
+Zie voor meer informatie over taints en verdragen [Toep assen van taints en verdragen][k8s-taints-tolerations].
 
-Zie voor meer informatie over het gebruik van meerdere knooppuntgroepen in AKS [maken en beheren van meerdere knooppuntgroepen voor een cluster in AKS][use-multiple-node-pools].
+Zie [meerdere knooppunt groepen maken en beheren voor een cluster in AKS][use-multiple-node-pools]voor meer informatie over het gebruik van meerdere knooppunt groepen in AKS.
 
-### <a name="behavior-of-taints-and-tolerations-in-aks"></a>Gedrag van taints en tolerations in AKS
+### <a name="behavior-of-taints-and-tolerations-in-aks"></a>Gedrag van taints en verdragen in AKS
 
-Wanneer u een knooppuntgroep in AKS bijwerkt, taints en tolerations worden als volgt instellen terwijl deze worden toegepast op nieuwe knooppunten:
+Wanneer u een groep van een knoop punt bijwerkt in AKS, volgen taints en toleranties een set patroon wanneer ze worden toegepast op nieuwe knoop punten:
 
-- **Standaard-clusters zonder ondersteuning voor het schalen van virtuele machines**
-  - Stel, u hebt een cluster met twee knooppunten - *knooppunt1* en *Knooppunt2*. Wanneer u een upgrade uitvoert, een extra knooppunt (*Knooppunt3*) wordt gemaakt.
-  - De taints van *knooppunt1* worden toegepast op *Knooppunt3*, klikt u vervolgens *knooppunt1* wordt vervolgens verwijderd.
-  - Een ander nieuw knooppunt wordt gemaakt (met de naam *knooppunt1*, sinds de vorige *knooppunt1* is verwijderd), en de *Knooppunt2* taints worden toegepast op de nieuwe *knooppunt1*. Vervolgens *Knooppunt2* wordt verwijderd.
-  - In wezen *knooppunt1* wordt *Knooppunt3*, en *Knooppunt2* wordt *knooppunt1*.
+- **Standaard clusters zonder ondersteuning voor schaal baarheid van virtuele machines**
+  - We gaan ervan uit dat u een cluster met twee knoop punten *Knooppunt1* en *Knooppunt2*. Wanneer u een upgrade uitvoert, wordt er een extra knoop punt (*Knooppunt3*) gemaakt.
+  - De taints van *Knooppunt1* worden toegepast op *Knooppunt3*, waarna *Knooppunt1* wordt verwijderd.
+  - Er wordt een ander nieuw knoop punt gemaakt (met de naam *Knooppunt1*, omdat de vorige *Knooppunt1* is verwijderd) en de *Knooppunt2* taints worden toegepast op de nieuwe *Knooppunt1*. *Knooppunt2* wordt vervolgens verwijderd.
+  - In essentie *Knooppunt1* wordt *Knooppunt3*en *Knooppunt2* wordt *Knooppunt1*.
 
-- **Clusters waarvoor wordt gebruikgemaakt van de virtuele machine-schaalsets** (momenteel in preview in AKS)
-  - Nogmaals, Stel, u hebt een cluster met twee knooppunten - *knooppunt1* en *Knooppunt2*. U kunt de knooppuntgroep upgraden.
-  - Er zijn twee extra knooppunten gemaakt, *Knooppunt3* en *Knooppunt4*, en de taints respectievelijk worden doorgegeven.
-  - De oorspronkelijke *knooppunt1* en *Knooppunt2* worden verwijderd.
+- **Clusters die gebruikmaken van schaal sets voor virtuele machines**
+  - We gaan ervan uit dat u een cluster met twee knoop punten hebt, *Knooppunt1* en *Knooppunt2*. U werkt de knooppunt groep bij.
+  - Er worden twee extra knoop punten gemaakt, *Knooppunt3* en *Knooppunt4*, en de taints worden respectievelijk door gegeven.
+  - De oorspronkelijke *Knooppunt1* en *Knooppunt2* worden verwijderd.
 
-Wanneer u een knooppuntgroep in AKS schaalt, worden taints en tolerations niet uitvoeren van de tabtoets ontwerp.
+Wanneer u een knooppunt groep in AKS schaalt, worden taints en verdragen niet door het ontwerp getransporteerd.
 
-## <a name="control-pod-scheduling-using-node-selectors-and-affinity"></a>Besturingselement pod plannen met behulp van knooppunt selectoren en affiniteit
+## <a name="control-pod-scheduling-using-node-selectors-and-affinity"></a>Pod plannen beheren met behulp van knooppunt selecties en affiniteit
 
-**Aanbevolen procedurerichtlijn** - bepalen de planning van de pods op knooppunten met behulp van knooppunt selectoren: knooppuntsaffiniteit, of tussen pod affiniteit. Deze instellingen kunnen de Kubernetes-scheduler logisch om workloads te isoleren, zoals door hardware in het knooppunt.
+**Richt lijnen voor best practices** : beheer de planning van de peuling op knoop punten met behulp van knooppunt selecties, knooppunt affiniteit of inter-pod-affiniteit. Met deze instellingen kan de Kubernetes-planner werk belastingen logisch isoleren, zoals op hardware in het knoop punt.
 
-Taints en tolerations worden gebruikt voor het isoleren van logisch resources met een vaste deadline - als de schil niet van een knooppunt beïnvloeding tolereren, deze op het knooppunt is niet gepland. Een alternatieve methode is om te gebruiken knooppunt selectoren. U knooppunten, zoals een label geven lokaal gekoppelde SSD-opslag of een grote hoeveelheid geheugen en vervolgens definiëren in de specificatie pod een selector knooppunt. Vervolgens plant u Kubernetes de schillen in een overeenkomende knooppunt. In tegenstelling tot tolerations, kunnen de schillen zonder een overeenkomende knooppunt selector op gelabelde knooppunten worden gepland. Dit gedrag kunt u niet-gebruikte resources op de knooppunten om te gebruiken, maar prioriteit geeft aan schillen die de lijst met overeenkomende knooppunt definiëren.
+Taints en verdragen worden gebruikt voor het logisch isoleren van resources met een harde uitsnede-als de pod geen Taint van een knoop punt kan verdragen, maar niet is gepland op het knoop punt. Een alternatieve methode is het gebruik van knooppunt selecties. U labelt knoop punten, zoals het aanduiden van lokaal aangesloten SSD-opslag of een grote hoeveelheid geheugen en vervolgens definieert u in de pod-specificatie een knooppunt kiezer. Kubernetes plant vervolgens die peulingen op een overeenkomend knoop punt. In tegens telling tot de toleranties kan er geen overeenkomende knooppunt kiezer worden gepland op knoop punten met een label. Dit gedrag staat ongebruikte resources op de knoop punten toe om te verbruiken, maar heeft prioriteit voor het definiëren van de overeenkomende knooppunt kiezer.
 
-We bekijken een voorbeeld van knooppunten met een grote hoeveelheid geheugen. Deze knooppunten kunnen de voorkeur geeft aan schillen die aanvragen van een grote hoeveelheid geheugen. Om ervoor te zorgen dat de resources niet zitten niet-actieve, kunnen ze ook andere schillen om uit te voeren.
+Laten we eens kijken naar een voor beeld van knoop punten met een grote hoeveelheid geheugen. Deze knoop punten kunnen een voor keur geven aan de belangrijkste die een grote hoeveelheid geheugen aanvragen. Om ervoor te zorgen dat de resources niet inactief zijn, kunnen ze ook andere peulen uitvoeren.
 
 ```console
 kubectl label node aks-nodepool1 hardware:highmem
 ```
 
-Voegt een pod-specificatie vervolgens de `nodeSelector` eigenschap voor het definiëren van een knooppunt selector die overeenkomt met het label is ingesteld op een knooppunt:
+Een pod-specificatie voegt vervolgens de eigenschap `nodeSelector` toe om een knooppunt kiezer te definiëren die overeenkomt met het label dat op een knoop punt is ingesteld:
 
 ```yaml
 kind: Pod
@@ -128,15 +128,15 @@ spec:
       hardware: highmem
 ```
 
-Wanneer u deze opties scheduler, werken met uw ontwikkelaars van toepassingen en eigenaren zodat ze voor het correct definiëren van hun pod-specificaties.
+Wanneer u deze scheduler-opties gebruikt, moet u samen werken met uw toepassings ontwikkelaars en-eigen aren zodat ze hun pod-specificaties correct kunnen definiëren.
 
-Zie voor meer informatie over het gebruik van selectoren knooppunt [schillen toe te wijzen aan knooppunten][k8s-node-selector].
+Zie voor meer informatie over het gebruik van knooppunt selecties de optie [peulen aan knoop punten toewijzen][k8s-node-selector].
 
-### <a name="node-affinity"></a>Knooppuntsaffiniteit
+### <a name="node-affinity"></a>Knooppunt affiniteit
 
-De selectie van een knooppunt is een eenvoudige manier schillen toewijzen aan een bepaald knooppunt. Meer flexibiliteit is beschikbaar met *knooppuntsaffiniteit*. Met knooppuntaffiniteitsmasker definieert u wat gebeurt er als u de schil komt niet overeen met een knooppunt. U kunt *vereisen* dat Kubernetes scheduler komt overeen met een schil met een host met het label. U kunt *liever* een overeenkomst toestaan, maar de schil moet worden gepland op een andere host als dat niet overeenkomst beschikbaar is.
+Een knooppunt selectie is een eenvoudige manier om een Peul toe te wijzen aan een bepaald knoop punt. Meer flexibiliteit is beschikbaar met behulp van de *node-affiniteit*. Met knooppunt affiniteit definieert u wat er gebeurt als de pod niet met een knoop punt kan worden gevonden. U kunt *vereisen* dat Kubernetes scheduler overeenkomt met een pod met een gelabelde host. U kunt ook de voor *keur* geven aan een overeenkomst, maar toestaan dat de pod op een andere host wordt gepland als er geen overeenkomst beschikbaar is.
 
-Het volgende voorbeeld wordt het knooppuntaffiniteitsmasker ingesteld op *requiredDuringSchedulingIgnoredDuringExecution*. Deze relatie is vereist voor het Kubernetes-schema voor het gebruik van een knooppunt met een bijbehorende label. Als er geen knooppunt beschikbaar is, heeft de schil na afloop van de planning om door te gaan. Als u wilt toestaan dat de schil moet worden gepland op een ander knooppunt, kunt u in plaats daarvan de waarde ingesteld op *preferredDuringScheduledIgnoreDuringExecution*:
+In het volgende voor beeld wordt de affiniteit van het knoop punt ingesteld op *requiredDuringSchedulingIgnoredDuringExecution*. Voor deze affiniteit is het Kubernetes-schema vereist om een knoop punt met een overeenkomend label te gebruiken. Als er geen knoop punt beschikbaar is, moet de pod wachten tot de planning is voltooid. Als u wilt toestaan dat de pod op een ander knoop punt wordt gepland, kunt u in plaats daarvan de waarde instellen op *preferredDuringScheduledIgnoreDuringExecution*:
 
 ```yaml
 kind: Pod
@@ -164,29 +164,29 @@ spec:
             values: highmem
 ```
 
-De *IgnoredDuringExecution* deel uit van de instelling geeft aan dat als het knooppunt labels wijzigen, de schil mag niet worden verwijderd uit het knooppunt. De Kubernetes-scheduler wordt alleen gebruikt voor het bijgewerkte knooppunt labels voor nieuwe pods wordt gepland, niet schillen al op de knooppunten worden gepland.
+Het *IgnoredDuringExecution* deel van de instelling geeft aan dat de pod niet uit het knoop punt mag worden verwijderd als de knooppunt labels worden gewijzigd. De Kubernetes scheduler maakt alleen gebruik van de bijgewerkte knooppunt labels voor nieuwe peulen die worden gepland, en niet van Peul al gepland op de knoop punten.
 
-Zie voor meer informatie, [affiniteit en anti-affiniteit][k8s-affinity].
+Zie [affiniteit en anti-affiniteit][k8s-affinity]voor meer informatie.
 
-### <a name="inter-pod-affinity-and-anti-affinity"></a>Affiniteit tussen pod en anti-affiniteit
+### <a name="inter-pod-affinity-and-anti-affinity"></a>Inter-pod-affiniteit en anti-affiniteit
 
-Laatste benadering voor de scheduler Kubernetes logisch om workloads te isoleren maakt gebruik van de affiniteit tussen pod of anti-affiniteit. De instellingen definiëren die schillen *mag niet* worden gepland op een knooppunt dat een bestaande overeenkomende pod bevat, of dat ze *moet* worden gepland. Standaard probeert de Kubernetes-scheduler meerdere schillen in een replica die is ingesteld op knooppunten te plannen. U kunt meer specifieke regels om dit gedrag definiëren.
+Een laatste benadering voor de Kubernetes Planner om werk belastingen logisch te isoleren, is het gebruik van pod-affiniteit of anti-affiniteit. De instellingen bepalen *dat peul niet* moet worden gepland op een knoop punt dat een bestaande overeenkomende Pod heeft of dat ze *moeten* worden gepland. De Kubernetes scheduler probeert standaard meerdere peulen te plannen in een replicaset tussen knoop punten. U kunt meer specifieke regels rond dit gedrag definiëren.
 
-Een goed voorbeeld is een webtoepassing die ook gebruikmaakt van een Azure-Cache voor Redis. U kunt pod anti-affiniteit regels gebruiken om aan te vragen die de Kubernetes-scheduler wordt replica's verspreid over de knooppunten. U kunt regels voor processoraffiniteit vervolgens gebruiken om ervoor te zorgen dat elk onderdeel van web-app op dezelfde host als een bijbehorende cache is gepland. De distributie van schillen over knooppunten ziet eruit als in het volgende voorbeeld:
+Een goed voor beeld is een webtoepassing die ook een Azure-cache gebruikt voor redis. U kunt pod-regels voor anti-affiniteit gebruiken om aan te vragen dat de Kubernetes scheduler replica's van verschillende knoop punten distribueert. U kunt de affiniteits regels vervolgens gebruiken om ervoor te zorgen dat elk web-app-onderdeel is gepland op dezelfde host als een bijbehorende cache. De verdeling van de verschillende knoop punten ziet eruit als in het volgende voor beeld:
 
-| **Node 1** | **Knooppunt 2** | **Knooppunt 3** |
+| **Knoop punt 1** | **Knoop punt 2** | **Knoop punt 3** |
 |------------|------------|------------|
 | webapp-1   | webapp-2   | webapp-3   |
 | cache-1    | cache-2    | cache-3    |
 
-In dit voorbeeld is een meer complexe implementatie dan het gebruik van selectoren knooppunt of knooppuntsaffiniteit. De implementatie geeft u controle over hoe Kubernetes de schillen op knooppunten plant en kunt het logische isolatie van resources. Zie voor een compleet voorbeeld van deze webtoepassing met Azure Cache voor Redis-voorbeeld, [plaatsen schillen op hetzelfde knooppunt][k8s-pod-affinity].
+Dit voor beeld is een complexere implementatie dan het gebruik van knooppunt selecties of knooppunt affiniteit. De implementatie biedt u de controle over de manier waarop Kubernetes op knoop punten van peuling plant en kan bronnen logisch isoleren. Zie voor een volledig voor beeld van deze webtoepassing met Azure cache voor redis het voor beeld van een [peul op hetzelfde knoop punt][k8s-pod-affinity].
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel is gericht op geavanceerde functies van Kubernetes scheduler. Zie voor meer informatie over de bewerkingen voor een cluster in AKS, de volgende aanbevolen procedures:
+Dit artikel is gericht op geavanceerde functies van Kubernetes scheduler. Zie voor meer informatie over cluster bewerkingen in AKS de volgende aanbevolen procedures:
 
-* [Multitenancy en cluster-isolatie][aks-best-practices-scheduler]
-* [Kubernetes scheduler basisfuncties][aks-best-practices-scheduler]
+* [Multitenancy en cluster isolatie][aks-best-practices-scheduler]
+* [Functies van de Basic Kubernetes scheduler][aks-best-practices-scheduler]
 * [Verificatie en autorisatie][aks-best-practices-identity]
 
 <!-- EXTERNAL LINKS -->

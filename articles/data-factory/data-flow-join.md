@@ -1,77 +1,77 @@
 ---
-title: Azure Data Factory stroom Join transformatie
-description: Azure Data Factory stroom Join transformatie
+title: Data stroom-koppelings transformatie Azure Data Factory
+description: Data stroom-koppelings transformatie Azure Data Factory
 author: kromerm
 ms.author: makromer
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/07/2019
-ms.openlocfilehash: 18f713198ef9aa45cb72a6718c0f7b086c019258
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 48cf9d58c8acd85e545a5bcb5104d7069670e349
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61348527"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72029318"
 ---
-# <a name="mapping-data-flow-join-transformation"></a>Toewijzing van Flow Join transformatie
+# <a name="mapping-data-flow-join-transformation"></a>Data flow-koppelings transformatie koppelen
 
-[!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
-Join gebruiken om gegevens uit twee tabellen in de gegevensstroom te combineren. Klik op de transformatie die wordt de linker-relatie en wordt een Join-transformatie toevoegen vanuit de werkset. In de Join-transformatie selecteert u een andere stroom van gegevens uit uw gegevensstroom naar de juiste relatie worden.
 
-![Deelnemen aan de transformatie](media/data-flow/join.png "toevoegen")
+Gebruik samen voegen om gegevens uit twee tabellen in uw gegevens stroom te combi neren. Klik op de trans formatie die de relatie links is en voeg een koppelings transformatie toe vanuit de werkset. In de deelname transformatie selecteert u een andere gegevens stroom van uw gegevens stroom naar de juiste relatie.
 
-## <a name="join-types"></a>Typen koppelen
+Deelname ![aan trans formatie](media/data-flow/join.png "") koppelen
 
-Koppelingstype selecteren is vereist voor de Join-transformatie.
+## <a name="join-types"></a>Koppelings typen
 
-### <a name="inner-join"></a>Inner Join
+Het selecteren van een jointype is vereist voor de trans formatie voor samen voegen.
 
-Inner join worden doorgegeven aan alleen de rijen die overeenkomen met de voorwaarden van de kolom uit beide tabellen.
+### <a name="inner-join"></a>Inner join
+
+Inner join geeft alleen rijen door die overeenkomen met de kolom voorwaarden uit beide tabellen.
 
 ### <a name="left-outer"></a>Linker outer join
 
-Alle rijen uit de linker stroom die niet voldoen aan de join-voorwaarde worden doorgegeven via en uitvoerkolommen uit de andere tabel zijn ingesteld op NULL naast alle rijen geretourneerd door de inner join.
+Alle rijen van de linkertabel die niet voldoen aan de voor waarde voor samen voeging, worden door gegeven en uitvoer kolommen uit de andere tabel zijn ingesteld op NULL naast alle rijen die door de inner join worden geretourneerd.
 
 ### <a name="right-outer"></a>Rechter outer join
 
-Alle rijen uit de juiste stroom die niet voldoen aan de join-voorwaarde worden doorgegeven via en uitvoerkolommen die met de andere tabel overeenkomen zijn ingesteld op NULL, naast alle rijen geretourneerd door de inner join.
+Alle rijen uit de rechter stroom die niet aan de voor waarde voor samen voegen voldoen, worden door gegeven en uitvoer kolommen die overeenkomen met de andere tabel worden ingesteld op NULL, naast alle rijen die door de inner join worden geretourneerd.
 
-### <a name="full-outer"></a>Volledige Outer
+### <a name="full-outer"></a>Volledige outer join
 
-Volledig Outer biedt alle kolommen en rijen van beide zijden met NULL-waarden voor kolommen die zijn niet aanwezig in de andere tabel.
+Full outer produceert alle kolommen en rijen van beide zijden met NULL-waarden voor kolommen die niet aanwezig zijn in de andere tabel.
 
-### <a name="cross-join"></a>Cross Join
+### <a name="cross-join"></a>Cross-koppeling
 
-Geef het vectorproduct van twee streams met een expressie. U kunt dit gebruiken om te maken van aangepaste join-voorwaarden.
+Geef het Kruis product van de twee stromen op met een expressie. U kunt deze gebruiken om aangepaste voor waarden voor samen voeging te maken.
 
-## <a name="specify-join-conditions"></a>Join-voorwaarden opgeven
+## <a name="specify-join-conditions"></a>Voor waarden voor samen voegen opgeven
 
-De Left Join-voorwaarde is van de gegevensstroom verbonden aan de linkerkant van het domein. De Right Join-voorwaarde is de tweede gegevensstroom die is verbonden met uw deelname aan de onderzijde, een directe connector naar een andere stroom of een verwijzing naar een andere stroom is.
+De left samenvoegings voorwaarde is afkomstig van de gegevens stroom die aan de linkerkant van de koppeling is verbonden. De Right-voor waarde is de tweede gegevens stroom die aan de onderkant is verbonden met uw koppeling. Dit is een directe connector naar een andere stroom of een verwijzing naar een andere stroom.
 
-U bent verplicht om in te voeren ten minste 1 (1.. n) join-voorwaarden. Ze kunnen worden velden waarnaar hetzij rechtstreeks, hebt geselecteerd in de vervolgkeuzelijst of expressies.
+U moet ten minste 1 (1.. n) voor waarden voor samen voegen invoeren. Dit kunnen velden zijn waarnaar direct wordt verwezen, geselecteerd in de vervolg keuzelijst of op expressies.
 
-## <a name="join-performance-optimizations"></a>Deelnemen aan Prestatieoptimalisaties
+## <a name="join-performance-optimizations"></a>Prestaties optimaliseren
 
-Join in ADF gegevensstroom is in tegenstelling tot samenvoegen Join in hulpprogramma's zoals SSIS, niet een verplichte samenvoegen join-bewerking. De join-sleutels hoeft dus niet moet eerst worden gesorteerd. De Join-bewerking wordt uitgevoerd in Spark met behulp van op basis van de optimale join-bewerking in Spark Databricks: Lid worden uitgezonden / toewijzen aan clientzijde:
+In tegens telling tot samen voegen in hulpprogram ma's als SSIS is samen voegen in de ADF-gegevens stroom geen verplichte samenvoeg bewerking. Daarom hoeven de toetsen voor samen voegen niet eerst te worden gesorteerd. De koppelings bewerking wordt uitgevoerd op basis van de optimale koppelings bewerking in Spark: Broadcasten/toewijzing aan de zijkant:
 
-![Deelnemen aan de transformatie optimaliseren](media/data-flow/joinoptimize.png "Join-optimalisatie")
+(media/data-flow/joinoptimize.png "Optimalisatie") van deelname aan ![trans formatie optimaliseren]
 
-Als uw gegevensset in het geheugen van Databricks worker-knooppunt passen, kunnen we uw Join-prestaties optimaliseren. U kunt ook opgeven van de gegevens in de Join-bewerking om te maken van gegevenssets die beter in het geheugen per worker past partitioneren.
+Als uw gegevensset kan worden aangepast in het geheugen van het worker-knoop punt, kunnen we uw deelname prestaties optimaliseren. U kunt ook het partitioneren van uw gegevens op de koppelings bewerking opgeven om gegevens sets te maken die beter in het geheugen kunnen passen per werk nemer.
 
-## <a name="self-join"></a>Self-join
+## <a name="self-join"></a>Self-deelname
 
-U kunt voorwaarden in ADF gegevensstroom self-join bereiken met behulp van de optie transformatie tot de alias van een bestaande stroom. Eerst maakt u een 'nieuwe vertakking' via een stroom vervolgens naar de alias gehele oorspronkelijke stream toevoegen, selecteert.
+U kunt Self-samenvoegings voorwaarden in de ADF-gegevens stroom behaalt met behulp van de trans formatie selecteren als alias voor een bestaande stroom. Maak eerst een ' nieuwe vertakking ' vanuit een stroom en voeg vervolgens een SELECT toe aan een alias voor de hele oorspronkelijke stroom.
 
-![Self-join](media/data-flow/selfjoin.png "Self-join")
+Self ![-]deelname(media/data-flow/selfjoin.png "Self-") deelname
 
-In het bovenstaande diagram, wordt de optie transformatie is aan de bovenkant. Alle Bezig aliasing is de oorspronkelijke stroom naar 'OrigSourceBatting'. In de gemarkeerde Join-transformatie eronder kunt u zien dat we deze stroom Selecteer alias als de rechter join gebruiken, zodat we om te verwijzen naar dezelfde sleutel in de linker & de rechterkant van de Inner Join.
+In het bovenstaande diagram bevindt de geselecteerde trans formatie zich bovenaan. Het gaat hierbij om het aliassen van de oorspronkelijke stroom naar ' OrigSourceBatting '. In de onderstaande gemarkeerde join-trans formatie ziet u dat we deze Select alias Stream gebruiken als de rechter join, zodat we naar dezelfde sleutel in de linker & rechter kant van de inner join kunnen verwijzen.
 
 ## <a name="composite-and-custom-keys"></a>Samengestelde en aangepaste sleutels
 
-U kunt aangepaste en samengestelde sleutels bouwen op elk gewenst moment in de Join-transformatie. Rijen voor extra join-kolommen met het plusteken (+) naast elke rij van de relatie toevoegen. Of de waarde van een nieuwe sleutel in de opbouwfunctie voor een waarde op het begeven join compute.
+U kunt op elk gewenst moment aangepaste en samengestelde sleutels bouwen in de trans formatie voor samen voegen. Voeg rijen toe voor aanvullende samenvoegings kolommen met het plus teken (+) naast elke rij van de relatie. Of Bereken een nieuwe sleutel waarde in de opbouw functie voor expressies voor een on-the-vliegen-samenvoegings waarde.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Na het koppelen van gegevens, kunt u vervolgens [nieuwe kolommen maken](data-flow-derived-column.md) en [sink van uw gegevens naar een doelgegevensarchief](data-flow-sink.md).
+Nadat u gegevens hebt toegevoegd, kunt u [nieuwe kolommen maken](data-flow-derived-column.md) en [uw gegevens naar een doel gegevens archief sinken](data-flow-sink.md).

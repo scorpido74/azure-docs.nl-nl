@@ -10,12 +10,12 @@ ms.subservice: development
 ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: ca0ac228bfe10992b658796d123c8dfbed74947f
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 0aecb2309743ffecc2fb68435192224c6c690aee
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71948167"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72035101"
 ---
 # <a name="performance-tuning-with-ordered-clustered-columnstore-index"></a>Prestaties afstemmen met een geordende geclusterde column store-index  
 
@@ -43,7 +43,7 @@ ORDER BY o.name, pnp.distribution_id, cls.min_data_id
 ```
 
 > [!NOTE] 
-> In een geordende CCI-tabel worden nieuwe gegevens die voortkomen uit DML of het laden van gegevens, niet automatisch gesorteerd.  Gebruikers kunnen het bestelde CCI opnieuw bouwen om alle gegevens in de tabel te sorteren.  
+> In een geordende CCI-tabel worden nieuwe gegevens die voortkomen uit DML of het laden van gegevens, niet automatisch gesorteerd.  Gebruikers kunnen het bestelde CCI opnieuw bouwen om alle gegevens in de tabel te sorteren.  In Azure SQL Data Warehouse is column store-index opnieuw opgebouwd een offline bewerking.  Voor een gepartitioneerde tabel is het opnieuw maken van één partitie per keer voltooid.  Gegevens in de partitie die opnieuw worden opgebouwd, zijn offline en zijn pas beschikbaar als het opnieuw opbouwen is voltooid voor die partitie. 
 
 ## <a name="query-performance"></a>Queryprestaties
 
@@ -84,11 +84,17 @@ SELECT * FROM T1 WHERE Col_A = 'a' AND Col_C = 'c';
 
 ## <a name="data-loading-performance"></a>Prestaties van het laden van gegevens
 
-De prestaties van het laden van gegevens in een geordende CCI-tabel zijn vergelijkbaar met het laden van gegevens in een gepartitioneerde tabel.  
-Het laden van gegevens in een geordende CCI-tabel kan meer tijd in beslag nemen dan het laden van gegevens in een niet-bestelde CCI-tabel vanwege het sorteren van gegevens.  
+De prestaties van het laden van gegevens in een geordende CCI-tabel zijn vergelijkbaar met een gepartitioneerde tabel.  Het laden van gegevens in een geordende CCI-tabel kan langer duren dan een niet-bestelde CCI-tabel vanwege de sorteer bewerking voor gegevens, maar query's kunnen later sneller worden uitgevoerd met het bewerkte CCI.  
 
 Hier volgt een voor beeld van de prestatie vergelijking van het laden van gegevens in tabellen met verschillende schema's.
-![Performance_comparison_data_loading @ no__t-1
+
+![Performance_comparison_data_loading](media/performance-tuning-ordered-cci/cci-data-loading-performance.png)
+
+
+Hier volgt een voor beeld van een query prestatie vergelijking tussen CCI en besteld CCI.
+
+![Performance_comparison_data_loading](media/performance-tuning-ordered-cci/occi_query_performance.png)
+
  
 ## <a name="reduce-segment-overlapping"></a>Segment overlappend verminderen
 
@@ -116,7 +122,7 @@ Het maken van een bestelde CCI is een offline bewerking.  Voor tabellen zonder p
 1.  Partities maken voor de grote doel tabel (tabel A genoemd).
 2.  Maak een lege bestelde CCI-tabel (met de naam tabel B) met hetzelfde tabel-en partitie schema als tabel A.
 3.  Een partitie van tabel A naar tabel B overschakelen.
-4.  Voer ALTER INDEX < Ordered_CCI_Index > opnieuw samen te stellen in tabel B om de switch-partitie opnieuw op te bouwen.  
+4.  Voer ALTER INDEX < Ordered_CCI_Index > Rebuild PARTITION = < Partition_ID > in tabel B uit om de switch-partitie opnieuw op te bouwen.  
 5.  Herhaal stap 3 en 4 voor elke partitie in tabel A.
 6.  Als alle partities zijn overgeschakeld van tabel A naar tabel B en opnieuw zijn opgebouwd, verwijdert u tabel A en wijzigt u tabel B in tabel A. 
 

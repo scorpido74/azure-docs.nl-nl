@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/18/2019
-ms.openlocfilehash: b295ab442e70772a86d6699e1063c7a1c728f1a7
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 17083029f2377037b99abfa3ce8371661eccb957
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71091122"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72029984"
 ---
 # <a name="server-logs-in-azure-database-for-postgresql---single-server"></a>Server Logboeken in Azure Database for PostgreSQL-één server
 Azure Database for PostgreSQL genereert query- en foutenlogboeken. Query-en fout logboeken kunnen worden gebruikt om configuratie fouten en suboptimale prestaties te identificeren, op te lossen en te herstellen. (Toegang tot transactie Logboeken is niet inbegrepen). 
@@ -24,7 +24,7 @@ U kunt de logboek registratie op uw server configureren met de para meters van d
 Zie de documentatie van PostgreSQL voor [fout rapportage en logboek registratie](https://www.postgresql.org/docs/current/static/runtime-config-logging.html) voor meer informatie over deze para meters. Raadpleeg de documentatie van de [Portal](howto-configure-server-parameters-using-portal.md) of de [cli-documentatie](howto-configure-server-parameters-using-cli.md)voor meer informatie over het configureren van Azure database for PostgreSQL para meters.
 
 ## <a name="access-server-logs-through-portal-or-cli"></a>Toegang tot de server logboeken via portal of CLI
-Als u Logboeken hebt ingeschakeld, kunt u deze openen vanuit de Azure Database for PostgreSQL logboek opslag met behulp van de [Azure Portal](howto-configure-server-logs-in-portal.md), [Azure cli](howto-configure-server-logs-using-cli.md)en Azure rest api's. De logboekbestanden draaien elk uur of bij elke 100 MB, afhankelijk van wat het eerst voorkomt. U kunt de Bewaar periode voor deze logboek opslag instellen met behulp van de para meter voor de  **Bewaar\_\_periode voor logboeken**die aan uw server is gekoppeld. De standaard waarde is 3 dagen; de maximum waarde is 7 dagen. Uw server moet voldoende toegewezen opslag hebben om de logboek bestanden te kunnen bevatten. (Deze Bewaar para meter houdt geen controle uit van Azure Diagnostische logboeken.)
+Als u Logboeken hebt ingeschakeld, kunt u deze openen vanuit de Azure Database for PostgreSQL logboek opslag met behulp van de [Azure Portal](howto-configure-server-logs-in-portal.md), [Azure cli](howto-configure-server-logs-using-cli.md)en Azure rest api's. De logboekbestanden draaien elk uur of bij elke 100 MB, afhankelijk van wat het eerst voorkomt. U kunt de Bewaar periode voor deze logboek opslag instellen met behulp van de para meter **log @ no__t-1retention @ no__t-2period** die aan uw server is gekoppeld. De standaard waarde is 3 dagen; de maximum waarde is 7 dagen. Uw server moet voldoende toegewezen opslag hebben om de logboek bestanden te kunnen bevatten. (Deze Bewaar para meter houdt geen controle uit van Azure Diagnostische logboeken.)
 
 
 ## <a name="diagnostic-logs"></a>Diagnostische logboeken

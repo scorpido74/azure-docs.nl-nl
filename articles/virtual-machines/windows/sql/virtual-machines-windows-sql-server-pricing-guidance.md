@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 08/09/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: d9b4cf755bbf2e225bee813510c083570b0f8064
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 604f18fe2fbf4d8b4f3778817455d92a2811620b
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70280176"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72028625"
 ---
 # <a name="pricing-guidance-for-sql-server-azure-vms"></a>Prijs informatie voor SQL Server Azure-Vm's
 
@@ -64,7 +64,7 @@ U hebt twee opties om te betalen voor SQL Server licenties voor deze edities: u 
 
 ## <a name="pay-per-usage"></a>Betalen per gebruik
 
-Door **de SQL Server licentie per gebruik te betalen** , houdt dit in dat de kosten per seconde voor het uitvoeren van de Azure-VM de kosten van de SQL Server licentie bevatten. U kunt de prijzen voor de verschillende SQL Server-edities (Web, Standard, Enter prise) zien op de pagina met prijzen voor Azure VM voor [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows) of [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux).
+Het **betalen van de SQL Server licentie per gebruik** (ook wel bekend als **u betalen tijdens**de hand) betekent dat de kosten per seconde voor het uitvoeren van de Azure-VM de kosten van de SQL Server licentie bevatten. U kunt de prijzen voor de verschillende SQL Server-edities (Web, Standard, Enter prise) zien op de pagina met prijzen voor Azure VM voor [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows) of [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux).
 
 De kosten zijn hetzelfde voor alle versies van SQL Server (2012 SP3 tot 2017). De licentie kosten per seconde zijn afhankelijk van het aantal VM-Vcpu's.
 
@@ -74,7 +74,7 @@ U wordt aangeraden de SQL Server licenties per gebruik te betalen voor:
 
 - **Workloads met een onbekende levens duur of schaal**. Een app die bijvoorbeeld niet in een paar maanden is vereist of waarvoor meer of minder reken kracht nodig is, afhankelijk van de vraag.
 
-Ga als volgt te werk om een SQL Server 2017 Azure VM te maken met een van deze installatie kopieën met salaris per gebruik:
+Ga als volgt te werk om een SQL Server 2017 Azure VM te maken met een van deze installatie kopieën met betalen per gebruik:
 
 | Platform | Gelicentieerde installatie kopieën |
 |---|---|
@@ -139,7 +139,7 @@ De licentie kosten van SQL Server zijn direct gerelateerd aan het aantal Vcpu's.
 
 Er zijn nieuwe machine grootten die geschikt zijn voor bepaalde soorten SQL Server werk belastingen. Deze computer grootten zorgen voor grote hoeveel heden geheugen, opslag ruimte en I/O-band breedte, maar ze hebben een lager gevirtualiseerde aantal gevirtualiseerd. Bekijk bijvoorbeeld het volgende voor beeld:
 
-| VM-grootte | vCPU's | Geheugen | Maximum aantal schijven | Maximale I/O-door Voer | SQL-licentie kosten | Totale kosten (Compute + licentie verlening) |
+| VM-grootte | Vcpu's | Geheugen | Maximum aantal schijven | Maximale I/O-door Voer | SQL-licentie kosten | Totale kosten (Compute + licentie verlening) |
 |---|---|---|---|---|---|---|
 | **Standard_DS14v2** | 16 | 112 GB | 32 | 51.200 IOPS of 768 MB/s | | |
 | **Standard_DS14-4v2** | 4 | 112 GB | 32 | 51.200 IOPS of 768 MB/s | 75% lager | 57% lager |

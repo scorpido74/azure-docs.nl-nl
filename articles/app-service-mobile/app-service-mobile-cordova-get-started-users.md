@@ -1,6 +1,6 @@
 ---
-title: Verificatie op Apache Cordova met Mobile Apps toevoegen | Microsoft Docs
-description: Informatie over het gebruik van Mobile Apps in Azure App Service voor verificatie van gebruikers van uw Apache Cordova-app via een groot aantal identiteitsproviders, waaronder Google, Facebook, Twitter en Microsoft.
+title: Authenticatie toevoegen op Apache Cordova met Mobile Apps | Microsoft Docs
+description: Meer informatie over het gebruik van Mobile Apps in Azure App Service om gebruikers van uw Apache Cordova-app te verifiëren via verschillende id-providers, waaronder Google, Facebook, Twitter en micro soft.
 services: app-service\mobile
 documentationcenter: javascript
 author: elamalani
@@ -14,61 +14,61 @@ ms.devlang: javascript
 ms.topic: article
 ms.date: 06/25/2019
 ms.author: emalani
-ms.openlocfilehash: b0634038dbf5771ac1aa0bc00d007e758171b238
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: d5e124c6f73285efdaef515deba5816093a27e98
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67443514"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72027579"
 ---
 # <a name="add-authentication-to-your-apache-cordova-app"></a>Verificatie toevoegen aan uw Apache Cordova-app
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
 
 > [!NOTE]
-> Visual Studio App Center investeert in nieuwe en geïntegreerde services centraal staat in de ontwikkeling van mobiele Apps. Ontwikkelaars kunnen gebruikmaken van **bouwen**, **Test** en **verdelen** services voor het instellen van de pijplijn voor continue integratie en levering. Zodra de app is geïmplementeerd, ontwikkelaars controleren de status en het gebruik van het gebruik van de app de **Analytics** en **Diagnostics** -services en Communiceer met gebruikers met behulp van de **Push** de service. Ontwikkelaars kunnen ook gebruikmaken van **Auth** om hun gebruikers te verifiëren en **gegevens** service behouden en synchroniseren van app-gegevens in de cloud. Bekijk [App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-cordova-get-started-users) vandaag nog.
->
+> Visual Studio App Center ondersteunt end-to-end en geïntegreerde services in de ontwikkeling van mobiele apps. Ontwikkel aars kunnen services **bouwen**, **testen** en **distribueren** om een continue integratie-en leverings pijplijn in te stellen. Zodra de app is geïmplementeerd, kunnen ontwikkel aars de status en het gebruik van hun app bewaken met behulp van de **analyse** -en **diagnose** Services en gebruikers benaderen met behulp van de **Push** service. Ontwikkel aars kunnen ook gebruikmaken van **auth** voor het verifiëren van hun gebruikers en **gegevens** service om app-gegevens in de Cloud op te slaan en te synchroniseren.
+> Als u Cloud Services wilt integreren in uw mobiele toepassing, meldt u zich aan met App Center [app Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) vandaag.
 
 ## <a name="summary"></a>Samenvatting
-In deze zelfstudie, kunt u verificatie toevoegen aan de todolist Quick Start-project op Apache Cordova met behulp van een ondersteunde id-provider. In deze zelfstudie is gebaseerd op de [aan de slag met Mobile Apps] van de zelfstudie moet u eerst uitvoeren.
+In deze zelf studie voegt u verificatie toe aan het ToDoList Quick start-project op Apache Cordova met behulp van een ondersteunde ID-provider. Deze zelf studie is gebaseerd op de zelf studie [aan de slag met Mobile apps] , die u eerst moet volt ooien.
 
-## <a name="register"></a>Uw app registreren voor verificatie en de App Service configureren
+## <a name="register"></a>Registreer uw app voor verificatie en configureer de App Service
 [!INCLUDE [app-service-mobile-register-authentication](../../includes/app-service-mobile-register-authentication.md)]
 
 [Bekijk een video van vergelijkbare stappen](https://channel9.msdn.com/series/Azure-connected-services-with-Cordova/Azure-connected-services-task-8-Azure-authentication)
 
-## <a name="permissions"></a>Machtigingen beperken voor geverifieerde gebruikers
+## <a name="permissions"></a>Machtigingen voor geverifieerde gebruikers beperken
 [!INCLUDE [app-service-mobile-restrict-permissions-dotnet-backend](../../includes/app-service-mobile-restrict-permissions-dotnet-backend.md)]
 
-Nu kunt u controleren dat anonieme toegang tot uw back-end is uitgeschakeld. In Visual Studio:
+U kunt nu controleren of anonieme toegang tot uw back-end is uitgeschakeld. In Visual Studio:
 
-* Open het project dat u hebt gemaakt toen u de zelfstudie voltooid [aan de slag met Mobile Apps].
-* Uw toepassing uitvoert in de **Google Android-Emulator**.
-* Controleer of een onverwachte fout voor de verbinding wordt weergegeven nadat de app wordt gestart.
+* Open het project dat u hebt gemaakt tijdens het volt ooien van de zelf studie aan de [Aan de slag met Mobile Apps].
+* Voer uw toepassing uit in de **Google Android-Emulator**.
+* Controleer of er een onverwachte verbindings fout wordt weer gegeven nadat de app is gestart.
 
-Werk vervolgens de app om gebruikers te verifiëren voordat u resources van de back-end van Mobile App aanvraagt.
+Werk vervolgens de app bij om gebruikers te verifiëren voordat ze resources aanvragen bij de back-end van de mobiele app.
 
-## <a name="add-authentication"></a>Verificatie toevoegen aan de app.
-1. Open het project in **Visual Studio**en open vervolgens de `www/index.html` bestand voor het bewerken van.
-2. Zoek de `Content-Security-Policy` meta-code in de sectie head.  De OAuth-host aan de lijst met toegestane bronnen toevoegen.
+## <a name="add-authentication"></a>Verificatie toevoegen aan de app
+1. Open uw project in **Visual Studio**en open vervolgens het `www/index.html`-bestand om het te bewerken.
+2. Zoek de meta-tag `Content-Security-Policy` in het hoofd gedeelte.  Voeg de OAuth-host toe aan de lijst met toegestane bronnen.
 
-   | Provider | Naam van de SDK-Provider | OAuth-Host |
+   | Provider | Naam van de SDK-provider | OAuth-host |
    |:--- |:--- |:--- |
-   | Azure Active Directory | AAD | https://login.microsoftonline.com |
+   | Azure Active Directory | Aad | https://login.microsoftonline.com |
    | Facebook | facebook | https://www.facebook.com |
    | Google | Google | https://accounts.google.com |
    | Microsoft | microsoftaccount | https://login.live.com |
    | Twitter | twitter | https://api.twitter.com |
 
-    Een voorbeeld van de inhoud-Security-beleid (geïmplementeerd voor Azure Active Directory) is als volgt:
+    Een voor beeld van Content-Security-Policy (geïmplementeerd voor Azure Active Directory) is als volgt:
 
         <meta http-equiv="Content-Security-Policy" content="default-src 'self'
             data: gap: https://login.microsoftonline.com https://yourapp.azurewebsites.net; style-src 'self'">
 
-    Vervang `https://login.microsoftonline.com` met de OAuth-host uit de voorgaande tabel.  Zie voor meer informatie over de inhoud beveiligingsbeleid meta-code, de [Documentatie over inhoud-Security-beleid].
+    Vervang `https://login.microsoftonline.com` door de OAuth-host uit de voor gaande tabel.  Zie de [documentatie voor Content-Security-Policy]voor meer informatie over de META code voor Content-Security-Policy.
 
-    Sommige verificatieproviders vereisen geen dat inhoud-Security-bij beleidswijzigingen bij op de juiste mobiele apparaten.  Bijvoorbeeld, zijn geen wijzigingen inhoud beveiligingsbeleid vereist bij het gebruik van verificatie via Google op een Android-apparaat.
+    Voor sommige verificatie providers zijn geen wijzigingen in de beveiliging van inhoud vereist wanneer deze op de juiste mobiele apparaten worden gebruikt.  Er zijn bijvoorbeeld geen wijzigingen in de beveiliging van het beleid vereist bij het gebruik van Google-verificatie op een Android-apparaat.
 
-3. Open de `www/js/index.js` voor het bewerken van het bestand, zoek de `onDeviceReady()` methode, en bij het maken van de client code toe te voegen met de volgende code:
+3. Open het bestand `www/js/index.js` om het te bewerken, zoek de `onDeviceReady()`-methode en voeg onder de client aanmaak code de volgende code toe:
 
         // Login to the service
         client.login('SDK_Provider_Name')
@@ -90,16 +90,16 @@ Werk vervolgens de app om gebruikers te verifiëren voordat u resources van de b
 
             }, handleError);
 
-    Deze code vervangt de bestaande code die de tabelverwijzing maakt en de gebruikersinterface wordt vernieuwd.
+    Met deze code wordt de bestaande code die de tabel verwijzing maakt, vervangen en wordt de gebruikers interface vernieuwd.
 
-    De methode login() begint verificatie met de provider. De methode login() is een asynchrone-functie waarmee een JavaScript-Promise wordt geretourneerd.  De rest van de initialisatie van de wordt in het antwoord van de belofte geplaatst zodat deze wordt niet uitgevoerd totdat de login()-methode is voltooid.
+    De methode login () start de verificatie met de provider. De methode login () is een async-functie die een Java script-belofte retourneert.  De rest van de initialisatie wordt binnen de Promise-respons geplaatst, zodat deze pas wordt uitgevoerd als de methode login () is voltooid.
 
-4. Vervang in de code die u zojuist hebt toegevoegd, `SDK_Provider_Name` met de naam van uw provider voor de aanmelding. Bijvoorbeeld: voor Azure Active Directory, gebruiken `client.login('aad')`.
-5. Uw project uitvoeren.  Wanneer het project is geïnitialiseerd, ziet uw toepassing de OAuth-aanmeldingspagina voor de gekozen authentication-provider.
+4. Vervang `SDK_Provider_Name` door de naam van uw aanmeldings provider in de code die u zojuist hebt toegevoegd. Gebruik bijvoorbeeld voor Azure Active Directory `client.login('aad')`.
+5. Voer uw project uit.  Wanneer de initialisatie van het project is voltooid, wordt in uw toepassing de OAuth-aanmeldings pagina voor de gekozen verificatie provider weer gegeven.
 
 ## <a name="next-steps"></a>Volgende stappen
-* Meer informatie [over verificatie] met Azure App Service.
-* Doorgaan met de zelfstudie door toe te voegen [Pushmeldingen] aan uw Apache Cordova-app.
+* Meer informatie [over verificatie] met Azure app service.
+* Ga door met de zelf studie door [Pushmeldingen] toe te voegen aan uw Apache Cordova-app.
 
 Informatie over het gebruik van de SDK's.
 
@@ -109,7 +109,7 @@ Informatie over het gebruik van de SDK's.
 
 <!-- URLs. -->
 [Aan de slag met Mobile Apps]: app-service-mobile-cordova-get-started.md
-[Documentatie over inhoud-Security-beleid]: https://cordova.apache.org/docs/en/latest/guide/appdev/whitelist/index.html
+[Documentatie voor Content-Security-Policy]: https://cordova.apache.org/docs/en/latest/guide/appdev/whitelist/index.html
 [Pushmeldingen]: app-service-mobile-cordova-get-started-push.md
 [Over verificatie]: app-service-mobile-auth.md
 [Apache Cordova SDK]: app-service-mobile-cordova-how-to-use-client-library.md

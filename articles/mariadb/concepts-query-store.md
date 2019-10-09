@@ -6,16 +6,16 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 06/27/2019
-ms.openlocfilehash: ee0a3c41edd144c1220cdc9b5a5463b43bef5551
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 69e001530de238f5d38c46b0a238a087f4487d9c
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71973559"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72023681"
 ---
 # <a name="monitor-azure-database-for-mariadb-performance-with-query-store"></a>Azure Database for MariaDB prestaties bewaken met query Store
 
-**Van toepassing op:**  Azure-Data Base voor MariaDB 10,2
+**Van toepassing op:** Azure Database for MariaDB 10,2
 
 > [!IMPORTANT]
 > Query Store is beschikbaar als preview-versie.
@@ -37,14 +37,14 @@ Query Store is een opt-in-functie, waardoor deze niet standaard actief is op een
 ### <a name="enable-query-store-using-the-azure-portal"></a>Query Store inschakelen met behulp van de Azure Portal
 
 1. Meld u aan bij de Azure Portal en selecteer uw Azure Database for MariaDB-server.
-1. Selecteer **Server Parameters** In de **instellingen** section van het menu.
+1. Selecteer **server parameters** in de sectie **instellingen** van het menu.
 1. Zoek naar de para meter query_store_capture_mode.
-1. Stel de waarde in op alles en **Sla**deze op.
+1. Stel de waarde in op alles en **Sla**deze op.
 
 Wachtende statistieken in het query archief inschakelen:
 
 1. Zoek naar de para meter query_store_wait_sampling_capture_mode.
-1. Stel de waarde in op alles en **Sla**deze op.
+1. Stel de waarde in op alles en **Sla**deze op.
 
 Maxi maal 20 minuten toestaan dat de eerste batch met gegevens persistent is in de MySQL-data base.
 
@@ -78,10 +78,10 @@ Hier volgen enkele voor beelden van hoe u meer inzicht kunt krijgen in uw werk b
 | **Observ** | **Actie** |
 |---|---|
 |Wacht tijden met hoge vergren deling | Controleer de query teksten voor de betrokken query's en Identificeer de doel entiteiten. Zoek in query Store naar andere query's die dezelfde entiteit wijzigen, die regel matig wordt uitgevoerd en/of een hoge duur hebben. Nadat u deze query's hebt geïdentificeerd, kunt u overwegen om de toepassings logica te wijzigen om gelijktijdig gebruik te kunnen verbeteren of een minder beperkend isolatie niveau te gebruiken. |
-|Hoge buffer-IO-wacht tijden | Zoek de query's met een groot aantal fysieke Lees bewerkingen in query Store. Als ze overeenkomen met de query's met hoge i/o-wacht tijden, kunt u een index voor de onderliggende entiteit introduceren, om te zoeken in plaats van scans. Hierdoor worden de i/o-overhead van de query's geminimaliseerd. Controleer de **aanbevelingen voor prestaties**@no__t 1for uw server in de portal om te zien of er index aanbevelingen zijn voor deze server die de query's kunnen optimaliseren. |
-|Hoog geheugen wacht tijden | Zoek het hoogste geheugen gebruik query's in query Store. Deze query's vertragen waarschijnlijk verdere voortgang van de betrokken query's. Controleer de **aanbevelingen voor prestaties**@no__t 1for uw server in de portal om te zien of er index aanbevelingen zijn waarmee deze query's kunnen worden geoptimaliseerd.|
+|Hoge buffer-IO-wacht tijden | Zoek de query's met een groot aantal fysieke Lees bewerkingen in query Store. Als ze overeenkomen met de query's met hoge i/o-wacht tijden, kunt u een index voor de onderliggende entiteit introduceren, om te zoeken in plaats van scans. Hierdoor worden de i/o-overhead van de query's geminimaliseerd. Controleer de **prestatie aanbevelingen** voor uw server in de portal om te zien of er index aanbevelingen voor deze server zijn die de query's optimaliseren. |
+|Hoog geheugen wacht tijden | Zoek het hoogste geheugen gebruik query's in query Store. Deze query's vertragen waarschijnlijk verdere voortgang van de betrokken query's. Controleer de **prestatie aanbevelingen** voor uw server in de portal om te zien of er index aanbevelingen zijn waarmee deze query's kunnen worden geoptimaliseerd.|
 
-## <a name="configuration-options"></a>Configuratieopties
+## <a name="configuration-options"></a>Configuratie-opties
 
 Wanneer query Store is ingeschakeld, worden gegevens opgeslagen in een periode van 15 minuten voor aggregatie van Maxi maal 500 DISTINCT-query's per venster.
 
@@ -108,7 +108,7 @@ Gebruik de [Azure Portal](howto-server-parameters.md) om een andere waarde voor
 
 ## <a name="views-and-functions"></a>Weer gaven en functies
 
-Bekijk en beheer query Store met behulp van de volgende weer gaven en functies. Iedereen in de [publieke rol Select-bevoegdheid](howto-create-users.md#create-additional-admin-users) kan deze weer gaven gebruiken om de gegevens in query Store te bekijken. Deze weer gaven zijn alleen beschikbaar in de **MySQL**- database.
+Bekijk en beheer query Store met behulp van de volgende weer gaven en functies. Iedereen in de [publieke rol Select-bevoegdheid](howto-create-users.md#create-additional-admin-users) kan deze weer gaven gebruiken om de gegevens in query Store te bekijken. Deze weer gaven zijn alleen beschikbaar in de **MySQL** -data base.
 
 Query's worden genormaliseerd door de structuur te bekijken na het verwijderen van letterlijke waarden en constanten. Als twee query's identiek zijn, met uitzonde ring van letterlijke waarden, hebben ze dezelfde hash.
 
@@ -123,14 +123,14 @@ In deze weer gave worden alle gegevens in query Store geretourneerd. Er is één
 | `timestamp_id` | timestamp| NO| Tijds tempel waarin de query wordt uitgevoerd. Dit is gebaseerd op de configuratie van query_store_interval|
 | `query_digest_text`| longtext| NO| De genormaliseerde query tekst nadat alle letterlijke waarden zijn verwijderd|
 | `query_sample_text` | longtext| NO| Eerste weer gave van de werkelijke query met letterlijke waarden|
-| `query_digest_truncated` | bit| JA| Hiermee wordt aangegeven of de query tekst is afgekapt. De waarde is Ja als de query langer is dan 1 KB|
+| `query_digest_truncated` | bit| KLIKT| Hiermee wordt aangegeven of de query tekst is afgekapt. De waarde is Ja als de query langer is dan 1 KB|
 | `execution_count` | bigint (20)| NO| Het aantal keren dat de query is uitgevoerd voor deze tijds tempel-ID/tijdens de geconfigureerde interval periode|
 | `warning_count` | bigint (20)| NO| Aantal waarschuwingen dat deze query heeft gegenereerd tijdens de interne|
 | `error_count` | bigint (20)| NO| Aantal fouten dat deze query heeft gegenereerd tijdens het interval|
-| `sum_timer_wait` | double| JA| Totale uitvoerings tijd van deze query tijdens het interval|
-| `avg_timer_wait` | double| JA| Gemiddelde uitvoerings tijd voor deze query tijdens het interval|
-| `min_timer_wait` | double| JA| Minimale uitvoerings tijd voor deze query|
-| `max_timer_wait` | double| JA| Maximale uitvoerings tijd|
+| `sum_timer_wait` | double| KLIKT| Totale uitvoerings tijd van deze query tijdens het interval|
+| `avg_timer_wait` | double| KLIKT| Gemiddelde uitvoerings tijd voor deze query tijdens het interval|
+| `min_timer_wait` | double| KLIKT| Minimale uitvoerings tijd voor deze query|
+| `max_timer_wait` | double| KLIKT| Maximale uitvoerings tijd|
 | `sum_lock_time` | bigint (20)| NO| De totale hoeveelheid tijd die is besteed aan alle vergren delingen voor deze uitvoering van deze query tijdens dit tijd venster|
 | `sum_rows_affected` | bigint (20)| NO| Aantal rijen dat wordt beïnvloed|
 | `sum_rows_sent` | bigint (20)| NO| Aantal rijen dat naar de client is verzonden|
@@ -161,7 +161,7 @@ Met deze weer gave worden wachtende gebeurtenis gegevens in query Store geretour
 | `count_star` | bigint (20) | NO| Aantal wacht gebeurtenissen dat wordt voor bereid tijdens het interval voor de query |
 | `sum_timer_wait_ms` | double | NO| Totale wacht tijd (in milliseconden) van deze query tijdens het interval |
 
-### <a name="functions"></a>Functies
+### <a name="functions"></a>Functions
 
 | **Name**| **Beschrijving** |
 |---|---|

@@ -10,12 +10,12 @@ ms.reviewer: jmartens, garye
 ms.author: jordane
 author: jpe316
 ms.date: 07/12/2019
-ms.openlocfilehash: 3997f327bd6512eeee2cb5e7a0af802f12d1727a
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 910974eac6a67c9c9fe68c502f2876ef68bb94eb
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71034289"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72028531"
 ---
 # <a name="run-batch-predictions-on-large-data-sets-with-azure-machine-learning-pipelines"></a>Batch voorspellingen uitvoeren voor grote gegevens sets met Azure Machine Learning pijp lijnen
 
@@ -52,7 +52,7 @@ De volgende stappen zijn ingesteld voor de resources die u nodig hebt om een pij
 
 - Toegang tot het gegevensarchief die al heeft het model dat, invoer labels en afbeeldingen om te beoordelen (dit is al ingesteld voor u).
 - Instellen van een gegevensarchief voor het opslaan van de uitvoer.
--  `DataReference`Configureer objecten zodanig dat ze verwijzen naar de gegevens in de voor gaande data stores.
+- Configureer @ no__t-0 @ no__t-1objects zo dat ze verwijzen naar de gegevens in de voor gaande data stores.
 - Instellen van de compute-machines of clusters waarop de pijplijn-stappen uitvoert.
 
 ### <a name="access-the-datastores"></a>Toegang tot de gegevensopslag
@@ -77,7 +77,7 @@ batchscore_blob = Datastore.register_azure_blob_container(ws,
 
 Stel vervolgens in dat u de standaard gegevens opslag voor de uitvoer wilt gebruiken.
 
-Wanneer u uw werk ruimte maakt, worden [Azure files](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) -en [Blob-opslag](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction) standaard aan de werk ruimte gekoppeld. Azure Files is de standaard gegevens opslag voor een werk ruimte, maar u kunt ook Blob Storage gebruiken als gegevens opslag. Zie [Opties voor Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-decide-blobs-files-disks)voor meer informatie.
+Wanneer u uw werk ruimte maakt, wordt [Azure Files](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) and [Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction) are standaard aan de werk ruimte gekoppeld. Azure Files is de standaard gegevens opslag voor een werk ruimte, maar u kunt ook Blob Storage gebruiken als gegevens opslag. Zie [Opties voor Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-decide-blobs-files-disks)voor meer informatie.
 
 ```python
 def_data_store = ws.get_default_datastore()
@@ -87,7 +87,7 @@ def_data_store = ws.get_default_datastore()
 
 Nu verwijzen naar de gegevens in de pijplijn als invoer voor de stappen van de pijplijn.
 
-Een gegevensbron in een pijplijn wordt vertegenwoordigd door een [DataReference](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference) object.  `DataReference`Het object verwijst naar gegevens die zich in of toegankelijk zijn vanuit een gegevens opslag. U hebt `DataReference`objecten nodig  voor de map die wordt gebruikt voor invoer installatie kopieën, de map waarin het voortrainde model is opgeslagen, de Directory voor labels en de uitvoermap.
+Een gegevensbron in een pijplijn wordt vertegenwoordigd door een [DataReference](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference) object. De @ no__t-0 @ no__t-1object wijst naar gegevens die in zijn of toegankelijk zijn vanuit, een gegevens opslag. U hebt `DataReference` @ no__t-1objects nodig voor de map die wordt gebruikt voor invoer installatie kopieën, de map waarin het vooraf getrainde model is opgeslagen, de Directory voor labels en de uitvoermap.
 
 ```python
 from azureml.data.data_reference import DataReference
@@ -154,7 +154,7 @@ Voordat u het pretrained model gebruiken kunt, moet u het model downloaden en te
 
 ### <a name="download-the-pretrained-model"></a>Download het pretrained model
 
-Download de dat computer vision-model (InceptionV3) van <http://download.tensorflow.org/models/inception_v3_2016_08_28.tar.gz>. Pak het vervolgens uit naar `models` de submap.
+Download de dat computer vision-model (InceptionV3) van <http://download.tensorflow.org/models/inception_v3_2016_08_28.tar.gz>. Pak het vervolgens uit naar de submap `models`.
 
 ```python
 import os
@@ -193,7 +193,7 @@ model = Model.register(
 >[!Warning]
 >De volgende code is slechts een voor beeld van wat is opgenomen in de [batch_score. py](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/pipeline-batch-scoring/batch_scoring.py) die wordt gebruikt door het [voorbeeld notitieblok](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/pipeline-batch-scoring/pipeline-batch-scoring.ipynb). U moet uw eigen score script maken voor uw scenario.
 
-De `batch_score.py` script neemt invoer afbeeldingen *dataset_path*, modellen in dat *model_dir,* en levert *resultaten label.txt* naar *output_dir*.
+Het script `batch_score.py` neemt de invoer van installatie kopieën in *dataset_path*, vooraf getrainde modellen in *model_dir* en voert *Results-label. txt* uit naar *output_dir*.
 
 ```python
 # Snippets from a sample scoring script
@@ -267,7 +267,7 @@ amlcompute_run_config.environment.spark.precache_packages = False
 
 ### <a name="specify-the-parameter-for-your-pipeline"></a>Geef de parameter voor de pijplijn
 
-Een pijplijn parameter maken met behulp van een [PipelineParameter](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.pipelineparameter?view=azure-ml-py) -object met een standaard waarde.
+Maak een pijplijn parameter met behulp van een [PipelineParameter](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.pipelineparameter?view=azure-ml-py) object met een standaard waarde.
 
 ```python
 from azureml.pipeline.core.graph import PipelineParameter

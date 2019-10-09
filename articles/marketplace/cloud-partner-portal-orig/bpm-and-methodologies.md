@@ -1,36 +1,22 @@
 ---
-title: Zakelijke proces bibliotheken | Azure Marketplace
-description: Uitleg van zakelijke proces bibliotheken en -methoden.
+title: Bedrijfs proces bibliotheken | Azure Marketplace
+description: Dit CPP-artikel is afgeschaft en gekoppeld aan het artikel van de PC. Was "uitleg van de bibliotheken en methodologieën van het bedrijfs proces."
 services: Azure, Marketplace, Cloud Partner Portal,
-author: pbutlerm
+author: ChJenk
 manager: Ricardo.Villalobos
 ms.service: marketplace
 ms.topic: conceptual
-ms.date: 09/13/2018
-ms.author: pabutler
-ms.openlocfilehash: 870e77f3390c820278970f5ffda002b4826b82a4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 09/30/2019
+ms.author: v-chjen
+ms.openlocfilehash: f29d82a187027c3eee9d89258b6cf6c166089e70
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64935627"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72034393"
 ---
-# <a name="business-process-libraries"></a>Proces-bibliotheken voor bedrijven
+# <a name="business-process-libraries"></a>Bedrijfs proces bibliotheken
 
-Zakelijke proces bibliotheken zijn niets maar taak handleidingen van uw end-end scenario's. Het proces bedrijven-bibliotheek moet rechtstreeks worden uitgelijnd met uw marketinginhoud. Elke zakelijke processen in het proces bedrijven-bibliotheek moet een [taak opname](https://docs.microsoft.com/dynamics365/operations/dev-itpro/user-interface/task-recorder) die ermee verbonden zijn. Hebt u processen die zich buiten de Dynamics 365 voor bewerkingen, Voeg een Visio aan uw BPM-bibliotheek.
+De [Cloud Partner-Portal](https://cloudpartner.azure.com/) biedt geen ondersteuning meer voor het maken en beheren van Dynamics 365 voor financiering en operationele aanbiedingen. Deze functionaliteit is in plaats daarvan verplaatst naar de portal van micro soft [Partner Center](https://partner.microsoft.com/). Zie voor meer informatie [een nieuwe Dynamics 365 maken voor de bewerkings aanbieding](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-operations-offer).
 
-Zie [Business proces samenstellen](https://docs.microsoft.com/dynamics365/operations/dev-itpro/lcs-solutions/business-process-modeler-libraries-lcs-solutions) voor meer informatie.
-
-## <a name="methodologies"></a>Methoden
-
-Levenscyclus van Services (LCS) voor Microsoft Dynamics biedt methoden die u gebruiken kunt om te controleren of een meer herhaalbare en voorspelbare uitvoering project-ervaring. U kunt een van de opgegeven methoden gebruiken of maak uw eigen. Met een methodologie, kunt u eenvoudig bijhouden en rapporteren over de voortgang.
-
-Een methodologie bestaat uit fasen, taken en mijlpalen. Elke fase kan een onbeperkt aantal taken, waarvan sommige verplicht zijn hebben. Wanneer alle taken in een fase zijn voltooid, kan de fase worden gemarkeerd als voltooid. U kunt ook een mijlpaal voor maken wanneer u verwacht dat een fase worden uitgevoerd. De volgende methoden zijn opgenomen in een LCS-project:
-
-- Implementatie
-- Of stap
-- Informatie over ontwikkeling
-- Migreren en oplossingen maken
-- Oplossingen gebruiken
-
-Zie [LCS methodologieën](https://docs.microsoft.com/dynamics365/operations/dev-itpro/lifecycle-services/create-methodology) voor meer informatie.
+Voordat u een nieuw Dynamics 365-aanbod maakt, moet u [een partner centrum-account maken](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) lezen en vervolgens het [dash board commerciële Marketplace](https://partner.microsoft.com/dashboard/directory) openen met de geselecteerde **overzichts** pagina. Volg de instructies in [een nieuwe Dynamics 365 voor de bewerkings aanbieding maken](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-operations-offer) om uw aanbieding te maken.

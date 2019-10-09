@@ -1,6 +1,6 @@
 ---
-title: Verificatie toevoegen voor Android met Mobile Apps | Microsoft Docs
-description: Informatie over het gebruik van de functie Mobile Apps van Azure App Service voor verificatie van gebruikers van uw Android-app via een groot aantal identiteitsproviders, waaronder Google, Facebook, Twitter en Microsoft.
+title: Verificatie toevoegen op Android met Mobile Apps | Microsoft Docs
+description: Meer informatie over het gebruik van de Mobile Apps functie van Azure App Service om gebruikers van uw Android-app te verifiëren via verschillende id-providers, waaronder Google, Facebook, Twitter en micro soft.
 services: app-service\mobile
 documentationcenter: android
 author: elamalani
@@ -14,64 +14,64 @@ ms.devlang: java
 ms.topic: article
 ms.date: 06/25/2019
 ms.author: emalani
-ms.openlocfilehash: f138911510db4e6839ff96317fa6004e449e58be
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 789bb45ddef8d5ca0205e96298491ebee02698d6
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67443585"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72025503"
 ---
 # <a name="add-authentication-to-your-android-app"></a>Verificatie toevoegen aan uw Android-app
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
 
 > [!NOTE]
-> Visual Studio App Center investeert in nieuwe en geïntegreerde services centraal staat in de ontwikkeling van mobiele Apps. Ontwikkelaars kunnen gebruikmaken van **bouwen**, **Test** en **verdelen** services voor het instellen van de pijplijn voor continue integratie en levering. Zodra de app is geïmplementeerd, ontwikkelaars controleren de status en het gebruik van het gebruik van de app de **Analytics** en **Diagnostics** -services en Communiceer met gebruikers met behulp van de **Push** de service. Ontwikkelaars kunnen ook gebruikmaken van **Auth** om hun gebruikers te verifiëren en **gegevens** service behouden en synchroniseren van app-gegevens in de cloud. Bekijk [App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-android-get-started-users) vandaag nog.
->
+> Visual Studio App Center ondersteunt end-to-end en geïntegreerde services in de ontwikkeling van mobiele apps. Ontwikkel aars kunnen services **bouwen**, **testen** en **distribueren** om een continue integratie-en leverings pijplijn in te stellen. Zodra de app is geïmplementeerd, kunnen ontwikkel aars de status en het gebruik van hun app bewaken met behulp van de **analyse** -en **diagnose** Services en gebruikers benaderen met behulp van de **Push** service. Ontwikkel aars kunnen ook gebruikmaken van **auth** voor het verifiëren van hun gebruikers en **gegevens** service om app-gegevens in de Cloud op te slaan en te synchroniseren.
+> Als u Cloud Services wilt integreren in uw mobiele toepassing, meldt u zich aan met App Center [app Center](https://appcenter.ms/signup?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) vandaag.
 
 ## <a name="summary"></a>Samenvatting
-In deze zelfstudie hebt toevoegen u verificatie aan de todolist Quick Start-project in Android met behulp van een ondersteunde id-provider. In deze zelfstudie is gebaseerd op de [aan de slag met Mobile Apps] van de zelfstudie moet u eerst uitvoeren.
+In deze zelf studie voegt u verificatie toe aan het ToDoList Quick start-project op Android met behulp van een ondersteunde ID-provider. Deze zelf studie is gebaseerd op de zelf studie [aan de slag met Mobile apps] , die u eerst moet volt ooien.
 
 ## <a name="register"></a>Uw app registreren voor verificatie en Azure App Service configureren
 [!INCLUDE [app-service-mobile-register-authentication](../../includes/app-service-mobile-register-authentication.md)]
 
-## <a name="redirecturl"></a>Uw app toevoegen aan de toegestane externe Omleidings-URL 's
+## <a name="redirecturl"></a>Uw app toevoegen aan de toegestane externe omleidings-Url's
 
-Veilige verificatie is vereist dat u een nieuwe URL-schema voor uw app definiëren. Hiermee kunt het verificatiesysteem terug te keren naar uw app nadat het verificatieproces voltooid is. In deze zelfstudie gebruiken we het URL-schema _appname_ in. U kunt echter een URL-schema dat u kiest. Deze moet uniek zijn voor uw mobiele App. De omleiding op de server inschakelen:
+Voor beveiligde verificatie moet u een nieuw URL-schema definiëren voor uw app. Hierdoor kan het verificatie systeem terugkeren naar uw app nadat het verificatie proces is voltooid. In deze zelf studie gebruiken we het URL-schema _AppName_ in. U kunt echter elk gewenst URL-schema gebruiken. Deze moet uniek zijn voor uw mobiele toepassing. De omleiding aan de server zijde inschakelen:
 
-1. In de [Azure Portal], selecteert u uw App Service.
+1. Selecteer uw App Service in de [Azure-portal].
 
-2. Klik op de **verificatie / autorisatie** menu-optie.
+2. Klik op de menu optie voor **verificatie/autorisatie** .
 
-3. In de **toegestane externe Omleidings-URL's**, voer `appname://easyauth.callback`.  De _appname_ in deze reeks wordt het URL-schema voor uw mobiele toepassing.  Het moet normale URL-specificatie voor een protocol (Gebruik letters en cijfers alleen en beginnen met een letter) volgen.  U moet een notitie van de tekenreeks die u kiest, aangezien u nodig hebt om aan te passen van de code van uw mobiele toepassing met de URL-schema op verschillende plaatsen.
+3. Voer in de **toegestane externe omleidings-url's**`appname://easyauth.callback` in.  De _AppName_ in deze teken reeks is het URL-schema voor uw mobiele toepassing.  De standaard URL-specificatie voor een protocol moet volgen (alleen letters en cijfers gebruiken en beginnen met een letter).  U moet een notitie maken van de teken reeks die u kiest, omdat u de code van uw mobiele toepassing moet aanpassen aan het URL-schema op verschillende locaties.
 
 4. Klik op **OK**.
 
 5. Klik op **Opslaan**.
 
-## <a name="permissions"></a>Machtigingen beperken voor geverifieerde gebruikers
+## <a name="permissions"></a>Machtigingen voor geverifieerde gebruikers beperken
 [!INCLUDE [app-service-mobile-restrict-permissions-dotnet-backend](../../includes/app-service-mobile-restrict-permissions-dotnet-backend.md)]
 
-* In Android Studio opent u het project dat u voltooid met de zelfstudie [aan de slag met Mobile Apps]. Uit de **uitvoeren** menu, klikt u op **app uitvoeren**, en controleer of dat een niet-verwerkte uitzondering met een statuscode 401 (niet-gemachtigd) is gegenereerd nadat de app wordt gestart.
+* Open in Android Studio het project dat u hebt voltooid met de zelf studie aan de [Aan de slag met Mobile Apps]. Klik in het menu **uitvoeren** op **app uitvoeren**en controleer of er een niet-verwerkte uitzonde ring met de status code 401 (niet toegestaan) wordt gegenereerd nadat de app is gestart.
 
-     Deze uitzondering komt doordat de app probeert te krijgen tot de back-end als niet-geverifieerde gebruiker, maar de *TodoItem* tabel nu verificatie is vereist.
+     Deze uitzonde ring treedt op omdat de app probeert toegang te krijgen tot de back-end als een niet-geverifieerde gebruiker, maar voor de tabel *TodoItem* is nu verificatie vereist.
 
-Vervolgens maakt bijwerken u de app om gebruikers te verifiëren voordat u aanvraagt van resources van de back-end voor mobiele Apps.
+Vervolgens werkt u de app bij om gebruikers te verifiëren voordat ze een aanvraag indienen bij de Mobile Apps back-end.
 
-## <a name="add-authentication-to-the-app"></a>Verificatie toevoegen aan de app.
+## <a name="add-authentication-to-the-app"></a>Verificatie toevoegen aan de app
 [!INCLUDE [mobile-android-authenticate-app](../../includes/mobile-android-authenticate-app.md)]
 
 
 
-## <a name="cache-tokens"></a>Verificatietokens cache op de client
+## <a name="cache-tokens"></a>Verificatie-tokens in de cache op de client
 [!INCLUDE [mobile-android-authenticate-app-with-token](../../includes/mobile-android-authenticate-app-with-token.md)]
 
 ## <a name="next-steps"></a>Volgende stappen
-Nu dat u basisverificatie-zelfstudie hebt voltooid, kunt u doorgaan naar een van de volgende zelfstudies:
+Nu u deze basis verificatie-zelf studie hebt voltooid, kunt u door gaan met een van de volgende zelf studies:
 
-* [Pushmeldingen toevoegen aan uw Android-app](app-service-mobile-android-get-started-push.md).
-  Informatie over het configureren van uw back-end voor mobiele Apps voor het gebruik van Azure notification hubs om pushmeldingen te verzenden.
-* [Offlinesynchronisatie inschakelen voor uw Android-app](app-service-mobile-android-get-started-offline-data.md).
-  Informatie over het toevoegen van Offlineondersteuning aan uw app met behulp van een back-end voor mobiele Apps. Offline synchroniseren zorgt gebruikers met een mobiele app kunnen werken&mdash;weergeven, toevoegen of wijzigen van gegevens&mdash;, zelfs wanneer er geen netwerkverbinding.
+* [Push meldingen toevoegen aan uw Android-app](app-service-mobile-android-get-started-push.md).
+  Meer informatie over het configureren van uw Mobile Apps back-end voor het gebruik van Azure notification hubs voor het verzenden van push meldingen.
+* [Offline synchronisatie inschakelen voor uw Android-app](app-service-mobile-android-get-started-offline-data.md).
+  Meer informatie over het toevoegen van offline ondersteuning aan uw app met behulp van een Mobile Apps back-end. Met offline synchronisatie kunnen gebruikers communiceren met een mobiele app @ no__t-0viewing, het toevoegen of wijzigen van gegevens @ no__t-1even wanneer er geen netwerk verbinding is.
 
 <!-- Anchors. -->
 [Register your app for authentication and configure Mobile Services]: #register
@@ -84,4 +84,4 @@ Nu dat u basisverificatie-zelfstudie hebt voltooid, kunt u doorgaan naar een van
 
 <!-- URLs. -->
 [Aan de slag met Mobile Apps]: app-service-mobile-android-get-started.md
-[Azure Portal]: https://portal.azure.com/
+[Azure-portal]: https://portal.azure.com/

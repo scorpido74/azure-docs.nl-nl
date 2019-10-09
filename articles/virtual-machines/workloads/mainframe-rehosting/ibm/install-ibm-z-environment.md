@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 04/02/2019
 tags: ''
 keywords: ''
-ms.openlocfilehash: 7ba3323f0811f3f9b76d73796264bf17712a1179
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 67af4eae03b773fad9cf38964152c1fb9d623bd5
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68841335"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72025932"
 ---
 # <a name="install-ibm-zdt-devtest-environment-on-azure"></a>IBM zD & T dev/test-omgeving installeren op Azure
 
@@ -62,11 +62,11 @@ In dit artikel wordt beschreven hoe u de Enter prise-editie voor Z Development a
 
 3. Ontvang de SSH-referenties die worden weer gegeven op de Blade **overzicht** van de virtuele machine via de knop **verbinding maken** . Selecteer het tabblad **SSH** en kopieer de SSH-aanmeldings opdracht naar het klem bord.
 
-4. Meld u aan bij een [bash-shell](/azure/cloud-shell/quickstart) vanaf uw lokale PC en plak de opdracht. Dit is het **\<IP-adres\@\<\>vanhetformulierSSH-\>gebruikers-id**. Wanneer u om referenties wordt gevraagd, voert u deze in om een verbinding met uw basismap tot stand te brengen.
+4. Meld u aan bij een [bash-shell](/azure/cloud-shell/quickstart) vanaf uw lokale PC en plak de opdracht. Deze heeft de vorm **SSH @ no__t-1user-id @ no__t-2 @ no__t-3 @ no__t-4IP-adres @ no__t-5**. Wanneer u om referenties wordt gevraagd, voert u deze in om een verbinding met uw basismap tot stand te brengen.
 
 ## <a name="copy-the-installation-file-to-the-server"></a>Kopieer het installatie bestand naar de server
 
-Het installatie bestand voor de webserver is **ZDT\_install\_ee\_v 12.0.0.1. tgz**. Het is opgenomen in de media die door IBM worden geleverd. U moet dit bestand uploaden naar uw Ubuntu-VM.
+Het installatie bestand voor de webserver is **ZDT @ no__t-1Install @ no__t-2EE\_V12.0.0.1.tgz**. Het is opgenomen in de media die door IBM worden geleverd. U moet dit bestand uploaden naar uw Ubuntu-VM.
 
 1. Voer vanaf de opdracht regel de volgende opdracht in om ervoor te zorgen dat alles up-to-date is in de zojuist gemaakte installatie kopie:
 
@@ -91,7 +91,7 @@ Het installatie bestand voor de webserver is **ZDT\_install\_ee\_v 12.0.0.1. tgz
 
 ## <a name="install-the-enterprise-edition"></a>De Enter prise-editie installeren
 
-1. Ga naar de map ZDT en decomprimeer het\_bestand\_ZDT\_install ee v 12.0.0.1. tgz met de volgende opdrachten:
+1. Ga naar de map ZDT en decomprimeer het bestand ZDT @ no__t-0Install @ no__t-1EE\_V12.0.0.1.tgz met de volgende opdrachten:
 
     ```
     cd ZDT
@@ -104,7 +104,7 @@ Het installatie bestand voor de webserver is **ZDT\_install\_ee\_v 12.0.0.1. tgz
     ./ZDT_Install_EE_V12.0.0.0.x86_64
     ```
 
-3. Selecteer **1** om de Enter prise-server te installeren.
+3. Selecteer **1** om de Enter prise-server te installeren.
 
 4. Druk op **Enter** en lees de licentie overeenkomsten aandachtig door. Voeg aan het einde van de licentie **Ja** toe om door te gaan.
 

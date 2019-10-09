@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 06/28/2019
 ms.author: wesmc
-ms.openlocfilehash: 8d7bb201a9d01725f933105a4a0beb85c82ca105
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: d1de29124825a7f398b9722bb2455d1105e9c9f7
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71203709"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72023637"
 ---
 # <a name="choose-the-right-iot-hub-tier-for-your-solution"></a>Kies de juiste IoT Hub laag voor uw oplossing
 
@@ -35,11 +35,11 @@ De laag standaard van IoT Hub maakt alle functies mogelijk en is vereist voor Io
 
 Er kan slechts één type [versie](https://azure.microsoft.com/pricing/details/iot-hub/) in een laag worden gekozen per IOT hub. U kunt bijvoorbeeld een IoT Hub maken met meerdere eenheden van S1, maar niet met een combi natie van eenheden uit verschillende versies, zoals S1 en S2.
 
-| Mogelijkheid | Basic-laag | Laag gratis/Standard |
+| Mogelijkheid | Basislaag | Laag gratis/Standard |
 | ---------- | ---------- | ------------- |
 | [Telemetrie van apparaat naar Cloud](iot-hub-devguide-messaging.md) | Ja | Ja |
 | [Identiteit per apparaat](iot-hub-devguide-identity-registry.md) | Ja | Ja |
-| Integratie van [berichten routering](iot-hub-devguide-messages-read-custom.md) en [Event grid](iot-hub-event-grid.md) | Ja | Ja |
+| [Bericht routering](iot-hub-devguide-messages-read-custom.md), [verrijkingen van berichten](iot-hub-message-enrichments-overview.md)en [integratie van Event grid](iot-hub-event-grid.md) | Ja | Ja |
 | [HTTP-, AMQP-en MQTT-protocollen](iot-hub-devguide-protocols.md) | Ja | Ja |
 | [Device Provisioning Service](../iot-dps/about-iot-dps.md) | Ja | Ja |
 | [Bewaking en diagnose](iot-hub-monitor-resource-health.md) | Ja | Ja |
@@ -70,7 +70,7 @@ De partitie configuratie blijft ongewijzigd wanneer u migreert van de Basic-laag
 
 Het verschil in ondersteunde mogelijkheden tussen de lagen basis en standaard van IoT Hub betekent dat sommige API-aanroepen niet werken met de Basic-laag hubs. In de volgende tabel ziet u welke Api's beschikbaar zijn:
 
-| API | Basic-laag | Laag gratis/Standard |
+| API | Basislaag | Laag gratis/Standard |
 | --- | ---------- | ------------- |
 | [Apparaat verwijderen](https://docs.microsoft.com/rest/api/iothub/service/deletedevice) | Ja | Ja |
 | [Apparaat ophalen](https://docs.microsoft.com/rest/api/iothub/service/getdevice) | Ja | Ja |

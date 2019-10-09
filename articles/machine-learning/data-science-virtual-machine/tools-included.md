@@ -10,12 +10,12 @@ author: gvashishtha
 ms.author: gopalv
 ms.topic: overview
 ms.date: 09/27/2019
-ms.openlocfilehash: eef8ddf31f038afffddfa6b818c266c1cb4a3d44
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 68c48bd4288b80d6cab515aa981d0f72461c0849
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71973679"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72035258"
 ---
 # <a name="what-tools-are-included-on-the-azure-data-science-virtual-machine"></a>Welke hulpprogram ma's zijn opgenomen in de Azure Data Science Virtual Machine?
 
@@ -40,7 +40,7 @@ Hieronder vindt u een bijgewerkte lijst met hulpprogram ma's die zijn opgenomen 
 |     &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [Sparkmagic](https://github.com/jupyter-incubator/sparkmagic) |<span class='red-x'>&#10060;</span>   |<span class='green-check'>&#9989;</span></br> (Alleen Ubuntu) | |
 |     &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 Spark     |<span class='red-x'>&#10060;</span>   |<span class='green-check'>&#9989;</span> | |
 | JupyterHub (notebook server voor meerdere gebruikers)|<span class='red-x'>&#10060;</span>   |<span class='green-check'>&#9989;</span> | |
-| Jjupyterlab (notebook server voor meerdere gebruikers) |<span class='red-x'>&#10060;</span>   |<span class='green-check'>&#9989;</span></br> (Alleen Ubuntu) | |
+| Jjupyterlab (notebook server voor meerdere gebruikers) |<span class='red-x'>&#10060;</span>   |<span class='green-check'>&#9989;</span></br> | |
 | Ontwikkel hulpprogramma's, Ide's en code-editors:| | |
 | &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [Visual Studio 2017 (Community Edition)](https://www.visualstudio.com/community/) met git-invoeg toepassing, Azure HDInsight (Hadoop), Azure Data Lake, SQL Server Data tools, [node. js](https://github.com/Microsoft/nodejstools), [python](https://aka.ms/ptvs)en [R-hulpprogram ma's voor Visual Studio (RTVS)](https://microsoft.github.io/RTVS-docs/) |<span class='green-check'>&#9989;</span> |<span class='red-x'>&#10060;</span>   | [Visual Studio op de DSVM](./dsvm-tools-development.md#visual-studio-2017) |
 | &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [Visual Studio code](https://code.visualstudio.com/) |<span class='green-check'>&#9989;</span></br> (1.31.1) |<span class='green-check'>&#9989;</span></br> (1,31) | [Visual Studio code op de DSVM](./dsvm-tools-development.md#visual-studio-code) |

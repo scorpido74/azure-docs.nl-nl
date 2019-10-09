@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: dacurwin
-ms.openlocfilehash: 9e7d6a027a60590396446479aecf1644ef753ecf
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.openlocfilehash: 24e36e231d80a82362333b7a711f94cf627816ac
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71130173"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72029253"
 ---
 # <a name="manage-azure-vm-backups-with-azure-backup-service"></a>Back-ups van Azure-VM'S beheren met Azure Backup-Service
 
@@ -49,7 +49,7 @@ Vm's op het kluis dashboard weer geven:
 
     ![De tegel back-upitems openen](./media/backup-azure-manage-vms/contoso-vault-1606.png)
 
-6. Op de Blade **Back-upitems** kunt u de lijst met beveiligde vm's weer geven. In dit voor beeld beveiligt de kluis één virtuele machine: demobackup.  
+6. Op de Blade **Back-upitems** kunt u de lijst met beveiligde vm's weer geven. In dit voor beeld beveiligt de kluis één virtuele machine: demobackup.  
 
     ![De Blade back-upitems weer geven](./media/backup-azure-manage-vms/backup-items-blade-select-item.png)
 
@@ -66,7 +66,7 @@ Een back-upbeleid beheren:
 
     ![De tegel back-upitems openen](./media/backup-azure-manage-vms/contoso-vault-1606.png)
 
-3. Op de Blade **Back-upitems** kunt u de lijst met beveiligde vm's en de laatste back-upstatus met de meest recente tijd voor herstel punten weer geven.
+3. Op de Blade **Back-upitems** kunt u de lijst met beveiligde vm's en de laatste back-upstatus met de meest recente tijd voor herstel punten weer geven.
 
     ![De Blade back-upitems weer geven](./media/backup-azure-manage-vms/backup-items-blade-select-item.png)
 

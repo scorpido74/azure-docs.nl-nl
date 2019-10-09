@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 08/29/2019
-ms.openlocfilehash: cb7d55db978cb8eb7944ffe3f3f51d025d5fb891
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: ae7baf09df42a5824e5f59e7ebb372f4d9f6350c
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70164309"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72032867"
 ---
 # <a name="resource-limits-for-single-databases-using-the-vcore-based-purchasing-model"></a>Resource limieten voor afzonderlijke data bases met behulp van het op vCore gebaseerde aankoop model
 
@@ -218,7 +218,7 @@ De [Compute-laag zonder server](sql-database-serverless.md) is in preview.
 |vCores|7|8|9|10|16|24|
 |Geheugen (GB)|49|56|63|70|112|168|
 |Column Store-ondersteuning|Ja|Ja|Ja|Ja|Ja|Ja|
-|OLTP-opslag in het geheugen (GB)|7|8|9,5|11|20|36|
+|OLTP-opslag in het geheugen (GB)|7|8|9.5|11|20|36|
 |Opslagtype|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|
 |Maximale gegevens grootte (GB)|650|650|650|650|1024|1024|
 |Maximale logboek grootte (GB)|195|195|195|195|307|307|
@@ -291,27 +291,32 @@ De [Compute-laag zonder server](sql-database-serverless.md) is in preview.
 |Compute genereren|Gen5|Gen5|Gen5|Gen5|Gen5|Gen5|Gen5|Gen5|
 |vCores|2|4|8|16|24|32|40|80|
 |Geheugen (GB)|10.2|20,4|40,8|81,6|122,4|163,2|204|408|
+|[RBPEX](sql-database-service-tier-hyperscale.md#compute) Size|3X-geheugen|3X-geheugen|3X-geheugen|3X-geheugen|3X-geheugen|3X-geheugen|3X-geheugen|3X-geheugen|
 |Column Store-ondersteuning|Ja|Ja|Ja|Ja|Ja|Ja|Ja|Ja|
 |OLTP-opslag in het geheugen (GB)|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|
 |Maximale gegevens grootte (TB)|100 |100 |100 |100 |100 |100 |100 |100 |
 |Maximale logboek grootte (TB)|1 |1 |1 |1 |1 |1 |1 |1 |
 |Maximale gegevens grootte TempDB (GB)|64|128|256|384|384|384|384|384|
-|Opslagtype|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|
-|Maximum aantal gegevens IOPS (64 KB)| [Opmerking 1](#note-1) |[Opmerking 1](#note-1)|[Opmerking 1](#note-1) |[Opmerking 1](#note-1) |[Opmerking 1](#note-1) |[Opmerking 1](#note-1) |[Opmerking 1](#note-1) | [Opmerking 1](#note-1) |
-|I/o-latentie (bij benadering)|Te bepalen|Te bepalen|Te bepalen|Te bepalen|Te bepalen|Te bepalen|Te bepalen|Te bepalen|
+|Opslagtype| [Opmerking 1](#notes) |[Opmerking 1](#notes)|[Opmerking 1](#notes) |[Opmerking 1](#notes) |[Opmerking 1](#notes) |[Opmerking 1](#notes) |[Opmerking 1](#notes) | [Opmerking 1](#notes) |
+|Maximum aantal gegevens IOPS (64 KB)|[Opmerking 2](#notes)|[Opmerking 2](#notes)|[Opmerking 2](#notes)|[Opmerking 2](#notes)|[Opmerking 2](#notes)|[Opmerking 2](#notes)|[Opmerking 2](#notes)|[Opmerking 2](#notes)|
+|I/o-latentie (bij benadering)|[Opmerking 3](#notes)|[Opmerking 3](#notes)|[Opmerking 3](#notes)|[Opmerking 3](#notes)|[Opmerking 3](#notes)|[Opmerking 3](#notes)|[Opmerking 3](#notes)|[Opmerking 3](#notes)|
 |Maxi maal aantal gelijktijdige werk nemers (aanvragen)|200|400|800|1600|2400|3200|4000|8000|
 |Maximaal aantal gelijktijdige sessies|30000|30000|30000|30000|30000|30000|30000|30000|
 |Secundaire replica's|0-4|0-4|0-4|0-4|0-4|0-4|0-4|0-4|
 |Multi-AZ|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|
 |Uitschalen lezen|Ja|Ja|Ja|Ja|Ja|Ja|Ja|Ja|
-|Opgenomen back-upopslag |7|7|7|7|7|7|7|7|
+|Back-upopslag bewaren|7 dagen|7 dagen|7 dagen|7 dagen|7 dagen|7 dagen|7 dagen|7 dagen|
 |||
 
-### <a name="note-1"></a>Opmerking 1
+#### <a name="notes"></a>Opmerkingen
 
-Grootschalige is een architectuur met meerdere lagen met caching op meerdere niveaus. Effectief IOPS is afhankelijk van de werk belasting.
+**Opmerking 1**: Grootschalige is een architectuur met meerdere lagen met afzonderlijke Compute-en opslag onderdelen: [Architectuur grootschalige service tier](sql-database-service-tier-hyperscale.md#distributed-functions-architecture)
 
-### <a name="next-steps"></a>Volgende stappen
+**Opmerking 2**: Grootschalige-architectuur met meerdere lagen heeft caching op meerdere niveaus. Effectief IOPS is afhankelijk van de werk belasting.
+
+**Opmerking 3**: Latentie is 1-2 MS voor gegevens in de RBPEX-cache op basis van SSD op reken replica's, waarmee de meeste gebruikte gegevens pagina's in de cache worden opgeslagen. Hogere latentie voor gegevens die zijn opgehaald van pagina servers.
+
+## <a name="next-steps"></a>Volgende stappen
 
 - Zie [resource limieten voor afzonderlijke data bases met behulp van het op DTU gebaseerde aankoop model](sql-database-dtu-resource-limits-single-databases.md) voor DTU-resource limieten voor één data base
 - Zie [resource limieten voor elastische Pools met behulp van het op vCore gebaseerde inkoop model](sql-database-vcore-resource-limits-elastic-pools.md) voor vCore resource limieten voor elastische Pools

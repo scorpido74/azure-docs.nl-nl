@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: quickstart
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: d7c2aee3ad73552a57776af5ce6585b36518d169
-ms.sourcegitcommit: 6013bacd83a4ac8a464de34ab3d1c976077425c7
+ms.openlocfilehash: 95dbe2b9ccfdc0a900ba53668869e3872b6e51d5
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71687053"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72030302"
 ---
 # <a name="create-a-private-endpoint-using-azure-portal"></a>Een persoonlijk eind punt maken met Azure Portal
 
@@ -54,7 +54,7 @@ In deze sectie maakt u een Virtual Network en het subnet voor het hosten van de 
 
 ### <a name="create-virtual-machine"></a>Virtuele machine maken
 
-1. Selecteer in de linkerbovenhoek van het scherm in het Azure Portal een**virtuele machine**voor het**berekenen** > van **een resource** > maken.
+1. Selecteer in de linkerbovenhoek van het scherm in het Azure Portal **een resource maken** > **Compute** > **virtuele machine**.
 
 1. Typ of selecteer in **Een virtuele machine maken - Basisprincipes** de volgende gegevens:
 
@@ -81,7 +81,7 @@ In deze sectie maakt u een Virtual Network en het subnet voor het hosten van de 
 
 1. Selecteer **Volgende: Schijven**.
 
-1. In **een virtuele machine maken-schijven**, de standaard instellingen behouden en **volgende selecteren: Netwerken**.
+1. In **een virtuele machine maken-schijven**, behoud de standaard instellingen en selecteer **Next: Netwerken**.
 
 1. Selecteer in **Een virtuele machine maken - Netwerken** de volgende gegevens:
 
@@ -90,7 +90,7 @@ In deze sectie maakt u een Virtual Network en het subnet voor het hosten van de 
     | Virtueel netwerk | De standaard **MyVirtualNetwork**behouden.  |
     | Adresruimte | De standaard **10.1.0.0/24**behouden.|
     | Subnet | Behoud de standaard **mySubnet (10.1.0.0/24)** .|
-    | Openbaar IP | Handhaaf de standaardinstelling **(new) myVm-ip**. |
+    | Openbare IP | Handhaaf de standaardinstelling **(new) myVm-ip**. |
     | Openbare poorten voor inkomend verkeer | Selecteer **Geselecteerde poorten toestaan**. |
     | Binnenkomende poorten selecteren | Selecteer **HTTP** en **RDP**.|
     |||
@@ -103,7 +103,7 @@ In deze sectie maakt u een Virtual Network en het subnet voor het hosten van de 
 ## <a name="create-a-sql-database-server"></a>Een SQL database-server maken
 In deze sectie maakt u een SQL database-server in Azure. 
 
-1. Selecteer in de linkerbovenhoek van het scherm in de Azure Portal **een resource** > **databases** > maken**SQL database**.
+1. Selecteer in de linkerbovenhoek van het scherm in het Azure Portal **een resource maken** > -**data bases** > **SQL database**.
 
 1. Voer in **SQL database basis beginselen maken**de volgende gegevens in of Selecteer deze:
 
@@ -121,12 +121,12 @@ In deze sectie maakt u een SQL database-server in Azure.
     | Instelling | Value |
     | ------- | ----- |
     |Servernaam  | Voer *mijn server*in. Als deze naam wordt gebruikt, maakt u een unieke naam.|
-    | Aanmeldgegevens van de serverbeheerder| Voer de naam van de beheerder van uw keuze in. |
+    | Aanmeldgegevens van serverbeheerder| Voer de naam van de beheerder van uw keuze in. |
     | Wachtwoord | Voer een wachtwoord naar keuze in. Het wacht woord moet ten minste acht tekens lang zijn en voldoen aan de gedefinieerde vereisten. |
     | Location | Selecteer een Azure-regio waar u wilt dat uw SQL Server zich bevindt. |
     
 7. Selecteer **OK**. 
-8. Selecteer **controleren + maken**. U gaat naar de pagina **controleren en maken** waar Azure uw configuratie valideert. 
+8. Selecteer **controleren + maken**. U gaat naar de @no__t voor het **bekijken en maken**van 1page, waar Azure uw configuratie valideert. 
 9. Wanneer u het bericht door gegeven validatie ziet, selecteert u **maken**. 
 10. Wanneer u het bericht door gegeven validatie ziet, selecteert u maken. 
 
@@ -134,8 +134,8 @@ In deze sectie maakt u een SQL database-server in Azure.
 
 In deze sectie maakt u een SQL Server en voegt u hieraan een persoonlijk eind punt toe. 
 
-1. Selecteer in de linkerbovenhoek van het scherm in het Azure Portal **een resource** > maken**netwerk** >  **-persoonlijk koppelings centrum (preview)** .
-2. Selecteer **Start**in het **persoonlijke koppelings centrum**op de optie om **een particuliere verbinding met een service te maken**.
+1. Selecteer in de linkerbovenhoek van het scherm in het Azure Portal **een resource maken** > -**netwerk** > **persoonlijk koppelings centrum (preview)** .
+2. Selecteer **Start**in het **persoonlijke koppelings centrum**op de optie om **een particuliere verbinding met een service te maken**.
 1. Voer in **een persoonlijk eind punt maken (preview)-basis beginselen**de volgende gegevens in of Selecteer deze:
 
     | Instelling | Value |
@@ -144,10 +144,10 @@ In deze sectie maakt u een SQL Server en voegt u hieraan een persoonlijk eind pu
     | Subscription | Selecteer uw abonnement. |
     | Resource group | Selecteer **myResourceGroup**. U hebt dit gemaakt in de vorige sectie.|
     | **EXEMPLAARDETAILS** |  |
-    | Name | *Voer myPrivateEndpoint*in. Als deze naam wordt gebruikt, maakt u een unieke naam. |
+    | Name | Voer * myPrivateEndpoint*in. Als deze naam wordt gebruikt, maakt u een unieke naam. |
     |Regio|Selecteer **WestCentralUS**.|
     |||
-5. Selecteer **volgende: Resource**.
+5. Selecteer @ no__t-0Next: Resource @ no__t-0.
 6. Voer in **een persoonlijk eind punt maken-resource**in of Selecteer deze gegevens:
 
     | Instelling | Value |
@@ -158,7 +158,7 @@ In deze sectie maakt u een SQL Server en voegt u hieraan een persoonlijk eind pu
     | Resource |*Mijn server* selecteren|
     |Doel-subresource |*SqlServer* selecteren|
     |||
-7. Selecteer **volgende: Configuratie**.
+7. Selecteer @ no__t-0Next: Configuratie @ no__t-0.
 8. Voer in **een persoonlijk eind punt maken (preview)-configuratie**de volgende gegevens in of Selecteer deze:
 
     | Instelling | Value |
@@ -171,8 +171,8 @@ In deze sectie maakt u een SQL Server en voegt u hieraan een persoonlijk eind pu
     |Privé-DNS zone |Selecteer *(nieuw) privatelink. data base. Windows. net* |
     |||
 
-1. Selecteer **controleren + maken**. U gaat naar de pagina **controleren en maken** waar Azure uw configuratie valideert. 
-2. Wanneer u het bericht **door gegeven** validatie ziet, selecteert u **maken**. 
+1. Selecteer **controleren + maken**. U gaat naar de @no__t voor het **bekijken en maken**van 1page, waar Azure uw configuratie valideert. 
+2. Wanneer u de **validatie**ziet  message, selecteert u **maken**. 
  
 ## <a name="connect-to-a-vm-using-remote-desktop-rdp"></a>Verbinding maken met een virtuele machine met behulp van Extern bureaublad (RDP)
 
@@ -204,7 +204,7 @@ Nadat u **myVm*hebt gemaakt, kunt u als volgt verbinding maken met het Internet:
 
 1. Open Power shell in de Extern bureaublad van *myVM*.
 
-2. Voer `nslookup myserver.database.windows.net`in. 
+2. Voer @ no__t-0 in. 
 
     U ontvangt een bericht dat er ongeveer als volgt uitziet:
     ```azurepowershell
@@ -225,7 +225,7 @@ Nadat u **myVm*hebt gemaakt, kunt u als volgt verbinding maken met het Internet:
     | Servernaam| *MyServer.database.Windows.net* selecteren |
     | Gebruikersnaam | Voer een wacht woord in dat u hebt opgegeven tijdens het maken van de SQL-Server. |
     |Wachtwoord |Voer een wacht woord in dat u hebt opgegeven tijdens het maken van de SQL-Server. |
-    |Wachtwoord onthouden|Selecteer **Ja**.|
+    |Wacht woord onthouden|Selecteer **Ja**.|
     |||
 1. Selecteer **verbinding maken**.
 2. Bladeren door data bases vanuit het menu links.

@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 06/24/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 2bf7118d1f4be065969312d1fb9b0cf77e820d48
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: b0a7221107f05ff2239bd77cc18e7ffedc18efc1
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262885"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72023591"
 ---
 # <a name="register-a-sql-server-virtual-machine-in-azure-with-the-sql-vm-resource-provider"></a>Een SQL Server virtuele machine registreren in azure met de resource provider van de SQL-VM
 
@@ -42,6 +42,11 @@ Als u de resource provider van de SQL-VM wilt gebruiken, moet u ook de resource 
 
   > [!NOTE]
   > Er zijn geen aanvullende licentie vereisten voor de registratie bij de resource provider. Registratie bij de resource provider van de SQL-VM biedt een vereenvoudigde methode om aan micro soft te voldoen dat de Azure Hybrid Benefit is ingeschakeld op de plaats van het beheer van licentie registratie formulieren voor elke resource. 
+
+Voor meer informatie over de voor delen van het gebruik van de resource provider van de SQL-VM raadpleegt u de volgende [Channel 9](https://channel9.msdn.com/Shows/Data-Exposed/Benefit-from-SQL-VM-Resource-Provider-when-self-installing-SQL-Server-on-Azure?WT.mc_id=dataexposed-c9-niner) -video: 
+
+<iframe src="https://channel9.msdn.com/Shows/Data-Exposed/Benefit-from-SQL-VM-Resource-Provider-when-self-installing-SQL-Server-on-Azure/player" width="960" height="540" allowFullScreen frameBorder="0" title="Profiteer van de resource provider van de SQL-VM bij het zelf installeren van SQL Server op Azure-micro soft Channel 9 video"></iframe>
+
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -159,7 +164,7 @@ U kunt controleren of uw SQL Server virtuele machine al is geregistreerd bij de 
 
 ### <a name="command-line"></a>Opdrachtregel
 
-Controleer de huidige SQL Server VM-registratie status met behulp van AZ CLI of Power shell. `ProvisioningState`geeft aan `Succeeded` of de registratie is geslaagd. 
+Controleer de huidige SQL Server VM-registratie status met behulp van AZ CLI of Power shell. `ProvisioningState` wordt weer gegeven `Succeeded` als de registratie is geslaagd. 
 
 # <a name="az-clitabbash"></a>[AZ CLI](#tab/bash)
 

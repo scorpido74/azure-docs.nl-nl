@@ -1,6 +1,6 @@
 ---
 title: Aan de slag met verificatie voor Mobile Apps in Xamarin iOS
-description: Informatie over het gebruik van Mobile Apps om gebruikers van uw Xamarin iOS-app via een groot aantal id-providers, met inbegrip van AAD, Google, Facebook, Twitter en Microsoft te verifiëren.
+description: Meer informatie over het gebruik van Mobile Apps voor het verifiëren van gebruikers van uw Xamarin iOS-app via verschillende id-providers, waaronder AAD, Google, Facebook, Twitter en micro soft.
 services: app-service\mobile
 documentationcenter: xamarin
 author: elamalani
@@ -14,56 +14,56 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
 ms.author: emalani
-ms.openlocfilehash: fa1f4bae314025a71568e1e04cbf950ebbe26dbe
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 1af488d4f170508bbf586621d00e9a92657983ca
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67446229"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72024812"
 ---
 # <a name="add-authentication-to-your-xamarinios-app"></a>Authenticatie toevoegen aan uw Xamarin.iOS-app
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
 
 > [!NOTE]
-> Visual Studio App Center investeert in nieuwe en geïntegreerde services centraal staat in de ontwikkeling van mobiele Apps. Ontwikkelaars kunnen gebruikmaken van **bouwen**, **Test** en **verdelen** services voor het instellen van de pijplijn voor continue integratie en levering. Zodra de app is geïmplementeerd, ontwikkelaars controleren de status en het gebruik van het gebruik van de app de **Analytics** en **Diagnostics** -services en Communiceer met gebruikers met behulp van de **Push** de service. Ontwikkelaars kunnen ook gebruikmaken van **Auth** om hun gebruikers te verifiëren en **gegevens** service behouden en synchroniseren van app-gegevens in de cloud. Bekijk [App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-xamarin-ios-get-started-users) vandaag nog.
->
+> Visual Studio App Center ondersteunt end-to-end en geïntegreerde services in de ontwikkeling van mobiele apps. Ontwikkel aars kunnen services **bouwen**, **testen** en **distribueren** om een continue integratie-en leverings pijplijn in te stellen. Zodra de app is geïmplementeerd, kunnen ontwikkel aars de status en het gebruik van hun app bewaken met behulp van de **analyse** -en **diagnose** Services en gebruikers benaderen met behulp van de **Push** service. Ontwikkel aars kunnen ook gebruikmaken van **auth** voor het verifiëren van hun gebruikers en **gegevens** service om app-gegevens in de Cloud op te slaan en te synchroniseren.
+> Als u Cloud Services wilt integreren in uw mobiele toepassing, meldt u zich aan met App Center [app Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) vandaag.
 
 ## <a name="overview"></a>Overzicht
 
-Dit onderwerp ziet u hoe u verifieert gebruikers van een App Service Mobile App van uw clienttoepassing. In deze zelfstudie, kunt u verificatie toevoegen aan de Xamarin.iOS Quick Start-project met behulp van een id-provider die wordt ondersteund door App Service. Nadat wordt is geverifieerd en geautoriseerd door uw mobiele App, de waarde van de gebruiker-ID wordt weergegeven en kunt u zich voor toegang tot gegevens in een tabel met beperkte toegang.
+In dit onderwerp wordt beschreven hoe u gebruikers van een mobiele app van App Service kunt verifiëren vanuit uw client toepassing. In deze zelf studie voegt u verificatie toe aan het Quick start-project Xamarin. iOS met behulp van een id-provider die wordt ondersteund door App Service. Nadat de verificatie is voltooid en geautoriseerd door uw mobiele app, wordt de waarde van de gebruikers-ID weer gegeven en kunt u toegang krijgen tot beperkte tabel gegevens.
 
-U moet eerst de zelfstudie hebt voltooid [Een Xamarin.iOS-app maken]. Als u het gedownloade quick start-serverproject niet gebruikt, moet u het pakket voor verificatie-extensie toevoegen aan uw project. Zie voor meer informatie over het server-extensiepakketten [werken met de .NET back-endserver SDK voor Azure Mobile Apps](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md).
+U moet eerst [een Xamarin. IOS-app maken]om de zelf studie te volt ooien. Als u het gedownloade Quick Start Server-project niet gebruikt, moet u het uitbreidings pakket voor verificatie toevoegen aan uw project. Zie [werken met de .net back-end server SDK voor Azure Mobile apps](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md)voor meer informatie over server extensie pakketten.
 
-## <a name="register-your-app-for-authentication-and-configure-app-services"></a>Uw app registreren voor verificatie en App-Services configureren
+## <a name="register-your-app-for-authentication-and-configure-app-services"></a>Uw app registreren voor verificatie en App Services configureren
 [!INCLUDE [app-service-mobile-register-authentication](../../includes/app-service-mobile-register-authentication.md)]
 
-## <a name="add-your-app-to-the-allowed-external-redirect-urls"></a>Uw app toevoegen aan de toegestane externe Omleidings-URL 's
+## <a name="add-your-app-to-the-allowed-external-redirect-urls"></a>Uw app toevoegen aan de toegestane externe omleidings-Url's
 
-Veilige verificatie is vereist dat u een nieuwe URL-schema voor uw app definiëren. Hiermee kunt het verificatiesysteem terug te keren naar uw app nadat het verificatieproces voltooid is. In deze zelfstudie gebruiken we het URL-schema _appname_ in. U kunt echter een URL-schema dat u kiest. Deze moet uniek zijn voor uw mobiele App. De omleiding op de server inschakelen:
+Voor beveiligde verificatie moet u een nieuw URL-schema definiëren voor uw app. Hierdoor kan het verificatie systeem terugkeren naar uw app nadat het verificatie proces is voltooid. In deze zelf studie gebruiken we het URL-schema _AppName_ in. U kunt echter elk gewenst URL-schema gebruiken. Deze moet uniek zijn voor uw mobiele toepassing. De omleiding aan de server zijde inschakelen:
 
-1. In de [Azure-portal](https://portal.azure.com/), selecteert u uw App Service.
+1. Selecteer uw App Service in de [Azure Portal](https://portal.azure.com/).
 
-2. Klik op de **verificatie / autorisatie** menu-optie.
+2. Klik op de menu optie voor **verificatie/autorisatie** .
 
-3. In de **toegestane externe Omleidings-URL's**, voer `url_scheme_of_your_app://easyauth.callback`.  De **url_scheme_of_your_app** in deze reeks wordt het URL-schema voor uw mobiele toepassing.  Het moet normale URL-specificatie voor een protocol (Gebruik letters en cijfers alleen en beginnen met een letter) volgen.  U moet een notitie van de tekenreeks die u kiest, aangezien u nodig hebt om aan te passen van de code van uw mobiele toepassing met de URL-schema op verschillende plaatsen.
+3. Voer in de **toegestane externe omleidings-url's**`url_scheme_of_your_app://easyauth.callback` in.  De **url_scheme_of_your_app** in deze teken reeks is het URL-schema voor uw mobiele toepassing.  De standaard URL-specificatie voor een protocol moet volgen (alleen letters en cijfers gebruiken en beginnen met een letter).  U moet een notitie maken van de teken reeks die u kiest, omdat u de code van uw mobiele toepassing moet aanpassen aan het URL-schema op verschillende locaties.
 
 4. Klik op **OK**.
 
 5. Klik op **Opslaan**.
 
-## <a name="restrict-permissions-to-authenticated-users"></a>Machtigingen beperken voor geverifieerde gebruikers
+## <a name="restrict-permissions-to-authenticated-users"></a>Machtigingen voor geverifieerde gebruikers beperken
 [!INCLUDE [app-service-mobile-restrict-permissions-dotnet-backend](../../includes/app-service-mobile-restrict-permissions-dotnet-backend.md)]
 
-* Voer het clientproject op een apparaat of emulator in Visual Studio of Xamarin Studio. Controleer of dat een niet-verwerkte uitzondering met een statuscode 401 (niet-gemachtigd) is gegenereerd nadat de app wordt gestart. De fout wordt geregistreerd in de console van het foutopsporingsprogramma. Dus in Visual Studio ziet u de fout in het uitvoervenster weergegeven.
+* In Visual Studio of Xamarin Studio voert u het-client project uit op een apparaat of emulator. Controleer of er een niet-verwerkte uitzonde ring met de status code 401 (niet toegestaan) wordt gegenereerd nadat de app is gestart. De fout wordt geregistreerd in de console van het fout opsporingsprogramma. In Visual Studio ziet u de fout in het uitvoer venster.
 
-    Deze niet-geautoriseerde fout doet zich voor omdat de app probeert te krijgen tot uw back-end van mobiele App als een niet-geverifieerde gebruiker. De *TodoItem* tabel nu verificatie is vereist.
+    Deze niet-geautoriseerde fout treedt op omdat de app de back-end van uw mobiele app probeert te openen als een niet-geverifieerde gebruiker. Voor de tabel *TodoItem* is nu verificatie vereist.
 
-U wordt vervolgens de client-app op aanvraag resources bijwerken van de back-end van de mobiele App met een geverifieerde gebruiker.
+Vervolgens werkt u de client-app bij om resources op te vragen bij de back-end van de mobiele app met een geverifieerde gebruiker.
 
-## <a name="add-authentication-to-the-app"></a>Verificatie toevoegen aan de app.
-In deze sectie wijzigt u de app een aanmeldingsscherm weergegeven voordat gegevens worden weergegeven. Wanneer de app wordt gestart, wordt geen verbinding maken met uw App Service en worden geen gegevens weergegeven. Nadat de eerste keer dat de gebruiker uitvoert de beweging vernieuwen, wordt het aanmeldingsscherm weergegeven; na geslaagde aanmelding wordt de lijst met todo-items worden weergegeven.
+## <a name="add-authentication-to-the-app"></a>Verificatie toevoegen aan de app
+In deze sectie wijzigt u de app zodat er een aanmeldings scherm wordt weer gegeven voordat gegevens worden weer gegeven. Wanneer de app wordt gestart, wordt er geen verbinding gemaakt met uw App Service en worden er geen gegevens weer gegeven. Na de eerste keer dat de gebruiker de vernieuwings beweging heeft uitgevoerd, wordt het aanmeldings scherm weer gegeven. Nadat de aanmelding is geslaagd, wordt de lijst met TODO-items weer gegeven.
 
-1. Open het bestand in het clientproject **QSTodoService.cs** en voeg de volgende gebruiksinstructie en `MobileServiceUser` met accessor aan de klasse QSTodoService:
+1. Open in het client project het bestand **QSTodoService.cs** en voeg het volgende toe met behulp van de instructie en `MobileServiceUser` met de accessor voor de klasse QSTodoService:
 
     ```csharp
     using UIKit;
@@ -73,7 +73,7 @@ In deze sectie wijzigt u de app een aanmeldingsscherm weergegeven voordat gegeve
     public MobileServiceUser User { get { return user; } }
     ```
 
-2. Toevoegen van nieuwe methode met de naam **verifiëren** naar **QSTodoService** met de definitie van de volgende:
+2. Voeg een nieuwe methode met de naam **verifiëren** toe aan **QSTodoService** met de volgende definitie:
 
     ```csharp
     public async Task Authenticate(UIViewController view)
@@ -91,9 +91,9 @@ In deze sectie wijzigt u de app een aanmeldingsscherm weergegeven voordat gegeve
     ```
 
     > [!NOTE]
-    > Als u een id-provider dan een Facebook gebruikt, wijzigt u de waarde die is doorgegeven aan **LoginAsync** boven op een van de volgende: _MicrosoftAccount_, _Twitter_, _Google_, or _WindowsAzureActiveDirectory_.
+    > Als u een andere ID-provider gebruikt dan een Facebook, wijzigt u de waarde die is door gegeven aan **LoginAsync** hierboven op een van de volgende opties: _MicrosoftAccount_, _Twitter_, _Google_, or _WindowsAzureActiveDirectory_.
 
-3. Open **QSTodoListViewController.cs**. Wijzigen van de methodedefinitie van de van **ViewDidLoad** verwijderen van de aanroep van **RefreshAsync()** in de buurt van het einde:
+3. Open **QSTodoListViewController.cs**. Wijzig de methode definitie van **ViewDidLoad** de aanroep naar **RefreshAsync ()** aan het einde te verwijderen:
 
     ```csharp
     public override async void ViewDidLoad ()
@@ -112,7 +112,7 @@ In deze sectie wijzigt u de app een aanmeldingsscherm weergegeven voordat gegeve
     }
     ```
 
-4. Wijzigen van de methode **RefreshAsync** om te verifiëren als de **gebruiker** eigenschap null is. Voeg de volgende code toe aan de bovenkant van de methodedefinitie van de:
+4. Wijzig de methode **RefreshAsync** om te verifiëren of de eigenschap **User** null is. Voeg de volgende code toe boven aan de methode definitie:
 
     ```csharp
     // start of RefreshAsync method
@@ -126,7 +126,7 @@ In deze sectie wijzigt u de app een aanmeldingsscherm weergegeven voordat gegeve
     // rest of RefreshAsync method
     ```
 
-5. Open **AppDelegate.cs**, voeg de volgende methode toe:
+5. Open **AppDelegate.cs**en voeg de volgende methode toe:
 
     ```csharp
     public static Func<NSUrl, bool> ResumeWithURL;
@@ -137,12 +137,12 @@ In deze sectie wijzigt u de app een aanmeldingsscherm weergegeven voordat gegeve
     }
     ```
 
-6. Open **Info.plist** bestand, gaat u naar **URL typen** in de **Geavanceerd** sectie. Nu configureren voor de **id** en de **URL-schema's** van uw Type URL en klik op **URL-Type toevoegen**. **URL-schema's** moet gelijk zijn aan uw {url_scheme_of_your_app}.
-7. Voer het clientproject die gericht is op een apparaat of emulator in Visual Studio, verbonden met uw Mac-Host of Visual Studio voor Mac. Controleer of dat de app geen gegevens weergegeven.
+6. Open **info. plist** -bestand, navigeer naar **URL-typen** in de sectie **Geavanceerd** . Configureer nu de **id** -en **URL-SCHEMA'S** van uw URL-type en klik op **URL-type toevoegen**. **URL-schema's** moeten hetzelfde zijn als uw {url_scheme_of_your_app}.
+7. In Visual Studio, dat is verbonden met uw Mac-host of Visual Studio voor Mac, voert u het client project uit dat is gericht op een apparaat of emulator. Controleer of er geen gegevens worden weer gegeven in de app.
 
-    Het gebaar vernieuwen uitvoeren door het binnenhalen van de lijst met items, waardoor het aanmeldingsscherm wordt weergegeven. Nadat u hebt geldige referenties is opgegeven, de app de lijst met todo-items worden weergegeven en kunt u updates aanbrengen in de gegevens.
+    Voer de vernieuwings beweging uit door de lijst met items op te halen, waardoor het aanmeldings scherm wordt weer gegeven. Zodra u geldige referenties hebt ingevoerd, wordt in de app de lijst met TODO-items weer gegeven en kunt u updates voor de gegevens maken.
 
 <!-- URLs. -->
 [Submit an app page]: https://go.microsoft.com/fwlink/p/?LinkID=266582
 [My Applications]: https://go.microsoft.com/fwlink/p/?LinkId=262039
-[Een Xamarin.iOS-app maken]: app-service-mobile-xamarin-ios-get-started.md
+[Een Xamarin. iOS-app maken]: app-service-mobile-xamarin-ios-get-started.md

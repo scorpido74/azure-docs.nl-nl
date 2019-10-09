@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ASP.NET Core
 ms.workload: tbd
 ms.date: 04/19/2019
 ms.author: yegu
-ms.openlocfilehash: 6f9094a52ff3558fa8d1f2fee1d80ed8eb09a416
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: d7a9f365c9e2b6039451375f4ad50a7ce04cdd5b
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71076330"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72029727"
 ---
 # <a name="quickstart-add-feature-flags-to-an-aspnet-core-app"></a>Quickstart: Functie vlaggen toevoegen aan een ASP.NET Core-app
 
@@ -36,7 +36,7 @@ De .NET Core-functie beheer bibliotheken breiden het Framework uit met uitgebrei
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. Selecteer **feature Manager** >  **+ toevoegen** om de volgende functie vlaggen toe te voegen:
+6. Selecteer **functie beheer** >  **+ toevoegen** om de volgende functie vlaggen toe te voegen:
 
     | Sleutel | State |
     |---|---|
@@ -51,7 +51,7 @@ U gebruikt de [.net core-opdracht regel interface (CLI)](https://docs.microsoft.
 1. Voer in de nieuwe map de volgende opdracht uit om een nieuw ASP.NET Core MVC-Web-app-project te maken:
 
    ```    
-   dotnet new mvc
+   dotnet new mvc --no-https
    ```
 
 ## <a name="add-secret-manager"></a>Secret Manager toevoegen
@@ -59,7 +59,7 @@ U gebruikt de [.net core-opdracht regel interface (CLI)](https://docs.microsoft.
 Voeg het [hulp programma voor geheime beheer](https://docs.microsoft.com/aspnet/core/security/app-secrets) toe aan uw project. Het hulp programma voor de geheime beheerder slaat gevoelige gegevens op voor ontwikkelings werkzaamheden buiten de project structuur. Deze aanpak voorkomt dat er per ongeluk appgeheimen worden gedeeld in de broncode.
 
 1. Open het *. csproj* -bestand.
-1. Voeg een `UserSecretsId` element toe zoals wordt weer gegeven in het volgende voor beeld en vervang de waarde ervan door uw eigen waarden. Dit is meestal een GUID:
+1. Voeg een `UserSecretsId`-element toe, zoals wordt weer gegeven in het volgende voor beeld en vervang de waarde door uw eigen. Dit is meestal een GUID:
 
     ```xml
     <Project Sdk="Microsoft.NET.Sdk.Web">
@@ -81,7 +81,7 @@ Voeg het [hulp programma voor geheime beheer](https://docs.microsoft.com/aspnet/
 
 ## <a name="connect-to-an-app-configuration-store"></a>Verbinding maken met een app-configuratie archief
 
-1. Voeg een verwijzing naar `Microsoft.Azure.AppConfiguration.AspNetCore` de en `Microsoft.FeatureManagement.AspNetCore` de NuGet-pakketten toe door de volgende opdrachten uit te voeren:
+1. Voeg een verwijzing naar het `Microsoft.Azure.AppConfiguration.AspNetCore` en de `Microsoft.FeatureManagement.AspNetCore` NuGet-pakketten toe door de volgende opdrachten uit te voeren:
 
     ```
     dotnet add package Microsoft.Azure.AppConfiguration.AspNetCore --version 2.0.0-preview-009470001-12
@@ -96,7 +96,7 @@ Voeg het [hulp programma voor geheime beheer](https://docs.microsoft.com/aspnet/
 
 1. Voeg een geheim met de naam **ConnectionStrings:AppConfig** toe aan Secret Manager.
 
-    Dit geheim bevat de connection string voor toegang tot uw app-configuratie opslag. Vervang de `<your_connection_string>` waarde in de volgende opdracht door de Connection String voor uw app-configuratie archief.
+    Dit geheim bevat de connection string voor toegang tot uw app-configuratie opslag. Vervang de `<your_connection_string>`-waarde in de volgende opdracht door de connection string voor uw app-configuratie archief.
 
     Deze opdracht moet worden uitgevoerd in de map met het bestand *.csproj*.
 
@@ -114,7 +114,7 @@ Voeg het [hulp programma voor geheime beheer](https://docs.microsoft.com/aspnet/
     using Microsoft.Extensions.Configuration.AzureAppConfiguration;
     ```
 
-1. Werk de `CreateWebHostBuilder` methode bij voor het gebruik van app- `config.AddAzureAppConfiguration()` configuratie door de methode aan te roepen.
+1. Werk de `CreateWebHostBuilder`-methode bij om app-configuratie te gebruiken door de `config.AddAzureAppConfiguration()`-methode aan te roepen.
 
     ```csharp
     public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -136,7 +136,7 @@ Voeg het [hulp programma voor geheime beheer](https://docs.microsoft.com/aspnet/
     using Microsoft.FeatureManagement;
     ```
 
-1. Werk de `ConfigureServices` methode bij om ondersteuning van functie vlaggen toe te `services.AddFeatureManagement()` voegen door de methode aan te roepen. U kunt eventueel ook een filter toevoegen dat wordt gebruikt met functie vlaggen door het volgende `services.AddFeatureFilter<FilterType>()`aan te roepen:
+1. Werk de methode `ConfigureServices` bij om ondersteuning van functie vlaggen toe te voegen door de `services.AddFeatureManagement()`-methode aan te roepen. U kunt eventueel ook een filter toevoegen dat moet worden gebruikt met functie vlaggen door het aanroepen van `services.AddFeatureFilter<FilterType>()`:
 
     ```csharp
     public void ConfigureServices(IServiceCollection services)
@@ -145,7 +145,7 @@ Voeg het [hulp programma voor geheime beheer](https://docs.microsoft.com/aspnet/
     }
     ```
 
-1. Werk de `Configure` methode bij om een middleware toe te voegen, zodat de waarden van de functie vlag kunnen worden vernieuwd met een terugkerend interval terwijl de ASP.net core web-app aanvragen blijft ontvangen.
+1. Werk de methode `Configure` bij om een middleware toe te voegen, zodat de waarden van de functie vlag kunnen worden vernieuwd met een terugkerend interval terwijl de ASP.NET Core web-app aanvragen blijft ontvangen.
 
     ```csharp
     public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -200,7 +200,7 @@ Voeg het [hulp programma voor geheime beheer](https://docs.microsoft.com/aspnet/
     @addTagHelper *, Microsoft.FeatureManagement.AspNetCore
     ```
 
-1. Open *_Layout. cshtml* in de\\*gedeelde* `<nav>`mapviews en vervang de streepjes code `<body>` door > de volgende code: `<header>`
+1. Open *_Layout. cshtml* in de *weer gaven*\\-*gedeelde* map en vervang de `<nav>`-streepjes code onder `<body>` @ no__t-6 @ no__t-7 door de volgende code:
 
     ```html
     <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
@@ -267,7 +267,7 @@ Voeg het [hulp programma voor geheime beheer](https://docs.microsoft.com/aspnet/
     |---|---|
     | Bèta | Aan |
 
-1. Start de toepassing opnieuw door terug te scha kelen naar de opdracht `Ctrl-C` prompt en op het `dotnet` actieve proces te annuleren en vervolgens `dotnet run`opnieuw uit te voeren.
+1. Start de toepassing opnieuw op door terug te scha kelen naar de opdracht prompt en op `Ctrl-C` te drukken om het actieve `dotnet`-proces te annuleren en vervolgens `dotnet run` opnieuw uit te voeren.
 
 1. Vernieuw de browserpagina om de nieuwe configuratie-instellingen te zien.
 

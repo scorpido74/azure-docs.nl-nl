@@ -1,29 +1,29 @@
 ---
-title: Azure Data Factory gegevensknooppunt stroom verwijzing toewijzen
-description: Gegevensstroom van Data Factory, wordt een verwijzingsknooppunt voor joins, zoekacties, samenvoegingen toevoegen
+title: Referentie knooppunt voor gegevens stroom van Azure Data Factory toewijzing
+description: Data Factory gegevens stroom voegt een referentie knooppunt toe voor samen voegingen, zoek acties, samen voegingen
 author: kromerm
 ms.author: makromer
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/31/2019
-ms.openlocfilehash: 626943143e8fa193f143e66d856d9b00e3589fb5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4ed17114cc0ce586c68c5b3e087acffdb82ea96c
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61262671"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72030489"
 ---
-# <a name="mapping-data-flow-reference-node"></a>Stroom toewijzing-verwijzing gegevensknooppunt
+# <a name="mapping-data-flow-reference-node"></a>Referentie knooppunt van de gegevens stroom koppelen
 
-[!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
-![Verwijzen naar knooppunt](media/data-flow/referencenode.png "verwijzingsknooppunt")
 
-Een referentie-knooppunt wordt automatisch toegevoegd aan het canvas om aan te duiden dat het knooppunt dat is gekoppeld aan de verwijst naar een ander bestaand knooppunt op het canvas. Een verwijzingsknooppunt weer als een verwijzing of een verwijzing naar een andere stroom gegevenstransformatie beschouwen.
+Referentie knooppunt verwijzings ![knooppunt](media/data-flow/referencenode.png "")
 
-Bijvoorbeeld: Wanneer u deelnemen aan of Union van meer dan één stroom van gegevens, het canvas gegevensstroom kan worden gebruikt voor het toevoegen van een verwijzingsknooppunt die overeenkomt met de naam en de instellingen van de niet-primaire binnenkomende stream.
+Er wordt automatisch een referentie knooppunt aan het canvas toegevoegd om aan te duiden dat het knoop punt waaraan het is gekoppeld, verwijst naar een ander bestaand knoop punt op het canvas. U kunt een referentie knooppunt beschouwen als een wijzer of verwijzing naar een andere gegevensstroom transformatie.
 
-Het verwijzingsknooppunt kan niet worden verplaatst of verwijderd. U kunt echter klikken in het knooppunt om de oorspronkelijke transformatie-instellingen te wijzigen.
+Bijvoorbeeld: Wanneer u meerdere gegevens stromen samenvoegt of samenvoegt, kan het gegevensstroom canvas een referentie knooppunt toevoegen met de naam en instellingen van de niet-primaire binnenkomende stroom.
 
-De UI-regels die bepalen wanneer het verwijzingsknooppunt gegevensstroom toevoegt worden op basis van de beschikbare ruimte en verticale afstand tussen de rijen.
+Het referentie knooppunt kan niet worden verplaatst of verwijderd. U kunt echter klikken op het knoop punt om de oorspronkelijke transformatie-instellingen te wijzigen.
+
+De UI-regels die bepalen wanneer de gegevens stroom het referentie knooppunt toevoegt, zijn gebaseerd op beschik bare ruimte en verticale afstand tussen rijen.

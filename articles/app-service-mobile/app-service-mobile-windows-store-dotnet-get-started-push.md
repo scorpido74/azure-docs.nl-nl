@@ -14,20 +14,20 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
 ms.author: emalani
-ms.openlocfilehash: 7455ad33660a0af004a3a3ad982e929fc4b3031e
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: e3e82c971fee7f7dd95e6f9ef72631e8e82ebe7f
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68851123"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72025257"
 ---
 # <a name="add-push-notifications-to-your-windows-app"></a>Push meldingen toevoegen aan uw Windows-app
 
 [!INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]
 
 > [!NOTE]
-> Visual Studio App Center is investeren in nieuwe en geïntegreerde services die in de ontwikkeling van mobiele apps kunnen worden ontwikkeld. Ontwikkel aars kunnen services **bouwen**, **testen** en **distribueren** om een continue integratie-en leverings pijplijn in te stellen. Zodra de app is geïmplementeerd, kunnen ontwikkel aars de status en het gebruik van hun app bewaken met behulp van de **analyse** -en **diagnose** Services en gebruikers benaderen met behulp van de **Push** service. Ontwikkel aars kunnen ook gebruikmaken van **auth** voor het verifiëren van hun gebruikers en **gegevens** service om app-gegevens in de Cloud op te slaan en te synchroniseren. Bekijk [app Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-windows-store-dotnet-get-started-push) vandaag nog.
->
+> Visual Studio App Center ondersteunt end-to-end en geïntegreerde services in de ontwikkeling van mobiele apps. Ontwikkel aars kunnen services **bouwen**, **testen** en **distribueren** om een continue integratie-en leverings pijplijn in te stellen. Zodra de app is geïmplementeerd, kunnen ontwikkel aars de status en het gebruik van hun app bewaken met behulp van de **analyse** -en **diagnose** Services en gebruikers benaderen met behulp van de **Push** service. Ontwikkel aars kunnen ook gebruikmaken van **auth** voor het verifiëren van hun gebruikers en **gegevens** service om app-gegevens in de Cloud op te slaan en te synchroniseren.
+> Als u Cloud Services wilt integreren in uw mobiele toepassing, meldt u zich aan met App Center [app Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) vandaag.
 
 ## <a name="overview"></a>Overzicht
 
@@ -43,7 +43,7 @@ Als u het gedownloade Quick Start Server-project niet gebruikt, hebt u het uitbr
 
 U moet uw app indienen bij de Microsoft Store en vervolgens uw server project configureren voor integratie met [Windows Notification Services (WNS)](https://docs.microsoft.com/windows/uwp/design/shell/tiles-and-notifications/windows-push-notification-services--wns--overview) voor het verzenden van push berichten.
 
-1. Klik in Visual Studio Solution Explorer met de rechter muisknop op het UWP-app-project, klikt u op **Store** > **BIND app with the store...** .
+1. Klik in Visual Studio Solution Explorer met de rechter muisknop op het UWP-app-project, klikt u op **store** > **App koppelen aan de Store...** .
 
     ![App aan Microsoft Store koppelen](./media/app-service-mobile-windows-store-dotnet-get-started-push/notification-hub-associate-uwp-app.png)
 
@@ -65,7 +65,7 @@ U moet uw app indienen bij de Microsoft Store en vervolgens uw server project co
 
 ## <a id="update-service"></a>De server bijwerken om Push meldingen te verzenden
 
-Gebruik de onderstaande procedure die overeenkomt met uw back&mdash;-end-project Typ [.net-back-end](#dotnet) of [node. js-back-end](#nodejs).
+Gebruik de onderstaande procedure die overeenkomt met het back-upproject type @ no__t-0either [.net back](#dotnet) -end of [node. js](#nodejs).
 
 ### <a name="dotnet"></a>.NET-back-upproject
 
@@ -171,7 +171,7 @@ Gebruik de onderstaande procedure die overeenkomt met uw back&mdash;-end-project
 ## <a id="update-app"></a>Push meldingen toevoegen aan uw app
 Vervolgens moet uw app registreren voor push meldingen bij het opstarten. Wanneer u verificatie al hebt ingeschakeld, moet u ervoor zorgen dat de gebruiker zich aanmeldt voordat u probeert te registreren voor push meldingen.
 
-1. Open het project bestand **app.xaml.cs** en voeg de volgende `using` -instructies toe:
+1. Open het project bestand **app.xaml.cs** en voeg de volgende `using`-instructies toe:
 
     ```csharp
     using System.Threading.Tasks;

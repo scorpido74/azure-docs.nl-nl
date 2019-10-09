@@ -1,44 +1,44 @@
 ---
-title: Azure Data Factory gegevensstroom toewijzing maken
-description: Over het maken van een Azure Data Factory toewijzing gegevensstroom
+title: Gegevens stroom voor Azure Data Factory toewijzing maken
+description: Een gegevens stroom voor Azure Data Factory toewijzing maken
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/12/2019
-ms.openlocfilehash: 366ed60534544ebbf889e2f72fe703f9b821f871
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d8ebc026add9dfd85d7cbe312a8cfffd3e365f82
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65235667"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72026873"
 ---
-# <a name="create-azure-data-factory-data-flow"></a>Gegevensstroom van Azure Data Factory maken
+# <a name="create-azure-data-factory-data-flow"></a>Azure Data Factory gegevens stroom maken
 
-[!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
-Toewijzing van gegevens stromen in ADF bieden een manier om gegevens te transformeren op schaal zonder codering vereist. U kunt een taak voor gegevenstransformatie in de ontwerpfunctie van de gegevens door een reeks transformaties ontwerpen. Beginnen met een willekeurig aantal bron transformaties gevolgd door de stappen voor gegevenstransformatie. Voltooi uw gegevensstroom met sink op grond van de resultaten in een doel.
 
-Aan de slag door eerst een nieuwe V2-Gegevensfactory maken vanuit Azure portal. Nadat uw nieuwe gegevensfactory is gemaakt, klikt u op de tegel 'Maken en controleren' om te starten van de gebruikersinterface van Data Factory.
+Het toewijzen van gegevens stromen in ADF biedt een manier om gegevens op schaal te transformeren zonder dat hiervoor benodigde code hoeft te worden uitgevoerd. U kunt een gegevens transformatie taak ontwerpen in de ontwerp functie voor gegevens stromen door een reeks trans formaties te maken. Begin met een wille keurig aantal bron transformaties gevolgd door de stappen voor gegevens transformatie. Voltooi vervolgens uw gegevens stroom met Sink om uw resultaten in een bestemming te brengen.
 
-![Opties voor Flow](media/data-flow/v2portal.png "gegevensstroom maken")
+Ga aan de slag door eerst een nieuwe v2-Data Factory te maken op basis van de Azure Portal. Nadat u de nieuwe fabriek hebt gemaakt, klikt u op de tegel & controle maken om de Data Factory-gebruikers interface te starten.
 
-Zodra u zich in de gebruikersinterface van Data Factory, kunt u de voorbeeld-gegevens stromen kunt gebruiken. De voorbeelden zijn beschikbaar in de galerie met ADF. In ADF, maken 'Pijplijn van sjabloon' en selecteer de categorie gegevensstroom in de galerie met sjablonen.
+Gegevens stroom ![Opties voor gegevens]stroom(media/data-flow/v2portal.png "maken")
 
-![Opties voor Flow](media/data-flow/template.png "gegevensstroom maken")
+Zodra u zich in de Data Factory-gebruikers interface bevindt, kunt u voorbeeld gegevens stromen gebruiken. De voor beelden zijn beschikbaar in de galerie met ADF-sjablonen. Maak in ADF "pijp lijn van sjabloon" en selecteer de categorie gegevens stroom in de sjabloon galerie.
 
-U wordt gevraagd om in te voeren van de gegevens van uw Azure Blob Storage-account.
+Gegevens stroom ![Opties voor gegevens]stroom(media/data-flow/template.png "maken")
 
-![Opties voor Flow](media/data-flow/template2.png "gegevensstroom maken 2")
+U wordt gevraagd om uw Azure Blob Storage-account gegevens in te voeren.
 
-[De gegevens die worden gebruikt voor deze voorbeelden vindt u hier](https://github.com/kromerm/adfdataflowdocs/tree/master/sampledata). De voorbeeldgegevens downloaden en opslaan van de bestanden in uw Azure Blob storage-accounts, zodat u kunt de voorbeelden uitvoeren.
+Gegevensstroom ![Opties]gegevens(media/data-flow/template2.png "stroom maken 2")
 
-## <a name="create-new-data-flow"></a>Nieuwe gegevensstroom te maken
+[De gegevens die voor deze steek proeven worden gebruikt, kunt u hier vinden](https://github.com/kromerm/adfdataflowdocs/tree/master/sampledata). Down load de voorbeeld gegevens en sla de bestanden op in de Azure Blob Storage-accounts, zodat u de voor beelden kunt uitvoeren.
 
-Gebruik de Resource maken "plusteken" knop in de UI ADF gegevens stromen maken.
+## <a name="create-new-data-flow"></a>Nieuwe gegevens stroom maken
 
-![Opties voor Flow](media/data-flow/newresource.png "nieuwe Resource")
+Gebruik de knop voor het maken van een resource plus teken in de ADF-gebruikers interface om gegevens stromen te maken.
+
+![Opties voor gegevens stroom](media/data-flow/newresource.png "nieuwe resource")
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Begin met het maken van de gegevenstransformatie van uw met een [bron transformatie](data-flow-source.md).
+Begin met het bouwen van uw gegevens transformatie met een [bron transformatie](data-flow-source.md).

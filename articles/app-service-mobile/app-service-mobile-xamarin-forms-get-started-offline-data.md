@@ -1,6 +1,6 @@
 ---
-title: Offlinesynchronisatie inschakelen voor uw Azure Mobile App (Xamarin.Forms) | Microsoft Docs
-description: Informatie over het gebruik van App Service Mobile App naar de cache en synchroniseren offlinesynchronisatie van gegevens in uw Xamarin.Forms-toepassing
+title: Offline synchronisatie inschakelen voor uw mobiele Azure-app (Xamarin. Forms) | Microsoft Docs
+description: Meer informatie over het gebruik van App Service mobiele app om offline gegevens in de cache op te slaan en te synchroniseren in uw Xamarin. Forms-toepassing
 documentationcenter: xamarin
 author: elamalani
 manager: yochayk
@@ -14,49 +14,49 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
 ms.author: emalani
-ms.openlocfilehash: 53f339d5450965c992f6528ff294e0d37ec2f7f6
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 53d65d5577f8905d66da80e99cab6647f0a4dc4c
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67446288"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72025031"
 ---
 # <a name="enable-offline-sync-for-your-xamarinforms-mobile-app"></a>Offlinesynchronisatie inschakelen voor uw mobiele Xamarin.Forms-app
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
 
 > [!NOTE]
-> Visual Studio App Center investeert in nieuwe en geïntegreerde services centraal staat in de ontwikkeling van mobiele Apps. Ontwikkelaars kunnen gebruikmaken van **bouwen**, **Test** en **verdelen** services voor het instellen van de pijplijn voor continue integratie en levering. Zodra de app is geïmplementeerd, ontwikkelaars controleren de status en het gebruik van het gebruik van de app de **Analytics** en **Diagnostics** -services en Communiceer met gebruikers met behulp van de **Push** de service. Ontwikkelaars kunnen ook gebruikmaken van **Auth** om hun gebruikers te verifiëren en **gegevens** service behouden en synchroniseren van app-gegevens in de cloud. Bekijk [App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-xamarin-forms-get-started-offline-data) vandaag nog.
->
+> Visual Studio App Center ondersteunt end-to-end en geïntegreerde services in de ontwikkeling van mobiele apps. Ontwikkel aars kunnen services **bouwen**, **testen** en **distribueren** om een continue integratie-en leverings pijplijn in te stellen. Zodra de app is geïmplementeerd, kunnen ontwikkel aars de status en het gebruik van hun app bewaken met behulp van de **analyse** -en **diagnose** Services en gebruikers benaderen met behulp van de **Push** service. Ontwikkel aars kunnen ook gebruikmaken van **auth** voor het verifiëren van hun gebruikers en **gegevens** service om app-gegevens in de Cloud op te slaan en te synchroniseren.
+> Als u Cloud Services wilt integreren in uw mobiele toepassing, meldt u zich aan met App Center [app Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) vandaag.
 
 ## <a name="overview"></a>Overzicht
-In deze zelfstudie bevat de functie voor offlinesynchronisatie van Azure Mobile Apps voor Xamarin.Forms. Offlinesynchronisatie kunnen eindgebruikers om te communiceren met een mobiele app, weergeven, toevoegen of wijzigen van gegevens, zelfs als er geen netwerkverbinding. Wijzigingen worden opgeslagen in een lokale database. Zodra het apparaat weer online is, worden deze wijzigingen gesynchroniseerd met de externe service.
+In deze zelf studie wordt de functie voor offline synchronisatie van Azure Mobile Apps voor Xamarin. Forms geïntroduceerd. Met offline synchronisatie kunnen eind gebruikers communiceren met een mobiele app--gegevens weer geven, toevoegen of wijzigen, zelfs wanneer er geen netwerk verbinding is. Wijzigingen worden opgeslagen in een lokale data base. Zodra het apparaat weer online is, worden deze wijzigingen gesynchroniseerd met de externe service.
 
-In deze zelfstudie is gebaseerd op de Xamarin.Forms-snelstartgids-oplossing voor Mobile Apps die u maakt wanneer u de zelfstudie [een Xamarin iOS-app maken] voltooit. De Quick Start-oplossing voor Xamarin.Forms bevat de code voor de ondersteuning voor offlinesynchronisatie, die alleen moet worden ingeschakeld. In deze zelfstudie hebt bijwerken u de Quick Start-oplossing in te schakelen de offline functies van Azure Mobile Apps. Ook selecteren we de offline-specifieke code in de app. Als u het gedownloade Quick Start-oplossing niet gebruikt, moet u de data access-extensiepakketten toevoegen aan uw project. Zie voor meer informatie over het server-extensiepakketten [werken met de .NET back-endserver SDK voor Azure Mobile Apps][1].
+Deze zelf studie is gebaseerd op de Quick Start-oplossing Xamarin. Forms voor Mobile Apps die u maakt wanneer u de zelf studie hebt voltooid [een Xamarin iOS-app maken]. De Quick Start-oplossing voor Xamarin. Forms bevat de code voor de ondersteuning van offline synchronisatie, die alleen moet worden ingeschakeld. In deze zelf studie werkt u de Quick Start-oplossing bij om de offline functies van Azure Mobile Apps in te scha kelen. We markeren ook de offline-specifieke code in de app. Als u de gedownloade Quick Start-oplossing niet gebruikt, moet u de pakketten voor gegevens toegangs uitbreidingen toevoegen aan uw project. Zie [werken met de .net back-end server SDK voor Azure Mobile apps][1]voor meer informatie over server extensie pakketten.
 
-Zie het onderwerp voor meer informatie over de functie voor offlinesynchronisatie, [Offline gegevenssynchronisatie in Azure Mobile Apps][2].
+Zie het onderwerp [offline gegevens synchronisatie in Azure Mobile apps][2]voor meer informatie over de functie voor offline synchronisatie.
 
-## <a name="enable-offline-sync-functionality-in-the-quickstart-solution"></a>Schakel offlinesynchronisatie-functionaliteit in de Quick Start-oplossing
-De offline synchronisatie-code is opgenomen in het project met behulp van C# preprocessor-instructies. Wanneer de **OFFLINE\_synchronisatie\_ingeschakeld** symbool is gedefinieerd, wordt deze codepaden zijn opgenomen in de build. Voor Windows-apps, moet u ook de SQLite-platform installeren.
+## <a name="enable-offline-sync-functionality-in-the-quickstart-solution"></a>De functie voor offline synchronisatie inschakelen in de Quick Start-oplossing
+De offline synchronisatie code is opgenomen in het project door preprocessor-instructies te gebruiken C# . Wanneer het symbool **offline @ no__t-1SYNC @ no__t-2ENABLED** is gedefinieerd, worden deze code paden in de build opgenomen. Voor Windows-apps moet u ook het SQLite-platform installeren.
 
-1. In Visual Studio met de rechtermuisknop op de oplossing > **NuGet-pakketten beheren voor oplossing...** , zoek en installeer de **Microsoft.Azure.Mobile.Client.SQLiteStore** NuGet-pakket voor alle projecten in de oplossing.
-2. Open in Solution Explorer het bestand TodoItemManager.cs uit het project met **draagbare** vervolgens in de naam, die Portable Class Library-project, verwijder opmerkingen bij de volgende preprocessor-instructie:
+1. Klik in Visual Studio met de rechter muisknop op de oplossing > **NuGet-pakketten beheren voor oplossing...** en zoek en installeer het NuGet-pakket **micro soft. Azure. Mobile. client. SQLiteStore** voor alle projecten in de oplossing.
+2. Open in het Solution Explorer het TodoItemManager.cs-bestand van het project met een **draag bare** naam, een draagbaar Class Library-project en verwijder vervolgens de opmerking over de volgende preprocessor-instructie:
 
         #define OFFLINE_SYNC_ENABLED
-3. (Optioneel) Ter ondersteuning van Windows-apparaten, moet u een van de volgende pakketten van de SQLite-runtime installeren:
+3. Beschrijving Als u Windows-apparaten wilt ondersteunen, installeert u een van de volgende SQLite-runtime pakketten:
 
-   * **Windows 8.1-Runtime:** Installeer [SQLite voor Windows 8.1][3].
-   * **Windows Phone 8.1:** Installeer [SQLite voor Windows Phone 8.1][4].
-   * **Universal Windows Platform** installeren [SQLite voor het Universal Windows Universal][5].
+   * **Windows 8,1 runtime:** Installeer [sqlite voor Windows 8,1][3].
+   * **Windows Phone 8.1:** Installeer [sqlite voor Windows Phone 8,1][4].
+   * **Universeel Windows-platform** Installeer [sqlite voor de universele Windows Universal][5].
 
-     Hoewel de Snelstartgids een universele Windows-project bevat, worden de universele Windows-platform wordt ondersteund met Xamarin Forms.
-4. (Optioneel) In elke Windows-app-project met de rechtermuisknop op **verwijzingen** > **verwijzing toevoegen...** , vouw de **Windows** map > **extensies**.
-    Schakel de juiste **SQLite voor Windows** SDK samen met de **Visual C++ 2013-Runtime voor Windows** SDK.
-    De namen van de SQLite SDK verschillen met elke Windows-platform.
+     Hoewel de Snelstartgids geen universeel Windows-project bevat, wordt het Universal Windows-platform ondersteund met Xamarin Forms.
+4. Beschrijving Klik in elk Windows-app-project met de rechter muisknop op **verwijzingen** > **verwijzing toevoegen...** Vouw de **Windows** -map uit > **extensies**.
+    Schakel de juiste **sqlite voor Windows** SDK in samen met **de C++ Visual 2013 runtime voor de Windows** -SDK.
+    De SQLite-SDK-namen variëren enigszins met elk Windows-platform.
 
-## <a name="review-the-client-sync-code"></a>Bekijk de code van de synchronisatie van client
-Hier volgt een kort overzicht van wat is al opgenomen in de zelfstudie code binnen de `#if OFFLINE_SYNC_ENABLED` richtlijnen. De offline synchronisatie-functionaliteit is in het bestand TodoItemManager.cs project in het project draagbare klassenbibliotheek vormt. Zie voor een conceptueel overzicht van de functie [Offline gegevenssynchronisatie in Azure Mobile Apps][2].
+## <a name="review-the-client-sync-code"></a>De client synchronisatie code controleren
+Hier volgt een kort overzicht van wat er al is opgenomen in de zelfstudie code in de `#if OFFLINE_SYNC_ENABLED`-instructies. De offline synchronisatie functionaliteit bevindt zich in het TodoItemManager.cs-project bestand in het Portable Class Library-project. Zie [offline Data Sync in Azure Mobile apps][2]voor een conceptueel overzicht van de functie.
 
-* Voordat u een tabelbewerkingen kunnen worden uitgevoerd, moet het lokale archief worden geïnitialiseerd. De database van het lokale archief wordt geïnitialiseerd in het **TodoItemManager** klassenconstructor met behulp van de volgende code:
+* Voordat een tabel bewerking kan worden uitgevoerd, moet het lokale archief worden geïnitialiseerd. De lokale store-data base wordt geïnitialiseerd in de **TodoItemManager** -klasse-constructor met de volgende code:
 
         var store = new MobileServiceSQLiteStore(OfflineDbPath);
         store.DefineTable<TodoItem>();
@@ -66,12 +66,12 @@ Hier volgt een kort overzicht van wat is al opgenomen in de zelfstudie code binn
 
         this.todoTable = client.GetSyncTable<TodoItem>();
 
-    Deze code maakt een nieuwe lokale SQLite database met de **MobileServiceSQLiteStore** klasse.
+    Met deze code wordt een nieuwe lokale SQLite-data base gemaakt met behulp van de **MobileServiceSQLiteStore** -klasse.
 
-    De **DefineTable** methode maakt u een tabel in het lokale archief dat overeenkomt met de velden in het opgegeven type.  Het type beschikt niet over te nemen van de kolommen die zich in de externe database. Het is mogelijk voor het opslaan van een subset van kolommen.
-* De **todoTable** veld **TodoItemManager** is een **IMobileServiceSyncTable** typt u in plaats van **IMobileServiceTable**. Deze klasse maakt gebruik van de lokale database voor alle maken, lezen, bijwerken en verwijderen van de table-bewerkingen (CRUD). U besluit wanneer deze wijzigingen worden gepusht naar de back-end van de mobiele App door het aanroepen van **PushAsync** op de **IMobileServiceSyncContext**. De synchronisatie-context helpt u bij het behouden van relaties tussen tabellen bij te houden en pushen van wijzigingen in alle tabellen die een client-app is gewijzigd wanneer **PushAsync** wordt genoemd.
+    De methode **DefineTable** maakt een tabel in het lokale archief die overeenkomt met de velden in het geleverde type.  Het type moet niet alle kolommen bevatten die zich in de externe data base bevinden. Het is mogelijk om een subset kolommen op te slaan.
+* Het veld **todoTable** in **TodoItemManager** is een **IMobileServiceSyncTable** -type in plaats van **IMobileServiceTable**. Deze klasse maakt gebruik van de lokale Data Base voor alle bewerkingen voor maken, lezen, bijwerken en verwijderen (ruwe). U bepaalt wanneer deze wijzigingen worden gepusht naar de back-end van de mobiele app door het aanroepen van **PushAsync** op de **IMobileServiceSyncContext**. De synchronisatie context helpt bij het bewaren van tabel relaties door wijzigingen in alle tabellen bij te houden en te pushen. een client-app is gewijzigd wanneer **PushAsync** wordt aangeroepen.
 
-    De volgende **SyncAsync** methode wordt aangeroepen om te synchroniseren met de back-end van de mobiele App:
+    De volgende **SyncAsync** -methode wordt aangeroepen om te synchroniseren met de back-end van de mobiele app:
 
         public async Task SyncAsync()
         {
@@ -115,48 +115,48 @@ Hier volgt een kort overzicht van wat is al opgenomen in de zelfstudie code binn
             }
         }
 
-    In dit voorbeeld maakt gebruik van eenvoudige foutafhandeling met de standaard-handler voor synchronisatie. Een echte toepassing zou verwerken van de verschillende fouten, zoals netwerkomstandigheden en server veroorzaakt een conflict met een aangepaste **IMobileServiceSyncHandler** implementatie.
+    Dit voor beeld maakt gebruik van eenvoudige fout afhandeling met de standaardsynchronisatie-handler. Met een echte toepassing worden de verschillende fouten, zoals netwerk omstandigheden en server conflicten, verwerkt met behulp van een aangepaste **IMobileServiceSyncHandler** -implementatie.
 
-## <a name="offline-sync-considerations"></a>Overwegingen voor offlinesynchronisatie
-In het voorbeeld de **SyncAsync** methode wordt alleen aangeroepen op opstarten en wanneer een synchronisatie is aangevraagd.  Als u wilt een synchronisatie in een Android- of iOS-app zich in de lijst met items; opgehaald voor Windows, gebruikt u de **synchronisatie** knop. In een echte toepassing kan u ook de synchronisatie-trigger maken wanneer de netwerk-status verandert.
+## <a name="offline-sync-considerations"></a>Overwegingen voor offline synchronisatie
+In het voor beeld wordt de methode **SyncAsync** alleen aangeroepen voor opstarten en wanneer een synchronisatie wordt aangevraagd.  Als u een synchronisatie in een Android-of iOS-app wilt starten, gaat u naar de lijst items. voor Windows, gebruikt u de knop **synchroniseren** . In een echte toepassing kunt u ook de synchronisatie trigger maken wanneer de netwerk status wordt gewijzigd.
 
-Wanneer een pull wordt uitgevoerd op basis van een tabel die in behandeling heeft lokale updates bijgehouden door de context, die pull-bewerking automatisch triggers een vorige context-push. Bij het vernieuwen, toevoegen en het voltooien van items in dit voorbeeld kunt u weglaten de expliciete **PushAsync** aanroepen.
+Wanneer een pull-bewerking wordt uitgevoerd op basis van een tabel met in behandeling zijnde lokale updates die worden bijgehouden door de context, activeert die pull-bewerkingen automatisch een voor gaande context push. Wanneer u items in dit voor beeld vernieuwt, toevoegt en voltooit, kunt u de expliciete **PushAsync** -aanroep weglaten.
 
-In de opgegeven code, alle records in de externe TodoItem-tabel worden opgevraagd, maar het is ook mogelijk om te filteren van records op te geven van een query-id en de query om toegang te **PushAsync**. Zie voor meer informatie de sectie *incrementele synchronisatie* in [Offline gegevenssynchronisatie in Azure Mobile Apps][2].
+In de gegeven code worden alle records in de tabel externe TodoItem opgevraagd, maar het is ook mogelijk om records te filteren door een query-ID en een query door te geven aan **PushAsync**. Zie de sectie *incrementele synchronisatie* in [offline gegevens synchronisatie in azure Mobile apps][2]voor meer informatie.
 
 ## <a name="run-the-client-app"></a>De client-app uitvoeren
-Offline synchroniseren is nu ingeschakeld, voer de clienttoepassing uit ten minste één keer op elk platform voor het vullen van de lokale database. Later, simuleren van een offline-scenario en de gegevens in het lokale archief niet wijzigen terwijl de app offline is.
+Als offline synchronisatie nu is ingeschakeld, voert u de client toepassing ten minste één keer uit op elk platform om de lokale store-data base te vullen. Daarna kunt u een offline scenario simuleren en de gegevens in het lokale archief wijzigen terwijl de app offline is.
 
-## <a name="update-the-sync-behavior-of-the-client-app"></a>Het gedrag van de synchronisatie van de client-app bijwerken
-In deze sectie het clientproject voor het simuleren van een offline-scenario met behulp van een ongeldige toepassings-URL voor uw back-end te wijzigen. U kunt ook netwerkverbindingen uitschakelen door het verplaatsen van uw apparaat naar "Vliegtuigmodus."  Wanneer u toevoegen of wijzigen van gegevens, zijn deze wijzigingen ondergebracht in het lokale archief, maar niet is gesynchroniseerd met de back-end-gegevensarchief totdat de verbinding opnieuw tot stand gebracht.
+## <a name="update-the-sync-behavior-of-the-client-app"></a>Het synchronisatie gedrag van de client-app bijwerken
+In deze sectie wijzigt u het client project om een offline scenario te simuleren door gebruik te maken van een ongeldige toepassings-URL voor uw back-end. U kunt ook netwerk verbindingen uitschakelen door het apparaat naar de vliegtuig modus te verplaatsen.  Wanneer u gegevens items toevoegt of wijzigt, worden deze wijzigingen opgeslagen in het lokale archief, maar niet gesynchroniseerd met het back-end-gegevens archief totdat de verbinding opnieuw tot stand is gebracht.
 
-1. Open in Solution Explorer het projectbestand Constants.cs uit de **draagbare** projecten en wijzig de waarde van `ApplicationURL` om te verwijzen naar een ongeldige URL:
+1. Open in het Solution Explorer het project bestand Constants.cs uit het **draag bare** project en wijzig de waarde van `ApplicationURL` zodat deze naar een ongeldige URL verwijst:
 
         public static string ApplicationURL = @"https://your-service.azurewebsites.net/";
-2. Open het bestand TodoItemManager.cs uit de **draagbare** project en voeg een **catch** voor de base **uitzondering** klasse aan de **try... catch**blokkeren **SyncAsync**. Dit **catch** blok de uitzonderingsbericht schrijft naar de console als volgt:
+2. Open het TodoItemManager.cs-bestand van het **draag bare** project en voeg vervolgens een **Catch** -waarde voor de basis **uitzonderings** klasse toe aan de **try... Catch** -blok in **SyncAsync**. Dit **Catch** -blok schrijft het uitzonderings bericht als volgt naar de-console:
 
             catch (Exception ex)
             {
                 Console.Error.WriteLine(@"Exception: {0}", ex.Message);
             }
-3. Ontwikkel en voer de client-app.  Aantal nieuwe items toevoegen. U ziet dat er een uitzondering wordt geregistreerd in de console voor elke poging om te synchroniseren met de back-end. Deze nieuwe items bestaan alleen in het lokale archief totdat ze naar de mobiele back-end kunnen worden gepusht. De client-app gedraagt zich alsof het is verbonden met de back-end, ondersteunen die alle maken, lezen, bijwerken, (CRUD)-verwijderbewerkingen.
-4. De app sluit en opnieuw starten om te controleren dat de nieuwe items die u hebt gemaakt naar het lokale archief worden opgeslagen.
-5. (Optioneel) Visual Studio gebruiken om uw Azure SQL Database-tabel om te zien dat de gegevens in de back enddatabase niet is gewijzigd.
+3. De client-app bouwen en uitvoeren.  Voeg enkele nieuwe items toe. U ziet dat er een uitzonde ring wordt geregistreerd in de-console voor elke poging om te synchroniseren met de back-end. Deze nieuwe items bestaan alleen in het lokale archief totdat ze naar de mobiele back-end kunnen worden gepusht. De client-app gedraagt zich alsof deze is verbonden met de back-end, zodat alle bewerkingen voor maken, lezen, bijwerken, verwijderen (ruw) worden ondersteund.
+4. Sluit de app en start deze opnieuw om te controleren of de nieuwe items die u hebt gemaakt, zijn opgeslagen in het lokale archief.
+5. Beschrijving Gebruik Visual Studio om uw Azure SQL Database tabel weer te geven om te zien dat de gegevens in de back-end-data base niet zijn gewijzigd.
 
-    Open in Visual Studio, **Server Explorer**. Navigeer naar uw database in **Azure**->**SQL-Databases**. Met de rechtermuisknop op uw database en selecteer **openen in SQL Server-Objectverkenner**. Nu kunt u bladeren naar de tabel van uw SQL-database en de inhoud ervan.
+    Open **Server Explorer**in Visual Studio. Navigeer naar uw data base in **Azure**->**SQL-data bases**. Klik met de rechter muisknop op de data base en selecteer **openen in SQL Server-objectverkenner**. U kunt nu naar de SQL database-tabel en de inhoud bladeren.
 
-## <a name="update-the-client-app-to-reconnect-your-mobile-backend"></a>Update de client-app opnieuw verbinding maken met uw mobiele back-end
-In deze sectie maakt opnieuw verbinding maken met de app naar de mobiele back-end die overeenkomt met de app die binnenkort terug om een online status. Als u het gebaar van de vernieuwing uitvoert, worden gegevens is gesynchroniseerd met uw mobiele back-end.
+## <a name="update-the-client-app-to-reconnect-your-mobile-backend"></a>De client-app bijwerken om uw mobiele back-end opnieuw te verbinden
+In deze sectie verbindt u de app opnieuw met de mobiele back-end, waardoor de app wordt weer gegeven in een online status. Wanneer u de vernieuwings beweging uitvoert, worden de gegevens gesynchroniseerd met uw mobiele back-end.
 
-1. Open opnieuw Constants.cs. Corrigeer de `applicationURL` om te verwijzen naar de juiste URL.
-2. Opnieuw opbouwen en uitvoeren van de client-app. De app probeert te synchroniseren met de mobiele app back-end na het starten. Controleer of dat er geen uitzonderingen worden geregistreerd in de console voor foutopsporing.
-3. (Optioneel) De bijgewerkte gegevens met behulp van SQL Server Object Explorer of een REST-hulpprogramma zoals Fiddler bekijken of [Postman][6]. U ziet dat de gegevens is gesynchroniseerd tussen de back enddatabase en het lokale archief.
+1. Open Constants.cs opnieuw. Corrigeer het `applicationURL` om naar de juiste URL te verwijzen.
+2. Bouw en voer de client-app opnieuw uit. De app probeert te synchroniseren met de back-end van de mobiele app nadat deze is gestart. Controleer of er geen uitzonde ringen worden vastgelegd in de console voor fout opsporing.
+3. Beschrijving Bekijk de bijgewerkte gegevens met behulp van SQL Server-objectverkenner of een REST hulp programma zoals Fiddler of [postman][6]. U ziet dat de gegevens zijn gesynchroniseerd tussen de back-end-data base en het lokale archief.
 
-    U ziet dat de gegevens tussen de database en het lokale archief is gesynchroniseerd en bevat de items die u hebt toegevoegd, terwijl uw app is verbroken.
+    U ziet dat de gegevens zijn gesynchroniseerd tussen de data base en het lokale archief en de items bevat die u hebt toegevoegd toen de verbinding van uw app werd verbroken.
 
 ## <a name="additional-resources"></a>Aanvullende resources
 * [Offlinesynchronisatie van gegevens in Azure Mobile Apps][2]
-* [Azure Mobile Apps .NET SDK HOWTO][8]
+* [PROCEDURE voor Azure Mobile Apps .NET SDK][8]
 
 <!-- URLs. -->
 [1]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md

@@ -4,14 +4,14 @@ description: Azure Blob-opslag vullen voor gebruik met de Azure HPC-cache
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 09/24/2019
-ms.author: v-erkell
-ms.openlocfilehash: c18e1c9afab211a8ac076307eefc9074ae7c99d6
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.date: 10/07/2019
+ms.author: rohogue
+ms.openlocfilehash: 6c505e6918071b61a4152b0b421ed7cee3282206
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71299999"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72024497"
 ---
 # <a name="move-data-to-azure-blob-storage"></a>Gegevens verplaatsen naar Azure Blob-opslag
 
@@ -27,7 +27,7 @@ Houd u aan de volgende feiten:
 
 Een python-gebaseerd hulp programma is beschikbaar voor het laden van inhoud in een BLOB storage-container. Lees [vooraf geladen gegevens in Blob Storage](#pre-load-data-in-blob-storage-with-clfsload) voor meer informatie.
 
-Als u het laad hulpprogramma niet wilt gebruiken of als u inhoud wilt toevoegen aan een bestaand opslag doel, volgt u de tips voor het opnemen van parallelle gegevens in [gegevens kopiëren via de Azure HPC-cache](#copy-data-through-the-azure-hpc-cache). 
+Als u het laad hulpprogramma niet wilt gebruiken of als u inhoud wilt toevoegen aan een bestaand opslag doel, volgt u de tips voor het opnemen van parallelle gegevens in [gegevens kopiëren via de Azure HPC-cache](#copy-data-through-the-azure-hpc-cache).
 
 ## <a name="pre-load-data-in-blob-storage-with-clfsload"></a>Gegevens vooraf laden in Blob Storage met CLFSLoad
 
@@ -58,13 +58,13 @@ Het hulp programma avere CLFSLoad heeft de volgende informatie nodig:
 
 Als u het hulp programma avere CLFSLoad niet wilt gebruiken of als u een grote hoeveelheid gegevens wilt toevoegen aan een bestaand Blob Storage-doel, kunt u deze kopiëren via de cache. De Azure HPC-cache is zodanig ontworpen dat meerdere clients tegelijk kunnen worden gebruikt om gegevens te kopiëren via de cache, maar u moet parallelle schrijf bewerkingen van meerdere clients gebruiken.
 
-![Diagram van weer gave van gegevens verplaatsing met meerdere clients, meerdere threads: Linksboven bevindt zich in een pictogram voor on-premises hardware-opslag meerdere pijlen. De pijlen verwijzen naar vier client machines. Vanaf elke client computer worden drie pijlen naar de Azure HPC-cache gericht. Vanuit de Azure HPC-cache verwijzen meerdere pijlen naar Blob Storage.](media/hpc-cache-parallel-ingest.png) 
+![Diagram van weer gave van gegevens verplaatsing met meerdere clients, meerdere threads: Linksboven bevindt zich in een pictogram voor on-premises hardware-opslag meerdere pijlen. De pijlen verwijzen naar vier client machines. Vanaf elke client computer worden drie pijlen naar de Azure HPC-cache gericht. Vanuit de Azure HPC-cache verwijzen meerdere pijlen naar Blob Storage.](media/hpc-cache-parallel-ingest.png)
 
-De ``cp`` opdrachten ``copy`` of die u doorgaans gebruikt voor het overdragen van gegevens van het ene opslag systeem naar het andere, zijn processen met één thread waarmee slechts één bestand tegelijk wordt gekopieerd. Dit betekent dat de bestands server slechts één bestand tegelijkertijd bijwerkt. Dit is een afval van de bronnen in de cache.
+De opdrachten ``cp`` of ``copy`` die u doorgaans gebruikt voor het overdragen van gegevens van het ene opslag systeem naar het andere, zijn processen met één thread waarmee slechts één bestand tegelijk wordt gekopieerd. Dit betekent dat de bestands server slechts één bestand tegelijkertijd bijwerkt. Dit is een afval van de bronnen in de cache.
 
 In deze sectie worden strategieën uitgelegd voor het maken van een multi-client, multi-threaded bestand voor het kopiëren van gegevens naar Blob Storage met Azure HPC-cache. Hierin worden de concepten van bestands overdracht en beslissings punten uitgelegd die kunnen worden gebruikt voor het efficiënt kopiëren van gegevens met meerdere clients en eenvoudige Kopieer opdrachten.
 
-Er wordt ook een aantal hulpprogram ma's beschreven die kunnen helpen. Het ``msrsync`` hulp programma kan worden gebruikt om het proces voor het delen van een gegevensset in buckets gedeeltelijk te automatiseren en rsync-opdrachten te gebruiken. Het ``parallelcp`` script is nog een hulp programma waarmee de bron directory wordt gelezen en automatisch Kopieer opdrachten worden gekopieerd.
+Er wordt ook een aantal hulpprogram ma's beschreven die kunnen helpen. Het ``msrsync``-hulp programma kan worden gebruikt om het proces voor het delen van een gegevensset in buckets gedeeltelijk te automatiseren en rsync-opdrachten te gebruiken. Het ``parallelcp`` script is een ander hulp programma waarmee de bron directory wordt gelezen en automatisch Kopieer opdrachten worden gekopieerd.
 
 ### <a name="strategic-planning"></a>Strategische planning
 
@@ -77,11 +77,11 @@ Elk kopieer proces heeft een doorvoer snelheid en een snelheid waarmee bestanden
 
 Strategieën voor het opnemen van parallelle gegevens opname met Azure HPC cache zijn onder andere:
 
-* Hand matig kopiëren: u kunt hand matig een kopie met meerdere threads maken op een client door meer dan één Kopieer opdracht tegelijk op de achtergrond uit te voeren op basis van vooraf gedefinieerde sets van bestanden of paden. Lees de [Azure HPC-Cloud gegevens opnemen-hand matige Kopieer methode](hpc-cache-ingest-manual.md) voor meer informatie.
+* Hand matig kopiëren: u kunt hand matig een kopie met meerdere threads maken op een client door meer dan één Kopieer opdracht tegelijk op de achtergrond uit te voeren op basis van vooraf gedefinieerde sets van bestanden of paden. Lees de [Azure HPC cache-gegevens opname-hand matige Kopieer methode](hpc-cache-ingest-manual.md) voor meer informatie.
 
-* Gedeeltelijk geautomatiseerd ``msrsync`` kopiëren met  -  ``msrsync`` is een wrapper-hulp ``rsync`` programma dat meerdere parallelle processen uitvoert. Lees voor meer informatie de [methode Azure HPC cache data opname-msrsync](hpc-cache-ingest-msrsync.md).
+* Gedeeltelijk geautomatiseerd kopiëren met ``msrsync`` @ no__t-1 @ no__t-2 is een wrapper-hulp programma dat meerdere parallelle ``rsync`` processen uitvoert. Lees voor meer informatie de [methode Azure HPC cache data opname-msrsync](hpc-cache-ingest-msrsync.md).
 
-* Scripts kopiëren met ``parallelcp`` -informatie over het maken en uitvoeren van een script voor parallelle kopie in [Azure HPC-cache gegevens opname-parallelle kopie script methode](hpc-cache-ingest-parallelcp.md).
+* Scripts kopiëren met ``parallelcp``: meer informatie over het maken en uitvoeren van een script voor parallelle kopie in [Azure HPC-cache gegevens opname-parallelle kopie script methode](hpc-cache-ingest-parallelcp.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -1,6 +1,6 @@
 ---
-title: Groep op basis van aanvullende scenario's - Azure Active Directory-licentieverlening | Microsoft Docs
-description: Meer scenario's voor Azure Active Directory-groep op basis van licentieverlening
+title: Aanvullende scenario's op basis van een groeps licentie-Azure Active Directory | Microsoft Docs
+description: Meer scenario's voor het Azure Active Directory van groeps licenties
 services: active-directory
 keywords: Azure AD-licenties
 documentationcenter: ''
@@ -10,175 +10,166 @@ ms.service: active-directory
 ms.topic: article
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.date: 01/31/2019
+ms.date: 09/27/2019
 ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 24bf8e7cf103d583cf6604e0c529ad4ea267ce84
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 6cfdb8b979d20b77bcbf2f6b0d17855dfa0ac817
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60471767"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72034135"
 ---
-# <a name="scenarios-limitations-and-known-issues-using-groups-to-manage-licensing-in-azure-active-directory"></a>Scenario's, beperkingen en bekende problemen met behulp van groepen beheren in Azure Active Directory-licentieverlening
+# <a name="scenarios-limitations-and-known-issues-using-groups-to-manage-licensing-in-azure-active-directory"></a>Scenario's, beperkingen en bekende problemen met behulp van groepen voor het beheren van licenties in Azure Active Directory
 
-Gebruik de volgende informatie en voorbeelden te krijgen van een uitgebreidere kennis van Azure Active Directory (Azure AD)-groep op basis van licentieverlening.
+Gebruik de volgende informatie en voor beelden om een beter inzicht te krijgen in de licentie verlening op basis van Azure Active Directory (Azure AD).
 
-## <a name="usage-location"></a>Gebruikslocatie
+## <a name="usage-location"></a>Gebruiks locatie
 
-Sommige services van Microsoft zijn niet op alle locaties beschikbaar. Voordat een licentie kan worden toegewezen aan een gebruiker, de beheerder heeft om op te geven de **gebruikslocatie** eigenschap van de gebruiker. In [de Azure-portal](https://portal.azure.com), kunt u opgeven in **gebruiker** &gt; **profiel** &gt; **instellingen**.
+Sommige services van Microsoft zijn niet op alle locaties beschikbaar. Voordat een licentie aan een gebruiker kan worden toegewezen, moet de beheerder de eigenschap **gebruiks locatie** opgeven voor de gebruiker. In [de Azure Portal](https://portal.azure.com)kunt u gebruiks locatie opgeven in **gebruikers** &gt; **profiel** &gt; **instellingen**.
 
-Voor licentietoewijzing groep, worden gebruikers geen gebruikslocatie opgegeven overgenomen in de locatie van de map. Als u gebruikers op meerdere locaties hebt, moet u om weer te geven die correct in uw gebruikersobjecten voordat u gebruikers toevoegt aan groepen met licenties.
+Voor het toewijzen van een groeps licentie neemt de locatie van de map over van alle gebruikers waarvoor een gebruiks locatie is opgegeven. Als u gebruikers op meerdere locaties hebt, moet u ervoor zorgen dat deze correct in uw gebruikers bronnen worden weer gegeven voordat u gebruikers toevoegt aan groepen met licenties.
 
 > [!NOTE]
-> Groep licentietoewijzing wordt nooit een bestaande waarde van de locatie gebruik van een gebruiker wijzigen. U wordt aangeraden dat u altijd gebruikslocatie ingesteld als onderdeel van de gebruikersstroom maken in Azure AD (bijvoorbeeld via AAD Connect-configuratie) - die ervoor het resultaat van licentietoewijzing dat zorgt altijd juist is en dat gebruikers ontvangen geen services op locaties die niet zijn toegestaan.
+> Met de toewijzing van de groeps licentie wordt nooit een bestaande gebruiks locatie waarde voor een gebruiker gewijzigd. We raden u aan om de gebruiks locatie altijd in te stellen als onderdeel van de stroom voor het maken van een gebruiker in azure AD (bijvoorbeeld via AAD Connect-configuratie). Hiermee zorgt u ervoor dat het resultaat van de licentie toewijzing altijd juist is en dat gebruikers geen services ontvangen op locaties die niet zijn toegestaan.
 
-## <a name="use-group-based-licensing-with-dynamic-groups"></a>Gebruik Groepslicenties met dynamische groepen
+## <a name="use-group-based-licensing-with-dynamic-groups"></a>Op groep gebaseerde licentie verlening met dynamische groepen gebruiken
 
-U kunt gebruiken op basis van een groep met een beveiligingsgroep, wat betekent dat deze kan worden gecombineerd met dynamische groepen van Azure AD-licentieverlening. Dynamische groepen uitvoeren regels op basis van gebruiker-objectkenmerken om automatisch gebruikers toevoegen en verwijderen uit groepen.
+U kunt op groepen gebaseerde licentie verlening met elke beveiligings groep gebruiken, wat betekent dat deze kan worden gecombineerd met dynamische Azure AD-groepen. Dynamische groepen voeren regels uit op bron kenmerken van de gebruiker om gebruikers automatisch toe te voegen en te verwijderen uit groepen.
 
-Bijvoorbeeld, kunt u een dynamische groep voor een set producten die u wilt toewijzen aan gebruikers. Elke groep is ingevuld door een regel toe te voegen gebruikers door hun kenmerken en elke groep de licenties die u wilt laten ontvangen is toegewezen. U kunt de kenmerk on-premises toewijzen en deze synchroniseren met Azure AD, of kunt u het kenmerk rechtstreeks in de cloud beheren.
+U kunt bijvoorbeeld een dynamische groep maken voor een set producten die u aan gebruikers wilt toewijzen. Elke groep wordt gevuld met een regel waarmee gebruikers worden toegevoegd op basis van hun kenmerken, en aan elke groep worden de licenties toegewezen die u wilt ontvangen. U kunt het kenmerk on-premises toewijzen en dit synchroniseren met Azure AD of u kunt het kenmerk rechtstreeks in de Cloud beheren.
 
-Licenties zijn toegewezen aan de gebruiker, kort nadat ze zijn toegevoegd aan de groep. Als het kenmerk wordt gewijzigd, wordt de gebruiker verlaat de groepen en de licenties worden verwijderd.
+Er worden licenties toegewezen aan de gebruiker kort nadat ze aan de groep zijn toegevoegd. Wanneer het kenmerk wordt gewijzigd, de gebruiker de groepen verlaat en de licenties worden verwijderd.
 
 ### <a name="example"></a>Voorbeeld
 
-Bekijk het voorbeeld van een on-premises oplossing voor identiteitsbeheer die bepaalt welke gebruikers toegang krijgen tot webservices van Microsoft moeten hebben. Hierbij **extensionAttribute1** voor het opslaan van een string-waarde die aangeeft van de licenties voor de gebruiker moet beschikken. Azure AD Connect synchroniseert deze met Azure AD.
+Bekijk het voor beeld van een on-premises identiteits beheer oplossing die bepaalt welke gebruikers toegang moeten hebben tot micro soft-webservices. **ExtensionAttribute1** wordt gebruikt om een teken reeks waarde op te slaan voor de licenties die de gebruiker moet hebben. Azure AD Connect synchroniseert dit met Azure AD.
 
-Gebruikers mogelijk moeten een licentie, maar niet nog een of beide nodig. Hier volgt een voorbeeld, waarin u Office 365 Enterprise E5 en Enterprise Mobility + Security (EMS)-licenties aan gebruikers in groepen distribueert:
+Gebruikers hebben mogelijk één licentie nodig, maar niet een andere, of kunnen beide. Hier volgt een voor beeld waarin u de licenties voor Office 365 Enter prise E5 en Enterprise Mobility + Security (EMS) distribueert voor gebruikers in groepen:
 
-#### <a name="office-365-enterprise-e5-base-services"></a>Office 365 Enterprise E5: basis-services
+#### <a name="office-365-enterprise-e5-base-services"></a>Office 365 Enter prise E5: basis Services
 
-![Schermafbeelding van Office 365 Enterprise E5 base services](./media/licensing-group-advanced/o365-e5-base-services.png)
+![Scherm afbeelding van de basis services van Office 365 Enter prise E5](./media/licensing-group-advanced/o365-e5-base-services.png)
 
 #### <a name="enterprise-mobility--security-licensed-users"></a>Enterprise Mobility + Security: gelicentieerde gebruikers
 
-![Schermafbeelding van Enterprise Mobility + Security gelicentieerde gebruikers](./media/licensing-group-advanced/o365-e5-licensed-users.png)
+![Scherm afbeelding van Enterprise Mobility + Security gelicentieerde gebruikers](./media/licensing-group-advanced/o365-e5-licensed-users.png)
 
-In dit voorbeeld wijzigen van een gebruiker en hun extensionAttribute1 ingesteld op de waarde van `EMS;E5_baseservices;` als u wilt dat de gebruiker beide licenties hebt. Deze wijziging kunt u on-premises. Nadat de wijziging wordt gesynchroniseerd met de cloud, de gebruiker wordt automatisch toegevoegd aan beide groepen en licenties zijn toegewezen.
+Voor dit voor beeld wijzigt u één gebruiker en stelt u de extensionAttribute1 in op de waarde van `EMS;E5_baseservices;` als u wilt dat de gebruiker beide licenties moet hebben. U kunt deze wijziging on-premises aanbrengen. Nadat de wijziging is gesynchroniseerd met de Cloud, wordt de gebruiker automatisch toegevoegd aan beide groepen en worden er licenties toegewezen.
 
-![Schermopname van het instellen van de gebruiker extensionAttribute1](./media/licensing-group-advanced/user-set-extensionAttribute1.png)
+![Scherm afbeelding die laat zien hoe de extensionAttribute1 van de gebruiker kan worden ingesteld](./media/licensing-group-advanced/user-set-extensionAttribute1.png)
 
 > [!WARNING]
-> Wees voorzichtig bij het wijzigen van de regel voor verzameling van een bestaande groep. Als een regel wordt gewijzigd, is het lidmaatschap van de groep opnieuw geëvalueerd en gebruikers die niet meer overeen met de nieuwe regel worden verwijderd (gebruikers die nog steeds overeen met die de nieuwe regel wordt niet beïnvloed tijdens dit proces). Deze gebruikers hebben hun licenties verwijderd tijdens het proces die leiden verlies van de service of in sommige gevallen tot kan, verlies van gegevens.
+> Wees voorzichtig met het wijzigen van de lidmaatschaps regel van een bestaande groep. Wanneer een regel wordt gewijzigd, wordt het lidmaatschap van de groep opnieuw geëvalueerd en worden gebruikers die niet meer overeenkomen met de nieuwe regel, verwijderd (gebruikers die nog steeds overeenkomen met de nieuwe regel, worden niet beïnvloed tijdens dit proces). De licenties van deze gebruikers worden tijdens het proces verwijderd, wat kan leiden tot verlies van de service, of in sommige gevallen gegevens verlies.
 > 
-> Als u een grote dynamische groep die u afhankelijk bent voor het toewijzen van licenties hebt, kunt u geen grote wijzigingen op een kleinere testgroep valideren voordat u deze toepast op de belangrijkste groep.
+> Als u een grote dynamische groep hebt die afhankelijk is van de licentie toewijzing, kunt u overwegen om eventuele belang rijke wijzigingen in een kleinere test groep te valideren voordat u deze toepast op de hoofd groep.
 
 ## <a name="multiple-groups-and-multiple-licenses"></a>Meerdere groepen en meerdere licenties
 
-Een gebruiker kan lid zijn van meerdere groepen met licenties zijn. Hier volgen enkele aandachtspunten voor:
+Een gebruiker kan lid zijn van meerdere groepen met licenties. Hier volgen enkele dingen die u moet overwegen:
 
-- Meerdere licenties voor hetzelfde product kunnen overlappen, en ze resulteren in alle ingeschakelde services die worden toegepast op de gebruiker. Het volgende voorbeeld ziet u twee licenties groepen: *E3 basisservices* de foundation-services voor het eerst implementeren voor alle gebruikers bevat. En *E3 services uitgebreid* bevat aanvullende services (Sway en Planner) om alleen op bepaalde gebruikers te implementeren. In dit voorbeeld wordt is de gebruiker toegevoegd aan beide groepen:
+- Meerdere licenties voor hetzelfde product kunnen elkaar overlappen, waardoor alle ingeschakelde services worden toegepast op de gebruiker. In het volgende voor beeld ziet u twee licentie groepen: *E3 basis Services* bevat de kern services die eerst moeten worden geïmplementeerd, voor alle gebruikers. En *E3 Extended Services* bevat extra services (Sway en planner) om alleen voor bepaalde gebruikers te implementeren. In dit voor beeld is de gebruiker toegevoegd aan beide groepen:
 
-  ![Schermopname van het ingeschakelde services](./media/licensing-group-advanced/view-enabled-services.png)
+  ![Scherm opname van ingeschakelde Services](./media/licensing-group-advanced/view-enabled-services.png)
 
-  De gebruiker heeft als gevolg hiervan 7 van de 12 services in het product dat is ingeschakeld, terwijl u slechts één licentie voor dit product.
+  Als gevolg hiervan heeft de gebruiker 7 van de 12 Services in het product ingeschakeld, terwijl er slechts één licentie voor dit product wordt gebruikt.
 
-- Selecteren van de *E3* licentie bevat meer informatie, waaronder informatie over welke groepen veroorzaakt welke services zijn ingeschakeld voor de gebruiker.
+- Als u de *E3* -licentie selecteert, worden meer details weer gegeven, inclusief informatie over welke services voor de gebruiker zijn ingeschakeld door de toewijzing van de groeps licentie.
 
-  ![Schermopname van het ingeschakelde services per groep](./media/licensing-group-advanced/view-enabled-service-by-group.png)
+## <a name="direct-licenses-coexist-with-group-licenses"></a>Directe licenties naast groeps licenties
 
-## <a name="direct-licenses-coexist-with-group-licenses"></a>Licenties voor direct worden gecombineerd met Groepslicenties
+Wanneer een gebruiker een licentie van een groep overneemt, kunt u deze licentie toewijzing niet rechtstreeks verwijderen of wijzigen in de eigenschappen van de gebruiker. Wijzigingen moeten worden aangebracht in de groep en vervolgens door gegeven aan alle gebruikers.
 
-Wanneer een gebruiker een licentie worden overgenomen uit een groep, kan u rechtstreeks verwijderen of wijzigen van deze toewijzing van licenties in de eigenschappen van de gebruiker. Wijzigingen moeten worden aangebracht in de groep en vervolgens doorgegeven aan alle gebruikers.
+Het is echter wel mogelijk om dezelfde product licentie rechtstreeks toe te wijzen aan de gebruiker, naast de overgenomen licentie. U kunt voor één gebruiker extra services van het product inschakelen, zonder dat dit van invloed is op andere gebruikers.
 
-Het is echter wel mogelijk om toe te wijzen de dezelfde productlicentie rechtstreeks naar de gebruiker, naast de overgenomen licenties. U kunt aanvullende services van het product speciaal voor één gebruiker, zonder gevolgen voor andere gebruikers.
+Rechtstreeks toegewezen licenties kunnen worden verwijderd en heeft geen invloed op overgenomen licenties. Denk na over de gebruiker die een Office 365 Enter prise E3-licentie van een groep overneemt.
 
-Direct toegewezen licenties kunnen worden verwijderd en niet van invloed op overgenomen licenties. Houd rekening met de gebruiker die een licentie voor Office 365 Enterprise E3 uit een groep overgenomen.
+In eerste instantie neemt de gebruiker de licentie alleen over van de *E3 Basic Services* -groep, waardoor vier service plannen worden ingeschakeld.
 
-1. In eerste instantie, neemt de gebruiker over de licentie alleen vanaf de *E3 basisservices* groep waarmee vier service-abonnementen, zoals wordt weergegeven:
+1. Selecteer **toewijzen** om een E3-licentie rechtstreeks toe te wijzen aan de gebruiker. In dit geval gaat u alle service abonnementen uitschakelen, behalve Yammer Enter prise.
 
-   ![Schermafbeelding van E3-groep ingeschakelde services](./media/licensing-group-advanced/e3-group-enabled-services.png)
+    Als gevolg hiervan gebruikt de gebruiker nog steeds slechts één licentie van het E3-product. Maar de directe toewijzing maakt de Yammer Enter prise-service alleen voor die gebruiker. U kunt zien welke services worden ingeschakeld door het groepslid maatschap en de directe toewijzing.
 
-2. U kunt selecteren **toewijzen** rechtstreeks een E3-licentie toewijzen aan de gebruiker. In dit geval wilt u alle serviceabonnementen, behalve Yammer Enterprise uitschakelen:
+1. Wanneer u een directe toewijzing gebruikt, zijn de volgende bewerkingen toegestaan:
 
-   ![Schermafbeelding van een licentie rechtstreeks aan een gebruiker toewijzen](./media/licensing-group-advanced/assign-license-to-user.png)
+   - Yammer Enter prise kan rechtstreeks worden uitgeschakeld voor de gebruikers resource. De **in-** /uitschakelen in de afbeelding is ingeschakeld voor deze service, in tegens telling tot de andere service. Omdat de service rechtstreeks op de gebruiker is ingeschakeld, kan deze worden gewijzigd.
+   - Extra services kunnen ook worden ingeschakeld als onderdeel van de rechtstreeks toegewezen licentie.
+   - De knop **verwijderen** kan worden gebruikt om de rechtstreekse licentie van de gebruiker te verwijderen. U kunt zien dat de gebruiker nu alleen de overgenomen groeps licentie heeft en dat alleen de oorspronkelijke Services ingeschakeld blijven:
 
-3. Als gevolg hiervan wordt de gebruiker nog steeds slechts één licentie van het product E3. Maar rechtstreekse toewijzing toe, schakelt u de Enterprise Yammer-service voor die gebruiker alleen. U kunt zien welke services zijn ingeschakeld door het groepslidmaatschap versus rechtstreekse toewijzing toe:
+## <a name="managing-new-services-added-to-products"></a>Nieuwe services die zijn toegevoegd aan producten beheren
 
-   ![Schermafbeelding van overgenomen ten opzichte van rechtstreekse toewijzing toe](./media/licensing-group-advanced/direct-vs-inherited-assignment.png)
+Wanneer micro soft een nieuwe service toevoegt aan een licentie plan voor een product, wordt deze standaard ingeschakeld in alle groepen waaraan u de product licentie hebt toegewezen. Gebruikers in uw Tenant die zich abonneren op meldingen over product wijzigingen ontvangen e-mails van tevoren een melding over de aanstaande service toevoegingen.
 
-4. Wanneer u directe toewijzing, worden de volgende bewerkingen zijn toegestaan:
+Als beheerder kunt u alle groepen bekijken die worden beïnvloed door de wijziging en actie ondernemen, zoals het uitschakelen van de nieuwe service in elke groep. Als u bijvoorbeeld groepen hebt gemaakt met als doel alleen specifieke services voor implementatie, kunt u deze groepen opnieuw bezoeken en ervoor zorgen dat toegevoegde services worden uitgeschakeld.
 
-   - Yammer-onderneming kan worden uitgeschakeld op het gebruikersobject rechtstreeks. De **aan/uit-** in-/ uitschakelen in de afbeelding is ingeschakeld voor deze service, in plaats van de andere service in-of uitschakelen. Omdat de service rechtstreeks op de gebruiker is ingeschakeld, kan worden gewijzigd.
-   - Aanvullende services kunnen ook worden ingeschakeld, als onderdeel van de licentie rechtstreeks toegewezen.
-   - De **verwijderen** knop kan worden gebruikt om de directe licentie verwijderen van de gebruiker. U kunt zien dat de gebruiker nu alleen de overgenomen groepslicentie heeft en alleen de oorspronkelijke services ingeschakeld blijven:
+Hier volgt een voor beeld van hoe dit proces eruit kan zien:
 
-     ![Schermopname die laat zien hoe u directe toewijzing verwijderen](./media/licensing-group-advanced/remove-direct-license.png)
+1. Oorspronkelijk hebt u het *Office 365 Enter prise E5* -product toegewezen aan verschillende groepen. Een van deze groepen, met de naam *O365 E5-Exchange is alleen* ontworpen om alleen de *Exchange Online-service (abonnement 2)* voor de leden in te scha kelen.
 
-## <a name="managing-new-services-added-to-products"></a>Beheren van nieuwe services toegevoegd aan producten
-Wanneer Microsoft een nieuwe service aan een product toevoegt, wordt deze standaard in alle groepen waarop u de productlicentie hebt toegewezen worden ingeschakeld. Gebruikers in uw tenant die zijn geabonneerd op meldingen over de productwijzigingen, e-mailberichten tevoren om ze te informeren over de aanstaande service-toevoegingen ontvangen.
+2. U hebt een melding ontvangen van micro soft dat het E5-product wordt uitgebreid met een nieuwe service- *Microsoft stream*. Wanneer de service beschikbaar wordt in uw Tenant, kunt u het volgende doen:
 
-U kunt als beheerder, alle groepen die worden beïnvloed door een wijziging bekijken en actie ondernemen, zoals het uitschakelen van de nieuwe service in elke groep. Bijvoorbeeld, als u groepen die zijn gericht op alleen specifieke services voor de implementatie gemaakt, kunt u terugkeren naar deze groepen en zorg ervoor dat alle nieuwe toegevoegde services zijn uitgeschakeld.
+3. Ga naar de [**Azure Active Directory > licenties > alle producten**](https://portal.azure.com/#blade/Microsoft_AAD_IAM/LicensesMenuBlade/Products) Blade en selecteer *Office 365 Enter prise E5*en selecteer vervolgens **gelicentieerde groepen** om een lijst weer te geven van alle groepen met dat product.
 
-Hier volgt een voorbeeld van hoe dit proces eruit kan zien:
-
-1. Oorspronkelijk is aan u toegewezen de *Office 365 Enterprise E5* product aan verschillende groepen. Een van deze groepen, genaamd *Office 365 E5 - alleen Exchange* is ontworpen om in te schakelen, alleen de *Exchange Online (abonnement 2)* service zodat de leden ervan.
-
-2. U hebt een melding ontvangen van Microsoft dat het product E5 zal worden uitgebreid met een nieuwe service - *Microsoft Stream*. Wanneer de service beschikbaar is in uw tenant, kunt u het volgende doen:
-
-3. Ga naar de [ **Azure Active Directory > licenties > alle producten** ](https://portal.azure.com/#blade/Microsoft_AAD_IAM/LicensesMenuBlade/Products) blade en selecteer *Office 365 Enterprise E5*en selecteer vervolgens **in licentie gegeven groepen** om een lijst van alle groepen met dat product weer te geven.
-
-4. Klik op de groep die u wenst te controleren (in dit geval *Office 365 E5 - alleen Exchange*). Hiermee opent u de **licenties** tabblad. Te klikken op de licentie E5 wordt een blade geopend met alle ingeschakelde services.
+4. Klik op de groep die u wilt controleren (in dit geval *O365 E5-alleen Exchange*). Hiermee opent u het tabblad **licenties** . Als u op de E5-licentie klikt, wordt een Blade met alle ingeschakelde Services geopend.
    > [!NOTE]
-   > De *Microsoft Stream* service is automatisch toegevoegd en ingeschakeld in deze groep, in aanvulling op de *Exchange Online* service:
+   > De *Microsoft stream* -service is naast de *Exchange Online* -service automatisch toegevoegd en ingeschakeld in deze groep:
 
-   ![Schermafbeelding van de nieuwe service toegevoegd aan een groepslicentie](./media/licensing-group-advanced/manage-new-services.png)
+   ![Scherm opname van nieuwe service toegevoegd aan een groeps licentie](./media/licensing-group-advanced/manage-new-services.png)
 
-5. Als u uitschakelen van de nieuwe service in deze groep wilt, klikt u op de **aan/uit-** naast de service in-/ uitschakelen en klik op de **opslaan** knop om de wijziging te bevestigen. Azure AD wordt nu alle gebruikers in de groep om toe te passen van de wijziging; verwerken nieuwe gebruikers toegevoegd aan de groep heeft niet de *Microsoft Stream* -service is ingeschakeld.
+5. Als u de nieuwe service in deze groep wilt uitschakelen, klikt u op de **aan/uit-** weer geven naast de service en klikt u op de knop **Opslaan** om de wijziging te bevestigen. Alle gebruikers in de groep worden nu door Azure AD verwerkt om de wijziging toe te passen. nieuwe gebruikers die zijn toegevoegd aan de groep, hebben geen *Microsoft stream* -service ingeschakeld.
 
    > [!NOTE]
-   > Gebruikers hebben mogelijk nog steeds de service is ingeschakeld via een andere licentietoewijzing (een andere groep ze lid zijn van of een rechtstreekse licentietoewijzing zijn).
+   > Gebruikers hebben mogelijk de service nog steeds ingeschakeld via een andere licentie toewijzing (een andere groep waarvan ze lid zijn of een directe licentie toewijzing).
 
-6. Indien nodig, de dezelfde stappen uitvoeren voor andere groepen met dit product dat is toegewezen.
+6. Voer, indien nodig, dezelfde stappen uit voor andere groepen waaraan dit product is toegewezen.
 
-## <a name="use-powershell-to-see-who-has-inherited-and-direct-licenses"></a>PowerShell gebruiken om te zien wie heeft overgenomen en directe licenties
-U kunt een PowerShell-script gebruiken om te controleren of gebruikers een licentie die rechtstreeks is toegewezen of overgenomen van een groep.
+## <a name="use-powershell-to-see-who-has-inherited-and-direct-licenses"></a>Power shell gebruiken om te zien wie en welke licenties zijn overgenomen
+U kunt een Power shell-script gebruiken om te controleren of gebruikers een licentie rechtstreeks of overgenomen van een groep hebben toegewezen.
 
-1. Voer de `connect-msolservice` cmdlet om te verifiëren en verbinding maken met uw tenant.
+1. Voer de `connect-msolservice`-cmdlet uit om uw Tenant te verifiëren en er verbinding mee te maken.
 
-2. `Get-MsolAccountSku` kan worden gebruikt voor het detecteren van alle ingerichte productlicenties in de tenant.
+2. `Get-MsolAccountSku` kan worden gebruikt voor het detecteren van alle ingerichte product licenties in de Tenant.
 
-   ![Schermafbeelding van de cmdlet Get-Msolaccountsku](./media/licensing-group-advanced/get-msolaccountsku-cmdlet.png)
+   ![Scherm afbeelding van de cmdlet Get-Msolaccountsku](./media/licensing-group-advanced/get-msolaccountsku-cmdlet.png)
 
-3. Gebruik de *AccountSkuId* waarde voor de licentie die u geïnteresseerd in met bent [dit PowerShell-script](licensing-ps-examples.md#check-if-user-license-is-assigned-directly-or-inherited-from-a-group). Het resultaat is een lijst van gebruikers met deze licentie met de informatie over hoe de licentie is toegewezen.
+3. Gebruik [Dit Power shell-script](licensing-ps-examples.md#check-if-user-license-is-assigned-directly-or-inherited-from-a-group)om de *AccountSkuId* -waarde voor de licentie die u wilt gebruiken. Hiermee wordt een lijst met gebruikers met deze licentie gemaakt met de informatie over de manier waarop de licentie is toegewezen.
 
-## <a name="use-audit-logs-to-monitor-group-based-licensing-activity"></a>Auditlogboeken gebruiken voor het bewaken van licentieverlening activiteit op basis van een groep
+## <a name="use-audit-logs-to-monitor-group-based-licensing-activity"></a>Controle Logboeken gebruiken voor het bewaken van op groepen gebaseerde licentie activiteiten
 
-U kunt [Azure AD-auditlogboeken](../reports-monitoring/concept-audit-logs.md#audit-logs) om te zien van alle activiteiten die betrekking hebben op groepen gebaseerde licentieverlening, met inbegrip van:
-- wie licenties voor groepen heeft gewijzigd
-- Wanneer het systeem de verwerking van een wijziging van de licentie groep, en wanneer deze voltooid
-- welke licentiewijzigingen zijn aangebracht aan een gebruiker als gevolg van een groep licentietoewijzing.
+U kunt [Azure AD-controle logboeken](../reports-monitoring/concept-audit-logs.md#audit-logs) gebruiken om alle activiteiten te zien die betrekking hebben op op groepen gebaseerde licentie verlening, waaronder:
+- Wie heeft de licenties op groepen gewijzigd
+- Wanneer het systeem is begonnen met het verwerken van een wijziging in een groeps licentie en wanneer deze is voltooid
+- welke licentie wijzigingen zijn aangebracht aan een gebruiker als gevolg van een toewijzing van een groeps licentie.
 
 >[!NOTE]
-> Auditlogboeken zijn beschikbaar op de meeste in de sectie Azure Active Directory van de portal-blades. Afhankelijk van waar u ze openen, mogelijk filters vooraf toegepast op de activiteit alleen relevant zijn voor de context van de blade weergeven. Als u niet de verwachte resultaten ziet, controleert u [de filteropties](../reports-monitoring/concept-audit-logs.md#filtering-audit-logs) of toegang krijgen tot de ongefilterde auditlogboeken onder [ **Azure Active Directory > activiteit > auditlogboeken** ](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Audit).
+> Audit logboeken zijn beschikbaar op de meeste blades in het gedeelte Azure Active Directory van de portal. Afhankelijk van waar u ze opent, kunnen filters vooraf worden toegepast om alleen activiteiten weer te geven die relevant zijn voor de context van de Blade. Als u niet de verwachte resultaten ziet, bekijkt u [de filter opties](../reports-monitoring/concept-audit-logs.md#filtering-audit-logs) of opent u de niet-gefilterde audit Logboeken onder [**Azure Active Directory > activiteit > audit logboeken**](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Audit).
 
-### <a name="find-out-who-modified-a-group-license"></a>Ontdek wie een groepslicentie gewijzigd
+### <a name="find-out-who-modified-a-group-license"></a>Ontdekken wie een groeps licentie heeft gewijzigd
 
-1. Stel de **activiteit** filteren op *groepslicentie instellen* en klikt u op **toepassen**.
-2. De resultaten bevatten alle gevallen van licenties worden ingesteld of gewijzigd op groepen.
+1. Stel het **activiteiten** filter in op het instellen van de *groeps licentie* en klik op **Toep assen**.
+2. De resultaten omvatten alle gevallen van licenties die worden ingesteld of gewijzigd op groepen.
    >[!TIP]
-   > U kunt ook Typ de naam van de groep in de *doel* filter als bereik voor de resultaten.
+   > U kunt ook de naam van de groep in het *doel* filter typen om de resultaten te bereiken.
 
-3. Klik op een item in de lijstweergave kunt u de details van wat is gewijzigd. Onder *eigenschappen gewijzigd* oude en nieuwe waarden voor het toewijzen van licenties worden weergegeven.
+3. Selecteer een item in de lijst om de details te bekijken van wat er is gewijzigd. Onder *gewijzigde eigenschappen* worden zowel oude als nieuwe waarden voor de licentie toewijzing weer gegeven.
 
-Hier volgt een voorbeeld van recente groep licentiewijzigingen, met meer informatie:
+Hier volgt een voor beeld van recente wijzigingen in groeps licenties, met Details:
 
-![Schermafbeelding van groep licentiewijzigingen](./media/licensing-group-advanced/audit-group-license-change.png)
+![Licentie wijzigingen van scherm opname groep](./media/licensing-group-advanced/audit-group-license-change.png)
 
-### <a name="find-out-when-group-changes-started-and-finished-processing"></a>Nagaan wanneer wijzigingen aan de slag en verwerking is voltooid
+### <a name="find-out-when-group-changes-started-and-finished-processing"></a>Nagaan wanneer de groeps wijzigingen zijn gestart en de verwerking is voltooid
 
-Wanneer een licentie voor een groep wordt gewijzigd, wordt Azure AD gestart de wijzigingen toepassen op alle gebruikers.
+Wanneer een licentie wordt gewijzigd voor een groep, gaat Azure AD de wijzigingen Toep assen op alle gebruikers.
 
-1. Om te zien wanneer groepen met de verwerking, stel de **activiteit** filteren op *Start toepassen op basis van groepslicentie op gebruikers*. Houd er rekening mee dat de actor voor de bewerking is *Microsoft Azure AD-groep op basis van licentieverlening* -een systeemaccount dat wordt gebruikt voor het uitvoeren van alle wijzigingen in licentie.
+1. Als u wilt zien wanneer groepen zijn begonnen met de verwerking, stelt u het **activiteit** filter in op het *Toep assen van groeps licentie op gebruikers*. Houd er rekening mee dat de actor voor de bewerking is *Microsoft Azure AD op groep gebaseerde licentie verlening* : een systeem account dat wordt gebruikt voor het uitvoeren van alle groeps licentie wijzigingen.
    >[!TIP]
-   > Klik op een item in de lijst om te zien de *eigenschappen gewijzigd* field - deze ziet u de licentiewijzigingen die zijn opgehaald voor de verwerking. Dit is handig als u meerdere wijzigingen aan een groep aangebracht en u niet zeker weet welke is verwerkt.
+   > Klik op een item in de lijst om het veld *gewijzigde eigenschappen* weer te geven. hier worden de licentie wijzigingen weer gegeven die zijn opgenomen voor verwerking. Dit is handig als u meerdere wijzigingen in een groep hebt aangebracht en u niet zeker weet welk item is verwerkt.
 
-2. Op dezelfde manier als u wilt zien wanneer groepen verwerking is voltooid, gebruiken de filterwaarde *toepassen op basis van groepslicentie op gebruikers voltooien*.
+2. Als u wilt zien wanneer de verwerking van groepen is voltooid, gebruikt u de filter waarde *Toep assen op groep gebaseerd op gebruikers*.
    > [!TIP]
-   > In dit geval de *eigenschappen gewijzigd* veld bevat een overzicht van de resultaten: dit is handig om snel te controleren als verwerking leidde tot fouten. Voorbeelduitvoer:
+   > In dit geval bevat het veld *gewijzigde eigenschappen* een samen vatting van de resultaten. Dit is handig om snel te controleren of er fouten zijn opgetreden in de verwerking. Voorbeelduitvoer:
    > ```
    > Modified Properties
    > ...
@@ -187,52 +178,52 @@ Wanneer een licentie voor een groep wordt gewijzigd, wordt Azure AD gestart de w
    > New Value : [Users successfully assigned licenses: 6, Users for whom license assignment failed: 0.];
    > ```
 
-3. Als u wilt zien van het volledige logboek voor hoe een groep is verwerkt, met inbegrip van alle wijzigingen van de gebruiker, stel de volgende filters:
-   - **Gestart door (Actor)** : "Microsoft Azure AD-groep op basis van licentieverlening"
-   - **Datumbereik** (optioneel): aangepast bereik voor wanneer u een specifieke groep weet gestart en de verwerking is voltooid
+3. Stel de volgende filters in om het volledige logboek voor de verwerking van een groep te bekijken, inclusief alle gebruikers wijzigingen:
+   - **Gestart door (actor)** : "Microsoft Azure AD op groep gebaseerde licentie verlening"
+   - **Datum bereik** (optioneel): aangepast bereik voor wanneer u een specifieke groep hebt gestart en de verwerking hebt voltooid
 
-In dit voorbeeld van de uitvoer ziet u het begin van de verwerking, alle resulterende wijzigingen van gebruiker en de einddatum van de verwerking.
+In deze voorbeeld uitvoer ziet u het begin van de verwerking, alle resulterende gebruikers wijzigingen en de eind datum van de verwerking.
 
-![Schermafbeelding van groep licentiewijzigingen](./media/licensing-group-advanced/audit-group-processing-log.png)
+![Licentie wijzigingen van scherm opname groep](./media/licensing-group-advanced/audit-group-processing-log.png)
 
 >[!TIP]
-> Te klikken op items die betrekking hebben op *gebruikerslicentie wijzigen* details voor de licentiewijzigingen toegepast op elke individuele gebruiker wordt weergegeven.
+> Als u op items met betrekking tot *wijzigings gebruikers licentie* klikt, worden details weer gegeven voor licentie wijzigingen die zijn toegepast op elke afzonderlijke gebruiker.
 
-## <a name="deleting-a-group-with-an-assigned-license"></a>Als u een groep met een toegewezen licentie
+## <a name="deleting-a-group-with-an-assigned-license"></a>Een groep met een toegewezen licentie verwijderen
 
-Het is niet mogelijk om te verwijderen van een groep met een actieve licentie is toegewezen. Een beheerder kan een groep niet realiseren dat hierdoor licenties moeten worden verwijderd uit de gebruikers - om deze reden dat hebben we alle licenties voor het eerst worden verwijderd uit de groep, voordat deze kan worden verwijderd nodig verwijderen.
+Het is niet mogelijk om een groep te verwijderen waaraan een actieve licentie is toegewezen. Een beheerder kan een groep verwijderen die niet kan leiden tot het feit dat er licenties worden verwijderd voor gebruikers. Daarom moeten de licenties eerst uit de groep worden verwijderd voordat deze kunnen worden verwijderd.
 
-Bij het verwijderen van een groep in Azure portal ziet u mogelijk een foutmelding als volgt: ![Kan de schermopname groep verwijderen](./media/licensing-group-advanced/groupdeletionfailed.png)
+Wanneer u een groep in de Azure Portal probeert te verwijderen, ziet u mogelijk een fout melding als de volgende: ![Screenshot-groep verwijderen is mislukt @ no__t-1
 
-Ga naar de **licenties** tabblad in de groep en zien of er licenties zijn toegewezen. Zo ja, deze licenties verwijderen en probeer opnieuw te verwijderen de groep.
+Ga naar het tabblad **licenties** van de groep en controleer of er licenties zijn toegewezen. Zo ja, verwijdert u deze licenties en probeert u de groep opnieuw te verwijderen.
 
-Mogelijk ziet u vergelijkbare fouten bij het verwijderen van de groep via PowerShell of Graph API. Als u een groep gesynchroniseerd vanuit on-premises gebruikt, kan Azure AD Connect ook fouten rapporteren als het niet lukt om te verwijderen van de groep in Azure AD. In dergelijke gevallen moet u controleren of er licenties zijn toegewezen aan de groep zijn en deze eerst verwijderen.
+Er kunnen vergelijk bare fouten worden weer gegeven wanneer u probeert de groep te verwijderen via Power shell of Graph API. Als u een groep gebruikt die vanaf on-premises is gesynchroniseerd, worden in Azure AD Connect ook fouten gerapporteerd als de groep in azure AD niet kan worden verwijderd. In al deze gevallen moet u controleren of er licenties zijn toegewezen aan de groep en deze eerst verwijderen.
 
 ## <a name="limitations-and-known-issues"></a>Beperkingen en bekende problemen
 
-Als u licentieverlening op basis van een groep, is het een goed idee om vertrouwd te raken met de volgende lijst met beperkingen en bekende problemen.
+Als u gebruikmaakt van op groepen gebaseerde licentie verlening, is het een goed idee om vertrouwd te raken met de volgende lijst met beperkingen en bekende problemen.
 
-- Groepslicenties op dit moment biedt geen ondersteuning voor groepen met andere groepen (geneste groepen). Als u een licentie toepast op een geneste groep, wordt die licentie alleen toegepast op de gebruikers die lid direct zijn van de groep.
+- Op groepen gebaseerde licentie verlening biedt momenteel geen ondersteuning voor groepen die andere groepen bevatten (geneste groepen). Als u een licentie toepast op een geneste groep, wordt die licentie alleen toegepast op de gebruikers die lid direct zijn van de groep.
 
-- De functie kan alleen worden gebruikt met beveiligingsgroepen en Office 365-groepen waarvoor securityenabled moet = TRUE.
+- De functie kan alleen worden gebruikt met beveiligings groepen en Office 365-groepen met securityEnabled = TRUE.
 
-- De [Microsoft 365-beheercentrum](https://admin.microsoft.com) ondersteunt momenteel geen Groepslicenties. Als een gebruiker een licentie worden overgenomen uit een groep, wordt deze licentie in de Office-beheerportal weergegeven als een gewone gebruiker-licentie. Als u probeert te wijzigen die licentie of probeer te verwijderen van de licentie, retourneert de portal een foutbericht weergegeven. Overgenomen Groepslicenties worden niet rechtstreeks op een gebruiker gewijzigd.
+- Het [Microsoft 365-beheer centrum](https://admin.microsoft.com) biedt momenteel geen ondersteuning voor op groepen gebaseerde licentie verlening. Als een gebruiker een licentie van een groep overneemt, wordt deze licentie weer gegeven in de Office-beheer portal als een reguliere gebruikers licentie. Als u de licentie probeert te wijzigen of de licentie probeert te verwijderen, wordt een fout bericht door de portal weer gegeven. Overgenomen groeps licenties kunnen niet rechtstreeks op een gebruiker worden gewijzigd.
 
-- Wanneer de licenties worden toegewezen of worden gewijzigd voor een grote groep (bijvoorbeeld 100.000 gebruikers), kan dit de prestaties beïnvloeden. Het volume van de wijzigingen die worden gegenereerd door Azure AD-automatisering mogelijk specifiek, negatieve invloed hebben op de prestaties van uw directory-synchronisatie tussen Azure AD en on-premises systemen.
+- Wanneer licenties zijn toegewezen of gewijzigd voor een grote groep (bijvoorbeeld 100.000 gebruikers), kan dit van invloed zijn op de prestaties. Met name het aantal wijzigingen dat door Azure AD Automation wordt gegenereerd, kan de prestaties van uw adreslijst synchronisatie tussen Azure AD en on-premises systemen negatief beïnvloeden.
 
-- Als u gebruikmaakt van dynamische groepen om het lidmaatschap van de gebruiker te beheren, controleert u of de gebruiker deel uitmaakt van de groep. Dit is noodzakelijk voor het toewijzen van licenties. Als dit niet het geval is, [controleert u de verwerkingsstatus voor de lidmaatschapsregel](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-create-rule) van de dynamische groep. 
+- Als u gebruikmaakt van dynamische groepen om het lidmaatschap van de gebruiker te beheren, controleert u of de gebruiker deel uitmaakt van de groep. Dit is noodzakelijk voor het toewijzen van licenties. Als dit niet het geval is, [controleert u de verwerkingsstatus voor de lidmaatschapsregel](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-create-rule) van de dynamische groep.
 
-- In bepaalde situaties hoge belasting duurt lang verwerkt licentiewijzigingen voor groepen of wijzigingen in het lidmaatschap aan groepen met licenties. Als u uw wijzigingen worden meer dan 24 uur voor het verwerken van groep grootte van 60K gebruikers of minder, neem [open een ondersteuningsticket](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/supportRequest) om toe te staan te onderzoeken. 
+- Bij bepaalde hoge belasting situaties kan het enige tijd duren om licentie wijzigingen voor groepen of lidmaatschaps wijzigingen te verwerken in groepen met bestaande licenties. Als u ziet dat uw wijzigingen meer dan 24 uur duren om de groeps grootte van 60K gebruikers of minder te verwerken, [opent u een ondersteunings ticket](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/supportRequest) om ons te laten onderzoeken. 
 
-- Licentie management automation niet automatisch reageren op alle soorten wijzigingen in de omgeving. Bijvoorbeeld, u waarschijnlijk te weinig licenties, waardoor sommige gebruikers zich in een foutstatus. Aan vrij te maken van het aantal beschikbare stoelen, kunt u sommige rechtstreeks toegewezen licenties van andere gebruikers. Het systeem echter niet automatisch reageren op deze wijziging en gebruikers in de status van deze fout corrigeren.
+- Met Automation van licentie beheer wordt niet automatisch gereageerd op alle typen wijzigingen in de omgeving. Zo hebt u mogelijk geen licenties meer, waardoor sommige gebruikers een fout status hebben. Als u het aantal beschik bare stoelen wilt vrijmaken, kunt u een aantal rechtstreeks toegewezen licenties verwijderen van andere gebruikers. Het systeem reageert echter niet automatisch op deze wijziging en herstelt gebruikers met deze fout status.
 
-  Als tijdelijke oplossing voor dit soort beperkingen, gaat u naar de **groep** -blade in Azure AD, en klikt u op **opnieuw verwerken**. Met deze opdracht alle gebruikers in die groep worden verwerkt en wordt de status fout, indien mogelijk opgelost.
+  Als tijdelijke oplossing voor deze typen beperkingen gaat u naar de Blade **groep** in azure AD en klikt u op opnieuw **verwerken**. Met deze opdracht worden alle gebruikers in die groep verwerkt en worden de fout status, indien mogelijk, opgelost.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 Voor meer informatie over scenario’s voor licentiebeheer via licenties op basis van groepen, raadpleegt u:
 
-* [Wat is licentieverlening in Azure Active Directory op basis van groep?](../fundamentals/active-directory-licensing-whatis-azure-portal.md)
+* [Wat is op een groep gebaseerde licentie verlening in Azure Active Directory?](../fundamentals/active-directory-licensing-whatis-azure-portal.md)
 * [Licenties toewijzen aan een groep in Azure Active Directory](licensing-groups-assign.md)
 * [Licentieproblemen voor een groep vaststellen en oplossen in Azure Active Directory](licensing-groups-resolve-problems.md)
 * [Gebruikers met een afzonderlijke licentie migreren naar licenties op basis van groepen in Azure Active Directory](licensing-groups-migrate-users.md)

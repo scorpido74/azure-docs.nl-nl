@@ -1,49 +1,49 @@
 ---
-title: Azure Data Factory Mapping Data Flow New Branch Transformation
-description: Azure Data Factory Mapping Data Flow New Branch Transformation
+title: Nieuwe vertakkings transformatie Azure Data Factory toewijzings gegevens stroom
+description: Nieuwe vertakkings transformatie Azure Data Factory toewijzings gegevens stroom
 author: kromerm
 ms.author: makromer
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/12/2019
-ms.openlocfilehash: af2225d749283c7124f89d5a7cd735b2f6bfd121
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 35d5b2250cb5f2f5bd5b3a0073dc2e3c655ceccb
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61348116"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72029915"
 ---
-# <a name="mapping-data-flow-union-transformation"></a>Toewijzing van flow union transformatie
+# <a name="mapping-data-flow-union-transformation"></a>Data flow-vakbonds transformatie toewijzen
 
-[!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
-UNION wordt meerdere gegevensstromen combineren tot één, met de SQL Union van deze stromen als de nieuwe uitvoer van de Union-transformatie. Alles van het schema van de invoerstroom wordt gecombineerd binnen de gegevensstroom, zonder dat een join-sleutel.
 
-U kunt de n-aantal stromen in de tabel met instellingen combineren door het pictogram '+' naast elke geconfigureerde rij, met inbegrip van zowel gegevens als stromen van bestaande transformaties in de gegevensstroom te selecteren.
+Samen voegen meerdere gegevens stromen met elkaar samen, met de SQL-Unie van deze stromen als de nieuwe uitvoer van de samenvoeg transformatie. Alle schema's van elke invoer stroom worden gecombineerd in uw gegevens stroom, zonder dat hiervoor een koppelings sleutel nodig is.
 
-![Union transformatie](media/data-flow/union.png "Union")
+U kunt n-aantal streams combi neren in de instellingen tabel door het pictogram ' + ' te selecteren naast elke geconfigureerde rij, inclusief zowel bron gegevens als stromen van bestaande trans formaties in uw gegevens stroom.
 
-In dit geval kunt u verschillende metagegevens uit meerdere bronnen (in dit voorbeeld worden drie verschillende bronbestanden) combineren en deze combineren tot één stroom:
+Vakbond ![Union-trans formatie](media/data-flow/union.png "")
 
-![Overzicht van UNION transformatie](media/data-flow/union111.png "Union 1")
+In dit geval kunt u ongelijksoortige meta gegevens van meerdere bronnen combi neren (in dit voor beeld drie verschillende bron bestanden) en deze combi neren in één stroom:
 
-Om dit te doen, moet u extra rijen toevoegen in de Union-instellingen door op te nemen alle bron die u wilt toevoegen. Er is niet nodig voor een gemeenschappelijke lookup- of join-sleutel:
+![Overzicht van Union-trans formatie](media/data-flow/union111.png "Union 1")
 
-![Union transformatie-instellingen](media/data-flow/unionsettings.png "Union-instellingen")
+U kunt dit doen door extra rijen toe te voegen aan de vakbonds instellingen door alle bron toe te voegen die u wilt toevoegen. Er is geen algemene zoek-of koppelings sleutel nodig:
 
-Als u een optie transformatie na uw Union instelt, kunt u zich om overlappende velden of velden die niet met de naam van headerless bronnen te wijzigen. Klik op 'Controleren' om te zien van de metagegevens van de combineren met 132-totaal aantal kolommen in dit voorbeeld uit drie verschillende bronnen:
+(media/data-flow/unionsettings.png "Vakbonds instellingen") voor ![instellingen Union-trans formatie]
 
-![Union transformatie laatste](media/data-flow/union333.png "Union 3")
+Als u een SELECT-trans formatie hebt ingesteld na de samen voeging, kunt u de namen van overlappende velden of velden die niet zijn benoemd vanuit bronnen zonder koptekst. Klik op controleren om de kolommen gecombineerde meta gegevens met 132 totaal in dit voor beeld uit drie verschillende bronnen weer te geven:
 
-## <a name="name-and-position"></a>De naam en de positie
+![Vakbonds transformatie laatste](media/data-flow/union333.png "vakbond 3")
 
-Als u 'samenvoeging met de naam' kiest, wordt elke waarde in de kolom verwijderen in de bijbehorende kolom van elke bron, met een nieuw metagegevensschema van samengevoegde.
+## <a name="name-and-position"></a>Naam en positie
 
-Als u 'union op positie' kiest, wordt elke waarde in de kolom in de oorspronkelijke positie van elke overeenkomstige bron, wat resulteert in een nieuwe gecombineerde stream met gegevens waar de gegevens uit elke bron wordt toegevoegd aan de dezelfde stroom verwijderen:
+Wanneer u "Union op naam" kiest, wordt elke kolom waarde uit de bijbehorende kolom van elke bron verwijderd, met een nieuw samengevoegd meta gegevens schema.
 
-![Union uitvoer](media/data-flow/unionoutput.png "Union uitvoer")
+Als u vereniging op positie kiest, wordt elke kolom waarde uit de oorspronkelijke positie van elke overeenkomende bron verwijderd, wat resulteert in een nieuwe gecombineerde stroom van gegevens, waarbij de gegevens van elke bron aan dezelfde stroom worden toegevoegd:
+
+![](media/data-flow/unionoutput.png "Uitvoer") Union-uitvoer Union
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Verken vergelijkbaar transformaties, waaronder [Join](data-flow-join.md) en [Exists](data-flow-exists.md).
+Verken vergelijk bare trans formaties, waaronder [samen voegen](data-flow-join.md) en [bestaan](data-flow-exists.md).

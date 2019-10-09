@@ -6,35 +6,35 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/12/2019
-ms.openlocfilehash: 3c81ec5e213364ed6f159fd20e12879a098caad4
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: 289f98fdc2f39449cdeede9ee46fb39847ae2cb5
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68774996"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72029268"
 ---
 # <a name="mapping-data-flow-select-transformation"></a>Gegevens stroom koppelen selecteren trans formatie
-[!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
+
 
 Gebruik deze trans formatie voor kolom selectiviteit (kleiner aantal kolommen), alias kolommen en stroom namen en volg orde van kolommen.
 
 ## <a name="how-to-use-select-transformation"></a>Trans formatie selecteren gebruiken
 Met de Select Transform kunt u een volledige stroom of kolommen in die stroom aliassen, verschillende namen toewijzen (aliassen) en vervolgens naar deze nieuwe namen verwijzen verderop in uw gegevens stroom. Deze trans formatie is handig voor Self-koppelings scenario's. De manier waarop u een self-samen voeging in de ADF-gegevens stroom implementeert, is door een stroom te maken, deze te vertakking met ' nieuwe vertakking ' en vervolgens onmiddellijk daarna een ' Select '-trans formatie toe te voegen. Deze stroom heeft nu een nieuwe naam die u kunt gebruiken om terug te gaan naar de oorspronkelijke stream, waarbij u een self-deelname maakt:
 
-![Self-deelname](media/data-flow/selfjoin.png "Self-deelname")
+Self ![-]deelname(media/data-flow/selfjoin.png "Self-") deelname
 
 In het bovenstaande diagram bevindt de geselecteerde trans formatie zich bovenaan. Dit is een alias voor de oorspronkelijke stroom naar ' OrigSourceBatting '. In de onderstaande gemarkeerde join-trans formatie ziet u dat we deze Select alias Stream gebruiken als de rechter join, zodat we naar dezelfde sleutel in de linker & rechter kant van de inner join kunnen verwijzen.
 
 Select kan ook worden gebruikt als een manier om de kolommen uit uw gegevens stroom te deselecteren. Als u bijvoorbeeld 6 kolommen hebt gedefinieerd in uw Sink, maar u alleen een specifieke 3 wilt transformeren en vervolgens naar de Sink wilt gaan, kunt u alleen die drie selecteren met behulp van de trans formatie selecteren.
 
-![Trans formatie selecteren](media/data-flow/newselect1.png "Alias selecteren")
+Selecteer(media/data-flow/newselect1.png "alias") voor ![trans formatie]selecteren
 
 ## <a name="options"></a>Opties
 * De standaard instelling voor ' Select ' is om alle binnenkomende kolommen op te slaan en de oorspronkelijke namen te blijven gebruiken. U kunt de stroom alias door de naam van de Select trans formatie in te stellen.
 * Als u afzonderlijke kolommen als alias wilt gebruiken, schakelt u ' Alles selecteren ' uit en gebruikt u onderaan de kolom toewijzing.
 * Kies dubbele items overs Laan om dubbele kolommen van invoer-of uitvoer meta gegevens te verwijderen.
 
-![Dubbele items overs Laan](media/data-flow/select-skip-dup.png "Dubbele items overs Laan")
+![Dubbele records overs Laan]dubbele(media/data-flow/select-skip-dup.png "items overs") Laan
 
 * Wanneer u ervoor kiest dubbele items over te slaan, worden de resultaten weer gegeven op het tabblad controleren. ADF behoudt de eerste keer dat de kolom wordt weer gegeven en u ziet dat elke volgende keer dat dezelfde kolom is verwijderd uit de stroom is gewist.
 
@@ -44,7 +44,7 @@ Select kan ook worden gebruikt als een manier om de kolommen uit uw gegevens str
 ## <a name="mapping"></a>Toewijzing
 Standaard worden alle kolommen automatisch toegewezen door trans formatie selecteren, die alle binnenkomende kolommen doorgeeft aan dezelfde naam in de uitvoer. De naam van de uitvoer stroom die is ingesteld in instellingen selecteren, definieert een nieuwe alias naam voor de stroom. Als u de optie instellen voor automatisch toewijzen inschakelt, kunt u de hele stroom een alias met alle kolommen.
 
-![Transformatie regels selecteren](media/data-flow/rule2.png "Toewijzing op basis van een regel")
+Een(media/data-flow/rule2.png "op regels gebaseerde toewijzing van") ![transformatie regels selecteren]
 
 Als u kolommen wilt aliassen, verwijderen, de naam ervan wilt wijzigen of opnieuw wilt rangschikken, moet u eerst de optie automatisch toewijzen uitschakelen. Standaard ziet u een standaard regel die is ingevoerd voor alle invoer kolommen. U kunt deze regel behouden als u van plan bent om altijd alle binnenkomende kolommen toe te wijzen aan dezelfde naam op de uitvoer.
 

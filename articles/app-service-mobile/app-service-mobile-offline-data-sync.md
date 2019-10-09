@@ -1,6 +1,6 @@
 ---
-title: Offline synchroniseren van gegevens in Azure Mobile Apps | Microsoft Docs
-description: Overzicht van de functie voor offlinesynchronisatie van gegevens voor Azure Mobile Apps en voor conceptuele verwijzing in
+title: Offline gegevens synchronisatie in azure Mobile Apps | Microsoft Docs
+description: Conceptuele Naslag informatie en overzicht van de functie voor offline gegevens synchronisatie voor Azure Mobile Apps
 documentationcenter: windows
 author: conceptdev
 manager: crdun
@@ -14,91 +14,96 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 10/30/2016
 ms.author: crdun
-ms.openlocfilehash: ab8fb4a567e4c4a7bf1e884999a4e403a98547a0
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 7f5b24915ddb9fd12085583844770dd7587f2394
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67205093"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72025213"
 ---
 # <a name="offline-data-sync-in-azure-mobile-apps"></a>Offlinesynchronisatie van gegevens in Azure Mobile Apps
-## <a name="what-is-offline-data-sync"></a>Wat is offline synchroniseren van gegevens?
-Offline synchroniseren van gegevens is een client en server SDK-functie van Azure Mobile Apps waarmee u eenvoudig voor ontwikkelaars voor het maken van apps die functioneel zonder een netwerkverbinding zijn.
 
-Wanneer uw app in de offlinemodus bevindt, kunt u nog steeds maken en wijzigen van gegevens die zijn opgeslagen in een lokale opslag. Wanneer de app weer online is, kunnen lokale wijzigingen worden gesynchroniseerd met uw mobiele Apps van Azure back-end. De functie biedt ook ondersteuning voor het detecteren van conflicten wanneer dezelfde record wordt gewijzigd op de client en de back-end. Conflicten kunnen vervolgens worden verwerkt op de server of de client.
+> [!NOTE]
+> Visual Studio App Center ondersteunt end-to-end en geïntegreerde services in de ontwikkeling van mobiele apps. Ontwikkel aars kunnen services **bouwen**, **testen** en **distribueren** om een continue integratie-en leverings pijplijn in te stellen. Zodra de app is geïmplementeerd, kunnen ontwikkel aars de status en het gebruik van hun app bewaken met behulp van de **analyse** -en **diagnose** Services en gebruikers benaderen met behulp van de **Push** service. Ontwikkel aars kunnen ook gebruikmaken van **auth** voor het verifiëren van hun gebruikers en **gegevens** service om app-gegevens in de Cloud op te slaan en te synchroniseren.
+> Als u Cloud Services wilt integreren in uw mobiele toepassing, meldt u zich aan met App Center [app Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) vandaag.
 
-Offline synchronisatie heeft verschillende voordelen:
+## <a name="what-is-offline-data-sync"></a>Wat is offline gegevens synchronisatie?
+Offline gegevens synchronisatie is een functie voor client-en Server-SDK van Azure Mobile Apps waarmee ontwikkel aars eenvoudig apps kunnen maken die zonder een netwerk verbinding werken.
 
-* Verbeter de responsiviteit door servergegevens lokaal op het apparaat opslaan in cache
-* Maak robuuste apps die bruikbaar blijven wanneer er netwerkproblemen zijn
-* Eindgebruikers kunnen gegevens maken en wijzigen, zelfs wanneer er geen toegang tot het netwerk, ondersteuning van scenario's met weinig of geen verbinding toestaan
-* Gegevens synchroniseren tussen meerdere apparaten en conflicten worden gedetecteerd wanneer dezelfde record wordt gewijzigd door twee apparaten
-* Netwerkgebruik in netwerken met hoge latentie of met een datalimiet beperken
+Als uw app zich in de offline modus bevindt, kunt u nog steeds gegevens maken en wijzigen, die worden opgeslagen in een lokaal archief. Wanneer de app weer online is, kunnen lokale wijzigingen worden gesynchroniseerd met de back-end van de mobiele app van Azure. De functie biedt ook ondersteuning voor het detecteren van conflicten wanneer dezelfde record op zowel de client als de back-end wordt gewijzigd. Conflicten kunnen vervolgens worden verwerkt op de server of de client.
 
-De volgende zelfstudies laten zien hoe voeg offlinesynchronisatie toe aan uw mobiele clients met behulp van Azure Mobile Apps:
+Offline synchronisatie heeft verschillende voor delen:
 
-* [Android: Offline synchroniseren inschakelen]
-* [Apache Cordova: Offline synchroniseren inschakelen](app-service-mobile-cordova-get-started-offline-data.md)
-* [iOS: Offline synchroniseren inschakelen]
-* [Xamarin iOS: Offline synchroniseren inschakelen]
-* [Xamarin Android: Offline synchroniseren inschakelen]
-* [Xamarin.Forms: Offline synchroniseren inschakelen](app-service-mobile-xamarin-forms-get-started-offline-data.md)
-* [Universal Windows Platform: Offline synchroniseren inschakelen]
+* De reactie snelheid van de app verbeteren door Server gegevens lokaal op het apparaat in de cache te plaatsen
+* Maak robuuste apps die handig blijven wanneer er netwerk problemen zijn
+* Eind gebruikers toestaan om gegevens te maken en te wijzigen, zelfs wanneer er geen netwerk toegang is, ondersteunings scenario's met weinig of geen connectiviteit
+* Gegevens synchroniseren op meerdere apparaten en conflicten detecteren wanneer dezelfde record door twee apparaten wordt gewijzigd
+* Netwerk gebruik beperken voor netwerken met een hoge latentie of een Data limiet
 
-## <a name="what-is-a-sync-table"></a>Wat is een synchronisatietabel?
-Voor toegang tot het eindpunt '/ tabellen', geef de Azure Mobile-client-SDK's interfaces, zoals `IMobileServiceTable` (.NET client SDK) of `MSTable` (iOS-client). Deze API's rechtstreeks verbinding maken met de mobiele Apps van Azure back-end en mislukken als de clientapparaat beschikt niet over een netwerkverbinding.
+De volgende zelf studies laten zien hoe u offline synchronisatie kunt toevoegen aan uw mobiele clients met behulp van Azure Mobile Apps:
 
-Ter ondersteuning van offline gebruiken, moet uw app in plaats daarvan gebruiken de *synchronisatietabel* API's, zoals `IMobileServiceSyncTable` (.NET client SDK) of `MSSyncTable` (iOS-client). Alle de dezelfde CRUD-bewerkingen (maken, lezen, Update, Delete) worden toegepast op synchronisatie tabel-API's, met uitzondering van nu ze lezen uit of schrijven naar een *lokale archief*. Voordat elke tabel synchronisatiebewerkingen kunnen worden uitgevoerd, moet het lokale archief worden geïnitialiseerd.
+* [Android: Offline synchronisatie inschakelen @ no__t-0
+* [Apache-Cordova: Offline synchronisatie inschakelen @ no__t-0
+* [iOS: Offline synchronisatie inschakelen @ no__t-0
+* [Xamarin iOS: Offline synchronisatie inschakelen @ no__t-0
+* [Xamarin Android: Offline synchronisatie inschakelen @ no__t-0
+* [Xamarin. Forms: Offline synchronisatie inschakelen @ no__t-0
+* [Universal Windows-platform: Offline synchronisatie inschakelen @ no__t-0
 
-## <a name="what-is-a-local-store"></a>Wat is een lokale store?
-Een lokale opslag is de laag voor gegevenspersistentie op het clientapparaat. De client-SDK's voor Azure Mobile Apps biedt een standaardimplementatie van het lokale archief. Op Windows, Xamarin en Android, is gebaseerd op SQLite. Op iOS-, is deze gebaseerd op de belangrijkste gegevens.
+## <a name="what-is-a-sync-table"></a>Wat is een synchronisatie tabel?
+Voor toegang tot het eind punt "/Tables" bieden de Azure Mobile client-Sdk's interfaces als `IMobileServiceTable` (.NET client SDK) of `MSTable` (iOS-client). Deze Api's maken rechtstreeks verbinding met de back-end van de mobiele app van Azure en mislukken als het client apparaat geen netwerk verbinding heeft.
 
-Voor het gebruik van de SQLite-gebaseerde implementatie op Windows Phone of Microsoft Store, moet u een SQLite-extensie installeren. Zie voor meer informatie, [Universal Windows Platform: Offline synchroniseren inschakelen]. Android en iOS verzenden met een versie van SQLite in het besturingssysteem van het apparaat zelf en dus is het niet nodig om te verwijzen naar uw eigen versie van SQLite.
+Ter ondersteuning van offline gebruik moet uw app in plaats daarvan gebruikmaken van de *synchronisatie tabel* api's, zoals `IMobileServiceSyncTable` (.net client SDK) of `MSSyncTable` (Ios-client). Alle dezelfde ruwe bewerkingen (maken, lezen, bijwerken, verwijderen) werken op basis van synchronisatie tabel-Api's, behalve nu ze lezen van of schrijven naar een *lokale opslag*. Voordat de bewerkingen van de synchronisatie tabel kunnen worden uitgevoerd, moet het lokale archief worden geïnitialiseerd.
 
-Ontwikkelaars kunnen ook hun eigen lokale archief implementeren. Als u opslaan van gegevens in een versleutelde indeling op de mobiele client wilt, kunt u bijvoorbeeld een lokale opslag die gebruikmaakt van SQLCipher voor versleuteling definiëren.
+## <a name="what-is-a-local-store"></a>Wat is een lokaal archief?
+Een lokaal archief is de laag voor gegevens persistentie op het client apparaat. De Sdk's van de Azure Mobile Apps-client bieden een standaard implementatie van lokale opslag. In Windows, Xamarin en Android is gebaseerd op SQLite. Op iOS is gebaseerd op kern gegevens.
 
-## <a name="what-is-a-sync-context"></a>Wat is er een context synchroniseren?
-Een *synchronisatie context* is gekoppeld aan een mobiele client-object (zoals `IMobileServiceClient` of `MSClient`) en bijgehouden wijzigingen die zijn aangebracht met sync-tabellen. De synchronisatie-context onderhoudt een *bewerking wachtrij*, later naar de server die houdt een geordende lijst met CUD bewerkingen (Create, Update, Delete) die is verzonden.
+Als u de op SQLite gebaseerde implementatie wilt gebruiken op Windows Phone of Microsoft Store, moet u een SQLite-extensie installeren. Zie [Universal Windows-platform voor meer informatie: Offline synchronisatie inschakelen @ no__t-0. Android en iOS worden geleverd met een versie van SQLite in het besturings systeem van het apparaat, dus het is niet nodig om naar uw eigen versie van SQLite te verwijzen.
 
-Een lokale opslag is gekoppeld aan de context van de synchronisatie met behulp van een initialisatiemethode zoals `IMobileServicesSyncContext.InitializeAsync(localstore)` in de [SDK voor .NET-client].
+Ontwikkel aars kunnen ook hun eigen lokale opslag implementeren. Als u bijvoorbeeld gegevens wilt opslaan in een versleutelde indeling op de mobiele client, kunt u een lokaal archief definiëren dat SQLCipher gebruikt voor versleuteling.
 
-## <a name="how-sync-works"></a>Hoe offline synchronisatie werkt
-Wanneer u de synchronisatie-tabellen, bepaalt de clientcode wanneer lokale wijzigingen worden gesynchroniseerd met de back-end van een Azure Mobile Apps. Niets verzonden naar de back-end voordat er een aanroep van wordt *push* lokale wijzigingen. Op dezelfde manier het lokale archief wordt gevuld met nieuwe gegevens alleen wanneer er een aanroep van wordt *pull* gegevens.
+## <a name="what-is-a-sync-context"></a>Wat is een synchronisatie context?
+Een *synchronisatie context* is gekoppeld aan een mobiel client object (zoals `IMobileServiceClient` of `MSClient`) en houdt wijzigingen bij die zijn aangebracht met synchronisatie tabellen. De synchronisatie context houdt een *bewerkings wachtrij*bij, waarmee een geordende lijst met CUD-bewerkingen (maken, bijwerken, verwijderen) wordt bewaard die later naar de server worden verzonden.
 
-* **Push-** : Push is een bewerking in de context van de synchronisatie en alle CUD wijzigingen sinds de laatste push verzendt. Houd er rekening mee dat het is niet mogelijk voor het verzenden van alleen de wijzigingen van een afzonderlijke tabel, omdat anders bewerkingen kunnen worden verzonden niet de juiste volgorde. Push voert een reeks van REST-aanroepen naar uw mobiele Apps van Azure back-end, die op zijn beurt Hiermee wijzigt u de server-database.
-* **Pull-** : Pull-abonnementen op basis van per tabel is uitgevoerd en kan worden aangepast met een query voor het ophalen van slechts een subset van de server-gegevens. De client-SDK's voor Azure Mobile wordt vervolgens de resulterende gegevens invoegen in het lokale archief.
-* **Impliciete Pushes**: Als een pull op basis van een tabel met lokale updates die nog niet wordt uitgevoerd, voert de pull eerst een `push()` in de context van de synchronisatie. Deze push helpt bij het minimaliseren van conflicten tussen de wijzigingen die al in de wachtrij staan en nieuwe gegevens van de server.
-* **Incrementele synchronisatie**: de eerste parameter voor de pullbewerking wordt een *querynaam* die alleen op de client wordt gebruikt. Als u de naam van een niet-null-query gebruikt, de Azure Mobile SDK wordt uitgevoerd een *incrementele synchronisatie*. Telkens wanneer een pullbewerking retourneert een set met resultaten, de meest recente `updatedAt` timestamp van die resultatenset wordt opgeslagen in de lokale SDK-systeemtabellen. Volgende pull-bewerkingen worden alleen records ophalen na deze timestamp.
+Een lokaal archief wordt gekoppeld aan de synchronisatie context met behulp van een initialisatie methode zoals `IMobileServicesSyncContext.InitializeAsync(localstore)` in de [.net-client-SDK].
 
-  Voor het gebruik van incrementele synchronisatie, de server moet retourneren zinvolle `updatedAt` waarden en moet ook ondersteuning voor sorteren op dit veld. Echter, omdat de SDK een eigen sorteren in het veld updatedAt voegt, niet kan u een pull-query een eigen heeft `orderBy` component.
+## <a name="how-sync-works"></a>Hoe werkt offline synchronisatie?
+Wanneer u synchronisatie tabellen gebruikt, bepaalt uw client code wanneer lokale wijzigingen worden gesynchroniseerd met een back-end van een mobiele app van Azure. Er wordt niets verzonden naar de back-end totdat er een aanroep is voor het *pushen* van lokale wijzigingen. Op dezelfde manier wordt het lokale archief alleen met nieuwe gegevens gevuld wanneer er een aanroep is van het *ophalen* van gegevens.
 
-  De querynaam mag een willekeurige tekenreeks die u kiest, maar deze naam moet uniek zijn voor elke logische query in uw app.
-  Anders verschillende pull-bewerkingen kunnen het dezelfde tijdstempel voor incrementele synchronisatie overschrijven en uw query's kunnen onjuiste resultaten retourneren.
+* **Push**: Push is een bewerking op de synchronisatie context en verzendt alle CUD-wijzigingen sinds de laatste push. Houd er rekening mee dat het niet mogelijk is om alleen de wijzigingen van een afzonderlijke tabel te verzenden, omdat andere bewerkingen uit de juiste volg orde zouden kunnen worden verzonden. Push voert een reeks REST-aanroepen uit naar de back-end van uw mobiele app van Azure, die op zijn beurt uw server database wijzigt.
+* **Pull**: Pull wordt per tabel uitgevoerd en kan worden aangepast met een query om alleen een subset van de server gegevens op te halen. Met de Sdk's van de Azure Mobile client worden de resulterende gegevens vervolgens in het lokale archief ingevoegd.
+* **Impliciete pushes**: Als er een pull-bewerking wordt uitgevoerd voor een tabel met wachtende lokale updates, voert de pull eerst een `push()` uit in de synchronisatie context. Deze push-opdracht helpt conflicten te minimaliseren tussen wijzigingen die al in de wachtrij staan en nieuwe gegevens van de server.
+* **Incrementele synchronisatie**: de eerste para meter voor de pull-bewerking is een *query naam* die alleen op de client wordt gebruikt. Als u een query naam gebruikt die niet gelijk is aan nul, voert de Azure Mobile SDK een *incrementele synchronisatie*uit. Telkens wanneer een pull-bewerking een reeks resultaten retourneert, wordt de laatste `updatedAt`-tijds tempel van de resultatenset opgeslagen in de lokale SDK-systeem tabellen. Bij volgende pull-bewerkingen worden alleen records opgehaald na die tijds tempel.
 
-  Als de query een parameter heeft, is één manier om te maken van een unieke naam op te nemen van de waarde van parameter.
-  Als u op gebruikers-id filtert, kan de querynaam van uw als volgt (in C#) worden:
+  Als u een incrementele synchronisatie wilt gebruiken, moet de server betekenis volle waarden `updatedAt` retour neren en moet u ook sorteren op dit veld ondersteunen. Omdat met de SDK een eigen sortering wordt toegevoegd aan het veld updatedAt, kunt u echter geen pull-query gebruiken die een eigen `orderBy`-component bevat.
+
+  De query naam kan een wille keurige teken reeks zijn die u kiest, maar deze moet uniek zijn voor elke logische query in uw app.
+  Anders kunnen verschillende pull-bewerkingen dezelfde incrementele synchronisatie-tijds tempel overschrijven en kunnen uw query's onjuiste resultaten retour neren.
+
+  Als de query een para meter heeft, is een manier om een unieke query naam te maken, het opnemen van de parameter waarde.
+  Als u bijvoorbeeld filtert op UserID, kan de naam van de query als volgt C#zijn:
 
         await todoTable.PullAsync("todoItems" + userid,
             syncTable.Where(u => u.UserId == userid));
 
-  Als u afmelden voor incrementele synchronisatie wilt, doorgeven `null` als de query-ID. In dit geval alle records worden opgehaald op voor elke aanroep naar `PullAsync`, dit is mogelijk niet efficiënt.
-* **Opschonen van**: U kunt de inhoud van het gebruik van het lokale archief wissen `IMobileServiceSyncTable.PurgeAsync`.
-  Verwijderen kan nodig zijn als u verouderde gegevens in de client-database hebt, of als u wilt verwijderen van alle wijzigingen in behandeling.
+  Als u de incrementele synchronisatie wilt afmelden, geeft u `null` door als query-ID. In dit geval worden alle records opgehaald bij elke aanroep van `PullAsync`, wat mogelijk inefficiënt is.
+* **Opschonen**: U kunt de inhoud van het lokale archief wissen met behulp van `IMobileServiceSyncTable.PurgeAsync`.
+  Het kan nodig zijn om te verwijderen als u verouderde gegevens in de client database hebt of als u alle wijzigingen die in behandeling zijn, wilt negeren.
 
-  Een opschonen wordt een tabel uit het lokale archief gewist. Als er bewerkingen in afwachting van synchronisatie met de server-database, het opschonen van een uitzondering genereert, tenzij de *forceren opschonen* parameter is ingesteld.
+  Met een opschonen wordt een tabel uit het lokale archief gewist. Als er bewerkingen met de Server database wachten, wordt door de opschoning een uitzonde ring gegenereerd tenzij de para meter voor *geforceerd opschonen* is ingesteld.
 
-  Stel in het voorbeeld 'takenlijst' Device1 haalt alleen items die niet zijn voltooid als een voorbeeld van verouderde gegevens op de client. Een todoitem 'Melk koopt' is gemarkeerd als voltooid op de server door een ander apparaat. Echter heeft Device1 nog steeds de todoitem 'Kopen melk' in het lokale archief omdat deze is alleen binnenhalen van items die zijn niet gemarkeerd als voltooid. Een opschonen Hiermee schakelt u dit item verlopen.
+  Als voor beeld van verouderde gegevens op de client, kunt u in het voor beeld ' taken lijst ' Device1 alleen items ophalen die niet zijn voltooid. Een todoitem ' melk kopen ' is gemarkeerd als voltooid op de server door een ander apparaat. Device1 heeft echter nog steeds de todoitem ' melk kopen ' in het lokale archief omdat het alleen items bevat die niet zijn gemarkeerd als voltooid. Dit verouderde item wordt verwijderd.
 
 ## <a name="next-steps"></a>Volgende stappen
-* [iOS: Offline synchroniseren inschakelen]
-* [Xamarin iOS: Offline synchroniseren inschakelen]
-* [Xamarin Android: Offline synchroniseren inschakelen]
-* [Universal Windows Platform: Offline synchroniseren inschakelen]
+* [iOS: Offline synchronisatie inschakelen @ no__t-0
+* [Xamarin iOS: Offline synchronisatie inschakelen @ no__t-0
+* [Xamarin Android: Offline synchronisatie inschakelen @ no__t-0
+* [Universal Windows-platform: Offline synchronisatie inschakelen @ no__t-0
 
 <!-- Links -->
-[SDK voor .NET-client]: app-service-mobile-dotnet-how-to-use-client-library.md
-[Android: Offline synchroniseren inschakelen]: app-service-mobile-android-get-started-offline-data.md
-[iOS: Offline synchroniseren inschakelen]: app-service-mobile-ios-get-started-offline-data.md
-[Xamarin iOS: Offline synchroniseren inschakelen]: app-service-mobile-xamarin-ios-get-started-offline-data.md
-[Xamarin Android: Offline synchroniseren inschakelen]: app-service-mobile-xamarin-android-get-started-offline-data.md
-[Universal Windows Platform: Offline synchroniseren inschakelen]: app-service-mobile-windows-store-dotnet-get-started-offline-data.md
+[.NET-client-SDK]: app-service-mobile-dotnet-how-to-use-client-library.md
+[Android: Offline synchronisatie inschakelen @ no__t-0
+[iOS: Offline synchronisatie inschakelen @ no__t-0
+[Xamarin iOS: Offline synchronisatie inschakelen @ no__t-0
+[Xamarin Android: Offline synchronisatie inschakelen @ no__t-0
+[Universal Windows-platform: Offline synchronisatie inschakelen @ no__t-0

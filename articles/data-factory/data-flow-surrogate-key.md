@@ -1,55 +1,55 @@
 ---
-title: Azure Data Factory stroom vervangend sleutels transformatie toewijzen
-description: Het gebruik van Azure Data Factory toewijzing Flow Surrogate sleutel gegevenstransformatie voor het genereren van opeenvolgende sleutelwaarden
+title: Gegevens stroom van surrogaat sleutel transformatie Azure Data Factory koppelen
+description: De trans formatie van de gegevens stroom surrogaat van Azure Data Factory gebruiken om sequentiële sleutel waarden te genereren
 author: kromerm
 ms.author: makromer
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/12/2019
-ms.openlocfilehash: eaa1c577f7e208400d3430222b006e0dbbd7956a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 45e2d35a3b0a3f3c89913bbe70d7c43c17cbcee0
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61350431"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72029188"
 ---
-# <a name="mapping-data-flow-surrogate-key-transformation"></a>Toewijzing van Flow vervangend sleutels gegevenstransformatie
+# <a name="mapping-data-flow-surrogate-key-transformation"></a>Gegevens stroom van surrogaat sleutel transformatie toewijzen
 
-[!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
-Gebruik de transformatie van de sleutel Surrogate een willekeurige sleutel waarde voor ophogende niet-zakelijke toevoegen aan uw stroom gegevensrijenset. Dit is handig bij het ontwerpen van dimensietabellen in een stervormig schema analytische gegevensmodel waar elk lid in de dimensietabellen moet een unieke sleutel die een niet-zakelijke sleutel, deel uitmaakt van de Kimball-DW-methode.
 
-![Vervangend sleutels transformatie](media/data-flow/surrogate.png "vervangend sleutels transformatie")
+Gebruik de trans formatie surrogaat sleutel voor het toevoegen van een wille keurige sleutel waarde die niet aan het bedrijf is toe te voegen aan uw gegevens stroom rijenset. Dit is handig bij het ontwerpen van dimensie tabellen in een ster schema analytisch gegevens model, waarbij elk lid in de dimensie tabellen een unieke sleutel moet hebben die een niet-bedrijfs sleutel is, onderdeel van de Kimball DW-methodologie.
 
-'Sleutelkolom' is de naam die u u aan uw nieuwe surrogate-sleutelkolom krijgt.
+Vervangende surrogaat sleutel transformatie(media/data-flow/surrogate.png "sleutel") ![Transformeren]
 
-'Waarde start' is het beginpunt van de incrementele waarde.
+' Sleutel kolom ' is de naam die u voor de nieuwe kolom met surrogaat sleutels moet opgeven.
 
-## <a name="increment-keys-from-existing-sources"></a>Sleutels van de verhoging van bestaande bronnen
+"Begin waarde" is het begin punt van de incrementele waarde.
 
-Als u uw takenreeks starten vanaf een waarde die deel uitmaakt van een bron wilt, kunt u een afgeleide kolom transformatie direct na de transformatie surrogaatsleutel gebruiken en de twee waarden samen te voegen:
+## <a name="increment-keys-from-existing-sources"></a>Sleutels van bestaande bronnen stapsgewijs verhogen
 
-![SK toevoegen Max](media/data-flow/sk006.png "Surrogate sleutel transformatie toevoegen Max")
+Als u de volg orde wilt starten vanuit een waarde die voor komt in een bron, kunt u een afgeleide kolom transformatie direct volgen op uw surrogaat sleutel transformatie en de twee waarden samen voegen:
 
-De waarde van de sleutel met de vorige max wilt invullen, zijn er twee methoden die u kunt gebruiken:
+![SK toevoegen maximum](media/data-flow/sk006.png "aantal surrogaat sleutel transformatie toevoegen Max")
 
-### <a name="database-sources"></a>Databasebronnen
+Als u de sleutel waarde wilt seeden met het vorige maximum, zijn er twee technieken die u kunt gebruiken:
 
-Gebruik de optie 'Query' MAX() software selecteren uit de gegevensbron met behulp van de transformatie van bron:
+### <a name="database-sources"></a>Database bronnen
 
-![Surrogate Key Query](media/data-flow/sk002.png "Surrogate Key Transformation Query")
+Gebruik de optie ' query ' om MAX () te selecteren in uw bron met behulp van de bron transformatie:
 
-### <a name="file-sources"></a>Bestandsbronnen
+(media/data-flow/sk002.png "Query surrogaat sleutel transformatie") voor ![surrogaat sleutel]
 
-Als uw vorige maximale waarde in een bestand, kunt u deze kunt gebruiken uw bron-transformatie samen met een statistische transformatie en de functie van de expressie MAX() gebruiken om de vorige maximale waarde:
+### <a name="file-sources"></a>Bestands bronnen
 
-![Vervangend sleutelbestand](media/data-flow/sk008.png "vervangend sleutelbestand")
+Als uw vorige maximum waarde zich in een bestand bevindt, kunt u uw bron transformatie samen met een geaggregeerde trans formatie gebruiken en de expressie functie MAX () gebruiken om de vorige maximum waarde op te halen:
 
-In beide gevallen moet u uw nieuwe binnenkomende gegevens samen met de gegevensbron met de vorige maximale waarde toevoegen:
+(media/data-flow/sk008.png "Surrogaat sleutel") bestand voor ![surrogaat sleutel]bestand
 
-![Vervangend sleutels Join](media/data-flow/sk004.png "vervangend sleutels Join")
+In beide gevallen moet u uw inkomende nieuwe gegevens samen voegen met de bron die de vorige maximum waarde bevat:
+
+(media/data-flow/sk004.png "Koppeling van surrogaat") sleutel voor ![surrogaat sleutel]toevoegen
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Deze voorbeelden gebruiken de [Join](data-flow-join.md) en [afgeleide kolom](data-flow-derived-column.md) transformaties.
+In deze voor beelden [worden](data-flow-join.md) de combi neren en [afgeleide kolom](data-flow-derived-column.md) transformaties gebruikt.

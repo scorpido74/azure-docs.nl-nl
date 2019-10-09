@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 05/11/2019
 ms.author: genli
-ms.openlocfilehash: 86ce2ada9ebd19c88414fab33a62dda5ba41ecb0
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: b834f14450196e8d377177bf10c80fbb05a10a57
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71949653"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72030012"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Een VHD of VHDX van Windows voorbereiden om te uploaden naar Azure
 
@@ -395,6 +395,9 @@ In het ideale geval moet u de computer bijwerken op het niveau van de *patch*. A
 |                         | CVE-2018-0886  | KB4103718               | KB4103730                | KB4103725       | KB4103723                                               | KB4103731                  | KB4103727                                       | KB4103721                                       |
 |                         |                | KB4103712          | KB4103726          | KB4103715|                                                         |                            |                                                 |                                                 |
        
+> [!NOTE]
+> Om te voor komen dat een onbedoeld opnieuw wordt opgestart tijdens het inrichten van de VM, is het raadzaam om ervoor te zorgen dat alle Windows Update-installaties zijn voltooid en dat er geen updates in behandeling zijn. Een manier om dit te doen is door alle mogelijke Windows-updates te installeren en één keer opnieuw op te starten voordat u de Sysprep-opdracht uitvoert.
+
 ### Bepalen wanneer u Sysprep wilt gebruiken<a id="step23"></a>    
 
 Het hulp programma voor systeem voorbereiding (Sysprep) is een proces dat u kunt uitvoeren om een Windows-installatie opnieuw in te stellen. Sysprep biedt een "out-of-Box"-ervaring door alle persoonlijke gegevens te verwijderen en verschillende onderdelen opnieuw in te stellen. 

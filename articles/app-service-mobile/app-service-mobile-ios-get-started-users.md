@@ -1,6 +1,6 @@
 ---
-title: Verificatie op iOS met Azure Mobile Apps toevoegen
-description: Informatie over het gebruik van Azure Mobile Apps om gebruikers van uw iOS-app via een groot aantal id-providers, met inbegrip van AAD, Google, Facebook, Twitter en Microsoft te verifiëren.
+title: Verificatie op iOS toevoegen met Azure Mobile Apps
+description: Informatie over het gebruik van Azure Mobile Apps om gebruikers van uw iOS-app te verifiëren via verschillende id-providers, waaronder AAD, Google, Facebook, Twitter en micro soft.
 services: app-service\mobile
 documentationcenter: ios
 author: elamalani
@@ -14,52 +14,52 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
 ms.author: emalani
-ms.openlocfilehash: 88e278ced5cbddb132cdc2f760864df119762088
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 674d5f783f43011ba154b668cea4ec41f6a945f5
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67449123"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72025277"
 ---
 # <a name="add-authentication-to-your-ios-app"></a>Verificatie toevoegen aan uw iOS-app
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
 
 > [!NOTE]
-> Visual Studio App Center investeert in nieuwe en geïntegreerde services centraal staat in de ontwikkeling van mobiele Apps. Ontwikkelaars kunnen gebruikmaken van **bouwen**, **Test** en **verdelen** services voor het instellen van de pijplijn voor continue integratie en levering. Zodra de app is geïmplementeerd, ontwikkelaars controleren de status en het gebruik van het gebruik van de app de **Analytics** en **Diagnostics** -services en Communiceer met gebruikers met behulp van de **Push** de service. Ontwikkelaars kunnen ook gebruikmaken van **Auth** om hun gebruikers te verifiëren en **gegevens** service behouden en synchroniseren van app-gegevens in de cloud. Bekijk [App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-ios-get-started-users) vandaag nog.
->
+> Visual Studio App Center ondersteunt end-to-end en geïntegreerde services in de ontwikkeling van mobiele apps. Ontwikkel aars kunnen services **bouwen**, **testen** en **distribueren** om een continue integratie-en leverings pijplijn in te stellen. Zodra de app is geïmplementeerd, kunnen ontwikkel aars de status en het gebruik van hun app bewaken met behulp van de **analyse** -en **diagnose** Services en gebruikers benaderen met behulp van de **Push** service. Ontwikkel aars kunnen ook gebruikmaken van **auth** voor het verifiëren van hun gebruikers en **gegevens** service om app-gegevens in de Cloud op te slaan en te synchroniseren.
+> Als u Cloud Services wilt integreren in uw mobiele toepassing, meldt u zich aan met App Center [app Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) vandaag.
 
-In deze zelfstudie voegt u verificatie van de [Snelstartgids voor iOS] project met behulp van een ondersteunde id-provider. In deze zelfstudie is gebaseerd op de [Snelstartgids voor iOS] van de zelfstudie moet u eerst uitvoeren.
+In deze zelf studie voegt u verificatie toe aan het [Quick start voor iOS] -project met behulp van een ondersteunde ID-provider. Deze zelf studie is gebaseerd op de zelf studie voor [Quick start voor iOS] , die u eerst moet volt ooien.
 
-## <a name="register"></a>Uw app registreren voor verificatie en de App Service configureren
+## <a name="register"></a>Registreer uw app voor verificatie en configureer de App Service
 [!INCLUDE [app-service-mobile-register-authentication](../../includes/app-service-mobile-register-authentication.md)]
 
-## <a name="redirecturl"></a>Uw app toevoegen aan de toegestane externe Omleidings-URL 's
+## <a name="redirecturl"></a>Uw app toevoegen aan de toegestane externe omleidings-Url's
 
-Veilige verificatie is vereist dat u een nieuwe URL-schema voor uw app definiëren.  Hiermee kunt het verificatiesysteem terug te keren naar uw app nadat het verificatieproces voltooid is.  In deze zelfstudie gebruiken we het URL-schema _appname_ in.  U kunt echter een URL-schema dat u kiest.  Deze moet uniek zijn voor uw mobiele App.  De omleiding aan serverzijde th inschakelen:
+Voor beveiligde verificatie moet u een nieuw URL-schema definiëren voor uw app.  Hierdoor kan het verificatie systeem terugkeren naar uw app nadat het verificatie proces is voltooid.  In deze zelf studie gebruiken we het URL-schema _AppName_ in.  U kunt echter elk gewenst URL-schema gebruiken.  Deze moet uniek zijn voor uw mobiele toepassing.  De omleiding inschakelen op de server zijde:
 
-1. In de [Azure Portal], selecteert u uw App Service.
+1. Selecteer uw App Service in de [Azure-portal].
 
-2. Klik op de **verificatie / autorisatie** menu-optie.
+2. Klik op de menu optie voor **verificatie/autorisatie** .
 
-3. Klik op **Azure Active Directory** onder de **verificatieproviders** sectie.
+3. Klik op **Azure Active Directory** in het gedeelte **verificatie providers** .
 
-4. Stel de **beheermodus** naar **Geavanceerd**.
+4. Stel de **beheer modus** in op **Geavanceerd**.
 
-5. In de **toegestane externe Omleidings-URL's**, voer `appname://easyauth.callback`.  De _appname_ in deze reeks wordt het URL-schema voor uw mobiele toepassing.  Het moet normale URL-specificatie voor een protocol (Gebruik letters en cijfers alleen en beginnen met een letter) volgen.  U moet een notitie van de tekenreeks die u kiest, aangezien u nodig hebt om aan te passen van de code van uw mobiele toepassing met de URL-schema op verschillende plaatsen.
+5. Voer in de **toegestane externe omleidings-url's**`appname://easyauth.callback` in.  De _AppName_ in deze teken reeks is het URL-schema voor uw mobiele toepassing.  De standaard URL-specificatie voor een protocol moet volgen (alleen letters en cijfers gebruiken en beginnen met een letter).  U moet een notitie maken van de teken reeks die u kiest, omdat u de code van uw mobiele toepassing moet aanpassen aan het URL-schema op verschillende locaties.
 
 6. Klik op **OK**.
 
 7. Klik op **Opslaan**.
 
-## <a name="permissions"></a>Machtigingen beperken voor geverifieerde gebruikers
+## <a name="permissions"></a>Machtigingen voor geverifieerde gebruikers beperken
 [!INCLUDE [app-service-mobile-restrict-permissions-dotnet-backend](../../includes/app-service-mobile-restrict-permissions-dotnet-backend.md)]
 
-In Xcode, drukt u op **uitvoeren** om de app te starten. Een uitzondering is opgetreden omdat de app probeert te krijgen tot de back-end als niet-geverifieerde gebruiker, maar de *TodoItem* tabel nu verificatie is vereist.
+Druk in Xcode op **uitvoeren** om de app te starten. Er wordt een uitzonde ring gegenereerd omdat de app toegang probeert te krijgen tot de back-end als niet-geverifieerde gebruiker, maar voor de tabel *TodoItem* nu verificatie is vereist.
 
-## <a name="add-authentication"></a>Verificatie toevoegen aan app
+## <a name="add-authentication"></a>Verificatie toevoegen aan de app
 **Objective-C**:
 
-1. Open op uw Mac *QSTodoListViewController.m* in Xcode en voeg de volgende methode toe:
+1. Open *QSTodoListViewController. m* in Xcode in uw Mac en voeg de volgende methode toe:
 
     ```Objective-C
     - (void)loginAndGetData
@@ -81,17 +81,17 @@ In Xcode, drukt u op **uitvoeren** om de app te starten. Een uitzondering is opg
     }
     ```
 
-    Wijziging *google* naar *microsoftaccount*, *twitter*, *facebook*, of *windowsazureactivedirectory* als u geen van Google als id-provider gebruikmaakt. Als u Facebook gebruikt, moet u [whitelist Facebook domeinen][1] in uw app.
+    Wijzig *Google* in *MicrosoftAccount*, *Twitter*, *Facebook*of *windowsazureactivedirectory* als u Google niet als uw ID-provider gebruikt. Als u Facebook gebruikt, moet u [Facebook-domeinen white list][1] in uw app.
 
-    Vervang de **urlScheme** met een unieke naam voor uw toepassing.  De urlScheme moet gelijk zijn aan het URL-schema-protocol dat u hebt opgegeven in de **toegestane externe Omleidings-URL's** veld in de Azure-portal. De urlScheme wordt gebruikt door de callback voor gebruikersverificatie wilt terugkeren naar uw toepassing nadat de verificatieaanvraag voltooid is.
+    Vervang de **urlScheme** door een unieke naam voor uw toepassing.  De urlScheme moet hetzelfde zijn als het URL-schema protocol dat u hebt opgegeven in het veld **toegestane externe omleidings-url's** in de Azure Portal. De urlScheme wordt gebruikt door de aanroep van de verificatie om terug te gaan naar uw toepassing nadat de verificatie aanvraag is voltooid.
 
-2. Vervang `[self refresh]` in `viewDidLoad` in *QSTodoListViewController.m* door de volgende code:
+2. Vervang `[self refresh]` in `viewDidLoad` in *QSTodoListViewController. m* door de volgende code:
 
     ```Objective-C
     [self loginAndGetData];
     ```
 
-3. Open de `QSAppDelegate.h` bestand en voeg de volgende code toe:
+3. Open het bestand `QSAppDelegate.h` en voeg de volgende code toe:
 
     ```Objective-C
     #import "QSTodoService.h"
@@ -99,7 +99,7 @@ In Xcode, drukt u op **uitvoeren** om de app te starten. Een uitzondering is opg
     @property (strong, nonatomic) QSTodoService *qsTodoService;
     ```
 
-4. Open de `QSAppDelegate.m` bestand en voeg de volgende code toe:
+4. Open het bestand `QSAppDelegate.m` en voeg de volgende code toe:
 
     ```Objective-C
     - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options
@@ -114,9 +114,9 @@ In Xcode, drukt u op **uitvoeren** om de app te starten. Een uitzondering is opg
     }
     ```
 
-   Voeg deze code direct vóór het lezen van de regel toe `#pragma mark - Core Data stack`.  Vervang de _appname_ met de urlScheme-waarde die u in stap 1 hebt gebruikt.
+   Voeg deze code rechtstreeks toe voordat de regel `#pragma mark - Core Data stack` wordt gelezen.  Vervang de _AppName_ door de urlScheme-waarde die u in stap 1 hebt gebruikt.
 
-5. Open de `AppName-Info.plist` bestand (vervangen AppName met de naam van uw app) en voeg de volgende code toe:
+5. Open het bestand `AppName-Info.plist` (waarbij AppName wordt vervangen door de naam van uw app) en voeg de volgende code toe:
 
     ```XML
     <key>CFBundleURLTypes</key>
@@ -132,15 +132,15 @@ In Xcode, drukt u op **uitvoeren** om de app te starten. Een uitzondering is opg
     </array>
     ```
 
-    Deze code moet worden geplaatst in de `<dict>` element.  Vervang de _appname_ tekenreeks (binnen de matrix voor **CFBundleURLSchemes**) met de naam van de app die u in stap 1 hebt gekozen.  U kunt ook deze wijzigingen aanbrengt in de plist-editor - Klik op de `AppName-Info.plist` -bestand in XCode om de plist-editor te openen.
+    Deze code moet in het element `<dict>` worden geplaatst.  Vervang de teken reeks _AppName_ (binnen de matrix voor **CFBundleURLSchemes**) door de naam van de app die u in stap 1 hebt gekozen.  U kunt deze wijzigingen ook aanbrengen in de plist-editor: Klik op het `AppName-Info.plist`-bestand in XCode om de plist-editor te openen.
 
-    Vervang de `com.microsoft.azure.zumo` verbindingsreeks gebruiken voor **CFBundleURLName** bundel met uw Apple-id.
+    Vervang de teken reeks @no__t 0 voor **CFBundleURLName** met uw Apple bundel-id.
 
-6. Druk op *uitvoeren* naar de app te starten en meld u vervolgens. Wanneer u bent aangemeld, moet u rekening kan de Todo-lijst bekijken en updates.
+6. Druk op *uitvoeren* om de app te starten en meld u vervolgens aan. Wanneer u bent aangemeld, kunt u de taken lijst weer geven en updates maken.
 
 **Swift**:
 
-1. Open op uw Mac *ToDoTableViewController.swift* in Xcode en voeg de volgende methode toe:
+1. Open *ToDoTableViewController. Swift* in Xcode in uw Mac en voeg de volgende methode toe:
 
     ```swift
     func loginAndGetData() {
@@ -167,17 +167,17 @@ In Xcode, drukt u op **uitvoeren** om de app te starten. Een uitzondering is opg
     }
     ```
 
-    Wijziging *google* naar *microsoftaccount*, *twitter*, *facebook*, of *windowsazureactivedirectory* als u geen van Google als id-provider gebruikmaakt. Als u Facebook gebruikt, moet u [whitelist Facebook domeinen][1] in uw app.
+    Wijzig *Google* in *MicrosoftAccount*, *Twitter*, *Facebook*of *windowsazureactivedirectory* als u Google niet als uw ID-provider gebruikt. Als u Facebook gebruikt, moet u [Facebook-domeinen white list][1] in uw app.
 
-    Vervang de **urlScheme** met een unieke naam voor uw toepassing.  De urlScheme moet gelijk zijn aan het URL-schema-protocol dat u hebt opgegeven in de **toegestane externe Omleidings-URL's** veld in de Azure-portal. De urlScheme wordt gebruikt door de callback voor gebruikersverificatie wilt terugkeren naar uw toepassing nadat de verificatieaanvraag voltooid is.
+    Vervang de **urlScheme** door een unieke naam voor uw toepassing.  De urlScheme moet hetzelfde zijn als het URL-schema protocol dat u hebt opgegeven in het veld **toegestane externe omleidings-url's** in de Azure Portal. De urlScheme wordt gebruikt door de aanroep van de verificatie om terug te gaan naar uw toepassing nadat de verificatie aanvraag is voltooid.
 
-2. Verwijder de regels `self.refreshControl?.beginRefreshing()` en `self.onRefresh(self.refreshControl)` aan het einde van `viewDidLoad()` in *ToDoTableViewController.swift*. Voeg een aanroep naar `loginAndGetData()` in plaats daarvan:
+2. Verwijder de regels `self.refreshControl?.beginRefreshing()` en `self.onRefresh(self.refreshControl)` aan het einde van `viewDidLoad()` in *ToDoTableViewController. Swift*. Voeg op hun plaats een aanroep toe aan `loginAndGetData()`:
 
     ```swift
     loginAndGetData()
     ```
 
-3. Open de `AppDelegate.swift` -bestand en voeg de volgende regel aan de `AppDelegate` klasse:
+3. Open het bestand `AppDelegate.swift` en voeg de volgende regel toe aan de klasse `AppDelegate`:
 
     ```swift
     var todoTableViewController: ToDoTableViewController?
@@ -192,9 +192,9 @@ In Xcode, drukt u op **uitvoeren** om de app te starten. Een uitzondering is opg
     }
     ```
 
-    Vervang de _appname_ met de urlScheme-waarde die u in stap 1 hebt gebruikt.
+    Vervang de _AppName_ door de urlScheme-waarde die u in stap 1 hebt gebruikt.
 
-4. Open de `AppName-Info.plist` bestand (vervangen AppName met de naam van uw app) en voeg de volgende code toe:
+4. Open het bestand `AppName-Info.plist` (waarbij AppName wordt vervangen door de naam van uw app) en voeg de volgende code toe:
 
     ```xml
     <key>CFBundleURLTypes</key>
@@ -210,18 +210,18 @@ In Xcode, drukt u op **uitvoeren** om de app te starten. Een uitzondering is opg
     </array>
     ```
 
-    Deze code moet worden geplaatst in de `<dict>` element.  Vervang de _appname_ tekenreeks (binnen de matrix voor **CFBundleURLSchemes**) met de naam van de app die u in stap 1 hebt gekozen.  U kunt ook deze wijzigingen aanbrengt in de plist-editor - Klik op de `AppName-Info.plist` -bestand in XCode om de plist-editor te openen.
+    Deze code moet in het element `<dict>` worden geplaatst.  Vervang de teken reeks _AppName_ (binnen de matrix voor **CFBundleURLSchemes**) door de naam van de app die u in stap 1 hebt gekozen.  U kunt deze wijzigingen ook aanbrengen in de plist-editor: Klik op het `AppName-Info.plist`-bestand in XCode om de plist-editor te openen.
 
-    Vervang de `com.microsoft.azure.zumo` verbindingsreeks gebruiken voor **CFBundleURLName** bundel met uw Apple-id.
+    Vervang de teken reeks @no__t 0 voor **CFBundleURLName** met uw Apple bundel-id.
 
-5. Druk op *uitvoeren* naar de app te starten en meld u vervolgens. Wanneer u bent aangemeld, moet u rekening kan de Todo-lijst bekijken en updates.
+5. Druk op *uitvoeren* om de app te starten en meld u vervolgens aan. Wanneer u bent aangemeld, kunt u de taken lijst weer geven en updates maken.
 
-App Service-verificatie wordt gebruikt voor communicatie van appels Inter-App.  Raadpleeg voor meer informatie over dit onderwerp, de [Apple-documentatie][2]
+Bij App Service-verificatie wordt gebruikgemaakt van Apple-communicatie tussen apps.  Raadpleeg de [Apple-documentatie][2] voor meer informatie over dit onderwerp.
 <!-- URLs. -->
 
 [1]: https://developers.facebook.com/docs/ios/ios9#whitelist
 [2]: https://developer.apple.com/library/content/documentation/iPhone/Conceptual/iPhoneOSProgrammingGuide/Inter-AppCommunication/Inter-AppCommunication.html
-[Azure Portal]: https://portal.azure.com
+[Azure-portal]: https://portal.azure.com
 
-[Snelstartgids voor iOS]: app-service-mobile-ios-get-started.md
+[Quick start voor iOS]: app-service-mobile-ios-get-started.md
 

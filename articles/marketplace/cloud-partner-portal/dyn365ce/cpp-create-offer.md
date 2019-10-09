@@ -1,39 +1,21 @@
 ---
-title: Maken van een Dynamics 365 voor Customer Engagement toepassingsbieding | Azure Marketplace
-description: Het maken van een nieuwe Dynamics 365 voor Customer Engagement de aanbieding van toepassing op de AppSource-Marketplace.
+title: Een Dynamics 365-aanbieding voor klant betrokkenheid maken | Azure Marketplace
+description: Dit CPP-artikel is afgeschaft en wordt gewijs naar PC-artikel; was "het maken van een nieuwe Dynamics 365 voor een aanvraag aanbieding voor klant betrokkenheid op de AppSource Marketplace."
 services: Dynamics 365 for Customer Engagement Offer, Azure, Marketplace, Cloud Partner Portal, AppSource
-author: v-miclar
+author: ChJenk
 ms.service: marketplace
 ms.topic: conceptual
-ms.date: 12/21/2018
-ms.author: pabutler
-ms.openlocfilehash: ebfef673102878e50f744081ec9b46fd4cd1796b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 09/30/2019
+ms.author: v-chjen
+ms.openlocfilehash: 1682abd3983d3e090b59e6452c4761913e29da3d
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64942695"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72034345"
 ---
-# <a name="create-a-dynamics-365-for-customer-engagement-application-offer"></a>Een Dynamics 365 voor Customer Engagement toepassing aanbieding maken
+# <a name="create-a-dynamics-365-for-customer-engagement-application-offer"></a>Een Dynamics 365 maken voor een aanvraag aanbieding voor klant betrokkenheid
 
-In deze sectie wordt beschreven hoe u maken en publiceren van een Dynamics 365 voor Customer Engagement toepassing aanbieding voor de AppSource-Marketplace. Elke aanbieding wordt weergegeven als een eigen entiteit in de marketplace en bestaat uit de volgende groeperingen van assets en ondersteunende services: bieden ondersteuning voor details, pakket technische informatie, marketing-artefacten, informatie en optionele Test Drive specificaties. 
+De [Cloud Partner-Portal](https://cloudpartner.azure.com/) biedt geen ondersteuning meer voor het maken en beheren van Dynamics 365-aanbiedingen voor klanten. Deze functionaliteit is in plaats daarvan verplaatst naar de portal van micro soft [Partner Center](https://partner.microsoft.com/). Zie voor meer informatie [een nieuwe Dynamics 365 maken voor klant betrokkenheid & PowerApps-aanbieding](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-customer-engagement-offer).
 
-
-## <a name="new-offer-form"></a>Nieuwe aanbieding formulier
-
-Aanmelden bij de [Cloud Partner-Portal](https://cloudpartner.azure.com/), en selecteer vervolgens **+ nieuwe aanbieding** in het menu links. Op het pictogram Nieuw menu bieden, selecteert u **Dynamics 365 voor Customer Engagement**:
-
-![Nieuwe aanbieding menu-item voor Dynamics 365 voor Customer Engagement-toepassing](./media/new-dyn365ce-menu-item.png)
-
-De **nieuwe aanbieding** formulier wordt weergegeven, met de eerste [ **instellingen bieden** tabblad](./cpp-offer-settings-tab.md).
-
-
-## <a name="next-steps"></a>Volgende stappen
-
-De **nieuwe aanbieding** pagina bevat een set van tabs en formuliervelden die u gebruiken gaat om te maken van een nieuwe aanbieding. De volgende artikelen wordt uitgelegd hoe de asset groepen en ondersteunende informatie voor uw nieuwe aanbieding definiëren.
-
-* [Tabblad voor aanbiedingsinstellingen](./cpp-offer-settings-tab.md)
-* [Tabblad Technische gegevens](./cpp-technical-info-tab.md)
-* [Tabblad voor Test Drive](./cpp-testdrive-tab.md)
-* [Tabblad Details van webwinkel](./cpp-storefront-details-tab.md)
-* [Tabblad Contactpersonen](./cpp-contacts-tab.md)
+Voordat u een nieuwe aanbieding voor Dynamics 365 voor klant afspraken maakt, moet u [een partner centrum-account maken](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) lezen en vervolgens het [dash board voor commerciële Marketplace](https://partner.microsoft.com/dashboard/directory) openen met de geselecteerde **overzichts** pagina. Volg de instructies in [een nieuwe Dynamics 365 maken voor klant betrokkenheid & PowerApps-aanbieding](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-customer-engagement-offer) om uw aanbieding te maken.

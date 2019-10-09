@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/19/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 77c90cccbbfa5865878ae4dc47e5009697560ed3
-ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
-ms.translationtype: HT
+ms.openlocfilehash: a52f9fca172e42aa39a4507347185026451a8ff2
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72001309"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72029040"
 ---
 # <a name="expressroute-routing-requirements"></a>Routeringsvereisten voor ExpressRoute
 Als u ExpressRoute wilt gebruiken om verbinding te maken met Microsoft Cloud-services, moet u routering instellen en beheren. Sommige connectiviteitsproviders bieden het instellen en beheren van routering aan als een beheerde service. Neem contact op met uw connectiviteitsprovider om na te gaan of ze deze service leveren. Als dat niet het geval is, moet u voldoen aan de volgende vereisten:
@@ -196,11 +196,11 @@ U kunt meer dan één ExpressRoute-circuit per geopolitieke regio aanschaffen. H
 | Korea - zuid | 12076:51028 | 12076:52028 | 12076:53028 | 12076:54028 |
 | Korea - centraal | 12076:51029 | 12076:52029 | 12076:53029 | 12076:54029 |
 | **Zuid-Afrika**| |
-| Zuid-Afrika - noord | 12076:51034 | 12076:52034 | 12076:53034 | 12076:54034 |
-| Zuid-Afrika - west | 12076:51035 | 12076:52035 | 12076:53035 | 12076:54035 |
+| Zuid-Afrika (noord) | 12076:51034 | 12076:52034 | 12076:53034 | 12076:54034 |
+| Zuid-Afrika (west) | 12076:51035 | 12076:52035 | 12076:53035 | 12076:54035 |
 | **VAE**| |
-| UAE - noord | 12076:51036 | 12076:52036 | 12076:53036 | 12076:54036 |
-| UAE - centraal | 12076:51037 | 12076:52037 | 12076:53037 | 12076:54037 |
+| VAE - noord | 12076:51036 | 12076:52036 | 12076:53036 | 12076:54036 |
+| VAE - centraal | 12076:51037 | 12076:52037 | 12076:53037 | 12076:54037 |
 
 
 Alle routes die worden geadverteerd vanuit Microsoft, worden gemarkeerd met de juiste community-waarde. 
@@ -215,14 +215,16 @@ Daarnaast worden voorvoegsels door Microsoft gemarkeerd op basis van de service 
 
 | **Service** | **BGP-communitywaarde** |
 | --- | --- |
-| Exchange Online | 12076:5010 |
-| SharePoint Online | 12076:5020 |
-| Skype voor Bedrijven Online | 12076:5030 |
+| Exchange Online * * | 12076:5010 |
+| Share point online * * | 12076:5020 |
+| Skype voor bedrijven online * * | 12076:5030 |
+| CRM Online |12076:5040 |
 | Azure Global Services * | 12076:5050 |
-| Andere online services van Office 365 | 12076:5100 |
+| Azure Active Directory |12076:5060 |
+| Andere Office 365 Online Services * * | 12076:5100 |
 
 \* Azure Global Services omvat op dit moment alleen Azure-DevOps.
-
+\* * Autorisatie vereist van micro soft, Zie [route filters configureren voor micro soft-peering](how-to-routefilter-portal.md) 
 
 > [!NOTE]
 > BGP-communitywaarden die u instelt op de routes die worden geadverteerd naar Microsoft, worden niet door Microsoft erkend.

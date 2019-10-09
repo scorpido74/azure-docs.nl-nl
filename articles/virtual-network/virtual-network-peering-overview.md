@@ -10,18 +10,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/01/2019
+ms.date: 10/07/2019
 ms.author: anavin
-ms.openlocfilehash: 100bbb6e0ed8e2ea5b35e30e7759a3b11c169b60
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c488b96940cac03b9c392f0ac4bd1d32a15ba111
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67077629"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72035282"
 ---
 # <a name="virtual-network-peering"></a>Peering op virtueel netwerk
 
-Peering op virtueel netwerk kunt u naadloos verbinding maken met Azure [virtuele netwerken](virtual-networks-overview.md). Nadat de virtuele netwerken zijn gekoppeld via peering, worden ze voor verbindingsdoeleinden weergegeven als één netwerk. Het verkeer tussen de virtuele machines in de gekoppelde virtuele netwerken wordt doorgestuurd via de Microsoft-backbone-infrastructuur, vergelijkbaar met de manier waarop verkeer tussen virtuele machines in hetzelfde virtuele netwerk alleen wordt gerouteerd via *privé*-IP-adressen. Azure ondersteunt:
+Met peering op virtueel netwerk kunt u naadloos verbinding maken met [virtuele netwerken](virtual-networks-overview.md)van Azure. Nadat de virtuele netwerken zijn gekoppeld via peering, worden ze voor verbindingsdoeleinden weergegeven als één netwerk. Het verkeer tussen de virtuele machines in de gekoppelde virtuele netwerken wordt doorgestuurd via de Microsoft-backbone-infrastructuur, vergelijkbaar met de manier waarop verkeer tussen virtuele machines in hetzelfde virtuele netwerk alleen wordt gerouteerd via *privé*-IP-adressen. Azure ondersteunt:
 * VNet-peering - VNets verbinden binnen dezelfde Azure-regio
 * Globale VNet-peering - VNets verbinden tussen Azure-regio's
 
@@ -63,7 +63,7 @@ Wanneer virtuele netwerken gelijkwaardig zijn gemaakt, kunt u ook de gateway in 
 
 ![doorvoer bij peering van virtuele netwerken](./media/virtual-networks-peering-overview/figure04.png)
 
-Gatewaydoorvoer wordt ondersteund voor wereldwijde VNet-Peering en VNet-Peering. Gateway-doorvoer tussen virtuele netwerken die zijn gemaakt via verschillende implementatiemodellen (Resource Manager en klassiek) wordt alleen ondersteund als de gateway zich in het virtuele netwerk (Resource Manager). Zie voor meer informatie over het gebruik van een gateway voor de doorvoer, [Een VPN-gateway configureren voor de doorvoer in een virtueel netwerkpeering](../vpn-gateway/vpn-gateway-peering-gateway-transit.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+Gateway-door Voer wordt ondersteund voor zowel VNet-peering als globale VNet-peering. Gateway overdracht tussen virtuele netwerken die zijn gemaakt via verschillende implementatie modellen (Resource Manager en klassiek) wordt alleen ondersteund als de gateway zich in het virtuele netwerk (Resource Manager) bevindt. Zie voor meer informatie over het gebruik van een gateway voor de doorvoer, [Een VPN-gateway configureren voor de doorvoer in een virtueel netwerkpeering](../vpn-gateway/vpn-gateway-peering-gateway-transit.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 Wanneer virtuele netwerken die één Azure ExpressRoute-verbinding delen, worden gekoppeld, gaat het verkeer tussen de twee netwerken via de peering-relatie (dat wil zeggen, via het backbone-netwerk van Azure). U kunt nog steeds in elk virtueel netwerk lokale gateways gebruiken om verbinding te maken met het on-premises circuit. U kunt ook een gedeelde gateway gebruiken en de doorvoer voor on-premises connectiviteit configureren.
 
@@ -78,7 +78,7 @@ U kunt ook de [Probleemoplosser voor virtueel netwerk peering problemen](https:/
 ## <a name="requirements-and-constraints"></a>Vereisten en beperkingen
 
 De volgende beperkingen zijn alleen van toepassing wanneer virtuele netwerken wereldwijd zijn gekoppeld:
-- Resources in een virtueel netwerk kunnen niet communiceren met de front-end-IP-adres van een algemene interne load balancer in een wereldwijd gekoppelde virtuele netwerk. Ondersteuning voor de basisversie van Load Balancer bestaat alleen binnen dezelfde regio. Ondersteuning voor de standaardversie van Load Balancer bestaat voor zowel, VNet-Peering en wereldwijde VNet-Peering. Services die gebruikmaken van een basisversie van load balancer die niet over wereldwijde VNet-Peering werken zal zijn gedocumenteerd [hier.](virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)
+- Resources in één virtueel netwerk kunnen niet communiceren met het front-end-IP-adres van een interne Basic-load balancer in een globaal gekoppeld virtueel netwerk. Ondersteuning voor Basic-Load Balancer bestaat alleen in dezelfde regio. Ondersteuning voor Standard Load Balancer bestaat zowel voor VNet-peering als globale VNet-peering. Services die gebruikmaken van een basis load balancer die niet meer werken dan wereld wijde VNet-peering, worden [hier beschreven.](virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)
 
 Zie [Vereisten en beperkingen voor peering op een virtueel netwerk](virtual-network-manage-peering.md#requirements-and-constraints) voor meer informatie over vereisten en beperkingen. Zie [Azure-netwerklimieten](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) voor meer informatie over de limieten voor het aantal peerings dat u kunt maken voor een virtueel netwerk. 
 
@@ -90,13 +90,13 @@ Zie [Machtigingen voor peering op een virtueel netwerk](virtual-network-manage-p
 
 Er wordt een nominaal bedrag in rekening gebracht voor inkomend en uitgaand verkeer dat gebruikmaakt van een verbinding voor virtueel netwerk-peering. Zie de [pagina met prijzen](https://azure.microsoft.com/pricing/details/virtual-network) voor meer informatie over prijzen voor VNet-peering en wereldwijde VNet-peering.
 
-Gateway-doorvoer is een peering eigenschap waarmee een virtueel netwerk gebruiken een VPN/ExpressRoute-gateway in een gekoppeld virtueel netwerk voor cross-premises of in de VNet-naar-VNet-connectiviteit. Verkeer dat via een externe gateway in dit scenario is onderworpen aan [VPN-gateway kosten](https://azure.microsoft.com/pricing/details/vpn-gateway/) of ExpressRoute-gateway in rekening gebracht en leidt niet tot de [VNet peering kosten in rekening gebracht.](https://azure.microsoft.com/pricing/details/virtual-network) Bijvoorbeeld, als VNetA een VPN-gateway voor on-premises connectiviteit is en als VNetB is gekoppeld aan VNetA met de gewenste eigenschappen die zijn geconfigureerd, verkeer van VNetB naar on-premises wordt alleen in rekening gebracht uitgaand verkeer per prijzen voor VPN-gateway of ExpressRoute-prijzen. Er zijn geen kosten voor VNet-peering van toepassing. Lees hoe u [VPN-gatewayoverdracht kunt configureren voor peering voor virtuele netwerken.](../vpn-gateway/vpn-gateway-peering-gateway-transit.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+Gateway-door Voer is een peering-eigenschap waarmee een virtueel netwerk een VPN-ExpressRoute kan gebruiken in een gekoppeld virtueel netwerk voor cross-premises of VNet-naar-VNet-connectiviteit. Raadpleeg kosten voor [VPN-gateway](https://azure.microsoft.com/pricing/details/vpn-gateway/) of ExpressRoute-gateway kosten en [VNet-peering-kosten](https://azure.microsoft.com/pricing/details/virtual-network) voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * Peering in virtuele netwerken kan tot stand worden gebracht tussen virtuele netwerken die zijn gemaakt via hetzelfde implementatiemodel of via verschillende implementatiemodellen die tot hetzelfde abonnement of tot verschillende abonnementen behoren. Volg een zelfstudie voor een van de volgende scenario's:
 
-    |Azure-implementatiemodel             | Abonnement  |
+    |Azure-implementatiemodel             | Subscription  |
     |---------                          |---------|
     |Beide in Resource Manager              |[Hetzelfde](tutorial-connect-virtual-networks-portal.md)|
     |                                   |[Verschillend](create-peering-different-subscriptions.md)|

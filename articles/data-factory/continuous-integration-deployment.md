@@ -11,12 +11,12 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 08/14/2019
-ms.openlocfilehash: 4386a7adba17eefe3c373697597abdb7d69c476a
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: ff1d34852890a8d5005153ebdfa2fa0f9749d129
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265988"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72030615"
 ---
 # <a name="continuous-integration-and-delivery-cicd-in-azure-data-factory"></a>Continue integratie en levering (CI/CD) in Azure Data Factory
 
@@ -118,11 +118,11 @@ Hieronder vindt u een hand leiding voor het instellen van een Azure pipelines-re
 
     d.  Selecteer in de vervolg keuzelijst actie de optie **resource groep maken of bijwerken**.
 
-    e.  Selecteren **...** in het veld **sjabloon** . Blader naar het Azure Resource Manager sjabloon maken via de stap **arm-sjabloon importeren** in [een resource manager-sjabloon maken voor elke omgeving](continuous-integration-deployment.md#create-a-resource-manager-template-for-each-environment). Zoek het bestand in de map `<FactoryName>` van de `adf_publish` vertakking.
+    e.  Selecteren **...** in het veld **sjabloon** . Blader naar het Azure Resource Manager sjabloon maken via de stap **arm-sjabloon importeren** in [een resource manager-sjabloon maken voor elke omgeving](continuous-integration-deployment.md#create-a-resource-manager-template-for-each-environment). Zoek naar dit bestand in de map `<FactoryName>` van de vertakking `adf_publish`.
 
     f.  Selecteren **...** in het **veld sjabloon parameters.** om het parameter bestand te kiezen. Kies het juiste bestand, afhankelijk van of u een kopie hebt gemaakt of gebruikmaakt van het standaard bestand *ARMTemplateParametersForFactory. json*.
 
-    g.  Selecteren **...** Naast het veld **para meters van sjabloon negeren** voert u de gegevens voor de doel Data Factory in. Voer de geheime naam tussen dubbele aanhalings tekens in voor referenties die afkomstig zijn van sleutel kluis. Als de naam van het geheim bijvoorbeeld is `cred1`, voert `"$(cred1)"`u in voor de waarde.
+    g.  Selecteren **...** Naast het veld **para meters van sjabloon negeren** voert u de gegevens voor de doel Data Factory in. Voer de geheime naam tussen dubbele aanhalings tekens in voor referenties die afkomstig zijn van sleutel kluis. Als de naam van het geheim bijvoorbeeld `cred1` is, voert u `"$(cred1)"`for de waarde in.
 
     ![](media/continuous-integration-deployment/continuous-integration-image9.png)
 
@@ -176,7 +176,7 @@ Er zijn twee manieren om geheimen af te handelen:
 
 #### <a name="grant-permissions-to-the-azure-pipelines-agent"></a>Machtigingen verlenen aan de Azure pipelines-agent
 
-De Azure Key Vault taak kan mislukken met een fout bericht over geweigerde toegang als de juiste machtigingen niet aanwezig zijn. Down load de logboeken voor de release en zoek `.ps1` het bestand met de opdracht om machtigingen te verlenen aan de Azure pipelines-agent. U kunt de opdracht rechtstreeks uitvoeren, of u kunt de principal-ID uit het bestand kopiëren en het toegangs beleid hand matig toevoegen in de Azure Portal. **Get** en **List** zijn de mini maal vereiste machtigingen.
+De Azure Key Vault taak kan mislukken met een fout bericht over geweigerde toegang als de juiste machtigingen niet aanwezig zijn. Down load de logboeken voor de release en zoek het bestand `.ps1` met de opdracht om machtigingen te verlenen aan de Azure pipelines-agent. U kunt de opdracht rechtstreeks uitvoeren, of u kunt de principal-ID uit het bestand kopiëren en het toegangs beleid hand matig toevoegen in de Azure Portal. **Get** en **List** zijn de mini maal vereiste machtigingen.
 
 ### <a name="update-active-triggers"></a>Actieve triggers bijwerken
 
@@ -196,7 +196,7 @@ De implementatie kan mislukken als u probeert actieve triggers bij te werken. Al
 
     ![](media/continuous-integration-deployment/continuous-integration-image11.png)
 
-U kunt dezelfde stappen volgen (met de `Start-AzDataFactoryV2Trigger` functie) om de triggers na de implementatie opnieuw te starten.
+U kunt soort gelijke stappen volgen (met de functie `Start-AzDataFactoryV2Trigger`) om de triggers na de implementatie opnieuw te starten.
 
 > [!IMPORTANT]
 > In doorlopende integratie-en implementatie scenario's moet het Integration Runtime type in verschillende omgevingen hetzelfde zijn. Als u bijvoorbeeld een *zelf-hostend* Integration runtime (IR) in de ontwikkel omgeving hebt, moet dezelfde IR van het type zelf worden *gehost* in andere omgevingen, zoals test en productie. En als u integratie-runtime in meerdere fasen deelt, moet u de Integration Runtimes als *gekoppelde zelf-hostende* in alle omgevingen configureren, zoals ontwikkeling, testen en productie.
@@ -328,21 +328,21 @@ Als u zich in de GIT-modus bevindt, kunt u de standaard eigenschappen in uw Reso
 * U gebruikt automatische CI/CD en u wilt enkele eigenschappen wijzigen tijdens de implementatie van Resource Manager, maar de eigenschappen zijn niet standaard ingesteld op para meters.
 * Uw fabriek is zo groot dat de standaard Resource Manager-sjabloon ongeldig is omdat deze meer dan de Maxi maal toegestane para meters (256) heeft.
 
-Onder deze omstandigheden kunt u de standaard parameterisering-sjabloon overschrijven door een bestand te maken met de naam *arm-sjabloon-para meters, definitie. json* in de hoofdmap van de opslag plaats. De bestands naam moet exact overeenkomen. Data Factory probeert dit bestand te lezen van de vertakking waar u zich momenteel bevindt in de Azure Data Factory Portal, niet alleen vanuit de vertakking voor samen werking. U kunt het bestand maken of bewerken vanuit een persoonlijke vertakking, waar u uw wijzigingen kunt testen met behulp van de sjabloon voor het **exporteren van arm** in de gebruikers interface. Vervolgens kunt u het bestand samen voegen in de vertakking voor samen werking. Als er geen bestand wordt gevonden, wordt de standaard sjabloon gebruikt.
+Onder deze omstandigheden kunt u de standaard parameterisering-sjabloon overschrijven door een bestand te maken met de naam *arm-sjabloon-para meters, definitie. json* in de hoofdmap van de opslag plaats. De bestands naam moet exact overeenkomen. Data Factory probeert dit bestand te lezen van de vertakking waar u zich momenteel bevindt in de Azure Data Factory Portal, niet alleen vanuit de vertakking voor samen werking. U kunt het bestand maken of bewerken vanuit een persoonlijke vertakking, waar u uw wijzigingen kunt testen met behulp van de sjabloon voor het **exporteren van arm** in de gebruikers interface. Vervolgens kunt u het bestand samen voegen in de vertakking voor samen werking. Als er geen bestand wordt gevonden, wordt de standaard sjabloon gebruikt.
 
 
 ### <a name="syntax-of-a-custom-parameters-file"></a>Syntaxis van een bestand met aangepaste para meters
 
 Hier volgen enkele richt lijnen die u kunt gebruiken wanneer u het bestand met aangepaste para meters ontwerpt. Het bestand bestaat uit een sectie voor elk entiteits type: trigger, pijp lijn, gekoppelde service, gegevensset, Integration runtime, enzovoort.
 * Voer het pad naar de eigenschap in onder het relevante entiteits type.
-* Wanneer u een eigenschaps naam instelt op\*' ', geeft u aan dat u alle eigenschappen daaronder wilt para meters (alleen naar het eerste niveau, niet recursief). U kunt hier ook eventuele uitzonde ringen opgeven.
-* Wanneer u de waarde van een eigenschap instelt als een teken reeks, geeft u aan dat u de eigenschap wilt para meters. Gebruik de indeling `<action>:<name>:<stype>`.
-   *  `<action>` Dit kan een van de volgende tekens zijn:
-      * `=` houdt in dat de huidige waarde wordt ingesteld als de standaard waarde voor de para meter.
-      * `-` houdt in dat de standaard waarde voor de para meter niet wordt bewaard.
-      * `|` is een speciaal geval voor geheimen van Azure Key Vault voor verbindings reeksen of sleutels.
-   * `<name>` is de naam van de para meter. Als deze leeg is, wordt de naam van de eigenschap gebruikt. Als de waarde begint met een `-` teken, wordt de naam Inge kort. Zo wordt bijvoorbeeld `AzureStorage1_properties_typeProperties_connectionString` Inge kort tot. `AzureStorage1_connectionString`
-   * `<stype>` is het type para meter. `string`Als `<stype>`deze leeg is, is het standaard type. Ondersteunde waarden: `string` `bool`,, ,`object`en .`securestring` `number`
+* Wanneer u een eigenschaps naam instelt op ' \* ' ', geeft u aan dat u alle eigenschappen daaronder wilt para meters (alleen naar het eerste niveau, niet recursief). U kunt hier ook eventuele uitzonde ringen opgeven.
+* Wanneer u de waarde van een eigenschap instelt als een teken reeks, geeft u aan dat u de eigenschap wilt para meters. Gebruik de notatie @ no__t-0.
+   *  `<action>` @ no__t-1can een van de volgende tekens zijn:
+      * `=` @ no__t-1means behoud de huidige waarde als de standaard waarde voor de para meter.
+      * `-` @ no__t-1means niet de standaard waarde voor de para meter.
+      * `|` @ no__t-1is een speciaal geval voor geheimen van Azure Key Vault voor verbindings reeksen of sleutels.
+   * `<name>` @ no__t-1is de naam van de para meter. Als deze leeg is, wordt de naam van de eigenschap gebruikt. Als de waarde begint met een `-`-teken, wordt de naam Inge kort. @No__t-0 wordt bijvoorbeeld Inge kort tot `AzureStorage1_connectionString`.
+   * `<stype>` @ no__t-1is het type para meter. Als @ no__t-0 @ no__t-1is leeg is, is het standaard type `string`. Ondersteunde waarden: `string`, `bool`, `number`, `object` en `securestring`.
 * Wanneer u een matrix opgeeft in het definitie bestand, geeft u aan dat de overeenkomende eigenschap in de sjabloon een matrix is. Data Factory doorloopt alle objecten in de matrix met behulp van de definitie die is opgegeven in het Integration Runtime-object van de matrix. Het tweede object, een teken reeks, wordt de naam van de eigenschap, die wordt gebruikt als de naam voor de para meter voor elke iteratie.
 * Het is niet mogelijk een definitie te hebben die specifiek is voor een resource-exemplaar. Elke wille keurige definitie is van toepassing op alle resources van dat type.
 * Standaard zijn alle beveiligde teken reeksen, zoals Key Vault geheimen en beveiligde teken reeksen, zoals verbindings reeksen, sleutels en tokens, para meters.
@@ -414,27 +414,27 @@ Hieronder volgt een uitleg van de manier waarop de bovenstaande sjabloon is same
 
 #### <a name="pipelines"></a>Pijplijnen
     
-* Elke eigenschap in het pad activities/typeProperties/waitTimeInSeconds is para meters. Alle activiteiten in een pijp lijn met de naam `waitTimeInSeconds` eigenschap (bijvoorbeeld de `Wait` activiteit) worden als een getal met een standaard naam vastgelegd. Maar heeft geen standaard waarde in de Resource Manager-sjabloon. Het is een verplichte invoer tijdens de implementatie van Resource Manager.
-* Op dezelfde manier is een `headers` eigenschap (bijvoorbeeld in een `Web` activiteit) para meters van het type `object` (JObject). Het heeft een standaard waarde. Dit is dezelfde waarde als in de bron-Factory.
+* Elke eigenschap in het pad activities/typeProperties/waitTimeInSeconds is para meters. Alle activiteiten in een pijp lijn die een eigenschap op code niveau met de naam `waitTimeInSeconds` hebben (bijvoorbeeld de activiteit `Wait`), worden als een getal met een standaard naam ingesteld. Maar heeft geen standaard waarde in de Resource Manager-sjabloon. Het is een verplichte invoer tijdens de implementatie van Resource Manager.
+* Op dezelfde manier is een eigenschap met de naam `headers` (bijvoorbeeld in een `Web`-activiteit) para meters van het type `object` (JObject). Het heeft een standaard waarde. Dit is dezelfde waarde als in de bron-Factory.
 
 #### <a name="integrationruntimes"></a>IntegrationRuntimes
 
-* Alle eigenschappen onder het pad `typeProperties` zijn para meters met hun respectievelijke standaard waarden. Er zijn bijvoorbeeld twee eigenschappen onder **IntegrationRuntimes** type-eigenschappen: `computeProperties` en. `ssisProperties` Beide eigenschaps typen worden gemaakt met hun respectievelijke standaard waarden en typen (object).
+* Alle eigenschappen onder het pad `typeProperties` zijn para meters met hun respectievelijke standaard waarden. Er zijn bijvoorbeeld twee eigenschappen onder **IntegrationRuntimes** type-eigenschappen: `computeProperties` en `ssisProperties`. Beide eigenschaps typen worden gemaakt met hun respectievelijke standaard waarden en typen (object).
 
 #### <a name="triggers"></a>Triggers
 
-* Onder `typeProperties`zijn twee eigenschappen para meters. De eerste is `maxConcurrency`, die is opgegeven om een standaard waarde te hebben en van het type`string`is. Deze heeft de standaard parameter naam van `<entityName>_properties_typeProperties_maxConcurrency`.
-* De `recurrence` eigenschap is ook para meters. Hieronder worden alle eigenschappen op dat niveau opgegeven om para meters te worden ingesteld als teken reeksen, met standaard waarden en parameter namen. Een uitzonde ring `interval` is de eigenschap, die para meters is van het type nummer en de parameter naam met `<entityName>_properties_typeProperties_recurrence_triggerSuffix`. Op dezelfde manier `freq` is de eigenschap een teken reeks en wordt de para meter als teken reeks. De `freq` eigenschap is echter para meters zonder standaard waarde. De naam is inge kort en achtervoegsel. Bijvoorbeeld `<entityName>_freq`.
+* Onder `typeProperties` zijn twee eigenschappen para meters. De eerste is `maxConcurrency`, die is opgegeven om een standaard waarde te hebben en is van het type @ no__t-1. Deze heeft de standaard parameter naam `<entityName>_properties_typeProperties_maxConcurrency`.
+* De eigenschap `recurrence` is ook para meters. Hieronder worden alle eigenschappen op dat niveau opgegeven om para meters te worden ingesteld als teken reeksen, met standaard waarden en parameter namen. Een uitzonde ring is de eigenschap `interval`, die als para meters is aangestuurd als het nummer type en met de parameter naam met `<entityName>_properties_typeProperties_recurrence_triggerSuffix`. Op dezelfde manier is de eigenschap `freq` een teken reeks en wordt de para meter in de vorm van een teken reeks. De eigenschap `freq` is echter para meters zonder standaard waarde. De naam is inge kort en achtervoegsel. Bijvoorbeeld `<entityName>_freq`.
 
 #### <a name="linkedservices"></a>LinkedServices
 
-* Gekoppelde services zijn uniek. Omdat gekoppelde services en gegevens sets een breed scala van typen hebben, kunt u type-specifieke aanpassing opgeven. In dit voor beeld worden alle gekoppelde services van `AzureDataLakeStore`het type, een specifieke sjabloon toegepast en voor alle anderen (via \*) wordt een andere sjabloon toegepast.
-* De `connectionString` eigenschap wordt `securestring` als waarde para meters ingesteld, heeft geen standaard waarde en heeft een kortere parameter naam die wordt gebruikt voor `connectionString`het achtervoegsel.
-* De eigenschap `secretAccessKey` gebeurt als een `AzureKeyVaultSecret` (bijvoorbeeld in een `AmazonS3` gekoppelde service). De para meter wordt automatisch ingesteld als een Azure Key Vault geheim en opgehaald uit de geconfigureerde sleutel kluis. U kunt ook de sleutel kluis zelf para meters.
+* Gekoppelde services zijn uniek. Omdat gekoppelde services en gegevens sets een breed scala van typen hebben, kunt u type-specifieke aanpassing opgeven. In dit voor beeld worden alle gekoppelde services van het type `AzureDataLakeStore`, een specifieke sjabloon toegepast en voor alle andere sjablonen (via \*) wordt een andere sjabloon toegepast.
+* De eigenschap `connectionString` wordt ingesteld als een `securestring`-waarde, heeft geen standaard waarde en heeft een kortere parameter naam die wordt gebruikt in plaats van `connectionString`.
+* De eigenschap `secretAccessKey` heeft een `AzureKeyVaultSecret` (bijvoorbeeld in een gekoppelde service van @no__t 2). De para meter wordt automatisch ingesteld als een Azure Key Vault geheim en opgehaald uit de geconfigureerde sleutel kluis. U kunt ook de sleutel kluis zelf para meters.
 
 #### <a name="datasets"></a>Gegevenssets
 
-* Hoewel het type-specifieke aanpassing beschikbaar is voor gegevens sets, kan de configuratie worden opgegeven zonder \*dat dit expliciet een configuratie van een niveau heeft. In het bovenstaande voor beeld zijn alle eigenschappen van `typeProperties` de gegevensset onder para meters.
+* Hoewel het type-specifieke aanpassing beschikbaar is voor gegevens sets, kan de configuratie worden opgegeven zonder expliciet een @no__t configuratie op -0-niveau. In het bovenstaande voor beeld zijn alle eigenschappen van de gegevensset onder `typeProperties` para meters.
 
 ### <a name="default-parameterization-template"></a>Standaard parameterisering-sjabloon
 
@@ -545,7 +545,7 @@ Hieronder ziet u de huidige standaard sjabloon parameterisering. Als u slechts �
 }
 ```
 
-Hieronder ziet u een voor beeld van hoe u een enkele waarde kunt toevoegen aan de standaard sjabloon parameterisering. We willen alleen een bestaande Databricks interactief cluster-ID voor een gekoppelde Databricks-service toevoegen aan het parameter bestand. Opmerking: het onderstaande bestand is hetzelfde als het bovenstaande bestand, behalve `existingClusterId` onder het veld eigenschappen van. `Microsoft.DataFactory/factories/linkedServices`
+Hieronder ziet u een voor beeld van hoe u een enkele waarde kunt toevoegen aan de standaard sjabloon parameterisering. We willen alleen een bestaande Databricks interactief cluster-ID voor een gekoppelde Databricks-service toevoegen aan het parameter bestand. Opmerking: het onderstaande bestand is hetzelfde als het bovenstaande bestand, met uitzonde ring van `existingClusterId` onder het veld eigenschappen van `Microsoft.DataFactory/factories/linkedServices`.
 
 ```json
 {
@@ -657,11 +657,11 @@ Hieronder ziet u een voor beeld van hoe u een enkele waarde kunt toevoegen aan d
 
 Als u doorlopende integratie en implementatie (CI/CD) voor uw gegevens fabrieken hebt ingesteld, kunt u de limieten voor de Azure Resource Manager-sjablonen uitvoeren naarmate uw fabriek groter groeit. Een voor beeld van een limiet is het maximum aantal resources in een resource manager-sjabloon. Data Factory nu gekoppelde Resource Manager-sjablonen genereert om grote fabrieken te kunnen samen met het genereren van de volledige Resource Manager-sjabloon voor een fabriek. Met deze functie wordt de gehele nettolading van de fabriek onderverdeeld in verschillende bestanden, zodat u de limieten niet kunt uitvoeren.
 
-Als u Git hebt geconfigureerd, worden de gekoppelde sjablonen gegenereerd en opgeslagen in de volledige Resource Manager-sjablonen in `adf_publish` de vertakking onder een nieuwe map `linkedTemplates`met de naam.
+Als u Git hebt geconfigureerd, worden de gekoppelde sjablonen gegenereerd en opgeslagen in de volledige Resource Manager-sjablonen in de vertakking `adf_publish` onder een nieuwe map met de naam `linkedTemplates`.
 
 ![Map gekoppelde Resource Manager-sjablonen](media/continuous-integration-deployment/linked-resource-manager-templates.png)
 
-De gekoppelde Resource Manager-sjablonen bevatten meestal een hoofd sjabloon en een set onderliggende sjablonen die aan het hoofd zijn gekoppeld. De bovenliggende sjabloon wordt aangeroepen `ArmTemplate_master.json`en de onderliggende sjablonen worden benoemd met het patroon `ArmTemplate_0.json`, `ArmTemplate_1.json`enzovoort. Als u gekoppelde sjablonen wilt gebruiken in plaats van de volledige Resource Manager-sjabloon, moet u uw CI/ `ArmTemplate_master.json` cd- `ArmTemplateForFactory.json` taak bijwerken zodat deze verwijst naar in plaats van (de volledige Resource Manager-sjabloon). Resource Manager vereist ook dat u de gekoppelde sjablonen uploadt naar een opslag account, zodat deze door Azure kunnen worden gebruikt tijdens de implementatie. Zie voor meer informatie [gekoppelde arm-sjablonen implementeren met VSTS](https://blogs.msdn.microsoft.com/najib/2018/04/22/deploying-linked-arm-templates-with-vsts/).
+De gekoppelde Resource Manager-sjablonen bevatten meestal een hoofd sjabloon en een set onderliggende sjablonen die aan het hoofd zijn gekoppeld. De bovenliggende sjabloon heet `ArmTemplate_master.json`, en de onderliggende sjablonen worden benoemd met het patroon `ArmTemplate_0.json`, `ArmTemplate_1.json`, enzovoort. Als u gekoppelde sjablonen wilt gebruiken in plaats van de volledige Resource Manager-sjabloon, moet u uw CI/CD-taak bijwerken zodat deze verwijst naar `ArmTemplate_master.json` in plaats van `ArmTemplateForFactory.json` (de volledige Resource Manager-sjabloon). Resource Manager vereist ook dat u de gekoppelde sjablonen uploadt naar een opslag account, zodat deze door Azure kunnen worden gebruikt tijdens de implementatie. Zie voor meer informatie [gekoppelde arm-sjablonen implementeren met VSTS](https://blogs.msdn.microsoft.com/najib/2018/04/22/deploying-linked-arm-templates-with-vsts/).
 
 Vergeet niet om de Data Factory scripts in uw CI/CD-pijp lijn vóór en na de implementatie taak toe te voegen.
 

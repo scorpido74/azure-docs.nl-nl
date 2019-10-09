@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: fdb34173e0ca52f57a004e3a5b4a076e423ff5bd
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: 6d61b94a50716966ac0b3c75551ddd9d8e291965
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240102"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72024454"
 ---
 # <a name="tutorial-detect-threats-out-of-the-box"></a>Zelfstudie: Bedreigingen-out-of-Box detecteren
 
@@ -29,7 +29,7 @@ ms.locfileid: "71240102"
 > Deze functie wordt zonder service level agreement gegeven en wordt niet aanbevolen voor productie werkbelastingen.
 > Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
 
-Nadat u [uw gegevens bronnen hebt verbonden](quickstart-onboard.md)met Azure Sentinel, wilt u een melding ontvangen wanneer er iets verdacht is. Om dit mogelijk te maken, biedt Azure Sentinel u de beschikking over out-of-the-box-sjablonen. Deze sjablonen zijn ontworpen door het team van beveiligings experts en analisten van micro soft op basis van bekende bedreigingen, veelvoorkomende aanvals vectoren en escalatie ketens van verdachte activiteiten. Nadat deze sjablonen zijn ingeschakeld, zullen ze automatisch zoeken naar activiteiten die in uw omgeving verdacht zijn. Veel sjablonen kunnen worden aangepast om activiteiten op basis van uw behoeften te zoeken of uit te filteren. De waarschuwingen die door deze sjablonen worden gegenereerd, maken incidenten die u kunt toewijzen en onderzoeken in uw omgeving.
+Nadat u [uw gegevens bronnen](quickstart-onboard.md) To Azure Sentinel hebt verbonden, wilt u een melding ontvangen wanneer er iets verdacht is. Om dit mogelijk te maken, biedt Azure Sentinel u de beschikking over out-of-the-box-sjablonen. Deze sjablonen zijn ontworpen door het team van beveiligings experts en analisten van micro soft op basis van bekende bedreigingen, veelvoorkomende aanvals vectoren en escalatie ketens van verdachte activiteiten. Nadat deze sjablonen zijn ingeschakeld, zullen ze automatisch zoeken naar activiteiten die in uw omgeving verdacht zijn. Veel sjablonen kunnen worden aangepast om activiteiten op basis van uw behoeften te zoeken of uit te filteren. De waarschuwingen die door deze sjablonen worden gegenereerd, maken incidenten die u kunt toewijzen en onderzoeken in uw omgeving.
 
 Deze zelf studie helpt u bij het detecteren van bedreigingen met Azure Sentinel:
 
@@ -39,7 +39,7 @@ Deze zelf studie helpt u bij het detecteren van bedreigingen met Azure Sentinel:
 
 ## <a name="about-out-of-the-box-detections"></a>Over out-of-the-box-detecties
 
-Als u alle opstaande detecties wilt weer geven, gaat u naar **Analytics** en vervolgens op **regel sjablonen**. Dit tabblad bevat alle ingebouwde Azure Sentinel-regels.
+Als u alle opstaande detecties wilt weer geven, gaat u naar **Analytics** en vervolgens op **regel sjablonen**. Dit tabblad bevat alle ingebouwde Azure Sentinel-regels.
 
    ![Ingebouwde detecties gebruiken om bedreigingen te vinden met Azure Sentinel](media/tutorial-detect-built-in/view-oob-detections.png)
 
@@ -58,7 +58,7 @@ De volgende sjabloon typen zijn beschikbaar:
  
 1. Hiermee opent u de wizard regel maken op basis van de geselecteerde sjabloon. Alle details worden automatisch ingevuld en voor **geplande regels** of **micro soft-beveiligings regels**kunt u de logica aanpassen aan uw organisatie of extra regels maken op basis van de ingebouwde sjabloon. Nadat u de stappen in de wizard voor het maken van regels hebt uitgevoerd en een regel hebt gemaakt op basis van de sjabloon, wordt de nieuwe regel weer gegeven op het tabblad **actieve regels** .
 
-Zie [zelf studie voor meer informatie over de velden in de wizard: Aangepaste analyse regels maken om verdachte bedreigingen](tutorial-detect-threats-custom.md)te detecteren.
+Zie voor meer informatie over de velden in de wizard [Tutorial: Aangepaste analyse regels maken om verdachte bedreigingen te detecteren @ no__t-0.
 
 
 

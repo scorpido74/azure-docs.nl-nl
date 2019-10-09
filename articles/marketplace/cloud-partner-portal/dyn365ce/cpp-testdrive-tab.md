@@ -1,75 +1,21 @@
 ---
-title: Dynamics 365 voor Customer Engagement toepassing Test Drive-tabblad bieden | Azure Marketplace
-description: Over het configureren van test drive voor een Dynamics 365 voor Customer Engagement toepassing aanbieding op de AppSource-Marketplace.
+title: Dynamics 365 voor klant engagement-aanbod van het programma test station | Azure Marketplace
+description: Afgeschaft artikel CPP, gekoppeld aan PC-artikel; was "het configureren van test drive voor een Dynamics 365 voor de toepassing van klant betrokkenheid op de AppSource Marketplace."
 services: Azure, Marketplace, AppSource, Cloud Partner Portal, Dynamics 365 for Customer Engagement
-author: v-miclar
+author: ChJenk
 ms.service: marketplace
 ms.topic: conceptual
-ms.date: 04/24/2019
-ms.author: pabutler
-ms.openlocfilehash: 5bb5f39ef5f5bce09a8639ba9eedc6d042e60c1d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 09/30/2019
+ms.author: v-chjen
+ms.openlocfilehash: fdf99d1d38a39ee3bebc04ab08ed27233a30ad0d
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64942344"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72034077"
 ---
-# <a name="dynamics-365-for-customer-engagement-application-test-drive-tab"></a>Dynamics 365 voor Customer Engagement toepassing Test Drive-tabblad
+# <a name="dynamics-365-for-customer-engagement-application-test-drive-tab"></a>Dynamics 365 voor het test station van de klant engagement toepassing
 
-Gebruik de **Test Drive** tabblad om te maken van een evaluatieversie voor uw klanten.  Daardoor kunnen klanten met een praktische, zelfgestuurd evaluatieversie van de belangrijke functies en voordelen, gedemonstreerd in een implementatiescenario voor het werkelijke van uw aanbieding.  Test Drive is van de proefversie opties die beschikbaar is, de meest effectief bij het genereren van hoge kwaliteit potentiële klanten en hogere conversie van deze leads.  Zie voor meer informatie, [wat is Test Drive?](../test-drive/what-is-test-drive.md)
+De [Cloud Partner-Portal](https://cloudpartner.azure.com/) biedt geen ondersteuning meer voor het maken en beheren van Dynamics 365-aanbiedingen voor klanten. Deze functionaliteit is in plaats daarvan verplaatst naar de portal van micro soft [Partner Center](https://partner.microsoft.com/). Zie voor meer informatie [een nieuwe Dynamics 365 maken voor klant betrokkenheid & PowerApps-aanbieding](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-customer-engagement-offer).
 
-De Test Drive-ervaring voor Dynamics 365-toepassingen wordt automatisch uitgevoerd als een Microsoft gehoste oplossing.  Zie voor meer informatie, [gehoste Test Drive](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/hosted-test-drive).
-
-Het tabblad Test Drive heeft drie mogelijke secties: **U kunt uitproberen**, **Details**, en **technische configuratie**.  De laatste twee secties worden alleen weergegeven nadat u de functionaliteit van de Test Drive inschakelen.  Een sterretje (*) toegevoegd aan de naam van het veld geeft aan dat dit is verplicht. 
-
-
-## <a name="test-drive-section"></a>Test Drive-sectie
-
-Als u deze functionaliteit, schakelt **Ja** naar **inschakelen van een Test Drive**.
-
-
-## <a name="details-section"></a>Sectie voor meer informatie
-
-Biedt u eenvoudige Test Drive-informatie in de **Details** sectie.   
-
-![De detailsectie van Test Drive](./media/test-drive-tab-details.png)
-
-De volgende tabel beschrijft de velden die vereist zijn voor het instellen van test drive voor uw Dynamics 365-toepassing. Verplichte velden zijn indicted met een asterisk (*).
-
-|      Veld                    |    Description                  |
-|    ---------                  |  ---------------                |
-|      Beschrijving\*            |   Wat kan worden uitgevoerd op uw Test Drive wordt beschreven. U kunt eenvoudige HTML-codes gebruiken om deze beschrijving. Bijvoorbeeld, &lt;p&gt;, &lt;em&gt;, &lt;ul&gt;, &lt;li&gt;, &lt;ol&gt;, en koppen.  |
-|  Gebruikershandleiding\*                |   Een gebruiker handmatig die uw klanten gebruiken kunnen om te zien hoe Test Drive uploaden. Dit document moet een PDF-bestand. |
-|  Test Drive demovideo (optioneel) |  U kunt een video-overzicht van uw Test Drive opgeven. Een klant kan deze video kunt bekijken voordat ze een test uitvoeren. Geef een URL naar de video op YouTube of Vimeo. Als u selecteert **+ Video toevoegen**, wordt u gevraagd om de volgende informatie te geven:<ul><li>Name</li><li>URL</li><li>Miniatuur (in PNG-indeling hebben, 533 x 324 pixels)</li></ul>  |
-|   |   |
-
-
-## <a name="technical-configuration-section"></a>Sectie met technische configuratie
-
-in deze sectie wordt u vindt u technische gegevens over uw test drive.
-
-![De detailsectie van Test Drive](./media/test-drive-tab-tech-config.png)
-
-Waarin de velden hebben de volgende doeleinden.  Verplichte velden zijn indicted met een asterisk (*).
-
-|      Veld                    |    Description                  |
-|    ---------                  |  ---------------                |
-| Type Test Drive\*            | Kies **Microsoft die worden gehost (Dynamics 365 voor Customer Engagement)** .  |
-| Maximale aantal gelijktijdige Test Drives\*    | Het aantal gelijktijdige exemplaren van een actieve Test Drive op een willekeurig moment tijd wordt opgelost. Elke gebruiker wordt een Dynamics-licentie gebruiken tijdens de Test Drive actief, is daarom u moet om ervoor te zorgen dat u ten minste dit aantal Dynamics licenties beschikbaar voor gebruikers van Test Drive. Aanbevolen waarde van 3 tot 5.  |
-| Test Drive duur (uren)\*   | Maximum aantal uren van de gebruiker Test Drive-exemplaar zijn. Na deze periode wordt overschreden, wordt het exemplaar van uw tenant inrichting ongedaan gemaakt. Aanbevolen waarde van 2 tot 24 uur, afhankelijk van de complexiteit van uw app. De gebruiker kan een andere Test Drive altijd aanvragen als ze weinig tijd en u wilt opnieuw te evalueren.  |
-| URL van instantie\*                  | URL die de Test Drive in eerste instantie u naar gaat. Dit is meestal de URL van uw Dynamics 365-exemplaar waarop uw app en voorbeeldgegevens op geïnstalleerd.  |
-| Azure AD-Tenant-ID\*            | De GUID van de Azure-tenant voor uw exemplaar van Dynamics 365. Voor het ophalen van deze waarde, meld u aan bij Azure portal en gaat u naar **Azure Active Directory** > **eigenschappen selecteren** > **kopiëren van de map-ID**.  |
-| Azure AD-App-ID\*               | GUID van uw Azure AD-toepassing  |
-| Azure AD-App-sleutel\*              | Geheim van uw Azure AD-toepassing, bijvoorbeeld: `IJUgaIOfq9b9LbUjeQmzNBW4VGn6grr1l/n3aMrnfdk=` |
-| De naam van de Azure AD-Tenant\*          | De naam van de Azure-tenant voor uw exemplaar van Dynamics 365. Gebruik de indeling van < tenantname. > onmicrosoft.com, bijvoorbeeld: `testdrive.onmicrosoft.com`  |
-| Web-API-URL van instantie\*          | De URL van de web-API voor uw exemplaar van Dynamics 365. U kunt deze waarde wordt opgehaald door te melden bij uw Microsoft Dynamics 365-exemplaar en te navigeren naar **instellingen** > **aanpassing** > **Developer Resources** > **Web-API (deze URL kopiëren)-exemplaar**. Voorbeeldwaarde: `https://testdrive.crm.dynamics.com/api/data/v9.0`  |
-| Rolnaam\*                     | Naam van de aangepaste beveiligingsrol van Dynamics 365 u voor uw Test Drive hebt gemaakt en wordt toegewezen aan de gebruikers wanneer ze het uitvoert, bijvoorbeeld `testdriveuser`. |
-|  |  |
-
-Nadat u de vereiste gegevens hebt opgegeven, selecteert u **opslaan**.
-
-
-## <a name="next-steps"></a>Volgende stappen
-
-Vervolgens krijgt u marketing- en informatie in de [tabblad met Details van de winkel](./cpp-storefront-details-tab.md).
-
+Voordat u een nieuwe aanbieding voor Dynamics 365 voor klant afspraken maakt, moet u [een partner centrum-account maken](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) lezen en vervolgens het [dash board voor commerciële Marketplace](https://partner.microsoft.com/dashboard/directory) openen met de geselecteerde **overzichts** pagina. Volg de instructies in [een nieuwe Dynamics 365 maken voor klant betrokkenheid & PowerApps-aanbieding](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-customer-engagement-offer) om uw aanbieding te maken.

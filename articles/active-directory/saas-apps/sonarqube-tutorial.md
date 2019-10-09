@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 09/18/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9b9e28f986f28bde6e46319ddb404d424c100726
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 571d8849fd7cae5c872a56182858848dbb43ef42
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71174643"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72026683"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sonarqube"></a>Zelfstudie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met Sonarqube
 
@@ -111,7 +111,7 @@ In deze sectie maakt u een test gebruiker in de Azure Portal met de naam B. Simo
 1. Selecteer **nieuwe gebruiker** aan de bovenkant van het scherm.
 1. Voer de volgende stappen uit in de eigenschappen van de **gebruiker** :
    1. Voer in het veld **Naam** `B.Simon` in.  
-   1. Voer in het veld **gebruikers naam** het username@companydomain.extensionin. Bijvoorbeeld `B.Simon@contoso.com`.
+   1. Voer in het veld **gebruikers naam** de username@companydomain.extension in. Bijvoorbeeld `B.Simon@contoso.com`.
    1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
    1. Klik op **Create**.
 
@@ -139,7 +139,7 @@ In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebru
 
 2. Installeer de SAML-invoeg toepassing vanaf de sonarqube-markt plaats.
 
-3. Klik in de linkerbovenhoek van de pagina op **beheerder** en navigeer vervolgens naar **SAML**.
+3. Klik in de linkerbovenhoek van de pagina op **beheerder** en navigeer vervolgens naar **SAML**.
 
 4. Voer op de pagina **SAML** de volgende stappen uit:
 
@@ -157,11 +157,11 @@ In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebru
 
     f. Open het met base64 gecodeerde certificaat in Klad blok, kopieer de inhoud en plak het in het tekstvak **provider certificaat** .
 
-    g. Voer in het tekstvak **SAML-gebruikers aanmelding kenmerk** de waarde `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`in.
+    g. Voer in het tekstvak **gebruikers aanmeldings kenmerk van SAML** de waarde in `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`.
 
-    h. Voer in het tekstvak **gebruikers naam kenmerk SAML** de waarde `http://schemas.microsoft.com/identity/claims/displayname`in.
+    h. Voer in het tekstvak **gebruikers naam kenmerk SAML** de waarde `http://schemas.microsoft.com/identity/claims/displayname` in.
 
-    i. Voer in het tekstvak **SAML-gebruikers-e-mail kenmerk** de waarde `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`in.
+    i. Voer in het tekstvak **SAML-gebruikers-e-mail kenmerk** de waarde in `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`.
 
     j. Klik op **Opslaan**.
 

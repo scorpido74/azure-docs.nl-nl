@@ -1,51 +1,51 @@
 ---
-title: Azure Data Factory gegevenstransformatie stroom venster toewijzen
-description: Azure Data Factory gegevenstransformatie stroom venster toewijzen
+title: Trans formatie van gegevens stroom venster Azure Data Factory toewijzen
+description: Trans formatie van gegevens stroom venster Azure Data Factory toewijzen
 author: kromerm
 ms.author: makromer
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: 6f3f06ff54fc76416ba63f4f09835897d546f8dc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cf58db14398026da62ed13c66be815be8fe166a2
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61349745"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72029900"
 ---
-# <a name="azure-data-factory-window-transformation"></a>Azure Data Factory-venster transformatie
+# <a name="azure-data-factory-window-transformation"></a>Trans formatie van Azure Data Factory-venster
 
-[!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
-Het venster-transformatie is waar definieert u aggregaties op basis van een venster van de kolommen in uw data-stromen. In de opbouwfunctie voor expressies kunt u verschillende soorten aggregaties die zijn gebaseerd op gegevens- of windows (component SQL OVER) zoals potentiële klanten, vertraging, NTILE, CUMEDIST, positie, enz.). Een nieuw veld wordt gegenereerd in de uitvoer die deze aggregaties bevat. U kunt ook optionele groeperen op velden bevatten.
 
-![Opties voor](media/data-flow/windows1.png "windows 1")
+Met de venster transformatie definieert u op venster gebaseerde aggregaties van kolommen in uw gegevens stromen. In de opbouw functie voor expressies kunt u verschillende typen aggregaties definiëren die zijn gebaseerd op gegevens of tijd Vensters (SQL OVER component) zoals LEAD, LAG, NTILE, CUMEDIST, RANK, enzovoort. Er wordt een nieuw veld in uw uitvoer gegenereerd dat deze aggregaties bevat. U kunt ook optionele velden voor groeperen op toevoegen.
+
+![Venster Opties](media/data-flow/windows1.png "Windows 1")
 
 ## <a name="over"></a>Meer dan
-Stel het partitioneren van kolomgegevens voor de transformatie van het venster. Het SQL-equivalent is de ```Partition By``` in de component Over in SQL. Als u wilt maken van een berekening of maakt u een expressie die moet worden gebruikt voor het partitioneren, kunt u dat doen door de muiswijzer op de naam van de kolom en selecteert u 'berekende kolom'.
+De partitionering van kolom gegevens voor uw venster transformatie instellen. Het equivalent van SQL is het ```Partition By``` in de component over in SQL. Als u een berekening wilt maken of een expressie wilt maken die voor de partitionering moet worden gebruikt, kunt u dit doen door de muis aanwijzer over de kolom naam te bewegen en "berekende kolom" te selecteren.
 
-![Opties voor](media/data-flow/windows4.png "windows 4")
+![Venster Opties](media/data-flow/windows4.png "Windows 4")
 
 ## <a name="sort"></a>Sorteren
-Het instellen van een ander deel van de component Over de ```Order By```. Deze wordt volgorde sorteren van gegevens ingesteld. U kunt ook een expressie voor een waarde berekenen maken in dit kolomveld voor sorteren.
+Een ander deel van de component over heeft de ```Order By``` ingesteld. Hiermee wordt de volg orde van de sortering van gegevens ingesteld. U kunt ook een expressie maken voor een waarde berekenen in dit kolom veld voor het sorteren.
 
-![Opties voor](media/data-flow/windows5.png "windows 5")
+![Venster Opties](media/data-flow/windows5.png "Windows 5")
 
-## <a name="range-by"></a>Bereik door
-Vervolgens stelt u de vensterframe als Unbounded of gebonden. Om een niet-gebonden vensterframe, stelt u de schuifregelaar naar Unbounded aan beide uiteinden. Als u een instelling tussen Unbounded en Current Row kiest, moet u instellen dat de verschuiving van de begindatum en waarden eindigen. Beide waarden worden positieve gehele getallen. U kunt de relatieve getallen of waarden uit uw gegevens gebruiken.
+## <a name="range-by"></a>Bereik op
+Stel vervolgens het venster kader in op niet-gebonden of gebonden. Als u een niet-gebonden venster kader wilt instellen, stelt u de schuif regelaar in op beide uiteinden. Als u een instelling selecteert tussen de niet-gebonden en de huidige rij, moet u de begin-en eind waarde van de offset instellen. Beide waarden moeten positieve gehele getallen zijn. U kunt de relatieve cijfers of waarden van uw gegevens gebruiken.
 
-De schuifregelaar venster heeft twee waarden om in te stellen: de waarden voor de huidige rij en de waarden na de huidige rij. De verschuiving van de begin- en komt overeen met de twee selectoren op de schuifregelaar.
+De schuif regelaar voor het venster heeft twee waarden die moeten worden ingesteld: de waarden vóór de huidige rij en de waarden na de huidige rij. De begin-en eind offset komen overeen met de twee selecters op de schuif regelaar.
 
-![Opties voor](media/data-flow/windows6.png "windows 6")
+![Venster Opties](media/data-flow/windows6.png "Windows 6")
 
 ## <a name="window-columns"></a>Venster kolommen
-Gebruik ten slotte de opbouwfunctie voor expressies voor het definiëren van de aggregaties die u wilt gebruiken met de gegevens windows zoals positie, COUNT, MIN, MAX, compacte positie, LEAD, vertraging, enzovoort.
+Gebruik ten slotte de opbouw functie voor expressies om de aggregaties te definiëren die u wilt gebruiken met de gegevens Vensters zoals positie, aantal, MIN, MAX, hoge rang orde, LEAD, vertraging enzovoort.
 
-![Opties voor](media/data-flow/windows7.png "windows 7")
+![Venster Opties](media/data-flow/windows7.png "Windows 7")
 
-De volledige lijst van aggregatie en analytische functies die beschikbaar zijn voor gebruik in de ADF gegevens Flow expressietaal via de opbouwfunctie voor expressies worden hier weergegeven: https://aka.ms/dataflowexpressions.
+De volledige lijst met aggregatie-en analyse functies die u kunt gebruiken in de expressie taal van de ADF-gegevens stroom via de opbouw functie voor expressies, vindt u hier: https://aka.ms/dataflowexpressions.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als u een eenvoudige groeperen op aggregatie zoekt, gebruikt u de [transformatie samenvoegen](data-flow-aggregate.md)
+Als u op zoek bent naar een eenvoudige groep-op aggregatie, gebruikt u de [cumulatieve trans formatie](data-flow-aggregate.md)

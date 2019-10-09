@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 09/19/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9acedc081166c84935e3abfde8401b55c64156a7
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 34ef0497b5cacb66ccf92079e740acd98a05021a
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71174580"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72026438"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cakehr"></a>Zelfstudie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met CakeHR
 
@@ -111,7 +111,7 @@ In deze sectie maakt u een test gebruiker in de Azure Portal met de naam B. Simo
 1. Selecteer **nieuwe gebruiker** aan de bovenkant van het scherm.
 1. Voer de volgende stappen uit in de eigenschappen van de **gebruiker** :
    1. Voer in het veld **Naam** `B.Simon` in.  
-   1. Voer in het veld **gebruikers naam** het username@companydomain.extensionin. Bijvoorbeeld `B.Simon@contoso.com`.
+   1. Voer in het veld **gebruikers naam** de username@companydomain.extension in. Bijvoorbeeld `B.Simon@contoso.com`.
    1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
    1. Klik op **Create**.
 
@@ -137,15 +137,15 @@ In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebru
 
 1. Open een nieuw webbrowser venster en meld u aan bij de CakeHR-bedrijfs site als beheerder.
 
-2. Klik in de rechter bovenhoek van de pagina op **profiel** en navigeer vervolgens naar **instellingen**.
+2. Klik in de rechter bovenhoek van de pagina op **profiel** en navigeer vervolgens naar **instellingen**.
 
     ![CakeHR-configuratie](./media/cakehr-tutorial/config01.png)
 
-3. Klik aan de linkerkant van de menu balk op **integraties** > **SAML SSO** en voer de volgende stappen uit:
+3. Klik aan de linkerkant van de menu balk op **integraties** > **SAML SSO** en voer de volgende stappen uit:
 
      ![CakeHR-configuratie](./media/cakehr-tutorial/config02.png)
 
-     a. Typ`cake.hr`in het tekstvak **Entiteits-ID** .
+     a. Typ in het tekstvak **Entiteits-ID** `cake.hr`.
 
      b. Plak in het tekstvak **URL voor verificatie** de waarde van de **aanmeldings-URL**die u van Azure Portal hebt gekopieerd.
 
@@ -163,7 +163,7 @@ Om ervoor te zorgen dat Azure AD-gebruikers zich kunnen aanmelden bij CakeHR, mo
 
 1. Meld u aan bij CakeHR als een beveiligings beheerder.
 
-2. Klik aan de linkerkant van de menu balk op **bedrijf** > **toevoegen**.
+2. Klik aan de linkerkant van de menu balk op **bedrijfs** > **toevoegen**.
 
     ![CakeHR-configuratie](./media/cakehr-tutorial/config03.png)
 
@@ -173,7 +173,7 @@ Om ervoor te zorgen dat Azure AD-gebruikers zich kunnen aanmelden bij CakeHR, mo
 
     a. Voer in het tekstvak **volledige naam** de naam van de gebruiker in zoals B. Simon.
 
-    b. Voer in het tekstvak **e-mail** adres het e-mail `B.Simon@contoso.com`adres van de gebruiker in.
+    b. Voer in het tekstvak **e-mail** adres het e-mail adres van de gebruiker in, zoals `B.Simon@contoso.com`.
 
     c. Klik op **account maken**.
 

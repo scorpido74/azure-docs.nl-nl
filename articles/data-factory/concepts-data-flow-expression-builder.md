@@ -6,16 +6,16 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 09/30/2019
-ms.openlocfilehash: 67a6de6d85a58f48af4761e0b5d5b0a1a4d74b1a
-ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
+ms.openlocfilehash: 9862866d5cddb227d9417ac15db6b8ea851507e6
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71703400"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72030286"
 ---
 # <a name="mapping-data-flow-expression-builder"></a>Opbouw functie voor gegevens stroom expressie koppelen
 
-[!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
+
 
 In Azure Data Factory gegevens stroom toewijzen vindt u expressie vakken waarin u expressies voor gegevens transformatie kunt invoeren. Gebruik kolommen, velden, variabelen, para meters, functies uit uw gegevens stroom in deze vakken. Als u de expressie wilt maken, gebruikt u de opbouw functie voor expressies, die wordt gestart door te klikken in het tekstvak expressie in de trans formatie. Soms ziet u ook de opties berekende kolom bij het selecteren van kolommen voor trans formatie. Als u hierop klikt, ziet u ook de opbouw functie voor expressies.
 

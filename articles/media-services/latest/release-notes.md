@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 09/06/2019
 ms.author: juliako
-ms.openlocfilehash: 618aa58fe8553789c831ca933ae6be73843b93dd
-ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
+ms.openlocfilehash: 2d01828cb61937b45665e953a13795b5346a5f1b
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70801386"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72030524"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Release opmerkingen bij Azure Media Services v3
 
@@ -153,31 +153,31 @@ De CLI 2,0-module is nu beschikbaar voor [Azure Media Services v3 ga](https://do
 
 #### <a name="asset-commands"></a>Asset-opdrachten
 
-- ```--storage-account```en ```--container``` argumenten zijn toegevoegd.
-- Standaard waarden voor verloop tijd (nu + 23h) en machtigingen (lezen) in ```az ams asset get-sas-url``` de opdracht toegevoegd.
+- ```--storage-account``` en ```--container``` argumenten zijn toegevoegd.
+- Standaard waarden voor verloop tijd (nu + 23h) en machtigingen (lezen) in ```az ams asset get-sas-url```-opdracht toegevoegd.
 
 #### <a name="job-commands"></a>Opdracht opdrachten
 
-- ```--correlation-data```en ```--label``` argumenten toegevoegd
-- ```--output-asset-names```de naam is gewijzigd ```--output-assets```in. Nu accepteert het een lijst met door spaties gescheiden activa in de indeling ' assets = label '. Activa zonder label kunnen als volgt worden verzonden: ' assets = '.
+- ```--correlation-data``` en ```--label``` argumenten toegevoegd
+- de naam van ```--output-asset-names``` is gewijzigd in ```--output-assets```. Nu accepteert het een lijst met door spaties gescheiden activa in de indeling ' assets = label '. Activa zonder label kunnen als volgt worden verzonden: ' assets = '.
 
 #### <a name="streaming-locator-commands"></a>Opdrachten voor streaming-Locator
 
-- ```az ams streaming locator```de basis opdracht is ```az ams streaming-locator```vervangen door.
-- ```--streaming-locator-id```en ```--alternative-media-id support``` argumenten zijn toegevoegd.
-- ```--content-keys argument```het argument is bijgewerkt.
-- ```--content-policy-name```de naam is gewijzigd ```--content-key-policy-name```in.
+- ```az ams streaming locator``` basis opdracht is vervangen door ```az ams streaming-locator```.
+- ```--streaming-locator-id``` en ```--alternative-media-id support``` argumenten zijn toegevoegd.
+- het argument ```--content-keys argument``` is bijgewerkt.
+- de naam van ```--content-policy-name``` is gewijzigd in ```--content-key-policy-name```.
 
 #### <a name="streaming-policy-commands"></a>Streaming-beleids opdrachten
 
-- ```az ams streaming policy```de basis opdracht is ```az ams streaming-policy```vervangen door.
-- De ondersteuning voor ```az ams streaming-policy create``` versleutelings parameters is toegevoegd.
+- ```az ams streaming policy``` basis opdracht is vervangen door ```az ams streaming-policy```.
+- Ondersteuning voor versleutelings parameters in ```az ams streaming-policy create``` toegevoegd.
 
 #### <a name="transform-commands"></a>Opdrachten transformeren
 
-- ```--preset-names```het argument is ```--preset```vervangen door. Nu kunt u slechts één uitvoer/voor instelling per keer instellen (om meer informatie toe te voegen ```az ams transform output add```om uit te voeren). U kunt ook aangepaste StandardEncoderPreset instellen door het pad naar uw aangepaste JSON door te geven.
-- ```az ams transform output remove```kan worden uitgevoerd door de uitvoer index door te geven die moet worden verwijderd.
-- ```--relative-priority, --on-error, --audio-language and --insights-to-extract```argumenten die zijn ```az ams transform create``` toegevoegd ```az ams transform output add``` in en opdrachten.
+- ```--preset-names``` argument vervangen door ```--preset```. Nu kunt u slechts één uitvoer/vooraf ingestelde waarde per keer instellen (als u meer wilt toevoegen om ```az ams transform output add``` uit te voeren). U kunt ook aangepaste StandardEncoderPreset instellen door het pad naar uw aangepaste JSON door te geven.
+- ```az ams transform output remove``` kan worden uitgevoerd door de uitvoer index door te geven die moet worden verwijderd.
+- ```--relative-priority, --on-error, --audio-language and --insights-to-extract``` argumenten toegevoegd aan ```az ams transform create```-en ```az ams transform output add```-opdrachten.
 
 ## <a name="october-2018---ga"></a>Oktober 2018-GA
 
@@ -187,7 +187,7 @@ In deze sectie worden Azure Media Services updates (AMS) van oktober beschreven.
 
 De [rest v3 ga-release](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01) bevat meer Api's voor Live, account/Asset level-manifest filters en DRM-ondersteuning.
 
-#### <a name="azure-resource-management"></a>Azure Resources Management 
+#### <a name="azure-resource-management"></a>Azure-resource beheer 
 
 Ondersteuning voor Azure Resource Management maakt Unified management en Operations API mogelijk (nu alles op één plek).
 
@@ -275,4 +275,5 @@ Bekijk het [Azure Media Services Community](media-services-community.md) -artike
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Overzicht](media-services-overview.md)
+- [Overzicht](media-services-overview.md)
+- [Release opmerkingen bij Media Services v2](../previous/media-services-release-notes.md)

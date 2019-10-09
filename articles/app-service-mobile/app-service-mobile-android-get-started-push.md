@@ -1,6 +1,6 @@
 ---
-title: Pushmeldingen toevoegen aan uw Android-app met Mobile Apps | Microsoft Docs
-description: Informatie over het gebruik van mobiele Apps voor het verzenden van pushmeldingen aan uw Android-app.
+title: Push meldingen toevoegen aan uw Android-app met Mobile Apps | Microsoft Docs
+description: Meer informatie over het gebruik van Mobile Apps voor het verzenden van push meldingen naar uw Android-app.
 services: app-service\mobile
 documentationcenter: android
 manager: crdun
@@ -14,26 +14,26 @@ ms.devlang: java
 ms.topic: article
 ms.date: 06/25/2019
 ms.author: emalani
-ms.openlocfilehash: 529aa8327d31cdda044178b6d03035b602744db2
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 3185447e4e465fe49849bb4280f2af9bbe852e19
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67443660"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72027695"
 ---
-# <a name="add-push-notifications-to-your-android-app"></a>Pushmeldingen toevoegen aan uw Android-app
+# <a name="add-push-notifications-to-your-android-app"></a>Push meldingen toevoegen aan uw Android-app
 
 [!INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]
 
 > [!NOTE]
-> Visual Studio App Center investeert in nieuwe en geïntegreerde services centraal staat in de ontwikkeling van mobiele Apps. Ontwikkelaars kunnen gebruikmaken van **bouwen**, **Test** en **verdelen** services voor het instellen van de pijplijn voor continue integratie en levering. Zodra de app is geïmplementeerd, ontwikkelaars controleren de status en het gebruik van het gebruik van de app de **Analytics** en **Diagnostics** -services en Communiceer met gebruikers met behulp van de **Push** de service. Ontwikkelaars kunnen ook gebruikmaken van **Auth** om hun gebruikers te verifiëren en **gegevens** service behouden en synchroniseren van app-gegevens in de cloud. Bekijk [App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-android-get-started-push) vandaag nog.
->
+> Visual Studio App Center ondersteunt end-to-end en geïntegreerde services in de ontwikkeling van mobiele apps. Ontwikkel aars kunnen services **bouwen**, **testen** en **distribueren** om een continue integratie-en leverings pijplijn in te stellen. Zodra de app is geïmplementeerd, kunnen ontwikkel aars de status en het gebruik van hun app bewaken met behulp van de **analyse** -en **diagnose** Services en gebruikers benaderen met behulp van de **Push** service. Ontwikkel aars kunnen ook gebruikmaken van **auth** voor het verifiëren van hun gebruikers en **gegevens** service om app-gegevens in de Cloud op te slaan en te synchroniseren.
+> Als u Cloud Services wilt integreren in uw mobiele toepassing, meldt u zich aan met App Center [app Center](https://appcenter.ms/signup?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) vandaag.
 
 ## <a name="overview"></a>Overzicht
 
-In deze zelfstudie voegt u pushmeldingen kunt verzenden naar de [Android snel starten] project, zodat een pushmelding wordt verzonden naar het apparaat telkens wanneer een record wordt ingevoegd.
+In deze zelf studie voegt u push meldingen toe aan het [Android Quick Start] -project, zodat een push melding wordt verzonden naar het apparaat telkens wanneer een record wordt ingevoegd.
 
-Als u het gedownloade quick start-serverproject niet gebruikt, moet u de push notification-uitbreidingspakket. Zie voor meer informatie, [werken met de .NET back-endserver SDK voor Azure Mobile Apps](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md).
+Als u het gedownloade Quick Start Server-project niet gebruikt, hebt u het uitbreidings pakket voor push meldingen nodig. Zie [werken met de .net back-end server SDK voor Azure Mobile apps](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md)voor meer informatie.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -41,10 +41,10 @@ U hebt het volgende nodig:
 
 * Een IDE, afhankelijk van de back-end van uw project:
 
-  * [Android Studio](https://developer.android.com/sdk/index.html) als deze app een Node.js-back-end heeft.
-  * [Visual Studio Community 2013](https://go.microsoft.com/fwLink/p/?LinkID=391934) of hoger als u deze app heeft een Microsoft .NET-back-end.
-* Android 2.3 of hoger, Google Repository revisie 27 of hoger en Google Play-Services 9.0.2 of hoger voor Firebase Cloud Messaging.
-* Voltooi de [Android snel starten].
+  * [Android Studio](https://developer.android.com/sdk/index.html) als deze app een node. js-back-end heeft.
+  * [Visual Studio Community 2013](https://go.microsoft.com/fwLink/p/?LinkID=391934) of hoger als deze app een Microsoft .net back-end heeft.
+* Android 2,3 of hoger, Google repository Revision 27 of hoger en Google Play Services 9.0.2 of hoger voor Firebase Cloud Messa ging.
+* Voltooi de [Android Quick Start].
 
 ## <a name="create-a-project-that-supports-firebase-cloud-messaging"></a>Een project maken dat Firebase Cloud Messaging ondersteunt
 
@@ -54,47 +54,47 @@ U hebt het volgende nodig:
 
 [!INCLUDE [app-service-mobile-configure-notification-hub](../../includes/app-service-mobile-configure-notification-hub.md)]
 
-## <a name="configure-azure-to-send-push-notifications"></a>Azure voor het verzenden van pushmeldingen configureren
+## <a name="configure-azure-to-send-push-notifications"></a>Azure configureren voor het verzenden van push meldingen
 
 [!INCLUDE [app-service-mobile-android-configure-push](../../includes/app-service-mobile-android-configure-push-for-firebase.md)]
 
-## <a name="enable-push-notifications-for-the-server-project"></a>Schakel pushmeldingen in voor het serverproject
+## <a name="enable-push-notifications-for-the-server-project"></a>Push meldingen inschakelen voor het server project
 
 [!INCLUDE [app-service-mobile-dotnet-backend-configure-push-google](../../includes/app-service-mobile-dotnet-backend-configure-push-google.md)]
 
 ## <a name="add-push-notifications-to-your-app"></a>Pushmeldingen toevoegen aan uw app
 
-In deze sectie maakt bijwerken u uw client-app voor Android voor het afhandelen van pushmeldingen.
+In deze sectie werkt u de Android-app van de client bij om Push meldingen te verwerken.
 
-### <a name="verify-android-sdk-version"></a>Controleer of de Android SDK-versie
+### <a name="verify-android-sdk-version"></a>Android SDK-versie controleren
 
 [!INCLUDE [app-service-mobile-verify-android-sdk-version](../../includes/app-service-mobile-verify-android-sdk-version.md)]
 
-De volgende stap is het installeren van Google Play-services. Firebase Cloud Messaging heeft bepaalde minimale API-niveau vereisten voor ontwikkelen en testen, die de **minSdkVersion** eigenschap in het manifest moet voldoen aan.
+De volgende stap is het installeren van Google Play Services. Firebase Cloud Messa ging heeft enkele minimale vereisten voor het API-niveau voor ontwikkeling en testen, waaraan de eigenschap **minSdkVersion** in het manifest moet voldoen.
 
-Als u met een ouder apparaat testen wilt, raadpleegt u [Firebase toevoegen aan uw Android-Project] om te bepalen hoe laag u kunt deze waarde hebt ingesteld, en op de juiste wijze ingesteld.
+Als u met een ouder apparaat wilt testen, raadpleegt u [Firebase toevoegen aan uw Android-project] om te bepalen hoe laag u deze waarde kunt instellen en deze op de juiste wijze instellen.
 
-### <a name="add-firebase-cloud-messaging-to-the-project"></a>Firebase Cloud Messaging toevoegen aan het project
+### <a name="add-firebase-cloud-messaging-to-the-project"></a>Firebase Cloud Messa ging toevoegen aan het project
 
 [!INCLUDE [Add Firebase Cloud Messaging](../../includes/app-service-mobile-add-firebase-cloud-messaging.md)]
 
-### <a name="add-code"></a>Voeg code toe:
+### <a name="add-code"></a>Code toevoegen
 
 [!INCLUDE [app-service-mobile-android-getting-started-with-push](../../includes/app-service-mobile-android-getting-started-with-push.md)]
 
 ## <a name="test-the-app-against-the-published-mobile-service"></a>De app testen op de gepubliceerde mobiele service
 
-U kunt de app testen door het koppelen van een Android-telefoon met een USB-kabel rechtstreeks of via een virtueel apparaat in de emulator.
+U kunt de app testen door rechtstreeks een Android-telefoon te koppelen aan een USB-kabel of door een virtueel apparaat in de emulator te gebruiken.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu dat u deze zelfstudie hebt voltooid, kunt u doorgaan naar een van de volgende zelfstudies:
+Nu u deze zelf studie hebt voltooid, kunt u door gaan met een van de volgende zelf studies:
 
-* [Verificatie toevoegen aan uw Android-app](app-service-mobile-android-get-started-users.md).
-  Leer hoe u verificatie toevoegen aan de todolist Quick Start-project in Android met behulp van een ondersteunde id-provider.
-* [Offlinesynchronisatie inschakelen voor uw Android-app](app-service-mobile-android-get-started-offline-data.md).
-  Informatie over het toevoegen van Offlineondersteuning aan uw app met behulp van een back-end voor mobiele Apps. Offline synchroniseren zorgt gebruikers met een mobiele app kunnen werken&mdash;weergeven, toevoegen of wijzigen van gegevens&mdash;, zelfs wanneer er geen netwerkverbinding.
+* [Voeg verificatie toe aan uw Android-app](app-service-mobile-android-get-started-users.md).
+  Meer informatie over hoe u verificatie kunt toevoegen aan het ToDoList Quick start-project op Android met behulp van een ondersteunde ID-provider.
+* [Offline synchronisatie inschakelen voor uw Android-app](app-service-mobile-android-get-started-offline-data.md).
+  Meer informatie over het toevoegen van offline ondersteuning aan uw app met behulp van een Mobile Apps back-end. Met offline synchronisatie kunnen gebruikers communiceren met een mobiele app @ no__t-0viewing, het toevoegen of wijzigen van gegevens @ no__t-1even wanneer er geen netwerk verbinding is.
 
 <!-- URLs -->
-[Android snel starten]: app-service-mobile-android-get-started.md
-[Firebase toevoegen aan uw Android-Project]: https://firebase.google.com/docs/android/setup
+[Android Quick Start]: app-service-mobile-android-get-started.md
+[Firebase toevoegen aan uw Android-project]: https://firebase.google.com/docs/android/setup

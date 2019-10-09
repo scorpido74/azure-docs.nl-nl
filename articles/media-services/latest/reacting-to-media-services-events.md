@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 08/08/2019
 ms.author: juliako
-ms.openlocfilehash: d8cb8fdebb5a7e4bcbc9f979c98085e90ebd4c68
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: 07ad39bdcec6e4b00d3b47553930fc05694ca2af
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71147163"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72026619"
 ---
 # <a name="handling-event-grid-events"></a>Event Grid-gebeurtenissen verwerken
 
@@ -40,7 +40,7 @@ Toepassingen die Media Services gebeurtenissen verwerken, moeten een aantal aanb
 * Gebruik het voor voegsel ' subject ' en achtervoegsel overeenkomsten om gebeurtenissen te beperken tot een bepaalde gebeurtenis.
 
 > [!NOTE]
-> Gebeurtenissen zijn onderhevig aan de Event Grid [-Service Level Agreement (Sla)](https://azure.microsoft.com/support/legal/sla/event-grid/v1_0/). Als u gebeurtenis meldingen wilt ontvangen met behulp van Api's, raadpleegt u voor beelden van het gebruik van gebeurtenissen met [.NET SDK](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/master/ContentProtection/BasicAESClearKey) of [Java SDK](https://github.com/Azure-Samples/media-services-v3-java/tree/master/ContentProtection/BasicAESClearKey).
+> Gebeurtenissen zijn onderhevig aan de Event Grid [-Service Level Agreement (Sla)](https://azure.microsoft.com/support/legal/sla/event-grid/v1_0/). Als u gebeurtenis meldingen wilt ontvangen met behulp van Api's, raadpleegt u voor beelden van het gebruik van gebeurtenissen met [.NET SDK](https://github.com/Azure-Samples/media-services-v3-dotnet) of [Java SDK](https://github.com/Azure-Samples/media-services-v3-java).
 
 ## <a name="next-steps"></a>Volgende stappen
 

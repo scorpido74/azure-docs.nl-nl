@@ -14,12 +14,12 @@ ms.workload: azure-app-configuration
 ms.date: 02/24/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 0df8e19d3c6f0680f1eb1b0157c3bee5c9841e4c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: cd1e54fc6cfbf254da010c03dfaa859a0ee8213c
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60234411"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72029809"
 ---
 # <a name="import-to-an-azure-app-configuration-store"></a>Importeren in een Azure-app-configuratiearchief
 
@@ -41,7 +41,7 @@ U moet eerst de CLI-extensie voor het Azure App Configuration-archief installere
 #!/bin/bash
 
 # Import key-values from a file
-az appconfig kv import --name myTestAppConfigStore --file ~/Import.json
+az appconfig kv import --name myTestAppConfigStore --source file --path ~/Import.json
 ```
 
 [!INCLUDE [cli-script-cleanup](../../../includes/cli-script-clean-up.md)]
@@ -52,7 +52,7 @@ Dit script maakt gebruik van de volgende opdrachten om een app-configuratiearchi
 
 | Opdracht | Opmerkingen |
 |---|---|
-| [az appconfig import](/cli/azure/ext/appconfig/appconfig) | Resource in een app-configuratiearchief importeren. |
+| [az appconfig import](/cli/azure/ext/appconfig/appconfig/kv#ext-appconfig-az-appconfig-kv-import) | Resource in een app-configuratiearchief importeren. |
 
 ## <a name="next-steps"></a>Volgende stappen
 

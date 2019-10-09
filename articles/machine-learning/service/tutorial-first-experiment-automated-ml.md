@@ -1,5 +1,5 @@
 ---
-title: Uw eerste geautomatiseerde machine learning-experiment maken
+title: Uw eerste geautomatiseerde classificatie-experiment maken
 titleSuffix: Azure Machine Learning
 description: Leer hoe u een classificatie model traint en implementeert met geautomatiseerde machine learning op de landings pagina van Azure Machine Learning werk ruimte (preview).
 services: machine-learning
@@ -10,12 +10,12 @@ ms.author: tzvikei
 author: tsikiksr
 ms.reviewer: nibaccam
 ms.date: 09/26/2019
-ms.openlocfilehash: 3ddd228488d8ba4adc6780db1f65fdb634291d3b
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: dcd6f2ea6f5c79664af0c2431da07549e71c26bc
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350498"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72035679"
 ---
 # <a name="tutorial-create-your-first-classification-model-with-automated-machine-learning"></a>Zelfstudie: Uw eerste classificatie model maken met geautomatiseerde machine learning
 
@@ -66,14 +66,14 @@ U voltooit de volgende proef installatie en voert de stappen uit op de pagina vo
 
 1. Selecteer **experiment maken**. 
 
-1. Voer de naam van dit experiment in:`my-1st-automl-experiment`
+1. Voer de naam van het experiment in: `my-1st-automl-experiment`
 
 1. Selecteer **een nieuwe berekening maken** en configureer uw reken doel. Een compute-doel is een lokale of cloud-gebaseerde resource omgeving die wordt gebruikt om uw trainings script uit te voeren of uw service-implementatie te hosten. Voor dit experiment gebruiken we een op de cloud gebaseerde compute. 
 
    Veld | Description | Waarde voor zelf studie
    ----|---|---
-   Compute-naam |Een unieke naam die uw Compute-context identificeert.|automl-compute
-   Grootte&nbsp;van&nbsp;virtuele machine| Selecteer de grootte van de virtuele machine voor de reken kracht.|Standard_DS12_V2
+   Compute name |Een unieke naam die uw Compute-context identificeert.|automl-compute
+   Virtuele @ no__t-0machine @ no__t-1size| Selecteer de grootte van de virtuele machine voor de reken kracht.|Standard_DS12_V2
    Min-maximum aantal knoop punten (in geavanceerde instellingen)| Als u wilt profiel gegevens, moet u één of meer knoop punten opgeven.|Minimum aantal knoop punten: 1<br>Maximum aantal knoop punten: 6
 
    >[!NOTE]
@@ -101,10 +101,10 @@ U voltooit de volgende proef installatie en voert de stappen uit op de pagina vo
         
         Veld|Description| Waarde voor zelf studie
         ---|---|---
-        Bestandsindeling|Hiermee definieert u de indeling en het type van de gegevens die zijn opgeslagen in een bestand.| Met scheidingstekens
-        Scheidingsteken|Een of meer tekens voor het opgeven van de grens tussen @ no__t-0 afzonderlijke, onafhankelijke regio's in tekst zonder opmaak of andere gegevens stromen. |Komma
+        Bestands indeling|Hiermee definieert u de indeling en het type van de gegevens die zijn opgeslagen in een bestand.| Gescheiden
+        Scheidingsteken|Een of meer tekens voor het opgeven van de grens tussen @ no__t-0 afzonderlijke, onafhankelijke regio's in tekst zonder opmaak of andere gegevens stromen. |Geplaatst
         Encoding|Hiermee wordt aangegeven welke bits-schema tabel moet worden gebruikt om de gegevensset te lezen.| UTF-8
-        Kolomkoppen| Hiermee wordt aangegeven hoe de headers van de gegevensset, indien aanwezig, worden behandeld.| Alle bestanden hebben dezelfde kopteksten
+        Kolom koppen| Hiermee wordt aangegeven hoe de headers van de gegevensset, indien aanwezig, worden behandeld.| Alle bestanden hebben dezelfde kopteksten
         Rijen overs Laan | Hiermee wordt aangegeven hoeveel, indien van toepassing, rijen in de gegevensset worden overgeslagen.| Geen
     
         ![Configuratie van het tabblad voor beeld](media/tutorial-1st-experiment-automated-ml/schema-tab-config.gif)
@@ -118,10 +118,10 @@ U voltooit de volgende proef installatie en voert de stappen uit op de pagina vo
    >[!NOTE]
    > In deze zelf studie stelt u geen metrische Score of maximale kernen per herhalings drempel in. U kunt ook voor komen dat algoritmen worden getest.
    
-   Geavanceerde&nbsp;instellingen|Description|Waarde&nbsp;voor&nbsp;zelf studie
+   Geavanceerd @ no__t-0settings|Description|Waarde @ no__t-0for @ no__t-1tutorial
    ------|---------|---
    Primaire metriek| Evaluatie-metrische gegevens waarop het algoritme van de machine learning wordt gemeten.|AUC_weighted
-   Afsluit criteria| Als aan een criterium wordt voldaan, wordt de trainings taak gestopt. |Tijd&nbsp;trainings&nbsp;taak: 5 <br> <br> Maximum&nbsp;aantal#herhalingen&#58;10&nbsp;&nbsp;
+   Afsluit criteria| Als aan een criterium wordt voldaan, wordt de trainings taak gestopt. |Training @ no__t-0job @ no__t-1Time: 5 <br> <br> Max. @ no__t-0 @ no__t-1 @ no__t-2of @ no__t-&#58;3iterations 10
    Verwerking| Hiermee wordt de voor verwerking van automatische machine learning mogelijk gemaakt. Dit omvat het automatisch opschonen, voorbereiden en transformeren van gegevens voor het genereren van synthetische functies.| Inschakelen
    Validatie type | Kies een type Kruis validatie.|Kruis validatie met K-vouwen
    Aantal validaties | Aantal testen. | 2 Kruis validaties 
@@ -158,7 +158,7 @@ In dit experiment wordt **VotingEnsemble** beschouwd als het beste model, op bas
 
     Veld| Value
     ----|----
-    Implementatienaam| mijn-automl-implementeren
+    Implementatie naam| mijn-automl-implementeren
     Beschrijving van implementatie| Mijn eerste geautomatiseerde machine learning-experiment implementatie
     Score script| Automatisch genereren
     Omgevings script| Automatisch genereren
@@ -200,5 +200,5 @@ In deze zelf studie voor automatisch machine learning hebt u de landings pagina 
 + Zie het artikel over [geautomatiseerde machine learning resultaten](how-to-understand-automated-ml.md#classification) voor meer informatie over classificatie gegevens en diagrammen.
 
 >[!NOTE]
-> Deze gegevensset voor Bank marketing wordt beschikbaar gesteld onder [de Creative Commons (CCO: Open bare domein)](https://creativecommons.org/publicdomain/zero/1.0/). Alle rechten in de afzonderlijke inhoud van de Data Base worden in licentie gegeven onder de licentie voor de [Data Base-inhoud](https://creativecommons.org/publicdomain/zero/1.0/) en beschikbaar op [Kaggle](https://www.kaggle.com/janiobachmann/bank-marketing-dataset). Deze gegevensset is oorspronkelijk beschikbaar in de [icb machine learning-data base](https://archive.ics.uci.edu/ml/datasets/bank+marketing).<br><br>
+> Deze gegevensset voor Bank marketing wordt beschikbaar gesteld onder de [Creative Commons (CCO: Openbaar domein) licentie @ no__t-0. Alle rechten in de afzonderlijke inhoud van de Data Base worden in licentie gegeven onder de licentie voor de [Data Base-inhoud](https://creativecommons.org/publicdomain/zero/1.0/) en beschikbaar op [Kaggle](https://www.kaggle.com/janiobachmann/bank-marketing-dataset). Deze gegevensset is oorspronkelijk beschikbaar in de [icb machine learning-data base](https://archive.ics.uci.edu/ml/datasets/bank+marketing).<br><br>
 > [Moro et al., 2014] S. Moro, P. Cortez en P. Rita. Een gegevensgestuurde benadering voor het voors pellen van het slagen van Bank telemarketing. Decision Support Systems, Elsevier, 62:22-31, juni 2014.

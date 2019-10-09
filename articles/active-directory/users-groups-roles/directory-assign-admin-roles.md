@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 27b5a8a7667419e0e3345fb453eefd840368b643
-ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
-ms.translationtype: HT
+ms.openlocfilehash: 3992ea29d3d81262b5d9b8b126c8fca54feca67d
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72001687"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72026379"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Machtigingen voor beheerdersrol in Azure Active Directory
 
@@ -62,11 +62,11 @@ Gebruikers met deze rol kunnen toepassings registraties maken wanneer de instell
 
 Gebruikers met deze rol kunnen referenties voor niet-wacht woord instellen of opnieuw instellen en kunnen wacht woorden voor alle gebruikers bijwerken. Authenticatie beheerders kunnen vereisen dat gebruikers zich opnieuw registreren bij bestaande referenties zonder wacht woord (bijvoorbeeld MFA of FIDO) en **MFA op het apparaat**intrekken, waarbij wordt gevraagd om MFA te volgen bij de volgende aanmelding van gebruikers die niet-beheerders zijn of de volgende rollen zijn alleen toegewezen:
 
-* Verificatiebeheerder
-* Adreslijstlezers
-* Afzender van gastuitnodigingen
-* Berichtencentrum-lezer
-* Rapportenlezer
+* Verificatie beheerder
+* Adreslijst lezers
+* Gast uitnodiging
+* Berichten centrum-lezer
+* Rapport lezer
 
 > [!IMPORTANT]
 > Gebruikers met deze rol kunnen referenties wijzigen voor personen die mogelijk toegang hebben tot gevoelige of persoonlijke informatie of een kritieke configuratie binnen en buiten Azure Active Directory. Het wijzigen van de referenties van een gebruiker kan betekenen dat de identiteit en machtigingen van de gebruiker worden aangenomen. Bijvoorbeeld:
@@ -212,6 +212,22 @@ Gebruikers met deze rol hebben toegang tot alle beheer functies in Azure Active 
 >
 >
 
+### <a name="global-readerglobal-reader-permissions"></a>[Algemene lezer](#global-reader-permissions)
+
+Gebruikers met deze rol kunnen instellingen en beheer informatie lezen over Microsoft 365 Services, maar kunnen geen beheer acties uitvoeren. Algemene lezer is het alleen-lezen equivalent van de globale beheerder. Wijs algemene lezer toe in plaats van globale beheerder voor planning, controles of onderzoek. Gebruik de algemene lezer in combi natie met andere beperkte beheerders rollen, zoals Exchange Administrator, om het werk gemakkelijker te maken zonder de rol van globale beheerder aan te roepen. De algemene lezer werkt met het nieuwe Microsoft 365-beheer centrum, het Exchange-beheer centrum, teams beheer centrum, Security Center, compliance Center, Azure AD-beheer centrum en beheer centrum voor Apparaatbeheer. 
+
+> [!NOTE]
+> De rol van globale lezer heeft nu de volgende beperkingen:
+>* Share point-beheer centrum: het share point-beheer centrum biedt geen ondersteuning voor de rol van globale lezer. Daarom ziet u share point in het linkerdeel venster onder beheer centrums in M365- [beheer centrum](https://admin.microsoft.com/Adminportal/Home#/homepage)niet. U krijgt toegang geweigerd wanneer u naar https://{Tenant naam}-admin.sharepoint.com gaat. 
+>* [Azure AD-Portal](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/) : de algemene lezer kan de inrichtings modus van een bedrijfs-app niet lezen.
+>* [M365-beheer centrum](https://admin.microsoft.com/Adminportal/Home#/homepage) : globale lezer kan geen cusomter lockbox-aanvragen lezen. Het tabblad lockbox-aanvragen van klanten wordt niet weer gegeven onder ondersteuning in het linkerdeel venster van het M365-beheer centrum.
+>* [M365 Security Center](https://security.microsoft.com/homepage) -wereld wijde lezer kan geen gevoeligheids-en bewaar labels lezen. U vindt geen gevoeligheids labels, de tabbladen Bewaar labels en label Analytics in het linkerdeel venster onder classificatie in M365 Security Center.
+>* [Teams beheer centrum](https://admin.teams.microsoft.com) : wereld wijde lezer kan de levens cyclus van teams, rapporten & aanroep analyses, het beheer van IP-telefoon apparaten en de app-catalogus niet lezen.
+>* [Privileged Access Management (PAM)](https://docs.microsoft.com/en-us/office365/securitycompliance/privileged-access-management-overview) biedt geen ondersteuning voor algemene lezers.
+> 
+> Ondersteuning voor deze functies zal in de loop van de tijd worden bereikt.
+>
+
 ### <a name="guest-inviterguest-inviter-permissions"></a>[Gast uitnodiging](#guest-inviter-permissions)
 
 Gebruikers met deze rol kunnen uitnodigingen van Azure Active Directory B2B-gast gebruiker beheren wanneer de leden de gebruikers instelling **kunnen uitnodigen** is ingesteld op Nee. Meer informatie over B2B-samen werking bij de [samen werking met Azure AD B2B](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b). Het bevat geen andere machtigingen.
@@ -220,11 +236,11 @@ Gebruikers met deze rol kunnen uitnodigingen van Azure Active Directory B2B-gast
 
 Gebruikers met deze rol kunnen wacht woorden wijzigen, tokens voor vernieuwen ongeldig maken, service aanvragen beheren en de service status controleren. Wanneer een vernieuwings token ongeldig is, wordt de gebruiker gedwongen zich opnieuw aan te melden. Helpdesk beheerders kunnen wacht woorden opnieuw instellen en vernieuwings tokens van andere gebruikers die niet-beheerders zijn, alleen toewijzen aan de volgende rollen:
 
-* Adreslijstlezers
-* Afzender van gastuitnodigingen
+* Adreslijst lezers
+* Gast uitnodiging
 * Helpdesk beheerder
-* Berichtencentrum-lezer
-* Rapportenlezer
+* Berichten centrum-lezer
+* Rapport lezer
 
 > [!IMPORTANT]
 > Gebruikers met deze rol kunnen wacht woorden wijzigen voor personen die mogelijk toegang hebben tot gevoelige of persoonlijke informatie of een kritieke configuratie binnen en buiten Azure Active Directory. Het wijzigen van het wacht woord van een gebruiker kan betekenen dat de identiteit en machtigingen van de gebruiker worden aangenomen. Bijvoorbeeld:
@@ -275,9 +291,9 @@ Niet gebruiken. Deze rol is afgeschaft en wordt in de toekomst verwijderd uit Az
 
 Gebruikers met deze rol hebben beperkte mogelijkheden voor het beheren van wacht woorden. Deze rol biedt geen mogelijkheid om service aanvragen te beheren of de service status te controleren. Wachtwoord beheerders kunnen wacht woorden van andere gebruikers die niet-beheerders zijn of alleen leden van de volgende rollen opnieuw instellen:
 
-* Adreslijstlezers
-* Afzender van gastuitnodigingen
-* Wachtwoordbeheerder
+* Adreslijst lezers
+* Gast uitnodiging
+* Wachtwoord beheerder
 
 ### <a name="power-bi-administratorpower-bi-service-administrator-permissions"></a>[Power BI beheerder](#power-bi-service-administrator-permissions)
 
@@ -404,7 +420,7 @@ Gebruikers met deze rol kunnen gebruikers maken en alle aspecten van gebruikers 
 | --- | --- |
 |Algemene machtigingen|<p>Gebruikers en groepen maken</p><p>Gebruikers weergaven maken en beheren</p><p>Office-ondersteunings tickets beheren<p>Verloop beleid voor wacht woorden bijwerken|
 |<p>Voor alle gebruikers, inclusief alle beheerders</p>|<p>Licenties beheren</p><p>Alle gebruikers eigenschappen beheren, met uitzonde ring van Principal-naam van gebruiker</p>
-|Alleen voor gebruikers die niet-beheerders zijn of in een van de volgende beperkte beheerders rollen:<ul><li>Adreslijstlezers<li>Afzender van gastuitnodigingen<li>Helpdesk beheerder<li>Berichtencentrum-lezer<li>Rapportenlezer<li>Gebruikerbeheerder|<p>Verwijderen en herstellen</p><p>Uitschakelen en inschakelen</p><p>Vernieuwings tokens ongeldig maken</p><p>Alle gebruikers eigenschappen beheren, met inbegrip van Principal-naam van gebruiker</p><p>Wachtwoord opnieuw instellen</p><p>Apparaatinstellingen bijwerken (FIDO)</p>|
+|Alleen voor gebruikers die niet-beheerders zijn of in een van de volgende beperkte beheerders rollen:<ul><li>Adreslijst lezers<li>Gast uitnodiging<li>Helpdesk beheerder<li>Berichten centrum-lezer<li>Rapport lezer<li>Gebruikers beheerder|<p>Verwijderen en herstellen</p><p>Uitschakelen en inschakelen</p><p>Vernieuwings tokens ongeldig maken</p><p>Alle gebruikers eigenschappen beheren, met inbegrip van Principal-naam van gebruiker</p><p>Wachtwoord opnieuw instellen</p><p>Apparaatinstellingen bijwerken (FIDO)</p>|
 
 > [!IMPORTANT]
 > Gebruikers met deze rol kunnen wacht woorden wijzigen voor personen die mogelijk toegang hebben tot gevoelige of persoonlijke informatie of een kritieke configuratie binnen en buiten Azure Active Directory. Het wijzigen van het wacht woord van een gebruiker kan betekenen dat de identiteit en machtigingen van de gebruiker worden aangenomen. Bijvoorbeeld:
@@ -670,10 +686,10 @@ Kan alle aspecten beheren van Azure AD en micro soft-services die gebruikmaken v
 | micro soft. Directory/roleAssignments/allProperties/allTasks | Maak en verwijder roleAssignments en Lees alle eigenschappen in Azure Active Directory en werk deze bij. |
 | micro soft. Directory/roleDefinitions/allProperties/allTasks | Maak en verwijder roleDefinitions en Lees alle eigenschappen in Azure Active Directory en werk deze bij. |
 | micro soft. Directory/scopedRoleMemberships/allProperties/allTasks | Maak en verwijder scopedRoleMemberships en Lees alle eigenschappen in Azure Active Directory en werk deze bij. |
-| micro soft. Directory/serviceAction/activateService | Kan de Activateservice-service actie uitvoeren in Azure Active Directory |
-| micro soft. Directory/serviceAction/disableDirectoryFeature | Kan de Disabledirectoryfeature-service actie uitvoeren in Azure Active Directory |
-| micro soft. Directory/serviceAction/enableDirectoryFeature | Kan de Enabledirectoryfeature-service actie uitvoeren in Azure Active Directory |
-| micro soft. Directory/serviceAction/getAvailableExtentionProperties | Kan de Getavailableextentionproperties-service actie uitvoeren in Azure Active Directory |
+| micro soft. Directory/serviceAction/activateService | Mag de serviceactie Activateservice uitvoeren in Azure Active Directory |
+| micro soft. Directory/serviceAction/disableDirectoryFeature | Mag de serviceactie Disabledirectoryfeature uitvoeren in Azure Active Directory |
+| micro soft. Directory/serviceAction/enableDirectoryFeature | Mag de serviceactie Enabledirectoryfeature uitvoeren in Azure Active Directory |
+| micro soft. Directory/serviceAction/getAvailableExtentionProperties | Mag de serviceactie Getavailableextentionproperties uitvoeren in Azure Active Directory |
 | micro soft. Directory/servicePrincipals/allProperties/allTasks | Maak en verwijder servicePrincipals en Lees alle eigenschappen in Azure Active Directory en werk deze bij. |
 | microsoft.directory/signInReports/allProperties/read | Lees alle eigenschappen (inclusief bevoorrechte eigenschappen) op signInReports in Azure Active Directory. |
 | micro soft. Directory/subscribedSkus/allProperties/allTasks | Maak en verwijder subscribedSkus en Lees alle eigenschappen in Azure Active Directory en werk deze bij. |
@@ -687,10 +703,10 @@ Kan alle aspecten beheren van Azure AD en micro soft-services die gebruikmaken v
 | microsoft.azure.supportTickets/allEntities/allTasks | Ondersteunings tickets voor Azure maken en beheren. |
 | microsoft.commerce.billing/allEntities/allTasks | Beheer alle aspecten van Office 365-facturering. |
 | microsoft.intune/allEntities/allTasks | Beheer alle aspecten van intune. |
-| microsoft.office365.complianceManager/allEntities/allTasks | Alle aspecten van Office 365-nalevings beheer beheren |
+| microsoft.office365.complianceManager/allEntities/allTasks | Beheer alle aspecten van Office 365 Compliancebeheer |
 | microsoft.office365.desktopAnalytics/allEntities/allTasks | Beheer alle aspecten van Desktop Analytics. |
 | microsoft.office365.exchange/allEntities/allTasks | Beheer alle aspecten van Exchange Online. |
-| microsoft.office365.lockbox/allEntities/allTasks | Alle aspecten van Office 365 Klanten-lockbox beheren |
+| microsoft.office365.lockbox/allEntities/allTasks | Beheer alle aspecten van Office 365 Klanten-lockbox |
 | microsoft.office365.messageCenter/messages/read | Lees berichten in micro soft. office365. messageCenter. |
 | microsoft.office365.messageCenter/securityMessages/read | Lees securityMessages in micro soft. office365. messageCenter. |
 | microsoft.office365.protectionCenter/allEntities/allTasks | Beheer alle aspecten van Office 365 Protection Center. |
@@ -719,7 +735,7 @@ Kan nalevings configuratie en-rapporten in azure AD en Office 365 lezen en beher
 | microsoft.azure.serviceHealth/allEntities/allTasks | Azure Service Health lezen en configureren. |
 | microsoft.azure.supportTickets/allEntities/allTasks | Ondersteunings tickets voor Azure maken en beheren. |
 | microsoft.office365.webPortal/allEntities/basic/read | Lees de basis eigenschappen van alle resources in micro soft. office365. webportal. |
-| microsoft.office365.complianceManager/allEntities/allTasks | Alle aspecten van Office 365-nalevings beheer beheren |
+| microsoft.office365.complianceManager/allEntities/allTasks | Beheer alle aspecten van Office 365 Compliancebeheer |
 | microsoft.office365.exchange/allEntities/allTasks | Beheer alle aspecten van Exchange Online. |
 | microsoft.office365.serviceHealth/allEntities/allTasks | Lees en configureer Office 365 Service Health. |
 | microsoft.office365.sharepoint/allEntities/allTasks | Maak en verwijder alle resources en lees de standaard eigenschappen in micro soft. office365. share point en werk deze bij. |
@@ -742,7 +758,7 @@ Hiermee wordt inhoud voor naleving gemaakt en beheerd.
 | microsoft.azure.serviceHealth/allEntities/allTasks | Azure Service Health lezen en configureren. |
 | microsoft.azure.supportTickets/allEntities/allTasks | Ondersteunings tickets voor Azure maken en beheren. |
 | microsoft.office365.webPortal/allEntities/basic/read | Lees de basis eigenschappen van alle resources in micro soft. office365. webportal. |
-| microsoft.office365.complianceManager/allEntities/allTasks | Alle aspecten van Office 365-nalevings beheer beheren |
+| microsoft.office365.complianceManager/allEntities/allTasks | Beheer alle aspecten van Office 365 Compliancebeheer |
 | microsoft.office365.exchange/allEntities/allTasks | Beheer alle aspecten van Exchange Online. |
 | microsoft.office365.serviceHealth/allEntities/allTasks | Lees en configureer Office 365 Service Health. |
 | microsoft.office365.sharepoint/allEntities/allTasks | Maak en verwijder alle resources en lees de standaard eigenschappen in micro soft. office365. share point en werk deze bij. |
@@ -794,7 +810,7 @@ Kan micro soft-ondersteunings aanvragen goed keuren voor toegang tot de organisa
 | **Acties** | **Beschrijving** |
 | --- | --- |
 | microsoft.office365.webPortal/allEntities/basic/read | Lees de basis eigenschappen van alle resources in micro soft. office365. webportal. |
-| microsoft.office365.lockbox/allEntities/allTasks | Alle aspecten van Office 365 Klanten-lockbox beheren |
+| microsoft.office365.lockbox/allEntities/allTasks | Beheer alle aspecten van Office 365 Klanten-lockbox |
 
 ### <a name="desktop-analytics-administrator-permissions"></a>Beheerders machtigingen voor desktop Analytics
 
@@ -965,6 +981,76 @@ Configureer id-providers voor gebruik in directe Federatie.
 | **Acties** | **Beschrijving** |
 | --- | --- |
 | microsoft.aad.b2c/identityProviders/allTasks | Id-providers lezen en configureren in Azure Active Directory B2C. |
+
+### <a name="global-reader-permissions"></a>Algemene lezers machtigingen
+Kan alles lezen dat een globale beheerder wel kan, maar geen bewerkingen kan ondernemen. 
+
+> [!NOTE]
+> Deze rol heeft aanvullende machtigingen buiten Azure Active Directory. Zie [Beschrijving van rol](#global-reader) hierboven voor meer informatie.
+>
+>
+
+| **Acties** | **Beschrijving** |
+| --- | --- |
+| micro soft. commerce. facturering/toerekeningen/lezen   | Lees alle aspecten van Office 365-facturering. |
+| micro soft. map/administrativeUnits/Basic/lezen    | Lees de basis eigenschappen van administrativeUnits in Azure Active Directory. |
+| micro soft. map/administrativeUnits/leden/lezen  | Lees de eigenschap administrativeUnits. members in Azure Active Directory. |
+| micro soft. Directory/toepassingen/basis/lezen   | Lees de basis eigenschappen van toepassingen in Azure Active Directory. |
+| micro soft. Directory/toepassingen/eigen aren/lezen  | Lees de eigenschap Applications. Owners in Azure Active Directory. |
+| micro soft. Directory/toepassingen/beleid/lezen    | Lees de eigenschap toepassingen. policies in Azure Active Directory. |
+| micro soft. map/Contacts/basis/lezen   | Lees de basis eigenschappen van contact personen in Azure Active Directory. |
+| micro soft. map/contact personen/memberOf/lezen    | Lees de eigenschap Contacts. memberOf in Azure Active Directory. |
+| micro soft. map/contracten/basis/lezen  | Lees de basis eigenschappen voor contracten in Azure Active Directory. |
+| micro soft. map/apparaten/basis/lezen    | Lees de basis eigenschappen van apparaten in Azure Active Directory. |
+| micro soft. Directory/apparaten/memberOf/lezen | Lees de eigenschap devices. memberOf in Azure Active Directory. |
+| micro soft. Directory/apparaten/registeredOwners/lezen | Lees de eigenschap devices. registeredOwners in Azure Active Directory. |
+| micro soft. Directory/apparaten/registeredUsers/lezen  | Lees de eigenschap devices. registeredUsers in Azure Active Directory. |
+| micro soft. map/directoryRoles/Basic/lezen | Lees de basis eigenschappen van directoryRoles in Azure Active Directory. |
+| micro soft. map/directoryRoles/eligibleMembers/lezen   | Lees de eigenschap directoryRoles. eligibleMembers in Azure Active Directory. |
+| micro soft. map/directoryRoles/leden/lezen   | Lees de eigenschap directoryRoles. members in Azure Active Directory. |
+| micro soft. Directory/domeinen/basis/lezen    | Lees de basis eigenschappen van domeinen in Azure Active Directory. |
+| micro soft. Directory/groepen/appRoleAssignments/lezen    | Lees de eigenschap groups. appRoleAssignments in Azure Active Directory. |
+| micro soft. map/groepen/basis/lezen | Lees de basis eigenschappen voor groepen in Azure Active Directory. |
+| micro soft. Directory/groepen/hiddenMembers/lezen | Lees de eigenschap groups. hiddenMembers in Azure Active Directory. |
+| micro soft. Directory/groepen/memberOf/lezen  | Lees de eigenschap groups. memberOf in Azure Active Directory. |
+| micro soft. map/groepen/leden/lezen   | Lees de eigenschap groups. members in Azure Active Directory. |
+| micro soft. map/groepen/eigen aren/lezen    | Lees de eigenschap groups. Owners in Azure Active Directory. |
+| micro soft. map/groepen/instellingen/lezen  | Lees de eigenschap groups. settings in Azure Active Directory. |
+| micro soft. map/groupSettings/Basic/lezen  | Lees de basis eigenschappen van groupSettings in Azure Active Directory. |
+| micro soft. map/groupSettingTemplates/Basic/lezen  | Lees de basis eigenschappen van groupSettingTemplates in Azure Active Directory. |
+| micro soft. map/oAuth2PermissionGrants/Basic/lezen | Lees de basis eigenschappen van oAuth2PermissionGrants in Azure Active Directory. |
+| micro soft. map/organisatie/basis/lezen   | Lees de basis eigenschappen van de organisatie in Azure Active Directory. |
+| micro soft. map/organisatie/trustedCAsForPasswordlessAuth/lezen   | Lees de eigenschap Organization. trustedCAsForPasswordlessAuth in Azure Active Directory. |
+| micro soft. Directory/beleid/standaard/lezen    | Lees het standaard beleid in Azure Active Directory. |
+| micro soft. map/roleAssignments/Basic/lezen    | Lees de basis eigenschappen van roleAssignments in Azure Active Directory. |
+| micro soft. map/roleDefinitions/Basic/lezen    | Lees de basis eigenschappen van roleDefinitions in Azure Active Directory. |
+| micro soft. map/servicePrincipals/appRoleAssignedTo/lezen  | Lees de eigenschap servicePrincipals. appRoleAssignedTo in Azure Active Directory. |
+| micro soft. map/servicePrincipals/appRoleAssignments/lezen | Lees de eigenschap servicePrincipals. appRoleAssignments in Azure Active Directory. |
+| micro soft. map/servicePrincipals/Basic/lezen  | Lees de basis eigenschappen van servicePrincipals in Azure Active Directory. |
+| micro soft. map/servicePrincipals/memberOf/lezen   | Lees de eigenschap servicePrincipals. memberOf in Azure Active Directory. |
+| micro soft. map/servicePrincipals/oAuth2PermissionGrants/Basic/lezen   | Lees de eigenschap servicePrincipals. oAuth2PermissionGrants in Azure Active Directory. |
+| micro soft. map/servicePrincipals/ownedObjects/lezen   | Lees de eigenschap servicePrincipals. ownedObjects in Azure Active Directory. |
+| micro soft. map/servicePrincipals/eigen aren/lezen | Lees de eigenschap servicePrincipals. Owners in Azure Active Directory. |
+| micro soft. map/servicePrincipals/beleid/lezen   | Lees de eigenschap servicePrincipals. policies in Azure Active Directory. |
+| microsoft.directory/signInReports/allProperties/read  | Lees alle eigenschappen (inclusief bevoorrechte eigenschappen) op signInReports in Azure Active Directory. |
+| micro soft. map/subscribedSkus/Basic/lezen | Lees de basis eigenschappen van subscribedSkus in Azure Active Directory. |
+| micro soft. map/gebruikers/appRoleAssignments/lezen | Lees de eigenschap users. appRoleAssignments in Azure Active Directory. |
+| micro soft. map/gebruikers/basis/lezen  | Lees de basis eigenschappen van gebruikers in Azure Active Directory. |
+| micro soft. map/gebruikers/directReports/lezen  | Lees de eigenschap users. directReports in Azure Active Directory. |
+| micro soft. map/gebruikers/manager/lezen    | Lees de eigenschap users. manager in Azure Active Directory. |
+| micro soft. map/gebruikers/memberOf/lezen   | Lees de eigenschap users. memberOf in Azure Active Directory. |
+| micro soft. map/users/oAuth2PermissionGrants/Basic/lezen   | Lees de eigenschap users. oAuth2PermissionGrants in Azure Active Directory. |
+| micro soft. map/gebruikers/ownedDevices/lezen   | Lees de eigenschap users. ownedDevices in Azure Active Directory. |
+| micro soft. map/gebruikers/ownedObjects/lezen   | Lees de eigenschap users. ownedObjects in Azure Active Directory. |
+| micro soft. map/gebruikers/registeredDevices/lezen  | Lees de eigenschap users. registeredDevices in Azure Active Directory. |
+| micro soft. map/gebruikers/strongAuthentication/lezen   | Lees sterke verificatie-eigenschappen, zoals MFA-referentie gegevens. |
+| micro soft. office365. Exchange//lezen | Lees alle aspecten van Exchange Online. |
+| microsoft.office365.messageCenter/messages/read   | Lees berichten in micro soft. office365. messageCenter. |
+| microsoft.office365.messageCenter/securityMessages/read   | Lees securityMessages in micro soft. office365. messageCenter. |
+| microsoft.office365.protectionCenter/allEntities/read | Lees alle aspecten van Office 365 Protection Center. |
+| micro soft. office365. securityComplianceCenter/de aflezingen/lezen | Lees alle standaard eigenschappen in micro soft. office365. securityComplianceCenter. |
+| microsoft.office365.usageReports/allEntities/read | Lees de gebruiks rapporten van Office 365. |
+| micro soft. office365. webportal/de beleen baarheid/standaard/lezen   | Lees de standaard eigenschappen voor alle resources in micro soft. office365. webportal. |
 
 ### <a name="guest-inviter-permissions"></a>Machtigingen voor gast Inviter
 Kan gast gebruikers uitnodigen onafhankelijk van de instelling leden kunnen gasten uitnodigen.
@@ -1513,74 +1599,75 @@ Rollen sjabloon-Id's worden voornamelijk gebruikt door Graph API-of Power shell-
 
 Grafiek weergave naam | Weergave naam Azure Portal | directoryRoleTemplateId
 ----------------- | ------------------------- | -------------------------
-Toepassingsbeheerder | Toepassingsbeheerder | 9B895D92-2CD3-44C7-9D02-A6AC2D5EA5C3
-Toepassingsontwikkelaar | Toepassingsontwikkelaar | CF1C38E5-3621-4004-A7CB-879624DCED7C
-Verificatiebeheerder | Verificatiebeheerder | c4e39bd9-1100-46d3-8c65-fb160da0071f
-Azure Information Protection beheerder | Azure Information Protection-beheerder | 7495fdc4-34c4-4d15-a289-98788ce399fd
+Toepassings beheerder | Toepassings beheerder | 9B895D92-2CD3-44C7-9D02-A6AC2D5EA5C3
+Toepassings ontwikkelaar | Toepassings ontwikkelaar | CF1C38E5-3621-4004-A7CB-879624DCED7C
+Verificatie beheerder | Verificatie beheerder | c4e39bd9-1100-46d3-8c65-fb160da0071f
+Azure Information Protection beheerder | Azure Information Protection beheerder | 7495fdc4-34c4-4d15-a289-98788ce399fd
 Beheerder van B2C-gebruikers stroom | Beheerder van B2C-gebruikers stroom | 6e591065-9bad-43ed-90f3-e9424366d2f0
 Beheerder van B2C-gebruikersstroomkenmerken | Beheerder van B2C-gebruikersstroomkenmerken | 0f971eea-41eb-4569-a71e-57bb8a3eff1e
-Beheerder van B2C IEF-sleutelset | Beheerder van B2C IEF-sleutelset | aaf43236-0c0d-4d5f-883a-6955382ac081
-Beheerder van B2C IEF-beleid | Beheerder van B2C IEF-beleid | 3edaf663-341e-4475-9f94-5c398ef6c070
-Factureringsbeheerder | Factureringsbeheerder | b0f54661-2d74-4c50-afa3-1ec803f12efe
-Cloudtoepassingsbeheerder | Cloudtoepassingsbeheerder | 158c047a-c907-4556-b7ef-446551a6b5f7
-Cloud-apparaatbeheerder | Cloudapparaatbeheerder | 7698a772-787b-4ac8-901f-60d6b08affd2
+B2C IEF Keyset Administrator | B2C IEF Keyset Administrator | aaf43236-0c0d-4d5f-883a-6955382ac081
+B2C IEF Policy Administrator | B2C IEF Policy Administrator | 3edaf663-341e-4475-9f94-5c398ef6c070
+Facturerings beheerder | Factureringsbeheerder | b0f54661-2d74-4c50-afa3-1ec803f12efe
+Beheerder van de Cloud toepassing | Beheerder van de Cloud toepassing | 158c047a-c907-4556-b7ef-446551a6b5f7
+Beheerder van Cloud apparaat | Beheerder van Cloud apparaat | 7698a772-787b-4ac8-901f-60d6b08affd2
 Bedrijfsbeheerder | Globale beheerder | 62e90394-69f5-4237-9190-012177145e10
 Beheerder voor naleving | Beheerder voor naleving | 17315797-102d-40b4-93e0-432062caca18
-Beheerder van compliancegegevens | Beheerder van gegevens voor naleving | e6d1a23a-da11-4be4-9570-befc86d067a7
-Voorwaardelijke toegang beheerder | Beheerder voor voorwaardelijke toegang | b1be1c3e-b65d-4f19-8427-f6fa0d97feb9
-CRM-servicebeheerder | Dynamics 365-beheerder | 44367163-eba1-44c3-98af-f5787879f96a
-Toegangsfiatteur voor Klanten-lockbox | Klanten-lockbox Access-fiatteur | 5c4f9dcd-47dc-4cf7-8c9a-9e4207cbfc91
-Desktop Analytics-beheerder | Desktop Analytics-beheerder | 38a96431-2bdf-4b4c-8b6e-5d3d8abac1a4
-Apparaatbeheerders | Beheerders van apparaten | 9f06204d-73c1-4d4c-880a-6edb90606fd8
+Beheerder van nalevings gegevens | Beheerder van nalevings gegevens | e6d1a23a-da11-4be4-9570-befc86d067a7
+Voorwaardelijke toegang beheerder | Beheerder van voorwaardelijke toegang | b1be1c3e-b65d-4f19-8427-f6fa0d97feb9
+CRM Service-beheerder | Dynamics 365-beheerder | 44367163-eba1-44c3-98af-f5787879f96a
+Toegangs fiatteur voor klanten-LockBox | Klanten-lockbox Access-fiatteur | 5c4f9dcd-47dc-4cf7-8c9a-9e4207cbfc91
+Beheerder van Desktop Analytics | Beheerder van Desktop Analytics | 38a96431-2bdf-4b4c-8b6e-5d3d8abac1a4
+Beheerders van apparaten | Beheerders van apparaten | 9f06204d-73c1-4d4c-880a-6edb90606fd8
 Apparaat toevoegen | Apparaat toevoegen | 9c094953-4995-41c8-84c8-3ebb9b32c93f
-Apparaatbeheerders | Apparaatbeheer | 2b499bcd-da44-4968-8aec-78e1674fa64d
+Apparaatbeheer | Apparaatbeheer | 2b499bcd-da44-4968-8aec-78e1674fa64d
 Gebruikers van het apparaat | Gebruikers van het apparaat | d405c6df-0af8-4e3b-95e4-4d06e542189e
-Adreslijstlezers | Adreslijstlezers | 88d8e3e3-8f55-4a1e-953a-9b9898b8876b
-Directory-synchronisatie accounts | Adreslijstsynchronisatieaccounts | d29b2b05-8046-44ba-8758-1e26182fcf32
-Adreslijstschrijvers | Adreslijstschrijvers | 9360feb5-f418-4baa-8175-e2a00bac4301
+Adreslijst lezers | Adreslijst lezers | 88d8e3e3-8f55-4a1e-953a-9b9898b8876b
+Directory-synchronisatie accounts | Directory-synchronisatie accounts | d29b2b05-8046-44ba-8758-1e26182fcf32
+Schrijvers van mappen | Schrijvers van mappen | 9360feb5-f418-4baa-8175-e2a00bac4301
 Exchange service-beheerder | Exchange-beheerder | 29232cdf-9323-42fd-ade2-1d097af3e4de
-Beheerder van externe id-providers | Beheerder van externe id-providers | be2f45a1-457d-42af-a067-6ec1fa63bc45
-Afzender van gastuitnodigingen | Afzender van gastuitnodigingen | 95e79109-95c0-4d8e-aee3-d01accf2d47b
-Helpdesk beheerder | Wachtwoordbeheerder | 729827e3-9c14-49f7-bb1b-9608f156bbb8
-Intune-servicebeheerder | Intune-beheerder | 3a2c62db-5318-420d-8d74-23affee5d9d5
+Beheerder van externe ID-provider | Beheerder van externe ID-provider | be2f45a1-457d-42af-a067-6ec1fa63bc45
+Algemene lezer | Algemene lezer | f2ef992c-3afb-46b9-b7cf-a126ee74c451
+Gast uitnodiging | Gast uitnodiging | 95e79109-95c0-4d8e-aee3-d01accf2d47b
+Helpdesk beheerder | Wachtwoord beheerder | 729827e3-9c14-49f7-bb1b-9608f156bbb8
+Intune-servicebeheerder | InTune-beheerder | 3a2c62db-5318-420d-8d74-23affee5d9d5
 Kaizala-beheerder | Kaizala-beheerder | 74ef975b-6605-40af-a5d2-b9539d836353
-Licentiebeheerder | Licentiebeheerder | 4d6ac14f-3453-41d0-bef9-a3e0c569773a
-Lync-service beheerder | Skype voor Bedrijven-beheerder | 75941009-915a-4869-abe7-691bff18279e
-Berichtencentrum-privacylezer | Berichtencentrum-privacylezer | ac16e43d-7b2d-40e0-ac05-243ff356ab5b
-Berichtencentrum-lezer | Berichtencentrum-lezer | 790c1fb9-7f7d-4f88-86a1-ef1f95c05c1b
-Laag1-ondersteuning voor partner | Laag1-ondersteuning voor partner | 4ba39ca4-527c-499a-b93d-d9b492c50246
-Laag2-ondersteuning voor partner | Laag2-ondersteuning voor partner | e00e864a-17c5-4a4b-9c06-f5b95a8d5bd8
-Wachtwoordbeheerder | Wachtwoordbeheerder | 966707d0-3269-4727-9be2-8c3a10f19b9d
-Power BI-servicebeheerder | Power BI-beheerder | a9ea8996-122f-4c74-9520-8edcd192826c
-Bevoorrechte verificatiebeheerder | Bevoorrechte verificatiebeheerder | 7be44c8a-adaf-4e2a-84d6-ab2649e08a13
-Beheerder voor bevoorrechte rollen | Beheerder voor bevoorrechte rollen | e8611ab8-c189-46e8-94e1-60213ab1f814
-Rapportenlezer | Rapportenlezer | 4a5d8f65-41da-4de4-8968-e035b65339cf
-Zoekbeheerder | Zoekbeheerder | 0964bb5e-9bdb-4d7b-ac29-58e794862a40
-Zoekredacteur | Zoekredacteur | 8835291a-918c-4fd7-a9ce-faa49f0cf7d9
+Licentie beheerder | Licentie beheerder | 4d6ac14f-3453-41d0-bef9-a3e0c569773a
+Lync-service beheerder | Skype voor bedrijven-beheerder | 75941009-915a-4869-abe7-691bff18279e
+Berichten centrum-privacy-lezer | Berichten centrum-privacy-lezer | ac16e43d-7b2d-40e0-ac05-243ff356ab5b
+Berichten centrum-lezer | Berichten centrum-lezer | 790c1fb9-7f7d-4f88-86a1-ef1f95c05c1b
+Laag1-ondersteuning voor partner | Ondersteuning voor partner Tier1 | 4ba39ca4-527c-499a-b93d-d9b492c50246
+Laag2-ondersteuning voor partner | Ondersteuning voor partner tier2 | e00e864a-17c5-4a4b-9c06-f5b95a8d5bd8
+Wachtwoord beheerder | Wachtwoord beheerder | 966707d0-3269-4727-9be2-8c3a10f19b9d
+Power BI service beheerder | Power BI beheerder | a9ea8996-122f-4c74-9520-8edcd192826c
+Beheerder voor geprivilegieerde authenticatie | Beheerder voor geprivilegieerde authenticatie | 7be44c8a-adaf-4e2a-84d6-ab2649e08a13
+Beheerder van geprivilegieerde rol | Beheerder van geprivilegieerde rol | e8611ab8-c189-46e8-94e1-60213ab1f814
+Rapport lezer | Rapport lezer | 4a5d8f65-41da-4de4-8968-e035b65339cf
+Beheerder zoeken | Beheerder zoeken | 0964bb5e-9bdb-4d7b-ac29-58e794862a40
+Zoek editor | Zoek editor | 8835291a-918c-4fd7-a9ce-faa49f0cf7d9
 Beveiligingsbeheerder | Beveiligingsbeheerder | 194ae4cb-b126-40b2-bd5b-6091b380977d
-Beveiligingsoperator | Beveiligingsoperator | 5f2222b1-57c3-48ba-8ad5-d4759f1fde6f
-Beveiligingslezer | Beveiligingslezer | 5d6b6bb7-de71-4623-b4af-96380a352509
+Beveiligings operator | Beveiligings operator | 5f2222b1-57c3-48ba-8ad5-d4759f1fde6f
+Beveiligings lezer | Beveiligingslezer | 5d6b6bb7-de71-4623-b4af-96380a352509
 Ondersteunings beheerder voor service | Servicebeheerder | f023fd81-a637-4b56-95fd-791ac0226033
-SharePoint Service-beheerder | SharePoint-beheerder | f28a1f50-f6e7-4571-818b-6a12f2af6b6c
-Teams-communicatiebeheerder | Teams-communicatiebeheerder | baf37b3a-610e-45da-9e62-d9d1e5e8914b
-Ondersteuningstechnicus voor Teams-communicatie | Ondersteuningstechnicus voor Teams-communicatie | f70938a0-fc10-4177-9e90-2178f8765737
-Ondersteuningsspecialist voor Teams-communicatie | Ondersteuningsspecialist voor Teams-communicatie | fcf91098-03e3-41a9-b5ba-6f0ec8188a12
-Teams-servicebeheerder | Teams-servicebeheerder | 69091246-20e8-4a56-aa4d-066075b2a7a8
+Share point-service beheerder | SharePoint-beheerder | f28a1f50-f6e7-4571-818b-6a12f2af6b6c
+Teams communicatie beheerder | Teams communicatie beheerder | baf37b3a-610e-45da-9e62-d9d1e5e8914b
+Mede werker communicatie technicus voor teams | Mede werker communicatie technicus voor teams | f70938a0-fc10-4177-9e90-2178f8765737
+Specialist communicatie ondersteuning teams | Specialist communicatie ondersteuning teams | fcf91098-03e3-41a9-b5ba-6f0ec8188a12
+Teams service-beheerder | Teams service-beheerder | 69091246-20e8-4a56-aa4d-066075b2a7a8
 Gebruiker | Gebruiker | a0b1b346-4d3e-4e8b-98f8-753987be4970
-Beheerder van gebruikersaccounts | Gebruikersbeheerder | fe930be7-5e62-47db-91af-98c3a49a38b1
-Werkplekapparaat toevoegen | Werkplek apparaat toevoegen | c34f683f-4d5a-4403-affd-6615e00e3a7f
+Beheerder van gebruikersaccounts | Gebruikers beheerder | fe930be7-5e62-47db-91af-98c3a49a38b1
+Werkplek apparaat toevoegen | Werkplek apparaat toevoegen | c34f683f-4d5a-4403-affd-6615e00e3a7f
 
 ## <a name="deprecated-roles"></a>Afgeschafte functies
 
 De volgende rollen mogen niet worden gebruikt. Ze zijn afgeschaft en worden in de toekomst verwijderd uit Azure AD.
 
-* Ad-hoclicentiebeheerder
+* Ad hoc-licentie beheerder
 * Apparaat toevoegen
-* Apparaatbeheerders
+* Apparaatbeheer
 * Gebruikers van het apparaat
-* Maker van via e-mail geverifieerde gebruikers
-* Postvakbeheerder
-* Werkplekapparaat toevoegen
+* Maker van e-mail geverifieerde gebruiker
+* Postvak beheerder
+* Werkplek apparaat toevoegen
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -10,12 +10,12 @@ ms.service: azure-functions
 ms.topic: reference
 ms.date: 09/04/2018
 ms.author: cshoe
-ms.openlocfilehash: d2e15c63ac6d93824aeab3f251c2860b7ea114d6
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: fbe41bdc5f253f1a605aa291a31191b7339b9850
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70086831"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72030581"
 ---
 # <a name="event-grid-trigger-for-azure-functions"></a>Event Grid trigger voor Azure Functions
 
@@ -23,7 +23,7 @@ In dit artikel wordt uitgelegd hoe u [Event grid](../event-grid/overview.md) geb
 
 Event Grid is een Azure-service die HTTP-aanvragen verzendt om u op de hoogte te stellen van gebeurtenissen die zich in *uitgevers*voordoen. Een uitgever is de service of resource die van de gebeurtenis afkomstig is. Een Azure Blob-opslag account is bijvoorbeeld een uitgever en [een BLOB uploaden of verwijderen is een gebeurtenis](../storage/blobs/storage-blob-event-overview.md). Sommige [Azure-Services hebben ingebouwde ondersteuning voor het publiceren van gebeurtenissen naar Event grid](../event-grid/overview.md#event-sources).
 
-Gebeurtenis -handlers ontvangen en verwerken gebeurtenissen. Azure Functions is een van [de verschillende Azure-Services met ingebouwde ondersteuning voor het verwerken van Event grid-gebeurtenissen](../event-grid/overview.md#event-handlers). In dit artikel leert u hoe u een Event Grid trigger kunt gebruiken om een functie aan te roepen wanneer een gebeurtenis wordt ontvangen van Event Grid.
+Gebeurtenis- *handlers* ontvangen en verwerken gebeurtenissen. Azure Functions is een van [de verschillende Azure-Services met ingebouwde ondersteuning voor het verwerken van Event grid-gebeurtenissen](../event-grid/overview.md#event-handlers). In dit artikel leert u hoe u een Event Grid trigger kunt gebruiken om een functie aan te roepen wanneer een gebeurtenis wordt ontvangen van Event Grid.
 
 Als u wilt, kunt u een HTTP-trigger gebruiken om Event Grid gebeurtenissen te verwerken. Zie [een HTTP-trigger gebruiken als Event grid trigger](#use-an-http-trigger-as-an-event-grid-trigger) verderop in dit artikel. Op dit moment kunt u geen Event Grid trigger gebruiken voor een Azure Functions-app wanneer de gebeurtenis wordt bezorgd in het [CloudEvents-schema](../event-grid/cloudevents-schema.md). Gebruik in plaats daarvan een HTTP-trigger.
 
@@ -55,7 +55,7 @@ Zie [HTTP-trigger gebruiken](#use-an-http-trigger-as-an-event-grid-trigger) verd
 
 ### <a name="c-2x"></a>C#(2. x)
 
-In het volgende voor beeld ziet u een [ C# functie](functions-dotnet-class-library.md) van 2. x die `EventGridEvent`is gekoppeld aan:
+In het volgende voor beeld ziet u een [ C# functie](functions-dotnet-class-library.md) van 2. x die wordt gekoppeld aan `EventGridEvent`:
 
 ```cs
 using Microsoft.Azure.EventGrid.Models;
@@ -81,7 +81,7 @@ Zie pakketten, [kenmerken](#attributes), [configuratie](#configuration)en [gebru
 
 ### <a name="c-version-1x"></a>C#(Versie 1. x)
 
-In het volgende voor beeld ziet u een [ C# functie](functions-dotnet-class-library.md) van 1. x die `JObject`is gekoppeld aan:
+In het volgende voor beeld ziet u een [ C# functie](functions-dotnet-class-library.md) van de functies 1. x die is gekoppeld aan `JObject`:
 
 ```cs
 using Microsoft.Azure.WebJobs;
@@ -125,7 +125,7 @@ Hier volgt de binding-gegevens de *function.json* bestand:
 
 #### <a name="c-script-version-2x"></a>C#script (versie 2. x)
 
-Dit is de functie 2. C# x-script code waarmee een `EventGridEvent`binding wordt gemaakt:
+Dit is de functie 2. C# x-script code die is gekoppeld aan `EventGridEvent`:
 
 ```csharp
 #r "Microsoft.Azure.EventGrid"
@@ -142,7 +142,7 @@ Zie pakketten, [kenmerken](#attributes), [configuratie](#configuration)en [gebru
 
 #### <a name="c-script-version-1x"></a>C#script (versie 1. x)
 
-Dit is de functie 1. C# x-script code waarmee een `JObject`binding wordt gemaakt:
+Dit is de functie 1. C# x-script code die is gekoppeld aan `JObject`:
 
 ```cs
 #r "Newtonsoft.Json"
@@ -228,7 +228,7 @@ Deze sectie bevat de volgende voorbeelden:
 * [Event Grid-trigger, teken reeks parameter](#event-grid-trigger-string-parameter-java)
 * [Event Grid trigger, para meter POJO](#event-grid-trigger-pojo-parameter-java)
 
-In de volgende voor beelden wordt trigger binding weer gegeven in een *Function. json* -bestand en [Java-functies](functions-reference-java.md) die gebruikmaken van de binding en afdrukken van een ```String``` gebeurtenis, waarbij de gebeurtenis eerst als en seconde wordt ontvangen als een POJO.
+In de volgende voor beelden wordt trigger binding weer gegeven in een *Function. json* -bestand en [Java-functies](functions-reference-java.md) die gebruikmaken van de binding en afdrukken van een gebeurtenis, waarbij de gebeurtenis eerst wordt ontvangen als @no__t 2 en seconde als een POJO.
 
 ```json
 {
@@ -279,7 +279,7 @@ public class EventSchema {
 }
 ```
 
-Na aankomst wordt de JSON-nettolading van de gebeurtenis in de ```EventSchema``` Pojo gedeserialiseerd voor gebruik door de functie. Hierdoor kan de functie de eigenschappen van de gebeurtenis op een object gerichte manier benaderen.
+Na aankomst wordt de JSON-payload van de gebeurtenis ongedaan gemaakt in het ```EventSchema```-POJO voor gebruik door de functie. Hierdoor kan de functie de eigenschappen van de gebeurtenis op een object gerichte manier benaderen.
 
 ```java
   @FunctionName("eventGridMonitor")
@@ -298,13 +298,13 @@ Na aankomst wordt de JSON-nettolading van de gebeurtenis in de ```EventSchema```
   }
 ```
 
-Gebruik in de [runtime-bibliotheek van Java functions](/java/api/overview/azure/functions/runtime)de `EventGridTrigger` annotatie voor para meters waarvan de waarde afkomstig is van EventGrid. Door para meters met deze aantekeningen wordt de functie uitgevoerd wanneer er een gebeurtenis binnenkomt.  Deze aantekening kan worden gebruikt met systeem eigen Java-typen, Pojo's of nullable `Optional<T>`-waarden met.
+Gebruik in de [runtime-bibliotheek van Java-functies](/java/api/overview/azure/functions/runtime)de `EventGridTrigger`-annotatie op para meters waarvan de waarde afkomstig is van EventGrid. Door para meters met deze aantekeningen wordt de functie uitgevoerd wanneer er een gebeurtenis binnenkomt.  Deze aantekening kan worden gebruikt met systeem eigen Java-typen, Pojo's of nullable-waarden met behulp van `Optional<T>`.
 
 ## <a name="attributes"></a>Kenmerken
 
-Gebruik in [ C# class bibliotheken](functions-dotnet-class-library.md)het kenmerk [EventGridTrigger](https://github.com/Azure/azure-functions-eventgrid-extension/blob/master/src/EventGridExtension/EventGridTriggerAttribute.cs) .
+Gebruik in [ C# class bibliotheken](functions-dotnet-class-library.md)het kenmerk [EventGridTrigger](https://github.com/Azure/azure-functions-eventgrid-extension/blob/master/src/EventGridExtension/TriggerBinding/EventGridTriggerAttribute.cs) .
 
-Hier volgt een `EventGridTrigger` kenmerk in een methode handtekening:
+Hier volgt een `EventGridTrigger`-kenmerk in een methode handtekening:
 
 ```csharp
 [FunctionName("EventGridTest")]
@@ -318,7 +318,7 @@ Zie C# voor een volledig voor beeld.
 
 ## <a name="configuration"></a>Configuratie
 
-De volgende tabel bevat uitleg over de binding configuratie-eigenschappen die u in het bestand *Function. json* hebt ingesteld. Er zijn geen constructor-para meters of-eigenschappen om `EventGridTrigger` in het kenmerk in te stellen.
+De volgende tabel bevat uitleg over de binding configuratie-eigenschappen die u in het bestand *Function. json* hebt ingesteld. Er zijn geen constructor-para meters of-eigenschappen om in te stellen in het kenmerk `EventGridTrigger`.
 
 |de eigenschap Function.JSON |Description|
 |---------|---------|
@@ -335,12 +335,12 @@ Voor C# en F# functies in azure functions 1. x kunt u de volgende parameter type
 
 Voor C# en F# functies in azure functions 2. x hebt u ook de mogelijkheid om het volgende parameter type te gebruiken voor de Event grid trigger:
 
-* `Microsoft.Azure.EventGrid.Models.EventGridEvent`-Definieert eigenschappen voor de overeenkomende velden voor alle gebeurtenis typen.
+* `Microsoft.Azure.EventGrid.Models.EventGridEvent`: definieert eigenschappen voor de overeenkomende velden voor alle gebeurtenis typen.
 
 > [!NOTE]
-> In functions v1 als u probeert te binden `Microsoft.Azure.WebJobs.Extensions.EventGrid.EventGridEvent`aan, wordt in de compiler een ' afgeschaft ' bericht weer gegeven en `Microsoft.Azure.EventGrid.Models.EventGridEvent` wordt u aangeraden om in plaats daarvan te gebruiken. Als u het nieuwe type wilt gebruiken, verwijst u naar het NuGet-pakket [micro soft. Azure. EventGrid](https://www.nuget.org/packages/Microsoft.Azure.EventGrid) en geeft u de `EventGridEvent` type naam volledig door met `Microsoft.Azure.EventGrid.Models`het voor voegsel. Zie [NuGet-pakketten gebruiken](functions-reference-csharp.md#using-nuget-packages) voor meer informatie over het C# verwijzen naar NuGet-pakketten in een script functie
+> In functions v1 als u probeert te verbinden met `Microsoft.Azure.WebJobs.Extensions.EventGrid.EventGridEvent`, wordt in de compiler een ' afgeschaft ' bericht weer gegeven en wordt u geadviseerd om in plaats daarvan `Microsoft.Azure.EventGrid.Models.EventGridEvent` te gebruiken. Als u het nieuwe type wilt gebruiken, verwijst u naar het pakket [micro soft. Azure. EventGrid](https://www.nuget.org/packages/Microsoft.Azure.EventGrid) NuGet en geeft u de naam van het `EventGridEvent` volledig door met behulp van `Microsoft.Azure.EventGrid.Models`. Zie [NuGet-pakketten gebruiken](functions-reference-csharp.md#using-nuget-packages) voor meer informatie over het C# verwijzen naar NuGet-pakketten in een script functie
 
-Voor Java script-functies bevat de para meter met de eigenschap *Function. json* `name` een verwijzing naar het gebeurtenis object.
+Voor Java script-functies heeft de para meter met de naam van de *functie. json* `name` eigenschap een verwijzing naar het gebeurtenis object.
 
 ## <a name="event-schema"></a>Gebeurtenisschema
 
@@ -374,11 +374,11 @@ Gegevens voor een Event Grid gebeurtenis worden ontvangen als een JSON-object in
 
 Het voor beeld dat wordt weer gegeven, is een matrix van één element. Event Grid verzendt altijd een matrix en kan meer dan één gebeurtenis in de matrix verzenden. De runtime roept de functie eenmaal aan voor elk matrix element.
 
-De eigenschappen op het hoogste niveau in de JSON-gegevens van de gebeurtenis zijn hetzelfde voor alle gebeurtenis typen, terwijl de `data` inhoud van de eigenschap specifiek is voor elk gebeurtenis type. Het voor beeld dat wordt weer gegeven, is voor een Blob Storage-gebeurtenis.
+De eigenschappen op het hoogste niveau in de JSON-gegevens van de gebeurtenis zijn hetzelfde voor alle gebeurtenis typen, terwijl de inhoud van de eigenschap `data` specifiek is voor elk gebeurtenis type. Het voor beeld dat wordt weer gegeven, is voor een Blob Storage-gebeurtenis.
 
 Zie [gebeurtenis eigenschappen](../event-grid/event-schema.md#event-properties) in de Event grid-documentatie voor uitleg van de algemene en gebeurtenis-specifieke eigenschappen.
 
-Het `EventGridEvent` type definieert alleen de eigenschappen op het hoogste niveau; `Data` de eigenschap is `JObject`een.
+Het type `EventGridEvent` definieert alleen de eigenschappen op het hoogste niveau; de eigenschap `Data` is een `JObject`.
 
 ## <a name="create-a-subscription"></a>Een abonnement maken
 
@@ -507,7 +507,7 @@ De site wordt weergegeven, maar er zijn nog geen gebeurtenissen op gepubliceerd.
 
 ### <a name="create-an-event-grid-subscription"></a>Een Event Grid-abonnement maken
 
-Maak een Event Grid-abonnement van het type dat u wilt testen en geef dit de URL van uw web-app als eind punt voor gebeurtenis meldingen. Het eindpunt voor uw web-app moet het achtervoegsel `/api/updates/` bevatten. De volledige URL is dus`https://<your-site-name>.azurewebsites.net/api/updates`
+Maak een Event Grid-abonnement van het type dat u wilt testen en geef dit de URL van uw web-app als eind punt voor gebeurtenis meldingen. Het eindpunt voor uw web-app moet het achtervoegsel `/api/updates/` bevatten. De volledige URL is dus `https://<your-site-name>.azurewebsites.net/api/updates`
 
 Voor informatie over het maken van abonnementen met behulp van de Azure Portal, Zie [aangepaste gebeurtenis maken-Azure Portal](../event-grid/custom-event-quickstart-portal.md) in de Event grid documentatie.
 
@@ -525,8 +525,8 @@ Voer uw Event Grid-functie lokaal uit.
 
 Gebruik een hulp programma zoals [postman](https://www.getpostman.com/) of [krul](https://curl.haxx.se/docs/httpscripting.html) om een HTTP POST-aanvraag te maken:
 
-* Stel een `Content-Type: application/json` koptekst in.
-* Stel een `aeg-event-type: Notification` koptekst in.
+* Stel een `Content-Type: application/json`-header in.
+* Stel een `aeg-event-type: Notification`-header in.
 * Plak de RequestBin-gegevens in de hoofd tekst van de aanvraag.
 * Post naar de URL van uw Event Grid-trigger functie.
   * Voor 2. x gebruikt u het volgende patroon:
@@ -541,7 +541,7 @@ Gebruik een hulp programma zoals [postman](https://www.getpostman.com/) of [krul
     http://localhost:7071/admin/extensions/EventGridExtensionConfig?functionName={FUNCTION_NAME}
     ```
 
-De `functionName` para meter moet de naam zijn die is `FunctionName` opgegeven in het kenmerk.
+De para meter `functionName` moet de naam zijn die is opgegeven in het kenmerk `FunctionName`.
 
 In de volgende scherm afbeeldingen worden de kopteksten en de hoofd tekst van de aanvraag weer gegeven in postman:
 
@@ -588,7 +588,7 @@ Connections                   ttl     opn     rt1     rt5     p50     p90
                               0       0       0.00    0.00    0.00    0.00
 ```
 
-U gebruikt de `https://{subdomain}.ngrok.io` URL voor uw event grid-abonnement.
+U gebruikt de URL voor de `https://{subdomain}.ngrok.io` voor uw Event Grid-abonnement.
 
 ### <a name="run-the-event-grid-trigger-function"></a>De functie Trigger Event Grid uitvoeren
 
@@ -610,7 +610,7 @@ Gebruik dit eindpunt patroon voor de functies 1. x:
 https://{SUBDOMAIN}.ngrok.io/admin/extensions/EventGridExtensionConfig?functionName={FUNCTION_NAME}
 ```
 
-De `{FUNCTION_NAME}` para meter moet de naam zijn die is `FunctionName` opgegeven in het kenmerk.
+De para meter `{FUNCTION_NAME}` moet de naam zijn die is opgegeven in het kenmerk `FunctionName`.
 
 Hier volgt een voor beeld van het gebruik van de Azure CLI:
 
@@ -707,7 +707,7 @@ module.exports = function (context, req) {
 };
 ```
 
-De code voor het afhandelen van gebeurtenissen gaat in `messages` de lus door de matrix.
+De code voor het afhandelen van gebeurtenissen bevindt zich in de lus via de matrix `messages`.
 
 ### <a name="cloudevents-schema"></a>CloudEvents-schema
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/24/2019
 ms.author: memildin
-ms.openlocfilehash: 07934e3c7d9f61ecb4153e6a169882509a81dc75
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: fb401226e9697afb71dfa7a30f9814e07c3422c2
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71241031"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72028076"
 ---
 # <a name="microsoft-defender-advanced-threat-protection-with-azure-security-center"></a>Micro soft Defender Advanced Threat Protection met Azure Security Center
 
@@ -36,7 +36,7 @@ Wanneer u micro soft Defender ATP gebruikt, krijgt u het volgende:
 
 De volgende mogelijkheden zijn nu beschikbaar in Azure Security Center:
 
-- **Automatische**onboarding: De micro soft Defender ATP-sensor wordt automatisch ingeschakeld voor Windows-servers die worden voorAzure Security Centerd.
+- **Automatische onboarding**: De micro soft Defender ATP-sensor wordt automatisch ingeschakeld voor Windows-servers die worden voorAzure Security Centerd.
 
 - **Eén glas venster**: In de Azure Security Center-console worden micro soft Defender ATP-waarschuwingen weer gegeven.
 
@@ -70,7 +70,7 @@ Als u servers wilt Security Center, klikt u op **Ga naar Azure Security Center v
 
 ## <a name="enable-microsoft-defender-atp-integration"></a>Micro soft Defender ATP-integratie inschakelen
 
-Als u wilt weer geven of micro soft Defender ATP Integration is ingeschakeld, selecteert u de prijzen voor **Security Center** >  **& instellingen** > klikt u op uw abonnement.
+Als u wilt weer geven of micro soft Defender ATP Integration is ingeschakeld, selecteert u **security center** > **prijzen & instellingen** > klikt u op uw abonnement.
 Hier ziet u de integraties die momenteel zijn ingeschakeld.
 
   ![Azure Security Center pagina instellingen voor detectie van bedreigingen met micro soft Defender ATP-integratie ingeschakeld](media/security-center-wdatp/enable-integrations.png)
@@ -107,7 +107,7 @@ Een goed aardige micro soft Defender ATP-test waarschuwing genereren:
 
 3. Als de opdracht is geslaagd, ziet u een nieuwe waarschuwing in het dash board van Azure Security Center en de micro soft Defender ATP-Portal. Het kan enkele minuten duren voordat deze waarschuwing wordt weer gegeven.
 
-4. Als u de waarschuwing in Security Center wilt bekijken, gaat u naar **beveiligings waarschuwingen** >  **verdachte Power shell**-opdracht regel.
+4. Als u de waarschuwing in Security Center wilt bekijken, gaat u naar **beveiligings waarschuwingen** >  **verdachte Power shell**-opdracht regel.
 
 5. Selecteer in het venster onderzoek de koppeling om naar de micro soft Defender ATP-portal te gaan.
 

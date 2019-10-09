@@ -3,26 +3,26 @@ title: Overzicht van Azure SQL Database grootschalige | Microsoft Docs
 description: In dit artikel wordt de grootschalige-servicelaag in het op vCore gebaseerde aankoop model beschreven in Azure SQL Database en wordt uitgelegd hoe dit verschilt van de Algemeen en Bedrijfskritiek service lagen.
 services: sql-database
 ms.service: sql-database
-ms.subservice: ''
+ms.subservice: service
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 05/06/2019
-ms.openlocfilehash: 1d70c5d86221213ae3f9a2d31fdf40857cb516be
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.date: 10/01/2019
+ms.openlocfilehash: dc9acd4fc45de2599ac71427ec2676506071894b
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70845631"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72035064"
 ---
-# <a name="hyperscale-service-tier-for-up-to-100-tb"></a>Grootschalige-servicelaag voor Maxi maal 100 TB
+# <a name="hyperscale-service-tier"></a>Hyperscale-servicelaag
 
 Azure SQL Database is gebaseerd op SQL Server data base engine-architectuur die is aangepast voor de cloud omgeving om 99,99% Beschik baarheid te garanderen, zelfs in het geval van infrastructuur fouten. Er zijn drie architectuur modellen die worden gebruikt in Azure SQL Database:
 - Algemeen/standaard 
--  Grootschalig
+-  Hyperscale
 -  Business Critical/Premium
 
 De grootschalige van de servicelaag in Azure SQL Database is de nieuwste servicelaag in het op vCore gebaseerde aankoop model. Deze servicelaag is een zeer schaal bare laag voor opslag en reken prestaties die gebruikmaakt van de Azure-architectuur voor het uitschalen van de opslag en de reken resources voor een Azure SQL Database die groter zijn dan de limieten die beschikbaar zijn voor de Algemeen en de onderneming Kritieke service lagen.
@@ -51,9 +51,13 @@ Zie [kenmerken](sql-database-service-tiers-vcore.md#service-tier-characteristics
 
 ## <a name="who-should-consider-the-hyperscale-service-tier"></a>Wie moet rekening houden met de grootschalige-servicelaag
 
-De grootschalige is voornamelijk bedoeld voor klanten die on-premises grote data bases hebben en hun toepassingen willen moderniseren door over te stappen op de Cloud of voor klanten die zich al in de cloud bevinden en beperkt zijn tot de maximale database grootte beperkingen (1-4 TB). Het is ook bedoeld voor klanten die hoge prestaties en hoge schaal baarheid voor opslag en reken kracht zoeken.
+De grootschalige is bedoeld voor de meeste bedrijfs werkbelastingen, omdat deze zeer flexibel en hoge prestaties biedt met onafhankelijk schaal bare reken-en opslag resources. Met de mogelijkheid om opslag tot 100 TB automatisch te schalen, is het een uitstekende keuze voor klanten die:
 
-De grootschalige-servicelaag ondersteunt alle SQL Server workloads, maar is voornamelijk geoptimaliseerd voor OLTP. De grootschalige-servicelaag biedt ook ondersteuning voor hybride en analytische workloads (datamart).
+- Een grote data base on-premises hebben en hun toepassingen willen moderniseren door over te stappen op de Cloud
+- Bevinden zich al in de Cloud en worden beperkt door de maximale database grootte beperkingen van andere service lagen (1-4 TB)
+- Hebben kleinere data bases, maar vereisen snelle verticale en horizontale reken schalen, hoge prestaties, directe back-ups en snelle database herstel.
+
+De grootschalige-servicelaag ondersteunt een breed scala aan SQL Server workloads, van zuivere OLTP tot zuivere analyses, maar is voornamelijk geoptimaliseerd voor OLTP-en Hybrid Trans Action-en Analytical Processing-workloads (HTAP).
 
 > [!IMPORTANT]
 > Elastische Pools bieden geen ondersteuning voor de grootschalige-servicelaag.
@@ -80,27 +84,27 @@ In het volgende diagram ziet u de verschillende typen knoop punten in een groots
 
 ![architectuur](./media/sql-database-hyperscale/hyperscale-architecture.png)
 
-Een grootschalige-Data Base bevat de volgende verschillende typen knoop punten:
+Een grootschalige-Data Base bevat de volgende verschillende soorten onderdelen:
 
-### <a name="compute-node"></a>Rekenknooppunt
+### <a name="compute"></a>Compute
 
 Het reken knooppunt is de locatie waar de relationele engine zich bevindt, zodat alle taal elementen, query's worden verwerkt, enzovoort. Alle gebruikers interacties met een grootschalige-data base vinden plaats via deze reken knooppunten. Reken knooppunten hebben op SSD gebaseerde caches in het voor gaande diagram om het aantal netwerk round trips dat nodig is om een pagina met gegevens op te halen, zo klein mogelijk te houden. Er is één primair reken knooppunt waar alle werk belastingen en trans acties voor lezen/schrijven worden verwerkt. Er zijn een of meer secundaire reken knooppunten die fungeren als hot standby-knoop punten voor failover-doel einden, en fungeren als alleen-lezen Compute-knoop punten voor het offloaden van Lees werkbelastingen (als deze functionaliteit gewenst is).
 
-### <a name="page-server-node"></a>Pagina-Server knooppunt
+### <a name="page-server"></a>Pagina Server
 
 Pagina servers zijn systemen die een scale-out opslag engine vertegenwoordigen.  Elke pagina Server is verantwoordelijk voor een subset van de pagina's in de data base.  Ten opzichte van elke pagina server bepaalt de besturings elementen van 128 GB en 1 TB aan gegevens. Er worden geen gegevens gedeeld op meer dan één pagina Server (buiten replica's die worden bewaard voor redundantie en beschik baarheid). De taak van een pagina Server is het uitvoeren van database pagina's naar de reken knooppunten op aanvraag en om te voor komen dat de pagina's worden bijgewerkt als update gegevens van trans acties. Pagina servers worden bijgewerkt door logboek records van de logboek service af te spelen. Pagina servers onderhouden ook caches op basis van SSD om de prestaties te verbeteren. Lange termijn opslag van gegevens pagina's wordt opgeslagen in Azure Storage voor extra betrouw baarheid.
 
-### <a name="log-service-node"></a>Knoop punt logboek service
+### <a name="log-service"></a>Logboek service
 
-Het knoop punt logboek service accepteert logboek records van het primaire Compute-knoop punt, slaat ze op in een duurzame cache en stuurt de logboek records door naar de rest van de reken knooppunten (zodat ze hun caches kunnen bijwerken) en de relevante pagina ('s), zodat de gegevens kunnen worden bijgewerkt t veld. Op deze manier worden alle gegevens wijzigingen van het primaire Compute-knoop punt door de logboek service door gegeven aan alle secundaire reken knooppunten en pagina servers. Ten slotte worden de logboek record (s) gepusht naar lange termijn opslag in Azure Storage. Dit is een oneindige opslag opslagplaats. Dit mechanisme verwijdert de nood zaak voor het veelvuldig afkappen van Logboeken. De logboek service heeft ook lokale cache om de toegang te versnellen.
+De logboek service accepteert logboek records van de primaire Compute-replica, slaat ze op in een duurzame cache en stuurt de logboek records door naar de rest van reken replica's (zodat ze hun caches kunnen bijwerken) en de relevante pagina ('s), zodat de gegevens kunnen worden bijgewerkt kent. Op deze manier worden alle gegevens wijzigingen van de primaire Compute-replica door de logboek service door gegeven aan alle secundaire reken replica's en pagina servers. Ten slotte worden de logboek records gepusht naar lange termijn opslag in Azure Storage. Dit is een bijna oneindige opslag opslagplaats. Dit mechanisme verwijdert de nood zaak van een veelvuldige afkap ping van het logboek. De logboek service heeft ook lokale cache om de toegang tot logboek records te versnellen.
 
-### <a name="azure-storage-node"></a>Azure Storage-knoop punt
+### <a name="azure-storage"></a>Azure Storage
 
-Het Azure Storage-knoop punt is het uiteindelijke doel van gegevens van pagina servers. Deze opslag wordt gebruikt voor back-updoeleinden en voor replicatie tussen Azure-regio's. Back-ups bestaan uit moment opnamen van gegevens bestanden. De herstel bewerking is snel van deze moment opnamen en gegevens kunnen naar elk gewenst moment worden hersteld.
+Azure Storage bevat alle gegevens bestanden in een Data Base. Pagina servers houden gegevens bestanden in Azure Storage up-to-date. Deze opslag wordt gebruikt voor back-updoeleinden en voor replicatie tussen Azure-regio's. Back-ups worden geïmplementeerd met behulp van opslag momentopnamen van gegevens bestanden. Herstel bewerkingen met behulp van moment opnamen zijn snel, ongeacht de grootte van de gegevens. Gegevens kunnen worden hersteld naar elk gewenst moment binnen de Bewaar periode van de back-up van de data base.
 
 ## <a name="backup-and-restore"></a>Back-ups en herstellen
 
-Back-ups zijn de basis van de bestands momentopname en daarom zijn ze bijna direct. Met opslag-en Compute-schei ding kunt u de bewerking voor back-up/herstel naar de opslaglaag beperken om de verwerkings belasting op het primaire Compute-knoop punt te verminderen. Als gevolg hiervan heeft de back-up van een grote data base geen invloed op de prestaties van het primaire Compute-knoop punt. Op dezelfde manier worden herstel bewerkingen uitgevoerd door de moment opname van het bestand te kopiëren. Dit is geen grootte van de gegevens bewerking. Voor herstel bewerkingen binnen hetzelfde opslag account is de restore-bewerking snel.
+Back-ups zijn gebaseerd op bestands momentopnamen en daarom zijn ze bijna direct. Met opslag-en Compute-schei ding kunt u de bewerking voor back-up/herstel naar de opslaglaag beperken om de verwerkings belasting van de primaire Compute replica te verminderen. Als gevolg hiervan is het maken van een back-up van de data base geen invloed op de prestaties van het primaire reken knooppunt. op dezelfde manier worden herstel bewerkingen uitgevoerd door terug te keren naar moment opnamen van bestanden. Dit is geen grootte van de gegevens bewerking. Herstellen is een constante tijd, en zelfs meerdere terabyte-data bases kunnen binnen enkele minuten worden hersteld in plaats van uren of dagen. Bij het maken van nieuwe data bases door een bestaande back-up te herstellen, wordt ook gebruikgemaakt van deze functie: het maken van database kopieën voor ontwikkelings-of test doeleinden, zelfs op terabyte-formaat databases, is doable binnen enkele minuten.
 
 ## <a name="scale-and-performance-advantages"></a>Schaal-en prestatie voordelen
 
@@ -110,7 +114,7 @@ Met de mogelijkheid om snel extra alleen-lezen Compute-knoop punten in te zetten
 
 Een grootschalige-data base kan worden gemaakt met behulp van de [Azure Portal](https://portal.azure.com), [T-SQL](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current), [Power shell](https://docs.microsoft.com/powershell/module/azurerm.sql/new-azurermsqldatabase) of [cli](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-create). Grootschalige-data bases zijn alleen beschikbaar via het [op vCore gebaseerde aankoop model](sql-database-service-tiers-vcore.md).
 
-Met de volgende T-SQL-opdracht maakt u een grootschalige-data base. U moet zowel de editie als de service doelstelling opgeven in `CREATE DATABASE` de instructie. Raadpleeg de [resource limieten](https://docs.microsoft.com/azure/sql-database/sql-database-vcore-resource-limits-single-databases#hyperscale-service-tier-for-provisioned-compute) voor een lijst met geldige service doelstellingen.
+Met de volgende T-SQL-opdracht maakt u een grootschalige-data base. U moet zowel de editie als de service doelstelling opgeven in de instructie `CREATE DATABASE`. Raadpleeg de [resource limieten](https://docs.microsoft.com/azure/sql-database/sql-database-vcore-resource-limits-single-databases#hyperscale-service-tier-for-provisioned-compute) voor een lijst met geldige service doelstellingen.
 
 ```sql
 -- Create a HyperScale Database
@@ -121,9 +125,9 @@ Hiermee maakt u een grootschalige-Data Base op GEN5-hardware met 4 kern geheugen
 
 ## <a name="migrate-an-existing-azure-sql-database-to-the-hyperscale-service-tier"></a>Een bestaande Azure SQL Database migreren naar de servicelaag grootschalige
 
-U kunt uw bestaande Azure SQL-data bases verplaatsen naar grootschalige met behulp van de [Azure Portal](https://portal.azure.com), [T-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current), [Power shell](https://docs.microsoft.com/powershell/module/azurerm.sql/set-azurermsqldatabase) of [cli](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-update). Op dit moment is dit een eenrichtings migratie. U kunt geen data bases van grootschalige naar een andere servicelaag verplaatsen. U wordt aangeraden een kopie te maken van uw productie databases en te migreren naar grootschalige voor het controleren van concepten (POCs).
+U kunt uw bestaande Azure SQL-data bases verplaatsen naar grootschalige met behulp van de [Azure Portal](https://portal.azure.com), [T-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current), [Power shell](https://docs.microsoft.com/powershell/module/azurerm.sql/set-azurermsqldatabase) of [cli](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-update). Op dit moment is dit een eenrichtings migratie. U kunt geen data bases van grootschalige naar een andere servicelaag verplaatsen, met uitzonde ring van gegevens exporteren en importeren. Voor testen van concept (POCs) wordt u aangeraden een kopie te maken van uw productie databases en de kopie te migreren naar grootschalige. Het migreren van een bestaande Azure-SQL database naar de grootschalige-laag is een grootte van de gegevens bewerking.
 
-Met de volgende T-SQL-opdracht wordt een Data Base verplaatst naar de servicelaag grootschalige. U moet zowel de editie als de service doelstelling opgeven in `ALTER DATABASE` de instructie.
+Met de volgende T-SQL-opdracht wordt een Data Base verplaatst naar de servicelaag grootschalige. U moet zowel de editie als de service doelstelling opgeven in de instructie `ALTER DATABASE`.
 
 ```sql
 -- Alter a database to make it a HyperScale Database
@@ -133,13 +137,23 @@ GO
 
 ## <a name="connect-to-a-read-scale-replica-of-a-hyperscale-database"></a>Verbinding maken met een lees bare replica van een grootschalige-data base
 
-In grootschalige-data bases bepaalt het `ApplicationIntent` argument in de Connection String dat door de client wordt gegeven, of de verbinding wordt doorgestuurd naar de schrijf replica of naar een secundaire alleen-lezen replica. Als de `ApplicationIntent` set naar `READONLY` en de data base geen secundaire replica heeft, wordt de verbinding met de `ReadWrite` primaire replica doorgestuurd en wordt de standaard instelling gebruikt.
+In grootschalige-data bases wordt het argument `ApplicationIntent` in de connection string dat door de client is bepaald, bepaald of de verbinding wordt doorgestuurd naar de schrijf replica of naar een secundaire alleen-lezen replica. Als de @no__t 0 is ingesteld op `READONLY` en de data base heeft geen secundaire replica, wordt de verbinding doorgestuurd naar de primaire replica en wordt het standaard `ReadWrite`-gedrag.
 
 ```cmd
 -- Connection string with application intent
 Server=tcp:<myserver>.database.windows.net;Database=<mydatabase>;ApplicationIntent=ReadOnly;User ID=<myLogin>;Password=<myPassword>;Trusted_Connection=False; Encrypt=True;
 ```
+
+Grootschalige secundaire replica's zijn allemaal identiek, met dezelfde serviceniveau doelstelling als de primaire replica. Als er meer dan één secundaire replica aanwezig is, wordt de werk belasting gedistribueerd over alle beschik bare zones. Elke secundaire replica wordt onafhankelijk bijgewerkt, waardoor verschillende replica's een andere gegevens latentie kunnen hebben ten opzichte van de primaire replica.
+
+## <a name="database-high-availability-in-hyperscale"></a>Hoge Beschik baarheid van data base in grootschalige
+
+Net als bij alle andere service lagen garandeert grootschalige gegevens duurzaamheid voor vastgelegde trans acties, ongeacht de beschik baarheid van reken replica's. De mate van uitval tijd, omdat de primaire replica niet beschikbaar is, is afhankelijk van het type failover (gepland versus niet-gepland) en op de aanwezigheid van ten minste één secundaire replica. In een geplande failover (d.w.z. een onderhouds gebeurtenis) maakt het systeem de nieuwe primaire replica voordat een failover wordt gestart, of wordt een bestaande secundaire replica als failover-doel gebruikt. In een niet-geplande failover (d.w.z. een hardwarestoring op de primaire replica), gebruikt het systeem een secundaire replica als failover-doel als er een bestaat, of maakt een nieuwe primaire replica van de groep beschik bare reken capaciteit. In het laatste geval is de duur van de downtime langer vanwege extra stappen die nodig zijn om de nieuwe primaire replica te maken.
+
+Zie [Sla voor Azure SQL database](https://azure.microsoft.com/support/legal/sla/sql-database/)voor grootschalige sla.
+
 ## <a name="disaster-recovery-for-hyperscale-databases"></a>Herstel na nood geval voor grootschalige-data bases
+
 ### <a name="restoring-a-hyperscale-database-to-a-different-geography"></a>Een grootschalige-data base herstellen naar een andere Geografie
 Als u een Azure SQL Database grootschalige-Data Base wilt herstellen naar een andere regio dan die die momenteel wordt gehost in, als onderdeel van een nood herstel bewerking of een analyse, herlocatie of een andere reden, is de primaire methode een geografisch herstel van de data base.  Dit omvat precies dezelfde stappen als wat u zou gebruiken om andere AZURE SQL-Data Base naar een andere regio te herstellen:
 1. Maak een SQL Database Server in de doel regio als u daar nog geen geschikte server op hebt.  Deze server moet eigendom zijn van hetzelfde abonnement als de oorspronkelijke server (bron).
@@ -169,7 +183,7 @@ De laag Azure SQL Database grootschalige is momenteel beschikbaar in de volgende
 - Korea - zuid
 - US - noord-centraal
 - Europa - noord
-- Zuid-Afrika - noord
+- Zuid-Afrika (noord)
 - US - zuid-centraal
 - Azië - zuidoost
 - Verenigd Koninkrijk Zuid
@@ -194,17 +208,17 @@ De mogelijkheid om grootschalige-data bases te maken in niet-vermelde regio's aa
 
 5. Selecteer **SQL database** bij **quotum type**
 
-6. Klik op **Next: Nodige**
+6. Klik op **Next: Oplossingen @ no__t-0
 
 1. Klik op **Details opgeven**
 
-    ![Probleemdetails](media/sql-database-service-tier-hyperscale/request-screen-2.png)
+    ![Details van probleem](media/sql-database-service-tier-hyperscale/request-screen-2.png)
 
 8. **SQL database quotum type**kiezen: **Andere quotum aanvraag**
 
 9. Vul de volgende sjabloon in:
 
-    ![Quotumgegevens](media/sql-database-service-tier-hyperscale/request-screen-3.png)
+    ![Details van quotum](media/sql-database-service-tier-hyperscale/request-screen-3.png)
 
     Geef de volgende informatie op in de sjabloon
 
@@ -227,17 +241,15 @@ Dit zijn de huidige beperkingen voor het grootschalige van de service tier.  We 
 | In het deel venster Back-ups beheren voor een logische server worden geen grootschalige-data bases weer gegeven die worden gefilterd van SQL Server  | Grootschalige heeft een afzonderlijke methode voor het beheren van back-ups, en omdat de Bewaar periode voor lange termijn retentie en het tijdstip voor het bewaren van back-ups niet van toepassing zijn/zijn ongeldig. Daarom worden grootschalige-data bases niet weer gegeven in het deel venster back-up beheren. |
 | Terugzetten naar eerder tijdstip | Wanneer een Data Base wordt gemigreerd naar de grootschalige, wordt het herstellen naar een bepaald tijdstip vóór de migratie niet ondersteund.|
 | Herstellen van niet-grootschalige DB naar Hypserscale en vice versa | U kunt een grootschalige-data base niet herstellen in een niet-grootschalige-data base, en u kunt ook een niet-grootschalige-data base herstellen in een grootschalige-data base.|
-| Als een database bestand tijdens de migratie groeit vanwege een actieve werk belasting en de 1 TB per bestands grens overschrijdt, mislukt de migratie | Oplossingen <br> -Als dat mogelijk is, migreert u de data base wanneer er geen update-werk belasting wordt uitgevoerd.<br> -Probeer de migratie opnieuw uit te voeren, omdat de grenzen van 1 TB tijdens de migratie niet worden overschreden.|
+| Als een Data Base een of meer gegevens bestanden heeft die groter zijn dan 1 TB, mislukt de migratie | In sommige gevallen is het mogelijk om dit probleem te omzeilen door de grote bestanden kleiner te maken dan 1 TB. Als u een Data Base migreert die tijdens het migratie proces wordt gebruikt, moet u ervoor zorgen dat er geen bestanden groter zijn dan 1 TB. Gebruik de volgende query om de grootte van database bestanden te bepalen. `SELECT *, name AS file_name, size * 8. / 1024 / 1024 AS file_size_GB FROM sys.database_files WHERE type_desc = 'ROWS'`;|
 | Beheerd exemplaar | Azure SQL Database beheerde instantie wordt momenteel niet ondersteund met grootschalige-data bases. |
 | Elastische pools |  Elastische Pools worden momenteel niet ondersteund met SQL Database grootschalige.|
-| Migratie naar grootschalige is momenteel een eenrichtings bewerking | Wanneer een Data Base wordt gemigreerd naar grootschalige, kan deze niet rechtstreeks naar een andere servicelaag worden gemigreerd. De enige manier om een Data Base van grootschalige naar niet-grootschalige te migreren, is door een BACPAC-bestand te exporteren/importeren.|
+| Migratie naar grootschalige is momenteel een eenrichtings bewerking | Wanneer een Data Base wordt gemigreerd naar grootschalige, kan deze niet rechtstreeks naar een andere servicelaag worden gemigreerd. Op dit moment is de enige manier om een Data Base te migreren van grootschalige naar een niet-grootschalige, het exporteren/importeren met behulp van een BACPAC-bestand of andere technologieën voor gegevens verplaatsing (Bulk Copy, Azure Data Factory, Azure Databricks, SSIS, enzovoort).|
 | Migratie van data bases met persistente in-Memory objecten | Grootschalige ondersteunt alleen niet-permanente objecten in het geheugen (tabel typen, systeem eigen SPs en functies).  Permanente in-Memory tabellen en andere objecten moeten worden verwijderd en opnieuw worden gemaakt als objecten die geen deel uitmaken van het geheugen voordat een Data Base naar de service tier grootschalige wordt gemigreerd.|
 | Tracering wijzigen | U kunt Wijzigingen bijhouden niet gebruiken met grootschalige-data bases. |
 | Geo-replicatie  | U kunt geo-replicatie voor Azure SQL Database grootschalige nog niet configureren.  U kunt geografische herstel bewerkingen uitvoeren (de data base in een andere geografie herstellen, voor DR-of andere doel einden) |
 | TDE/Azure-integratie | Transparante database versleuteling met behulp van Azure Key Vault (ook wel uw eigen sleutel of BYOK genoemd) wordt nog niet ondersteund voor Azure SQL Database grootschalige, maar TDE met door service beheerde sleutels wordt volledig ondersteund. |
-|Intelligente database functies | 1. Index maken, verhalen index adviserende modellen zijn niet getraind voor grootschalige Db's. <br/>2. Schema probleem, DbParameterization-recent toegevoegde advises worden niet ondersteund voor de grootschalige-data base.|
-
-
+|Intelligente database functies | Met uitzonde ring van de optie ' plan forceren ' worden alle andere opties voor automatisch afstemmen nog niet ondersteund op grootschalige: mogelijk lijkt het alsof de opties zijn ingeschakeld, maar zijn er geen aanbevelingen of acties gedaan. |
 
 ## <a name="next-steps"></a>Volgende stappen
 

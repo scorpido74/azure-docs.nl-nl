@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0bf25ce318415a8aa36bca8d4cd7380e4e8e67ca
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.openlocfilehash: 71e5e13485c4a10664d98363e8e99bfd3b4f4bcf
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70743463"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72035702"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-netdocuments"></a>Zelfstudie: Azure Active Directory SSO-integratie (single sign-on) met netdocumenten
 
@@ -84,7 +84,9 @@ Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
 
     a. In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://vault.netvoyage.com/neWeb2/docCent.aspx?whr=<Repository ID>`
 
-    b. In het tekstvak **Antwoord-URL** typt u een URL met het volgende patroon: `https://vault.netvoyage.com/neWeb2/docCent.aspx?whr=<Repository ID>`
+    b. In het tekstvak **Antwoord-URL** typt u een URL met de volgende notatie: `https://vault.netvoyage.com/neWeb2/docCent.aspx?whr=<Repository ID>`
+    
+    c. In het tekstvak **Id (Entiteits-id)** typt u een URL met de volgende notatie: `http://netdocuments.com/VAULT`
 
     > [!NOTE]
     > Dit zijn geen echte waarden. Deze waarden bijwerken met de werkelijke aanmeldings-URL en antwoord-URL. Opslagplaats-ID is een waarde die begint met **CA-** gevolgd door 8 teken code die is gekoppeld aan de opslag plaats van uw netdocument. U kunt het document voor de [federatieve identiteits ondersteuning van het netdocument](https://support.netdocuments.com/hc/en-us/articles/205220410-Federated-Identity-Login) controleren voor meer informatie. U kunt ook contact opnemen met het [ondersteunings team van Netdocumenten](https://support.netdocuments.com/hc/) om deze waarden op te halen als u problemen hebt met het configureren van de bovenstaande gegevens. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
@@ -109,7 +111,7 @@ In deze sectie maakt u een test gebruiker in de Azure Portal met de naam B. Simo
 1. Selecteer **nieuwe gebruiker** aan de bovenkant van het scherm.
 1. Voer de volgende stappen uit in de eigenschappen van de **gebruiker** :
    1. Voer in het veld **Naam** `B.Simon` in.  
-   1. Voer in het veld **gebruikers naam** het username@companydomain.extensionin. Bijvoorbeeld `B.Simon@contoso.com`.
+   1. Voer in het veld **gebruikers naam** de username@companydomain.extension in. Bijvoorbeeld `B.Simon@contoso.com`.
    1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
    1. Klik op **Create**.
 
@@ -139,15 +141,15 @@ In deze sectie schakelt u B. Simon in om de eenmalige aanmelding van Azure te ge
 
 3. Klik op **gebruikers en groepen toevoegen en verwijderen**.
    
-    ![Opslag plaats](./media/netdocuments-tutorial/ic795047.png "Opslag plaats")
+    ![Opslagplaats](./media/netdocuments-tutorial/ic795047.png "opslagplaats")
 
 4. Klik op **geavanceerde verificatie opties configureren**.
     
-    ![Geavanceerde verificatie opties configureren](./media/netdocuments-tutorial/ic795048.png "Geavanceerde verificatie opties configureren")
+    ![Geavanceerde verificatie opties configureren](./media/netdocuments-tutorial/ic795048.png "geavanceerde verificatie opties configureren")
 
 5. Voer de volgende stappen uit in het dialoog venster **federatieve identiteit** :
    
-    ![Federatieve identiteit](./media/netdocuments-tutorial/ic795049.png "Federatieve identiteit")
+    ![Federatieve identiteit](./media/netdocuments-tutorial/ic795049.png "federatieve identiteit")
    
     a. Selecteer **Active Directory Federation Services**als **federatief identiteits server type**.
    
@@ -170,11 +172,11 @@ In het geval van netdocumenten is inrichting een hand matige taak.
 
 3. Klik op **gebruikers en groepen toevoegen en verwijderen**.
    
-    ![Opslag plaats](./media/netdocuments-tutorial/ic795047.png "Opslag plaats")
+    ![Opslagplaats](./media/netdocuments-tutorial/ic795047.png "opslagplaats")
 
 4. Typ in het tekstvak **e-mail adres** het e-mail adres van een geldig Azure Active Directory account dat u wilt inrichten en klik vervolgens op **gebruiker toevoegen**.
    
-    ![E-mail adres](./media/netdocuments-tutorial/ic795053.png "E-mail adres")
+    E-(./media/netdocuments-tutorial/ic795053.png "mail adres e") ![-]mail adres
    
     >[!NOTE]
     >De houder van het Azure Active Directory-account krijgt een e-mail bericht met een koppeling om het account te bevestigen voordat het actief wordt. U kunt andere netdocumenten gebruiken hulpprogram ma's voor het maken van gebruikers accounts of Api's die worden geleverd door netdocumenten om Azure Active Directory gebruikers accounts in te richten.

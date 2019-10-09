@@ -1,40 +1,40 @@
 ---
-title: Azure Data Factory toewijzing gegevens Flow bestaat transformatie
-description: Hoe om te controleren op bestaande rijen met behulp van data factory-toewijzingsgegevens stromen met een transformatie Exists
+title: Er is een trans formatie Azure Data Factory toewijzings gegevens stroom
+description: Controleren op bestaande rijen met data factory toewijzing van gegevens stromen met exists-trans formatie
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: b98b7afb21f2f50d44ba93ed793b6efb20f75164
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8b488a079b2da1bcf0dd064025ed251a1dc25213
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65235981"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72029385"
 ---
-# <a name="mapping-data-flow-exists-transformation"></a>Transformatie bestaat toewijzing van de gegevensstroom
+# <a name="mapping-data-flow-exists-transformation"></a>Er is een trans formatie voor de toewijzing van gegevens stroom
 
-[!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
-De transformatie Exists is een rij transformatie die service is gestopt of rijen in uw gegevens door kunnen stromen kunt filteren. De bestaat transformatie is vergelijkbaar met ```SQL WHERE EXISTS``` en ```SQL WHERE NOT EXISTS```. Na de transformatie bestaat de resulterende rijen uit de gegevensstroom ofwel bevat alle rijen waarin kolomwaarden van bron 1 aanwezig zijn in de bron 2 of bestaan niet in de bron 2.
 
-![Instellingen bestaat](media/data-flow/exists.png "1 bestaat")
+De exists-trans formatie is een filter transformatie voor rijen waarmee rijen in uw gegevens kunnen worden getransporteerd. De exists-trans formatie is vergelijkbaar met ```SQL WHERE EXISTS``` en ```SQL WHERE NOT EXISTS```. Na de exists-trans formatie bevat de resulterende rijen uit de gegevens stroom alle rijen waarin kolom waarden uit bron 1 bestaan in bron 2 of die niet voor komen in bron 2.
 
-Kies de tweede bron voor uw Exists zodat gegevensstroom, kunt u de waarden van Stream 1 op basis van Stream 2 vergelijken.
+![Bestaande instellingen](media/data-flow/exists.png "bestaat 1")
 
-Selecteer de kolom van bron 1 en 2 van de bron waarvan u wilt controleren op bestaat of bestaan niet op basis van de waarden.
+Kies de tweede bron voor uw bestaande, zodat de gegevens stroom waarden van stream 1 kan vergelijken met Stream 2.
 
-## <a name="multiple-exists-conditions"></a>Meerdere bestaat voorwaarden
+Selecteer de kolom van bron 1 en van bron 2 waarvan u de waarden wilt controleren voor bestaat of niet bestaat.
 
-Naast elke rij in uw voorwaarden kolom voor Exists, vindt u een + aanmelding beschikbaar wanneer u de muisaanwijzer op rij bereikt. Hierdoor kunt u meerdere rijen voor Exists voorwaarden toevoegen. Elke extra voorwaarde is een 'En'.
+## <a name="multiple-exists-conditions"></a>Meerdere voor waarden voor bestaan
+
+Naast elke rij in de kolom voorwaarden voor bestaat, wordt er een plus teken weer beschikbaar wanneer u de muis aanwijzer boven de bereiken bereikt. Hiermee kunt u meerdere rijen toevoegen voor voor waarden. Elke aanvullende voor waarde is een ' en '.
 
 ## <a name="custom-expression"></a>Aangepaste expressie
 
-![Aangepaste instellingen bestaat](media/data-flow/exists1.png "aangepaste bestaat")
+![Bestaande aangepaste instellingen](media/data-flow/exists1.png "bestaan") en zijn aangepast
 
-U kunt klikken op 'Aangepaste expressie' als u wilt maken in plaats daarvan een vrije-expressie als uw bestaat of voorwaarde niet bestaat. Dit selectievakje kunt u op type in uw eigen expressie als een voorwaarde.
+U kunt op ' aangepaste expressie ' klikken om in plaats daarvan een vrije-vorm expressie te maken met de voor waarde al of niet aanwezig. Als u dit selectie vakje inschakelt, kunt u uw eigen expressie als voor waarde invoeren.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Vergelijkbare transformaties zijn [Lookup](data-flow-lookup.md) en [Join](data-flow-join.md).
+Vergelijk bare trans formaties zijn [Opzoeken](data-flow-lookup.md) en [samen voegen](data-flow-join.md).

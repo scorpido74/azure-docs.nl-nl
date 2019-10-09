@@ -16,12 +16,12 @@ ms.date: 05/21/2019
 ms.author: miparker
 ms.reviewer: jowargo
 ms.lastreviewed: 05/21/2019
-ms.openlocfilehash: b830538f81d1696c34db3e4f66a07346c17bcdcc
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 8dae5bcc082ba5dd0953e3e97f609e4031547a35
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71211954"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72030652"
 ---
 # <a name="tutorial-push-notifications-to-swift-ios-apps-that-use-the-notification-hubs-rest-api"></a>Zelfstudie: Push meldingen naar SWIFT iOS-apps die gebruikmaken van de Notification Hubs REST API
 
@@ -75,7 +75,7 @@ In deze sectie maakt u de iOS-app die verbinding maakt met de notification hub.
 
 1. Bij het instellen van de opties voor het nieuwe project:
 
-   1. Geef de **product naam** (PushDemo) en de **organisatie-id** (`com.<organization>`) op die u hebt gebruikt bij het instellen van de **bundel-id** in de Apple Developer-portal.
+   1. Geef de **product naam** (PushDemo) en de **organisatie-id** (`com.<organization>`) op die u hebt gebruikt bij het instellen van de bundel- **id** in de Apple Developer-portal.
 
    1. Kies het **team** waarvoor de **App-ID** is ingesteld.
 
@@ -100,7 +100,7 @@ In deze sectie maakt u de iOS-app die verbinding maakt met de notification hub.
 
    ![Samen vatting van Notification Hubs Essentials](./media/notification-hubs-ios-push-notifications-swift-apps-get-started/hub-essentials.png)
 
-   U kunt ook de waarden voor **notificationHubKeyName** en **notificationHubKey** vinden door te navigeren naar **toegangs beleid** en het betreffende **toegangs beleid**te selecteren, `DefaultFullSharedAccessSignature`zoals. Daarna kopieert u vanuit de **primaire verbindings reeks** de waarde die is voorafgegaan door `SharedAccessKeyName=` voor `notificationHubKeyName` en de waarde die wordt voorafgegaan `SharedAccessKey=` door voor `notificationHubKey`de.
+   U kunt ook de waarden voor **notificationHubKeyName** en **notificationHubKey** vinden door te navigeren naar **toegangs beleid** en het betreffende **toegangs beleid**, zoals `DefaultFullSharedAccessSignature`, te selecteren. Daarna kopieert u vanuit de **primaire verbindings reeks** de waarde die is voorafgegaan door `SharedAccessKeyName=` voor `notificationHubKeyName` en de waarde die wordt voorafgegaan door `SharedAccessKey=` voor de `notificationHubKey`.
 
    De connection string moet de volgende indeling hebben:
 
@@ -108,15 +108,15 @@ In deze sectie maakt u de iOS-app die verbinding maakt met de notification hub.
    Endpoint=sb://<namespace>.servicebus.windows.net/;SharedAccessKeyName=<notificationHubKeyName>;SharedAccessKey=<notificationHubKey>
    ```
 
-   Om het eenvoudig te laten, `DefaultFullSharedAccessSignature` geeft u op dat u het token kunt gebruiken om meldingen te verzenden. In de praktijk `DefaultListenSharedAccessSignature` is het een betere keuze voor situaties waarin u alleen meldingen wilt ontvangen.
+   Geef `DefaultFullSharedAccessSignature` op, zodat u het token kunt gebruiken om meldingen te verzenden. In de praktijk is het `DefaultListenSharedAccessSignature` een betere keuze voor situaties waarin u alleen meldingen wilt ontvangen.
 
 1. Selecteer onder **project Navigator**de naam van het **project** en selecteer vervolgens het tabblad **Algemeen** .
 
-1. Zoek **identiteit** en stel de **bundel-id** -waarde zo in dat deze `com.<organization>.PushDemo`overeenkomt met de waarde die wordt gebruikt voor de **App-ID** uit een vorige stap.
+1. Zoek **identiteit** en stel de **bundel-id** -waarde zo in dat deze overeenkomt met `com.<organization>.PushDemo`, de waarde die wordt gebruikt voor de **App-ID** uit een vorige stap.
 
 1. Zoek naar **ondertekening**en selecteer vervolgens het juiste **team** voor uw **Apple Developer-account**. De **team** waarde moet overeenkomen met de naam waaronder u uw certificaten en profielen hebt gemaakt.
 
-1. Xcode moet de juiste **inrichtings profiel** waarde automatisch door halen op basis van de **bundel-id**. Als u de nieuwe waarde voor het **inrichtings profiel** niet ziet, vernieuwt u de profielen voor de **identiteit voor ondertekening** door **Xcode** > **Preferences** > **account** > View te selecteren **Details**. Selecteer **identiteit voor ondertekening**en selecteer vervolgens de knop **vernieuwen** in de rechter benedenhoek om de profielen te downloaden.
+1. Xcode moet de juiste **inrichtings profiel** waarde automatisch door halen op basis van de **bundel-id**. Als u de nieuwe waarde voor het **inrichtings profiel** niet ziet, vernieuwt u de profielen voor de **identiteit voor ondertekening** door **Xcode** > -**voor keuren**te selecteren  > **account** > -**weergave Details**. Selecteer **identiteit voor ondertekening**en selecteer vervolgens de knop **vernieuwen** in de rechter benedenhoek om de profielen te downloaden.
 
 1. Selecteer het tabblad **mogelijkheden** en zorg ervoor dat **Push meldingen** zijn ingeschakeld.
 
@@ -285,8 +285,8 @@ SharedAccessSignature sig=<UrlEncodedSignature>&se=<ExpiryEpoch>&skn=<KeyName>&s
 Het proces zelf omvat dezelfde zes belang rijke stappen:  
 
 1. Het berekenen van het verloop in de [UNIX-epoche tijd](https://en.wikipedia.org/wiki/Unix_time) notatie is het aantal seconden dat is verstreken sinds middernacht Coordinated Universal Time, 1 januari 1970.
-1. De **ResourceUrl** van de resource die u probeert te openen, wordt opgemaakt zodat deze een percentage van de code ring en kleine letters bevat. De **ResourceUrl** heeft het formulier `'https://<namespace>.servicebus.windows.net/<hubName>'`.
-1. De **StringToSign**wordt voor bereid, die is `'<UrlEncodedResourceUrl>\n<ExpiryEpoch>'`opgemaakt als.
+1. De **ResourceUrl** van de resource die u probeert te openen, wordt opgemaakt zodat deze een percentage van de code ring en kleine letters bevat. De **ResourceUrl** heeft de notatie `'https://<namespace>.servicebus.windows.net/<hubName>'`.
+1. De **StringToSign**wordt voor bereid, die is opgemaakt als `'<UrlEncodedResourceUrl>\n<ExpiryEpoch>'`.
 1. Computing and base64: code ring van de **hand tekening** met behulp van de HMAC-sha256-hash van de **StringToSign** -waarde. De hash-waarde wordt gebruikt in combi natie met het **sleutel** gedeelte van de **verbindings reeks** voor de respectieve **autorisatie regel**.
 1. De base64-gecodeerde **hand tekening** opmaken zodat het percentage is gecodeerd.
 1. Het token samen stellen in de verwachte indeling met behulp van de waarden **UrlEncodedSignature**, **ExpiryEpoch**, sleutel **naam**en **UrlEncodedResourceUrl** .
@@ -297,7 +297,7 @@ Voor de doel einden van dit snelle voor beeld gaat u de open-source **CommonCryp
 
 De bridging-header toevoegen en configureren:
 
-1.  >  **Selecteer in Xcode het bestand** **Nieuw**bestand metdebestands-**header.** >  >  Noem het header-bestand **BridgingHeader. h**.
+1. Selecteer in Xcode **file** > **New** > **File** > -**header bestand**. Noem het header-bestand **BridgingHeader. h**.
 
 1. Bewerk het bestand om **CommonHMAC. h**te importeren:
 
@@ -313,11 +313,11 @@ De bridging-header toevoegen en configureren:
 
 1. Werk de **opbouw instellingen** van het doel bij om te verwijzen naar de bridging-header:
 
-   1. Open het tabblad **buil ding Settings** en schuif omlaag naar de sectie **Swift compiler** .
+   1. Open het tabblad **buil ding Settings** en schuif omlaag naar de sectie **Swift compiler** .
 
-   1. Zorg ervoor dat de optie voor het installeren van de  **compatibiliteits header-C**is ingesteld op **Ja**.
+   1. Zorg ervoor dat de optie voor het installeren van de **compatibiliteits header-C** is ingesteld op **Ja**.
 
-   1. Geef het bestandspad `'<ProjectName>/BridgingHeader.h'` op in de optie voor het **overbruggen van de objectief-C-header** . Dit is het bestandspad naar onze bridging-header.
+   1. Geef het bestandspad `'<ProjectName>/BridgingHeader.h'` op in de optie voor de **bridging van de objectief-C-header** . Dit is het bestandspad naar onze bridging-header.
 
    Als u deze opties niet kunt vinden, moet u ervoor zorgen dat de weer gave **alle** is geselecteerd in plaats van **basis** of **aangepast**.
 

@@ -1,57 +1,57 @@
 ---
-title: Gegevensstroom van Azure Data Factory toewijzing draaitabel opheffen voor transformatie
-description: Gegevensstroom van Azure Data Factory toewijzing draaitabel opheffen voor transformatie
+title: Trans formatie van gegevens stroom Azure Data Factory koppelen
+description: Trans formatie van gegevens stroom Azure Data Factory koppelen
 author: kromerm
 ms.author: makromer
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: 160ff8bbcb8ce5a4f1f32245cc366281640c5919
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 28fedf96ec178aae0615129421bdae7721a66105
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61348150"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72029942"
 ---
-# <a name="azure-data-factory-unpivot-transformation"></a>Azure Data Factory draaitabel opheffen voor transformatie
+# <a name="azure-data-factory-unpivot-transformation"></a>Trans formatie Azure Data Factory draai tabel
 
-[!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
-Gebruik Unpivot in ADF toewijzing gegevensstroom als een manier om te zetten van een niet-genormaliseerde gegevensset in een meer genormaliseerde versie door het uitbreiden van waarden uit meerdere kolommen in een enkel record naar meerdere records met dezelfde waarden in één kolom.
 
-![Draaitabel opheffen voor transformatie](media/data-flow/unpivot1.png "draaitabel opheffen voor opties van 1")
+Gebruik UNPIVOT in ADF-toewijzings gegevens stroom als een manier om een ongebruikelijke gegevensset in te scha kelen in een meer genormaliseerde versie door waarden uit meerdere kolommen in één record uit te breiden naar meerdere records met dezelfde waarden in één kolom.
 
-## <a name="ungroup-by"></a>Groep opheffen door
+![Draai tabel transformatie]ongedraaid,(media/data-flow/unpivot1.png "opties 1")
 
-![Draaitabel opheffen voor transformatie](media/data-flow/unpivot5.png "draaitabel opheffen voor opties 2")
+## <a name="ungroup-by"></a>Groep opheffen op
 
-Stel eerst de kolommen die u groeperen wilt op voor de aggregatie pivot. Stel een of meer kolommen voor de groepering met het plusteken naast de lijst met kolommen.
+![Draai tabel transformatie]ongedraaid,(media/data-flow/unpivot5.png "opties 2")
 
-## <a name="unpivot-key"></a>Draaitabel opheffen voor sleutel
+Stel eerst de kolommen in waarop u wilt groeperen voor de aggregatie van de draai tabel. Stel een of meer kolommen in voor het opheffen van de groep met het plus teken naast de kolom lijst.
 
-![Draaitabel opheffen voor transformatie](media/data-flow/unpivot6.png "draaitabel opheffen voor opties 3")
+## <a name="unpivot-key"></a>Depivot-sleutel
 
-De Pivot-sleutel is de kolom die ADF uit de rij wordt Schakel over naar de kolom. Elke unieke waarde in de gegevensset voor dit veld wordt standaard Schakel over naar een kolom. U kunt echter (optioneel) de waarden uit de gegevensset die u wilt Schakel over naar kolomwaarden invoeren.
+![Draai tabel transformatie]uitdraaien(media/data-flow/unpivot6.png "opties 3")
 
-## <a name="unpivoted-columns"></a>Draaitabel voor kolommen
+De Pivot-toets is de kolom die ADF van rij naar kolom draait. Standaard wordt elke unieke waarde in de gegevensset voor dit veld naar een kolom gedraaid. U kunt eventueel ook de waarden opgeven uit de gegevensset die u wilt draaien naar kolom waarden.
 
-![Draaitabel opheffen voor transformatie](media/data-flow//unpivot7.png "draaitabel opheffen voor opties 4")
+## <a name="unpivoted-columns"></a>Niet-gedraaide kolommen
 
-Kies ten slotte de aggregatie die u wilt gebruiken voor de gedraaide waarden en weten hoe u de kolommen in de nieuwe projectie van de uitvoer van de transformatie moet worden weergegeven.
+![Draai tabel transformatie](media/data-flow//unpivot7.png "UNPIVOT-opties 4")
 
-(Optioneel) U kunt een specifiek naamgevingspatroon: met een voorvoegsel, midden en achtervoegsel om te worden toegevoegd aan elke nieuwe kolomnaam van de rijwaarden instellen.
+Kies ten slotte de aggregatie die u wilt gebruiken voor de gedraaide waarden en hoe u wilt dat de kolommen worden weer gegeven in de nieuwe uitvoer projectie van de trans formatie.
 
-Bijvoorbeeld, krijgt draaiende 'verkoop' door 'Regio' gewoon u nieuwe kolomwaarden van elke verkoopwaarde. Bijvoorbeeld: "25", "50", "1000", ... Echter, als u een waarde van het aanpassingsvoorvoegsel van 'Verkoop' hebt ingesteld, klikt u vervolgens 'Verkoop' wordt voorafgegaan op de waarden.
+Beschrijving U kunt een naamgevings patroon met een voor voegsel, Midden en achtervoegsel instellen dat moet worden toegevoegd aan elke nieuwe kolom naam uit de rijwaarden.
+
+Bijvoorbeeld: het draaien van ' verkoop ' op ' regio ' zou u alleen nieuwe kolom waarden van elke verkoop waarde geven. Bijvoorbeeld: "25", "50", "1000",... Als u echter de waarde voor voor voegsel van ' verkoop ' instelt, wordt ' omzet ' voorafgegaan door de waarden.
 
 <img src="media/data-flow/unpivot3.png" width="400">
 
-Instellen van de rangschikking van de kolom "Normale" samen worden gegroepeerd alle gedraaide kolommen met hun geaggregeerde waarden. Instellen van de kolommen rangschikking aan 'Laterale' wordt schakelen tussen de kolom en waarde.
+Als u de rang schikking van de kolom instelt op normaal, worden alle gedraaide kolommen gegroepeerd met de geaggregeerde waarden. Als u de rang schikking van de kolommen instelt op ' zijdelings ', wordt er een alternatief voor de kolom en waarde.
 
-![Draaitabel opheffen voor transformatie](media/data-flow//unpivot7.png "draaitabel opheffen voor opties 5")
+![Draai tabel transformatie]ondraaibaar(media/data-flow//unpivot7.png "Opties 5")
 
-De uiteindelijke draaitabel gegevens resultaat set ziet u de kolomtotalen nu draaitabel zijn in afzonderlijke rijwaarden.
+De laatste niet-gedraaide gegevens resultaatset bevat de kolom totalen die nu in afzonderlijke rijwaarden zijn weer gegeven.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Gebruik de [transformatie van draaipunt](data-flow-pivot.md) pivot rijen naar kolommen.
+Gebruik de [draai transformatie](data-flow-pivot.md) om rijen naar kolommen te draaien.

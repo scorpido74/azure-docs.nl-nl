@@ -4,14 +4,14 @@ description: Informatie over het gebruik van het Azure Cosmos DB ODBC-stuurprogr
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/28/2019
+ms.date: 10/02/2019
 ms.author: sngun
-ms.openlocfilehash: b859d01a39f906f518a82d468c3c9267545b9a07
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: e8a982a100655934d4ae3ecd64564cf2da82dbbc
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69616903"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72035598"
 ---
 # <a name="connect-to-azure-cosmos-db-using-bi-analytics-tools-with-the-odbc-driver"></a>Verbinding maken met Azure Cosmos DB met behulp van analysehulpprogramma's voor BI met het ODBC-stuurprogramma
 
@@ -61,16 +61,26 @@ Aan de slag met het ODBC-stuurprogramma.
     - **Beschrijving**: Een korte beschrijving van de gegevens bron.
     - **Host**: De URI voor uw Azure Cosmos DB-account. U kunt dit ophalen via de pagina sleutels voor Azure Cosmos DB in Azure portal, zoals wordt weergegeven in de volgende schermafbeelding. 
     - **Toegangs sleutel**: De primaire of secundaire alleen-lezen of alleen-lezen sleutel van de pagina Azure Cosmos DB sleutels in de Azure Portal, zoals weer gegeven in de volgende scherm afbeelding. Het is raadzaam om dat de alleen-lezen-sleutel te gebruiken als de DSN-naam wordt gebruikt voor de alleen-lezen gegevens verwerken en rapportage.
-    ![Op de pagina Azure Cosmos DB-sleutels](./media/odbc-driver/odbc-driver-keys.png)
+    ![Op de pagina Azure Cosmos DB-sleutels](./media/odbc-driver/odbc-cosmos-account-keys.png)
     - **Toegangs sleutel versleutelen voor**: Selecteer de beste keuze op basis van de gebruikers van deze computer. 
     
 1. Klik op de **Test** knop om te controleren of u kunt verbinding maken met uw Azure Cosmos DB-account. 
 
-1. Klik op **geavanceerde opties** en stel de volgende waarden:
+1.  Klik op **geavanceerde opties** en stel de volgende waarden:
+    *  **Rest API versie**: Selecteer de [rest API versie](https://docs.microsoft.com/rest/api/cosmos-db/) voor uw bewerkingen. De standaard waarde is 2015-12-16. Als u containers met [grote partitie sleutels](large-partition-keys.md) hebt en REST API versie 2018-12-31 hebt vereist:
+        - Typ **2018-12-31** voor rest API versie
+        - Typ ' regedit ' in het menu **Start** om de toepassing **REGI ster-editor** te zoeken en te openen.
+        - Navigeer in de REGI ster-editor naar het pad: **Computer\HKEY_LOCAL_MACHINE\SOFTWARE\ODBC\ODBC. Refer**
+        - Maak een nieuwe subsleutel met dezelfde naam als uw DSN, bijvoorbeeld "Contoso-account ODBC-DSN".
+        - Navigeer naar de subsleutel ' contoso account ODBC DSN '.
+        - Klik met de rechter muisknop om een nieuwe **teken reeks** waarde toe te voegen:
+            - Waardenaam: **IgnoreSessionToken**
+            - Waardegegevens: **1**
+             @ No__t-2Registry-editor-instellingen @ no__t-3
     - **Consistentie van query's**: Selecteer het [consistentie niveau](consistency-levels.md) voor uw bewerkingen. De standaardwaarde is de sessie.
     - **Aantal nieuwe pogingen**: Voer het aantal keren in dat een bewerking opnieuw moet worden uitgevoerd als de eerste aanvraag niet is voltooid wegens een service limiet.
     - **Schema bestand**: U hebt hier een aantal opties.
-        - Standaard, waardoor deze vermelding is (lege), scant het stuurprogramma voor de eerste pagina van de gegevens voor alle verzamelingen om te bepalen van het schema van elke verzameling. Dit staat bekend als de toewijzing van de verzameling. Zonder een schemabestand dat is gedefinieerd, wordt het stuurprogramma is voor het uitvoeren van de scan voor elke sessie stuurprogramma en kan leiden tot een hogere opstarttijd van een toepassing met behulp van de DSN. Het is raadzaam dat u altijd een schemabestand voor een DSN koppelen.
+        - Standaard wordt de eerste pagina met gegevens voor alle containers door het stuur programma gecontroleerd om het schema van elke container te bepalen. Dit staat bekend als container toewijzing. Zonder een schemabestand dat is gedefinieerd, wordt het stuurprogramma is voor het uitvoeren van de scan voor elke sessie stuurprogramma en kan leiden tot een hogere opstarttijd van een toepassing met behulp van de DSN. Het is raadzaam dat u altijd een schemabestand voor een DSN koppelen.
         - Als u al een schema bestand hebt (mogelijk een dat u hebt gemaakt met de schema-editor), klikt u op **Bladeren**, navigeert u naar het bestand, klikt u op **Opslaan**en klikt u vervolgens op **OK**.
         - Als u een nieuw schema maken wilt, klikt u op **OK**, en klik vervolgens op **Schema-Editor** in het hoofdvenster. Ga vervolgens verder met de informatie over de schema-editor. Nadat het nieuwe schemabestand is gemaakt, moet u gaat u terug naar de **geavanceerde opties** venster om op te nemen van de zojuist gemaakte schemabestand.
 
@@ -78,17 +88,17 @@ Aan de slag met het ODBC-stuurprogramma.
 
     ![Nieuwe Azure Cosmos DB ODBC DSN op het tabblad gebruikers-DSN](./media/odbc-driver/odbc-driver-user-dsn.png)
 
-## <a id="#collection-mapping"></a>Stap 3: Een schema definitie maken met de methode verzamelings toewijzing
+## <a id="#container-mapping"></a>Stap 3: Een schema definitie maken met behulp van de container toewijzings methode
 
-Er zijn twee soorten steekproeven methoden die u kunt gebruiken: **verzameling toewijzing** of **tabel scheidingstekens**. Beide methoden steekproeven kan gebruikmaken van de sessie van een steekproef nemen, maar elke verzameling kunt alleen een specifieke methode gebruiken. De onderstaande stappen Maak een schema voor de gegevens in een of meer verzamelingen met behulp van de methode voor gebruikersstatusverzameling toewijzing. Deze methode worden de gegevens op de pagina van een verzameling om te bepalen de structuur van de gegevens opgehaald. Een verzameling naar een tabel aan de ODBC-transponeren Deze methode is efficiënt en snel wanneer de gegevens in een verzameling homogene. Als een verzameling heterogene soorten gegevens bevat, raden wij aan u de [tabel scheidingstekens toewijzingsmethode](#table-mapping) als het biedt een krachtiger methode om te bepalen van de gegevensstructuren in de verzameling. 
+Er zijn twee soorten bemonsterings methoden die u kunt gebruiken: **container toewijzing** of **tabel scheidings tekens**. Een steekproef sessie kan gebruikmaken van beide steekproef methoden, maar elke container kan alleen een specifieke steekproef methode gebruiken. Met de volgende stappen maakt u een schema voor de gegevens in een of meer containers met behulp van de container toewijzings methode. Met deze steekproef methode worden de gegevens in de pagina van een container opgehaald om de structuur van de gegevens te bepalen. Er wordt een container naar een tabel op de ODBC-zijde getransponeren. Deze steekproef methode is efficiënt en snel wanneer de gegevens in een container homo geen zijn. Als een container heterogene type gegevens bevat, kunt u het beste de [toewijzings methode voor tabel scheidingen](#table-mapping) gebruiken, aangezien deze een krachtigere bemonsterings methode biedt om de gegevens structuren in de container te bepalen. 
 
 1. Klik na het volt ooien van de stappen 1-4 in [verbinding maken met uw Azure Cosmos-data base](#connect)op **schema-editor** in het venster **Azure Cosmos db odbc-stuur programma-DSN instellen** .
 
     ![Knop voor schema-editor in het venster Azure Cosmos DB ODBC-stuurprogramma DSN instellingen](./media/odbc-driver/odbc-driver-schema-editor.png)
 1. In de **Schema-Editor** venster, klikt u op **nieuw**.
-    De **Schema genereren** venster geeft alle verzamelingen in het Azure Cosmos DB-account. 
+    In het venster **schema genereren** worden alle containers in het Azure Cosmos DB-account weer gegeven. 
 
-1. Selecteer een of meer verzamelingen voorbeeld, en klik vervolgens op **voorbeeld**. 
+1. Selecteer een of meer containers om voor beelden te selecteren en klik vervolgens op voor **beeld**. 
 
 1. In de **ontwerpweergave** tabblad, de database, schema en tabel worden weergegeven. De scan weergegeven in de tabelweergave de set eigenschappen die zijn gekoppeld aan de namen van de kolommen (SQL-naam, naam van de gegevensbron, enzovoort).
     Voor elke kolom, kunt u de naam van de kolom SQL, de SQL-type, de SQL-lengte (indien van toepassing), schalen (indien van toepassing), de precisie (indien van toepassing) en de null-waarden bevatten.
@@ -101,16 +111,16 @@ Er zijn twee soorten steekproeven methoden die u kunt gebruiken: **verzameling t
 
 ## <a id="table-mapping"></a>Stap 4: Een schema definitie maken met behulp van de toewijzings methode voor tabel scheidingen
 
-Er zijn twee soorten steekproeven methoden die u kunt gebruiken: **verzameling toewijzing** of **tabel scheidingstekens**. Beide methoden steekproeven kan gebruikmaken van de sessie van een steekproef nemen, maar elke verzameling kunt alleen een specifieke methode gebruiken. 
+Er zijn twee soorten bemonsterings methoden die u kunt gebruiken: **container toewijzing** of **tabel scheidings tekens**. Een steekproef sessie kan gebruikmaken van beide steekproef methoden, maar elke container kan alleen een specifieke steekproef methode gebruiken. 
 
-De volgende stappen maakt u een schema voor de gegevens in een of meer verzamelingen met behulp van de **tabel scheidingstekens** toewijzingsmethode. U wordt aangeraden dat u deze methode gebruiken wanneer uw verzamelingen heterogene van het type van de gegevens bevatten. U kunt deze methode om het bereik van de meting naar een set met kenmerken en de bijbehorende waarden te gebruiken. Als een document bevat een eigenschap 'Type', kunt u bijvoorbeeld de steekproeven om de waarden van deze eigenschap te beperken. Het eindresultaat van de steekproeven is een set met tabellen voor elk van de waarden voor het Type dat u hebt opgegeven. Typ bijvoorbeeld = auto produceert een auto-tabel bij het Type = vlak geeft als resultaat een tabel van de gegevenslaag.
+Met de volgende stappen maakt u een schema voor de gegevens in een of meer containers met behulp van de toewijzings methode voor **tabel scheidingen** . U wordt aangeraden deze steekproef methode te gebruiken wanneer uw containers heterogene gegevens typen bevatten. U kunt deze methode om het bereik van de meting naar een set met kenmerken en de bijbehorende waarden te gebruiken. Als een document bevat een eigenschap 'Type', kunt u bijvoorbeeld de steekproeven om de waarden van deze eigenschap te beperken. Het eindresultaat van de steekproeven is een set met tabellen voor elk van de waarden voor het Type dat u hebt opgegeven. Typ bijvoorbeeld = auto produceert een auto-tabel bij het Type = vlak geeft als resultaat een tabel van de gegevenslaag.
 
 1. Klik na het volt ooien van de stappen 1-4 in [verbinding maken met uw Azure Cosmos-data base](#connect)op **schema-editor** in het venster Azure Cosmos DB ODBC-stuur programma-DSN instellen.
 
 1. In de **Schema-Editor** venster, klikt u op **nieuw**.
-    De **Schema genereren** venster geeft alle verzamelingen in het Azure Cosmos DB-account. 
+    In het venster **schema genereren** worden alle containers in het Azure Cosmos DB-account weer gegeven. 
 
-1. Selecteer een verzameling op de **voorbeeldweergave** tabblad, in de **Mapping Definition** kolom voor de verzameling, klikt u op **bewerken**. Klik in de **Mapping Definition** venster **tabel scheidingstekens** methode. Ga daarna als volgt te werk:
+1. Selecteer een container op het tabblad **voor beeld weergave** in de kolom **toewijzings definitie** voor de container en klik op **bewerken**. Klik in de **Mapping Definition** venster **tabel scheidingstekens** methode. Ga daarna als volgt te werk:
 
     a. In de **kenmerken** typt u de naam van de eigenschap van een scheidingsteken. Dit is een eigenschap in het document dat u wilt het bereik van de steekproeven naar, bijvoorbeeld, plaats en druk op enter. 
 
@@ -120,7 +130,7 @@ De volgende stappen maakt u een schema voor de gegevens in een of meer verzameli
 
 1. Klik op **OK**. 
 
-1. Na het voltooien van de toewijzing van definities voor de verzamelingen die u wilt dat er een steekproef van de **Schema-Editor** venster, klikt u op **voorbeeld**.
+1. Klik na het volt ooien van de toewijzings definities voor de containers die u wilt bemonsteren in het venster **schema-editor** op voor **beeld**.
      Voor elke kolom, kunt u de naam van de kolom SQL, de SQL-type, de SQL-lengte (indien van toepassing), schalen (indien van toepassing), de precisie (indien van toepassing) en de null-waarden bevatten.
     - U kunt instellen **kolom verbergen** naar **waar** als u wilt uitsluiten van die kolom van de resultaten van query. Kolommen gemarkeerd kolom verbergen = true niet worden geretourneerd voor de selectie en projectie, hoewel ze nog steeds deel van het schema uitmaken. Bijvoorbeeld, kunt u alle Azure Cosmos DB voor het systeem vereist eigenschappen die zijn gestart met verbergen `_`.
     - De **id** kolom is het enige veld dat als deze wordt gebruikt als de primaire sleutel in het genormaliseerde schema kan niet worden verborgen. 
@@ -156,7 +166,7 @@ Als u wilt zien van de nieuwe naam voor de gekoppelde server, de gekoppelde Serv
 
 ### <a name="query-linked-database"></a>Gekoppelde query uitvoeren op database
 
-Als u wilt zoeken in de gekoppelde database, moet u een SSMS-query opgeven. In dit voorbeeld wordt de query wordt geselecteerd uit de tabel in de verzameling met de naam `customers`:
+Als u wilt zoeken in de gekoppelde database, moet u een SSMS-query opgeven. In dit voor beeld wordt de query geselecteerd uit de tabel in de container met de naam `customers`:
 
 ```sql
 SELECT * FROM OPENQUERY(DEMOCOSMOS, 'SELECT *  FROM [customers].[customers]')
@@ -184,7 +194,7 @@ Invalid use of schema or catalog for OLE DB provider "MSDASQL" for linked server
 ## <a name="optional-creating-views"></a>(Optioneel) Het maken van weergaven
 U kunt definiëren en weergaven maken als onderdeel van het proces steekproeven. Deze weergaven zijn gelijk aan de SQL-weergaven. Ze zijn alleen-lezen en bereik zijn de selecties en projecties van de Azure Cosmos DB SQL-query die is gedefinieerd. 
 
-Een weergave maakt voor uw gegevens de **Schema-Editor** venster in de **weergavedefinities** kolom, klikt u op **toevoegen** op de rij van de verzameling met voorbeeld. 
+Als u een weer gave voor uw gegevens wilt maken, klikt u in het venster **schema-editor** in de kolom **weergave definities** op **toevoegen** op de rij van de container om een voor beeld te geven. 
     ![Een weergave van gegevens maken](./media/odbc-driver/odbc-driver-create-view.png)
 
 

@@ -1,19 +1,19 @@
 ---
 title: Enterprise Security Package met Azure Active Directory in HDInsight
 description: Meer informatie over het instellen en configureren van een HDInsight-Enterprise Security Package cluster met behulp van Azure Active Directory Domain Services.
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
+ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: seodec18
-ms.date: 04/23/2019
-ms.openlocfilehash: aa18c4a078edf579e8d9c4c09df99100dfcea148
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.date: 10/02/2019
+ms.openlocfilehash: 5989aca2b577621c31fe486877ea006cb25d47b5
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70918302"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72030320"
 ---
 # <a name="enterprise-security-package-configurations-with-azure-active-directory-domain-services-in-hdinsight"></a>Enterprise Security Package configuraties met Azure Active Directory Domain Services in HDInsight
 
@@ -70,7 +70,7 @@ Zodra de beheerde identiteit is gemaakt en de juiste rol heeft gekregen, kan de 
 ## <a name="networking-considerations"></a>Aandachtspunten voor netwerken
 
 > [!NOTE]  
-> Azure AD-DS moet worden geïmplementeerd in een op Azure Resource Manager gebaseerd vNET. Klassieke virtuele netwerken worden niet ondersteund voor Azure AD-DS. Raadpleeg [Azure Active Directory Domain Services met de Azure Portal inschakelen](../../active-directory-domain-services/tutorial-create-instance.md#create-and-configure-the-virtual-network) voor meer informatie.
+> Azure AD-DS moet worden geïmplementeerd in een op Azure Resource Manager gebaseerd vNET. Klassieke virtuele netwerken worden niet ondersteund voor Azure AD-DS. Zie [Azure Active Directory Domain Services inschakelen met behulp van de Azure Portal](../../active-directory-domain-services/tutorial-create-instance.md#create-and-configure-the-virtual-network)voor meer informatie.
 
 Nadat u Azure AD-DS hebt ingeschakeld, wordt een lokale Domain Name Service (DNS)-server uitgevoerd op de AD-Virtual Machines (Vm's). Configureer uw Azure AD-DS-Virtual Network (VNET) voor het gebruik van deze aangepaste DNS-servers. Als u de juiste IP-adressen wilt vinden, selecteert u **Eigenschappen** onder de categorie **beheren** en bekijkt u de IP-adressen onder **IP-adres op Virtual Network**.
 
@@ -80,29 +80,29 @@ Wijzig de configuratie van de DNS-servers in azure AD-DS VNET voor gebruik van d
 
 ![De VNET DNS-configuratie bijwerken](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-aadds-vnet-configuration.png)
 
-Het is eenvoudiger om zowel het Azure AD-DS-exemplaar als het HDInsight-cluster in hetzelfde virtuele Azure-netwerk te plaatsen. Als u van plan bent verschillende VNETs te gebruiken, moet u deze virtuele netwerken peeren zodat de domein controller zichtbaar is voor virtuele machines van HDI. Zie peering van [virtuele netwerken](../../virtual-network/virtual-network-peering-overview.md)voor meer informatie. 
+Het is eenvoudiger om zowel het Azure AD-DS-exemplaar als het HDInsight-cluster in hetzelfde virtuele Azure-netwerk te plaatsen. Als u van plan bent verschillende VNETs te gebruiken, moet u deze virtuele netwerken peeren zodat de domein controller zichtbaar is voor virtuele machines van HDI. Zie [peering van virtuele netwerken](../../virtual-network/virtual-network-peering-overview.md)voor meer informatie. 
 
-Nadat de VNETs zijn gekoppeld, configureert u de HDInsight VNET voor het gebruik van een aangepaste DNS-server en voert u de persoonlijke Ip's van Azure AD-DS in als de DNS-server adressen. Wanneer beide VNETs dezelfde DNS-servers gebruiken, wordt uw aangepaste domein naam omgezet in het juiste IP-adres en is deze bereikbaar vanaf HDInsight. Als uw domein naam bijvoorbeeld na deze `contoso.com` stap valt, `ping contoso.com` moet u de juiste oplossing voor Azure AD-DS-IP-adres.
+Nadat de VNETs zijn gekoppeld, configureert u de HDInsight VNET voor het gebruik van een aangepaste DNS-server en voert u de persoonlijke Ip's van Azure AD-DS in als de DNS-server adressen. Wanneer beide VNETs dezelfde DNS-servers gebruiken, wordt uw aangepaste domein naam omgezet in het juiste IP-adres en is deze bereikbaar vanaf HDInsight. Als uw domein naam bijvoorbeeld `contoso.com` is, wordt na deze stap `ping contoso.com` omgezet naar het juiste Azure AD-DS-IP-adres.
 
 ![Aangepaste DNS-servers configureren voor gepeerde VNET](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-aadds-peered-vnet-configuration.png)
 
-Als u regels voor netwerk beveiligings groepen (NSG) in uw HDInsight-subnet gebruikt, moet u de [vereiste ip's](../hdinsight-management-ip-addresses.md) toestaan voor zowel binnenkomend als uitgaand verkeer. 
+Als u regels voor netwerk beveiligings groepen (NSG) in uw HDInsight-subnet gebruikt, moet u de [vereiste ip's](../hdinsight-management-ip-addresses.md) toestaan voor zowel binnenkomend als uitgaand verkeer.
 
 Als **u wilt testen** of uw netwerk correct is ingesteld, voegt u een virtuele Windows-machine toe aan het HDInsight VNET/subnet en pingt u de domein naam (deze moet worden omgezet in een IP-adres) en voert u **Ldp. exe** uit om toegang te krijgen tot het Azure AD-DS-domein. **Voeg deze Windows-VM vervolgens toe aan het domein om te bevestigen** dat alle vereiste RPC-aanroepen tussen de client en de server zijn geslaagd. U kunt **nslookup** ook gebruiken om de netwerk toegang te bevestigen voor uw opslag account of een externe data base die u kunt gebruiken (bijvoorbeeld externe Hive-metastore of zwerver DB).
-Zorg ervoor dat alle [vereiste poorten](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772723(v=ws.10)#communication-to-domain-controllers) in de white list van de Aad-DS-subnetten worden uitgevoerd als Aad-DS wordt beveiligd door een NSG. Als het domein dat lid is van deze Windows-VM is voltooid, kunt u door gaan naar de volgende stap en ESP-clusters maken.
+Zorg ervoor dat alle [vereiste poorten](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772723(v=ws.10)#communication-to-domain-controllers) in de white list van de Aad-DS-subnetten worden uitgevoerd als Aad-DS wordt beveiligd door een NSG. Als het domein dat lid is van deze Windows-VM is voltooid, kunt u door gaan met de volgende stap en ESP-clusters maken.
 
 ## <a name="create-a-hdinsight-cluster-with-esp"></a>Een HDInsight-cluster maken met ESP
 
-Nadat u de vorige stappen op de juiste manier hebt ingesteld, is de volgende stap het maken van het HDInsight-cluster met ESP ingeschakeld. Wanneer u een HDInsight-cluster maakt, kunt u Enterprise Security Package inschakelen op het tabblad **aangepast** . Als u liever een Azure Resource Manager-sjabloon gebruikt voor implementatie, gebruikt u de portal ervaring eenmaal en downloadt u de vooraf ingevulde sjabloon op de laatste pagina samen vatting voor toekomstig gebruik.
+Nadat u de vorige stappen op de juiste manier hebt ingesteld, is de volgende stap het maken van het HDInsight-cluster met ESP ingeschakeld. Wanneer u een HDInsight-cluster maakt, kunt u Enterprise Security Package inschakelen op het tabblad **beveiliging en netwerk** . Als u liever een Azure Resource Manager-sjabloon gebruikt voor implementatie, gebruikt u de portal ervaring eenmaal en downloadt u de vooraf ingevulde sjabloon op de pagina **evalueren en maken** voor toekomstig gebruik.
 
 > [!NOTE]  
 > De eerste zes tekens van de ESP-cluster namen moeten uniek zijn in uw omgeving. Als u bijvoorbeeld meerdere ESP-clusters in verschillende VNETs hebt, kiest u een naam Convension die ervoor zorgt dat de eerste zes tekens op de cluster namen uniek zijn.
 
-![Domein validatie van Azure HDInsight Enter prise-beveiligings pakket](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-create-cluster-esp-domain-validate.png)
+![Domein validatie van Azure HDInsight Enter prise-beveiligings pakket](./media/apache-domain-joined-configure-using-azure-adds/azure-portal-cluster-security-networking-esp.png)
 
-Zodra u ESP hebt ingeschakeld, worden veelvoorkomende onjuiste configuratie-items die betrekking hebben op Azure AD-DS, automatisch gedetecteerd en gevalideerd. Nadat u deze fouten hebt opgelost, kunt u door gaan met de volgende stap: 
+Zodra u ESP hebt ingeschakeld, worden veelvoorkomende onjuiste configuratie-items die betrekking hebben op Azure AD-DS, automatisch gedetecteerd en gevalideerd. Nadat u deze fouten hebt opgelost, kunt u door gaan met de volgende stap:
 
-![Domein validatie van Azure HDInsight Enter prise-beveiligings pakket is mislukt](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-create-cluster-esp-domain-validate-failed.png)
+![Domein validatie van Azure HDInsight Enter prise-beveiligings pakket is mislukt](./media/apache-domain-joined-configure-using-azure-adds/azure-portal-cluster-security-networking-esp-error.png)
 
 Wanneer u een HDInsight-cluster met ESP maakt, moet u de volgende para meters opgeven:
 
@@ -112,13 +112,9 @@ Wanneer u een HDInsight-cluster met ESP maakt, moet u de volgende para meters op
 
 - **URL VAN LDAPS**: Een voorbeeld is `ldaps://contoso.com:636`.
 
-In de volgende scherm afbeelding ziet u een geslaagde configuratie in de Azure Portal:
-
-![Configuratie van Azure HDInsight ESP-Active Directory Domain Services](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-domain-joined-configuration-azure-aads-portal.png).
-
 De beheerde identiteit die u hebt gemaakt, kunt u kiezen in vanuit de door de gebruiker toegewezen vervolg keuzelijst beheerde identiteit bij het maken van een nieuw cluster.
 
-![Beheerde identiteit van Azure HDInsight ESP Active Directory Domain Services](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-identity-managed-identity.png).
+![Beheerde identiteit van Azure HDInsight ESP Active Directory Domain Services](./media/apache-domain-joined-configure-using-azure-adds/azure-portal-cluster-security-networking-identity.png).
 
 ## <a name="next-steps"></a>Volgende stappen
 

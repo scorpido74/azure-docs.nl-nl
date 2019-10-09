@@ -1,32 +1,32 @@
 ---
-title: Azure Data Factory gegevenstransformatie stroom Filter toewijzen
-description: Azure Data Factory gegevenstransformatie stroom Filter toewijzen
+title: Filter transformatie van gegevens stroom Azure Data Factory koppelen
+description: Filter transformatie van gegevens stroom Azure Data Factory koppelen
 author: kromerm
 ms.author: makromer
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/03/2019
-ms.openlocfilehash: e0b41850c149ff7095333cf77b780dec1f03b882
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: dd29753ff14d16081a46eebbc2ea02d94e5985f1
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66234414"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72029357"
 ---
-# <a name="azure-data-factory-filter-transformation"></a>Azure data factory filter transformatie
+# <a name="azure-data-factory-filter-transformation"></a>Filter transformatie van Azure data factory
 
-[!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
-De transformaties Filter biedt rij filteren. Een expressie waarin de filtervoorwaarde maken. Klik in het tekstvak in op het starten van de opbouwfunctie voor expressies. Bouw een filterexpressie om te bepalen welke rijen van de stroom voor de huidige gegevens zijn toegestaan (filter) doorgeven aan de volgende transformatie binnen de opbouwfunctie voor expressies. Denk aan de transformatie Filter als de component WHERE van een SQL-instructie.
 
-## <a name="filter-on-loanstatus-column"></a>Filteren op loan_status kolom:
+De filter transformaties bieden het filteren van rijen. Bouw een expressie die de filter voorwaarde definieert. Klik in het tekstvak om de opbouw functie voor expressies te starten. In de opbouw functie voor expressies bouwt u een filter-expressie op om te bepalen welke rijen van de huidige gegevens stroom moeten worden door gegeven (filter) naar de volgende trans formatie. Denk na over de filter transformatie als de component WHERE van een SQL-instructie.
+
+## <a name="filter-on-loan_status-column"></a>Filteren op kolom loan_status:
 
 ```
 in([‘Default’, ‘Charged Off’, ‘Fully Paid’], loan_status).
 ```
 
-Filteren op de kolom year in de demo films:
+Filter op de kolom Year in de demo movies:
 
 ```
 year > 1980
@@ -34,4 +34,4 @@ year > 1980
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Een kolom filteren, transformeren, probeert de [transformatie selecteren](data-flow-select.md)
+Probeer een filter transformatie voor kolommen, de [optie trans formatie selecteren](data-flow-select.md)

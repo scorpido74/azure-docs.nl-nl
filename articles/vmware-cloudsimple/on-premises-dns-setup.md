@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 929c923fda8c1c2bddd96d0b4d4e4b6ce6d29de9
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 52f86f85ec303d23a78fd942276bfe46d0f12832
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70845303"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72030414"
 ---
 # <a name="configure-dns-for-name-resolution-for-private-cloud-vcenter-access-from-on-premises-workstations"></a>DNS configureren voor naam omzetting voor Private Cloud vCenter-toegang vanaf on-premises werk stations
 
@@ -23,7 +23,7 @@ Om toegang te krijgen tot de vCenter-Server op een CloudSimple Privécloud vanui
 
 1. Meld u aan bij de [CloudSimple-Portal](access-cloudsimple-portal.md).
 
-2. Navigeer naar**persoonlijke Clouds** van **resources** > en selecteer de privécloud waarmee u verbinding wilt maken.
+2. Navigeer naar **Resources** > **persoonlijke Clouds** en selecteer de privécloud waarmee u verbinding wilt maken.
 
 3. Kopieer op de pagina **samen vatting** van de Privécloud onder **basis informatie**het IP-adres van de DNS-server van de privécloud.
 
@@ -65,7 +65,7 @@ zone “cloudsimple.io”
 3. Selecteer de gewenste optie, afhankelijk van uw omgeving en klik op **volgende**.
 
     ![Nieuwe zone](media/DNS03.png)
-4. Selecteer **zone** voor forward lookup en klik op **volgende**.
+4. Selecteer **zone voor forward lookup** en klik op **volgende**.
 
     ![Nieuwe zone](media/DNS01.png)
 5. Voer de zone naam in en klik op **volgende**.

@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/21/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 141d3062f231e198b3587efcdf4ae6e9a1c97ed6
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: d4e497c556bde1be4e498cd85a68282a0e3b2666
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70162668"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72026261"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cisco-webex-meetings"></a>Zelfstudie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met Cisco WebEx-vergaderingen
 
@@ -78,7 +78,7 @@ Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
 
 1. Ga in het [Azure Portal](https://portal.azure.com/)naar de pagina **Cisco WebEx** -toepassings integratie, zoek de sectie **beheren** en selecteer **eenmalige aanmelding**.
 1. Selecteer op de pagina **Eén aanmeldings methode selecteren** de optie **SAML**.
-1. Op de pagina **eenmalige aanmelding met SAML instellen** kunt u de toepassing in de gestarte modus **IDP** configureren door het **META gegevensbestand van de service provider** als volgt te uploaden:
+1. Op de pagina **eenmalige aanmelding met SAML instellen** kunt u de toepassing in de gestarte modus **IDP** configureren door het meta gegevensbestand van de **service provider** als volgt te uploaden:
 
     a. Klik op **metagegevensbestand uploaden**.
 
@@ -95,9 +95,9 @@ Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
 
    ![Standaard SAML-configuratie bewerken](common/edit-urls.png)
     
-    b. Typ in het tekstvak **aanmeldings-URL** de URL met het volgende patroon:` https://<customername>.my.webex.com`
+    b. Typ in het tekstvak **aanmeldings-URL** de URL met het volgende patroon: ` https://<customername>.my.webex.com`
 
-5. Cisco Web-vergaderingen verwacht de SAML-beweringen in een specifieke indeling, waarvoor u aangepaste kenmerk toewijzingen moet toevoegen aan de configuratie van uw SAML-token kenmerken. In de volgende schermafbeelding wordt de lijst met standaardkenmerken weergegeven. Klik op het pictogram **Bewerken** om het dialoogvenster Gebruikerskenmerken te openen.
+5. Cisco Web-vergaderingen verwacht de SAML-beweringen in een specifieke indeling, waarvoor u aangepaste kenmerk toewijzingen moet toevoegen aan de configuratie van uw SAML-token kenmerken. In de volgende schermafbeelding wordt de lijst met standaardkenmerken weergegeven. Klik op pictogram **bewerken** om het dialoog venster gebruikers kenmerken te openen.
 
     ![image](common/edit-attribute.png)
 
@@ -138,7 +138,7 @@ In deze sectie maakt u een test gebruiker in de Azure Portal met de naam B. Simo
 1. Selecteer **nieuwe gebruiker** aan de bovenkant van het scherm.
 1. Voer de volgende stappen uit in de eigenschappen van de **gebruiker** :
     1. Voer in het veld **Naam** `B.Simon` in.  
-    1. Voer in het veld **gebruikers naam** het username@companydomain.extensionin. Bijvoorbeeld `B.Simon@contoso.com`.
+    1. Voer in het veld **gebruikers naam** de username@companydomain.extension in. Bijvoorbeeld `B.Simon@contoso.com`.
     1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
     1. Klik op **Create**.
 
@@ -162,7 +162,7 @@ In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebru
 
 ## <a name="configure-cisco-webex-meetings-sso"></a>SSO van Cisco Web-vergaderingen configureren
 
-1. Ga naar de URL met uw beheerders referenties. `https://<customername>.webex.com/admin`
+1. Ga naar de URL voor `https://<customername>.webex.com/admin` met uw beheerders referenties.
 
 2. Ga naar **algemene site-instellingen** en navigeer naar **SSO-configuratie**.
  
@@ -178,7 +178,7 @@ In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebru
 
     c. Klik op de knop **exporteren** om het meta gegevensbestand van de service provider te downloaden en te uploaden in het gedeelte **basis configuratie van SAML** op Azure Portal.
 
-    d. Typ`urn:oasis:names:tc:SAML:2.0:ac:classes:unspecified` in het tekstvak **AuthContextClassRef** en als u de MFA wilt inschakelen met behulp van Azure AD, typt u de twee waarden zoals`urn:oasis:names:tc:SAML:2.0:ac:classes:PasswordProtectedTransport;urn:oasis:names:tc:SAML:2.0:ac:classes:X509`
+    d. Typ `urn:oasis:names:tc:SAML:2.0:ac:classes:unspecified` in het tekstvak **AuthContextClassRef** en als u de MFA wilt inschakelen met behulp van Azure AD, typt u de twee waarden, zoals `urn:oasis:names:tc:SAML:2.0:ac:classes:PasswordProtectedTransport;urn:oasis:names:tc:SAML:2.0:ac:classes:X509`
 
     e. Selecteer **automatisch accounts maken**.
 

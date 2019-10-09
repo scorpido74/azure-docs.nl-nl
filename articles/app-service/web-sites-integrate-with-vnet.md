@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 08/21/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: d4b7733ce3ac6db4c39f632401661eefce11d20c
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: a6d0cba41e694e154da32a878cb4c076aae13e65
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827584"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72034721"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>Uw app integreren met een Azure-Virtual Network
 In dit document wordt de Azure App Service functie voor de integratie van virtuele netwerken beschreven en wordt uitgelegd hoe u deze kunt instellen met apps in de [Azure app service](https://go.microsoft.com/fwlink/?LinkId=529714). Met [Azure Virtual Networks][VNETOverview] (VNets) kunt u veel van uw Azure-resources in een niet-Internet routeerbaar netwerk plaatsen.  
@@ -64,6 +64,10 @@ Er zijn enkele zaken die VNet-integratie niet ondersteunt, waaronder:
 
 ## <a name="regional-vnet-integration"></a>Regionale VNet-integratie 
 
+> [!NOTE]
+> Peering is nog niet beschikbaar voor op Linux gebaseerde App Service.
+>
+
 Wanneer VNet-integratie wordt gebruikt in combi natie met VNets in dezelfde regio als uw app, is het gebruik van een overgedragen subnet vereist met ten minste 32 adressen. Het subnet kan niet worden gebruikt voor iets anders. Uitgaande oproepen van uw app worden gemaakt op basis van de adressen in het overgedragen subnet. Wanneer u deze versie van VNet-integratie gebruikt, worden de aanroepen gemaakt op basis van adressen in uw VNet. Door gebruik te maken van adressen in uw VNet kan uw app:
 
 * Aanroepen naar beveiligde services voor service-eind punten
@@ -108,7 +112,7 @@ Voor regionale VNet-integratie moet het integratie-subnet worden gedelegeerd naa
 Selecteer de **verbinding verbreken**om uw app te verbreken vanuit het VNet. Hiermee wordt de web-app opnieuw opgestart. 
 
 
-#### <a name="web-app-for-containers"></a>Web-app voor containers
+#### <a name="web-app-for-containers"></a>Web App for Containers
 
 Als u gebruikmaakt van App Service op Linux met de ingebouwde installatie kopieën, werkt de regionale VNet-integratie functie zonder extra wijzigingen. Als u Web App for Containers gebruikt, moet u uw docker-installatie kopie aanpassen om VNet-integratie te kunnen gebruiken. Gebruik in uw docker-installatie kopie de variabele poort omgeving als de gateway poort van de hoofd webserver, in plaats van een hardcoded poort nummer te gebruiken. De variabele poort omgeving wordt automatisch ingesteld door App Service platform op de opstart tijd van de container. Als u SSH gebruikt, moet de SSH-daemon worden geconfigureerd om te Luis teren naar het poort nummer dat is opgegeven door de omgevings variabele SSH_PORT bij gebruik van regionale VNet-integratie.
 
@@ -129,7 +133,7 @@ De functie ondersteunt slechts één virtuele interface per werk nemer.  Eén vi
 
 Vanwege de aard van de werking van deze technologie wordt het verkeer dat wordt gebruikt met VNet-integratie niet weer gegeven in Network Watcher-of NSG-stroom Logboeken.  
 
-## <a name="gateway-required-vnet-integration"></a>vereiste VNet-integratie voor gateway 
+## <a name="gateway-required-vnet-integration"></a>Vereiste VNet-integratie voor gateway 
 
 De gateway vereist VNet-integratie functie:
 
@@ -240,7 +244,7 @@ Als u de gateway vereist VNet-integratie met peering gebruikt, moet u enkele ext
 1. Ga naar het App Service plan > netwerken > VNet-integratie GEBRUIKERSINTERFACE in de portal.  Selecteer het VNet waarmee uw app verbinding maakt. Voeg onder de sectie route ring het adres bereik toe van het VNet dat is gekoppeld aan het VNet waarmee uw app is verbonden.  
 
 
-## <a name="pricing-details"></a>Prijsgegevens
+## <a name="pricing-details"></a>Prijsdetails
 De regionale VNet-integratie functie heeft geen extra kosten voor gebruik buiten de ASP-prijs categorie kosten.
 
 Er zijn drie kosten verbonden aan het gebruik van de gateway vereiste VNet-integratie functie:

@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: femila
-ms.openlocfilehash: f0a9e90f1208d690c2423196be7f59dce71eb78b
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 9f1580a9a43781996afadde5487adcafec860e26
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70844077"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72029701"
 ---
 # <a name="azure-blockchain-workbench-messaging-integration"></a>Integratie van Azure Block Chain Workbench-berichten
 
@@ -38,7 +38,7 @@ De aanvraag vereist de volgende velden:
 | requestId            | Door client opgegeven GUID                                |
 | firstName            | De voor naam van de gebruiker                              |
 | lastName             | Achternaam van de gebruiker                               |
-| EmailAddress         | E-mail adres van de gebruiker                           |
+| emailAddress         | E-mail adres van de gebruiker                           |
 | externalId           | Azure AD-object-ID van de gebruiker                      |
 | connectionId         | De unieke id voor de Block Chain-verbinding |
 | messageSchemaVersion | Schema versie berichten                            |
@@ -65,7 +65,7 @@ Block Chain Workbench retourneert een antwoord met de volgende velden:
 |-----------------------|-----------------------------------------------------------------------------------------------------------------------------|
 | requestId             | Door client opgegeven GUID |
 | userId                | ID van de gebruiker die is gemaakt |
-| userChainIdentifier   | Het adres van de gebruiker die is gemaakt in het block chain-netwerk. In Ethereum is het adres het adres van de gebruiker **op de keten** . |
+| userChainIdentifier   | Het adres van de gebruiker die is gemaakt in het block chain-netwerk. In Ethereum is het adres het adres van de gebruiker **op de keten** . |
 | connectionId          | De unieke id voor de Block Chain-verbinding|
 | messageSchemaVersion  | Schema versie berichten |
 | messageName           | **CreateUserUpdate** |
@@ -311,7 +311,7 @@ Als de aanvraag is mislukt, vindt u meer informatie over de fout.
 
 ### <a name="input-api-error-codes-and-messages"></a>Invoer-API-fout codes en-berichten
 
-**Fout code 4000: Fout met ongeldige aanvraag**
+**Error code 4000: Fout met ongeldige aanvraag @ no__t-0
 - Ongeldige connectionId
 - CreateUserRequest-deserialisatie is mislukt
 - CreateContractRequest-deserialisatie is mislukt
@@ -323,12 +323,12 @@ Als de aanvraag is mislukt, vindt u meer informatie over de fout.
 - Contract {geïdentificeerd door boekhoud-id} heeft geen functie {naam werk stroom functie}
 - UserChainIdentifier bestaat niet
 
-**Fout code 4090: Conflict fout**
+**Error code 4090: Conflict fout @ no__t-0
 - Gebruiker bestaat al
 - Contract bestaat al
 - De contract actie bestaat al
 
-**Fout code 5000: Interne server fout**
+**Error code 5000: Interne server fout @ no__t-0
 - Uitzonderings berichten
 
 ## <a name="event-notifications"></a>Meldingen van gebeurtenissen
@@ -383,7 +383,7 @@ Bevat informatie over afzonderlijke blokken. De *BlockMessage* bevat een sectie 
 
 | Name | Description |
 |------|-------------|
-| blokkeren | Bevat [blok gegevens](#block-information) |
+| blok keren | Bevat [blok gegevens](#block-information) |
 | transacties | Bevat [informatie over](#transaction-information) de verzamelings transactie voor het blok |
 | connectionId | De unieke id voor de verbinding |
 | messageSchemaVersion | Schema versie berichten |
@@ -563,12 +563,12 @@ Bevat informatie over het aanroepen van een contract functie, zoals de functie n
 | Name | Description |
 |------|-------------|
 | eventName                   | **ContractFunctionInvocation** |
-| oproepende functie                      | [Gegevens van oproepende functie](#caller-information) |
+| aanroeper                      | [Gegevens van oproepende functie](#caller-information) |
 | contractId                  | De unieke id voor het contract in azure Block Chain workbench |
 | contractLedgerIdentifier    | De unieke id voor het contract in het groot boek |
 | functionName                | De naam van de functie |
 | parameters                  | [Parameter informatie](#parameter-information) |
-| Trans actie                 | Trans actie-informatie |
+| trans actie                 | Trans actie-informatie |
 | inTransactionSequenceNumber | Het Volg nummer van de trans actie in het blok |
 | connectionId                | De unieke id voor de verbinding |
 | messageSchemaVersion        | Schema versie berichten |
@@ -579,7 +579,7 @@ Bevat informatie over het aanroepen van een contract functie, zoals de functie n
 
 | Name | Description |
 |------|-------------|
-| Type | Type oproepende functie, zoals een gebruiker of een contract |
+| type | Type oproepende functie, zoals een gebruiker of een contract |
 | id | De unieke id voor de aanroeper in azure Block Chain workbench |
 | ledgerIdentifier | De unieke id voor de oproepende functie in het groot boek |
 
@@ -644,9 +644,9 @@ Bevat informatie over het uploaden van een toepassing naar Workbench, zoals de n
 |------|-------------|
 | eventName | **ApplicationIngestion** |
 | applicationId | De unieke id voor de toepassing in azure Block Chain workbench |
-| applicationName | Toepassingsnaam |
-| applicationDisplayName | Weergavenaam van toepassing |
-| applicationVersion | Toepassingsversie |
+| applicationName | De naam van de toepassing |
+| applicationDisplayName | Weergave naam van toepassing |
+| applicationVersion | Toepassings versie |
 | applicationDefinitionLocation | URL waar het configuratie bestand van de toepassing zich bevindt |
 | contractCodes | Verzameling van [contract codes](#contract-code-information) voor de toepassing |
 | applicationRoles | Verzameling [toepassings rollen](#application-role-information) voor de toepassing |
@@ -678,7 +678,7 @@ Bevat informatie over het uploaden van een toepassing naar Workbench, zoals de n
 | id | Unieke id voor de toepassings werk stroom in azure Block Chain workbench |
 | name | Naam van toepassings werk stroom |
 | displayName | Weergave naam van de toepassings werk stroom |
-| functies | Verzameling [functies voor de werk stroom van de toepassing](#workflow-function-information)|
+| functions | Verzameling [functies voor de werk stroom van de toepassing](#workflow-function-information)|
 | toestand | Verzameling van [statussen voor de werk stroom van de toepassing](#workflow-state-information) |
 | properties | [Informatie over eigenschappen van toepassings werk stroom](#workflow-property-information) |
 
@@ -687,14 +687,14 @@ Bevat informatie over het uploaden van een toepassing naar Workbench, zoals de n
 | Name | Description |
 |------|-------------|
 | id | Unieke id voor de functie van de werk stroom van de toepassing in azure Block Chain workbench |
-| name | Functienaam |
+| name | Functie naam |
 | parameters | Para meters voor de functie |
 
 ##### <a name="workflow-state-information"></a>Status informatie werk stroom
 
 | Name | Description |
 |------|-------------|
-| name | Provincienaam |
+| name | Status naam |
 | displayName | Weergave naam status |
 | style | Status stijl (geslaagd of mislukt) |
 
@@ -704,7 +704,7 @@ Bevat informatie over het uploaden van een toepassing naar Workbench, zoals de n
 |------|-------------|
 | id | Unieke id voor de eigenschap van de toepassings werk stroom in azure Block Chain workbench |
 | name | Naam van eigenschap |
-| Type | Type eigenschap |
+| type | Type eigenschap |
 
 Voor beeld van een *EventMessage-ApplicationIngestion* van Block Chain Workbench:
 
@@ -838,9 +838,9 @@ Bevat informatie wanneer aan een gebruiker een rol is toegewezen in Workbench, z
 |------|-------------|
 | eventName | **RoleAssignment** |
 | applicationId | De unieke id voor de toepassing in azure Block Chain workbench |
-| applicationName | Toepassingsnaam |
-| applicationDisplayName | Weergavenaam van toepassing |
-| applicationVersion | Toepassingsversie |
+| applicationName | De naam van de toepassing |
+| applicationDisplayName | Weergave naam van toepassing |
+| applicationVersion | Toepassings versie |
 | applicationRole        | Informatie [over de toepassingsrol](#roleassignment-application-role) |
 | Toewijzer               | Informatie over de [Toewijzer](#roleassignment-assigner) |
 | toegewezen gebruiker               | Informatie over de [toegewezen persoon](#roleassignment-assignee) |
@@ -861,7 +861,7 @@ Bevat informatie wanneer aan een gebruiker een rol is toegewezen in Workbench, z
 | Name | Description |
 |------|-------------|
 | id | De unieke id van de gebruiker in azure Block Chain workbench |
-| Type | Type van de Toewijzer |
+| type | Type van de Toewijzer |
 | chainIdentifier | De unieke id van de gebruiker in het groot boek |
 
 #### <a name="roleassignment-assignee"></a>Toegewezen RoleAssignment
@@ -869,7 +869,7 @@ Bevat informatie wanneer aan een gebruiker een rol is toegewezen in Workbench, z
 | Name | Description |
 |------|-------------|
 | id | De unieke id van de gebruiker in azure Block Chain workbench |
-| Type | Het type van de toegewezen gebruiker |
+| type | Het type van de toegewezen gebruiker |
 | chainIdentifier | De unieke id van de gebruiker in het groot boek |
 
 Voor beeld van een *EventMessage-RoleAssignment* van Block Chain Workbench:

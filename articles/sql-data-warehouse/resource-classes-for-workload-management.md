@@ -1,150 +1,130 @@
 ---
-title: Resourceklassen voor het beheer van de werkbelasting in Azure SQL Data Warehouse | Microsoft Docs
-description: Richtlijnen voor het gebruik van resource-klassen voor het beheren van gelijktijdigheid van taken en rekenresources voor query's in Azure SQL Data Warehouse.
+title: Resource klassen voor workload Management in Azure SQL Data Warehouse | Microsoft Docs
+description: Richt lijnen voor het gebruik van resource klassen voor het beheren van gelijktijdigheid en reken resources voor query's in Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: ronortloff
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: workload-management
-ms.date: 06/20/2019
+ms.date: 10/04/2019
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.openlocfilehash: 548271e888344eeb0d111c074153ef7492af5b33
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 5ef95faf162a6774e42b7cf258515757fdc9c7eb
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67595542"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72035074"
 ---
-# <a name="workload-management-with-resource-classes-in-azure-sql-data-warehouse"></a>Beheer van de werkbelasting met resourceklassen in Azure SQL Data Warehouse
+# <a name="workload-management-with-resource-classes-in-azure-sql-data-warehouse"></a>Werkbelasting beheer met resource klassen in Azure SQL Data Warehouse
 
-Richtlijnen voor het gebruik van resource-klassen voor het beheren van geheugen en gelijktijdigheid voor query's in uw Azure SQL Data Warehouse.  
+Richt lijnen voor het gebruik van resource klassen voor het beheren van geheugen en gelijktijdigheid van query's in uw Azure SQL Data Warehouse.  
 
-## <a name="what-is-workload-management"></a>Wat is beheer van de werkbelasting
+## <a name="what-are-resource-classes"></a>Wat zijn resource klassen
 
-Beheer van de werkbelasting biedt de mogelijkheid om de algehele prestaties van alle query's optimaliseren. Een goed afgestemd werkbelasting wordt uitgevoerd voor query's en load-bewerkingen efficiënt, ongeacht of deze rekenintensieve of i/o-intensieve. SQL Data Warehouse biedt functionaliteit voor werkbelasting voor omgevingen met meerdere gebruikers. Een datawarehouse is niet bedoeld voor workloads met meerdere tenants.
+De prestatie capaciteit van een query wordt bepaald door de resource klasse van de gebruiker.  Resource klassen zijn vooraf bepaalde resource limieten in Azure SQL Data Warehouse die de reken resources en gelijktijdigheid bepalen voor het uitvoeren van query's. Resource klassen kunnen u helpen bij het beheren van uw werk belasting door limieten in te stellen voor het aantal query's dat gelijktijdig wordt uitgevoerd en op de reken resources die zijn toegewezen aan elke query.  Er is sprake van een afweging tussen geheugen en gelijktijdigheid.
 
-De capaciteit van de prestaties van een datawarehouse wordt bepaald door de [datawarehouse-eenheden](what-is-a-data-warehouse-unit-dwu-cdwu.md).
+- Kleinere resource klassen verminderen het maximale geheugen per query, maar verhogen gelijktijdigheid.
+- Grotere bron klassen verhogen het maximale geheugen per query, maar verminderen gelijktijdig.
 
-- De limieten voor geheugen en gelijktijdigheid voor alle profielen van de prestaties, Zie [limieten voor geheugen en gelijktijdigheid](memory-and-concurrency-limits.md).
-- Als u wilt aanpassen prestaties capaciteit, kunt u [omhoog of omlaag schalen](quickstart-scale-compute-portal.md).
+Er zijn twee typen resource klassen:
 
-De capaciteit van de prestaties van een query wordt bepaald door de resourceklasse van de query. De rest van dit artikel wordt uitgelegd wat de resource-klassen zijn en hoe u deze kunt aanpassen.
+- Statische bronnen klassen, die goed zijn afgestemd op de gelijktijdige gelijktijdigheid van een gegevensverzamelings grootte die is opgelost.
+- Dynamische bron klassen, die goed zijn afgestemd op gegevens sets die groter worden en die de prestaties van het service niveau verhogen.
 
-## <a name="what-are-resource-classes"></a>Wat zijn resourceklassen
+Resource klassen gebruiken gelijktijdigheids sleuven om het Resource verbruik te meten.  [Gelijktijdigheids sleuven](#concurrency-slots) worden verderop in dit artikel beschreven.
 
-De capaciteit van de prestaties van een query wordt bepaald door de resourceklasse van de gebruiker.  Resourceklassen worden vooraf bepaald resourcebeperkingen in Azure SQL Data Warehouse voor rekenresources en gelijktijdigheid van taken voor het uitvoeren van query's. Resourceklassen kunt u uw workload beheren door limieten instellen voor het aantal query's die gelijktijdig worden uitgevoerd en op de compute-resources toegewezen aan elke query.  Er is een compromis tussen het geheugen en gelijktijdigheid.
+- Zie [geheugen en gelijktijdigheids limieten](memory-and-concurrency-limits.md#concurrency-maximums)voor het weer geven van het resource gebruik voor de resource klassen.
+- Als u de resource klasse wilt aanpassen, kunt u de query uitvoeren onder een andere gebruiker of [het lidmaatschap van de resource klasse van de huidige gebruiker wijzigen](#change-a-users-resource-class) .
 
-- Kleinere resourceklassen verminderen de maximale hoeveelheid geheugen per query, maar tegelijkertijd verwerken.
-- Grotere resourceklassen Verhoog de maximale hoeveelheid geheugen per query, maar beperkt.
+### <a name="static-resource-classes"></a>Statische resource klassen
 
-Er zijn twee soorten resourceklassen:
+Statische resource klassen wijzen dezelfde hoeveelheid geheugen toe, ongeacht het huidige prestatie niveau, dat wordt gemeten in [Data Warehouse-eenheden](what-is-a-data-warehouse-unit-dwu-cdwu.md). Aangezien query's dezelfde geheugen toewijzing krijgen, ongeacht het prestatie niveau, kunnen er met [het uitschalen van het Data Warehouse](quickstart-scale-compute-portal.md) meer query's worden uitgevoerd binnen een resource klasse.  Statische bron klassen zijn ideaal als het gegevens volume een bekende en constante is.
 
-- Statische resources-klassen die zijn geschikt voor hogere gelijktijdigheid op de grootte van een gegevensset die is opgelost.
-- Dynamische resourceklassen, die geschikt voor gegevenssets die zijn er die groeien in grootte en betere prestaties nodig zijn omdat het serviceniveau omhoog wordt geschaald.
-
-Gelijktijdigheidssleuven resourceklassen gebruiken voor het meten van gebruik van resources.  [Gelijktijdigheidssleuven](#concurrency-slots) verderop in dit artikel worden beschreven.
-
-- Als u het Resourcegebruik voor de resourceklassen, Zie [limieten voor geheugen en gelijktijdigheid](memory-and-concurrency-limits.md#concurrency-maximums).
-- Als u wilt de resourceklasse aanpassen, kunt u de query onder een andere gebruiker uitvoeren of [wijzigen van de huidige gebruiker resourceklasse](#change-a-users-resource-class) lidmaatschap.
-
-### <a name="static-resource-classes"></a>Statische resourceklassen
-
-Statische resourceklassen toewijzen dezelfde hoeveelheid geheugen, ongeacht het huidige prestatieniveau, die worden gemeten in [datawarehouse-eenheden](what-is-a-data-warehouse-unit-dwu-cdwu.md). Omdat de query's krijgen dezelfde toewijzing van het geheugen, ongeacht het prestatieniveau [geschaalde uitbreiding van het datawarehouse](quickstart-scale-compute-portal.md) kunt u meer query's uitgevoerd binnen een resourceklasse.  Statische resourceklassen zijn ideaal als het gegevensvolume bekend is en constante.
-
-De statische resourceklassen worden geïmplementeerd met deze vooraf gedefinieerde databaserollen:
+De statische resource klassen worden geïmplementeerd met de volgende vooraf gedefinieerde database rollen:
 
 - staticrc10
 - staticrc20
 - staticrc30
 - staticrc40
 - staticrc50
-- staticrc60
+- Bron staticrc60
 - staticrc70
 - staticrc80
 
-### <a name="dynamic-resource-classes"></a>Dynamische resourceklassen
+### <a name="dynamic-resource-classes"></a>Dynamische resource klassen
 
-Dynamische Resourceklassen toewijzen een wisselende hoeveelheid geheugen, afhankelijk van het huidige serviceniveau. Hoewel de statische resourceklassen zijn nuttig voor hogere gelijktijdigheid en statische gegevensvolumes, zijn dynamische resourceklassen beter geschikt voor een groeiende of variabele hoeveelheid gegevens.  Wanneer u omhoog naar een grotere serviceniveau schalen, krijgt uw query's automatisch meer geheugen.  
+Dynamische resource klassen wijzen een variabele hoeveelheid geheugen toe, afhankelijk van het huidige service niveau. Statische bron klassen zijn nuttig voor een hogere gelijktijdigheid en statische gegevens volumes, maar dynamische resource klassen zijn beter geschikt voor een groeiende of variabele hoeveelheid gegevens.  Wanneer u omhoog schaalt naar een groter service niveau, krijgen uw query's automatisch meer geheugen.  
 
-De dynamische resourceklassen worden geïmplementeerd met deze vooraf gedefinieerde databaserollen:
+De dynamische resource klassen worden geïmplementeerd met de volgende vooraf gedefinieerde database rollen:
 
 - smallrc
 - mediumrc
 - largerc
 - xlargerc
 
-### <a name="gen2-dynamic-resource-classes-are-truly-dynamic"></a>De dynamische resourceklassen Gen2 zijn echt dynamisch
+De geheugen toewijzing voor elke bron klasse is als volgt, **ongeacht het service niveau**.  De minimale query's voor gelijktijdigheid worden ook weer gegeven.  Voor sommige service niveaus kan meer dan de minimale gelijktijdigheid worden behaald.
 
-Wanneer op de details van dynamische resourceklassen op Gen1 bestuderen, zijn er enkele gegevens die extra complexiteit toevoegen tot het begrijpen van hun gedrag:
-
-**On Gen1**
-- De klasse van de resources smallrc werkt met een vaste geheugenmodel als een statische resourceklasse.  Query's Smallrc krijg dynamisch niet meer geheugen als het serviceniveau van de wordt verhoogd. 
-- Als het niveau van service wijzigt, kan de gelijktijdigheid van de beschikbare query omhoog of omlaag gaan.
-- Serviceniveaus schalen biedt geen een proportionele wijziging in het geheugen toegewezen aan de dezelfde resourceklassen.
-
-**In Gen2**, dynamische resourceklassen worden echt dynamische adressen van de hierboven genoemde punten.  De nieuwe regel is 3-10-22-70 voor percentage geheugentoewijzingen voor kleine-medium-groot-xlarge resourceklassen, **ongeacht serviceniveau**.  De onderstaande tabel bevat de geconsolideerde details van het geheugen toegewezen percentages en het minimum aantal gelijktijdige query's die worden uitgevoerd, ongeacht het serviceniveau van de.
-
-| Resourceklasse | Percentage geheugen | Min gelijktijdige query 's |
+| Resourceklasse | Percentage geheugen | Min. aantal gelijktijdige Query's |
 |:--------------:|:-----------------:|:----------------------:|
 | smallrc        | 3%                | 32                     |
 | mediumrc       | 10%               | 10                     |
 | largerc        | 22%               | 4                      |
 | xlargerc       | 70%               | 1                      |
 
-### <a name="default-resource-class"></a>Standaard resourceklasse
+### <a name="default-resource-class"></a>Standaard resource klasse
 
-Standaard is elke gebruiker lid is van de dynamische resourceklasse **smallrc**.
+Standaard is elke gebruiker lid van de dynamische resource klasse **smallrc**.
 
-De resourceklasse van de service-beheerder is vastgesteld op smallrc en kan niet worden gewijzigd.  De servicebeheerder is de gebruiker heeft gemaakt tijdens het inrichtingsproces.  De servicebeheerder in deze context is de aanmelding die is opgegeven voor 'serverbeheerder' wanneer een nieuw exemplaar van SQL Data Warehouse maken met een nieuwe server.
+De resource klasse van de service beheerder is vastgesteld op smallrc en kan niet worden gewijzigd.  De service beheerder is de gebruiker die tijdens het inrichtings proces is gemaakt.  De service beheerder in deze context is de aanmeldings naam die is opgegeven voor de aanmelding van de server beheerder bij het maken van een nieuw SQL Data Warehouse-exemplaar met een nieuwe server.
 
 > [!NOTE]
-> Gebruikers of groepen die zijn gedefinieerd als Active Directory-beheerder zijn ook servicebeheerders.
+> Gebruikers of groepen die als Active Directory beheerder zijn gedefinieerd, zijn ook service beheerders.
 >
 >
 
-## <a name="resource-class-operations"></a>Klasse resourcebewerkingen
+## <a name="resource-class-operations"></a>Bewerkingen voor de resource klasse
 
-Resource-klassen zijn ontworpen voor betere prestaties voor activiteiten voor het beheren en manipuleren van gegevens. Complexe query's kunnen ook profiteren van die wordt uitgevoerd onder een grote resourceklasse. Bijvoorbeeld, queryprestaties voor grote samenvoegingen en sorteert kunnen verbeteren wanneer de resourceklasse groot genoeg is is voor het inschakelen van de query uit te voeren in het geheugen.
+Resource klassen zijn ontworpen om de prestaties te verbeteren voor gegevens beheer en manipulatie activiteiten. Complexe query's kunnen ook profiteren van het uitvoeren van een grote resource klasse. Query prestaties voor grote samen voegingen en sorteringen kunnen bijvoorbeeld worden verbeterd wanneer de resource klasse groot genoeg is om de query uit te voeren in het geheugen.
 
-### <a name="operations-governed-by-resource-classes"></a>Bewerkingen die zijn onderworpen aan resource-klassen
+### <a name="operations-governed-by-resource-classes"></a>Bewerkingen die zijn onderhevig aan resource klassen
 
-Deze bewerkingen zijn onderworpen aan resource-klassen:
+Deze bewerkingen zijn onderworpen aan resource klassen:
 
 - INSERT-SELECT, UPDATE, DELETE
-- Selecteer (bij het opvragen van gebruikerstabellen)
-- ALTER INDEX - opnieuw samenstellen of REORGANIZE
-- ALTER TABLE OPNIEUW MAKEN
+- SELECTEREN (bij het opvragen van gebruikers tabellen)
+- ALTER INDEX-Rebuild of reorganiseren
+- ALTER TABLE REBUILD
 - CREATE INDEX
-- GECLUSTERDE COLUMNSTORE-INDEX MAKEN
+- EEN GECLUSTERDE COLUMN STORE-INDEX MAKEN
 - CREATE TABLE AS SELECT (CTAS)
 - Gegevens laden
-- Bewerkingen voor gegevensverplaatsing die wordt uitgevoerd door de Data Movement Service (DMS)
+- Gegevens verplaatsings bewerkingen die worden uitgevoerd door de gegevens verplaatsings service (DMS)
 
 > [!NOTE]  
-> Selecteer instructies op de dynamische beheerweergave (DMV's) of ander systeem weergaven niet worden geregeld door een van de gelijktijdigheidslimieten. U kunt het systeem, ongeacht het aantal query's worden uitgevoerd op deze bewaken.
+> SELECT-instructies op dynamische beheer weergaven (Dmv's) of andere systeem weergaven vallen niet onder een van de gelijktijdigheids limieten. U kunt het systeem bewaken, ongeacht het aantal query's dat erop wordt uitgevoerd.
 
-### <a name="operations-not-governed-by-resource-classes"></a>Bewerkingen niet worden geregeld door de resource-klassen
+### <a name="operations-not-governed-by-resource-classes"></a>Bewerkingen die niet onder resource klassen vallen
 
-Aantal query's worden altijd uitgevoerd in de resourceklasse smallrc zelfs als de gebruiker lid van een grotere resourceklasse is. Deze uitgesloten query's tellen niet mee voor de limiet voor gelijktijdigheid. Bijvoorbeeld, als de limiet voor gelijktijdigheid 16 is, kunnen de veel gebruikers worden selecteren in systeemweergaven zonder gevolgen voor de beschikbare gelijktijdigheidssleuven in beslag.
+Sommige query's worden altijd uitgevoerd in de smallrc-resource klasse, zelfs als de gebruiker lid is van een grotere resource klasse. Deze vrijgestelde query's tellen niet mee voor de limiet voor gelijktijdigheid. Als de limiet voor gelijktijdigheid 16 is, kunnen veel gebruikers bijvoorbeeld selecteren uit de systeem weergaven zonder dat dit van invloed is op de beschik bare gelijktijdigheids sleuven.
 
-De volgende instructies zijn vrijgesteld van resource-klassen en altijd in smallrc uitgevoerd:
+De volgende instructies zijn vrijgesteld van resource klassen en worden altijd uitgevoerd in smallrc:
 
-- MAKEN of DROP TABLE
-- DE TABEL WIJZIGEN... SWITCH, splitsen of samenvoegen partitie
-- ALTER INDEX UITSCHAKELEN
+- TABEL maken of verwijderen
+- ALTER TABLE... PARTITIE SCHA KELEN, splitsen of samen VOEGen
+- ALTER INDEX DISABLE
 - DROP INDEX
-- MAKEN, bijwerken of DROP STATISTICS
+- STATISTIEKEN maken, bijwerken of verwijderen
 - TRUNCATE TABLE
-- ALTER AUTORISATIE
+- AUTORISATIE WIJZIGEN
 - AANMELDING MAKEN
-- CREATE, ALTER of DROP USER
-- CREATE, ALTER of DROP PROCEDURE
-- MAKEN of de weergave niet verwijderen
+- GEBRUIKER maken, wijzigen of verwijderen
+- PROCEDURE maken, wijzigen of verwijderen
+- WEER gave maken of verwijderen
 - WAARDEN INVOEGEN
-- Selecteer in systeemweergaven en DMV 's
-- EXPLAIN
+- SELECTEREN uit systeem weergaven en Dmv's
+- BESPREKEN
 - DBCC
 
 <!--
@@ -154,18 +134,18 @@ Removed as these two are not confirmed / supported under SQL DW
 - REDISTRIBUTE
 -->
 
-## <a name="concurrency-slots"></a>Gelijktijdigheidssleuven
+## <a name="concurrency-slots"></a>Gelijktijdigheids sleuven
 
-Gelijktijdigheidssleuven zijn een handige manier om bij te houden van de beschikbare resources voor het uitvoeren van query's. Ze zijn, zoals tickets die u koopt als u wilt reserveren van plaatsen op een concert omdat zitplaatsen beperkt is. Het totale aantal gelijktijdigheidssleuven per datawarehouse wordt bepaald door het serviceniveau van de. Voordat een query kunt uitvoeren, moet het mogelijk zijn onvoldoende gelijktijdigheidssleuven reserveren. Wanneer een query is voltooid, worden de gelijktijdigheidssleuven vrijgegeven.  
+Gelijktijdigheids sleuven zijn een handige manier om de resources bij te houden die beschikbaar zijn voor het uitvoeren van query's. Ze zijn vergelijkbaar met tickets die u koopt om stoelen op een concert te reserveren, omdat het aantal stoelen beperkt is. Het totale aantal gelijktijdigheids sleuven per Data Warehouse wordt bepaald door het service niveau. Voordat een query kan worden uitgevoerd, moet deze voldoende gelijktijdigheids sleuven kunnen reserveren. Wanneer een query is voltooid, worden de gelijktijdigheids sleuven vrijgegeven.  
 
-- Een query uitvoeren met 10 gelijktijdigheidssleuven in beslag, hebben toegang tot 5 keer meer compute-bronnen dan query's met een met 2 gelijktijdigheidssleuven.
-- Elke query is 10 gelijktijdigheidssleuven vereist en er nog 40 gelijktijdigheidssleuven, kunnen gelijktijdig worden alleen 4 query's uitgevoerd.
+- Een query die wordt uitgevoerd met 10 gelijktijdigheids sleuven, kan toegang krijgen tot vijf maal meer reken bronnen dan een query die wordt uitgevoerd met 2 gelijktijdigheids sleuven.
+- Als voor elke query 10 gelijktijdigheids sleuven zijn vereist en er 40 gelijktijdigheids sleuven zijn, kunnen er maar 4 query's gelijktijdig worden uitgevoerd.
 
-Alleen query's resourcegestuurd gelijktijdigheidssleuven in beslag nemen. Systeem-query's en sommige trivial query's verbruiken niet alle sleuven. Het exacte aantal gelijktijdigheidssleuven verbruikt, wordt bepaald door de resourceklasse van de query.
+Alleen resource-beheerste query's gebruiken gelijktijdigheids sleuven. Systeem query's en sommige triviale query's gebruiken geen sleuven. Het exacte aantal verbruikte gelijktijdigheids sleuven wordt bepaald door de resource klasse van de query.
 
-## <a name="view-the-resource-classes"></a>De resourceklassen weergeven
+## <a name="view-the-resource-classes"></a>De resource klassen weer geven
 
-Resourceklassen worden geïmplementeerd als vooraf gedefinieerde databaserollen. Er zijn twee soorten resourceklassen: dynamische en statische. Een lijst van de resourceklassen wilt weergeven, gebruikt u de volgende query:
+Resource klassen worden geïmplementeerd als vooraf gedefinieerde database rollen. Er zijn twee typen resource klassen: dynamisch en statisch. Als u een lijst met resource klassen wilt weer geven, gebruikt u de volgende query:
 
 ```sql
 SELECT name
@@ -173,418 +153,103 @@ FROM   sys.database_principals
 WHERE  name LIKE '%rc%' AND type_desc = 'DATABASE_ROLE';
 ```
 
-## <a name="change-a-users-resource-class"></a>De resourceklasse van een gebruiker wijzigen
+## <a name="change-a-users-resource-class"></a>De resource klasse van een gebruiker wijzigen
 
-Resourceklassen worden geïmplementeerd door het toewijzen van gebruikers aan de databaserollen. Wanneer een gebruiker een query uitvoert, wordt de query wordt uitgevoerd met de resourceklasse van de gebruiker. Bijvoorbeeld, als een gebruiker lid van de databaserol staticrc10 is, hun query's worden uitgevoerd met een kleine hoeveelheid geheugen. Als een databasegebruiker lid van de databaserollen xlargerc of staticrc80 is, voert u de query's met grote hoeveelheden geheugen.
+Resource klassen worden geïmplementeerd door gebruikers toe te wijzen aan database rollen. Wanneer een gebruiker een query uitvoert, wordt de query uitgevoerd met de resource klasse van de gebruiker. Als een gebruiker bijvoorbeeld lid is van de databaserol staticrc10, worden de query's uitgevoerd met kleine hoeveel heden geheugen. Als een database gebruiker lid is van de xlargerc-of staticrc80-database rollen, worden de query's uitgevoerd met grote hoeveel heden geheugen.
 
-Als u wilt vergroten de resourceklasse van een gebruiker, gebruikt u [sp_addrolemember](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql) om toe te voegen van de gebruiker aan de databaserol van een van een grote resourceklasse.  De onderstaande code voegt u een gebruiker toe aan de databaserol largerc.  Elke aanvraag haalt 22% van het systeemgeheugen.
+Als u de resource klasse van een gebruiker wilt verhogen, gebruikt u [sp_addrolemember](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql) om de gebruiker toe te voegen aan een databaserol van een grote resource klasse.  De onderstaande code voegt een gebruiker toe aan de databaserol largerc.  Elke aanvraag ontvangt 22% van het systeem geheugen.
 
 ```sql
 EXEC sp_addrolemember 'largerc', 'loaduser';
 ```
 
-Als u wilt de resourceklasse verlagen, gebruik [sp_droprolemember](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-droprolemember-transact-sql).  Als 'loaduser' geen lid of een andere resourceklassen is, ze in de standaard-klasse smallrc resource met een geheugentoekenning 3%.  
+Gebruik [sp_droprolemember](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-droprolemember-transact-sql)om de resource klasse te verlagen.  Als ' loaduser ' geen lid of andere resource klassen is, gaan ze naar de standaard smallrc-resource klasse met een geheugen toekenning van 3%.  
 
 ```sql
 EXEC sp_droprolemember 'largerc', 'loaduser';
 ```
 
-## <a name="resource-class-precedence"></a>Prioriteit van de resource-klasse
+## <a name="resource-class-precedence"></a>Prioriteit van resource klasse
 
-Gebruikers kunnen lid zijn van meerdere resourceklassen. Wanneer een gebruiker behoort tot meer dan één resourceklasse:
+Gebruikers kunnen lid zijn van meerdere resource klassen. Wanneer een gebruiker deel uitmaakt van meer dan één resource klasse:
 
-- Dynamische resourceklassen hebben voorrang op de statische resourceklassen. Bijvoorbeeld, als een gebruiker is lid van zowel mediumrc(dynamic) en staticrc80 (statisch), query's worden uitgevoerd met mediumrc.
-- Grotere resourceklassen hebben voorrang op kleinere resourceklassen. Bijvoorbeeld, als een gebruiker lid van mediumrc en largerc is, query's worden uitgevoerd met largerc. Op dezelfde manier als een gebruiker lid van zowel staticrc20 en statirc80 is, query's worden uitgevoerd met staticrc80 resourcetoewijzingen.
+- Dynamische resource klassen hebben voor rang op statische resource klassen. Als een gebruiker bijvoorbeeld lid is van zowel mediumrc (dynamisch) als staticrc80 (static), worden query's uitgevoerd met mediumrc.
+- Grotere bron klassen hebben voor rang op kleinere resource klassen. Als een gebruiker bijvoorbeeld lid is van mediumrc en largerc, worden query's uitgevoerd met largerc. Als een gebruiker lid is van zowel staticrc20 als statirc80, worden er ook query's uitgevoerd met staticrc80-resource toewijzingen.
 
 ## <a name="recommendations"></a>Aanbevelingen
 
-We raden u aan een gebruiker die is toegewezen aan een specifiek type query wordt uitgevoerd of opnieuw laden. Deze gebruiker een permanente resource-klasse in plaats van de resourceklasse regelmatig verandert, geven. Statische resourceklassen bieden meer algemene controle op de werkbelasting, dus het is raadzaam met behulp van statische resourceklassen voordat dynamische resourceklassen.
+We raden u aan een gebruiker te maken die is toegewezen voor het uitvoeren van een specifiek type query of het laden van een bewerking. Geef deze gebruiker een permanente resource klasse in plaats van de resource klasse regel matig te wijzigen. Statische resource klassen bieden meer algemene controle over de werk belasting, dus we raden aan gebruik te maken van statische resource klassen voordat u dynamische resource klassen overweegt.
 
-### <a name="resource-classes-for-load-users"></a>Resourceklassen voor het load-gebruikers
+### <a name="resource-classes-for-load-users"></a>Resource klassen voor het laden van gebruikers
 
-`CREATE TABLE` Standaard maakt gebruik van geclusterde columnstore-indexen. Comprimeren van gegevens in een columnstore index is een geheugenintensieve bewerking en geheugendruk de kwaliteit van de index kan verminderen. Geheugendruk kan leiden tot een hogere resourceklasse hoeven bij het laden van gegevens. Om ervoor te zorgen belastingen over voldoende geheugen beschikt, kunt u een gebruiker die is ingesteld voor het uitvoeren van loads maken en die gebruiker toewijzen aan een hogere resourceklasse.
+`CREATE TABLE` maakt standaard gebruik van geclusterde column Store-indexen. Het comprimeren van gegevens naar een column store-index is een geheugenintensieve bewerking en de geheugen druk kan de index kwaliteit verminderen. Geheugen druk kan ertoe leiden dat een hogere resource klasse nodig is voor het laden van gegevens. Om ervoor te zorgen dat er voldoende geheugen beschikbaar is, kunt u een gebruiker maken die is aangewezen voor het uitvoeren van belastingen en die gebruiker toewijzen aan een hogere resource klasse.
 
-Het geheugen dat nodig is voor het verwerken van belastingen efficiënt is afhankelijk van de aard van de tabel geladen en de grootte van de gegevens. Zie voor meer informatie over geheugenvereisten [rijgroep kwaliteit maximaliseren](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md).
+Het geheugen dat nodig is om de belasting efficiënt te verwerken, is afhankelijk van de aard van de geladen tabel en de grootte van de gegevens. Zie [maximale Rijg roep-kwaliteit](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md)voor meer informatie over geheugen vereisten.
 
-Nadat u de geheugenvereiste hebt bepaald, kiest u of de load-gebruiker toewijzen aan een statische of dynamische resourceklasse.
+Wanneer u de geheugen vereiste hebt bepaald, kiest u of u de gebruiker laden wilt toewijzen aan een statische of dynamische bron klasse.
 
-- Gebruik een statische resourceklasse wanneer geheugenvereisten van de tabel binnen een bepaald bereik vallen. Belastingen uitgevoerd met het juiste geheugen. Wanneer u het datawarehouse, nodig de belasting niet meer geheugen. Met behulp van een statische resourceklasse, blijven de geheugentoewijzingen constante. Deze consistentie geheugen te besparen en kunt u meer query's gelijktijdig worden uitgevoerd. Het is raadzaam dat nieuwe oplossingen maken gebruik van de statische resourceklassen eerst deze kunnen beheersen.
-- Gebruik een dynamische resourceklasse wanneer sterk geheugenvereisten van de tabel verschilt. Belasting mogelijk meer geheugen dan de huidige DWU of cDWU niveau biedt. Schalen van het datawarehouse meer geheugen aan toegevoegd load-bewerkingen, waardoor loads naar sneller.
+- Gebruik een statische resource klasse wanneer tabel geheugen vereisten binnen een specifiek bereik vallen. Hiermee wordt de belasting uitgevoerd met het juiste geheugen. Wanneer u het Data Warehouse schaalt, heeft de belasting geen meer geheugen nodig. Door gebruik te maken van een statische resource klasse blijven de geheugen toewijzingen constant. Met deze consistentie wordt geheugen bespaard en kunnen meer query's gelijktijdig worden uitgevoerd. We raden aan dat nieuwe oplossingen eerst gebruikmaken van de statische resource klassen, aangezien deze meer controle bieden.
+- Gebruik een dynamische resource klasse wanneer de geheugen vereisten van de tabel aanzienlijk verschillen. De belasting vergt mogelijk meer geheugen dan het huidige DWU-of cDWU-niveau biedt. Wanneer het Data Warehouse wordt geschaald, wordt er meer geheugen toegevoegd voor het laden van bewerkingen, waardoor de belasting sneller kan worden uitgevoerd.
 
-### <a name="resource-classes-for-queries"></a>Resourceklassen voor query 's
+### <a name="resource-classes-for-queries"></a>Resource klassen voor query's
 
-Aantal query's zijn rekenintensieve en andere niet.  
+Sommige query's zijn reken intensief en andere niet.  
 
-- Kies een dynamische resourceklasse wanneer query's complex zijn, maar hoge gelijktijdigheid hoeft.  Genereren van rapporten dagelijks of wekelijks is bijvoorbeeld een incidentele nodig voor resources. Als de rapporten grote hoeveelheden gegevens verwerken worden, vindt het datawarehouse schalen u meer geheugen aan de bestaande resourceklasse van de gebruiker.
-- Kies een statische resourceklasse wanneer resource verwachtingen gedurende de dag varieert. Bijvoorbeeld, een statische resourceklasse is geschikt als het datawarehouse is opgevraagd door veel mensen. Wanneer u het datawarehouse, wijzigen de hoeveelheid geheugen toegewezen aan de gebruiker niet. Meer query's kunnen als gevolg daarvan kunnen parallel op het systeem worden uitgevoerd.
+- Kies een dynamische resource klasse als query's complex zijn, maar geen hoge gelijktijdigheid nodig hebben.  Het genereren van dagelijkse of wekelijkse rapporten is bijvoorbeeld nood zakelijk voor resources. Als de rapporten grote hoeveel heden gegevens verwerken, biedt het schalen van het Data Warehouse meer geheugen voor de bestaande resource klasse van de gebruiker.
+- Kies een statische resource klasse wanneer de resource verwachtingen de hele dag variëren. Een statische resource klasse werkt bijvoorbeeld goed wanneer het Data Warehouse door veel mensen wordt doorzocht. Bij het schalen van het Data Warehouse wordt de hoeveelheid geheugen die aan de gebruiker is toegewezen, niet gewijzigd. Daarom kunnen meer query's parallel op het systeem worden uitgevoerd.
 
-Juiste geheugen verleent, is afhankelijk van veel factoren af zoals de hoeveelheid gegevens die zijn opgevraagd, de aard van de tabel schema's, en verschillende joins, selecteert en groepeert u predikaten. In het algemeen toewijzen van meer geheugen kunt u query's sneller zijn voltooid, maar verlaagt de algehele gelijktijdigheid. Als u niet de gelijktijdigheid is een probleem, schaadt toewijzen van te veel geheugen niet doorvoer.
+De juiste geheugen subsidies zijn afhankelijk van een groot aantal factoren, zoals de hoeveelheid gegevens die wordt opgevraagd, de aard van de tabel schema's en verschillende samen voegingen, Select en Group predikaten. Over het algemeen kunt u met het toewijzen van meer geheugen query's sneller uitvoeren, maar vermindert u de totale gelijktijdigheid. Als gelijktijdigheid geen probleem is, heeft het toewijzen van geheugen geen schade aan door voer.
 
-Voor het afstemmen van prestaties, andere resource-klassen te gebruiken. De volgende sectie biedt een opgeslagen procedure waarmee u de beste resourceklasse te achterhalen.
+Gebruik verschillende resource klassen om prestaties af te stemmen. In de volgende sectie vindt u een opgeslagen procedure waarmee u de beste bron klasse kunt opwaarderen.
 
-## <a name="example-code-for-finding-the-best-resource-class"></a>Voorbeeldcode voor het vinden van de beste resourceklasse
+## <a name="example-code-for-finding-the-best-resource-class"></a>Voorbeeld code voor het zoeken naar de beste resource klasse
 
-U kunt de volgende opgegeven opgeslagen procedure voor [Gen1](#stored-procedure-definition-for-gen1) of [Gen2](#stored-procedure-definition-for-gen2)-om te achterhalen gelijktijdigheid en geheugen verlenen per resourceklasse op een bepaalde SLO en de beste resourceklasse voor het geheugen intensieve CCI bewerkingen voor niet-gepartitioneerde CCI tabel in een opgegeven resourceklasse:
+U kunt de volgende opgeslagen procedure gebruiken voor het afrekenen van gelijktijdigheid en geheugen toekenning per resource klasse op een bepaalde SLO en de beste bron klasse voor CCI-bewerkingen op basis van een niet-gepartitioneerde CCI-tabel in een bepaalde resource klasse:
 
 Dit is het doel van deze opgeslagen procedure:
 
-1. De gelijktijdigheid van taken en voor geheugentoewijzing in batchmodus per resourceklasse op een bepaalde SLO zien. Gebruiker moet null zijn voor schema- en tablename bieden, zoals wordt weergegeven in dit voorbeeld.  
-2. Overzicht van de beste resourceklasse voor de geheugenintensieve CCI bewerkingen (load, tabel kopiëren, de index opnieuw opbouwen, enzovoort) in niet-gepartitioneerde CCI tabel in een opgegeven resourceklasse. De opgeslagen procedure maakt gebruik van tabelschema om de vereiste geheugentoekenning erachter te komen.
+1. Om de gelijktijdigheids-en geheugen toekenning per resource klasse op een bepaalde SLO te bekijken. De gebruiker moet NULL voor schema en TableName opgeven, zoals wordt weer gegeven in dit voor beeld.  
+2. Voor een overzicht van de beste resource klasse voor de geheugenintensieve bewerkingen (laden, tabel kopiëren, index opnieuw samen stellen, enzovoort) voor een niet-gepartitioneerde CCI-tabel in een bepaalde resource klasse. De opgeslagen procedure maakt gebruik van het tabel schema om de vereiste geheugen toekenning te bepalen.
 
-### <a name="dependencies--restrictions"></a>Afhankelijkheden en beperkingen
+### <a name="dependencies--restrictions"></a>Beperkingen voor het & van afhankelijkheden
 
-- Deze opgeslagen procedure is niet bedoeld voor het berekenen van de geheugenvereiste voor een gepartitioneerde cci-tabel.
-- Deze opgeslagen procedure neemt geheugenvereisten in aanmerking voor de component SELECT van CTAS of INSERT-te selecteren en wordt ervan uitgegaan dat het een SELECT is.
+- Deze opgeslagen procedure is niet ontworpen voor het berekenen van de geheugen vereiste voor een gepartitioneerde CCI-tabel.
+- Voor deze opgeslagen procedure worden geen geheugen vereisten in rekening gebracht voor het SELECT-gedeelte van CTAS/INSERT-SELECT en wordt ervan uitgegaan dat het een SELECT is.
 - Deze opgeslagen procedure maakt gebruik van een tijdelijke tabel, die beschikbaar is in de sessie waarin deze opgeslagen procedure is gemaakt.
-- Deze opgeslagen procedure, is afhankelijk van de huidige aanbiedingen (bijvoorbeeld hardwareconfiguratie, DMS-configuratie) en als een van die wordt gewijzigd vervolgens deze opgeslagen procedure werkt niet correct.  
-- Deze opgeslagen procedure, is afhankelijk van bestaande gelijktijdigheid limiet aanbiedingen en als deze wijzigt vervolgens deze opgeslagen procedure werkt niet correct.  
-- Deze opgeslagen procedure, is afhankelijk van bestaande resource klasse aanbiedingen en als deze wijzigt vervolgens deze opgeslagen procedure werkt niet correct.  
+- Deze opgeslagen procedure is afhankelijk van de huidige aanbiedingen (bijvoorbeeld hardwareconfiguratie, DMS-configuratie) en als een van die wijzigingen, werkt deze opgeslagen proc niet goed.  
+- Deze opgeslagen procedure is afhankelijk van bestaande gelijktijdigheids limieten. als deze wijziging wordt toegepast, werkt deze opgeslagen procedure niet goed.  
+- Deze opgeslagen procedure is afhankelijk van bestaande resource klasse-aanbiedingen en als deze wijziging wordt toegepast, werkt deze opgeslagen procedure niet goed.  
 
 >[!NOTE]  
->Als er uitvoer na het uitvoeren van opgeslagen procedure met opgegeven parameters, kan er twee mogelijke situaties.
+>Als u geen uitvoer krijgt na het uitvoeren van een opgeslagen procedure met opgegeven para meters, kunnen er twee gevallen zijn.
 >
->1. Een van beide DW-Parameter bevat een ongeldige SLO-waarde
->2. Of er is geen overeenkomende resourceklasse voor de bewerking CCI op de tabel.
+>1. De para meter DW bevat een ongeldige SLO-waarde
+>2. Of er is geen overeenkomende resource klasse voor de bewerking CCI in de tabel.
 >
->Op DW100, bijvoorbeeld, is de hoogste geheugentoekenning beschikbaar 400 MB, en als tabelschema is breed genoeg om te passeren van de vereiste van 400 MB.
+>Zo is bij DW100c de hoogste beschik bare geheugen toekenning 1 GB en als het tabel schema breed genoeg is voor het overschrijden van de vereiste van 1 GB.
 
-### <a name="usage-example"></a>Voorbeeld van gebruik
+### <a name="usage-example"></a>Voor beeld van gebruik
 
-Syntaxis:  
+Syntaxis  
 `EXEC dbo.prc_workload_management_by_DWU @DWU VARCHAR(7), @SCHEMA_NAME VARCHAR(128), @TABLE_NAME VARCHAR(128)`
   
-1. @DWU: Ofwel een NULL-parameter moet worden opgehaald van de huidige DWU uit de DW-database of geef een ondersteunde DWU in de vorm van 'DW100' opgeven
-2. @SCHEMA_NAME: Geef een schemanaam van de tabel
-3. @TABLE_NAME: Geef een tabelnaam op van het belang van de
+1. @DWU: Geef een NULL-para meter op om de huidige DWU uit de DW-data base te extra heren of geef een ondersteund DWU op in de vorm ' DW100c '
+2. @SCHEMA_NAME: een schema naam van de tabel opgeven
+3. @TABLE_NAME: Geef een tabel naam op voor de interesse
 
-Voorbeelden voor het uitvoeren van deze opgeslagen procedure:
+Voor beelden van deze opgeslagen procedure:
 
 ```sql
-EXEC dbo.prc_workload_management_by_DWU 'DW2000', 'dbo', 'Table1';  
+EXEC dbo.prc_workload_management_by_DWU 'DW2000c', 'dbo', 'Table1';  
 EXEC dbo.prc_workload_management_by_DWU NULL, 'dbo', 'Table1';  
-EXEC dbo.prc_workload_management_by_DWU 'DW6000', NULL, NULL;  
+EXEC dbo.prc_workload_management_by_DWU 'DW6000c', NULL, NULL;  
 EXEC dbo.prc_workload_management_by_DWU NULL, NULL, NULL;  
 ```
 
-De volgende instructie maakt Tabel1 die wordt gebruikt in de voorgaande voorbeelden.
+Met de volgende instructie maakt u Tabel1 die in de voor gaande voor beelden wordt gebruikt.
 `CREATE TABLE Table1 (a int, b varchar(50), c decimal (18,10), d char(10), e varbinary(15), f float, g datetime, h date);`
 
-### <a name="stored-procedure-definition-for-gen1"></a>De definitie van de opgeslagen procedure voor Gen1
-
-```sql  
--------------------------------------------------------------------------------
--- Dropping prc_workload_management_by_DWU procedure if it exists.
--------------------------------------------------------------------------------
-IF EXISTS (SELECT * FROM sys.objects WHERE type = 'P' AND name = 'prc_workload_management_by_DWU')
-DROP PROCEDURE dbo.prc_workload_management_by_DWU
-GO
-
--------------------------------------------------------------------------------
--- Creating prc_workload_management_by_DWU.
--------------------------------------------------------------------------------
-CREATE PROCEDURE dbo.prc_workload_management_by_DWU
-(@DWU VARCHAR(7),
- @SCHEMA_NAME VARCHAR(128),
- @TABLE_NAME VARCHAR(128)
-)
-AS
-IF @DWU IS NULL
-BEGIN
--- Selecting proper DWU for the current DB if not specified.
-SET @DWU = (
-  SELECT 'DW'+CAST(COUNT(*)*100 AS VARCHAR(10))
-  FROM sys.dm_pdw_nodes
-  WHERE type = 'COMPUTE')
-END
-
-DECLARE @DWU_NUM INT
-SET @DWU_NUM = CAST (SUBSTRING(@DWU, 3, LEN(@DWU)-2) AS INT)
-
--- Raise error if either schema name or table name is supplied but not both them supplied
---IF ((@SCHEMA_NAME IS NOT NULL AND @TABLE_NAME IS NULL) OR (@TABLE_NAME IS NULL AND @SCHEMA_NAME IS NOT NULL))
---     RAISEERROR('User need to supply either both Schema Name and Table Name or none of them')
-
--- Dropping temp table if exists.
-IF OBJECT_ID('tempdb..#ref') IS NOT NULL
-BEGIN
-  DROP TABLE #ref;
-END
-
--- Creating ref. temp table (CTAS) to hold mapping info.
--- CREATE TABLE #ref
-CREATE TABLE #ref
-WITH (DISTRIBUTION = ROUND_ROBIN)
-AS
-WITH
--- Creating concurrency slots mapping for various DWUs.
-alloc
-AS
-(
-  SELECT 'DW100' AS DWU, 4 AS max_queries, 4 AS max_slots, 1 AS slots_used_smallrc, 1 AS slots_used_mediumrc,
-        2 AS slots_used_largerc, 4 AS slots_used_xlargerc, 1 AS slots_used_staticrc10, 2 AS slots_used_staticrc20,
-        4 AS slots_used_staticrc30, 4 AS slots_used_staticrc40, 4 AS slots_used_staticrc50,
-        4 AS slots_used_staticrc60, 4 AS slots_used_staticrc70, 4 AS slots_used_staticrc80
-  UNION ALL
-    SELECT 'DW200', 8, 8, 1, 2, 4, 8, 1, 2, 4, 8, 8, 8, 8, 8
-  UNION ALL
-    SELECT 'DW300', 12, 12, 1, 2, 4, 8, 1, 2, 4, 8, 8, 8, 8, 8
-  UNION ALL
-    SELECT 'DW400', 16, 16, 1, 4, 8, 16, 1, 2, 4, 8, 16, 16, 16, 16
-  UNION ALL
-    SELECT 'DW500', 20, 20, 1, 4, 8, 16, 1, 2, 4, 8, 16, 16, 16, 16
-  UNION ALL
-    SELECT 'DW600', 24, 24, 1, 4, 8, 16, 1, 2, 4, 8, 16, 16, 16, 16
-  UNION ALL
-    SELECT 'DW1000', 32, 40, 1, 8, 16, 32, 1, 2, 4, 8, 16, 32, 32, 32
-  UNION ALL
-    SELECT 'DW1200', 32, 48, 1, 8, 16, 32, 1, 2, 4, 8, 16, 32, 32, 32
-  UNION ALL
-    SELECT 'DW1500', 32, 60, 1, 8, 16, 32, 1, 2, 4, 8, 16, 32, 32, 32
-  UNION ALL
-    SELECT 'DW2000', 32, 80, 1, 16, 32, 64, 1, 2, 4, 8, 16, 32, 64, 64
-  UNION ALL
-    SELECT 'DW3000', 32, 120, 1, 16, 32, 64, 1, 2, 4, 8, 16, 32, 64, 64
-  UNION ALL
-    SELECT 'DW6000', 32, 240, 1, 32, 64, 128, 1, 2, 4, 8, 16, 32, 64, 128
-)
--- Creating workload mapping to their corresponding slot consumption and default memory grant.
-,map
-AS
-(
-  SELECT 'SloDWGroupC00' AS wg_name,1 AS slots_used,100 AS tgt_mem_grant_MB
-  UNION ALL
-    SELECT 'SloDWGroupC01',2,200
-  UNION ALL
-    SELECT 'SloDWGroupC02',4,400
-  UNION ALL
-    SELECT 'SloDWGroupC03',8,800
-  UNION ALL
-    SELECT 'SloDWGroupC04',16,1600
-  UNION ALL
-    SELECT 'SloDWGroupC05',32,3200
-  UNION ALL
-    SELECT 'SloDWGroupC06',64,6400
-  UNION ALL
-    SELECT 'SloDWGroupC07',128,12800
-)
--- Creating ref based on current / asked DWU.
-, ref
-AS
-(
-  SELECT  a1.*
-  ,       m1.wg_name          AS wg_name_smallrc
-  ,       m1.tgt_mem_grant_MB AS tgt_mem_grant_MB_smallrc
-  ,       m2.wg_name          AS wg_name_mediumrc
-  ,       m2.tgt_mem_grant_MB AS tgt_mem_grant_MB_mediumrc
-  ,       m3.wg_name          AS wg_name_largerc
-  ,       m3.tgt_mem_grant_MB AS tgt_mem_grant_MB_largerc
-  ,       m4.wg_name          AS wg_name_xlargerc
-  ,       m4.tgt_mem_grant_MB AS tgt_mem_grant_MB_xlargerc
-  ,       m5.wg_name          AS wg_name_staticrc10
-  ,       m5.tgt_mem_grant_MB AS tgt_mem_grant_MB_staticrc10
-  ,       m6.wg_name          AS wg_name_staticrc20
-  ,       m6.tgt_mem_grant_MB AS tgt_mem_grant_MB_staticrc20
-  ,       m7.wg_name          AS wg_name_staticrc30
-  ,       m7.tgt_mem_grant_MB AS tgt_mem_grant_MB_staticrc30
-  ,       m8.wg_name          AS wg_name_staticrc40
-  ,       m8.tgt_mem_grant_MB AS tgt_mem_grant_MB_staticrc40
-  ,       m9.wg_name          AS wg_name_staticrc50
-  ,       m9.tgt_mem_grant_MB AS tgt_mem_grant_MB_staticrc50
-  ,       m10.wg_name          AS wg_name_staticrc60
-  ,       m10.tgt_mem_grant_MB AS tgt_mem_grant_MB_staticrc60
-  ,       m11.wg_name          AS wg_name_staticrc70
-  ,       m11.tgt_mem_grant_MB AS tgt_mem_grant_MB_staticrc70
-  ,       m12.wg_name          AS wg_name_staticrc80
-  ,       m12.tgt_mem_grant_MB AS tgt_mem_grant_MB_staticrc80
-  FROM alloc a1
-  JOIN map   m1  ON a1.slots_used_smallrc     = m1.slots_used
-  JOIN map   m2  ON a1.slots_used_mediumrc    = m2.slots_used
-  JOIN map   m3  ON a1.slots_used_largerc     = m3.slots_used
-  JOIN map   m4  ON a1.slots_used_xlargerc    = m4.slots_used
-  JOIN map   m5  ON a1.slots_used_staticrc10    = m5.slots_used
-  JOIN map   m6  ON a1.slots_used_staticrc20    = m6.slots_used
-  JOIN map   m7  ON a1.slots_used_staticrc30    = m7.slots_used
-  JOIN map   m8  ON a1.slots_used_staticrc40    = m8.slots_used
-  JOIN map   m9  ON a1.slots_used_staticrc50    = m9.slots_used
-  JOIN map   m10  ON a1.slots_used_staticrc60    = m10.slots_used
-  JOIN map   m11  ON a1.slots_used_staticrc70    = m11.slots_used
-  JOIN map   m12  ON a1.slots_used_staticrc80    = m12.slots_used
--- WHERE   a1.DWU = @DWU
-  WHERE   a1.DWU = UPPER(@DWU)
-)
-SELECT  DWU
-,       max_queries
-,       max_slots
-,       slots_used
-,       wg_name
-,       tgt_mem_grant_MB
-,       up1 as rc
-,       (ROW_NUMBER() OVER(PARTITION BY DWU ORDER BY DWU)) as rc_id
-FROM
-(
-    SELECT  DWU
-    ,       max_queries
-    ,       max_slots
-    ,       slots_used
-    ,       wg_name
-    ,       tgt_mem_grant_MB
-    ,       REVERSE(SUBSTRING(REVERSE(wg_names),1,CHARINDEX('_',REVERSE(wg_names),1)-1)) as up1
-    ,       REVERSE(SUBSTRING(REVERSE(tgt_mem_grant_MBs),1,CHARINDEX('_',REVERSE(tgt_mem_grant_MBs),1)-1)) as up2
-    ,       REVERSE(SUBSTRING(REVERSE(slots_used_all),1,CHARINDEX('_',REVERSE(slots_used_all),1)-1)) as up3
-    FROM    ref AS r1
-    UNPIVOT
-    (
-        wg_name FOR wg_names IN (wg_name_smallrc,wg_name_mediumrc,wg_name_largerc,wg_name_xlargerc,
-        wg_name_staticrc10, wg_name_staticrc20, wg_name_staticrc30, wg_name_staticrc40, wg_name_staticrc50,
-        wg_name_staticrc60, wg_name_staticrc70, wg_name_staticrc80)
-    ) AS r2
-    UNPIVOT
-    (
-        tgt_mem_grant_MB FOR tgt_mem_grant_MBs IN (tgt_mem_grant_MB_smallrc,tgt_mem_grant_MB_mediumrc,
-        tgt_mem_grant_MB_largerc,tgt_mem_grant_MB_xlargerc, tgt_mem_grant_MB_staticrc10, tgt_mem_grant_MB_staticrc20,
-        tgt_mem_grant_MB_staticrc30, tgt_mem_grant_MB_staticrc40, tgt_mem_grant_MB_staticrc50,
-        tgt_mem_grant_MB_staticrc60, tgt_mem_grant_MB_staticrc70, tgt_mem_grant_MB_staticrc80)
-    ) AS r3
-    UNPIVOT
-    (
-        slots_used FOR slots_used_all IN (slots_used_smallrc,slots_used_mediumrc,slots_used_largerc,
-        slots_used_xlargerc, slots_used_staticrc10, slots_used_staticrc20, slots_used_staticrc30,
-        slots_used_staticrc40, slots_used_staticrc50, slots_used_staticrc60, slots_used_staticrc70,
-        slots_used_staticrc80)
-    ) AS r4
-) a
-WHERE   up1 = up2
-AND     up1 = up3
-;
--- Getting current info about workload groups.
-WITH  
-dmv  
-AS  
-(
-  SELECT
-          rp.name                                           AS rp_name
-  ,       rp.max_memory_kb*1.0/1048576                      AS rp_max_mem_GB
-  ,       (rp.max_memory_kb*1.0/1024)
-          *(request_max_memory_grant_percent/100)           AS max_memory_grant_MB
-  ,       (rp.max_memory_kb*1.0/1048576)
-          *(request_max_memory_grant_percent/100)           AS max_memory_grant_GB
-  ,       wg.name                                           AS wg_name
-  ,       wg.importance                                     AS importance
-  ,       wg.request_max_memory_grant_percent               AS request_max_memory_grant_percent
-  FROM    sys.dm_pdw_nodes_resource_governor_workload_groups wg
-  JOIN    sys.dm_pdw_nodes_resource_governor_resource_pools rp    ON  wg.pdw_node_id  = rp.pdw_node_id
-                                                                  AND wg.pool_id      = rp.pool_id
-  WHERE   rp.name = 'SloDWPool'
-  GROUP BY
-          rp.name
-  ,       rp.max_memory_kb
-  ,       wg.name
-  ,       wg.importance
-  ,       wg.request_max_memory_grant_percent
-)
--- Creating resource class name mapping.
-,names
-AS
-(
-  SELECT 'smallrc' as resource_class, 1 as rc_id
-  UNION ALL
-    SELECT 'mediumrc', 2
-  UNION ALL
-    SELECT 'largerc', 3
-  UNION ALL
-    SELECT 'xlargerc', 4
-  UNION ALL
-    SELECT 'staticrc10', 5
-  UNION ALL
-    SELECT 'staticrc20', 6
-  UNION ALL
-    SELECT 'staticrc30', 7
-  UNION ALL
-    SELECT 'staticrc40', 8
-  UNION ALL
-    SELECT 'staticrc50', 9
-  UNION ALL
-    SELECT 'staticrc60', 10
-  UNION ALL
-    SELECT 'staticrc70', 11
-  UNION ALL
-    SELECT 'staticrc80', 12
-)
-,base AS
-(   SELECT  schema_name
-    ,       table_name
-    ,       SUM(column_count)                   AS column_count
-    ,       ISNULL(SUM(short_string_column_count),0)   AS short_string_column_count
-    ,       ISNULL(SUM(long_string_column_count),0)    AS long_string_column_count
-    FROM    (   SELECT  sm.name                                             AS schema_name
-                ,       tb.name                                             AS table_name
-                ,       COUNT(co.column_id)                                 AS column_count
-                           ,       CASE    WHEN co.system_type_id IN (36,43,106,108,165,167,173,175,231,239)
-                                AND  co.max_length <= 32
-                                THEN COUNT(co.column_id)
-                        END                                                 AS short_string_column_count
-                ,       CASE    WHEN co.system_type_id IN (165,167,173,175,231,239)
-                                AND  co.max_length > 32 and co.max_length <=8000
-                                THEN COUNT(co.column_id)
-                        END                                                 AS long_string_column_count
-                FROM    sys.schemas AS sm
-                JOIN    sys.tables  AS tb   on sm.[schema_id] = tb.[schema_id]
-                JOIN    sys.columns AS co   ON tb.[object_id] = co.[object_id]
-                           WHERE tb.name = @TABLE_NAME AND sm.name = @SCHEMA_NAME
-                GROUP BY sm.name
-                ,        tb.name
-                ,        co.system_type_id
-                ,        co.max_length            ) a
-GROUP BY schema_name
-,        table_name
-)
-, size AS
-(
-SELECT  schema_name
-,       table_name
-,       75497472                                            AS table_overhead
-
-,       column_count*1048576*8                              AS column_size
-,       short_string_column_count*1048576*32                       AS short_string_size,       (long_string_column_count*16777216) AS long_string_size
-FROM    base
-UNION
-SELECT CASE WHEN COUNT(*) = 0 THEN 'EMPTY' END as schema_name
-         ,CASE WHEN COUNT(*) = 0 THEN 'EMPTY' END as table_name
-         ,CASE WHEN COUNT(*) = 0 THEN 0 END as table_overhead
-         ,CASE WHEN COUNT(*) = 0 THEN 0 END as column_size
-         ,CASE WHEN COUNT(*) = 0 THEN 0 END as short_string_size
-
-,CASE WHEN COUNT(*) = 0 THEN 0 END as long_string_size
-FROM   base
-)
-, load_multiplier as
-(
-SELECT  CASE
-                     WHEN FLOOR(8 -(CAST (@DWU_NUM AS FLOAT)/6000)) > 0 THEN FLOOR(8 -(CAST (@DWU_NUM AS FLOAT)/6000))
-                     ELSE 1
-              END AS multiplication_factor
-)
-       SELECT  r1.DWU
-       , schema_name
-       , table_name
-       , rc.resource_class as closest_rc_in_increasing_order
-       , max_queries_at_this_rc = CASE
-             WHEN (r1.max_slots / r1.slots_used > r1.max_queries)
-                  THEN r1.max_queries
-             ELSE r1.max_slots / r1.slots_used
-                  END
-       , r1.max_slots as max_concurrency_slots
-       , r1.slots_used as required_slots_for_the_rc
-       , r1.tgt_mem_grant_MB  as rc_mem_grant_MB
-       , CAST((table_overhead*1.0+column_size+short_string_size+long_string_size)*multiplication_factor/1048576    AS DECIMAL(18,2)) AS est_mem_grant_required_for_cci_operation_MB
-       FROM    size, load_multiplier, #ref r1, names  rc
-       WHERE r1.rc_id=rc.rc_id
-                     AND CAST((table_overhead*1.0+column_size+short_string_size+long_string_size)*multiplication_factor/1048576    AS DECIMAL(18,2)) < r1.tgt_mem_grant_MB
-       ORDER BY ABS(CAST((table_overhead*1.0+column_size+short_string_size+long_string_size)*multiplication_factor/1048576    AS DECIMAL(18,2)) - r1.tgt_mem_grant_MB)
-GO
-```
-
-### <a name="stored-procedure-definition-for-gen2"></a>De definitie van de opgeslagen procedure voor Gen2
+### <a name="stored-procedure-definition"></a>Definitie van de opgeslagen procedure
 
 ```sql
 -------------------------------------------------------------------------------
@@ -607,13 +272,15 @@ AS
 IF @DWU IS NULL
 BEGIN
 -- Selecting proper DWU for the current DB if not specified.
-  SELECT @DWU = 'DW'+CAST(Nodes*CASE WHEN CPUVer>6 THEN 500 ELSE 100 END AS VARCHAR(10))+CASE WHEN CPUVer>6 THEN 'c' ELSE '' END
+
+SELECT @DWU = 'DW'+ CAST(CASE WHEN Mem> 4 THEN Nodes*500 
+  ELSE Mem*100 
+  END AS VARCHAR(10)) +'c'
     FROM (
-      SELECT Nodes=count(distinct n.pdw_node_id), CPUVer=max(i.cpu_count)
+      SELECT Nodes=count(distinct n.pdw_node_id), Mem=max(i.committed_target_kb/1000/1000/60)
         FROM sys.dm_pdw_nodes n
         CROSS APPLY sys.dm_pdw_nodes_os_sys_info i
-        WHERE type = 'COMPUTE'
-         )A
+        WHERE type = 'COMPUTE')A
 END
 
 -- Dropping temp table if exists.
@@ -631,54 +298,37 @@ WITH
 alloc
 AS
 (
-  SELECT 'DW100' AS DWU, 4 AS max_queries, 4 AS max_slots, 1 AS slots_used_smallrc, 1 AS slots_used_mediumrc,
-        2 AS slots_used_largerc, 4 AS slots_used_xlargerc, 1 AS slots_used_staticrc10, 2 AS slots_used_staticrc20,
-        4 AS slots_used_staticrc30, 4 AS slots_used_staticrc40, 4 AS slots_used_staticrc50,
-        4 AS slots_used_staticrc60, 4 AS slots_used_staticrc70, 4 AS slots_used_staticrc80
-  UNION ALL
-    SELECT 'DW200', 8, 8, 1, 2, 4, 8, 1, 2, 4, 8, 8, 8, 8, 8
-  UNION ALL
-    SELECT 'DW300', 12, 12, 1, 2, 4, 8, 1, 2, 4, 8, 8, 8, 8, 8
-  UNION ALL
-    SELECT 'DW400', 16, 16, 1, 4, 8, 16, 1, 2, 4, 8, 16, 16, 16, 16
-  UNION ALL
-    SELECT 'DW500', 20, 20, 1, 4, 8, 16, 1, 2, 4, 8, 16, 16, 16, 16
-  UNION ALL
-    SELECT 'DW600', 24, 24, 1, 4, 8, 16, 1, 2, 4, 8, 16, 16, 16, 16
-  UNION ALL
-    SELECT 'DW1000', 32, 40, 1, 8, 16, 32, 1, 2, 4, 8, 16, 32, 32, 32
-  UNION ALL
-    SELECT 'DW1200', 32, 48, 1, 8, 16, 32, 1, 2, 4, 8, 16, 32, 32, 32
-  UNION ALL
-    SELECT 'DW1500', 32, 60, 1, 8, 16, 32, 1, 2, 4, 8, 16, 32, 32, 32
-  UNION ALL
-    SELECT 'DW2000', 32, 80, 1, 16, 32, 64, 1, 2, 4, 8, 16, 32, 64, 64
-  UNION ALL
-    SELECT 'DW3000', 32, 120, 1, 16, 32, 64, 1, 2, 4, 8, 16, 32, 64, 64
-  UNION ALL
-    SELECT 'DW6000', 32, 240, 1, 32, 64, 128, 1, 2, 4, 8, 16, 32, 64, 128
-  UNION ALL
-    SELECT 'DW1000c', 32, 40, 1, 4, 8, 28, 1, 2, 4, 8, 16, 32, 32, 32
-  UNION ALL
-    SELECT 'DW1500c', 32, 60, 1, 6, 13, 42, 1, 2, 4, 8, 16, 32, 32, 32
-  UNION ALL
-    SELECT 'DW2000c', 48, 80, 2, 8, 17, 56, 1, 2, 4, 8, 16, 32, 64, 64
-  UNION ALL
-    SELECT 'DW2500c', 48, 100, 3, 10, 22, 70, 1, 2, 4, 8, 16, 32, 64, 64
-  UNION ALL
-    SELECT 'DW3000c', 64, 120, 3, 12, 26, 84, 1, 2, 4, 8, 16, 32, 64, 64
-  UNION ALL
-    SELECT 'DW5000c', 64, 200, 6, 20, 44, 140, 1, 2, 4, 8, 16, 32, 64, 128
-  UNION ALL
-    SELECT 'DW6000c', 128, 240, 7, 24, 52, 168, 1, 2, 4, 8, 16, 32, 64, 128
-  UNION ALL
-    SELECT 'DW7500c', 128, 300, 9, 30, 66, 210, 1, 2, 4, 8, 16, 32, 64, 128
-  UNION ALL
-    SELECT 'DW10000c', 128, 400, 12, 40, 88, 280, 1, 2, 4, 8, 16, 32, 64, 128
-  UNION ALL
-    SELECT 'DW15000c', 128, 600, 18, 60, 132, 420, 1, 2, 4, 8, 16, 32, 64, 128
-  UNION ALL
-    SELECT 'DW30000c', 128, 1200, 36, 120, 264, 840, 1, 2, 4, 8, 16, 32, 64, 128
+SELECT 'DW100c' AS DWU,4 AS max_queries,4 AS max_slots,1 AS slots_used_smallrc,1 AS slots_used_mediumrc,2 AS slots_used_largerc,4 AS slots_used_xlargerc,1 AS slots_used_staticrc10,2 AS slots_used_staticrc20,4 AS slots_used_staticrc30,4 AS slots_used_staticrc40,4 AS slots_used_staticrc50,4 AS slots_used_staticrc60,4 AS slots_used_staticrc70,4 AS slots_used_staticrc80
+  UNION ALL
+    SELECT 'DW200c', 8, 8, 1, 2, 4, 8, 1, 2, 4, 8, 8, 8, 8, 8
+  UNION ALL
+    SELECT 'DW300c', 12, 12, 1, 2, 4, 8, 1, 2, 4, 8, 8, 8, 8, 8
+  UNION ALL
+    SELECT 'DW400c', 16, 16, 1, 4, 8, 16, 1, 2, 4, 8, 16, 16, 16, 16
+  UNION ALL
+    SELECT 'DW500c', 20, 20, 1, 4, 8, 16, 1, 2, 4, 8, 16, 16, 16, 16
+  UNION ALL
+    SELECT 'DW1000c', 32, 40, 1, 4, 8, 28, 1, 2, 4, 8, 16, 32, 32, 32
+  UNION ALL
+    SELECT 'DW1500c', 32, 60, 1, 6, 13, 42, 1, 2, 4, 8, 16, 32, 32, 32
+  UNION ALL
+    SELECT 'DW2000c', 48, 80, 2, 8, 17, 56, 1, 2, 4, 8, 16, 32, 64, 64
+  UNION ALL
+    SELECT 'DW2500c', 48, 100, 3, 10, 22, 70, 1, 2, 4, 8, 16, 32, 64, 64
+  UNION ALL
+    SELECT 'DW3000c', 64, 120, 3, 12, 26, 84, 1, 2, 4, 8, 16, 32, 64, 64
+  UNION ALL
+    SELECT 'DW5000c', 64, 200, 6, 20, 44, 140, 1, 2, 4, 8, 16, 32, 64, 128
+  UNION ALL
+    SELECT 'DW6000c', 128, 240, 7, 24, 52, 168, 1, 2, 4, 8, 16, 32, 64, 128
+  UNION ALL
+    SELECT 'DW7500c', 128, 300, 9, 30, 66, 210, 1, 2, 4, 8, 16, 32, 64, 128
+  UNION ALL
+    SELECT 'DW10000c', 128, 400, 12, 40, 88, 280, 1, 2, 4, 8, 16, 32, 64, 128
+  UNION ALL
+    SELECT 'DW15000c', 128, 600, 18, 60, 132, 420, 1, 2, 4, 8, 16, 32, 64, 128
+  UNION ALL
+    SELECT 'DW30000c', 128, 1200, 36, 120, 264, 840, 1, 2, 4, 8, 16, 32, 64, 128 
 )
 -- Creating workload mapping to their corresponding slot consumption and default memory grant.
 ,map
@@ -715,29 +365,29 @@ AS
 (
   SELECT  a1.*
   ,       m1.wg_name          AS wg_name_smallrc
-  ,       m1.slots_used * CASE WHEN RIGHT(@DWU,1)='c' THEN 250 ELSE 200 END AS tgt_mem_grant_MB_smallrc
+  ,       m1.slots_used * 250 AS tgt_mem_grant_MB_smallrc
   ,       m2.wg_name          AS wg_name_mediumrc
-  ,       m2.slots_used * CASE WHEN RIGHT(@DWU,1)='c' THEN 250 ELSE 200 END AS tgt_mem_grant_MB_mediumrc
+  ,       m2.slots_used * 250 AS tgt_mem_grant_MB_mediumrc
   ,       m3.wg_name          AS wg_name_largerc
-  ,       m3.slots_used * CASE WHEN RIGHT(@DWU,1)='c' THEN 250 ELSE 200 END AS tgt_mem_grant_MB_largerc
+  ,       m3.slots_used * 250 AS tgt_mem_grant_MB_largerc
   ,       m4.wg_name          AS wg_name_xlargerc
-  ,       m4.slots_used * CASE WHEN RIGHT(@DWU,1)='c' THEN 250 ELSE 200 END AS tgt_mem_grant_MB_xlargerc
+  ,       m4.slots_used * 250 AS tgt_mem_grant_MB_xlargerc
   ,       m5.wg_name          AS wg_name_staticrc10
-  ,       m5.slots_used * CASE WHEN RIGHT(@DWU,1)='c' THEN 250 ELSE 200 END AS tgt_mem_grant_MB_staticrc10
+  ,       m5.slots_used * 250 AS tgt_mem_grant_MB_staticrc10
   ,       m6.wg_name          AS wg_name_staticrc20
-  ,       m6.slots_used * CASE WHEN RIGHT(@DWU,1)='c' THEN 250 ELSE 200 END AS tgt_mem_grant_MB_staticrc20
+  ,       m6.slots_used * 250 AS tgt_mem_grant_MB_staticrc20
   ,       m7.wg_name          AS wg_name_staticrc30
-  ,       m7.slots_used * CASE WHEN RIGHT(@DWU,1)='c' THEN 250 ELSE 200 END AS tgt_mem_grant_MB_staticrc30
+  ,       m7.slots_used * 250 AS tgt_mem_grant_MB_staticrc30
   ,       m8.wg_name          AS wg_name_staticrc40
-  ,       m8.slots_used * CASE WHEN RIGHT(@DWU,1)='c' THEN 250 ELSE 200 END AS tgt_mem_grant_MB_staticrc40
+  ,       m8.slots_used * 250 AS tgt_mem_grant_MB_staticrc40
   ,       m9.wg_name          AS wg_name_staticrc50
-  ,       m9.slots_used * CASE WHEN RIGHT(@DWU,1)='c' THEN 250 ELSE 200 END AS tgt_mem_grant_MB_staticrc50
+  ,       m9.slots_used * 250 AS tgt_mem_grant_MB_staticrc50
   ,       m10.wg_name          AS wg_name_staticrc60
-  ,       m10.slots_used * CASE WHEN RIGHT(@DWU,1)='c' THEN 250 ELSE 200 END AS tgt_mem_grant_MB_staticrc60
+  ,       m10.slots_used * 250 AS tgt_mem_grant_MB_staticrc60
   ,       m11.wg_name          AS wg_name_staticrc70
-  ,       m11.slots_used * CASE WHEN RIGHT(@DWU,1)='c' THEN 250 ELSE 200 END AS tgt_mem_grant_MB_staticrc70
+  ,       m11.slots_used * 250 AS tgt_mem_grant_MB_staticrc70
   ,       m12.wg_name          AS wg_name_staticrc80
-  ,       m12.slots_used * CASE WHEN RIGHT(@DWU,1)='c' THEN 250 ELSE 200 END AS tgt_mem_grant_MB_staticrc80
+  ,       m12.slots_used * 250 AS tgt_mem_grant_MB_staticrc80
   FROM alloc a1
   JOIN map   m1  ON a1.slots_used_smallrc     = m1.slots_used and m1.wg_name = 'SloDWGroupSmall'
   JOIN map   m2  ON a1.slots_used_mediumrc    = m2.slots_used and m2.wg_name = 'SloDWGroupMedium'
@@ -932,7 +582,7 @@ GO
 
 ## <a name="next-step"></a>Volgende stap
 
-Zie voor meer informatie over het beheren van databasegebruikers en beveiliging [beveiligen van een database in SQL Data Warehouse][Secure a database in SQL Data Warehouse]. Zie voor meer informatie over hoe grotere resourceklassen geclusterde columnstore-index kwaliteit verbeteren kan, [geheugenoptimalisaties voor columnstore-compressie](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md).
+Zie [een Data Base beveiligen in SQL Data Warehouse][Secure a database in SQL Data Warehouse]voor meer informatie over het beheren van database gebruikers en beveiliging. Zie [geheugen optimalisaties voor column Store-compressie](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md)voor meer informatie over hoe grotere resource klassen de geclusterde column store-index kwaliteit kunnen verbeteren.
 
 <!--Image references-->
 

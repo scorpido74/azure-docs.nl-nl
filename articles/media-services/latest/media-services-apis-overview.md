@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 07/05/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 5558eeb4012ac563388ad47df61114534e9859ed
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: c6c8bcfec9a8bdf6948190c5f132c2e1763b9973
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70308345"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72025633"
 ---
 # <a name="developing-with-media-services-v3-apis"></a>Ontwikkelen met Media Services v3-Api's
 
@@ -32,7 +32,7 @@ Als u toegang wilt hebben tot Media Services resources en de Media Services-API,
 * **Service-Principal-verificatie** : wordt gebruikt om een service te verifiëren (bijvoorbeeld: Web apps, functie-apps, Logic apps, API en micro Services). Toepassingen die meestal gebruikmaken van deze verificatie methode zijn apps die daemon services, middelste laag Services of geplande taken uitvoeren. Voor webtoepassingen moet er bijvoorbeeld altijd een mid-tier zijn die verbinding maakt met Media Services met een service-principal.
 * **Gebruikers verificatie** : wordt gebruikt voor de verificatie van een persoon die de app gebruikt om te communiceren met Media Services-resources. De interactieve toepassing moet eerst de gebruiker vragen naar de referenties van de gebruiker. Een voor beeld is een beheer console-app die door geautoriseerde gebruikers wordt gebruikt voor het bewaken van coderings taken of live streamen.
 
-De Media Services-API vereist dat de gebruiker of toepassing die de REST API aanvragen maakt toegang tot de resource van het Media Services-account heeft en een rol voor **Inzender** of **eigenaar** kan gebruiken. De API kan worden geopend met de rol **lezer** , maar er zijn alleen **Get** -of **List**   -bewerkingen beschikbaar. Zie [op rollen gebaseerd toegangs beheer voor Media Services accounts](rbac-overview.md)voor meer informatie.
+De Media Services-API vereist dat de gebruiker of toepassing die de REST API aanvragen maakt toegang tot de resource van het Media Services-account heeft en een rol voor **Inzender** of **eigenaar** kan gebruiken. De API kan worden geopend met de rol **lezer** , maar er zijn alleen **Get** -of **List** -bewerkingen beschikbaar. Zie [op rollen gebaseerd toegangs beheer voor Media Services accounts](rbac-overview.md)voor meer informatie.
 
 In plaats van een service-principal te maken, kunt u overwegen beheerde identiteiten te gebruiken voor Azure-resources om toegang te krijgen tot de Media Services-API via Azure Resource Manager. Zie [Wat is beheerde identiteiten voor Azure](../../active-directory/managed-identities-azure-resources/overview.md)-resources voor meer informatie over beheerde identiteiten voor Azure-resources.
 
@@ -83,7 +83,7 @@ De namen van bestanden/blobs in een Asset moeten de [vereisten voor de BLOB-naam
 
 ## <a name="long-running-operations"></a>Langlopende bewerkingen
 
-De bewerkingen die zijn `x-ms-long-running-operation` gemarkeerd met in de Azure Media Services [Swagger-bestanden](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01/streamingservice.json) zijn langlopende bewerkingen. 
+De bewerkingen die zijn gemarkeerd met `x-ms-long-running-operation` in de Azure Media Services [Swagger-bestanden](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01/streamingservice.json) zijn langlopende bewerkingen. 
 
 Zie [asynchrone bewerkingen](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations#monitor-status-of-operation)voor meer informatie over het bijhouden van asynchrone Azure-bewerkingen.
 
@@ -95,7 +95,7 @@ Media Services heeft de volgende langlopende bewerkingen:
 * [Live-gebeurtenis starten](https://docs.microsoft.com/rest/api/media/liveevents/start)
 * [LiveEvent stoppen](https://docs.microsoft.com/rest/api/media/liveevents/stop)
 
-  Gebruik de `removeOutputsOnStop` para meter om alle gekoppelde live-uitvoer te verwijderen bij het stoppen van de gebeurtenis.  
+  Gebruik de para meter `removeOutputsOnStop` om alle gekoppelde live-uitvoer te verwijderen wanneer de gebeurtenis wordt gestopt.  
 * [LiveEvent opnieuw instellen](https://docs.microsoft.com/rest/api/media/liveevents/reset)
 * [LiveOutput maken](https://docs.microsoft.com/rest/api/media/liveevents/create)
 * [LiveOutput verwijderen](https://docs.microsoft.com/rest/api/media/liveevents/delete)

@@ -13,24 +13,24 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/17/2019
+ms.date: 10/07/2019
 ms.author: ryanwi
 ms.custom: aaddev, annaba, identityplatformtop40
 ms.reviewer: hirsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b3696ebc216062a6d52fd187819f07dfb0078057
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.openlocfilehash: be2e9d7657d621a285f7177dc6cdd3a01b83470d
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71812581"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72024442"
 ---
 # <a name="configurable-token-lifetimes-in-azure-active-directory-preview"></a>Configureer bare levens duur van tokens in Azure Active Directory (preview-versie)
 
 U kunt de levens duur opgeven van een token dat is uitgegeven door Azure Active Directory (Azure AD). U kunt de levens duur van tokens instellen voor alle apps in uw organisatie, voor een multi tenant-toepassing (meerdere organisaties) of voor een specifieke Service-Principal in uw organisatie.
 
 > [!IMPORTANT]
-> Nadat klanten tijdens de preview-periode hebben gehoord, hebben we [verificatie sessie beheer functies](https://go.microsoft.com/fwlink/?linkid=2083106) geïmplementeerd in voorwaardelijke toegang van Azure AD. Met deze nieuwe functie kunt u de levens duur van het vernieuwings token configureren door de aanmeldings frequentie in te stellen. Na 1 november 2019 kunt u de Configureer bare token levensduur beleid niet gebruiken voor het configureren van sessie-en vernieuwings tokens. U kunt de levens duur van toegangs tokens na de afschaffing nog steeds configureren.
+> Nadat klanten tijdens de preview-periode hebben gehoord, hebben we [verificatie sessie beheer functies](https://go.microsoft.com/fwlink/?linkid=2083106) geïmplementeerd in voorwaardelijke toegang van Azure AD. Met deze nieuwe functie kunt u de levens duur van het vernieuwings token configureren door de aanmeldings frequentie in te stellen. Na 1 mei 2020 kunt u de Configureer bare token levensduur beleid niet gebruiken voor het configureren van sessie-en vernieuwings tokens. U kunt de levens duur van toegangs tokens na de afschaffing nog steeds configureren.
 
 In azure AD vertegenwoordigt een beleids object een set regels die worden afgedwongen voor afzonderlijke toepassingen of voor alle toepassingen in een organisatie. Elk beleids type heeft een unieke structuur, met een reeks eigenschappen die worden toegepast op objecten waaraan ze zijn toegewezen.
 
@@ -57,11 +57,11 @@ Wanneer een client een toegangs token verkrijgt om toegang te krijgen tot een be
 Het is belang rijk om onderscheid te maken tussen vertrouwelijke clients en open bare clients, omdat dit van invloed is op hoe lang vernieuwings tokens kunnen worden gebruikt. Zie [RFC 6749](https://tools.ietf.org/html/rfc6749#section-2.1)voor meer informatie over verschillende typen clients.
 
 #### <a name="token-lifetimes-with-confidential-client-refresh-tokens"></a>Levens duur van tokens met vertrouwelijke client vernieuwings tokens
-Vertrouwelijke clients zijn toepassingen die een client wachtwoord (geheim) veilig kunnen opslaan. Ze kunnen bewijzen dat aanvragen afkomstig zijn van de beveiligde client toepassing en niet van een schadelijke actor. Een web-app is bijvoorbeeld een vertrouwelijke client omdat hiermee een client geheim kan worden opgeslagen op de webserver. Het wordt niet weer gegeven. Omdat deze stromen veiliger zijn, kunnen de standaard levensduur van vernieuwings tokens die worden uitgegeven aan `until-revoked`deze stromen, niet worden gewijzigd met behulp van beleid en worden ze niet ingetrokken voor het opnieuw instellen van het wacht woord.
+Vertrouwelijke clients zijn toepassingen die een client wachtwoord (geheim) veilig kunnen opslaan. Ze kunnen bewijzen dat aanvragen afkomstig zijn van de beveiligde client toepassing en niet van een schadelijke actor. Een web-app is bijvoorbeeld een vertrouwelijke client omdat hiermee een client geheim kan worden opgeslagen op de webserver. Het wordt niet weer gegeven. Omdat deze stromen veiliger zijn, is de standaard levensduur van vernieuwings tokens die aan deze stromen worden verleend `until-revoked`, kan niet worden gewijzigd met behulp van beleid en wordt niet ingetrokken bij het opnieuw instellen van het wacht woord.
 
 #### <a name="token-lifetimes-with-public-client-refresh-tokens"></a>Levens duur van tokens met open bare client vernieuwings tokens
 
-Open bare clients kunnen een client wachtwoord (geheim) niet veilig opslaan. Een iOS/Android-app kan bijvoorbeeld geen geheim van de resource-eigenaar maken, dus wordt het beschouwd als een open bare client. U kunt beleids regels instellen op resources om te voor komen dat de vernieuwings tokens van open bare clients ouder dan een opgegeven periode een nieuw token paar voor toegang/vernieuwing verkrijgen. (Als u dit wilt doen, gebruikt u de eigenschap voor het vernieuwen van`MaxInactiveTime`het token voor de maximale inactieve tijd ().) U kunt ook beleid gebruiken om een periode in te stellen waarboven de vernieuwings tokens niet langer worden geaccepteerd. (Als u dit wilt doen, gebruikt u de eigenschap maximum leeftijd van het token vernieuwen.) U kunt de levens duur van een vernieuwings token aanpassen om te bepalen wanneer en hoe vaak de gebruiker de referenties opnieuw moet invoeren, in plaats van dat deze wordt geauthenticeerd wanneer een open bare client toepassing wordt gebruikt.
+Open bare clients kunnen een client wachtwoord (geheim) niet veilig opslaan. Een iOS/Android-app kan bijvoorbeeld geen geheim van de resource-eigenaar maken, dus wordt het beschouwd als een open bare client. U kunt beleids regels instellen op resources om te voor komen dat de vernieuwings tokens van open bare clients ouder dan een opgegeven periode een nieuw token paar voor toegang/vernieuwing verkrijgen. (Als u dit wilt doen, gebruikt u de eigenschap voor het vernieuwen van het token voor de maximale inactieve tijd (`MaxInactiveTime`).) U kunt ook beleid gebruiken om een periode in te stellen waarboven de vernieuwings tokens niet langer worden geaccepteerd. (Als u dit wilt doen, gebruikt u de eigenschap maximum leeftijd van het token vernieuwen.) U kunt de levens duur van een vernieuwings token aanpassen om te bepalen wanneer en hoe vaak de gebruiker de referenties opnieuw moet invoeren, in plaats van dat deze wordt geauthenticeerd wanneer een open bare client toepassing wordt gebruikt.
 
 ### <a name="id-tokens"></a>Id-tokens
 ID-tokens worden door gegeven aan websites en native clients. ID-tokens bevatten profiel informatie over een gebruiker. Een ID-token is gebonden aan een specifieke combi natie van gebruiker en client. ID-tokens worden beschouwd als geldig tot de verval datum. Normaal gesp roken komt een webtoepassing overeen met de levens duur van de sessie van een gebruiker in de toepassing tot de levens duur van het ID-token dat voor de gebruiker is uitgegeven. U kunt de levens duur van een ID-token aanpassen om te bepalen hoe vaak de webtoepassing de toepassings sessie verloopt en hoe vaak de gebruiker opnieuw moet worden geverifieerd met Azure AD (op de achtergrond of interactief).
@@ -112,7 +112,7 @@ Zie [Application and Service Principal Objects in azure Active Directory](app-ob
 
 De geldigheid van een token wordt geëvalueerd op het moment dat het token wordt gebruikt. Het beleid met de hoogste prioriteit voor de toepassing die wordt geopend, treedt in werking.
 
-Alle TimeSpans die hier worden gebruikt, zijn ingedeeld C# op basis van het [span](/dotnet/api/system.timespan) -object-D. uu: mm: SS.  80 dagen en 30 minuten zouden zijn `80.00:30:00`.  De voorloop D kan worden verwijderd als de waarde nul is, dus 90 `00:90:00`minuten.  
+Alle TimeSpans die hier worden gebruikt, zijn ingedeeld C# op basis van het [span](/dotnet/api/system.timespan) -object-D. uu: mm: SS.  80 dagen en 30 minuten zouden `80.00:30:00` zijn.  De voor loop-D kan worden verwijderd als de waarde nul is, dus 90 minuten zou `00:90:00` zijn.  
 
 > [!NOTE]
 > Hier volgt een voorbeeld scenario.
@@ -210,7 +210,7 @@ In de volgende voor beelden maakt, bijwerkt, koppelt en verwijdert u beleid voor
 Voer de volgende stappen uit om aan de slag te gaan:
 
 1. Down load de nieuwste [open bare preview-versie van Azure AD Power shell-module](https://www.powershellgallery.com/packages/AzureADPreview).
-2. Voer de `Connect` opdracht uit om u aan te melden bij uw Azure AD-beheerders account. Voer deze opdracht telkens uit wanneer u een nieuwe sessie start.
+2. Voer de `Connect`-opdracht uit om u aan te melden bij uw Azure AD-beheerders account. Voer deze opdracht telkens uit wanneer u een nieuwe sessie start.
 
     ```powershell
     Connect-AzureAD -Confirm
@@ -355,7 +355,7 @@ In dit voor beeld maakt u een paar beleids regels om te leren hoe het prioriteit
         Add-AzureADServicePrincipalPolicy -Id $sp.ObjectId -RefObjectId $policy.Id
         ```
 
-3. Stel de `IsOrganizationDefault` vlag in op False:
+3. Stel de vlag `IsOrganizationDefault` in op False:
 
     ```powershell
     Set-AzureADPolicy -Id $policy.Id -DisplayName "ComplexPolicyScenario" -IsOrganizationDefault $false

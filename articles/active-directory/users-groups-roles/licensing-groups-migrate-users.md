@@ -1,6 +1,6 @@
 ---
-title: Afzonderlijk gelicentieerde gebruikers toevoegen aan de groep op basis van licentieverlening - Azure Active Directory | Microsoft Docs
-description: Over het migreren van afzonderlijke gebruikerslicenties aan op basis van een groep met behulp van Azure Active Directory-licentieverlening
+title: Gebruikers met een afzonderlijke licentie toevoegen aan een groeps licentie-Azure Active Directory | Microsoft Docs
+description: Migratie van afzonderlijke gebruikers licenties naar een groeps licentie met behulp van Azure Active Directory
 services: active-directory
 keywords: Azure AD-licenties
 documentationcenter: ''
@@ -11,83 +11,79 @@ ms.service: active-directory
 ms.topic: article
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.date: 03/18/2019
+ms.date: 09/26/2019
 ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: seohack1;it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 333f0ae0153073b57740446ecf47e36a1f9ce590
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 29ec9c05a7e7d594c64a450fe64e5bb0e0d1b7d0
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65192459"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72034748"
 ---
-# <a name="how-to-migrate-users-with-individual-licenses-to-groups-for-licensing"></a>Het migreren van gebruikers met afzonderlijke licenties aan groepen voor licentieverlening
+# <a name="how-to-migrate-users-with-individual-licenses-to-groups-for-licensing"></a>Gebruikers met afzonderlijke licenties migreren naar groepen voor licentie verlening
 
-Mogelijk hebt u bestaande licenties die zijn geïmplementeerd naar gebruikers in de organisaties via 'directe toewijzing'; dat wil zeggen, gebruik van PowerShell-scripts of andere hulpprogramma's voor afzonderlijke gebruikerslicenties toewijzen. Voordat u met behulp van Groepslicenties begint voor het beheren van licenties in uw organisatie, kunt u dit migratieplan naadloos vervangen bestaande oplossingen met Groepslicenties.
+Mogelijk hebt u bestaande licenties die zijn geïmplementeerd voor gebruikers in de organisaties via ' directe toewijzing '; dat wil zeggen, met behulp van Power shell-scripts of andere hulpprogram ma's om afzonderlijke gebruikers licenties toe te wijzen. Voordat u begint met het gebruik van groeps licenties voor het beheren van licenties in uw organisatie, kunt u dit migratie plan gebruiken om bestaande oplossingen naadloos te vervangen door op groepen gebaseerde licentie verlening.
 
-Het belangrijkste dat rekening moet houden is dat u een situatie waarbij migreren naar Groepslicenties leidt gebruikers tijdelijk verlies van hun momenteel toegewezen licenties te vermijden. Elke proces dat tot het verwijderen van licenties leiden kan moet worden vermeden als u wilt verwijderen van het risico van gebruikers die toegang tot services en hun gegevens verliezen.
+Het belangrijkste voor deel is dat u een situatie moet vermijden waarbij de migratie naar op groep gebaseerde licentie verlening ertoe leidt dat gebruikers de momenteel toegewezen licenties tijdelijk kwijt raken. Elk proces dat kan leiden tot het verwijderen van licenties moet worden vermeden om het risico te verwijderen dat gebruikers de toegang tot services en hun gegevens verliezen.
 
-## <a name="recommended-migration-process"></a>Aanbevolen migratieproces
+## <a name="recommended-migration-process"></a>Aanbevolen migratie proces
 
-1. U hebt bestaande automatisering (bijvoorbeeld, PowerShell) voor het beheren van toewijzing van licenties en verwijderen voor gebruikers. Laat het wordt uitgevoerd.
+1. U hebt al een automatisering (bijvoorbeeld Power shell) voor het beheren van de licentie toewijzing en het verwijderen van gebruikers. Zorg ervoor dat het actief blijft.
 
-2. Maak een nieuwe licentie-groep (of bepalen welke bestaande groepen moeten worden gebruikt) en zorg ervoor dat alle vereiste dat gebruikers worden toegevoegd als leden.
+1. Maak een nieuwe licentie groep (of bepaal welke bestaande groepen u wilt gebruiken) en zorg ervoor dat alle vereiste gebruikers worden toegevoegd als leden.
 
-3. De vereiste licenties toewijzen aan deze groepen; het doel moet in overeenstemming met de dezelfde licentieverleningsstatus heeft die uw bestaande automatisering (bijvoorbeeld, PowerShell) wordt toegepast op gebruikers.
+1. Wijs de vereiste licenties toe aan deze groepen. het doel moet overeenkomen met dezelfde licentie status als uw bestaande automatisering (bijvoorbeeld Power shell) voor deze gebruikers.
 
-4. Controleer of dat licenties zijn toegepast op alle gebruikers in deze groepen. Deze toepassing kan worden gedaan door het controleren van de verwerkingsstatus voor elke groep en door het controleren van de logboeken voor controle.
+1. Controleer of de licenties zijn toegepast op alle gebruikers in die groepen. U kunt deze toepassing uitvoeren door de verwerkings status van elke groep te controleren en door audit logboeken te controleren.
 
-   - Kunt u afzonderlijke gebruikers controle door te kijken naar de details van hun licentie. U ziet dat ze hebben dezelfde licenties zijn toegewezen "rechtstreeks" en "overgenomen" van groepen.
+   - U kunt afzonderlijke gebruikers controleren door hun licentie gegevens te bekijken. U ziet dat ze dezelfde licenties hebben toegewezen als ' direct ' en ' overgenomen ' van groepen.
 
-   - U kunt een PowerShell-script voor uitvoeren [controleren hoe licenties zijn toegewezen aan gebruikers](licensing-group-advanced.md#use-powershell-to-see-who-has-inherited-and-direct-licenses).
+   - U kunt een Power shell-script uitvoeren om te [controleren hoe licenties aan gebruikers worden toegewezen](licensing-group-advanced.md#use-powershell-to-see-who-has-inherited-and-direct-licenses).
 
-   - Als de dezelfde productlicentie is toegewezen aan de gebruiker rechtstreeks en via een groep, wordt slechts één licentie voor gebruikt door de gebruiker. Er zijn geen aanvullende licenties moeten daarom migratie uit te voeren.
+   - Wanneer dezelfde product licentie zowel rechtstreeks als via een groep wordt toegewezen aan de gebruiker, wordt slechts één licentie door de gebruiker gebruikt. Er zijn dus geen extra licenties nodig om de migratie uit te voeren.
 
-5. Controleer of dat er geen licentietoewijzingen kunnen niet door het controleren van elke groep voor gebruikers in de foutstatus. Zie voor meer informatie, [identificeren en oplossen van problemen voor een groep](licensing-groups-resolve-problems.md).
+1. Controleer of er geen licentie toewijzingen zijn mislukt door elke groep te controleren op gebruikers met de status fout. Zie [licentie problemen voor een groep identificeren en oplossen](licensing-groups-resolve-problems.md)voor meer informatie.
 
-6. Houd rekening met de oorspronkelijke directe toewijzingen; worden verwijderd mogelijk wilt u geleidelijk in 'blokken' voor het bewaken van het resultaat in een subset van gebruikers eerst doen.
+Overweeg de oorspronkelijke directe toewijzingen te verwijderen. We raden u aan dit geleidelijk uit te voeren en het resultaat op een subset van gebruikers eerst te controleren. Als u de oorspronkelijke directe toewijzingen voor gebruikers kunt verlaten, maar wanneer de gebruikers hun gelicentieerde groepen verlaten, behouden ze de rechtstreeks toegewezen licenties. Dit is mogelijk niet wat u wilt.
 
-   Kan u laat u de oorspronkelijke directe toewijzingen op gebruikers, maar als de gebruikers hun groepen met licenties laat ze nog steeds de oorspronkelijke licentie, is mogelijk niet wat u wilt behouden.
+## <a name="an-example"></a>Een voor beeld
 
-## <a name="an-example"></a>Een voorbeeld
+Een organisatie heeft 1.000 gebruikers. Voor alle gebruikers zijn Office 365 Enter prise E3-licenties nodig. Op dit moment heeft de organisatie een Power shell-script dat wordt uitgevoerd op locatie, het toevoegen en verwijderen van licenties van gebruikers wanneer ze binnenkomen. De organisatie wil het script echter vervangen door op groepen gebaseerde licentie verlening zodat de licenties automatisch door Azure AD kunnen worden beheerd.
 
-Een organisatie heeft 1000 gebruikers. Alle gebruikers nodig hebben voor Enterprise Mobility + Security (EMS)-licenties. 200 gebruikers zijn op de afdeling Financiën en Office 365 Enterprise E3-licenties vereist. De organisatie heeft momenteel een PowerShell-script dat on-premises, toevoegen en verwijderen van licenties van gebruikers als ze afkomstig zijn en gaan. De organisatie wil echter vervangen door het script op basis van een groep, zodat de licenties automatisch kunnen worden beheerd door Azure AD-licentieverlening.
+Het migratie proces kan er als volgt uitzien:
 
-Dit is wat het migratieproces kan er als volgt uitzien:
+1. Wijs de Office 365 E3-licentie toe aan de groep **alle gebruikers** in azure AD met behulp van de Azure Portal.
 
-1. Met behulp van Azure portal, de EMS-licentie voor het toewijzen de **alle gebruikers** groep in Azure AD. De E3-licentie voor het toewijzen de **de afdeling financiën** groep die de vereiste gebruikers bevat.
+1. Controleer of de licentie toewijzing is voltooid voor alle gebruikers. Ga naar de pagina overzicht voor de groep, selecteer **licenties**en controleer de verwerkings status boven aan de Blade **licenties** .
 
-2. Bevestig dat de licentietoewijzing is voltooid voor alle gebruikers voor elke groep. Ga naar de blade voor elke groep, schakel **licenties**, en controleer de verwerkingsstatus aan de bovenkant van de **licenties** blade.
+   - Zoek naar "nieuwste licentie wijzigingen zijn toegepast op alle gebruikers" om te bevestigen dat de verwerking is voltooid.
 
-   - Zoek naar 'Nieuwste licentie wijzigingen zijn toegepast op alle gebruikers' om te bevestigen van de verwerking is voltooid.
+   - Zoek op de hoogte van alle gebruikers voor wie de licenties mogelijk niet zijn toegewezen. Zijn er geen licenties meer voor sommige gebruikers? Hebben sommige gebruikers conflicterende licentie plannen die voor komen dat ze groeps licenties overnemen?
 
-   - Zoek naar een melding bovenaan over gebruikers voor wie licenties mogelijk niet met succes is toegewezen. Is er geen licenties voor bepaalde gebruikers uitvoeren? Sommige gebruikers hebben conflicterende licentie-SKU's die te voorkomen dat ze overgenomen van Groepslicenties?
+1. Let op dat sommige gebruikers controleren of ze de directe en groeps licenties hebben toegepast. Ga naar de profiel pagina voor een gebruiker, selecteer **licenties**en controleer de status van licenties.
 
-3. Positie controleren op bepaalde gebruikers om te controleren of dat ze zowel de directe en groep licenties toegepast hebt. Ga naar de blade voor een gebruiker, selecteer **licenties**, en bekijk de status van licenties.
+   - Dit is de verwachte gebruikers status tijdens de migratie:
 
-   - Dit is de status van de verwachte gebruiker tijdens de migratie:
+      ![de verwachte gebruikers status tijdens de migratie](./media/licensing-groups-migrate-users/expected-user-state.png)
 
-      ![de status van de verwachte gebruiker tijdens de migratie](./media/licensing-groups-migrate-users/expected-user-state.png)
+     Hiermee wordt bevestigd dat de gebruiker zowel directe als overgenomen licenties heeft. U ziet dat Office 365 E3 is toegewezen.
 
-   Hiermee bevestigt u dat de gebruiker direct en overgenomen licenties heeft. Zien we dat beide **EMS** en **E3** zijn toegewezen.
+   - Selecteer elke licentie om te zien welke services zijn ingeschakeld. Als u wilt controleren of de directe en de groeps licenties exact dezelfde services voor de gebruiker inschakelen, selecteert u **toewijzingen**.
 
-   - Selecteer elke licentie om meer informatie over de ingeschakelde services weer te geven. Dit kan worden gebruikt om te controleren als de directe en groep-licenties exact de dezelfde service-plannen voor de gebruiker inschakelen.
+1. Nadat u hebt bevestigd dat zowel directe als groeps licenties gelijkwaardig zijn, kunt u beginnen met het verwijderen van directe licenties van gebruikers. U kunt dit testen door ze te verwijderen voor afzonderlijke gebruikers in de portal en vervolgens Automation-scripts uit te voeren, zodat ze bulksgewijs worden verwijderd. Hier volgt een voor beeld van dezelfde gebruiker met de direct-licenties die zijn verwijderd via de portal. U ziet dat de licentie status ongewijzigd blijft, maar er worden geen directe toewijzingen meer weer gegeven.
 
-      ![service-plannen voor de gebruiker controleren](./media/licensing-groups-migrate-users/check-service-plans.png)
-
-4. Nadat is bevestigd dat dat zowel direct als groep licenties gelijkwaardig zijn, kunt u beginnen met het verwijderen van directe licenties van gebruikers. U kunt dit testen door deze te verwijderen voor afzonderlijke gebruikers in de portal en voer vervolgens automatiseringsscripts van te zijn verwijderd in één bulkbewerking. Hier volgt een voorbeeld van dezelfde gebruiker in de directe licenties verwijderd via de portal. U ziet dat de licentiestatus ongewijzigd blijft, maar niet meer we direct toewijzingen zien.
-
-   ![Bevestig dat direct licenties zijn verwijderd](./media/licensing-groups-migrate-users/direct-licenses-removed.png)
+   ![bevestigen dat de directe licenties zijn verwijderd](./media/licensing-groups-migrate-users/direct-licenses-removed.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Lees voor meer informatie over andere scenario's voor Licentiebeheer via groepen
+Meer informatie over andere scenario's voor het beheer van groeps licenties:
 
-* [Wat is licentieverlening in Azure Active Directory op basis van groep?](../fundamentals/active-directory-licensing-whatis-azure-portal.md)
-* [Licenties toewijzen aan een groep in Azure Active Directory](licensing-groups-assign.md)
-* [Licentieproblemen voor een groep vaststellen en oplossen in Azure Active Directory](licensing-groups-resolve-problems.md)
-* [Het migreren van gebruikers tussen productlicenties groepsgebaseerde licentieverlening in Azure Active Directory gebruiken](licensing-groups-change-licenses.md)
-* [Aanvullende scenario’s voor Azure Active Directory-licenties op basis van groepen](licensing-group-advanced.md)
-* [PowerShell-voorbeelden voor Groepslicenties in Azure Active Directory](licensing-ps-examples.md)
+- [Wat is op een groep gebaseerde licentie verlening in Azure Active Directory?](../fundamentals/active-directory-licensing-whatis-azure-portal.md)
+- [Licenties toewijzen aan een groep in Azure Active Directory](licensing-groups-assign.md)
+- [Licentieproblemen voor een groep vaststellen en oplossen in Azure Active Directory](licensing-groups-resolve-problems.md)
+- [Het migreren van gebruikers tussen productlicenties groepsgebaseerde licentieverlening in Azure Active Directory gebruiken](licensing-groups-change-licenses.md)
+- [Aanvullende scenario’s voor Azure Active Directory-licenties op basis van groepen](licensing-group-advanced.md)
+- [PowerShell-voorbeelden voor Groepslicenties in Azure Active Directory](licensing-ps-examples.md)
