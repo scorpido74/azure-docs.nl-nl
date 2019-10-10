@@ -72,7 +72,7 @@ Voordat u een verbinding kunt maken, moet u de ITSM-connector-oplossing toevoege
    >[!NOTE]
    >Als onderdeel van de doorlopende overgang van Microsoft Operations Management Suite (OMS) naar Azure Monitor worden OMS-werk ruimten nu aangeduid als Log Analytics.
 
-5. Klik op **Create**.
+5. Klik op **Maken**.
 
 Wanneer de oplossings resource is geïmplementeerd, wordt in de rechter bovenhoek van het venster een melding weer gegeven.
 
@@ -88,7 +88,7 @@ Gebruik de volgende stappen, afhankelijk van het ITSM-product waarmee u verbindi
 - [System Center Service Manager (SCSM)](../../azure-monitor/platform/itsmc-connections.md#connect-system-center-service-manager-to-it-service-management-connector-in-azure)
 - [ServiceNow](../../azure-monitor/platform/itsmc-connections.md#connect-servicenow-to-it-service-management-connector-in-azure)
 - [Provance](../../azure-monitor/platform/itsmc-connections.md#connect-provance-to-it-service-management-connector-in-azure)  
-- [Cherwell](../../azure-monitor/platform/itsmc-connections.md#connect-cherwell-to-it-service-management-connector-in-azure)
+- [Cher well](../../azure-monitor/platform/itsmc-connections.md#connect-cherwell-to-it-service-management-connector-in-azure)
 
 Nadat u uw ITSM-hulp middelen hebt bereid, volgt u de onderstaande stappen om een verbinding te maken:
 
@@ -164,7 +164,7 @@ Als u de Servicetoewijzing oplossing gebruikt, kunt u de Service Desk-items weer
 
 ![Log Analytics scherm](media/itsmc-overview/itsmc-overview-integrated-solutions.png)
 
-Meer informatie: [Serviceoverzicht](../../azure-monitor/insights/service-map.md)
+Meer informatie: [servicetoewijzing](../../azure-monitor/insights/service-map.md)
 
 
 ## <a name="additional-information"></a>Aanvullende informatie
@@ -178,75 +178,75 @@ In de volgende informatie ziet u voor beelden van gegevens die zijn verzameld do
 >
 > Afhankelijk van het type werk item dat is geïmporteerd in Log Analytics, bevat **ServiceDesk_CL** de volgende velden:
 
-**Werk item:** **Gevallen**  
-ServiceDeskWorkItemType_s="Incident"
+**Werk item:** **incidenten**  
+ServiceDeskWorkItemType_s = "incident"
 
-**Velden**
+**Fields**
 
 - ServiceDeskConnectionName
 - Service Desk-ID
-- State
+- Staat
 - Urgentie
 - Impact
-- Priority
+- Prioriteit
 - Escalatie
 - Gemaakt door
 - Opgelost door
 - Gesloten door
-- Source
+- Bron
 - Toegewezen aan
 - Category
 - Titel
-- Description
-- Datum gemaakt
-- Datum gesloten
+- Beschrijving
+- Gemaakt op
+- Gesloten datum
 - Datum opgelost
 - Datum van laatste wijziging
 - Computer
 
 
-**Werk item:** **Wijzigings aanvragen**
+**Werk item:** **wijzigings aanvragen**
 
-ServiceDeskWorkItemType_s="ChangeRequest"
+ServiceDeskWorkItemType_s = "ChangeRequest"
 
-**Velden**
+**Fields**
 - ServiceDeskConnectionName
 - Service Desk-ID
 - Gemaakt door
 - Gesloten door
-- Source
+- Bron
 - Toegewezen aan
 - Titel
-- type
+- Type
 - Category
-- State
+- Staat
 - Escalatie
 - Conflict status
 - Urgentie
-- Priority
-- Risico 's
+- Prioriteit
+- Risico
 - Impact
 - Toegewezen aan
-- Datum gemaakt
-- Datum gesloten
+- Gemaakt op
+- Gesloten datum
 - Datum van laatste wijziging
 - Aangevraagde datum
 - Geplande begin datum
 - Geplande eind datum
 - Begin datum van werk
 - Eind datum van werk
-- Description
+- Beschrijving
 - Computer
 
 ## <a name="output-data-for-a-servicenow-incident"></a>Uitvoer gegevens voor een ServiceNow-incident
 
 | Log Analytics veld | Het veld ServiceNow |
 |:--- |:--- |
-| ServiceDeskId_s| Number |
-| IncidentState_s | State |
+| ServiceDeskId_s| Aantal |
+| IncidentState_s | Staat |
 | Urgency_s |Urgentie |
 | Impact_s |Impact|
-| Priority_s | Priority |
+| Priority_s | Prioriteit |
 | CreatedBy_s | Geopend door |
 | ResolvedBy_s | Opgelost door|
 | ClosedBy_s  | Gesloten door |
@@ -256,7 +256,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 | Title_s|  Korte beschrijving |
 | Description_s|  Opmerkingen |
 | CreatedDate_t|  Had |
-| ClosedDate_t| Gesloten|
+| ClosedDate_t| wegen|
 | ResolvedDate_t|Gecontroleerd|
 | Computer  | Configuratie-item |
 
@@ -264,17 +264,17 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 
 | Log Analytics | Het veld ServiceNow |
 |:--- |:--- |
-| ServiceDeskId_s| Number |
+| ServiceDeskId_s| Aantal |
 | CreatedBy_s | Aangevraagd door |
 | ClosedBy_s | Gesloten door |
 | AssignedTo_s | Toegewezen aan  |
 | Title_s|  Korte beschrijving |
-| Type_s|  type |
+| Type_s|  Type |
 | Category_s|  Category |
-| CRState_s|  State|
+| CRState_s|  Staat|
 | Urgency_s|  Urgentie |
-| Priority_s| Priority|
-| Risk_s| Risico 's|
+| Priority_s| Prioriteit|
+| Risk_s| Risico|
 | Impact_s| Impact|
 | RequestedDate_t  | Aangevraagd door datum |
 | ClosedDate_t | Gesloten datum |
@@ -282,7 +282,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 | PlannedEndDate_t  |   Geplande eind datum |
 | WorkStartDate_t  | Werkelijke begin datum |
 | WorkEndDate_t | Werkelijke eind datum|
-| Description_s | Description |
+| Description_s | Beschrijving |
 | Computer  | Configuratie-item |
 
 
@@ -296,7 +296,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 
 2. Als gegevens van ServiceNow niet worden gesynchroniseerd met Log Analytics, moet u ervoor zorgen dat het ServiceNow-exemplaar niet in de slaap stand staat. ServiceNow dev-instanties gaan soms naar de slaap stand als deze gedurende een lange periode niet actief zijn. Anders meldt u het probleem.
 3. Als Log Analytics waarschuwingen wordt geactiveerd, maar er geen werk items worden gemaakt in ITSM product of configuratie-items niet zijn gemaakt/gekoppeld aan werk items of voor andere algemene informatie, kijkt u op de volgende locaties:
-   -  ITSMC: De oplossing toont een samen vatting van verbindingen/werk items/computers, enzovoort. Klik op de tegel met de status van de **connector**, waarmee u de **Zoek opdracht kunt vastleggen** in een logboek met de relevante query. Bekijk de logboek records met LogType_S als fout voor meer informatie.
+   -  ITSMC: de oplossing toont een samen vatting van verbindingen/werk items/computers, enzovoort. Klik op de tegel met de status van de **connector**, waarmee u de **Zoek opdracht kunt vastleggen** in een logboek met de relevante query. Bekijk de logboek records met LogType_S als fout voor meer informatie.
    - **Zoek pagina voor logboeken** : Bekijk de fout/gerelateerde informatie direct met behulp van de query `*`ServiceDeskLog_CL @ no__t-2.
 
 ## <a name="troubleshoot-service-manager-web-app-deployment"></a>Problemen met de implementatie van Service Manager web-app oplossen

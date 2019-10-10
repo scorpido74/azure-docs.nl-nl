@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 07/18/2019
 ms.author: hamusa
-ms.openlocfilehash: 33594e09778b9a629645e12357e6bafe561ad35e
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 5b71146f0c2aff51a0c2498705b047e9fa4632c8
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202910"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72178123"
 ---
 # <a name="dependency-visualization"></a>Visualisatie van afhankelijkheden
 
@@ -27,8 +27,8 @@ Met de functie voor afhankelijkheids visualisatie in Server evaluatie kunt u gro
 ## <a name="before-you-start"></a>Voordat u begint
 
 - Zorg ervoor dat u een Azure Migrate project hebt [gemaakt](how-to-add-tool-first-time.md) .
-- Als u al een project hebt gemaakt, moet u ervoor zorgen dat u de Azure Migrate hebt [toegevoegd](how-to-assess.md) : Hulp programma Server Assessment.
-- Zorg ervoor dat u uw computers hebt gedetecteerd in Azure Migrate. u kunt dit doen door een Azure Migrate apparaat in te stellen voor [VMware](how-to-set-up-appliance-vmware.md) of [Hyper-V](how-to-set-up-appliance-hyper-v.md). Het apparaat detecteert on-premises machines en stuurt meta gegevens en prestatie gegevens naar Azure Migrate: Server-evaluatie. [Meer informatie](migrate-appliance.md).
+- Als u al een project hebt gemaakt, moet u ervoor zorgen dat u het Azure Migrate: Server Assessment Tool hebt [toegevoegd](how-to-assess.md) .
+- Zorg ervoor dat u uw computers hebt gedetecteerd in Azure Migrate. u kunt dit doen door een Azure Migrate apparaat in te stellen voor [VMware](how-to-set-up-appliance-vmware.md) of [Hyper-V](how-to-set-up-appliance-hyper-v.md). Het apparaat detecteert on-premises machines en verstuurt meta gegevens en prestatie gegevens naar Azure Migrate: Server evaluatie. [Meer informatie](migrate-appliance.md).
 
 ## <a name="how-does-it-work"></a>Hoe werkt het?
 
@@ -36,12 +36,12 @@ Azure Migrate gebruikt de [servicetoewijzing](../operations-management-suite/ope
 - Als u gebruik wilt maken van afhankelijkheids visualisatie, moet u een Log Analytics werk ruimte (nieuw of bestaand) koppelen aan een Azure Migrate-project.
 - U kunt alleen een werk ruimte maken of koppelen in hetzelfde abonnement als het Azure Migrate project is gemaakt.
 - Een Log Analytics-werk ruimte koppelen aan een project:
-    1. Op het tabblad **servers** , in **Azure migrate: Tegel server** beoordeling, klikt u op **overzicht**.
+    1. Klik op het tabblad **servers** in **Azure migrate: tegel server evaluatie** op **overzicht**.
     2. Klik in het **overzicht**op de pijl-omlaag om **essentiële**items uit te vouwen.
     3. Klik in de **OMS-werk ruimte**op **configuratie vereist**.
     4. In **werk ruimte configureren**geeft u op of u een nieuwe werk ruimte wilt maken of een bestaande wilt gebruiken:
     
-    ![Werkruimte toevoegen](./media/how-to-create-group-machine-dependencies/workspace.png)
+    ![Werk ruimte toevoegen](./media/how-to-create-group-machine-dependencies/workspace.png)
 
 - Tijdens het koppelen van een werk ruimte krijgt u de mogelijkheid om een nieuwe werk ruimte te maken of een bestaande te koppelen:
   - Wanneer u een nieuwe werk ruimte maakt, moet u een naam opgeven voor de werk ruimte. U kunt de [regio](https://azure.microsoft.com/global-infrastructure/regions/) kiezen waarin de werk ruimte wordt gemaakt.
@@ -51,7 +51,7 @@ Azure Migrate gebruikt de [servicetoewijzing](../operations-management-suite/ope
   > Zodra u een werk ruimte aan een project hebt gekoppeld, kunt u deze later niet meer wijzigen.
 
   > [!NOTE]
-  > Azure Migrate biedt momenteel ondersteuning voor het maken van OMS-werk ruimte in VS-Oost, Zuidoost-Azië en Europa-west regio's. Als de werk ruimte wordt gemaakt buiten Azure Migrate in een andere regio, kan deze momenteel niet worden gekoppeld aan een Azure Migrate-project. 
+  > Azure Migrate ondersteunt momenteel het maken of koppelen van Log Analytics werk ruimten in VS-Oost, Zuidoost-Azië en Europa-west regio's. Als de werk ruimte buiten Azure Migrate wordt gemaakt in een niet-ondersteunde regio, kan deze momenteel niet worden gekoppeld aan een Azure Migrate-project. 
 
 - De gekoppelde werk ruimte is gelabeld met het sleutel **migratie project**en de waarde van de **project naam**, die u kunt gebruiken om te zoeken in de Azure Portal.
 - Als u wilt navigeren naar de werk ruimte die is gekoppeld aan het project, gaat u naar de sectie met **essentiële onderdelen** van de pagina **overzicht** van het project en opent u de werk ruimte

@@ -48,9 +48,9 @@ Het identificeren van het aantal werk ruimten dat u nodig hebt, is van invloed o
 
 De IT-organisaties zijn tegenwoordig gemodelleerd volgens een gecentraliseerd, gedecentraliseerd of een in-tussen hybride van beide structuren. Als gevolg hiervan zijn de volgende implementatie modellen voor werk ruimten vaak gebruikt om toe te wijzen aan een van deze organisatie structuren:
 
-* **Gecentraliseerd**: Alle logboeken worden opgeslagen in een centrale werk ruimte en beheerd door één team, met Azure Monitor een gedifferentieerde toegang per team bieden. In dit scenario is het eenvoudig om te beheren, te zoeken naar resources en logboeken te cross-correleren. De werk ruimte kan aanzienlijk toenemen, afhankelijk van de hoeveelheid gegevens die uit meerdere resources in uw abonnement is verzameld, met extra administratieve overhead voor het onderhouden van toegangs beheer voor verschillende gebruikers.
-* **Gedecentraliseerd**: Elk team heeft hun eigen werk ruimte gemaakt in een resource groep die ze bezit en beheren, en logboek gegevens worden gescheiden per resource. In dit scenario kan de werk ruimte veilig worden bewaard en kan toegangs beheer consistent zijn met toegang tot bronnen, maar het is lastig om logboeken te intercorreleren. Gebruikers die een brede weer gave van veel resources nodig hebben, kunnen de gegevens niet op een zinvolle manier analyseren.
-* **Hybride**: Nalevings vereisten voor beveiligings controle worden dit scenario verder ingewik kelder omdat veel organisaties beide implementatie modellen parallel implementeren. Dit resulteert doorgaans in een complexe, dure en moeilijk te onderhouden configuratie met hiaten in de logboeken dekking.
+* **Gecentraliseerd**: alle logboeken worden opgeslagen in een centrale werk ruimte en beheerd door één team, met Azure monitor een gedifferentieerde toegang per team bieden. In dit scenario is het eenvoudig om te beheren, te zoeken naar resources en logboeken te cross-correleren. De werk ruimte kan aanzienlijk toenemen, afhankelijk van de hoeveelheid gegevens die uit meerdere resources in uw abonnement is verzameld, met extra administratieve overhead voor het onderhouden van toegangs beheer voor verschillende gebruikers.
+* **Gedecentraliseerd**: elk team heeft hun eigen werk ruimte die is gemaakt in een resource groep die het eigendom is van en het beheer, en logboek gegevens worden gescheiden per resource. In dit scenario kan de werk ruimte veilig worden bewaard en kan toegangs beheer consistent zijn met toegang tot bronnen, maar het is lastig om logboeken te intercorreleren. Gebruikers die een brede weer gave van veel resources nodig hebben, kunnen de gegevens niet op een zinvolle manier analyseren.
+* **Hybride**: vereisten voor naleving van beveiligings controle zijn dit scenario verder ingewik kelder omdat veel organisaties beide implementatie modellen parallel implementeren. Dit resulteert doorgaans in een complexe, dure en moeilijk te onderhouden configuratie met hiaten in de logboeken dekking.
 
 Wanneer u de Log Analytics-agents gebruikt om gegevens te verzamelen, moet u het volgende weten om de implementatie van de agent te plannen:
 
@@ -69,7 +69,7 @@ Met op rollen gebaseerd toegangs beheer (RBAC) kunt u gebruikers en groepen alle
 
 De gegevens waartoe een gebruiker toegang heeft, wordt bepaald door een combi natie van factoren die in de volgende tabel worden weer gegeven. Elk wordt beschreven in de volgende secties.
 
-| Multi-factor Authentication | Description |
+| Rekening | Beschrijving |
 |:---|:---|
 | [Toegangs modus](#access-mode) | De methode die de gebruiker gebruikt voor toegang tot de werk ruimte.  Hiermee definieert u het bereik van de beschik bare gegevens en de toegangs beheer modus die wordt toegepast. |
 | [Toegangs beheer modus](#access-control-mode) | Instelling in de werk ruimte die definieert of machtigingen worden toegepast op het niveau van de werk ruimte of de resource. |
@@ -82,11 +82,11 @@ De *toegangs modus* verwijst naar hoe een gebruiker toegang heeft tot een log An
 
 Gebruikers hebben twee opties om toegang tot de gegevens te krijgen:
 
-* **Werk ruimte-context**: U kunt alle logboeken weer geven in de werk ruimte waarvoor u machtigingen hebt. Query's in deze modus zijn gericht op alle gegevens in alle tabellen in de werk ruimte. Dit is de toegangs modus die wordt gebruikt wanneer logboeken worden geopend met de werk ruimte als het bereik, bijvoorbeeld wanneer u **Logboeken** selecteert in het **Azure monitor** menu in de Azure Portal.
+* **Werk ruimte-context**: u kunt alle logboeken weer geven in de werk ruimte waarvoor u machtigingen hebt. Query's in deze modus zijn gericht op alle gegevens in alle tabellen in de werk ruimte. Dit is de toegangs modus die wordt gebruikt wanneer logboeken worden geopend met de werk ruimte als het bereik, bijvoorbeeld wanneer u **Logboeken** selecteert in het **Azure monitor** menu in de Azure Portal.
 
     ![Context van Log Analytics in werk ruimte](./media/design-logs-deployment/query-from-workspace.png)
 
-* **Resource-context**: Wanneer u toegang hebt tot de werk ruimte voor een bepaalde resource, resource groep of abonnement, bijvoorbeeld wanneer u **Logboeken** selecteert in een resource menu in het Azure Portal, kunt u Logboeken voor alleen resources weer geven in alle tabellen waartoe u toegang hebt. Query's in deze modus zijn alleen van toepassing op gegevens die aan die resource zijn gekoppeld. Met deze modus kunt u ook granulaire RBAC.
+* **Resource-context**: wanneer u de werk ruimte voor een bepaalde resource, resource groep of abonnement opent, bijvoorbeeld wanneer u **Logboeken** selecteert in een Resource menu in het Azure Portal, kunt u Logboeken alleen weer geven voor resources in alle tabellen die u hebt toegang tot. Query's in deze modus zijn alleen van toepassing op gegevens die aan die resource zijn gekoppeld. Met deze modus kunt u ook granulaire RBAC.
 
     ![Log Analytics context van resource](./media/design-logs-deployment/query-from-resource.png)
 
@@ -115,13 +115,13 @@ De volgende tabel bevat een overzicht van de toegangs modi:
 
 De *Access Control-modus* is een instelling voor elke werk ruimte die definieert hoe machtigingen voor de werk ruimte worden bepaald.
 
-* **Werkruimte machtigingen vereisen**: In deze controle modus is granulaire RBAC niet toegestaan. Een gebruiker heeft alleen toegang tot de werk ruimte als deze machtigingen voor de werk ruimte of specifieke tabellen hebben.
+* **Werkruimte machtigingen vereisen**: in deze besturings modus is granulaire RBAC niet toegestaan. Een gebruiker heeft alleen toegang tot de werk ruimte als deze machtigingen voor de werk ruimte of specifieke tabellen hebben.
 
     Als een gebruiker toegang heeft tot de werk ruimte na de context modus van de werk ruimte, hebben ze toegang tot alle gegevens in een tabel waaraan toegang is verleend. Als een gebruiker toegang heeft tot de werk ruimte die volgt op de resource-context modus, hebben ze alleen toegang tot gegevens voor die resource in een tabel waaraan ze toegang hebben verleend.
 
     Dit is de standaard instelling voor alle werk ruimten die zijn gemaakt vóór 2019 maart.
 
-* **Resource-of werkruimte machtigingen gebruiken**: In deze besturings modus is granulaire RBAC toegestaan. Gebruikers kunnen toegang krijgen tot gegevens die zijn gekoppeld aan resources die ze kunnen weer geven door de machtiging Azure `read` toe te wijzen. 
+* **Resource-of werkruimte machtigingen gebruiken**: deze besturings modus maakt granulaire RBAC mogelijk. Gebruikers kunnen toegang krijgen tot gegevens die zijn gekoppeld aan resources die ze kunnen weer geven door de machtiging Azure `read` toe te wijzen. 
 
     Wanneer een gebruiker toegang heeft tot de werk ruimte in de werk ruimte-context modus, zijn werkruimte machtigingen van toepassing. Wanneer een gebruiker de werk ruimte in de resource context modus opent, worden alleen resource machtigingen gecontroleerd en worden de machtigingen voor de werk ruimte genegeerd. Schakel RBAC voor een gebruiker in door deze uit de werkruimte machtigingen te verwijderen en de machtigingen van de resource te herkennen.
 

@@ -5,96 +5,137 @@ author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 04/01/2018
+ms.date: 10/08/2019
 ms.author: robinsh
-ms.openlocfilehash: 9a64c6e476910ab4fe983fa949680f05fdded3ae
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 030ea87018e1a2d438e3e4d728af76e429efda08
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70161866"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72169023"
 ---
-# <a name="azure-iot-sdks-platform-support"></a>Azure IoT Sdk's-platform ondersteuning
+# <a name="azure-iot-device-sdks-platform-support"></a>Ondersteuning voor Azure IoT Device Sdk's-platform
 
-De [Azure IOT sdk's](iot-hub-devguide-sdks.md) zijn een set bibliotheken voor interactie met IOT hub en de Device Provisioning Service met brede taal-en platform ondersteuning. De Sdk's worden op de meest voorkomende platforms uitgevoerd en ontwikkel aars kunnen de C SDK naar een specifiek platform poort door de [richt lijnen voor poort](https://github.com/Azure/azure-c-shared-utility/blob/master/devdoc/porting_guide.md)gebruik te volgen. 
+Micro soft streeft ernaar om het universum van Azure IoT Hub-compatibele apparaten voortdurend uit te breiden. Micro soft publiceert het open-source apparaat Sdk's op GitHub om apparaten te verbinden met Azure IoT Hub en de Device Provisioning-Service. De apparaat-Sdk's zijn beschikbaar voor C, .NETC#(), Java, node. js en python. Micro soft test elke SDK om ervoor te zorgen dat deze wordt uitgevoerd op de ondersteunde configuraties die hiervoor worden ondersteund in de sectie [micro soft sdk's and Device platform support](#microsoft-sdks-and-device-platform-support) .
 
-Micro soft biedt ondersteuning voor verschillende besturings systemen/platforms/frameworks en kan worden uitgebreid met behulp van de Azure IoT C-SDK. Sommige worden officieel ondersteund door het team, gegroepeerd in lagen die het niveau van ondersteunings gebruikers vertegenwoordigen. *Volledig ondersteunde platforms* houdt in dat micro soft:
+Naast de Sdk's van het apparaat biedt micro soft verschillende andere mogelijkheden om klanten en ontwikkel aars in staat te stellen hun apparaten te verbinden met Azure IoT:
 
-- Bouwt voortdurend end-to-end-tests en voert deze uit op basis van de LTS ondersteunde versie (s).  Om een test dekking te bieden in verschillende versies, testen we doorgaans op de nieuwste LTS-versie en de meest populaire versie.  Andere versies van hetzelfde platform kunnen worden ondersteund via compatibiliteit met platform versies.
-- Biedt installatie richtlijnen of pakketten, indien van toepassing.
-- Biedt volledige ondersteuning voor de platforms op GitHub.
+* Micro soft werkt samen met verschillende partner bedrijven om hen te helpen bij het publiceren van Development Kits, op basis van de Azure IoT C SDK, voor hun hardwareplatforms.
 
-Daarnaast heeft onze C SDK door een lijst met partners naar meer platforms gestroomd en wordt de ' platform Abstraction Layer (PAL) onderhouden. [Azure Certified voor IOT Device Catalog](https://catalog.azureiotsolutions.com/) bevat ook een lijst met besturingssysteem platforms waarop de diverse sdk's zijn getest. De Sdk's bouwen ook regel matig op deze platformen, met beperkte testen en ondersteuning:
+* Micro soft werkt samen met micro soft-vertrouwde partners om een steeds groeiende set apparaten te bieden die zijn getest en gecertificeerd voor Azure IoT. Zie [Azure Certified for IOT Device Catalog](https://catalog.azureiotsolutions.com/)(Engelstalig) voor een actuele lijst van deze apparaten.
 
-* MBED2
-* Arduino
-* Windows CE 2013 (in oktober 2018)
-* .NET Standard 1,3 met .NET Core 2,1 en .NET Framework 4,7
-* Xamarin iOS, Android, UWP
+* Micro soft biedt een platform Abstraction Layer (PAL) in de Azure IoT Hub Device C SDK waarmee ontwikkel aars de SDK eenvoudig naar hun platform kunnen overbrengen. Zie de [C SDK porting guidance](https://github.com/Azure/azure-c-shared-utility/blob/master/devdoc/porting_guide.md)(Engelstalig) voor meer informatie.
 
-## <a name="supported-platforms"></a>Ondersteunde platforms
+In dit onderwerp vindt u informatie over de micro soft-Sdk's en de platform configuraties die ze ondersteunen, evenals alle andere opties die hierboven worden vermeld.
 
-Er worden verschillende platforms ondersteund.
+## <a name="microsoft-sdks-and-device-platform-support"></a>Ondersteuning voor micro soft-Sdk's en-platform
+
+Micro soft publiceert open-source Sdk's op GitHub voor de volgende talen: C, .NETC#(), node. js, Java en python. De Sdk's en hun afhankelijkheden worden vermeld in deze sectie. De Sdk's worden ondersteund op elk platform dat voldoet aan deze afhankelijkheden.
+
+Voor elk van de vermelde Sdk's, micro soft:
+
+* Bouwt en voert voortdurend end-to-end-tests uit op basis van de hoofd vertakking van de relevante SDK in GitHub op verschillende populaire platforms.  Om een test dekking te bieden in verschillende compiler versies, testen we doorgaans op de nieuwste LTS-versie en de meest populaire versie.
+
+* Biedt installatie richtlijnen of installatie pakketten, indien van toepassing.
+
+* Biedt volledige ondersteuning voor de Sdk's op GitHub met open-source code, een pad voor klant bijdragen en betrokkenheid van het product team met GitHub-problemen.
 
 ### <a name="c-sdk"></a>C SDK
 
-| OS                  | Arch | Programma's             | TLS-bibliotheek       |
-|---------------------|------|----------------------|-------------------|
-| Ubuntu 16.04 LTS    | X64  | gcc-5.4.0            | openssl-1.0.2 g |
-| Ubuntu 18,04 LTS    | X64  | gcc-7,3              | WolfSSL – 1,13    |
-| Ubuntu 18,04 LTS    | X64  | Clang 6.0.X          | Openssl – 1.1.0 g  |
-| OSX 10.13.4         | x64  | XCode 9.4.1          | Systeem eigen OSX        |
-| Windows Server 2016 | x64  | Visual Studio 14.0.X | Veilige          |
-| Windows Server 2016 | x86  | Visual Studio 14.0.X | Veilige          |
-| Debian 9 uitrekken    | x64  | gcc-7,3              | Openssl – 1.1.0 f  |
+De [Azure IOT hub C Device SDK](https://github.com/Azure/azure-iot-sdk-c) is getest met en ondersteunt de volgende configuraties.
+
+| Besturingssysteem                  | TLS-bibliotheek                  | Aanvullende vereisten                                                                     |
+|---------------------|------------------------------|---------------------------------------------------------------------------------------------|
+| Linux               | OpenSSL, WolfSSL of BearSSL | Berkeley-Sockets</br></br>De Portable Operating System Interface (POSIX)                       |
+| iOS 12,2            | OpenSSL of systeem eigen OSX        | XCode geëmuleerd in OSX 10.13.4                                                               |
+| Windows 10-serie   | Veilige                     |                                                                                             |
+| Mbed OS 5,4         | Mbed TLS 2                   | [MXChip IoT dev kit](https://microsoft.github.io/azure-iot-developer-kit/)                  |
+| Azure Sphere OS     | WolfSSL                      | [Azure Sphere MT3620](https://azure.microsoft.com/en-us/services/azure-sphere/get-started/) |
 
 ### <a name="python-sdk"></a>Python-SDK
 
-| OS                  | Arch | Programma's   | TLS-bibliotheek |
-|---------------------|------|------------|-------------|
-| Windows Server 2016 | x86  | Python 2.7 | openssl     |
-| Windows Server 2016 | x64  | Python 2.7 | openssl     |
-| Windows Server 2016 | x86  | Python 3,5 | openssl     |
-| Windows Server 2016 | x64  | Python 3,5 | openssl     |
-| Ubuntu 18,04 LTS    | x86  | Python 2.7 | openssl     |
-| Ubuntu 18,04 LTS    | x86  | Python 3,4 | openssl     |
-| MacOS-hoge-Sierra   | x64  | Python 2.7 | openssl     |
+De [Azure IOT hub python Device SDK](https://github.com/Azure/azure-iot-sdk-python) wordt getest met en ondersteunt de volgende configuraties.
+
+| Besturingssysteem                  | Programma's                       |
+|---------------------|--------------------------------|
+| Linux               | Python 2,7, 3,4, 3,5, 3,6, 3,7 |
+| MacOS-hoge-Sierra   | Python 2,7, 3,4, 3,5, 3,6, 3,7 |
+| Windows 10-serie   | Python 2,7, 3,4, 3,5, 3,6, 3,7 |
 
 ### <a name="net-sdk"></a>.NET SDK
 
-| OS                  | Arch | Framework            | Standard          |
-|---------------------|------|----------------------|-------------------|
-| Ubuntu 16.04 LTS    | X64  | .NET Core 2.1        | .NET Standard 2,0 |
-| Windows Server 2016 | X64  | .NET Core 2.1        | .NET Standard 2,0 |
-| Windows Server 2016 | X64  | .NET Framework 4,7   | .NET Standard 2,0 |
-| Windows Server 2016 | X64  | .NET Framework 4.5.1 | N/A               |
+De [SDK van het AzureC#IOT hub .net ()-apparaat](https://github.com/Azure/azure-iot-sdk-csharp) wordt getest met en ondersteunt de volgende configuraties.
+
+| Besturingssysteem                                   | Standard                                                   |
+|--------------------------------------|------------------------------------------------------------|
+| Linux                                | .NET Core 2.1                                              |
+| Windows 10 Desktop-en server-Sku's   | .NET Core 2,1, .NET Framework 4.5.1 of .NET Framework 4,7 |
 
 ### <a name="nodejs-sdk"></a>Node.js SDK
 
-| OS                                           | Arch | Knooppunt versie    |
-|----------------------------------------------|------|-----------------|
-| Ubuntu 16,04 LTS (met behulp van node 6 docker-installatie kopie) | X64  | LTS en actueel |
-| Windows Server 2016                          | X64  | LTS en actueel |
+De [SDK van het Azure IOT hub node. js-apparaat](https://github.com/Azure/azure-iot-sdk-node) wordt getest met en ondersteunt de volgende configuraties.
 
-### <a name="java-sdk"></a>Java-SDK
+| Besturingssysteem                  | Knooppunt versie    |
+|---------------------|-----------------|
+| Linux               | LTS en actueel |
+| Windows 10-serie   | LTS en actueel |
 
-| OS                  | Arch | Java-versie |
-|---------------------|------|--------------|
-| Ubuntu 16.04 LTS    | X64  | Java 8       |
-| Windows Server 2016 | X64  | Java 8       |
-| Android API 28 | X64  | Java 8       |
-| Android-dingen | X64  | Java 8      |
+### <a name="java-sdk"></a>Java SDK
 
-## <a name="partner-supported-platforms"></a>Door partners ondersteunde platforms
+De [Azure IOT hub Java-apparaat-SDK](https://github.com/Azure/azure-iot-sdk-java) wordt getest met en ondersteunt de volgende configuraties.
 
-Klanten kunnen onze platform ondersteuning uitbreiden door de Azure IoT C SDK te poorten, met name het maken van de platform Abstraction Layer (PAL) van de SDK. Micro soft werkt samen met partners om uitgebreide ondersteuning te bieden. Een lijst met partners heeft de C SDK genoteerd op meer platforms en het onderhoud van de PAL.
+| Besturingssysteem                     | Java-versie |
+|------------------------|--------------|
+| Android API 28         | Java 8       |
+| Linux x64             | Java 8       |
+| Windows 10-familie x64  | Java 8       |
 
-| Partner             | Apparaten                            | Koppelen                     | Ondersteuning |
+## <a name="partner-supported-development-kits"></a>Ontwikkel kits die door partners worden ondersteund
+
+Micro soft werkt samen met verschillende partners voor het leveren van ontwikkel Kits voor verschillende architecturen voor micro processors. Deze partners hebben de Azure IoT C SDK naar hun platform geporteerd. Partners maken en onderhouden van de platform Abstraction Layer (PAL) van de SDK. Micro soft werkt met deze partners om uitgebreide ondersteuning te bieden.
+
+| Partner             | Apparaten                            | Koppeling                     | Ondersteuning |
 |---------------------|------------------------------------|--------------------------|---------|
-| Espressif           | ESP32 <br/> ESP8266                              | [Esp-azure](https://github.com/espressif/esp-azure)                | [GitHub](https://github.com/espressif/esp-azure)  
+| Espressif           | ESP32 <br/> ESP8266                              | [ESP-Azure](https://github.com/espressif/esp-azure)                | [GitHub](https://github.com/espressif/esp-azure)  
 | Qualcomm            | Qualcomm MDM9206 LTE IoT-modem     | [Qualcomm LTE voor IoT SDK](https://developer.qualcomm.com/software/lte-iot-sdk) | [Forum](https://developer.qualcomm.com/forums/software/lte-iot-sdk)   |
-| STe elektronica | STM32L4-serie <br/> STM32F4-serie <br/>  STM32F7-serie <br/>  STM32L4 Discovery Kit voor IoT-knoop punt    | [X-CUBE-CLOUD](https://www.st.com/content/st_com/en/products/embedded-software/mcus-embedded-software/stm32-embedded-software/stm32cube-expansion-packages/x-cube-cloud.html) <br/> [X-CUBE-AZURE](https://www.st.com/content/st_com/en/products/embedded-software/mcus-embedded-software/stm32-embedded-software/stm32cube-expansion-packages/x-cube-azure.html) <br/> [P-NUCLEO-AZURE](https://www.st.com/content/st_com/en/products/evaluation-tools/solution-evaluation-tools/communication-and-connectivity-solution-eval-boards/p-nucleo-azure1.html) <br/> [FP-CLD-AZURE](https://www.st.com/content/st_com/en/products/embedded-software/mcus-embedded-software/stm32-embedded-software/stm32-ode-function-pack-sw/fp-cld-azure1.html)            | [Ondersteuning](https://www.st.com/content/st_com/en/support/support-home.html)
+| STe elektronica | STM32L4-serie <br/> STM32F4-serie <br/>  STM32F7-serie <br/>  STM32L4 Discovery Kit voor IoT-knoop punt    | [X-KUBUS-AZURE](https://www.st.com/en/embedded-software/x-cube-azure.html) <br/>  <br/> [P-NUCLEO-AZURE](https://www.st.com/content/st_com/en/products/evaluation-tools/solution-evaluation-tools/communication-and-connectivity-solution-eval-boards/p-nucleo-azure1.html) <br/> [FP-CLD-AZURE](https://www.st.com/content/st_com/en/products/embedded-software/mcus-embedded-software/stm32-embedded-software/stm32-ode-function-pack-sw/fp-cld-azure1.html)            | [Ondersteuning](https://www.st.com/content/st_com/en/support/support-home.html)
 | Texas Instruments   | LaunchPad CC3220SF </br> LaunchPad CC3220S </br> LaunchPad CC3235SF </br> LaunchPad CC3235S </br> LaunchPad MSP432E4 | [Azure IoT-invoeg toepassing voor SimpleLink](https://github.com/TexasInstruments/azure-iot-pal-simplelink) | [TI E2E-forum](https://e2e.ti.com) <br/> [TI E2E-forum voor CC3220](https://e2e.ti.com/support/wireless_connectivity/simplelink_wifi_cc31xx_cc32xx/) <br/> [TI E2E-forum voor MSP432E4](https://e2e.ti.com/support/microcontrollers/msp430/) |
+
+## <a name="porting-the-microsoft-azure-iot-c-sdk"></a>De Microsoft Azure IoT C SDK
+
+Als uw platform niet onder een van de voor gaande secties valt, kunt u overwegen de Azure IoT C-SDK te porteren. Het is de poort van de C SDK voornamelijk het implementeren van de platform Abstraction Layer (PAL) van de SDK. De PAL definieert primitieven die de lijm bieden tussen uw apparaat en de functies van een hoger niveau in de SDK. Zie [richt lijnen voor poorting](https://github.com/Azure/azure-c-shared-utility/blob/master/devdoc/porting_guide.md)voor meer informatie.
+
+## <a name="microsoft-partners-and-certified-azure-iot-devices"></a>Micro soft-partners en gecertificeerde Azure IoT-apparaten
+
+Micro soft werkt met een aantal partners om het Azure IoT-universum voortdurend uit te breiden met Azure IoT-geteste en gecertificeerde apparaten.
+
+* Zie [Microsoft Azure Certified for IOT Device Catalog](https://catalog.azureiotsolutions.com/)voor informatie over het bladeren door Azure IOT-gecertificeerde apparaten.
+
+* Zie [Microsoft Azure gecertificeerde Internet of Things vertrouwde partners](https://azure.microsoft.com/en-us/marketplace/certified-iot-partners/)voor meer informatie over vertrouwde micro soft-partners of als u wilt weten hoe u een vertrouwde partner van micro soft kunt worden.
+
+## <a name="connecting-to-iot-hub-without-an-sdk"></a>Verbinding maken met IoT Hub zonder een SDK
+
+Als u een van de IoT Hub apparaat-Sdk's niet kunt gebruiken, kunt u rechtstreeks verbinding maken met IoT Hub met behulp van de [IOT hub rest-api's](https://docs.microsoft.com/en-us/rest/api/iothub/) van elke toepassing die HTTPS-aanvragen en-antwoorden kan verzenden en ontvangen.
+
+## <a name="support-and-other-resources"></a>Ondersteuning en andere bronnen
+
+Als u problemen ondervindt bij het gebruik van de Azure IoT-apparaat-Sdk's, zijn er verschillende manieren om ondersteuning te zoeken. U kunt een van de volgende kanalen proberen:
+
+**Fouten rapporteren** : fouten in de sdk's van het apparaat kunnen worden gerapporteerd op de pagina kwesties van het relevante github-project. Oplossingen maken snel hun eigen werk van het project in op product updates.
+
+* [Problemen met Azure IoT Hub C SDK](https://github.com/Azure/azure-iot-sdk-c/issues)
+
+* [Problemen met de SDKC#voor Azure IOT hub .net ()](https://github.com/Azure/azure-iot-sdk-csharp/issues)
+
+* [Problemen met Azure IoT Hub Java SDK](https://github.com/Azure/azure-iot-sdk-java/issues)
+
+* [Problemen met Azure IoT Hub node. js SDK](https://github.com/Azure/azure-iot-sdk-node/issues)
+
+* [Problemen met Azure IoT Hub python SDK](https://github.com/Azure/azure-iot-sdk-python/issues)
+
+**Klanten ondersteuning van micro soft** : gebruikers met een [ondersteunings plan](https://azure.microsoft.com/support/plans/) kunnen het team van micro soft-klanten ondersteuning betrekken door rechtstreeks vanuit het [Azure Portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)een nieuwe ondersteunings aanvraag te maken.
+
+**Functie aanvragen** : Azure IOT-functie aanvragen worden bijgehouden via de [gebruikers spraak pagina](https://feedback.azure.com/forums/321918-azure-iot)van het product.
 
 ## <a name="next-steps"></a>Volgende stappen
 

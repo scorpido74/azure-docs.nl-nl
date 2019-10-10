@@ -89,7 +89,7 @@ De volgende container besturingssysteem installatie kopieën kunnen worden gebru
 
 - Windows-windowsservercore en nano server
     - Windows Server 1709
-    - WindowsServer 1803
+    - Windows Server 1803
     - Windows Server 1809
     - Windows Server 2019 LTSC
 - Linux
@@ -124,9 +124,9 @@ Gebruik `{serviceName}.{applicationName}` in uw lokale ontwikkel cluster. Gebrui
 
 Azure mesh biedt momenteel geen ondersteuning voor DNS-omzetting in toepassingen.
 
-Zie voor andere bekende DNS-problemen met het uitvoeren van een Service Fabric-ontwikkelings cluster in Windows 10: [Fout opsporing voor Windows-containers](/azure/service-fabric/service-fabric-how-to-debug-windows-containers) en [bekende DNS-problemen](https://docs.microsoft.com/azure/service-fabric/service-fabric-dnsservice#known-issues).
+Zie voor andere bekende DNS-problemen met het uitvoeren van een Service Fabric-ontwikkelings cluster in Windows 10: [fout opsporing in Windows-containers](/azure/service-fabric/service-fabric-how-to-debug-windows-containers) en [bekende DNS-problemen](https://docs.microsoft.com/azure/service-fabric/service-fabric-dnsservice#known-issues).
 
-### <a name="networking"></a>Netwerken
+### <a name="networking"></a>Networking
 
 De NAT van het ServiceFabric-netwerk verdwijnt wanneer u uw app uitvoert op uw lokale machine. Als u wilt vaststellen of dit is gebeurd, voert u het volgende uit vanaf een opdracht prompt:
 

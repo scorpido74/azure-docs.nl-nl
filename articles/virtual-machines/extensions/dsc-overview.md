@@ -7,7 +7,7 @@ author: bobbytreed
 manager: carmonm
 editor: ''
 tags: azure-resource-manager
-keywords: dsc
+keywords: DSC
 ms.assetid: bbacbc93-1e7b-4611-a3ec-e3320641f9ba
 ms.service: virtual-machines-windows
 ms.topic: article
@@ -38,16 +38,16 @@ In dit artikel vindt u informatie over beide scenario's: het gebruik van de DSC-
 
 ## <a name="prerequisites"></a>Vereisten
 
-- **Lokale computer**: Als u wilt communiceren met de Azure VM-extensie, moet u de Azure Portal of de Azure PowerShell SDK gebruiken.
-- **Gast agent**: De virtuele Azure-machine die door de DSC-configuratie is geconfigureerd, moet een besturings systeem zijn dat Windows Management Framework (WMF) 4,0 of hoger ondersteunt. Zie de [versie geschiedenis](/powershell/scripting/dsc/getting-started/azuredscexthistory)van de DSC-extensie voor een volledige lijst met ondersteunde versies van het besturings systeem.
+- **Lokale computer**: voor interactie met de Azure VM-extensie moet u de Azure portal of de Azure PowerShell SDK gebruiken.
+- **Gast agent**: de virtuele Azure-machine die is geconfigureerd door de DSC-configuratie moet een besturings systeem zijn dat Windows Management Framework (WMF) 4,0 of hoger ondersteunt. Zie de [versie geschiedenis](/powershell/scripting/dsc/getting-started/azuredscexthistory)van de DSC-extensie voor een volledige lijst met ondersteunde versies van het besturings systeem.
 
 ## <a name="terms-and-concepts"></a>Voor waarden en concepten
 
 In deze hand leiding wordt ervan uitgegaan dat u bekend bent met de volgende concepten:
 
-- **Configuratie**: Een DSC-configuratie document.
-- **Knoop punt**: Een doel voor een DSC-configuratie. In dit document verwijst het *knoop punt* altijd naar een virtuele machine van Azure.
-- **Configuratie gegevens**: Een. psd1-bestand met omgevings gegevens voor een configuratie.
+- **Configuratie**: een DSC-configuratie document.
+- **Node**: een doel voor een DSC-configuratie. In dit document verwijst het *knoop punt* altijd naar een virtuele machine van Azure.
+- **Configuratie gegevens**: een. psd1-bestand met omgevings gegevens voor een configuratie.
 
 ## <a name="architecture"></a>Architectuur
 
@@ -143,7 +143,7 @@ Publish-AzVMDscConfiguration -ConfigurationPath .\iisInstall.ps1 -ResourceGroupN
 Set-AzVMDscExtension -Version '2.76' -ResourceGroupName $resourceGroup -VMName $vmName -ArchiveStorageAccountName $storageName -ArchiveBlobName 'iisInstall.ps1.zip' -AutoUpdate -ConfigurationName 'IISInstall'
 ```
 
-## <a name="azure-cli-deployment"></a>Azure CLI-implementatie
+## <a name="azure-cli-deployment"></a>Implementatie van Azure CLI
 
 De Azure CLI kan worden gebruikt om de DSC-extensie te implementeren op een bestaande virtuele machine.
 
@@ -182,21 +182,21 @@ DSC instellen in de portal:
 
 De portal verzamelt de volgende invoer:
 
-- **Configuratie modules of script**: Dit veld is verplicht (het formulier is niet bijgewerkt voor het [standaard configuratie script](#default-configuration-script)). Configuratie modules en-scripts vereisen een. ps1-bestand met een configuratie script of een zip-bestand met een. ps1-configuratie script in de hoofdmap. Als u een zip-bestand gebruikt, moeten alle afhankelijke resources zijn opgenomen in module mappen in de. zip. U kunt het zip-bestand maken met behulp van de cmdlet **Publish-AzureVMDscConfiguration-OutputArchivePath** die is opgenomen in de Azure PowerShell SDK. Het zip-bestand wordt geüpload naar de Blob-opslag van uw gebruiker en beveiligd met een SAS-token.
+- **Configuratie modules of script**: dit veld is verplicht (het formulier is niet bijgewerkt voor het [standaard configuratie script](#default-configuration-script)). Configuratie modules en-scripts vereisen een. ps1-bestand met een configuratie script of een zip-bestand met een. ps1-configuratie script in de hoofdmap. Als u een zip-bestand gebruikt, moeten alle afhankelijke resources zijn opgenomen in module mappen in de. zip. U kunt het zip-bestand maken met behulp van de cmdlet **Publish-AzureVMDscConfiguration-OutputArchivePath** die is opgenomen in de Azure PowerShell SDK. Het zip-bestand wordt geüpload naar de Blob-opslag van uw gebruiker en beveiligd met een SAS-token.
 
-- **Module-gekwalificeerde naam van de configuratie**: U kunt meerdere configuratie functies in een. ps1-bestand toevoegen. Voer de naam in van de configuratie. ps1-script gevolgd door \\ en de naam van de configuratie functie. Als uw. ps1-script bijvoorbeeld de naam configuratie. ps1 heeft en de configuratie **IisInstall**is, voert u **configuratie. ps1\IisInstall**in.
+- **Module-gekwalificeerde naam van de configuratie**: u kunt meerdere configuratie functies in een. ps1-bestand toevoegen. Voer de naam in van de configuratie. ps1-script gevolgd door \\ en de naam van de configuratie functie. Als uw. ps1-script bijvoorbeeld de naam configuratie. ps1 heeft en de configuratie **IisInstall**is, voert u **configuratie. ps1\IisInstall**in.
 
-- **Configuratie argumenten**: Als de configuratie functie argumenten accepteert, voert u deze hier in de notatie **argumentName1 = waarde1, argumentName2 = waarde2**. Deze indeling is een andere indeling waarin configuratie argumenten worden geaccepteerd in Power shell-cmdlets of Resource Manager-sjablonen.
+- **Configuratie argumenten**: als de configuratie functie argumenten accepteert, voert u deze hier in de notatie **argumentName1 = waarde1, argumentName2 = waarde2**. Deze indeling is een andere indeling waarin configuratie argumenten worden geaccepteerd in Power shell-cmdlets of Resource Manager-sjablonen.
 
-- **PSD1-bestand voor configuratie gegevens**: Dit veld is optioneel. Als voor uw configuratie een bestand met configuratie gegevens is vereist in. psd1, gebruikt u dit veld om het gegevens veld te selecteren en dit te uploaden naar de Blob-opslag van uw gebruiker. Het bestand met configuratie gegevens wordt beveiligd door een SAS-token in Blob Storage.
+- **PSD1-bestand voor configuratie gegevens**: dit veld is optioneel. Als voor uw configuratie een bestand met configuratie gegevens is vereist in. psd1, gebruikt u dit veld om het gegevens veld te selecteren en dit te uploaden naar de Blob-opslag van uw gebruiker. Het bestand met configuratie gegevens wordt beveiligd door een SAS-token in Blob Storage.
 
 - **WMF-versie**: Hiermee geeft u de versie van Windows Management Framework (WMF) op die op uw virtuele machine moet worden geïnstalleerd. Als u deze eigenschap instelt op laatst, wordt de meest recente versie van WMF geïnstalleerd. Momenteel zijn de enige mogelijke waarden voor deze eigenschap 4,0, 5,0, 5,1 en meest recent. Deze mogelijke waarden zijn onderhevig aan updates. De standaard waarde is **meest recent**.
 
 - **Gegevens verzameling**: Hiermee wordt bepaald of de extensie telemetrie verzamelt. Zie [Azure DSC extension-gegevens verzameling](https://blogs.msdn.microsoft.com/powershell/2016/02/02/azure-dsc-extension-data-collection-2/)voor meer informatie.
 
-- **Version**: Hiermee geeft u de versie op van de DSC-extensie die moet worden geïnstalleerd. Zie de versie geschiedenis van de [DSC-extensie](/powershell/scripting/dsc/getting-started/azuredscexthistory)voor meer informatie over versies.
+- **Versie**: Hiermee geeft u de versie op van de DSC-extensie die moet worden geïnstalleerd. Zie de versie geschiedenis van de [DSC-extensie](/powershell/scripting/dsc/getting-started/azuredscexthistory)voor meer informatie over versies.
 
-- **Secundaire versie van automatische upgrade**: Dit veld is gekoppeld aan de schakel optie voor automatisch **bijwerken** in de cmdlets en zorgt ervoor dat de uitbrei ding tijdens de installatie naar de meest recente versie wordt bijgewerkt. Met Ja wordt de extensie-handler geïnstrueerd de meest recente beschik bare versie te gebruiken. Als u **Nee** **klikt** , wordt de **versie** die is opgegeven, geforceerd geïnstalleerd. Het selecteren van **Ja** of **Nee** is gelijk aan het selecteren van **Nee**.
+- **Secundaire versie van automatische upgrade**: dit veld is gekoppeld aan de schakel optie voor automatisch **bijwerken** in de cmdlets en maakt het mogelijk dat de uitbrei ding tijdens de installatie automatisch wordt bijgewerkt naar de meest recente versie. Met Ja wordt de extensie-handler geïnstrueerd de meest recente beschik bare versie te gebruiken. Als u **Nee** **klikt** , wordt de **versie** die is opgegeven, geforceerd geïnstalleerd. Het selecteren van **Ja** of **Nee** is gelijk aan het selecteren van **Nee**.
 
 ## <a name="logs"></a>Logboeken
 

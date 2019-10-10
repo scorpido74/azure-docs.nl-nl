@@ -46,7 +46,7 @@ In het volgende diagram ziet u het proces op hoog niveau voor het maken van een 
 
 **Vereiste rol:** Globale beheerder, gebruikers beheerder of catalogus eigenaar
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 1. Klik op **Azure Active Directory** en klik vervolgens op **Identity governance**.
 
@@ -56,7 +56,7 @@ In het volgende diagram ziet u het proces op hoog niveau voor het maken van een 
 
 1. Klik op **nieuw toegangs pakket**.
 
-## <a name="basics"></a>Basics
+## <a name="basics"></a>Basisbeginselen
 
 Op het tabblad **basis beginselen** geeft u het toegangs pakket een naam en geeft u op in welke catalogus u het toegangs pakket wilt maken.
 

@@ -9,12 +9,12 @@ manager: rkarlin
 ms.topic: conceptual
 ms.date: 09/05/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 570bf7968b3d6fac44dc770a7fda1e0784dbdcf9
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 7d7e69e8ad0c5b14ac7ed8b941a7949f4f675812
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70886340"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72176773"
 ---
 # <a name="security-controls-for-azure-virtual-machine-scale-sets"></a>Beveiligings controles voor Azure Virtual Machine Scale Sets
 
@@ -39,18 +39,18 @@ In dit artikel worden de beveiligings besturings elementen gedocumenteerd die zi
 | Logboek registratie en controle op het vlak van controle en beheer| Ja |  |
 | Logboek registratie en controle van het gegevens vlak | Nee |  |
 
-## <a name="identity"></a>Identiteit
+## <a name="identity"></a>Identity
 
 | Beveiligings beheer | Ja/Nee | Opmerkingen|
 |---|---|--|
-| Authentication| Ja |  |
-| Authorization| Ja |  |
+| Verificatie| Ja |  |
+| Autorisatie| Ja |  |
 
-## <a name="data-protection"></a>Gegevensbescherming
+## <a name="data-protection"></a>Databeveiliging
 
 | Beveiligings beheer | Ja/Nee | Opmerkingen |
 |---|---|--|
-| Versleuteling aan server zijde bij rest: Door micro soft beheerde sleutels | Ja | Zie [een virtuele Linux-machine versleutelen in azure](/azure/virtual-machines/linux/encrypt-disks) en [virtuele schijven op een Windows-VM](/azure/virtual-machines/windows/encrypt-disks)versleutelen. |
+| Versleuteling aan server zijde op rest: door micro soft beheerde sleutels | Ja | Zie [een virtuele Linux-machine versleutelen in azure](/azure/virtual-machines/linux/disk-encryption-linux) en [virtuele schijven op een Windows-VM versleutelen](/azure/virtual-machines/windows/encrypt-disks). |
 | Versleuteling in transit (zoals ExpressRoute-versleuteling, in VNet-versleuteling en VNet-VNet-versleuteling)| Ja | Azure Virtual Machines ondersteunt [ExpressRoute](/azure/expressroute) -en VNet-versleuteling. Zie [in-transit versleuteling in vm's](/azure/security/security-azure-encryption-overview#in-transit-encryption-in-vms). |
 | Versleuteling aan server zijde op rest: door de klant beheerde sleutels (BYOK) | Ja | Door de klant beheerde sleutels is een ondersteund Azure-versleutelings scenario. Zie [Azure Encryption Overview](/azure/security/security-azure-encryption-overview#in-transit-encryption-in-vms)(Engelstalig).|
 | Versleuteling op kolom niveau (Azure Data Services)| N/A | |

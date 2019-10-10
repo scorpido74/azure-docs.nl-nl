@@ -65,11 +65,11 @@ De switch-activiteit biedt dezelfde functionaliteit als een switch-instructie in
 
 ## <a name="type-properties"></a>Type-eigenschappen
 
-Eigenschap | Description | Toegestane waarden | Verplicht
+Eigenschap | Beschrijving | Toegestane waarden | Verplicht
 -------- | ----------- | -------------- | --------
 name | De naam van de switch activiteit. | Tekenreeks | Ja
 type | Moet worden ingesteld op *overschakelen** | Tekenreeks | Ja
-expression | Expressie die moet worden geëvalueerd als teken reeks waarde | Expressie met teken reeks resultaat type | Ja
+expressie | Expressie die moet worden geëvalueerd als teken reeks waarde | Expressie met teken reeks resultaat type | Ja
 meldingen | Set cases die een waarde en een set activiteiten bevatten die moeten worden uitgevoerd wanneer de waarde overeenkomt met de evaluatie van de expressie. U moet ten minste één geval opgeven. Er is een maximum limiet van 25 gevallen. | Reeks Case-objecten | Ja
 defaultActivities | Een set activiteiten die worden uitgevoerd wanneer aan de evaluatie van de expressie niet wordt voldaan. | Matrix van activiteiten | Ja
 

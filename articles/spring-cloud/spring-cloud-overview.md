@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: overview
 ms.date: 10/04/2019
 ms.author: jeconnoc
-ms.openlocfilehash: 0f54f218c630129049182e00ad3c53624172a5f0
-ms.sourcegitcommit: d773b5743cb54b8cbcfa5c5e4d21d5b45a58b081
+ms.openlocfilehash: c58e6b2a0c0de8295df65b44fbdeaeb2d4461948
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72039075"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72166537"
 ---
 # <a name="what-is-azure-spring-cloud"></a>Wat is Azure lente-Cloud?
 
@@ -19,7 +19,8 @@ Met Azure lente-Cloud kunt u eenvoudig micro service-toepassingen op basis van e
 
 Als onderdeel van het Azure-ecosysteem kan Azure lente-Cloud eenvoudig worden gebonden aan andere Azure-Services, waaronder opslag, data bases, bewaking en meer.
 
-Er is momenteel een preview-versie van Azure lente Cloud beschikbaar.  Voor toegang tot deze service terwijl deze in preview is, kunt u contact met ons opnemen via e-mail: azure-spring-cloud@service.microsoft.com.
+Er is momenteel een preview-versie van Azure lente Cloud beschikbaar.  [Vul dit formulier](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR-LA2geqX-ZLhi-Ado1LD3tUNDk2VFpGUzYwVEJNVkhLRlcwNkZFUFZEUS4u
+)in om toegang te krijgen tot deze service terwijl deze in preview is.
 
 Om aan de slag te gaan, voltooit u de lente-Cloud Snelstartgids met behulp van de [Azure cli](spring-cloud-quickstart-launch-app-cli.md), het [Azure Portal](spring-cloud-quickstart-launch-app-portal.md)of [maven](spring-cloud-quickstart-launch-app-maven.md).
 

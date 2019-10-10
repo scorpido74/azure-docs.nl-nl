@@ -1,25 +1,25 @@
 ---
-title: 'Azure Cosmos DB: Bulk-uitvoerder .NET API, SDK & resources'
+title: 'Azure Cosmos DB: bulk-uitvoerder .NET API, SDK & resources'
 description: Meer informatie over de bulk-uitvoerder .NET API en SDK, inclusief release datums, pensioen datums en wijzigingen die zijn aangebracht tussen de verschillende versies van de Azure Cosmos DB bulk-vervoerder .NET SDK.
 author: tknandu
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: reference
-ms.date: 11/19/2018
+ms.date: 10/08/2019
 ms.author: ramkris
-ms.openlocfilehash: 447f52a08c9e833808508852c4619f6ce1d947e1
-ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
+ms.openlocfilehash: 90537a7e24e5f87087fb718322a7271043d1d229
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71703372"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72176829"
 ---
-# <a name="net-bulk-executor-library-download-information"></a>Bibliotheek .NET-bulk-uitvoerder: Informatie downloaden 
+# <a name="net-bulk-executor-library-download-information"></a>.NET-bibliotheek voor bulksgewijs laden: informatie downloaden 
 
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-sdk-dotnet.md)
-> * [.NET-Wijzigingenfeed](sql-api-sdk-dotnet-changefeed.md)
+> * [.NET-wijzigings feed](sql-api-sdk-dotnet-changefeed.md)
 > * [.NET Core](sql-api-sdk-dotnet-core.md)
 > * [Node.js](sql-api-sdk-node.md)
 > * [Async Java](sql-api-sdk-async-java.md)
@@ -36,11 +36,15 @@ ms.locfileid: "71703372"
 | **Beschrijving**| Met de bibliotheek .net bulksgewijze uitvoerder kunnen client toepassingen bulk bewerkingen uitvoeren op Azure Cosmos DB accounts. Deze bibliotheek bevat BulkImport-, BulkUpdate-en BulkDelete-naam ruimten. De BulkImport-module kan documenten bulksgewijs opnemen in een geoptimaliseerde manier, zodat de door Voer ingericht voor een verzameling voor het maximale aantal wordt verbruikt. De BulkUpdate-module kan bestaande gegevens in azure Cosmos-containers bulksgewijs bijwerken als patches. De BulkDelete-module kan documenten bulksgewijs verwijderen op een geoptimaliseerde manier, zodat de door Voer ingericht voor een verzameling voor de maximale grootte wordt verbruikt.|
 |**SDK downloaden**| [NuGet](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.BulkExecutor/) |
 | **Bibliotheek voor bulk-uitvoerder in GitHub**| [GitHub](https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-started)|
-|**API-documentatie**|[.NET API-referentiedocumentatie](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor?view=azure-dotnet)|
+|**API-documentatie**|[Naslag documentatie voor .NET API](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor?view=azure-dotnet)|
 |**Aan de slag**|[Aan de slag met de bibliotheek voor bulk-uitvoerder .NET SDK](bulk-executor-dot-net.md)|
-| **Huidige ondersteunde framework**| Microsoft .NET Framework 4.5.2, 4.6.1 en .NET Standard 2,0 |
+| **Huidig ondersteund Framework**| Microsoft .NET Framework 4.5.2, 4.6.1 en .NET Standard 2,0 |
 
 ## <a name="release-notes"></a>Releaseopmerkingen
+
+### <a name="a-name240-preview240-preview"></a><a name="2.4.0-preview"/>2.4.0-Preview
+
+* De SDK-afhankelijkheid is gewijzigd in > = 2.5.1
 
 ### <a name="a-name230-preview2230-preview2"></a><a name="2.3.0-preview2"/>2.3.0-preview2
 

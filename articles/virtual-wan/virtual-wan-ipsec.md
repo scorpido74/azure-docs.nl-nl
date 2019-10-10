@@ -1,27 +1,31 @@
 ---
-title: Azure virtuele WAN standaard IPSec-beleid | Microsoft Docs
-description: In dit artikel bevat informatie over IPsec-beleid voor virtueel WAN.
+title: Standaard-IPsec-beleid voor Azure Virtual WAN | Microsoft Docs
+description: Dit artikel bevat informatie over IPsec-beleids regels voor virtuele WAN.
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 05/28/2019
+ms.date: 10/07/2019
 ms.author: cherylmc
-ms.openlocfilehash: fcc9979b9f6d2efcdcbb575f3fd149d8df9c20b0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5533e35a632f2d58bd8af8f52aafa11d1b677cb9
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66307210"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72168397"
 ---
-# <a name="virtual-wan-default-policies-for-ipsec-connectivity"></a>Virtuele WAN standaardbeleidsregels voor IPSec-verbinding
+# <a name="virtual-wan-default-policies-for-ipsec-connectivity"></a>Virtueel WAN-standaard beleid voor IPsec-connectiviteit
 
-In dit artikel bevat de ondersteunde combinaties van IPSec-beleid.
+In dit artikel worden de ondersteunde IPsec-beleids combinaties weer gegeven.
 
-## <a name="default-ipsec-policies"></a>Standaard IPSec-beleid
+## <a name="default-ipsec-policies"></a>Standaard IPsec-beleid
 
 [!INCLUDE [IPsec](../../includes/virtual-wan-ipsec-include.md)]
 
+## <a name="custom-ipsec-policies"></a>Aangepaste IPsec-beleids regels
+
+[!INCLUDE [IPsec](../../includes/virtual-wan-ipsec-custom-include.md)]
+
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie voor meer informatie over virtuele WAN [over Azure virtuele WAN](virtual-wan-about.md) en de [virtuele WAN-Veelgestelde vragen over Azure](virtual-wan-faq.md).
+Zie [informatie over Azure Virtual WAN](virtual-wan-about.md) en de [Veelgestelde vragen over Azure Virtual WAN](virtual-wan-faq.md)voor meer informatie over Virtual WAN.

@@ -9,23 +9,23 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 09/08/2018
 ms.author: glenga
-ms.openlocfilehash: 5a4bc05e0a0b0b6a2c1b859caea2aadc12b8e0e0
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 3ae75dc988ad70871efa45eb8c61db15804922ee
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70096401"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72176586"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x"></a>host. json-verwijzing voor Azure Functions 2. x  
 
 > [!div class="op_single_selector" title1="Selecteer de versie van de Azure Functions runtime die u gebruikt: "]
-> * [Versie 1:](functions-host-json-v1.md)
+> * [Versie 1](functions-host-json-v1.md)
 > * [Versie 2](functions-host-json.md)
 
 Het meta gegevensbestand van de *host. json* bevat globale configuratie opties die van invloed zijn op alle functies voor een functie-app. In dit artikel vindt u de instellingen die beschikbaar zijn voor de v2-runtime.  
 
 > [!NOTE]
-> Dit artikel is voor Azure Functions 2. x.  Voor een verwijzing van host.json in functies 1.x, Zie [naslaginformatie over host.json voor Azure Functions 1.x](functions-host-json-v1.md).
+> Dit artikel is voor Azure Functions 2. x.  Zie [host. json Reference voor Azure functions 1. x](functions-host-json-v1.md)voor een verwijzing naar de host. json in functions 1. x.
 
 Andere opties voor de configuratie van de functie-app worden beheerd in de [app-instellingen](functions-app-settings.md).
 
@@ -113,10 +113,13 @@ Hiermee bepaalt u de [sampling functie in Application Insights](./functions-moni
 > [!NOTE]
 > Het vastleggen van logboeken kan ertoe leiden dat sommige uitvoeringen niet worden weer gegeven op de Blade Application Insights monitor.
 
-|Eigenschap  |Standaard | Description |
+|Eigenschap  |Standaard | Beschrijving |
 |---------|---------|---------| 
-|isEnabled|true|Hiermee worden steek proeven in-of uitgeschakeld.| 
+|isEnabled|waar|Hiermee worden steek proeven in-of uitgeschakeld.| 
 |maxTelemetryItemsPerSecond|5|De drempel waarde waarmee steek proeven worden gestart.| 
+|EnableLiveMetrics |waar|Hiermee wordt de verzameling Live Metrics ingeschakeld.|
+|EnableDependencyTracking|waar|Hiermee schakelt u het bijhouden van afhankelijkheden in.|
+|EnablePerformanceCountersCollection|waar|Hiermee schakelt u de verzameling kudu-prestatie meter items.|
 
 ## <a name="cosmosdb"></a>cosmosDb
 
@@ -128,13 +131,13 @@ De configuratie-instelling kan worden gevonden in [bindingen voor Durable functi
 
 ## <a name="eventhub"></a>eventHub
 
-U kunt configuratie-instellingen vinden in [Event hub-triggers en](functions-bindings-event-hubs.md#host-json)-bindingen. 
+U kunt configuratie-instellingen vinden in [Event hub-triggers en-bindingen](functions-bindings-event-hubs.md#host-json). 
 
 ## <a name="extensions"></a>Extensions
 
 Eigenschap die een object retourneert dat alle binding-specifieke instellingen bevat, zoals [http](#http) en [eventHub](#eventhub).
 
-## <a name="functions"></a>functies
+## <a name="functions"></a>functions
 
 Een lijst met functies die de taak host uitvoert. Een lege matrix houdt in dat alle functies worden uitgevoerd. Alleen bedoeld voor gebruik bij [lokaal uitvoeren](functions-run-local.md). In functie-apps in azure moet u in plaats daarvan de stappen volgen in [het uitschakelen van functies in azure functions](disable-function.md) om specifieke functies uit te scha kelen in plaats van deze instelling te gebruiken.
 
@@ -173,11 +176,11 @@ Configuratie-instellingen voor de [host Health Monitor](https://github.com/Azure
 }
 ```
 
-|Eigenschap  |Standaard | Description |
+|Eigenschap  |Standaard | Beschrijving |
 |---------|---------|---------| 
-|enabled|true|Hiermee wordt aangegeven of de functie is ingeschakeld. | 
+|ingeschakeld|waar|Hiermee wordt aangegeven of de functie is ingeschakeld. | 
 |healthCheckInterval|10 seconden|Het tijds interval tussen de periodieke status controles voor de achtergrond. | 
-|healthCheckWindow|2 minuten|Een schuif tijd venster dat wordt gebruikt in combi natie `healthCheckThreshold` met de instelling.| 
+|healthCheckWindow|2 minuten|Een schuif tijd venster dat wordt gebruikt in combi natie met de instelling `healthCheckThreshold`.| 
 |healthCheckThreshold|6|Maximum aantal keer dat de status controle kan mislukken voordat een host recyclen wordt gestart.| 
 |counterThreshold|0,80|De drempel waarde waarbij een prestatie meter item wordt beschouwd als een slechte status.| 
 
@@ -207,12 +210,12 @@ Hiermee bepaalt u het gedrag van logboek registratie van de functie-app, met inb
 }
 ```
 
-|Eigenschap  |Standaard | Description |
+|Eigenschap  |Standaard | Beschrijving |
 |---------|---------|---------|
 |fileLoggingMode|debugOnly|Hiermee wordt gedefinieerd welk niveau van bestands logboek registratie is ingeschakeld.  Opties zijn `never`, `always`, `debugOnly`. |
-|logLevel|N.v.t.|Object dat de logboek categorie filtering definieert voor functies in de app. Versie 2. x volgt de ASP.NET Core indeling voor het filteren van de logboek categorie. Hiermee kunt u logboek registratie voor specifieke functies filteren. Zie [logboek filtering](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering) in de ASP.net core-documentatie voor meer informatie. |
-|console|N.v.t.| De instelling voor de logboek registratie van de [console](#console) . |
-|applicationInsights|N.v.t.| De instelling [applicationInsights](#applicationinsights) . |
+|logLevel|n.v.t.|Object dat de logboek categorie filtering definieert voor functies in de app. Versie 2. x volgt de ASP.NET Core indeling voor het filteren van de logboek categorie. Hiermee kunt u logboek registratie voor specifieke functies filteren. Zie [logboek filtering](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering) in de ASP.net core-documentatie voor meer informatie. |
+|console|n.v.t.| De instelling voor de logboek registratie van de [console](#console) . |
+|applicationInsights|n.v.t.| De instelling [applicationInsights](#applicationinsights) . |
 
 ## <a name="console"></a>console
 
@@ -230,9 +233,9 @@ Deze instelling is een onderliggend item van [logboek registratie](#logging). He
 }
 ```
 
-|Eigenschap  |Standaard | Description |
+|Eigenschap  |Standaard | Beschrijving |
 |---------|---------|---------| 
-|isEnabled|false|Hiermee wordt de logboek registratie van de console in-of uitgeschakeld.| 
+|isEnabled|onwaar|Hiermee wordt de logboek registratie van de console in-of uitgeschakeld.| 
 
 ## <a name="queues"></a>Bestel
 
@@ -240,7 +243,7 @@ Configuratie-instellingen vindt u in de [opslag wachtrij Triggers en bindingen](
 
 ## <a name="sendgrid"></a>sendGrid
 
-Configuratie-instelling vindt u in [SendGrid-triggers en](functions-bindings-sendgrid.md#host-json)-bindingen.
+Configuratie-instelling vindt u in [SendGrid-triggers en-bindingen](functions-bindings-sendgrid.md#host-json).
 
 ## <a name="servicebus"></a>serviceBus
 
@@ -262,17 +265,17 @@ Configuratie-instellingen voor het gedrag van Singleton-vergren deling. Zie [git
 }
 ```
 
-|Eigenschap  |Standaard | Description |
+|Eigenschap  |Standaard | Beschrijving |
 |---------|---------|---------| 
 |lockPeriod|00:00:15|De periode waarin vergrendelingen op functie niveau worden uitgevoerd. De vergren delingen automatisch verlengen.| 
 |listenerLockPeriod|00:01:00|De periode waarin de luister vergrendelingen worden uitgevoerd.| 
 |listenerLockRecoveryPollingInterval|00:01:00|Het tijds interval dat wordt gebruikt voor het herstel van de listener-vergren deling als tijdens het opstarten geen listener-vergrendeling kan worden verkregen.| 
 |lockAcquisitionTimeout|00:01:00|De maximale hoeveelheid tijd die de runtime probeert een vergren deling te verkrijgen.| 
-|lockAcquisitionPollingInterval|N.v.t.|Het interval tussen overname pogingen voor vergren delen.| 
+|lockAcquisitionPollingInterval|n.v.t.|Het interval tussen overname pogingen voor vergren delen.| 
 
-## <a name="version"></a>version
+## <a name="version"></a>versie
 
-De versie teken `"version": "2.0"` reeks is vereist voor een functie-app die de v2-runtime bedoelt.
+De versie teken reeks `"version": "2.0"` is vereist voor een functie-app die de v2-runtime bedoelt.
 
 ## <a name="watchdirectories"></a>watchDirectories
 

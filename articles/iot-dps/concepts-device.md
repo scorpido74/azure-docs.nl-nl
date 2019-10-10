@@ -1,6 +1,6 @@
 ---
-title: Apparaatconcepten het inrichten van apparaten in Azure | Microsoft Docs
-description: Beschrijft de concepten die specifiek zijn voor apparaten met Device Provisioning Service en IoT Hub voor apparaatinrichting
+title: Concepten van apparaten in azure Device Provisioning | Microsoft Docs
+description: Hierin worden de concepten beschreven voor het inrichten van apparaten met Device Provisioning Service en IoT Hub
 author: nberdy
 ms.author: nberdy
 ms.date: 04/04/2019
@@ -8,54 +8,54 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: briz
-ms.openlocfilehash: 2904da863707c5f653d774b0a480cc48c95c8d1c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8ea1be02dee0e0ef00010e8ac7a4dfb75eadbe96
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60745975"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72173387"
 ---
-# <a name="iot-hub-device-provisioning-service-device-concepts"></a>Concepten van IoT Hub Device Provisioning Service-apparaat
+# <a name="iot-hub-device-provisioning-service-device-concepts"></a>Concepten van IoT Hub Device Provisioning Service-apparaten
 
-IoT Hub Device Provisioning Service is een helper-service voor IoT Hub die u met zero-touch-apparaatinrichting voor een opgegeven IoT hub configureren. Met de Device Provisioning Service kunt u miljoenen apparaten inrichten op een veilige en schaalbare manier.
+IoT Hub Device Provisioning Service is een Helper-service voor IoT Hub die u gebruikt om het inrichten van Zero-Touch-apparaten te configureren voor een opgegeven IoT-hub. Met de Device Provisioning Service kunt u miljoenen apparaten inrichten op een veilige en schaalbare manier.
 
-In dit artikel biedt een overzicht van de *apparaat* concepten betrokken bij het apparaat wordt ingericht. In dit artikel is het meest relevant voor personen die betrokken zijn bij de [fabricageproces stap](about-iot-dps.md#manufacturing-step) van een apparaat voorbereiden voor implementatie.
+Dit artikel bevat een overzicht van de *concepten van het apparaat die* bij het inrichten van apparaten betrokken zijn. Dit artikel is het meest relevant voor personen die deel uitmaken van de [stap productie](about-iot-dps.md#manufacturing-step) van het voorbereiden van een apparaat dat klaar is voor implementatie.
 
 ## <a name="attestation-mechanism"></a>Attestation-mechanisme
 
-De attestation-mechanisme is de methode die wordt gebruikt voor het bevestigen van een apparaat-id. De attestation-mechanisme is ook relevant zijn voor de lijst inschrijving, dit geeft aan de inrichtingsservice welke methode voor attestation gebruiken met een bepaald apparaat.
+Het Attestation-mechanisme is de methode die wordt gebruikt om de identiteit van een apparaat te bevestigen. Het Attestation-mechanisme is ook relevant voor de registratie lijst, waarmee wordt aangegeven dat de inrichtings service wordt gebruikt voor het gebruik van een bepaald apparaat.
 
 > [!NOTE]
-> IoT Hub maakt gebruik van 'verificatieschema' voor een vergelijkbare concept in die service.
+> IoT Hub gebruikt verificatie schema voor een vergelijkbaar concept in die service.
 
-De Device Provisioning Service ondersteunt de volgende vormen van attestation:
-* **X.509-certificaten** op basis van de standaard x.509-certificaat-verificatiestroom.
-* **Trusted Platform Module (TPM)** op basis van een nonce uitdaging, met behulp van de TPM-standaard voor sleutels om weer te geven van een ondertekende Shared Access Signature (SAS)-token. Dit is een fysieke TPM op het apparaat niet vereist, maar de service om te bevestigen met behulp van de goedkeuringssleutel per wordt verwacht dat de [TPM-specificatie](https://trustedcomputinggroup.org/work-groups/trusted-platform-module/).
-* **Symmetrische sleutel** op basis van de handtekening voor gedeelde toegang (SAS) [beveiligingstokens](../iot-hub/iot-hub-devguide-security.md#security-tokens), waaronder een hash-handtekening en een ingesloten verlopen. Zie voor meer informatie, [symmetrische sleutel attestation](concepts-symmetric-key-attestation.md).
+De Device Provisioning Service ondersteunt de volgende vormen van Attestation:
+* **X. 509-certificaten** op basis van de standaard x. 509 certificaat verificatie stroom.
+* **Trusted Platform Module (TPM)** op basis van een nonce-Challenge, met behulp van de TPM-standaard voor sleutels om een ondertekend Shared Access Signature-token (SAS) aan te bieden. Hiervoor is geen fysieke TPM vereist op het apparaat, maar de service verwacht een verklaring te maken met behulp van de goedkeurings sleutel per [TPM-specificatie](https://trustedcomputinggroup.org/work-groups/trusted-platform-module/).
+* **Symmetrische sleutel** op basis van [beveiligings tokens](../iot-hub/iot-hub-devguide-security.md#security-tokens)voor Shared Access Signature (SAS), die een gehashte hand tekening en een Inge sloten verloop bevatten. Zie [symmetrische sleutel Attestation](concepts-symmetric-key-attestation.md)(Engelstalig) voor meer informatie.
 
-## <a name="hardware-security-module"></a>Hardware security module
+## <a name="hardware-security-module"></a>Hardware Security module
 
-De HSM, of een aangepaste HSM wordt gebruikt voor beveiligde, op hardware gebaseerde opslag van apparaat geheimen en is de veiligste manier van geheime opslag. X.509-certificaten en SAS-tokens kunnen worden opgeslagen in de HSM. HSM's kunnen worden gebruikt met beide attestation-mechanismen de provisioning service ondersteunt.
+De Hardware Security module, of HSM, wordt gebruikt voor veilige, op hardware gebaseerde opslag van geheimen van apparaten en is de veiligste vorm van geheime opslag. Zowel X. 509-certificaten als SAS-tokens kunnen worden opgeslagen in de HSM. Hsm's kan worden gebruikt met beide Attestation-mechanismen die door de inrichtings service worden ondersteund.
 
 > [!TIP]
-> Het is raadzaam met behulp van een HSM aan geheimen veilig opslaan op uw apparaten met apparaten.
+> We raden u ten zeerste aan een HSM te gebruiken met apparaten om veilig geheimen op uw apparaten op te slaan.
 
-Apparaat geheimen kunnen ook worden opgeslagen in de software (geheugen), maar er is een minder veilige vorm van opslag dan een HSM.
+Er kunnen ook geheimen voor apparaten worden opgeslagen in software (geheugen), maar dit is een minder veilige opslag ruimte dan een HSM.
 
 ## <a name="registration-id"></a>Registratie-ID
 
-De registratie-ID wordt gebruikt voor het aanduiden van een apparaat in de Device Provisioning Service. De apparaat-ID moet uniek zijn in de inrichtingsservice [ID-bereik](#id-scope). Elk apparaat moet een registratie-id hebben. De registratie-ID is alfanumerieke tekens, kleine letters en afbreekstreepjes mag bevatten.
+De registratie-ID wordt gebruikt om een apparaat in de Device Provisioning-Service op unieke wijze te identificeren. De registratie-ID moet uniek zijn in het bereik van de service [-id](#id-scope)voor de inrichting. Elk apparaat moet een registratie-ID hebben. De registratie-ID is alfanumeriek, kleine letters en kan afbreek streepjes bevatten.
 
-* In het geval van een TPM, wordt de registratie-ID verstrekt door de TPM zelf.
-* De registratie-ID is opgegeven in het geval van op basis van X.509-attestation, als de onderwerpnaam van het certificaat.
+* In het geval van TPM wordt de registratie-ID door de TPM zelf verschaft.
+* In het geval van X. 509 Attestation wordt de registratie-ID gegeven als de onderwerpnaam van het certificaat.
 
 ## <a name="device-id"></a>Apparaat-id
 
-De apparaat-ID is de ID zoals deze wordt weergegeven in de IoT Hub. De gewenste apparaat-ID kan worden ingesteld in de vermelding voor apparaatinschrijving, maar het is niet vereist om te worden ingesteld. Als geen gewenste apparaat-ID in de lijst inschrijving is opgegeven, wordt de registratie-ID wordt gebruikt als de apparaat-ID bij het registreren van het apparaat. Meer informatie over [apparaat-id's van IoT-Hub](../iot-hub/iot-hub-devguide-identity-registry.md).
+De apparaat-ID is de ID zoals deze wordt weer gegeven in IoT Hub. De gewenste apparaat-ID kan in de inschrijvings vermelding worden ingesteld, maar deze hoeft niet te worden ingesteld. Als er geen gewenste apparaat-ID is opgegeven in de registratie lijst, wordt de registratie-ID gebruikt als de apparaat-ID bij het registreren van het apparaat. Meer informatie over [apparaat-id's in IOT hub](../iot-hub/iot-hub-devguide-identity-registry.md).
 
 ## <a name="id-scope"></a>ID-bereik
 
-De ID-bereik is toegewezen aan een Device Provisioning Service wanneer deze wordt gemaakt door de gebruiker en wordt gebruikt voor het aanduiden van de specifieke provisioning-service die het apparaat wordt geregistreerd via. De ID-bereik wordt gegenereerd door de service en is onveranderbaar, die gegarandeerd uniek.
+Het ID-bereik wordt toegewezen aan een Device Provisioning Service wanneer deze door de gebruiker wordt gemaakt en wordt gebruikt om de specifieke inrichtings service te identificeren die door het apparaat wordt geregistreerd. Het ID-bereik wordt gegenereerd door de service en is onveranderbaar, waardoor uniekheid wordt gegarandeerd.
 
 > [!NOTE]
-> Uniekheid is belangrijk voor langlopende implementatiebewerkingen en fusie of scenario's.
+> Uniekheid is belang rijk voor langlopende implementatie bewerkingen en fusie-en verwervings scenario's.

@@ -18,7 +18,7 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 10/09/2019
 ms.locfileid: "72169988"
 ---
-# <a name="conditional-access-block-legacy-authentication"></a>Voorwaardelijke toegang: Verouderde verificatie blokkeren
+# <a name="conditional-access-block-legacy-authentication"></a>Voorwaardelijke toegang: verouderde verificatie blok keren
 
 Vanwege het verhoogde risico dat is gekoppeld aan verouderde verificatie protocollen, raadt micro soft aan dat organisaties verificatie aanvragen blok keren die gebruikmaken van deze protocollen en moderne verificatie vereisen.
 

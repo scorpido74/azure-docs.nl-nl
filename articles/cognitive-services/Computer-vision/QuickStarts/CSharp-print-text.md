@@ -1,5 +1,5 @@
 ---
-title: 'Quickstart: Gedrukte tekst extraheren (OCR) - REST, C#'
+title: 'Snelstartgids: gedrukte tekst extra heren (OCR)-REST,C#'
 titleSuffix: Azure Cognitive Services
 description: In deze snelstart extraheert u tekst uit een afbeelding met behulp van de Computer Vision-API met C#.
 services: cognitive-services
@@ -18,7 +18,7 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 10/09/2019
 ms.locfileid: "72177330"
 ---
-# <a name="quickstart-extract-printed-text-ocr-using-the-computer-vision-rest-api-and-c"></a>Quickstart: Afdruk bare tekst (OCR) extra heren met behulp van de REST API Computer Vision enC#
+# <a name="quickstart-extract-printed-text-ocr-using-the-computer-vision-rest-api-and-c"></a>Snelstartgids: Afdruk bare tekst (OCR) extra heren met behulp van de Computer Vision REST API enC#
 
 In deze quickstart gebruikt u OCR (optical character recognition) om gedrukte tekst uit een afbeelding te extraheren met behulp van de REST API van Computer Vision. Met de functie [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) kunt u gedrukte tekst in een afbeelding detecteren en de herkende tekens naar een machinaal leesbare tekenstroom extraheren.
 

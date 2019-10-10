@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
-ms.author: subramar
-ms.openlocfilehash: 4f2aa4b848172ab8b6a7e74de7dc1bc5f80639a1
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.author: atsenthi
+ms.openlocfilehash: cae701e34c3934e8ba8a289e7804e8852f6b5288
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68335640"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72167390"
 ---
 # <a name="capacity-planning-for-service-fabric-applications"></a>Capaciteits planning voor Service Fabric toepassingen
 In dit document leert u hoe u de hoeveelheid resources (Cpu's, RAM, schijf opslag) kunt schatten die u nodig hebt om uw Azure Service Fabric-toepassingen uit te voeren. Het is gebruikelijk dat uw resource vereisten na verloop van tijd veranderen. Normaal gesp roken hebt u weinig resources nodig bij het ontwikkelen/testen van uw service, en hebt u meer bronnen nodig tijdens de productie en wordt uw toepassing uitgebreid in populariteit. Wanneer u uw toepassing ontwerpt, bedenkt u door de vereisten voor de lange termijn en maakt u keuzen waarmee uw service kan worden geschaald om te voldoen aan de vraag naar een hoge klant.

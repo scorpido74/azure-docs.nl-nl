@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 09/09/2019
 ms.author: kefre
 ms.custom: seodec18
-ms.openlocfilehash: 417ff7ac345b9a83b3d3f4c50e9fd141d74bc99c
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 298228eedb73298f00654f4f72c201d9ed671090
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71103550"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177050"
 ---
 # <a name="call-the-computer-vision-api"></a>De Computer Vision-API aanroepen
 
@@ -30,8 +30,8 @@ In dit artikel wordt beschreven hoe u de Computer Vision-API aanroept met behulp
 - Een afbeeldings-URL of een pad naar een lokaal opgeslagen afbeelding
 - Ondersteunde invoer methoden: een onbewerkte binaire afbeelding in de vorm van een toepassing/octet-stream of een afbeeldings-URL
 - Ondersteunde indelingen voor afbeeldings bestanden: JPEG, PNG, GIF en BMP
-- Grootte van het afbeeldingsbestand: 4 MB of minder
-- Afbeeldings afmetingen: 50 &times; 50 pixels of meer
+- Afbeeldings bestands grootte: 4 MB of minder
+- Afmetingen afbeelding: 50 &times; 50 pixels of meer
   
 In de voor beelden in dit artikel worden de volgende functies gedemonstreerd:
 
@@ -40,8 +40,8 @@ In de voor beelden in dit artikel worden de volgende functies gedemonstreerd:
 
 De functies bieden de volgende opties:
 
-- **Optie 1**: Bereik analyse: alleen een opgegeven model analyseren
-- **Optie 2**: Verbeterde analyse-analyseren om aanvullende details te bieden met behulp van de [86-categorie taxonomie](../Category-Taxonomy.md)
+- **Optie 1**: bereik analyse-alleen een opgegeven model analyseren
+- **Optie 2**: verbeterde analyse-analyseren om aanvullende details te bieden met behulp van een [86-categorie taxonomie](../Category-Taxonomy.md)
   
 ## <a name="authorize-the-api-call"></a>De API-aanroep autoriseren
 
@@ -56,7 +56,7 @@ U kunt de abonnements sleutel door geven door een van de volgende handelingen ui
 * Geef het door via een query reeks, zoals in dit Computer Vision-API voor beeld:
 
   ```
-  https://westus.api.cognitive.microsoft.com/vision/v2.0/analyze?visualFeatures=Description,Tags&subscription-key=<Your subscription key>
+  https://westus.api.cognitive.microsoft.com/vision/v2.1/analyze?visualFeatures=Description,Tags&subscription-key=<Your subscription key>
   ```
 
 * Geef deze op in de header van de HTTP-aanvraag:
@@ -80,10 +80,10 @@ De basis manier om de Computer Vision-API-aanroep uit te voeren, is door een afb
 
 Voor een opgegeven installatie kopie, tags en een beschrijving ophalen met behulp van een van de volgende opties:
 
-### <a name="option-1-get-a-list-of-tags-and-a-description"></a>Optie 1: Een lijst met tags en een beschrijving ophalen
+### <a name="option-1-get-a-list-of-tags-and-a-description"></a>Optie 1: een lijst met tags en een beschrijving ophalen
 
 ```
-POST https://westus.api.cognitive.microsoft.com/vision/v2.0/analyze?visualFeatures=Description,Tags&subscription-key=<Your subscription key>
+POST https://westus.api.cognitive.microsoft.com/vision/v2.1/analyze?visualFeatures=Description,Tags&subscription-key=<Your subscription key>
 ```
 
 ```csharp
@@ -100,19 +100,19 @@ using (var fs = new FileStream(@"C:\Vision\Sample.jpg", FileMode.Open))
 }
 ```
 
-### <a name="option-2-get-a-list-of-tags-only-or-a-description-only"></a>Optie 2: Alleen een lijst met tags of een beschrijving ophalen
+### <a name="option-2-get-a-list-of-tags-only-or-a-description-only"></a>Optie 2: alleen een lijst met tags of een beschrijving ophalen
 
 Voor alleen Tags voert u de volgende handelingen uit:
 
 ```
-POST https://westus.api.cognitive.microsoft.com/vision/v2.0/tag?subscription-key=<Your subscription key>
+POST https://westus.api.cognitive.microsoft.com/vision/v2.1/tag?subscription-key=<Your subscription key>
 var tagResults = await visionClient.TagImageAsync("http://contoso.com/example.jpg");
 ```
 
 Voer voor een beschrijving alleen een van de volgende handelingen uit:
 
 ```
-POST https://westus.api.cognitive.microsoft.com/vision/v2.0/describe?subscription-key=<Your subscription key>
+POST https://westus.api.cognitive.microsoft.com/vision/v2.1/describe?subscription-key=<Your subscription key>
 using (var fs = new FileStream(@"C:\Vision\Sample.jpg", FileMode.Open))
 {
   imageDescription = await visionClient.DescribeImageInStreamAsync(fs);
@@ -121,25 +121,25 @@ using (var fs = new FileStream(@"C:\Vision\Sample.jpg", FileMode.Open))
 
 ## <a name="get-domain-specific-analysis-celebrities"></a>Domein-specifieke analyse ophalen (beroemdheden)
 
-### <a name="option-1-scoped-analysis---analyze-only-a-specified-model"></a>Optie 1: Bereik analyse: alleen een opgegeven model analyseren
+### <a name="option-1-scoped-analysis---analyze-only-a-specified-model"></a>Optie 1: bereik analyse-alleen een opgegeven model analyseren
 ```
-POST https://westus.api.cognitive.microsoft.com/vision/v2.0/models/celebrities/analyze
+POST https://westus.api.cognitive.microsoft.com/vision/v2.1/models/celebrities/analyze
 var celebritiesResult = await visionClient.AnalyzeImageInDomainAsync(url, "celebrities");
 ```
 
 Voor deze optie zijn alle andere queryparameters {visualFeatures, details} niet geldig. Als u alle ondersteunde modellen wilt zien, gebruikt u:
 
 ```
-GET https://westus.api.cognitive.microsoft.com/vision/v2.0/models 
+GET https://westus.api.cognitive.microsoft.com/vision/v2.1/models 
 var models = await visionClient.ListModelsAsync();
 ```
 
-### <a name="option-2-enhanced-analysis---analyze-to-provide-additional-details-by-using-86-categories-taxonomy"></a>Optie 2: Verbeterde analyse-analyseren om aanvullende details te bieden met behulp van de 86-categorie taxonomie
+### <a name="option-2-enhanced-analysis---analyze-to-provide-additional-details-by-using-86-categories-taxonomy"></a>Optie 2: verbeterde analyse-analyseren om aanvullende details te bieden met behulp van een 86-categorie taxonomie
 
 Voor toepassingen waarvoor u een generieke installatie kopie wilt maken naast Details van een of meer domein-specifieke modellen, breidt u de V1 API uit met behulp van de query parameter model.
 
 ```
-POST https://westus.api.cognitive.microsoft.com/vision/v2.0/analyze?details=celebrities
+POST https://westus.api.cognitive.microsoft.com/vision/v2.1/analyze?details=celebrities
 ```
 
 Wanneer u deze methode aanroept, roept u eerst de classificatie van de [86-categorie](../Category-Taxonomy.md) aan. Als een van de categorieën overeenkomt met die van een bekend of overeenkomend model, treedt er een tweede doorgifte van classificatie aanroepen op. Als "Details = alle" of "Details" bijvoorbeeld "beroemdheden" bevat, roept u het beroemdheden-model aan nadat u de classificatie van de 86-categorie hebt aangeroepen. Het resultaat is inclusief de categorie persoon. In tegens telling tot optie 1 verhoogt deze methode de latentie voor gebruikers die geïnteresseerd zijn in beroemdheden.
@@ -179,7 +179,7 @@ Hier volgt een voorbeeld:
 
 Veld | Type | Inhoud
 ------|------|------|
-Labels  | `object` | Het object op het hoogste niveau voor een matrix met tags.
+Tags  | `object` | Het object op het hoogste niveau voor een matrix met tags.
 tags[].Name | `string`  | Het sleutel woord van de classificatie Tags.
 tags[].Score    | `number`  | De betrouwbaarheids score tussen 0 en 1.
 description  | `object` | Het object op het hoogste niveau voor een beschrijving.
@@ -189,7 +189,7 @@ description.captions[].confidence   | `number`  | De betrouwbaarheids score voor
 
 ## <a name="retrieve-and-understand-the-json-output-of-domain-specific-models"></a>De JSON-uitvoer van domein-specifieke modellen ophalen en begrijpen
 
-### <a name="option-1-scoped-analysis---analyze-only-a-specified-model"></a>Optie 1: Bereik analyse: alleen een opgegeven model analyseren
+### <a name="option-1-scoped-analysis---analyze-only-a-specified-model"></a>Optie 1: bereik analyse-alleen een opgegeven model analyseren
 
 De uitvoer is een matrix met tags, zoals wordt weer gegeven in het volgende voor beeld:
 
@@ -208,7 +208,7 @@ De uitvoer is een matrix met tags, zoals wordt weer gegeven in het volgende voor
 }
 ```
 
-### <a name="option-2-enhanced-analysis---analyze-to-provide-additional-details-by-using-the-86-categories-taxonomy"></a>Optie 2: Verbeterde analyse-analyseren om aanvullende details te bieden met behulp van de ' 86-categorieën ' taxonomie
+### <a name="option-2-enhanced-analysis---analyze-to-provide-additional-details-by-using-the-86-categories-taxonomy"></a>Optie 2: verbeterde analyse-analyseren om aanvullende details te bieden met behulp van de ' 86-categorieën ' taxonomie
 
 Voor domein-specifieke modellen met behulp van optie 2 (verbeterde analyse) is het retour type van de categorie uitgebreid, zoals wordt weer gegeven in het volgende voor beeld:
 
@@ -241,7 +241,7 @@ Het veld Categorieën bevat een lijst met een of meer van de [86-categorieën](.
 
 Veld   | Type  | Inhoud
 ------|------|------|
-categories | `object`   | Het object op het hoogste niveau.
+categorieën | `object`   | Het object op het hoogste niveau.
 categories[].name    | `string` | De naam in de taxonomie lijst van de 86-categorie.
 categories[].score  | `number`  | De betrouwbaarheids score tussen 0 en 1.
 categories[].detail  | `object?`      | Beschrijving Het detail-object.

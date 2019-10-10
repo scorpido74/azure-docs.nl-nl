@@ -107,18 +107,18 @@ Voeg een VM-extensieresource toe aan de bestaande sjabloon met de volgende inhou
 Zie de [extensieverwijzing](https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachines/extensions) voor meer informatie over deze resourcedefinitie. Hier volgen enkele belangrijke elementen:
 
 * **name**: omdat de extensiebron een onderliggende resource van het virtuele-machineobject is, moet de naam het voorvoegsel van de naam van de virtuele machine hebben. Zie [naam en type voor onderliggende resources instellen](child-resource-name-type.md).
-* **dependsOn**: de extensiebron maken nadat u de virtuele machine hebt gemaakt.
-* **fileUris**: dit zijn de locaties waar de scriptbestanden worden opgeslagen. Als u ervoor kiest om de meegeleverde locaties niet te gebruiken, moet u de waarden bijwerken.
+* **dependsOn**: Maak de uitbreidings resource nadat u de virtuele machine hebt gemaakt.
+* **fileUris**: de locaties waar de script bestanden worden opgeslagen. Als u ervoor kiest om de meegeleverde locaties niet te gebruiken, moet u de waarden bijwerken.
 * **commandToExecute**: met deze opdracht wordt het script aangeroepen.
 
 ## <a name="deploy-the-template"></a>De sjabloon implementeren
 
-Informatie over de implementatieprocedure vindt u in de sectie De sjabloon implementeren van [Zelfstudie: Azure Resource Manager-sjablonen met afhankelijke resources maken](./resource-manager-tutorial-create-templates-with-dependent-resources.md#deploy-the-template). Het wordt aanbevolen een gegenereerd wachtwoord te gebruiken voor het beheerdersaccount van de virtuele machine. Zie de sectie [Vereisten](#prerequisites) van dit artikel voor meer informatie.
+Zie de sectie ' de sjabloon implementeren ' in de [zelf studie: een Azure Resource Manager sjablonen met afhankelijke resources maken](./resource-manager-tutorial-create-templates-with-dependent-resources.md#deploy-the-template)voor de implementatie procedure. Het wordt aanbevolen een gegenereerd wachtwoord te gebruiken voor het beheerdersaccount van de virtuele machine. Zie de sectie [Vereisten](#prerequisites) van dit artikel voor meer informatie.
 
 ## <a name="verify-the-deployment"></a>De implementatie controleren
 
 1. Selecteer de VM in de Azure-portal.
-1. Kopieer het IP-adres in het overzicht van de VM door **Klik om te kopiëren** te selecteren en plak het adres in een tabblad van de browser. De gebruikelijke welkomstpagina van Internet Information Services (IIS) wordt geopend:
+1. Kopieer in het overzicht van de virtuele machine het IP-adres door **klikken te selecteren om te kopiëren**en plak het vervolgens op een browser tabblad. De welkomst pagina van de standaard Internet Information Services (IIS) wordt geopend:
 
 ![De welkomstpagina van Internet Information Services](./media/resource-manager-tutorial-deploy-vm-extensions/resource-manager-template-deploy-extensions-customer-script-web-server.png)
 

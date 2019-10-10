@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
-ms.author: subramar
-ms.openlocfilehash: 82b6e701a5f76aa4c2cea78417ca9bcbeeb10308
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.author: atsenthi
+ms.openlocfilehash: a795e01d37504dad360dc094b6b2aea2955b6a4a
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68927699"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72170444"
 ---
 # <a name="specify-resources-in-a-service-manifest"></a>Resources specificeren in een servicemanifest
 ## <a name="overview"></a>Overzicht
@@ -56,7 +56,7 @@ Als er meerdere code pakketten aanwezig zijn in één service pakket, moet er oo
 Raadpleeg [stateful reliable Services configureren](service-fabric-reliable-services-configuration.md) voor meer informatie over het verwijzen naar eind punten uit het bestand config package Settings (Settings. XML).
 
 ## <a name="example-specifying-an-http-endpoint-for-your-service"></a>Voor beeld: een HTTP-eind punt opgeven voor uw service
-Het volgende service manifest definieert één TCP-eindpunt resource en twee http-eindpunt resources &lt;in&gt; het element resources.
+In het volgende service manifest worden één TCP-eindpunt resource en twee HTTP-eindpunt resources gedefinieerd in het element &lt;Resources @ no__t-1.
 
 HTTP-eind punten worden automatisch door Service Fabric door de toegangs beheer lijst.
 
@@ -202,7 +202,7 @@ Tijdens het implementeren van de toepassing kunt u deze waarden als Application 
 PS C:\> New-ServiceFabricApplication -ApplicationName fabric:/myapp -ApplicationTypeName "AppType" -ApplicationTypeVersion "1.0.0" -ApplicationParameter @{Port='1001'; Protocol='https'; Type='Input'; Port1='2001'; Protocol='http'}
 ```
 
-Opmerking: Als de waarden voor de Application parameters leeg zijn, gaan we terug naar de standaard waarde die is opgegeven in het ServiceManifest voor de bijbehorende eind punt.
+Opmerking: als de waarden voor Application parameters leeg zijn, gaan we terug naar de standaard waarde die is opgegeven in het ServiceManifest voor de bijbehorende eind punt.
 
 Bijvoorbeeld:
 
@@ -218,4 +218,4 @@ Als in de ServiceManifest die u hebt opgegeven
 
 En de Port1-en Protocol1-waarde voor toepassings parameters is null of leeg. De poort wordt nog steeds bepaald door ServiceFabric. En het protocol TCP.
 
-Stel dat u een verkeerde waarde opgeeft. Net als voor de poort hebt u een teken reeks waarde ' foo ' opgegeven in plaats van een int.  De opdracht New-ServiceFabricApplication mislukt met een fout: De onderdrukkings parameter met de naam ' ServiceEndpoint1 ' kenmerk ' Port1 ' in de sectie ' ResourceOverrides ' is ongeldig. De opgegeven waarde is ' foo ' en is vereist ' int '.
+Stel dat u een verkeerde waarde opgeeft. Net als voor de poort hebt u een teken reeks waarde ' foo ' opgegeven in plaats van een int.  De opdracht New-ServiceFabricApplication mislukt met een fout: de onderdrukkings parameter met de naam ' ServiceEndpoint1 ' kenmerk ' Port1 ' in de sectie ' ResourceOverrides ' is ongeldig. De opgegeven waarde is ' foo ' en is vereist ' int '.

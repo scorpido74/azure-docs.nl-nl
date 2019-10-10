@@ -129,9 +129,9 @@ Autohervatten wordt geactiveerd als een van de volgende voor waarden op elk mome
 |Verificatie en autorisatie|Aanmelden|
 |Detectie van bedreigingen|Instellingen voor detectie van bedreigingen in-of uitschakelen op Data Base-of server niveau.<br>Instellingen voor detectie van bedreigingen wijzigen op Data Base-of server niveau.|
 |Gegevensdetectie en -classificatie|Toevoegen, wijzigen, verwijderen of weer geven van gevoeligheids labels|
-|Controleren|Controle records weer geven.<br>Controle beleid bijwerken of weer geven.|
+|Controle|Controle records weer geven.<br>Controle beleid bijwerken of weer geven.|
 |Gegevensmaskering|Regels voor gegevens maskering toevoegen, wijzigen, verwijderen of weer geven|
-|Transparent Data Encryption|Status of status van transparante gegevens versleuteling weer geven|
+|Transparante dataversleuteling|Status of status van transparante gegevens versleuteling weer geven|
 |Gegevens Archief voor query (prestaties)|Query Store-instellingen wijzigen of weer geven|
 |Autotuning|Toepassing en verificatie van aanbevelingen voor automatische afstemming, zoals automatisch indexeren|
 |Data base kopiëren|Maak een Data Base als kopie.<br>Exporteren naar een BACPAC-bestand.|
@@ -155,7 +155,7 @@ Het maken van een nieuwe data base of het verplaatsen van een bestaande Data Bas
 
 1. Geef de naam van de service doelstelling op. De service doelstelling schrijft de service tier, het genereren van hardware en het maximale aantal vCores. In de volgende tabel worden de opties voor service doelstelling weer gegeven:
 
-   |Naam van service doelstelling|Servicelaag|Hardware genereren|Maximum aantal vCores|
+   |Naam van service doelstelling|Serviceniveau|Hardware genereren|Maximum aantal vCores|
    |---|---|---|---|
    |GP_S_Gen5_1|Algemeen doel|Gen5|1|
    |GP_S_Gen5_2|Algemeen doel|Gen5|2|
@@ -172,7 +172,7 @@ Het maken van een nieuwe data base of het verplaatsen van een bestaande Data Bas
    |Parameter|Opties voor waarden|Standaardwaarde|
    |---|---|---|---|
    |Min vCores|Is afhankelijk van het maximum aantal geconfigureerde vCores-Zie [resource limieten](sql-database-vCore-resource-limits-single-databases.md#general-purpose-service-tier-for-serverless-compute).|0,5 vCores|
-   |Vertraging van autopause|Maal 60 minuten (1 uur)<br>Gehalte 10080 minuten (7 dagen)<br>Stappen 60 minuten<br>Autopause uitschakelen:-1|60 minuten|
+   |Vertraging van autopause|Minimum: 60 minuten (1 uur)<br>Maximum: 10080 minuten (7 dagen)<br>Aantal stappen: 60 minuten<br>Autopause uitschakelen:-1|60 minuten|
 
 > [!NOTE]
 > T-SQL gebruiken om een bestaande Data Base naar een server te verplaatsen of de berekenings grootte te wijzigen wordt momenteel niet ondersteund, maar kan worden uitgevoerd via de Azure Portal of Power shell.
@@ -181,7 +181,7 @@ Het maken van een nieuwe data base of het verplaatsen van een bestaande Data Bas
 
 #### <a name="use-azure-portal"></a>Azure Portal gebruiken
 
-Zie [Quickstart: Maak met behulp van de Azure Portal @ no__t-0 een enkele data base in Azure SQL Database.
+Zie [Quick Start: een enkele data base maken in Azure SQL database met behulp van de Azure Portal](sql-database-single-database-get-started.md).
 
 #### <a name="use-powershell"></a>PowerShell gebruiken
 
@@ -243,7 +243,7 @@ Het wijzigen van de min-vCores wordt uitgevoerd met behulp van de [set-AzSqlData
 
 Het wijzigen van de vertraging voor autopause wordt uitgevoerd met behulp van de opdracht [set-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabase) in Power shell met behulp van het argument `AutoPauseDelayInMinutes`.
 
-## <a name="monitoring"></a>Bewaking
+## <a name="monitoring"></a>Controleren
 
 ### <a name="resources-used-and-billed"></a>Gebruikte resources en gefactureerd
 
@@ -261,7 +261,7 @@ De resource groep van de gebruiker is de binnenste grenzen voor bron beheer voor
 
 De metrische gegevens voor het bewaken van het resource gebruik van het app-pakket en de gebruikers groep van een serverloze Data Base worden weer gegeven in de volgende tabel:
 
-|Entiteit|Gegevens|Description|Eenheden|
+|Entiteit|Gegevens|Beschrijving|Eenheden|
 |---|---|---|---|
 |App-pakket|app_cpu_percent|Het percentage vCores dat door de app wordt gebruikt ten opzichte van het maximale aantal vCores dat voor de app is toegestaan.|Percentage|
 |App-pakket|app_cpu_billed|De hoeveelheid reken kracht die tijdens de rapportage periode in rekening wordt gebracht voor de app. Het betaalde bedrag tijdens deze periode is het product van deze metrische waarde en de vCore eenheids prijs. <br><br>Waarden van deze metrische gegevens worden bepaald door het samen voegen van het maximum van CPU-gebruik en het geheugen dat elke seconde wordt gebruikt. Als de gebruikte hoeveelheid kleiner is dan de minimum hoeveelheid die is ingericht zoals ingesteld door de min-vCores en het minimale geheugen, wordt de ingerichte minimum hoeveelheid gefactureerd. Als u de CPU wilt vergelijken met geheugen voor facturerings doeleinden, wordt geheugen genormaliseerd in eenheden van vCores door de hoeveelheid geheugen in GB met 3 GB per vCore opnieuw te schalen.|vCore seconden|
@@ -286,7 +286,7 @@ Get-AzSqlDatabase `
   | Select -ExpandProperty "Status"
 ```
 
-## <a name="resource-limits"></a>Bronlimieten
+## <a name="resource-limits"></a>Bronbeperkingen
 
 Zie [serverloze Compute-laag](sql-database-vCore-resource-limits-single-databases.md#general-purpose-service-tier-for-serverless-compute)voor resource limieten.
 
@@ -296,7 +296,7 @@ De hoeveelheid berekenings kosten is het maximum van CPU-gebruik en het geheugen
 
 - **Gefactureerde resource**: CPU en geheugen
 - **Gefactureerd bedrag**: vCore eenheids prijs * Max (min vCores, vCores gebruikt, min geheugen gb * 1/3, geheugen GB gebruikt * 1/3) 
-- **Facturerings frequentie**: Per seconde
+- **Facturerings frequentie**: per seconde
 
 De vCore eenheids prijs is de kosten per vCore per seconde. Raadpleeg de [pagina met prijzen](https://azure.microsoft.com/pricing/details/sql-database/single/) voor de Azure SQL database voor specifieke eenheids prijzen in een bepaalde regio.
 
@@ -304,7 +304,7 @@ De gefactureerde hoeveelheid berekenings kosten wordt weer gegeven met de volgen
 
 - **Metric**: App_cpu_billed (vCore seconden)
 - **Definitie**: Max (min vCores, vCores gebruikt, min geheugen gb * 1/3, geheugen GB gebruikt * 1/3)
-- **Rapportage frequentie**: Per minuut
+- **Rapportage frequentie**: per minuut
 
 Deze hoeveelheid wordt per seconde berekend en op 1 minuut geaggregeerd.
 
@@ -330,5 +330,5 @@ De compute-laag zonder server is wereld wijd beschikbaar, met uitzonde ring van 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie [Quickstart om aan de slag te gaan: Maak met behulp van de Azure Portal @ no__t-0 een enkele data base in Azure SQL Database.
+- Zie [Quick Start: een enkele data base maken in Azure SQL database met behulp van de Azure Portal](sql-database-single-database-get-started.md)om aan de slag te gaan.
 - Zie [resource limieten voor serverloze Compute-lagen](sql-database-vCore-resource-limits-single-databases.md#general-purpose-service-tier-for-serverless-compute)voor resource limieten.

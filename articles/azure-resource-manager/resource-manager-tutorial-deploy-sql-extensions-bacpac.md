@@ -22,7 +22,7 @@ ms.locfileid: "72170235"
 ---
 # <a name="tutorial-import-sql-bacpac-files-with-azure-resource-manager-templates"></a>Zelfstudie: SQL BACPAC-bestanden importeren met Azure Resource Manager-sjablonen
 
-Meer informatie over het gebruik van Azure SQL Database-extensies om een BACPAC-bestand te importeren met Azure Resource Manager-sjablonen. Implementatieartefacten zijn, naast het hoofdsjabloonbestand, bestanden die vereist zijn om een implementatie te voltooien. Het BACPAC-bestand is een artefact. In deze zelfstudie maakt u een sjabloon voor het implementeren van een Azure SQL-server, een SQL-database, en importeert u een BACPAC-bestand. Voor informatie over het implementeren van extensies van virtuele Azure-machines met behulp van Azure Resource Manager-sjablonen, raadpleegt u [# Zelfstudie: Extensies voor virtuele machines implementeren met Azure Resource Manager-sjablonen](./resource-manager-tutorial-deploy-vm-extensions.md).
+Meer informatie over het gebruik van Azure SQL Database-extensies om een BACPAC-bestand te importeren met Azure Resource Manager-sjablonen. Implementatieartefacten zijn, naast het hoofdsjabloonbestand, bestanden die vereist zijn om een implementatie te voltooien. Het BACPAC-bestand is een artefact. In deze zelfstudie maakt u een sjabloon voor het implementeren van een Azure SQL-server, een SQL-database, en importeert u een BACPAC-bestand. Zie [# Zelfstudie: Extensies voor virtuele machines implementeren met Azure Resource Manager-sjablonen](./resource-manager-tutorial-deploy-vm-extensions.md) voor informatie over het implementeren van extensies van virtuele Azure-machines met behulp van Azure Resource Manager-sjablonen.
 
 Deze zelfstudie bestaat uit de volgende taken:
 
@@ -128,9 +128,9 @@ Voeg twee extra resources aan de sjabloon toe.
     Zie de [verwijzing voor SQL Database-extensies](https://docs.microsoft.com/azure/templates/microsoft.sql/servers/databases/extensions) voor meer informatie over de resourcedefinitie. Hier volgen enkele belangrijke elementen:
 
     * **dependsOn**: de extensieresource moet worden gemaakt nadat de SQL-database is gemaakt.
-    * **storageKeyType**: het type te gebruiken opslagsleutel. De waarde kan `StorageAccessKey` of `SharedAccessKey` zijn. Omdat het opgegeven BACPAC-bestand in een Azure Storage-account met openbare toegang wordt gedeeld, wordt hier 'SharedAccessKey' gebruikt.
+    * **storageKeyType**: het type opslagsleutel dat moet worden gebruikt. De waarde kan `StorageAccessKey` of `SharedAccessKey` zijn. Omdat het opgegeven BACPAC-bestand in een Azure Storage-account met openbare toegang wordt gedeeld, wordt hier 'SharedAccessKey' gebruikt.
     * **storageKey**: de te gebruiken opslagsleutel. Als het type opslagsleutel SharedAccessKey is, moet deze worden voorafgegaan door een '?'.
-    * **storageUri**: de te gebruiken opslag-URI. Als u ervoor kiest om het verstrekte BACPAC-bestand niet te gebruiken, moet u de waarden bijwerken.
+    * **storageUri**: de te gebruiken uri. Als u ervoor kiest om het verstrekte BACPAC-bestand niet te gebruiken, moet u de waarden bijwerken.
     * **administratorLoginPassword**: het wachtwoord van de SQL-beheerder. Gebruik een gegenereerd wachtwoord. Zie [Vereisten](#prerequisites).
 
 ## <a name="deploy-the-template"></a>De sjabloon implementeren

@@ -56,7 +56,7 @@ Standaard brengt ADF gegevens van Amazon S3 over naar Azure Blob Storage of Azur
 
 Als u niet wilt dat gegevens worden overgedragen via het open bare Internet, kunt u de beveiliging verbeteren door gegevens over een persoonlijke peering-koppeling tussen AWS Direct Connect en Azure Express route over te brengen.  Raadpleeg de onderstaande oplossings architectuur voor meer informatie over hoe dit kan worden bereikt. 
 
-## <a name="solution-architecture"></a>Oplossingsarchitectuur
+## <a name="solution-architecture"></a>Architectuur voor de oplossing
 
 Gegevens migreren via het open bare Internet:
 
@@ -149,7 +149,7 @@ Dit is de geschatte prijs op basis van de bovenstaande hypo Thesen:
 - [Nieuwe en gewijzigde bestanden kopiëren op basis van LastModifiedDate](https://docs.microsoft.com/azure/data-factory/tutorial-incremental-copy-lastmodified-copy-data-tool)
 - [Pagina met prijzen voor ADF](https://azure.microsoft.com/pricing/details/data-factory/data-pipeline/)
 
-## <a name="template"></a>Template
+## <a name="template"></a>Sjabloon
 
 Dit is de [sjabloon](solution-template-migration-s3-azure.md) waarmee u begint met het migreren van PETA bytes aan gegevens van honderden miljoenen bestanden van Amazon S3 naar Azure data Lake Storage Gen2.
 

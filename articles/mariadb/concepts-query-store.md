@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 06/27/2019
-ms.openlocfilehash: 69e001530de238f5d38c46b0a238a087f4487d9c
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: d68934174c3bbb53bba4eb786ac79ab94725151b
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72023681"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72166220"
 ---
 # <a name="monitor-azure-database-for-mariadb-performance-with-query-store"></a>Azure Database for MariaDB prestaties bewaken met query Store
 
@@ -87,16 +87,16 @@ Wanneer query Store is ingeschakeld, worden gegevens opgeslagen in een periode v
 
 De volgende opties zijn beschikbaar voor het configureren van query Store-para meters.
 
-| **Parameter** | **Beschrijving** | **Standaard** | **Range** |
+| **Bepaalde** | **Beschrijving** | **Standaard** | **Range** |
 |---|---|---|---|
-| query_store_capture_mode | De functie query Store in-of uitschakelen op basis van de waarde. Opmerking: Als performance_schema is uitgeschakeld, schakelt query_store_capture_mode in op performance_schema en een subset van de prestatie schema-instrumenten die vereist zijn voor deze functie. | HELE | GEEN, ALLE |
+| query_store_capture_mode | De functie query Store in-of uitschakelen op basis van de waarde. Opmerking: als performance_schema is uitgeschakeld, schakelt query_store_capture_mode in op performance_schema en een subset van de prestatie schema-instrumenten die vereist zijn voor deze functie. | HELE | GEEN, ALLE |
 | query_store_capture_interval | De interval voor het vastleggen van de query opslag in minuten. Hiermee kunt u het interval opgeven waarin de metrische gegevens van de query worden geaggregeerd | 15 | 5 - 60 |
 | query_store_capture_utility_queries | In-of uitschakelen voor het vastleggen van alle hulp query's die in het systeem worden uitgevoerd. | NO | JA, NEE |
 | query_store_retention_period_in_days | Tijd venster in dagen dat de gegevens in het query archief moeten worden bewaard. | 7 | 1 - 30 |
 
 De volgende opties zijn specifiek van toepassing op wacht statistieken.
 
-| **Parameter** | **Beschrijving** | **Standaard** | **Range** |
+| **Bepaalde** | **Beschrijving** | **Standaard** | **Range** |
 |---|---|---|---|
 | query_store_wait_sampling_capture_mode | Hiermee kunt u de wacht statistieken in-of uitschakelen. | GEEN | GEEN, ALLE |
 | query_store_wait_sampling_frequency | Wijzigt de frequentie van wacht-sampling in seconden. 5 tot 300 seconden. | 30 | 5-300 |
@@ -104,7 +104,7 @@ De volgende opties zijn specifiek van toepassing op wacht statistieken.
 > [!NOTE]
 > Momenteel vervangt **query_store_capture_mode** deze configuratie, wat betekent dat zowel **query_store_capture_mode** als **query_store_wait_sampling_capture_mode** moeten worden ingeschakeld om ervoor te kunnen wachten op wacht statistieken. Als **query_store_capture_mode** is uitgeschakeld, worden de wacht tijden van de statistieken uitgeschakeld, omdat wacht tijden worden gebruikt voor de performance_schema ingeschakeld en de query_text vastgelegd door query Store.
 
-Gebruik de [Azure Portal](howto-server-parameters.md) om een andere waarde voor een para meter op te halen of in te stellen.
+Gebruik de [Azure Portal](howto-server-parameters.md) om een andere waarde voor een para meter op te halen of in te stellen.
 
 ## <a name="views-and-functions"></a>Weer gaven en functies
 
@@ -112,18 +112,18 @@ Bekijk en beheer query Store met behulp van de volgende weer gaven en functies. 
 
 Query's worden genormaliseerd door de structuur te bekijken na het verwijderen van letterlijke waarden en constanten. Als twee query's identiek zijn, met uitzonde ring van letterlijke waarden, hebben ze dezelfde hash.
 
-### <a name="mysqlquery_store"></a>mysql.query_store
+### <a name="mysqlquery_store"></a>MySQL. query_store
 
 In deze weer gave worden alle gegevens in query Store geretourneerd. Er is één rij voor elke afzonderlijke data base-ID, gebruikers-ID en query-ID.
 
-| **Name** | **Gegevens type** | **IS_NULLABLE** | **Beschrijving** |
+| **Naam** | **Gegevens type** | **IS_NULLABLE** | **Beschrijving** |
 |---|---|---|---|
 | `schema_name`| varchar (64) | NO | Naam van het schema |
 | `query_id`| bigint (20) | NO| De unieke ID die voor de specifieke query is gegenereerd, als dezelfde query in een ander schema wordt uitgevoerd, wordt een nieuwe ID gegenereerd |
-| `timestamp_id` | timestamp| NO| Tijds tempel waarin de query wordt uitgevoerd. Dit is gebaseerd op de configuratie van query_store_interval|
-| `query_digest_text`| longtext| NO| De genormaliseerde query tekst nadat alle letterlijke waarden zijn verwijderd|
-| `query_sample_text` | longtext| NO| Eerste weer gave van de werkelijke query met letterlijke waarden|
-| `query_digest_truncated` | bit| KLIKT| Hiermee wordt aangegeven of de query tekst is afgekapt. De waarde is Ja als de query langer is dan 1 KB|
+| `timestamp_id` | tijdstempel| NO| Tijds tempel waarin de query wordt uitgevoerd. Dit is gebaseerd op de configuratie van query_store_interval|
+| `query_digest_text`| LONGTEXT| NO| De genormaliseerde query tekst nadat alle letterlijke waarden zijn verwijderd|
+| `query_sample_text` | LONGTEXT| NO| Eerste weer gave van de werkelijke query met letterlijke waarden|
+| `query_digest_truncated` | bitmask| KLIKT| Hiermee wordt aangegeven of de query tekst is afgekapt. De waarde is Ja als de query langer is dan 1 KB|
 | `execution_count` | bigint (20)| NO| Het aantal keren dat de query is uitgevoerd voor deze tijds tempel-ID/tijdens de geconfigureerde interval periode|
 | `warning_count` | bigint (20)| NO| Aantal waarschuwingen dat deze query heeft gegenereerd tijdens de interne|
 | `error_count` | bigint (20)| NO| Aantal fouten dat deze query heeft gegenereerd tijdens het interval|
@@ -142,28 +142,28 @@ In deze weer gave worden alle gegevens in query Store geretourneerd. Er is één
 | `sum_no_good_index_used` | bigint (20)| NO| Aantal keren dat de engine voor het uitvoeren van query's geen goede indexen heeft gebruikt|
 | `sum_created_tmp_tables` | bigint (20)| NO| Totaal aantal tijdelijke tabellen gemaakt|
 | `sum_created_tmp_disk_tables` | bigint (20)| NO| Totaal aantal tijdelijke tabellen gemaakt op de schijf (genereert I/O)|
-| `first_seen` | timestamp| NO| Het eerste exemplaar (UTC) van de query tijdens het aggregatie venster|
-| `last_seen` | timestamp| NO| Het laatste exemplaar (UTC) van de query tijdens dit aggregatie venster|
+| `first_seen` | tijdstempel| NO| Het eerste exemplaar (UTC) van de query tijdens het aggregatie venster|
+| `last_seen` | tijdstempel| NO| Het laatste exemplaar (UTC) van de query tijdens dit aggregatie venster|
 
-### <a name="mysqlquery_store_wait_stats"></a>mysql.query_store_wait_stats
+### <a name="mysqlquery_store_wait_stats"></a>MySQL. query_store_wait_stats
 
 Met deze weer gave worden wachtende gebeurtenis gegevens in query Store geretourneerd. Er is één rij voor elke afzonderlijke data base-ID, gebruikers-ID, query-ID en gebeurtenis.
 
-| **Name**| **Gegevens type** | **IS_NULLABLE** | **Beschrijving** |
+| **Naam**| **Gegevens type** | **IS_NULLABLE** | **Beschrijving** |
 |---|---|---|---|
-| `interval_start` | timestamp | NO| Begin van het interval (toename van 15 minuten)|
-| `interval_end` | timestamp | NO| Einde van het interval (toename van 15 minuten)|
+| `interval_start` | tijdstempel | NO| Begin van het interval (toename van 15 minuten)|
+| `interval_end` | tijdstempel | NO| Einde van het interval (toename van 15 minuten)|
 | `query_id` | bigint (20) | NO| Gegenereerde unieke ID voor de genormaliseerde query (uit query Store)|
 | `query_digest_id` | varchar (32) | NO| De genormaliseerde query tekst na het verwijderen van alle letterlijke waarden (uit query Store) |
-| `query_digest_text` | longtext | NO| Eerste weer gave van de werkelijke query met letterlijke waarden (uit query Store) |
+| `query_digest_text` | LONGTEXT | NO| Eerste weer gave van de werkelijke query met letterlijke waarden (uit query Store) |
 | `event_type` | varchar (32) | NO| Categorie van de gebeurtenis wait |
 | `event_name` | varchar (128) | NO| Naam van de gebeurtenis wait |
 | `count_star` | bigint (20) | NO| Aantal wacht gebeurtenissen dat wordt voor bereid tijdens het interval voor de query |
 | `sum_timer_wait_ms` | double | NO| Totale wacht tijd (in milliseconden) van deze query tijdens het interval |
 
-### <a name="functions"></a>Functions
+### <a name="functions"></a>Functies
 
-| **Name**| **Beschrijving** |
+| **Naam**| **Beschrijving** |
 |---|---|
 | `mysql.az_purge_querystore_data(TIMESTAMP)` | Hiermee worden alle gegevens van het query archief vóór de opgegeven tijds tempel verwijderd |
 | `mysql.az_procedure_purge_querystore_event(TIMESTAMP)` | Verwijdert alle gebeurtenis gegevens na de opgegeven tijds tempel |

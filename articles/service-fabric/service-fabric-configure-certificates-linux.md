@@ -71,7 +71,7 @@ In het volgende XML-bestand wordt een **TransportSettings** -sectie weer gegeven
 </Section>
 ```
 
-### <a name="using-x509_2-securitycredentialstype"></a>Using X509_2 SecurityCredentialsType
+### <a name="using-x509_2-securitycredentialstype"></a>X509_2 SecurityCredentialsType gebruiken
 
 Met de Java-SDK kunt u **X509_2** opgeven voor de **SecurityCredentialsType**. Dit komt overeen met het `X509Credentials2`-type ([Java](https://docs.microsoft.com/java/api/system.fabric.x509credentials2)) van `SecurityCredentials` ([Java](https://docs.microsoft.com/java/api/system.fabric.securitycredentials)). 
 

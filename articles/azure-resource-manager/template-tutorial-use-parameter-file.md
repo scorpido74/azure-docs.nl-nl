@@ -15,7 +15,7 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 10/09/2019
 ms.locfileid: "72177556"
 ---
-# <a name="tutorial-use-parameter-files-to-deploy-your-resource-manager-template"></a>Zelfstudie: Parameter bestanden gebruiken voor het implementeren van uw Resource Manager-sjabloon
+# <a name="tutorial-use-parameter-files-to-deploy-your-resource-manager-template"></a>Zelf studie: parameter bestanden gebruiken voor het implementeren van uw Resource Manager-sjabloon
 
 In deze zelf studie leert u hoe u [parameter bestanden](resource-manager-parameter-files.md) kunt gebruiken voor het opslaan van de waarden die tijdens de implementatie worden door gegeven. In de vorige zelf studies hebt u inline-para meters gebruikt met de implementatie opdracht. Deze aanpak werkt voor het testen van uw sjabloon, maar bij het automatiseren van implementaties kan het gemakkelijker worden om een set waarden voor uw omgeving door te geven. Met parameter bestanden kunt u gemakkelijker parameter waarden voor een specifieke omgeving inpakken. In deze zelf studie maakt u parameter bestanden voor ontwikkel-en productie omgevingen. Het duurt ongeveer **12 minuten** om te volt ooien.
 
@@ -72,7 +72,7 @@ New-AzResourceGroupDeployment `
   -TemplateParameterFile $parameterFile
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure-CLI](#tab/azure-cli)
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli
 templateFile="{provide-the-path-to-the-template-file}"
@@ -104,7 +104,7 @@ New-AzResourceGroupDeployment `
   -TemplateParameterFile $parameterFile
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure-CLI](#tab/azure-cli)
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli
 az group create \
@@ -123,7 +123,7 @@ az group deployment create \
 
 U kunt de implementatie controleren door de resource groepen van de Azure Portal te verkennen.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Selecteer **resource groepen**in het menu links.
 1. U ziet de twee nieuwe resource groepen die u in deze zelf studie hebt geïmplementeerd.
 1. Selecteer een resource groep en Bekijk de geïmplementeerde resources. U ziet dat ze overeenkomen met de waarden die u hebt opgegeven in het parameter bestand voor die omgeving.

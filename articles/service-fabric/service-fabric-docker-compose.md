@@ -1,6 +1,6 @@
 ---
 title: Preview van Azure Service Fabric docker-implementatie
-description: Azure Service Fabric accepteert de indeling docker opstellen, waarmee u gemakkelijker bestaande containers kunt organiseren met behulp van Service Fabric. Deze ondersteuning is momenteel in preview.
+description: Azure Service Fabric accepteert de indeling docker opstellen, waarmee u gemakkelijker bestaande containers kunt organiseren met behulp van Service Fabric. Deze ondersteuning is momenteel beschikbaar als preview-versie.
 services: service-fabric
 documentationcenter: .net
 author: athinanthny
@@ -13,17 +13,17 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
-ms.author: subramar
-ms.openlocfilehash: de02c9a8580527ab708418aa266f1b56411fb95b
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.author: atsenthi
+ms.openlocfilehash: 726d04cdfbc21c21a52945f11d3b5097978c5d1d
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599571"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72168834"
 ---
 # <a name="docker-compose-deployment-support-in-azure-service-fabric-preview"></a>Docker-ondersteuning voor implementatie in azure Service Fabric (preview-versie)
 
-Docker gebruikt het [docker-Compose. yml](https://docs.docker.com/compose) -bestand voor het definiëren van toepassingen met meerdere containers. Om het eenvoudig te maken voor klanten die bekend zijn met docker om bestaande container toepassingen te organiseren op Azure Service Fabric, hebben we preview-ondersteuning voor docker-implementatie in het platform opgenomen. Service Fabric kunt versie 3 en hoger van `docker-compose.yml` de bestanden accepteren. 
+Docker gebruikt het [docker-Compose. yml](https://docs.docker.com/compose) -bestand voor het definiëren van toepassingen met meerdere containers. Om het eenvoudig te maken voor klanten die bekend zijn met docker om bestaande container toepassingen te organiseren op Azure Service Fabric, hebben we preview-ondersteuning voor docker-implementatie in het platform opgenomen. Service Fabric kunt versie 3 en hoger van `docker-compose.yml` bestanden accepteren. 
 
 Omdat deze ondersteuning in preview is, wordt slechts een subset van de samen stellen-instructies ondersteund. Toepassings upgrades worden bijvoorbeeld niet ondersteund. U kunt echter altijd toepassingen verwijderen en implementeren in plaats van deze te upgraden.
 
@@ -35,7 +35,7 @@ Als u deze preview wilt gebruiken, maakt u uw cluster met versie 5,7 of hoger va
 
 ## <a name="deploy-a-docker-compose-file-on-service-fabric"></a>Een docker-bestand voor opstellen implementeren op Service Fabric
 
-Met de volgende opdrachten maakt u een service Fabric- `fabric:/TestContainerApp`toepassing (met de naam), die u kunt bewaken en beheren, zoals elke andere service Fabric-toepassing. U kunt de opgegeven toepassings naam voor status query's gebruiken.
+Met de volgende opdrachten maakt u een Service Fabric-toepassing (met de naam `fabric:/TestContainerApp`), die u kunt controleren en beheren, zoals elke andere Service Fabric-toepassing. U kunt de opgegeven toepassings naam voor status query's gebruiken.
 Service Fabric herkent "Implementatienaam" als de id van de opstellende implementatie.
 
 ### <a name="use-powershell"></a>PowerShell gebruiken
@@ -46,7 +46,7 @@ Maak een Service Fabric opstellen implementatie vanuit een docker-Compose. yml-b
 New-ServiceFabricComposeDeployment -DeploymentName TestContainerApp -Compose docker-compose.yml [-RegistryUserName <>] [-RegistryPassword <>] [-PasswordEncrypted]
 ```
 
-`RegistryUserName`en `RegistryPassword` Raadpleeg de gebruikers naam en het wacht woord van het container register. Nadat u de implementatie hebt voltooid, kunt u de status ervan controleren met behulp van de volgende opdracht:
+`RegistryUserName` en `RegistryPassword` verwijzen naar de gebruikers naam en het wacht woord van het container register. Nadat u de implementatie hebt voltooid, kunt u de status ervan controleren met behulp van de volgende opdracht:
 
 ```powershell
 Get-ServiceFabricComposeDeploymentStatus -DeploymentName TestContainerApp
@@ -123,7 +123,7 @@ Deze preview ondersteunt een subset van de configuratie opties in de indeling ve
 * Services > > Resources > limieten implementeren
     * -CPU-shares
     * -geheugen
-    * -memory-swap
+    * -Memory-swap
 * > Opdrachten voor services
 * Services > omgeving
 * Poorten voor Services >
@@ -146,9 +146,9 @@ Geef het HTTP-of HTTPS-protocol op in de sectie poorten die wordt gebruikt door 
 
 ## <a name="servicednsname-computation"></a>ServiceDnsName berekening
 
-Als de service naam die u opgeeft in een opstellend bestand een Fully Qualified Domain name is (dat wil zeggen, het bevat een punt [.]), is `<ServiceName>` de door service Fabric geregistreerde DNS-naam (inclusief de punt). Als dat niet het geval is, wordt elk padsegment in de naam van de toepassing een domein label in de DNS-naam van de service, waarbij het eerste padsegment het domein label op het hoogste niveau wordt.
+Als de service naam die u opgeeft in een opstellend bestand een Fully Qualified Domain Name is (dat wil zeggen, het bevat een punt [.]), is de door Service Fabric geregistreerde DNS-naam `<ServiceName>` (inclusief de punt). Als dat niet het geval is, wordt elk padsegment in de naam van de toepassing een domein label in de DNS-naam van de service, waarbij het eerste padsegment het domein label op het hoogste niveau wordt.
 
-Als de opgegeven toepassings naam bijvoorbeeld is `fabric:/SampleApp/MyComposeApp`, `<ServiceName>.MyComposeApp.SampleApp` zou de geregistreerde DNS-naam zijn.
+Als de naam van de opgegeven toepassing bijvoorbeeld `fabric:/SampleApp/MyComposeApp`, is `<ServiceName>.MyComposeApp.SampleApp` de geregistreerde DNS-naam.
 
 ## <a name="compose-deployment-instance-definition-versus-service-fabric-app-model-type-definition"></a>Een implementatie (exemplaar definitie) versus Service Fabric app-model (type definitie) opstellen
 

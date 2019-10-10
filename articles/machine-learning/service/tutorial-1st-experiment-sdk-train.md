@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Uw eerste Azure ML-model trainen in python'
+title: 'Zelf studie: uw eerste Azure ML-model trainen in python'
 titleSuffix: Azure Machine Learning
 description: In deze zelf studie leert u de Foundational ontwerp patronen in Azure Machine Learning en traint u een eenvoudig scikit model op basis van de diabetes-gegevensset.
 services: machine-learning
@@ -17,7 +17,7 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 10/09/2019
 ms.locfileid: "72173296"
 ---
-# <a name="tutorial-train-your-first-ml-model"></a>Zelfstudie: Uw eerste ML model trainen
+# <a name="tutorial-train-your-first-ml-model"></a>Zelf studie: uw eerste ML model trainen
 
 Deze zelfstudie is **deel twee van een tweedelige reeks**. In de vorige zelf studie hebt u [een werk ruimte gemaakt en een ontwikkel omgeving gekozen](tutorial-1st-experiment-sdk-setup.md). In deze zelf studie leert u de Foundational ontwerp patronen in Azure Machine Learning en traint u een eenvoudig scikit model op basis van de diabetes-gegevensset. Na het volt ooien van deze zelf studie beschikt u over de praktische kennis van de SDK voor het uitbreiden van meer complexe experimenten en werk stromen.
 
@@ -129,7 +129,7 @@ Nadat de training is voltooid, roept u de variabele `experiment` aan om een kopp
 experiment
 ```
 
-<table style="width:100%"><tr><th>Name</th><th>Werkruimte</th><th>Rapport pagina</th><th>Pagina docs</th></tr><tr><td>diabetes-experiment</td><td>uw-werkruimte naam</td><td>Koppeling naar Azure Portal</td><td>Koppeling naar documentatie</td></tr></table>
+<table style="width:100%"><tr><th>Naam</th><th>Werkruimte</th><th>Rapport pagina</th><th>Pagina docs</th></tr><tr><td>diabetes-experiment</td><td>uw-werkruimte naam</td><td>Koppeling naar Azure Portal</td><td>Koppeling naar documentatie</td></tr></table>
 
 ## <a name="view-training-results-in-portal"></a>Trainings resultaten weer geven in Portal
 

@@ -1,6 +1,6 @@
 ---
-title: De upgrade van de service Fabric-toepassing | Microsoft Docs
-description: In dit artikel bevat een inleiding tot het upgraden van een Service Fabric-toepassing, met inbegrip van kiezen upgrade modi en het uitvoeren van statuscontroles.
+title: Upgrade van toepassing Service Fabric | Microsoft Docs
+description: Dit artikel bevat een inleiding tot het upgraden van een Service Fabric-toepassing, inclusief het kiezen van upgrade modi en het uitvoeren van status controles.
 services: service-fabric
 documentationcenter: .net
 author: mani-ramaswamy
@@ -13,75 +13,75 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
-ms.author: subramar
-ms.openlocfilehash: e2b407733bcab7bc854e8e3703e53eb474f3425b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: atsenthi
+ms.openlocfilehash: 3c50ee149f5bcdda6cbb697830945cdc7f7a15f4
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60615081"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72167274"
 ---
 # <a name="service-fabric-application-upgrade"></a>Upgrade van Service Fabric-toepassing uitvoeren
-Een Azure Service Fabric-toepassing is een verzameling van services. Tijdens een upgrade, Service Fabric vergelijkt de nieuwe [toepassingsmanifest](service-fabric-application-and-service-manifests.md) met de vorige versie en bepaalt welke services in de updates voor het vereisen van toepassing. Service Fabric vergelijkt de versie van getallen in de service zich voordoet wanneer de versienummers in de vorige versie. Als een service is niet gewijzigd, wordt deze service is niet bijgewerkt.
+Een Azure Service Fabric-toepassing is een verzameling van services. Tijdens een upgrade vergelijkt Service Fabric het nieuwe [toepassings manifest](service-fabric-application-and-service-manifests.md) met de vorige versie en bepaalt u welke services in de toepassing moeten worden bijgewerkt. Service Fabric vergelijkt de versie nummers in de service manifesten met de versie nummers in de vorige versie. Als een service niet is gewijzigd, wordt die service niet geüpgraded.
 
-## <a name="rolling-upgrades-overview"></a>Rolling upgrades-overzicht
-In een rolling upgrade van de toepassing, wordt de upgrade in fasen uitgevoerd. De upgrade wordt in elk stadium toegepast op een subset van de knooppunten in het cluster, met de naam een updatedomein. Als gevolg hiervan blijft de toepassing beschikbaar zijn tijdens de upgrade. Tijdens de upgrade kan het cluster een combinatie van de oude en nieuwe versies bevatten.
+## <a name="rolling-upgrades-overview"></a>Overzicht van rolling upgrades
+Bij een upgrade van een rolling toepassing wordt de upgrade in fasen uitgevoerd. In elke fase wordt de upgrade toegepast op een subset knoop punten in het cluster, een update domein genoemd. Als gevolg hiervan blijft de toepassing beschikbaar tijdens de upgrade. Tijdens de upgrade kan het cluster een combi natie van de oude en nieuwe versies bevatten.
 
-Om die reden, de twee versies moeten vooruit en achteruit compatibel is. Als ze niet compatibel zijn, is de beheerder van de toepassing is verantwoordelijk voor het Faseren van de upgrade van een meervoudige fasen voor het onderhouden van beschikbaarheid. Bij een upgrade van een meervoudige-fase, wordt de eerste stap bijgewerkt naar een versie van de toepassing die compatibel is met de vorige versie. De tweede stap is het de laatste versie van de compatibiliteit met de versie van vóór het bijwerken, maar is compatibel met de tussenliggende versie bijwerken.
+Daarom moeten de twee versies vooruit en achterwaarts compatibel zijn. Als ze niet compatibel zijn, is de toepassings beheerder verantwoordelijk voor het klaarzetten van een upgrade voor meerdere fasen om de beschik baarheid te behouden. Bij een upgrade met meerdere fasen wordt de eerste stap bijgewerkt naar een tussenliggende versie van de toepassing die compatibel is met de vorige versie. De tweede stap is het bijwerken van de definitieve versie die de compatibiliteit met de pre-Update versie verbreekt, maar die compatibel is met de tussenliggende versie.
 
-Update-domeinen zijn opgegeven in het clustermanifest bij het configureren van het cluster. Update-domeinen ontvangen geen updates in een bepaalde volgorde. Een updatedomein is een logische eenheid van de implementatie voor een toepassing. Update-domeinen kunnen de services te blijven in hoge mate van beschikbaarheid tijdens een upgrade.
+Update domeinen worden in het cluster manifest opgegeven wanneer u het cluster configureert. Update domeinen ontvangen geen updates in een bepaalde volg orde. Een update domein is een logische implementatie-eenheid voor een toepassing. Met update domeinen kunnen de services tijdens een upgrade hoge Beschik baarheid blijven.
 
-Niet-rolling upgrades zijn mogelijk als de upgrade wordt toegepast op alle knooppunten in het cluster, het geval is wanneer de toepassing slechts één updatedomein heeft. Deze methode wordt niet aanbevolen, omdat de service uitvalt en is niet beschikbaar op het moment van de upgrade. Bovendien biedt Azure geen garanties wanneer een cluster met slechts één updatedomein is ingesteld.
+Niet-rolling upgrades zijn mogelijk als de upgrade wordt toegepast op alle knoop punten in het cluster. Dit is het geval wanneer de toepassing slechts één update domein heeft. Deze methode wordt niet aanbevolen omdat de service uitvalt en niet beschikbaar is op het moment van de upgrade. Daarnaast biedt Azure geen garanties wanneer een cluster met slechts één update domein is ingesteld.
 
-Nadat de upgrade is voltooid, alle services en replicas(instances) in dezelfde versie-dat wil zeggen, blijven zou als de upgrade is geslaagd, wordt deze bijgewerkt naar de nieuwe versie; Als de upgrade mislukt en wordt teruggedraaid, ze zouden worden teruggedraaid naar de oude versie.
+Nadat de upgrade is voltooid, blijven alle services en replica's (instanties) in dezelfde versie-i. e staan. als de upgrade is geslaagd, worden deze bijgewerkt naar de nieuwe versie. Als de upgrade mislukt en wordt teruggedraaid, worden ze teruggezet naar de oude versie.
 
-## <a name="health-checks-during-upgrades"></a>Statuscontroles tijdens upgrades
-Voor een upgrade statusbeleid moeten worden ingesteld (of standaardwaarden kunnen worden gebruikt). Een upgrade wordt aangeduid als geslaagde wanneer alle updatedomeinen zijn bijgewerkt binnen de opgegeven time-outs, en wanneer alle updatedomeinen als in orde worden beschouwd.  Een updatedomein in orde betekent dat het updatedomein alle statuscontroles die zijn opgegeven in het beleid van de status geslaagd. Bijvoorbeeld, een statusbeleid dat alle services in een toepassingsexemplaar moeten zijn mogelijk verplichten *in orde*, zoals de status wordt gedefinieerd door Service Fabric.
+## <a name="health-checks-during-upgrades"></a>Status controles tijdens upgrades
+Voor een upgrade moet het status beleid worden ingesteld (of de standaard waarden kunnen worden gebruikt). Een upgrade wordt uitgevoerd wanneer alle update domeinen binnen de opgegeven time-outs worden bijgewerkt en wanneer alle update domeinen in orde worden beschouwd.  Een goed bijgewerkt update domein houdt in dat het update domein alle status controles heeft door gegeven die zijn opgegeven in het status beleid. Een status beleid kan bijvoorbeeld verplicht zijn om alle services binnen een toepassings exemplaar in *orde*te maken, omdat de status wordt bepaald door service Fabric.
 
-Zijn de service en toepassing neutraal statusbeleid en controles tijdens de upgrade van Service Fabric. Dat wil zeggen, worden er zijn geen service-specifieke tests uitgevoerd.  Bijvoorbeeld, wordt uw service kan een vereiste doorvoer hebt, maar Service Fabric heeft geen informatie om te controleren of de doorvoer. Raadpleeg de [health artikelen](service-fabric-health-introduction.md) voor de controles die worden uitgevoerd. De controles die zich voordoen tijdens een upgrade opnemen prestatietests voor of het toepassingspakket correct is gekopieerd of het exemplaar is gestart, enzovoort.
+Status beleid en controles tijdens de upgrade van Service Fabric zijn service-en toepassings neutraal. Dat wil zeggen dat er geen servicespecifieke tests worden uitgevoerd.  Uw service kan bijvoorbeeld een doorvoer vereiste hebben, maar Service Fabric heeft niet de informatie om de door voer te controleren. Raadpleeg de [status artikelen](service-fabric-health-introduction.md) voor de controles die worden uitgevoerd. De controles die tijdens een upgrade plaatsvinden, bevatten tests om te controleren of het toepassings pakket correct is gekopieerd, of het exemplaar is gestart, enzovoort.
 
-De status van de toepassing is een samenvoeging van de onderliggende entiteiten van de toepassing. Kort gezegd, evalueert de Service Fabric de status van de toepassing via de status die wordt gerapporteerd over de toepassing. Deze ook evalueert de status van de services voor de toepassing op deze manier. Service Fabric verder evalueert de status van de toepassingsservices door samenvoeging van de status van hun kinderen, zoals de service-replica. Zodra het statusbeleid voor de toepassing is voldaan, wordt de upgrade kan worden voortgezet. Als het statusbeleid wordt geschonden, mislukt de upgrade van de toepassing.
+De status van de toepassing is een aggregatie van de onderliggende entiteiten van de toepassing. Kortom, Service Fabric evalueert de status van de toepassing met behulp van de status die op de toepassing wordt gerapporteerd. Ook wordt de status van alle services voor de toepassing geëvalueerd op deze manier. Service Fabric evalueert de status van de toepassings services verder door de status van hun onderliggende items, zoals de service replica, samen te voegen. Zodra aan het toepassings status beleid is voldaan, kan de upgrade door gaan. Als het status beleid wordt geschonden, mislukt de upgrade van de toepassing.
 
-## <a name="upgrade-modes"></a>Upgrade-modi
-De modus die wij voor de upgrade van toepassing aanraden is de bewaakte modus, de meest gebruikte modus is. Bewaakte modus de upgrade uitvoert op een updatedomein en als alle statuscontroles pass (op basis van het beleid opgegeven) gaat verder met het volgende updatedomein automatisch.  Als u statuscontroles mislukken en/of time-outs zijn bereikt, de upgrade is ofwel teruggedraaid voor de updatedomein of de modus is gewijzigd in niet-bewaakte handmatig. U kunt de upgrade als u een van deze twee modi voor upgrades van de mislukte wilt configureren. 
+## <a name="upgrade-modes"></a>Upgrade modi
+De modus die wordt aanbevolen voor de upgrade van de toepassing is de bewaakte modus. Dit is de veelgebruikte modus. In de bewaakte modus wordt de upgrade uitgevoerd op één update domein, en als alle status controles (per beleid opgegeven) automatisch naar het volgende update domein worden verplaatst.  Als de status controles mislukken en/of time-outs zijn bereikt, wordt de upgrade teruggedraaid voor het update domein of wordt de modus gewijzigd in niet-bewaakt hand matig. U kunt de upgrade configureren om een van deze twee modi te kiezen voor mislukte upgrades. 
 
-Niet-bewaakte handmatige modus moet handmatige interventie na elke upgrade voor een updatedomein, een vliegende start de upgrade op het volgende updatedomein. Er is geen statuscontroles van Service Fabric worden uitgevoerd. De beheerder voert de status of de status controles vóór de upgrade in het volgende updatedomein wordt gestart.
+In de niet-bewaakte hand matige modus moet hand matige interventie worden uitgevoerd na elke upgrade op een update domein, om de upgrade uit te kunnen laten op het volgende update domein. Er worden geen Service Fabric status controles uitgevoerd. De beheerder voert de status controles uit voordat de upgrade wordt gestart in het volgende update domein.
 
-## <a name="upgrade-default-services"></a>Standaard-services upgraden
-Sommige standaardparameters van de service gedefinieerd in de [toepassingsmanifest](service-fabric-application-and-service-manifests.md) kan ook worden bijgewerkt als onderdeel van een upgrade van de toepassing. De serviceparameters die ondersteuning bieden voor wordt gewijzigd via [Update ServiceFabricService](https://docs.microsoft.com/powershell/module/servicefabric/update-servicefabricservice?view=azureservicefabricps) als onderdeel van een upgrade kan worden gewijzigd. Het gedrag van het standaard-services wijzigen tijdens de upgrade van de toepassing is als volgt:
+## <a name="upgrade-default-services"></a>Standaard Services bijwerken
+Sommige standaard service parameters die in het [manifest](service-fabric-application-and-service-manifests.md) van de toepassing zijn gedefinieerd, kunnen ook worden bijgewerkt als onderdeel van een toepassings upgrade. Alleen de service parameters die worden gewijzigd via [Update-ServiceFabricService](https://docs.microsoft.com/powershell/module/servicefabric/update-servicefabricservice?view=azureservicefabricps) kunnen worden gewijzigd als onderdeel van een upgrade. Het gedrag van het wijzigen van standaard services tijdens de upgrade van de toepassing is als volgt:
 
-1. Services die standaard in het manifest van de nieuwe toepassing die niet al bestaan in het cluster worden gemaakt.
-2. Standaard-services die zijn opgenomen in de vorige en nieuwe Toepassingsmanifesten worden bijgewerkt. De parameters van de standaard-service in het manifest van de nieuwe toepassing overschrijven de parameters van de bestaande service. Upgrade van de toepassing wordt automatisch ongedaan maken als het bijwerken van een standaardservice is mislukt.
-3. Standaardservices die niet zijn opgenomen in het manifest van de nieuwe toepassing worden verwijderd als deze bestaan in het cluster. **Houd er rekening mee dat het verwijderen van een standaardservice in het verwijderen van alle service resulteren zal de status en kan niet ongedaan worden gemaakt.**
+1. Standaard services in het nieuwe toepassings manifest die nog niet in het cluster bestaan, worden gemaakt.
+2. Standaard-services die voor komen in zowel de vorige als de nieuwe toepassings manifesten, worden bijgewerkt. De para meters van de standaard service in het manifest van de nieuwe toepassing overschrijven de para meters van de bestaande service. De upgrade van de toepassing wordt automatisch ongedaan gemaakt als het bijwerken van een standaard service mislukt.
+3. Standaard services die niet in het nieuwe toepassings manifest bestaan, worden verwijderd als deze in het cluster aanwezig zijn. **Houd er rekening mee dat het verwijderen van een standaard service ertoe leidt dat de status van de service wordt verwijderd en niet ongedaan kan worden gemaakt.**
 
-Wanneer u een upgrade van de toepassing wordt teruggedraaid, worden de standaardparameters van de service voordat de upgrade is gestart maar verwijderde services kunnen niet opnieuw worden gemaakt met de oude status terug naar de oude waarden hersteld.
+Wanneer een upgrade van een toepassing wordt teruggedraaid, worden de standaard service parameters teruggezet naar hun oude waarden voordat de upgrade werd gestart, maar verwijderde Services kunnen niet opnieuw worden gemaakt met de oude status.
 
 > [!TIP]
-> De [EnableDefaultServicesUpgrade](service-fabric-cluster-fabric-settings.md) cluster configuratie-instelling moet *waar* om in te schakelen regels 2) en 3) hierboven (standaard service bijwerken en verwijderen). Deze functie wordt ondersteund vanaf in Service Fabric versie 5.5.
+> De [EnableDefaultServicesUpgrade](service-fabric-cluster-fabric-settings.md) -cluster configuratie-instelling moet *waar* zijn om regels 2 en 3) hierboven in te scha kelen (standaard service bijwerken en verwijderen). Deze functie wordt ondersteund vanaf Service Fabric versie 5,5.
 
-## <a name="upgrading-multiple-applications-with-https-endpoints"></a>Upgrade van meerdere toepassingen met HTTPS-eindpunten
-Moet u ervoor dat u geen gebruik van de **dezelfde poort** voor verschillende exemplaren van dezelfde toepassing bij het gebruik van HTTP**S**. De reden is dat Service Fabric niet mogelijk om te upgraden van het certificaat voor een van de exemplaren van de toepassing. Bijvoorbeeld, als toepassing 1 of toepassing 2 beide wilt upgraden van hun certificaat 1 naar 2 certificaat. Als de upgrade gebeurt, kan Service Fabric hebben opgeschoond de certificaat-1-registratie bij http.sys zelfs als deze nog steeds door de andere toepassing gebruikt wordt. Om dit te voorkomen, detecteert Service Fabric dat er al een ander exemplaar van de toepassing geregistreerd op de poort met het certificaat (als gevolg van http.sys), en de bewerking is mislukt.
+## <a name="upgrading-multiple-applications-with-https-endpoints"></a>Meerdere toepassingen met HTTPS-eind punten upgraden
+U moet ervoor zorgen dat u niet **dezelfde poort** gebruikt voor verschillende exemplaren van dezelfde toepassing wanneer u http**S**gebruikt. De reden hiervoor is dat Service Fabric het certificaat niet kan upgraden voor een van de toepassings exemplaren. Als bijvoorbeeld toepassing 1 of toepassing 2 beide zijn certificaat 1 wilt upgraden naar certificaat 2. Wanneer de upgrade plaatsvindt, heeft Service Fabric mogelijk de registratie van certificaat 1 met http. sys opschonen, zelfs als de andere toepassing deze nog gebruikt. Om dit te voor komen, Service Fabric detecteert dat er al een ander toepassings exemplaar is geregistreerd op de poort met het certificaat (vanwege http. sys) en de bewerking niet kan worden uitgevoerd.
 
-Daarom Service Fabric biedt geen ondersteuning voor een upgrade van twee verschillende services met behulp van **dezelfde poort** in instanties van een andere toepassing. U niet met andere woorden, hetzelfde certificaat gebruiken op verschillende services op dezelfde poort. Als u een gedeelde-certificaat hebben op dezelfde poort wilt, moet u om ervoor te zorgen dat de services op verschillende computers met plaatsingsbeperkingen zijn geplaatst. Of Overweeg het gebruik van Service Fabric dynamische poorten indien mogelijk voor elke service in elk exemplaar. 
+Daarom biedt Service Fabric geen ondersteuning voor het upgraden van twee verschillende services met **dezelfde poort** in verschillende exemplaren van de toepassing. Met andere woorden, u kunt niet hetzelfde certificaat gebruiken op verschillende services op dezelfde poort. Als u een gedeeld certificaat op dezelfde poort moet hebben, moet u ervoor zorgen dat de services op verschillende computers worden geplaatst met plaatsings beperkingen. Of overweeg Service Fabric dynamische poorten, indien mogelijk, te gebruiken voor elke service in elk toepassings exemplaar. 
 
-Als er een upgrade is mislukt met https, een foutbericht verschijnt waarin wordt gemeld "De Windows HTTP-Server API ondersteunt geen meerdere certificaten voor toepassingen die een poort delen."
+Als een upgrade mislukt met https, wordt een fout melding weer gegeven dat de Windows HTTP-Server-API niet meerdere certificaten ondersteunt voor toepassingen die een poort delen.
 
-## <a name="application-upgrade-flowchart"></a>Toepassing bijwerken stroomdiagram
-De stroomdiagram hieronder krijgt u inzicht in het upgradeproces van een Service Fabric-toepassing. In het bijzonder de stroom wordt beschreven hoe de time-outs, met inbegrip van *HealthCheckStableDuration*, *HealthCheckRetryTimeout*, en *UpgradeHealthCheckInterval*, help besturingselement wanneer de upgrade in één updatedomein wordt beschouwd als een geslaagd of mislukt.
+## <a name="application-upgrade-flowchart"></a>Stroom diagram voor toepassings upgrades
+Het stroom diagram dat volgt op deze alinea, kan u helpen inzicht te krijgen in het upgrade proces van een Service Fabric-toepassing. Met name wordt met de stroom beschreven hoe de time-outs, waaronder *HealthCheckStableDuration*, *HealthCheckRetryTimeout*en *UpgradeHealthCheckInterval*, kunnen worden beheerd wanneer de upgrade in één update domein als geslaagd wordt beschouwd of een fout.
 
-![Het upgradeproces voor een Service Fabric-toepassing][image]
+![Het upgrade proces voor een Service Fabric-toepassing][image]
 
 ## <a name="next-steps"></a>Volgende stappen
-[Een upgrade van uw toepassing met behulp van Visual Studio](service-fabric-application-upgrade-tutorial.md) begeleidt u bij de upgrade van een toepassing met Visual Studio.
+Als u een [upgrade uitvoert van uw toepassing met behulp van Visual Studio](service-fabric-application-upgrade-tutorial.md) , wordt u begeleid bij een toepassings upgrade met Visual Studio.
 
-[Een upgrade van uw toepassing met behulp van PowerShell](service-fabric-application-upgrade-tutorial-powershell.md) begeleidt u bij de upgrade van een toepassing met behulp van PowerShell.
+Als u uw toepassing bijwerkt [met Power shell](service-fabric-application-upgrade-tutorial-powershell.md) , kunt u een toepassings upgrade uitvoeren met behulp van Power shell.
 
-Bepalen hoe uw toepassing met behulp van upgrades [Parameters Upgrade](service-fabric-application-upgrade-parameters.md).
+Bepalen hoe uw toepassing wordt bijgewerkt met behulp van [upgrade parameters](service-fabric-application-upgrade-parameters.md).
 
-Upgrades van uw toepassingen compatibel maken door te leren hoe u [Gegevensserialisatie](service-fabric-application-upgrade-data-serialization.md).
+Maak uw toepassings upgrades compatibel door te leren hoe u [gegevens serialisatie](service-fabric-application-upgrade-data-serialization.md)gebruikt.
 
-Informatie over het gebruik van geavanceerde functionaliteit tijdens het bijwerken van uw toepassing door te verwijzen naar [geavanceerde onderwerpen](service-fabric-application-upgrade-advanced.md).
+Meer informatie over het gebruik van geavanceerde functionaliteit bij het upgraden van uw toepassing door te verwijzen naar [Geavanceerde onderwerpen](service-fabric-application-upgrade-advanced.md).
 
-Oplossen van veelvoorkomende problemen in upgrades van toepassingen door te verwijzen naar de stappen in [toepassingsupgrades oplossen van problemen](service-fabric-application-upgrade-troubleshooting.md).
+Corrigeer veelvoorkomende problemen in toepassings upgrades door te verwijzen naar de stappen in [Troubleshooting Application upgrades](service-fabric-application-upgrade-troubleshooting.md).
 
 [image]: media/service-fabric-application-upgrade/service-fabric-application-upgrade-flowchart.png

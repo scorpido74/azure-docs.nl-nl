@@ -1,44 +1,44 @@
 ---
-title: Over Azure Point-to-Site-routering | Microsoft Docs
-description: In dit artikel helpt u begrijpen hoe punt-naar-Site VPN-routering werkt.
+title: Over Azure Point-to-site-route ring | Microsoft Docs
+description: Dit artikel helpt u inzicht te krijgen in de werking van punt-naar-site VPN-route ring.
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 01/28/2019
+ms.date: 10/08/2019
 ms.author: anzaman
-ms.openlocfilehash: 486a910226db5dc7b36aaf873e7bb8115eb78805
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: cb5969ccb4ee9780b597326a3811395c3b7d9971
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60653526"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72168470"
 ---
 # <a name="about-point-to-site-vpn-routing"></a>Over point-to-site-VPN-routering
 
-In dit artikel helpt u begrijpen hoe Azure Point-to-Site VPN-routering werkt. De werking van P2S VPN-routering is afhankelijk van het clientbesturingssysteem, het protocol dat wordt gebruikt voor de VPN-verbinding en de manier waarop de virtuele netwerken (VNets) aan elkaar zijn verbonden.
+Dit artikel helpt u inzicht te krijgen in de werking van Azure Point-to-site VPN-route ring. Het gedrag van P2S VPN-route ring is afhankelijk van het client besturingssysteem, het protocol dat wordt gebruikt voor de VPN-verbinding en hoe de virtuele netwerken (VNets) met elkaar zijn verbonden.
 
-Azure ondersteunt momenteel twee protocollen voor externe toegang, IKEv2 en SSTP. IKEv2 wordt ondersteund op veel client-besturingssystemen, met inbegrip van Windows, Linux, MacOS, Android en iOS. SSTP wordt alleen ondersteund op Windows. Als u een wijziging in de topologie van uw netwerk aanbrengt en Windows VPN-clients hebt, moet het VPN-clientpakket voor Windows-clients worden gedownload en geïnstalleerd opnieuw zodat de wijzigingen worden toegepast op de client.
+Azure ondersteunt momenteel twee protocollen voor externe toegang, IKEv2 en SSTP. IKEv2 wordt ondersteund op veel client besturingssystemen, waaronder Windows, Linux, MacOS, Android en iOS. SSTP wordt alleen ondersteund in Windows. Als u een wijziging aanbrengt in de topologie van uw netwerk en Windows VPN-clients hebt, moet het VPN-client pakket voor Windows-clients opnieuw worden gedownload en geïnstalleerd om de wijzigingen toe te passen op de client.
 
 > [!NOTE]
-> In dit artikel geldt alleen voor IKEv2.
+> Dit artikel is alleen van toepassing op IKEv2.
 >
 
-## <a name="diagrams"></a>De diagrammen
+## <a name="diagrams"></a>Over de diagrammen
 
-Er zijn een aantal verschillende diagrammen in dit artikel. Elke sectie ziet u een andere topologie of configuratie. Voor de doeleinden van dit artikel, Site-naar-Site (S2S) en VNet-naar-VNet-verbindingen werken de dezelfde manier als beide IPsec-tunnels zijn. Alle VPN-gateways in dit artikel zijn op basis van route.
+Dit artikel bevat een aantal verschillende diagrammen. In elke sectie wordt een andere topologie of configuratie weer gegeven. Voor de doel einden van dit artikel functioneren site-naar-site (S2S) en VNet-naar-VNet-verbindingen op dezelfde manier, zoals IPsec-tunnels. Alle VPN-gateways in dit artikel zijn op route gebaseerd.
 
-## <a name="isolatedvnet"></a>Een VNet (geïsoleerd)
+## <a name="isolatedvnet"></a>Eén geïsoleerd VNet
 
-De punt-naar-Site VPN-gatewayverbinding in dit voorbeeld is voor een VNet dat niet is verbonden of die zijn gekoppeld aan een ander virtueel netwerk (VNet1). In dit voorbeeld, kunnen clients met behulp van SSTP of IKEv2 toegang tot VNet1.
+De punt-naar-site-VPN-gateway verbinding in dit voor beeld is voor een VNet dat niet is verbonden of die is gekoppeld aan een ander virtueel netwerk (VNet1). In dit voor beeld hebben clients toegang tot VNet1.
 
-![geïsoleerd VNet routering](./media/vpn-gateway-about-point-to-site-routing/1.jpg "VNet routering (geïsoleerd)")
+![geïsoleerd]vnet-Routing geïsoleerde vnet-(./media/vpn-gateway-about-point-to-site-routing/1.jpg "route ring")
 
 ### <a name="address-space"></a>Adresruimte
 
-* VNet1: 10.1.0.0/16
+* VNet1:10.1.0.0/16
 
-### <a name="routes-added"></a>Routes die zijn toegevoegd
+### <a name="routes-added"></a>Routes toegevoegd
 
 * Routes die zijn toegevoegd aan Windows-clients: 10.1.0.0/16, 192.168.0.0/24
 
@@ -48,27 +48,27 @@ De punt-naar-Site VPN-gatewayverbinding in dit voorbeeld is voor een VNet dat ni
 
 * Windows-clients hebben toegang tot VNet1
 
-* Niet-Windows-clients hebben toegang tot VNet1
+* Niet-Windows-clients hebben toegang tot de VNet1
 
-## <a name="multipeered"></a>Meerdere gekoppelde VNets
+## <a name="multipeered"></a>Meerdere peered VNets
 
-In dit voorbeeld is de punt-naar-Site VPN-gatewayverbinding voor VNet1. VNet1 is gekoppeld aan VNet2. VNet-2 is gekoppeld aan VNet3. VNet1 is gekoppeld aan en VNet4. Er is geen directe voor peering tussen VNet1 en VNet3. VNet1 is 'Gatewayoverdracht toestaan' en VNet2 is ' Externe gateways gebruiken' ingeschakeld.
+In dit voor beeld is de punt-naar-site-VPN-gateway verbinding voor VNet1. VNet1 is gekoppeld aan VNet2. VNet 2 is gekoppeld aan VNet3. VNet1 is gekoppeld aan en vnet4. Er is geen rechtstreekse peering tussen VNet1 en VNet3. VNet1 heeft ' door gateway door geven toestaan ' en VNet2 ' externe gateways gebruiken ' ingeschakeld.
 
-Clients met behulp van Windows rechtstreeks gekoppelde VNets kunnen gebruiken, maar de VPN-client opnieuw moet worden gedownload als er wijzigingen zijn aangebracht aan VNet-peering of de netwerktopologie. Niet-Windows-clients hebben toegang tot rechtstreeks gekoppelde VNets. Toegang is niet transitief en is beperkt tot alleen rechtstreeks gekoppelde VNets.
+Clients die Windows gebruiken, hebben toegang tot rechtstreeks peered VNets, maar de VPN-client moet opnieuw worden gedownload als er wijzigingen zijn aangebracht in VNet-peering of de netwerk topologie. Niet-Windows-clients hebben toegang tot rechtstreeks peered VNets. Toegang is niet transitief en is beperkt tot alleen rechtstreeks peered VNets.
 
-![meerdere VNets gekoppeld](./media/vpn-gateway-about-point-to-site-routing/2.jpg "meerdere VNets gekoppeld")
+![meerdere]peered VNets-(./media/vpn-gateway-about-point-to-site-routing/2.jpg "meerdere peered-VNets")
 
-### <a name="address-space"></a>Adresruimte:
+### <a name="address-space"></a>Adres ruimte:
 
-* VNet1: 10.1.0.0/16
+* VNet1:10.1.0.0/16
 
-* VNet2: 10.2.0.0/16
+* VNet2:10.2.0.0/16
 
-* VNet3: 10.3.0.0/16
+* VNet3:10.3.0.0/16
 
-* VNet4: 10.4.0.0/16
+* En vnet4:10.4.0.0/16
 
-### <a name="routes-added"></a>Routes die zijn toegevoegd
+### <a name="routes-added"></a>Routes toegevoegd
 
 * Routes die zijn toegevoegd aan Windows-clients: 10.1.0.0/16, 10.2.0.0/16, 10.4.0.0/16, 192.168.0.0/24
 
@@ -76,27 +76,27 @@ Clients met behulp van Windows rechtstreeks gekoppelde VNets kunnen gebruiken, m
 
 ### <a name="access"></a>Access
 
-* Windows-clients hebben toegang tot VNet1, VNet2 en en VNet4, maar de VPN-client opnieuw moet worden gedownload voor elke Topologiewijzigingen worden doorgevoerd.
+* Windows-clients hebben toegang tot VNet1, VNet2 en en vnet4, maar de VPN-client moet opnieuw worden gedownload om de topologie wijzigingen van kracht te laten worden.
 
-* Niet-Windows-clients hebben toegang tot VNet1, VNet2 en en VNet4
+* Niet-Windows-clients hebben toegang tot VNet1, VNet2 en en vnet4
 
-## <a name="multis2s"></a>Meerdere VNets die zijn verbonden met een S2S-VPN
+## <a name="multis2s"></a>Meerdere VNets zijn verbonden via een S2S-VPN
 
-In dit voorbeeld is de punt-naar-Site VPN-gatewayverbinding voor VNet1. VNet1 naar VNet2 is verbonden met behulp van een Site-naar-Site VPN-verbinding. VNet2 is verbonden met VNet3 met behulp van een Site-naar-Site VPN-verbinding. Er is geen directe peering of Site-naar-Site VPN-verbinding tussen VNet1 en VNet3. Alle Site-naar-Site-verbindingen worden niet uitgevoerd voor BGP voor routering.
+In dit voor beeld is de punt-naar-site-VPN-gateway verbinding voor VNet1. VNet1 is verbonden met VNet2 met behulp van een site-naar-site-VPN-verbinding. VNet2 is verbonden met VNet3 met behulp van een site-naar-site-VPN-verbinding. Er is geen rechtstreekse peering of site-naar-site-VPN-verbinding tussen VNet1 en VNet3. Voor alle site-naar-site-verbindingen wordt BGP niet uitgevoerd voor route ring.
 
-Clients met Windows of een ander ondersteund besturingssysteem, hebben alleen toegang tot VNet1. Voor toegang tot extra VNets, moet BGP worden gebruikt.
+Clients die gebruikmaken van Windows of een ander ondersteund besturings systeem, hebben alleen toegang tot VNet1. Om toegang te krijgen tot extra VNets moet BGP worden gebruikt.
 
 ![meerdere VNets en S2S](./media/vpn-gateway-about-point-to-site-routing/3.jpg "meerdere VNets en S2S")
 
 ### <a name="address-space"></a>Adresruimte
 
-* VNet1: 10.1.0.0/16
+* VNet1:10.1.0.0/16
 
-* VNet2: 10.2.0.0/16
+* VNet2:10.2.0.0/16
 
-* VNet3: 10.3.0.0/16
+* VNet3:10.3.0.0/16
 
-### <a name="routes-added"></a>Routes die zijn toegevoegd
+### <a name="routes-added"></a>Routes toegevoegd
 
 * Routes die zijn toegevoegd aan Windows-clients: 10.1.0.0/16, 192.168.0.0/24
 
@@ -106,25 +106,25 @@ Clients met Windows of een ander ondersteund besturingssysteem, hebben alleen to
 
 * Windows-clients hebben alleen toegang tot VNet1
 
-* Niet-Windows-clients alleen toegang kunnen krijgen tot VNet1
+* Niet-Windows-clients hebben alleen toegang tot VNet1
 
-## <a name="multis2sbgp"></a>Meerdere VNets die zijn verbonden via een S2S-VPN (BGP)
+## <a name="multis2sbgp"></a>Meerdere VNets-verbindingen met behulp van een S2S VPN (BGP)
 
-In dit voorbeeld is de punt-naar-Site VPN-gatewayverbinding voor VNet1. VNet1 naar VNet2 is verbonden met behulp van een Site-naar-Site VPN-verbinding. VNet2 is verbonden met VNet3 met behulp van een Site-naar-Site VPN-verbinding. Er is geen directe peering of Site-naar-Site VPN-verbinding tussen VNet1 en VNet3. Alle Site-naar-Site-verbindingen uitvoert voor routering BGP.
+In dit voor beeld is de punt-naar-site-VPN-gateway verbinding voor VNet1. VNet1 is verbonden met VNet2 met behulp van een site-naar-site-VPN-verbinding. VNet2 is verbonden met VNet3 met behulp van een site-naar-site-VPN-verbinding. Er is geen rechtstreekse peering of site-naar-site-VPN-verbinding tussen VNet1 en VNet3. Voor alle site-naar-site-verbindingen wordt BGP voor route ring uitgevoerd.
 
-Clients met Windows of een ander ondersteund besturingssysteem, toegang tot alle vnet's die zijn verbonden via een Site-naar-Site VPN-verbinding, maar de routes naar verbonden VNets moeten handmatig worden toegevoegd aan de Windows-clients.
+Clients die gebruikmaken van Windows of een ander ondersteund besturings systeem, hebben toegang tot alle VNets die zijn verbonden met een site-naar-site-VPN-verbinding, maar routes naar verbonden VNets moeten hand matig worden toegevoegd aan de Windows-clients.
 
-![meerdere VNets en S2S (BGP)](./media/vpn-gateway-about-point-to-site-routing/4.jpg "meerdere VNets en S2S BGP")
+![meerdere VNets en S2S (BGP)](./media/vpn-gateway-about-point-to-site-routing/4.jpg "meerdere VNETS en S2S BGP")
 
 ### <a name="address-space"></a>Adresruimte
 
-* VNet1: 10.1.0.0/16
+* VNet1:10.1.0.0/16
 
-* VNet2: 10.2.0.0/16
+* VNet2:10.2.0.0/16
 
-* VNet3: 10.3.0.0/16
+* VNet3:10.3.0.0/16
 
-### <a name="routes-added"></a>Routes die zijn toegevoegd
+### <a name="routes-added"></a>Routes toegevoegd
 
 * Routes die zijn toegevoegd aan Windows-clients: 10.1.0.0/16
 
@@ -132,25 +132,25 @@ Clients met Windows of een ander ondersteund besturingssysteem, toegang tot alle
 
 ### <a name="access"></a>Access
 
-* Windows-clients hebben toegang tot VNet1, VNet2 en VNet3, maar de routes naar VNet2 en VNet3 moet handmatig worden toegevoegd.
+* Windows-clients hebben toegang tot VNet1, VNet2 en VNet3, maar routes naar VNet2 en VNet3 moeten hand matig worden toegevoegd.
 
 * Niet-Windows-clients hebben toegang tot VNet1, VNet2 en VNet3
 
-## <a name="vnetbranch"></a>Een VNet en een filiaal
+## <a name="vnetbranch"></a>Eén VNet en een filiaal
 
-In dit voorbeeld is de punt-naar-Site VPN-gatewayverbinding voor VNet1. VNet1 is niet verbonden of gekoppeld aan andere virtuele netwerk, maar is verbonden met een on-premises site via een Site-naar-Site VPN-verbinding die wordt niet uitgevoerd voor BGP.
+In dit voor beeld is de punt-naar-site-VPN-gateway verbinding voor VNet1. VNet1 is niet verbonden met een ander virtueel netwerk, maar is verbonden met een on-premises site via een site-naar-site-VPN-verbinding waarop BGP niet wordt uitgevoerd.
 
-Windows- en niet-Windows-clients hebben alleen toegang tot VNet1.
+Windows-en niet-Windows-clients hebben alleen toegang tot VNet1.
 
-![Routering met een VNet en een filiaal](./media/vpn-gateway-about-point-to-site-routing/5.jpg "routering met een VNet en een filiaal")
+![route ring met een vnet en een filiaal](./media/vpn-gateway-about-point-to-site-routing/5.jpg "Routering met een vnet en een filiaal")
 
 ### <a name="address-space"></a>Adresruimte
 
-* VNet1: 10.1.0.0/16
+* VNet1:10.1.0.0/16
 
-* Site1: 10.101.0.0/16
+* Site1:10.101.0.0/16
 
-### <a name="routes-added"></a>Routes die zijn toegevoegd
+### <a name="routes-added"></a>Routes toegevoegd
 
 * Routes die zijn toegevoegd aan Windows-clients: 10.1.0.0/16, 192.168.0.0/24
 
@@ -158,25 +158,25 @@ Windows- en niet-Windows-clients hebben alleen toegang tot VNet1.
 
 ### <a name="access"></a>Access
 
-* Windows-clients hebben toegang tot alleen VNet1
+* Windows-clients hebben alleen toegang tot VNet1
 
-* Niet-Windows-clients alleen toegang kunnen krijgen tot VNet1
+* Niet-Windows-clients hebben alleen toegang tot VNet1
 
-## <a name="vnetbranchbgp"></a>Een VNet en een filiaal (BGP)
+## <a name="vnetbranchbgp"></a>Eén VNet en een filiaal (BGP)
 
-In dit voorbeeld is de punt-naar-Site VPN-gatewayverbinding voor VNet1. VNet1 is niet verbonden of gekoppeld aan andere virtuele netwerk, maar is verbonden met een on-premises-site (Site1) via een Site-naar-Site-VPN-verbinding met BGP.
+In dit voor beeld is de punt-naar-site-VPN-gateway verbinding voor VNet1. VNet1 is niet verbonden met of gekoppeld aan een ander virtueel netwerk, maar is verbonden met een on-premises site (site1) via een site-naar-site-VPN-verbinding die BGP uitvoert.
 
-Windows-clients hebben toegang tot het VNet en het filiaal (Site1), maar de routes naar Site1 moeten handmatig worden toegevoegd aan de client. Niet-Windows-clients hebben toegang tot het VNet, evenals het filiaal on-premises.
+Windows-clients hebben toegang tot het VNet en het filiaal (site1), maar de routes naar site1 moeten hand matig worden toegevoegd aan de client. Niet-Windows-clients hebben toegang tot het VNet en de on-premises filialen.
 
-![een VNet en een filiaal (BGP)](./media/vpn-gateway-about-point-to-site-routing/6.jpg "één VNet en een filiaal")
+![Eén vnet en een filiaal (BGP)](./media/vpn-gateway-about-point-to-site-routing/6.jpg "één vnet en een filiaal")
 
 ### <a name="address-space"></a>Adresruimte
 
-* VNet1: 10.1.0.0/16
+* VNet1:10.1.0.0/16
 
-* Site1: 10.101.0.0/16
+* Site1:10.101.0.0/16
 
-### <a name="routes-added"></a>Routes die zijn toegevoegd
+### <a name="routes-added"></a>Routes toegevoegd
 
 * Routes die zijn toegevoegd aan Windows-clients: 10.1.0.0/16, 192.168.0.0/24
 
@@ -184,71 +184,71 @@ Windows-clients hebben toegang tot het VNet en het filiaal (Site1), maar de rout
 
 ### <a name="access"></a>Access
 
-* Windows-clients hebben toegang tot VNet1 en Site1, maar de routes naar Site1 moet handmatig worden toegevoegd.
+* Windows-clients hebben toegang tot VNet1 en site1, maar routes naar site1 moeten hand matig worden toegevoegd.
 
-* Niet-Windows-clients hebben toegang tot VNet1 en Site1.
+* Niet-Windows-clients hebben toegang tot VNet1 en site1.
 
 
-## <a name="multivnets2sbranch"></a>Meerdere VNets die zijn verbonden via S2S en een filiaal
+## <a name="multivnets2sbranch"></a>Meerdere VNets verbonden met behulp van S2S en een filiaal
 
-In dit voorbeeld is de punt-naar-Site VPN-gatewayverbinding voor VNet1. VNet1 naar VNet2 is verbonden met behulp van een Site-naar-Site VPN-verbinding. VNet2 is verbonden met VNet3 met behulp van een Site-naar-Site VPN-verbinding. Er is geen directe peering of Site-naar-Site VPN-tunnel tussen de netwerken VNet1 en VNet3. VNet3 is verbonden met een filiaal (Site1) met behulp van een Site-naar-Site VPN-verbinding. Alle VPN-verbindingen worden niet uitgevoerd voor BGP.
+In dit voor beeld is de punt-naar-site-VPN-gateway verbinding voor VNet1. VNet1 is verbonden met VNet2 met behulp van een site-naar-site-VPN-verbinding. VNet2 is verbonden met VNet3 met behulp van een site-naar-site-VPN-verbinding. Er is geen directe peering of site-naar-site-VPN-tunnel tussen de VNet1-en VNet3-netwerken. VNet3 is verbonden met een filiaal (site1) met behulp van een site-naar-site-VPN-verbinding. Op alle VPN-verbindingen wordt BGP niet uitgevoerd.
 
-Alle clients kunnen alleen toegang krijgen tot VNet1.
+Alle clients hebben alleen toegang tot VNet1.
 
-![Multi-VNet S2S en de vertakking office](./media/vpn-gateway-about-point-to-site-routing/7.jpg "multi-VNet S2S en de vertakking office")
+Multi- ![VNET S2S en filialen](./media/vpn-gateway-about-point-to-site-routing/7.jpg "multi-vnet S2S en filialen")
 
 ### <a name="address-space"></a>Adresruimte
 
-* VNet1: 10.1.0.0/16
+* VNet1:10.1.0.0/16
 
-* VNet2: 10.2.0.0/16
+* VNet2:10.2.0.0/16
 
-* VNet3: 10.3.0.0/16
+* VNet3:10.3.0.0/16
 
-* Site1: 10.101.0.0/16
+* Site1:10.101.0.0/16
 
-### <a name="routes-added"></a>Routes die zijn toegevoegd
+### <a name="routes-added"></a>Routes toegevoegd
 
-* Routes toegevoegd clients: 10.1.0.0/16, 192.168.0.0/24
+* Routes toegevoegde clients: 10.1.0.0/16, 192.168.0.0/24
 
 * Routes die zijn toegevoegd aan niet-Windows-clients: 10.1.0.0/16, 10.2.0.0/16, 10.3.0.0/16, 10.101.0.0/16, 192.168.0.0/24
 
 ### <a name="access"></a>Access
 
-* De Windows-clients alleen toegang kunnen krijgen tot VNet1
+* De Windows-clients hebben alleen toegang tot VNet1
 
-* Niet-Windows-clients alleen toegang kunnen krijgen tot VNet1
+* Niet-Windows-clients hebben alleen toegang tot VNet1
 
-## <a name="multivnets2sbranchbgp"></a>Meerdere VNets die zijn verbonden via S2S en een filiaal (BGP)
+## <a name="multivnets2sbranchbgp"></a>Meerdere VNets verbonden met behulp van S2S en een filiaal (BGP)
 
-In dit voorbeeld is de punt-naar-Site VPN-gatewayverbinding voor VNet1. VNet1 naar VNet2 is verbonden met behulp van een Site-naar-Site VPN-verbinding. VNet2 is verbonden met VNet3 met behulp van een Site-naar-Site VPN-verbinding. Er is geen directe peering of Site-naar-Site VPN-tunnel tussen de netwerken VNet1 en VNet3. VNet3 is verbonden met een filiaal (Site1) met behulp van een Site-naar-Site VPN-verbinding. Alle VPN-verbindingen worden BGP uitgevoerd.
+In dit voor beeld is de punt-naar-site-VPN-gateway verbinding voor VNet1. VNet1 is verbonden met VNet2 met behulp van een site-naar-site-VPN-verbinding. VNet2 is verbonden met VNet3 met behulp van een site-naar-site-VPN-verbinding. Er is geen directe peering of site-naar-site-VPN-tunnel tussen de VNet1-en VNet3-netwerken. VNet3 is verbonden met een filiaal (site1) met behulp van een site-naar-site-VPN-verbinding. Alle VPN-verbindingen met BGP worden uitgevoerd.
 
-Clients met behulp van Windows toegang heeft tot VNets en sites die zijn verbonden met een Site-naar-Site VPN-verbinding, maar de routes naar VNet2, VNet3 en Site1 moeten handmatig worden toegevoegd aan de client. Niet-Windows-clients hebben toegang tot VNets en sites die zijn verbonden via een Site-naar-Site VPN-verbinding zonder handmatige tussenkomst. De toegang kan worden overgedragen en clients hebben toegang tot resources in alle verbonden VNets en sites (on-premises).
+Clients die Windows gebruiken, hebben toegang tot VNets en sites die zijn verbonden met een site-naar-site-VPN-verbinding, maar de routes naar VNet2, VNet3 en site1 moeten hand matig worden toegevoegd aan de client. Niet-Windows-clients hebben toegang tot VNets en sites die zijn verbonden met een site-naar-site-VPN-verbinding zonder hand matige tussen komst. De toegang is transitief en clients hebben toegang tot bronnen in alle verbonden VNets en sites (on-premises).
 
-![Multi-VNet S2S en de vertakking office](./media/vpn-gateway-about-point-to-site-routing/8.jpg "multi-VNet S2S en de vertakking office")
+Multi- ![VNET S2S en filialen](./media/vpn-gateway-about-point-to-site-routing/8.jpg "multi-vnet S2S en filialen")
 
 ### <a name="address-space"></a>Adresruimte
 
-* VNet1: 10.1.0.0/16
+* VNet1:10.1.0.0/16
 
-* VNet2: 10.2.0.0/16
+* VNet2:10.2.0.0/16
 
-* VNet3: 10.3.0.0/16
+* VNet3:10.3.0.0/16
 
-* Site1: 10.101.0.0/16
+* Site1:10.101.0.0/16
 
-### <a name="routes-added"></a>Routes die zijn toegevoegd
+### <a name="routes-added"></a>Routes toegevoegd
 
-* Routes toegevoegd clients: 10.1.0.0/16, 192.168.0.0/24
+* Routes toegevoegde clients: 10.1.0.0/16, 192.168.0.0/24
 
 * Routes die zijn toegevoegd aan niet-Windows-clients: 10.1.0.0/16, 10.2.0.0/16, 10.3.0.0/16, 10.101.0.0/16, 192.168.0.0/24
 
 ### <a name="access"></a>Access
 
-* De Windows-clients hebben toegang tot VNet1, VNet2, VNet3 en Site1, maar de routes naar VNet2, VNet3 en Site1 moeten handmatig worden toegevoegd aan de client.
+* De Windows-clients hebben toegang tot VNet1, VNet2, VNet3 en site1, maar routes naar VNet2, VNet3 en site1 moeten hand matig worden toegevoegd aan de client.
 
-* Niet-Windows-clients hebben toegang tot VNet1, Vnet2, VNet3 en Site1.
+* Niet-Windows-clients hebben toegang tot VNet1, Vnet2, VNet3 en site1.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [maken van een P2S-VPN met behulp van de Azure-portal](vpn-gateway-howto-point-to-site-resource-manager-portal.md) om te beginnen met het maken van uw P2S-VPN.
+Zie [een P2S-VPN maken met behulp van de Azure Portal](vpn-gateway-howto-point-to-site-resource-manager-portal.md) om uw P2S-VPN te gaan maken.

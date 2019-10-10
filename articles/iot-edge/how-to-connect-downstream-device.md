@@ -1,24 +1,24 @@
 ---
-title: 'Verbinding maken met downstream-apparaten: Azure IoT Edge | Microsoft Docs'
+title: Downstream-apparaten verbinden-Azure IoT Edge | Microsoft Docs
 description: Stroomafwaartse of Leaf-apparaten configureren om verbinding te maken met Azure IoT Edge gateway apparaten.
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 09/07/2019
+ms.date: 10/08/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 822e58d1d35cfb9b62565ca78ea2277b8d194bc0
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: c37c3ed2031746d7c476850749bb3dc613252654
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71266109"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72176794"
 ---
-# <a name="connect-a-downstream-device-to-an-azure-iot-edge-gateway"></a>Een downstream-apparaat verbinden met Azure IoT Edge-gateway
+# <a name="connect-a-downstream-device-to-an-azure-iot-edge-gateway"></a>Een downstream-apparaat verbinden met een Azure IoT Edge gateway
 
-Dit artikel bevat instructies voor het tot stand brengen van een vertrouwde verbinding tussen downstream-apparaten en IoT Edge transparante gateways. In een transparant Gateway scenario kunnen een of meer apparaten hun berichten door geven via één gateway apparaat waarmee de verbinding met IoT Hub wordt onderhouden. Een downstream-apparaat mag een toepassing of het platform waarvoor een identiteit die is gemaakt met de [Azure IoT Hub](https://docs.microsoft.com/azure/iot-hub) cloudservice. In veel gevallen gebruikt u deze toepassingen de [Azure IoT device-SDK](../iot-hub/iot-hub-devguide-sdks.md). Een downstream-apparaat kan zelfs een toepassing zijn die wordt uitgevoerd op het IoT Edge gateway-apparaat zelf. 
+Dit artikel bevat instructies voor het tot stand brengen van een vertrouwde verbinding tussen downstream-apparaten en IoT Edge transparante gateways. In een transparant Gateway scenario kunnen een of meer apparaten hun berichten door geven via één gateway apparaat waarmee de verbinding met IoT Hub wordt onderhouden. Een downstream-apparaat kan een toepassing of platform zijn met een identiteit die is gemaakt met de [Azure IOT hub](https://docs.microsoft.com/azure/iot-hub) -Cloud service. In veel gevallen gebruiken deze toepassingen de [Azure IOT Device SDK](../iot-hub/iot-hub-devguide-sdks.md). Een downstream-apparaat kan zelfs een toepassing zijn die wordt uitgevoerd op het IoT Edge gateway-apparaat zelf. 
 
 Er zijn drie algemene stappen voor het instellen van een geslaagde transparante gateway verbinding. In dit artikel wordt de derde stap behandeld:
 
@@ -26,28 +26,28 @@ Er zijn drie algemene stappen voor het instellen van een geslaagde transparante 
 2. Het downstream-apparaat moet een apparaat-id hebben om te kunnen verifiëren met IoT Hub en te communiceren via het gateway apparaat. Zie [een downstream-apparaat verifiëren voor Azure IOT hub](how-to-authenticate-downstream-device.md)voor meer informatie.
 3. **Het downstream-apparaat moet veilig verbinding kunnen maken met het gateway apparaat.**
 
-In dit artikel identificeert bekende problemen met downstream apparaatverbindingen en helpt u bij het instellen van uw downstream-apparaten door: 
+In dit artikel worden veelvoorkomende problemen met downstream-apparaatnamen vermeld en wordt u begeleid bij het instellen van uw downstream-apparaten: 
 
-* Uitleg over transport layer security (TLS) en grondbeginselen van het certificaat. 
-* Uitleg over de werking van TLS-bibliotheken voor verschillende besturingssystemen en hoe elk besturingssysteem omgaat met certificaten.
-* Azure IoT hek voorbeelden in verschillende talen om u te helpen aan de slag. 
+* Uitleg van TLS (trans port Layer Security) en basis beginselen van certificaten. 
+* Uitleg over de werking van TLS-bibliotheken op verschillende besturings systemen en over de manier waarop elk besturings systeem met certificaten werkt.
+* Bekijk Azure IoT-voor beelden in verschillende talen om u op weg te helpen. 
 
-In dit artikel, de voorwaarden *gateway* en *IoT Edge-gateway* verwijzen naar een IoT Edge-apparaat dat is geconfigureerd als een transparante gateway. 
+In dit artikel verwijzen de voor waarden *Gateway* en *IOT Edge gateway* naar een IOT edge apparaat geconfigureerd als een transparante gateway. 
 
 ## <a name="prerequisites"></a>Vereisten 
 
 Laat het certificaat bestand **Azure-IOT-test-only. root. ca. cert. pem** dat is gegenereerd in [een IOT edge apparaat configureren om te fungeren als een transparante gateway die](how-to-create-transparent-gateway.md) beschikbaar is op uw downstream-apparaat. Het downstream-apparaat gebruikt dit certificaat om de identiteit van het gateway-apparaat te valideren. 
 
-## <a name="prepare-a-downstream-device"></a>Een downstream apparaat voorbereiden
+## <a name="prepare-a-downstream-device"></a>Een downstream-apparaat voorbereiden
 
-Een downstream-apparaat mag een toepassing of het platform waarvoor een identiteit die is gemaakt met de [Azure IoT Hub](https://docs.microsoft.com/azure/iot-hub) cloudservice. In veel gevallen gebruikt u deze toepassingen de [Azure IoT device-SDK](../iot-hub/iot-hub-devguide-sdks.md). Een downstream-apparaat kan zelfs een toepassing zijn die wordt uitgevoerd op het IoT Edge gateway-apparaat zelf. Een andere IoT Edge apparaat kan echter niet worden downstream van een IoT Edge gateway. 
+Een downstream-apparaat kan een toepassing of platform zijn met een identiteit die is gemaakt met de [Azure IOT hub](https://docs.microsoft.com/azure/iot-hub) -Cloud service. In veel gevallen gebruiken deze toepassingen de [Azure IOT Device SDK](../iot-hub/iot-hub-devguide-sdks.md). Een downstream-apparaat kan zelfs een toepassing zijn die wordt uitgevoerd op het IoT Edge gateway-apparaat zelf. Een andere IoT Edge apparaat kan echter niet worden downstream van een IoT Edge gateway. 
 
 >[!NOTE]
 >IoT-apparaten met geregistreerde identiteiten in IoT Hub kunnen [module apparaatdubbels](../iot-hub/iot-hub-devguide-module-twins.md) gebruiken om verschillende processen, hardware of functies op één apparaat te isoleren. IoT Edge gateways ondersteunen downstream-module verbindingen met behulp van symmetrische sleutel verificatie, maar niet X. 509-certificaat verificatie. 
 
-Voor een downstream-apparaat verbinding met een IoT Edge-gateway, moet u twee dingen:
+Als u een downstream-apparaat wilt verbinden met een IoT Edge gateway, hebt u twee dingen nodig:
 
-* Een apparaat of een toepassing die geconfigureerd met een IoT Hub apparaat-verbindingsreeks toegevoegd met informatie om te verbinden met de gateway. 
+* Een apparaat of toepassing dat is geconfigureerd met een IoT Hub apparaat connection string toegevoegd met informatie om deze te verbinden met de gateway. 
 
     Deze stap wordt beschreven in [een downstream-apparaat verifiëren bij Azure IOT hub](how-to-authenticate-downstream-device.md).
 
@@ -55,21 +55,21 @@ Voor een downstream-apparaat verbinding met een IoT Edge-gateway, moet u twee di
 
     Deze stap wordt gedetailleerd beschreven in de rest van dit artikel. Deze stap kan op twee manieren worden uitgevoerd: door het CA-certificaat in het certificaat archief van het besturings systeem te installeren of (voor bepaalde talen) door te verwijzen naar het certificaat in toepassingen met behulp van de Azure IoT Sdk's.
 
-## <a name="tls-and-certificate-fundamentals"></a>Basisinformatie over TLS en certificaat
+## <a name="tls-and-certificate-fundamentals"></a>Basis beginselen van TLS en certificaten
 
-De uitdaging van downstream apparaten veilig verbinding te maken met IoT Edge is net als elke andere beveiligde client/server-communicatie die wordt uitgevoerd via internet. Een client en server veilig communiceren via internet met [Transport layer security (TLS)](https://en.wikipedia.org/wiki/Transport_Layer_Security). TLS is gebouwd met behulp van standaard [openbare-sleutelinfrastructuur (PKI)](https://en.wikipedia.org/wiki/Public_key_infrastructure) constructies certificaten genoemd. TLS is een redelijk gepaarde specificatie en behandelt een breed scala aan onderwerpen met betrekking tot het beveiligen van twee eind punten. In deze sectie vindt u een overzicht van de concepten die relevant zijn voor u om apparaten veilig te verbinden met een IoT Edge gateway.
+De uitdaging van het veilig verbinden van downstream-apparaten met IoT Edge is net hetzelfde als elke andere beveiligde client/server-communicatie die plaatsvindt via internet. Een client en een server communiceren veilig via internet via [trans port Layer Security (TLS)](https://en.wikipedia.org/wiki/Transport_Layer_Security). TLS is gebouwd met behulp van standaard-constructies met een [open bare-sleutel infrastructuur (PKI)](https://en.wikipedia.org/wiki/Public_key_infrastructure) met de naam certificaten. TLS is een redelijk gepaarde specificatie en behandelt een breed scala aan onderwerpen met betrekking tot het beveiligen van twee eind punten. In deze sectie vindt u een overzicht van de concepten die relevant zijn voor u om apparaten veilig te verbinden met een IoT Edge gateway.
 
-Wanneer een client verbinding met een server maakt, de server een keten van certificaten, met de naam geeft de *server certificaatketen*. Een certificaatketen bestaat gewoonlijk uit een basiscertificaat van de certificaat-certificeringsinstantie (CA), een of meer tussenliggende CA-certificaten en ten slotte certificaat van de server zelf. Een client brengt een vertrouwensrelatie met een server tot stand door cryptografisch te controleren of de certificaatketen voor de hele server. Deze client validatie van de server certificaat keten wordt de *validatie van de server keten*genoemd. De-client kan de service cryptografisch een uitdaging bieden om te bewijzen dat de persoonlijke sleutel die is gekoppeld aan het server certificaat in een proces met de naam *bewijs van bezit*is. De combi natie van validatie van de server keten en het bewijs van bezit wordt *Server verificatie*genoemd. Een client moet voor het valideren van de certificaatketen van een server, een kopie van het basis-CA-certificaat dat is gebruikt voor het certificaat van de server maken (of uitgeven). Normaal gesproken bij het verbinden met websites, een browser wordt al geconfigureerd geleverd met veelgebruikte CA-certificaten, zodat de client een naadloze proces heeft. 
+Wanneer een client verbinding maakt met een server, presenteert de server een keten van certificaten, die de *server certificaat keten*wordt genoemd. Een certificaat keten omvat doorgaans een basis certificaat voor certificerings instanties (CA), een of meer tussenliggende CA-certificaten en uiteindelijk het server certificaat zelf. Een-client brengt een vertrouwens relatie met een server tot stand door de hele server certificaat keten te controleren. Deze client validatie van de server certificaat keten wordt de *validatie van de server keten*genoemd. De-client kan de service cryptografisch een uitdaging bieden om te bewijzen dat de persoonlijke sleutel die is gekoppeld aan het server certificaat in een proces met de naam *bewijs van bezit*is. De combi natie van validatie van de server keten en het bewijs van bezit wordt *Server verificatie*genoemd. Voor het valideren van een server certificaat keten heeft een client een kopie nodig van het basis-CA-certificaat dat is gebruikt voor het maken (of uitgeven) van het server certificaat. Normaal gesp roken wordt bij het maken van verbinding met websites een browser vooraf geconfigureerd met veelgebruikte CA-certificaten, zodat de client naadloos proces heeft. 
 
-Wanneer een apparaat verbinding met Azure IoT Hub maakt, het apparaat is de client en de IoT Hub-cloudservice is de server. De IoT Hub-cloudservice wordt ondersteund door een basis-CA-certificaat met de naam **Baltimore CyberTrust Root**, is openbaar beschikbare en gebruikte. Omdat de IoT Hub CA-certificaat is al geïnstalleerd op de meeste apparaten, wordt deze door veel implementaties van TLS (OpenSSL, Schannel, LibreSSL) automatisch gebruikt tijdens de validatie van het servercertificaat. Een apparaat dat is mogelijk verbinding met IoT Hub mogelijk problemen met het verbinden met IoT Edge-gateway.
+Wanneer een apparaat verbinding maakt met Azure IoT Hub, is het apparaat de client en is de IoT Hub-Cloud service de server. De IoT Hub Cloud service wordt ondersteund door een basis-CA-certificaat met de naam **Baltimore Cyber Trust Root**, dat openbaar beschikbaar is en veel wordt gebruikt. Omdat de IoT Hub CA-certificaat al op de meeste apparaten is geïnstalleerd, gebruiken veel TLS-implementaties (OpenSSL, Schannel, LibreSSL) deze automatisch tijdens de validatie van het server certificaat. Een apparaat waarmee verbinding kan worden gemaakt met IoT Hub kan problemen ondervinden bij het maken van verbinding met een IoT Edge gateway.
 
-Wanneer een apparaat verbinding met IoT Edge-gateway maakt, de downstream apparaat is de client en de gateway-apparaat is de server. Azure IoT Edge kunt operators (of gebruikers) gateway certificaatketens bouwen, maar ze naar eigen inzicht. De operator besluiten te gebruiken een openbare CA-certificaat, zoals Baltimore, of een zelf-ondertekend (of interne) basis-CA-certificaat gebruiken. Openbare CA-certificaten zijn kosten verbonden aan ze vaak, dus worden meestal gebruikt in productiescenario's. Zelf-ondertekende CA-certificaten worden verkozen voor ontwikkelen en testen. De transparante gateway-installatie artikelen die in de inleiding worden vermeld, maken gebruik van zelfondertekende basis-CA-certificaten. 
+Wanneer een apparaat verbinding maakt met een IoT Edge gateway, is het downstream-apparaat de client en is het gateway apparaat de-server. Met Azure IoT Edge kunnen Opera tors (of gebruikers) gateway-certificaat ketens maken, maar ze moeten wel passen. De operator kan ervoor kiezen om een openbaar CA-certificaat te gebruiken, zoals Baltimore, of een zelf-ondertekend (of intern) basis-CA-certificaat gebruiken. Voor open bare CA-certificaten gelden vaak kosten. deze worden doorgaans gebruikt in productie scenario's. Zelfondertekende CA-certificaten worden aanbevolen voor ontwikkeling en testen. De transparante gateway-installatie artikelen die in de inleiding worden vermeld, maken gebruik van zelfondertekende basis-CA-certificaten. 
 
-Wanneer u een zelfondertekend basiscertificaat CA-certificaat voor een IoT Edge-gateway gebruikt, moet worden geïnstalleerd op of die de downstream apparaten probeert verbinding maken met de gateway. 
+Wanneer u een zelfondertekend basis-CA-certificaat voor een IoT Edge gateway gebruikt, moet het worden geïnstalleerd op of worden voorzien van alle downstream-apparaten die verbinding proberen te maken met de gateway. 
 
-![Certificaat-gatewayupgrade](./media/how-to-create-transparent-gateway/gateway-setup.png)
+![Installatie van Gateway certificaat](./media/how-to-create-transparent-gateway/gateway-setup.png)
 
-Zie voor meer informatie over IoT Edge-certificaten en de gevolgen van sommige productie [informatie over het IoT Edge certificaat](iot-edge-certs.md).
+Zie [IOT Edge certificaat gebruik Details](iot-edge-certs.md)voor meer informatie over IOT Edge certificaten en enkele gevolgen voor de productie.
 
 ## <a name="provide-the-root-ca-certificate"></a>Het basis-CA-certificaat opgeven
 
@@ -81,18 +81,18 @@ Als u het basis-CA-certificaat in het certificaat archief van het besturings sys
 
 ### <a name="ubuntu"></a>Ubuntu
 
-De volgende opdrachten zijn een voorbeeld van een CA-certificaat installeren op een Ubuntu-host. In dit voor beeld wordt ervan uitgegaan dat u het certificaat **Azure-IOT-test-only. root. ca. cert. pem** gebruikt uit de artikelen van de vereisten en dat u het certificaat hebt gekopieerd naar een locatie op het downstream-apparaat.
+De volgende opdrachten zijn een voor beeld van het installeren van een CA-certificaat op een Ubuntu-host. In dit voor beeld wordt ervan uitgegaan dat u het certificaat **Azure-IOT-test-only. root. ca. cert. pem** gebruikt uit de artikelen van de vereisten en dat u het certificaat hebt gekopieerd naar een locatie op het downstream-apparaat.
 
 ```bash
 sudo cp <path>/azure-iot-test-only.root.ca.cert.pem /usr/local/share/ca-certificates/azure-iot-test-only.root.ca.cert.pem.crt
 sudo update-ca-certificates
 ```
 
-U ziet een bericht waarin wordt gemeld, "Updating certificaten in /etc/ssl/certs... 1 heeft toegevoegd, 0 verwijderd; gedaan."
+Er wordt een bericht weer gegeven met de tekst ' certificaten bijwerken in/etc/ssl/certs... 1 toegevoegd, 0 verwijderd; gereed. "
 
 ### <a name="windows"></a>Windows
 
-De volgende stappen zijn een voorbeeld van een CA-certificaat installeren op een Windows-host. In dit voor beeld wordt ervan uitgegaan dat u het certificaat **Azure-IOT-test-only. root. ca. cert. pem** gebruikt uit de artikelen van de vereisten en dat u het certificaat hebt gekopieerd naar een locatie op het downstream-apparaat.
+De volgende stappen zijn een voor beeld van het installeren van een CA-certificaat op een Windows-host. In dit voor beeld wordt ervan uitgegaan dat u het certificaat **Azure-IOT-test-only. root. ca. cert. pem** gebruikt uit de artikelen van de vereisten en dat u het certificaat hebt gekopieerd naar een locatie op het downstream-apparaat.
 
 U kunt certificaten installeren met behulp van het [import-certificaat](https://docs.microsoft.com/powershell/module/pkiclient/import-certificate?view=win10-ps) van Power shell als beheerder:
 
@@ -102,37 +102,37 @@ import-certificate  <file path>\azure-iot-test-only.root.ca.cert.pem -certstorel
 
 U kunt certificaten ook installeren met het hulp programma **certlm** : 
 
-1. Zoek in het menu Start en selecteer **computercertificaten beheren**. Een hulpprogramma **certlm** wordt geopend.
-2. Navigeer naar **certificaten - lokale Computer** > **Trusted Root Certification Authorities**.
-3. Met de rechtermuisknop op **certificaten** en selecteer **alle taken** > **importeren**. De wizard Certificaat importeren te starten. 
-4. Volg de stappen te gaan en certificaatbestand importeren `<path>/azure-iot-test-only.root.ca.cert.pem`. Wanneer dit is voltooid, kunt u een "Geïmporteerd" bericht moet zien. 
+1. Zoek in het menu Start naar en selecteer **computer certificaten beheren**. Een hulp programma met de naam **certlm** wordt geopend.
+2. Navigeer naar **certificaten-lokale Computer** > **vertrouwde basis certificerings instanties**.
+3. Klik met de rechter muisknop op **certificaten** en selecteer **alle taken** > **importeren**. De wizard Certificaat importeren moet worden gestart. 
+4. Volg de stappen als gericht en importeer het certificaat bestand `<path>/azure-iot-test-only.root.ca.cert.pem`. Als u klaar bent, ziet u het bericht ' is geïmporteerd '. 
 
-U kunt ook certificaten programmatisch met behulp van .NET-API's, installeren, zoals weergegeven in de .NET-voorbeeld verderop in dit artikel. 
+U kunt certificaten ook programmatisch installeren met behulp van .NET Api's, zoals wordt weer gegeven in .NET-voor beeld verderop in dit artikel. 
 
-Toepassingen gebruiken normaal gesproken op de Windows voorwaarde TLS-stack met de naam [Schannel](https://docs.microsoft.com/windows/desktop/com/schannel) veilig verbinding maken via TLS. Schannel *vereist* dat alle certificaten in het certificaatarchief van Windows worden geïnstalleerd voordat u probeert een TLS-verbinding tot stand brengen.
+Doorgaans gebruiken toepassingen de door Windows meegeleverde TLS-stack [Schannel](https://docs.microsoft.com/windows/desktop/com/schannel) om veilig verbinding te maken via TLS. Voor *Schannel moeten* alle certificaten in het Windows-certificaat archief worden geïnstalleerd voordat er wordt geprobeerd een TLS-verbinding tot stand te brengen.
 
-## <a name="use-certificates-with-azure-iot-sdks"></a>Certificaten gebruiken met Azure IoT SDK 's
+## <a name="use-certificates-with-azure-iot-sdks"></a>Certificaten gebruiken met Azure IoT Sdk's
 
-Deze sectie wordt beschreven hoe de Azure IoT SDK's verbinding maken met een IoT Edge-apparaat met behulp van eenvoudige voorbeeldtoepassingen. Het doel van alle voorbeelden is verbinding maken met de apparaatclient en berichten over telemetrie verzenden naar de gateway en Verbreek de verbinding en afsluiten. 
+In deze sectie wordt beschreven hoe de Azure IoT Sdk's verbinding maken met een IoT Edge apparaat met behulp van eenvoudige voorbeeld toepassingen. Het doel van alle voor beelden is het verbinden van de apparaatclient en het verzenden van telemetrie-berichten naar de gateway, en sluit vervolgens de verbinding en sluit af. 
 
-Twee dingen die gereed is voordat u de voorbeelden op toepassingsniveau hebben:
+Hebben twee dingen die klaar zijn voordat de voor beelden op toepassings niveau worden gebruikt:
 
 * De IoT Hub van uw downstream-apparaat connection string zodanig gewijzigd dat het naar het gateway apparaat wijst, en eventuele certificaten die nodig zijn om uw downstream-apparaat te verifiëren voor IoT Hub. Zie [een downstream-apparaat verifiëren voor Azure IOT hub](how-to-authenticate-downstream-device.md)voor meer informatie.
 
-* Het volledige pad naar het basis-CA-certificaat dat u hebt gekopieerd en opgeslagen ergens op uw downstream-apparaat.
+* Het volledige pad naar het basis-CA-certificaat dat u hebt gekopieerd en opgeslagen ergens op het downstream-apparaat.
 
     Bijvoorbeeld `<path>/azure-iot-test-only.root.ca.cert.pem`. 
 
-### <a name="nodejs"></a>Node.js
+### <a name="nodejs"></a>NodeJS
 
-Deze sectie bevat een voorbeeld van toepassing op een client voor Azure IoT-NodeJS-apparaten verbinden met IoT Edge-gateway. Voor NodeJS-toepassingen moet u het basis-CA-certificaat installeren op het niveau van de toepassing, zoals hier wordt weer gegeven. NodeJS-toepassingen gebruiken het certificaat archief van het systeem niet. 
+Deze sectie bevat een voorbeeld toepassing om een Azure IoT NodeJS Device-client te verbinden met een IoT Edge-gateway. Voor NodeJS-toepassingen moet u het basis-CA-certificaat installeren op het niveau van de toepassing, zoals hier wordt weer gegeven. NodeJS-toepassingen gebruiken het certificaat archief van het systeem niet. 
 
-1. Ophalen van het voorbeeld voor **edge_downstream_device.js** uit de [Azure IoT device-SDK voor Node.js-voorbeelden opslagplaats](https://github.com/Azure/azure-iot-sdk-node/tree/master/device/samples). 
-2. Zorg ervoor dat u alle vereisten hebt voor het uitvoeren van het voorbeeld aan de hand van de **readme.md** bestand. 
-3. In het bestand edge_downstream_device.js bijwerken de **connectionString** en **edge_ca_cert_path** variabelen. 
-4. Raadpleeg de SDK-documentatie voor instructies over het uitvoeren van het voorbeeld op uw apparaat. 
+1. Haal het voor beeld voor **edge_downstream_device. js** op uit het [Azure IOT Device SDK voor opslag plaats van node. js](https://github.com/Azure/azure-iot-sdk-node/tree/master/device/samples). 
+2. Zorg ervoor dat u beschikt over alle vereisten om het voor beeld uit te voeren door het **README.MD** -bestand te controleren. 
+3. Werk de variabelen **Connections Tring** en **edge_ca_cert_path** bij in het bestand edge_downstream_device. js. 
+4. Raadpleeg de SDK-documentatie voor instructies over het uitvoeren van het voor beeld op het apparaat. 
 
-Voor inzicht in het voorbeeld dat u uitvoert, wordt het volgende codefragment weergegeven hoe de client-SDK leest het certificaatbestand en gebruikt voor het maken van een beveiligde TLS-verbinding: 
+Het volgende code fragment is de manier waarop de client-SDK het certificaat bestand leest en gebruikt om een beveiligde TLS-verbinding tot stand te brengen om te begrijpen welk voor beeld wordt uitgevoerd: 
 
 ```javascript
 // Provide the Azure IoT device client via setOptions with the X509
@@ -144,56 +144,62 @@ var options = {
 
 ### <a name="net"></a>.NET
 
-In deze sectie wordt een voorbeeld van toepassing op de client voor een Azure IoT .NET-apparaten verbinden met IoT Edge-gateway. .NET-toepassingen kunnen echter automatisch voor het gebruik van alle geïnstalleerde certificaten in het certificaatarchief van het systeem op zowel Windows als Linux-hosts.
+In deze sectie wordt een voorbeeld toepassing geïntroduceerd om een Azure IoT .NET-apparaatclient te verbinden met een IoT Edge-gateway. .NET-toepassingen kunnen echter automatisch alle geïnstalleerde certificaten in het certificaat archief van het systeem op zowel Linux-als Windows-hosts gebruiken.
 
-1. Ophalen van het voorbeeld voor **EdgeDownstreamDevice** uit de [IoT Edge .NET-voorbeelden map](https://github.com/Azure/iotedge/tree/master/samples/dotnet/EdgeDownstreamDevice). 
-2. Zorg ervoor dat u alle vereisten hebt voor het uitvoeren van het voorbeeld aan de hand van de **readme.md** bestand. 
-3. In de **eigenschappen / launchSettings.json** bestand de **DEVICE_CONNECTION_STRING** en **CA_CERTIFICATE_PATH** variabelen. Als u gebruikmaken van het certificaat geïnstalleerd in het vertrouwde certificaatarchief op het hostsysteem wilt, laat u deze variabele leeg. 
-4. Raadpleeg de SDK-documentatie voor instructies over het uitvoeren van het voorbeeld op uw apparaat. 
+1. Haal het voor beeld voor **EdgeDownstreamDevice** op uit de [map met IOT Edge .net](https://github.com/Azure/iotedge/tree/master/samples/dotnet/EdgeDownstreamDevice)-voor beelden. 
+2. Zorg ervoor dat u beschikt over alle vereisten om het voor beeld uit te voeren door het **README.MD** -bestand te controleren. 
+3. Werk in het bestand **Properties/launchSettings. json** de variabelen **DEVICE_CONNECTION_STRING** en **CA_CERTIFICATE_PATH** bij. Als u het certificaat wilt gebruiken dat is geïnstalleerd in het vertrouwde certificaat archief op het hostsysteem, laat u deze variabele leeg. 
+4. Raadpleeg de SDK-documentatie voor instructies over het uitvoeren van het voor beeld op het apparaat. 
 
-Als u wilt installeren via een programma een vertrouwd certificaat in het certificaatarchief via een .NET-toepassing, verwijzen naar de **InstallCACert()** werken in de **EdgeDownstreamDevice / Program.cs** bestand. Deze bewerking is idempotent zijn, zodat meerdere keren met dezelfde waarden zonder extra effect kunnen worden uitgevoerd. 
+Raadpleeg de functie **InstallCACert ()** in het **EdgeDownstreamDevice/Program.cs-** bestand om programmatisch een vertrouwd certificaat in het certificaat archief te installeren via een .NET-toepassing. Deze bewerking is idempotent. kan daarom meerdere keren worden uitgevoerd met dezelfde waarden zonder extra effect. 
 
 ### <a name="c"></a>C
 
-In deze sectie wordt een voorbeeld van toepassing op de client van een Azure IoT C-apparaten verbinden met IoT Edge-gateway. De C-SDK kunnen werken met veel TLS-bibliotheken, waaronder OpenSSL, WolfSSL en Schannel. Zie voor meer informatie de [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c). 
+In deze sectie wordt een voorbeeld toepassing geïntroduceerd om een Azure IoT C-apparaatclient te verbinden met een IoT Edge gateway. De C SDK kan worden gebruikt met veel TLS-Bibliotheken, waaronder OpenSSL, WolfSSL en Schannel. Zie de [Azure IOT C-SDK](https://github.com/Azure/azure-iot-sdk-c)voor meer informatie. 
 
-1. Krijgen de **iotedge_downstream_device_sample** toepassing uit de [Azure IoT device-SDK voor C-voorbeelden](https://github.com/Azure/azure-iot-sdk-c/tree/master/iothub_client/samples). 
-2. Zorg ervoor dat u alle vereisten hebt voor het uitvoeren van het voorbeeld aan de hand van de **readme.md** bestand. 
-3. In het bestand iotedge_downstream_device_sample.c bijwerken de **connectionString** en **edge_ca_cert_path** variabelen. 
-4. Raadpleeg de SDK-documentatie voor instructies over het uitvoeren van het voorbeeld op uw apparaat. 
+1. Haal de **iotedge_downstream_device_sample** -toepassing op uit de [Azure IOT Device SDK voor C-voor beelden](https://github.com/Azure/azure-iot-sdk-c/tree/master/iothub_client/samples). 
+2. Zorg ervoor dat u beschikt over alle vereisten om het voor beeld uit te voeren door het **README.MD** -bestand te controleren. 
+3. Werk in het bestand iotedge_downstream_device_sample. c de variabelen **Connections Tring** en **edge_ca_cert_path** bij. 
+4. Raadpleeg de SDK-documentatie voor instructies over het uitvoeren van het voor beeld op het apparaat. 
 
-De Azure IoT device-SDK voor C biedt een optie voor het registreren van een CA-certificaat bij het instellen van de client. Met deze bewerking niet overal in het certificaat wordt geïnstalleerd, maar in plaats daarvan maakt gebruik van een tekenreeksindeling van het certificaat in het geheugen. Het opgeslagen certificaat is verstrekt aan de onderliggende TLS-stack wanneer een verbinding tot stand brengen. 
+De Azure IoT Device SDK voor C biedt een optie voor het registreren van een CA-certificaat bij het instellen van de client. Met deze bewerking wordt het certificaat nergens geïnstalleerd, maar wordt in plaats daarvan een teken reeks indeling gebruikt van het certificaat in het geheugen. Het opgeslagen certificaat wordt aan de onderliggende TLS-stack gegeven tijdens het tot stand brengen van een verbinding. 
 
 ```C
 (void)IoTHubDeviceClient_SetOption(device_handle, OPTION_TRUSTED_CERT, cert_string);
 ```
 
-Op Windows-hosts, als u niet OpenSSL of een andere TLS-bibliotheek, de SDK standaard gebruikmaken van Schannel. Voor Schannel om te werken, moet het IoT Edge-basis-CA-certificaat worden geïnstalleerd in het Windows-certificaatarchief, niet is ingesteld met behulp van de `IoTHubDeviceClient_SetOption` bewerking. 
+Als u op Windows-hosts geen OpenSSL of een andere TLS-bibliotheek gebruikt, wordt de SDK standaard gebruikt voor het gebruik van Schannel. Schannel werkt alleen als het basis-CA-certificaat van IoT Edge is geïnstalleerd in het Windows-certificaat archief en niet is ingesteld met behulp van de `IoTHubDeviceClient_SetOption`-bewerking. 
 
 ### <a name="java"></a>Java
 
-In deze sectie wordt een voorbeeld van toepassing op de client van een Azure IoT-Java-apparaten verbinden met IoT Edge-gateway. 
+In deze sectie wordt een voorbeeld toepassing geïntroduceerd om een Azure IoT Java-apparaatclient te verbinden met een IoT Edge gateway. 
 
-1. Ophalen van het voorbeeld voor **verzenden-gebeurtenis** uit de [Azure IoT device-SDK voor Java-voorbeelden](https://github.com/Azure/azure-iot-sdk-java/tree/master/device/iot-device-samples). 
-2. Zorg ervoor dat u alle vereisten hebt voor het uitvoeren van het voorbeeld aan de hand van de **readme.md** bestand. 
-3. Raadpleeg de SDK-documentatie voor instructies over het uitvoeren van het voorbeeld op uw apparaat.
+1. Het voor beeld voor **Send-Event** ophalen uit de [Azure IOT Device SDK voor Java-voor beelden](https://github.com/Azure/azure-iot-sdk-java/tree/master/device/iot-device-samples). 
+2. Zorg ervoor dat u beschikt over alle vereisten om het voor beeld uit te voeren door het **README.MD** -bestand te controleren. 
+3. Raadpleeg de SDK-documentatie voor instructies over het uitvoeren van het voor beeld op het apparaat.
 
 ### <a name="python"></a>Python
 
-In deze sectie wordt een voorbeeld van toepassing op de client van een Azure IoT Python-apparaten verbinden met IoT Edge-gateway. 
+In deze sectie wordt een voorbeeld toepassing geïntroduceerd om een Azure IoT python-apparaatclient te verbinden met een IoT Edge gateway. 
 
 1. Haal het voor beeld voor **send_message** op uit de [Azure IOT Device SDK voor python-voor beelden](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples/advanced-edge-scenarios). 
-2. Zorg ervoor dat u in een Edge-container of in een scenario voor fout opsporing een omgevings `EdgeHubConnectionString` variabele `EdgeModuleCACertificateFile` en hebt ingesteld.
-3. Raadpleeg de SDK-documentatie voor instructies over het uitvoeren van het voorbeeld op uw apparaat. 
+2. Zorg ervoor dat u in een IoT Edge container of in een debug-scenario werkt, of de variabelen `EdgeHubConnectionString` en `EdgeModuleCACertificateFile` zijn ingesteld.
+3. Raadpleeg de SDK-documentatie voor instructies over het uitvoeren van het voor beeld op het apparaat. 
 
 
-## <a name="test-the-gateway-connection"></a>De gatewayverbinding testen
+## <a name="test-the-gateway-connection"></a>De gateway verbinding testen
 
-Dit is een voor beeld van een opdracht waarmee wordt getest dat alles correct is ingesteld. U ziet een bericht 'OK geverifieerd'.
+Gebruik deze voorbeeld opdracht om te testen of uw downstream-apparaat verbinding kan maken met het gateway apparaat: 
 
 ```cmd/sh
 openssl s_client -connect mygateway.contoso.com:8883 -CAfile <CERTDIR>/certs/azure-iot-test-only.root.ca.cert.pem -showcerts
 ```
+
+Met deze opdracht worden verbindingen getest via MQTTS (poort 8883). Als u een ander protocol gebruikt, past u de opdracht indien nodig aan voor AMQPS (5671) of HTTPS (433).
+
+De uitvoer van deze opdracht kan lang zijn, inclusief informatie over alle certificaten in de keten. Als uw verbinding is geslaagd, ziet u een regel zoals `Verification: OK` of `Verify return code: 0 (ok)`.
+
+![Gateway verbinding controleren](./media/how-to-connect-downstream-device/verification-ok.png)
 
 ## <a name="troubleshoot-the-gateway-connection"></a>Problemen met de gateway verbinding oplossen
 
@@ -205,4 +211,4 @@ Als uw blad apparaat een terugkerende verbinding met het gateway apparaat heeft,
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Informatie over hoe IoT Edge kunt uitbreiden [offlinemogelijkheden](offline-capabilities.md) op downstream-apparaten. 
+Meer informatie over hoe IoT Edge [offline mogelijkheden](offline-capabilities.md) kunt uitbreiden naar downstream-apparaten. 

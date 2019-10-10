@@ -67,8 +67,8 @@ Het subnet van de doel-VM wordt geselecteerd op basis van de naam van het subnet
 
 Het IP-adres voor elke NIC op een virtuele doel machine wordt als volgt geconfigureerd:
 
-- **DHCP**: Als de NIC van de bron-VM DHCP gebruikt, is de NIC van de doel-VM ook ingesteld op het gebruik van DHCP.
-- **Statisch IP-adres**: Als de NIC van de bron-VM gebruikmaakt van vaste IP-adres Sering, wordt er ook een statisch IP-adres gebruikt voor de doel-VM-NIC.
+- **DHCP**: als de NIC van de bron-VM DHCP gebruikt, is de NIC van de doel-VM ook ingesteld op het gebruik van DHCP.
+- **Statisch IP-adres**: als de NIC van de bron-VM gebruikmaakt van vaste IP-adres Sering, wordt er ook een statisch IP-adres gebruikt voor de doel-VM-NIC.
 
 
 ## <a name="ip-address-assignment-during-failover"></a>Toewijzing van IP-adres tijdens failover
@@ -85,8 +85,8 @@ Andere adres ruimte<br/><br/> Het volgende beschik bare IP-adres in het doel-sub
 
 **Doelnet netwerk** | **Details**
 --- | ---
-Het doelnet netwerk is het failover-VNet | -Het doel-IP-adres is statisch, maar niet hetzelfde IP-adres als dat voor failover is gereserveerd.<br/><br/>  -Het toegewezen adres is het volgende beschik bare adres aan het einde van het bereik van het subnet.<br/><br/> Bijvoorbeeld: Als het IP-adres van de bron 10.0.0.19 is en het failover-netwerk gebruikmaakt van het bereik 10.0.0.0/24, is het volgende IP-adres dat is toegewezen aan de doel-VM 10.0.0.254.
-Het doelnet netwerk is geen failover-VNet | -Het doel-IP-adres is statisch met hetzelfde IP-adres dat is gereserveerd voor failover.<br/><br/>  -Als er al een IP-adres is toegewezen, is het IP-adres het volgende beschik bare aan het einde van het subnet-bereik.<br/><br/> Bijvoorbeeld: Als het vaste IP-adres van de bron 10.0.0.19 is en failover zich op een netwerk bevindt dat niet het failovercluster is, met het bereik 10.0.0.0/24, wordt het statische IP-adres van het doel 10.0.0.0.19 als dit beschikbaar is, en is het ook 10.0.0.254.
+Het doelnet netwerk is het failover-VNet | -Het doel-IP-adres is statisch, maar niet hetzelfde IP-adres als dat voor failover is gereserveerd.<br/><br/>  -Het toegewezen adres is het volgende beschik bare adres aan het einde van het bereik van het subnet.<br/><br/> Bijvoorbeeld: als het IP-adres van de bron 10.0.0.19 is en het failover-netwerk het bereik 10.0.0.0/24 gebruikt, is het volgende IP-adres dat is toegewezen aan de doel-VM 10.0.0.254.
+Het doelnet netwerk is geen failover-VNet | -Het doel-IP-adres is statisch met hetzelfde IP-adres dat is gereserveerd voor failover.<br/><br/>  -Als er al een IP-adres is toegewezen, is het IP-adres het volgende beschik bare aan het einde van het subnet-bereik.<br/><br/> Bijvoorbeeld: als het statische IP-adres van de bron 10.0.0.19 is en failover zich op een netwerk bevindt dat niet het failovercluster is, met het bereik 10.0.0.0/24, dan wordt het statische IP-adres van het doel 10.0.0.0.19 als dit beschikbaar is, en is het ook 10.0.0.254.
 
 - De failover VNet is het doelnet doel netwerk dat u selecteert bij het instellen van herstel na nood gevallen.
 - U wordt aangeraden altijd een niet-productie netwerk te gebruiken voor een testfailover.

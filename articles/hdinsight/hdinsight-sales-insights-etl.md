@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Een end-to-end ETL-pijp lijn maken om verkoop inzichten af te leiden'
+title: 'Zelf studie: een end-to-end ETL-pijp lijn maken om verkoop inzichten af te leiden'
 description: Meer informatie over het gebruik van ETL-pijp lijnen maken met Azure HDInsight voor het afleiden van inzichten op basis van verkoop gegevens met behulp van Spark on-demand clusters en Power BI.
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -15,7 +15,7 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 10/09/2019
 ms.locfileid: "72178014"
 ---
-# <a name="tutorial-create-an-end-to-end-data-pipeline-to-derive-sales-insights"></a>Zelfstudie: Een end-to-end gegevens pijplijn maken om verkoop inzichten af te leiden
+# <a name="tutorial-create-an-end-to-end-data-pipeline-to-derive-sales-insights"></a>Zelf studie: een end-to-end gegevens pijplijn maken om verkoop inzichten af te leiden
 
 In deze zelf studie bouwt u een end-to-end gegevens pijplijn waarmee ETL-bewerkingen (extract), trans formatie en laden worden uitgevoerd. De pijp lijn gebruikt Apache Spark en Apache Hive clusters die worden uitgevoerd op Azure HDInsight voor het uitvoeren van query's en het bewerken van de gegevens. U kunt ook gebruikmaken van technologieën als Azure Data Lake Storage Gen2 voor gegevens opslag en Power BI voor visualisatie.
 
@@ -33,7 +33,7 @@ Down load [Power bi Desktop](https://www.microsoft.com/download/details.aspx?id=
 
 ### <a name="clone-the-repository-with-scripts-and-data"></a>De opslag plaats klonen met scripts en gegevens
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Open Azure Cloud Shell in de bovenste menu balk. Selecteer uw abonnement voor het maken van een bestands share als Cloud Shell u hierom vraagt.
 
    ![Azure Cloud Shell openen](./media/hdinsight-sales-insights-etl/hdinsight-sales-insights-etl-click-cloud-shell.png)
@@ -212,7 +212,7 @@ Met dit script wordt een beheerde tabel gemaakt op het interactieve query cluste
 Nadat de gegevens zijn geladen, kunt u experimenteren met het dash board dat u wilt maken. Raadpleeg de volgende koppelingen om aan de slag te gaan met Power BI-Dash boards:
 
 * [Inleiding tot Dash boards voor Power BI-ontwerpers](https://docs.microsoft.com/power-bi/service-dashboards)
-* [Zelfstudie: Aan de slag met de Power BI-service @ no__t-0
+* [Zelf studie: aan de slag met de Power BI-service](https://docs.microsoft.com/power-bi/service-get-started)
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 

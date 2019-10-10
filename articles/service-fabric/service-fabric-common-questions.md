@@ -111,26 +111,26 @@ Nee. Vm's met een lage prioriteit worden niet ondersteund.
 
 ### <a name="what-are-the-directories-and-processes-that-i-need-to-exclude-when-running-an-anti-virus-program-in-my-cluster"></a>Wat zijn de mappen en processen die ik moet uitsluiten bij het uitvoeren van een antivirus programma in mijn cluster?
 
-| **Antivirus uitgesloten mappen** |
+| **Uitgesloten mappen van anti virus** |
 | --- |
 | Program Files\Microsoft Service Fabric |
-| FabricDataRoot (van de configuratie van het cluster) |
-| FabricLogRoot (van de configuratie van het cluster) |
+| FabricDataRoot (uit de cluster configuratie) |
+| FabricLogRoot (uit de cluster configuratie) |
 
-| **Antivirus uitgesloten processen** |
+| **Uitgesloten processen van anti virus** |
 | --- |
-| Fabric.exe |
-| FabricHost.exe |
-| FabricInstallerService.exe |
-| FabricSetup.exe |
-| FabricDeployer.exe |
-| ImageBuilder.exe |
-| FabricGateway.exe |
-| FabricDCA.exe |
-| FabricFAS.exe |
-| FabricUOS.exe |
-| FabricRM.exe |
-| FileStoreService.exe |
+| Fabric. exe |
+| FabricHost. exe |
+| FabricInstallerService. exe |
+| FabricSetup. exe |
+| FabricDeployer. exe |
+| ImageBuilder. exe |
+| FabricGateway. exe |
+| FabricDCA. exe |
+| FabricFAS. exe |
+| FabricUOS. exe |
+| FabricRM. exe |
+| File Store service. exe |
  
 ### <a name="how-can-my-application-authenticate-to-keyvault-to-get-secrets"></a>Hoe kan mijn toepassing worden geverifieerd bij de sleutel kluis om geheimen te verkrijgen?
 Als uw toepassing referenties voor verificatie bij de sleutel kluis heeft, kunt u het volgende doen:

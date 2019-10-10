@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/23/2019
+ms.date: 10/08/2019
 ms.author: mlottner
-ms.openlocfilehash: bb6a975d2a2fc2cc3e65fa8969f8b005be8b1417
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 128265cd3e69cd27bab6538c9eb376410439824d
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71299704"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72176667"
 ---
 # <a name="deploy-a-security-module-on-your-iot-edge-device"></a>Een beveiligings module op uw IoT Edge-apparaat implementeren
 
@@ -48,7 +48,7 @@ Gebruik de volgende stappen om een Azure Security Center voor de IoT-beveiliging
     - Controleer of controle actief is door de volgende opdracht uit te voeren: 
    
     `sudo systemctl status auditd`<br>
-    - Het verwachte antwoord is:`active (running)` 
+    - Het verwachte antwoord is: `active (running)` 
         
 
 ### <a name="deployment-using-azure-portal"></a>Implementatie met behulp van Azure Portal
@@ -66,11 +66,11 @@ Gebruik de volgende stappen om een Azure Security Center voor de IoT-beveiliging
     >[!Note] 
     >Als u **implementeren op schaal**hebt geselecteerd, voegt u de naam van het apparaat en de details toe voordat u doorgaat met het tabblad **modules toevoegen** in de volgende instructies.     
 
-Er zijn drie stappen voor het maken van een IoT Edge implementatie voor Azure Security Center voor IoT. De volgende secties helpen bij elkaar. 
+Er zijn drie stappen voor het maken van een IoT Edge implementatie voor Azure Security Center voor IoT. In de volgende secties wordt elke stap uitgelegd. 
 
-#### <a name="step-1-add-modules"></a>Stap 1: Modules toevoegen
+#### <a name="step-1-add-modules"></a>Stap 1: modules toevoegen
 
-1. Klik op het tabblad **implementatie modules** van het gedeelte **modules toevoegen** op **AzureSecurityCenterforIoT**. 
+1. Klik op het tabblad **modules toevoegen** , gebied **implementatie modules** , op de optie **configureren** voor **AzureSecurityCenterforIoT**. 
    
 1. Wijzig de **naam** in **azureiotsecurity**.
 1. Wijzig de **afbeeldings-URI** in **MCR.Microsoft.com/ascforiot/azureiotsecurity:1.0.0**.
@@ -95,10 +95,13 @@ Er zijn drie stappen voor het maken van een IoT Edge implementatie voor Azure Se
 1. Controleer of **set de gewenste eigenschappen van de module** configureren is geselecteerd en wijzig het configuratie object in:
       
     ``` json
-    "desired": {
-        "ms_iotn:urn_azureiot_Security_SecurityAgentConfiguration": {
-          } 
-        }
+    { 
+       "properties.desired":{ 
+      "ms_iotn:urn_azureiot_Security_SecurityAgentConfiguration":{ 
+
+          }
+       }
+    }
     ```
 
 1. Klik op **Opslaan**.
@@ -110,33 +113,44 @@ Er zijn drie stappen voor het maken van een IoT Edge implementatie voor Azure Se
          
     ``` json
     { 
-    "HostConfig":{
-                    "PortBindings":{
-                    "8883/tcp": [{"HostPort": "8883"}],
-                    "443/tcp": [{"HostPort": "443"}],
-                    "5671/tcp": [{"HostPort": "5671"}]
-                    }
-        }
+       "HostConfig":{ 
+          "PortBindings":{ 
+             "8883/tcp":[ 
+                { 
+                   "HostPort":"8883"
+                }
+             ],
+             "443/tcp":[ 
+                { 
+                   "HostPort":"443"
+                }
+             ],
+             "5671/tcp":[ 
+                { 
+                   "HostPort":"5671"
+                }
+             ]
+          }
+       }
     }
     ```
 1. Klik op **Opslaan**.
    
 1. Klik op **Volgende**.
 
-#### <a name="step-2-specify-routes"></a>Stap 2: Routes opgeven 
+#### <a name="step-2-specify-routes"></a>Stap 2: routes opgeven 
 
-1. Controleer op het tabblad **routes opgeven** of u een route (expliciet of impliciet) hebt waarmee berichten vanuit de **azureiotsecurity** -module worden doorgestuurd naar **$upstream**. 
-1. Klik op **Volgende**.
+1. Controleer op het tabblad **routes opgeven** of u een route (expliciet of impliciet) hebt waarmee berichten vanuit de **azureiotsecurity** -module worden doorgestuurd naar **$upstream** volgens de volgende voor beelden, en klik vervolgens op **volgende**. 
 
-    ~~~Default implicit route
-    "route": "FROM /messages/* INTO $upstream" 
-    ~~~
+~~~Default implicit route
+"route": "FROM /messages/* INTO $upstream" 
+~~~
 
-    ~~~Explicit route
-    "ASCForIoTRoute": "FROM /messages/modules/azureiotsecurity/* INTO $upstream"
-    ~~~
+~~~Explicit route
+"ASCForIoTRoute": "FROM /messages/modules/azureiotsecurity/* INTO $upstream"
+~~~
 
-#### <a name="step-3-review-deployment"></a>Stap 3: Implementatie bekijken
+#### <a name="step-3-review-deployment"></a>Stap 3: de implementatie controleren
 
 - Controleer uw implementatie gegevens op het tabblad beoordeling van de **implementatie** en selecteer vervolgens **verzenden** om de implementatie te volt ooien.
 
@@ -152,7 +166,7 @@ Als er een probleem optreedt, zijn container Logboeken de beste manier om meer t
    
 1. Controleer of de volgende containers worden uitgevoerd:
    
-   | Name | BITMAPAFBEELDING |
+   | Naam | BITMAPAFBEELDING |
    | --- | --- |
    | azureiotsecurity | mcr.microsoft.com/ascforiot/azureiotsecurity:1.0.0 |
    | edgeHub | mcr.microsoft.com/azureiotedge-hub:1.0.9-rc2 |
@@ -166,7 +180,7 @@ Als er een probleem optreedt, zijn container Logboeken de beste manier om meer t
 
    `sudo docker logs azureiotsecurity`
    
-1. Voor uitgebreidere logboeken voegt u de volgende omgevings variabele toe aan de implementatie van `logLevel=Debug`de azureiotsecurity-module:.
+1. Voor uitgebreidere logboeken voegt u de volgende omgevings variabele toe aan de implementatie van de **azureiotsecurity** -module: `logLevel=Debug`.
 
 ## <a name="next-steps"></a>Volgende stappen
 

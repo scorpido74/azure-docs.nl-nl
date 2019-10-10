@@ -29,8 +29,8 @@ Alleen voor algemeen gebruik v2-opslag accounts bieden ondersteuning voor GZRS e
 
 GZRS en RA-GZRS zijn momenteel beschikbaar als preview-versie in de volgende regio's:
 
-- Europa - noord
-- Europa - west
+- Europa (noord)
+- Europa (west)
 - US - oost
 - US - oost 2
 - US - centraal
@@ -49,7 +49,7 @@ Wanneer gegevens worden geschreven naar een opslag account waarvoor GZRS of RA-G
 > [!IMPORTANT]
 > Asynchrone replicatie vergt een vertraging tussen de tijd dat gegevens naar de primaire regio worden geschreven en wanneer deze naar de secundaire regio worden gerepliceerd. In het geval van een regionale ramp kunnen wijzigingen die nog niet zijn gerepliceerd naar de secundaire regio, verloren gaan als de gegevens niet kunnen worden hersteld vanuit de primaire regio.
 
-Wanneer u een opslag account maakt, geeft u op hoe gegevens in dat account moeten worden gerepliceerd en geeft u ook de primaire regio voor dat account op. De gekoppelde secundaire regio voor een geo-gerepliceerd account wordt bepaald op basis van de primaire regio en kan niet worden gewijzigd. Zie [Business continuïteit en herstel na nood gevallen (BCDR) voor actuele informatie over regio's die door Azure worden ondersteund. Gekoppelde Azure-regio's @ no__t-0. Zie [een opslag account maken](storage-quickstart-create-account.md)voor meer informatie over het maken van een opslag account met behulp van GZRS of Ra-GZRS.
+Wanneer u een opslag account maakt, geeft u op hoe gegevens in dat account moeten worden gerepliceerd en geeft u ook de primaire regio voor dat account op. De gekoppelde secundaire regio voor een geo-gerepliceerd account wordt bepaald op basis van de primaire regio en kan niet worden gewijzigd. Zie [bedrijfs continuïteit en herstel na nood gevallen (BCDR): gekoppelde Azure-regio's](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)voor actuele informatie over regio's die door Azure worden ondersteund. Zie [een opslag account maken](storage-quickstart-create-account.md)voor meer informatie over het maken van een opslag account met behulp van GZRS of Ra-GZRS.
 
 ### <a name="use-ra-gzrs-for-high-availability"></a>RA-GZRS gebruiken voor hoge Beschik baarheid
 
@@ -135,14 +135,14 @@ Als u een Live migratie wilt aanvragen, gebruikt u de [Azure Portal](https://ms.
 
 1. Selecteer een **nieuwe ondersteunings aanvraag**.
 2. Voltooi de basis **beginselen** op basis van uw account gegevens. Selecteer in de sectie **service** **opslag account beheer** en geef het account op dat moet worden gemigreerd.
-3. Selecteer **Volgende**.
+3. Selecteer **Next**.
 4. Geef de volgende waarden op voor het **probleem** gedeelte:
-    - **Ernst**: De standaard waarde ongewijzigd laten.
-    - **Probleem type**: Selecteer **gegevens migratie**.
+    - **Ernst**: behoud de standaard waarde in.
+    - **Probleem type**: **gegevens migratie**selecteren.
     - **Categorie**: Selecteer **migreren naar (RA) GZRS binnen een regio**.
-    - **Title**: Typ een beschrijvende titel, bijvoorbeeld **(RA-) GZRS-account migratie**.
-    - **Details**: Typ meer details in het vak **Details** , bijvoorbeeld ' Ik wil migreren naar GZRS van [LRS, GRS] in de regio \_ @ no__t-2 '. of "Ik wil graag migreren naar RA-GZRS van [LRS, RA-GRS] in de regio \_ @ no__t-1."
-5. Selecteer **Volgende**.
+    - **Titel**: Typ een beschrijvende titel, bijvoorbeeld **(RA-) GZRS-account migratie**.
+    - **Details**: Typ meer details in het vak **Details** , bijvoorbeeld ' Ik wil migreren naar GZRS van [LRS, GRS] in de regio \_ @ no__t-3 '. of "Ik wil graag migreren naar RA-GZRS van [LRS, RA-GRS] in de regio \_ @ no__t-1."
+5. Selecteer **Next**.
 6. Controleer of de contact gegevens juist zijn op de Blade **contact gegevens** .
 7. Selecteer **Maken**.
 
@@ -151,5 +151,5 @@ Een ondersteunings medewerker neemt contact met u op om hulp te bieden.
 ## <a name="see-also"></a>Zie ook
 
 - [Azure Storage-replicatie](https://docs.microsoft.com/azure/storage/common/storage-redundancy)
-- [Locally redundante opslag (LRS): Lage kosten voor gegevens redundantie voor Azure Storage @ no__t-0
-- [Zone-redundante opslag (ZRS): Maxi maal beschik bare Azure Storage toepassingen @ no__t-0 
+- [Lokaal redundante opslag (LRS): lage kosten voor gegevens redundantie voor Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs)
+- [Zone-redundante opslag (ZRS): Maxi maal beschik bare Azure Storage toepassingen](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs) 

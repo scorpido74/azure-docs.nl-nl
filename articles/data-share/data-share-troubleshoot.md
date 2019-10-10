@@ -1,18 +1,18 @@
 ---
 title: Problemen met Azure data share preview oplossen
-description: Meer informatie over het oplossen van problemen met Azure data share preview
+description: Meer informatie over het oplossen van problemen met uitnodigingen en fouten bij het maken of ontvangen van gegevens shares met de preview-versie van Azure data share.
 services: data-share
 author: joannapea
 ms.author: joanpo
 ms.service: data-share
 ms.topic: troubleshooting
 ms.date: 07/10/2019
-ms.openlocfilehash: 62b386f4648074bbf1f002e162151253e5b43bc9
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: 592a2d464aed8c39dfd11734beccbd0399d75fd9
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71320295"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72169232"
 ---
 # <a name="troubleshoot-common-issues-in-azure-data-share-preview"></a>Veelvoorkomende problemen in azure data share preview oplossen
 
@@ -41,9 +41,9 @@ Als u nog steeds geen uitnodiging voor gegevens delen kunt zien, neemt u contact
 
 ## <a name="error-when-creating-or-receiving-a-new-data-share"></a>Fout bij het maken of ontvangen van een nieuwe gegevens share
 
-Optreedt De bewerking heeft een ongeldige status code onjuiste aanvraag
+' Fout: de bewerking heeft een ongeldige status code ' onjuiste aanvraag ' geretourneerd
 
-Optreedt AuthorizationFailed"
+"Fout: AuthorizationFailed"
 
 "Fout: roltoewijzing aan opslag account"
 

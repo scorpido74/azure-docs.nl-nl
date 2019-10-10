@@ -17,12 +17,12 @@ ms.author: abpati
 ms.custom: aaddev
 ms.openlocfilehash: 85a1de992be7b5bbdcec8fd415f60ae10190c11a
 ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/09/2019
 ms.locfileid: "72170046"
 ---
-# <a name="quickstart-add-sign-in-with-microsoft-to-a-python-web-app"></a>Quickstart: Aanmelden met micro soft toevoegen aan een Python-web-app
+# <a name="quickstart-add-sign-in-with-microsoft-to-a-python-web-app"></a>Snelstartgids: aanmelden toevoegen met micro soft aan een Python-web-app
 
 [!INCLUDE [active-directory-develop-applies-v2](../../../includes/active-directory-develop-applies-v2.md)]
 
@@ -47,21 +47,21 @@ Als u dit voor beeld wilt uitvoeren, hebt u het volgende nodig:
 >
 > U hebt twee opties om uw Quick Start-toepassing te starten: Express (optie 1) en hand matig (optie 2)
 >
-> ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>Optie 1: registreer de toepassing en laat deze automatisch configureren. Download vervolgens het codevoorbeeld
+> ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>Optie 1: de app registreren en automatisch configureren, en vervolgens de voorbeeldcode downloaden
 >
 > 1. Ga naar de [Azure Portal-app-registraties](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps).
 > 1. Selecteer **nieuwe registratie**.
 > 1. Voer een naam in voor de toepassing en selecteer **Registreren**.
 > 1. Volg de instructies om uw nieuwe toepassing te downloaden en automatisch te configureren.
 >
-> ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>Optie 2: registreer de toepassing en configureer handmatig de toepassing en het codevoorbeeld
+> ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>Optie 2: de toepassing en voorbeeldcode registreren en handmatig configureren
 >
 > #### <a name="step-1-register-your-application"></a>Stap 1: Uw toepassing registreren
 >
 > Volg deze stappen om de toepassing te registreren en de registratiegegevens van de app handmatig toe te voegen aan uw oplossing:
 >
 > 1. Meld u bij de [Azure-portal](https://portal.azure.com) aan met een werk- of schoolaccount of een persoonlijk Microsoft-account.
-> 1. Als u via uw account toegang hebt tot meer dan één tenant, selecteert u uw account in de rechterbovenhoek en stelt u de portalsessie in op de gewenste Azure Active Directory-tenant.
+> 1. Als u via uw account toegang tot meer dan één tenant hebt, selecteert u uw account in de rechterbovenhoek en stelt u uw portalsessie in op de gewenste Azure Active Directory-tenant.
 > 1. Navigeer naar de pagina micro soft-identiteits platform voor ontwikkel aars [app-registraties](https://go.microsoft.com/fwlink/?linkid=2083908) .
 > 1. Selecteer **nieuwe registratie**.
 > 1. Wanneer de pagina **Een toepassing registreren** verschijnt, voert u de registratiegegevens van de toepassing in:
@@ -78,7 +78,7 @@ Als u dit voor beeld wilt uitvoeren, hebt u het volgende nodig:
 >
 > [!div class="sxs-lookup" renderon="portal"]
 >
-> #### <a name="step-1-configure-your-application-in-azure-portal"></a>Stap 1: uw toepassing configureren in Azure Portal
+> #### <a name="step-1-configure-your-application-in-azure-portal"></a>Stap 1: Uw toepassing configureren in Azure Portal
 >
 > Het code voorbeeld voor deze Quick Start werkt alleen als u:
 >
@@ -90,11 +90,11 @@ Als u dit voor beeld wilt uitvoeren, hebt u het volgende nodig:
 > > [!div id="appconfigured" class="alert alert-info"]
 > > ![Al geconfigureerd](media/quickstart-v2-aspnet-webapp/green-check.png) Uw toepassing is al geconfigureerd met dit kenmerk
 
-#### <a name="step-2-download-your-project"></a>Stap 2: uw project downloaden
+#### <a name="step-2-download-your-project"></a>Stap 2: Uw project downloaden
 
 [Het code voorbeeld downloaden](https://github.com/Azure-Samples/ms-identity-python-webapp/archive/master.zip)
 
-#### <a name="step-3-configure-the-application"></a>Stap 3: De toepassing configureren
+#### <a name="step-3-configure-the-application"></a>Stap 3: de toepassing configureren
 
 1. Pak het zip-bestand uit in een lokale map dichter bij de hoofdmap (bijvoorbeeld **C:\Azure-Samples**)
 1. Als u een Integrated Development Environment gebruikt, opent u het voor beeld in uw favoriete IDE (optioneel).
@@ -111,7 +111,7 @@ CLIENT_ID = "Enter_the_Application_Id_here"
 > - `Enter_the_Application_Id_here`: de toepassings-id voor de toepassing die u hebt geregistreerd.
 > - `Enter_the_Client_Secret_Here`-is het **client geheim** dat u hebt gemaakt in **Certificaten & geheimen** voor de toepassing die u hebt geregistreerd.
 
-#### <a name="step-4-run-the-code-sample"></a>Stap 4: Het code voorbeeld uitvoeren
+#### <a name="step-4-run-the-code-sample"></a>Stap 4: het code voorbeeld uitvoeren
 
 1. U moet de MSAL python-bibliotheek installeren, kolf Framework, kolf-sessies voor sessie beheer aan de server zijde en aanvragen met behulp van PIP als volgt:
 
@@ -130,6 +130,6 @@ CLIENT_ID = "Enter_the_Application_Id_here"
 Meer informatie over web-apps waarmee gebruikers zich kunnen aanmelden en die web-Api's aanroept:
 
 > [!div class="nextstepaction"]
-> [Scenario: Web-apps die zich aanmelden bij gebruikers @ no__t-0
+> [Scenario: Web-apps waarmee gebruikers zich aanmelden](scenario-web-app-sign-user-overview.md)
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]

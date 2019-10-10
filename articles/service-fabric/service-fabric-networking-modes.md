@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
-ms.author: subramar
-ms.openlocfilehash: d749e1355e69ad93c8c211474043f88127ec76f0
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.author: atsenthi
+ms.openlocfilehash: aa7b63453a5147742e27b9bb32ad05221e745f8c
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599382"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72168794"
 ---
 # <a name="service-fabric-container-networking-modes"></a>Service Fabric container netwerk modi
 
@@ -202,15 +202,15 @@ Wanneer een container service opnieuw wordt gestart of naar een ander knoop punt
 
    |Instelling |Waarde | |
    | --- | --- | --- |
-   |Priority |2000 | |
-   |Name |Custom_Dns  | |
-   |Source |VirtualNetwork | |
+   |Prioriteit |2000 | |
+   |Naam |Custom_Dns  | |
+   |Bron |VirtualNetwork | |
    |Bestemming | VirtualNetwork | |
    |Service | DNS (UDP/53) | |
-   |Action | Allow  | |
+   |Bewerking | Toestaan  | |
    | | |
 
-4. Geef de netwerk modus op in het manifest van de toepassing voor `<NetworkConfig NetworkType="Open">`elke service:. De **Open** -netwerk modus resulteert in de service die een toegewezen IP-adres krijgt. Als er geen modus is opgegeven, wordt de standaard waarde **NAT** modus voor de service gebruikt. In het volgende voor beeld van een `NodeContainerServicePackage1` manifest `NodeContainerServicePackage2` kunnen de-en-services elk Luis teren op dezelfde poort ( `Endpoint1`beide services Luis teren). Wanneer de open-netwerk modus is `PortBinding` opgegeven, kunnen er geen configuraties worden opgegeven.
+4. Geef de netwerk modus op in het manifest van de toepassing voor elke service: `<NetworkConfig NetworkType="Open">`. De **Open** -netwerk modus resulteert in de service die een toegewezen IP-adres krijgt. Als er geen modus is opgegeven, wordt de standaard waarde **NAT** modus voor de service gebruikt. In het volgende voor beeld van een manifest kunnen de `NodeContainerServicePackage1`-en `NodeContainerServicePackage2`-services elk Luis teren op dezelfde poort (beide services Luis teren op `Endpoint1`). Wanneer de open-netwerk modus is opgegeven, kunnen `PortBinding` configuraties niet worden opgegeven.
 
     ```xml
     <?xml version="1.0" encoding="UTF-8"?>

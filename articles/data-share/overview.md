@@ -1,17 +1,17 @@
 ---
 title: Wat is Azure data share preview?
-description: Een overzicht van de preview-versie van Azure data share
+description: Meer informatie over het eenvoudig en veilig delen van gegevens met meerdere klanten en partners met behulp van de preview-versie van Azure data share.
 author: joannapea
+ms.author: joanpo
 ms.service: data-share
 ms.topic: overview
 ms.date: 07/10/2019
-ms.author: joanpo
-ms.openlocfilehash: 11f32b1f1349ef0f9826f95832648e6949cc2f8c
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: 6ba6e9df7b3fd2992891f4b085581c51fe900744
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68421401"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72169077"
 ---
 # <a name="what-is-azure-data-share-preview"></a>Wat is Azure Data Share Preview?
 
@@ -35,7 +35,7 @@ Azure data share kan ook worden gebruikt om een gegevens Marketplace te maken vo
 
 Een ander gebruiks voorbeeld voor een Azure-gegevens share is het maken van een Data consortium. Een aantal verschillende onderzoek instituten kan bijvoorbeeld gegevens delen met één vertrouwde hoofd tekst. Gegevens worden geanalyseerd, geaggregeerd of verwerkt met behulp van Azure Analytics-hulpprogram ma's en vervolgens gedeeld met de betrokken partijen. 
 
-## <a name="how-it-works"></a>Hoe werkt het?
+## <a name="how-it-works"></a>Het werkt als volgt
 
 Azure data share maakt gebruik van een methode voor het delen op basis van moment opnamen, waarbij gegevens worden verplaatst van het Azure-abonnement en de lands van de gegevens provider in het Azure-abonnement van de gegevens consument. Als gegevens provider kunt u een gegevens share inrichten en ontvangers uitnodigen voor de gegevens share. Gegevens gebruikers ontvangen via e-mail een uitnodiging voor uw gegevens share. Zodra een gegevens verbruiker de uitnodiging heeft geaccepteerd, kunnen ze een volledige moment opname activeren van de gegevens die u hebt gedeeld. Deze gegevens worden ontvangen in het opslag account van de data consumers. Gegevens gebruikers kunnen regel matige, incrementele updates ontvangen van de gegevens die met hen worden gedeeld, zodat ze altijd over de meest recente versie van de gegevens beschikken. 
 

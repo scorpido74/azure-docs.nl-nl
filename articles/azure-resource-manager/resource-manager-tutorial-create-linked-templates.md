@@ -20,16 +20,16 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 10/09/2019
 ms.locfileid: "72169416"
 ---
-# <a name="tutorial-create-linked-azure-resource-manager-templates"></a>Zelfstudie: Gekoppelde Azure Resource Manager-sjablonen maken
+# <a name="tutorial-create-linked-azure-resource-manager-templates"></a>Zelfstudie: Azure Resource Manager-sjablonen maken
 
-Informatie over het maken van gekoppelde Azure Resource Manager-sjablonen. Met gekoppelde sjablonen kunt u een sjabloon een andere sjabloon laten aanroepen. Dit is handig om sjablonen te modulariseren. In deze zelfstudie gebruikt u dezelfde sjabloon als in [Zelfstudie: Azure Resource Manager-sjablonen maken met afhankelijke resources](./resource-manager-tutorial-create-templates-with-dependent-resources.md) voor het maken van een virtuele machine, een virtueel netwerk en andere afhankelijke resources, waaronder een opslagaccount. U verplaatst de gemaakte resource van het opslagaccount naar een gekoppelde sjabloon.
+Informatie over het maken van gekoppelde Azure Resource Manager-sjablonen. Met gekoppelde sjablonen kunt u een sjabloon een andere sjabloon laten aanroepen. Dit is handig om sjablonen te modulariseren. In deze zelf studie gebruikt u dezelfde sjabloon die wordt gebruikt in de [zelf studie: maak Azure Resource Manager sjablonen met afhankelijke resources](./resource-manager-tutorial-create-templates-with-dependent-resources.md), waarmee u een virtuele machine, een virtueel netwerk en een andere afhankelijke resource met inbegrip van een opslag account maakt. U verplaatst de gemaakte resource van het opslagaccount naar een gekoppelde sjabloon.
 
 Het aanroepen van een gekoppelde sjabloon is vergelijkbaar met het maken van een functie aanroep.  U leert ook hoe u parameter waarden kunt door geven aan de gekoppelde sjabloon en hoe u retour waarden ophaalt uit de gekoppelde sjabloon.
 
 Deze zelfstudie bestaat uit de volgende taken:
 
 > [!div class="checklist"]
-> * Een quickstartsjabloon openen
+> * Een snelstartsjabloon openen
 > * De gekoppelde sjabloon maken
 > * De gekoppelde sjabloon uploaden
 > * Koppeling maken met de gekoppelde sjabloon
@@ -57,7 +57,7 @@ Als u dit artikel wilt voltooien, hebt u het volgende nodig:
 
 ## <a name="open-a-quickstart-template"></a>Een snelstartsjabloon openen
 
-Azure-snelstartsjablonen is een opslagplaats voor Resource Manager-sjablonen. In plaats van een sjabloon helemaal vanaf de basis te maken, kunt u een voorbeeldsjabloon zoeken en aanpassen. De sjabloon die in deze zelfstudie wordt gebruikt, heet [Deploy a simple Windows VM](https://azure.microsoft.com/resources/templates/101-vm-simple-windows/) (Een eenvoudige Windows-VM implementeren). Dit is dezelfde sjabloon als de sjabloon die u hebt gebruikt in [Zelfstudie: Azure Resource Manager-sjablonen met afhankelijke resources maken](./resource-manager-tutorial-create-templates-with-dependent-resources.md). U slaat twee kopieën op van dezelfde sjabloon. Deze worden gebruikt als:
+Azure-snelstartsjablonen is een opslagplaats voor Resource Manager-sjablonen. In plaats van een sjabloon helemaal vanaf de basis te maken, kunt u een voorbeeldsjabloon zoeken en aanpassen. De sjabloon die in deze zelfstudie wordt gebruikt, heet [Deploy a simple Windows VM](https://azure.microsoft.com/resources/templates/101-vm-simple-windows/) (Een eenvoudige Windows-VM implementeren). Dit is dezelfde sjabloon die wordt gebruikt in de [zelf studie: maak Azure Resource Manager sjablonen met afhankelijke resources](./resource-manager-tutorial-create-templates-with-dependent-resources.md). U slaat twee kopieën op van dezelfde sjabloon. Deze worden gebruikt als:
 
 * **De hoofdsjabloon**: voor het maken van alle resources, met uitzondering van het opslagaccount.
 * **De gekoppelde sjabloon**: voor het maken van het opslagaccount.
@@ -166,7 +166,7 @@ De gekoppelde sjabloon maakt een opslagaccount. De gekoppelde sjabloon kan worde
 
 ## <a name="upload-the-linked-template"></a>De gekoppelde sjabloon uploaden
 
-De hoofdsjabloon en de gekoppelde sjabloon moeten toegankelijk zijn vanaf de locatie waar u de implementatie uitvoert. In deze zelfstudie gebruikt u de implementatiemethode van Cloud Shell die u hebt gebruikt in [Zelfstudie: Azure Resource Manager-sjablonen met afhankelijke resources maken](./resource-manager-tutorial-create-templates-with-dependent-resources.md). De hoofdsjabloon (azuredeploy.json)-sjabloon is geüpload naar de shell. De gekoppelde sjabloon (linkedTemplate.json) moet ergens veilig worden gedeeld. Met het volgende PowerShell-script wordt een Azure Storage-account gemaakt, de sjabloon geüpload naar het Storage-account, en vervolgens een SAS-token voor beperkte toegang tot het sjabloonbestand gegenereerd. Om de zelf studie te vereenvoudigen, downloadt het script een voltooide gekoppelde sjabloon uit een github-opslag plaats. Als u de gekoppelde sjabloon die u hebt gemaakt, wilt gebruiken, kunt u de gekoppelde sjabloon uploaden met [Cloud Shell](https://shell.azure.com) en vervolgens het script zo aanpassen dat uw eigen gekoppelde sjabloon wordt gebruikt.
+De hoofdsjabloon en de gekoppelde sjabloon moeten toegankelijk zijn vanaf de locatie waar u de implementatie uitvoert. In deze zelf studie gebruikt u de implementatie methode Cloud shell zoals u in de [zelf studie hebt gebruikt: Azure Resource Manager sjablonen met afhankelijke resources maken](./resource-manager-tutorial-create-templates-with-dependent-resources.md). De hoofdsjabloon (azuredeploy.json)-sjabloon is geüpload naar de shell. De gekoppelde sjabloon (linkedTemplate.json) moet ergens veilig worden gedeeld. Met het volgende PowerShell-script wordt een Azure Storage-account gemaakt, de sjabloon geüpload naar het Storage-account, en vervolgens een SAS-token voor beperkte toegang tot het sjabloonbestand gegenereerd. Om de zelf studie te vereenvoudigen, downloadt het script een voltooide gekoppelde sjabloon uit een github-opslag plaats. Als u de gekoppelde sjabloon die u hebt gemaakt, wilt gebruiken, kunt u de gekoppelde sjabloon uploaden met [Cloud Shell](https://shell.azure.com) en vervolgens het script zo aanpassen dat uw eigen gekoppelde sjabloon wordt gebruikt.
 
 > [!NOTE]
 > De geldigheidsduur van het SAS-token wordt met het script beperkt tot acht uur. Als u meer tijd nodig hebt om deze zelfstudie te voltooien, verhoogt u de verlooptijd.
@@ -281,7 +281,7 @@ De hoofdsjabloon heet azuredeploy.json.
 
 ## <a name="configure-dependency"></a>Afhankelijkheid configureren
 
-Zoals u weet uit [Zelfstudie: Azure Resource Manager-sjablonen met afhankelijke resources maken](./resource-manager-tutorial-create-templates-with-dependent-resources.md), is de VM-resource afhankelijk van het opslagaccount:
+Intrekken uit [zelf studie: maak Azure Resource Manager sjablonen met afhankelijke resources](./resource-manager-tutorial-create-templates-with-dependent-resources.md), de virtuele-machine resource is afhankelijk van het opslag account:
 
 ![Afhankelijkheidsdiagram van Azure Resource Manager-sjablonen](./media/resource-manager-tutorial-create-linked-templates/resource-manager-template-visual-studio-code-dependency-diagram.png)
 

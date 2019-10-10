@@ -1,5 +1,5 @@
 ---
-title: 'Quickstart: Een miniatuur maken - REST, cURL'
+title: 'Snelstart: Een miniatuur genereren - REST, cURL'
 titleSuffix: Azure Cognitive Services
 description: In deze snelstart maakt u een miniatuur van een afbeelding met behulp van de Computer Vision-API en cURL.
 services: cognitive-services
@@ -11,14 +11,14 @@ ms.topic: quickstart
 ms.date: 07/03/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 0d430f7c9a6e9d59b20cd1420b65f70d9c6994d5
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 350bc95e08aa994e4cb70db6bf1f08d53bbec5a3
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70141439"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177288"
 ---
-# <a name="quickstart-generate-a-thumbnail-using-the-computer-vision-rest-api-and-curl"></a>Quickstart: Een miniatuur genereren met behulp van de Computer Vision REST API en krul
+# <a name="quickstart-generate-a-thumbnail-using-the-computer-vision-rest-api-and-curl"></a>Quick Start: een miniatuur genereren met behulp van de Computer Vision REST API en krul
 
 In deze Quick Start genereert u een miniatuur van een afbeelding met behulp van de REST API van Computer Vision. U geeft de gewenste hoogte en breedte op. deze kunnen verschillen van het aspect rantsoen van de invoer afbeelding. Computer Vision maakt gebruik van slimme bijsnijding om het interesse gebied op intelligente wijze te identificeren en om de coördinaten rond die regio te genereren.
 
@@ -31,14 +31,14 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 ## <a name="get-thumbnail-request"></a>Get Thumbnail-aanvraag
 
-Met de methode [Get Thumbnail](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fb) kunt u een miniatuur van een afbeelding genereren.
+Met de methode [Get Thumbnail](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fb) (miniatuur ophalen) kunt u een miniatuur van een afbeelding genereren.
 
 U kunt het voorbeeld uitvoeren aan de hand van de volgende stappen:
 
 1. Kopieer de volgende code in een editor.
 1. Vervang `<Subscription Key>` door uw geldige abonnementssleutel.
 1. Vervang `<File>` door het pad en de bestandsnaam waar de miniatuur moet worden opgeslagen.
-1. Wijzig zo nodig aanvraag-URL (`https://westcentralus.api.cognitive.microsoft.com/vision/v2.0`) in de locatie waar u de abonnementssleutels hebt verkregen.
+1. Wijzig zo nodig aanvraag-URL (`https://westcentralus.api.cognitive.microsoft.com/vision/v2.1`) in de locatie waar u de abonnementssleutels hebt verkregen.
 1. Wijzig eventueel de te analyseren afbeelding (`{\"url\":\"...`).
 1. Open een opdrachtvenster op een computer waarop cURL is geïnstalleerd.
 1. Plak de code in het venster en voer de opdracht uit.
@@ -54,14 +54,14 @@ U kunt het voorbeeld maken en uitvoeren aan de hand van de volgende stappen:
 1. Breng waar nodig de volgende wijzigingen in de opdracht aan:
     1. Vervang de waarde van `<subscriptionKey>` door uw abonnementssleutel.
     1. Vervang de waarde van `<thumbnailFile>` door het pad en de naam van het bestand waarin u de miniatuur opslaat.
-    1. Vervang het eerste deel van de aanvraag-URL`westcentralus`() door de tekst in uw eigen eind punt-URL.
+    1. Vervang het eerste deel van de aanvraag-URL (`westcentralus`) door de tekst in uw eigen eind punt-URL.
         [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
     1. Wijzig eventueel de afbeeldings-URL in de aanvraagtekst (`https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Shorkie_Poo_Puppy.jpg/1280px-Shorkie_Poo_Puppy.jpg\`) in een URL van een andere afbeelding van waaruit u de miniatuur genereert.
 1. Open een opdrachtpromptvenster.
 1. Plak de opdracht van de teksteditor in het opdrachtpromptvenster en voer de opdracht uit.
 
     ```bash
-    curl -H "Ocp-Apim-Subscription-Key: <subscriptionKey>" -o <thumbnailFile> -H "Content-Type: application/json" "https://westcentralus.api.cognitive.microsoft.com/vision/v2.0/generateThumbnail?width=100&height=100&smartCropping=true" -d "{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Shorkie_Poo_Puppy.jpg/1280px-Shorkie_Poo_Puppy.jpg\"}"
+    curl -H "Ocp-Apim-Subscription-Key: <subscriptionKey>" -o <thumbnailFile> -H "Content-Type: application/json" "https://westcentralus.api.cognitive.microsoft.com/vision/v2.1/generateThumbnail?width=100&height=100&smartCropping=true" -d "{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Shorkie_Poo_Puppy.jpg/1280px-Shorkie_Poo_Puppy.jpg\"}"
     ```
 
 ## <a name="examine-the-response"></a>Het antwoord bekijken

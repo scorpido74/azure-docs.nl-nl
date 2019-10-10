@@ -1,23 +1,27 @@
 ---
-title: Start uw lente-Cloud toepassing vanuit de bron code
+title: 'Snelstartgids: uw lente-Cloud toepassing vanuit de bron code starten'
 description: Meer informatie over hoe u uw Azure lente-Cloud toepassing rechtstreeks vanuit uw bron code kunt starten
 author: jpconnock
 ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 9/27/2019
 ms.author: jeconnoc
-ms.openlocfilehash: a161b38ab6d23ad86df1ef7e843640276ba486bf
-ms.sourcegitcommit: d773b5743cb54b8cbcfa5c5e4d21d5b45a58b081
+ms.openlocfilehash: 445cac1494828362d54a8c15e68d27f01b165841
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72038806"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72170537"
 ---
 # <a name="launch-your-spring-cloud-application-from-source-code"></a>Start uw lente-Cloud toepassing vanuit de bron code
 
 Met Azure lente Cloud kunt u uw toepassing rechtstreeks starten vanuit uw Java-bron code of van een vooraf gebouwde JAR. Dit artikel begeleidt u stapsgewijs door de vereiste stappen.
 
-## <a name="initial-requirements"></a>Eerste vereisten
+## <a name="prerequisites"></a>Vereisten
+
+>[!Note]
+> Zorg ervoor dat uw Azure-abonnement toegang heeft tot de Azure lente-Cloud voordat u begint met deze Snelstartgids.  Als preview-service wordt u gevraagd om contact met ons op te nemen zodat we uw abonnement kunnen toevoegen aan onze acceptatie lijst.  [Vul dit formulier](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR-LA2geqX-ZLhi-Ado1LD3tUNDk2VFpGUzYwVEJNVkhLRlcwNkZFUFZEUS4u
+)in als u de mogelijkheden van Azure lente-Cloud wilt verkennen.
 
 Voordat u begint, moet u ervoor zorgen dat uw Azure-abonnement de vereiste afhankelijkheden heeft:
 

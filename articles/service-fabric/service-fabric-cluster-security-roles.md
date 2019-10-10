@@ -52,9 +52,9 @@ Het beheer type voor beheerders toegang heeft volledige toegang tot alle FabricC
 * **RecoverSystemPartitions**: systeem service partities herstellen                             
 
 ### <a name="cluster-operations"></a>Clusterbewerkingen
-* **ProvisionFabric**: Inrichting van MSI en/of cluster manifest                             
+* **ProvisionFabric**: MSI en/of cluster manifest inrichting                             
 * **UpgradeFabric**: cluster upgrades starten                             
-* **UnprovisionFabric**: De inrichting van MSI en/of cluster verwijderen ongedaan maken                         
+* **UnprovisionFabric**: MSI en/of cluster manifest inrichting ongedaan maken                         
 * **MoveNextFabricUpgradeDomain**: cluster upgrades hervatten met een expliciet update domein                             
 * **ReportFabricUpgradeHealth**: cluster upgrades hervatten met de huidige voortgang van de upgrade                             
 * **StartInfrastructureTask**: infrastructuur taken starten                             

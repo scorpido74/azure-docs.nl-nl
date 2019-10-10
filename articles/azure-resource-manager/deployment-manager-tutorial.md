@@ -15,7 +15,7 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 10/09/2019
 ms.locfileid: "72170366"
 ---
-# <a name="tutorial-use-azure-deployment-manager-with-resource-manager-templates-public-preview"></a>Zelfstudie: Azure Deployment Manager gebruiken met Resource Manager-sjablonen (open bare preview)
+# <a name="tutorial-use-azure-deployment-manager-with-resource-manager-templates-public-preview"></a>Zelfstudie: Azure Deployment Manager gebruiken met Resource Manager-sjablonen (openbare preview)
 
 Meer informatie over het gebruik van [Azure Deployment Manager](./deployment-manager-overview.md) om uw toepassingen in meerdere regio's te implementeren. Als u liever een snellere benadering hebt, worden in [Azure Deployment Manager Quick](https://github.com/Azure-Samples/adm-quickstart) start de vereiste configuraties in uw abonnement gemaakt en worden de artefacten aangepast om een toepassing in meerdere regio's te implementeren. De Snelstartgids voert dezelfde taken uit als in deze zelf studie.
 
@@ -44,7 +44,7 @@ Deze zelfstudie bestaat uit de volgende taken:
 Aanvullende bronnen:
 
 * De [Naslag informatie voor Azure Deployment Manager rest API](https://docs.microsoft.com/rest/api/deploymentmanager/).
-* [Zelfstudie: Gebruik status controle in azure Deployment Manager @ no__t-0.
+* [Zelf studie: status controle gebruiken in Azure Deployment Manager](./deployment-manager-tutorial-health-check.md).
 
 Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
@@ -135,7 +135,7 @@ De twee versies (1.0.0.0 en 1.0.0.1) zijn voor de [implementatie van de revisie]
 
 Sjabloonartefacten worden gebruikt door de servicetopologiesjabloon, en binaire artefacten worden gebruikt door de implementatiesjabloon. Zowel de topologiesjabloon als de implementatiesjabloon definieert een Azure-resource met een artefactbron, wat een resource is die wordt gebruikt om Resource Manager te wijzen op de sjabloon en binaire artefacten die in de implementatie worden gebruikt. Ter vereenvoudiging van de zelfstudie wordt één opslagaccount gebruikt voor het opslaan van zowel de sjabloonartefacten als de binaire artefacten. Beide artefactbronnen verwijzen naar hetzelfde opslagaccount.
 
-1. Een Azure-opslagaccount maken. Zie voor instructies [Quickstart: blobs uploaden, downloaden en vermelden met behulp van Azure Portal](../storage/blobs/storage-quickstart-blobs-portal.md).
+1. Een Azure-opslagaccount maken. Zie [Snelstart: Blobs uploaden, downloaden en vermelden met behulp van Azure Portal](../storage/blobs/storage-quickstart-blobs-portal.md) voor instructies.
 2. Maak een blobcontainer in het opslagaccount.
 3. Kopieer de twee mappen (binaire bestanden en sjablonen) en de inhoud van de twee mappen naar de blobcontainer. [Microsoft Azure Storage Explorer](https://go.microsoft.com/fwlink/?LinkId=708343&clcid=0x409) biedt ondersteuning voor slepen en neerzetten.
 4. Haal de SAS-locatie van de container op met behulp van de volgende instructies:
@@ -155,7 +155,7 @@ U moet een door de gebruiker toegewezen beheerde identiteit maken en toegangsbeh
 > [!IMPORTANT]
 > De door de gebruiker toegewezen beheerde identiteit moet zich op dezelfde locatie als de [implementatie](#create-the-rollout-template) bevinden. Momenteel kunnen de Deployment Manager-resources, met inbegrip van de implementatie, alleen worden gemaakt in US - centraal of US - oost 2. Dit geldt echter alleen voor de Deployment Manager-resources (zoals de servicetopologie, services, service-eenheden, implementatie en stappen). De doelresources kunnen worden geïmplementeerd in elke ondersteunde Azure-regio. In deze zelfstudie worden de Deployment Manager-resources bijvoorbeeld geïmplementeerd in US - centraal, maar worden de services geïmplementeerd in US - oost en US - west. Deze beperking wordt in de toekomst opgeheven.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 2. Maak een [door de gebruiker toegewezen beheerde identiteit](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md).
 3. Selecteer in de portal **Abonnementen** in het linkermenu en selecteer vervolgens uw abonnement.
 4. Selecteer **Toegangsbeheer (IAM)** en selecteer vervolgens **Roltoewijzing toevoegen**.
@@ -186,7 +186,7 @@ De sjabloon bevat de volgende parameters:
 
 ### <a name="the-variables"></a>De variabelen
 
-In de sectie met variabelen worden de namen van de resources, de Azure-locaties voor de twee services gedefinieerd: **Service WUS** en **Service EUS**, en de artefactpaden:
+In de sectie met variabelen worden de namen van de resources, de Azure-locaties voor de twee services: **Service WUS** en **Service EUS**, en de artefactpaden gedefinieerd:
 
 ![Topologiesjabloonvariabelen in de zelfstudie over Azure Deployment Manager](./media/deployment-manager-tutorial/azure-deployment-manager-tutorial-topology-template-variables.png)
 
@@ -217,9 +217,9 @@ U maakt een parameterbestand dat wordt gebruikt in combinatie met de topologiesj
 
     * **namePrefix**: voer een tekenreeks met 4-5 tekens in. Dit voorvoegsel wordt gebruikt om voor Azure unieke resourcenamen te maken.
     * **azureResourceLocation**: als u niet bekend bent met Azure-locaties, gebruikt u in deze zelfstudie **centralus**.
-    * **artifactSourceSASLocation**: de SAS-URI naar de hoofdmap (de blobcontainer) waar service-eenheidsjabloon- en parameterbestanden worden opgeslagen voor implementatie.  Zie [De artefacten voorbereiden](#prepare-the-artifacts).
+    * **artifactSourceSASLocation**: voer de SAS-URI naar de hoofdmap (de blobcontainer) waar service-eenheidsjabloon- en parameterbestanden worden opgeslagen voor implementatie in.  Zie [De artefacten voorbereiden](#prepare-the-artifacts).
     * **templateArtifactRoot**: gebruik in deze zelfstudie **templates/1.0.0.0**, tenzij u de mapstructuur van de artefacten wijzigt.
-    * **targetScriptionID**: voer de id van uw Azure-abonnement in.
+    * **targetScriptionID**: voer uw Azure-abonnements-id in.
 
 > [!IMPORTANT]
 > De topologiesjabloon en de implementatiesjabloon delen enkele algemene parameters. Deze parameters moeten dezelfde waarden hebben. Deze parameters zijn: **namePrefix**, **azureResourceLocation** en **artifactSourceSASLocation** (beide artefactbronnen delen hetzelfde opslagaccount in deze zelfstudie).
@@ -237,7 +237,7 @@ De sjabloon bevat de volgende parameters:
 * **namePrefix**: dit voorvoegsel wordt gebruikt voor het maken van de namen van de Deployment Manager-resources. Wanneer u bijvoorbeeld het voorvoegsel 'jdoe' gebruikt, is de naam van de implementatie **jdoe**Rollout.  De namen worden gedefinieerd in de sectie met variabelen van de sjabloon.
 * **azureResourcelocation**: ter vereenvoudiging van de zelfstudie delen alle Deployment Manager-resources deze locatie, tenzij anders aangegeven. Momenteel kunnen Azure Deployment Manager-resources, met inbegrip van de implementatie, alleen worden gemaakt in **US - centraal** of **US - oost 2**.
 * **artifactSourceSASLocation**: de SAS-URI naar de hoofdmap (de blobcontainer) waar service-eenheidsjabloon- en parameterbestanden worden opgeslagen voor implementatie.  Zie [De artefacten voorbereiden](#prepare-the-artifacts).
-* **binaryArtifactRoot**:  de standaardwaarde is **binaries/1.0.0.0**. Wijzig deze waarde niet tenzij u de mapstructuur wilt wijzigen zoals wordt uitgelegd in [De artefacten voorbereiden](#prepare-the-artifacts). In deze zelfstudie worden relatieve paden gebruikt.  Het volledige pad wordt samengesteld door het samenvoegen van **artifactSourceSASLocation**, **binaryArtifactRoot** en de **deployPackageUri** die is opgegeven in CreateWebApplicationParameters.json.  Zie [De artefacten voorbereiden](#prepare-the-artifacts).
+* **binaryArtifactRoot**: de standaardwaarde is **binaries/1.0.0.0**. Wijzig deze waarde niet tenzij u de mapstructuur wilt wijzigen zoals wordt uitgelegd in [De artefacten voorbereiden](#prepare-the-artifacts). In deze zelfstudie worden relatieve paden gebruikt.  Het volledige pad wordt samengesteld door het samenvoegen van **artifactSourceSASLocation**, **binaryArtifactRoot** en de **deployPackageUri** die is opgegeven in CreateWebApplicationParameters.json.  Zie [De artefacten voorbereiden](#prepare-the-artifacts).
 * **managedIdentityID**: de door de gebruiker toegewezen beheerde identiteit die de implementatieacties uitvoert. Zie [Door de gebruiker toegewezen beheerde identiteit maken](#create-the-user-assigned-managed-identity).
 
 ### <a name="the-variables"></a>De variabelen
@@ -277,8 +277,8 @@ U maakt een parameterbestand dat wordt gebruikt in combinatie met de implementat
 2. Vul de parameterwaarden in:
 
     * **namePrefix**: voer een tekenreeks met 4-5 tekens in. Dit voorvoegsel wordt gebruikt om voor Azure unieke resourcenamen te maken.
-    * **azureResourceLocation**: Momenteel kunnen Azure Deployment Manager-resources, met inbegrip van de implementatie, alleen worden gemaakt in **US - centraal** of **US - oost 2**.
-    * **artifactSourceSASLocation**: de SAS-URI naar de hoofdmap (de blobcontainer) waar service-eenheidsjabloon- en parameterbestanden worden opgeslagen voor implementatie.  Zie [De artefacten voorbereiden](#prepare-the-artifacts).
+    * **azureResourceLocation**: momenteel kunnen Azure Deployment Manager-resources, met inbegrip van de implementatie, alleen worden gemaakt in **US - centraal** of **US - oost 2**.
+    * **artifactSourceSASLocation**: voer de SAS-URI naar de hoofdmap (de blobcontainer) waar service-eenheidsjabloon- en parameterbestanden worden opgeslagen voor implementatie in.  Zie [De artefacten voorbereiden](#prepare-the-artifacts).
     * **binaryArtifactRoot**: gebruik in deze zelfstudie **binaries/1.0.0.0**, tenzij u de mapstructuur van de artefacten wijzigt.
     * **managedIdentityID**: voer de door de gebruiker toegewezen beheerde identiteit in. Zie [Door de gebruiker toegewezen beheerde identiteit maken](#create-the-user-assigned-managed-identity). De syntaxis is:
 
@@ -404,7 +404,7 @@ Azure PowerShell kan worden gebruikt om de sjablonen te implementeren.
 
 ## <a name="verify-the-deployment"></a>De implementatie controleren
 
-1. Open de [Azure Portal](https://portal.azure.com).
+1. Open de [Azure-portal](https://portal.azure.com).
 2. Blader naar de zojuist gemaakte webtoepassingen onder de nieuwe resourcegroepen die zijn gemaakt door de implementatie.
 3. Open de webtoepassing in een webbrowser. Controleer de locatie en de versie in het index.html-bestand.
 
@@ -434,4 +434,4 @@ Schoon de geïmplementeerd Azure-resources, wanneer u deze niet meer nodig hebt,
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u geleerd hoe u Azure Deployment Manager gebruikt. Als u de status controle in azure Deployment Manager wilt integreren, raadpleegt u [Tutorial: Gebruik status controle in azure Deployment Manager @ no__t-0.
+In deze zelfstudie hebt u geleerd hoe u Azure Deployment Manager gebruikt. Zie [zelf studie: status controle gebruiken in azure Deployment Manager](./deployment-manager-tutorial-health-check.md)voor het integreren van de status controle in azure Deployment Manager.

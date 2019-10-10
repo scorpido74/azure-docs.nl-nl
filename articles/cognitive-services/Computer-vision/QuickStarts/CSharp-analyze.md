@@ -1,5 +1,5 @@
 ---
-title: 'Quickstart: Een lokale afbeelding analyseren - REST C#'
+title: 'Snelstartgids: een lokale installatie kopie analyseren-REST,C#'
 titleSuffix: Azure Cognitive Services
 description: In deze snelstart analyseert u een lokale afbeelding met behulp van de Computer Vision-API met C#.
 services: cognitive-services
@@ -18,7 +18,7 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 10/09/2019
 ms.locfileid: "72177348"
 ---
-# <a name="quickstart-analyze-a-local-image-using-the-computer-vision-rest-api-and-c"></a>Quickstart: Analyseer een lokale installatie kopie met behulp van de Computer Vision REST API enC#
+# <a name="quickstart-analyze-a-local-image-using-the-computer-vision-rest-api-and-c"></a>Snelstartgids: een lokale installatie kopie analyseren met behulp van de Computer Vision REST API enC#
 
 In deze quickstart analyseert u een lokaal opgeslagen afbeelding om visuele kenmerken te verkrijgen met behulp van de REST-API van Computer Vision. Met de methode [Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) (afbeelding analyseren) kunt u visuele kenmerken verkrijgen op basis van de afbeeldingsinhoud.
 

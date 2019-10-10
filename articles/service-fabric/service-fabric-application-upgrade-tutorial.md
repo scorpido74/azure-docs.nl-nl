@@ -1,6 +1,6 @@
 ---
-title: Zelfstudie voor service Fabric-app bijwerken | Microsoft Docs
-description: Dit artikel helpt bij de ervaring van de implementatie van een Service Fabric-toepassing, de code te wijzigen en een upgrade uitrollen met behulp van Visual Studio.
+title: Zelf studie voor de upgrade van de app Service Fabric | Microsoft Docs
+description: In dit artikel wordt uitgelegd hoe u een Service Fabric toepassing implementeert, hoe u de code wijzigt en een upgrade uitvoert met behulp van Visual Studio.
 services: service-fabric
 documentationcenter: .net
 author: mani-ramaswamy
@@ -13,15 +13,15 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
-ms.author: subramar
-ms.openlocfilehash: 8fe0bf9c8827b7248195f89377176fd834845e32
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: atsenthi
+ms.openlocfilehash: 5e693a219c4a430f742ebd27878518ebb99ce5da
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60615178"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72167375"
 ---
-# <a name="service-fabric-application-upgrade-tutorial-using-visual-studio"></a>Service Fabric application upgrade zelfstudie met Visual Studio
+# <a name="service-fabric-application-upgrade-tutorial-using-visual-studio"></a>Zelf studie voor de upgrade van toepassingen Service Fabric met Visual Studio
 > [!div class="op_single_selector"]
 > * [PowerShell](service-fabric-application-upgrade-tutorial-powershell.md)
 > * [Visual Studio](service-fabric-application-upgrade-tutorial.md)
@@ -30,59 +30,59 @@ ms.locfileid: "60615178"
 
 <br/>
 
-Azure Service Fabric vereenvoudigt het proces van het upgraden van cloudtoepassingen door ervoor te zorgen dat alleen gewijzigde services worden bijgewerkt en dat de status van de toepassing wordt bewaakt tijdens het upgradeproces. Deze ook automatisch teruggedraaid in de toepassing naar de vorige versie wordt uitgevoerd voor problemen. Upgrades van de service Fabric-toepassingen zijn *nul Downtime*, omdat de toepassing kan worden bijgewerkt zonder uitvaltijd. Deze zelfstudie wordt uitgelegd hoe u een rolling upgrade vanuit Visual Studio.
+Azure Service Fabric vereenvoudigt het proces van het upgraden van Cloud toepassingen door ervoor te zorgen dat alleen gewijzigde services worden bijgewerkt, en dat de status van de toepassing gedurende het upgrade proces wordt bewaakt. Er wordt ook automatisch een back-up van de toepassing naar de vorige versie hersteld wanneer er problemen optreden. Service Fabric toepassings upgrades zijn geen *uitval tijd*, omdat de toepassing zonder downtime kan worden bijgewerkt. In deze zelf studie wordt beschreven hoe u een rolling upgrade van Visual Studio kunt volt ooien.
 
-## <a name="step-1-build-and-publish-the-visual-objects-sample"></a>Stap 1: Bouwt en publiceert u het voorbeeld Visual objecten
-Download eerst de [Visual objecten](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Actors/VisualObjects) toepassing vanuit GitHub. Klik, bouwt en publiceert u de toepassing met de rechtermuisknop op het toepassingsproject **VisualObjects**, en selecteer de **publiceren** opdracht in het menu-item van het Service Fabric.
+## <a name="step-1-build-and-publish-the-visual-objects-sample"></a>Stap 1: het voor beeld van Visual Objects maken en publiceren
+Down load eerst de toepassing [Visual Objects](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Actors/VisualObjects) van github. Vervolgens bouwt en publiceert u de toepassing door met de rechter muisknop te klikken op het toepassings project **VisualObjects**en de opdracht **publiceren** te selecteren in de menu opdracht service Fabric.
 
-![Contextmenu voor een Service Fabric-toepassing][image1]
+![Context menu voor een Service Fabric toepassing][image1]
 
-Selecteren **publiceren** wordt een pop-upvenster en u kunt de **doelprofiel** naar **PublishProfiles\Local.xml**. Het venster moet eruitzien als het volgende voordat u klikt op **publiceren**.
+Als u **publiceren** selecteert, wordt een pop-upvenster geopend en kunt u het **doel profiel** instellen op **PublishProfiles\Local.XML**. Het venster moet er als volgt uitzien voordat u op **publiceren**klikt.
 
 ![Een Service Fabric-toepassing publiceren][image2]
 
-Nu kunt u klikken op **publiceren** in het dialoogvenster. U kunt [Service Fabric Explorer om het cluster en de toepassing weer te geven](service-fabric-visualizing-your-cluster.md). De toepassing Visual objecten heeft een webservice die u kunt naar door te typen [ http://localhost:8081/visualobjects/ ](http://localhost:8081/visualobjects/) in de adresbalk van uw browser.  Hier ziet u 10 zwevende visual objecten verplaatsen op het scherm.
+Nu kunt u op **publiceren** klikken in het dialoog venster. U kunt [service Fabric Explorer gebruiken om het cluster en de toepassing weer te geven](service-fabric-visualizing-your-cluster.md). De Visual Objects-toepassing heeft een webservice waarnaar u kunt gaan door [http://localhost:8081/visualobjects/](http://localhost:8081/visualobjects/) te typen in de adres balk van uw browser.  U ziet dat er 10 zwevende visuele objecten worden weer gegeven op het scherm.
 
-**OPMERKING:** Als naar implementeert `Cloud.xml` profiel (Azure Service Fabric), moet beschikbaar zijn op de toepassing vervolgens **http://{ServiceFabricName}. { Region}.cloudapp.Azure.com:8081/visualobjects/** . Zorg ervoor dat u hebt `8081/TCP` geconfigureerd in de Load Balancer (zoeken naar de Load Balancer in dezelfde resourcegroep bevinden als de Service Fabric-instantie).
+**Opmerking:** Als u implementeert op `Cloud.xml`-Profiel (Azure Service Fabric), moet de toepassing beschikbaar zijn op **http://{ServiceFabricName}. { Regio}. cloudapp. Azure. com: 8081/visualobjects/** . Zorg ervoor dat `8081/TCP` in de Load Balancer is geconfigureerd (Zoek de Load Balancer in dezelfde resource groep als de Service Fabric-instantie).
 
-## <a name="step-2-update-the-visual-objects-sample"></a>Stap 2: Het voorbeeld Visual objecten bijwerken
-U zult merken dat met de versie die is geïmplementeerd in stap 1, de visual objecten niet draaien. Laten we deze toepassing op een waar de visual objecten ook draaien upgraden.
+## <a name="step-2-update-the-visual-objects-sample"></a>Stap 2: het voor beeld van Visual Objects bijwerken
+U zult kunnen merken dat met de versie die is geïmplementeerd in stap 1, de visuele objecten niet draaien. We gaan deze toepassing upgraden naar een waar ook de visuele objecten draaien.
 
-Selecteer het project VisualObjects.ActorService binnen de oplossing VisualObjects en open de **VisualObjectActor.cs** bestand. In dat bestand, gaat u naar de methode `MoveObject`, commentaar `visualObject.Move(false)`, en verwijder het commentaarteken `visualObject.Move(true)`. Deze gewijzigde code worden de objecten na de upgrade van de service.  **Nu u de oplossing kunt bouwen voor (niet opnieuw opbouwen)** , die de gewijzigde projecten bouwt. Als u selecteert *alles opnieuw opbouwen*, hebt u de versies voor alle projecten bijwerken.
+Selecteer het project VisualObjects. ActorService in de VisualObjects-oplossing en open het **VisualObjectActor.cs** -bestand. Ga in dat bestand naar de methode `MoveObject`, commentaar uit `visualObject.Move(false)` en verwijder de opmerking `visualObject.Move(true)`. Deze code wijziging roteert de objecten nadat de service is bijgewerkt.  **Nu kunt u de oplossing bouwen (niet opnieuw samen stellen)** , waardoor de gewijzigde projecten worden gebouwd. Als u *alles opnieuw samen stellen*selecteert, moet u de versies van alle projecten bijwerken.
 
-Er moet ook versie onze toepassing. De versiewijzigingen aanbrengen nadat u met de rechtermuisknop op de **VisualObjects** project, kunt u de Visual Studio **Edit Manifest Versions** optie. Deze optie selecteert, wordt het dialoogvenster voor edition-versies als volgt:
+We moeten onze toepassing ook versie. Als u de versie wijzigingen wilt aanbrengen nadat u met de rechter muisknop op het **VisualObjects** -project hebt geklikt, kunt u de optie Visual Studio- **manifest versies bewerken** gebruiken. Als u deze optie selecteert, wordt het dialoog venster voor editie versies als volgt geopend:
 
-![In het dialoogvenster voor versiebeheer][image3]
+![Het dialoog venster versie beheer][image3]
 
-Bijwerken van de versies voor de gewijzigde projecten en hun codepakketten, samen met de toepassing bij naar versie 2.0.0. Nadat de wijzigingen zijn aangebracht, het manifest moet eruitzien als de volgende (vet gedeelten weergeven van de wijzigingen):
+Werk de versies voor de gewijzigde projecten en hun code pakketten bij, samen met de toepassing naar versie 2.0.0. Nadat de wijzigingen zijn aangebracht, moet het Manifest er als volgt uitzien (vetgedrukte gedeelten tonen de wijzigingen):
 
-![Versie bijwerken][image4]
+![Versies bijwerken][image4]
 
-De hulpprogramma's voor Visual Studio kunnen doen automatische rollups van versies bij het selecteren van **toepassing en Serviceversies automatisch bijwerken**. Als u [SemVer](http://www.semver.org), moet u de code bijwerken en/of configuratie pakket versie alleen als deze optie is geselecteerd.
+De Visual Studio-hulpprogram ma's kunnen automatische update versies uitvoeren bij het selecteren van de **toepassing en de service versies automatisch bijwerken**. Als u [SemVer](http://www.semver.org)gebruikt, moet u de code en/of de configuratie pakket versie alleen bijwerken als deze optie is geselecteerd.
 
-Sla de wijzigingen op en nu controleren de **Upgrade van de toepassing** vak.
+Sla de wijzigingen op en controleer nu het vak **de toepassing bijwerken** .
 
-## <a name="step-3--upgrade-your-application"></a>Stap 3:  Uw toepassing upgraden
-Maak uzelf vertrouwd met de [parameters toepassingsupgrade](service-fabric-application-upgrade-parameters.md) en de [upgradeproces](service-fabric-application-upgrade.md) om op te halen van een goed begrip van de verschillende parameters voor het bijwerken, time-outs en de gezondheid van criteria die kan worden toegepast. Voor dit scenario wordt het criterium voor evaluatie van health service ingesteld op de standaardwaarde (niet-bewaakte modus). U kunt deze instellingen configureren door het selecteren van **Upgrade-instellingen configureren** en vervolgens de parameters naar wens wijzigen.
+## <a name="step-3--upgrade-your-application"></a>Stap 3: een upgrade van uw toepassing uitvoeren
+Raadpleeg de [para meters](service-fabric-application-upgrade-parameters.md) voor de upgrade van de toepassing en het [upgrade proces](service-fabric-application-upgrade.md) om een goed beeld te krijgen van de verschillende para meters voor upgrades, time-outs en status criteria die kunnen worden toegepast. Voor dit scenario is het evaluatie criterium voor service status ingesteld op de standaard instelling (niet-bewaakte modus). U kunt deze instellingen configureren door de **instellingen voor de upgrade configureren** te selecteren en de para meters vervolgens naar wens aan te passen.
 
-Nu we zijn klaar om te beginnen de upgrade van de toepassing selecteren **publiceren**. Deze optie voert u een upgrade van uw toepassing bij naar versie 2.0.0, waarin de objecten draaien. Service Fabric upgrades één updatedomein tegelijk (sommige objecten zijn bijgewerkt eerst, gevolgd door anderen) en de service blijft toegankelijk tijdens de upgrade. Toegang tot de service kan worden gecontroleerd via de client (browser).  
+Nu gaan we alle instellen om de upgrade van de toepassing te starten door **publiceren**te selecteren. Met deze optie wordt uw toepassing bijgewerkt naar versie 2.0.0, waarin de objecten draaien. Service Fabric werkt één update domein per keer bij (sommige objecten worden eerst bijgewerkt, gevolgd door anderen) en de service blijft toegankelijk tijdens de upgrade. De toegang tot de service kan worden gecontroleerd via uw client (browser).  
 
-Nu als de upgrade opbrengst van toepassing, kunt u het bewaken met Service Fabric Explorer, met behulp van de **Upgrades in uitvoering** tabblad onder de toepassingen.
+Als de upgrade van de toepassing wordt uitgevoerd, kunt u deze bewaken met Service Fabric Explorer, met behulp van het tabblad **upgrades op voortgang** onder de toepassingen.
 
-Alle update-domeinen moeten worden bijgewerkt (voltooid) in een paar minuten en de Visual Studio-uitvoervenster moet ook zijn dat de upgrade is voltooid. En u moet zien dat *alle* de visual objecten in het browservenster worden nu draaien!
+In een paar minuten moeten alle update domeinen worden bijgewerkt (voltooid). in het Visual Studio-uitvoer venster moet ook worden vermeld dat de upgrade is voltooid. U ziet dat *alle* visuele objecten in uw browser venster nu draaien.
 
-U kunt de versies, wijzig en verplaatsen van versie 2.0.0 naar versie 3.0.0 bij wijze van oefening of zelfs van versie 2.0.0 terug naar versie 1.0.0. Speel met time-outs en statusbeleid om uzelf bekend met hen. Bij het implementeren van een Azure-cluster in plaats van een lokaal cluster, moeten de parameters die worden gebruikt, mogelijk verschillen. U wordt aangeraden de time-outs voorzichtig te stellen.
+U kunt proberen om de versies te wijzigen en van versie 2.0.0 te verplaatsen naar versie 3.0.0 als oefening, of zelfs van versie 2.0.0 terug naar versie 1.0.0. Speel met time-outs en status beleidsregels om u vertrouwd te maken met hen. Bij het implementeren van een Azure-cluster in plaats van een lokaal cluster, moeten de gebruikte para meters anders zijn. We raden u aan om de time-outs zo veel mogelijk in te stellen.
 
 ## <a name="next-steps"></a>Volgende stappen
-[Bijwerken van uw toepassing met behulp van PowerShell](service-fabric-application-upgrade-tutorial-powershell.md) begeleidt u bij de upgrade van een toepassing met behulp van PowerShell.
+Als u uw toepassing bijwerkt [met Power shell](service-fabric-application-upgrade-tutorial-powershell.md) , kunt u een toepassings upgrade uitvoeren met behulp van Power shell.
 
-Bepalen hoe uw toepassing is bijgewerkt met behulp van [Upgradeparameters](service-fabric-application-upgrade-parameters.md).
+Bepalen hoe uw toepassing wordt bijgewerkt met behulp van [upgrade parameters](service-fabric-application-upgrade-parameters.md).
 
-Upgrades van uw toepassingen compatibel maken door te leren hoe u [gegevensserialisatie](service-fabric-application-upgrade-data-serialization.md).
+Maak uw toepassings upgrades compatibel door te leren hoe u [gegevens serialisatie](service-fabric-application-upgrade-data-serialization.md)gebruikt.
 
-Informatie over het gebruik van geavanceerde functionaliteit tijdens het bijwerken van uw toepassing door te verwijzen naar [geavanceerde onderwerpen](service-fabric-application-upgrade-advanced.md).
+Meer informatie over het gebruik van geavanceerde functionaliteit bij het upgraden van uw toepassing door te verwijzen naar [Geavanceerde onderwerpen](service-fabric-application-upgrade-advanced.md).
 
-Oplossen van veelvoorkomende problemen in upgrades van toepassingen door te verwijzen naar de stappen in [problemen met toepassingsupgrades oplossen](service-fabric-application-upgrade-troubleshooting.md).
+Corrigeer veelvoorkomende problemen in toepassings upgrades door te verwijzen naar de stappen in [Troubleshooting Application upgrades](service-fabric-application-upgrade-troubleshooting.md).
 
 [image1]: media/service-fabric-application-upgrade-tutorial/upgrade7.png
 [image2]: media/service-fabric-application-upgrade-tutorial/upgrade1.png

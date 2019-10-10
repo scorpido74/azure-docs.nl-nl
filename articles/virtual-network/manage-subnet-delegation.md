@@ -36,12 +36,12 @@ In deze sectie maakt u een virtueel netwerk en het subnet dat u later wilt deleg
 
     | Instelling | Waarde |
     | ------- | ----- |
-    | Name | Voer *MyVirtualNetwork*in. |
+    | Naam | Voer *MyVirtualNetwork*in. |
     | Adresruimte | Voer *10.0.0.0/16* in. |
-    | Subscription | Selecteer uw abonnement.|
-    | Resource group | Selecteer **Nieuwe maken**, voer *myResourceGroup* in en selecteer vervolgens **OK**. |
-    | Location | Selecteer **oostus**.|
-    | Subnet - Naam | Voer *mySubnet*in. |
+    | Abonnement | Selecteer uw abonnement.|
+    | Resourcegroep | Selecteer **Nieuwe maken**, voer *myResourceGroup* in en selecteer vervolgens **OK**. |
+    | Locatie | Selecteer **oostus**.|
+    | Subnet - naam | Voer *mySubnet*in. |
     | Subnet - adresbereik | Voer *10.0.0.0/24* in. |
     |||
 1. Laat de rest als standaard staan en selecteer vervolgens **maken**.

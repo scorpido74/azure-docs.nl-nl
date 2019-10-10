@@ -113,24 +113,24 @@ Zie [Deploying a Django app to app service](https://blogs.msdn.microsoft.com/azu
 
 Voor Azure Marketplace en aangepaste implementaties:
 
-* Maplocatie: D:\home\site\wwwroot\bin\apache-tomcat-8.0.33\logs
+* Maplocatie: D:\home\site\wwwroot\bin\apache-Tomcat-8.0.33\logs
 * Interessante bestanden:
-    * catalina.*yyyy-mm-dd*.log
-    * host-manager.*yyyy-mm-dd*.log
+    * catalina. *jjjj-mm-dd*. log
+    * host-Manager. *jjjj-mm-dd*. log
     * lokalehost. *jjjj-mm-dd*. log
-    * manager.*yyyy-mm-dd*.log
-    * site_access_log.*yyyy-mm-dd*.log
+    * Manager. *jjjj-mm-dd*. log
+    * site_access_log. *jjjj-mm-dd*. log
 
 
 Voor implementaties van de portal- **app-instellingen** :
 
 * Maplocatie: D:\home\LogFiles
 * Interessante bestanden:
-    * catalina.*yyyy-mm-dd*.log
-    * host-manager.*yyyy-mm-dd*.log
+    * catalina. *jjjj-mm-dd*. log
+    * host-Manager. *jjjj-mm-dd*. log
     * lokalehost. *jjjj-mm-dd*. log
-    * manager.*yyyy-mm-dd*.log
-    * site_access_log.*yyyy-mm-dd*.log
+    * Manager. *jjjj-mm-dd*. log
+    * site_access_log. *jjjj-mm-dd*. log
 
 ## <a name="how-do-i-troubleshoot-jdbc-driver-connection-errors"></a>Problemen met de verbindings fouten van het JDBC-stuur programma Hoe kan ik oplossen?
 
@@ -189,7 +189,7 @@ Als u onlangs naar Azure hebt gemigreerd, kan WordPress omleiden naar de oude do
 
 WordPress Buddy + is een Azure-site-uitbrei ding die u kunt gebruiken om de omleidings-URL rechtstreeks in de-data base bij te werken. Zie [WordPress-hulpprogram ma's en MySQL-migratie met WordPress Buddy +](https://sharepointforum.org/threads/wordpress-tools-and-mysql-migration-with-wordpress-buddy.82929/)voor meer informatie over het gebruik van WordPress buddy +.
 
-Als u de omleidings-URL liever hand matig bijwerkt met behulp van SQL-query's of PHPMyAdmin, raadpleegt u [WordPress: Omleiden naar de verkeerde URL @ no__t-0.
+Als u de omleidings-URL liever hand matig bijwerkt met behulp van SQL-query's of PHPMyAdmin, raadpleegt u [WordPress: omleiden naar de verkeerde URL](https://blogs.msdn.microsoft.com/azureossds/2016/07/12/wordpress-redirecting-to-wrong-url/).
 
 ## <a name="how-do-i-change-my-wordpress-sign-in-password"></a>Hoe kan ik mijn WordPress-aanmeldings wachtwoord wijzigen?
 
@@ -203,8 +203,8 @@ Als u zichzelf hebt geblokkeerd na de laatste keer dat u een invoeg toepassing h
 
 U hebt meerdere opties voor het migreren van de MySQL-data base die is verbonden met uw WordPress-website:
 
-* Ontwikkelaars: Gebruik de [opdracht prompt of phpMyAdmin](https://blogs.msdn.microsoft.com/azureossds/2016/03/02/migrating-data-between-mysql-databases-using-kudu-console-azure-app-service/)
-* Niet-ontwikkel aars: [WordPress Buddy +](https://sharepointforum.org/threads/wordpress-tools-and-mysql-migration-with-wordpress-buddy.82929/) gebruiken
+* Ontwikkel aars: gebruik de [opdracht prompt of phpMyAdmin](https://blogs.msdn.microsoft.com/azureossds/2016/03/02/migrating-data-between-mysql-databases-using-kudu-console-azure-app-service/)
+* Niet-ontwikkel aars: gebruik [WordPress Buddy +](https://sharepointforum.org/threads/wordpress-tools-and-mysql-migration-with-wordpress-buddy.82929/)
 
 ## <a name="how-do-i-help-make-wordpress-more-secure"></a>Hoe kan ik kunt u WordPress veiliger maken?
 

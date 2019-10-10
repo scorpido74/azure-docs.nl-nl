@@ -14,14 +14,15 @@ ms.topic: article
 ms.date: 09/02/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: fcbb284a0807ef88c5f40a7c8b65398d45bf73d7
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 917fa87a0cd0f7b0615a5139a7c15311f866739a
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232149"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72176971"
 ---
-# <a name="how-to-configure-your-app-service-application-to-use-google-login"></a>Uw App Service-toepassing configureren voor het gebruik van Google-aanmelding
+# <a name="configure-your-app-service-app-to-use-google-login"></a>Uw App Service-app configureren voor het gebruik van Google-aanmelding
+
 [!INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
 
 In dit onderwerp wordt beschreven hoe u Azure App Service configureert om Google als verificatie provider te gebruiken.
@@ -29,31 +30,35 @@ In dit onderwerp wordt beschreven hoe u Azure App Service configureert om Google
 Als u de procedure in dit onderwerp wilt volt ooien, moet u een Google-account hebben met een bevestigd e-mail adres. Als u een nieuw Google-account wilt maken, gaat u naar [accounts.google.com](https://go.microsoft.com/fwlink/p/?LinkId=268302).
 
 ## <a name="register"> </a>Uw toepassing registreren bij Google
-1. Volg de Google-documentatie bij [Google-aanmelding voor apps aan de server zijde](https://developers.google.com/identity/sign-in/web/server-side-flow) om een client-id en client geheim te maken, met de volgende informatie (u hoeft geen code wijzigingen aan te brengen):
-    - Voor **geautoriseerde java script**- `https://<app-name>.azurewebsites.net` oorsprong gebruikt u de naam van uw app in  *\<de app-naam >* .
-    - Gebruik`https://<app-name>.azurewebsites.net/.auth/login/google/callback`voor geautoriseerde omleidings- **URI**.
-1. Wanneer de client-ID en client geheimen zijn gemaakt, kopieert u hun waarden.
+
+1. Volg de Google-documentatie bij [Google-aanmelding voor apps aan de server zijde](https://developers.google.com/identity/sign-in/web/server-side-flow) om een client-id en client geheim te maken. U hoeft geen code wijzigingen aan te brengen. Gebruik hiervoor de volgende informatie:
+    - Gebruik `https://<app-name>.azurewebsites.net` met de naam van uw app in *\<app >* voor **geautoriseerde java script-oorsprong**.
+    - Gebruik `https://<app-name>.azurewebsites.net/.auth/login/google/callback` voor **geautoriseerde omleidings-URI**.
+1. Kopieer de App-ID en de geheime waarden van de app.
 
     > [!IMPORTANT]
-    > Het client geheim is een belang rijke beveiligings referentie. Deel dit geheim niet met iemand of distribueer het in een client toepassing.
-
+    > Het app-geheim is een belang rijke beveiligings referentie. Deel dit geheim niet met iemand of distribueer het in een client toepassing.
 
 ## <a name="secrets"> </a>Google-gegevens toevoegen aan uw toepassing
-1. Ga in het [Azure-portal]naar uw app service-app. Selecteer in het menu links **verificatie/autorisatie**.
-2. Als de functie voor verificatie/autorisatie niet is ingeschakeld, schakelt u de switch in **op aan**.
-3. Klik op **Google**. Plak de App-ID en de geheime waarden van de app die u eerder hebt verkregen en schakel desgewenst de scopes in die voor uw toepassing nodig zijn. Klik vervolgens op **OK**.
 
-   App Service biedt authenticatie, maar beperkt geen geautoriseerde toegang tot uw site-inhoud en Api's. Zie [gebruikers machtigen of weigeren](app-service-authentication-how-to.md#authorize-or-deny-users)voor meer informatie.
-4. Beschrijving Om de toegang tot uw site te beperken tot alleen gebruikers die zijn geverifieerd door Google, stelt **u een actie in die moet worden uitgevoerd wanneer de aanvraag niet is geverifieerd** voor **Google**. Hiervoor moeten alle aanvragen worden geverifieerd en alle niet-geverifieerde aanvragen worden omgeleid naar Google voor authenticatie.
+1. Ga in het [Azure-portal]naar uw app service-app.
+1. Selecteer **instellingen** > **verificatie/autorisatie**en zorg ervoor dat **app service-verificatie** is **ingeschakeld**.
+1. Selecteer **Google**en plak de waarden van de App-ID en het app-geheim die u eerder hebt verkregen. Schakel de scopes in die nodig zijn voor uw toepassing.
+1. Selecteer **OK**.
 
-    > [!NOTE]
-    > Het beperken van de toegang op deze manier is van toepassing op alle aanroepen naar uw app. Dit is mogelijk niet wenselijk voor apps die een openbaar beschik bare start pagina willen, zoals in veel toepassingen met één pagina. Voor dergelijke toepassingen kunt u **anonieme aanvragen (geen actie) toestaan** voor keur, waarbij de app de aanmelding zelf hand matig start, zoals [hier](overview-authentication-authorization.md#authentication-flow)wordt beschreven.
-    
-5. Klik op **Opslaan**.
+   App Service biedt verificatie, maar beperkt geen geautoriseerde toegang tot uw site-inhoud en Api's. Zie [gebruikers machtigen of weigeren](app-service-authentication-how-to.md#authorize-or-deny-users)voor meer informatie.
+
+1. Beschrijving Als u de toegang tot de site alleen wilt beperken voor gebruikers die zijn geverifieerd door Google, stelt **u een actie in die moet worden uitgevoerd wanneer de aanvraag niet is geverifieerd** bij **Google**. Wanneer u deze functionaliteit instelt, vereist uw app dat alle aanvragen worden geverifieerd. Ook worden alle niet-geverifieerde aanvragen voor verificatie doorgestuurd naar Google.
+
+    > [!CAUTION]
+    > Het beperken van de toegang op deze manier is van toepassing op alle aanroepen naar uw app. Dit is mogelijk niet wenselijk voor apps met een openbaar beschik bare start pagina, zoals in veel toepassingen met één pagina. Voor dergelijke toepassingen kunt u **anonieme aanvragen (geen actie) toestaan** , zodat de verificatie zelf door de app hand matig wordt gestart. Zie voor meer informatie [verificatie stroom](overview-authentication-authorization.md#authentication-flow).
+
+1. Selecteer **Opslaan**.
 
 U bent nu klaar om Google te gebruiken voor verificatie in uw app.
 
-## <a name="related-content"> </a>Gerelateerde inhoud
+## <a name="related-content"> </a>Volgende stappen
+
 [!INCLUDE [app-service-mobile-related-content-get-started-users](../../includes/app-service-mobile-related-content-get-started-users.md)]
 
 <!-- Anchors. -->

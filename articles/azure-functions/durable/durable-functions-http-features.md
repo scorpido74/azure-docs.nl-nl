@@ -8,12 +8,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 953558e34d41184f75d72baf5982e84eb51b1781
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: e9b2967905bc927432d1ca4606bc2b2ba2ac4108
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71694878"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177363"
 ---
 # <a name="http-features"></a>HTTP-functies
 
@@ -55,7 +55,7 @@ De [Orchestration-client binding](durable-functions-bindings.md#orchestration-cl
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/HttpStart/index.js)]
 
-#### <a name="functionjson"></a>Function.json
+#### <a name="functionjson"></a>Function. json
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/HttpStart/function.json)]
 
@@ -210,6 +210,38 @@ Als een van deze beperkingen van invloed kan zijn op uw use-case, kunt u overweg
 > Als u een .NET-ontwikkelaar bent, kunt u zich afvragen waarom deze functie gebruikmaakt van de typen **DurableHttpRequest** en **DurableHttpResponse** in plaats van de ingebouwde .net **HttpRequestMessage** -en **HttpResponseMessage** -typen.
 >
 > Deze ontwerp keuze is opzettelijk. De belangrijkste reden hiervoor is dat gebruikers bij aangepaste typen ervoor zorgen dat ze geen onjuiste veronderstellingen doen over het ondersteunde gedrag van de interne HTTP-client. De typen die specifiek zijn voor Durable Functions, maken het mogelijk om het API-ontwerp te vereenvoudigen. Ze kunnen ook eenvoudiger beschik bare speciale functies, zoals [beheerde identiteits integratie](#managed-identities) en het [polling Consumer-patroon](#http-202-handling)maken. 
+
+### <a name="extensibility-net-only"></a>Uitbreid baarheid (alleen .NET)
+
+Het aanpassen van het gedrag van de interne HTTP-client van de Orchestration kan worden uitgevoerd met behulp van [Azure functions .net-afhankelijkheids injectie](https://docs.microsoft.com/azure/azure-functions/functions-dotnet-dependency-injection). Deze mogelijkheid kan nuttig zijn om kleine gedrags wijzigingen aan te brengen. Het kan ook handig zijn voor het testen van de HTTP-client door het injecteren van object-objecten.
+
+In het volgende voor beeld wordt gedemonstreerd met behulp van afhankelijkheids injectie voor het uitschakelen van SSL-certificaat validatie voor Orchestrator-functies die externe HTTP-eind punten aanroepen.
+
+```csharp
+public class Startup : FunctionsStartup
+{
+    public override void Configure(IFunctionsHostBuilder builder)
+    {
+        // Register own factory
+        builder.Services.AddSingleton<
+            IDurableHttpMessageHandlerFactory,
+            MyDurableHttpMessageHandlerFactory>();
+    }
+}
+
+public class MyDurableHttpMessageHandlerFactory : IDurableHttpMessageHandlerFactory
+{
+    public HttpMessageHandler CreateHttpMessageHandler()
+    {
+        // Disable SSL certificate validation (not recommended in production!)
+        return new HttpClientHandler
+        {
+            ServerCertificateCustomValidationCallback =
+                HttpClientHandler.DangerousAcceptAnyServerCertificateValidator,
+        };
+    }
+}
+```
 
 ## <a name="next-steps"></a>Volgende stappen
 

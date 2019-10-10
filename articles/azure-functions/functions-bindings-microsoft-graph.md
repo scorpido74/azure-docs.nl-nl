@@ -8,12 +8,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 12/20/2017
 ms.author: cshoe
-ms.openlocfilehash: bf60ba7d940ab3ea3f4d30fc9fb1d76f9304ec1b
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 1db929e3ec4b400113d04cb7dd1cd4b8d2e86a9a
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70086584"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72176598"
 ---
 # <a name="microsoft-graph-bindings-for-azure-functions"></a>Microsoft Graph bindingen voor Azure Functions
 
@@ -26,7 +26,7 @@ De uitbrei ding Microsoft Graph biedt de volgende bindingen:
 - Met een [OneDrive File-invoer binding](#onedrive-input) kunt u bestanden uit OneDrive lezen.
 - Met een [OneDrive file-uitvoer binding](#onedrive-output) kunt u schrijven naar bestanden in OneDrive.
 - Met een [Outlook-bericht uitvoer binding](#outlook-output) kunt u e-mail berichten verzenden via Outlook.
-- Met een verzameling [Microsoft Graph-webhook-triggers en](#webhooks) -bindingen kunt u reageren op gebeurtenissen van de Microsoft Graph.
+- Met een verzameling [Microsoft Graph-webhook-triggers en-bindingen](#webhooks) kunt u reageren op gebeurtenissen van de Microsoft Graph.
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
@@ -72,7 +72,7 @@ Als u de Azure Portal gebruikt, wordt er een waarschuwing weer gegeven onder de 
 
 
 <a name="token-input"></a>
-## <a name="auth-token"></a>Auth-token
+## <a name="auth-token"></a>Verificatie token
 
 De invoer binding van het auth-token krijgt een Azure AD-token voor een bepaalde resource en levert deze aan uw code als een teken reeks. De resource kan elk zijn waarvoor de toepassing machtigingen heeft. 
 
@@ -85,9 +85,9 @@ Deze sectie bevat de volgende subsecties:
 
 ### <a name="auth-token---example"></a>Verificatie token-voor beeld
 
-Zie het voorbeeld taalspecifieke:
+Zie het taalspecifieke voor beeld:
 
-* [C# script (.csx)](#auth-token---c-script-example)
+* [C#script (. CSX)](#auth-token---c-script-example)
 * [JavaScript](#auth-token---javascript-example)
 
 #### <a name="auth-token---c-script-example"></a>Verificatie token- C# voor beeld van script
@@ -206,15 +206,15 @@ Gebruik in [ C# class bibliotheken](functions-dotnet-class-library.md)het kenmer
 
 ### <a name="auth-token---configuration"></a>Verificatie token-configuratie
 
-De volgende tabel beschrijft de binding configuratie-eigenschappen die u instelt in de *function.json* bestand en de `Token` kenmerk.
+De volgende tabel bevat informatie over de binding configuratie-eigenschappen die u hebt ingesteld in het bestand *Function. json* en het kenmerk `Token`.
 
-|de eigenschap Function.JSON | De kenmerkeigenschap |Description|
+|function. json-eigenschap | Kenmerk eigenschap |Beschrijving|
 |---------|---------|----------------------|
-|**name**||Vereist: de naam van de variabele die wordt gebruikt in de functie code voor het verificatie token. Zie [een verificatie token-invoer binding van code gebruiken](#token-input-code).|
+|**naam**||Vereist: de naam van de variabele die wordt gebruikt in de functie code voor het verificatie token. Zie [een verificatie token-invoer binding van code gebruiken](#token-input-code).|
 |**type**||Vereist: moet worden ingesteld op `token`.|
 |**direction**||Vereist: moet worden ingesteld op `in`.|
-|**persoon**|**Identity**|Vereist: de identiteit die wordt gebruikt om de actie uit te voeren. Dit kan een van de volgende waarden zijn:<ul><li><code>userFromRequest</code>-Alleen geldig met [http-trigger]. Maakt gebruik van de identiteit van de aanroepende gebruiker.</li><li><code>userFromId</code>-Gebruikt de identiteit van een eerder aangemelde gebruiker met de opgegeven ID. Zie de <code>userId</code> eigenschap.</li><li><code>userFromToken</code>-Gebruikt de identiteit die wordt vertegenwoordigd door het opgegeven token. Zie de <code>userToken</code> eigenschap.</li><li><code>clientCredentials</code>-Maakt gebruik van de identiteit van de functie-app.</li></ul>|
-|**userId**|**Naam**  |Alleen vereist als de _identiteit_ is ingesteld op `userFromId`. Een User Principal-ID die is gekoppeld aan een eerder aangemelde gebruiker.|
+|**persoon**|**Identity**|Vereist: de identiteit die wordt gebruikt om de actie uit te voeren. Dit kan een van de volgende waarden zijn:<ul><li><code>userFromRequest</code>-alleen geldig met [http-trigger]. Maakt gebruik van de identiteit van de aanroepende gebruiker.</li><li><code>userFromId</code>: maakt gebruik van de identiteit van een eerder aangemelde gebruiker met de opgegeven ID. Zie de eigenschap <code>userId</code>.</li><li><code>userFromToken</code>: maakt gebruik van de identiteit die wordt vertegenwoordigd door het opgegeven token. Zie de eigenschap <code>userToken</code>.</li><li><code>clientCredentials</code>: maakt gebruik van de identiteit van de functie-app.</li></ul>|
+|**Naam**|**Naam**  |Alleen vereist als de _identiteit_ is ingesteld op `userFromId`. Een User Principal-ID die is gekoppeld aan een eerder aangemelde gebruiker.|
 |**userToken**|**UserToken**|Alleen vereist als de _identiteit_ is ingesteld op `userFromToken`. Een token dat geldig is voor de functie-app. |
 |**Resource**|**resource**|Vereist: een Azure AD-resource-URL waarvoor het token wordt aangevraagd.|
 
@@ -226,7 +226,7 @@ Voor de binding zelf zijn geen Azure AD-machtigingen vereist, maar afhankelijk v
 Het token wordt altijd weer gegeven als een teken reeks.
 
 > [!Note]
-> Bij het lokaal ontwikkelen met een `userFromId` `userFromToken` of `userFromRequest` meer opties kan een vereist token [hand matig worden verkregen](https://github.com/Azure/azure-functions-microsoftgraph-extension/issues/54#issuecomment-392865857) en worden `X-MS-TOKEN-AAD-ID-TOKEN` opgegeven in de aanvraag header van een aanroepende client toepassing.
+> Bij het ontwikkelen van lokaal met een van de opties `userFromId`, `userFromToken` of `userFromRequest`, kan een vereist token [hand matig worden verkregen](https://github.com/Azure/azure-functions-microsoftgraph-extension/issues/54#issuecomment-392865857) en opgegeven in `X-MS-TOKEN-AAD-ID-TOKEN`-aanvraag header van een aanroepende client toepassing.
 
 
 <a name="excel-input"></a>
@@ -243,9 +243,9 @@ Deze sectie bevat de volgende subsecties:
 
 ### <a name="excel-input---example"></a>Excel-invoer-voor beeld
 
-Zie het voorbeeld taalspecifieke:
+Zie het taalspecifieke voor beeld:
 
-* [C# script (.csx)](#excel-input---c-script-example)
+* [C#script (. CSX)](#excel-input---c-script-example)
 * [JavaScript](#excel-input---javascript-example)
 
 #### <a name="excel-input---c-script-example"></a>Excel-invoer C# script-voor beeld
@@ -341,18 +341,18 @@ Gebruik in [ C# class bibliotheken](functions-dotnet-class-library.md)het kenmer
 
 ### <a name="excel-input---configuration"></a>Excel-invoer-configuratie
 
-De volgende tabel beschrijft de binding configuratie-eigenschappen die u instelt in de *function.json* bestand en de `Excel` kenmerk.
+De volgende tabel bevat informatie over de binding configuratie-eigenschappen die u hebt ingesteld in het bestand *Function. json* en het kenmerk `Excel`.
 
-|de eigenschap Function.JSON | De kenmerkeigenschap |Description|
+|function. json-eigenschap | Kenmerk eigenschap |Beschrijving|
 |---------|---------|----------------------|
-|**name**||Vereist: de naam van de variabele die wordt gebruikt in de functie code voor de Excel-tabel. Zie [een Excel-tabel-invoer binding gebruiken vanuit code](#excel-input-code).|
+|**naam**||Vereist: de naam van de variabele die wordt gebruikt in de functie code voor de Excel-tabel. Zie [een Excel-tabel-invoer binding gebruiken vanuit code](#excel-input-code).|
 |**type**||Vereist: moet worden ingesteld op `excel`.|
 |**direction**||Vereist: moet worden ingesteld op `in`.|
-|**persoon**|**Identity**|Vereist: de identiteit die wordt gebruikt om de actie uit te voeren. Dit kan een van de volgende waarden zijn:<ul><li><code>userFromRequest</code>-Alleen geldig met [http-trigger]. Maakt gebruik van de identiteit van de aanroepende gebruiker.</li><li><code>userFromId</code>-Gebruikt de identiteit van een eerder aangemelde gebruiker met de opgegeven ID. Zie de <code>userId</code> eigenschap.</li><li><code>userFromToken</code>-Gebruikt de identiteit die wordt vertegenwoordigd door het opgegeven token. Zie de <code>userToken</code> eigenschap.</li><li><code>clientCredentials</code>-Maakt gebruik van de identiteit van de functie-app.</li></ul>|
-|**userId**|**Naam**  |Alleen vereist als de _identiteit_ is ingesteld op `userFromId`. Een User Principal-ID die is gekoppeld aan een eerder aangemelde gebruiker.|
+|**persoon**|**Identity**|Vereist: de identiteit die wordt gebruikt om de actie uit te voeren. Dit kan een van de volgende waarden zijn:<ul><li><code>userFromRequest</code>-alleen geldig met [http-trigger]. Maakt gebruik van de identiteit van de aanroepende gebruiker.</li><li><code>userFromId</code>: maakt gebruik van de identiteit van een eerder aangemelde gebruiker met de opgegeven ID. Zie de eigenschap <code>userId</code>.</li><li><code>userFromToken</code>: maakt gebruik van de identiteit die wordt vertegenwoordigd door het opgegeven token. Zie de eigenschap <code>userToken</code>.</li><li><code>clientCredentials</code>: maakt gebruik van de identiteit van de functie-app.</li></ul>|
+|**Naam**|**Naam**  |Alleen vereist als de _identiteit_ is ingesteld op `userFromId`. Een User Principal-ID die is gekoppeld aan een eerder aangemelde gebruiker.|
 |**userToken**|**UserToken**|Alleen vereist als de _identiteit_ is ingesteld op `userFromToken`. Een token dat geldig is voor de functie-app. |
-|**Pad**|**Pad**|Vereist: het pad in OneDrive naar de Excel-werkmap.|
-|**Werkbladnaam**|**WorksheetName**|Het werk blad waarin de tabel is gevonden.|
+|**path**|**Pad**|Vereist: het pad in OneDrive naar de Excel-werkmap.|
+|**Werkbladnaam**|**Werkbladnaam**|Het werk blad waarin de tabel is gevonden.|
 |**tableName**|**TableName**|De naam van de tabel. Als u niets opgeeft, wordt de inhoud van het werk blad gebruikt.|
 
 <a name="excel-input-code"></a>
@@ -360,13 +360,13 @@ De volgende tabel beschrijft de binding configuratie-eigenschappen die u instelt
 
 Voor deze binding zijn de volgende Azure AD-machtigingen vereist:
 
-|Resource|Machtiging|
+|Bron|Machtiging|
 |--------|--------|
-|Microsoft Graph|Gebruikersbestanden lezen|
+|Microsoft Graph|Gebruikers bestanden lezen|
 
 Met de binding worden de volgende typen in .NET-functies weer gegeven:
 - teken reeks [] []
-- Microsoft.Graph.WorkbookTable
+- Micro soft. Graph. WorkbookTable
 - Aangepaste object typen (met behulp van Structured model binding)
 
 
@@ -392,9 +392,9 @@ Deze sectie bevat de volgende subsecties:
 
 ### <a name="excel-output---example"></a>Excel-uitvoer-voor beeld
 
-Zie het voorbeeld taalspecifieke:
+Zie het taalspecifieke voor beeld:
 
-* [C# script (.csx)](#excel-output---c-script-example)
+* [C#script (. CSX)](#excel-output---c-script-example)
 * [JavaScript](#excel-output---javascript-example)
 
 #### <a name="excel-output---c-script-example"></a>Excel- C# uitvoer voorbeeld script
@@ -503,34 +503,34 @@ Gebruik in [ C# class bibliotheken](functions-dotnet-class-library.md)het kenmer
 
 ### <a name="excel-output---configuration"></a>Excel-uitvoer-configuratie
 
-De volgende tabel beschrijft de binding configuratie-eigenschappen die u instelt in de *function.json* bestand en de `Excel` kenmerk.
+De volgende tabel bevat informatie over de binding configuratie-eigenschappen die u hebt ingesteld in het bestand *Function. json* en het kenmerk `Excel`.
 
-|de eigenschap Function.JSON | De kenmerkeigenschap |Description|
+|function. json-eigenschap | Kenmerk eigenschap |Beschrijving|
 |---------|---------|----------------------|
-|**name**||Vereist: de naam van de variabele die wordt gebruikt in de functie code voor het verificatie token. Zie [een Excel-tabel uitvoer binding van code gebruiken](#excel-output-code).|
+|**naam**||Vereist: de naam van de variabele die wordt gebruikt in de functie code voor het verificatie token. Zie [een Excel-tabel uitvoer binding van code gebruiken](#excel-output-code).|
 |**type**||Vereist: moet worden ingesteld op `excel`.|
 |**direction**||Vereist: moet worden ingesteld op `out`.|
-|**persoon**|**Identity**|Vereist: de identiteit die wordt gebruikt om de actie uit te voeren. Dit kan een van de volgende waarden zijn:<ul><li><code>userFromRequest</code>-Alleen geldig met [http-trigger]. Maakt gebruik van de identiteit van de aanroepende gebruiker.</li><li><code>userFromId</code>-Gebruikt de identiteit van een eerder aangemelde gebruiker met de opgegeven ID. Zie de <code>userId</code> eigenschap.</li><li><code>userFromToken</code>-Gebruikt de identiteit die wordt vertegenwoordigd door het opgegeven token. Zie de <code>userToken</code> eigenschap.</li><li><code>clientCredentials</code>-Maakt gebruik van de identiteit van de functie-app.</li></ul>|
-|**Naam** |**userId** |Alleen vereist als de _identiteit_ is ingesteld op `userFromId`. Een User Principal-ID die is gekoppeld aan een eerder aangemelde gebruiker.|
+|**persoon**|**Identity**|Vereist: de identiteit die wordt gebruikt om de actie uit te voeren. Dit kan een van de volgende waarden zijn:<ul><li><code>userFromRequest</code>-alleen geldig met [http-trigger]. Maakt gebruik van de identiteit van de aanroepende gebruiker.</li><li><code>userFromId</code>: maakt gebruik van de identiteit van een eerder aangemelde gebruiker met de opgegeven ID. Zie de eigenschap <code>userId</code>.</li><li><code>userFromToken</code>: maakt gebruik van de identiteit die wordt vertegenwoordigd door het opgegeven token. Zie de eigenschap <code>userToken</code>.</li><li><code>clientCredentials</code>: maakt gebruik van de identiteit van de functie-app.</li></ul>|
+|**Naam** |**Naam** |Alleen vereist als de _identiteit_ is ingesteld op `userFromId`. Een User Principal-ID die is gekoppeld aan een eerder aangemelde gebruiker.|
 |**userToken**|**UserToken**|Alleen vereist als de _identiteit_ is ingesteld op `userFromToken`. Een token dat geldig is voor de functie-app. |
-|**Pad**|**Pad**|Vereist: het pad in OneDrive naar de Excel-werkmap.|
-|**Werkbladnaam**|**WorksheetName**|Het werk blad waarin de tabel is gevonden.|
+|**path**|**Pad**|Vereist: het pad in OneDrive naar de Excel-werkmap.|
+|**Werkbladnaam**|**Werkbladnaam**|Het werk blad waarin de tabel is gevonden.|
 |**tableName**|**TableName**|De naam van de tabel. Als u niets opgeeft, wordt de inhoud van het werk blad gebruikt.|
-|**updateType**|**UpdateType**|Vereist: het type wijziging dat moet worden aangebracht in de tabel. Dit kan een van de volgende waarden zijn:<ul><li><code>update</code>-Vervangt de inhoud van de tabel in OneDrive.</li><li><code>append</code>-Voegt de payload toe aan het einde van de tabel in OneDrive door nieuwe rijen te maken.</li></ul>|
+|**updateType**|**UpdateType**|Vereist: het type wijziging dat moet worden aangebracht in de tabel. Dit kan een van de volgende waarden zijn:<ul><li><code>update</code>: vervangt de inhoud van de tabel in OneDrive.</li><li><code>append</code>: voegt de payload toe aan het einde van de tabel in OneDrive door nieuwe rijen te maken.</li></ul>|
 
 <a name="excel-output-code"></a>
 ### <a name="excel-output---usage"></a>Excel-uitvoer-gebruik
 
 Voor deze binding zijn de volgende Azure AD-machtigingen vereist:
 
-|Resource|Machtiging|
+|Bron|Machtiging|
 |--------|--------|
 |Microsoft Graph|Volledige toegang tot gebruikers bestanden|
 
 Met de binding worden de volgende typen in .NET-functies weer gegeven:
 - teken reeks [] []
-- Newtonsoft.Json.Linq.JObject
-- Microsoft.Graph.WorkbookTable
+- Newton soft. json. LINQ. JObject
+- Micro soft. Graph. WorkbookTable
 - Aangepaste object typen (met behulp van Structured model binding)
 
 
@@ -551,9 +551,9 @@ Deze sectie bevat de volgende subsecties:
 
 ### <a name="file-input---example"></a>Bestands invoer-voor beeld
 
-Zie het voorbeeld taalspecifieke:
+Zie het taalspecifieke voor beeld:
 
-* [C# script (.csx)](#file-input---c-script-example)
+* [C#script (. CSX)](#file-input---c-script-example)
 * [JavaScript](#file-input---javascript-example)
 
 #### <a name="file-input---c-script-example"></a>Bestands invoer- C# script voorbeeld
@@ -649,32 +649,32 @@ Gebruik in [ C# class bibliotheken](functions-dotnet-class-library.md)het kenmer
 
 ### <a name="file-input---configuration"></a>Bestands invoer-configuratie
 
-De volgende tabel beschrijft de binding configuratie-eigenschappen die u instelt in de *function.json* bestand en de `OneDrive` kenmerk.
+De volgende tabel bevat informatie over de binding configuratie-eigenschappen die u hebt ingesteld in het bestand *Function. json* en het kenmerk `OneDrive`.
 
-|de eigenschap Function.JSON | De kenmerkeigenschap |Description|
+|function. json-eigenschap | Kenmerk eigenschap |Beschrijving|
 |---------|---------|----------------------|
-|**name**||Vereist: de naam van de variabele die wordt gebruikt in de functie code voor het bestand. Zie [een OneDrive File-invoer binding gebruiken vanuit code](#onedrive-input-code).|
+|**naam**||Vereist: de naam van de variabele die wordt gebruikt in de functie code voor het bestand. Zie [een OneDrive File-invoer binding gebruiken vanuit code](#onedrive-input-code).|
 |**type**||Vereist: moet worden ingesteld op `onedrive`.|
 |**direction**||Vereist: moet worden ingesteld op `in`.|
-|**persoon**|**Identity**|Vereist: de identiteit die wordt gebruikt om de actie uit te voeren. Dit kan een van de volgende waarden zijn:<ul><li><code>userFromRequest</code>-Alleen geldig met [http-trigger]. Maakt gebruik van de identiteit van de aanroepende gebruiker.</li><li><code>userFromId</code>-Gebruikt de identiteit van een eerder aangemelde gebruiker met de opgegeven ID. Zie de <code>userId</code> eigenschap.</li><li><code>userFromToken</code>-Gebruikt de identiteit die wordt vertegenwoordigd door het opgegeven token. Zie de <code>userToken</code> eigenschap.</li><li><code>clientCredentials</code>-Maakt gebruik van de identiteit van de functie-app.</li></ul>|
-|**userId**|**Naam**  |Alleen vereist als de _identiteit_ is ingesteld op `userFromId`. Een User Principal-ID die is gekoppeld aan een eerder aangemelde gebruiker.|
+|**persoon**|**Identity**|Vereist: de identiteit die wordt gebruikt om de actie uit te voeren. Dit kan een van de volgende waarden zijn:<ul><li><code>userFromRequest</code>-alleen geldig met [http-trigger]. Maakt gebruik van de identiteit van de aanroepende gebruiker.</li><li><code>userFromId</code>: maakt gebruik van de identiteit van een eerder aangemelde gebruiker met de opgegeven ID. Zie de eigenschap <code>userId</code>.</li><li><code>userFromToken</code>: maakt gebruik van de identiteit die wordt vertegenwoordigd door het opgegeven token. Zie de eigenschap <code>userToken</code>.</li><li><code>clientCredentials</code>: maakt gebruik van de identiteit van de functie-app.</li></ul>|
+|**Naam**|**Naam**  |Alleen vereist als de _identiteit_ is ingesteld op `userFromId`. Een User Principal-ID die is gekoppeld aan een eerder aangemelde gebruiker.|
 |**userToken**|**UserToken**|Alleen vereist als de _identiteit_ is ingesteld op `userFromToken`. Een token dat geldig is voor de functie-app. |
-|**Pad**|**Pad**|Vereist: het pad in OneDrive naar het bestand.|
+|**path**|**Pad**|Vereist: het pad in OneDrive naar het bestand.|
 
 <a name="onedrive-input-code"></a>
 ### <a name="file-input---usage"></a>Bestands invoer-gebruik
 
 Voor deze binding zijn de volgende Azure AD-machtigingen vereist:
 
-|Resource|Machtiging|
+|Bron|Machtiging|
 |--------|--------|
-|Microsoft Graph|Gebruikersbestanden lezen|
+|Microsoft Graph|Gebruikers bestanden lezen|
 
 Met de binding worden de volgende typen in .NET-functies weer gegeven:
-- byte[]
+- byte []
 - Stream
 - string
-- Microsoft.Graph.DriveItem
+- Micro soft. Graph. DriveItem
 
 
 
@@ -695,9 +695,9 @@ Deze sectie bevat de volgende subsecties:
 
 ### <a name="file-output---example"></a>Bestands uitvoer-voor beeld
 
-Zie het voorbeeld taalspecifieke:
+Zie het taalspecifieke voor beeld:
 
-* [C# script (.csx)](#file-output---c-script-example)
+* [C#script (. CSX)](#file-output---c-script-example)
 * [JavaScript](#file-output---javascript-example)
 
 #### <a name="file-output---c-script-example"></a>Bestands uitvoer- C# voor beeld van script
@@ -797,32 +797,32 @@ Gebruik in [ C# class bibliotheken](functions-dotnet-class-library.md)het kenmer
 
 ### <a name="file-output---configuration"></a>Bestands uitvoer-configuratie
 
-De volgende tabel beschrijft de binding configuratie-eigenschappen die u instelt in de *function.json* bestand en de `OneDrive` kenmerk.
+De volgende tabel bevat informatie over de binding configuratie-eigenschappen die u hebt ingesteld in het bestand *Function. json* en het kenmerk `OneDrive`.
 
-|de eigenschap Function.JSON | De kenmerkeigenschap |Description|
+|function. json-eigenschap | Kenmerk eigenschap |Beschrijving|
 |---------|---------|----------------------|
-|**name**||Vereist: de naam van de variabele die wordt gebruikt in de functie code voor het bestand. Zie [een OneDrive file-uitvoer binding gebruiken vanuit code](#onedrive-output-code).|
+|**naam**||Vereist: de naam van de variabele die wordt gebruikt in de functie code voor het bestand. Zie [een OneDrive file-uitvoer binding gebruiken vanuit code](#onedrive-output-code).|
 |**type**||Vereist: moet worden ingesteld op `onedrive`.|
 |**direction**||Vereist: moet worden ingesteld op `out`.|
-|**persoon**|**Identity**|Vereist: de identiteit die wordt gebruikt om de actie uit te voeren. Dit kan een van de volgende waarden zijn:<ul><li><code>userFromRequest</code>-Alleen geldig met [http-trigger]. Maakt gebruik van de identiteit van de aanroepende gebruiker.</li><li><code>userFromId</code>-Gebruikt de identiteit van een eerder aangemelde gebruiker met de opgegeven ID. Zie de <code>userId</code> eigenschap.</li><li><code>userFromToken</code>-Gebruikt de identiteit die wordt vertegenwoordigd door het opgegeven token. Zie de <code>userToken</code> eigenschap.</li><li><code>clientCredentials</code>-Maakt gebruik van de identiteit van de functie-app.</li></ul>|
-|**Naam** |**userId** |Alleen vereist als de _identiteit_ is ingesteld op `userFromId`. Een User Principal-ID die is gekoppeld aan een eerder aangemelde gebruiker.|
+|**persoon**|**Identity**|Vereist: de identiteit die wordt gebruikt om de actie uit te voeren. Dit kan een van de volgende waarden zijn:<ul><li><code>userFromRequest</code>-alleen geldig met [http-trigger]. Maakt gebruik van de identiteit van de aanroepende gebruiker.</li><li><code>userFromId</code>: maakt gebruik van de identiteit van een eerder aangemelde gebruiker met de opgegeven ID. Zie de eigenschap <code>userId</code>.</li><li><code>userFromToken</code>: maakt gebruik van de identiteit die wordt vertegenwoordigd door het opgegeven token. Zie de eigenschap <code>userToken</code>.</li><li><code>clientCredentials</code>: maakt gebruik van de identiteit van de functie-app.</li></ul>|
+|**Naam** |**Naam** |Alleen vereist als de _identiteit_ is ingesteld op `userFromId`. Een User Principal-ID die is gekoppeld aan een eerder aangemelde gebruiker.|
 |**userToken**|**UserToken**|Alleen vereist als de _identiteit_ is ingesteld op `userFromToken`. Een token dat geldig is voor de functie-app. |
-|**Pad**|**Pad**|Vereist: het pad in OneDrive naar het bestand.|
+|**path**|**Pad**|Vereist: het pad in OneDrive naar het bestand.|
 
 <a name="onedrive-output-code"></a>
 #### <a name="file-output---usage"></a>Bestands uitvoer-gebruik
 
 Voor deze binding zijn de volgende Azure AD-machtigingen vereist:
 
-|Resource|Machtiging|
+|Bron|Machtiging|
 |--------|--------|
 |Microsoft Graph|Volledige toegang tot gebruikers bestanden|
 
 Met de binding worden de volgende typen in .NET-functies weer gegeven:
-- byte[]
+- byte []
 - Stream
 - string
-- Microsoft.Graph.DriveItem
+- Micro soft. Graph. DriveItem
 
 
 
@@ -842,9 +842,9 @@ Deze sectie bevat de volgende subsecties:
 
 ### <a name="outlook-output---example"></a>Outlook-uitvoer-voor beeld
 
-Zie het voorbeeld taalspecifieke:
+Zie het taalspecifieke voor beeld:
 
-* [C# script (.csx)](#outlook-output---c-script-example)
+* [C#script (. CSX)](#outlook-output---c-script-example)
 * [JavaScript](#outlook-output---javascript-example)
 
 #### <a name="outlook-output---c-script-example"></a>Voor beeld van C# Outlook-uitvoer script
@@ -948,15 +948,15 @@ Gebruik in [ C# class bibliotheken](functions-dotnet-class-library.md)het kenmer
 
 ### <a name="outlook-output---configuration"></a>Outlook-uitvoer-configuratie
 
-De volgende tabel beschrijft de binding configuratie-eigenschappen die u instelt in de *function.json* bestand en de `Outlook` kenmerk.
+De volgende tabel bevat informatie over de binding configuratie-eigenschappen die u hebt ingesteld in het bestand *Function. json* en het kenmerk `Outlook`.
 
-|de eigenschap Function.JSON | De kenmerkeigenschap |Description|
+|function. json-eigenschap | Kenmerk eigenschap |Beschrijving|
 |---------|---------|----------------------|
-|**name**||Vereist: de naam van de variabele die wordt gebruikt in de functie code voor het e-mail bericht. Zie [een Outlook-bericht uitvoer binding van code gebruiken](#outlook-output-code).|
+|**naam**||Vereist: de naam van de variabele die wordt gebruikt in de functie code voor het e-mail bericht. Zie [een Outlook-bericht uitvoer binding van code gebruiken](#outlook-output-code).|
 |**type**||Vereist: moet worden ingesteld op `outlook`.|
 |**direction**||Vereist: moet worden ingesteld op `out`.|
-|**persoon**|**Identity**|Vereist: de identiteit die wordt gebruikt om de actie uit te voeren. Dit kan een van de volgende waarden zijn:<ul><li><code>userFromRequest</code>-Alleen geldig met [http-trigger]. Maakt gebruik van de identiteit van de aanroepende gebruiker.</li><li><code>userFromId</code>-Gebruikt de identiteit van een eerder aangemelde gebruiker met de opgegeven ID. Zie de <code>userId</code> eigenschap.</li><li><code>userFromToken</code>-Gebruikt de identiteit die wordt vertegenwoordigd door het opgegeven token. Zie de <code>userToken</code> eigenschap.</li><li><code>clientCredentials</code>-Maakt gebruik van de identiteit van de functie-app.</li></ul>|
-|**userId**|**Naam**  |Alleen vereist als de _identiteit_ is ingesteld op `userFromId`. Een User Principal-ID die is gekoppeld aan een eerder aangemelde gebruiker.|
+|**persoon**|**Identity**|Vereist: de identiteit die wordt gebruikt om de actie uit te voeren. Dit kan een van de volgende waarden zijn:<ul><li><code>userFromRequest</code>-alleen geldig met [http-trigger]. Maakt gebruik van de identiteit van de aanroepende gebruiker.</li><li><code>userFromId</code>: maakt gebruik van de identiteit van een eerder aangemelde gebruiker met de opgegeven ID. Zie de eigenschap <code>userId</code>.</li><li><code>userFromToken</code>: maakt gebruik van de identiteit die wordt vertegenwoordigd door het opgegeven token. Zie de eigenschap <code>userToken</code>.</li><li><code>clientCredentials</code>: maakt gebruik van de identiteit van de functie-app.</li></ul>|
+|**Naam**|**Naam**  |Alleen vereist als de _identiteit_ is ingesteld op `userFromId`. Een User Principal-ID die is gekoppeld aan een eerder aangemelde gebruiker.|
 |**userToken**|**UserToken**|Alleen vereist als de _identiteit_ is ingesteld op `userFromToken`. Een token dat geldig is voor de functie-app. |
 
 <a name="outlook-output-code"></a>
@@ -964,13 +964,13 @@ De volgende tabel beschrijft de binding configuratie-eigenschappen die u instelt
 
 Voor deze binding zijn de volgende Azure AD-machtigingen vereist:
 
-|Resource|Machtiging|
+|Bron|Machtiging|
 |--------|--------|
 |Microsoft Graph|E-mail verzenden als gebruiker|
 
 Met de binding worden de volgende typen in .NET-functies weer gegeven:
-- Microsoft.Graph.Message
-- Newtonsoft.Json.Linq.JObject
+- Micro soft. Graph. Message
+- Newton soft. json. LINQ. JObject
 - string
 - Aangepaste object typen (met behulp van Structured model binding)
 
@@ -981,10 +981,10 @@ Met de binding worden de volgende typen in .NET-functies weer gegeven:
 
 ## <a name="webhooks"></a>Webhooks
 
-Met webhooks kunt u reageren op gebeurtenissen in de Microsoft Graph. Voor het ondersteunen van webhooks zijn functies nodig voor het maken, vernieuwen en reageren op webhook- _abonnementen_. Voor een volledige webhook-oplossing is een combi natie van de volgende bindingen vereist:
-- Met een Microsoft Graph-webhook- [trigger](#webhook-trigger) kunt u reageren op een binnenkomende webhook.
-- Met een [invoer binding](#webhook-input) van het Microsoft Graph webhook-abonnement kunt u bestaande abonnementen weer geven en eventueel vernieuwen.
-- Met een [Microsoft Graph-koppeling](#webhook-output) van een webhook-abonnement kunt u webhook-abonnementen maken of verwijderen.
+Met webhooks kunt u reageren op gebeurtenissen in de Microsoft Graph. Voor het ondersteunen van webhooks zijn functies nodig voor het maken, vernieuwen en reageren op _webhook-abonnementen_. Voor een volledige webhook-oplossing is een combi natie van de volgende bindingen vereist:
+- Met een [Microsoft Graph-webhook-trigger](#webhook-trigger) kunt u reageren op een binnenkomende webhook.
+- Met een [invoer binding van het Microsoft Graph webhook-abonnement](#webhook-input) kunt u bestaande abonnementen weer geven en eventueel vernieuwen.
+- Met een Microsoft Graph-koppeling van een [webhook-abonnement](#webhook-output) kunt u webhook-abonnementen maken of verwijderen.
 
 Voor de bindingen zelf zijn geen Azure AD-machtigingen vereist, maar u moet machtigingen aanvragen die relevant zijn voor het bron type waarop u wilt reageren. Zie [abonnements machtigingen](https://docs.microsoft.com/graph/api/subscription-post-subscriptions?view=graph-rest-1.0)voor een lijst met de machtigingen die nodig zijn voor elk bron type.
 
@@ -1007,9 +1007,9 @@ Deze sectie bevat de volgende subsecties:
 
 ### <a name="webhook-trigger---example"></a>Webhook-trigger-voor beeld
 
-Zie het voorbeeld taalspecifieke:
+Zie het taalspecifieke voor beeld:
 
-* [C# script (.csx)](#webhook-trigger---c-script-example)
+* [C#script (. CSX)](#webhook-trigger---c-script-example)
 * [JavaScript](#webhook-trigger---javascript-example)
 
 #### <a name="webhook-trigger---c-script-example"></a>Webhook-trigger C# -script voorbeeld
@@ -1087,26 +1087,26 @@ module.exports = function (context) {
 
 ### <a name="webhook-trigger---attributes"></a>Webhook-trigger-kenmerken
 
-Gebruik in [ C# class bibliotheken](functions-dotnet-class-library.md)het kenmerk [GraphWebHookTrigger](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/MicrosoftGraphBinding/Bindings/GraphWebHookTriggerAttribute.cs) .
+Gebruik in [ C# class bibliotheken](functions-dotnet-class-library.md)het kenmerk [GraphWebhookTrigger](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/MicrosoftGraphBinding/Bindings/GraphWebhookTriggerAttribute.cs) .
 
 ### <a name="webhook-trigger---configuration"></a>Webhook-trigger-configuratie
 
-De volgende tabel beschrijft de binding configuratie-eigenschappen die u instelt in de *function.json* bestand en de `GraphWebHookTrigger` kenmerk.
+De volgende tabel bevat informatie over de binding configuratie-eigenschappen die u hebt ingesteld in het bestand *Function. json* en het kenmerk `GraphWebhookTrigger`.
 
-|de eigenschap Function.JSON | De kenmerkeigenschap |Description|
+|function. json-eigenschap | Kenmerk eigenschap |Beschrijving|
 |---------|---------|----------------------|
-|**name**||Vereist: de naam van de variabele die wordt gebruikt in de functie code voor het e-mail bericht. Zie [een Outlook-bericht uitvoer binding van code gebruiken](#outlook-output-code).|
+|**naam**||Vereist: de naam van de variabele die wordt gebruikt in de functie code voor het e-mail bericht. Zie [een Outlook-bericht uitvoer binding van code gebruiken](#outlook-output-code).|
 |**type**||Vereist: moet worden ingesteld op `graphWebhook`.|
 |**direction**||Vereist: moet worden ingesteld op `trigger`.|
-|**resourceType**|**ResourceType**|Vereist: de grafiek resource waarvoor deze functie moet reageren op webhooks. Dit kan een van de volgende waarden zijn:<ul><li><code>#Microsoft.Graph.Message</code>-wijzigingen aangebracht in Outlook-berichten.</li><li><code>#Microsoft.Graph.DriveItem</code>-Er zijn wijzigingen aangebracht in de OneDrive-hoofd items.</li><li><code>#Microsoft.Graph.Contact</code>-wijzigingen aangebracht in persoonlijke contact personen in Outlook.</li><li><code>#Microsoft.Graph.Event</code>-wijzigingen aangebracht in Outlook agenda-items.</li></ul>|
+|**Resource**|**Resource**|Vereist: de grafiek resource waarvoor deze functie moet reageren op webhooks. Dit kan een van de volgende waarden zijn:<ul><li><code>#Microsoft.Graph.Message</code>-wijzigingen aangebracht in Outlook-berichten.</li><li><code>#Microsoft.Graph.DriveItem</code>-wijzigingen aangebracht in OneDrive-hoofd items.</li><li><code>#Microsoft.Graph.Contact</code>-wijzigingen aangebracht in persoonlijke contact personen in Outlook.</li><li><code>#Microsoft.Graph.Event</code>-wijzigingen aangebracht in Outlook agenda-items.</li></ul>|
 
 > [!Note]
-> Een functie-app kan slechts één functie hebben die is geregistreerd voor een `resourceType` bepaalde waarde.
+> Een functie-app kan slechts één functie hebben die is geregistreerd voor een bepaalde `resourceType`-waarde.
 
 ### <a name="webhook-trigger---usage"></a>Webhook-trigger-gebruik
 
 Met de binding worden de volgende typen in .NET-functies weer gegeven:
-- Microsoft Graph SDK-typen die relevant zijn voor het bron type `Microsoft.Graph.Message` , `Microsoft.Graph.DriveItem`zoals of.
+- Microsoft Graph SDK-typen die relevant zijn voor het bron type, zoals `Microsoft.Graph.Message` of `Microsoft.Graph.DriveItem`.
 - Aangepaste object typen (met behulp van Structured model binding)
 
 
@@ -1126,9 +1126,9 @@ Deze sectie bevat de volgende subsecties:
 
 ### <a name="webhook-input---example"></a>Invoer van webhook-voor beeld
 
-Zie het voorbeeld taalspecifieke:
+Zie het taalspecifieke voor beeld:
 
-* [C# script (.csx)](#webhook-input---c-script-example)
+* [C#script (. CSX)](#webhook-input---c-script-example)
 * [JavaScript](#webhook-input---javascript-example)
 
 #### <a name="webhook-input---c-script-example"></a>Voor beeld van webhook-invoer- C# script
@@ -1239,26 +1239,26 @@ module.exports = function (context, req) {
 
 ### <a name="webhook-input---attributes"></a>Invoer kenmerken van webhook
 
-Gebruik in [ C# class bibliotheken](functions-dotnet-class-library.md)het kenmerk [GraphWebHookSubscription](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/MicrosoftGraphBinding/Bindings/GraphWebHookSubscriptionAttribute.cs) .
+Gebruik in [ C# class bibliotheken](functions-dotnet-class-library.md)het kenmerk [GraphWebhookSubscription](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/MicrosoftGraphBinding/Bindings/GraphWebhookSubscriptionAttribute.cs) .
 
 ### <a name="webhook-input---configuration"></a>Invoer van webhook-configuratie
 
-De volgende tabel beschrijft de binding configuratie-eigenschappen die u instelt in de *function.json* bestand en de `GraphWebHookSubscription` kenmerk.
+De volgende tabel bevat informatie over de binding configuratie-eigenschappen die u hebt ingesteld in het bestand *Function. json* en het kenmerk `GraphWebhookSubscription`.
 
-|de eigenschap Function.JSON | De kenmerkeigenschap |Description|
+|function. json-eigenschap | Kenmerk eigenschap |Beschrijving|
 |---------|---------|----------------------|
-|**name**||Vereist: de naam van de variabele die wordt gebruikt in de functie code voor het e-mail bericht. Zie [een Outlook-bericht uitvoer binding van code gebruiken](#outlook-output-code).|
+|**naam**||Vereist: de naam van de variabele die wordt gebruikt in de functie code voor het e-mail bericht. Zie [een Outlook-bericht uitvoer binding van code gebruiken](#outlook-output-code).|
 |**type**||Vereist: moet worden ingesteld op `graphWebhookSubscription`.|
 |**direction**||Vereist: moet worden ingesteld op `in`.|
-|**filter**|**Filter**| Als deze is `userFromRequest`ingesteld op, wordt met de binding alleen abonnementen opgehaald die eigendom zijn van de aanroepende gebruiker (alleen geldig met [http-trigger]).| 
+|**Filterwebonderdelen**|**Filterwebonderdelen**| Als de waarde is ingesteld op `userFromRequest`, haalt de binding alleen abonnementen op die eigendom zijn van de aanroepende gebruiker (alleen geldig met [http-trigger]).| 
 
 ### <a name="webhook-input---usage"></a>Invoer van webhook-gebruik
 
 Met de binding worden de volgende typen in .NET-functies weer gegeven:
 - teken reeks []
 - Aangepaste object type matrices
-- Newtonsoft.Json.Linq.JObject[]
-- Microsoft.Graph.Subscription[]
+- Newton soft. json. LINQ. JObject []
+- Micro soft. Graph. abonnement []
 
 
 
@@ -1277,9 +1277,9 @@ Deze sectie bevat de volgende subsecties:
 
 ### <a name="webhook-output---example"></a>Webhook-uitvoer-voor beeld
 
-Zie het voorbeeld taalspecifieke:
+Zie het taalspecifieke voor beeld:
 
-* [C# script (.csx)](#webhook-output---c-script-example)
+* [C#script (. CSX)](#webhook-output---c-script-example)
 * [JavaScript](#webhook-output---javascript-example)
 
 #### <a name="webhook-output---c-script-example"></a>Voor beeld van de C# webhook-uitvoer-script
@@ -1380,29 +1380,29 @@ module.exports = function (context, req) {
 
 ### <a name="webhook-output---attributes"></a>Uitvoer kenmerken van de webhook
 
-Gebruik in [ C# class bibliotheken](functions-dotnet-class-library.md)het kenmerk [GraphWebHookSubscription](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/MicrosoftGraphBinding/Bindings/GraphWebHookSubscriptionAttribute.cs) .
+Gebruik in [ C# class bibliotheken](functions-dotnet-class-library.md)het kenmerk [GraphWebhookSubscription](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/MicrosoftGraphBinding/Bindings/GraphWebhookSubscriptionAttribute.cs) .
 
 ### <a name="webhook-output---configuration"></a>Uitvoer van webhook-configuratie
 
-De volgende tabel beschrijft de binding configuratie-eigenschappen die u instelt in de *function.json* bestand en de `GraphWebHookSubscription` kenmerk.
+De volgende tabel bevat informatie over de binding configuratie-eigenschappen die u hebt ingesteld in het bestand *Function. json* en het kenmerk `GraphWebhookSubscription`.
 
-|de eigenschap Function.JSON | De kenmerkeigenschap |Description|
+|function. json-eigenschap | Kenmerk eigenschap |Beschrijving|
 |---------|---------|----------------------|
-|**name**||Vereist: de naam van de variabele die wordt gebruikt in de functie code voor het e-mail bericht. Zie [een Outlook-bericht uitvoer binding van code gebruiken](#outlook-output-code).|
+|**naam**||Vereist: de naam van de variabele die wordt gebruikt in de functie code voor het e-mail bericht. Zie [een Outlook-bericht uitvoer binding van code gebruiken](#outlook-output-code).|
 |**type**||Vereist: moet worden ingesteld op `graphWebhookSubscription`.|
 |**direction**||Vereist: moet worden ingesteld op `out`.|
-|**persoon**|**Identity**|Vereist: de identiteit die wordt gebruikt om de actie uit te voeren. Dit kan een van de volgende waarden zijn:<ul><li><code>userFromRequest</code>-Alleen geldig met [http-trigger]. Maakt gebruik van de identiteit van de aanroepende gebruiker.</li><li><code>userFromId</code>-Gebruikt de identiteit van een eerder aangemelde gebruiker met de opgegeven ID. Zie de <code>userId</code> eigenschap.</li><li><code>userFromToken</code>-Gebruikt de identiteit die wordt vertegenwoordigd door het opgegeven token. Zie de <code>userToken</code> eigenschap.</li><li><code>clientCredentials</code>-Maakt gebruik van de identiteit van de functie-app.</li></ul>|
-|**userId**|**Naam**  |Alleen vereist als de _identiteit_ is ingesteld op `userFromId`. Een User Principal-ID die is gekoppeld aan een eerder aangemelde gebruiker.|
+|**persoon**|**Identity**|Vereist: de identiteit die wordt gebruikt om de actie uit te voeren. Dit kan een van de volgende waarden zijn:<ul><li><code>userFromRequest</code>-alleen geldig met [http-trigger]. Maakt gebruik van de identiteit van de aanroepende gebruiker.</li><li><code>userFromId</code>: maakt gebruik van de identiteit van een eerder aangemelde gebruiker met de opgegeven ID. Zie de eigenschap <code>userId</code>.</li><li><code>userFromToken</code>: maakt gebruik van de identiteit die wordt vertegenwoordigd door het opgegeven token. Zie de eigenschap <code>userToken</code>.</li><li><code>clientCredentials</code>: maakt gebruik van de identiteit van de functie-app.</li></ul>|
+|**Naam**|**Naam**  |Alleen vereist als de _identiteit_ is ingesteld op `userFromId`. Een User Principal-ID die is gekoppeld aan een eerder aangemelde gebruiker.|
 |**userToken**|**UserToken**|Alleen vereist als de _identiteit_ is ingesteld op `userFromToken`. Een token dat geldig is voor de functie-app. |
-|**optreden**|**Actie**|Vereist: Hiermee geeft u de actie op die de binding moet uitvoeren. Dit kan een van de volgende waarden zijn:<ul><li><code>create</code>-Registreert een nieuw abonnement.</li><li><code>delete</code>-Hiermee verwijdert u een opgegeven abonnement.</li><li><code>refresh</code>-Hiermee vernieuwt u een opgegeven abonnement om te voor komen dat het verloopt.</li></ul>|
+|**optreden**|**Actie**|Vereist: Hiermee geeft u de actie op die de binding moet uitvoeren. Dit kan een van de volgende waarden zijn:<ul><li><code>create</code>: registreert een nieuw abonnement.</li><li><code>delete</code>: Hiermee wordt een opgegeven abonnement verwijderd.</li><li><code>refresh</code>: vernieuwt een opgegeven abonnement om te voor komen dat het is verlopen.</li></ul>|
 |**subscriptionResource**|**SubscriptionResource**|Alleen vereist als de _actie_ is ingesteld op `create`. Hiermee geeft u de Microsoft Graph resource op die wordt gecontroleerd op wijzigingen. Zie [werken met webhooks in Microsoft Graph]. |
-|**changeType**|**ChangeType**|Alleen vereist als de _actie_ is ingesteld op `create`. Hiermee wordt het type wijziging in de geplaatste resource aangegeven waarmee een melding wordt gegenereerd. De ondersteunde waarden zijn: `created`, `updated`, `deleted`. Meerdere waarden kunnen worden gecombineerd met behulp van een door komma's gescheiden lijst.|
+|**Change type**|**Change type**|Alleen vereist als de _actie_ is ingesteld op `create`. Hiermee wordt het type wijziging in de geplaatste resource aangegeven waarmee een melding wordt gegenereerd. De ondersteunde waarden zijn: `created`, `updated`, `deleted`. Meerdere waarden kunnen worden gecombineerd met behulp van een door komma's gescheiden lijst.|
 
 ### <a name="webhook-output---usage"></a>Gebruik van webhook-uitvoer
 
 Met de binding worden de volgende typen in .NET-functies weer gegeven:
 - string
-- Microsoft.Graph.Subscription
+- Micro soft. Graph. abonnement
 
 
 
@@ -1422,10 +1422,10 @@ Deze sectie bevat een voor beeld voor elk van de volgende benaderingen:
 
 ### <a name="webhook-subscription-refresh---app-identity-example"></a>Webhook-abonnement vernieuwen-voor beeld van app-identiteit
 
-Zie het voorbeeld taalspecifieke:
+Zie het taalspecifieke voor beeld:
 
-* [C# script (.csx)](#app-identity-refresh---c-script-example)
-* JavaScript
+* [C#script (. CSX)](#app-identity-refresh---c-script-example)
+* Javascript
 
 ### <a name="app-identity-refresh---c-script-example"></a>Voor beeld van app C# -identiteit vernieuwen-script
 
@@ -1589,7 +1589,7 @@ public class UserSubscription {
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Meer informatie over Azure functions-triggers en bindingen](functions-triggers-bindings.md)
+> [Meer informatie over Azure functions-triggers en-bindingen](functions-triggers-bindings.md)
 
 [HTTP-trigger]: functions-bindings-http-webhook.md
 [Werken met webhooks in Microsoft Graph]: https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/webhooks

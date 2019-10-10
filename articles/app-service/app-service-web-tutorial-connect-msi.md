@@ -21,12 +21,12 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 10/09/2019
 ms.locfileid: "72177077"
 ---
-# <a name="tutorial-secure-azure-sql-database-connection-from-app-service-using-a-managed-identity"></a>Zelfstudie: Azure SQL Database-verbinding vanuit App Service beveiligen met een beheerde identiteit
+# <a name="tutorial-secure-azure-sql-database-connection-from-app-service-using-a-managed-identity"></a>Zelfstudie: De Azure SQL Database-verbinding vanuit App Service beveiligen met een beheerde identiteit
 
 [App Servicex](overview.md) biedt een uiterst schaalbare webhostingservice met self-patchfunctie in Azure. De service bevat ook een [beheerde identiteit](overview-managed-identity.md) voor uw app. Dit is een gebruiksklare oplossing voor het beveiligen van toegang tot [Azure SQL Database](/azure/sql-database/) en andere Azure-services. Beheerde identiteiten in App Service maken uw app veiliger doordat geheimen in uw app, zoals referenties in de verbindingsreeksen, worden verwijderd. In deze zelf studie gaat u beheerde identiteit toevoegen aan de voor beeld-web-app die u hebt gemaakt in een van de volgende zelf studies: 
 
-- [Zelfstudie: Bouw een ASP.NET-app in azure met SQL Database @ no__t-0
-- [Zelfstudie: Een ASP.NET Core-en SQL Database-app bouwen in Azure App Service @ no__t-0
+- [Zelf studie: een ASP.NET-app bouwen in azure met SQL Database](app-service-web-tutorial-dotnet-sqldatabase.md)
+- [Zelf studie: een ASP.NET Core-en SQL Database-app bouwen in Azure App Service](app-service-web-tutorial-dotnetcore-sqldb.md)
 
 Wanneer u klaar bent, maakt uw voorbeeld-app veilig verbinding met SQL Database zonder dat een gebruikersnaam en wachtwoorden zijn vereist.
 
@@ -52,7 +52,7 @@ Wat u leert:
 
 ## <a name="prerequisites"></a>Vereisten
 
-Dit artikel gaat verder waar u bent gebleven in [Zelfstudie: Bouw een ASP.NET-app in azure met SQL Database @ no__t-0 of [Tutorial: Bouw een ASP.NET Core-en SQL Database-app in Azure App Service @ no__t-0. Als u dat nog niet hebt gedaan, volgt u eerst een van de twee zelf studies. U kunt de stappen voor uw eigen .NET-app ook aanpassen met SQL Database.
+In dit artikel gaat u verder met de [volgende zelf studie: een ASP.net-app bouwen in azure met SQL database](app-service-web-tutorial-dotnet-sqldatabase.md) of [zelf studie: een ASP.net core en SQL database app maken in azure app service](app-service-web-tutorial-dotnetcore-sqldb.md). Als u dat nog niet hebt gedaan, volgt u eerst een van de twee zelf studies. U kunt de stappen voor uw eigen .NET-app ook aanpassen met SQL Database.
 
 Als u fouten wilt opsporen in uw app met SQL Database als de back-end, zorgt u ervoor dat de client verbinding van uw computer is toegestaan. Als dat niet het geval is, voegt u het IP-adres van de client toe aan de hand van de stappen in [IP-firewall regels op server niveau beheren met de Azure Portal](../sql-database/sql-database-firewall-configure.md#use-the-azure-portal-to-manage-server-level-ip-firewall-rules).
 
@@ -262,13 +262,13 @@ az webapp config connection-string delete --resource-group myResourceGroup --nam
 
 U hoeft nu alleen nog maar uw wijzigingen naar Azure te publiceren.
 
-**If van [Tutorial: Bouw een ASP.NET-app in azure met SQL Database @ no__t-0 @ no__t-1 en publiceer uw wijzigingen in Visual Studio. Klik in de **Solution Explorer** met de rechtermuisknop op uw project **DotNetAppSqlDb** en selecteer **Publiceren**.
+**Als u [een zelf studie hebt ontvangen: een ASP.net-app bouwen in Azure met SQL database](app-service-web-tutorial-dotnet-sqldatabase.md)** , uw wijzigingen in Visual Studio publiceren. Klik in de **Solution Explorer** met de rechtermuisknop op uw project **DotNetAppSqlDb** en selecteer **Publiceren**.
 
 ![Publiceren vanuit Solution Explorer](./media/app-service-web-tutorial-dotnet-sqldatabase/solution-explorer-publish.png)
 
 Klik op de publicatiepagina op **Publiceren**. 
 
-**If van [Tutorial: Bouw een ASP.NET Core-en SQL Database-app in Azure App Service @ no__t-0 @ no__t-1, publiceer uw wijzigingen met behulp van Git, met de volgende opdrachten:
+**Als u [een zelf studie hebt ontvangen: een ASP.net core-en SQL database-app bouwen in azure app service](app-service-web-tutorial-dotnetcore-sqldb.md)** , uw wijzigingen publiceren met git, met de volgende opdrachten:
 
 ```bash
 git commit -am "configure managed identity"

@@ -1,5 +1,5 @@
 ---
-title: Een catalogus maken en beheren in azure AD rechten beheer (preview)-Azure Active Directory
+title: Een catalogus met resources maken en beheren in azure AD rechten beheer (preview)-Azure Active Directory
 description: Meer informatie over het maken van een nieuwe container met resources en toegangs pakketten in Azure Active Directory rechten beheer (preview).
 services: active-directory
 documentationCenter: ''
@@ -12,18 +12,18 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 07/23/2019
+ms.date: 10/07/2019
 ms.author: ajburnle
 ms.reviewer: hanki
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1654e0a8cd11ac1c7a2f4ef0667d0e99187c2374
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: a1a6d7901368d19cf5ca8221bc00f426980e6f48
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68618326"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72169888"
 ---
-# <a name="create-and-manage-a-catalog-in-azure-ad-entitlement-management-preview"></a>Een catalogus maken en beheren in azure AD-rechts beheer (preview-versie)
+# <a name="create-and-manage-a-catalog-of-resources-in-azure-ad-entitlement-management-preview"></a>Een catalogus met resources maken en beheren in azure AD-rechts beheer (preview-versie)
 
 > [!IMPORTANT]
 > Azure Active Directory (Azure AD)-rechts beheer is momenteel beschikbaar als open bare preview.
@@ -36,9 +36,7 @@ Een catalogus is een container met resources en toegangs pakketten. U maakt een 
 
 **Vereiste rol:** Globale beheerder, gebruikers beheerder of maker van catalogus
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
-
-1. Klik op **Azure Active Directory** en klik vervolgens op **Identity governance**.
+1. Klik in de Azure Portal op **Azure Active Directory** en klik vervolgens op **Identity governance**.
 
 1. Klik in het menu links op **catalogi**.
 
@@ -72,11 +70,13 @@ Als u resources wilt toevoegen aan een toegangs pakket, moeten de resources aanw
 
 1. Klik op **resources toevoegen**.
 
-1. Klik op een resource type: **Groepen**, **toepassingen**of **share point-sites**.
+1. Klik op een resource type: **groepen en teams**, **toepassingen**of **share point-sites**.
 
     Als u een resource die u wilt toevoegen niet ziet of u geen resource kunt toevoegen, moet u ervoor zorgen dat u beschikt over de vereiste functie voor Azure AD-Directory en rechten beheer. Mogelijk moet u iemand met de vereiste rollen hebben om de resource toe te voegen aan uw catalogus. Zie [vereiste rollen voor het toevoegen van resources aan een catalogus](entitlement-management-delegate.md#required-roles-to-add-resources-to-a-catalog)voor meer informatie.
 
 1. Selecteer een of meer resources van het type dat u wilt toevoegen aan de catalogus.
+
+    ![Resources toevoegen aan een catalogus](./media/entitlement-management-catalog-create/catalog-add-resources.png)
 
 1. Wanneer u klaar bent, klikt u op **toevoegen**.
 
@@ -97,6 +97,26 @@ U kunt resources verwijderen uit een catalogus. Een resource kan alleen uit een 
 1. Selecteer de resources die u wilt verwijderen.
 
 1. Klik op **verwijderen** (of klik op het weglatings teken ( **...** ) en klik vervolgens op **resource verwijderen**.
+
+## <a name="add-additional-catalog-owners"></a>Aanvullende catalogus eigenaren toevoegen
+
+De gebruiker die een catalogus heeft gemaakt, wordt de eerste eigenaar van de catalogus. Als u het beheer van een catalogus wilt delegeren, voegt u gebruikers toe aan de rol van de catalogus eigenaar. Zo kunt u de verantwoordelijkheden voor het beheer van catalogi delen. 
+
+Volg deze stappen om een gebruiker toe te wijzen aan de rol van de catalogus eigenaar:
+
+**Vereiste rol:** Globale beheerder, gebruikers beheerder of catalogus eigenaar
+
+1. Klik in de Azure Portal op **Azure Active Directory** en klik vervolgens op **Identity governance**.
+
+1. Klik in het menu links op **catalogi** en open vervolgens de catalogus waaraan u beheerders wilt toevoegen.
+
+1. Klik in het menu links op **rollen en beheerders**.
+
+    ![Catalogiseert rollen en beheerders](./media/entitlement-management-shared/catalog-roles-administrators.png)
+
+1. Klik op **eigen aren toevoegen** om de leden voor deze rollen te selecteren.
+
+1. Klik op **selecteren** om deze leden toe te voegen.
 
 ## <a name="edit-a-catalog"></a>Een catalogus bewerken
 
@@ -130,5 +150,4 @@ U kunt een catalogus verwijderen, maar alleen als deze geen toegangs pakketten h
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Een maker van de catalogus toevoegen](entitlement-management-delegate.md#add-a-catalog-creator)
-- [Een toegangs pakket maken en beheren](entitlement-management-access-package-create.md)
+- [Toegangs beheer delegeren voor toegang tot pakket beheerders](entitlement-management-delegate-managers.md)

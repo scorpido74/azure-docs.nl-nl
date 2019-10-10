@@ -266,7 +266,7 @@ Let op het gebruik van para meters voor de *FolderPath*. `sourceBlobContainer` i
    client.Datasets.CreateOrUpdate(resourceGroup, dataFactoryName, blobSinkDatasetName, SinkBlobDatasetDefinition(client));
    ```
 
-## <a name="create-a-c-class-emailrequest"></a>Een C#-klasse maken: EmailRequest
+## <a name="create-a-c-class-emailrequest"></a>Maak een C#-klasse: EmailRequest
 
 Maak in C# uw project een klasse met de naam `EmailRequest`. Deze klasse definieert welke eigenschappen de pijp lijn in de hoofd aanvraag verzendt wanneer een e-mail wordt verzonden. In deze zelfstudie verzendt de pijplijn vier eigenschappen van de pijplijn naar het e-mailbericht:
 
@@ -551,7 +551,7 @@ Bouw het programma en voer het uit om een pijplijnuitvoering te activeren.
 
 ## <a name="monitor-a-pipeline-run"></a>Een pijplijnuitvoering controleren
 
-1. Voeg de volgende code aan de `Main` methode toe:
+1. Voeg de volgende code toe aan de methode `Main`:
 
     ```csharp
     // Monitor the pipeline run

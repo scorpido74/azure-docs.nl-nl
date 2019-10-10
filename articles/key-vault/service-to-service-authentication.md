@@ -75,7 +75,7 @@ Verificatie met behulp van Visual Studio:
 
 Als u problemen ondervindt met het gebruik van Visual Studio, zoals fouten met betrekking tot het token provider bestand, moet u de voor gaande stappen zorgvuldig door nemen.
 
-Mogelijk moet u uw ontwikkelaars token opnieuw verifiëren. Hiertoe selecteert u **extra**&nbsp;>&nbsp;**opties** en selecteert u vervolgens **Azure&nbsp;service&nbsp;verificatie**. Zoek naar een koppeling **opnieuw verifiëren** onder het geselecteerde account. Selecteer deze om te verifiëren.
+Mogelijk moet u uw ontwikkelaars token opnieuw verifiëren. Hiertoe selecteert u **extra**&nbsp; @ no__t-2 @ no__t-3**Opties**en selecteert u vervolgens **Azure @ no__t-6Service @ no__t-7Authentication**. Zoek naar een koppeling **opnieuw verifiëren** onder het geselecteerde account. Selecteer deze om te verifiëren.
 
 #### <a name="authenticating-with-azure-cli"></a>Verifiëren met Azure CLI
 
@@ -156,7 +156,7 @@ Er zijn drie primaire methoden voor het gebruik van een Service-Principal om uw 
     Met deze opdracht maakt u een. pem-bestand (persoonlijke sleutel) dat is opgeslagen in uw basismap. Implementeer dit certificaat in het *LocalMachine* -of het *CurrentUser* -archief.
 
     > [!Important]
-    > De CLI-opdracht genereert een. pem-bestand, maar Windows biedt alleen systeem eigen ondersteuning voor PFX-certificaten. Gebruik de Power shell-opdrachten die hier worden weer gegeven om in plaats daarvan een PFX-certificaat te genereren: [Maak een service-principal met een zelfondertekend certificaat](../active-directory/develop/howto-authenticate-service-principal-powershell.md#create-service-principal-with-self-signed-certificate). Met deze opdrachten wordt het certificaat automatisch geïmplementeerd.
+    > De CLI-opdracht genereert een. pem-bestand, maar Windows biedt alleen systeem eigen ondersteuning voor PFX-certificaten. Als u in plaats daarvan een PFX-certificaat wilt genereren, gebruikt u de Power shell-opdrachten die hier worden weer gegeven: een [Service-Principal maken met een zelfondertekend certificaat](../active-directory/develop/howto-authenticate-service-principal-powershell.md#create-service-principal-with-self-signed-certificate). Met deze opdrachten wordt het certificaat automatisch geïmplementeerd.
 
 1. Stel een omgevings variabele met de naam **AzureServicesAuthConnectionString** in op de volgende waarde:
 

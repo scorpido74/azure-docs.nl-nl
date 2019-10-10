@@ -22,7 +22,7 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 10/09/2019
 ms.locfileid: "72177032"
 ---
-# <a name="tutorial-upload-and-bind-ssl-certificates-to-azure-app-service"></a>Zelfstudie: SSL-certificaten uploaden en binden aan Azure App Service
+# <a name="tutorial-upload-and-bind-ssl-certificates-to-azure-app-service"></a>Zelf studie: SSL-certificaten uploaden en binden aan Azure App Service
 
 [Azure App Service](overview.md) biedt een uiterst schaalbare webhostingservice met self-patchfunctie. In deze zelf studie wordt uitgelegd hoe u een aangepast domein in App Service kunt beveiligen met een certificaat dat u hebt aangeschaft bij een vertrouwde certificerings instantie. U ziet ook hoe u alle persoonlijke en open bare certificaten uploadt die uw app nodig heeft. Wanneer u klaar bent, kunt u uw app openen op het HTTPS-eindpunt van uw aangepaste DNS-domein.
 
@@ -214,7 +214,7 @@ Als de bewerking is voltooid, worden in de app alle verbindingen met lagere TLS-
 
 U kunt SSL-bindingen voor uw app met scripts automatiseren met behulp van de [Azure CLI](/cli/azure/install-azure-cli) of [Azure PowerShell](/powershell/azure/overview).
 
-### <a name="azure-cli"></a>Azure-CLI
+### <a name="azure-cli"></a>Azure CLI
 
 Met de volgende opdracht wordt een geëxporteerd PFX-bestand geüpload en de vingerafdruk opgehaald.
 
@@ -278,7 +278,7 @@ Als uw app verbinding moet maken met externe bronnen en de externe bron verifica
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie heeft u het volgende geleerd:
+In deze zelfstudie hebt u het volgende geleerd:
 
 > [!div class="checklist"]
 > * De prijscategorie van uw app upgraden

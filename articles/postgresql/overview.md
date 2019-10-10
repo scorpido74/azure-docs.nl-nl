@@ -15,7 +15,7 @@ ms.lasthandoff: 10/09/2019
 ms.locfileid: "72177951"
 ---
 # <a name="what-is-azure-database-for-postgresql"></a>Wat is Azure Database for PostgreSQL?
-Azure Database for PostgreSQL is een relationele database service in de micro soft Cloud die is gebouwd voor ontwikkel aars. Het is gebaseerd op de Community-versie van de open-source [postgresql](https://www.postgresql.org/) data base-engine en is beschikbaar in twee implementatie opties: Eén server en grootschalige (Citus) (preview-versie).
+Azure Database for PostgreSQL is een relationele database service in de micro soft Cloud die is gebouwd voor ontwikkel aars. Het is gebaseerd op de Community-versie van de open-source [postgresql](https://www.postgresql.org/) data base-engine en is beschikbaar in twee implementatie opties: één server en grootschalige (Citus) (preview).
 
 ## <a name="azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL-één server
 De implementatie optie voor één server levert het volgende:
@@ -26,11 +26,11 @@ De implementatie optie voor één server levert het volgende:
 - Bewaking en waarschuwingen om snel de gevolgen van schalen te beoordelen
 - Beveiliging ter bescherming van gevoelige niet-actieve en actieve gegevens
 - Automatische back-ups en herstel naar een tijdstip tot 35 dagen geleden
-- Beveiliging en naleving van enterprise-kwaliteit
+- Beveiliging en naleving van zakelijk niveau
 
 Alle deze mogelijkheden vereisen nauwelijks beheer, en alles wordt zonder extra kosten geleverd. Zo kunt u zich richten op Rapid Application Development en uw tijd op de markt versnellen, in plaats van kost bare tijd en resources voor het beheren van virtuele machines en infra structuur. U kunt door gaan met het ontwikkelen van uw toepassing met de open-source hulpprogram ma's en het platform van uw keuze, zonder dat u nieuwe vaardig heden hoeft te leren.
 
-De implementatie optie voor één server biedt drie prijs Categorieën: Basic, Algemeen gebruik en Geoptimaliseerd voor geheugen. Elke categorie biedt verschillende resources ter ondersteuning van de workloads van uw databases. U kunt uw eerste app op een kleine database bouwen voor een paar euro met maand en vervolgens de schaal ervan aanpassen om aan de vereisten van uw oplossing te voldoen. Doordat de schaalbaarheid dynamisch is, kan uw database op een transparante manier reageren op snel veranderende resourcevereisten. U betaalt alleen voor de resources die u nodig hebt op het moment dat u ze nodig hebt. Zie  [Prijscategorieën](concepts-pricing-tiers.md) voor meer informatie.
+De implementatie optie voor één server biedt drie prijs Categorieën: Basic, Algemeen en geoptimaliseerd voor geheugen. Elke categorie biedt verschillende resources ter ondersteuning van de workloads van uw databases. U kunt uw eerste app op een kleine database bouwen voor een paar euro met maand en vervolgens de schaal ervan aanpassen om aan de vereisten van uw oplossing te voldoen. Doordat de schaalbaarheid dynamisch is, kan uw database op een transparante manier reageren op snel veranderende resourcevereisten. U betaalt alleen voor de resources die u nodig hebt op het moment dat u ze nodig hebt. Zie  [Prijscategorieën](concepts-pricing-tiers.md) voor meer informatie.
 
 ## <a name="azure-database-for-postgresql---hyperscale-citus-preview"></a>Azure Database for PostgreSQL-grootschalige (Citus) (preview-versie)
 De grootschalige (Citus)-optie schaalt query's op meerdere computers horizon taal met behulp van sharding. De query engine parallelizes binnenkomende SQL-query's op deze servers voor snellere reacties op grote gegevens sets. Het is geschikt voor toepassingen die meer schaal en prestaties vereisen, in het algemeen werk belastingen die het nader benaderen of al groter dan 100 GB aan gegevens.
@@ -45,7 +45,7 @@ Toepassingen die zijn gebouwd voor PostgreSQL kunnen gedistribueerde query's uit
 
 Houd er rekening mee dat grootschalige (Citus) zich in de open bare preview bevindt en dat er nog geen SLA wordt aangeboden.
 
-## <a name="data-security"></a>Gegevensbeveiliging
+## <a name="data-security"></a>Databeveiliging
 Azure Database for PostgreSQL de traditie van gegevens beveiliging van Azure Data Base Services worden opgeslagen. Het bevat functies die de toegang beperken, gegevens op rest en in beweging beveiligen en u helpen bij het bewaken van activiteiten. Bezoek het [Vertrouwenscentrum van Azure](https://azure.microsoft.com/overview/trusted-cloud/) voor informatie over de beveiliging van het Azure-platform.
 
 De Azure Database for PostgreSQL-service gebruikt de door FIPS 140-2 gevalideerde cryptografische module voor opslag versleuteling van gegevens in rust. Gegevens, met inbegrip van back-ups, worden op schijf versleuteld, met uitzonde ring van tijdelijke bestanden die worden gemaakt tijdens het uitvoeren van query's. De service maakt gebruik van de AES 256-bits code ring opgenomen in azure Storage-versleuteling en de sleutels worden beheerd door het systeem. Opslagversleuteling is altijd actief en kan niet worden uitgeschakeld. De Azure Database for PostgreSQL-service vereist standaard beveiligde verbindingen voor gegevens in-motion in zowel het netwerk als tussen de data base en de client toepassing.

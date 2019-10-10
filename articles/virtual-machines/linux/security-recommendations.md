@@ -1,6 +1,6 @@
 ---
 title: Beveiligings aanbevelingen voor virtuele Linux-machines in azure
-description: Beveiligings aanbevelingen voor de virtuele machines in Azure. Als u deze aanbevelingen implementeert, kunt u voldoen aan uw beveiligings verplichtingen zoals beschreven in ons gedeelde verantwoordelijkheids model en wordt de algehele beveiliging voor uw implementaties verbeterd.
+description: Pas deze aanbevelingen toe om te voldoen aan de beveiligings verplichtingen die zijn beschreven in het gedeelde verantwoordelijkheids model en om de algehele beveiliging van uw implementaties te verbeteren.
 services: virtual-machines
 author: barclayn
 manager: RKarlin
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/19/2019
 ms.author: barclayn
 ms.custom: security-recommendations
-ms.openlocfilehash: 39d83907256596e2d6904422f9bf71e435614f03
-ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
+ms.openlocfilehash: c7a313a73af7969fc203ee00644901539890f7a6
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71163980"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72174159"
 ---
 # <a name="security-recommendations-for-linux-virtual-machines-in-azure"></a>Beveiligings aanbevelingen voor virtuele Linux-machines in azure
 

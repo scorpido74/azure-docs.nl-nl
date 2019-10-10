@@ -58,9 +58,9 @@ cd C:\HDI
 
     Met deze opdracht maakt u een map met de naam `hbaseapp` op de huidige locatie, die een Basic Maven-project bevat. Met de tweede opdracht wordt de werkmap gewijzigd in `hbaseapp`. Met de derde opdracht maakt u een nieuwe map, `conf`, die later wordt gebruikt. De map @no__t 0 bevat de volgende items:
 
-    * `pom.xml`:  Het object model van het project ([pom](https://maven.apache.org/guides/introduction/introduction-to-the-pom.html)) bevat informatie en configuratie details die zijn gebruikt om het project te bouwen.
-    * `src\main\java\com\microsoft\examples`: Bevat de code van uw toepassing.
-    * `src\test\java\com\microsoft\examples`: Bevat tests voor uw toepassing.
+    * `pom.xml`: het[pom](https://maven.apache.org/guides/introduction/introduction-to-the-pom.html)(project object model) bevat informatie en configuratie details die zijn gebruikt om het project te bouwen.
+    * `src\main\java\com\microsoft\examples`: bevat de code van uw toepassing.
+    * `src\test\java\com\microsoft\examples`: bevat tests voor uw toepassing.
 
 2. Verwijder de gegenereerde voorbeeld code. Verwijder de gegenereerde test-en toepassings bestanden `AppTest.java` en `App.java` door de onderstaande opdrachten in te voeren:
 
@@ -101,8 +101,8 @@ In deze sectie wordt aangegeven dat het project **hbase-client** -en **Phoenix-k
 
 | Versie van HDInsight-cluster | Te gebruiken Apache HBase-versie |
 | --- | --- |
-| 3.6 | 1.1.2 |
-| 4.0 | 2.0.0 |
+| 3,6 | 1.1.2 |
+| 4,0 | 2.0.0 |
 
 Zie [Wat zijn de verschillende Apache Hadoop onderdelen die beschikbaar zijn met hdinsight](../hdinsight-component-versioning.md)voor meer informatie over hdinsight-versies en-onderdelen.
 

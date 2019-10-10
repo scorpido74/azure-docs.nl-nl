@@ -11,17 +11,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/24/2019
+ms.date: 10/08/2019
 ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ff5f814eac095770990ecbc0c4b01d2e0cc6f931
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: 014fcf37930800858cd70f15c19e3f494d3f3776
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68667205"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72169809"
 ---
 # <a name="high-availability-and-load-balancing-of-your-application-proxy-connectors-and-applications"></a>Hoge Beschik baarheid en taak verdeling van de connectors en toepassingen van uw toepassings proxy
 
@@ -81,16 +81,16 @@ In sommige situaties (zoals auditing, taak verdeling enz.) moet u het oorspronke
 
 ## <a name="best-practices-for-load-balancing-among-multiple-app-servers"></a>Aanbevolen procedures voor taak verdeling tussen meerdere app-servers
 Wanneer de connector groep die is toegewezen aan de toepassings proxy toepassing twee of meer connectors heeft en u de back-end-webtoepassing op meerdere servers (server farm) uitvoert, is een goede strategie voor taak verdeling vereist. Een goede strategie zorgt ervoor dat servers client aanvragen gelijkmatig ophalen en voor komen dat servers in de server farm worden gebruikt.
-### <a name="scenario-1-back-end-application-does-not-require-session-persistence"></a>Scenario 1: Voor de back-endtoepassing is geen sessie persistentie vereist
+### <a name="scenario-1-back-end-application-does-not-require-session-persistence"></a>Scenario 1: back-end-toepassing vereist geen sessie persistentie
 Het eenvoudigste scenario is dat de back-end-webtoepassing geen sessie persistentie vereist (sessie persistentie). Elke aanvraag van de gebruiker kan worden verwerkt door elk exemplaar van de back-end-toepassing in de server farm. U kunt een laag 4-load balancer gebruiken en deze configureren zonder affiniteit. Enkele opties zijn onder andere micro soft Network Load Balancing en Azure Load Balancer of een load balancer van een andere leverancier. Daarnaast kan Round-Robin DNS worden geconfigureerd.
-### <a name="scenario-2-back-end-application-requires-session-persistence"></a>Scenario 2: Back-endtoepassing vereist een sessie persistentie
+### <a name="scenario-2-back-end-application-requires-session-persistence"></a>Scenario 2: back-endtoepassing vereist een sessie persistentie
 In dit scenario vereist de back-end-webtoepassing sessie persistentie (sessie persistentie) tijdens de geverifieerde sessie. Alle aanvragen van de gebruiker moeten worden verwerkt door het exemplaar van de back-end-toepassing dat wordt uitgevoerd op dezelfde server in de server farm.
 Dit scenario kan ingewik kelder zijn omdat de client doorgaans meerdere verbindingen met de Application proxy-service tot stand brengt. Aanvragen via verschillende verbindingen kunnen aankomen op verschillende connectors en servers in de farm. Omdat elke connector een eigen IP-adres voor deze communicatie gebruikt, kan de load balancer de sessie persistentie niet garanderen op basis van het IP-adres van de connectors. De bron-IP-affiniteit kan niet worden gebruikt.
 Hier volgen enkele opties voor scenario 2:
 
-- Optie 1: De sessie persistentie baseren op een sessie cookie die is ingesteld door de load balancer. Deze optie wordt aanbevolen omdat de belasting gelijkmatig over de back-endservers kan worden verdeeld. Hiervoor is een laag 7-load balancer met deze mogelijkheid vereist, die het HTTP-verkeer kan verwerken en de SSL-verbinding kan beëindigen. U kunt Azure-toepassing gateway (sessie affiniteit) of een load balancer van een andere leverancier gebruiken.
+- Optie 1: de sessie persistentie baseren op een sessie cookie die is ingesteld door de load balancer. Deze optie wordt aanbevolen omdat de belasting gelijkmatig over de back-endservers kan worden verdeeld. Hiervoor is een laag 7-load balancer met deze mogelijkheid vereist, die het HTTP-verkeer kan verwerken en de SSL-verbinding kan beëindigen. U kunt Azure-toepassing gateway (sessie affiniteit) of een load balancer van een andere leverancier gebruiken.
 
-- Optie 2: Baseer de sessie persistentie op het veld X-doorgestuurd-voor koptekst. Deze optie vereist een laag 7-load balancer met deze mogelijkheid en dat het HTTP-verkeer kan verwerken en de SSL-verbinding kan beëindigen.  
+- Optie 2: de sessie persistentie baseren op het veld X-doorgestuurd-voor koptekst. Deze optie vereist een laag 7-load balancer met deze mogelijkheid en dat het HTTP-verkeer kan verwerken en de SSL-verbinding kan beëindigen.  
 
 - Optie 3: Configureer de back-end-toepassing om geen sessie persistentie te vereisen.
 
@@ -98,7 +98,8 @@ Raadpleeg de documentatie van uw software leverancier om inzicht te krijgen in d
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Toepassingsproxy inschakelen](application-proxy-add-on-premises-application.md)
+- [Toepassings proxy inschakelen](application-proxy-add-on-premises-application.md)
 - [Eenmalige aanmelding inschakelen](application-proxy-configure-single-sign-on-with-kcd.md)
 - [Voorwaardelijke toegang inschakelen](application-proxy-integrate-with-sharepoint-server.md)
-- [Oplossen van problemen met Application Proxy](application-proxy-troubleshoot.md)
+- [Problemen met toepassings proxy oplossen](application-proxy-troubleshoot.md)
+- [Meer informatie over hoe Azure AD-architectuur hoge Beschik baarheid ondersteunt](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-architecture)

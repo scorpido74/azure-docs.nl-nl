@@ -105,7 +105,7 @@ Voer de volgende stappen uit om Azure Active Directory voor Dynamics 365 voor kl
 
     ![Een nieuwe gebruiker maken](./media/commercial-marketplace-lead-management-instructions-dynamics/application-users.png)
 
-19. Zorg ervoor dat de gebruiker in een **nieuwe gebruiker**: GEBRUIKER van toepassing is geselecteerd. Geef een gebruikers naam, de volledige naam en het e-mail adres op voor de gebruiker die u met deze verbinding wilt gebruiken. Plak ook de **toepassings-id** voor de app die u hebt gemaakt in de Azure Portal uit stap 8. Selecteer **opslaan en sluiten** om het toevoegen van de gebruiker te volt ooien.
+19. Zorg er bij **nieuwe gebruiker**voor dat de gebruiker: toepassings gebruiker is geselecteerd. Geef een gebruikers naam, de volledige naam en het e-mail adres op voor de gebruiker die u met deze verbinding wilt gebruiken. Plak ook de **toepassings-id** voor de app die u hebt gemaakt in de Azure Portal uit stap 8. Selecteer **opslaan en sluiten** om het toevoegen van de gebruiker te volt ooien.
 
     ![Nieuwe gebruiker](./media/commercial-marketplace-lead-management-instructions-dynamics/new-user-info.png)
 
@@ -147,7 +147,7 @@ De laatste stap bestaat uit het inschakelen van de gebruiker die u hebt gemaakt 
 
 5. Zoek naar de rolnaam "Microsoft Marketplace lead Writer" en selecteer deze om de gebruiker de rol toe te wijzen.
 
-    ![Gebruikersrollen beheren](./media/commercial-marketplace-lead-management-instructions-dynamics/security-manage-user-roles.png)
+    ![Gebruikers rollen beheren](./media/commercial-marketplace-lead-management-instructions-dynamics/security-manage-user-roles.png)
 
     >[!Note]
     >Deze rol wordt gemaakt door de oplossing die u hebt geïmporteerd en heeft alleen machtigingen voor het schrijven van de leads en het bijhouden van de oplossings versie om compatibiliteit te garanderen.
@@ -156,7 +156,7 @@ De laatste stap bestaat uit het inschakelen van de gebruiker die u hebt gemaakt 
 
     ![Beveiligings rollen](./media/commercial-marketplace-lead-management-instructions-dynamics/security-roles.png)
 
-7. Zodra de beveiligingsrol is geselecteerd, selecteert u het tabblad **kern records** . Zoek naar de entiteit gebruikers interface-instellingen van gebruiker en schakel de machtigingen maken, lezen en schrijven in voor de gebruiker (1/4 Yellow cirkel) voor die entiteit door te klikken op elk van de corresponderende cirkels.
+7. Selecteer in de beveiligingsrol het tabblad **kern records** . Zoek de entiteit gebruikers interface-instellingen van gebruiker en schakel de machtigingen maken, lezen en schrijven in voor de gebruiker (1/4 Yellow cirkel) voor die entiteit door te klikken op elk van de corresponderende cirkels.
 
     ![Microsoft Marketplace lead Writer-kern records](./media/commercial-marketplace-lead-management-instructions-dynamics/marketplace-lead-writer.png)
 

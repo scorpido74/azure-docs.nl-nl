@@ -1,41 +1,41 @@
 ---
-title: Een gegevenssettoewijzing configureren
-description: Een gegevenssettoewijzing configureren
+title: Een toewijzing van een gegevensset configureren in de preview-versie van Azure data share
+description: Meer informatie over het configureren van een toewijzing van een gegevensset voor een ontvangen share met behulp van de preview-versie van Azure data share.
 author: joannapea
+ms.author: joanpo
 ms.service: data-share
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.author: joanpo
-ms.openlocfilehash: 581e1eef5f1d64e68a6501f56ce60218281c605d
-ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
+ms.openlocfilehash: 035235116240bdc6de3bc689c2430fee018b202d
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67789239"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72169140"
 ---
-# <a name="how-to-configure-a-dataset-mapping-for-a-received-share-in-azure-data-share-preview"></a>Het configureren van een toewijzing voor gegevensset voor het delen van ontvangen in het voorbeeld van Azure-gegevens delen
+# <a name="how-to-configure-a-dataset-mapping-for-a-received-share-in-azure-data-share-preview"></a>Een toewijzing van een gegevensset configureren voor een ontvangen share in de preview-versie van Azure data share
 
-In dit artikel wordt uitgelegd hoe het configureren van de toewijzing van een gegevensset voor een Share ontvangen met behulp van Azure Data Share Preview. Moet u dit doen als u een share gegevens uitnodiging geaccepteerd, maar heeft gekozen voor ' accepteren en later configureren '. Anders kan wilt wijzigen van de doel-opslagaccount voor de ontvangen gegevens. 
+In dit artikel wordt uitgelegd hoe u een toewijzing van een gegevensset configureert voor een ontvangen share met behulp van de preview-versie van Azure data share. U kunt dit doen als u een uitnodiging voor gegevens delen hebt geaccepteerd, maar u ervoor hebt gekozen om deze later te accepteren en te configureren. Als dat niet het geval is, wilt u wellicht gewoon het doel-opslag account voor uw ontvangen gegevens wijzigen. 
 
-## <a name="navigate-to-a-received-data-share"></a>Navigeer naar een share ontvangen gegevens
+## <a name="navigate-to-a-received-data-share"></a>Navigeer naar een ontvangen gegevens share
 
-In de service Azure-gegevens delen, gaat u naar uw ontvangen bestandsshare en selecteer de **Details** tabblad. 
+Navigeer in de Azure data share-service naar de share die u hebt ontvangen en selecteer het tabblad **Details** . 
 
-![Toewijzing van de gegevensset](./media/dataset-mapping.png "toewijzing voor gegevensset") 
+![]Gegevensset(./media/dataset-mapping.png "toewijzing") gegevensset 
 
-Schakel het selectievakje in naast de gegevensset die u graag wilt toewijzen, en op **en wijs deze toe aan het doel**. Mogelijk moet u eerst ontkoppelen Als u al een doelopslagaccount had geconfigureerd en u wilt wijzigen van de toewijzing aan een ander opslagaccount. 
+Schakel het selectie vakje in naast de gegevensset waaraan u een bestemming wilt toewijzen en klik op **+ toewijzen aan doel**. Mogelijk moet u eerst de toewijzing opheffen als u al een doel opslag account hebt geconfigureerd en u de toewijzing wilt wijzigen in een ander opslag account. 
 
-![Wijs deze toe aan het doel](./media/dataset-map-target.png "wijs deze toe aan het doel") 
+![Toewijzen aan doel](./media/dataset-map-target.png "toewijzing aan doel") 
 
-## <a name="select-a-new-storage-account"></a>Selecteer een nieuw opslagaccount 
+## <a name="select-a-new-storage-account"></a>Een nieuw opslag account selecteren 
 
-Selecteer een opslagaccount dat u wilt de gegevens die moeten worden neergezet in. Houd er rekening mee dat alle gegevens die al in een eerder storage-accounts toegewezen worden niet automatisch worden verplaatst naar het nieuwe opslagaccount.
+Selecteer een opslag account waarin u wilt dat de gegevens binnenkomen. Houd er rekening mee dat alle gegevens die al in de eerder toegewezen opslag accounts bestaan, niet automatisch worden verplaatst naar het nieuwe opslag account.
 
-![Storage-account als doel](./media/map-target.png "Doelopslag") 
+(./media/map-target.png "Doel opslag") van ![doel opslag account] 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als u wilt meer informatie over het delen van gegevens, blijven de [delen van uw gegevens](share-your-data.md) zelfstudie.
+Ga door naar de zelf studie [uw gegevens delen](share-your-data.md) voor meer informatie over het delen van gegevens.
 
 
 

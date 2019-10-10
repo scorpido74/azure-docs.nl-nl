@@ -20,7 +20,7 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 10/09/2019
 ms.locfileid: "72170271"
 ---
-# <a name="quickstart-create-and-deploy-azure-resource-manager-templates-by-using-the-azure-portal"></a>Quickstart: Azure Resource Manager-sjablonen maken en implementeren via Azure Portal
+# <a name="quickstart-create-and-deploy-azure-resource-manager-templates-by-using-the-azure-portal"></a>Snelstart: Azure Resource Manager-sjablonen maken en implementeren via Azure Portal
 
 Leer hoe u een Resource Manager-sjabloon kunt genereren met behulp van de Azure-portal, en hoe u de sjabloon vanuit de portal bewerkt en implementeert. Resource Manager-sjablonen zijn JSON-bestanden die de resources definiëren die u voor uw oplossing moet implementeren. Zie [Overzicht van Azure Resource Manager](resource-group-overview.md) voor inzicht in de concepten die gerelateerd zijn aan het implementeren en beheren van uw Azure-oplossingen.
 
@@ -36,16 +36,16 @@ Het maken van een nieuwe resource manager-sjabloon is geen eenvoudige taak, met 
 
 Veel ervaren sjabloon ontwikkelaars gebruiken deze methode om sjablonen te genereren wanneer ze proberen om Azure-resources te implementeren die ze niet kennen. Zie [resource groepen exporteren naar sjablonen](./manage-resource-groups-portal.md#export-resource-groups-to-templates)voor meer informatie over het exporteren van sjablonen met behulp van de portal. De andere manier om een werk sjabloon te vinden, is vanuit [Azure Quick](https://azure.microsoft.com/resources/templates/)start-sjablonen.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 2. Selecteer **Een resource maken** > **Opslag** > **Opslagaccount - blob, bestand, tabel, wachtrij**.
 
     ![Een Azure Storage-account in Azure Portal maken](./media/resource-manager-quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-create-storage-account-portal.png)
 3. Voer de volgende informatie in:
 
-    |Name|Value|
+    |Naam|Waarde|
     |----|----|
-    |**Resourcegroep**|Selecteer **Nieuwe maken** en geef een resourcegroepnaam naar keuze op. In de schermafbeelding is de naam van de resourcegroep *mystorage1016rg*. Een resourcegroep is een container voor Azure-resources. Een resourcegroep maakt het gemakkelijker Azure-resources te beheren. |
-    |**Name**|geef uw opslagaccount een unieke naam. De naam van het opslag account moet uniek zijn binnen Azure en mag alleen kleine letters en cijfers bevatten. De naam moet tussen de 3 en 24 tekens lang zijn. Als er een fout bericht wordt weer gegeven met de melding ' de naam van het opslag account ' mystorage1016 ' is al aanwezig ', gebruikt u **&lt;your-naam > opslag @ no__t-2Today's datum in MMDD >** , bijvoorbeeld **johndolestorage1016**. Zie [naamgevings regels en beperkingen](/azure/cloud-adoption-framework/ready/considerations/naming-and-tagging#resource-naming)voor meer informatie.|
+    |**Resourcegroep**|Selecteer **nieuwe maken**en geef een naam op voor de resource groep van uw keuze. In de schermafbeelding is de naam van de resourcegroep *mystorage1016rg*. Een resourcegroep is een container voor Azure-resources. Een resourcegroep maakt het gemakkelijker Azure-resources te beheren. |
+    |**Naam**|geef uw opslagaccount een unieke naam. De naam van het opslag account moet uniek zijn binnen Azure en mag alleen kleine letters en cijfers bevatten. De naam moet tussen de 3 en 24 tekens lang zijn. Als er een fout bericht wordt weer gegeven met de melding ' de naam van het opslag account ' mystorage1016 ' is al aanwezig ', gebruikt u **&lt;your-naam > opslag @ no__t-2Today's datum in MMDD >** , bijvoorbeeld **johndolestorage1016**. Zie [naamgevings regels en beperkingen](/azure/cloud-adoption-framework/ready/considerations/naming-and-tagging#resource-naming)voor meer informatie.|
 
     Voor de overige eigenschappen kunt u de standaardwaarden gebruiken.
 
@@ -156,13 +156,13 @@ Azure vereist dat elke Azure-service een unieke naam heeft. De implementatie mis
 8. Selecteer **Opslaan**.
 9. Voer de volgende waarden in:
 
-    |Name|Value|
+    |Naam|Waarde|
     |----|----|
     |**Resourcegroep**|Selecteer de naam van de resource groep die u in de laatste sectie hebt gemaakt. |
-    |**Location**|Selecteer een locatie voor het opslag account. Bijvoorbeeld **US - centraal**. |
-    |**Account type**|voer voor deze snelstart **Standard_LRS** in. |
-    |**Type**|voer voor deze snelstart **StorageV2** in. |
-    |**Toegangs niveau**|voer voor deze snelstart **Dynamisch** in. |
+    |**Locatie**|Selecteer een locatie voor het opslag account. Bijvoorbeeld **US - centraal**. |
+    |**Account type**|Voer **Standard_LRS** in voor deze Quick Start. |
+    |**Type**|Voer **StorageV2** in voor deze Quick Start. |
+    |**Toegangs niveau**|Voer **warme** in voor deze Quick Start. |
     |**HTTPS-verkeer is alleen ingeschakeld**| Selecteer voor deze snelstart **true**. |
     |**Ik ga akkoord met de bovenstaande voor waarden**|uitgeschakeld|
 
@@ -179,7 +179,7 @@ Azure vereist dat elke Azure-service een unieke naam heeft. De implementatie mis
 
     ![Resourcegroep voor implementatie van Azure Resource Manager-sjablonen](./media/resource-manager-quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-portal-deployment-resource-group.png)
 
-    U ziet dat de status van de implementatie is voltooid en er slechts één opslagaccount in de resourcegroep is. De naam van het opslagaccount is een unieke tekenreeks gegenereerd door de sjabloon. Meer informatie over Azure-opslagaccounts vindt u in [Quickstart: blobs uploaden, downloaden en vermelden met behulp van Azure Portal](../storage/blobs/storage-quickstart-blobs-portal.md).
+    U ziet dat de status van de implementatie is voltooid en er slechts één opslagaccount in de resourcegroep is. De naam van het opslagaccount is een unieke tekenreeks gegenereerd door de sjabloon. Zie voor meer informatie over het gebruik van Azure storage-accounts [Snelstart: blobs uploaden, downloaden, en noteren met behulp van de Azure Portal](../storage/blobs/storage-quickstart-blobs-portal.md).
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 

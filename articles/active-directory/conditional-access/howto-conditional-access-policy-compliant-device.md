@@ -18,7 +18,7 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 10/09/2019
 ms.locfileid: "72170051"
 ---
-# <a name="conditional-access-require-compliant-devices"></a>Voorwaardelijke toegang: Compatibele apparaten vereisen
+# <a name="conditional-access-require-compliant-devices"></a>Voorwaardelijke toegang: compatibele apparaten vereisen
 
 Organisaties die Microsoft Intune hebben geïmplementeerd, kunnen de informatie gebruiken die wordt geretourneerd door hun apparaten om apparaten te identificeren die voldoen aan de nalevings vereisten, zoals:
 

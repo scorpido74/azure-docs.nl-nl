@@ -47,12 +47,12 @@ Start een App Service-certificaat volgorde op de <a href="https://portal.azure.c
 
 Gebruik de volgende tabel om u te helpen bij het configureren van het certificaat. Klik op **Create** als u klaar bent.
 
-| Instelling | Description |
+| Instelling | Beschrijving |
 |-|-|
-| Name | Een beschrijvende naam voor uw App Service certificaat. |
+| Naam | Een beschrijvende naam voor uw App Service certificaat. |
 | Naam van het Blot-domein | Geef hier het hoofd domein op. Het verleende certificaat beveiligt *zowel* het hoofd domein als het subdomein `www`. In het verleende certificaat bevat het veld algemene naam het hoofd domein en het veld alternatieve naam voor onderwerp bevat het domein `www`. Als u alleen een subdomein wilt beveiligen, geeft u de Fully Qualified Domain Name van het subdomein hier op (bijvoorbeeld `mysubdomain.contoso.com`).|
-| Subscription | Het datacenter waar de web-app wordt gehost. |
-| Resource group | De resource groep die het certificaat bevat. U kunt een nieuwe resource groep gebruiken of dezelfde resource groep selecteren als uw App Service-app, bijvoorbeeld. |
+| Abonnement | Het datacenter waar de web-app wordt gehost. |
+| Resourcegroep | De resource groep die het certificaat bevat. U kunt een nieuwe resource groep gebruiken of dezelfde resource groep selecteren als uw App Service-app, bijvoorbeeld. |
 | Certificaat-SKU | Hiermee wordt het type certificaat bepaald dat moet worden gemaakt, of het een standaard certificaat of een [certificaat voor joker tekens](https://wikipedia.org/wiki/Wildcard_certificate)is. |
 | Juridische voor waarden | Klik om te bevestigen dat u akkoord gaat met de juridische voor waarden. De certificaten worden opgehaald van GoDaddy. |
 
@@ -60,7 +60,7 @@ Gebruik de volgende tabel om u te helpen bij het configureren van het certificaa
 
 Zodra het aankoop proces van het certificaat is voltooid, zijn er nog enkele stappen die u moet volt ooien voordat u dit certificaat kunt gaan gebruiken. 
 
-Selecteer het certificaat op de pagina [app service certificaten](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders) en klik vervolgens op **certificaat configuratie** >  @ no__t-3Step 1: Sla @ no__t-0 op.
+Selecteer het certificaat op de pagina [app service certificaten](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders) en klik vervolgens op **certificaat configuratie** > **stap 1: opslaan**.
 
 ![afbeelding van gereed voor Store invoegen in KV](./media/app-service-web-purchase-ssl-web-site/ReadyKV.png)
 
@@ -68,20 +68,20 @@ Selecteer het certificaat op de pagina [app service certificaten](https://portal
 
 Klik op de pagina **Key Vault status** op **Key Vault opslag plaats** om een nieuwe kluis te maken of kies een bestaande kluis. Als u ervoor kiest om een nieuwe kluis te maken, gebruikt u de volgende tabel om u te helpen de kluis te configureren en klikt u op **maken**.
 
-| Instelling | Description |
+| Instelling | Beschrijving |
 |-|-|
-| Name | Een unieke naam die bestaat uit alfanumerieke tekens en afbreek streepjes. |
-| Resource group | Als aanbeveling selecteert u dezelfde resource groep als uw App Service certificaat. |
-| Location | Selecteer dezelfde locatie als uw App Service-app. |
+| Naam | Een unieke naam die bestaat uit alfanumerieke tekens en afbreek streepjes. |
+| Resourcegroep | Als aanbeveling selecteert u dezelfde resource groep als uw App Service certificaat. |
+| Locatie | Selecteer dezelfde locatie als uw App Service-app. |
 | Prijscategorie | Zie [Azure Key Vault prijs informatie](https://azure.microsoft.com/pricing/details/key-vault/)voor meer informatie. |
-| Toegangsbeleid| Hiermee worden de toepassingen en de toegestane toegang tot de kluis resources gedefinieerd. U kunt deze later configureren, door de stappen [te volgen om verschillende toepassingen toegang te verlenen tot een sleutel kluis](../key-vault/key-vault-group-permissions-for-apps.md). |
+| Toegangs beleid| Hiermee worden de toepassingen en de toegestane toegang tot de kluis resources gedefinieerd. U kunt deze later configureren, door de stappen [te volgen om verschillende toepassingen toegang te verlenen tot een sleutel kluis](../key-vault/key-vault-group-permissions-for-apps.md). |
 | Toegang Virtual Network | Beperk de toegang tot de kluis tot bepaalde virtuele netwerken van Azure. U kunt dit later configureren door de stappen te volgen op [Azure Key Vault firewalls en virtuele netwerken configureren](../key-vault/key-vault-network-security.md) |
 
 Wanneer u de kluis hebt geselecteerd, sluit u de pagina **Key Vault opslag plaats** . De optie **Archief** moet een groen vinkje weer geven voor geslaagde pogingen. Laat de pagina voor de volgende stap geopend.
 
 ## <a name="verify-domain-ownership"></a>Domein eigendom verifiëren
 
-Klik op de pagina voor **certificaat configuratie** die u in de laatste stap hebt gebruikt, op **Step 2: Controleer @ no__t-0.
+Klik op de pagina **certificaat configuratie** die u in de laatste stap hebt gebruikt, op **stap 2: controleren**.
 
 ![](./media/app-service-web-purchase-ssl-web-site/verify-domain.png)
 
@@ -111,7 +111,7 @@ Nu het certificaat is geïmporteerd, moet u het binden aan een toegewezen domein
 
 Gebruik de volgende tabel om u te helpen de binding te configureren in het dialoog venster **SSL-bindingen** en klik vervolgens op **binding toevoegen**.
 
-| Instelling | Description |
+| Instelling | Beschrijving |
 |-|-|
 | Hostnaam | De domein naam waaraan u SSL-binding wilt toevoegen. |
 | Vinger afdruk van persoonlijk certificaat | Het certificaat dat moet worden gebonden. |
@@ -153,7 +153,7 @@ Zodra de vernieuwings bewerking is voltooid, klikt u op **synchroniseren**. Met 
 
 ## <a name="automate-with-scripts"></a>Automatiseren met scripts
 
-### <a name="azure-cli"></a>Azure-CLI
+### <a name="azure-cli"></a>Azure CLI
 
 [!code-azurecli[main](../../cli_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.sh?highlight=3-5 "Bind a custom SSL certificate to a web app")] 
 
@@ -161,9 +161,9 @@ Zodra de vernieuwings bewerking is voltooid, klikt u op **synchroniseren**. Met 
 
 [!code-powershell[main](../../powershell_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.ps1?highlight=1-3 "Bind a custom SSL certificate to a web app")]
 
-## <a name="more-resources"></a>Meer bronnen
+## <a name="more-resources"></a>Meer informatiebronnen
 
 * [HTTPS afdwingen](app-service-web-tutorial-custom-ssl.md#enforce-https)
 * [TLS 1.1/1.2 afdwingen](app-service-web-tutorial-custom-ssl.md#enforce-tls-versions)
 * [Gebruik een SSL-certificaat in de code van uw toepassing in Azure App Service](app-service-web-ssl-cert-load.md)
-* [FAQ: App Service certificaten @ no__t-0
+* [Veelgestelde vragen: App Service certificaten](https://docs.microsoft.com/azure/app-service/faq-configuration-and-management/)

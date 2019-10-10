@@ -32,9 +32,9 @@ Wanneer u meerdere services op hetzelfde knoop punt of cluster uitvoert, is het 
 
 Resource governance wordt ondersteund in Service Fabric conform het [service pakket](service-fabric-application-model.md). De resources die zijn toegewezen aan het service pakket kunnen verder worden verdeeld tussen code pakketten. De resource limieten die zijn opgegeven, betekenen ook de reserve ring van de resources. Service Fabric ondersteunt het opgeven van CPU en geheugen per service pakket, met twee ingebouwde [metrische gegevens](service-fabric-cluster-resource-manager-metrics.md):
 
-* *CPU* (metrische naam `servicefabric:/_CpuCores`): Een logische kern die beschikbaar is op de hostmachine. Alle kernen op alle knoop punten worden hetzelfde gewogen.
+* *CPU* (metrische naam `servicefabric:/_CpuCores`): een logische kern die beschikbaar is op de hostmachine. Alle kernen op alle knoop punten worden hetzelfde gewogen.
 
-* *Geheugen* (metrische naam `servicefabric:/_MemoryInMB`): Het geheugen wordt uitgedrukt in mega bytes en wordt toegewezen aan het fysieke geheugen dat beschikbaar is op de computer.
+* *Geheugen* (metrische naam `servicefabric:/_MemoryInMB`): het geheugen wordt uitgedrukt in mega bytes en wordt toegewezen aan het fysieke geheugen dat beschikbaar is op de computer.
 
 Voor deze twee metrische gegevens houdt [cluster resource manager](service-fabric-cluster-resource-manager-cluster-description.md) de totale cluster capaciteit bij, de belasting van elk knoop punt in het cluster en de resterende bronnen in het cluster. Deze twee meet waarden zijn gelijk aan die van andere gebruikers of aangepaste metrische gegevens. Alle bestaande functies kunnen met ze worden gebruikt:
 
@@ -56,9 +56,9 @@ Op dit moment is de som van de limieten gelijk aan de capaciteit van het knoop p
 
 Er zijn echter twee situaties waarin andere processen kunnen concurreren voor de CPU. In deze situaties kan een proces en een container uit het voor beeld het probleem met de ruis in de buur ondervinden:
 
-* *Onder andere vallende en niet-bestuurde diensten en containers*: Als een gebruiker een service maakt zonder dat hiervoor resource beheer is opgegeven, ziet de runtime dat er geen resources worden gebruikt en kan deze in het knoop punt in het voor beeld worden geplaatst. In dit geval verbruikt dit nieuwe proces effectief een CPU voor de kosten van de services die al op het knoop punt worden uitgevoerd. Er zijn twee oplossingen voor dit probleem. Combi neer geen onderhevige en niet-onderhevige Services op hetzelfde cluster, of gebruik [plaatsings beperkingen](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md) zodat deze twee typen services niet eindigen op dezelfde set knoop punten.
+* *Onder andere vallende en niet-geregeld Services en containers mengen*: als een gebruiker een service maakt zonder dat hiervoor resource beheer is opgegeven, ziet de runtime dat er geen resources worden gebruikt en kan deze in het knoop punt in het voor beeld worden geplaatst. In dit geval verbruikt dit nieuwe proces effectief een CPU voor de kosten van de services die al op het knoop punt worden uitgevoerd. Er zijn twee oplossingen voor dit probleem. Combi neer geen onderhevige en niet-onderhevige Services op hetzelfde cluster, of gebruik [plaatsings beperkingen](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md) zodat deze twee typen services niet eindigen op dezelfde set knoop punten.
 
-* *Wanneer een ander proces wordt gestart op het knoop punt, buiten service Fabric (bijvoorbeeld een OS-service)* : In dit geval is het proces buiten Service Fabric ook voor een CPU met bestaande services. De oplossing voor dit probleem is om de capaciteit van knoop punten correct in te stellen op account voor besturingssysteem overhead, zoals wordt weer gegeven in de volgende sectie.
+* *Wanneer een ander proces wordt gestart op het knoop punt, buiten service Fabric (bijvoorbeeld een OS-service)* : in dit geval is het proces buiten service Fabric ook voor CPU met bestaande services. De oplossing voor dit probleem is om de capaciteit van knoop punten correct in te stellen op account voor besturingssysteem overhead, zoals wordt weer gegeven in de volgende sectie.
 
 ## <a name="cluster-setup-for-enabling-resource-governance"></a>Cluster installatie voor het inschakelen van resource governance
 
@@ -190,12 +190,12 @@ In dit voor beeld worden standaard parameter waarden ingesteld voor de productie
 
 Naast CPU en geheugen is het mogelijk om andere resource limieten op te geven voor containers. Deze limieten zijn opgegeven op het niveau van code-pakket en worden toegepast wanneer de container wordt gestart. In tegens telling tot de CPU en het geheugen, is cluster resource manager niet op de hoogte van deze resources en worden er geen capaciteits controles of taak verdeling voor hen uitgevoerd.
 
-* *MemorySwapInMB*: De hoeveelheid wissel geheugen die een container kan gebruiken.
-* *MemoryReservationInMB*: De zachte limiet voor Memory governance die alleen wordt afgedwongen wanneer geheugen conflicten worden gedetecteerd op het knoop punt.
-* *CpuPercent*: Het percentage van de CPU dat de container kan gebruiken. Als er CPU-limieten voor het service pakket zijn opgegeven, wordt deze para meter in feite genegeerd.
-* *MaximumIOps*: De maximale IOPS die een container kan gebruiken (lezen en schrijven).
-* *MaximumIOBytesps*: De maximale IO (bytes per seconde) die een container kan gebruiken (lezen en schrijven).
-* *BlockIOWeight*: Het blok-IO-gewicht voor ten opzichte van andere containers.
+* *MemorySwapInMB*: de hoeveelheid wissel geheugen die een container kan gebruiken.
+* *MemoryReservationInMB*: de zachte limiet voor Memory governance die alleen wordt afgedwongen wanneer geheugen conflicten worden gedetecteerd op het knoop punt.
+* *CpuPercent*: het percentage CPU dat de container kan gebruiken. Als er CPU-limieten voor het service pakket zijn opgegeven, wordt deze para meter in feite genegeerd.
+* *MaximumIOps*: de maximale IOPS die een container kan gebruiken (lezen en schrijven).
+* *MaximumIOBytesps*: de maximale io (bytes per seconde) die een container kan gebruiken (lezen en schrijven).
+* *BlockIOWeight*: het blok-io-gewicht voor ten opzichte van andere containers.
 
 Deze resources kunnen worden gecombineerd met de CPU en het geheugen. Hier volgt een voor beeld van hoe u aanvullende resources voor containers kunt opgeven:
 

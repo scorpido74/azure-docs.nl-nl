@@ -21,7 +21,7 @@ ms.locfileid: "72166432"
 # <a name="azure-data-factory---naming-rules"></a>Azure Data Factory naamgevings regels
 De volgende tabel bevat naamgevings regels voor Data Factory artefacten.
 
-| Name | Unieke naam | Validatie controles |
+| Naam | Unieke naam | Validatie controles |
 |:--- |:--- |:--- |
 | Data Factory |Uniek in Microsoft Azure. Namen zijn niet hoofdletter gevoelig, dat wil zeggen, `MyDF` en `mydf` verwijzen naar dezelfde data factory. |<ul><li>Elk data factory is gekoppeld aan precies één Azure-abonnement.</li><li>Object namen moeten beginnen met een letter of een cijfer en mogen alleen letters, cijfers en het koppel teken (-) bevatten.</li><li>Elk streepje (-) moet direct worden voorafgegaan en gevolgd door een letter of cijfer. Opeenvolgende streepjes zijn niet toegestaan in container namen.</li><li>De naam kan 3-63 tekens lang zijn.</li></ul> |
 | Gekoppelde Services/gegevens sets/pijp lijnen |Uniek met in een data factory. Namen zijn niet hoofdletter gevoelig. |<ul><li>Object namen moeten beginnen met een letter, cijfer of onderstrepings teken (_).</li><li>De volgende tekens zijn niet toegestaan: '. ', ' + ', '? ', '/', ' < ', ' > ', ' * ', '% ', ' & ', ': ', ' \\ '</li><li>Streepjes (-) zijn niet toegestaan in de namen van gekoppelde services en alleen van gegevens sets.</li></ul>  |

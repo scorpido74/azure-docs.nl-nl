@@ -101,7 +101,7 @@ Voer de volgende stappen uit:
 1. Selecteer **Azure Active Directory**onder verificatie providers.
 1. Selecteer in de **beheer modus** **geavanceerd** en configureer app service verificatie volgens de volgende tabel:
 
-    |Veld|Description|
+    |Veld|Beschrijving|
     |-|-|
     |Client-id| Gebruik de **toepassings-id (client)** van de app-registratie. |
     |ID van de verlener| Gebruik `https://login.microsoftonline.com/<tenant-id>` en vervang *\<tenant-id >* door de **Directory-id (Tenant)** van de app-registratie. |

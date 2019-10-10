@@ -25,11 +25,11 @@ In deze zelfstudie voert u de volgende stappen uit:
 
 > [!div class="checklist"]
 > * Bereid de bron- en doelserver gegevensopslag voor.
-> * Een data factory maken.
+> * Een gegevensfactory maakt.
 > * Een zelf-hostende Integration Runtime maken.
 > * De Integration Runtime installeren. 
 > * Maak gekoppelde services. 
-> * Bron-, sink- en grenswaardegegevenssets maken.
+> * Maak bron-, sink- en grenswaardegegevenssets.
 > * Maken, starten en controleren van een pijplijn.
 > * Bekijk de resultaten.
 > * Gegevens in brontabellen toevoegen of bijwerken.
@@ -250,7 +250,7 @@ END
 1. Selecteer **V2 (Preview)** als de **versie**.
 1. Selecteer de **locatie** voor de gegevensfactory. In de vervolgkeuzelijst worden alleen ondersteunde locaties weergegeven. De gegevensopslagexemplaren (Azure Storage, Azure SQL Database, enzovoort) en berekeningen (HDInsight, enzovoort) die worden gebruikt in Data Factory, kunnen zich in andere regio's bevinden.
 1. Selecteer **Vastmaken aan dashboard**.     
-1. Klik op **Create**.      
+1. Klik op **Maken**.      
 1. Op het dashboard ziet u de volgende tegel met de status: **Gegevensfactory implementeren**. 
 
     ![tegel met de status 'gegevensfactory implementeren'](media/tutorial-incremental-copy-multiple-tables-portal/deploying-data-factory.png)
@@ -280,7 +280,7 @@ Als u gegevens uit een gegevensopslag in een particulier netwerk (on-premises) n
 1. Voer **MySelfHostedIR** in bij **Name** en klik op **Next**. 
 
    ![Zelf-hostende IR-naam](./media/tutorial-incremental-copy-multiple-tables-portal/self-hosted-ir-name.png)
-1. Klik op **Klik hier om de snelle installatie voor deze computer te starten** in de sectie **Optie 1: snelle installatie**. 
+1. Klik in de sectie **Optie 1: snelle installatie** op **Klik hier om de snelle installatie voor deze computer te starten**. 
 
    ![Klik op de koppeling Snelle installatie](./media/tutorial-incremental-copy-multiple-tables-portal/click-express-setup.png)
 1. Klik in het venster **Snelle installatie van integratieruntime (zelf-hostend)** op **Sluiten**. 
@@ -328,7 +328,7 @@ In de laatste stap maakt u een gekoppelde service om uw Microsoft SQL Server-bro
 1. In het venster **New Linked Service** selecteert u **Azure SQL Database** en klikt u op **Doorgaan**. 
 1. Voer in het venster **Nieuwe gekoppelde service** de volgende stappen uit:
 
-    1. Voer **AzureSqlDatabaseLinkedService** in als **Naam**. 
+    1. Voer **AzureSqlDatabaseLinkedService** in bij **Name**. 
     1. Bij de **Servernaam** selecteert u de naam van uw Azure SQL-server in de vervolgkeuzelijst. 
     1. Bij de **Databasenaam** selecteert u de Azure SQL-database waarin u customer_table en project_table als onderdeel van de vereisten heeft gemaakt. 
     1. Bij **Gebruikersnaam** voert u de naam in van de gebruiker met toegang tot de Azure SQL-database. 
@@ -507,15 +507,15 @@ In deze pijplijn wordt een lijst met tabelnamen gebruikt als parameter. De ForEa
 1. Ga naar het tabblad **SQL-account** en selecteer **AzureSqlDatabaseLinkedService** als **Gekoppelde Service**.
 
     ![Opgeslagen-procedureactiviteit - SQL-account](./media/tutorial-incremental-copy-multiple-tables-portal/sproc-activity-sql-account.png)
-1. Ga naar het tabblad **Opgeslagen procedure** en voer de volgende stappen uit:
+1. Open het tabblad **Stored Procedure** en voer de volgende stappen uit:
 
     1. Selecteer `usp_write_watermark` als **Opgeslagen procedurenaam**. 
     1. Selecteer **Importparameter**. 
     1. Geef de volgende waarden op voor de parameters: 
 
-        | Name | Type | Value | 
+        | Naam | Type | Waarde | 
         | ---- | ---- | ----- |
-        | LastModifiedtime | DateTime | `@{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue}` |
+        | LastModifiedtime | Datum/tijd | `@{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue}` |
         | TableName | Tekenreeks | `@{activity('LookupOldWaterMarkActivity').output.firstRow.TableName}` |
     
         ![Opgeslagen-procedureactiviteit - instellingen voor de opgeslagen procedure](./media/tutorial-incremental-copy-multiple-tables-portal/sproc-activity-sproc-settings.png)
@@ -729,11 +729,11 @@ In deze zelfstudie hebt u de volgende stappen uitgevoerd:
 
 > [!div class="checklist"]
 > * Bereid de bron- en doelserver gegevensopslag voor.
-> * Een data factory maken.
+> * Een gegevensfactory maakt.
 > * Een zelf-hostende integration runtime (IR) maken.
 > * De Integration Runtime installeren.
 > * Maak gekoppelde services. 
-> * Bron-, sink- en grenswaardegegevenssets maken.
+> * Maak bron-, sink- en grenswaardegegevenssets.
 > * Maken, starten en controleren van een pijplijn.
 > * Bekijk de resultaten.
 > * Gegevens in brontabellen toevoegen of bijwerken.

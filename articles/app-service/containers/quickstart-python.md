@@ -17,7 +17,7 @@ experimental: true
 experiment_id: 1e304dc9-5add-4b
 ms.openlocfilehash: ed7e0df77abb39c07bea8946381247539afb3134
 ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/09/2019
 ms.locfileid: "72177019"
@@ -30,7 +30,7 @@ In deze Quick Start implementeert u een eenvoudige python-app voor [app service 
 
 ## <a name="prerequisites"></a>Vereisten
 
-Dit zijn de vereisten voor het voltooien van deze snelstart:
+Dit zijn de vereisten voor het voltooien van deze snelstartgids:
 
 * <a href="https://www.python.org/downloads/" target="_blank">Python 3.7 installeren</a>
 * <a href="https://git-scm.com/" target="_blank">Git installeren</a>
@@ -72,7 +72,7 @@ Druk in uw terminalvenster op **Ctrl + C** om de webserver af te sluiten.
 
 ## <a name="download-the-sample"></a>Het voorbeeld downloaden
 
-Maak een map 'snelstart' in de Cloud Shell en ga er vervolgens naartoe.
+Maak een map 'quickstart' in de Cloud Shell en ga er vervolgens naartoe.
 
 ```bash
 mkdir quickstart
@@ -80,7 +80,7 @@ mkdir quickstart
 cd $HOME/quickstart
 ```
 
-Voer vervolgens de volgende opdracht uit om de voorbeeld-app-opslagplaats te klonen naar de map 'snelstart'.
+Voer vervolgens de volgende opdracht uit om de voorbeeld-app-opslagplaats te klonen naar de map 'quickstart'.
 
 ```bash
 git clone https://github.com/Azure-Samples/python-docs-hello-world
@@ -194,10 +194,10 @@ Het linkermenu bevat een aantal pagina's voor het configureren van uw app.
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Zelfstudie: Python-web-app (Django) met PostgreSQL @ no__t-0
+> [Zelf studie: python (Django) Web-app met PostgreSQL](tutorial-python-postgresql-app.md)
 
 > [!div class="nextstepaction"]
 > [Python-app configureren](how-to-configure-python.md)
 
 > [!div class="nextstepaction"]
-> [Zelfstudie: De python-app uitvoeren in de aangepaste container @ no__t-0
+> [Zelf studie: python-app uitvoeren in een aangepaste container](tutorial-custom-docker-image.md)

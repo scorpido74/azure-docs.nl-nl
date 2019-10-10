@@ -90,7 +90,7 @@ Zie groepen en [Office 365-groepen en micro soft teams](/microsoftteams/office-3
 
     ![Toegangs pakket-resource functie toevoegen voor een groep of team](./media/entitlement-management-access-package-edit/group-role.png)
 
-1. Klik op **Toevoegen**.
+1. Klik op **Add**.
 
     Gebruikers met een bestaande toewijzing aan het toegangs pakket worden automatisch lid van deze groep of dit team wanneer ze worden toegevoegd.
 
@@ -121,7 +121,7 @@ Hier volgen enkele overwegingen bij het selecteren van een toepassing:
 
     ![Toegangs pakket-resource functie toevoegen voor een toepassing](./media/entitlement-management-access-package-edit/application-role.png)
 
-1. Klik op **Toevoegen**.
+1. Klik op **Add**.
 
     Gebruikers met bestaande toewijzingen aan het toegangs pakket krijgen automatisch toegang tot deze toepassing wanneer ze worden toegevoegd.
 
@@ -141,7 +141,7 @@ Azure AD kan gebruikers automatisch toegang geven tot een share point online-sit
 
     ![Toegangs pakket-resource functie toevoegen voor een share point online-site](./media/entitlement-management-access-package-edit/sharepoint-site-role.png)
 
-1. Klik op **Toevoegen**.
+1. Klik op **Add**.
 
     Gebruikers met bestaande toewijzingen aan het toegangs pakket krijgen automatisch toegang tot deze share point online-site wanneer ze worden toegevoegd.
 

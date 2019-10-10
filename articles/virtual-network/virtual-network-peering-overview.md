@@ -19,7 +19,7 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 10/09/2019
 ms.locfileid: "72177661"
 ---
-# <a name="virtual-network-peering"></a>Peering op virtueel netwerk
+# <a name="virtual-network-peering"></a>Virtual Network-peering
 
 Met peering op virtueel netwerk kunt u naadloos verbinding maken met [virtuele netwerken](virtual-networks-overview.md)van Azure. Nadat de virtuele netwerken zijn gekoppeld via peering, worden ze voor verbindingsdoeleinden weergegeven als één netwerk. Het verkeer tussen de virtuele machines in de gekoppelde virtuele netwerken wordt doorgestuurd via de Microsoft-backbone-infrastructuur, vergelijkbaar met de manier waarop verkeer tussen virtuele machines in hetzelfde virtuele netwerk alleen wordt gerouteerd via *privé*-IP-adressen. Azure ondersteunt:
 * VNet-peering - VNets verbinden binnen dezelfde Azure-regio
@@ -96,7 +96,7 @@ Gateway-door Voer is een peering-eigenschap waarmee een virtueel netwerk een VPN
 
 * Peering in virtuele netwerken kan tot stand worden gebracht tussen virtuele netwerken die zijn gemaakt via hetzelfde implementatiemodel of via verschillende implementatiemodellen die tot hetzelfde abonnement of tot verschillende abonnementen behoren. Volg een zelfstudie voor een van de volgende scenario's:
 
-    |Azure-implementatiemodel             | Subscription  |
+    |Azure-implementatiemodel             | Abonnement  |
     |---------                          |---------|
     |Beide in Resource Manager              |[Hetzelfde](tutorial-connect-virtual-networks-portal.md)|
     |                                   |[Verschillend](create-peering-different-subscriptions.md)|

@@ -99,7 +99,7 @@ De Aman-blog van Sharma in de [oogst van Clouds](http://harvestingclouds.com) is
 
 - Als u nog geen ervaring hebt met Azure Automation, kunt u [zich registreren](https://azure.microsoft.com/services/automation/) en [voorbeeld scripts downloaden](https://azure.microsoft.com/documentation/scripts/).
 - Zorg ervoor dat het Automation-account de volgende modules bevat:
-    - AzureRM.profile
+    - AzureRM. profile
     - AzureRM.Resources
     - AzureRM.Automation
     - AzureRM.Network
@@ -117,9 +117,9 @@ De Aman-blog van Sharma in de [oogst van Clouds](http://harvestingclouds.com) is
 
     ![Klik op de knop aanpassen](media/site-recovery-runbook-automation-new/custom-rp.png)
 
-2. Klik op de weglatings tekens (...) naast **Group 1: Start @ no__t-0 @ no__t-1**post-actie toevoegen**.
+2. Klik op het weglatings teken (...) naast **groep 1: Start** > **post actie toevoegen**.
 3. Controleer in **actie invoegen**of **script** is geselecteerd en geef een naam op voor het script (**Hallo wereld**).
-4. Geef een Automation-account op en selecteer een runbook. Klik op **OK**om het script op te slaan. Het script wordt toegevoegd aan **Group 1: Post-stap @ no__t-0.
+4. Geef een Automation-account op en selecteer een runbook. Klik op **OK**om het script op te slaan. Het script wordt toegevoegd aan **groep 1: post-stappen**.
 
 
 ## <a name="reuse-a-runbook-script"></a>Een runbook-script opnieuw gebruiken

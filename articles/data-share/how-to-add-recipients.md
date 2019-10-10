@@ -1,17 +1,17 @@
 ---
 title: Ontvangers toevoegen in azure data share preview
-description: Ontvangers toevoegen aan een bestaande gegevens share
+description: Meer informatie over het toevoegen van geadresseerden aan een bestaande gegevens share in azure data share preview.
 author: joannapea
 ms.author: joanpo
 ms.service: data-share
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: e496f67616f7ebcf4c086c8d01680b95f9cafcf8
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: 1deda63f7f440116eaf47c41fa00c8b5f7566dcf
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71320303"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72169170"
 ---
 # <a name="how-to-add-a-recipient-to-an-existing-data-share-in-azure-data-share-preview"></a>Een ontvanger toevoegen aan een bestaande gegevens share in azure data share preview
 
@@ -21,7 +21,7 @@ Zie de zelf studie [gegevens delen](share-your-data.md) voor informatie over het
 
 ## <a name="navigate-to-a-sent-data-share"></a>Navigeer naar een verzonden gegevens share
 
-In azure data share preview gaat u naar de verzonden share en selecteert u het tabblad uitnodigingen. Hier vindt u alle ontvangers van uitnodigingen voor deze gegevens share. Als u een nieuw item wilt toevoegen, klikt u op **ontvanger toevoegen**.
+In azure data share preview gaat u naar de verzonden share en selecteert u het tabblad **uitnodigingen** . hier worden alle ontvangers van uitnodigingen voor deze gegevens share weer gegeven. Als u een nieuw item wilt toevoegen, klikt u op **ontvanger toevoegen**.
 
 ![Ontvanger toevoegen](./media/how-to/how-to-add-recipients/add-recipient.png)
 

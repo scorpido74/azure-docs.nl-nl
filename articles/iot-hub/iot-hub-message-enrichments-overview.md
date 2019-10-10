@@ -94,4 +94,4 @@ Bekijk deze artikelen voor meer informatie over het routeren van berichten naar 
 
 * [IoT Hub bericht routering gebruiken om apparaat-naar-Cloud-berichten te verzenden naar verschillende eind punten](iot-hub-devguide-messages-d2c.md)
 
-* [Zelfstudie: IoT Hub route ring @ no__t-0
+* [Zelf studie: IoT Hub route ring](tutorial-routing.md)

@@ -24,7 +24,7 @@ Organisaties gebruiken verschillende Azure-Services en beheren ze via Azure Reso
 
 * Azure Portal
 * Azure PowerShell
-* Azure-CLI
+* Azure CLI
 
 Deze hulpprogram ma's kunnen uiterst privileged toegang bieden tot bronnen, waarmee u de volledige configuratie van abonnementen, Service-instellingen en abonnements facturering kunt wijzigen. Voor het beveiligen van deze geprivilegieerde resources raadt micro soft aan om multi-factor Authentication te vereisen voor elke gebruiker die toegang tot deze bronnen heeft.
 

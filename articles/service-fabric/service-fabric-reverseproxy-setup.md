@@ -29,10 +29,10 @@ Azure Portal biedt een optie om omgekeerde proxy in te scha kelen wanneer u een 
 
 Voor het configureren van een omgekeerde proxy wanneer u [een cluster met Azure Portal maakt](./service-fabric-cluster-creation-via-portal.md), moet u het volgende doen:
 
-1. In **Step 2: Cluster configuratie @ no__t-0, onder **configuratie van knooppunt type**selecteert u **omgekeerde proxy inschakelen**.
+1. Selecteer in **stap 2: cluster configuratie**, onder **configuratie van knooppunt type**de optie **omgekeerde proxy inschakelen**.
 
    ![Omgekeerde proxy inschakelen op de portal](./media/service-fabric-reverseproxy-setup/enable-rp-portal.png)
-2. Beschrijving Als u een beveiligde omgekeerde proxy wilt configureren, moet u een SSL-certificaat configureren. In **Step 3: Security @ no__t-0, in **cluster beveiligings instellingen configureren**onder **configuratie type**, selecteert u **aangepast**. Selecteer vervolgens onder **omgekeerde proxy SSL-certificaat**de optie **een SSL-certificaat voor reverse proxy toevoegen** en voer uw certificaat details in.
+2. Beschrijving Als u een beveiligde omgekeerde proxy wilt configureren, moet u een SSL-certificaat configureren. In **stap 3: beveiliging**, op **cluster beveiligings instellingen configureren**onder **configuratie type**, selecteert u **aangepast**. Selecteer vervolgens onder **omgekeerde proxy SSL-certificaat**de optie **een SSL-certificaat voor reverse proxy toevoegen** en voer uw certificaat details in.
 
    ![Beveiligde omgekeerde proxy configureren op de portal](./media/service-fabric-reverseproxy-setup/configure-rp-certificate-portal.png)
 

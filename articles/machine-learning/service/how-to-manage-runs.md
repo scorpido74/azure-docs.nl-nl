@@ -331,7 +331,7 @@ az ml run list --experiment-name experiment [?properties.author=='azureml-user' 
 
 Zie voor meer informatie over het uitvoeren van query's in azure CLI-resultaten query uitvoeren op [uitvoer van Azure cli-opdracht](https://docs.microsoft.com/cli/azure/query-azure-cli?view=azure-cli-latest).
 
-## <a name="example-notebooks"></a>Voorbeeld-laptops
+## <a name="example-notebooks"></a>Voorbeeld notitieblokken
 
 De volgende notitie blokken illustreren de concepten in dit artikel:
 
