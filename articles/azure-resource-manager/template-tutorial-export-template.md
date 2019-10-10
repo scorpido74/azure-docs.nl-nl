@@ -8,14 +8,14 @@ ms.service: azure-resource-manager
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 53c93b4e0184468ddee75613b48b887c9d07f751
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
-ms.translationtype: MT
+ms.openlocfilehash: 0564763b05dd44eb908ec00f98a97e9d4970099f
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71963791"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177588"
 ---
-# <a name="tutorial-use-exported-template-from-the-azure-portal"></a>Zelfstudie: Geëxporteerde sjabloon van de Azure Portal gebruiken
+# <a name="tutorial-use-exported-template-from-the-azure-portal"></a>Zelf studie: geëxporteerde sjabloon uit het Azure Portal gebruiken
 
 In deze zelfstudie reeks hebt u een sjabloon gemaakt voor het implementeren van een Azure-opslag account. In de volgende twee zelf studies voegt u een *app service-abonnement* en een *website*toe. In plaats van helemaal nieuwe sjablonen te maken, leert u hoe u sjablonen uit de Azure Portal exporteert en hoe u voorbeeld sjablonen uit de [Azure Quick](/resources/templates/)start-sjablonen gebruikt. U kunt deze sjablonen aanpassen voor uw gebruik. Deze zelf studie is gericht op het exporteren van sjablonen en het aanpassen van het resultaat voor uw sjabloon. Het duurt ongeveer **14 minuten** om te volt ooien.
 
@@ -35,34 +35,34 @@ Deze sjabloon werkt goed voor het implementeren van opslag accounts, maar mogeli
 
 ## <a name="create-app-service-plan"></a>Een App Service-plan maken
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Selecteer **Een resource maken**.
 1. In **de Marketplace doorzoeken**voert u **app service plan**in en selecteert u vervolgens **app service plan**.  Selecteer geen **app service plan (klassiek)**
 1. Selecteer **Maken**.
 1. Voer
 
     - **Abonnement**: selecteer uw Azure-abonnement.
-    - **Resourcegroep**: Selecteer **nieuwe maken** en geef een naam op. Geef een andere naam op voor de resource groep dan het account dat u in deze zelfstudie reeks hebt gebruikt.
+    - **Resource groep**: Selecteer **nieuwe maken** en geef een naam op. Geef een andere naam op voor de resource groep dan het account dat u in deze zelfstudie reeks hebt gebruikt.
     - **Naam**: Voer een naam in voor het app service-plan.
     - **Besturings systeem**: Selecteer **Linux**.
     - **Regio**: Selecteer een Azure-locatie. Bijvoorbeeld **US - centraal**.
-    - **Prijs categorie**: als u kosten wilt besparen, wijzigt u de SKU in **Basic**.
+    - **Prijs categorie**: als u kosten wilt besparen, wijzigt u de SKU in **Basic B1** (onder dev/test).
 
     ![Sjabloon portal voor het exporteren van Resource Manager-sjablonen](./media/template-tutorial-export-template/resource-manager-template-export.png)
 1. Selecteer **controleren en maken**.
 1. Selecteer **Maken**. Het duurt enkele minuten om de resource te maken.
 
-## <a name="export-template"></a>Sjabloon exporteren
+## <a name="export-the-template"></a>De sjabloon exporteren
 
 1. Selecteer **Ga naar resource**.
 
-    ![Naar de resource gaan](./media/template-tutorial-export-template/resource-manager-template-export-go-to-resource.png)
+    ![Ga naar resource](./media/template-tutorial-export-template/resource-manager-template-export-go-to-resource.png)
 
 1. Selecteer **sjabloon exporteren**.
 
     ![Sjabloon voor exporteren van Resource Manager-sjabloon](./media/template-tutorial-export-template/resource-manager-template-export-template.png)
 
-   De functie sjabloon exporteren neemt de huidige status van een resource en genereert een sjabloon om deze te implementeren. Het exporteren van een sjabloon kan handig zijn als u snel de JSON wilt ophalen die u nodig hebt om een resource te implementeren.
+   De functie sjabloon exporteren neemt de huidige status van een resource en genereert een sjabloon om deze te implementeren. Het exporteren van een sjabloon kan een handige manier zijn om snel de JSON te krijgen die u nodig hebt om een resource te implementeren.
 
 1. Kopieer de definitie van **micro soft. web/server farms** en de parameter definitie naar uw sjabloon.
 
@@ -71,7 +71,7 @@ Deze sjabloon werkt goed voor het implementeren van opslag accounts, maar mogeli
 > [!IMPORTANT]
 > De geëxporteerde sjabloon is doorgaans uitgebreider dan u mogelijk wilt bij het maken van een sjabloon. Het SKU-object in de geëxporteerde sjabloon heeft bijvoorbeeld vijf eigenschappen. Deze sjabloon werkt, maar u kunt gewoon de eigenschap **name** gebruiken. U kunt beginnen met de geëxporteerde sjabloon en deze vervolgens aanpassen aan uw vereisten.
 
-## <a name="revise-existing-template"></a>Bestaande sjabloon herzien
+## <a name="revise-the-existing-template"></a>De bestaande sjabloon herzien
 
 De geëxporteerde sjabloon biedt u de meeste benodigde JSON, maar u moet deze aanpassen voor uw sjabloon. Let vooral op verschillen in para meters en variabelen tussen uw sjabloon en de geëxporteerde sjabloon. Het export proces kent uiteraard niet de para meters en variabelen die u al hebt gedefinieerd in uw sjabloon.
 
@@ -81,7 +81,7 @@ Kopieer het hele bestand en vervang de sjabloon door de inhoud ervan.
 
 [!code-json[](~/resourcemanager-templates/get-started-with-templates/export-template/azuredeploy.json?range=1-77&highlight=28-31,50-69)]
 
-## <a name="deploy-template"></a>Sjabloon implementeren
+## <a name="deploy-the-template"></a>De sjabloon implementeren
 
 Gebruik Azure CLI of Azure PowerShell voor het implementeren van een sjabloon.
 
@@ -98,7 +98,7 @@ New-AzResourceGroupDeployment `
   -storageSKU Standard_LRS
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure-CLI](#tab/azure-cli)
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli
 az group deployment create \
@@ -114,7 +114,7 @@ az group deployment create \
 
 U kunt de implementatie controleren door de resource groep te verkennen van de Azure Portal.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Selecteer **resource groepen**in het menu links.
 1. Selecteer de resource groep die u hebt geïmplementeerd.
 1. De resource groep bevat een opslag account en een App Service plan.

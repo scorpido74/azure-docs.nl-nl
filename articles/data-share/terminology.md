@@ -1,27 +1,27 @@
 ---
 title: Preview-terminologie van Azure data share
-description: Preview-terminologie van Azure data share
+description: Meer informatie over algemene termen die worden gebruikt voor het beschrijven van resources die worden gebruikt in azure data share Preview (gegevens provider, gegevens verbruiker, gegevens share, share abonnement, moment opname, uitnodiging, ontvanger)
 author: joannapea
+ms.author: joanpo
 ms.service: data-share
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.author: joanpo
-ms.openlocfilehash: b78a1b250f46c2ddd2b36e19590c4a94ca3ab3fb
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: dd3235b7d87d8e02f44a440741b90f675263d147
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70844699"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72166274"
 ---
 # <a name="azure-data-share-preview-concepts"></a>Azure data share preview-concepten 
 
 Azure data share preview introduceert een aantal nieuwe terminologie met betrekking tot het delen van gegevens. In dit artikel worden enkele veelgebruikte termen beschreven die in de service kunnen worden gebruikt. 
 
-## <a name="data-provider"></a>Gegevensprovider
+## <a name="data-provider"></a>Gegevens provider
 
 Een gegevens provider is de organisatie die gegevens deelt met hun consumenten. Doorgaans kan de gegevens provider een eigenaar of een curator van de gegevens zijn. Gegevens providers willen gegevens van verschillende typen delen. Enkele voor beelden van gegevens die een gegevens provider kan delen, zijn onbewerkte gegevens, zoals een verkoop punt of een time series-gegevens. Het is ook mogelijk dat een gegevens provider vooraf verwerkte, gecuratore gegevens die al analyse en inzichten bevatten delen. 
 
-## <a name="data-consumer"></a>Gegevensverbruiker 
+## <a name="data-consumer"></a>Gegevens verbruiker 
 
 Een gegevens consument is de organisatie die gegevens van een gegevens provider ontvangt. De gegevens verbruiker kan de gedeelde gegevens ook samen voegen met hun eigen gegevens om inzichten te verkrijgen. In sommige gevallen kan de gegevens verbruiker gegevens ontvangen die al zijn verwerkt. 
 
@@ -47,9 +47,9 @@ Een gegevens provider kan een moment opname-instelling voor een gegevens share i
 
 Als een gegevens provider deze instelling inschakelt, kan een interval voor een terugkeer patroon worden geselecteerd. Het interval voor het terugkeer patroon kan elk uur of dagelijks zijn. 
 
-Een gegevens verbruiker heeft de mogelijkheid om zich aan te melden bij dit momentopname schema voor het ontvangen van incrementele updates, waaronder alle gegevens die zijn gewijzigd sinds de eerste keer een nieuwe moment opname heeft gegenereerd. 
+Een gegevens verbruiker heeft de optie om deel te nemen aan dit momentopname schema om incrementele updates te ontvangen, waaronder alle gegevens die zijn gewijzigd sinds de eerste keer een nieuwe moment opname heeft gegenereerd. 
 
-## <a name="invitation"></a>Uitnodiging
+## <a name="invitation"></a>Nodig
 
 Een gegevens provider kan meerdere ontvangers uitnodigen voor hun gegevens share. Ze kunnen dit doen door ontvangers toe te voegen aan de gegevens share. Uitnodigingen kunnen ook worden toegevoegd nadat een gegevens share is gemaakt. 
 
@@ -57,7 +57,7 @@ Een gegevens provider kan een uitnodiging verwijderen nadat deze is verzonden al
 
 Uitnodigingen kunnen Maxi maal vijf keer per dag worden verzonden. 
 
-## <a name="recipient"></a>Geadresseerde
+## <a name="recipient"></a>Ontvanger
 
 Een ontvanger is iemand die een uitnodiging voor een gegevens share ontvangt. Normaal gesp roken voegt een gegevens provider ontvangers toe aan de gegevens share die ze maken. Zodra de ontvanger van een uitnodiging de uitnodiging heeft geaccepteerd, worden deze een gegevens consument.  
 

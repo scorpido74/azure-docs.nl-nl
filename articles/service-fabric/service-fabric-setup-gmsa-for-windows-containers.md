@@ -13,17 +13,17 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/20/2019
-ms.author: subramar
-ms.openlocfilehash: 09994c7676de8470efff1707598ddf32a48e41a0
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.author: atsenthi
+ms.openlocfilehash: 45fc4c924a8fb794ad81529de74b98ee812f46c5
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599181"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72170427"
 ---
 # <a name="set-up-gmsa-for-windows-containers-running-on-service-fabric"></a>GMSA instellen voor Windows-containers die worden uitgevoerd op Service Fabric
 
-Voor het instellen van gMSA (door een groep beheerde service accounts), wordt een`credspec`referentie-specificatie bestand () op alle knoop punten in het cluster geplaatst. Het bestand kan worden gekopieerd op alle knoop punten met behulp van een VM-extensie.  Het `credspec` bestand moet de gMSA-account gegevens bevatten. Zie `credspec` [een referentie specificatie maken](https://docs.microsoft.com/virtualization/windowscontainers/manage-containers/manage-serviceaccounts#create-a-credential-spec)voor meer informatie over het bestand. De referentie specificatie en de `Hostname` -tag worden opgegeven in het manifest van de toepassing. Het `Hostname` label moet overeenkomen met de naam van het gMSA-account dat de container wordt uitgevoerd.  Met `Hostname` de tag kan de container zichzelf verifiëren bij andere services in het domein met behulp van Kerberos-verificatie.  In het volgende code fragment `Hostname` wordt een `credspec` voor beeld gegeven voor het opgeven en de in het manifest van de toepassing:
+Voor het instellen van gMSA (door een groep beheerde service accounts) wordt een referentie bestand voor referenties (`credspec`) op alle knoop punten in het cluster geplaatst. Het bestand kan worden gekopieerd op alle knoop punten met behulp van een VM-extensie.  Het `credspec`-bestand moet de gMSA-account gegevens bevatten. Zie [een referentie specificatie maken](https://docs.microsoft.com/virtualization/windowscontainers/manage-containers/manage-serviceaccounts#create-a-credential-spec)voor meer informatie over het `credspec`-bestand. De referentie specificatie en de code `Hostname` worden opgegeven in het manifest van de toepassing. De `Hostname`-tag moet overeenkomen met de naam van het gMSA-account dat de container wordt uitgevoerd.  Met de tag `Hostname` kan de container zichzelf verifiëren bij andere services in het domein met behulp van Kerberos-verificatie.  In het volgende code fragment wordt een voor beeld weer gegeven voor het opgeven van de `Hostname` en de `credspec` in het manifest van de toepassing:
 
 ```xml
 <Policies>

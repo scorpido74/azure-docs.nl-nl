@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: banders
-ms.openlocfilehash: 3074ed30c5e1f6edae78a8ef3c3d655e302a2663
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 629a14a08b523016981300181dc4cad4549c798f
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "70997278"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72174525"
 ---
 # <a name="open-banking-psd2-and-strong-customer-authentication-sca-for-azure-customers"></a>Open Banking (PSD2) en Sterke Klantverificatie (SCA) voor Azure-klanten
 
-Sinds 14 september 2019 zijn banken in de 31 landen van de [Europese Economische Ruimte](https://en.wikipedia.org/wiki/European_Economic_Area) verplicht om de identiteit van de persoon die een online-aankoop doet, te verifiëren voordat de betaling wordt verwerkt. Deze controle vereist meervoudige verificatie om ervoor te zorgen dat uw online-aankopen veilig en beschermd zijn. Voor sommige landen wordt de datum voor deze verificatieverplichting uitgesteld. Voor meer informatie raadpleegt u de [Veelgestelde vragen van Microsoft over PSD2](https://support.microsoft.com/en-us/help/4517854?preview).
+Vanaf 14 september 2019 zijn banken in de 31 landen van de [Europese Economische Ruimte](https://en.wikipedia.org/wiki/European_Economic_Area) verplicht om de identiteit van de persoon die een onlineaankoop doet, te verifiëren voordat de betaling wordt verwerkt. Deze controle vereist meervoudige verificatie om ervoor te zorgen dat uw online-aankopen veilig en beschermd zijn. Voor sommige landen wordt de datum voor deze verificatieverplichting uitgesteld. Voor meer informatie raadpleegt u de [Veelgestelde vragen van Microsoft over PSD2](https://support.microsoft.com/en-us/help/4517854?preview).
 
 ## <a name="what-psd2-means-for-azure-customers"></a>Wat PSD2 betekent voor Azure-klanten
 

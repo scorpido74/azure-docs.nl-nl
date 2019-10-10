@@ -11,20 +11,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: b8faf3801a2217e6ef7040a7c2b67c7e6fad8e60
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: ea3fc21891f1e4d4e744449032a4b2cfcdfbb2f0
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71709608"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177537"
 ---
 # <a name="track-microsoft-customer-agreement-azure-credit-balance"></a>Saldo van Azure-tegoed voor Microsoft-klantovereenkomst bijhouden
 
 U kunt het saldo van het Azure-tegoed voor een Microsoft-klantovereenkomst bijhouden in de Azure-portal. U kunt het tegoed gebruiken om te betalen voor kosten die niet onder dat tegoed vallen.
 
-Er worden gebruikskosten in rekening gebracht wanneer u producten gebruikt die niet onder het tegoed vallen of als u het saldo van uw tegoed overschrijdt. Zie [Producten die niet onder Azure-tegoed vallen (#producten-die-niet-onder-Azure-tegoed-vallen) voor meer informatie.
+Er worden gebruikskosten in rekening gebracht wanneer u producten gebruikt die niet onder het tegoed vallen of als u het saldo van uw tegoed overschrijdt. Zie [Producten die niet onder Azure-tegoed vallen](#products-that-arent-covered-by-azure-credits) voor meer informatie.
 
-Dit artikel is van toepassing op een factureringsrekening voor een Microsoft-klantovereenkomst. [Controleer of u toegang hebt tot een Microsoft-klantovereenkomst](#check-access-to-a-microsoft-customer-agreement).
+Dit artikel is van toepassing op een factureringsaccount voor een Microsoft-klantovereenkomst. [Controleer of u toegang hebt tot een Microsoft-klantovereenkomst](#check-access-to-a-microsoft-customer-agreement).
 
 ## <a name="check-your-credit-balance"></a>Het saldo van uw tegoed controleren
 

@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 10/02/2019
 ms.author: helohr
-ms.openlocfilehash: 83f10eb9dadfda5b87f1da287718f59da17c5110
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 1bb23e3330f2350572175733445c8ef2c5ea79bb
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71947602"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177768"
 ---
 # <a name="deploy-the-diagnostics-tool"></a>Het diagnosehulpprogramma implementeren
 
@@ -109,7 +109,7 @@ U kunt als volgt de aanbevolen prestatie meter items hand matig configureren:
 4. Daarna gaat u naar **gegevens** > **Windows-prestatie meter items** en voegt u de volgende tellers toe:
 
     -   Logische schijf (\*) \|% beschik bare ruimte
-    -   Logische schijf (C:) \\Avg. Lengte van de wachtrij voor de schijf
+    -   Logische schijf (C:) \\Avg. wachtrij lengte voor schijf
     -   Geheugen (\*) \\Available Mbytes
     -   Processor informatie (\*) \\Processor tijd
     -   Gebruikers invoer vertraging per sessie (\*) @no__t-invoer vertraging 1Max
@@ -142,9 +142,9 @@ Zorg ervoor dat uw Log Analytics-werk ruimte de vooraf geconfigureerde Windows-p
 3. Daarna gaat u naar **gegevens** > **Windows-prestatie meter items**.
 4. Zorg ervoor dat de volgende prestatie meter items zijn geconfigureerd:
 
-   - Logische schijf (\*) \|% beschik bare ruimte: Hier wordt de hoeveelheid beschik bare ruimte van de totale bruikbare ruimte op de schijf weer gegeven als een percentage.
-   - Logische schijf (C:) \\Avg. Wachtrij lengte voor schijf: De lengte van de aanvraag voor het overdragen van schijven voor uw C-station. De waarde mag niet langer zijn dan 2 gedurende een korte periode.
-   - Geheugen (\*) @no__t 1Available Mbytes: Het beschik bare geheugen voor het systeem in mega bytes.
+   - Logische schijf (\*) \|% beschik bare ruimte: geeft de hoeveelheid beschik bare ruimte van de totale bruikbare ruimte op de schijf als een percentage.
+   - Logische schijf (C:) \\Avg. wachtrij lengte voor de schijf: de lengte van de aanvraag voor de overdracht van schijven voor uw C-station. De waarde mag niet langer zijn dan 2 gedurende een korte periode.
+   - Geheugen (\*) @no__t 1Available Mbytes: het beschik bare geheugen voor het systeem in mega bytes.
    - Processor informatie (\*) \\Processor tijd: het percentage van de verstreken tijd dat de processor nodig heeft om een niet-inactieve thread uit te voeren.
    - Gebruikers invoer vertraging per sessie (\*) @no__t-invoer vertraging 1Max
 
@@ -197,7 +197,7 @@ De omleidings-URI instellen:
 
 Voordat u het hulp programma voor diagnostische gegevens beschikbaar maakt voor uw gebruikers, moet u ervoor zorgen dat ze over de volgende machtigingen beschikken:
 
-- Gebruikers hebben lees toegang nodig voor log Analytics. Zie [aan de slag met rollen, machtigingen en beveiliging met Azure monitor](/articles/azure-monitor/platform/roles-permissions-security.md)voor meer informatie.
+- Gebruikers hebben lees toegang nodig voor log Analytics. Zie [aan de slag met rollen, machtigingen en beveiliging met Azure monitor](/azure/azure-monitor/platform/roles-permissions-security)voor meer informatie.
 -  Gebruikers hebben ook lees toegang nodig voor de Windows-Tenant voor virtueel bureau blad (functie voor RDS-lezer). Zie voor meer informatie [gedelegeerde toegang in virtueel bureau blad van Windows](delegated-access-virtual-desktop.md).
 
 U moet uw gebruikers ook de volgende informatie geven:
@@ -237,22 +237,22 @@ U kunt ook communiceren met gebruikers op de sessiehost:
 - Logische schijf (\*) \|% beschik bare ruimte:
 
     - Hiermee wordt het percentage van de totale bruikbare ruimte op de logische schijf weer gegeven die vrij is.
-    - Spreek Minder dan 20% is gemarkeerd als beschadigd.
+    - Drempel waarde: minder dan 20% is gemarkeerd als beschadigd.
 
-- Logische schijf (C:) \\Avg. Wachtrij lengte voor schijf:
+- Logische schijf (C:) \\Avg. wachtrij lengte voor schijf:
 
     - Geeft de voor waarden van het opslag systeem aan.
-    - Spreek Hoger dan 5 is gemarkeerd als beschadigd.
+    - Drempel waarde: hoger dan 5 is gemarkeerd als beschadigd.
 
 - Geheugen (\*) @no__t 1Available Mbytes:
 
     - Het beschik bare geheugen voor het systeem.
-    - Spreek Minder dan 500 mega bytes gemarkeerd als beschadigd.
+    - Drempel waarde: minder dan 500 mega bytes, gemarkeerd als beschadigd.
 
 - Processor informatie (\*) \\Processor tijd:
 
-    - Spreek Meer dan 80% is gemarkeerd als beschadigd.
+    - Drempel waarde: hoger dan 80% is gemarkeerd als beschadigd.
 
 - [Gebruikers invoer vertraging per sessie (\*) @no__t-invoer vertraging 2Max](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-rdsh-performance-counters):
 
-    - Spreek Meer dan 2000 MS is gemarkeerd als beschadigd.
+    - Drempel waarde: hoger dan 2000 MS is gemarkeerd als beschadigd.

@@ -1,5 +1,5 @@
 ---
-title: 'Quickstart: Bewaken met Azure Application Insights'
+title: 'Snelstartgids: monitor met Azure-toepassing Insights'
 description: Biedt instructies om snel een Node.js-web-app in te stellen om te controleren met Application Insights
 services: application-insights
 keywords: ''
@@ -7,25 +7,25 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 07/12/2019
 ms.service: application-insights
-ms.custom: mvc, seo-javascript-september2019
+ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: 1db26002167f4b7c5b4fc19699ddb021de8ac23d
-ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
+ms.openlocfilehash: 79bd0ce90c76f95ce12662e0d496b481382e805a
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71703019"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177686"
 ---
-# <a name="quickstart-start-monitoring-your-nodejs-web-application-with-azure-application-insights"></a>Quickstart: De node. js-webtoepassing bewaken met Azure-toepassing Insights
-
-Met Azure Application Insights kunt u eenvoudig de beschikbaarheid, de prestaties en het gebruik van een webtoepassing controleren. U kunt ook snel fouten in de toepassing identificeren en er een diagnose voor uitvoeren, zonder dat u hoeft te wachten totdat een gebruiker ze heeft gerapporteerd. Vanaf de release van versie 0.20 van de SDK kunt u veelgebruikte pakketten van derden controleren, inclusief MongoDB, MySQL en Redis.
+# <a name="quickstart-start-monitoring-your-nodejs-web-application-with-azure-application-insights"></a>Quick Start: uw node. js-webtoepassing bewaken met Azure-toepassing Insights
 
 Deze snelstartgids helpt u Application Insights SDK versie 0.22 voor Node.js toe te voegen aan een bestaande Node.js-webtoepassing.
 
+Met Azure Application Insights kunt u eenvoudig de beschikbaarheid, de prestaties en het gebruik van een webtoepassing controleren. U kunt ook snel fouten in de toepassing identificeren en er een diagnose voor uitvoeren, zonder dat u hoeft te wachten totdat een gebruiker ze heeft gerapporteerd. Vanaf de release van versie 0.20 van de SDK kunt u veelgebruikte pakketten van derden controleren, inclusief MongoDB, MySQL en Redis.
+
 ## <a name="prerequisites"></a>Vereisten
 
-Dit zijn de vereisten voor het voltooien van deze snelstart:
+Dit zijn de vereisten voor het voltooien van deze snelstartgids:
 
 - U hebt een Azure-abonnement en een bestaande Node.js-webtoepassing nodig.
 
@@ -35,7 +35,7 @@ Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
-Meld u aan bij [Azure Portal](https://portal.azure.com/).
+Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
 ## <a name="enable-application-insights"></a>Application Insights inschakelen
 
@@ -52,15 +52,15 @@ Met Application Insights kunnen telemetriegegevens worden verzameld vanuit elke 
 
     | Instellingen        | Waarde           | Beschrijving  |
    | ------------- |:-------------|:-----|
-   | **Name**      | Globaal unieke waarde | Naam die de app beschrijft die u wilt controleren |
+   | **Naam**      | Globaal unieke waarde | Naam die de app beschrijft die u wilt controleren |
    | **Toepassingstype** | Node.js-toepassing | Type app dat u wilt controleren |
-   | **Location** | East US | Kies een locatie in uw buurt of in de buurt van waar de app wordt gehost |
+   | **Locatie** | US - oost | Kies een locatie in uw buurt of in de buurt van waar de app wordt gehost |
 
 2. Selecteer **Maken**.
 
 ## <a name="configure-app-insights-sdk"></a>App Insights-SDK configureren
 
-1. Selecteer **overzicht** en kopieer de instrumentatie **sleutel**van uw toepassing.
+1. Selecteer **overzicht** en kopieer de **instrumentatie sleutel**van uw toepassing.
 
    ![Nieuw App Insights-resourceformulier](./media/nodejs-quick-start/3key.png)
 
@@ -92,7 +92,7 @@ Met Application Insights kunnen telemetriegegevens worden verzameld vanuit elke 
 
    ![Toepassingskaart](./media/nodejs-quick-start/5appmap.png)
 
-3. Selecteer de ![pictogram](./media/nodejs-quick-start/006.png) weergave pictogram toepassings overzicht van app-analyse **in Analytics**.  Hierdoor wordt **Application Insights Analytics** geopend. Dit biedt een querytaal met opmaak voor het analyseren van alle gegevens die zijn verzameld met Application Insights. In dit geval wordt er een query gegenereerd waarmee het aantal aanvragen wordt weergegeven als een grafiek. U kunt uw eigen query's schrijven om andere gegevens te analyseren.
+3. Selecteer het pictogram **app Analytics** ![Application kaart pictogram @ no__t-2- **weer gave in Analytics**.  Hierdoor wordt **Application Insights Analytics** geopend. Dit biedt een querytaal met opmaak voor het analyseren van alle gegevens die zijn verzameld met Application Insights. In dit geval wordt er een query gegenereerd waarmee het aantal aanvragen wordt weergegeven als een grafiek. U kunt uw eigen query's schrijven om andere gegevens te analyseren.
 
    ![Analytics-grafiek met gebruikersaanvragen gedurende een tijdsperiode](./media/nodejs-quick-start/6analytics.png)
 

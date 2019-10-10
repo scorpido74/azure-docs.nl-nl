@@ -5,14 +5,14 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 10/03/2019
+ms.date: 10/07/2019
 ms.author: cherylmc
-ms.openlocfilehash: 430d90b2b372602072527c49796244c503778a3b
-ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
+ms.openlocfilehash: 2f847d8db983303d46b465f4f80bff65eeff632f
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71959010"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72168498"
 ---
 # <a name="virtual-wan-partners"></a>Virtuele WAN-partners
 
@@ -97,7 +97,7 @@ Het apparaatconfiguratiebestand bevat de instellingen die u dient te gebruiken o
         "Instance0":"104.45.18.186"
         "Instance1":"104.45.13.195"
         ```
-    * **Informatie over verbindingsconfiguratie van VPN-gateway**, zoals BGP, vooraf-gedeelde sleutels, enzovoort. De PSK is de vooraf gedeelde sleutel die automatisch voor u wordt gegenereerd. U kunt altijd de verbinding bewerken op de pagina Overzicht om een aangepaste PSK in te stellen.
+    * **Details van de Vpngateway-verbindings configuratie** , zoals BGP, vooraf gedeelde sleutel, enzovoort. De PSK is de vooraf gedeelde sleutel die automatisch voor u wordt gegenereerd. U kunt altijd de verbinding bewerken op de pagina Overzicht om een aangepaste PSK in te stellen.
   
 **Voor beeld van een configuratie bestand voor een apparaat**
 
@@ -215,11 +215,13 @@ Uw on-premises SDWAN/VPN-apparaat of de configuratie van de SD-WAN moeten overee
 * IPsec-integriteitsalgoritme
 * PFS-groep
 
-### <a name="default"></a>Standaard beleid voor IPsec-connectiviteit 
+### <a name="default"></a>Standaard beleid voor IPsec-connectiviteit
 
-Bij het werken met standaard beleid kan Azure optreden als initiator en responder tijdens het instellen van een IPsec-tunnel. Er is alleen ondersteuning voor Azure als een responder.
+[!INCLUDE [IPsec Default](../../includes/virtual-wan-ipsec-include.md)]
 
-[!INCLUDE [IPsec](../../includes/virtual-wan-ipsec-include.md)]
+### <a name="custom"></a>Aangepast beleid voor IPsec-connectiviteit
+
+[!INCLUDE [IPsec Custom](../../includes/virtual-wan-ipsec-custom-include.md)]
 
 ## <a name="next-steps"></a>Volgende stappen
 

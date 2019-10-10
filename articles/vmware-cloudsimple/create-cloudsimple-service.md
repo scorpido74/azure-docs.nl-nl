@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: d6d4af28d79b2375e774da98d4fdb1ad9dc22063
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 99194c42dbc6ef07301be517021bf0fb4b4e7c23
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71035724"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72173509"
 ---
 # <a name="create-the-azure-vmware-solution-by-cloudsimple-service"></a>De Azure VMware-oplossing maken op basis van de CloudSimple-service
 
@@ -24,16 +24,16 @@ Om aan de slag te gaan met de Azure VMware-oplossing door CloudSimple, maakt u d
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
-Meld u aan bij [Azure Portal](https://portal.azure.com).
+Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 ## <a name="create-the-service"></a>De service maken
 
 1. Selecteer **Alle services**.
 2. Zoek naar **CloudSimple Services**.
-    ![CloudSimple-service zoeken](media/create-cloudsimple-service-search.png)
+    ![Search CloudSimple-service @ no__t-1
 3. Selecteer **CloudSimple Services**.
 4. Klik op **toevoegen** om een nieuwe service te maken.
-    ![CloudSimple-service toevoegen](media/create-cloudsimple-service-add.png)
+    ![Add CloudSimple-service @ no__t-1
 5. Selecteer het abonnement waar u de CloudSimple-service wilt maken.
 6. Selecteer de resource groep voor de service. Klik op **nieuwe maken**om een nieuwe resource groep toe te voegen.
 7. Voer een naam in om de service te identificeren.
@@ -46,5 +46,6 @@ De service wordt gemaakt en toegevoegd aan de lijst met Services.
 
 ## <a name="next-steps"></a>Volgende stappen
 
+* Meer informatie over het [inrichten van knoop punten](create-nodes.md)
 * Meer informatie over het [maken van een privécloud](create-private-cloud.md)
 * Meer informatie over het [configureren van een privécloud](quickstart-create-private-cloud.md)

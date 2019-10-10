@@ -1,17 +1,17 @@
 ---
 title: Rollen en vereisten voor de preview-versie van Azure data share
-description: Rollen en vereisten voor de preview-versie van Azure data share
+description: Meer informatie over de rollen en vereisten voor toegangs beheer voor gegevens providers en gegevens gebruikers om gegevens te delen in de preview-versie van Azure data delen.
 author: joannapea
+ms.author: joanpo
 ms.service: data-share
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.author: joanpo
-ms.openlocfilehash: 7bf98f8774551292574d4f1951eba44657fa7de0
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: c0841f6386440776c6ea719f9932a53cada9d9c4
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70307347"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72166379"
 ---
 # <a name="roles-and-requirements-for-azure-data-share-preview"></a>Rollen en vereisten voor de preview-versie van Azure data share
 
@@ -30,9 +30,9 @@ Hieronder volgt een samen vatting van de rollen die zijn toegewezen aan een gege
 | |  |  |
 |---|---|---|
 |**Opslag type**|**Bron opslag account van gegevens provider**|**Doel opslag account voor gegevens verbruiker**|
-|Azure Blob Storage| Lezer voor opslagblobgegevens | Bijdrager voor opslagblobgegevens
+|Azure Blob Storage| Gegevens lezer van BLOB voor opslag | Inzender voor Storage BLOB-gegevens
 |Azure Data Lake gen1 | Eigenaar | Niet ondersteund
-|Azure Data Lake Gen2 | Lezer voor opslagblobgegevens | Bijdrager voor opslagblobgegevens
+|Azure Data Lake Gen2 | Gegevens lezer van BLOB voor opslag | Inzender voor Storage BLOB-gegevens
 |
 ### <a name="data-providers"></a>Gegevens providers 
 Als u een gegevensset wilt toevoegen aan een Azure-gegevens share, moeten de gegevens providers voor gegevens bronnen beheerde identiteit worden toegevoegd aan de rol van BLOB-gegevens lezer voor opslag. Dit wordt automatisch uitgevoerd door de Azure data share-service als de gebruiker gegevens sets toevoegt via Azure en een eigenaar van het opslag account is, of lid is van een aangepaste rol die de machtiging micro soft. Authorization/roltoewijzingen/schrijven heeft toegewezen. 
@@ -44,7 +44,7 @@ Bij het delen van gegevens uit Azure Data Lake gen1 moet de roltoewijzing worden
 Volg de onderstaande stappen voor het maken van een roltoewijzing voor de beheerde identiteit van de gegevens share Bron:
 
 1. Navigeer naar het opslag account.
-1. Selecteer **toegangsbeheer (IAM)** .
+1. Selecteer **Access Control (IAM)** .
 1. Selecteer **een roltoewijzing toevoegen**.
 1. Selecteer onder *rol* *Storage BLOB data Reader*.
 1. Typ onder *selecteren*de naam van uw Azure-gegevens share-account.
@@ -58,7 +58,7 @@ De gebruiker kan ook een Azure-beheerder hebben om de gegevens door middel van e
 Volg de onderstaande stappen voor het maken van een roltoewijzing voor de beheerde identiteit van de gegevens share bron hand matig:
 
 1. Navigeer naar het opslag account.
-1. Selecteer **toegangsbeheer (IAM)** .
+1. Selecteer **Access Control (IAM)** .
 1. Selecteer **een roltoewijzing toevoegen**.
 1. Onder *rol*selecteert u *gegevens Inzender voor opslag-blobs*. 
 1. Typ onder *selecteren*de naam van uw Azure-gegevens share-account.

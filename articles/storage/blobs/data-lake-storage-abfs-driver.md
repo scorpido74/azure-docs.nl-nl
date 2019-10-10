@@ -8,18 +8,18 @@ ms.reviewer: jamesbak
 ms.date: 12/06/2018
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: ece85feff3c6eff9fc2348de70842204986952d5
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 6e74830a3a62ea54c5d8e7f9815fe2ba6eed6d58
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855626"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72166497"
 ---
-# <a name="the-azure-blob-filesystem-driver-abfs-a-dedicated-azure-storage-driver-for-hadoop"></a>Het Azure Blob-bestandssysteem stuur programma (ABFS): Een speciaal Azure Storage stuur programma voor Hadoop
+# <a name="the-azure-blob-filesystem-driver-abfs-a-dedicated-azure-storage-driver-for-hadoop"></a>Het Azure Blob-bestandssysteem stuur programma (ABFS): een speciaal Azure Storage stuur programma voor Hadoop
 
-Een van de primaire toegangs methoden voor gegevens in Azure Data Lake Storage Gen2 is via het [Hadoop-bestands systeem](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/filesystem/index.html). Met Data Lake Storage Gen2 kunnen gebruikers van Azure Blob Storage toegang krijgen tot een nieuw stuur programma, het Azure Blob file `ABFS`System-stuur programma of. ABFS maakt deel uit van Apache Hadoop en is opgenomen in een groot aantal commerciële distributies van Hadoop. Met dit stuur programma kunnen veel toepassingen en frameworks toegang krijgen tot gegevens in Azure Blob Storage zonder enige code die expliciet verwijst naar Data Lake Storage Gen2.
+Een van de primaire toegangs methoden voor gegevens in Azure Data Lake Storage Gen2 is via het [Hadoop-bestands systeem](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/filesystem/index.html). Met Data Lake Storage Gen2 kunnen gebruikers van Azure Blob Storage toegang krijgen tot een nieuw stuur programma, het Azure Blob-bestandssysteem stuur programma of `ABFS`. ABFS maakt deel uit van Apache Hadoop en is opgenomen in een groot aantal commerciële distributies van Hadoop. Met dit stuur programma kunnen veel toepassingen en frameworks toegang krijgen tot gegevens in Azure Blob Storage zonder enige code die expliciet verwijst naar Data Lake Storage Gen2. 
 
-## <a name="prior-capability-the-windows-azure-storage-blob-driver"></a>Eerdere mogelijkheid: Het Windows Azure Storage Blob-stuur programma
+## <a name="prior-capability-the-windows-azure-storage-blob-driver"></a>Eerdere mogelijkheid: het Windows Azure Storage Blob-stuur programma
 
 De Windows Azure Storage Blob driver of het [WASB-stuur programma](https://hadoop.apache.org/docs/current/hadoop-azure/index.html) bood de oorspronkelijke ondersteuning voor Azure Blob Storage. Dit stuur programma heeft de complexe taak voor het toewijzen van bestandssysteem semantiek (zoals vereist door de Hadoop-bestands systeem Interface) uitgevoerd aan die van de object Store Style interface die door Azure Blob Storage wordt weer gegeven. Dit stuur programma blijft ondersteuning bieden voor dit model en biedt hoge prestaties voor gegevens die zijn opgeslagen in blobs, maar bevat een aanzienlijke hoeveelheid code die deze toewijzing uitvoert, waardoor het lastig is om te onderhouden. Daarnaast moet het stuur programma, zoals [File System. Rename ()](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/filesystem/filesystem.html#boolean_renamePath_src_Path_d) en [File System. Delete ()](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/filesystem/filesystem.html#boolean_deletePath_p_boolean_recursive) bij het Toep assen op directory's, een groot aantal bewerkingen uitvoeren (vanwege object archieven zonder ondersteuning voor directory's), wat vaak leidt tot voor verminderde prestaties. Het ABFS-stuur programma is ontworpen om de inherente tekortkomingen van WASB te overwinnen.
 
@@ -31,7 +31,7 @@ Er zijn echter enkele functies die het stuur programma nog moet uitvoeren:
 
 ### <a name="uri-scheme-to-reference-data"></a>URI-schema om te verwijzen naar gegevens
 
-Consistent met andere bestandssysteem implementaties in Hadoop, het ABFS-stuur programma definieert een eigen URI-schema, zodat resources (directory's en bestanden) kunnen worden verholpen. Het URI-schema wordt beschreven in [de Azure data Lake Storage Gen2-URI gebruiken](./data-lake-storage-introduction-abfs-uri.md). De structuur van de URI is:`abfs[s]://file_system@account_name.dfs.core.windows.net/<path>/<path>/<file_name>`
+Consistent met andere bestandssysteem implementaties in Hadoop, het ABFS-stuur programma definieert een eigen URI-schema, zodat resources (directory's en bestanden) kunnen worden verholpen. Het URI-schema wordt beschreven in [de Azure data Lake Storage Gen2-URI gebruiken](./data-lake-storage-introduction-abfs-uri.md). De structuur van de URI is: `abfs[s]://file_system@account_name.dfs.core.windows.net/<path>/<path>/<file_name>`
 
 Met de bovenstaande URI-indeling kunnen standaard Hadoop-hulpprogram ma's en-frameworks worden gebruikt om te verwijzen naar deze bronnen:
 
@@ -42,7 +42,7 @@ hdfs dfs -put flight_delays.csv abfs://fileanalysis@myanalytics.dfs.core.windows
 
 Intern vertaalt het ABFS-stuur programma de resource (s) die zijn opgegeven in de URI naar bestanden en mappen, en maakt aanroepen van de Azure Data Lake Storage REST API met die verwijzingen.
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>Verificatie
 
 Het ABFS-stuur programma ondersteunt twee vormen van verificatie, zodat de Hadoop-toepassing veilig toegang kan krijgen tot bronnen in een Data Lake Storage Gen2-account dat kan worden ondersteund. Volledige details van de beschik bare verificatie schema's vindt u in de [Azure Storage beveiligings handleiding](../common/storage-security-guide.md). Dit zijn:
 
@@ -52,7 +52,7 @@ Het ABFS-stuur programma ondersteunt twee vormen van verificatie, zodat de Hadoo
 
 ### <a name="configuration"></a>Configuratie
 
-Alle configuratie voor het ABFS-stuur programma wordt opgeslagen <code>core-site.xml</code> in het configuratie bestand. Bij Hadoop-distributies met [Ambari](https://ambari.apache.org/)kan de configuratie ook worden beheerd met de webportal of Ambari rest API.
+Alle configuratie voor het ABFS-stuur programma wordt opgeslagen in het configuratie bestand <code>core-site.xml</code>. Bij Hadoop-distributies met [Ambari](https://ambari.apache.org/)kan de configuratie ook worden beheerd met de webportal of Ambari rest API.
 
 Details van alle ondersteunde configuratie vermeldingen zijn opgegeven in de [officiële Hadoop-documentatie](https://hadoop.apache.org/docs/r3.2.0/hadoop-azure/abfs.html).
 

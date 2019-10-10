@@ -8,14 +8,14 @@ ms.service: azure-resource-manager
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: c8c882d819771473db2cf1c91fb39912883d144d
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: 8b6ff50f7254a51bcdf37ecb0afd8f0041a2c5da
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71963742"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177568"
 ---
-# <a name="tutorial-add-tags-in-your-resource-manager-template"></a>Zelfstudie: Tags toevoegen in uw Resource Manager-sjabloon
+# <a name="tutorial-add-tags-in-your-resource-manager-template"></a>Zelf studie: Tags toevoegen in uw Resource Manager-sjabloon
 
 In deze zelf studie leert u hoe u labels kunt toevoegen aan resources in uw sjabloon. Met [Tags](resource-group-using-tags.md) kunt u uw resources logisch indelen. De label waarden worden weer gegeven in kosten rapporten. Het volt ooien van deze zelf studie duurt **acht minuten** .
 
@@ -35,15 +35,15 @@ Na de implementatie van deze resources moet u mogelijk de kosten bijhouden en re
 
 ## <a name="add-tags"></a>Tags toevoegen
 
-U labelt resources om waarden toe te voegen waarmee u het gebruik ervan kunt identificeren. U kunt bijvoorbeeld labels toevoegen die de omgeving en het project markeren. U kunt Tags toevoegen die een kosten plaats identificeren of het team dat eigenaar is van de resource. Voeg waarden toe die zinvol zijn voor uw organisatie.
+U labelt resources om waarden toe te voegen waarmee u het gebruik ervan kunt identificeren. U kunt bijvoorbeeld labels toevoegen die de omgeving en het project vermelden. U kunt Tags toevoegen die een kosten plaats identificeren of het team dat eigenaar is van de resource. Voeg waarden toe die zinvol zijn voor uw organisatie.
 
 In het volgende voor beeld worden de wijzigingen in de sjabloon gemarkeerd. Kopieer het hele bestand en vervang de sjabloon door de inhoud ervan.
 
 [!code-json[](~/resourcemanager-templates/get-started-with-templates/add-tags/azuredeploy.json?range=1-118&highlight=46-52,64,78,100)]
 
-## <a name="deploy-template"></a>Sjabloon implementeren
+## <a name="deploy-the-template"></a>De sjabloon implementeren
 
-Het is tijd om de sjabloon te implementeren en de geretourneerde waarde te bekijken.
+Het is tijd om de sjabloon te implementeren en de resultaten te bekijken.
 
 Als u de resource groep nog niet hebt gemaakt, raadpleegt u [resource groep maken](template-tutorial-create-first-template.md#create-resource-group). In het voor beeld wordt ervan uitgegaan dat u de **templateFile** -variabele hebt ingesteld op het pad naar het sjabloon bestand, zoals wordt weer gegeven in de [eerste zelf studie](template-tutorial-create-first-template.md#deploy-template).
 
@@ -59,7 +59,7 @@ New-AzResourceGroupDeployment `
   -webAppName demoapp
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure-CLI](#tab/azure-cli)
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli
 az group deployment create \
@@ -75,7 +75,7 @@ az group deployment create \
 
 U kunt de implementatie controleren door de resource groep te verkennen van de Azure Portal.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Selecteer **resource groepen**in het menu links.
 1. Selecteer de resource groep die u hebt geïmplementeerd.
 1. Selecteer een van de resources, zoals de resource van het opslag account. U ziet dat deze nu labels bevat.

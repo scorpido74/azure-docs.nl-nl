@@ -57,8 +57,10 @@
       href: tutorial-global-distribution-sql-api.md
 - name: Voorbeelden
   items:
-    - name: .NET-voorbeelden
+    - name: .NET V2 SDK-voorbeelden
       href: sql-api-dotnet-samples.md
+    - name: .NET V3 SDK-voorbeelden
+      href: sql-api-dotnet-v3sdk-samples.md
     - name: Java-voorbeelden
       href: sql-api-java-samples.md
     - name: Async Java-voorbeelden
@@ -1022,6 +1024,8 @@
           href: odbc-driver.md
     - name: Gegevens migreren naar Cosmos DB
       items:
+        - name: Opties voor het migreren van gegevens in Cosmos DB
+          href: cosmosdb-migrationchoices.md
         - name: Migreren naar SQL-API met behulp van Striim
           href: cosmosdb-sql-api-migrate-data-striim.md
         - name: Migreren naar Cassandra-API met behulp van Striim

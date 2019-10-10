@@ -1,7 +1,7 @@
 ---
-title: Maken, wijzigen of verwijderen van een Azure-netwerk
+title: Een virtueel Azure-netwerk maken, wijzigen of verwijderen
 titlesuffix: Azure Virtual Network
-description: Informatie over het maken, wijzigen of verwijderen van een virtueel netwerk in Azure.
+description: Meer informatie over het maken, wijzigen of verwijderen van een virtueel netwerk in Azure.
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -12,172 +12,172 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/10/2019
 ms.author: kumud
-ms.openlocfilehash: 235a82c6bba4165790c370c2641ee6cd41f10840
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 04cd5035d012e7846cc97a5a057fd71ebe103ce3
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64700469"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72168753"
 ---
-# <a name="create-change-or-delete-a-virtual-network"></a>Maken, wijzigen of verwijderen van een virtueel netwerk
+# <a name="create-change-or-delete-a-virtual-network"></a>Een virtueel netwerk maken, wijzigen of verwijderen
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Informatie over het maken en verwijderen van een virtueel netwerk en het wijzigen van instellingen, zoals DNS-servers en IP-adresruimten, voor een bestaand virtueel netwerk. Als u geen ervaring met virtuele netwerken, kunt u meer informatie over deze in de [overzicht van Virtual network](virtual-networks-overview.md) of door te voeren een [zelfstudie](quick-create-portal.md). Een virtueel netwerk bevat subnetten. Zie voor informatie over het maken, wijzigen en verwijderen van subnetten, [subnetten beheren](virtual-network-manage-subnet.md).
+Meer informatie over het maken en verwijderen van een virtueel netwerk en het wijzigen van instellingen, zoals DNS-servers en IP-adres ruimten, voor een bestaand virtueel netwerk. Als u geen ervaring hebt met virtuele netwerken, kunt u meer informatie hierover vinden in het [overzicht van Virtual Network](virtual-networks-overview.md) of door een [zelf studie](quick-create-portal.md)te volt ooien. Een virtueel netwerk bevat subnetten. Zie [subnets beheren](virtual-network-manage-subnet.md)voor meer informatie over het maken, wijzigen en verwijderen van subnetten.
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-Voer de volgende taken voordat u de stappen in elke sectie van dit artikel:
+Voer de volgende taken uit voordat u de stappen in een van de secties van dit artikel uitvoert:
 
-- Als u nog een Azure-account hebt, kunt u zich aanmelden voor een [gratis proefaccount](https://azure.microsoft.com/free).
-- Als u de portal gebruikt, opent u https://portal.azure.com, en meld u aan met uw Azure-account.
-- Als u PowerShell-opdrachten gebruikt om taken in dit artikel te voltooien, hetzij de opdrachten uitvoert in de [Azure Cloud Shell](https://shell.azure.com/powershell), of door te voeren PowerShell vanaf uw computer. Azure Cloud Shell is een gratis interactieve shell waarmee u de stappen in dit artikel kunt uitvoeren. In deze shell zijn algemene Azure-hulpprogramma's vooraf geïnstalleerd en geconfigureerd voor gebruik met uw account. In deze zelfstudie vereist de Azure PowerShell-moduleversie 1.0.0 of hoger. Voer `Get-Module -ListAvailable Az` uit om te kijken welke versie is geïnstalleerd. Als u PowerShell wilt upgraden, raadpleegt u [De Azure PowerShell-module installeren](/powershell/azure/install-az-ps). Als u PowerShell lokaal uitvoert, moet u ook `Connect-AzAccount` uitvoeren om verbinding te kunnen maken met Azure.
-- Als u Azure-opdrachtregelinterface (CLI)-opdrachten voor taken in dit artikel uit te voeren, hetzij de opdrachten uitvoert in de [Azure Cloud Shell](https://shell.azure.com/bash), of door het uitvoeren van de CLI van de computer. In deze zelfstudie gebruikmaken van Azure CLI versie 2.0.31 of hoger. Voer `az --version` uit om te kijken welke versie is geïnstalleerd. Zie [Azure CLI installeren](/cli/azure/install-azure-cli) als u de CLI wilt installeren of een upgrade wilt uitvoeren. Als u de Azure CLI lokaal uitvoert, moet u ook om uit te voeren `az login` voor het maken van een verbinding met Azure.
-- Het account dat u zich aanmelden bij of verbinding maken met Azure, moet worden toegewezen aan de [Inzender voor netwerken](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) rol of een [aangepaste rol](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) die is toegewezen de nodige acties die worden vermeld in [machtigingen ](#permissions).
+- Als u nog geen Azure-account hebt, kunt u zich aanmelden voor een [gratis proef account](https://azure.microsoft.com/free).
+- Als u de portal gebruikt, opent u https://portal.azure.com en meldt u zich aan met uw Azure-account.
+- Als u Power shell-opdrachten gebruikt om taken in dit artikel te volt ooien, moet u de opdrachten uitvoeren in de [Azure Cloud shell](https://shell.azure.com/powershell)of Power shell uitvoeren vanaf uw computer. Azure Cloud Shell is een gratis interactieve shell waarmee u de stappen in dit artikel kunt uitvoeren. In deze shell zijn algemene Azure-hulpprogramma's vooraf geïnstalleerd en geconfigureerd voor gebruik met uw account. Voor deze zelf studie is de Azure PowerShell module versie 1.0.0 of hoger vereist. Voer `Get-Module -ListAvailable Az` uit om te kijken welke versie is geïnstalleerd. Als u PowerShell wilt upgraden, raadpleegt u [De Azure PowerShell-module installeren](/powershell/azure/install-az-ps). Als u PowerShell lokaal uitvoert, moet u ook `Connect-AzAccount` uitvoeren om verbinding te kunnen maken met Azure.
+- Als u Azure-opdracht regel interface opdrachten gebruikt om taken in dit artikel te volt ooien, moet u de opdrachten uitvoeren in de [Azure Cloud shell](https://shell.azure.com/bash)of door de CLI vanaf uw computer uit te voeren. Voor deze zelf studie is de Azure CLI-versie 2.0.31 of hoger vereist. Voer `az --version` uit om te kijken welke versie is geïnstalleerd. Zie [Azure CLI installeren](/cli/azure/install-azure-cli) als u de CLI wilt installeren of een upgrade wilt uitvoeren. Als u de Azure CLI lokaal uitvoert, moet u ook `az login` uitvoeren om een verbinding te maken met Azure.
+- Het account waarmee u zich aanmeldt of verbinding maakt met Azure met, moet worden toegewezen aan de rol [netwerk bijdrager](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) of aan een [aangepaste rol](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) waaraan de juiste acties zijn toegewezen die worden vermeld in [machtigingen](#permissions).
 
-## <a name="create-a-virtual-network"></a>Een virtueel netwerk maken
+## <a name="create-a-virtual-network"></a>Maak een virtueel netwerk
 
-1. Selecteer **+ een resource maken** > **netwerken** > **virtueel netwerk**.
-2. Typ of Selecteer waarden voor de volgende instellingen en selecteer vervolgens **maken**:
-   - **Naam**: De naam moet uniek zijn in de [resourcegroep](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group) dat u selecteert om te maken van het virtuele netwerk in. U kunt de naam niet wijzigen nadat het virtuele netwerk is gemaakt. U kunt meerdere virtuele netwerken maken na verloop van tijd. Zie voor het benoemen van suggesties, [naamconventies](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions#naming-rules-and-restrictions). Na een naamconventie kunt maken het gemakkelijker voor het beheren van meerdere virtuele netwerken.
-   - **Adresruimte**: De adresruimte voor een virtueel netwerk bestaat uit een of meer niet-overlappende-adresbereiken die zijn opgegeven in de CIDR-notatie. Het adresbereik dat u definieert kan zijn openbaar of privé (RFC 1918). Of u het adresbereik als openbare of particuliere definiëren, is het adresbereik bereikbaar is alleen van binnen het virtuele netwerk van met elkaar verbonden virtuele netwerken en van een on-premises-netwerken die u hebt gekoppeld aan het virtuele netwerk. U kunt de volgende adresbereiken niet toevoegen:
-     - 224.0.0.0/4 (Multicast)
-     - 255.255.255.255/32 (Broadcast)
-     - 127.0.0.0/8 (Loopback)
-     - 169.254.0.0/16 (Link-local)
-     - 168.63.129.16/32 (interne DNS, DHCP en Azure Load Balancer [statustest](../load-balancer/load-balancer-custom-probe-overview.md#probesource))
+1. Selecteer **+ een resource maken** > **netwerk** > **virtueel netwerk**.
+2. Typ of selecteer waarden voor de volgende instellingen en selecteer vervolgens **maken**:
+   - **Naam**: de naam moet uniek zijn in de [resource groep](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group) die u selecteert voor het maken van het virtuele netwerk in. U kunt de naam niet wijzigen nadat het virtuele netwerk is gemaakt. U kunt meerdere virtuele netwerken gedurende een periode maken. Zie [naamgevings conventies](/azure/cloud-adoption-framework/ready/considerations/naming-and-tagging#resource-naming)voor naamgevings suggesties. Als u een naamgevings Conventie volgt, kunt u eenvoudiger meerdere virtuele netwerken beheren.
+   - **Adres ruimte**: de adres ruimte voor een virtueel netwerk bestaat uit een of meer niet-overlappende adresbereiken die zijn opgegeven in CIDR-notatie. Het adres bereik dat u definieert, kan openbaar of privé zijn (RFC 1918). Of u het adres bereik als openbaar of privé definieert, het adres bereik is alleen bereikbaar vanuit het virtuele netwerk, van gekoppelde virtuele netwerken en van alle on-premises netwerken die u met het virtuele netwerk hebt verbonden. U kunt de volgende adresbereiken niet toevoegen:
+     - 224.0.0.0/4 (multi cast)
+     - 255.255.255.255/32 (broadcast)
+     - 127.0.0.0/8 (loop back)
+     - 169.254.0.0/16 (link-local)
+     - 168.63.129.16/32 (interne DNS-, DHCP-en Azure Load Balancer- [status test](../load-balancer/load-balancer-custom-probe-overview.md#probesource))
 
-     Hoewel u slechts één adresbereik definiëren kunt wanneer u het virtuele netwerk maakt, kunt u meer adresbereiken toevoegen aan de adresruimte nadat het virtuele netwerk is gemaakt. Zie voor meer informatie over een adresbereik toevoegen aan een bestaand virtueel netwerk, [toevoegen of verwijderen van een adresbereik](#add-or-remove-an-address-range).
+     Hoewel u slechts één adres bereik kunt definiëren wanneer u het virtuele netwerk maakt, kunt u meer adresbereiken toevoegen aan de adres ruimte nadat het virtuele netwerk is gemaakt. Zie [een adres bereik toevoegen of verwijderen](#add-or-remove-an-address-range)voor meer informatie over het toevoegen van een adres bereik aan een bestaand virtueel netwerk.
 
      >[!WARNING]
-     >Als een virtueel netwerk-adresbereiken die met een ander virtueel netwerk overlappen is of on-premises netwerk, kunnen de twee netwerken kunnen niet worden verbonden. Voordat u een adresbereik definiëren, moet u overwegen of wilt u mogelijk het virtueel netwerk verbinden met andere virtuele netwerken of on-premises netwerken in de toekomst.
+     >Als een virtueel netwerk adresbereiken heeft die overlappen met een ander virtueel netwerk of een on-premises netwerk, kunnen de twee netwerken niet worden verbonden. Voordat u een adres bereik definieert, moet u overwegen of u het virtuele netwerk in de toekomst mogelijk wilt verbinden met andere virtuele netwerken of on-premises netwerken.
      >
      >
 
-     - **Subnetnaam**: De subnetnaam moet uniek zijn binnen het virtuele netwerk. U kunt de naam van het subnet niet wijzigen nadat het subnet is gemaakt. De portal vereist dat u een subnet definieert bij het maken van een virtueel netwerk, zelfs als een virtueel netwerk is niet vereist voor het geen subnetten. In de portal, kunt u slechts één subnet definiëren wanneer u een virtueel netwerk maken. U kunt meer subnetten toevoegen aan het virtuele netwerk later, nadat het virtuele netwerk is gemaakt. Zie voor informatie over het toevoegen van een subnet met een virtueel netwerk [subnetten beheren](virtual-network-manage-subnet.md). U kunt een virtueel netwerk met meerdere subnetten met behulp van Azure CLI of PowerShell maken.
+     - **Subnetnaam**: de naam van het subnet moet uniek zijn binnen het virtuele netwerk. U kunt de naam van het subnet niet wijzigen nadat het subnet is gemaakt. Voor de portal moet u één subnet definiëren wanneer u een virtueel netwerk maakt, zelfs als een virtueel netwerk geen subnets nodig heeft. In de portal kunt u slechts één subnet definiëren wanneer u een virtueel netwerk maakt. U kunt later meer subnetten toevoegen aan het virtuele netwerk nadat het virtuele netwerk is gemaakt. Zie [subnets beheren](virtual-network-manage-subnet.md)om een subnet toe te voegen aan een virtueel netwerk. U kunt een virtueel netwerk met meerdere subnetten maken met behulp van Azure CLI of Power shell.
 
        >[!TIP]
-       >Beheerders maken soms verschillende subnetten te filteren of beheren van routering van verkeer tussen de subnetten. Voordat u subnets kunt definiëren, houd rekening met hoe u mogelijk wilt filteren en verkeer routeren tussen uw subnetten. Zie voor meer informatie over het filteren van verkeer tussen subnetten, [Netwerkbeveiligingsgroepen](security-overview.md). Azure automatisch routeert verkeer tussen subnetten, maar u kunt Azure standaardroutes vervangen. Zie voor meer informatie over het verkeer van Azures standaard subnet, [routeringoverzicht](virtual-networks-udr-overview.md).
+       >Soms maken beheerders verschillende subnetten om verkeers routering tussen de subnetten te filteren of te beheren. Bedenk voordat u subnetten definieert hoe u verkeer tussen uw subnetten wilt filteren en routeren. Zie [netwerk beveiligings groepen](security-overview.md)voor meer informatie over het filteren van verkeer tussen subnetten. Azure routeert automatisch verkeer tussen subnetten, maar u kunt de standaard routes van Azure onderdrukken. Zie [route ring Overview](virtual-networks-udr-overview.md)voor meer informatie over de standaard routerings routering van het subnet van Azure.
        >
 
-     - **Subnetadresbereik**: Het bereik moet zich binnen de adresruimte die u hebt ingevoerd voor het virtuele netwerk. Het kleinste bereik dat u kunt opgeven is /29, waarmee u acht IP-adressen voor het subnet. Azure reserveert de eerste en laatste adres in elk subnet voor conformiteit van protocol. Drie extra adressen zijn gereserveerd voor gebruik met Azure-service. Een virtueel netwerk met een subnet-adresbereik van /29 heeft als gevolg hiervan alleen voor de drie bruikbare IP-adressen. Als u van plan bent een virtueel netwerk verbinden met een VPN-gateway, moet u een gatewaysubnet maken. Meer informatie over [specifiek adresbereik overwegingen voor het gateway-subnetten](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#gwsub). U kunt het adresbereik wijzigen nadat het subnet is gemaakt, klikt u onder bepaalde omstandigheden. Zie voor informatie over het wijzigen van het adresbereik van een subnet, [subnetten beheren](virtual-network-manage-subnet.md).
-     - **Abonnement**: Selecteer een [abonnement](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription). U kunt hetzelfde virtuele netwerk in meer dan één Azure-abonnement gebruiken. U kunt echter een virtueel netwerk in een abonnement verbinding met virtuele netwerken in andere abonnementen met [peering op virtueel netwerk](virtual-network-peering-overview.md). Een Azure-resource die u verbinding met het virtuele netwerk maken moet zich in hetzelfde abonnement bevinden als het virtuele netwerk.
-     - **Resourcegroep**: Selecteer een bestaande [resourcegroep](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-groups) of maak een nieuwe. Een Azure-resource die u verbinding met het virtuele netwerk maken kan zich in dezelfde resourcegroep bevinden als het virtuele netwerk of in een andere resourcegroep.
-     - **Locatie**: Selecteer een Azure [locatie](https://azure.microsoft.com/regions/), ook wel aangeduid als een regio. Een virtueel netwerk kan zich op slechts één Azure-locatie. U kunt echter een virtueel netwerk op één locatie verbinden met een virtueel netwerk in een andere locatie via een VPN-gateway. Een Azure-resource die u verbinding met het virtuele netwerk maken moet zich in dezelfde locatie als het virtuele netwerk.
+     - **Adres bereik van subnet**: het bereik moet zich binnen de adres ruimte bevinden die u hebt ingevoerd voor het virtuele netwerk. Het kleinste bereik dat u kunt opgeven, is/29, dat acht IP-adressen voor het subnet bevat. Azure reserveert het eerste en laatste adres in elk subnet voor protocol conformiteit. Er zijn drie extra adressen gereserveerd voor Azure-service gebruik. Als gevolg hiervan heeft een virtueel netwerk met een subnetadres van/29 slechts drie bruikbare IP-adressen. Als u van plan bent om een virtueel netwerk te verbinden met een VPN-gateway, moet u een gateway-subnet maken. Meer informatie over [specifieke aandachtspunten voor de adres bereik voor gateway-subnetten](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#gwsub). Onder specifieke voor waarden kunt u het adres bereik wijzigen nadat het subnet is gemaakt. Zie [subnets beheren](virtual-network-manage-subnet.md)voor meer informatie over het wijzigen van het adres bereik van een subnet.
+     - **Abonnement**: Selecteer een [abonnement](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription). U kunt niet hetzelfde virtuele netwerk gebruiken in meer dan één Azure-abonnement. U kunt echter een virtueel netwerk in één abonnement verbinden met virtuele netwerken in andere abonnementen met [peering op virtueel netwerk](virtual-network-peering-overview.md). Elke Azure-resource waarmee u verbinding maakt met het virtuele netwerk moet zich in hetzelfde abonnement als het virtuele netwerk bevindt.
+     - **Resource groep**: Selecteer een bestaande [resource groep](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-groups) of maak een nieuwe. Een Azure-resource waarmee u verbinding maakt met het virtuele netwerk, kan zich in dezelfde resource groep bevindt als het virtuele netwerk of in een andere resource groep.
+     - **Locatie**: Selecteer een Azure- [locatie](https://azure.microsoft.com/regions/), ook wel een regio genoemd. Een virtueel netwerk kan zich op slechts één Azure-locatie bevindt. U kunt echter een virtueel netwerk op één locatie verbinden met een virtueel netwerk op een andere locatie met behulp van een VPN-gateway. Elke Azure-resource waarmee u verbinding maakt met het virtuele netwerk moet zich op dezelfde locatie bevindt als het virtuele netwerk.
 
 **Opdrachten**
 
-- Azure CLI: [az network vnet maken](/cli/azure/network/vnet)
-- PowerShell: [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork)
+- Azure CLI: [AZ Network vnet Create](/cli/azure/network/vnet)
+- Power shell: [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork)
 
-## <a name="view-virtual-networks-and-settings"></a>Instellingen en virtuele netwerken weergeven
+## <a name="view-virtual-networks-and-settings"></a>Virtuele netwerken en instellingen weer geven
 
-1. Voer in het zoekvak boven aan de portal, *virtuele netwerken* in het zoekvak in. Wanneer **virtuele netwerken** worden weergegeven in de lijst met zoekresultaten, selecteert u deze.
-2. Selecteer in de lijst met virtuele netwerken, het virtuele netwerk dat u wilt weergeven van instellingen voor.
-3. De volgende instellingen worden weergegeven voor het virtuele netwerk dat u hebt geselecteerd:
-   - **Overzicht**: Bevat informatie over het virtuele netwerk, met inbegrip van adresruimte en DNS-servers. De volgende schermafbeelding ziet u de instellingen van het overzicht voor een virtueel netwerk met de naam **MyVNet**:
+1. Voer in het zoekvak boven aan de portal *virtuele netwerken* in het zoekvak in. Wanneer **virtuele netwerken** worden weer gegeven in de zoek resultaten, selecteert u deze.
+2. Selecteer in de lijst met virtuele netwerken het virtuele netwerk waarvan u de instellingen wilt weer geven.
+3. De volgende instellingen worden weer gegeven voor het virtuele netwerk dat u hebt geselecteerd:
+   - **Overzicht**: Hier vindt u informatie over het virtuele netwerk, met inbegrip van adres ruimte en DNS-servers. Op de volgende scherm afbeelding ziet u de overzichts instellingen voor een virtueel netwerk met de naam **MyVNet**:
 
-     ![Overzicht van Network interface](./media/manage-virtual-network/vnet-overview.png)
+     ![Overzicht van de netwerk interface](./media/manage-virtual-network/vnet-overview.png)
 
-     U kunt een virtueel netwerk verplaatsen naar een ander abonnement of resourcegroep groep door te selecteren **wijziging** naast **resourcegroep** of **abonnementsnaam**. Zie voor meer informatie over het verplaatsen van een virtueel netwerk, [resources verplaatsen naar een andere resourcegroep of abonnement](../azure-resource-manager/resource-group-move-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Dit artikel worden de vereisten en over het verplaatsen van resources met behulp van de Azure portal, PowerShell en Azure CLI. Alle resources die zijn verbonden met het virtuele netwerk moeten verplaatsen met het virtuele netwerk.
-   - **Adresruimte**: De adresruimten die zijn toegewezen aan het virtuele netwerk worden weergegeven. Voor informatie over het toevoegen en verwijderen van een adresbereik aan de adresruimte, voer de stappen in [toevoegen of verwijderen van een adresbereik](#add-or-remove-an-address-range).
-   - **Verbonden apparaten**: Alle resources die zijn verbonden met het virtuele netwerk worden weergegeven. In de vorige schermafbeelding zijn drie netwerkinterfaces en een load balancer verbonden met het virtuele netwerk. Nieuwe resources die u maakt en verbinding maken met het virtuele netwerk worden weergegeven. Als u een resource die is verbonden met het virtuele netwerk verwijdert, worden deze niet meer weergegeven in de lijst.
-   - **Subnetten**: Een lijst met subnetten die zijn opgeslagen in het virtuele netwerk wordt weergegeven. Zie voor informatie over het toevoegen en verwijderen van een subnet, [subnetten beheren](virtual-network-manage-subnet.md).
-   - **DNS-servers**: U kunt opgeven of de Azure interne DNS-server of een aangepaste DNS-server naamomzetting biedt voor apparaten die zijn verbonden met het virtuele netwerk. Wanneer u een virtueel netwerk met behulp van Azure portal maakt, worden voor het omzetten van binnen een virtueel netwerk van Azure DNS-servers gebruikt standaard. Als u wilt wijzigen van de DNS-servers, voer de stappen in [wijziging DNS-servers](#change-dns-servers) in dit artikel.
-   - **Peerings**: Als er bestaande peerings in het abonnement, worden ze hier weergegeven. U kunt instellingen voor bestaande peerings, weergeven of maken, wijzigen of verwijderen van peerings. Zie voor meer informatie over peerings, [peering van virtuele netwerken](virtual-network-peering-overview.md).
-   - **Eigenschappen**: Geeft de instellingen over het virtuele netwerk, met inbegrip van de resource-ID van het virtuele netwerk en het deel uitmaakt van Azure-abonnement.
-   - **Diagram**: Het diagram biedt een visuele representatie van alle apparaten die zijn verbonden met het virtuele netwerk. Het diagram heeft enkele belangrijke informatie over de apparaten. Selecteer het apparaat voor het beheren van een apparaat in deze weergave in het diagram.
-   - **Algemene instellingen voor Azure**: Zie voor meer informatie over algemene Azure-instellingen, de volgende informatie:
+     U kunt een virtueel netwerk verplaatsen naar een ander abonnement of een andere resource groep door **wijzigen** te selecteren naast de **resource groep** of de naam van het **abonnement**. Zie [resources verplaatsen naar een andere resource groep of een ander abonnement](../azure-resource-manager/resource-group-move-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)voor meer informatie over het verplaatsen van een virtueel netwerk. In het artikel vindt u vereisten en hoe u resources kunt verplaatsen met behulp van de Azure Portal, Power shell en Azure CLI. Alle resources die zijn verbonden met het virtuele netwerk moeten worden verplaatst met het virtuele netwerk.
+   - **Adres ruimte**: de adres ruimten die worden toegewezen aan het virtuele netwerk worden weer gegeven. Volg de stappen in [een adres bereik toevoegen of verwijderen](#add-or-remove-an-address-range)voor meer informatie over het toevoegen en verwijderen van een adres bereik aan de adres ruimte.
+   - **Verbonden apparaten**: alle resources die zijn verbonden met het virtuele netwerk, worden weer gegeven. In de vorige scherm afbeelding zijn drie netwerk interfaces en één load balancer verbonden met het virtuele netwerk. Nieuwe resources die u maakt en verbinding maken met het virtuele netwerk, worden weer gegeven. Als u een resource verwijdert die is verbonden met het virtuele netwerk, wordt deze niet meer weer gegeven in de lijst.
+   - **Subnetten**: er wordt een lijst weer gegeven met de subnetten die in het virtuele netwerk aanwezig zijn. Zie [subnets beheren](virtual-network-manage-subnet.md)voor meer informatie over het toevoegen en verwijderen van een subnet.
+   - **DNS-servers**: u kunt opgeven of de interne DNS-server van Azure of een aangepaste DNS-server naam omzetting biedt voor apparaten die zijn verbonden met het virtuele netwerk. Wanneer u een virtueel netwerk maakt met behulp van de Azure Portal, worden de DNS-servers van Azure standaard gebruikt voor naam omzetting binnen een virtueel netwerk. Als u de DNS-servers wilt wijzigen, voert u de stappen in [DNS-servers wijzigen](#change-dns-servers) in dit artikel uit.
+   - **Peerings**: als er al peerings zijn in het abonnement, worden deze hier vermeld. U kunt instellingen voor bestaande peerings weer geven of peerings maken, wijzigen of verwijderen. Zie [peering op virtueel netwerk](virtual-network-peering-overview.md)voor meer informatie over peerings.
+   - **Eigenschappen**: geeft instellingen weer over het virtuele netwerk, met inbegrip van de resource-id van het virtuele netwerk en het Azure-abonnement waarin deze zich bevindt.
+   - **Diagram**: het diagram biedt een visuele weer gave van alle apparaten die zijn verbonden met het virtuele netwerk. Het diagram bevat enkele belang rijke informatie over de apparaten. Als u een apparaat in deze weer gave wilt beheren, selecteert u het apparaat in het diagram.
+   - **Algemene Azure-instellingen**: voor meer informatie over algemene Azure-instellingen raadpleegt u de volgende informatie:
      - [Activiteitenlogboek](../azure-monitor/platform/activity-logs-overview.md)
-     - [Toegangsbeheer (IAM)](../role-based-access-control/overview.md)
+     - [Toegangs beheer (IAM)](../role-based-access-control/overview.md)
      - [Tags](../azure-resource-manager/resource-group-using-tags.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
-     - [Locks](../azure-resource-manager/resource-group-lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
-     - [Automatiseringsscript](../azure-resource-manager/manage-resource-groups-portal.md#export-resource-groups-to-templates)
+     - [Vergren delingen](../azure-resource-manager/resource-group-lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+     - [Automatiserings script](../azure-resource-manager/manage-resource-groups-portal.md#export-resource-groups-to-templates)
 
 **Opdrachten**
 
-- Azure CLI: [az network vnet show](/cli/azure/network/vnet)
-- PowerShell: [Get-AzVirtualNetwork](/powershell/module/az.network/get-azvirtualnetwork)
+- Azure CLI: [AZ Network vnet show](/cli/azure/network/vnet)
+- Power shell: [Get-AzVirtualNetwork](/powershell/module/az.network/get-azvirtualnetwork)
 
-## <a name="add-or-remove-an-address-range"></a>Toevoegen of verwijderen van een adresbereik in
+## <a name="add-or-remove-an-address-range"></a>Een adres bereik toevoegen of verwijderen
 
-U kunt toevoegen en verwijderen-adresbereiken voor een virtueel netwerk. Een adresbereik in CIDR-notatie moet worden opgegeven en mag niet overlappen met andere adresbereiken binnen hetzelfde virtuele netwerk. De adresbereiken die u definieert kunnen zijn openbaar of privé (RFC 1918). Of u het adresbereik als openbare of particuliere definiëren, is het adresbereik bereikbaar is alleen van binnen het virtuele netwerk van met elkaar verbonden virtuele netwerken en van een on-premises-netwerken die u hebt gekoppeld aan het virtuele netwerk. 
+U kunt adresbereiken voor een virtueel netwerk toevoegen en verwijderen. Een adres bereik moet worden opgegeven in CIDR-notatie en mag niet overlappen met andere adresbereiken binnen hetzelfde virtuele netwerk. De adresbereiken die u definieert, kunnen openbaar of privé zijn (RFC 1918). Of u het adres bereik als openbaar of privé definieert, het adres bereik is alleen bereikbaar vanuit het virtuele netwerk, van gekoppelde virtuele netwerken en van alle on-premises netwerken die u met het virtuele netwerk hebt verbonden. 
 
-Als u geen subnetten gekoppeld hebt, kunt u het adresbereik van een virtueel netwerk verminderen. Anders kunt u alleen uitbreiden het adresbereik, bijvoorbeeld, als een /16 naar/8 die u wijzigt. U kan beginnen met een kleine adresbereik, en vervolgens later uitbreiden of extra bereiken toevoegen.
+Als er geen subnetten zijn gekoppeld, kunt u het adres bereik voor een virtueel netwerk verlagen. Anders kunt u het adres bereik alleen uitbreiden, bijvoorbeeld door een/16 te wijzigen in/8. U kunt beginnen met een klein adres bereik en deze later uitbreiden of extra bereiken toevoegen.
 
 <!-- the last two sentences above are added per GitHub issue https://github.com/MicrosoftDocs/azure-docs/issues/20572 -->
 
 U kunt de volgende adresbereiken niet toevoegen:
 
-- 224.0.0.0/4 (Multicast)
-- 255.255.255.255/32 (Broadcast)
-- 127.0.0.0/8 (Loopback)
-- 169.254.0.0/16 (Link-local)
-- 168.63.129.16/32 (interne DNS, DHCP en Azure Load Balancer [statustest](../load-balancer/load-balancer-custom-probe-overview.md#probesource))
+- 224.0.0.0/4 (multi cast)
+- 255.255.255.255/32 (broadcast)
+- 127.0.0.0/8 (loop back)
+- 169.254.0.0/16 (link-local)
+- 168.63.129.16/32 (interne DNS-, DHCP-en Azure Load Balancer- [status test](../load-balancer/load-balancer-custom-probe-overview.md#probesource))
 
-Toevoegen of verwijderen van een adresbereik in:
+Een adres bereik toevoegen of verwijderen:
 
-1. Voer in het zoekvak boven aan de portal, *virtuele netwerken* in het zoekvak in. Wanneer **virtuele netwerken** worden weergegeven in de lijst met zoekresultaten, selecteert u deze.
-2. Selecteer in de lijst met virtuele netwerken, het virtuele netwerk waarvoor u wilt toevoegen of verwijderen van een adresbereik.
-3. Selecteer **adresruimte**onder **instellingen**.
-4. Voer een van de volgende opties:
-    - **Toevoegen van een adresbereik**: Voer in het nieuwe adresbereik. Het adresbereik mag niet overlappen met een bestaande-adresbereik dat is gedefinieerd voor het virtuele netwerk.
-    - **Verwijderen van een adresbereik**: Aan de rechterkant van het adresbereik dat u wilt verwijderen, selecteert u **...** en selecteer vervolgens **verwijderen**. Als een subnet in het adresbereik bestaat, kunt u het adresbereik niet verwijderen. Als u wilt een adresbereik verwijderen, verwijdert u eerst eventuele subnetten (en alle resources in de subnetten) die zijn opgenomen in het adresbereik.
+1. Voer in het zoekvak boven aan de portal *virtuele netwerken* in het zoekvak in. Wanneer **virtuele netwerken** worden weer gegeven in de zoek resultaten, selecteert u deze.
+2. Selecteer in de lijst met virtuele netwerken het virtuele netwerk waarvoor u een adres bereik wilt toevoegen of verwijderen.
+3. Selecteer **adres ruimte**onder **instellingen**.
+4. Voer een van de volgende opties uit:
+    - **Een adres bereik toevoegen**: Voer het nieuwe adres bereik in. Het adres bereik mag niet overlappen met een bestaand adres bereik dat is gedefinieerd voor het virtuele netwerk.
+    - **Verwijder een adres bereik**: Klik aan de rechter kant van het adres bereik dat u wilt verwijderen, selecteer **...** en selecteer vervolgens **verwijderen**. Als er een subnet in het adres bereik bestaat, kunt u het adres bereik niet verwijderen. Als u een adres bereik wilt verwijderen, moet u eerst alle subnetten (en alle resources in de subnetten) verwijderen die voor komen in het adres bereik.
 5. Selecteer **Opslaan**.
 
 **Opdrachten**
 
-- Azure CLI: [az network vnet update](/cli/azure/network/vnet)
-- PowerShell: [Set-AzVirtualNetwork](/powershell/module/az.network/set-azvirtualnetwork)
+- Azure CLI: [AZ Network vnet update](/cli/azure/network/vnet)
+- Power shell: [set-AzVirtualNetwork](/powershell/module/az.network/set-azvirtualnetwork)
 
 ## <a name="change-dns-servers"></a>DNS-servers wijzigen
 
-Alle virtuele machines die zijn verbonden met het virtuele netwerk registreren zich bij de DNS-servers die u voor het virtuele netwerk opgeeft. Ze ook de opgegeven DNS-server gebruiken voor naamomzetting. Elke netwerkinterface (NIC) in een virtuele machine kan hebben een eigen DNS-serverinstellingen. Als een NIC een eigen DNS-serverinstellingen heeft, overschrijven ze de DNS-serverinstellingen voor het virtuele netwerk. Zie voor meer informatie over NIC-DNS-instellingen, [Network interface-taken en instellingen](virtual-network-network-interface.md#change-dns-servers). Zie voor meer informatie over naamomzetting voor virtuele machines en rollen in Azure Cloud Services, [naamomzetting voor VM's en rolexemplaren](virtual-networks-name-resolution-for-vms-and-role-instances.md). Als u wilt toevoegen, wijzigen of verwijderen van een DNS-server:
+Alle virtuele machines die zijn verbonden met het virtuele netwerk, registreren bij de DNS-servers die u opgeeft voor het virtuele netwerk. Ze gebruiken ook de opgegeven DNS-server voor naam omzetting. Elke netwerk interface (NIC) in een virtuele machine kan zijn eigen DNS-server instellingen hebben. Als een NIC zijn eigen DNS-server instellingen heeft, overschrijven ze de DNS-server instellingen voor het virtuele netwerk. Zie [Network Interface tasks and Settings](virtual-network-network-interface.md#change-dns-servers)(Engelstalig) voor meer informatie over DNS-instellingen voor de NIC. Zie [naam omzetting voor vm's en rolinstanties](virtual-networks-name-resolution-for-vms-and-role-instances.md)voor meer informatie over naam omzetting voor vm's en Rolinstanties in azure Cloud Services. Een DNS-server toevoegen, wijzigen of verwijderen:
 
-1. Voer in het zoekvak boven aan de portal, *virtuele netwerken* in het zoekvak in. Wanneer **virtuele netwerken** worden weergegeven in de lijst met zoekresultaten, selecteert u deze.
-2. Selecteer in de lijst met virtuele netwerken, het virtuele netwerk waarvoor u wilt wijzigen van de DNS-servers voor.
+1. Voer in het zoekvak boven aan de portal *virtuele netwerken* in het zoekvak in. Wanneer **virtuele netwerken** worden weer gegeven in de zoek resultaten, selecteert u deze.
+2. Selecteer in de lijst met virtuele netwerken het virtuele netwerk waarvoor u de DNS-servers wilt wijzigen.
 3. Selecteer **DNS-servers**onder **instellingen**.
 4. Selecteer een van de volgende opties:
-   - **Standaard (door Azure geleverd)** : Alle namen van voorbeeldresources en privé-IP-adressen worden automatisch geregistreerd bij de Azure DNS-servers. U kunt omzetten van namen tussen alle resources die zijn verbonden met hetzelfde virtuele netwerk. U kunt deze optie niet gebruiken voor het omzetten van namen tussen virtuele netwerken. Als u wilt omzetten van namen tussen virtuele netwerken, moet u een aangepaste DNS-server.
-   - **Aangepast**: U kunt een of meer servers, tot de Azure is bereikt voor een virtueel netwerk toevoegen. Zie voor meer informatie over limieten voor DNS-servers, [Azure-limieten](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#virtual-networking-limits-classic). U hebt de volgende opties:
-   - **Toevoegen van een adres**: De server toevoegen aan uw lijst met virtuele netwerk DNS-servers. Deze optie wordt ook de DNS-server geregistreerd bij Azure. Als u hebt al een DNS-server geregistreerd bij Azure, kunt u deze DNS-server in de lijst selecteren.
-   - **Verwijderen van een adres**: Naast de server die u wilt verwijderen, selecteert u **...** , klikt u vervolgens **verwijderen**. De server verwijdert, wordt de server alleen in de lijst van dit virtuele netwerk. De DNS-server blijft ingeschreven in Azure voor uw virtuele netwerken om te gebruiken.
-   - **Volgorde van de DNS-serveradressen**: Het is belangrijk om te controleren of dat u uw DNS-servers in de juiste volgorde voor uw omgeving weergeven. Een lijst met DNS-server worden gebruikt in de volgorde waarin ze worden opgegeven. Ze werken niet als een round robin-installatie. Als de eerste DNS-server in de lijst kan worden bereikt, gebruikt de client die DNS-server, ongeacht of de DNS-server correct werkt. Verwijder alle DNS-servers die worden vermeld en deze vervolgens terug in de volgorde die u wilt toevoegen.
-   - **Een adres wijzigen**: Markeer de DNS-server in de lijst en voer vervolgens het nieuwe adres.
+   - **Standaard (door Azure)** : alle resource namen en privé-IP-adressen worden automatisch geregistreerd bij de Azure DNS-servers. U kunt namen omzetten tussen resources die zijn verbonden met hetzelfde virtuele netwerk. U kunt deze optie niet gebruiken om namen in virtuele netwerken op te lossen. Als u namen in virtuele netwerken wilt omzetten, moet u een aangepaste DNS-server gebruiken.
+   - **Aangepast**: u kunt een of meer servers toevoegen, tot aan de Azure-limiet voor een virtueel netwerk. Zie [Azure-limieten](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#virtual-networking-limits-classic)voor meer informatie over DNS-server limieten. U hebt de volgende opties:
+   - **Een adres toevoegen**: Hiermee voegt u de server toe aan de lijst met DNS-servers voor het virtuele netwerk. Met deze optie wordt de DNS-server ook geregistreerd bij Azure. Als u al een DNS-server met Azure hebt geregistreerd, kunt u die DNS-server selecteren in de lijst.
+   - **Een adres verwijderen**: naast de server die u wilt verwijderen, selecteert u **...** en vervolgens **verwijderen**. Als u de server verwijdert, wordt de server alleen uit deze lijst met virtuele netwerken verwijderd. De DNS-server blijft geregistreerd in azure voor het gebruik van uw andere virtuele netwerken.
+   - De **volg orde van de DNS-server adressen wijzigen**: het is belang rijk om te controleren of u uw DNS-servers in de juiste volg orde voor uw omgeving vermeldt. DNS-Server lijsten worden gebruikt in de volg orde waarin ze zijn opgegeven. Ze werken niet als Round Robin-installatie. Als de eerste DNS-server in de lijst kan worden bereikt, gebruikt de client die DNS-server, ongeacht of de DNS-server goed werkt. Verwijder alle DNS-servers die worden vermeld en voeg deze weer toe in de gewenste volg orde.
+   - **Een adres wijzigen**: Markeer de DNS-server in de lijst en voer vervolgens het nieuwe adres in.
 5. Selecteer **Opslaan**.
-6. Start opnieuw op de virtuele machines die zijn verbonden met het virtuele netwerk, zodat ze de nieuwe DNS-serverinstellingen worden toegewezen. Virtuele machines blijven hun huidige DNS-instellingen gebruiken totdat ze opnieuw worden gestart.
+6. Start de virtuele machines die zijn verbonden met het virtuele netwerk opnieuw op, zodat deze de nieuwe DNS-server instellingen krijgen. Vm's blijven hun huidige DNS-instellingen gebruiken totdat ze opnieuw zijn opgestart.
 
 **Opdrachten**
 
-- Azure CLI: [az network vnet update](/cli/azure/network/vnet)
-- PowerShell: [Set-AzVirtualNetwork](/powershell/module/az.network/set-azvirtualnetwork)
+- Azure CLI: [AZ Network vnet update](/cli/azure/network/vnet)
+- Power shell: [set-AzVirtualNetwork](/powershell/module/az.network/set-azvirtualnetwork)
 
 ## <a name="delete-a-virtual-network"></a>Een virtueel netwerk verwijderen
 
-U kunt een virtueel netwerk alleen verwijderen als er geen bronnen die zijn verbonden zijn. Als er bronnen zijn verbonden met een subnet binnen het virtuele netwerk, moet u eerst de resources die zijn verbonden met alle subnetten in het virtuele netwerk verwijderen. De stappen waarmee u een resource verwijderen, is afhankelijk van de resource. Als u wilt weten hoe u resources verwijderen die zijn verbonden met subnetten, Raadpleeg de documentatie voor elk resourcetype dat u wilt verwijderen. Een virtueel netwerk verwijderen:
+U kunt een virtueel netwerk alleen verwijderen als er geen resources zijn verbonden. Als er resources zijn verbonden met een subnet binnen het virtuele netwerk, moet u eerst de bronnen verwijderen die zijn verbonden met alle subnetten in het virtuele netwerk. De stappen die u moet nemen om een resource te verwijderen, variëren afhankelijk van de resource. Raadpleeg de documentatie voor elk resource type dat u wilt verwijderen voor meer informatie over het verwijderen van resources die zijn verbonden met subnetten. Een virtueel netwerk verwijderen:
 
-1. Voer in het zoekvak boven aan de portal, *virtuele netwerken* in het zoekvak in. Wanneer **virtuele netwerken** worden weergegeven in de lijst met zoekresultaten, selecteert u deze.
-2. Selecteer in de lijst met virtuele netwerken, het virtuele netwerk dat u wilt verwijderen.
-3. Controleer of er zijn geen apparaten die zijn verbonden met het virtuele netwerk door te selecteren **verbonden apparaten**onder **instellingen**. Als er verbonden apparaten, moet u deze verwijderen voordat u het virtuele netwerk kunt verwijderen. Als er geen verbonden apparaten zijn, selecteert u **overzicht**.
+1. Voer in het zoekvak boven aan de portal *virtuele netwerken* in het zoekvak in. Wanneer **virtuele netwerken** worden weer gegeven in de zoek resultaten, selecteert u deze.
+2. Selecteer in de lijst met virtuele netwerken het virtuele netwerk dat u wilt verwijderen.
+3. Controleer of er geen apparaten zijn verbonden met het virtuele netwerk door **verbonden apparaten**te selecteren onder **instellingen**. Als er apparaten zijn aangesloten, moet u deze verwijderen voordat u het virtuele netwerk kunt verwijderen. Als er geen verbonden apparaten zijn, selecteert u **overzicht**.
 4. Selecteer **Verwijderen**.
-5. Selecteer om te bevestigen dat de verwijdering van het virtuele netwerk, **Ja**.
+5. Selecteer **Ja**om het verwijderen van het virtuele netwerk te bevestigen.
 
 **Opdrachten**
 
-- Azure CLI: [azure network vnet verwijderen](/cli/azure/network/vnet)
-- PowerShell: [Remove-AzVirtualNetwork](/powershell/module/az.network/remove-azvirtualnetwork)
+- Azure CLI: [Azure Network vnet verwijderen](/cli/azure/network/vnet)
+- Power shell: [Remove-AzVirtualNetwork](/powershell/module/az.network/remove-azvirtualnetwork)
 
 ## <a name="permissions"></a>Machtigingen
 
-Als u wilt uitvoeren op virtuele netwerken, moet uw account worden toegewezen aan de [Inzender voor netwerken](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) rol of een [aangepaste](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) rol die is toegewezen de nodige acties die worden vermeld in de volgende tabel:
+Als u taken wilt uitvoeren op virtuele netwerken, moet uw account worden toegewezen aan de rol [netwerk bijdrager](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) of aan een [aangepaste](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) rol waaraan de juiste acties in de volgende tabel zijn toegewezen:
 
-| Bewerking                                  |   Name                                |
+| Bewerking                                  |   Naam                                |
 |---------------------------------------- |   --------------------------------    |
-|Microsoft.Network/virtualNetworks/read   |   Lezen van een virtueel netwerk              |
-|Microsoft.Network/virtualNetworks/write  |   Een virtueel netwerk maken of bijwerken  |
-|Microsoft.Network/virtualNetworks/delete |   Een virtueel netwerk verwijderen            |
+|Micro soft. Network/virtualNetworks/lezen   |   Een virtueel netwerk lezen              |
+|Micro soft. Network/virtualNetworks/schrijven  |   Een virtueel netwerk maken of bijwerken  |
+|Micro soft. Network/virtualNetworks/verwijderen |   Een virtueel netwerk verwijderen            |
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Maak een virtueel netwerk met [PowerShell](powershell-samples.md) of [Azure CLI](cli-samples.md) voorbeeld scripts of met behulp van Azure [Resource Manager-sjablonen](template-samples.md)
-- Maken en toepassen [Azure policy](policy-samples.md) voor virtuele netwerken
+- Een virtueel netwerk maken met behulp van [Power shell](powershell-samples.md) of [Azure cli](cli-samples.md) -voorbeeld scripts of met behulp van Azure [Resource Manager-sjablonen](template-samples.md)
+- [Azure-beleid](policy-samples.md) maken en Toep assen voor virtuele netwerken

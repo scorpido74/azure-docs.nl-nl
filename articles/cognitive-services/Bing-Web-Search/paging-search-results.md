@@ -11,12 +11,12 @@ ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 10/03/2019
 ms.author: aahi
-ms.openlocfilehash: e2149c7db20939a739380dc2df0e21b6a62ed916
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 9fc05ab42c75bac1f8e192dd4fe20bb142881479
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71955358"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72176909"
 ---
 # <a name="how-to-page-through-results-from-the-bing-search-apis"></a>De resultaten van de Bing Zoeken-API's pagina door lopen
 
@@ -44,7 +44,7 @@ Als u de beschik bare resultaten wilt door lopen, gebruikt u de para meters `cou
 > * Paginering met de Bing Video-, afbeeldings-en nieuws-Api's zijn alleen van toepassing op algemene video (`/video/search`), Nieuws (`/news/search`) en installatie kopieën (`/image/search`). Paginering via trending onderwerpen en categorieën wordt niet ondersteund.  
 > * Het veld `TotalEstimatedMatches` is een schatting van het totale aantal Zoek resultaten voor de huidige query. Wanneer u de para meters `count` en `offset` instelt, kan deze schatting worden gewijzigd.
 
-| Parameter | Description                                                                                                                                                                |
+| Parameter | Beschrijving                                                                                                                                                                |
 |-----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `count`   | Hiermee geeft u het aantal resultaten op dat moet worden geretourneerd in het antwoord. Houd er rekening mee dat de standaard waarde van `count` en het maximale aantal resultaten dat u kunt aanvragen afhankelijk zijn van de API. U kunt deze waarden vinden in de referentie documentatie onder de [volgende stappen](#next-steps). |
 | `offset`  | Hiermee geeft u het aantal resultaten dat moet worden overgeslagen. De `offset` is op nul gebaseerd en moet kleiner zijn dan (`totalEstimatedMatches` @ no__t-2 @ no__t-3).                                           |
@@ -73,7 +73,7 @@ Host: api.cognitive.microsoft.com
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Wat zijn de Bing Web Search-Api's?](bing-api-comparison.md)
-* [Web Search API v7 reference](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-referenc) (Naslaggids Web Search API v7)
+* [Web Search API v7 reference](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference) (Naslaggids Web Search API v7)
 * [Naslag informatie over Bing Custom Search-API V7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference)
 * [Naslag informatie over Bing Nieuws zoeken-API V7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference)
 * [Naslag informatie over Bing Video's zoeken-API V7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference)

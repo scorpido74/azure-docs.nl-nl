@@ -8,14 +8,14 @@ ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 2f1ee5caf89af718d91abeac01730700c131ab41
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: bc7858aeceea7cbd35bc2d834ddfb4fb5d656321
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70048954"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72174834"
 ---
-# <a name="quickstart-use-a-device-capability-model-to-create-an-iot-plug-and-play-device-and-connect-it-to-your-iot-central-application"></a>Quickstart: Een mogelijkheidsprofiel gebruiken om een IoT Plug en Play-apparaat te maken en dit te verbinden met uw IoT Central toepassing
+# <a name="quickstart-use-a-device-capability-model-to-create-an-iot-plug-and-play-device-and-connect-it-to-your-iot-central-application"></a>Quick Start: een mogelijkheidsprofiel gebruiken om een IoT Plug en Play-apparaat te maken en dit te verbinden met uw IoT Central toepassing
 
 [!INCLUDE [iot-central-pnp-original](../../includes/iot-central-pnp-original-note.md)]
 
@@ -36,18 +36,18 @@ Om deze Quick Start te volt ooien, moet u de volgende software installeren op uw
 * [Cmake](https://cmake.org/download/) : als u **cmake**installeert, selecteert u de optie **cmake toevoegen aan het**systeempad.
 * [Visual Studio Code](https://code.visualstudio.com/).
 * [Node.js](https://nodejs.org/)
-* Het `dps-keygen` hulp programma:
+* Het `dps-keygen`-hulp programma:
 
     ```cmd/sh
     npm i -g dps-keygen
     ```
 
-### <a name="install-azure-iot-device-workbench"></a>Azure IoT Device Workbench installeren
+### <a name="install-azure-iot-tools"></a>Azure IoT-Hulpprogram Ma's installeren
 
-Gebruik de volgende stappen om de Azure IoT Device Workbench-extensie in VS code te installeren:
+Voer de volgende stappen uit om de Azure IoT-Hulpprogram Ma's extensie Pack in VS code te installeren:
 
 1. Selecteer in VS code het tabblad **extensies** .
-1. Zoek naar **Azure IOT Device Workbench**.
+1. Zoek naar **Azure IOT-Hulpprogram ma's**.
 1. Selecteer **Installeren**.
 
 ## <a name="prepare-the-development-environment"></a>De ontwikkelomgeving voorbereiden
@@ -64,7 +64,7 @@ Een ontwikkel omgeving voorbereiden die u kunt gebruiken om de Azure IoT C-SDK v
 
     Deze bewerking kan enkele minuten in beslag nemen.
 
-1. Maak een `central_app` map in de hoofdmap van de lokale kloon van de opslag plaats. U gebruikt deze map voor de model bestanden van het apparaat en de stub van het apparaat.
+1. Maak een map @no__t 0 in de hoofdmap van de lokale kloon van de opslag plaats. U gebruikt deze map voor de model bestanden van het apparaat en de stub van het apparaat.
 
     ```cmd/sh
     cd azure-iot-sdk-c
@@ -89,17 +89,17 @@ Als u een apparaat wilt verbinden met een IoT Central-toepassing, hebt u een app
     dps-keygen  -di:mxchip-01 -mk:{Primary Key from previous step}
     ```
 
-    Noteer de gegenereerde apparaatcode. u gebruikt deze waarde in een latere stap in deze Quick Start.
+    Noteer de gegenereerde _apparaatcode_. u gebruikt deze waarde in een latere stap in deze Quick Start.
 
 ## <a name="download-your-model"></a>Uw model downloaden
 
 In deze Quick Start gebruikt u de open bare DCM voor een MxChip IoT DevKit-apparaat. U hebt geen werkelijk DevKit-apparaat nodig om de code uit te voeren. in deze Snelstartgids kunt u de code compileren om uit te voeren op Windows.
 
-1. Open `azure-iot-sdk-c\central_app` de map met VS code.
+1. Open de map `azure-iot-sdk-c\central_app` met VS code.
 
 1. Gebruik **CTRL + SHIFT + P** om het opdracht palet te openen, **IOT Plug en Play**in te voeren en **open model opslagplaats**te selecteren. Selecteer de **open bare opslag plaats**. VS code toont een lijst van de DCMs in de open bare model opslagplaats.
 
-1. Selecteer de **MXChip IOT DevKit** DCM met id `urn:mxchip:mxchip_iot_devkit:1`. Selecteer vervolgens **downloaden**. U hebt nu een kopie van de DCM in de `central_app` map.
+1. Selecteer de **MXChip IOT DevKit** DCM met id `urn:mxchip:mxchip_iot_devkit:1`. Selecteer vervolgens **downloaden**. U hebt nu een kopie van de DCM in de map `central_app`.
 
 ![Model opslagplaats en DCM](./media/quick-create-pnp-device-pnp/public-repository.png)
 
@@ -125,7 +125,7 @@ Nu u de **MXChip IOT DevKit** DCM en de bijbehorende interfaces hebt, kunt u de 
 
 1. Kies **via DPS (Device Provisioning Service) symmetrische sleutel** als de verbindings methode.
 
-1. VS code opent een nieuw venster met gegenereerde code stub-bestanden in `devkit_device` de map.
+1. VS code opent een nieuw venster met gegenereerde code stub-bestanden in de map `devkit_device`.
 
 ![Gegenereerde apparaatcode](./media/quick-create-pnp-device-pnp/generated-code.png)
 
@@ -133,7 +133,7 @@ De verbindings gegevens toevoegen aan de gegenereerde apparaatcode:
 
 1. In het VS code venster met de gegenereerde C-code. Open het `main.c`-bestand.
 
-1. Vervang `[DPS Id Scope]` door de **bereik-id** die u eerder hebt genoteerd.
+1. Vervang `[DPS Id Scope]` door de **scope-id** die u eerder hebt genoteerd.
 
 1. Vervang `[DPS symmetric key]` door de apparaatcode die u in een vorige stap hebt gegenereerd.
 
@@ -145,15 +145,15 @@ De verbindings gegevens toevoegen aan de gegenereerde apparaatcode:
 
 U gebruikt de SDK van het apparaat om de gegenereerde stub voor de apparaatcode te maken. De toepassing die u bouwt, simuleert een **MXChip IOT DevKit** -apparaat en maakt verbinding met uw IOT Central-toepassing. De toepassing verzendt telemetrie en eigenschappen, en ontvangt opdrachten.
 
-1. Open het `CMakeLists.txt` bestand in de `azure-iot-sdk-c` map in VS code. Zorg ervoor dat u het `CMakeLists.txt` bestand opent in `azure-iot-sdk-c` de map, `devkit_device` niet in de map.
+1. Open in VS code het bestand `CMakeLists.txt` in de map `azure-iot-sdk-c`. Zorg ervoor dat u het bestand `CMakeLists.txt` in de map `azure-iot-sdk-c` opent, maar niet in de map `devkit_device`.
 
-1. Voeg de volgende regel aan de onderkant van het `CMakeLists.txt` bestand toe om de map voor de code van het apparaat op te Neem bij het compileren:
+1. Voeg de volgende regel aan de onderkant van het bestand `CMakeLists.txt` toe om de stub-map voor het apparaat op te Neem bij het compileren:
 
     ```txt
     add_subdirectory(central_app/devkit_device)
     ```
 
-1. Maak een `cmake` map in de `azure-iot-sdk-c` map en navigeer naar deze map op de opdracht regel:
+1. Maak een map `cmake` in de map `azure-iot-sdk-c` en navigeer naar deze map op de opdracht regel:
 
     ```cmd\sh
     mkdir cmake

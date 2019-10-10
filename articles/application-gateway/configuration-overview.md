@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 6/1/2019
 ms.author: absha
-ms.openlocfilehash: 65cf71140d1706b8607e721ac323b1a97ae272fa
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: f69348f1a56845716d8d862f2926774cbc537cf0
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69898451"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177423"
 ---
 # <a name="application-gateway-configuration-overview"></a>Overzicht van Application Gateway configuratie
 
@@ -20,7 +20,7 @@ Azure-toepassing gateway bestaat uit verschillende onderdelen die u op verschill
 
 ![Stroom diagram van Application Gateway onderdelen](./media/configuration-overview/configuration-overview1.png)
 
-Deze afbeelding illustreert een toepassing met drie listeners. De eerste twee zijn multi-site listeners voor `http://acme.com/*` en. `http://fabrikam.com/*` Luister beide op poort 80. De derde is een basis-listener met end-to-end Secure Sockets Layer (SSL) beëindiging.
+Deze afbeelding illustreert een toepassing met drie listeners. De eerste twee zijn multi-site listeners voor respectievelijk `http://acme.com/*` en `http://fabrikam.com/*`. Luister beide op poort 80. De derde is een basis-listener met end-to-end Secure Sockets Layer (SSL) beëindiging.
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -50,7 +50,7 @@ Netwerk beveiligings groepen (Nsg's) worden ondersteund op Application Gateway. 
 
 - U moet uitzonde ringen voor binnenkomend verkeer op poort 65503-65534 voor de Application Gateway v1-SKU en poorten 65200-65535 voor de v2-SKU toevoegen. Dit poort bereik is vereist voor de communicatie van Azure-infra structuur. Deze poorten worden beveiligd (vergrendeld) door Azure-certificaten. Externe entiteiten, met inbegrip van de klanten van deze gateways, kunnen geen wijzigingen op deze eind punten initiëren zonder dat er geschikte certificaten aanwezig zijn.
 
-- De uitgaande Internet verbinding kan niet worden geblokkeerd. Standaard regels voor uitgaande verbindingen in de NSG staan Internet connectiviteit toe. U wordt aangeraden:
+- De uitgaande Internet verbinding kan niet worden geblokkeerd. Standaard regels voor uitgaande verbindingen in de NSG staan Internet connectiviteit toe. U wordt aangeraden dat u:
 
   - Verwijder de standaard regels voor uitgaande verbindingen niet.
   - Maak geen andere uitgaande regels die uitgaande internet connectiviteit weigeren.
@@ -61,7 +61,7 @@ Netwerk beveiligings groepen (Nsg's) worden ondersteund op Application Gateway. 
 
 Voor dit scenario gebruikt u Nsg's in het subnet Application Gateway. Plaats de volgende beperkingen op het subnet in deze volg orde van prioriteit:
 
-1. Binnenkomend verkeer van een bron-IP/IP-bereik toestaan.
+1. Sta binnenkomend verkeer van een bron-IP/IP-bereik en naar het gehele Application Gateway subnet, of naar het specifieke geconfigureerde persoonlijke front-end-IP-adres toe. De NSG werkt niet op een openbaar IP-adres.
 2. Sta inkomende aanvragen van alle bronnen toe aan poorten 65503-65534 voor de Application Gateway v1-SKU en poorten 65200-65535 voor v2 SKU voor [back-end status communicatie](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics). Dit poort bereik is vereist voor de communicatie van Azure-infra structuur. Deze poorten worden beveiligd (vergrendeld) door Azure-certificaten. Zonder de juiste certificaten kunnen externe entiteiten geen wijzigingen op deze eind punten initiëren.
 3. Sta binnenkomende Azure Load Balancer tests (*AzureLoadBalancer* tag) en binnenkomend virtueel netwerk verkeer (*VirtualNetwork* -tag) toe aan de [netwerk beveiligings groep](https://docs.microsoft.com/azure/virtual-network/security-overview).
 4. Alle andere binnenkomende verkeer blok keren met behulp van de regel deny-all.
@@ -97,7 +97,7 @@ Een front-end-IP-adres is gekoppeld aan een *listener*, waarmee wordt gecontrole
 
 Een listener is een logische entiteit die controleert op binnenkomende verbindings aanvragen met behulp van de poort, het Protocol, de host en het IP-adres. Wanneer u de listener configureert, moet u waarden opgeven voor deze die overeenkomen met de overeenkomende waarden in de inkomende aanvraag op de gateway.
 
-Wanneer u een toepassings gateway maakt met behulp van de Azure Portal, maakt u ook een standaard-listener door het protocol en de poort voor de listener te kiezen. U kunt kiezen of u ondersteuning voor HTTP2 wilt inschakelen voor de listener. Nadat u de toepassings gateway hebt gemaakt, kunt u de instellingen van die standaardlistener (*appGatewayHttpListener*/*appGatewayHttpsListener*) bewerken of nieuwe listeners maken.
+Wanneer u een toepassings gateway maakt met behulp van de Azure Portal, maakt u ook een standaard-listener door het protocol en de poort voor de listener te kiezen. U kunt kiezen of u ondersteuning voor HTTP2 wilt inschakelen voor de listener. Nadat u de toepassings gateway hebt gemaakt, kunt u de instellingen van die standaard-listener (*appGatewayHttpListener*/*appGatewayHttpsListener*) bewerken of nieuwe listeners maken.
 
 ### <a name="listener-type"></a>Type listener
 
@@ -153,7 +153,7 @@ Set-AzApplicationGateway -ApplicationGateway $gw
 
 Ondersteuning voor websockets is standaard ingeschakeld. Er is geen door de gebruiker Configureer bare instelling om deze in of uit te scha kelen. U kunt websockets gebruiken met HTTP-en HTTPS-listeners.
 
-### <a name="custom-error-pages"></a>Aangepaste foutpagina's
+### <a name="custom-error-pages"></a>Aangepaste foutenpagina's
 
 U kunt een aangepaste fout op globaal niveau of op het niveau van de listener definiëren. Het maken van aangepaste fout pagina's op globaal niveau vanuit het Azure Portal wordt momenteel niet ondersteund. U kunt een aangepaste fout pagina configureren voor een 403-Web Application Firewall fout of een 502-onderhouds pagina op het niveau van de listener. U moet ook een openbaar toegankelijke BLOB-URL opgeven voor de gegeven fout status code. Zie voor meer informatie [Aangepaste foutpagina's maken voor Application Gateway](https://docs.microsoft.com/azure/application-gateway/custom-error).
 
@@ -173,11 +173,11 @@ Nadat u een listener hebt gemaakt, koppelt u deze aan een regel voor het door st
 
 Wanneer u een toepassings gateway maakt met behulp van de Azure Portal, maakt u een standaard regel (*firewallregel1*). Deze regel koppelt de standaard-listener (*appGatewayHttpListener*) aan de standaard back-end-pool (*appGatewayBackendPool*) en de standaard back-end-http-instellingen (*appGatewayBackendHttpSettings*). Nadat u de gateway hebt gemaakt, kunt u de instellingen van de standaard regel bewerken of nieuwe regels maken.
 
-### <a name="rule-type"></a>Regeltype
+### <a name="rule-type"></a>Regel type
 
 Wanneer u een regel maakt, kiest u tussen [ *basis* en *op basis van het pad*](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#request-routing-rules).
 
-- Kies basis als u alle aanvragen voor de gekoppelde listener (bijvoorbeeld *blog<i></i>\*. contoso.com/)* wilt door sturen naar één back-end-groep.
+- Kies basis als u alle aanvragen voor de gekoppelde listener (bijvoorbeeld *blog<i></i>. contoso.com/\*)* wilt door sturen naar één back-end-groep.
 - Kies op basis van pad als u aanvragen van specifieke URL-paden naar specifieke back-endservers wilt routeren. Het pad patroon wordt alleen toegepast op het pad van de URL, niet op de query parameters.
 
 #### <a name="order-of-processing-rules"></a>Volg orde van de verwerkings regels
@@ -212,13 +212,13 @@ Voor een regel op basis van een pad voegt u meerdere back-end-HTTP-instellingen 
 
 ### <a name="redirection-setting"></a>Omleidings instelling
 
-Als omleiding is geconfigureerd voor een basis regel, worden alle aanvragen voor de gekoppelde listener omgeleid naar het doel. Dit is *wereld wijde* omleiding. Als omleiding is geconfigureerd voor een op een pad gebaseerde regel, worden alleen aanvragen in een specifiek site gebied omgeleid. Een voor beeld is een boodschappen mand gebied dat wordt aangeduid met */Cart/\** . Dit is een omleiding *op basis van pad* .
+Als omleiding is geconfigureerd voor een basis regel, worden alle aanvragen voor de gekoppelde listener omgeleid naar het doel. Dit is *wereld wijde* omleiding. Als omleiding is geconfigureerd voor een op een pad gebaseerde regel, worden alleen aanvragen in een specifiek site gebied omgeleid. Een voor beeld is een boodschappen mand gebied dat wordt aangeduid met */cart/\** . Dit is een omleiding *op basis van pad* .
 
 Zie [Application Gateway omleidings overzicht](https://docs.microsoft.com/azure/application-gateway/redirect-overview)voor meer informatie over omleidingen.
 
 #### <a name="redirection-type"></a>Type omleiding
 
-Kies het type omleiding vereist: *Permanent (301)* , *tijdelijk (307*), *gevonden (302)* of *Zie Overig (303)* .
+Kies het type omleiding vereist: *permanent (301)* , *tijdelijk (307*), *gevonden (302)* of *Zie other (303)* .
 
 #### <a name="redirection-target"></a>Doel van omleiding
 
@@ -272,7 +272,7 @@ Deze instelling in combi natie met HTTPS in de listener ondersteunt [end-to-end 
 
 Met deze instelling geeft u de poort op waarop de back-endservers worden geluisterd naar verkeer van de toepassings gateway. U kunt poorten configureren variërend van 1 tot en met 65535.
 
-### <a name="request-timeout"></a>Time-out van de aanvraag
+### <a name="request-timeout"></a>Time-out van aanvraag
 
 Deze instelling is het aantal seconden dat de toepassings gateway wacht om een reactie van de back-end-pool te ontvangen voordat het fout bericht ' time-out van verbinding ' wordt geretourneerd.
 
@@ -310,7 +310,7 @@ Met deze instelling wordt een [aangepaste test](https://docs.microsoft.com/azure
 > [!NOTE]
 > De aangepaste test controleert de status van de back-end-groep niet, tenzij de bijbehorende HTTP-instelling expliciet is gekoppeld aan een listener.
 
-### <a id="pick"/></a>Kies een hostnaam uit het back-end-adres
+### <a id="pick"/> @ no__t-1Pick-hostnaam uit het back-end-adres
 
 Met deze mogelijkheid wordt de *host* -header in de aanvraag dynamisch ingesteld op de hostnaam van de back-end-pool. Er wordt gebruikgemaakt van een IP-adres of een FQDN-naam.
 
@@ -337,7 +337,7 @@ U kunt een back-end-pool naar vier typen back-endservers verwijzen: een specifie
 
 Nadat u een back-end-pool hebt gemaakt, moet u deze koppelen aan een of meer aanvraag-routerings regels. U moet ook status controles configureren voor elke back-end-pool op uw toepassings gateway. Wanneer aan een regel voorwaarde voor het door sturen van de aanvraag wordt voldaan, stuurt de toepassings gateway het verkeer naar de gezonde servers (zoals bepaald door de status tests) in de bijbehorende back-end-pool.
 
-## <a name="health-probes"></a>Tests
+## <a name="health-probes"></a>Statuscontroles
 
 Een toepassings gateway controleert standaard de status van alle resources in de back-end. We raden u echter ten zeerste aan een aangepaste test te maken voor elke back-end-HTTP-instelling om meer controle te krijgen over de status controle. Zie [aangepaste Health probe-instellingen](https://docs.microsoft.com/azure/application-gateway/application-gateway-probe-overview#custom-health-probe-settings)voor meer informatie over het configureren van een aangepaste test.
 

@@ -11,21 +11,21 @@ ms.topic: conceptual
 ms.date: 07/03/2019
 ms.author: ghogen
 ms.custom: seodec18
-ms.openlocfilehash: ff3ae9ec4a775e2450a552e414ec52597593dd39
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: e4308f98b6e547acd4adfb62ab78c0517247d905
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67604270"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177095"
 ---
 # <a name="use-connected-services-in-visual-studio-to-connect-to-the-computer-vision-api"></a>Connected Services in Visual Studio gebruiken voor verbinding met de Computer Vision-API
 
-Dit artikel en de bijbehorende artikelen bieden details over het gebruik van de Visual Studio Connected Service-functie voor de Microsoft Cognitive Services Computer Vision-API. De mogelijkheid is beschikbaar in Visual Studio 2017 15.7 of hoger wanneer de Cognitive Services-extensie is geïnstalleerd.
+Dit artikel en de bijbehorende artikelen bieden details over het gebruik van de Visual Studio Connected Service-functie voor de Microsoft Cognitive Services Computer Vision-API. De mogelijkheid is beschikbaar in Visual Studio 2017 15.7 of hoger, met de Cognitive Services-extensie geïnstalleerd.
 
 ## <a name="prerequisites"></a>Vereisten
 
 - Een Azure-abonnement. Als u nog geen abonnement hebt, kunt u zich aanmelden voor een [gratis account](https://azure.microsoft.com/pricing/free-trial/).
-- Visual Studio 2017 versie 15.7 of hoger met de **webontwikkeling** werkbelasting geïnstalleerd. [Download nu](https://visualstudio.microsoft.com/downloads/).
+- Visual Studio 2017 versie 15,7 of hoger, waarbij de werk belasting voor **Web Development** is geïnstalleerd. [Download nu](https://visualstudio.microsoft.com/downloads/).
 
 [!INCLUDE [vs-install-cognitive-services-vsix](../../../includes/vs-install-cognitive-services-vsix.md)]
 
@@ -36,23 +36,23 @@ Dit artikel en de bijbehorende artikelen bieden details over het gebruik van de 
 1. In **Solution Explorer** kiest u **Connected Service** > **Toevoegen**.
    De Connected Service-pagina wordt weergegeven met services die u aan uw project kunt toevoegen.
 
-   ![met de rechtermuisknop op het menu op een Visual Studio-project: Toevoegen > Connected Service](../media/vs-common/Connected-Service-Menu.PNG)
+   ![Klik met de rechter muisknop op een Visual Studio-project: > verbonden service toevoegen](../media/vs-common/Connected-Service-Menu.PNG)
 
 1. Kies **Microsoft Cognitive Services Computer Vision-API** in het menu van de beschikbare services.
 
-   ![Menu van de gekoppelde Services: Analyseer afbeeldingen... Geeft een overzicht](./media/vs-computer-vision-connected-service/Cog-Vision-Connected-Service-0.PNG)
+   ![Menu Connected Services: afbeeldingen analyseren... wordt beschreven](./media/vs-computer-vision-connected-service/Cog-Vision-Connected-Service-0.PNG)
 
    Als u bent aangemeld bij Visual Studio en een Azure-abonnement hebt dat is gekoppeld aan uw account, wordt een pagina weergegeven met een vervolgkeuzelijst met uw abonnementen.
 
-   ![Computer Vision-API-venster met de vervolgkeuzelijst van het abonnement is gemarkeerd](media/vs-computer-vision-connected-service/Cog-Vision-Connected-Service-1.PNG)
+   ![Computer Vision-API venster met gemarkeerde vervolg keuzelijst abonnement](media/vs-computer-vision-connected-service/Cog-Vision-Connected-Service-1.PNG)
 
 1. Selecteer het abonnement dat u wilt gebruiken, en kies een naam voor de Computer Vision-API, of kies de koppeling Bewerken om de automatisch gegenereerde naam te wijzigen, en kies de resourcegroep en prijscategorie.
 
-   ![Connected Services-gegevens bewerken](media/vs-computer-vision-connected-service/Cog-Vision-Connected-Service-2.PNG)
+   ![Details van verbonden services bewerken](media/vs-computer-vision-connected-service/Cog-Vision-Connected-Service-2.PNG)
 
    Volg de link voor meer informatie over de prijscategorieën.
 
-1. Kies Toevoegen om ondersteuning voor Connected Service toe te voegen.
+1. Kies Toevoegen om ondersteuning van Connected Service toe te voegen.
    Visual Studio wijzigt uw project om NuGet-pakketten toe te voegen, de configuratiebestanden te bewerken en andere wijzigingen voor de ondersteuning van een verbinding met de Computer Vision-API door te voeren. In het Uitvoervenster ziet u het logboek met de gebeurtenissen voor uw project. Er verschijnt informatie die er ongeveer als volgt uitziet:
 
    ```output
@@ -62,7 +62,7 @@ Dit artikel en de bijbehorende artikelen bieden details over het gebruik van de 
    [4/26/2018 5:15:40.286 PM] Installing NuGet package 'Microsoft.Azure.CognitiveServices.Vision.ComputerVision' version 2.1.0.
    [4/26/2018 5:15:44.117 PM] Retrieving keys...
    [4/26/2018 5:15:45.602 PM] Changing appsettings.json setting: ComputerVisionAPI_ServiceKey=<service key>
-   [4/26/2018 5:15:45.606 PM] Changing appsettings.json setting: ComputerVisionAPI_ServiceEndPoint=https://australiaeast.api.cognitive.microsoft.com/vision/v2.0
+   [4/26/2018 5:15:45.606 PM] Changing appsettings.json setting: ComputerVisionAPI_ServiceEndPoint=https://australiaeast.api.cognitive.microsoft.com/vision/v2.1
    [4/26/2018 5:15:45.609 PM] Changing appsettings.json setting: ComputerVisionAPI_Name=WebApplication-Core-ComputerVision_ComputerVisionAPI
    [4/26/2018 5:15:46.747 PM] Successfully added Computer Vision API to the project.
    ```
@@ -90,13 +90,13 @@ Dit artikel en de bijbehorende artikelen bieden details over het gebruik van de 
       }
    ```
 
-1. Voeg in de wwwroot-map van uw project een afbeeldingenmap toe en voeg een afbeeldingsbestand toe in de wwwroot-map. Als voorbeeld kunt u een van de afbeeldingen gebruiken op deze [Computer Vision-API-pagina](https://azure.microsoft.com/services/cognitive-services/computer-vision/). Met de rechtermuisknop op een van de installatiekopieën, opslaan op uw lokale vaste schijf en klik in Solution Explorer met de rechtermuisknop op de afbeeldingenmap en kies **toevoegen** > **bestaand Item** toe te voegen aan uw project. Uw project ziet er ongeveer als volgt uit in Solution Explorer: 
+1. Voeg in de wwwroot-map van uw project een afbeeldingenmap toe en voeg een afbeeldingsbestand toe aan de wwwroot-map. Als voorbeeld kunt u een van de afbeeldingen gebruiken op deze [Computer Vision-API-pagina](https://azure.microsoft.com/services/cognitive-services/computer-vision/). Klik met de rechter muisknop op een van de installatie kopieën, sla het bestand op uw lokale harde schijf op, klik in Solution Explorer met de rechter muisknop op de map afbeeldingen en kies vervolgens  > **bestaand item** **toevoegen**om dit toe te voegen aan uw project. Uw project ziet er ongeveer als volgt uit in Solution Explorer: 
   
    ![Schermafbeelding van Solution Explorer met een afbeeldingsbestand geselecteerd](media/vs-computer-vision-connected-service/Cog-Vision-Connected-Service-3.PNG) 
 
 1. Klik met de rechtermuisknop op het afbeeldingsbestand, kies Eigenschappen en kies vervolgens **Kopiëren indien nieuwer**. 
 
-   ![eigenschappenvenster van de installatiekopie; Kopiëren naar de uitvoermap die zijn ingesteld op kopiëren indien nieuwer](media/vs-computer-vision-connected-service/Cog-Vision-Connected-Service-5.PNG) 
+   ![venster Eigenschappen van afbeelding; Kopiëren naar uitvoer Directory ingesteld op kopiëren indien nieuwer](media/vs-computer-vision-connected-service/Cog-Vision-Connected-Service-5.PNG) 
  
 1. Vervang de configuratiemethode door de volgende code voor toegang tot de Computer Vision-API en test een afbeelding.
 
@@ -260,4 +260,4 @@ Verwijder de resourcegroep als u deze niet meer nodig hebt. Hiermee verwijdert u
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over de Computer Vision-API door te lezen die de [Computer Vision-API-documentatie](Home.md).
+Lees de [Computer Vision-API documentatie](Home.md)voor meer informatie over de computer vision-API.

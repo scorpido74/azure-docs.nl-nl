@@ -1,9 +1,9 @@
 ### YamlMime:Landing
 title: Documentatie voor Custom Vision
-summary: Azure Custom Vision is een cognitieve service waarmee u uw eigen classificaties voor afbeeldingen kunt bouwen, implementeren en verbeteren. Een afbeeldingsclassificatie is een AI-service die op basis van de visuele kenmerken van een afbeelding labels (die klassen vertegenwoordigen) op afbeeldingen toepast.
+summary: Custom Vision is een cognitieve service waarmee u uw eigen afbeeldingsclassificaties kunt compileren, implementeren en verbeteren. Een afbeeldingsclassificatie is een AI-service die op basis van de visuele kenmerken van een afbeelding labels (die klassen vertegenwoordigen) op afbeeldingen toepast.
 metadata:
   title: Documentatie voor Custom Vision
-  description: Azure Custom Vision is een cognitieve service waarmee u uw eigen classificaties voor afbeeldingen kunt bouwen, implementeren en verbeteren. Een afbeeldingsclassificatie is een AI-service die op basis van de visuele kenmerken van een afbeelding labels (die klassen vertegenwoordigen) op afbeeldingen toepast.
+  description: Custom Vision is een cognitieve service waarmee u uw eigen afbeeldingsclassificaties kunt compileren, implementeren en verbeteren. Een afbeeldingsclassificatie is een AI-service die op basis van de visuele kenmerken van een afbeelding labels (die klassen vertegenwoordigen) op afbeeldingen toepast.
   services: cognitive-services
   ms.service: cognitive-services
   ms.subservice: custom-vision
@@ -11,12 +11,12 @@ metadata:
   author: PatrickFarley
   ms.author: pafarley
   ms.date: 09/05/2019
-  ms.openlocfilehash: 931f67bd0f5c73426781da39ded3bcfff0a8dea3
-  ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+  ms.openlocfilehash: 5be5dcd64345de32e37413932869574391573c60
+  ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
   ms.translationtype: HT
   ms.contentlocale: nl-NL
-  ms.lasthandoff: 09/24/2019
-  ms.locfileid: "71211972"
+  ms.lasthandoff: 10/09/2019
+  ms.locfileid: "72176174"
 landingContent:
 - title: Over Custom Vision
   linkLists:

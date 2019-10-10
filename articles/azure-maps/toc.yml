@@ -105,6 +105,8 @@
               href: map-add-line-layer.md
             - name: Een polygoonlaag toevoegen
               href: map-add-shape.md
+            - name: Een polygoonlaag voor extrusie toevoegen
+              href: map-extruded-polygon.md
             - name: Een heatmap-laag toevoegen
               href: map-add-heat-map-layer.md
             - name: Een pop-up toevoegen

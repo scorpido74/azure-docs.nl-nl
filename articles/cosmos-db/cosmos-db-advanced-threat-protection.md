@@ -1,18 +1,18 @@
 ---
 title: Advanced Threat Protection voor Azure Cosmos DB
 description: Meer informatie over het Azure Cosmos DB versleutelen van gegevens in rust en hoe deze worden geïmplementeerd.
-author: monhaber
+author: rkarlin
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.author: v-mohabe
+ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 035c7e9ed5ab33c89a2a55b1133294db434bfe81
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 2b12d639e734502113b6afdd7250fca6a520c687
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70123849"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72176028"
 ---
 # <a name="advanced-threat-protection-for-azure-cosmos-db"></a>Advanced Threat Protection voor Azure Cosmos DB
 
@@ -88,11 +88,11 @@ Wanneer Azure Cosmos DB afwijkende activiteiten optreden, wordt een beveiligings
 
  Vanuit Azure Security Center kunt u uw huidige [beveiligings waarschuwingen](../security-center/security-center-alerts-overview.md)controleren en beheren.  Klik op een specifieke waarschuwing in [Security Center](https://ms.portal.azure.com/#blade/Microsoft_Azure_Security/SecurityMenuBlade/0) om mogelijke oorzaken en aanbevolen acties te bekijken om de mogelijke dreiging te onderzoeken en te verhelpen. In de volgende afbeelding ziet u een voor beeld van waarschuwings details die zijn opgenomen in Security Center.
 
- ![Details van de bedreiging](./media/cosmos-db-advanced-threat-protection/cosmos-db-alert-details.png)
+ ![Details van bedreiging](./media/cosmos-db-advanced-threat-protection/cosmos-db-alert-details.png)
 
 Er wordt ook een e-mail melding met de waarschuwings Details en aanbevolen acties verzonden. De volgende afbeelding toont een voor beeld van een e-mail waarschuwing.
 
- ![Waarschuwingsdetails](./media/cosmos-db-advanced-threat-protection/cosmos-db-alert.png)
+ ![Meldingsdetails](./media/cosmos-db-advanced-threat-protection/cosmos-db-alert.png)
 
 ## <a name="cosmos-db-atp-alerts"></a>Cosmos DB ATP-waarschuwingen
 

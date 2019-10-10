@@ -1,6 +1,6 @@
 ---
-title: Met Virtual Machine Scale Sets met behulp van Desired State Configuration | Microsoft Docs
-description: Met behulp van de virtuele-Machineschaalset ingesteld met de Azure DSC-extensie
+title: Desired state Configuration gebruiken met Virtual Machine Scale Sets | Microsoft Docs
+description: Virtual Machine Scale Sets gebruiken met de Azure DSC-uitbrei ding
 services: virtual-machine-scale-sets
 documentationcenter: ''
 author: zjalexander
@@ -16,18 +16,18 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 04/05/2017
 ms.author: zachal
-ms.openlocfilehash: 24a37d352413ff9ac55ce8e189691988383950f3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f3da1ed5eabd3a35fe382471314084258b20213b
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64728447"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72166163"
 ---
-# <a name="using-virtual-machine-scale-sets-with-the-azure-dsc-extension"></a>Met behulp van de virtuele-Machineschaalset ingesteld met de Azure DSC-extensie
-[Virtual Machine Scale Sets](virtual-machine-scale-sets-overview.md) kan worden gebruikt met de [Azure Desired State Configuration (DSC)](../virtual-machines/windows/extensions-dsc-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) extensie handler. Virtuele-machineschaalsets bieden een manier om te implementeren en beheren van grote aantallen virtuele machines en Elastisch in en uit kunnen schalen op om te laden. DSC wordt gebruikt voor het configureren van de virtuele machines als ze online is gekomen, zodat ze de productie-software worden uitgevoerd.
+# <a name="using-virtual-machine-scale-sets-with-the-azure-dsc-extension"></a>Virtual Machine Scale Sets gebruiken met de Azure DSC-uitbrei ding
+[Virtual Machine Scale sets](virtual-machine-scale-sets-overview.md) kan worden gebruikt met de extensie [-handler Azure desired state Configuration (DSC)](../virtual-machines/windows/extensions-dsc-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) . Virtuele-machine schaal sets bieden een manier om grote aantallen virtuele machines te implementeren en te beheren, en kunnen in-en uitgroeien in antwoord op belasting. DSC wordt gebruikt voor het configureren van de virtuele machines zodra deze online zijn, zodat ze de productie software uitvoeren.
 
-## <a name="differences-between-deploying-to-virtual-machines-and-virtual-machine-scale-sets"></a>Verschillen zijn tussen implementatie voor virtuele Machines en Virtual Machine Scale Sets
-De onderliggende sjabloonstructuur voor een virtuele-machineschaalset verschilt iets van een enkele virtuele machine. Een enkele virtuele machine implementeert met name extensies onder het knooppunt 'informatie'. Er is een vermelding van het type 'uitbreidingen' waar DSC wordt toegevoegd aan de sjabloon
+## <a name="differences-between-deploying-to-virtual-machines-and-virtual-machine-scale-sets"></a>Verschillen tussen de implementatie van Virtual Machines en Virtual Machine Scale Sets
+De onderliggende sjabloon structuur voor een schaalset voor virtuele machines wijkt enigszins af van één virtuele machine. In het bijzonder implementeert één VM uitbrei dingen onder het knoop punt ' informatie '. Er is een invoer van het type ' uitbrei dingen ' waar DSC aan de sjabloon wordt toegevoegd
 
 ```
 "resources": [
@@ -66,7 +66,7 @@ De onderliggende sjabloonstructuur voor een virtuele-machineschaalset verschilt 
       ]
 ```
 
-Een virtuele machine scale set knooppunt heeft een sectie 'Dependencies' met de 'VirtualMachineProfile", 'extensionProfile'-kenmerk. DSC wordt toegevoegd onder 'uitbreidingen'
+Een knoop punt van een virtuele-machine schaalset heeft een sectie ' Eigenschappen ' met het kenmerk ' VirtualMachineProfile ', ' extensionProfile '. DSC wordt toegevoegd onder ' uitbrei dingen '
 
 ```
 "extensionProfile": {
@@ -97,15 +97,15 @@ Een virtuele machine scale set knooppunt heeft een sectie 'Dependencies' met de 
             ]
 ```
 
-## <a name="behavior-for-a-virtual-machine-scale-set"></a>Gedrag voor een virtuele-Machineschaalset
-Het gedrag voor een virtuele-machineschaalset is identiek aan het gedrag voor een enkele virtuele machine. Wanneer een nieuwe virtuele machine wordt gemaakt, wordt deze automatisch ingericht met de DSC-extensie. Als een nieuwere versie van de WMF is vereist voor de extensie, wordt de virtuele machine opnieuw wordt opgestart voordat die afkomstig zijn online. Zodra deze online is, downloadt het .zip DSC-configuratie en het in te richten op de virtuele machine. Meer informatie vindt u [het overzicht van Azure DSC-extensie](../virtual-machines/windows/extensions-dsc-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+## <a name="behavior-for-a-virtual-machine-scale-set"></a>Gedrag voor een Schaalset voor virtuele machines
+Het gedrag voor een schaalset voor virtuele machines is identiek aan het gedrag voor één virtuele machine. Wanneer een nieuwe virtuele machine wordt gemaakt, wordt deze automatisch ingericht met de DSC-extensie. Als er een nieuwere versie van de WMF wordt vereist door de extensie, wordt de VM opnieuw opgestart voordat deze online is. Zodra deze online is, worden de DSC-configuratie. zip gedownload en op de VM ingericht. Meer informatie vindt u in [het overzicht van Azure DSC-extensies](../virtual-machines/windows/extensions-dsc-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 ## <a name="next-steps"></a>Volgende stappen
 Bekijk de [Azure Resource Manager-sjabloon voor de DSC-extensie](../virtual-machines/windows/extensions-dsc-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
-Leer hoe u de [referenties veilig worden verwerkt door DSC-extensie](../virtual-machines/windows/extensions-dsc-credentials.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
+Meer informatie over hoe de [DSC-extensie veilig referenties afhandelt](../virtual-machines/windows/extensions-dsc-credentials.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
 
-Zie voor meer informatie over de Azure-DSC-extensie-handler [Inleiding tot de Azure Desired State Configuration-extensie-handler](../virtual-machines/windows/extensions-dsc-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
+Zie [Introduction to the Azure desired state Configuration extension handler](../virtual-machines/windows/extensions-dsc-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)(Engelstalig) voor meer informatie over de Azure DSC-extensie-handler. 
 
-Voor meer informatie over PowerShell DSC, [gaat u naar het documentatiecentrum van PowerShell](https://msdn.microsoft.com/powershell/dsc/overview). 
+[Ga naar het Power shell-documentatie centrum](/powershell/scripting/dsc/overview/overview)voor meer informatie over Power shell DSC. 
 

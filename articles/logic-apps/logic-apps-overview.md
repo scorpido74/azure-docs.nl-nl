@@ -1,6 +1,6 @@
 ---
-title: Gegevens integreren en werk stromen automatiseren-Azure Logic Apps
-description: Ontwikkel oplossingen voor het integreren van gegevens en het automatiseren van taken, werk stromen en processen in uw bedrijf of organisatie voor systeem integratie, EAI (Enter prise Application Integration) en Orchestration-scenario's.
+title: Taken automatiseren voor Enter prise Integration-Azure Logic Apps
+description: Meer informatie over het automatiseren van werk stromen die apps, gegevens, services en systemen integreren met minimale code voor bedrijfs integratie met behulp van Azure Logic Apps.
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -11,12 +11,12 @@ ms.reviewer: klam, LADocs
 ms.topic: overview
 ms.custom: mvc
 ms.date: 06/29/2018
-ms.openlocfilehash: fdcf3d7bc0111530307a4bf30a437ab70c71bf83
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 85e2216e39658fde42f298dabc38c737621d6be4
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71981724"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72178027"
 ---
 # <a name="overview---what-is-azure-logic-apps"></a>Overzicht: wat is Azure Logic Apps?
 
@@ -44,7 +44,7 @@ Telkens wanneer de trigger wordt geactiveerd, maakt de Logic Apps-engine een exe
 
 ![Ontwerper van logische apps - voorbeeld van logische app](./media/logic-apps-overview/azure-logic-apps-overview.png)
 
-U kunt uw logische apps visueel compileren met Ontwerper van logische apps, een functie die beschikbaar is op Azure Portal via uw browser en in Visual Studio. Voor meer aangepaste logische apps kunt u definities voor logische apps maken of bewerken in JavaScript Object Notation (JSON) door in de editor 'codeweergave' te werken. U kunt voor bepaalde taken ook Azure PowerShell-opdrachten en Azure Resource Manager-sjablonen gebruiken. Logische apps worden geïmplementeerd en uitgevoerd in de cloud op Azure. Bekijk deze video voor een meer uitvoerige inleiding: [Use Azure Enterprise Integration Services to run cloud apps at scale](https://channel9.msdn.com/Events/Connect/2017/T119/)
+U kunt uw logische apps visueel compileren met Ontwerper van logische apps, een functie die beschikbaar is op Azure Portal via uw browser en in Visual Studio. Voor meer aangepaste logische apps kunt u definities voor logische apps maken of bewerken in JavaScript Object Notation (JSON) door in de editor 'codeweergave' te werken. U kunt voor bepaalde taken ook Azure PowerShell-opdrachten en Azure Resource Manager-sjablonen gebruiken. Logische apps worden geïmplementeerd en uitgevoerd in de cloud op Azure. Bekijk de video [Use Azure Enterprise Integration Services to run cloud apps at scale](https://channel9.msdn.com/Events/Connect/2017/T119/) (Azure Enterprise Integration Services gebruiken om cloud-apps op schaal uit te voeren) voor een gedetailleerde inleiding
 
 ## <a name="why-use-logic-apps"></a>Waarom Logic Apps?
 
@@ -108,7 +108,7 @@ Maak uw logische apps als Azure Resource Manager sjablonen, zodat u de [implemen
 
 Als u de connector die u wilt uitvoeren van aangepaste code niet vindt, kunt u logische apps uitbreiden door uw eigen code fragmenten op aanvraag via [Azure functions](../azure-functions/functions-overview.md)te maken en aan te roepen. Maak uw eigen [API's](../logic-apps/logic-apps-create-api-app.md) en [aangepaste connectors](../logic-apps/custom-connector-overview.md) die u kunt aanroepen vanuit logic apps.
 
-### <a name="pay-only-for-what-you-use"></a>Alleen betalen voor wat u gebruikt
+### <a name="pay-only-for-what-you-use"></a>Uitsluitend betalen voor wat u gebruikt
   
 Logic Apps gebruikt [prijzen en metingen](../logic-apps/logic-apps-pricing.md) op basis van verbruik tenzij u eerder logische apps hebt gemaakt met App Service-plannen.
 
@@ -130,7 +130,7 @@ Meer informatie over Logic Apps vindt u in deze inleidende video's:
 
 * **Acties**: acties zijn alle stappen die na de trigger plaatsvinden. Elke actie verwijst doorgaans naar een bewerking die wordt gedefinieerd door een beheerde connector, aangepaste API of aangepaste connector.
 
-* **Enterprise Integration Pack**: voor meer geavanceerde integratiescenario's bevat Logic Apps mogelijkheden van Biztalk Server. De Enterprise Integration Pack bevat connectors waarmee logische apps eenvoudig validaties, transformaties en andere acties kunnen uitvoeren.
+* **Enterprise Integration Pack**: voor geavanceerdere integratiescenario’s bevat Logic Apps functies van BizTalk. De Enterprise Integration Pack bevat connectors waarmee logische apps eenvoudig validaties, transformaties en andere acties kunnen uitvoeren.
 
 ## <a name="how-does-logic-apps-differ-from-functions-webjobs-and-flow"></a>Hoe verschilt Logic Apps van Functions, WebJobs en Flow?
 

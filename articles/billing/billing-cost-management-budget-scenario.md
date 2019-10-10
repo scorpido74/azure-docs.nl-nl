@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: 8ff402299b26637473f3fb762a3320255ea4df64
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: bc35ba74acb2ce807597230fee0685606a93a775
+ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71719916"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71958367"
 ---
 # <a name="manage-costs-with-azure-budgets"></a>Kosten beheren met Azure Budgets
 
@@ -272,7 +272,7 @@ Actiegroepen zijn het enige eindpunt dat u in uw budget integreert. U kunt in ee
 Wanneer u een actiegroep maakt, verwijst u naar de logische app die u eerder in deze zelfstudie hebt gemaakt.
 
 1.  Als u zich nog niet hebt aangemeld bij de [Azure-portal](https://portal.azure.com/), meldt u zich aan en selecteert u **Alle services** > **Monitor**.
-2.  Selecteer **Actiegroepen** uit de sectie **Instelling**.
+2.  Selecteer **Waarschuwingen** en vervolgens **Acties beheren**.
 3.  Selecteer **Een actiegroep toevoegen** uit de blade **Actiegroepen**.
 4.  Voeg de volgende items toe en verifieer die:
     - Naam van actiegroep

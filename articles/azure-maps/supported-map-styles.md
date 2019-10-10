@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 1aad2284c0f64c92efaefe3f9145d95c4aabec67
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 457154a797a4b6d9853b1effe0d8121053653a99
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68839446"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72174769"
 ---
 # <a name="azure-maps-supported-map-styles"></a>Azure Maps ondersteunde kaart stijlen
 Azure Maps biedt ondersteuning voor verschillende ingebouwde kaart stijlen, zoals hieronder wordt beschreven.
 
 ## <a name="road"></a>Tour
-Een wegkaart is een standaard kaart met wegen, natuurlijke en kunst matige functies, samen met de labels voor deze functies.
+Een **wegkaart is een standaard** kaart met wegen, natuurlijke en kunst matige functies, samen met de labels voor deze functies.
 
 ![Tour](./media/supported-map-styles/road.png)
 
@@ -34,7 +34,7 @@ Een wegkaart is een standaard kaart met wegen, natuurlijke en kunst matige funct
 De **lege** en **blank_accessible** kaart stijlen bieden een leeg canvas waarop gegevens kunnen worden gevisualiseerd. De stijl **blank_accessible** blijft scherm lezers-updates bieden met locatie Details van waar de kaart zich bevindt, hoewel de basis kaart niet wordt weer gegeven.
 
 > [!Note]
-> In de Web-SDK kunt u de achtergrond kleur van de kaart wijzigen door de CSS `background-color` -stijl van het element map div in te stellen.
+> In de Web-SDK kunt u de achtergrond kleur van de kaart wijzigen door de stijl CSS `background-color` van kaart DIV-element in te stellen.
 
 **Toepasselijke Api's:**
 * Web SDK-kaart besturings element
@@ -88,7 +88,7 @@ het **donkere grijs tinten** is een donkere versie van het kaart type weg.
 * Besturings element Android-kaart
 
 ## <a name="road_shaded_relief"></a>road_shaded_relief
-uitlichting van de **weg** is een Azure Maps hoofd stijl voltooid met conto uren van de aarde.
+**Uitlichting** van de weg is een Azure Maps hoofd stijl voltooid met conto uren van de aarde.
 
 ![verlichting in grijs tinten](./media/supported-map-styles/shaded-relief.png)
 
@@ -96,3 +96,11 @@ uitlichting van de **weg** is een Azure Maps hoofd stijl voltooid met conto uren
 * [Kaart tegel](https://docs.microsoft.com/rest/api/maps/render/getmaptile)
 * Web SDK-kaart besturings element
 * Besturings element Android-kaart
+
+
+## <a name="next-steps"></a>Volgende stappen
+
+Meer informatie over het instellen van een kaart stijl in Azure Maps:
+
+> [!div class="nextstepaction"]
+> [Een kaart stijl kiezen](https://docs.microsoft.com/en-us/azure/azure-maps/choose-map-style)

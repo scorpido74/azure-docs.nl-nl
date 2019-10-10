@@ -11,12 +11,12 @@ ms.reviewer: klam, LADocs
 ms.topic: conceptual
 ms.date: 06/20/2019
 tags: connectors
-ms.openlocfilehash: ce59c238e50a1be6879b07e959b236f6181a8ce4
-ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
+ms.openlocfilehash: 98a811508d5fa65135c224536b668145ea0808d0
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71703259"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72176069"
 ---
 # <a name="create-and-manage-blobs-in-azure-blob-storage-with-azure-logic-apps"></a>Blobs in Azure Blob-opslag maken en beheren met Azure Logic Apps
 
@@ -24,17 +24,18 @@ In dit artikel wordt uitgelegd hoe u bestanden die zijn opgeslagen als blobs in 
 
 Stel dat u een hulp programma hebt dat wordt bijgewerkt op een Azure-website. die fungeert als de trigger voor uw logische app. Als deze gebeurtenis zich voordoet, kunt u uw logische app een bestand in de BLOB storage-container laten bijwerken. Dit is een actie in uw logische app.
 
-> [!NOTE]
+> [!IMPORTANT]
 >
-> Logic apps hebben geen directe toegang tot Azure Storage-accounts die [firewall regels](../storage/common/storage-network-security.md) hebben en zich in dezelfde regio bevinden. Logic apps hebben echter toegang tot Azure Storage-accounts die zich in een andere regio bevinden, omdat een openbaar IP-adres wordt gebruikt voor de communicatie tussen regio's. Zorg ervoor dat u de [uitgaande IP-adressen voor beheerde connectors in uw regio](../logic-apps/logic-apps-limits-and-config.md#outbound)toestaat. U kunt ook meer geavanceerde opties gebruiken:
->
+> Logic apps hebben geen directe toegang tot Azure Storage-accounts die [firewall regels](../storage/common/storage-network-security.md) hebben en zich in dezelfde regio bevinden. Als u echter de [uitgaande IP-adressen voor beheerde connectors in uw regio](../logic-apps/logic-apps-limits-and-config.md#outbound)toestaat, kunnen logische apps toegang krijgen tot opslag accounts in een andere regio, behalve wanneer u de Azure Table Storage-connector of de Azure Queue Storage-connector gebruikt. Voor toegang tot uw Table Storage of Queue Storage kunt u nog steeds de HTTP-trigger en acties gebruiken. 
+> Anders kunt u de meer geavanceerde opties hier gebruiken:
+> 
 > * Een [integratie service omgeving](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)maken waarmee verbinding kan worden gemaakt met bronnen in een virtueel Azure-netwerk.
 >
 > * Als u een toegewezen laag gebruikt voor API Management, kunt u de opslag-API vooraan gebruiken door gebruik te maken van API Management en de IP-adressen van de laatste via de firewall toe te staan. Voeg in principe het virtuele Azure-netwerk toe dat wordt gebruikt door API Management aan de firewall instelling van het opslag account. U kunt vervolgens de API Management actie of de HTTP-actie gebruiken om de Azure Storage-Api's aan te roepen. Als u deze optie kiest, moet u echter zelf het verificatie proces afhandelen. Zie [eenvoudige architectuur voor ondernemings integratie](https://aka.ms/aisarch)voor meer informatie.
 
-Als u geen ervaring hebt met Logic apps, raadpleegt u [Wat is Azure Logic apps](../logic-apps/logic-apps-overview.md) en [Quick Start: Maak uw eerste logische app](../logic-apps/quickstart-create-first-logic-app-workflow.md). Zie de naslag informatie voor [Azure Blob Storage-connector](/connectors/azureblobconnector/)voor connector-specifieke technische gegevens.
+Als u geen ervaring hebt met Logic apps, raadpleegt u [Wat is Azure Logic apps](../logic-apps/logic-apps-overview.md) en [Quick Start: uw eerste logische app maken](../logic-apps/quickstart-create-first-logic-app-workflow.md). Zie de naslag informatie voor [Azure Blob Storage-connector](/connectors/azureblobconnector/)voor connector-specifieke technische gegevens.
 
-## <a name="limits"></a>Limieten
+## <a name="limits"></a>Beperkingen
 
 * Met Azure Blob Storage-acties kunnen standaard bestanden worden gelezen of geschreven die *50 MB of kleiner*zijn. Voor het afhandelen van bestanden die groter zijn dan 50 MB maar Maxi maal 1024 MB, worden door Azure Blob Storage acties ondersteuning gegeven voor het delen van [berichten](../logic-apps/logic-apps-handle-large-messages.md). De actie **blob-inhoud ophalen** maakt impliciet gebruik van Chunking.
 
@@ -74,7 +75,7 @@ In dit voor beeld ziet u hoe u een werk stroom van een logische app kunt starten
 
    1. Selecteer in het vak **container** het mappictogram.
 
-   2. Kies in de lijst met mappen de rechter hoek ( **>** ), en blader vervolgens tot u de gewenste map hebt gevonden en geselecteerd.
+   2. Kies in de lijst met mappen de rechter hoek ( **>** ) en blader vervolgens totdat u de gewenste map hebt gevonden en geselecteerd.
 
       ![Map selecteren](./media/connectors-create-api-azureblobstorage/trigger-select-folder.png)
 
@@ -100,7 +101,7 @@ In Azure Logic Apps is een [actie](../logic-apps/logic-apps-overview.md#logic-ap
 
 3. Voer in het zoekvak ' Azure Blob ' in als uw filter. Selecteer in de lijst acties de gewenste actie.
 
-   In dit voor beeld wordt deze actie gebruikt: **Blob-inhoud ophalen**
+   In dit voor beeld wordt de volgende actie gebruikt: **blob-inhoud ophalen**
 
    ![Actie selecteren](./media/connectors-create-api-azureblobstorage/azure-blob-action.png)
 
@@ -134,4 +135,4 @@ Zie de [referentie pagina van de connector](/connectors/azureblobconnector/)voor
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over andere [Logic apps](../connectors/apis-list.md) -connectors
+* Meer informatie over andere [Logic apps-connectors](../connectors/apis-list.md)

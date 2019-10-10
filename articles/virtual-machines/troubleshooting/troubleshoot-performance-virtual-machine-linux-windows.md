@@ -13,22 +13,22 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 09/18/2019
 ms.author: v-miegge
-ms.openlocfilehash: 4e4a2b1df178d884e02ab5029f2e76a0376a7653
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: fc8cc4834997033203376cd33670cc907e2911e7
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71846561"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72170302"
 ---
 # <a name="generic-performance-troubleshooting-for-azure-virtual-machine-running-linux-or-windows"></a>Problemen met algemene prestaties voor de virtuele machine van Azure in Linux of Windows oplossen
 
 In dit artikel worden algemene problemen met de prestaties van virtuele machines (VM) beschreven door te controleren en knel punten te observeren en mogelijke problemen op te lossen.
 
-## <a name="enabling-monitoring"></a>-Bewaking inschakelen
+## <a name="enabling-monitoring"></a>Bewaking inschakelen
 
 ### <a name="azure-iaas-virtual-machine-monitoring"></a>Azure IAAS-bewaking van virtuele machines
 
-Als u de gast-VM wilt controleren, gebruikt u de Azure VM-bewaking. Hiermee wordt u gewaarschuwd voor bepaalde resource voorwaarden op hoog niveau. Zie [overzicht van Azure-resource logboeken](https://docs.microsoft.com/azure/azure-monitor/platform/resource-logs-overview#change-settings-for-an-existing-resource)om te controleren of u de diagnostische gegevens van de virtuele machine hebt ingeschakeld. Als u het volgende ziet, hebt u waarschijnlijk niet de diagnostische gegevens ingeschakeld:
+Als u de gast-VM wilt controleren, gebruikt u de Azure VM-bewaking. Hiermee wordt u gewaarschuwd voor bepaalde resource voorwaarden op hoog niveau. Zie [overzicht van Azure-resource logboeken](https://docs.microsoft.com/azure/azure-monitor/platform/resource-logs-overview#collecting-resource-logs)om te controleren of u de diagnostische gegevens van de virtuele machine hebt ingeschakeld. Als u het volgende ziet, hebt u waarschijnlijk niet de diagnostische gegevens ingeschakeld:
 
 ![Bewaking is niet ingeschakeld](media/troubleshoot-performance-virtual-machine-linux-windows/1-virtual-machines-monitoring-not-enabled.png)
  
@@ -71,7 +71,7 @@ Controleer uw gegevens om te bepalen of u knel punten in de resource hebt. Als u
 
 1. Bewerk de grafiek.
 2. Stel het tijds bereik in.
-3. U moet vervolgens toevoegen aan de teller: CPU-percentage gast besturingssysteem
+3. Vervolgens moet u het volgende toevoegen in de teller: CPU-percentage gast besturingssysteem
 4. Sla op.
 
 ### <a name="cpu-observe-trends"></a>Trends in de CPU
@@ -156,7 +156,7 @@ Als er een drop in Beschik baarheid wordt weer geven, is er mogelijk een problee
 * ClientTimeOutError
 * ServerTimeOutError
 * AverageE2ELatency
-* AverageServerLatency
+* Averageserverlatency aan
 * TotalRequests
 
 Waarden in de * TimeOutError metrische gegevens geven aan dat een i/o-bewerking te lang duurde en time-out heeft. Door de volgende stappen te door lopen, kunt u mogelijke oorzaken identificeren.
@@ -175,7 +175,7 @@ Met deze metriek kunt u niet zien welke BLOB de beperking veroorzaakt en welke d
 
 Als u wilt weten of u de limiet voor IOPS hebt bereikt, gaat u naar de diagnostische gegevens van het opslag account en controleert 20000 u de TotalRequests. Identificeer een wijziging in het patroon, ongeacht of u de limiet voor het eerst ziet, of of deze limiet op een bepaald moment plaatsvindt.
 
-#### <a name="references"></a>Verwijzingen
+#### <a name="references"></a>Naslaginformatie
 
 * [Schaalbaarheids doelen voor schijven van virtuele machines](https://azure.microsoft.com/documentation/articles/storage-scalability-targets/#scalability-targets-for-virtual-machine-disks)
 

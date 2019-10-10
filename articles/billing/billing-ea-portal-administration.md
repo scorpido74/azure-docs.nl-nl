@@ -4,16 +4,16 @@ description: In dit artikel worden de algemene taken beschreven die een beheerde
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/25/2019
+ms.date: 10/07/2019
 ms.topic: conceptual
 ms.service: billing
 manager: boalcsva
-ms.openlocfilehash: 87947fb29d8fa7dd86818caef139e776c04c7650
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.openlocfilehash: 21e9d4af783ed5d9eb3ace1c8b5189163b89f8b0
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71308093"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72035218"
 ---
 # <a name="azure-ea-portal-administration"></a>Beheer van Azure EA Portal
 
@@ -87,10 +87,11 @@ Andere punten waarmee u rekening moet houden voordat u een account overdraagt:
 - Goedkeuring van een EA-beheerder is vereist voor de doel- en broninschrijving
   - In sommige gevallen kan Microsoft vragen om aanvullende goedkeuring van een EA-beheerder van de broninschrijving
 - Als een accountoverdracht niet aan uw vereisten voldoet, kunt u een inschrijvingsoverdracht overwegen.
-- Met een account overdracht worden alle services, abonnementen, accounts, afdelingen en de volledige inschrijvingsstructuur, inclusief alle EA-afdelingsbeheerders, overgedragen.
-- Met de accountoverdracht wordt de status van de broninschrijving ingesteld op _Overgedragen_. Het overgedragen account is alleen beschikbaar voor rapportage van het historische gebruik.
-- U kunt geen rollen of abonnementen toevoegen aan een inschrijving met de status Overgedragen. De status voorkomt aanvullend gebruik van de inschrijving.
-- Het saldo van de resterende financiële toezegging in de bronovereenkomst gaat verloren, met inbegrip van toekomstige voorwaarden.
+- De accountoverdracht draagt alle services en abonnementen over die betrekking hebben op de specifieke accounts.
+- Nadat de overdracht is voltooid, verschijnt het overgedragen account als inactief onder de broninschrijving.
+- De datum van een accountoverdracht kan worden geantedateerd naar een willekeurige datum binnen de begindatum van de doelinschrijving.
+- In het account wordt de einddatum getoond die correspondeert met de effectieve overdrachtsdatum op de broninschrijving en als een begindatum op de doelinschrijving.
+- Elk gebruik dat met het account is uitgevoerd vóór de effectieve overgangsdatum, blijft onder de broninschrijving bestaan.
 
 
 ## <a name="transfer-enterprise-enrollment-to-a-new-one"></a>Enterprise-inschrijving overdragen naar een nieuwe inschrijving

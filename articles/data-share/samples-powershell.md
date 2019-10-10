@@ -1,20 +1,19 @@
 ---
-title: Azure PowerShell voor beelden voor Azure-gegevens share | Microsoft Docs
-description: 'Azure PowerShell-voor beelden: scripts waarmee u gegevens shares kunt maken en beheren.'
-services: data-share
+title: Azure PowerShell voor beelden voor Azure-gegevens share
+description: Meer informatie over Azure PowerShell voorbeeld scripts om u te helpen bij het maken en beheren van gegevens shares in azure data share preview.
 ms.service: data-share
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 07/6/2019
+ms.devlang: powershell
 author: joannapea
 ms.author: joanpo
-ms.openlocfilehash: 90b23da3ae911038c67dc1d99c5b98d04b935281
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.date: 07/6/2019
+ms.openlocfilehash: a694ced2697cba8cc50e3c7b5b14f712527e1cd9
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70243098"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72166331"
 ---
 # <a name="azure-powershell-samples-for-azure-data-share"></a>Azure PowerShell voor beelden voor Azure-gegevens share
 
@@ -33,9 +32,3 @@ De volgende tabel bevat koppelingen naar voor beelden Azure PowerShell scripts v
 |[Details van een gegevens shares weer geven](scripts/powershell/view-share-details-powershell.md)| In dit Power shell-voorbeeld script worden de details van gegevens shares weer gegeven en opgehaald. |
 |[Het gebruik van gedeelde gegevens bewaken](scripts/powershell/monitor-usage-powershell.md)| Met dit Power shell-voorbeeld script wordt het gebruik van verzonden gedeelde gegevens bewaakt. |
 |[Triggers voor moment opnamen maken en weer geven](scripts/powershell/create-view-trigger-powershell.md)| Met dit Power shell-voorbeeld script worden moment opname triggers van een share gemaakt.
-
-
-
-
-
-

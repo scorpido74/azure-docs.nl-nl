@@ -5,17 +5,17 @@ services: functions
 documentationcenter: na
 author: craigshoemaker
 manager: gwallace
-keywords: Azure functions, functies, gebeurtenisverwerking, dynamische Computing, serverloze architectuur
+keywords: Azure functions, functies, gebeurtenis verwerking, dynamische compute, serverloze architectuur
 ms.service: azure-functions
 ms.topic: reference
 ms.date: 11/15/2018
 ms.author: cshoe
-ms.openlocfilehash: 84e4cc69d173fd37ecd15f537feadf19c275ef34
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: b565a48b56162d19a07f0f54bfe780b7dda04b96
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70086216"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177404"
 ---
 # <a name="azure-blob-storage-bindings-for-azure-functions"></a>Azure Blob-opslag bindingen voor Azure Functions
 
@@ -30,17 +30,17 @@ In dit artikel wordt uitgelegd hoe u kunt werken met Azure Blob Storage-bindinge
 > [!NOTE]
 > Gebruik de trigger Event Grid in plaats van de Blob Storage-trigger voor BLOB-only Storage-accounts, voor hoge schaal of om latentie te verminderen. Zie de sectie [trigger](#trigger) voor meer informatie.
 
-## <a name="packages---functions-1x"></a>Pakketten - functies 1.x
+## <a name="packages---functions-1x"></a>Pakketten-functions 1. x
 
-De Blob Storage-bindingen zijn opgenomen in het pakket [micro soft. Azure. webjobs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs) NuGet versie 2. x. Broncode voor het pakket is in de [azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk/tree/v2.x/src/Microsoft.Azure.WebJobs.Storage/Blob) GitHub-opslagplaats.
+De Blob Storage-bindingen zijn opgenomen in het pakket [micro soft. Azure. webjobs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs) NuGet versie 2. x. De bron code voor het pakket bevindt zich in de GitHub-opslag plaats [Azure-webjobs-SDK](https://github.com/Azure/azure-webjobs-sdk/tree/v2.x/src/Microsoft.Azure.WebJobs.Storage/Blob) .
 
 [!INCLUDE [functions-package-auto](../../includes/functions-package-auto.md)]
 
 [!INCLUDE [functions-storage-sdk-version](../../includes/functions-storage-sdk-version.md)]
 
-## <a name="packages---functions-2x"></a>Pakketten - functies 2.x
+## <a name="packages---functions-2x"></a>Pakketten-functions 2. x
 
-De Blob Storage-bindingen zijn opgenomen in het [micro soft. Azure. webjobs. Extensions. Storage](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage) NuGet-pakket, versie 3. x. Broncode voor het pakket is in de [azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk/tree/dev/src/Microsoft.Azure.WebJobs.Extensions.Storage/Blobs) GitHub-opslagplaats.
+De Blob Storage-bindingen zijn opgenomen in het [micro soft. Azure. webjobs. Extensions. Storage](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage) NuGet-pakket, versie 3. x. De bron code voor het pakket bevindt zich in de GitHub-opslag plaats [Azure-webjobs-SDK](https://github.com/Azure/azure-webjobs-sdk/tree/dev/src/Microsoft.Azure.WebJobs.Extensions.Storage/Blobs) .
 
 [!INCLUDE [functions-package-v2](../../includes/functions-package-v2.md)]
 
@@ -68,23 +68,15 @@ High Scale kan worden gedefinieerd als containers met meer dan 100.000 blobs in 
 
 Als uw functie-app zich in het verbruiks abonnement bevindt, kan er een vertraging van 10 minuten zijn bij het verwerken van nieuwe blobs als een functie-app niet actief is. Om deze latentie te voor komen, kunt u overschakelen naar een App Service plan met Always ingeschakeld. U kunt ook een [Event grid trigger](functions-bindings-event-grid.md) gebruiken met uw Blob Storage-account. Zie de [Event grid zelf studie](../event-grid/resize-images-on-storage-blob-upload-event.md?toc=%2Fazure%2Fazure-functions%2Ftoc.json)voor een voor beeld. 
 
-### <a name="queue-storage-trigger"></a>Opslag trigger voor wachtrij
+### <a name="queue-storage-trigger"></a>Queue Storage-trigger
 
 Naast Event Grid is een andere alternatief voor verwerkings-blobs de wachtrij opslag trigger, maar heeft geen ingebouwde ondersteuning voor BLOB-gebeurtenissen. U moet wachtrij berichten maken bij het maken of bijwerken van blobs. Zie voor een voor beeld dat u dit hebt gedaan, het [voor beeld van BLOB-invoer binding verderop in dit artikel](#input---example).
 
-## <a name="trigger---example"></a>Trigger - voorbeeld
+## <a name="trigger---example"></a>Trigger-voor beeld
 
-Zie het voorbeeld taalspecifieke:
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-* [C#](#trigger---c-example)
-* [C# script (.csx)](#trigger---c-script-example)
-* [Java](#trigger---java-example)
-* [JavaScript](#trigger---javascript-example)
-* [Python](#trigger---python-example)
-
-### <a name="trigger---c-example"></a>Trigger - voorbeeld met C#
-
-In het volgende voor beeld ziet u een [ C# functie](functions-dotnet-class-library.md) die een logboek schrijft wanneer een BLOB wordt toegevoegd of `samples-workitems` bijgewerkt in de container.
+In het volgende voor beeld ziet u een [ C# functie](functions-dotnet-class-library.md) die een logboek schrijft wanneer een BLOB wordt toegevoegd of bijgewerkt in de `samples-workitems`-container.
 
 ```csharp
 [FunctionName("BlobTriggerCSharp")]        
@@ -94,15 +86,15 @@ public static void Run([BlobTrigger("samples-workitems/{name}")] Stream myBlob, 
 }
 ```
 
-Met de `{name}` teken reeks in het pad `samples-workitems/{name}` van de BLOB-trigger maakt u een [bindings expressie](./functions-bindings-expressions-patterns.md) die u in functie code kunt gebruiken om toegang te krijgen tot de bestands naam van de activerings-blob. Zie voor meer informatie [BLOB name patronen](#trigger---blob-name-patterns) verderop in dit artikel.
+De teken reeks `{name}` in het pad naar de BLOB-trigger `samples-workitems/{name}` maakt een [bindings expressie](./functions-bindings-expressions-patterns.md) die u in functie code kunt gebruiken om toegang te krijgen tot de bestands naam van de activerings-blob. Zie voor meer informatie [BLOB name patronen](#trigger---blob-name-patterns) verderop in dit artikel.
 
-Zie `BlobTrigger` [trigger-Attributes](#trigger---attributes)(Engelstalig) voor meer informatie over het kenmerk.
+Zie [trigger-Attributes](#trigger---attributes)(Engelstalig) voor meer informatie over het kenmerk `BlobTrigger`.
 
-### <a name="trigger---c-script-example"></a>Trigger - voorbeeld van C#-script
+# <a name="c-scripttabcsharp-script"></a>[C#Schriften](#tab/csharp-script)
 
-In het volgende voor beeld ziet u een binding van een BLOB-trigger in een *Function. json* -bestand en [python-code](functions-reference-python.md) die gebruikmaakt van de binding. De functie schrijft een logboek wanneer een BLOB wordt toegevoegd of bijgewerkt in de `samples-workitems` [container](../storage/blobs/storage-blobs-introduction.md#blob-storage-resources).
+In het volgende voor beeld ziet u een binding van een BLOB-trigger in een *Function. json* -bestand en code die gebruikmaakt van de binding. De functie schrijft een logboek wanneer een BLOB wordt toegevoegd of bijgewerkt in de [container](../storage/blobs/storage-blobs-introduction.md#blob-storage-resources)`samples-workitems`.
 
-Hier volgt de binding-gegevens de *function.json* bestand:
+Hier vindt u de bindings gegevens in het bestand *Function. json* :
 
 ```json
 {
@@ -119,11 +111,11 @@ Hier volgt de binding-gegevens de *function.json* bestand:
 }
 ```
 
-Met de `{name}` teken reeks in het pad `samples-workitems/{name}` van de BLOB-trigger maakt u een [bindings expressie](./functions-bindings-expressions-patterns.md) die u in functie code kunt gebruiken om toegang te krijgen tot de bestands naam van de activerings-blob. Zie voor meer informatie [BLOB name patronen](#trigger---blob-name-patterns) verderop in dit artikel.
+De teken reeks `{name}` in het pad naar de BLOB-trigger `samples-workitems/{name}` maakt een [bindings expressie](./functions-bindings-expressions-patterns.md) die u in functie code kunt gebruiken om toegang te krijgen tot de bestands naam van de activerings-blob. Zie voor meer informatie [BLOB name patronen](#trigger---blob-name-patterns) verderop in dit artikel.
 
 Zie de sectie [configuratie](#trigger---configuration) bevat een uitleg van deze eigenschappen voor meer informatie over de bestands eigenschappen van de *functie. json* .
 
-Dit is C# de script code die wordt gekoppeld aan `Stream`een:
+Dit is C# de script code die wordt gekoppeld aan een `Stream`:
 
 ```cs
 public static void Run(Stream myBlob, string name, ILogger log)
@@ -132,7 +124,7 @@ public static void Run(Stream myBlob, string name, ILogger log)
 }
 ```
 
-Dit is C# de script code die wordt gekoppeld aan `CloudBlockBlob`een:
+Dit is C# de script code die wordt gekoppeld aan een `CloudBlockBlob`:
 
 ```cs
 #r "Microsoft.WindowsAzure.Storage"
@@ -145,11 +137,11 @@ public static void Run(CloudBlockBlob myBlob, string name, ILogger log)
 }
 ```
 
-### <a name="trigger---javascript-example"></a>Trigger - JavaScript-voorbeeld
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-In het volgende voor beeld ziet u een binding van een BLOB-trigger in een *Function. json* -bestand en [Java script-code](functions-reference-node.md) die gebruikmaakt van de binding. De functie schrijft een logboek wanneer een BLOB wordt toegevoegd of bijgewerkt in de `samples-workitems` container.
+In het volgende voor beeld ziet u een binding van een BLOB-trigger in een *Function. json* -bestand en [Java script-code](functions-reference-node.md) die gebruikmaakt van de binding. De functie schrijft een logboek wanneer een BLOB wordt toegevoegd of bijgewerkt in de container `samples-workitems`.
 
-Hier volgt de *function.json* bestand:
+Hier is het bestand *Function. json* :
 
 ```json
 {
@@ -166,11 +158,11 @@ Hier volgt de *function.json* bestand:
 }
 ```
 
-Met de `{name}` teken reeks in het pad `samples-workitems/{name}` van de BLOB-trigger maakt u een [bindings expressie](./functions-bindings-expressions-patterns.md) die u in functie code kunt gebruiken om toegang te krijgen tot de bestands naam van de activerings-blob. Zie voor meer informatie [BLOB name patronen](#trigger---blob-name-patterns) verderop in dit artikel.
+De teken reeks `{name}` in het pad naar de BLOB-trigger `samples-workitems/{name}` maakt een [bindings expressie](./functions-bindings-expressions-patterns.md) die u in functie code kunt gebruiken om toegang te krijgen tot de bestands naam van de activerings-blob. Zie voor meer informatie [BLOB name patronen](#trigger---blob-name-patterns) verderop in dit artikel.
 
 Zie de sectie [configuratie](#trigger---configuration) bevat een uitleg van deze eigenschappen voor meer informatie over de bestands eigenschappen van de *functie. json* .
 
-Dit is de JavaScript-code:
+Dit is de Java script-code:
 
 ```javascript
 module.exports = function(context) {
@@ -179,11 +171,11 @@ module.exports = function(context) {
 };
 ```
 
-### <a name="trigger---python-example"></a>Voor beeld van een trigger-python
+# <a name="pythontabpython"></a>[Python](#tab/python)
 
-In het volgende voor beeld ziet u een binding van een BLOB-trigger in een *Function. json* -bestand en [python-code](functions-reference-python.md) die gebruikmaakt van de binding. De functie schrijft een logboek wanneer een BLOB wordt toegevoegd of bijgewerkt in de `samples-workitems` [container](../storage/blobs/storage-blobs-introduction.md#blob-storage-resources).
+In het volgende voor beeld ziet u een binding van een BLOB-trigger in een *Function. json* -bestand en [python-code](functions-reference-python.md) die gebruikmaakt van de binding. De functie schrijft een logboek wanneer een BLOB wordt toegevoegd of bijgewerkt in de [container](../storage/blobs/storage-blobs-introduction.md#blob-storage-resources)`samples-workitems`.
 
-Hier volgt de *function.json* bestand:
+Hier is het bestand *Function. json* :
 
 ```json
 {
@@ -201,7 +193,7 @@ Hier volgt de *function.json* bestand:
 }
 ```
 
-Met de `{name}` teken reeks in het pad `samples-workitems/{name}` van de BLOB-trigger maakt u een [bindings expressie](./functions-bindings-expressions-patterns.md) die u in functie code kunt gebruiken om toegang te krijgen tot de bestands naam van de activerings-blob. Zie voor meer informatie [BLOB name patronen](#trigger---blob-name-patterns) verderop in dit artikel.
+De teken reeks `{name}` in het pad naar de BLOB-trigger `samples-workitems/{name}` maakt een [bindings expressie](./functions-bindings-expressions-patterns.md) die u in functie code kunt gebruiken om toegang te krijgen tot de bestands naam van de activerings-blob. Zie voor meer informatie [BLOB name patronen](#trigger---blob-name-patterns) verderop in dit artikel.
 
 Zie de sectie [configuratie](#trigger---configuration) bevat een uitleg van deze eigenschappen voor meer informatie over de bestands eigenschappen van de *functie. json* .
 
@@ -216,11 +208,11 @@ def main(myblob: func.InputStream):
     logging.info('Python Blob trigger function processed %s', myblob.name)
 ```
 
-### <a name="trigger---java-example"></a>Trigger - Java-voorbeeld
+# <a name="javatabjava"></a>[Java](#tab/java)
 
-In het volgende voor beeld ziet u een BLOB-trigger binding in een *Function. json* -bestand en [Java-code](functions-reference-java.md) die gebruikmaken van de binding. De functie schrijft een logboek wanneer een BLOB wordt toegevoegd of bijgewerkt in de `myblob` container.
+In het volgende voor beeld ziet u een BLOB-trigger binding in een *Function. json* -bestand en [Java-code](functions-reference-java.md) die gebruikmaken van de binding. De functie schrijft een logboek wanneer een BLOB wordt toegevoegd of bijgewerkt in de container `myblob`.
 
-Hier volgt de *function.json* bestand:
+Hier is het bestand *Function. json* :
 
 ```json
 {
@@ -253,8 +245,11 @@ public void run(
 }
 ```
 
+---
 
-## <a name="trigger---attributes"></a>Trigger - kenmerken
+## <a name="trigger---attributes"></a>Trigger-kenmerken
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 Gebruik in [ C# class bibliotheken](functions-dotnet-class-library.md)de volgende kenmerken voor het configureren van een BLOB-trigger:
 
@@ -272,7 +267,7 @@ Gebruik in [ C# class bibliotheken](functions-dotnet-class-library.md)de volgend
   }
   ```
 
-  U kunt de `Connection` eigenschap instellen om het opslag account op te geven dat moet worden gebruikt, zoals wordt weer gegeven in het volgende voor beeld:
+  U kunt de eigenschap `Connection` instellen om het opslag account op te geven dat moet worden gebruikt, zoals wordt weer gegeven in het volgende voor beeld:
 
    ```csharp
   [FunctionName("ResizeImage")]
@@ -284,11 +279,11 @@ Gebruik in [ C# class bibliotheken](functions-dotnet-class-library.md)de volgend
   }
    ```
 
-  Zie voor een compleet voorbeeld [Trigger - voorbeeld met C#](#trigger---c-example).
+  Zie [trigger voorbeeld](#trigger---example)voor een volledig voor beeld.
 
 * [StorageAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs)
 
-  Biedt een andere manier om het opslag account op te geven dat moet worden gebruikt. De constructor krijgt de naam van een app-instelling die een opslag connection string bevat. Het kenmerk kan worden toegepast op de parameter, klasseniveau of methode. Het volgende voorbeeld toont het klasseniveau en methode:
+  Biedt een andere manier om het opslag account op te geven dat moet worden gebruikt. De constructor krijgt de naam van een app-instelling die een opslag connection string bevat. Het kenmerk kan worden toegepast op de para meter, methode of class-niveau. In het volgende voor beeld wordt het niveau klasse en de methode weer gegeven:
 
   ```csharp
   [StorageAccount("ClassLevelStorageAppSetting")]
@@ -304,51 +299,71 @@ Gebruik in [ C# class bibliotheken](functions-dotnet-class-library.md)de volgend
 
 Het opslag account dat moet worden gebruikt, wordt in de volgende volg orde bepaald:
 
-* De `BlobTrigger` van kenmerk `Connection` eigenschap.
-* De `StorageAccount` kenmerk toegepast op de dezelfde parameter als de `BlobTrigger` kenmerk.
-* De `StorageAccount` kenmerk toegepast op de functie.
-* De `StorageAccount` kenmerk toegepast op de klasse.
+* De eigenschap `Connection` van het kenmerk `BlobTrigger`.
+* Het kenmerk `StorageAccount` toegepast op dezelfde para meter als het kenmerk `BlobTrigger`.
+* Het kenmerk `StorageAccount` dat wordt toegepast op de functie.
+* Het kenmerk `StorageAccount` dat wordt toegepast op de klasse.
 * Het standaard opslag account voor de functie-app (de app-instelling AzureWebJobsStorage).
 
-## <a name="trigger---configuration"></a>Trigger - configuratie
+# <a name="c-scripttabcsharp-script"></a>[C#Schriften](#tab/csharp-script)
 
-De volgende tabel beschrijft de binding configuratie-eigenschappen die u instelt in de *function.json* bestand en de `BlobTrigger` kenmerk.
+Kenmerken worden niet ondersteund door C# het script.
 
-|de eigenschap Function.JSON | De kenmerkeigenschap |Description|
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+Kenmerken worden niet ondersteund door Java script.
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+Kenmerken worden niet ondersteund door python.
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+Het kenmerk `@BlobTrigger` wordt gebruikt om u toegang te geven tot de BLOB waarmee de functie is geactiveerd. Raadpleeg het [voor beeld](#trigger---example) van de trigger voor meer informatie.
+
+---
+
+## <a name="trigger---configuration"></a>Trigger-configuratie
+
+De volgende tabel bevat informatie over de binding configuratie-eigenschappen die u hebt ingesteld in het bestand *Function. json* en het kenmerk `BlobTrigger`.
+
+|function. json-eigenschap | Kenmerk eigenschap |Beschrijving|
 |---------|---------|----------------------|
-|**type** | N.v.t. | Moet worden ingesteld op `blobTrigger`. Deze eigenschap wordt automatisch ingesteld wanneer u de trigger in Azure portal maakt.|
-|**direction** | N.v.t. | Moet worden ingesteld op `in`. Deze eigenschap wordt automatisch ingesteld wanneer u de trigger in Azure portal maakt. Uitzonde ringen worden vermeld in de sectie [gebruik](#trigger---usage) . |
-|**name** | N.v.t. | De naam van de variabele die de BLOB in functie code vertegenwoordigt. |
-|**Pad** | **BlobPath** |De [container](../storage/blobs/storage-blobs-introduction.md#blob-storage-resources) die moet worden bewaakt.  Dit kan een [patroon](#trigger---blob-name-patterns)voor een BLOB-naam zijn. |
-|**verbinding** | **verbinding** | De naam van een app-instelling die de opslag connection string bevat die moet worden gebruikt voor deze binding. Als de naam van de app-instelling begint met ' AzureWebJobs ', kunt u hier alleen de rest van de naam opgeven. Als u bijvoorbeeld instelt `connection` op ' mijn opslag ', zoekt de functie runtime naar een app-instelling met de naam ' AzureWebJobsMyStorage '. Als u leeg `connection` laat, gebruikt de functions runtime de standaard opslag Connection String in de app-instelling met `AzureWebJobsStorage`de naam.<br><br>Het connection string moet voor een opslag account voor algemeen gebruik zijn, geen [Blob Storage-account](../storage/common/storage-account-overview.md#types-of-storage-accounts).|
+|**type** | n.v.t. | Moet worden ingesteld op `blobTrigger`. Deze eigenschap wordt automatisch ingesteld wanneer u de trigger maakt in de Azure Portal.|
+|**direction** | n.v.t. | Moet worden ingesteld op `in`. Deze eigenschap wordt automatisch ingesteld wanneer u de trigger maakt in de Azure Portal. Uitzonde ringen worden vermeld in de sectie [gebruik](#trigger---usage) . |
+|**naam** | n.v.t. | De naam van de variabele die de BLOB in functie code vertegenwoordigt. |
+|**path** | **BlobPath** |De [container](../storage/blobs/storage-blobs-introduction.md#blob-storage-resources) die moet worden bewaakt.  Dit kan een [patroon](#trigger---blob-name-patterns)voor een BLOB-naam zijn. |
+|**Combi** | **Verbinding** | De naam van een app-instelling die de opslag connection string bevat die moet worden gebruikt voor deze binding. Als de naam van de app-instelling begint met ' AzureWebJobs ', kunt u hier alleen de rest van de naam opgeven. Als u bijvoorbeeld `connection` instelt op ' mijn opslag ', zoekt de runtime van functions naar een app-instelling met de naam ' AzureWebJobsMyStorage '. Als u `connection` leeg laat, gebruikt de functions runtime de standaard opslag connection string in de app-instelling met de naam `AzureWebJobsStorage`.<br><br>Het connection string moet voor een opslag account voor algemeen gebruik zijn, geen [Blob Storage-account](../storage/common/storage-account-overview.md#types-of-storage-accounts).|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
-## <a name="trigger---usage"></a>Trigger - gebruik
+## <a name="trigger---usage"></a>Trigger-gebruik
 
-In C# en C# script kunt u de volgende parameter typen gebruiken voor de trigger-blob:
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-* `Stream`
-* `TextReader`
-* `string`
-* `Byte[]`
-* Een POCO serialiseerbaar als JSON
-* `ICloudBlob`<sup>1</sup>
-* `CloudBlockBlob`<sup>1</sup>
-* `CloudPageBlob`<sup>1</sup>
-* `CloudAppendBlob`<sup>1</sup>
+[!INCLUDE [functions-bindings-blob-storage-trigger](../../includes/functions-bindings-blob-storage-trigger.md)]
 
-<sup>1</sup> vereist de binding `direction` ' InOut ' in *Function. json* of `FileAccess.ReadWrite` in een C# klassen bibliotheek.
+# <a name="c-scripttabcsharp-script"></a>[C#Schriften](#tab/csharp-script)
 
-Als u probeert verbinding te maken met een van de typen opslag-SDK en er een fout bericht wordt weer gegeven, moet u ervoor zorgen dat u een verwijzing naar [de juiste versie van de Storage SDK](#azure-storage-sdk-version-in-functions-1x)hebt.
+[!INCLUDE [functions-bindings-blob-storage-trigger](../../includes/functions-bindings-blob-storage-trigger.md)]
 
-Binding met `string`, `Byte[]`, of poco wordt alleen aanbevolen als de Blob-grootte klein is, omdat de gehele blob-inhoud in het geheugen wordt geladen. Over het algemeen is het raadzaam om een `Stream` of `CloudBlockBlob` -type te gebruiken. Zie gelijktijdigheid [en geheugen gebruik](#trigger---concurrency-and-memory-usage) verderop in dit artikel voor meer informatie.
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-In Java script opent u de BLOB-gegevens `context.bindings.<name from function.json>`invoer met.
+Toegang tot BLOB-gegevens met behulp van `context.bindings.<name from function.json>`.
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+Toegang tot BLOB-gegevens via de para meter getypeerd als [InputStream](https://docs.microsoft.com/python/api/azure-functions/azure.functions.inputstream?view=azure-python). Raadpleeg het [voor beeld](#trigger---example) van de trigger voor meer informatie.
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+Het kenmerk `@BlobTrigger` wordt gebruikt om u toegang te geven tot de BLOB waarmee de functie is geactiveerd. Raadpleeg het [voor beeld](#trigger---example) van de trigger voor meer informatie.
+
+---
 
 ## <a name="trigger---blob-name-patterns"></a>Trigger-BLOB-naam patronen
 
-U kunt een patroon van een BLOB-naam `path` opgeven in de eigenschap in *Function. json* of in de `BlobTrigger` kenmerk-constructor. Het naam patroon kan een [filter of een bindings expressie](./functions-bindings-expressions-patterns.md)zijn. De volgende secties bevatten voor beelden.
+U kunt een patroon van een BLOB-naam opgeven in de eigenschap `path` in *Function. json* of in de kenmerk-constructor `BlobTrigger`. Het naam patroon kan een [filter of een bindings expressie](./functions-bindings-expressions-patterns.md)zijn. De volgende secties bevatten voor beelden.
 
 ### <a name="get-file-name-and-extension"></a>Bestands naam en-extensie ophalen
 
@@ -357,17 +372,18 @@ In het volgende voor beeld ziet u hoe u een afzonderlijke binding maakt met de n
 ```json
 "path": "input/{blobname}.{blobextension}",
 ```
-Als de BLOB de naam *Original-Blob1. txt*heeft, zijn de waarden `blobname` van `blobextension` de variabelen en in functie code *oorspronkelijk-Blob1* en *txt*.
+
+Als de BLOB de naam *Original-Blob1. txt*heeft, zijn de waarden van de variabelen `blobname` en `blobextension` in functie code *oorspronkelijke Blob1* en *txt*.
 
 ### <a name="filter-on-blob-name"></a>Filteren op blobnaam
 
-Het volgende voor beeld wordt alleen geactiveerd op blobs `input` in de container die beginnen met de teken reeks ' origineel-':
+Het volgende voor beeld wordt alleen geactiveerd op blobs in de container `input` die beginnen met de teken reeks ' origineel-':
 
 ```json
 "path": "input/original-{name}",
 ```
 
-Als de naam van de BLOB *Original-Blob1. txt*is, is `name` `Blob1`de waarde van de variabele in functie code.
+Als de naam van de BLOB *Original-Blob1. txt*is, is de waarde van de variabele `name` in functie code `Blob1`.
 
 ### <a name="filter-on-file-type"></a>Filteren op bestands type
 
@@ -385,27 +401,19 @@ Als u wilt zoeken naar accolades in bestands namen, plaatst u de accolades met b
 "path": "images/{{20140101}}-{name}",
 ```
 
-Als de BLOB de naam  *{20140101}-soundfile. mp3*heeft, `name` is de waarde van de variabele in de functie code *soundfile. mp3*.
+Als de BLOB de naam *@no__t -1-soundfile. mp3*heeft, is de waarde van de `name`-variabele in de functie code *soundfile. mp3*.
 
 ## <a name="trigger---metadata"></a>Trigger-meta gegevens
 
-De BLOB-trigger biedt verschillende eigenschappen van meta gegevens. Deze eigenschappen kunnen worden gebruikt als onderdeel van de expressies in andere bindingen voor gegevensbinding of als parameters in uw code. Deze waarden hebben dezelfde semantiek als het type [CloudBlob](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.blob.cloudblob?view=azure-dotnet) .
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-|Eigenschap  |Type  |Description  |
-|---------|---------|---------|
-|`BlobTrigger`|`string`|Het pad naar de activerings-blob.|
-|`Uri`|`System.Uri`|De URI van de BLOB voor de primaire locatie.|
-|`Properties` |[BlobProperties](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.blob.blobproperties)|De systeem eigenschappen van de blob. |
-|`Metadata` |`IDictionary<string,string>`|De door de gebruiker gedefinieerde meta gegevens voor de blob.|
+[!INCLUDE [functions-bindings-blob-storage-trigger](../../includes/functions-bindings-blob-storage-metadata.md)]
 
-In het volgende C# script en Java script-voor beelden wordt bijvoorbeeld het pad naar de activerings-BLOB vastgelegd, inclusief de container:
+# <a name="c-scripttabcsharp-script"></a>[C#Schriften](#tab/csharp-script)
 
-```csharp
-public static void Run(string myBlob, string blobTrigger, ILogger log)
-{
-    log.LogInformation($"Full blob path: {blobTrigger}");
-} 
-```
+[!INCLUDE [functions-bindings-blob-storage-trigger](../../includes/functions-bindings-blob-storage-metadata.md)]
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 module.exports = function (context, myBlob) {
@@ -414,13 +422,23 @@ module.exports = function (context, myBlob) {
 };
 ```
 
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+Meta gegevens zijn niet beschikbaar in python.
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+Meta gegevens zijn niet beschikbaar in Java.
+
+---
+
 ## <a name="trigger---blob-receipts"></a>Trigger-BLOB-ontvangst bewijzen
 
-De Azure Functions runtime zorgt ervoor dat er geen blob-activering meer dan één keer wordt aangeroepen voor dezelfde nieuwe of bijgewerkte blob. Om te bepalen of een bepaalde BLOB-versie is verwerkt, worden de *BLOB-ontvangst*bevestigingen onderhouden.
+De Azure Functions runtime zorgt ervoor dat er geen blob-activering meer dan één keer wordt aangeroepen voor dezelfde nieuwe of bijgewerkte blob. Om te bepalen of een bepaalde BLOB-versie is verwerkt, worden de *BLOB-ontvangst bevestigingen*onderhouden.
 
-Azure Functions worden BLOB-ontvangsten opgeslagen in een container met de naam *Azure-webjobs-hosts* in het Azure-opslag account voor uw functie-app ( `AzureWebJobsStorage`gedefinieerd door de app-instelling). Een BLOB-ontvangst heeft de volgende informatie:
+Azure Functions worden BLOB-ontvangsten opgeslagen in een container met de naam *Azure-webjobs-hosts* in het Azure-opslag account voor uw functie-app (gedefinieerd door de app-instelling `AzureWebJobsStorage`). Een BLOB-ontvangst heeft de volgende informatie:
 
-* De geactiveerde functie (' *&lt;naam van de functie-app >* . Vervullen. functie naam >, bijvoorbeeld:  *&lt;* "MyFunctionApp. functions. CopyBlob")
+* De getriggerde functie (' *&lt;function-app-naam >* . Vervullen. *&lt;function naam >* , bijvoorbeeld: ' MyFunctionApp. functions. CopyBlob ')
 * De container naam
 * Het BLOB-type ("BlockBlob" of "PageBlob")
 * De BLOB-naam
@@ -434,7 +452,7 @@ Wanneer een BLOB-activerings functie mislukt voor een bepaalde blob, worden Azur
 
 Als alle 5 pogingen mislukken, Azure Functions een bericht aan een opslag wachtrij met de naam *webjobs-sjabloon blobtrigger-Poison*toevoegen. Het wachtrij bericht voor verontreinigde blobs is een JSON-object dat de volgende eigenschappen bevat:
 
-* FunctionId (in de indeling  *&lt;functie app name >* . Vervullen. functie naam >)  *&lt;*
+* FunctionId (in de indeling *&lt;function-app-naam >* . Vervullen. *&lt;function naam >* )
 * BlobType ("BlockBlob" of "PageBlob")
 * ContainerName
 * BlobName
@@ -446,9 +464,9 @@ De BLOB-trigger maakt intern gebruik van een wachtrij, waardoor het maximum aant
 
 [Het verbruiks plan](functions-scale.md#how-the-consumption-and-premium-plans-work) beperkt een functie-app op één virtuele machine (VM) tot 1,5 GB aan geheugen. Het geheugen wordt gebruikt door elk gelijktijdig uitgevoerde functie-exemplaar en door de functions-runtime zelf. Als een door BLOB geactiveerde functie de volledige Blob in het geheugen laadt, is de maximale hoeveelheid geheugen die door de functie wordt gebruikt alleen voor blobs 24 * maximum grootte van BLOB. Een functie-app met drie door BLOB geactiveerde functies en de standaard instellingen hebben bijvoorbeeld een Maxi maal per VM gelijktijdigheid van 3 * 24 = 72 functie aanroepen.
 
-Java script en Java-functies laden de volledige Blob in het C# geheugen, en functies doen dat als `string`u `Byte[]`een binding maakt met, of poco.
+Java script-en Java-functies laden de volledige Blob in C# het geheugen, en functies doen dit als u bindt met `string`, `Byte[]` of poco.
 
-## <a name="trigger---polling"></a>Trigger - polling
+## <a name="trigger---polling"></a>Trigger-polling
 
 Als de BLOB-container die wordt bewaakt meer dan 10.000 blobs (in alle containers) bevat, scant de functions runtime de logboek bestanden om te kijken of er nieuwe of gewijzigde blobs zijn. Dit proces kan leiden tot vertragingen. Een functie wordt mogelijk pas na een paar minuten of langer geactiveerd nadat de blob is gemaakt.
 
@@ -464,15 +482,7 @@ Gebruik een invoer binding voor Blob-opslag om blobs te lezen.
 
 ## <a name="input---example"></a>Invoer-voor beeld
 
-Zie het voorbeeld taalspecifieke:
-
-* [C#](#input---c-example)
-* [C# script (.csx)](#input---c-script-example)
-* [Java](#input---java-examples)
-* [JavaScript](#input---javascript-example)
-* [Python](#input---python-example)
-
-### <a name="input---c-example"></a>Invoer- C# voor beeld
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 Het volgende voor beeld is een [ C# functie](functions-dotnet-class-library.md) die gebruikmaakt van een wachtrij trigger en een invoer-BLOB-binding. Het wachtrij bericht bevat de naam van de BLOB en de functie registreert de grootte van de blob.
 
@@ -487,13 +497,13 @@ public static void Run(
 }
 ```
 
-### <a name="input---c-script-example"></a>Voor beeld C# van invoer script
+# <a name="c-scripttabcsharp-script"></a>[C#Schriften](#tab/csharp-script)
 
 <!--Same example for input and output. -->
 
 In het volgende voor beeld ziet u BLOB-invoer-en uitvoer bindingen in een *Function. json* file [ C# -en script-code (. CSX)](functions-reference-csharp.md) die gebruikmaakt van de bindingen. De functie maakt een kopie van een tekst-blob. De functie wordt geactiveerd door een wachtrij bericht dat de naam bevat van de blob die moet worden gekopieerd. De nieuwe BLOB heet *{originalblobname}-Copy*.
 
-In het bestand *Function. json* wordt de `queueTrigger` eigenschap meta gegevens gebruikt om de naam van de BLOB op `path` te geven in de eigenschappen:
+In het bestand *Function. json* wordt de eigenschap meta data van `queueTrigger` gebruikt om de naam van de BLOB op te geven in de `path`-eigenschappen:
 
 ```json
 {
@@ -524,9 +534,9 @@ In het bestand *Function. json* wordt de `queueTrigger` eigenschap meta gegevens
 }
 ```
 
-De [configuratie](#input---configuration) sectie wordt uitgelegd dat deze eigenschappen.
+In de [configuratie](#input---configuration) sectie worden deze eigenschappen uitgelegd.
 
-Dit is de C#-scriptcode:
+Dit is de C# script code:
 
 ```cs
 public static void Run(string myQueueItem, string myInputBlob, out string myOutputBlob, ILogger log)
@@ -536,13 +546,13 @@ public static void Run(string myQueueItem, string myInputBlob, out string myOutp
 }
 ```
 
-### <a name="input---javascript-example"></a>Invoer-java script-voor beeld
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 <!--Same example for input and output. -->
 
 In het volgende voor beeld ziet u BLOB-invoer-en uitvoer bindingen in een *Function. json* -bestand en [Java script-code](functions-reference-node.md) die gebruikmaakt van de bindingen. De functie maakt een kopie van een blob. De functie wordt geactiveerd door een wachtrij bericht dat de naam bevat van de blob die moet worden gekopieerd. De nieuwe BLOB heet *{originalblobname}-Copy*.
 
-In het bestand *Function. json* wordt de `queueTrigger` eigenschap meta gegevens gebruikt om de naam van de BLOB op `path` te geven in de eigenschappen:
+In het bestand *Function. json* wordt de eigenschap meta data van `queueTrigger` gebruikt om de naam van de BLOB op te geven in de `path`-eigenschappen:
 
 ```json
 {
@@ -573,9 +583,9 @@ In het bestand *Function. json* wordt de `queueTrigger` eigenschap meta gegevens
 }
 ```
 
-De [configuratie](#input---configuration) sectie wordt uitgelegd dat deze eigenschappen.
+In de [configuratie](#input---configuration) sectie worden deze eigenschappen uitgelegd.
 
-Dit is de JavaScript-code:
+Dit is de Java script-code:
 
 ```javascript
 module.exports = function(context) {
@@ -585,13 +595,13 @@ module.exports = function(context) {
 };
 ```
 
-### <a name="input---python-example"></a>Invoer-python-voor beeld
+# <a name="pythontabpython"></a>[Python](#tab/python)
 
 <!--Same example for input and output. -->
 
 In het volgende voor beeld ziet u BLOB-invoer-en uitvoer bindingen in een *Function. json* -bestand en [python-code](functions-reference-python.md) die gebruikmaken van de bindingen. De functie maakt een kopie van een blob. De functie wordt geactiveerd door een wachtrij bericht dat de naam bevat van de blob die moet worden gekopieerd. De nieuwe BLOB heet *{originalblobname}-Copy*.
 
-In het bestand *Function. json* wordt de `queueTrigger` eigenschap meta gegevens gebruikt om de naam van de BLOB op `path` te geven in de eigenschappen:
+In het bestand *Function. json* wordt de eigenschap meta data van `queueTrigger` gebruikt om de naam van de BLOB op te geven in de `path`-eigenschappen:
 
 ```json
 {
@@ -623,7 +633,7 @@ In het bestand *Function. json* wordt de `queueTrigger` eigenschap meta gegevens
 }
 ```
 
-De [configuratie](#input---configuration) sectie wordt uitgelegd dat deze eigenschappen.
+In de [configuratie](#input---configuration) sectie worden deze eigenschappen uitgelegd.
 
 Dit is de python-code:
 
@@ -637,16 +647,16 @@ def main(queuemsg: func.QueueMessage, inputblob: func.InputStream) -> func.Input
     return inputblob
 ```
 
-### <a name="input---java-examples"></a>Invoer-java-voor beelden
+# <a name="javatabjava"></a>[Java](#tab/java)
 
-Deze sectie bevat de volgende voorbeelden:
+Deze sectie bevat de volgende voor beelden:
 
-* [HTTP-trigger, naam van de BLOB opzoeken in de query reeks](#http-trigger-look-up-blob-name-from-query-string-java)
-* [Wachtrij trigger, naam van de BLOB ontvangen van wachtrij bericht](#queue-trigger-receive-blob-name-from-queue-message-java)
+* [HTTP-trigger, naam van de BLOB opzoeken in de query reeks](#http-trigger-look-up-blob-name-from-query-string)
+* [Wachtrij trigger, naam van de BLOB ontvangen van wachtrij bericht](#queue-trigger-receive-blob-name-from-queue-message)
 
-#### <a name="http-trigger-look-up-blob-name-from-query-string-java"></a>HTTP-trigger, naam van de BLOB opzoeken in de query reeks (Java)
+#### <a name="http-trigger-look-up-blob-name-from-query-string"></a>HTTP-trigger, naam van de BLOB opzoeken in de query reeks
 
- In het volgende voor beeld ziet u een Java- ```HttpTrigger``` functie die gebruikmaakt van de aantekening om een para meter te ontvangen met de naam van een bestand in een BLOB storage-container. De ```BlobInput``` aantekening leest vervolgens het bestand en geeft de inhoud door aan de functie ```byte[]```als een.
+ In het volgende voor beeld ziet u een Java-functie die gebruikmaakt van de annotatie @no__t 0 om een para meter te ontvangen met de naam van een bestand in een BLOB storage-container. De annotatie @no__t 0 leest vervolgens het bestand en geeft de inhoud door aan de functie als een `byte[]`.
 
 ```java
   @FunctionName("getBlobSizeHttp")
@@ -669,9 +679,9 @@ Deze sectie bevat de volgende voorbeelden:
   }
 ```
 
-#### <a name="queue-trigger-receive-blob-name-from-queue-message-java"></a>Wachtrij trigger, naam van de BLOB ontvangen van wachtrij bericht (Java)
+#### <a name="queue-trigger-receive-blob-name-from-queue-message"></a>Wachtrij trigger, naam van de BLOB ontvangen van wachtrij bericht
 
- In het volgende voor beeld ziet u een Java- ```QueueTrigger``` functie die gebruikmaakt van de aantekening om een bericht te ontvangen met daarin de naam van een bestand in een BLOB storage-container. De ```BlobInput``` aantekening leest vervolgens het bestand en geeft de inhoud door aan de functie ```byte[]```als een.
+ In het volgende voor beeld ziet u een Java-functie die gebruikmaakt van de annotatie @no__t 0 om een bericht te ontvangen met daarin de naam van een bestand in een BLOB storage-container. De annotatie @no__t 0 leest vervolgens het bestand en geeft de inhoud door aan de functie als een `byte[]`.
 
 ```java
   @FunctionName("getBlobSize")
@@ -691,13 +701,17 @@ Deze sectie bevat de volgende voorbeelden:
   }
 ```
 
-Gebruik in de [runtime-bibliotheek van Java functions](/java/api/overview/azure/functions/runtime)de `@BlobInput` annotatie voor para meters waarvan de waarde afkomstig is uit een blob.  Deze aantekening kan worden gebruikt met systeem eigen Java-typen, Pojo's of nullable `Optional<T>`-waarden met.
+Gebruik in de [runtime-bibliotheek van Java-functies](/java/api/overview/azure/functions/runtime)de `@BlobInput`-annotatie op para meters waarvan de waarde afkomstig is uit een blob.  Deze aantekening kan worden gebruikt met systeem eigen Java-typen, Pojo's of nullable-waarden met behulp van `Optional<T>`.
 
-## <a name="input---attributes"></a>Invoer - kenmerken
+---
+
+## <a name="input---attributes"></a>Invoer kenmerken
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 Gebruik in [ C# class libraries](functions-dotnet-class-library.md)het [BlobAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/dev/src/Microsoft.Azure.WebJobs.Extensions.Storage/Blobs/BlobAttribute.cs).
 
-De constructor van het kenmerk gebruikt het pad naar de BLOB en een `FileAccess` para meter die aangeeft dat er een lees-of schrijf bewerking wordt uitgevoerd, zoals wordt weer gegeven in het volgende voor beeld:
+De constructor van het kenmerk gebruikt het pad naar de BLOB en een `FileAccess` para meter die een lees-of schrijf bewerking aangeeft, zoals wordt weer gegeven in het volgende voor beeld:
 
 ```csharp
 [FunctionName("BlobInput")]
@@ -711,7 +725,7 @@ public static void Run(
 
 ```
 
-U kunt de `Connection` eigenschap instellen om het opslag account op te geven dat moet worden gebruikt, zoals wordt weer gegeven in het volgende voor beeld:
+U kunt de eigenschap `Connection` instellen om het opslag account op te geven dat moet worden gebruikt, zoals wordt weer gegeven in het volgende voor beeld:
 
 ```csharp
 [FunctionName("BlobInput")]
@@ -724,61 +738,72 @@ public static void Run(
 }
 ```
 
-U kunt het `StorageAccount` -kenmerk gebruiken om het opslag account op te geven op klasse, methode of parameter niveau. Zie voor meer informatie, [Trigger - kenmerken](#trigger---attributes).
+U kunt het kenmerk `StorageAccount` gebruiken om het opslag account op te geven op klasse, methode of parameter niveau. Zie [trigger-Attributes](#trigger---attributes)(Engelstalig) voor meer informatie.
 
-## <a name="input---configuration"></a>Invoer - configuratie
+# <a name="c-scripttabcsharp-script"></a>[C#Schriften](#tab/csharp-script)
 
-De volgende tabel beschrijft de binding configuratie-eigenschappen die u instelt in de *function.json* bestand en de `Blob` kenmerk.
+Kenmerken worden niet ondersteund door C# het script.
 
-|de eigenschap Function.JSON | De kenmerkeigenschap |Description|
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+Kenmerken worden niet ondersteund door Java script.
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+Kenmerken worden niet ondersteund door python.
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+Het kenmerk `@BlobInput` geeft u toegang tot de BLOB waarmee de functie is geactiveerd. Als u een byte matrix met het-kenmerk gebruikt, stelt u `dataType` in op `binary`. Raadpleeg het [invoer voorbeeld](#input---example) voor meer informatie.
+
+---
+
+## <a name="input---configuration"></a>Invoer-configuratie
+
+De volgende tabel bevat informatie over de binding configuratie-eigenschappen die u hebt ingesteld in het bestand *Function. json* en het kenmerk `Blob`.
+
+|function. json-eigenschap | Kenmerk eigenschap |Beschrijving|
 |---------|---------|----------------------|
-|**type** | N.v.t. | Moet worden ingesteld op `blob`. |
-|**direction** | N.v.t. | Moet worden ingesteld op `in`. Uitzonde ringen worden vermeld in de sectie [gebruik](#input---usage) . |
-|**name** | N.v.t. | De naam van de variabele die de BLOB in functie code vertegenwoordigt.|
-|**Pad** |**BlobPath** | Het pad naar de blob. |
-|**verbinding** |**verbinding**| De naam van een app-instelling die de [opslag Connection String](../storage/common/storage-configure-connection-string.md) bevat die moet worden gebruikt voor deze binding. Als de naam van de app-instelling begint met ' AzureWebJobs ', kunt u hier alleen de rest van de naam opgeven. Als u bijvoorbeeld instelt `connection` op ' mijn opslag ', zoekt de functie runtime naar een app-instelling met de naam ' AzureWebJobsMyStorage '. Als u leeg `connection` laat, gebruikt de functions runtime de standaard opslag Connection String in de app-instelling met `AzureWebJobsStorage`de naam.<br><br>Het connection string moet voor een opslag account voor algemeen gebruik zijn, niet een [opslag account met alleen BLOB](../storage/common/storage-account-overview.md#types-of-storage-accounts).|
-|N.v.t. | **Toegang** | Hiermee wordt aangegeven of u wilt lezen of schrijven. |
+|**type** | n.v.t. | Moet worden ingesteld op `blob`. |
+|**direction** | n.v.t. | Moet worden ingesteld op `in`. Uitzonde ringen worden vermeld in de sectie [gebruik](#input---usage) . |
+|**naam** | n.v.t. | De naam van de variabele die de BLOB in functie code vertegenwoordigt.|
+|**path** |**BlobPath** | Het pad naar de blob. |
+|**Combi** |**Verbinding**| De naam van een app-instelling die de [opslag Connection String](../storage/common/storage-configure-connection-string.md) bevat die moet worden gebruikt voor deze binding. Als de naam van de app-instelling begint met ' AzureWebJobs ', kunt u hier alleen de rest van de naam opgeven. Als u bijvoorbeeld `connection` instelt op ' mijn opslag ', zoekt de runtime van functions naar een app-instelling met de naam ' AzureWebJobsMyStorage '. Als u `connection` leeg laat, gebruikt de functions runtime de standaard opslag connection string in de app-instelling met de naam `AzureWebJobsStorage`.<br><br>Het connection string moet voor een opslag account voor algemeen gebruik zijn, niet een [opslag account met alleen BLOB](../storage/common/storage-account-overview.md#types-of-storage-accounts).|
+|n.v.t. | **Toegang** | Hiermee wordt aangegeven of u wilt lezen of schrijven. |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
-## <a name="input---usage"></a>Invoer - gebruik
+## <a name="input---usage"></a>Invoer gebruik
 
-In C# en C# script kunt u de volgende parameter typen gebruiken voor de BLOB-invoer binding:
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-* `Stream`
-* `TextReader`
-* `string`
-* `Byte[]`
-* `CloudBlobContainer`
-* `CloudBlobDirectory`
-* `ICloudBlob`<sup>1</sup>
-* `CloudBlockBlob`<sup>1</sup>
-* `CloudPageBlob`<sup>1</sup>
-* `CloudAppendBlob`<sup>1</sup>
+[!INCLUDE [functions-bindings-blob-storage-input-usage.md](../../includes/functions-bindings-blob-storage-input-usage.md)]
 
-<sup>1</sup> vereist de binding `direction` ' InOut ' in *Function. json* of `FileAccess.ReadWrite` in een C# klassen bibliotheek.
+# <a name="c-scripttabcsharp-script"></a>[C#Schriften](#tab/csharp-script)
 
-Als u probeert verbinding te maken met een van de typen opslag-SDK en er een fout bericht wordt weer gegeven, moet u ervoor zorgen dat u een verwijzing naar [de juiste versie van de Storage SDK](#azure-storage-sdk-version-in-functions-1x)hebt.
+[!INCLUDE [functions-bindings-blob-storage-input-usage.md](../../includes/functions-bindings-blob-storage-input-usage.md)]
 
-Binding met `string` of `Byte[]` wordt alleen aanbevolen als de Blob-grootte klein is, omdat de gehele blob-inhoud in het geheugen wordt geladen. Over het algemeen is het raadzaam om een `Stream` of `CloudBlockBlob` -type te gebruiken. Zie voor meer informatie gelijktijdigheid [en geheugen gebruik](#trigger---concurrency-and-memory-usage) eerder in dit artikel.
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-In Java script opent u de BLOB- `context.bindings.<name from function.json>`gegevens met behulp van.
+Toegang tot de BLOB-gegevens met behulp van `context.bindings.<name from function.json>`.
 
-## <a name="output"></a>Output
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+Toegang tot BLOB-gegevens via de para meter getypeerd als [InputStream](https://docs.microsoft.com/python/api/azure-functions/azure.functions.inputstream?view=azure-python). Raadpleeg het [invoer voorbeeld](#input---example) voor meer informatie.
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+Het kenmerk `@BlobInput` geeft u toegang tot de BLOB waarmee de functie is geactiveerd. Als u een byte matrix met het-kenmerk gebruikt, stelt u `dataType` in op `binary`. Raadpleeg het [invoer voorbeeld](#input---example) voor meer informatie.
+
+---
+
+## <a name="output"></a>Uitvoer
 
 Gebruik Blob Storage-uitvoer bindingen om blobs te schrijven.
 
-## <a name="output---example"></a>Uitvoer - voorbeeld
+## <a name="output---example"></a>Uitvoer-voor beeld
 
-Zie het voorbeeld taalspecifieke:
-
-* [C#](#output---c-example)
-* [C# script (.csx)](#output---c-script-example)
-* [Java](#output---java-examples)
-* [JavaScript](#output---javascript-example)
-* [Python](#output---python-example)
-
-### <a name="output---c-example"></a>Uitvoer - voorbeeld met C#
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 Het volgende voor beeld is een [ C# functie](functions-dotnet-class-library.md) die gebruikmaakt van een BLOB-trigger en twee uitvoer BLOB-bindingen. De functie wordt geactiveerd door het maken van een afbeeldings-Blob in de container voor *beeld-installatie kopieën* . Er worden kleine en middel grote kopieën van de afbeeldings-BLOB gemaakt.
 
@@ -828,13 +853,13 @@ private static Dictionary<ImageSize, (int, int)> imageDimensionsTable = new Dict
 };
 ```
 
-### <a name="output---c-script-example"></a>Uitvoer - voorbeeld van C#-script
+# <a name="c-scripttabcsharp-script"></a>[C#Schriften](#tab/csharp-script)
 
 <!--Same example for input and output. -->
 
 In het volgende voor beeld ziet u BLOB-invoer-en uitvoer bindingen in een *Function. json* file [ C# -en script-code (. CSX)](functions-reference-csharp.md) die gebruikmaakt van de bindingen. De functie maakt een kopie van een tekst-blob. De functie wordt geactiveerd door een wachtrij bericht dat de naam bevat van de blob die moet worden gekopieerd. De nieuwe BLOB heet *{originalblobname}-Copy*.
 
-In het bestand *Function. json* wordt de `queueTrigger` eigenschap meta gegevens gebruikt om de naam van de BLOB op `path` te geven in de eigenschappen:
+In het bestand *Function. json* wordt de eigenschap meta data van `queueTrigger` gebruikt om de naam van de BLOB op te geven in de `path`-eigenschappen:
 
 ```json
 {
@@ -865,9 +890,9 @@ In het bestand *Function. json* wordt de `queueTrigger` eigenschap meta gegevens
 }
 ```
 
-De [configuratie](#output---configuration) sectie wordt uitgelegd dat deze eigenschappen.
+In de [configuratie](#output---configuration) sectie worden deze eigenschappen uitgelegd.
 
-Dit is de C#-scriptcode:
+Dit is de C# script code:
 
 ```cs
 public static void Run(string myQueueItem, string myInputBlob, out string myOutputBlob, ILogger log)
@@ -877,13 +902,13 @@ public static void Run(string myQueueItem, string myInputBlob, out string myOutp
 }
 ```
 
-### <a name="output---javascript-example"></a>Uitvoer - JavaScript-voorbeeld
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 <!--Same example for input and output. -->
 
 In het volgende voor beeld ziet u BLOB-invoer-en uitvoer bindingen in een *Function. json* -bestand en [Java script-code](functions-reference-node.md) die gebruikmaakt van de bindingen. De functie maakt een kopie van een blob. De functie wordt geactiveerd door een wachtrij bericht dat de naam bevat van de blob die moet worden gekopieerd. De nieuwe BLOB heet *{originalblobname}-Copy*.
 
-In het bestand *Function. json* wordt de `queueTrigger` eigenschap meta gegevens gebruikt om de naam van de BLOB op `path` te geven in de eigenschappen:
+In het bestand *Function. json* wordt de eigenschap meta data van `queueTrigger` gebruikt om de naam van de BLOB op te geven in de `path`-eigenschappen:
 
 ```json
 {
@@ -914,9 +939,9 @@ In het bestand *Function. json* wordt de `queueTrigger` eigenschap meta gegevens
 }
 ```
 
-De [configuratie](#output---configuration) sectie wordt uitgelegd dat deze eigenschappen.
+In de [configuratie](#output---configuration) sectie worden deze eigenschappen uitgelegd.
 
-Dit is de JavaScript-code:
+Dit is de Java script-code:
 
 ```javascript
 module.exports = function(context) {
@@ -926,13 +951,13 @@ module.exports = function(context) {
 };
 ```
 
-### <a name="output---python-example"></a>Voor beeld van de uitvoer-python
+# <a name="pythontabpython"></a>[Python](#tab/python)
 
 <!--Same example for input and output. -->
 
 In het volgende voor beeld ziet u BLOB-invoer-en uitvoer bindingen in een *Function. json* -bestand en [python-code](functions-reference-python.md) die gebruikmaken van de bindingen. De functie maakt een kopie van een blob. De functie wordt geactiveerd door een wachtrij bericht dat de naam bevat van de blob die moet worden gekopieerd. De nieuwe BLOB heet *{originalblobname}-Copy*.
 
-In het bestand *Function. json* wordt de `queueTrigger` eigenschap meta gegevens gebruikt om de naam van de BLOB op `path` te geven in de eigenschappen:
+In het bestand *Function. json* wordt de eigenschap meta data van `queueTrigger` gebruikt om de naam van de BLOB op te geven in de `path`-eigenschappen:
 
 ```json
 {
@@ -964,7 +989,7 @@ In het bestand *Function. json* wordt de `queueTrigger` eigenschap meta gegevens
 }
 ```
 
-De [configuratie](#output---configuration) sectie wordt uitgelegd dat deze eigenschappen.
+In de [configuratie](#output---configuration) sectie worden deze eigenschappen uitgelegd.
 
 Dit is de python-code:
 
@@ -979,16 +1004,16 @@ def main(queuemsg: func.QueueMessage, inputblob: func.InputStream,
     outputblob.set(inputblob)
 ```
 
-### <a name="output---java-examples"></a>Uitvoer-Java-voor beelden
+# <a name="javatabjava"></a>[Java](#tab/java)
 
-Deze sectie bevat de volgende voorbeelden:
+Deze sectie bevat de volgende voor beelden:
 
 * [HTTP-trigger, met behulp van OutputBinding](#http-trigger-using-outputbinding-java)
 * [Wachtrij trigger, met behulp van functie retour waarde](#queue-trigger-using-function-return-value-java)
 
 #### <a name="http-trigger-using-outputbinding-java"></a>HTTP-trigger, met behulp van OutputBinding (Java)
 
- In het volgende voor beeld ziet u een Java- ```HttpTrigger``` functie die gebruikmaakt van de aantekening om een para meter te ontvangen met de naam van een bestand in een BLOB storage-container. De ```BlobInput``` aantekening leest vervolgens het bestand en geeft de inhoud door aan de functie ```byte[]```als een. De ```BlobOutput``` annotatie koppelt aan ```OutputBinding outputItem```, die vervolgens door de functie wordt gebruikt om de inhoud van de invoer-BLOB naar de geconfigureerde opslag container te schrijven.
+ In het volgende voor beeld ziet u een Java-functie die gebruikmaakt van de annotatie @no__t 0 om een para meter te ontvangen met de naam van een bestand in een BLOB storage-container. De annotatie @no__t 0 leest vervolgens het bestand en geeft de inhoud door aan de functie als een `byte[]`. De annotatie `BlobOutput` is gebonden aan `OutputBinding outputItem`, die vervolgens door de functie wordt gebruikt om de inhoud van de invoer-BLOB naar de geconfigureerde opslag container te schrijven.
 
 ```java
   @FunctionName("copyBlobHttp")
@@ -1020,7 +1045,7 @@ Deze sectie bevat de volgende voorbeelden:
 
 #### <a name="queue-trigger-using-function-return-value-java"></a>Wachtrij trigger, met behulp van de functie retour waarde (Java)
 
- In het volgende voor beeld ziet u een Java- ```QueueTrigger``` functie die gebruikmaakt van de aantekening om een bericht te ontvangen met daarin de naam van een bestand in een BLOB storage-container. De ```BlobInput``` aantekening leest vervolgens het bestand en geeft de inhoud door aan de functie ```byte[]```als een. De ```BlobOutput``` aantekening koppelt aan de functie retour waarde, die vervolgens door de runtime wordt gebruikt om de inhoud van de invoer-BLOB naar de geconfigureerde opslag container te schrijven.
+ In het volgende voor beeld ziet u een Java-functie die gebruikmaakt van de annotatie @no__t 0 om een bericht te ontvangen met daarin de naam van een bestand in een BLOB storage-container. De annotatie @no__t 0 leest vervolgens het bestand en geeft de inhoud door aan de functie als een `byte[]`. De annotatie `BlobOutput` is gekoppeld aan de retour waarde van de functie, die vervolgens door de runtime wordt gebruikt om de inhoud van de invoer-BLOB naar de geconfigureerde opslag container te schrijven.
 
 ```java
   @FunctionName("copyBlobQueueTrigger")
@@ -1044,13 +1069,17 @@ Deze sectie bevat de volgende voorbeelden:
   }
 ```
 
- Gebruik in de [runtime-bibliotheek van Java](/java/api/overview/azure/functions/runtime)- `@BlobOutput` functies de annotatie voor functie parameters waarvan de waarde zou worden geschreven naar een object in Blob Storage.  Het parameter type moet zijn `OutputBinding<T>`, waarbij T een systeem eigen Java-type is of een POJO.
+ Gebruik in de [runtime-bibliotheek van Java functions](/java/api/overview/azure/functions/runtime)de `@BlobOutput`-annotatie op functie parameters waarvan de waarde zou worden geschreven naar een object in Blob Storage.  Het parameter type moet `OutputBinding<T>` zijn, waarbij T een systeem eigen Java-type is of een POJO.
 
-## <a name="output---attributes"></a>Uitvoer - kenmerken
+---
+
+## <a name="output---attributes"></a>Uitvoer kenmerken
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 Gebruik in [ C# class libraries](functions-dotnet-class-library.md)het [BlobAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/dev/src/Microsoft.Azure.WebJobs.Extensions.Storage/Blobs/BlobAttribute.cs).
 
-De constructor van het kenmerk gebruikt het pad naar de BLOB en een `FileAccess` para meter die aangeeft dat er een lees-of schrijf bewerking wordt uitgevoerd, zoals wordt weer gegeven in het volgende voor beeld:
+De constructor van het kenmerk gebruikt het pad naar de BLOB en een `FileAccess` para meter die een lees-of schrijf bewerking aangeeft, zoals wordt weer gegeven in het volgende voor beeld:
 
 ```csharp
 [FunctionName("ResizeImage")]
@@ -1062,7 +1091,7 @@ public static void Run(
 }
 ```
 
-U kunt de `Connection` eigenschap instellen om het opslag account op te geven dat moet worden gebruikt, zoals wordt weer gegeven in het volgende voor beeld:
+U kunt de eigenschap `Connection` instellen om het opslag account op te geven dat moet worden gebruikt, zoals wordt weer gegeven in het volgende voor beeld:
 
 ```csharp
 [FunctionName("ResizeImage")]
@@ -1074,57 +1103,75 @@ public static void Run(
 }
 ```
 
-Zie voor een compleet voorbeeld [uitvoer - voorbeeld met C#](#output---c-example).
+# <a name="c-scripttabcsharp-script"></a>[C#Schriften](#tab/csharp-script)
 
-U kunt het `StorageAccount` -kenmerk gebruiken om het opslag account op te geven op klasse, methode of parameter niveau. Zie voor meer informatie, [Trigger - kenmerken](#trigger---attributes).
+Kenmerken worden niet ondersteund door C# het script.
 
-## <a name="output---configuration"></a>Uitvoer - configuratie
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-De volgende tabel beschrijft de binding configuratie-eigenschappen die u instelt in de *function.json* bestand en de `Blob` kenmerk.
+Kenmerken worden niet ondersteund door Java script.
 
-|de eigenschap Function.JSON | De kenmerkeigenschap |Description|
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+Kenmerken worden niet ondersteund door python.
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+Het kenmerk `@BlobOutput` geeft u toegang tot de BLOB waarmee de functie is geactiveerd. Als u een byte matrix met het-kenmerk gebruikt, stelt u `dataType` in op `binary`. Raadpleeg het [uitvoer voorbeeld](#output---example) voor meer informatie.
+
+---
+
+Zie [uitvoer voorbeeld](#output---example)voor een volledig voor beeld.
+
+U kunt het kenmerk `StorageAccount` gebruiken om het opslag account op te geven op klasse, methode of parameter niveau. Zie [trigger-Attributes](#trigger---attributes)(Engelstalig) voor meer informatie.
+
+## <a name="output---configuration"></a>Uitvoer-configuratie
+
+De volgende tabel bevat informatie over de binding configuratie-eigenschappen die u hebt ingesteld in het bestand *Function. json* en het kenmerk `Blob`.
+
+|function. json-eigenschap | Kenmerk eigenschap |Beschrijving|
 |---------|---------|----------------------|
-|**type** | N.v.t. | Moet worden ingesteld op `blob`. |
-|**direction** | N.v.t. | Moet worden ingesteld op `out` voor een uitvoer binding. Uitzonde ringen worden vermeld in de sectie [gebruik](#output---usage) . |
-|**name** | N.v.t. | De naam van de variabele die de BLOB in functie code vertegenwoordigt.  Instellen op `$return` om te verwijzen naar de functie retour waarde.|
-|**Pad** |**BlobPath** | Het pad naar de BLOB-container. |
-|**verbinding** |**verbinding**| De naam van een app-instelling die de opslag connection string bevat die moet worden gebruikt voor deze binding. Als de naam van de app-instelling begint met ' AzureWebJobs ', kunt u hier alleen de rest van de naam opgeven. Als u bijvoorbeeld instelt `connection` op ' mijn opslag ', zoekt de functie runtime naar een app-instelling met de naam ' AzureWebJobsMyStorage '. Als u leeg `connection` laat, gebruikt de functions runtime de standaard opslag Connection String in de app-instelling met `AzureWebJobsStorage`de naam.<br><br>Het connection string moet voor een opslag account voor algemeen gebruik zijn, niet een [opslag account met alleen BLOB](../storage/common/storage-account-overview.md#types-of-storage-accounts).|
-|N.v.t. | **Toegang** | Hiermee wordt aangegeven of u wilt lezen of schrijven. |
+|**type** | n.v.t. | Moet worden ingesteld op `blob`. |
+|**direction** | n.v.t. | Moet worden ingesteld op `out` voor een uitvoer binding. Uitzonde ringen worden vermeld in de sectie [gebruik](#output---usage) . |
+|**naam** | n.v.t. | De naam van de variabele die de BLOB in functie code vertegenwoordigt.  Ingesteld op `$return` om te verwijzen naar de retour waarde van de functie.|
+|**path** |**BlobPath** | Het pad naar de BLOB-container. |
+|**Combi** |**Verbinding**| De naam van een app-instelling die de opslag connection string bevat die moet worden gebruikt voor deze binding. Als de naam van de app-instelling begint met ' AzureWebJobs ', kunt u hier alleen de rest van de naam opgeven. Als u bijvoorbeeld `connection` instelt op ' mijn opslag ', zoekt de runtime van functions naar een app-instelling met de naam ' AzureWebJobsMyStorage '. Als u `connection` leeg laat, gebruikt de functions runtime de standaard opslag connection string in de app-instelling met de naam `AzureWebJobsStorage`.<br><br>Het connection string moet voor een opslag account voor algemeen gebruik zijn, niet een [opslag account met alleen BLOB](../storage/common/storage-account-overview.md#types-of-storage-accounts).|
+|n.v.t. | **Toegang** | Hiermee wordt aangegeven of u wilt lezen of schrijven. |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
-## <a name="output---usage"></a>Uitvoer - gebruik
+## <a name="output---usage"></a>Uitvoer gebruik
 
-In C# en C# script kunt u een binding maken met de volgende typen om blobs te schrijven:
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-* `TextWriter`
-* `out string`
-* `out Byte[]`
-* `CloudBlobStream`
-* `Stream`
-* `CloudBlobContainer`<sup>1</sup>
-* `CloudBlobDirectory`
-* `ICloudBlob`<sup>2</sup>
-* `CloudBlockBlob`<sup>2</sup>
-* `CloudPageBlob`<sup>2</sup>
-* `CloudAppendBlob`<sup>2</sup>
+[!INCLUDE [functions-bindings-blob-storage-output-usage.md](../../includes/functions-bindings-blob-storage-output-usage.md)]
 
-<sup>1</sup> vereist binding `direction` in *functie. json* of `FileAccess.Read` in een C# klassen bibliotheek. U kunt echter het container object gebruiken dat de runtime biedt om schrijf bewerkingen uit te voeren, zoals blobs uploaden naar de container.
+# <a name="c-scripttabcsharp-script"></a>[C#Schriften](#tab/csharp-script)
 
-<sup>2</sup> vereist een ' InOut ' `direction` binding in *Function. json* of `FileAccess.ReadWrite` in C# een klassen bibliotheek.
+[!INCLUDE [functions-bindings-blob-storage-output-usage.md](../../includes/functions-bindings-blob-storage-output-usage.md)]
 
-Als u probeert verbinding te maken met een van de typen opslag-SDK en er een fout bericht wordt weer gegeven, moet u ervoor zorgen dat u een verwijzing naar [de juiste versie van de Storage SDK](#azure-storage-sdk-version-in-functions-1x)hebt.
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-In het async-functies, gebruikt u de geretourneerde waarde of `IAsyncCollector` in plaats van een `out` parameter.
+In Java script opent u de BLOB-gegevens met behulp van `context.bindings.<name from function.json>`.
 
-Binding met `string` of `Byte[]` wordt alleen aanbevolen als de Blob-grootte klein is, omdat de gehele blob-inhoud in het geheugen wordt geladen. Over het algemeen is het raadzaam om een `Stream` of `CloudBlockBlob` -type te gebruiken. Zie voor meer informatie gelijktijdigheid [en geheugen gebruik](#trigger---concurrency-and-memory-usage) eerder in dit artikel.
+# <a name="pythontabpython"></a>[Python](#tab/python)
 
+U kunt functie parameters declareren als de volgende typen om naar Blob Storage te schrijven:
 
-In Java script opent u de BLOB- `context.bindings.<name from function.json>`gegevens met behulp van.
+* Teken reeksen als `func.Out(str)`
+* Stromen als `func.Out(func.InputStream)`
 
-## <a name="exceptions-and-return-codes"></a>Uitzonderingen en retourcodes
+Raadpleeg het [uitvoer voorbeeld](#output---example) voor meer informatie.
 
-| Binding |  Referentie |
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+Het kenmerk `@BlobOutput` geeft u toegang tot de BLOB waarmee de functie is geactiveerd. Als u een byte matrix met het-kenmerk gebruikt, stelt u `dataType` in op `binary`. Raadpleeg het [uitvoer voorbeeld](#output---example) voor meer informatie.
+
+---
+
+## <a name="exceptions-and-return-codes"></a>Uitzonde ringen en retour codes
+
+| Dwingen |  Referentie |
 |---|---|
 | Blob | [BLOB-fout codes](https://docs.microsoft.com/rest/api/storageservices/fileservices/blob-service-error-codes) |
 | BLOB, tabel, wachtrij |  [Opslag fout codes](https://docs.microsoft.com/rest/api/storageservices/fileservices/common-rest-api-error-codes) |
@@ -1132,7 +1179,7 @@ In Java script opent u de BLOB- `context.bindings.<name from function.json>`gege
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Meer informatie over Azure functions-triggers en bindingen](functions-triggers-bindings.md)
+* [Meer informatie over Azure functions-triggers en-bindingen](functions-triggers-bindings.md)
 
 <!---
 > [!div class="nextstepaction"]
