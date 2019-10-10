@@ -1,0 +1,78 @@
+### YamlMime:Landing
+title: Documentatie over Azure Spring Cloud
+summary: Azure Spring Cloud biedt een beheerde service waarmee Java-ontwikkelaars eenvoudig op Spring Boot gebaseerde microservices voor Azure kunnen bouwen en uitvoeren, zonder codewijzigingen.
+metadata:
+  title: Azure Spring Cloud
+  description: Azure Spring Cloud biedt een beheerde service waarmee Java-ontwikkelaars eenvoudig op Spring Boot gebaseerde microservices voor Azure kunnen bouwen en uitvoeren, zonder codewijzigingen.
+  services: spring-cloud
+  ms.service: spring-cloud
+  ms.topic: landing-page
+  ms.collection: collection
+  author: jpconnock
+  ms.author: jpconnock
+  ms.date: 09/26/2019
+  ms.openlocfilehash: 0dcbe8d01761e8feb06cd5705a104d8c9e5196e0
+  ms.sourcegitcommit: d773b5743cb54b8cbcfa5c5e4d21d5b45a58b081
+  ms.translationtype: HT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 10/08/2019
+  ms.locfileid: "72038598"
+landingContent:
+- title: Over Azure Spring Cloud
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Wat is Azure Spring Cloud?
+      url: spring-cloud-overview.md
+    - text: Informatie over quota en limieten voor Azure Spring Cloud
+      url: spring-cloud-quotas.md
+- title: Aan de slag
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Een Java Spring-app starten met behulp van de portal
+      url: spring-cloud-quickstart-launch-app-portal.md
+    - text: Een Java Spring-app starten met behulp van de Azure CLI
+      url: spring-cloud-quickstart-launch-app-cli.md
+  - linkListType: tutorial
+    links:
+    - text: Een Java Spring-app voorbereiden voor implementatie
+      url: spring-cloud-tutorial-prepare-app-deployment.md
+- title: Uw toepassing controleren
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Uw toepassing controleren met behulp van gedistribueerde tracering en App Insights
+      url: spring-cloud-tutorial-distributed-tracing.md
+    - text: Diagnoseservices inschakelen voor uw Java Spring-toepassing
+      url: diagnostic-services.md
+  - linkListType: concept
+    links:
+    - text: Informatie over metrische gegevens van Azure Monitor voor Spring Cloud
+      url: spring-cloud-concept-metrics.md
+- title: Verbinden met andere services
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Uw toepassing verbinden met Azure-cache voor Redis
+      url: spring-cloud-tutorial-bind-redis.md
+    - text: Uw toepassing verbinden met een Azure MySQL-database
+      url: spring-cloud-tutorial-bind-mysql.md
+    - text: Uw toepassing verbinden met Azure CosmosDB
+      url: spring-cloud-tutorial-bind-cosmos.md
+- title: Uw service configureren
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Configuratie van uw toepassing onderhouden met een configuratieserver
+      url: spring-cloud-tutorial-config-server.md
+    - text: Schaal van uw toepassing handmatig aanpassen
+      url: spring-cloud-tutorial-scale-manual.md
+  - linkListType: how-to-guide
+    links:
+    - text: Uw CI/CD-pijplijn automatiseren in Azure Spring Cloud
+      url: spring-cloud-howto-cicd.md
+    - text: Blauwgroene implementaties inschakelen met Azure Spring Cloud
+      url: spring-cloud-howto-staging-environment.md
+    - text: Permanente opslag gebruiken in Azure Spring Cloud
+      url: spring-cloud-howto-persistent-storage.md

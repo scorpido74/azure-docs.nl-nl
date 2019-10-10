@@ -36,3 +36,5 @@
   items:
     - name: Een ondersteuningsticket openen
       href: hpc-cache-support-ticket.md
+    - name: Herstellen na een regionale storing
+      href: hpc-region-recovery.md

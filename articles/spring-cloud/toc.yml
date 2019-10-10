@@ -1,0 +1,62 @@
+- name: Documentatie over Azure Spring Cloud
+  href: index.yml
+  displayName: Azure Spring Cloud
+- name: Overzicht
+  href: spring-cloud-overview.md
+- name: Snelstartgidsen
+  expanded: true
+  items:
+    - name: Uw Spring Cloud-app starten met behulp van de portal
+      href: spring-cloud-quickstart-launch-app-portal.md
+    - name: Uw Spring Cloud-app starten met behulp van de Azure CLI
+      href: spring-cloud-quickstart-launch-app-cli.md
+    - name: Uw Spring Cloud-app starten vanuit de bron
+      href: spring-cloud-launch-from-source.md
+    - name: Een Java Spring-app starten met behulp van Maven
+      href: spring-cloud-quickstart-launch-app-maven.md
+- name: Zelfstudies
+  items:
+    - name: Een Java Spring-app voorbereiden voor implementatie
+      href: spring-cloud-tutorial-prepare-app-deployment.md
+    - name: Uw configuratieserver instellen
+      href: spring-cloud-tutorial-config-server.md
+    - name: Schaal van uw toepassing handmatig aanpassen
+      href: spring-cloud-tutorial-scale-manual.md
+    - name: Uw toepassing controleren met behulp van gedistribueerde tracering en App Insights
+      href: spring-cloud-tutorial-distributed-tracing.md
+    - name: Uw toepassing verbinden met Azure CosmosDB
+      href: spring-cloud-tutorial-bind-cosmos.md
+    - name: Uw toepassing verbinden met Azure-cache voor Redis
+      href: spring-cloud-tutorial-bind-redis.md
+    - name: Uw toepassing verbinden met Azure MySQL
+      href: spring-cloud-tutorial-bind-mysql.md
+- name: Concepten
+  items:
+    - name: Informatie over quota en limieten voor Azure Spring Cloud
+      href: spring-cloud-quotas.md
+    - name: Informatie over metrische gegevens in Azure Spring Cloud
+      href: spring-cloud-concept-metrics.md
+- name: Handleidingen
+  items:
+    - name: 'Een Azure Spring Cloud-toepassing starten, stoppen en verwijderen'
+      href: spring-cloud-howto-start-stop-delete.md
+    - name: Een faseringsomgeving instellen
+      href: spring-cloud-howto-staging-environment.md
+    - name: Serviceregistratie inschakelen
+      href: spring-cloud-service-registration.md
+    - name: Toepassingslogboeken en metrische gegevens analyseren
+      href: diagnostic-services.md
+    - name: Uw CI/CD-pijplijn automatiseren in Azure Spring Cloud
+      href: spring-cloud-howto-cicd.md
+    - name: Permanente opslag gebruiken in Azure Spring Cloud
+      href: spring-cloud-howto-persistent-storage.md
+- name: Naslaginformatie
+  items:
+    - name: Azure CLI-invoegtoepassing
+      href: spring-cloud-cli-reference.md
+    - name: Resources
+      href: spring-cloud-resources.md
+    - name: Veelgestelde vragen
+      href: spring-cloud-faq.md
+    - name: Handleiding voor het oplossen van problemen
+      href: spring-cloud-troubleshoot.md

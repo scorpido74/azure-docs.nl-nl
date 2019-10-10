@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 5/6/2019
 ms.author: mlearned
 ms.openlocfilehash: b42cdae634a6c2d8d994225d4cb6b440a99918e5
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
-ms.translationtype: MT
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "67614581"
 ---
 # <a name="best-practices-for-storage-and-backups-in-azure-kubernetes-service-aks"></a>Aanbevolen procedures voor opslag en back-ups in Azure Kubernetes Service (AKS)
@@ -34,11 +34,11 @@ Toepassingen vereisen vaak verschillende typen en snelheid van opslag. Moeten uw
 
 De volgende tabel geeft een overzicht van de typen beschikbare opslag en de bijbehorende mogelijkheden:
 
-| Use-case | Volume-invoegtoepassing | Eenmaal lezen/schrijven | Alleen-lezen veel | Lezen/schrijven veel | Ondersteuning voor Windows Server-containers |
+| Use-case | Volume-invoegtoepassing | Eenmaal lezen/schrijven | Alleen-lezen veel | Lezen/schrijven veel | Ondersteuning voor Windows Server-container |
 |----------|---------------|-----------------|----------------|-----------------|--------------------|
 | Gedeelde configuratie       | Azure Files   | Ja | Ja | Ja | Ja |
 | Gestructureerde app-gegevens        | Azure-schijven   | Ja | Nee  | Nee  | Ja |
-| Niet-gestructureerde gegevens, bewerkingen in het bestandssysteem | [BlobFuse (preview)][blobfuse] | Ja | Ja | Ja | Nee |
+| Niet-gestructureerde gegevens, bewerkingen in het bestandssysteem | [BlobFuse (preview-versie)][blobfuse] | Ja | Ja | Ja | Nee |
 
 De twee belangrijkste typen opslag die is geleverd voor volumes in AKS worden ondersteund door Azure-schijven of Azure Files. Voor een betere beveiliging beide soorten opslag Azure Storage Service Encryption (SSE) gebruiken standaard die gegevens in rust worden versleuteld. Schijven kunnen niet op dit moment worden versleuteld met Azure Disk Encryption op het niveau van het AKS-knooppunten.
 
@@ -47,11 +47,11 @@ Azure Files zijn momenteel beschikbaar in de Standard-prestatielaag. Azure-schij
 - *Premium* schijven worden ondersteund door hoogwaardige SSD-schijven (SSD's). Premium-schijven worden aanbevolen voor alle werkbelastingen voor productie.
 - *Standard* schijven worden ondersteund door traditionele draaiende schijven (HDD's) en zijn geschikt voor archivering of weinig gebruikte gegevens.
 
-Inzicht in de prestatiebehoeften van de toepassing en toegang tot patronen om te kiezen van de juiste opslaglaag. Zie voor meer informatie over Managed Disks grootten en prestatielagen [overzicht Azure Managed Disks][managed-disks]
+Inzicht in de prestatiebehoeften van de toepassing en toegang tot patronen om te kiezen van de juiste opslaglaag. Zie [overzicht van Azure Managed disks][managed-disks] voor meer informatie over Managed disks grootten en prestatie lagen.
 
 ### <a name="create-and-use-storage-classes-to-define-application-needs"></a>Maken en storage-klassen gebruiken voor het definiëren van de vereisten voor toepassing
 
-Het type van de opslagcapaciteit die u gebruikt is gedefinieerd met behulp van Kubernetes *Opslagklassen*. De opslagklasse wordt vervolgens waarnaar wordt verwezen in de implementatie of pod-specificatie. Deze definities werken samen om de juiste opslag maken en verbinden met schillen. Zie voor meer informatie, [Opslagklassen in AKS][aks-concepts-storage-classes].
+Het type van de opslagcapaciteit die u gebruikt is gedefinieerd met behulp van Kubernetes *Opslagklassen*. De opslagklasse wordt vervolgens waarnaar wordt verwezen in de implementatie of pod-specificatie. Deze definities werken samen om de juiste opslag maken en verbinden met schillen. Zie [opslag klassen in AKS][aks-concepts-storage-classes]voor meer informatie.
 
 ## <a name="size-the-nodes-for-storage-needs"></a>Het formaat van de knooppunten voor opslagbehoeften
 
@@ -68,7 +68,7 @@ Als uw toepassingen Azure-schijven naar hun opslagoplossing vereisen, plannen en
 
 Hier de *Standard_DS2_v2* kunt dubbele het aantal gekoppelde schijven en drie tot vier keer de hoeveelheid van het IOPS en schijf-doorvoer. Als u alleen de belangrijkste compute-resources bekeken en vergeleken met kosten, u kunt ervoor kiezen de *Standard_B2ms* VM grootte en slechte opslagprestaties en beperkingen hebben. Werken met uw ontwikkelingsteam toepassing om te begrijpen van de opslagvereisten voor capaciteit en prestaties. Kies de juiste VM-grootte voor de AKS-knooppunten te bereiken of overschrijden de prestatiebehoeften. Regelmatig basislijn toepassingen om aan te passen van VM-grootte indien nodig.
 
-Zie voor meer informatie over beschikbare VM-grootten, [grootten voor virtuele Linux-machines in Azure][vm-sizes].
+Zie [grootten voor virtuele Linux-machines in azure][vm-sizes]voor meer informatie over de beschik bare VM-grootten.
 
 ## <a name="dynamically-provision-volumes"></a>Dynamisch inrichten van volumes
 
@@ -80,25 +80,25 @@ Wanneer u nodig hebt om te koppelen van opslag aan schillen, gebruikt u permanen
 
 Een claim permanent volume (PVC) kunt u opslag naar behoefte dynamisch te maken. De onderliggende Azure-schijven worden gemaakt als schillen deze aanvragen. In het definitie van de schil aanvragen u een volume moet worden gemaakt en gekoppeld aan een ontworpen koppelpad
 
-Zie voor de concepten over het dynamisch maken en gebruiken van volumes, [permanente Volumes Claims][aks-concepts-storage-pvcs].
+Zie voor de concepten over het dynamisch maken en gebruiken van volumes de [claim permanente volumes][aks-concepts-storage-pvcs].
 
-Overzicht van deze volumes in actie zien hoe u het dynamisch maken en gebruiken van een permanent volume met [Azure Disks][dynamic-disks] or [Azure Files][dynamic-files].
+Zie voor het weer geven van deze volumes in actie dynamisch een permanent volume maken en gebruiken met [Azure-schijven][dynamic-disks] of [Azure files][dynamic-files].
 
 Als onderdeel van uw opslag klassedefinities, stelt u de juiste *reclaimPolicy*. Deze reclaimPolicy bepaalt het gedrag van de onderliggende Azure storage-resource als de schil wordt verwijderd en het permanent volume is mogelijk niet meer vereist. De onderliggende resource voor opslag kan worden verwijderd of worden bewaard voor gebruik met een toekomstige schil. De reclaimPolicy kunt instellen op *behouden* of *verwijderen*. Inzicht in de behoeften van uw toepassing en implementeren van reguliere controles voor de opslag die worden bewaard om te minimaliseren, de hoeveelheid niet-gebruikte opslag die wordt gebruikt en kosten in rekening gebracht.
 
-Zie voor meer informatie over opslagopties klasse [opslag vrijmaken beleid][reclaim-policy].
+Zie [opslag beleid][reclaim-policy]voor meer informatie over opties voor opslag klassen.
 
 ## <a name="secure-and-back-up-your-data"></a>Beveilig en back-up van uw gegevens
 
-**Aanbevolen procedurerichtlijn** : Maak een Back-up van uw gegevens met behulp van een geschikt hulpprogramma voor het opslagtype, zoals Velero of Azure Site Recovery. Controleer of de integriteit en beveiliging van deze back-ups.
+**Richt lijnen voor best practices** : Maak een back-up van uw gegevens met behulp van een geschikt hulp programma voor uw opslag type, zoals Velero of Azure site Recovery. Controleer of de integriteit en beveiliging van deze back-ups.
 
-Als uw toepassingen opslaan en gebruiken gegevens persistent gemaakt op schijven of in bestanden, moet u regelmatig back-ups of momentopnamen van die gegevens. Azure-schijven kunnen momentopname van de ingebouwde technologieën gebruiken. U moet mogelijk een haakje voor uw toepassingen leegmaken worden geschreven naar de schijf voordat u de momentopnamebewerking niet uitvoeren. [Velero][velero] can back up persistent volumes along with additional cluster resources and configurations. If you can't [remove state from your applications][remove-state], back-up van de gegevens van permanente volumes en regelmatig testen om te controleren of de integriteit van gegevens en de processen die nodig zijn de bewerkingen voor het herstellen.
+Als uw toepassingen opslaan en gebruiken gegevens persistent gemaakt op schijven of in bestanden, moet u regelmatig back-ups of momentopnamen van die gegevens. Azure-schijven kunnen momentopname van de ingebouwde technologieën gebruiken. U moet mogelijk een haakje voor uw toepassingen leegmaken worden geschreven naar de schijf voordat u de momentopnamebewerking niet uitvoeren. [Velero][velero] kan back-ups maken van permanente volumes, samen met aanvullende cluster bronnen en-configuraties. Als u de [status van uw toepassingen][remove-state]niet kunt verwijderen, maakt u een back-up van de gegevens van permanente volumes en test u de herstel bewerkingen regel matig om de integriteit van gegevens en de vereiste processen te controleren.
 
-Informatie over de beperkingen van de verschillende methoden voor gegevensback-ups en als u stilleggen uw gegevens voorafgaand aan de momentopname wilt. Gegevensback-ups kunnen niet per se u uw toepassingsomgeving van de implementatie van het cluster te herstellen. Zie voor meer informatie over deze scenario's, [aanbevolen procedures voor zakelijke continuïteit en herstel na noodgevallen in AKS][best-practices-multi-region].
+Informatie over de beperkingen van de verschillende methoden voor gegevensback-ups en als u stilleggen uw gegevens voorafgaand aan de momentopname wilt. Gegevensback-ups kunnen niet per se u uw toepassingsomgeving van de implementatie van het cluster te herstellen. Zie [Aanbevolen procedures voor bedrijfs continuïteit en herstel na nood gevallen in AKS][best-practices-multi-region]voor meer informatie over deze scenario's.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel is gericht op de opslag aanbevolen procedures in AKS. Zie voor meer informatie over de basisprincipes van opslag in Kubernetes [concepten van opslag voor toepassingen in AKS][aks-concepts-storage].
+In dit artikel is gericht op de opslag aanbevolen procedures in AKS. Zie [opslag concepten voor toepassingen in AKS][aks-concepts-storage]voor meer informatie over de basis principes van opslag in Kubernetes.
 
 <!-- LINKS - External -->
 [velero]: https://github.com/heptio/velero

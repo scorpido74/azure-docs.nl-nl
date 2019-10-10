@@ -9,14 +9,13 @@ ms.topic: conceptual
 author: monhaber
 ms.author: v-mohabe
 ms.reviewer: vanto
-manager: craigg
 ms.date: 03/31/2019
-ms.openlocfilehash: ce02fee31041222c48d62ef8410b97fedf74dfdb
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
-ms.translationtype: MT
+ms.openlocfilehash: b8fc82ca8f4b42adf595680541042ef38efe1470
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68297682"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68569536"
 ---
 # <a name="advanced-data-security-for-azure-sql-database"></a>Geavanceerde gegevens beveiliging voor Azure SQL Database
 
@@ -58,7 +57,7 @@ Klik op de kaart **gegevens detectie & classificatie** voor een overzicht van de
 
 Als u ADS-instellingen wilt weer geven en beheren, gaat u naar **geavanceerde gegevens beveiliging** onder de kop **beveiliging** voor uw SQL database server of een beheerd exemplaar. Op deze pagina kunt u advertenties in-of uitschakelen en de evaluatie van beveiligings problemen en geavanceerde instellingen voor bedreigingen wijzigen voor uw hele SQL Database Server of een beheerd exemplaar.
 
-![Server instellingen](./media/sql-advanced-protection/server_settings.png) 
+![Serverinstellingen](./media/sql-advanced-protection/server_settings.png) 
 
 ## <a name="4-manage-ads-settings-for-a-sql-database"></a>4. ADS-instellingen voor een SQL database beheren
 
@@ -70,7 +69,7 @@ Zodra het selectie vakje is ingeschakeld, kunt u de relevante instellingen voor 
 
 Geavanceerde instellingen voor gegevens beveiliging voor de database server of het beheerde exemplaar kunnen ook worden bereikt via het deel venster ADS data base. Klik op **instellingen** in het hoofd venster Ads en klik vervolgens op **Geavanceerde instellingen voor gegevens beveiligings server weer geven**. 
 
-![Data base-instellingen](./media/sql-advanced-protection/database_settings.png) 
+![Database-instellingen](./media/sql-advanced-protection/database_settings.png) 
 
 ## <a name="next-steps"></a>Volgende stappen 
 
