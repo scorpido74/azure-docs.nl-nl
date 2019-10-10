@@ -1,31 +1,25 @@
 ---
-title: SKU-reeksen die niet beschikbaar | Microsoft Docs
+title: SKU-serie niet beschikbaar | Microsoft Docs
 description: Sommige SKU-reeksen zijn niet beschikbaar voor het geselecteerde abonnement voor deze regio.
 services: Azure Supportability
-documentationcenter: ''
 author: stevendotwang
-manager: rajatk
-editor: ''
 ms.service: azure-supportability
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 11/09/2017
 ms.author: xingwan
-ms.openlocfilehash: a57899e36a6716a6fd59cb018119c225b7396c0d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e317ae1ad88cf162f1d55a06d19e7b3b0b88ce60
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60649106"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72249047"
 ---
 # <a name="region-or-sku-unavailable"></a>Regio of SKU is niet beschikbaar
-In dit artikel wordt beschreven hoe u los het probleem van een Azure-abonnement toegang kunt krijgen tot een regio of een VM-SKU.
+In dit artikel wordt beschreven hoe u het probleem oplost van een Azure-abonnement dat geen toegang heeft tot een regio of een VM-SKU.
 
 ## <a name="symptoms"></a>Symptomen
 
-### <a name="when-deploying-a-virtual-machine-you-receive-one-of-the-following-error-messages"></a>Bij het implementeren van een virtuele machine, ontvangt u een van de volgende foutberichten:
+### <a name="when-deploying-a-virtual-machine-you-receive-one-of-the-following-error-messages"></a>Wanneer u een virtuele machine implementeert, wordt een van de volgende fout berichten weer gegeven:
 ```
 Code: SkuNotAvailable
 Message: The requested size for resource '<resource>' is currently not available in location 
@@ -43,7 +37,7 @@ Code: NotAvailableForSubscription
 Message: This size is currently unavailable in this location for this subscription
 ```
 
-### <a name="when-purchasing-reserved-virtual-machine-instances-you-receive-one-of-the-following-error-messages"></a>Bij de aanschaf van gereserveerde instanties van de virtuele Machine, ontvangt u een van de volgende foutberichten:
+### <a name="when-purchasing-reserved-virtual-machine-instances-you-receive-one-of-the-following-error-messages"></a>Bij het kopen van gereserveerde exemplaren van virtuele machines, wordt een van de volgende fout berichten weer gegeven:
 
 ```
 Message: Your subscription doesn’t support virtual machine reservation in <location>. Choose a 
@@ -54,32 +48,32 @@ different location. Supported locations are: <list of locations>
 Message: This size is currently unavailable in this location for this subscription
 ```
 
-### <a name="when-creating-a-support-request-to-increase-compute-core-quota-a-region-or-a-sku-family-is-not-available-for-selection"></a>Bij het maken van een ondersteuningsaanvraag in om u te vergroot het quotum voor compute-core, is een regio of een SKU-serie niet beschikbaar voor selectie.
+### <a name="when-creating-a-support-request-to-increase-compute-core-quota-a-region-or-a-sku-family-is-not-available-for-selection"></a>Bij het maken van een ondersteunings aanvraag om het quotum voor reken kernen te verhogen, is een regio of SKU-familie niet beschikbaar voor selectie.
 
 ## <a name="solution"></a>Oplossing
-Eerst wordt aangeraden dat u rekening houden met een andere regio of een SKU die voldoet aan de behoeften van uw bedrijf. Als u niet om een geschikte regio of SKU te vinden, maakt een 'Abonnementsbeheer" [ondersteuningsaanvraag](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) de onderstaande stappen te volgen:
+We raden u aan om een alternatieve regio of SKU te beschouwen die voldoet aan de behoeften van uw bedrijf. Als u geen geschikte regio of SKU kunt vinden, maakt u een [ondersteunings aanvraag](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) voor abonnements beheer volgens de onderstaande stappen:
 
 
-- Op de pagina basisbeginselen probleemtype als 'Beheer van abonnementen' te selecteren, selecteert u het abonnement en klik op 'Volgende'.
+- Selecteer op de pagina basis informatie probleem type als abonnements beheer, selecteer het abonnement en klik op volgende.
 
 ![Blade Grondbeginselen](./media/SKU-series-unavailable/BasicsSubMgmt.png)
 
 
--   Selecteer het type probleem als 'Overige algemene vragen' op de pagina van het probleem.
+-   Selecteer op de pagina probleem het probleem type "andere algemene vragen".
 - In de sectie Details:
-  - Geef als u kijkt naar virtuele machines implementeren of koop gereserveerde instanties van de virtuele Machine
-  - Geef de regio, SKU en het aantal exemplaren van virtuele machines die u van plan bent om te implementeren of kopen
+  - Geef aan of u virtuele machines wilt implementeren of gereserveerde exemplaren van de virtuele machine wilt kopen
+  - Geef de regio, de SKU en het aantal exemplaren van virtuele machines op die u wilt implementeren of aanschaffen
 
 
 ![Probleem](./media/SKU-series-unavailable/ProblemSubMgmt.png)
 
--   Voer uw contactgegevens en klikt u op 'Maken'.
+-   Voer uw contact gegevens in en klik op maken.
 
 ![Contactgegevens](./media/SKU-series-unavailable/ContactInformation.png)
 
 ## <a name="feedback"></a>Feedback
-We zijn altijd geopend zodat u kunt feedback en suggesties. Stuur ons uw [suggesties](https://feedback.azure.com/forums/266794-support-feedback). U kunt bovendien contact met ons op via [Twitter](https://twitter.com/azuresupport) of de [MSDN-forums](https://social.msdn.microsoft.com/Forums/azure).
+We zijn altijd te openen voor feedback en suggesties. Stuur ons uw [suggesties](https://feedback.azure.com/forums/266794-support-feedback). Daarnaast kunt u contact met ons opnemen via [Twitter](https://twitter.com/azuresupport) of de [MSDN-Forums](https://social.msdn.microsoft.com/Forums/azure).
 
 ## <a name="learn-more"></a>Meer informatie
-[Veelgestelde vragen over ondersteuning van Azure](https://azure.microsoft.com/support/faq)
+[Veelgestelde vragen over ondersteuning voor Azure](https://azure.microsoft.com/support/faq)
 

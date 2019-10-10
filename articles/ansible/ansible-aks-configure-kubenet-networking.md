@@ -1,39 +1,39 @@
 ---
-title: 'Zelfstudie: configureren van netwerken in Azure Kubernetes Service (AKS) met behulp van Ansible kubenet | Microsoft Docs'
-description: Meer informatie over het gebruik van Ansible voor het configureren van kubenet netwerken in Azure Kubernetes Service (AKS)-cluster
-keywords: ansible, azure, devops, bash, cloudshell, playbook, aks, container, aks, kubernetes
+title: 'Zelf studie: kubenet-netwerken configureren in azure Kubernetes service (AKS) met behulp van Ansible'
+description: Meer informatie over het gebruik van Ansible voor het configureren van kubenet-netwerken in azure Kubernetes service (AKS)-cluster
+keywords: ansible, azure, devops, bash, Cloud shell, Playbook, AKS, container, AKS, kubernetes
 ms.topic: tutorial
 ms.service: ansible
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: cd32347f9de87ea6272be922d0359f1cc7f6f758
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 949a55fd8c004bc656d02816231c4ebb6dd8f92b
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65231312"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72242164"
 ---
-# <a name="tutorial-configure-kubenet-networking-in-azure-kubernetes-service-aks-using-ansible"></a>Zelfstudie: Configureren van netwerken in Azure Kubernetes Service (AKS) met behulp van Ansible kubenet
+# <a name="tutorial-configure-kubenet-networking-in-azure-kubernetes-service-aks-using-ansible"></a>Zelf studie: kubenet-netwerken configureren in azure Kubernetes service (AKS) met behulp van Ansible
 
 [!INCLUDE [ansible-28-note.md](../../includes/ansible-28-note.md)]
 
 [!INCLUDE [open-source-devops-intro-aks.md](../../includes/open-source-devops-intro-aks.md)]
 
-Met behulp van AKS, kunt u een cluster met behulp van de volgende netwerk-modellen implementeren:
+Met AKS kunt u een cluster implementeren met behulp van de volgende netwerk modellen:
 
-- [Kubenet netwerken](/azure/aks/configure-kubenet) -netwerkbronnen gewoonlijk worden gemaakt en geconfigureerd, zoals het AKS-cluster is geïmplementeerd.
-- [Azure Container netwerken Interface (CNI)-netwerken](/azure/aks/configure-azure-cni) -AKS-cluster is verbonden met een bestaande virtuele-netwerkbronnen en configuraties.
+- [Kubenet-netwerken](/azure/aks/configure-kubenet) : netwerk bronnen worden doorgaans gemaakt en geconfigureerd als het AKS-cluster wordt geïmplementeerd.
+- [Azure container Networking interface (cni)-netwerken](/azure/aks/configure-azure-cni) -AKS-cluster is verbonden met bestaande virtuele netwerk bronnen en-configuraties.
 
-Zie voor meer informatie over netwerken voor uw toepassingen in AKS [concepten voor toepassingen in AKS netwerk](/azure/aks/concepts-network).
+Zie [Network concepten for Applications in AKS](/azure/aks/concepts-network)(Engelstalig) voor meer informatie over netwerken voor uw toepassingen in AKS.
 
 [!INCLUDE [ansible-tutorial-goals.md](../../includes/ansible-tutorial-goals.md)]
 
 > [!div class="checklist"]
 >
 > * Een AKS-cluster maken
-> * Configureren van netwerken van Azure kubenet
+> * Azure kubenet-netwerken configureren
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -43,7 +43,7 @@ Zie voor meer informatie over netwerken voor uw toepassingen in AKS [concepten v
 
 ## <a name="create-a-virtual-network-and-subnet"></a>Een virtueel netwerk en een subnet maken
 
-De code playbook in deze sectie maakt u de volgende Azure-resources:
+Met de Playbook-code in deze sectie worden de volgende Azure-resources gemaakt:
 
 - Virtueel netwerk
 - Subnet binnen het virtuele netwerk
@@ -69,7 +69,7 @@ Sla het volgende playbook op als `vnet.yml`:
 
 ## <a name="create-an-aks-cluster-in-the-virtual-network"></a>Een AKS-cluster maken in het virtuele netwerk
 
-De code playbook in deze sectie maakt u een AKS-cluster in een virtueel netwerk. 
+Met de Playbook-code in deze sectie maakt u een AKS-cluster in een virtueel netwerk. 
 
 Sla het volgende playbook op als `aks.yml`:
 
@@ -105,29 +105,29 @@ Sla het volgende playbook op als `aks.yml`:
   register: aks
 ```
 
-Hier volgen een aantal belangrijke opmerkingen bij het werken met de voorbeeld-playbook:
+Hier volgen enkele belang rijke opmerkingen waarmee u rekening moet houden wanneer u werkt met de voor beeld-Playbook:
 
-- Gebruik `azure_rm_aks_version` module de ondersteunde versie te vinden.
-- De `vnet_subnet_id` is van het subnet in de vorige sectie hebt gemaakt.
-- De `network_profile` definieert de eigenschappen voor de invoegtoepassing kubenet-netwerk.
-- De `service_cidr` interne services in de AKS-cluster toewijzen aan een IP-adres wordt gebruikt. Deze IP-adresbereik moet een adresruimte die ergens anders niet wordt gebruikt in uw netwerk. 
-- De `dns_service_ip` -adres moet de '. 10 '-adres van uw service IP-adresbereik.
-- De `pod_cidr` moet een grote adresruimte die zich niet in gebruik ergens anders in uw netwerkomgeving. Het adresbereik moet groot genoeg is voor het aantal knooppunten die u verwacht te schalen tot. U kunt dit adresbereik niet wijzigen nadat het cluster is geïmplementeerd.
-- De schil IP-adresbereik wordt gebruikt om toe te wijzen een/24-adresruimte aan elk knooppunt in het cluster. In het volgende voorbeeld wordt de `pod_cidr` van 192.168.0.0/16 het eerste knooppunt 192.168.0.0/24, het tweede knooppunt 192.168.1.0/24 en de derde knooppunt 192.168.2.0/24 toegewezen.
-- Als het cluster schalen of upgrades worden uitgevoerd blijft Azure een pod IP-adresbereik toewijzen aan elke nieuwe knooppunt.
-- De playbook wordt geladen `ssh_key` van `~/.ssh/id_rsa.pub`. Als u deze wijzigen, gebruikt u de indeling met één regel - beginnen met 'ssh-rsa' (zonder de aanhalingstekens).
-- De `client_id` en `client_secret` waarden die worden geladen uit `~/.azure/credentials`, dit is de standaard-referentie-bestand. U kunt deze waarden ingesteld op uw service principal of deze waarden van omgevingsvariabelen laden:
+- Gebruik de module `azure_rm_aks_version` om de ondersteunde versie te vinden.
+- De `vnet_subnet_id` is het subnet dat in de vorige sectie is gemaakt.
+- De `network_profile` definieert de eigenschappen voor de kubenet-netwerk-invoeg toepassing.
+- De `service_cidr` wordt gebruikt voor het toewijzen van interne services in het AKS-cluster aan een IP-adres. Dit IP-adres bereik moet een adres ruimte zijn die niet ergens anders in uw netwerk wordt gebruikt. 
+- Het `dns_service_ip`-adres moet het adres '. 10 ' zijn van het IP-adres bereik van uw service.
+- De `pod_cidr` moet een grote adres ruimte zijn die elders niet in uw netwerk omgeving wordt gebruikt. Het adres bereik moet groot genoeg zijn voor het aantal knoop punten dat u naar verwachting omhoog wilt schalen. U kunt dit adres bereik niet wijzigen wanneer het cluster is geïmplementeerd.
+- Het IP-adres bereik van Pod wordt gebruikt om een/24-adres ruimte toe te wijzen aan elk knoop punt in het cluster. In het volgende voor beeld wijst de `pod_cidr` van 192.168.0.0/16 het eerste knoop punt 192.168.0.0/24, het tweede knoop punt 192.168.1.0/24 en het derde knoop punt 192.168.2.0/24 toe.
+- Naarmate het cluster wordt geschaald of bijgewerkt, blijft Azure een IP-adres bereik van pod toewijzen aan elk nieuw knoop punt.
+- De Playbook laadt `ssh_key` van `~/.ssh/id_rsa.pub`. Als u het wijzigt, gebruikt u de indeling met één regel, te beginnen met ' ssh-rsa ' (zonder de aanhalings tekens).
+- De waarden `client_id` en `client_secret` worden geladen van `~/.azure/credentials`. Dit is het standaard referentie bestand. U kunt deze waarden instellen voor uw service-principal of deze waarden laden vanuit omgevings variabelen:
 
     ```yml
     client_id: "{{ lookup('env', 'AZURE_CLIENT_ID') }}"
     client_secret: "{{ lookup('env', 'AZURE_SECRET') }}"
     ```
 
-## <a name="associate-the-network-resources"></a>De netwerkresources koppelen
+## <a name="associate-the-network-resources"></a>De netwerk resources koppelen
 
-Wanneer u een AKS-cluster maakt, wordt een groep en route-tabel voor de beveiliging voor netwerk worden gemaakt. Deze resources worden beheerd door AKS en bijgewerkt wanneer u maken en beschikbaar maken van services. De groep en de route-tabel voor de beveiliging voor netwerk als volgt aan uw virtuele netwerksubnet koppelen. 
+Wanneer u een AKS-cluster maakt, worden er een netwerk beveiligings groep en route tabel gemaakt. Deze resources worden beheerd door AKS en bijgewerkt wanneer u Services maakt en weergeeft. Koppel de netwerk beveiligings groep en de route tabel als volgt aan het subnet van het virtuele netwerk. 
 
-Opslaan van de volgende playbook als `associate.yml`.
+Sla de volgende Playbook op als `associate.yml`.
 
 ```yml
 - name: Get route table
@@ -159,15 +159,15 @@ Opslaan van de volgende playbook als `associate.yml`.
       route_table: "{{ routetable.route_tables[0].id }}"
 ```
 
-Hier volgen een aantal belangrijke opmerkingen bij het werken met de voorbeeld-playbook:
+Hier volgen enkele belang rijke opmerkingen waarmee u rekening moet houden wanneer u werkt met de voor beeld-Playbook:
 
-- De `node_resource_group` is de naam van de resourcegroep waarin de AKS-knooppunten worden gemaakt.
-- De `vnet_subnet_id` is van het subnet in de vorige sectie hebt gemaakt.
+- De `node_resource_group` is de naam van de resource groep waarin de AKS-knoop punten worden gemaakt.
+- De `vnet_subnet_id` is het subnet dat in de vorige sectie is gemaakt.
 
 
-## <a name="run-the-sample-playbook"></a>De voorbeeld-playbook uitvoeren
+## <a name="run-the-sample-playbook"></a>De voorbeeld Playbook uitvoeren
 
-Deze sectie vindt u het volledige voorbeeld playbook die de taken maken in dit artikel worden aangeroepen. 
+In deze sectie vindt u de volledige voorbeeld Playbook die de taken aanroept die in dit artikel worden gemaakt. 
 
 Sla het volgende playbook op als `aks-kubenet.yml`:
 
@@ -210,19 +210,19 @@ Sla het volgende playbook op als `aks-kubenet.yml`:
            var: output.aks[0]
 ```
 
-In de `vars` sectie, moet u de volgende wijzigingen:
+Breng de volgende wijzigingen aan in de sectie `vars`:
 
-- Voor de `resource_group` sleutel, wijzigen de `aksansibletest` waarde die u wilt de naam van uw resourcegroep.
-- Voor de `name` sleutel, wijzigen de `aksansibletest` waarde naar uw AKS-naam.
-- Voor de `Location` sleutel, wijzigen de `eastus` waarde naar de locatie van uw resourcegroep.
+- Wijzig de waarde van de `aksansibletest` voor de `resource_group`-sleutel in de naam van de resource groep.
+- Voor de `name`-sleutel wijzigt u de `aksansibletest`-waarde in uw AKS-naam.
+- Voor de `Location`-sleutel wijzigt u de `eastus`-waarde in de locatie van de resource groep.
 
-Voer de volledige playbook met behulp de `ansible-playbook` opdracht:
+Voer de volledige Playbook uit met behulp van de `ansible-playbook`-opdracht:
 
 ```bash
 ansible-playbook aks-kubenet.yml
 ```
 
-Uitvoeren van de playbook toont resultaten die lijkt op de volgende uitvoer:
+Als de Playbook wordt uitgevoerd, worden de resultaten weer gegeven die vergelijkbaar zijn met de volgende uitvoer:
 
 ```Output
 PLAY [localhost] 
@@ -329,9 +329,9 @@ localhost                  : ok=15   changed=2    unreachable=0    failed=0    s
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Wanneer het niet meer nodig hebt, verwijdert u de resources die in dit artikel is gemaakt. 
+Als u deze niet meer nodig hebt, verwijdert u de resources die u in dit artikel hebt gemaakt. 
 
-Sla de volgende code als `cleanup.yml`:
+Sla de volgende code op als `cleanup.yml`:
 
 ```yml
 ---
@@ -346,9 +346,9 @@ Sla de volgende code als `cleanup.yml`:
             force: yes
 ```
 
-In de `vars` sectie, vervangt de `{{ resource_group_name }}` tijdelijke aanduiding door de naam van uw resourcegroep.
+Vervang in het gedeelte `vars` de tijdelijke aanduiding `{{ resource_group_name }}` door de naam van uw resource groep.
 
-Voer de playbook met behulp de `ansible-playbook` opdracht:
+Voer de Playbook uit met behulp van de `ansible-playbook`-opdracht:
 
 ```bash
 ansible-playbook cleanup.yml
@@ -357,4 +357,4 @@ ansible-playbook cleanup.yml
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Zelfstudie - Azure Container netwerken Interface (CNI)-netwerken configureren in AKS met Ansible](./ansible-aks-configure-cni-networking.md)
+> [Zelf studie: Azure container Networking interface (CNI)-netwerken configureren in AKS met behulp van Ansible](./ansible-aks-configure-cni-networking.md)

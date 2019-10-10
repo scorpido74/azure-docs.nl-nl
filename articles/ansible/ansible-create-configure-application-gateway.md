@@ -1,5 +1,5 @@
 ---
-title: Zelfstudie - webverkeer beheren met Azure Application Gateway met behulp van Ansible | Microsoft Docs
+title: 'Zelf studie: webverkeer beheren met Azure-toepassing gateway met behulp van Ansible'
 description: Meer informatie over hoe u Ansible gebruikt om een Azure Application Gateway te maken en te configureren voor het beheren van webverkeer
 keywords: ansible, azure, devops, bash, playbook, application gateway, load balancer, webverkeer
 ms.topic: tutorial
@@ -8,18 +8,18 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: 9f8ed3e1da72db3e1b13d5d2aef1cce8fc3922a2
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 1dd547fb59a41a90de18d595a392b64ef518023a
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65231255"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72241891"
 ---
-# <a name="tutorial-manage-web-traffic-with-azure-application-gateway-using-ansible"></a>Zelfstudie: Webverkeer beheren met Azure Application Gateway met Ansible
+# <a name="tutorial-manage-web-traffic-with-azure-application-gateway-using-ansible"></a>Zelf studie: webverkeer beheren met Azure-toepassing gateway met behulp van Ansible
 
 [!INCLUDE [ansible-27-note.md](../../includes/ansible-27-note.md)]
 
-[Azure Application Gateway](/azure/application-gateway/overview) is een load balancer voor webverkeer waarmee u het verkeer naar uw webapps kunt beheren. Op basis van de bron-IP-adres en poort, routeren traditionele load balancers van verkeer naar een doel-IP-adres en poort. Application Gateway biedt een gedetailleerder niveau naar besturingselement waar verkeer kan worden gerouteerd op basis van de URL. Bijvoorbeeld, kunt u definiëren dat als `images` van URL-pad, wordt verkeer wordt doorgestuurd naar een specifieke set servers (ook wel een pool) geconfigureerd voor afbeeldingen.
+[Azure Application Gateway](/azure/application-gateway/overview) is een load balancer voor webverkeer waarmee u het verkeer naar uw webapps kunt beheren. Op basis van het bron-IP-adres en de poort, routert traditionele load balancers verkeer naar een doel-IP-adres en-poort. Application Gateway geeft u een nauw keuriger niveau van het beheer van verkeer op basis van de URL. U kunt bijvoorbeeld definiëren dat als `images` het pad van de URL is, verkeer wordt doorgestuurd naar een specifieke set servers (ook wel een groep genoemd) die is geconfigureerd voor installatie kopieën.
 
 [!INCLUDE [ansible-tutorial-goals.md](../../includes/ansible-tutorial-goals.md)]
 
@@ -36,7 +36,7 @@ ms.locfileid: "65231255"
 
 ## <a name="create-a-resource-group"></a>Een resourcegroep maken
 
-De code playbook in deze sectie maakt u een Azure-resourcegroep. Een resourcegroep is een logische container waarin Azure resources zijn geconfigureerd.  
+Met de Playbook-code in deze sectie maakt u een Azure-resource groep. Een resource groep is een logische container waarin Azure-resources worden geconfigureerd.  
 
 Sla het volgende playbook op als `rg.yml`:
 
@@ -52,12 +52,12 @@ Sla het volgende playbook op als `rg.yml`:
         location: "{{ location }}"
 ```
 
-Voordat u de playbook uitvoert, Zie de volgende opmerkingen:
+Voor het uitvoeren van de Playbook raadpleegt u de volgende opmerkingen:
 
-- Naam van de resourcegroep is `myResourceGroup`. Deze waarde wordt gebruikt in de zelfstudie.
-- De resourcegroep wordt gemaakt in de `eastus` locatie.
+- De naam van de resource groep is `myResourceGroup`. Deze waarde wordt in de zelf studie gebruikt.
+- De resource groep wordt gemaakt op de locatie @no__t 0.
 
-Voer de playbook met behulp de `ansible-playbook` opdracht:
+Voer de Playbook uit met behulp van de `ansible-playbook`-opdracht:
 
 ```bash
 ansible-playbook rg.yml
@@ -65,7 +65,7 @@ ansible-playbook rg.yml
 
 ## <a name="create-network-resources"></a>Netwerkbronnen maken
 
-De code playbook in deze sectie maakt u een virtueel netwerk om in te schakelen van de toepassingsgateway om te communiceren met andere resources.
+Met de Playbook-code in deze sectie wordt een virtueel netwerk gemaakt waarmee de toepassings gateway kan communiceren met andere resources.
 
 Sla het volgende playbook op als `vnet_create.yml`:
 
@@ -105,12 +105,12 @@ Sla het volgende playbook op als `vnet_create.yml`:
         domain_name_label: "{{ publicip_domain }}"
 ```
 
-Voordat u de playbook uitvoert, Zie de volgende opmerkingen:
+Voor het uitvoeren van de Playbook raadpleegt u de volgende opmerkingen:
 
-* De `vars` sectie bevat de waarden die worden gebruikt om de netwerkresources te maken. 
-* U moet deze waarden voor uw specifieke omgeving te wijzigen.
+* De sectie `vars` bevat de waarden die worden gebruikt voor het maken van de netwerk resources. 
+* U moet deze waarden wijzigen voor uw specifieke omgeving.
 
-Voer de playbook met behulp de `ansible-playbook` opdracht:
+Voer de Playbook uit met behulp van de `ansible-playbook`-opdracht:
 
 ```bash
 ansible-playbook vnet_create.yml
@@ -118,7 +118,7 @@ ansible-playbook vnet_create.yml
 
 ## <a name="create-servers"></a>Servers maken
 
-De playbook-code in deze sectie maakt twee Azure-containerinstanties met HTTPD installatiekopieën moet worden gebruikt als webservers voor application gateway.  
+Met de Playbook-code in deze sectie maakt u twee Azure-container instanties met HTTPD-installatie kopieën die moeten worden gebruikt als webservers voor de toepassings gateway.  
 
 Sla het volgende playbook op als `aci_create.yml`:
 
@@ -163,7 +163,7 @@ Sla het volgende playbook op als `aci_create.yml`:
               - 80
 ```
 
-Voer de playbook met behulp de `ansible-playbook` opdracht:
+Voer de Playbook uit met behulp van de `ansible-playbook`-opdracht:
 
 ```bash
 ansible-playbook aci_create.yml
@@ -171,7 +171,7 @@ ansible-playbook aci_create.yml
 
 ## <a name="create-the-application-gateway"></a>De toepassingsgateway maken
 
-De code playbook in deze sectie maakt u een toepassingsgateway met de naam `myAppGateway`.  
+Met de Playbook-code in deze sectie maakt u een toepassings gateway met de naam `myAppGateway`.  
 
 Sla het volgende playbook op als `appgw_create.yml`:
 
@@ -257,16 +257,16 @@ Sla het volgende playbook op als `appgw_create.yml`:
             name: rule1
 ```
 
-Voordat u de playbook uitvoert, Zie de volgende opmerkingen:
+Voor het uitvoeren van de Playbook raadpleegt u de volgende opmerkingen:
 
-* `appGatewayIP` is gedefinieerd in de `gateway_ip_configurations` blokkeren. Er is een subnetverwijzing vereist voor de IP-configuratie van de gateway.
-* `appGatewayBackendPool` is gedefinieerd in de `backend_address_pools` blokkeren. Een toepassingsgateway moet ten minste één back-endadresgroep hebben.
-* `appGatewayBackendHttpSettings` is gedefinieerd in de `backend_http_settings_collection` blokkeren. Hiermee geeft u poort 80 en een HTTP-protocol wordt gebruikt voor communicatie.
-* `appGatewayHttpListener` is gedefinieerd in de `backend_http_settings_collection` blokkeren. Dit is de standaard-listener die aan appGatewayBackendPool is gekoppeld.
-* `appGatewayFrontendIP` is gedefinieerd in de `frontend_ip_configurations` blokkeren. Hiermee wordt myAGPublicIPAddress aan appGatewayHttpListener toegewezen.
-* `rule1` is gedefinieerd in de `request_routing_rules` blokkeren. Dit is de standaardregel voor doorsturen die aan appGatewayHttpListener is gekoppeld.
+* `appGatewayIP` is gedefinieerd in het `gateway_ip_configurations`-blok. Er is een subnetverwijzing vereist voor de IP-configuratie van de gateway.
+* `appGatewayBackendPool` is gedefinieerd in het `backend_address_pools`-blok. Een toepassingsgateway moet ten minste één back-endadresgroep hebben.
+* `appGatewayBackendHttpSettings` is gedefinieerd in het `backend_http_settings_collection`-blok. Hiermee geeft u op dat poort 80 en een HTTP-protocol worden gebruikt voor communicatie.
+* `appGatewayHttpListener` is gedefinieerd in het `backend_http_settings_collection`-blok. Dit is de standaard-listener die aan appGatewayBackendPool is gekoppeld.
+* `appGatewayFrontendIP` is gedefinieerd in het `frontend_ip_configurations`-blok. Hiermee wordt myAGPublicIPAddress aan appGatewayHttpListener toegewezen.
+* `rule1` is gedefinieerd in het `request_routing_rules`-blok. Dit is de standaardregel voor doorsturen die aan appGatewayHttpListener is gekoppeld.
 
-Voer de playbook met behulp de `ansible-playbook` opdracht:
+Voer de Playbook uit met behulp van de `ansible-playbook`-opdracht:
 
 ```bash
 ansible-playbook appgw_create.yml
@@ -276,13 +276,13 @@ Het kan enkele minuten duren voordat de toepassingsgateway is gemaakt.
 
 ## <a name="test-the-application-gateway"></a>De toepassingsgateway testen
 
-1. In de [een resourcegroep maken](#create-a-resource-group) sectie maakt u een locatie opgeven. Noteer de waarde.
+1. In de sectie [een resource groep maken](#create-a-resource-group) geeft u een locatie op. Noteer de waarde ervan.
 
-1. In de [netwerkresources maken](#create-network-resources) sectie maakt u het domein opgeven. Noteer de waarde.
+1. In de sectie [netwerk bronnen maken](#create-network-resources) geeft u het domein op. Noteer de waarde ervan.
 
-1. Voor de test-URL door het volgende patroon vervangen door de locatie en het domein: `http://<domain>.<location>.cloudapp.azure.com`.
+1. Voor de test-URL door het volgende patroon te vervangen door de locatie en het domein: `http://<domain>.<location>.cloudapp.azure.com`.
 
-1. Blader naar de URL van de test.
+1. Blader naar de test-URL.
 
 1. Als u de volgende pagina ziet, werkt de toepassingsgateway zoals verwacht.
 
@@ -290,9 +290,9 @@ Het kan enkele minuten duren voordat de toepassingsgateway is gemaakt.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Wanneer het niet meer nodig hebt, verwijdert u de resources die in dit artikel is gemaakt. 
+Als u deze niet meer nodig hebt, verwijdert u de resources die u in dit artikel hebt gemaakt. 
 
-Sla de volgende code als `cleanup.yml`:
+Sla de volgende code op als `cleanup.yml`:
 
 ```yml
 - hosts: localhost
@@ -305,7 +305,7 @@ Sla de volgende code als `cleanup.yml`:
         state: absent
 ```
 
-Voer de playbook met behulp de `ansible-playbook` opdracht:
+Voer de Playbook uit met behulp van de `ansible-playbook`-opdracht:
 
 ```bash
 ansible-playbook cleanup.yml

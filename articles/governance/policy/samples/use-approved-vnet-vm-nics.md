@@ -1,17 +1,17 @@
 ---
-title: 'Voorbeeld: goedgekeurd VNet gebruiken voor VM-netwerkinterfaces'
+title: Voor beeld gebruik vermeld vNet voor VM-netwerk interfaces
 description: Deze voorbeeldbeleidsdefinitie vereist dat netwerkinterfaces een goedgekeurd virtueel netwerk gebruiken.
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: c1f12d40ea0e5dbf0c9f56e856e5e4fa8831970b
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 8ab21677c99150770339a5d34e00b692ca3cfc48
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71980386"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72255696"
 ---
 # <a name="sample---use-approved-vnet-for-vm-network-interfaces"></a>Voorbeeld: goedgekeurd VNet gebruiken voor VM-netwerkinterfaces
 

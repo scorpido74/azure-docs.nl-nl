@@ -1,42 +1,42 @@
 ---
-title: Versiegeschiedenis van release - Microsoft Genomics
-titleSuffix: Azure
-description: De Microsoft Genomics Python-client voor oplossingen en nieuwe functies wordt regelmatig bijgewerkt door de Microsoft Genomics.
+title: Releasegeschiedenis van versie
+titleSuffix: Microsoft Genomics
+description: De release geschiedenis van updates voor de Microsoft Genomics python-client voor oplossingen en nieuwe functionaliteit.
 services: genomics
 author: grhuynh
 manager: cgronlun
 ms.author: grhuynh
 ms.service: genomics
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/11/2019
-ms.openlocfilehash: 2037bcf173951769f1627f809352ef60afce2d50
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 03bbbed53cd0494e8507a156d0fadac8dcd4297a
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60780947"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72249138"
 ---
 # <a name="version-release-history"></a>Releasegeschiedenis van versie
-De Microsoft Genomics Python-client voor oplossingen en nieuwe functies wordt regelmatig bijgewerkt door het team van Microsoft Genomics. 
+Het Microsoft Genomics team werkt de Microsoft Genomics python-client regel matig bij voor oplossingen en nieuwe functionaliteit. 
 
-## <a name="latest-release"></a>Meest recente versie
-De huidige Python-client is versie 0.8.1. Dit is December 3-2018 en ondersteunt het uitvoeren van werkstromen met GATK 3.5 en GATK4 uitgebracht. Het ondersteunt ook gVCF uitvoer.
+## <a name="latest-release"></a>Nieuwste versie
+De huidige python-client is versie 0.8.1. Het is uitgebracht op 3 2018 en ondersteunt actieve werk stromen met GATK 3,5 en GATK4. Het biedt ook ondersteuning voor gVCF-uitvoer.
 
 
-## <a name="release-history"></a>Versiegeschiedenis 
-Nieuwe versies van de Microsoft Genomics Python-client worden vrijgegeven over twee keer per jaar. Als nieuwe versies van de Microsoft Genomics Python-client worden vrijgegeven, wordt hier een lijst met oplossingen en functies bijgewerkt. Wanneer er nieuwe versies worden uitgebracht, vorige versies moeten nog steeds worden ondersteund voor ten minste 90 dagen. Als eerdere versies worden niet meer wordt ondersteund, wordt deze op deze pagina worden vermeld. 
+## <a name="release-history"></a>Release geschiedenis 
+Nieuwe versies van de Microsoft Genomics python-client worden twee keer per jaar vrijgegeven. Wanneer er nieuwe versies van de Microsoft Genomics python-client worden uitgebracht, wordt hier een lijst met oplossingen en functies bijgewerkt. Wanneer er nieuwe versies worden uitgebracht, moeten eerdere versies ten minste 90 dagen worden ondersteund. Wanneer eerdere versies niet meer worden ondersteund, wordt deze op deze pagina vermeld. 
 
 ### <a name="version-081"></a>Versie 0.8.1
-Versie 0.8.1 bevat kleine oplossingen voor problemen.  
+Versie 0.8.1 bevat kleine oplossingen voor fouten.  
 
 ### <a name="version-080"></a>Versie 0.8.0
-Versie 0.8.0 biedt ondersteuning voor GATK4 en gVCFs uitvoeren.  
+Versie 0.8.0 bevat ondersteuning voor GATK4 en het uitvoeren van gVCFs.  
 
 ### <a name="version-074"></a>Versie 0.7.4
-Versie 0.7.4 biedt ondersteuning voor het accepteren van SAS-tokens in plaats van accountsleutels in de `config.txt` invoer. Zie voor meer informatie, [invoer SAS-tokens snelstartgids](quickstart-input-sas.md). 
+Versie 0.7.4 bevat ondersteuning voor het accepteren van SAS-tokens in plaats van account sleutels in de `config.txt`-invoer. Zie Quick Start SAS- [tokens](quickstart-input-sas.md)(Engelstalig) voor meer informatie. 
 
 ### <a name="version-073"></a>Versie 0.7.3
-Versie 0.7.3 bevat kleine oplossingen voor problemen.
+Versie 0.7.3 bevat kleine oplossingen voor fouten.
 
 ### <a name="version-072"></a>Versie 0.7.2
-Versie 0.7.2 is de eerste versie. Dit is vanaf 1 November 2017 uitgebracht.
+Versie 0.7.2 is de initiële versie. Het is uitgebracht op 1 2017 november.

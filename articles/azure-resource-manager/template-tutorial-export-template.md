@@ -8,16 +8,16 @@ ms.service: azure-resource-manager
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 0564763b05dd44eb908ec00f98a97e9d4970099f
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
-ms.translationtype: HT
+ms.openlocfilehash: 6e4f246cac0ecc1ab5942e522595f59c3625db8f
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72177588"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72243214"
 ---
 # <a name="tutorial-use-exported-template-from-the-azure-portal"></a>Zelf studie: geëxporteerde sjabloon uit het Azure Portal gebruiken
 
-In deze zelfstudie reeks hebt u een sjabloon gemaakt voor het implementeren van een Azure-opslag account. In de volgende twee zelf studies voegt u een *app service-abonnement* en een *website*toe. In plaats van helemaal nieuwe sjablonen te maken, leert u hoe u sjablonen uit de Azure Portal exporteert en hoe u voorbeeld sjablonen uit de [Azure Quick](/resources/templates/)start-sjablonen gebruikt. U kunt deze sjablonen aanpassen voor uw gebruik. Deze zelf studie is gericht op het exporteren van sjablonen en het aanpassen van het resultaat voor uw sjabloon. Het duurt ongeveer **14 minuten** om te volt ooien.
+In deze zelfstudie reeks hebt u een sjabloon gemaakt voor het implementeren van een Azure-opslag account. In de volgende twee zelf studies voegt u een *app service-abonnement* en een *website*toe. In plaats van helemaal nieuwe sjablonen te maken, leert u hoe u sjablonen uit de Azure Portal exporteert en hoe u voorbeeld sjablonen uit de [Azure Quick](https://azure.microsoft.com/resources/templates/)start-sjablonen gebruikt. U kunt deze sjablonen aanpassen voor uw gebruik. Deze zelf studie is gericht op het exporteren van sjablonen en het aanpassen van het resultaat voor uw sjabloon. Het duurt ongeveer **14 minuten** om te volt ooien.
 
 ## <a name="prerequisites"></a>Vereisten
 

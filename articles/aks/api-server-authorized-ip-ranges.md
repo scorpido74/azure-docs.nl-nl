@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/06/2019
 ms.author: mlearned
-ms.openlocfilehash: 59e64b7c84e589da57ea28d6655c9305f4fdc101
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 5819a6c6d73b2ee51fc72d2b56d99b0efb3ea0be
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058346"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72241135"
 ---
 # <a name="preview---secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Voor beeld-veilige toegang tot de API-server met behulp van geautoriseerde IP-adresbereiken in azure Kubernetes service (AKS)
 
@@ -228,7 +228,7 @@ U geeft een lijst met geautoriseerde IP-adresbereiken op om de API-server geauto
 
 Gebruik [AZ AKS update][az-aks-update] opdracht en geef de *-API-server-geautoriseerde IP-bereiken* op die u wilt toestaan. Deze IP-adresbereiken zijn meestal adresbereiken die worden gebruikt door uw on-premises netwerken. Voeg het open bare IP-adres van uw eigen Azure-firewall toe die is verkregen in de vorige stap, zoals *20.42.25.196/32*.
 
-In het volgende voor beeld worden geautoriseerde IP-adresbereiken van de API-server ingeschakeld in het cluster met de naam *myAKSCluster* in de resource groep genaamd *myResourceGroup*. De IP-adresbereiken die u wilt autoriseren, zijn *20.42.25.196/32* (het open bare IP-adres van Azure firewall), vervolgens *172.0.0.0/16* en *168.10.0.0/18*:
+In het volgende voor beeld worden geautoriseerde IP-adresbereiken van de API-server ingeschakeld in het cluster met de naam *myAKSCluster* in de resource groep genaamd *myResourceGroup*. De IP-adresbereiken die u wilt autoriseren, zijn *20.42.25.196/32* (het open bare IP-adres van de Azure-firewall), vervolgens *172.0.0.0/16* (pod/knoop punten adres bereik) en *168.10.0.0/18* (ServiceCidr):
 
 ```azurecli-interactive
 az aks update \
@@ -236,6 +236,13 @@ az aks update \
     --name myAKSCluster \
     --api-server-authorized-ip-ranges 20.42.25.196/32,172.0.0.0/16,168.10.0.0/18
 ```
+
+> [!NOTE]
+> Voeg deze bereiken toe aan een acceptatie lijst:
+> - Het open bare IP-adres van de firewall
+> - De service-CIDR
+> - Het adres bereik voor de subnetten, met de knoop punten en het Peul
+> - Elk bereik dat netwerken vertegenwoordigt waarvan u het cluster beheert
 
 ## <a name="update-or-disable-authorized-ip-ranges"></a>Gemachtigde IP-bereiken bijwerken of uitschakelen
 

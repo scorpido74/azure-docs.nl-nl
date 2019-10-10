@@ -1,18 +1,18 @@
 ---
 title: Voor beeld-PCI-DSS v 3.2.1 blauw druk-stappen implementeren
-description: Implementeer de stappen van het voor beeld van de Payment Card Industry Data Security Standard v 3.2.1 Blue.
+description: Implementeer stappen voor het voor beeld van de betalings kaart branche gegevens beveiliging standaard v 3.2.1 blauw druk, inclusief blauw druk-artefact parameter Details.
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 06/24/2019
 ms.topic: conceptual
 ms.service: blueprints
-ms.openlocfilehash: f95f9a592085fd93fba5e6b11a1a75609eb70295
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: fa409b873ea1dd0c0970ebc694ad68673df4d033
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71980927"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72248863"
 ---
 # <a name="deploy-the-pci-dss-v321-blueprint-sample"></a>Het voor beeld van een PCI-DSS v 3.2.1-blauw versie implementeren
 
@@ -37,10 +37,10 @@ Implementeer eerst het voor beeld van de blauw druk door een nieuwe blauw druk i
 
 1. Voer de _basis beginselen_ van het voor beeld van de blauw druk in:
 
-   - **Naam blauw druk**: Geef een naam op voor uw kopie van het voor beeld van het PCI-DSS v 3.2.1-blauw druk.
-   - **Locatie van definitie**: Gebruik het weglatings teken en selecteer de beheer groep om uw kopie van het voor beeld op te slaan.
+   - **Blauw druk-naam**: Geef een naam op voor uw kopie van het voor beeld van het PCI-DSS v 3.2.1-blauw druk.
+   - **Locatie van definitie**: gebruik het weglatings teken en selecteer de beheer groep om uw kopie van het voor beeld op te slaan.
 
-1. Selecteer het tabblad _artefacten_ boven aan de pagina of **Next: Artefacten @ no__t-0 aan de onderkant van de pagina.
+1. Selecteer het tabblad _artefacten_ boven aan de pagina of **volgende: artefacten** aan de onderkant van de pagina.
 
 1. Bekijk de lijst met artefacten die deel uitmaken van het voor beeld van de blauw druk. Veel van de artefacten hebben para meters die later worden gedefinieerd. Selecteer **concept opslaan** wanneer u klaar bent met het bekijken van het voor beeld van de blauw druk.
 
@@ -66,15 +66,15 @@ Zodra de kopie van het voor beeld van de blauw druk is **gepubliceerd**, kan dez
 
 1. Geef de parameter waarden voor de toewijzing van de blauw druk op:
 
-   - Basics
+   - Basisbeginselen
 
      - **Abonnementen**: Selecteer een of meer abonnementen in de beheer groep waarop u uw kopie van het voor beeld van de blauw druk hebt opgeslagen. Als u meer dan één abonnement selecteert, wordt er een toewijzing gemaakt met behulp van de opgegeven para meters.
-     - **Toewijzings naam**: De naam wordt vooraf ingevuld op basis van de naam van de blauw druk.
+     - **Toewijzings naam**: de naam wordt vooraf ingevuld op basis van de naam van de blauw druk.
        Wijzig indien nodig of sluit af.
      - **Locatie**: Selecteer een regio voor de beheerde identiteit die u wilt maken in. Azure Blueprint gebruikt deze beheerde identiteit om alle artefacten in de toegewezen blauwdruk te implementeren. Zie [Beheerde identiteiten voor Azure-resources](../../../../active-directory/managed-identities-azure-resources/overview.md) voor meer informatie.
      - **Definitie van blauw druk-versie**: Kies een **gepubliceerde** versie van uw kopie van het voor beeld van de blauw druk.
 
-   - Toewijzing vergrendelen
+   - Toewijzing vergren delen
 
      Selecteer de instelling voor het vergren delen van blauw drukken voor uw omgeving. Zie voor meer informatie [Vergrendeling van blauwdrukresources](../../concepts/resource-locking.md).
 
@@ -82,7 +82,7 @@ Zodra de kopie van het voor beeld van de blauw druk is **gepubliceerd**, kan dez
 
      Zorg ervoor dat de standaard optie voor beheerde identiteit door het _systeem wordt toegewezen_ .
 
-   - Artefactparameters
+   - Artefact parameters
 
      De in deze sectie gedefinieerde para meters zijn van toepassing op het artefact waaronder het is gedefinieerd. Deze para meters zijn [dynamische para meters](../../concepts/parameters.md#dynamic-parameters) , omdat ze zijn gedefinieerd tijdens de toewijzing van de blauw druk. Zie [artefact parameters Table](#artifact-parameters-table)voor een volledige lijst of artefact parameters en de bijbehorende beschrijvingen.
 
@@ -95,12 +95,12 @@ Zodra de kopie van het voor beeld van de blauw druk is **gepubliceerd**, kan dez
 
 De volgende tabel geeft een lijst van de para meters van de blauw druk-artefact:
 
-|Naam van het artefact|Type artefact|Parameternaam|Description|
+|Artefact naam|Type artefact|Parameternaam|Beschrijving|
 |-|-|-|-|
 |\[Preview @ no__t-1 audit PCI v 3.2.1:2018 bepaalt en implementeert specifieke VM-extensies ter ondersteuning van de controle vereisten|Beleidstoewijzing|Lijst met resource typen | Diagnostische instelling voor geselecteerde bron typen controleren. Standaard waarde is alle resources zijn geselecteerd| 
 |Toegestane locaties|Beleidstoewijzing|Lijst met toegestane locaties|Lijst met locaties van data centers die zijn toegestaan voor het implementeren van een resource in. Deze lijst kan worden aangepast aan de gewenste Azure-locaties wereld wijd. Selecteer de locaties die u wilt toestaan.| 
 |Toegestane locaties voor resource groepen|Beleidstoewijzing |Toegestane locatie |Met dit beleid kunt u de locaties beperken waarop uw organisatie resource groepen kan maken in. Dit beleid wordt gebruikt om uw geografische nalevingsvereisten af te dwingen.| 
-|Controle op SQL-servers implementeren|Beleidstoewijzing|Bewaarperiode in dagen|Gegevens retentiegerelateerde in aantal dagen. De standaard waarde is 180, maar PCI vereist 365.| 
+|Controle op SQL-servers implementeren|Beleidstoewijzing|Bewaar dagen|Gegevens retentiegerelateerde in aantal dagen. De standaard waarde is 180, maar PCI vereist 365.| 
 |Controle op SQL-servers implementeren|Beleidstoewijzing|Naam van de resource groep voor het opslag account|Met controle worden database gebeurtenissen geschreven naar een audit logboek in uw Azure Storage-account (er wordt een opslag account gemaakt in elke regio waarin een SQL Server wordt gemaakt dat wordt gedeeld door alle servers in die regio).| 
 
 ## <a name="next-steps"></a>Volgende stappen

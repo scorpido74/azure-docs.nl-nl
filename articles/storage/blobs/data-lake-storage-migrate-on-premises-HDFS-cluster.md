@@ -8,12 +8,12 @@ ms.author: normesta
 ms.topic: conceptual
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: jamesbak
-ms.openlocfilehash: ff23b27b73918734e10a481cbe9b1f77519b8764
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 508c67f73bc0e11330b5772b1c1ba3f9bee5e231
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68847271"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72255683"
 ---
 # <a name="use-azure-data-box-to-migrate-data-from-an-on-premises-hdfs-store-to-azure-storage"></a>Gebruik Azure Data Box om gegevens van een on-premises HDFS-Store te migreren naar Azure Storage
 
@@ -57,13 +57,13 @@ Volg deze stappen om gegevens te kopiëren via de REST-Api's van blob/object Sto
 
     ![De pagina verbinding maken en kopiëren](media/data-lake-storage-migrate-on-premises-HDFS-cluster/data-box-connect-rest.png)
 
-2. Kopieer in het dialoog venster opslag account voor toegang en gegevens uploaden het **BLOB service-eind punt** en de sleutel van het **opslag account**. Laat de `https://` en de afsluitende slash weg van het eind punt van de BLOB-service.
+2. Kopieer in het dialoog venster opslag account voor toegang en gegevens uploaden het **BLOB service-eind punt** en de sleutel van het **opslag account**. Laat het `https://` en de afsluitende slash weg van het eind punt van de BLOB-service.
 
-    In dit geval is het eind punt: `https://mystorageaccount.blob.mydataboxno.microsoftdatabox.com/`. Het host-gedeelte van de URI die u gaat gebruiken, `mystorageaccount.blob.mydataboxno.microsoftdatabox.com`is:. Zie How to [Connect to rest over http](/azure/databox/data-box-deploy-copy-data-via-rest)(Engelstalig) voor een voor beeld. 
+    In dit geval is het eind punt: `https://mystorageaccount.blob.mydataboxno.microsoftdatabox.com/`. Het host-gedeelte van de URI die u wilt gebruiken, is: `mystorageaccount.blob.mydataboxno.microsoftdatabox.com`. Zie How to [Connect to rest over http](/azure/databox/data-box-deploy-copy-data-via-rest)(Engelstalig) voor een voor beeld. 
 
      ![Dialoog venster toegang tot opslag account en gegevens uploaden](media/data-lake-storage-migrate-on-premises-HDFS-cluster/data-box-connection-string-http.png)
 
-3. Voeg het eind punt en het IP-adres van het data Box `/etc/hosts` -of Data Box Heavy knooppunt toe aan elk knoop punt.
+3. Voeg het eind punt en het IP-adres van het Data Box-of Data Box Heavy knooppunt toe aan `/etc/hosts` op elk knoop punt.
 
     ```    
     10.128.5.42  mystorageaccount.blob.mydataboxno.microsoftdatabox.com
@@ -71,9 +71,9 @@ Volg deze stappen om gegevens te kopiëren via de REST-Api's van blob/object Sto
 
     Als u een ander mechanisme voor DNS gebruikt, moet u ervoor zorgen dat het Data Box-eind punt kan worden omgezet.
 
-4. Stel de shell- `azjars` variabele in op de locatie `hadoop-azure` van `azure-storage` de en JAR-bestanden. U vindt deze bestanden in de map Hadoop-installatie.
+4. Stel de shell-variabele `azjars` in op de locatie van de `hadoop-azure` en de `azure-storage` jar-bestanden. U vindt deze bestanden in de map Hadoop-installatie.
 
-    Als u wilt bepalen of deze bestanden bestaan, gebruikt u de `ls -l $<hadoop_install_dir>/share/hadoop/tools/lib/ | grep azure`volgende opdracht:. Vervang de `<hadoop_install_dir>` tijdelijke aanduiding door het pad naar de map waarin u Hadoop hebt geïnstalleerd. Zorg ervoor dat u volledig gekwalificeerde paden gebruikt.
+    Als u wilt bepalen of deze bestanden bestaan, gebruikt u de volgende opdracht: `ls -l $<hadoop_install_dir>/share/hadoop/tools/lib/ | grep azure`. Vervang de tijdelijke aanduiding voor @no__t 0 door het pad naar de map waarin u Hadoop hebt geïnstalleerd. Zorg ervoor dat u volledig gekwalificeerde paden gebruikt.
 
     Voorbeelden:
 
@@ -88,13 +88,13 @@ Volg deze stappen om gegevens te kopiëren via de REST-Api's van blob/object Sto
     -mkdir -p  wasb://<container_name>@<blob_service_endpoint>/<destination_directory>
     ```
 
-    * Vervang de `<blob_service_endpoint>` tijdelijke aanduiding door de naam van het eind punt van de BLOB-service.
+    * Vervang de tijdelijke aanduiding `<blob_service_endpoint>` door de naam van het eind punt van de BLOB-service.
 
-    * Vervang de `<account_key>` tijdelijke aanduiding door de toegangs sleutel van uw account.
+    * Vervang de tijdelijke aanduiding `<account_key>` door de toegangs sleutel van uw account.
 
-    * Vervang de `<container-name>` tijdelijke aanduiding door de naam van de container.
+    * Vervang de tijdelijke aanduiding `<container-name>` door de naam van de container.
 
-    * Vervang de `<destination_directory>` tijdelijke aanduiding door de naam van de map waarnaar u uw gegevens wilt kopiëren.
+    * Vervang de tijdelijke aanduiding `<destination_directory>` door de naam van de map waarnaar u uw gegevens wilt kopiëren.
 
 6. Voer een lijst opdracht uit om ervoor te zorgen dat uw container en map zijn gemaakt.
 
@@ -105,11 +105,11 @@ Volg deze stappen om gegevens te kopiëren via de REST-Api's van blob/object Sto
     -ls -R  wasb://<container_name>@<blob_service_endpoint>/
     ```
 
-   * Vervang de `<blob_service_endpoint>` tijdelijke aanduiding door de naam van het eind punt van de BLOB-service.
+   * Vervang de tijdelijke aanduiding `<blob_service_endpoint>` door de naam van het eind punt van de BLOB-service.
 
-   * Vervang de `<account_key>` tijdelijke aanduiding door de toegangs sleutel van uw account.
+   * Vervang de tijdelijke aanduiding `<account_key>` door de toegangs sleutel van uw account.
 
-   * Vervang de `<container-name>` tijdelijke aanduiding door de naam van de container.
+   * Vervang de tijdelijke aanduiding `<container-name>` door de naam van de container.
 
 7. Kopieer gegevens van de Hadoop HDFS naar Data Box Blob-opslag naar de container die u eerder hebt gemaakt. Als de map waarnaar u kopieert, niet wordt gevonden, wordt deze automatisch gemaakt met de opdracht.
 
@@ -123,21 +123,21 @@ Volg deze stappen om gegevens te kopiëren via de REST-Api's van blob/object Sto
            wasb://<container_name>@<blob_service_endpoint>/<destination_directory>
     ```
 
-    * Vervang de `<blob_service_endpoint>` tijdelijke aanduiding door de naam van het eind punt van de BLOB-service.
+    * Vervang de tijdelijke aanduiding `<blob_service_endpoint>` door de naam van het eind punt van de BLOB-service.
 
-    * Vervang de `<account_key>` tijdelijke aanduiding door de toegangs sleutel van uw account.
+    * Vervang de tijdelijke aanduiding `<account_key>` door de toegangs sleutel van uw account.
 
-    * Vervang de `<container-name>` tijdelijke aanduiding door de naam van de container.
+    * Vervang de tijdelijke aanduiding `<container-name>` door de naam van de container.
 
-    * Vervang de `<exlusion_filelist_file>` tijdelijke aanduiding door de naam van het bestand dat de lijst met uitsluitingen van bestanden bevat.
+    * Vervang de tijdelijke aanduiding `<exlusion_filelist_file>` door de naam van het bestand dat de lijst met uitsluitingen van bestanden bevat.
 
-    * Vervang de `<source_directory>` tijdelijke aanduiding door de naam van de map die de gegevens bevat die u wilt kopiëren.
+    * Vervang de tijdelijke aanduiding `<source_directory>` door de naam van de map die de gegevens bevat die u wilt kopiëren.
 
-    * Vervang de `<destination_directory>` tijdelijke aanduiding door de naam van de map waarnaar u uw gegevens wilt kopiëren.
+    * Vervang de tijdelijke aanduiding `<destination_directory>` door de naam van de map waarnaar u uw gegevens wilt kopiëren.
 
-    De `-libjars` optie wordt gebruikt om de `hadoop-azure*.jar` en de afhankelijke `azure-storage*.jar` bestanden beschikbaar te maken `distcp`voor. Dit kan al voor sommige clusters optreden.
+    De optie `-libjars` wordt gebruikt om de `hadoop-azure*.jar` en de afhankelijke `azure-storage*.jar`-bestanden beschikbaar te maken voor `distcp`. Dit kan al voor sommige clusters optreden.
 
-    In het volgende voor beeld ziet `distcp` u hoe de opdracht wordt gebruikt om gegevens te kopiëren.
+    In het volgende voor beeld ziet u hoe de `distcp`-opdracht wordt gebruikt om gegevens te kopiëren.
 
     ```
      hadoop distcp \
@@ -151,9 +151,9 @@ Volg deze stappen om gegevens te kopiëren via de REST-Api's van blob/object Sto
   
     De Kopieer snelheid verbeteren:
 
-    * Wijzig het aantal mappers. (In bovenstaand voor beeld `m` worden = 4 mappers gebruikt.)
+    * Wijzig het aantal mappers. (In het bovenstaande voor beeld wordt gebruikgemaakt van `m` = 4 mappers.)
 
-    * Probeer multiple `distcp` parallel uit te voeren.
+    * Probeer meerdere `distcp` parallel uit te voeren.
 
     * Houd er rekening mee dat grote bestanden beter worden uitgevoerd dan kleine bestanden.
 
@@ -167,7 +167,7 @@ Volg deze stappen om het Data Box-apparaat voor te bereiden en te verzenden naar
 
 3. Sluit het apparaat af en verwijder de kabels.
 
-4. Een ophaling plannen met UPS.
+4. Maak een afspraak met UPS om het pakket op te laten halen.
 
     * Zie [uw data Box verzenden](https://docs.microsoft.com/azure/databox/data-box-deploy-picked-up)voor data Box apparaten.
 
@@ -194,23 +194,23 @@ U kunt gegevens kopiëren met behulp van Azure Data Factory of door gebruik te m
     hadoop distcp -Dfs.azure.account.key.<source_account>.dfs.windows.net=<source_account_key> abfs://<source_container> @<source_account>.dfs.windows.net/<source_path> abfs://<dest_container>@<dest_account>.dfs.windows.net/<dest_path>
     ```
 
-    * Vervang de `<source_account>` en `<dest_account>` tijdelijke aanduidingen door de namen van de bron-en doel opslag accounts.
+    * Vervang de tijdelijke aanduidingen `<source_account>` en `<dest_account>` door de namen van de bron-en doel opslag accounts.
 
-    * Vervang de `<source_container>` en `<dest_container>` tijdelijke aanduidingen door de namen van de bron-en doel containers.
+    * Vervang de tijdelijke aanduidingen `<source_container>` en `<dest_container>` door de namen van de bron-en doel containers.
 
-    * Vervang de `<source_path>` en `<dest_path>` tijdelijke aanduidingen door de paden van de bron-en doel directory.
+    * Vervang de tijdelijke aanduidingen `<source_path>` en `<dest_path>` door de paden van de bron-en doel directory.
 
-    * Vervang de `<source_account_key>` tijdelijke aanduiding door de toegangs sleutel van het opslag account dat de gegevens bevat.
+    * Vervang de tijdelijke aanduiding `<source_account_key>` door de toegangs sleutel van het opslag account dat de gegevens bevat.
 
     Met deze opdracht kopieert u zowel gegevens als meta gegevens van uw opslag account naar uw Data Lake Storage Gen2-opslag account.
 
 ### <a name="create-a-service-principal-for-your-azure-data-lake-storage-gen2-account"></a>Een service-principal maken voor uw Azure Data Lake Storage Gen2-account
 
-Als u een Service-Principal wilt [maken, raadpleegt u How to: Gebruik de portal voor het maken van een Azure AD-toepassing en service-principal die toegang hebben tot resources](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
+Als u een Service-Principal wilt maken, raadpleegt u [How to: gebruik de portal om een Azure AD-toepassing en Service-Principal te maken die toegang hebben tot resources](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
 
 * Wanneer u de stappen uitvoert in de sectie [De toepassing toewijzen aan een rol](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role) van het artikel, moet u ervoor zorgen dat de rol **Gegevensbijdrager voor opslagblob** is toegewezen aan de service-principal.
 
-* Bij het uitvoeren van de stappen in de sectie [waarden ophalen voor aanmelden in](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) het artikel, toepassings-id en client geheim waarden in een tekst bestand. U hebt deze binnenkort nodig.
+* Bij het uitvoeren van de stappen in de sectie [waarden ophalen voor aanmelden in](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) het artikel, toepassings-id en client geheime waarden opslaan in een tekst bestand. U hebt deze binnenkort nodig.
 
 ### <a name="generate-a-list-of-copied-files-with-their-permissions"></a>Een lijst met gekopieerde bestanden met hun machtigingen genereren
 
@@ -228,7 +228,7 @@ Met deze opdracht wordt een lijst met gekopieerde bestanden met hun machtigingen
 
 ### <a name="generate-a-list-of-identities-and-map-them-to-azure-active-directory-add-identities"></a>Een lijst met identiteiten genereren en deze toewijzen aan Azure Active Directory-identiteiten (toevoegen)
 
-1. Down load `copy-acls.py` het script. Zie de [Help-scripts downloaden en het Edge-knoop punt instellen om deze uit te voeren](#download-helper-scripts) in dit artikel.
+1. Down load het script `copy-acls.py`. Zie de [Help-scripts downloaden en het Edge-knoop punt instellen om deze uit te voeren](#download-helper-scripts) in dit artikel.
 
 2. Voer deze opdracht uit om een lijst met unieke identiteiten te genereren.
 
@@ -237,11 +237,11 @@ Met deze opdracht wordt een lijst met gekopieerde bestanden met hun machtigingen
    ./copy-acls.py -s ./filelist.json -i ./id_map.json -g
    ```
 
-   Met dit script wordt een bestand `id_map.json` gegenereerd met de naam die de identiteiten bevat die u nodig hebt om toe te wijzen aan identiteiten op basis van een toepassing.
+   Met dit script wordt een bestand met de naam `id_map.json` gegenereerd dat de identiteiten bevat die u nodig hebt om toe te wijzen aan identiteiten op basis van een toepassing.
 
-3. Open het `id_map.json` bestand in een tekst editor.
+3. Open het `id_map.json`-bestand in een tekst editor.
 
-4. Voor elk JSON-object dat in het bestand wordt weer gegeven `target` , werkt u het kenmerk bij van een Aad User Principal Name (UPN) of ObjectId (OID) met de juiste toegewezen identiteit. Wanneer u klaar bent, slaat u het bestand op. U hebt dit bestand nodig in de volgende stap.
+4. Voor elk JSON-object dat in het bestand wordt weer gegeven, moet u het kenmerk `target` van een AAD User Principal Name (UPN) of ObjectId (OID) met de juiste toegewezen identiteit bijwerken. Wanneer u klaar bent, slaat u het bestand op. U hebt dit bestand nodig in de volgende stap.
 
 ### <a name="apply-permissions-to-copied-files-and-apply-identity-mappings"></a>Machtigingen Toep assen op gekopieerde bestanden en identiteits toewijzingen Toep assen
 
@@ -253,11 +253,11 @@ Voer deze opdracht uit om machtigingen toe te passen op de gegevens die u hebt g
 
 * Vervang de tijdelijke plaatsaanduiding `<storage-account-name>` door de naam van uw opslagaccount.
 
-* Vervang de `<container-name>` tijdelijke aanduiding door de naam van de container.
+* Vervang de tijdelijke aanduiding `<container-name>` door de naam van de container.
 
-* Vervang de `<application-id>` en `<client-secret>` tijdelijke aanduidingen door de toepassings-id en het client geheim dat u hebt verzameld tijdens het maken van de Service-Principal.
+* Vervang de tijdelijke aanduidingen `<application-id>` en `<client-secret>` door de toepassings-ID en het client geheim dat u hebt verzameld tijdens het maken van de Service-Principal.
 
-## <a name="appendix-split-data-across-multiple-data-box-devices"></a>Nummer Gegevens splitsen op meerdere Data Box apparaten
+## <a name="appendix-split-data-across-multiple-data-box-devices"></a>Bijlage: gegevens splitsen op meerdere Data Box apparaten
 
 Voordat u uw gegevens naar een Data Box apparaat verplaatst, moet u sommige Help-scripts downloaden, ervoor zorgen dat uw gegevens zijn geordend op een Data Box apparaat en overbodige bestanden uitsluiten.
 
@@ -303,7 +303,7 @@ Als de grootte van uw gegevens groter is dan de grootte van één Data Box appar
 
 Als uw gegevens niet groter zijn dan de grootte van een Data Box apparaat, kunt u door gaan naar de volgende sectie.
 
-1. Voer met verhoogde machtigingen het `generate-file-list` script uit dat u hebt gedownload door de instructies in de vorige sectie te volgen.
+1. Voer met verhoogde machtigingen het `generate-file-list`-script uit dat u hebt gedownload door de instructies in de vorige sectie te volgen.
 
    Hier volgt een beschrijving van de opdracht parameters:
 

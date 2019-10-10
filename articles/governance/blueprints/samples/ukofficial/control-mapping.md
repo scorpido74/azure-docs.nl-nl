@@ -1,18 +1,18 @@
 ---
 title: Voor beeld-UK-officiële en UK NHS-blauw drukken-controle toewijzing
-description: De toewijzing van de voor beelden van het Verenigd Konink rijk-en UK-NHS blauw drukken.
+description: De toewijzing van de voor beelden van het Verenigd Konink rijk-en UK-NHS blauw drukken. Elk besturings element wordt toegewezen aan een of meer Azure-beleids regels die helpen bij de evaluatie.
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 06/26/2019
 ms.topic: conceptual
 ms.service: blueprints
-ms.openlocfilehash: 823b890f1898de5006b965ffa19520016aceb121
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 9001e752c9b0f79d7c688e0b13fd7133004ff4ad
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71980882"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72248788"
 ---
 # <a name="control-mapping-of-the-uk-official-and-uk-nhs-blueprint-samples"></a>Controle van de toewijzing van de voor beelden van het Verenigd Konink rijk en UK NHS blauw drukken
 
@@ -90,27 +90,27 @@ Deze blauw druk wijst ook Azure Policy definities toe aan controle-accounts waar
 
 Deze blauw druk wijst ook een Azure Policy definitie toe waarmee de machtigingen van het Linux-VM-wacht woord worden gecontroleerd op waarschuwing als ze onjuist zijn ingesteld. Met dit ontwerp kunt u corrigerende maat regelen treffen om te voor komen dat verificators worden aangetast.
 
-- \[Preview @ no__t-1: Controleer of de/etc/passwd-bestands machtigingen van de Linux-VM zijn ingesteld op 0644
+- \[Preview @ no__t-1: de machtigingen van de Linux VM/etc/passwd-bestand controleren zijn ingesteld op 0644
 
 Deze blauw druk helpt u sterke wacht woorden af te dwingen door Azure Policy definities toe te wijzen waarmee Windows-Vm's worden gecontroleerd die geen minimale sterkte en andere wachtwoord vereisten afdwingen. Het bewustzijn van Vm's in strijd met het beleid voor wachtwoord sterkte helpt u bij het uitvoeren van corrigerende maat regelen om ervoor te zorgen dat wacht woorden voor alle VM-gebruikers accounts voldoen aan het beleid.
 
-- \[Preview @ no__t-1: Vereisten implementeren voor het controleren van Windows-Vm's waarvoor de instelling voor wachtwoord complexiteit niet is ingeschakeld
-- \[Preview @ no__t-1: Vereisten implementeren voor het controleren van Windows-Vm's die geen maximale wachtwoord duur van 70 dagen hebben
-- \[Preview @ no__t-1: Vereisten implementeren voor het controleren van Windows-Vm's die geen minimale wachtwoord duur van 1 dag hebben
-- \[Preview @ no__t-1: Vereisten implementeren om Windows-Vm's te controleren die de minimale wachtwoord lengte niet beperken tot 14 tekens
-- \[Preview @ no__t-1: Vereisten implementeren voor het controleren van virtuele Windows-machines die het opnieuw gebruiken van de voor gaande 24 wacht woorden toestaan
+- \[Preview @ no__t-1: vereisten implementeren voor het controleren van Windows-Vm's waarvoor de instelling voor wachtwoord complexiteit niet is ingeschakeld
+- \[Preview @ no__t-1: vereisten implementeren voor het controleren van Windows-Vm's die geen maximale wachtwoord duur van 70 dagen hebben
+- \[Preview @ no__t-1: vereisten implementeren voor het controleren van virtuele Windows-machines zonder minimale wachtwoord duur van 1 dag
+- \[Preview @ no__t-1: vereisten implementeren om Windows-Vm's te controleren die de minimale wachtwoord lengte niet beperken tot 14 tekens
+- \[Preview @ no__t-1: vereisten implementeren voor het controleren van Windows-Vm's die het opnieuw gebruiken van de voor gaande 24 wacht woorden toestaan
 - \[Preview @ no__t-1: Windows-Vm's controleren waarvoor de instelling voor wachtwoord complexiteit niet is ingeschakeld
-- \[Preview @ no__t-1: Windows-Vm's met een maximale wachtwoord duur van 70 dagen controleren
-- \[Preview @ no__t-1: Windows-Vm's met een minimale wachtwoord leeftijd van 1 dag controleren
+- \[Preview @ no__t-1: Windows-Vm's controleren die geen maximale wachtwoord duur van 70 dagen hebben
+- \[Preview @ no__t-1: Windows-Vm's met een minimale wachtwoord duur van 1 dag controleren
 - \[Preview @ no__t-1: Windows-Vm's controleren die de minimale wachtwoord lengte niet beperken tot 14 tekens
-- \[Preview @ no__t-1: Virtuele Windows-machines controleren die het opnieuw gebruiken van de voor gaande 24 wacht woorden toestaan
+- \[Preview @ no__t-1: Windows-Vm's controleren die het opnieuw gebruiken van de voor gaande 24 wacht woorden toestaan
 
 Met deze blauw druk kunt u ook de toegang tot Azure-resources beheren door Azure Policy definities toe te wijzen. Met deze beleids regels wordt het gebruik van resource typen en configuraties gecontroleerd, waardoor de toegang tot bronnen kan worden uitgebreid. Informatie over resources die in strijd zijn met deze beleids regels, kan u helpen corrigerende maat regelen te nemen om ervoor te zorgen dat toegang tot Azure-resources wordt beperkt tot gemachtigde gebruikers.
 
-- \[Preview @ no__t-1: Vereisten implementeren voor het controleren van virtuele Linux-machines met accounts zonder wacht woorden
-- \[Preview @ no__t-1: Vereisten implementeren voor het controleren van virtuele Linux-machines die externe verbindingen toestaan van accounts zonder wacht woorden
-- \[Preview @ no__t-1: Virtuele Linux-machines met accounts zonder wacht woorden controleren
-- \[Preview @ no__t-1: Virtuele Linux-machines controleren die externe verbindingen van accounts zonder wacht woorden toestaan
+- \[Preview @ no__t-1: vereisten implementeren voor het controleren van virtuele Linux-machines met accounts zonder wacht woorden
+- \[Preview @ no__t-1: vereisten implementeren voor het controleren van virtuele Linux-machines die externe verbindingen toestaan van accounts zonder wacht woorden
+- \[Preview @ no__t-1: virtuele Linux-machines met accounts zonder wacht woorden controleren
+- \[Preview @ no__t-1: virtuele Linux-machines controleren die externe verbindingen toestaan van accounts zonder wacht woorden
 - Opslag accounts moeten worden gemigreerd naar nieuwe Azure Resource Manager-resources
 - Virtuele machines moeten worden gemigreerd naar nieuwe Azure Resource Manager-resources
 - Virtuele machines controleren die geen beheerde schijven gebruiken
@@ -147,7 +147,7 @@ Deze blauw druk wijst ook Azure Policy definities toe aan controle-accounts waar
 
 Deze blauw druk wijst ook een Azure Policy definitie toe waarmee de machtigingen van het Linux-VM-wacht woord worden gecontroleerd op waarschuwing als ze onjuist zijn ingesteld. Met dit ontwerp kunt u corrigerende maat regelen treffen om te voor komen dat verificators worden aangetast.
 
-- \[Preview @ no__t-1: Controleer of de/etc/passwd-bestands machtigingen van de Linux-VM zijn ingesteld op 0644
+- \[Preview @ no__t-1: de machtigingen van de Linux VM/etc/passwd-bestand controleren zijn ingesteld op 0644
 
 ## <a name="13-audit-information-for-users"></a>13 controle-informatie voor gebruikers
 
@@ -156,8 +156,8 @@ Deze blauw druk helpt u om ervoor te zorgen dat systeem gebeurtenissen worden va
 - Controle moet worden ingeschakeld voor geavanceerde instellingen voor gegevens beveiliging op SQL Server
 - Diagnostische instelling voor controleren
 - Controle-instellingen op SQL server-niveau controleren
-- \[Preview @ no__t-1: Log Analytics-agent voor Linux-Vm's implementeren
-- \[Preview @ no__t-1: Log Analytics-agent voor Windows-Vm's implementeren
+- \[Preview @ no__t-1: Log Analytics agent voor Linux-Vm's implementeren
+- \[Preview @ no__t-1: Log Analytics-agent implementeren voor Windows-Vm's
 - Network Watcher implementeren bij het maken van virtuele netwerken
 
 ## <a name="next-steps"></a>Volgende stappen

@@ -8,12 +8,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 09/17/2018
 ms.author: mlearned
-ms.openlocfilehash: ab744efd205d826cb7ae2c3eda7bba28f4a9bee0
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: d9d432c073872e7bb7f3562979e78989faea65eb
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71097810"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72241099"
 ---
 # <a name="authenticate-with-azure-container-registry-from-azure-kubernetes-service"></a>Verifiëren met Azure Container Registry van de Azure Kubernetes-service
 
@@ -39,7 +39,7 @@ az aks create -n myAKSCluster -g myResourceGroup --attach-acr <acr-name-or-resou
 ```
 **Een ACR-Resource-ID heeft de volgende indeling:** 
 
-/Subscriptions/<-abonnement:d>/resourceGroups/<Resource-Group-name>/providers/Microsoft.ContainerRegistry/registries/{name} 
+/Subscriptions/\<subscription-id @ no__t-1/resourceGroups/\<resource-group-name @ no__t-3/providers/micro soft. ContainerRegistry/registers/\<name @ no__t-5 
   
 Het kan enkele minuten duren voordat deze stap is voltooid.
 
@@ -61,7 +61,7 @@ az aks update -n myAKSCluster -g myResourceGroup --detach-acr <acr-resource-id>
 
 ## <a name="log-in-to-your-acr"></a>Meld u aan bij uw ACR
 
-Gebruik de volgende opdracht om u aan te melden bij uw ACR.  Vervang de <acrname> para meter door de naam van uw ACR.  De standaard instelling is bijvoorbeeld **aks < uw-resource groep > ACR**.
+Gebruik de volgende opdracht om u aan te melden bij uw ACR.  Vervang de para meter <acrname> door de naam van uw ACR.  De standaard instelling is bijvoorbeeld **aks < uw-resource groep > ACR**.
 
 ```azurecli
 az acr login -n <acrName>

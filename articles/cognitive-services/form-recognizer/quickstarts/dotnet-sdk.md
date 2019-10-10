@@ -1,5 +1,5 @@
 ---
-title: 'Quickstart: Client bibliotheek voor formulier herkenning voor .NET | Microsoft Docs'
+title: 'Snelstartgids: client bibliotheek voor formulier herkenning voor .NET | Microsoft Docs'
 description: Aan de slag met de Form Recognizer-client bibliotheek voor .NET.
 services: cognitive-services
 author: PatrickFarley
@@ -9,14 +9,14 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 07/12/2019
 ms.author: pafarley
-ms.openlocfilehash: ce1cdadcdc69fb5539394aa9bf402aa9463311e9
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: fc0964508f3031efd91db827524042bf0577ab5e
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71057665"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72242515"
 ---
-# <a name="quickstart-form-recognizer-client-library-for-net"></a>Quickstart: Client bibliotheek voor formulier herkenning voor .NET
+# <a name="quickstart-form-recognizer-client-library-for-net"></a>Snelstartgids: client bibliotheek voor formulier herkenning voor .NET
 
 Aan de slag met de Form Recognizer-client bibliotheek voor .NET. Formulier herkenning is een cognitieve service die gebruikmaakt van machine learning technologie om sleutel-waardeparen en tabel gegevens uit formulier documenten te identificeren en uit te pakken. Vervolgens voert het gestructureerde gegevens uit die ook de relaties uit het oorspronkelijke bestand omvatten. Voer de volgende stappen uit om het SDK-pakket te installeren en de voorbeeld code voor basis taken uit te proberen.
 
@@ -28,13 +28,14 @@ Gebruik de Form Recognizer-client bibliotheek voor .NET voor het volgende:
 * [Een lijst met aangepaste modellen ophalen](#get-a-list-of-custom-models)
 * [Een aangepast model verwijderen](#delete-a-custom-model)
 
-[](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/formrecognizer?view=azure-dotnet-preview) | [Bron](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.FormRecognizer)codepakket | van de referentie documentatie bibliotheek[(NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.FormRecognizer/)
+[Referentie documentatie](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/formrecognizer?view=azure-dotnet-preview) | [bron code](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.FormRecognizer)van de bibliotheek  | -[pakket (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.FormRecognizer/)
 
 ## <a name="prerequisites"></a>Vereisten
 
 * Azure-abonnement: [Maak een gratis versie](https://azure.microsoft.com/free/).
+* Toegang tot de preview-versie van beperkte toegang van de formulier herkenning. Als u toegang wilt krijgen tot de preview, vult u het formulier voor de [toegangs aanvraag voor de formulier herkenning](https://aka.ms/FormRecognizerRequestAccess) in en verzendt u dit.
+* Een Azure Storage-blob die een set trainings gegevens bevat. Zie [een trainings gegevensset voor een aangepast model bouwen](../build-training-data-set.md) voor tips en opties voor het samen stellen van uw trainings gegevens. U kunt een voor [beeld](https://go.microsoft.com/fwlink/?linkid=2090451) van een gegevensset voor deze Quick Start gebruiken.
 * De huidige versie van [.net core](https://dotnet.microsoft.com/download/dotnet-core).
-* Een Azure Storage-blob die een set trainings gegevens bevat. Zie [een trainings gegevensset voor een aangepast model bouwen](../build-training-data-set.md) voor tips en opties voor het samen stellen van uw trainings gegevens. 
 
 ## <a name="setting-up"></a>Instellen
 
@@ -42,11 +43,11 @@ Gebruik de Form Recognizer-client bibliotheek voor .NET voor het volgende:
 
 [!INCLUDE [create resource](../includes/create-resource.md)]
 
-Wanneer u een sleutel van uw proef abonnement of resource hebt ontvangen, [maakt u een omgevings variabele](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) voor de `FORM_RECOGNIZER_KEY`sleutel met de naam.
+Nadat u een sleutel van uw proef abonnement of resource hebt ontvangen, [maakt u een omgevings variabele](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) voor de sleutel met de naam `FORM_RECOGNIZER_KEY`.
 
 ### <a name="create-a-new-c-application"></a>Een nieuwe C# toepassing maken
 
-In een console venster (zoals cmd, Power shell of bash) gebruikt u de `dotnet new` opdracht om een nieuwe console-app met de naam `formrecognizer-quickstart`te maken. Met deze opdracht maakt u een eenvoudig ' C# Hallo wereld '-project met één bron bestand: _Program.cs_. 
+Gebruik in een console venster (zoals cmd, Power shell of bash) de opdracht `dotnet new` om een nieuwe console-app te maken met de naam `formrecognizer-quickstart`. Met deze opdracht maakt u een eenvoudig ' C# Hallo wereld '-project met één bron bestand: _Program.cs_. 
 
 ```console
 dotnet new console -n formrecognizer-quickstart
@@ -90,7 +91,7 @@ Als u de Visual Studio IDE gebruikt, is de client bibliotheek beschikbaar als ee
 
 De volgende klassen behandelen de hoofd functionaliteit van de formulier Recognizer-SDK.
 
-|Name|Description|
+|Naam|Beschrijving|
 |---|---|
 |[FormRecognizerClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.formrecognizer.formrecognizerclient?view=azure-dotnet-preview)|Deze klasse is nodig voor alle functionaliteit voor formulier herkenning. U maakt de app met uw abonnements gegevens en gebruikt deze om instanties van andere klassen te maken.|
 |[TrainRequest](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.formrecognizer.models.trainrequest?view=azure-dotnet-preview)| U gebruikt deze klasse om een aangepast model voor formulier herkenning te trainen met behulp van uw eigen invoer gegevens voor de training. |
@@ -120,13 +121,13 @@ Deze code fragmenten laten zien hoe u de volgende taken kunt uitvoeren met de fo
 Voordat u een methode definieert, voegt u de volgende variabele definities toe boven aan de **programma** klasse. U moet een aantal van de variabelen zelf invullen. 
 
 * U kunt de waarde van het eind punt van uw service vinden in de sectie **overzicht** van de Azure Portal. 
-* Als u de SAS-URL voor uw trainings gegevens wilt ophalen, opent u de Microsoft Azure Storage Explorer, klikt u met de rechter muisknop op uw container en selecteert u **gedeelde toegangs handtekening ophalen**. Zorg ervoor dat de machtigingen **lezen** en **lijst** zijn ingeschakeld en klik op **maken**. Kopieer vervolgens de waarde in de sectie **URL** . Het moet de volgende indeling hebben `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`:.
+* Als u de SAS-URL voor uw trainings gegevens wilt ophalen, opent u de Microsoft Azure Storage Explorer, klikt u met de rechter muisknop op uw container en selecteert u **gedeelde toegangs handtekening ophalen**. Zorg ervoor dat de machtigingen **lezen** en **lijst** zijn ingeschakeld en klik op **maken**. Kopieer vervolgens de waarde in de sectie **URL** . Het moet de volgende indeling hebben: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`.
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/Program.cs?name=snippet_variables)]
 
 ## <a name="authenticate-the-client"></a>De client verifiëren
 
-Definieer onder `Main` de-methode de taak waarnaar wordt verwezen in. `Main` Hier verifieert u het client object met behulp van de hierboven gedefinieerde abonnements variabelen. U definieert de andere methoden later op.
+Onder de methode `Main` definieert u de taak waarnaar wordt verwezen in `Main`. Hier verifieert u het client object met behulp van de hierboven gedefinieerde abonnements variabelen. U definieert de andere methoden later op.
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/Program.cs?name=snippet_maintask)]
 
@@ -173,7 +174,7 @@ Als u het aangepaste model uit uw account wilt verwijderen, gebruikt u de volgen
 
 ## <a name="run-the-application"></a>De toepassing uitvoeren
 
-Voer de toepassing uit door de `dotnet run` opdracht vanuit de toepassingsmap aan te roepen.
+Voer de toepassing uit door de `dotnet run`-opdracht van de toepassingsmap aan te roepen.
 
 ```console
 dotnet run
@@ -184,7 +185,7 @@ dotnet run
 Als u een Cognitive Services-abonnement wilt opschonen en verwijderen, kunt u de resource of resource groep verwijderen. Als u de resource groep verwijdert, worden ook alle bijbehorende resources verwijderd.
 
 * [Portal](../../cognitive-services-apis-create-account.md#clean-up-resources)
-* [Azure-CLI](../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
+* [Azure CLI](../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
 Als u een aangepast model hebt getraind dat u uit uw account wilt verwijderen, moet u ook de methode in [een aangepast model verwijderen](#delete-a-custom-model)uitvoeren.
 
@@ -196,4 +197,4 @@ In deze Quick Start hebt u de formulier Recognizer .NET-client bibliotheek gebru
 >[Een set trainings gegevens bouwen](../build-training-data-set.md)
 
 * [Wat is formulier herkenner?](../overview.md)
-* De broncode voor dit voorbeeld is te vinden op [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/dotnet/FormRecognizer).
+* De broncode voor dit voorbeeld is te vinden [op GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/dotnet/FormRecognizer).

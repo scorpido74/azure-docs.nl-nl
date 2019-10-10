@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 09/27/2019
 ms.author: zarhoads
-ms.openlocfilehash: c9b6f6cf52d71451d2e1de27d0637eeb749b1e0b
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 55ded9a733baaac7fbc78621bd625d57d1d37ad1
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349058"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72255470"
 ---
 # <a name="use-a-standard-sku-load-balancer-in-azure-kubernetes-service-aks"></a>Een standaard SKU-load balancer gebruiken in azure Kubernetes service (AKS)
 
@@ -145,7 +145,7 @@ Controleer of de eigenschap *loadBalancerSku* wordt weer gegeven als *standaard*
 
 Als u de load balancer op uw cluster wilt gebruiken, maakt u een service manifest met het Service type *LoadBalancer*. Als u wilt weer geven load balancer werkt, maakt u een nieuw manifest met een voorbeeld toepassing die u in uw cluster kunt uitvoeren. Deze voorbeeld toepassing wordt weer gegeven via de load balancer en kan worden weer gegeven via een browser.
 
-Maak een manifest met `sample.yaml` de naam zoals wordt weer gegeven in het volgende voor beeld:
+Maak een manifest met de naam `sample.yaml`, zoals in het volgende voor beeld wordt weer gegeven:
 
 ```yaml
 apiVersion: apps/v1
@@ -221,7 +221,7 @@ spec:
           value: "azure-vote-back"
 ```
 
-In het bovenstaande manifest worden twee implementaties geconfigureerd: *Azure-stem voor* en *Azure-stem*. Als u de implementatie van *Azure-stemmen-front* wilt configureren om te worden weer gegeven met behulp van de Load Balancer, maakt u een manifest met de naam `standard-lb.yaml` zoals weer gegeven in het volgende voor beeld:
+In het bovenstaande manifest worden twee implementaties geconfigureerd: *Azure-stem voor* en *Azure-stem*. Als u de implementatie van *Azure-stemmen-front* wilt configureren om te worden weer gegeven met de Load Balancer, maakt u een manifest met de naam `standard-lb.yaml`, zoals in het volgende voor beeld wordt weer gegeven:
 
 ```yaml
 apiVersion: v1
@@ -245,7 +245,7 @@ kubectl apply -f sample.yaml
 kubectl apply -f standard-lb.yaml
 ```
 
-De *standaard* -SKU Load Balancer is nu geconfigureerd om de voorbeeld toepassing beschikbaar te maken. Bekijk de service Details van *Azure-stem vooraan* met behulp van [kubectl Get][kubectl-get] om het open bare IP-adres van de Load Balancer te zien. Het open bare IP-adres van de load balancer wordt weer gegeven in de kolom *extern-IP* . Het kan een paar minuten duren voordat het IP-adres is gewijzigd van  *\<in\> behandeling* naar een werkelijk extern IP-adres, zoals wordt weer gegeven in het volgende voor beeld:
+De *standaard* -SKU Load Balancer is nu geconfigureerd om de voorbeeld toepassing beschikbaar te maken. Bekijk de service Details van *Azure-stem vooraan* met behulp van [kubectl Get][kubectl-get] om het open bare IP-adres van de Load Balancer te zien. Het open bare IP-adres van de load balancer wordt weer gegeven in de kolom *extern-IP* . Het kan een paar minuten duren voordat het IP-adres is gewijzigd van *\<pending @ no__t-2* naar een werkelijk extern IP-adres, zoals wordt weer gegeven in het volgende voor beeld:
 
 ```
 $ kubectl get service azure-vote-front
@@ -254,12 +254,12 @@ NAME                TYPE           CLUSTER-IP     EXTERNAL-IP     PORT(S)       
 azure-vote-front    LoadBalancer   10.0.227.198   52.179.23.131   80:31201/TCP   16s
 ```
 
-Ga in een browser naar het open bare IP-adres en controleer of u de voorbeeld toepassing ziet. In het bovenstaande voor beeld is `52.179.23.131`het open bare IP-adres.
+Ga in een browser naar het open bare IP-adres en controleer of u de voorbeeld toepassing ziet. In het bovenstaande voor beeld is het open bare IP-adres `52.179.23.131`.
 
-![Afbeelding van browsen naar Azure Vote](media/container-service-kubernetes-walkthrough/azure-vote.png)
+![Afbeelding van browsen naar Azure Vote](media/container-service-kubernetes-walkthrough/azure-voting-application.png)
 
 > [!NOTE]
-> U kunt ook configureren dat de load balancer intern is en geen openbaar IP-adres weergeeft. Als u de Load Balancer als intern wilt configureren `service.beta.kubernetes.io/azure-load-balancer-internal: "true"` , voegt u als aantekening toe aan de *Load Balancer* -service. [Hier][internal-lb-yaml]ziet u een voor beeld van een yaml-manifest, evenals meer informatie over een intern Load Balancer.
+> U kunt ook configureren dat de load balancer intern is en geen openbaar IP-adres weergeeft. Als u de load balancer als intern wilt configureren, voegt u `service.beta.kubernetes.io/azure-load-balancer-internal: "true"` als aantekening toe aan de *Load Balancer* -service. [Hier][internal-lb-yaml]ziet u een voor beeld van een yaml-manifest, evenals meer informatie over een intern Load Balancer.
 
 ## <a name="optional---scale-the-number-of-managed-public-ips"></a>Optioneel: het aantal beheerde open bare Ip's schalen
 
@@ -276,7 +276,7 @@ az aks update \
 
 In het bovenstaande voor beeld wordt het aantal beheerde uitgaande open bare Ip's ingesteld op *2* voor het *myAKSCluster* -cluster in *myResourceGroup*. 
 
-U kunt ook de para meter met *taak verdeling-beheerde IP-aantal* gebruiken om het eerste aantal beheerde uitgaande open bare IP-adressen in te stellen bij het maken van het `--load-balancer-managed-outbound-ip-count` cluster door de para meter toe te voegen en op de gewenste waarde in te stellen. Het standaard aantal beheerde uitgaande open bare Ip's is 1.
+U kunt ook de para meter voor door het *netwerk met taak verdeling beheerde IP-aantal* gebruiken om het eerste aantal beheerde uitgaande open bare ip's in te stellen bij het maken van het cluster door de para meter `--load-balancer-managed-outbound-ip-count` toe te voegen en deze op de gewenste waarde in te stellen. Het standaard aantal beheerde uitgaande open bare Ip's is 1.
 
 ## <a name="optional---provide-your-own-public-ips-or-prefixes-for-egress"></a>Optioneel: Geef uw eigen open bare Ip's of voor voegsels op voor uitgang
 

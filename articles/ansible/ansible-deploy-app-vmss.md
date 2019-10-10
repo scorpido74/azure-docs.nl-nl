@@ -1,6 +1,6 @@
 ---
-title: Zelfstudie - apps implementeren op virtuele-machineschaalsets in Azure met behulp van Ansible | Microsoft Docs
-description: Leer hoe u Ansible gebruikt virtuele Azure-machine-schaalsets configureren en implementeren van toepassing op de schaalset
+title: Zelf studie-Apps implementeren in schaal sets voor virtuele machines in azure met behulp van Ansible
+description: Meer informatie over het gebruik van Ansible voor het configureren van virtuele-machine schaal sets van Azure en het implementeren van de toepassing op de schaalset
 keywords: ansible, azure, devops, bash, playbook, virtuele machine, schaalset voor virtuele machines, vmss
 ms.topic: tutorial
 ms.service: ansible
@@ -8,14 +8,14 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: a44fd06ace9b21122f5f4253ac7d9601b54e6b62
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: f9035259d466a50b83fe0094d43bc0fe985e8c4e
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65231038"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72241751"
 ---
-# <a name="tutorial-deploy-apps-to-virtual-machine-scale-sets-in-azure-using-ansible"></a>Zelfstudie: Apps implementeren op virtuele-machineschaalsets in Azure met Ansible
+# <a name="tutorial-deploy-apps-to-virtual-machine-scale-sets-in-azure-using-ansible"></a>Zelf studie: Apps implementeren in schaal sets voor virtuele machines in azure met behulp van Ansible
 
 [!INCLUDE [ansible-27-note.md](../../includes/ansible-27-note.md)]
 
@@ -25,10 +25,10 @@ ms.locfileid: "65231038"
 
 > [!div class="checklist"]
 >
-> * Ophalen van informatie over de host voor een groep van virtuele Azure-machines
-> * Klonen en de voorbeeld-app bouwen
-> * Java Runtime Environment (Java Runtime Environment) installeren op een schaalset
-> * De Java-toepassing in een schaalset implementeren
+> * Informatie over de host ophalen voor een groep virtuele Azure-machines
+> * De voor beeld-app klonen en bouwen
+> * JRE (Java Runtime Environment) installeren op een schaalset
+> * De Java-toepassing implementeren in een schaalset
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -36,12 +36,12 @@ ms.locfileid: "65231038"
 [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)] 
 [!INCLUDE [ansible-prereqs-vm-scale-set.md](../../includes/ansible-prereqs-vm-scale-set.md)]
 - Met **git** - [git](https://git-scm.com) wordt een Java-voorbeeld gedownload dat in deze zelfstudie wordt gebruikt.
-- **JDK (Java SE Development Kit)**: de [JDK](https://aka.ms/azure-jdks) wordt gebruikt om het Java-voorbeeldproject te maken.
-- **Apache Maven** - [Apache Maven](https://maven.apache.org/download.cgi) wordt gebruikt om het voorbeeld van Java-project te bouwen.
+- **JDK (Java SE Development Kit)** : de [JDK](https://aka.ms/azure-jdks) wordt gebruikt om het Java-voorbeeldproject te maken.
+- **Apache Maven** - [Apache Maven](https://maven.apache.org/download.cgi) wordt gebruikt om het voorbeeld-Java-project te maken.
 
 ## <a name="get-host-information"></a>Hostgegevens ophalen
 
-De playbook-code in deze sectie wordt informatie over de host voor een groep van virtuele machines opgehaald. De code opgehaald van de openbare IP-adressen en load balancer in een opgegeven resourcegroep gemaakt en maakt u een hostgroep met de naam `scalesethosts` in voorraad.
+De Playbook-code in deze sectie haalt host-informatie op voor een groep virtuele machines. De code haalt de open bare IP-adressen en load balancer binnen een opgegeven resource groep op en maakt een hostgroep met de naam `scalesethosts` in de inventarisatie.
 
 Sla het volgende voorbeeld-playbook op als `get-hosts-tasks.yml`:
 
@@ -71,7 +71,7 @@ Sla het volgende voorbeeld-playbook op als `get-hosts-tasks.yml`:
 
 ## <a name="prepare-an-application-for-deployment"></a>Een toepassing voorbereiden voor implementatie
 
-De code van de playbook in deze sectie wordt gebruikgemaakt van `git` voor het klonen van een Java-voorbeeldproject van GitHub en het project bouwt. 
+De Playbook-code in deze sectie maakt gebruik van `git` om een Java-voorbeeld project te klonen vanuit GitHub en het project te opbouwen. 
 
 Sla het volgende playbook op als `app.yml`:
 
@@ -97,7 +97,7 @@ Voer het voorbeeld-Ansible-playbook uit met de volgende opdracht:
   ansible-playbook app.yml
   ```
 
-Nadat de playbook is uitgevoerd, ziet u uitvoer die vergelijkbaar is met de volgende resultaten:
+Nadat de Playbook is uitgevoerd, ziet u uitvoer die vergelijkbaar is met de volgende resultaten:
 
   ```Output
   PLAY [localhost] 
@@ -118,15 +118,15 @@ Nadat de playbook is uitgevoerd, ziet u uitvoer die vergelijkbaar is met de volg
 
 ## <a name="deploy-the-application-to-a-scale-set"></a>De toepassing implementeren in een schaalset
 
-De code playbook in deze sectie wordt gebruikt om:
+De Playbook-code in deze sectie wordt gebruikt voor het volgende:
 
-* Installeer de JRE wordt geselecteerd voor een hostgroep met de naam `saclesethosts`
-* De Java-toepassing aan een hostgroep met de naam implementeren `saclesethosts`
+* Installeer de JRE op een hostgroep met de naam `saclesethosts`
+* De Java-toepassing implementeren in een hostgroep met de naam `saclesethosts`
 
-Er zijn twee manieren om op te halen van de voorbeeld-playbook:
+Er zijn twee manieren om de voorbeeld Playbook te verkrijgen:
 
-* [Download de playbook](https://github.com/Azure-Samples/ansible-playbooks/blob/master/vmss/vmss-setup-deploy.yml) en sla deze op `vmss-setup-deploy.yml`.
-* Maak een nieuw bestand met de naam `vmss-setup-deploy.yml` en kopieer naar het de volgende inhoud:
+* [Down load de Playbook](https://github.com/Azure-Samples/ansible-playbooks/blob/master/vmss/vmss-setup-deploy.yml) en sla deze op `vmss-setup-deploy.yml`.
+* Maak een nieuw bestand met de naam `vmss-setup-deploy.yml` en kopieer het naar de volgende inhoud:
 
 ```yml
 - hosts: localhost
@@ -165,24 +165,24 @@ Er zijn twee manieren om op te halen van de voorbeeld-playbook:
     poll: 0
 ```
 
-Voordat u de playbook uitvoert, Zie de volgende opmerkingen:
+Voor het uitvoeren van de Playbook raadpleegt u de volgende opmerkingen:
 
-* In de `vars` sectie, vervangt de `{{ admin_password }}` tijdelijke aanduiding door uw eigen wachtwoord.
-* Gebruik de ssh-verbindingstype met wachtwoorden, het sshpass programma installeren:
+* Vervang in het gedeelte `vars` de tijdelijke aanduiding `{{ admin_password }}` door uw eigen wacht woord.
+* Als u het SSH-verbindings type wilt gebruiken met wacht woorden, installeert u het sshpass-programma:
 
-    Ubuntu:
+    Ubuntu
 
     ```bash
     apt-get install sshpass
     ```
 
-    CentOS:
+    CentOS
 
     ```bash
     yum install sshpass
     ```
 
-* In sommige omgevingen ziet u mogelijk een fout over het gebruik van een SSH-wachtwoord in plaats van een sleutel te gebruiken. Als u dit foutbericht ontvangt, kunt u controleren door de volgende regel toe te voegen-hostsleutel uitschakelen `/etc/ansible/ansible.cfg` of `~/.ansible.cfg`:
+* In sommige omgevingen ziet u mogelijk een fout bericht over het gebruik van een SSH-wacht woord in plaats van een sleutel. Als u deze fout ontvangt, kunt u de controle van de hostcode uitschakelen door de volgende regel toe te voegen aan `/etc/ansible/ansible.cfg` of `~/.ansible.cfg`:
 
     ```bash
     [defaults]
@@ -195,7 +195,7 @@ Voer het playbook uit met de volgende opdracht:
   ansible-playbook vmss-setup-deploy.yml
   ```
 
-De uitvoer van het uitvoeren van de opdracht ansible-playbook geeft aan dat de Java-voorbeeldtoepassing is geïnstalleerd aan de hostgroep van de schaalset:
+De uitvoer van de ansible-Playbook-opdracht geeft aan dat de voor beeld-Java-toepassing is geïnstalleerd op de hostgroep van de schaalset:
 
   ```Output
   PLAY [localhost]
@@ -234,11 +234,11 @@ De uitvoer van het uitvoeren van de opdracht ansible-playbook geeft aan dat de J
 
 ## <a name="verify-the-results"></a>De resultaten controleren
 
-Controleer of de resultaten van uw werk door te navigeren naar de URL van de load balancer voor de schaalset:
+Controleer de resultaten van uw werk door te navigeren naar de URL van de load balancer voor uw schaalset:
 
 ![Java-app die wordt uitgevoerd in een schaalset in Azure.](media/ansible-vmss-deploy/ansible-deploy-app-vmss.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Zelfstudie: Automatisch schalen virtuele-machineschaalsets in Azure met behulp van Ansible](./ansible-auto-scale-vmss.md)
+> [Zelf studie: schaal sets voor virtuele machines automatisch schalen in azure met behulp van Ansible](./ansible-auto-scale-vmss.md)

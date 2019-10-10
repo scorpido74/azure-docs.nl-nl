@@ -1,5 +1,5 @@
 ---
-title: Uw resources organiseren met Azure-beheergroepen - Azure Governance
+title: Uw resources organiseren met beheer groepen-Azure governance
 description: Informatie over de managementgroepen, hoe hun machtigingen werken en hoe u ze gebruikt.
 author: rthorn17
 ms.assetid: 482191ac-147e-4eb6-9655-c40c13846672
@@ -7,12 +7,12 @@ ms.service: governance
 ms.date: 04/22/2019
 ms.author: rithorn
 ms.topic: overview
-ms.openlocfilehash: dba6334815f0c86a800b38ad09487f719857f993
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: aa4c5a7bfe7333c02fe79612b828df5680b83b26
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71341107"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72254729"
 ---
 # <a name="organize-your-resources-with-azure-management-groups"></a>Uw resources organiseren met Azure-beheergroepen
 
@@ -90,7 +90,7 @@ Zo kan de RBAC-rol van VM-inzender aan een beheergroep worden toegewezen. Deze r
 
 In de volgende tabel staat een lijst met rollen en de acties die worden ondersteund in beheergroepen.
 
-| Naam RBAC-rol             | Maken | Naam wijzigen | Verplaatsen** | Verwijderen | Toegang toewijzen | Beleid toewijzen | Lezen  |
+| Naam RBAC-rol             | Create | Naam wijzigen | Verplaatsen** | Verwijderen | Toegang toewijzen | Beleid toewijzen | Lezen  |
 |:-------------------------- |:------:|:------:|:------:|:------:|:-------------:| :------------:|:-----:|
 |Eigenaar                       | X      | X      | X      | X      | X             | X             | X     |
 |Inzender                 | X      | X      | X      | X      |               |               | X     |
@@ -98,10 +98,10 @@ In de volgende tabel staat een lijst met rollen en de acties die worden onderste
 |Lezer                      |        |        |        |        |               |               | X     |
 |Beheergroep-lezer*                  |        |        |        |        |               |               | X     |
 |Inzender voor resourcebeleid |        |        |        |        |               | X             |       |
-|Administrator voor gebruikerstoegang   |        |        |        |        | X             | X             |       |
+|Beheerder van gebruikerstoegang   |        |        |        |        | X             | X             |       |
 
 *: Met de rollen Beheergroep-inzender en Beheergroep-lezer kunnen gebruikers deze acties alleen uitvoeren op beheergroepniveau.  
-**: Bij roltoewijzingen hoeft er geen abonnement of beheergroep van of naar de hoofdbeheergroep te worden verplaatst.  Zie [Uw resources beheren met beheergroepen](manage.md) voor meer informatie over het verplaatsen van items binnen de hiërarchie.
+\* *: Roltoewijzingen voor de hoofd beheer groep zijn niet vereist voor het verplaatsen van een abonnement of beheer groep naar en van het item.  Zie [Uw resources beheren met beheergroepen](manage.md) voor meer informatie over het verplaatsen van items binnen de hiërarchie.
 
 ### <a name="custom-rbac-role-definition-and-assignment"></a>Definitie en toewijzing van aangepaste RBAC-rollen
 

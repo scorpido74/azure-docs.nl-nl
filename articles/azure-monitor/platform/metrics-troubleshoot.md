@@ -1,6 +1,6 @@
 ---
-title: Het oplossen van Azure Monitor grafieken met metrische gegevens
-description: Problemen met het maken, aanpassen of grafieken met metrische gegevens interpreteren
+title: Problemen met Azure Monitor metrische grafieken oplossen
+description: Problemen oplossen met metrische grafieken maken, aanpassen of interpreteren
 author: vgorbenko
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,112 +8,114 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 73ef5cc00b5154dbdbc92911d17740c7d13038ec
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: d31b046bf02893affff84069ee92b3bd7735b904
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67341983"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72243226"
 ---
-# <a name="troubleshooting-metrics-charts"></a>Oplossen van problemen met grafieken met metrische gegevens
+# <a name="troubleshooting-metrics-charts"></a>Problemen met metrische grafieken oplossen
 
-Gebruik dit artikel als u problemen ondervindt met het maken, aanpassen of interpreteren grafieken in Verkenner voor metrische gegevens van Azure. Als u niet bekend bent met metrische gegevens, meer informatie over [aan de slag met metrics explorer](metrics-getting-started.md) en [geavanceerde functies van metrics explorer](metrics-charts.md). U kunt ook zien [voorbeelden](metric-chart-samples.md) van de geconfigureerde grafieken met metrische gegevens.
+Gebruik dit artikel als u problemen ondervindt met het maken, aanpassen of interpreteren van grafieken in azure Metrics Explorer. Als u niet bekend bent met metrische gegevens, kunt u leren hoe u aan de [slag gaat met metrische gegevens Verkenner](metrics-getting-started.md) en [geavanceerde functies van Metrics Explorer](metrics-charts.md). U kunt ook [voor beelden](metric-chart-samples.md) bekijken van de geconfigureerde metrische grafieken.
 
-## <a name="cant-find-your-resource-to-select-it"></a>Uw resource om deze te selecteren niet kunt vinden
+## <a name="cant-find-your-resource-to-select-it"></a>Kan de resource niet vinden om deze te selecteren
 
-U hebt geklikt op de **selecteert u een resource** knop, maar niet uw resource in het dialoogvenster van de datumkiezer resource wordt weergegeven.
+U hebt op de knop **Resource selecteren** geklikt, maar u ziet uw resource niet in het dialoogvenster Resourcekiezer.
 
-**Oplossing:** Metrics explorer moet u abonnementen en resourcegroepen selecteren voordat de lijst van beschikbare resources. Als u niet uw resource ziet:
+**Oplossing:** Voor metrische gegevens Verkenner moeten abonnementen en resource groepen worden geselecteerd voordat de beschik bare resources worden vermeld. Ga als volgt te werk als u de resource niet ziet:
 
-1. Zorg ervoor dat u hebt geselecteerd dat juiste abonnement in de **abonnement** vervolgkeuzelijst. Als uw abonnement niet wordt weergegeven, klikt u op de **map + abonnement instellingen** en een abonnement met de resource toe te voegen.
+1. Controleer of u het juiste abonnement hebt geselecteerd in de vervolgkeuzelijst **Abonnement**. Als uw abonnement niet wordt weergegeven, klikt u op **Map- en abonnementsinstellingen**  en voegt u een abonnement met uw resource toe.
 
-1. Zorg ervoor dat u de juiste resourcegroep hebt geselecteerd.
+1. Controleer of u de juiste resourcegroep hebt geselecteerd.
     > [!WARNING]
-    > Voor de beste prestaties wanneer u metrics explorer voor het eerst opent de **resourcegroep** vervolgkeuzelijst heeft geen vooraf geselecteerde resourcegroepen. U moet ten minste één groep kiezen voordat u resources kunt zien.
+    > Voor de beste prestaties, wanneer u metrische gegevens Verkenner voor het eerst opent, heeft de vervolg keuzelijst **resource groep** geen vooraf geselecteerde resource groepen. U moet minstens één groep kiezen om resources te zien te krijgen.
 
-## <a name="chart-shows-no-data"></a>Grafiek bevat geen gegevens
+## <a name="chart-shows-no-data"></a>Diagram toont geen gegevens
 
-De grafieken kunnen soms geen gegevens worden weergegeven na het selecteren van juiste bronnen en metrische gegevens. Dit gedrag kan worden veroorzaakt door verschillende van de volgende redenen:
+Soms kunnen de grafieken geen gegevens weer geven nadat u de juiste resources en meet waarden hebt geselecteerd. Dit gedrag kan een van de volgende oorzaken hebben:
 
-### <a name="microsoftinsights-resource-provider-isnt-registered-for-your-subscription"></a>De resourceprovider Microsoft.Insights is niet geregistreerd voor uw abonnement
+### <a name="microsoftinsights-resource-provider-isnt-registered-for-your-subscription"></a>De resource provider micro soft. Insights is niet geregistreerd voor uw abonnement
 
-Metrische gegevens verkent vereist *Microsoft.Insights* -resourceprovider geregistreerd in uw abonnement. In veel gevallen, is deze (dat wil zeggen, nadat u een waarschuwingsregel configureren, diagnostische instellingen voor elke resource aanpassen of een regel voor automatisch schalen configureren) automatisch geregistreerd. Als de resourceprovider Microsoft.Insights niet is geregistreerd, moet u handmatig dit registreren door de volgende stappen wordt beschreven in [Azure resourceproviders en typen](../../azure-resource-manager/resource-manager-supported-services.md).
+U kunt alleen metrische gegevens verkennen als de resourceprovider *Microsoft.Insights* is geregistreerd in uw abonnement. In veel gevallen gebeurt dit automatisch (dat wil zeggen, nadat u een waarschuwingsregel hebt geconfigureerd, diagnostische instellingen hebt aangepast voor een resource of een regel voor automatisch schalen hebt geconfigureerd). Als de resource provider van micro soft. Insights niet is geregistreerd, moet u deze hand matig registreren door de stappen te volgen die worden beschreven in [Azure resource providers en-typen](../../azure-resource-manager/resource-manager-supported-services.md).
 
-**Oplossing:** Open **abonnementen**, **resourceproviders** tabblad en Controleer *Microsoft.Insights* voor uw abonnement is geregistreerd.
+**Oplossing:** Open **abonnementen**, **resource providers** en controleer of *micro soft. Insights* is geregistreerd voor uw abonnement.
 
-### <a name="you-dont-have-sufficient-access-rights-to-your-resource"></a>Er niet voldoende rechten voor uw resource
+### <a name="you-dont-have-sufficient-access-rights-to-your-resource"></a>U hebt onvoldoende toegangs rechten voor uw resource
 
-In Azure, toegang tot metrische gegevens wordt beheerd door [op rollen gebaseerd toegangsbeheer (RBAC)](../../role-based-access-control/overview.md). U moet lid zijn van [controlelezer](../../role-based-access-control/built-in-roles.md#monitoring-reader), [controlebijdrager](../../role-based-access-control/built-in-roles.md#monitoring-contributor), of [Inzender](../../role-based-access-control/built-in-roles.md#contributor) verkennen van metrische gegevens voor elke resource.
+In Azure wordt de toegang tot metrische gegevens geregeld via [op rollen gebaseerd toegangsbeheer (RBAC)](../../role-based-access-control/overview.md). U moet een [controlelezer](../../role-based-access-control/built-in-roles.md#monitoring-reader), [controlebijdrager](../../role-based-access-control/built-in-roles.md#monitoring-contributor) of [inzender](../../role-based-access-control/built-in-roles.md#contributor) zijn om metrische gegevens voor een resource te kunnen verkennen.
 
-**Oplossing:** Zorg ervoor dat u hebt onvoldoende machtigingen voor de bron van waaruit u metrische gegevens verkent.
+**Oplossing:** Zorg ervoor dat u voldoende machtigingen hebt voor de resource van waaruit u de metrische gegevens wilt verkennen.
 
-### <a name="your-resource-didnt-emit-metrics-during-the-selected-time-range"></a>Uw resource is niet metrische gegevens verzenden tijdens het geselecteerde tijdsbereik
+### <a name="your-resource-didnt-emit-metrics-during-the-selected-time-range"></a>De resource heeft geen metrische gegevens meegegeven tijdens het geselecteerde tijds bereik
 
-Sommige resources verzenden niet voortdurend hun metrische gegevens. Azure wordt bijvoorbeeld niet verzamelen van metrische gegevens voor gestopte virtuele machines. Andere bronnen mogelijk hun metrische gegevens verzenden alleen als bepaalde voordoet. Bijvoorbeeld: heeft een metrische waarde verwerkingstijd van een transactie met ten minste één transactie. Als er geen transacties in de geselecteerde periode, kan de grafiek op een natuurlijke manier niet leeg zijn. Bovendien de meeste van de metrische gegevens in Azure, elke minuut worden verzameld, maar er zijn enkele die minder vaak worden verzameld. Zie de documentatie van de metrische gegevens voor meer informatie over de metrische gegevens die u probeert te verkennen.
+Sommige resources verzenden niet voortdurend hun metrische gegevens. Azure verzamelt bijvoorbeeld geen metrische gegevens voor gestopte virtuele machines. Andere resources verzenden hun metrische gegevens alleen bij bepaalde omstandigheden. Een metrische waarde die de verwerkingstijd van een transactie aangeeft, vereist bijvoorbeeld ten minste één transactie. Als er in de geselecteerde periode geen transacties zijn voltooid, is de grafiek uiteraard leeg. Hoewel de meeste metrische gegevens in Azure elke minuut worden verzameld, zijn er ook die minder vaak worden verzameld. Raadpleeg de documentatie over metrische gegevens voor meer informatie over de metrische gegevens die u probeert te verkennen.
 
-**Oplossing:** Wijzigen van de tijd van de grafiek naar een breder bereik. U kunt starten van "Afgelopen 30 dagen" met behulp van een grotere tijdgranulatie (of afhankelijk zijn van de optie 'Automatische tijdgranulatie').
+**Oplossing:** Wijzig de tijd van de grafiek in een breder bereik. U kunt beginnen met de laatste 30 dagen met een grotere tijd granulatie (of afhankelijk van de optie ' automatische tijd granulatie ').
 
-### <a name="you-picked-a-time-range-greater-than-30-days"></a>U hebt geselecteerd een tijdsbereik groter is dan 30 dagen
+### <a name="you-picked-a-time-range-greater-than-30-days"></a>U hebt een tijds bereik van meer dan 30 dagen gekozen
 
-[De meeste metrische gegevens in Azure worden opgeslagen voor 93 dagen](data-platform-metrics.md#retention-of-metrics). U kunt echter alleen query niet meer dan 30 dagen waard is om van gegevens op één grafiek. Deze beperking geldt niet voor [logboek op basis van metrische gegevens](../app/pre-aggregated-metrics-log-metrics.md#log-based-metrics).
+[De meeste metrische gegevens in Azure worden gedurende 93 dagen opgeslagen](data-platform-metrics.md#retention-of-metrics). U kunt voor een grafiek echter niet meer dan 30 dagen aan gegevens opvragen. Deze beperking geldt niet voor [metrische gegevens op basis van een logboek](../app/pre-aggregated-metrics-log-metrics.md#log-based-metrics).
 
-**Oplossing:** Als u een leeg diagram ziet of de grafiek alleen deel uitmaken van de metrische gegevens worden weergegeven, controleert u of dat het verschil tussen de begin - en end-datums in de tijdkiezer niet groter is dan het interval van 30 dagen.
+**Oplossing:** Als u een lege grafiek ziet of uw grafiek alleen een deel van metrische gegevens weergeeft, controleert u of het verschil tussen begin-en eind datums in de tijd kiezer niet groter is dan het interval van 30 dagen.
 
-### <a name="all-metric-values-were-outside-of-the-locked-y-axis-range"></a>Alle metrische waarden zijn buiten het bereik vergrendelde y-as
+### <a name="all-metric-values-were-outside-of-the-locked-y-axis-range"></a>Alle meet waarden liggen buiten het vergrendelde bereik van de y-as
 
-Door [vergrendelen van de grenzen van de grafiek y-as](metrics-charts.md#lock-boundaries-of-chart-y-axis), kunt u per ongeluk maken het grafiekgebied van de weergave de regel van de grafiek niet weergeven. Bijvoorbeeld, als de y-as is gekoppeld aan een bereik tussen 0 en 50% en de metriek een constante waarde van 100 is %, wordt de regel wordt altijd buiten het zichtbaar gebied, waardoor de grafiek leeg weergegeven.
+Door [de grenzen van de y-as van de grafiek te vergrendelen](metrics-charts.md#lock-boundaries-of-chart-y-axis), kunt u per ongeluk instellen dat de grafieklijn niet zichtbaar is in het grafiekgebied. Als de y-as bijvoorbeeld is vergrendeld op een bereik tussen 0% en 50% en de metrische gegevens een constante waarde van 100% hebben, wordt de lijn altijd buiten het zichtbare gebied weergegeven, waardoor het lijkt alsof de grafiek leeg is.
 
-**Oplossing:** Controleer of dat de grenzen van de y-as van de grafiek niet vergrendeld buiten het bereik van de metrische waarden. Als de grenzen van de y-as zijn vergrendeld, kunt u tijdelijk opnieuw instellen om ervoor te zorgen dat de metrische waarden buiten het bereik van de grafiek niet vallen. Vergrendeling van het bereik van y-as wordt niet aanbevolen met automatische granulariteit voor de grafieken met **som**, **min**, en **max** aggregatie omdat de waarden worden gewijzigd met granulatie door vergroten of verkleinen browservenster of als een schermresolutie gaan. Switch granulariteit mogelijk het weergavegebied van uw grafiek leeg laten.
+**Oplossing:** Controleer of de grenzen van de y-as van de grafiek niet zijn vergrendeld buiten het bereik van de meet waarden. Als de grenzen van de y-as zijn vergrendeld, kunt u deze tijdelijk opnieuw instellen om ervoor te zorgen dat de metrische waarden niet buiten het bereik van de grafiek vallen. Vergrendeling van het bereik van de y-as wordt niet aanbevolen met automatische granulariteit voor de grafieken met aggregatie via **som**, **min** en **max** omdat de waarden samen met de granulatie worden gewijzigd door het vergroten of verkleinen van het browservenster of het wijzigen van de schermresolutie. Wijziging van de granulariteit kan tot gevolg hebben dat het weergavegebied van uw grafiek leeg blijft.
 
-### <a name="you-are-looking-at-a-guest-os-metric-but-didnt-enable-azure-diagnostic-extension"></a>U bekijkt een Gastbesturingssysteem metrische gegevens, maar diagnostische Azure-extensie niet hebt ingeschakeld
+### <a name="you-are-looking-at-a-guest-os-metric-but-didnt-enable-azure-diagnostic-extension"></a>U bekijkt de metrische gegevens van het gast besturingssysteem, maar u hebt de diagnostische extensie van Azure niet ingeschakeld
 
-Verzameling van **Guest OS** metrische gegevens is vereist voor het configureren van de Azure Diagnostics-extensie of inschakelen met behulp van de **diagnostische instellingen** Configuratiescherm voor uw resource.
+Het verzamelen van metrische gegevens van een **gastbesturingssysteem** is alleen mogelijk als Azure Diagnostic Extension is geconfigureerd of als u de extensie hebt ingeschakeld met behulp van het venster **Diagnostische instellingen** voor uw resource.
 
-**Oplossing:** Als Azure Diagnostics-extensie is ingeschakeld, maar u nog steeds niet voor de metrische gegevens, volgt u de stappen die worden beschreven [probleemoplossingsgids voor Azure Diagnostics-extensie](diagnostics-extension-troubleshooting.md#metric-data-doesnt-appear-in-the-azure-portal). Zie ook de stappen voor probleemoplossing voor [Guest OS-naamruimte en metrische gegevens kan niet worden opgenomen](metrics-troubleshoot.md#cannot-pick-guest-os-namespace-and-metrics)
+**Oplossing:** Als Azure Diagnostics extensie is ingeschakeld, maar u nog steeds niet uw metrische gegevens kunt zien, volgt u de stappen die worden beschreven in de [hand leiding voor het oplossen van problemen met de Azure Diagnostics extensie](diagnostics-extension-troubleshooting.md#metric-data-doesnt-appear-in-the-azure-portal). Zie ook de stappen voor het oplossen van problemen met het [niet kiezen van naam ruimte en metrische gegevens voor het gast besturingssysteem](metrics-troubleshoot.md#cannot-pick-guest-os-namespace-and-metrics) .
 
-## <a name="error-retrieving-data-message-on-dashboard"></a>'Fout bij het ophalen van gegevens'-bericht op dashboard
+## <a name="error-retrieving-data-message-on-dashboard"></a>Bericht ' fout bij het ophalen van gegevens ' op het dash board
 
-Dit probleem kan gebeuren wanneer het dashboard is gemaakt met een metrische waarde die hoger is afgeschaft en verwijderd uit Azure. Om te bevestigen dat dit het geval is, opent u de **metrische gegevens** tabblad van uw resource en controleer de beschikbare metrische gegevens in de kiezer voor metrische gegevens. Als de metriek niet wordt weergegeven, is de metrische gegevens uit Azure verwijderd. Meestal wanneer een statistiek is afgeschaft, is er een betere nieuwe metrische gegevens die met een vergelijkbare perspectief op de resourcestatus biedt.
+Dit probleem kan optreden wanneer uw dashboard is gemaakt met een metriek die later is afgeschaft en verwijderd uit Azure. Als u wilt controleren of dit het geval is, opent u het tabblad **Metrische gegevens** van uw resource, en controleert u de beschikbare metrische gegevens in de metriekenkiezer. Als de metriek niet wordt weergegeven, is deze verwijderd uit Azure. Als een metriek is afgeschaft, is er meestal een betere nieuwe metriek die een vergelijkbaar perspectief op de resourcestatus biedt.
 
-**Oplossing:** De tegel mislukt bijwerken door het verzamelen van een alternatieve metrische gegevens voor de grafiek op het dashboard. U kunt [Bekijk een lijst met beschikbare metrische gegevens voor Azure-services](metrics-supported.md).
+**Oplossing:** Werk de tegel fout bij door een alternatieve metriek voor uw grafiek op het dash board te kiezen. U kunt [een lijst met beschikbare metrische gegevens voor Azure-services bekijken](metrics-supported.md).
 
-## <a name="chart-shows-dashed-line"></a>Grafiek wordt een gestreepte lijn
+## <a name="chart-shows-dashed-line"></a>Grafiek toont streepjes lijn
 
-Onderbroken lijnstijl grafieken met metrische gegevens van Azure gebruiken om aan te geven dat er een ontbrekende waarde (ook wel bekend als ' null-waarde') tussen twee bekende-tijdseenheid gegevenspunten. Bijvoorbeeld, als in de selectie van de tijd die u hebt geselecteerd tijdgranulatie 'minuut', maar de metriek is gerapporteerd op 07:26, 07:27 07:29 en 07:30 (Houd er rekening mee een minuut hiaat tussen de tweede en derde gegevenspunten), een gestreepte lijn 07:27 en 07:29 verbinding maken en een ononderbroken lijn verbinding alle andere gegevenspunten. De stippellijn val tot nul wanneer de metriek gebruikt **aantal** en **som** aggregatie. Voor de **avg**, **min** of **max** aggregaties, de stippellijn verbindt twee dichtstbijzijnde bekende gegevenspunten. Ook als de gegevens op de meest rechtse of uiterst rechts van de grafiek ontbreekt, breidt de stippellijn in de richting van het gegevenspunt ontbreekt.
-  ![de installatiekopie van de metrische gegevens](./media/metrics-troubleshoot/missing-data-point-line-chart.png)
+Voor grafieken van Azure-metrieken wordt gestreepte lijn stijl gebruikt om aan te geven dat er een ontbrekende waarde is (ook wel ' null-waarde ' genoemd) tussen twee bekende tijdgebonden gegevens punten. Als u bijvoorbeeld in de tijd kiezer hebt gekozen voor ' 1 minuut ' tijd granulatie, maar de metriek is gerapporteerd op 07:26, 07:27, 07:29 en 07:30 (Let op een minuut tussen de tweede en derde gegevens punten), wordt een stippel lijn verbonden met 07:27 en 07:29 en wordt er verbinding gemaakt met een ononderbroken lijn alle andere gegevens punten. De onderbroken lijn wordt op nul gezet wanneer de metriek **aantal** en **Sum** -aggregatie gebruikt. Voor de **gemiddeld**, **min** of **Max** aggregaties verbindt de streepjes lijn twee dichtstbijzijnde gegevens punten. Als er gegevens ontbreken aan de meest rechtse of linkse kant van de grafiek, wordt de stippellijn uitgebreid in de richting van het ontbrekende gegevenspunt.
+  ![metric-installatie kopie @ no__t-1
 
-**Oplossing:** Dit gedrag is standaard. Dit is handig voor het identificeren van ontbrekende gegevenspunten. Het lijndiagram is een uitstekende keuze voor het visualiseren van trends van hoge dichtheid metrische gegevens, maar mogelijk moeilijk te interpreteren voor de metrische gegevens met sparse waarden, met name wanneer corelating waarden met tijdsinterval belangrijk is. De stippellijn vergemakkelijkt het lezen van deze grafieken, maar als uw grafiek nog steeds niet duidelijk is, kunt u overwegen uw metrische gegevens weergeven met een ander grafiektype. Bijvoorbeeld, een grafiek verspreid plot voor de dezelfde metrische gegevens geeft duidelijk aan elk tijdsinterval door alleen een punt visualiseren wanneer er een waarde en overslaan van de gegevens kan worden overgeslagen wanneer de waarde ontbreekt: ![metrische installatiekopie](./media/metrics-troubleshoot/missing-data-point-scatter-chart.png)
+**Oplossing:** Dit gedrag is inherent aan het ontwerp. Dit is handig voor het identificeren van ontbrekende gegevenspunten. Het lijn diagram is een superieure keuze voor het visualiseren van trends van metrische gegevens met hoge dichtheid, maar is mogelijk moeilijk te interpreteren voor metrische gegevens met sparse-waarden, met name wanneer u met de tijd korrels een rol geeft. De stippellijn vergemakkelijkt het lezen van deze grafieken, maar als uw grafiek nog steeds niet duidelijk is, kunt u overwegen uw metrische gegevens weer te geven met een ander grafiektype. Bijvoorbeeld, een spreidings grafiek diagram voor dezelfde metriek laat elke tijd weer geven door alleen een punt te visualiseren als er een waarde is en het gegevens punt wordt overgeslagen wanneer de waarde ontbreekt: ![metric-installatie kopie @ no__t-1
 
    > [!NOTE]
-   > Als u nog steeds een lijndiagram liever voor uw metrische gegevens, kan verplaatsen van de muis boven de grafiek helpen om de tijdgranulatie door het markeren van het gegevenspunt op de locatie van de muisaanwijzer vast te stellen.
+   > Als u nog steeds liever een lijndiagram gebruikt voor uw metrische gegevens, kan het verplaatsen van de muis over de grafiek helpen om de tijdgranulatie weer te geven door het markeren van het gegevenspunt op de locatie van de muisaanwijzer.
 
-## <a name="chart-shows-unexpected-drop-in-values"></a>Grafiek bevat onverwachte afname van waarden
+## <a name="chart-shows-unexpected-drop-in-values"></a>Diagram toont onverwachte waarden voor neerzetten
 
-In veel gevallen is de waargenomen afname van de metrische waarden een misverstand van de gegevens in de grafiek wordt weergegeven. U kunt worden misleiden door een afname in optellingen of telt wanneer de grafiek toont de meest recente minuten omdat de laatste punten van de metrische gegevens niet zijn ontvangen of verwerkt door Azure nog. Afhankelijk van de service kan de latentie van de verwerking van metrische gegevens zijn binnen het bereik van een paar minuten. Voor grafieken met een recente tijdsbereik met een granulariteit van 1 of 5 minuten, een afname van de waarde in de afgelopen paar minuten wordt opvallender: ![metrische installatiekopie](./media/metrics-troubleshoot/drop-in-values.png)
+In veel gevallen is de waargenomen daling van de metrische waarden een verkeerde interpretatie van de gegevens die in de grafiek worden weergegeven. U kunt worden misleid door een daling van optellingen of aantallen wanneer de grafiek de meest recente minuten toont omdat de laatste punten van metrische gegevens nog niet zijn ontvangen of verwerkt door Azure. Afhankelijk van de service kan de latentie van de verwerking van metrische gegevens enkele minuten bedragen. Voor grafieken die een recent tijd bereik met een granulatie van 1 of 5 minuten tonen, wordt de waarde in de laatste paar minuten meer duidelijker: ![metric-installatie kopie @ no__t-1
 
-**Oplossing:** Dit gedrag is standaard. Wij vinden dat gegevens worden weergegeven zodra we ontvangen is het nuttig, zelfs wanneer de gegevens *gedeeltelijke* of *onvolledig*. In dat geval kunt u belangrijke Conclusie sneller en meteen onderzoek starten. Bijvoorbeeld, voor een metrische waarde waarin het aantal fouten worden weergegeven, ziet een gedeeltelijke waarde X ziet u dat er ten minste X fouten op een opgegeven minuut. U kunt onderzoek het probleem direct uit te voeren, plaats wacht om te zien van de exacte telling van fouten die zich op deze minuut, die misschien niet zo belangrijk voorgedaan. De grafiek wordt bijgewerkt zodra we de volledige set gegevens ontvangen, maar op dat moment kan het ook nieuwe onvolledige gegevenspunten van meer recente minuten weergeven.
+**Oplossing:** Dit gedrag is inherent aan het ontwerp. Wij vinden dat het direct weergeven van ontvangen gegevens zinvol is, zelfs wanneer het *gedeeltelijke* of *onvolledige* gegevens betreft. U kunt zo namelijk sneller belangrijke conclusies trekken en meteen met uw onderzoek beginnen. In het geval van een metrische waarde die bijvoorbeeld het aantal storingen aangeeft, kunt u aan een gedeeltelijke waarde X al zien dat er ten minste X storingen zijn opgetreden in een bepaalde minuut. U kunt het probleem dan meteen gaan onderzoeken, in plaats van te wachten op het exacte aantal storingen dat zich heeft voorgedaan, wat misschien ook niet zo belangrijk is. De grafiek wordt bijgewerkt zodra we de volledige set gegevens ontvangen, maar op dat moment kunnen er ook weer nieuwe onvolledige gegevenspunten van meer recente minuten worden weergeven.
 
-## <a name="cannot-pick-guest-os-namespace-and-metrics"></a>Gast-OS-naamruimte en metrische gegevens kan niet worden opgenomen
+## <a name="cannot-pick-guest-os-namespace-and-metrics"></a>Kan geen naam ruimte en metrische gegevens voor het gast besturingssysteem kiezen
 
-Virtuele machines en schaalsets voor virtuele machines hebt twee soorten metrische gegevens: **Virtuele-Machinehost** metrische gegevens die door de Azure hosting-omgeving, worden verzameld en **Guest OS** metrische gegevens die worden verzameld door de [bewakingsagent](agents-overview.md) die worden uitgevoerd op uw virtuele machines. De installatie controleren door in te schakelen [diagnostische Azure-extensie](diagnostics-extension-overview.md).
+Virtuele machines en virtuele-machine schaal sets hebben twee categorieën metrische gegevens: de metrische gegevens van **virtuele machines** die worden verzameld door de Azure-hosting omgeving en de metrische gegevens van het **gast besturingssysteem (klassiek)** die worden verzameld door de [bewakings agent ](agents-overview.md)wordt uitgevoerd op uw virtuele machines. U installeert de bewakingsagent door de [Azure Diagnostics-extensie](diagnostics-extension-overview.md) in te schakelen.
 
-Standaard Gastbesturingssysteem metrische gegevens worden opgeslagen in Azure Storage-account, die u hebt gekozen in de **diagnostische instellingen** tab van uw resource. Als het Gastbesturingssysteem metrische gegevens worden niet verzameld of metrics explorer geen toegang tot deze, ziet u alleen de **virtuele-Machinehost** metrische naamruimte:
+Metrische gegevens van het gastbesturingssysteem worden standaard opgeslagen in een Azure Storage-account, die u kiest op het tabblad **Diagnostische instellingen** van uw resource. Als er geen metrische gegevens van het gastbesturingssysteem worden verzameld of als Metrics Explorer er geen toegang tot krijgt, ziet u alleen de naamruimte voor de metrische gegevens van **Host van virtuele machine**:
 
-![de installatiekopie van de metrische gegevens](./media/metrics-troubleshoot/cannot-pick-guest-os-namespace.png)
+![afbeelding van metrische gegevens](./media/metrics-troubleshoot/cannot-pick-guest-os-namespace.png)
 
-**Oplossing:** Als er geen **Guest OS** naamruimte en metrische gegevens in metrics explorer:
+**Oplossing:** Als de naam ruimte en metrische gegevens van het **gast besturingssysteem (klassiek)** niet worden weer gegeven in Metrics Explorer:
 
-1. Bevestig dat [diagnostische Azure-extensie](diagnostics-extension-overview.md) is ingeschakeld en geconfigureerd voor het verzamelen van metrische gegevens.
+1. Controleer of de [Azure Diagnostics-extensie](diagnostics-extension-overview.md) is ingeschakeld en geconfigureerd voor het verzamelen van metrische gegevens.
     > [!WARNING]
-    > U kunt geen gebruiken [Log Analytics-agent](agents-overview.md#log-analytics-agent) (ook wel de Microsoft Monitoring Agent, of 'MMA' genoemd) voor het verzenden van **Guest OS** in een storage-account.
+    > U kunt geen gebruikmaken van de [Log Analytics-agent](agents-overview.md#log-analytics-agent) (ook wel de Microsoft Monitoring Agent of 'MMA' genoemd) voor het verzenden van **Gastbesturingssysteem** naar een opslagaccount.
 
-1. Controleer of dat de storage-account is niet beveiligd door de firewall.
+1. Zorg ervoor dat de resource provider van **micro soft. Insights** is [geregistreerd voor uw abonnement](metrics-troubleshoot.md#microsoftinsights-resource-provider-isnt-registered-for-your-subscription).
 
-1. Gebruik de [Azure storage explorer](https://azure.microsoft.com/features/storage-explorer/) om te valideren of de metrische gegevens over in de storage-account stromen. Als u metrische gegevens worden niet verzameld, voert u de [probleemoplossingsgids voor Azure Diagnostics-extensie](diagnostics-extension-troubleshooting.md#metric-data-doesnt-appear-in-the-azure-portal).
+1. Controleer of het opslag account niet is beveiligd door de firewall. Azure Portal moet toegang hebben tot het opslag account om meet gegevens op te halen en de grafieken te tekenen.
+
+1. Gebruik [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) om te controleren of er metrische gegevens worden overgebracht naar het opslagaccount. Als dat niet het geval is, raadpleegt u de [probleemoplossingsgids voor de Azure Diagnostics-extensie](diagnostics-extension-troubleshooting.md#metric-data-doesnt-appear-in-the-azure-portal).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Meer informatie over aan de slag met Metric Explorer](metrics-getting-started.md)
-* [Meer informatie over geavanceerde functies van Metric Explorer](metrics-charts.md)
-* [Een lijst met beschikbare metrische gegevens voor Azure-services](metrics-supported.md)
-* [Zie de voorbeelden van geconfigureerde grafieken](metric-chart-samples.md)
+* [Meer informatie over het aan de slag gaan met metrische Explorer](metrics-getting-started.md)
+* [Meer informatie over geavanceerde functies van metrische Explorer](metrics-charts.md)
+* [Een lijst met beschikbare metrische gegevens voor Azure-services zien](metrics-supported.md)
+* [Voorbeelden van geconfigureerde grafieken zien](metric-chart-samples.md)

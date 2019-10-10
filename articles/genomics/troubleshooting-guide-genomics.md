@@ -1,36 +1,36 @@
 ---
-title: 'Microsoft Genomics: problemen oplossen met | Microsoft Docs'
-titleSuffix: Azure
-description: Meer informatie over strategieën voor probleemoplossing
-keywords: problemen oplossen, fout, foutopsporing
-services: microsoft-genomics
+title: Gids voor probleem oplossing
+titleSuffix: Microsoft Genomics
+description: Meer informatie over strategieën voor het oplossen van problemen met het gebruik van Microsoft Genomics.
+keywords: problemen oplossen, fouten opsporen
+services: genomics
 author: ruchir
 editor: jasonwhowell
 ms.author: ruchir
 ms.service: genomics
 ms.workload: genomics
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 10/29/2018
-ms.openlocfilehash: 78084e6beac7b390b1ea1afe888030c5224856b6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ce8af4d444e642a8f67f43f8cf403ce9b2cb08ab
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60790501"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72248519"
 ---
-# <a name="troubleshooting-guide"></a>Handleiding voor het oplossen van problemen
+# <a name="troubleshooting-guide"></a>Probleemoplossingsgids
 
-Hier volgen enkele tips voor probleemoplossing voor enkele van de algemene problemen die u bij het gebruik van de service Microsoft Genomics, MSGEN kan tegenkomen.
+Hier volgen enkele tips voor het oplossen van problemen die u kunt tegen komen wanneer u de Microsoft Genomics-service gebruikt, MSGEN.
 
- Voor Zie veelgestelde vragen, niet met betrekking tot het oplossen van problemen [Veelgestelde vragen over](frequently-asked-questions-genomics.md).
-## <a name="step-1-locate-error-codes-associated-with-the-workflow"></a>Stap 1: Zoek de foutcodes die zijn gekoppeld aan de werkstroom
+ Zie [Veelgestelde vragen](frequently-asked-questions-genomics.md)voor meer informatie over het oplossen van problemen.
+## <a name="step-1-locate-error-codes-associated-with-the-workflow"></a>Stap 1: fout codes zoeken die zijn gekoppeld aan de werk stroom
 
-U vindt de foutberichten die zijn gekoppeld aan de werkstroom door:
+U vindt de fout berichten die zijn gekoppeld aan de werk stroom door:
 
-1. Via de opdrachtregel en in te typen  `msgen status`
-2. De inhoud van standardoutput.txt wordt gecontroleerd.
+1. Gebruik de opdracht regel en typ `msgen status`
+2. De inhoud van Standard output. txt wordt onderzocht.
 
-### <a name="1-using-the-command-line-msgen-status"></a>1. Via de opdrachtregel `msgen status`
+### <a name="1-using-the-command-line-msgen-status"></a>1. met behulp van de opdracht regel `msgen status`
 
 ```bash
 msgen status -u URL -k KEY -w ID 
@@ -41,18 +41,18 @@ msgen status -u URL -k KEY -w ID
 
 Er zijn drie vereiste argumenten:
 
-* URL - basis-URI voor de API
-* SLEUTEL - de toegangssleutel voor uw Genomics-account
-    * Als u wilt uw URL en de sleutel vinden, gaat u naar Azure portal en open de Microsoft Genomics-account-pagina. Onder de **Management** kop, kies **toegangssleutels**. U vindt er, zowel de API-URL en toegangssleutels van uw.
+* URL-de basis-URI voor de API
+* SLEUTEL: de toegangs sleutel voor uw Genomics-account
+    * Als u uw URL en sleutel wilt vinden, gaat u naar Azure Portal en opent u de pagina Microsoft Genomics-account. Kies **toegangs sleutels**onder de kop **beheer** . Daar vindt u de API-URL en de toegangs sleutels.
 
   
-* ID - de werkstroom-ID
-    * Om te vinden van het type van de werkstroom-ID in `msgen list` opdracht. Op dezelfde locatie bevinden als uw msgen exe, ervan uitgaande dat uw config-bestand bevat de URL en toegangssleutels van uw en zich bevindt is de opdracht er als volgt: 
+* ID: de werk stroom-ID
+    * Zoek uw werk stroom-ID-type in `msgen list` opdracht. Ervan uitgaande dat uw configuratie bestand de URL en de toegangs sleutels bevat en zich op dezelfde locatie bevindt als uw msgen exe, ziet de opdracht er als volgt uit: 
         
         ```bash
         msgen list -f "config.txt"
         ```
-        Uitvoer van deze opdracht er als volgt:
+        De uitvoer van deze opdracht ziet er als volgt uit:
         
         ```bash
             Microsoft Genomics command-line client v0.7.4
@@ -74,73 +74,73 @@ Er zijn drie vereiste argumenten:
         ```
 
   > [!NOTE]
-  >  U kunt ook het pad naar het configuratiebestand in plaats van rechtstreeks invoeren van de URL en de sleutel opnemen. Als u deze argumenten in de opdrachtregel, evenals de config-bestand opgeeft, wordt de opdrachtregelargumenten voorrang.  
+  >  U kunt ook het pad naar het configuratie bestand toevoegen in plaats van de URL en sleutel rechtstreeks in te voeren. Als u deze argumenten opneemt in de opdracht regel, evenals het configuratie bestand, hebben de opdracht regel argumenten prioriteit.  
 
-Werkstroom-ID 1001 en config.txt-bestand geplaatst in hetzelfde pad hebben als de msgen uitvoerbare, er de opdracht als volgt:
+De opdracht ziet er als volgt uit: de werk stroom-ID 1001 en het config. txt-bestand dat is opgeslagen in hetzelfde pad als het uitvoer bare msgen
 
 ```bash
 msgen status -w 1001 -f "config.txt"
 ```
 
-### <a name="2--examine-the-contents-of-standardoutputtxt"></a>2.  Bekijk de inhoud van standardoutput.txt 
-Ga naar de uitvoercontainer voor de werkstroom in kwestie. Hiermee maakt u MSGEN, `[workflowfilename].logs.zip` map na elke werkstroomuitvoering. Pak deze uit de map om de inhoud ervan weer te geven:
+### <a name="2--examine-the-contents-of-standardoutputtxt"></a>2. Controleer de inhoud van Standard output. txt 
+Zoek de uitvoer container voor de betreffende werk stroom. MSGEN maakt een, `[workflowfilename].logs.zip`-map nadat elke werk stroom is uitgevoerd. Pak de map uit om de inhoud ervan weer te geven:
 
-* outputFileList.txt - een lijst van de uitvoerbestanden die tijdens de werkstroom worden geproduceerd
-* StandardError.txt - dit bestand is leeg.
-* StandardOutput.txt - registreert alle op het hoogste niveau statusberichten, met inbegrip van fouten die zijn opgetreden tijdens het uitvoeren van de werkstroom.
-* Logboekbestanden GATK - alle andere bestanden in de `logs` map
+* outputFileList. txt: een lijst met de uitvoer bestanden die zijn geproduceerd tijdens de werk stroom
+* Standard error. txt: dit bestand is leeg.
+* Standard output. txt: registreert alle status berichten op het hoogste niveau, inclusief fouten, die zijn opgetreden tijdens het uitvoeren van de werk stroom.
+* GATK-logboek bestanden: alle andere bestanden in de map `logs`
 
-Bekijk de inhoud van standardoutput.txt en Let op eventuele foutberichten die worden weergegeven voor het oplossen van problemen.
+Bekijk de inhoud van Standard output. txt voor probleem oplossing en noteer eventuele fout berichten die worden weer gegeven.
 
 
-## <a name="step-2-try-recommended-steps-for-common-errors"></a>Stap 2: Probeer de aanbevolen stappen uit voor veelvoorkomende fouten
+## <a name="step-2-try-recommended-steps-for-common-errors"></a>Stap 2: Probeer de aanbevolen stappen voor veelvoorkomende fouten
 
-In deze sectie worden kort veelvoorkomende fouten uitvoer door Microsoft Genomics-service (msgen) en de strategieën die u kunt ze op te lossen. 
+In deze sectie worden veelvoorkomende fouten beschreven die worden uitgevoerd door Microsoft Genomics service (msgen) en de strategieën die u kunt gebruiken om ze op te lossen. 
 
-De service Microsoft Genomics (msgen) kan de volgende twee soorten fouten genereren:
+De Microsoft Genomics-service (msgen) kan de volgende twee soorten fouten genereren:
 
-1. Interne fouten: Fouten die intern voor de service, die mogelijk niet worden omgezet zijn door parameters of de invoerbestanden op te lossen. Soms opnieuw de werkstroom kan deze fouten zijn opgelost.
-2. Invoerfouten: Fouten die kunnen worden opgelost met behulp van de juiste argumenten of vaststelling bestandsindelingen.
+1. Interne service fouten: fouten die intern zijn voor de service, die mogelijk niet worden opgelost door para meters of invoer bestanden te herstellen. Soms worden deze fouten mogelijk opgelost door de werk stroom opnieuw te verzenden.
+2. Invoer fouten: fouten die kunnen worden opgelost met de juiste argumenten of bestands indelingen herstellen.
 
-### <a name="1-internal-service-errors"></a>1. Interne servicefouten
+### <a name="1-internal-service-errors"></a>1. interne service fouten
 
-Een interne servicefout is geen gebruiker bruikbare. U kunt de werkstroom opnieuw verzenden, maar als dit niet werkt, neem dan contact op met ondersteuning voor Microsoft Genomics
+Een interne service fout is niet van gebruikers actie. U kunt de werk stroom opnieuw verzenden, maar als dat niet werkt, neemt u contact op met Microsoft Genomics ondersteuning
 
 | Foutbericht                                                                                                                            | Aanbevolen stappen voor probleemoplossing                                                                                                                                   |
 |------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Er is een interne fout opgetreden. Probeer de werkstroom opnieuw indienen. Als u deze fout opnieuw ziet, contact op met Microsoft Genomics-ondersteuning voor hulp | De werkstroom opnieuw indienen. Neem contact op met Microsoft Genomics ondersteuning voor hulp als het probleem zich blijft voordoen door het maken van een [ticket](file-support-ticket-genomics.md ). |
+| Er is een interne fout opgetreden. Probeer de werk stroom opnieuw te verzenden. Als deze fout opnieuw wordt weer geven, neemt u contact op met Microsoft Genomics ondersteuning voor hulp | Dien de werk stroom opnieuw in. Neem contact op met Microsoft Genomics ondersteuning voor hulp als het probleem zich blijft voordoen door een ondersteunings [ticket](file-support-ticket-genomics.md )te maken. |
 
-### <a name="2-input-errors"></a>2. Invoerfouten
+### <a name="2-input-errors"></a>2. invoer fouten
 
-Deze fouten worden bruikbare gebruiker. Op basis van het type van bestands- en foutcode, voert Microsoft Genomics-service verschillende foutcodes. Volg de aanbevolen stappen hieronder vermeld.
+Deze fouten kunnen gebruikers actie ondernemen. Op basis van het bestands type en fout code Microsoft Genomics service uitvoer afzonderlijke fout codes. Volg de aanbevolen stappen voor probleem oplossing hieronder.
 
 | Type bestand | Foutcode | Foutbericht                                                                           | Aanbevolen stappen voor probleemoplossing                                                                                         |
 |--------------|------------|-----------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------|
-| Alle          | 701        | Lezen [readId] heeft [numberOfBases] bases, maar de limiet is [maxReadLength]           | De meest voorkomende reden voor deze fout is het bestand beschadigd leidt tot een samenvoeging van twee leesbewerkingen. Controleer uw invoerbestanden. |
-| BAM          | 200        |   Kan niet lezen van bestand [yourFileName].                                                                                       | Controleer de indeling van de BAM-bestand. De werkstroom opnieuw verzenden met een correct opgemaakt bestand.                                                                           |
-| BAM          | 201        |  Kan niet lezen BAM-bestand [bestandsnaam].                                                                                      |Controleer de indeling van de BAM-bestand.  De werkstroom verzenden met een correct opgemaakt bestand.                                                                            |
-| BAM          | 202        | Kan niet lezen BAM-bestand [bestandsnaam]. Bestand te klein en ontbrekende header.                                                                                        | Controleer de indeling van de BAM-bestand.  De werkstroom verzenden met een correct opgemaakt bestand.                                                                            |
-| BAM          | 203        |   Kan niet lezen BAM-bestand [bestandsnaam]. Koptekst van bestand is beschadigd.                                                                                      |Controleer de indeling van de BAM-bestand.  De werkstroom verzenden met een correct opgemaakt bestand.                                                                           |
-| BAM          | 204        |    Kan niet lezen BAM-bestand [bestandsnaam]. Koptekst van bestand is beschadigd.                                                                                     | Controleer de indeling van de BAM-bestand.  De werkstroom verzenden met een correct opgemaakt bestand.                                                                           |
-| BAM          | 205        |    Kan niet lezen BAM-bestand [bestandsnaam]. Koptekst van bestand is beschadigd.                                                                                     | Controleer de indeling van de BAM-bestand.  De werkstroom verzenden met een correct opgemaakt bestand.                                                                            |
-| BAM          | 206        |   Kan niet lezen BAM-bestand [bestandsnaam]. Koptekst van bestand is beschadigd.                                                                                      | Controleer de indeling van de BAM-bestand.  De werkstroom verzenden met een correct opgemaakt bestand.                                                                            |
-| BAM          | 207        |  Kan niet lezen BAM-bestand [bestandsnaam]. Het bestand is afgekapt bij offset [offset].                                                                                       | Controleer de indeling van de BAM-bestand.  De werkstroom verzenden met een correct opgemaakt bestand.                                                                            |
-| BAM          | 208        |   Ongeldige BAM-bestand. De ReadID [Read_Id] heeft geen reeks in [bestandsnaam]-bestand.                                                                                      | Controleer de indeling van de BAM-bestand.  De werkstroom verzenden met een correct opgemaakt bestand.                                                                             |
-| FASTQ        | 300        |  Kan niet lezen van FASTQ-bestand. [Bestandsnaam] eindigt niet met een nieuwe regel.                                                                                     | Corrigeer de indeling van de FASTQ-bestand en de werkstroom opnieuw indienen.                                                                           |
-| FASTQ        | 301        |   Kan niet lezen van FASTQ-bestand [bestandsnaam]. FASTQ-record is groter dan buffergrootte bij offset: [_offset]                                                                                      | Corrigeer de indeling van de FASTQ-bestand en de werkstroom opnieuw indienen.                                                                         |
-| FASTQ        | 302        |     Fout bij het FASTQ-syntaxis. [Bestandsnaam]-bestand heeft een lege regel.                                                                                    | Corrigeer de indeling van de FASTQ-bestand en de werkstroom opnieuw indienen.                                                                         |
-| FASTQ        | 303        |       Fout bij het FASTQ-syntaxis. Bestand [bestandsnaam] heeft een ongeldig teken beginnen bij verschuiving: [_offset], regel typt: [line_type] tekens: [_char]                                                                                  | Corrigeer de indeling van de FASTQ-bestand en de werkstroom opnieuw indienen.                                                                         |
-| FASTQ        | 304      |  FASTQ syntaxisfout op readID [_ReadID].  Eerste lezen van batch geen readID hebben die eindigt op /1 in het bestand [bestandsnaam]                                                                                       | Corrigeer de indeling van de FASTQ-bestand en de werkstroom opnieuw indienen.                                                                         |
-| FASTQ        | 305        |  FASTQ syntaxisfout op readID [_readID]. Tweede lezen van batch geen readID hebben die eindigt op /2 in het bestand [bestandsnaam]                                                                                      | Corrigeer de indeling van de FASTQ-bestand en de werkstroom opnieuw indienen.                                                                          |
-| FASTQ        | 306        |  FASTQ syntaxisfout op readID [_ReadID]. Eerste lezen van een paar van beschikt niet over een ID die op /1 in het bestand [bestandsnaam eindigt]                                                                                       | Corrigeer de indeling van de FASTQ-bestand en de werkstroom opnieuw indienen.                                                                          |
-| FASTQ        | 307        |   FASTQ syntaxisfout op readID [_ReadID]. ReadID eindigt niet met /1 of / 2. Bestand [bestandsnaam] kan niet worden gebruikt als een gekoppelde FASTQ-bestand.                                                                                      |Corrigeer de indeling van de FASTQ-bestand en de werkstroom opnieuw indienen.                                                                          |
-| FASTQ        | 308        |  FASTQ lezen fout bij. Leesbewerkingen van beide kanten anders heeft gereageerd. U de juiste FASTQ-bestanden kiezen?                                                                                       | Corrigeer de indeling van de FASTQ-bestand en de werkstroom opnieuw indienen.                                                                         |
+| Alle          | 701        | Lezen [gereed] heeft [numberOfBases] bases, maar de limiet is [maxReadLength]           | De meest voorkomende reden voor deze fout is de bestands beschadiging waardoor twee Lees bewerkingen worden samengevoegd. Controleer uw invoer bestanden. |
+| BAM          | 200        |   Kan bestand [yourFileName] niet lezen.                                                                                       | Controleer de indeling van het BAM-bestand. Verzend de werk stroom opnieuw met een correct opgemaakt bestand.                                                                           |
+| BAM          | 201        |  Kan het BAM-bestand [bestands naam] niet lezen.                                                                                      |Controleer de indeling van het BAM-bestand.  Verzend de werk stroom met een correct opgemaakt bestand.                                                                            |
+| BAM          | 202        | Kan het BAM-bestand [bestands naam] niet lezen. Het bestand is te klein en er ontbreekt een header.                                                                                        | Controleer de indeling van het BAM-bestand.  Verzend de werk stroom met een correct opgemaakt bestand.                                                                            |
+| BAM          | 203        |   Kan het BAM-bestand [bestands naam] niet lezen. De header van het bestand is beschadigd.                                                                                      |Controleer de indeling van het BAM-bestand.  Verzend de werk stroom met een correct opgemaakt bestand.                                                                           |
+| BAM          | 204        |    Kan het BAM-bestand [bestands naam] niet lezen. De header van het bestand is beschadigd.                                                                                     | Controleer de indeling van het BAM-bestand.  Verzend de werk stroom met een correct opgemaakt bestand.                                                                           |
+| BAM          | 205        |    Kan het BAM-bestand [bestands naam] niet lezen. De header van het bestand is beschadigd.                                                                                     | Controleer de indeling van het BAM-bestand.  Verzend de werk stroom met een correct opgemaakt bestand.                                                                            |
+| BAM          | 206        |   Kan het BAM-bestand [bestands naam] niet lezen. De header van het bestand is beschadigd.                                                                                      | Controleer de indeling van het BAM-bestand.  Verzend de werk stroom met een correct opgemaakt bestand.                                                                            |
+| BAM          | 207        |  Kan het BAM-bestand [bestands naam] niet lezen. Het bestand is afgekapt bij offset [offset].                                                                                       | Controleer de indeling van het BAM-bestand.  Verzend de werk stroom met een correct opgemaakt bestand.                                                                            |
+| BAM          | 208        |   Ongeldig BAM-bestand. De geklaarde [Read_Id] heeft geen volg orde in het bestand [bestands naam].                                                                                      | Controleer de indeling van het BAM-bestand.  Verzend de werk stroom met een correct opgemaakt bestand.                                                                             |
+| FASTQ        | 300        |  Kan het FASTQ-bestand niet lezen. [Bestands naam] eindigt niet met een nieuwe regel.                                                                                     | Corrigeer de indeling van het FASTQ-bestand en verzend de werk stroom opnieuw.                                                                           |
+| FASTQ        | 301        |   Kan het FASTQ-bestand [bestands naam] niet lezen. FASTQ-record is groter dan buffer grootte bij offset: [_offset]                                                                                      | Corrigeer de indeling van het FASTQ-bestand en verzend de werk stroom opnieuw.                                                                         |
+| FASTQ        | 302        |     FASTQ-syntaxis fout. Bestand [bestands naam] bevat een lege regel.                                                                                    | Corrigeer de indeling van het FASTQ-bestand en verzend de werk stroom opnieuw.                                                                         |
+| FASTQ        | 303        |       FASTQ-syntaxis fout. Bestand [bestands naam] heeft een ongeldig begin teken bij offset: [_offset], regel type: [line_type], teken: [_Char]                                                                                  | Corrigeer de indeling van het FASTQ-bestand en verzend de werk stroom opnieuw.                                                                         |
+| FASTQ        | 304      |  FASTQ-syntaxis fout bij het gereed [_ReadID].  Het eerste Lees van de batch is niet gereed voor het aflopen van/1 in het bestand [bestands naam]                                                                                       | Corrigeer de indeling van het FASTQ-bestand en verzend de werk stroom opnieuw.                                                                         |
+| FASTQ        | 305        |  FASTQ-syntaxis fout bij het gereed [_readID]. De tweede lees bewerking van de batch is niet gereed voor afeindigend op/2 in het bestand [bestands naam]                                                                                      | Corrigeer de indeling van het FASTQ-bestand en verzend de werk stroom opnieuw.                                                                          |
+| FASTQ        | 306        |  FASTQ-syntaxis fout bij het gereed [_ReadID]. De eerste Lees van het paar heeft geen ID die eindigt op/1 in het bestand [bestands naam]                                                                                       | Corrigeer de indeling van het FASTQ-bestand en verzend de werk stroom opnieuw.                                                                          |
+| FASTQ        | 307        |   FASTQ-syntaxis fout bij het gereed [_ReadID]. Gereed voor gebruik van/1 of/2. Bestand [bestands naam] kan niet worden gebruikt als een gekoppeld FASTQ-bestand.                                                                                      |Corrigeer de indeling van het FASTQ-bestand en verzend de werk stroom opnieuw.                                                                          |
+| FASTQ        | 308        |  FASTQ-Lees fout. Lees bewerkingen van beide uiteinden hebben een andere reactie. Hebt u de juiste FASTQ-bestanden gekozen?                                                                                       | Corrigeer de indeling van het FASTQ-bestand en verzend de werk stroom opnieuw.                                                                         |
 |        |       |                                                                                        |                                                                           |
 
-## <a name="step-3-contact-microsoft-genomics-support"></a>Stap 3: Neem contact op met ondersteuning voor Microsoft Genomics
+## <a name="step-3-contact-microsoft-genomics-support"></a>Stap 3: contact opnemen met Microsoft Genomics ondersteuning
 
-Als u nog steeds taakfouten hebt, of als u andere vragen hebt, neem dan contact op met ondersteuning voor Microsoft Genomics in Azure portal. Meer informatie over hoe u een ondersteuningsaanvraag indienen vindt [hier](file-support-ticket-genomics.md).
+Als er taak fouten optreden of als u andere vragen hebt, neemt u contact op met Microsoft Genomics ondersteuning van de Azure Portal. Meer informatie over het verzenden van een ondersteunings aanvraag vindt u [hier](file-support-ticket-genomics.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel hebt u geleerd hoe u problemen op te lossen van veelvoorkomende problemen met de Microsoft Genomics-service. Zie voor meer informatie en veelgestelde vragen over de algemene [Veelgestelde vragen over](frequently-asked-questions-genomics.md). 
+In dit artikel hebt u geleerd hoe u veelvoorkomende problemen met de Microsoft Genomics-service kunt oplossen en oplossen. Zie [Veelgestelde vragen](frequently-asked-questions-genomics.md)voor meer informatie en meer algemene veelgestelde vragen. 

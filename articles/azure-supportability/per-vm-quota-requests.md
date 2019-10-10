@@ -5,14 +5,14 @@ author: sowmyavenkat86
 ms.author: svenkat
 ms.date: 06/07/2019
 ms.topic: article
-ms.service: azure
+ms.service: azure-supportability
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
-ms.openlocfilehash: 9caf82d2fa4683e845d23b5496f9e7b8f9682ec7
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: e99bdd92d4a1aab833a95943b22aaabe7f0daa1d
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68234826"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72248667"
 ---
 # <a name="vm-series-vcpu-limit-increase"></a>De vCPU-limiet voor een VM-reeks verhogen
 
@@ -29,7 +29,7 @@ U kunt nu een toename aanvragen via de Blade **Help en ondersteuning** of de Bla
 
 Volg de onderstaande instructies om een ondersteunings aanvraag te maken via de Blade Help en ondersteuning van Azure die beschikbaar zijn in de Azure Portal. 
 
-1. Selecteer https://portal.azure.com in de optie **Help en ondersteuning**.
+1. Selecteer in https://portal.azure.com **Help + ondersteuning**.
 
    ![Help en ondersteuning](./media/resource-manager-core-quotas-request/helpsupport.png)
  
@@ -70,7 +70,7 @@ Volg de onderstaande instructies om een ondersteunings aanvraag te maken via de 
 
 Volg de onderstaande instructies voor het maken van een ondersteunings aanvraag via de Blade gebruik en quotum van Azure die beschikbaar is in de Azure Portal. 
 
-1. Vanuit https://portal.azure.com selecteert u **abonnementen**.
+1. Selecteer in https://portal.azure.com **abonnementen**.
 
    ![Abonnementen](./media/resource-manager-core-quotas-request/subscriptions.png)
 

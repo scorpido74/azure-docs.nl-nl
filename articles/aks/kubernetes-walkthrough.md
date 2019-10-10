@@ -1,5 +1,5 @@
 ---
-title: 'Quickstart: Een Azure Kubernetes service-cluster implementeren'
+title: 'Snelstartgids: een Azure Kubernetes service-cluster implementeren'
 description: Ontdek hoe u snel een Kubernetes-cluster kunt maken, een toepassing kunt implementeren en de prestaties in Azure Kubernetes Service (AKS) kunt bewaken met behulp van de Azure CLI.
 services: container-service
 author: mlearned
@@ -8,20 +8,20 @@ ms.topic: quickstart
 ms.date: 09/13/2019
 ms.author: mlearned
 ms.custom: H1Hack27Feb2017, mvc, devcenter, seo-javascript-september2019, seo-javascript-october2019
-ms.openlocfilehash: 3a07186856fd05c65f583a94f324df05e348d24f
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: 1d700afe36d51f0b939629f86d770e54072f47a9
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71960015"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72255521"
 ---
-# <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-the-azure-cli"></a>Quickstart: Een AKS-cluster (Azure Kubernetes Service) implementeren met behulp van de Azure CLI
+# <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-the-azure-cli"></a>Snelstartgids: een Azure Kubernetes service (AKS)-cluster implementeren met behulp van Azure CLI
 
 In deze Quick Start implementeert u een Azure Kubernetes service (AKS)-cluster met behulp van de Azure CLI. AKS is een beheerde Kubernetes-service waarmee u snel clusters kunt implementeren en beheren. In het cluster wordt een toepassing met meerdere containers uitgevoerd die bestaat uit een web-front-end en een Redis-exemplaar. Vervolgens ziet u hoe u de status van het cluster en de pods kunt bewaken die uw toepassing uitvoeren.
 
 Als u Windows Server-containers wilt gebruiken (momenteel in de preview-versie van AKS), raadpleegt u [een AKS-cluster maken dat Windows Server-containers ondersteunt][windows-container-cli].
 
-![Afbeelding van browsen naar Azure Vote](media/container-service-kubernetes-walkthrough/azure-vote.png)
+![Azure stem-app in actie](media/container-service-kubernetes-walkthrough/azure-voting-application.png)
 
 In deze snelstart wordt ervan uitgegaan dat u een basisbegrip hebt van Kubernetes-concepten. Zie [Kubernetes core-concepten voor Azure Kubernetes service (AKS)][kubernetes-concepts]voor meer informatie.
 
@@ -230,7 +230,7 @@ azure-vote-front   LoadBalancer   10.0.37.27   52.179.23.131   80:30572/TCP   2m
 
 Open een webbrowser naar het externe IP-adres van uw service om de Azure Vote-app te zien.
 
-![Afbeelding van browsen naar Azure Vote](media/container-service-kubernetes-walkthrough/azure-vote.png)
+![Azure stem-app in actie](media/container-service-kubernetes-walkthrough/azure-voting-application.png)
 
 Wanneer het AKS-cluster is gemaakt, is [Azure monitor voor containers](../azure-monitor/insights/container-insights-overview.md) ingeschakeld voor het vastleggen van metrische gegevens over de status van de cluster knooppunten en de peul. Deze metrische gegevens over de status zijn in de Azure-portal beschikbaar.
 

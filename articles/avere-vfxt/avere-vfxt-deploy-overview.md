@@ -1,73 +1,73 @@
 ---
-title: Implementatieoverzicht van - Avere vFXT voor Azure
-description: Overzicht van de implementatie van Avere vFXT voor Azure
+title: Implementatie overzicht-avere vFXT voor Azure
+description: Overzicht van de implementatie van AVERE vFXT voor Azure
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 02/20/2019
-ms.author: v-erkell
-ms.openlocfilehash: 88305e5d877f5bc3cc7ebb116f69b0f49f162b79
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: rohogue
+ms.openlocfilehash: 9684b230b8790e36cd7442c65481c0c71ce185d6
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60409909"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72255422"
 ---
-# <a name="avere-vfxt-for-azure---deployment-overview"></a>Avere vFXT voor Azure - implementatie-overzicht
+# <a name="avere-vfxt-for-azure---deployment-overview"></a>Overzicht van AVERE vFXT voor Azure-implementatie
 
-In dit artikel biedt een overzicht van de stappen die nodig zijn om op te halen van een vFXT Avere voor Azure-cluster omhoog en die wordt uitgevoerd.
+In dit artikel vindt u een overzicht van de stappen die nodig zijn om een avere vFXT voor Azure-cluster actief te krijgen.
 
-Verschillende taken die nodig zijn voor en na het maken van het cluster vFXT vanuit Azure Marketplace. Met een helder beeld van het proces van begin tot eind, krijgt u het bereik van de hoeveelheid werk die nodig zijn. 
+Er zijn verschillende taken nodig voor en nadat u het vFXT-cluster hebt gemaakt op de Azure Marketplace. Een duidelijke indruk van het begin-to-finish-proces helpt u de inspanningen te bereiken die nodig zijn. 
 
 ## <a name="deployment-steps"></a>Implementatiestappen
 
-Na [plannen van uw systeem](avere-vfxt-deploy-plan.md), kunt u beginnen met het maken van uw Avere vFXT-cluster. 
+Nadat u [uw systeem hebt gepland](avere-vfxt-deploy-plan.md), kunt u beginnen met het maken van uw avere vFXT-cluster. 
 
-Een Azure Resource Manager-sjabloon in de Azure Marketplace de benodigde gegevens verzamelt en wordt het hele cluster automatisch geïmplementeerd. 
+Een Azure Resource Manager sjabloon in de Azure Marketplace verzamelt de benodigde gegevens en implementeert automatisch het hele cluster. 
 
-Nadat het cluster vFXT actief en werkend is, u wilt weten hoe u kunt clients verbinden en, indien nodig, het verplaatsen van uw gegevens naar de nieuwe Blob storage-container.  
+Nadat het vFXT-cluster actief is, wilt u weten hoe u clients kunt verbinden en, indien nodig, hoe u uw gegevens naar de nieuwe Blob Storage-container kunt verplaatsen.  
 
-Hier volgt een overzicht van alle de stappen.
+Hier volgt een overzicht van alle stappen.
 
 1. Vereisten configureren 
 
-   Voordat u een virtuele machine maakt, moet u een nieuw abonnement voor het Avere vFXT-project maken, abonnement eigendom configureren, quota controleren en een verhoging als nodig hebt en voorwaarden voor het gebruik van de Avere vFXT-software accepteren. Lezen [voorbereidingen voor het maken van de vFXT Avere](avere-vfxt-prereqs.md) voor gedetailleerde instructies.
+   Voordat u een VM maakt, moet u een nieuw abonnement maken voor het avere vFXT-project, het eigendom van het abonnement configureren, quota's controleren en zo nodig een verhoging aanvragen en voor waarden voor het gebruik van de avere vFXT-software accepteren. Lees [de voor bereiding voor het maken van de avere-vFXT](avere-vfxt-prereqs.md) voor gedetailleerde instructies.
 
-1. De Avere vFXT-cluster maken 
+1. Het avere vFXT-cluster maken 
 
-   Gebruik de Azure Marketplace te maken van de vFXT Avere voor Azure-cluster. Een sjabloon voor de vereiste gegevens verzamelt en scripts voor het maken van het uiteindelijke product wordt uitgevoerd.
+   Gebruik Azure Marketplace om de avere vFXT voor Azure-cluster te maken. Een sjabloon verzamelt de vereiste informatie en voert scripts uit om het eind product te maken.
 
-   Maken van een cluster bestaat uit stappen die worden uitgevoerd door de marketplace-sjabloon: 
+   Het maken van een cluster omvat de volgende stappen, die allemaal worden uitgevoerd door de Marketplace-sjabloon: 
 
-   * Het maken van nieuwe netwerk-infrastructuur en resource-groepen, indien nodig
-   * Het maken van een *clustercontroller*  
+   * Zo nodig nieuwe netwerk infrastructuur en-resource groepen maken
+   * Een *cluster controller* maken  
 
-     De clustercontroller is een eenvoudige virtuele machine die zich in hetzelfde virtuele netwerk bevinden als het Avere vFXT cluster bevinden en de aangepaste software nodig is om te maken en beheren van het cluster. De controller maakt de formulieren en vFXT knooppunten aan het cluster en het bevat ook een opdrachtregelinterface voor het beheren van het cluster tijdens de levensduur.
+     De cluster controller is een eenvoudige VM die zich in hetzelfde virtuele netwerk bevindt als het avere vFXT-cluster en beschikt over de aangepaste software die nodig is voor het maken en beheren van het cluster. De controller maakt de vFXT-knoop punten en vormt het cluster en maakt ook een opdracht regel interface voor het beheren van het cluster tijdens de levens duur.
 
-     Als u een nieuw vnet tijdens de implementatie maken, is de controller heeft een openbaar IP-adres. Dit betekent dat de controller kan fungeren als host voor een korte inleiding voor de verbinding met het cluster op basis van buiten het vnet.
+     Als u tijdens de implementatie een nieuw vnet maakt, heeft uw controller een openbaar IP-adres. Dit betekent dat de controller als een Jump host kan fungeren voor het maken van verbinding met het cluster van buiten het vnet.
 
-   * Het maken van het cluster knooppunt VM 's
+   * De virtuele machines van het cluster knooppunt maken
 
-   * Het clusterknooppunt VM's om het cluster configureren
+   * De virtuele machines van het cluster knooppunt configureren om het cluster te vormen
 
-   * (Optioneel) een nieuwe Blob-container maken en deze configureren als back-end-opslag voor het cluster
+   * U kunt eventueel een nieuwe BLOB-container maken en deze configureren als back-end-opslag voor het cluster
 
 1. Het cluster configureren 
 
-   Verbinding maken met de Avere vFXT configuratie-interface (Configuratiescherm Avere) om aan te passen van de instellingen van het cluster. Opt-in voor het bewaken van ondersteuning en uw opslagsysteem toevoegen als u een on-premises Datacenter.
+   Maak verbinding met de configuratie-interface van AVERE vFXT (avere in het configuratie scherm) om de instellingen van het cluster aan te passen. Meld u aan voor ondersteunings bewaking en voeg uw opslag systeem toe als u een on-premises Data Center gebruikt.
 
-   * [Toegang tot het cluster vFXT](avere-vfxt-cluster-gui.md)
+   * [Access the vFXT cluster](avere-vfxt-cluster-gui.md) (Toegang tot het vFXT-cluster)
    * [Ondersteuning inschakelen](avere-vfxt-enable-support.md)
    * [Opslag configureren](avere-vfxt-add-storage.md) (indien nodig)
 
-1. Koppelen van clients
+1. Clients koppelen
 
-   Volg de richtlijnen in [koppelen van het cluster van Avere vFXT](avere-vfxt-mount-clients.md) voor meer informatie over taakverdeling en hoe clientcomputers het cluster moeten koppelen.
+   Volg de richt lijnen in [mount the avere vFXT cluster](avere-vfxt-mount-clients.md) voor meer informatie over taak verdeling en hoe client computers het cluster moeten koppelen.
 
 1. Gegevens toevoegen (indien nodig)
 
-   Omdat de vFXT Avere een schaalbaar multi-clientcache is, is de beste manier om gegevens te verplaatsen naar een nieuwe back-end-storage-container met meerdere client, met meerdere threads bestand kopiëren strategie. Lezen [om gegevens te verplaatsen naar het cluster vFXT](avere-vfxt-data-ingest.md) voor meer informatie.
+   Omdat de avere-vFXT een schaal bare cache voor meerdere clients is, is de beste manier om gegevens naar een nieuwe back-end-opslag container te verplaatsen, met een multi-client en een strategie voor het kopiëren van bestanden met meerdere threads. Lees [gegevens naar het vFXT-cluster verplaatsen](avere-vfxt-data-ingest.md) voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Blijven [voorbereidingen voor het maken van de vFXT Avere](avere-vfxt-prereqs.md) de voorbereidende taken voor het implementeren van de vFXT Avere voor Azure. 
+Ga door met [de voor bereiding voor het maken van de avere vFXT](avere-vfxt-prereqs.md) voor het volt ooien van de voorbereidende taken voor het implementeren van de avere VFXT voor Azure. 

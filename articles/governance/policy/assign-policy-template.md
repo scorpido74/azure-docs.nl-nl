@@ -1,19 +1,19 @@
 ---
-title: Een beleids toewijzing maken met een resource manager-sjabloon
+title: Toewijzing maken met Resource Manager-sjabloon
 description: In dit artikel wordt stapsgewijs beschreven hoe u een resource manager-sjabloon gebruikt om een beleids toewijzing te maken om niet-compatibele resources te identificeren.
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 03/13/2019
 ms.topic: quickstart
 ms.service: azure-policy
-ms.openlocfilehash: 72d8fab39e8dd11cf46eb2977a9b9fe288ca2de1
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 842b29160e3abaea5edc4bfb4f2e1c345e3ffc85
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71980802"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72254816"
 ---
-# <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-by-using-a-resource-manager-template"></a>Quickstart: Een beleids toewijzing maken om niet-compatibele resources te identificeren met behulp van een resource manager-sjabloon
+# <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-by-using-a-resource-manager-template"></a>Snelstartgids: een beleids toewijzing maken om niet-compatibele resources te identificeren met behulp van een resource manager-sjabloon
 
 De eerste stap in het begrijpen van naleving in Azure is het identificeren van de status van uw resources.
 In deze quickstart gaat u een beleidstoewijzing maken voor het identificeren van virtuele machines die geen beheerde schijven gebruiken.
@@ -40,11 +40,11 @@ Hier volgt een kopie van de sjabloon:
 
 1. Selecteer of voer de volgende waarden in:
 
-   | Name | Value |
+   | Naam | Waarde |
    |------|-------|
-   | Subscription | Selecteer uw Azure-abonnement. |
-   | Resource group | Selecteer **nieuwe maken**, geef een naam op en selecteer **OK**. In de scherm opname is de naam van de resource groep *mypolicyquickstart @ no__t-1Date in MMDD > RG*. |
-   | Location | Selecteer een regio. Bijvoorbeeld **US - centraal**. |
+   | Abonnement | Selecteer uw Azure-abonnement. |
+   | Resourcegroep | Selecteer **nieuwe maken**, geef een naam op en selecteer **OK**. In de scherm opname is de naam van de resource groep *mypolicyquickstart @ no__t-1Date in MMDD > RG*. |
+   | Locatie | Selecteer een regio. Bijvoorbeeld **US - centraal**. |
    | Naam van beleids toewijzing | Geef een naam op voor het toewijzings beleid. U kunt de beleids definitie weer geven als u wilt. U kunt bijvoorbeeld **Vm's controleren die geen beheerde schijven gebruiken**. |
    | RG naam | Geef een naam op voor de resource groep waaraan u het beleid wilt toewijzen. In deze Quick Start gebruikt u de standaard waarde **[resourceGroup (). naam]** . **[resourceGroup ()](../../azure-resource-manager/resource-group-template-functions-resource.md#resourcegroup)** is een sjabloon functie die de resource groep ophaalt. |
    | Beleids definitie-ID | Geef **/providers/Microsoft.Authorization/policyDefinitions/0a914e76-4921-4c19-b460-a2d36003525a**op. |

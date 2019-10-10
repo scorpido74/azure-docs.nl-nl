@@ -8,18 +8,18 @@ ms.topic: quickstart
 ms.date: 04/19/2019
 ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: e7cc9b63768385e4665e330b2b02a884b84c2188
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 307074618cae75ba57be219b4f975e2aec279682
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "67615390"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72255511"
 ---
-# <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-an-azure-resource-manager-template"></a>Quickstart: Een AKS-cluster (Azure Kubernetes service) implementeren met behulp van een Azure Resource Manager sjabloon
+# <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-an-azure-resource-manager-template"></a>Snelstartgids: een AKS-cluster (Azure Kubernetes service) implementeren met behulp van een Azure Resource Manager sjabloon
 
 Azure Kubernetes Service (AKS) is een beheerde Kubernetes-service waarmee u snel clusters kunt implementeren en beheren. In deze Quick Start implementeert u een AKS-cluster met behulp van een Azure Resource Manager sjabloon. In het cluster wordt een toepassing met meerdere containers uitgevoerd die bestaat uit een web-front-end en een Redis-exemplaar.
 
-![Afbeelding van browsen naar Azure Vote](media/container-service-kubernetes-walkthrough/azure-vote.png)
+![Afbeelding van browsen naar Azure Vote](media/container-service-kubernetes-walkthrough/azure-voting-application.png)
 
 In deze snelstart wordt ervan uitgegaan dat u een basisbegrip hebt van Kubernetes-concepten. Zie [Kubernetes core-concepten voor Azure Kubernetes service (AKS)][kubernetes-concepts]voor meer informatie.
 
@@ -79,16 +79,16 @@ De sjabloon die in deze Quick Start wordt gebruikt, is het [implementeren van ee
 
     Voor deze Quick start moet u de standaard waarden voor de *besturingssysteem schijf grootte GB*, het *aantal agents*, de *VM-grootte*van de agent, het *type besturings systeem*en de *Kubernetes-versie*behouden. Geef uw eigen waarden op voor de volgende sjabloon parameters:
 
-    * **Abonnement**: Selecteer een Azure-abonnement.
-    * **Resourcegroep**: Selecteer **Nieuw maken**. Voer een unieke naam in voor de resource groep, zoals *myResourceGroup*, en kies vervolgens **OK**.
-    * **Locatie**: Selecteer een locatie, zoals **VS-Oost**.
+    * **Subscription**: selecteer een Azure-abonnement.
+    * **Resource groep**: Selecteer **nieuwe maken**. Voer een unieke naam in voor de resource groep, zoals *myResourceGroup*, en kies vervolgens **OK**.
+    * **Locatie**: Selecteer een locatie, bijvoorbeeld **VS-Oost**.
     * **Cluster naam**: Voer een unieke naam in voor het AKS-cluster, zoals *myAKSCluster*.
     * **DNS-voor voegsel**: Voer een uniek DNS-voor voegsel voor uw cluster in, zoals *myakscluster*.
     * **Gebruikers naam voor Linux-beheerder**: Voer een gebruikers naam in om verbinding te maken via SSH, zoals *azureuser*.
     * **Open bare SSH RSA-sleutel**: Kopieer en plak het *open bare* deel van uw SSH-sleutel paar (standaard de inhoud van *~/.ssh/id_rsa.pub*).
-    * **Client-id van Service-Principal**: Kopieer en plak de *AppID* van uw service-principal van `az ad sp create-for-rbac` de opdracht.
-    * **Client geheim**van de Service-Principal: Kopieer en plak het *wacht woord* van de Service-Principal `az ad sp create-for-rbac` van de opdracht.
-    * **Ik ga akkoord met de bovenstaande voorwaarden**: Schakel dit selectie vakje in om te accepteren.
+    * **Service-Principal-client-id**: Kopieer en plak de *AppID* van uw service-principal van de `az ad sp create-for-rbac` opdracht.
+    * **Service-Principal-client geheim**: Kopieer en plak het *wacht woord* van de service-principal van de `az ad sp create-for-rbac` opdracht.
+    * **Ik ga akkoord met de status van de voor waarden hierboven**: Schakel dit selectie vakje in om akkoord te gaan.
 
     ![Resource Manager-sjabloon voor het maken van een Azure Kubernetes service-cluster in de portal](./media/kubernetes-walkthrough-rm-template/create-aks-cluster-using-template-portal.png)
 
@@ -127,7 +127,7 @@ aks-agentpool-41324942-2   Ready    agent   6m45s   v1.12.6
 
 ## <a name="run-the-application"></a>De toepassing uitvoeren
 
-In een Kubernetes-manifestbestand wordt een gewenste status voor het cluster gedefinieerd, zoals welke containerinstallatiekopieën moeten worden uitgevoerd. In deze snelstart worden met behulp van een manifest alle objecten gemaakt die nodig zijn om de Azure Vote-toepassing uit te voeren. Dit manifest bevat twee [Kubernetes][kubernetes-deployment] -implementaties: een voor de voor beelden van Azure stem python-toepassingen en de andere voor een redis-exemplaar. Er zijn twee [Kubernetes-Services][kubernetes-service] gemaakt: een interne service voor het redis-exemplaar en een externe service voor toegang tot de Azure stem-toepassing via internet.
+In een Kubernetes-manifestbestand wordt een gewenste status voor het cluster gedefinieerd, zoals welke containerinstallatiekopieën moeten worden uitgevoerd. In deze snelstart worden met behulp van een manifest alle objecten gemaakt die nodig zijn om de Azure Vote-toepassing uit te voeren. Dit manifest bevat twee [Kubernetes-implementaties][kubernetes-deployment] : een voor de voor beelden van Azure stem python-toepassingen en de andere voor een redis-exemplaar. Er zijn twee [Kubernetes-Services][kubernetes-service] gemaakt: een interne service voor het redis-exemplaar en een externe service voor toegang tot de Azure stem-toepassing via internet.
 
 > [!TIP]
 > In deze snelstart maakt en implementeert u handmatig uw toepassingsmanifesten in het AKS-cluster. In meer Real-World scenario's kunt u [Azure dev Spaces][azure-dev-spaces] gebruiken om snel uw code te herhalen en fouten in het AKS-cluster op te sporen. U kunt Dev Spaces gebruiken op alle OS-platformen en in alle ontwikkelomgevingen, en u kunt samenwerken met andere leden van uw team.
@@ -259,7 +259,7 @@ azure-vote-front   LoadBalancer   10.0.37.27   52.179.23.131   80:30572/TCP   2m
 
 Open een webbrowser naar het externe IP-adres van uw service om de Azure Vote-app te zien.
 
-![Afbeelding van browsen naar Azure Vote](media/container-service-kubernetes-walkthrough/azure-vote.png)
+![Afbeelding van browsen naar Azure Vote](media/container-service-kubernetes-walkthrough/azure-voting-application.png)
 
 ## <a name="delete-cluster"></a>Cluster verwijderen
 
@@ -280,7 +280,7 @@ In deze snelstartgids zijn vooraf gemaakte containerinstallatiekopieën gebruikt
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze snelstart hebt u een Kubernetes-cluster geïmplementeerd en vervolgens een toepassing met meerdere containers geïmplementeerd. [Open het Kubernetes][kubernetes-dashboard] -webdashboard voor het cluster dat u hebt gemaakt.
+In deze snelstart hebt u een Kubernetes-cluster geïmplementeerd en vervolgens een toepassing met meerdere containers geïmplementeerd. [Open het Kubernetes-webdashboard][kubernetes-dashboard] voor het cluster dat u hebt gemaakt.
 
 Voor meer informatie over AKS en een volledig stapsgewijs voorbeeld van code tot implementatie gaat u naar de zelfstudie over Kubernetes-clusters.
 

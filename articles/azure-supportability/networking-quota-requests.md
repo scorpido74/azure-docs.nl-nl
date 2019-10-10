@@ -1,30 +1,30 @@
 ---
-title: Bestandsgroottelimiet verhoogd netwerken | Microsoft Docs
-description: Netwerken bestandsgroottelimiet verhoogd
+title: Netwerk limiet verhogen | Microsoft Docs
+description: Netwerklimiet verhoogd
 author: anavinahar
 ms.author: anavin
 ms.date: 06/19/2019
 ms.topic: article
-ms.service: azure
+ms.service: azure-supportability
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
-ms.openlocfilehash: 48d7e9cc4a3034e149901931f2addbc7df78e2bc
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: 278e9ff68fa20a0a99a6447bb4cf7ac7fddbfb7b
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67297228"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72249119"
 ---
-# <a name="networking-limit-increase"></a>Netwerken bestandsgroottelimiet verhoogd
+# <a name="networking-limit-increase"></a>Netwerklimiet verhoogd
 
-Als u wilt weergeven van uw huidige netwerken gebruik en quota, vindt u de **gebruik + Quota** blade in Azure portal. U kunt ook gebruik [CLI](https://docs.microsoft.com//cli/azure/network?view=azure-cli-latest#az-network-list-usages), [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.network/get-azurermnetworkusage?view=azurermps-6.13.0) of de [netwerkgebruik API](https://docs.microsoft.com/rest/api/virtualnetwork/virtualnetworks/listusage) om uw netwerkgebruik en de limieten te bekijken.
+Als u uw huidige netwerk gebruik en quotum wilt weer geven, gaat u naar de Blade gebruiks namen en **quotum** in de Azure Portal. U kunt ook gebruik van [cli](https://docs.microsoft.com//cli/azure/network?view=azure-cli-latest#az-network-list-usages), [Power shell](https://docs.microsoft.com/powershell/module/azurerm.network/get-azurermnetworkusage?view=azurermps-6.13.0) of de [API voor netwerk gebruik](https://docs.microsoft.com/rest/api/virtualnetwork/virtualnetworks/listusage) gebruiken om uw netwerk gebruik en-limieten te bekijken.
 
-U kunt een verhoging aanvragen via **Help en ondersteuning** blade of de **gebruik + Quota** -blade in de portal.
+U kunt een verhoging aanvragen via de Blade **Help en ondersteuning** of de Blade **gebruik + quotum** in de portal.
 
-## <a name="request-networking-quota-increase-at-subscription-level-using-the-help--support-blade"></a>Verhoging netwerken quotum op abonnement niveau met de **Help en ondersteuning** blade
+## <a name="request-networking-quota-increase-at-subscription-level-using-the-help--support-blade"></a>Netwerk quotum verhoging op abonnements niveau aanvragen met behulp van de Blade **Help en ondersteuning**
 
-Volg de onderstaande instructies om te maken van een ondersteuningsaanvraag via Azure 'Help + ondersteuning' blade beschikbaar in de Azure portal. 
+Volg de onderstaande instructies om een ondersteunings aanvraag te maken via de Blade Help en ondersteuning van Azure die beschikbaar zijn in de Azure Portal. 
 
-1. Van https://portal.azure.com, selecteer **Help en ondersteuning**.
+1. Selecteer in https://portal.azure.com **Help + ondersteuning**.
 
     ![Help en ondersteuning](./media/resource-manager-core-quotas-request/helpsupport.png)
  
@@ -32,53 +32,53 @@ Volg de onderstaande instructies om te maken van een ondersteuningsaanvraag via 
 
     ![Nieuw ondersteuningsverzoek](./media/resource-manager-core-quotas-request/newsupportrequest.png)
 
-3. Kies in de vervolgkeuzelijst van het type probleem **limieten voor Service en -abonnement (quota)** .
+3. Kies in de vervolg keuzelijst probleem type de optie **service-en abonnements limieten (quota's)** .
 
-    ![Probleem type vervolgkeuzelijst](./media/resource-manager-core-quotas-request/issuetypedropdown.png)
+    ![Vervolg keuzelijst probleem type](./media/resource-manager-core-quotas-request/issuetypedropdown.png)
 
 4. Selecteer het abonnement waarvoor het quotum moet worden verhoogd.
 
-    ![Abonnement selecteren newSR](./media/resource-manager-core-quotas-request/select-subscription-sr.png)
+    ![Abonnement-Nieuwsset selecteren](./media/resource-manager-core-quotas-request/select-subscription-sr.png)
    
-5. Selecteer **netwerken** in **quotumtype** vervolgkeuzelijst. 
+5. Selecteer **netwerken** in vervolg keuzelijst **quotum type** . 
 
-    ![Quotumtype selecteren](./media/networking-quota-request/select-quota-type-network.png)
+    ![Quotum type selecteren](./media/networking-quota-request/select-quota-type-network.png)
 
-6. In **Details van probleem**, bieden aanvullende informatie over het proces uw aanvraag door te klikken op **vindt u informatie**.
+6. Geef bij Details van het **probleem**aanvullende informatie op voor het verwerken van uw aanvraag door te klikken op **Details opgeven**.
 
-    ![Geef details](./media/resource-manager-core-quotas-request/provide-details.png)
+    ![Details opgeven](./media/resource-manager-core-quotas-request/provide-details.png)
 
-7. In de **quotumgegevens** deelvenster, selecteert u implementatie-model, een locatie en de Resources die u wilt een toename van aanvragen.
+7. Selecteer in het deel venster **quotum Details** het implementatie model, een locatie en de resources waarvoor u een verhoging wilt aanvragen.
 
-    ![Quotumgegevens DM](./media/networking-quota-request/quota-details-network.png)
+    ![Quotum Details DM](./media/networking-quota-request/quota-details-network.png)
 
-8.  Geef de nieuwe limieten die u wilt dat voor het abonnement. Als u wilt verwijderen van een regel, schakel het selectievakje van de Resource in de vervolgkeuzelijst Resource of klik op het pictogram 'x' negeren. Na het invoeren van de gewenste quotum voor elke Resource, klikt u op **opslaan en doorgaan** in het deelvenster met details quotum om door te gaan met het maken van de aanvraag voor ondersteuning.
+8.  Voer de nieuwe limieten in die u wilt voor het abonnement. Als u een regel wilt verwijderen, schakelt u de resource uit in de vervolg keuzelijst resource of klikt u op het pictogram ' x ' negeren. Nadat u het gewenste quotum voor elke resource hebt ingevoerd, klikt u op **opslaan en door gaan** in het paneel quotum Details om door te gaan met het maken van de ondersteunings aanvraag.
 
-    ![Nieuwe grenzen](./media/networking-quota-request/network-new-limits.png)
+    ![Nieuwe limieten](./media/networking-quota-request/network-new-limits.png)
 
 
-## <a name="request-networking-quota-increase-at-subscription-level-using-usages--quota-blade"></a>Verhoging van de netwerken op het niveau met abonnement aanvragen **gebruik + Quota** blade
+## <a name="request-networking-quota-increase-at-subscription-level-using-usages--quota-blade"></a>Netwerk quotum verhoging op abonnements niveau aanvragen met **gebruik van + quotum** Blade
 
-Volg de instructies hieronder gebruiken voor het maken van een ondersteuningsaanvraag via Azure 'Gebruik + quota' blade beschikbaar in de Azure portal. 
+Volg de onderstaande instructies voor het maken van een ondersteunings aanvraag via de Blade gebruik en quotum van Azure die beschikbaar is in de Azure Portal. 
 
-1. Van https://portal.azure.com, selecteer **abonnementen**.
+1. Selecteer in https://portal.azure.com **abonnementen**.
 
-    ![Subscriptions](./media/resource-manager-core-quotas-request/subscriptions.png)
+    ![Abonnementen](./media/resource-manager-core-quotas-request/subscriptions.png)
 
 2. Selecteer het abonnement waarvoor het quotum moet worden verhoogd.
 
     ![Abonnement selecteren](./media/resource-manager-core-quotas-request/select-subscription.png)
 
-3. Selecteer **gebruik + quota**
+3. **Gebruik en quota's** selecteren
 
     ![Gebruik en quota's selecteren](./media/resource-manager-core-quotas-request/select-usage-quotas.png)
 
-4. Selecteer in de rechterbovenhoek **verhoging**.
+4. Selecteer in de rechter bovenhoek **aanvraag verhoging**.
 
-    ![Verhoging aanvragen](./media/resource-manager-core-quotas-request/request-increase.png)
+    ![Toename aanvragen](./media/resource-manager-core-quotas-request/request-increase.png)
 
-5. Volg de stappen vanaf stap 3 van de *verhoging aanvragen toegang op abonnementsniveau* sectie met behulp van de **Help en ondersteuning** blade sectie
+5. Volg de stappen die beginnen met stap 3 van de sectie het *quotum voor het aantal netwerken voor de netwerk verbinding met het abonnement voor* het maken van de toegang tot het niveau van de **Help en ondersteuning** .
 
-## <a name="about-networking-limits"></a>Over de limieten voor netwerken
+## <a name="about-networking-limits"></a>Over netwerk limieten
 
-Zie voor meer informatie over de limieten voor netwerken, de [netwerksectie](../azure-subscription-service-limits.md#networking-limits) van de pagina limieten of onze Veelgestelde vragen over limieten voor het netwerk
+Zie de [sectie netwerken](../azure-subscription-service-limits.md#networking-limits) op de pagina limieten of onze veelgestelde vragen over netwerk limieten voor meer informatie over netwerk limieten

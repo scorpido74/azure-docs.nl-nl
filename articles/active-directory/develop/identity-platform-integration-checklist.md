@@ -16,12 +16,12 @@ ms.date: 09/11/2019
 ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, jesakowi
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 1f4afe1c31ae964aab82664de12144185069af5a
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: f7e9b738a55248678a207f0b298ef65e6c2761a4
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71145659"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72240153"
 ---
 # <a name="microsoft-identity-platform-best-practices-and-recommendations"></a>Best practices en aanbevelingen van micro soft Identity platform
 
@@ -31,7 +31,7 @@ Als u net aan de slag gaat, raadpleegt u de [documentatie voor micro soft Identi
 
 Gebruik de volgende controle lijst om ervoor te zorgen dat uw toepassing effectief wordt geïntegreerd met het [micro soft Identity-platform](https://docs.microsoft.com/azure/active-directory/develop/).
 
-## <a name="basics"></a>Basics
+## <a name="basics"></a>Basisbeginselen
 
 |   |   |
 |---|---|
@@ -43,7 +43,7 @@ Gebruik de volgende controle lijst om ervoor te zorgen dat uw toepassing effecti
 |---|---|
 | ![PS/2-verbinding](./media/active-directory-integration-checklist/checkbox-two.svg) | Zorg ervoor dat de informatie die is gekoppeld aan het account dat u hebt gebruikt voor het registreren en beheren van apps up-to-date is. |
 
-## <a name="branding"></a>Huisstijl
+## <a name="branding"></a>Namen
 
 |   |   |
 |---|---|
@@ -60,7 +60,7 @@ Gebruik de volgende controle lijst om ervoor te zorgen dat uw toepassing effecti
 
 |   |   |
 |---|---|
-| ![PS/2-verbinding](./media/active-directory-integration-checklist/checkbox-two.svg) | Uw omleidings-Uri's beheren: <ul><li>Behoud het eigendom van alle omleidings-Uri's en behoud de DNS-records voor deze.</li><li>Gebruik geen joker tekens (*) in uw Uri's.</li><li>Zorg ervoor dat alle Uri's beveiligd en versleuteld zijn (bijvoorbeeld met behulp van HTTPS-schema's) voor web-apps.</li><li>Gebruik voor open bare clients platformspecifieke omleidings-Uri's, indien van toepassing (voornamelijk voor iOS en Android). Gebruik anders omleidings-Uri's met een grote hoeveelheid wille keurigheid om conflicten te voor komen bij het terugbellen naar uw app.</li><li>Als uw app wordt gebruikt vanuit een geïsoleerde webagent, kunt u gebruiken https://login.microsoftonline.com/common/oauth2/nativeclient.</li><li>Alle ongebruikte of overbodige omleidings-Uri's regel matig controleren en bijsnijden.</li></ul> |
+| ![PS/2-verbinding](./media/active-directory-integration-checklist/checkbox-two.svg) | Uw omleidings-Uri's beheren: <ul><li>Behoud het eigendom van alle omleidings-Uri's en behoud de DNS-records voor deze.</li><li>Gebruik geen joker tekens (*) in uw Uri's.</li><li>Zorg ervoor dat alle Uri's beveiligd en versleuteld zijn (bijvoorbeeld met behulp van HTTPS-schema's) voor web-apps.</li><li>Gebruik voor open bare clients platformspecifieke omleidings-Uri's, indien van toepassing (voornamelijk voor iOS en Android). Gebruik anders omleidings-Uri's met een grote hoeveelheid wille keurigheid om conflicten te voor komen bij het terugbellen naar uw app.</li><li>Als uw app wordt gebruikt vanuit een geïsoleerde webagent, kunt u https://login.microsoftonline.com/common/oauth2/nativeclient gebruiken.</li><li>Alle ongebruikte of overbodige omleidings-Uri's regel matig controleren en bijsnijden.</li></ul> |
 | ![PS/2-verbinding](./media/active-directory-integration-checklist/checkbox-two.svg) | Als uw app is geregistreerd in een directory, kunt u de lijst met app-registratie-eigen aren minimaliseren en hand matig bewaken. |
 | ![PS/2-verbinding](./media/active-directory-integration-checklist/checkbox-two.svg) | Schakel de ondersteuning voor de [OAuth2 impliciete toekennings stroom](v2-oauth2-implicit-grant-flow.md) niet in, tenzij expliciet vereist. Meer informatie over het geldige [scenario.](v1-oauth2-implicit-grant-flow.md#suitable-scenarios-for-the-oauth2-implicit-grant) |
 | ![PS/2-verbinding](./media/active-directory-integration-checklist/checkbox-two.svg) | Verplaatsen buiten gebruikers naam/wacht woord. Gebruik geen [wacht woord](v2-oauth-ropc.md)voor de ROPC van de resource-eigenaar, waarmee de wacht woorden van gebruikers rechtstreeks worden verwerkt. Deze stroom vereist een hoge mate van vertrouwen en gebruikers belichting en mag alleen worden gebruikt als andere, veiliger, stromen niet kunnen worden gebruikt. Deze stroom is nog steeds nodig in sommige scenario's (zoals DevOps), maar houd er wel rekening mee dat het gebruik ervan beperkingen oplegt aan uw toepassing.  Lees [verificatie stromen en toepassings scenario's](authentication-flows-app-scenarios.md)voor meer moderne benaderingen.|
@@ -80,14 +80,14 @@ Gebruik de volgende controle lijst om ervoor te zorgen dat uw toepassing effecti
 | ![PS/2-verbinding](./media/active-directory-integration-checklist/checkbox-two.svg) | Als de gegevens die uw app nodig heeft, beschikbaar zijn via [Microsoft Graph](https://developer.microsoft.com/graph), kunt u machtigingen voor deze gegevens aanvragen met behulp van het Microsoft Graph-eind punt in plaats van de afzonderlijke API. |
 | ![PS/2-verbinding](./media/active-directory-integration-checklist/checkbox-two.svg) |Bekijk de toegangs token waarde niet of probeer deze te parseren als een client.  Ze kunnen waarden wijzigen, indelingen of zelfs worden versleuteld zonder waarschuwing: gebruik altijd de id_token als uw client iets moet weten over de gebruiker of Microsoft Graph.  Alleen web-Api's moeten toegangs tokens parseren (omdat ze de indelingen definiëren en de versleutelings sleutels instellen). |
 
-## <a name="end-user-experience"></a>Eindgebruikerservaring
+## <a name="end-user-experience"></a>Gebruikers ervaring
 
 |   |   |
 |---|---|
 | ![PS/2-verbinding](./media/active-directory-integration-checklist/checkbox-two.svg) | Meer informatie over [de toestemming](application-consent-experience.md) van de goed keuring en het configureren van de vraag om de onderdelen van de app de toestemming te geven zodat eind gebruikers en beheerders voldoende gegevens hebben om te bepalen of ze uw app vertrouwen. |
 | ![PS/2-verbinding](./media/active-directory-integration-checklist/checkbox-two.svg) | Beperk het aantal keren dat een gebruiker aanmeldings referenties moet invoeren terwijl uw app wordt gebruikt door een stille verificatie (Silent token Acquisition) voor interactieve stromen uit te voeren. |
 | ![PS/2-verbinding](./media/active-directory-integration-checklist/checkbox-two.svg) | Gebruik ' prompt = toestemming ' niet voor elke aanmelding. Gebruik prompt = toestemming als u hebt vastgesteld dat u moet worden gevraagd om toestemming te geven voor aanvullende machtigingen (bijvoorbeeld als u de vereiste machtigingen van uw app hebt gewijzigd). |
-| ![PS/2-verbinding](./media/active-directory-integration-checklist/checkbox-two.svg) | Verrijk uw toepassing met gebruikers gegevens, indien van toepassing. Gebruik de [Microsoft Graph-API](https://developer.microsoft.com/graph) is een eenvoudige manier om dit te doen. Het hulp programma [Graph Explorer](https://developer.microsoft.com/graph/graph-explorer) waarmee u aan de slag kunt gaan. |
+| ![PS/2-verbinding](./media/active-directory-integration-checklist/checkbox-two.svg) | Verrijk uw toepassing met gebruikers gegevens, indien van toepassing. Het gebruik van de [Microsoft Graph-API](https://developer.microsoft.com/graph) is een eenvoudige manier om dit te doen. Het hulp programma [Graph Explorer](https://developer.microsoft.com/graph/graph-explorer) waarmee u aan de slag kunt gaan. |
 | ![PS/2-verbinding](./media/active-directory-integration-checklist/checkbox-two.svg) | Registreer de volledige set machtigingen die uw app nodig heeft zodat beheerders eenvoudig toestemming kunnen verlenen aan hun Tenant. Gebruik [incrementele toestemming](azure-ad-endpoint-comparison.md#incremental-and-dynamic-consent) op het moment van uitvoering om gebruikers te helpen begrijpen waarom uw app machtigingen aanvraagt of gebruikers Verwar ring wanneer deze worden aangevraagd bij de eerste keer starten. |
 | ![PS/2-verbinding](./media/active-directory-integration-checklist/checkbox-two.svg) | Implementeer een [schone ervaring voor eenmalige aanmelding](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-6-SignOut). Het is een privacy-en beveiligings vereiste, en zorgt voor een goede gebruikers ervaring. |
 
@@ -98,7 +98,7 @@ Gebruik de volgende controle lijst om ervoor te zorgen dat uw toepassing effecti
 | ![PS/2-verbinding](./media/active-directory-integration-checklist/checkbox-two.svg) | Test op [beleids regels voor voorwaardelijke toegang](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-6-SignOut) die van invloed kunnen zijn op de mogelijkheid van gebruikers om uw toepassing te gebruiken. |
 | ![PS/2-verbinding](./media/active-directory-integration-checklist/checkbox-two.svg) | Test uw toepassing met alle mogelijke accounts die u wilt ondersteunen (bijvoorbeeld werk-of school accounts, persoonlijke micro soft-accounts, onderliggende accounts en soevereine accounts). |
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
 Gedetailleerde informatie over v2.0 verkennen:
 

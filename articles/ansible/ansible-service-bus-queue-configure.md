@@ -1,21 +1,21 @@
 ---
-title: Zelfstudie - wachtrijen in Azure Service Bus met Ansible configureren | Microsoft Docs
-description: Leer hoe u Ansible gebruikt om te maken van een Azure Service Bus-wachtrij
-keywords: ansible, azure, devops, bash, playbook, servicebus, wachtrij
+title: 'Zelf studie: wacht rijen configureren in Azure Service Bus met behulp van Ansible'
+description: Meer informatie over het gebruik van Ansible voor het maken van een Azure Service Bus wachtrij
+keywords: ansible, azure, devops, bash, Playbook, service bus, Queue
 ms.topic: tutorial
 ms.service: ansible
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: 6efc11106fae18beac43ab1896733ab6bfc64dad
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: a48796c2177a8b5b818553bf8aa0ff36f712d4e0
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65230765"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72241383"
 ---
-# <a name="tutorial-configure-queues-in-azure-service-bus-using-ansible"></a>Zelfstudie: Configureren van wachtrijen in Azure Service Bus met Ansible
+# <a name="tutorial-configure-queues-in-azure-service-bus-using-ansible"></a>Zelf studie: wacht rijen configureren in Azure Service Bus met behulp van Ansible
 
 [!INCLUDE [ansible-28-note.md](../../includes/ansible-28-note.md)]
 
@@ -27,21 +27,21 @@ ms.locfileid: "65230765"
 >
 > * Een wachtrij maken
 > * Een SAS-plicy maken
-> * Naamruimtegegevens ophalen
-> * Wachtrijgegevens ophalen
-> * Intrekken van de wachtrij SAS-beleid
+> * Naam ruimte gegevens ophalen
+> * Wachtrij gegevens ophalen
+> * Het SAS-beleid van de wachtrij intrekken
 
 ## <a name="prerequisites"></a>Vereisten
 
 [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)]
 
-## <a name="create-the-service-bus-queue"></a>De Service Bus-wachtrij maken
+## <a name="create-the-service-bus-queue"></a>De Service Bus wachtrij maken
 
-De voorbeeldcode van de playbook wordt de volgende bronnen:
+De voorbeeld code Playbook maakt de volgende resources:
 - Azure-resourcegroep
-- Service Bus-naamruimte in de resourcegroep bevinden
-- Service Bus-wachtrij met de naamruimte
+- Naam ruimte in de resource groep Service Bus
+- Wachtrij Service Bus met de naam ruimte
 
 Sla het volgende playbook op als `servicebus_queue.yml`:
 
@@ -72,17 +72,17 @@ Sla het volgende playbook op als `servicebus_queue.yml`:
           var: queue
 ```
 
-Voer de playbook met behulp de `ansible-playbook` opdracht:
+Voer de Playbook uit met behulp van de `ansible-playbook`-opdracht:
 
 ```bash
 ansible-playbook servicebus_queue.yml
 ```
 
-## <a name="create-the-sas-policy"></a>De SAS-beleid maken
+## <a name="create-the-sas-policy"></a>Het SAS-beleid maken
 
-Een [Shared Access Signature (SAS)](/azure/storage/common/storage-dotnet-shared-access-signature-part-1) is een autorisatiemechanisme voor op basis van claims met behulp van tokens. 
+Een [Shared Access Signature (SAS)](/azure/storage/common/storage-dotnet-shared-access-signature-part-1) is een autorisatie mechanisme op basis van claims met behulp van tokens. 
 
-De voorbeeldcode playbook maakt twee SAS-beleid voor een Service Bus-wachtrij met verschillende bevoegdheden.
+De voorbeeld code Playbook maakt twee SAS-beleids regels voor een Service Bus wachtrij met andere bevoegdheden.
 
 Sla het volgende playbook op als `servicebus_queue_policy.yml`:
 
@@ -106,18 +106,18 @@ Sla het volgende playbook op als `servicebus_queue_policy.yml`:
           var: policy
 ```
 
-Voordat u de playbook uitvoert, Zie de volgende opmerkingen:
-- De `rights` waarde vertegenwoordigt de bevoegdheid die een gebruiker aan de wachtrij heeft. Geef een van de volgende waarden: `manage`, `listen`, `send`, of `listen_send`.
+Voor het uitvoeren van de Playbook raadpleegt u de volgende opmerkingen:
+- De waarde voor @no__t 0 vertegenwoordigt de bevoegdheid die een gebruiker heeft met de wachtrij. Geef een van de volgende waarden op: `manage`, `listen`, `send` of `listen_send`.
 
-Voer de playbook met behulp de `ansible-playbook` opdracht:
+Voer de Playbook uit met behulp van de `ansible-playbook`-opdracht:
 
 ```bash
 ansible-playbook servicebus_queue_policy.yml
 ```
 
-## <a name="retrieve-namespace-information"></a>Naamruimtegegevens ophalen
+## <a name="retrieve-namespace-information"></a>Naam ruimte gegevens ophalen
 
-De voorbeeldcode playbook query uitgevoerd voor de naamruimte-informatie.
+De voor beeld-Playbook-code voert een query uit op de naam ruimte gegevens.
 
 Sla het volgende playbook op als `servicebus_namespace_info.yml`:
 
@@ -139,18 +139,18 @@ Sla het volgende playbook op als `servicebus_namespace_info.yml`:
           var: ns
 ```
 
-Voordat u de playbook uitvoert, Zie de volgende opmerkingen:
-- De `show_sas_policies` waarde geeft aan of u wilt weergeven van de SAS-beleid onder de opgegeven naamruimte. De waarde is standaard `False` om te voorkomen dat extra netwerkbelasting.
+Voor het uitvoeren van de Playbook raadpleegt u de volgende opmerkingen:
+- De waarde @no__t 0 geeft aan of de SAS-beleids regels onder de opgegeven naam ruimte moeten worden weer gegeven. Standaard is de waarde `False` om extra netwerk overhead te voor komen.
 
-Voer de playbook met behulp de `ansible-playbook` opdracht:
+Voer de Playbook uit met behulp van de `ansible-playbook`-opdracht:
 
 ```bash
 ansible-playbook servicebus_namespace_info.yml
 ```
 
-## <a name="retrieve-queue-information"></a>Wachtrijgegevens ophalen
+## <a name="retrieve-queue-information"></a>Wachtrij gegevens ophalen
 
-De voorbeeld-playbook code query's in een wachtrij informatie. 
+De voorbeeld code van de Playbook-query heeft betrekking op de wachtrij gegevens. 
 
 Sla het volgende playbook op als `servicebus_queue_info.yml`:
 
@@ -174,18 +174,18 @@ Sla het volgende playbook op als `servicebus_queue_info.yml`:
           var: queue
 ```
 
-Voordat u de playbook uitvoert, Zie de volgende opmerkingen:
-- De `show_sas_policies` waarde geeft aan of u wilt weergeven van de SAS-beleid onder de opgegeven wachtrij. Deze waarde is standaard ingesteld op `False` om te voorkomen dat extra netwerkbelasting.
+Voor het uitvoeren van de Playbook raadpleegt u de volgende opmerkingen:
+- De waarde @no__t 0 geeft aan of de SAS-beleids regels in de opgegeven wachtrij moeten worden weer gegeven. Deze waarde is standaard ingesteld op `False` om extra netwerk overhead te voor komen.
 
-Voer de playbook met behulp de `ansible-playbook` opdracht:
+Voer de Playbook uit met behulp van de `ansible-playbook`-opdracht:
 
 ```bash
 ansible-playbook servicebus_queue_info.yml
 ```
 
-## <a name="revoke-the-queue-sas-policy"></a>Intrekken van de wachtrij SAS-beleid
+## <a name="revoke-the-queue-sas-policy"></a>Het SAS-beleid van de wachtrij intrekken
 
-De playbook-voorbeeldcode wordt een wachtrij SAS-beleid verwijderd.
+Met de voorbeeld code Playbook wordt een BEVEILIGINGS beleid voor de wachtrij verwijderd.
 
 Sla het volgende playbook op als `servicebus_queue_policy_delete.yml`:
 
@@ -206,7 +206,7 @@ Sla het volgende playbook op als `servicebus_queue_policy_delete.yml`:
           state: absent
 ```
 
-Voer de playbook met behulp de `ansible-playbook` opdracht:
+Voer de Playbook uit met behulp van de `ansible-playbook`-opdracht:
 
 ```bash
 ansible-playbook servicebus_queue_policy_delete.yml
@@ -214,9 +214,9 @@ ansible-playbook servicebus_queue_policy_delete.yml
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Wanneer het niet meer nodig hebt, verwijdert u de resources die in dit artikel is gemaakt. 
+Als u deze niet meer nodig hebt, verwijdert u de resources die u in dit artikel hebt gemaakt. 
 
-Sla de volgende code als `cleanup.yml`:
+Sla de volgende code op als `cleanup.yml`:
 
 ```yml
 ---
@@ -244,7 +244,7 @@ Sla de volgende code als `cleanup.yml`:
           force_delete_nonempty: yes
 ```
 
-Voer de playbook met behulp de `ansible-playbook` opdracht:
+Voer de Playbook uit met behulp van de `ansible-playbook`-opdracht:
 
 ```bash
 ansible-playbook cleanup.yml
@@ -252,4 +252,4 @@ ansible-playbook cleanup.yml
 
 ## <a name="next-steps"></a>Volgende stappen
 > [!div class="nextstepaction"] 
-> [Zelfstudie: Configureren van een onderwerp in Azure Service Bus met Ansible](ansible-service-bus-topic-configure.md)
+> [Zelf studie: een onderwerp in Azure Service Bus configureren met behulp van Ansible](ansible-service-bus-topic-configure.md)

@@ -1,7 +1,7 @@
 ---
-title: Een werkstroom met behulp van handtekeningen voor gedeelde toegang - Microsoft Genomics verzenden
-titleSuffix: Azure
-description: Het artikel wordt ervan uitgegaan dat u hebt de msgen-client is geïnstalleerd en de voorbeeldgegevens via de service hebt uitgevoerd.
+title: Werk stroom met hand tekeningen voor gedeelde toegang
+titleSuffix: Microsoft Genomics
+description: In dit artikel wordt beschreven hoe u een werk stroom verzendt naar de Microsoft Genomics-service met behulp van Shared Access signatures (SAS) in plaats van de sleutels van een opslag account.
 services: genomics
 author: grhuynh
 manager: cgronlun
@@ -9,18 +9,18 @@ ms.author: grhuynh
 ms.service: genomics
 ms.topic: conceptual
 ms.date: 03/02/2018
-ms.openlocfilehash: 833067f53f53f347ce091a64702d44a78cde836f
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: d6228762b9a1299d8e9229f7a0f73dc7d0bca2b2
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67657105"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72248589"
 ---
 # <a name="submit-a-workflow-to-microsoft-genomics-using-a-sas-instead-of-a-storage-account-key"></a>Een werkstroom indienen aan Microsoft Genomics met behulp van een SAS in plaats van een opslagaccountsleutel 
 
-In dit artikel ziet u hoe u een werkstroom verzendt naar de service Microsoft Genomics met behulp van een config.txt-bestand met [shared access signatures (SAS)](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) in plaats van opslagaccountsleutels. Deze mogelijkheid kan handig zijn als er de zichtbaarheid van een opslagaccountsleutel in het bestand config.txt uit veiligheidsoogpunt niet wenselijk is. 
+In dit artikel wordt beschreven hoe u een werk stroom verzendt naar de Microsoft Genomics-service met behulp van een config. txt-bestand dat [gedeelde toegangs handtekeningen (SAS)](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) bevat in plaats van de sleutel van het opslag account. Deze mogelijkheid kan handig zijn als er de zichtbaarheid van een opslagaccountsleutel in het bestand config.txt uit veiligheidsoogpunt niet wenselijk is. 
 
-In dit artikel wordt ervan uitgegaan dat u de `msgen`-client al hebt geïnstalleerd en uitgevoerd, en dat u bekend bent met het gebruik van Azure Storage. Als u een werkstroom met de opgegeven voorbeeldgegevens is verzonden, bent u klaar om door te gaan met dit artikel. 
+In dit artikel wordt ervan uitgegaan dat u de `msgen`-client al hebt geïnstalleerd en uitgevoerd, en dat u bekend bent met het gebruik van Azure Storage. Als u een werk stroom met de opgegeven voorbeeld gegevens hebt verzonden, kunt u door gaan met dit artikel. 
 
 ## <a name="what-is-a-sas"></a>Wat is een SAS?
 Een [SAS (Shared Access Signature; handtekening voor gedeelde toegang)](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) biedt gedelegeerde toegang tot bronnen in uw opslagaccount. Met behulp van een SAS kunt u toegang geven tot resources in uw opslagaccount zonder dat u de sleutels van uw account hoeft te delen. De belangrijkste reden voor het gebruik van handtekeningen voor gedeelde toegang in uw toepassingen is dat een SAS een veilige manier is voor het delen van uw opslagresources zonder dat uw accountsleutels in gevaar komen.
@@ -33,21 +33,21 @@ De URI voor een SAS-token op serviceniveau bestaat uit de URI voor de resource w
 Er zijn twee of meer SAS-tokens vereist voor elke werkstroom die wordt aangeboden aan de service Microsoft Genomics, één voor elk invoerbestand en één voor de uitvoercontainer.
 
 De SAS voor de invoerbestanden moet de volgende eigenschappen hebben:
-1.  Bereik (account, container, blob): blob
-2.  Verlooptijd: 48 uur vanaf nu
-3.  Machtigingen: lezen
+ - Bereik (account, container, blob): blob
+ - Verlooptijd: 48 uur vanaf nu
+ - Machtigingen: lezen
 
 De SAS voor de uitvoercontainer moet de volgende eigenschappen hebben:
-1.  Bereik (account, container, blob): container
-2.  Verlooptijd: 48 uur vanaf nu
-3.  Machtigingen: lezen, schrijven, verwijderen
+ - Bereik (account, container, blob): container
+ - Verlooptijd: 48 uur vanaf nu
+ - Machtigingen: lezen, schrijven, verwijderen
 
 
 ## <a name="create-a-sas-for-the-input-files-and-the-output-container"></a>Een SAS maken voor de invoerbestanden en de uitvoercontainer
 Er zijn twee manieren om een SAS-token te maken: met behulp van Azure Storage Explorer of via programmacode.  Als u code gebruikt, kunt u de SAS zelf samenstellen, maar u kunt ook de SDK van Azure Storage gebruiken in de taal van uw voorkeur.
 
 
-### <a name="set-up-create-a-sas-using-azure-storage-explorer"></a>Instellen: Een SAS maken met behulp van Azure Storage Explorer
+### <a name="set-up-create-a-sas-using-azure-storage-explorer"></a>Een SAS maken met behulp van Azure Storage Explorer
 
 [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) is een hulpprogramma voor het beheren van resources die u hebt opgeslagen in Azure Storage.  U vindt [hier](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer) meer informatie over het gebruik van Azure Storage Explorer.
 
@@ -56,7 +56,7 @@ Het bereik van de SAS voor de invoerbestanden moet worden ingesteld op het speci
  ![Genomics SAS Storage Explorer](./media/quickstart-input-sas/genomics-sas-storageexplorer.png "Genomics SAS Storage Explorer")
 
 
-### <a name="set-up-create-a-sas-programmatically"></a>Instellen: Een SAS maken via een programma
+### <a name="set-up-create-a-sas-programmatically"></a>Instellen: een SAS programmatisch maken
 
 Als u een SAS wilt maken met behulp van de SDK van Azure Storage, raadpleegt u de documentatie voor verschillende talen, waaronder [.NET](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1), [Python](https://docs.microsoft.com/azure/storage/blobs/storage-python-how-to-use-blob-storage) en [Node.js](https://docs.microsoft.com/azure/storage/blobs/storage-nodejs-how-to-use-blob-storage). 
 

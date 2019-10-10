@@ -2,38 +2,33 @@
 title: Een ondersteunings aanvraag voor Azure maken | Microsoft Docs
 description: Een Azure-ondersteunings aanvraag maken.
 services: Azure Supportability
-documentationcenter: ''
 author: ganganarayanan
 manager: scotthit
-editor: ''
 ms.assetid: fd6841ea-c1d5-4bb7-86bd-0c708d193b89
 ms.service: azure-supportability
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/25/2016
 ms.author: gangan
-ms.openlocfilehash: 462a14d7845c6723a3482e50b01c50e3d913beee
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: 0195cc86875b075e00e9305d803b8d637905db78
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71072086"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72248696"
 ---
 # <a name="how-to-create-an-azure-support-request"></a>Een ondersteuningsaanvraag maken voor Azure
 ## <a name="summary"></a>Samenvatting
-Azure-klanten kunnen ondersteunings aanvragen maken en beheren in [https://portal.azure.com](https://portal.azure.com)de Azure Portal,.
+Azure-klanten kunnen ondersteunings aanvragen maken en beheren in de Azure Portal, [https://portal.azure.com](https://portal.azure.com).
 
 > [!NOTE]
-> Azure portal voor Commerical-gebruik [https://portal.azure.com](https://portal.azure.com) is Azure portal voor Duitsland[https://portal.microsoftazure.de](https://portal.microsoftazure.de)   
-> Azure Portal voor de Verenigde Staten overheid is[https://portal.azure.us](https://portal.azure.us)
+> Azure Portal voor Commerical-gebruik is [https://portal.azure.com](https://portal.azure.com) Azure portal voor duitsland is [https://portal.microsoftazure.de](https://portal.microsoftazure.de)   
+> Azure Portal voor de Verenigde Staten overheid is [https://portal.azure.us](https://portal.azure.us)
 
 
 Op basis van feedback van klanten hebben we de ervaring voor ondersteunings aanvragen bijgewerkt om te richten op drie hoofd doelen:
 
-* **Gestroomlijnd**: Verklein klikken en bladen om het proces van het verzenden van een ondersteunings aanvraag eenvoudig te maken.
-* **Geïntegreerd**: Wanneer u een probleem met een Azure-resource oplost, moet u eenvoudig een ondersteunings aanvraag voor die resource openen zonder de context te scha kelen.
+* **Gestroomlijnd**: minder klikken en blades om het proces van het verzenden van een ondersteunings aanvraag eenvoudig te maken.
+* **Geïntegreerd**: wanneer u een probleem met een Azure-resource wilt oplossen, moet u eenvoudig een ondersteunings aanvraag voor die resource openen zonder de context te scha kelen.
 * **Efficiënt**: Verzamel de belangrijkste informatie die uw ondersteunings technicus nodig heeft om uw probleem efficiënt op te lossen.
 
 ## <a name="getting-started"></a>Aan de slag
@@ -45,16 +40,16 @@ U kunt een ondersteunings aanvraag maken vanuit het bovenste navigatie menu of r
 
 Selecteer op de pagina Help en ondersteuning de optie nieuwe ondersteunings aanvraag
 
-![Nieuwe ondersteuningsaanvraag](./media/how-to-create-azure-support-request/NewSupportRequest.png)
+![Nieuw ondersteuningsverzoek](./media/how-to-create-azure-support-request/NewSupportRequest.png)
 
 **Vanuit een Blade resource**
 
 ![In de context](./media/how-to-create-azure-support-request/Incontext.png)
 
-## <a name="basics"></a>Basics
+## <a name="basics"></a>Basisbeginselen
 De eerste stap van het proces voor ondersteunings aanvragen verzamelt basis informatie over uw probleem en uw ondersteunings plan.
 
-Laten we een voor beeld doen: U ondervindt technische problemen met uw virtuele machine en vermoedt een probleem met de netwerk verbinding.
+Laten we een voor beeld doen: u houdt technische problemen met uw virtuele machine in en vermoedt een probleem met de netwerk verbinding.
 Als u de service selecteert (' virtuele machine met Windows ') en de resource (de naam van uw virtuele machine) in de eerste stap van de wizard, wordt het proces voor het verkrijgen van hulp voor dit probleem gestart.
 
 ![Blade Grondbeginselen](./media/how-to-create-azure-support-request/Basics.png)
@@ -76,7 +71,7 @@ Als u doorgaat met het voor beeld van de connectiviteit van de virtuele machine,
 ## <a name="related-help"></a>Verwante Help
 Op basis van het probleem type en de categorie die u selecteert, bieden we een oplossing die u kan helpen bij het oplossen van uw probleem.
 
-![Gerelateerde help](./media/how-to-create-azure-support-request/RelatedHelp.png)
+![Verwante Help](./media/how-to-create-azure-support-request/RelatedHelp.png)
 
 We bieden ook contextuele zelf-Help oplossingen op basis van de tekstuele beschrijving van uw probleem.
 
@@ -95,7 +90,7 @@ Afhankelijk van de ernst van het probleem, wordt u mogelijk gevraagd om aan te g
 
 ![De contact gegevens zijn 24x7](./media/how-to-create-azure-support-request/ContactInformation-2.png)
 
-## <a name="all-support-requests"></a>Alle ondersteuningsaanvragen
+## <a name="all-support-requests"></a>Alle ondersteunings aanvragen
 Nadat u het ondersteunings verzoek hebt gemaakt, kunt u de details van de pagina **alle ondersteunings aanvragen** bekijken.
 
 **In de bovenste navigatie balk**
@@ -114,7 +109,7 @@ De pagina ondersteunings aanvragen bevat klanten om aanvragen te filteren op bas
 Daarnaast kunt u op deze pagina ondersteunings aanvragen sorteren en zoeken.
 
 Selecteer de ondersteunings aanvraag om details weer te geven, met inbegrip van de ernst en de verwachte tijd die het voor een ondersteunings technicus duurt om te reageren.
-![VID](./media/how-to-create-azure-support-request/VID.png)
+![VID @ no__t-1
 
 Als u de ernst van de aanvraag wilt wijzigen, klikt u op de tegel **bedrijfs impact** . In het vorige voor beeld is de aanvraag momenteel ingesteld op Ernst C.
 

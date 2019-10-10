@@ -1,5 +1,5 @@
 - name: Documentatie voor SQL Data Warehouse
-  href: index.md
+  href: index.yml
 - name: Overzicht
   items:
     - name: Wat is SQL Data Warehouse?

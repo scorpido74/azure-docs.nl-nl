@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dafc78e49cb0118181bae4522d4cb456509ea2cb
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: bb9b3a4add951079ab918d3ac02ca5e38eff6161
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71673426"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72241175"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Dynamische lidmaatschaps regels voor groepen in Azure Active Directory
 
@@ -43,7 +43,7 @@ Hier volgen enkele voor beelden van geavanceerde regels of syntaxis voor het mak
 - Regel met meer dan vijf expressies
 - De regel voor directe rapporten
 - De [prioriteit van Opera tors](groups-dynamic-membership.md#operator-precedence) instellen
-- [Regels met complexe expressies](groups-dynamic-membership.md#rules-with-complex-expressions); bijvoorbeeld`(user.proxyAddresses -any (_ -contains "contoso"))`
+- [Regels met complexe expressies](groups-dynamic-membership.md#rules-with-complex-expressions); bijvoorbeeld `(user.proxyAddresses -any (_ -contains "contoso"))`
 
 > [!NOTE]
 > De opbouw functie voor regels kan mogelijk geen regels weer geven die zijn gemaakt in het tekstvak. Mogelijk wordt er een bericht weer gegeven wanneer de regel functie de regel niet kan weer geven. De opbouw functie voor regels wijzigt niet de ondersteunde syntaxis, validatie of verwerking van dynamische groeps regels op enigerlei wijze.
@@ -54,7 +54,7 @@ Zie [een dynamische groep bijwerken](groups-update-rule.md)voor meer stapsgewijz
 
 ### <a name="rule-syntax-for-a-single-expression"></a>Syntaxis van regels voor één expressie
 
-Eén expressie is de eenvoudigste vorm van een lidmaatschaps regel en heeft alleen de drie onderdelen die hierboven worden genoemd. Een regel met één expressie ziet er ongeveer als volgt uit `Property Operator Value`:, waarbij de syntaxis voor de eigenschap de naam van object. Property is.
+Eén expressie is de eenvoudigste vorm van een lidmaatschaps regel en heeft alleen de drie onderdelen die hierboven worden genoemd. Een regel met één expressie ziet er ongeveer als volgt uit: `Property Operator Value`, waarbij de syntaxis van de eigenschap de naam van object. Property is.
 
 Hier volgt een voor beeld van een goed opgebouwde lidmaatschaps regel met één expressie:
 
@@ -70,7 +70,7 @@ Een lidmaatschaps regel die automatisch een groep met gebruikers of apparaten vu
 
 - Eigenschap
 - Operator
-- Value
+- Waarde
 
 De volg orde van de onderdelen binnen een expressie is belang rijk om syntaxis fouten te voor komen.
 
@@ -78,7 +78,7 @@ De volg orde van de onderdelen binnen een expressie is belang rijk om syntaxis f
 
 Er zijn drie soorten eigenschappen die kunnen worden gebruikt om een lidmaatschaps regel samen te stellen.
 
-- Boolean-waarde
+- Booleaans
 - Tekenreeks
 - Teken reeks verzameling
 
@@ -86,48 +86,48 @@ Hier volgen de gebruikers eigenschappen die u kunt gebruiken om één expressie 
 
 ### <a name="properties-of-type-boolean"></a>Eigenschappen van het type Boolean
 
-| properties | Toegestane waarden | Gebruik |
+| Eigenschappen | Toegestane waarden | Gebruik |
 | --- | --- | --- |
-| accountEnabled |waar onwaar |User. accountEnabled-EQ True |
+| AccountEnabled |waar onwaar |User. accountEnabled-EQ True |
 | dirSyncEnabled |waar onwaar |User. dirSyncEnabled-EQ True |
 
 ### <a name="properties-of-type-string"></a>Eigenschappen van het type teken reeks
 
-| properties | Toegestane waarden | Gebruik |
+| Eigenschappen | Toegestane waarden | Gebruik |
 | --- | --- | --- |
 | city |Een wille keurige teken reeks waarde of *Null* |(User. City-EQ "waarde") |
 | Regio |Een wille keurige teken reeks waarde of *Null* |(User. country-EQ "waarde") |
-| companyName | Een wille keurige teken reeks waarde of *Null* | (user.companyName -eq "value") |
-| Afdeling |Een wille keurige teken reeks waarde of *Null* |(User. Department-EQ "waarde") |
-| displayName |wille keurige teken reeks waarde |(User. displayName-EQ "waarde") |
-| employeeId |wille keurige teken reeks waarde |(User. employeeId-EQ "waarde")<br>(User. employeeId-ne *Null*) |
-| facsimileTelephoneNumber |Een wille keurige teken reeks waarde of *Null* |(user.facsimileTelephoneNumber -eq "value") |
-| givenName |Een wille keurige teken reeks waarde of *Null* |(gebruiker. OpgegevenNaam-EQ "waarde") |
-| Functie |Een wille keurige teken reeks waarde of *Null* |(User. jobTitle-EQ "waarde") |
+| CompanyName | Een wille keurige teken reeks waarde of *Null* | (User. companyName-EQ "waarde") |
+| department |Een wille keurige teken reeks waarde of *Null* |(User. Department-EQ "waarde") |
+| displayName |Wille keurige teken reeks waarde |(User. displayName-EQ "waarde") |
+| employeeId |Wille keurige teken reeks waarde |(User. employeeId-EQ "waarde")<br>(User. employeeId-ne *Null*) |
+| facsimileTelephoneNumber |Een wille keurige teken reeks waarde of *Null* |(User. facsimileTelephoneNumber-EQ "waarde") |
+| GivenName |Een wille keurige teken reeks waarde of *Null* |(gebruiker. OpgegevenNaam-EQ "waarde") |
+| JobTitle |Een wille keurige teken reeks waarde of *Null* |(User. jobTitle-EQ "waarde") |
 | mail |Een wille keurige teken reeks waarde of *Null* (SMTP-adres van de gebruiker) |(gebruiker. mail-EQ "waarde") |
-| mailNickName |Een wille keurige teken reeks waarde (e-mail alias van de gebruiker) |(user.mailNickName -eq "value") |
-| mobiele |Een wille keurige teken reeks waarde of *Null* |(gebruiker. Mobile-EQ "waarde") |
-| object-id |GUID van het gebruikers object |(User. objectId-EQ "11111111-1111-1111-1111-111111111111") |
-| onPremisesSecurityIdentifier | Een on-premises beveiligings-id (SID) voor gebruikers die zijn gesynchroniseerd van on-premises naar de Cloud. |(user.onPremisesSecurityIdentifier -eq "S-1-1-11-1111111111-1111111111-1111111111-1111111") |
+| mailNickName |Een wille keurige teken reeks waarde (e-mail alias van de gebruiker) |(gebruiker. mailnickname-EQ "waarde") |
+| provider |Een wille keurige teken reeks waarde of *Null* |(gebruiker. Mobile-EQ "waarde") |
+| Id |GUID van het gebruikers object |(User. objectId-EQ "11111111-1111-1111-1111-111111111111") |
+| onPremisesSecurityIdentifier | Een on-premises beveiligings-id (SID) voor gebruikers die zijn gesynchroniseerd van on-premises naar de Cloud. |(User. onPremisesSecurityIdentifier-EQ "S-1-1-11-1111111111-1111111111-1111111111-1111111") |
 | passwordPolicies |Geen DisableStrongPassword DisablePasswordExpiration DisablePasswordExpiration, DisableStrongPassword |(User. passwordPolicies-EQ "DisableStrongPassword") |
 | physicalDeliveryOfficeName |Een wille keurige teken reeks waarde of *Null* |(User. physicalDeliveryOfficeName-EQ "waarde") |
-| Postcode |Een wille keurige teken reeks waarde of *Null* |(gebruiker. post code-EQ "waarde") |
-| preferredLanguage |ISO 639-1-code |(user.preferredLanguage -eq "en-US") |
+| Code |Een wille keurige teken reeks waarde of *Null* |(gebruiker. post code-EQ "waarde") |
+| preferredLanguage |ISO 639-1-code |(User. preferredLanguage-EQ "en-US") |
 | sipProxyAddress |Een wille keurige teken reeks waarde of *Null* |(User. sipProxyAddress-EQ "waarde") |
-| status |Een wille keurige teken reeks waarde of *Null* |(User. State-EQ "waarde") |
+| state |Een wille keurige teken reeks waarde of *Null* |(User. State-EQ "waarde") |
 | streetAddress |Een wille keurige teken reeks waarde of *Null* |(User. streetAddress-EQ "waarde") |
-| Achternaam |Een wille keurige teken reeks waarde of *Null* |(User. achternaam-EQ "waarde") |
-| telephoneNumber |Een wille keurige teken reeks waarde of *Null* |(user.telephoneNumber -eq "value") |
-| usageLocation |Land code van twee letters |(user.usageLocation -eq "US") |
-| userPrincipalName |wille keurige teken reeks waarde |(user.userPrincipalName -eq "alias@domain") |
-| userType |*Null* voor leden gast |(User. User type-EQ "lid") |
+| surname |Een wille keurige teken reeks waarde of *Null* |(User. achternaam-EQ "waarde") |
+| TelephoneNumber |Een wille keurige teken reeks waarde of *Null* |(User. telephoneNumber-EQ "waarde") |
+| usageLocation |Land code van twee letters |(User. usageLocation-EQ "US") |
+| userPrincipalName |Wille keurige teken reeks waarde |(User. userPrincipalName-EQ "alias@domain") |
+| User type |*Null* voor leden gast |(User. User type-EQ "lid") |
 
 ### <a name="properties-of-type-string-collection"></a>Eigenschappen van het type teken reeks verzameling
 
-| properties | Toegestane waarden | Gebruik |
+| Eigenschappen | Toegestane waarden | Gebruik |
 | --- | --- | --- |
-| otherMails |wille keurige teken reeks waarde |(User. otherMails-bevat "alias@domain") |
-| proxyAddresses |SMTP: alias@domain SMTP:alias@domain |(User. proxyAddresses-bevat "SMTP: alias@domain") |
+| otherMails |Wille keurige teken reeks waarde |(User. otherMails-bevat "alias@domain") |
+| proxyAddresses |SMTP: alias@domain SMTP: alias@domain |(User. proxyAddresses-bevat "SMTP: alias@domain") |
 
 Zie [regels voor apparaten](#rules-for-devices)voor de eigenschappen die worden gebruikt voor apparaat regels.
 
@@ -138,14 +138,14 @@ De volgende tabel geeft een lijst van alle ondersteunde Opera tors en hun syntax
 | Operator | Syntaxis |
 | --- | --- |
 | Niet gelijk aan |-ne |
-| Is gelijk aan |-eq |
+| Is gelijk aan |-EQ |
 | Begint niet met |-notStartsWith |
 | Begint met |-startsWith |
 | Bevat niet |-notContains |
-| bevat |-bevat |
+| Contains |-bevat |
 | Niet overeen |-notMatch |
-| Overeenkomst |-overeenkomst |
-| In | -in |
+| overeen met |-overeenkomst |
+| Naast | -in |
 | Niet in | -notIn |
 
 ### <a name="using-the--in-and--notin-operators"></a>De Opera tors-in en notIn gebruiken
@@ -178,14 +178,14 @@ De waarden die in een expressie worden gebruikt, kunnen bestaan uit verschillend
 
 * Tekenreeksen
 * Boolean – True, False
-* rijnummers
+* Rijnummers
 * Matrices – nummer matrix, teken reeks matrix
 
 Wanneer u een waarde in een expressie opgeeft, is het belang rijk dat u de juiste syntaxis gebruikt om fouten te voor komen. Enkele syntaxis tips zijn:
 
 * Dubbele aanhalings tekens zijn optioneel tenzij de waarde een teken reeks is.
 * Teken reeks-en regex-bewerkingen zijn niet hoofdletter gevoelig.
-* Wanneer een teken reeks waarde dubbele aanhalings tekens bevat, moeten beide aanhalings tekens \` worden geescapet met behulp van het teken \`, bijvoorbeeld\`User. Department-EQ "Sales" is de juiste syntaxis als "Sales" de waarde is.
+* Wanneer een teken reeks waarde dubbele aanhalings tekens bevat, moeten beide aanhalings tekens worden voorafgegaan door het \`-teken, bijvoorbeeld User. Department-EQ \` "Sales @ no__t-2" is de juiste syntaxis als "Sales" de waarde is.
 * U kunt ook null-controles uitvoeren, waarbij null als waarde wordt gebruikt, bijvoorbeeld `user.department -eq null`.
 
 ### <a name="use-of-null-values"></a>Gebruik van Null-waarden
@@ -249,10 +249,10 @@ Een lidmaatschaps regel kan bestaan uit complexe expressies waarbij de eigenscha
 
 Eigenschappen van meerdere waarden zijn verzamelingen van objecten van hetzelfde type. Ze kunnen worden gebruikt om lidmaatschaps regels te maken met behulp van de logische Opera tors-any en-all.
 
-| properties | Waarden | Gebruik |
+| Eigenschappen | Waarden | Gebruik |
 | --- | --- | --- |
 | assignedPlans | Elk object in de verzameling bevat de volgende teken reeks eigenschappen: capabilityStatus, service, servicePlanId |User. assignedPlans-any (assignedPlan. servicePlanId-EQ "efb87545-963c-4e0d-99df-69c6916d9eb0"-en assignedPlan. capabilityStatus-EQ "enabled") |
-| proxyAddresses| SMTP: alias@domain SMTP:alias@domain | (User. proxyAddresses-any (\_ -bevat "Contoso")) |
+| proxyAddresses| SMTP: alias@domain SMTP: alias@domain | (User. proxyAddresses-any (\_-bevat "Contoso")) |
 
 ### <a name="using-the--any-and--all-operators"></a>De Opera tors-any en-all gebruiken
 
@@ -261,7 +261,7 @@ U kunt-alle Opera tors en gebruiken om een voor waarde toe te passen op een of a
 * -any (voldaan wanneer ten minste één item in de verzameling overeenkomt met de voor waarde)
 * -alle (voldaan wanneer alle items in de verzameling overeenkomen met de voor waarde)
 
-#### <a name="example-1"></a>Voorbeeld 1
+#### <a name="example-1"></a>Voor beeld 1
 
 assignedPlans is een eigenschap met meerdere waarden waarmee alle service plannen worden weer gegeven die aan de gebruiker zijn toegewezen. Met de volgende expressie selecteert u gebruikers die het service plan Exchange Online (abonnement 2) hebben (als GUID-waarde) die ook de status ingeschakeld heeft:
 
@@ -271,7 +271,7 @@ user.assignedPlans -any (assignedPlan.servicePlanId -eq "efb87545-963c-4e0d-99df
 
 Een regel zoals deze kan worden gebruikt voor het groeperen van alle gebruikers voor wie een Office 365 (of een andere micro soft online service)-mogelijkheid is ingeschakeld. Vervolgens kunt u een set beleids regels Toep assen op de groep.
 
-#### <a name="example-2"></a>Voorbeeld 2
+#### <a name="example-2"></a>Voor beeld 2
 
 Met de volgende expressie worden alle gebruikers geselecteerd die een service plan hebben dat is gekoppeld aan de intune-service (geïdentificeerd door de service naam ' SCO '):
 
@@ -279,11 +279,11 @@ Met de volgende expressie worden alle gebruikers geselecteerd die een service pl
 user.assignedPlans -any (assignedPlan.service -eq "SCO" -and assignedPlan.capabilityStatus -eq "Enabled")
 ```
 
-### <a name="using-the-underscore-_-syntax"></a>De syntaxis van het\_onderstrepings teken () gebruiken
+### <a name="using-the-underscore-_-syntax"></a>De syntaxis van het onderstrepings teken (@no__t 0) gebruiken
 
-De syntaxis van\_het onderstrepings teken () komt overeen met een specifieke waarde in een van de eigenschappen van teken reeks verzameling met meerdere waarden om gebruikers of apparaten aan een dynamische groep toe te voegen. Het wordt gebruikt met de Opera tors-any of-all.
+De syntaxis van het onderstrepings teken (@no__t 0) komt overeen met een specifieke waarde in een van de eigenschappen van teken reeks verzameling met meerdere waarden om gebruikers of apparaten aan een dynamische groep toe te voegen. Het wordt gebruikt met de Opera tors-any of-all.
 
-Hier volgt een voor beeld van het gebruik van\_het onderstrepings teken () in een regel om leden toe te voegen op basis van User. proxyAddress attribuut (de functie werkt hetzelfde voor User. otherMails). Met deze regel wordt een gebruiker met een proxy adres dat ' Contoso ' bevat aan de groep toegevoegd.
+Hier volgt een voor beeld van het gebruik van het onderstrepings teken (\_) in een regel om leden toe te voegen op basis van User. proxyAddress attribuut (de functie werkt hetzelfde voor User. otherMails). Met deze regel wordt een gebruiker met een proxy adres dat ' Contoso ' bevat aan de groep toegevoegd.
 
 ```
 (user.proxyAddresses -any (_ -contains "contoso"))
@@ -342,7 +342,7 @@ Extensie kenmerken en aangepaste extensie-eigenschappen worden ondersteund als t
 (user.extensionAttribute15 -eq "Marketing")
 ```
 
-Aangepaste extensie-eigenschappen worden gesynchroniseerd vanuit on-premises Windows Server AD of vanuit een verbonden SaaS-toepassing en hebben de indeling `user.extension_[GUID]__[Attribute]`van, waarbij:
+Aangepaste extensie-eigenschappen worden gesynchroniseerd vanuit on-premises Windows Server AD of vanuit een verbonden SaaS-toepassing en hebben de indeling van `user.extension_[GUID]_[Attribute]`, waarbij:
 
 * [GUID] is de unieke id in azure AD voor de toepassing die de eigenschap heeft gemaakt in azure AD
 * [Kenmerk] is de naam van de eigenschap die is gemaakt
@@ -350,10 +350,10 @@ Aangepaste extensie-eigenschappen worden gesynchroniseerd vanuit on-premises Win
 Een voor beeld van een regel die gebruikmaakt van een aangepaste extensie-eigenschap is:
 
 ```
-user.extension_c272a57b722d4eb29bfe327874ae79cb__OfficeNumber -eq "123"
+user.extension_c272a57b722d4eb29bfe327874ae79cb_OfficeNumber -eq "123"
 ```
 
-De naam van de aangepaste eigenschap kan worden gevonden in de map door de eigenschap Graph Explorer te gebruiken om een query uit te zoeken naar de eigenschaps naam. U kunt nu ook de koppeling **aangepaste extensie eigenschappen ophalen** selecteren in de opbouw functie voor de groep voor dynamische gebruikers om een unieke app-id in te voeren en de volledige lijst met aangepaste extensie-eigenschappen te ontvangen die moeten worden gebruikt bij het maken van een dynamische lidmaatschaps regel. Deze lijst kan ook worden vernieuwd om op te halen van alle nieuwe aangepaste extensie-eigenschappen voor die app.
+De naam van de aangepaste eigenschap kan worden gevonden in de map door de eigenschap Graph Explorer te gebruiken om een query uit te zoeken naar de eigenschaps naam. U kunt nu ook de koppeling **aangepaste extensie eigenschappen ophalen** selecteren in de opbouw functie voor de groep voor dynamische gebruikers om een unieke app-id in te voeren en de volledige lijst met aangepaste extensie-eigenschappen te ontvangen die moeten worden gebruikt bij het maken van een dynamische lidmaatschaps regel. Deze lijst kan ook worden vernieuwd om nieuwe aangepaste extensie-eigenschappen voor die app te krijgen.
 
 ## <a name="rules-for-devices"></a>Regels voor apparaten
 
@@ -368,19 +368,19 @@ De volgende kenmerken van apparaten kunnen worden gebruikt.
 
  Kenmerk apparaat  | Waarden | Voorbeeld
  ----- | ----- | ----------------
- accountEnabled | waar onwaar | (Device. accountEnabled-EQ True)
- displayName | wille keurige teken reeks waarde |(apparaat. displayName-EQ "Rob iPhone")
- deviceOSType | wille keurige teken reeks waarde | (Device. deviceOSType-EQ "iPad")-of (Device. deviceOSType-EQ "iPhone")<br>(Device. deviceOSType-bevat "AndroidEnterprise")<br>(device.deviceOSType -eq "AndroidForWork")
- deviceOSVersion | wille keurige teken reeks waarde | (Device. deviceOSVersion-EQ "9,1")
+ AccountEnabled | waar onwaar | (Device. accountEnabled-EQ True)
+ displayName | Wille keurige teken reeks waarde |(apparaat. displayName-EQ "Rob iPhone")
+ deviceOSType | Wille keurige teken reeks waarde | (Device. deviceOSType-EQ "iPad")-of (Device. deviceOSType-EQ "iPhone")<br>(Device. deviceOSType-bevat "AndroidEnterprise")<br>(Device. deviceOSType-EQ "AndroidForWork")
+ deviceOSVersion | Wille keurige teken reeks waarde | (Device. deviceOSVersion-EQ "9,1")
  deviceCategory | een geldige naam voor een apparaatcategorie | (Device. deviceCategory-EQ "BYOD")
- deviceManufacturer | wille keurige teken reeks waarde | (device.deviceManufacturer -eq "Samsung")
- deviceModel | wille keurige teken reeks waarde | (Device. deviceModel-EQ "iPad-Air")
+ deviceManufacturer | Wille keurige teken reeks waarde | (Device. deviceManufacturer-EQ "Samsung")
+ deviceModel | Wille keurige teken reeks waarde | (Device. deviceModel-EQ "iPad-Air")
  deviceOwnership | Persoonlijk, bedrijf, onbekend | (apparaat. deviceOwnership-EQ "bedrijf")
  enrollmentProfileName | Apple-inschrijvings profiel voor apparaten, registratie van apparaten-bedrijfs apparaat-id's (Android-kiosk) of Windows auto pilot-profiel naam | (apparaat. enrollmentProfileName-EQ "DEP iPhones")
  isRooted | waar onwaar | (Device. isRooted-EQ True)
  managementType | MDM (voor mobiele apparaten)<br>PC (voor computers die worden beheerd door de intune-PC-agent) | (Device. managementType-EQ "MDM")
  deviceId | een geldige Azure AD-apparaat-ID | (apparaat. deviceId-EQ "d4fe7726-5966-431c-b3b8-cddc8fdb717d")
- object-id | een geldige Azure AD-object-ID |  (apparaat. objectId-EQ 76ad43c9-32c5-45e8-a272-7b58b58f596d ")
+ Id | een geldige Azure AD-object-ID |  (apparaat. objectId-EQ 76ad43c9-32c5-45e8-a272-7b58b58f596d ")
  systemLabels | een teken reeks die overeenkomt met de eigenschap van het intune-apparaat voor het labelen van moderne werkplek apparaten | (Device. systemLabels-bevat "M365Managed")
 
 > [!Note]  

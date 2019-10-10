@@ -11,17 +11,17 @@ ms.topic: article
 ms.date: 09/03/2019
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: cf4eade598de24e323a8c8647a64921f8797e3a2
-ms.sourcegitcommit: 6013bacd83a4ac8a464de34ab3d1c976077425c7
+ms.openlocfilehash: 311a9fc887db399cb16d6cbb2bcec665a7ddfce7
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71686738"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72240106"
 ---
 # <a name="use-key-vault-references-for-app-service-and-azure-functions-preview"></a>Key Vault verwijzingen gebruiken voor App Service en Azure Functions (preview-versie)
 
 > [!NOTE] 
-> Key Vault verwijzingen zijn momenteel beschikbaar als preview-versie.
+> Key Vault verwijzingen zijn momenteel beschikbaar als preview-versie en ze worden momenteel niet ondersteund door Linux-verbruiks abonnementen.
 
 In dit onderwerp wordt beschreven hoe u kunt werken met geheimen van Azure Key Vault in uw App Service of Azure Functions toepassing zonder dat u code wijzigingen hoeft aan te brengen. [Azure Key Vault](../key-vault/key-vault-overview.md) is een service die gecentraliseerd geheimen beheer biedt, met volledige controle over het toegangs beleid en de controle geschiedenis.
 
@@ -43,12 +43,12 @@ Als u geheimen van Key Vault wilt lezen, moet er een kluis zijn gemaakt en moet 
 
 ## <a name="reference-syntax"></a>Verwijzings syntaxis
 
-Een Key Vault verwijzing is van het formulier `@Microsoft.KeyVault({referenceString})`, waarbij `{referenceString}` wordt vervangen door een van de volgende opties:
+Een Key Vault-verwijzing heeft de vorm `@Microsoft.KeyVault({referenceString})`, waarbij `{referenceString}` wordt vervangen door een van de volgende opties:
 
 > [!div class="mx-tdBreakAll"]
-> | Verwijzings reeks                                                            | Description                                                                                                                                                                                 |
+> | Verwijzings reeks                                                            | Beschrijving                                                                                                                                                                                 |
 > |-----------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-> | SecretUri=_secretUri_                                                       | De **SecretUri** moet de volledige gegevenslaag URI zijn van een geheim in Key Vault, met inbegrip van een versie, bijvoorbeeld https://myvault.vault.azure.net/secrets/mysecret/ec96f02080254f109c51a1f14cdb1931  |
+> | SecretUri =_SecretUri_                                                       | De **SecretUri** moet de volledige gegevenslaag URI zijn van een geheim in Key Vault, met inbegrip van een versie, bijvoorbeeld https://myvault.vault.azure.net/secrets/mysecret/ec96f02080254f109c51a1f14cdb1931  |
 > | Kluisnaam =_kluis_; Geheim =_geheim_; SecretVersion =_SecretVersion_ | De **kluisnaam** moet de naam van uw Key Vault-resource zijn. De **naam van het doel** geheim is. De **SecretVersion** moet de versie zijn van het geheim dat moet worden gebruikt. |
 
 > [!NOTE] 
@@ -78,7 +78,7 @@ Als u een Key Vault referentie voor een toepassings instelling wilt gebruiken, s
 
 ### <a name="azure-resource-manager-deployment"></a>Implementatie van Azure Resource Manager
 
-Wanneer u de implementatie van resources via Azure Resource Manager sjablonen automatiseert, moet u mogelijk uw afhankelijkheden in een bepaalde volg orde rangschikken om deze functie te kunnen gebruiken. Houd er rekening mee dat u de toepassings instellingen moet definiëren als hun eigen resource, in plaats van een `siteConfig` eigenschap in de site definitie te gebruiken. Dit komt doordat de site eerst moet worden gedefinieerd, zodat de door het systeem toegewezen identiteit wordt gemaakt en kan worden gebruikt in het toegangs beleid.
+Wanneer u de implementatie van resources via Azure Resource Manager sjablonen automatiseert, moet u mogelijk uw afhankelijkheden in een bepaalde volg orde rangschikken om deze functie te kunnen gebruiken. Houd er rekening mee dat u de toepassings instellingen moet definiëren als hun eigen resource, in plaats van een `siteConfig`-eigenschap in de site definitie te gebruiken. Dit komt doordat de site eerst moet worden gedefinieerd, zodat de door het systeem toegewezen identiteit wordt gemaakt en kan worden gebruikt in het toegangs beleid.
 
 Een voor beeld van een psuedo-sjabloon voor een functie-app kan er als volgt uitzien:
 
@@ -184,11 +184,11 @@ Een voor beeld van een psuedo-sjabloon voor een functie-app kan er als volgt uit
 ```
 
 > [!NOTE] 
-> In dit voor beeld is de bron beheer implementatie afhankelijk van de toepassings instellingen. Dit is normaal gesp roken onveilig gedrag, omdat het bijwerken van de app-instelling asynchroon werkt. Omdat we echter de `WEBSITE_ENABLE_SYNC_UPDATE_SITE` toepassings instelling hebben opgenomen, is de update synchroon. Dit betekent dat de implementatie van broncode beheer alleen begint zodra de instellingen van de toepassing volledig zijn bijgewerkt.
+> In dit voor beeld is de bron beheer implementatie afhankelijk van de toepassings instellingen. Dit is normaal gesp roken onveilig gedrag, omdat het bijwerken van de app-instelling asynchroon werkt. Omdat we echter de `WEBSITE_ENABLE_SYNC_UPDATE_SITE`-toepassings instelling hebben opgenomen, is de update synchroon. Dit betekent dat de implementatie van broncode beheer alleen begint zodra de instellingen van de toepassing volledig zijn bijgewerkt.
 
 ## <a name="troubleshooting-key-vault-references"></a>Problemen met Key Vault verwijzingen oplossen
 
-Als een verwijzing niet correct wordt opgelost, wordt in plaats daarvan de referentie waarde gebruikt. Dit betekent dat voor toepassings instellingen een omgevings variabele wordt gemaakt waarvan de waarde de `@Microsoft.KeyVault(...)` syntaxis heeft. Dit kan ertoe leiden dat de toepassing fouten genereert, omdat er een geheim van een bepaalde structuur werd verwacht.
+Als een verwijzing niet correct wordt opgelost, wordt in plaats daarvan de referentie waarde gebruikt. Dit betekent dat voor toepassings instellingen een omgevings variabele wordt gemaakt waarvan de waarde de `@Microsoft.KeyVault(...)`-syntaxis heeft. Dit kan ertoe leiden dat de toepassing fouten genereert, omdat er een geheim van een bepaalde structuur werd verwacht.
 
 Dit wordt meestal veroorzaakt door een onjuiste configuratie van het Key Vault- [toegangs beleid](#granting-your-app-access-to-key-vault). Het kan echter ook worden veroorzaakt door een geheim dat niet meer aanwezig is of een syntaxis fout in de verwijzing zelf.
 

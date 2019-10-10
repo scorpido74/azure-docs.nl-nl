@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/23/2019
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: 876fef2b597e9a7dfd896f2b9697378e745a07f3
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: 2ec38659b0bafa8836ac787ac36b662970141843
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71709817"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72249094"
 ---
 # <a name="serverless-event-based-architectures-with-azure-cosmos-db-and-azure-functions"></a>Op gebeurtenissen gebaseerde architecturen met serverloze architectuur met Azure Cosmos DB en Azure Functions
 
@@ -29,8 +29,8 @@ Met de [Azure functions trigger voor Cosmos DB](../azure-functions/functions-bin
 
 U hebt het volgende nodig om een stroom op basis van een gebeurtenis op een server te implementeren:
 
-* **De bewaakte container**: De bewaakte container is de Azure Cosmos-container die wordt bewaakt en de gegevens worden opgeslagen waaruit de wijzigings feed wordt gegenereerd. Eventuele toevoegingen en wijzigingen (bijvoorbeeld ruw) aan de bewaakte container worden weer gegeven in de wijzigings feed van de container.
-* **De lease-container**: De lease-container houdt status over van meerdere en dynamische serverloze Azure-functie instanties en maakt dynamische schaling mogelijk. Deze lease container kan hand matig of automatisch worden gemaakt door de Azure Functions trigger voor Cosmos DB. Als u de lease-container automatisch wilt maken, stelt u de vlag *CreateLeaseCollectionIfNotExists* in de [configuratie](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---configuration)in. Gepartitioneerde lease containers moeten een `/id` partitie sleutel definitie hebben.
+* **De bewaakte container**: de bewaakte container is de Azure Cosmos-container die wordt bewaakt en de gegevens worden opgeslagen waaruit de wijzigings feed wordt gegenereerd. Eventuele toevoegingen, updates van de bewaakte container worden weer gegeven in de wijzigings feed van de container.
+* **De lease container**: de lease-container houdt status over van meerdere en dynamische Serverloze Azure-functie instanties en maakt dynamische schaling mogelijk. Deze lease container kan hand matig of automatisch worden gemaakt door de Azure Functions trigger voor Cosmos DB. Als u de lease-container automatisch wilt maken, stelt u de vlag *CreateLeaseCollectionIfNotExists* in de [configuratie](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---configuration)in. Gepartitioneerde lease containers moeten een `/id`-partitie sleutel definitie hebben.
 
 ## <a name="create-your-azure-functions-trigger-for-cosmos-db"></a>Uw Azure Functions-trigger maken voor Cosmos DB
 
@@ -52,6 +52,6 @@ U kunt nu door gaan met meer informatie over wijzigings invoer in de volgende ar
 
 * [Overzicht van wijzigings feed](change-feed.md)
 * [Manieren om een wijzigings feed te lezen](read-change-feed.md)
-* [Met behulp van de change feed processor-bibliotheek](change-feed-processor.md)
+* [De processor bibliotheek voor Change feed gebruiken](change-feed-processor.md)
 * [Werken met de processor bibliotheek voor wijzigings invoer](change-feed-processor.md)
 * [Serverloze database Computing met Azure Cosmos DB en Azure Functions](serverless-computing-database.md)

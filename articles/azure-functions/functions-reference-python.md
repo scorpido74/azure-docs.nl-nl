@@ -13,12 +13,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 04/16/2018
 ms.author: glenga
-ms.openlocfilehash: d74d1c33816b3c028a26335af4c6d5b23b7a2046
-ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
+ms.openlocfilehash: 4fd73f528ac823a8e794a880f87dd5f8872e1251
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71958476"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72243283"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Functions python-ontwikkelaars handleiding
 
@@ -176,7 +176,7 @@ def main(req: func.HttpRequest,
 Wanneer de functie wordt aangeroepen, wordt de HTTP-aanvraag door gegeven aan de functie als `req`. Een item wordt opgehaald uit de Azure-Blob Storage op basis van de _id_ in de route-URL en wordt beschikbaar gesteld als `obj` in de functie hoofdtekst.  Hier is het opgegeven opslag account het connection string gevonden in. Dit is hetzelfde opslag account dat wordt gebruikt door de functie-app.
 
 
-## <a name="outputs"></a>outputs
+## <a name="outputs"></a>Uitvoer
 
 Output kan worden uitgedrukt in retour waarde en uitvoer parameters. Als er slechts één uitvoer is, raden we u aan de retour waarde te gebruiken. Voor meerdere uitvoer moet u uitvoer parameters gebruiken.
 
@@ -238,7 +238,7 @@ def main(req):
 
 Er zijn aanvullende logboek registratie methoden beschikbaar waarmee u naar de-console kunt schrijven op verschillende tracerings niveaus:
 
-| Methode                 | Description                                |
+| Methode                 | Beschrijving                                |
 | ---------------------- | ------------------------------------------ |
 | **`critical(_message_)`**   | Schrijft een bericht met niveau kritiek op de hoofd logboek registratie.  |
 | **`error(_message_)`**   | Schrijft een bericht met een niveau fout in de hoofd logboek registratie.    |
@@ -331,7 +331,7 @@ def main(req: azure.functions.HttpRequest,
     return f'{context.invocation_id}'
 ```
 
-De [**context**](/python/api/azure-functions/azure.functions.context?view=azure-python) klasse heeft de volgende methoden:
+De [**context**](/python/api/azure-functions/azure.functions.context?view=azure-python) klasse heeft de volgende teken reeks kenmerken:
 
 `function_directory`  
 De map waarin de functie wordt uitgevoerd.

@@ -1,17 +1,17 @@
 ---
-title: "Voorbeeld: toegestane SKU's voor opslagaccounts en virtuele machines"
+title: Voor beeld-toegestaan opslag account en VM-Sku's
 description: Voor deze voorbeeldbeleidsdefinitie moeten opslagaccounts en virtuele machines gebruikmaken van goedgekeurde SKU's.
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: e84462a930ffad202def1da1e2c923371dde9d58
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: bfa6fd7bf812da352e074c0ed4df855043a27971
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71980610"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72255856"
 ---
 # <a name="sample---allowed-skus-for-storage-accounts-and-virtual-machines"></a>Voorbeeld: toegestane SKU's voor opslagaccounts en virtuele machines
 

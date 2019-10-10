@@ -1,17 +1,17 @@
 ---
-title: Uw beheer groepen wijzigen, verwijderen of beheren-Azure governance
+title: Werken met uw beheer groepen-Azure governance
 description: Meer informatie over het weer geven, onderhouden, bijwerken en verwijderen van uw beheer groeps hiërarchie.
 author: rthorn17
 ms.service: governance
 ms.date: 05/22/2019
 ms.author: rithorn
 ms.topic: conceptual
-ms.openlocfilehash: 28bfabd5c28fe833050551e7be690c0ea3d1e6a0
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: 57695157119b81580777c0581adccb267e7e9faa
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71338936"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72255923"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>Uw resources beheren met beheer groepen
 
@@ -126,7 +126,7 @@ U kunt elke beheer groep weer geven waarop u een directe of overgenomen RBAC-rol
 
 1. Als u de details van de beheer groep wilt weer geven, selecteert u de koppeling **(details)** naast de titel van de beheer groep. Als deze koppeling niet beschikbaar is, bent u niet gemachtigd om die beheer groep weer te geven.
 
-   ![Algemeen](./media/main.png)
+   ![Hoofd](./media/main.png)
 
 ### <a name="view-in-powershell"></a>Weer geven in Power shell
 

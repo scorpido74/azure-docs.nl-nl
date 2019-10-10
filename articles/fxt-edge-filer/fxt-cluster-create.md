@@ -1,397 +1,397 @@
 ---
-title: Microsoft Azure FXT Edge Filer cluster maken
-description: Een hybride opslag cache-cluster maken met de Azure FXT Edge Filer
+title: FXT-cluster maken met Microsoft Azure Edge-bestands extensie
+description: Een hybride opslag cache cluster maken met de Azure FXT Edge-Bestandsr
 author: ekpgh
 ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 07/01/2019
-ms.author: v-erkell
-ms.openlocfilehash: 94ec2b088940f4f1f683a4f88ae312879d909bc1
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.author: rohogue
+ms.openlocfilehash: 54d70f60d4b7290b60c864817c756648fef1f481
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67543532"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72256085"
 ---
-# <a name="tutorial-create-the-azure-fxt-edge-filer-cluster"></a>Zelfstudie: Maken van het cluster Azure FXT Edge Filer
+# <a name="tutorial-create-the-azure-fxt-edge-filer-cluster"></a>Zelf studie: het Azure FXT Edge-bestands cluster maken
 
-Nadat u installeert en de Azure FXT Edge Filer hardware-knooppunten voor uw cache initialiseren, moet u de software van de cluster FXT gebruiken om de cachecluster te maken. 
+Nadat u de FXT Edge-hardwarecomponenten van Azure hebt geïnstalleerd en geïnitialiseerd voor uw cache, gebruikt u de FXT-cluster software om het cache cluster te maken. 
 
-Deze zelfstudie leert u de stappen voor het configureren van uw hardwareknooppunten als een cluster. 
+In deze zelf studie wordt u begeleid bij de stappen voor het configureren van uw hardware-knoop punten als een cluster. 
 
 In deze zelfstudie leert u het volgende: 
 
 > [!div class="checklist"]
-> * Welke informatie nodig is voordat u begint met het maken van het cluster
-> * Het verschil tussen het beheernetwerk van het cluster, het clusternetwerk en het netwerk clientgerichte
-> * Verbinding maken met een clusterknooppunt 
-> * Over het maken van een eerste-cluster met één knooppunt van de Azure FXT Edge Filer
-> * Hoe u zich aanmeldt bij het cluster van het Configuratiescherm om de clusterinstellingen te configureren
+> * Welke gegevens nodig zijn voordat u begint met het maken van het cluster
+> * Het verschil tussen het beheer netwerk van het cluster, het cluster netwerk en het client-Facing netwerk
+> * Verbinding maken met een cluster knooppunt 
+> * Een eerste cluster maken met behulp van één Azure FXT Edge-Bestandsr knoop punt
+> * Aanmelden bij het configuratie scherm van het cluster om de cluster instellingen te configureren
 
-Deze procedure neemt tussen 15 en 45 minuten, afhankelijk van hoeveel onderzoek die u moet doen om u te identificeren van IP-adressen en netwerkbronnen.
+Deze procedure duurt tussen 15 en 45 minuten, afhankelijk van hoeveel onderzoek u moet doen om IP-adressen en netwerk bronnen te identificeren.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voer deze vereisten uit voordat u deze zelfstudie begint:
+Voltooi deze vereisten voordat u met deze zelf studie begint:
 
-* Installeren van uw Azure FXT Edge Filer hardware-systemen in uw datacenter 
+* De hardwaresystemen van uw Azure FXT Edge-bestand installeren in uw Data Center 
 
-  U hoeft alleen één knooppunt te maken van het cluster, maar u moet [ten minste twee meer knooppunten toevoegen](fxt-add-nodes.md) voordat u kunt het cluster configureren en u klaar voor gebruik. 
+  U hebt slechts één knoop punt nodig om het cluster te maken, maar u moet [ten minste twee extra knoop punten toevoegen](fxt-add-nodes.md) voordat u het cluster kunt configureren en het kan gebruiken. 
 
-* Juiste kracht en het netwerk kabels verbinden met het systeem  
-* Inschakelen op ten minste één Azure FXT Edge Filer knooppunt en [het root-wachtwoord instellen](fxt-node-password.md)
+* De juiste stroom-en netwerk kabels aansluiten op het systeem  
+* Schakel ten minste één Azure FXT Edge-knoop punt in en [Stel het hoofd wachtwoord](fxt-node-password.md) in
 
-## <a name="gather-information-for-the-cluster"></a>Verzamelen van informatie voor het cluster 
+## <a name="gather-information-for-the-cluster"></a>Informatie voor het cluster verzamelen 
 
-U moet de volgende informatie om de Azure FXT Edge Filer-cluster te maken:
+U hebt de volgende informatie nodig om het Azure FXT Edge-bestands cluster te maken:
 
 * Clusternaam
 
-* Beheerderswachtwoord in te stellen voor het cluster
+* Beheerders wachtwoord om in te stellen voor het cluster
 
 * IP-adressen:
 
-  * Één IP-adres voor Clusterbeheer, en het IP-masker en router moet worden gebruikt voor het beheer van netwerk
-  * De eerste en laatste IP-adressen in een aaneengesloten reeks IP-adressen voor clustercommunicatie (knooppunten). Zie [IP-adres-distributie](#ip-address-distribution)hieronder voor meer informatie. 
-  * (Clientgerichte IP-adressen worden ingesteld nadat de cluster is gemaakt.)
+  * Eén IP-adres voor cluster beheer en het netmasker en de router die moeten worden gebruikt voor het beheer netwerk
+  * Het eerste en laatste IP-adres in een aaneengesloten bereik met IP-adressen voor de communicatie van het cluster (knoop punt naar knoop punt). Zie [IP-adres distributie](#ip-address-distribution)hieronder voor meer informatie. 
+  * (Client gerichte IP-adressen worden ingesteld na het maken van het cluster.)
 
-* Informatie over de infrastructuur van netwerk:
+* Informatie over de netwerk infrastructuur:
 
   * Het IP-adres van een DNS-server voor het cluster
-  * De naam van de DNS-domein voor het cluster
-  * De naam of IP-adres voor de cluster NTP-servers (één server of drie of meer) 
-  * Of u wilt inschakelen van IEEE 802.1ax-2008 aggregatie op de interfaces van het cluster koppelen
-  * Als u koppeling aggregatie, inschakelen of niet gebruik van IEEE 802.3ad (LACP) dynamische aggregatie
+  * De naam van het DNS-domein voor het cluster
+  * De naam of het IP-adres voor de cluster-NTP-servers (een server of drie of meer) 
+  * Of u de koppelings aggregatie van IEEE 802.1 AX-2008 wilt inschakelen op de interfaces van het cluster
+  * Als u koppelings aggregatie inschakelt, of de dynamische aggregatie van IEEE 802.3 ad (LACP) al dan niet moet worden gebruikt
 
-Nadat u het cluster maakt, maar is het beter om dat te doen tijdens het maken, kunt u deze items van de infrastructuur netwerk configureren. 
+U kunt deze netwerk infrastructuur items configureren nadat u het cluster hebt gemaakt, maar dit is beter tijdens het maken. 
 
-### <a name="ip-address-distribution"></a>IP-adres-distributie
+### <a name="ip-address-distribution"></a>Distributie van IP-adressen
 
-De Azure FXT Edge Filer hybride opslag cache-cluster maakt gebruik van IP-adressen in drie categorieën:
+Het cache cluster voor hybride opslag van Azure FXT Edge maakt gebruik van IP-adressen in drie categorieën:
 
-* Beheer van IP: Één IP-adres voor Clusterbeheer
+* Beheer-IP: één IP-adres voor cluster beheer
 
-  Dit adres doet dienst als het toegangspunt voor toegang tot de cluster configuratieprogramma's (het web op basis van het Configuratiescherm of de XML-RPC-API). Dit adres wordt automatisch toegewezen aan het primaire knooppunt in het cluster en wordt automatisch verplaatst als het primaire knooppunt wordt gewijzigd.
+  Dit adres fungeert als toegangs punt voor toegang tot de hulpprogram ma's voor cluster configuratie (het op het web gebaseerde configuratie scherm of de XML-RPC-API). Dit adres wordt automatisch toegewezen aan het primaire knoop punt in het cluster en wordt automatisch verplaatst als het primaire knoop punt wordt gewijzigd.
 
-  Andere IP-adressen kunnen worden gebruikt voor toegang tot het Configuratiescherm, maar het beheer van IP-adres is ontworpen om toegang te bieden, zelfs als failover voor afzonderlijke knooppunten.
+  Andere IP-adressen kunnen worden gebruikt om toegang te krijgen tot het configuratie scherm, maar het beheer-IP-adres is ontworpen om toegang te bieden, zelfs als failover van afzonderlijke knoop punten wordt uitgevoerd.
 
-* Clusternetwerk: Een bereik van IP-adressen voor communicatie binnen het cluster
+* Cluster netwerk: een bereik met IP-adressen voor cluster communicatie
 
-  Het clusternetwerk wordt gebruikt voor communicatie tussen clusterknooppunten en bestanden op te halen uit de back endopslag (core filter).
+  Het cluster netwerk wordt gebruikt voor communicatie tussen cluster knooppunten en voor het ophalen van bestanden van de back-end-opslag (kern bestanden).
 
-  **Aanbevolen:** Een IP-adres per fysieke poort die wordt gebruikt voor communicatie binnen het cluster op elk knooppunt Azure FXT Edge Filer toewijzen. Het cluster wijst automatisch de adressen in het opgegeven bereik toe aan de afzonderlijke knooppunten.
+  **Aanbevolen procedure:** Wijs één IP-adres toe per fysieke poort die wordt gebruikt voor cluster communicatie op elk Azure FXT Edge-knoop punt. Het cluster wijst automatisch de adressen in het opgegeven bereik toe aan afzonderlijke knoop punten.
 
-* Clientgerichte netwerk: Het bereik van IP-adressen die clients moeten gebruiken voor aanvraag- en write-bestanden
+* Client gericht netwerk: het bereik van IP-adressen die clients gebruiken om bestanden aan te vragen en te schrijven
 
-  De client-netwerkadressen worden gebruikt door clients toegang krijgen tot de belangrijkste filer gegevens via het cluster. Een NFS-client kan bijvoorbeeld een van deze adressen koppelen.
+  De client-netwerk adressen worden door clients gebruikt voor toegang tot de kern bestands gegevens via het cluster. Een NFS-client kan bijvoorbeeld een van deze adressen koppelen.
 
-  **Aanbevolen:** Een IP-adres per fysieke poort die wordt gebruikt voor communicatie van clients op elk knooppunt FXT reeks toewijzen.
+  **Aanbevolen procedure:** Wijs één IP-adres toe per fysieke poort die wordt gebruikt voor client communicatie op elk FXT Series-knoop punt.
 
-  Het cluster wordt clientgerichte IP-adressen zo gelijkmatig mogelijk verspreid over de bijbehorende knooppunten.
+  Het cluster distribueert IP-adressen op de client zo gelijkmatig mogelijk over de samenstellende knoop punten.
 
-  Voor het gemak wordt in veel beheerders één DNS-naam configureren met round robin DNS (RRDNS) configuratie zodat u gemakkelijk om te verdelen van aanvragen van clients over het adresbereik. Met deze instelling kunt ook alle clients de dezelfde mount-opdracht gebruiken voor toegang tot het cluster. Lezen [DNS configureren](fxt-configure-network.md#configure-dns-for-load-balancing) voor meer informatie.
+  Ter vereenvoudiging: veel beheerders configureren één DNS-naam met Round-Robin DNS-configuratie (RRDNS), zodat het eenvoudiger wordt om client aanvragen over het adres bereik te distribueren. Met deze installatie kunnen alle clients ook de opdracht koppelen gebruiken om toegang te krijgen tot het cluster. Lees [DNS configureren](fxt-configure-network.md#configure-dns-for-load-balancing) voor meer informatie.
 
-Het beheer van IP-adres en een bereik van netwerkadressen cluster moeten worden opgegeven om een nieuwe cluster te maken. Client-verbonden adressen zijn opgegeven na het maken van het cluster.
+Het beheer-IP-adres en een bereik van cluster netwerk adressen moeten worden opgegeven om een nieuw cluster te maken. Client adressen worden opgegeven nadat het cluster is gemaakt.
 
-## <a name="connect-to-the-first-node"></a>Verbinding maken met het eerste knooppunt
+## <a name="connect-to-the-first-node"></a>Verbinding maken met het eerste knoop punt
 
-U kunt verbinding maken met een van de geïnstalleerde FXT knooppunten en de OS-software gebruiken voor het instellen van het cluster.
+U kunt verbinding maken met een van de geïnstalleerde FXT-knoop punten en de bijbehorende OS-software gebruiken om het cluster in te stellen.
 
-Als u nog niet hebt gedaan, inschakelen op ten minste een van de knooppunten FXT voor uw cluster, en zorg ervoor dat er een netwerkverbinding en een IP-adres. U moet een nieuwe hoofdwachtwoord dus de stappen in het activeren van het knooppunt ingesteld [hardware wachtwoorden instellen](fxt-node-password.md) als u hebt nog niet gedaan.
+Als u dit nog niet hebt gedaan, schakelt u ten minste één van de FXT-knoop punten voor uw cluster uit en controleert u of deze een netwerk verbinding en een IP-adres heeft. U moet een nieuw root-wacht woord instellen om het knoop punt te activeren. Volg daarom de stappen in [Hardware-wacht woorden instellen](fxt-node-password.md) als u dit nog niet hebt gedaan.
 
-Om te controleren of de netwerkverbinding, zorg ervoor dat de netwerkverbinding van het knooppunt LED's belicht (en, indien nodig, de indicatoren in het netwerk omzetten die is gekoppeld). -LED's worden beschreven in [Monitor Azure FXT Edge Filer hardwarestatus](fxt-monitor.md).
+Als u de netwerk verbinding wilt controleren, controleert u of de netwerk koppeling-Led's van het knoop punt licht zijn (en, indien nodig, de Indica tors op de netwerk switch waaraan deze is gekoppeld). Indicator-Led's worden beschreven in de [Hardware-status van Azure FXT Edge-bestanden bewaken](fxt-monitor.md).
 
-Wanneer het knooppunt wordt opgestart, wordt er een IP-adres aanvragen. Als deze is verbonden met een DHCP-server, die het IP-adres dat is geleverd door DHCP worden geaccepteerd. (Dit IP-adres is tijdelijk. Dit verandert wanneer u het cluster maakt.)
+Wanneer het knoop punt wordt opgestart, wordt een IP-adres aangevraagd. Als deze is verbonden met een DHCP-server, wordt het IP-adres geaccepteerd dat door DHCP wordt verschaft. (Dit IP-adres is tijdelijk. Het wordt gewijzigd wanneer u het cluster maakt.)
 
-Als deze niet is verbonden met een DHCP-server of geen reactie ontvangen, wordt het knooppunt Bonjour software gebruiken om in te stellen van een zelf toegewezen IP-adres in het formulier 169.254. \*. \*. U moet echter een tijdelijke statische IP-adres ingesteld op een van de netwerkkaarten van het knooppunt voordat u deze gebruikt om een cluster te maken. Instructies zijn opgenomen in dit document verouderde; Neem contact op met Microsoft-Service en ondersteuning voor bijgewerkte informatie: [Bijlage A: Instellen van een statisch IP-adres op een knooppunt FXT](https://azure.github.io/Avere/legacy/create_cluster/4_8/html/static_ip.html).
+Als deze niet is verbonden met een DHCP-server of als er geen antwoord wordt ontvangen, gebruikt het knoop punt Bonjour-software om een zelf toegewezen IP-adres in de vorm 169,254. \*. \* in te stellen. U moet echter een tijdelijk statisch IP-adres op een van de netwerk kaarten van het knoop punt instellen voordat u het gebruikt om een cluster te maken. Instructies zijn opgenomen in dit oudere document. Neem contact op met de service en ondersteuning van micro soft voor bijgewerkte informatie: [bijlage A: een statisch IP-adres instellen op een FXT-knoop punt](https://azure.github.io/Avere/legacy/create_cluster/4_8/html/static_ip.html).
 
 ### <a name="find-the-ip-address"></a>Het IP-adres zoeken
 
-Verbinding maken met het knooppunt Azure FXT Edge Filer vinden het IP-adres. U kunt een seriële kabel, rechtstreekse verbinding met de USB- en VGA-poorten, gebruiken of verbinding maken via een KVM-switch. (Voor poortverbinding Zie [initiële wachtwoorden instellen](fxt-node-password.md).)
+Maak verbinding met het knoop punt van de Azure FXT Edge-bestand om het IP-adres te vinden. U kunt een seriële kabel gebruiken, een rechtstreekse verbinding met de USB-en VGA-poorten of verbinding maken via een KVM-switch. (Zie [eerste wacht woorden instellen](fxt-node-password.md)voor details over poort verbindingen.)
 
-Nadat u verbinding hebt gemaakt, aanmelden met de gebruikersnaam `root` en het wachtwoord dat u hebt ingesteld toen u het knooppunt voor de eerste keer is opgestart.  
+Nadat u verbinding hebt gemaakt, meldt u zich aan met de gebruikers naam `root` en het wacht woord dat u hebt ingesteld toen u het knoop punt voor de eerste keer opstart.  
 
-Na het aanmelden, moet u bepalen van het knooppunt IP-adres.
+Nadat u zich hebt aangemeld, moet u het IP-adres van het knoop punt bepalen.
 
-Gebruik de opdracht `ifconfig` om te zien van de adressen die zijn toegewezen aan dit systeem.
+Gebruik de opdracht `ifconfig` om de adressen weer te geven die aan dit systeem zijn toegewezen.
 
-Bijvoorbeeld, de opdracht `ifconfig | grep -B5 inet` zoekt voor poorten met internet-adressen en biedt vijf regels van context om weer te geven van de poort-id.
+De opdracht `ifconfig | grep -B5 inet` zoekt bijvoorbeeld naar poorten met Internet adressen en biedt vijf regels context om de poort-id weer te geven.
 
-Schrijf op elk IP-adres in het rapport ifconfig weergegeven. Adressen die worden weergegeven met de poortnamen van de zoals e0a of e0b zijn goede opties. Gebruik geen IP-adressen worden weergegeven met e7 * namen, omdat deze namen alleen voor servicepoorten iDRAC/IPMI gebruikt worden.  
+Noteer elk IP-adres dat wordt weer gegeven in het ifconfig-rapport. Adressen die worden weer gegeven met poort namen, zoals e0a of e0b, zijn goede opties. Gebruik geen IP-adressen die worden vermeld met E7 * names, omdat deze namen alleen worden gebruikt voor iDRAC/IPMI-service poorten.  
 
-## <a name="load-the-cluster-configuration-wizard"></a>Laden van de wizard cluster configureren
+## <a name="load-the-cluster-configuration-wizard"></a>De wizard cluster configuratie laden
 
-Gebruik het configuratiehulpprogramma van de cluster op basis van een browser om het cluster te maken. 
+Gebruik het hulp programma voor cluster configuratie op basis van de browser om het cluster te maken. 
 
-Voer het IP-adres voor het knooppunt in een webbrowser. Als de browser een bericht over de site niet wordt vertrouwd geeft, met de site wilt u toch doorgaan. (Afzonderlijke Azure FXT Edge Filer knooppunten geen voor de opgegeven CA beveiligingscertificaten.)
+Voer het IP-adres voor het knoop punt in een webbrowser in. Als de browser een bericht geeft over de site die niet wordt vertrouwd, gaat u toch naar de site. (Afzonderlijke knoop punten van de FXT Edge van Azure hebben geen beveiligings certificaten door de certificerings instantie.)
 
-![Besturingselement voor deelvenster aanmeldingspagina in een browservenster](media/fxt-cluster-create/unconfigured-node-gui.png)
+![De aanmeldings pagina van het configuratie scherm in het browser venster](media/fxt-cluster-create/unconfigured-node-gui.png)
 
-Laat de **gebruikersnaam** en **wachtwoord** velden leeg. Klik op **aanmelding** om het cluster maken-pagina te laden.
+Laat de velden **gebruikers naam** en **wacht woord** leeg. Klik op **Aanmelden** om de pagina voor het maken van het cluster te laden.
 
-![Scherm voor het eerste instellen voor een niet-geconfigureerde knooppunt in de browser op basis van GUI-Configuratiescherm. Hier ziet opties voor het bijwerken van software, handmatig configureren van een cluster of configureren van een cluster op basis van een setup-bestand.](media/fxt-cluster-create/setup-first-screen.png)
+![Eerste installatie scherm voor een niet-geconfigureerd knoop punt in het configuratie scherm van de browser. Het bevat opties voor het bijwerken van software, het hand matig configureren van een cluster of het configureren van een cluster vanuit een installatie bestand.](media/fxt-cluster-create/setup-first-screen.png)
 
 ## <a name="create-the-cluster"></a>Het cluster maken
 
-Het configuratieprogramma cluster leidt u door een reeks schermen om de Azure FXT Edge Filer-cluster te maken. Zorg ervoor dat u hebt de [vereist informatie](#gather-information-for-the-cluster) gereed is voordat u begint. 
+Het hulp programma cluster configuratie begeleidt u door een aantal schermen om het Azure FXT Edge-bestands cluster te maken. Zorg ervoor dat u de [vereiste gegevens](#gather-information-for-the-cluster) hebt om te beginnen. 
 
-### <a name="creation-options"></a>Opties voor het maken
+### <a name="creation-options"></a>Opties voor maken
 
-Het eerste scherm biedt drie opties. Gebruik de handmatige configuratie-optie, tenzij er speciale instructies van ondersteunend personeel.
+Het eerste scherm bevat drie opties. Gebruik de optie hand matige configuratie tenzij u speciale instructies van ondersteunings personeel hebt.
 
-Klik op **ik het cluster handmatig configureert** laden van het scherm Nieuw cluster configuratie-opties. 
+Klik op **Ik zal het cluster hand matig configureren** om het scherm nieuwe cluster configuratie opties te laden. 
 
 De andere opties worden zelden gebruikt:
 
-* 'De systeemkopie bijwerken', vraagt u voor het installeren van nieuwe OS-software voordat het cluster te maken. (De momenteel geïnstalleerde versie wordt weergegeven aan de bovenkant van het scherm.) Moet u een URL en een gebruikersnaam en wachtwoord, ofwel het pakketbestand van de software - opgeven of door het uploaden van een bestand vanaf uw computer. 
+* Als u de installatie kopie van het systeem bijwerkt, wordt u gevraagd nieuwe OS-software te installeren voordat u het cluster maakt. (De momenteel geïnstalleerde software versie wordt boven aan het scherm weer gegeven.) U moet het software pakket bestand opgeven: een URL en gebruikers naam/wacht woord of door een bestand van uw computer te uploaden. 
 
-* Het hulpprogramma voor het bestand van de cluster-installatieoptie wordt soms gebruikt door de klantenservice van Microsoft. 
+* De optie voor het installatie bestand van het cluster wordt soms gebruikt door de klanten service en ondersteuning van micro soft. 
 
-## <a name="cluster-options"></a>Clusteropties
+## <a name="cluster-options"></a>Cluster opties
 
-Het volgende scherm vraagt u om opties voor het nieuwe cluster te configureren.
+In het volgende scherm wordt u gevraagd om de opties voor het nieuwe cluster te configureren.
 
-De pagina is onderverdeeld in twee gedeelten **basisconfiguratie** en **netwerkconfiguraties**. De configuratiesectie van netwerken heeft ook subsecties: één voor de **Management** netwerk en één voor de **Cluster** netwerk.
+De pagina is onderverdeeld in twee hoofd secties: **basis configuratie** en **netwerk configuratie**. De sectie netwerk configuratie heeft ook subsecties: één voor het **beheer** netwerk en één voor het **cluster** netwerk.
 
-### <a name="basic-configuration"></a>Basisconfiguratie
+### <a name="basic-configuration"></a>Basis configuratie
 
-Vul in het bovenste gedeelte basisinformatie voor het nieuwe cluster.
+Vul in het bovenste gedeelte basis informatie in voor het nieuwe cluster.
 
-![Details van de sectie "Basisconfiguratie" in browserpagina GUI. Deze drie velden weergegeven (de naam van de cluster, het beheerderswachtwoord, bevestig het wachtwoord)](media/fxt-cluster-create/basic-configuration.png) 
+![Details van de sectie ' basis configuratie ' in de browser GUI-pagina. Er worden drie velden weer gegeven (cluster naam, beheerders wachtwoord, bevestig het wacht woord)](media/fxt-cluster-create/basic-configuration.png) 
 
-* **Clusternaam** -Voer een unieke naam voor het cluster.
+* **Cluster naam** : Voer een unieke naam in voor het cluster.
 
-  Naam van het cluster moet voldoen aan deze criteria voldoen:
+  De cluster naam moet aan de volgende criteria voldoen:
   
   * Lengte van 1 tot 16 tekens
-  * Kan letters, cijfers, en het streepje (-) en onderstrepingstekens (_) bevatten 
+  * Kan letters, cijfers en streepjes (-) en onderstrepings tekens (_) bevatten 
   * Mag geen andere interpunctie of speciale tekens bevatten
   
-  U kunt deze naam later wijzigen de **Cluster** > **algemene instellingen** configuratiepagina. (Lees voor meer informatie over de instellingen van de [Cluster configuratiehandleiding](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/ops_conf_index.html), dit is geen onderdeel van deze documentatie.)
+  U kunt deze naam later wijzigen op de pagina **Cluster** > **algemene installatie** configuratie. (Voor meer informatie over cluster instellingen raadpleegt u de [hand leiding voor cluster configuratie](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/ops_conf_index.html), die geen deel uitmaakt van deze documentatieset.)
 
   > [!NOTE] 
-  > De clusternaam van uw wordt gebruikt om systeeminformatie geüpload voor ondersteuning voor bewaking en probleemoplossing, dus is het handig om op te nemen van de naam van uw bedrijf te identificeren.
+  > De cluster naam wordt gebruikt om systeem informatie te identificeren die is geüpload naar ondersteuning voor bewaking of probleem oplossing. het is dus handig om uw bedrijfs naam op te geven.
 
-* **Beheerderswachtwoord** -Stel het wachtwoord voor de gebruiker met beheerdersrechten standaard `admin`.
+* **Beheerders wachtwoord** : Stel het wacht woord in voor de standaard gebruiker met beheerders rechten, `admin`.
   
-  U moet afzonderlijke gebruikersaccounts instellen voor elke persoon die worden beheerd door het cluster, maar u kunt de gebruiker niet verwijderen `admin`. Meld u als `admin` als u nodig hebt om extra gebruikers te maken.
+  U moet afzonderlijke gebruikers accounts instellen voor elke persoon die het cluster beheert, maar u kunt de gebruiker `admin` niet verwijderen. Meld u aan als `admin` als u extra gebruikers wilt maken.
  
-  Kunt u het wachtwoord voor `admin` in de **beheer** > **gebruikers** instellingenpagina in het cluster het Configuratiescherm. Lees voor meer informatie, de **gebruikers** documentatie in de [Cluster configuratiehandleiding](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_users.html).
+  U kunt het wacht woord voor `admin` wijzigen op de pagina **beheer** > **gebruikers** instellingen in het configuratie scherm van het cluster. Lees voor meer informatie de documentatie over **gebruikers** in de [cluster configuratie handleiding](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_users.html).
 
 <!-- to do: update "legacy" URLs when docs are ported to Microsoft site -->
 
 ### <a name="network-configuration"></a>Netwerkconfiguratie
 
-De **netwerken** sectie vraagt u om op te geven van de netwerkinfrastructuur die het cluster gebruikt. 
+De sectie **netwerken** vraagt u om de netwerk infrastructuur op te geven die door het cluster wordt gebruikt. 
 
-Er zijn twee aparte netwerken te configureren:
+Er zijn twee afzonderlijke netwerken die moeten worden geconfigureerd:
 
-* De *beheernetwerk* biedt de beheerderstoegang tot het cluster voor configuratie en bewaking. De hier vermelde IP-adres wordt gebruikt wanneer u verbinding maakt tot het Configuratiescherm of voor SSH-toegang. 
+* Het *beheer netwerk* biedt beheerders toegang tot het cluster voor configuratie en controle. Het IP-adres dat u hier opgeeft, wordt gebruikt bij het maken van verbinding met het configuratie scherm of voor SSH-toegang. 
 
-  De meeste clusters slechts één management IP-adres gebruiken, maar als u wilt toevoegen, interfaces kunt u doen na het maken van het cluster.
+  Voor de meeste clusters wordt slechts één beheer-IP-adres gebruikt, maar als u interfaces wilt toevoegen, kunt u dit doen nadat u het cluster hebt gemaakt.
 
-* De *clusternetwerk* wordt gebruikt voor communicatie tussen clusterknooppunten en tussen clusterknooppunten en back-end-opslag (core filter).
+* Het *cluster netwerk* wordt gebruikt voor communicatie tussen cluster knooppunten en tussen cluster knooppunten en back-end-opslag (kern bestanden).
 
-Het netwerk clientgerichte geconfigureerd is later, nadat het cluster is gemaakt.
+Het client gerichte netwerk wordt later geconfigureerd nadat het cluster is gemaakt.
 
-Deze sectie bevat ook de configuratie van DNS- en NTP-servers die worden gebruikt door beide netwerken.
+Deze sectie bevat ook configuratie voor DNS-en NTP-servers die door beide netwerken worden gebruikt.
 
-### <a name="configure-the-management-network"></a>Het beheernetwerk configureren
+### <a name="configure-the-management-network"></a>Het beheer netwerk configureren
 
-Instellingen in de **Management** sectie hebben betrekking op het netwerk waarmee de beheerderstoegang tot het cluster.
+De instellingen in de sectie **beheer** zijn voor het netwerk dat beheerders toegang biedt tot het cluster.
 
-![Details van de sectie 'Beheer', met velden voor 5 opties en een selectievakje voor 1Gb-beheernetwerk](media/fxt-cluster-create/management-network-filled.png)
+![Details van de sectie ' beheer ', met velden voor vijf opties en een selectie vakje voor 1Gb-beheer netwerk](media/fxt-cluster-create/management-network-filled.png)
 
-* **Beheer van IP** -Geef het IP-adres dat u gebruiken wilt voor toegang tot het cluster het Configuratiescherm. Dit adres wordt door het primaire knooppunt van het cluster worden geclaimd, maar wordt automatisch verplaatst naar een knooppunt in orde als de oorspronkelijke primaire knooppunt niet beschikbaar is.
+* **Beheer-IP** : Geef het IP-adres op dat u gaat gebruiken voor toegang tot het configuratie scherm van het cluster. Dit adres wordt geclaimd door het primaire knoop punt van het cluster, maar wordt automatisch verplaatst naar een goed knoop punt als het oorspronkelijke primaire knoop punt niet meer beschikbaar is.
 
-  De meeste clusters gebruik slechts één IP-adresbeheer. Als u meer dan één wilt, kunt u ze toevoegen nadat u het cluster hebt gemaakt met behulp van de **Cluster** > **beheernetwerk** instellingenpagina. Meer informatie in de [Cluster configuratiehandleiding](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_admin_network.html).
+  Voor de meeste clusters wordt slechts één IP-adres voor beheer gebruikt. Als u meer dan één wilt, kunt u ze toevoegen nadat u het cluster hebt gemaakt met behulp van de pagina **cluster** >  netwerk instellingen voor**beheer** . Meer informatie vindt u in de [hand leiding voor cluster configuratie](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_admin_network.html).
 
-* **IP-masker** -Geef het IP-masker voor het beheernetwerk.
+* **Netmask** : Geef het netmask op voor het beheer netwerk.
 
-* **Router** -Geef het adres van de standaard-gateway die worden gebruikt door het beheernetwerk.
+* **Router** : Voer het standaard gateway adres in dat door het beheer netwerk wordt gebruikt.
 
-* **VLAN-label (optioneel)** : als uw cluster maakt gebruik van VLAN-tags, geef de code voor het beheernetwerk.
+* **VLAN-tag (optioneel)** : als uw cluster VLAN-Tags gebruikt, geeft u het label op voor het beheer netwerk.
 
-  Aanvullende VLAN-instellingen zijn geconfigureerd in de **Cluster** > **VLAN** instellingenpagina. Lezen [werken met VLAN's](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/network_overview.html#vlan-overview) en [Cluster > VLAN](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_vlan.html) in het Cluster configuratiehandleiding voor meer informatie.
+  Aanvullende VLAN-instellingen worden geconfigureerd op de pagina **Cluster** > **VLAN** -instellingen. Lees meer over het [werken met vlan's](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/network_overview.html#vlan-overview) en [cluster > VLAN](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_vlan.html) in de cluster configuratie handleiding voor meer informatie.
 
-* **MTU** - indien nodig, aanpassen van de maximale verzendeenheid (MTU) voor het beheernetwerk van uw cluster.
+* **MTU** : Stel, indien nodig, de MTU (maximum trans Mission Unit) voor het beheer netwerk van uw cluster in.
 
-* **Gebruik 1Gb mgmt netwerk** -Schakel dit selectievakje in als u wilt de twee 1 GbE-netwerk-poorten op de knooppunten FXT toewijzen met alleen het beheernetwerk. (U kunt 25GbE/10 GbE-poorten die beschikbaar zijn voor al het andere verkeer moet hebben.) Als u dit selectievakje niet inschakelt, gebruikt het beheernetwerk de hoogste snelheid-poort. 
+* **Gebruik 1gb-beheer netwerk** : Schakel dit selectie vakje in als u de twee 1GbE-netwerk poorten op uw FXT-knoop punten alleen aan het beheer netwerk wilt toewijzen. (U moet 25GbE/10GbE-poorten beschikbaar hebben voor al het andere verkeer.) Als u dit selectie vakje niet inschakelt, gebruikt het beheer netwerk de hoogste snelheids poort die beschikbaar is. 
 
-### <a name="configure-the-cluster-network"></a>Configureer het clusternetwerk 
+### <a name="configure-the-cluster-network"></a>Het cluster netwerk configureren 
 
-De clusternetwerkinstellingen van toepassing op het verkeer tussen de clusterknooppunten, en tussen clusterknooppunten en core-filter.
+De cluster netwerk instellingen zijn van toepassing op verkeer tussen de cluster knooppunten en tussen cluster knooppunten en kern bestanden.
 
-![Details van de sectie 'Cluster', met velden zes waarden op te geven](media/fxt-cluster-create/cluster-network-filled.png)
+![Details van de sectie ' cluster ', met velden voor het invoeren van zes waarden](media/fxt-cluster-create/cluster-network-filled.png)
 
-* **Eerste IP-adres** en **laatste IP** -Geef het IP-adressen die het bereik moet worden gebruikt voor communicatie binnen het cluster definiëren. De IP-adressen die hier worden gebruikt, moeten aaneengesloten en niet door DHCP toegewezen.
+* **Eerste IP** -adres en **laatste IP** -Voer de IP-adressen in die het bereik definiëren dat moet worden gebruikt voor interne cluster communicatie. De IP-adressen die hier worden gebruikt, moeten aaneengesloten zijn en niet door DHCP worden toegewezen.
 
-  U kunt meer IP-adressen toevoegen nadat het cluster is gemaakt. Gebruik de **Cluster** > **clusternetwerken** instellingenpagina ([Cluster configuratiehandleiding documentatie](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_cluster_networks.html#gui-cluster-networks)).
+  U kunt meer IP-adressen toevoegen nadat u het cluster hebt gemaakt. Gebruik de pagina **cluster** > **cluster Networks** Settings ([documentatie over de cluster configuratie handleiding](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_cluster_networks.html#gui-cluster-networks)).
 
-  De waarde in **nummer van IP-adressen binnen het bereik** berekend en wordt automatisch weergegeven.
+  De waarde in het **aantal ip's in het bereik** wordt automatisch berekend en weer gegeven.
 
-* **Niet-mgmt-netmasker (optioneel)** -Geef het IP-masker voor het clusternetwerk. 
+* **Netmask zonder beheer (optioneel)** : Geef het netmask op voor het cluster netwerk. 
 
-  Het systeem stelt automatisch de waarde van het subnetmasker dat u hebt opgegeven voor het beheernetwerk; Wijzig deze indien nodig.
+  Het systeem stelt automatisch de netmask-waarde in die u voor het beheer netwerk hebt ingevoerd. Wijzig deze indien nodig.
 
-* **Cluster-router (optioneel)** -Geef het adres van de standaard-gateway wordt gebruikt door de clusternetwerk. 
+* **Cluster router (optioneel)** : Geef het standaard gateway adres op dat wordt gebruikt door het cluster netwerk. 
 
-  Het systeem wordt automatisch het gateway-adres dat u hebt opgegeven voor het beheernetwerk.
+  Het systeem suggereert automatisch hetzelfde gateway adres dat u hebt opgegeven voor het beheer netwerk.
 
-* **VLAN-label (optioneel)-cluster** : als uw cluster maakt gebruik van VLAN-tags, geef de code voor het clusternetwerk.
+* VLAN-tag voor het cluster **(optioneel)** : als uw cluster VLAN-Tags gebruikt, geeft u de tag op voor het cluster netwerk.
 
-* **Niet-mgmt-MTU (optioneel)** - indien nodig, aanpassen van de maximale verzendeenheid (MTU) voor het clusternetwerk.
+* **Niet-veranderings-MTU (optioneel)** : als dat nodig is, past u de MTU (maximum trans Mission Unit) voor uw cluster netwerk aan.
 
-### <a name="configure-cluster-dns-and-ntp"></a>Configureren van DNS- en NTP-cluster 
+### <a name="configure-cluster-dns-and-ntp"></a>Cluster-DNS en NTP configureren 
 
-Onder de **Cluster** sectie er zijn velden voor het opgeven van DNS- en NTP-servers en voor het inschakelen van koppeling aggregatie. Deze instellingen gelden voor alle netwerken die gebruikmaakt van het cluster.
+De sectie **cluster** bevat velden voor het opgeven van DNS-en NTP-servers en voor het inschakelen van koppelings aggregatie. Deze instellingen zijn van toepassing op alle netwerken die het cluster gebruikt.
 
-![Details van de sectie voor de configuratie van DNS-/ NTP, met drie velden voor DNS-servers, velden voor de DNS-domein en DNS-zoekactie, drie velden voor NTP-servers, en een vervolgkeuzelijst voor aggregatie koppelingsopties](media/fxt-cluster-create/dns-ntp-filled.png)
+![Details van de sectie voor de DNS/NTP-configuratie, met drie velden voor DNS-servers, velden voor DNS-domein en DNS-zoek opdracht, drie velden voor NTP-servers en een vervolg keuzelijst voor aggregatie opties voor koppelingen](media/fxt-cluster-create/dns-ntp-filled.png)
 
-* **DNS-server (s)** : Geef het IP-adres van een of meer domain name system (DNS)-servers.
+* **DNS-server (s)** : Voer het IP-adres in van een of meer DNS-servers (Domain Name System).
 
-  DNS wordt aanbevolen voor alle clusters en vereist als u wilt gebruiken van SMB, AD- of Kerberos. 
+  DNS wordt aanbevolen voor alle clusters en is vereist als u SMB, AD of Kerberos wilt gebruiken. 
   
-  Voor optimale prestaties van het cluster DNS-server configureren voor round robin-taakverdeling zoals beschreven in [DNS configureren voor het cluster Azure FXT Edge Filer](fxt-configure-network.md#configure-dns-for-load-balancing).
+  Voor optimale prestaties configureert u de DNS-server van het cluster voor Round Robin-taak verdeling, zoals beschreven in [DNS configureren voor het Azure FXT Edge-bestands cluster](fxt-configure-network.md#configure-dns-for-load-balancing).
 
-* **DNS-domein** -Voer de naam van het domein het cluster gebruikt.
+* **DNS-domein** : Voer de naam van het netwerk domein in dat door het cluster wordt gebruikt.
 
-* **DNS-zoekactie** : (optioneel), Voer meer domeinnamen die moet worden gezocht om op te lossen van DNS-query's. U kunt maximaal zes domeinnamen, gescheiden door spaties toevoegen.
+* **DNS zoeken** : Geef desgewenst aanvullende domein namen op die het systeem moet zoeken om DNS-query's op te lossen. U kunt Maxi maal zes domein namen toevoegen, gescheiden door spaties.
 
-* **NTP-server (s)** -één of drie netwerk tijd protocol (NTP) servers opgeven in de beschikbare velden. U kunt hostnamen of IP-adressen gebruiken.
+* **NTP-server (s)** : Geef een of drie NTP-servers (Network Time Protocol) op in de opgegeven velden. U kunt hostnamen of IP-adressen gebruiken.
 
-* **Koppeling van aggregatie** -Link aggregation kunt u aanpassen hoe het Ethernet-poorten op de clusterknooppunten FXT verschillende soorten verkeer verwerken. Voor meer informatie lezen [Link Aggregation](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_cluster_general_setup.html#link-aggregation) in de handleiding voor het Cluster.
+* **Koppelings aggregatie** : met koppelings aggregatie kunt u aanpassen hoe de Ethernet-poorten op de cluster FXT knoop punten verschillende soorten verkeer verwerken. Lees [koppelings aggregatie](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_cluster_general_setup.html#link-aggregation) in de cluster configuratie handleiding voor meer informatie.
 
 ### <a name="click-the-create-button"></a>Klik op de knop maken
 
-Na het opgeven van de vereiste instellingen in het formulier, klikt u op de **Cluster maken** knop.
+Nadat u alle vereiste instellingen in het formulier hebt opgegeven, klikt u op de knop **cluster maken** .
 
-![onderaan ingevuld formulier met de cursor boven de knop maken op rechtsonder](media/fxt-cluster-create/create-cluster.png)
+![onder aan voltooide formulier met cursor over de knop maken rechtsonder](media/fxt-cluster-create/create-cluster.png)
 
-Het systeem wordt een bericht weergegeven tijdens het maken van het cluster.
+Er wordt een bericht weer gegeven tijdens het maken van het cluster.
 
-![statusbericht van cluster-configuratie in de browser: "Het knooppunt FXT is nu het cluster te maken. Dit duurt enkele minuten. Wanneer het cluster is gemaakt, gaat u naar deze koppeling om de configuratie te voltooien." met de hyperlink op "gaat u deze koppeling naar"](media/fxt-cluster-create/creating-message.png)
+![status bericht van cluster configuratie in browser: het FXT-knoop punt maakt nu het cluster. Dit kan enkele minuten duren. Wanneer het cluster is gemaakt, gaat u naar deze koppeling om de configuratie te volt ooien. " met een Hyper link op ' Ga naar deze koppeling '](media/fxt-cluster-create/creating-message.png)
 
-Na enkele ogenblikken kunt u klikken op de koppeling in het bericht om naar het cluster het Configuratiescherm te gaan. (Deze koppeling gaat u naar het IP-adres dat u hebt opgegeven in **Management IP**.) Het duurt 15 seconden met één minuut voor de koppeling te activeren nadat u op de knop maken. Als de web-interface niet wordt geladen, wacht u enkele seconden en klik vervolgens nogmaals op de koppeling. 
+Na enkele ogen blikken kunt u klikken op de koppeling in het bericht om naar het configuratie scherm van het cluster te gaan. (Met deze koppeling gaat u naar het IP-adres dat u hebt opgegeven in **beheer-IP**.) Het duurt 15 seconden tot één minuut voordat de koppeling actief wordt nadat u op de knop maken hebt geklikt. Als de webinterface niet wordt geladen, wacht u enkele seconden en klikt u nogmaals op de koppeling. 
 
-Maken van een cluster duurt een minuut of langer, maar u kunt aanmelden bij het Configuratiescherm tijdens het proces is. Het is normaal voor dashboard-pagina van het Configuratiescherm om weer te geven van waarschuwingen, totdat het proces voor het cluster maken is voltooid. 
+Het maken van een cluster duurt een minuut of langer, maar u kunt zich aanmelden bij het configuratie scherm terwijl het proces wordt uitgevoerd. Het is normaal dat de dashboard pagina van het configuratie scherm de waarschuwingen weergeeft totdat het proces voor het maken van het cluster is voltooid. 
 
-## <a name="open-the-settings-pages"></a>Open de instellingen voor pagina 's 
+## <a name="open-the-settings-pages"></a>Open de pagina instellingen 
 
-Nadat u het cluster maakt, moet u voor het aanpassen van de configuratie van uw netwerk en de werkstroom. 
+Nadat u het cluster hebt gemaakt, moet u de configuratie van het netwerk en de werk stroom aanpassen. 
 
-Gebruik de webinterface van het Configuratiescherm voor het instellen van het nieuwe cluster. Volg de koppeling van het scherm van uw cluster maken-status, of blader naar het beheer van IP-adres die u hebt ingesteld op het cluster.
+Gebruik de web-interface van het configuratie scherm om uw nieuwe cluster in te stellen. Volg de koppeling in het scherm status van het maken van het cluster of blader naar het IP-adres van het beheer dat u op het cluster hebt ingesteld.
 
-Aanmelden bij de webinterface met de gebruikersnaam `admin` en het wachtwoord die u hebt ingesteld bij het maken van het cluster.
+Meld u aan bij de webinterface met de gebruikers naam `admin` en het wacht woord dat u hebt ingesteld bij het maken van het cluster.
 
-![webbrowser met control panel aanmelding velden](media/fxt-cluster-create/admin-login.png)
+![webbrowser waarin de aanmeldings velden van het configuratie scherm worden weer gegeven](media/fxt-cluster-create/admin-login.png)
 
-Het deelvenster Beheer wordt geopend en toont de **Dashboard** pagina. Als het maken van het cluster is voltooid, schakel eventuele waarschuwingsberichten in de weergave.
+Het configuratie scherm wordt geopend en de **Dashboard** pagina wordt weer gegeven. Wanneer het maken van het cluster is voltooid, moeten waarschuwings berichten in de weer gave worden gewist.
 
-Klik op de **instellingen** tabblad om de cluster te configureren.
+Klik op het tabblad **instellingen** om het cluster te configureren.
 
-Op de **instellingen** tabblad, in de linkerzijbalk toont een menu van de configuratiepagina's. De pagina's zijn ingedeeld per categorie. Klik op de + of - besturingselement aan de bovenkant van de naam van de categorie te vergroten of te verbergen, de afzonderlijke pagina's.
+Op het tabblad **instellingen** wordt in de zijbalk links een menu met configuratie pagina's weer gegeven. De pagina's zijn ingedeeld op categorie. Klik boven aan de naam van de categorie op de + of-Control om de afzonderlijke pagina's uit te vouwen of te verbergen.
 
-![Tabblad instellingen van het Configuratiescherm (in browser) met het Cluster > algemene instellingen pagina geladen](media/fxt-cluster-create/settings-tab-populated.png)
+![Het tabblad instellingen van het configuratie scherm (in de browser) met het cluster > pagina Algemene installatie geladen](media/fxt-cluster-create/settings-tab-populated.png)
 
-## <a name="cluster-setup-steps"></a>Instellingsstappen voor cluster
+## <a name="cluster-setup-steps"></a>Installatie stappen voor het cluster
 
-Op dit moment in het proces, het cluster bestaat, maar er slechts één knooppunt, geen clientgerichte IP-adressen en er is geen back-end-opslag. Extra installatiestappen nodig zijn om te gaan van een nieuw cluster met een cache-systeem dat gereed is voor het verwerken van uw werkstroom.
+Op dit punt in het proces bestaat uw cluster, maar heeft er slechts één knoop punt, geen client gerichte IP-adressen en geen back-end-opslag. Er zijn aanvullende installatie stappen nodig om vanaf een nieuw gemaakt cluster naar een cache systeem te gaan dat klaar is om uw werk stroom te verwerken.
 
 ### <a name="required-configuration"></a>Vereiste configuratie
 
 Deze stappen zijn nodig voor de meeste of alle clusters. 
 
-* Knooppunten toevoegen aan het cluster 
+* Knoop punten toevoegen aan het cluster 
 
-  Drie knooppunten is standaard, maar veel productieclusters hebben meer - tot een maximum van 24-knooppunten.
+  Drie knoop punten zijn standaard, maar veel productie clusters hebben meer tot Maxi maal 24 knoop punten.
 
-  Lezen [clusterknooppunten toevoegen](fxt-add-nodes.md) voor meer informatie over andere Azure FXT Edge Filer eenheden toevoegen aan uw cluster en om in te schakelen van hoge beschikbaarheid.
+  Lees [cluster knooppunten toevoegen](fxt-add-nodes.md) voor meer informatie over het toevoegen van andere Azure FXT Edge-eenheden aan uw cluster en om hoge Beschik baarheid in te scha kelen.
 
-* Back-end opslag opgeven
+* Opslag voor back-end opgeven
 
-  Voeg *filer core* definities voor elke back-end-opslagsysteem dat door het cluster wordt gebruikt. Lezen [back-end-opslag toevoegen en configureren van virtuele naamruimte](fxt-add-storage.md#about-back-end-storage) voor meer informatie.
+  Een definitie van een *kern bestand* toevoegen voor elk back-end-opslag systeem dat door het cluster wordt gebruikt. Lees de [back-end-opslag toevoegen en configureer de virtuele naam ruimte](fxt-add-storage.md#about-back-end-storage) voor meer informatie.
 
-* Instellen van de clienttoegang en de virtuele-naamruimte 
+* Client toegang en de virtuele naam ruimte instellen 
 
-  Maak ten minste één virtuele server (vserver) en wijs het IP-adresbereik voor client-computers te gebruiken. Ook moet u de clusternaamruimte (ook wel de algemene Namespace of GNS), een virtueel bestandssysteem-functie waarmee u uitvoer van de back-end-opslag toewijzen aan virtuele paden. De clusternaamruimte biedt clients de structuur van een bestandssysteem voor consistente en toegankelijk is, zelfs als u back-end opslagmedia. De naamruimte kan ook bieden een gebruiksvriendelijke virtuele opslagapparaat hiërarchie voor Azure Blob-containers of andere ondersteunde cloud-objectopslag.
+  Maak ten minste één virtuele server (vserver) en wijs deze toe aan een IP-adres bereik dat door client computers kan worden gebruikt. U moet ook de cluster naam ruimte (ook wel de globale naam ruimte of GNS genoemd) configureren, een virtuele bestandssysteem functie waarmee u opslag van back-endservers kunt koppelen aan virtuele paden. De cluster naam ruimte biedt clients een consistente en toegankelijke bestandssysteem structuur, zelfs als u back-end-opslag media overschakelt. De naam ruimte kan ook een gebruiks vriendelijke virtuele-opslag hiërarchie bieden voor Azure Blob-containers of andere ondersteunde Cloud object opslag.
 
-  Lezen [configureren van de naamruimte](fxt-add-storage.md#configure-the-namespace) voor meer informatie. Deze stap omvat:
-  * Het maken van vservers
-  * Instellen van koppelingen tussen de client netwerk weergeven en de back-end-opslag 
-  * Definiëren welke client-IP-worden adressen bediend door elke vserver
+  Lees [de naam ruimte configureren](fxt-add-storage.md#configure-the-namespace) voor meer informatie. Deze stap omvat:
+  * Vservers maken
+  * Koppelingen instellen tussen de weer gave van de client netwerk en de back-end-opslag 
+  * Definiëren welke client-IP-adressen worden verwerkt door elke vserver
 
   > [!Note] 
-  > Voordat u begint met het instellen van het cluster GNS wordt aanzienlijke planning aanbevolen. Lees de [met behulp van een globale Namespace](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gns_overview.html) en [maken en werken met VServers](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/settings_overview.html#creating-and-working-with-vservers) secties in het Cluster configuratiehandleiding voor hulp.
+  > Er wordt een belang rijke planning aanbevolen voordat u begint met het instellen van de GNS van het cluster. Lees de secties [een globale naam ruimte gebruiken](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gns_overview.html) en [maken en werken met VServers](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/settings_overview.html#creating-and-working-with-vservers) in de cluster configuratie handleiding voor meer informatie.
 
-* [Netwerkinstellingen aanpassen](fxt-configure-network.md)
+* [Netwerk instellingen aanpassen](fxt-configure-network.md)
 
-  Er zijn verschillende instellingen voor netwerk dat moeten worden geverifieerd of aangepast voor een nieuw cluster. Lezen [netwerkinstellingen aanpassen](fxt-configure-network.md) voor meer informatie over deze items:
+  Er zijn verschillende netwerk instellingen die moeten worden gecontroleerd of aangepast voor een nieuw cluster. Lees de [netwerk instellingen aanpassen](fxt-configure-network.md) voor meer informatie over deze items:
 
-  * Configuratie van DNS- en NTP controleren 
-  * Configureren van directoryservices, indien nodig 
-  * Instellen van VLAN 's
-  * Proxy-servers configureren
-  * IP-adressen toe te voegen aan het clusternetwerk
-  * Opslaan van certificaten voor bestandsversleuteling
+  * DNS-en NTP-configuratie controleren 
+  * Directory Services, indien nodig, configureren 
+  * VLAN'S instellen
+  * Proxy servers configureren
+  * IP-adressen toevoegen aan het cluster netwerk
+  * Versleutelings certificaten opslaan
 
-* [Ondersteuning voor bewaking hebt ingesteld](#enable-support)
+* [Ondersteunings controle instellen](#enable-support)
 
-  U moet accepteer het privacybeleid voor het hulpprogramma voor serverconfiguratie en moet u uw instellingen voor de upload ondersteuning configureren op hetzelfde moment.
+  U moet het privacybeleid voor het configuratie programma accepteren en u moet uw instellingen voor het uploaden van ondersteuning tegelijk configureren.
 
-  Het cluster kan automatisch oplossen van problemen met gegevens over uw cluster, met inbegrip van statistieken en foutopsporing van bestanden uploaden. Deze uploads laat Microsoft Customer Service and Support de best mogelijke service bieden. U kunt aanpassen wat wordt bewaakt, en schakel eventueel de proactieve ondersteuning en de externe service voor het oplossen van problemen.  
+  Het cluster kan automatisch gegevens over het oplossen van problemen over uw cluster uploaden, met inbegrip van statistieken en bestanden voor fout opsporing. Met deze uploads kunnen klanten service en ondersteuning van micro soft de best mogelijke service bieden. U kunt bepalen wat er wordt bewaakt en desgewenst de proactieve ondersteuning en externe probleemoplossings service inschakelen.  
 
 ### <a name="optional-configuration"></a>Optionele configuratie
 
-Deze stappen zijn niet vereist voor alle clusters. Ze wel nodig zijn voor bepaalde typen werkstromen of voor bepaalde cluster management stijlen. 
+Deze stappen zijn niet vereist voor alle clusters. Ze zijn nodig voor bepaalde typen werk stromen of voor bepaalde Cluster beheer stijlen. 
 
 * Knooppunt instellingen aanpassen
 
-  U kunt knooppuntnamen en knooppunt IPMI poorten configureren op een cluster-brede niveau of afzonderlijk. Als u deze instellingen configureert voordat u knooppunten toevoegt aan het cluster, kunnen de nieuwe knooppunten kiezen om de instellingen automatisch wanneer ze bij. De opties worden beschreven in het oude cluster maken van het document [knooppunt instellingen aanpassen](https://azure.github.io/Avere/legacy/create_cluster/4_8/html/config_node.html).
+  U kunt knooppunt namen instellen en knooppunt-IPMI-poorten configureren op het niveau van een cluster of afzonderlijk. Als u deze instellingen configureert voordat u knoop punten aan het cluster toevoegt, kunnen de nieuwe knoop punten automatisch de instellingen ophalen wanneer ze worden toegevoegd. De opties worden beschreven in het verouderde cluster maken document [aanpassen knooppunt instellingen](https://azure.github.io/Avere/legacy/create_cluster/4_8/html/config_node.html).
 
   > [!TIP]
-  > Sommige documentatie voor dit product is nog niet beschikbaar op de documentatiesite van Microsoft Azure. Koppelingen naar de [Cluster configuratiehandleiding](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/ops_conf_index.html) en de oudere versie van de [Cluster maken-handleiding](https://azure.github.io/Avere/legacy/create_cluster/4_8/html/create_index.html) gaat u naar een afzonderlijke GitHub gehoste website. 
+  > Sommige documentatie voor dit product is nog niet beschikbaar op de Microsoft Azure-documentatie site. Met koppelingen naar de [cluster configuratie handleiding](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/ops_conf_index.html) en de oudere versie van de [hand leiding](https://azure.github.io/Avere/legacy/create_cluster/4_8/html/create_index.html) voor het maken van een cluster gaat u naar een afzonderlijke door github gehoste website. 
 
 * SMB configureren
 
-  Als u wilt dat SMB-toegang tot uw cluster, evenals de NFS, moet u SMB configureren en inschakelen. SMB (ook wel CIFS) wordt doorgaans gebruikt ter ondersteuning van Microsoft Windows-clients.
+  Als u SMB-toegang tot uw cluster en NFS wilt toestaan, moet u SMB configureren en inschakelen. SMB wordt meestal gebruikt voor de ondersteuning van micro soft Windows-clients.
 
-  Plannen en configureren van SMB omvat meer dan een paar knoppen in het Configuratiescherm. Afhankelijk van de vereisten van uw systeem, SMB kan beïnvloeden hoe u core filter, hoeveel vservers die u maakt, definieert hoe u uw koppelingen en naamruimte machtigingen voor toegang en andere instellingen configureren.
+  Het plannen en configureren van SMB vergt meer dan door te klikken op een paar knoppen in het configuratie scherm. Afhankelijk van de vereisten van uw systeem kan SMB invloed hebben op de manier waarop u kern bestanden definieert, hoeveel vservers u maakt, hoe u uw koppelingen en naam ruimte, toegangs machtigingen en andere instellingen kunt configureren.
 
-  Lees voor meer informatie de handleiding voor Cluster [SMB-toegang configureren](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/smb_overview.html) sectie.
+  Lees voor meer informatie de sectie cluster configuratie handleiding [Configuring SMB Access](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/smb_overview.html) .
 
 * Aanvullende licenties installeren
 
-  Als u gebruiken van cloud dan Azure Blob-opslag wilt, moet u een extra functie licentie installeren. Neem contact op met uw Microsoft-vertegenwoordiger voor meer informatie over het aanschaffen van een FlashCloud<sup>TM</sup> licentie. Details worden beschreven [back-end-opslag toevoegen en configureren van virtuele naamruimte](fxt-add-storage.md#about-back-end-storage).
+  Als u andere Cloud opslag dan Azure Blob wilt gebruiken, moet u een extra functie licentie installeren. Neem contact op met uw micro soft-vertegenwoordiger voor meer informatie over het aanschaffen van een FlashCloud<sup>TM</sup> -licentie. Details worden uitgelegd in [back-end-opslag toevoegen en virtuele naam ruimte configureren](fxt-add-storage.md#about-back-end-storage).
 
 
 ### <a name="enable-support"></a>Ondersteuning inschakelen
 
-Het cluster Azure FXT Edge Filer kunt ondersteuningsgegevens over uw cluster automatisch uploaden. Deze uploads, kunnen medewerkers de best mogelijke klantervaring-service.
+Met het Azure FXT Edge-bestands cluster kunnen automatisch ondersteunings gegevens over uw cluster worden geüpload. Met deze uploads kunnen mede werkers de best mogelijke klanten service bieden.
 
-Volg deze stappen voor het instellen van ondersteuning voor uploads.
+Volg deze stappen voor het instellen van ondersteunings-uploads.
 
-1. Navigeer naar de **Cluster** > **ondersteuning** instellingenpagina. Accepteer het privacybeleid. 
+1. Ga naar de pagina **Cluster** >  instellingen voor**ondersteuning** . Accepteer het privacybeleid. 
 
-   ![Schermopname van het Configuratiescherm en pop-upvenster met bevestigen om het privacybeleid accepteren](media/fxt-cluster-create/fxt-privacy-policy.png)
+   ![Scherm opname van het configuratie scherm en het pop-upvenster met de knop bevestigen om het privacybeleid te accepteren](media/fxt-cluster-create/fxt-privacy-policy.png)
 
-1. Klik op het driehoekje aan de linkerkant van **klantgegevens** om uit te breiden, de sectie.
-1. Klik op de **Revalidate uploadinformatie** knop.
-1. Naam van de ondersteuning van het cluster instellen in **unieke clusternaam** -Zorg ervoor dat deze unieke identificatie van uw cluster ter ondersteuning van personeel.
-1. Schakel de selectievakjes voor **statistieken bewaking**, **algemene gegevens uploaden**, en **Crash gegevens uploaden**.
-1. Klik op **Indienen**.  
+1. Klik op het drie hoekje links van **klant gegevens** om de sectie uit te vouwen.
+1. Klik op de knop **Upload gegevens opnieuw valideren** .
+1. Stel de ondersteunings naam van het cluster in de **unieke naam** van het cluster in. Zorg ervoor dat het cluster uniek wordt geïdentificeerd ter ondersteuning van mede werkers.
+1. Schakel de selectie vakjes in voor **Statistieken bewaking**, **algemene informatie uploaden**en **informatie over het uploaden van crashes**.
+1. Klik op **Submit**  
 
-   ![Schermafbeelding met voltooide klant info-sectie van de pagina instellingen ondersteuning](media/fxt-cluster-create/fxt-support-info.png)
+   ![Scherm afbeelding met de sectie met voltooide klant gegevens van de pagina met ondersteunings instellingen](media/fxt-cluster-create/fxt-support-info.png)
 
-1. Klik op het driehoekje aan de linkerkant van **Secure proactieve ondersteuning (SP's)** om uit te breiden, de sectie.
-1. Schakel het selectievakje voor **inschakelen SP's koppeling**.
-1. Klik op **Indienen**.
+1. Klik op het drie hoekje links van **beveiligde proactieve ondersteuning (SPS)** om de sectie uit te vouwen.
+1. Schakel het selectie vakje in voor het inschakelen van de **SPS-koppeling**.
+1. Klik op **Submit**
 
-   ![Schermafbeelding met voltooide proactieve ondersteuning beveiligde sectie op de instellingenpagina voor ondersteuning](media/fxt-cluster-create/fxt-support-sps.png)
+   ![Scherm afbeelding met de sectie beveiligde proactieve ondersteuning op de pagina ondersteunings instellingen](media/fxt-cluster-create/fxt-support-sps.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nadat u hebt gemaakt van de basic-cluster en het privacybeleid geaccepteerd, voegt u de rest van de clusterknooppunten toe. 
+Nadat u het basis cluster hebt gemaakt en het privacybeleid hebt geaccepteerd, voegt u de rest van de cluster knooppunten toe. 
 
 > [!div class="nextstepaction"]
 > [Clusterknooppunten toevoegen](fxt-add-nodes.md)

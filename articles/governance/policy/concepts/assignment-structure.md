@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 09/23/2019
 ms.topic: conceptual
 ms.service: azure-policy
-ms.openlocfilehash: 5326e765701a42323ea62df8d35128c4117b2ed9
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: a75c64ebb6ba3eeffeccd98cf41365fe96218573
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71981420"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72255894"
 ---
 # <a name="azure-policy-assignment-structure"></a>Azure Policy-toewijzingsstructuur
 
@@ -19,7 +19,7 @@ Beleids toewijzingen worden gebruikt door Azure Policy om te definiëren welke r
 
 U gebruikt JSON om een beleids toewijzing te maken. De beleids toewijzing bevat elementen voor:
 
-- Weergavenaam
+- weergave naam
 - description
 - metagegevens
 - Afdwingings modus
@@ -52,20 +52,19 @@ Zo toont de volgende JSON een beleids toewijzing in de modus _DoNotEnforce_ met 
 
 Alle Azure Policy-voor beelden zijn Azure Policy-voor [beelden](../samples/index.md).
 
-## <a name="display-name-and-description"></a>Weergavenaam en beschrijving
+## <a name="display-name-and-description"></a>Weergave naam en beschrijving
 
 U gebruikt **DisplayName** en **Beschrijving** om de beleids toewijzing te identificeren en context te bieden voor het gebruik van de specifieke set resources. **DisplayName** heeft een maximale lengte van _128_ tekens en een **Beschrijving** van Maxi maal _512_ tekens.
 
 ## <a name="enforcement-mode"></a>Afdwingings modus
 
-De eigenschap **enforcementMode** biedt klanten de mogelijkheid om het resultaat van een beleid op bestaande bronnen te testen zonder het beleids effect of de trigger vermeldingen in het [Azure-activiteiten logboek](../../../azure-monitor/platform/activity-logs-overview.md)te initiëren.
-Dit scenario wordt meestal ' What If ' genoemd en is afgestemd op veilige implementatie procedures.
+De eigenschap **enforcementMode** biedt klanten de mogelijkheid om het resultaat van een beleid op bestaande bronnen te testen zonder het beleids effect of de trigger vermeldingen in het [Azure-activiteiten logboek](../../../azure-monitor/platform/activity-logs-overview.md)te initiëren. Dit scenario wordt meestal ' What If ' genoemd en is afgestemd op veilige implementatie procedures. **enforcementMode** wijkt af van het [Uitgeschakelde](./effects.md#disabled) effect, wat betekent dat de resource-evaluatie helemaal niet kan plaatsvinden.
 
 Deze eigenschap heeft de volgende waarden:
 
-|Modus |JSON-waarde |type |Hand matig herstellen |Vermelding in het activiteiten logboek |Description |
+|Modus |JSON-waarde |Type |Hand matig herstellen |Vermelding in het activiteiten logboek |Beschrijving |
 |-|-|-|-|-|-|
-|Enabled |Standaard |string |Ja |Ja |Het beleids effect wordt afgedwongen tijdens het maken of bijwerken van de resource. |
+|Ingeschakeld |Standaard |string |Ja |Ja |Het beleids effect wordt afgedwongen tijdens het maken of bijwerken van de resource. |
 |Uitgeschakeld |DoNotEnforce |string |Ja |Nee | Het beleids effect wordt niet afgedwongen tijdens het maken of bijwerken van resources. |
 
 Als **enforcementMode** niet is opgegeven in een beleids-of initiatief definitie, wordt de _standaard_ waarde gebruikt. [Herstel taken](../how-to/remediate-resources.md) kunnen worden gestart voor [deployIfNotExists](./effects.md#deployifnotexists) -beleid, zelfs wanneer **enforcementMode** is ingesteld op _DoNotEnforce_.

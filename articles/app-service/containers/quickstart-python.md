@@ -15,12 +15,12 @@ ms.date: 08/23/2019
 ms.author: cephalin
 experimental: true
 experiment_id: 1e304dc9-5add-4b
-ms.openlocfilehash: ed7e0df77abb39c07bea8946381247539afb3134
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
-ms.translationtype: HT
+ms.openlocfilehash: 253e2e5015c2cb7a71386b88b4d86ac6bff6a0fe
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72177019"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72242461"
 ---
 # <a name="create-a-python-app-in-azure-app-service-on-linux"></a>Een python-app maken in Azure App Service in Linux
 
@@ -52,12 +52,19 @@ De opslagplaats bevat een *application.py*, die App Service laat weten dat de op
 Voer de toepassing lokaal uit zodat u kunt zien hoe deze eruit ziet wanneer u de toepassing implementeert naar Azure. Open een terminalvenster en gebruik de opdrachten hieronder om de vereiste afhankelijkheden te installeren en de ingebouwde ontwikkelserver te starten. 
 
 ```bash
-# In Bash
+# In Bash (for Linux or Mac)
 python3 -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
 FLASK_APP=application.py flask run
-
+```
+```powershell
+# In Powershell (for Windows)
+py -3 -m venv env
+env\scripts\activate
+pip install -r requirements.txt
+Set-Item Env:FLASK_APP ".\application.py"
+flask run
 ```
 
 Open een webbrowser en ga naar de voor beeld-app op `http://localhost:5000/`.

@@ -9,18 +9,18 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 10/04/2019
 ms.author: v-vasuke
-ms.openlocfilehash: 2203f4ba5708728ea8300093bb980a2226e2ffa8
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
-ms.translationtype: HT
+ms.openlocfilehash: 11e9fadc240b90ceb7e4a0e6690978dac9bae859
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72170401"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72255082"
 ---
 # <a name="quickstart-launch-an-azure-spring-cloud-application-using-the-azure-portal"></a>Snelstartgids: een Azure lente-Cloud toepassing starten met behulp van de Azure Portal
 
 Met Azure lente Cloud kunt u eenvoudig lente-Cloud toepassingen uitvoeren op Azure.
 
-In deze Quick start ziet u hoe u een bestaande lente-Cloud toepassing kunt implementeren in Azure. [Hier volgt een koppeling](https://github.com/xscript/PiggyMetrics) naar de voorbeeld toepassings code die in deze zelf studie wordt gebruikt. Wanneer u klaar bent, is de beschik bare voorbeeld toepassing online en kan deze worden beheerd via de Azure Portal.
+In deze Quick start ziet u hoe u een bestaande lente-Cloud toepassing kunt implementeren in Azure. [Hier volgt een koppeling](https://github.com/Azure-Samples/PiggyMetrics) naar de voorbeeld toepassings code die in deze zelf studie wordt gebruikt. Wanneer u klaar bent, is de beschik bare voorbeeld toepassing online en kan deze worden beheerd via de Azure Portal.
 
 In deze Quick Start leert u het volgende:
 
@@ -34,8 +34,7 @@ In deze Quick Start leert u het volgende:
 ## <a name="prerequisites"></a>Vereisten
 
 >[!Note]
-> Zorg ervoor dat uw Azure-abonnement toegang heeft tot de Azure lente-Cloud voordat u begint met deze Snelstartgids.  Als preview-service vragen we klanten om aan ons te bellen zodat we uw abonnement kunnen toevoegen aan onze acceptatie lijst.  [Vul dit formulier](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR-LA2geqX-ZLhi-Ado1LD3tUNDk2VFpGUzYwVEJNVkhLRlcwNkZFUFZEUS4u
-)in als u de mogelijkheden van Azure lente-Cloud wilt verkennen.
+> Zorg ervoor dat uw Azure-abonnement toegang heeft tot de Azure lente-Cloud voordat u begint met deze Snelstartgids.  Als preview-service vragen we klanten om aan ons te bellen zodat we uw abonnement kunnen toevoegen aan onze acceptatie lijst.  Als u de mogelijkheden van Azure lente Cloud wilt verkennen, kunt u contact met ons opnemen via e-mail: azure-spring-cloud@service.microsoft.com.
 
 >[!TIP]
 > Azure Cloud Shell is een gratis interactieve shell waarmee u de stappen in dit artikel kunt uitvoeren.  Het heeft algemene Azure-hulpprogram ma's die vooraf zijn geïnstalleerd, met inbegrip van de nieuwste versies van Git, JDK, maven en de Azure CLI. Als u bent aangemeld bij uw Azure-abonnement, start u uw [Azure Cloud shell](https://shell.azure.com) vanuit shell.Azure.com.  [Lees onze documentatie](../cloud-shell/overview.md) voor meer informatie over Azure Cloud shell.
@@ -58,9 +57,9 @@ az extension add -y --source https://azureclitemp.blob.core.windows.net/spring-c
 
 ## <a name="provision-a-service-instance-on-the-azure-portal"></a>Een service-exemplaar inrichten op het Azure Portal
 
-1. Open in een webbrowser de [Azure Portal](https://portal.azure.com)en meld u aan bij uw account.
+1. Open in een webbrowser [deze koppeling naar Azure lente Cloud in de Azure Portal](https://ms.portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=AppPlatformExtension#blade/Microsoft_Azure_Marketplace/MarketplaceOffersBlade/selectedMenuItemId/home/searchQuery/Azure%20Spring%20Cloud).
 
-1. Zoek naar de **Azure lente-Cloud** en selecteer deze om naar de overzichts pagina te gaan. Selecteer de knop **maken** om aan de slag te gaan.
+1. Selecteer **Azure veer Cloud** om naar de overzichts pagina te gaan. Selecteer vervolgens de knop **maken** om aan de slag te gaan.
 
 1. Vul het formulier in, waarbij u rekening moet houden met de volgende richt lijnen:
     - Service naam: Geef de naam van uw service-exemplaar op.  De naam moet tussen 4 en 32 tekens lang zijn en mag alleen kleine letters, cijfers en afbreek streepjes bevatten.  Het eerste teken van de service naam moet een letter zijn en het laatste teken moet een letter of een cijfer zijn.
@@ -108,26 +107,26 @@ Het duurt ongeveer vijf minuten voordat de service wordt geïmplementeerd.  Zodr
 
     ```azurecli
     az configure --defaults group=<resource group name>
-    az configure --defaults asc=<service instance name>
+    az configure --defaults spring-cloud=<service instance name>
     ```
 
 1. Maak de `gateway`-toepassing en implementeer het JAR-bestand.
 
     ```azurecli
-    az asc app create -n gateway
-    az asc app deploy -n gateway --jar-path ./gateway/target/gateway.jar
+    az spring-cloud app create -n gateway
+    az spring-cloud app deploy -n gateway --jar-path ./gateway/target/gateway.jar
     ```
 
 1. Maak na hetzelfde patroon een `account-service`-en `auth-service`-toepassing en implementeer de JAR-bestanden.
 
     ```cli
-    az asc app create -n account-service
-    az asc app deploy -n account-service --jar-path ./account-service/target/account-service.jar
-    az asc app create -n auth-service
-    az asc app deploy -n auth-service --jar-path ./auth-service/target/auth-service.jar
+    az spring-cloud app create -n account-service
+    az spring-cloud app deploy -n account-service --jar-path ./account-service/target/account-service.jar
+    az spring-cloud app create -n auth-service
+    az spring-cloud app deploy -n auth-service --jar-path ./auth-service/target/auth-service.jar
     ```
 
-1. Het duurt enkele minuten om de implementatie van de toepassingen te volt ooien. Als u wilt controleren of ze zijn geïmplementeerd, gaat u naar het **dash board** van de toepassing in de Azure Portal. U ziet een regel voor elk van de drie toepassingen.
+1. Het duurt enkele minuten om de implementatie van de toepassingen te volt ooien. Als u wilt bevestigen dat ze zijn geïmplementeerd, gaat u naar de Blade **apps** in het Azure Portal. U ziet een regel voor elk van de drie toepassingen.
 
 ## <a name="assign-a-public-endpoint-to-gateway"></a>Een openbaar eind punt toewijzen aan de gateway
 
@@ -146,8 +145,7 @@ In deze snelstart hebt u de volgende zaken geleerd:
 > * Een configuratie server instellen voor een exemplaar
 > * Een micro Services-toepassing lokaal bouwen
 > * Implementeer elke micro service
-> * Omgevings variabelen voor toepassingen bewerken
-> * Openbaar IP-adres voor uw toepassings gateway toewijzen
+> * Openbaar eind punt toewijzen voor uw toepassings gateway
 
 > [!div class="nextstepaction"]
 > [De Azure lente-Cloud toepassing voorbereiden voor implementatie](spring-cloud-tutorial-prepare-app-deployment.md)

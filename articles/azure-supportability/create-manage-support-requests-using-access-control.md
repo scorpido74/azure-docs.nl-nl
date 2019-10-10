@@ -5,14 +5,14 @@ author: ganganarayanan
 ms.author: gangan
 ms.date: 1/31/2017
 ms.topic: article
-ms.service: azure
+ms.service: azure-supportability
 ms.assetid: 58a0ca9d-86d2-469a-9714-3b8320c33cf5
-ms.openlocfilehash: 3cf17f6e391608af9d17591a81c579a1db779a6a
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 94f21e973063dc627ef1424ca5393dd85aedd671
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967795"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72248840"
 ---
 # <a name="azure-role-based-access-control-rbac-to-control-access-rights-to-create-and-manage-support-requests"></a>Azure Role Access Control (RBAC) voor het beheren van de toegangs rechten voor het maken en beheren van ondersteunings aanvragen
 
@@ -20,7 +20,7 @@ ms.locfileid: "68967795"
 Ondersteuningsaanvraag maken in de Azure Portal, [Portal.Azure.com](https://portal.azure.com), gebruikt het RBAC-model van Azure om te bepalen wie ondersteunings aanvragen kan maken en beheren.
 Toegang wordt verleend door de juiste RBAC-rol toe te wijzen aan gebruikers, groepen en toepassingen bij een bepaald bereik, die een abonnement, resource groep of resource kunnen zijn.
 
-Laten we een voor beeld doen: Als eigenaar van een resource groep met lees machtigingen voor het abonnements bereik, kunt u alle resources in de resource groep, zoals websites, virtuele machines en subnetten, beheren.
+We gaan een voor beeld bekijken: als eigenaar van een resource groep met lees machtigingen voor het abonnements bereik, kunt u alle resources in de resource groep, zoals websites, virtuele machines en subnetten, beheren.
 Wanneer u echter probeert een ondersteunings aanvraag te maken op basis van de virtuele-machine bron, treedt de volgende fout op
 
 ![Abonnements fout](./media/create-manage-support-requests-using-access-control/subscription-error.png)
@@ -91,7 +91,7 @@ U wilt toegang verlenen aan uw peer, Joe, de mogelijkheid om ondersteunings tick
 
     ![Nieuw ondersteuningsverzoek](./media/create-manage-support-requests-using-access-control/new-support-request.png)
 
-8. Als u op alle ondersteunings aanvragen hebt geklikt, wordt de lijst met ondersteunings aanvragen voor deze weer gave voor Case details van deze abonnementen ![weer gegeven](./media/create-manage-support-requests-using-access-control/case-details-view.png)
+8. Als u op alle ondersteunings aanvragen hebt geklikt, wordt de lijst met ondersteunings aanvragen weer gegeven die zijn gemaakt voor dit abonnement @no__t 0Case detail weergave @ no__t-1
 
 ## <a name="remove-support-request-access-in-the-azure-portal"></a>Toegang tot ondersteunings aanvragen verwijderen in de Azure Portal
 

@@ -5,13 +5,13 @@ author: ekpgh
 ms.service: avere-vfxt
 ms.topic: overview
 ms.date: 10/31/2018
-ms.author: v-erkell
-ms.openlocfilehash: 724352ae9f7c66dfeab293473ea79438e3b36254
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: rohogue
+ms.openlocfilehash: 70ae20daa81ab52d4054dcd4bea3c9432a5ceaeb
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60409416"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72256168"
 ---
 # <a name="what-is-avere-vfxt-for-azure"></a>Wat is Avere vFXT for Azure? 
 
@@ -19,8 +19,8 @@ Avere vFXT for Azure is een oplossing voor bestandssysteemcaching voor gegevensi
 
 Avere vFXT ondersteunt de volgende veelvoorkomende computerscenario's: 
 
-* Hybride cloud-architectuur: Avere vFXT voor Azure kunt werken met een hardware-opslagsysteem, waarmee u het voordeel van cloud computing zonder om bestanden te verplaatsen. 
-* Cloudbursting: Avere vFXT voor Azure kunt u uw gegevens te verplaatsen naar de cloud voor een enkel project, of ' lift and shift ' de volledige werkstroom definitief. 
+* Hybride-cloudarchitectuur: Avere vFXT for Azure kan worden gebruikt met hardwareopslagsystemen, wat het voordeel biedt van cloudcomputing zonder dat u bestanden hoeft te verplaatsen. 
+* Krachtige cloudtoepassingen: met Avere vFXT for Azure kunt u uw gegevens voor één project naar de cloud verplaatsen of kiezen voor 'lift-and-shift', waarmee u de hele werkstroom definitief naar de cloud verplaatst. 
 
 ![diagram met details van het Avere vFXT-systeem in een Azure-abonnement dat is verbonden met Blob-opslag en een on-premises datacenter](media/avere-vfxt-hybrid.png)
 

@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 05/09/2019
 ms.author: sharadag
 ms.custom: include file
-ms.openlocfilehash: deca0034996f6c8ddcac71cd4f191c1a0659b655
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 37ebe2f0c5cbbaca712e69ab4484379ecf0f4830
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "67333372"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72237334"
 ---
-| Resource | Standaard/maximum limiet |
+| Bron | Standaard/maximum limiet |
 | --- | --- |
 | Azure front-deur service resources per abonnement | 100 |
 | Front-end-hosts, met inbegrip van aangepaste domeinen per resource | 100 |
@@ -24,7 +24,7 @@ ms.locfileid: "67333372"
 | Back-ends per back-end-pool | 100 |
 | Patroon paden die overeenkomen voor een routerings regel | 25 |
 | Aangepaste Web Application Firewall regels per beleid | 10 |
-| Web Application firewall-beleid per resource | 100 |
+| Web Application firewall-beleid per abonnement | 100 |
 | Overeenkomende Firewall voor waarden per aangepaste regel voor Web Application | 10 |
 | IP-adresbereiken van Web Application firewall per match-voor waarde | 600 |
 | Firewall teken reeks voor webtoepassing overeenkomende waarden per match-voor waarde | 10 |
@@ -53,4 +53,5 @@ ms.locfileid: "67333372"
 | **Wijzigingen** |  Er is geen limiet, zolang elke CTE-upload kleiner is dan 2 GB. | De grootte kan niet groter zijn dan 2 GB. |
 
 ### <a name="other-limits"></a>Andere limieten
-- Maximale URL-grootte-8.192 bytes-Hiermee wordt de maximale lengte van de onbewerkte URL opgegeven (schema + hostnaam + poort + pad + query teken reeks van de URL)-maximum grootte van de query teken reeks-4.096 bytes-geeft de maximum lengte van de query reeks op in bytes.
+- Maximale URL-grootte-8.192 bytes-Hiermee geeft u de maximum lengte van de onbewerkte URL op (schema + hostnaam + poort + pad + query teken reeks van de URL)
+- Maximale grootte van de query teken reeks-4.096 bytes-Hiermee geeft u de maximum lengte van de query reeks op in bytes.

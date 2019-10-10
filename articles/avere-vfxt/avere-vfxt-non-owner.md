@@ -1,32 +1,32 @@
 ---
-title: Tijdelijke Avere vFXT niet-eigenaren oplossing - Azure
-description: Tijdelijke oplossing voor het toestaan dat gebruikers zonder abonnement eigenaarsmachtiging beschikken voor het implementeren van Avere vFXT voor Azure
+title: AVERE vFXT niet-eigenaars tijdelijke oplossing-Azure
+description: Tijdelijke oplossing om gebruikers zonder abonnements eigenaar toestemming te geven om avere vFXT voor Azure te implementeren
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 10/31/2018
-ms.author: v-erkell
-ms.openlocfilehash: e72e6d969649de09389ee38b94e874fad98ee08f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: rohogue
+ms.openlocfilehash: 77fc5a53c8bdc389c24cd1e6406415eefc3f167b
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60409206"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72256179"
 ---
 # <a name="authorize-non-owners-to-deploy-avere-vfxt"></a>Toestaan dat niet-eigenaren Avere vFXT implementeren
 
-Deze instructies zijn een tijdelijke oplossing waarmee een gebruiker zonder abonnement eigenaarsbevoegdheden voor het maken van een vFXT Avere voor Azure-systeem.
+Deze instructies zijn een tijdelijke oplossing waarmee een gebruiker zonder abonnements eigenaars bevoegdheden een avere vFXT voor Azure-systeem kan maken.
 
-(De aanbevolen manier om te implementeren, de Avere vFXT system is dat een gebruiker met eigenaarsbevoegdheden voor kan het maken van de stappen, zoals uitgelegd in [voorbereidingen voor het maken van de vFXT Avere](avere-vfxt-prereqs.md).)  
+(De aanbevolen manier om het avere vFXT-systeem te implementeren, is door een gebruiker met eigenaars bevoegdheden de aanmaak stappen uit te voeren, zoals wordt uitgelegd in [voorbereiden om de avere-vFXT te maken](avere-vfxt-prereqs.md).)  
 
-De oplossing omvat het maken van een extra functie waarmee de gebruikers voldoende machtigingen voor het installeren van het cluster. De rol moet worden gemaakt door de eigenaar van een abonnement en een eigenaar moet toewijzen aan gebruikers. 
+De tijdelijke oplossing omvat het maken van een extra Access-rol die de gebruikers voldoende machtigingen geeft om het cluster te installeren. De rol moet worden gemaakt door een eigenaar van het abonnement en een eigenaar moet deze toewijzen aan de juiste gebruikers. 
 
-De eigenaar van een abonnement moet ook [accepteer de gebruiksvoorwaarden](avere-vfxt-prereqs.md) voor de Avere vFXT marketplace-installatiekopie. 
+De eigenaar van een abonnement moet ook [de gebruiks voorwaarden accepteren](avere-vfxt-prereqs.md) voor de avere vFXT Marketplace-installatie kopie. 
 
 > [!IMPORTANT] 
-> Al deze stappen moeten worden genomen door een gebruiker met eigenaarsbevoegdheden van het abonnement dat wordt gebruikt voor het cluster.
+> Al deze stappen moeten worden uitgevoerd door een gebruiker met eigenaars bevoegdheden voor het abonnement dat wordt gebruikt voor het cluster.
 
-1. Deze regels kopiëren en deze opslaat in een bestand (bijvoorbeeld `averecreatecluster.json`). Gebruik uw abonnements-ID in de `AssignableScopes` instructie.
+1. Kopieer deze regels en sla ze op in een bestand (bijvoorbeeld `averecreatecluster.json`). Gebruik uw abonnements-ID in de instructie `AssignableScopes`.
 
    ```json
    {
@@ -58,7 +58,7 @@ De eigenaar van een abonnement moet ook [accepteer de gebruiksvoorwaarden](avere
    }
    ```
 
-1. Voer deze opdracht om de rol te maken:
+1. Voer deze opdracht uit om de rol te maken:
 
    `az role definition create --role-definition <PATH_TO_FILE>`
 
@@ -67,12 +67,12 @@ De eigenaar van een abonnement moet ook [accepteer de gebruiksvoorwaarden](avere
     az role definition create --role-definition ./averecreatecluster.json
     ```
 
-1. Deze rol toewijzen aan de gebruiker die het cluster wilt maken:
+1. Wijs deze rol toe aan de gebruiker die het cluster gaat maken:
 
    `az role assignment create --assignee <USERNAME> --scope /subscriptions/<SUBSCRIPTION_ID> --role 'avere-create-cluster'`
 
-Na deze procedure heeft elke gebruiker die deze rol toegewezen aan de volgende machtigingen voor het abonnement: 
+Na deze procedure heeft elke gebruiker die deze rol toegewezen, de volgende machtigingen voor het abonnement: 
 
-* Maken en configureren van de netwerkinfrastructuur
-* De netwerkcontroller cluster maken
-* Uitvoeren van scripts voor het cluster maken van de netwerkcontroller cluster om het cluster te maken
+* De netwerk infrastructuur maken en configureren
+* De cluster controller maken
+* Scripts voor het maken van clusters uitvoeren vanaf de cluster controller om het cluster te maken

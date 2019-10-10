@@ -1,6 +1,6 @@
 ---
-title: Zelfstudie - Update de aangepaste installatiekopie van de schaal van de virtuele machine van Azure wordt ingesteld wanneer u Ansible gebruikt | Microsoft Docs
-description: Leer hoe u Ansible gebruikt om bij te werken van virtuele-machineschaalsets in Azure met aangepaste installatiekopie
+title: 'Zelf studie: de aangepaste installatie kopie van virtuele-machine schaal sets van Azure bijwerken met behulp van Ansible'
+description: Meer informatie over het gebruik van Ansible voor het bijwerken van virtuele-machine schaal sets in azure met een aangepaste installatie kopie
 keywords: ansible, azure, devops, bash, playbook, virtuele machine, schaalset voor virtuele machines, vmss
 ms.topic: tutorial
 ms.service: ansible
@@ -8,50 +8,50 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: d3eedc5b83190af46669b9b5df8643f3c80e9bb1
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 3b7baffe6ce0fadbac2dd56b9c8296c80546fa72
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65230845"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72241331"
 ---
-# <a name="tutorial-update-the-custom-image-of-azure-virtual-machine-scale-sets-using-ansible"></a>Zelfstudie: Update de aangepaste installatiekopie van de schaal van de virtuele machine van Azure wordt ingesteld wanneer u Ansible gebruikt
+# <a name="tutorial-update-the-custom-image-of-azure-virtual-machine-scale-sets-using-ansible"></a>Zelf studie: de aangepaste installatie kopie van virtuele-machine schaal sets van Azure bijwerken met behulp van Ansible
 
 [!INCLUDE [ansible-27-note.md](../../includes/ansible-28-note.md)]
 
 [!INCLUDE [open-source-devops-intro-vmss.md](../../includes/open-source-devops-intro-vmss.md)]
 
-Nadat een virtuele machine is geïmplementeerd, configureert u de virtuele machine met de software uw toepassingsbehoeften. In plaats van deze taak voor de configuratie voor elke virtuele machine uitvoert, kunt u een aangepaste installatiekopie maken. Een aangepaste installatiekopie is een momentopname van een bestaande virtuele machine met alle geïnstalleerde software. Wanneer u [configureren van een schaalset](./ansible-create-configure-vmss.md), u de afbeelding moet worden gebruikt voor deze schaalset-VM's opgeven. Met behulp van een aangepaste installatiekopie, is elk VM-exemplaar identiek geconfigureerd voor uw app. Soms moet u mogelijk aangepaste installatiekopie van uw schaalset bijwerken. Deze taak wordt de focus van deze zelfstudie.
+Nadat een virtuele machine is geïmplementeerd, configureert u de virtuele machine met de software die uw app nodig heeft. In plaats van deze configuratie taak te gebruiken voor elke virtuele machine, kunt u een aangepaste installatie kopie maken. Een aangepaste installatie kopie is een moment opname van een bestaande virtuele machine die geïnstalleerde software bevat. Wanneer u [een schaalset configureert](./ansible-create-configure-vmss.md), geeft u de installatie kopie op die moet worden gebruikt voor de virtuele machines van de schaalset. Door een aangepaste installatie kopie te gebruiken, is elk VM-exemplaar gelijk geconfigureerd voor uw app. Soms moet u de aangepaste installatie kopie van uw schaalset mogelijk bijwerken. Deze taak is de focus van deze zelf studie.
 
 [!INCLUDE [ansible-tutorial-goals.md](../../includes/ansible-tutorial-goals.md)]
 
 > [!div class="checklist"]
 >
-> * Twee virtuele machines configureren met HTTPD
-> * Een aangepaste installatiekopie van een bestaande virtuele machine maken
-> * Een schaalset op basis van een installatiekopie maken
-> * De aangepaste installatiekopie bijwerken
+> * Twee Vm's configureren met HTTPD
+> * Een aangepaste installatie kopie maken van een bestaande virtuele machine
+> * Een schaalset maken op basis van een afbeelding
+> * De aangepaste installatie kopie bijwerken
 
 ## <a name="prerequisites"></a>Vereisten
 
 [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)]
 
-## <a name="configure-two-vms"></a>Twee virtuele machines configureren
+## <a name="configure-two-vms"></a>Twee Vm's configureren
 
-De playbook-code in deze sectie maakt u twee virtuele machines met HTTPD geïnstalleerd op beide. 
+Met de Playbook-code in deze sectie maakt u twee virtuele machines waarop HTTPD is geïnstalleerd. 
 
-De `index.html` pagina voor elke virtuele machine een testtekenreeks wordt:
+Op de pagina @no__t 0 van elke VM wordt een test teken reeks weer gegeven:
 
-* Eerste VM geeft de waarde `Image A`
-* Tweede virtuele machine wordt de waarde weergegeven `Image B`
+* In de eerste VM wordt de waarde `Image A` weer gegeven
+* Tweede VM geeft de waarde weer `Image B`
 
-Deze tekenreeks is bedoeld om na te bootsen elke virtuele machine configureren met andere software.
+Deze teken reeks is bedoeld om het configureren van elke VM met andere software te simuleren.
 
-Er zijn twee manieren om op te halen van de voorbeeld-playbook:
+Er zijn twee manieren om de voorbeeld Playbook te verkrijgen:
 
-* [Download de playbook](https://github.com/Azure-Samples/ansible-playbooks/blob/master/vmss_images/01-create-vms.yml) en sla deze op `create_vms.yml`.
-* Maak een nieuw bestand met de naam `create_vms.yml` en kopieer naar het de volgende inhoud:
+* [Down load de Playbook](https://github.com/Azure-Samples/ansible-playbooks/blob/master/vmss_images/01-create-vms.yml) en sla deze op `create_vms.yml`.
+* Maak een nieuw bestand met de naam `create_vms.yml` en kopieer het naar de volgende inhoud:
 
 ```yml
 - name: Create two VMs (A and B) with HTTPS
@@ -167,39 +167,39 @@ Er zijn twee manieren om op te halen van de voorbeeld-playbook:
       msg: "Public IP Address B: {{ pip_output.results[1].state.ip_address }}"
 ```
 
-Voer de playbook met behulp de `ansible-playbook` opdracht, vervangt `myrg` met de naam van resourcegroep:
+Voer de Playbook uit met de `ansible-playbook`-opdracht, waarbij u `myrg` vervangt door de naam van de resource groep:
 
 ```bash
 ansible-playbook create-vms.yml --extra-vars "resource_group=myrg"
 ```
 
-Vanwege de `debug` secties van de playbook de `ansible-playbook` opdracht wordt het IP-adres van elke VM afgedrukt. Kopieer deze IP-adressen voor later gebruik.
+Vanwege de `debug`-secties van de Playbook wordt met de `ansible-playbook`-opdracht het IP-adres van elke virtuele machine afgedrukt. Kopieer deze IP-adressen voor later gebruik.
 
-![IP-adressen voor virtuele machine](media/ansible-vmss-update-image/vmss-update-vms-ip-addresses.png)
+![IP-adressen van virtuele machines](media/ansible-vmss-update-image/vmss-update-vms-ip-addresses.png)
 
 ## <a name="connect-to-the-two-vms"></a>Verbinding maken met de twee virtuele machines
 
-In deze sectie maakt verbinding u met elke virtuele machine. Zoals vermeld in de vorige sectie, de tekenreeksen `Image A` en `Image B` nabootsen met twee afzonderlijke virtuele machines met verschillende configuraties.
+In deze sectie maakt u verbinding met elke virtuele machine. Zoals vermeld in de vorige sectie, simuleren de teken reeksen `Image A` en `Image B` met twee afzonderlijke Vm's met verschillende configuraties.
 
-Met behulp van de IP-adressen uit de vorige sectie, verbinding maken met beide VM's:
+Met behulp van de IP-adressen uit de vorige sectie maakt u verbinding met beide Vm's:
 
-![Schermafdruk van de virtuele machine een](media/ansible-vmss-update-image/vmss-update-browser-vma.png)
+![Scherm opname van virtuele machine A](media/ansible-vmss-update-image/vmss-update-browser-vma.png)
 
-![Schermafdruk van de virtuele machine B](media/ansible-vmss-update-image/vmss-update-browser-vmb.png)
+![Scherm opname van virtuele machine B](media/ansible-vmss-update-image/vmss-update-browser-vmb.png)
 
-## <a name="create-images-from-each-vm"></a>Installatiekopieën van elke virtuele machine maken
+## <a name="create-images-from-each-vm"></a>Installatie kopieën maken van elke VM
 
-Op dit moment hebt u twee virtuele machines met enigszins verschillende configuraties (hun `index.html` bestanden).
+Op dit moment hebt u twee virtuele machines met iets verschillende configuraties (de `index.html` bestanden).
 
-De playbook-code in deze sectie maakt u een aangepaste installatiekopie voor elke virtuele machine:
+Met de Playbook-code in deze sectie maakt u een aangepaste installatie kopie voor elke VM:
 
-* `image_vmforimageA` -Aangepaste installatiekopie die is gemaakt voor de virtuele machine die wordt weergegeven `Image A` op de startpagina.
-* `image_vmforimageB` -Aangepaste installatiekopie die is gemaakt voor de virtuele machine die wordt weergegeven `Image B` op de startpagina.
+* `image_vmforimageA`: er is een aangepaste installatie kopie gemaakt voor de virtuele machine die `Image A` op de start pagina van de VM weergeeft.
+* `image_vmforimageB`: er is een aangepaste installatie kopie gemaakt voor de virtuele machine die `Image B` op de start pagina van de VM weergeeft.
 
-Er zijn twee manieren om op te halen van de voorbeeld-playbook:
+Er zijn twee manieren om de voorbeeld Playbook te verkrijgen:
 
-* [Download de playbook](https://github.com/Azure-Samples/ansible-playbooks/blob/master/vmss_images/02-capture-images.yml) en sla deze op `capture-images.yml`.
-* Maak een nieuw bestand met de naam `capture-images.yml` en kopieer naar het de volgende inhoud:
+* [Down load de Playbook](https://github.com/Azure-Samples/ansible-playbooks/blob/master/vmss_images/02-capture-images.yml) en sla deze op `capture-images.yml`.
+* Maak een nieuw bestand met de naam `capture-images.yml` en kopieer het naar de volgende inhoud:
 
 ```yml
 - name: Capture VM Images
@@ -228,24 +228,24 @@ Er zijn twee manieren om op te halen van de voorbeeld-playbook:
       - B
 ```
 
-Voer de playbook met behulp de `ansible-playbook` opdracht, vervangt `myrg` met de naam van resourcegroep:
+Voer de Playbook uit met de `ansible-playbook`-opdracht, waarbij u `myrg` vervangt door de naam van de resource groep:
 
 ```bash
 ansible-playbook capture-images.yml --extra-vars "resource_group=myrg"
 ```
 
-## <a name="create-scale-set-using-image-a"></a>Schaalset met behulp van een installatiekopie maken
+## <a name="create-scale-set-using-image-a"></a>Een schaalset maken met afbeelding A
 
-In deze sectie wordt een playbook gebruikt om de volgende Azure-resources configureren:
+In deze sectie wordt een Playbook gebruikt voor het configureren van de volgende Azure-resources:
 
 * Openbaar IP-adres
-* Load balancer
-* Virtual Machine Scale sets die verwijzingen `image_vmforimageA`
+* Load Balancer
+* Schaalset die verwijst naar `image_vmforimageA`
 
-Er zijn twee manieren om op te halen van de voorbeeld-playbook:
+Er zijn twee manieren om de voorbeeld Playbook te verkrijgen:
 
-* [Download de playbook](https://github.com/Azure-Samples/ansible-playbooks/blob/master/vmss_images/03-create-vmss.yml) en sla deze op `create-vmss.yml`.
-* Maak een nieuw bestand met de naam `create-vmss.yml` en kopieer naar het de volgende inhoud: "
+* [Down load de Playbook](https://github.com/Azure-Samples/ansible-playbooks/blob/master/vmss_images/03-create-vmss.yml) en sla deze op `create-vmss.yml`.
+* Maak een nieuw bestand met de naam `create-vmss.yml` en kopieer het naar de volgende inhoud: "
 
 ```yml
 ---
@@ -311,40 +311,40 @@ Er zijn twee manieren om op te halen van de voorbeeld-playbook:
         msg: "Scale set public IP address: {{ pip_output.state.ip_address }}"
 ```
 
-Voer de playbook met behulp de `ansible-playbook` opdracht, vervangt `myrg` met de naam van resourcegroep:
+Voer de Playbook uit met de `ansible-playbook`-opdracht, waarbij u `myrg` vervangt door de naam van de resource groep:
 
 ```bash
 ansible-playbook create-vmss.yml --extra-vars "resource_group=myrg"
 ```
 
-Vanwege de `debug` sectie van de playbook de `ansible-playbook` opdracht het IP-adres van de schaalset wordt afgedrukt. Kopieer dit IP-adres voor later gebruik.
+Vanwege de `debug` sectie van de Playbook wordt met de `ansible-playbook`-opdracht het IP-adres van de schaalset afgedrukt. Kopieer dit IP-adres voor later gebruik.
 
 ![Openbaar IP-adres](media/ansible-vmss-update-image/vmss-update-vmss-public-ip.png)
 
 ## <a name="connect-to-the-scale-set"></a>Verbinding maken met de schaalset
 
-In deze sectie maakt verbinding u met de schaalset. 
+In deze sectie maakt u verbinding met de schaalset. 
 
-Met behulp van het IP-adres uit de vorige sectie, verbinding maken met de schaalset.
+Gebruik het IP-adres uit de vorige sectie om verbinding te maken met de schaalset.
 
-Zoals vermeld in de vorige sectie, de tekenreeksen `Image A` en `Image B` nabootsen met twee afzonderlijke virtuele machines met verschillende configuraties.
+Zoals vermeld in de vorige sectie, simuleren de teken reeksen `Image A` en `Image B` met twee afzonderlijke Vm's met verschillende configuraties.
 
-De Virtual Machine scale sets verwijst naar de aangepaste installatiekopie met de naam `image_vmforimageA`. Aangepaste installatiekopie `image_vmforimageA` is gemaakt op basis van de virtuele machine waarvan startpagina geeft `Image A`.
+De schaalset verwijst naar de aangepaste installatie kopie met de naam `image_vmforimageA`. Aangepaste installatie kopie `image_vmforimageA` is gemaakt op de VM waarvan de start pagina wordt weer gegeven `Image A`.
 
-Als gevolg hiervan, ziet u een startpagina weergeven `Image A`:
+Als gevolg hiervan wordt een start pagina met `Image A` weer gegeven:
 
-![De schaalset is gekoppeld aan de eerste virtuele machine.](media/ansible-vmss-update-image/vmss-update-browser-initial-vmss.png)
+![De schaalset is gekoppeld aan de eerste VM.](media/ansible-vmss-update-image/vmss-update-browser-initial-vmss.png)
 
-Laat uw browservenster geopend als u met de volgende sectie doorgaat.
+Zorg ervoor dat uw browser venster geopend blijft terwijl u verdergaat met de volgende sectie.
 
-## <a name="change-custom-image-in-scale-set-and-upgrade-instances"></a>Aangepaste afbeelding van wijzigen in de schaalset ingesteld en voer een upgrade instanties
+## <a name="change-custom-image-in-scale-set-and-upgrade-instances"></a>Aangepaste installatie kopie wijzigen in schaalset en upgrade-exemplaren
 
-De playbook-code in deze sectie van de afbeelding van de schaalset - verandert `image_vmforimageA` naar `image_vmforimageB`. Bovendien worden alle huidige virtuele machines die zijn geïmplementeerd door de schaalaanpassingsset worden bijgewerkt.
+Met de Playbook-code in deze sectie wordt de afbeelding van de schaalset gewijzigd: van `image_vmforimageA` naar `image_vmforimageB`. Ook worden alle huidige virtuele machines bijgewerkt die worden geïmplementeerd door de schaalset.
 
-Er zijn twee manieren om op te halen van de voorbeeld-playbook:
+Er zijn twee manieren om de voorbeeld Playbook te verkrijgen:
 
-* [Download de playbook](https://github.com/Azure-Samples/ansible-playbooks/blob/master/vmss_images/04-update-vmss-image.yml) en sla deze op `update-vmss-image.yml`.
-* Maak een nieuw bestand met de naam `update-vmss-image.yml` en kopieer naar het de volgende inhoud:
+* [Down load de Playbook](https://github.com/Azure-Samples/ansible-playbooks/blob/master/vmss_images/04-update-vmss-image.yml) en sla deze op `update-vmss-image.yml`.
+* Maak een nieuw bestand met de naam `update-vmss-image.yml` en kopieer het naar de volgende inhoud:
 
 ```yml
 - name: Update scale set image reference
@@ -395,7 +395,7 @@ Er zijn twee manieren om op te halen van de voorbeeld-playbook:
     with_items: "{{ instances.instances }}"
 ```
 
-Voer de playbook met behulp de `ansible-playbook` opdracht, vervangt `myrg` met de naam van resourcegroep:
+Voer de Playbook uit met de `ansible-playbook`-opdracht, waarbij u `myrg` vervangt door de naam van de resource groep:
 
 ```bash
 ansible-playbook update-vmss-image.yml --extra-vars "resource_group=myrg"
@@ -403,15 +403,15 @@ ansible-playbook update-vmss-image.yml --extra-vars "resource_group=myrg"
 
 Ga terug naar de browser en vernieuw de pagina. 
 
-U ziet dat de virtuele machine van de onderliggende aangepaste installatiekopie wordt bijgewerkt.
+U ziet dat de onderliggende aangepaste installatie kopie van de virtuele machine is bijgewerkt.
 
-![De schaalset is gekoppeld aan de tweede virtuele machine](media/ansible-vmss-update-image/vmss-update-browser-updated-vmss.png)
+![De schaalset is gekoppeld aan de tweede VM](media/ansible-vmss-update-image/vmss-update-browser-updated-vmss.png)
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Wanneer het niet meer nodig hebt, verwijdert u de resources die in dit artikel is gemaakt. 
+Als u deze niet meer nodig hebt, verwijdert u de resources die u in dit artikel hebt gemaakt. 
 
-Sla de volgende code als `cleanup.yml`:
+Sla de volgende code op als `cleanup.yml`:
 
 ```yml
 - hosts: localhost
@@ -425,7 +425,7 @@ Sla de volgende code als `cleanup.yml`:
         state: absent
 ```
 
-Voer de playbook met behulp de `ansible-playbook` opdracht:
+Voer de Playbook uit met behulp van de `ansible-playbook`-opdracht:
 
 ```bash
 ansible-playbook cleanup.yml

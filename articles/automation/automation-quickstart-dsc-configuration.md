@@ -11,12 +11,12 @@ ms.date: 11/06/2018
 ms.topic: quickstart
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 2c01172bf22fb286f790543b02a4c1e482b05fe7
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: d5eca6ffce8390b2f8b4deae589d43f40897756d
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68850553"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72243462"
 ---
 # <a name="configure-a-virtual-machine-with-desired-state-configuration"></a>Een virtuele machine met desired state Configuration configureren
 
@@ -42,7 +42,7 @@ Er zijn veel verschillende methoden voor het uitvoeren van onboarding op een mac
 2. Klik op **Toevoegen** om de selectiepagina van de virtuele machine te openen.
 3. Zoek naar de virtuele machine waarvoor u DSC wilt inschakelen DSC. U kunt het zoekveld en de filteropties gebruiken om een specifieke virtuele machine te vinden.
 4. Klik op de virtuele machine en selecteer vervolgens **Verbinden**
-5. Selecteer de juiste DSC-instellingen voor de virtuele machine. Als u al een configuratie hebt voorbereid, kunt u deze opgeven als *knooppuntconfiguratienaam*. U kunt de [configuratiemodus](https://docs.microsoft.com/powershell/dsc/metaconfig) instellen om het configuratiegedrag voor de machine te bepalen.
+5. Selecteer de juiste DSC-instellingen voor de virtuele machine. Als u al een configuratie hebt voorbereid, kunt u deze opgeven als *knooppuntconfiguratienaam*. U kunt de [configuratiemodus](https://docs.microsoft.com/powershell/scripting/dsc/managing-nodes/metaConfig) instellen om het configuratiegedrag voor de machine te bepalen.
 6. Klik op **OK**
 
 ![De onboarding van virtuele Azure-machine voor DSC](./media/automation-quickstart-dsc-configuration/dsc-onboard-azure-vm.png)
@@ -64,7 +64,7 @@ Modules bevatten DSC-resources en vele daarvan kunnen worden gevonden in [PowerS
 
 In deze quickstart wordt gebruikgemaakt van een DSC-configuratie waarmee Apache HTTP Server, MySQL en PHP op de computer worden geconfigureerd.
 
-Zie [DSC-configuraties](https://docs.microsoft.com/powershell/dsc/configurations) voor meer informatie over DSC-configuraties.
+Zie [DSC-configuraties](https://docs.microsoft.com/powershell/scripting/dsc/configurations/configurations) voor meer informatie over DSC-configuraties.
 
 Typ het volgende in een teksteditor en sla het bestand lokaal op als `LAMPServer.ps1`.
 
@@ -108,7 +108,7 @@ De configuratie importeren:
 
 ## <a name="compile-a-configuration"></a>Een configuratie compileren
 
-DSC-configuraties moeten worden gecompileerd naar een knooppuntconfiguratie (MOF-document) voordat deze aan een knooppunt worden toegewezen. Tijdens de compilatie wordt de configuratie gevalideerd en is het mogelijk parameterwaarden in te voeren. Zie voor meer informatie over het compileren van een configuratie: [Configuraties compileren in Azure Automation DSC](https://docs.microsoft.com/azure/automation/automation-dsc-compile)
+DSC-configuraties moeten worden gecompileerd naar een knooppuntconfiguratie (MOF-document) voordat deze aan een knooppunt worden toegewezen. Tijdens de compilatie wordt de configuratie gevalideerd en is het mogelijk parameterwaarden in te voeren. Zie [Compiling Configurations in Azure Automation DSC](https://docs.microsoft.com/azure/automation/automation-dsc-compile) (Configuraties compileren in Azure Automation DSC) voor meer informatie over het compileren van een configuratie.
 
 De configuratie compileren:
 
@@ -142,7 +142,7 @@ In deze quickstart hebt u een onboarding uitgevoerd voor een virtuele Linux-mach
 > [!div class="nextstepaction"]
 > [Continuous deployment to a VM using DSC and Chocolatey](./automation-dsc-cd-chocolatey.md) (Continue implementatie naar een virtuele machine met behulp van DSC en Chocolatey)
 
-* Zie voor meer informatie over PowerShell Desired State Configuration, [PowerShell Desired State Configuration Overview](https://docs.microsoft.com/powershell/dsc/overview) (Overzicht van PowerShell Desired Configuration).
+* Zie voor meer informatie over PowerShell Desired State Configuration, [PowerShell Desired State Configuration Overview](https://docs.microsoft.com/powershell/scripting/dsc/overview/overview) (Overzicht van PowerShell Desired Configuration).
 * Zie [Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.automation/) voor meer informatie over het beheren van Automation DSC vanuit PowerShell.
 * Zie [Forwarding DSC Reporting to Azure Monitor logs](https://docs.microsoft.com/azure/automation/automation-dsc-diagnostics) (DSC-rapporten doorsturen naar Azure Monitor-logboeken) voor informatie over het doorsturen van DSC-rapporten naar Azure Monitor-logboeken voor rapportage- en waarschuwingsdoeleinden. 
 

@@ -14,12 +14,12 @@ ms.subservice: report-monitor
 ms.date: 04/18/2019
 ms.author: chadam
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 288fa54a1a6dd4eb05f953a4490bf7736d6d7ff8
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 9bea8da4f0d694be3a39a8f5dfaca8e54ce2773d
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70931251"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72255658"
 ---
 # <a name="how-to-use-azure-monitor-workbooks-for-azure-active-directory-reports"></a>Azure Monitor werkmappen gebruiken voor Azure Active Directory rapporten
 
@@ -49,11 +49,18 @@ Als u werkmappen wilt gebruiken, hebt u het volgende nodig:
 
 - Een [log Analytics-werk ruimte](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace).
 
+- [Toegang](https://docs.microsoft.com/azure/azure-monitor/platform/manage-access#manage-access-using-workspace-permissions) tot de log Analytics-werk ruimte
+- De volgende rollen in Azure Active Directory (als u Log Analytics via Azure Active Directory Portal opent)
+    - Beveiligingsbeheerder
+    - Beveiligings lezer
+    - Rapport lezer
+    - Globale beheerder
+
 ## <a name="roles"></a>Rollen
 U moet een van de volgende rollen hebben en toegang hebben tot de [onderliggende log Analytics](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/manage-access#manage-access-using-azure-permissions) werk ruimte om de werkmappen te beheren:
 -   Globale beheerder
 -   Beveiligingsbeheerder
--   Beveiligingslezer
+-   Beveiligings lezer
 -   Rapport lezer
 -   Toepassings beheerder
 
@@ -62,7 +69,7 @@ U moet een van de volgende rollen hebben en toegang hebben tot de [onderliggende
 
 Voor toegang tot werkmappen:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 2. Selecteer **Azure Active Directory**in het navigatie deel venster aan de linkerkant.
 
@@ -85,7 +92,7 @@ In deze werkmap worden de volgende trends voor aanmelden weer gegeven:
 
 - Geslaagd
 
-- Gebruikersactie in behandeling
+- Gebruikers actie in behandeling
 
 - Fout
 
@@ -102,7 +109,7 @@ U kunt elke trend filteren op de volgende categorieën:
 
 Voor elke trend krijgt u een uitsplitsing van de volgende categorieën:
 
-- Location
+- Locatie
 
     ![Aanmeldingen per locatie](./media/howto-use-azure-monitor-workbooks/45.png)
 
@@ -219,7 +226,7 @@ In deze werkmap worden de volgende trends voor aanmelden weer gegeven:
 
 - Geslaagd
 
-- Wachtend op actie
+- Actie in behandeling
 
 - Fout
 

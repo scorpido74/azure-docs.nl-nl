@@ -1,18 +1,18 @@
 ---
 title: Voor beeld-CAF migratie van landings zone migreren-stappen implementeren
-description: Implementeer de stappen van het voor beeld van de CAF migrate-start zone.
+description: Implementeer stappen voor het voor beeld van de CAF migrate-openings zone, inclusief blauw drukken-artefact parameter Details.
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 08/20/2019
 ms.topic: sample
 ms.service: blueprints
 ms.custom: fasttrack-new
-ms.openlocfilehash: cec8d224e52de25fe026a17d57144da3cd53fc5b
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 0a635c9c3b864e4ce74dbbe8b9c95df38489176f
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71981668"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72248505"
 ---
 # <a name="deploy-the-microsoft-cloud-adoption-framework-for-azure-migrate-landing-zone-blueprint-sample"></a>Het Microsoft Cloud-acceptatie raamwerk voor Azure migrate-openings zone implementeren voor beeld van de blauw druk
 
@@ -42,7 +42,7 @@ Implementeer eerst het voor beeld van de blauw druk door een nieuwe blauw druk i
    - **Naam blauw druk** Geef een naam op voor uw kopie van het voor beeld van de CAF-migratie landings zone.
    - **Locatie van definitie** Gebruik het weglatings teken en selecteer de beheer groep om uw kopie van het voor beeld op te slaan.
 
-1. Selecteer het tabblad _artefacten_ boven aan de pagina of **Next: Artefacten @ no__t-0 aan de onderkant van de pagina.
+1. Selecteer het tabblad _artefacten_ boven aan de pagina of **volgende: artefacten** aan de onderkant van de pagina.
 
 1. Bekijk de lijst met artefacten die deel uitmaken van het voor beeld van de blauw druk. Veel van de artefacten hebben para meters die later worden gedefinieerd. Selecteer **concept opslaan** wanneer u klaar bent met het bekijken van het voor beeld van de blauw druk.
 
@@ -68,16 +68,16 @@ Zodra de kopie van het voor beeld van de blauw druk is **gepubliceerd**, kan dez
 
 1. Geef de parameter waarden voor de toewijzing van de blauw druk op:
 
-   - Basics
+   - Basisbeginselen
      - **Abonnementen**: Selecteer een of meer abonnementen in de beheer groep waarop u uw kopie van het voor beeld van de blauw druk hebt opgeslagen. Als u meer dan één abonnement selecteert, wordt er een toewijzing gemaakt met behulp van de opgegeven para meters.
-     - **Toewijzings naam**: De naam wordt vooraf ingevuld op basis van de naam van de blauw druk.
+     - **Toewijzings naam**: de naam wordt vooraf ingevuld op basis van de naam van de blauw druk.
        Wijzig indien nodig of sluit af.
      - **Locatie**: Selecteer een regio voor de beheerde identiteit die u wilt maken in.
      - Azure Blueprint gebruikt deze beheerde identiteit om alle artefacten in de toegewezen blauwdruk te implementeren.
        Zie [Beheerde identiteiten voor Azure-resources](../../../../active-directory/managed-identities-azure-resources/overview.md) voor meer informatie.
      - **Definitie van blauw druk-versie**: Kies een **gepubliceerde** versie van uw kopie van het voor beeld van de blauw druk.
     
-   - Toewijzing vergrendelen
+   - Toewijzing vergren delen
 
      Selecteer de instelling voor het vergren delen van blauw drukken voor uw omgeving. Zie voor meer informatie [Vergrendeling van blauwdrukresources](../../concepts/resource-locking.md).
 
@@ -92,7 +92,7 @@ Zodra de kopie van het voor beeld van de blauw druk is **gepubliceerd**, kan dez
        - **Organisatie**: Voer de naam van uw organisatie in, zoals contoso of Fabrikam, moet uniek zijn.
        - **Azureregio**: Selecteer één Azure-regio voor de implementatie.
        
-   - Artefactparameters
+   - Artefact parameters
 
      De in deze sectie gedefinieerde para meters zijn van toepassing op het artefact waaronder het is gedefinieerd. Deze para meters zijn [dynamische para meters](../../concepts/parameters.md#dynamic-parameters) , omdat ze zijn gedefinieerd tijdens de toewijzing van de blauw druk. Zie [artefact parameters Table](#artifact-parameters-table)voor een volledige lijst of artefact parameters en de bijbehorende beschrijvingen.
 
@@ -105,7 +105,7 @@ Zodra de kopie van het voor beeld van de blauw druk is **gepubliceerd**, kan dez
 
 De volgende tabel geeft een lijst van de para meters van de blauw druk-artefact:
 
-|Naam van het artefact|Type artefact|Parameternaam|Description|
+|Artefact naam|Type artefact|Parameternaam|Beschrijving|
 |-|-|-|-|
 |VNET-landings zone implementeren|Resource Manager-sjabloon|IPAddress_Space|**Vergrendeld** : Geef het eerste twee octets-voor beeld op, 10,0|
 |Key Vault implementeren|Resource Manager-sjabloon|KV-AccessPolicy|Object-ID van **vergrendelde** groep of gebruiker om machtigingen te verlenen voor in Key Vault|

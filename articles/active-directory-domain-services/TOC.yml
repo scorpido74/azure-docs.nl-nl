@@ -25,6 +25,8 @@
       href: powershell-create-instance.md
 - name: Concepten
   items:
+    - name: Basisprincipes van beheer
+      href: administration-concepts.md
     - name: Veel voorkomende implementatiescenario's
       href: scenarios.md
     - name: Hoe Azure AD DS-synchronisatie werkt

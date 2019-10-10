@@ -1,17 +1,17 @@
 ---
-title: Beleid voor het schrijven van matrix eigenschappen op Azure-resources
+title: Beleid voor het schrijven van matrix eigenschappen voor bronnen
 description: Meer informatie over het maken van matrix parameters, het maken van regels voor matrix taal expressies, het evalueren van de [*]-alias en het toevoegen van elementen aan een bestaande matrix met Azure Policy definitie regels.
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 03/06/2019
 ms.topic: conceptual
 ms.service: azure-policy
-ms.openlocfilehash: e5b90eb975d0d495723a70095b447d37e051fc0b
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 33607d790f564075623d6f61d1b7b8b70a119f98
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71978039"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72255806"
 ---
 # <a name="author-policies-for-array-properties-on-azure-resources"></a>Beleid voor het schrijven van matrix eigenschappen op Azure-resources
 
@@ -96,9 +96,9 @@ De notatie voor de parameter waarde is anders wanneer u Azure CLI, Azure PowerSh
 
 Gebruik de volgende opdrachten om deze teken reeks te gebruiken voor elke SDK:
 
-- Azure CLI: Opdracht [AZ Policy Assignment Create](/cli/azure/policy/assignment?view=azure-cli-latest#az-policy-assignment-create) with para meter **params**
-- Azure PowerShell: Cmdlet [New-AzPolicyAssignment](/powershell/module/az.resources/New-Azpolicyassignment) met para meter **PolicyParameter**
-- REST API: In de _put_ -bewerking [maken](/rest/api/resources/policyassignments/create) als onderdeel van de aanvraag tekst als de waarde van de **Eigenschappen. para meters** -eigenschap
+- Azure CLI: opdracht [AZ Policy Assignment Create](/cli/azure/policy/assignment?view=azure-cli-latest#az-policy-assignment-create) with para meter **params**
+- Azure PowerShell: cmdlet [New-AzPolicyAssignment](/powershell/module/az.resources/New-Azpolicyassignment) met para meter **PolicyParameter**
+- REST API: in de _put_ -bewerking [maken](/rest/api/resources/policyassignments/create) als onderdeel van de aanvraag tekst als de waarde van de **Eigenschappen. para meters** -eigenschap
 
 ## <a name="policy-rules-and-arrays"></a>Beleids regels en-matrices
 
@@ -141,7 +141,7 @@ Het verwachte **type** voor waarde `equals` is _teken reeks_. Omdat **allowedLoc
 
 ### <a name="evaluating-the--alias"></a>De alias [*] evalueren
 
-Aliassen met **[\*]** die zijn gekoppeld aan hun naam, geven aan dat het **type** een _matrix_is. In plaats van de waarde van de volledige matrix te evalueren, kunt u met **[\*]** elk element van de matrix evalueren. Er zijn drie scenario's waarin de evaluatie per item kan worden gebruikt in: Geen, alle en alle.
+Aliassen met **[\*]** die zijn gekoppeld aan hun naam, geven aan dat het **type** een _matrix_is. In plaats van de waarde van de volledige matrix te evalueren, kunt u met **[\*]** elk element van de matrix evalueren. Er zijn drie scenario's waarin de evaluatie per item kan worden gebruikt in: geen, alle en alle.
 
 De beleids engine activeert alleen het **effect** in **then** wanneer de **if** -regel als waar evalueert.
 Dit is belang rijk om inzicht te krijgen in de context van de manier waarop **[\*]** elk afzonderlijk element van de matrix evalueert.

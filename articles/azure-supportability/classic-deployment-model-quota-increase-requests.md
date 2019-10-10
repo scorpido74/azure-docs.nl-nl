@@ -5,14 +5,14 @@ author: sowmyavenkat86
 ms.author: svenkat
 ms.date: 06/20/2019
 ms.topic: article
-ms.service: azure
+ms.service: azure-supportability
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
-ms.openlocfilehash: c7860a098096d718a6c5d7cd661ef2b1c1b21e89
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: d803cc0dfa4a266f79b522207a8cf0f70e06cf3d
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71802672"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72248726"
 ---
 # <a name="classic-deployment-model"></a>Klassiek implementatiemodel
 
@@ -30,7 +30,7 @@ U kunt een verhoging van de vCPU-quotum limiet voor het klassieke implementatie 
 
 Volg de onderstaande instructies om een ondersteunings aanvraag te maken via de Blade Help en ondersteuning van Azure die beschikbaar zijn in de Azure Portal. 
 
-1. Selecteer https://portal.azure.com in de optie **Help en ondersteuning**.
+1. Selecteer in https://portal.azure.com **Help + ondersteuning**.
 
    ![Help en ondersteuning](./media/resource-manager-core-quotas-request/helpsupport.png)
  
@@ -70,7 +70,7 @@ Volg de onderstaande instructies om een ondersteunings aanvraag te maken via de 
 
 Volg de onderstaande instructies voor het maken van een ondersteunings aanvraag via de Blade gebruik en quotum van Azure die beschikbaar is in de Azure Portal. 
 
-1. Vanuit https://portal.azure.com selecteert u **abonnementen**.
+1. Selecteer in https://portal.azure.com **abonnementen**.
 
    ![Abonnementen](./media/resource-manager-core-quotas-request/subscriptions.png)
 
@@ -84,7 +84,7 @@ Volg de onderstaande instructies voor het maken van een ondersteunings aanvraag 
 
 4. Selecteer in de rechter bovenhoek **aanvraag verhoging**.
 
-   ![Verhoging aanvragen](./media/resource-manager-core-quotas-request/request-increase.png)
+   ![Toename aanvragen](./media/resource-manager-core-quotas-request/request-increase.png)
 
 5. Selecteer **Compute-VM (kernen-vcpu's) de limiet** voor het offerte type wordt verhoogd. 
 

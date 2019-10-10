@@ -1,22 +1,22 @@
 ---
-title: Welke workloads kunt u met Azure Site Recovery beveiligen? | Microsoft Docs
+title: Over herstel na nood gevallen voor on-premises apps met Azure Site Recovery
 description: Hierin worden de workloads beschreven die met behulp van herstel na noodgevallen kunnen worden beveiligd met de service Azure Site Recovery.
 author: rayne-wiselman
 ms.service: site-recovery
 services: site-recovery
 ms.topic: conceptual
-ms.date: 09/03/2019
+ms.date: 10/10/2019
 ms.author: raynew
-ms.openlocfilehash: f3ff6e5e05cab9aab5257d810c6785e7691bae45
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: ad989a28e150635637a477d07803107a9fefff63
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232186"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72255559"
 ---
-# <a name="what-workloads-can-you-protect-with-azure-site-recovery"></a>Welke workloads kunt u met Azure Site Recovery beveiligen?
+# <a name="about-disaster-recovery-for-on-premises-apps"></a>Over herstel na nood gevallen voor on-premises apps
 
-In dit artikel worden werk belastingen en toepassingen beschreven die u kunt beveiligen voor herstel na nood gevallen met de [Azure site Recovery](site-recovery-overview.md) -service.
+In dit artikel worden on-premises workloads en apps beschreven die u kunt beveiligen voor herstel na nood gevallen met de [Azure site Recovery](site-recovery-overview.md) -service.
 
 
 

@@ -4,14 +4,14 @@ description: Geeft een lijst van de Azure-resource typen die meer dan 800 exempl
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 10/4/2019
+ms.date: 10/09/2019
 ms.author: tomfitz
-ms.openlocfilehash: 6677290999049dead40f39e9a840735810c7c763
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 0f9db618b69ff692350f333b8a4a4354f4980169
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71973308"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72249124"
 ---
 # <a name="resources-not-limited-to-800-instances-per-resource-group"></a>Resources die niet beperkt zijn tot 800 exemplaren per resource groep
 
@@ -24,24 +24,24 @@ Voor sommige resource typen moet u contact opnemen met ondersteuning om de limie
 
 * automationAccounts
 
-## <a name="microsoftazurestack"></a>Microsoft.AzureStack
+## <a name="microsoftazurestack"></a>Micro soft. AzureStack
 
 * registraties
-* registrations/customerSubscriptions
+* registraties/customerSubscriptions
 * registraties/producten
 
-## <a name="microsoftbotservice"></a>Microsoft.BotService
+## <a name="microsoftbotservice"></a>Micro soft. BotService
 
-* botServices: Neem contact op met de ondersteuning om de limiet uit te breiden.
+* botServices: standaard beperkt tot 800 exemplaren. Deze limiet kan worden verhoogd door contact op te nemen met de ondersteuning.
 
 ## <a name="microsoftcompute"></a>Microsoft.Compute
 
-* schijven
-* afbeeldingen
+* cd's
+* images
 * momentopnamen
 * Informatie
 
-## <a name="microsoftcontainerinstance"></a>Microsoft.ContainerInstance
+## <a name="microsoftcontainerinstance"></a>Micro soft. ContainerInstance
 
 * containerGroups
 
@@ -51,20 +51,20 @@ Voor sommige resource typen moet u contact opnemen met ondersteuning om de limie
 * registers/buildTasks/listSourceRepositoryProperties
 * registers/buildTasks/stappen
 * registers/buildTasks/stappen/listBuildArguments
-* registries/eventGridFilters
+* registers/eventGridFilters
 * registers/replicaties
 * registers/taken
 * registers/webhooks
 
-## <a name="microsoftdbformariadb"></a>Microsoft.DBforMariaDB
+## <a name="microsoftdbformariadb"></a>Micro soft. DBforMariaDB
 
 * servers
 
-## <a name="microsoftdbformysql"></a>Microsoft.DBforMySQL
+## <a name="microsoftdbformysql"></a>Micro soft. DBforMySQL
 
 * servers
 
-## <a name="microsoftdbforpostgresql"></a>Microsoft.DBforPostgreSQL
+## <a name="microsoftdbforpostgresql"></a>Micro soft. DBforPostgreSQL
 
 * serverGroups
 * servers
@@ -86,7 +86,7 @@ Voor sommige resource typen moet u contact opnemen met ondersteuning om de limie
 * integrationAccounts
 * stroom
 
-## <a name="microsoftnetapp"></a>Microsoft.NetApp
+## <a name="microsoftnetapp"></a>Micro soft. NetApp
 
 * netAppAccounts
 * netAppAccounts/capacityPools
@@ -111,8 +111,8 @@ Voor sommige resource typen moet u contact opnemen met ondersteuning om de limie
 * dnszones/SOA
 * dnszones/SRV
 * dnszones/TXT
-* dnszones/all
-* dnszones/recordsets
+* dnszones/alle
+* dnszones/record sets
 * networkIntentPolicies
 * networkInterfaces
 * privateDnsZones
@@ -128,24 +128,24 @@ Voor sommige resource typen moet u contact opnemen met ondersteuning om de limie
 * privateDnsZones/virtualNetworkLinks
 * privateEndpoints
 * privateLinkServices
-* publicIPAddresses: Neem contact op met de ondersteuning om de limiet uit te breiden.
+* publicIPAddresses: standaard beperkt tot 800 exemplaren. Deze limiet kan worden verhoogd door contact op te nemen met de ondersteuning.
 * serviceEndpointPolicies
 * trafficmanagerprofiles
 * virtualNetworkTaps
 
-## <a name="microsoftportalsdk"></a>Microsoft.PortalSdk
+## <a name="microsoftportalsdk"></a>Micro soft. PortalSdk
 
 * rootResources
 
-## <a name="microsoftpowerbi"></a>Microsoft.PowerBI
+## <a name="microsoftpowerbi"></a>Micro soft. PowerBI
 
-* workspaceCollections: Neem contact op met de ondersteuning om de limiet uit te breiden.
+* workspaceCollections: standaard beperkt tot 800 exemplaren. Deze limiet kan worden verhoogd door contact op te nemen met de ondersteuning.
 
 ## <a name="microsoftscheduler"></a>Microsoft.Scheduler
 
 * jobcollections
 
-## <a name="microsoftservicefabricmesh"></a>Microsoft.ServiceFabricMesh
+## <a name="microsoftservicefabricmesh"></a>Micro soft. ServiceFabricMesh
 
 * toepassingen
 * containerGroups
@@ -156,11 +156,11 @@ Voor sommige resource typen moet u contact opnemen met ondersteuning om de limie
 
 ## <a name="microsoftstorage"></a>Microsoft.Storage
 
-* storageAccounts
+* Storage accounts
 
 ## <a name="microsoftweb"></a>Microsoft.Web
 
-* apiManagementAccounts/apis
+* apiManagementAccounts/api's
 * sites
 
 ## <a name="next-steps"></a>Volgende stappen

@@ -1,109 +1,109 @@
 ---
-title: Het Avere vFXT cluster - Azure beheren
-description: Avere cluster beheren - toevoegen of verwijderen van knooppunten, starten, stoppen of Vernietig het cluster vFXT
+title: Het avere vFXT-cluster beheren-Azure
+description: 'AVERE-cluster beheren: knoop punten toevoegen of verwijderen, het vFXT-cluster opnieuw opstarten, stoppen of vernietigen'
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.author: v-erkell
-ms.openlocfilehash: be9205fdf7fec0661d7382ed0d1bedf47487b15e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: rohogue
+ms.openlocfilehash: bcdba7f14147714c5e29c13bfe9e20fa44a27ef9
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60409735"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72256207"
 ---
 # <a name="manage-the-avere-vfxt-cluster"></a>Het Avere vFXT-cluster beheren
 
-Nadat het cluster is gemaakt, moet u mogelijk clusterknooppunten toevoegen of stoppen of opnieuw opstarten van het cluster. En wanneer uw project is voltooid. u moet weten stoppen en het cluster permanent verwijderen. 
+Nadat u het cluster hebt gemaakt, moet u mogelijk cluster knooppunten toevoegen of het cluster stoppen of opnieuw opstarten. En wanneer het project is voltooid, moet u weten hoe u het cluster permanent stopt en verwijdert. 
 
-Afhankelijk van de beheertaak cluster moet u mogelijk gebruikmaken van het Configuratiescherm Avere, de vfxt.py vanaf de opdrachtregel-script voor het maken van cluster of de Azure-portal om dit te doen. 
+Afhankelijk van de Cluster beheer taak moet u mogelijk het onderdeel avere van het configuratie scherm, het script voor het maken van de vfxt.py-opdracht regel, of de Azure Portal om het uit te voeren. 
 
-Deze tabel geeft een overzicht van deze hulpprogramma's voor elke taak kunnen worden gebruikt. 
+Deze tabel bevat een overzicht van de hulpprogram ma's die voor elke taak kunnen worden gebruikt. 
 
-| Bewerking | Avere Configuratiescherm | vfxt.py  | Azure Portal |
+| Bewerking | Configuratie scherm avere | vfxt.py  | Azure Portal |
 | --- | --- | --- | --- |
-| Clusterknooppunten toevoegen | nee | ja | nee |
-| Clusterknooppunten verwijderen | ja | nee | nee |
-| Stoppen van een clusterknooppunt | Ja (ook services opnieuw starten of opnieuw opstarten) | nee | een VM-knooppunt van de portal ommige wordt geïnterpreteerd als een knooppuntfout |
-| Start een gestopte knooppunt | nee | nee | ja |
-| Een knooppunt één cluster vernietigen | nee | nee | ja |
-| Opnieuw opstarten van het cluster |  |  |  |
-| Afgesloten of het cluster veilig stoppen | ja | ja | nee |
-| Vernietig het cluster  | nee | ja | Ja, maar de integriteit van gegevens kan niet worden gegarandeerd |
+| Cluster knooppunten toevoegen | nee | ja | nee |
+| Cluster knooppunten verwijderen | ja | nee | nee |
+| Een cluster knooppunt stoppen | Ja (kan ook services opnieuw starten of opnieuw opstarten) | nee | het uitschakelen van een knooppunt-VM vanuit de portal wordt geïnterpreteerd als een knooppunt fout |
+| Een gestopt knoop punt starten | nee | nee | ja |
+| Eén cluster knooppunt vernietigen | nee | nee | ja |
+| Het cluster opnieuw opstarten |  |  |  |
+| Het cluster veilig afsluiten of stoppen | ja | ja | nee |
+| Het cluster vernietigen  | nee | ja | Ja, maar gegevens integriteit is niet gegarandeerd |
 
-Gedetailleerde instructies voor elke tool zijn hieronder vermeld.
+Hieronder vindt u gedetailleerde instructies voor elk hulp programma.
 
-## <a name="about-stopped-instances-in-azure"></a>Over gestopt-exemplaren in Azure
+## <a name="about-stopped-instances-in-azure"></a>Over gestopte instanties in azure
 
-Wanneer u afgesloten of een Azure-VM te stoppen, stopt compute-kosten, maar u nog steeds moet betalen voor de opslag. Als u een knooppunt vFXT of het cluster volledige vFXT afsluit en u niet van plan bent deze opnieuw te starten, moet u de Azure-portal te verwijderen van de bijbehorende virtuele machines. 
+Wanneer u een virtuele machine van Azure afsluit of stopt, worden er geen reken kosten meer in rekening gebracht, maar u moet wel betalen voor de opslag. Als u een vFXT-knoop punt of het hele vFXT-cluster afsluit en u niet van plan bent om het te starten, moet u de Azure Portal gebruiken om de gerelateerde Vm's te verwijderen. 
 
-In de Azure-portal een *gestopt* knooppunt (dit kan opnieuw worden gestart) wordt de status **gestopt** in de Azure-portal; een *verwijderd* knooppunt wordt de status **gestopt (toewijzing opgeheven)**  en deze niet meer leidt tot kosten voor berekenen of opslaan.
+In de Azure Portal, een *gestopt* knoop punt (dat opnieuw kan worden gestart), wordt de status **gestopt** weer gegeven in de Azure Portal; een *verwijderd* knoop punt geeft aan dat de status is **gestopt (toewijzing** ongedaan gemaakt) en dat er geen reken-of opslag kosten meer in rekening worden gebracht.
 
-Voordat de virtuele machine te verwijderen, ervoor zorgen dat alle gewijzigde gegevens is geschreven in de cache naar het back-end-opslag met behulp van de opties voor Avere het Configuratiescherm of vfxt.py te stoppen of sluit het cluster.
+Voordat u de virtuele machine verwijdert, moet u ervoor zorgen dat alle gewijzigde gegevens vanuit de cache naar een back-end-opslag zijn geschreven met behulp van het configuratie scherm avere of de vfxt.py opties om het cluster te stoppen of af te sluiten.
 
-## <a name="manage-the-cluster-with-avere-control-panel"></a>Het cluster met Avere Configuratiescherm beheren 
+## <a name="manage-the-cluster-with-avere-control-panel"></a>Het cluster beheren met het configuratie scherm avere 
 
-Het Configuratiescherm Avere kan worden gebruikt voor deze taken: 
+Het configuratie scherm avere kan worden gebruikt voor de volgende taken: 
 
-* Stoppen of opnieuw opstarten van afzonderlijke knooppunten
-* Een knooppunt uit het cluster verwijderen
-* Stoppen of opnieuw opstarten van het hele cluster
+* Afzonderlijke knoop punten stoppen of opnieuw opstarten
+* Een knoop punt uit het cluster verwijderen
+* Het hele cluster stoppen of opnieuw opstarten
 
-Configuratiescherm Avere bepaalt de volgorde van de integriteit van gegevens, zodat deze probeert te maken de gewijzigde gegevens schrijven naar de back endopslag voordat een mogelijk destructieve bewerking. Dit maakt het een veiliger optie dan de Avere-portal. 
+In het configuratie scherm van AVERE wordt een prioriteit gegeven voor de gegevens integriteit, zodat de gewijzigde gegevens worden wegge schreven naar de back-end-opslag voordat een mogelijk destructieve bewerking wordt uitgevoerd. Dit maakt het een veiliger optie dan de avere-Portal. 
 
-Avere Configuratiescherm openen via een webbrowser. Volg de instructies in [toegang tot het cluster vFXT](avere-vfxt-cluster-gui.md) als u hulp nodig hebt.
+Open het configuratie scherm van AVERE via een webbrowser. Volg de instructies in [toegang tot het vFXT-cluster](avere-vfxt-cluster-gui.md) als u hulp nodig hebt.
 
-### <a name="manage-nodes-with-avere-control-panel"></a>Beheer knooppunten met Avere-Configuratiescherm
+### <a name="manage-nodes-with-avere-control-panel"></a>Knoop punten beheren met het configuratie scherm avere
 
-De **FXT knooppunten** instellingenpagina bevat besturingselementen voor het beheren van afzonderlijke knooppunten.
+De pagina instellingen van **FXT-knoop punten** bevat besturings elementen voor het beheren van afzonderlijke knoop punten.
 
-Als u wilt afsluiten, opnieuw opstarten of een knooppunt verwijderen, het knooppunt vinden in de lijst op de **FXT knooppunten** pagina en klik op de knop in de **acties** kolom.
+Als u een knoop punt wilt afsluiten, opnieuw wilt opstarten of verwijderen, gaat u naar het knoop punt in de lijst op de pagina **FXT-knoop punten** en klikt u op de desbetreffende knop in de kolom **acties** .
 
 > [!NOTE] 
-> IP-adressen kunnen verplaatsen tussen clusterknooppunten wanneer het aantal actieve knooppunten wordt gewijzigd.
+> IP-adressen kunnen worden verplaatst tussen cluster knooppunten wanneer het aantal actieve knoop punten verandert.
 
-Lezen [Cluster > knooppunten FXT](<https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_fxt_nodes.html#gui-fxt-nodes>) in de Avere cluster instellingen guide voor meer informatie.
+Lees de [FXT-knoop punten van cluster >](<https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_fxt_nodes.html#gui-fxt-nodes>) in de avere-hand leiding voor cluster instellingen voor meer informatie.
 
-### <a name="stop-or-reboot-the-cluster-with-avere-control-panel"></a>Stoppen of opnieuw opstarten van het cluster met Avere-Configuratiescherm
+### <a name="stop-or-reboot-the-cluster-with-avere-control-panel"></a>Het cluster stoppen of opnieuw opstarten met het configuratie scherm van AVERE
 
-De **systeemonderhoud** instellingenpagina bevat opdrachten voor het clusterservices opnieuw te starten, opnieuw opstarten van het cluster of het cluster veilig ommige. Lezen [beheer > systeemonderhoud](<https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_system_maintenance.html#gui-system-maintenance>) (in de Avere cluster instellingen guide) voor meer informatie.
+De pagina instellingen voor **systeem onderhoud** bevat opdrachten voor het opnieuw starten van Cluster Services, het opnieuw opstarten van het cluster of het veilig uitschakelen van het cluster. Lees [beheer > systeem onderhoud](<https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_system_maintenance.html#gui-system-maintenance>) (in de hand leiding voor avere-cluster instellingen) voor meer informatie.
 
-Wanneer een cluster wordt afgesloten, het boeken van statusberichten naar de **Dashboard** tabblad in eerste instantie. Na enkele ogenblikken wordt reageert de sessie Avere Configuratiescherm, wat betekent dat het cluster is afgesloten.
+Wanneer een cluster wordt afgesloten, worden in eerste instantie status berichten naar het tabblad **dash board** gepost. Na enkele ogen blikken reageert de sessie avere Control Panel niet meer, wat betekent dat het cluster is afgesloten.
 
-## <a name="manage-the-cluster-with-vfxtpy"></a>Het cluster met vfxt.py beheren
+## <a name="manage-the-cluster-with-vfxtpy"></a>Het cluster beheren met vfxt.py
 
-vfxt.PY is een opdrachtregelprogramma voor het cluster maken en beheren. 
+vfxt.py is een opdracht regel programma voor het maken en beheren van clusters. 
 
-vfxt.PY is vooraf geïnstalleerd in het cluster netwerkcontroller-VM. Als u installeren op een ander systeem wilt, Raadpleeg de documentatie bij <https://github.com/Azure/AvereSDK>.
+vfxt.py is vooraf geïnstalleerd op de cluster controller-VM. Als u het op een ander systeem wilt installeren, raadpleegt u de documentatie op <https://github.com/Azure/AvereSDK>.
 
-Het script vfxt.py kan worden gebruikt voor deze beheertaken cluster:
+Het vfxt.py-script kan worden gebruikt voor deze cluster beheer taken:
 
-* Nieuwe knooppunten toevoegen aan een cluster
-* Stoppen en starten van een cluster  
+* Nieuwe knoop punten toevoegen aan een cluster
+* Een cluster stoppen of starten  
 * Een cluster vernietigen
 
-Zoals Avere het Configuratiescherm probeer vfxt.py bewerkingen om te controleren of de gewijzigde gegevens permanent worden opgeslagen op opslag voor back-end voordat u afsluit of vernietigen van het cluster of het knooppunt. Dit maakt het een veiliger optie dan de Avere-portal.
+Net als avere configuratie scherm, proberen vfxt.py bewerkingen ervoor te zorgen dat gewijzigde gegevens permanent worden opgeslagen op de back-end-opslag voordat het cluster of het knoop punt wordt afgesloten of vernietigd. Dit maakt het een veiliger optie dan de avere-Portal.
 
-Een volledige vfxt.py (Engelstalig) is beschikbaar op GitHub: [Cloud-Clusterbeheer met vfxt.py](https://github.com/azure/averesdk/blob/master/docs/README.md)
+Er is een volledige vfxt.py-gebruiks handleiding beschikbaar op GitHub: [Cloud cluster Management met vfxt.py](https://github.com/azure/averesdk/blob/master/docs/README.md)
 
-### <a name="add-cluster-nodes-with-vfxtpy"></a>Clusterknooppunten met vfxt.py toevoegen
+### <a name="add-cluster-nodes-with-vfxtpy"></a>Cluster knooppunten toevoegen met vfxt.py
 
-Een voorbeeldscript van de opdracht voor het toevoegen van knooppunten van het cluster is opgenomen op de clustercontroller. Zoek ``./add-nodes`` op de domeincontroller en open het in een editor naar deze aanpassen met de clustergegevens van uw. 
+Een voor beeld van een opdracht script voor het toevoegen van cluster knooppunten is opgenomen op de cluster controller. Zoek ``./add-nodes`` op de controller en open het in een editor om deze aan te passen aan uw cluster gegevens. 
 
-Het cluster moet worden uitgevoerd voor het gebruik van deze opdracht. 
+Het cluster moet worden uitgevoerd om deze opdracht te kunnen gebruiken. 
 
-De volgende waarden opgeven: 
+Geef de volgende waarden op: 
 
-* Resourcegroepnaam voor het cluster, en ook voor netwerk- en opslagresources als ze zijn niet gelijk zijn aan het cluster
-* Locatie van cluster
-* Clusternetwerk en subnet 
-* Toegang van de clusterfunctie-knooppunt (Gebruik de ingebouwde rol [Avere Operator](../role-based-access-control/built-in-roles.md#avere-operator))
-* Cluster-IP-adresbeheer en beheerderswachtwoord 
-* Aantal knooppunten om toe te voegen (1, 2 of 3)
-* Waarden uit de knooppunt exemplaar type en de cache-grootte 
+* De naam van de resource groep voor het cluster en ook voor netwerk-en opslag bronnen als deze niet hetzelfde zijn als het cluster
+* Cluster locatie
+* Cluster netwerk en subnet 
+* Access-rol cluster knooppunt (gebruik de ingebouwde rol [avere operator](../role-based-access-control/built-in-roles.md#avere-operator))
+* IP-adres en beheerders wachtwoord voor cluster beheer 
+* Aantal toe te voegen knoop punten (1, 2 of 3)
+* Type knooppunt exemplaar en waarden voor cache grootte 
 
-Als u het model niet gebruikt, moet u een opdracht als de volgende, met inbegrip van alle van de hierboven beschreven gegevens opgeven. 
+Als u het prototype niet gebruikt, moet u een opdracht als volgt maken, inclusief alle hierboven beschreven informatie. 
 
 ```bash
    vfxt.py --cloud-type azure --from-environment \
@@ -117,96 +117,96 @@ Als u het model niet gebruikt, moet u een opdracht als de volgende, met inbegrip
    --log ~/vfxt.log
 ```
 
-Lees voor meer informatie, [knooppunten toevoegen aan een cluster](https://github.com/Azure/AvereSDK/blob/master/docs/using_vfxt_py.md#add-nodes-to-a-cluster) in de vfxt.py (Engelstalig).
+Lees voor meer informatie [knoop punten toevoegen aan een cluster](https://github.com/Azure/AvereSDK/blob/master/docs/using_vfxt_py.md#add-nodes-to-a-cluster) in de hand leiding voor vfxt.py-gebruik.
 
-### <a name="stop-a-cluster-with-vfxtpy"></a>Een cluster met vfxt.py stoppen
+### <a name="stop-a-cluster-with-vfxtpy"></a>Een cluster stoppen met vfxt.py
 
 ```bash
 vfxt.py --cloud-type azure --from-environment --stop --resource-group GROUPNAME --admin-password PASSWORD --management-address ADMIN_IP --location LOCATION --azure-network NETWORK --azure-subnet SUBNET
 ```
 
-### <a name="start-a-stopped-cluster-with-vfxtpy"></a>Een gestopte cluster met vfxt.py starten
+### <a name="start-a-stopped-cluster-with-vfxtpy"></a>Een gestopt cluster starten met vfxt.py
 
 ```bash
 vfxt.py --cloud-type azure --from-environment --start --resource-group GROUPNAME --admin-password PASSWORD --management-address ADMIN_IP --location LOCATION --azure-network NETWORK --azure-subnet SUBNET --instances INSTANCE1_ID INSTANCE2_ID INSTANCE3_ID ...
 ```    
 
-Omdat het cluster is gestopt, moet u de exemplaar-id's om op te geven van de clusterknooppunten doorgeven. Lezen [op te geven welke cluster wijzigen](https://github.com/Azure/AvereSDK/blob/master/docs/using_vfxt_py.md#specifying-which-cluster-to-modify) in de vfxt.py (Engelstalig) voor meer informatie.
+Omdat het cluster is gestopt, moet u exemplaar-id's door geven om de cluster knooppunten op te geven. Lees het [cluster dat u wilt wijzigen](https://github.com/Azure/AvereSDK/blob/master/docs/using_vfxt_py.md#specifying-which-cluster-to-modify) in de hand leiding voor vfxt.py-gebruik voor meer informatie.
 
-### <a name="destroy-a-cluster-with-vfxtpy"></a>Vernietig een cluster met vfxt.py
+### <a name="destroy-a-cluster-with-vfxtpy"></a>Een cluster met vfxt.py vernietigen
 
 ```bash
 vfxt.py --cloud-type azure --from-environment --destroy --resource-group GROUPNAME --admin-password PASSWORD --management-address ADMIN_IP --location LOCATION --azure-network NETWORK --azure-subnet SUBNET --management-address ADMIN_IP
 ```
 
-De optie ``--quick-destroy`` kan worden gebruikt als u niet wilt schrijven gewijzigde gegevens uit de cache van het cluster.
+De optie ``--quick-destroy`` kan worden gebruikt als u geen gewijzigde gegevens van de cluster cache wilt schrijven.
 
-Lees de [vfxt.py (Engelstalig)](<https://github.com/Azure/AvereSDK/blob/master/docs/README.md>) voor meer informatie.  
+Lees de [hand leiding voor vfxt.py-gebruik](<https://github.com/Azure/AvereSDK/blob/master/docs/README.md>) voor aanvullende informatie.  
 
-## <a name="manage-cluster-vms-from-the-azure-portal"></a>Cluster-VM's beheren vanuit Azure portal 
+## <a name="manage-cluster-vms-from-the-azure-portal"></a>Cluster-Vm's beheren vanuit de Azure Portal 
 
-De Azure-portal kan worden gebruikt om het cluster virtuele machines afzonderlijk vernietigen, maar de integriteit van gegevens kan niet worden gegarandeerd als het cluster geen duidelijke eerst wordt afgesloten. 
+De Azure Portal kan worden gebruikt om cluster-Vm's afzonderlijk te vernietigen, maar de gegevens integriteit wordt niet gegarandeerd als het cluster eerst niet volledig wordt afgesloten. 
 
-De Azure-portal kan worden gebruikt voor deze beheertaken cluster: 
+De Azure Portal kan worden gebruikt voor deze cluster beheer taken: 
 
-* Start een gestopte vFXT-knooppunt
-* Stoppen van een afzonderlijke vFXT-knooppunt (in het cluster wordt dit weergegeven als een knooppuntfout.)
-* Vernietig een cluster vFXT *als* hoeft u niet om ervoor te zorgen dat de gewijzigde gegevens in de cache van het cluster is geschreven naar de filer core
-* VFXT knooppunten en andere resources van het cluster permanent verwijderd nadat ze zijn afgesloten veilig
+* Een gestopt vFXT-knoop punt starten
+* Een afzonderlijk vFXT-knoop punt stoppen (het cluster interpreteert dit als een knooppunt fout)
+* Een vFXT-cluster vernietigen *als* u niet meer nodig hebt om ervoor te zorgen dat gewijzigde gegevens in de cluster cache worden geschreven naar de kern bestand
+* VFXT-knoop punten en andere cluster bronnen permanent verwijderen nadat ze veilig zijn afgesloten
 
-### <a name="restart-vfxt-instances-from-the-azure-portal"></a>VFXT exemplaren vanuit Azure portal opnieuw starten
+### <a name="restart-vfxt-instances-from-the-azure-portal"></a>VFXT-exemplaren van de Azure Portal opnieuw starten
 
-Als u een gestopte knooppunt opnieuw opstarten wilt, moet u de Azure-portal. Selecteer **virtuele machines** in het menu links en klik vervolgens op de naam van de virtuele machine in de lijst om de overzichtspagina te openen.
+Als u een gestopt knoop punt opnieuw moet opstarten, moet u de Azure Portal gebruiken. Selecteer **virtuele machines** in het menu links en klik vervolgens op de naam van de virtuele machine in de lijst om de pagina overzicht te openen.
 
-Klik op de **Start** knop aan de bovenkant van de overzichtspagina om opnieuw te activeren van de virtuele machine.
+Klik boven aan de pagina overzicht op de knop **Start** om de virtuele machine opnieuw te activeren.
 
-![Azure portal scherm met de optie voor een gestopte virtuele machine starten](media/avere-vfxt-start-stopped-incurring-annot.png)
+![Azure Portal scherm met de optie om een gestopt VM te starten](media/avere-vfxt-start-stopped-incurring-annot.png)
 
-### <a name="delete-cluster-nodes"></a>Clusterknooppunten verwijderen
+### <a name="delete-cluster-nodes"></a>Cluster knooppunten verwijderen
 
-Als u wilt verwijderen van een knooppunt uit het cluster vFXT, maar blijven de rest van het cluster, moet u eerst [het knooppunt verwijderen uit het cluster](#manage-nodes-with-avere-control-panel) met het Avere van het Configuratiescherm.
+Als u één knoop punt uit het vFXT-cluster wilt verwijderen maar de rest van het cluster wilt houden, moet u eerst [het knoop punt verwijderen uit het cluster](#manage-nodes-with-avere-control-panel) met behulp van het configuratie scherm avere.
 
 > [!CAUTION]
-> Als u een knooppunt verwijdert zonder deze eerst te verwijderen uit het cluster vFXT, is het mogelijk dat gegevens verloren gaan.
+> Als u een knoop punt verwijdert zonder het eerst te verwijderen uit het vFXT-cluster, kunnen gegevens verloren gaan.
 
-Een of meer exemplaren die worden gebruikt als vFXT knooppunt permanent vernietigen, gebruikt de Azure portal.
-Selecteer **virtuele machines** in het menu links en klik vervolgens op de naam van de virtuele machine in de lijst om de overzichtspagina te openen.
+Als u een of meer instanties die als vFXT-knoop punt worden gebruikt permanent wilt vernietigen, gebruikt u de Azure Portal.
+Selecteer **virtuele machines** in het menu links en klik vervolgens op de naam van de virtuele machine in de lijst om de pagina overzicht te openen.
 
-Klik op de **verwijderen** knop aan de bovenkant van de overzichtspagina van de virtuele machine permanent vernietigen.
+Klik op de knop **verwijderen** boven aan de pagina overzicht om de virtuele machine permanent te vernietigen.
 
-U kunt deze methode gebruiken om clusterknooppunten permanent te verwijderen nadat ze zijn afgesloten veilig. 
+U kunt deze methode gebruiken om cluster knooppunten permanent te verwijderen nadat ze veilig zijn afgesloten. 
 
-### <a name="destroy-the-cluster-from-the-azure-portal"></a>Vernietig het cluster vanuit Azure portal
+### <a name="destroy-the-cluster-from-the-azure-portal"></a>Het cluster uit de Azure Portal vernietigen
 
 > [!NOTE] 
-> Als u eventuele resterende clientwijzigingen in de cache worden geschreven naar de back-end-opslag wilt, gebruikt u de vfxt.py `--destroy` optie of gebruik Avere in het Configuratiescherm op het cluster correct afgesloten voordat u verwijdert de exemplaren van de knooppunten in de Azure-portal.
+> Als u wilt dat eventuele resterende client wijzigingen in de cache naar een back-end-opslag worden geschreven, gebruikt u de optie vfxt.py `--destroy` of gebruikt u het configuratie scherm van AVERE om het cluster op de juiste wijze af te sluiten voordat u de knooppunt exemplaren in de Azure Portal verwijdert.
 
-U kunt Knooppuntexemplaren permanent vernietigen door ze te verwijderen in Azure portal. U kunt ze één voor één zoals is beschreven hierboven, of u kunt verwijderen de **virtuele Machines** pagina alle van de cluster-VM's zoeken, selecteert u deze met de selectievakjes in en klikt u op de **verwijderen** knop om ze te verwijderen in alle een actie.
+U kunt knooppunt instanties permanent vernietigen door ze te verwijderen in de Azure Portal. U kunt ze een voor een verwijderen zoals hierboven wordt beschreven, of u kunt de pagina **virtual machines** gebruiken om alle cluster-vm's te zoeken. Selecteer deze met de selectie vakjes en klik op de knop **verwijderen** om ze allemaal in één actie te verwijderen.
 
-![Lijst met virtuele machines in de portal, gefilterd op de term 'cluster', waarvan er drie van de vier gecontroleerd en is gemarkeerd](media/avere-vfxt-multi-vm-delete.png)
+![Lijst met virtuele machines in de portal, gefilterd op de term ' cluster ', waarbij drie van de vier ingeschakelde en gemarkeerde](media/avere-vfxt-multi-vm-delete.png)
 
-### <a name="delete-additional-cluster-resources-from-the-azure-portal"></a>Aanvullende clusterbronnen verwijderen uit de Azure portal
+### <a name="delete-additional-cluster-resources-from-the-azure-portal"></a>Extra cluster bronnen verwijderen uit de Azure Portal
 
-Als u aanvullende bronnen voor het cluster vFXT hebt gemaakt, is het raadzaam om ze als onderdeel van het cluster af kwijtraken te verwijderen. Elementen die gegevens die u nodig hebt, of alle items die worden gedeeld met andere projecten bevatten niet vernietigen.
+Als u aanvullende bronnen voor het vFXT-cluster hebt gemaakt, wilt u deze mogelijk verwijderen als onderdeel van het afbreken van het cluster. Vernietig geen elementen die gegevens bevatten die u nodig hebt, of items die worden gedeeld met andere projecten.
 
-Naast het verwijderen van de clusterknooppunten, houd rekening met het verwijderen van deze onderdelen: 
+Naast het verwijderen van de cluster knooppunten, kunt u deze onderdelen verwijderen: 
 
-* Het cluster netwerkcontroller-VM
-* Gegevensschijven die zijn gekoppeld aan de clusterknooppunten
-* Netwerkinterfaces en openbare IP-adressen die zijn gekoppeld aan de clusteronderdelen
+* De cluster controller-VM
+* Gegevens schijven die zijn gekoppeld aan cluster knooppunten
+* Netwerk interfaces en open bare Ip's die zijn gekoppeld aan cluster onderdelen
 * Virtuele netwerken
-* Storage-accounts (**alleen** als ze geen belangrijke gegevens bevatten)
+* Opslag accounts (**alleen** als ze geen belang rijke gegevens bevatten)
 * Beschikbaarheidsset 
 
-![Azure-portal 'alle resources' lijst met resources die zijn gemaakt voor een testcluster](media/avere-vfxt-all-resources-list.png)
+![Azure Portal lijst ' alle resources ' toont de resources die zijn gemaakt voor een test cluster](media/avere-vfxt-all-resources-list.png)
 
-### <a name="delete-a-clusters-resource-group-from-the-azure-portal"></a>Resourcegroep van een cluster verwijderen uit de Azure portal
+### <a name="delete-a-clusters-resource-group-from-the-azure-portal"></a>De resource groep van een cluster verwijderen uit het Azure Portal
 
-Als u een resourcegroep specifiek voor het bevatten van het cluster hebt gemaakt, kunt u alle gerelateerde resources voor het cluster vernietigen door het vernietigen van de resourcegroep. 
+Als u een resource groep speciaal hebt gemaakt voor het maken van het cluster, kunt u alle gerelateerde resources voor het cluster vernietigen door de resource groep te vernietigen. 
 
 > [!Caution] 
-> De resourcegroep alleen verwijderen als u er zeker van zijn dat er niets van waarde bevindt zich in de groep. Bijvoorbeeld, moet u ervoor dat u hebt alle benodigde gegevens verplaatst van een storage-containers binnen de resourcegroep.  
+> Vernietig alleen de resource groep als u zeker weet dat niets in de groep is opgeslagen. Zorg er bijvoorbeeld voor dat u de benodigde gegevens hebt verplaatst van opslag containers in de resource groep.  
 
-Als u wilt een resourcegroep verwijderen, klikt u op **resourcegroepen** in het menu links van de portal en filter de lijst met resourcegroepen te vinden die u hebt gemaakt voor het cluster vFXT. Selecteer de resourcegroep en klik op de drie punten aan de rechterkant van het paneel. Kies **Resourcegroep verwijderen**. De portal wordt u gevraagd om te bevestigen van de verwijdering niet ongedaan worden gemaakt is.  
+Als u een resource groep wilt verwijderen, klikt u op **resource groepen** in het menu links van de portal en filtert u de lijst met resource groepen om het account te zoeken dat u hebt gemaakt voor het vFXT-cluster. Selecteer de resource groep en klik op de drie puntjes aan de rechter kant van het paneel. Kies **Resourcegroep verwijderen**. U wordt gevraagd om het verwijderen te bevestigen. Dit is onomkeerbaar.  
 
-![Resourcegroep met de actie "Resourcegroep verwijderen"](media/avere-vfxt-delete-resource-group.png)
+![Resource groep met de actie ' resource groep verwijderen '](media/avere-vfxt-delete-resource-group.png)

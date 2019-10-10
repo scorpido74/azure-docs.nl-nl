@@ -1,19 +1,19 @@
 ---
-title: Een beleid voor niet-conforme resources maken met Azure CLI
+title: Beleid maken om resources te controleren met Azure CLI
 description: Gebruik Azure CLI om een Azure Policy-toewijzing te maken om niet-conforme resources te identificeren.
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 01/23/2019
 ms.topic: quickstart
 ms.service: azure-policy
-ms.openlocfilehash: 06b35bc9a0222247df5b4ab5c513df504cd45cac
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: a7e65e304039c266f92f8068b796323197058cc1
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71980861"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72255953"
 ---
-# <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-with-azure-cli"></a>Quickstart: Een beleidstoewijzing maken om niet-conforme resources met Azure CLI te identificeren
+# <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-with-azure-cli"></a>Snelstartgids: een beleids toewijzing maken om niet-compatibele resources te identificeren met Azure CLI
 
 De eerste stap in het begrijpen van naleving in Azure is het identificeren van de status van uw resources.
 In deze quickstart gaat u een beleidstoewijzing maken voor het identificeren van virtuele machines die geen beheerde schijven gebruiken.

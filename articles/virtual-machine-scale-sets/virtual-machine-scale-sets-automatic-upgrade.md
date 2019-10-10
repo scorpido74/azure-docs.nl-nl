@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/16/2019
 ms.author: vashan
-ms.openlocfilehash: 9825ef1426a1c93f94b502c396fbaab1f86a924e
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: 95a313b3c6995d55b86561c685641b447edae127
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71263491"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72240928"
 ---
 # <a name="azure-virtual-machine-scale-set-automatic-os-image-upgrades"></a>Upgrade van Azure virtual machine-schaal sets automatische installatie kopieën van besturings systemen
 
@@ -30,7 +30,7 @@ Automatische upgrade van het besturings systeem heeft de volgende kenmerken:
 
 - Na de configuratie wordt de meest recente installatie kopie van het besturings systeem, gepubliceerd door installatie kopieën van uitgevers, automatisch toegepast op de schaalset zonder tussen komst van de gebruiker.
 - Voert een upgrade uit van batches van instanties wanneer een nieuwe platform installatie kopie wordt gepubliceerd door de uitgever.
-- Kan worden geïntegreerd met de status tests van toepassingen en de uitbrei ding van de [toepassings status](virtual-machine-scale-sets-health-extension.md).
+- Kan worden geïntegreerd met de status tests van toepassingen en de [uitbrei ding van de toepassings status](virtual-machine-scale-sets-health-extension.md).
 - Werkt voor alle VM-grootten en voor installatie kopieën van Windows en Linux platform.
 - U kunt op elk gewenst moment automatische upgrades afmelden (OS-upgrades kunnen ook hand matig worden gestart).
 - De besturingssysteem schijf van een virtuele machine wordt vervangen door de nieuwe besturingssysteem schijf die is gemaakt met de nieuwste versie van de installatie kopie. Geconfigureerde extensies en aangepaste gegevens scripts worden uitgevoerd, terwijl persistente gegevens schijven behouden blijven.
@@ -60,10 +60,10 @@ De volgende Sku's worden momenteel ondersteund (en worden regel matig toegevoegd
 |-------------------------|---------------|--------------------|
 | Canonical               | UbuntuServer  | 16.04-LTS          |
 | Canonical               | UbuntuServer  | 18.04-LTS          |
-| Rogue-Wave (open Logic)  | CentOS        | 7.5                |
+| Rogue-Wave (open Logic)  | CentOS        | 7,5                |
 | CoreOS                  | CoreOS        | Stabiel             |
 | Microsoft Corporation   | WindowsServer | 2012-R2-Datacenter |
-| Microsoft Corporation   | WindowsServer | 2016-Datacenter    |
+| Microsoft Corporation   | WindowsServer | 2016-Data Center    |
 | Microsoft Corporation   | WindowsServer | 2016-Data Center-Smalldisk |
 | Microsoft Corporation   | WindowsServer | 2016-Data Center-met-containers |
 | Microsoft Corporation   | WindowsServer | 2019-Data Center |
@@ -75,7 +75,7 @@ De volgende Sku's worden momenteel ondersteund (en worden regel matig toegevoegd
 ## <a name="requirements-for-configuring-automatic-os-image-upgrade"></a>Vereisten voor het configureren van automatische upgrade van de installatie van een besturings systeem
 
 - De eigenschap *Version* van de platform installatie kopie moet worden ingesteld op *meest recente*.
-- Gebruik de status tests van de toepassing of de uitbrei ding van de [toepassings status](virtual-machine-scale-sets-health-extension.md) voor niet-service Fabric schaal sets.
+- Gebruik de status tests van de toepassing of de [uitbrei ding van de toepassings status](virtual-machine-scale-sets-health-extension.md) voor niet-service Fabric schaal sets.
 - Gebruik Compute API versie 2018-10-01 of hoger.
 - Zorg ervoor dat de opgegeven externe resources in het model voor de schaalset beschikbaar en bijgewerkt zijn. Voor beelden zijn een SAS-URI voor de Boots trap ping in eigenschappen van VM-extensies, Payload in het opslag account, verwijzing naar geheimen in het model en meer.
 - Voor schaal sets met virtuele Windows-machines, beginnend met Compute API versie 2019-03-01, moet de eigenschap *virtualMachineProfile. osProfile. windowsConfiguration. enableAutomaticUpdates* worden ingesteld op *False* in het model voor schaal sets inhoudsindexdefinitie. Met de bovenstaande eigenschap kunt u in-VM-upgrades gebruiken waarbij ' Windows Update ' patches van besturings systemen toepast zonder de besturingssysteem schijf te vervangen. Als automatische installatie kopieën van besturings systemen zijn ingeschakeld voor uw schaalset, is een extra update via "Windows Update" niet vereist.
@@ -112,14 +112,14 @@ PUT or PATCH on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/p
 ```
 
 ### <a name="azure-powershell"></a>Azure PowerShell
-Gebruik de cmdlet [Update-AzVmss](/powershell/module/az.compute/update-azvmss) om de upgrade geschiedenis van het besturings systeem voor uw schaalset te controleren. In het volgende voor beeld worden automatische upgrades ingesteld voor de schaalset met de naam *myScaleSet* in de resource groep met de naam *myResourceGroup*:
+Gebruik de cmdlet [Update-AzVmss](/powershell/module/az.compute/update-azvmss) om automatische upgrades van de besturingssysteem installatie kopie voor uw schaalset te configureren. In het volgende voor beeld worden automatische upgrades ingesteld voor de schaalset met de naam *myScaleSet* in de resource groep met de naam *myResourceGroup*:
 
 ```azurepowershell-interactive
 Update-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -AutomaticOSUpgrade $true
 ```
 
 ### <a name="azure-cli-20"></a>Azure CLI 2.0
-Gebruik [AZ vmss update](/cli/azure/vmss#az-vmss-update) om de upgrade geschiedenis van het besturings systeem voor uw schaalset te controleren. Gebruik Azure CLI 2.0.47 of hoger. In het volgende voor beeld worden automatische upgrades ingesteld voor de schaalset met de naam *myScaleSet* in de resource groep met de naam *myResourceGroup*:
+Gebruik [AZ vmss update](/cli/azure/vmss#az-vmss-update) om automatische upgrades van besturings systemen te configureren voor uw schaalset. Gebruik Azure CLI 2.0.47 of hoger. In het volgende voor beeld worden automatische upgrades ingesteld voor de schaalset met de naam *myScaleSet* in de resource groep met de naam *myResourceGroup*:
 
 ```azurecli-interactive
 az vmss update --name myScaleSet --resource-group myResourceGroup --set UpgradePolicy.AutomaticOSUpgradePolicy.EnableAutomaticOSUpgrade=true

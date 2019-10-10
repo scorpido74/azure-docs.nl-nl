@@ -5,13 +5,13 @@ author: ekpgh
 ms.service: hpc-cache
 ms.topic: overview
 ms.date: 09/24/2019
-ms.author: v-erkell
-ms.openlocfilehash: 093116a8def69e3f63af9aeb963abc60841cbe85
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.author: rohogue
+ms.openlocfilehash: bfbbcd2d7d1bb44e260bedda54ca38ed6860ea67
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71257017"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72254479"
 ---
 # <a name="what-is-azure-hpc-cache-preview"></a>Wat is Azure HPC Cache? (Preview)
 
@@ -19,7 +19,7 @@ De Azure HPC-cache versnelt de toegang tot uw gegevens voor HPC-taken (High-Perf
 
 De Azure HPC-cache is eenvoudig te starten en te controleren vanaf de Azure Portal. Bestaande NFS-opslag of nieuwe BLOB-containers kunnen deel uitmaken van de geaggregeerde naam ruimte, waardoor client toegang eenvoudig kan worden gemaakt, zelfs als u het back-end-opslag doel wijzigt.
 
-## <a name="use-cases"></a>Gebruiksvoorbeelden
+## <a name="use-cases"></a>Use cases
 
 Azure HPC cache verbetert de productiviteit die het beste is voor werk stromen als deze:
 
@@ -45,14 +45,14 @@ De Azure HPC-cache kan ook worden gebruikt om de efficiëntie te verbeteren van 
 
 Een implementatie van een Azure HPC-cache kan bijdragen aan het versnellen van kwantitatieve analyse berekeningen, workloads voor risico analyse en Monte Carlo-simulaties om financiële diensten bedrijven beter inzicht te geven in het nemen van strategische beslissingen.
 
-## <a name="region-availability"></a>Beschikbaarheid in regio’s
+## <a name="region-availability"></a>Regionale beschikbaarheid
 
 De Azure HPC-cache is beschikbaar in de volgende Azure-regio's:
 
-* East US
+* US - oost
 * US - oost 2
 * Europa - noord
-* Europa -west
+* Europa - west
 * Azië - zuidoost
 * US - west 2
 
