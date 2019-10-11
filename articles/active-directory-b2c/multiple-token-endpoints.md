@@ -87,7 +87,7 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-an
 In deze sectie werkt u de code bij om aan te geven dat beide eind punten van de token Uitgever geldig zijn.
 
 1. Open de oplossing **B2C-WebAPI-dotnet. SLN** in Visual Studio
-1. Open in het project **TaskService** het bestand *TaskService\\App_Start\\**startup.auth.cs*** in uw editor
+1. Open in het project **TaskService** het bestand *TaskService\\App_Start\\**startup.auth.cs**.* in uw editor
 1. Voeg de volgende `using` instructie toe aan het begin van het bestand:
 
     `using System.Collections.Generic;`
@@ -122,7 +122,7 @@ Zoals eerder vermeld, bieden andere OWIN-bibliotheken doorgaans een vergelijk ba
 
 Wanneer beide Uri's nu door de Web-API worden ondersteund, moet u uw webtoepassing nu bijwerken zodat de tokens worden opgehaald uit het b2clogin.com-eind punt.
 
-U kunt bijvoorbeeld de voor beeld-webtoepassing zodanig configureren dat het nieuwe eind punt wordt gebruikt `ida:AadInstance` door de waarde in het bestand *project taskwebapp\\**web. config**van* het **project taskwebapp** -project te wijzigen.
+U kunt bijvoorbeeld de voor beeld-webtoepassing zodanig configureren dat het nieuwe eind punt wordt gebruikt `ida:AadInstance` door de waarde in het bestand *project taskwebapp\\**web. config**.* van het **project taskwebapp** -project te wijzigen.
 
 Wijzig de `ida:AadInstance` waarde in *Web. config* of project taskwebapp zodat deze verwijst naar `{your-b2c-tenant-name}.b2clogin.com` in plaats van. `login.microsoftonline.com`
 

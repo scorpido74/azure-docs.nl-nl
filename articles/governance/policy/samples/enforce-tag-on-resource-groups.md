@@ -1,17 +1,17 @@
 ---
-title: 'Voorbeeld: tag en de waarde ervan afdwingen in brongroepen'
+title: 'Voor beeld: code en waarde voor resource groepen afdwingen'
 description: Deze voorbeeldbeleidsdefinitie vereist een tag en waarde in een brongroep.
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/31/2019
 ms.author: dacoulte
-ms.openlocfilehash: 00c94aa6077c8a8599b31e9ab37f925fdfebefb0
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 5f4af5ee88ad491e7864e82afc337801e47f2204
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71977172"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72255772"
 ---
 # <a name="sample---enforce-tag-and-its-value-on-resource-groups"></a>Voorbeeld: tag en de waarde ervan afdwingen in brongroepen
 
@@ -21,7 +21,7 @@ U kunt dit voorbeeldbeleid implementeren met behulp van:
 
 - [Azure Portal](#azure-portal)
 - [Azure PowerShell](#azure-powershell)
-- [Azure-CLI](#azure-cli)
+- [Azure CLI](#azure-cli)
 - [REST API](#rest-api)
 
 [!INCLUDE [quickstarts-free-trial-note](../../../../includes/quickstarts-free-trial-note.md)]
@@ -49,7 +49,7 @@ De JSON definieert de beleidsparameters, zoals gebruikt door Azure CLI en Azure 
 
 [!code-json[parameters](../../../../policy-templates/samples/ResourceGroup/enforce-resourceGroup-tags/azurepolicy.parameters.json "Policy parameters (JSON)")]
 
-|Name |type |Veld |Description |
+|Naam |Type |Veld |Beschrijving |
 |---|---|---|---|
 |tagName |Tekenreeks |tags |Naam van de tag, bijvoorbeeld costCenter|
 |tagValue |Tekenreeks |tags |Waarde van de tag, bijvoorbeeld headquarter|
@@ -119,7 +119,7 @@ De scripts voor implementeren en verwijderen gebruiken de volgende opdrachten. E
 | [Remove-AzPolicyAssignment](/powershell/module/az.resources/Remove-Azpolicyassignment) | Hiermee verwijdert u een bestaande Azure Policy-toewijzing. |
 | [Remove-AzPolicyDefinition](/powershell/module/az.resources/Remove-Azpolicydefinition) | Hiermee verwijdert u een bestaande Azure Policy-definitie. |
 
-## <a name="azure-cli"></a>Azure-CLI
+## <a name="azure-cli"></a>Azure CLI
 
 [!INCLUDE [sample-cli-install](../../../../includes/sample-cli-install.md)]
 
@@ -166,7 +166,7 @@ Er zijn verschillende hulpprogramma's die u kunt gebruiken om te communiceren me
 
 ## <a name="rest-api"></a>REST-API
 
-### <a name="deploy-with-rest-api"></a>Implementeren met REST-API
+### <a name="deploy-with-rest-api"></a>Implementeren met REST API
 
 - Maak de beleidsdefinitie (abonnementsbereik). Gebruik de [beleidsdefinitie](#policy-definition) geschreven in JSON voor de body van de aanvraag.
 

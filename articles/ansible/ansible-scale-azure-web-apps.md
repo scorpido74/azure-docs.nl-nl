@@ -1,6 +1,6 @@
 ---
-title: Zelfstudie - apps in Azure App Service met behulp van Ansible schaal | Microsoft Docs
-description: Meer informatie over het schalen van een app in Azure App Service
+title: 'Zelf studie: apps schalen in Azure App Service met behulp van Ansible'
+description: Meer informatie over het opschalen van een app in Azure App Service
 keywords: ansible, azure, devops, bash, playbook, Azure App Service, web-app, schalen, Java
 ms.topic: tutorial
 ms.service: ansible
@@ -8,14 +8,14 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: d63708cd87afa426f2712da6d0fcb11c84590798
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 0adcddb8afa4f0e3d0b9288f351dae7d77922612
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65230957"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72241493"
 ---
-# <a name="tutorial-scale-apps-in-azure-app-service-using-ansible"></a>Zelfstudie: Apps schalen in Azure App Service met Ansible
+# <a name="tutorial-scale-apps-in-azure-app-service-using-ansible"></a>Zelf studie: apps schalen in Azure App Service met behulp van Ansible
 
 [!INCLUDE [ansible-27-note.md](../../includes/ansible-27-note.md)]
 
@@ -26,22 +26,22 @@ ms.locfileid: "65230957"
 > [!div class="checklist"]
 >
 > * Gegevens van een bestaand App Service-plan ophalen
-> * De App Service-plan naar S2 met drie workers opschalen
+> * Het App Service plan omhoog schalen naar S2 met drie werk rollen
 
 ## <a name="prerequisites"></a>Vereisten
 
 [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)]
-- **Azure App Service-app** : als u een Azure App Service-app niet hebt [configureren van een app in Azure App Service met behulp van Ansible](ansible-create-configure-azure-web-apps.md).
+- **Azure app service-app** : als u geen Azure app service app hebt, [configureert u een app in azure app service met behulp van Ansible](ansible-create-configure-azure-web-apps.md).
 
 ## <a name="scale-up-an-app"></a>Een app omhoog schalen
 
-Er zijn twee werkstromen voor het schalen van: *omhoog schalen* en *uitschalen*.
+Er zijn twee werk stromen voor schalen: *Omhoog schalen* en *uitschalen*.
 
-**Omhoog schalen:** Betekent om omhoog te schalen om te verkrijgen van andere bronnen. Deze bronnen omvatten CPU, geheugen, schijfruimte, VM's en meer. U Schalen een app omhoog door de prijscategorie van de App Service-plan waartoe de app behoort te wijzigen. 
-**Uitschalen:** Als u wilt schalen betekent dat het aantal VM-exemplaren waarop uw app wordt uitgevoerd te verhogen. Afhankelijk van uw App Service-plan prijscategorie, kunt u uitschalen naar maximaal 20 exemplaren. [Automatisch schalen](/azure/azure-monitor/platform/autoscale-get-started) kunt u schalen exemplaren automatisch op basis van vooraf gedefinieerde regels en schema's.
+**Omhoog schalen:** Zo kunt u meer resources opschalen. Deze resources zijn onder andere CPU, geheugen, schijf ruimte, Vm's en meer. U kunt een app omhoog schalen door de prijs categorie te wijzigen van het App Service plan waartoe de app behoort. 
+**Uitschalen:** Als u wilt uitschalen, kunt u het aantal VM-exemplaren verhogen waarop uw app wordt uitgevoerd. Afhankelijk van de prijs categorie van uw App Service-abonnement kunt u uitschalen tot Maxi maal 20 exemplaren. Automatisch [schalen](/azure/azure-monitor/platform/autoscale-get-started) biedt u de mogelijkheid om het aantal exemplaren te schalen op basis van vooraf gedefinieerde regels en schema's.
 
-De playbook-code in deze sectie definieert de volgende bewerking:
+De Playbook-code in deze sectie definieert de volgende bewerking:
 
 * Gegevens van een bestaand App Service-plan ophalen
 * Het App service-plan bijwerken naar S2 met drie workers
@@ -84,13 +84,13 @@ Sla het volgende playbook op als `webapp_scaleup.yml`:
       var: facts.appserviceplans[0].sku
 ```
 
-Voer de playbook met behulp de `ansible-playbook` opdracht:
+Voer de Playbook uit met behulp van de `ansible-playbook`-opdracht:
 
 ```bash
 ansible-playbook webapp_scaleup.yml
 ```
 
-Nadat de playbook is uitgevoerd, ziet u uitvoer die vergelijkbaar is met de volgende resultaten:
+Nadat de Playbook is uitgevoerd, ziet u uitvoer die vergelijkbaar is met de volgende resultaten:
 
 ```Output
 PLAY [localhost] 

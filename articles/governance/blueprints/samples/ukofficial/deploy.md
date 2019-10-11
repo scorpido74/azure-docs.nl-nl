@@ -1,18 +1,18 @@
 ---
 title: Voor beeld-UK-officiële en UK NHS blauw druk-stappen implementeren
-description: Implementeer de stappen van de voor beelden van de blauw druk voor de UK-officiële en UK-NHS.
+description: Implementeer stappen voor de voor beelden van de blauw druk van het Verenigd Konink rijk en UK NHS, inclusief blauw drukken-artefact parameter Details.
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 06/26/2019
 ms.topic: conceptual
 ms.service: blueprints
-ms.openlocfilehash: e2109c5b524c0b38886327bf4c1ea7087380b40f
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: c2c6089d9c600626a93906e460ef1c662c32cb59
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71978248"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72248282"
 ---
 # <a name="deploy-the-uk-official-and-uk-nhs-blueprint-samples"></a>De NHS blauw drukken-voor beelden van het Verenigd Konink rijk en UK gebruiken
 
@@ -37,10 +37,10 @@ Implementeer eerst het voor beeld van de blauw druk door een nieuwe blauw druk i
 
 1. Voer de _basis beginselen_ van het voor beeld van de blauw druk in:
 
-   - **Naam blauw druk**: Geef een naam op voor uw kopie van het voor beeld van de blauw druk.
-   - **Locatie van definitie**: Gebruik het weglatings teken en selecteer de beheer groep om uw kopie van het voor beeld op te slaan.
+   - **Blauw druk-naam**: Geef een naam op voor uw kopie van het voor beeld van de blauw druk.
+   - **Locatie van definitie**: gebruik het weglatings teken en selecteer de beheer groep om uw kopie van het voor beeld op te slaan.
 
-1. Selecteer het tabblad _artefacten_ boven aan de pagina of **Next: Artefacten @ no__t-0 aan de onderkant van de pagina.
+1. Selecteer het tabblad _artefacten_ boven aan de pagina of **volgende: artefacten** aan de onderkant van de pagina.
 
 1. Bekijk de lijst met artefacten die deel uitmaken van het voor beeld van de blauw druk. Veel van de artefacten hebben para meters die later worden gedefinieerd. Selecteer **concept opslaan** wanneer u klaar bent met het bekijken van het voor beeld van de blauw druk.
 
@@ -66,15 +66,15 @@ Zodra de kopie van het voor beeld van de blauw druk is **gepubliceerd**, kan dez
 
 1. Geef de parameter waarden voor de toewijzing van de blauw druk op:
 
-   - Basics
+   - Basisbeginselen
 
      - **Abonnementen**: Selecteer een of meer abonnementen in de beheer groep waarop u uw kopie van het voor beeld van de blauw druk hebt opgeslagen. Als u meer dan één abonnement selecteert, wordt er een toewijzing gemaakt met behulp van de opgegeven para meters.
-     - **Toewijzings naam**: De naam wordt vooraf ingevuld op basis van de naam van de blauw druk.
+     - **Toewijzings naam**: de naam wordt vooraf ingevuld op basis van de naam van de blauw druk.
        Wijzig indien nodig of sluit af.
      - **Locatie**: Selecteer een regio voor de beheerde identiteit die u wilt maken in. Azure Blueprint gebruikt deze beheerde identiteit om alle artefacten in de toegewezen blauwdruk te implementeren. Zie [Beheerde identiteiten voor Azure-resources](../../../../active-directory/managed-identities-azure-resources/overview.md) voor meer informatie.
      - **Definitie van blauw druk-versie**: Kies een **gepubliceerde** versie van uw kopie van het voor beeld van de blauw druk.
 
-   - Toewijzing vergrendelen
+   - Toewijzing vergren delen
 
      Selecteer de instelling voor het vergren delen van blauw drukken voor uw omgeving. Zie voor meer informatie [Vergrendeling van blauwdrukresources](../../concepts/resource-locking.md).
 
@@ -82,7 +82,7 @@ Zodra de kopie van het voor beeld van de blauw druk is **gepubliceerd**, kan dez
 
      Zorg ervoor dat de standaard optie voor beheerde identiteit door het _systeem wordt toegewezen_ .
 
-   - Artefactparameters
+   - Artefact parameters
 
      De in deze sectie gedefinieerde para meters zijn van toepassing op het artefact waaronder het is gedefinieerd. Deze para meters zijn [dynamische para meters](../../concepts/parameters.md#dynamic-parameters) , omdat ze zijn gedefinieerd tijdens de toewijzing van de blauw druk. Zie [artefact parameters Table](#artifact-parameters-table)voor een volledige lijst of artefact parameters en de bijbehorende beschrijvingen.
 
@@ -95,11 +95,11 @@ Zodra de kopie van het voor beeld van de blauw druk is **gepubliceerd**, kan dez
 
 De volgende tabel geeft een lijst van de para meters van de blauw druk-artefact:
 
-Naam van het artefact|Type artefact|Parameternaam|Description|
+Artefact naam|Type artefact|Parameternaam|Beschrijving|
 |-|-|-|-|
-|De blauw druk-initiatief voor de officiële of UK NHS|Beleidstoewijzing |Bron typen voor het controleren van Diagnostische logboeken (beleid: Blauw druk-initiatief voor UK-officiële of UK NHS) |Lijst met resource typen om te controleren of de instelling voor Diagnostische logboeken is ingeschakeld.  Zie [ondersteunde services, schema's en categorieën voor Azure Diagnostic-logboeken](../../../../azure-monitor/platform/diagnostic-logs-schema.md)voor acceptabele waarden. |
-|\[Preview @ no__t-1: Log Analytics-agent voor Linux-Vm's implementeren |Beleidstoewijzing |Optioneel: Lijst met VM-installatie kopieën die een ondersteund Linux-besturings systeem hebben om toe te voegen aan het bereik (beleid: \[Preview @ no__t-1: Log Analytics-agent voor Linux Vm's implementeren) |Beschrijving De standaard waarde is _geen_. Zie [een log Analytics-werk ruimte maken in de Azure Portal](../../../../azure-monitor/learn/quick-create-workspace.md)voor meer informatie. |
-|\[Preview @ no__t-1: Log Analytics-agent voor Windows-Vm's implementeren |Beleidstoewijzing |Optioneel: Lijst met VM-installatie kopieën die een ondersteund Windows-besturings systeem hebben om toe te voegen aan het bereik (beleid: \[Preview @ no__t-1: Log Analytics-agent voor Windows-Vm's implementeren) |Beschrijving De standaard waarde is _geen_. Zie [een log Analytics-werk ruimte maken in de Azure Portal](../../../../azure-monitor/learn/quick-create-workspace.md)voor meer informatie. |
+|De blauw druk-initiatief voor de officiële of UK NHS|Beleidstoewijzing |Bron typen voor het controleren van Diagnostische logboeken (beleid: blauw druk voor UK-officiële of UK NHS) |Lijst met resource typen om te controleren of de instelling voor Diagnostische logboeken is ingeschakeld.  Zie [ondersteunde services, schema's en categorieën voor Azure Diagnostic-logboeken](../../../../azure-monitor/platform/diagnostic-logs-schema.md)voor acceptabele waarden. |
+|\[Preview @ no__t-1: Log Analytics agent voor Linux-Vm's implementeren |Beleidstoewijzing |Optioneel: een lijst met VM-installatie kopieën die een ondersteund Linux-besturings systeem hebben om toe te voegen aan het bereik (beleid: \[Preview @ no__t-1: Log Analytics-agent implementeren voor Linux Vm's) |Beschrijving De standaard waarde is _geen_. Zie [een log Analytics-werk ruimte maken in de Azure Portal](../../../../azure-monitor/learn/quick-create-workspace.md)voor meer informatie. |
+|\[Preview @ no__t-1: Log Analytics-agent implementeren voor Windows-Vm's |Beleidstoewijzing |Optioneel: lijst met VM-installatie kopieën die een ondersteund Windows-besturings systeem hebben om toe te voegen aan het bereik (beleid: \[Preview @ no__t-1: Log Analytics-agent implementeren voor Windows-Vm's) |Beschrijving De standaard waarde is _geen_. Zie [een log Analytics-werk ruimte maken in de Azure Portal](../../../../azure-monitor/learn/quick-create-workspace.md)voor meer informatie. |
 
 ## <a name="next-steps"></a>Volgende stappen
 

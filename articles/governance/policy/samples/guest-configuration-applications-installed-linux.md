@@ -1,17 +1,17 @@
 ---
-title: "Voor beeld: controleren of toepassingen niet in Linux-Vm's zijn geïnstalleerd"
+title: "Voor beeld: ontbrekende toepassingen op Linux Vm's controleren"
 description: In dit voor beeld van een gast configuratie-initiatief en definities wordt gecontroleerd of de opgegeven toepassingen niet in virtuele Linux-machines zijn geïnstalleerd.
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: sample
 ms.date: 05/02/2019
 ms.author: dacoulte
-ms.openlocfilehash: ef2ab4bebf2247b08cdc80ed74bbe17a67c5baae
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 5f4d4f4c1102c4409d891bb20b54788dc8ed40ee
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71977041"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72255739"
 ---
 # <a name="sample---audit-if-specified-applications-arent-installed-inside-linux-vms"></a>Voor beeld: controleren of opgegeven toepassingen niet zijn geïnstalleerd in Linux Vm's
 
@@ -44,7 +44,7 @@ Het initiatief wordt gemaakt door de **audit** -en **deployIfNotExists** definit
 
 ### <a name="initiative-parameters"></a>Initiatiefparameters
 
-|Name |Type |Description |
+|Naam |Type |Beschrijving |
 |---|---|---|
 |applicationName |Tekenreeks |Toepassings namen. Voor beeld: python, Power shell of een door komma's gescheiden lijst zoals python, Power shell. Gebruik \* voor joker tekens, zoals ' Power @ no__t-1 '. |
 
@@ -81,23 +81,23 @@ De **deployIfNotExists** -beleids definitie definieert de Azure-installatie kopi
 |-|-|-|
 |OpenLogic |CentOS @ no__t-0 |Alles behalve 6 @ no__t-0 |
 |RedHat |RHEL |Alles behalve 6 @ no__t-0 |
-|RedHat |Osa | Alle |
+|RedHat |Osa | Alles |
 |credativ |Debian | Alle behalve 7 @ no__t-0 |
-|SUSE |SLES @ NO__T-0 |Alle behalve 11 @ no__t-0 |
+|SuSE |SLES @ no__t-0 |Alle behalve 11 @ no__t-0 |
 |Canonical| UbuntuServer |Alle behalve 12 @ no__t-0 |
-|microsoft-dsvm |linux-data-science-vm-ubuntu |Alle |
-|microsoft-dsvm |azureml |Alle |
-|cloudera |cloudera-centos-os |Alles behalve 6 @ no__t-0 |
-|cloudera |cloudera-altus-CentOS-OS |Alle |
-|microsoft-ads |linux\* |Alle |
-|microsoft-aks |Alle |Alle |
-|AzureDatabricks |Alle |Alle |
-|qubole-inc |Alle |Alle |
-|datastax |Alle |Alle |
-|Couch base |Alle |Alle |
-|scalegrid |Alle |Alle |
-|Points |Alle |Alle |
-|paloaltonetworks |Alle |Alle |
+|micro soft-dsvm |Linux-Data-Science-VM-Ubuntu |Alles |
+|micro soft-dsvm |azureml |Alles |
+|Cloudera |cloudera-CentOS-OS |Alles behalve 6 @ no__t-0 |
+|Cloudera |cloudera-altus-CentOS-OS |Alles |
+|micro soft-Ads |Linux @ no__t-0 |Alles |
+|micro soft-AKS |Alles |Alles |
+|AzureDatabricks |Alles |Alles |
+|qubole-Inc |Alles |Alles |
+|datastax |Alles |Alles |
+|Couch base |Alles |Alles |
+|scalegrid |Alles |Alles |
+|Points |Alles |Alles |
+|paloaltonetworks |Alles |Alles |
 
 In het gedeelte **implementatie** van de regel wordt de para meter _installedApplication_ door gegeven aan de gast configuratie agent op de virtuele machine. Met deze configuratie kan de agent de validaties uitvoeren en de naleving van het **controle** beleid weer rapporteren.
 

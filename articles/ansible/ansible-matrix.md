@@ -1,5 +1,5 @@
 ---
-title: Ansible-module en versie matrix voor Azure | Microsoft Docs
+title: Overzicht met Ansible-modules en -versies voor Azure
 description: Overzicht met Ansible-modules en -versies voor Azure
 keywords: ansible, rollen, matrix, versie, azure, devops
 ms.topic: reference
@@ -8,24 +8,24 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: b3396b2f4639cc7298b77810dbaafadd308d6b24
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 18654500a78178c46e72f9f6cd01e8507fa179f0
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65230991"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72241545"
 ---
-# <a name="ansible-module-and-version-matrix"></a>Ansible-module en versie matrix
+# <a name="ansible-module-and-version-matrix"></a>Overzicht met Ansible-modules en -versies
 
-Ansible bevat een reeks modules voor gebruik in de inrichting en het configureren van Azure-resources. Deze resources omvatten virtuele machines, schaalsets, services en containerservices netwerken. In dit artikel worden de verschillende Ansible-modules voor Azure en de Ansible-versies waar ze af te leveren.
+Ansible bevat een suite met modules die u kunt gebruiken bij het inrichten en configureren van Azure-resources. Deze resources omvatten virtuele machines, schaal sets, netwerk services en container Services. In dit artikel vindt u een overzicht van de verschillende Ansible-modules voor Azure en de Ansible-versies waarin ze worden geleverd.
 
 ## <a name="ansible-modules-for-azure"></a>Ansible-modules voor Azure
 
-De volgende modules kunnen worden uitgevoerd op externe hosts rechtstreeks of via playbooks.
+De volgende modules kunnen rechtstreeks worden uitgevoerd op externe hosts of via playbooks.
 
-Deze modules zijn beschikbaar in de officiële release van Ansible en uit de volgende Microsoft-playbook-rollen.
+Deze modules zijn beschikbaar via de officiële release van Ansible en uit de volgende micro soft Playbook-rollen.
 
-| Ansible-module voor Azure                   |  Ansible 2.4 |  Ansible 2.5 |  Ansible 2.6 | Ansible 2.7 | Ansible 2.8 | Ansible-rol | 
+| Ansible-module voor Azure                   |  Ansible 2,4 |  Ansible 2,5 |  Ansible 2,6 | Ansible 2,7 | Ansible 2,8 | Ansible-rol | 
 |---------------------------------------------|--------------|--------------|-----------------------------|-------------------------------------|--------------|--------------| 
 | **Compute**                    |           |                          |                          |                            |           |           |
 | azure_rm_availabilityset                    | Ja          | Ja                         | Ja          | Ja          | Ja          | Ja          |
@@ -151,7 +151,7 @@ Deze modules zijn beschikbaar in de officiële release van Ansible en uit de vol
 | azure_rm_sqlserver_facts                    | -            | Ja                         | Ja          | Ja          | Ja          | Ja          |
 | **Analytische gegevens**                    |           |                          |                          |                             |           |           |
 | azure_rm_hdinsightcluster                   | -            | -                           | -            | -            | Ja          | Ja          |
-| **Integratie**                    |           |                          |                          |                             |           |           |
+| **Opneming**                    |           |                          |                          |                             |           |           |
 | azure_rm_servicebus                         | -            | -                           | -            | -            | Ja          | Ja          |
 | azure_rm_servicebus_facts                   | -            | -                           | -            | -            | Ja          | Ja          |
 | azure_rm_servicebusqueue                    | -            | -                           | -            | -            | Ja          | Ja          |
@@ -188,12 +188,12 @@ Deze modules zijn beschikbaar in de officiële release van Ansible en uit de vol
 | azure_rm_loganalyticsworkspace              | -            | -                           | -            | -            | Ja          | Ja          |
 | azure_rm_loganalyticsworkspace_facts        | -            | -                           | -            | -            | Ja          | Ja          |
 
-## <a name="introduction-to-playbook-role-for-azure"></a>Inleiding tot de rol van de playbook voor Azure
+## <a name="introduction-to-playbook-role-for-azure"></a>Inleiding tot de Playbook-rol voor Azure
 
-De [azure_preview_module playbook rol](https://galaxy.ansible.com/Azure/azure_preview_modules/) bevat alle de meest recente Azure-modules. De updates en oplossingen voor problemen bent tijdig meer dan de officiële release van Ansible klaar. Als u Ansible voor Azure-resource doeleinden wordt ingericht gebruikt, bent u aangeraden voor het installeren van de `azure_preview_module` playbook-rol.
+De [azure_preview_module Playbook-rol](https://galaxy.ansible.com/Azure/azure_preview_modules/) omvat alle meest recente Azure-modules. De updates en oplossingen voor fouten worden op een meer wijze uitgevoerd dan de officiële Ansible-release. Als u Ansible gebruikt voor het inrichten van Azure-resources, raden we u aan de `azure_preview_module` Playbook-functie te installeren.
 
-De `azure_preview_module` playbook rol elke drie weken wordt uitgebracht.
+De Playbook-rol @no__t 0 wordt elke drie weken vrijgegeven.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie voor meer informatie over playbook-rollen, [herbruikbare playbooks maken](https://docs.ansible.com/ansible/latest/playbooks_reuse.html). 
+Zie [rebruikbare Playbooks maken](https://docs.ansible.com/ansible/latest/playbooks_reuse.html)voor meer informatie over Playbook-rollen. 

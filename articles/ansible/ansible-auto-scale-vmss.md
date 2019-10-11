@@ -1,6 +1,6 @@
 ---
-title: Zelfstudie - automatisch schalen virtuele-machineschaalsets in Azure met behulp van Ansible | Microsoft Docs
-description: Leer hoe u Ansible gebruikt voor het schalen van virtuele-machineschaalsets met automatisch schalen in Azure
+title: 'Zelf studie: virtuele-machine schaal sets automatisch schalen in azure met behulp van Ansible'
+description: Meer informatie over hoe u Ansible kunt gebruiken om schaal sets voor virtuele machines te schalen met automatisch schalen in azure
 keywords: ansible, azure, devops, bash, playbook, schalen, automatische schaalaanpassing, virtuele machine, virtuele-machineschaalset, vmss
 ms.topic: tutorial
 ms.service: ansible
@@ -8,29 +8,29 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: 4f2cd66b7460fc6fe48cb55f45bf4bc309ae054c
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 784cb532c11b16c820336ceeaf8d38f0225c832f
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65231280"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72242095"
 ---
-# <a name="tutorial-autoscale-virtual-machine-scale-sets-in-azure-using-ansible"></a>Zelfstudie: Automatisch schalen virtuele-machineschaalsets in Azure met behulp van Ansible
+# <a name="tutorial-autoscale-virtual-machine-scale-sets-in-azure-using-ansible"></a>Zelf studie: schaal sets voor virtuele machines automatisch schalen in azure met behulp van Ansible
 
 [!INCLUDE [ansible-27-note.md](../../includes/ansible-27-note.md)]
 
 [!INCLUDE [open-source-devops-intro-vmss.md](../../includes/open-source-devops-intro-vmss.md)]
 
-De functie voor automatisch aanpassen van het aantal VM-exemplaren heet [voor automatisch schalen](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-overview). Het voordeel van automatisch schalen is dat de overhead vermindert voor het bewaken en optimaliseren van de prestaties van uw toepassing. Automatisch schalen kan worden geconfigureerd in reactie op aanvraag of volgens een ingesteld schema. Wanneer u Ansible gebruikt, kunt u de regels voor automatisch schalen waarmee het aanvaardbare prestaties voor een positieve gebruikerservaring opgeven.
+De functie van het automatisch aanpassen van het aantal VM-exemplaren wordt [AutoScale](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-overview)genoemd. Het voor deel van automatisch schalen is dat het de beheer overhead vermindert om de prestaties van uw toepassing te controleren en te optimaliseren. Automatisch schalen kan worden geconfigureerd als reactie op de vraag of op basis van een gedefinieerd schema. Met Ansible kunt u de regels voor automatisch schalen opgeven waarmee de aanvaard bare prestaties voor een positieve klant ervaring worden gedefinieerd.
 
 [!INCLUDE [ansible-tutorial-goals.md](../../includes/ansible-tutorial-goals.md)]
 
 > [!div class="checklist"]
 >
 > * Een profiel voor automatisch schalen definiëren
-> * Automatisch schalen op basis van een terugkerende planning
-> * Automatisch schalen op basis van app-prestaties
-> * Ophalen van informatie over de instellingen voor automatisch schalen 
+> * Automatisch schalen op basis van een terugkerend schema
+> * Automatisch schalen op basis van de prestaties van de app
+> * Informatie over instellingen voor automatisch schalen ophalen 
 > * Een instelling voor automatisch schalen uitschakelen
 
 ## <a name="prerequisites"></a>Vereisten
@@ -43,9 +43,9 @@ De functie voor automatisch aanpassen van het aantal VM-exemplaren heet [voor au
 
 Als u automatisch schalen wilt inschakelen voor een schaalset, moet u eerst een profiel voor automatisch schalen definiëren. In dit profiel worden de minimum-, maximum- en standaardcapaciteit ingesteld voor de schaalset. Met behulp van deze limieten kunt u de kosten in de hand houden doordat er niet steeds VM-exemplaren hoeven te worden gemaakt, en kunt u aanvaardbare prestaties realiseren met een minimum aantal exemplaren die altijd kunnen worden ingeschaald. 
 
-Ansible kunt u uw schaalsets op een specifieke datum of een terugkerende planning in te schalen.
+Met Ansible kunt u uw schaal sets op een specifieke datum of een terugkerend schema schalen.
 
-De code playbook in deze sectie wordt het aantal VM-exemplaren drie om 10:00 elke maandag verhoogd.
+De Playbook-code in deze sectie verhoogt het aantal VM-exemplaren tot drie op 10:00 elke maandag.
 
 Sla het volgende playbook op als `vmss-auto-scale.yml`:
 
@@ -81,22 +81,22 @@ Sla het volgende playbook op als `vmss-auto-scale.yml`:
               - '10'
 ```
 
-Voer de playbook met behulp de `ansible-playbook` opdracht:
+Voer de Playbook uit met behulp van de `ansible-playbook`-opdracht:
 
 ```bash
 ansible-playbook vmss-auto-scale.yml
 ```
 
-## <a name="autoscale-based-on-performance-data"></a>Automatisch schalen op basis van prestatiegegevens
+## <a name="autoscale-based-on-performance-data"></a>Automatisch schalen op basis van prestatie gegevens
 
-Als de vraag voor een toepassing toeneemt, neemt de belasting van de VM-exemplaren in de schaalset ook toe. Als deze toegenomen belasting consistent is, en geen piekbelasting is, kunt u regels voor automatisch schalen configureren om het aantal VM-exemplaren in de schaalset te verhogen. Wanneer deze VM-exemplaren worden gemaakt en uw toepassingen worden geïmplementeerd, zorgt de schaalset ervoor dat er via de load balancer verkeer wordt gedistribueerd naar de exemplaren. Ansible kunt u bepalen welke metrische gegevens te bewaken, zoals CPU-gebruik, gebruik van de schijf en app-laadtijd. U kunt schalen en scale-out in de schaalset wordt ingesteld op basis van prestaties metrische drempels door een terugkerend schema, of door een bepaalde datum. 
+Als de vraag voor een toepassing toeneemt, neemt de belasting van de VM-exemplaren in de schaalset ook toe. Als deze toegenomen belasting consistent is, en geen piekbelasting is, kunt u regels voor automatisch schalen configureren om het aantal VM-exemplaren in de schaalset te verhogen. Wanneer deze VM-exemplaren worden gemaakt en uw toepassingen worden geïmplementeerd, zorgt de schaalset ervoor dat er via de load balancer verkeer wordt gedistribueerd naar de exemplaren. Met Ansible kunt u bepalen welke metrische gegevens moeten worden bewaakt, zoals CPU-gebruik, schijf gebruik en app-laad tijd. U kunt in schaal sets schalen en uitschalen op basis van de drempel waarden voor prestatie waarden, een terugkerend schema of een bepaalde datum. 
 
-De playbook-code in deze sectie wordt de CPU-belasting voor de vorige 10 minuten om 18:00 elke maandag gecontroleerd. 
+Met de Playbook-code in deze sectie wordt de CPU-belasting voor de afgelopen 10 minuten op 18:00 elke maandag gecontroleerd. 
 
-De playbook wordt op basis van de CPU-percentage metrische gegevens, een van de volgende acties:
+Op basis van de metrische gegevens van het CPU-percentage voert de Playbook een van de volgende acties uit:
 
-- Schalen van het aantal VM-instanties vier
-- Schalen van het aantal VM-exemplaren een
+- Hiermee wordt het aantal VM-exemplaren naar vier geschaald
+- Schaalt in het aantal VM-exemplaren naar een
 
 Sla het volgende playbook op als `vmss-auto-scale-metrics.yml`:
 
@@ -175,15 +175,15 @@ Sla het volgende playbook op als `vmss-auto-scale-metrics.yml`:
             value: '1'
 ```
 
-Voer de playbook met behulp de `ansible-playbook` opdracht:
+Voer de Playbook uit met behulp van de `ansible-playbook`-opdracht:
 
 ```bash
 ansible-playbook vmss-auto-scale-metrics.yml
 ```
 
-## <a name="get-autoscale-settings-information"></a>Ophalen van informatie over de instellingen voor automatisch schalen 
+## <a name="get-autoscale-settings-information"></a>Informatie over instellingen voor automatisch schalen ophalen 
 
-De code van de playbook in deze sectie wordt gebruikgemaakt van de `azure_rm_autoscale_facts` module voor het ophalen van de gegevens van de instelling voor automatisch schalen.
+De Playbook-code in deze sectie maakt gebruik van de module `azure_rm_autoscale_facts` om de details van de instelling voor automatisch schalen op te halen.
 
 Sla het volgende playbook op als `vmss-auto-scale-get-settings.yml`:
 
@@ -203,7 +203,7 @@ Sla het volgende playbook op als `vmss-auto-scale-get-settings.yml`:
         var: autoscale_query.autoscales[0]
 ```
 
-Voer de playbook met behulp de `ansible-playbook` opdracht:
+Voer de Playbook uit met behulp van de `ansible-playbook`-opdracht:
 
 ```bash
 ansible-playbook vmss-auto-scale-get-settings.yml
@@ -211,9 +211,9 @@ ansible-playbook vmss-auto-scale-get-settings.yml
 
 ## <a name="disable-autoscale-settings"></a>Instellingen voor automatisch schalen uitschakelen
 
-Er zijn twee manieren om uit te schakelen van instellingen voor automatisch schalen. Één manier is om te wijzigen de `enabled` sleutel van `true` naar `false`. De tweede manier is het verwijderen van de instelling.
+Er zijn twee manieren om instellingen voor automatisch schalen uit te scha kelen. Een manier is om de `enabled`-sleutel van `true` te wijzigen in `false`. De tweede manier is de instelling verwijderen.
 
-De code playbook in deze sectie Hiermee verwijdert u de instelling voor automatisch schalen. 
+De Playbook-code in deze sectie verwijdert de instelling voor automatisch schalen. 
 
 Sla het volgende playbook op als `vmss-auto-scale-delete-setting.yml`:
 
@@ -230,7 +230,7 @@ Sla het volgende playbook op als `vmss-auto-scale-delete-setting.yml`:
          state: absent
 ```
 
-Voer de playbook met behulp de `ansible-playbook` opdracht:
+Voer de Playbook uit met behulp van de `ansible-playbook`-opdracht:
 
 ```bash
 vmss-auto-scale-delete-setting.yml
@@ -239,4 +239,4 @@ vmss-auto-scale-delete-setting.yml
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"] 
-> [Zelfstudie: Aangepaste installatiekopie van de update van de schaal van de virtuele machine van Azure wordt ingesteld wanneer u Ansible gebruikt](./ansible-vmss-update-image.md)
+> [Zelf studie: aangepaste installatie kopie van virtuele-machine schaal sets van Azure bijwerken met behulp van Ansible](./ansible-vmss-update-image.md)

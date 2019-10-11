@@ -1,17 +1,17 @@
 ---
-title: 'Voorbeeld: Key Vault-kluizen controleren op het ontbreken van eindpunten voor een virtueel netwerk'
+title: Voor beelden van sleutel kluizen zonder vNet-eind punten
 description: Met deze voorbeeldbeleidsdefinitie wordt een controle uitgevoerd op Key Vault-kluizen om exemplaren te detecteren die geen service-eindpunten voor een virtueel netwerk hebben.
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/26/2019
 ms.author: dacoulte
-ms.openlocfilehash: ccfba0eae8d3c51cf153f58d554dc09b574d3873
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 7bcbcdf68b3c8f882a1e0fbb9953fea575f96556
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71976966"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72255719"
 ---
 # <a name="sample---key-vault-vaults-with-no-virtual-network-endpoints"></a>Voorbeeld: Key Vault-kluizen zonder eindpunten voor een virtueel netwerk
 
@@ -21,7 +21,7 @@ U kunt dit voorbeeldbeleid implementeren met behulp van:
 
 - [Azure Portal](#azure-portal)
 - [Azure PowerShell](#azure-powershell)
-- [Azure-CLI](#azure-cli)
+- [Azure CLI](#azure-cli)
 - [REST API](#rest-api)
 
 [!INCLUDE [quickstarts-free-trial-note](../../../../includes/quickstarts-free-trial-note.md)]
@@ -93,7 +93,7 @@ De scripts voor implementeren en verwijderen gebruiken de volgende opdrachten. E
 | [Remove-AzPolicyAssignment](/powershell/module/az.resources/Remove-Azpolicyassignment) | Hiermee verwijdert u een bestaande Azure Policy-toewijzing. |
 | [Remove-AzPolicyDefinition](/powershell/module/az.resources/Remove-Azpolicydefinition) | Hiermee verwijdert u een bestaande Azure Policy-definitie. |
 
-## <a name="azure-cli"></a>Azure-CLI
+## <a name="azure-cli"></a>Azure CLI
 
 [!INCLUDE [sample-cli-install](../../../../includes/sample-cli-install.md)]
 
@@ -136,7 +136,7 @@ az policy definition delete --name `echo $definition | jq '.name' -r`
 
 Er zijn verschillende hulpprogramma's die u kunt gebruiken om te communiceren met de REST-API van Resource Manager, zoals [ARMClient](https://github.com/projectkudu/ARMClient) of PowerShell.
 
-### <a name="deploy-with-rest-api"></a>Implementeren met REST-API
+### <a name="deploy-with-rest-api"></a>Implementeren met REST API
 
 - Maak de beleidsdefinitie (abonnementsbereik). Gebruik de [beleidsdefinitie](#policy-definition) geschreven in JSON voor de body van de aanvraag.
 

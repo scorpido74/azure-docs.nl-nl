@@ -9,20 +9,20 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: article
-ms.date: 08/08/2019
+ms.date: 10/08/2019
 ms.author: iainfou
-ms.openlocfilehash: 19a618bd576687fcb0d92f8e35613e4cdc749e70
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: 3876c6f80e9f18059ab4abac67732cdbf2ca24fa
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71320448"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72248309"
 ---
 # <a name="password-and-account-lockout-policies-on-managed-domains"></a>Wacht woord-en account vergrendelings beleid in beheerde domeinen
 
-Als u de beveiliging van accounts in Azure Active Directory Domain Services (Azure AD DS) wilt beheren, kunt u verfijnde wachtwoord beleidsregels definiëren voor het beheren van instellingen, zoals minimale wachtwoord lengte, verval tijd van wacht woord of wachtwoord complexiteit. Een standaard wachtwoord beleid wordt toegepast op alle gebruikers in een door Azure AD DS beheerd domein. Om nauw keurige controle te bieden en te voldoen aan specifieke bedrijfs-of nalevings behoeften, kunnen extra beleids regels worden gemaakt en toegepast op specifieke groepen gebruikers.
+Als u de beveiliging van gebruikers in Azure Active Directory Domain Services (Azure AD DS) wilt beheren, kunt u verfijnde wachtwoord beleidsregels definiëren voor het beheren van account vergrendelings instellingen of minimale wachtwoord lengte en complexiteit. Er wordt een standaard beleid voor verfijnd gekorreld wacht woord gemaakt en toegepast op alle gebruikers in een door Azure AD DS beheerd domein. Om nauw keurige controle te bieden en te voldoen aan specifieke bedrijfs-of nalevings behoeften, kunnen extra beleids regels worden gemaakt en toegepast op specifieke groepen gebruikers.
 
-In dit artikel wordt beschreven hoe u een nauw keurig wachtwoord beleid maakt en configureert met behulp van de Active Directory-beheercentrum.
+In dit artikel wordt beschreven hoe u met behulp van de Active Directory-beheercentrum een nauw keurig wachtwoord beleid in azure AD DS maakt en configureert.
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
@@ -38,65 +38,68 @@ U hebt de volgende resources en bevoegdheden nodig om dit artikel te volt ooien:
   * Als dat nodig is, voltooit u de zelf studie voor het [maken van een beheer-VM][tutorial-create-management-vm].
 * Een gebruikers account dat lid is van de groep *Azure AD DC-Administrators* in uw Azure AD-Tenant.
 
-## <a name="fine-grained-password-policies-fgpp-overview"></a>Overzicht van verfijnde wachtwoord beleid (FGPP)
+## <a name="default-password-policy-settings"></a>Standaard instellingen voor wachtwoord beleid
 
-Met een verfijnd wachtwoord beleid (FGPPs) kunt u specifieke beperkingen voor wacht woord-en account vergrendelings beleid Toep assen op verschillende gebruikers in een domein. Als u bijvoorbeeld accounts met verhoogde bevoegdheden wilt beveiligen, kunt u strengere wachtwoord instellingen Toep assen dan gewone accounts zonder privileges. U kunt meerdere FGPPs maken om wachtwoord beleidsregels op te geven binnen een door Azure AD DS beheerd domein.
+Met een verfijnd wachtwoord beleid (FGPPs) kunt u specifieke beperkingen voor wacht woord-en account vergrendelings beleid Toep assen op verschillende gebruikers in een domein. Als u bijvoorbeeld accounts met bevoegdheden wilt beveiligen, kunt u strengere account vergrendelings instellingen Toep assen dan gewone accounts zonder privileges. U kunt meerdere FGPPs maken in een beheerd domein van Azure AD DS en de volg orde van prioriteit opgeven om ze toe te passen op gebruikers.
 
-De volgende wachtwoord instellingen kunnen worden geconfigureerd met behulp van FGPP:
+Beleids regels worden gedistribueerd via een groeps koppeling in een door Azure AD DS beheerd domein. alle wijzigingen die u aanbrengt, worden toegepast bij de volgende aanmelding van de gebruiker. Als u het beleid wijzigt, wordt een gebruikers account dat al is vergrendeld, niet ontgrendeld.
 
-* Minimale wachtwoordlengte
-* Wachtwoord geschiedenis
-* Wacht woorden moeten voldoen aan complexiteits vereisten
-* Minimale wachtwoordduur
-* Maximumleeftijd voor wachtwoorden
-* Account vergrendelings beleid
-  * Account vergrendelings duur
-  * Aantal mislukte aanmeldings pogingen toegestaan
-  * Aantal mislukte aanmeldings pogingen opnieuw instellen na
+Wachtwoord beleid gedraagt zich enigszins anders, afhankelijk van de manier waarop de gebruikers account is gemaakt. Er zijn twee manieren om een gebruikers account te maken in azure AD DS:
 
-FGPP is alleen van invloed op gebruikers die zijn gemaakt in azure AD DS. Cloud gebruikers en domein gebruikers die zijn gesynchroniseerd met het door Azure AD DS beheerde domein vanuit Azure AD, hebben geen invloed op het wachtwoord beleid.
+* Het gebruikers account kan worden gesynchroniseerd vanuit Azure AD. Dit geldt ook voor Cloud gebruikers accounts die rechtstreeks in azure zijn gemaakt, en hybride gebruikers accounts die zijn gesynchroniseerd vanuit een on-premises AD DS omgeving met behulp van Azure AD Connect.
+    * Het meren deel van gebruikers accounts in azure AD DS worden gemaakt via het synchronisatie proces van Azure AD.
+* Het gebruikers account kan hand matig worden gemaakt in een beheerd domein van Azure AD DS en bestaat niet in azure AD.
 
-Beleids regels worden gedistribueerd via een groeps koppeling in het Azure AD DS Managed Domain en alle wijzigingen die u aanbrengt, worden toegepast bij de volgende aanmelding van de gebruiker. Als u het beleid wijzigt, wordt een gebruikers account dat al is vergrendeld, niet ontgrendeld.
-
-## <a name="default-fine-grained-password-policy-settings"></a>Standaard instellingen voor het wachtwoord beleid
-
-In een door Azure AD DS beheerd domein worden de volgende wachtwoord beleidsregels standaard geconfigureerd en toegepast op alle gebruikers:
-
-* **Minimale wachtwoord lengte (tekens):** 7
-* **Maximale wachtwoord duur (levens duur):** 90 dagen
-* **Wacht woorden moeten voldoen aan complexiteits vereisten**
-
-De volgende beleids regels voor account vergrendeling worden standaard geconfigureerd:
+Alle gebruikers, ongeacht hoe ze zijn gemaakt, hebben de volgende beleids regels voor account vergrendeling die worden toegepast door het standaard wachtwoord beleid in azure AD DS:
 
 * **Account vergrendelings duur:** 30
 * **Aantal mislukte aanmeldings pogingen toegestaan:** 5
 * **Aantal mislukte aanmeldings pogingen opnieuw instellen na:** 30 minuten
+* **Maximale wachtwoord duur (levens duur):** 90 dagen
 
 Met deze standaard instellingen worden gebruikers accounts gedurende 30 minuten geblokkeerd als vijf ongeldige wacht woorden binnen twee minuten worden gebruikt. Accounts worden na 30 minuten automatisch ontgrendeld.
 
-U kunt het standaard ingebouwde wachtwoord beleid niet wijzigen of verwijderen. In plaats daarvan kunnen leden van de groep *Aad DC-Administrators* een aangepaste FGPP maken en configureren voor onderdrukking (prioriteit hebben boven) de standaard ingebouwde FGPP, zoals wordt weer gegeven in de volgende sectie.
+Account vergrendelingen worden alleen uitgevoerd binnen het beheerde domein. Gebruikers accounts worden alleen vergrendeld in azure AD DS en alleen door mislukte aanmeldings pogingen voor het beheerde domein. Gebruikers accounts die zijn gesynchroniseerd vanuit Azure AD of on-premises, worden niet vergrendeld in hun bron mappen, alleen in azure AD DS.
 
-## <a name="create-a-custom-fine-grained-password-policy"></a>Een aangepast beleid voor een verfijnd wacht woord maken
+Als u een Azure AD-wachtwoord beleid hebt waarmee een maximale wachtwoord duur van meer dan 90 dagen wordt opgegeven, wordt de wachtwoord duur toegepast op het standaard beleid in azure AD DS. U kunt een aangepast wachtwoord beleid configureren om een andere maximale wachtwoord duur in azure AD DS te definiëren. Zorg ervoor dat u een korter maximale wachtwoord duur hebt geconfigureerd in een Azure AD DS wachtwoord beleid dan in azure AD of een on-premises AD DS omgeving. In dat geval kan het wacht woord van een gebruiker verlopen in azure AD DS voordat wordt gevraagd om te wijzigen in azure AD op een on-premises AD DS omgeving.
 
-Wanneer u bouwt en toepassingen in azure, wilt u mogelijk een aangepaste FGPP configureren. Een voor beeld van het maken van een aangepaste FGPP is het instellen van een ander account vergrendelings beleid of voor het configureren van een standaard instelling voor de levens duur van wacht woorden voor het beheerde domein.
+Voor gebruikers accounts die hand matig zijn gemaakt in een door Azure AD DS beheerd domein, worden de volgende aanvullende wachtwoord instellingen ook toegepast vanuit het standaard beleid. Deze instellingen zijn niet van toepassing op gebruikers accounts die zijn gesynchroniseerd vanuit Azure AD, omdat een gebruiker hun wacht woord niet rechtstreeks kan bijwerken in azure AD DS.
 
-U kunt een aangepaste FGPP maken en deze Toep assen op specifieke groepen in uw Azure AD DS beheerde domein. Deze configuratie vervangt de standaard FGPP. U kunt ook aangepaste beleids regels voor een verfijnd wacht woord maken en deze Toep assen op alle aangepaste organisatie-eenheden die u in het door Azure AD DS beheerde domein hebt gemaakt.
+* **Minimale wachtwoord lengte (tekens):** 7
+* **Wacht woorden moeten voldoen aan complexiteits vereisten**
 
-Als u een nauw keurig wachtwoord beleid wilt maken, gebruikt u de Active Directory-beheer Programma's van een VM die is gekoppeld aan een domein. Met de Active Directory-beheercentrum kunt u resources weer geven, bewerken en maken in een beheerd domein van Azure AD DS, met inbegrip van organisatie-eenheden.
+U kunt de instellingen voor account vergrendeling en het wacht woord niet wijzigen in het standaard wachtwoord beleid. In plaats daarvan kunnen leden van de groep *Aad DC-Administrators* aangepaste wachtwoord beleid maken en deze configureren voor onderdrukking (prioriteit hebben boven) het standaard ingebouwde beleid, zoals wordt weer gegeven in de volgende sectie.
+
+## <a name="create-a-custom-password-policy"></a>Een aangepast wachtwoord beleid maken
+
+Bij het bouwen en uitvoeren van toepassingen in azure, wilt u mogelijk een aangepast wachtwoord beleid configureren. U kunt bijvoorbeeld een beleid maken om verschillende beleids instellingen voor account vergrendeling in te stellen.
+
+Aangepaste wachtwoord beleid wordt toegepast op groepen in een door Azure AD DS beheerd domein. Met deze configuratie wordt het standaard beleid overschreven.
+
+Als u een aangepast wachtwoord beleid wilt maken, gebruikt u de Active Directory-beheer Programma's van een VM die lid is van een domein. Met de Active Directory-beheercentrum kunt u resources weer geven, bewerken en maken in een beheerd domein van Azure AD DS, met inbegrip van organisatie-eenheden.
 
 > [!NOTE]
-> Als u een nauw keurig wachtwoord beleid wilt maken in een door Azure AD DS beheerd domein, moet u zijn aangemeld bij een gebruikers account dat lid is van de groep *Aad DC-Administrators* .
+> Als u een aangepast wachtwoord beleid wilt maken in een door Azure AD DS beheerd domein, moet u zijn aangemeld bij een gebruikers account dat lid is van de groep *Aad DC-Administrators* .
 
 1. Selecteer in het Start scherm de optie **systeem beheer**. Er wordt een lijst met beschik bare beheer hulpprogramma's weer gegeven die in de zelf studie zijn geïnstalleerd om [een beheer-VM te maken][tutorial-create-management-vm].
 1. Als u organisatie-eenheden wilt maken en beheren, selecteert u **Active Directory-beheercentrum** in de lijst met beheer Programma's.
 1. Kies in het linkerdeel venster uw door Azure AD DS beheerde domein, zoals *contoso.com*.
-1. Open de **systeem** container en vervolgens de container voor **wachtwoord instellingen** .
+1. Open de **systeem** container en vervolgens de **Password Settings Container**.
 
-    Er wordt een ingebouwde FGPP voor het beheerde domein van Azure AD DS weer gegeven. U kunt deze ingebouwde FGPP niet wijzigen. Maak in plaats daarvan een nieuwe aangepaste FGPP om de standaard FGPP te onderdrukken.
+    Er wordt een ingebouwd wachtwoord beleid voor het beheerde domein van Azure AD DS weer gegeven. U kunt dit ingebouwde beleid niet wijzigen. Maak in plaats daarvan een aangepast wachtwoord beleid om het standaard beleid te onderdrukken.
+
+    ![Een wachtwoord beleid maken in de Active Directory-beheercentrum](./media/password-policy/create-password-policy-adac.png)
+
 1. Selecteer in het deel venster **taken** aan de rechter kant **nieuwe > wachtwoord instellingen**.
-1. Voer in het dialoog venster **wacht woord instellingen maken** een naam in voor het beleid, zoals *MyCustomFGPP*. Stel de prioriteit in op de juiste manier om de standaard FGPP ( *200*), zoals *1*, te overschrijven.
+1. Voer in het dialoog venster **wacht woord instellingen maken** een naam in voor het beleid, zoals *MyCustomFGPP*.
+1. Wanneer er meerdere wachtwoord beleidsregels bestaan, wordt het beleid met de hoogste prioriteit of prioriteit toegepast op een gebruiker. Hoe lager het getal, des te hoger de prioriteit. Het standaard wachtwoord beleid heeft een prioriteit van *200*.
 
-    Bewerk andere wachtwoord beleids instellingen naar wens, zoals **wachtwoord geschiedenis afdwingen** om te vereisen dat de gebruiker een wacht woord maakt dat afwijkt van de vorige *24* wacht woorden.
+    Stel de prioriteit voor uw aangepaste wachtwoord beleid in om de standaard waarde te overschrijven, zoals *1*.
+
+1. Bewerk andere instellingen voor wachtwoord beleid naar wens. Onthoud de volgende belang rijke punten:
+
+    * Instellingen zoals wachtwoord complexiteit, leeftijd of verloop tijd alleen voor gebruikers die hand matig zijn gemaakt in een door Azure AD DS beheerd domein.
+    * Account vergrendelings instellingen zijn van toepassing op alle gebruikers, maar worden alleen van kracht binnen het beheerde domein.
 
     ![Een aangepast beleid voor een verfijnd wacht woord maken](./media/how-to/custom-fgpp.png)
 
@@ -105,7 +108,7 @@ Als u een nauw keurig wachtwoord beleid wilt maken, gebruikt u de Active Directo
 
     ![Selecteer de gebruikers en groepen waarop u het wachtwoord beleid wilt Toep assen](./media/how-to/fgpp-applies-to.png)
 
-1. Nauw keurig wachtwoord beleid kan alleen worden toegepast op groepen. Vouw in het dialoog venster **locaties** de domein naam uit, zoals *contoso.com*, en selecteer vervolgens een OE, zoals **AADDC-gebruikers**. Als u een aangepaste OE hebt die een groep gebruikers bevat die u wilt Toep assen, selecteert u die organisatie-eenheid.
+1. Wachtwoord beleid kan alleen worden toegepast op groepen. Vouw in het dialoog venster **locaties** de domein naam uit, zoals *contoso.com*, en selecteer vervolgens een OE, zoals **AADDC-gebruikers**. Als u een aangepaste OE hebt die een groep gebruikers bevat die u wilt Toep assen, selecteert u die organisatie-eenheid.
 
     ![Selecteer de organisatie-eenheid waarvan de groep deel uitmaakt](./media/how-to/fgpp-container.png)
 
@@ -117,7 +120,7 @@ Als u een nauw keurig wachtwoord beleid wilt maken, gebruikt u de Active Directo
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Raadpleeg de volgende artikelen voor meer informatie over het verfijnen van het wachtwoord beleid en het gebruik van het Active Directory-beheer centrum:
+Raadpleeg de volgende artikelen voor meer informatie over wachtwoord beleid en het gebruik van het Active Directory-beheer centrum:
 
 * [Meer informatie over het beleid voor een verfijnd wacht woord](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc770394(v=ws.10))
 * [Verfijnd wachtwoord beleid configureren met het AD-beheer centrum](/windows-server/identity/ad-ds/get-started/adac/introduction-to-active-directory-administrative-center-enhancements--level-100-#fine_grained_pswd_policy_mgmt)

@@ -1,6 +1,6 @@
 ---
-title: 'Zelfstudie: Azure Active Directory-integratie met Velpic SAML | Microsoft Docs'
-description: Informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en Velpic SAML.
+title: 'Zelf studie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met Velpic SAML | Microsoft Docs'
+description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en Velpic SAML.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,247 +13,207 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 04/03/2019
+ms.date: 10/01/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 883620d6aa25f71a454c7add6d60e38b4974facf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f699e2244cde53200a9885602bd20c899c0ce4cd
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67087672"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72241566"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-velpic-saml"></a>Zelfstudie: Azure Active Directory-integratie met Velpic SAML
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-velpic-saml"></a>Zelf studie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met Velpic SAML
 
-In deze zelfstudie leert u hoe u Velpic SAML integreren met Azure Active Directory (Azure AD).
-Velpic SAML integreren met Azure AD biedt u de volgende voordelen:
+In deze zelf studie leert u hoe u Velpic SAML integreert met Azure Active Directory (Azure AD). Wanneer u Velpic SAML integreert met Azure AD, kunt u het volgende doen:
 
-* U kunt beheren in Azure AD die toegang tot Velpic SAML heeft.
-* U kunt uw gebruikers worden automatisch aangemeld Velpic SAML (Single Sign-On) inschakelen met hun Azure AD-accounts.
-* U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
+* Controle in azure AD die toegang heeft tot Velpic SAML.
+* Zorg ervoor dat uw gebruikers automatisch worden aangemeld voor Velpic SAML met hun Azure AD-accounts.
+* Beheer uw accounts op één centrale locatie: de Azure Portal.
 
-Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
-Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
+Zie [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)voor meer informatie over SaaS-app-integratie met Azure AD.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voor het configureren van Azure AD-integratie met Velpic SAML, moet u de volgende items:
+U hebt de volgende items nodig om aan de slag te gaan:
 
-* Een Azure AD-abonnement Als u geen Azure AD-omgeving hebt, krijgt u een [gratis account](https://azure.microsoft.com/free/)
-* Eenmalige aanmelding Velpic SAML ingeschakeld abonnement
+* Een Azure AD-abonnement Als u geen abonnement hebt, kunt u een [gratis account](https://azure.microsoft.com/free/)aanvragen.
+* Velpic-abonnement voor eenmalige SAML-aanmelding (SSO).
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
-In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen.
+In deze zelf studie configureert en test u Azure AD SSO in een test omgeving.
 
-* Biedt ondersteuning voor Velpic SAML **SP** gestart door SSO
+* Velpic SAML ondersteunt door **SP** GEÏNITIEERDe SSO
 
-## <a name="adding-velpic-saml-from-the-gallery"></a>Velpic SAML vanuit de galerie toevoegen
+## <a name="adding-velpic-saml-from-the-gallery"></a>Velpic SAML toevoegen vanuit de galerie
 
-Voor het configureren van de integratie van Velpic SAML in Azure AD, moet u Velpic SAML vanuit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
+Als u de integratie van Velpic SAML wilt configureren in azure AD, moet u Velpic SAML toevoegen vanuit de galerie aan uw lijst met beheerde SaaS-apps.
 
-**Als u wilt toevoegen Velpic SAML vanuit de galerie, moet u de volgende stappen uitvoeren:**
+1. Meld u bij de [Azure-portal](https://portal.azure.com) aan met een werk- of schoolaccount of een persoonlijk Microsoft-account.
+1. Selecteer de **Azure Active Directory** -service in het navigatie deel venster aan de linkerkant.
+1. Ga naar **bedrijfs toepassingen** en selecteer **alle toepassingen**.
+1. Selecteer **nieuwe toepassing**om een nieuwe toepassing toe te voegen.
+1. Typ in de sectie **toevoegen vanuit de galerie** **Velpic SAML** in het zoekvak.
+1. Selecteer **VELPIC SAML** uit het paneel resultaten en voeg vervolgens de app toe. Wacht een paar seconden wanneer de app aan uw Tenant is toegevoegd.    
 
-1. In de **[Azure-portal](https://portal.azure.com)** , klik in het navigatievenster aan de linkerkant op **Azure Active Directory** pictogram.
+## <a name="configure-and-test-azure-ad-single-sign-on-for-velpic-saml"></a>Eenmalige aanmelding voor Azure AD configureren en testen voor Velpic SAML
 
-    ![De knop Azure Active Directory](common/select-azuread.png)
+Azure AD SSO met Velpic SAML configureren en testen met behulp van een test gebruiker met de naam **B. Simon**. Voor het werken met SSO moet u een koppelings relatie tot stand brengen tussen een Azure AD-gebruiker en de bijbehorende gebruiker in Velpic SAML.
 
-2. Navigeer naar **Bedrijfstoepassingen** en selecteer vervolgens de optie **Alle toepassingen**.
+Als u Azure AD SSO wilt configureren en testen met Velpic SAML, voltooit u de volgende bouw stenen:
 
-    ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
+1. **[Configureer Azure AD SSO](#configure-azure-ad-sso)** -om uw gebruikers in staat te stellen deze functie te gebruiken.
+    1. **[Een Azure AD-test gebruiker maken](#create-an-azure-ad-test-user)** : u kunt eenmalige aanmelding voor Azure AD testen met B. Simon.
+    1. **[Wijs de Azure AD-test gebruiker](#assign-the-azure-ad-test-user)** toe, zodat B. Simon de eenmalige aanmelding van Azure AD kan gebruiken.
+1. **[VELPIC SAML SSO configureren](#configure-velpic-saml-sso)** : Hiermee configureert u de instellingen voor eenmalige aanmelding aan de kant van de toepassing.
+    1. **[Maak een VELPIC SAML test User](#create-velpic-saml-test-user)** -als u wilt dat er een equivalent van B. Simon in Velpic SAML is gekoppeld aan de Azure AD-representatie van de gebruiker.
+1. **[SSO testen](#test-sso)** : om te controleren of de configuratie werkt.
 
-3. Als u de nieuwe toepassing wilt toevoegen, klikt u op de knop **Nieuwe toepassing** boven aan het dialoogvenster.
+## <a name="configure-azure-ad-sso"></a>Azure AD SSO configureren
 
-    ![De knop Nieuwe toepassing](common/add-new-app.png)
+Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
 
-4. Typ in het zoekvak **Velpic SAML**, selecteer **Velpic SAML** van resultaat deelvenster klik vervolgens op **toevoegen** om toe te voegen van de toepassing.
+1. Zoek in de [Azure Portal](https://portal.azure.com/)op de pagina **Velpic SAML** -toepassings integratie de sectie **beheren** en selecteer **eenmalige aanmelding**.
+1. Selecteer op de pagina **Eén aanmeldings methode selecteren** de optie **SAML**.
+1. Klik op de pagina **eenmalige aanmelding met SAML instellen** op het pictogram bewerken/pen voor **eenvoudige SAML-configuratie** om de instellingen te bewerken.
 
-    ![Velpic SAML in de lijst met resultaten](common/search-new-app.png)
+   ![Standaard SAML-configuratie bewerken](common/edit-urls.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
-
-In deze sectie maakt u configureert en test Azure AD eenmalige aanmelding met Velpic SAML op basis van een testgebruiker met de naam **Britta Simon**.
-Voor eenmalige aanmelding om te werken, moet een koppeling relatie tussen een Azure AD-gebruiker en de gerelateerde gebruiker in SAML-Velpic tot stand worden gebracht.
-
-Als u wilt configureren en testen van Azure AD eenmalige aanmelding met Velpic SAML, u nodig hebt voor de volgende bouwstenen:
-
-1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)** : als u wilt dat uw gebruikers deze functie kunnen gebruiken.
-2. **[Configureer Velpic SAML Single Sign-On](#configure-velpic-saml-single-sign-on)**  : als u wilt de Single Sign-On-instellingen configureren op de toepassing aan clientzijde.
-3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** : als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
-4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)** : als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
-5. **[Maak de testgebruiker Velpic SAML](#create-velpic-saml-test-user)**  : als u wilt een equivalent van Britta Simon in Velpic SAML die is gekoppeld aan de Azure AD-weergave van de gebruiker hebben.
-6. **[Eenmalige aanmelding testen](#test-single-sign-on)** : als u wilt controleren of de configuratie werkt.
-
-### <a name="configure-azure-ad-single-sign-on"></a>Azure AD configureren voor eenmalige aanmelding
-
-In deze sectie gaat u Azure AD-eenmalige aanmelding in de Azure-portal inschakelen.
-
-Voor het configureren van Azure AD eenmalige aanmelding met Velpic SAML, moet u de volgende stappen uitvoeren:
-
-1. In de [Azure-portal](https://portal.azure.com/)op de **Velpic SAML** toepassing integratie weergeeft, schakelt **eenmalige aanmelding**.
-
-    ![Koppeling Eenmalige aanmelding configureren](common/select-sso.png)
-
-2. In het dialoogvenster **Een methode voor eenmalige aanmelding selecteren** selecteert u de modus **SAML/WS-Federation** om eenmalige aanmelding in te schakelen.
-
-    ![De modus Eenmalige aanmelding selecteren](common/select-saml-option.png)
-
-3. Op de pagina **Eenmalige aanmelding met SAML instellen** klikt u op het pictogram **Bewerken** om het dialoogvenster **Standaard SAML-configuratie** te openen.
-
-    ![Standaard SAML-configuratie bewerken](common/edit-urls.png)
-
-4. In de sectie **Standaard SAML-configuratie** voert u de volgende stappen uit:
-
-    ![Velpic SAML-domein en URL's, eenmalige aanmelding informatie](common/sp-identifier.png)
+1. Voer in de sectie **basis configuratie van SAML** de waarden in voor de volgende velden:
 
     a. In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://<sub-domain>.velpicsaml.net`
 
     b. In het tekstvak **Id (Entiteits-id)** typt u een URL met de volgende notatie: `https://auth.velpic.com/saml/v2/<entity-id>/login`
 
     > [!NOTE]
-    > Houd er rekening mee dat de aanmeldings-URL wordt geleverd door het Velpic SAML-team en id-waarde beschikbaar is bij het configureren van de invoegtoepassing SSO Velpic SAML aan. U moet deze waarde van de toepassingspagina Velpic SAML kopiëren en plak deze hier.
+    > Houd er rekening mee dat de aanmeldings-URL wordt verschaft door het Velpic SAML-team en de id-waarde is beschikbaar wanneer u de SSO-invoeg toepassing op Velpic-SAML-zijde configureert. U moet deze waarde kopiëren van de Velpic SAML Application-pagina en deze hier plakken.
 
-5. Op de pagina **Eenmalige aanmelding met SAML instellen** in het gedeelte **SAML-handtekeningcertificaat** klikt u op **Downloaden** om het **XML-bestand met federatieve metagegevens**  te downloaden uit de gegeven opties overeenkomstig met wat u nodig hebt, en slaat u dit op uw computer op.
+1. Zoek op de pagina **eenmalige aanmelding met SAML instellen** , in de sectie **SAML-handtekening certificaat** , de **federatieve meta gegevens-XML** en selecteer **downloaden** om het certificaat te downloaden en op uw computer op te slaan.
 
     ![De link om het certificaat te downloaden](common/metadataxml.png)
 
-6. Op de **Velpic SAML instellen** sectie, kopieert u de juiste URL('s) volgens uw behoeften.
+1. Kopieer op de sectie **VELPIC SAML instellen** de gewenste URL ('s) op basis van uw vereiste.
 
     ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
-    a. Aanmeldings-URL
+### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
-    b. Azure AD-id
+In deze sectie maakt u een test gebruiker in de Azure Portal met de naam B. Simon.
 
-    c. Afmeldings-URL
-
-### <a name="configure-velpic-saml-single-sign-on"></a>Configureer SAML Velpic Single Sign-On
-
-1. In een ander browservenster, meld u aan bij uw bedrijf Velpic SAML site als beheerder.
-
-2. Klik op **beheren** tabblad en Ga naar **integratie** sectie waar u nodig hebt op **invoegtoepassingen** om te maken van nieuwe invoegtoepassing voor aanmelding bij.
-
-    ![Invoegtoepassing](./media/velpicsaml-tutorial/velpic_1.png)
-
-3. Klik op de **'Add invoegtoepassing'** knop.
-    
-    ![Invoegtoepassing](./media/velpicsaml-tutorial/velpic_2.png)
-
-4. Klik op de **SAML** tegel op de pagina toevoegen-invoegtoepassing.
-    
-    ![Invoegtoepassing](./media/velpicsaml-tutorial/velpic_3.png)
-
-5. Voer de naam van de nieuwe SAML-invoegtoepassing en klik op de **'Toevoegen'** knop.
-
-    ![Invoegtoepassing](./media/velpicsaml-tutorial/velpic_4.png)
-
-6. Voer de gegevens als volgt:
-
-    ![Invoegtoepassing](./media/velpicsaml-tutorial/velpic_5.png)
-
-    a. In de **naam** tekstvak, typ de naam van SAML-invoegtoepassing.
-
-    b. In de **URL-verlener** tekstvak, plak de **Azure AD-id** u gekopieerd uit de **aanmelding configureren** venster van de Azure-portal.
-
-    c. In de **Provider metagegevens Config** uploaden van de Metadata-XML-bestand dat u hebt gedownload van Azure portal.
-
-    d. U kunt er ook voor kiezen om in te schakelen van SAML just-in-time inrichting door in te schakelen de **'Automatisch maken van nieuwe gebruikers'** selectievakje. Als een gebruiker niet in Velpic bestaat en deze markering niet is ingeschakeld, mislukt de aanmelding van Azure. Als de vlag is ingeschakeld. de gebruiker automatisch worden ingericht in Velpic op het moment van de aanmelding. 
-
-    e. Kopieer de **eenmalige aanmelding op URL** uit de tekst vak en plak deze in Azure portal.
-    
-    f. Klik op **Opslaan**.
-
-### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken 
-
-Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam Britta Simon te maken.
-
-1. Selecteer in het linkerdeelvenster in de Azure-portal de optie **Azure Active Directory**, selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
-
-    ![De koppelingen Gebruikers en groepen en Alle gebruikers](common/users.png)
-
-2. Selecteer **Nieuwe gebruiker** boven aan het scherm.
-
-    ![Knop Nieuwe gebruiker](common/new-user.png)
-
-3. In Gebruikerseigenschappen voert u de volgende stappen uit.
-
-    ![Het dialoogvenster Gebruiker](common/user-properties.png)
-
-    a. Voer in het veld **Naam** **Britta Simon**in.
-  
-    b. In de **gebruikersnaam** veldtype `brittasimon@yourcompanydomain.extension`. Bijvoorbeeld: BrittaSimon@contoso.com
-
-    c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
-
-    d. Klik op **Create**.
+1. Selecteer in het linkerdeel venster van de Azure Portal **Azure Active Directory**, selecteer **gebruikers**en selecteer vervolgens **alle gebruikers**.
+1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
+1. Voer de volgende stappen uit in de eigenschappen van de **gebruiker** :
+   1. Voer in het veld **Naam** `B.Simon` in.  
+   1. Voer in het veld **gebruikers naam** de username@companydomain.extension in. Bijvoorbeeld `B.Simon@contoso.com`.
+   1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
+   1. Klik op **Maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie maakt inschakelen u Britta Simon gebruiken Azure eenmalige aanmelding door toegang te verlenen aan Velpic SAML.
+In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebruiken door toegang te verlenen aan Velpic SAML.
 
-1. Selecteer in de Azure portal, **bedrijfstoepassingen**, selecteer **alle toepassingen**en selecteer vervolgens **Velpic SAML**.
+1. Selecteer in het Azure Portal **bedrijfs toepassingen**en selecteer vervolgens **alle toepassingen**.
+1. Selecteer in de lijst toepassingen de optie **VELPIC SAML**.
+1. Ga op de pagina overzicht van de app naar de sectie **beheren** en selecteer **gebruikers en groepen**.
 
-    ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
+   ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
-2. Selecteer in de lijst met toepassingen, **Velpic SAML**.
+1. Selecteer **gebruiker toevoegen**en selecteer vervolgens **gebruikers en groepen** in het dialoog venster **toewijzing toevoegen** .
 
-    ![De Velpic SAML-koppeling in de lijst met toepassingen](common/all-applications.png)
+    ![De koppeling gebruiker toevoegen](common/add-assign-user.png)
 
-3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
+1. Selecteer in het dialoog venster **gebruikers en groepen** **B. Simon** van de lijst gebruikers en klik vervolgens op de knop **selecteren** onder aan het scherm.
+1. Als u een wille keurige rol verwacht in de SAML-bewering, selecteert u in het dialoog venster **rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **selecteren** onder aan het scherm.
+1. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
-    ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
+## <a name="configure-velpic-saml-sso"></a>Velpic SAML SSO configureren
 
-4. Klik op de knop**Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen**.
+1. Als u de configuratie in Velpic SAML wilt automatiseren, moet u de **uitbrei ding mijn apps Secure Sign-in browser** installeren door te klikken op **de uitbrei ding installeren**.
 
-    ![Het deelvenster Toewijzing toevoegen](common/add-assign-user.png)
+    ![Uitbrei ding voor mijn apps](common/install-myappssecure-extension.png)
 
-5. Selecteer in het dialoogvenster **Gebruikers en groepen** **Britta Simon** in de lijst met gebruikers en klik op de knop **Selecteren** onder aan het scherm.
+2. Nadat u een uitbrei ding aan de browser hebt toegevoegd, klikt u op **VELPIC SAML instellen** gaat u naar de Velpic SAML-toepassing. Geef de beheerders referenties op om u aan te melden bij Velpic SAML. Met de browser uitbreiding wordt de toepassing automatisch voor u geconfigureerd en wordt stap 3-8 geautomatiseerd.
 
-6. Als u een waarde voor een rol verwacht in de SAML-bewering, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren en vervolgens op de knop **Selecteren** onder aan het scherm klikken.
+    ![Configuratie van Setup](common/setup-sso.png)
 
-7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
+3. Als u Velpic SAML hand matig wilt instellen, opent u een nieuw webbrowser venster en meldt u zich aan bij uw Velpic SAML-bedrijfs site als beheerder en voert u de volgende stappen uit:
 
-### <a name="create-velpic-saml-test-user"></a>Velpic SAML testgebruiker maken
+4. Klik op het tabblad **beheren** en ga naar **integratie** sectie waar u op de knop **plugins** moet klikken om een nieuwe invoeg toepassing te maken voor aanmelden.
 
-Deze stap is doorgaans niet vereist als de toepassing just-in-tijd van gebruikersinrichting ondersteunt. Als het automatisch inrichten van gebruikers niet is ingeschakeld kan vervolgens handmatig maken worden uitgevoerd zoals hieronder wordt beschreven.
+    ![Invoegtoepassing](./media/velpicsaml-tutorial/velpic_1.png)
 
-Meld u aan bij uw site van het bedrijf Velpic SAML als beheerder en voert u de volgende stappen uit:
+5. Klik op de knop **Plugin' toevoegen** .
     
-1. Klik op het tabblad beheren en gaat u naar de sectie gebruikers, en klik vervolgens op de knop Nieuwe gebruikers toe te voegen.
+    ![Invoegtoepassing](./media/velpicsaml-tutorial/velpic_2.png)
 
-    ![Gebruiker toevoegen](./media/velpicsaml-tutorial/velpic_7.png)
-
-2. Op de **'Nieuwe gebruiker maken'** dialoogvenster pagina, de volgende stappen uitvoeren.
-
-    ![user](./media/velpicsaml-tutorial/velpic_8.png)
+6. Klik op de tegel **SAML** op de pagina invoeg toepassing toevoegen.
     
-    a. In de **voornaam** tekstvak, de eerste naam van Julia.
+    ![Invoegtoepassing](./media/velpicsaml-tutorial/velpic_3.png)
 
-    b. In de **achternaam** tekstvak typt u de achternaam van Simon.
+7. Voer de naam van de nieuwe SAML-invoeg toepassing in en klik op de knop **toevoegen** .
 
-    c. In de **gebruikersnaam** tekstvak, typ de naam van de gebruiker van Britta Simon.
+    ![Invoegtoepassing](./media/velpicsaml-tutorial/velpic_4.png)
 
-    d. In de **e** tekstvak typt u het e-mailadres van Brittasimon@contoso.com account.
+8. Voer de volgende gegevens in:
 
-    e. De rest van de informatie is optioneel en u deze indien nodig kunt invullen.
+    ![Invoegtoepassing](./media/velpicsaml-tutorial/velpic_5.png)
+
+    a. Typ in het tekstvak **naam** de naam van de SAML-invoeg toepassing.
+
+    b. Plak in het tekstvak **URL van uitgever** de **Azure ad-id** die u hebt gekopieerd uit het venster **aanmelden configureren** van de Azure Portal.
+
+    c. Upload het XML-bestand met meta gegevens dat u van Azure Portal hebt gedownload in de configuratie van de provider van de **META** gegevens.
+
+    d. U kunt er ook voor kiezen om SAML just-in-time inrichten in te scha kelen door het selectie vakje **' automatisch nieuwe gebruikers maken '** in te scha kelen. Als een gebruiker niet bestaat in Velpic en deze vlag niet is ingeschakeld, mislukt de aanmelding vanuit Azure. Als de markering is ingeschakeld, wordt de gebruiker automatisch ingericht in Velpic op het moment van de aanmelding. 
+
+    e. Kopieer de **URL voor eenmalige aanmelding** uit het tekstvak en plak deze in de Azure Portal.
+    
+    f. Klik op **Opslaan**.
+
+### <a name="create-velpic-saml-test-user"></a>Velpic SAML-test gebruiker maken
+
+Deze stap is doorgaans niet vereist omdat de toepassing just-in-time-gebruikers inrichting ondersteunt. Als de automatische gebruikers inrichting niet is ingeschakeld, kan hand matig maken van de gebruiker worden uitgevoerd, zoals hieronder wordt beschreven.
+
+Meld u aan bij uw Velpic SAML-bedrijfs site als beheerder en voer de volgende stappen uit:
+    
+1. Klik op het tabblad beheren en ga naar de sectie gebruikers en klik vervolgens op de knop Nieuw om gebruikers toe te voegen.
+
+    ![gebruiker toevoegen](./media/velpicsaml-tutorial/velpic_7.png)
+
+2. Voer de volgende stappen uit op de dialoog pagina **' nieuwe gebruiker maken '** .
+
+    ![Gebruiker](./media/velpicsaml-tutorial/velpic_8.png)
+    
+    a. In het tekstvak **voor de voor naam** typt u de voor naam B.
+
+    b. Typ in het tekstvak **Achternaam** de achternaam van Simon.
+
+    c. Typ in het tekstvak **gebruikers naam** de gebruikers naam van B. Simon.
+
+    d. Typ in het tekstvak **e-mail** het e-mail adres van B.Simon@contoso.com-account.
+
+    e. De rest van de informatie is optioneel. u kunt deze indien nodig invullen.
     
     f. Klik op **OPSLAAN**.
 
-### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen 
+## <a name="test-sso"></a>SSO testen 
 
-In deze sectie maakt testen u uw Azure AD eenmalige aanmelding configuratie met behulp van het toegangsvenster.
+In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-1. Als u de Velpic SAML-tegel in het toegangsvenster klikt, krijgt u de aanmeldingspagina van Velpic SAML-toepassing. U ziet de **'Aanmelden met Azure AD'** knop op de aanmeldingspagina.
+1. Wanneer u op de tegel Velpic SAML in het toegangs venster klikt, moet u de aanmeldings pagina van de Velpic SAML-toepassing ophalen. De knop **Aanmelden met Azure AD** wordt weer geven op de aanmeldings pagina.
 
     ![Invoegtoepassing](./media/velpicsaml-tutorial/velpic_6.png)
 
-1. Klik op de **'Aanmelden met Azure AD'** knop aanmelden bij Velpic met behulp van uw Azure AD-account.
+1. Klik op de knop **Aanmelden met Azure AD** om u aan te melden bij Velpic met uw Azure ad-account.
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
-- [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) (Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory)
 
-- [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
+- [What is application access and single sign-on with Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat is toegang tot toepassingen en eenmalige aanmelding bij Azure Active Directory?)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+
+- [Probeer Velpic SAML met Azure AD](https://aad.portal.azure.com/)
 
