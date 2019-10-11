@@ -432,6 +432,8 @@
           href: control-flow-get-metadata-activity.md
         - name: If Condition Activity
           href: control-flow-if-condition-activity.md
+        - name: Activiteit wisselen
+          href: control-flow-switch-activity.md
         - name: Opzoekactiviteit
           href: control-flow-lookup-activity.md
         - name: Activiteit variabele instellen
@@ -598,6 +600,8 @@
           href: ssis-integration-runtime-management-troubleshoot.md
         - name: Problemen met het uitvoeren van pakketten in Azure-SSIS IR oplossen
           href: ssis-integration-runtime-ssis-activity-faq.md
+        - name: Problemen met gegevensstromen oplossen
+          href: data-flow-troubleshoot-guide.md
 - name: Scenario's
   items:
     - name: Gegevensmigratie voor data lake en EDW

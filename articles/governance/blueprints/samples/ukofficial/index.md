@@ -1,18 +1,18 @@
 ---
-title: Voorbeelden - Blauwdruk voor UK-OFFICIAL en UK NHS - Overzicht
-description: Overzicht en architectuur van de UK OFFICIAL- en UK NHS-blauwdrukvoorbeelden.
+title: Voorbeeld - blauwdruk UK-OFFICIAL en UK NHS - overzicht
+description: Overzicht en architectuur van de UK OFFICIAL- en UK NHS-blauwdrukvoorbeelden. Met dit blauwdrukvoorbeeld kunnen klanten specifieke besturingselementen bekijken.
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 06/26/2019
 ms.topic: conceptual
 ms.service: blueprints
-ms.openlocfilehash: 96e0a8e6d1a028cece6b8cc36a079062a02320eb
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 2478dce573fac52d948e6e180d9716beda34b44b
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71980741"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72248771"
 ---
 # <a name="overview-of-the-uk-official-and-uk-nhs-blueprint-samples"></a>Overzicht van de UK OFFICIAL- en UK NHS-blauwdrukvoorbeelden
 

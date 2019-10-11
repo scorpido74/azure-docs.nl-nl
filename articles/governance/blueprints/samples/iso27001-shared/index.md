@@ -1,17 +1,17 @@
 ---
-title: Voorbeelden - Blauwdruk voor ISO 27001 conforme gedeelde services - Overzicht
-description: Overzicht en architectuur van de voorbeeldblauwdruk voor ISO 27001 conforme gedeelde services.
+title: Voorbeeld - blauwdruk ISO 27001 conforme gedeelde services - overzicht
+description: Overzicht en architectuur van de voorbeeldblauwdruk voor ISO 27001 conforme gedeelde services. Met dit blauwdrukvoorbeeld kunnen klanten specifieke besturingselementen van ISO 27001 bekijken.
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 03/14/2019
 ms.topic: sample
 ms.service: blueprints
-ms.openlocfilehash: 25e16056b83d1a36be66cffacfc0ffe0e7e32c85
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: d344ccab2587494f14c4f518294032016fa3cb21
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71981563"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72248913"
 ---
 # <a name="overview-of-the-iso-27001-shared-services-blueprint-sample"></a>Overzicht van de voorbeeldblauwdruk voor ISO 27001 conforme gedeelde services
 

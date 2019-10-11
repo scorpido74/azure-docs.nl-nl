@@ -1,17 +1,17 @@
 ---
-title: Voorbeelden - blauwdruk IRS 1075 - Overzicht
-description: Overzicht van het blauwdrukvoorbeeld IRS 1075.
+title: Voorbeeld - blauwdruk IRS 1075 - overzicht
+description: Overzicht van het blauwdrukvoorbeeld IRS 1075. Met dit blauwdrukvoorbeeld kunnen klanten specifieke besturingselementen van IRS 1075 bekijken.
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 08/07/2019
 ms.topic: sample
 ms.service: blueprints
-ms.openlocfilehash: 712d0853ec231001b7f1831a4d9c83177d5242a2
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 94a4cfdaae840938c1ad5ebc8428a9e8b873cb4c
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71981611"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72248978"
 ---
 # <a name="overview-of-the-irs-1075-blueprint-sample"></a>Overzicht van het blauwdrukvoorbeeld IRS 1075
 

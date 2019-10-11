@@ -8,10 +8,10 @@ metadata:
   author: ekpgh
   ms.service: avere-vfxt
   ms.topic: landing-page
-  ms.date: 10/31/2018
-  ms.author: v-erkell
+  ms.date: 10/09/2019
+  ms.author: rohogue
 abstract:
-  description: 'Avere vFXT for Azure biedt een cloud-cachelaag voor gegevensintensieve high performance computing (HPC)-taken. Door bestanden dichtbij uw rekenknooppunten in cache op te slaan, verhoogt Avere vFXT de leessnelheden en kunt u zelfs bij piekbelasting ongehinderd werken. Avere vFXT werkt het beste met systemen die tussen 1000 en 40.000 clientkernen hebben. <p>Avere vFXT kan worden gecombineerd met uw bestaande on-premises gegevensopslag om Azure-computingbronnen toegang te geven tot lokale actieve bestanden die zijn opgeslagen in de langetermijnopslag van uw datacenter.'
+  description: 'Avere vFXT for Azure biedt een cloud-cachelaag voor gegevensintensieve HPC-taken (High Performance Computing). Door bestanden dichtbij uw rekenknooppunten in cache op te slaan, verhoogt Avere vFXT de leessnelheden en kunt u zelfs bij piekbelasting ongehinderd werken. Avere vFXT werkt het beste met systemen die tussen 1000 en 40.000 clientkernen hebben. <p>Avere vFXT werkt samen met uw bestaande gegevensopslag om bestanden in de buurt te brengen van op Azure-gebaseerde rekenresources. Actieve bestanden worden nog steeds voor de lange termijn opgeslagen in uw datacenter.'
 sections:
   - title: Aan de slag met Avere vFXT for Azure
     items:

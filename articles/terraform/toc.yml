@@ -25,7 +25,7 @@
       items:
         - name: Een Kubernetes-cluster maken met AKS
           href: terraform-create-k8s-cluster-with-tf-and-aks.md
-        - name: Een Kubernetes-cluster met AKS maken met Application Gateway als inkomende controller
+        - name: Controller voor inkomend verkeer van Application Gateway maken in AKS
           href: terraform-create-k8s-cluster-with-aks-applicationgateway-ingress.md
     - name: Infrastructuur
       items:

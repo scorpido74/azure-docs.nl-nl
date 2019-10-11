@@ -119,6 +119,10 @@
           href: app/troubleshoot-faq.md
 - name: Handleidingen
   items:
+    - name: Bewakingsscenario's
+      items:
+        - name: Azure-service bewaken
+          href: insights/monitor-azure-resource.md
     - name: Azure Monitor beheren
       items:
         - name: Een werkruimte-implementatie ontwerpen

@@ -1,116 +1,115 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Documentatie voor Azure Media Services v3
+summary: Informatie over coderen en verpakken van content, video-streaming op aanvraag, live uitzenden en het analyseren van uw video's met Media Services v3. Zelfstudies, API-verwijzingen en andere documentatie laten zien hoe u veilig on-demand of live video- of audiostromen levert aan miljoenen gebruikers.
 metadata:
-  document_id: null
-  title: 'Documentatie voor Azure Media Services v3 - zelfstudies, API-verwijzing | Microsoft Docs'
-  description: 'Informatie over coderen en verpakken van content, video-streaming op aanvraag, live uitzenden en het analyseren van uw video''s met Media Services v3. Zelfstudies, API-verwijzingen en andere documentatie laten zien hoe u veilig on-demand of live video- of audiostromen levert aan miljoenen gebruikers.'
+  title: Documentatie voor Azure Media Services v3
+  description: Informatie over coderen en verpakken van content, video-streaming op aanvraag, live uitzenden en het analyseren van uw video's met Media Services v3.
   services: media-services
-  author: Juliako
-  manager: femila
   ms.service: media-services
-  ms.tgt_pltfrm: na
-  ms.devlang: na
+  ms.subservice: 
   ms.topic: landing-page
-  ms.date: 04/12/2019
+  ms.collection: collection
+  author: Juliako
   ms.author: juliako
-abstract:
-  description: 'Informatie over coderen en verpakken van content, video-streaming op aanvraag, live uitzenden en het analyseren van uw video''s met Media Services v3. Zelfstudies, API-verwijzingen en andere documentatie laten zien hoe u veilig on-demand of live video- of audiostromen levert aan miljoenen gebruikers. <br/> De SDK''s zijn gebaseerd op <a href="https://aka.ms/ams-v3-rest-sdk">Media Services v3 OpenAPI-specificatie (Swagger)</a>.'
-sections:
-  - title: null
-    items:
-      - type: list
-        style: cards
-        className: cardImageOuter
-        items:
-          - title: Informatie over concepten
-            html: '<p><a href="https://docs.microsoft.com/azure/media-services/latest/storage-account-concept">Uploaden naar en opslaan in de cloud</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/encoding-concept">Encoding</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/reacting-to-media-services-events">Controle</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/analyzing-video-audio-files-concept">Media Analytics</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/dynamic-packaging-overview">Verpakken</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/content-protection-overview">Beveiliging</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/live-streaming-overview">Live streamen</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/use-azure-media-player">Afspeel-clients</a></p>'
-          - title: Ontwikkelen met de v3-API
-            html: '<p><a href="https://docs.microsoft.com/azure/media-services/latest/media-services-apis-overview">Hulp</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/media-rest-apis-with-postman">Ontwikkelen met REST</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/configure-connect-java-howto">Verbinding maken met Java</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/configure-connect-dotnet-howto">Verbinding maken met .NET</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/configure-connect-nodejs-howto">Verbinding maken met Node.js</a></p>'
-  - title: QuickStarts van vijf minuten
-    items:
-      - type: paragraph
-        text: 'Informatie over het maken van een Media Services-account, codering, verpakking en streaming van uw video''s:'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: media/index/dotnet.svg
-            text: Coderen en streamen met .NET
-            href: /azure/media-services/latest/stream-files-dotnet-quickstart
-          - image:
-              src: media/index/cli.svg
-            text: Coderen en streamen met CLI
-            href: /azure/media-services/latest/stream-files-cli-quickstart
-          - image:
-              src: media/index/logo_nodejs.svg
-            text: Coderen en streamen met Node.js
-            href: /azure/media-services/latest/stream-files-nodejs-quickstart
-  - title: Zelfstudies met stapsgewijze instructies
-    items:
-      - type: paragraph
-        text: 'In deze zelfstudies ziet u hoe u met de kracht van het geïntegreerde Azure CDN veilig en just-in-time video''s kunt verpakken, zowel live als op aanvraag, en de schaal kunt aanpassen:'
-      - type: list
-        style: cards
-        className: cardsM
-        columns: 1
-        items:
-          - html: <p>In deze zelfstudie wordt een lokaal videobestand geüpload en gecodeerd en wordt de gecodeerde inhoud gestreamd.<p/>
-            href: /azure/media-services/latest/stream-files-tutorial-with-api
-            title: Geüploade bestanden coderen en video streamen
-          - html: <p>In de zelfstudie wordt uitgelegd hoe u een live-gebeurtenis kunt voorbereiden. Vervolgens wordt in de zelfstudie besproken hoe u een live-gebeurtenis van het type pass-through kunt maken.</p>
-            href: /azure/media-services/latest/stream-live-tutorial-with-api
-            title: Live uitzenden
-          - html: <p>In deze zelfstudie ziet u hoe u video's kunt analyseren met de Azure Media Services-API.</p>
-            href: /azure/media-services/latest/analyze-videos-tutorial-with-api
-            title: Uw video analyseren
-          - html: <p>Informatie over het configureren en gebruiken van Media Services-API's om uw inhoud dynamisch te versleutelen met AES-128.</p>
-            href: /azure/media-services/latest/protect-with-aes128
-            title: Dynamisch versleutelen met AES-128
-          - html: '<p>Informatie over het configureren en gebruiken van Media Services-API''s uw inhoud dynamisch te versleutelen met multi-DRM (PlayReady, Widevine en FairPlay).</p>'
-            href: /azure/media-services/latest/protect-with-drm
-            title: Dynamisch versleutelen met multi-DRM
-          - html: <p>In deze zelfstudie wordt besproken hoe u een extern bestand kunt coderen op basis van een URL en vervolgens video kunt streamen.</p>
-            href: /azure/media-services/latest/stream-files-tutorial-with-rest
-            title: Externe bestanden coderen en video streamen
-  - title: Voorbeelden
-    items:
-      - type: paragraph
-        text: 'In de volgende GitHub-voorbeelden kunt u zien hoe u API''s kunt gebruiken voor video-streaming, live uitzenden en het analyseren van uw video''s met Media Services v3:'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: media/index/cli.svg
-            text: Azure-CLI
-            href: 'https://github.com/Azure/azure-docs-cli-python-samples/tree/master/media-services'
-          - image:
-              src: media/index/rest.svg
-            text: REST met Postman
-            href: 'https://github.com/Azure-Samples/media-services-v3-rest-postman'
-          - image:
-              src: media/index/logo_dotnet_core.svg
-            text: .NET Core met Visual Studio Code
-            href: 'https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials'
-          - image:
-              src: media/index/dotnet.svg
-            text: .NET met Visual Studio
-            href: 'https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials'
-          - image:
-              src: media/index/logo_nodejs.svg
-            text: Node.js
-            href: 'https://github.com/Azure-Samples/media-services-v3-node-tutorials'
-  - title: Naslaginformatie
-    items:
-      - type: paragraph
-        text: ''
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: '<a href="https://aka.ms/ams-v3-cli-ref">Azure-CLI</a>'
-          - html: '<a href="https://aka.ms/ams-v3-rest-ref">REST</a>'
-          - html: '<a href="https://aka.ms/ams-v3-dotnet-ref">.NET</a>'
-          - html: '<a href="https://aka.ms/ams-v3-java-ref">Java</a>'
-          - html: '<a href="https://aka.ms/ams-v3-python-ref">Python</a>'
-          - html: '<a href="https://aka.ms/ams-v3-nodejs-ref">Node.js</a>'
+  ms.date: 10/07/2019
+  ms.openlocfilehash: b55677aba5f99d4960d51d3a717175d47db026e2
+  ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+  ms.translationtype: HT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 10/10/2019
+  ms.locfileid: "72244231"
+landingContent:
+- title: Informatie over Media Services
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Wat is Media Services v3?
+      url: media-services-overview.md
+    - text: Wat is er nieuw in Media Services?
+      url: release-notes.md
+  - linkListType: concept
+    links:
+    - text: Media Services-accounts
+      url: media-services-account-concept.md
+    - text: Opslagaccounts
+      url: storage-account-concept.md
+    - text: Verpakking
+      url: dynamic-packaging-overview.md
+    - text: Bewaking
+      url: reacting-to-media-services-events.md
+    - text: Afspeel-clients
+      url: use-azure-media-player.md
+    - text: Richtlijnen voor ontwikkelen met v3-API
+      url: media-services-apis-overview.md
+- title: Aan de slag
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Een account maken
+      url: create-account-cli-how-to.md
+    - text: Toegang tot API
+      url: access-api-cli-how-to.md
+  - linkListType: download
+    links:
+    - text: .NET SDK-voorbeelden
+      url: https://github.com/Azure-Samples/media-services-v3-dotnet
+    - text: Java SDK-voorbeelden
+      url: https://github.com/Azure-Samples/media-services-v3-java
+    - text: Voorbeelden van verzamelen met REST Postman
+      url: https://github.com/Azure-Samples/media-services-v3-rest-postman
+  - linkListType: reference
+    links:
+    - text: Azure-CLI
+      url: https://aka.ms/ams-v3-cli-ref
+    - text: REST
+      url: https://aka.ms/ams-v3-rest-ref
+    - text: .NET
+      url: https://aka.ms/ams-v3-dotnet-ref
+    - text: Java
+      url: https://aka.ms/ams-v3-java-ref
+- title: Live streamen
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Live streamen
+      url: live-streaming-overview.md
+  - linkListType: tutorial
+    links:
+    - text: Live streamen
+      url: stream-live-tutorial-with-api.md
+- title: Streamen on demand
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Uploaden
+      url: assets-concept.md
+    - text: Encoding
+      url: encoding-concept.md
+  - linkListType: tutorial
+    links:
+    - text: Externe bestanden en streams coderen
+      url: stream-files-tutorial-with-rest.md
+    - text: Geüploade bestanden en streams coderen
+      url: stream-files-tutorial-with-api.md
+- title: Inhoud versleutelen
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Beveiliging
+      url: content-protection-overview.md
+  - linkListType: tutorial
+    links:
+    - text: Dynamisch versleutelen met AES-128
+      url: protect-with-aes128.md
+    - text: Dynamisch versleutelen met DRM
+      url: protect-with-drm.md
+- title: Inhoud analyseren
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Media-analyses
+      url: analyzing-video-audio-files-concept.md
+  - linkListType: tutorial
+    links:
+    - text: Video's analyseren
+      url: analyze-videos-tutorial-with-api.md

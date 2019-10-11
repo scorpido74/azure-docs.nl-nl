@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/03/2018
-ms.openlocfilehash: 0f64642d04504770415c0d2243ec77b44bde05f2
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
-ms.translationtype: HT
+ms.openlocfilehash: fbc4628ff3d3d7d90f7ec2c47c87f7afa3e9cd43
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566292"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72028834"
 ---
 # <a name="resolving-transact-sql-differences-during-migration-to-sql-database"></a>Verschillen in Transact-SQL oplossen tijdens de migratie naar SQL Database
 
@@ -45,44 +45,44 @@ De belangrijkste DDL-instructies (Data Definition Language) zijn beschikbaar, ma
 Naast Transact-SQL-instructies die betrekking hebben op de niet-ondersteunde functies die worden beschreven in [Azure SQL database functie vergelijking](sql-database-features.md), worden de volgende instructies en groepen instructies niet ondersteund. Als dat het geval is, moet u, als uw data base wordt gemigreerd, gebruikmaken van een van de volgende functies, uw T-SQL opnieuw bezorgen om deze T-SQL-functies en-instructies te elimineren.
 
 - Systeemobjecten sorteren
-- Gerelateerde verbinding: Endpoint-instructies. SQL Database biedt geen ondersteuning voor Windows-verificatie, maar ondersteunt wel de vergelijkbare Azure Active Directory-verificatie. Voor sommige verificatietypen is de nieuwste versie van SSMS vereist. Zie [Verbinding maken met SQL Database of SQL Data Warehouse met behulp van Azure Active Directory-verificatie](sql-database-aad-authentication.md) voor meer informatie.
+- Gerelateerde verbinding: endpoint-instructies. SQL Database biedt geen ondersteuning voor Windows-verificatie, maar ondersteunt wel de vergelijkbare Azure Active Directory-verificatie. Voor sommige verificatietypen is de nieuwste versie van SSMS vereist. Zie [Verbinding maken met SQL Database of SQL Data Warehouse met behulp van Azure Active Directory-verificatie](sql-database-aad-authentication.md) voor meer informatie.
 - Databaseoverschrijdende query’s met drie of vier onderdeelnamen. (Alleen-lezen query’s die databaseoverschrijdend zijn worden ondersteund dankzij [elastische databasequery’s](sql-database-elastic-query-overview.md).)
 - Databaseoverschrijdend het eigendom koppelen, instelling `TRUSTWORTHY`
 - `EXECUTE AS LOGIN` Gebruik in plaats daarvan 'EXECUTE AS USER'.
 - Versleuteling wordt ondersteund, behalve voor Extensible Key Management
-- Gebeurtenis Gebeurtenissen, gebeurtenis meldingen, query meldingen
-- Bestands plaatsing: Syntaxis die betrekking heeft op databasebestandsplaatsing, grootte en databasebestanden die automatisch worden beheer door Microsoft Azure.
-- Hoge Beschik baarheid: Syntaxis die betrekking heeft op hoge beschikbaarheid die wordt beheerd via uw Microsoft Azure-account. Dit omvat syntaxis voor back-ups, herstellen, Always On, databasespiegeling, de back-upfunctie voor logboekbestanden en herstelmodi.
-- Logboek lezer: Syntaxis die afhankelijk is van de logboek lezer, die niet beschikbaar is op SQL Database: Push-replicatie, Change Data Capture. SQL Database kan abonnee zijn op een artikel over push-replicatie.
+- Gebeurtenis: gebeurtenissen, gebeurtenis meldingen, query meldingen
+- File Placement: syntaxis met betrekking tot de plaatsing, grootte en database bestanden van het database bestand die automatisch door Microsoft Azure worden beheerd.
+- Hoge Beschik baarheid: syntaxis met betrekking tot hoge Beschik baarheid, die wordt beheerd via uw Microsoft Azure-account. Dit omvat syntaxis voor back-ups, herstellen, Always On, databasespiegeling, de back-upfunctie voor logboekbestanden en herstelmodi.
+- Log Reader: syntaxis die afhankelijk is van de logboek lezer, die niet beschikbaar is op SQL Database: push-replicatie, Change Data Capture. SQL Database kan abonnee zijn op een artikel over push-replicatie.
 - Functies: `fn_get_sql`, `fn_virtualfilestats`, `fn_virtualservernodes`
-- Hardwaresleutel Syntaxis die betrekking heeft op hardware-gerelateerde server instellingen: zoals geheugen, worker-threads, CPU-affiniteit, tracerings vlaggen. Gebruik in plaats daarvan service lagen en reken grootten.
+- Hardware: syntaxis met betrekking tot hardware-gerelateerde server instellingen: zoals geheugen, worker-threads, CPU-affiniteit, tracerings vlaggen. Gebruik in plaats daarvan service lagen en reken grootten.
 - `KILL STATS JOB`
-- `OPENQUERY`, `OPENROWSET` ,`OPENDATASOURCE`en vier delen van namen
+- `OPENQUERY`, `OPENROWSET`, `OPENDATASOURCE` en vier deel namen
 - .NET Framework: CLR-integratie met SQL Server
 - Semantische zoekopdrachten
-- Server referenties: Gebruik in plaats daarvan [Data Base scoped credentials](https://msdn.microsoft.com/library/mt270260.aspx) .
-- Items op server niveau: Server rollen, `sys.login_token`. `GRANT`, `REVOKE`, en `DENY` van de machtigingen op serverniveau zijn niet beschikbaar, hoewel enkele hiervan worden vervangen door machtigingen op databaseniveau. Sommige handige DMV’s op serverniveau hebben vergelijkbare DMV’s op databaseniveau.
+- Server referenties: gebruik in plaats daarvan [Data Base-bereik referenties](https://msdn.microsoft.com/library/mt270260.aspx) .
+- Items op server niveau: Server functies, `sys.login_token`. `GRANT`, `REVOKE`, en `DENY` van de machtigingen op serverniveau zijn niet beschikbaar, hoewel enkele hiervan worden vervangen door machtigingen op databaseniveau. Sommige handige DMV’s op serverniveau hebben vergelijkbare DMV’s op databaseniveau.
 - `SET REMOTE_PROC_TRANSACTIONS`
 - `SHUTDOWN`
 - `sp_addmessage`
 - `sp_configure`-opties en `RECONFIGURE`. Sommige opties zijn beschikbaar met [ALTER DATABASE SCOPED CONFIGURATION](https://msdn.microsoft.com/library/mt629158.aspx).
 - `sp_helpuser`
 - `sp_migrate_user_to_contained`
-- SQL Server Agent: Syntaxis die afhankelijk is van de SQL Server Agent of de MSDB-database: waarschuwingen, operators, servers voor centraal beheer. Gebruik in plaats daarvan opties voor scripts, zoals Azure PowerShell.
-- SQL Server controle: Gebruik in plaats daarvan SQL Database-controles.
+- SQL Server Agent: syntaxis die afhankelijk is van de SQL Server Agent of de MSDB-Data Base: waarschuwingen, Opera Tors, centrale beheerser vers. Gebruik in plaats daarvan opties voor scripts, zoals Azure PowerShell.
+- SQL Server controle: gebruik in plaats daarvan SQL Database controle.
 - SQL Server-tracering
-- Tracerings vlaggen: Sommige traceermarkeringsitems zijn verplaatst naar compatibiliteitsmodi.
+- Tracerings vlaggen: sommige items van de tracerings vlag zijn verplaatst naar de compatibiliteits modi.
 - Transact-SQL-foutopsporing
-- Triggers: Server-scoped of aanmeldings triggers
-- `USE`rekeningen Als u de database context wilt wijzigen in een andere data base, moet u een nieuwe verbinding maken met de nieuwe data base.
+- Triggers: triggers binnen het serverbereik of aanmeldingstriggers
+- `USE`-instructie: als u de databasecontext wilt wijzigen naar een andere database, moet u een nieuwe verbinding maken met de nieuwe database.
 
 ## <a name="full-transact-sql-reference"></a>Volledige naslaginformatie voor Transact-SQL
 
-Zie [Transact-SQL-Referentie (data base-engine)](https://msdn.microsoft.com/library/bb510741.aspx) in SQL Server Books Online voor meer informatie over de grammatica, het gebruik en de voor beelden van Transact-SQL.
+Zie [Transact-SQL Reference (data base-engine)](https://msdn.microsoft.com/library/bb510741.aspx) In SQL Server Books Online (Engelstalig) voor meer informatie over Transact-SQL-grammatica,-gebruik en-voor beelden.
 
 ### <a name="about-the-applies-to-tags"></a>Over het label 'Van toepassing op'
 
-De Transact-SQL-Naslag informatie bevat artikelen die betrekking hebben op SQL Server versies 2008 van de huidige versie. Onder de titel van het artikel bevindt zich een pictogram balk met de vier SQL Server-platformen en wordt de toepasselijkheid aangegeven. Beschikbaarheidsgroepen zijn bijvoorbeeld geïntroduceerd in SQL Server 2012. In het artikel [beschikbaarheids groep](https://msdn.microsoft.com/library/ff878399.aspx) maken wordt aangegeven dat de instructie van toepassing is op **SQL Server (te beginnen met 2012)** . De instructie is niet van toepassing op SQL Server 2008, SQL Server 2008 R2, Azure SQL Database, Azure SQL Data Warehouse en Parallel Data Warehouse.
+De Transact-SQL-Naslag informatie bevat artikelen die betrekking hebben op SQL Server versies 2008 van de huidige versie. Onder de titel van het artikel bevindt zich een pictogram balk met de vier SQL Server-platformen en wordt de toepasselijkheid aangegeven. Beschikbaarheidsgroepen zijn bijvoorbeeld geïntroduceerd in SQL Server 2012. De @no__t [groep met beschikbaarheids groepen maken](https://msdn.microsoft.com/library/ff878399.aspx)-1article geeft aan dat de instructie van toepassing is op **SQL Server (te beginnen met 2012)** . De instructie is niet van toepassing op SQL Server 2008, SQL Server 2008 R2, Azure SQL Database, Azure SQL Data Warehouse en Parallel Data Warehouse.
 
 In sommige gevallen kan het algemene onderwerp van een artikel in een product worden gebruikt, maar er zijn kleine verschillen tussen producten. De verschillen worden als toepasselijk aangegeven op middel punt in het artikel. In sommige gevallen kan het algemene onderwerp van een artikel in een product worden gebruikt, maar er zijn kleine verschillen tussen producten. De verschillen worden als toepasselijk aangegeven op middel punt in het artikel. Het artikel CREATE TRIGGER is bijvoorbeeld beschikbaar in SQL Database. Maar de optie **alle server** voor triggers op server niveau geeft aan dat triggers op server niveau niet kunnen worden gebruikt in SQL database. Gebruik in plaats daarvan triggers op database niveau.
 

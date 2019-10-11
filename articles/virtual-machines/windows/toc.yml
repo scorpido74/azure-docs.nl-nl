@@ -234,6 +234,10 @@
       items:
         - name: Beveiliging en beleid
           href: security-policy.md
+        - name: Azure Disk Encryption
+          href: disk-encryption-overview.md
+        - name: Ingebouwde beveiligingsmaatregelen
+          href: virtual-machines-windows-security-controls.md
     - name: Toestanden en levenscyclus
       href: states-lifecycle.md
     - name: Bewaking
@@ -242,8 +246,6 @@
       href: backup-recovery.md
     - name: Infrastructuurvoorbeeld
       href: infrastructure-example.md
-    - name: Ingebouwde beveiligingsmaatregelen
-      href: virtual-machines-windows-security-controls.md
 - name: Handleidingen
   items:
     - name: Virtuele machines maken
@@ -286,8 +288,31 @@
         - name: Just-in-time-toegang
           href: ../../security-center/security-center-just-in-time.md
         - name: Versleutelen
-          href: encrypt-disks.md
-          displayName: encryption
+          items:
+            - name: Schijfversleutelingsscenario's voor Windows
+              href: disk-encryption-windows.md
+            - name: VM-versleuteling met Azure CLI
+              href: disk-encryption-cli-quickstart.md
+            - name: VM-versleuteling met Azure PowerShell
+              href: disk-encryption-powershell-quickstart.md
+            - name: VM-versleuteling met de Azure-portal
+              href: disk-encryption-portal-quickstart.md
+            - name: Sleutelkluis voor Azure Disk Encryption
+              href: disk-encryption-key-vault.md
+            - name: Voorbeeldscripts voor schijfversleuteling
+              href: disk-encryption-sample-scripts.md
+            - name: Problemen met schijfversleuteling oplossen
+              href: disk-encryption-troubleshooting.md
+            - name: Veelgestelde vragen over schijfversleuteling
+              href: disk-encryption-faq.md
+            - name: Schijfversleuteling - vorige versie (AAD)
+              items:
+                - name: Overzicht
+                  href: disk-encryption-overview-aad.md
+                - name: Sleutelkluis voor Azure Disk Encryption
+                  href: disk-encryption-key-vault-aad.md
+                - name: Schijfversleutelingsscenario's voor Windows
+                  href: disk-encryption-windows-aad.md
         - name: WinRM gebruiken
           href: winrm.md
         - name: Toegangsbeheer gebruiken
