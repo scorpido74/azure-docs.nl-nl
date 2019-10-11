@@ -1,5 +1,5 @@
 ---
-title: Implementeren naar Azure Kubernetes Service (AKS) met behulp van Jenkins en het blauw/groen-implementatiepatroon
+title: Implementeren naar de Azure Kubernetes-service met Jenkins en het blauw/groen-implementatie patroon
 description: Leer hoe u kunt implementeren naar Azure Kubernetes Service (AKS) met behulp van Jenkins en het blauw/groen-implementatiepatroon.
 ms.service: jenkins
 keywords: jenkins, azure, devops, kubernetes, k8s, aks, blauw/groen-implementatie, continue levering, cd
@@ -7,13 +7,13 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 10/11/2018
-ms.openlocfilehash: 93f2ac284931ba664e0965e537e515c824e6f7a6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 10/09/2019
+ms.openlocfilehash: de9088333f69a22246fe5873d6e09ddb7ba3044a
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60642057"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72249395"
 ---
 # <a name="deploy-to-azure-kubernetes-service-aks-by-using-jenkins-and-the-bluegreen-deployment-pattern"></a>Implementeren naar Azure Kubernetes Service (AKS) met behulp van Jenkins en het blauw/groen-implementatiepatroon
 
@@ -147,7 +147,7 @@ U kunt een blauw/groen-implementatie in AKS handmatig instellen of met een insta
     kubectl apply -f  test-endpoint-green.yml
     ```
 
-1. Werk de DNS-naam bij voor het openbare eindpunt en de testeindpunten. Wanneer u een Kubernetes-cluster maakt, maakt u ook een [aanvullende resourcegroep](https://github.com/Azure/AKS/issues/3), met het naamgevingspatroon **MC_&lt;your-resource-group-name>_&lt;your-kubernetes-cluster-name>_&lt;your-location>**.
+1. Werk de DNS-naam bij voor het openbare eindpunt en de testeindpunten. Wanneer u een Kubernetes-cluster maakt, maakt u ook een [aanvullende resourcegroep](https://github.com/Azure/AKS/issues/3), met het naamgevingspatroon **MC_&lt;your-resource-group-name> _&lt;your-kubernetes-cluster-name>_ &lt;your-location>** .
 
     Zoek de openbare IP’s in de resourcegroep.
 
@@ -259,7 +259,7 @@ In deze sectie ziet u hoe u de Jenkins-server kunt voorbereiden om een build uit
 
 ## <a name="run-the-job"></a>De taak uitvoeren
 
-1. Verifieer dat u uw project succesvol kunt uitvoeren in uw lokale omgeving. Dit doet u al volgt: [Project uitvoeren op lokale machine](https://github.com/Microsoft/todo-app-java-on-azure/blob/master/README.md#run-it).
+1. Verifieer dat u uw project succesvol kunt uitvoeren in uw lokale omgeving. U doet dit als volgt: [Project uitvoeren op lokale machine](https://github.com/Microsoft/todo-app-java-on-azure/blob/master/README.md#run-it).
 
 1. Voer de Jenkins-taak uit. De eerste keer dat u de taak uitvoert, implementeert Jenkins de taken-app in de blauwe omgeving, die de standaard inactieve omgeving is. 
 

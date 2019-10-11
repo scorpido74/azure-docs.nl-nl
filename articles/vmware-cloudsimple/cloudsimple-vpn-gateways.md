@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 8b7b02c164021ac084dccf5663122620b2af1b15
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 662fa342b3a18f726b418c496ff3fda937445301
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972895"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72244769"
 ---
 # <a name="vpn-gateways-overview"></a>Overzicht van VPN-gateways
 
@@ -52,7 +52,7 @@ Een site-naar-site-VPN-verbinding maakt gebruik van de volgende standaard crypto
 | Hash-algoritme| SHA 256 | SHA 256 | SHA 1 |
 | Diffie Hellman-groep (DH-groep) | 2 | 2 | 2 |
 | Levens duur | 28.800 seconden | 28.800 seconden | 28.800 seconden |
-| Gegevensgrootte | 4 GB | 4 GB | 4 GB |
+| Gegevens grootte | 4 GB | 4 GB | 4 GB |
 
 #### <a name="phase-2-proposals"></a>Voorst Ellen voor fase 2
 
@@ -62,7 +62,11 @@ Een site-naar-site-VPN-verbinding maakt gebruik van de volgende standaard crypto
 | Hash-algoritme| SHA 256 | SHA 256 | SHA 1 |
 | Perfecte Forward Secrecy-groep (PFS-groep) | Geen | Geen | Geen |
 | Levens duur | 1\.800 seconden | 1\.800 seconden | 1\.800 seconden |
-| Gegevensgrootte | 4 GB | 4 GB | 4 GB |
+| Gegevens grootte | 4 GB | 4 GB | 4 GB |
+
+
+> [!IMPORTANT]
+> Stel TCP MSS in op 1200 op uw VPN-apparaat. Als uw VPN-apparaten geen ondersteuning bieden voor MSS-bekleming, kunt u in plaats daarvan ook de MTU op de tunnel interface instellen op 1240 bytes.
 
 ## <a name="point-to-site-vpn-gateway"></a>Punt-naar-site-VPN-gateway
 

@@ -5,13 +5,13 @@ author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 09/24/2019
-ms.author: v-erkell
-ms.openlocfilehash: ea23331ebc75b5ede22c9f7357a9e0de12d819e2
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.author: rohogue
+ms.openlocfilehash: 3257cf92c628650fc50e0a36ec37fcab920aba2f
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71299970"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72254565"
 ---
 # <a name="mount-the-azure-hpc-cache-preview"></a>De Azure HPC-cache koppelen (preview)
 
@@ -25,7 +25,7 @@ De koppelings opdracht bestaat uit twee elementen:
 ![scherm afbeelding van de overzichts pagina van het Azure HPC-cache-exemplaar, met een markeer stift rond de lijst met koppelings adressen op de rechter benedenhoek](media/hpc-cache-mount-addresses.png)
 
 > [!NOTE] 
-> De cache koppel adressen komen overeen met netwerk interfaces in het subnet van de cache. In een resource groep worden deze nic's vermeld met namen die eindigen op `-cluster-nic-` en een getal. Wijzig of verwijder deze interfaces niet, of de cache is niet meer beschikbaar.
+> De cache koppel adressen komen overeen met netwerk interfaces in het subnet van de cache. In een resource groep worden deze Nic's vermeld met namen die eindigen op `-cluster-nic-` en een getal. Wijzig of verwijder deze interfaces niet, of de cache is niet meer beschikbaar.
 
 De virtuele naam ruimte paden worden weer gegeven op de pagina **opslag doelen** . Klik op een individuele opslag doel naam om de details ervan weer te geven, inclusief geaggregeerde naam ruimte-paden die eraan zijn gekoppeld.
 
@@ -45,7 +45,7 @@ root@test-client:/tmp# sudo mount 10.0.0.28:/blob-demo-0722 ./hpccache/ -orw,tcp
 root@test-client:/tmp# 
 ```
 
-Wanneer deze opdracht is geslaagd, moet de inhoud van de opslag export zichtbaar zijn in de ``hpccache`` Directory op de client.
+Wanneer deze opdracht is geslaagd, moet de inhoud van de opslag export zichtbaar zijn in de map ``hpccache`` op de client.
 
 > [!NOTE] 
 > Uw clients moeten toegang hebben tot het virtuele netwerk en het subnet dat uw cache heeft. Maak bijvoorbeeld client-Vm's binnen hetzelfde virtuele netwerk, of gebruik een eind punt, gateway of andere oplossing in het virtuele netwerk voor toegang vanaf buiten. Houd er rekening mee dat niets anders kan worden gehost in het subnet van de cache.
@@ -61,7 +61,7 @@ Voor een robuuste client koppeling geeft u deze instellingen en argumenten door 
 ``hard`` | Zachte koppelingen naar de Azure HPC-cache zijn gekoppeld aan toepassings fouten en mogelijke gegevens verlies. 
 ``proto=netid`` | Met deze optie wordt de juiste verwerking van NFS-netwerk fouten ondersteund.
 ``mountproto=netid`` | Deze optie biedt ondersteuning voor de juiste verwerking van netwerk fouten voor koppelings bewerkingen.
-``retry=n`` | Stel ``retry=30`` in om storingen van de tijdelijke koppeling te voor komen. (Een andere waarde wordt aanbevolen in voorgrond koppelingen.)
+``retry=n`` | Stel ``retry=30`` in om fouten bij tijdelijke koppeling te voor komen. (Een andere waarde wordt aanbevolen in voorgrond koppelingen.)
 
 ## <a name="next-steps"></a>Volgende stappen
 

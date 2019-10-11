@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: sajagtap
-ms.openlocfilehash: 8c9f8b3733a4b2491c4199f041ba6b24efbb0224
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: e3b36eae4f6dc4343828a38fa4ffe3920a83f589
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68881904"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72242871"
 ---
 # <a name="create-human-reviews-net"></a>Mensen beoordelingen maken (.NET)
 
@@ -38,7 +38,7 @@ Als u de gratis proefversie van de sleutel gebruikt die wordt gegenereerd door h
 
 ## <a name="create-your-visual-studio-project"></a>Het Visual Studio-project maken
 
-1. Voeg een nieuw project van het type **Console app (.NET Framework)** toe aan uw oplossing.
+1. Voeg een nieuw project van het type **Console-app (.NET Framework)** toe aan uw oplossing.
 
    Geef het project de naam **CreateReviews** in de voorbeeldcode.
 
@@ -59,8 +59,7 @@ Pas de using-instructies van het programma aan.
 
 ```csharp
 using Microsoft.Azure.CognitiveServices.ContentModerator;
-using Microsoft.CognitiveServices.ContentModerator;
-using Microsoft.CognitiveServices.ContentModerator.Models;
+using Microsoft.Azure.CognitiveServices.ContentModerator.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -155,7 +154,7 @@ Voeg de volgende klasse toe aan de klasse **Program**. Met deze klasse kunt u de
 ### <a name="initialize-application-specific-settings"></a>Toepassingsspecifieke instellingen initialiseren
 
 > [!NOTE]
-> De sleutel van uw Content Moderator-service heeft een limiet voor het aantal aanvragen per seconde (RPS) en als u die limiet overschrijdt, genereert de SDK een uitzondering met foutcode 429.
+> De sleutel van uw Content Moderator-service heeft een limiet voor het aantal aanvragen per seconde (RPS). Als u die limiet overschrijdt, genereert de SDK een uitzondering met foutcode 429.
 >
 > Een sleutel voor de gratis laag heeft een limiet van één RPS.
 
@@ -380,7 +379,7 @@ Voeg de volgende methode toe aan de klasse **Program**.
 
 ## <a name="add-code-to-create-a-set-of-reviews-and-check-its-status"></a>Code toevoegen om een reeks beoordelingen te maken en de status ervan te controleren
 
-Voeg de volgende code aan de methode **Main**.
+Voeg de volgende code aan de methode **Hoofd**.
 
 Deze code simuleert veel van de bewerkingen die u uitvoert bij het definiëren en beheren van de lijst en bij het gebruik van de lijst voor schermafbeeldingen. Met de functie voor logboek registratie kunt u de reactie objecten zien die zijn gegenereerd door de SDK-aanroepen naar de content mModerator-service.
 
@@ -415,7 +414,7 @@ Console.WriteLine("Press any key to exit...");
 Console.ReadKey();
 ```
 
-## <a name="run-the-program-and-review-the-output"></a>Het programma uitvoeren en de uitvoer controleren
+## <a name="run-the-program-and-review-the-output"></a>Voer het programma uit en controleer de uitvoer
 
 U krijgt de volgende voorbeelduitvoer te zien:
 

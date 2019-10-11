@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/17/2017
 ms.author: manayar
-ms.openlocfilehash: a9141adfb1dd05efd73061379be89ddf27ab3832
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5be64ad2b3141791d5612aba84324278ea812875
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60803059"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72244846"
 ---
 # <a name="networking-for-azure-virtual-machine-scale-sets"></a>Netwerken voor virtuele-machineschaalsets in Azure
 
@@ -117,7 +117,7 @@ Als u de domeinnaam wilt instellen in een Azure-sjabloon, voegt u de eigenschap 
     {
     "name": "nic1",
     "properties": {
-      "primary": "true",
+      "primary": true,
       "ipConfigurations": [
       {
         "name": "ip1",
@@ -164,7 +164,7 @@ Als u een schaalset maakt met een Azure-sjabloon, zorg er dan voor dat de API-ve
     }
 }
 ```
-Voorbeeld van sjabloon: [201-vmss-public-ip-linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-public-ip-linux)
+Voorbeeldsjabloon: [201-vmss-public-ip-linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-public-ip-linux)
 
 ### <a name="querying-the-public-ip-addresses-of-the-virtual-machines-in-a-scale-set"></a>Query’s uitvoeren op de openbare IP-adressen van de virtuele machines in een schaalset
 U kunt de openbare IP-adressen die zijn toegewezen aan de virtuele machines van de schaalset met de CLI in een lijst weergeven met de opdracht **az vmss list-instance-public-ips**.
@@ -251,7 +251,7 @@ Het volgende voorbeeld is een netwerkprofiel van een schaalset met meerdere NIC-
         {
         "name": "nic1",
         "properties": {
-            "primary": "true",
+            "primary": true,
             "ipConfigurations": [
             {
                 "name": "ip1",
@@ -283,7 +283,7 @@ Het volgende voorbeeld is een netwerkprofiel van een schaalset met meerdere NIC-
         {
         "name": "nic2",
         "properties": {
-            "primary": "false",
+            "primary": false,
             "ipConfigurations": [
             {
                 "name": "ip1",
@@ -330,7 +330,7 @@ Bijvoorbeeld:
         {
             "name": "nic1",
             "properties": {
-                "primary": "true",
+                "primary": true,
                 "ipConfigurations": [
                     {
                         "name": "ip1",

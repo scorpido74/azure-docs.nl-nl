@@ -1,49 +1,49 @@
 ---
-title: Zakelijke continuïteit - Microsoft Genomics | Microsoft Docs
-titleSuffix: Azure
-description: Dit overzicht beschrijft de mogelijkheden met Microsoft Genomics voor zakelijke continuïteit en herstel na noodgevallen. Meer informatie over opties voor het herstellen van storingen, zoals een storing Azure-regio, dat leiden gegevensverlies tot kan.
-keywords: bedrijfscontinuïteit, herstel na noodgevallen
+title: Overzicht van bedrijfs continuïteit
+titleSuffix: Microsoft Genomics
+description: In dit overzicht worden de mogelijkheden beschreven die Microsoft Genomics biedt voor bedrijfs continuïteit en herstel na nood gevallen.
+keywords: bedrijfs continuïteit, herstel na nood gevallen
 services: genomics
 author: grhuynh
 manager: cgronlun
 ms.author: grhuynh
 ms.service: genomics
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/06/2018
-ms.openlocfilehash: 7a51477dbbf6f4e50959a6d979342961c7e49ad9
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 28a4a53851155c56e8d34981862bf52a3a2cf15b
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60641106"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72249182"
 ---
-# <a name="overview-of-business-continuity-with-microsoft-genomics"></a>Overzicht van bedrijfscontinuïteit met Microsoft Genomics
-Dit overzicht beschrijft de mogelijkheden met Microsoft Genomics voor zakelijke continuïteit en herstel na noodgevallen. Meer informatie over opties voor het herstellen van storingen, zoals een storing Azure-regio, dat leiden gegevensverlies tot kan. 
+# <a name="overview-of-business-continuity-with-microsoft-genomics"></a>Overzicht van bedrijfs continuïteit met Microsoft Genomics
+In dit overzicht worden de mogelijkheden beschreven die Microsoft Genomics biedt voor bedrijfs continuïteit en herstel na nood gevallen. Meer informatie over opties voor het herstellen van verstorende gebeurtenissen, zoals een onderbreking van de Azure-regio, die gegevens verlies kan veroorzaken. 
 
 
-## <a name="microsoft-genomics-features-that-support-business-continuity"></a>Microsoft Genomics-functies die ondersteuning voor zakelijke continuïteit 
-Hoewel zeldzaam, kan een Azure-Datacenter een storing, wat kan leiden tot een bedrijfsonderbreking die enkele minuten tot enkele uren kan duren hebben. Wanneer een storing optreedt, alle taken die momenteel wordt uitgevoerd in het datacenter mislukken en de Microsoft Genomics-service niet automatisch wordt opnieuw indienen taken naar een secundaire regio. 
+## <a name="microsoft-genomics-features-that-support-business-continuity"></a>Microsoft Genomics functies die bedrijfs continuïteit ondersteunen 
+Hoewel zeldzame gevallen kan een Azure-Data Center een storing hebben, waardoor een bedrijfs onderbreking kan leiden tot een paar minuten tot enkele uren. Als er een storing optreedt, zullen alle taken die momenteel in het Data Center worden uitgevoerd, mislukken en worden de taken niet automatisch door de Microsoft Genomics-service verzonden naar een secundaire regio. 
 
-* Een optie is na afloop van het datacenter weer online komt wanneer de onderbreking datacentrum ligt boven de. Als de storing kort is, de Microsoft Genomics-service detecteert automatisch de mislukte taken en de werkstroom wordt automatisch opnieuw gestart.
+* Een optie is te wachten tot het Data Center weer online is wanneer de storing van het Data Center wordt overschreden. Als de storing korter is, detecteert de Microsoft Genomics-service automatisch de mislukte taken en wordt de werk stroom automatisch opnieuw gestart.
 
-* Een andere optie is de werkstroom in een andere gegevensregio proactief te verzenden. Microsoft Genomics-exemplaren in verschillende implementeert [Azure-regio's](https://azure.microsoft.com/regions/services/), en elk exemplaar regiospecifieke is onafhankelijk. Als een van de Microsoft Genomics-exemplaren een lokale regio-fout optreedt, blijft andere regio's bij het uitvoeren van exemplaren van Microsoft Genomics om taken te verwerken. Deze overdracht naar een andere regio is onder het beheer van de gebruiker en beschikbaar zijn op elk gewenst moment.
+* Een andere mogelijkheid is om proactief de werk stroom in een ander gegevens gebied in te dienen. Microsoft Genomics implementeert instanties in verschillende [Azure-regio's](https://azure.microsoft.com/regions/services/)en elke regio-specifiek exemplaar is onafhankelijk. Als een van de Microsoft Genomics exemplaren een regionale lokale storing ondervindt, blijven andere regio's waarop exemplaren van Microsoft Genomics worden uitgevoerd, taken verwerken. Deze overdracht naar een alternatieve regio ligt onder controle van de gebruiker en is op elk moment beschikbaar.
 
 
-### <a name="manually-failover-microsoft-genomics-workflows-to-another-region"></a>Handmatig Microsoft Genomics workflows voor failover naar een andere regio
-In het geval van een regionale storing in het datacenter, kan u ervoor kiezen om in te dienen werkstromen van de Microsoft Genomics in een secundaire regio, op basis van uw vereisten voor afzonderlijke gegevens soevereiniteit en zakelijke continuïteit. Handmatig failover Microsoft Genomics werkstromen gebruikt u een andere regiospecifieke. Genomics-account en het verzenden van de taak met de juiste regiospecifieke Genomics en referenties van het opslagaccount.
+### <a name="manually-failover-microsoft-genomics-workflows-to-another-region"></a>Hand matig failover-Microsoft Genomics werk stromen naar een andere regio
+Als er sprake is van een storing in een regionaal Data Center, kunt u ervoor kiezen om Microsoft Genomics werk stromen in een secundaire regio in te dienen, op basis van uw eigen vereisten voor gegevens soevereiniteit en bedrijfs continuïteit. Als u hand matig failover-Microsoft Genomics werk stromen wilt, gebruikt u een andere regio-specifiek. Genomics-account en verzend de taak met de juiste specifieke Genomics en referenties voor het opslag account.
 
-Specifiek, gaat u te werk:
-* Maak een Genomics-account in de secundaire regio, met behulp van de Azure portal. 
-* De ingevoerde gegevens migreren naar een opslagaccount in de secundaire regio, en stelt u een map voor uitvoer in de secundaire regio.
-* De werkstroom in de secundaire regio verzenden.
+U moet het volgende doen:
+* Maak een Genomics-account in de secundaire regio met behulp van de Azure Portal. 
+* Migreer uw invoer gegevens naar een opslag account in de secundaire regio en stel een uitvoermap in de secundaire regio in.
+* Verzend de werk stroom in de secundaire regio.
 
-Wanneer de oorspronkelijke regio wordt hersteld, de Microsoft Genomics-service niet gemigreerd door de gegevens van de secundaire regio naar de oorspronkelijke regio. U kunt ervoor kiezen om te verplaatsen van de invoer en uitvoerbestanden van de secundaire regio terug naar oorspronkelijke regio.  Als u er ook voor kiezen om hun gegevens te verplaatsen, dit buiten de Genomics-service is en alle kosten met betrekking tot is de verplaatsing van gegevens is uw verantwoordelijkheid. 
+Wanneer de oorspronkelijke regio wordt hersteld, migreert de Microsoft Genomics-service de gegevens van de secundaire regio niet terug naar de oorspronkelijke regio. U kunt ervoor kiezen om de invoer-en uitvoer bestanden van de secundaire regio terug te zetten naar de oorspronkelijke regio.  Als u ervoor kiest om hun gegevens te verplaatsen, is dit buiten de Genomics-service en zijn alle kosten gerelateerd aan de verplaatsing van gegevens uw verantwoordelijkheid. 
 
-### <a name="preparing-for-a-possible-region-specific-outage"></a>Voorbereiden voor een mogelijke regiospecifiek-storing
-Als u zich zorgen maken over snellere herstelmogelijkheid in het geval van een storing in het datacenter, zijn er enkele stappen die u ondernemen kunt om de tijd die nodig is voor u om uw werkstromen met Microsoft Genomics naar een secundaire regio handmatig opnieuw in te verminderen:
+### <a name="preparing-for-a-possible-region-specific-outage"></a>Voorbereiden op een mogelijke regio-specifieke onderbreking
+Als u zich zorgen maakt over een snellere herstel bewerking in het geval van een storing in een Data Center, zijn er enkele stappen die u kunt uitvoeren om uw Microsoft Genomics-werk stromen hand matig opnieuw in te dienen bij een secundaire regio:
 
-* Een juiste secundaire regio te identificeren en pro-actief een Genomics-account maken in deze regio
-* Dubbele uw gegevens in de primaire en secundaire regio, zodat uw gegevens onmiddellijk beschikbaar in de secundaire regio zijn. Dit kan worden gedaan handmatig of via de [geografisch redundante opslag](https://docs.microsoft.com/azure/storage/common/storage-redundancy) beschikbare functie in Azure storage. 
+* Identificeer een geschikte secundaire regio en pro-actief een Genomics-account maken in die regio
+* Dupliceer uw gegevens in de primaire en secundaire regio zodat uw gegevens onmiddellijk beschikbaar zijn in de secundaire regio. Dit kan hand matig worden gedaan of met behulp van de [geo-redundante opslag](https://docs.microsoft.com/azure/storage/common/storage-redundancy) functie die beschikbaar is in azure Storage. 
 
 ## <a name="next-steps"></a>Volgende stappen
-In dit artikel hebt u geleerd over uw opties voor bedrijfscontinuïteit en herstel na noodgevallen bij het gebruik van de service Microsoft Genomics. Zie voor meer informatie over bedrijfscontinuïteit en herstel na noodgevallen in Azure in het algemeen [technische richtlijnen voor flexibiliteit van Azure.](https://docs.microsoft.com/azure/architecture/resiliency/recovery-loss-azure-region) 
+In dit artikel hebt u geleerd over de opties voor bedrijfs continuïteit en herstel na nood gevallen bij het gebruik van de Microsoft Genomics service. Voor meer informatie over bedrijfs continuïteit en herstel na nood gevallen in Azure in het algemeen raadpleegt u [technische richt lijnen voor Azure-tolerantie.](https://docs.microsoft.com/azure/architecture/resiliency/recovery-loss-azure-region) 

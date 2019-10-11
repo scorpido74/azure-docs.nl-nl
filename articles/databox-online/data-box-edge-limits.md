@@ -1,6 +1,6 @@
 ---
-title: Azure Data Box Edge beperkt | Microsoft Docs
-description: Beschrijft systeemlimieten en aanbevolen grootten voor de rand van het Azure Data Box.
+title: Azure Data Box Edge limieten | Microsoft Docs
+description: Hierin worden systeem limieten en aanbevolen grootten voor de Azure Data Box Edge beschreven.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,49 +8,49 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 03/22/2019
 ms.author: alkohli
-ms.openlocfilehash: b454b563cdb870ca8f07a45b796dc6b1e272502d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9adfc1ef355c31f0bfeeb6c3b194d62426b7b9b3
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64924604"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72244316"
 ---
-# <a name="azure-data-box-edge-limits"></a>Azure Data Box-Edge-limieten
+# <a name="azure-data-box-edge-limits"></a>Azure Data Box Edge limieten
 
-Houd rekening met deze limieten bij het implementeren en uw Microsoft Azure Data Box Edge-oplossing werken.
+Houd rekening met deze beperkingen wanneer u uw Microsoft Azure Data Box Edge oplossing implementeert en gebruikt.
 
-## <a name="data-box-edge-service-limits"></a>Gegevens in het Edge-Servicelimieten
+## <a name="data-box-edge-service-limits"></a>Data Box Edge-service limieten
 
 [!INCLUDE [data-box-edge-gateway-service-limits](../../includes/data-box-edge-gateway-service-limits.md)]
 
-## <a name="data-box-edge-device-limits"></a>Gegevenslimieten in het Edge-apparaat
+## <a name="data-box-edge-device-limits"></a>Limieten voor Data Box Edge apparaten
 
-De volgende tabel beschrijft de limieten voor de gegevens in het Edge-apparaat.
+In de volgende tabel worden de limieten voor het Data Box Edge apparaat beschreven.
 
-| Description | Value |
+| Beschrijving | Waarde |
 |---|---|
-|Nee. van bestanden per apparaat |100 miljoen |
+|Nee. bestanden per apparaat |100.000.000 |
 |Nee. van shares per apparaat |24 |
 |Nee. van shares per container |1 |
-|Maximale bestandsgrootte die zijn geschreven naar een share| 5 TB |
+|De maximale bestands grootte die naar een share is geschreven| 5 TB |
 
-## <a name="azure-storage-limits"></a>Limieten voor Azure-opslag
+## <a name="azure-storage-limits"></a>Limieten voor Azure Storage
 
 [!INCLUDE [data-box-edge-gateway-storage-limits](../../includes/data-box-edge-gateway-storage-limits.md)]
 
-## <a name="data-upload-caveats"></a>Onder voorbehoud het uploaden van gegevens
+## <a name="data-upload-caveats"></a>Voor behoud van gegevens uploaden
 
 [!INCLUDE [data-box-edge-gateway-storage-data-upload-caveats](../../includes/data-box-edge-gateway-storage-data-upload-caveats.md)]
 
-## <a name="azure-storage-account-size-and-object-size-limits"></a>Azure-account grootte en object maximale grootte opslag
+## <a name="azure-storage-account-size-and-object-size-limits"></a>Limieten voor Azure Storage-account en object grootte
 
 [!INCLUDE [data-box-edge-gateway-storage-acct-limits](../../includes/data-box-edge-gateway-storage-acct-limits.md)]
 
 
-## <a name="azure-object-size-limits"></a>De maximale grootte Azure-object
+## <a name="azure-object-size-limits"></a>Limieten voor Azure-object grootte
 
 [!INCLUDE [data-box-edge-gateway-storage-object-limits](../../includes/data-box-edge-gateway-storage-object-limits.md)]
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Voorbereidingen voor de implementatie van Azure Data Box Gateway](data-box-gateway-deploy-prep.md)
+- [Voorbereidingen voor de implementatie van Azure Data Box Edge](data-box-edge-deploy-prep.md)

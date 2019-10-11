@@ -5,23 +5,23 @@ author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.author: v-erkell
-ms.openlocfilehash: 852b4e692a4316c7701c8c179039104bee561949
-ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
+ms.author: rohogue
+ms.openlocfilehash: 4899f946cb358693c969def3fa740af64675d934
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71180952"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72254527"
 ---
 # <a name="azure-hpc-cache-preview-data-ingest---parallel-copy-script-method"></a>Azure HPC-cache (preview) gegevens opname-parallelle kopie script methode
 
-In dit artikel vindt u instructies voor ``parallelcp`` het maken van het script en het gebruik ervan om gegevens te verplaatsen naar een BLOB storage-container voor gebruik met de Azure HPC-cache.
+Dit artikel bevat instructies voor het maken van het script ``parallelcp`` en het gebruiken om gegevens naar een BLOB storage-container te verplaatsen voor gebruik met de Azure HPC-cache.
 
 Lees voor meer informatie over het verplaatsen van gegevens naar Blob Storage voor uw Azure HPC-cache [gegevens verplaatsen naar Azure Blob-opslag voor Azure HPC-cache](hpc-cache-ingest.md).
 
 ## <a name="create-the-parallelcp-script"></a>Het parallelcp-script maken
 
-In het onderstaande script wordt het uitvoer `parallelcp`bare bestand toegevoegd. (Dit script is ontworpen voor Ubuntu; als u een andere distributie gebruikt, moet ``parallel`` u dit afzonderlijk installeren.)
+In het onderstaande script wordt het uitvoer bare `parallelcp` toegevoegd. (Dit script is ontworpen voor Ubuntu; als u een andere distributie gebruikt, moet u ``parallel`` afzonderlijk installeren.)
 
 ```bash
 sudo touch /usr/bin/parallelcp && sudo chmod 755 /usr/bin/parallelcp && sudo sh -c "/bin/cat >/usr/bin/parallelcp" <<EOM 
@@ -75,11 +75,11 @@ EOM
 
 ## <a name="parallel-copy-example"></a>Voor beeld van parallel kopiëren
 
-In dit voor beeld wordt het script voor parallelle ``glibc`` kopieën gebruikt om te compileren met behulp van bron bestanden in de Azure HPC-cache.
+In dit voor beeld wordt het script voor parallelle kopieën gebruikt om ``glibc`` te compileren met behulp van de bron bestanden in de Azure HPC-cache.
 
 De bron bestanden worden in het cache geheugen van de Azure HPC-cache geplaatst en de object bestanden worden opgeslagen op de lokale vaste schijf.
 
-In dit voor beeld wordt het parallel kopiëren-script ``-j`` gebruikt ``make`` met de optie en om parallel Lise ring te krijgen.
+In dit voor beeld wordt het script voor parallelle kopieën gebruikt met de optie ``-j`` en ``make`` om parallel Lise ring te krijgen.
 
 ```bash
 sudo apt-get update

@@ -1,5 +1,5 @@
 ---
-title: Voor beelden-CAF Foundation-blauw druk-stappen implementeren
+title: Voor beeld-CAF Foundation-blauw druk-stappen implementeren
 description: Implementeer de stappen van het voor beeld van de CAF Foundation-blauw druk.
 author: DCtheGeek
 ms.author: dacoulte
@@ -7,12 +7,12 @@ ms.date: 08/20/2019
 ms.topic: sample
 ms.service: blueprints
 ms.custom: fasttrack-new
-ms.openlocfilehash: 544e5e5eb9884a91fde3898464aa7ce839658a80
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 8dab466c9d45f1c06ddce955c097af40fbba44d8
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71981697"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72243962"
 ---
 # <a name="deploy-the-microsoft-cloud-adoption-framework-for-azure-foundation-blueprint-sample"></a>Het Microsoft Cloud-acceptatie raamwerk implementeren voor het voor beeld van Azure Foundation blauw drukken
 
@@ -37,10 +37,10 @@ Implementeer eerst het voor beeld van de blauw druk door een nieuwe blauw druk i
 
 1. Voer de _basis beginselen_ van het voor beeld van de blauw druk in:
 
-   - **Naam blauw druk**: Geef een naam op voor uw kopie van het CAF Foundation-blauw druk-voor beeld.
-   - **Locatie van definitie**: Gebruik het weglatings teken en selecteer de beheer groep om uw kopie van het voor beeld op te slaan.
+   - **Blauw druk-naam**: Geef een naam op voor uw kopie van het voor beeld van de CAF Foundation-blauw druk.
+   - **Locatie van definitie**: gebruik het weglatings teken en selecteer de beheer groep om uw kopie van het voor beeld op te slaan.
 
-1. Selecteer het tabblad _artefacten_ boven aan de pagina of **Next: Artefacten @ no__t-0 aan de onderkant van de pagina.
+1. Selecteer het tabblad _artefacten_ boven aan de pagina of **volgende: artefacten** aan de onderkant van de pagina.
 
 1. Bekijk de lijst met artefacten die deel uitmaken van het voor beeld van de blauw druk. Veel van de artefacten hebben para meters die later worden gedefinieerd. Selecteer **concept opslaan** wanneer u klaar bent met het bekijken van het voor beeld van de blauw druk.
 
@@ -66,16 +66,16 @@ Zodra de kopie van het voor beeld van de blauw druk is **gepubliceerd**, kan dez
 
 1. Geef de parameter waarden voor de toewijzing van de blauw druk op:
 
-   - Basics
+   - Basisbeginselen
        - **Abonnementen**: Selecteer een of meer abonnementen in de beheer groep waarop u uw kopie van het voor beeld van de blauw druk hebt opgeslagen. Als u meer dan één abonnement selecteert, wordt er een toewijzing gemaakt met behulp van de opgegeven para meters.
-     - **Toewijzings naam**: De naam wordt vooraf ingevuld op basis van de naam van de blauw druk.
+     - **Toewijzings naam**: de naam wordt vooraf ingevuld op basis van de naam van de blauw druk.
        Wijzig indien nodig of sluit af.
      - **Locatie**: Selecteer een regio voor de beheerde identiteit die u wilt maken in.
      - Azure Blueprint gebruikt deze beheerde identiteit om alle artefacten in de toegewezen blauwdruk te implementeren.
        Zie [Beheerde identiteiten voor Azure-resources](../../../../active-directory/managed-identities-azure-resources/overview.md) voor meer informatie.
      - **Definitie van blauw druk-versie**: Kies een **gepubliceerde** versie van uw kopie van het voor beeld van de blauw druk.
 
-   - Toewijzing vergrendelen
+   - Toewijzing vergren delen
 
      Selecteer de instelling voor het vergren delen van blauw drukken voor uw omgeving. Zie voor meer informatie [Vergrendeling van blauwdrukresources](../../concepts/resource-locking.md).
 
@@ -89,9 +89,9 @@ Zodra de kopie van het voor beeld van de blauw druk is **gepubliceerd**, kan dez
 
      - **Organisatie**: Voer de naam van uw organisatie in, zoals contoso, moet uniek zijn.
      - **Azure-regio**: Selecteer de Azure-regio voor de implementatie.
-     - **Toegestane locaties**: In welke Azure-regio's wilt u resources maken?
+     - **Toegestane locaties**: welke Azure-regio's wilt u toestaan dat resources worden ingebouwd?
      
-   - Artefactparameters
+   - Artefact parameters
 
      De in deze sectie gedefinieerde para meters zijn van toepassing op het artefact waaronder het is gedefinieerd. Deze para meters zijn [dynamische para meters](../../concepts/parameters.md#dynamic-parameters) , omdat ze zijn gedefinieerd tijdens de toewijzing van de blauw druk. Zie [artefact parameters Table](#artifact-parameters-table)voor een volledige lijst of artefact parameters en de bijbehorende beschrijvingen.
 
@@ -104,10 +104,10 @@ Zodra de kopie van het voor beeld van de blauw druk is **gepubliceerd**, kan dez
 
 De volgende tabel geeft een lijst van de para meters van de blauw druk-artefact:
 
-|Naam van het artefact|Type artefact|Parameternaam|Description|
+|Artefact naam|Type artefact|Parameternaam|Beschrijving|
 |-|-|-|-|
 |Toegestane opslagaccount-SKU's|Beleidstoewijzing|Policy_Allowed-Storage account-Sku's|SKU gebruikt in opslag accounts voor Diagnostische logboeken|
-|Toegestane SKU's van virtuele machines|Beleidstoewijzing|Policy_Allowed-VM-Sku's|Toegestane SKU's van virtuele machines|
+|Toegestane Sku's voor virtuele machines|Beleidstoewijzing|Policy_Allowed-VM-Sku's|Toegestane Sku's voor virtuele machines|
 |CostCenter-TAG toevoegen aan resource groepen|Beleidstoewijzing|Policy_CostCenter_Tag|CostCenter-label en de bijbehorende waarde uit de resource groep toevoegen|
 |Bron typen die u niet wilt toestaan in uw omgeving|Beleidstoewijzing|Beleid _Allowed-bron typen|Welke Azure-resources u in uw omgeving wilt toestaan|
 |Key Vault implementeren|Resource Manager-sjabloon|KV-AccessPolicy|**Vergrendeld** : Azure AD-groep of-gebruiker <Object ID> om machtigingen te verlenen aan Key Vault|

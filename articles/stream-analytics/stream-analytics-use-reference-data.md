@@ -7,13 +7,13 @@ ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 06/21/2019
-ms.openlocfilehash: 3bf90812abcef30b6bf300ba00ebd9f4186229cb
-ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+ms.date: 10/8/2019
+ms.openlocfilehash: d058fdd48b8a271c8a2db7d327267de053c02c44
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72000399"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72244861"
 ---
 # <a name="using-reference-data-for-lookups-in-stream-analytics"></a>Referentie gegevens gebruiken voor Zoek opdrachten in Stream Analytics
 
@@ -33,13 +33,13 @@ Als u uw referentie gegevens wilt configureren, moet u eerst een invoer maken va
 |---------|---------|
 |Invoeralias   | Een beschrijvende naam die wordt gebruikt in de taak query om te verwijzen naar deze invoer.   |
 |Opslagaccount   | De naam van het opslag account waarin uw blobs zich bevinden. Als deze zich in hetzelfde abonnement bevindt als uw Stream Analytics-taak, kunt u deze selecteren in de vervolg keuzelijst.   |
-|Opslagaccountsleutel   | De geheime sleutel die is gekoppeld aan de storage-account. Dit wordt automatisch ingevuld als het opslag account zich in hetzelfde abonnement als uw Stream Analytics-taak bevindt.   |
-|Storage-Container   | Containers bieden een logische groepering van blobs die zijn opgeslagen in de Microsoft Azure Blob-service. Wanneer u een blob geüpload naar de Blob-service, moet u een container voor die blob opgeven.   |
+|Sleutel van het opslag account   | De geheime sleutel die is gekoppeld aan het opslag account. Dit wordt automatisch ingevuld als het opslag account zich in hetzelfde abonnement als uw Stream Analytics-taak bevindt.   |
+|Opslag container   | Containers bieden een logische groepering voor blobs die zijn opgeslagen in de Microsoft Azure Blob service. Wanneer u een BLOB uploadt naar de Blob service, moet u een container voor die BLOB opgeven.   |
 |Padpatroon   | Het pad dat wordt gebruikt om de blobs binnen de opgegeven container te vinden. Binnen het pad kunt u een of meer exemplaren van de volgende twee variabelen opgeven:<BR>{date}, {time}<BR>Voor beeld 1: producten/{date}/{time}/product-list. CSV<BR>Voor beeld 2: producten/{date}/product-list. CSV<BR>Voor beeld 3: product-list. CSV<BR><br> Als de BLOB niet bestaat in het opgegeven pad, wacht de Stream Analytics taak oneindig voordat de BLOB beschikbaar wordt.   |
-|Datum notatie [Optioneel]   | Als u {date} hebt gebruikt binnen het door u opgegeven pad-patroon, kunt u de datum notatie selecteren waarin uw blobs zijn ingedeeld in de vervolg keuzelijst met ondersteunde indelingen.<BR>Voorbeeld: JJJJ/MM/DD, MM/DD/JJJJ, enzovoort.   |
-|Tijd notatie [Optioneel]   | Als u {time} hebt gebruikt binnen het door u opgegeven pad-patroon, kunt u de tijd notatie selecteren waarin uw blobs zijn ingedeeld in de vervolg keuzelijst met ondersteunde indelingen.<BR>Voorbeeld: UU, uu/mm of uu-mm.  |
+|Datum notatie [Optioneel]   | Als u {date} hebt gebruikt binnen het door u opgegeven pad-patroon, kunt u de datum notatie selecteren waarin uw blobs zijn ingedeeld in de vervolg keuzelijst met ondersteunde indelingen.<BR>Voor beeld: JJJJ/MM/DD, MM/DD/JJJJ, enzovoort.   |
+|Tijd notatie [Optioneel]   | Als u {time} hebt gebruikt binnen het door u opgegeven pad-patroon, kunt u de tijd notatie selecteren waarin uw blobs zijn ingedeeld in de vervolg keuzelijst met ondersteunde indelingen.<BR>Voor beeld: HH, HH/mm of uu-mm.  |
 |Serialisatie-indeling voor gebeurtenissen   | Om ervoor te zorgen dat uw query's werken zoals verwacht, Stream Analytics moet weten welke serialisatie-indeling u gebruikt voor binnenkomende gegevens stromen. Voor referentie gegevens zijn de ondersteunde indelingen CSV en JSON.  |
-|Encoding   | Alleen de coderingsindeling UTF-8 wordt momenteel ondersteund.  |
+|Encoding   | UTF-8 is op dit moment de enige coderings indeling die wordt ondersteund.  |
 
 ### <a name="static-reference-data"></a>Statische referentie gegevens
 
@@ -60,7 +60,7 @@ Azure Stream Analytics automatisch wordt gescand op vernieuwde referentie gegeve
 > 
 > Een uitzonde ring hierop is wanneer de taak gegevens in een keer opnieuw moet verwerken of wanneer de taak voor het eerst wordt gestart. Op het moment dat de taak wordt gezocht naar de meest recente blob die is geproduceerd voordat de begin tijd van de taak is opgegeven. Dit wordt gedaan om ervoor te zorgen dat er een **niet-lege** referentie gegevensverzameling is wanneer de taak wordt gestart. Als er geen kan worden gevonden, wordt in de taak de volgende diagnose weer gegeven: `Initializing input without a valid reference data blob for UTC time <start time>`.
 
-[Azure Data Factory](https://azure.microsoft.com/documentation/services/data-factory/) kan worden gebruikt om de taak te organiseren van het maken van de bijgewerkte blobs die vereist zijn door stream Analytics om definities van referentie gegevens bij te werken. Een Data Factory is een cloudgebaseerde gegevensintegratieservice waarmee de verplaatsing en transformatie van gegevens wordt beheerd en geautomatiseerd. Data Factory ondersteunt het [maken van verbinding met een groot aantal Cloud-en on-premises gegevens opslag](../data-factory/copy-activity-overview.md) en het verplaatsen van gegevens eenvoudig volgens een regel matig schema dat u opgeeft. Bekijk dit github-voor [beeld](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/ReferenceDataRefreshForASAJobs)voor meer informatie en stapsgewijze instructies voor het instellen van een Data Factory pijp lijn voor het genereren van referentie gegevens voor stream Analytics die worden vernieuwd op basis van een vooraf gedefinieerd schema.
+[Azure Data Factory](https://azure.microsoft.com/documentation/services/data-factory/) kan worden gebruikt om de taak te organiseren van het maken van de bijgewerkte blobs die vereist zijn door stream Analytics om definities van referentie gegevens bij te werken. Data Factory is een cloudgebaseerde service voor gegevensintegratie waarmee de verplaatsing en transformatie van gegevens wordt gestroomlijnd en geautomatiseerd. Data Factory ondersteunt het [maken van verbinding met een groot aantal Cloud-en on-premises gegevens opslag](../data-factory/copy-activity-overview.md) en het verplaatsen van gegevens eenvoudig volgens een regel matig schema dat u opgeeft. Bekijk dit github-voor [beeld](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/ReferenceDataRefreshForASAJobs)voor meer informatie en stapsgewijze instructies voor het instellen van een Data Factory pijp lijn voor het genereren van referentie gegevens voor stream Analytics die worden vernieuwd op basis van een vooraf gedefinieerd schema.
 
 ### <a name="tips-on-refreshing-blob-reference-data"></a>Tips voor het vernieuwen van BLOB-referentie gegevens
 
@@ -91,7 +91,7 @@ U kunt [Azure SQL database beheerde instantie](https://docs.microsoft.com/azure/
 |**Eigenschaps naam**|**Beschrijving**  |
 |---------|---------|
 |Invoeralias|Een beschrijvende naam die wordt gebruikt in de taak query om te verwijzen naar deze invoer.|
-|Subscription|Kies uw abonnement|
+|Abonnement|Kies uw abonnement|
 |Database|De Azure SQL Database die uw referentie gegevens bevat. Voor Azure SQL Database beheerde instantie moet het poort 3342 worden opgegeven. Bijvoorbeeld *sampleserver. public. data base. Windows. net, 3342*|
 |Gebruikersnaam|De gebruikers naam die aan uw Azure SQL Database is gekoppeld.|
 |Wachtwoord|Het wacht woord dat is gekoppeld aan uw Azure SQL Database.|
@@ -111,11 +111,11 @@ Stream Analytics ondersteunt referentie gegevens met een **maximale grootte van 
 
 Wanneer het aantal streaming-eenheden van een taak groter wordt dan 6, wordt de Maxi maal ondersteunde grootte van referentie gegevens niet verhoogd.
 
-Ondersteuning voor compressie is niet beschikbaar voor referentiegegevens. 
+Ondersteuning voor compressie is niet beschikbaar voor referentie gegevens. 
 
 ## <a name="next-steps"></a>Volgende stappen
 > [!div class="nextstepaction"]
-> [Snelstart: Een Stream Analytics taak maken met behulp van de Azure Portal @ no__t-0
+> [Snelstartgids: een Stream Analytics-taak maken met behulp van de Azure Portal](stream-analytics-quick-create-portal.md)
 
 <!--Link references-->
 [stream.analytics.developer.guide]: ../stream-analytics-developer-guide.md

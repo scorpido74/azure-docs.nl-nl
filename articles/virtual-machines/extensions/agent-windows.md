@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 07/20/2019
 ms.author: akjosh
-ms.openlocfilehash: 7c163dd48e53a3116d58cb94988f2822ddede5e5
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 24c7f6c1488d7a78a16aafef88177f7045eb2492
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71169122"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72244657"
 ---
 # <a name="azure-virtual-machine-agent-overview"></a>Overzicht van de agent voor virtuele Azure-machines
 De Microsoft Azure-agent van de virtuele machine (VM-agent) is een veilig, licht gewicht proces dat interactie van de virtuele machine (VM) beheert met de Azure Fabric-controller. De VM-agent heeft een primaire rol bij het inschakelen en uitvoeren van extensies van virtuele Azure-machines. VM-extensies maken de configuratie van de na de implementatie van de VM mogelijk, zoals het installeren en configureren van software. VM-extensies bieden ook herstel functies, zoals het opnieuw instellen van het beheerders wachtwoord van een virtuele machine. Zonder de VM-agent van Azure kunnen VM-extensies niet worden uitgevoerd.
@@ -68,7 +68,7 @@ msiexec.exe /i WindowsAzureVmAgent.2.7.1198.778.rd_art_stable.160617-1120.fre /q
 ```
 
 ### <a name="prerequisites"></a>Vereisten
-De Windows VM-agent moet ten minste Windows Server 2008 R2 (64-bits) uitvoeren, met .NET Framework 4,0.
+De Windows VM-agent moet ten minste Windows Server 2008 R2 (64-bits) uitvoeren, met .NET Framework 4,0. Bekijk de [minimale versie ondersteuning voor Virtual Machine agents in azure](https://support.microsoft.com/en-us/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support)
 
 ## <a name="detect-the-vm-agent"></a>De VM-agent detecteren
 
@@ -110,6 +110,8 @@ Wanneer u bent aangemeld bij een Windows-VM, kan taak beheer worden gebruikt voo
 ## <a name="upgrade-the-vm-agent"></a>De VM-agent bijwerken
 De Azure VM-agent voor Windows wordt automatisch bijgewerkt. Wanneer er nieuwe virtuele machines worden geïmplementeerd in azure, ontvangen ze de nieuwste VM-agent op de VM-inrichtings tijd. Aangepaste VM-installatie kopieën moeten hand matig worden bijgewerkt met de nieuwe VM-agent op het moment waarop de installatie kopie wordt gemaakt.
 
+## <a name="windows-guest-agent-automatic-logs-collection"></a>Verzameling automatische logboeken voor Windows-gast agent
+Windows Guest agent heeft een functie voor het automatisch verzamelen van Logboeken. Deze functie is controller door het proces CollectGuestLogs. exe. Deze bestaat zowel voor PaaS Cloud Services als IaaS Virtual Machines en het doel is om & snel een aantal Diagnostische logboeken te verzamelen van een VM, zodat deze kunnen worden gebruikt voor offline analyse. De verzamelde logboeken zijn gebeurtenis logboeken, logboeken van het besturings systeem, Azure-logboeken en bepaalde register sleutels. Er wordt een ZIP-bestand gegenereerd dat wordt overgedragen naar de host van de virtuele machine. Dit ZIP-bestand kan vervolgens worden bekeken door technische teams en ondersteunings medewerkers om problemen te onderzoeken op verzoek van de klant die eigenaar is van de virtuele machine.
 
 ## <a name="next-steps"></a>Volgende stappen
 Zie [overzicht van virtuele machines en functies van Azure](overview.md)voor meer informatie over VM-uitbrei dingen.

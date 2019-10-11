@@ -9,12 +9,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: sstein
-ms.openlocfilehash: 90be253a4763aebd31b663aa0e765c187c8bff92
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: f1450399dc027a6977f4c99507e2e15b301272c4
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71266419"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72249390"
 ---
 # <a name="sql-database-release-notes"></a>Opmerkingen bij de release SQL Database
 
@@ -32,7 +32,7 @@ Dit artikel bevat een overzicht van SQL Database functies die momenteel beschikb
 |Batch-modus op Rowstore (onder compatibiliteits niveau 150)|Zie [batch-modus op Rowstore](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#batch-mode-on-rowstore)voor meer informatie.|
 | Gegevensdetectie en -classificatie  |Zie [Azure SQL database en SQL Data Warehouse gegevens detectie & classificatie](sql-database-data-discovery-and-classification.md)voor meer informatie.|
 | Taken voor Elastic Database | Zie [elastische taken maken, configureren en beheren](elastic-jobs-overview.md)voor meer informatie. |
-| Elastische query’s | Zie [overzicht van elastische query's](sql-database-elastic-query-overview.md)voor meer informatie. |
+| Query's in Elastic Database | Zie [overzicht van elastische query's](sql-database-elastic-query-overview.md)voor meer informatie. |
 | Elastische transacties | [Gedistribueerde trans acties over Cloud databases](sql-database-elastic-transactions-overview.md). |
 |Feedback over geheugen toekenning (rij-modus) (onder compatibiliteits niveau 150)|Zie [feedback over geheugen toekenning (rij-modus)](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#row-mode-memory-grant-feedback)voor meer informatie.|
 | Query-Editor in het Azure Portal |Zie [de SQL-query editor van het Azure Portal gebruiken om verbinding te maken en gegevens op te vragen](sql-database-connect-query-portal.md)voor meer informatie.|
@@ -46,8 +46,9 @@ Dit artikel bevat een overzicht van SQL Database functies die momenteel beschikb
 
 | Functie | Details |
 | ---| --- |
+| <a href="/azure/sql-database/sql-database-managed-instance-connectivity-architecture#service-aided-subnet-configuration-public-preview-in-east-us-and-west-us">Configuratie van geaidede subnetten</a> | Een veilige en handige manier om de subnet-configuratie te beheren. |
 | <a href="/azure/sql-database/sql-database-instance-pools">Instantie groepen</a> | Een handige en rendabele manier om kleinere SQL-instanties naar de cloud te migreren. |
-| <a href="https://aka.ms/managed-instance-tde-byok">Transparent Data Encryption (TDE) met Bring Your Own Key (BYOK)</a> |Zie [Azure SQL transparent Data Encryption met door de klant beheerde sleutels in azure Key Vault voor meer informatie: Ondersteuning](transparent-data-encryption-byok-azure-sql.md)voor Bring your own Key.|
+| <a href="https://aka.ms/managed-instance-tde-byok">Transparent Data Encryption (TDE) met Bring Your Own Key (BYOK)</a> |Zie [Azure SQL transparent Data Encryption met door de klant beheerde sleutels in azure Key Vault: Bring your own Key ondersteuning](transparent-data-encryption-byok-azure-sql.md)voor meer informatie.|
 | <a href="https://aka.ms/managed-instance-aadlogins">Azure AD server-principals op exemplaar niveau (aanmeldingen)</a> | Aanmeldingen op server niveau maken met behulp van de instructie voor het <a href="https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">maken van een aanmelding vanuit een externe provider</a> . |
 | [Transactionele replicatie](sql-database-managed-instance-transactional-replication.md) | Repliceer de wijzigingen van uw tabellen in andere data bases die zijn geplaatst in beheerde exemplaren, afzonderlijke data bases of SQL Server exemplaren, of werk uw tabellen bij wanneer sommige rijen worden gewijzigd in andere beheerde exemplaren of SQL Server exemplaar. Zie [Configure Replication in a Azure SQL database Managed instance data base](replication-with-sql-database-managed-instance.md)(Engelstalig) voor meer informatie. |
 | Detectie van bedreigingen |Zie [detectie van dreigingen configureren in Azure SQL database Managed instance](sql-database-managed-instance-threat-detection.md)voor meer informatie.|

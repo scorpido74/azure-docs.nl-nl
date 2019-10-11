@@ -1,52 +1,53 @@
 ---
-title: De voortgang van de data science-projecten - Team Data Science Process
-description: Hoe data science groepsbeheerders, lease-team en leads project kunnen de voortgang van een data science-project te volgen.
+title: Voortgang van team data Science proces-projecten bijhouden
+description: Hoe gegevens wetenschap groeps beheerders, team leiders en project leiders de voortgang van een Data Science-project kunnen volgen.
 author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/28/2017
+ms.date: 09/26/2019
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 7745a53084f4477f7b736ea9d130ffd3eed771f4
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 28bd3e558294c000ba65a1c60fe227bbae7e82dd
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60252580"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72244064"
 ---
-# <a name="tracking-the-progress-of-data-science-projects"></a>De voortgang van de data science-projecten
+# <a name="track-the-progress-of-data-science-projects"></a>De voortgang van data Science-projecten volgen
 
-Groepsbeheerders voor Data science, team leads en project leads nodig om de voortgang van hun projecten te houden, welke werk is uitgevoerd op deze en door wie en blijft op de to-do-lijsten. 
+Gegevens wetenschappen groeps beheerders, team leiders en project leiders kunnen de voortgang van hun projecten volgen, zoals wat werk heeft gedaan, wie het werk heeft uitgevoerd en wat er gebeurt. 
 
-## <a name="azure-devops-dashboards"></a>Azure DevOps-dashboards
-Als u van Azure DevOps gebruikmaakt, bent u kunt dashboards om bij te houden van de activiteiten en de werkitems die zijn gekoppeld aan een bepaald flexibele project bouwen. 
+## <a name="azure-devops-dashboards"></a>Azure DevOps-Dash boards
 
-Zie voor meer informatie over het maken en aanpassen van dashboards en widgets voor Azure DevOps, de volgende sets met instructies:
+Als u Azure DevOps gebruikt, kunt u Dash boards maken om de activiteiten en werk items bij te houden die aan een bepaald flexibel project zijn gekoppeld. Zie [Dash boards, rapporten en widgets](/azure/devops/report/dashboards/)voor meer informatie over Dash boards.
 
-- [Toevoegen en beheren van dashboards](https://docs.microsoft.com/azure/devops/report/dashboards/dashboards)
-- [Widgets toevoegen aan een dashboard](https://docs.microsoft.com/azure/devops/report/dashboards/add-widget-to-dashboard).
+Voor instructies over het maken en aanpassen van Dash boards en widgets in azure DevOps raadpleegt u de volgende Quick starts:
 
-## <a name="example-dashboard"></a>Voorbeeld van dashboard
+- [Dash boards toevoegen en beheren](/azure/devops/report/dashboards/dashboards)
+- [Widgets toevoegen aan een dash board](/azure/devops/report/dashboards/add-widget-to-dashboard)
 
-Hier volgt een eenvoudig voorbeeld-dashboard dat is gebouwd voor het volgen van de sprint activiteiten van een flexibele data science-project, evenals het aantal doorvoeracties naar gekoppelde opslagplaatsen. De **linksboven** deelvenster wordt weergegeven:
+## <a name="example-dashboard"></a>Voorbeeld dashboard
 
-- het aftellen van de huidige sprint 
-- het aantal doorvoeringen voor elke opslagplaats in de afgelopen 7 dagen
-- het werkitem voor specifieke gebruikers. 
+Hier volgt een eenvoudig voor beeld van een dash board waarmee u de Sprint activiteiten van een flexibel data Science-project kunt bijhouden, met inbegrip van het aantal door voeringen aan gekoppelde opslag plaatsen. 
 
-De resterende panelen weergeven de cumulatieve stroomdiagram (CFD), burndown en burnup voor een project:
+- De tegel **aftellen** toont het aantal dagen dat in de huidige Sprint blijft. 
 
-- **Links onderin**:  CFD de hoeveelheid werk in een bepaalde status, goedgekeurde grijs weergegeven, vastgelegd in het blauw en wordt uitgevoerd in het groen weergegeven.
-- **Rechts boven**: burndown grafiek het werk om te voltooien en de resterende tijd).
-- **Onderaan, rechts**: burnup grafiek het werk dat ten opzichte van de totale hoeveelheid werk is voltooid.
+- De twee **code tegels** tonen het aantal door voeringen in de twee project opslagplaatsen gedurende de afgelopen zeven dagen. 
 
-![dashboard](./media/track-progress/dashboard.png)
+- **Werk items voor TDSP klant project** toont de resultaten van een query voor alle werk items en hun status. 
 
-Zie voor een beschrijving van het bouwen van deze grafieken, de snelstartgidsen en zelfstudies op [Dashboards](https://docs.microsoft.com/azure/devops/report/dashboards/).
- 
+- Een **cumulatief stroom diagram** (CFD) toont het aantal gesloten en actieve werk items.
+
+- De **burndowndiagrammen-grafiek** laat zien dat het werk nog moet worden voltooid tegen de resterende tijd in de sprint.
+
+- In het **burnup-diagram** worden voltooide werkzaamheden weer gegeven vergeleken met de totale hoeveelheid werk in de sprint.
+
+![Dashboard](./media/track-progress/dashboard.png)
+
 ## <a name="next-steps"></a>Volgende stappen
 
-Scenario's die laten zien van alle de stappen in het proces voor het **specifieke scenario's** worden ook gegeven. Ze worden weergegeven en die is gekoppeld met miniaturen beschrijvingen in de [voorbeeld walkthroughs](walkthroughs.md) artikel. Ze laten zien hoe u naar de cloud, on-premises hulpprogramma's en services combineren in een werkstroom of een pijplijn te maken van een intelligente toepassingen. 
+[Stapsgewijze instructies voor het uitvoeren van de team data Science proces](walkthroughs.md) bevat beschrijvingen van alle stappen in het proces voor specifieke scenario's, met koppelingen en miniaturen. De gekoppelde scenario's illustreren het combi neren van Cloud-en on-premises hulpprogram ma's en services in werk stromen of pijp lijnen om intelligente toepassingen te maken. 

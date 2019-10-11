@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 05/22/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 253fc940cfb42aa9bf7e93dd631d2ca596f7db6f
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 3e2781229974ed872d477579d6c738822f910df6
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71677872"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72243518"
 ---
 # <a name="update-management-solution-in-azure"></a>Updatebeheer oplossing in azure
 
@@ -59,7 +59,7 @@ U kunt software-updates implementeren en installeren op computers die updates ve
 
 De geplande implementatie definieert welke doel computers de toepasselijke updates ontvangen, hetzij door expliciet computers op te geven of door een [computer groep](../azure-monitor/platform/computer-groups.md) te selecteren die is gebaseerd op logboek zoekopdrachten van een specifieke set computers of een [Azure-query](#azure-machines) Hiermee worden virtuele Azure-machines dynamisch geselecteerd op basis van opgegeven criteria. Deze groepen wijken af van de [Scope configuratie](../azure-monitor/insights/solution-targeting.md), die alleen wordt gebruikt om te bepalen op welke machines de Management Packs worden opgehaald die de oplossing inschakelen.
 
-U kunt ook een planning opgeven die u wilt goed keuren en een periode instellen waarin updates kunnen worden geïnstalleerd. Deze periode wordt het onderhouds venster genoemd. Tien minuten van het onderhouds venster is gereserveerd voor opnieuw opstarten als de computer opnieuw moet worden opgestart en u de juiste optie voor opnieuw opstarten hebt geselecteerd. Als de patch langer duurt dan verwacht en er minder dan tien minuten in het onderhouds venster wordt weer gegeven, wordt de computer niet opnieuw opgestart.
+U kunt ook een planning opgeven die u wilt goed keuren en een periode instellen waarin updates kunnen worden geïnstalleerd. Deze periode wordt het onderhouds venster genoemd. Twintig minuten van het onderhouds venster is gereserveerd voor opnieuw opstarten als de computer opnieuw moet worden opgestart en u de juiste optie voor opnieuw opstarten hebt geselecteerd. Als patches langer duren dan verwacht en er minder dan twintig minuten in het onderhouds venster worden weer gegeven, wordt de computer niet opnieuw opgestart.
 
 Updates worden geïnstalleerd door runbooks in Azure Automation. U kunt deze runbooks niet weer geven en de runbooks hebben geen configuratie nodig. Wanneer er een update-implementatie wordt gemaakt, maakt de update-implementatie een planning waarbij een Master update-runbook wordt gestart op het opgegeven tijdstip voor de inbegrepen computers. Het hoofd-runbook start een onderliggend runbook op elke agent om de vereiste updates te installeren.
 
@@ -69,7 +69,7 @@ Het is niet mogelijk om een computer te registreren voor Updatebeheer in meer da
 
 ## <a name="clients"></a>Clients
 
-### <a name="supported-client-types"></a>Ondersteunde client-typen
+### <a name="supported-client-types"></a>Ondersteunde client typen
 
 In de volgende tabel ziet u een lijst met ondersteunde besturings systemen voor update-evaluaties. Voor patching is een Hybrid Runbook Worker vereist. Zie de installatie handleidingen voor [Windows HRW](automation-windows-hrw-install.md#installing-the-windows-hybrid-runbook-worker) en [Linux HRW](automation-linux-hrw-install.md#installing-a-linux-hybrid-runbook-worker)voor informatie over Hybrid Runbook worker vereisten.
 
@@ -85,14 +85,14 @@ In de volgende tabel ziet u een lijst met ondersteunde besturings systemen voor 
 > Virtuele-machine schaal sets van Azure kunnen worden beheerd met Updatebeheer. Updatebeheer werkt op de instanties zelf en niet op de basis installatie kopie. U moet de updates op een incrementele manier plannen, alsof u niet alle VM-instanties tegelijk bijwerkt.
 > U kunt VMSS-knoop punten toevoegen door de stappen onder [onboarding van een niet-Azure-machine](automation-tutorial-installed-software.md#onboard-a-non-azure-machine)uit te voeren.
 
-### <a name="unsupported-client-types"></a>Niet-ondersteunde client-typen
+### <a name="unsupported-client-types"></a>Niet-ondersteunde client typen
 
-De volgende tabel geeft een overzicht van de besturingssystemen die niet worden ondersteund:
+De volgende tabel geeft een lijst van besturings systemen die niet worden ondersteund:
 
 |Besturingssysteem  |Opmerkingen  |
 |---------|---------|
-|Windows-client     | Client-besturingssystemen (zoals Windows 7 en Windows 10) worden niet ondersteund.        |
-|Windows Server 2016 Nano Server     | Wordt niet ondersteund.       |
+|Windows-client     | Client besturingssystemen (zoals Windows 7 en Windows 10) worden niet ondersteund.        |
+|Windows Server 2016 nano server     | Wordt niet ondersteund.       |
 |Azure Kubernetes-service knooppunten | Wordt niet ondersteund. Gebruik het patch proces dat wordt beschreven in [beveiligings-en kernel-updates Toep assen op Linux-knoop punten in azure Kubernetes service (AKS)](../aks/node-updates-kured.md)|
 
 ### <a name="client-requirements"></a>Client vereisten
@@ -173,7 +173,7 @@ Heartbeat
 
 Op een Windows-computer kunt u de volgende informatie controleren om de agent connectiviteit met Azure Monitor-logboeken te controleren:
 
-1. Open **micro soft Monitoring Agent**in het configuratie scherm. Op het tabblad **log Analytics van Azure** wordt het volgende bericht weer gegeven: **De micro soft monitoring agent heeft verbinding gemaakt met log Analytics**.
+1. Open **micro soft Monitoring Agent**in het configuratie scherm. Op het tabblad **log Analytics van Azure** wordt het volgende bericht weer gegeven: **micro soft monitoring agent heeft verbinding gemaakt met log Analytics**.
 2. Open het Windows-gebeurtenis logboek. Ga naar **Application and Services Servicelogboeken\operations Manager** en zoek naar gebeurtenis-id 3000 en gebeurtenis-id 5002 van de bron **service connector**. Deze gebeurtenissen geven aan dat de computer is geregistreerd bij de Log Analytics-werk ruimte en dat er configuratie wordt ontvangen.
 
 Als de agent niet kan communiceren met Azure Monitor-logboeken en de agent is geconfigureerd voor communicatie met Internet via een firewall of proxy server, controleert u of de firewall of proxy server correct is geconfigureerd. Zie [netwerk configuratie voor Windows-agent](../azure-monitor/platform/agent-windows.md) of [netwerk configuratie voor Linux-agent](../log-analytics/log-analytics-agent-linux.md)voor informatie over het controleren van de juiste configuratie van de firewall of proxy server.
@@ -194,11 +194,11 @@ Zie [Operations Manager integratie valideren met Azure monitor logboeken](../azu
 
 De volgende tabel beschrijft de verbonden bronnen die worden ondersteund door deze oplossing:
 
-| Verbonden bron | Ondersteund | Description |
+| Verbonden bron | Ondersteund | Beschrijving |
 | --- | --- | --- |
 | Windows-agents |Ja |De oplossing verzamelt informatie over systeem updates van Windows-agents en start vervolgens de installatie van de vereiste updates. |
 | Linux-agents |Ja |De oplossing verzamelt informatie over systeem updates van Linux-agents en start vervolgens de installatie van de vereiste updates op ondersteunde distributies. |
-| Beheergroep Operations Manager |Ja |De oplossing verzamelt informatie over systeemupdates van agents in een verboden beheergroep.<br/>Een directe verbinding van de Operations Manager agent naar Azure Monitor-Logboeken is niet vereist. Gegevens uit de beheergroep doorgestuurd naar de Log Analytics-werkruimte. |
+| Beheergroep Operations Manager |Ja |De oplossing verzamelt informatie over systeemupdates van agents in een verboden beheergroep.<br/>Een directe verbinding van de Operations Manager agent naar Azure Monitor-Logboeken is niet vereist. Gegevens worden doorgestuurd van de beheer groep naar de Log Analytics-werk ruimte. |
 
 ### <a name="collection-frequency"></a>Verzamelingsfrequentie
 
@@ -216,13 +216,13 @@ Selecteer in uw Automation-account **updatebeheer** om de status van uw computer
 
 Deze weer gave bevat informatie over uw computers, ontbrekende updates, update-implementaties en geplande update-implementaties. In de **kolom compatibiliteit**ziet u de laatste keer dat de computer is geëvalueerd. In de **gereedheids** kolom van de Update-Agent kunt u zien of de status van de Update Agent is. Als er een probleem is, selecteert u de koppeling om naar probleemoplossings documentatie te gaan en leert u welke stappen u moet ondernemen om het probleem te verhelpen.
 
-Als u een zoek opdracht in het logboek wilt uitvoeren die informatie over de computer, update of implementatie retourneert, selecteert u het item in de lijst. Het deel venster **zoeken** in Logboeken wordt geopend met een query voor het geselecteerde item:
+Als u een zoek opdracht in het logboek wilt uitvoeren die informatie over de computer, update of implementatie retourneert, selecteert u het item in de lijst. Het deel venster **Zoeken in Logboeken** wordt geopend met een query voor het geselecteerde item:
 
 ![Standaard weergave Updatebeheer](media/automation-update-management/update-management-view.png)
 
 ## <a name="install-updates"></a>Updates installeren
 
-Nadat de updates zijn beoordeeld voor alle Linux-en Windows-computers in uw werk ruimte, kunt u de vereiste updates installeren door een *Update-implementatie*te maken. Als u een update-implementatie wilt maken, moet u schrijf toegang hebben tot het Automation-account en schrijf toegang hebben tot Azure-Vm's die in de implementatie zijn gericht. Een update-implementatie is een geplande installatie van de vereiste updates voor een of meer computers. U geeft de datum en tijd op voor de implementatie en een computer of groep computers die moeten worden opgenomen in het bereik van een implementatie. Zie [computer groepen in azure monitor](../azure-monitor/platform/computer-groups.md)-logboeken voor meer informatie over computer groepen.
+Nadat de updates zijn beoordeeld voor alle Linux-en Windows-computers in uw werk ruimte, kunt u de vereiste updates installeren door een *Update-implementatie*te maken. Als u een update-implementatie wilt maken, moet u schrijf toegang hebben tot het Automation-account en schrijf toegang hebben tot Azure-Vm's die in de implementatie zijn gericht. Een update-implementatie is een geplande installatie van de vereiste updates voor een of meer computers. U geeft de datum en tijd op voor de implementatie en een computer of groep computers die moeten worden opgenomen in het bereik van een implementatie. Zie [computer groepen in azure monitor-logboeken](../azure-monitor/platform/computer-groups.md)voor meer informatie over computer groepen.
 
 Wanneer u computer groepen opneemt in uw update-implementatie, wordt het groepslid maatschap slechts één keer geëvalueerd, op het moment dat het schema wordt gemaakt. Volgende wijzigingen aan een groep worden niet doorgevoerd. Om deze [dynamische groepen](#using-dynamic-groups)te gebruiken, worden deze groepen tijdens de implementatie omgezet en worden ze gedefinieerd door een query voor virtuele machines in azure of een opgeslagen zoek opdracht voor niet-Azure vm's.
 
@@ -235,17 +235,17 @@ Virtuele machines die zijn gemaakt op basis van de installatie kopieën op Red H
 
 Selecteer **Update-implementatie plannen**om een nieuwe update-implementatie te maken. De pagina **nieuwe update-implementatie** wordt geopend. Voer waarden in voor de eigenschappen die in de volgende tabel worden beschreven en klik vervolgens op **maken**:
 
-| Eigenschap | Description |
+| Eigenschap | Beschrijving |
 | --- | --- |
-| Name |Unieke naam voor het identificeren van de update-implementatie. |
+| Naam |Unieke naam voor het identificeren van de update-implementatie. |
 |Besturingssysteem| Linux of Windows|
 | Bij te werken groepen |Voor Azure-machines definieert u een query op basis van een combi natie van abonnement, resource groepen, locaties en tags om een dynamische groep virtuele Azure-machines samen te stellen die in uw implementatie moeten worden meegenomen. </br></br>Voor niet-Azure-machines selecteert u een bestaande opgeslagen zoek opdracht om een groep van niet-Azure-machines te selecteren die u in de implementatie wilt gebruiken. </br></br>Zie [Dynamische groepen](automation-update-management.md#using-dynamic-groups) voor meer informatie|
 | Machines die moeten worden bijgewerkt |selecteer een opgeslagen zoekopdracht of geïmporteerde groep, of kies Computer in de vervolgkeuzelijst en selecteer de afzonderlijke computers. Als u **Computers** selecteert, wordt de gereedheid van de computer weergegeven in de kolom **GEREEDHEID VOOR UPDATE-AGENT**.</br> Zie [Computergroepen in Azure Monitorlogboeken](../azure-monitor/platform/computer-groups.md) voor meer informatie over de verschillende manieren waarop u computergroepen kunt maken in Azure Monitor-logboeken |
-|Updateclassificaties|Selecteer alle update classificaties die u nodig hebt|
+|Update classificaties|Selecteer alle update classificaties die u nodig hebt|
 |Updates opnemen/uitsluiten|Hiermee opent u de pagina **opnemen/uitsluiten** . Updates die moeten worden opgenomen of uitgesloten, worden op afzonderlijke tabbladen weergegeven. Zie [Werking van opname](automation-update-management.md#inclusion-behavior) voor meer informatie over hoe de opname wordt verwerkt |
-|Planningsinstellingen|Selecteer het tijdstip waarop u wilt beginnen en selecteer een of meer keren of terugkerend voor het terugkeer patroon|
+|Schema-instellingen|Selecteer het tijdstip waarop u wilt beginnen en selecteer een of meer keren of terugkerend voor het terugkeer patroon|
 | Pre-scripts en post scripts|De scripts selecteren die voor en na de implementatie moeten worden uitgevoerd|
-| Onderhoudsvenster |Aantal minuten dat is ingesteld voor updates. De waarde mag niet minder dan 30 minuten en Maxi maal 6 uur zijn |
+| Onderhouds venster |Aantal minuten dat is ingesteld voor updates. De waarde mag niet minder dan 30 minuten en Maxi maal 6 uur zijn |
 | Besturings element opnieuw opstarten| Hiermee wordt bepaald hoe opnieuw opstarten moet worden afgehandeld. De volgende opties zijn beschikbaar:</br>Opnieuw opstarten indien nodig (standaard)</br>Altijd opnieuw opstarten</br>Nooit opnieuw opstarten</br>Alleen opnieuw opstarten - updates worden niet geïnstalleerd|
 
 Update-implementaties kunnen ook programmatisch worden gemaakt. Zie [Software-update configuraties-maken](/rest/api/automation/softwareupdateconfigurations/create)voor meer informatie over het maken van een update-implementatie met behulp van de rest API. Er is ook een voor beeld van een runbook dat kan worden gebruikt voor het maken van een wekelijkse update-implementatie. Zie [een wekelijkse update-implementatie maken voor een of meer virtuele machines in een resource groep](https://gallery.technet.microsoft.com/scriptcenter/Create-a-weekly-update-2ad359a1)voor meer informatie over dit runbook.
@@ -264,8 +264,8 @@ Onderhouds Vensters bepalen de hoeveelheid tijd die is toegestaan voor het insta
 
 ### <a name="multi-tenant"></a>Implementaties van cross-Tenant updates
 
-Als u computers in een andere Azure-Tenant rapporteert om Updatebeheer die u moet patchen, moet u de volgende tijdelijke oplossing gebruiken om ze te laten plannen. U kunt de cmdlet [New-AzureRmAutomationSchedule](/powershell/module/azurerm.automation/new-azurermautomationschedule) gebruiken met de switch `-ForUpdate` om een planning te maken en de [cmdlet New-AzureRmAutomationSoftwareUpdateConfiguration](/powershell/module/azurerm.automation/new-azurermautomationsoftwareupdateconfiguration
-) te gebruiken en de computers in de andere op te geven Tenant met de `-NonAzureComputer` para meter. In het volgende voor beeld ziet u een voor beeld van hoe u dit doet:
+Als u computers in een andere Azure-Tenant rapporteert om Updatebeheer die u moet patchen, moet u de volgende tijdelijke oplossing gebruiken om ze te laten plannen. U kunt de cmdlet [New-AzureRmAutomationSchedule](/powershell/module/azurerm.automation/new-azurermautomationschedule) gebruiken met de switch `-ForUpdate` om een schema te maken en de cmdlet [New-AzureRmAutomationSoftwareUpdateConfiguration](/powershell/module/azurerm.automation/new-azurermautomationsoftwareupdateconfiguration
+) te gebruiken en de computers in de andere Tenant door te geven aan de para meter `-NonAzureComputer`. In het volgende voor beeld ziet u een voor beeld van hoe u dit doet:
 
 ```azurepowershell-interactive
 $nonAzurecomputers = @("server-01", "server-02")
@@ -279,39 +279,39 @@ New-AzureRmAutomationSoftwareUpdateConfiguration  -ResourceGroupName $rg -Automa
 
 ## <a name="view-missing-updates"></a>Ontbrekende updates weer geven
 
-Selecteer **ontbrekende updates** om de lijst met updates weer te geven die ontbreken op uw computers. Elke update wordt weer gegeven en kan worden geselecteerd. Informatie over het aantal machines dat moet worden bijgewerkt, het besturings systeem en een koppeling voor meer informatie wordt weer gegeven. In het deel venster **zoeken** in Logboeken ziet u meer informatie over de updates.
+Selecteer **ontbrekende updates** om de lijst met updates weer te geven die ontbreken op uw computers. Elke update wordt weer gegeven en kan worden geselecteerd. Informatie over het aantal machines dat moet worden bijgewerkt, het besturings systeem en een koppeling voor meer informatie wordt weer gegeven. In het deel venster **Zoeken in Logboeken** ziet u meer informatie over de updates.
 
 ## <a name="view-update-deployments"></a>Update-implementaties weer geven
 
-Selecteer het tabblad **Update** -implementaties om de lijst met bestaande update-implementaties weer te geven. Selecteer een van de update-implementaties in de tabel om het deel venster implementatie van de **Update** voor de update-implementatie te openen. Taak logboeken worden Maxi maal 30 dagen opgeslagen.
+Selecteer het tabblad **Update-implementaties** om de lijst met bestaande update-implementaties weer te geven. Selecteer een van de update-implementaties in de tabel om het deel venster implementatie van de **Update** voor de update-implementatie te openen. Taak logboeken worden Maxi maal 30 dagen opgeslagen.
 
 ![Overzicht van de resultaten van update-implementatie](./media/automation-update-management/update-deployment-run.png)
 
 Zie [configuratie van software-updates](/rest/api/automation/softwareupdateconfigurationruns)voor het weer geven van een update-implementatie vanuit het rest API.
 
-## <a name="update-classifications"></a>Updateclassificaties
+## <a name="update-classifications"></a>Update classificaties
 
 De volgende tabellen geven een lijst van de update classificaties in Updatebeheer, met een definitie voor elke classificatie.
 
 ### <a name="windows"></a>Windows
 
-|Classificatie  |Description  |
+|Classificatie  |Beschrijving  |
 |---------|---------|
 |Essentiële updates     | Een update voor een specifiek probleem dat betrekking heeft op een kritieke bug die niet aan beveiliging voldoet.        |
 |Beveiligingsupdates     | Een update voor een productspecifiek, beveiligings probleem.        |
 |Updatepakketten     | Een cumulatieve set met hotfixes die samen zijn verpakt voor een eenvoudige implementatie.        |
-|Feature Ppacks     | Nieuwe product functies die worden gedistribueerd buiten een product release.        |
+|Functiepakketten     | Nieuwe product functies die worden gedistribueerd buiten een product release.        |
 |Servicepacks     | Een cumulatieve set met hotfixes die op een toepassing worden toegepast.        |
 |Definitie-updates     | Een update van virus-of andere definitie bestanden.        |
-|Hulpprogramma's     | Een hulp programma of functie waarmee u een of meer taken kunt volt ooien.        |
+|Tools     | Een hulp programma of functie waarmee u een of meer taken kunt volt ooien.        |
 |Updates     | Een update voor een toepassing of bestand dat momenteel is geïnstalleerd.        |
 
-### <a name="linux-2"></a>Linux
+### <a name="linux-2"></a>Spreek
 
-|Classificatie  |Description  |
+|Classificatie  |Beschrijving  |
 |---------|---------|
 |Essentiële en beveiligingsupdates     | Updates voor een specifiek probleem of een productspecifiek beveiligings probleem.         |
-|Andere updates     | Alle andere updates die niet kritiek zijn of geen beveiligings updates zijn.        |
+|Andere Updates     | Alle andere updates die niet kritiek zijn of geen beveiligings updates zijn.        |
 
 Voor Linux kan Updatebeheer een onderscheid maken tussen essentiële updates en beveiliging in de Cloud, terwijl evaluatie gegevens worden weer gegeven vanwege gegevens verrijking in de Cloud. Voor patching is Updatebeheer afhankelijk van de classificatie gegevens die op de computer beschikbaar zijn. In tegens telling tot andere distributies is deze informatie niet beschikbaar in CentOS. Als er CentOS-machines zijn geconfigureerd op een manier om beveiligings gegevens te retour neren voor de volgende opdracht, kan Updatebeheer patch op basis van classificaties.
 
@@ -327,7 +327,7 @@ Updatebeheer is afhankelijk van Windows Update om Windows-updates te downloaden 
 
 ### <a name="pre-download-updates"></a>Updates vooraf downloaden
 
-Voor het configureren van updates die automatisch worden gedownload in groepsbeleid, kunt u de instelling voor het [configureren van automatische updates](/windows-server/administration/windows-server-update-services/deploy/4-configure-group-policy-settings-for-automatic-updates##configure-automatic-updates) instellen op **3**. Hiermee downloadt u de updates die nodig zijn op de achtergrond, maar worden ze niet geïnstalleerd. Dit houdt Updatebeheer in de controle over schema's, maar laat updates downloaden buiten het onderhouds venster Updatebeheer. Dit kan ervoor zorgen dat het onderhouds **venster** fouten in updatebeheer overschrijdt.
+Voor het configureren van updates die automatisch worden gedownload in groepsbeleid, kunt u de instelling voor het [configureren van automatische updates](/windows-server/administration/windows-server-update-services/deploy/4-configure-group-policy-settings-for-automatic-updates##configure-automatic-updates) instellen op **3**. Hiermee downloadt u de updates die nodig zijn op de achtergrond, maar worden ze niet geïnstalleerd. Dit houdt Updatebeheer in de controle over schema's, maar laat updates downloaden buiten het onderhouds venster Updatebeheer. Dit kan ervoor zorgen dat het **onderhouds venster** fouten in updatebeheer overschrijdt.
 
 U kunt dit ook instellen met Power shell, de volgende Power shell uitvoeren op een systeem waarop u automatisch updates wilt downloaden.
 
@@ -339,7 +339,7 @@ $WUSettings.Save()
 
 ### <a name="disable-automatic-installation"></a>Automatische installatie uitschakelen
 
-Voor virtuele Azure-machines is automatische installatie van updates standaard ingeschakeld. Dit kan ertoe leiden dat updates worden geïnstalleerd voordat u deze plant om te worden geïnstalleerd door Updatebeheer. U kunt dit gedrag uitschakelen door de `NoAutoUpdate` register sleutel in te stellen op. `1` In het volgende Power shell-fragment ziet u een manier om dit te doen.
+Voor virtuele Azure-machines is automatische installatie van updates standaard ingeschakeld. Dit kan ertoe leiden dat updates worden geïnstalleerd voordat u deze plant om te worden geïnstalleerd door Updatebeheer. U kunt dit gedrag uitschakelen door de register sleutel `NoAutoUpdate` in te stellen op `1`. In het volgende Power shell-fragment ziet u een manier om dit te doen.
 
 ```powershell
 $AutoUpdatePath = "HKLM:SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU"
@@ -359,8 +359,8 @@ $ServiceManager.AddService2($ServiceId,7,"")
 
 ## <a name="third-party"></a>Patches van derden in Windows
 
-Updatebeheer is afhankelijk van de lokaal geconfigureerde update opslagplaats voor patches die worden ondersteund door Windows-systemen. Dit is WSUS of Windows Update. Met hulpprogram [ma's](/sccm/sum/tools/updates-publisher
-) als System Center updates Publisher (updates Publisher) kunt u aangepaste updates publiceren in WSUS. Met dit scenario kunnen Updatebeheer patches voor machines die gebruikmaken van System Center Configuration Manager als update opslagplaats met software van derden. Zie [install updates Publisher](/sccm/sum/tools/install-updates-publisher)(Engelstalig) voor meer informatie over het configureren van updates Publisher.
+Updatebeheer is afhankelijk van de lokaal geconfigureerde update opslagplaats voor patches die worden ondersteund door Windows-systemen. Dit is WSUS of Windows Update. Met hulpprogram ma's als [System Center updates Publisher](/sccm/sum/tools/updates-publisher
+) (updates Publisher) kunt u aangepaste updates publiceren in WSUS. Met dit scenario kunnen Updatebeheer patches voor machines die gebruikmaken van System Center Configuration Manager als update opslagplaats met software van derden. Zie [install updates Publisher](/sccm/sum/tools/install-updates-publisher)(Engelstalig) voor meer informatie over het configureren van updates Publisher.
 
 ## <a name="ports"></a>Netwerk planning
 
@@ -368,9 +368,9 @@ De volgende adressen zijn specifiek vereist voor Updatebeheer. Communicatie met 
 
 |Open bare Azure  |Azure Government  |
 |---------|---------|
-|*.ods.opinsights.azure.com     |*.ods.opinsights.azure.us         |
-|*.oms.opinsights.azure.com     | *.oms.opinsights.azure.us        |
-|*.blob.core.windows.net|*.blob.core.usgovcloudapi.net|
+|*.ods.opinsights.azure.com     |*. ods.opinsights.azure.us         |
+|*.oms.opinsights.azure.com     | *. oms.opinsights.azure.us        |
+|*.blob.core.windows.net|*. blob.core.usgovcloudapi.net|
 |*.azure-automation.net|*. azure-automation.us|
 
 Voor Windows-computers moet u ook verkeer toestaan voor eind punten die vereist zijn voor Windows Update.  U kunt een bijgewerkte lijst met vereiste eind punten vinden in [kwesties met betrekking tot http/proxy](/windows/deployment/update/windows-update-troubleshooting#issues-related-to-httpproxy). Als u een lokale [Windows Update server](/windows-server/administration/windows-server-update-services/plan/plan-your-wsus-deployment)hebt, moet u ook verkeer toestaan naar de server die is opgegeven in uw [WSUS-sleutel](/windows/deployment/update/waas-wu-settings#configuring-automatic-updates-by-editing-the-registry).
@@ -385,18 +385,18 @@ Volg de instructies in [computers verbinden zonder Internet toegang](../azure-mo
 
 ## <a name="search-logs"></a>Logboeken zoeken
 
-Naast de details die zijn opgenomen in de Azure Portal, kunt u zoeken naar de logboeken. Selecteer **log Analytics**op de pagina's met oplossingen. Het deel venster **zoeken** in Logboeken wordt geopend.
+Naast de details die zijn opgenomen in de Azure Portal, kunt u zoeken naar de logboeken. Selecteer **log Analytics**op de pagina's met oplossingen. Het deel venster **Zoeken in Logboeken** wordt geopend.
 
-Meer informatie over het aanpassen van query's of het gebruik ervan vanaf verschillende clients en meer vindt u op:  [Documentatie over](
-https://dev.loganalytics.io/)log Analytics Search-API.
+Meer informatie over het aanpassen van de query's of het gebruik ervan vanaf verschillende clients en meer vindt u op: [log Analytics Search API-documentatie](
+https://dev.loganalytics.io/).
 
-### <a name="sample-queries"></a>Voorbeeldquery's
+### <a name="sample-queries"></a>Voorbeeld query's
 
 De volgende secties bevatten voorbeeld logboek query's voor update records die door deze oplossing worden verzameld:
 
 #### <a name="single-azure-vm-assessment-queries-windows"></a>Enkelvoudige Azure VM-evaluatie query's (Windows)
 
-Vervang de VMUUID-waarde door de VM-GUID van de virtuele machine waarop u een query uitvoert. U kunt de VMUUID vinden die moet worden gebruikt door de volgende query uit te voeren in Azure Monitor logs:`Update | where Computer == "<machine name>" | summarize by Computer, VMUUID`
+Vervang de VMUUID-waarde door de VM-GUID van de virtuele machine waarop u een query uitvoert. U kunt de VMUUID die moeten worden gebruikt, vinden door de volgende query uit te voeren in Azure Monitor logs: `Update | where Computer == "<machine name>" | summarize by Computer, VMUUID`
 
 ##### <a name="missing-updates-summary"></a>Samen vatting van ontbrekende updates
 
@@ -425,7 +425,7 @@ Update
 
 #### <a name="single-azure-vm-assessment-queries-linux"></a>Enkelvoudige Azure VM-evaluatie query's (Linux)
 
-Voor sommige Linux-distributies is er sprake [van een conflict](https://en.wikipedia.org/wiki/Endianness) tussen de VMUUID-waarden die afkomstig zijn van Azure Resource Manager en wat wordt opgeslagen in azure monitor Logboeken. Met de volgende query wordt gecontroleerd op een overeenkomst op basis van de endian. Vervang de waarden voor VMUUID door de indeling big endian en little-endian van de GUID om de resultaten correct te retour neren. U kunt de VMUUID vinden die moet worden gebruikt door de volgende query uit te voeren in Azure Monitor logs:`Update | where Computer == "<machine name>"
+Voor sommige Linux-distributies is er sprake [van een conflict](https://en.wikipedia.org/wiki/Endianness) tussen de VMUUID-waarden die afkomstig zijn van Azure Resource Manager en wat wordt opgeslagen in azure monitor Logboeken. Met de volgende query wordt gecontroleerd op een overeenkomst op basis van de endian. Vervang de waarden voor VMUUID door de indeling big endian en little-endian van de GUID om de resultaten correct te retour neren. U kunt de VMUUID die moeten worden gebruikt, vinden door de volgende query uit te voeren in Azure Monitor logs: `Update | where Computer == "<machine name>"
 | summarize by Computer, VMUUID`
 
 ##### <a name="missing-updates-summary"></a>Samen vatting van ontbrekende updates
@@ -608,7 +608,7 @@ Updatebeheer biedt de mogelijkheid om een dynamische groep Azure-of niet-Azure V
 
 Deze groepen worden gedefinieerd door een query, wanneer de implementatie van een update wordt gestart, worden de leden van die groep geëvalueerd. Dynamische groepen werken niet met klassieke Vm's. Bij het definiëren van uw query kunnen de volgende items samen worden gebruikt om de dynamische groep te vullen
 
-* Subscription
+* Abonnement
 * Resourcegroepen
 * Locaties
 * Tags
@@ -635,7 +635,7 @@ Zie [System Center Configuration Manager met updatebeheer integreren](oms-soluti
 
 Met update include kunt u specifieke updates opgeven die moeten worden toegepast. De geïnstalleerde patches of pakketten worden geïnstalleerd. Als er patches of pakketten zijn opgenomen en er een classificatie is geselecteerd, worden zowel de opgenomen items als de items die voldoen aan de classificatie geïnstalleerd.
 
-Het is belang rijk te weten dat uitsluitingen insluitingen opheffen. Als u bijvoorbeeld een uitsluitings regel van `*`opgeeft, worden er geen patches of pakketten geïnstalleerd, aangezien deze allemaal uitgesloten zijn. Uitgesloten patches worden nog steeds weer gegeven als ontbrekend van de machine. Voor Linux-machines als een pakket is opgenomen, maar een afhankelijk pakket heeft dat is uitgesloten, is het pakket niet geïnstalleerd.
+Het is belang rijk te weten dat uitsluitingen insluitingen opheffen. Als u bijvoorbeeld een uitsluitings regel van `*` definieert, worden er geen patches of pakketten geïnstalleerd, aangezien deze allemaal uitgesloten zijn. Uitgesloten patches worden nog steeds weer gegeven als ontbrekend van de machine. Voor Linux-machines als een pakket is opgenomen, maar een afhankelijk pakket heeft dat is uitgesloten, is het pakket niet geïnstalleerd.
 
 ## <a name="patch-linux-machines"></a>Linux-machines bijwerken
 
@@ -665,7 +665,7 @@ Het implementeren van updates via update classificatie werkt niet CentOS uit het
 
 Een virtuele machine verwijderen uit Updatebeheer:
 
-* In uw Log Analytics-werk ruimte verwijdert u de virtuele machine uit de opgeslagen zoek opdracht `MicrosoftDefaultScopeConfig-Updates`voor de scope configuratie. U kunt opgeslagen Zoek opdrachten vinden onder **Algemeen** in uw werk ruimte.
+* Verwijder in uw Log Analytics-werk ruimte de virtuele machine uit de opgeslagen zoek opdracht voor de scope configuratie `MicrosoftDefaultScopeConfig-Updates`. U kunt opgeslagen Zoek opdrachten vinden onder **Algemeen** in uw werk ruimte.
 * Verwijder [micro soft Monitoring Agent](../azure-monitor/learn/quick-collect-windows-computer.md#clean-up-resources) of de [log Analytics-agent voor Linux](../azure-monitor/learn/quick-collect-linux-computer.md#clean-up-resources).
 
 ## <a name="next-steps"></a>Volgende stappen

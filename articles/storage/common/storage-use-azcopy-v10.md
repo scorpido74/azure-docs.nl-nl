@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: bb816658faff9fb924d075e0fca17e9643c18e40
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: 980156284b27478163760b1f833a91ba7cddec21
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71694748"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72244786"
 ---
 # <a name="get-started-with-azcopy"></a>Aan de slag met AzCopy
 
@@ -94,9 +94,9 @@ Als u bestanden wilt uploaden, controleert u of een van deze rollen is toegeweze
 Deze rollen kunnen worden toegewezen aan uw beveiligingsprincipal in een van deze bereiken:
 
 - Container (bestands systeem)
-- Storage-account
-- Resource group
-- Subscription
+- Opslagaccount
+- Resourcegroep
+- Abonnement
 
 Zie voor meer informatie over het controleren en toewijzen [van rollen toegang verlenen tot Azure Blob en gegevens wachtrij met RBAC in het Azure Portal](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
@@ -139,7 +139,7 @@ Voordat u een script uitvoert, moet u zich ten minste één keer interactief aan
 
 U kunt zich aanmelden bij uw account door gebruik te maken van een client geheim of door het wacht woord te gebruiken van een certificaat dat is gekoppeld aan de app-registratie van uw service-principal.
 
-Voor meer informatie over het maken van een Service-Principal raadpleegt u [How: Gebruik de portal voor het maken van een Azure AD-toepassing en service-principal die toegang hebben tot resources](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
+Zie [How to: de portal gebruiken om een Azure AD-toepassing en Service-Principal te maken die toegang hebben tot resources](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)voor meer informatie over het maken van een service-principal.
 
 Zie [toepassings-en Service-Principal-objecten in azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals) voor meer informatie over service-principals in het algemeen.
 
@@ -239,7 +239,7 @@ azcopy login --identity --identity-resource-id "<resource-id>"
 
 Vervang de tijdelijke aanduiding `<resource-id>` door de resource-ID van de door de gebruiker toegewezen beheerde identiteit.
 
-### <a name="option-2-use-a-sas-token"></a>Optie 2: Een SAS-token gebruiken
+### <a name="option-2-use-a-sas-token"></a>Optie 2: een SAS-token gebruiken
 
 U kunt een SAS-token toevoegen aan elke bron-of doel-URL die wordt gebruikt in uw AzCopy-opdrachten.
 
@@ -287,7 +287,7 @@ De URL wordt weer gegeven in de uitvoer van deze opdracht. Uw script kan vervolg
 
 | Besturingssysteem  | Opdracht |
 |--------|-----------|
-| **Linux** | `wget -O azcopyv10.tar https://azcopyvnext.azureedge.net/release20190301/azcopy_linux_amd64_10.0.8.tar.gz tar -xf azcopyv10.tar --strip-components=1 ./azcopy` |
+| **Linux** | `wget -O azcopy_v10.tar.gz https://aka.ms/downloadazcopy-v10-linux && tar -xf azcopy_v10.tar.gz --strip-components=1` |
 | **Windows** | `Invoke-WebRequest https://azcopyvnext.azureedge.net/release20190517/azcopy_windows_amd64_10.1.2.zip -OutFile azcopyv10.zip <<Unzip here>>` |
 
 ### <a name="escape-special-characters-in-sas-tokens"></a>Speciale tekens in SAS-tokens escapepen

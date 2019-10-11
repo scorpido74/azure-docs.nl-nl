@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 07/03/2019
 ms.author: sajagtap
-ms.openlocfilehash: 144137109f97a8c2049430ed1e05117ea6c95d7f
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: d1c2f8b06d333be23f25a2d150c23269bf84cd2e
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564408"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72242831"
 ---
 # <a name="check-text-against-a-custom-term-list-in-c"></a>Tekst controleren aan de hand van een aangepaste termenlijst in C#
 
@@ -34,13 +34,13 @@ In dit artikel vindt u informatie en codevoorbeelden om aan de slag te gaan met 
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint. 
 
-## <a name="sign-up-for-content-moderator-services"></a>Registreren voor Content Moderator-services
+## <a name="sign-up-for-content-moderator-services"></a>Registreren voor de Content Moderator-services
 
 Om de Content Moderator-services via de REST-API of de SDK te kunnen gebruiken, hebt u een abonnementssleutel nodig. Abonneer u op de Content Moderator-service in de [Azure-portal](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesContentModerator) om ermee te kunnen werken.
 
 ## <a name="create-your-visual-studio-project"></a>Het Visual Studio-project maken
 
-1. Voeg een nieuw project van het type **Console app (.NET Framework)** toe aan uw oplossing.
+1. Voeg een nieuw project van het type **Console-app (.NET Framework)** toe aan uw oplossing.
 
 1. Geef het project de naam **TermLists**. Selecteer dit project als het enige opstartproject voor de oplossing.
 
@@ -59,8 +59,7 @@ Voeg de volgende `using`-instructies toe.
 
 ```csharp
 using Microsoft.Azure.CognitiveServices.ContentModerator;
-using Microsoft.CognitiveServices.ContentModerator;
-using Microsoft.CognitiveServices.ContentModerator.Models;
+using Microsoft.Azure.CognitiveServices.ContentModerator.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -449,4 +448,4 @@ Press ENTER to close the application.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Download de [Content Moderator .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) en de [Visual Studio-oplossing](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator) voor deze en andere snelstarts over Content Moderator voor .NET en begin met de integratie.
+Download de [Content Moderator .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) en de [Visual Studio-oplossing](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator) voor deze en andere snelstartgidsen over Content Moderator voor .NET en begin met de integratie.

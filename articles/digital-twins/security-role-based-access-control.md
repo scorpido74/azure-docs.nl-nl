@@ -8,16 +8,16 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 09/30/2019
-ms.openlocfilehash: 1d4243457f51f11db5bc9681b29d27293fbc6250
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: e89a8f98d92e92fa8afe93340576b14ff1dd5051
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71949040"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72249203"
 ---
 # <a name="role-based-access-control-in-azure-digital-twins"></a>Op rollen gebaseerd toegangs beheer in azure Digital Apparaatdubbels
 
-Azure Digital Apparaatdubbels maakt nauw keurig toegangs beheer mogelijk voor specifieke gegevens, resources en acties in uw ruimtelijke grafiek. Dit doet u door het beheer van op rollen gebaseerd toegangs beheer (RBAC). RBAC bestaat uit _rollen_ en _roltoewijzingen_. Rollen bepalen het machtigings niveau. Roltoewijzingen koppelen een rol aan een gebruiker of apparaat.
+Met Azure Digital Apparaatdubbels hebt u nauw keurige toegangs controle over specifieke gegevens, resources en acties in uw ruimtelijke grafiek. Dit doet u door het beheer [van op rollen gebaseerd toegangs beheer](https://docs.microsoft.com/azure/role-based-access-control/) (RBAC). RBAC bestaat uit _rollen_ en _roltoewijzingen_. Rollen bepalen het machtigings niveau. Roltoewijzingen koppelen een rol aan een gebruiker of apparaat.
 
 Met RBAC kunt u machtigingen verlenen aan:
 
@@ -84,3 +84,5 @@ Als u machtigingen wilt verlenen aan een ontvanger, maakt u een roltoewijzing. A
 ## <a name="next-steps"></a>Volgende stappen
 
 - Lees voor meer informatie over het maken en beheren van Azure Digital Apparaatdubbels-roltoewijzingen de [functie toewijzingen maken en beheren](./security-create-manage-role-assignments.md).
+
+- Lees meer over [RBAC voor Azure](https://docs.microsoft.com/azure/role-based-access-control/).

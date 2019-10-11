@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: a83112c1555d50976e5a20106b877f5c0099a5f3
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
-ms.translationtype: HT
+ms.openlocfilehash: bfb170036293dc9f519259dc92737f30380aa84a
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72178146"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72244829"
 ---
 # <a name="networking-prerequisites-for-azure-vmware-solution-by-cloudsimple"></a>Netwerk vereisten voor de Azure VMware-oplossing op CloudSimple
 
@@ -58,6 +58,7 @@ Een punt-naar-site-VPN-verbinding maakt toegang tot het CloudSimple-netwerk vana
 
 ## <a name="next-steps"></a>Volgende stappen
 
+* [On-premises firewall instellen voor toegang tot uw privécloud](on-premises-firewall-configuration.md)
 * [Quick Start: een CloudSimple-service maken](quickstart-create-cloudsimple-service.md)
 * [Snelstartgids-een privécloud configureren](quickstart-create-private-cloud.md)
 * Meer informatie over [Azure-netwerk verbindingen](cloudsimple-azure-network-connection.md)

@@ -5,13 +5,13 @@ author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 09/24/2019
-ms.author: v-erkell
-ms.openlocfilehash: 68ae316dff1518dd8115006764c6cc3036f59e4a
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.author: rohogue
+ms.openlocfilehash: fa6408d33504c6ac73eacec079e9c08acd4cece2
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71299938"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72255266"
 ---
 # <a name="plan-the-aggregated-namespace"></a>De geaggregeerde naamruimte plannen
 
@@ -42,7 +42,7 @@ De gegevens die moeten worden geanalyseerd, zijn gekopieerd naar een Azure Blob 
 
 Als u eenvoudige toegang via de cache wilt toestaan, kunt u overwegen om opslag doelen met deze virtuele naam ruimte paden te maken:
 
-| Back-end-opslag systeem <br/> (NFS-bestandspad of BLOB-container) | Pad naar virtuele naamruimte |
+| Back-end-opslag systeem <br/> (NFS-bestandspad of BLOB-container) | Pad naar virtuele naam ruimte |
 |-----------------------------------------|------------------------|
 | /goldline/templates/acme2017/sku798     | /templates/sku798      |
 | /goldline/templates/acme2017/sku980     | /templates/sku980      |
@@ -57,7 +57,7 @@ Omdat de NFS-bron paden submappen van dezelfde export zijn, moet u meerdere naam
 | *IP-adres of hostnaam* | /goldline/templates  | acme2017/sku798   | /templates/sku798 |
 | *IP-adres of hostnaam* | /goldline/templates  | acme2017/sku980   | /templates/sku980 |
 
-Een client toepassing kan de cache koppelen en eenvoudig toegang krijgen tot de geaggregeerde bestands ``/source``paden ``/templates/sku798``van de ``/templates/sku980``naam ruimte, en.
+Een client toepassing kan de cache koppelen en eenvoudig toegang krijgen tot de geaggregeerde naam ruimte bestands paden ``/source``, ``/templates/sku798`` en ``/templates/sku980``.
 
 ## <a name="next-steps"></a>Volgende stappen
 

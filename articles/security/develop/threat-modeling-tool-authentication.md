@@ -15,21 +15,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: eb4f0e26d1795abc3392e9736e71093fab79aae2
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 1bef73e6be4bdbe8828e1d20ea6e684759984627
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967933"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72244637"
 ---
-# <a name="security-frame-authentication--mitigations"></a>Beveiligings frame: Verificatie | Oplossingen 
+# <a name="security-frame-authentication--mitigations"></a>Beveiligings frame: verificatie | Oplossingen 
 
-| Product/Service | Artikel |
+| Product/service | Artikel |
 | --------------- | ------- |
 | **Webtoepassing**    | <ul><li>[Overweeg het gebruik van een standaard verificatie mechanisme om te verifiëren bij de webtoepassing](#standard-authn-web-app)</li><li>[Toepassingen moeten mislukte verificatie scenario's veilig afhandelen](#handle-failed-authn)</li><li>[Stapsgewijze of adaptieve verificatie inschakelen](#step-up-adaptive-authn)</li><li>[Zorg ervoor dat de beheer interfaces op de juiste manier worden vergrendeld](#admin-interface-lockdown)</li><li>[Veilig verg eten wachtwoord functionaliteiten implementeren](#forgot-pword-fxn)</li><li>[Zorg ervoor dat wacht woord-en account beleid worden geïmplementeerd](#pword-account-policy)</li><li>[Besturings elementen implementeren om te voor komen dat gebruikers naam inventarisatie](#controls-username-enum)</li></ul> |
 | **Database** | <ul><li>[Gebruik, indien mogelijk, Windows-verificatie om verbinding te maken met SQL Server](#win-authn-sql)</li><li>[Gebruik, indien mogelijk, Azure Active Directory verificatie om verbinding te maken met SQL Database](#aad-authn-sql)</li><li>[Wanneer de SQL-verificatie modus wordt gebruikt, moet u ervoor zorgen dat het account en het wachtwoord beleid worden afgedwongen op SQL Server](#authn-account-pword)</li><li>[Geen SQL-verificatie gebruiken in Inge sloten data bases](#autn-contained-db)</li></ul> |
-| **Azure Event Hub** | <ul><li>[Authenticatie referenties per apparaat gebruiken met SaS-tokens](#authn-sas-tokens)</li></ul> |
-| **Azure-vertrouwens grens** | <ul><li>[Azure multi-factor Authentication inschakelen voor Azure-beheerders](#multi-factor-azure-admin)</li></ul> |
+| **Azure Event hub** | <ul><li>[Authenticatie referenties per apparaat gebruiken met SaS-tokens](#authn-sas-tokens)</li></ul> |
+| **Azure-vertrouwens grens** | <ul><li>[Azure-Multi-Factor Authentication voor Azure-beheerders inschakelen](#multi-factor-azure-admin)</li></ul> |
 | **Grens van Service Fabric vertrouwen** | <ul><li>[Anonieme toegang tot Service Fabric cluster beperken](#anon-access-cluster)</li><li>[Zorg ervoor dat Service Fabric client-naar-knoop punt-certificaat verschilt van knoop punt-naar-knoop punt](#fabric-cn-nn)</li><li>[AAD gebruiken om clients te verifiëren voor service Fabric-clusters](#aad-client-fabric)</li><li>[Zorg ervoor dat service Fabric-certificaten worden verkregen van een goedgekeurde certificerings instantie (CA)](#fabric-cert-ca)</li></ul> |
 | **Identiteits server** | <ul><li>[Standaard verificatie scenario's gebruiken die worden ondersteund door de identiteits server](#standard-authn-id)</li><li>[De standaard token cache van de identiteits server overschrijven met een schaalbaar alternatief](#override-token)</li></ul> |
 | **Grens van computer vertrouwen** | <ul><li>[Zorg ervoor dat de binaire bestanden van de geïmplementeerde toepassing digitaal zijn ondertekend](#binaries-signed)</li></ul> |
@@ -45,18 +45,18 @@ ms.locfileid: "68967933"
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Onderdeel**               | Webtoepassing | 
-| **SDL-fase**               | Ontwikkelen |  
+| **SDL-fase**               | Build |  
 | **Toepasselijke technologieën** | Encarta |
 | **Eigenschappen**              | N/A  |
 | **Referentie**              | N/A  |
-| Details | <p>Verificatie is het proces waarbij een entiteit zijn identiteit bewijst, meestal via referenties, zoals een gebruikers naam en wacht woord. Er zijn meerdere verificatie protocollen beschikbaar die kunnen worden overwogen. Enkele hiervan worden hieronder weer gegeven:</p><ul><li>Clientcertificaten</li><li>Op Windows gebaseerd</li><li>Formulieren op basis</li><li>Federatie-ADFS</li><li>Federatie-Azure AD</li><li>Federatie-identiteits server</li></ul><p>Overweeg het gebruik van een standaard verificatie mechanisme om het bron proces te identificeren</p>|
+| Details | <p>Verificatie is het proces waarbij een entiteit zijn identiteit bewijst, meestal via referenties, zoals een gebruikers naam en wacht woord. Er zijn meerdere verificatie protocollen beschikbaar die kunnen worden overwogen. Enkele hiervan worden hieronder weer gegeven:</p><ul><li>Client certificaten</li><li>Op Windows gebaseerd</li><li>Formulieren op basis</li><li>Federatie-ADFS</li><li>Federatie-Azure AD</li><li>Federatie-identiteits server</li></ul><p>Overweeg het gebruik van een standaard verificatie mechanisme om het bron proces te identificeren</p>|
 
 ## <a id="handle-failed-authn"></a>Toepassingen moeten mislukte verificatie scenario's veilig afhandelen
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Onderdeel**               | Webtoepassing | 
-| **SDL-fase**               | Ontwikkelen |  
+| **SDL-fase**               | Build |  
 | **Toepasselijke technologieën** | Encarta |
 | **Eigenschappen**              | N/A  |
 | **Referentie**              | N/A  |
@@ -67,7 +67,7 @@ ms.locfileid: "68967933"
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Onderdeel**               | Webtoepassing | 
-| **SDL-fase**               | Ontwikkelen |  
+| **SDL-fase**               | Build |  
 | **Toepasselijke technologieën** | Encarta |
 | **Eigenschappen**              | N/A  |
 | **Referentie**              | N/A  |
@@ -78,7 +78,7 @@ ms.locfileid: "68967933"
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Onderdeel**               | Webtoepassing | 
-| **SDL-fase**               | Ontwikkelen |  
+| **SDL-fase**               | Build |  
 | **Toepasselijke technologieën** | Encarta |
 | **Eigenschappen**              | N/A  |
 | **Referentie**              | N/A  |
@@ -89,7 +89,7 @@ ms.locfileid: "68967933"
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Onderdeel**               | Webtoepassing | 
-| **SDL-fase**               | Ontwikkelen |  
+| **SDL-fase**               | Build |  
 | **Toepasselijke technologieën** | Encarta |
 | **Eigenschappen**              | N/A  |
 | **Referentie**              | N/A  |
@@ -100,18 +100,18 @@ ms.locfileid: "68967933"
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Onderdeel**               | Webtoepassing | 
-| **SDL-fase**               | Ontwikkelen |  
+| **SDL-fase**               | Build |  
 | **Toepasselijke technologieën** | Encarta |
 | **Eigenschappen**              | N/A  |
 | **Referentie**              | N/A  |
-| Details | <p>Wacht woord-en account beleid in overeenstemming met het beleid van de organisatie en aanbevolen procedures moeten worden geïmplementeerd.</p><p>Het voor komen van een verdedigings-en woorden lijst op basis van een geraden: Er moet een beleid voor sterke wacht woorden worden geïmplementeerd om ervoor te zorgen dat gebruikers complex wacht woord maken (bijvoorbeeld 12 tekens minimum lengte, alfanumerieke tekens en speciale letters).</p><p>Account vergrendelings beleid kan op de volgende manier worden geïmplementeerd:</p><ul><li>**Zachte uitsluiting:** Dit kan een goede optie zijn om uw gebruikers te beschermen tegen beveiligings aanvallen. Als de gebruiker bijvoorbeeld drie keer een onjuist wacht woord invoert, kan de toepassing het account voor een minuut vergren delen om het proces van het afdwingen van het wacht woord te vertragen, waardoor de aanvaller minder winstgevend wordt. Als u voor dit voor beeld hard lock-out zou implementeren, kunt u een ' DoS ' realiseren door accounts permanent te vergren delen. De toepassing kan ook een OTP (eenmalig wacht woord) genereren en deze out-of-band (via e-mail, SMS enz.) naar de gebruiker verzenden. Een andere benadering is het implementeren van CAPTCHA nadat een drempel waarde voor het aantal mislukte pogingen is bereikt.</li><li>**Harde vergren deling:** Dit type vergren deling moet worden toegepast wanneer u een gebruiker detecteert die zich aanmeldt voor uw toepassing en deze opwaardeert met behulp van het permanent vergren delen van hun account totdat een antwoord team een tijd had om hun forensische te doen. Na dit proces kunt u beslissen of u de gebruiker een eigen account wilt geven of dat u verdere juridische acties wilt ondernemen. Dit type aanpak voor komt dat de aanvaller uw toepassing en infra structuur verder doordringt.</li></ul><p>Om te beschermen tegen aanvallen op standaard-en voorspel bare accounts, controleert u of alle sleutels en wacht woorden opnieuw plaatsbaar zijn en of deze na de installatie worden gegenereerd of vervangen.</p><p>Als de toepassing automatisch wacht woorden moet genereren, moet u ervoor zorgen dat de gegenereerde wacht woorden wille keurig zijn en een hoge entropie hebben.</p>|
+| Details | <p>Wacht woord-en account beleid in overeenstemming met het beleid van de organisatie en aanbevolen procedures moeten worden geïmplementeerd.</p><p>Om te beschermen tegen brute kracht-en woordenboek woorden: er moet een beleid voor sterke wacht woorden worden geïmplementeerd om ervoor te zorgen dat gebruikers complex wacht woord maken (bijvoorbeeld 12 tekens minimum lengte, alfanumerieke tekens en speciale letters).</p><p>Account vergrendelings beleid kan op de volgende manier worden geïmplementeerd:</p><ul><li>**Zachte uitsluiting:** Dit kan een goede optie zijn om uw gebruikers te beschermen tegen beveiligings aanvallen. Als de gebruiker bijvoorbeeld drie keer een onjuist wacht woord invoert, kan de toepassing het account voor een minuut vergren delen om het proces van het afdwingen van het wacht woord te vertragen, waardoor de aanvaller minder winstgevend wordt. Als u voor dit voor beeld hard lock-out zou implementeren, kunt u een ' DoS ' realiseren door accounts permanent te vergren delen. De toepassing kan ook een OTP (eenmalig wacht woord) genereren en deze out-of-band (via e-mail, SMS enz.) naar de gebruiker verzenden. Een andere benadering is het implementeren van CAPTCHA nadat een drempel waarde voor het aantal mislukte pogingen is bereikt.</li><li>**Harde vergren deling:** Dit type vergren deling moet worden toegepast wanneer u een gebruiker detecteert die zich aanmeldt voor uw toepassing en deze opwaardeert met behulp van het permanent vergren delen van hun account totdat een antwoord team een tijd had om hun forensische te doen. Na dit proces kunt u beslissen of u de gebruiker een eigen account wilt geven of dat u verdere juridische acties wilt ondernemen. Dit type aanpak voor komt dat de aanvaller uw toepassing en infra structuur verder doordringt.</li></ul><p>Om te beschermen tegen aanvallen op standaard-en voorspel bare accounts, controleert u of alle sleutels en wacht woorden opnieuw plaatsbaar zijn en of deze na de installatie worden gegenereerd of vervangen.</p><p>Als de toepassing automatisch wacht woorden moet genereren, moet u ervoor zorgen dat de gegenereerde wacht woorden wille keurig zijn en een hoge entropie hebben.</p>|
 
 ## <a id="controls-username-enum"></a>Besturings elementen implementeren om te voor komen dat gebruikers naam inventarisatie
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Onderdeel**               | Webtoepassing | 
-| **SDL-fase**               | Ontwikkelen |  
+| **SDL-fase**               | Build |  
 | **Toepasselijke technologieën** | Encarta |
 | **Eigenschappen**              | N/A  |
 | **Referentie**              | N/A  |
@@ -122,8 +122,8 @@ ms.locfileid: "68967933"
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Onderdeel**               | Database | 
-| **SDL-fase**               | Ontwikkelen |  
-| **Toepasselijke technologieën** | OnPrem |
+| **SDL-fase**               | Build |  
+| **Toepasselijke technologieën** | Premises |
 | **Eigenschappen**              | SQL-versie-alle |
 | **Referentie**              | [SQL Server: een verificatie modus kiezen](https://msdn.microsoft.com/library/ms144284.aspx) |
 | **Stappen** | Windows-verificatie maakt gebruik van het Kerberos-beveiligings protocol, voorziet in het afdwingen van wachtwoord beleid met betrekking tot complexiteits validatie voor sterke wacht woorden, biedt ondersteuning voor account vergrendeling en ondersteunt het verlopen van wacht woorden.|
@@ -133,7 +133,7 @@ ms.locfileid: "68967933"
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Onderdeel**               | Database | 
-| **SDL-fase**               | Ontwikkelen |  
+| **SDL-fase**               | Build |  
 | **Toepasselijke technologieën** | SQL Azure |
 | **Eigenschappen**              | SQL-versie-V12 |
 | **Referentie**              | [Verbinding maken met SQL Database met behulp van Azure Active Directory-verificatie](https://azure.microsoft.com/documentation/articles/sql-database-aad-authentication/) |
@@ -144,7 +144,7 @@ ms.locfileid: "68967933"
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Onderdeel**               | Database | 
-| **SDL-fase**               | Ontwikkelen |  
+| **SDL-fase**               | Build |  
 | **Toepasselijke technologieën** | Encarta |
 | **Eigenschappen**              | N/A  |
 | **Referentie**              | [SQL Server wachtwoord beleid](https://technet.microsoft.com/library/ms161959(v=sql.110).aspx) |
@@ -155,8 +155,8 @@ ms.locfileid: "68967933"
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Onderdeel**               | Database | 
-| **SDL-fase**               | Ontwikkelen |  
-| **Toepasselijke technologieën** | OnPrem, SQL Azure |
+| **SDL-fase**               | Build |  
+| **Toepasselijke technologieën** | Premises, SQL Azure |
 | **Eigenschappen**              | SQL-versie-MSSQL2012, SQL-versie-V12 |
 | **Referentie**              | [Aanbevolen beveiligings procedures met Inge sloten data bases](https://msdn.microsoft.com/library/ff929055.aspx) |
 | **Stappen** | Als er geen afgedwongen wachtwoord beleid is ingesteld, kan de kans op een zwakke referentie in een Inge sloten data base toenemen. Gebruik Windows-verificatie. |
@@ -166,13 +166,13 @@ ms.locfileid: "68967933"
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Onderdeel**               | Azure Event Hub | 
-| **SDL-fase**               | Ontwikkelen |  
+| **SDL-fase**               | Build |  
 | **Toepasselijke technologieën** | Encarta |
 | **Eigenschappen**              | N/A  |
 | **Referentie**              | [Overzicht van Event Hubs verificatie en beveiligings model](https://azure.microsoft.com/documentation/articles/event-hubs-authentication-and-security-model-overview/) |
 | **Stappen** | <p>Het beveiligings model van Event Hubs is gebaseerd op een combi natie van Shared Access Signature (SAS)-tokens en gebeurtenis uitgevers. De naam van de uitgever vertegenwoordigt de DeviceID die het token ontvangt. Dit helpt bij het koppelen van de tokens die zijn gegenereerd met de betreffende apparaten.</p><p>Alle berichten worden gelabeld met de maker aan de service zijde die de detectie van in-nettolading vervalste pogingen toestaat. Genereer bij het verifiëren van apparaten een SaS-Token per apparaat binnen het bereik van een unieke Uitgever.</p>|
 
-## <a id="multi-factor-azure-admin"></a>Azure multi-factor Authentication inschakelen voor Azure-beheerders
+## <a id="multi-factor-azure-admin"></a>Azure-Multi-Factor Authentication voor Azure-beheerders inschakelen
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
@@ -191,7 +191,7 @@ ms.locfileid: "68967933"
 | **SDL-fase**               | Implementatie |  
 | **Toepasselijke technologieën** | Encarta |
 | **Eigenschappen**              | Omgeving-Azure  |
-| **Referentie**              | [Service Fabric-clusterbeveiligingsscenario 's](https://azure.microsoft.com/documentation/articles/service-fabric-cluster-security) |
+| **Referentie**              | [Beveiligings scenario's voor Service Fabric cluster](https://azure.microsoft.com/documentation/articles/service-fabric-cluster-security) |
 | **Stappen** | <p>Clusters moeten altijd worden beveiligd om te voor komen dat onbevoegde gebruikers verbinding maken met uw cluster, met name wanneer er productie werkbelastingen worden uitgevoerd.</p><p>Zorg er tijdens het maken van een service Fabric-cluster voor dat de beveiligings modus is ingesteld op ' beveiligd ' en configureer het vereiste X. 509-server certificaat. Als u een ' onveilige ' cluster maakt, kunt u een anonieme gebruiker verbinding laten maken als het beheer eindpunten voor het open bare internet beschikbaar stelt.</p>|
 
 ## <a id="fabric-cn-nn"></a>Zorg ervoor dat Service Fabric client-naar-knoop punt-certificaat verschilt van knoop punt-naar-knoop punt
@@ -232,7 +232,7 @@ ms.locfileid: "68967933"
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Onderdeel**               | Identiteits server | 
-| **SDL-fase**               | Ontwikkelen |  
+| **SDL-fase**               | Build |  
 | **Toepasselijke technologieën** | Encarta |
 | **Eigenschappen**              | N/A  |
 | **Referentie**              | [IdentityServer3-de grote afbeelding](https://identityserver.github.io/Documentation/docsv2/overview/bigPicture.html) |
@@ -265,14 +265,14 @@ ms.locfileid: "68967933"
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Onderdeel**               | WCF | 
-| **SDL-fase**               | Ontwikkelen |  
+| **SDL-fase**               | Build |  
 | **Toepasselijke technologieën** | Algemeen, NET Framework 3 |
 | **Eigenschappen**              | N/A |
 | **Referentie**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx) |
 | **Stappen** | Het programma kan geen verificatie inschakelen bij het maken van verbinding met MSMQ-wacht rijen, een aanvaller kan anoniem berichten verzenden naar de wachtrij voor verwerking. Als verificatie niet wordt gebruikt om verbinding te maken met een MSMQ-wachtrij die wordt gebruikt om een bericht te verzenden naar een ander programma, kan een aanvaller een schadelijk, anoniem bericht indienen.|
 
 ### <a name="example"></a>Voorbeeld
-Het `<netMsmqBinding/>` element van het WCF-configuratie bestand hieronder geeft WCF de verificatie uitschakelen wanneer er verbinding wordt gemaakt met een MSMQ-wachtrij voor bericht bezorging.
+Het `<netMsmqBinding/>`-element van het WCF-configuratie bestand zorgt ervoor dat de verificatie wordt uitgeschakeld wanneer er verbinding wordt gemaakt met een MSMQ-wachtrij voor bericht bezorging.
 ```
 <bindings>
     <netMsmqBinding>
@@ -287,7 +287,7 @@ Het `<netMsmqBinding/>` element van het WCF-configuratie bestand hieronder geeft
 Configureer MSMQ zodanig dat er altijd Windows-domein-of certificaat authenticatie is vereist voor binnenkomende of uitgaande berichten.
 
 ### <a name="example"></a>Voorbeeld
-Het `<netMsmqBinding/>` element van het WCF-configuratie bestand hieronder geeft WCF de mogelijkheid om verificatie van certificaten in te scha kelen wanneer er verbinding wordt gemaakt met een MSMQ-wachtrij. De client wordt geverifieerd met X. 509-certificaten. Het client certificaat moet aanwezig zijn in het certificaat archief van de server.
+Het `<netMsmqBinding/>`-element van het WCF-configuratie bestand zorgt ervoor dat de verificatie van certificaten wordt ingeschakeld wanneer er verbinding wordt gemaakt met een MSMQ-wachtrij. De client wordt geverifieerd met X. 509-certificaten. Het client certificaat moet aanwezig zijn in het certificaat archief van de server.
 ```
 <bindings>
     <netMsmqBinding>
@@ -305,10 +305,10 @@ Het `<netMsmqBinding/>` element van het WCF-configuratie bestand hieronder geeft
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Onderdeel**               | WCF | 
-| **SDL-fase**               | Ontwikkelen |  
+| **SDL-fase**               | Build |  
 | **Toepasselijke technologieën** | .NET Framework 3 |
 | **Eigenschappen**              | Type client referentie-geen |
-| **Referentie**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [Fortify](https://vulncat.fortify.com/en/detail?id=desc.semantic.dotnet.wcf_misconfiguration_anonymous_message_client) |
+| **Referentie**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [Fortify](https://community.microfocus.com/t5/UFT-Discussions/UFT-API-Test-with-WCF-wsHttpBinding/m-p/600927) |
 | **Stappen** | Het ontbreken van verificatie houdt in dat iedereen toegang heeft tot deze service. Een service die de clients niet verifieert, biedt toegang tot alle gebruikers. Configureer de toepassing voor verificatie op basis van client referenties. U kunt dit doen door het bericht clientCredentialType in te stellen op Windows of certificaat. |
 
 ### <a name="example"></a>Voorbeeld
@@ -321,10 +321,10 @@ Het `<netMsmqBinding/>` element van het WCF-configuratie bestand hieronder geeft
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Onderdeel**               | WCF | 
-| **SDL-fase**               | Ontwikkelen |  
+| **SDL-fase**               | Build |  
 | **Toepasselijke technologieën** | Algemeen, .NET Framework 3 |
 | **Eigenschappen**              | Type client referentie-geen |
-| **Referentie**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [Fortify](https://vulncat.fortify.com/en/detail?id=desc.semantic.dotnet.wcf_misconfiguration_anonymous_transport_client) |
+| **Referentie**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [Fortify](https://community.microfocus.com/t5/UFT-Discussions/UFT-API-Test-with-WCF-wsHttpBinding/m-p/600927) |
 | **Stappen** | Het ontbreken van verificatie houdt in dat iedereen toegang heeft tot deze service. Een service die de clients niet verifieert, stelt alle gebruikers in staat om toegang te krijgen tot de functionaliteit. Configureer de toepassing voor verificatie op basis van client referenties. U kunt dit doen door de transport clientCredentialType in te stellen op Windows of certificaat. |
 
 ### <a name="example"></a>Voorbeeld
@@ -337,32 +337,32 @@ Het `<netMsmqBinding/>` element van het WCF-configuratie bestand hieronder geeft
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Onderdeel**               | Web-API | 
-| **SDL-fase**               | Ontwikkelen |  
+| **SDL-fase**               | Build |  
 | **Toepasselijke technologieën** | Encarta |
 | **Eigenschappen**              | N/A  |
 | **Referentie**              | [Verificatie en autorisatie in ASP.net Web-API](https://www.asp.net/web-api/overview/security/authentication-and-authorization-in-aspnet-web-api), [externe verificatie services met ASP.net Web APIC#()](https://www.asp.net/web-api/overview/security/external-authentication-services) |
-| **Stappen** | <p>Verificatie is het proces waarbij een entiteit zijn identiteit bewijst, meestal via referenties, zoals een gebruikers naam en wacht woord. Er zijn meerdere verificatie protocollen beschikbaar die kunnen worden overwogen. Enkele hiervan worden hieronder weer gegeven:</p><ul><li>Clientcertificaten</li><li>Op Windows gebaseerd</li><li>Formulieren op basis</li><li>Federatie-ADFS</li><li>Federatie-Azure AD</li><li>Federatie-identiteits server</li></ul><p>Koppelingen in de sectie verwijzingen bieden Details op laag niveau over hoe elk van de verificatie schema's kan worden geïmplementeerd om een web-API te beveiligen.</p>|
+| **Stappen** | <p>Verificatie is het proces waarbij een entiteit zijn identiteit bewijst, meestal via referenties, zoals een gebruikers naam en wacht woord. Er zijn meerdere verificatie protocollen beschikbaar die kunnen worden overwogen. Enkele hiervan worden hieronder weer gegeven:</p><ul><li>Client certificaten</li><li>Op Windows gebaseerd</li><li>Formulieren op basis</li><li>Federatie-ADFS</li><li>Federatie-Azure AD</li><li>Federatie-identiteits server</li></ul><p>Koppelingen in de sectie verwijzingen bieden Details op laag niveau over hoe elk van de verificatie schema's kan worden geïmplementeerd om een web-API te beveiligen.</p>|
 
 ## <a id="authn-aad"></a>Standaard verificatie scenario's gebruiken die worden ondersteund door Azure Active Directory
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Onderdeel**               | Azure AD | 
-| **SDL-fase**               | Ontwikkelen |  
+| **SDL-fase**               | Build |  
 | **Toepasselijke technologieën** | Encarta |
 | **Eigenschappen**              | N/A  |
 | **Referentie**              | [Verificatie scenario's voor Azure AD](https://azure.microsoft.com/documentation/articles/active-directory-authentication-scenarios/), [Azure Active Directory Code voorbeelden](https://azure.microsoft.com/documentation/articles/active-directory-code-samples/), [Azure Active Directory hand leiding voor ontwikkel aars](https://azure.microsoft.com/documentation/articles/active-directory-developers-guide/) |
-| **Stappen** | <p>Azure Active Directory (Azure AD) vereenvoudigt de verificatie voor ontwikkel aars door identiteit als service te leveren, met ondersteuning voor de industrie standaard protocollen zoals OAuth 2,0 en OpenID Connect Connect. Hieronder vindt u de vijf scenario's voor de primaire toepassing die worden ondersteund door Azure AD:</p><ul><li>Webbrowser voor webtoepassing: Een gebruiker moet zich aanmelden bij een webtoepassing die is beveiligd met Azure AD</li><li>Toepassing met één pagina (SPA): Een gebruiker moet zich aanmelden bij een toepassing met één pagina die is beveiligd met Azure AD</li><li>Systeem eigen toepassing op Web-API: Een systeem eigen toepassing die wordt uitgevoerd op een telefoon, tablet of PC moet een gebruiker verifiëren om bronnen te verkrijgen van een web-API die wordt beveiligd door Azure AD</li><li>Webtoepassing voor web-API: Een webtoepassing moet resources ophalen van een web-API die wordt beveiligd door Azure AD</li><li>Daemon of server toepassing op Web-API: Voor een daemon-toepassing of een server toepassing zonder webinterface moeten bronnen worden opgehaald van een web-API die wordt beveiligd door Azure AD</li></ul><p>Raadpleeg de koppelingen in de sectie met verwijzingen voor details over implementatie op laag niveau</p>|
+| **Stappen** | <p>Azure Active Directory (Azure AD) vereenvoudigt de verificatie voor ontwikkel aars door identiteit als service te leveren, met ondersteuning voor de industrie standaard protocollen zoals OAuth 2,0 en OpenID Connect Connect. Hieronder vindt u de vijf scenario's voor de primaire toepassing die worden ondersteund door Azure AD:</p><ul><li>Webbrowser voor webtoepassing: een gebruiker moet zich aanmelden bij een webtoepassing die wordt beveiligd door Azure AD</li><li>Toepassing met één pagina (SPA): een gebruiker moet zich aanmelden bij een toepassing met één pagina die is beveiligd met Azure AD</li><li>Systeem eigen toepassing op Web-API: een systeem eigen toepassing die wordt uitgevoerd op een telefoon, tablet of PC moet een gebruiker verifiëren om bronnen te verkrijgen van een web-API die wordt beveiligd door Azure AD</li><li>Web Application to Web API: een webtoepassing moet resources ophalen van een web-API die wordt beveiligd door Azure AD</li><li>Daemon of server toepassing op Web-API: een daemon-toepassing of een server toepassing zonder webinterface moet resources ophalen van een web-API die wordt beveiligd door Azure AD</li></ul><p>Raadpleeg de koppelingen in de sectie met verwijzingen voor details over implementatie op laag niveau</p>|
 
 ## <a id="adal-scalable"></a>De standaard ADAL-token cache overschrijven met een schaalbaar alternatief
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Onderdeel**               | Azure AD | 
-| **SDL-fase**               | Ontwikkelen |  
+| **SDL-fase**               | Build |  
 | **Toepasselijke technologieën** | Encarta |
 | **Eigenschappen**              | N/A  |
-| **Referentie**              | [Moderne verificatie met Azure Active Directory voor](https://blogs.msdn.microsoft.com/microsoft_press/2016/01/04/new-book-modern-authentication-with-azure-active-directory-for-web-applications/)webtoepassingen, [met behulp van redis als ADAL-token cache](https://blogs.msdn.microsoft.com/mrochon/2016/09/19/using-redis-as-adal-token-cache/)  |
+| **Referentie**              | [Moderne verificatie met Azure Active Directory voor webtoepassingen](https://blogs.msdn.microsoft.com/microsoft_press/2016/01/04/new-book-modern-authentication-with-azure-active-directory-for-web-applications/), [met behulp van redis als ADAL-token cache](https://blogs.msdn.microsoft.com/mrochon/2016/09/19/using-redis-as-adal-token-cache/)  |
 | **Stappen** | <p>De standaard cache die ADAL (Active Directory Authentication Library) gebruikt, is een in-memory cache die afhankelijk is van een statische opslag, beschik bare proces breedte. Hoewel dit werkt voor systeem eigen toepassingen, kan het niet worden geschaald voor de volgende redenen:</p><ul><li>Deze toepassingen zijn toegankelijk voor veel gebruikers tegelijk. Als u alle toegangs tokens in hetzelfde archief opslaat, worden er isolatie problemen gemaakt en worden er uitdagingen weer gegeven bij het uitvoeren van een schaal: veel gebruikers, elk met zoveel tokens als de resources die de app namens u toegang geeft, kunnen grote aantallen en zeer dure opzoek bewerkingen betekenen.</li><li>Deze toepassingen worden doorgaans geïmplementeerd op gedistribueerde topologieën, waarbij meerdere knoop punten toegang moeten hebben tot dezelfde cache</li><li>Tokens in de cache moeten worden gerecycled en processen worden gedeactiveerd</li></ul><p>Om de bovenstaande redenen, tijdens het implementeren van web-apps, wordt aangeraden de standaard ADAL-token cache te vervangen door een schaalbaar alternatief zoals Azure cache voor redis.</p>|
 
 ## <a id="tokenreplaycache-adal"></a>Zorg ervoor dat TokenReplayCache wordt gebruikt om het opnieuw afspelen van ADAL-verificatie tokens te voor komen
@@ -370,7 +370,7 @@ Het `<netMsmqBinding/>` element van het WCF-configuratie bestand hieronder geeft
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Onderdeel**               | Azure AD | 
-| **SDL-fase**               | Ontwikkelen |  
+| **SDL-fase**               | Build |  
 | **Toepasselijke technologieën** | Encarta |
 | **Eigenschappen**              | N/A  |
 | **Referentie**              | [Moderne verificatie met Azure Active Directory voor webtoepassingen](https://blogs.msdn.microsoft.com/microsoft_press/2016/01/04/new-book-modern-authentication-with-azure-active-directory-for-web-applications/) |
@@ -424,14 +424,14 @@ OpenIdConnectOptions openIdConnectOptions = new OpenIdConnectOptions
 }
 ```
 
-Let op: als u de effectiviteit van deze configuratie wilt testen, meldt u zich aan bij uw lokale met OIDC beveiligde `"/signin-oidc"` toepassing en legt u de aanvraag voor eind punt in Fiddler vast. Wanneer de beveiliging niet aanwezig is, wordt door het opnieuw afspelen van deze aanvraag in Fiddler een nieuwe sessie cookie ingesteld. Wanneer de aanvraag opnieuw wordt afgespeeld nadat de TokenReplayCache-beveiliging is toegevoegd, wordt de volgende uitzonde ring gegenereerd door de toepassing:`SecurityTokenReplayDetectedException: IDX10228: The securityToken has previously been validated, securityToken: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWmNBVGZNNXBPWWlKSE1iYTlnb0VLWSIsImtpZCI6Ik1uQ1......`
+Als u de effectiviteit van deze configuratie wilt testen, meldt u zich aan bij uw lokale met OIDC beveiligde toepassing en legt u de aanvraag vast aan `"/signin-oidc"`-eind punt in Fiddler. Wanneer de beveiliging niet aanwezig is, wordt door het opnieuw afspelen van deze aanvraag in Fiddler een nieuwe sessie cookie ingesteld. Wanneer de aanvraag opnieuw wordt afgespeeld nadat de TokenReplayCache-beveiliging is toegevoegd, wordt door de toepassing een uitzonde ring als volgt gegenereerd: `SecurityTokenReplayDetectedException: IDX10228: The securityToken has previously been validated, securityToken: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWmNBVGZNNXBPWWlKSE1iYTlnb0VLWSIsImtpZCI6Ik1uQ1......`
 
 ## <a id="adal-oauth2"></a>ADAL-bibliotheken gebruiken voor het beheren van token aanvragen van OAuth2-clients naar AAD (of on-premises AD)
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Onderdeel**               | Azure AD | 
-| **SDL-fase**               | Ontwikkelen |  
+| **SDL-fase**               | Build |  
 | **Toepasselijke technologieën** | Encarta |
 | **Eigenschappen**              | N/A  |
 | **Referentie**              | [ADAL](https://azure.microsoft.com/documentation/articles/active-directory-authentication-libraries/) |
@@ -442,7 +442,7 @@ Let op: als u de effectiviteit van deze configuratie wilt testen, meldt u zich a
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Onderdeel**               | IoT-veld Gateway | 
-| **SDL-fase**               | Ontwikkelen |  
+| **SDL-fase**               | Build |  
 | **Toepasselijke technologieën** | Encarta |
 | **Eigenschappen**              | N/A  |
 | **Referentie**              | N/A  |
@@ -453,11 +453,11 @@ Let op: als u de effectiviteit van deze configuratie wilt testen, meldt u zich a
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Onderdeel**               | IoT-Cloud gateway | 
-| **SDL-fase**               | Ontwikkelen |  
+| **SDL-fase**               | Build |  
 | **Toepasselijke technologieën** | Algemeen, C#, node. js,  |
 | **Eigenschappen**              | N.v.t. gateway keuze-Azure IoT Hub |
 | **Referentie**              | N.v.t., [Azure IOT hub met .net](https://azure.microsoft.com/documentation/articles/iot-hub-csharp-csharp-getstarted/), aan de [slag met IOT hub en node js](https://azure.microsoft.com/documentation/articles/iot-hub-node-node-getstarted), [IOT beveiligen met SAS en certificaten](https://azure.microsoft.com/documentation/articles/iot-hub-sas-tokens/), [Git-opslag plaats](https://github.com/Azure/azure-iot-sdks/tree/master/node) |
-| **Stappen** | <ul><li>**Encarta** Verifieer het apparaat met behulp van Transport Layer Security (TLS) of IPSec. Infra structuur moet ondersteuning bieden voor het gebruik van een vooraf gedeelde sleutel (PSK) op de apparaten die geen volledige asymmetrische crypto grafie kunnen verwerken. Gebruik Azure AD, OAuth.</li><li>**C#:** Wanneer u een DeviceClient-exemplaar maakt, maakt de methode Create standaard een DeviceClient-exemplaar dat het AMQP-protocol gebruikt om te communiceren met IoT Hub. Als u het HTTPS-protocol wilt gebruiken, moet u de Create-methode overschrijven, waarmee u het protocol kunt opgeven. Als u het HTTPS-protocol gebruikt, moet u ook het `Microsoft.AspNet.WebApi.Client` NuGet-pakket toevoegen aan uw project om `System.Net.Http.Formatting` de naam ruimte op te kunnen bevatten.</li></ul>|
+| **Stappen** | <ul><li>**Algemeen:** Verifieer het apparaat met behulp van Transport Layer Security (TLS) of IPSec. Infra structuur moet ondersteuning bieden voor het gebruik van een vooraf gedeelde sleutel (PSK) op de apparaten die geen volledige asymmetrische crypto grafie kunnen verwerken. Gebruik Azure AD, OAuth.</li><li>**C#:** Wanneer u een DeviceClient-exemplaar maakt, maakt de methode Create standaard een DeviceClient-exemplaar dat het AMQP-protocol gebruikt om te communiceren met IoT Hub. Als u het HTTPS-protocol wilt gebruiken, moet u de Create-methode overschrijven, waarmee u het protocol kunt opgeven. Als u het HTTPS-protocol gebruikt, moet u ook het NuGet-pakket van de `Microsoft.AspNet.WebApi.Client` toevoegen aan uw project om de `System.Net.Http.Formatting`-naam ruimte op te kunnen bevatten.</li></ul>|
 
 ### <a name="example"></a>Voorbeeld
 ```csharp
@@ -475,7 +475,7 @@ await deviceClient.SendEventAsync(message);
 ```
 
 ### <a name="example"></a>Voorbeeld
-**Node. JS: Verificatie**
+**Node. JS: verificatie**
 #### <a name="symmetric-key"></a>Symmetrische sleutel
 * Een IoT-hub maken in azure
 * Een item maken in het apparaat-id-REGI ster
@@ -493,7 +493,7 @@ await deviceClient.SendEventAsync(message);
     ```
   #### <a name="sas-token"></a>SAS-token
 * Wordt intern gegenereerd bij het gebruik van symmetrische sleutels, maar we kunnen deze expliciet genereren en gebruiken
-* Een protocol definiëren:`var Http = require('azure-iot-device-http').Http;`
+* Een protocol definiëren: `var Http = require('azure-iot-device-http').Http;`
 * Een SAS-token maken:
     ```javascript
     resourceUri = encodeURIComponent(resourceUri.toLowerCase()).toLowerCase();
@@ -553,7 +553,7 @@ await deviceClient.SendEventAsync(message);
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Onderdeel**               | IoT-Cloud gateway  | 
-| **SDL-fase**               | Ontwikkelen |  
+| **SDL-fase**               | Build |  
 | **Toepasselijke technologieën** | Encarta |
 | **Eigenschappen**              | Gateway keuze-Azure IoT Hub |
 | **Referentie**              | [Beveiligings tokens van Azure IoT Hub](https://azure.microsoft.com/documentation/articles/iot-hub-sas-tokens/) |
@@ -564,19 +564,19 @@ await deviceClient.SendEventAsync(message);
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Onderdeel**               | Azure Storage | 
-| **SDL-fase**               | Ontwikkelen |  
+| **SDL-fase**               | Build |  
 | **Toepasselijke technologieën** | Encarta |
 | **Eigenschappen**              | Para-BLOB |
-| **Referentie**              | [Anonieme lees toegang tot containers en blobs beheren](https://azure.microsoft.com/documentation/articles/storage-manage-access-to-resources/), [hand tekeningen voor gedeelde toegang, deel 1: Informatie over het SAS-model](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/) |
-| **Stappen** | <p>Standaard kan een container en alle blobs in deze alleen worden geopend door de eigenaar van het opslag account. Om anonieme gebruikers lees machtigingen te geven voor een container en de bijbehorende blobs, kan één de container machtigingen instellen om open bare toegang toe te staan. Anonieme gebruikers kunnen blobs lezen binnen een openbaar toegankelijke container zonder de aanvraag te verifiëren.</p><p>Containers bieden de volgende opties voor het beheren van toegang tot de container:</p><ul><li>Volledige open bare Lees toegang: Container-en BLOB-gegevens kunnen worden gelezen via anonieme aanvragen. Clients kunnen blobs in de container opsommen via een anonieme aanvraag, maar kunnen containers in het opslag account niet inventariseren.</li><li>Open bare Lees toegang alleen voor blobs: BLOB-gegevens in deze container kunnen worden gelezen via anonieme aanvragen, maar er zijn geen container gegevens beschikbaar. Clients kunnen geen blobs in de container opsommen via anonieme aanvraag</li><li>Geen open bare Lees toegang: Container-en BLOB-gegevens kunnen alleen worden gelezen door de account eigenaar</li></ul><p>Anonieme toegang is het meest geschikt voor scenario's waarbij bepaalde blobs altijd beschikbaar moeten zijn voor anonieme lees toegang. Voor een nauw keurig beheer kunt u een gedeelde toegangs handtekening maken, waarmee u beperkte toegang kunt delegeren met behulp van verschillende machtigingen en een opgegeven tijds interval. Zorg ervoor dat containers en blobs, die mogelijk gevoelige gegevens bevatten, geen anonieme toegang per ongeluk hebben</p>|
+| **Referentie**              | [Anonieme lees toegang tot containers en blobs beheren](https://azure.microsoft.com/documentation/articles/storage-manage-access-to-resources/), [hand tekeningen voor gedeelde toegang, deel 1: informatie over het SAS-model](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/) |
+| **Stappen** | <p>Standaard kan een container en alle blobs in deze alleen worden geopend door de eigenaar van het opslag account. Om anonieme gebruikers lees machtigingen te geven voor een container en de bijbehorende blobs, kan één de container machtigingen instellen om open bare toegang toe te staan. Anonieme gebruikers kunnen blobs lezen binnen een openbaar toegankelijke container zonder de aanvraag te verifiëren.</p><p>Containers bieden de volgende opties voor het beheren van toegang tot de container:</p><ul><li>Volledige open bare Lees toegang: container-en BLOB-gegevens kunnen worden gelezen via anonieme aanvragen. Clients kunnen blobs in de container opsommen via een anonieme aanvraag, maar kunnen containers in het opslag account niet inventariseren.</li><li>Open bare Lees toegang alleen voor blobs: BLOB-gegevens in deze container kunnen worden gelezen via anonieme aanvragen, maar er zijn geen container gegevens beschikbaar. Clients kunnen geen blobs in de container opsommen via anonieme aanvraag</li><li>Geen open bare Lees toegang: container-en BLOB-gegevens kunnen alleen worden gelezen door de account eigenaar</li></ul><p>Anonieme toegang is het meest geschikt voor scenario's waarbij bepaalde blobs altijd beschikbaar moeten zijn voor anonieme lees toegang. Voor een nauw keurig beheer kunt u een gedeelde toegangs handtekening maken, waarmee u beperkte toegang kunt delegeren met behulp van verschillende machtigingen en een opgegeven tijds interval. Zorg ervoor dat containers en blobs, die mogelijk gevoelige gegevens bevatten, geen anonieme toegang per ongeluk hebben</p>|
 
 ## <a id="limited-access-sas"></a>Beperkte toegang verlenen tot objecten in azure Storage met SAS of SAP
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Onderdeel**               | Azure Storage | 
-| **SDL-fase**               | Ontwikkelen |  
+| **SDL-fase**               | Build |  
 | **Toepasselijke technologieën** | Encarta |
 | **Eigenschappen**              | N/A |
-| **Referentie**              | [Shared Access Signatures, deel 1: Meer informatie over het](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/)SAS [-model, Shared Access Signatures, Part 2: Een SAS maken en gebruiken met Blob Storage](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-2/), [toegang tot objecten in uw account delegeren met behulp van hand tekeningen voor gedeelde toegang en opgeslagen toegangs beleid](https://azure.microsoft.com/documentation/articles/storage-security-guide/#_how-to-delegate-access-to-objects-in-your-account-using-shared-access-signatures-and-stored-access-policies) |
+| **Referentie**              | [Hand tekeningen voor gedeelde toegang, deel 1: uitleg over het SAS-model](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/), [Shared Access Signatures, deel 2: een SAS maken en gebruiken met Blob Storage](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-2/), [de toegang tot objecten in uw account delegeren met behulp van hand tekeningen voor gedeelde toegang en opgeslagen toegang Beleids regels](https://azure.microsoft.com/documentation/articles/storage-security-guide/#_how-to-delegate-access-to-objects-in-your-account-using-shared-access-signatures-and-stored-access-policies) |
 | **Stappen** | <p>Het gebruik van een Shared Access Signature (SAS) is een krachtige manier om beperkte toegang tot objecten in een opslag account toe te kennen aan andere clients, zonder dat de toegangs sleutel voor het account hoeft te worden blootgesteld. De SAS is een URI die in de query parameters omvat alle informatie die nodig is voor geverifieerde toegang tot een opslag resource. Om toegang te krijgen tot opslag bronnen met de SAS, hoeft de client alleen de SA'S door te geven aan de juiste constructor of methode.</p><p>U kunt een SAS gebruiken als u toegang wilt verlenen tot resources in uw opslag account naar een client die niet kan worden vertrouwd met de account sleutel. De sleutels van uw opslag account zijn zowel een primaire als een secundaire sleutel, beide waarmee beheerders toegang tot uw account en alle resources erin worden verleend. Door een van uw account sleutels beschikbaar te maken, wordt uw account geopend met de mogelijkheid om kwaad aardig of onachtzaamheid te gebruiken. Shared Access signatures bieden een veilig alternatief waarmee andere clients gegevens in uw opslag account kunnen lezen, schrijven en verwijderen op basis van de machtigingen die u hebt verleend, en zonder dat de account sleutel nodig is.</p><p>Als u een logische set para meters hebt die vergelijkbaar zijn, is het gebruik van een opgeslagen toegangs beleid (SAP) een beter idee. Omdat het gebruik van een SAS die is afgeleid van een opgeslagen toegangs beleid, u de mogelijkheid biedt om die SA'S onmiddellijk in te trekken, is het de aanbevolen best practice om altijd opgeslagen toegangs beleid te gebruiken wanneer dat mogelijk is.</p>|

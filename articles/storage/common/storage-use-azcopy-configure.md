@@ -8,12 +8,12 @@ ms.date: 07/25/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 8a96c5b2d39967c8ee82f48e880bac9270a58c36
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 3843eb2e906e3fb8d390e509e17117b7849ac220
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68844796"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72244705"
 ---
 # <a name="configure-optimize-and-troubleshoot-azcopy"></a>AzCopy configureren, optimaliseren en problemen oplossen
 
@@ -28,11 +28,11 @@ AzCopy is een opdracht regel programma dat u kunt gebruiken voor het kopiëren v
 
 ## <a name="configure-proxy-settings"></a>Proxy-instellingen configureren
 
-Stel de `https_proxy` omgevings variabele in om de proxy-instellingen voor AzCopy te configureren. Als u AzCopy uitvoert in Windows, detecteert AzCopy automatisch proxy-instellingen. u hoeft deze instelling niet te gebruiken in Windows. Als u kiest voor het gebruik van deze instelling in Windows, wordt automatische detectie vervangen.
+Als u de proxy-instellingen voor AzCopy wilt configureren, stelt u de omgevings variabele `https_proxy` in. Als u AzCopy uitvoert in Windows, detecteert AzCopy automatisch proxy-instellingen. u hoeft deze instelling niet te gebruiken in Windows. Als u kiest voor het gebruik van deze instelling in Windows, wordt automatische detectie vervangen.
 
 | Besturingssysteem | Opdracht  |
 |--------|-----------|
-| **Windows** | In een opdracht prompt gebruikt u:`set https_proxy=<proxy IP>:<proxy port>`<br> In Power shell gebruikt u:`$env:https_proxy="<proxy IP>:<proxy port>"`|
+| **Windows** | In een opdracht prompt gebruikt u: `set https_proxy=<proxy IP>:<proxy port>`<br> In Power shell gebruiken: `$env:https_proxy="<proxy IP>:<proxy port>"`|
 | **Linux** | `export https_proxy=<proxy IP>:<proxy port>` |
 | **MacOS** | `export https_proxy=<proxy IP>:<proxy port>` |
 
@@ -40,13 +40,13 @@ Momenteel biedt AzCopy geen ondersteuning voor proxy's waarvoor authenticatie me
 
 ## <a name="optimize-throughput"></a>Door Voer optimaliseren
 
-U kunt de `cap-mbps` vlag gebruiken om een plafond te plaatsen op basis van het gegevens aantal door voer. Met de volgende opdracht wordt bijvoorbeeld een hoofd letter `10` door voer naar megabits (MB) per seconde.
+U kunt de vlag `cap-mbps` gebruiken om een plafond te plaatsen op basis van het gegevens aantal door voer. Met de volgende opdracht wordt bijvoorbeeld een hoofd letter doorvoer tot `10` megabits (MB) per seconde.
 
 ```azcopy
 azcopy cap-mbps 10
 ```
 
-De door Voer kan afnemen bij het overbrengen van kleine bestanden. U kunt de door Voer verhogen door de `AZCOPY_CONCURRENCY_VALUE` omgevings variabele in te stellen. Met deze variabele geeft u het aantal gelijktijdige aanvragen op dat kan worden uitgevoerd.  Als uw computer minder dan 5 Cpu's heeft, wordt de waarde van deze variabele ingesteld op `32`. Anders is de standaard waarde gelijk aan 16 vermenigvuldigd met het aantal Cpu's. De maximale standaard waarde van deze variabele is `300`, maar u kunt deze waarde ook op een hoger of lager niveau instellen.
+De door Voer kan afnemen bij het overbrengen van kleine bestanden. U kunt de door Voer verhogen door de omgevings variabele `AZCOPY_CONCURRENCY_VALUE` in te stellen. Met deze variabele geeft u het aantal gelijktijdige aanvragen op dat kan worden uitgevoerd.  Als uw computer minder dan 5 Cpu's heeft, wordt de waarde van deze variabele ingesteld op `32`. Anders is de standaard waarde gelijk aan 16 vermenigvuldigd met het aantal Cpu's. De maximale standaard waarde van deze variabele is `300`, maar u kunt deze waarde ook op een hoger of lager niveau instellen.
 
 | Besturingssysteem | Opdracht  |
 |--------|-----------|
@@ -54,11 +54,11 @@ De door Voer kan afnemen bij het overbrengen van kleine bestanden. U kunt de doo
 | **Linux** | `export AZCOPY_CONCURRENCY_VALUE=<value>` |
 | **MacOS** | `export AZCOPY_CONCURRENCY_VALUE=<value>` |
 
-Gebruik de `azcopy env` om de huidige waarde van deze variabele te controleren.  Als de waarde leeg is, wordt de `AZCOPY_CONCURRENCY_VALUE` variabele ingesteld op de standaard waarde van. `300`
+Gebruik de `azcopy env` om de huidige waarde van deze variabele te controleren.  Als de waarde leeg is, wordt de variabele @no__t 0 ingesteld op de standaard waarde van `300`.
 
 ## <a name="change-the-location-of-the-log-files"></a>De locatie van de logboek bestanden wijzigen
 
-Logboek bestanden bevinden zich standaard in de `%USERPROFILE\\.azcopy` map in Windows of in de `$HOME\\.azcopy` map op Mac en Linux. U kunt deze locatie wijzigen als u deze nodig hebt met behulp van deze opdrachten.
+Logboek bestanden bevinden zich standaard in de map @no__t 0 in Windows of in de map `$HOME\\.azcopy` op Mac en Linux. U kunt deze locatie wijzigen als u deze nodig hebt met behulp van deze opdrachten.
 
 | Besturingssysteem | Opdracht  |
 |--------|-----------|
@@ -70,24 +70,24 @@ Gebruik de `azcopy env` om de huidige waarde van deze variabele te controleren. 
 
 ## <a name="change-the-default-log-level"></a>Het standaard logboek niveau wijzigen
 
-AzCopy-logboek niveau is standaard ingesteld op `INFO`. Als u de uitgebreidheid van het logboek wilt beperken om schijf ruimte te besparen, kunt u deze instelling overschrijven ``--log-level`` met behulp van de optie. 
+AzCopy-logboek niveau is standaard ingesteld op `INFO`. Als u de uitgebreidheid van het logboek wilt beperken om schijf ruimte te besparen, kunt u deze instelling overschrijven met de optie ``--log-level``. 
 
-Beschik bare logboek niveaus `DEBUG`zijn `INFO`: `WARNING`, `ERROR`, `PANIC`,, `FATAL`en.
+Beschik bare logboek niveaus zijn: `DEBUG`, `INFO`, `WARNING`, `ERROR`, `PANIC` en `FATAL`.
 
 ## <a name="troubleshoot-issues"></a>Problemen oplossen
 
 AzCopy maakt logboek-en plan bestanden voor elke taak. U kunt de Logboeken gebruiken om potentiële problemen te onderzoeken en op te lossen. 
 
-De logboeken bevatten de status van fout (`UPLOADFAILED`, `COPYFAILED`, en `DOWNLOADFAILED`), het volledige pad en de reden van de fout.
+De logboeken bevatten de status mislukt (`UPLOADFAILED`, `COPYFAILED` en `DOWNLOADFAILED`), het volledige pad en de reden van de fout.
 
-De logboek-en plan bestanden bevinden zich standaard in de `%USERPROFILE\\.azcopy` map in Windows of `$HOME\\.azcopy` in de map op Mac en Linux.
+Standaard bevinden de logboek-en plan bestanden zich in de map @no__t 0 in Windows of `$HOME\\.azcopy` Directory op Mac en Linux.
 
 > [!IMPORTANT]
 > Wanneer u een aanvraag indient om Microsoft Ondersteuning (of het probleem met een derde partij op te lossen), deelt u de geredigeerde versie van de opdracht die u wilt uitvoeren. Dit zorgt ervoor dat de SAS niet per ongeluk met iedereen wordt gedeeld. U kunt de geredigeerde versie vinden aan het begin van het logboek bestand.
 
 ### <a name="review-the-logs-for-errors"></a>De logboeken controleren op fouten
 
-Met `UPLOADFAILED` de volgende opdracht worden alle fouten uit het `04dc9ca9-158f-7945-5933-564021086c79` logboek opgehaald:
+Met de volgende opdracht worden alle fouten met de status `UPLOADFAILED` uit het logboek van `04dc9ca9-158f-7945-5933-564021086c79` opgehaald:
 
 **Windows (Power shell)**
 

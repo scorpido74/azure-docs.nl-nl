@@ -10,62 +10,61 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: swmachan
-ms.openlocfilehash: cb5a3b8572cebfd6c0731a9e572e966fda280be6
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: a441ca83230a1c715aadda79683964aaab6d6213
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70772788"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72252972"
 ---
 # <a name="translator-text-api-v30"></a>Translator Text-API v 3.0
 
-## <a name="whats-new"></a>Wat is nieuw?
+## <a name="whats-new"></a>Wat is er nieuw?
 
 Versie 3 van de Translator Text-API biedt een moderne op JSON gebaseerde web-API. Het verbetert de bruikbaarheid en prestaties door bestaande functies te consolideren in minder bewerkingen en biedt nieuwe functies.
 
  * Vele voor het converteren van tekst in één taal van het ene script naar een ander script.
  * Vertaling naar meerdere talen in één aanvraag.
  * Taal detectie, vertaling en vele in één aanvraag.
- * Woorden lijst voor het opzoeken van alternatieve vertalingen van een term om back-vertalingen en voor beelden te vinden die in de context worden gebruikt.
+ * Woorden boek om alternatieve vertalingen van een termijn op te zoeken, om back-vertalingen en voor beelden te vinden met de termen die in de context worden gebruikt.
  * Meer informatieve resultaten voor de detectie van talen.
 
 ## <a name="base-urls"></a>Basis-Url's
 
 Micro soft Translator wordt uit meerdere datacenter locaties verzonden. Ze bevinden zich momenteel in de volgende tien [Azure-regio's](https://azure.microsoft.com/global-infrastructure/regions):
 
-* **Amerikaanse** VS-Oost, Zuid-Centraal VS, West-Centraal VS en VS-West 2 
+* **Amerikaans continent:** VS-Oost, Zuid-Centraal VS, West-Centraal VS en VS-West 2 
 * **Azië en Stille Oceaan:** Korea-zuid, Japan-Oost, Zuidoost-Azië en Australië-oost
-* **Europa** Europa-noord en Europa-west
+* **Europa:** Europa-noord en Europa-west
 
 Aanvragen voor de micro soft-Translator Text-API worden in de meeste gevallen verwerkt door het Data Center dat zich het dichtst bij de oorspronkelijke bestemming bevindt. In het geval van een storing in een Data Center kan de aanvraag buiten de regio van Azure worden gerouteerd.
 
 Als u wilt afdwingen dat de aanvraag wordt verwerkt door een specifieke Azure-geografie, wijzigt u het globale eind punt in de API-aanvraag naar het gewenste regionale eind punt:
 
-|Description|Azure-Geografie|Basis-URL|
+|Beschrijving|Azure-Geografie|Basis-URL|
 |:--|:--|:--|
 |Azure|Algemeen (niet-regionaal)|   api.cognitive.microsofttranslator.com|
 |Azure|Verenigde Staten|   api-nam.cognitive.microsofttranslator.com|
 |Azure|Europa|  api-eur.cognitive.microsofttranslator.com|
-|Azure|Azië en Stille Oceaan|    api-apc.cognitive.microsofttranslator.com|
+|Azure|Azië-Pacific|    api-apc.cognitive.microsofttranslator.com|
 
+## <a name="authentication"></a>Verificatie
 
-## <a name="authentication"></a>Authentication
+Abonneer u op Translator Text-API of [Cognitive Services meerdere services](https://azure.microsoft.com/pricing/details/cognitive-services/) in azure Cognitive Services en gebruik uw abonnements sleutel (beschikbaar in de Azure Portal) om te verifiëren. 
 
-Abonneer u op Translator Text-API of [Cognitive Services meerdere services](https://azure.microsoft.com/pricing/details/cognitive-services/) in Microsoft Cognitive Services en gebruik uw abonnements sleutel (beschikbaar in de Azure Portal) om te verifiëren. 
+Er zijn drie kopteksten die u kunt gebruiken om uw abonnement te verifiëren. In deze tabel wordt beschreven hoe elke wordt gebruikt:
 
-Er zijn drie kopteksten die u kunt gebruiken om uw abonnement te verifiëren. Deze tabel bevat een beschrijving van de manier waarop deze worden gebruikt:
-
-|Headers|Description|
+|Headers|Beschrijving|
 |:----|:----|
-|OCP-Apim-Subscription-Key|*Gebruik with Cognitive Services-abonnement als u uw geheime sleutel door geven*.<br/>De waarde is de geheime Azure-sleutel voor uw abonnement Translator Text-API.|
-|Authorization|*Gebruik with Cognitive Services-abonnement als u een verificatie token doorgeeft.*<br/>De waarde is de Bearer-token `Bearer <token>`:.|
-|Ocp-Apim-Subscription-Region|*Gebruik met met Cognitive Services abonnement voor meerdere services als u een geheime sleutel van meerdere services doorgeeft.*<br/>De waarde is de regio van het multi-service abonnement. Deze waarde is optioneel wanneer u geen multi-service-abonnement gebruikt.|
+|OCP-APIM-abonnements sleutel|*Gebruik with Cognitive Services-abonnement als u uw geheime sleutel door geven*.<br/>De waarde is de geheime Azure-sleutel voor uw abonnement Translator Text-API.|
+|Autorisatie|*Gebruik with Cognitive Services-abonnement als u een verificatie token doorgeeft.*<br/>De waarde is het Bearer-token: `Bearer <token>`.|
+|OCP-APIM-abonnement-regio|*Gebruik met met Cognitive Services abonnement voor meerdere services als u een geheime sleutel van meerdere services doorgeeft.*<br/>De waarde is de regio van het multi-service abonnement. Deze waarde is optioneel wanneer u geen multi-service-abonnement gebruikt.|
 
 ###  <a name="secret-key"></a>Geheime sleutel
-De eerste optie is om te verifiëren met `Ocp-Apim-Subscription-Key` behulp van de header. Voeg de `Ocp-Apim-Subscription-Key: <YOUR_SECRET_KEY>` header gewoon toe aan uw aanvraag.
+De eerste optie is om te verifiëren met behulp van de `Ocp-Apim-Subscription-Key`-header. Voeg de header `Ocp-Apim-Subscription-Key: <YOUR_SECRET_KEY>` toe aan uw aanvraag.
 
-### <a name="authorization-token"></a>Autorisatietoken
-U kunt ook uw geheime sleutel voor een toegangs token uitwisselen. Dit token is opgenomen in elke aanvraag als de `Authorization` header. Als u een autorisatie token wilt verkrijgen, `POST` moet u een aanvraag indienen bij de volgende URL:
+### <a name="authorization-token"></a>Autorisatie token
+U kunt ook uw geheime sleutel voor een toegangs token uitwisselen. Dit token is opgenomen in elke aanvraag als de `Authorization`-header. Als u een autorisatie token wilt verkrijgen, moet u een `POST`-aanvraag indienen bij de volgende URL:
 
 | Omgeving     | URL van verificatie service                                |
 |-----------------|-----------------------------------------------------------|
@@ -73,7 +72,7 @@ U kunt ook uw geheime sleutel voor een toegangs token uitwisselen. Dit token is 
 
 Hier vindt u voor beelden van aanvragen voor het verkrijgen van een token aan de hand van een geheime sleutel:
 
-```
+```curl
 // Pass secret key using header
 curl --header 'Ocp-Apim-Subscription-Key: <your-key>' --data "" 'https://api.cognitive.microsoft.com/sts/v1.0/issueToken'
 
@@ -83,11 +82,11 @@ curl --data "" 'https://api.cognitive.microsoft.com/sts/v1.0/issueToken?Subscrip
 
 Een succes volle aanvraag retourneert het gecodeerde toegangs token als tekst zonder opmaak in de hoofd tekst van het antwoord. Het geldige token wordt door gegeven aan de Translator-service als Bearer-token in de autorisatie.
 
-```
+```http
 Authorization: Bearer <Base64-access_token>
 ```
 
-Een verificatie token is 10 minuten geldig. Het token moet opnieuw worden gebruikt bij het maken van meerdere aanroepen naar de Translator-Api's. Als uw programma echter gedurende lange tijd aanvragen voor de API Translator maakt, moet uw programma regel matig een nieuw toegangs token aanvragen (bijvoorbeeld elke 8 minuten).
+Een verificatie token is 10 minuten geldig. Het token moet opnieuw worden gebruikt bij het maken van meerdere aanroepen naar de Translator-Api's. Als uw programma echter gedurende een lange periode aanvragen voor de Translator-API maakt, moet uw programma regel matig een nieuw toegangs token aanvragen (bijvoorbeeld om de 8 minuten).
 
 ### <a name="multi-service-subscription"></a>Abonnement op meerdere services
 
@@ -99,24 +98,23 @@ Wanneer u een geheime sleutel van meerdere services gebruikt, moet u twee verifi
 
 De regio is vereist voor het multi-service-tekst-API-abonnement. De regio die u selecteert, is de enige regio die u voor tekst omzetting kunt gebruiken wanneer u de sleutel voor meerdere services gebruikt en moet dezelfde regio zijn die u hebt geselecteerd toen u zich registreerde voor uw abonnement op meerdere services via de Azure Portal.
 
-Beschik bare `australiaeast`regio's `brazilsouth`zijn `canadacentral`, `centralindia`, `centralus`,,, `centraluseuap`, ,,,`eastus2`,, ,`japanwest` `francecentral` `eastus` `eastasia` `japaneast` `koreacentral`, `northcentralus` ,`southcentralus` ,,`westus2`,, ,,`westus`,en .`southafricanorth` `southeastasia` `northeurope` `uksouth` `westcentralus` `westeurope`
+Beschik bare regio's zijn `australiaeast`, `brazilsouth`, `canadacentral`, `centralindia`, `centralus`, `centraluseuap`, `eastasia`, `eastus`, `eastus2`, `francecentral`, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0 @no__ t-21 en 2.
 
-Als u de geheime sleutel in de query teken reeks doorgeeft met `Subscription-Key`de para meter, moet u de regio met de `Subscription-Region`query parameter opgeven.
+Als u de geheime sleutel in de query reeks doorgeeft met de para meter `Subscription-Key`, moet u de regio met de query parameter `Subscription-Region` opgeven.
 
-Als u een Bearer-token gebruikt, moet u het token ophalen uit het gebied eind `https://<your-region>.api.cognitive.microsoft.com/sts/v1.0/issueToken`punt:.
+Als u een Bearer-token gebruikt, moet u het token verkrijgen uit het eind punt van de regio: `https://<your-region>.api.cognitive.microsoft.com/sts/v1.0/issueToken`.
 
 
 ## <a name="errors"></a>Fouten
 
-Een standaardfout bericht is een JSON-object met een naam/waardepaar `error`met de naam. De waarde is ook een JSON-object met eigenschappen:
+Een standaard fout bericht is een JSON-object met een naam/waardepaar met de naam `error`. De waarde is ook een JSON-object met eigenschappen:
 
-  * `code`: Een fout code die door de server is gedefinieerd.
-
-  * `message`: Een teken reeks met een door de mens lees bare weer gave van de fout.
+  * `code`: een fout code die door de server is gedefinieerd.
+  * `message`: een teken reeks met een lees bare weer gave van de fout.
 
 Zo kan een klant met een gratis proef abonnement de volgende fout melding ontvangen wanneer het gratis quotum is uitgeput:
 
-```
+```json
 {
   "error": {
     "code":403001,
@@ -126,7 +124,7 @@ Zo kan een klant met een gratis proef abonnement de volgende fout melding ontvan
 ```
 De fout code is een getal van 6 cijfers, waarbij de HTTP-status code van 3 cijfers wordt gevolgd door een getal van drie cijfers om de fout verder te categoriseren. Veelvoorkomende fout codes zijn:
 
-| Code | Description |
+| Coderen | Beschrijving |
 |:----|:-----|
 | 400000| Een van de aanvraag invoer is ongeldig.|
 | 400001| De para meter "scope" is ongeldig.|
@@ -136,7 +134,7 @@ De fout code is een getal van 6 cijfers, waarbij de HTTP-status code van 3 cijfe
 | 400005| Er ontbreekt een invoer tekst of deze is ongeldig.|
 | 400006| De combi natie van taal en script is niet geldig.|
 | 400018| Er ontbreekt een bron script aanduiding ("van script") of is ongeldig.|
-| 400019| Een van de opgegeven taal wordt niet ondersteund.|
+| 400019| Een van de opgegeven talen wordt niet ondersteund.|
 | 400020| Een van de elementen in de matrix met invoer tekst is ongeldig.|
 | 400021| De para meter van de API-versie ontbreekt of is ongeldig.|
 | 400023| Een van de opgegeven taal paren is niet geldig.|
@@ -156,7 +154,7 @@ De fout code is een getal van 6 cijfers, waarbij de HTTP-status code van 3 cijfe
 | 400079| Het aangepaste systeem dat is aangevraagd voor vertaling tussen van en naar taal bestaat niet.|
 | 400080| Vele wordt niet ondersteund voor de taal of het script.|
 | 401000| De aanvraag is niet geautoriseerd omdat de referenties ontbreken of ongeldig zijn.|
-| 401015| "De gegeven referenties gelden voor de spraak-API. Voor deze aanvraag zijn referenties vereist voor de tekst-API. Gebruik een abonnement op Translator Text-API.|
+| 401015| "De gegeven referenties gelden voor de spraak-API. Voor deze aanvraag zijn referenties vereist voor de tekst-API. Gebruik een abonnement op Translator Text-API. "|
 | 403000| De bewerking is niet toegestaan.|
 | 403001| De bewerking is niet toegestaan omdat het abonnement het gratis quotum heeft overschreden.|
 | 405000| De aanvraag methode wordt niet ondersteund voor de aangevraagde resource.|
@@ -165,5 +163,5 @@ De fout code is een getal van 6 cijfers, waarbij de HTTP-status code van 3 cijfe
 | 415000| De content-type-header ontbreekt of is ongeldig.|
 | 429000, 429001, 429002| De server heeft de aanvraag geweigerd omdat de aanvraag limieten voor de client is overschreden.|
 | 500000| Er is een onverwachte fout opgetreden. Als de fout zich blijft voordoen, meldt u deze met de datum/tijd van de fout, verzoekt u de aanvraag-id van de antwoord header X-id-aanvraag en de client-id van de aanvraag header X-ClientTraceId.|
-| 503000| Service is tijdelijk niet beschikbaar. Probeer het opnieuw. Als de fout zich blijft voordoen, meldt u deze met de datum/tijd van de fout, verzoekt u de aanvraag-id van de antwoord header X-id-aanvraag en de client-id van de aanvraag header X-ClientTraceId.|
+| 503000| De service is tijdelijk niet beschikbaar. Probeer het opnieuw. Als de fout zich blijft voordoen, meldt u deze met de datum/tijd van de fout, verzoekt u de aanvraag-id van de antwoord header X-id-aanvraag en de client-id van de aanvraag header X-ClientTraceId.|
 

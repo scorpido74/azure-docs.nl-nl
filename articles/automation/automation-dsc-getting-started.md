@@ -9,16 +9,16 @@ ms.author: robreed
 ms.date: 04/15/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 55950892bec71fdff50cdd0e0b1aae107d845739
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
-ms.translationtype: HT
+ms.openlocfilehash: f943aac4a91217983963fac6f8d0b2b3ba6895a1
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72169738"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72243614"
 ---
 # <a name="getting-started-with-azure-automation-state-configuration"></a>Aan de slag met de configuratie van de Azure Automation-status
 
-In dit artikel wordt uitgelegd hoe u de meest voorkomende taken met Azure Automation status configuratie kunt uitvoeren, zoals het maken, importeren en compileren van configuraties, onboarding van machines voor het beheren en weer geven van rapporten. Zie [Azure Automation status configuratie-overzicht](automation-dsc-overview.md)voor een overzicht van de configuratie van Azure Automation status. Zie [Windows Power shell desired state Configuration Overview](/powershell/dsc/overview)(Engelstalig) voor de hand leiding voor desired state Configuration (DSC).
+In dit artikel wordt uitgelegd hoe u de meest voorkomende taken met Azure Automation status configuratie kunt uitvoeren, zoals het maken, importeren en compileren van configuraties, onboarding van machines voor het beheren en weer geven van rapporten. Zie [Azure Automation status configuratie-overzicht](automation-dsc-overview.md)voor een overzicht van de configuratie van Azure Automation status. Zie [Windows Power shell desired state Configuration Overview](/powershell/scripting/dsc/overview/overview)(Engelstalig) voor de hand leiding voor desired state Configuration (DSC).
 
 Dit artikel bevat een stapsgewijze hand leiding voor het gebruik van Azure Automation status configuratie. Als u een voorbeeld omgeving wilt maken die al is ingesteld zonder de stappen te volgen die in dit artikel worden beschreven, kunt u de volgende Resource Manager-sjabloon gebruiken: [Azure Automation beheerde knooppunt sjabloon](https://github.com/Azure/azure-quickstart-templates/tree/master/101-automation-configuration). Met deze sjabloon wordt een voltooide configuratie omgeving voor Azure Automation status ingesteld, met inbegrip van een Azure-VM die wordt beheerd door Azure Automation status configuratie.
 
@@ -31,7 +31,7 @@ Voor het volt ooien van de voor beelden in dit artikel is het volgende vereist:
 
 ## <a name="creating-a-dsc-configuration"></a>Een DSC-configuratie maken
 
-U maakt een eenvoudige [DSC-configuratie](/powershell/dsc/configurations) die de aanwezigheid of het ontbreken van het **onderdeel van de webserver** Windows (IIS) waarborgt, afhankelijk van hoe u knoop punten toewijst.
+U maakt een eenvoudige [DSC-configuratie](/powershell/scripting/dsc/configurations/configurations) die de aanwezigheid of het ontbreken van het **onderdeel van de webserver** Windows (IIS) waarborgt, afhankelijk van hoe u knoop punten toewijst.
 
 1. Start [VSCode](https://code.visualstudio.com/docs) (of een tekst editor).
 1. Typ de volgende tekst:
@@ -61,7 +61,7 @@ U maakt een eenvoudige [DSC-configuratie](/powershell/dsc/configurations) die de
     ```
 1. Sla het bestand op als `TestConfig.ps1`.
 
-Deze configuratie roept een resource in elk knooppunt blok, de [WindowsFeature-resource](/powershell/dsc/windowsfeatureresource), op die de aanwezigheid of afwezigheid van de functie **webserver** waarborgt.
+Deze configuratie roept een resource in elk knooppunt blok, de [WindowsFeature-resource](/powershell/scripting/dsc/reference/resources/windows/windowsfeatureresource), op die de aanwezigheid of afwezigheid van de functie **webserver** waarborgt.
 
 ## <a name="importing-a-configuration-into-azure-automation"></a>Een configuratie importeren in Azure Automation
 
@@ -94,7 +94,7 @@ Nadat u een configuratie hebt geïmporteerd, kunt u deze weer geven in de Azure 
 ## <a name="compiling-a-configuration-in-azure-automation"></a>Een configuratie in Azure Automation compileren
 
 Voordat u een gewenste status kunt Toep assen op een knoop punt, moet een DSC-configuratie die deze status definieert, worden gecompileerd in een of meer knooppunt configuraties (MOF-document) en op de Automation DSC pull-server worden geplaatst. Zie [configuraties compileren in azure Automation status configuratie](automation-dsc-compile.md)voor een gedetailleerde beschrijving van het compileren van configuraties in azure Automation status configuratie.
-Zie [DSC-configuraties](/powershell/dsc/configurations)voor meer informatie over het compileren van configuraties.
+Zie [DSC-configuraties](/powershell/scripting/dsc/configurations/configurations)voor meer informatie over het compileren van configuraties.
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Klik aan de linkerkant op **alle resources** en vervolgens op de naam van uw Automation-account.
@@ -195,7 +195,7 @@ Op de Blade voor een afzonderlijk rapport kunt u de volgende status informatie v
 - De naam, het IP-adres en de configuratie modus van het knoop punt.
 
 U kunt ook klikken op **onbewerkt rapport weer geven** om de werkelijke gegevens te zien die het knoop punt naar de server verzendt.
-Zie [using a DSC Report Server](/powershell/dsc/reportserver)(Engelstalig) voor meer informatie over het gebruik van die gegevens.
+Zie [using a DSC Report Server](/powershell/scripting/dsc/pull-server/reportserver)(Engelstalig) voor meer informatie over het gebruik van die gegevens.
 
 Het kan enige tijd duren nadat een knoop punt is uitgevallen voordat het eerste rapport beschikbaar is. Mogelijk moet u tot 30 minuten wachten op het eerste rapport nadat u een knoop punt onboarding hebt uitgevoerd.
 
@@ -233,6 +233,6 @@ Als u een knoop punt niet meer wilt beheren door Azure Automation DSC, kunt u de
 
 - [Overzicht van Azure Automation status configuratie](automation-dsc-overview.md)
 - [Onboarding van machines voor beheer door Azure Automation status configuratie](automation-dsc-onboarding.md)
-- [Overzicht van desired state Configuration voor Windows Power shell](/powershell/dsc/overview)
+- [Overzicht van desired state Configuration voor Windows Power shell](/powershell/scripting/dsc/overview/overview)
 - [Azure Automation status configuratie-cmdlets](/powershell/module/azurerm.automation/#automation)
 - [Prijzen voor Azure Automation status configuratie](https://azure.microsoft.com/pricing/details/automation/)

@@ -5,14 +5,14 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 10/07/2019
+ms.date: 10/09/2019
 ms.author: cherylmc
-ms.openlocfilehash: 4e07274f7abf87360c054edd3fe0ade1c09907a7
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
-ms.translationtype: HT
+ms.openlocfilehash: eeaa709b88ca795d906fe3688301b4cd7d8c726e
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72178590"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72244119"
 ---
 # <a name="configure-macsec-on-expressroute-direct-ports"></a>MACsec op ExpressRoute direct-poorten configureren
 
@@ -130,6 +130,9 @@ Set-AzExpressRoutePort -ExpressRoutePort $erDirect
 ```
 
 Op dit punt is MACsec uitgeschakeld op de ExpressRoute direct-poorten aan de kant van micro soft.
+
+### <a name="test-connectivity"></a>Connectiviteit testen
+Nadat u MACsec (inclusief MACsec-sleutel update) hebt geconfigureerd op uw ExpressRoute direct-poorten, [controleert](expressroute-troubleshooting-expressroute-overview.md) u of de BGP-sessies van de circuits actief zijn. Als u nog geen circuit op de poorten hebt, moet u er eerst een maken en persoonlijke Azure-peering of micro soft-peering van het circuit instellen. Als MACsec onjuist is geconfigureerd, met inbegrip van de MACsec-sleutel die niet overeenkomt tussen uw netwerk apparaten en de netwerk apparaten van micro soft, ziet u geen ARP-resolutie op laag 2 en BGP-inrichting op laag 3. Als alles goed is geconfigureerd, ziet u dat de BGP-routes correct zijn geadverteerd in zowel de richtingen als de gegevens stroom van uw toepassing overeenkomstig ExpressRoute.
 
 ## <a name="next-steps"></a>Volgende stappen
 1. [Een ExpressRoute-circuit maken op ExpressRoute direct](expressroute-howto-erdirect.md)

@@ -4,23 +4,24 @@ description: Meer informatie over hoe u kunt zoeken wanneer een resource is gewi
 services: resource-graph
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 05/10/2019
+ms.date: 10/09/2019
 ms.topic: conceptual
 ms.service: resource-graph
-ms.openlocfilehash: 2027f56d44be14895a40550d78a79d9e9dda9d97
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 13e2a848f9d178fc6554062c324c951102e1343b
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71980287"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72244101"
 ---
 # <a name="get-resource-changes"></a>Resourcewijzigingen ophalen
 
 Resources worden gewijzigd in de loop van dagelijks gebruik, herconfiguratie en zelfs opnieuw implementeren.
 Wijzigingen kunnen afkomstig zijn van een individu of een geautomatiseerd proces. De meeste wijziging is standaard, maar soms niet. Met de laatste 14 dagen van de wijzigings geschiedenis kunt u met Azure resource Graph het volgende doen:
 
-- Zien wanneer wijzigingen in een Azure Resource Manager-eigenschap zijn gedetecteerd.
-- Zien welke eigenschappen tijdens die gebeurtenis zijn gewijzigd.
+- Zoeken wanneer er wijzigingen zijn gedetecteerd voor een Azure Resource Manager eigenschap
+- Zie voor elke resource wijziging Details van eigenschaps wijziging
+- Bekijk een volledige vergelijking van de resource vóór en na de gedetecteerde wijziging
 
 Wijzigings detectie en Details zijn waardevol voor de volgende voorbeeld scenario's:
 
@@ -36,24 +37,26 @@ In dit artikel wordt uitgelegd hoe u deze informatie kunt verzamelen via de SDK 
 > [!IMPORTANT]
 > De wijzigings geschiedenis in azure resource Graph bevindt zich in de open bare preview.
 
-## <a name="find-when-changes-were-detected"></a>Zoeken wanneer er wijzigingen zijn gedetecteerd
+## <a name="find-detected-change-events-and-view-change-details"></a>Gedetecteerde wijzigings gebeurtenissen zoeken en Details van wijziging weer geven
 
-De eerste stap in het weer geven van wat er is gewijzigd in een resource is het vinden van de wijzigings gebeurtenissen die betrekking hebben op die resource binnen een tijd venster. Deze stap wordt uitgevoerd via het **resourceChanges** rest-eind punt.
+De eerste stap in het weer geven van wat er is gewijzigd in een resource is het vinden van de wijzigings gebeurtenissen die betrekking hebben op die resource binnen een tijd venster. Elke wijzigings gebeurtenis bevat ook informatie over wat er is gewijzigd voor de resource. Deze stap wordt uitgevoerd via het **resourceChanges** rest-eind punt.
 
-Het **resourceChanges** -eind punt vereist twee para meters in de aanvraag tekst:
+Het **resourceChanges** -eind punt accepteert de volgende para meters in de hoofd tekst van de aanvraag:
 
-- **resourceId**: De Azure-resource waarin wordt gezocht naar wijzigingen.
-- **interval**: Een eigenschap met _begin_ -en _eind_ datums voor wanneer moet worden gecontroleerd op een wijzigings gebeurtenis met behulp van de **Zulu-tijd zone (Z)** .
+- **resourceId** \[required @ no__t-2: de Azure-resource om te controleren of er wijzigingen zijn.
+- **interval** \[required @ no__t-2: een eigenschap met _begin_ -en _eind_ datums voor wanneer moet worden gecontroleerd op een wijzigings gebeurtenis met behulp van de **Zulu-tijd zone (Z)** .
+- **fetchPropertyChanges** (optioneel): een Booleaanse eigenschap die instelt of het antwoord object eigenschaps wijzigingen bevat.
 
-Voorbeeld van de aanvraag hoofdtekst:
+Voor beeld van aanvraag tekst:
 
 ```json
 {
     "resourceId": "/subscriptions/{subscriptionId}/resourceGroups/MyResourceGroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount",
     "interval": {
-        "start": "2019-03-28T00:00:00.000Z",
-        "end": "2019-03-31T00:00:00.000Z"
-    }
+        "start": "2019-09-28T00:00:00.000Z",
+        "end": "2019-09-29T00:00:00.000Z"
+    },
+    "fetchPropertyChanges": true
 }
 ```
 
@@ -67,41 +70,103 @@ Het antwoord ziet er ongeveer uit als in dit voor beeld:
 
 ```json
 {
-    "changes": [{
-            "changeId": "{\"beforeId\":\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\"beforeTime\":'2019-05-09T00:00:00.000Z\",\"afterId\":\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\"beforeTime\":'2019-05-10T00:00:00.000Z\"}",
+    "changes": [
+        {
+            "changeId": "{\"beforeId\":\"3262e382-9f73-4866-a2e9-9d9dbee6a796\",\"beforeTime\":\"2019-09-28T00:45:35.012Z\",\"afterId\":\"6178968e-981e-4dac-ac37-340ee73eb577\",\"afterTime\":\"2019-09-28T00:52:53.371Z\"}",
             "beforeSnapshot": {
-                "timestamp": "2019-03-29T01:32:05.993Z"
+                "snapshotId": "3262e382-9f73-4866-a2e9-9d9dbee6a796",
+                "timestamp": "2019-09-28T00:45:35.012Z"
             },
             "afterSnapshot": {
-                "timestamp": "2019-03-29T01:54:24.42Z"
-            }
+                "snapshotId": "6178968e-981e-4dac-ac37-340ee73eb577",
+                "timestamp": "2019-09-28T00:52:53.371Z"
+            },
+            "changeType": "Create"
         },
         {
-            "changeId": "9dc352cb-b7c1-4198-9eda-e5e3ed66aec8",
+            "changeId": "{\"beforeId\":\"a00f5dac-86a1-4d86-a1c5-a9f7c8147b7c\",\"beforeTime\":\"2019-09-28T00:43:38.366Z\",\"afterId\":\"3262e382-9f73-4866-a2e9-9d9dbee6a796\",\"afterTime\":\"2019-09-28T00:45:35.012Z\"}",
             "beforeSnapshot": {
-                "timestamp": "2019-03-28T10:30:19.68Z"
+                "snapshotId": "a00f5dac-86a1-4d86-a1c5-a9f7c8147b7c",
+                "timestamp": "2019-09-28T00:43:38.366Z"
             },
             "afterSnapshot": {
-                "timestamp": "2019-03-28T21:12:31.337Z"
-            }
+                "snapshotId": "3262e382-9f73-4866-a2e9-9d9dbee6a796",
+                "timestamp": "2019-09-28T00:45:35.012Z"
+            },
+            "changeType": "Delete"
+        },
+        {
+            "changeId": "{\"beforeId\":\"b37a90d1-7ebf-41cd-8766-eb95e7ee4f1c\",\"beforeTime\":\"2019-09-28T00:43:15.518Z\",\"afterId\":\"a00f5dac-86a1-4d86-a1c5-a9f7c8147b7c\",\"afterTime\":\"2019-09-28T00:43:38.366Z\"}",
+            "beforeSnapshot": {
+                "snapshotId": "b37a90d1-7ebf-41cd-8766-eb95e7ee4f1c",
+                "timestamp": "2019-09-28T00:43:15.518Z"
+            },
+            "afterSnapshot": {
+                "snapshotId": "a00f5dac-86a1-4d86-a1c5-a9f7c8147b7c",
+                "timestamp": "2019-09-28T00:43:38.366Z"
+            },
+            "propertyChanges": [
+                {
+                    "propertyName": "tags.org",
+                    "afterValue": "compute",
+                    "changeCategory": "User",
+                    "changeType": "Insert"
+                },
+                {
+                    "propertyName": "tags.team",
+                    "afterValue": "ARG",
+                    "changeCategory": "User",
+                    "changeType": "Insert"
+                }
+            ],
+            "changeType": "Update"
+        },
+        {
+            "changeId": "{\"beforeId\":\"19d12ab1-6ac6-4cd7-a2fe-d453a8e5b268\",\"beforeTime\":\"2019-09-28T00:42:46.839Z\",\"afterId\":\"b37a90d1-7ebf-41cd-8766-eb95e7ee4f1c\",\"afterTime\":\"2019-09-28T00:43:15.518Z\"}",
+            "beforeSnapshot": {
+                "snapshotId": "19d12ab1-6ac6-4cd7-a2fe-d453a8e5b268",
+                "timestamp": "2019-09-28T00:42:46.839Z"
+            },
+            "afterSnapshot": {
+                "snapshotId": "b37a90d1-7ebf-41cd-8766-eb95e7ee4f1c",
+                "timestamp": "2019-09-28T00:43:15.518Z"
+            },
+            "propertyChanges": [{
+                "propertyName": "tags.cgtest",
+                "afterValue": "hello",
+                "changeCategory": "User",
+                "changeType": "Insert"
+            }],
+            "changeType": "Update"
         }
     ]
 }
 ```
 
-Elke gedetecteerde wijzigings gebeurtenis voor de **resourceId** heeft een **changeId** die uniek is voor die bron. Hoewel de **changeId** -teken reeks soms andere eigenschappen kan bevatten, is het alleen gegarandeerd uniek. De wijzigings record bevat de tijden waarop de moment opnamen vóór en na zijn gemaakt.
-De wijzigings gebeurtenis is op een bepaald moment in dit venster van tijd opgetreden.
+Elke gedetecteerde wijzigings gebeurtenis voor de **resourceId** heeft de volgende eigenschappen:
 
-## <a name="see-what-properties-changed"></a>Bekijk welke eigenschappen zijn gewijzigd
+- **changeId** : deze waarde is uniek voor die bron. Hoewel de **changeId** -teken reeks soms andere eigenschappen kan bevatten, is het alleen gegarandeerd uniek.
+- **beforeSnapshot** : bevat de **snapshotId** en de **tijds tempel** van de resource momentopname die is gemaakt voordat een wijziging is gedetecteerd.
+- **afterSnapshot** : bevat de **snapshotId** en de **tijds tempel** van de resource momentopname die is gemaakt nadat een wijziging is gedetecteerd.
+- **Change type** : beschrijft het type wijziging dat is gedetecteerd voor de hele wijzigings record tussen de **beforeSnapshot** en **afterSnapshot**. Waarden zijn: _maken_, _bijwerken_en _verwijderen_. De **propertyChanges** -eigenschaps matrix wordt alleen opgenomen als **Change type** is _bijgewerkt_.
+- **propertyChanges** -deze matrix met eigenschappen bevat alle bron eigenschappen die zijn bijgewerkt tussen de **BeforeSnapshot** en de **afterSnapshot**:
+  - **PropertyName** : de naam van de resource-eigenschap die is gewijzigd.
+  - **changeCategory** -Hiermee wordt beschreven wat de wijziging heeft aangebracht. Waarden zijn: _systeem_ en _gebruiker_.
+  - **Change type** -Hiermee wordt het type wijziging dat is gedetecteerd voor de afzonderlijke bron eigenschap beschreven.
+    Waarden zijn: _Invoegen_, _bijwerken_, _verwijderen_.
+  - **beforeValue** : de waarde van de eigenschap resource in de **beforeSnapshot**. Wordt niet weer gegeven wanneer **Change type** is _ingevoegd_.
+  - **afterValue** : de waarde van de eigenschap resource in de **afterSnapshot**. Wordt niet weer gegeven wanneer **Change type** wordt _verwijderd_.
 
-Met de **changeId** van het **resourceChanges** -eind punt wordt vervolgens het **resourceChangeDetails** rest-eind punt gebruikt om details van de wijzigings gebeurtenis op te halen.
+## <a name="compare-resource-changes"></a>Resource wijzigingen vergelijken
+
+Met de **changeId** van het **resourceChanges** -eind punt wordt vervolgens het **resourceChangeDetails** rest-eind punt gebruikt om de moment opnamen vóór en na te halen van de resource die is gewijzigd.
 
 Het **resourceChangeDetails** -eind punt vereist twee para meters in de aanvraag tekst:
 
-- **resourceId**: De Azure-resource waarin wordt gezocht naar wijzigingen.
-- **changeId**: De unieke wijzigings gebeurtenis voor de **resourceId** die is verzameld van **resourceChanges**.
+- **resourceId**: de Azure-resource waarmee wijzigingen worden vergeleken.
+- **changeId**: de unieke wijzigings gebeurtenis voor de **resourceId** die is verzameld van **resourceChanges**.
 
-Voorbeeld van de aanvraag hoofdtekst:
+Voor beeld van aanvraag tekst:
 
 ```json
 {
@@ -220,7 +285,7 @@ Het antwoord ziet er ongeveer uit als in dit voor beeld:
 
 **beforeSnapshot** en **afterSnapshot** geven elk het tijdstip waarop de moment opname is gemaakt en de eigenschappen op dat moment. De wijziging is op een bepaald moment tussen deze moment opnamen. In het bovenstaande voor beeld zien we dat de gewijzigde eigenschap is **supportsHttpsTrafficOnly**.
 
-Als u de resultaten wilt vergelijken met een programma, vergelijkt u het **inhouds** gedeelte van elke moment opname om het verschil te bepalen. Als u de volledige moment opname vergelijkt, wordt de **tijds tempel** altijd als een verschil weer gegeven ondanks de verwachte tijd.
+Als u de resultaten wilt vergelijken, gebruikt u de eigenschap **Changes** in **resourceChanges** of evalueert u het **inhouds** gedeelte van elke moment opname in **resourceChangeDetails** om het verschil te bepalen. Als u de moment opnamen vergelijkt, wordt de **tijds tempel** altijd als een verschil weer gegeven ondanks de verwachte tijd.
 
 ## <a name="next-steps"></a>Volgende stappen
 

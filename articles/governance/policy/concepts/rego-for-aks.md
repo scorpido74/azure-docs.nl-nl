@@ -1,17 +1,17 @@
 ---
-title: Meer informatie over het controleren van de inhoud van een virtuele machine
+title: Meer informatie over Azure Policy voor de Azure Kubernetes-service
 description: Meer informatie over hoe Azure Policy Rego gebruikt en beleids agent opent voor het beheren van clusters op de Azure Kubernetes-service.
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 06/24/2019
 ms.topic: conceptual
 ms.service: azure-policy
-ms.openlocfilehash: 9af29495fca4c8197040a5556de0ea6966b3d68d
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 56bc8934db86bb03446a6d2637bd54daaf2b5fb9
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71981430"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72254742"
 ---
 # <a name="understand-azure-policy-for-azure-kubernetes-service"></a>Meer informatie over Azure Policy voor de Azure Kubernetes-service
 
@@ -63,9 +63,22 @@ Voordat u de Azure Policy invoeg toepassing installeert of een van de service fu
 
   # Feature register: enables installing the add-on
   az feature register --namespace Microsoft.ContainerService --name AKS-AzurePolicyAutoApprove
-
+  
+  # Use the following to confirm the feature has registered
+  az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AKS-AzurePolicyAutoApprove')].{Name:name,State:properties.state}"
+  
+  # Once the above shows 'Registered' run the following to propagate the update
+  az provider register -n Microsoft.ContainerService
+  
   # Feature register: enables the add-on to call the Azure Policy resource provider
   az feature register --namespace Microsoft.PolicyInsights --name AKS-DataplaneAutoApprove
+  
+  # Use the following to confirm the feature has registered
+  az feature list -o table --query "[?contains(name, 'Microsoft.PolicyInsights/AKS-DataPlaneAutoApprove')].{Name:name,State:properties.state}"
+  
+  # Once the above shows 'Registered' run the following to propagate the update
+  az provider register -n Microsoft.PolicyInsights
+  
   ```
 
 ## <a name="azure-policy-add-on"></a>Invoeg toepassing Azure Policy
@@ -130,7 +143,7 @@ Zodra de vereisten zijn voltooid, installeert u de Azure Policy-invoeg toepassin
      > [!NOTE]
      > Als de knop **invoeg toepassing inschakelen** grijs wordt weer gegeven, is het abonnement nog niet toegevoegd aan de preview-versie. Zie [opt-in voor een voor beeld](#opt-in-for-preview) voor de vereiste stappen.
 
-- Azure-CLI
+- Azure CLI
 
   ```azurecli-interactive
   # Log in first with az login if you're not using Cloud Shell
@@ -207,7 +220,7 @@ Als u de invoeg toepassing Azure Policy wilt verwijderen uit uw AKS-cluster, geb
 
      ![De Azure Policy voor de invoeg toepassing AKS uitschakelen](../media/rego-for-aks/disable-policy-add-on.png)
 
-- Azure-CLI
+- Azure CLI
 
   ```azurecli-interactive
   # Log in first with az login if you're not using Cloud Shell

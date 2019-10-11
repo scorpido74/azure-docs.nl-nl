@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: akjosh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a19b6bd8da82498aae45657d30883db14efd9343
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: a8027a1290b4b771c17a1e748c06f3b86fa0bf95
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71174070"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72244610"
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>Extensies en functies van virtuele machines voor Windows
 
@@ -35,7 +35,7 @@ Dit artikel bevat een overzicht van VM-extensies, vereisten voor het gebruik van
 Er zijn verschillende verschillende Azure VM-extensies beschikbaar, elk met een specifieke use-case. Voorbeelden zijn:
 
 - Pas Power shell desired state configurations toe aan een virtuele machine met de DSC-extensie voor Windows. Zie [Azure desired state Configuration extension](dsc-overview.md)(Engelstalig) voor meer informatie.
-- De bewaking van een virtuele machine configureren met de VM-extensie van micro soft monitoring agent. Zie [Azure Vm's verbinden met Azure monitor-logboeken](../../log-analytics/log-analytics-azure-vm-extension.md)voor meer informatie.
+- De bewaking van een virtuele machine configureren met de VM-extensie Log Analytics agent. Zie [Azure Vm's verbinden met Azure monitor-logboeken](../../log-analytics/log-analytics-azure-vm-extension.md)voor meer informatie.
 - Configureer een virtuele Azure-machine met behulp van chef. Zie [Azure VM-implementatie automatiseren met chef](../windows/chef-automation.md)voor meer informatie.
 - Configureer de bewaking van uw Azure-infra structuur met de Datadog-extensie. Zie de [Datadog-blog](https://www.datadoghq.com/blog/introducing-azure-monitoring-with-one-click-datadog-deployment/)voor meer informatie.
 
@@ -65,14 +65,14 @@ Sommige extensies worden niet ondersteund in alle besturings systemen en kunnen 
 
 #### <a name="network-access"></a>Netwerktoegang
 
-Uitbreidings pakketten worden gedownload uit de opslag plaats van de Azure Storage extensie en uploads van uitbreidings status worden naar Azure Storage gepost. Als u een [ondersteunde](https://support.microsoft.com/en-us/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support) versie van de agents gebruikt, hoeft u geen toegang toe te staan tot Azure Storage in de VM-regio, zoals de agent kan gebruiken om de communicatie met de Azure Fabric-controller te omleiden voor agent communicatie. Als u een niet-ondersteunde versie van de agent hebt, moet u uitgaande toegang tot Azure Storage in die regio vanuit de VM toestaan.
+Uitbreidings pakketten worden gedownload uit de opslag plaats van de Azure Storage extensie en uploads van uitbreidings status worden naar Azure Storage gepost. Als u een [ondersteunde](https://support.microsoft.com/en-us/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support) versie van de agents gebruikt, hoeft u geen toegang tot Azure Storage toe te staan in de VM-regio, zoals de agent kan gebruiken om de communicatie te omleiden naar de Azure Fabric-controller voor agent communicatie (HostGAPlugin-functie via de Privileged Channel op particuliere IP-168.63.129.16). Als u een niet-ondersteunde versie van de agent hebt, moet u uitgaande toegang tot Azure Storage in die regio vanuit de VM toestaan.
 
 > [!IMPORTANT]
-> Als u de toegang tot *168.63.129.16* hebt geblokkeerd met behulp van de gast firewall, mislukken uitbrei dingen, ongeacht het bovenstaande.
+> Als u de toegang tot *168.63.129.16* hebt geblokkeerd met behulp van de gast firewall of met een proxy, mislukt de extensies, ongeacht het bovenstaande. Poorten 80, 443 en 32526 zijn vereist.
 
-Agents kunnen alleen worden gebruikt voor het downloaden van uitbreidings pakketten en rapportage status. Als een extensie bijvoorbeeld een script moet downloaden van GitHub (aangepast script) of toegang moet hebben tot Azure Storage (Azure Backup), moeten er extra firewall/netwerk beveiligings groep poorten worden geopend. Verschillende uitbrei dingen hebben verschillende vereisten, omdat ze toepassingen in hun eigen recht zijn. Voor uitbrei dingen waarvoor toegang tot Azure Storage is vereist, kunt u toegang toestaan via de Azure NSG-service tags voor [opslag](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags).
+Agents kunnen alleen worden gebruikt voor het downloaden van uitbreidings pakketten en rapportage status. Als een extensie bijvoorbeeld een script moet downloaden van GitHub (aangepast script) of toegang moet hebben tot Azure Storage (Azure Backup), moeten er extra firewall/netwerk beveiligings groep poorten worden geopend. Verschillende uitbrei dingen hebben verschillende vereisten, omdat ze toepassingen in hun eigen recht zijn. Voor uitbrei dingen waarvoor toegang tot Azure Storage of Azure Active Directory vereist is, kunt u toegang tot opslag of AzureActiveDirectory via de [Azure NSG-service Tags](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags) toestaan.
 
-De Windows-gast agent heeft geen proxyserver ondersteuning voor u om aanvragen voor agent verkeer om te leiden via.
+De Windows-gast agent heeft geen proxyserver ondersteuning voor u om aanvragen voor agent verkeer om te leiden via. Dit betekent dat de Windows-gast agent afhankelijk is van uw aangepaste proxy (als u er een hebt) om toegang te krijgen tot bronnen op internet of op de host via IP 168.63.129.16.
 
 ## <a name="discover-vm-extensions"></a>VM-extensies detecteren
 
@@ -137,7 +137,7 @@ Set-AzVMAccessExtension -ResourceGroupName "myResourceGroup" -VMName "myVM" -Nam
     -Password $cred.GetNetworkCredential().Password -typeHandlerVersion "2.0"
 ```
 
-De `Set-AzVMExtension` opdracht kan worden gebruikt om een VM-extensie te starten. Zie de [Naslag Gids set-AzVMExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension)voor meer informatie.
+De `Set-AzVMExtension`-opdracht kan worden gebruikt om een VM-extensie te starten. Zie de [Naslag Gids set-AzVMExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension)voor meer informatie.
 
 
 ### <a name="azure-portal"></a>Azure Portal
@@ -351,7 +351,7 @@ De volgende stappen voor probleem oplossing zijn van toepassing op alle VM-exten
 
 1. Als u het logboek van de Windows-gast agent wilt controleren, bekijkt u de activiteit wanneer uw extensie is ingericht in *C:\WindowsAzure\Logs\WaAppAgent.txt*
 
-2. Raadpleeg de logboeken van de daad werkelijke extensie voor meer informatie over *\<C:\WindowsAzure\Logs\Plugins-extensie >*
+2. Raadpleeg de logboeken van de daad werkelijke extensie voor meer informatie in *C:\WindowsAzure\Logs\Plugins @ no__t-1extensionName >*
 
 3. Raadpleeg de onderwerpen over probleem oplossing voor specifieke documentatie voor fout codes, bekende problemen, enzovoort.
 
@@ -417,7 +417,7 @@ U kunt een uitbrei ding ook als volgt verwijderen in de Azure Portal:
 4. Kies **verwijderen**.
 
 ## <a name="common-vm-extensions-reference"></a>Naslag informatie over algemene VM-extensies
-| Extensienaam | Description | Meer informatie |
+| Extensie naam | Beschrijving | Meer informatie |
 | --- | --- | --- |
 | Aangepaste script extensie voor Windows |Scripts uitvoeren op een virtuele Azure-machine |[Aangepaste script extensie voor Windows](custom-script-windows.md) |
 | DSC-extensie voor Windows |Uitbrei ding Power shell DSC (desired state Configuration) |[DSC-extensie voor Windows](dsc-overview.md) |

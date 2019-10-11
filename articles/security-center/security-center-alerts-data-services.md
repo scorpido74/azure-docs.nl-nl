@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 07/24/2019
 ms.author: memildin
-ms.openlocfilehash: 763349c11a7777bfc807a60e1806c3bb4010245e
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 7e45dffd15cdf2acf15c7d46ed0cf42fc5997a6a
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202576"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72244560"
 ---
 # <a name="threat-detection-for-data-services-in-azure-security-center"></a>Detectie van bedreigingen voor gegevens Services in Azure Security Center
 
@@ -27,9 +27,9 @@ ms.locfileid: "71202576"
 
 ## SQL Database en SQL Data Warehouse<a name="data-sql"></a>
 
-SQL-bedreigings detectie identificeert afwijkende activiteiten die een ongebruikelijke en potentieel schadelijke pogingen om toegang te krijgen tot data bases of deze te gebruiken Security Center analyseert de SQL-controle logboeken en voert systeem eigen uitvoering uit in de SQL-engine.
+SQL-bedreigings detectie identificeert afwijkende activiteiten die een ongebruikelijke en potentieel schadelijke pogingen om toegang te krijgen tot data bases of deze te gebruiken 
 
-|Waarschuwing|Description|
+|Waarschuwing|Beschrijving|
 |---|---|
 |**Beveiligings probleem met SQL-injectie**|Een toepassing heeft een mislukte SQL-instructie gegenereerd in de data base. Dit kan duiden op een mogelijke kwets baarheid voor SQL-injectie aanvallen. Er zijn twee mogelijke redenen voor een defecte instructie. Een fout in de toepassings code kan de beschadigde SQL-instructie hebben opgebouwd. Het is ook mogelijk dat toepassings code of opgeslagen procedures geen gebruikers invoer opschonen bij het samen stellen van de foutieve SQL-instructie, die kan worden misbruikt voor SQL-injectie.|
 |**Mogelijke SQL-injectie**|Er is een actieve crack opgetreden op basis van een geïdentificeerde toepassing die kwetsbaar is voor SQL-injectie. Dit betekent dat een aanvaller schadelijke SQL-instructies wil injecteren door gebruik te maken van de code of opgeslagen procedures voor een kwets bare toepassing.|
@@ -51,7 +51,7 @@ Security Center analyseert Diagnostische logboeken met lees-, schrijf-en verwijd
 
 > [!div class="mx-tableFixed"]
 
-|Waarschuwing|Description|
+|Waarschuwing|Beschrijving|
 |---|---|
 |**Afwijking van ongebruikelijke locatie toegang**|Voor beeld van netwerk verkeer analyse heeft afwijkende uitgaande Remote Desktop Protocol (RDP)-communicatie gedetecteerd, afkomstig van een bron in uw implementatie. Deze activiteit wordt als abnormaal beschouwd voor deze omgeving. Dit kan erop duiden dat de bron is aangetast en wordt nu gebruikt om een extern RDP-eind punt aanval te forceren. Houd er rekening mee dat dit type activiteit kan ertoe leiden dat uw IP als schadelijk wordt gemarkeerd door externe entiteiten.|
 |**Afwijking van toepassings toegang**|Geeft aan dat een ongebruikelijke toepassing toegang heeft gekregen tot dit opslag account. Een mogelijke oorzaak is dat een aanvaller met een nieuwe toepassing toegang heeft tot uw opslag account.|
@@ -73,7 +73,7 @@ Ga voor meer informatie over de waarschuwingen voor opslag naar [Advanced Threat
 
 De volgende waarschuwingen worden gegenereerd door ongebruikelijke en mogelijk schadelijke pogingen om Azure Cosmos DB accounts te openen of misbruik te maken:
 
-|Waarschuwing|Description|
+|Waarschuwing|Beschrijving|
 |---|---|
 |**Toegang vanaf ongebruikelijke locatie**|Geeft aan dat er een wijziging is in het toegangs patroon voor een Azure Cosmos DB-account. Iemand heeft dit account geopend vanuit een onbekend IP-adres, vergeleken met de recente activiteit. Een aanvaller heeft toegang tot het account of een rechtmatige gebruiker heeft dit geopend vanaf een nieuwe en ongebruikelijke geografische locatie. Een voor beeld van de laatste is extern onderhoud van een nieuwe toepassing of ontwikkelaar.|
 |**Ongebruikelijke gegevens exfiltration**|Geeft aan dat er een wijziging is opgetreden in het patroon voor gegevens extractie van een Azure Cosmos DB-account. Iemand heeft een ongebruikelijke hoeveelheid gegevens geëxtraheerd in vergelijking met de recente activiteit. Een aanvaller kan een grote hoeveelheid gegevens uit een Azure Cosmos DB-Data Base (bijvoorbeeld gegevens exfiltration of lekkage of een niet-geautoriseerde overdracht van gegevens) hebben geëxtraheerd. Het is ook mogelijk dat een rechtmatige gebruiker of toepassing een ongebruikelijke hoeveelheid gegevens uit een container heeft geëxtraheerd (bijvoorbeeld voor onderhoud back-upactiviteit).|

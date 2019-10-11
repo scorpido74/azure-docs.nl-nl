@@ -5,36 +5,36 @@ author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.author: v-erkell
-ms.openlocfilehash: 265ec55a6e013a37cf963b6256e900c070311f72
-ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
+ms.author: rohogue
+ms.openlocfilehash: 6eac6c367be42021a4654f85c8f4ec980c9f6925
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71180947"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72255279"
 ---
 # <a name="azure-hpc-cache-preview-data-ingest---msrsync-method"></a>Azure HPC cache (preview) gegevens opname-msrsync methode
 
-In dit artikel vindt u gedetailleerde instructies voor ``msrsync`` het gebruik van het hulp programma voor het kopiëren van gegevens naar een Azure Blob Storage-container voor gebruik met de Azure HPC-cache.
+In dit artikel vindt u gedetailleerde instructies voor het gebruik van het hulp programma ``msrsync`` om gegevens te kopiëren naar een Azure Blob Storage-container voor gebruik met de Azure HPC-cache.
 
 Lees voor meer informatie over het verplaatsen van gegevens naar Blob Storage voor uw Azure HPC-cache [gegevens verplaatsen naar Azure Blob-opslag voor Azure HPC-cache](hpc-cache-ingest.md).
 
-Het ``msrsync`` hulp programma kan worden gebruikt om gegevens te verplaatsen naar een back-end-opslag doel voor de Azure HPC-cache. Dit hulp programma is ontworpen om het bandbreedte gebruik te optimaliseren door ``rsync`` meerdere parallelle processen uit te voeren. Het is beschikbaar via GitHub op https://github.com/jbd/msrsync.
+Het hulp programma ``msrsync`` kan worden gebruikt om gegevens te verplaatsen naar een back-end-opslag doel voor de Azure HPC-cache. Dit hulp programma is ontworpen om het bandbreedte gebruik te optimaliseren door meerdere parallelle ``rsync``-processen uit te voeren. Het is beschikbaar via GitHub op https://github.com/jbd/msrsync.
 
-``msrsync``Hiermee wordt de bron directory opgesplitst in afzonderlijke buckets en worden vervolgens afzonderlijke ``rsync`` processen uitgevoerd op elke Bucket.
+``msrsync`` wordt de bronmap in afzonderlijke buckets gesplitst en vervolgens worden afzonderlijke ``rsync`` processen op elke Bucket uitgevoerd.
 
-Voor bereiding van het testen met behulp van een virtuele machine met vier kernen wordt de beste efficiëntie weer gegeven wanneer u 64 processen Gebruik de ``msrsync`` optie ``-p`` om het aantal processen in te stellen op 64.
+Voor bereiding van het testen met behulp van een virtuele machine met vier kernen wordt de beste efficiëntie weer gegeven wanneer u 64 processen Gebruik de optie ``msrsync`` ``-p`` om het aantal processen in te stellen op 64.
 
-Houd er ``msrsync`` rekening mee dat alleen naar en van lokale volumes kan worden geschreven. De bron en het doel moeten toegankelijk zijn als lokale koppels op het werk station dat wordt gebruikt voor het uitgeven van de opdracht.
+Houd er rekening mee dat ``msrsync`` alleen kan schrijven naar en van lokale volumes. De bron en het doel moeten toegankelijk zijn als lokale koppels op het werk station dat wordt gebruikt voor het uitgeven van de opdracht.
 
-Volg deze instructies voor ``msrsync`` het vullen van Azure Blob-opslag met Azure HPC cache:
+Volg deze instructies voor het gebruik van ``msrsync`` voor het vullen van Azure Blob-opslag met Azure HPC cache:
 
-1. Installeren ``msrsync`` en voldoen aan de vereisten (``rsync`` en Python 2,6 of hoger)
+1. @No__t-0 en de vereiste onderdelen (``rsync`` en Python 2,6 of hoger) installeren
 1. Bepaal het totale aantal bestanden en mappen dat moet worden gekopieerd.
 
-   Gebruik bijvoorbeeld het hulp programma ``prime.py`` met de argumenten ```prime.py --directory /path/to/some/directory``` (beschikbaar door te downloaden <https://github.com/Azure/Avere/blob/master/src/clientapps/dataingestor/prime.py>).
+   Gebruik bijvoorbeeld het hulp programma ``prime.py`` met de argumenten ```prime.py --directory /path/to/some/directory``` (beschikbaar door het downloaden van <https://github.com/Azure/Avere/blob/master/src/clientapps/dataingestor/prime.py>).
 
-   Als u dit ``prime.py``niet gebruikt, kunt u het aantal items met het hulp ``find`` programma GNU als volgt berekenen:
+   Als u ``prime.py`` niet gebruikt, kunt u als volgt het aantal items met het GNU-``find``-hulp programma berekenen:
 
    ```bash
    find <path> -type f |wc -l         # (counts files)
@@ -42,7 +42,7 @@ Volg deze instructies voor ``msrsync`` het vullen van Azure Blob-opslag met Azur
    find <path> |wc -l                 # (counts both)
    ```
 
-1. Deel het aantal items door 64 om het aantal items per proces te bepalen. Gebruik dit nummer met de ``-f`` optie om de grootte van de buckets in te stellen wanneer u de opdracht uitvoert.
+1. Deel het aantal items door 64 om het aantal items per proces te bepalen. Gebruik dit getal met de optie ``-f`` om de grootte van de buckets in te stellen wanneer u de opdracht uitvoert.
 
 1. Geef de ``msrsync`` opdracht om bestanden te kopiëren:
 

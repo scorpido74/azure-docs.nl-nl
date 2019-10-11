@@ -5,16 +5,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 04/16/2019
+ms.date: 10/09/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 982996bdbc5e618cf90aa4b028c0585a7898f465
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 30fed5a75e368e9d87da54d4c75e6f69759813e7
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71670961"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72249275"
 ---
 # <a name="configure-customer-managed-keys-for-azure-storage-encryption-from-powershell"></a>Door de klant beheerde sleutels configureren voor het Azure Storage versleutelen van Power shell
 
@@ -23,7 +23,7 @@ ms.locfileid: "71670961"
 In dit artikel wordt beschreven hoe u een sleutel kluis kunt configureren met door de klant beheerde sleutels met behulp van Power shell.
 
 > [!IMPORTANT]
-> Het gebruik van door de klant beheerde sleutels met Azure Storage versleuteling vereist dat er voor de sleutel kluis twee vereiste eigenschappen zijn geconfigureerd, worden **verwijderd** en kunnen **niet worden**verwijderd. Deze eigenschappen zijn standaard ingeschakeld wanneer u een nieuwe sleutel kluis maakt in de Azure Portal. Als u deze eigenschappen echter wilt inschakelen voor een bestaande sleutel kluis, moet u Power shell of Azure CLI gebruiken.
+> Het gebruik van door de klant beheerde sleutels met Azure Storage versleuteling vereist dat er twee eigenschappen worden ingesteld op de sleutel kluis, de functie **voorlopig verwijderen** en **niet leeg**te maken. Deze eigenschappen zijn niet standaard ingeschakeld. Als u deze eigenschappen wilt inschakelen, gebruikt u Power shell of Azure CLI.
 > Alleen RSA-sleutels en sleutel grootte 2048 worden ondersteund.
 
 ## <a name="assign-an-identity-to-the-storage-account"></a>Een identiteit toewijzen aan het opslag account

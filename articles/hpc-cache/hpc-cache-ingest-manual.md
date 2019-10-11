@@ -5,13 +5,13 @@ author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.author: v-erkell
-ms.openlocfilehash: e1ca6fa4ea1ae4a5bf5996e88d32e1e00416f067
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.author: rohogue
+ms.openlocfilehash: 7e29cbd202b32897026bed074743de543d3fd587
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71299979"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72254464"
 ---
 # <a name="azure-hpc-cache-preview-data-ingest---manual-copy-method"></a>Azure HPC-cache (preview) gegevens opname-hand matige Kopieer methode
 
@@ -23,7 +23,7 @@ Lees voor meer informatie over het verplaatsen van gegevens naar Blob Storage vo
 
 U kunt hand matig een kopie met meerdere threads maken op een client door meer dan één Kopieer opdracht tegelijk op de achtergrond uit te voeren op basis van vooraf gedefinieerde sets van bestanden of paden.
 
-De Linux/Unix ``cp`` -opdracht bevat het ``-p`` argument voor het behouden van de meta gegevens van eigendom en mtime. Het toevoegen van dit argument aan de onderstaande opdrachten is optioneel. (Het toevoegen van het argument verhoogt het aantal bestandssysteem aanroepen dat vanaf de client naar het doel bestandssysteem wordt verzonden voor het wijzigen van meta gegevens.)
+De Linux/UNIX-``cp``-opdracht bevat het argument ``-p`` om de eigendoms-en mtime-meta gegevens te behouden. Het toevoegen van dit argument aan de onderstaande opdrachten is optioneel. (Het toevoegen van het argument verhoogt het aantal bestandssysteem aanroepen dat vanaf de client naar het doel bestandssysteem wordt verzonden voor het wijzigen van meta gegevens.)
 
 In dit eenvoudige voor beeld worden twee bestanden parallel gekopieerd:
 
@@ -31,13 +31,13 @@ In dit eenvoudige voor beeld worden twee bestanden parallel gekopieerd:
 cp /mnt/source/file1 /mnt/destination1/ & cp /mnt/source/file2 /mnt/destination1/ &
 ```
 
-Na het geven van deze opdracht `jobs` geeft de opdracht aan dat er twee threads worden uitgevoerd.
+Na het geven van deze opdracht geeft de `jobs`-opdracht aan dat er twee threads worden uitgevoerd.
 
 ## <a name="copy-data-with-predictable-file-names"></a>Gegevens kopiëren met voorspel bare bestands namen
 
 Als uw bestands namen voorspelbaar zijn, kunt u expressies gebruiken om threads voor parallelle kopieën te maken. 
 
-Als uw directory bijvoorbeeld 1000 bestanden bevat die opeenvolgend zijn genummerd `0001` `1000`, kunt u de volgende expressies gebruiken om tien parallelle threads te maken die elk een kopie hebben van 100 bestanden:
+Als uw directory bijvoorbeeld 1000 bestanden bevat die opeenvolgend zijn genummerd van `0001` naar `1000`, kunt u de volgende expressies gebruiken om tien parallelle threads te maken die elk 100 bestanden kopiëren:
 
 ```bash
 cp /mnt/source/file0* /mnt/destination1/ & \
@@ -56,7 +56,7 @@ cp /mnt/source/file9* /mnt/destination1/
 
 Als de naamgevings structuur van het bestand niet voorspelbaar is, kunt u bestanden groeperen op mapnamen. 
 
-In dit voor beeld worden volledige mappen verzameld ``cp`` voor verzen ding naar opdrachten die als achtergrond taken worden uitgevoerd:
+In dit voor beeld worden volledige mappen verzameld voor verzen ding naar ``cp`` opdrachten uitvoeren als achtergrond taken:
 
 ```bash
 /root
@@ -92,7 +92,7 @@ Als dit gebeurt, kunt u aan client zijde koppel punten toevoegen aan andere Azur
 10.1.1.103:/nfs on /mnt/destination3type nfs (rw,vers=3,proto=tcp,addr=10.1.1.103)
 ```
 
-Door aan client zijde koppel punten toe te voegen, kunt u extra Kopieer opdrachten `/mnt/destination[1-3]` opsplitsen naar de extra koppel punten, waardoor verdere parallellisme wordt bereikt.  
+Door aan client zijde koppel punten toe te voegen, kunt u extra Kopieer opdrachten opsplitsen naar de extra `/mnt/destination[1-3]` koppel punten, waardoor verdere parallellisme wordt bereikt.  
 
 Als uw bestanden bijvoorbeeld erg groot zijn, kunt u de Kopieer opdrachten definiëren voor het gebruik van verschillende doel paden en meer opdrachten parallel verzenden van de client die de kopie uitvoert.
 
@@ -136,9 +136,9 @@ Client4: cp -R /mnt/source/dir3/dir3d /mnt/destination/dir3/ &
 
 ## <a name="create-file-manifests"></a>Bestands manifesten maken
 
-Houd rekening met de volgende aanbevelingen nadat u de bovenstaande benaderingen (meerdere kopieën per doel, meerdere-threads per client, meerdere clients per netwerk bron bestand systeem) hebt begrepen: Compileer bestands manifesten en gebruik deze vervolgens met Kopieer opdrachten op meerdere clients.
+Houd rekening met de volgende aanbevelingen nadat u de bovenstaande benaderingen (meerdere kopieën per doel, meerdere-threads per client, meerdere clients per netwerk bron bestand systeem) hebt begrepen, en Ga als volgt te werk: bestands manifesten maken en deze vervolgens gebruiken met Copy opdrachten op meerdere clients.
 
-In dit scenario wordt de ``find`` UNIX-opdracht gebruikt voor het maken van manifesten van bestanden of mappen:
+In dit scenario wordt de UNIX-``find``-opdracht gebruikt voor het maken van manifesten van bestanden of mappen:
 
 ```bash
 user@build:/mnt/source > find . -mindepth 4 -maxdepth 4 -type d
@@ -153,7 +153,7 @@ user@build:/mnt/source > find . -mindepth 4 -maxdepth 4 -type d
 ./atj5b55c53be6-02/support/trace/rolling
 ```
 
-Dit resultaat omleiden naar een bestand:`find . -mindepth 4 -maxdepth 4 -type d > /tmp/foo`
+Dit resultaat omleiden naar een bestand: `find . -mindepth 4 -maxdepth 4 -type d > /tmp/foo`
 
 Vervolgens kunt u het manifest door lopen met behulp van BASH-opdrachten om bestanden te tellen en de grootte van de submappen te bepalen:
 
@@ -214,7 +214,7 @@ En voor zes.... Extrapolatie naar behoefte.
 for i in 1 2 3 4 5 6; do sed -n ${i}~6p /tmp/foo > /tmp/client${i}; done
 ```
 
-Er worden *n* resulterende bestanden weer geven, één voor elk van uw *N* -clients met de namen van het pad naar de vier directory's die zijn verkregen als onderdeel van de `find` uitvoer van de opdracht. 
+Er worden *n* resulterende bestanden weer geven, één voor elk van uw *N* -clients met de namen van het pad naar de vier directory's die zijn verkregen als onderdeel van de uitvoer van de `find` opdracht. 
 
 Gebruik elk bestand om de Kopieer opdracht te bouwen:
 

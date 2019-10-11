@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 09/10/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 58aa310316a31eb63ca8dd614b60fb4bad73d997
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: 3d9c6c9b73f8887d4fdb85da277b2e27d8f5221c
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71959996"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72243571"
 ---
 # <a name="compiling-dsc-configurations-in-azure-automation-state-configuration"></a>DSC-configuraties compileren in Azure Automation status configuratie
 
@@ -124,7 +124,7 @@ Zie [referentie-assets](#credential-assets) hieronder voor informatie over het d
 
 ### <a name="compiling-configurations-in-azure-automation-that-contain-composite-resources"></a>Configuraties in Azure Automation compileren die samengestelde resources bevatten
 
-Met **samengestelde resources** kunt u DSC-configuraties gebruiken als geneste resources binnen een configuratie. Hierdoor kunt u meerdere configuraties Toep assen op één resource. Zie [Composite resources: Het gebruik van een DSC-configuratie als resource @ no__t-0 voor meer informatie over **samengestelde resources**.
+Met **samengestelde resources** kunt u DSC-configuraties gebruiken als geneste resources binnen een configuratie. Hierdoor kunt u meerdere configuraties Toep assen op één resource. Zie [Composite resources: een DSC-configuratie gebruiken als resource](/powershell/scripting/dsc/resources/authoringresourcecomposite) voor meer informatie over **samengestelde resources**.
 
 > [!NOTE]
 > Als u configuraties met **samengestelde resources** goed wilt laten compileren, moet u er eerst voor zorgen dat alle DSC-resources waarvan de samen stelling afhankelijk is, eerst worden geïmporteerd in naar Azure Automation.
@@ -224,7 +224,7 @@ Configuration CredentialSample
 }
 ```
 
-U kunt de voor gaande DSC-configuratie compileren met Power shell. Met de volgende Power shell worden twee knooppunt configuraties aan de pull-server van de Azure Automation status configuratie toegevoegd: **CredentialSample. MyVM1** en **CredentialSample. MyVM2**.
+U kunt de voor gaande DSC-configuratie compileren met Power shell. De volgende Power shell voegt twee knooppunt configuraties toe aan de Azure Automation status configuratie pull-server: **CredentialSample. MyVM1** en **CredentialSample. MyVM2**.
 
 ```powershell
 $ConfigData = @{
@@ -246,7 +246,7 @@ Start-AzureRmAutomationDscCompilationJob -ResourceGroupName 'MyResourceGroup' -A
 ```
 
 > [!NOTE]
-> Wanneer de compilatie is voltooid, wordt er mogelijk een fout bericht weer gegeven waarin wordt vermeld: **De module micro soft. Power shell. Management is niet geïmporteerd, omdat de module micro soft. Power shell. Management al is geïmporteerd.** Deze waarschuwing kan veilig worden genegeerd.
+> Wanneer de compilatie is voltooid, wordt de volgende fout weer gegeven: **de module micro soft. Power shell. Management is niet geïmporteerd, omdat de module micro soft. Power shell. Management al is geïmporteerd.** Deze waarschuwing kan veilig worden genegeerd.
 
 ## <a name="compiling-configurations-in-windows-powershell-and-publishing-to-azure-automation"></a>Configuraties in Windows Power shell compileren en publiceren naar Azure Automation
 

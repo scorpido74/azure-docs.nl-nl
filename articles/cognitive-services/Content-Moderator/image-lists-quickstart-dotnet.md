@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 07/03/2019
 ms.author: sajagtap
-ms.openlocfilehash: 915b308b0129d714e51ac50b4230d8447b5c933a
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 63eb2285563bf83ac56beb03ff008a2bfa5daab6
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564480"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72242908"
 ---
 # <a name="moderate-with-custom-image-lists-in-c"></a>Inhoud beheren met aangepaste afbeeldingslijsten in C#
 
@@ -36,13 +36,13 @@ De console toepassing voor deze hand leiding simuleert enkele van de taken die u
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint. 
 
-## <a name="sign-up-for-content-moderator-services"></a>Registreren voor Content Moderator-services
+## <a name="sign-up-for-content-moderator-services"></a>Registreren voor de Content Moderator-services
 
 Om de Content Moderator-services via de REST-API of de SDK te kunnen gebruiken, hebt u een API-abonnementssleutel nodig. Abonneer u op de Content Moderator-service in de [Azure-portal](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesContentModerator) om ermee te kunnen werken.
 
 ## <a name="create-your-visual-studio-project"></a>Het Visual Studio-project maken
 
-1. Voeg een nieuw project van het type **Console app (.NET Framework)** toe aan uw oplossing.
+1. Voeg een nieuw project van het type **Console-app (.NET Framework)** toe aan uw oplossing.
 
    Geef het project de naam **ImageLists** in de voorbeeldcode.
 
@@ -62,8 +62,7 @@ Voeg de volgende `using`-instructies toe
 
 ```csharp
 using Microsoft.Azure.CognitiveServices.ContentModerator;
-using Microsoft.CognitiveServices.ContentModerator;
-using Microsoft.CognitiveServices.ContentModerator.Models;
+using Microsoft.Azure.CognitiveServices.ContentModerator.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -598,7 +597,7 @@ private static IList<ImageList> GetAllListIds(ContentModeratorClient client)
 
 ## <a name="add-code-to-simulate-the-use-of-an-image-list"></a>Code toevoegen om het gebruik van een lijst afbeeldingen te simuleren
 
-Voeg de volgende code aan de methode **Main**. Deze code simuleert veel van de bewerkingen die u zou uitvoeren bij het definiëren en beheren van de lijst en bij het gebruik van de lijst voor schermafbeeldingen. Met de functies voor logboekregistratie kunt u de antwoordobjecten zien die worden gegenereerd door de SDK-aanroepen naar de Content Moderator-service.
+Voeg de volgende code aan de methode **Hoofd**. Deze code simuleert veel van de bewerkingen die u zou uitvoeren bij het definiëren en beheren van de lijst en bij het gebruik van de lijst voor schermafbeeldingen. Met de functies voor logboekregistratie kunt u de antwoordobjecten zien die worden gegenereerd door de SDK-aanroepen naar de Content Moderator-service.
 
 ```csharp
 // Create the text writer to use for logging, and cache a static reference to it.
@@ -668,7 +667,7 @@ Console.WriteLine("Press any key to exit...");
 Console.ReadKey();
 ```
 
-## <a name="run-the-program-and-review-the-output"></a>Het programma uitvoeren en de uitvoer controleren
+## <a name="run-the-program-and-review-the-output"></a>Voer het programma uit en controleer de uitvoer
 
 De lijst-id en de id's van de afbeeldingsinhoud zijn elke keer dat u de toepassing uitvoert anders.
 Het logboekbestand dat door het programma wordt geschreven, heeft de volgende uitvoer:
@@ -1091,4 +1090,4 @@ Response:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Download de [Content Moderator .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) en de [Visual Studio-oplossing](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator) voor deze en andere snelstarts over Content Moderator voor .NET en begin met de integratie.
+Download de [Content Moderator .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) en de [Visual Studio-oplossing](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator) voor deze en andere snelstartgidsen over Content Moderator voor .NET en begin met de integratie.

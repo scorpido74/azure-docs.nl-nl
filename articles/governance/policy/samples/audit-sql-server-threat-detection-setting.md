@@ -1,17 +1,17 @@
 ---
-title: Voorbeeld - Instelling dreigingsdetectieniveau server controleren
+title: 'Voor beeld: detectie van bedreigingen op server niveau controleren'
 description: Deze voorbeeldbeleidsdefinitie controleert of het beveiligingsmeldingenbeleid van SQL-server is ingesteld op de specifieke status.
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 25504b558a930ae6dcea710ee850ae296c63c4ae
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 0c5cfe2d30668102a356224b5efd141746ab0866
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71977250"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72254765"
 ---
 # <a name="sample---audit-server-level-threat-detection-setting"></a>Voorbeeld - Instelling dreigingsdetectieniveau server controleren
 

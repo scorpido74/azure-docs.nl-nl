@@ -5,17 +5,17 @@ services: azure-resource-manager
 documentationcenter: ''
 author: mumian
 ms.service: azure-resource-manager
-ms.date: 05/31/2019
+ms.date: 10/09/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 17e27fcbd0e31c8602869be3d884888fe4fe7db0
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 2bdff6195a0dcf93bfc3a596189b062bf4f3ab12
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70095816"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72254986"
 ---
-# <a name="tutorial-use-health-check-in-azure-deployment-manager-public-preview"></a>Zelfstudie: Status controle gebruiken in azure Deployment Manager (open bare preview)
+# <a name="tutorial-use-health-check-in-azure-deployment-manager-public-preview"></a>Zelf studie: status controle gebruiken in azure Deployment Manager (open bare preview)
 
 Meer informatie over het integreren van de status controle in [Azure Deployment Manager](./deployment-manager-overview.md). Deze zelf studie is gebaseerd op de zelf studie [Azure Deployment Manager gebruiken met Resource Manager-sjablonen](./deployment-manager-tutorial.md) . U moet deze zelf studie volt ooien voordat u verdergaat met dit.
 
@@ -57,12 +57,12 @@ In productie gebruikt u meestal een of meer bewakings providers. Micro soft werk
 De volgende twee bestanden worden gebruikt voor het implementeren van de Azure-functie. U hoeft deze bestanden niet te downloaden om de zelf studie door te lopen.
 
 * Een resource manager-sjabloon bevindt zich op [https://armtutorials.blob.core.windows.net/admtutorial/deploy_hc_azure_function.json](https://armtutorials.blob.core.windows.net/admtutorial/deploy_hc_azure_function.json). U implementeert deze sjabloon om een Azure-functie te maken.
-* Een zip-bestand van de bron code van de [https://armtutorials.blob.core.windows.net/admtutorial/ADMHCFunction0417.zip](https://armtutorials.blob.core.windows.net/admtutorial/ADMHCFunction0417.zip)Azure-functie,. Deze zip wordt aangeroepen door de Resource Manager-sjabloon.
+* Een zip-bestand van de bron code van de Azure-functie, [https://armtutorials.blob.core.windows.net/admtutorial/ADMHCFunction0417.zip](https://armtutorials.blob.core.windows.net/admtutorial/ADMHCFunction0417.zip). Deze zip wordt aangeroepen door de Resource Manager-sjabloon.
 
 Als u de Azure-functie wilt implementeren, selecteert u **proberen** om de Azure Cloud shell te openen en plakt u het volgende script in het shell-venster.  Als u de code wilt plakken, klikt u met de rechter muisknop op het shell venster en selecteert u vervolgens **Plakken**.
 
 > [!IMPORTANT]
-> **projectName** in het Power shell-script wordt gebruikt voor het genereren van namen voor de Azure-Services die in deze zelf studie worden geïmplementeerd. Verschillende Azure-Services hebben verschillende vereisten voor de namen. Om ervoor te zorgen dat de implementatie is geslaagd, kiest u een naam van minder dan 12 tekens met alleen kleine letters en cijfers.
+> **projectName** in het Power shell-script wordt gebruikt voor het genereren van namen voor de Azure-Services die in deze zelf studie worden geïmplementeerd. Gebruik de **namePrefix** -waarde die u hebt gebruikt voor het [gebruik van Azure Deployment Manager met Resource Manager-sjablonen](./deployment-manager-tutorial.md) voor projectName.  Verschillende Azure-Services hebben verschillende vereisten voor de namen. Om ervoor te zorgen dat de implementatie is geslaagd, kiest u een naam van minder dan 12 tekens met alleen kleine letters en cijfers.
 > Sla een kopie van de project naam op. U gebruikt hetzelfde projectName-project met de zelf studie.
 
 ```azurepowershell-interactive
@@ -71,26 +71,26 @@ $location = Read-Host -Prompt "Enter the location (i.e. centralus)"
 $resourceGroupName = "${projectName}rg"
 
 New-AzResourceGroup -Name $resourceGroupName -Location $location
-New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri "https://armtutorials.blob.core.windows.net/admtutorial/deploy_hc_azure_function.json" -projectName $projectName
+New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-adm/deploy_hc_azure_function.json" -projectName $projectName
 ```
 
 Controleren en testen van de Azure-functie:
 
-1. Open de [Azure Portal](https://portal.azure.com).
+1. Open de [Azure-portal](https://portal.azure.com).
 1. Open de resource groep.  De standaard naam is de naam van het project waaraan **RG** is toegevoegd.
 1. Selecteer app service in de resource groep.  De standaard naam van de app service is de project naam met **webapp** toegevoegd.
 1. Vouw **functies**uit en selecteer vervolgens **HttpTrigger1**.
 
     ![Azure-functie Azure Deployment Manager Health check](./media/deployment-manager-tutorial-health-check/azure-deployment-manager-hc-function.png)
 
-1. **Selecteer&lt;/> functie-URL ophalen**.
+1. Selecteer **&lt;/> functie-URL ophalen**.
 1. Selecteer **kopiëren** om de URL naar het klem bord te kopiëren.  De URL is vergelijkbaar met:
 
     ```url
     https://myhc0417webapp.azurewebsites.net/api/healthStatus/{healthStatus}?code=hc4Y1wY4AqsskAkVw6WLAN1A4E6aB0h3MbQ3YJRF3XtXgHvooaG0aw==
     ```
 
-    Vervang `{healthStatus}` in de URL door de status code. In deze zelf studie gebruikt u een **slechte status** om het scenario met een slechte status te testen. u kunt het scenario in orde of **waarschuwing** gebruiken om het probleem in orde te testen. Maak twee Url's, een met de status slecht en de andere met de status in orde. Voor voor beelden:
+    Vervang `{healthStatus}` in de URL door de status code. In deze zelf studie gebruikt u een **slechte status** om het scenario met een slechte status te testen. u kunt het scenario in **orde of** **waarschuwing** gebruiken om het probleem in orde te testen. Maak twee Url's, een met de status slecht en de andere met de status in orde. Voor voor beelden:
 
     ```url
     https://myhc0417webapp.azurewebsites.net/api/healthStatus/unhealthy?code=hc4Y1wY4AqsskAkVw6WLAN1A4E6aB0h3MbQ3YJRF3XtXgHvooaG0aw==
@@ -107,9 +107,9 @@ Controleren en testen van de Azure-functie:
 
 ## <a name="revise-the-rollout-template"></a>De implementatie sjabloon herzien
 
-Het doel van deze sectie is om te laten zien hoe u een status controle stap in de implementatie sjabloon opneemt. U hoeft geen eigen CreateADMRollout. JSON-bestand te maken om deze zelf studie te volt ooien. De gereviseerde implementatie sjabloon wordt gedeeld in een opslag account dat wordt gebruikt in de volgende secties.
+Het doel van deze sectie is om te laten zien hoe u een status controle stap in de implementatie sjabloon opneemt.
 
-1. Open **CreateADMRollout. json**. Dit JSON-bestand maakt deel uit van de down load.  Zie [Vereisten](#prerequisites).
+1. Open **CreateADMRollout. json** die u hebt gemaakt in [Azure Deployment Manager gebruiken met Resource Manager-sjablonen](./deployment-manager-tutorial.md). Dit JSON-bestand maakt deel uit van de down load.  Zie [Vereisten](#prerequisites).
 1. Voeg twee extra para meters toe:
 
     ```json
@@ -187,7 +187,7 @@ Het doel van deze sectie is om te laten zien hoe u een status controle stap in d
     ],
     ```
 
-1. Werk **stepGroups** bij met de status controle stap. De **healthCheckStep** wordt aangeroepen in **postDeploymentSteps** van **stepGroup2**. **stepGroup3** en **stepGroup4** worden alleen geïmplementeerd als de status in orde is of een *waarschuwing*is.
+1. Werk **stepGroups** bij met de status controle stap. De **healthCheckStep** wordt aangeroepen in **postDeploymentSteps** van **stepGroup2**. **stepGroup3** en **stepGroup4** worden alleen geïmplementeerd als de status *in orde is of* een *waarschuwing*is.
 
     ```json
     "stepGroups": [
@@ -233,26 +233,21 @@ Het doel van deze sectie is om te laten zien hoe u een status controle stap in d
 
 ## <a name="deploy-the-topology"></a>De topologie implementeren
 
-Om de zelf studie te vereenvoudigen, worden de topologie sjabloon en artefacten gedeeld op de volgende locaties, zodat u niet uw eigen kopie hoeft voor te bereiden. Als u uw eigen wilt gebruiken, volgt u de instructies in [de zelf studie: Gebruik Azure Deployment Manager met Resource Manager-](./deployment-manager-tutorial.md)sjablonen.
+Voer het volgende Power shell-script uit om de topologie te implementeren. U hebt dezelfde **CreateADMServiceTopology. json** en **CreateADMServiceTopology. para meters. json** nodig die u hebt gebruikt voor het [gebruik van Azure Deployment Manager met Resource Manager-sjablonen](./deployment-manager-tutorial.md).
 
-* Topologie sjabloon: https:\//armtutorials.blob.core.Windows.net/admtutorial/ADMTemplates/CreateADMServiceTopology.json
-* Opslag voor artefacten: https\/:/armtutorials.blob.core.Windows.net/admtutorial/ArtifactStore
-
-Als u de topologie wilt implementeren, selecteert u **proberen** om de Cloud shell te openen en plakt u het Power shell-script.
-
-```azurepowershell-interactive
+```azurepowershell
 $projectName = Read-Host -Prompt "Enter the same project name used earlier in this tutorial"
 $location = Read-Host -Prompt "Enter the location (i.e. centralus)"
+$filePath = Read-Host -Prompt "Enter the file path to the downloaded tutorial files"
+
 $resourceGroupName = "${projectName}rg"
-$artifactLocation = "https://armtutorials.blob.core.windows.net/admtutorial/ArtifactStore?st=2019-05-06T03%3A57%3A31Z&se=2020-05-07T03%3A57%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=gOh%2Bkhi693rmdxiZFQ9xbKZMU1kbLJDqXw7EP4TaGlI%3D" | ConvertTo-SecureString -AsPlainText -Force
+
 
 # Create the service topology
 New-AzResourceGroupDeployment `
     -ResourceGroupName $resourceGroupName `
-    -TemplateUri "https://armtutorials.blob.core.windows.net/admtutorial/ADMTemplatesHC/CreateADMServiceTopology.json" `
-    -namePrefix $projectName `
-    -azureResourceLocation $location `
-    -artifactSourceSASLocation $artifactLocation
+    -TemplateFile "$filePath\ADMTemplates\CreateADMServiceTopology.json" `
+    -TemplateParameterFile "$filePath\ADMTemplates\CreateADMServiceTopology.Parameters.json"
 ```
 
 Controleer of de servicetopologie en de onderstreepte resources zijn gemaakt met behulp van Azure Portal:
@@ -263,38 +258,24 @@ Controleer of de servicetopologie en de onderstreepte resources zijn gemaakt met
 
 ## <a name="deploy-the-rollout-with-the-unhealthy-status"></a>Implementatie van de implementatie met de status beschadigd
 
-Om de zelf studie te vereenvoudigen, wordt de gereviseerde implementatie sjabloon gedeeld op de volgende locaties, zodat u niet uw eigen kopie hoeft voor te bereiden. Als u uw eigen wilt gebruiken, volgt u de instructies in [de zelf studie: Gebruik Azure Deployment Manager met Resource Manager-](./deployment-manager-tutorial.md)sjablonen.
-
-* Topologie sjabloon: https:\//armtutorials.blob.core.Windows.net/admtutorial/ADMTemplatesHC/CreateADMRollout.json
-* Opslag voor artefacten: https\/:/armtutorials.blob.core.Windows.net/admtutorial/ArtifactStore
-
-Gebruik de status van de slechte URL die u hebt gemaakt in [een Health Check-service Simulator maken](#create-a-health-check-service-simulator). Zie [de door de gebruiker toegewezen beheerde identiteit maken](./deployment-manager-tutorial.md#create-the-user-assigned-managed-identity)voor **managedIdentityID**.
+Gebruik de status van de slechte URL die u hebt gemaakt in [een Health Check-service Simulator maken](#create-a-health-check-service-simulator). U hebt de gereviseerde **CreateADMServiceTopology. json** en dezelfde **CreateADMServiceTopology. para meters. json** nodig die u hebt gebruikt voor het [gebruik van Azure Deployment Manager met Resource Manager-sjablonen](./deployment-manager-tutorial.md).
 
 ```azurepowershell-interactive
-$projectName = Read-Host -Prompt "Enter the same project name used earlier in this tutorial"
-$location = Read-Host -Prompt "Enter the location (i.e. centralus)"
-$managedIdentityID = Read-Host -Prompt "Enter a user-assigned managed identity"
 $healthCheckUrl = Read-Host -Prompt "Enter the health check Azure function URL"
 $healthCheckAuthAPIKey = $healthCheckUrl.Substring($healthCheckUrl.IndexOf("?code=")+6, $healthCheckUrl.Length-$healthCheckUrl.IndexOf("?code=")-6)
 $healthCheckUrl = $healthCheckUrl.Substring(0, $healthCheckUrl.IndexOf("?"))
 
-$resourceGroupName = "${projectName}rg"
-$artifactLocation = "https://armtutorials.blob.core.windows.net/admtutorial/ArtifactStore?st=2019-05-06T03%3A57%3A31Z&se=2020-05-07T03%3A57%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=gOh%2Bkhi693rmdxiZFQ9xbKZMU1kbLJDqXw7EP4TaGlI%3D" | ConvertTo-SecureString -AsPlainText -Force
-
 # Create the rollout
 New-AzResourceGroupDeployment `
     -ResourceGroupName $resourceGroupName `
-    -TemplateUri "https://armtutorials.blob.core.windows.net/admtutorial/ADMTemplatesHC/CreateADMRollout.json" `
-    -namePrefix $projectName `
-    -azureResourceLocation $location `
-    -artifactSourceSASLocation $artifactLocation `
-    -managedIdentityID $managedIdentityID `
+    -TemplateFile "$filePath\ADMTemplates\CreateADMRollout.json" `
+    -TemplateParameterFile "$filePath\ADMTemplates\CreateADMRollout.Parameters.json" `
     -healthCheckUrl $healthCheckUrl `
     -healthCheckAuthAPIKey $healthCheckAuthAPIKey
 ```
 
 > [!NOTE]
-> `New-AzResourceGroupDeployment`is een asynchrone aanroep. Het bericht alleen geslaagd betekent dat de implementatie is gestart. Als u de implementatie wilt controleren `Get-AZDeploymentManagerRollout`, gebruikt u.  Zie de volgende procedure.
+> `New-AzResourceGroupDeployment` is een asynchrone aanroep. Het bericht alleen geslaagd betekent dat de implementatie is gestart. Gebruik `Get-AZDeploymentManagerRollout` om de implementatie te controleren.  Zie de volgende procedure.
 
 U kunt de voortgang van de implementatie controleren met behulp van het volgende Power shell-script:
 
@@ -377,7 +358,7 @@ Herhaal deze sectie voor het opnieuw implementeren van de implementatie met de U
 
 ## <a name="verify-the-deployment"></a>De implementatie controleren
 
-1. Open de [Azure Portal](https://portal.azure.com).
+1. Open de [Azure-portal](https://portal.azure.com).
 2. Blader naar de zojuist gemaakte webtoepassingen onder de nieuwe resourcegroepen die zijn gemaakt door de implementatie.
 3. Open de webtoepassing in een webbrowser. Controleer de locatie en de versie in het index.html-bestand.
 

@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 03/18/2019
 ms.author: sajagtap
-ms.openlocfilehash: c291a914ae9e76ce548df2a52523d60b69f0a7b0
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: bc20af10e2e5b2ceb26c1cc891a8f69eb44e5740
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68882712"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72242889"
 ---
 # <a name="define-and-use-moderation-jobs-net"></a>Toezicht taken definiëren en gebruiken (.NET)
 
@@ -47,7 +47,7 @@ U gebruikt de naam van de werkstroom in uw code waarmee de beoordelingstaak word
 
 ## <a name="create-your-visual-studio-project"></a>Het Visual Studio-project maken
 
-1. Voeg een nieuw project van het type **Console app (.NET Framework)** toe aan uw oplossing.
+1. Voeg een nieuw project van het type **Console-app (.NET Framework)** toe aan uw oplossing.
 
    Geef het project de naam **CreateReviews** in de voorbeeldcode.
 
@@ -67,8 +67,7 @@ Pas de using-instructies van het programma aan.
 
 ```csharp
 using Microsoft.Azure.CognitiveServices.ContentModerator;
-using Microsoft.CognitiveServices.ContentModerator;
-using Microsoft.CognitiveServices.ContentModerator.Models;
+using Microsoft.Azure.CognitiveServices.ContentModerator.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -245,7 +244,7 @@ using (TextWriter writer = new StreamWriter(OutputFile, false))
 >
 > Een sleutel voor de gratis laag heeft een limiet van één RPS.
 
-## <a name="run-the-program-and-review-the-output"></a>Het programma uitvoeren en de uitvoer controleren
+## <a name="run-the-program-and-review-the-output"></a>Voer het programma uit en controleer de uitvoer
 
 U ziet de volgende voorbeelduitvoer in de console:
 
@@ -256,9 +255,9 @@ Then, press any key to continue.
 
 Meld u aan bij het Content Moderator-beoordelingsprogramma om de openstaande beoordeling van de afbeelding te zien.
 
-Gebruik de knop **Next** om te verzenden.
+Gebruik de knop **Volgende** om de code te verzenden.
 
-![Beoordeling van afbeelding voor menselijke beoordelaars](images/ocr-sample-image.PNG)
+![Beoordeling van afbeeldingen voor menselijke moderators](images/ocr-sample-image.PNG)
 
 ## <a name="see-the-sample-output-in-the-log-file"></a>De voorbeelduitvoer in het logboekbestand bekijken
 
@@ -324,4 +323,4 @@ U ziet een reactie zoals in het volgende voorbeeld:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Download de [Content Moderator .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) en de [Visual Studio-oplossing](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator) voor deze en andere snelstarts over Content Moderator voor .NET en begin met de integratie.
+Download de [Content Moderator .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) en de [Visual Studio-oplossing](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator) voor deze en andere snelstartgidsen over Content Moderator voor .NET en begin met de integratie.

@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: REST-API hosten met CORS-Azure App Service'
+title: 'Zelf studie: geruste API hosten met CORS-Azure App Service'
 description: Informatie over hoe u met Azure App Service uw RESTful API's met CORS-ondersteuning kunt hosten.
 services: app-service\api
 documentationcenter: dotnet
@@ -15,14 +15,14 @@ ms.topic: tutorial
 ms.date: 11/21/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 137b569820ea7394b6a3beb24129c905a2efd123
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.openlocfilehash: f13b390047ea4d8280b106f3b02a8f18944a6f99
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70743863"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72255165"
 ---
-# <a name="tutorial-host-a-restful-api-with-cors-in-azure-app-service"></a>Zelfstudie: RESTful API hosten met CORS in Azure App Service
+# <a name="tutorial-host-a-restful-api-with-cors-in-azure-app-service"></a>Zelfstudie: een RESTful API hosten met CORS in Azure App Service
 
 [Azure App Service](overview.md) biedt een uiterst schaalbare webhostingservice met self-patchfunctie. Daarnaast bevat App Service ingebouwde ondersteuning voor [CORS (Cross-Origin Resource Sharing)](https://wikipedia.org/wiki/Cross-Origin_Resource_Sharing) voor RESTful API's. In deze zelfstudie leert u hoe u een ASP.NET Core API-app in App Service met CORS-ondersteuning implementeert. U configureert de app met opdrachtregelprogramma's en implementeert de app met behulp van Git. 
 
@@ -58,7 +58,7 @@ Voer de volgende opdracht uit om de voorbeeldopslagplaats te klonen.
 git clone https://github.com/Azure-Samples/dotnet-core-api
 ```
 
-Deze opslagplaats bevat een app die is gemaakt op basis van de volgende zelfstudie: [ASP.NET Core Web API help pages using Swagger](/aspnet/core/tutorials/web-api-help-pages-using-swagger?tabs=visual-studio) (Helppagina's met gebruik van Swagger voor ASP.NET Core-web-API's). Er wordt een Swagger-generator gebruikt voor de [Swagger-gebruikersinterface](https://swagger.io/swagger-ui/) en het Swagger JSON-eindpunt.
+Deze opslagplaats bevat een app die wordt gemaakt op basis van de volgende zelfstudie: [ASP.NET Core Web API help pages using Swagger](/aspnet/core/tutorials/web-api-help-pages-using-swagger?tabs=visual-studio) (Help-pagina's van ASP.NET Core Web API met behulp van Swagger). Er wordt een Swagger-generator gebruikt voor de [Swagger-gebruikersinterface](https://swagger.io/swagger-ui/) en het Swagger JSON-eindpunt.
 
 ### <a name="run-the-application"></a>De toepassing uitvoeren
 
@@ -72,7 +72,7 @@ dotnet run
 
 Ga naar `http://localhost:5000/swagger` in een browser om kennis te maken met de Swagger-gebruikersinterface.
 
-![ASP.NET Core-API lokaal uitvoeren](./media/app-service-web-tutorial-rest-api/local-run.png)
+![ASP.NET Core-API lokaal uitvoeren](./media/app-service-web-tutorial-rest-api/azure-app-service-local-swagger-ui.png)
 
 Ga naar `http://localhost:5000/api/todo` om een lijst met ToDo JSON-items te bekijken.
 
@@ -98,7 +98,7 @@ In deze stap implementeert u de met SQL Database verbonden .NET Core-app met App
 
 [!INCLUDE [Create app service plan](../../includes/app-service-web-create-app-service-plan-no-h.md)]
 
-### <a name="create-a-web-app"></a>Een web-app maken
+### <a name="create-a-web-app"></a>Een webtoepassing maken
 
 [!INCLUDE [Create web app](../../includes/app-service-web-create-web-app-dotnetcore-win-no-h.md)] 
 
@@ -136,7 +136,7 @@ To https://<app_name>.scm.azurewebsites.net/<app_name>.git
 
 Ga naar `http://<app_name>.azurewebsites.net/swagger` in een browser om kennis te maken met de Swagger-gebruikersinterface.
 
-![ASP.NET Core-API uitvoeren in Azure App Service](./media/app-service-web-tutorial-rest-api/azure-run.png)
+![ASP.NET Core-API uitvoeren in Azure App Service](./media/app-service-web-tutorial-rest-api/azure-app-service-browse-app.png)
 
 Ga naar `http://<app_name>.azurewebsites.net/swagger/v1/swagger.json` om de _swagger.json_ om uw geïmplementeerde API te zien.
 
@@ -158,9 +158,9 @@ Voor de voorbeeld-app opnieuw uit in het lokale terminalvenster.
 dotnet run
 ```
 
-Ga naar de browser-app op `http://localhost:5000`. Open het venster van de hulpprogramma's voor ontwikkelaars in uw browser (`Ctrl`+`Shift`+`i` in Chrome voor Windows) en controleer het tabblad **Console**. U ziet nu het foutbericht, `No 'Access-Control-Allow-Origin' header is present on the requested resource`.
+Ga naar de browser-app op `http://localhost:5000`. Open het venster ontwikkel hulpprogramma's in uw browser (`Ctrl` @ no__t-1 @ no__t-2 @ no__t-3 @ no__t-4 in Chrome voor Windows) en controleer het tabblad **console** . U ziet nu het fout bericht `No 'Access-Control-Allow-Origin' header is present on the requested resource`.
 
-![CORS-fout in de browserclient](./media/app-service-web-tutorial-rest-api/cors-error.png)
+![CORS-fout in de browserclient](./media/app-service-web-tutorial-rest-api/azure-app-service-cors-error.png)
 
 Vanwege een verschil tussen de domeinen van de browser-app (`http://localhost:5000`) en de externe resource (`http://<app_name>.azurewebsites.net`), en het feit dat de API in App Service de kop `Access-Control-Allow-Origin` niet verzendt, is voorkomen dat inhoud uit beide domeinen in de browser-app is geladen.
 
@@ -177,13 +177,13 @@ az resource update --name web --resource-group myResourceGroup --namespace Micro
 U kunt in `properties.cors.allowedOrigins` (`"['URL1','URL2',...]"`) meer dan één client-URL instellen. Met `"['*']"` kunt u ook alle client-URL's instellen.
 
 > [!NOTE]
-> Als er voor uw app referenties, zoals cookies of verificatietokens, moeten worden verzonden, is het mogelijk dat de browser de header `ACCESS-CONTROL-ALLOW-CREDENTIALS` van het antwoord vereist. Als u dit wilt inschakelen in App Service, stelt u `properties.cors.supportCredentials` in uw CORS-configuratie in op `true`. Dit kan niet worden ingeschakeld als `allowedOrigins` `'*'` bevat.
+> Als er voor uw app referenties, zoals cookies of verificatietokens, moeten worden verzonden, is het mogelijk dat de browser de header `ACCESS-CONTROL-ALLOW-CREDENTIALS` van het antwoord vereist. Als u dit wilt inschakelen in App Service, stelt u `properties.cors.supportCredentials` in op `true` in de CORS-configuratie. Dit kan niet worden ingeschakeld als `allowedOrigins` `'*'` bevat.
 
 ### <a name="test-cors-again"></a>CORS opnieuw testen
 
 Vernieuw de browser-app op `http://localhost:5000`. Het foutbericht in het **Console**-venster is nu verdwenen. U kunt de gegevens van de geïmplementeerde API zien en ermee werken. De externe API biedt nu ondersteuning voor CORS voor uw browser-app, die lokaal wordt uitgevoerd. 
 
-![CORS in de browserclient](./media/app-service-web-tutorial-rest-api/cors-success.png)
+![CORS in de browserclient](./media/app-service-web-tutorial-rest-api/azure-app-service-cors-success.png)
 
 Gefeliciteerd! U voert een API uit in Azure App Service met CORS-ondersteuning.
 
@@ -211,4 +211,4 @@ Wat u hebt geleerd:
 Ga naar de volgende zelfstudie voor informatie over het verifiëren en autoriseren van gebruikers.
 
 > [!div class="nextstepaction"]
-> [Zelfstudie: Gebruikers eind-tot-eind verifiëren en machtigen](app-service-web-tutorial-auth-aad.md)
+> [Zelfstudie: gebruikers eind-tot-eind verifiëren en autoriseren](app-service-web-tutorial-auth-aad.md)

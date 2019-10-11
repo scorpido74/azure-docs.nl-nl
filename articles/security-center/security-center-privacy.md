@@ -13,29 +13,29 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/23/2018
 ms.author: memildin
-ms.openlocfilehash: aab2535eb44ca5007859c71bf1f8142b26de7d14
-ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
+ms.openlocfilehash: 0d05650ff349cb9e9750b0cefe0de217a986b32a
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "71996736"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72254605"
 ---
 # <a name="manage-user-data-in-azure-security-center"></a>Gebruikers gegevens beheren in Azure Security Center
 Dit artikel bevat informatie over hoe u de gebruikers gegevens in Azure Security Center kunt beheren. Het beheren van gebruikers gegevens omvat de mogelijkheid om gegevens te openen, te verwijderen of te exporteren.
 
 [!INCLUDE [gdpr-intro-sentence.md](../../includes/gdpr-intro-sentence.md)]
 
-Een Security Center gebruiker de rol van lezer, eigenaar, Inzender of account beheerder heeft toegewezen, heeft toegang tot klant gegevens in het hulp programma. Zie [ingebouwde rollen voor op rollen gebaseerd toegangs beheer voor Azure](../role-based-access-control/built-in-roles.md) voor meer informatie over de rollen lezer, eigenaar en Inzender. Zie [beheerders van Azure-abonnementen](../billing/billing-add-change-azure-subscription-administrator.md) voor meer informatie over de rol account beheerder.
+Een Security Center gebruiker de rol van lezer, eigenaar, Inzender of account beheerder heeft toegewezen, heeft toegang tot klant gegevens in het hulp programma. Zie voor meer informatie over de rol account beheerder [ingebouwde rollen voor op rollen gebaseerd toegangs beheer voor Azure](../role-based-access-control/built-in-roles.md) voor meer informatie over de rollen lezer, eigenaar en Inzender. Zie [Azure-abonnements beheerders](../billing/billing-add-change-azure-subscription-administrator.md).
 
 ## <a name="searching-for-and-identifying-personal-data"></a>Zoeken naar en identificeren van persoons gegevens
-Een Security Center gebruiker kan hun persoonlijke gegevens bekijken via de Azure Portal. Met Security Center worden alleen beveiligings gegevens van contact personen opgeslagen, zoals e-mail adressen en telefoon nummers. Zie [contact gegevens voor beveiliging verstrekken in azure Security Center](security-center-provide-security-contact-details.md) voor meer informatie.
+Een Security Center gebruiker kan hun persoonlijke gegevens bekijken via de Azure Portal. Met Security Center worden alleen beveiligings gegevens van contact personen opgeslagen, zoals e-mail adressen en telefoon nummers. Zie voor meer informatie [contact gegevens voor beveiliging opgeven in azure Security Center](security-center-provide-security-contact-details.md).
 
-In de Azure Portal kan een gebruiker toegestane IP-configuraties weer geven met behulp van de just-in-time-functie voor VM-toegang van Security Center. Zie [toegang tot virtuele machines beheren met Just-in-time](security-center-just-in-time.md) voor meer informatie.
+In de Azure Portal kan een gebruiker toegestane IP-configuraties weer geven met behulp van de just-in-time-functie voor VM-toegang van Security Center. Zie [toegang tot virtuele machines beheren met Just-in-time](security-center-just-in-time.md)voor meer informatie.
 
-In het Azure Portal kan een gebruiker beveiligings waarschuwingen weer geven die zijn verschaft door Security Center, met inbegrip van IP-adressen en Details van de aanvaller. Zie [beveiligings waarschuwingen beheren en erop reageren in azure Security Center](security-center-managing-and-responding-alerts.md) voor meer informatie.
+In het Azure Portal kan een gebruiker beveiligings waarschuwingen weer geven die zijn verschaft door Security Center, met inbegrip van IP-adressen en Details van de aanvaller. Zie [beveiligings waarschuwingen beheren en erop reageren in azure Security Center](security-center-managing-and-responding-alerts.md)voor meer informatie.
 
 ## <a name="classifying-personal-data"></a>Persoonlijke gegevens classificeren
-U hoeft geen persoonlijke gegevens te classificeren die zijn gevonden in de functie beveiligings contact van Security Center. De opgeslagen gegevens zijn een e-mail adres (of meerdere e-mail adressen) en een telefoon nummer. [Contact gegevens](security-center-provide-security-contact-details.md) worden gevalideerd door Security Center.
+U hoeft geen persoonlijke gegevens te classificeren die zijn gevonden in de functie contact opnemen met beveiliging van Security Center. De opgeslagen gegevens zijn een e-mail adres (of meerdere e-mail adressen) en een telefoon nummer. [Contact gegevens](security-center-provide-security-contact-details.md) worden gevalideerd door Security Center.
 
 U hoeft de IP-adressen en poort nummers die zijn opgeslagen door Security Center [just-in-time-](security-center-just-in-time.md) functie niet te classificeren.
 
@@ -48,24 +48,24 @@ Een Security Center gebruiker de rol van lezer, eigenaar, Inzender of account be
 
 Een Security Center gebruiker de rol van lezer, eigenaar, Inzender of account beheerder heeft toegewezen, kan hun [waarschuwingen](security-center-managing-and-responding-alerts.md)weer geven.
 
-## <a name="updating-personal-data"></a>Het bijwerken van persoonlijke gegevens
+## <a name="updating-personal-data"></a>Persoonlijke gegevens bijwerken
 Een Security Center gebruiker die de rol van eigenaar, bijdrager of account beheerder heeft toegewezen, kan [beveiligings gegevens van contact personen](security-center-provide-security-contact-details.md) via de Azure Portal bijwerken.
 
 Een Security Center gebruiker aan wie de rol van eigenaar, bijdrager of account beheerder is toegewezen, kan de [just-in-time-beleids regels](security-center-just-in-time.md)bijwerken.
 
-Een account beheerder kan geen waarschuwings incidenten bewerken. Een [waarschuwings incident](security-center-managing-and-responding-alerts.md) wordt beschouwd als beveiligings gegevens en heeft het kenmerk alleen-lezen.
+Een account beheerder kan waarschuwings incidenten niet bewerken. Een [waarschuwings incident](security-center-managing-and-responding-alerts.md) wordt beschouwd als beveiligings gegevens en heeft het kenmerk alleen-lezen.
 
-## <a name="deleting-personal-data"></a>Het verwijderen van persoonlijke gegevens
+## <a name="deleting-personal-data"></a>Persoonlijke gegevens verwijderen
 Een Security Center gebruiker die de rol van eigenaar, bijdrager of account beheerder heeft toegewezen, kan [beveiligings gegevens van contact personen](security-center-provide-security-contact-details.md) via de Azure Portal verwijderen.
 
 Een Security Center gebruiker die de rol van eigenaar, bijdrager of account beheerder heeft toegewezen, kan de [just-in-time-beleids regels](security-center-just-in-time.md) via de Azure Portal verwijderen.
 
-Een Security Center gebruiker kan geen waarschuwings incidenten verwijderen. Vanwege beveiligings behoeften wordt een [waarschuwings incident](security-center-managing-and-responding-alerts.md) beschouwd als alleen-lezen gegevens.
+Een Security Center gebruiker kan waarschuwings incidenten niet verwijderen. Uit veiligheids overwegingen wordt een [waarschuwings incident](security-center-managing-and-responding-alerts.md) beschouwd als alleen-lezen gegevens.
 
-## <a name="exporting-personal-data"></a>Exporteren van persoonlijke gegevens
+## <a name="exporting-personal-data"></a>Persoonlijke gegevens exporteren
 Een Security Center gebruiker die de rol van lezer, eigenaar, Inzender of account beheerder heeft toegewezen, kan [beveiligings gegevens van contact personen](security-center-provide-security-contact-details.md) exporteren door:
 
-- Een kopie van de Azure Portal uitvoeren
+- Kopiëren van de Azure Portal
 - De Azure REST API-aanroep wordt uitgevoerd, HTTP ophalen:
   ```HTTP
   GET https://<endpoint>/subscriptions/{subscriptionId}/providers/Microsoft.Security/securityContacts?api-version={api-version}
@@ -73,7 +73,7 @@ Een Security Center gebruiker die de rol van lezer, eigenaar, Inzender of accoun
 
 Een Security Center gebruiker die de rol van account beheerder heeft toegewezen, kan de [just-in-time-beleids regels](security-center-just-in-time.md) met de IP-adressen exporteren door:
 
-- Een kopie van de Azure Portal uitvoeren
+- Kopiëren van de Azure Portal
 - De Azure REST API-aanroep wordt uitgevoerd, HTTP ophalen:
   ```HTTP
   GET https://<endpoint>/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Security/locations/{location}/jitNetworkAccessPolicies/default?api-version={api-version}
@@ -81,13 +81,13 @@ Een Security Center gebruiker die de rol van account beheerder heeft toegewezen,
 
 Een account beheerder kan de waarschuwings details exporteren door:
 
-- Een kopie van de Azure Portal uitvoeren
+- Kopiëren van de Azure Portal
 - De Azure REST API-aanroep wordt uitgevoerd, HTTP ophalen:
   ```HTTP
   GET https://<endpoint>/subscriptions/{subscriptionId}/providers/microsoft.Security/alerts?api-version={api-version}
   ```
 
-Zie [beveiligings waarschuwingen ophalen (verzameling ophalen)](https://msdn.microsoft.com/library/mt704050.aspx) voor meer informatie.
+Zie [beveiligings waarschuwingen ophalen (verzameling ophalen)](https://msdn.microsoft.com/library/mt704050.aspx)voor meer informatie.
 
 ## <a name="restricting-the-use-of-personal-data-for-profiling-or-marketing-without-consent"></a>Het gebruik van persoonlijke gegevens voor profile ring of marketing beperken zonder toestemming
 Een Security Center gebruiker kan ervoor kiezen om u af te melden door hun [beveiligings contact gegevens](security-center-provide-security-contact-details.md)te verwijderen.

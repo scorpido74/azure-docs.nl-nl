@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: sajagtap
-ms.openlocfilehash: f3f93824eb021e0fb75e1a6b81935292379d50e5
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: c7d68685a772bb777fff1dd56a25990b9d0406ef
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68883077"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72242824"
 ---
 # <a name="create-video-transcript-reviews-using-net"></a>Transcriptie van video maken met behulp van .NET
 
@@ -28,7 +28,7 @@ In dit artikel vindt u informatie en code voorbeelden waarmee u snel aan de slag
 ## <a name="prerequisites"></a>Vereisten
 
 - Meld u aan of maak een account op de site Content Moderator [controle programma](https://contentmoderator.cognitive.microsoft.com/) als u dit nog niet hebt gedaan.
-- In dit artikel wordt ervan uitgegaan dat u [de video](video-moderation-api.md) hebt gematigd en [de video beoordeling hebt gemaakt](video-reviews-quickstart-dotnet.md) in het beoordelings programma voor het maken van een menselijk besluit. U wilt nu gelaagde video transcripten toevoegen in het beoordelings programma.
+- In dit artikel wordt ervan uitgegaan dat u [de video hebt gematigd](video-moderation-api.md) en [de video beoordeling hebt gemaakt](video-reviews-quickstart-dotnet.md) in het beoordelings programma voor het maken van een menselijk besluit. U wilt nu gelaagde video transcripten toevoegen in het beoordelings programma.
 
 ## <a name="ensure-your-api-key-can-call-the-review-api-job-creation"></a>Zorg ervoor dat uw API-sleutel de beoordelings-API kan aanroepen (taak maken)
 
@@ -48,7 +48,7 @@ Voeg de transcriptie toe aan een video beoordeling. De video moet online worden 
 
 ## <a name="create-your-visual-studio-project"></a>Het Visual Studio-project maken
 
-1. Voeg een nieuw project van het type **Console app (.NET Framework)** toe aan uw oplossing.
+1. Voeg een nieuw project van het type **Console-app (.NET Framework)** toe aan uw oplossing.
 
 1. Geef het project de naam **VideoTranscriptReviews**.
 
@@ -74,8 +74,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Threading;
 using Microsoft.Azure.CognitiveServices.ContentModerator;
-using Microsoft.CognitiveServices.ContentModerator;
-using Microsoft.CognitiveServices.ContentModerator.Models;
+using Microsoft.Azure.CognitiveServices.ContentModerator.Models;
 using Newtonsoft.Json;
 ```
 
@@ -154,7 +153,7 @@ Maak een video beoordeling met **ContentModeratorClient. revisies. CreateVideoRe
 **CreateVideoReviews** heeft de volgende vereiste para meters:
 1. Een teken reeks die een MIME-type bevat, dat ' application/json ' moet zijn. 
 1. De naam van uw Content Moderator team.
-1. Een **IList\<CreateVideoReviewsBodyItem >** -object. Elk **CreateVideoReviewsBodyItem** -object vertegenwoordigt een video-beoordeling. Deze Quick Start maakt één beoordeling per keer.
+1. Een **IList @ no__t-1CreateVideoReviewsBodyItem >-** object. Elk **CreateVideoReviewsBodyItem** -object vertegenwoordigt een video-beoordeling. Deze Quick Start maakt één beoordeling per keer.
 
 **CreateVideoReviewsBodyItem** heeft verschillende eigenschappen. U kunt ten minste de volgende eigenschappen instellen:
 - **Inhoud**. De URL van de video die moet worden gecontroleerd.
@@ -162,7 +161,7 @@ Maak een video beoordeling met **ContentModeratorClient. revisies. CreateVideoRe
 - **Status**. Stel de waarde in op ' unpublished '. Als u deze niet instelt, wordt de standaard waarde ' in behandeling ' gebruikt, wat betekent dat de video beoordeling wordt gepubliceerd en de beoordeling van de mens in behandeling is. Zodra een video controle is gepubliceerd, kunt u geen video frames, transcripten of afschrift resultaten meer toevoegen.
 
 > [!NOTE]
-> **CreateVideoReviews** retourneert een IList\<-teken reeks >. Elk van deze teken reeksen bevat een ID voor een video beoordeling. Deze Id's zijn GUID'S en zijn niet hetzelfde als de waarde van de eigenschap **ContentId** .
+> **CreateVideoReviews** retourneert een IList @ no__t-1string >. Elk van deze teken reeksen bevat een ID voor een video beoordeling. Deze Id's zijn GUID'S en zijn niet hetzelfde als de waarde van de eigenschap **ContentId** .
 
 Voeg de volgende methode definitie toe aan de naam ruimte VideoReviews, het programma class.
 
@@ -211,7 +210,7 @@ U voegt een transcript toe aan een video beoordeling met **ContentModeratorClien
 1. De ID van de video controle die door **CreateVideoReviews**wordt geretourneerd.
 1. Een **Stream** -object dat de transcripten bevat.
 
-De transcript moet de WebVTT-indeling hebben. Zie [voor meer informatie WebVTT: De indeling](https://www.w3.org/TR/webvtt1/)webvideo-tekst wordt getraceerd.
+De transcript moet de WebVTT-indeling hebben. Zie voor meer informatie [WebVTT: de indeling van de web video-tekst](https://www.w3.org/TR/webvtt1/).
 
 > [!NOTE]
 > Het programma gebruikt een voor beeld van een transcript in de VTT-indeling. In een echte oplossing gebruikt u de Azure Media Indexer-service om [een transcriptie te genereren](https://docs.microsoft.com/azure/media-services/media-services-index-content) op basis van een video.
@@ -244,15 +243,15 @@ Naast het toevoegen van een transcript aan een video beoordeling, voegt u ook he
 1. Een teken reeks die een MIME-type bevat, dat ' application/json ' moet zijn. 
 1. De naam van uw Content Moderator team.
 1. De ID van de video controle die door **CreateVideoReviews**wordt geretourneerd.
-1. Een IList\<TranscriptModerationBodyItem >. Een **TranscriptModerationBodyItem** heeft de volgende eigenschappen:
-1. **Voor waarden**. Een IList\<TranscriptModerationBodyItemTermsItem >. Een **TranscriptModerationBodyItemTermsItem** heeft de volgende eigenschappen:
+1. Een IList @ no__t-0TranscriptModerationBodyItem >. Een **TranscriptModerationBodyItem** heeft de volgende eigenschappen:
+1. **Voor waarden**. Een IList @ no__t-0TranscriptModerationBodyItemTermsItem >. Een **TranscriptModerationBodyItemTermsItem** heeft de volgende eigenschappen:
 1. **Index**. De op nul gebaseerde index van de term.
 1. **Term**. Een teken reeks die de term bevat.
 1. **Tijds tempel**. Een teken reeks die, in seconden, de tijd in de transcripten bevat waarop de termen worden gevonden.
 
-De transcript moet de WebVTT-indeling hebben. Zie [voor meer informatie WebVTT: De indeling](https://www.w3.org/TR/webvtt1/)webvideo-tekst wordt getraceerd.
+De transcript moet de WebVTT-indeling hebben. Zie voor meer informatie [WebVTT: de indeling van de web video-tekst](https://www.w3.org/TR/webvtt1/).
 
-Voeg de volgende methode definitie toe aan de naam ruimte VideoTranscriptReviews, het programma class. Met deze methode wordt een transcript verzonden naar de methode **ContentModeratorClient. TextModeration. ScreenText** . Ook wordt het resultaat omgezet in een IList\<TranscriptModerationBodyItem > en verzonden naar **AddVideoTranscriptModerationResult**.
+Voeg de volgende methode definitie toe aan de naam ruimte VideoTranscriptReviews, het programma class. Met deze methode wordt een transcript verzonden naar de methode **ContentModeratorClient. TextModeration. ScreenText** . Ook wordt het resultaat omgezet in een IList @ no__t-0TranscriptModerationBodyItem > en verzonden naar **AddVideoTranscriptModerationResult**.
 
 ```csharp
 /// <summary>
@@ -361,7 +360,7 @@ static void Main(string[] args)
 }
 ```
 
-## <a name="run-the-program-and-review-the-output"></a>Het programma uitvoeren en de uitvoer controleren
+## <a name="run-the-program-and-review-the-output"></a>Voer het programma uit en controleer de uitvoer
 
 Wanneer u de toepassing uitvoert, ziet u een uitvoer op de volgende regels:
 
@@ -376,7 +375,7 @@ Press any key to close the application.
 
 ## <a name="navigate-to-your-video-transcript-review"></a>Navigeer naar uw video-transcript beoordeling
 
-Ga naar de video-transcriptcontrole in het hulp programma content moderator beoordeling op het**transcript** scherm van de**video**> **bekijken**>.
+Ga naar de video-transcriptcontrole in het hulp programma Content Moderator beoordeling **op het** **transcript** van >**video**>.
 
 U ziet de volgende functies:
 - De twee regels transcripten die u hebt toegevoegd

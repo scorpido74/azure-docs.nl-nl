@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 76637c566d85816b3af6d0ed457031e7d4cd4068
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: 075eaaa188307e4320337ef21fd0875942e9e7e7
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71327676"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72249359"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Planning voor de implementatie van Azure Files
 
-[Azure Files](storage-files-introduction.md) biedt volledig beheerde bestandsshares in de cloud die toegankelijk zijn via het industriestandaard SMB-protocol. Omdat Azure Files volledig wordt beheerd, is het implementeren van de implementatie in productie scenario's veel eenvoudiger dan het implementeren en beheren van een bestands server of een NAS-apparaat. In dit artikel worden de onderwerpen behandeld waarmee u rekening moet houden bij het implementeren van een Azure-bestands share voor productie gebruik binnen uw organisatie.
+[Azure files](storage-files-introduction.md) biedt volledig beheerde bestands shares in de cloud die toegankelijk zijn via het industrie standaard SMB-protocol. Omdat Azure Files volledig wordt beheerd, is het implementeren van de implementatie in productie scenario's veel eenvoudiger dan het implementeren en beheren van een bestands server of een NAS-apparaat. In dit artikel worden de onderwerpen behandeld waarmee u rekening moet houden bij het implementeren van een Azure-bestands share voor productie gebruik binnen uw organisatie.
 
 ## <a name="management-concepts"></a>Beheer concepten
 
@@ -24,15 +24,15 @@ ms.locfileid: "71327676"
 
 ![Bestandsstructuur](./media/storage-files-introduction/files-concepts.png)
 
-* **Opslag account**: Alle toegang tot Azure Storage wordt uitgevoerd via een opslag account. Zie [Azure Storage Scalability and Performance Targets](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) (Schaalbaarheids- en prestatiedoelen in Azure Storage) voor meer informatie over opslagaccountcapaciteit.
+* **Opslagaccount**: alle toegang tot Azure Storage vindt plaats via een opslagaccount. Zie [Azure Storage Scalability and Performance Targets](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) (Schaalbaarheids- en prestatiedoelen in Azure Storage) voor meer informatie over opslagaccountcapaciteit.
 
-* **Share**: Een File Storage share is een SMB-bestands share in Azure. Alle mappen en bestanden moeten worden gemaakt in een bovenliggende share. Een account kan een onbeperkt aantal shares bevatten en een share kan een onbeperkt aantal bestanden opslaan, tot aan de totale capaciteit van de bestands share. Voor standaard bestands shares is de totale capaciteit Maxi maal 5 TiB (GA) of 100 TiB (preview), voor Premium-bestands shares, de totale capaciteit is Maxi maal 100 TiB.
+* **Share**: een File Storage-share is een SMB-bestandsshare in Azure. Alle mappen en bestanden moeten worden gemaakt in een bovenliggende share. Een account kan een onbeperkt aantal shares bevatten en een share kan een onbeperkt aantal bestanden opslaan, tot aan de totale capaciteit van de bestands share. Voor standaard bestands shares is de totale capaciteit Maxi maal 5 TiB (GA) of 100 TiB (preview), voor Premium-bestands shares, de totale capaciteit is Maxi maal 100 TiB.
 
-* **Map**: Een optionele hiërarchie van mappen.
+* **Map**: een optionele hiërarchie van mappen.
 
-* **Bestand**: Een bestand in de share. Een bestand kan Maxi maal 1 TiB groot zijn.
+* **Bestand**: een bestand in de share. Een bestand kan Maxi maal 1 TiB groot zijn.
 
-* **URL-indeling**: Voor aanvragen voor een Azure-bestands share die is gemaakt met het File REST-protocol, kunnen bestanden worden adresseerd met de volgende URL-indeling:
+* **URL-indeling**: voor aanvragen voor een Azure-bestands share die is gemaakt met het File rest-protocol, kunnen bestanden worden adresseerd met behulp van de volgende URL-indeling:
 
     ```
     https://<storage account>.file.core.windows.net/<share>/<directory>/<file>
@@ -42,18 +42,18 @@ ms.locfileid: "71327676"
 
 Azure Files biedt twee ingebouwde, handige methoden voor gegevens toegang die u afzonderlijk kunt gebruiken of in combi natie met elkaar om toegang te krijgen tot uw gegevens:
 
-1. **Directe Cloud toegang**: Een Azure-bestands share kan worden gekoppeld door [Windows](storage-how-to-use-files-windows.md), [macOS](storage-how-to-use-files-mac.md)en/of [Linux](storage-how-to-use-files-linux.md) met het industrie standaard SMB-protocol (Server Message Block) of via de bestands rest API. Met SMB worden lees-en schrijf bewerkingen naar bestanden op de share rechtstreeks gemaakt op de bestands share in Azure. Als u wilt koppelen aan een virtuele machine in azure, moet de SMB-client in het besturings systeem ten minste SMB 2,1 ondersteunen. Voor het koppelen van on-premises, zoals op het werk station van een gebruiker, moet de door het werk station ondersteunde SMB-client ten minste SMB 3,0 ondersteunen (met versleuteling). Naast SMB kunnen nieuwe toepassingen of services rechtstreeks toegang krijgen tot de bestands share via de REST van het bestand. Dit biedt een eenvoudige en schaal bare Application Programming Interface voor software ontwikkeling.
-2. **Azure file sync**: Met Azure File Sync kunnen shares worden gerepliceerd naar Windows-servers, on-premises of in Azure. Uw gebruikers hebben toegang tot de bestands share via de Windows-Server, zoals via een SMB-of NFS-share. Dit is handig voor scenario's waarin gegevens van een Azure-Data Center worden geopend en gewijzigd, zoals in een filiaal scenario. Gegevens kunnen worden gerepliceerd tussen meerdere Windows Server-eind punten, zoals tussen meerdere filialen. Ten slotte kunnen gegevens worden getierd op Azure Files, zodat alle gegevens nog steeds toegankelijk zijn via de server, maar de server heeft geen volledige kopie van de gegevens. Gegevens worden in plaats daarvan naadloos ingetrokken wanneer ze door uw gebruiker worden geopend.
+1. **Directe Cloud toegang**: elke Azure-bestands share kan worden gekoppeld door [Windows](storage-how-to-use-files-windows.md), [macOS](storage-how-to-use-files-mac.md)en/of [Linux](storage-how-to-use-files-linux.md) met het standaard SMB-protocol (Server Message Block) of via de bestands rest API. Met SMB worden lees-en schrijf bewerkingen naar bestanden op de share rechtstreeks gemaakt op de bestands share in Azure. Als u wilt koppelen aan een virtuele machine in azure, moet de SMB-client in het besturings systeem ten minste SMB 2,1 ondersteunen. Voor het koppelen van on-premises, zoals op het werk station van een gebruiker, moet de door het werk station ondersteunde SMB-client ten minste SMB 3,0 ondersteunen (met versleuteling). Naast SMB kunnen nieuwe toepassingen of services rechtstreeks toegang krijgen tot de bestands share via de REST van het bestand. Dit biedt een eenvoudige en schaal bare Application Programming Interface voor software ontwikkeling.
+2. **Azure file sync**: met Azure file sync kunnen shares worden gerepliceerd naar Windows-servers, on-premises of in Azure. Uw gebruikers hebben toegang tot de bestands share via de Windows-Server, zoals via een SMB-of NFS-share. Dit is handig voor scenario's waarin gegevens van een Azure-Data Center worden geopend en gewijzigd, zoals in een filiaal scenario. Gegevens kunnen worden gerepliceerd tussen meerdere Windows Server-eind punten, zoals tussen meerdere filialen. Ten slotte kunnen gegevens worden getierd op Azure Files, zodat alle gegevens nog steeds toegankelijk zijn via de server, maar de server heeft geen volledige kopie van de gegevens. Gegevens worden in plaats daarvan naadloos ingetrokken wanneer ze door uw gebruiker worden geopend.
 
 In de volgende tabel ziet u hoe uw gebruikers en toepassingen toegang hebben tot uw Azure-bestands share:
 
 | | Directe Cloud toegang | Azure File Sync |
 |------------------------|------------|-----------------|
 | Welke protocollen moet u gebruiken? | Azure Files ondersteunt SMB 2,1, SMB 3,0 en file REST API. | Toegang tot uw Azure-bestands share via elk ondersteund protocol op Windows Server (SMB, NFS, FTPS, enzovoort) |  
-| Waar wordt uw werk belasting uitgevoerd? | **In Azure**: Azure Files biedt directe toegang tot uw gegevens. | **On-premises met langzaam netwerk**: Windows-, Linux-en macOS-clients kunnen een lokale on-premises Windows-bestands share koppelen als snelle cache van uw Azure-bestands share. |
+| Waar wordt uw werk belasting uitgevoerd? | **In azure**: Azure files biedt directe toegang tot uw gegevens. | **On-premises met langzaam netwerk**: Windows-, Linux-en macOS-clients kunnen een lokale on-premises Windows-bestands share koppelen als een snelle cache van uw Azure-bestands share. |
 | Welk toegangs niveau hebt u nodig? | Share-en bestands niveau. | Share-, bestands-en gebruikers niveau. |
 
-## <a name="data-security"></a>Gegevensbeveiliging
+## <a name="data-security"></a>Databeveiliging
 
 Azure Files heeft verschillende ingebouwde opties voor het garanderen van gegevens beveiliging:
 
@@ -61,7 +61,7 @@ Azure Files heeft verschillende ingebouwde opties voor het garanderen van gegeve
     * Clients die ondersteuning bieden voor SMB 3,0-versleuteling, kunnen gegevens verzenden en ontvangen via een versleuteld kanaal.
     * Clients die geen ondersteuning bieden voor SMB 3,0 met versleuteling, kunnen intra Data Center via SMB 2,1 of SMB 3,0 zonder versleuteling communiceren. SMB-clients mogen geen communicatie tussen-Data Center via SMB 2,1 of SMB 3,0 zonder versleuteling.
     * Clients kunnen via de REST van het bestand communiceren met HTTP of HTTPS.
-* Versleuteling op rest ([Azure Storage-service versleuteling](../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)): Storage Service Encryption (SSE) is ingeschakeld voor alle opslag accounts. Data-at-rest is versleuteld met volledig beheerde sleutels. Versleuteling op rest verhoogt de opslag kosten niet of vermindert de prestaties. 
+* Versleuteling op rest ([Azure Storage-service versleuteling](../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)): Storage service Encryption (SSE) is ingeschakeld voor alle opslag accounts. Data-at-rest is versleuteld met volledig beheerde sleutels. Versleuteling op rest verhoogt de opslag kosten niet of vermindert de prestaties. 
 * Optionele vereiste voor versleutelde gegevens in transit: wanneer deze optie is geselecteerd, wordt de toegang tot de gegevens via niet-versleutelde kanalen door Azure Files geweigerd. In het bijzonder worden alleen HTTPS-en SMB-3,0 met versleutelings verbindingen toegestaan.
 
     > [!Important]  
@@ -82,7 +82,7 @@ Standaard bestands shares worden ondersteund door harde schijven (Hdd's). Standa
 Standaard bestands shares met een grootte van Maxi maal 5 TiB zijn beschikbaar als GA aanbieding. Grotere bestands shares zijn de shares die groter zijn dan 5 TiB, Maxi maal 100 TiB, zijn momenteel beschikbaar als preview-aanbieding.
 
 > [!IMPORTANT]
-> Zie de sectie onboarding [to large file shares (Standard-laag)](#onboard-to-larger-file-shares-standard-tier) voor de stappen die u kunt uitvoeren, evenals het bereik en de beperkingen van de preview-versie.
+> Zie de sectie [onboarding to large file shares (Standard-laag)](#onboard-to-larger-file-shares-standard-tier) voor de stappen die u kunt uitvoeren, evenals het bereik en de beperkingen van de preview-versie.
 
 ### <a name="premium-file-shares"></a>Premium-bestands shares
 
@@ -90,7 +90,7 @@ Premium-bestands shares worden ondersteund door Ssd's (Solid-state drives). Prem
 
 Azure Backup is beschikbaar voor Premium-bestands shares en Azure Kubernetes-service biedt ondersteuning voor Premium-bestands shares in versie 1,13 en hoger.
 
-Als u wilt weten hoe u een Premium-bestands share maakt, raadpleegt u ons artikel over het onderwerp: [Een Azure Premium File Storage-account maken](storage-how-to-create-premium-fileshare.md).
+Als u wilt weten hoe u een Premium-bestands share maakt, raadpleegt u ons artikel over het onderwerp: [een Azure Premium File Storage-account maken](storage-how-to-create-premium-fileshare.md).
 
 Op dit moment kunt u niet rechtstreeks converteren tussen een standaard bestands share en een Premium-bestands share. Als u wilt overschakelen naar een van beide lagen, moet u een nieuwe bestands share in die laag maken en de gegevens van de oorspronkelijke share hand matig kopiëren naar de nieuwe share die u hebt gemaakt. U kunt dit doen met behulp van een van de Azure Files ondersteunde Kopieer hulpprogramma's, zoals Robocopy of AzCopy.
 
@@ -126,12 +126,12 @@ In de volgende tabel ziet u enkele voor beelden van deze formules voor de ingeri
 |---------|---------|---------|---------|---------|
 |100         | 100     | Maxi maal 300     | 66   | 44   |
 |500         | 500     | Maxi maal 1.500   | 90   | 60   |
-|1,024       | 1,024   | Maxi maal 3.072   | 122   | 81   |
+|1\.024       | 1\.024   | Maxi maal 3.072   | 122   | 81   |
 |5\.120       | 5\.120   | Maxi maal 15.360  | 368   | 245   |
 |10.240      | 10.240  | Maxi maal 30.720  | 675 | 450   |
 |33.792      | 33.792  | Maxi maal 100.000 | 2\.088 | 1\.392   |
 |51.200      | 51.200  | Maxi maal 100.000 | 3\.132 | 2\.088   |
-|102.400     | 100,000 | Maxi maal 100.000 | 6\.204 | 4\.136   |
+|102.400     | 100.000 | Maxi maal 100.000 | 6\.204 | 4\.136   |
 
 > [!NOTE]
 > De prestaties van bestands shares zijn afhankelijk van de netwerk limieten van de computer, de beschik bare netwerk bandbreedte, i/o-grootte, de parallelle uitvoering, onder andere factoren. U kunt de maximale prestaties schalen door de belasting over meerdere virtuele machines uit te breiden. Raadpleeg de [gids voor probleem oplossing](storage-troubleshooting-files-performance.md) voor enkele veelvoorkomende prestatie problemen en tijdelijke oplossingen.
@@ -184,7 +184,7 @@ GRS repliceert uw gegevens naar een ander Data Center in een secundaire regio, m
 
 Voor een opslag account waarvoor GRS is ingeschakeld, worden alle gegevens eerst gerepliceerd met lokaal redundante opslag (LRS). Een update wordt eerst doorgevoerd op de primaire locatie en gerepliceerd met behulp van LRS. De update wordt vervolgens asynchroon gerepliceerd naar de secundaire regio met behulp van GRS. Wanneer gegevens naar de secundaire locatie worden geschreven, worden deze ook gerepliceerd binnen die locatie met behulp van LRS.
 
-De primaire en secundaire regio's beheren replica's in afzonderlijke fout domeinen en upgraden domeinen binnen een opslag schaal eenheid. De eenheid voor opslag schaal is de basis replicatie-eenheid binnen het Data Center. Replicatie op dit niveau wordt verzorgd door LRS. Zie [voor meer informatie lokaal redundante opslag (LRS): Gegevensredundantie met lage kosten voor Azure Storage](../common/storage-redundancy-lrs.md).
+De primaire en secundaire regio's beheren replica's in afzonderlijke fout domeinen en upgraden domeinen binnen een opslag schaal eenheid. De eenheid voor opslag schaal is de basis replicatie-eenheid binnen het Data Center. Replicatie op dit niveau wordt verzorgd door LRS. Zie voor meer informatie [lokaal redundante opslag (LRS): lage kosten voor gegevens redundantie voor Azure Storage](../common/storage-redundancy-lrs.md).
 
 Houd bij het bepalen van de te gebruiken replicatie optie de volgende punten in acht:
 
@@ -210,19 +210,19 @@ Standaard bestands shares zijn beschikbaar in alle regio's tot 5 TiB. In bepaald
 
 |Regio |Ondersteunde redundantie |Ondersteunt bestaande opslag accounts |Portal ondersteuning * |
 |-------|---------|---------|---------|
-|Australië - oost |LRS     |Nee    |Ja|
-|Australië - zuidoost|LRS     |Nee    |Nog niet|
-|India - centraal  |LRS     |Nee    |Nog niet|
-|Azië - oost      |LRS     |Nee    |Nog niet|
-|East US        |LRS     |Nee    |Nog niet|
-|Frankrijk - centraal |LRS, ZRS|Nee    |LRS-Ja, ZRS-nog niet|
+|Australië Oost |LRS     |Nee    |Ja|
+|Australië Zuidoost|LRS |Nee    |Ja|
+|India - centraal  |LRS     |Nee    |Ja|
+|Azië - oost      |LRS     |Nee    |Ja|
+|US - oost        |LRS     |Nee    |Ja|
+|Frankrijk - centraal |LRS, ZRS|Nee    |Ja|
 |Frankrijk - zuid   |LRS     |Nee    |Ja|
 |Europa - noord   |LRS     |Nee    |Nog niet|
-|India - zuid    |LRS     |Nee    |Nog niet|
+|India - zuid    |LRS     |Nee    |Ja|
 |Azië - zuidoost |LRS, ZRS|Nee    |Ja|
-|US - west-centraal|LRS     |Nee    |Nog niet|
-|Europa -west    |LRS, ZRS|Nee    |Ja|
-|US - west        |LRS     |Nee    |Nog niet|
+|US - west-centraal|LRS     |Nee    |Ja|
+|Europa - west    |LRS, ZRS|Nee    |Ja|
+|US - west        |LRS     |Nee    |Ja|
 |US - west 2      |LRS, ZRS|Nee    |Ja|
 
 
@@ -271,10 +271,10 @@ Het is mogelijk om meerdere Azure-bestands shares te synchroniseren met één Wi
 
 Er zijn veel gemakkelijke opties voor het bulksgewijs overdragen van gegevens van een bestaande bestands share, zoals een on-premises bestands share, naar Azure Files. Enkele populaire items zijn (niet-limitatieve lijst):
 
-* **Azure file sync**: Als onderdeel van een eerste synchronisatie tussen een Azure-bestands share (een ' Cloud-eind punt ') en een Windows-directory naam ruimte (een ' server-eind punt '), worden alle gegevens van de bestaande bestands share door Azure File Sync gerepliceerd naar Azure Files.
-* **[Azure import/export](../common/storage-import-export-service.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)** : Met de Azure import/export-service kunt u veilig grote hoeveel heden gegevens overdragen naar een Azure-bestands share door harde schijven naar een Azure-Data Center te verzenden. 
-* **[Robocopy](https://technet.microsoft.com/library/cc733145.aspx)** : Robocopy is een goed bekend Kopieer programma dat wordt geleverd bij Windows en Windows Server. Robocopy kan worden gebruikt om gegevens over te brengen naar Azure Files door de bestands share lokaal te koppelen en vervolgens de gekoppelde locatie als bestemming in de Robocopy-opdracht te gebruiken.
-* **[AzCopy](../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)** : AzCopy is een opdracht regel programma dat is ontworpen voor het kopiëren van gegevens van en naar Azure Files, evenals Azure Blob-opslag, met behulp van eenvoudige opdrachten met optimale prestaties.
+* **Azure file sync**: als onderdeel van een eerste synchronisatie tussen een Azure-bestands share (een ' Cloud-eind punt ') en een Windows-directory naam ruimte (een ' server-eind punt ') Azure file sync, worden alle gegevens van de bestaande bestands share gerepliceerd naar Azure files.
+* **[Azure import/export](../common/storage-import-export-service.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)** : met de Azure import/export-service kunt u veilig grote hoeveel heden gegevens overdragen naar een Azure-bestands share door harde schijven naar een Azure-Data Center te verzenden. 
+* **[Robocopy](https://technet.microsoft.com/library/cc733145.aspx)** : Robocopy is een bekende kopieer hulp programma dat wordt geleverd bij Windows en Windows Server. Robocopy kan worden gebruikt om gegevens over te brengen naar Azure Files door de bestands share lokaal te koppelen en vervolgens de gekoppelde locatie als bestemming in de Robocopy-opdracht te gebruiken.
+* **[AzCopy](../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)** : AzCopy is een opdracht regel programma dat is ontworpen voor het kopiëren van gegevens van en naar Azure files, evenals Azure Blob-opslag, met behulp van eenvoudige opdrachten met optimale prestaties.
 
 ## <a name="next-steps"></a>Volgende stappen
 * [Een Azure File Sync-implementatie plannen](storage-sync-files-planning.md)

@@ -1,63 +1,63 @@
 ---
-title: 'Microsoft Genomics: Veelgestelde vragen - Veelgestelde vragen over | Microsoft Docs'
-titleSuffix: Azure
-description: Antwoorden op algemene vragen klanten vragen over Microsoft Genomics.
+title: Veelgestelde vragen-Veelgestelde vragen
+titleSuffix: Microsoft Genomics
+description: Antwoorden op veelgestelde vragen van klanten vragen over Microsoft Genomics.
 services: genomics
 author: grhuynh
 manager: cgronlun
 ms.author: grhuynh
 ms.service: genomics
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 12/07/2017
-ms.openlocfilehash: d36a2c6379a95cc67a55c2cc266ced94b4a0179a
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 80a656ee687b71fcaf09a02d70d0a5a4300186bc
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67672234"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72249232"
 ---
-# <a name="microsoft-genomics-common-questions"></a>Microsoft Genomics: Veelgestelde vragen
+# <a name="microsoft-genomics-common-questions"></a>Microsoft Genomics: algemene vragen
 
-In dit artikel geeft een lijst van de populairste query's die u mogelijk met betrekking tot Microsoft Genomics. Zie voor meer informatie over de service Microsoft Genomics [wat is Microsoft Genomics?](overview-what-is-genomics.md). Zie voor meer informatie over het oplossen van onze [Troubleshooting Guide](troubleshooting-guide-genomics.md). 
+Dit artikel bevat een overzicht van de belangrijkste query's die u mogelijk hebt gerelateerd aan Microsoft Genomics. Zie [Wat is Microsoft Genomics?](overview-what-is-genomics.md)voor meer informatie over de Microsoft Genomics-service. Raadpleeg de [gids voor probleem oplossing](troubleshooting-guide-genomics.md)voor meer informatie over het oplossen van problemen. 
 
 
-## <a name="how-do-i-run-gatk4-workflows-on-microsoft-genomics"></a>Hoe kan ik GATK4 werkstromen uitvoeren op Microsoft Genomics?
-In de service Microsoft Genomics config.txt-bestand, geeft de naam_proces te `gatk4`. Houd er rekening mee dat u wordt gefactureerd tegen normale tarieven voor facturering.
+## <a name="how-do-i-run-gatk4-workflows-on-microsoft-genomics"></a>GATK4-werk stromen op Microsoft Genomics Hoe kan ik uitvoeren?
+Geef in het bestand config. txt van de Microsoft Genomics-service de process_name op `gatk4`. Houd er rekening mee dat u rekening moet houden met de normale facturerings tarieven.
 
 
 ## <a name="what-is-the-sla-for-microsoft-genomics"></a>Wat is de SLA voor Microsoft Genomics?
-We garanderen 99,9% van de time-service Microsoft Genomics is beschikbaar voor het ontvangen van de werkstroom API-aanvragen. Zie voor meer informatie, [SLA](https://azure.microsoft.com/support/legal/sla/genomics/v1_0/).
+Wij garanderen dat 99,9% van de tijd Microsoft Genomics service beschikbaar is voor het ontvangen van werk stroom API-aanvragen. Zie [Sla](https://azure.microsoft.com/support/legal/sla/genomics/v1_0/)voor meer informatie.
 
-## <a name="how-does-the-usage-of-microsoft-genomics-show-up-on-my-bill"></a>Hoe wordt het gebruik van Microsoft Genomics weergegeven op mijn factuur?
-Microsoft Genomics facturen op basis van het aantal gigabases dat per werkstroom is verwerkt. Zie voor meer informatie, [prijzen](https://azure.microsoft.com/pricing/details/genomics/).
+## <a name="how-does-the-usage-of-microsoft-genomics-show-up-on-my-bill"></a>Hoe wordt het gebruik van Microsoft Genomics weer gegeven op mijn factuur?
+Microsoft Genomics facturen op basis van het aantal gigabases dat per werk stroom is verwerkt. Zie [prijzen](https://azure.microsoft.com/pricing/details/genomics/)voor meer informatie.
 
 
-## <a name="where-can-i-find-a-list-of-all-possible-commands-and-arguments-for-the-msgen-client"></a>Waar vind ik een lijst met alle mogelijke opdrachten en argumenten voor de `msgen` client?
-U krijgt een volledige lijst van beschikbare opdrachten, argumenten en door te voeren `msgen help`. Als er geen verdere argumenten zijn opgegeven, wordt een lijst met beschikbare help secties, één voor elk van `submit`, `list`, `cancel`, en `status`. Als u de help voor een specifieke opdracht, typt u `msgen help command`, bijvoorbeeld `msgen help submit` geeft een lijst van alle van de opties voor het indienen.
+## <a name="where-can-i-find-a-list-of-all-possible-commands-and-arguments-for-the-msgen-client"></a>Waar vind ik een lijst met alle mogelijke opdrachten en argumenten voor de `msgen`-client?
+U kunt een volledige lijst met beschik bare opdrachten en argumenten verkrijgen door `msgen help` uit te voeren. Als er geen verdere argumenten worden gegeven, wordt een lijst met beschik bare Help-secties weer gegeven, één voor elk van `submit`, `list`, `cancel` en `status`. Als u hulp wilt krijgen voor een specifieke opdracht, typt u `msgen help command`; `msgen help submit` bevat bijvoorbeeld alle opties voor het indienen.
 
-## <a name="what-are-the-most-commonly-used-commands-for-the-msgen-client"></a>Wat zijn de meest gebruikte opdrachten voor het `msgen` client?
-De meest gebruikte opdrachten zijn argumenten voor de `msgen` client bevatten: 
+## <a name="what-are-the-most-commonly-used-commands-for-the-msgen-client"></a>Wat zijn de meestgebruikte opdrachten voor de `msgen`-client?
+De meestgebruikte opdrachten zijn argumenten voor de `msgen`-client bevatten: 
 
  |**Opdracht**          |  **Beschrijving van veld** |
  |:--------------------|:-------------         |
- |`list`               |Retourneert een lijst met taken die u hebt verzonden. Zie voor argumenten `msgen help list`.  |
- |`submit`             |Verzendt een verzoek van de werkstroom met de service. Zie voor argumenten `msgen help submit`.|
- |`status`             |Retourneert de status van de werkstroom die is opgegeven door `--workflow-id`. Zie ook `msgen help status`. |
- |`cancel`             |Verzendt een verzoek om te annuleren van de verwerking van de werkstroom die is opgegeven door `--workflow-id`. Zie ook `msgen help cancel`. |
+ |`list`               |Retourneert een lijst met taken die u hebt verzonden. Zie `msgen help list` voor argumenten.  |
+ |`submit`             |Hiermee wordt een werk stroom aanvraag verzonden naar de service. Zie `msgen help submit` voor argumenten.|
+ |`status`             |Retourneert de status van de werk stroom die is opgegeven door `--workflow-id`. Zie ook `msgen help status`. |
+ |`cancel`             |Hiermee wordt een aanvraag verzonden om de verwerking van de werk stroom die is opgegeven door `--workflow-id`, te annuleren. Zie ook `msgen help cancel`. |
 
-## <a name="where-do-i-get-the-value-for---api-url-base"></a>Waar vind ik de waarde voor `--api-url-base`?
-Ga naar Azure portal en open de pagina van uw Genomics-account. Onder de **Management** kop, kies **toegangssleutels**. U vindt er, zowel de API-URL en toegangssleutels van uw.
+## <a name="where-do-i-get-the-value-for---api-url-base"></a>Waar kan ik de waarde voor `--api-url-base` krijgen?
+Ga naar Azure Portal en open uw Genomics-account pagina. Kies **toegangs sleutels**onder de kop **beheer** . Daar vindt u de API-URL en de toegangs sleutels.
 
-## <a name="where-do-i-get-the-value-for---access-key"></a>Waar vind ik de waarde voor `--access-key`?
-Ga naar Azure portal en open de pagina van uw Genomics-account. Onder de **Management** kop, kies **toegangssleutels**. U vindt er, zowel de API-URL en toegangssleutels van uw.
+## <a name="where-do-i-get-the-value-for---access-key"></a>Waar kan ik de waarde voor `--access-key` krijgen?
+Ga naar Azure Portal en open uw Genomics-account pagina. Kies **toegangs sleutels**onder de kop **beheer** . Daar vindt u de API-URL en de toegangs sleutels.
 
-## <a name="why-do-i-need-two-access-keys"></a>Waarom moet ik twee toegangssleutels?
-U moet twee toegangssleutels in het geval u wilt bijwerken (sleutel opnieuw genereren) zonder dat gebruik van de service wordt onderbroken. Bijvoorbeeld, als u bijwerken van de eerste sleutel wilt, moet u alle nieuwe werkstromen voor het gebruik van de tweede sleutel hebben. Wacht tot alle werkstromen die gebruikmaken van de eerste sleutel om te voltooien voordat u de eerste sleutel bijwerkt.
+## <a name="why-do-i-need-two-access-keys"></a>Waarom heb ik twee toegangs sleutels nodig?
+U hebt twee toegangs sleutels nodig voor het geval u deze wilt bijwerken (opnieuw genereren) zonder het gebruik van de service te onderbreken. Als u bijvoorbeeld de eerste sleutel wilt bijwerken, moet u voor alle nieuwe werk stromen de tweede sleutel gebruiken. Wacht vervolgens op alle werk stromen met behulp van de eerste sleutel om te volt ooien voordat u de eerste sleutel bijwerkt.
 
-## <a name="do-you-save-my-storage-account-keys"></a>Slaat u de sleutels van mijn storage-account?
-Sleutel van uw opslagaccount wordt gebruikt om te maken op korte termijn toegangstokens voor de Microsoft Genomics-service voor uw invoerbestanden lezen en schrijven van de uitvoerbestanden. De duur van het standaard-token is 48 uur. Duur van het token kan worden gewijzigd met de `-sas/--sas-duration` optie van de opdracht verzenden; de waarde is in uren.
+## <a name="do-you-save-my-storage-account-keys"></a>Slaat u de sleutels van mijn opslag account op?
+De sleutel van uw opslag account wordt gebruikt om toegangs tokens voor de korte termijn te maken voor de Microsoft Genomics-service om uw invoer bestanden te lezen en de uitvoer bestanden te schrijven. De standaard duur van het token is 48 uur. De duur van het token kan worden gewijzigd met de optie `-sas/--sas-duration` van de opdracht Submit. de waarde is in uren.
 
-## <a name="what-genome-references-can-i-use"></a>Welke genoom verwijst naar kan ik gebruiken?
+## <a name="what-genome-references-can-i-use"></a>Welke genoom verwijzingen kan ik gebruiken?
 
 Deze verwijzingen worden ondersteund:
 
@@ -65,26 +65,26 @@ Deze verwijzingen worden ondersteund:
  |:-------------         |:-------------                 |
  |b37                    | `R=b37m1`                     |
  |hg38                   | `R=hg38m1`                    |      
- |hg38 (geen alt analyse) | `R=hg38m1x`                   |  
+ |hg38 (geen Alt-analyse) | `R=hg38m1x`                   |  
  |hg19                   | `R=hg19m1`                    |    
 
-## <a name="how-do-i-format-my-command-line-arguments-as-a-config-file"></a>Hoe maak ik mijn opdrachtregelargumenten als een config-bestand? 
+## <a name="how-do-i-format-my-command-line-arguments-as-a-config-file"></a>Hoe kan ik de notatie van mijn opdracht regel argumenten als een configuratie bestand? 
 
-msgen begrijpt configuratiebestanden in de volgende indeling:
-* Alle opties worden gegeven als sleutel-waardeparen met waarden van sleutels gescheiden door een dubbele punt.
-  Witruimte wordt genegeerd.
-* Regels die beginnen met `#` worden genegeerd.
-* Een opdrachtregelargument in de notatie voor lange kan worden geconverteerd naar een sleutel door de verwijdering van de toonaangevende streepjes en streepjes tussen woorden met onderstrepingstekens vervangen. Hier volgen enkele voorbeelden van de conversie:
+msgen begrijpt configuratie bestanden in de volgende indeling:
+* Alle opties worden gegeven als sleutel-waardeparen met waarden gescheiden van sleutels door een dubbele punt.
+  Spatie wordt genegeerd.
+* Regels die beginnen met `#`, worden genegeerd.
+* Elk opdracht regel argument in de lange notatie kan worden geconverteerd naar een sleutel door de voorloop streepjes te vervangen door de streepjes tussen woorden met een onderstrepings teken. Hier volgen enkele voor beelden van conversie:
 
-  |Opdrachtregelargument            | Regel voor configuratie-bestand |
+  |Opdracht regel argument            | Regel van configuratie bestand |
   |:-------------                   |:-------------                 |
   |`-u/--api-url-base https://url`  | *api_url_base: https://url*    |
-  |`-k/--access-key KEY`            | *access_key:KEY*              |      
-  |`-pa/--process-args R=B37m1`     | *process_args:R-b37m1*        |  
+  |`-k/--access-key KEY`            | *access_key: sleutel*              |      
+  |`-pa/--process-args R=B37m1`     | *process_args: R-b37m1*        |  
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Gebruik de volgende bronnen om aan de slag met Microsoft Genomics:
-- Aan de slag door te voeren van uw eerste werkstroom via de Microsoft Genomics-service. [Een werkstroom uitvoeren via de service Microsoft Genomics](quickstart-run-genomics-workflow-portal.md)
-- Indienen van uw eigen gegevens voor verwerking door de service Microsoft Genomics: [gekoppelde FASTQ](quickstart-input-pair-FASTQ.md) | [BAM](quickstart-input-BAM.md) | [meerdere FASTQ of BAM](quickstart-input-multiple.md) 
+Gebruik de volgende bronnen om aan de slag te gaan met Microsoft Genomics:
+- Ga aan de slag door uw eerste werk stroom uit te voeren via de Microsoft Genomics-service. [Een werk stroom uitvoeren via de Microsoft Genomics-service](quickstart-run-genomics-workflow-portal.md)
+- Uw eigen gegevens verzenden voor verwerking door de Microsoft Genomics-service: [gekoppelde FASTQ](quickstart-input-pair-FASTQ.md) | [BAM](quickstart-input-BAM.md) | [meerdere FASTQ of BAM](quickstart-input-multiple.md) 
 

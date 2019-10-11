@@ -16,12 +16,12 @@ ums.workload: na
 ms.date: 05/28/2019
 ms.author: barclayn
 ms.custom: azlog
-ms.openlocfilehash: 0820ca227a4d0e8c71ed3f35cd8fa2841163d38f
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: e7f3a9bc9aade5f8ade857e9c2f14f8e9898a7da
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68727652"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72244677"
 ---
 # <a name="integrate-azure-active-directory-audit-logs"></a>Azure Active Directory audit logboeken integreren
 
@@ -69,12 +69,12 @@ In de volgende video ziet u de stappen die in dit artikel worden behandeld:
 
 Community-ondersteuning is beschikbaar via het [MSDN-forum van Azure log Integration](https://social.msdn.microsoft.com/Forums/office/home?forum=AzureLogIntegration). Met dit forum kunnen mensen in de Azure Log Integration Community elkaar ondersteunen met behulp van vragen, antwoorden, tips en trucs. Daarnaast controleert het Azure Log Integration-team dit forum en kunt u altijd op elk gewenst moment.
 
-U kunt ook een ondersteunings [aanvraag](../../azure-supportability/how-to-create-azure-support-request.md)openen. Selecteer **integratie** van Logboeken als de service waarvoor u ondersteuning aanvraagt.
+U kunt ook een [ondersteunings aanvraag](../../azure-supportability/how-to-create-azure-support-request.md)openen. Selecteer **integratie van Logboeken** als de service waarvoor u ondersteuning aanvraagt.
 
 ## <a name="next-steps"></a>Volgende stappen
 Voor meer informatie over Azure Log Integration raadpleegt u:
 
-* [Microsoft Azure log Integration voor Azure](https://www.microsoft.com/download/details.aspx?id=53324)-logboeken: Deze download centrum pagina bevat details, systeem vereisten en installatie-instructies voor Azure Log Integration.
-* [Inleiding tot Azure log Integration](azure-log-integration-overview.md): In dit artikel wordt uitgelegd hoe u Azure Log Integration, de belangrijkste mogelijkheden en hoe het werkt.
-* [Azure log Integration Veelgestelde vragen](azure-log-integration-faq.md): In dit artikel vindt u antwoorden op vragen over Azure Log Integration.
-* [Nieuwe functies voor Azure Diagnostics en Azure-audit logboeken](https://azure.microsoft.com/blog/new-features-for-azure-diagnostics-and-azure-audit-logs/): In dit blog bericht wordt u gekennismaken met Azure audit logs en andere functies die u helpen inzicht te krijgen in de bewerkingen van uw Azure-resources.
+* [Microsoft Azure log Integration voor Azure-logboeken](https://azure.microsoft.com/services/monitor/): deze download centrum pagina bevat details, systeem vereisten en installatie-instructies voor Azure log Integration.
+* [Inleiding tot Azure log Integration](azure-log-integration-overview.md): in dit artikel wordt beschreven hoe u kunt Azure log Integration, de belangrijkste mogelijkheden en hoe het werkt.
+* [Azure log Integration Veelgestelde vragen](azure-log-integration-faq.md): in dit artikel vindt u antwoorden op vragen over Azure log Integration.
+* [Nieuwe functies voor de controle logboeken van Azure Diagnostics en Azure](https://azure.microsoft.com/blog/new-features-for-azure-diagnostics-and-azure-audit-logs/): in dit blog bericht wordt u gekennismaken met Azure audit logs en andere functies die u helpen inzicht te krijgen in de bewerkingen van uw Azure-resources.

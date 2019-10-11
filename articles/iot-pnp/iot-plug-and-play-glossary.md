@@ -3,18 +3,18 @@ title: Verklarende woorden lijst-preview-versie van IoT Plug en Play | Microsoft
 description: 'Concepten: een woorden lijst met algemene termen met betrekking tot IoT Plug en Play preview.'
 author: ChrisGMsft
 ms.author: chrisgre
-ms.date: 08/29/2019
+ms.date: 10/10/2019
 ms.topic: conceptual
 ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: 7b37912c58312644059f3990b4776514e081a4bb
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: a5c9d2d54fcce1179e43c38027db23c3d7e557e8
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70858848"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72249303"
 ---
 # <a name="glossary-of-terms-for-iot-plug-and-play-preview"></a>Verklarende woorden lijst voor de preview-versie van IoT Plug en Play
 
@@ -28,7 +28,7 @@ U kunt de [Azure Certified voor IOT-Portal](https://aka.ms/ACFI) website gebruik
 - [Hulp modellen voor apparaten](#device-capability-model)zoeken.
 - Een mogelijkheidsprofiel naar de [open bare model opslagplaats](#public-model-repository)publiceren.
 
-## <a name="azure-cli"></a>Azure-CLI
+## <a name="azure-cli"></a>Azure CLI
 
 De Azure CLI is een platform, opdracht regel programma voor het beheer van Azure-resources. De Azure IoT-extensie voor Azure CLI is een opdracht regel programma voor interactie met en het testen van [IoT Plug en Play-apparaten](#iot-plug-and-play-device). U kunt de extensie gebruiken voor het volgende:
 
@@ -97,6 +97,7 @@ Een connection string de gegevens die nodig zijn om verbinding te maken met een 
 
 - Met verbindings reeksen voor apparaten kunnen [iot Plug en Play-apparaten](#iot-plug-and-play-device) verbinding maken met de op het apparaat gerichte eind punten op een IOT-hub. Client code op een apparaat gebruikt de connection string om een beveiligde verbinding met een IoT-hub tot stand te brengen.
 - IoT Hub verbindings reeksen kunnen back-end-oplossingen en hulpprogram ma's gebruiken om veilig verbinding te maken met de service gerichte eind punten op een IoT-hub. Deze oplossingen en hulpprogram ma's beheren de IoT-hub en de apparaten die ermee zijn verbonden.
+- De verbindings reeksen voor bedrijfs model opslagplaatsen bieden back-end-oplossingen en hulpprogram ma's om veilig verbinding te maken met een [bedrijfs model opslagplaats](#company-model-repository). Deze oplossingen en hulpprogram ma's gebruiken of beheren de hulp modellen en [interfaces](#interface) van het [apparaat](#device-capability-model) in de opslag plaats.
 
 ## <a name="device-capability-model"></a>Mogelijkheidsprofiel
 
@@ -154,7 +155,7 @@ De IoT Hub query taal wordt gebruikt voor meerdere doel einden. U kunt bijvoorbe
 
 Een IoT-Plug en Play apparaat is doorgaans een klein, zelfstandig computer apparaat waarmee gegevens worden verzameld of andere apparaten worden beheerd, en waarmee software of firmware wordt uitgevoerd waarmee een [mogelijkheidsprofiel](#device-capability-model)wordt geïmplementeerd.  Een IoT-Plug en Play apparaat kan bijvoorbeeld een milieubewakings apparaat zijn of een controller voor een irrigatie systeem met een slimme land bouw. U kunt een in de Cloud gehoste IoT-oplossing schrijven naar de opdracht, het besturings element en de gegevens van IoT Plug en Play-apparaten ontvangen. Het [Azure Certified for IOT-apparaat Catalog](#certified-for-iot-device-catalog) bevat een lijst met beschik bare IoT-Plug en Play apparaten. Elk IoT Plug en Play-apparaat in de catalogus is gevalideerd en heeft een [functionaliteits model voor apparaten](#device-capability-model).
 
-## <a name="microsoft-partner-center"></a>Microsoft Partner Center
+## <a name="microsoft-partner-center"></a>Micro soft partner centrum
 
 [Micro soft Partner Center](https://docs.microsoft.com/partner-center/) is de plek waar uw organisatie zijn end-to-end-relatie beheert met micro soft. U hebt een micro soft Partner Center-account nodig voordat u uw [IoT Plug en Play-apparaat](#iot-plug-and-play-device) kunt certificeren in de [Azure Certified voor IOT-Portal](#azure-certified-for-iot-portal).
 
@@ -170,7 +171,7 @@ Een model opslagplaats slaat [modellen](#device-capability-model) en [interfaces
 
 Een API voor het beheren en communiceren met model opslagplaatsen. U kunt bijvoorbeeld de API gebruiken om [hulp modellen voor apparaten](#device-capability-model) toe te voegen en te zoeken naar bekwaamheids modellen.
 
-## <a name="properties"></a>properties
+## <a name="properties"></a>Eigenschappen
 
 Eigenschappen zijn gegevens velden die zijn gedefinieerd in een [Interface](#interface) die een status van een digitale dubbele waarde vertegenwoordigt. U kunt eigenschappen declareren als alleen-lezen of beschrijfbaar. Alleen-lezen eigenschappen, zoals serie nummer, worden ingesteld door code die wordt uitgevoerd op de [IOT-Plug en Play apparaat](#iot-plug-and-play-device) zelf.  Beschrijf bare eigenschappen, zoals een alarm drempel, worden doorgaans ingesteld vanuit de in de cloud gebaseerde IoT-oplossing.
 
@@ -178,11 +179,11 @@ Eigenschappen zijn gegevens velden die zijn gedefinieerd in een [Interface](#int
 
 Er is één open bare model opslagplaats waarmee [modellen](#device-capability-model) en [interfaces](#interface) voor apparaten worden opgeslagen voor [gecertificeerde apparaten](#device-certification). De open bare model opslagplaats bevat ook [algemene interface](#common-interface) definities.
 
-## <a name="registration-id"></a>Registratie-id
+## <a name="registration-id"></a>Registratie-ID
 
 Een registratie-ID is een unieke aanduiding van een apparaat in de [Device Provisioning Service](#device-provisioning-service). Deze ID is niet hetzelfde als de apparaat-ID die een unieke id is voor een apparaat in een [IOT-hub](#azure-iot-hub).
 
-## <a name="scope-id"></a>Bereik-id
+## <a name="scope-id"></a>Bereik-ID
 
 Het bereik van de scope-ID is een unieke aanduiding van een [Device Provisioning Service](#device-provisioning-service) -exemplaar.
 

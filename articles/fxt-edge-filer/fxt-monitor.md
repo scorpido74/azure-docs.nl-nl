@@ -1,85 +1,85 @@
 ---
-title: De Azure FXT Edge Filer bewaken
-description: Status van uw hardware voor de cache van Azure FXT Edge Filer hybride opslag controleren
+title: De Azure FXT Edge-Bestandsr bewaken
+description: De hardware-status controleren voor de Azure FXT Edge filer hybride opslag cache
 author: ekpgh
 ms.service: fxt-edge-filer
 ms.topic: conceptual
 ms.date: 06/20/2019
-ms.author: v-erkell
-ms.openlocfilehash: e6afd90c4e5a1b0759b3de7789ec37db4c04f2c7
-ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
+ms.author: rohogue
+ms.openlocfilehash: 3f422339af2040ad81c585c0e193e6cb3667b135
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67827448"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72254885"
 ---
-# <a name="monitor-azure-fxt-edge-filer-hardware-status"></a>Status van uw hardware Azure FXT Edge Filer bewaken
+# <a name="monitor-azure-fxt-edge-filer-hardware-status"></a>Hardware-status van Azure FXT Edge-bestanden bewaken
 
-Het Azure FXT Edge Filer hybride opslagsysteem cache heeft meerdere status verlichting ingebouwd in het chassis om te begrijpen hoe de hardware functioneert beheerders te helpen.
+Het hybride-opslag cachesysteem van Azure FXT Edge heeft meerdere status lampjes ingebouwd in het chassis, zodat beheerders begrijpen hoe de hardware werkt.
 
-## <a name="system-health-status"></a>Status van systeemstatus
+## <a name="system-health-status"></a>Systeem status
 
-Gebruiken voor het bewaken van cachebewerkingen op een hoger niveau van de software Configuratiescherm **Dashboard** pagina, zoals beschreven in de [Control Panel Dashboard Guide](https://azure.github.io/Avere/legacy/dashboard/4_7/html/ops_dashboard_index.html)
+Als u de cache bewerkingen op een hoger niveau wilt bewaken, gebruikt u de **dash board** -pagina van het configuratie scherm, zoals beschreven in de [dash board-hand leiding van het configuratie scherm](https://azure.github.io/Avere/legacy/dashboard/4_7/html/ops_dashboard_index.html)
 
-## <a name="hardware-status-leds"></a>Status van uw hardware LED 's
+## <a name="hardware-status-leds"></a>Led's voor hardware-status
 
-Deze sectie wordt uitgelegd dat de verschillende status verlichting ingebouwd in de Azure FXT Edge Filer-hardware.
+In deze sectie worden de verschillende status lampjes beschreven die zijn ingebouwd in de FXT edge-hardware van Azure.
 
-### <a name="hard-drive-status-leds"></a>Status van de harde schijf LED 's
+### <a name="hard-drive-status-leds"></a>Led's voor de status van harde schijven
 
-![afbeelding van voorgrond harde schijf, horizontaal, met bijschrift labels 2 (linkerbovenhoek), 1 (linkerbenedenhoek) en 3 (rechts)](media/fxt-monitor/fxt-drive-callouts.png)
+![afbeelding van harde schijf vooraan, horizon taal, met labels voor bijschriften 2 (linkerbovenhoek), 1 (linkerbenedenhoek) en 3 (rechts)](media/fxt-monitor/fxt-drive-callouts.png)
 
-Elke schijf voor de provider heeft twee status-LED's: een indicator voor netwerkactiviteit (1) en een statusindicator (2). 
+Elke schijf provider heeft twee status-Led's: een activiteit indicator (1) en een status indicator (2). 
 
-* Activiteit (1)-LED lichten in het station wordt gebruikt.  
-* De status LED (2) geeft aan dat de voorwaarde van de schijf met behulp van de codes in de onderstaande tabel.
+* De activiteit heeft geleid tot een lamp (1) wanneer het station in gebruik is.  
+* De LED van de status (2) geeft de voor waarde aan van het station met behulp van de codes in de onderstaande tabel.
 
-| Station status LED-status              | Betekenis  |
+| Status van LED voor station              | Betekenis  |
 |-------------------------------------|----------------------------------------------------------|
-| Flitsen groen is twee keer per seconde      | Identificeren van station *of* <br> Station voorbereiden voor verwijderen  |
-| Uitgeschakeld (uitgeschakeld lampje)                         | Systeem is niet voltooid voor opstarten *of* <br>Station is gereed om te worden verwijderd |
-| Flitsen groen, geel, en zijn uitgeschakeld       | Stationsfout wordt voorspeld   |
-| Oranje flitsen vier keer per seconde | Station is mislukt   |
-| Groen                         | Schijf is online |
+| Knippert groen twee keer per seconde      | Station identificeren *of* <br> Station voorbereiden voor verwijdering  |
+| Uit (Unlit)                         | Het opstarten van het systeem is niet voltooid *of* <br>Station kan worden verwijderd |
+| Knippert groen, geel en uit       | Fout met station is voor speld   |
+| Knippert geel vier keer per seconde | Station is mislukt   |
+| Effen groen                         | Station is online |
 
-Aan de rechterkant van het station (3) heeft de capaciteit van het station en andere informatie.
+De rechter kant van het station (3) wordt aangeduid met de capaciteit van het station en andere informatie.
 
-Station nummers worden afgedrukt op de ruimte tussen de stations. In de Azure FXT Edge Filer, station 0 station links bovenin en station 1 is direct eronder. In dit patroon blijft nummering. 
+Stations worden afgedrukt op de ruimte tussen stations. In de Azure FXT Edge-Bestands server is station 0 het meest linkse station en Station 1 direct onder. Nummering blijft in dat patroon. 
 
-![foto van een harde schijf in het chassis FXT, van schijf cijfers en -capaciteit labels bay](media/fxt-drives-photo.png)
+![Foto van een Bay van een harde schijf in het FXT-chassis, met stations en capaciteits labels](media/fxt-drives-photo.png)
 
-## <a name="left-control-panel"></a>Links het Configuratiescherm
+## <a name="left-control-panel"></a>Control Panel links
 
-De linker front-Configuratiescherm heeft verschillende statusindicatoren LED (1) en geen integriteitsindicator grote verlicht system (2). 
+Het besturings paneel aan de linkerkant heeft verschillende Indica tors voor de status van LED (1) en een zeer licht gelightde systeem status indicator (2). 
 
-![links statuspaneel met 1 labels statusindicatoren aan de linkerkant en labels van de grote system integriteitsindicator lichte aan de rechterkant 2](media/fxt-monitor/fxt-control-panel-left.jpg)
+![deel venster links status, met 1 Label status indicatoren aan de linkerkant en 2 labelen het lampje van de grote systeem status aan de rechter kant](media/fxt-monitor/fxt-control-panel-left.jpg)
 
-### <a name="control-panel-status-indicators"></a>Besturingselement voor deelvenster statusindicatoren 
+### <a name="control-panel-status-indicators"></a>Status indicatoren van het configuratie scherm 
 
-De statusinformatie aan de linkerkant weergegeven effen lichte geel als er een fout is opgetreden in dat systeem. De volgende tabel beschrijft mogelijke oorzaken en oplossingen voor de fouten. 
+De status indicatoren geven een effen, geel licht weer als er een fout is opgetreden in dat systeem. In de volgende tabel worden mogelijke oorzaken en oplossingen voor de fouten beschreven. 
 
-Als u nog steeds de fout hebt nadat u hebt geprobeerd deze oplossingen [contact op met ondersteuning](fxt-support-ticket.md) voor hulp. 
+[Neem contact op met de ondersteuning](fxt-support-ticket.md) voor hulp als u de fout nog steeds hebt na het uitvoeren van deze oplossingen. 
 
-| Pictogram | Description | Foutvoorwaarde | Mogelijke oplossingen |
+| Diapictogram | Beschrijving | Foutvoorwaarde | Mogelijke oplossingen |
 |----------------|---------------|--------------------|----------------------|
-| ![het pictogram van station](media/fxt-monitor/fxt-hd-icon.jpg) | Stationsstatus van | Fout station | Controleer het logboek voor systeemgebeurtenissen om te bepalen of het station een fout heeft of <br>Voer de juiste online diagnostische test; het systeem opnieuw opstarten en diagnostische gegevens van embedded (ePSA), of <br>Als de stations zijn geconfigureerd in een RAID, het systeem opnieuw opstarten en voert u de host-adapter configuratie hulpprogramma 's |
-|![pictogram temperatuur](media/fxt-monitor/fxt-temp-icon.jpg) | Status van de temperatuur | Warmte fout - bijvoorbeeld een fan is mislukt of omgevingstemperatuur valt buiten het bereik | Controleer de volgende adresseerbare voorwaarden: <br>Een ventilator ontbreekt of is mislukt <br>Van het systeem dekking, lucht shroud, geheugenmodule leeg of terug opvullende haakje is verwijderd <br>De omgevingstemperatuur is te hoog <br>Externe luchtstroom vorm |
-|![pictogram elektriciteit](media/fxt-monitor/fxt-electric-icon.jpg) | Elektrische status | Elektrische fout - bijvoorbeeld spanning buiten het bereik, is mislukt voor voeding, of een spoorwegregelgever mislukte voltage |  Controleer het gebeurtenislogboek van systeem of systeemberichten voor dit specifieke probleem. Als er een probleem voeding, de status van de voeding LED controleren en de voeding vervangen indien nodig. | 
-|![geheugen-pictogram](media/fxt-monitor/fxt-memory-icon.jpg) | Geheugenstatus | Geheugenfout | Controleer het logboek voor systeemgebeurtenissen of systeemberichten voor de locatie van het geheugen van de mislukte de geheugenmodule vervangen. |
-|![PCIe-pictogram](media/fxt-monitor/fxt-pcie-icon.jpg) | PCIe-status | Fout bij PCIe-kaart | Opnieuw opstarten van het systeem. PCIe netwerkkaartstuurprogramma's; bijwerken installeren van de kaart |
+| ![pictogram station](media/fxt-monitor/fxt-hd-icon.jpg) | Status van station | Fout met station | Controleer het systeem gebeurtenis logboek om te bepalen of het station een fout heeft of <br>Voer de juiste test voor online diagnostische gegevens uit. Start het systeem opnieuw op en voer Inge sloten diagnostische gegevens uit (ePSA) of <br>Als de stations zijn geconfigureerd in een RAID-matrix, start u het systeem opnieuw en voert u het hulp programma voor configuratie van de hostadapter in |
+|![pictogram temperatuur](media/fxt-monitor/fxt-temp-icon.jpg) | Temperatuur status | Thermische fout: een ventilator is bijvoorbeeld mislukt of de omgevings temperatuur ligt buiten het bereik | Controleer op de volgende adresseer bare voor waarden: <br>Een ventilator ontbreekt of is mislukt <br>De cover van het systeem, de lucht Shroud, de geheugen module leeg of het haakje voor de achtergrond vullen worden verwijderd <br>De omgevings temperatuur is te hoog <br>Externe lucht stroom is belemmerd |
+|![elektriciteits pictogram](media/fxt-monitor/fxt-electric-icon.jpg) | Elektrische status | Elektrische fout: er is bijvoorbeeld een spanning van het bereik, een mislukte PSU of een mislukte spannings regelaar |  Controleer het systeem gebeurtenis logboek of de systeem berichten op het specifieke probleem. Als er een probleem is met de PSU, controleert u de LED voor PSU-status en maakt u de PSU zo nodig opnieuw. | 
+|![pictogram geheugen](media/fxt-monitor/fxt-memory-icon.jpg) | Geheugen status | Geheugen fout | Controleer het systeem gebeurtenis logboek of systeem berichten voor de locatie van het geheugen dat is mislukt. plaats de geheugen module opnieuw. |
+|![Pictogram PCIe](media/fxt-monitor/fxt-pcie-icon.jpg) | PCIe-status | Fout met PCIe-kaart | Start het systeem opnieuw op. Stuur Programma's voor PCIe-kaarten bijwerken; Installeer de kaart opnieuw |
 
 
-### <a name="system-health-status-indicator"></a>System health statusindicator
+### <a name="system-health-status-indicator"></a>Status indicator van systeem status
 
-De grote branden knop aan de rechterkant van het Configuratiescherm van links geeft aan dat de algehele systeemstatus en wordt ook gebruikt als een eenheid locator licht in de modus voor systeem-ID.
+Met de grote lit-knop aan de rechter kant van het besturings paneel links geeft u de algehele systeem status aan en wordt deze ook gebruikt als een eenheid voor unit-Locator in de modus systeem-ID.
 
-Druk op de status van het bestandssysteem en de ID-knop om over te schakelen tussen de systeem-ID en system health modus.
+Druk op de knop systeem status en-ID om te scha kelen tussen de modus systeem-ID en de modus systeem status.
 
-|Status van de systeemstatus-status | Voorwaarde |
+|Status van de systeem status | Voorwaarde |
 |-------------------------------------------|-----------------------------------------------|
-| Effen blauw | Normale werking: het systeem is ingeschakeld, werken normaal, en het systeem-ID-modus is niet actief. <br/>Druk op de status van het bestandssysteem en de ID-knop als u wilt overschakelen naar de systeem-ID-modus. |
-| Knipperende blauw | Systeem-ID-modus is actief. Druk op de status van het bestandssysteem en de systeem-ID knop als u wilt overschakelen naar de system health-modus. |
-| Effen oranje | Het systeem zich in de failsafe bevindt. Als het probleem zich blijft voordoen, [Neem contact op met Microsoft Customer Service and Support](fxt-support-ticket.md). |
-| Oranje knipperende | Systeemfout. Controleer het logboek voor systeemgebeurtenissen voor specifieke foutberichten. Voor informatie over de gebeurtenis- en foutberichten die worden gegenereerd door de firmware van de computer en de agents die onderdelen van het systeem bewaken, Zie de pagina voor zoeken naar de Code van fouten op qrl.dell.com. |
+| Effen blauw | Normale werking: het systeem is ingeschakeld, werkt normaal en de modus systeem-ID is niet actief. <br/>Druk op de knop systeem status en-ID als u wilt overschakelen naar de modus systeem-ID. |
+| Blauwe Knipper | De modus systeem-ID is actief. Druk op de knop systeem status en systeem-ID als u wilt overschakelen naar de modus systeem status. |
+| Effen, geel | Het systeem bevindt zich in de veilige modus. [Neem contact op met de klanten service en ondersteuning van micro soft](fxt-support-ticket.md)als het probleem zich blijft voordoen. |
+| Knipperend, geel | Systeem fout. Raadpleeg het systeem gebeurtenis logboek voor specifieke fout berichten. Voor informatie over de gebeurtenis-en fout berichten die zijn gegenereerd door de systeem firmware en agents die systeem onderdelen bewaken, raadpleegt u de zoek pagina voor fout codes op qrl.dell.com. |
 
 

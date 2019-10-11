@@ -1,168 +1,168 @@
 ---
-title: Microsoft Azure FXT Edge Filer netwerkverbindingen en -voeding
-description: Hoe u de netwerkpoorten bekabelen en acculading Azure FXT Edge Filer hardware toevoegen
+title: FXT Edge-netwerk verbindingen en-voeding Microsoft Azure
+description: De netwerk poorten bekabelen en kracht koppelen voor Azure FXT edge-hardware
 author: ekpgh
 ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 07/01/2019
-ms.author: v-erkell
-ms.openlocfilehash: ae179e8ce2a2ba772a7fb14825660e0fff9e7410
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.author: rohogue
+ms.openlocfilehash: 474172284383bc9ba0e5b5c11c66e1b990010184
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67542960"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72254854"
 ---
-# <a name="tutorial-make-network-connections-and-supply-power-to-the-azure-fxt-edge-filer-node"></a>Zelfstudie: Netwerkverbindingen maken en om het knooppunt Azure FXT Edge Filer te leveren
+# <a name="tutorial-make-network-connections-and-supply-power-to-the-azure-fxt-edge-filer-node"></a>Zelf studie: netwerk verbindingen maken en energie leveren aan het Azure FXT Edge-knoop punt
 
-In deze zelfstudie leert u hoe u de netwerkverbindingen voor een Azure FXT Edge Filer hardware-knooppunt-kabel.
+In deze zelf studie leert u hoe u de netwerk verbindingen kunt bekabelen voor een FXT Edge filer-hardwareprofiel van Azure.
 
 In deze zelfstudie leert u het volgende: 
 
 > [!div class="checklist"]
-> * Het type van de netwerkkabel voor uw omgeving kiezen
-> * Verbinding maken tussen een Azure FXT Edge Filer-knooppunt en uw netwerk van datacenters
-> * Hoe u kabels via de kabel beheertak (CMA) route
-> * Hoe u power verbinding met het racks apparaat en inschakelen
+> * Het type netwerk kabel voor uw omgeving kiezen
+> * Een Azure FXT Edge-knoop punt verbinden met uw datacenter netwerk
+> * Kabels routeren via de arm voor kabel beheer (CMA)
+> * Verbinding maken met het Gereke apparaat en de stroom inschakelen
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voordat u deze zelfstudie begint, moet de Azure FXT Edge Filer worden geïnstalleerd op een rek standaard apparatuur. De CMA moet worden geïnstalleerd op het knooppunt filer. 
+Voordat u met deze zelf studie begint, moet de Azure FXT Edge-bestand worden geïnstalleerd in een rack met standaard apparatuur. De CMA moet worden geïnstalleerd op het knoop punt van de bestands extensie. 
 
-## <a name="identify-ports"></a>Identificeren van poorten
+## <a name="identify-ports"></a>Poorten identificeren
 
-Identificeer de verschillende poorten op de achterkant van uw Azure FXT Edge Filer. 
+Identificeer de verschillende poorten op de achterkant van uw Azure FXT Edge-bestand. 
  
-![Achterzijde een bekabelde apparaat](media/fxt-back-annotated.png)
+![Terug van een apparaat met een kabel](media/fxt-back-annotated.png)
 
 ## <a name="cable-the-device"></a>Het apparaat bekabelen
 
-* Verbinding maken met de RJ-45-poorten aan uw datacenter netwerkbron zoals beschreven in [netwerkpoorten](#network-ports).  
-* Veilig verbinding maken met de [iDRAC poort](#idrac-port) met een afzonderlijk netwerk met een beveiligde DHCP-server. 
-* Gebruik de USB-poorten en de VGA-poort verbinding te maken van een toetsenbord en monitor naar het knooppunt voor de eerste installatie. U moet het knooppunt opstarten en [instellen van een eerste wachtwoord](fxt-node-password.md) om het activeren van het knooppunt de van andere poorten. Lezen [initiële wachtwoorden instellen](fxt-node-password.md) voor meer informatie. 
+* Verbind de RJ-45-poorten met de netwerk bron van uw Data Center, zoals wordt beschreven in [netwerk poorten](#network-ports).  
+* U kunt de [iDRAC-poort](#idrac-port) veilig verbinden met een afzonderlijk netwerk met een beveiligde DHCP-server. 
+* Gebruik de USB-poorten en de VGA-poort om een toetsen bord en monitor te verbinden met het knoop punt voor de eerste Setup. U moet het knoop punt opstarten en [een eerste wacht woord instellen](fxt-node-password.md) om de andere poorten van het knoop punt te activeren. Lees de [eerste wacht woorden instellen](fxt-node-password.md) voor meer informatie. 
 
-Dit artikel wordt ook beschreven hoe u [verbinding netstroom](#connect-power-cables) voor het knooppunt. 
+In dit artikel wordt ook beschreven hoe u [netstroom](#connect-power-cables) voor het knoop punt verbindt. 
 
-In dit artikel wordt ook uitgelegd hoe u verbinding maken met het knooppunt [seriële poort](#serial-port-only-when-necessary), indien nodig voor het oplossen van gespecialiseerde. 
+In dit artikel wordt ook uitgelegd hoe u verbinding maakt met de [seriële poort](#serial-port-only-when-necessary)van het knoop punt, indien nodig voor gespecialiseerde probleem oplossing. 
 
 ### <a name="network-ports"></a>Netwerkpoorten 
 
-Elk knooppunt Azure FXT Edge Filer bevat de volgende netwerkpoorten: 
+Elk Azure FXT Edge-bestands knooppunt bevat de volgende netwerk poorten: 
 
-* Zes snelle 25GbE/10GbE dubbele snelheid gegevenspoorten: 
+* Zes gegevens poorten met een hoge snelheid van 25GbE/10GbE met dubbele snelheid: 
 
-  * Vier poorten die worden geleverd door twee tarief voor twee poorten invoegtoepassing-netwerkadapters
-  * Twee poorten die worden geleverd door de netwerkadapter van moederbord mezzanine 
+  * Vier poorten die worden meegeleverd met twee netwerk adapters van de Dual-Port-invoeg toepassing
+  * Twee poorten die door de systeemkaart mezzanine-netwerk adapter worden verschaft 
 
-* Twee 1 GbE-poorten is geleverd door de netwerkadapter van moederbord mezzanine 
+* Twee 1GbE-poorten die door de systeemkaart mezzanine-netwerk adapter worden meegeleverd 
 
-De met hoge snelheid 25GbE/10 GbE-gegevenspoorten zijn standaard SFP28-compatibele kooien. Voor het gebruik van optische kabels, moet u SFP28 optische transceiver modules (niet opgegeven) installeren.
+De gegevens poorten met een hoge snelheid van 25GbE/10GbE hebben standaard SFP28-compatibele kooien. Als u optische kabels wilt gebruiken, moet u SFP28 Optical transceiver modules (niet meegeleverd) installeren.
 
-De poorten van 1GbE hebben standaard RJ-45-connectors.
+De 1GbE-poorten hebben standaard RJ-45-connectors.
 
-Voor een volledige lijst van ondersteunde kabels en switches infraroodzenders, Raadpleeg de [Cavium FastlinQ 41000 reeks interoperabiliteit Matrix](https://www.marvell.com/documents/xalflardzafh32cfvi0z/).
+Raadpleeg de [Cavium FastlinQ 41000-serie](https://www.marvell.com/documents/xalflardzafh32cfvi0z/)voor een volledige lijst met ondersteunde kabels, switches en transceivers.
 
-Het type verbindingen moet worden gebruikt voor uw systeem is afhankelijk van uw data center-omgeving.
+Het type verbindingen dat voor uw systeem moet worden gebruikt, is afhankelijk van uw data centrum omgeving.
 
-* Als u verbinding maakt met een netwerk 25GbE, bekabelen u elk van de gegevenspoorten met hoge snelheid met een van de volgende kabeltypen:
+* Als u verbinding maakt met een 25GbE-netwerk, bekabelt u elk van de High-Speed gegevens poorten met een van de volgende kabel typen:
 
-  * Optische kabel en SFP28 optische transceiver met 25GbE of dubbele snelheid 25GbE/10 GbE-mogelijkheid
-  * SFP28 type 25GbE kunnen direct twinaxial kabel koppelen
+  * Optische kabel en SFP28 optische transceiver met 25GbE of Dual rate 25GbE/10GbE-mogelijkheid
+  * SFP28 type 25GbE-compatibel direct attach twinaxial-kabel
 
-* Als u verbinding maakt met een netwerk 10 GbE, kabel voor elk van de snelle poorten met een van de volgende: 
+* Als u verbinding maakt met een 10GbE netwerk, bekabelt u elk van de High-Speed gegevens poorten met een van de volgende: 
 
-  * Optische kabel en SFP28 optische transceiver met 10 GbE of dubbele snelheid 25GbE/10 GbE-mogelijkheid.
-  * SFP28 type 25GbE kunnen direct twinaxial kabel koppelen
-  * SFP28 type 10 GbE-compatibele direct twinaxial kabel koppelen
+  * Optische kabel en SFP28 optische transceiver met GbE of Dual rate 25GbE/10GbE-mogelijkheid.
+  * SFP28 type 25GbE-compatibel direct attach twinaxial-kabel
+  * SFP28 type 10GbE-compatibel direct attach twinaxial-kabel
 
-* De netwerk-poorten van 1GbE worden gebruikt voor cluster beheer van verkeer. Controleer de **1Gb-mgmt-netwerk gebruiken** optie bij het maken van het cluster als u wilt maken van een fysiek afgescheiden netwerk voor configuratie van het cluster (beschreven in [configureren van het beheernetwerk](fxt-cluster-create.md#configure-the-management-network)). De poorten met standard CAT 5- of betere kabel zoals beschreven in de lijst met ondersteunde kabels-kabel.
+* De 1GbE-netwerk poorten worden gebruikt voor cluster beheer verkeer. Selecteer de optie **1gb-beheer netwerk gebruiken** bij het maken van het cluster als u een fysiek afzonderlijk netwerk wilt maken voor de cluster configuratie (beschreven in [het beheer netwerk configureren](fxt-cluster-create.md#configure-the-management-network)). Bekabel de poorten met een standaard-Cat5-of betere kabel zoals beschreven in de lijst met ondersteunde kabels.
 
-  U kunt de 1 GbE-poorten als u van plan bent de snelle om poorten te gebruiken voor al het verkeer uncabled laten. Standaard worden de netwerk-poorten van 1GbE niet gebruikt als een hogere snelheid de gegevenspoort beschikbaar is.  
+  Als u van plan bent om de poorten met hoge snelheid te gebruiken voor al het verkeer, kunt u de 1GbE-poorten ongekabeld laten. Standaard worden de 1GbE-netwerk poorten niet gebruikt als er een hogere snelheids gegevens poort beschikbaar is.  
 
-### <a name="idrac-port"></a>iDRAC poort  
+### <a name="idrac-port"></a>iDRAC-poort  
 
-De poort met het label iDRAC is een verbinding van 1Gb die communicatie mogelijk maakt met een externe toegang-controller die wordt gebruikt voor het hardwarebeheer van en bewaking. FXT software maakt gebruik van Intelligent Platform Management Interface (IPMI) met deze controller voor probleemoplossing en herstel. U kunt de ingebouwde [iDRAC interface](https://www.dell.com/support/manuals/idrac9-lifecycle-controller-v3.30.30.30/idrac_3.30.30.30_ug/) voor het bewaken van hardware via deze poort. iDRAC en IPMI toegang zijn standaard ingeschakeld. 
+De poort met de naam iDRAC is een 1Gb-verbinding die communicatie mogelijk maakt met een RAS-controller die wordt gebruikt voor hardware-en bewakings doeleinden. FXT-software maakt gebruik van de Intelligent Platform Management Interface (IPMI) met deze controller voor probleem oplossing en herstel. U kunt de ingebouwde [iDRAC-interface](https://www.dell.com/support/manuals/idrac9-lifecycle-controller-v3.30.30.30/idrac_3.30.30.30_ug/) gebruiken om hardware te bewaken via deze poort. iDRAC en IPMI-toegang zijn standaard ingeschakeld. 
 
 > [!Note]
-> De poort iDRAC kunt overslaan van het besturingssysteem en Communiceer rechtstreeks met de hardware op het knooppunt. 
+> De iDRAC-poort kan het besturings systeem overs Laan en rechtstreeks communiceren met hardware op het knoop punt. 
 
-Gebruik deze beveiligingsstrategieën wanneer verbinding te maken en configureren van de iDRAC-poort:
+Gebruik deze beveiligings strategieën bij het maken en configureren van de iDRAC-poort:
 
-* Alleen verbinding maken met iDRAC poorten met een netwerk dat fysiek van de gegevensnetwerk dat wordt gebruikt gescheiden is voor toegang tot het cluster.
-* Een beveiligde iDRAC administrator-wachtwoord instellen op elk knooppunt. U moet dit wachtwoord voor activeren van de hardware - Volg de instructies in ingesteld [hardware wachtwoorden instellen](fxt-node-password.md).
-* De standaardconfiguratie voor de poort van iDRAC maakt gebruik van DHCP- en IPv4-IP-adrestoewijzing. Zorg ervoor dat uw omgeving DHCP goed is beveiligd en dat de verbindingen beperkt tussen DHCP-clients en de DHCP-server zijn. (Het cluster van het Configuratiescherm bevat instellingen als u wilt wijzigen van de knooppunten adres configuratiemethode nadat u het cluster hebt gemaakt.)
-* Laat de iDRAC-poort ingesteld op 'toegewezen mode' (de standaardinstelling), die netwerkverkeer iDRAC/IPMI beperkt tot de speciale RJ-45-poort.
+* Koppel iDRAC-poorten alleen aan een netwerk dat fysiek is gescheiden van het gegevens netwerk dat wordt gebruikt voor toegang tot het cluster.
+* Stel een beveiligd iDRAC-beheerders wachtwoord in op elk knoop punt. U moet dit wacht woord instellen om de instructies voor het uitvoeren van de hardware te activeren in [Hardware-wacht woorden instellen](fxt-node-password.md).
+* De standaard configuratie van de iDRAC-poort maakt gebruik van DHCP en IPv4 voor IP-adres toewijzing. Zorg ervoor dat uw DHCP-omgeving goed is beveiligd en dat de verbindingen tussen DHCP-clients en de DHCP-server worden beperkt. (Het configuratie scherm van het cluster bevat instellingen voor het wijzigen van de adres configuratie methode van de knoop punten nadat u het cluster hebt gemaakt.)
+* Zorg ervoor dat de iDRAC-poort is ingesteld op ' exclusieve modus ' (de standaard instelling), waarmee het iDRAC/IPMI-netwerk verkeer wordt beperkt tot de toegewezen RJ-45-poort.
 
-De poort iDRAC is niet vereist voor een snelle netwerkverbinding.
+De iDRAC-poort vereist geen snelle netwerk verbinding.
   
-### <a name="serial-port-only-when-necessary"></a>Seriële poort (alleen indien nodig)
+### <a name="serial-port-only-when-necessary"></a>Seriële poort (alleen als dit nodig is)
 
-In sommige gevallen Microsoft Service and Support achterhalen mogelijk kunt u een terminal verbinden met de seriële poort van een knooppunt een probleem op te sporen.  
+In sommige gevallen kan micro soft-service en-ondersteuning u laten weten dat u een Terminal verbindt met de seriële poort van een knoop punt om een probleem op te sporen.  
 
-Koppelen van de console:
+De console koppelen:
 
-1. Ga naar de seriële poort (COM1) op de achterkant van het knooppunt FXT Edge Filer.
-1. Een null-modem-kabel gebruiken de seriële poort verbinden met een geconfigureerd voor ANSI-115200-8N1 terminal.
-1. Meld u aan bij de console en andere maatregelen nemen wijze die door ondersteunend personeel.
+1. Zoek de seriële (COM1) poort aan de achterzijde van het knoop punt FXT Edge-bestand.
+1. Gebruik een nulmodemkabel om de seriële poort te verbinden met een terminal die is geconfigureerd voor ANSI-115200-8N1.
+1. Meld u aan bij de-console en onderneem andere stappen als gericht door ondersteunings personeel.
 
-## <a name="route-cables-in-the-cable-management-arm-cma"></a>De beheertak kabel (CMA) route-kabels
+## <a name="route-cables-in-the-cable-management-arm-cma"></a>Kabels routeren in de arm voor kabel beheer (CMA)
 
-Elk knooppunt Azure FXT Edge Filer wordt geleverd met een optionele kabel beheertak. De CMA vereenvoudigt kabel Routering en biedt eenvoudiger toegang tot de achterkant van het chassis zonder kabels verbreken. 
+Elk Azure FXT Edge-verwerkings knooppunt wordt geleverd met een optionele arm voor kabel beheer. De CMA vereenvoudigt de route ring van kabels en biedt eenvoudiger toegang tot de achtergrond van het chassis zonder dat u kabels hoeft te verbreken. 
 
-Volg deze instructies voor het routeren van de kabels via de CMA: 
+Volg deze instructies om de kabels via de CMA te routeren: 
 
-1. Met behulp van de tie-wordt opgegeven, bundel de kabels samen als ze openen en sluiten van de opslagplaatsen, zodat ze niet aangrenzende systemen (1 storen).
-1. Met de CMA op de positie van de service, route de bundel kabel via de binnenste en buitenste-opslagplaatsen (2).
-1. Gebruik de vooraf geïnstalleerde haakje en lus banden aan beide uiteinden van de opslagplaatsen voor het beveiligen van de kabels (3).
-1. De CMA swing terug naar hun plaats op het systeemvak (4).
-1. Installeer de kabel van de indicator status aan het einde van het systeem en de kabel beveiligen door deze via de CMA routering. Het andere uiteinde van de kabel koppelen aan de hoek van de buitenste CMA mandje (5). 
+1. Bundel de kabels aan de hand van de beschik bare stem afrondingen en sluit de-manden, zodat ze niet interfereren met aangrenzende systemen (1).
+1. Met de CMA in de service positie routert u de kabel bundel via de binnenste en buitenste manden (2).
+1. Gebruik de vooraf geïnstalleerde Hook-en loop riemen aan beide uiteinden van de manden om de kabels te beveiligen (3).
+1. Draai de CMA weer op de lade (4).
+1. Installeer de status indicator kabel aan de achterkant van het systeem en beveilig de kabel door deze via de CMA te routeren. Koppel het andere uiteinde van de kabel aan de hoek van de buitenste CMA-mand (5). 
 
    > [!CAUTION]
-   > Om te voorkomen van potentiële schade voorkomen van uitstekende kabels, Beveilig een vertraging in de status indicator kabel na deze kabel via de CMA routering. 
+   > Om mogelijke schade van uitstekende kabels te voor komen, moet u elke toegestane vertraging in de status indicator kabel na het routeren van deze kabel via de CMA beveiligen. 
 
-![Afbeelding van CMA met kabels geïnstalleerd](media/fxt-install/cma-cabling-400.png)
+![Afbeelding van CMA met geïnstalleerde kabels](media/fxt-install/cma-cabling-400.png)
 
 > [!NOTE]
->  Als u de CMA niet hebt geïnstalleerd, gebruikt u de twee hook en lus banden opgegeven in het spoor kit voor het routeren van de kabels aan het einde van uw systeem.
+>  Als u de CMA niet hebt geïnstalleerd, gebruikt u de twee hooks en lussen in de Rail Kit om de kabels aan de achtergrond van uw systeem te routeren.
 > 
->  1. Zoek de buitenste CMA vierkante haken aan de binnenkant zijden van beide rackflenzen.
->  2. De kabels voorzichtig, bundelen binnenhalen ze wissen van de systeem-connectors voor de links en rechts.
->  3. De banden haakje en lus via de tooled sleuven op het buitenste CMA vierkante haken voor elke zijde van het systeem voor het beveiligen van de kabel bundels van thread.
+>  1. Zoek de buitenste CMA haakjes aan de binnenkant van beide rack flenss.
+>  2. Bundel de kabels voorzichtig, zodat ze de systeem connectors aan de linker-en rechter kant van elkaar halen.
+>  3. Verbind de Hook en lussen door de gewerkte sleuven op de buitenste CMA haakjes aan de zijkant van het systeem om de kabel bundels te beveiligen.
 > 
->     ![Kabels doorgestuurd zonder een CMA](media/fxt-install/fxt-route-cables-no-cma-400.png)
+>     ![Kabels worden gerouteerd zonder een CMA](media/fxt-install/fxt-route-cables-no-cma-400.png)
 
-## <a name="about-ip-address-requirements"></a>Over de vereisten voor IP-adres
+## <a name="about-ip-address-requirements"></a>Over IP-adres vereisten
 
-Voor hardwareknooppunten in een cache van Azure FXT Edge Filer hybride opslag, worden IP-adressen beheerd door de clustersoftware.
+Voor hardwareprofielen in een hybride opslag cache van Azure FXT Edge-bestanden worden IP-adressen beheerd door de cluster software.
 
-Elk knooppunt moet ten minste één IP-adres, maar knooppuntadressen worden toegewezen wanneer knooppunten zijn toegevoegd aan of verwijderd uit het cluster. 
+Elk knoop punt vereist ten minste één IP-adres, maar knooppunt adressen worden toegewezen wanneer knoop punten worden toegevoegd aan of verwijderd uit het cluster. 
 
-Het totale aantal IP-adressen die zijn vereist, is afhankelijk van het aantal knooppunten in waaruit de cache. 
+Het totale aantal IP-adressen dat is vereist, is afhankelijk van het aantal knoop punten in de cache. 
 
-Het IP-adresbereik configureren met behulp van de software van het Configuratiescherm nadat de knooppunten zijn geïnstalleerd. Voor meer informatie lezen [verzamelen van informatie voor het cluster](fxt-cluster-create.md#gather-information-for-the-cluster).  
+Configureer het IP-adres bereik via de software van het configuratie scherm nadat de knoop punten zijn geïnstalleerd. Lees voor meer informatie [informatie over het verzamelen van gegevens voor het cluster](fxt-cluster-create.md#gather-information-for-the-cluster).  
 
-## <a name="connect-power-cables"></a>Verbinding maken met power kabels
+## <a name="connect-power-cables"></a>Stroom kabels aansluiten
 
-Elk knooppunt Azure FXT Edge Filer maakt gebruik van twee power supply eenheden (PSUs). 
+Elk Azure FXT Edge-Bestandsr knoop punt gebruikt twee energie-eenheden (PSUs). 
 
 > [!TIP] 
-> Als u wilt profiteren van de twee redundante PSUs, elke AC-voedingskabel aan een power distribution Units (PDU) in een onafhankelijke vertakking-circuit te koppelen.  
+> Als u gebruik wilt maken van de twee redundante PSUs, koppelt u elke netstroom kabel aan een PDU (energie distributie-eenheid) op een onafhankelijk vertakkings circuit.  
 > 
-> Voor de PDU's voor extra beveiliging kunt u een Noodvoeding. 
+> U kunt een UPS gebruiken om de Pdu's uit te scha kelen voor extra beveiliging. 
 
-1. De opgenomen stroomkabels verbinden met de PSUs in het chassis. Zorg ervoor dat de kabels en PSUs volledig worden geplaatst. 
-1. De stroomkabels koppelen aan de power distribution-eenheden op het rek apparatuur. Gebruik indien mogelijk, twee afzonderlijke energiebronnen voor de twee kabels. 
+1. Verbind de inbegrepen stroom snoeren met de PSUs in het chassis. Zorg ervoor dat de snoeren en PSUs volledig zijn aangesloten. 
+1. Koppel de netsnoeren aan de netstroom distributie-eenheden op het rack van het apparaat. Gebruik, indien mogelijk, twee afzonderlijke energie bronnen voor de twee snoeren. 
  
-### <a name="power-on-an-azure-fxt-edge-filer-node"></a>Inschakelen van een Azure FXT Edge Filer-knooppunt
+### <a name="power-on-an-azure-fxt-edge-filer-node"></a>Een Azure FXT Edge-knoop punt inschakelen
 
-Voor het inschakelen van het knooppunt, drukt u op de knop op de voorgrond van het systeem. De knop is op het rechts van het Configuratiescherm. 
+Als u het knoop punt wilt inschakelen, drukt u op de aan/uit-knop aan de voor kant van het systeem. De knop bevindt zich aan de rechter kant van het configuratie scherm. 
 
-### <a name="power-off-an-azure-fxt-edge-filer-node"></a>Een knooppunt Azure FXT Edge Filer uitschakelen
+### <a name="power-off-an-azure-fxt-edge-filer-node"></a>Een Azure FXT Edge-knoop punt uitzetten
 
-De / uit-knop kan worden gebruikt om het systeem wordt afgesloten tijdens het testen en voordat u deze toevoegt aan een cluster. Nadat een Filer van Azure FXT Edge-knooppunt gebruikt als onderdeel van een cluster wordt, moet u de clustersoftware besturingselement in het deelvenster gebruiken om de hardware af te sluiten. Lezen [hoe veilig uit Azure FXT Edge Filer hardware](fxt-power-off.md) voor meer informatie. 
+De knop aan/uit kan worden gebruikt om het systeem uit te scha kelen tijdens het testen en voordat het aan een cluster wordt toegevoegd. Nadat een Azure FXT Edge-knoop punt wordt gebruikt als onderdeel van een cluster, moet u echter de software van het configuratie scherm van het cluster gebruiken om de hardware af te sluiten. Lees [hoe u de hardware van Azure FXT Edge-bestanden veilig kunt uitschakelen](fxt-power-off.md) voor meer informatie. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nadat u klaar bent met de hardware, power op elk knooppunt bekabeling en ze worden geïnitialiseerd door in te stellen hun root-wachtwoord. 
+Nadat u klaar bent met het bekabelen van de hardware, kunt u alle knoop punten inschakelen en deze initialiseren door hun hoofd wacht woorden in te stellen. 
 > [!div class="nextstepaction"]
-> [De eerste wachtwoorden instellen](fxt-node-password.md)
+> [Initiële wacht woorden instellen](fxt-node-password.md)

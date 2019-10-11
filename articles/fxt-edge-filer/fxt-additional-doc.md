@@ -1,35 +1,35 @@
 ---
-title: Microsoft Azure FXT Edge Filer - aanvullende documentatie
-description: Aanvullende referentiedocumenten voor de installatie van Azure FXT Edge Filer
+title: Microsoft Azure-FXT-rand bestand-aanvullende documentatie
+description: Aanvullende referentie documenten voor de installatie van Azure FXT Edge-bestanden
 author: ekpgh
 ms.service: fxt-edge-filer
 ms.topic: conceptual
 ms.date: 06/20/2019
-ms.author: v-erkell
-ms.openlocfilehash: 6b04537da7c26cdeff6cac9f262e138c29bee37a
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.author: rohogue
+ms.openlocfilehash: e3205827f9603545b0a99b064a53e50fc94c374e
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67453864"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72254918"
 ---
 # <a name="additional-documentation"></a>Aanvullende documentatie 
 
-Sommige resources buiten deze docs.microsoft.com-website kunnen helpen u bij het begrijpen en gebruiken met uw Microsoft Azure FXT Edge Filer hybride-cache.
+Sommige resources buiten deze docs.microsoft.com-website kunnen u helpen bij het begrijpen en samen werken met uw Microsoft Azure FXT Edge-bestands extensie hybride cache.
 
-## <a name="avere-vfxt-for-azure-cache-documentation"></a>Avere vFXT voor documentatie voor Azure cache
+## <a name="avere-vfxt-for-azure-cache-documentation"></a>Documentatie voor avere vFXT voor Azure cache
 
-[Avere vFXT voor Azure](https://docs.microsoft.com/azure/avere-vfxt/) is een vergelijkbare cluster cache-product, die gebruikmaakt van virtuele-knooppunten in Microsoft Azure. Het is gemaakt met de Azure-portal, maar maakt gebruik van de dezelfde software van het besturingselement deelvenster configuratie als de cache van Azure FXT Edge Filer hardware. 
+[Avere vFXT voor Azure](https://docs.microsoft.com/azure/avere-vfxt/) is een soortgelijk cluster cache product dat virtuele knoop punten gebruikt in Microsoft Azure. Het wordt gemaakt met de Azure Portal, maar gebruikt dezelfde configuratie scherm-software als de cache van de Azure FXT Edge-Bestands server. 
 
-## <a name="legacy-hardware-documentation"></a>Oudere hardware-documentatie 
+## <a name="legacy-hardware-documentation"></a>Documentatie voor oudere hardware 
 
-Deze technologie werd gebruikt in producten van Avere systemen. Documentatie voor de gebruiker voor deze oudere producten is beschikbaar op de [Avere Legacy-documentatiesite](https://azure.github.io/Avere/). 
+Deze technologie werd eerder gebruikt in producten van AVERE Systems. Gebruikers documentatie voor die oudere producten is beschikbaar op de [website van de avere legacy-documentatie](https://azure.github.io/Avere/). 
 
-Deze documenten kunnen bijzonder nuttig details hebben:
+Deze documenten kunnen vooral nuttige informatie bevatten:
 
-* [Handleiding voor de configuratie van cluster](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/ops_conf_index.html) - bevat overzichtsinformatie over algemene taken voor cluster instellen en beheren, en bevat gedetailleerde uitleg van de cluster-instellingen voor pagina's 
+* [Hand leiding voor cluster configuratie](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/ops_conf_index.html) : bevat overzichts informatie over algemene cluster installatie-en beheer taken en bevat gedetailleerde uitleg over de pagina's met cluster instellingen 
 
-* [Dashboard Guide](https://azure.github.io/Avere/legacy/dashboard/4_7/html/ops_dashboard_index.html) -uitgelegd van de functies van het Configuratiescherm **Dashboard** tabblad
+* [Dash board-hand leiding](https://azure.github.io/Avere/legacy/dashboard/4_7/html/ops_dashboard_index.html) : hierin worden de functies van het tabblad **dash board** van het configuratie scherm uitgelegd
 
-* [FXT Cluster maken-handleiding](https://azure.github.io/Avere/legacy/create_cluster/4_8/html/create_index.html) -handleiding voor het maken van vorige producten Cluster
+* [FXT](https://azure.github.io/Avere/legacy/create_cluster/4_8/html/create_index.html) voor het maken van een cluster-hand leiding voor het maken van clusters van eerdere producten
 

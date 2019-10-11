@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/24/2019
 ms.author: memildin
-ms.openlocfilehash: 28761b78b49ad0774594b45db4587c710fc7d810
-ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
+ms.openlocfilehash: 060a5a6a356574e04a3492cdeadd93ddf9a38535
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "71996717"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72255236"
 ---
 # <a name="adaptive-network-hardening-in-azure-security-center"></a>Adaptieve netwerk beveiliging in Azure Security Center
 Meer informatie over het configureren van adaptieve netwerk beveiliging in Azure Security Center.
@@ -38,18 +38,18 @@ Stel bijvoorbeeld dat de bestaande NSG-regel verkeer van 140.20.30.10/24 op poor
 ## <a name="view-adaptive-network-hardening-alerts-and-rules"></a>Waarschuwingen en regels voor adaptieve netwerk beveiliging weer geven
 
 1. Selecteer in Security Center **netwerk** -> **adaptieve netwerk beveiliging**. De netwerk-Vm's worden weer gegeven onder drie afzonderlijke tabbladen:
-   * **Beschadigde resources**: Vm's die momenteel aanbevelingen en waarschuwingen hebben geactiveerd door het uitvoeren van het adaptieve netwerk beveiligings algoritme. 
-   * **Goede resources**: Vm's zonder waarschuwingen en aanbevelingen.
-   * Niet- **gescande resources**: Vm's waarvoor het adaptieve netwerk beveiligings algoritme niet kan worden uitgevoerd om een van de volgende redenen:
-      * **Virtuele machines zijn klassieke vm's**: Alleen Azure Resource Manager Vm's worden ondersteund.
-      * **Er zijn onvoldoende gegevens beschikbaar**: Om nauw keurige aanbevelingen voor het beveiligen van verkeer te kunnen genereren, is Security Center ten minste 30 dagen aan verkeers gegevens nodig.
-      * **VM wordt niet beveiligd door ASC-standaard**: Alleen Vm's die zijn ingesteld op de prijs categorie Standard van Security Center, komen in aanmerking voor deze functie.
+   * **Slechte resources**: vm's die momenteel aanbevelingen en waarschuwingen hebben geactiveerd door het uitvoeren van het adaptieve netwerk beveiligings algoritme. 
+   * **Gezonde resources**: vm's zonder waarschuwingen en aanbevelingen.
+   * Niet- **gescande resources**: vm's waarvoor het adaptieve netwerk beveiligings algoritme niet kan worden uitgevoerd om een van de volgende redenen:
+      * **Vm's zijn klassieke vm's**: alleen Azure Resource Manager vm's worden ondersteund.
+      * **Er zijn onvoldoende gegevens beschikbaar**: voor het genereren van nauw keurige aanbevelingen voor het beveiligen van de beveiliging is Security Center ten minste 30 dagen aan verkeers gegevens vereist.
+      * **VM wordt niet beveiligd door ASC Standard**: alleen vm's die zijn ingesteld op de prijs categorie standard van Security Center, komen in aanmerking voor deze functie.
 
      ![beschadigde resources](./media/security-center-adaptive-network-hardening/unhealthy-resources.png)
 
 2. Selecteer een virtuele machine op het tabblad **beschadigde resources** om de waarschuwingen te bekijken en de aanbevolen beveiligings regels te gebruiken.
 
-    ![beveiligings waarschuwingen](./media/security-center-adaptive-network-hardening/hardening-alerts.png)
+    ![beveiligings waarschuwingen](./media/security-center-adaptive-network-hardening/anh-recommendation-rules.png)
 
 
 ## <a name="review-and-apply-adaptive-network-hardening-recommended-rules"></a>Aanbevolen regels voor adaptieve netwerk beveiliging controleren en Toep assen

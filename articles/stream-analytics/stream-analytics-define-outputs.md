@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/8/2019
-ms.openlocfilehash: d867cceb3e7261f658e2406617144c9150e36f2a
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
-ms.translationtype: HT
+ms.openlocfilehash: 20da8abff943e71deb5d5ec8b7bd6411c176e2e3
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72173440"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72244557"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Meer informatie over de uitvoer van Azure Stream Analytics
 
@@ -104,7 +104,7 @@ Wanneer u Blob Storage als uitvoer gebruikt, wordt er in de volgende gevallen ee
 
 ## <a name="event-hubs"></a>Event Hubs
 
-De [Azure Event hubs](https://azure.microsoft.com/services/event-hubs/) -service is een zeer schaal bare Event ingestor voor publiceren en abonneren. Het kan miljoenen gebeurtenissen per seconde verzamelen. Een Event Hub als uitvoer wordt gebruikt wanneer de uitvoer van een Stream Analytics taak de invoer van een andere streaming-taak wordt.
+De [Azure Event hubs](https://azure.microsoft.com/services/event-hubs/) -service is een zeer schaal bare Event ingestor voor publiceren en abonneren. Het kan miljoenen gebeurtenissen per seconde verzamelen. Een Event Hub als uitvoer wordt gebruikt wanneer de uitvoer van een Stream Analytics taak de invoer van een andere streaming-taak wordt. Zie de sectie [uitvoer Batch grootte](#output-batch-size) voor informatie over de maximale grootte van berichten en het optimaliseren van de Batch grootte.
 
 U hebt een aantal para meters nodig voor het configureren van gegevens stromen van Event hubs als uitvoer.
 
@@ -119,7 +119,7 @@ U hebt een aantal para meters nodig voor het configureren van gegevens stromen v
 | Serialisatie-indeling voor gebeurtenissen | De serialisatie-indeling voor uitvoer gegevens. JSON, CSV en Avro worden ondersteund. |
 | Encoding | Voor CSV en JSON is UTF-8 de enige coderings indeling die op dit moment wordt ondersteund. |
 | Vorm | Alleen van toepassing op CSV-serialisatie. Stream Analytics ondersteunt een aantal gemeen schappelijke scheidings tekens voor het serialiseren van gegevens in CSV-indeling. Ondersteunde waarden zijn komma, punt komma, spatie, tab en verticale streep. |
-| Indeling | Alleen van toepassing op JSON-serialisatie. Met **regel scheiding** wordt opgegeven dat de uitvoer wordt opgemaakt door elk JSON-object gescheiden door een nieuwe regel. **Matrix** geeft aan dat de uitvoer is ingedeeld als een matrix van JSON-objecten. Deze matrix wordt alleen gesloten wanneer de taak wordt gestopt of Stream Analytics is verplaatst naar het volgende tijd venster. Over het algemeen is het raadzaam om met regel-gescheiden JSON te gebruiken, omdat hiervoor geen speciale verwerking is vereist terwijl het uitvoer bestand nog wordt geschreven. Zie de sectie [output Batch Size](#output-batch-size) voor meer informatie. |
+| Indeling | Alleen van toepassing op JSON-serialisatie. Met **regel scheiding** wordt opgegeven dat de uitvoer wordt opgemaakt door elk JSON-object gescheiden door een nieuwe regel. **Matrix** geeft aan dat de uitvoer is ingedeeld als een matrix van JSON-objecten.  |
 | Eigenschappen kolommen | Optioneel. Door komma's gescheiden kolommen die moeten worden toegevoegd als gebruikers eigenschappen van het uitgaande bericht in plaats van de payload. Meer informatie over deze functie vindt u in de sectie [aangepaste meta gegevens eigenschappen voor uitvoer](#custom-metadata-properties-for-output). |
 
 ## <a name="power-bi"></a>Power BI

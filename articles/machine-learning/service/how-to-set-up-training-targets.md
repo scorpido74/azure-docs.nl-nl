@@ -1,5 +1,5 @@
 ---
-title: Maken en gebruiken van compute-doelen voor modeltraining
+title: Reken doelen voor model training maken en gebruiken
 titleSuffix: Azure Machine Learning
 description: Configureer de trainings omgevingen (Compute-doelen) voor de training van machine learning model. U kunt eenvoudig overschakelen tussen trainings omgevingen. Start training lokaal. Als u wilt uitschalen, gaat u naar een compute-doel op basis van de Cloud.
 services: machine-learning
@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 06/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 7c3bae2fff9e20ed9427c72b5f5f632d975f9f94
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: bce04a14a13d5b3615963f298f35af0d2fc480bb
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71034416"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72244440"
 ---
 # <a name="set-up-and-use-compute-targets-for-model-training"></a>Reken doelen voor model training instellen en gebruiken 
 
@@ -35,7 +35,7 @@ In dit artikel leert u hoe u verschillende reken doelen kunt gebruiken voor mode
 
 ## <a name="compute-targets-for-training"></a>Reken doelen voor training
 
-Azure Machine Learning heeft verschillende ondersteuning voor verschillende Compute-doelen. Een typische model ontwikkelingscyclus begint met dev/experimenten op een kleine hoeveelheid gegevens. In deze fase, wordt u aangeraden een lokale omgeving. Bijvoorbeeld, de lokale computer of een cloud-gebaseerde VM. Als u uw training voor grotere gegevenssets opschalen of gedistribueerde training doen, wordt u aangeraden een één of meerdere node cluster maken dat automatisch wordt geschaald telkens wanneer die u een uitvoering verzenden met Azure Machine Learning-Computing. U kunt ook uw eigen compute-resource koppelen, hoewel ondersteuning voor verschillende scenario's als variëren kunnen hieronder uitgelegd:
+Azure Machine Learning heeft verschillende ondersteuning voor verschillende Compute-doelen. Een typische levens cyclus voor model ontwikkeling begint met het ontwikkelen/experimenteren van een kleine hoeveelheid gegevens. In deze fase raden we u aan om een lokale omgeving te gebruiken. Bijvoorbeeld uw lokale computer of een VM op basis van de Cloud. Wanneer u uw training op grotere gegevens sets opschaalt of gedistribueerde trainingen uitvoert, raden we u aan Azure Machine Learning Compute te gebruiken om een cluster met één of meerdere knoop punten te maken dat automatisch wordt geschaald wanneer u een uitvoering verzendt. U kunt ook uw eigen reken resource koppelen, maar de ondersteuning voor verschillende scenario's kan variëren zoals hieronder wordt beschreven:
 
 [!INCLUDE [aml-compute-target-train](../../../includes/aml-compute-target-train.md)]
 
@@ -68,50 +68,50 @@ ML-pijp lijnen worden uit meerdere **stappen**gemaakt. Dit zijn afzonderlijke re
 > [!TIP]
 > ML-pijp lijnen kunnen gebruikmaken van configuratie of schattingen wanneer trainings modellen worden uitgevoerd.
 
-Hoewel ML-pijp lijnen modellen kunnen trainen, kunnen ze ook gegevens voorbereiden voordat ze na de training worden getraind en geïmplementeerd. Een van de primaire gebruiks cases voor pijp lijnen is batch scores. Zie [pijp lijnen voor meer informatie: Optimaliseer machine learning werk](concept-ml-pipelines.md)stromen.
+Hoewel ML-pijp lijnen modellen kunnen trainen, kunnen ze ook gegevens voorbereiden voordat ze na de training worden getraind en geïmplementeerd. Een van de primaire gebruiks cases voor pijp lijnen is batch scores. Zie voor meer informatie [pijp lijnen: optimaliseer machine learning werk stromen](concept-ml-pipelines.md).
 
 ## <a name="set-up-in-python"></a>Ingesteld in python
 
 Gebruik de volgende secties om deze reken doelen te configureren:
 
 * [Lokale computer](#local)
-* [Azure Machine Learning-Computing](#amlcompute)
+* [Azure Machine Learning compute](#amlcompute)
 * [Externe virtuele machines](#vm)
 * [Azure HDInsight](#hdinsight)
 
 
 ### <a id="local"></a>Lokale computer
 
-1. **Maken en koppelen**: U hoeft geen Compute-doel te maken of koppelen om uw lokale computer te gebruiken als de trainings omgeving.  
+1. **Maken en koppelen**: u hoeft geen Compute-doel te maken of koppelen om uw lokale computer te gebruiken als de trainings omgeving.  
 
-1. **Configureren**:  Wanneer u uw lokale computer als reken doel gebruikt, wordt de trainings code uitgevoerd in uw [ontwikkel omgeving](how-to-configure-environment.md).  Als deze omgeving al de Python-pakketten bevat die u nodig hebt, gebruikt u de door de gebruiker beheerde omgeving.
+1. **Configureren**: wanneer u uw lokale computer als reken doel gebruikt, wordt de trainings code uitgevoerd in uw [ontwikkel omgeving](how-to-configure-environment.md).  Als deze omgeving al de Python-pakketten bevat die u nodig hebt, gebruikt u de door de gebruiker beheerde omgeving.
 
  [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/local.py?name=run_local)]
 
 Nu u de reken kracht hebt gekoppeld en de uitvoering hebt geconfigureerd, is de volgende stap [het verzenden van de trainings uitvoering](#submit).
 
-### <a id="amlcompute"></a>Azure Machine Learning-Computing
+### <a id="amlcompute"></a>Azure Machine Learning compute
 
 Azure Machine Learning Compute is een infra structuur voor beheerde berekeningen waarmee de gebruiker eenvoudig een reken proces met één of meerdere knoop punten kan maken. De berekening wordt binnen uw werkruimte regio gemaakt als een resource die kan worden gedeeld met andere gebruikers in uw werk ruimte. De berekening wordt automatisch omhoog geschaald wanneer een taak wordt verzonden en kan in een Azure-Virtual Network worden geplaatst. De berekening wordt uitgevoerd in een omgeving met containers en verpakt uw model afhankelijkheden in een [docker-container](https://www.docker.com/why-docker).
 
-U kunt Azure Machine Learning-Computing gebruiken voor het distribueren van het trainingsproces in een cluster van de CPU of GPU-computerknooppunten in de cloud. Zie [grootten geoptimaliseerd voor virtuele machines](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu)voor meer informatie over de VM-grootten die GPU bevatten.
+U kunt Azure Machine Learning Compute gebruiken om het trainings proces te distribueren over een cluster van CPU-of GPU-reken knooppunten in de Cloud. Zie [grootten geoptimaliseerd voor virtuele machines](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu)voor meer informatie over de VM-grootten die GPU bevatten.
 
 Azure Machine Learning Compute heeft standaard limieten, zoals het aantal kernen dat kan worden toegewezen. Zie voor meer informatie [beheer en aanvragen van quota's voor Azure-resources](https://docs.microsoft.com/azure/machine-learning/service/how-to-manage-quotas).
 
 
 U kunt op aanvraag een Azure Machine Learning Compute-omgeving maken wanneer u een uitvoering plant of als een permanente resource.
 
-#### <a name="run-based-creation"></a>Uitvoeren op basis van het maken
+#### <a name="run-based-creation"></a>Maken op basis van uitvoering
 
 Tijdens runtime kunt u Azure Machine Learning Compute als een reken doel maken. De berekening wordt automatisch gemaakt voor de uitvoering. De berekening wordt automatisch verwijderd zodra de uitvoering is voltooid. 
 
 > [!NOTE]
-> Als u het maximum aantal knoop punten wilt opgeven dat u wilt gebruiken, `node_count` stelt u normaal gesp roken het aantal knoop punten in. Er is momenteel (04/04/2019) een bug waarmee wordt voor komen dat dit werkt. Gebruik de `amlcompute._cluster_max_node_count` eigenschap van de uitvoerings configuratie als tijdelijke oplossing. Bijvoorbeeld `run_config.amlcompute._cluster_max_node_count = 5`.
+> Als u het maximum aantal knoop punten wilt opgeven dat moet worden gebruikt, stelt u normaal gesp roken `node_count` in op het aantal knoop punten. Er is momenteel (04/04/2019) een bug waarmee wordt voor komen dat dit werkt. Als tijdelijke oplossing gebruikt u de eigenschap `amlcompute._cluster_max_node_count` van de configuratie run. Bijvoorbeeld `run_config.amlcompute._cluster_max_node_count = 5`.
 
 > [!IMPORTANT]
 > Het maken van Azure Machine Learning Compute is momenteel beschikbaar als preview-versie. Gebruik niet maken op basis van de uitvoering als u gebruikmaakt van automatische afstemming-afstemming of geautomatiseerde machine learning. Als u afstemming-tuning of geautomatiseerde machine learning wilt gebruiken, maakt u in plaats daarvan een [persistent reken](#persistent) doel.
 
-1.  **Maken, koppelen en configureren**: Met het maken van de uitvoering voert u alle benodigde stappen uit om het reken doel te maken, te koppelen en te configureren met de uitvoerings configuratie.  
+1.  **Maken, koppelen en configureren**: het maken van een uitvoering voert alle benodigde stappen uit om het reken doel te maken, te koppelen en te configureren met de uitvoerings configuratie.  
 
   [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/amlcompute.py?name=run_temp_compute)]
 
@@ -122,19 +122,19 @@ Nu u de reken kracht hebt gekoppeld en de uitvoering hebt geconfigureerd, is de 
 
 Een permanente Azure Machine Learning Compute kan opnieuw worden gebruikt voor verschillende taken. De compute kan worden gedeeld met andere gebruikers in de werk ruimte en tussen taken worden bewaard.
 
-1. **Maken en koppelen**: Als u een permanente Azure Machine Learning Compute-resource in python wilt maken, geeft u de eigenschappen **vm_size** en **max_nodes** op. Azure Machine Learning gebruikt vervolgens slimme standaard instellingen voor de andere eigenschappen. De berekening wordt automatisch geschaald naar nul knoop punten wanneer deze niet wordt gebruikt.   Er zijn specifieke Vm's gemaakt om uw taken naar behoefte uit te voeren.
+1. **Maken en koppelen**: Geef de eigenschappen **vm_size** en **max_nodes** op om een permanente Azure machine learning Compute-resource in python te maken. Azure Machine Learning gebruikt vervolgens slimme standaard instellingen voor de andere eigenschappen. De berekening wordt automatisch geschaald naar nul knoop punten wanneer deze niet wordt gebruikt.   Er zijn specifieke Vm's gemaakt om uw taken naar behoefte uit te voeren.
     
-    * **vm_size**: De VM-familie van de knoop punten die zijn gemaakt door Azure Machine Learning compute.
-    * **max_nodes**: Het maximum aantal knoop punten waarmee automatisch kan worden geschaald wanneer u een taak uitvoert op Azure Machine Learning compute.
+    * **vm_size**: de VM-familie van de knoop punten die zijn gemaakt door Azure machine learning compute.
+    * **max_nodes**: het maximum aantal knoop punten waarmee automatisch kan worden geschaald wanneer u een taak uitvoert op Azure machine learning compute.
     
    [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/amlcompute2.py?name=cpu_cluster)]
 
-   U kunt ook verschillende geavanceerde eigenschappen configureren wanneer u Azure Machine Learning Compute maakt. Met de eigenschappen kunt u een permanent cluster met een vaste grootte of binnen een bestaand Azure-Virtual Network in uw abonnement maken.  Zie de [klasse](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py
-    ) AmlCompute voor meer informatie.
+   U kunt ook verschillende geavanceerde eigenschappen configureren wanneer u Azure Machine Learning Compute maakt. Met de eigenschappen kunt u een permanent cluster met een vaste grootte of binnen een bestaand Azure-Virtual Network in uw abonnement maken.  Zie de [klasse AmlCompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py
+    ) voor meer informatie.
     
    U kunt ook een permanente Azure Machine Learning Compute-bron maken en koppelen [in de Azure Portal](#portal-create).
 
-1. **Configureren**: Maak een uitvoerings configuratie voor het permanente Compute-doel.
+1. **Configureren**: een uitvoerings configuratie maken voor het permanente Compute-doel.
 
    [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/amlcompute2.py?name=run_amlcompute)]
 
@@ -143,9 +143,9 @@ Nu u de reken kracht hebt gekoppeld en de uitvoering hebt geconfigureerd, is de 
 
 ### <a id="vm"></a>Externe virtuele machines
 
-Azure Machine Learning ondersteunt ook uw eigen compute-resource halen en deze te koppelen aan uw werkruimte. Een van deze bron typen is een wille keurige externe virtuele machine, zolang deze toegankelijk is vanaf Azure Machine Learning. De resource kan een Azure-VM, een externe server in uw organisatie of on-premises zijn. Met name op basis van het IP-adres en de referenties (gebruikers naam en wacht woord of SSH-sleutel) kunt u elke toegankelijke virtuele machine gebruiken voor externe uitvoeringen.
+Azure Machine Learning biedt ook ondersteuning voor het meebrengen van uw eigen reken resource en het koppelen aan uw werk ruimte. Een van deze bron typen is een wille keurige externe virtuele machine, zolang deze toegankelijk is vanaf Azure Machine Learning. De resource kan een Azure-VM, een externe server in uw organisatie of on-premises zijn. Met name op basis van het IP-adres en de referenties (gebruikers naam en wacht woord of SSH-sleutel) kunt u elke toegankelijke virtuele machine gebruiken voor externe uitvoeringen.
 
-U kunt een systeem gebouwd conda-omgeving, een al bestaande Python-omgeving of een Docker-container. Als u wilt uitvoeren op een docker-container, moet er een docker-engine op de VM worden uitgevoerd. Deze functionaliteit is vooral nuttig als u wilt dat een meer flexibele, cloud-gebaseerde dev/experimentele omgeving dan uw lokale computer.
+U kunt een door het systeem gemaakte Conda-omgeving, een al bestaande python-omgeving of een docker-container gebruiken. Als u wilt uitvoeren op een docker-container, moet er een docker-engine op de VM worden uitgevoerd. Deze functionaliteit is vooral nuttig wanneer u een flexibele, Cloud ontwikkeling/experimentatie omgeving wilt gebruiken dan uw lokale computer.
 
 Gebruik Azure Data Science Virtual Machine (DSVM) als de Azure-VM van de keuze voor dit scenario. Deze VM is een vooraf geconfigureerde data Science-en AI-ontwikkel omgeving in Azure. De virtuele machine biedt een geruime keuze aan hulpprogram ma's en frameworks voor een volledige levenscyclus machine learning ontwikkeling. Zie [Configure a Development Environment](https://docs.microsoft.com/azure/machine-learning/service/how-to-configure-environment#dsvm)(Engelstalig) voor meer informatie over het gebruik van de DSVM met Azure machine learning.
 
@@ -154,7 +154,7 @@ Gebruik Azure Data Science Virtual Machine (DSVM) als de Azure-VM van de keuze v
     > [!WARNING]
     > Azure Machine Learning ondersteunt alleen virtuele machines waarop Ubuntu wordt uitgevoerd. Wanneer u een virtuele machine maakt of een bestaande virtuele machine kiest, moet u een virtuele machine selecteren die gebruikmaakt van Ubuntu.
 
-1. **Bijvoegen**: Als u een bestaande virtuele machine als een reken doel wilt koppelen, moet u de Fully Qualified Domain Name (FQDN), de gebruikers naam en het wacht woord voor de virtuele machine opgeven. Vervang \<in het voor beeld FQDN-> door de open bare FQDN van de virtuele machine of het open bare IP-adres. Vervang \<username > en \<wacht woord > door de gebruikers naam en het wacht woord van de SSH-gebruiker voor de virtuele machine.
+1. **Bijvoegen**: als u een bestaande virtuele machine als een reken doel wilt koppelen, moet u de Fully QUALIFIED domain name (FQDN), de gebruikers naam en het wacht woord voor de virtuele machine opgeven. Vervang in het voor beeld \<fqdn > met de open bare FQDN van de virtuele machine of het open bare IP-adres. Vervang \<username > en \<password > door de SSH-gebruikers naam en het wacht woord voor de virtuele machine.
 
    ```python
    from azureml.core.compute import RemoteCompute, ComputeTarget
@@ -181,7 +181,7 @@ Gebruik Azure Data Science Virtual Machine (DSVM) als de Azure-VM van de keuze v
 
    U kunt de DSVM ook aan uw werk ruimte koppelen [met behulp van de Azure Portal](#portal-reuse).
 
-1. **Configureren**: Een uitvoerings configuratie voor het DSVM Compute-doel maken. Docker en Conda worden gebruikt om de trainings omgeving op de DSVM te maken en te configureren.
+1. **Configureren**: een uitvoerings configuratie voor het DSVM Compute-doel maken. Docker en Conda worden gebruikt om de trainings omgeving op de DSVM te maken en te configureren.
 
    [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/dsvm.py?name=run_dsvm)]
 
@@ -192,13 +192,13 @@ Nu u de reken kracht hebt gekoppeld en de uitvoering hebt geconfigureerd, is de 
 
 Azure HDInsight is een populair platform voor Big data-analyses. Het platform biedt Apache Spark, dat kan worden gebruikt voor het trainen van uw model.
 
-1. **Maken**:  Maak het HDInsight-cluster voordat u het gebruikt om het model te trainen. Zie [een Spark-cluster maken in hdinsight](https://docs.microsoft.com/azure/hdinsight/spark/apache-spark-jupyter-spark-sql)voor informatie over het maken van een Spark in hdinsight-cluster. 
+1. **Maken**: Maak het HDInsight-cluster voordat u het gebruikt om het model te trainen. Zie [een Spark-cluster maken in hdinsight](https://docs.microsoft.com/azure/hdinsight/spark/apache-spark-jupyter-spark-sql)voor informatie over het maken van een Spark in hdinsight-cluster. 
 
     Wanneer u het cluster maakt, moet u een SSH-gebruikers naam en-wacht woord opgeven. Noteer deze waarden, omdat u ze nodig hebt om HDInsight als reken doel te gebruiken.
     
-    Nadat het cluster is gemaakt, maakt u een verbinding met de \<hostnaam clustername >-ssh.azurehdinsight.net, waarbij \<clustername > de naam is die u voor het cluster hebt ingesteld. 
+    Nadat het cluster is gemaakt, maakt u een verbinding met de hostnaam \<clustername >-ssh.azurehdinsight.net, waarbij \<clustername > de naam is die u voor het cluster hebt ingesteld. 
 
-1. **Bijvoegen**: Als u een HDInsight-cluster als een reken doel wilt koppelen, moet u de hostnaam, de gebruikers naam en het wacht woord voor het HDInsight-cluster opgeven. Het volgende voorbeeld wordt de SDK te koppelen van een cluster aan uw werkruimte. Vervang \<in het voor beeld clustername > door de naam van uw cluster. Vervang \<username > en \<wacht woord > door de gebruikers naam en het wacht woord van de SSH voor het cluster.
+1. **Bijvoegen**: als u een HDInsight-cluster als een reken doel wilt koppelen, moet u de hostnaam, de gebruikers naam en het wacht woord voor het HDInsight-cluster opgeven. In het volgende voor beeld wordt de SDK gebruikt om een cluster aan uw werk ruimte te koppelen. Vervang in het voor beeld \<clustername > door de naam van uw cluster. Vervang \<username > en \<password > door de SSH-gebruikers naam en het wacht woord voor het cluster.
 
    ```python
    from azureml.core.compute import ComputeTarget, HDInsightCompute
@@ -206,7 +206,7 @@ Azure HDInsight is een populair platform voor Big data-analyses. Het platform bi
 
    try:
     # if you want to connect using SSH key instead of username/password you can provide parameters private_key_file and private_key_passphrase
-    attach_config = HDInsightCompute.attach_configuration(address='<clustername>-ssh.azureinsight.net', 
+    attach_config = HDInsightCompute.attach_configuration(address='<clustername>-ssh.azurehdinsight.net', 
                                                           ssh_port=22, 
                                                           username='<ssh-username>', 
                                                           password='<ssh-pwd>')
@@ -222,7 +222,7 @@ Azure HDInsight is een populair platform voor Big data-analyses. Het platform bi
 
    Of u kunt het HDInsight-cluster aan uw werk ruimte koppelen [met behulp van de Azure Portal](#portal-reuse).
 
-1. **Configureren**: Een uitvoerings configuratie voor het HDI Compute-doel maken. 
+1. **Configureren**: een uitvoerings configuratie voor het HDI Compute-doel maken. 
 
    [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/hdi.py?name=run_hdi)]
 
@@ -236,9 +236,9 @@ Azure Batch wordt gebruikt voor het efficiënt uitvoeren van grootschalige paral
 
 Als u Azure Batch als een reken doel wilt koppelen, moet u de Azure Machine Learning SDK gebruiken en de volgende informatie opgeven:
 
--   **Azure batch Compute-naam**: Een beschrijvende naam die moet worden gebruikt voor de compute in de werk ruimte
--   **Azure batch account naam**: De naam van het Azure Batch-account
--   **Resourcegroep**: De resource groep die het Azure Batch-account bevat.
+-   **Azure batch Compute name**: een beschrijvende naam die moet worden gebruikt voor de compute in de werk ruimte
+-   **Azure batch account naam**: de naam van het Azure batch account
+-   **Resource groep**: de resource groep die het Azure batch-account bevat.
 
 De volgende code laat zien hoe u Azure Batch als een reken doel koppelt:
 
@@ -279,7 +279,7 @@ U kunt toegang krijgen tot de reken doelen die zijn gekoppeld aan uw werk ruimte
 * [Een reken doel toevoegen](#portal-reuse) dat buiten de werk ruimte is gemaakt
 
 
-Nadat een doel is gemaakt en aan uw werk ruimte is gekoppeld, gebruikt u dit in uw uitvoerings configuratie met `ComputeTarget` een-object: 
+Nadat een doel is gemaakt en aan uw werk ruimte is gekoppeld, gebruikt u dit in uw uitvoerings configuratie met een `ComputeTarget`-object: 
 
 ```python
 from azureml.core.compute import ComputeTarget
@@ -295,7 +295,7 @@ Als u de reken doelen voor uw werk ruimte wilt zien, gebruikt u de volgende stap
  
 1. Selecteer __berekenen__onder __toepassingen__.
 
-    [![Tabblad Compute weer geven](./media/how-to-set-up-training-targets/azure-machine-learning-service-workspace.png)](./media/how-to-set-up-training-targets/azure-machine-learning-service-workspace-expanded.png)
+    [@no__t-tabblad Compute-1View](./media/how-to-set-up-training-targets/azure-machine-learning-service-workspace.png)](./media/how-to-set-up-training-targets/azure-machine-learning-service-workspace-expanded.png)
 
 ### <a id="portal-create"></a>Een reken doel maken
 
@@ -348,8 +348,8 @@ Volg de stappen die eerder zijn beschreven om de lijst met Compute-doelen weer t
     > [!NOTE]
     > Micro soft raadt u aan om SSH-sleutels te gebruiken, die veiliger zijn dan wacht woorden. Wacht woorden zijn gevoelig voor beveiligings aanvallen. SSH-sleutels zijn afhankelijk van cryptografische hand tekeningen. Raadpleeg de volgende documenten voor informatie over het maken van SSH-sleutels voor gebruik met Azure Virtual Machines:
     >
-    > * [Maken en gebruiken van SSH-sleutels in Linux of macOS](https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys)
-    > * [Maken en gebruiken van SSH-sleutels op Windows](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows)
+    > * [SSH-sleutels maken en gebruiken in Linux of macOS](https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys)
+    > * [SSH-sleutels maken en gebruiken in Windows](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows)
 
 1. Selecteer __koppelen__. 
 1. Bekijk de status van de koppelings bewerking door het berekenings doel te selecteren in de lijst.
@@ -373,13 +373,13 @@ U kunt de berekenings doelen die aan uw werk ruimte zijn gekoppeld, openen, make
 Nadat u een uitvoerings configuratie hebt gemaakt, kunt u deze gebruiken om uw experiment uit te voeren.  Het code patroon voor het verzenden van een trainings uitvoering is hetzelfde voor alle typen reken doelen:
 
 1. Een experiment maken om uit te voeren
-1. De uitvoering verzenden.
-1. Wacht totdat de uitvoering om te voltooien.
+1. Verzend de uitvoering.
+1. Wacht totdat de uitvoering is voltooid.
 
 > [!IMPORTANT]
 > Wanneer u de trainings uitvoering verzendt, wordt een moment opname gemaakt van de map die uw trainings scripts bevat en verzonden naar het doel van de berekening. Het wordt ook opgeslagen als onderdeel van het experiment in uw werk ruimte. Als u bestanden wijzigt en de uitvoering opnieuw verzendt, worden alleen de gewijzigde bestanden geüpload.
 >
-> Als u wilt voor komen dat bestanden worden opgenomen in de moment opname, maakt `.amlignore` u een [. gitignore](https://git-scm.com/docs/gitignore) -of-bestand in de map en voegt u de bestanden hieraan toe. Het `.amlignore` bestand gebruikt dezelfde syntaxis en patronen als het [. gitignore](https://git-scm.com/docs/gitignore) -bestand. Als beide bestanden bestaan, heeft `.amlignore` het bestand voor rang.
+> Als u wilt voor komen dat bestanden in de moment opname worden opgenomen, maakt u een [. gitignore](https://git-scm.com/docs/gitignore) -of `.amlignore`-bestand in de map en voegt u de bestanden hieraan toe. Het `.amlignore`-bestand gebruikt dezelfde syntaxis en patronen als het [. gitignore](https://git-scm.com/docs/gitignore) -bestand. Als beide bestanden bestaan, heeft het `.amlignore`-bestand prioriteit.
 > 
 > Zie [moment opnamen](concept-azure-machine-learning-architecture.md#snapshots)voor meer informatie.
 
@@ -391,11 +391,11 @@ Maak eerst een experiment in uw werk ruimte.
 
 ### <a name="submit-the-experiment"></a>Het experiment verzenden
 
-Verzend het experiment met een `ScriptRunConfig` object.  Dit object bevat:
+Verzend het experiment met een `ScriptRunConfig`-object.  Dit object bevat:
 
-* **bronmap**: De bronmap die uw trainings script bevat
-* **script**: Het trainings script identificeren
-* **run_config**: De uitvoerings configuratie, die op zijn beurt bepaalt waar de training plaatsvindt.
+* **bronmap**: de bron directory die uw trainings script bevat
+* **script**: het trainings script identificeren
+* **run_config**: de uitvoerings configuratie, die op zijn beurt bepaalt waar de training plaatsvindt.
 
 Als u bijvoorbeeld [de lokale doel](#local) configuratie wilt gebruiken:
 
@@ -406,7 +406,7 @@ Hetzelfde experiment wisselen om uit te voeren in een ander reken doel door gebr
 [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/amlcompute2.py?name=amlcompute_submit)]
 
 > [!TIP]
-> In dit voor beeld wordt standaard slechts één knoop punt gebruikt van het berekenings doel voor de training. Als u meer dan één knoop punt wilt gebruiken `node_count` , stelt u de uitvoerings configuratie in op het gewenste aantal knoop punten. Met de volgende code wordt bijvoorbeeld het aantal knoop punten ingesteld dat wordt gebruikt voor de training naar vier:
+> In dit voor beeld wordt standaard slechts één knoop punt gebruikt van het berekenings doel voor de training. Als u meer dan één knoop punt wilt gebruiken, stelt u de `node_count` van de uitvoerings configuratie in op het gewenste aantal knoop punten. Met de volgende code wordt bijvoorbeeld het aantal knoop punten ingesteld dat wordt gebruikt voor de training naar vier:
 >
 > ```python
 > src.run_config.node_count = 4
@@ -414,7 +414,7 @@ Hetzelfde experiment wisselen om uit te voeren in een ander reken doel door gebr
 
 U kunt ook het volgende doen:
 
-* Dien het experiment in met `Estimator` een object zoals wordt weer gegeven in de [trein ml-modellen met schattingen](how-to-train-ml-models.md).
+* Dien het experiment in met een `Estimator`-object zoals wordt weer gegeven in de [trein ml-modellen met schattingen](how-to-train-ml-models.md).
 * Verzend een HyperDrive-uitvoering voor [afstemming-afstemming](how-to-tune-hyperparameters.md).
 * Een experiment verzenden via de [VS code-extensie](how-to-vscode-tools.md#train-and-tune-models).
 
@@ -422,7 +422,7 @@ Zie de documentatie voor [ScriptRunConfig](https://docs.microsoft.com/python/api
 
 ## <a name="create-run-configuration-and-submit-run-using-azure-machine-learning-cli"></a>Voer een configuratie uit en voer run uit met Azure Machine Learning CLI
 
-U kunt [Azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) en [machine learning cli-extensie](reference-azure-machine-learning-cli.md) gebruiken voor het maken van uitvoerings configuraties en het verzenden van uitvoeringen op verschillende reken doelen. In de volgende voor beelden wordt ervan uitgegaan dat u een bestaande Azure machine learning-werkruimte hebt en u bent `az login` aangemeld bij Azure met behulp van de CLI-opdracht. 
+U kunt [Azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) en [machine learning cli-extensie](reference-azure-machine-learning-cli.md) gebruiken voor het maken van uitvoerings configuraties en het verzenden van uitvoeringen op verschillende reken doelen. In de volgende voor beelden wordt ervan uitgegaan dat u een bestaande Azure Machine Learning-werkruimte hebt en u bent aangemeld bij Azure met behulp van de `az login` CLI-opdracht. 
 
 ### <a name="create-run-configuration"></a>Configuratie voor uitvoeren maken
 
@@ -432,7 +432,7 @@ De eenvoudigste manier om een uitvoerings configuratie te maken is door de map t
 az ml folder attach
 ```
 
-Met deze opdracht maakt u een `.azureml` submap met configuratie bestanden voor het uitvoeren van sjablonen voor verschillende Compute-doelen. U kunt deze bestanden kopiëren en bewerken om uw configuratie aan te passen, bijvoorbeeld om Python-pakketten toe te voegen of docker-instellingen te wijzigen.  
+Met deze opdracht maakt u een submap `.azureml` met de configuratie bestanden voor het uitvoeren van sjablonen voor verschillende Compute-doelen. U kunt deze bestanden kopiëren en bewerken om uw configuratie aan te passen, bijvoorbeeld om Python-pakketten toe te voegen of docker-instellingen te wijzigen.  
 
 ### <a name="structure-of-run-configuration-file"></a>Structuur van het configuratie bestand voor de uitvoering
 
@@ -493,7 +493,7 @@ az ml run submit-hyperdrive -e <experiment> -c <runconfig> --hyperdrive-configur
 
 Let op de sectie *argumenten* in runconfig en de *parameter ruimte* in HyperDrive config. Ze bevatten de opdracht regel argumenten die moeten worden door gegeven aan het trainings script. De waarde in runconfig blijft hetzelfde voor elke iteratie, terwijl het bereik in HyperDrive config wordt herhaald. Geef in beide bestanden niet hetzelfde argument op.
 
-Zie [de referentie documentatie](reference-azure-machine-learning-cli.md)voor ```az ml``` meer informatie over deze cli-opdrachten en een volledige set met argumenten.
+Zie [de referentie documentatie](reference-azure-machine-learning-cli.md)voor meer informatie over deze ```az ml``` cli-opdrachten en een volledige set argumenten.
 
 <a id="gitintegration"></a>
 
@@ -504,14 +504,14 @@ Wanneer u begint met het uitvoeren van een training waarbij de bronmap een lokal
 ## <a name="notebook-examples"></a>Voor beelden van notebooks
 
 Bekijk deze notebooks voor voor beelden van training met verschillende Compute-doelen:
-* [procedure-naar-gebruik-azureml/training](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training)
-* [zelfstudies/img-classificatie-deel 1-training.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/img-classification-part1-training.ipynb)
+* [procedures voor het gebruik van azureml/training](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training)
+* [zelf studies/img-Classification-part1-training. ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/img-classification-part1-training.ipynb)
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Zelfstudie: Voor het trainen](tutorial-train-models-with-aml.md) van een model wordt gebruikgemaakt van een beheerd reken doel om een model te trainen.
+* [Zelf studie: een model trainen](tutorial-train-models-with-aml.md) maakt gebruik van een beheerd Compute-doel om een model te trainen.
 * Meer informatie over hoe u [Hyper parameters efficiënt kunt afstemmen](how-to-tune-hyperparameters.md) om betere modellen te bouwen.
 * Wanneer u een getraind model hebt, leert u [hoe en waar u modellen kunt implementeren](how-to-deploy-and-where.md).
 * Bekijk de [RunConfiguration class](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.runconfiguration?view=azure-ml-py) SDK-referentie.
